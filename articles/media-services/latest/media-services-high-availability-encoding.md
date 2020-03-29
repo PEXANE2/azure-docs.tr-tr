@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik kodlaması Azure Media Services
-description: Bölgesel bir veri merkezi kesintisi veya hatası oluşursa ikincil Media Services hesabına yük devretmeyi öğrenin.
+title: Azure Medya Hizmetleri yüksek kullanılabilirlik kodlaması
+description: Bölgesel bir veri merkezi kesintisi veya hatası oluşursa, ikincil bir Medya Hizmetleri hesabına nasıl geçemeyeceğinızı öğrenin.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,53 +14,53 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78934203"
 ---
-# <a name="media-services-high-availability-encoding"></a>Yüksek kullanılabilirlik kodlaması Media Services 
+# <a name="media-services-high-availability-encoding"></a>Medya Hizmetleri yüksek kullanılabilirlik kodlama 
 
-Azure Media Services kodlama hizmeti, bölgesel bir toplu işlem platformudur ve şu anda tek bir bölge içinde yüksek kullanılabilirlik için tasarlanmamaktadır. Kodlama hizmeti şu anda bir bölgesel veri merkezi kesintisi veya temeldeki bileşen ya da bağımlı hizmetler (örneğin, depolama, SQL) hatası varsa hizmetin anında yük devretmesini sağlamıyor. Bu makalede, yük devretmeyle yüksek kullanılabilirliğe sahip bir mimariyi sürdürmek ve uygulamalarınız için en iyi kullanılabilirliği sağlamak üzere Media Services dağıtımı açıklanır.
+Azure Medya Hizmetleri kodlama hizmeti bölgesel bir toplu iş işleme platformudur ve şu anda tek bir bölgede yüksek kullanılabilirlik için tasarlanmamıştır. Kodlama hizmeti, bölgesel bir veri merkezi kesintisi veya altta yatan bileşen veya bağımlı hizmetlerin (depolama, SQL gibi) başarısızlığı varsa, şu anda hizmetin anında başarısız olmasına izin vermez. Bu makalede, başarısız bir yüksek kullanılabilirlik mimarisi korumak ve uygulamalarınız için en iyi kullanılabilirliği sağlamak için Medya Hizmetleri nasıl dağıtılanın açıklanmaktadır.
 
-Makalede açıklanan yönergeleri ve en iyi uygulamaları izleyerek, tek bir bölgede bir kesinti meydana gelirse, hataların kodlanması, gecikme süresi ve kurtarma süresini en aza indirgeme riskini düşürmeniz gerekir.
+Makalede açıklanan yönergeleri ve en iyi uygulamaları izleyerek, tek bir bölgede kesinti oluşursa, kodlama hatalarını, gecikmeleri ve kurtarma süresini en aza indirirsiniz.
 
-## <a name="how-to-build-a-cross-regional-encoding-system"></a>Çapraz bölgesel kodlama sistemi oluşturma
+## <a name="how-to-build-a-cross-regional-encoding-system"></a>Bölgeler arası kodlama sistemi nasıl inşa edilebilmektedir?
 
-* İki (veya daha fazla) Azure Media Services hesabı [oluşturun](create-account-cli-how-to.md) .
+* İki (veya daha fazla) Azure Medya Hizmetleri hesabı [oluşturun.](create-account-cli-how-to.md)
 
-    İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için bkz. [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](job-input-from-http-how-to.md) veya [yerel bir dosyadan iş girişi oluşturma](job-input-from-local-file-how-to.md).
+    İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için Azure [Medya Hizmetleri hizmetinin dağıtıldığı bölgelere](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)bakın.
+* Medyanızı, işi göndermeyi planladığınız bölgeye yükleyin. Kodlamaya nasıl başlayacağınız hakkında daha fazla bilgi için [bkz.](job-input-from-http-how-to.md) [Create a job input from a local file](job-input-from-local-file-how-to.md)
 
-    [İşi](transforms-jobs-concept.md) başka bir bölgeye yeniden göndermeniz gerekirse, kaynak varlık kapsayıcısından verileri alternatif bölgedeki bir varlık kapsayıcısına kopyalamak Için Jobınputhttp veya [Copy-blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) ' u kullanabilirsiniz.
-* Azure Event Grid aracılığıyla her hesapta JobStateChange iletileri için abone olun. Daha fazla bilgi için bkz.
+    Daha sonra [işi](transforms-jobs-concept.md) başka bir bölgeye yeniden göndermeniz gerekiyorsa, JobInputHttp'i kullanabilir veya kaynak Varlık kapsayıcısından gelen verileri alternatif bölgedeki bir Varlık kapsayıcısına kopyalamak için [Copy-Blob'u](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) kullanabilirsiniz.
+* Azure Olay Ağıtı üzerinden her hesaptaki JobStateChange iletilerine abone olun. Daha fazla bilgi için bkz.
 
-    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işin nasıl izleneceğini gösteren [Ses analizi örneği](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) .
-    * [Media Services olaylar için Azure Event Grid şemaları](media-services-event-schemas.md)
-    * [Azure Portal veya CLI aracılığıyla olaylara kaydolma](reacting-to-media-services-events.md) (aynı zamanda Eventgrid YÖNETIM SDK 'sı ile de yapabilirsiniz)
-    * [Microsoft. Azure. EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (yerel olarak Media Services olaylarını destekler).
+    * Azure Olay Izgarası ile bir işin nasıl izlendiğini gösteren [Veses Analytics örneği,](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) Azure Olay Izgara iletilerinin herhangi bir nedenle gecikmesi durumunda bir geri dönüş eklemeyi de içeren.
+    * [Medya Hizmetleri etkinlikleri için Azure Olay Izgaraşe şemaları](media-services-event-schemas.md)
+    * [Azure portalı veya CLI üzerinden etkinlikler için kaydolun](reacting-to-media-services-events.md) (Bunu EventGrid Management SDK ile de yapabilirsiniz)
+    * [Microsoft.Azure.EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (Ortam Hizmetleri olaylarını yerel olarak destekler).
 
-    Azure Işlevleri aracılığıyla Event Grid olaylarını da kullanabilirsiniz.
+    Azure İşlevleri aracılığıyla Olay Izgara olaylarını da tüketebilirsiniz.
 * Bir [iş](transforms-jobs-concept.md)oluşturduğunuzda:
 
-    * Şu anda kullanılan hesapların listesinden rastgele bir hesap seçin (Bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işlecin bir uyarı oluşturup Araştırabilmesi için bir uyarı yükseltin.
-    * Genel rehberlik, [Joi put](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) başına bir [medya ayrılmış birimine](media-reserved-units-cli-how-to.md) Ihtiyacınız vardır (her Joi put [](analyzing-video-audio-files-concept.md) için 3 medya ayrılmış birimi önerilir).
-    * Seçilen hesap için medya ayrılmış birimlerinin (MRU) sayısını alır. Geçerli **medya ayrılmış birim** sayısı zaten en büyük değerde değilse, iş Için gereken MRU sayısını ekleyin ve hizmeti güncelleştirin. İş gönderim oranınızı yüksekse ve en yüksek düzeyde olduğunu bulmak için MRU 'yi sık sık sorguladıktan sonra, değer için makul bir zaman aşımı ile dağıtılmış bir önbellek kullanın.
-    * Esnek işlerin sayısının sayısını koruyun.
+    * Rasgele şu anda kullanılan hesaplar listesinden bir hesap seçin (bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işleç araştırmak böylece bir uyarı yükseltin.
+    * Genel rehberlik, JobOutput başına bir [ortam ayrılmış üniteye](media-reserved-units-cli-how-to.md) ihtiyacınız olmasıdır (JobOutput başına 3 ortam ayrılmış birimin tavsiye edildiği [VideoAnalyzerPreset'i](analyzing-video-audio-files-concept.md) kullanmıyorsanız). [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset)
+    * Seçilen hesap için ortam ayrılmış birimlerin (MRUs) sayısını alın. Geçerli **ortam ayrılmış birim** sayısı zaten maksimum değerde değilse, işin ihtiyaç duyduğu MR Sayısını ekleyin ve hizmeti güncelleştirin. İş teslim oranınız yüksekse ve en fazla olduğunu bulmak için MrUs'ları sık sık sorgulıyorsanız, makul bir zaman alabilen değer için dağıtılmış bir önbellek kullanın.
+    * Uçak içi işlerin sayısını say.
 
-* JobStateChange işleyiciniz bir işin zamanlanan duruma ulaştığı bir bildirim aldığında, zamanlama durumuna ve kullanılan bölge/hesaba giren zamanı kaydedin.
-* JobStateChange işleyiciniz bir işin işleme durumuna ulaştığı bir bildirim aldığında iş için kaydı işleme olarak işaretleyin.
-* JobStateChange işleyiciniz bir işin tamamlandı/hatalı/Iptal edildi durumuna ulaştığı bir bildirim aldığında, işin kaydını son olarak işaretleyin ve esnek iş sayısını azaltır. Seçilen hesap için medya ayrılmış birimlerinin sayısını alın ve geçerli MRU numarasını, esnek iş sayınızla karşılaştırın. Değerlendirmedeki sayımınız MRU sayısından küçükse, azaltın ve hizmeti güncelleştirin.
-* İşlerin kayıtlarınıza düzenli olarak baktığı ayrı bir işleme sahiptir
+* JobStateChange işleyiciniz, bir işin zamanlanan duruma ulaştığına dair bir bildirim aldığında, zamanlama durumuna ve kullanılan bölge/hesaba girdiği zamanı kaydedin.
+* JobStateChange işleyiciniz, bir işin işleme durumuna ulaştığına dair bir bildirim aldığında, iş kaydını işleme olarak işaretleyin.
+* JobStateChange işleyiciniz, bir işin Tamamlanmış/Hatalı/İptal Edilen durumuna ulaştığına dair bir bildirim aldığında, iş kaydını son olarak işaretleyin ve uçuş içi iş sayısını kesin olarak işaretleyin. Seçilen hesap için ayrılmış ortam birimi sayısını alın ve geçerli MRU numarasını uçuş içi iş sayınızla karşılaştırın. Uçak içi sayınız MRU sayısından küçükse, bu sayıyı azlayın ve hizmeti güncelleyin.
+* İşlerin kayıtlarına düzenli olarak bakan ayrı bir işlem yapın
     
-    * Zamanlanan durumda, belirli bir bölge için makul bir süre içinde işleme durumuna kadar gelişmiş olmayan işleriniz varsa, o bölgeyi şu anda kullanılan hesapların listesinden kaldırın.  İş gereksinimlerinize bağlı olarak, bu işleri hemen iptal edip diğer bölgeye yeniden gönderebilirsiniz. Ya da bir sonraki duruma geçmek için birkaç zaman daha verebilirsiniz.
-    * Hesapta yapılandırılan medya ayrılmış birimlerinin sayısına ve gönderim hızına bağlı olarak, kuyruğa alınmış durumda sistem henüz işlenmek üzere çekilmemiştir.  Sıraya alınan durumdaki işlerin listesi bir bölgede kabul edilebilir sınırın ötesinde büyürse, bu işler iptal edilebilir ve diğer bölgeye gönderilebilir.  Ancak bu, geçerli yük için hesapta yapılandırılmış yeterli medya ayrılmış birimi olmaması belirtisi olabilir.  Gerekirse, Azure desteği aracılığıyla daha yüksek bir medya ayrılmış birim kotası isteyebilirsiniz.
-    * Hesap listesinden bir bölge kaldırılmışsa, listeye geri eklemeden önce onu kurtarma için izleyin.  Bölgesel sistem durumu, bölgedeki mevcut işler aracılığıyla (iptal edilmediğinde ve yeniden gönderiyorlarsa), hesap bir süre sonra listeye geri eklenerek ve işleçler ile etkileyebilecek kesintiler hakkında Azure iletişimini izleyen operatörler tarafından izlenebilir Azure Media Services.
+    * Zamanlanan durumda, belirli bir bölge için makul bir süre içinde işleme durumuna ilerlememiş işler varsa, bu bölgeyi şu anda kullanılan hesaplar listenizden kaldırın.  İş gereksinimlerinize bağlı olarak, bu işleri hemen iptal etmeye ve bunları diğer bölgeye yeniden göndermeye karar verebilirsiniz. Ya da bir sonraki eyalete geçmeleri için onlara biraz daha zaman verebilirsin.
+    * Hesapta yapılandırılan Ortam Ayrılmış Birimlerinin sayısına ve gönderme oranına bağlı olarak, sistemin henüz işlemek üzere almadığı sıraya alınan durumda da işler olabilir.  Sıralanan durumdaki işlerin listesi bir bölgede kabul edilebilir bir sınırın ötesine büyürse, bu işler iptal edilip diğer bölgeye gönderilebilir.  Ancak, bu, geçerli yük için hesapta yapılandırılan yeterli Ortam Ayrılmış Birimlerine sahip olmamasının bir belirtisi olabilir.  Gerekirse Azure Desteği aracılığıyla daha yüksek bir Ortam Rezerve Birim kotası isteyebilirsiniz.
+    * Bir bölge hesap listesinden kaldırıldıysa, listeye geri eklemeden önce kurtarma için izleyin.  Bölgesel sağlık, bölgedeki mevcut işler (iptal edilip yeniden gönderilmediyse), hesabı bir süre sonra listeye geri ekleyerek ve Azure iletişimlerini etkileyebilecek kesintilerle ilgili olarak izleyen operatörler tarafından izlenebilir Azure Medya Hizmetleri.
     
-MRU sayısının büyük bir dönem yukarı ve aşağı doğru olduğunu fark ederseniz, azaltma mantığını düzenli bir göreve taşıyın. , MRU 'nın güncelleştirilmesi gerekip gerekmediğini görmek için, iş öncesi bir mantıksal karşılaştırma sayısını geçerli MRU sayısına göre karşılaştırın.
+MRU sayısının çok yukarı ve aşağı olduğunu bulursanız, kararname mantığını periyodik göreve taşıyın. MrUs'ları güncellemesi gerekip gerekmeden görmek için, iş öncesi gönderinin mantık, uçuş içi sayıyı geçerli MRU sayısıyla karşılaştırmasını gerektirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İsteğe bağlı video ile çapraz bölge akışı oluşturma](media-services-high-availability-streaming.md)
-* [Kod örneklerine](https://docs.microsoft.com/samples/browse/?products=azure-media-services) göz atın
+* [İsteğe bağlı video çapraz bölge akışı oluşturma](media-services-high-availability-streaming.md)
+* Kod [örneklerine](https://docs.microsoft.com/samples/browse/?products=azure-media-services) göz atın

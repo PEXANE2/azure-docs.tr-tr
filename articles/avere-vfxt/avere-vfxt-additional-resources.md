@@ -1,36 +1,36 @@
 ---
-title: Azure için avere vFXT hakkında ek bağlantılar
-description: Azure için avere vFXT hakkında ek bilgilere bağlantılar
+title: Azure için Avere vFXT hakkında ek bağlantılar
+description: Azure için Avere vFXT hakkında ek bilgilere bağlantılar
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153777"
 ---
 # <a name="additional-documentation"></a>Diğer belgeler
 
-Bu makalede, avere Denetim Masası yönetim arabirimi ve ilgili konular hakkında ek belgelere bağlantılar bulunur.
+Bu makalede, Avere Denetim Masası yönetim arayüzü ve ilgili konular hakkında ek belgelere bağlantılar vardır.
 
-## <a name="avere-cluster-documentation"></a>Avere kümesi belgeleri
+## <a name="avere-cluster-documentation"></a>Avere küme belgeleri
 
-Ek avere kümesi belgeleri <https://azure.github.io/Avere/>adresindeki Web sitesinde bulunabilir. Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandıracağınızı anlamanıza yardımcı olabilir.
+Ek Avere küme belgeleri web sitesinde <https://azure.github.io/Avere/>bulunabilir. Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandırabileceğinizi anlamanıza yardımcı olabilir.
 
-* [FXT kümesi oluşturma kılavuzu](<https://azure.github.io/Avere/#fxt_cluster>) , fiziksel donanım düğümlerinden oluşan kümeler için tasarlanmıştır, ancak belgedeki bazı bilgiler vFXT kümelerine de uygundur. Özellikle, yeni vFXT küme yöneticileri bu bölümleri okumayı yararlı olabilir:
-  * [Destek ve Izleme ayarlarını](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) özelleştirmek, destek yükleme ayarlarını özelleştirmeyi ve uzaktan izlemeyi etkinleştirmeyi açıklar.
-  * [VServers ve Global ad alanı yapılandırması](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) , istemciye yönelik bir ad alanı oluşturma hakkında bilgi içerir.
-  * [Avere kümesi IÇIN DNS yapılandırması,](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) hepsini bir kez deneme DNS 'nin nasıl yapılandırılacağını açıklar.
-  * [Arka uç depolama alanı ekleme](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) temel filers ekleme.
+* [FXT Küme Oluşturma Kılavuzu](<https://azure.github.io/Avere/#fxt_cluster>) fiziksel donanım düğümlerinden oluşan kümeler için tasarlanmıştır, ancak belgedeki bazı bilgiler vFXT kümeleri için de geçerlidir. Özellikle, yeni vFXT küme yöneticileri bu bölümleri okuma yararlanabilir:
+  * [Destek ve İzleme Ayarlarını özelleştirmek,](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) destek yükleme ayarlarını nasıl özelleştirişleri ve uzaktan izlemeyi nasıl etkinleştireceklerini açıklar.
+  * [VServers ve Global Namespace yapılandırma](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) istemciye bakan bir ad alanı oluşturma hakkında bilgi vardır.
+  * [Avere kümesi için DNS'yi yapılandırmak,](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) round-robin DNS'nin nasıl yapılandırılabildiğini açıklar.
+  * [Arka uç Depolama](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) belgeleri ekleme nasıl çekirdek filers eklemek için.
 
-* [Küme yapılandırma kılavuzu](<https://azure.github.io/Avere/#operations>) , bir avere kümesi için ayarların ve seçeneklerin tamamı başvurusudur. VFXT kümesi bu seçeneklerin bir alt kümesini kullanır, ancak aynı yapılandırma sayfalarının çoğu geçerlidir.
+* [Küme Yapılandırma Kılavuzu,](<https://azure.github.io/Avere/#operations>) bir Avere kümesi için ayarların ve seçeneklerin tam bir başvurusudur. VFXT kümesi bu seçeneklerin bir alt kümesini kullanır, ancak aynı yapılandırma sayfalarının çoğu geçerlidir.
 
-* [Pano kılavuzunda](<https://azure.github.io/Avere/#operations>) , avere Denetim Masası 'nın küme izleme özelliklerinin nasıl kullanılacağı açıklanmaktadır.
+* [Pano Kılavuzu,](<https://azure.github.io/Avere/#operations>) Avere Denetim Masası'nın küme izleme özelliklerinin nasıl kullanılacağını açıklar.
 
-## <a name="vfxt-creation-and-management-documentation"></a>vFXT oluşturma ve yönetimi belgeleri
+## <a name="vfxt-creation-and-management-documentation"></a>vFXT oluşturma ve yönetim dokümantasyonu
 
-Betik tabanlı bir bulut kümesi oluşturma ve yönetim yardımcı programı olan vfxt.py kullanmaya yönelik bir tam kılavuz GitHub: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)için verilmiştir.
+Komut dosyası tabanlı bulut kümesi oluşturma ve yönetim yardımcı programı olan vfxt.py kullanmak için tam bir kılavuz GitHub: [vfxt.py ile bulut küme yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)nde sağlanır.

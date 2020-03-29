@@ -1,7 +1,7 @@
 ---
-title: 'Öneren değerlendir: modül başvurusu'
+title: 'Öneriyi Değerlendirin: Modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Öneren model tahminlerinin doğruluğunu değerlendirmek için Azure Machine Learning 'de değerlendir öneren modülünü nasıl kullanacağınızı öğrenin.
+description: Öneriyi tavsiye eden model tahminlerinin doğruluğunu değerlendirmek için Azure Machine Learning'de Öneriyi Değerlendir modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,85 +9,85 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76312269"
 ---
 # <a name="evaluate-recommender"></a>Önereni Değerlendirme
 
-Bu makalede Azure Machine Learning tasarımcısında değerlendir öneren modülünün nasıl kullanılacağı açıklanır. Amaç, bir öneri modelinin yaptığı tahminlerin doğruluğunu ölçmektir. Bu modülü kullanarak, farklı öneri türlerini değerlendirebilirsiniz:  
+Bu makalede, Azure Machine Learning tasarımcısında (önizleme) Öneriyi Değerlendir modülünün nasıl kullanılacağı açıklanmaktadır. Amaç, bir öneri modelinin yaptığı tahminlerin doğruluğunu ölçmektir. Bu modülü kullanarak, farklı türde önerileri değerlendirebilirsiniz:  
   
--   Bir Kullanıcı ve bir öğe için tahmin edilen derecelendirmeler    
--   Bir kullanıcı için önerilen öğeler  
+-   Kullanıcı ve öğe için öngörülen derecelendirmeler    
+-   Kullanıcı için önerilen öğeler  
   
-Öneri modeli kullanarak tahmin oluştururken, bu desteklenen tahmin türlerinin her biri için biraz farklı sonuçlar döndürülür. Değerlendirin öneren modülü, puanlanmış veri kümesinin sütun biçiminden tahmin türünü çıkarır. Örneğin, puanlanmış veri kümesi şunları içerebilir:
+Bir öneri modeli kullanarak öngörüler oluşturduğunuzda, desteklenen bu tahmin türlerinin her biri için biraz farklı sonuçlar döndürülür. Öneriyi Değerlendir modülü, puanlanan veri kümesinin sütun biçiminden tahmin türünü ortaya çıkar. Örneğin, puanlanan veri kümesi şunları içerebilir:
 
-- Kullanıcı-öğe-derecelendirme Üçlü
-- Kullanıcılar ve bunların önerilen öğeleri
+- Kullanıcı öğesi derecelendirmesi üç katına
+- Kullanıcılar ve önerilen öğeleri
 
-Modül, yapılan tahmin türüne göre uygun performans ölçümlerini de uygular. 
+Modül ayrıca, yapılan tahmin türüne bağlı olarak uygun performans ölçümlerini de uygular. 
 
   
-## <a name="how-to-configure-evaluate-recommender"></a>Öneren değerlendir yapılandırma
+## <a name="how-to-configure-evaluate-recommender"></a>Değerlendir Tavsiyeci nasıl yapılandırılatır
 
-Öneren değerlendir modülü, karşılık gelen "temel olan" verilerle bir öneri modeli kullanarak tahmin çıktısını karşılaştırır. Örneğin, [SVD öneren modülünün puanı](score-svd-recommender.md) , öneren değerlendir kullanarak çözümleyebileceğiniz puanlanmış veri kümeleri üretir.
+Öneriyi Değerlendir modülü, bir öneri modeli kullanarak tahmin çıktısını karşılık gelen "yer gerçeği" verileriyle karşılaştırır. Örneğin, [Score SVD Recommender](score-svd-recommender.md) modülü, Öneriyi Değerlendir'i kullanarak çözümleyebileceğiniz puanlı veri kümeleri üretir.
 
 ### <a name="requirements"></a>Gereksinimler
 
-Değerlendirme öneren, aşağıdaki veri kümelerini giriş olarak gerektirir. 
+Değerlendirme Önerici giriş olarak aşağıdaki veri kümelerini gerektirir. 
   
 #### <a name="test-dataset"></a>Test veri kümesi
 
-Test veri kümesi, Kullanıcı-öğe derecelendirme Üçlü biçiminde "toprak" verileri içerir.  
+Test veri kümesi, kullanıcı öğesi derecelendirmesi üç katına şeklinde "zemin gerçeği" verilerini içerir.  
 
-#### <a name="scored-dataset"></a>Puanlanmış veri kümesi
+#### <a name="scored-dataset"></a>Puanlı veri kümesi
 
-Puanlanmış veri kümesi, öneri modelinin ürettiği tahminleri içerir.  
+Puanlanan veri kümesi, öneri modelinin oluşturduğu tahminleri içerir.  
   
-Bu ikinci veri kümesindeki sütunlar, Puanlama işlemi sırasında gerçekleştirdiğiniz tahmin türüne bağlıdır. Örneğin, puanlanmış veri kümesi aşağıdakilerden birini içerebilir:
+Bu ikinci veri kümesindeki sütunlar, puanlama işlemi sırasında gerçekleştirdiğiniz tahmin türüne bağlıdır. Örneğin, puanlanan veri kümesi aşağıdakilerden birini içerebilir:
 
-- Kullanıcılar, öğeler ve kullanıcının öğe için büyük olasılıkla sahip olacağı derecelendirmeler
-- Kendileri için önerilen kullanıcıların ve öğelerin listesi 
+- Kullanıcılar, öğeler ve kullanıcının öğe için vereceği derecelendirmeler
+- Onlar için önerilen kullanıcıların ve öğelerin listesi 
 
 ### <a name="metrics"></a>Ölçümler
 
-Model için performans ölçümleri, giriş türüne göre oluşturulur. Aşağıdaki bölümlerde ayrıntılar verilmektedir.
+Modeliçin performans ölçümleri giriş türüne göre oluşturulur. Aşağıdaki bölümlerde ayrıntılı bilgi verilmiştir.
 
-## <a name="evaluate-predicted-ratings"></a>Tahmin edilen derecelendirmeleri değerlendir  
+## <a name="evaluate-predicted-ratings"></a>Öngörülen derecelendirmeleri değerlendirme  
 
-Tahmin edilen derecelendirmeleri değerlendirirken, puanlanmış veri kümesi (öneren değerlendirmek için ikinci giriş), bu gereksinimleri karşılayan Kullanıcı-öğe derecelendirme engelleri içermelidir:
+Öngörülen derecelendirmeleri değerlendirirken, puanlanan veri kümesinin (Öneriyi Değerlendirecek ikinci giriş) bu gereksinimleri karşılayan kullanıcı öğesi derecelendirme üçlüleri içermelidir:
   
--   Veri kümesinin ilk sütunu Kullanıcı tanımlayıcılarını içerir.    
--   İkinci sütunda öğe tanımlayıcıları bulunur.  
--   Üçüncü sütun karşılık gelen Kullanıcı öğesi derecelendirmelerini içerir.  
+-   Veri kümesinin ilk sütunu kullanıcı tanımlayıcılarını içerir.    
+-   İkinci sütun öğe tanımlayıcıları içerir.  
+-   Üçüncü sütun, ilgili kullanıcı öğesi derecelendirmelerini içerir.  
   
 > [!IMPORTANT] 
-> Değerlendirmenin başarılı olması için, sütun adlarının sırasıyla `User`, `Item`ve `Rating`olması gerekir.  
+> Değerlendirmenin başarılı olabilmesi için `User`sütun `Item`adlarının sırasıyla , ve `Rating`, olması gerekir.  
   
-Değerlendirin öneren, "zemin gerçeği" veri kümesindeki derecelendirmeleri, puanlanmış veri kümesinin öngörülen derecelendirmelerine göre karşılaştırır. Daha sonra ortalama mutlak hata (MAE) ve kök ortalama kare hatası (rmo) hesaplar.
+Değerlendirme Tavsiye Leyici, "yer gerçeği" veri kümesindeki derecelendirmeleri, puanlanan veri kümesinin öngörülen derecelendirmeleri ile karşılaştırır. Daha sonra ortalama mutlak hata (MAE) ve kök ortalama kare hata (RMSE) bilgisayar.
 
 
 
-## <a name="evaluate-item-recommendations"></a>Öğe önerilerini değerlendir
+## <a name="evaluate-item-recommendations"></a>Madde önerilerini değerlendirme
 
-Öğe önerilerini değerlendirirken, her kullanıcı için önerilen öğeleri içeren bir puanlanmış veri kümesi kullanın:
+Madde önerilerini değerlendirirken, her kullanıcı için önerilen öğeleri içeren puanlı bir veri kümesi kullanın:
   
--   Veri kümesinin ilk sütununun Kullanıcı tanımlayıcısı içermesi gerekir.    
--   Sonraki tüm sütunlar, ilgili önerilen öğe tanımlayıcılarını içermesi gerekir ve ilgili bir öğenin kullanıcıya ait olduğu şekilde sıralanır. 
+-   Veri kümesinin ilk sütunu kullanıcı tanımlayıcısını içermelidir.    
+-   Sonraki tüm sütunlar, bir öğenin kullanıcıyla ne kadar alakalı olduğuna göre sıralanan ilgili önerilen öğe tanımlayıcılarını içermelidir. 
 
-Bu veri kümesini bağlanmadan önce, en ilgili öğelerin ilk olması için veri kümesini sıralamanıza önerilir.  
+Bu veri kümesini bağlamadan önce, en alakalı öğelerin önce gelmesi için veri kümesini sıralamanızı öneririz.  
 
 > [!IMPORTANT] 
-> Öneren 'ın çalışmasını değerlendirmek için, sütun adlarının `User`, `Item 1`, `Item 2`, `Item 3` ve benzeri olması gerekir.  
+> Öneriyi Değerlendirin'in çalışması için `User`sütun `Item 1` `Item 2`adlarının , , , `Item 3` vb. olması gerekir.  
   
-Öneren değerlendir, ortalama normalleştirilmiş indirimli kümülatif kazancı (NDCG) hesaplar ve bunu çıkış veri kümesinde döndürür.  
+Değerlendirme Öneriyi ortalama normalleştirilmiş indirimli kümülatif kazancı (NDCG) hesaplar ve çıktı veri kümesinde döndürür.  
   
-Önerilen öğeler için gerçek "zemin gerçeği" özelliğini bildirmek imkansız olduğundan, öneren değerlendirin, test veri kümesindeki Kullanıcı öğesi derecelendirmelerini NDCG hesaplamasında kazanç olarak kullanır. Değerlendirmek için, öneren Puanlama modülünün yalnızca "temel doğru" derecelendirmelere (test veri kümesinde) sahip öğeler için öneriler üretmesi gerekir.  
+Önerilen öğeler için gerçek "zemin gerçeğini" bilmek imkansız olduğundan, Evaluate Recommender test veri kümesindeki kullanıcı öğesi derecelendirmelerini NDCG'nin hesaplamasında kazanç olarak kullanır. Değerlendirmek için, tavsiye edilen puanlama modülü yalnızca "zemin gerçeği" derecelendirmesine (test veri kümesinde) sahip öğeler için öneriler üretmelidir.  
   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

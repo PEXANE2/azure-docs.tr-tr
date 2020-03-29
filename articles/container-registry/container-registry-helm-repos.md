@@ -1,142 +1,159 @@
 ---
-title: Held grafiklerini depola
-description: Azure Container Registry içindeki depoları kullanarak Kubernetes uygulamalarınız için hele grafiklerini depolamayı öğrenin
+title: Mağaza Miğferi grafikleri
+description: Azure Konteyner Kayıt Defteri'ndeki depoları kullanarak Kubernetes uygulamalarınız için Miğfer grafiklerini nasıl depolayacağız öğrenin
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.date: 03/20/2020
+ms.openlocfilehash: 6304486ac493e235ed74f26ab4be4f843ef52513
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131475"
 ---
-# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
+# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Miğfer grafiklerini Azure kapsayıcı kayıt defterine itme ve çekme
 
-Kubernetes uygulamalarını hızlıca yönetmek ve dağıtmak için, [Açık kaynaklı HELI paket yöneticisini][helm]kullanabilirsiniz. Held ile uygulama paketleri, bir [Held grafik deposunda](https://helm.sh/docs/topics/chart_repository/)toplanan ve depolanan [grafikler](https://helm.sh/docs/topics/charts/)olarak tanımlanır.
+Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak için [açık kaynak lı Helm paket yöneticisini][helm]kullanabilirsiniz. Miğfer ile uygulama paketleri, Helm [grafik deposunda](https://helm.sh/docs/topics/chart_repository/)toplanan ve depolanan [grafikler](https://helm.sh/docs/topics/charts/)olarak tanımlanır.
 
-Bu makalede, bir Azure Container Registry 'de Heln 3 veya Held 2 yüklemesi kullanarak hele grafiklerini nasıl barındırabilmeniz gösterilmektedir. Bu örnekte, var olan bir Helu grafiğini genel Helpo *kalıcı* deposundan depoladığınızda. Birçok senaryoda, geliştirdiğiniz uygulamalar için kendi grafiklerinizi derleyip karşıya yüklersiniz. Kendi HELI grafiklerinizi oluşturma hakkında daha fazla bilgi için bkz. [grafik şablonu Geliştirici Kılavuzu][develop-helm-charts].
+Bu makalede, Miğfer 3 veya Miğfer 2 yüklemesini kullanarak Miğfer grafiklerini bir Azure kapsayıcı kayıt defterinde nasıl barındırabileceğinizi gösterir. Birçok senaryoda, geliştirdiğiniz uygulamalar için kendi grafiklerinizi oluşturur ve yüklersiniz. Kendi Miğfer grafiklerinizi nasıl oluşturabildiğiniz hakkında daha fazla bilgi için [Grafik Şablonu Geliştirici Kılavuzu'na][develop-helm-charts]bakın. Ayrıca, varolan bir Miğfer grafiğini başka bir Miğfer reposundan da depolayabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Container Registry 'de Held grafikleri için destek şu anda önizlemededir. Önizlemeler, ek [kullanım koşullarını][terms-of-use]kabul ettiğiniz koşulda size sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Azure Kapsayıcı Kayıt Defteri'ndeki Miğfer grafikleri için destek şu anda önizlemede. Önizlemeler, ek [kullanım koşullarını][terms-of-use]kabul etmeniz koşuluyla kullanımınıza sunulmuştur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="helm-3-or-helm-2"></a>Helb 3 veya Held 2?
+## <a name="helm-3-or-helm-2"></a>Mi, Miğfer 3 mü, Miğfer 2 mi?
 
-Held grafiklerini depolamak, yönetmek ve yüklemek için bir hele istemcisi ve Held CLı kullanırsınız. Held istemcisinin ana sürümleri, helm3 ve Held 2 ' dir. Helb 3 yeni bir grafik biçimini destekler ve artık Tiller sunucu tarafı bileşenini yüklemektedir. Sürüm farklılıkları hakkındaki ayrıntılar için bkz. [Sürüm SSS](https://helm.sh/docs/faq/). Daha önce helk 2 grafikleri dağıttıysanız, bkz. [Held v2 'yi v3 'e geçirme](https://helm.sh/docs/topics/v2_v3_migration/).
+Miğfer grafiklerini depolamak, yönetmek ve yüklemek için bir Helm istemcisi ve Helm CLI kullanırsınız. Helm istemcisinin önemli sürümleri Helm 3 ve Helm 2'dir. Helm 3 yeni bir grafik biçimini destekler ve artık Tiller sunucu tarafı bileşenini yüklemez. Sürüm farklılıkları hakkında ayrıntılı bilgi için [SSS sürümüne](https://helm.sh/docs/faq/)bakın. Daha önce Helm 2 grafiklerini dağıttıysanız, [bkz.](https://helm.sh/docs/topics/v2_v3_migration/)
 
-Her sürüme özel iş akışlarıyla Azure Container Registry, Held grafiklerini barındırmak için hele 3 veya Held 2 kullanabilirsiniz:
+Her sürüme özgü iş akışlarıyla Birlikte Azure Kapsayıcı Kayıt Defteri'nde Miğfer grafiklerini barındırmak için Helm 3 veya Helm 2'yi kullanabilirsiniz:
 
-* [Hele 3 istemcisi](#use-the-helm-3-client) -kayıt defterinizde grafikleri [OCI yapıtları](container-registry-image-formats.md#oci-artifacts) olarak yönetmek için `helm chart` komutlarını kullanın
-* [Helm 2 istemcisi](#use-the-helm-2-client) -kapsayıcı kayıt defterinizi Helm grafik deposu olarak eklemek ve yönetmek IÇIN Azure CLI 'de [az ACR Helm][az-acr-helm] komutlarını kullanın
+* [Helm 3 istemcisi](#use-the-helm-3-client) - Kayıt defterinizdeki grafikleri OCI yapıları olarak yönetmek için Helm CLI'deki `helm chart` [komutları](container-registry-image-formats.md#oci-artifacts) kullanın
+* [Helm 2 istemcisi](#use-the-helm-2-client) - konteyner kayıt defterinizi Miğfer grafiği deposu olarak eklemek ve yönetmek için Azure CLI'deki [az acr dümen][az-acr-helm] komutlarını kullanın
 
 ### <a name="additional-information"></a>Ek bilgiler
 
-* Grafikleri OCı yapıtları olarak yönetmek için yerel `helm chart` komutlarıyla Helm3 iş akışını kullanmanızı öneririz.
-* Helm 3 istemcisiyle ve grafikleriyle, eski [az ACR Helm][az-acr-helm] Azure CLI komutlarını ve iş akışını kullanabilirsiniz. Ancak, `az acr helm list` gibi bazı komutlar Held 3 grafikleriyle uyumlu değildir.
-* Helm 3 itibariyle, [az ACR Helm][az-acr-helm] komutları genellikle Helm 2 istemcisiyle ve grafik biçimiyle uyumluluk için desteklenir. Bu komutların gelecekte geliştirilmesi planlanmamaktadır.
+* Çoğu senaryoda, grafikleri OCI yapıları olarak `helm chart` yönetmek için yerel komutlarla birlikte Miğfer 3 iş akışını kullanmanızı öneririz.
+* Helm 3 istemcisi ve grafikleri ile eski [az acr dümenAzure][az-acr-helm] CLI komutlarını ve iş akışını kullanabilirsiniz. Ancak, helm 3 `az acr helm list` grafikleri ile uyumlu değildir gibi bazı komutlar.
+* Helm 3 itibariyle, [az acr dümen][az-acr-helm] komutları esas olarak Helm 2 istemcisi ve grafik biçimi ile uyumluluk için desteklenir. Bu komutların gelecekteki gelişimi şu anda planlanmamakta.
 
-## <a name="use-the-helm-3-client"></a>Helb 3 istemcisini kullanma
+## <a name="use-the-helm-3-client"></a>Helm 3 istemcisini kullanma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğinizdeki **bir Azure Kapsayıcı kayıt defteri** . Gerekirse, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)kullanarak bir kayıt defteri oluşturun.
-- **Hele Client Version 3.0.0 veya üzeri** -geçerli sürümünüzü bulmak için `helm version` çalıştırın. Held 'yi yükleme ve yükseltme hakkında daha fazla bilgi için bkz. [Held yükleme][helm-install].
-- Helk grafiğini yükleyeceğiniz **bir Kubernetes kümesi** . Gerekirse, bir [Azure Kubernetes hizmet kümesi][aks-quickstart]oluşturun. 
-- **Azure CLI sürüm 2.0.71 veya üzeri** -sürümü bulmak için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+- Azure aboneliğinizde **bir Azure kapsayıcı kayıt defteri.** Gerekirse, [Azure portalını](container-registry-get-started-portal.md) veya [Azure CLI'yi](container-registry-get-started-azure-cli.md)kullanarak bir kayıt defteri oluşturun.
+- **Helm istemci sürümü 3.1.0** `helm version` veya sonraki - Geçerli sürümünüzü bulmak için çalıştırın. Helm'in nasıl yüklenir ve yükseltilir hakkında daha fazla bilgi için Yükleme [Miğferi'ne][helm-install]bakın.
+- Bir Miğfer grafiği yükleyeceğiniz bir **Kubernetes kümesi.** Gerekirse, bir [Azure Kubernetes Hizmet kümesi][aks-quickstart]oluşturun. 
+- **Azure CLI sürüm 2.0.71** `az --version` veya sonrası - Sürümü bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Üst düzey iş akışı
 
-**Helb 3** ile şunları yapabilirsiniz:
+**Helm 3** ile:
 
-* Bir Azure Container Registry 'de bir veya daha fazla Held deposu oluşturabilir
-* Helm3 grafiklerini bir kayıt defterinde [OCI yapıtları](container-registry-image-formats.md#oci-artifacts)olarak depolayın. Şu anda, OCı için Held 3 desteği *deneysel*olarak değerlendirilir.
-* Bir kayıt defterinde Held grafiklerini göndermek, çekmek ve yönetmek için doğrudan HELI CLı 'dan `helm chart` komutlarını kullanın
-* Azure CLı aracılığıyla kayıt defteriyle kimlik doğrulaması yapın ve ardından hele istemcinizi kayıt defteri URI 'SI ve kimlik bilgileriyle otomatik olarak güncelleştirir. Bu kayıt defteri bilgilerini el ile belirtmeniz gerekmez, bu nedenle kimlik bilgileri komut geçmişinde gösterilmez.
-* Yerel bir depo önbelleğinden bir Kubernetes kümesine grafik yüklemek için `helm install` kullanın.
+* Azure kapsayıcı kayıt defterinde bir veya daha fazla Miğfer deposu oluşturabilir
+* [OCI yapıları](container-registry-image-formats.md#oci-artifacts)olarak bir kayıt defterinde Helm 3 grafikleri polar. Şu anda, OCI için Helm 3 desteği *deneysel*.
+* Komutu kullanarak kayıt defteriniz `helm registry login` ile kimlik doğrulaması.
+* Kayıt `helm chart` defterindeki Miğfer grafiklerini itmek, çekmek ve yönetmek için Helm CLI'deki komutları kullanın
+* Yerel `helm install` bir depo önbelleğinden grafikleri Bir Kubernetes kümesine yüklemek için kullanın.
 
 Örnekler için aşağıdaki bölümlere bakın.
 
-### <a name="enable-oci-support"></a>OCı desteğini etkinleştir
+### <a name="enable-oci-support"></a>OCI desteğini etkinleştirme
 
-Hele 3 istemcisinde OCı desteğini etkinleştirmek için aşağıdaki ortam değişkenini ayarlayın. Şu anda bu destek deneysel bir değer. 
+Helm 3 istemcisinde OCI desteğini etkinleştirmek için aşağıdaki ortam değişkenini ayarlayın. Şu anda, bu destek deneysel. 
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-### <a name="pull-an-existing-helm-package"></a>Mevcut bir Held paketini çekme
+### <a name="create-a-sample-chart"></a>Örnek grafik oluşturma
 
-`stable` Held grafik deposunu zaten eklemediyseniz, `helm repo add` komutunu çalıştırın:
-
-```console
-helm repo add stable https://kubernetes-charts.storage.googleapis.com
-```
-
-`stable` deposundan Yerel olarak bir grafik paketi çekin. Örneğin, *~/ACR-Held*gibi bir yerel dizin oluşturun ve ardından mevcut *kararlı/WordPress* grafik paketini indirin. (Bu örnekte ve bu makaledeki diğer komutlar bash kabuğu için biçimlendirilir.)
+Aşağıdaki komutları kullanarak bir test grafiği oluşturun:
 
 ```console
-mkdir ~/acr-helm && cd ~/acr-helm
-helm pull stable/wordpress --untar
+mkdir helmtest
+
+cd helmtest
+helm create hello-world
 ```
 
-`helm pull stable/wordpress` komutu belirli bir sürüm belirtmedi, bu nedenle `wordpress` alt dizininde *en son* sürüm çekildi ve sıkıştırılmamış.
-
-### <a name="save-chart-to-local-registry-cache"></a>Grafiği yerel kayıt defteri önbelleğine Kaydet
-
-Dizini, Held grafik dosyalarını içeren `wordpress` alt dizinine değiştirin. Ardından, grafiğin bir kopyasını yerel olarak kaydetmek için `helm chart save` çalıştırın ve ayrıca, kayıt defterinin tam adı ve hedef depo ve etiket ile bir diğer ad oluşturun. 
-
-Aşağıdaki örnekte, kayıt defteri adı *mycontainerregistry*, hedef depo *WordPress*ise ve hedef grafik etiketi *en son*, ancak ortamınız için değer yerine geçecek.
+Temel bir örnek olarak, dizin klasörünü `templates` değiştirin ve ilk olarak buradaki içeriği silin:
 
 ```console
-cd wordpress
-helm chart save . wordpress:latest
-helm chart save . mycontainerregistry.azurecr.io/helm/wordpress:latest
+rm -rf *
 ```
 
-Grafikleri yerel kayıt defteri önbelleğine kaydettiğinizden emin olmak için `helm chart list` çalıştırın. Çıkış şuna benzer olacaktır:
+Klasörde, `templates` aşağıdaki `configmap.yaml` içerikleri içeren bir dosya oluşturun:
+
+```yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-configmap
+data:
+  myvalue: "Hello World"
+```
+
+Bu örneği oluşturma ve çalıştırma hakkında daha fazla şey için Miğfer Dokümanlarında [Başlarken'e](https://helm.sh/docs/chart_template_guide/getting_started/) bakın.
+
+### <a name="save-chart-to-local-registry-cache"></a>Grafiği yerel kayıt defteri önbelleğine kaydetme
+
+Dizini `hello-world` alt dizini olarak değiştirin. Ardından, `helm chart save` grafiğin bir kopyasını yerel olarak kaydetmek için çalıştırın ve ayrıca kayıt defterinin (tüm küçük harf) tam nitelikli adı ve hedef deposu ve etiketiiçeren bir takma ad oluşturun. 
+
+Aşağıdaki örnekte, kayıt defteri adı *mycontainerregistry*, hedef repo *hello-world*, ve hedef grafik etiketi *v1*, ancak ortamıiçin yedek değerler:
+
+```console
+cd ..
+helm chart save . hello-world:v1
+helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+Yerel `helm chart list` kayıt defteri önbelleğindeki grafikleri kaydettiğinizi doğrulamak için çalıştırın. Çıkış şuna benzer olacaktır:
 
 ```console
 REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
-wordpress:latest                                         wordpress       8.1.0   5899db0 29.1 KiB        1 day 
-mycontainerregistry.azurecr.io/helm/wordpress:latest     wordpress       8.1.0   5899db0 29.1 KiB        1 day 
+hello-world:v1                                           hello-world       0.1.0   5899db0 3.2 KiB        2 minutes 
+mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0   5899db0 3.2 KiB        2 minutes
 ```
 
-### <a name="push-chart-to-azure-container-registry"></a>Grafiği Azure Container Registry gönder
+### <a name="authenticate-with-the-registry"></a>Kayıt defteriyle kimlik doğrulaması
 
-Hele grafiğini Azure Container Registry 'deki bir depoya göndermek için helm3 CLı 'da `helm chart push` komutunu çalıştırın. Yoksa, depo oluşturulur.
+Senaryonuza `helm registry login` uygun kimlik bilgilerini kullanarak [kayıt defteriyle kimlik doğrulaması](container-registry-authentication.md) yapmak için Helm 3 CLI'deki komutu çalıştırın.
 
-Önce kayıt defterinizde kimlik doğrulaması yapmak için [az ACR oturum açma][az-acr-login] Azure CLI komutunu kullanın:
-
-```azurecli
-az acr login --name mycontainerregistry
-```
-
-Grafiği tam nitelikli hedef depoya gönder:
+Örneğin, kayıt defterine [çekme ve itme izinleri](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush rolü) içeren bir Azure Etkin Dizin hizmet ilkesi oluşturun. Daha sonra hizmet temel `helm registry login`kimlik bilgilerini . Aşağıdaki örnekte bir ortam değişkeni kullanarak parola sağlar:
 
 ```console
-helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
+echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
+  --username <service-principal-id> \
+  --password-stdin
 ```
 
-Başarılı bir gönderim sonrasında, çıkış şuna benzerdir:
+### <a name="push-chart-to-azure-container-registry"></a>Grafiği Azure Kapsayıcı Kayıt Defteri'ne itme
+
+Grafiği `helm chart push` tam nitelikli hedef deposuna itmek için Helm 3 CLI'deki komutu çalıştırın:
+
+```console
+helm chart push mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+Başarılı bir itme den sonra, çıktı benzer:
 
 ```output
-The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
-ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
+The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
+ref:     mycontainerregistry.azurecr.io/helm/hello-world:v1
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
-size:    29.1 KiB
-name:    wordpress
-version: 8.1.0
+size:    3.2 KiB
+name:    hello-world
+version: 0.1.0
 ```
 
-### <a name="list-charts-in-the-repository"></a>Depodaki grafikleri listeleme
+### <a name="list-charts-in-the-repository"></a>Depodaki liste listeleri
 
-Azure Container Registry 'de depolanan görüntülerde olduğu gibi, grafiklerinizi barındıran depoları, grafik etiketlerini ve bildirimleri göstermek için [az ACR Repository][az-acr-repository] komutlarını kullanabilirsiniz. 
+Azure kapsayıcı kayıt defterinde depolanan görüntülerde olduğu gibi, grafiklerinizi barındıran depoları ve grafik etiketlerini ve bildirimlerini göstermek için [az acr deposu][az-acr-repository] komutlarını kullanabilirsiniz. 
 
-Örneğin, önceki adımda oluşturduğunuz deponun özelliklerini görmek için [az ACR Repository Show][az-acr-repository-show] ' ı çalıştırın:
+Örneğin, önceki adımda oluşturduğunuz repo özelliklerini görmek için [az acr deposu gösterisini][az-acr-repository-show] çalıştırın:
 
 ```azurecli
 az acr repository show \
   --name mycontainerregistry \
-  --repository helm/wordpress
+  --repository helm/hello-world
 ```
 
 Çıkış şuna benzer olacaktır:
@@ -149,159 +166,147 @@ az acr repository show \
     "readEnabled": true,
     "writeEnabled": true
   },
-  "createdTime": "2020-01-29T16:54:30.1514833Z",
-  "imageName": "helm/wordpress",
-  "lastUpdateTime": "2020-01-29T16:54:30.4992247Z",
+  "createdTime": "2020-03-20T18:11:37.6701689Z",
+  "imageName": "helm/hello-world",
+  "lastUpdateTime": "2020-03-20T18:11:37.7637082Z",
   "manifestCount": 1,
   "registry": "mycontainerregistry.azurecr.io",
   "tagCount": 1
 }
 ```
 
-Depoda depolanan grafiğin ayrıntılarını görmek için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın. Örnek:
+Depoda depolanan grafiğin ayrıntılarını görmek için [az acr deposu show-manifests][az-acr-repository-show-manifests] komutunu çalıştırın. Örnek:
 
 ```azurecli
 az acr repository show-manifests \
   --name mycontainerregistry \
-  --repository helm/wordpress --detail
+  --repository helm/hello-world --detail
 ```
 
-Bu örnekte kısaltılmış çıkış, `application/vnd.cncf.helm.config.v1+json``configMediaType` gösterir:
+Bu örnekte kısaltılmış çıktı, `configMediaType` `application/vnd.cncf.helm.config.v1+json`bir gösterir:
 
 ```output
 [
   {
     [...]
     "configMediaType": "application/vnd.cncf.helm.config.v1+json",
-    "createdTime": "2020-01-29T16:54:30.2382436Z",
-    "digest": "sha256:xxxxxxxx51bc0807bfa97cb647e493ac381b96c1f18749b7388c24bbxxxxxxxxx",
-    "imageSize": 29995,
-    "lastUpdateTime": "2020-01-29T16:54:30.3492436Z",
+    "createdTime": "2020-03-20T18:11:37.7167893Z",
+    "digest": "sha256:0c03b71c225c3ddff53660258ea16ca7412b53b1f6811bf769d8c85a1f0663ee",
+    "imageSize": 3301,
+    "lastUpdateTime": "2020-03-20T18:11:37.7167893Z",
     "mediaType": "application/vnd.oci.image.manifest.v1+json",
     "tags": [
-      "latest"
+      "v1"
     ]
-  }
-]
 ```
 
 ### <a name="pull-chart-to-local-cache"></a>Grafiği yerel önbelleğe çekme
 
-Kubernetes 'e bir helk grafiği yüklemek için, grafiğin yerel önbellekte olması gerekir. Bu örnekte, önce `mycontainerregistry.azurecr.io/helm/wordpress:latest`adlı var olan yerel grafiği kaldırmak için `helm chart remove` çalıştırın:
+Kubernetes'e Bir Miğfer grafiği yüklemek için grafiğin yerel önbellekte olması gerekir. Bu örnekte, `helm chart remove` aşağıdakiadlı `mycontainerregistry.azurecr.io/helm/hello-world:v1`varolan yerel grafiği kaldırmak için ilk çalıştırma:
 
 ```console
-helm chart remove mycontainerregistry.azurecr.io/helm/wordpress:latest
+helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Grafiği Azure Container Registry 'den yerel önbelleğinize indirmek için `helm chart pull` çalıştırın:
+Grafiği `helm chart pull` Azure kapsayıcı kayıt defterinden yerel önbelleğinize indirmek için çalıştırın:
 
 ```console
-helm chart pull mycontainerregistry.azurecr.io/helm/wordpress:latest
+helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-### <a name="export-helm-chart"></a>Held grafiğini dışarı aktar
+### <a name="export-helm-chart"></a>Dışa Aktarma Dümeni grafiği
 
-Grafik ile daha fazla çalışmak için `helm chart export`kullanarak yerel bir dizine dışarı aktarın. Örneğin, çekolduğunuz grafiği `install` dizinine dışarı aktarın:
+Grafikle daha fazla çalışmak için, kullanarak yerel `helm chart export`bir dizine dışa aktarın. Örneğin, çektiğiniz grafiği dizine `install` dışa aktarın:
 
 ```console
-helm chart export mycontainerregistry.azurecr.io/helm/wordpress:latest --destination ./install
+helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
+  --destination ./install
 ```
 
-Depoda, içe aktarılmış grafik bilgilerini görüntülemek için, grafiği verdiğiniz dizinde `helm inspect chart` komutunu çalıştırın.
+Repo'da dışa aktarılan grafiğin bilgilerini `helm show chart` görüntülemek için, grafiği dışa aktardığınız dizinde komutu çalıştırın.
 
 ```console
 cd install
-helm inspect chart wordpress
+helm show chart hello-world
 ```
 
-Sürüm numarası sağlanmamışsa, *en son* sürüm kullanılır. HELI, aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, grafiğiniz hakkında ayrıntılı bilgiler döndürür:
+Helm, aşağıdaki örnek çıktıda gösterildiği gibi grafiğinizin en son sürümü hakkında ayrıntılı bilgi verir:
 
 ```output
-apiVersion: v1
-appVersion: 5.3.2
-dependencies:
-- condition: mariadb.enabled
-  name: mariadb
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  tags:
-  - wordpress-database
-  version: 7.x.x
-description: Web publishing platform for building blogs and websites.
-home: http://www.wordpress.com/
-icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
-keywords:
-- wordpress
-- cms
-- blog
-- http
-- web
-- application
-- php
-maintainers:
-- email: containers@bitnami.com
-  name: Bitnami
-name: wordpress
-sources:
-- https://github.com/bitnami/bitnami-docker-wordpress
-version: 8.1.0
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for Kubernetes
+name: hello-world
+type: application
+version: 0.1.0    
 ```
 
-### <a name="install-helm-chart"></a>Held grafiğini yükler
+### <a name="install-helm-chart"></a>Miğfer grafiğini yükle
 
-Yerel önbelleğe çekilecek ve dışarıya verdiğiniz hele grafiğini yüklemek için `helm install` çalıştırın. Bir yayın adı belirtin veya `--generate-name` parametresini geçirin. Örnek:
+Yerel `helm install` önbelleğe çektiğiniz ve dışa aktarılan Miğfer grafiğini yüklemek için çalıştırın. *Myhelmtest*gibi bir sürüm adı belirtin veya parametreyi geçirin. `--generate-name` Örnek:
 
 ```console
-helm install wordpress --generate-name
+helm install myhelmtest ./hello-world
 ```
 
-Yükleme devam ederken, URL 'Leri ve kimlik bilgilerini görmek için komut çıkışında bulunan yönergeleri izleyin. Helk grafiği aracılığıyla dağıtılan Kubernetes kaynaklarını görmek için `kubectl get pods` komutunu da çalıştırabilirsiniz:
+Başarılı grafik yüklemeden sonra çıktı benzer:
 
-```output
-NAME                                    READY   STATUS    RESTARTS   AGE
-wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
-wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
-[...]
+```console
+NAME: myhelmtest
+LAST DEPLOYED: Fri Mar 20 14:14:42 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 ```
 
-### <a name="delete-a-helm-chart-from-the-repository"></a>Depodaki bir hela grafiğini silme
+Yüklemeyi doğrulamak için `helm get manifest` komutu çalıştırın. Komut, şablon dosyanızdaki `configmap.yaml` YAML verilerini döndürür.
 
-Bir grafiği depodan silmek için [az ACR Repository Delete][az-acr-repository-delete] komutunu kullanın. Aşağıdaki komutu çalıştırın ve sorulduğunda işlemi onaylayın:
+Kümenizdeki grafik yayınını kaldırmak için çalıştırın: `helm uninstall`
+
+```console
+helm uninstall myhelmtest
+```
+
+### <a name="delete-a-helm-chart-from-the-repository"></a>Depodan Bir Miğfer grafiğini silme
+
+Depodaki grafiği silmek için [az acr deposu silme][az-acr-repository-delete] komutunu kullanın. Aşağıdaki komutu çalıştırın ve istendiğinde işlemi onaylayın:
 
 ```azurecli
-az acr repository delete --name mycontainerregistry --image helm/wordpress:latest
+az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 ```
 
-## <a name="use-the-helm-2-client"></a>Held 2 istemcisini kullanma
+## <a name="use-the-helm-2-client"></a>Helm 2 istemcisini kullanma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğinizdeki **bir Azure Kapsayıcı kayıt defteri** . Gerekirse, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)kullanarak bir kayıt defteri oluşturun.
-- **Hele istemci sürümü 2.11.0 (RC sürümü değil) veya daha sonra** , geçerli sürümünüzü bulmak için `helm version` çalıştırın. Ayrıca bir Kubernetes kümesi içinde başlatılan bir Held sunucusuna (Tiller) ihtiyacınız vardır. Gerekirse, bir [Azure Kubernetes hizmet kümesi][aks-quickstart]oluşturun. Held 'yi yükleme ve yükseltme hakkında daha fazla bilgi için bkz. [Held yükleme][helm-install-v2].
-- **Azure CLI sürüm 2.0.46 veya üzeri** -sürümü bulmak için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+- Azure aboneliğinizde **bir Azure kapsayıcı kayıt defteri.** Gerekirse, [Azure portalını](container-registry-get-started-portal.md) veya [Azure CLI'yi](container-registry-get-started-azure-cli.md)kullanarak bir kayıt defteri oluşturun.
+- **Helm istemci sürümü 2.11.0 (RC sürümü değil) veya daha sonra** - Geçerli sürümünü bulmak için çalıştırın. `helm version` Ayrıca bir Kubernetes kümesi içinde başharfe bir Helm sunucusu (Tiller) gerekir. Gerekirse, bir [Azure Kubernetes Hizmet kümesi][aks-quickstart]oluşturun. Helm'in nasıl yüklenir ve yükseltilir hakkında daha fazla bilgi için Yükleme [Miğferi'ne][helm-install-v2]bakın.
+- **Azure CLI sürüm 2.0.46** `az --version` veya sonrası - Sürümü bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Üst düzey iş akışı
 
-**Helb 2** ile şunları yapabilirsiniz:
+**Helm 2** ile:
 
-* Azure Container kayıt defterinizi *tek* bir Held grafik deposu olarak yapılandırın. Azure Container Registry, havuza grafik ekleyip kaldırırken Dizin tanımını yönetir.
-* Azure Container kayıt defterinizi Helm grafik deposu olarak eklemek ve grafikleri göndermek ve yönetmek için Azure CLı 'daki [az ACR Helm][az-acr-helm] komutlarını kullanın. Bu Azure CLı komutları, Helm 2 istemci komutlarını sarmalıdır.
-* Grafik aramasını desteklemek için, Azure Container Kayıt defterinize grafik deposunu yerel Helmrepo dizinine ekleyin
-* Azure CLı ile Azure Container Registry ile kimlik doğrulaması yapın, daha sonra hele istemcinizi kayıt defteri URI 'SI ve kimlik bilgileriyle otomatik olarak güncelleştirir. Bu kayıt defteri bilgilerini el ile belirtmeniz gerekmez, bu nedenle kimlik bilgileri komut geçmişinde gösterilmez.
-* Yerel bir depo önbelleğinden bir Kubernetes kümesine grafik yüklemek için `helm install` kullanın.
+* Azure kapsayıcı kayıt defterinizi *tek* bir Miğfer grafiği deposu olarak yapılandırın. Azure Kapsayıcı Kayıt Defteri, grafikleri depoya ekler ve kaldırırken dizin tanımını yönetir.
+* Azure kapsayıcı kayıt defterinizde azure kapsayıcı kayıt defterinizde kimlik doğrulaması yapın ve bu da Miğfer istemcinizi kayıt şirketi URI ve kimlik bilgileriyle otomatik olarak güncelleyin. Kimlik bilgileri komut geçmişinde açıkolmaması için bu kayıt defteri bilgilerini el ile belirtmeniz gerekmez.
+* Azure CLI'deki [az acr komutlarını][az-acr-helm] kullanarak Azure kapsayıcı kayıt defterinizi Miğfer grafiği deposu olarak ekleyin ve grafikleri itin ve yönetin. Bu Azure CLI komutları Helm 2 istemci komutlarını kaydırın.
+* Azure kapsayıcı kayıt defterinizdeki grafik deposunu yerel Miğfer repo dizininize ekleyerek grafik aramasını destekleyin.
+* Yerel `helm install` bir depo önbelleğinden grafikleri Bir Kubernetes kümesine yüklemek için kullanın.
 
 Örnekler için aşağıdaki bölümlere bakın.
 
-### <a name="add-repository-to-helm-client"></a>Hele istemcisine depo ekleme
+### <a name="add-repository-to-helm-client"></a>Helm istemcisine depo ekleme
 
-[Az ACR Helm depo Add][az-acr-helm-repo-add] komutunu kullanarak, Azure Container Registry Helm grafik deponuzu Helm istemcisine ekleyin. Bu komut, Azure Container kayıt defteriniz için Helm istemcisi tarafından kullanılan bir kimlik doğrulama belirteci alır. Kimlik doğrulama belirteci 3 saat için geçerlidir. `docker login`benzer şekilde, Azure Container Registry Helu grafik deponuzla hele istemcinizi kimlik doğrulaması yapmak için bu komutu gelecekteki CLı oturumlarında çalıştırabilirsiniz:
+[Az acr dümen repo ekleme][az-acr-helm-repo-add] komutunu kullanarak Miğfer istemcinize Azure Konteyner Kayıt Defteri Dümeni grafiği nizi ekleyin. Bu komut, Helm istemcisi tarafından kullanılan Azure kapsayıcı kayıt defteriniz için bir kimlik doğrulama belirteci alır. Kimlik doğrulama belirteci 3 saat boyunca geçerlidir. Benzer `docker login`şekilde, Bu komutu gelecekteki CLI oturumlarında, Miğfer istemcinizi Azure Kapsayıcı Kayıt Defteri Miğferi grafik deponuzla doğrulamak için çalıştırabilirsiniz:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
 ```
 
-### <a name="add-a-chart-to-the-repository"></a>Depoya bir grafik ekleyin
+### <a name="add-a-sample-chart-to-the-repository"></a>Depoya örnek grafik ekleme
 
-İlk olarak, *~/ACR-Held*konumunda bir yerel dizin oluşturun ve ardından mevcut *kararlı/WordPress* grafiğini indirin:
+İlk olarak, *~/acr-helm'de*yerel bir dizin oluşturun, ardından varolan *kararlı/wordpress* grafiğini indirin:
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
@@ -309,19 +314,19 @@ helm repo update
 helm fetch stable/wordpress
 ```
 
-İndirilen grafiği listelemek için `ls` yazın ve dosya adına dahil olan WordPress sürümünü aklınızda yapın. `helm fetch stable/wordpress` komutu belirli bir sürüm belirtmedi, bu nedenle *en son* sürüm getirildi. Aşağıdaki örnek çıktıda, WordPress grafiğinin sürümü *8.1.0*olur:
+İndirilen grafiği listelemek için yazın `ls` ve dosya adına dahil edilen Wordpress sürümünü not edin. Komut `helm fetch stable/wordpress` belirli bir sürümü belirtmedi, bu nedenle *en son* sürüm getirilmiştir. Aşağıdaki örnek çıktı, Wordpress grafik sürüm *8.1.0:*
 
 ```output
 wordpress-8.1.0.tgz
 ```
 
-Azure CLı 'de [az ACR Helm Push][az-acr-helm-push] komutunu kullanarak Azure Container Registry grafikleri Helm grafik deponuza gönderin. Önceki adımda indirilen HELI grafiğinin adını belirtin, örneğin *WordPress-8.1.0. tgz*:
+Azure CLI'deki [az acr komutunu][az-acr-helm-push] kullanarak grafiği Azure Konteyner Kayıt Defteri'ndeki Miğfer grafiği deponuza taşıyın. *Wordpress-8.1.0.tgz*gibi önceki adımda indirilen Helm grafiğinizin adını belirtin:
 
 ```azurecli
 az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 ```
 
-Birkaç dakika sonra Azure CLı, aşağıdaki örnek çıktıda gösterildiği gibi, grafiğinizin kaydedildiğini bildirir:
+Birkaç dakika sonra Azure CLI, aşağıdaki örnek çıktıda gösterildiği gibi grafiğinizin kayda kaydolduğunu bildirir:
 
 ```output
 {
@@ -329,42 +334,42 @@ Birkaç dakika sonra Azure CLı, aşağıdaki örnek çıktıda gösterildiği g
 }
 ```
 
-### <a name="list-charts-in-the-repository"></a>Depodaki grafikleri listeleme
+### <a name="list-charts-in-the-repository"></a>Depodaki liste listeleri
 
-Önceki adımda karşıya yüklenen grafiği kullanmak için yerel Held depo dizininin güncellenmesi gerekir. Hele istemcisinde depoları yeniden düzenleyebilir veya depo dizinini güncelleştirmek için Azure CLı kullanabilirsiniz. Deponuza bir grafik eklediğiniz her sefer, bu adımın tamamlanması gerekir:
+Önceki adımda yüklenen grafiği kullanmak için yerel Miğfer deposu dizininin güncellenmesi gerekir. Miğfer istemcisindeki depoları yeniden dizine ekleyebilir veya depo dizini güncelleştirmek için Azure CLI'yi kullanabilirsiniz. Deponuza her grafik eklediğinizde, bu adımın tamamlanması gerekir:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
 ```
 
-Deponuzda depolanan ve güncelleştirilmiş Dizin yerel olarak bulunan bir grafik ile, aramak veya yüklemek için normal hele istemci komutlarını kullanabilirsiniz. Deponuzdaki tüm grafikleri görmek için, kendi Azure Container Registry adınızı sağlamak üzere `helm search` komutunu kullanın:
+Deponuzda depolanan bir grafik ve yerel olarak kullanılabilen güncelleştirilmiş dizinle, aramak veya yüklemek için normal Helm istemci komutlarını kullanabilirsiniz. Deponuzdaki tüm grafikleri görmek için kendi `helm search` Azure Kapsayıcı Kayıt Defteri adınızı sağlayarak komutu kullanın:
 
 ```console
 helm search mycontainerregistry
 ```
 
-Önceki adımda gönderilen WordPress grafiği, aşağıdaki örnek çıktıda gösterildiği gibi listelenir:
+Önceki adımda itilen Wordpress grafiği, aşağıdaki örnek çıktıda gösterildiği gibi listelenir:
 
 ```output
-NAME                CHART VERSION   APP VERSION DESCRIPTION
-helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
+NAME                  CHART VERSION    APP VERSION    DESCRIPTION
+helmdocs/wordpress    8.1.0           5.3.2          Web publishing platform for building blogs and websites.
 ```
 
-Grafikleri, [az ACR Helm List][az-acr-helm-list]kullanarak Azure CLI ile de listeleyebilirsiniz:
+Ayrıca [az acr dümen listesini][az-acr-helm-list]kullanarak, Azure CLI ile grafikleri listeleyebilirsiniz:
 
 ```azurecli
 az acr helm list --name mycontainerregistry
 ```
 
-### <a name="show-information-for-a-helm-chart"></a>Hela grafiğinin bilgilerini göster
+### <a name="show-information-for-a-helm-chart"></a>Miğfer grafiği için bilgileri göster
 
-Depodaki belirli bir grafiğin bilgilerini görüntülemek için, `helm inspect` komutunu kullanabilirsiniz.
+Repo'daki belirli bir grafiğin bilgilerini görüntülemek `helm inspect` için komutu kullanabilirsiniz.
 
 ```console
 helm inspect mycontainerregistry/wordpress
 ```
 
-Sürüm numarası sağlanmamışsa, *en son* sürüm kullanılır. HELI, aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, grafiğiniz hakkında ayrıntılı bilgiler döndürür:
+Sürüm numarası sağlanmadığında, *en son* sürüm kullanılır. Helm, aşağıdaki yoğunlaştırılmış örnek çıktıda gösterildiği gibi grafiğinizle ilgili ayrıntılı bilgileri verir:
 
 ```output
 apiVersion: v1
@@ -391,30 +396,30 @@ version: 8.1.0
 [...]
 ```
 
-Ayrıca, Azure CLı [az ACR Helm Show][az-acr-helm-show] komutuyla bir grafik için bilgileri gösterebilirsiniz. Yine, bir grafiğin *en son* sürümü varsayılan olarak döndürülür. Grafiğin belirli bir sürümünü listelemek için `--version` ekleyebilirsiniz, örneğin, *8.1.0*:
+Azure CLI [az acr helm show][az-acr-helm-show] komutuyla bir grafiğin bilgilerini de gösterebilirsiniz. Yine, grafiğin *en son* sürümü varsayılan olarak döndürülür. Bir `--version` grafiğin *8.1.0*gibi belirli bir sürümünü listeleyebilirsiniz:
 
 ```azurecli
 az acr helm show --name mycontainerregistry wordpress
 ```
 
-### <a name="install-a-helm-chart-from-the-repository"></a>Depodan bir Held grafiği yükler
+### <a name="install-a-helm-chart-from-the-repository"></a>Depodan Bir Miğfer grafiği yükleme
 
-Deponuzdaki Held grafiği, Depo adı ve grafik adı belirtilerek yüklenir. WordPress grafiğini yüklemek için hele istemcisini kullanın:
+Deponuzdaki Miğfer grafiği, depo adı ve grafik adı belirtilerek yüklenir. Wordpress grafiğini yüklemek için Helm istemcisini kullanın:
 
 ```console
 helm install mycontainerregistry/wordpress
 ```
 
 > [!TIP]
-> Azure Container Registry hele grafik deponuza gönderim yaparsanız ve daha sonra yeni bir CLı oturumunda geri dönerseniz, yerel hele istemciniz güncelleştirilmiş bir kimlik doğrulama belirtecine ihtiyaç duyuyor. Yeni bir kimlik doğrulama belirteci almak için [az ACR Helm depo Add][az-acr-helm-repo-add] komutunu kullanın.
+> Azure Kapsayıcı Kayıt Defteri Dümeni grafiği deponuza basar ve daha sonra yeni bir CLI oturumunda geri dönerseniz, yerel Helm istemcinizin güncelleştirilmiş bir kimlik doğrulama belirteci gerekir. Yeni bir kimlik doğrulama belirteci elde etmek için [az acr dümen repo ekleme][az-acr-helm-repo-add] komutunu kullanın.
 
-Aşağıdaki adımlar, yüklemesi işlemi sırasında tamamlanır:
+Yükleme işlemi sırasında aşağıdaki adımlar tamamlanır:
 
-- Hela istemcisi yerel depo dizinini arar.
-- Karşılık gelen grafik Azure Container Registry deposundan indirilir.
-- Grafik, Kubernetes kümenizdeki Tiller kullanılarak dağıtılır.
+- Helm istemcisi yerel depo dizini arar.
+- İlgili grafik Azure Kapsayıcı Kayıt Defteri deposundan indirilir.
+- Grafik, Kubernetes kümenizdeki Çapa Makinesi kullanılarak dağıtılır.
 
-Yükleme devam ederken, URL 'Leri ve kimlik bilgilerini görmek için komut çıkışında bulunan yönergeleri izleyin. Helk grafiği aracılığıyla dağıtılan Kubernetes kaynaklarını görmek için `kubectl get pods` komutunu da çalıştırabilirsiniz:
+Yükleme ilerledikçe, WorPress URL'lerini ve kimlik bilgilerini görmek için komut çıkışındaki yönergeleri izleyin. Helm grafiğinde `kubectl get pods` dağıtılan Kubernetes kaynaklarını görmek için komutu da çalıştırabilirsiniz:
 
 ```output
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -423,17 +428,17 @@ wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
 [...]
 ```
 
-### <a name="delete-a-helm-chart-from-the-repository"></a>Depodaki bir hela grafiğini silme
+### <a name="delete-a-helm-chart-from-the-repository"></a>Depodan Bir Miğfer grafiğini silme
 
-Bir grafiği depodan silmek için [az ACR Helm Delete][az-acr-helm-delete] komutunu kullanın. *WordPress*gibi grafiğin adını ve silinecek sürümü (örneğin, *8.1.0*) belirtin.
+Depodaki grafiği silmek için [az acr helm delete][az-acr-helm-delete] komutunu kullanın. *Wordpress*gibi grafiğin adını ve *8.1.0*gibi silmek için sürümü belirtin.
 
 ```azurecli
 az acr helm delete --name mycontainerregistry wordpress --version 8.1.0
 ```
 
-Adlandırılmış grafiğin tüm sürümlerini silmek isterseniz, `--version` parametresini bırakın.
+Adlandırılmış grafiğin tüm sürümlerini silmek isterseniz, parametreyi `--version` dışarıda bırakın.
 
-`helm search`çalıştırdığınızda grafik döndürülmeye devam eder. Yine, HELI istemcisi bir depodaki kullanılabilir grafiklerin listesini otomatik olarak güncelleştirmez. Helm istemci deposu dizinini güncelleştirmek için [az ACR Helm depo Add][az-acr-helm-repo-add] komutunu tekrar kullanın:
+Grafik çalıştırdığınızda `helm search`döndürülmeye devam ediyor. Yine, Helm istemcisi bir depodaki kullanılabilir grafiklerin listesini otomatik olarak güncelleştirmez. Helm istemcirepo dizini güncelleştirmek [için, az acr dümen repo yeniden komutu ekleyin][az-acr-helm-repo-add] kullanın:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
@@ -441,9 +446,9 @@ az acr helm repo add --name mycontainerregistry
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, genel *kararlı* depodan mevcut bir hela grafiği kullanıldı. HELI grafikleri oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [HELI grafikleri geliştirme][develop-helm-charts].
-
-Held grafikleri kapsayıcı oluşturma sürecinin bir parçası olarak kullanılabilir. Daha fazla bilgi için bkz. [Azure Container Registry görevleri kullanma][acr-tasks].
+* Miğfer grafiklerini oluşturma ve dağıtma hakkında daha fazla bilgi için [Miğfer grafiklerini geliştirme'ye][develop-helm-charts]bakın.
+* [Azure Kubernetes Hizmetinde (AKS)](../aks/kubernetes-helm.md)Helm ile uygulama yükleme hakkında daha fazla bilgi edinin.
+* Miğfer grafikleri kapsayıcı oluşturma işleminin bir parçası olarak kullanılabilir. Daha fazla bilgi için [bkz.][acr-tasks]
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/

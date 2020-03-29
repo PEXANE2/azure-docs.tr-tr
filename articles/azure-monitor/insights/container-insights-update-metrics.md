@@ -1,56 +1,56 @@
 ---
-title: Ölçümler için Azure Izleyicisini güncelleştirme | Microsoft Docs
-description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı vermeyi destekleyen özel ölçümler özelliğini etkinleştirmek üzere kapsayıcılar için Azure Izleyicisini nasıl güncelleştireceğinizi açıklanmaktadır.
+title: Ölçümler için kapsayıcılar için Azure Monitör'ü güncelleştirme | Microsoft Dokümanlar
+description: Bu makalede, toplu ölçümleri keşfetmeyi ve uyarmayı destekleyen özel ölçümler özelliğini etkinleştirmek için kapsayıcılar için Azure Monitor'u nasıl güncelleştirdiğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715910"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Ölçümleri etkinleştirmek için kapsayıcılar için Azure Izleyicisini güncelleştirme
+# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes Services (AKS) kümeleri düğümlerinden ve yığınlarından ölçüm toplama ve bunları Azure Izleyici ölçüm deposuna yazma desteği sunuyor. Bu değişiklik, Performans grafiklerinde toplam hesaplamalar (Ort, say, Max, min, Sum) sunarken, performans grafiklerini Azure portal panolara sabitlemeyi destekledikleri ve ölçüm uyarılarını destekledikleri zaman, gelişmiş zaman çizelgesi sunmaya yöneliktir.
+Kapsayıcılar için Azure Monitor, Azure Kubernetes Services (AKS) kümedüğümlerinden ve bölmelerinden ölçümler toplamak ve bunları Azure Monitor ölçüm mağazasına yazmak için destek sunar. Bu değişiklik, performans grafiklerinde toplu hesaplamalar (Avg, Count, Max, Min, Sum) sunarken, Azure portal panolarındaki performans çizelgelerini destekleyerek ve metrik uyarıları desteklerken geliştirilmiş güncellik sunmayı amaçlamaktadır.
 
 >[!NOTE]
->Bu özellik şu anda Azure Red Hat OpenShift kümelerini desteklemez.
+>Bu özellik şu anda Azure Red Hat OpenShift kümelerini desteklemiyor.
 >
 
-Bu özelliğin bir parçası olarak aşağıdaki ölçümler etkinleştirilmiştir:
+Bu özelliğin bir parçası olarak aşağıdaki ölçümler etkinleştirilir:
 
-| Ölçüm ad alanı | Ölçüm | Açıklama |
+| Metrik ad alanı | Ölçüm | Açıklama |
 |------------------|--------|-------------|
-| Öngörüler. kapsayıcı/düğümler | Cpuusagemilimetre çekirdekler, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Bunlar, *düğüm* ölçümleridir ve *ana bilgisayarı* bir boyut olarak içerir ve ayrıca<br> *ana bilgisayar* boyutu için değer olarak düğümün adı. |
-| Öngörüler. kapsayıcı/pods | Pod sayısı | Bunlar *Pod* ölçümleridir ve boyutlar-ControllerName, Kubernetes ad alanı, ad, aşama olarak şunları içerir. |
+| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Bunlar *düğüm* ölçüleridir ve bir boyut olarak *ana bilgisayar* içerir ve aynı zamanda<br> ana *bilgisayar* boyutu için değer olarak düğümün adı. |
+| insights.container/pods | podCount | Bunlar *pod* ölçümleridir ve aşağıdakileri boyut olarak içerir - ControllerName, Kubernetes ad alanı, ad, faz. |
 
-Kümeyi bu yeni özellikleri destekleyecek şekilde güncelleştirmek Azure portal, Azure PowerShell veya Azure CLı ile gerçekleştirilebilir. Azure PowerShell ve CLı ile bu küme başına veya aboneliğinizdeki tüm kümeler için bu ayarı etkinleştirebilirsiniz. Yeni AKS dağıtımları, bu yapılandırma değişikliğini ve yeteneklerini otomatik olarak içerir.
+Bu yeni özellikleri desteklemek için kümenin güncelleştirilmesi Azure portalı Azure PowerShell'den veya Azure CLI ile gerçekleştirilebilir. Azure PowerShell ve CLI ile bu küme başına veya aboneliğinizdeki tüm kümeler için etkinleştirebilirsiniz. AKS'nin yeni dağıtımları otomatik olarak bu yapılandırma değişikliğini ve yeteneklerini içerecektir.
 
-Her iki işlem de, aracı tarafından toplanan verilerin kümeler kaynağına yayımlanabilmesi için **Izleme ölçümleri yayımcı** rolünü kümenin hizmet sorumlusuna atar. Ölçümleri izlemek, yalnızca ölçümleri kaynağa iletmek için izne sahiptir, herhangi bir durumu değiştiremez, kaynağı güncelleştiremez veya herhangi bir veriyi okuyabilir. Rol hakkında daha fazla bilgi için bkz. [ölçümleri Izleme yayımcısı rolü](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Her iki işlem de, aracı tarafından toplanan verilerin kümeleriniz kaynağınızda yayımlanabilmesi için **İzleme Ölçümleri Yayımcısı** rolünü kümenin hizmet ilkesine atar. İzleme Ölçümleri Yayımcısı yalnızca kaynakları ölçümleri itmek için izine sahiptir, herhangi bir durumu değiştiremez, kaynağı güncelleyemez veya herhangi bir veriyi okuyamaz. Rol hakkında daha fazla bilgi için [bkz.](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, aşağıdakileri onaylayın:
+Başlamadan önce aşağıdakileri onaylayın:
 
 * Özel ölçümler yalnızca Azure bölgelerinin bir alt kümesinde kullanılabilir. Desteklenen bölgelerin listesi [burada](../platform/metrics-custom-overview.md#supported-regions)belgelenmiştir.
-* Düğüm koleksiyonunu ve pod özel performans ölçümlerini etkinleştirmek için AKS küme kaynağında **[sahip](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz. 
+* Düğüm ve bölme özel performans ölçümlerinin toplanmasını etkinleştirmek için AKS küme kaynağındaki **[Sahibi](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz. 
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yi kullanmayı seçerseniz, öncelikle CLI'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI sürümünü 2.0.59 veya sonraki sürümlerden çalışıyor olmalısınız. Sürümünüzü tanımlamak için `az --version`çalıştırın. Azure CLI'yi yüklemeniz veya yükseltmeniz gerekiyorsa, [bkz.](https://docs.microsoft.com/cli/azure/install-azure-cli) 
 
-## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal bir kümeyi yükseltme
+## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portalından küme yükseltme
 
-Kapsayıcılar için Azure Izleyici tarafından izlenen mevcut AKS kümelerinde, Azure Izleyici 'de birden çok küme görünümündeki veya sol bölmedeki **Öngörüler** ' i seçerek doğrudan kümeden gelen sistem durumunu görüntülemek üzere kümeyi seçtikten sonra portalın en üstünde bir başlık görmeniz gerekir.
+Kapsayıcılar için Azure Monitor tarafından izlenen mevcut AKS kümeleri için, azure monitöründeki çok küme görünümünden veya doğrudan kümeden görünümünü görüntülemek için kümeyi seçtikten sonra sol bölmeden **Öngörüler'i** seçerek, portalın üst kısmında bir başlık görmeniz gerekir.
 
-![Azure portal AKS küme başlığını yükselt](./media/container-insights-update-metrics/portal-banner-enable-01.png)
+![Azure portalında AKS küme bayrağını yükseltme](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
-**Etkinleştir** ' e tıkladığınızda Kümeyi yükseltme işlemi başlatılır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki bildirimler ' in altından izleyebilirsiniz.
+**Etkinleştir'i** tıklatmak kümeyi yükseltmek için işlemi başlatır. Bu işlemin tamamlanması birkaç saniye sürebilir ve bildirimler altında ilerlemesini menüden izleyebilirsiniz.
 
-## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Azure komut kabuğu 'nda Bash kullanarak tüm kümeleri yükseltme
+## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Azure Komut Uyruşu'nda Bash kullanarak tüm kümeleri yükseltme
 
-Azure komut kabuğu 'nda Bash kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek için aşağıdaki adımları gerçekleştirin.
+Azure Komut Shell'de Bash'i kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. Azure CLı kullanarak aşağıdaki komutu çalıştırın.  AKS kümesi için **aks genel bakış** sayfasındaki değeri kullanarak **SubscriptionID** değerini düzenleyin.
+1. Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın.  AKS kümesi için **AKS Genel Bakış** sayfasındaki değeri kullanarak **subscriptionId** değerini düzenleyin.
 
     ```azurecli
     az login
@@ -58,17 +58,17 @@ Azure komut kabuğu 'nda Bash kullanarak aboneliğinizdeki tüm kümeleri günce
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakilere benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-cli"></a>Azure CLı kullanarak küme başına yükseltme
+## <a name="upgrade-per-cluster-using-azure-cli"></a>Azure CLI'yi kullanarak küme başına yükseltme
 
-Azure CLı kullanarak aboneliğinizdeki belirli bir kümeyi güncelleştirmek için aşağıdaki adımları gerçekleştirin.
+Azure CLI kullanarak aboneliğinizdeki belirli bir kümeyi güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. Azure CLı kullanarak aşağıdaki komutu çalıştırın. AKS kümesi için **aks genel bakış** sayfasındaki değerleri kullanarak **SubscriptionID**, **resourcegroupname**ve **clusterName** değerlerini düzenleyin.  **Clienentidofspn**değerini almak için, aşağıdaki örnekte gösterildiği gibi komut `az aks show` çalıştırdığınızda döndürülür.
+1. Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın. AKS kümesi için **AKS Genel Bakış** sayfasındaki değerleri kullanarak **subscriptionId,** **resourceGroupName**ve **clusterName** değerlerini düzenleyin.  **ClientIdOfSPN**değerini almak için, aşağıdaki örnekte gösterildiği `az aks show` gibi komutu çalıştırdığınızda döndürülür.
 
     ```azurecli
     az login
@@ -77,11 +77,11 @@ Azure CLı kullanarak aboneliğinizdeki belirli bir kümeyi güncelleştirmek i�
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ``` 
 
-## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell kullanarak tüm kümeleri yükseltme
+## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell'i kullanarak tüm kümeleri yükseltme
 
-Azure PowerShell kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek için aşağıdaki adımları gerçekleştirin.
+Azure PowerShell'i kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. Aşağıdaki betiği kopyalayıp dosyanıza yapıştırın:
+1. Aşağıdaki komut dosyasını kopyalayın ve dosyanıza yapıştırın:
 
     ```powershell
     <# 
@@ -321,23 +321,23 @@ Azure PowerShell kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek i
     Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
     ```
 
-2. Bu dosyayı yerel bir klasöre **onboard_metrics_atscale. ps1** olarak kaydedin.
-3. Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.  AKS kümesi için **aks genel bakış** sayfasındaki değeri kullanarak **SubscriptionID** değerini düzenleyin.
+2. Bu dosyayı **onboard_metrics_atscale.ps1** olarak yerel bir klasöre kaydedin.
+3. Azure PowerShell'i kullanarak aşağıdaki komutu çalıştırın.  AKS kümesi için **AKS Genel Bakış** sayfasındaki değeri kullanarak **subscriptionId** değerini düzenleyin.
 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakilere benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-powershell"></a>Azure PowerShell kullanarak küme başına yükseltme
+## <a name="upgrade-per-cluster-using-azure-powershell"></a>Azure PowerShell'i kullanarak küme başına yükseltme
 
 Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. Aşağıdaki betiği kopyalayıp dosyanıza yapıştırın:
+1. Aşağıdaki komut dosyasını kopyalayın ve dosyanıza yapıştırın:
 
     ```powershell
     <# 
@@ -571,14 +571,14 @@ Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağı
     }
     ```
 
-2. Bu dosyayı yerel bir klasöre **onboard_metrics. ps1** olarak kaydedin.
-3. Azure PowerShell kullanarak aşağıdaki komutu çalıştırın. AKS kümesi için **aks genel bakış** sayfasındaki değerleri kullanarak **SubscriptionID**, **resourcegroupname**ve **clusterName** değerlerini düzenleyin.
+2. Bu dosyayı **onboard_metrics.ps1** olarak yerel bir klasöre kaydedin.
+3. Azure PowerShell'i kullanarak aşağıdaki komutu çalıştırın. AKS kümesi için **AKS Genel Bakış** sayfasındaki değerleri kullanarak **subscriptionId,** **resourceGroupName**ve **clusterName** değerlerini düzenleyin.
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakilere benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>
@@ -586,4 +586,4 @@ Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağı
 
 ## <a name="verify-update"></a>Güncelleştirmeyi doğrula 
 
-Daha önce açıklanan yöntemlerden birini kullanarak güncelleştirmeyi başlattıktan sonra, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, bu, devam edip [ölçüm uyarılarını](../platform/alerts-metric.md) ayarlamaya veya grafiklerinizi [panolara](../../azure-portal/azure-portal-dashboards.md)sabitlemeye başlayabileceğini gösterir.  
+Güncelleştirmeyi daha önce açıklanan yöntemlerden birini kullanarak başlattıktan sonra Azure Monitor ölçümleri gezginini kullanabilir ve **Metrik ad alanından** **öngörülerin** listelendiğini doğrulayabilirsiniz. Bu, devam edebileceğinizi ve [metrik uyarıları](../platform/alerts-metric.md) ayarlamaya veya grafiklerinizi [panolara](../../azure-portal/azure-portal-dashboards.md)sabitlemeye başlayabileceğinizi gösterir.  

@@ -1,6 +1,6 @@
 ---
-title: Azure Kullanılabilirlik Alanları ile SAP iş yükü yapılandırması | Microsoft Docs
-description: Azure Kullanılabilirlik Alanları kullanarak SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
+title: Azure Kullanılabilirlik Bölgeleri ile SAP iş yükü yapılandırmaları | Microsoft Dokümanlar
+description: Azure Kullanılabilirlik Bölgelerini kullanarak SAP NetWeaver için yüksek kullanılabilirlik mimarisi ve senaryoları
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
@@ -17,173 +17,173 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675600"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
-[Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) , Azure 'un sağladığı yüksek kullanılabilirliğe sahip özelliklerden biridir. Kullanılabilirlik Alanları kullanmak, Azure üzerinde SAP iş yüklerinin genel kullanılabilirliğini geliştirir. Bu özellik bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)zaten kullanılabilir. Gelecekte, daha fazla bölgede kullanıma sunulacaktır.
+[Azure Kullanılabilirlik Bölgeleri,](https://docs.microsoft.com/azure/availability-zones/az-overview) Azure'un sağladığı yüksek kullanılabilirlik özelliklerinden biridir. Kullanılabilirlik Bölgelerini kullanmak, Azure'daki SAP iş yüklerinin genel kullanılabilirliğini artırır. Bu özellik zaten bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir. Gelecekte, daha fazla bölgede satışa sunulacak.
 
-Bu grafik, temel SAP yüksek kullanılabilirliği mimarisini göstermektedir:
+Bu grafik SAP yüksek kullanılabilirliğinin temel mimarisini gösterir:
 
 ![Standart yüksek kullanılabilirlik yapılandırması](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP uygulama katmanı, tek bir Azure [kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)üzerinden dağıtılır. SAP merkezi hizmetlerinin yüksek kullanılabilirliğine sahip olmak için, ayrı bir kullanılabilirlik kümesinde iki VM dağıtımı yapabilirsiniz. Altyapı veya yazılım sorunu durumunda otomatik yük devretme ile yüksek kullanılabilirliğe sahip bir çerçeve olarak Windows Server Yük Devretme Kümelemesi veya Paceyapıcısı (Linux) kullanın. Bu dağıtımlar hakkında daha fazla bilgi edinmek için bkz.:
+SAP uygulama katmanı bir Azure [kullanılabilirlik kümesine](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)dağıtılır. SAP Central Hizmetlerinin yüksek kullanılabilirliği için, iki VM'yi ayrı bir kullanılabilirlik kümesine dağıtabilirsiniz. Windows Server Failover Clustering veya Pacemaker 'ı (Linux) bir altyapı veya yazılım sorunu durumunda otomatik olarak başarısız olan yüksek kullanılabilirlik çerçevesi olarak kullanın. Bu dağıtımlar hakkında daha fazla bilgi edinmek için bkz:
 
-- [Küme Paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [SAP uygulamaları için SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [Bir KÜME paylaşılan diskkullanarak windows failover kümesinde sap ASCS/SCS örneğini kümele](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Dosya paylaşımını kullanarak Bir Windows failover kümesinde sap ASCS/SCS örneğini kümeleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+- [SAP uygulamaları için SUSE Linux Enterprise Server'da Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
+- [Red Hat Enterprise Linux'ta SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
-Benzer bir mimari, SAP NetWeaver, S/4HANA veya Hybris sistemlerinin DBMS katmanı için geçerlidir. Altyapı veya yazılım arızasına karşı koruma sağlamak için bir yük devretme kümesi çözümü ile, DBMS katmanını etkin/pasif modda dağıtırsınız. Yük devretme kümesi çözümü, DBMS 'ye özgü yük devretme çerçevesi, Windows Server Yük Devretme Kümelemesi veya Paceyapıcısı olabilir.
+Benzer bir mimari SAP NetWeaver, S/4HANA veya Hybris sistemlerinin DBMS katmanı için de geçerlidir. Altyapı veya yazılım hatalarından korumak için DBMS katmanını etkin/pasif modda, başarısız küme çözümüyle dağıtırsınız. Failover cluster çözümü DBMS'ye özgü bir failover çerçevesi, Windows Server Failover Clustering veya Pacemaker olabilir.
 
-Azure Kullanılabilirlik Alanları kullanarak aynı mimariyi dağıtmak için, daha önce özetlenen mimaride bazı değişiklikler yapmanız gerekir. Bu makalede bu değişiklikler açıklanmaktadır.
+Azure Kullanılabilirlik Bölgeleri'ni kullanarak aynı mimariyi dağıtmak için, daha önce özetlenen mimaride bazı değişiklikler yapmanız gerekir. Bu makalede, bu değişiklikler açıklanır.
 
-## <a name="considerations-for-deploying-across-availability-zones"></a>Kullanılabilirlik Alanları genelinde dağıtım konuları
-
-
-Kullanılabilirlik Alanları kullandığınızda aşağıdakileri göz önünde bulundurun:
-
-- Bir Azure bölgesi içindeki çeşitli Kullanılabilirlik Alanları arasındaki uzaklıklarla ilgili garanti yoktur.
-- Kullanılabilirlik Alanları ideal bir DR çözümü değildir. Doğal felaketler, uluslararası altyapılara ağır hasar da dahil olmak üzere dünya bölgelerinde yaygın olarak hasar verebilir. Çeşitli bölgeler arasındaki uzaklıklar doğru bir DR çözümü sağlayacak kadar büyük olmayabilir.
-- Kullanılabilirlik Alanları arasındaki ağ gecikmesi tüm Azure bölgelerinde aynı değildir. Bazı durumlarda, bir bölgeden etkin DBMS VM 'sine yönelik ağ gecikmesi kabul edilebilir olduğundan SAP uygulama katmanını farklı bölgelerde dağıtabilir ve çalıştırabilirsiniz. Ancak bazı Azure bölgelerinde, farklı bölgelerde dağıtıldığında etkin DBMS sanal makinesi ve SAP uygulama örneği arasındaki gecikme süresi, SAP iş işlemlerinde kabul edilebilir olmayabilir. Bu durumlarda, dağıtım mimarisinin, uygulama için etkin/etkin mimari veya çapraz bölge ağ gecikmesi çok yüksek olduğu bir etkin/Pasif mimari ile farklı olması gerekir.
-- Kullanılabilirlik Alanları nerede kullanacağınızı saptarken, bölgeler arasındaki ağ gecikmesi üzerinde kararınızı temel alır. Ağ gecikmesi iki alanda önemli bir rol oynar:
-    - Zaman uyumlu çoğaltmaya sahip olması gereken iki DBMS örneği arasındaki gecikme süresi. Ağ gecikmesi arttıkça, iş yükünüzün ölçeklenebilirliğini de etkiler.
-    - Etkin DBMS örneğiyle bir SAP iletişim kutusu örneği çalıştıran bir VM ve başka bir bölgedeki benzer bir VM arasındaki ağ gecikme süresi farkı. Bu fark arttıkça, iş süreçlerinin ve toplu işlerin çalışma süresi üzerindeki etki, DBMS ile veya farklı bir bölgede bölge içinde çalıştırıldıklarından bağımsız olarak da artar.
-
-Azure VM 'lerini Kullanılabilirlik Alanları genelinde dağıtırken ve aynı Azure bölgesinde yük devretme çözümleri oluşturduğunuzda, bazı kısıtlamalar uygulanır:
-
-- Azure Kullanılabilirlik Alanları ' a dağıtırken [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/) kullanmanız gerekir. 
-- Bölge Numaralandırmaların fiziksel bölgelere eşlenmesi, bir Azure aboneliği temelinde düzeltilmelidir. SAP sistemlerinizi dağıtmak için farklı abonelikler kullanıyorsanız, her abonelik için ideal bölgeleri tanımlamanız gerekir.
-- Azure [yakınlık yerleşimi grubunu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)kullanmadığınız takdirde Azure kullanılabilirlik gruplarını bir Azure kullanılabilirlik bölgesi içinde dağıtamazsınız. SAP DBMS katmanını ve merkezi hizmetleri bölgelere dağıtmak ve aynı zamanda SAP uygulama katmanını kullanılabilirlik kümeleri kullanarak dağıtma ve yine de VM 'lerin yakınlığını elde etme yöntemi, [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenmiştir. Azure yakınlığı yerleştirme gruplarıyla yararlandıysanız, sanal makineler için bir dağıtım çerçevesi olarak bir veya diğerini seçmeniz gerekir.
-- Windows Server Yük Devretme Kümelemesi veya Linux pacemaker tabanlı yük devretme kümesi çözümleri oluşturmak için [Azure temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız. Bunun yerine, [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)'sunu kullanmanız gerekir.
+## <a name="considerations-for-deploying-across-availability-zones"></a>Kullanılabilirlik Bölgeleri arasında dağıtım için dikkat edilecek hususlar
 
 
+Kullanılabilirlik Bölgeleri'ni kullanırken aşağıdakileri göz önünde bulundurun:
 
-## <a name="the-ideal-availability-zones-combination"></a>İdeal Kullanılabilirlik Alanları birleşimi
-Kullanılabilirlik Alanları kullanmaya karar vermeden önce şunları belirlemeniz gerekir:
+- Bir Azure bölgesindeki çeşitli Kullanılabilirlik Bölgeleri arasındaki mesafelerle ilgili hiçbir garanti yoktur.
+- Kullanılabilirlik Bölgeleri ideal bir DR çözümü değildir. Doğal afetler, enerji altyapılarına ağır hasar lar da dahil olmak üzere dünya bölgelerinde yaygın hasara yol açabilir. Çeşitli bölgeler arasındaki mesafeler uygun bir DR çözümü oluşturacak kadar büyük olmayabilir.
+- Kullanılabilirlik Bölgeleri arasında ağ gecikmesi tüm Azure bölgelerinde aynı değildir. Bazı durumlarda, ağ bir bölgeden etkin DBMS VM'ye kadar olan ağ gecikmesi kabul edilebilir olduğundan SAP uygulama katmanını farklı bölgeler arasında dağıtabilir ve çalıştırabilirsiniz. Ancak bazı Azure bölgelerinde, etkin DBMS VM ile farklı bölgelerde dağıtıldığında SAP uygulama örneği arasındaki gecikme SAP iş süreçleri için kabul edilebilir olmayabilir. Bu gibi durumlarda, uygulama için etkin/etkin bir mimari veya bölge arası ağ gecikmesinin çok yüksek olduğu etkin/pasif mimariile dağıtım mimarisinin farklı olması gerekir.
+- Kullanılabilirlik Bölgelerini nerede kullanacağınıza karar verirken, kararınızı bölgeler arasındaki ağ gecikmesine temel alasınız. Ağ gecikmesi iki alanda önemli bir rol oynar:
+    - Senkron çoğaltma olması gereken iki DBMS örneği arasındaki gecikme. Ağ gecikmesi ne kadar yüksekse, iş yükünüzün ölçeklenebilirliğini etkileme olasılığı da o kadar yüksek olur.
+    - Etkin DBMS örneği yle sap iletişim örneğini bölge içinde çalıştıran bir VM ile başka bir bölgede benzer bir VM arasındaki ağ gecikmesi farkı. Bu fark arttıkça, dbms ile veya farklı bir bölgede bölgede çalışıp çalışmadıklarına bağlı olarak, iş süreçlerinin ve toplu iş işlerinin çalışma süresi üzerindeki etkisi de artar.
 
-- Bir Azure bölgesinin üç bölgesi arasındaki ağ gecikmesi. Bu, bölgeler arası ağ trafiğinden en az ağ gecikme süresine sahip bölgeleri seçmenize olanak sağlar.
-- Bir bölgede bulunan VM-VM gecikme süresi ve seçtiğiniz iki bölge arasındaki ağ gecikmesi arasındaki fark.
-- Dağıtmanız gereken sanal makine türlerinin seçtiğiniz iki bölgede kullanılabilir olup olmadığını belirleme. Bazı VM 'Lerde, özellikle de a serisi VM 'lerle, bazı SKU 'Ların üç bölgenin yalnızca iki bölgede kullanılabildiği durumlarla karşılaşabilirsiniz.
+Azure VM'lerini Kullanılabilirlik Bölgeleri arasında dağıtırken ve aynı Azure bölgesinde başarısız çözümler oluşturduğunuzda, bazı kısıtlamalar geçerlidir:
 
-## <a name="network-latency-between-and-within-zones"></a>Bölgeler arasında ve içinde ağ gecikmesi
-Farklı bölgeler arasındaki gecikmeyi öğrenmek için şunları yapmanız gerekir:
+- Azure Kullanılabilirlik Bölgeleri'ne dağıtırken [Azure Yönetilen Diskler](https://azure.microsoft.com/services/managed-disks/) kullanmanız gerekir. 
+- Bölge yıllarının fiziksel bölgelere eşlenemeleri Azure abonelik temelinde sabitlenir. SAP sistemlerinizi dağıtmak için farklı abonelikler kullanıyorsanız, her abonelik için ideal bölgeleri tanımlamanız gerekir.
+- [Azure Yakınlık Yerleşim Grubu'ni](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)kullanmadığınız sürece Azure kullanılabilirlik kümelerini Azure Kullanılabilirlik Bölgesi'nde dağıtamazsınız. SAP DBMS katmanını ve merkezi hizmetleri bölgeler arasında dağıtma ve aynı zamanda kullanılabilirlik kümelerini kullanarak SAP uygulama katmanını dağıtma ve vm'lere yakın yakınlık elde etme şekli, [SAP uygulamalarıyla en iyi ağ gecikmesi için Azure Yakınlık Yerleşim Grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenmiştir. Azure yakınlık yerleşim gruplarından yararlanmıyorsanız, sanal makineler için dağıtım çerçevesi olarak birini veya diğerini seçmeniz gerekir.
+- Windows Server Failover Clustering veya Linux Pacemaker tabanlı başarısız küme çözümleri oluşturmak için [Azure Temel Yük Dengeleyicisi](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız. Bunun yerine, Azure [Standart Yük DengeleyiciSKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir.
 
-- Her üç bölgede DBMS örneğiniz için kullanmak istediğiniz VM SKU 'sunu dağıtın. Bu ölçümü gerçekleştirdiğinizde [Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 'ın etkinleştirildiğinden emin olun.
-- En az ağ gecikmesi olan iki bölgeyi bulduğunuzda, üç Kullanılabilirlik Alanları üzerinde uygulama katmanı VM 'si olarak kullanmak istediğiniz VM SKU 'sunun başka üç VM 'sini dağıtın. Seçtiğiniz iki DBMS bölgesindeki iki DBMS sanal makinesi için ağ gecikmesini ölçün. 
-- Ölçüm aracı olarak **niping** kullanın. SAP 'nin bu aracı, SAP destek notları [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)açıklanmaktadır. Gecikme süresi ölçümleri için belgelenen komutlara odaklanın. **Ping** , Azure hızlandırılmış ağ kodu yolları üzerinden çalışmadığından, bunu kullanmanızı önermiyoruz.
 
-Bu testleri el ile gerçekleştirmeniz gerekmez. Açıklanan gecikme süresi testlerini otomatikleştiren bir PowerShell yordamı [kullanılabilirlik bölgesi gecikme testi](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) bulabilirsiniz. 
 
-Ölçümlerinizi ve Kullanılabilirlik Alanları sanal makine SKU 'larınızın kullanılabilirliğine göre, bazı kararlar vermeniz gerekir:
+## <a name="the-ideal-availability-zones-combination"></a>İdeal Kullanılabilirlik Bölgeleri kombinasyonu
+Kullanılabilirlik Bölgelerini nasıl kullanacağınıza karar vermeden önce şunları belirlemeniz gerekir:
 
-- DBMS katmanının ideal bölgelerini tanımlayın.
-- Etkin SAP uygulama katmanınızı bir, iki veya üç bölgenin tamamında, bölgedeki ağ gecikme süresinin bölge genelinde farklılıklar temelinde dağıtmak isteyip istemediğinizi belirleme.
-- Bir uygulama görünümünden etkin/Pasif bir yapılandırma ya da etkin/etkin bir yapılandırma dağıtmak istediğinizi belirleme. (Bu konfigürasyonlar Bu makalenin ilerleyen kısımlarında açıklanmaktadır.)
+- Azure bölgesinin üç bölgesi arasında ağ gecikmesi. Bu, bölgeler arası ağ trafiğinde en az ağ gecikmesine sahip bölgeleri seçmenize olanak tanır.
+- Seçtiğiniz bölgelerden birinde VM-vm gecikmesi ile seçtiğiniz iki bölge arasındaki ağ gecikmesi arasındaki fark.
+- Dağıtmanız gereken VM türlerinin seçtiğiniz iki bölgede kullanılabilir olup olmadığınıbelirleme. Bazı VM'lerde, özellikle M-Serisi VM'lerde, bazı SNU'ların üç bölgeden yalnızca ikisinde kullanılabildiği durumlarla karşılaşabilirsiniz.
 
-Bu kararları verirken SAP Note [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)bölümünde belgelendiği gibi, hesap SAP 'nin ağ gecikmesi önerilerini de göz önünde bulabilirsiniz.
+## <a name="network-latency-between-and-within-zones"></a>Bölgeler arasında ve bölgeler içinde ağ gecikmesi
+Farklı bölgeler arasındaki gecikmeyi belirlemek için şunları yapmanız gerekir:
 
-> [!IMPORTANT]
-> Yaptığınız ölçümler ve kararlar, ölçümleri aldığınızda kullandığınız Azure aboneliği için geçerlidir. Başka bir Azure aboneliği kullanıyorsanız, ölçümleri tekrarlamanız gerekir. Numaralandırılmış bölgelerin eşlemesi, başka bir Azure aboneliği için farklı olabilir.
+- DBMS örneğiniz için kullanmak istediğiniz VM SKU'yu üç bölgeye de dağıtın. Bu ölçümü yaparken [Azure Hızlandırılmış Ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) Özelliğinin etkin olduğundan emin olun.
+- En az ağ gecikmesine sahip iki bölge bulduğunuzda, üç Kullanılabilirlik Bölgesi boyunca uygulama katmanı VM olarak kullanmak istediğiniz VM SKU'nun üç VM'sini daha dağıtın. Seçtiğiniz iki DBMS bölgesinde ağ gecikmesini iki DBMS VM'ye göre ölçün. 
+- **Niping'i** bir ölçme aracı olarak kullanın. Sap'den gelen bu araç, SAP destek notlarında [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)açıklanmıştır. Gecikme ölçümleri için belgelenen komutlara odaklanın. **Ping** Azure Hızlandırılmış Ağ kodu yollarında çalışmadığından, bunu kullanmanızı önermiyoruz.
 
+Bu testleri el ile yapmanız gerekmez. Açıklanan gecikme testlerini otomatikleştiren bir PowerShell yordam [Kullanılabilirlik Bölgesi Gecikme Testi](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) bulabilirsiniz. 
+
+Ölçümlerinize ve VM SCO'larınızın Kullanılabilirlik Bölgelerindeki kullanılabilirliğine bağlı olarak bazı kararlar almanız gerekir:
+
+- DBMS katmanı için ideal bölgeleri tanımlayın.
+- Etkin SAP uygulama katmanınızı bölgeler arasında ağ gecikmesi farklılıklarına bağlı olarak bir, iki veya üç bölgeye dağıtmak isteyip istemediğinizi belirleyin.
+- Uygulama açısından etkin/pasif yapılandırma mı yoksa etkin/etkin yapılandırma mı dağıtmak istediğinizi belirleyin. (Bu yapılandırmalar daha sonra bu makalede açıklanmıştır.)
+
+Bu kararları verirken, SAP [notunda](https://launchpad.support.sap.com/#/notes/1100926/E)#1100926 belgelenen SAP'nin ağ gecikmesi önerilerini de dikkate alın.
 
 > [!IMPORTANT]
-> Daha önce açıklanan ölçümlerin [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview)destekleyen her Azure bölgesinde farklı sonuçlar sağlayacağı beklenmektedir. Ağ gecikmesi gereksinimleriniz aynı olsa da, bölgeler arasındaki ağ gecikmesi farklı olabileceğinden farklı Azure bölgelerinde farklı dağıtım stratejilerini benimsemeniz gerekebilir. Bazı Azure bölgelerinde, üç farklı bölge arasındaki ağ gecikmesi büyük ölçüde farklı olabilir. Diğer bölgelerde, üç farklı bölge arasındaki ağ gecikmesi daha Tekdüzen olabilir. 1 ile 2 milisaniyelik arasında her zaman bir ağ gecikmesi olduğu talep doğru değildir. Azure bölgelerindeki Kullanılabilirlik Alanları arasındaki ağ gecikmesi genelleştirilemez.
+> Yaptığınız ölçümler ve kararlar, ölçümleri aldığınızda kullandığınız Azure aboneliği için geçerlidir. Başka bir Azure aboneliği kullanıyorsanız, ölçümleri yinelemeniz gerekir. Numaralandırılmış bölgelerin eşlenemesi başka bir Azure aboneliği için farklı olabilir.
 
-## <a name="activeactive-deployment"></a>Etkin/etkin dağıtım
-Bu dağıtım mimarisi, etkin/etkin olarak adlandırılır çünkü etkin SAP uygulama sunucularınızı iki veya üç bölgede dağıtmış olursunuz. Sıraya alma çoğaltması kullanan SAP Merkezi Hizmetler örneği iki bölge arasında dağıtılır. Aynı işlem, SAP Merkezi hizmeti ile aynı bölgelerde dağıtılacak olan DBMS katmanı için de geçerlidir.
 
-Bu yapılandırmayı düşünürken, bölgenizde, iş yükünüz ve zaman uyumlu DBMS çoğaltmayla kabul edilebilir bölgeler arası ağ gecikmesi sunan iki Kullanılabilirlik Alanları bulmanız gerekir. Ayrıca, seçtiğiniz bölgelerin içindeki ağ gecikmesi ve çapraz bölge ağ gecikmesi çok büyük olmadığından emin olmak istersiniz. Bunun nedeni, bir işin DBMS sunucusu ya da bölgeler arasında, iş süreçlerinizin veya toplu işlerin çalışma saatlerinde şirket içinde çalışıp çalışmadığına bağlı olarak büyük Çeşitlemeler istemezsiniz. Bazı Çeşitlemeler kabul edilebilir, ancak farklılık faktörleri değildir.
+> [!IMPORTANT]
+> Daha önce açıklanan [ölçümlerin, Kullanılabilirlik Bölgelerini](https://docs.microsoft.com/azure/availability-zones/az-overview)destekleyen her Azure bölgesinde farklı sonuçlar sağlaması beklenmektedir. Ağ gecikme gereksinimleriniz aynı olsa bile, bölgeler arasındaki ağ gecikmesi farklı olabileceğinden, farklı Azure bölgelerinde farklı dağıtım stratejileri benimsemeniz gerekebilir. Bazı Azure bölgelerinde, üç farklı bölge arasındaki ağ gecikmesi çok farklı olabilir. Diğer bölgelerde, üç farklı bölge arasındaki ağ gecikmesi daha düzgün olabilir. Her zaman 1 ile 2 milisaniye arasında bir ağ gecikmesi olduğu iddiası doğru değildir. Azure bölgelerindeki Kullanılabilirlik Bölgeleri arasında ağ gecikmesi genelleştirilemiyor.
 
-İki bölgede etkin/etkin bir dağıtımın Basitleştirilmiş şeması şuna benzeyebilir:
+## <a name="activeactive-deployment"></a>Etkin/Etkin dağıtım
+Etkin SAP uygulama sunucularınızı iki veya üç bölgeye dağıttığınızdan, bu dağıtım mimarisi etkin/etkin olarak adlandırılır. Enqueue çoğaltma kullanan SAP Merkezi Hizmetler örneği iki bölge arasında dağıtılır. Aynı durum, SAP Merkezi Hizmeti ile aynı bölgelere dağıtılacak olan DBMS katmanı için de geçerlidir.
 
-![Etkin/etkin bölge dağıtımı](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+Bu yapılandırmayı göz önünde bulundurarak, bölgenizde iş yükünüz ve eşzamanlı DBMS çoğaltmanız için kabul edilebilir bölgeler arası ağ gecikmesi sunan iki Kullanılabilirlik Bölgesi ni bulmanız gerekir. Ayrıca, seçtiğiniz bölgeler içindeki ağ gecikmesi ile bölgeler arası ağ gecikmesi arasındaki deltanın çok büyük olmadığından da emin olmak istersiniz. Bunun nedeni, bir işin DBMS sunucusuyla veya bölgeler arasında, iş süreçlerinizin veya toplu işlerinizin çalışma saatlerinde bölgede veya bölgeler arasında çalışıp çalışmadığına bağlı olarak büyük varyasyonlar istememenizdir. Bazı varyasyonlar kabul edilebilir, ancak fark faktörleri değildir.
 
-Bu yapılandırma için aşağıdaki noktalar geçerlidir:
+İki bölgede etkin/etkin bir dağıtımın basitleştirilmiş şeması şu şekilde görünebilir:
 
-- [Azure yakınlık yerleşimi grubunu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)kullanmıyorsanız, kullanılabilirlik kümeleri Azure kullanılabilirlik alanları dağıtılamadığından, tüm VM 'ler için Azure kullanılabilirlik alanları hata ve güncelleştirme etki alanlarını kabul edersiniz.
-- DBMS katmanı ve merkezi hizmetler için bölgesel dağıtımlarını birleştirmek istiyorsanız, ancak uygulama katmanı için Azure kullanılabilirlik kümelerini kullanmak istiyorsanız, [SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md)makalesinde açıklandığı gibi Azure yakınlık grupları 'nı kullanmanız gerekir.
-- SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
-- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
-- Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
-- Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
-  - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
-  - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
+![Etkin/Etkin bölge dağıtımı](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+
+Bu yapılandırma için aşağıdaki hususlar geçerlidir:
+
+- Azure [Yakınlık Yerleşim Grubu'nu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)kullanmadığınızda, kullanılabilirlik kümeleri Azure Kullanılabilirlik Bölgelerinde dağıtılamayacağından, Azure Kullanılabilirlik Bölgeleri'ni tüm VM'ler için hata olarak kabul eder ve etki alanlarını güncellersiniz.
+- DBMS katmanı ve merkezi hizmetler için yersel dağıtımları birleştirmek, ancak uygulama katmanı için Azure kullanılabilirlik kümelerini kullanmak istiyorsanız, [SAP uygulamalarıyla en iyi ağ gecikmesi için Azure Yakınlık Yerleşim Grupları](sap-proximity-placement-scenarios.md)makalesinde açıklandığı gibi Azure yakınlık gruplarını kullanmanız gerekir.
+- SAP Merkezi Hizmetleri ve DBMS katmanının arıza kümelerinin yük dengeleyicileri için [Standart SKU Azure Yük Dengeleyicisini](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Yük Dengeleyicisi bölgeler arasında çalışmaz.
+- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağlarıyla birlikte bölgelere doğru genişletilir. Her bölge için ayrı sanal ağlara ihtiyacınız yoktur.
+- Dağıttığınız tüm sanal makineler de [Azure Yönetilen Diskler'i](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, yerdeğiştirmeler için desteklenmez.
+- Azure Premium Depolama ve [Ultra SSD depolama alanı,](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bölgeler arasında herhangi bir depolama çoğaltma türünü desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetleri) önemli verileri çoğaltmalıdır.
+- Aynı durum paylaşılan bir disk (Windows), CIFS paylaşımı (Windows) veya NFS paylaşımı (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu paylaşılan diskleri veya bölgeler arasındaki paylaşımları çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
+  - Windows için, Azure'da bir küme paylaşılan disk kullanarak Windows [failover kümesinde sap ASCS/SCS örneğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)belgelenen SIOS DataKeeper kullanan bir küme çözümü.
+  - SUSE Linux için, [SUSE Linux Enterprise Server'daki Azure VM'lerde NFS'nin Yüksek kullanılabilirlikte](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)belgelenmiş olarak oluşturulmuş bir NFS payı.
     
-    Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
-- Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
-- Kritik iş süreçlerine yönelik çalışma süresi tutarlılığı elde etmek için, SAP Batch sunucu grupları, SAP oturum açma grupları veya RFC grupları ' nı kullanarak, belirli toplu işleri ve kullanıcıları, etkin DBMS örneğiyle bölge içinde olan uygulama örneklerine yönlendirmeyi deneyebilirsiniz. Ancak, bir yük devretme durumunda, bu grupları etkin DB VM 'si ile bölgedeki VM 'lerde çalışan örneklere el ile taşımanız gerekir.  
-- Her bölgede etkin olmayan iletişim kutusu örnekleri dağıtmak isteyebilirsiniz. Bu, uygulama örneklerinizin parçası tarafından kullanılan bir bölgenin hizmet dışı olması durumunda eski kaynak kapasitesine anında geri dönüş sağlamak için kullanılır.
+    Şu anda, Microsoft Scale-Out File Server'ı kullanan çözüm, Sap [ascs/SCS örnekleri için Windows failover kümesi ve dosya paylaşımı kullanarak SAP yüksek kullanılabilirliği için Azure altyapısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)hazırlayın'da belgelenen çözüm, bölgeler arasında desteklenmez.
+- Üçüncü bölge, bir [SUSE Linux Pacemaker kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmanız durumunda SBD aygıtını barındırmak için kullanılır.
+- Kritik iş süreçleri için çalışma süresi tutarlılığı elde etmek için, SAP toplu iş sunucu grupları, SAP oturum açma grupları veya RFC gruplarını kullanarak belirli toplu iş ve kullanıcıları etkin DBMS örneğiyle birlikte bölge içinde olan uygulama örneklerine yönlendirmeyi deneyebilirsiniz. Ancak, bir öten aletme durumunda, bu grupları etkin DB VM ile bölgede çalışan VM'lerde çalışan örneklere el ile taşımanız gerekir.  
+- Her bölgeye atıl iletişim örnekleri dağıtmak isteyebilirsiniz. Bu, uygulama örneklerinizin bir bölümü tarafından kullanılan bir bölge hizmet dışıysa, eski kaynak kapasitesine anında geri dönüş sağlamaktır.
 
 > [!IMPORTANT]
-> Bu etkin/etkin senaryoda, bant genişliği için ek ücretler, Microsoft tarafından 04/01/2020 adresinden duyurulur. Belge [bant genişliği fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/bandwidth/)kontrol edin. SAP uygulama katmanı ve SAP DBMS katmanı arasındaki veri aktarımı oldukça yoğun. Bu nedenle, etkin/etkin senaryo maliyetlerde tam olarak bir bit olarak katkıda bulunabilir. Maliyetleri tam olarak almak için bu makaleyi denetlemeye devam edin 
+> Bu etkin/etkin senaryoda bant genişliği için ek ücretler Microsoft tarafından 04/01/2020 tarihinden itibaren duyurulur. Belge [bant genişliği Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/)kontrol edin. SAP uygulama katmanı ile SAP DBMS katmanı arasındaki veri aktarımı oldukça yoğundur. Bu nedenle etkin/etkin senaryo maliyetlere biraz katkıda bulunabilir. Tam maliyetleri almak için bu makaleyi kontrol etmeye devam edin 
 
 
 ## <a name="activepassive-deployment"></a>Etkin/Pasif dağıtım
-Bir bölgedeki ağ gecikme süresi ve çapraz bölge ağ trafiği gecikmesi arasında kabul edilebilir bir Delta bulamıyorsanız, görünümün SAP uygulama katmanı noktasından etkin/Pasif bir karakter içeren bir mimari dağıtabilirsiniz. Tüm uygulama katmanını dağıttığınız ve hem etkin DBMS hem de SAP Merkezi Hizmetleri örneğini çalıştırmayı denebileceğiniz bölge olan *etkin* bir bölge tanımlarsınız. Böyle bir yapılandırma sayesinde, bir işin etkin DBMS örneğiyle bölge içinde çalışıp çalışmadığını, iş işlemlerinde ve Batch işlerinde değil, çok fazla çalışma zamanı varyasyonlarından emin olmanız gerekir.
+Bir bölge içindeki ağ gecikmesi ile çapraz bölge ağ trafiğinin gecikmesi arasında kabul edilebilir bir delta bulamıyorsanız, SAP uygulama katmanı açısından etkin/pasif karaktere sahip bir mimari dağıtabilirsiniz. Tüm uygulama katmanını dağıttığınız ve hem etkin DBMS'yi hem de SAP Merkezi Hizmetleri örneğini çalıştırmaya çalıştığınız bölge olan *etkin* bir bölge tanımlarsınız. Böyle bir yapılandırmayla, bir işin etkin DBMS örneğinde ve toplu işişlerinde bölgede çalışıp çalışmadığına bağlı olarak, aşırı çalışma süresi varyasyonları olmadığından emin olmanız gerekir.
 
-Mimarinin temel düzeni şöyle görünür:
+Mimarinin temel düzeni aşağıdaki gibi görünür:
 
 ![Etkin/Pasif bölge dağıtımı](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
-Bu yapılandırma için aşağıdaki noktalar geçerlidir:
+Bu yapılandırma için aşağıdaki hususlar geçerlidir:
 
-- Kullanılabilirlik kümeleri Azure Kullanılabilirlik Alanları ' de dağıtılamaz. Bunu dengelemek için, [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenen Azure yakınlık yerleşimi gruplarını kullanabilirsiniz.
-- Bu mimariyi kullandığınızda, durumu yakından izlemeniz ve etkin DBMS ve SAP Merkezi Hizmetleri örneklerini dağıtılan uygulama katmanınız ile aynı bölgede tutmaya çalışmalısınız. SAP Merkezi hizmetinin veya DBMS örneğinin yük devretmesi durumunda, mümkün olduğunca hızlı bir şekilde dağıtılmış SAP uygulama katmanı ile bölgeye el ile yeniden oturum açmak istiyorsanız emin olmanız gerekir.
-- SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
-- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
-- Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
-- Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
-    - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
-    - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
+- Kullanılabilirlik kümeleri Azure Kullanılabilirlik Bölgelerinde dağıtılamaz. Bunu telafi etmek için, [SAP uygulamalarında en iyi ağ gecikmesi için Azure Yakınlık Yerleşim Grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenen Azure yakınlık yerleşim gruplarını kullanabilirsiniz.
+- Bu mimariyi kullandığınızda, durumu yakından izlemeniz ve etkin DBMS ve SAP Merkezi Hizmetleri örneklerini dağıtılan uygulama katmanınızla aynı bölgede tutmaya çalışmanız gerekir. SAP Merkezi Hizmetinin veya DBMS örneğinin başarısız olması durumunda, SAP uygulama katmanı mümkün olan en kısa sürede dağıtılırken bölgeye el ile geri dönebileceğinizden emin olmak istersiniz.
+- SAP Merkezi Hizmetleri ve DBMS katmanının arıza kümelerinin yük dengeleyicileri için [Standart SKU Azure Yük Dengeleyicisini](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Yük Dengeleyicisi bölgeler arasında çalışmaz.
+- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağlarıyla birlikte bölgelere doğru genişletilir. Her bölge için ayrı sanal ağlara ihtiyacınız yoktur.
+- Dağıttığınız tüm sanal makineler de [Azure Yönetilen Diskler'i](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, yerdeğiştirmeler için desteklenmez.
+- Azure Premium Depolama ve [Ultra SSD depolama alanı,](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bölgeler arasında herhangi bir depolama çoğaltma türünü desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetleri) önemli verileri çoğaltmalıdır.
+- Aynı durum paylaşılan bir disk (Windows), CIFS paylaşımı (Windows) veya NFS paylaşımı (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu paylaşılan diskleri veya bölgeler arasındaki paylaşımları çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
+    - Windows için, Azure'da bir küme paylaşılan disk kullanarak Windows [failover kümesinde sap ASCS/SCS örneğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)belgelenen SIOS DataKeeper kullanan bir küme çözümü.
+    - SUSE Linux için, [SUSE Linux Enterprise Server'daki Azure VM'lerde NFS'nin Yüksek kullanılabilirlikte](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)belgelenmiş olarak oluşturulmuş bir NFS payı.
     
-  Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
-- Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
-- Bir bölge hatası durumunda uygulama kaynaklarını başlatabilmeniz için pasif bölgeye (bir DBMS bakış noktasından) etkin olmayan VM 'Ler dağıtmanız gerekir.
-    - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) Şu anda, etkin VM 'leri bölgeler arasında etkin olmayan VM 'lere çoğaltamaz. 
-- Bir bölge hatası durumunda, SAP uygulama katmanını ikinci bölgede otomatik olarak başlatmak için bir Otomasyon ile yatırım yapmanız gerekir.
+  Şu anda, Microsoft Scale-Out File Server'ı kullanan çözüm, Sap [ascs/SCS örnekleri için Windows failover kümesi ve dosya paylaşımı kullanarak SAP yüksek kullanılabilirliği için Azure altyapısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)hazırlayın'da belgelenen çözüm, bölgeler arasında desteklenmez.
+- Üçüncü bölge, bir [SUSE Linux Pacemaker kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmanız durumunda SBD aygıtını barındırmak için kullanılır.
+- Bir bölge hatası durumunda uygulama kaynaklarını başlatabilmek için pasif bölgeye (DBMS bakış açısından) atıl durumdaki VM'leri dağıtmanız gerekir.
+    - [Azure Site Kurtarma](https://azure.microsoft.com/services/site-recovery/) şu anda bölgeler arasında devre dışı kakacak aktif VM'leri çoğaltamıyor. 
+- Bölge arızası durumunda SAP uygulama katmanını ikinci bölgede otomatik olarak başlatmanızı sağlayan otomasyona yatırım yapmalısınız.
 
-## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Birleşik yüksek kullanılabilirlik ve olağanüstü durum kurtarma yapılandırması
-Microsoft, bir Azure bölgesindeki farklı Azure Kullanılabilirlik Alanları barındıran tesislerde coğrafi uzaklıklar hakkında herhangi bir bilgi paylaşmaz. Yine de bazı müşteriler, bir kurtarma noktası hedefini (RPO) içeren bir birleştirilmiş HA ve DR yapılandırması için bölgeleri kullanıyor. Yani, olağanüstü durum kurtarma durumunda bile, tüm kaydedilmiş veritabanı işlemlerini kaybetmemeniz gerekir. 
+## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Kombine yüksek kullanılabilirlik ve olağanüstü durum kurtarma yapılandırması
+Microsoft, azure bölgesinde farklı Azure Kullanılabilirlik Bölgeleri barındıran tesisler arasındaki coğrafi uzaklıklar hakkında hiçbir bilgi paylaşmaz. Yine de, bazı müşteriler sıfır bir kurtarma noktası hedefi (RPO) vaat eden bir kombine HA ve DR yapılandırmaiçin bölgeleri kullanıyor. Bu, olağanüstü durum kurtarma durumunda bile taahhüt edilen veritabanı hareketlerini kaybetmemeniz gerektiği anlamına gelir. 
 
 > [!NOTE]
-> Yalnızca belirli koşullarda bu şekilde bir yapılandırma kullanmanızı öneririz. Örneğin, veriler Azure bölgesinden güvenlik veya uyumluluk nedenleriyle bu şekilde çıkabileceği zaman kullanabilirsiniz. 
+> Böyle bir yapılandırmayı yalnızca belirli durumlarda kullanmanızı öneririz. Örneğin, veriler Güvenlik veya uyumluluk nedenleriyle Azure bölgesinden ayrıladığında bunu kullanabilirsiniz. 
 
-Bu tür bir yapılandırmanın nasıl görünebileceğini gösteren bir örnek aşağıda verilmiştir:
+Böyle bir yapılandırmanın nasıl görünebileceğine ilişkin bir örnek aşağıda verilmiştir:
 
-![Bölgelerde yüksek kullanılabilirliğe sahip DR](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
+![Bölgelerde kombine yüksek kullanılabilirlikLI DR](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
 
-Bu yapılandırma için aşağıdaki noktalar geçerlidir:
+Bu yapılandırma için aşağıdaki hususlar geçerlidir:
 
-- Bir kullanılabilirlik bölgesini barındıran tesislerin arasında önemli bir mesafe olduğunu veya belirli bir Azure bölgesi içinde kalmaya zorladığınızı varsayalım. Kullanılabilirlik kümeleri Azure Kullanılabilirlik Alanları ' de dağıtılamaz. Bunu dengelemek için, [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenen Azure yakınlık yerleşimi gruplarını kullanabilirsiniz.
-- Bu mimariyi kullandığınızda, durumu yakından izlemeniz ve etkin DBMS ve SAP Merkezi Hizmetleri örneklerini dağıtılan uygulama katmanınız ile aynı bölgede tutmaya çalışmalısınız. SAP Merkezi hizmetinin veya DBMS örneğinin yük devretmesi durumunda, mümkün olduğunca hızlı bir şekilde dağıtılmış SAP uygulama katmanı ile bölgeye el ile yeniden oturum açmak istiyorsanız emin olmanız gerekir.
-- Etkin QA uygulama örneklerini çalıştıran VM 'lerde önceden yüklenmiş üretim uygulaması örneklerinin olması gerekir.
-- Bir bölge hatası durumunda, QA uygulama örneklerini kapatın ve bunun yerine üretim örneklerini başlatın. Bu işi yapmak için uygulama örnekleri için sanal adlar kullanmanız gerektiğini unutmayın.
-- SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
-- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
-- Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
-- Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
-    - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
-    - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
+- Kullanılabilirlik Bölgesi'ne ev sahipliği yapan tesisler arasında önemli bir mesafe olduğunu veya belirli bir Azure bölgesinde kalmak zorunda kaldığınızı varsayıyorsanız. Kullanılabilirlik kümeleri Azure Kullanılabilirlik Bölgelerinde dağıtılamaz. Bunu telafi etmek için, [SAP uygulamalarında en iyi ağ gecikmesi için Azure Yakınlık Yerleşim Grupları](sap-proximity-placement-scenarios.md)makalesinde belgelenen Azure yakınlık yerleşim gruplarını kullanabilirsiniz.
+- Bu mimariyi kullandığınızda, durumu yakından izlemeniz ve etkin DBMS ve SAP Merkezi Hizmetleri örneklerini dağıtılan uygulama katmanınızla aynı bölgede tutmaya çalışmanız gerekir. SAP Merkezi Hizmetinin veya DBMS örneğinin başarısız olması durumunda, SAP uygulama katmanı mümkün olan en kısa sürede dağıtılırken bölgeye el ile geri dönebileceğinizden emin olmak istersiniz.
+- Etkin QA uygulama örneklerini çalıştıran VM'lerde önceden yüklenmiş üretim uygulaması örnekleri olmalıdır.
+- Bölge hatası durumunda, QA uygulama örneklerini kapatın ve bunun yerine üretim örneklerini başlatın. Bu işi yapmak için uygulama örnekleri için sanal adlar kullanmanız gerektiğini unutmayın.
+- SAP Merkezi Hizmetleri ve DBMS katmanının arıza kümelerinin yük dengeleyicileri için [Standart SKU Azure Yük Dengeleyicisini](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kullanmanız gerekir. Temel Yük Dengeleyicisi bölgeler arasında çalışmaz.
+- SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağlarıyla birlikte bölgelere doğru genişletilir. Her bölge için ayrı sanal ağlara ihtiyacınız yoktur.
+- Dağıttığınız tüm sanal makineler de [Azure Yönetilen Diskler'i](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, yerdeğiştirmeler için desteklenmez.
+- Azure Premium Depolama ve [Ultra SSD depolama alanı,](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bölgeler arasında herhangi bir depolama çoğaltma türünü desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetleri) önemli verileri çoğaltmalıdır.
+- Aynı durum paylaşılan bir disk (Windows), CIFS paylaşımı (Windows) veya NFS paylaşımı (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu paylaşılan diskleri veya bölgeler arasındaki paylaşımları çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
+    - Windows için, Azure'da bir küme paylaşılan disk kullanarak Windows [failover kümesinde sap ASCS/SCS örneğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)belgelenen SIOS DataKeeper kullanan bir küme çözümü.
+    - SUSE Linux için, [SUSE Linux Enterprise Server'daki Azure VM'lerde NFS'nin Yüksek kullanılabilirlikte](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)belgelenmiş olarak oluşturulmuş bir NFS payı.
 
-  Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
-- Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
+  Şu anda, Microsoft Scale-Out File Server'ı kullanan çözüm, Sap [ascs/SCS örnekleri için Windows failover kümesi ve dosya paylaşımı kullanarak SAP yüksek kullanılabilirliği için Azure altyapısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)hazırlayın'da belgelenen çözüm, bölgeler arasında desteklenmez.
+- Üçüncü bölge, bir [SUSE Linux Pacemaker kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmanız durumunda SBD aygıtını barındırmak için kullanılır.
 
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Kullanılabilirlik Alanları arasında dağıtım için bazı sonraki adımlar aşağıda verilmiştir:
+Azure Kullanılabilirlik Bölgeleri arasında dağıtmaya yönelik sonraki adımlar şunlardır:
 
-- [Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+- [Azure'da bir küme paylaşılan disk kullanarak bir Windows failover kümesinde SAP ASCS/SCS örneğini kümeleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [SAP ASCS/SCS örnekleri için Windows failover kümesi ve dosya paylaşımı kullanarak Azure altyapılarını SAP yüksek kullanılabilirliği için hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
 
 
 

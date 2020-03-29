@@ -1,6 +1,6 @@
 ---
-title: Değiştirin ve yeniden bir mikro hizmet - Azure | Microsoft Docs
-description: Bu öğreticide değiştirmek ve bir mikro hizmet Uzaktan izleme yeniden dağıtma işlemi gösterilmektedir
+title: Bir mikro hizmeti değiştirin ve yeniden dağıtın - Azure | Microsoft Dokümanlar
+description: Bu öğretici, Uzaktan İzleme'de bir mikro hizmeti nasıl değiştireceğiniz ve yeniden dağıtabileceğinizi gösterir
 author: dominicbetts
 ms.author: dobett
 ms.service: iot-accelerators
@@ -8,80 +8,80 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447650"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Bir mikro hizmeti özelleştirme ve yeniden dağıtma
 
-Bu öğreticide birini düzenlemek gösterilir [mikro Hizmetler](https://azure.com/microservices) Uzaktan izleme çözümünde, mikro hizmet görüntüsü oluşturun, görüntüyü docker hub'ınızı dağıtmak ve sonra Uzaktan izleme çözümünde kullanabilirsiniz. Bu kavram, öğretici temel senaryo burada bir mikro hizmet API çağrısı ve durum ileti "Etkin tutma ve iyi" değiştirin "Yeni Made burada düzenlemeleri için!" kullanır
+Bu öğretici, Uzaktan İzleme çözümündeki [mikro hizmetlerden](https://azure.com/microservices) birini nasıl dizediğinizi, mikro hizmetinizin bir görüntüsünü oluşturmanızı, görüntüyü docker hub'ınıza nasıl dağıtabileceğinizi ve uzaktan izleme çözümünde nasıl kullanacağınızı gösterir. Bu kavramı tanıtmak için, öğretici bir microservice API arama ve "Alive and Well" dan "Yeni Edits Made Here için durum iletisi değiştirmek temel bir senaryo kullanır!"
 
-Uzaktan izleme çözümü, bir docker hub'ından çekilir docker görüntüleri kullanılarak oluşturulan bir mikro hizmetler kullanır. 
+Uzaktan İzleme çözümü, docker hub'ından çekilen docker görüntüleri kullanılarak oluşturulmuş mikro hizmetleri kullanır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 >[!div class="checklist"]
-> * Uzaktan izleme çözümünde bir mikro hizmet oluşturun ve düzenleyin
-> * Bir docker görüntüsü oluşturun
-> * Bir docker görüntüsünü docker hub'ına gönderme
-> * Yeni docker görüntüsünü çekme
+> * Uzaktan İzleme çözümünde bir mikro hizmeti edin ve oluşturun
+> * Docker görüntüsü oluşturma
+> * Docker görüntüsünü docker hub'ınıza itin
+> * Yeni docker görüntüsünü çekin
 > * Değişiklikleri görselleştirin 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi uygulamak için ihtiyacınız vardır:
+Bu öğreticiyi takip etmek için şunları yapmanız gerekir:
 
 >[!div class="checklist"]
-> * [Uzaktan izleme çözüm Hızlandırıcısını yerel olarak dağıtma](iot-accelerators-remote-monitoring-deploy-local.md)
-> * [Bir Docker hesabı](https://hub.docker.com/)
-> * [Postman](https://www.getpostman.com/) - API yanıtı görüntülemek için gerekli
+> * [Uzaktan İzleme çözüm hızlandırıcısını yerel olarak dağıtma](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [Docker hesabı](https://hub.docker.com/)
+> * [Postacı](https://www.getpostman.com/) - API yanıtını görüntülemek için gerekli
 
-## <a name="call-the-api-and-view-response-status"></a>Arama API'si ve görünümü yanıt durumu
+## <a name="call-the-api-and-view-response-status"></a>API'yi arayın ve yanıt durumunu görüntüleyin
 
-Bu bölümünde varsayılan IOT hub Yöneticisi mikro hizmet API çağrısı. API, daha sonra mikro hizmet özelleştirerek değiştiren bir durum iletisi döndürür.
+Bu bölümde, varsayılan IoT hub yöneticisi microservice API'yi çağırırsınız. API, daha sonra microservice'i özelleştirerek değiştirdiğiniz bir durum iletisini döndürür.
 
-1. Uzaktan izleme çözümü makinenizde yerel olarak çalışır durumda olduğundan emin olun.
-2. Postman indirdiğiniz bulun ve açın.
-3. Postman içinde GET aşağıdakileri girin: `http://localhost:8080/iothubmanager/v1/status`.
-4. Görünümü "Durum" dönüş ve görmeniz gerekir: "Tamam: etkin ve iyi".
+1. Uzaktan İzleme çözümünüzün makinenizde yerel olarak çalıştırdığından emin olun.
+2. Postacı'yı indirdiğiniz yeri bulun ve açın.
+3. Postman olarak, GET aşağıdaki girin: `http://localhost:8080/iothubmanager/v1/status`.
+4. Dönüşü görüntüleyin ve "Durum": "Ok:Alive and Well"i görmelisiniz.
 
-    ![Canlı ve iyi Postman iletisi](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+    ![Canlı ve İyi Postacı Mesajı](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
-## <a name="change-the-status-and-build-the-image"></a>Durumu değiştirmek ve görüntüyü oluşturma
+## <a name="change-the-status-and-build-the-image"></a>Durumu değiştirin ve görüntüyü oluşturun
 
-"Yeni düzenlemeler burada yapılan!" için IOT Hub Yöneticisi mikro hizmet durum iletisi şimdi Değiştir ve ardından bu yeni durum docker görüntüsünü yeniden derleyin. Burada sorun yaşarsanız, başvurmak bizim [sorun giderme](#Troubleshoot) bölümü.
+Şimdi Iot Hub Manager microservice'in durum iletisini "Burada Yapılan Yeni Edonlar!" olarak değiştirin. ve sonra bu yeni durumla docker görüntüsünü yeniden oluşturun. Burada sorunlarla karşılaştıysanız, [Sorun Giderme](#Troubleshoot) bölümümüze bakın.
 
-1. Terminalinizi açık olduğundan emin olun ve Uzaktan izleme çözümü kopyaladığınız dizine geçin. 
-1. Dizininizi "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services için" değiştirin.
-1. Herhangi bir metin düzenleyicisinde ya da istediğiniz gibi IDE StatusService.cs açın. 
+1. Terminalinizin açık olduğundan emin olun ve Uzaktan İzleme çözümünü klonladığınız dizine değiştirin. 
+1. Dizininizi "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services" olarak değiştirin.
+1. Beğendiğiniz herhangi bir metin düzenleyicisinde veya IDE'de StatusService.cs açın. 
 1. Aşağıdaki kodu bulun:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
-    aşağıdaki kodla değiştirin ve dosyayı kaydedin.
+    ve aşağıdaki koda değiştirin ve kaydedin.
 
     ```csharp
     var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
-5. Terminalinizi için geri dönün, ancak artık aşağıdaki dizine geçin: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
-6. Yeni docker görüntünüzü derlemek için aşağıdakileri yazın
+5. Terminalinize geri dön, ancak şimdi aşağıdaki dizine geçin: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
+6. Yeni docker resminizi oluşturmak için
 
     ```sh
     sh build
     ```
     
-    veya Windows üzerinde:
+    veya Windows'da:
     
     ```cmd
     ./build.cmd
     ```
 
-7. Yeni görüntünüzü başarıyla oluşturuldu doğrulamak için aşağıdakileri yazın
+7. Yeni resminizin başarıyla oluşturulduğunu doğrulamak için
 
     ```cmd/sh
     docker images 
@@ -89,113 +89,113 @@ Bu bölümünde varsayılan IOT hub Yöneticisi mikro hizmet API çağrısı. AP
 
 Depo "azureiotpcs/iothub-manager-dotnet" olmalıdır.
 
-![Başarılı bir docker görüntüsü](./media/iot-accelerators-microservices-example/successful-docker-image.png)
+![Başarılı docker görüntüsü](./media/iot-accelerators-microservices-example/successful-docker-image.png)
 
 ## <a name="tag-and-push-the-image"></a>Görüntüyü etiketleme ve gönderme
-Yeni docker görüntüsünü docker hub'a gönderebilmek için önce Docker görüntülerinizi etiketlemek için bekliyor. Burada sorun yaşarsanız, başvurmak bizim [sorun giderme](#Troubleshoot) bölümü.
+Docker, yeni docker resminizi docker hub'ına itmeden önce resimlerinizin etiketlenmesini bekler. Burada sorunlarla karşılaştıysanız, [Sorun Giderme](#Troubleshoot) bölümümüze bakın.
 
-1. Oluşturduğunuz yazarak docker görüntüsünü görüntü Kimliğini bulun:
+1. Yazarak oluşturduğunuz docker görüntüsünün Resim Kimliğini bulun:
 
     ```cmd/sh
     docker images
     ```
 
-2. "Test" türüyle, görüntüyü etiketlemek için
+2. Resminizi "test" türüyle etiketlemek için
 
     ```cmd/sh
     docker tag [Image ID] [docker ID]/iothub-manager-dotnet:testing 
     ```
 
-3. Docker hub'ınıza yeni etiketli görüntünüzü itme için şunu yazın
+3. Yeni etiketlenen resminizi docker hub'ınıza itmek için
 
     ```cmd/sh
     docker push [docker ID]/iothub-manager-dotnet:testing
     ```
 
-4. Bir internet tarayıcısı açın ve gidin, [docker hub](https://hub.docker.com/) ve oturum açın.
-5. Artık docker hub'ında yeni gönderilen docker görüntünüzü görmeniz gerekir.
-![Docker görüntüsünü docker hub'a](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
+4. İnternet tarayıcınızı açın ve [docker hub'ınıza](https://hub.docker.com/) gidin ve oturum açın.
+5. Şimdi docker hub üzerinde yeni itti docker görüntü görmelisiniz.
+![Docker hub'ında Docker görüntüsü](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
 
-## <a name="update-your-remote-monitoring-solution"></a>Uzaktan izleme çözümünüzü güncelleştir
-Şimdi, yerel docker-docker hub, yeni docker görüntüsünü çekmek için compose.yml güncelleştirmeniz gerekir. Burada sorun yaşarsanız, başvurmak bizim [sorun giderme](#Troubleshoot) bölümü.
+## <a name="update-your-remote-monitoring-solution"></a>Uzaktan İzleme çözümünüzü güncelleyin
+Docker hub'ınızdan yeni docker imajınızı çekmek için artık yerel docker-compose.yml'inizi güncellemeniz gerekir. Burada sorunlarla karşılaştıysanız, [Sorun Giderme](#Troubleshoot) bölümümüze bakın.
 
-1. Terminale geri dönün ve aşağıdaki dizine geçin: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
-2. Docker-compose.yml herhangi bir metin düzenleyicisinde ya da istediğiniz gibi IDE açın.
+1. Terminale geri dön ve aşağıdaki dizine geç: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
+2. İstediğinherhangi bir metin düzenleyicisinde veya IDE'de docker-compose.yml'i açın.
 3. Aşağıdaki kodu bulun:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
-    ve aşağıdaki gibi görünür ve kaydetmek için değiştirin.
+    ve aşağıdaki resim gibi görünmesi için değiştirin ve kaydedin.
 
     ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
-## <a name="view-the-new-response-status"></a>Yeni yanıt durumunu görüntüleyin
-Uzaktan izleme çözümünü yerel bir örneğini dağıtarak ve Postman içinde yeni durum yanıt görüntüleyerek sonlandırın.
+## <a name="view-the-new-response-status"></a>Yeni yanıt durumunu görüntüleme
+Uzaktan İzleme çözümünün yerel bir örneğini yeniden dağıtarak ve Postman'da yeni durum yanıtını görüntüleyerek bitirin.
 
-1. Terminalinizi için geri dönün ve aşağıdaki dizine geçin: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
-2. Uzaktan izleme çözümü, yerel örneği, terminale aşağıdaki komutu yazarak başlatın:
+1. Terminalinize geri dön ve aşağıdaki dizine geçiş yapın: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
+2. Terminale aşağıdaki komutu yazarak Uzaktan İzleme çözümünün yerel örneğini başlatın:
 
     ```cmd/sh
     docker-compose up
     ```
 
-3. Postman indirdiğiniz bulun ve açın.
-4. Postman içinde aşağıdaki isteği Get girin: `http://localhost:8080/iothubmanager/v1/status`. Artık görmelisiniz, "Durum": "TAMAM: Burada yapılan yeni düzenlemeler! ".
+3. Postacı'yı indirdiğiniz yeri bulun ve açın.
+4. Postacı'da GET'e aşağıdaki isteği `http://localhost:8080/iothubmanager/v1/status`girin: . Şimdi görmelisiniz, "Durum": "Tamam: Yeni Editler Burada Made!".
 
-![Yeni burada yaptığınız düzenlemeleri postman iletisi](./media/iot-accelerators-microservices-example/new-postman-message.png)
+![Yeni Edneler Burada postacı mesajı made made](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>Sorun giderme
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Sorun giderme
 
-Bir sorunla karşılaşırsanız çalıştırıyorsanız, yerel makinede kapsayıcıları ve docker görüntüleri kaldırmayı deneyin.
+Sorunlarla karşılaşıyorsanız, yerel makinedeki docker görüntülerini ve konteynerleri kaldırmayı deneyin.
 
-1. Tüm kapsayıcıları kaldırmanız için önce tüm çalışan kapsayıcıları durdurmak gerekecektir. Tür ve terminal açın
+1. Tüm kapsayıcıları kaldırmak için öncelikle çalışan tüm kapsayıcıları durdurmanız gerekir. Terminalinizi açın ve yazın
 
     ```cmd/sh
     docker stop $(docker ps -aq)
     docker rm $(docker ps -aq)
     ```
     
-2. Tüm görüntüleri kaldırmak için türü ve terminal açın 
+2. Tüm görüntüleri kaldırmak için terminalinizi açın ve 
 
     ```cmd/sh
     docker rmi $(docker images -q)
     ```
 
-3. Varsa tüm kapsayıcıları makinede yazarak denetleyebilirsiniz.
+3. Yazarak makinede herhangi bir kap olup olmadığını kontrol edebilirsiniz
 
     ```cmd/sh
     docker ps -aq 
     ```
 
-    Tüm kapsayıcıları başarıyla kaldırılırsa, hiçbir şey gösterilmesi gerekir.
+    Tüm kapsayıcıları başarıyla kaldırdıysanız, hiçbir şey görünmemelidir.
 
-4. Varsa herhangi bir görüntü makinede yazarak denetleyebilirsiniz.
+4. Yazarak makinede herhangi bir görüntü olup olmadığını kontrol edebilirsiniz
 
     ```cmd/sh
     docker images
     ```
 
-    Tüm kapsayıcıları başarıyla kaldırılırsa, hiçbir şey gösterilmesi gerekir.
+    Tüm kapsayıcıları başarıyla kaldırdıysanız, hiçbir şey görünmemelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide gördüğünüz nasıl yapılır:
+Bu öğreticide, nasıl gördüğünüz:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Uzaktan izleme çözümünde bir mikro hizmet oluşturun ve düzenleyin
-> * Bir docker görüntüsü oluşturun
-> * Bir docker görüntüsünü docker hub'ına gönderme
-> * Yeni docker görüntüsünü çekme
+> * Uzaktan İzleme çözümünde bir mikro hizmeti edin ve oluşturun
+> * Docker görüntüsü oluşturma
+> * Docker görüntüsünü docker hub'ınıza itin
+> * Yeni docker görüntüsünü çekin
 > * Değişiklikleri görselleştirin 
 
-Denemek için bir sonraki şey [Uzaktan izleme çözümündeki cihaz simülatörü mikro özelleştirme](iot-accelerators-microservices-example.md)
+Denemek için bir sonraki şey [Uzaktan İzleme çözümünde cihaz simülatörü microservice özelleştirme](iot-accelerators-microservices-example.md)
 
-Uzaktan izleme çözümü hakkında daha fazla Geliştirici bilgi için bkz:
+Uzaktan İzleme çözümü hakkında daha fazla geliştirici bilgisi için bkz:
 
 * [Geliştirici Başvuru Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 <!-- Next tutorials in the sequence -->

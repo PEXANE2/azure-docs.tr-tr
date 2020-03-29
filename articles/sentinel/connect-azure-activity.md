@@ -1,6 +1,6 @@
 ---
-title: Azure etkinlik verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Azure etkinlik verilerini Azure Sentinel 'e bağlamayı öğrenin.
+title: Azure Etkinliği verilerini Azure Sentinel'e bağlayın | Microsoft Dokümanlar
+description: Azure Etkinliği verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,41 +13,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 28d5acd80deef193c7d2fea46f682f26abd756aa
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124980"
 ---
-# <a name="connect-data-from-azure-activity-log"></a>Azure etkinlik günlüğünden veri bağlama
+# <a name="connect-data-from-azure-activity-log"></a>Azure Etkinliği günlüğünden veri bağlama
 
+Günlükleri [Azure Etkinliği'nden](../azure-monitor/platform/platform-logs-overview.md) tek bir tıklamayla Azure Sentinel'e aktarabilirsiniz. Etkinlik günlüğü, Azure Kaynak Yöneticisi operasyonel verilerinden Hizmet Durumu etkinliklerindeki güncelleştirmelere kadar Azure genelinde abonelik düzeyinde ki olayları kaydeden ve görüntüleyen bir abonelik günlüğüdür. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklarüzerinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için 'ne, kim ve ne zaman' gerçekleştirilmesini belirleyebilirsiniz. Ayrıca işlemin durumunu ve diğer ilgili özellikleri de öğrenebilirsiniz. Etkinlik günlüğü, Klasik/"RDFE" modelini kullanan kaynaklar için okuma (GET) işlemlerini veya işlemleri içermez. 
 
+## <a name="prerequisites"></a>Ön koşullar
 
-Günlükleri [Azure etkinlik günlüğünden](../azure-monitor/platform/platform-logs-overview.md) Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz. Etkinlik günlüğü, Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir abonelik günlüğü. Bu, Azure Resource Manager işlemsel verilerden hizmet durumu olaylarında güncelleştirmelere kadar olan bir veri aralığı içerir. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ' ne, kim ve ne zaman ' i belirleyebilirsiniz. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz. Etkinlik günlüğü, klasik/"RDFE" modelini kullanan kaynaklara yönelik okuma (GET) işlemlerini veya işlemlerini içermez. 
+- Kullanıcınızın Log Analytics çalışma alanına Katkıda Bulunan izinleri olmalıdır.
+- Kullanıcınızın, günlüklerini Azure Sentinel'e aktarmak istediğiniz herhangi bir abonelik için Reader izinlerine sahip olması gerekir.
 
+## <a name="set-up-the-azure-activity-connector"></a>Azure Etkinliği bağlayıcısını ayarlama
 
-## <a name="prerequisites"></a>Önkoşullar
+1. Azure Sentinel gezinti menüsünden **Veri bağlayıcılarını**seçin. Bağlayıcılar listesinden Azure **Etkinliği'ni**ve ardından sağ alttaki **Açık bağlayıcı sayfası** düğmesini tıklatın.
 
-- Log Analytics çalışma alanına katkıda bulunan izinleri olan Kullanıcı 
+2. **Yönergeler** sekmesinin altında, **Azure Etkinliğini Yapılandır>** bağlantısını tıklatın.
 
+3. Azure **Etkinliği günlüğü** bölmesinde, günlüklerini Azure Sentinel'e aktarmak istediğiniz abonelikleri seçin. 
 
-## <a name="connect-to-azure-activity-log"></a>Azure etkinlik günlüğüne bağlanma
+4. Sağa açılan abonelik bölmesinde **Bağlan'ı**tıklatın.
 
-1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure etkinlik günlüğü** kutucuğuna tıklayın.
-
-2. Azure etkinlik günlüğü bölmesinde, Azure Sentinel 'e göndermek istediğiniz abonelikleri seçin. 
-
-3. **Bağlan**'a tıklayın.
-
-4. Azure etkinlik uyarıları için Log Analytics ilgili şemayı kullanmak için, **AzureActivity**aratın.
-
-
- 
+5. Azure Etkinliği uyarıları için Günlük Analizi'nde ilgili şemayı `AzureActivity` kullanmak için sorgu penceresine yazın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede Azure etkinlik günlüğü 'nü Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+Bu belgede, Azure Etkinliği günlüğünü Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Yerleşik veya [özel](tutorial-detect-threats-custom.md) kurallar kullanarak Azure Sentinel ile tehditleri [algılamaya](tutorial-detect-threats-built-in.md) başlayın.

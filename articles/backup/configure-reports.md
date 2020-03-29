@@ -1,127 +1,127 @@
 ---
 title: Azure Backup raporlarını yapılandırma
-description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
+description: Günlük Analitiği ve Azure Çalışma Kitaplarını kullanarak Azure Yedekleme için raporları yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161210"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
-Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre kapsayan verilere bağlı olarak yedeklemeler hakkında öngörüler elde etmek içindir. Bu tür bir çözüm için birden çok kullanım durumu olabilir: bulut depolama alanını ayırmak ve tahmin etmek, yedeklemelerin denetlenmesi ve geri yüklenmesi ve farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri belirlemek.
+Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süreye yayılan verilere dayalı olarak yedeklemeler hakkında öngörüler elde etmektir. Böyle bir çözüm için birden çok kullanım durumu olabilir - tüketilen bulut depolamanın tahsisi ve tahmini, yedeklemelerin ve geri yüklemelerin denetlenmeleri ve farklı parçalılık düzeylerindeki önemli eğilimlerin tanımlanması.
 
-Azure Backup, [Azure Izleyici günlüklerinin](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ve [Azure çalışma kitaplarının](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)faydalanmasını sağlayan bir raporlama çözümü sağlar. Bu, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler almanıza yardımcı olur. Bu makalede, yedekleme raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
+Bugün Azure Yedekleme, Azure Monitör [Günlükleri](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ve [Azure Çalışma Kitaplarından](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)yararlanan ve tüm yedekleme mülkünüzde yedeklemeleriniz hakkında zengin öngörüler elde etmeye yardımcı olan bir raporlama çözümü sunar. Bu makalede, Yedekleme Raporlarınasıl yapılandırılatır ve görüntüleneme açıklanmaktadır.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-* Yedekleme raporları Azure VM 'lerinde, Azure VM 'lerinde SQL 'de SAP HANA/Ao 'da, Azure Backup aracıda (MARS), Azure Backup Sunucusu (MABS) ve System Center DPM 'de desteklenir.
-* DPM iş yükleri için yedekleme raporları, DPM sürüm 5.1.363.0 ve üzeri ve aracı sürümü 2.0.9127.0 ve üzeri için desteklenir.
-* MABS iş yükleri için yedekleme raporları, MABS sürümü 13.0.415.0 ve üzeri ve aracı sürümü 2.0.9170.0 ve üzeri için desteklenir.
-* Yedekleme raporları, verileri kullanıcının erişebileceği bir Log Analytics (LA) çalışma alanına gönderildiği sürece tüm yedekleme öğelerinde, kasaların, aboneliklerde ve bölgelerde görüntülenebilir. 
-* Müşterilerinizin aboneliklerine temsilci erişimi olan bir [Azure](https://docs.microsoft.com/azure/lighthouse/) açık Kullanıcı kullanıyorsanız, tüm kiracılarınızdaki raporları görüntülemek için Azure açık thouse ile bu raporları kullanabilirsiniz.
-* Günlük yedekleme işleri için veriler şu anda raporlarda görüntülenmiyor.
+* Yedekleme Raporları Azure VM'ler için desteklenir, Azure VM'lerde SQL, Azure VM'lerde SAP HANA/ASE, Azure Yedekleme Aracısı (MARS), Azure Yedekleme Sunucusu (MABS) ve Sistem Merkezi DPM için desteklenir.
+* DPM iş yükleri için Yedekleme Raporları DPM Sürüm 5.1.363.0 ve üzeri ve Aracı Sürüm 2.0.9127.0 ve üzeri için desteklenir.
+* MABS iş yükleri için Yedekleme Raporları MABS Sürüm 13.0.415.0 ve üzeri ve Aracı Sürüm 2.0.9170.0 ve üzeri için desteklenir.
+* Yedekleme Raporları, verileri kullanıcının erişebildiği bir Günlük Analizi (LA) Çalışma Alanına gönderildiği sürece tüm yedekleme öğeleri, kasalar, abonelikler ve bölgelerde görüntülenebilir. 
+* Müşterilerinizin aboneliklerine yetkili erişimi olan bir [Azure Deniz Feneri](https://docs.microsoft.com/azure/lighthouse/) kullanıcısıysanız, bu raporları tüm kiracılarınızda raporları görüntülemek için Azure Deniz Feneri ile kullanabilirsiniz.
+* Günlük yedekleme işlerine ait veriler şu anda raporlarda görüntülenmez.
 
 ## <a name="getting-started"></a>Başlarken
 
-Raporları kullanmaya başlamak için aşağıda açıklanan üç adımı izleyin:
+Raporları kullanmaya başlamak için aşağıdaki üç adımı izleyin:
 
-1. **Log Analytics (LA) çalışma alanı oluşturun (veya mevcut bir tane kullanın):**
+1. **Günlük Analizi (LA) çalışma alanı oluşturun (veya varolan bir çalışma alanı kullanın):**
 
-Yedekleme raporlama verilerinizi depolamak için bir veya daha fazla LA çalışma alanı ayarlamanız gerekir. Bu LA çalışma alanının oluşturulabildiği konum ve abonelik, kasalarınızın bulunduğu konumdan ve aboneliğin bağımsızdır. 
+Yedekleme raporlama verilerinizi depolamak için bir veya daha fazla LA Çalışma alanı ayarlamanız gerekir. Bu LA çalışma alanının oluşturulabileceği konum ve abonelik, kasalarınızın bulunduğu konumdan ve abonelikten bağımsızdır. 
 
-Aşağıdaki makaleye bakın: bir LA çalışma alanı ayarlamak için [Azure portal Log Analytics çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) .
+Aşağıdaki makaleye bakın: La Çalışma Alanı ayarlamak için [Azure portalında bir Günlük Analizi Çalışma Alanı oluşturun.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-Varsayılan olarak, bir LA çalışma alanındaki veriler 30 gün boyunca tutulur. Daha uzun bir süre boyunca verileri görmek için, LA çalışma alanının saklama süresini değiştirin. Saklama süresini değiştirmek için aşağıdaki makaleye bakın: [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+Varsayılan olarak, BIR LA Çalışma alanındaki veriler 30 gün boyunca saklanır. Daha uzun bir zaman ufku için verileri görmek için LA Çalışma Alanı'nın bekletme süresini değiştirin. Bekletme süresini değiştirmek için aşağıdaki makaleye bakın: [Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönetin.](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
 
 2. **Kasalarınız için tanılama ayarlarını yapılandırın:**
 
-Kurtarma Hizmetleri kasaları gibi kaynaklar Azure Resource Manager, zamanlanmış işlemler ve Kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri Tanılama verileri olarak kaydeder. 
+Kurtarma Hizmetleri kasaları gibi Azure Kaynak Yöneticisi kaynakları, zamanlanmış işlemler ve kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri tanılama verileri olarak kaydeder. 
 
-Kurtarma Hizmetleri kasaınızın İzleme bölümünde **Tanılama ayarları** ' nı seçin ve kurtarma hizmetleri kasasının tanılama verilerinin hedefini belirtin. [Tanılama olaylarını kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
+Kurtarma Hizmetleri kasanızın izleme bölümünde, **Tanılama ayarlarını** seçin ve Kurtarma Hizmetleri kasasının tanılama verileri için hedefi belirtin. [Tanılama olaylarını kullanma hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
 
-![Tanılama ayarları dikey penceresi](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
+![Teşhis Ayarları Blade](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup, belirli bir kapsamdaki tüm kasaların tanılama ayarlarının yapılandırılmasını otomatikleştiren yerleşik bir Azure Ilkesi de sağlar. Bu ilkeyi nasıl kullanacağınızı öğrenmek için aşağıdaki makaleye bakın: [kasa tanılama ayarlarını ölçeklendirerek yapılandırma](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
-
-> [!NOTE]
-> Tanılamayı yapılandırdıktan sonra, ilk verilerin tamamlanması 24 saate kadar sürebilir. Veriler LA çalışma alanına akışa başladıktan sonra raporlardaki verileri hemen göremeyebilirsiniz, çünkü geçerli kısmi güne ait veriler raporlarda gösterilmez ( [burada](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)daha fazla ayrıntıya ulaşabilirsiniz). Bu nedenle, vakaları Log Analytics verileri gönderecek şekilde yapılandırdıktan sonra raporların 2 gün sonra görüntülenmesine başlamanız önerilir.
-
-3. **Azure portal raporları görüntüle:**
-
-Kasalarınızı LA 'ya veri gönderecek şekilde yapılandırdıktan sonra, herhangi bir kasanın dikey penceresine gidip **yedekleme raporları** menü öğesine tıklayarak yedekleme raporlarınızı görüntüleyin. 
-
-![Kasa panosu](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
-
-Bu bağlantıya tıkladığınızda yedekleme raporu çalışma kitabı açılır.
+Azure Yedekleme, belirli bir kapsamdaki tüm kasalar için tanı ayarlarıyapılandırmasını otomatikleştiren yerleşik bir Azure İlkesi de sağlar. Bu ilkeyi nasıl kullanacağınızı öğrenmek için aşağıdaki makaleye bakın: [Vault Diagnostics Ayarlarını ölçekte yapılandırın](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 > [!NOTE]
-> * Şu anda, raporun ilk yükünün 1 dakikaya kadar zaman alabilir.
-> * Kurtarma Hizmetleri Kasası yalnızca yedekleme raporları için bir giriş noktasıdır. Yedekleme raporları çalışma kitabı kasanın dikey penceresinden açıldıktan sonra, tüm kasalarınızda toplanan verileri (uygun LA çalışma alanları kümesini seçerek) görebilirsiniz.
+> Tanılamayı yapılandırdıktan sonra, ilk veri itme işleminin tamamlanması 24 saat kadar sürebilir. Veriler LA Çalışma Alanına akmaya başladıktan sonra, geçerli kısmi güne ait veriler raporlarda gösterilmediğinden, raporlardaki verileri hemen göremeyebilirsiniz (daha fazla ayrıntı [burada).](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) Bu nedenle, loglarınızı günlük analytics'e veri göndermek üzere yapılandırmanızdan 2 gün sonra raporları görüntülemeye başlamanız önerilir.
+
+3. **Azure portalındaki raporları görüntüleyin:**
+
+Kasalarınızı LA'ye veri gönderecek şekilde yapılandırıldıktan sonra, herhangi bir kasanın bıçağına göz atarak ve **Yedekleme Raporları** menü öğesini tıklatarak yedek raporlarınızı görüntüleyin. 
+
+![Kasa Panosu](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
+
+Bu bağlantıyı tıklattığınızda Yedekleme Raporu Çalışma Kitabı açılır.
+
+> [!NOTE]
+> * Şu anda, raporun ilk yüklemesi 1 dakika kadar sürebilir.
+> * Kurtarma Hizmetleri kasası yalnızca Yedekleme Raporları için bir giriş noktasıdır. Yedekleme Raporları Çalışma Kitabı bir kasanın bıçağından açıldığında, tüm kasalarınızda toplanan verileri görebilirsiniz (uygun LA Çalışma Alanları kümesini seçerek).
 
 Aşağıda, raporun içerdiği çeşitli sekmelerin açıklaması verilmiştir:
 
-* **Özet** -Özet sekmesi, yedeğinize ilişkin üst düzey bir genel bakış sağlar. Özet sekmesinde, toplam yedekleme öğesi sayısı, tüketilen toplam bulut depolaması, korunan örnek sayısı ve iş yükü türü başına iş başarısı oranı hakkında hızlı bir bakış edinebilirsiniz. Belirli bir yedekleme yapıtı türü etrafında daha ayrıntılı bilgi için ilgili sekmelere gidin.
+* **Özet** - Özet sekmesi yedekleme gayrimenkulünüzün üst düzey bir genel görünümünü sağlar. Özet sekmesi altında, toplam yedekleme öğesi sayısı, tüketilen toplam bulut depolama alanı, korumalı örnek sayısı ve iş yükü türü başına iş başarısı oranı hakkında hızlı bir bakış elde edebilirsiniz. Belirli bir yedek yapı türü yle ilgili daha ayrıntılı bilgi için ilgili sekmelere gidin.
 
-![Özet sekmesi](./media/backup-azure-configure-backup-reports/summary.png)
+![Summary (Özet) sekmesi](./media/backup-azure-configure-backup-reports/summary.png)
 
-* **Yedekleme öğeleri** -yedekleme öğeleri sekmesi, bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmenizi sağlar. Örneğin, Azure VM yedekleme 'de SQL kullanıyorsanız, yedeklenen her SQL veritabanı için kullanılan bulut depolama alanını görebilirsiniz. Ayrıca, belirli bir koruma durumunun yedekleme öğeleri için verileri görmeyi seçebilirsiniz. Örneğin, sekmenin en üstündeki **koruma durdurulmuş** Kutucuğa tıkladığınızda, yalnızca koruma durdurulmuş durumundaki yedekleme öğeleri için verileri göstermek üzere aşağıdaki tüm pencere öğelerine filtre uygular.
+* **Yedekleme Öğeleri** - Yedekleme Öğeleri sekmesi, Yedekleme Öğesi düzeyinde tüketilen bulut depolama yla ilgili bilgileri ve eğilimleri görmenizi sağlar. Örneğin, Azure VM yedeklemesinde SQL kullanıyorsanız, yedeklenen her SQL veritabanı için tüketilen bulut depolamasını görebilirsiniz. Ayrıca, belirli bir koruma durumuna sahip yedekleme öğeleriiçin verileri görmeyi de seçebilirsiniz. Örneğin, sekmenin üst kısmındaki **Koruma Durduruldu** döşemesini tıklattığınızda, yalnızca Koruma Durdurulan durumdaki Yedekleme Öğeleri için verileri göstermek için aşağıdaki tüm widget'ları filtreler.
 
-![Yedekleme öğeleri sekmesi](./media/backup-azure-configure-backup-reports/backup-items.png)
+![Yedek Öğeler sekmesi](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-* **Kullanım** -kullanım sekmesi, yedeklemeleriniz için önemli faturalandırma parametrelerini görüntülemenize yardımcı olur. Bu sekmede gösterilen bilgiler bir faturalandırma varlığı (korumalı kapsayıcı) düzeyidir. Örneğin, Azure 'a yedeklenmekte olan bir DPM sunucusu söz konusu olduğunda, DPM sunucusu için kullanılan korumalı örneklerin ve bulut depolamanın eğilimini görüntüleyebilirsiniz. Benzer şekilde, Azure Backup 'de SQL kullanıyorsanız veya Azure Backup SAP HANA, bu sekme Bu veritabanlarının bulunduğu sanal makine düzeyinde kullanımla ilgili bilgiler sağlar.
+* **Kullanım** - Kullanım sekmesi, yedeklemeleriniz için anahtar faturalandırma parametrelerini görüntülemenize yardımcı olur. Bu sekmede gösterilen bilgiler bir fatura lama varlığı (korumalı kapsayıcı) düzeyindedir. Örneğin, bir DPM sunucusunun Azure'a yedekleniyor olması durumunda, DPM sunucusu için tüketilen korumalı örnekler in ve bulut depolama eğilimini görüntüleyebilirsiniz. Benzer şekilde, Azure Yedekleme'de SQL veya Azure Yedekleme'de SAP HANA kullanıyorsanız, bu sekme, bu veritabanlarının bulunduğu sanal makine düzeyinde kullanımla ilgili bilgiler sağlar.
 
 ![Kullanım sekmesi](./media/backup-azure-configure-backup-reports/usage.png)
 
-* **İşler-işler** sekmesi, işlerinizde gerçekleşen hatalı iş sayısı ve iş hatasının en önemli nedenleri gibi işlerin uzun süre çalışan eğilimlerini görüntülemenize olanak sağlar. Bu bilgileri hem bir toplama düzeyinde hem de yedekleme öğesi düzeyinde görüntüleyebilirsiniz. Bir kılavuzda belirli bir yedekleme öğesine tıkladığınızda, seçili zaman aralığında o yedekleme öğesinde tetiklenen her bir işle ilgili ayrıntılı bilgileri görüntülemenize izin verir.
+* **İşler** - İşler sekmesi, günlük başarısız işlerin sayısı ve iş başarısızlığının en önemli nedenleri gibi işlerde uzun süre çalışan eğilimleri görüntülemenizi sağlar. Bu bilgileri hem toplam düzeyde hem de yedek madde düzeyinde görüntüleyebilirsiniz. Kılavuzdaki belirli bir yedekleme öğesini tıklatmak, seçili zaman aralığında bu yedekleme öğesiüzerinde tetiklenen her iş hakkında ayrıntılı bilgileri görüntülemenize olanak tanır.
 
 ![İşler sekmesi](./media/backup-azure-configure-backup-reports/jobs.png)
 
-* **İlkeler** -İlkeler sekmesi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemenize olanak sağlar. Belirli bir ilkeye tıklanması, ilişkili yedekleme öğelerinin her biriyle ilgili bilgileri görüntülemenize olanak sağlar.
+* **İlkeler -** İlkeler sekmesi, ilişkili öğelerin sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemenize olanak tanır. Belirli bir ilkeyi tıklatmak, ilişkili yedekleme öğelerinin her biri hakkındaki bilgileri görüntülemenize olanak tanır.
 
 ![İlkeler sekmesi](./media/backup-azure-configure-backup-reports/policies.png)
 
-## <a name="exporting-to-excel"></a>Excel 'e verme
+## <a name="exporting-to-excel"></a>Excel'e Dışa Aktarma
 
-Herhangi bir pencere öğesinin sağ üst köşesindeki aşağı ok düğmesine tıklamak (tablo/grafik), varolan filtrelerin uygulanmış olduğu gibi bu pencere öğesinin içeriğini Excel sayfası olarak dışa aktarır. Bir tablonun daha fazla satırını Excel 'e aktarmak için, her bir kılavuzun en üstünde bulunan **sayfa başına satır** açılan listesini kullanarak sayfada görüntülenecek satır sayısını artırabilirsiniz.
+Herhangi bir widget'ın (tablo/grafik) sağ üst kısmındaki aşağı ok düğmesine tıkladığınızda, geçerli filtreler uygulandığı gibi, bu widget'ın içeriğini Excel sayfası olarak dışa dışa dışa dışa ekler. Bir tablonun daha fazla satırını Excel'e aktarmak için, her ızgaranın üst kısmındaki **Sayfa Başına Satır** lar açılır düşüşünü kullanarak sayfada görüntülenen satır sayısını artırabilirsiniz.
 
-## <a name="pinning-to-dashboard"></a>Panoya sabitleme
+## <a name="pinning-to-dashboard"></a>Panoya Sabitleme
 
-Pencere öğesini Azure portal panonuza sabitlemek için her pencere öğesinin en üstündeki sabitleme simgesine tıklayın. Bu, ihtiyacınız olan en önemli bilgileri görüntüleyecek şekilde uyarlanmış özelleştirilmiş panolar oluşturmanıza yardımcı olur.
+Widget'ı Azure portal panonuza sabitlemek için her widget'ın üst kısmındaki Pin Simgesi'ni tıklatın. Bu, ihtiyacınız olan en önemli bilgileri görüntülemek için özelleştirilmiş panolar oluşturmanıza yardımcı olur.
 
-## <a name="cross-tenant-reports"></a>Çapraz kiracı raporları
+## <a name="cross-tenant-reports"></a>Kiracılar Arası Raporlar
 
-Çoklu kiracı ortamlarında abonelikler için temsilci erişimi olan bir [Azure](https://docs.microsoft.com/azure/lighthouse/) açık Kullanıcı kullanıyorsanız, verileri görmek istediğiniz tüm abonelikleri seçmek için, varsayılan abonelik filtresini (Azure Portal en sağ üst kısmında bulunan filtre simgesine tıklayarak) kullanabilirsiniz. Bunun yapılması, çok kiracılı raporları görüntülemek için kiracılar genelinde LA çalışma alanları seçmenizi sağlar.
+Birden çok kiracı ortamlarında aboneliklere yetkin erişimi olan bir [Azure Deniz Feneri](https://docs.microsoft.com/azure/lighthouse/) kullanıcısıysanız, verileri görmek istediğiniz tüm abonelikleri seçmek için varsayılan abonelik filtresini (Azure portalının sağ üst ağındaki filtre simgesine tıklayarak) kullanabilirsiniz. Bunu yapmak, çok kiracılı raporları görüntülemek için kiracılarınız arasında LA Çalışma Alanlarını seçmenize izin verecektir.
 
-## <a name="conventions-used-in-backup-reports"></a>Yedekleme raporlarında kullanılan kurallar
+## <a name="conventions-used-in-backup-reports"></a>Yedekleme Raporlarında Kullanılan Sözleşmeler
 
-* Filtreler, her sekmede soldan sağa ve yukarıdan aşağıya doğru çalışır, diğer bir deyişle, herhangi bir filtre yalnızca bu filtrenin sağına veya bu filtrenin altına konumlandırılmış olan tüm pencere öğeleri için geçerlidir. 
-* Renkli bir kutucuğa tıkladığınızda, o kutucuğun değeriyle ilgili kayıtlar için kutucuğun altındaki pencere öğeleri filtrelendirilir. Örneğin, yedekleme öğeleri sekmesindeki *koruma durdurulmuş* Kutucuğa tıkladığınızda, aşağıdaki kılavuzların ve grafiklerin ' koruma durduruldu ' durumunda yedekleme öğelerinin verilerini göstermesi için filtre uygular.
-* Renkli olmayan kutucuklar tıklatılabilir değildir.
-* Geçerli kısmi güne ait veriler raporlarda gösterilmez. Bu nedenle, seçili **zaman aralığı** değeri ***son 7 gün***olduğunda, rapor son 7 günlük kayıtları gösterir (geçerli günü içermez).
-* Rapor, seçilen zaman aralığında **tetiklenen** işlerin ayrıntılarını (günlük işlerden ayrı olarak) gösterir. 
-* Bulut depolama ve korumalı örnekler için gösterilen değerler, seçili zaman aralığının **sonunda** bulunur.
-* Raporlarda görüntülenen yedekleme öğeleri, seçili zaman aralığının **sonunda** bulunan öğelerdir. Seçilen zaman aralığının ortasında silinen yedekleme öğeleri görüntülenmez. Aynı kural yedekleme Ilkeleri için de geçerlidir.
+* Filtreler her sekmede soldan sağa ve yukarıdan aşağıya doğru çalışır, diğer bir süre önce herhangi bir filtre yalnızca filtrenin sağına veya bu filtrenin altına konumlandırılmış tüm widget'lar için geçerlidir. 
+* Renkli bir döşemeye tıkladığınızda, döşemenin değerine ilişkin kayıtlar için döşemenin altındaki widget'lar filtreler. Örneğin, Yedekleme Öğeleri sekmesinde *Koruma Durduruldu* döşemesini tıklattığınızda, 'Koruma Durduruldu' durumunda yedek öğelerin verilerini göstermek için aşağıdaki ızgaraları ve grafikleri filtreler.
+* Renkli olmayan döşemeler tıklatılamaz.
+* Geçerli kısmi güne ait veriler raporlarda gösterilmez. Bu nedenle, Zaman **Aralığı'nın** seçili değeri, ***Son 7 gün***olduğunda, rapor son 7 tamamlanan güne ait kayıtları gösterir (geçerli günü içermez).
+* Rapor, seçili zaman aralığında **tetiklenen** İşlerin (günlük işleri dışında) ayrıntılarını gösterir. 
+* Bulut Depolama ve Korumalı Örnekler için gösterilen değerler, seçili zaman aralığının **sonundadır.**
+* Raporlarda görüntülenen Yedekleme Öğeleri, seçili zaman aralığının **sonunda** bulunan öğelerdir. Seçili zaman aralığının ortasında silinen Yedekleme Öğeleri görüntülenmez. Aynı kural Yedekleme İlkeleri için de geçerlidir.
 
-## <a name="query-load-times"></a>Sorgu yükleme süreleri
+## <a name="query-load-times"></a>Yükleme sürelerini sorgula
 
-Yedekleme raporundaki pencere öğeleri, kullanıcının LA çalışma alanlarında çalışan kusto sorguları tarafından desteklenir. Bu sorgular genellikle büyük miktarlarda veri işlemeyi, daha zengin Öngörüler sağlamak için birden çok birleştirme işlemini içerir. Kullanıcı büyük bir yedekleme genelinde rapor görüntülediklerinde pencere öğeleri anında yüklenmeyebilir. Aşağıdaki tabloda, farklı pencere öğelerinin yük için alınacağı, yedekleme öğelerinin sayısına ve raporun görüntülendiği zaman aralığına göre kabaca bir tahmin verilmiştir:
+Yedekleme Raporu'ndaki widget'lar, kullanıcının LA Çalışma Alanlarında çalışan Kusto sorguları tarafından desteklenmektedir. Bu sorgular genellikle daha zengin öngörüler sağlamak için birden çok birleştirme yle büyük miktarda verinin işlenmesini içerdiğinden, widget'lar kullanıcı raporları büyük bir yedekleme mülkünde görüntülediğinde anında yüklenmeyebilir. Aşağıdaki tablo, yedekleme öğelerinin sayısına ve raporun görüntülendiği zaman aralığına bağlı olarak, farklı widget'ların yüklemek için alabilecekleri süreye ilişkin kabaca bir tahmin sağlar:
 
-| **Veri kaynakları**                         | **Zaman ufuk** | **Yükleme süreleri (yaklaşık)**                                              |
+| **# Veri Kaynakları**                         | **Zaman Ufku** | **Yükleme Süreleri (yaklaşık)**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
-| ~ 5 K                       | 1 ay          | Kutucuklar: 5-10 saniye <br> Kılavuzlar: 5-10 saniye <br> Grafikler: 5-10 saniye <br> Rapor düzeyi filtreleri: 5-10 saniye|
-| ~ 5 K                       | 3 ay          | Kutucuklar: 5-10 saniye <br> Kılavuzlar: 5-10 saniye <br> Grafikler: 5-10 saniye <br> Rapor düzeyi filtreleri: 5-10 saniye|
-| ~ 10 K                       | 3 ay          | Kutucuklar: 15-20 saniye <br> Kılavuzlar: 15-20 saniye <br> Grafikler: 1-2 dakika <br> Rapor düzeyi filtreleri: 25-30 saniye|
-| ~ 15 K                       | 1 ay          | Kutucuklar: 15-20 saniye <br> Kılavuzlar: 15-20 saniye <br> Grafikler: 50-60 saniye <br> Rapor düzeyi filtreleri: 20-25 saniye|
-| ~ 15 K                       | 3 ay          | Kutucuklar: 20-30 saniye <br> Kılavuzlar: 20-30 saniye <br> Grafikler: 2-3 dakika <br> Rapor düzeyi filtreleri: 50-60 saniye |
+| ~5 K                       | 1 ay          | Fayans: 5-10 saniye <br> Izgaralar: 5-10 saniye <br> Grafikler: 5-10 saniye <br> Rapor düzeyi filtreler: 5-10 saniye|
+| ~5 K                       | 3 ay          | Fayans: 5-10 saniye <br> Izgaralar: 5-10 saniye <br> Grafikler: 5-10 saniye <br> Rapor düzeyi filtreler: 5-10 saniye|
+| ~10 K                       | 3 ay          | Fayans: 15-20 saniye <br> Izgaralar: 15-20 saniye <br> Grafikler: 1-2 dakika <br> Rapor düzeyi filtreler: 25-30 saniye|
+| ~15 K                       | 1 ay          | Fayans: 15-20 saniye <br> Izgaralar: 15-20 saniye <br> Grafikler: 50-60 saniye <br> Rapor düzeyi filtreler: 20-25 saniye|
+| ~15 K                       | 3 ay          | Fayans: 20-30 saniye <br> Izgaralar: 20-30 saniye <br> Grafikler: 2-3 dakika <br> Rapor düzeyi filtreler: 50-60 saniye |
 
-## <a name="what-happened-to-the-power-bi-reports"></a>Power BI raporlarına ne oldu?
-* Raporlama için daha önce Power BI şablon uygulamamız (Azure Storage hesabından alınan verilerin kaynağı) kullanımdan kaldırma yolunda yer alır. Raporları görüntülemek için yukarıda açıklanan Log Analytics kasa tanılama verilerini göndermeye başlamanız önerilir.
+## <a name="what-happened-to-the-power-bi-reports"></a>Power BI Raporlarına ne oldu?
+* Raporlama için daha önceki Power BI şablon uygulamamız (Azure Depolama Hesabından veri kaynaklı) amortisman yolundadır. Raporları görüntülemek için yukarıda açıklandığı gibi Log Analytics'e kasa tanılama verilerini göndermeye başlamanız önerilir.
 
-* Ayrıca, bir depolama hesabına veya bir LA çalışma alanına Tanılama verileri göndermenin v1 şeması, kullanımdan kaldırma yolunda da olur. Bu, v1 şemasına göre özel sorgular veya bir sorgu yazdıysanız, bu sorguları şu anda desteklenen v2 şemasını kullanmak için güncelleştirmeniz önerilir.
+* Buna ek olarak, bir depolama hesabına veya LA Çalışma alanına tanılama verileri gönderme V1 şeması da bir amortisman yolu üzerindedir. Bu, V1 şemasını temel alan özel sorgular veya otomasyonlar yazdıysanız, şu anda desteklenen V2 şemasını kullanmak için bu sorguları güncelleştirmeniz gerektiği anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Backup ile izleme ve raporlama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[Azure Yedekleme ile izleme ve raporlama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)

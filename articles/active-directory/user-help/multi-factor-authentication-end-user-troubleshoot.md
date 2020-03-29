@@ -1,6 +1,6 @@
 ---
-title: Hesap iki öğeli kimlik doğrulama ile ilgili yaygın sorunlar-Azure AD
-description: Daha yaygın iki öğeli doğrulama sorunu ve iş veya okul hesabınız için çözümler.
+title: Hesap iki faktörlü kimlik doğrulamaile ilgili sık karşılaşılan sorunlar - Azure AD
+description: Bazı daha yaygın iki faktörlü doğrulama sorunları ve iş veya okul hesabınız için çözümler.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,101 +13,101 @@ ms.date: 02/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897720"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki faktörlü doğrulama ve iş veya okul hesabınızla ilgili sık karşılaşılan sorunlar
 
-Azure Active Directory (Azure AD) kuruluşunuz iki öğeli doğrulamayı etkinleştirse, iş veya okul hesabınızın oturum açması, Kullanıcı adınızın, parolanızın ve bir mobil cihazın veya telefonunuzun bir birleşimini gerektirir. İki kimlik doğrulama biçimini (bildiğiniz bir şeyi ve sizinle bir şeyi) bağlı olarak yalnızca bir paroladan daha güvenlidir. İki öğeli doğrulama kötü amaçlı korsanların sizin için hazır olmasını durdurmaya yardımcı olabilir, çünkü parolankenizin olsa da, gürültü, cihazınıza sahip olmalardır.
+Azure Etkin Dizin (Azure AD) kuruluşunuz iki faktörlü doğrulamayı çalıştırdığında, iş veya okul hesabı oturum açma nız için kullanıcı adınız, parolanız ve bir cep telefonu veya telefonunuzun bir kombinasyonu gerekir. İki kimlik doğrulama biçimine güvenerek paroladan daha güvenlidir: bildiğiniz bir şey ve sizinle birlikte olan bir şey. İki faktörlü doğrulama, kötü amaçlı bilgisayar korsanlarının sizin gibi davranmasını engellemeye yardımcı olabilir, çünkü parolanız olsa bile, sizin cihazınızın da onlarda olma ihtimali vardır.
 
 <center>
 
-Kavramsal kimlik doğrulama yöntemleri görüntüsünü ![](../authentication/media/concept-mfa-howitworks/methods.png)</center>
+![Kavramsal kimlik doğrulama yöntemleri görüntü](../authentication/media/concept-mfa-howitworks/methods.png)</center>
 
-Bizden daha sık gerçekleşmemizi sağlayan bazı yaygın iki öğeli doğrulama sorunları vardır. En yaygın sorunları ve olası düzeltmeleri ele almak için bu makaleye bir araya koyuyoruz.
+Herhangi birimizin sıkça gerçekleşmesi gibi görünen bazı yaygın iki faktörlü doğrulama sorunları vardır. Bu makaleyi en yaygın sorunları ve bazı olası düzeltmeleri gidermek için bir araya getirdik.
 
 >[!Important]
->Yöneticimce sahipseniz Azure AD [belgelerinde](https://docs.microsoft.com/azure/active-directory)Azure AD ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
+>Yöneticiyseniz, Azure REKLAM ortamınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgiyi [Azure AD belgelerinde](https://docs.microsoft.com/azure/active-directory)bulabilirsiniz.
 >
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) olan iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız (örneğin, danielle@outlook.com), kendiniz için ayarladığınız bir hesap olan kişisel Microsoft hesabı, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+>Bu içerik aynı zamanda yalnızca kuruluşunuz tarafından size sağlanan hesap olan iş veya okul alain@contoso.comhesabınızla birlikte kullanılmak üzere tasarlanmıştır (örneğin. Kendiniz için ayarladığınız bir hesap olan iki faktörlü doğrulama ve kişisel Microsoft hesabınızla ilgili danielle@outlook.comsorunlar yaşıyorsanız (örneğin,) [Turning two-factor verification on or off for your Microsoft account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bkz.
 
-## <a name="i-dont-have-my-mobile-device-with-me"></a>Mobil cihazım benim benimle yok
+## <a name="i-dont-have-my-mobile-device-with-me"></a>Mobil aygıtım yanımda değil
 
-Meydana gelir. Mobil cihazınızı evde bıraktınız ve şimdi nerede olduğunuzu doğrulamak için telefonunuzu kullanamazsınız. Hesabınızda, ofis telefonunuz gibi daha önceden oturum açmak için başka bir yöntem eklediyseniz, bu yöntemi şimdi kullanabilmeniz gerekir. Daha önce ek bir doğrulama yöntemi eklemediyseniz, kuruluşunuzun yardım masasına başvurmanız ve hesabınıza geri başlamanıza yardımcı olmanız gerekir.
+Böyle şeyler olur. Mobil cihazınızı evde bıraktınız ve şimdi kim olduğunuzu doğrulamak için telefonunuzu kullanamadığınızı. Daha önce hesabınızda oturum açmanız için ofis telefonunuz gibi başka bir yöntem eklediyseniz, bu yöntemi şimdi kullanabilmelisiniz. Hiçbir zaman ek bir doğrulama yöntemi eklemediyseniz, kuruluşunuzun Yardım masasına başvurmanız ve hesabınıza geri dönmenize yardımcı olmaları gerekir.
 
-### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>Başka bir doğrulama yöntemi kullanarak iş veya okul hesabınızda oturum açmak için
+### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>Başka bir doğrulama yöntemi kullanarak iş veya okul hesabınızda oturum açma
 
-1. Hesabınızda oturum açın, ancak **iki öğeli doğrulama** sayfasında **başka bir şekilde oturum aç** bağlantısını seçin.
+1. Hesabınızda oturum açın, ancak **İki faktörlü doğrulama** **sayfasındaki başka bir şekilde Oturum Aç** bağlantısını seçin.
 
-    ![Doğrulama yönteminde oturum açma değiştirme yöntemi](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
+    ![Oturum açma doğrulama yöntemini değiştirme](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
-    **Başka bir yolla oturum açma** bağlantısını görmüyorsanız, başka bir doğrulama yöntemi ayarlamadıysanız anlamına gelir. Hesabınızda oturum açarken yardım almak için yöneticinize başvurmanız gerekir.
+    **Oturum Aç'ı başka bir şekilde** görmüyorsanız, bu başka bir doğrulama yöntemi ayarlamadığınız anlamına gelir. Hesabınızda oturum açma yardımı için yöneticinize başvurmanız gerekir.
 
-2. Alternatif doğrulama yönteminizi seçin ve iki öğeli doğrulama işlemiyle devam edin.
+2. Alternatif doğrulama yönteminizi seçin ve iki faktörlü doğrulama işlemine devam edin.
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Mobil cihazımı kaybettim veya Çalındım
+## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Mobil cihazımı kaybettim ya da çalındı.
 
-Kaybolması veya mobil cihazınızın çalınması durumunda, farklı bir yöntem kullanarak oturum açabilir veya kuruluşunuzun yardım masasına ayarlarınızı temizlemesini isteyebilirsiniz. Kuruluşunuzun yardım masasına telefonunuzun kaybolması veya çalınması durumunda, hesabınıza uygun güncelleştirmelerin yapılabilmesi için bu sayede emin olmanız önemle önerilir. Ayarlarınız temizlendikten sonra, bir sonraki oturum açışınızda [iki öğeli doğrulama için kaydolmanız](multi-factor-authentication-end-user-first-time.md) istenir.
+Mobil cihazınızı kaybettiyseniz veya çaldıysanız, farklı bir yöntem kullanarak oturum açabilir veya ayarlarınızı temizlemesi için kuruluşunuzun Yardım masasına danışabilirsiniz. Uygun güncellemelerin hesabınızda yapIlebilmesi için kuruluşunuzun Yardım masasına telefonunuzun kaybolup olmadığını bildirilmesi önemle tavsiye ediyoruz. Ayarlarınız temizlendikten sonra, bir sonraki oturum açtığınızda [iki faktörlü doğrulama için kaydolmanız](multi-factor-authentication-end-user-first-time.md) istenir.
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Mobil Cihazlarıma gönderilen doğrulama kodunu alamıyorum
+## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Doğrulama kodunu mobil aygıtıma göndertemiyorum
 
-Doğrulama kodunuzun olmaması yaygın bir sorundur ve genellikle mobil cihazınızın ve ayarlarının ayarlarıyla ilgilidir. Deneyebileceğiniz bazı olası şeyler:
+Doğrulama kodunuzu almamak sık karşılaşılan bir sorundur ve genellikle mobil cihazınız ve ayarlarıyla ilişkilidir. Deneyebilirsiniz bazı olası şeyler:
 
-Şunu deneyin | Kılavuz bilgileri
+Bunu deneyin | Rehberlik bilgileri
 --------- | ------------
-Mobil cihazınızı yeniden başlatın | Bazen cihazınızda bir yenileme yeterlidir. Cihazınızın yeniden başlatılması, çalışmakta olan herhangi bir arka plan işlemini veya hizmeti sonlandırır ve sorun oluşmasına ve cihazınızın çekirdek bileşenlerini yenilemeye ve bu durumda, bir noktada kilitlendiklerinde yeniden başlatılmasına neden olabilir.
-Güvenlik bilgilerinizin doğru olduğundan emin olun | Güvenlik doğrulama yöntemi bilgilerinizin doğru, özellikle telefon numaralarınızı doğru olduğundan emin olun. Yanlış telefon numarasına yerleştirirseniz, Tüm uyarılarınız bu hatalı sayıya gider. Neyse ki, bu kullanıcı uyarılarla hiçbir şey yapamayacaktır, ancak hesabınızda oturum açmanıza de yardımcı olmaz. Bilgilerinizin doğru olduğundan emin olmak için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesindeki yönergelere bakın.
-Bildirimlerin açık olduğunu doğrulayın | Mobil cihazınızın bildirimleri açık olduğundan ve telefon çağrılarına, kimlik doğrulama uygulamanıza ve mesajlaşma uygulamanıza (metin iletileri için) mobil cihazınıza görünür uyarı bildirimleri göndermesini sağlayan bir bildirim yöntemi seçtiğinizden emin olun.
-Bir cihaz sinyaliniz ve Internet bağlantınız olduğundan emin olun | Telefon aramalarınızın ve SMS iletilerinizin mobil cihazınıza geldiğinden emin olun. Sizi bir arkadaşınız araması yapın ve her ikisini de aldığınızdan emin olmak için size bir kısa mesaj gönderin. Bunu yapmazsanız, önce mobil cihazınızın açık olduğundan emin olun. Cihazınız açıksa, ancak aramayı veya metni alamıyorsanız, büyük olasılıkla ağınızla ilgili bir sorun olabilir ve sağlayıcınızla konuşmanız gerekir. Genellikle sinyalle ilgili sorunlarınız varsa, mobil cihazınızda [Microsoft Authenticator uygulamasını](user-help-auth-app-download-install.md) yüklemenizi ve kullanmanızı öneririz. Doğrulayıcı uygulaması, herhangi bir hücre sinyali veya Internet bağlantısı gerekmeden oturum açma için rastgele güvenlik kodları oluşturabilir.
-Rahatsız değil ' i Kapat | Mobil cihazınız için **rahatsız değil** özelliğini açtığınızdan emin olun. Bu özellik açık olduğunda, bildirimlerin mobil cihazınızda sizi uyarmasını izin verilmez. Bu özelliğin nasıl kapatılacağı hakkında yönergeler için mobil cihazınızın kılavuzuna bakın.
-Telefon numaralarının engellemesini kaldır | Birleşik Devletler, Microsoft 'tan gelen sesli çağrılar şu numaralardan gelir: + 1 (866) 539 4191, + 1 (855) 330 8653 ve + 1 (877) 668 6536.
-Pilyle ilgili ayarları denetleyin | Bu, yüzeyde tek bir bit gibi görünür, ancak daha az kullanılan uygulamaların arka planda kalan etkin durumdan durması için pil iyileştirmesini ayarladıysanız, bildirim sisteminizin büyük olasılıkla etkilendi. Bu sorunu gidermeyi denemek için, kimlik doğrulama uygulamanız ve mesajlaşma uygulamanız için pil iyileştirmesi ' nı kapatın ve sonra hesabınızda yeniden oturum açmayı deneyin.
+Mobil cihazınızı yeniden başlatın | Bazen cihazınızın yenilenmeye ihtiyacı vardır. Cihazınızı yeniden başlatmak, şu anda çalışan arka plan işlemlerini veya hizmetleri sona erdirebilir ve cihazınızın temel bileşenlerini yenilemenin yanı sıra, bir noktada çökmeleri durumunda bunları yeniden başlatarak sorunlara neden olabilir.
+Güvenlik bilgilerinizin doğru olduğunu doğrulama | Güvenlik doğrulama yöntemi bilgilerinizin, özellikle telefon numaralarınızın doğru olduğundan emin olun. Yanlış telefon numarası koyarsanız, tüm uyarılarınız bu yanlış numaraya gider. Neyse ki, bu kullanıcı uyarılarla ilgili hiçbir şey yapamaz, ancak hesabınızda oturum açmanıza da yardımcı olmaz. Bilgilerinizin doğru olduğundan emin olmak için, [iki faktörlü doğrulama yöntemi ayarları makalenizdeki](multi-factor-authentication-end-user-manage-settings.md) yönergeleri izleyin.
+Bildirimlerinizin açık olduğunu doğrulama | Mobil cihazınızın bildirimleri açık olduğundan ve telefon aramalarının, kimlik doğrulama uygulamanızın ve mesajlaşma uygulamanızın (kısa mesajlar için) mobil cihazınıza görünür uyarı bildirimleri göndermesine olanak tanıyan bir bildirim yöntemi seçtiğinizden emin olun.
+Cihaz sinyali ve Internet bağlantınız olduğundan emin olun | Telefon görüşmelerinizin ve kısa mesajlarınızın mobil cihazınıza iletdiğinden emin olun. Her ikisini de aldığınızdan emin olmak için bir arkadaşınızın sizi aramasını ve size kısa mesaj göndermesini. Bunu yapmazsanız, öncelikle mobil cihazınızın açık olduğundan emin olun. Aygıtınız açıksa, ancak hala çağrı veya metin alamıyorsanız, bu büyük olasılıkla ağınızda bir sorundur ve sağlayıcınızla konuşmanız gerekir. Sık sık sinyalle ilgili sorunlar yaşıyorsanız, [Microsoft Authenticator uygulamasını](user-help-auth-app-download-install.md) mobil cihazınıza yüklemenizi ve kullanmanızı öneririz. Kimlik doğrulayıcı uygulaması, herhangi bir hücre sinyali veya Internet bağlantısı gerektirmeden oturum açma için rasgele güvenlik kodları oluşturabilir.
+Kapatın Rahatsız etmeyin | Mobil cihazınız için **rahatsız etmeyin** özelliğini hiç açmadığınızdan emin olun. Bu özellik açık olduğunda, bildirimlerin mobil cihazınızda sizi uyarmasına izin verilmez. Bu özelliği nasıl kapatacağınız la ilgili talimatlar için mobil cihazınızın kılavuzuna bakın.
+Telefon numaralarının engelini kaldırma | Abd'de, Microsoft'tan gelen sesli aramalar aşağıdaki numaralardan gelir: +1 (866) 539 4191, +1 (855) 330 8653 ve +1 (877) 668 6536.
+Pil ile ilgili ayarlarınızı kontrol edin | Bu yüzeyde biraz garip görünüyor, ancak daha az kullanılan uygulamaların arka planda etkin kalmasını önlemek için pil optimizasyonunuzu ayarladıysanız, bildirim sisteminiz büyük olasılıkla etkilenmiştir. Bu sorunu gidermek için kimlik doğrulama uygulamanız ve mesajlaşma uygulamanız için pil optimizasyonunu kapatın ve ardından hesabınızda yeniden oturum açmayı deneyin.
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>İkinci doğrulama bilgilerim hakkında sorulmıyorum
+## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>İkinci doğrulama bilgilerim için istenmem
 
-Kullanıcı adınızı ve parolanızı kullanarak iş veya okul hesabınızda oturum açtıysanız, ancak ek güvenlik doğrulama bilgileriniz hakkında uyarılmadıysanız, belki henüz cihazınızı ayarlamadınız. Mobil cihazınızın, özel ek güvenlik doğrulama yöntemiyle çalışacak şekilde ayarlanması gerekir. Mobil cihazınızı açtığınızdan ve doğrulama yöntemiyle birlikte kullanılmak üzere kullanılabildiğinden emin olmak için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesine bakın. Cihazınızı veya hesabınızı ayarlamadığınız biliyorsanız, bunu şu anda [iki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md) makalesindeki adımları izleyerek yapabilirsiniz.
+Kullanıcı adınızı ve parolanızı kullanarak iş veya okul hesabınızda oturum açtıysanız, ancak ek güvenlik doğrulama bilgileriniz hakkında soru sorulmamışsanız, cihazınızı henüz ayarlamamış olabilirsiniz. Mobil cihazınız, özel ek güvenlik doğrulama yönteminizle çalışacak şekilde ayarlanmalıdır. Mobil cihazınızı açtığınızdan ve doğrulama yönteminizle kullanılabildiğinden emin olmak için [iki faktörlü doğrulama yöntemi ayarları makalenize](multi-factor-authentication-end-user-manage-settings.md) bakın. Cihazınızı veya hesabınızı ayarlamadığınızı biliyorsanız, iki aşamalı doğrulama makalesi [için hesabımı](multi-factor-authentication-end-user-first-time.md) ayarla'daki adımları izleyerek bunu şimdi yapabilirsiniz.
 
-## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Yeni bir telefon numarası aldım ve eklemek istiyorum
+## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Yeni bir telefon numaram var ve eklemek istiyorum.
 
-Yeni bir telefon numarası aldıysanız, doğrulama istemlerinizin doğru konuma gitmesi için güvenlik doğrulama yöntemi ayrıntılarınızı güncelleştirmeniz gerekir. Doğrulama yönteminizi güncelleştirmek için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) makalesindeki **telefon numaranızı ekleme veya değiştirme** bölümündeki adımları izleyin.
+Yeni bir telefon numarası aldıysanız, doğrulama istemlerinizin doğru konuma gitmesi için güvenlik doğrulama yöntemi bilgilerinizi güncellemeniz gerekir. Doğrulama yönteminizi güncellemek için, [iki faktörlü doğrulama yöntemi ayarları makalenizin](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) Telefon numarası ekle bölümündeki adımları izleyin **veya değiştirin.**
 
-## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Yeni bir mobil cihaz aldım ve bunu eklemek istiyorum
+## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Yeni bir mobil cihaz var ve eklemek istiyorum
 
-Yeni bir mobil cihaz aldıysanız, bunu iki öğeli doğrulamayla çalışacak şekilde ayarlamanız gerekir. Bu, çok adımlı bir çözümdür:
+Yeni bir mobil cihaz aldıysanız, iki faktörlü doğrulamayla çalışacak şekilde ayarlamanız gerekir. Bu çok aşamalı bir çözümdür:
 
-1. Hesabınızı iş veya okul hesabınızla çalışacak şekilde ayarlayarak, [iki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md) makalesindeki adımları uygulayın.
+1. İki aşamalı doğrulama makalesi [için hesabımı](multi-factor-authentication-end-user-first-time.md) ayarla'daki adımları izleyerek cihazınızı iş veya okul hesabınızla çalışacak şekilde ayarlayın.
 
-1. Hesap ve cihaz bilgilerinizi **ek güvenlik doğrulama** sayfasında güncelleştirin, eski cihazınızı silin ve yeni bir tane ekleyin. Daha fazla bilgi için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesine bakın.
+1. **Ek güvenlik doğrulama** sayfasında, eski cihazınızı silerek ve yeni cihazınızı ekleyerek hesap ve cihaz bilgilerinizi güncelleyin. Daha fazla bilgi için [iki faktörlü doğrulama yöntemi ayarları makalenizi yönet'e](multi-factor-authentication-end-user-manage-settings.md) bakın.
 
 İsteğe bağlı adımlar:
 
-- [Microsoft Authenticator uygulamasını indirme ve yükleme](user-help-auth-app-download-install.md) makalesindeki adımları izleyerek mobil cihazınıza Microsoft Authenticator uygulamasını indirin, yükleyin ve ayarlayın.
+- [Microsoft Authenticator uygulaması](user-help-auth-app-download-install.md) makalesini İndir ve yükleyin adımlarını izleyerek microsoft kimlik doğrulama uygulamasını mobil cihazınızda indirin, yükleyin ve kurun.
 
-- İki öğeli doğrulama [yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) konusunun **Güvenilen bir cihazda iki öğeli doğrulama istemlerini aç** bölümünde yer alan adımları izleyerek, güvenilen cihazlarınız için iki öğeli doğrulamayı etkinleştirin.
+- İki faktörlü doğrulama yöntemi ayarları makalenizin güvenilir bir aygıt bölümünde iki **faktörlü doğrulama istemini aç'taki** adımları izleyerek güvenilen [aygıtlarınız için iki faktörlü doğrulamayı](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) açın.
 
-## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mobil cihazımın yolculukta oturum açarken sorun yaşıyorum
+## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Seyahat ederken mobil cihazıma giriş yaparken sorun yaşıyorum
 
-Uluslararası bir konumdayken, kısa mesaj gibi mobil cihazla ilgili doğrulama yöntemini kullanmayı daha zor bulabilirsiniz. Mobil cihazınız, dolaşım ücretlerine tabi hale gelmesine neden olabilir. Bu durum için, Wi-Fi etkin noktaya bağlanma seçeneğiyle Microsoft Authenticator uygulamasını kullanmanızı öneririz. Mobil cihazınızda Microsoft Authenticator uygulamasının nasıl indirileceği, yükleneceği ve ayarlandığı hakkında daha fazla bilgi için, [Microsoft Authenticator uygulamasını indirme ve yükleme](user-help-auth-app-download-install.md) makalesine bakın.
+Uluslararası bir konumdayken kısa mesaj gibi mobil cihazla ilgili bir doğrulama yöntemini kullanmak daha zor olabilir. Ayrıca, mobil cihazınız dolaşım ücretlerine maruz kaldığınız için de olabilir. Bu durumda, bir Wi-Fi etkin noktaya bağlanma seçeneğiyle Microsoft Authenticator uygulamasını kullanmanızı öneririz. Microsoft Authenticator uygulamasını mobil cihazınıza nasıl indirecek, yükleyip kurup kurmayız hakkında daha fazla bilgi için [Microsoft Authenticator uygulama makalesini karşıdan yükleyin ve yükleyin.](user-help-auth-app-download-install.md)
 
-## <a name="i-cant-get-my-app-passwords-to-work"></a>Uygulama parolalarımı çalışacak şekilde alamıyoruz
+## <a name="i-cant-get-my-app-passwords-to-work"></a>Uygulama şifrelerimi çalıştıramıyorum
 
-Uygulama parolaları, iki öğeli doğrulamayı desteklemeyen eski masaüstü uygulamaları için normal parolanızı değiştirir. İlk olarak, parolayı doğru yazdığınızdan emin olun. Bu uygulamayı gidermezse, [iki adımlı doğrulama için uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) konusunun **uygulamalarımı kullanarak uygulama parolaları oluşturma ve silme** bölümündeki adımları izleyerek uygulama için yeni bir uygulama parolası oluşturmayı deneyin.
+Uygulama parolaları, iki faktörlü doğrulamayı desteklemeyen eski masaüstü uygulamaları için normal parolanızın yerini alır. İlk olarak, parolayı doğru yazdığından emin olun. Bu düzeltmezse, iki aşamalı doğrulama makalesi için [uygulama parolalarını yönet'in](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) Uygulamalarım portalı bölümünü **kullanarak Uygulama Parolalarını Oluştur'daki** adımları izleyerek uygulama için yeni bir uygulama parolası oluşturmayı deneyin.
 
-## <a name="i-cant-turn-two-factor-verification-off"></a>İki öğeli doğrulamayı kapatma
+## <a name="i-cant-turn-two-factor-verification-off"></a>İki faktörlü doğrulamayı kapatamıyorum
 
-İş veya okul hesabınızla iki öğeli doğrulama kullanıyorsanız (örneğin, alain@contoso.com), büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar vermiş olması anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur. Bununla birlikte, alain@outlook.comgibi bir kişisel hesapla iki öğeli doğrulama kullanıyorsanız, özelliği açıp kapatabilirsiniz. Kişisel hesaplarınız için iki öğeli doğrulamanın nasıl denetılacağı hakkında yönergeler için, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+İş veya okul hesabınızla birlikte iki faktörlü doğrulama kullanıyorsanız (örneğin), alain@contoso.combu büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar verdiği anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, bu özelliği tek tek kapatmanız için bir yol yoktur. Ancak, kişisel bir hesapla iki faktörlü doğrulama kullanıyorsanız, örneğin, alain@outlook.comözelliği açıp kapatma olanağınız vardır. Kişisel hesaplarınız için iki faktörlü doğrulamayı nasıl denetleyeceklerine ilişkin yönergeler [için](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bkz.
 
-## <a name="i-didnt-find-an-answer-to-my-problem"></a>Sorunum için bir yanıt bulamadık
+## <a name="i-didnt-find-an-answer-to-my-problem"></a>Sorunuma bir cevap bulamadım.
 
-Bu adımları denediyseniz ancak hala sorun yaşıyorsanız, yardım almak için kuruluşunuzun yardım masasına başvurun.
+Bu adımları denediyseniz ancak hala sorunlarla karşılaşıyorsanız, yardım için kuruluşunuzun Yardım masasına başvurun.
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [İki öğeli doğrulama yöntemi ayarlarınızı yönetin](multi-factor-authentication-end-user-manage-settings.md)
+- [İki faktörlü doğrulama yöntemi ayarlarınızı yönetme](multi-factor-authentication-end-user-manage-settings.md)
 
-- [İki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md)
+- [İki aşamalı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md)
 
 - [Microsoft Authenticator uygulaması hakkında SSS](user-help-auth-app-faq.md)

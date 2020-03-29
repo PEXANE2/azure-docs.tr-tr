@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services REST çağrıları için Postman ortamını içeri aktarın
-description: Bu konu, Azure Media Services REST çağrıları için Postman ortamının bir tanımını sağlar.
+title: Azure Media Services REST aramaları için Postacı ortamını alma
+description: Bu konu, Azure Media Services REST aramaları için Postacı ortamının bir tanımını sağlar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926706"
 ---
-# <a name="import-the-postman-environment"></a>Postman ortamını içeri aktarma  
+# <a name="import-the-postman-environment"></a>Postacı ortamını alma  
 
-Bu makale, Media Services REST API 'Leri çağıran gruplandırılmış HTTP isteklerini içeren [Postman koleksiyonunu](postman-collection.md) kullanan **Postman** ortam değişkenlerinin tanımını içerir. Ortam ve koleksiyon dosyaları, [Media Services REST API çağrıları Için Postman yapılandırma](media-rest-apis-with-postman.md) öğreticisi tarafından kullanılır.
+Bu makalede, Media Services REST API'leri arayan gruplanmış HTTP isteklerini içeren [Postacı koleksiyonunda](postman-collection.md) kullanılan **Postacı** ortam değişkenlerinin bir tanımı nı içerir. Ortam ve toplama dosyaları [Medya Hizmetleri REST API öğretici için Yapılandırma Postacı](media-rest-apis-with-postman.md) tarafından kullanılır.
 
 > [!NOTE]
-> `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`değeri. Kiracı KIMLIĞINIZI almak için, farenizi portalda (sağ üst köşede) Kullanıcı adınızın üzerine getirip "Dizin: Microsoft ({{TENANTıD}}) içinde bulabilirsiniz.
+> `AzureADSTSEndpoint `  = Değeri. `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` Kiracı kimliğinizi almak için farenizi portaldaki kullanıcı adınızın üzerinde gezinebilirsiniz (sağ üst köşede) ve "Dizin: Microsoft ( {{TENANTID}} } ) .
 
 ```
 {

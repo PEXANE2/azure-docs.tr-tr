@@ -1,43 +1,43 @@
 ---
-title: Dayanıklı İşlevler görev hub 'ları-Azure
-description: Bir görev hub 'ının Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda olduğunu öğrenin. Görev hub 'larını yapılandırmayı öğrenin.
+title: Dayanıklı İşlevlerde Görev Hub'ları - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısında görev hub'ınne ne olduğunu öğrenin. Görev hub'larını nasıl yapılandırıştırılamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262495"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler görev hub 'ları (Azure Işlevleri)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de görev hub'ları (Azure İşlevleri)
 
-[Dayanıklı işlevler](durable-functions-overview.md) bir *görev hub 'ı* , düzenleme için kullanılan Azure depolama kaynakları için mantıksal bir kapsayıcıdır. Orchestrator ve Activity işlevleri aynı görev merkezine ait olduklarında yalnızca birbirleriyle etkileşim kurabilir.
+[Dayanıklı Işlevler'deki](durable-functions-overview.md) *görev hub'ı,* düzenleme için kullanılan Azure Depolama kaynakları için mantıksal bir kapsayıcıdır. Orkestratör ve etkinlik işlevleri yalnızca aynı görev hub'ına ait olduklarında birbirleriyle etkileşimkurabilir.
 
-Birden çok işlev uygulaması bir depolama hesabını paylaşıyorsa, her işlev uygulamasının ayrı bir görev hub 'ı adıyla yapılandırılması *gerekir* . Bir depolama hesabı, birden çok görev hub 'ı içerebilir. Aşağıdaki diyagramda, paylaşılan ve ayrılmış depolama hesaplarında işlev uygulaması başına bir görev hub 'ı gösterilmektedir.
+Birden çok işlevli uygulama bir depolama hesabı paylaşıyorsa, her işlev *uygulaması* ayrı bir görev hub adı ile yapılandırılmalıdır. Depolama hesabı birden çok görev hub'ı içerebilir. Aşağıdaki diyagram, paylaşılan ve özel depolama hesaplarında işlev başına bir görev merkezini gösterir.
 
-![Paylaşılan ve ayrılmış depolama hesaplarını gösteren diyagram.](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![Paylaşılan ve özel depolama hesaplarını gösteren diyagram.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure depolama kaynakları
+## <a name="azure-storage-resources"></a>Azure Depolama kaynakları
 
-Bir görev hub 'ı aşağıdaki depolama kaynaklarından oluşur:
+Görev hub'ı aşağıdaki depolama kaynaklarından oluşur:
 
-* Bir veya daha fazla denetim kuyruğu.
-* Bir iş öğesi kuyruğu.
-* Bir geçmiş tablosu.
-* Tek örnek tablosu.
-* Bir veya daha fazla kira blob içeren bir depolama kapsayıcısı.
+* Bir veya daha fazla denetim sırası.
+* Bir iş öğesi sırası.
+* Bir tarih masası.
+* Bir örnek tablo.
+* Bir veya daha fazla kira lekeleri içeren bir depolama konteyneri.
 * Varsa, büyük ileti yüklerini içeren bir depolama kapsayıcısı.
 
-Orchestrator, varlık veya etkinlik işlevleri çalıştırıldığında veya çalıştırılmak üzere zamanlandığında, bu kaynakların tümü varsayılan Azure depolama hesabında otomatik olarak oluşturulur. [Performans ve ölçeklendirme](durable-functions-perf-and-scale.md) makalesinde bu kaynakların nasıl kullanıldığı açıklanmaktadır.
+Bu kaynakların tümü, düzenek, varlık veya etkinlik işlevleri çalıştırıldığında veya çalıştırılacak zamanlandığında varsayılan Azure Depolama hesabında otomatik olarak oluşturulur. [Performans ve Ölçek](durable-functions-perf-and-scale.md) makalesi, bu kaynakların nasıl kullanıldığını açıklar.
 
-## <a name="task-hub-names"></a>Görev hub 'ı adları
+## <a name="task-hub-names"></a>Görev merkezi adları
 
-Görev hub 'ları, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosyasında belirtilen bir adla tanımlanır:
+Görev hub'ları, aşağıdaki örnekte gösterildiği *gibi, ana bilgisayar.json* dosyasında bildirilen bir adla tanımlanır:
 
-### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Fonksiyonlar 2.0)
 
 ```json
 {
@@ -50,7 +50,7 @@ Görev hub 'ları, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosyas
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>Host. JSON (Işlevler 1. x)
+### <a name="hostjson-functions-1x"></a>host.json (Fonksiyonlar 1.x)
 
 ```json
 {
@@ -60,9 +60,9 @@ Görev hub 'ları, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosyas
 }
 ```
 
-Görev hub 'ları, aşağıdaki `host.json` örnek dosyasında gösterildiği gibi, uygulama ayarları kullanılarak da yapılandırılabilir:
+Görev hub'ları, aşağıdaki `host.json` örnek dosyada gösterildiği gibi uygulama ayarları kullanılarak da yapılandırılabilir:
 
-### <a name="hostjson-functions-10"></a>Host. JSON (Işlevler 1,0)
+### <a name="hostjson-functions-10"></a>host.json (Fonksiyonlar 1.0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Görev hub 'ları, aşağıdaki `host.json` örnek dosyasında gösterildiği gi
 }
 ```
 
-### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Fonksiyonlar 2.0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Görev hub 'ları, aşağıdaki `host.json` örnek dosyasında gösterildiği gi
 }
 ```
 
-Görev hub 'ı adı `MyTaskHub` uygulama ayarı değerine ayarlanır. Aşağıdaki `local.settings.json` `MyTaskHub` ayarının `samplehubname`olarak nasıl tanımlanacağını göstermektedir:
+Görev merkezi `MyTaskHub` adı, uygulama ayarı değerine ayarlanır. Aşağıdaki `local.settings.json` `MyTaskHub` ayarı nasıl tanımlayın: `samplehubname`
 
 ```json
 {
@@ -96,9 +96,9 @@ Görev hub 'ı adı `MyTaskHub` uygulama ayarı değerine ayarlanır. Aşağıda
 }
 ```
 
-Aşağıdaki kod, bir uygulama ayarı olarak yapılandırılmış bir görev hub 'ı ile çalışmak üzere [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanan bir işlevin nasıl yazılacağını göstermektedir:
+Aşağıdaki kod, Uygulama Ayarı olarak yapılandırılan bir görev hub'ı ile çalışmak için [düzenleme istemcisi bağlamakullanan](durable-functions-bindings.md#orchestration-client) bir işlevin nasıl yazıldırılabildiğini gösterir:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`function.json` dosyasındaki görev hub 'ı özelliği uygulama ayarı aracılığıyla ayarlanır:
+Dosyadaki `function.json` görev merkezi özelliği Uygulama Ayarı ile ayarlanır:
 
 ```json
 {
@@ -136,19 +136,19 @@ public static async Task<HttpResponseMessage> Run(
 
 ---
 
-Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, aşağıdaki tabloda gösterildiği gibi varsayılan bir görev hub 'ı adı kullanılacaktır:
+Görev hub adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, aşağıdaki tabloda gösterildiği gibi varsayılan görev merkezi adı kullanılır:
 
-| Dayanıklı uzantı sürümü | Varsayılan görev hub 'ı adı |
+| Dayanıklı uzatma sürümü | Varsayılan görev hub adı |
 | - | - |
-| 2.x | Azure 'da dağıtıldığında, görev hub 'ı adı _işlev uygulamasının_adından türetilir. Azure dışında çalışırken, varsayılan görev hub 'ı adı `TestHubName`. |
-| 'in | Tüm ortamların varsayılan görev hub 'ı adı `DurableFunctionsHub`. |
+| 2.x | Azure'da dağıtıldığında, görev merkezi adı _işlev uygulamasının_adından türetilmiştir. Azure dışında çalışırken varsayılan görev merkezi `TestHubName`adı . |
+| 1.x | Tüm ortamlar için varsayılan `DurableFunctionsHub`görev hub adı. |
 
-Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
 > [!NOTE]
-> Ad, paylaşılan bir depolama hesabında birden çok görev hub 'ı olduğunda, bir görev hub 'ını diğerinden farklılaştırır. Paylaşılan bir depolama hesabını paylaşan birden çok işlev uygulamanız varsa, *Host. JSON* dosyalarındaki her bir görev hub 'ı için farklı adlar açıkça yapılandırmanız gerekir. Aksi halde, birden çok işlev uygulaması iletiler için birbirleriyle rekabet eder ve bu da, `Pending` veya `Running` durumunda beklenmedik şekilde "takılmalar" gibi, tanımsız davranışa neden olabilir.
+> Ortak bir depolama hesabında birden çok görev hub'ı olduğunda, bir görev merkezini diğerinden ayıran addır. Paylaşılan bir depolama hesabını paylaşan birden çok işlevli uygulamanız varsa, *ana bilgisayar.json* dosyalarındaki her görev merkezi için açıkça farklı adlar yapılandırmanız gerekir. Aksi takdirde, birden çok işlevli uygulama iletiler için birbirleriyle rekabet eder ve bu da, orkestrasyonların beklenmedik bir şekilde veya `Pending` `Running` durumda "sıkışması" da dahil olmak üzere tanımlanmamış davranışlara neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Düzenleme sürümü oluşturmayı nasıl ele alabileceğinizi öğrenin](durable-functions-versioning.md)
+> [Orkestrasyon sürümüyle nasıl başa çıkacağınızı öğrenin](durable-functions-versioning.md)

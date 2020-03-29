@@ -1,51 +1,51 @@
 ---
-title: REST API kullanarak yedekleme ilkeleri oluşturma
-description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve bekletme) oluşturmayı ve yönetmeyi öğreneceksiniz.
+title: REST API'yi kullanarak yedekleme ilkeleri oluşturma
+description: Bu makalede, REST API'yi kullanarak yedekleme ilkeleri (zamanlama ve bekletme) oluşturmayı ve nasıl yöneteceğinizi öğreneceksiniz.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963861"
 ---
-# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
+# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API'yi kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturun
 
-Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanmamıza izin verin.
+Azure Kurtarma Hizmetleri kasası için yedekleme ilkesi oluşturma [adımları, ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi Azure VM yedeklemesi için bir ilke oluşturmak için başvuru olarak kullanalım.
 
 ## <a name="create-or-update-a-policy"></a>İlke oluşturma veya güncelleştirme
 
-Azure Backup ilkesi oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın
+Bir Azure Yedekleme ilkesi oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` ve `{vaultName}` URI 'de verilmiştir. Ek bilgiler istek gövdesinde verilmiştir.
+ve `{policyName}` `{vaultName}` URI sağlanmaktadır. İstek gövdesinde ek bilgiler sağlanır.
 
 ## <a name="create-the-request-body"></a>İstek gövdesini oluşturma
 
-Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
+Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak için istek gövdesinin bileşenleri şunlardır.
 
-|Ad  |Gereklidir  |Tür  |Açıklama  |
+|Adı  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
-|properties     |   Doğru      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
 |etiketler     |         | Nesne        |  Kaynak etiketleri       |
 
-İstek gövdesindeki tanımlarının tüm listesi için, [yedekleme ilkesi REST API belgesine](/rest/api/backup/protectionpolicies/createorupdate)bakın.
+İstek gövdesindeki tanımların tam listesi [için, yedekleme ilkesi REST API belgesine](/rest/api/backup/protectionpolicies/createorupdate)bakın.
 
 ### <a name="example-request-body"></a>Örnek istek gövdesi
 
-Aşağıdaki istek gövdesi, Azure VM yedeklemeleri için bir yedekleme ilkesi tanımlar.
+Aşağıdaki istek gövdesi Azure VM yedeklemeleri için bir yedekleme ilkesi tanımlar.
 
-İlke şöyle diyor:
+Politika diyor ki:
 
-- Her Pazartesi, Çarşamba, Salı, Pasifik standart saati 10:00 ' de haftalık bir yedekleme gerçekleştirin.
-- Her Pazartesi, Çarşamba, bir haftada Perşembe için alınan yedeklemeleri koruyun.
-- Her Çarşamba ve ayın üçüncü Perşembe günü iki ay boyunca gerçekleştirilen yedeklemeleri koruyun (varsa önceki bekletme koşullarını geçersiz kılar).
-- Şubat ve Kasım ayının dört yıl içinde dördüncü Pazartesi ve dördüncü Perşembe üzerinde gerçekleştirilen yedeklemeleri koruyun (varsa önceki bekletme koşullarını geçersiz kılar).
+- Pasifik Standart Saati ile her Pazartesi, Çarşamba, Perşembe saat 10:00'da haftalık destek alın.
+- Her Pazartesi, Çarşamba, Perşembe günü alınan yedekleri bir hafta boyunca saklar.
+- Her ilk Çarşamba ve üçüncü Perşembe günü alınan yedeklemeleri iki ay boyunca iki ay boyunca saklar (varsa önceki bekletme koşullarını geçersiz kılar).
+- Dördüncü Pazartesi ve dördüncü Perşembe günü Şubat ve Kasım aylarında dört yıl boyunca alınan yedekleri koruyun (varsa önceki bekletme koşullarını geçersiz kılar).
 
 ```json
 {
@@ -129,22 +129,22 @@ Aşağıdaki istek gövdesi, Azure VM yedeklemeleri için bir yedekleme ilkesi t
 ```
 
 > [!IMPORTANT]
-> Zamanlama ve bekletme için zaman biçimleri yalnızca TarihSaat ' i destekler. Yalnızca zaman biçimini desteklemez.
+> Zamanlama ve bekletme için zaman biçimleri yalnızca DateTime'ı destekler. Tek başlarına Zaman biçimini desteklemez.
 
 ## <a name="responses"></a>Yanıtlar
 
-Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
+Yedekleme ilkesi oluşturma/güncelleştirme, eşzamanlı bir [işlemdir.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Bu işlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur anlamına gelir.
 
-Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve ardından bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
+İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     |    [Koruma PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  TAMAM       |
-|202 kabul edildi     |         |     Eden    |
+|200 TAMAM     |    [Koruma PolitikasıKaynak](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  Tamam       |
+|202 Kabul Edildi     |         |     Accepted    |
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 
-İlke oluşturma veya güncelleştirme için *PUT* isteğini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
+*İlke* oluşturma veya güncelleştirme için PUT isteğini gönderdikten sonra, ilk yanıt 202 (Kabul edilir) ve bir konum üstbilgisi veya Azure-async-üstbilgidir.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -164,13 +164,13 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Ardından, bir basit *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üst bilgisini kullanarak elde edilen işlemi izleyin.
+Ardından, basit bir *GET* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak ortaya çıkan işlemi izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
-İşlem tamamlandıktan sonra, yanıt gövdesinde ilke içeriğiyle 200 (Tamam) döndürür.
+İşlem tamamlandıktan sonra, yanıt gövdesindeki ilke içeriğiyle birlikte 200 (Tamam) döndürür.
 
 ```json
 {
@@ -258,13 +258,13 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-Bir ilke bir öğeyi korumak için zaten kullanılıyorsa, ilkedeki tüm güncelleştirmeler, ilişkili tüm öğeler için [korumayı değiştirmeye](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) neden olur.
+Bir öğeyi korumak için zaten bir ilke kullanılıyorsa, ilkedeki herhangi bir güncelleştirme, ilişkili tüm öğeler için [korumanın değiştirilmesine](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Korumasız bir Azure VM için korumayı etkinleştirin](backup-azure-arm-userestapi-backupazurevms.md).
+[Korumasız bir Azure VM için korumayı etkinleştirin.](backup-azure-arm-userestapi-backupazurevms.md)
 
-Azure Backup REST API 'Leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Azure Yedekleme REST API'leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-- [Azure kurtarma hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
+- [Azure Kurtarma Hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
 - [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)

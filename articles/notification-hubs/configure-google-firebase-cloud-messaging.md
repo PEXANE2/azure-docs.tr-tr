@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs Google Firebase Cloud Messaging 'i yapılandırma | Microsoft Docs
-description: Google Firebase Cloud Messaging ayarlarını kullanarak bir Azure Notification Hub 'ını yapılandırmayı öğrenin.
+title: Azure Bildirim Hub'larında Google Firebase Bulut Mesajlaşmalarını Yapılandırma | Microsoft Dokümanlar
+description: Google Firebase Bulut Mesajlaşma ayarlarıyla bir Azure bildirim merkezini nasıl yapılandırabilirsiniz öğrenin.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,29 +12,30 @@ ms.date: 03/25/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 1adbce654bc5c057270df9a874911731a0135034
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212506"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127461"
 ---
-# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal bir Bildirim Hub 'ı için Google Firebase Cloud Messaging (FCM) ayarlarını yapılandırın
-Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Google Firebase Cloud Messaging (FCM) ayarlarının nasıl yapılandırılacağı gösterilmektedir.  
+# <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portalındaki bir bildirim merkezi için Google Firebase ayarlarını yapılandırın
 
-## <a name="prerequisites"></a>Önkoşullar
-Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın. 
+Bu makalede, Azure portalını kullanarak bir Azure bildirim merkezi için Google Firebase Bulut İletisi (FCM) ayarlarını nasıl yapılandırabileceğiniz gösterilmektedir.  
 
-## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM) yapılandırma
+## <a name="prerequisites"></a>Ön koşullar
+Daha önce bir bildirim hub'ı oluşturmadıysanız, şimdi bir bildirim hub'ı oluşturun. Daha fazla bilgi için [bkz.](create-notification-hub-portal.md) 
 
-Aşağıdaki yordam, bir Bildirim Hub 'ı için Google Firebase Cloud Messaging (FCM) ayarlarını yapılandırma adımları sunar: 
+## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Google Firebase Bulut Mesajlaşma (FCM) yapılandırma
 
-1. Azure portal, **Bildirim Hub** 'ı sayfasında, soldaki menüde **Google (GCM/FCM)** öğesini seçin. 
-2. Daha önce kaydettiğiniz FCM projesi için **API anahtarını** yapıştırın. 
-3. **Kaydet**’i seçin. 
+Aşağıdaki yordam, bir bildirim hub'ı için Google Firebase Bulut Mesajlaşma (FCM) ayarlarını yapılandırmanız için adımlar verir: 
 
-   ![Google FCM için Notification Hubs yapılandırmayı gösteren ekran görüntüsü](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+1. Azure portalında, **Bildirim Merkezi** sayfasında sol menüde **Google 'ı (GCM/FCM)** seçin. 
+2. Daha önce kaydettiğiniz FCM projesi için **API Anahtarını** yapıştırın. 
+3. **Kaydet'i**seçin. 
+
+   ![Google FCM için Bildirim Hub'larının nasıl yapılandırılabildiğini gösteren ekran görüntüsü](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Notification Hubs ve Google Firebase Cloud Messaging kullanarak Android cihazlara bildirim göndermeye yönelik adım adım yönergeler için, bkz. [Notification Hubs ve Google FCM kullanarak Android cihazlarına anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Azure Bildirim Hub'larını ve Google Firebase Bulut Mesajlaşmasını kullanarak Android cihazlara bildirimleri itme yle ilgili adım adım talimatlar içeren bir öğretici için Bildirim [Hub'larını ve Google FCM'yi kullanarak Android cihazlara anında iletme](notification-hubs-android-push-notification-google-fcm-get-started.md)bildirimleri'ne bakın.
 

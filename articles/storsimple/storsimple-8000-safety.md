@@ -1,6 +1,6 @@
 ---
-title: StorSimple cihazınız için güvenliği | Microsoft Docs
-description: Güvenlik kuralları, Kılavuzlar ve önemli noktalar ve güvenli bir şekilde yüklemek ve StorSimple Cihazınızı nasıl açıklanmaktadır.
+title: StorSimple cihazınız için güvenlik | Microsoft Dokümanlar
+description: Güvenlik kurallarını, yönergeleri ve dikkatleri açıklar ve StorSimple cihazınızı güvenli bir şekilde nasıl yükleyip çalıştırılacakaçıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,141 +15,141 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631692"
 ---
-# <a name="safely-install-and-operate-your-storsimple-device"></a>Güvenli bir şekilde yüklemek ve StorSimple Cihazınızı çalışır
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)
-![güvenliği bildirim simgesi okuma](./media/storsimple-safety/IC740885.png) **güvenliği ve sistem durumu bilgileri OKUYABİLİRSİNİZ**
+# <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple cihazınızı güvenli bir şekilde kurun ve çalıştırın
+![Uyarı](./media/storsimple-safety/IC740879.png)
+![Simgesi Oku](./media/storsimple-safety/IC740885.png) Güvenlik Bildirimi Simgesi **OKU GÜVENLİk VE SAĞLIK BİlGİlerİ**
 
-Microsoft Azure StorSimple cihazınıza uygulanır, bu makaledeki tüm güvenlik ve sistem durumu bilgilerini okuyun. Gelecek başvurular için StorSimple Cihazınızı ile birlikte gelen yazdırılan kılavuzları tutun. Yönergeleri izleyin ve düzgün bir şekilde ayarlamak ve bu ürün ciddi veya ölüm riskini artırabilir veya cihaz veya cihazlara zarar care hatası. A [bu kılavuzun indirilebilir sürümü](https://www.microsoft.com/download/details.aspx?id=44233) de kullanılabilir.
+Bu makalede Microsoft Azure StorSimple aygıtınız için geçerli olan tüm güvenlik ve sistem durumu bilgilerini okuyun. İleride başvurmak için StorSimple cihazınızla birlikte gönderilen tüm basılı kılavuzları saklayın. Talimatlara uyulmaması ve bu ürünün düzgün bir şekilde ayarlanması, kullanılması ve bakımının yapılmaması, ciddi yaralanma veya ölüm veya cihaz veya cihazlara zarar verme riskini artırabilir. [Bu kılavuzun indirilebilir sürümü](https://www.microsoft.com/download/details.aspx?id=44233) de mevcuttur.
 
 ## <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
-Ne zaman ayarlama ve Microsoft Azure StorSimple Cihazınızı çalıştırırken gözlenecek güvenlik önlemlerini gözden bulabilirsiniz simgeler şunlardır.
+Microsoft Azure StorSimple aygıtınızı kurarken ve çalıştırırken gözlenecek güvenlik önlemlerini gözden geçirdiğinizde bulacağınız simgeler aşağıda verilmiştir.
 
 | Simge | Açıklama |
 |:--- |:--- |
-| ![Tehlike simgesi](./media/storsimple-safety/IC740879.png) **tehlike!** |Önlenmiş değil, ayrıca ölüm ya da ciddi neden olur, zararlı bir durumu gösterir. Bu sinyal Word'ün en olağanüstü durumlar için sınırlı olacak. |
-| ![Uyarı simgesi](./media/storsimple-safety/IC740879.png) **uyarı!** |Önlenmiş değil, ayrıca ölüm ya da ciddi neden olabilir, zararlı bir durumu gösterir. |
-| ![Uyarı simgesi](./media/storsimple-safety/IC740879.png) **dikkatli olun!** |Önlenmiş değil, küçük veya Orta kasıt neden olabilir, zararlı bir durumu gösterir. |
-| ![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:** |Önemli ancak tehlike ilgili değil olarak kabul bilgileri gösterir. |
-| ![Elektrik Şoku simgesi](./media/storsimple-safety/IC740882.png) **elektrik Şoku tehlike** |Yüksek voltajı |
-| ![Büyük ağırlık simgesi](./media/storsimple-safety/IC740883.png) **büyük ağırlık** | |
-| ![Hiçbir kullanıcı tarafından bakımı yapılabilen parça simgesi](./media/storsimple-safety/IC740879.png) **hiçbir kullanıcı tarafından bakımı yapılabilen parça** |Düzgün şekilde eğitim almış sürece erişim sağlanır. |
-| ![Güvenlik Uyarısı simgesi okuma](./media/storsimple-safety/IC740885.png)**önce tüm yönergelerini okuyun** | |
-| ![İpucu tehlike simgesi](./media/storsimple-safety/IC740886.png) **ipucu tehlike** | |
+| ![Tehlike](./media/storsimple-safety/IC740879.png) Simgesi **DANGER!** |Kaçınılmaması halinde ölümle veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. Bu sinyal kelimesi en uç durumlarla sınırlı olacaktır. |
+| ![Uyarı](./media/storsimple-safety/IC740879.png) Simgesi **UYARI!** |Kaçınılmaması halinde ölüm veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. |
+| ![Uyarı](./media/storsimple-safety/IC740879.png) Simgesi **DİkKAT!** |Kaçınılmaması halinde küçük veya orta derecede yaralanmaya neden olabilecek tehlikeli bir durumu gösterir. |
+| ![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:** |Önemli kabul edilen, ancak tehlikeyle ilgili olmayan bilgileri gösterir. |
+| ![Elektrik Şoku Simgesi](./media/storsimple-safety/IC740882.png) Elektrik **Şoku Tehlikesi** |Yüksek gerilim |
+| ![Ağır Simge](./media/storsimple-safety/IC740883.png) **Ağır Ağırlık** | |
+| ![Kullanıcı ServisiNe Tabi](./media/storsimple-safety/IC740879.png) Parçalar Simgesi **Yok Kullanıcı Servis Eki Parçalar** |Düzgün bir şekilde eğitilmedikçe erişmeyin. |
+| ![Güvenlik Bildirimi Simgesini Oku](./media/storsimple-safety/IC740885.png)**Önce Tüm Talimatları Oku** | |
+| ![İpucu Tehlike](./media/storsimple-safety/IC740886.png) Simgesi **İpucu Tehlike** | |
 
-## <a name="handling-precautions"></a>Önlemler işleme
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![büyük ağırlık simgesi](./media/storsimple-safety/IC740883.png) **uyarı!** 
+## <a name="handling-precautions"></a>Taşıma önlemleri
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi Ağır](./media/storsimple-safety/IC740883.png) Ağırlık Simgesi **UYARI!** 
 
-Kasıt riskini azaltmak için:
+Yaralanma riskini azaltmak için:
 
-* En fazla 32 kg (70'ten lb); tam olarak yapılandırılmış bir kutu Tart kendiniz lift denemeyin.
-* Kasa geçmeden önce her zaman iki kişinin ağırlığı işlemek kullanılabilir olduğundan emin olun. Bu ağırlık lift çalışılıyor, bir kişinin injuries karşılayabilir dikkat edin.
-* Kutu, birim arkada bulunan tutamaçları güç ve soğutma modülleri (PCMs) tarafından lift değil. Bunlar ağırlığı yararlanmak için tasarlanmamıştır.
+* Tamamen yapılandırılmış bir muhafaza 32 kg'a (70 lbs) kadar ağırolabilir; tek başınıza kaldırmaya çalışmayın.
+* Muhafazayı hareket ettirmeden önce, her zaman ağırlığı işlemek için iki kişinin kullanılabilir olduğundan emin olun. Bu ağırlığı kaldırmaya çalışan bir kişinin yaralanmalara neden olabileceğini unutmayın.
+* Ünitenin arkasında bulunan Güç ve Soğutma Modülleri (PCM) üzerindeki tutamaklarla muhafazayı kaldırmayın. Bunlar ağırlığı almak için tasarlanmaz.
 
-## <a name="connection-precautions"></a>Bağlantı uyarıları
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![elektrik Şoku simgesi](./media/storsimple-safety/IC740882.png) **uyarı!**
+## <a name="connection-precautions"></a>Bağlantı önlemleri
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi Elektrik](./media/storsimple-safety/IC740882.png) Şok Ukonu **UYARI!**
 
-Kasıt, elektrik Şoku veya ölüm olasılığını azaltmak için:
+Yaralanma, elektrik çarpması veya ölüm olasılığını azaltmak için:
 
-* Birden çok AC kaynak tarafından desteklenen, tam yalıtım tüm tedarik güç bağlantısını kesin.
-* Kalıcı olarak birim taşımadan önce ya da herhangi bir yolla zarar görmüş olması düşünüyorsanız çıkarın.
-* Güç kaynağı kablosu güvenli elektrik earth bağlantı sağlar. Güç uygulamadan önce grounding muhafaza, Ulusal ve yerel gereksinimlerini karşıladığını doğrulayın.
-* Bir PCM kutudan kaldırma işleminden önceki güç bağlantısı her zaman kesildiğinden emin olun.
-* Güç kaynağı kablo üzerinde Tak olması koşuluyla, ana cihazın bağlantısını kesmeden, yuva çıkışlar ekipman bulunduğundan emin olun ve kolayca erişilebilir durumda olur.
+* Birden fazla AC kaynağı tarafından desteklendiğinde, tam yalıtım için tüm besleme gücünü niçin kes.
+* Taşımadan önce veya herhangi bir şekilde hasar gördüğünü düşünüyorsanız, ünitenin fişini kalıcı olarak çıkarın.
+* Güç kaynağı kablolarına güvenli bir elektrik dünya bağlantısı sağlayın. İktidaruygulamadan önce kasanın topraklamasının ulusal ve yerel gereksinimleri karşıladığını doğrulayın.
+* PcM'nin kasadan çıkarılmasından önce güç bağlantısının her zaman kesildiğinden emin olun.
+* Güç besleme kablosunun fişinin ana bağlantı kesme cihazı olduğu göz önüne alındığında, soket prizlerinin ekipmanın yakınında olduğundan ve kolayca erişilebilir olduğundan emin olun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![elektrik Şoku simgesi](./media/storsimple-safety/IC740882.png) **uyarı!**
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi Elektrik](./media/storsimple-safety/IC740882.png) Şok Ukonu **UYARI!**
 
-Elektrik bağlantılarından yangın veya elektriği olasılığını azaltmak için:
+Elektrik bağlantılarından aşırı ısınma veya yangın olasılığını azaltmak için:
 
-* Uygun bir güç kaynağına teknik belirtiminde detayları verilen gereksinimleri karşılamak için elektrik aşırı koruma sağlar.
-* Bölündü güç kablosu ("Y" Müşteri adayları) kullanmayın.
-* Geçerli güvenlik, arabellek ve sıcaklık gereksinimleri ile uyum sağlamak için hiçbir kapsar kaldırılmalıdır ve tüm yuvaları eklenti modülleri ile doldurulmalıdır veya boşlukları sürücü.
-* Donanım üreticisi tarafından belirtilen şekilde kullanıldığından emin olun. Bu donanım üreticisi tarafından belirtilmemiş bir şekilde kullanılıyorsa, donanım tarafından sağlanan korumanın kesintiye uğrayabilir.
+* Teknik şartnamede ayrıntılı olarak belirtilen gereksinimleri karşılamak için elektrik aşırı yük koruması ile uygun bir güç kaynağı sağlayın.
+* Çatallı güç kabloları ("Y" müşteri adayları) kullanmayın.
+* Geçerli güvenlik, emisyon ve termal gereksinimlere uymak için kapaklar çıkarılmamalı ve tüm bölmeler eklenti modülleri veya sürücü boşluklarıyla doldurulmalıdır.
+* Ekipmanın üretici tarafından belirtilen şekilde kullanıldığından emin olun. Bu ekipman üretici tarafından belirtilmeyen bir şekilde kullanılırsa, ekipman tarafından sağlanan koruma bozulabilir.
 
-![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:**
+![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:**
 
-Toplulukların donanımınızı ve ürün hasarı önlemek için:
+Ekipmanınızın düzgün çalışması ve ürün hasarının önlenmesi için:
 
-* Cihazın arkasına RJ45 bağlantı, yalnızca bir Ethernet bağlantı noktalarıdır. Bu bir telekomünikasyon ağa bağlı olmalıdır.
-* Cihazın önden arkaya soğutma tasarım barındırabilecek bir rafa yüklediğinizden emin olun.
-* Sistem kutusu, tüm eklenti modülleri ve boş kalıplarını parçasıdır. Hemen bir yedek eklenebilir, bunlar yalnızca kaldırılmalıdır. Sistem tüm modüller veya yerinde boşluk olmadan çalıştırılmalıdır değil.
+* Aygıtın arka sınırındaki RJ45 portları yalnızcümün Ethernet bağlantısı içindir. Bunlar bir telekomünikasyon ağına bağlı olmamalıdır.
+* Cihazı önden arkaya soğutma tasarımına uygun bir rafa taktığından emin olun.
+* Tüm eklenti modülleri ve boş plakalar sistem kasasının bir parçasıdır. Bunlar yalnızca bir yedek hemen eklenebileceğinde kaldırılmalıdır. Sistem, tüm modüller veya boşluklar yerinde olmadan çalıştırılmamalıdır.
 
-## <a name="rack-system-precautions"></a>Raf sistem uyarıları
-Dolap raf cihazı bağladığınızda, aşağıdaki güvenlik gereksinimleri dikkate alınmalıdır.
+## <a name="rack-system-precautions"></a>Raf sistemi önlemleri
+Cihazı raf dolabına monte ederken aşağıdaki güvenlik gereksinimleri göz önünde bulundurulmalıdır.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![ipucu tehlike simgesi](./media/storsimple-safety/IC740886.png) **uyarı!**
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi İpucu](./media/storsimple-safety/IC740886.png) Tehlike Simgesi **UYARI!**
 
-Üzerinden bir ipucu gelen kasıt olasılığını azaltmak için:
+Bir ipucu üzerinde yaralanma olasılığını azaltmak için:
 
-* Raf tasarım yüklü eklerin toplam ağırlığı desteklemesi ve sabitleniyor tipping veya yükleme veya normal kullanım sırasında üzerinden sonuna gönderilen rafa engellemek uygun özellikleri eklemeniz gerekir.
-* Bir raf üstü yüklenirken, alt raf doldurun ve yukarıdan aşağı boş.
-* Rafa dışında birden fazla muhafaza toppling raf tehlike önlemek için bir zaman slayt değil.
+* Raf tasarımı, yüklenen muhafazaların toplam ağırlığını desteklemeli ve rafın kurulum veya normal kullanım sırasında devrilmesini veya itilmesine engel olacak stabilize özellikleri dahil etmelidir.
+* Raf ı yüklerken, rafı aşağıdan yukarıya doldurun ve yukarıdan aşağıya boşlayın.
+* Rafın devrilmesi tehlikesini önlemek için raftan birden fazla muhafazayı bir seferde çıkarmayın.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![elektrik Şoku simgesi](./media/storsimple-safety/IC740882.png) **uyarı!**
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi Elektrik](./media/storsimple-safety/IC740882.png) Şok Ukonu **UYARI!**
 
-Kasıt, elektrik Şoku veya ölüm olasılığını azaltmak için:
+Yaralanma, elektrik çarpması veya ölüm olasılığını azaltmak için:
 
-* Raf üstü bir elektrik güvenli dağıtım sistemi olması gerekir. Bu kasa için aşırı geçerli koruma sağlamanız gerekir ve yüklü eklerin toplam sayısına göre aşırı gerekir. Ad plakası üzerinde gösterilen elektrik tüketim derecelendirme gözlenmelidir.
-* Elektrik dağıtım sistemi raftaki her kasa için güvenilir bir zemin sağlamanız gerekir.
-* Elektrik dağıtım sistemin tasarımını toplam çığır sızıntı geçerli tüm ek olarak tüm güç kaynakları'ndan bulundurmalıdır. Her kutu içinde her güç kaynağı 60 Hz bir zemin sızıntı geçerli 1.0 mA maksimum 264 Volt olduğuna dikkat edin. "Yüksek SIZINTI geçerli. etiketleme rafa gerektirebilir Toprak (dünya) bağlantısını bir tedarik bağlanmadan önce gereklidir."
-* Raf, kasa ile yapılandırıldığında UL 60950-1 ve IEC 60950-1/tr 60950 1 güvenlik gereksinimlerini karşılaması gerekir.
+* Raf güvenli bir elektrik dağıtım sistemi olmalıdır. Kasa için aşırı akım koruması sağlamalı ve yüklenen toplam kasa sayısı tarafından aşırı yüklenmemelidir. İsim plakası üzerinde gösterilen elektrik enerjisi tüketim derecesine dikkat edilmelidir.
+* Elektrik dağıtım sistemi raftaki her muhafaza için güvenilir bir zemin sağlamalıdır.
+* Elektrik dağıtım sisteminin tasarımı, tüm muhafazalarda bulunan tüm güç kaynaklarından gelen toplam zemin kaçağı akımını dikkate almalıdır. Her kasadaki her güç kaynağının 60 Hz, 264 voltda maksimum 1,0 mA'lık bir toprak kaçağı akımı olduğunu unutmayın. Raf "YÜKSEK KAÇAK AKıMı" ile etiketleme gerektirebilir. Toprak (toprak) bağlantısı, bir kaynağı bağlamadan önce esastır."
+* Raf, muhafazaları ile yapılandırıldığında, UL 60950-1 ve IEC 60950-1/EN 60950-1 güvenlik gereksinimlerini karşılamalıdır.
 
-![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:**
+![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:**
 
-Uygun raf sisteminizi soğutma için:
+Raf sisteminizin doğru soğutması için:
 
-* Raf tasarım 35 Santigrat (95 Fahrenhayt) ortam sıcaklığı maksimum muhafaza dikkate alır emin olun.
-* Sistem low-pressure, arka Egzozu yükleme (raf kapılar ve 5 Pascal [0,5 mm su ölçer] aşmayacak şekilde engellerini tarafından oluşturulan ters baskı denen) ile çalıştırılır.
+* Raf tasarımının 35 santigrat derece (95 fahrenhayt) maksimum kasa çalışma ortamı sıcaklığını dikkate aldığından emin olun.
+* Sistem düşük basınçlı, arka egzoz tesisatı (raf kapıları ve engellerin oluşturduğu arka basınç 5 Pascal [0,5 mm su göstergesi] geçmemek üzere) ile çalıştırılır.
 
-## <a name="power-cooling-module-pcm-precautions"></a>Güç soğutma Modülü (PCM) önlemler
-Cihaz, iki PCMs ile çalışmak üzere tasarlanmıştır. Güç kaynağı ve bir çift eksen fanı PCMs vardır. Kritik bir koşul sırasında sistem hatası normal işlemler devam ederken bir güç kaynağı sağlar. İki PCMs (ve bu nedenle güç kaynakları) her zaman yüklü olması gerekir. Tek bir PCM yedek güç sağlamaz. Bu nedenle, tek PCM hatasını, kapalı kalma süresi veya olası veri kaybına neden olabilir.
+## <a name="power-cooling-module-pcm-precautions"></a>Güç Soğutma Modülü (PCM) önlemleri
+Cihaz iki PCMs ile çalışacak şekilde tasarlanmıştır. PCM'lerin her birinde güç kaynağı ve çift eksenli fan vardır. Kritik bir durum sırasında, sistem normal işlemleri devam ederken bir güç kaynağının arızalanmasına izin verir. İki PCM (ve dolayısıyla güç kaynakları) her zaman kurulmalıdır. Tek bir PCM yedek güç sağlamaz. Bu nedenle, bir PCM'nin bile arızalanması kapalı kalma süresine veya olası veri kaybına neden olabilir.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) ![elektrik Şoku simgesi](./media/storsimple-safety/IC740882.png) **uyarı!**
+![Uyarı](./media/storsimple-safety/IC740879.png) ![Simgesi Elektrik](./media/storsimple-safety/IC740882.png) Şok Ukonu **UYARI!**
 
-Kasıt, elektrik Şoku veya ölüm olasılığını azaltmak için:
+Yaralanma, elektrik çarpması veya ölüm olasılığını azaltmak için:
 
-* Bu işlem arka planda PCM kaldırmayın. Elektrik Şoku içinde bir olma tehlikesi yoktur. PCM döndürür ve bir yedek almak için [Microsoft Support başvurun](storsimple-contact-microsoft-support.md).
+* Kapakları PCM'den çıkarmayın. İçeride elektrik çarpması tehlikesi var. PCM'yi döndürmek ve yenisini almak için [Microsoft Destek'e başvurun.](storsimple-contact-microsoft-support.md)
 
-![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:**
+![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:**
 
-Toplulukların donanımınızı ve ürün hasarı önlemek için:
+Ekipmanınızın düzgün çalışması ve ürün hasarının önlenmesi için:
 
-* 24 saat içinde PCM'yi değiştirmeniz gerekir. Bir PCM'yi değiştirme kaldırıldıktan sonra değiştirme, kaldırma sonraki 10 dakika içinde tamamlanmalıdır.
-* Hemen bir yedek yüklenebilir sürece bir PCM kaldırmayın. Kasa yerde tüm modüller olmadan çalıştırılması gerekir değil.
+* Başarısız PCM'yi 24 saat içinde değiştirmeniz gerekir. Bir PCM değiştirilme için kaldırıldıktan sonra, değiştirme çıkarıldıktan sonra 10 dakika içinde tamamlanmalıdır.
+* Bir yedek hemen kurulamadıkça PCM'yi çıkarmayın. Kasa, tüm modüller yerinde olmadan çalıştırılmamalıdır.
 
-## <a name="electrostatic-discharge-esd-precautions"></a>Elektrostatik taburcu (ESD) önlemler
-![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:**
+## <a name="electrostatic-discharge-esd-precautions"></a>Elektrostatik deşarj (ESD) önlemleri
+![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:**
 
-ESD ile ilgili aşağıdaki uyarıları inceleyin.
+ESD ile ilgili aşağıdaki önlemleri gözlemleyin.
 
-* Yüklenmiş ve kullanıma uygun bir antistatic bilek veya bileklikleri strap emin olun.
-* Tüm geleneksel ESD önlemler modüller ve bileşenleri işlerken gözlemleyin.
-* Devre kartına bileşenleri ve modül bağlayıcılar ile ilgili kişi kaçının.
-* ESD zarar garanti tarafından kapsanmıyor.
+* Uygun bir antistatik bilek veya ayak bileği kayışı taktığınıza ve kontrol ettiğinizden emin olun.
+* Modülleri ve bileşenleri işlerken tüm geleneksel ESD önlemlerine uyun.
+* Arka düzlem bileşenleri ve modül konektörleri ile temasından kaçının.
+* ESD hasarı garanti kapsamında değildir.
 
-## <a name="battery-disposal-precautions"></a>Pil elden önlemler
-Güç kaynağı, geçici, kısa vadeli güç kesintileri sırasında bellek içeriğini korumak için özel bir pil kullanır. Pil PCM yerleştirildiğinden. Pil hakkında aşağıdaki bilgileri unutmayın.
+## <a name="battery-disposal-precautions"></a>Pil imha önlemleri
+Güç kaynağı, geçici, kısa süreli elektrik kesintileri sırasında bellek içeriğini korumak için özel bir pil kullanır. Pil PCM'de yer alır. Pil hakkında aşağıdaki bilgileri aklınızda bulundurun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png) **uyarı!**
+![Uyarı](./media/storsimple-safety/IC740879.png) Simgesi **UYARI!**
 
-Şortu, Ateş, açılımı, yaralanma veya ölüm riskini azaltmak için:
+Şort, yangın, patlama, yaralanma veya ölüm riskini azaltmak için:
 
-* Kullanılan pil Ulusal/bölge düzenlemelerine uygun şekilde elden.
-* Değil ayır, paramparça, 60 Santigrat derece (140 Fahrenhayt) ısı veya incinerate. Pil PCM yalnızca sağlanan pil ile değiştirin. Başka bir pil kullanımını yangın veya açılımı riski sunabilir.
-* Bu güç kaldırılırsa koruyucu uç başlıkları pille kullanın.
+* Kullanılmış pilleri ulusal/bölgesel yönetmeliklere uygun olarak atın.
+* 60 santigrat derecenin (140 fahrenhayt) üzerinde sökmeyin, ezmeyin veya ısımayın veya yakmayın. PCM pilini yalnızca sağlanan bir pil ile değiştirin. Başka bir pilin kullanılması yangın veya patlama riski ne olabilir.
+* Bunlar güç kaynağından kaldırılırsa pillerde koruyucu uç kapakları kullanın.
 
-![Fark simgesi](./media/storsimple-safety/IC740881.png) **dikkat edin:**
+![Bildirim](./media/storsimple-safety/IC740881.png) Simgesi **DİkKAT:**
 
-Sevkiyat ya da aksi takdirde pil uçakla taşıma adresinde IATA Lithium pil rehberi belgesi izleyin [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Pilleri hava yoluyla taşırken veya başka bir şekilde taşırken,[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
-Bu güvenlik uyarıları gözden geçirdikten sonra sonraki adımlara Cihazınızı kutusundan çıkarma, rafa ve cihazınızın kablolarını bağlama üzeresiniz.
+Bu güvenlik bildirimlerini inceledikten sonra, sonraki adımlar cihazınızı açmak, rafa çıkarmak ve kablolamaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir 8100 cihazınız için Git [StorSimple 8100 cihazınızın yükleme](storsimple-8100-hardware-installation.md).
-* Bir 8600 model Cihazınızı için Git [StorSimple 8600 cihazınızın yükleme](storsimple-8600-hardware-installation.md).
+* 8100 aygıtı [için StorSimple 8100 cihazınızı yükleyin.](storsimple-8100-hardware-installation.md)
+* 8600 [aygıtıiçin StorSimple 8600 cihazınızı yükleyin.](storsimple-8600-hardware-installation.md)
 

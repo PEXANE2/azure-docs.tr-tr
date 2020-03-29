@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory (Önizleme) kullanarak QuickBooks Online veri kopyalama
-description: Veri QuickBooks Online'dan desteklenen havuz veri depolarına bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak kopyalama hakkında bilgi edinin.
+title: Azure Veri Fabrikasını kullanarak QuickBooks Online'daki verileri kopyalama (Önizleme)
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak QuickBooks Online'daki verileri desteklenen lavabo veri depolarına nasıl kopyalayabilirsiniz öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,52 +13,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: ca57f4611b9eb483104d8d0b8fc5636726203195
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927771"
 ---
-# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) kullanarak QuickBooks Online veri kopyalama
+# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak QuickBooks Online'daki verileri kopyalama (Önizleme)
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de QuickBooks Online'dan veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, QuickBooks Online'daki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı özetlanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
 > [!IMPORTANT]
-> Bu bağlayıcı, şu anda Önizleme aşamasındadır. Deneyin ve geri bildirimde bulunun. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
+> Bu bağlayıcı şu anda önizlemede. Bunu deneyebilir ve bize geribildirim verebilirsiniz. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu QuickBooks Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu QuickBooks konektörü aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Veri QuickBooks Online'dan tüm desteklenen havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+QuickBooks Online'daki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
+Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-Şu anda bu bağlayıcı ile 17 Temmuz 2017'den önce oluşturulan uygulamaların bir geliştirici hesabına sahip olması anlamına gelir 1.0a destekleyebilir.
+Şu anda bu bağlayıcı yalnızca 1.0a'yı destekliyor, bu da 17 Temmuz 2017'den önce oluşturulan uygulamalarla ilgili bir geliştirici hesabınız olması gerektiği anlamına geliyor.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli QuickBooks bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, QuickBooks bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-QuickBooks bağlı hizmeti için aşağıdaki özellikleri destekler:
+QuickBooks bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **QuickBooks** | Yes |
-| endpoint | QuickBooks Online sunucu uç noktası. (diğer bir deyişle, quickbooks.api.intuit.com)  | Yes |
-| companyId | Yetkilendirmek için QuickBooks şirket şirket kimliği. Şirket kodu bulma hakkında daha fazla bilgi için bkz. [şirket Kimliğimi nasıl bulabilirim?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
-| consumerKey | OAuth 1.0 kimlik doğrulaması için tüketici anahtarı. | Yes |
-| consumerSecret | OAuth 1.0 kimlik doğrulaması için tüketici gizli bilgisi. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| accessToken | OAuth 1.0 kimlik doğrulaması için erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| accessTokenSecret | OAuth 1.0 kimlik doğrulaması için erişim belirteci gizli. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
+| type | Tür özelliği şu şekilde ayarlanmalıdır: **QuickBooks** | Evet |
+| endpoint | QuickBooks Online sunucusunun bitiş noktası. (yani, quickbooks.api.intuit.com)  | Evet |
+| companyId | QuickBooks şirketinin şirket kimliği yetkilendirmek için. Şirket kimliğini nasıl bulacağıhakkında bilgi için [bkz.](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551) | Evet |
+| consumerKey | OAuth 1.0 kimlik doğrulaması için tüketici anahtarı. | Evet |
+| consumerSecret | OAuth 1.0 kimlik doğrulamaiçin tüketici sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| accessToken | OAuth 1.0 kimlik doğrulaması için erişim belirteci. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| accessTokenSecret | OAuth 1.0 kimlik doğrulaması için erişim belirteci sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -91,14 +91,14 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, QuickBooks veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde QuickBooks veri kümesi tarafından desteklenen özelliklerin bir listesi sağlar.
 
-QuickBooks Online'dan veri kopyalamak için dataset öğesinin type özelliği ayarlamak **QuickBooksObject**. Aşağıdaki özellikler desteklenir:
+QuickBooks Online'daki verileri kopyalamak için, veri kümesinin tür özelliğini **QuickBooksObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **QuickBooksObject** | Yes |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **QuickBooksObject** | Evet |
+| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
 
 **Örnek**
 
@@ -119,16 +119,16 @@ QuickBooks Online'dan veri kopyalamak için dataset öğesinin type özelliği a
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, QuickBooks kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde QuickBooks kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="quickbooks-as-source"></a>Kaynak olarak QuickBooks
 
-QuickBooks Online'dan veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **QuickBooksSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+QuickBooks Online'daki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **QuickBooksSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **QuickBooksSource** | Yes |
-| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının türü özelliği şu şekilde ayarlanmalıdır: **QuickBooksSource** | Evet |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
 **Örnek:**
 
@@ -161,14 +161,14 @@ QuickBooks Online'dan veri kopyalamak için kopyalama etkinliği için kaynak t�
     }
 ]
 ```
-## <a name="copy-data-from-quickbooks-desktop"></a>Quickbooks masaüstünden veri kopyalama
+## <a name="copy-data-from-quickbooks-desktop"></a>Quickbooks Desktop'dan veri kopyalama
 
-Azure Data Factory kopyalama etkinliği, doğrudan Quickbooks masaüstünden veri kopyalanamıyor. Quickbooks masaüstünden veri kopyalamak için Quickbooks verilerinizi bir virgülle ayrılmış değerler (CSV) dosyasına dışarı aktarın ve sonra dosyayı Azure Blob depolama alanına yükleyin. Burada, Data Factory, tercih ettiğiniz havuza verileri kopyalamak için kullanabilirsiniz.
+Azure Veri Fabrikası'ndaki Kopyalama Etkinliği verileri doğrudan Quickbooks Desktop'dan kopyalayamaz. Quickbooks Desktop'daki verileri kopyalamak için Quickbooks verilerinizi virgülle ayrılmış değerler (CSV) dosyasına aktarın ve ardından dosyayı Azure Blob Depolama'ya yükleyin. Buradan, verileri seçtiğiniz lavaboya kopyalamak için Veri Fabrikası'nı kullanabilirsiniz.
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

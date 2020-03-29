@@ -1,185 +1,185 @@
 ---
-title: Okuma çoğaltmalarını yönetme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
-description: Bkz. Azure Database for PostgreSQL için Azure veritabanı-tek sunucu Azure portal.
+title: Okuma yinelemelerini yönetme - Azure portalı - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: Azure portalından PostgreSQL - Single Server için okuma yinelemelerini nasıl yönetebilirsiniz öğrenin.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768955"
 ---
-# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portalından PostgreSQL - Tek Sunucu için Azure Veritabanı'nda okuma yinelemeleri oluşturma ve yönetme
 
-Bu makalede, Azure portal 'tan PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
+Bu makalede, Azure portalından PostgreSQL için Azure Veritabanı'nda okuma yinelemelerinin nasıl oluşturulup yönetilenöğrenilir. Okuma yinelemeleri hakkında daha fazla bilgi edinmek için [genel bakışa](concepts-read-replicas.md)bakın.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
-[PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-database-portal.md) ana sunucu olması.
+[PostgreSQL sunucusunun](quickstart-create-server-database-portal.md) ana sunucu olması için bir Azure Veritabanı.
 
 ## <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
-Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir ana sunucu hazırlamak için kullanılması gerekir. Ana sunucu, Azure. replication_support parametresi ayarlanarak çoğaltma için hazırlanır. Çoğaltma parametresi değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir. Azure portal, bu iki adım tek bir düğmeyle kapsüllenir, **çoğaltma desteğini etkinleştirir**.
+Bu adımlar, Genel Amaç veya Bellek Optimize Edilmiş katmanlarda bir ana sunucu hazırlamak için kullanılmalıdır. Ana sunucu azure.replication_support parametresini ayarlayarak çoğaltma için hazırlanır. Çoğaltma parametresi değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir. Azure portalında, bu iki adım tek bir düğme yle kapsüllenir: **Çoğaltma Desteğini Etkinleştir.**
 
-1. Azure portal, ana öğe olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin.
+1. Azure portalında, master olarak kullanmak üzere PostgreSQL sunucusu için varolan Azure Veritabanı'nı seçin.
 
-2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
+2. Sunucu kenar çubuğunda, **SETTINGS**altında **Çoğaltma'yı**seçin.
 
 > [!NOTE] 
-> **Çoğaltma desteğini devre dışı bırak** seçeneğini görürseniz, çoğaltma ayarları varsayılan olarak sunucunuzda zaten ayarlanır. Bir okuma çoğaltması oluşturmak için aşağıdaki adımları atlayabilir ve gidebilirsiniz. 
+> **Çoğaltma yıçöz'ün** gri renkte olduğunu görürseniz, çoğaltma ayarları varsayılan olarak sunucunuzda zaten ayarlanır. Aşağıdaki adımları atlayabilir ve bir okuma yinelemeoluşturmak için gidebilirsiniz. 
 
-3. **Çoğaltma desteğini etkinleştir**' i seçin. 
+3. **Çoğaltma Desteğini Etkinleştir'i**seçin. 
 
-   ![Çoğaltma desteğini etkinleştir](./media/howto-read-replicas-portal/enable-replication-support.png)
+   ![Çoğaltma desteğini etkinleştirme](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Çoğaltma desteğini etkinleştirmek istediğinizi onaylayın. Bu işlem, ana sunucuyu yeniden başlatacak. 
+4. Çoğaltma desteğini etkinleştirmek istediğinizi onaylayın. Bu işlem ana sunucuyu yeniden başlatacaktır. 
 
-   ![Çoğaltma desteğini etkinleştirmeyi Onayla](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   ![Çoğaltma desteğini etkinleştirme onaylayın](./media/howto-read-replicas-portal/confirm-enable-replication.png)
    
-5. İşlem tamamlandıktan sonra iki Azure portal bildirimi alacaksınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Sunucu yeniden başlatması için hemen sonraki bir bildirim daha vardır.
+5. İşlem tamamlandıktan sonra iki Azure portalı bildirimi alırsınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Hemen izleyen sunucu yeniden başlatma için başka bir bildirim vardır.
 
-   ![Başarı bildirimleri-etkinleştir](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Başarı bildirimleri - etkinleştir](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-6. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma çoğaltmaları oluşturabilirsiniz.
+6. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma yinelemeleri oluşturabilirsiniz.
 
-   ![Araç çubuğu güncelleştirildi](./media/howto-read-replicas-portal/updated-toolbar.png)
+   ![Güncelleştirilmiş araç çubuğu](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Çoğaltma desteğinin etkinleştirilmesi, ana sunucu başına tek seferlik bir işlemdir. Kolaylık olması için **çoğaltma desteğini devre dışı bırak** düğmesi sunulmaktadır. Bu ana sunucuda hiçbir şekilde çoğaltma oluşturmamanız gerekmedikçe, çoğaltma desteğinin devre dışı bırakılmasını önermiyoruz. Ana sunucunuzda çoğaltmalar varsa çoğaltma desteğini devre dışı bırakabilirsiniz.
+Çoğaltma desteğini etkinleştirmek, ana sunucu başına tek seferlik bir işlemdir. Kolaylık sağlamak için Çoğaltma **Desteğini Devre Dışı** Alabilme düğmesi sağlanır. Bu ana sunucuda hiçbir zaman çoğaltma oluşturamayacağınız dan emin değilseniz, çoğaltma desteğini devre dışı bırakmanızı önermiyoruz. Ana sunucunuzda varolan yinelemeler varken çoğaltma desteğini devre dışı kalamazsınız.
 
 
-## <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
-Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
+## <a name="create-a-read-replica"></a>Okuma yinelemesi oluşturma
+Okuma yinelemesi oluşturmak için aşağıdaki adımları izleyin:
 
-1. Ana sunucu olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin. 
+1. Ana sunucu olarak kullanmak üzere PostgreSQL sunucusu için varolan Azure Veritabanı'nı seçin. 
 
-2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
+2. Sunucu kenar çubuğunda, **SETTINGS**altında **Çoğaltma'yı**seçin.
 
-3. **Çoğaltma ekle**' yi seçin.
+3. **Çoğaltma Ekle'yi**seçin.
 
-   ![Çoğaltma ekleme](./media/howto-read-replicas-portal/add-replica.png)
+   ![Yineleme ekleme](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Okuma çoğaltması için bir ad girin. 
+4. Okundu çoğaltma için bir ad girin. 
 
-    ![Çoğaltmayı adlandırın](./media/howto-read-replicas-portal/name-replica.png)
+    ![Yinelemeyi adlandırın](./media/howto-read-replicas-portal/name-replica.png)
 
-5. Çoğaltma için bir konum seçin. Varsayılan konum, ana sunucu ile aynıdır.
+5. Yineleme için bir konum seçin. Varsayılan konum, ana sunucununkiyle aynıdır.
 
     ![Bir konum seçin](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
-   > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
+   > Yineleme oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek [için, okuma yineleme kavramları makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-6. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
+6. Yinelemenin oluşturulmasını onaylamak için **Tamam'ı** seçin.
 
-Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+Yineleme, ana bilgisayarla aynı bilgi işlem ve depolama ayarları kullanılarak oluşturulur. Yineleme oluşturulduktan sonra, ana sunucudan bağımsız olarak birkaç ayar değiştirilebilir: bilgi işlem oluşturma, vCores, depolama ve yedekleme bekletme süresi. Fiyatlandırma katmanı, Temel katman alabilen veya temel katmandan bağımsız olarak değiştirilebilir.
 
 > [!IMPORTANT]
-> Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
+> Ana sunucu ayarı yeni bir değere güncelleştirilmeden önce, yineleme ayarını eşit veya daha büyük bir değerle güncelleştirin. Bu eylem, yinelemenin ana ustada yapılan değişiklikleri takip etmesini yardımcı olur.
 
-Okuma çoğaltması oluşturulduktan sonra **çoğaltma** penceresinden görüntülenebilir:
+Okuma yinelemesi oluşturulduktan sonra **Çoğaltma** penceresinden görüntülenebilir:
 
-![Çoğaltma penceresinde yeni çoğaltmayı görüntüleme](./media/howto-read-replicas-portal/list-replica.png)
+![Çoğaltma penceresinde yeni yinelemeyi görüntüleme](./media/howto-read-replicas-portal/list-replica.png)
  
 
 ## <a name="stop-replication"></a>Çoğaltmayı durdurma
-Bir ana sunucu ve bir okuma çoğaltması arasındaki çoğaltmayı durdurabilirsiniz.
+Ana sunucu ile okuma yinelemesi arasındaki çoğaltmayı durdurabilirsiniz.
 
 > [!IMPORTANT]
-> Bir ana sunucu ve bir okuma çoğaltması için çoğaltmayı durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
+> Ana sunucuya ve okuma yinelemesine çoğaltmayı durdurduktan sonra geri alınamaz. Okuma yinelemesi hem okumaları hem de yazmaları destekleyen bağımsız bir sunucu haline gelir. Bağımsız sunucu yeniden çoğaltma yapılamaz.
 
-Azure portal bir ana sunucu ile okuma çoğaltması arasında çoğaltmayı durdurmak için şu adımları izleyin:
+Azure portalından bir ana sunucu ile okuma yinelemesi arasındaki çoğaltmayı durdurmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
+1. Azure portalında, PostgreSQL sunucusu için ana Azure Veritabanınızı seçin.
 
-2. Sunucu menüsünde, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
+2. Sunucu menüsünde, **AYARLAR**altında **Çoğaltma'yı**seçin.
 
-3. Çoğaltmanın durdurulacağı çoğaltma sunucusunu seçin.
+3. Çoğaltmayı durdurmak için çoğaltma sunucusunu seçin.
 
-   ![Çoğaltmayı seçin](./media/howto-read-replicas-portal/select-replica.png)
+   ![Yinelemeyi seçin](./media/howto-read-replicas-portal/select-replica.png)
  
-4. **Çoğaltmayı durdur**' u seçin.
+4. **Çoğaltmayı Durdur'u**seçin.
 
-   ![Çoğaltmayı Durdur ' u seçin](./media/howto-read-replicas-portal/select-stop-replication.png)
+   ![Çoğaltmayı durdur'u seçin](./media/howto-read-replicas-portal/select-stop-replication.png)
  
-5. Çoğaltmayı durdurmak için **Tamam ' ı** seçin.
+5. Çoğaltmayı durdurmak için **Tamam'ı** seçin.
 
-   ![Çoğaltmayı durdurmayı Onayla](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   ![Çoğaltmayı durdurmak için onaylayın](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Bir ana sunucu silme
-Ana Sunucuyu silmek için, bir PostgreSQL sunucusu için tek başına Azure veritabanını silmek üzere aynı adımları kullanın. 
+## <a name="delete-a-master-server"></a>Ana sunucusilme
+Bir ana sunucuyu silmek için, PostgreSQL sunucusu için bağımsız bir Azure Veritabanını silmek için aynı adımları kullanırsınız. 
 
 > [!IMPORTANT]
-> Bir ana sunucuyu sildiğinizde, tüm okuma çoğaltmalarına çoğaltma durdurulur. Okuma çoğaltmaları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+> Bir ana sunucusildiğinizde, okunan tüm yinelemelere çoğaltma durdurulur. Okuma yinelemeleri, artık hem okumaları hem de yazmaları destekleyen bağımsız sunucular haline gelir.
 
-Azure portal bir sunucuyu silmek için şu adımları izleyin:
+Bir sunucuyu Azure portalından silmek için aşağıdaki adımları izleyin:
 
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
+1. Azure portalında, PostgreSQL sunucusu için ana Azure Veritabanınızı seçin.
 
-2. Sunucunun **genel bakış** sayfasını açın. **Sil**’i seçin.
+2. Sunucu için **Genel Bakış** sayfasını açın. **Sil**’i seçin.
 
-   ![Sunucu genel bakış sayfasında ana sunucuyu silmek için seçin](./media/howto-read-replicas-portal/delete-server.png)
+   ![Sunucuya Genel Bakış sayfasında, ana sunucuyu silmek için seçin](./media/howto-read-replicas-portal/delete-server.png)
  
-3. Silinecek ana sunucunun adını girin. Ana sunucuyu silmeyi onaylamak için **Sil** ' i seçin.
+3. Silmek için ana sunucunun adını girin. Ana sunucunun silinmesini onaylamak için **Sil'i** seçin.
 
-   ![Ana sunucuyu Silmeyi Onayla](./media/howto-read-replicas-portal/confirm-delete.png)
- 
-
-## <a name="delete-a-replica"></a>Bir çoğaltmayı silme
-Bir ana sunucuyu silme işlemine benzer bir okuma çoğaltmasını silebilirsiniz.
-
-- Azure portal, okuma çoğaltması için **genel bakış** sayfasını açın. **Sil**’i seçin.
-
-   ![Çoğaltmaya genel bakış sayfasında, çoğaltmayı silmek için seçin](./media/howto-read-replicas-portal/delete-replica.png)
- 
-Ayrıca, aşağıdaki adımları izleyerek **çoğaltma** penceresinde okuma çoğaltmasını silebilirsiniz:
-
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
-
-2. Sunucu menüsünde, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
-
-3. Silinecek okuma çoğaltmasını seçin.
-
-   ![Silinecek çoğaltmayı seçin](./media/howto-read-replicas-portal/select-replica.png)
- 
-4. **Çoğaltmayı Sil**' i seçin.
-
-   ![Çoğaltmayı Sil ' i seçin](./media/howto-read-replicas-portal/select-delete-replica.png)
- 
-5. Silinecek çoğaltmanın adını girin. Çoğaltmanın silinmesini onaylamak için **Sil** ' i seçin.
-
-   ![Te çoğaltmasını Silmeyi Onayla](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   ![Ana sunucuyu silmek için onaylayın](./media/howto-read-replicas-portal/confirm-delete.png)
  
 
-## <a name="monitor-a-replica"></a>Bir çoğaltmayı izleme
-Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
+## <a name="delete-a-replica"></a>Bir çoğaltmayı sil
+Ana sunucuyı nasıl sildiğinize benzer bir okuma yinelemesini silebilirsiniz.
 
-### <a name="max-lag-across-replicas-metric"></a>Çoğaltmalar arasındaki en fazla gecikme ölçümü
-**Çoğaltmalar genelinde en fazla gecikme** ölçümü, ana sunucu ile en fazla çoğaltma çoğaltması arasındaki gecikme sayısını gösterir. 
+- Azure portalında, okundu çoğaltma için **Genel Bakış** sayfasını açın. **Sil**’i seçin.
 
-1.  Azure portal, PostgreSQL için ana Azure veritabanı sunucusu ' nu seçin.
-
-2.  **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltmalar genelinde en fazla gecikme**' yı seçin.
-
-    ![Çoğaltmalar genelinde en fazla gecikme 'yi izleme](./media/howto-read-replicas-portal/select-max-lag.png)
+   ![Yinelemeye Genel Bakış sayfasında, yinelemeyi silmek için](./media/howto-read-replicas-portal/delete-replica.png)
  
-3.  Toplamadır **,** **en fazla**' yı seçin.
+Ayrıca aşağıdaki adımları izleyerek **Çoğaltma** penceresinden okundu yinelemesini de silebilirsiniz:
 
+1. Azure portalında, PostgreSQL sunucusu için ana Azure Veritabanınızı seçin.
 
-### <a name="replica-lag-metric"></a>Çoğaltma gecikmesi ölçümü
-**Çoğaltma gecikmesi** ölçümü, bir çoğaltmada son yeniden yürütülen işlemden bu yana geçen süreyi gösterir. Ana kuruluşunuzda gerçekleşen işlem yoksa, ölçüm bu gecikme süresini yansıtır.
+2. Sunucu menüsünde, **AYARLAR**altında **Çoğaltma'yı**seçin.
 
-1. Azure portal, PostgreSQL için Azure veritabanı okuma çoğaltması ' nı seçin.
+3. Silmek için okundu yinelemesini seçin.
 
-2. **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltma gecikmesi**' nı seçin.
-
-   ![Çoğaltma gecikmesini izleme](./media/howto-read-replicas-portal/select-replica-lag.png)
+   ![Silmek için yinelemeyi seçin](./media/howto-read-replicas-portal/select-replica.png)
  
-3. Toplamadır **,** **en fazla**' yı seçin. 
+4. **Çoğaltmayı Sil'i**seçin.
+
+   ![Silme çoğaltma'yı seçin](./media/howto-read-replicas-portal/select-delete-replica.png)
+ 
+5. Silmek için yinelemenin adını girin. Yinelemenin silinmesini onaylamak için **Sil'i** seçin.
+
+   ![Te çoğaltmasını silmek için onaylayın](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+ 
+
+## <a name="monitor-a-replica"></a>Yinelemeyi izleme
+Okunan yinelemeleri izlemek için iki ölçüm kullanılabilir.
+
+### <a name="max-lag-across-replicas-metric"></a>Çoğaltmalar metrik genelinde Max Lag
+**Çoğaltmalar Arasında Max Lag** ölçümü, ana sunucu ile en geri kalan yineleme arasındaki baytgecikmesini gösterir. 
+
+1.  Azure portalında, PostgreSQL sunucusu için ana Azure Veritabanı'nı seçin.
+
+2.  **Ölçümler**’i seçin. **Ölçümler** penceresinde, **Çoğaltmalar Arasında Max Lag'ı**seçin.
+
+    ![Yinelemeler arasında maksimum gecikmeyi izleme](./media/howto-read-replicas-portal/select-max-lag.png)
+ 
+3.  **Toplama**için **Max'i**seçin.
+
+
+### <a name="replica-lag-metric"></a>Çoğaltma Gecikmesi ölçümü
+**Yineleme Gecikmesi** ölçümü, yinelemede son yeniden oynama işleminden bu yana geçen süreyi gösterir. Ananızda herhangi bir işlem meydana gelmezse, metrik bu süre gecikmesini yansıtır.
+
+1. Azure portalında, PostgreSQL okuma yinelemesi için Azure Veritabanı'nı seçin.
+
+2. **Ölçümler**’i seçin. **Ölçümler** **penceresinde, Çoğaltma Gecikmesi'ni**seçin.
+
+   ![Yineleme gecikmesini izleme](./media/howto-read-replicas-portal/select-replica-lag.png)
+ 
+3. **Toplama**için **Max'i**seçin. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
-* [PostgreSQL Için Azure veritabanı 'nda okuma çoğaltmaları](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.
-* [Azure CLI ve REST API okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md)hakkında bilgi edinin.
+* [PostgreSQL için Azure Veritabanı'nda okuma yinelemeleri](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.
+* [Azure CLI ve REST API'sında okuma yinelemelerini nasıl oluşturup yöneteceğimize](howto-read-replicas-cli.md)öğrenin.

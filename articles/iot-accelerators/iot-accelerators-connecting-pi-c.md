@@ -1,6 +1,6 @@
 ---
-title: Raspberry Pi C - Azure'ı kullanarak Uzaktan izleme sağlama | Microsoft Docs
-description: C dilinde yazılmış bir Web uygulaması kullanarak Uzaktan izleme çözüm Hızlandırıcısını bir Raspberry Pi cihazın bağlanması açıklar
+title: C kullanarak Uzaktan İzleme için Prove Raspberry Pi - Azure | Microsoft Dokümanlar
+description: C ile yazılmış bir uygulamayı kullanarak Bir Raspberry Pi cihazının Uzaktan İzleme çözüm hızlandırıcısına nasıl bağlanıştırılabildiğini açıklar.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454515"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Raspberry Pi'yi Cihazınızı Uzaktan izleme çözüm hızlandırıcısına (C) bağlama
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Raspberry Pi cihazınızı Uzaktan İzleme çözüm hızlandırıcısına (C) bağlayın
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Bu öğreticide, gerçek bir cihaz Uzaktan izleme çözüm hızlandırıcısına bağlamayı gösterilmektedir. Kısıtlanmış cihazlarında çalışan en katıştırılmış uygulamalarında olduğu gibi Raspberry Pi cihaz uygulaması için istemci kodu c dilinde yazılan Bu öğreticide, Raspbian işletim sistemi çalıştıran Raspberry Pi üzerinde uygulama oluşturun.
+Bu öğretici, gerçek bir aygıtı Uzaktan İzleme çözüm hızlandırıcısına nasıl bağlayabileceğinizi gösterir. Kısıtlı aygıtlarda çalışan çoğu gömülü uygulamada olduğu gibi, Raspberry Pi aygıt uygulamasının istemci kodu C olarak yazılır. Bu eğitimde, Raspbian işletim sistemi çalıştıran bir Raspberry Pi üzerinde uygulama oluşturmak.
 
-Bir cihazın benzetimini gerçekleştirme isterseniz, bkz. [oluşturma ve test yeni bir simülasyon cihazı](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Bir aygıtı simüle etmeyi tercih ederseniz, [bkz.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 ### <a name="required-hardware"></a>Gerekli donanım
 
-Raspberry Pi komut satırında bilgisayarlarına uzaktan bağlanabilmelerini sağlamak için bir masaüstü bilgisayar.
+Raspberry Pi'deki komut satırına uzaktan bağlanmanızı sağlayan bir masaüstü bilgisayar.
 
-[Microsoft IOT Starter Kit, Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) veya eşdeğer bileşenleri. Bu öğreticide setindeki aşağıdaki öğeleri kullanır:
+Raspberry Pi 3 veya eşdeğer bileşenler [için Microsoft IoT Başlangıç Kiti.](https://azure.microsoft.com/develop/iot/starter-kits/) Bu öğretici, kitte aşağıdaki öğeleri kullanır:
 
-- Raspberry Pi 3
-- (İle NOOBS) MicroSD kartı
-- Bir Mini USB kablosu
+- Ahududu Pi 3
+- MicroSD Kart (NOOBS ile)
+- USB Mini kablo
 - Ethernet kablosu
 
 ### <a name="required-desktop-software"></a>Gerekli masaüstü yazılımı
 
-Komut satırı Raspberry Pi üzerinde uzaktan erişim sağlamak için Masaüstü makinenizde SSH istemcisi gerekir.
+Raspberry Pi'deki komut satırına uzaktan erişebilmeniz için masaüstü makinenizde SSH istemcisine ihtiyacınız vardır.
 
-- Windows, bir SSH istemcisi içermez. Kullanmanızı öneririz [PuTTY](https://www.putty.org/).
-- Çoğu Linux dağıtımları ve MAC'te SSH komut satırı yardımcı programı içerir. Daha fazla bilgi için [SSH kullanarak Linux veya Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows bir SSH istemcisi içermez. [Biz PuTTY](https://www.putty.org/)kullanmanızı öneririz.
+- Çoğu Linux dağıtımı ve Mac OS komut satırı SSH yardımcı programı içerir. Daha fazla bilgi için Linux [veya Mac OS kullanarak SSH'ye](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)bakın.
 
-### <a name="required-raspberry-pi-software"></a>Raspberry Pi'yi yazılım gerekli
+### <a name="required-raspberry-pi-software"></a>Gerekli Raspberry Pi yazılımı
 
-Bu makalede, en son sürümünü yüklediğinizden varsayılır [Raspberry Pi'yi Raspbian OS'de](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+Bu makalede, [Ahududu Pi üzerinde Raspbian işletim sistemi](https://www.raspberrypi.org/learning/software-guide/quickstart/)en son sürümünü yüklediğiniz varsayar.
 
-Aşağıdaki adımları Raspberry Pi'yi çözüm hızlandırıcısına bağlanan bir C uygulaması oluşturmak için hazırlama işlemini gösterir:
+Aşağıdaki adımlar, çözüm hızlandırıcısına bağlanan bir C uygulaması oluşturmak için Raspberry Pi'nizi nasıl hazırlayacağınızı gösterir:
 
-1. Kullanarak, Raspberry Pi bağlanmak **ssh**. Daha fazla bilgi için [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) üzerinde [Raspberry Pi Web sitesi](https://www.raspberrypi.org/).
+1. **Ssh**kullanarak Raspberry Pi'nize bağlanın. Daha fazla bilgi için [Raspberry Pi web](https://www.raspberrypi.org/) [sitesindessh (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) bakın.
 
-1. Raspberry Pi'yi güncelleştirmek için aşağıdaki komutu kullanın:
+1. Raspberry Pi'nizi güncellemek için aşağıdaki komutu kullanın:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Nasıl yapılır bu kılavuzdaki adımları tamamlamak için adımları izleyin [Linux geliştirme ortamınızı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) gerekli geliştirme araçları ve kitaplıkları Raspberry Pi'yi eklemek için.
+1. Bu nasıl yap'la ilgili kılavuzların adımlarını tamamlamak için, Raspberry Pi'nize gerekli geliştirme araçlarını ve kitaplıklarını eklemek için [Linux geliştirme ortamınızı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) adımlarını izleyin.
 
-## <a name="view-the-code"></a>Kod Görünümü
+## <a name="view-the-code"></a>Kodu görüntüleme
 
-[Örnek kod](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) kullanılan Kılavuzu Azure IOT C SDK'ları GitHub deposunda kullanılabilir.
+Bu kılavuzda kullanılan [örnek kod](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) Azure IoT C SDKs GitHub deposunda kullanılabilir.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Kaynak kodunu indirebilir ve proje hazırlama
+### <a name="download-the-source-code-and-prepare-the-project"></a>Kaynak kodunu indirin ve projeyi hazırlayın
 
-Proje hazırlamak için Kopyala veya indir [Azure IOT C SDK'ları depo](https://github.com/Azure/azure-iot-sdk-c) github'dan.
+Projeyi hazırlamak için, Azure [IoT C SDKs deposunu](https://github.com/Azure/azure-iot-sdk-c) GitHub'dan klonlayın veya indirin.
 
-Örnek bulunan **çözümleri/samples/remote_monitoring_client** klasör.
+Örnek, **örnekler/çözümler/remote_monitoring_client** klasöründe bulunur.
 
-Açık **remote_monitoring.c** dosyası **çözümleri/samples/remote_monitoring_client** bir metin düzenleyicisinde klasör.
+**remote_monitoring.c** dosyasını bir metin düzenleyicisinde **örnekler/çözümler/remote_monitoring_client** klasöründeki açın.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-Aşağıdaki adımları nasıl kullanılacağını açıklayan *CMake* istemci uygulaması oluşturmak için. Uzaktan izleme istemci uygulaması oluşturma işleminin bir parçası için SDK'sı yerleşik olarak bulunur.
+Aşağıdaki adımlar, istemci uygulamasını oluşturmak için *CMake'nin* nasıl kullanılacağını açıklar. Uzaktan izleme istemcisi uygulaması SDK için yapı sürecinin bir parçası olarak oluşturulur.
 
-1. Düzen **remote_monitoring.c** değiştirmek için dosya `<connectionstring>` bu nasıl yapılır kılavuzunda başlangıcında not ettiğiniz çözüm hızlandırıcısına bir cihazı eklendiğinde cihaz bağlantı dizesiyle.
+1. Çözüm hızlandırıcısına bir aygıt `<connectionstring>` eklediğinizde bu nasıl yapılacağını zedelerken belirttiğiniz aygıt bağlantı dizesiyle değiştirmek için **remote_monitoring.c** dosyasını edin.
 
-1. Kopyaladığınız kök dizinine gidin [Azure IOT C SDK'ları depo](https://github.com/Azure/azure-iot-sdk-c) deposu ve istemci uygulaması oluşturmak için aşağıdaki komutları çalıştırın:
+1. [Azure IoT C SDKs deposunun](https://github.com/Azure/azure-iot-sdk-c) klonlanmış kopyanızın köküne gidin ve istemci uygulamasını oluşturmak için aşağıdaki komutları çalıştırın:
 
     ```sh
     mkdir cmake
@@ -86,15 +86,15 @@ Aşağıdaki adımları nasıl kullanılacağını açıklayan *CMake* istemci u
     make
     ```
 
-1. İstemci uygulamasını çalıştırın ve IOT Hub'ına telemetri gönderme:
+1. İstemci uygulamasını çalıştırın ve telemetriyi IoT Hub'a gönderin:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    Konsol iletileri olarak gösterir:
+    Konsol iletileri aşağıdaki gibi görüntüler:
 
-    - Uygulama, çözüm hızlandırıcısına örnek telemetri gönderir.
-    - Çözüm panosundan çağrılan yöntemlere verir.
+    - Uygulama çözüm hızlandırıcısına örnek telemetri gönderir.
+    - Çözüm panosundan çağrılan yöntemlere yanıt verir.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

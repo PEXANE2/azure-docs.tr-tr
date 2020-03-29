@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2B en iyi uygulamaları ve önerileri
-description: Azure Active Directory 'de işletmeler arası (B2B) Konuk Kullanıcı erişimi için en iyi yöntemleri ve önerileri öğrenin.
+title: Azure Active Directory B2B en iyi uygulamalar ve öneriler
+description: Azure Active Directory'de işletmelerarası (B2B) konuk kullanıcı erişimi için en iyi uygulamaları ve önerileri öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,30 +12,33 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050858"
 ---
-# <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamaları
-Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbirliği için öneriler ve en iyi uygulamalar içerir.
+# <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamalar
+Bu makalede, Azure Etkin Dizini'nde (Azure AD) işletmeler arası (B2B) işbirliği için öneriler ve en iyi uygulamalar yer alıyor.
+
+   > [!IMPORTANT]
+   > **31 Mart 2021'den itibaren Microsoft,** B2B işbirliği senaryoları için yönetilmeyen Azure AD hesapları ve kiracılar oluşturarak artık davetlerin itfasını desteklemez. Hazırlık olarak, müşterilerin tek [seferlik parola kimlik doğrulaması e-postasını](one-time-passcode.md)seçmelerini öneririz. Bu genel önizleme özelliği hakkındaki görüşlerinizi memnuniyetle karşılıyoruz ve işbirliği yapmak için daha fazla yol oluşturmaktan heyecan duyuyoruz.
 
 ## <a name="b2b-recommendations"></a>B2B önerileri
 | Öneri | Yorumlar |
 | --- | --- |
-| En iyi oturum açma deneyimi için, kimlik sağlayıcılarıyla federasyona ayırın | Mümkün olduğunda, davet edilen kullanıcıların Microsoft hesapları (MSAs) veya Azure AD hesapları oluşturmaya gerek kalmadan paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin vermek için doğrudan kimlik sağlayıcılarıyla federasyona ayırın. B2B Konuk kullanıcılarının Google hesaplarıyla oturum açmasını sağlamak için [Google Federation özelliğini](google-federation.md) kullanabilirsiniz. Ya da [doğrudan Federasyon (Önizleme) özelliğini](direct-federation.md) kullanarak, kimlik sağlayıcısı (ıDP) SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyonu ayarlayabilirsiniz. |
-| Diğer yollarla kimlik doğrulaması yapamayan B2B konukları için e-posta bir kerelik geçiş kodu (Önizleme) özelliğini kullanın | [E-posta bir kerelik geçiş kodu (Önizleme)](one-time-passcode.md) özelliği, Azure AD, MICROSOFT HESABı (MSA) veya Google Federasyonu gibi diğer yollarla kimlik doğrulamasından GEÇIYORLARSA B2B Konuk kullanıcılarının kimliğini doğrular. Konuk Kullanıcı bir davetiyeyi bir davet edebilir veya paylaşılan bir kaynağa eriştiğinde, kendi e-posta adreslerine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girer. |
-| Oturum açma sayfanıza şirket markası ekleme | Çoklu oturum açma sayfanızı, B2B Konuk kullanıcılarınız için daha sezgisel olacak şekilde özelleştirebilirsiniz. Bkz. [oturum açma ve erişim paneli sayfalarına Şirket markası ekleme](../fundamentals/customize-branding.md). |
-| B2B Konuk Kullanıcı kullanım deneyimine Gizlilik Bildirimimizi ekleyin | Davet edilen bir kullanıcının devam etmek için Gizlilik koşullarınızı onaylaması gerekir diye, kuruluşunuzun gizlilik bildiriminin URL 'sini ilk kez davet kullanım sürecine ekleyebilirsiniz. Bkz. [nasıl yapılır: kuruluşunuzun gizlilik bilgilerini Azure Active Directory ekleme](https://aka.ms/adprivacystatement). |
-| Birden çok B2B Konuk kullanıcıyı aynı anda davet etmek için toplu davet (Önizleme) özelliğini kullanın | Azure portal toplu davet önizleme özelliğini kullanarak birden çok Konuk kullanıcıyı kuruluşunuza aynı anda davet edin. Bu özellik, B2B Konuk kullanıcıları oluşturmak ve davetleri toplu olarak göndermek için bir CSV dosyasını karşıya yüklemenize olanak sağlar. [B2B kullanıcılarını toplu olarak davet etmek Için öğreticiye](tutorial-bulk-invite.md)bakın. |
-| Multi-Factor Authentication için koşullu erişim ilkelerini zorlama (MFA) | İş ortağı B2B kullanıcılarıyla paylaşmak istediğiniz uygulamalarda MFA ilkelerini zorunlu olarak yapmanızı öneririz. Bu şekilde, iş ortağı kuruluşun MFA kullanıp kullanmadığını fark etmeksizin, MFA, kiracınızdaki uygulamalarda sürekli olarak zorlanır. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md)konusuna bakın. |
-| Cihaz tabanlı koşullu erişim ilkeleri zorlarken, B2B kullanıcılarına erişime izin vermek için dışlama listeleri kullanın | Kuruluşunuzda cihaz tabanlı koşullu erişim ilkeleri etkinse, B2B Konuk Kullanıcı cihazları kuruluşunuz tarafından yönetilmediği için engellenir. Cihaz tabanlı koşullu erişim ilkesinden hariç tutmak üzere belirli iş ortağı kullanıcılarını içeren dışlama listeleri oluşturabilirsiniz. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md)konusuna bakın. |
-| B2B Konuk kullanıcılarınıza doğrudan bağlantılar sağlarken kiracıya özgü bir URL kullanın | Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Bu doğrudan bağlantı kiracıya özgü olmalıdır, yani bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, böylelikle Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. [Konuk Kullanıcı için kullanım deneyimini](redemption-experience.md)inceleyin. |
-| Bir uygulama geliştirirken, Konuk Kullanıcı deneyimini öğrenmek için UserType kullanın  | Bir uygulama geliştiriyorsanız ve kiracı kullanıcıları ve Konuk kullanıcılar için farklı deneyimler sağlamak istiyorsanız UserType özelliğini kullanın. UserType talebi şu anda belirtece dahil değildir. Uygulamalar, kullanıcının UserType değerlerini alması için dizini sorgulamak üzere Microsoft Graph API 'sini kullanmalıdır. |
-| UserType özelliğini *yalnızca* kullanıcının kuruluşla olan ilişkisi değişirse değiştirin | Bir kullanıcının UserType özelliğini bir üyenin üyesine konuğa (ve tam tersi) dönüştürmek için PowerShell 'i kullanmak mümkün olsa da, bu özelliği yalnızca kullanıcının kuruluşunuzla olan ilişkisi değişirse değiştirmelisiniz. [B2B Konuk kullanıcısının özelliklerine](user-properties.md)bakın.|
+| En iyi oturum açma deneyimi için, kimlik sağlayıcılarla fetorat | Mümkün olduğunda, davet edilen kullanıcıların Microsoft Hesapları (MSAs) veya Azure AD hesapları oluşturmak zorunda kalmadan paylaşılan uygulamalarınızda ve kaynaklarınızda oturum açmalarına izin vermek için kimlik sağlayıcılarıyla doğrudan federate. B2B konuk kullanıcılarının Google hesaplarında oturum açmalarına izin vermek için [Google federasyonu özelliğini](google-federation.md) kullanabilirsiniz. Veya, kimlik sağlayıcısı (IdP) SAML 2.0 veya WS-Fed protokolünü destekleyen herhangi bir kuruluşla doğrudan federasyon kurmak için [Doğrudan federasyon (önizleme) özelliğini](direct-federation.md) kullanabilirsiniz. |
+| Başka yollarla kimlik doğrulayamayan B2B konukları için E-posta parolasını (önizleme) özelliğini kullanın | [E-posta tek seferlik parola (önizleme)](one-time-passcode.md) özelliği, Azure AD, Microsoft hesabı (MSA) veya Google federasyonu gibi diğer yollarla kimlik doğrulaması olanınamadığında B2B konuk kullanıcılarının kimliğini doğrular. Konuk kullanıcı bir daveti kullandığınızda veya paylaşılan bir kaynağa eriştiğinde, e-posta adresine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girerler. |
+| Oturum açma sayfanıza şirket markası ekleme | B2B konuk kullanıcılarınız için daha sezgisel olacak şekilde oturum açma sayfanızı özelleştirebilirsiniz. Oturum açma ve [Panel sayfalarına erişmek için şirket markasını nasıl ekleyeceğinize](../fundamentals/customize-branding.md)bakın. |
+| B2B konuk kullanıcı kullanımı deneyimine gizlilik bildiriminizi ekleyin | Davet edilen bir kullanıcının gizlilik koşullarınızın devam etmesini kabul etmesi için kuruluşunuzun gizlilik bildiriminin URL'sini ilk kez davet kullanım işlemine ekleyebilirsiniz. [Nasıl Yapılacağını Görün: Azure Active Directory'de kuruluşunuzun gizlilik bilgilerini ekleyin.](https://aka.ms/adprivacystatement) |
+| Birden fazla B2B konuk kullanıcısını aynı anda davet etmek için toplu davet (önizleme) özelliğini kullanma | Azure portalındaki toplu davet önizleme özelliğini kullanarak birden fazla konuk kullanıcıyı aynı anda kuruluşunuza davet edin. Bu özellik, B2B konuk kullanıcıları oluşturmak ve toplu olarak davetiye göndermek için bir CSV dosyası yüklemenize olanak tanır. [B2B kullanıcılarını toplu olarak davet etmek için Öğretici'ye](tutorial-bulk-invite.md)bakın. |
+| Çok Faktörlü Kimlik Doğrulama (MFA) için Koşullu Erişim ilkelerini uygulayın | Ortak B2B kullanıcılarıyla paylaşmak istediğiniz uygulamalarda MFA politikalarını uygulamanızı öneririz. Bu şekilde, Ortak kuruluş MFA'yı kullanıp kullanmadığına bakılmaksızın, MFA kiracınızdaki uygulamalarüzerinde sürekli olarak uygulanır. [B2B işbirliği kullanıcıları için Koşullu Erişim'e](conditional-access.md)bakın. |
+| Aygıt tabanlı Koşullu Erişim ilkelerini uyguluyorsanız, B2B kullanıcılarına erişime izin vermek için dışlama listelerini kullanın | Kuruluşunuzda aygıt tabanlı Koşullu Erişim ilkeleri etkinse, B2B konuk kullanıcı aygıtları kuruluşunuz tarafından yönetilmediği için engellenir. Aygıt tabanlı Koşullu Erişim ilkesinden hariç tutmak için belirli iş ortağı kullanıcıları içeren dışlama listeleri oluşturabilirsiniz. [B2B işbirliği kullanıcıları için Koşullu Erişim'e](conditional-access.md)bakın. |
+| B2B konuk kullanıcılarınıza doğrudan bağlantılar sağlarken kiracıya özel bir URL kullanın | Davet e-postasına alternatif olarak, bir misafire uygulamanıza veya portalınıza doğrudan bağlantı verebilirsiniz. Bu doğrudan bağlantı kiracıya özgü olmalıdır, yani kiracı kimliği veya doğrulanmış etki alanı içermelidir, böylece konuk paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulanabilir. [Konuk kullanıcı için Redemption deneyimine](redemption-experience.md)bakın. |
+| Bir uygulama geliştirirken, konuk kullanıcı deneyimini belirlemek için UserType'ı kullanın  | Bir uygulama geliştiriyorsanız ve kiracı kullanıcılar ve konuk kullanıcılar için farklı deneyimler sağlamak istiyorsanız, UserType özelliğini kullanın. UserType talebi şu anda belirteç te dahil değildir. Uygulamalar, kullanıcının UserType'larını alması için dizini sorgulamak için Microsoft Graph API'sini kullanmalıdır. |
+| Yalnızca kullanıcının kuruluşla ilişkisi değişirse UserType *özelliğini* değiştirme | Bir kullanıcı için UserType özelliğini Üye'den Misafire dönüştürmek için PowerShell'i kullanmak mümkün olsa da (ve tam tersi), bu özelliği yalnızca kullanıcının kuruluşunuzla ilişkisi değişirse değiştirmeniz gerekir. [B2B konuk kullanıcıözelliklerine](user-properties.md)bakın.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[B2B paylaşımını yönetme](delegate-invitations.md)
+[B2B paylaşımını yönet](delegate-invitations.md)

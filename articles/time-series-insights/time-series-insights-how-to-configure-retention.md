@@ -1,6 +1,6 @@
 ---
-title: Ortamınızda saklama Yapılandırma-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights ortamınızda bekletmenin nasıl yapılandırılacağını öğrenin.
+title: Ortamınızda bekletme yapılandırma nasıl yapılandırılır - Azure Zaman Serisi Öngörüleri | Microsoft Dokümanlar
+description: Azure Zaman Serisi Öngörüleri ortamınızda bekletme yi nasıl yapılandırıştırmayı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278609"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights bekletme yapılandırma
+# <a name="configuring-retention-in-time-series-insights"></a>Zaman Serisi Öngörülerinde bekletme yapılandırma
 
-Bu makalede, Azure Time Series Insights ' de **veri saklama süresi** ve **depolama sınırı aşıldı davranışının** nasıl yapılandırılacağı açıklanır.
+Bu makalede, Azure Zaman Serisi Öngörüleri'nde **Veri saklama süresi** ve Depolama sınırı nın **aşıldığı davranışların** nasıl yapılandırılabildiğini açıklanmaktadır.
 
 ## <a name="summary"></a>Özet
 
-Her Azure Time Series Insights ortamının **veri saklama süresini**yapılandırma ayarı vardır. Değer 1 ile 400 gün arasında yayılır. Veriler ortam depolama kapasitesi veya Bekletme süresine (1-400) göre silinir, hangisi önce gelir.
+Her Azure Zaman Serisi Öngörüler ortamının **Veri saklama süresini**yapılandırmak için bir ayarı vardır. Değer 1 ile 400 güne kadar uzanır. Veriler, hangisi önce gerçekleşirse, ortam depolama kapasitesine veya bekletme süresine (1-400) göre silinir.
 
-Her Time Series Insights ortamında, ek bir **depolama sınırı aşıldı davranışı**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
+Her Zaman Serisi Öngörüler ortamıek bir ayar **Depolama sınırı aşan davranış**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
 
-- **Eski verileri temizle** (varsayılan)
-- **Girişi Duraklat**
+- **Eski verileri temizleme** (varsayılan)
+- **Duraklatma girişi**
 
-Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Insights ' de saklama](time-series-insights-concepts-retention.md)süresini gözden geçirin.  
+Bu ayarları daha iyi anlamak için ayrıntılı bilgi [için, Zaman Serisi Öngörüleri'nde Anlama saklamayı gözden geçirin.](time-series-insights-concepts-retention.md)  
 
 ## <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Mevcut Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
+1. Mevcut Time Series Öngörüleri ortamınızı bulun. Azure portalının sol tarafındaki menüdeki **Tüm kaynakları** seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
-1. **Ayarlar** başlığı altında **depolama yapılandırması**' nı seçin.
+1. **Ayarlar** başlığı altında **Depolama Yapılandırması'nı**seçin.
 
-    [Ayarlar altında ![depolama yapılandırması ' nı seçin.](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+    [![Ayarlar altında Depolama Yapılandırması'nı seçin](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
-1. Kaydırma çubuğunu kullanarak bekletme 'yi yapılandırmak için **veri saklama süresini (gün olarak)** seçin veya metin kutusuna bir sayı yazın.
+1. Kaydırıcı çubuğunu kullanarak bekletme süresini yapılandırmak veya metin kutusuna bir sayı yazmak için **Veri bekletme süresini (günler içinde)** seçin.
 
-1. Bu yapılandırma, verileri depolamak için maksimum veri olayı miktarını ve toplam depolama kapasitesini etkilediğinden **Kapasite** ayarını dikkate alın.
+1. Bu yapılandırma maksimum veri olayı miktarını ve veri depolama için toplam depolama kapasitesini etkilediğiiçin **Kapasite** ayarını not edin.
 
-1. **Depolama sınırı aşıldı davranış** ayarını değiştirin. **Eski verileri temizle** veya giriş davranışını **Duraklat** ' ı seçin.
+1. **Depolama sınırını aşan davranış** ayarını geçiş. **Eski verileri Temizleme** veya Ara **verme** davranışını seçin.
 
-    [![duraklatma-kabul etme ve kaydetme.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
+    [![Girişi duraklatın - kabul edin ve kaydedin.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
-1. Veri kaybından oluşan olası riskleri anlamak için belgeleri gözden geçirin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
+1. Veri kaybının olası risklerini anlamak için belgeleri gözden geçirin. Değişiklikleri yapılandırmak için **Kaydet'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için [Time Series Insights ' de saklama süresini anlama](time-series-insights-concepts-retention.md)konusunu gözden geçirin.
+- Daha fazla bilgi için, [Zaman Serisi Öngörüleri'nde anlama tutmayı gözden geçirin.](time-series-insights-concepts-retention.md)
 
-- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+- [Zaman Serisi Öngörüleri ortamınızı nasıl ölçeklendireceklerini](time-series-insights-how-to-scale-your-environment.md)öğrenin.
 
-- [Ortamınızı planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.
+- [Çevrenizi planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Özel olarak geliştirilen uygulamalar için kayıt alanlarını Azure portal
-description: Azure AD ile özel bir geliştirilmiş uygulamayı kaydetme Kılavuzu
+title: Özel olarak geliştirilen uygulamalar için Azure portalı kayıt alanları
+description: Azure AD ile özel olarak geliştirilmiş bir uygulama kaydetme kılavuzu
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -16,63 +16,63 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702683"
 ---
-# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilen uygulamalar için kayıt alanlarını Azure portal
+# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilen uygulamalar için Azure portalı kayıt alanları
 
-Bu makale, [Azure Portal](https://portal.azure.com)uygulama kaydı formundaki tüm kullanılabilir alanlarla ilgili kısa bir açıklama sağlar.
+Bu makalede, [Azure portalındaki](https://portal.azure.com)uygulama kayıt formundaki tüm kullanılabilir alanların kısa bir açıklaması sunulmaktadır.
 
 ## <a name="register-a-new-application"></a>Yeni uygulama kaydetme
 
--   Yeni bir uygulamayı kaydetmek için [Azure Portal](https://portal.azure.com)gidin.
+-   Yeni bir uygulama kaydetmek için [Azure portalına](https://portal.azure.com)gidin.
 
--   Sol gezinti bölmesinden Azure Active Directory ' ye tıklayın **.**
+-   Sol gezinti bölmesinden **Azure Etkin Dizini'ni tıklatın.**
 
--   **Uygulama kayıtları** seçip **Ekle**' ye tıklayın.
+-   **Uygulama kayıtlarını** seçin ve **Ekle'yi**tıklatın.
 
--   Bu, uygulama kayıt formunu açar.
+-   Bu, başvuru kayıt formunu açar.
 
-## <a name="fields-in-the-application-registration-form"></a>Uygulama kayıt formundaki alanlar
+## <a name="fields-in-the-application-registration-form"></a>Başvuru kayıt formundaki alanlar
 
 | Alan            | Açıklama                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Ad             | Uygulamanın adı. En az dört karakter uzunluğunda olmalıdır.                |
-| Desteklenen hesap türleri| Uygulamanızın hangi hesaplara desteklemesini istediğinizi seçin: yalnızca bu kuruluş dizinindeki hesaplar, herhangi bir kuruluş dizinindeki hesaplar veya herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları.  |
-| Yeniden Yönlendirme URL’si (isteğe bağlı) | Oluşturmakta olduğunuz uygulamanın türünü, **Web** veya **ortak istemciyi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'SINI (veya yanıt URL 'si) girin. Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin http://localhost:31544 yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır. Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin, myapp://auth. Web uygulamalarına veya yerel uygulamalara yönelik belirli örnekleri görmek için [hızlı başlangıç](https://docs.microsoft.com/azure/active-directory/develop)deneyimimize göz atın.|
+| Adı             | Uygulamanın adı. En az dört karakter olmalıdır.                |
+| Desteklenen hesap türleri| Uygulamanızın hangi hesapları desteklemesini istediğinizi seçin: yalnızca bu kuruluş dizinindeki hesaplar, herhangi bir kuruluş dizinindeki hesaplar veya herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesaplarındaki hesaplar.  |
+| URI'yi yeniden yönlendirme (isteğe bağlı) | Oluşturmakta olduğunuz uygulama türünü, **Web** veya **Kamu istemcisini (mobil & masaüstü)** seçin ve ardından uygulamanız için yeniden yönlendirme URI'sini (veya yanıt URL'sini) girin. Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin http://localhost:31544 yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır. Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. myapp://auth gibi uygulamanıza özgü bir değer girin. Web uygulamaları veya yerel uygulamalar için belirli örnekleri görmek için [hızlı başlangıçlarımıza](https://docs.microsoft.com/azure/active-directory/develop)göz atın.|
 
-Yukarıdaki alanları doldurduktan sonra uygulama Azure portal kaydedilir ve uygulamaya genel bakış sayfasına yönlendirilirsiniz. **Yönet** altında sol bölmedeki ayarlar sayfalarında uygulamanızı özelleştirmeniz için daha fazla alan vardır. Aşağıdaki tablolar tüm alanları anlatmaktadır. Bir Web uygulaması veya genel istemci uygulaması oluşturup oluşturdığınıza bağlı olarak, bu alanların yalnızca bir alt kümesini görürsünüz.
+Yukarıdaki alanları doldurduktan sonra, uygulama Azure portalına kaydedilir ve uygulamaya genel bakış sayfasına yönlendirilirsiniz. **Yönet'in** altındaki sol bölmedeki ayarlar sayfalarında uygulamanızı özelleştirmeniz için daha fazla alan vardır. Aşağıdaki tablolar tüm alanları açıklar. Bir web uygulaması veya ortak istemci uygulaması oluşturup oluşturmadığınıza bağlı olarak, bu alanların yalnızca bir alt kümesini görürsünüz.
 
 ### <a name="overview"></a>Genel Bakış
 
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Uygulama Kimliği  | Bir uygulamayı kaydettiğinizde, Azure AD uygulamanıza uygulama KIMLIĞI atar. Uygulama KIMLIĞI, uygulamanızı Azure AD 'ye yönelik kimlik doğrulama isteklerinde benzersiz olarak tanımlamak ve Graph API gibi kaynaklara erişmek için kullanılabilir.                                                          |
-| Uygulama KIMLIĞI URI 'SI      | Bu, genellikle **https://&lt;kiracı\_adı&gt;/&lt;uygulama\_adı&gt;** olan BENZERSIZ bir URI olmalıdır. Bu, yetkilendirme verme akışı sırasında Belirtecin verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak kullanılır. Ayrıca, verilen erişim belirtecinde ' AUD ' talebi de olur. |
+| Uygulama Kimliği  | Bir uygulamayı kaydettirdiğinizde, Azure AD uygulamanıza bir Uygulama Kimliği atar. Uygulama kimliği, Azure AD'ye yapılan kimlik doğrulama isteklerinde uygulamanızı benzersiz olarak tanımlamak ve Grafik API gibi kaynaklara erişmek için kullanılabilir.                                                          |
+| Uygulama Kimliği URI'si      | Bu benzersiz bir URI, genellikle **form&lt;\_https://&gt;/&lt;\_kiracı&gt;adı uygulama adı olmalıdır.** Bu, belirteç için verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak yetkilendirme hibe akışı sırasında kullanılır. Ayrıca verilen erişim belirteci 'aud' iddia olur. |
 
-### <a name="branding"></a>Marka
-
-| Alan           | Açıklama        |
-|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Yeni logoyu karşıya yükle | Uygulamanızı bir logo yüklemek için bunu kullanabilirsiniz. Logo. bmp,. jpg veya. png biçiminde olmalıdır ve dosya boyutu 100 KB 'den az olmalıdır. Resim için Boyutlar, 94x94 piksel olan orta görüntü boyutları ile 215x215 piksel olmalıdır.|
-| Giriş sayfası URL 'SI   | Bu, uygulama kaydı sırasında belirtilen oturum açma URL 'sidir.|
-
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="branding"></a>Markalama
 
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Oturum Kapatma URL'si      | Bu, çoklu oturum kapatma oturum kapatma URL 'sidir. Azure AD, başka bir kayıtlı uygulamayı kullanarak Kullanıcı oturumunu Azure AD ile temizlediğinde bu URL 'ye bir oturum kapatma isteği gönderir.|
-| Desteklenen hesap türleri  | Bu anahtar, uygulamanın birden çok kiracı tarafından kullanılıp kullanılamayacağını belirtir. Genellikle, bu, harici kuruluşların kendi kiracısına kaydederek ve kuruluşunuzun verilerine erişim izni vererek uygulamanızı kullanabileceği anlamına gelir.|
-| Yeniden Yönlendirme URL'leri      | Yeniden yönlendirme veya yanıtlama, URL 'Ler, Azure AD 'nin uygulamanızın isteklerinizle ilgili belirteçleri döndürdüğü uç noktalardır. Yerel uygulamalar için, başarılı yetkilendirme sonrasında kullanıcının gönderildiği yerdir. Azure AD, uygulamanızın OAuth 2,0 isteğindeki sağladığı yeniden yönlendirme URI 'sinin, portaldaki kayıtlı değerlerden biriyle eşleşip eşleşmediğini denetler.|
+| Yeni logo yükleyin | Bunu, uygulamanız için bir logo yüklemek için kullanabilirsiniz. Logo .bmp, .jpg veya .png formatında olmalı ve dosya boyutu 100 KB'den az olmalıdır. Görüntünün boyutları 215x215 piksel olmalı ve merkezi görüntü boyutları 94x94 piksel olmalıdır.|
+| Ana sayfa URL'si   | Bu, başvuru kaydı sırasında belirtilen oturum açma URL'sidir.|
 
-### <a name="certificates-and-secrets"></a>Sertifikalar ve gizlilikler
+### <a name="authentication"></a>Kimlik doğrulaması
 
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| İstemci gizli dizileri            | Kullanıcı etkileşimi olmadan Azure AD tarafından güvenliği sağlanmış Web API 'Lerine programlı bir şekilde erişmek için istemci gizli dizileri veya anahtarlar oluşturabilirsiniz. **Yeni istemci parolası** sayfasında, anahtar açıklaması ve sona erme tarihi girin ve anahtarı oluşturmak için kaydedin. Daha sonra erişemeyeceksiniz, bu dosyayı güvenli bir yerde kaydettiğinizden emin olun.             |
+| Giriş URL'si      | Bu, tek oturum açma giriş URL'sidir. Azure AD, kullanıcı azure AD ile oturumunu diğer kayıtlı uygulamaları kullanarak temizlediğinde bu URL'ye bir oturum açma isteği gönderir.|
+| Desteklenen hesap türleri  | Bu anahtar, uygulamanın birden çok kiracı tarafından kullanılıp kullanılamayacağını belirtir. Genellikle, bu, dış kuruluşların uygulamanızı kiracılarına kaydederek ve kuruluşlarının verilerine erişim sağlayarak kullanabileceği anlamına gelir.|
+| Yeniden Yönlendirme URL'leri      | Yönlendirme veya yanıt, URL'ler Azure AD'nin uygulamanızın istediği belirteçleri döndürdüğü uç noktalardır. Yerel uygulamalar için, kullanıcı nın başarılı yetkilendirmeden sonra gönderildiği yerdir. Azure AD, OAuth 2.0 isteğindeki UYGULAMA SARF MALZEMELERİnE YENIDEN YÖNLENDIRME UYGULAMA SİsteMÜNÜN portaldaki kayıtlı değerlerden biriyle eşleşin.|
+
+### <a name="certificates-and-secrets"></a>Sertifikalar ve sırlar
+
+| Alan           | Açıklama        |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| İstemci gizli dizileri            | Azure AD tarafından güvenli web API'lerine kullanıcı etkileşimi olmadan programlı bir şekilde erişmek için istemci sırları veya anahtarlar oluşturabilirsiniz. Yeni **istemci gizli** sayfasından, anahtar açıklamasını ve son kullanma tarihini girin ve anahtarı oluşturmak için kaydedin. Daha sonra erişemeyeceğinden güvenli bir yere kaydettiğinizi unutmayın.             |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

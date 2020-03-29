@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process roller ve görevler
-description: Bir veri bilimi grubu için anahtar bileşenlerinin, personel rollerinin ve ilişkili görevlerin bir ana hattı.
+title: Ekip Veri Bilimi Süreci rolleri ve görevleri
+description: Veri bilimi grubu için temel bileşenlerin, personel rollerinin ve ilişkili görevlerin anahatlarını.
 author: marktab
 manager: marktab
 editor: marktab
@@ -12,124 +12,124 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720019"
 ---
-# <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process roller ve görevler
+# <a name="team-data-science-process-roles-and-tasks"></a>Ekip Veri Bilimi Süreci rolleri ve görevleri
 
-Ekip veri bilimi Işlemi (TDSP), tahmine dayalı analiz çözümlerini ve akıllı uygulamaları verimli bir şekilde oluşturmak için yapılandırılmış bir metodolojisi sağlayan Microsoft tarafından geliştirilen bir çerçevedir. Bu makalede, bu işlem üzerinde standartlaştırarak bir veri bilimi ekibi için anahtar personeli rolleri ve ilişkili görevler özetlenmektedir.
+Ekip Veri Bilimi Süreci (TDSP), Microsoft tarafından geliştirilen ve tahmine dayalı analitik çözümleri ve akıllı uygulamalar oluşturmak için yapılandırılmış bir metodoloji sağlayan bir çerçevedir. Bu makalede, bu işlemi standartlaştıran bir veri bilimi ekibinin temel personel rolleri ve ilişkili görevleri özetlenir.
 
-Bu giriş makalesi, TDSP ortamını ayarlama hakkında öğreticilere bağlantı sağlar. Öğreticiler Azure DevOps Projeleri, Azure Repos depoları ve Azure Boards kullanma hakkında ayrıntılı rehberlik sağlar.  Amaç, Modellendirme ve dağıtım aracılığıyla kavramla taşınıyor.
+Bu giriş makalesi, TDSP ortamının nasıl ayarlanılacaya ilişkin öğreticilere bağlantılar kurar. Öğreticiler, Azure DevOps Projeleri, Azure Depoları ve Azure Panolarını kullanmak için ayrıntılı kılavuz sağlar.  Motive edici hedef, kavramdan modellemeye ve dağıtıma geçmektir.
 
-Öğreticiler, Microsoft 'ta TDSP 'nin uygulanması nedeniyle Azure DevOps kullanır. Azure DevOps, rol tabanlı güvenliği, iş öğesi yönetimini, izlemeyi ve kod barındırma, paylaşım ve kaynak denetimini tümleştirerek işbirliğini kolaylaştırır. Öğreticiler Ayrıca, Microsoft yazılımı ve Azure hizmetleriyle önceden yapılandırılmış ve tümleşik birçok popüler veri bilimi aracı bulunan analiz masaüstü olarak bir Azure [veri bilimi sanal makinesi](https://aka.ms/dsvm) (dsvm) kullanır. 
+Öğreticiler Azure DevOps'leri kullanır, çünkü TDSP Microsoft'ta bu şekilde uygulanır. Azure DevOps, rol tabanlı güvenlik, iş öğesi yönetimi ve izleme ve kod barındırma, paylaşma ve kaynak denetimini tümleştirerek işbirliğini kolaylaştırır. Öğreticiler ayrıca, Microsoft yazılımları ve Azure hizmetleriyle önceden yapılandırılmış ve entegre edilmiş birkaç popüler veri bilimi aracı olan analytics masaüstü olarak Azure [Veri Bilimi Sanal Makinesi](https://aka.ms/dsvm) (DSVM) kullanır. 
 
-Diğer kod barındırma, çevik planlama ve geliştirme araçlarını ve ortamlarını kullanarak TDSP uygulamak için öğreticileri kullanabilirsiniz, ancak bazı özellikler kullanılamayabilir.
+Öğreticileri diğer kod barındırma, çevik planlama ve geliştirme araçları ve ortamlarını kullanarak TDSP'yi uygulamak için kullanabilirsiniz, ancak bazı özellikler kullanılamayabilir.
 
-## <a name="structure-of-data-science-groups-and-teams"></a>Veri bilimi gruplarının ve takımların yapısı
+## <a name="structure-of-data-science-groups-and-teams"></a>Veri bilimi gruplarının ve ekiplerinin yapısı
 
-Kuruluşların veri bilimi işlevleri genellikle aşağıdaki hiyerarşide düzenlenmiştir:
+İşletmelerdeki veri bilimi işlevleri genellikle aşağıdaki hiyerarşide düzenlenir:
 
 - Veri bilimi grubu
-  - Grup içindeki veri bilimi ekibi/öğeleri
+  - Grup içindeki veri bilimi ekibi/ler
 
-Böyle bir yapıda, Grup müşteri adayları ve ekip liderleri vardır. Genellikle, bir veri bilimi projesi bir veri bilimi ekibi tarafından yapılır. Veri bilimi takımları, proje yönetimi ve idare görevlerine yönelik proje liderleri ve bireysel veri bilimcileri ve mühendislerin, projenin veri bilimi ve veri Mühendisliği parçalarını gerçekleştirmesini sağlar. İlk proje kurulumu ve yönetimi, Grup, takım veya proje tarafından gerçekleştirilir.
+Böyle bir yapıda, grup müşteri adayları ve takım adayları vardır. Genellikle, bir veri bilimi projesi bir veri bilimi ekibi tarafından yapılır. Veri bilimi ekipleri, proje yönetimi ve yönetim görevleri için proje ipuçlarına ve projenin veri bilimi ve veri mühendisliği bölümlerini gerçekleştirmek için bireysel veri bilimcileri ve mühendislerine sahiptir. İlk proje kurulumu ve yönetimi grup, takım veya proje müşteri adayları tarafından yapılır.
 
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Dört TDSP rolü için tanım ve görevler
-Veri bilimi biriminin bir grup içindeki ekiplerden oluştuğu varsayımıyla, TDSP personeli için dört ayrı rol vardır:
+Veri bilimi biriminin bir grup içindeki ekiplerden oluştuğu varsayımıyla, TDSP personeli için dört farklı rol vardır:
 
-1. **Grup Yöneticisi**: bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi birimi, birden çok takıma, her biri ayrı iş sıralamasına koydunuz birden çok veri bilimi proje üzerinde çalışıyor olabilir. Grup Yöneticisi görevlerini bir yedek için temsilci, ancak rol ile ilişkili görevleri değiştirmeyin.
+1. **Grup Yöneticisi**: Bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi biriminin birden çok ekibi olabilir ve bunların her biri farklı iş dikeylerinde birden fazla veri bilimi projesi üzerinde çalışıyor olabilir. Grup Yöneticisi görevlerini bir vekil olarak devredebilir, ancak rolile ilişkili görevler değişmez.
    
-2. **Ekip lideri**: bir kuruluşun veri bilimi biriminde bir ekibi yönetir. Takım birden çok veri bilimcileri oluşur. Küçük bir veri bilimi birimi için Grup Yöneticisi ve ekip lideri aynı kişi olabilir.
+2. **Takım Lideri**: Bir işletmenin veri bilimi biriminde bir ekibi yönetir. Bir ekip birden fazla veri bilim adamlarından oluşur. Küçük bir veri bilimi birimi için Grup Yöneticisi ve Takım Müşteri Adayı aynı kişi olabilir.
    
-3. **Proje lideri**: belirli bir veri bilimi projesinde bireysel veri bilimcilerinin günlük etkinliklerini yönetir.
+3. **Proje Lideri**: Belirli bir veri bilimi projesinde bireysel veri bilimcilerin günlük faaliyetlerini yönetir.
    
-4. **Proje bireysel katılımcıları**: veri bilimcileri, Iş analistleri, veri mühendisleri, mimarlar ve bir veri bilimi projesi çalıştıran diğerleri.
+4. **Proje Bireysel Katkıda Bulunanlar**: Veri Bilimcileri, İş Analistleri, Veri Mühendisleri, Mimarlar ve veri bilimi projesini yürüten diğer kişiler.
 
 > [!NOTE]
-> Kuruluşun yapısına ve boyutuna bağlı olarak, tek bir kişi birden fazla rol oynatabilir veya birden fazla kişi bir rolü doldurabilir.
+> Bir işletmenin yapısına ve boyutuna bağlı olarak, tek bir kişi birden fazla rol oynayabilir veya bir rolü birden fazla kişi doldurabilir.
 
 ### <a name="tasks-to-be-completed-by-the-four-roles"></a>Dört rol tarafından tamamlanacak görevler
 
-Aşağıdaki diyagramda her bir Team Data Science Işlem rolü için en üst düzey görevler gösterilmektedir. Bu şema ve aşağıdaki, her bir TDSP rolü için görevlerin daha ayrıntılı anahatları, sorumluluklarınıza göre ihtiyacınız olan öğreticiyi seçmenize yardımcı olabilir.
+Aşağıdaki diyagram, her Takım Veri Bilimi Süreci rolü için üst düzey görevleri gösterir. Bu şema ve aşağıdaki, her TDSP rolü için görevlerin daha ayrıntılı anahat sorumluluklarına göre ihtiyacınız olan öğretici seçmenize yardımcı olabilir.
 
-![Rolleri ve görevleri genel bakış](./media/roles-tasks/overview-tdsp-top-level.png)
+![Roller ve görevlere genel bakış](./media/roles-tasks/overview-tdsp-top-level.png)
 
-## <a name="group-manager-tasks"></a>Grup yöneticisi görevleri
+## <a name="group-manager-tasks"></a>Grup Yöneticisi görevleri
 
-Grup Yöneticisi veya belirlenen bir TDSP Sistem Yöneticisi, TDSP 'yi benimsemek için aşağıdaki görevleri tamamlar:
+Grup Yöneticisi veya atanmış bir TDSP sistem yöneticisi, TDSP'yi benimsemek için aşağıdaki görevleri tamamlar:
 
-- Kuruluş içinde bir Azure DevOps **organizasyonu** ve bir grup projesi oluşturur. 
-- Azure DevOps grup projesinde bir **proje şablonu deposu** oluşturur ve Microsoft TDSP ekibi tarafından geliştirilen proje şablonu deposundan bu depoyu ekler. Microsoft TDSP proje şablonu deposu şunları sağlar:
-  - Veri, kod ve belge dizinleri dahil **standartlaştırılmış bir dizin yapısı**.
-  - Verimli bir veri bilimi işlemine kılavuzluk eden **standartlaştırılmış bir belge şablonları** kümesi.
-- Bir **yardımcı program deposu**oluşturur ve bunu Microsoft TDSP ekibi tarafından geliştirilen yardımcı depodan üretir. Microsoft tarafından sağlanan TDSP yardımcı programı deposu, veri bilimclarının çalışmasını daha verimli hale getirmek için bir dizi kullanışlı yardımcı program sağlar. Microsoft yardımcı programı deposu etkileşimli veri araştırması, analiz, raporlama ve temel modelleme ve raporlama için yardımcı programları içerir.
+- Kuruluş içinde bir Azure DevOps **organizasyonu** ve grup projesi oluşturur. 
+- Azure DevOps grup projesinde bir **proje şablonu deposu** oluşturur ve microsoft TDSP ekibi tarafından geliştirilen proje şablon deposundan tohumlar. Microsoft TDSP proje şablon deposu şunları sağlar:
+  - Veri, kod ve belgeler için dizinler de dahil olmak üzere **standart laştırılmış dizin yapısı.**
+  - Verimli bir veri bilimi işlemine rehberlik etmek için **standartlaştırılmış belge şablonları** kümesi.
+- Bir **yardımcı program deposu**oluşturur ve Microsoft TDSP ekibi tarafından geliştirilen yardımcı program deposundan tohumlar. Microsoft'un TDSP yardımcı programı deposu, bir veri bilimcinin çalışmasını daha verimli hale getirmek için bir dizi yararlı yardımcı program sağlar. Microsoft yardımcı program deposu, etkileşimli veri arama, analiz, raporlama ve temel modelleme ve raporlama için yardımcı programları içerir.
 - Kuruluş hesabı için **güvenlik denetimi ilkesini** ayarlar.
 
-Ayrıntılı yönergeler için bkz. [veri bilimi ekibi Için Grup Yöneticisi görevleri](group-manager-tasks.md).
+Ayrıntılı talimatlar [için, veri bilimi ekibi için Grup Yöneticisi görevlerine](group-manager-tasks.md)bakın.
 
-## <a name="team-lead-tasks"></a>Ekip Lideri görevleri
+## <a name="team-lead-tasks"></a>Takım Müşteri Adayı görevleri
 
-Takım lideri veya belirlenen bir proje yöneticisi, TDSP 'yi benimsemek için aşağıdaki görevleri tamamlar:
+Takım Müşteri Adayı veya atanmış proje yöneticisi, TDSP'yi benimsemek için aşağıdaki görevleri tamamlar:
 
-- Grubun Azure DevOps kuruluşunda bir takım **projesi** oluşturur.
-- Projede **proje şablonu deposunu** oluşturur ve Grup Yöneticisi veya temsilci tarafından ayarlanan grup projesi şablon deposundan bu depoyu oluşturur.
-- **Ekip yardımcı programını**oluşturur, Grup yardımcı programı deposundan bu depoyu oluşturur ve depoya ekibe özel yardımcı programlar ekler.
-- İsteğe bağlı olarak, takıma yönelik faydalı veri varlıklarını depolamak için [Azure dosya depolama](https://azure.microsoft.com/services/storage/files/) oluşturur. Diğer takım üyeleri bu paylaşılan bulut dosya depolama, analiz Masaüstü bağlayabilirsiniz.
-- İsteğe bağlı olarak, Azure dosya depolama alanını ekibin **Dsvm** 'sine bağlar ve buna ekip veri varlıkları ekler.
-- Takım üyeleri ekleyerek ve izinlerini yapılandırarak **güvenlik denetimini** ayarlar.
+- Grubun Azure DevOps organizasyonunda bir ekip **projesi** oluşturur.
+- **Projedeki proje şablon deposunu** oluşturur ve Grup Yöneticisi veya temsilci tarafından ayarlanan grup proje şablonu deposundan tohumlar.
+- **Takım yardımcı deposu oluşturur,** grup yardımcı programı deposundan tohumlar ve depoya takıma özgü yardımcı programlar ekler.
+- Takım için yararlı veri varlıklarını depolamak için isteğe bağlı olarak [Azure dosya depolama](https://azure.microsoft.com/services/storage/files/) alanı oluşturur. Diğer ekip üyeleri bu paylaşılan bulut dosya mağazalarını analitik masaüstülerine monte edebilir.
+- İsteğe bağlı olarak, Azure dosya depolama alanını takımın **DSVM'sine** bağlar ve ona ekip veri varlıkları ekler.
+- Ekip üyeleri ekleyerek ve izinlerini yapılandırarak **güvenlik denetimini** ayarlar.
 
-Ayrıntılı yönergeler için bkz. [bir veri bilimi ekibi Için ekip sağlama görevleri](team-lead-tasks.md).
+Ayrıntılı yönergeler [için, bir veri bilimi ekibi için Takım İş İleş görevlerine](team-lead-tasks.md)bakın.
 
 
-## <a name="project-lead-tasks"></a>Proje lideri görevleri
+## <a name="project-lead-tasks"></a>Proje Müşteri Adayı görevleri
 
-Proje lideri, TDSP 'yi benimsemek için aşağıdaki görevleri tamamlar:
+Proje Müşteri Adayı, TDSP'yi benimsemek için aşağıdaki görevleri tamamlar:
 
-- Takım projesinde bir **proje deposu** oluşturur ve bunu proje şablonu deposundan bir şekilde oluşturur.
-- İsteğe bağlı olarak, projenin veri varlıklarını depolamak için **Azure dosya depolama** oluşturur.
-- İsteğe bağlı olarak, Azure dosya depolama alanını **Dsvm** 'ye bağlar ve buna proje veri varlıkları ekler.
-- Proje üyeleri ekleyerek ve izinlerini yapılandırarak **güvenlik denetimini** ayarlar.
+- Takım projesinde bir **proje deposu** oluşturur ve proje şablondeposundan tohumlar.
+- Projenin veri varlıklarını depolamak için isteğe bağlı olarak **Azure dosya depolama** alanı oluşturur.
+- İsteğe bağlı olarak Azure dosya depolama alanını **DSVM'ye** bağlar ve projeye proje veri varlıkları ekler.
+- Proje üyelerini ekleyerek ve izinlerini yapılandırarak **güvenlik denetimini** ayarlar.
 
-Ayrıntılı yönergeler için bkz. [bir veri bilimi ekibi Için proje sağlama görevleri](project-lead-tasks.md).
+Ayrıntılı yönergeler [için, veri bilimi ekibi için Proje İş Kaynağı görevlerine](project-lead-tasks.md)bakın.
 
-## <a name="project-individual-contributor-tasks"></a>Proje bireysel katılımcı görevleri
+## <a name="project-individual-contributor-tasks"></a>Proje Bireysel Katılımcı görevleri
 
-Genellikle bir veri Bilimcu kullanarak, projenin tek tek katılımcısı, aşağıdaki görevleri de TDSP 'yi kullanarak yapmaktadır:
+Genellikle Veri Bilimcisi olan Project Individual Katılımcısı, TDSP'yi kullanarak aşağıdaki görevleri yapar:
 
-- Projenin lideri tarafından ayarlanan **Proje deposunu** klonlar.
-- İsteğe bağlı olarak, paylaşılan ekibi ve proje **Azure dosya depolama alanını** **veri bilimi sanal makinesi** (dsvm) üzerinde takar.
+- Proje müşteri adayı tarafından ayarlanan **proje deposunu** klonlar.
+- İsteğe bağlı olarak paylaşılan ekibi bağlar ve **Azure dosya depolamasını** **Veri Bilimi Sanal Makinesi'ne** (DSVM) bağlar.
 - Projeyi yürütür.
 
-Bir projeye ekleme hakkında ayrıntılı yönergeler için, bkz. [bir veri bilimi ekibi Için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md).
+Bir projeye devam etmek için ayrıntılı talimatlar için, [veri bilimi ekibi için Project Individual Katılımcı görevlerine](project-ic-tasks.md)bakın.
 
-## <a name="data-science-project-execution-workflow"></a>Veri bilimi proje yürütmesi iş akışı
+## <a name="data-science-project-execution-workflow"></a>Veri bilimi proje yürütme iş akışı
 
-İlgili öğreticileri, veri bilimcileri, proje liderleri ve takım liderleri, projenin başlangıcından sonuna kadar tüm görevleri ve aşamaları izlemek için iş öğeleri oluşturabilir. Azure Repos kullanımı, veri bilimcileri arasında işbirliğini yükseltir ve proje yürütmesi sırasında oluşturulan yapıların tüm proje üyeleri tarafından denetlenmesini ve paylaşılmasını sağlar. Azure DevOps, Azure Boards iş öğelerinizi Azure Repos depo dallarınıza bağlamanızı ve bir iş öğesi için ne yapıldığını kolayca izlemenizi sağlar.
+İlgili öğreticileri izleyerek, veri bilimciler, proje müşteri adayları ve ekip müşteri adayları, proje için baştan sona tüm görevleri ve aşamaları izlemek için iş öğeleri oluşturabilir. Azure Repos'un kullanılması, veri bilimciler arasında işbirliğini destekler ve proje yürütülmesi sırasında oluşturulan yapıtların tüm proje üyeleri tarafından sürüm kontrolüne ve paylaşılmasına yardımcı olur. Azure DevOps, Azure Kurulları iş öğelerinizi Azure Repos depo şubelerinize bağlamanızı ve bir iş öğesi için neler yapıldığını kolayca izlemenizi sağlar.
 
-Aşağıdaki şekil, proje yürütmesi için TDSP iş akışını özetler:
+Aşağıdaki şekilde proje yürütülmesi için TDSP iş akışı özetler:
 
 ![Tipik veri bilimi proje iş akışı](./media/roles-tasks/overview-project-execute.png)
 
-İş akışı adımları üç etkinlik halinde gruplandırılabilir:
+İş akışı adımları üç faaliyethalinde gruplandırılabilir:
 
-- Proje liderleri Sprint planlaması gerçekleştir
-- Veri bilimcileri, iş öğelerine yönelik `git` dallarındaki yapıtlar geliştirebilir
-- Proje liderleri veya diğer takım üyeleri kod İncelemeleri ve çalışma dallarını ana dalda birleştirir
+- Proje Müşteri Adayları sprint planlaması yapar
+- Veri Bilim Adamları `git` iş öğeleri adrese dallarda eserler geliştirmek
+- Proje Adayları veya diğer ekip üyeleri kod incelemeleri yapar ve çalışma dallarını ana dalda birleştirir
 
-Proje yürütme iş akışı hakkında ayrıntılı yönergeler için bkz. [veri bilimi projelerinin çevik geliştirmesi](agile-development.md).
+Proje yürütme iş akışı hakkında ayrıntılı talimatlar için veri [bilimi projelerinin Çevik gelişimine](agile-development.md)bakın.
 
-## <a name="tdsp-project-template-repository"></a>TDSP proje şablonu deposu
+## <a name="tdsp-project-template-repository"></a>TDSP proje şablondeposu deposu
 
-Verimli proje yürütme ve işbirliğini desteklemek için Microsoft TDSP ekibinin [proje şablonu deposunu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) kullanın. Depo size kendi TDSP projeleriniz için kullanabileceğiniz standartlaştırılmış bir dizin yapısı ve belge şablonları sağlar.
+Verimli proje yürütme ve işbirliğini desteklemek için Microsoft TDSP ekibinin [proje şablon deposunu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) kullanın. Depo, size kendi TDSP projeleriniz için kullanabileceğiniz standartlaştırılmış bir dizin yapısı ve belge şablonları sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Team Data Science Process tarafından tanımlanan görevleri ve rolleri daha detaylı açıklamalar'ı keşfedin:
+Ekip Veri Bilimi Süreci tarafından tanımlanan rollerin ve görevlerin daha ayrıntılı açıklamalarını keşfedin:
 
 - [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
-- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
-- [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)
+- [Veri bilimi ekibi için Takım Müşteri Adayı görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için Proje Müşteri Adayı görevleri](project-lead-tasks.md)
+- [Veri bilimi ekibi için Project Individual Katılımcı görevleri](project-ic-tasks.md)

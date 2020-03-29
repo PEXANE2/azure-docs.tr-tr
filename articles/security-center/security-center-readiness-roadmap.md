@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76281300"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi Hazırlığı Yol Haritası
@@ -65,7 +65,7 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 Güvenlik uyarılarını yönetmenize ve kaynaklarınızı korumanıza yardımcı olması için aşağıdaki kaynakları kullanın.
 
 Makaleler    
-* [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+* [Azure Güvenlik Merkezi'nde güvenlik durumu izleme](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 * [Azure Güvenlik Merkezi'nde ağınızı koruma](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
 * [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
@@ -85,20 +85,20 @@ Videolar
 
 Makaleler    
 * [Olay yanıtı için Azure Güvenlik Merkezi’ni kullanma](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Iş akışı otomasyonu ile yanıtı otomatikleştirin](workflow-automation.md)
+* [İş Akışı Otomasyonu ile yanıtı otomatikleştirin](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Gelişmiş bulut savunması
 
-Azure VM'ler, Güvenlik Merkezi’ndeki gelişmiş bulut savunma özelliklerinden yararlanabilir. Bu yetenekler, tam zamanında sanal makine (VM) erişimi ve Uyarlamalı uygulama denetimleri içerir.
+Azure VM'ler, Güvenlik Merkezi’ndeki gelişmiş bulut savunma özelliklerinden yararlanabilir. Bu özellikler tam zamanında sanal makine (VM) erişimi ve uyarlanabilir uygulama denetimleri içerir.
 
 Bu özelliklerin Güvenlik Merkezi’nde nasıl kullanılacağını öğrenmek için aşağıdaki kaynakları kullanın.
 
 Videolar  
-* [Azure Güvenlik Merkezi – tam zamanında VM erişimi](https://youtu.be/UOQb2FcdQnU)
+* [Azure Güvenlik Merkezi – Tam zamanında VM Erişimi](https://youtu.be/UOQb2FcdQnU)
 * [Azure Güvenlik Merkezi - Uyarlamalı Uygulama Denetimleri](https://youtu.be/wWWekI1Y9ck)
 
 Makaleler    
-* [Tam zamanında sanal makine erişimini yönetme](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Tam zamanında kullanarak sanal makine erişimini yönetme](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Azure Güvenlik Merkezi'ndeki Uyarlamalı Uygulama Denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Uygulamalı etkinlikler
@@ -116,7 +116,7 @@ Makaleler
 * [Ağ güvenliği için en iyi uygulamalar](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS önerileri](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Uyumluluk](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics müşterileri artık, karma bulut iş yüklerini korumak için Azure Güvenlik Merkezi 'ni kullanabilir](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Günlük analitiği müşterileri artık karma bulut iş yüklerini korumak için Azure Güvenlik Merkezi'ni kullanabilir](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Topluluk Kaynakları
 

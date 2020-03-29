@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services sınıf laboratuvarlarında kullanım ayarlarını yapılandırma
-description: Laboratuvar için Kullanıcı sayısını yapılandırmayı, laboratuvara kaydolmalarını ve VM 'yi kullanbilecekleri saat sayısını denetlemeyi ve daha fazlasını öğrenin.
+title: Azure Lab Hizmetleri'nin sınıf laboratuarlarında kullanım ayarlarını yapılandırın
+description: Bir laboratuvar için öğrenci sayısını nasıl yapılandırabileceğinizi, laboratuvara kaydedin, VM'yi kullanabilecekleri saat sayısını ve daha fazlasını kontrol edin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,179 +13,214 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2697bed77263bb5b8349898765851a9b87992279
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270946"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159464"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
-Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 
 
+Bu makalede, öğrenci kullanıcılarıbir laboratuvara nasıl ekleyeceğiniz, bunları laboratuvara kaydetme, sanal makineyi (VM) kullanabilecekleri ek saat sayısını ve daha fazlasını nasıl denetleyecekleri açıklanmaktadır. 
 
-## <a name="add-users-to-the-lab"></a>Laboratuvara Kullanıcı ekleme
+## <a name="add-users-to-a-lab"></a>Kullanıcıları laboratuvara ekleme
 
-1. Sol menüdeki **Kullanıcılar** ' ı seçin. Varsayılan olarak, **erişimi kısıtla** seçeneği etkinleştirilmiştir. Bu ayar açık olduğunda, Kullanıcı kullanıcılar listesinde olmadığı takdirde Kullanıcı kayıt bağlantısına sahip olsa bile, Kullanıcı laboratuvara kayıt yapamıyor. Yalnızca listedeki kullanıcılar, göndereceğiniz kayıt bağlantısını kullanarak laboratuvara kayıt yapabilir. Bu yordamda, kullanıcıları listeye eklersiniz. Alternatif olarak, kayıt bağlantısı olduğu sürece kullanıcıların laboratuvara kaydolmaları için **erişimi kısıtla**' yı devre dışı bırakabilirsiniz. 
-2. Araç çubuğundan **Kullanıcı Ekle** ' yi seçin ve ardından **e-posta adreslerine göre Ekle**' yi seçin. 
+Bu bölümde, öğrencileri bir laboratuvara el ile veya bir CSV dosyası yükleyerek eklersiniz. Şunları yapın:
 
-    ![Kullanıcı Ekle düğmesi](../media/how-to-configure-student-usage/add-users-button.png)
-1. **Kullanıcı Ekle** sayfasında, kullanıcıların e-posta adreslerini ayrı satırlarda veya noktalı virgülle ayrılmış tek bir satıra girin. 
+1. Sol **bölmede, Kullanıcılar'ı**seçin. 
 
-    ![Kullanıcı e-posta adresleri Ekle](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. **Kaydet**’i seçin. Kullanıcıların e-posta adreslerini ve bunların durumlarını (kayıtlı veya değil) listede görürsünüz. 
+    Varsayılan olarak, **Erişimi Kısıtla** seçeneği açık ve kullanıcı listesinde olmadıkları sürece, öğrenciler bir kayıt bağlantıları olsa bile laboratuvara kaydolamazlar. Yalnızca listelenen kullanıcılar gönderdiğiniz kayıt bağlantısını kullanarak laboratuvara kaydolabilir. Bu yordamda, kullanıcıları listeye eklersiniz. Alternatif olarak, öğrencilerin kayıt bağlantısı na sahip oldukları sürece laboratuvara kaydolmalarını sağlayan **Erişimi Kısıtla'yı**kapatabilirsiniz. 
+
+1. **Kullanıcılar** bölmesinin üst **kısmında, kullanıcı ekle'yi**seçin ve ardından **e-posta adresine göre ekle'yi**seçin. 
+
+    !["Kullanıcı ekle" düğmesi](../media/how-to-configure-student-usage/add-users-button.png)
+
+1. Kullanıcı **Ekle** bölmesine, öğrencilerin e-posta adreslerini ayrı satırlara veya yarı iki nokta ile ayrılmış tek bir satıra girin. 
+
+    ![Kullanıcıların e-posta adreslerini ekleme](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+
+1. **Kaydet'i**seçin. 
+
+    Liste, laboratuvara kayıtlı olsun veya olmasın, geçerli kullanıcıların e-posta adreslerini ve durumlarını görüntüler. 
 
     ![Kullanıcı listesi](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
-    > Laboratuvar 'e kaydolduktan sonra listedeki kullanıcıların adlarını görürsünüz. Listede gösterilen ad, Azure Active Directory kullanıcının ilk ve son adları kullanılarak oluşturulur. 
+    > Öğrenciler laboratuvara kaydolduktan sonra, liste adlarını gösterir. Listede gösterilen ad, Azure Etkin Dizini'ndeki öğrencilerin ad ve soyadları kullanılarak oluşturulur. 
 
-### <a name="add-users-by-uploading-a-csv-file"></a>CSV dosyası karşıya yükleyerek Kullanıcı ekleme
-Kullanıcıları, kullanıcıların e-posta adreslerine sahip bir CSV dosyası karşıya yükleyerek da ekleyebilirsiniz.
+### <a name="add-users-by-uploading-a-csv-file"></a>CSV dosyası yükleyerek kullanıcı ekleme
 
-1. Tek bir sütundaki kullanıcıların e-posta adreslerini içeren bir CSV dosyası oluşturun.
+Ayrıca, e-posta adreslerini içeren bir CSV dosyası yükleyerek kullanıcıları ekleyebilirsiniz.
 
-    ![Kullanıcılar ile CSV dosyası](../media/how-to-configure-student-usage/csv-file-with-users.png)
-2. Laboratuvarın **Kullanıcılar** sayfasında, araç çubuğunda **Kullanıcı Ekle** ' yı seçin ve ardından **CSV 'yi karşıya yükle**' yi seçin.
+1. Microsoft Excel'de, öğrencilerin e-posta adreslerini tek bir sütunda listeleyen bir CSV dosyası oluşturun.
 
-    ![CSV 'yi Karşıya Yükle düğmesi](../media/how-to-configure-student-usage/upload-csv-button.png)
-3. Kullanıcı e-posta adreslerini içeren CSV dosyasını seçin. CSV dosyasını seçtikten sonra **Aç** ' ı seçtiğinizde, aşağıdaki **Kullanıcı Ekle** penceresini görürsünüz. E-posta adresi listesi CSV dosyasındaki e-posta adresleriyle doldurulur. 
+    ![CSV dosyasındaki kullanıcıların listesi](../media/how-to-configure-student-usage/csv-file-with-users.png)
 
-    ![CSV dosyasından e-posta adresleriyle doldurulmuş Kullanıcı ekleme penceresi](../media/how-to-configure-student-usage/add-users-window.png)
-4. **Kullanıcı Ekle** penceresinde **Kaydet** ' i seçin. 
-5. Kullanıcılar listesinde kullanıcıları görtığınızdan emin olun. 
+1. **Kullanıcılar** bölmesinin üst **kısmında, kullanıcı ekle'yi**seçin ve ardından **Upload CSV'yi**seçin.
 
-    ![Eklenen kullanıcıların listesi](../media/how-to-configure-student-usage/list-of-added-users.png)
+    !["Upload CSV" düğmesi](../media/how-to-configure-student-usage/upload-csv-button.png)
 
-## <a name="send-invitations-to-users"></a>Kullanıcılara davet gönder
-Öğrenciye kayıt bağlantısını göndermek için aşağıdaki yöntemlerden birini kullanın. İlk yöntem, öğrenciler için kayıt bağlantısı ve isteğe bağlı bir ileti ile e-posta gönderme işlemlerinin nasıl yapılacağını gösterir. İkinci yöntemde, başkalarıyla dilediğiniz şekilde paylaşabileceğiniz kayıt bağlantısını nasıl alacağınız gösterilmektedir. 
+1. Öğrencilerin e-posta adreslerini içeren CSV dosyasını seçin ve sonra **Aç'ı**seçin.
 
-Laboratuvar için **erişimi kısıtla** etkinleştirilirse, yalnızca Kullanıcı listesindeki kullanıcılar, laboratuvara kaydolmak için kayıt bağlantısını kullanabilir. Bu seçenek varsayılan olarak etkindir. 
+    **Kullanıcı Ekle** penceresi CSV dosyasından e-posta adres listesini görüntüler. 
+
+    ![CSV dosyasından e-posta adresleri içeren "Kullanıcı ekle" penceresi](../media/how-to-configure-student-usage/add-users-window.png)
+
+1. **Kaydet'i**seçin. 
+
+1. **Kullanıcılar** bölmesinde, eklenen öğrencilerin listesini görüntüleyin. 
+
+    !["Kullanıcılar" bölmesine eklenen kullanıcılar listesi](../media/how-to-configure-student-usage/list-of-added-users.png)
+
+## <a name="send-invitations-to-users"></a>Kullanıcılara davetiye gönderme
+
+Yeni kullanıcılara kayıt bağlantısı göndermek için aşağıdaki yöntemlerden birini kullanın. 
+
+Erişimi **Kısıtla** seçeneği laboratuvar için etkinleştirilirse, yalnızca listelenen kullanıcılar laboratuvara kaydolmak için kayıt bağlantısını kullanabilir. Bu seçenek varsayılan olarak etkindir. 
 
 ### <a name="invite-all-users"></a>Tüm kullanıcıları davet et
-1. Zaten sayfada değilseniz **Kullanıcılar** görünümüne geçin ve araç çubuğunda **Tümünü davet et** ' i seçin. 
 
-    ![Öğrencileri seçin](../media/tutorial-setup-classroom-lab/invite-all-button.png)
+Bu yöntem, listelenen tüm öğrencilere bir kayıt bağlantısı ve isteğe bağlı bir ileti içeren e-posta göndermenin nasıl yapılacağını gösterir.
 
-1. **E-postaya davet gönder** sayfasında, isteğe bağlı bir ileti girin ve ardından **Gönder**' i seçin. E-posta otomatik olarak kayıt bağlantısını içerir. Bu kayıt bağlantısını,... öğesini seçerek alabilirsiniz **. (üç nokta)** araç çubuğunda ve **kayıt bağlantısı**. 
+1. **Kullanıcılar** bölmesinde **Tümünü Davet**et'i seçin. 
 
-    ![Kayıt bağlantısını e-posta ile gönder](../media/tutorial-setup-classroom-lab/send-email.png)
-4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **\<tarih >** **gönderilmesi ve ardından** gönderilmek üzere değiştirilmelidir. 
+    !["Tümlerini davet et" düğmesi](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    Bir sınıfa öğrenci ekleme ve laboratuvarın kullanımını yönetme hakkında daha fazla bilgi için bkz. [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
+1. **E-posta yla Davetiye Gönder** penceresinde isteğe bağlı bir ileti girin ve sonra **Gönder'i**seçin. 
+
+    E-posta otomatik olarak kayıt bağlantısını içerir. Kayıt bağlantısını ayrı ayrı almak ve kaydetmek **için, Kullanıcılar** bölmesinin üst kısmındaki elipsleri (**...**) seçin ve ardından **Kayıt bağlantısını**seçin. 
+
+    !["Kayıt bağlantısını e-posta ile gönder" penceresi](../media/tutorial-setup-classroom-lab/send-email.png)
+
+    **Kullanıcılar** listesinin **Davet** sütunu, eklenen her kullanıcı için davet durumunu görüntüler. Durum **Gönderme** ve daha sonra ** \<>tarihinde Gönderildi **olarak değiştirilmelidir. 
 
 ### <a name="invite-selected-users"></a>Seçili kullanıcıları davet et
 
-1. Listeden bir kullanıcı veya birden çok kullanıcı seçin. 
-2. Ardından, seçili satırda gördüğünüz **zarf** simgesini seçin (veya) araç çubuğunda **davet** ' i seçin. 
+Bu yöntem, yalnızca belirli öğrencileri nasıl davet edeceğinizi ve diğer kişilerle paylaşabileceğiniz bir kayıt bağlantısını nasıl alacağınızı gösterir.
+
+1. **Kullanıcılar** bölmesinde, listedeki bir öğrenci yi veya birden çok öğrenciyi seçin. 
+
+1. Seçtiğiniz öğrenci için satırda **zarf** simgesini seçin veya araç çubuğunda **Davet et'i**seçin. 
 
     ![Seçili kullanıcıları davet et](../media/how-to-configure-student-usage/invite-selected-users.png)
-3. **E-posta ile davet gönder** penceresinde, isteğe bağlı bir **ileti**girin ve ardından **Gönder**' i seçin. 
 
-    ![Seçili kullanıcılara e-posta gönder](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
+1. **E-posta yla Davetiye Gönder** penceresine isteğe bağlı bir **ileti**girin ve sonra **Gönder'i**seçin. 
 
-    Bu işlemin durumunu **Kullanıcılar** listesinin **davet** sütununda görürsünüz. Davet e-postası, kullanıcıların laboratuvara kaydolmak için kullanabileceği kayıt bağlantısını içerir.
+    ![Seçili kullanıcılara e-posta gönderme](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
-1. Zaten sayfada değilseniz, **Kullanıcılar** görünümüne geçin. 
+    **Kullanıcılar** bölmesi tablonun **Davet** sütununda bu işlemin durumunu görüntüler. Davet e-postası, öğrencilerin laboratuvara kayıt yaptırmak için kullanabilecekleri kayıt bağlantısını içerir.
 
-## <a name="get-registration-link"></a>Kayıt bağlantısını al
-Ayrıca, portaldan kayıt bağlantısını alabilir ve kendi e-posta istemci uygulamanızı kullanarak gönderebilirsiniz. 
+## <a name="get-the-registration-link"></a>Kayıt bağlantısını alın
 
-1. Sol menüdeki **Kullanıcılar** ' a tıklayarak **Kullanıcılar** görünümüne geçin. 
-2. Seç **... (üç nokta)** araç çubuğunda **kayıt bağlantısı**' nı seçin.
+Bu bölümde, portaldan kayıt linkini alabilir ve kendi e-posta uygulamanızı kullanarak gönderebilirsiniz. 
+
+1. **Kullanıcılar** bölmesinde Kayıt **bağlantısını**seçin.
 
     ![Öğrenci kaydı bağlantısı](../media/how-to-configure-student-usage/registration-link-button.png)
-1. **Kullanıcı kaydı** Iletişim kutusunda **Kopyala** düğmesini seçin. Bağlantı, panoya kopyalanır. Bağlantıyı bir e-posta düzenleyiciye yapıştırın ve öğrenciye e-posta gönderin. 
 
-    ![Öğrenci kaydı bağlantısı](../media/how-to-configure-student-usage/registration-link.png)
-2. **Kullanıcı kaydı** Iletişim kutusunda **bitti**' yi seçin. 
-4. Öğrencinin sınıfa kaydolabilmesi için **kayıt bağlantısını** bir öğrenciye gönderin. 
+1. Kullanıcı **kayıt** penceresinde **Kopyala'yı**seçin ve **ardından Bitti'yi**seçin. 
 
-## <a name="view-registered-users"></a>Kayıtlı kullanıcıları görüntüle
+    !["Kullanıcı kaydı" penceresi](../media/how-to-configure-student-usage/registration-link.png)
 
-1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. 
-2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler.
-3. **Laboratuvarlarım** sayfasında kullanımını izlemek istediğiniz laboratuvarı seçin. 
-4. Sol menüdeki veya **Kullanıcılar** kutucuğunda **Kullanıcılar** ' ı seçin. Laboratuvarınıza kayıtlı öğrencileri görürsünüz.  
+    Bağlantı, panoya kopyalanır. 
+    
+1. E-posta başvurunuzda, kayıt bağlantısını yapıştırın ve öğrencinin sınıfa kaydolması için e-postayı bir öğrenciye gönderin. 
 
-    ![Kayıtlı kullanıcılar](../media/tutorial-track-usage/registered-users.png)
+## <a name="view-registered-users"></a>Kayıtlı kullanıcıları görüntüleme
+
+1. [Azure Laboratuvar Hizmetleri](https://labs.azure.com) web sitesine gidin. 
+1. **Oturum Aç'ı**seçin ve ardından kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler.
+1. **Laboratuvarlarım** sayfasında, kullanımını izlemek istediğiniz laboratuarı seçin. 
+1. Sol **bölmede, Kullanıcılar'ı**seçin veya **Kullanıcılar** döşemesini seçin. 
+
+    **Kullanıcılar** bölmesi, laboratuvarınıza kaydolan öğrencilerin listesini görüntüler.  
+
+    ![Kayıtlı kullanıcılar listesi](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Kullanıcılar için kota ayarlama
-Aşağıdaki adımları kullanarak, Kullanıcı başına kota ayarlayabilirsiniz: 
 
-1. Sayfa zaten etkin değilse Sol menüdeki **Kullanıcılar** ' ı seçin. 
-2. **Kullanıcı başına kota seçin: araç çubuğunda \<sayı > saat** . 
-3. **Kullanıcı başına kota** sayfasında, zamanlanan sınıf süresi dışında her kullanıcıya (öğrenci) vermek istediğiniz saat sayısını belirtin ve ardından **Kaydet**' i seçin.
+Aşağıdakileri yaparak her öğrenci için bir saat kontenjanı ayarlayabilirsiniz: 
 
-    ![Kullanıcı başına kota](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Araç çubuğunda değiştirilen değerleri şimdi görürsünüz: **Kullanıcı başına kota: \<saat sayısı >** ve ayrıca kullanıcılar listesinde.
+1. **Kullanıcılar** bölmesinde, kullanıcı başına Kota'yı seçin: ** \<** araç çubuğundaki> saat(ler) sayısı. 
+1. Kullanıcı **başına Kota** penceresinde, zamanlanan ders saati dışında her öğrenciye vermek istediğiniz saat sayısını belirtin ve ardından **Kaydet'i**seçin.
 
-    ![Kullanıcı başına kota (sonrasında)](../media/how-to-configure-student-usage/quot-per-user-after.png)
+    !["Kullanıcı başına kota" penceresi](../media/how-to-configure-student-usage/quota-per-user.png)    
+
+    Değiştirilen değerler artık kullanıcı **başına Kota'da görüntülenir: \<** araç çubuğundaki ve kullanıcı listesindeki>saat sayısı: Burada gösterildiği gibi:
+
+    ![Kullanıcı başına kota saatleri](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
-    > [VM 'lerin zamanlanan çalışma süresi](how-to-create-schedules.md) , bir kullanıcıya ayrılan kotaya göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir. 
+    > [VM'lerin planlanan çalışma süresi,](how-to-create-schedules.md) öğrenciye ayrılan kontenjana dahil edilmez. Kontenjan, öğrencinin VM'lerde geçirdiği zamanlanan saatler in dışındaki süreler içindir. 
 
-## <a name="set-additional-quota-for-a-specific-user"></a>Belirli bir kullanıcı için ek kota ayarlama
-Bir kullanıcı için ek kota belirtebilirsiniz. Bu kota, önceki bölümde yer aldığı tüm kullanıcılar için genel kota kümesine ek olarak yapılır. Örneğin, (bir eğitmen olarak) tüm kullanıcılar için kotayı 10 saate ayarlarsanız ve belirli bir kullanıcı için 5 saatlik ek kota ayarlarsanız, kullanıcılar 15 (10 + 5) saatlik kotayı alır. Ortak kotayı daha sonra olarak değiştirirseniz, 15, daha sonra Kullanıcı 20 (15 + 5) saatlik kotayı alır. Bu genel kotanın zamanlanan sürenin dışında olduğunu unutmayın. Zamanlama sırasında öğrencinin bir laboratuvar VM 'sinde harcadığı süre bu kotaya göre sayılmaz. 
+## <a name="set-additional-quotas-for-specific-users"></a>Belirli kullanıcılar için ek kotalar ayarlama
 
-Bunu yapmak için aşağıdaki adımları izleyin:
+Önceki bölümdeki tüm kullanıcılar için ayarlanan ortak kotaların ötesinde belirli öğrenciler için kotalar belirtebilirsiniz. Örneğin, bir eğitmen olarak, tüm öğrenciler için kontenjanı 10 saatolarak ayarlar sanız ve belirli bir öğrenci için 5 saatlik ek bir kontenjan belirlerseniz, o öğrenci 15 (10 + 5) saatlik kontenjan alır. Ortak kontenjanı daha sonra 15'e değiştirirseniz, öğrenci 20 (15 + 5) saat kontenjan alır. Bu genel kotanın zamanlanan saatin dışında olduğunu unutmayın. Bir öğrencinin planlanan süre içinde laboratuvar VM'de geçirdiği süre bu kotaya dahil değildir. 
 
-1. **Kullanıcılar** sayfasındaki kullanıcılar listesinden bir Kullanıcı (öğrenci) seçin.
-2. Ardından araç çubuğundan **kotayı ayarla** ' yı seçin. 
+Ek kotalar ayarlamak için aşağıdakileri yapın:
 
-    ![Kotayı ayarla düğmesi](../media/how-to-configure-student-usage/adjust-quota-button.png)
-3. Seçili kullanıcı veya kullanıcılar için **ek saat** sayısını girin ve ardından **Uygula**' yı seçin. 
+1. **Kullanıcılar** bölmesinde, listeden bir öğrenci seçin ve ardından araç çubuğunda **kotayı** ayarla'yı seçin. 
 
-    ![Bir kullanıcı için ek kota](../media/how-to-configure-student-usage/additional-quota.png)
-4. **Kullanım** sütununda kullanıcının güncelleştirilmiş kullanımını görürsünüz. 
+    !["Kotayı Ayarla" düğmesi](../media/how-to-configure-student-usage/adjust-quota-button.png)
+
+1. Seçilen **kullanıcı veya \<kullanıcıların e-posta adresi>için kotayı **ayarla'da, seçilen öğrenci veya öğrencilere vermek istediğiniz ek laboratuvar saatlerinin sayısını girin ve ardından **Uygula'yı**seçin. 
+
+    !["Kotayı ayarla ..." Pencere](../media/how-to-configure-student-usage/additional-quota.png)
+
+    **Kullanım** sütunu, seçilen öğrenciler için güncelleştirilmiş kotayı görüntüler. 
 
     ![Kullanıcı için yeni kullanım](../media/how-to-configure-student-usage/new-usage-hours.png)
 
 ## <a name="student-accounts"></a>Öğrenci hesapları
-Bir sınıf laboratuvarına öğrenci eklemek için e-posta hesaplarını kullanın. Aşağıdaki e-posta hesabı türleri kullanılabilir:
 
-- University in Office 365 Azure Active Directory tarafından sunulan bir öğrenci e-posta hesabı. 
-- `@outlook.com`, `@hotmail.com`, `@msn.com`veya `@live.com`gibi bir Microsoft e-posta hesabı.
-- Microsoft olmayan bir e-posta hesabı, örneğin, Yahoo veya Google tarafından sağlanmamıştır. Ancak, bu tür hesapların bir Microsoft hesabı bağlantılı olması gerekir.
-- GitHub hesabı. Bu hesabın bir Microsoft hesabı ile bağlantılı olması gerekir.
+Öğrencileri sınıf laboratuvarına eklemek için e-posta hesaplarını kullanırsınız. Öğrenciler aşağıdaki e-posta hesapları türlerine sahip olabilir:
 
-### <a name="using-a-non-microsoft-email-account"></a>Microsoft olmayan bir e-posta hesabı kullanma
-Öğrenciler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için Microsoft olmayan e-posta hesaplarını kullanabilir.  Ancak kayıt, öğrencilerin öncelikle Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı oluşturmasını gerektirir.
+- Üniversitenizin Office 365 için Azure Etkin Dizin örneği tarafından sağlanan bir öğrenci e-posta hesabı. 
+- *outlook.com,* *hotmail.com,* *msn.com*veya *live.com*gibi bir Microsoft etki alanı e-posta hesabı.
+- Yahoo tarafından sağlanan gibi Microsoft dışı bir e-posta hesabı veya Google. Ancak, bu tür hesapların bir Microsoft hesabına bağlanması gerekir.
+- GitHub hesabı. Bu hesabın bir Microsoft hesabına bağlanması gerekir.
 
-Birçok öğrenciye, Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı zaten sahip olabilir. Örneğin, öğrenciler zaten Microsoft 'un e-posta adreslerini Office, Skype, OneDrive veya Windows gibi diğer ürün veya hizmetleriyle kullandıklarında Microsoft hesabı sahiptir.  
+### <a name="use-a-non-microsoft-email-account"></a>Microsoft'a ait olmayan bir e-posta hesabı kullanma
+Öğrenciler, bir sınıf laboratuvarına kaydolmak ve oturum açabilmek için Microsoft'a ait olmayan e-posta hesaplarını kullanabilir.  Ancak, kayıt, önce Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı oluşturmalarını gerektirir.
 
-Bir öğrenci bir sınıfta oturum açmak için kayıt URL 'sine tıkladığında, kendilerine ait e-posta adresi ve parolası sorulur. Öğrenci, Microsoft hesabı bağlantılı olmayan bir Microsoft hesabı oturum açmaya çalışırsa, öğrenci aşağıdaki hata iletisini alır: 
+Birçok öğrencinin Microsoft olmayan e-posta adreslerine bağlı bir Microsoft hesabı olabilir. Örneğin, e-posta adreslerini Office, Skype, OneDrive veya Windows gibi diğer Microsoft ürünleri veya hizmetleriyle birlikte kullanan öğrenciler zaten bir Microsoft hesabı vardır.  
 
-![Hata iletisi](../media/how-to-configure-student-usage/cant-find-account.png)
+Öğrenciler bir sınıfta oturum açtıkları kayıt bağlantısını kullandıklarında, e-posta adresleri ve şifreleri istenir. Microsoft hesabıyla bağlantılı olmayan bir Microsoft hesabıyla oturum açmagirişiminde bulunan öğrenciler aşağıdaki hata iletisini alır: 
 
-Microsoft hesabı kaydolmak için öğrenciler [http://signup.live.com](http://signup.live.com)gitmelidir.  
+![Oturum açmada hata iletisi](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Burada öğrencilerin bir Microsoft [hesabına kaydolması için bir](http://signup.live.com)bağlantı bulunmaktadır.  
 
 > [!IMPORTANT]
-> Öğrenciler bir derslik laboratuvarında oturum açtıklarında, bunlara Microsoft hesabı oluşturma seçeneği verilmez. Bu nedenle, bu kayıt bağlantısını Microsoft dışı hesapları kullanan öğrencilerle göndereceğiniz sınıf Laboratuvarı kayıt e-postasına dahil etmenizi öneririz.
+> Öğrenciler bir sınıf laboratuvarında oturum ettiklerinde, bir Microsoft hesabı oluşturma seçeneği verilmez. Bu nedenle, Microsoft hesabı olmayan öğrencilere gönderdiğiniz http://signup.live.comsınıf laboratuvar kayıt e-postasına bu kayıt bağlantısını eklemenizi öneririz.
 
-### <a name="using-a-github-account"></a>GitHub hesabı kullanma
-Öğrenciler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut bir GitHub hesabı da kullanabilir. Öğrencinin zaten GitHub hesabına bağlı bir Microsoft hesabı varsa, bu kullanıcılar oturum açabilir ve önceki bölümde gösterildiği gibi parolasını sağlayabilir. Henüz GitHub hesabını bir Microsoft hesabı bağlamamış olmaları durumunda, **oturum açma seçeneklerini**seçmeleri gerekir:
+### <a name="use-a-github-account"></a>GitHub hesabı kullanma
+Öğrenciler ayrıca bir sınıf laboratuvarına kaydolmak ve oturum açabilmek için mevcut bir GitHub hesabını da kullanabilirler. Zaten GitHub hesabına bağlı bir Microsoft hesapları varsa, öğrenciler oturum açabilir ve önceki bölümde gösterildiği gibi parolalarını sağlayabilir. 
 
-![Oturum açma seçenekleri bağlantısı](../media/how-to-configure-student-usage/signin-options.png)
+Henüz GitHub hesaplarını bir Microsoft hesabına bağlayamamışlarsa, aşağıdakileri yapabilir:
 
-**Oturum açma seçenekleri** sayfasında **GitHub ile oturum aç**' ı seçin.
+1. Burada gösterildiği gibi **Oturum Açma seçenekleri** bağlantısını seçin:
 
-![GitHub bağlantısıyla oturum açın](../media/how-to-configure-student-usage/signin-github.png)
+    !["Oturum açma seçenekleri" bağlantısı](../media/how-to-configure-student-usage/signin-options.png)
 
-Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Öğrenci bir **Sonrakini**seçtiğinde otomatik olarak gerçekleşir.  Daha sonra öğrenci hemen oturum açtı ve derslik laboratuvarına bağlanır.
+1. Oturum **Açma seçenekleri** **penceresinde, GitHub ile Oturum Aç'ı**seçin.
 
-## <a name="export-list-of-users-to-a-csv-file"></a>Kullanıcıların listesini bir CSV dosyasına aktar
+    !["GitHub ile oturum aç" bağlantısı](../media/how-to-configure-student-usage/signin-github.png)
 
-1. **Kullanıcılar** sekmesine geçin.
-2. Araç çubuğunda **..** . (üç nokta) simgesini seçin ve ardından **CSV 'yi dışarı aktar**' ı seçin. 
+    İsteme sırasında, öğrenciler daha sonra GitHub hesaplarıyla bağlantılı bir Microsoft hesabı oluştururlar. Bağlantı, **İleri'yi**seçtiklerinde otomatik olarak gerçekleşir. Daha sonra hemen oturum açarlar ve sınıf laboratuarına bağlanır.
 
-    ![Kullanıcı listesini dışarı aktarma](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+## <a name="export-a-list-of-users-to-a-csv-file"></a>CSV dosyasına kullanıcı listesini dışa aktarma
+
+1. **Kullanıcılar** bölmesine gidin.
+1. Araç çubuğunda elipsis **(...**) seçeneğini belirleyin ve ardından **CSV'yi dışa**aktar'ı seçin. 
+
+    !["CSV'yi dışa aktarma" düğmesi](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Yönetici olarak, laboratuvar hesapları oluşturun ve yönetin](how-to-manage-lab-accounts.md)
-- [Laboratuvar sahibi olarak, Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md)
-- [Laboratuvar sahibi olarak, şablonları ayarlama ve yayımlama](how-to-create-manage-template.md)
-- [Laboratuvar kullanıcısı olarak, sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)
+- Yöneticiler için: [Laboratuvar hesapları oluşturma ve yönetme](how-to-manage-lab-accounts.md)
+- Laboratuvar sahipleri için: [Laboratuvarlar oluşturun ve yönetin](how-to-manage-classroom-labs.md) ve [şablonları ayarlayın ve yayımlayın](how-to-create-manage-template.md)
+- Laboratuvar kullanıcıları için: [Sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)

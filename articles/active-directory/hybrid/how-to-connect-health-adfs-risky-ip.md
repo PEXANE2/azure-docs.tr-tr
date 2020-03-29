@@ -1,5 +1,5 @@
 ---
-title: AD FS riskli IP raporuyla Azure AD Connect Health | Microsoft Docs
+title: Azure AD, AD FS riskli IP raporuyla Sağlık'ı bağlayın | Microsoft Dokümanlar
 description: Azure AD Connect Health AD FS riskli IP raporunu açıklar.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897264"
 ---
-# <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (Genel Önizleme)
+# <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (genel önizleme)
 AD FS müşterileri, son kullanıcıların Office 365 gibi SaaS uygulamalarına erişmelerini sağlamak için İnternet’te parola kimlik doğrulama uç noktalarını kullanıma sunabilir. Bu durumda kötü bir aktör, bir son kullanıcı parolasını tahmin etmek ve uygulama kaynaklarına erişmek amacıyla AD FS sisteminize karşı oturum açma girişimlerinde bulunabilir. AD FS, Windows Server 2012 R2'de AD FS’den itibaren bu tür saldırıları önlemek için extranet hesap kilitleme işlevselliği sağlamaktadır. Daha düşük bir sürüm kullanıyorsanız, AD FS sisteminizi Windows Server 2016’ya yükseltmeniz kesinlikle önerilir. <br />
 
 Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok oturum açma girişiminde bulunması mümkündür. Böyle durumlarda kullanıcı başına deneme sayısı, AD FS’deki hesap kilitleme korumasına ilişkin eşiğin altında olabilir. Azure AD Connect Health artık bu durumu algılayıp durum gerçekleştiğinde yöneticileri bilgilendiren "Riskli IP raporu" özelliğini sağlamaktadır. Bu raporun başlıca yararları şunlardır: 
@@ -39,7 +39,7 @@ Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok otu
 > 
 
 ## <a name="what-is-in-the-report"></a>Raporda ne var?
-Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Şu bilgileri sağlar: ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4a.png)
+Başarısız oturum açma istemcisi IP adresleri Web Application Proxy sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Şu bilgileri sağlar: ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4a.png)
 
 | Rapor Öğesi | Açıklama |
 | ------- | ----------- |
@@ -62,10 +62,10 @@ Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara s
 
 ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4c.png)
 
-## <a name="load-balancer-ip-addresses-in-the-list"></a>Listedeki yük dengeleyici IP adresleri
+## <a name="load-balancer-ip-addresses-in-the-list"></a>Listedeki bakiyeli IP adreslerini yükleyin
 Yük dengeleyici, başarısız oturum açma etkinliklerini topladı ve uyarı eşiğine ulaştı. Yük dengeleyici IP adreslerini görüyorsanız, dış yük dengeleyicinizin Web Uygulaması Ara sunucusuna isteği geçirdiğinde istemci IP adresini göndermeme olasılığı yüksektir. Lütfen, iletme istemci IP adresini geçirmek için yük dengeleyicinizi doğru şekilde yapılandırın. 
 
-## <a name="download-risky-ip-report"></a>Riskli IP raporu indir 
+## <a name="download-risky-ip-report"></a>Riskli IP raporunu indirin 
 **İndirme** işlevi kullanılarak, son 30 gün içindeki tüm riskli IP adresi listesi Connect Health Portalından dışarı aktarılabilir. Dışarı aktarma sonucu, her bir algılama zaman penceresindeki tüm başarısız AD FS oturum açma girişimlerini içerir, böylece dışarı aktarma sonrasında filtrelemeyi özelleştirebilirsiniz. Dışarı aktarma sonucunda, portalda vurgulanan toplamaların yanı sıra her bir IP adresi için başarısız oturum açma etkinliklerine ilişkin daha fazla ayrıntı gösterilmektedir:
 
 |  Rapor Öğesi  |  Açıklama  | 
@@ -98,24 +98,24 @@ Uyarı eşiği, Eşik Ayarları üzerinden güncelleştirilebilir. Başlangıç 
 >
 
 ## <a name="faq"></a>SSS
-**Raporda neden özel IP adresi aralıkları görüyorum?**  <br />
+**Neden raporda özel IP adresi aralıkları görüyorum?**  <br />
 Özel IP adresleri (<i>10.x.x.x, 172.x.x.x ve 192.168.x.x</i>) ile Exchange IP adresleri filtrelenir ve IP güvenilir listesinde True olarak işaretlenir. Özel IP adresi aralıkları görüyorsanız, dış yük dengeleyicinizin Web Uygulaması Ara sunucusuna isteği geçirdiğinde istemci IP adresini göndermeme olasılığı yüksektir.
 
-**Neden yük dengeleyici IP adreslerini raporda görüyorum?**  <br />
+**Neden raporda yük dengeleyici IP adreslerini görüyorum?**  <br />
 Yük dengeleyici IP adreslerini görüyorsanız, dış yük dengeleyicinizin Web Uygulaması Ara sunucusuna isteği geçirdiğinde istemci IP adresini göndermeme olasılığı yüksektir. Lütfen, iletme istemci IP adresini geçirmek için yük dengeleyicinizi doğru şekilde yapılandırın. 
 
 **IP adresini engellemek için ne yapmalıyım?**  <br />
 Tanımlanmış kötü amaçlı IP adreslerini güvenlik duvarına eklemeniz veya Exchange’de engellemeniz gerekir.   <br />
 
-**Neden bu raporda hiç öğe görmüyorum?** <br />
+**Neden bu raporda hiçbir öğe görmüyorum?** <br />
 - Başarısız oturum açma etkinlikleri eşik ayarlarını aşmıyor.
 - AD FS sunucu listenizde etkin bir "Sistem durumu hizmeti güncel değil" uyarısı olmadığından emin olun.  [Bu uyarıyla ilgili sorunları giderme](how-to-connect-health-data-freshness.md) hakkında daha fazla bilgi edinin.
 - AD FS gruplarınde denetimler etkin değildir.
 
-**Neden rapora erişim yok?**  <br />
+**Neden rapora erişim olmadığını görüyorum?**  <br />
 Genel Yönetici veya [Güvenlik Okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) izni gereklidir. Erişim elde etmek için lütfen genel yöneticinize başvurun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD Connect Health Aracısı Yüklemesi](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Sağlık Aracısı Yükleme](how-to-connect-health-agent-install.md)

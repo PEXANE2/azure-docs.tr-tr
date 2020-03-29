@@ -1,6 +1,6 @@
 ---
-title: Azure portal yüksek karşıtlığı aç | Microsoft Docs
-description: Azure portal temasını değiştirerek gösterilen arka plan ve yazı tipi renklerini seçin. Azure portal daha hızlı ve daha kolay okunabilir hale getirmek için yüksek karşıtlığı etkinleştirin.
+title: Azure portalında yüksek kontrastı açın | Microsoft Dokümanlar
+description: Gösterilen arka plan ve yazı tipi renklerini seçmek için Azure portalı temasını değiştirin. Azure portalını daha hızlı ve okunması daha kolay hale getirmek için yüksek kontrastı açın.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -11,38 +11,38 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310773"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure portal yüksek karşıtlığı açın veya temayı değiştirin
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure portalındaki yüksek karşıtlığı açın veya teonu değiştirin
 
-Yüksek karşıtlık ayarları Azure portal okumayı daha kolay hale getirir. Ayrıca portalın arka plan renklerini değiştiren bir tema seçebilirsiniz.
+Yüksek kontrast ayarları Azure portalının okunmasını kolaylaştırır. Ayrıca, portalın arka plan renklerini değiştiren bir tema da seçebilirsiniz.
 
-Daha fazla karşıtlığa ihtiyacınız varsa veya Azure portal renk düzenini değiştirmek istiyorsanız, değişikliği yapmak için portal ayarları ' na gidin.
+Daha fazla kontrasta ihtiyacınız varsa veya Azure portalındaki renk düzenini değiştirmek istiyorsanız, değişikliği yapmak için portal ayarlarına gidin.
 
 ## <a name="turn-on-high-contrast"></a>Yüksek karşıtlığı açma
 
-1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
+1. [Azure portalının](https://portal.azure.com)üstbilgisinde **Ayarlar'ı**seçin.
 
-    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. **Beyaz** veya **Siyah**seçeneğini belirleyin.
+    ![Azure portalındaki portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. **Beyaz** veya **Siyah'ı**seçin.
 
-    ![Azure portal ayarlarındaki yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Azure portal ayarlarında yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. **Uygula**’yı seçin.
 
 > [!NOTE]
-> Yüksek karşıtlık teması seçerseniz, diğer tüm tema seçimlerini geçersiz kılar.
+> Yüksek kontrastlı bir tema seçerseniz, diğer tüm tema seçimlerini geçersiz kılar.
 >
 >
 
-## <a name="change-theme"></a>Temayı Değiştir
+## <a name="change-theme"></a>Teması değiştir
 
-1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
+1. [Azure portalının](https://portal.azure.com)üstbilgisinde **Ayarlar'ı**seçin.
 
-    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Azure portalındaki portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
 1. Tema seçin.
 
@@ -52,5 +52,5 @@ Daha fazla karşıtlığa ihtiyacınız varsa veya Azure portal renk düzenini d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal klavye kısayolları](azure-portal-keyboard-shortcuts.md)
+- [Azure portalında klavye kısayolları](azure-portal-keyboard-shortcuts.md)
 - [Desteklenen tarayıcılar ve cihazlar](../azure-preview-portal-supported-browsers-devices.md)

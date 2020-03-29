@@ -1,6 +1,6 @@
 ---
-title: Windows karma Runbook Worker 'ı tanılama-Azure Güncelleştirme Yönetimi
-description: Güncelleştirme Yönetimi destekleyen Windows üzerinde Azure Otomasyonu karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+title: Windows Karma Runbook Worker tanıla - Azure Update Management
+description: Windows'da Güncelleştirme Yönetimi'ni destekleyen Azure Automation Karma Runbook Worker ile sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,105 +10,105 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153863"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Güncelleştirme Yönetimi Windows karma Runbook Worker sistem durumunu anlama ve çözme
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Güncelleştirme Yönetimi'nde Windows Karma Runbook İşçisi durumunu anlama ve çözme
 
-Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
+Makinenizin Güncelleştirme Yönetimi'nde **Hazır'ı** göstermemenedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık.
 
-Aşağıdaki liste, bir makinenin içinde bulunabileceği üç hazırlık durumlarından oluşan bir durum olabilir:
+Aşağıdaki liste, bir makinenin içinde olabileceği üç hazır durumtur:
 
-* **Kullanıma hazırlanıyor** -karma Runbook Worker dağıtıldı ve en son 1 saatten daha önce görüldü.
-* **Bağlantısı kesik** -karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* **Yapılandırılmadı** -karma Runbook Worker bulunamadı veya ekleme bitmedi.
-
-> [!NOTE]
-> Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
-
-## <a name="start-the-troubleshooter"></a>Sorun Gidericisi
-
-Azure makinelerinde, portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısına tıkladığınızda **Güncelleştirme Aracısı sorunlarını gider** sayfası başlatılır. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik [çevrimdışı yönergelere](#troubleshoot-offline) bakın.
-
-![Sanal makinelerin yönetim listesini güncelleştir](../media/update-agent-issues/vm-list.png)
+* **Hazır** - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
+* **Bağlantısız** - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* **Yapılandırılmamış** - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
 
 > [!NOTE]
-> Karma Runbook Worker 'ın durumunu denetlemek için VM 'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi Başlat** düğmesi görüntülenir.
+> Azure portalının gösterdiği yle makinenin geçerli durumu arasında küçük bir gecikme olabilir.
 
-**Güncelleştirme Aracısı sorunlarını giderme** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+## <a name="start-the-troubleshooter"></a>Sorun gidericiyi başlatın
 
-![Güncelleştirme Aracısı sayfasında sorun giderme](../media/update-agent-issues/troubleshoot-page.png)
+Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda **Sorun Giderme Durumu Temsilcisi** sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için [çevrimdışı yönergeleri](#troubleshoot-offline) görün.
 
-Sonuçlar, varsa sayfada gösterilir. Denetimler bölümünde her bir denetimin içerdiği özellikler gösterilir.
+![Sanal makinelerin yönetim listesini güncelleştirme](../media/update-agent-issues/vm-list.png)
 
-![Güncelleştirme Aracısı denetimlerinde sorun giderme](../media/update-agent-issues/update-agent-checks.png)
+> [!NOTE]
+> Hibrit Runbook Worker'ın durumunu kontrol etmek için VM çalışıyor olmalıdır. VM çalışmıyorsa, **VM başlat** düğmesi görüntülenir.
+
+Sorun **Giderme Aracısı** sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı** seçin. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır Komutu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+
+![Sorun Giderme Durumu Güncelle Aracısı sayfası](../media/update-agent-issues/troubleshoot-page.png)
+
+Sonuçlar hazır olduklarında sayfada gösterilir. Denetim bölümleri her çeke nelerin eklenmiş olduğunu gösterir.
+
+![Sorun Giderme Güncelleştirme Aracısı denetimleri](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Önkoşul denetimleri
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-İşletim sistemi denetimi, hibrit Runbook Worker 'ın şu işletim sistemlerinden birini çalıştırıp çalıştırmadığını doğrular:
+İşletim sistemi denetimi, Karma Runbook Worker'ın aşağıdaki işletim sistemlerinden birini çalıştırıp çalıştırmadığını doğrular:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2012 ve üzeri |.NET Framework 4,6 veya üzeri gereklidir. ([.NET Framework indirin](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5,1 gereklidir.  ([Windows Management Framework 5,1 'Yi indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 ve sonrası |.NET Framework 4.6 veya sonraki gereklidir. ([.NET Çerçevesini İndir )](/dotnet/framework/install/guide-for-developers)<br/> Windows PowerShell 5.1 gereklidir.  ([Windows Yönetim Çerçevesi 5.1'i karşıdan yükleyin](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-462"></a>.NET 4.6.2
 
-.NET Framework denetimi sistemin en az [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) yüklü olduğunu doğrular.
+.NET Framework denetimi, sistemin minimum [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) yüklü olduğunu doğrular.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF Check, sistemin gerekli Windows Management Framework (WMF) sürümüne sahip olduğunu doğrular- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
+WMF denetimi, sistemin Windows Yönetim Çerçevesi 'nin (WMF) gerekli sürümüne sahip olduğunu doğrular - [Windows Management Framework 5.1.](https://www.microsoft.com/download/details.aspx?id=54616)
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Bu denetim, iletişimlerinizi şifrelemek için TLS 1,2 kullanıp kullanmayacağınızı belirler. TLS 1,0 artık platform tarafından desteklenmiyor. İstemcilerin Güncelleştirme Yönetimi ile iletişim kurmak için TLS 1,2 kullanmasını öneririz.
+Bu denetim, iletişimlerinizi şifrelemek için TLS 1.2 kullanıp kullanmadığınızı belirler. TLS 1.0 artık platform tarafından desteklenmiş. Müşterilerin Güncelleme Yönetimi ile iletişim kurmak için TLS 1.2 kullanmalarını öneririz.
 
-## <a name="connectivity-checks"></a>Bağlantısı denetimleri
+## <a name="connectivity-checks"></a>Bağlantı denetimleri
 
-### <a name="registration-endpoint"></a>Kayıt uç noktası
+### <a name="registration-endpoint"></a>Kayıt bitiş noktası
 
-Bu denetim aracının Aracı hizmetiyle düzgün şekilde iletişim kurup kuramayacağını belirler.
+Bu denetim, aracının aracı hizmetiyle düzgün bir şekilde iletişim kurup kuramayacağını belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı kayıt uç noktası ile iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmaları, Karma Runbook Worker aracısının kayıt bitiş noktasıyla iletişim kurmasına izin vermelidir. Açılacak adresler ve bağlantı noktaları listesi [için, Karma Çalışanlar için Ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning)bakın.
 
-### <a name="operations-endpoint"></a>İşlemleri uç noktası
+### <a name="operations-endpoint"></a>İşlemler bitiş noktası
 
-Bu denetim, aracının Iş çalışma zamanı veri hizmetiyle düzgün şekilde iletişim kurup kuramayacağını belirler.
+Bu denetim, aracının İş Çalıştırma Zamanı Veri Hizmeti ile düzgün iletişim kurup kuramayacağını belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı işi çalışma zamanı veri hizmetiyle iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmaları, Karma Runbook Worker aracısının İş Çalıştırma Zamanı Veri Hizmeti ile iletişim kurmasına izin vermelidir. Açılacak adresler ve bağlantı noktaları listesi [için, Karma Çalışanlar için Ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning)bakın.
 
-## <a name="vm-service-health-checks"></a>VM hizmeti durum denetimleri
+## <a name="vm-service-health-checks"></a>VM hizmeti sağlık kontrolleri
 
-### <a name="monitoring-agent-service-status"></a>İzleme Aracısı hizmet durumu
+### <a name="monitoring-agent-service-status"></a>Temsilci hizmet durumunu izleme
 
-Bu denetim makinede `HealthService`, Microsoft Monitoring Agent çalışıp çalışmadığını belirler.
+Bu denetim, `HealthService`Microsoft İzleme Aracısı'nın makinede çalışıp çalışmadığını belirler.
 
-Hizmette sorun giderme hakkında daha fazla bilgi edinmek için [Microsoft Monitoring Agent çalışmıyor](hybrid-runbook-worker.md#mma-not-running)' a bakın.
+Sorun giderme hakkında daha fazla bilgi edinmek için Microsoft [İzleme Aracısı çalışmıyor.](hybrid-runbook-worker.md#mma-not-running)
 
-Microsoft Monitoring Agent yeniden yüklemek için, bkz. [Microsoft Monitoring Agent yükleme ve yapılandırma](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Microsoft Monitoring Agent'ı yeniden yüklemek için [Microsoft İzleme Aracısını Yükle'ye bakın ve yapılandırır.](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)
 
-### <a name="monitoring-agent-service-events"></a>Aracı hizmeti olaylarını izleme
+### <a name="monitoring-agent-service-events"></a>Aracı servis olaylarını izleme
 
-Bu denetim, son 24 saat içinde makinede bulunan Azure Operations Manager günlüğünde herhangi bir `4502` olayının görünüp görünmeyeceğini belirler.
+Bu denetim, son `4502` 24 saat içinde makinedeki Azure İşlemleri Yöneticisi günlüğünde herhangi bir olayın görünüp görünmediğini belirler.
 
-Bu olay hakkında daha fazla bilgi edinmek için bu olayla ilgili [sorun giderme kılavuzuna](hybrid-runbook-worker.md#event-4502) bakın.
+Bu olay hakkında daha fazla bilgi edinmek için bu etkinliğin [sorun giderme kılavuzuna](hybrid-runbook-worker.md#event-4502) bakın.
 
 ## <a name="access-permissions-checks"></a>Erişim izinleri denetimleri
 
-### <a name="machinekeys-folder-access"></a>MachineKeys klasörü erişimi
+### <a name="machinekeys-folder-access"></a>MachineKeys klasör erişimi
 
-Şifreleme klasörü erişim denetimi, yerel sistem hesabının C:\programdata\microsoft\crypto\rsaa erişimi olup olmadığını belirler.
+Crypto klasörerişim denetimi, Yerel Sistem Hesabının C:\ProgramData\Microsoft\Crypto\RSA erişimi olup olmadığını belirler.
 
-## <a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Sorun giderme çevrimdışı
 
-Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi, [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)komut dosyasına ulaşabilirsiniz. Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümü yüklemiş olmanız gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Komut dosyasını yerel olarak çalıştırarak Karma Runbook Çalışanı'ndaki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. Komut dosyası, [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), PowerShell Galerisi'nde alabilirsiniz. Komut dosyasını çalıştırmak için WMF 4.0 veya daha büyük yüklü olmalıdır. PowerShell'in en son sürümünü indirmek için [PowerShell'in çeşitli sürümlerini yükleme bölümüne](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)bakın.
 
-Bu Betiğin çıktısı aşağıdaki örneğe benzer şekilde görünür:
+Bu komut dosyasının çıktısı aşağıdaki örnek gibi görünür:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -204,4 +204,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Karma runbook çalışanlarınız hakkında daha fazla sorunu gidermek için bkz. [karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md).
+Karma Runbook Çalışanlarınızla ilgili daha fazla sorunu gidermek için [Bkz.](hybrid-runbook-worker.md)

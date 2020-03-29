@@ -1,50 +1,50 @@
 ---
-title: Service Fabric bir kafes uygulamasında Azure dosya tabanlı birim kullanma
-description: Azure CLı kullanarak bir hizmet içinde Azure dosya tabanlı bir birim bağlayarak Azure Service Fabric kafes uygulamasında durum depolamayı öğrenin.
+title: Service Fabric Mesh uygulamasında Azure Dosyaları tabanlı birim kullanma
+description: Azure CLI'yi kullanarak bir hizmetin içine Azure Dosyaları tabanlı bir birim monte ederek bir Azure Hizmet Kumaş Kafesi uygulamasında durumu nasıl depolayabilirsiniz öğrenin.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718829"
 ---
-# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
+# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh uygulamasında Azure Dosyaları tabanlı bir hacim ekleme 
 
-Bu makalede, bir Azure dosya tabanlı birimin Service Fabric bir kafes uygulamasının bir hizmetine nasıl bağlayalacağı açıklanır.  Azure dosyaları birim sürücüsü, bir Azure dosya paylaşımının hizmet durumunu kalıcı hale getirmek için kullandığınız bir kapsayıcıya bağlanması için kullanılan bir Docker birimi sürücüsüdür. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar.  Uygulama verilerini depolamaya yönelik birimler ve seçenekler hakkında daha fazla bilgi edinmek için [depolama durumunu](service-fabric-mesh-storing-state.md)okuyun.
+Bu makalede, Bir Hizmet Kumaş Kafesi uygulamasının bir hizmetine Azure Dosyaları tabanlı bir birimin nasıl monte edilebildiğini açıklanmaktadır.  Azure Dosyaları toplu sürücü, hizmet durumunu sürdürmek için kullandığınız bir kapsayıcıya Azure Dosyaları paylaşımını monte etmek için kullanılan bir Docker birim sürücüsüdür. Birimler size genel amaçlı dosya depolama sağlar ve normal disk G/Ç dosya API'lerini kullanarak dosyaları okuma/yazmanızı sağlar.  Birim ve uygulama verilerini depolama seçenekleri hakkında daha fazla bilgi edinmek için, [depolama durumunu](service-fabric-mesh-storing-state.md)okuyun.
 
-Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir birim kaynağı oluşturun ve sonra bu birime hizmetinize başvurun.  Birim kaynağını bildirmek ve hizmet kaynağında buna başvurmak, [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) ya da [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi bağlamadan önce Azure dosyalarında bir Azure depolama hesabı ve bir [dosya paylaşma](/azure/storage/files/storage-how-to-create-file-share)oluşturun.
+Bir hizmete birim monte etmek için, Service Fabric Mesh uygulamanızda bir birim kaynağı oluşturun ve ardından hizmetinizdeki bu topluya başvurun.  Birim kaynağının beyan edilmesi ve hizmet kaynağına başvurması [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) veya [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi artırmadan önce, önce bir Azure depolama hesabı ve [Azure Dosyaları'nda](/azure/storage/files/storage-how-to-create-file-share)bir dosya paylaşımı oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 > [!NOTE]
-> **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını engelleyen RS5 Windows makinelerde New-SmbGlobalMapping PowerShell cmdlet 'i ile açık hata var. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
+> **Windows RS5 geliştirme makinesinde dağıtım ile bilinen Sorun:** Azuredosya Birimlerinin montajını engelleyen RS5 Windows makinelerinde Powershell cmdlet New-SmbGlobalMapping ile açık hata vardır. Aşağıda, AzureFile tabanlı birim yerel geliştirme makinesine monte edilirken karşılaşılan örnek hatadır.
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-Sorunun geçici çözümü 1 ' dir) PowerShell Yöneticisi olarak aşağıdaki komutu çalıştırın ve 2) makineyi yeniden başlatın.
+Sorun için geçici çözüm 1) Powershell yöneticisi olarak komutun altında çalıştırın ve 2) Makineyi yeniden başlatın.
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```
 
-Bu makaleyi tamamlayabilmeniz için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. 
+Bu makaleyi tamamlamak için Azure Bulut Kabuğu'nu veya Azure CLI'nin yerel yüklemesini kullanabilirsiniz. 
 
-Azure CLı 'yi bu makaleyle yerel olarak kullanmak için `az --version` en az `azure-cli (2.0.43)`döndürdüğünden emin olun.  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
+Azure CLI'yi bu makalede yerel olarak `az --version` kullanmak `azure-cli (2.0.43)`için en az .  Azure Hizmet Kumaş ıstıraki CLI uzantı [modüllerini](service-fabric-mesh-howto-setup-cli.md)bu yönergeleri izleyerek yükleyin (veya güncelleyin).
 
-Azure 'da oturum açmak ve aboneliğinizi ayarlamak için:
+Azure'da oturum açmak ve aboneliğinizi ayarlamak için:
 
 ```azurecli
 az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-storage-account-and-file-share-optional"></a>Depolama hesabı ve dosya paylaşma oluşturma (isteğe bağlı)
-Azure dosyaları birimi bağlamak için bir depolama hesabı ve dosya paylaşımının olması gerekir.  Mevcut bir Azure Depolama hesabını ve dosya payını kullanabilir veya kaynak oluşturabilirsiniz:
+## <a name="create-a-storage-account-and-file-share-optional"></a>Depolama hesabı ve dosya paylaşımı oluşturma (isteğe bağlı)
+Azure Dosyaları birimini oluşturmak için bir depolama hesabı ve dosya paylaşımı gerekir.  Varolan bir Azure depolama hesabı ve dosya paylaşımı kullanabilir veya kaynak oluşturabilirsiniz:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -56,10 +56,10 @@ $current_env_conn_string=$(az storage account show-connection-string -n myStorag
 az storage share create --name myshare --quota 2048 --connection-string $current_env_conn_string
 ```
 
-## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Depolama hesabı adını ve anahtarını ve dosya paylaşımının adını alın
-Depolama hesabı adına, depolama hesabı anahtarına ve dosya paylaşımının adına, aşağıdaki bölümlerde `<storageAccountName>`, `<storageAccountKey>`ve `<fileShareName>` olarak başvurulur. 
+## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Depolama hesabı adını, anahtarı nı ve dosya paylaşım adını alma
+Depolama hesabı adı, depolama hesabı anahtarı ve dosya paylaşım `<storageAccountName>` `<storageAccountKey>`adı `<fileShareName>` , , olarak başvurulan ve aşağıdaki bölümlerde. 
 
-Depolama hesaplarınızı listeleyin ve kullanmak istediğiniz dosya paylaşımının bulunduğu depolama hesabının adını alın:
+Depolama hesaplarınızı listele ve kullanmak istediğiniz dosya paylaşımıyla depolama hesabının adını alın:
 ```azurecli-interactive
 az storage account list
 ```
@@ -69,23 +69,23 @@ Dosya paylaşımının adını alın:
 az storage share list --account-name <storageAccountName>
 ```
 
-Depolama hesabı anahtarını al ("KEY1"):
+Depolama hesabı anahtarını ("key1") alın:
 ```azurecli-interactive
 az storage account keys list --account-name <storageAccountName> --query "[?keyName=='key1'].value"
 ```
 
-Bu değerleri [Azure Portal](https://portal.azure.com)de bulabilirsiniz:
-* `<storageAccountName>` **depolama hesapları**altında, dosya paylaşımının oluşturulması için kullanılan depolama hesabının adı.
-* `<storageAccountKey>`- **depolama hesapları** altında depolama hesabınızı seçin ve ardından **erişim anahtarları** ' nı seçin ve **KEY1**altındaki değeri kullanın.
-* `<fileShareName>` **depolama hesapları** altında depolama hesabınızı seçin ve ardından **dosyalar**' ı seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
+Bu değerleri [Azure portalında](https://portal.azure.com)da bulabilirsiniz:
+* `<storageAccountName>`- **Depolama Hesapları**altında, dosya paylaşımı oluşturmak için kullanılan depolama hesabının adı.
+* `<storageAccountKey>`- **Depolama Hesapları** altında depolama hesabınızı seçin ve ardından **Access tuşlarını** seçin ve **değeri tuş1**altında kullanın.
+* `<fileShareName>`- **Depolama Hesapları** altında depolama hesabınızı seçin ve ardından **Dosyalar'ı**seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
 
-## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (JSON)
+## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Birim kaynağı bildirin ve hizmet kaynağını güncelleştirin (JSON)
 
-Önceki adımda bulduğunuz `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` değerleri için parametreler ekleyin. 
+Bir önceki `<fileShareName>`adımda `<storageAccountKey>` bulduğunuz , ve `<storageAccountName>`değerler için parametreler ekleyin. 
 
-Uygulama kaynağının eşi olarak bir birim kaynağı oluşturun. Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. `azureFileParameters`, önceki adımda bulduğunuz `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` değerleri için parametreleri belirtin.
+Uygulama kaynağının eş olarak Birim kaynak oluşturun. Azure Dosyaları tabanlı birimi kullanmak için bir ad ve sağlayıcı belirtin ("SFAzureFile"). Içinde `azureFileParameters`, `<fileShareName>`bir önceki `<storageAccountName>`adımda `<storageAccountKey>` bulduğunuz , ve değerleri parametrelerini belirtin.
 
-Birimi hizmetinize bağlamak için, hizmetin `codePackages` öğesine bir `volumeRefs` ekleyin.  `name`, birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adıdır.  `destinationPath`, birimin bağlanalacak yerel dizindir.
+Hizmetinizde ses düzeyini monte etmek `volumeRefs` için, hizmet öğesine `codePackages` bir öğe ekleyin.  `name`birim (veya birim kaynak için dağıtım şablonu parametresi) için kaynak kimliği ve birim.yaml kaynak dosyasında bildirilen birimin adıdır.  `destinationPath`hacmin monte edileceği yerel dizinidir.
 
 ```json
 {
@@ -193,9 +193,9 @@ Birimi hizmetinize bağlamak için, hizmetin `codePackages` öğesine bir `volum
 }
 ```
 
-## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (YAML)
+## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Birim kaynağı bildirin ve hizmet kaynağını (YAML) güncelleştirin
 
-Uygulamanız için *uygulama kaynakları* dizinine yeni bir *Volume. YAML* dosyası ekleyin.  Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>`, önceki bir adımda bulduğunuz değerlerdir.
+Uygulamanız için *Uygulama kaynakları* dizinine yeni bir *volume.yaml* dosyası ekleyin.  Azure Dosyaları tabanlı birimi kullanmak için bir ad ve sağlayıcı belirtin ("SFAzureFile"). `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` önceki adımda bulduğunuz değerlerdir.
 
 ```yaml
 volume:
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Hizmet *kaynakları* dizinindeki *Service. YAML* dosyasını, birimi hizmetinize bağlamak için güncelleştirin.  `volumeRefs` öğesini `codePackages` öğesine ekleyin.  `name`, birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adıdır.  `destinationPath`, birimin bağlanalacak yerel dizindir.
+*Servis Kaynakları* dizinindeki *service.yaml* dosyasını güncelleştirin ve ses düzeyini hizmetinize bağla.  Öğeye `volumeRefs` öğeyi `codePackages` ekleyin.  `name`birim (veya birim kaynak için dağıtım şablonu parametresi) için kaynak kimliği ve birim.yaml kaynak dosyasında bildirilen birimin adıdır.  `destinationPath`hacmin monte edileceği yerel dizinidir.
 
 ```yaml
 ## Service definition ##
@@ -248,6 +248,6 @@ application:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter)'Da Azure dosyaları toplu örnek uygulamasını görüntüleyin.
+- Azure Dosyaları toplu örnek uygulamasını [GitHub'da](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter)görüntüleyin.
 - Service Fabric Kaynak Modeli hakkında daha fazla bilgi için bkz. [Service Fabric Mesh Kaynak Modeli](service-fabric-mesh-service-fabric-resources.md).
 - Service Fabric Mesh hakkında daha fazla bilgi edinmek için [Service Fabric Mesh’e genel bakış](service-fabric-mesh-overview.md) makalesini okuyun.

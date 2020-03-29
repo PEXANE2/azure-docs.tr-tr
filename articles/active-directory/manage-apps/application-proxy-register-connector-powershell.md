@@ -1,6 +1,6 @@
 ---
-title: Sessiz install Azure AD Uygulaması Proxy Bağlayıcısı | Microsoft Docs
-description: Şirket içi uygulamalarınıza güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu bağlayıcısının katılımsız yüklemesinin nasıl gerçekleştirileceğini ele alır.
+title: Sessiz yükleme Azure AD App Proxy bağlayıcısı | Microsoft Dokümanlar
+description: Şirket içi uygulamalarınıza güvenli uzaktan erişim sağlamak için Azure AD Application Proxy Bağlayıcısı'nın gözetimsiz yüklemesinin nasıl gerçekleştirilip gerçekleştirildirilebildiğini kapsar.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,56 +17,56 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756220"
 ---
-# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu Bağlayıcısı için katılımsız yükleme betiği oluşturma
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD Application Proxy bağlayıcısı için katılımsız bir yükleme komut dosyası oluşturma
 
-Bu konu, Azure AD Uygulama Ara Sunucusu Bağlayıcınız için katılımsız yükleme ve kayıt sağlayan bir Windows PowerShell betiği oluşturmanıza yardımcı olur.
+Bu konu, Azure AD Application Proxy bağlayıcınız için katılımsız yükleme ve kayıt sağlayan bir Windows PowerShell komut dosyası oluşturmanıza yardımcı olur.
 
-Bu özellik şunları yapmak istediğinizde yararlıdır:
+Bu özellik, aşağıdakileri yapmak istediğinizde yararlıdır:
 
-* Bağlayıcıyı, Kullanıcı arabirimi etkinleştirilmemiş olan veya uzak masaüstü ile erişemeyen Windows sunucularına yükleyebilirsiniz.
-* Aynı anda birçok bağlayıcıyı yükleyip kaydettirin.
-* Bağlayıcı yüklemesini ve kaydını başka bir yordamın parçası olarak tümleştirin.
-* Bağlayıcı bitlerini içeren, ancak kayıtlı olmayan standart bir sunucu görüntüsü oluşturun.
+* Kullanıcı arabirimi etkin olmayan veya Uzak Masaüstü ile erişemediğiniz Windows sunucularına bağlayıcıyı yükleyin.
+* Aynı anda birçok konektör yükleyin ve kaydedin.
+* Bağlayıcı yüklemeve kaydı başka bir yordamın parçası olarak entegre edin.
+* Bağlayıcı bitlerini içeren ancak kayıtlı olmayan standart bir sunucu görüntüsü oluşturun.
 
-[Uygulama proxy bağlayıcısının](application-proxy-connectors.md) çalışması için, uygulama Yöneticisi ve parolası KULLANıLARAK Azure AD dizininizle birlikte kaydedilmelidir. Normalde bu bilgiler, bağlayıcı yüklemesi sırasında açılan bir iletişim kutusunda girilir, ancak bunun yerine bu süreci otomatikleştirmek için PowerShell kullanabilirsiniz.
+Uygulama [Proxy bağlayıcısının](application-proxy-connectors.md) çalışması için, bir uygulama yöneticisi ve parola kullanılarak Azure AD dizininize kaydedilmesi gerekir. Normalde bu bilgiler Connector yüklemesi sırasında açılır iletişim kutusuna girilir, ancak bunun yerine bu işlemi otomatikleştirmek için PowerShell'i kullanabilirsiniz.
 
-Katılımsız yükleme için iki adım vardır. İlk olarak bağlayıcıyı yüklemeniz gerekir. İkincisi, bağlayıcıyı Azure AD 'ye kaydedin. 
+Katılımsız yükleme için iki adım vardır. İlk olarak, konektörü yükleyin. İkinci olarak, bağlayıcıyı Azure AD'ye kaydedin. 
 
-## <a name="install-the-connector"></a>Bağlayıcıyı yükler
-Bağlayıcıyı kaydetmeden yüklemek için aşağıdaki adımları kullanın:
+## <a name="install-the-connector"></a>Konektörü yükleme
+Konektörü kaydetmeden yüklemek için aşağıdaki adımları kullanın:
 
 1. Bir komut istemi açın.
-2. Aşağıdaki komutu çalıştırın, burada/q sessiz yükleme anlamına gelir. Sessiz bir yükleme, Son Kullanıcı Lisans sözleşmesini kabul etmenizi istemez.
+2. /q'nun sessiz kurulum anlamına geldiğini aşağıdaki komutu çalıştırın. Sessiz bir yükleme, Son Kullanıcı Lisans Sözleşmesini kabul etmenizi istenmez.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Bağlayıcıyı Azure AD 'ye kaydetme
+## <a name="register-the-connector-with-azure-ad"></a>Bağlayıcıyı Azure AD ile kaydetme
 Bağlayıcıyı kaydetmek için kullanabileceğiniz iki yöntem vardır:
 
-* Windows PowerShell kimlik bilgisi nesnesi kullanarak bağlayıcıyı kaydetme
-* Çevrimdışı oluşturulan bir belirteci kullanarak bağlayıcıyı kaydetme
+* Bir Windows PowerShell kimlik nesnesi kullanarak bağlayıcıyı kaydetme
+* Çevrimdışı oluşturulan bir belirteç kullanarak bağlayıcıyı kaydetme
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell kimlik bilgisi nesnesi kullanarak bağlayıcıyı kaydetme
-1. Dizininiz için Yönetici Kullanıcı adı ve parola içeren bir Windows PowerShell kimlik bilgileri nesnesi `$cred` oluşturun. *\<Kullanıcı adı\>* ve *\<parola\>* değiştirerek aşağıdaki komutu çalıştırın:
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Bir Windows PowerShell kimlik nesnesi kullanarak bağlayıcıyı kaydetme
+1. Dizininiz için yönetimkullanıcı adı ve parola içeren bir Windows PowerShell Kimlik Bilgileri nesnesi `$cred` oluşturun. * \<Kullanıcı\> adı* ve * \<parolayerine\>* aşağıdaki komutu çalıştırın:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. **C:\Program FILES\MICROSOFT AAD uygulama proxy Bağlayıcısı** ' na gidin ve oluşturduğunuz `$cred` nesnesini kullanarak aşağıdaki betiği çalıştırın:
+2. **C:\Program Files\Microsoft AAD App Proxy** Bağlayıcısı'na gidin `$cred` ve oluşturduğunuz nesneyi kullanarak aşağıdaki komut dosyasını çalıştırın:
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Çevrimdışı oluşturulan bir belirteci kullanarak bağlayıcıyı kaydetme
-1. Aşağıdaki kod parçacığı veya PowerShell cmdlet 'lerinde bulunan değerleri kullanarak AuthenticationContext sınıfını kullanarak bir çevrimdışı belirteç oluşturun:
+### <a name="register-the-connector-using-a-token-created-offline"></a>Çevrimdışı oluşturulan bir belirteç kullanarak bağlayıcıyı kaydetme
+1. Aşağıdaki kod parçacıklarındaki veya PowerShell cmdlets'teki değerleri kullanarak Kimlik Doğrulama Bağlamı sınıfını kullanarak çevrimdışı bir belirteç oluşturun:
 
-    **Şunu C#kullanarak:**
+    **C#'ı kullanma:**
 
         using System;
         using System.Diagnostics;
@@ -121,7 +121,7 @@ Bağlayıcıyı kaydetmek için kullanabileceğiniz iki yöntem vardır:
             tenantID = authResult.TenantId;
         }
 
-    **PowerShell 'i kullanma:**
+    **PowerShell'i kullanma:**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed
@@ -171,17 +171,17 @@ Bağlayıcıyı kaydetmek için kullanabileceğiniz iki yöntem vardır:
         
         #endregion
 
-2. Belirteci aldıktan sonra belirteci kullanarak bir SecureString oluşturun:
+2. Belirteci aldıktan sonra, belirteci kullanarak bir SecureString oluşturun:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Aşağıdaki Windows PowerShell komutunu çalıştırın, \<kiracı GUID\> Dizin KIMLIĞINIZLE değiştirin:
+3. Kiracı GUID'i \<\> dizin kimliğinizle değiştirerek aşağıdaki Windows PowerShell komutunu çalıştırın:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 * [Kendi etki alanı adınızı kullanarak uygulama yayımlama](application-proxy-configure-custom-domain.md)
 * [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Uygulama Ara sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
+* [Uygulama Ara Sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
 
 

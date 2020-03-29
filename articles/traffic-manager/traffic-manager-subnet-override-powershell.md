@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell kullanarak Azure Traffic Manager alt ağı geçersiz kılma | Microsoft Docs
-description: Bu makale, Azure kullanarak uç nokta eşlemelerine önceden tanımlı IP aralığı ile trafiği bir uç noktaya yönlendirmek üzere bir Traffic Manager profilinin yönlendirme yöntemini geçersiz kılmak için Traffic Manager alt ağ geçersiz kılmanın nasıl kullanıldığını anlamanıza yardımcı olur. PowerShell.
+title: Azure PowerShell kullanarak Azure Trafik Yöneticisi alt net geçersiz kılma | Microsoft Dokümanlar
+description: Bu makale, Trafik Yöneticisi alt net geçersiz kılmanın, Trafiği Yöneticisi profilinin yönlendirme yöntemini geçersiz kılmak için, trafiği, önceden tanımlanmış IP aralığı üzerinden son kullanıcı IP adresine dayalı olarak son kullanıcı IP adresine yönlendiren bir uç noktaya, Azure'u kullanarak uç nokta eşlemelerine nasıl yönlendireceğini anlamanıza yardımcı olacaktır Powershell.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -10,52 +10,52 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938414"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure PowerShell kullanarak alt ağ geçersiz kılma Traffic Manager
+# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure Powershell kullanarak Trafik Yöneticisi alt net geçersiz kılma
 
-Traffic Manager alt ağ geçersiz kılma, bir profilin yönlendirme yöntemini değiştirmenize izin verir.  Bir geçersiz kılma eklenmesi, son kullanıcının IP adresine göre trafiği uç nokta eşleme için önceden tanımlanmış bir IP aralığına göre yönlendirdirecektir. 
+Trafik Yöneticisi alt net geçersiz kılma, bir profilin yönlendirme yöntemini değiştirmenize olanak tanır.  Geçersiz kılmanın eklenmesi, son kullanıcının IP adresine bağlı olarak trafiği, önceden tanımlanmış bir IP aralığıyla uç nokta eşlemesi ile yönlendirir. 
 
-## <a name="how-subnet-override-works"></a>Alt ağ geçersiz kılma çalışması
+## <a name="how-subnet-override-works"></a>Alt ağ geçersiz kılma nasıl çalışır?
 
-Bir Traffic Manager profiline alt ağ geçersiz kılmaları eklendiğinde, Traffic Manager önce son kullanıcının IP adresi için bir alt ağ geçersiz kılma olup olmadığını kontrol eder. Bir tane bulunursa, kullanıcının DNS sorgusu ilgili uç noktaya yönlendirilir.  Bir eşleme bulunmazsa, Traffic Manager profilin özgün yönlendirme yöntemine geri dönecektir. 
+Alt ağ geçersiz kılmaları bir trafik yöneticisi profiline eklendiğinde, Trafik Yöneticisi önce son kullanıcının IP adresi için bir alt net geçersiz kılma olup olmadığını denetler. Biri bulunursa, kullanıcının DNS sorgusu ilgili bitiş noktasına yönlendirilir.  Eşleme bulunmazsa, Trafik Yöneticisi profilin özgün yönlendirme yöntemine geri döner. 
 
-IP adresi aralıkları CıDR aralıkları (örneğin, 1.2.3.0/24) veya adres aralıkları (örneğin, 1.2.3.4-5.6.7.8) olarak belirtilebilir. Her bitiş noktasıyla ilişkili IP aralıkları bu uç nokta için benzersiz olmalıdır. Farklı uç noktalar arasındaki IP aralıklarının çakışması, profilin Traffic Manager tarafından reddedilmesine neden olur.
+IP adresi aralıkları CIDR aralıkları (örneğin, 1.2.3.0/24) veya adres aralıkları (örneğin, 1.2.3.4-5.6.7.8) olarak belirtilebilir. Her uç noktayla ilişkili IP aralıkları bu uç noktaya özgü olmalıdır. IP aralıklarının farklı uç noktalar arasında çakışması, profilin Trafik Yöneticisi tarafından reddedilmesine neden olur.
 
-Alt ağ geçersiz kılmalarını destekleyen iki tür yönlendirme profili vardır:
+Alt ağı geçersiz kılan iki tür yönlendirme profili vardır:
 
-* **Coğrafi** -TRAFFIC Manager, DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma işlemi bulursa, uç noktanın sistem durumunun ne olduğunu her ne olursa sorguyu uç noktaya yönlendirir.
-* **Performans** -Traffic Manager DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulduğunda, trafiği yalnızca sağlıklı olması durumunda uç noktaya yönlendirir.  Alt ağ geçersiz kılma uç noktasının sağlıklı olmaması durumunda Traffic Manager, performans yönlendirmesi buluşsal noktasına geri dönecektir.
+* **Coğrafi** - Trafik Yöneticisi DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulursa, son noktanın durumu ne olursa olsun sorguyu bitiş noktasına yönlendirir.
+* **Performans** - Trafik Yöneticisi DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulursa, trafiği yalnızca sağlıklıysa bitiş noktasına yönlendirir.  Alt ağ bitiş ucunu geçersiz kılma sağlıklı değilse Trafik Yöneticisi performans yönlendirme sezgisel geri düşecek.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Traffic Manager alt ağ geçersiz kılma oluşturma
+## <a name="create-a-traffic-manager-subnet-override"></a>Trafik Yöneticisi alt ağ geçersiz kılma oluşturma
 
-Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell kullanarak Traffic Manager uç noktasına geçersiz kılma için alt ağları ekleyebilirsiniz.
+Trafik Yöneticisi alt ağ geçersiz kılma oluşturmak için, geçersiz kılmanın alt ağlarını Trafik Yöneticisi bitiş noktasına eklemek için Azure PowerShell'i kullanabilirsiniz.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure 'da oturum açmak için de `Login-AzAccount` çalıştırmanız gerekir.
+[Azure Bulut Kabuğu'nda](https://shell.azure.com/powershell)veya bilgisayarınızdan PowerShell çalıştırarak takip eden komutları çalıştırabilirsiniz. Azure Bulut Kabuğu ücretsiz bir etkileşimli kabuktır. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell'i bilgisayarınızdan çalıştırAcaksanız, 1.0.0 veya sonrası Azure PowerShell modülüne ihtiyacınız vardır. Yüklü sürümü `Get-Module -ListAvailable Az` bulmak için çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, `Login-AzAccount` Azure'da oturum açabilmek için de çalışmanız gerekir.
 
 
-1. **Traffic Manager uç noktasını alın:**
+1. **Trafik Yöneticisi bitiş noktasını alın:**
 
-    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
+    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz bitiş noktasını alın ve [Get-AzTrafficManagerEndpoint'i](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende saklayın.
 
-    Name, ProfileName ve ResourceGroupName değerlerini değiştirmekte olduğunuz uç noktanın değerleriyle değiştirin.
+    Ad, ProfileName ve ResourceGroupName'yi değiştirdiğiniz bitiş noktası değerleriyle değiştirin.
 
     ```powershell
 
     $TrafficManagerEndpoint = Get-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup" -Type AzureEndpoints
 
     ```
-2. **IP adresi aralığını uç noktaya ekleyin:**
+2. **IP adresi aralığını bitiş noktasına ekleyin:**
     
-    IP adresi aralığını uç noktaya eklemek için [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) kullanarak aralığı ekleyebilirsiniz.
+    IP adresi aralığını bitiş noktasına eklemek için, aralığı eklemek için [Add-AzTrafficManagerIpAddressRange'i](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) kullanırsınız.
 
     ```powershell
 
@@ -69,20 +69,20 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell 
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    Aralıklar eklendikten sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
+    Aralıklar eklendikten sonra, bitiş noktasını güncelleştirmek için [Set-AzTrafficManagerEndpoint'i](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)kullanılarak tamamlanabilir.
+IP adres aralığının kaldırılması [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)kullanılarak tamamlanabilir.
 
-1.  **Traffic Manager uç noktasını alın:**
+1.  **Trafik Yöneticisi bitiş noktasını alın:**
 
-    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
+    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz bitiş noktasını alın ve [Get-AzTrafficManagerEndpoint'i](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende saklayın.
 
-    Name, ProfileName ve ResourceGroupName değerlerini değiştirmekte olduğunuz uç noktanın değerleriyle değiştirin.
+    Ad, ProfileName ve ResourceGroupName'yi değiştirdiğiniz bitiş noktası değerleriyle değiştirin.
 
     ```powershell
 
@@ -103,7 +103,7 @@ IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     Aralıklar kaldırıldıktan sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
+     Aralıklar kaldırıldıktan sonra bitiş noktasını güncelleştirmek için [Set-AzTrafficManagerEndpoint'i](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
 
     ```powershell
 
@@ -112,6 +112,6 @@ IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Traffic Manager [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
+Trafik Yöneticisi [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
 
-[Alt ağ trafiği-yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin
+[Subnet trafik yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin

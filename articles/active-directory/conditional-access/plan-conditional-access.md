@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Koşullu erişim ilkelerini planlayın | Microsoft Docs
-description: Bu makalede, Azure Active Directory için koşullu erişim ilkelerini nasıl planlayacağınızı öğreneceksiniz.
+title: Azure Etkin Dizini'nde Koşullu Erişim ilkelerini planlayın | Microsoft Dokümanlar
+description: Bu makalede, Azure Etkin Dizini için Koşullu Erişim ilkelerini nasıl planladığınızı öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,228 +12,228 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671824"
 ---
-# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Nasıl yapılır: Azure Active Directory 'de koşullu erişim dağıtımınızı planlayın
+# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Nasıl Olunması: Koşullu Erişim dağıtımınızı Azure Etkin Dizini'nde planlama
 
-Koşullu erişim dağıtımınızı planlamak, kuruluşunuzdaki uygulamalar ve kaynaklar için gerekli erişim stratejisini elde ettiğinizden emin olmak için kritik öneme sahiptir. Sizin seçtiğiniz koşullara göre kullanıcılarınıza erişim vermek veya erişimi engellemek için ihtiyaç duyduğunuz çeşitli ilkeleri tasarlamak üzere, dağıtımınızın planlama aşamasında en çok zaman harcaın. Bu belgede, güvenli ve etkin koşullu erişim ilkelerini uygulamak için gerçekleştirmeniz gereken adımlar açıklanmaktadır. Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
+Koşullu Erişim dağıtımınızı planlamak, kuruluşunuzdaki uygulamalar ve kaynaklar için gerekli erişim stratejisini elde ettiğinizden emin olmak için çok önemlidir. Kullanıcılarınızın erişimini seçtiğiniz koşullar altında vermek veya engellemek için gereken çeşitli ilkeleri tasarlamak için dağıtımınızın planlama aşamasında zamanınızın çoğunu harcayın. Bu belge, güvenli ve etkili Koşullu Erişim ilkeleri uygulamak için atmanız gereken adımları açıklar. Başlamadan önce, [Koşullu Erişim'in](overview.md) nasıl çalıştığını ve ne zaman kullanmanız gerektiğini anladığınızdan emin olun.
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-Koşullu erişimi, kuruluşunuzun uygulamalarına ve kaynaklarına erişimi, tek başına bir özellik yerine denetlemenize olanak tanıyan bir çerçeve olarak düşünün. Sonuç olarak, bazı koşullu erişim ayarları yapılandırmak için ek özellikler gerektirir. Örneğin, belirli bir [oturum açma risk düzeyine](../identity-protection/howto-identity-protection-configure-risk-policies.md)yanıt veren bir ilke yapılandırabilirsiniz. Ancak, oturum açma risk düzeyine dayalı bir ilke [Azure Active Directory kimlik korumasının](../identity-protection/overview-identity-protection.md) etkinleştirilmesini gerektirir.
+Koşullu Erişim'i, tek başına bir özellik yerine kuruluşunuzun uygulamalarına ve kaynaklarına erişimi denetlemenize olanak tanıyan bir çerçeve olarak düşünün. Sonuç olarak, bazı Koşullu Erişim ayarları nın yapılandırılması için ek özellikler gerekir. Örneğin, belirli bir [oturum açma risk düzeyine](../identity-protection/howto-identity-protection-configure-risk-policies.md)yanıt veren bir ilke yapılandırabilirsiniz. Ancak, oturum açma risk düzeyini temel alan bir ilke, [Azure Etkin Dizin kimlik korumasının](../identity-protection/overview-identity-protection.md) etkinleştirilmesini gerektirir.
 
-Ek özellikler gerekliyse, ilgili lisansları da almanız gerekebilir. Örneğin, koşullu erişim Azure AD Premium P1 özelliği olduğunda, kimlik koruması bir Azure AD Premium P2 lisansı gerektirir.
+Ek özellikler gerekiyorsa, ilgili lisansları da almanız gerekebilir. Örneğin, Koşullu Erişim Azure AD Premium P1 özelliği yken, kimlik koruması için Azure AD Premium P2 lisansı gerekir.
 
-İki tür koşullu erişim ilkesi vardır: taban çizgisi ve standart. [Temel ilke](baseline-protection.md) , önceden tanımlanmış bir koşullu erişim ilkesidir. Bu ilkelerin amacı, en azından güvenlik düzeyi etkin özelliğinin etkinleştirildiğinden emin olmaktır. Temel ilkeler. Temel ilkeler Azure AD 'nin tüm sürümlerinde kullanılabilir ve yalnızca sınırlı özelleştirme seçenekleri sağlar. Bir senaryo daha fazla esneklik gerektiriyorsa, temel ilkeyi devre dışı bırakın ve gereksinimlerinizi özel bir standart ilkeye uygulayın.
+Koşullu Erişim ilkelerinin iki türü vardır: taban çizgisi ve standart. [Temel ilke,](baseline-protection.md) önceden tanımlanmış bir Koşullu Erişim ilkesidir. Bu ilkelerin amacı, en azından temel güvenlik düzeyietkin olduğundan emin olmaktır. Temel ilkeler. Temel ilkeler Azure AD'nin tüm sürümlerinde kullanılabilir ve yalnızca sınırlı özelleştirme seçenekleri sağlar. Bir senaryo daha fazla esneklik gerektiriyorsa, temel ilkesini devre dışı edin ve gereksinimlerinizi özel bir standart ilkeyle uygulayın.
 
-Standart bir koşullu erişim ilkesinde, tüm ayarları özelleştirerek ilkeyi iş gereksinimlerinize göre ayarlayabilirsiniz. Standart ilkeler Azure AD Premium P1 lisansı gerektirir.
+Standart bir Koşullu Erişim ilkesinde, ilkeyi iş gereksinimlerinize göre ayarlamak için tüm ayarları özelleştirebilirsiniz. Standart ilkeler için Azure AD Premium P1 lisansı gerekir.
 
 >[!NOTE]
-> İlk cihaz kimlik doğrulamasından sonra en iyi uygulamayı almak için Azure AD cihaz tabanlı koşullu erişim ilkesini kullanmanızı öneririz. Bu, cihazın uyumluluk ve cihaz kod akışı dışında kalırsa kapatma oturumlarını içerir.
+> İlk aygıt kimlik doğrulaması sonrasında en iyi zorlamayı elde etmek için Azure AD aygıt tabanlı Koşullu Erişim ilkesini kullanmanızı öneririz. Bu, aygıt uyumluluğu ve aygıt kodu akışının dışına düşerse oturumları kapatmayı içerir.
 
-## <a name="draft-policies"></a>Taslak ilkeleri
+## <a name="draft-policies"></a>Taslak ilkeler
 
-Azure Active Directory Koşullu erişim, bulut uygulamalarınızın korumasını yeni bir düzeye getirmenizi sağlar. Bu yeni düzeyde, bulut uygulamasına nasıl erişebileceğiniz bir statik erişim yapılandırması yerine dinamik ilke değerlendirmesini temel alır. Bir koşullu erişim ilkesiyle, bir erişim koşuluna (Bu**durumda**) bir yanıt (**bunu yapın**) tanımlarsınız.
+Azure Active Directory Koşullu Erişim, bulut uygulamalarınızın korumasını yeni bir düzeye getirmenizi sağlar. Bu yeni düzeyde, bir bulut uygulamasına nasıl erişebileceğiniz statik erişim yapılandırması yerine dinamik bir ilke değerlendirmesine dayanır. Koşullu Erişim ilkesiyle, bir erişim durumuna **(bu durumda)** bir yanıt**tanımlarsınız.**
 
-![Neden ve yanıt](./media/plan-conditional-access/10.png)
+![Sebep ve yanıt](./media/plan-conditional-access/10.png)
 
-Bu planlama modelini kullanarak uygulamak istediğiniz her koşullu erişim ilkesini tanımlayın. Planlama alıştırması:
+Bu planlama modelini kullanarak uygulamak istediğiniz her Koşullu Erişim ilkesini tanımlayın. Planlama egzersizi:
 
-- Her ilke için yanıtları ve koşulları ana hatlarıyla oluşturmanıza yardımcı olur.
-- Kuruluşunuz için iyi belgelenmiş bir koşullu erişim ilkesi kataloğuna neden olur. 
+- Her ilke için yanıtları ve koşulları anahatlaşamanıza yardımcı olur.
+- Kuruluşunuz için iyi belgelenmiş bir Koşullu Erişim ilkesi kataloğu yla sonuçlanır. 
 
-Katalogunuz, ilke uygulamanızın kuruluşunuzun iş gereksinimlerini yansıtmayı değerlendirmek için kullanabilirsiniz. 
+İlke uygulamanızın kuruluşunuzun iş gereksinimlerini yansıtıp yansıtmadığını değerlendirmek için kataloğunuzu kullanabilirsiniz. 
 
-Kuruluşunuz için koşullu erişim ilkeleri oluşturmak için aşağıdaki örnek şablonu kullanın:
+Kuruluşunuz için Koşullu Erişim ilkeleri oluşturmak için aşağıdaki örnek şablonunu kullanın:
 
-|*Bu* durumda:|*Bunu yapmak için*şunu yapın:|
+|*Bu* durumda:|O zaman *şunu*yap:|
 |-|-|
-|Bir erişim denemesi yapılır:<br>-Bir bulut uygulamasına *<br>-kullanıcılara ve gruplara göre*<br>Kullanarak<br>-Koşul 1 (örneğin, Corp ağı dışında)<br>-Condition 2 (örneğin, cihaz platformları)|Uygulamaya erişimi engelleyin|
-|Bir erişim denemesi yapılır:<br>-Bir bulut uygulamasına *<br>-kullanıcılara ve gruplara göre*<br>Kullanarak<br>-Koşul 1 (örneğin, Corp ağı dışında)<br>-Condition 2 (örneğin, cihaz platformları)|(Ve) ile erişim izni verin:<br>-Gereksinim 1 (örneğin, MFA)<br>-Gereksinim 2 (örneğin, cihaz uyumluluğu)|
-|Bir erişim denemesi yapılır:<br>-Bir bulut uygulamasına *<br>-kullanıcılara ve gruplara göre*<br>Kullanarak<br>-Koşul 1 (örneğin, Corp ağı dışında)<br>-Condition 2 (örneğin, cihaz platformları)|(Veya) ile erişim izni verin:<br>-Gereksinim 1 (örneğin, MFA)<br>-Gereksinim 2 (örneğin, cihaz uyumluluğu)|
+|Bir erişim denemesi yapılır:<br>- Bir bulut uygulamasına*<br>- Kullanıcılara ve gruplara göre*<br>Kullan -arak:<br>- Koşul 1 (örneğin, Corp ağı dışında)<br>- Koşul 2 (örneğin, cihaz platformları)|Uygulamaya erişimi engelleme|
+|Bir erişim denemesi yapılır:<br>- Bir bulut uygulamasına*<br>- Kullanıcılara ve gruplara göre*<br>Kullan -arak:<br>- Koşul 1 (örneğin, Corp ağı dışında)<br>- Koşul 2 (örneğin, cihaz platformları)|(AND) ile erişim izni verilmiştir:<br>- Gereksinim 1 (örneğin, MFA)<br>- Gereksinim 2 (örneğin, Cihaz uyumluluğu)|
+|Bir erişim denemesi yapılır:<br>- Bir bulut uygulamasına*<br>- Kullanıcılara ve gruplara göre*<br>Kullan -arak:<br>- Koşul 1 (örneğin, Corp ağı dışında)<br>- Koşul 2 (örneğin, cihaz platformları)|(OR) ile erişim izni:<br>- Gereksinim 1 (örneğin, MFA)<br>- Gereksinim 2 (örneğin, Cihaz uyumluluğu)|
 
-**Bu durumda** , en azından bir bulut uygulamasına (**ne**) erişmeye çalışan sorumlusu (**kim**) tanımlar. Gerekirse, bir erişim denemesinin **nasıl** gerçekleştirileceğini de dahil edebilirsiniz. Koşullu erişim 'de, kimin, ne ve nasıl koşul olarak bilindiklerinizi tanımlayan öğeler. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](concept-conditional-access-conditions.md) 
+En azından, **bu durumda** bir bulut uygulamasına erişmeye çalışan asıl **(who)** tanımlanır (**ne**). Gerekirse, bir erişim denemesinin **nasıl** gerçekleştirilebileceğini de ekleyebilirsiniz. Koşullu Erişim'de, kim, ne ve nasıl koşulları tanımlayan öğeler kullanılır. Daha fazla bilgi için Azure [Etkin Dizin Koşullu Erişim'deki koşullar nelerdir?](concept-conditional-access-conditions.md) 
 
-Bunu **yaptığınızda**, ilkenizin yanıtını bir erişim koşulu olarak tanımlarsınız. Yanıtınız içinde, çok faktörlü kimlik doğrulaması (MFA) gibi ek gereksinimlere sahip olan erişimi engeller veya erişim izni verirsiniz. Kapsamlı bir genel bakış için bkz. [Azure Active Directory Koşullu erişim içindeki erişim denetimleri nelerdir?](controls.md)  
+**Bunu sonra,** bir erişim durumuna ilkenizin yanıtını tanımlarsınız. Yanıtta, çok faktörlü kimlik doğrulama (MFA) gibi ek gereksinimlerle erişimi engeller veya verirsiniz. Tam bir genel bakış için, [Azure Etkin Dizin Koşullu Erişimi'nde erişim denetimleri nelerdir?](controls.md)  
 
-Erişim denetimleriniz ile koşulların birleşimi, koşullu erişim ilkesini temsil eder.
+Erişim denetimlerinizle koşulların birleşimi Koşullu Erişim ilkesini temsil eder.
 
-![Neden ve yanıt](./media/plan-conditional-access/51.png)
+![Sebep ve yanıt](./media/plan-conditional-access/51.png)
 
-Daha fazla bilgi için, bkz. [bir ilkenin çalışması için gerekli olanlar](best-practices.md#whats-required-to-make-a-policy-work).
+Daha fazla bilgi için, [bir ilke çalışması için gerekenlere](best-practices.md#whats-required-to-make-a-policy-work)bakın.
 
-Bu noktada, ilkelerinize yönelik bir adlandırma standardına karar vermek iyi bir zamandır. Adlandırma standardı, ilkeleri bulmanıza ve Azure yönetim portalında açmadan amaçlarını anlamanıza yardımcı olur. İlkeyi göstermek için adlandırın:
+Bu noktada, ilkeleriniz için bir adlandırma standardına karar vermek için iyi bir zaman. Adlandırma standardı, ilkeleri Azure yönetici portalında açmadan bulmanıza ve amaçlarını anlamanıza yardımcı olur. Göstermek için ilkenizi adlandırın:
 
-- Sıra numarası
-- Bu uygulama için geçerli olan bulut uygulaması
+- Bir sıra numarası
+- Uygulandığı bulut uygulaması
 - Yanıt
-- Kim için geçerli
-- Ne zaman geçerliyse (varsa)
+- Kime uygulanır?
+- Uygulandığı zaman (varsa)
  
 ![Adlandırma standardı](./media/plan-conditional-access/11.png)
 
-Açıklayıcı bir ad, koşullu erişim uygulamanıza genel bakış sağlamanıza yardımcı olmakla kalmaz, bir konuşmadaki ilkeye başvurmanız gerekirse sıra numarası yararlı olur. Örneğin, telefonda bir yönetici konuşmanız durumunda, bir sorunu gidermek için bu kişiden ilke EM063 açmasını isteyebilirsiniz.
+Açıklayıcı bir ad, Koşullu Erişim uygulamanızın genel görünümünü tutmanıza yardımcı olsa da, bir konuşmada bir ilkeye başvurmanız gerekiyorsa sıra numarası yararlıdır. Örneğin, bir yönetici arkadaşıyla telefonda konuşursanız, bir sorunu çözmek için em063 ilkesini açmalarını isteyebilirsiniz.
 
-Örneğin, aşağıdaki ad, ilkenin Dynamics CRP uygulamasını kullanarak dış ağlardaki pazarlama kullanıcıları için MFA gerektirdiğini belirtir:
+Örneğin, aşağıdaki ad, Dynamics CRP uygulamasını kullanarak dış ağlardaki pazarlama kullanıcıları için ilkenin MFA gerektirdiğini belirtir:
 
 `CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
-Etkin ilkelerinize ek olarak [kesinti/acil durum senaryolarında ikincil dayanıklı erişim denetimleri](../authentication/concept-resilient-controls.md)olarak davranan devre dışı ilkeler de uygulamanız önerilir. Acil durum ilkelerine yönelik adlandırma standartlarınız birkaç öğe içermelidir: 
+Etkin ilkelerinize ek olarak, [kesinti/acil durum senaryolarında](../authentication/concept-resilient-controls.md)ikincil esnek erişim denetimleri olarak hareket eden devre dışı bırakılmış ilkeler de uygulanması tavsiye edilir. Acil durum ilkeleri için adlandırma standardınız birkaç öğe daha içermelidir: 
 
-- Adın diğer ilkeler arasında öne çıkmasını sağlamak için başlangıçta `ENABLE IN EMERGENCY`.
-- İçin uygulanması gereken kesilme adı.
-- Yöneticinin hangi sıra ilkelerinin etkin olması gerektiğini bilmesini sağlamak için bir sıralama sıra numarası. 
+- `ENABLE IN EMERGENCY`başında adı diğer politikalar arasında öne yapmak.
+- Bozulmaadı için geçerli olmalıdır.
+- Yöneticinin hangi sıra ilkelerinin etkinleştirilmesi gerektiğini bilmesine yardımcı olacak bir sıralama sırası numarası. 
 
-Örneğin, aşağıdaki ad bu ilkenin dört ' un ilk ilkesi olduğunu, MFA kesintisi varsa etkinleştirmelisiniz:
+Örneğin, aşağıdaki ad, bu ilkenin, MFA kesintisi varsa etkinleştirmeniz gereken dört ilkeden ilki olduğunu gösterir:
 
 `EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
 
-## <a name="plan-policies"></a>Plan ilkeleri
+## <a name="plan-policies"></a>İlkeleri planla
 
-Koşullu erişim ilkesi çözümünüzü planlarken, aşağıdaki sonuçları elde etmek için ilkeler oluşturmanız gerekip gerekmediğini değerlendirin. 
+Koşullu Erişim ilkesi çözümünüzü planlarken, aşağıdaki sonuçlara ulaşmak için ilkeler oluşturmanız gerekip gerekmediğini değerlendirin. 
 
-### <a name="block-access"></a>Erişimi engelle
+### <a name="block-access"></a>Hizmete erişimi
 
-Erişimi engelleme seçeneği güçlü olur çünkü:
+Erişimi engelleme seçeneği güçlüdür, çünkü aşağıdakiler:
 
-- Trumps bir kullanıcının diğer tüm atamaları
-- , Tüm kuruluşunuzun kiracınızda oturum açmasını engelleme gücüne sahiptir
+- Bir kullanıcı için diğer tüm atamaları koz
+- Tüm kuruluşunuzun kiracınıza oturum açmasını engelleme gücüne sahiptir
  
-Tüm kullanıcılar için erişimi engellemek isterseniz, ilkeden en az bir kullanıcıyı (genellikle acil durum erişim hesapları) dışarıda bırakmanız gerekir. Daha fazla bilgi için bkz. [kullanıcıları ve grupları seçme](block-legacy-authentication.md#select-users-and-cloud-apps).  
+Tüm kullanıcılar için erişimi engellemek istiyorsanız, en azından bir kullanıcıyı (genellikle acil durum erişim hesapları) ilkeden hariç tutmalısınız. Daha fazla bilgi için [belirli kullanıcılara ve gruplara](block-legacy-authentication.md#select-users-and-cloud-apps)bakın.  
 
 ### <a name="require-mfa"></a>MFA gerektirme
 
-Kullanıcılarınızın oturum açma deneyimini basitleştirmek için, kullanıcıların bir Kullanıcı adı ve parola kullanarak bulut uygulamalarınızda oturum açmalarına izin vermek isteyebilirsiniz. Bununla birlikte, genellikle daha güçlü bir hesap doğrulama biçimi gerektirirken önerilebilir olan en az bir senaryo vardır. Koşullu erişim ilkesiyle, MFA gereksinimini belirli senaryolara sınırlayabilirsiniz. 
+Kullanıcılarınızın oturum açma deneyimini basitleştirmek için, kullanıcı adı ve parola kullanarak bulut uygulamalarınızda oturum açmalarına izin vermek isteyebilirsiniz. Ancak, genellikle, en azından daha güçlü bir hesap doğrulama biçimi gerektirmesi tavsiye edilen bazı senaryolar vardır. Koşullu Erişim ilkesiyle, MFA gereksinimini belirli senaryolarla sınırlandırabilirsiniz. 
 
-MFA 'nın erişime ihtiyacı olan yaygın kullanım örnekleri:
+MFA gerektiren yaygın kullanım örnekleri erişim şunlardır:
 
-- [Yöneticiler tarafından](howto-baseline-protect-administrators.md)
+- [Yazar: yöneticiler](howto-baseline-protect-administrators.md)
 - [Belirli uygulamalara](app-based-mfa.md) 
-- [Ağ konumları ' ndan güvenmediğiniz](untrusted-networks.md).
+- [Ağ konumlarından, güvenmiyorsunuz.](untrusted-networks.md)
 
-### <a name="respond-to-potentially-compromised-accounts"></a>Tehlikede riskli hesaplara yanıt verme
+### <a name="respond-to-potentially-compromised-accounts"></a>Olası tehlikeye atılmış hesaplara yanıt verme
 
-Koşullu erişim ilkeleriyle, riskli olabilecek kimliklerden oturum açma işlemleri için otomatik yanıtlar uygulayabilirsiniz. Bir hesabın tehlikeye düşmesi olasılığı, risk düzeyleri biçiminde ifade edilir. Kimlik koruması ile hesaplanan iki risk düzeyi vardır: oturum açma riski ve Kullanıcı riski. Bir oturum açma riskine yanıt uygulamak için iki seçeneğiniz vardır:
+Koşullu Erişim ilkeleriyle, olası tehlikeye giren kimliklerden oturum açmalara otomatik yanıtlar uygulayabilirsiniz. Bir hesabın tehlikeye girme olasılığı risk düzeyleri şeklinde ifade edilir. Kimlik koruması tarafından hesaplanan iki risk düzeyi vardır: oturum açma riski ve kullanıcı riski. Oturum açma riskine yanıt uygulamak için iki seçeneğiniz var:
 
-- Koşullu erişim ilkesinde [oturum açma risk koşulu](concept-conditional-access-conditions.md#sign-in-risk)
-- Kimlik koruması 'nda [oturum açma risk ilkesi](../identity-protection/howto-sign-in-risk-policy.md) 
+- Koşullu Erişim ilkesinde [oturum açma riski durumu](concept-conditional-access-conditions.md#sign-in-risk)
+- [Kimlik](../identity-protection/howto-sign-in-risk-policy.md) korumada oturum açma risk ilkesi 
 
-Daha fazla özelleştirme seçeneği sağladığından, oturum açma riskini koşul olarak adresleme tercih edilen yöntemdir.
+Oturum açma riskini koşul olarak ele almak, size daha fazla özelleştirme seçeneği sağladığından tercih edilen yöntemdir.
 
-Kullanıcı risk düzeyi yalnızca kimlik koruması 'nda [Kullanıcı risk ilkesi](../identity-protection/howto-user-risk-policy.md) olarak kullanılabilir. 
+Kullanıcı risk düzeyi yalnızca kimlik korumada [kullanıcı risk ilkesi](../identity-protection/howto-user-risk-policy.md) olarak kullanılabilir. 
 
-Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması nedir?](../identity-protection/overview.md) 
+Daha fazla bilgi için Azure [Active Directory Identity Protection nedir?](../identity-protection/overview.md) 
 
 ### <a name="require-managed-devices"></a>Yönetilen cihazları gerektirme
 
-Bulut kaynaklarınıza erişmek için desteklenen cihazların uzalama, kullanıcılarınızın verimliliğini artırmaya yardımcı olur. Ters çevir tarafında, ortamınızdaki belirli kaynaklara bilinmeyen koruma düzeyi olan cihazların erişmesini istemezsiniz. Etkilenen kaynaklar için kullanıcıların yalnızca yönetilen bir cihaz kullanarak erişebilmesi gerekir. Daha fazla bilgi için bkz. [koşullu erişim ile bulut uygulama erişimi için yönetilen cihazlar gerektirme](require-managed-devices.md). 
+Bulut kaynaklarınıza erişmek için desteklenen cihazların yaygınlaşması, kullanıcılarınızın üretkenliğini artırmaya yardımcı olur. Diğer taraftan, büyük olasılıkla ortamınızdaki belirli kaynaklara bilinmeyen koruma düzeyine sahip aygıtlar tarafından erişilmesini istemezsiniz. Etkilenen kaynaklar için, kullanıcıların bunlara yalnızca yönetilen bir aygıt kullanarak erişebilmeleri gerekir. Daha fazla bilgi için, [Koşullu Erişim ile bulut uygulaması erişimi için yönetilen aygıtları nasıl gerekli göreceğiz.](require-managed-devices.md) 
 
 ### <a name="require-approved-client-apps"></a>Onaylı istemci uygulamaları gerektirme
 
-Kendi cihazlarını getir (BYOD) senaryolarında yapmanız gereken ilk kararlardan biri, tüm cihazı veya yalnızca üzerindeki verileri yönetmeniz gerekip gerekmediğini belirtir. Çalışanlarınız hem kişisel hem de iş amaçlı görevler için mobil cihazlar kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi, Şirket verilerinizi koruyabilecek onaylanan istemci uygulamalarıyla sınırlandırabilirsiniz. Daha fazla bilgi için bkz. [koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md).
+Kendi cihazlarınızı getirmek için yapmanız gereken ilk kararlardan biri (BYOD) senaryolar, tüm aygıtı veya yalnızca üzerindeki verileri yönetmeniz gerekip gerekmediğidir. Çalışanlarınız hem kişisel hem de iş amaçlı görevler için mobil cihazlar kullanır. Çalışanlarınızın üretken olmasını sağlamakla birlikte, veri kaybını da önlemek istersiniz. Azure Active Directory (Azure AD) Koşullu Erişim ile bulut uygulamalarınız için erişimi kurumsal verilerinizi koruyabilecek onaylı istemci uygulamalarıyla sınırlandırabilirsiniz. Daha fazla bilgi için, [Koşullu Erişim ile bulut uygulamasıerişimi için onaylı istemci uygulamalarını nasıl gerekli göreceğiz.](app-based-conditional-access.md)
 
 ### <a name="block-legacy-authentication"></a>Eski kimlik doğrulamasını engelleme
 
-Azure AD, eski kimlik doğrulama dahil olmak üzere en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerini destekler. Eski kimlik doğrulaması kullanan uygulamaların kiracının kaynaklarına erişmesini nasıl önleyebilirim? Öneri yalnızca bir koşullu erişim ilkesiyle engellenmeniz önerilir. Gerekirse, yalnızca belirli kullanıcıların ve belirli ağ konumlarının eski kimlik doğrulamasına dayalı uygulamalar kullanmasına izin verebilirsiniz. Daha fazla bilgi için bkz. [Azure AD 'de koşullu erişim ile eski kimlik doğrulamasını engelleme](block-legacy-authentication.md).
+Azure AD, eski kimlik doğrulama dahil olmak üzere en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerinden birkaçını destekler. Eski kimlik doğrulamasını kullanan uygulamaların kiracınızın kaynaklarına erişmesini nasıl önleyebilirsiniz? Öneri, koşullu erişim ilkesiyle bunları engellemektir. Gerekirse, yalnızca belirli kullanıcıların ve belirli ağ konumlarının eski kimlik doğrulamasına dayalı uygulamaları kullanmasına izin verirsiniz. Daha fazla bilgi için, [Koşullu Erişim ile Azure AD'ye eski kimlik doğrulamasını nasıl engelleyeceksiniz'](block-legacy-authentication.md)a bakın.
 
-## <a name="test-your-policy"></a>İlkenizi test etme
+## <a name="test-your-policy"></a>İlkinizi test edin
 
-Bir ilkeyi üretime almadan önce, beklendiği gibi davrandığını doğrulamak için test etmelisiniz.
+Bir ilkeyi üretime dönüştürmeden önce, beklendiği gibi iyi bir işlem olduğunu doğrulamak için test etmelisiniz.
 
 1. Test kullanıcıları oluşturma
 1. Test planı oluşturma
 1. İlkeyi yapılandırma
-1. Benzetimli bir oturum açmayı değerlendir
-1. İlkenizi test etme
+1. Benzetimli oturum açma yı değerlendirme
+1. İlkinizi test edin
 1. Temizleme
 
 ### <a name="create-test-users"></a>Test kullanıcıları oluşturma
 
-Bir ilkeyi test etmek için ortamınızdaki kullanıcılara benzer bir kullanıcı kümesi oluşturun. Test kullanıcıları oluşturmak, gerçek kullanıcıları etkilemeden ve uygulama ve kaynaklara erişimleri büyük olasılıkla kesintiye uğramadan önce ilkelerinizin beklendiği gibi çalıştığını doğrulamanızı sağlar. 
+Bir ilkeyi sınamak için, ortamınızdaki kullanıcılara benzer bir kullanıcı kümesi oluşturun. Test kullanıcıları oluşturmak, gerçek kullanıcıları etkilemeden önce ilkelerinizin beklendiği gibi çalıştığını doğrulamanıza ve uygulamalara ve kaynaklara erişimlerini kesintiye uğratmanıza olanak tanır. 
 
-Bazı kuruluşların bu amaçla test kiracılar vardır. Ancak, bir ilkenin sonucunu tam olarak test etmek için bir test kiracısındaki tüm koşulların ve uygulamaların yeniden oluşturulması zor olabilir. 
+Bazı kuruluşların bu amaçla test kiracıları vardır. Ancak, bir ilkeğin sonucunu tam olarak sınamak için test kiracısındaki tüm koşulları ve uygulamaları yeniden oluşturmak zor olabilir. 
 
 ### <a name="create-a-test-plan"></a>Test planı oluşturma
 
-Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştırma yapmak için önemlidir. Bir şeyi test etmeden önce her zaman bir beklenmelidir. Aşağıdaki tabloda örnek test çalışmaları özetlenmektedir. CA ilkelerinizin nasıl yapılandırıldığına bağlı olarak senaryoları ve beklenen sonuçları ayarlayın.
+Test planı beklenen sonuçlar ve gerçek sonuçlar arasında bir karşılaştırma olması önemlidir. Her zaman bir şey test etmeden önce bir beklenti olmalıdır. Aşağıdaki tabloörnek test örneklerini özetleyin. CA ilkelerinizin nasıl yapılandırıldığına göre senaryoları ve beklenen sonuçları ayarlayın.
 
-|İlke |Senaryo |Beklenen sonuç | Sonuç |
+|İlke |Senaryo |Beklenen Sonuç | Sonuç |
 |---|---|---|---|
-|[İş olmadığında MFA gerektir](/azure/active-directory/conditional-access/untrusted-networks)|Güvenilen bir konum/iş sırasında yetkili kullanıcı *uygulama* oturumunu kapatır|Kullanıcıdan MFA istenmez| |
-|[İş olmadığında MFA gerektir](/azure/active-directory/conditional-access/untrusted-networks)|Yetkili Kullanıcı, güvenilir bir konum/iş üzerinde olmadığı sürece *uygulamada* oturum açar|Kullanıcıdan MFA yapması istenir ve başarıyla oturum açabilir| |
-|[MFA gerektir (yönetici için)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Genel yönetici *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
-|[Riskli oturum açma işlemleri](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Kullanıcı bir [Tor tarayıcısı](/azure/active-directory/active-directory-identityprotection-playbook) kullanarak *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
-|[Cihaz yönetimi](/azure/active-directory/conditional-access/require-managed-devices)|Yetkili Kullanıcı yetkili bir cihazdan oturum açmaya çalışır|Erişim Izni verildi| |
+|[İşte değilken MFA gerektirir](/azure/active-directory/conditional-access/untrusted-networks)|Güvenilir bir konumda / işteyken *Uygulama'ya* yetkili kullanıcı işaretleri|Kullanıcı MFA'ya istenmez| |
+|[İşte değilken MFA gerektirir](/azure/active-directory/conditional-access/untrusted-networks)|Güvenilir bir konumda değilken / işte yken Yetkili kullanıcı *Uygulamasına* giriş|Kullanıcı MFA istenir ve başarıyla oturum açabilir| |
+|[MFA gerektirir (yönetici için)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Global Admin *App'e* giriş imzaladı|Admin MFA istenir| |
+|[Riskli oturum açma işlemleri](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|[Kullanıcı, Tor tarayıcısını](/azure/active-directory/active-directory-identityprotection-playbook) kullanarak *Uygulamaya* giriş yaptı|Admin MFA istenir| |
+|[Cihaz yönetimi](/azure/active-directory/conditional-access/require-managed-devices)|Yetkili kullanıcı yetkili bir cihazdan oturum açmaya çalışır|Erişim Verildi| |
 |[Cihaz yönetimi](/azure/active-directory/conditional-access/require-managed-devices)|Yetkili kullanıcı yetkisiz bir cihazdan oturum açmaya çalışır|Erişim engellendi| |
-|[Riskli kullanıcılar için parola değiştirme](/azure/active-directory/identity-protection/howto-user-risk-policy)|Yetkili Kullanıcı güvenliği tehlikeye giren kimlik bilgileriyle oturum açmaya çalışır (yüksek riskli oturum açma)|İlkenize göre kullanıcıdan parolayı değiştirmesi veya erişimin engellenmesi istenir| |
+|[Riskli kullanıcılar için parola değişikliği](/azure/active-directory/identity-protection/howto-user-risk-policy)|Yetkili kullanıcı, gizliliği ihlal edilen kimlik bilgileriyle oturum açmaya çalışır (yüksek risk oturum açma)|Kullanıcıdan parolayı değiştirmesi istenir veya erişim politikanıza göre engellenir| |
 
 ### <a name="configure-the-policy"></a>İlkeyi yapılandırma
 
-Koşullu erişim ilkelerinin yönetilmesi, el ile gerçekleştirilen bir görevdir. Azure portal, koşullu erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz. koşullu erişim sayfası. Koşullu erişim sayfasına yönelik bir giriş noktası, **Active Directory** gezinti bölmesindeki **güvenlik** bölümüdür. 
+Koşullu Erişim ilkelerini yönetmek el ile bir görevdir. Azure portalında, Koşullu Erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz - Koşullu Erişim sayfası. Koşullu Erişim sayfasına giriş noktası, Etkin **Dizin** gezinti bölmesindeki **Güvenlik** bölümüdür. 
 
 ![Koşullu Erişim](media/plan-conditional-access/03.png)
 
-Koşullu erişim ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md). Bu hızlı başlangıç şunları yapmanıza yardımcı olur:
+Koşullu Erişim ilkeleri nin nasıl oluşturulması hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Active Directory Koşullu Erişimi olan belirli uygulamalar için MFA'yı zorunlu kılmasını gerektir](app-based-mfa.md)mesuliyetine bakın. Bu hızlı başlatma şunları yardımcı olur:
 
-- Kullanıcı arabirimi hakkında bilgi sahibi olun.
-- Koşullu erişimin nasıl çalıştığına ilişkin bir ilk izlenim alın. 
+- Kullanıcı arabirimine aşina olun.
+- Koşullu Erişim'in nasıl çalıştığına dair ilk izlenimi edin. 
 
-### <a name="evaluate-a-simulated-sign-in"></a>Benzetimli bir oturum açmayı değerlendir
+### <a name="evaluate-a-simulated-sign-in"></a>Benzetimli oturum açma yı değerlendirme
 
-Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim [ilke aracı](what-if-tool.md) ' nı kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.
+Koşullu Erişim ilkenizi yapılandırdığınıza göre, büyük olasılıkla beklendiği gibi çalışıp çalışmadığını bilmek istersiniz. İlk adım olarak, test kullanıcınızın oturum açma simüle etmek için [ilke aracı ne olur](what-if-tool.md) Koşullu Erişim kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.
 
 >[!NOTE]
-> Sanal bir çalıştırma, koşullu erişim ilkesinin etkisinden oluşan bir izlenim sağlarken, gerçek bir test çalıştırmasının yerini almaz.
+> Benzetimli bir çalışma, Koşullu Erişim ilkesinin sahip olduğu etki izlenimini verse de, gerçek bir test çalışmasının yerini almaz.
 
-### <a name="test-your-policy"></a>İlkenizi test etme
+### <a name="test-your-policy"></a>İlkinizi test edin
 
-Test planınıza göre test çalışmalarını çalıştırın. Bu adımda, her bir ilkenin doğru bir şekilde davrandığından emin olmak için test kullanıcılarınız için her bir ilkenin uçtan uca bir testini çalıştırırsınız. Her bir testi yürütmek için yukarıda oluşturulan senaryoları kullanın.
+Test test lerini test planınıza göre çalıştırın. Bu adımda, her iiemin doğru şekilde diğinden emin olmak için test kullanıcılarınız için her ilkenin uçtan uca sınanmasını sağlarsınız. Her testi yürütmek için yukarıda oluşturulan senaryoları kullanın.
 
-Bir ilkenin dışlama ölçütünü test ettiğinizden emin olmak önemlidir. Örneğin, MFA gerektiren bir ilkeden Kullanıcı veya grup dışlayabilirsiniz. Diğer ilkelerin birleşimi bu kullanıcılar için MFA gerektirebileceğinden, dışlanan kullanıcılardan MFA için istenirse test edin.
+Bir ilkenin dışlama ölçütlerini sınadığınızdan emin olmak önemlidir. Örneğin, bir kullanıcıyı veya grubu MFA gerektiren bir ilkeden hariç tutabilirsiniz. Diğer ilkelerin birleşimi bu kullanıcılar için MFA gerektirebileceğinden, dışlanan kullanıcılardan MFA için istenip istenmediği test edin.
 
 ### <a name="cleanup"></a>Temizleme
 
 Temizleme yordamı aşağıdaki adımlardan oluşur:
 
-1. İlkeyi devre dışı bırakın.
+1. İlkeyi devre dışı.
 1. Atanan kullanıcıları ve grupları kaldırın.
 1. Test kullanıcılarını silin.  
 
 ## <a name="move-to-production"></a>Üretime taşıma
 
-Ortamınız için yeni ilkeler hazırlandığınızda, bunları aşamalar halinde dağıtın:
+Ortamınız için yeni ilkeler hazır olduğunda, bunları aşamalar halinde dağıtın:
 
-- Son kullanıcılara iç değişiklik iletişimi sağlayın.
-- Küçük bir Kullanıcı kümesiyle başlayın ve ilkenin beklendiği gibi davrandığını doğrulayın.
-- Bir ilkeyi daha fazla Kullanıcı içerecek şekilde genişlettiğinizde, tüm yöneticileri dışlayacak şekilde devam edin. Yönetici dışlama, bir değişiklik gerekliyse birisinin bir ilkeye hala erişmesini sağlar.
-- Yalnızca gerekli olduğunda bir ilkeyi tüm kullanıcılara uygulayın.
+- Son kullanıcılara iç değişim iletişimi sağlayın.
+- Küçük bir kullanıcı kümesiyle başlayın ve ilkenin beklendiği gibi şekilde şekilde şekilde iyi olduğunu doğrulayın.
+- Bir ilkeyi daha fazla kullanıcı içerecek şekilde genişletdiğinizde, tüm yöneticileri hariç tutmamaya devam edin. Yöneticiler hariç, bir değişiklik gerektiğinde birinin bir ilkeye hala erişmesini sağlar.
+- Bir ilkeyi yalnızca gerekli olduğunda tüm kullanıcılara uygulayın.
 
-En iyi uygulama olarak, şu olan en az bir kullanıcı hesabı oluşturun:
+En iyi uygulama olarak, en az bir kullanıcı hesabı oluşturun:
 
-- İlke yönetimine ayrılmıştır
-- Tüm ilkeleriniz hariç tutuldu
+- Politika yönetimine adanmış
+- Tüm ilkelerinizden hariç tutuldu
 
 ## <a name="rollback-steps"></a>Geri alma adımları
 
-Yeni uygulanan ilkelerinizi geri almanız gerekiyorsa, geri almak için aşağıdaki seçeneklerden birini veya daha fazlasını kullanın:
+Yeni uygulanan ilkelerinizi geri almanız gerektiğinde, geri almak için aşağıdaki seçeneklerden birini veya birkaçını kullanın:
 
-1. **Ilkeyi devre dışı bırakma** -bir ilkeyi devre dışı bırakmak, bir Kullanıcı oturum açmaya çalıştığında uygulanmasının mümkün olmadığından emin olur. Her zaman geri dönüp ilkeyi kullanmak istediğinizde etkinleştirebilirsiniz.
+1. **İlkeyi devre dışı bırakma** - Bir ilkeyi devre dışı bırakmak, kullanıcı oturum açmaya çalıştığında uygulamadığından emin olur. Kullanmak istediğinizde her zaman geri gelebilir ve ilkeyi etkinleştirebilirsiniz.
 
    ![İlkeyi devre dışı bırakma](media/plan-conditional-access/07.png)
 
-1. Bir **Kullanıcı/grubu Ilkeden hariç tutma** -bir Kullanıcı uygulamaya erişe, kullanıcıyı ilkeden dışlamayı seçebilirsiniz
+1. **Bir kullanıcıyı / grubu bir ilkeden hariç tut** - Bir kullanıcı uygulamaya erişemiyorsa, kullanıcıyı poliçeden hariç tutabilirsiniz
 
    ![Exluce kullanıcıları](media/plan-conditional-access/08.png)
 
    > [!NOTE]
-   > Bu seçenek, yalnızca kullanıcının güvendiği durumlarda gelişigüzel bir şekilde kullanılmalıdır. Kullanıcı, ilke veya gruba mümkün olan en kısa sürede yeniden eklenmelidir.
+   > Bu seçenek, yalnızca kullanıcının güvenildiği durumlarda dikkatli kullanılmalıdır. Kullanıcı en kısa sürede ilke veya gruba eklenmelidir.
 
-1. **Ilkeyi Sil** -ilke artık gerekmiyorsa, silin.
+1. **İlkeyi silin** - İlke artık gerekli değilse, silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mevcut bilgilere genel bir bakış edinmek için [Azure AD koşullu erişim belgelerine](index.yml) göz atın.
+Kullanılabilir bilgilere genel bir bakış elde etmek için [Azure AD Koşullu Erişim Belgelerine](index.yml) göz atın.

@@ -1,7 +1,7 @@
 ---
 title: SQL Dönüşümü Uygulama
 titleSuffix: Azure Machine Learning
-description: Verileri dönüştürmek üzere giriş veri kümelerinde bir SQLite sorgusu çalıştırmak için Azure Machine Learning SQL dönüştürme modülünü nasıl kullanacağınızı öğrenin.
+description: Verileri dönüştürmek için giriş veri kümelerinde Bir SQLite sorgusu çalıştırmak için Azure Machine Learning'de SQL Dönüşümü Uygula modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314547"
 ---
 # <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
 
-Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısının (önizleme) bir modülü açıklanmaktadır.
 
-SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
+SQL Dönüşümü Uygula modüllerini kullanarak şunları yapabilirsiniz:
   
--   Sonuçlar için tablo oluşturma ve veri kümelerini taşınabilir bir veritabanına kaydetme.  
+-   Sonuçlar için tablolar oluşturun ve veri kümelerini taşınabilir bir veritabanına kaydedin.  
   
--   Veri türlerinde özel dönüşümler gerçekleştirin veya toplamalar oluşturun.  
+-   Veri türlerinde özel dönüşümler gerçekleştirin veya agregalar oluşturun.  
   
--   Verileri filtrelemek veya değiştirmek ve sorgu sonuçlarını veri tablosu olarak döndürmek için SQL sorgu deyimlerini yürütün.  
+-   Verileri filtrelemek veya değiştirmek ve sorgu sonuçlarını veri tablosu olarak döndürmek için SQL sorgu ekstrelerini çalıştırın.  
 
 > [!IMPORTANT]
-> Bu modülde kullanılan SQL altyapısı **SQLite**' dur. SQLite sözdizimi hakkında daha fazla bilgi için daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı SQL](https://www.sqlite.org/index.html) .  
+> Bu modülde kullanılan SQL motoru **SQLite'dir.** SQLite sözdizimi hakkında daha fazla bilgi için, daha fazla bilgi için [SQL'e SQLite tarafından anlaşıldı olarak](https://www.sqlite.org/index.html) bakın.  
 
-## <a name="how-to-configure-apply-sql-transformation"></a>SQL dönüşümünü Uygula ' yı yapılandırma  
+## <a name="how-to-configure-apply-sql-transformation"></a>SQL Dönüşümü Uygula nasıl yapılandırılatır?  
 
-Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, `t1`, `t2`ve `t3`adlarını kullanmanız gerekir. Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
+Modül giriş olarak en fazla üç veri kümesi alabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvururken, `t1` `t2`adlarını `t3`, ve . Tablo numarası giriş bağlantı noktasının dizini gösterir.  
   
-Kalan parametre, SQLite sözdizimini kullanan bir SQL sorgusudur. **SQL betiği** metin kutusuna birden çok satır yazarken her bir ifadeyi sonlandırmak için noktalı virgül kullanın. Aksi takdirde, satır sonları boşluklara dönüştürülür.  
+Kalan parametre, SQLite sözdizimini kullanan bir SQL sorgusudur. **SQL Script** metin kutusuna birden çok satır yazarken, her deyimi sonlandırmak için bir yarı-iki nokta üzerinde kullanın. Aksi takdirde, satır sonları boşluklara dönüştürülür.  
 
-Bu modül, SQLite sözdiziminin tüm standart deyimlerini destekler. Desteklenmeyen deyimlerin bir listesi için [Teknik notlar](#technical-notes) bölümüne bakın.
+Bu modül, SQLite sözdiziminin tüm standart ifadelerini destekler. Desteklenmeyen deyimlerin listesi için [Teknik Notlar](#technical-notes) bölümüne bakın.
 
 ##  <a name="technical-notes"></a>Teknik notlar  
 
-Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yanıtları yer almaktadır.
+Bu bölümde uygulama ayrıntıları, ipuçları ve sık sorulan soruların yanıtları içerir.
 
--   Bağlantı noktası 1 üzerinde her zaman bir giriş gereklidir.  
+-   Bağlantı noktası 1'de her zaman bir giriş gereklidir.  
   
--   Boşluk veya diğer özel karakterler içeren sütun tanımlayıcıları için, `SELECT` veya `WHERE` yan tümcelerinde bulunan sütuna başvuru yaparken her zaman köşeli ayraç veya çift tırnak işareti içinde sütun tanımlayıcısını çevreler.  
+-   Boşluk veya diğer özel karakterler içeren sütun tanımlayıcıları için, sütun tanımlayıcısını her zaman kare ayraçlara veya yan `SELECT` `WHERE` tümcedeki sütuna atıfta bulunurken çift tırnak işaretlerine bürün.  
   
-### <a name="unsupported-statements"></a>Desteklenmeyen deyimler  
+### <a name="unsupported-statements"></a>Desteklenmeyen ifadeler  
 
-SQLite, ANSI SQL standardının çoğunu desteklese de, ticari ilişkisel veritabanı sistemleri tarafından desteklenen birçok özellik içermez. Daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı gibi SQL](http://www.sqlite.org/lang.html). Ayrıca, SQL deyimleri oluştururken aşağıdaki kısıtlamalara dikkat edin:  
+SQLite, ANSI SQL standardının çoğunu desteklese de, ticari ilişkisel veritabanı sistemleri tarafından desteklenen birçok özellik içermez. Daha fazla bilgi için [SQL'e SQLite tarafından anlaşıldı olarak](http://www.sqlite.org/lang.html)bakın. Ayrıca, SQL deyimleri oluştururken aşağıdaki kısıtlamalara dikkat edin:  
   
-- SQLite, en ilişkisel veritabanı sistemlerinde olduğu gibi bir sütuna bir tür atamak yerine, değerler için dinamik yazma kullanır. Kesin olarak yazılmış ve örtük tür dönüştürmeye izin veren.  
+- SQLite, çoğu ilişkisel veritabanı sisteminde olduğu gibi bir sütuna bir tür atamak yerine değerler için dinamik yazma kullanır. Zayıf bir şekilde yazılır ve örtülü tür dönüştürmesine izin verir.  
   
-- `LEFT OUTER JOIN` uygulanmış, ancak `RIGHT OUTER JOIN` veya `FULL OUTER JOIN`değil.  
+- `LEFT OUTER JOIN`uygulanır, ancak `RIGHT OUTER JOIN` uygulanmaz `FULL OUTER JOIN`veya .  
 
-- `ALTER TABLE` komutuyla `RENAME TABLE` ve `ADD COLUMN` deyimlerini kullanabilirsiniz, ancak `DROP COLUMN`, `ALTER COLUMN`ve `ADD CONSTRAINT`dahil diğer yan tümceler desteklenmez.  
+- `ALTER TABLE` Komutla `RENAME TABLE` birlikte `ADD COLUMN` ve deyimler kullanabilirsiniz, ancak diğer yan `DROP COLUMN`tümceler , , `ALTER COLUMN`ve `ADD CONSTRAINT`.  
   
-- SQLite içinde bir görünüm oluşturabilirsiniz, ancak bundan sonra görünümler salt okunurdur. Bir görünümde `DELETE`, `INSERT`veya `UPDATE` ifadesini yürütemezsiniz. Ancak, bir görünüm üzerinde `DELETE`, `INSERT`veya `UPDATE` ve Tetikleyicinin gövdesinde diğer işlemleri gerçekleştirmek için bir girişim tetikleyen bir tetikleyici oluşturabilirsiniz.  
+- SQLite içinde bir GÖRÜNÜM oluşturabilirsiniz, ancak bundan sonra görünümler salt okunur. Bir görünümde `DELETE` `INSERT`bir `UPDATE` , veya deyimi yürütemezsiniz. Ancak, bir girişim üzerinde yangınları bir `DELETE` `INSERT`tetikleyici `UPDATE` oluşturabilirsiniz , , veya bir görünüm ve tetikleyici gövdesinde diğer işlemleri gerçekleştirmek.  
   
 
-Resmi SQLite sitesinde sağlanan desteklenmeyen işlevlerin listesine ek olarak, aşağıdaki wiki desteklenmeyen diğer özelliklerin bir listesini sağlar: [SQLite-desteklenmeyen SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
+Resmi SQLite sitesinde sağlanan desteklenmeyen işlevler listesine ek olarak, aşağıdaki wiki diğer desteklenmeyen özelliklerin bir listesini sağlar: [SQLite - Desteklenmeyen SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

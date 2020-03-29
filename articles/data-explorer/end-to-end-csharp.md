@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini ile uçtan uca blob almaC#
-description: Bu makalede, tarafından kullanılan C#uçtan uca bir örnekle Azure Veri Gezgini blob 'ları nasıl alabileceğinizi öğreneceksiniz.
+title: "C ile Azure Veri Gezgini'ne uçtan uca blob alma #"
+description: Bu makalede, C# kullanan uçtan uca bir örnekle Azure Veri Gezgini'ne blobs nasıl yutabileceğinizi öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964524"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>Azure Veri Gezgini ile uçtan uca blob almaC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>C ile Azure Veri Gezgini'ne uçtan uca blob alma #
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve ölçeklenebilir bir veri araştırma hizmetidir. Bu makalede, Azure Blob depolama 'dan Azure Veri Gezgini veri alma hakkında uçtan uca bir örnek sunulmaktadır. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve ölçeklenebilir bir veri arama hizmetidir. Bu makalede, Azure Blob depolamadan Azure Veri Gezgini'ne nasıl veri sindirilene ilgili uçtan uca bir örnek verilmiştir. 
 
-Programlı olarak bir kaynak grubu, depolama hesabı ve kapsayıcı, Olay Hub 'ı ve Azure Veri Gezgini kümesi ve veritabanı oluşturma hakkında bilgi edineceksiniz. Ayrıca, yeni depolama hesabından verileri almak için Azure Veri Gezgini aracılığıyla nasıl yapılandırılacağınızı öğreneceksiniz.
+Bir kaynak grubu, depolama hesabı ve kapsayıcısı, olay hub'ı ve Azure Veri Gezgini kümesi ve veritabanını programlı bir şekilde nasıl oluşturacağınız öğrenilir. Ayrıca, azure veri gezginini yeni depolama hesabından veri almak için programlı bir şekilde nasıl yapılandıracağınızı da öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="install-c-nuget"></a>NuGet C# 'i yükler
+## <a name="install-c-nuget"></a>C# NuGet yükle
 
-* [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)uygulamasını yükler.
-* [Microsoft. Azure. Management. ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)uygulamasını yükler.
-* [Microsoft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/)'i yükler.
-* [Microsoft. Azure. Storage. blob 'u](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)yükler.
-* Kimlik doğrulaması için [Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) 'ı yükler.
+* [Microsoft.Azure.Management.kusto'ya yükleyin.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* [Microsoft.Azure.Management.ResourceManager'ı](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)yükleyin.
+* [Microsoft.Azure.Management.EventGrid'i yükleyin.](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/)
+* [Microsoft.Azure.Storage.Blob'u](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)yükleyin.
+* Kimlik doğrulaması için [Microsoft.Rest.ClientRuntime.Azure.Authentication'ı](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) yükleyin.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
@@ -43,9 +43,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 ## <a name="code-example"></a>Kod örneği 
 
-Aşağıdaki kod örneği, Azure Veri Gezgini veri alımı ile sonuçlanan adım adım bir işlem sağlar. 
+Aşağıdaki kod örneği, Azure Veri Gezgini'ne veri alınmasıyla sonuçlanan adım adım bir işlem sağlar. 
 
-İlk olarak bir kaynak grubu oluşturun. Ayrıca, depolama hesabı ve kapsayıcı, Olay Hub 'ı ve Azure Veri Gezgini kümesi ve veritabanı gibi Azure kaynakları da oluşturursunuz ve sorumluları eklersiniz. Daha sonra, Azure Veri Gezgini veritabanında tablo ve sütun eşleme ile birlikte Azure Event Grid bir abonelik oluşturursunuz. Son olarak, yeni depolama hesabından verileri almak üzere Azure Veri Gezgini 'yi yapılandırmak için veri bağlantısı oluşturursunuz. 
+Önce bir kaynak grubu oluşturursunuz. Ayrıca depolama hesabı ve kapsayıcı, olay merkezi ve Azure Veri Gezgini kümesi ve veritabanı gibi Azure kaynakları oluşturur ve ilkeler eklersiniz. Daha sonra Azure Veri Gezgini veritabanında bir tablo ve sütun eşlemeyle birlikte bir Azure Olay Ağı aboneliği oluşturursunuz. Son olarak, Azure Veri Gezgini'ni yeni depolama hesabından veri almak üzere yapılandırmak için veri bağlantısı oluşturursunuz. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -176,12 +176,12 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 ```
 | **Ayar** | **Alan açıklaması** |
 |---|---|---|
-| tenantId | Kiracı KIMLIĞINIZ. Dizin KIMLIĞI olarak da bilinir.|
-| subscriptionId | Kaynak oluşturma için kullandığınız abonelik KIMLIĞI.|
-| clientID | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci KIMLIĞI.|
-| clientSecret | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci gizli anahtarı. |
+| tenantId | Kiracı kimliğiniz. Dizin kimliği olarak da bilinir.|
+| subscriptionId | Kaynak oluşturma için kullandığınız abonelik kimliği.|
+| clientId | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci kimliği.|
+| clientSecret | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci sırrı. |
 
-## <a name="test-the-code-example"></a>Kod örneğini test etme
+## <a name="test-the-code-example"></a>Kod örneğini test edin
 
 1. Depolama hesabına bir dosya yükleyin.
 
@@ -197,9 +197,9 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     ```
     |**Ayar** | **Alan açıklaması**|
     |---|---|---|
-    | storageConnectionString | Programlı olarak oluşturulan depolama hesabının bağlantı dizesi.|
+    | depolamaConnectionString | Programlı olarak oluşturulan depolama hesabının bağlantı dizesi.|
 
-2. Azure Veri Gezgini 'de bir test sorgusu çalıştırın.
+2. Azure Veri Gezgini'nde bir test sorgusu çalıştırın.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -234,7 +234,7 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*  Bir küme ve veritabanı oluşturmanın diğer yolları hakkında bilgi edinmek için bkz. [Azure Veri Gezgini kümesi ve veritabanı oluşturma](create-cluster-database-csharp.md).
-* Alma yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure Veri Gezgini veri](ingest-data-overview.md)alımı.
-* Web uygulaması hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Veri Gezgini Web Kullanıcı arabirimindeki verileri sorgulama](web-query-data.md).
-* [Sorguları](write-queries.md) kusto sorgu diliyle yazın.
+*  Küme ve veritabanı oluşturmanın diğer yolları hakkında bilgi edinmek için [bkz.](create-cluster-database-csharp.md)
+* Yutma yöntemleri hakkında daha fazla bilgi edinmek için [Azure Veri Gezgini veri alımına](ingest-data-overview.md)bakın.
+* Web uygulaması hakkında bilgi edinmek [için, Azure Veri Gezgini web Kullanıcı Arabirimi'nde Hızlı Başlangıç: Verileri sorgula.](web-query-data.md)
+* Kusto Query Language ile [sorgu yazın.](write-queries.md)

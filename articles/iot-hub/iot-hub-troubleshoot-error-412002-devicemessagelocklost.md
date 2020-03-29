@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub sorunlarını giderme hatası 412002 Devicemessagelockkaybedildi
-description: 412002 Devicemessagelockkayıp hatasını nasıl düzelteceğinizi öğrenin
+title: Sorun Giderme Azure IoT Hub hatası 412002 DeviceMessageLockLost
+description: Hata 412002 DeviceMessageLockLost nasıl düzeltilir anlayın
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 66461b23432a3e8b7ae4ad1fdc078fba9ca05646
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960769"
 ---
-# <a name="412002-devicemessagelocklost"></a>412002 Devicemessagelockkaybedildi
+# <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
 
-Bu makalede, **412002 Devicemessagelockkayıp** hataları için nedenler ve çözümler açıklanmaktadır.
+Bu **makalede, 412002 DeviceMessageLockLost** hatalarının nedenleri ve çözümleri açıklanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
-Buluttan cihaza ileti gönderilmeye çalışırken, istek **412002 Devicemessagelockkaybedildi**hatasıyla başarısız olur.
+Bir buluttan cihaza ileti göndermeye çalışırken, istek **hata 412002 DeviceMessageLockLost**ile başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 
-Bir cihaz kuyruktan cihaza bir ileti aldığında (örneğin, [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)kullanarak), ileti bir dakikalık kilit zaman aşımı süresi için IoT Hub tarafından kilitlenir. Kilit zaman aşımı süresi dolduktan sonra cihaz iletiyi tamamlamaya çalışırsa IoT Hub bu özel durumu oluşturur.
+Bir aygıt kuyruktan buluttan aygıta ileti aldığında (örneğin, kullanma) [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)ileti, bir dakikalık kilit zaman ayarı için IoT Hub tarafından kilitlenir. Aygıt kilit süresi dolduktan sonra iletiyi tamamlamaya çalışırsa, IoT Hub bu özel durumu atar.
 
 ## <a name="solution"></a>Çözüm
 
-IoT Hub bir dakikalık kilit zaman aşımı süresi içinde bildirimi almadıysanız, iletiyi *sıraya alınan* duruma geri ayarlar. Cihaz iletiyi yeniden almayı deneyebilir. Hatanın gelecekte oluşmasını engellemek için, iletiyi alırken bir dakika içinde iletiyi tamamlamaya yönelik cihaz tarafı mantığını uygulayın. Bu bir dakikalık zaman aşımı değiştirilemez.
+IoT Hub bildirimi bir dakikalık kilit zaman süresi içinde alamazsa, iletiyi *Enqueued* durumuna geri ayarlar. Aygıt iletiyi yeniden almayı deneyebilir. Hatanın gelecekte oluşmasını önlemek için, iletiyi aldıktan sonraki bir dakika içinde tamamlamak için aygıt yan mantığını uygulayın. Bu bir dakikalık zaman dilimi değiştirilemez.

@@ -1,6 +1,6 @@
 ---
-title: Kimlik Yapılandırma-Azure Event Grid IoT Edge | Microsoft Docs
-description: Event Grid modülünün kimliğini yapılandırma
+title: Kimlik yapılandırma - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: Olay Izgara modülün kimliğini yapılandırma
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,20 +10,20 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841774"
 ---
-# <a name="configure-identity-for-the-event-grid-module"></a>Event Grid modülü için kimlik yapılandırma
+# <a name="configure-identity-for-the-event-grid-module"></a>Olay Izgara modülü için kimlik yapılandırma
 
-Bu makale, kenardaki kılavuz için kimliğin nasıl yapılandırılacağını gösterir. Varsayılan olarak Event Grid modülü, kendi kimlik sertifikasını IoT güvenlik arka plan programı tarafından yapılandırılan şekilde sunar. Uç Event Grid, olay sunarken kendi kimlik sertifikasını giden çağrılarıyla birlikte sunar. Daha sonra bir abone, kabul etmeden önce olayı gönderen Event Grid modülünü doğrulayabilir.
+Bu makalede, Edge Grid için kimlik yapılandırmak için nasıl gösterir. Varsayılan olarak, Olay Izgara modülü ioT güvenlik daemon tarafından yapılandırılan kimlik sertifikasını sunar. Edge'deki Olay Grid, etkinlik sunarken kimlik sertifikasını giden çağrılarıyla birlikte sunar. Abone daha sonra, davet için olayı gönderdiği olay ısgarorta modülüolduğ
 
-Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuzu '](security-authentication.md) na bakın.
+Tüm olası yapılandırmalar için [Güvenlik ve kimlik doğrulama](security-authentication.md) kılavuzuna bakın.
 
-## <a name="always-present-identity-certificate"></a>Her zaman kimlik sertifikası sunun
-Giden çağrılar üzerinde her zaman bir kimlik sertifikası sunmaya yönelik örnek bir yapılandırma aşağıda verilmiştir. 
+## <a name="always-present-identity-certificate"></a>Her zaman kimlik sertifikası nı sunun
+Burada, giden aramalarda her zaman bir kimlik sertifikası sunmak için örnek bir yapılandırma verilmiştir. 
 
 ```json
  {
@@ -34,8 +34,8 @@ Giden çağrılar üzerinde her zaman bir kimlik sertifikası sunmaya yönelik �
 }
  ```
 
-## <a name="dont-present-identity-certificate"></a>Kimlik sertifikası sunma
-Giden çağrılar üzerinde kimlik sertifikası sunulmayan bir yapılandırma aşağıda verilmiştir. 
+## <a name="dont-present-identity-certificate"></a>Kimlik belgesi ni sunmayın
+İşte, giden aramalarda kimlik sertifikası ibraz etmemek için örnek bir yapılandırma. 
 
 ```json
  {

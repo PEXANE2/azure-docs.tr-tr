@@ -1,6 +1,6 @@
 ---
-title: Linux VM 'Leri için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
-description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Linux VM görüntüleri oluşturun.
+title: Linux VM'leri için bir resim galerisiyle Azure Image Builder'ı kullanın (önizleme)
+description: Azure Image Builder ve Paylaşılan Resim Galerisi ile Linux VM görüntüleri oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.openlocfilehash: bf1dca61ec6b39e52d4f76c1c77cd3def6973ab8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945002"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: Bir Linux görüntüsü oluşturun ve Paylaşılan Resim Galerisi'ne dağıtın 
 
-Bu makalede, [paylaşılan bir görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı ve Azure CLI 'yi nasıl kullanabileceğinizi ve görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir. Bunu [Azure PowerShell](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
+Bu makalede, [Paylaşılan Resim Galerisi'nde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir resim sürümü oluşturmak ve ardından görüntüyü genel olarak dağıtmak için Azure Image Builder ve Azure CLI'yi nasıl kullanabileceğinizi gösterir. Bunu [Azure PowerShell'i](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
 
 
-Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplateforsıg. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
+Görüntüyü yapılandırmak için bir örnek .json şablonu kullanıyor olacağız. Kullandığımız .json dosyası burada: [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için, şablon, şablonun `distribute` bölümü [değeri olarak parçalama](image-builder-json.md#distribute-sharedimage) .
+Görüntüyü Paylaşılan Resim Galerisi'ne dağıtmak için şablon, `distribute` şablonun bölümü için değer olarak [sharedImage](image-builder-json.md#distribute-sharedimage) kullanır.
 
 > [!IMPORTANT]
-> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Image Builder şu anda genel önizlemede.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="register-the-features"></a>Özellikleri kaydetme
-Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
+## <a name="register-the-features"></a>Özellikleri kaydedin
+Önizleme sırasında Azure Image Builder'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -40,7 +40,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Kaydınızı denetleyin.
+Kaydınızı kontrol edin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -48,7 +48,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Kayıtlı değilse, aşağıdakileri çalıştırın:
+Kayıtlı demiyorlarsa, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -56,11 +56,11 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarla 
+## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarlama 
 
-Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız.
+Bazı bilgileri tekrar tekrar kullanarak bu bilgileri depolamak için bazı değişkenler oluşturacağız.
 
-Önizleme için, görüntü Oluşturucu yalnızca kaynak yönetilen görüntüyle aynı kaynak grubunda özel görüntüler oluşturmayı destekleyecektir. Bu örnekteki kaynak grubu adını kaynak yönetilen yansımanız ile aynı kaynak grubu olacak şekilde güncelleştirin.
+Önizleme için, görüntü oluşturucu yalnızca kaynak yönetilen görüntüyle aynı Kaynak Grubunda özel görüntüler oluşturmayı destekler. Kaynak yönetilen görüntünüzle aynı kaynak grubu olacak şekilde bu örnekteki kaynak grubu adını güncelleştirin.
 
 ```azurecli-interactive
 # Resource group name - we are using ibLinuxGalleryRG in this example
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
+Abonelik kimliğiniz için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`elde edebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Bu kaynak grubunda kaynak oluşturmak için Azure Image Builder iznini verin. `--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
+Azure Image Builder'a bu kaynak grubunda kaynak oluşturması için izin verin. Değer, `--assignee` Image Builder hizmetinin uygulama kayıt kimliğidir. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -103,11 +103,11 @@ az role assignment create \
 
 
 
-## <a name="create-an-image-definition-and-gallery"></a>Görüntü tanımı ve Galeri oluşturma
+## <a name="create-an-image-definition-and-gallery"></a>Resim tanımı ve galeri oluşturma
 
-Görüntü Oluşturucuyu paylaşılan bir görüntü Galerisi ile birlikte kullanmak için, var olan bir görüntü Galerisi ve görüntü tanımınız olması gerekir. Görüntü Oluşturucu, sizin için görüntü Galerisi ve görüntü tanımı oluşturmaz.
+Paylaşılan bir resim galerisiyle Image Builder'ı kullanmak için varolan bir resim galerisine ve resim tanımına sahip olmanız gerekir. Image Builder sizin için resim galerisi ve resim tanımı oluşturmaz.
 
-Kullanmak üzere bir galeri ve görüntü tanımınız yoksa, bunları oluşturarak başlayın. İlk olarak, bir görüntü galerisi oluşturun.
+Zaten kullanmak için bir galeri ve resim tanımı yoksa, bunları oluşturarak başlayın. İlk olarak, bir resim galerisi oluşturun.
 
 ```azurecli-interactive
 az sig create \
@@ -115,7 +115,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-Ardından, bir görüntü tanımı oluşturun.
+Ardından, bir resim tanımı oluşturun.
 
 ```azurecli-interactive
 az sig image-definition create \
@@ -129,9 +129,9 @@ az sig image-definition create \
 ```
 
 
-## <a name="download-and-configure-the-json"></a>. JSON indirin ve yapılandırın
+## <a name="download-and-configure-the-json"></a>.json'u indirin ve yapılandırın
 
-. JSON şablonunu indirin ve değişkenleriniz ile yapılandırın.
+.json şablonunu indirin ve değişkenlerinizle yapılandırın.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
@@ -144,11 +144,11 @@ sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
 ```
 
-## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
+## <a name="create-the-image-version"></a>Resim sürümünü oluşturma
 
-Sonraki bölümde, galerideki görüntü sürümü oluşturulur. 
+Bu sonraki bölümde galeride görüntü sürümü oluşturacaktır. 
 
-Görüntü yapılandırmasını Azure görüntü Oluşturucu hizmetine gönderme.
+Görüntü yapılandırmasını Azure Image Builder hizmetine gönderin.
 
 ```azurecli-interactive
 az resource create \
@@ -159,7 +159,7 @@ az resource create \
     -n helloImageTemplateforSIG01
 ```
 
-Görüntü derlemesini başlatın.
+Görüntü oluşturmayı başlatın.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -169,12 +169,12 @@ az resource invoke-action \
      --action Run 
 ```
 
-Görüntünün oluşturulması ve her iki bölgeye çoğaltılmasının biraz zaman alabilir. VM oluşturma işlemine geçmeden önce Bu bölüm bitene kadar bekleyin.
+Görüntüyü oluşturma ve her iki bölgeye çoğaltmak biraz zaman alabilir. VM oluşturmaya geçmeden önce bu bölümün bitmesini bekleyin.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Azure Image Builder tarafından oluşturulan görüntü sürümünden bir VM oluşturun.
+Azure Image Builder tarafından oluşturulan resim sürümünden bir VM oluşturun.
 
 ```azurecli-interactive
 az vm create \
@@ -186,13 +186,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM 'ye SSH.
+VM ile SSH bağlantısı kurun.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
 ```
 
-Görüntünün, SSH bağlantınız kurulduğu anda *günün iletisiyle* özelleştirildiğini görmeniz gerekir!
+SSH bağlantınız kurulur kurulmaz *görüntünün Günün Mesajı* ile özelleştirilmelerini görmelisiniz!
 
 ```console
 *******************************************************
@@ -204,14 +204,14 @@ Görüntünün, SSH bağlantınız kurulduğu anda *günün iletisiyle* özelle�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık aynı görüntünün yeni bir sürümünü oluşturmak için görüntü sürümünü yeniden özelleştirmeyi denemek istiyorsanız, sonraki adımları atlayın ve [başka bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı kullanma](image-builder-gallery-update-image-version.md)bölümüne gidin.
+Şimdi aynı görüntünün yeni bir sürümünü oluşturmak için resim sürümünü yeniden özelleştirmeyi denemek istiyorsanız, sonraki adımları atlayın ve [başka bir resim sürümü oluşturmak için Azure Image Builder'ı kullanın'](image-builder-gallery-update-image-version.md)a gidin.
 
 
-Bu işlem, oluşturulan görüntüyü ve diğer tüm kaynak dosyalarını siler. Kaynakları silmeden önce bu dağıtımla bitdiğinizden emin olun.
+Bu, oluşturulan tüm diğer kaynak dosyalarıyla birlikte oluşturulan görüntüyü siler. Kaynakları silmeden önce bu dağıtımı bitirdiğinden emin olun.
 
-Görüntü Galerisi kaynaklarını silerken, bunları oluşturmak için kullanılan görüntü tanımını silebilmeniz için önce tüm görüntü sürümlerini silmeniz gerekir. Bir galeriyi silmek için, önce galerideki tüm görüntü tanımlarını silmiş olmanız gerekir.
+Resim galerisi kaynaklarını silerken, bunları oluşturmak için kullanılan resim tanımını silmeden önce tüm resim sürümlerini silmeniz gerekir. Bir galeriyi silmek için öncelikle galerideki tüm resim tanımlarını silmiş olmanız gerekir.
 
-Görüntü Oluşturucu şablonunu silin.
+Resim oluşturucu şablonu silin.
 
 ```azurecli-interactive
 az resource delete \
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Image Builder tarafından oluşturulan görüntü sürümünü al, bu her zaman `0.`başlar ve sonra görüntü sürümünü siler
+Görüntü oluşturucu tarafından oluşturulan görüntü sürümü `0.`alın, bu her zaman ile başlar , ve sonra görüntü sürümünü silmek
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -237,7 +237,7 @@ az sig image-version delete \
 ```   
 
 
-Görüntü tanımını silin.
+Resim tanımını silin.
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -261,4 +261,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.
+[Azure Paylaşılan Resim Galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.

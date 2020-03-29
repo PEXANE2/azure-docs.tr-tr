@@ -1,64 +1,64 @@
 ---
-title: Log Analytics çalışma alanı oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanma | Microsoft Docs
-description: Log Analytics çalışma alanları oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanabilirsiniz.
+title: Log Analytics çalışma alanı için Azure Kaynak Yöneticisi şablonu
+description: Log Analytics çalışma alanlarını oluşturmak ve yapılandırmak için Azure Kaynak Yöneticisi şablonlarını kullanabilirsiniz.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054678"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak Günlük Analizi çalışma alanını yönetme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarını](../../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Şablonlarla gerçekleştirebileceğiniz görevlere örnekler şunlar olabilir:
+Azure Monitor'da Günlük Analizi çalışma alanlarını oluşturmak ve yapılandırmak için [Azure Kaynak Yöneticisi şablonlarını](../../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Şablonlarla gerçekleştirebileceğiniz görevlere örnek olarak şunlar verilebilir:
 
-* Fiyatlandırma katmanını ve kapasite ayırmayı ayarlama dahil bir çalışma alanı oluşturma
+* Fiyatlandırma katmanı ve kapasite rezervasyonu ayarlamayı içeren bir çalışma alanı oluşturun
 * Çözüm ekleme
-* Kayıtlı aramalar oluştur
-* Bir bilgisayar grubu oluşturun
-* Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
-* Linux ve Windows bilgisayarlardan performans sayaçlarını Topla
-* Linux Bilgisayarları'nda syslog olaylarını Topla 
-* Windows olay günlüklerinden olaylarını Topla
-* Windows bilgisayarından özel günlükleri topla
-* Bir Azure sanal makinesi için log analytics aracısını ekleme
-* Azure Tanılama'yı kullanarak toplanan dizin verileri log analytics'e yapılandırın
+* Kaydedilen aramalar oluşturma
+* Bilgisayar grubu oluşturma
+* Windows aracısı yüklü bilgisayarlardan IIS günlüklerinin toplanmasını etkinleştirme
+* Linux ve Windows bilgisayarlarından performans sayaçları toplama
+* Linux bilgisayarlarda syslog'dan etkinlik toplama 
+* Windows etkinlik günlüklerinden olayları toplama
+* Windows bilgisayardan özel günlükleri toplama
+* Azure sanal makinesine günlük analizi aracısını ekleme
+* Azure tanılama kullanılarak toplanan verileri dizinlemek için günlük analitiğini yapılandırma
 
-Bu makale, şablonlarla gerçekleştirebileceğiniz bazı yapılandırmayı gösteren şablon örnekleri sağlar.
+Bu makalede, şablonlarla gerçekleştirebileceğiniz yapılandırmanın bazılarını gösteren şablon örnekleri sağlanabilir.
 
 ## <a name="api-versions"></a>API sürümleri
 
-Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listelenmektedir.
+Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listeleneb.r.a.
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı   | çalışma alanları    | 2017-03-15-Önizleme |
-| Arama      | Savedaramalarındaki aramalar | 2015-03-20 |
-| Veri kaynağı | kaynağı   | 2015-11-01-Önizleme |
-| Çözüm    | çözümler     | 2015-11-01-Önizleme |
+| Çalışma alanı   | çalışma alanı    | 2017-03-15-önizleme |
+| Search      | savedAramalar | 2015-03-20 |
+| Veri kaynağı | Datasources   | 2015-11-01-önizleme |
+| Çözüm    | çözümler     | 2015-11-01-önizleme |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
-Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma alanı oluşturur. JSON şablonu yalnızca yeni çalışma alanının adını ve konumunu gerektirecek şekilde yapılandırılmıştır. [Erişim denetimi modu](design-logs-deployment.md#access-control-mode), fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi diğer çalışma alanı parametreleri için belirtilen değerleri kullanır.
+Aşağıdaki örnek, yerel makinenizden gelen bir şablonu kullanarak bir çalışma alanı oluşturur. JSON şablonu yalnızca yeni çalışma alanının adını ve konumunu gerektirecek şekilde yapılandırılır. [Erişim denetim modu,](design-logs-deployment.md#access-control-mode)fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi diğer çalışma alanı parametreleri için belirtilen değerleri kullanır.
 
-Kapasite ayırma için, SKU `CapacityReservation` ve GB cinsinden Özellik `capacityReservationLevel`için bir değer belirterek, verileri almak için seçilen bir kapasite rezervasyonu tanımlarsınız. Aşağıdaki listede, yapılandırma sırasında desteklenen değerlerin ve davranışın ayrıntıları verilmiştir.
+Kapasite rezervasyonu için, SKU `CapacityReservation` ve özellik `capacityReservationLevel`için GB değeri belirterek veri sindirilmesi için seçili bir kapasite rezervasyonu tanımlarsınız. Aşağıdaki liste, yapılandırırken desteklenen değerleri ve davranışı ayrıntılarıyla anlatır.
 
-- Ayırma sınırını ayarladıktan sonra, 31 gün içinde farklı bir SKU 'ya geçiş yapılamaz.
+- Rezervasyon limitini belirledikten sonra 31 gün içinde farklı bir SKU'ya geçemezsiniz.
 
-- Rezervasyon değerini ayarladıktan sonra yalnızca 31 gün içinde artırabilirsiniz.
+- Rezervasyon değerini ayarladıktan sonra, yalnızca 31 gün içinde artırabilirsiniz.
 
-- `capacityReservationLevel` değerini, en yüksek değeri 50000 olan 100 katları olarak ayarlayabilirsiniz.
+- Değeri yalnızca en fazla `capacityReservationLevel` değeri 50000 olan 100'ün katları olarak ayarlayabilirsiniz.
 
-- Ayırma düzeyini artırırsanız, süreölçer sıfırlanır ve bu güncelleştirmeden başka bir 31 gün için değiştiremezsiniz.  
+- Rezervasyon düzeyini artırırsanız, zamanlayıcı sıfırlanır ve bu güncelleştirmeden itibaren 31 gün daha değiştiremezsiniz.  
 
-- Çalışma alanı için başka bir özelliği değiştirir ancak ayırma sınırını aynı düzeye tutarız, Zamanlayıcı sıfırlanmaz. 
+- Çalışma alanı için başka bir özelliği değiştirir, ancak rezervasyon sınırını aynı düzeyde tutarsanız, zamanlayıcı sıfırlanmaz. 
 
 ### <a name="create-and-deploy-template"></a>Şablon oluşturma ve dağıtma
 
@@ -145,18 +145,18 @@ Kapasite ayırma için, SKU `CapacityReservation` ve GB cinsinden Özellik `capa
     }
     ```
 
-> [Bilgi] kapasite ayırma ayarları için, bu özellikleri "SKU" altında kullanın:
+> Kapasite rezervasyon ayarları için [Bilgi] bu özellikleri "sku" altında kullanın:
 
->   "ad": "Capacityreservatıon",
+>   "isim": "CapacityReservation",
 
 >   "capacityReservationLevel": 100
 
 
-2. Gereksinimlerinizi karşılayacak şekilde şablonunu düzenleyin. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurusunu gözden geçirin. 
-3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.
-4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırı kullanın, bu durumda, komutun bir parçası olarak çalışma alanı adı ve konumu belirtin. Çalışma alanı adı tüm Azure abonelikleri genelinde genel olarak benzersiz olmalıdır.
+2. Gereksinimlerinizi karşılamak için şablonu edin. Hangi özelliklerin ve değerlerin desteklenildiğini öğrenmek için [Microsoft.OperationalInsights/çalışma alanları şablonu](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurularını inceleyin. 
+3. Bu dosyayı yerel bir klasöre **deploylaworkspacetemplate.json** olarak kaydedin.
+4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırını kullanarak çalışma alanı adını ve konumunu komutun bir parçası olarak belirtirsiniz. Çalışma alanı adı, tüm Azure aboneliklerinde genel olarak benzersiz olmalıdır.
 
-   * PowerShell için, şablonu içeren klasörden aşağıdaki komutları kullanın:
+   * PowerShell için şablonu içeren klasörden aşağıdaki komutları kullanın:
    
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
@@ -169,22 +169,22 @@ Kapasite ayırma için, SKU `CapacityReservation` ve GB cinsinden Özellik `capa
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuç içeren aşağıdakine benzer bir ileti görürsünüz:<br><br> ![Dağıtım tamamlandığında örnek sonucu](./media/template-workspace-configuration/template-output-01.png)
+Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:<br><br> ![Dağıtım tamamlandığında örnek sonuç](./media/template-workspace-configuration/template-output-01.png)
 
-## <a name="configure-a-log-analytics-workspace"></a>Log Analytics çalışma alanı yapılandırma
+## <a name="configure-a-log-analytics-workspace"></a>Günlük Analizi çalışma alanını yapılandırma
 
-Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
+Aşağıdaki şablon örneği nasıl gösterin:
 
-1. Çözüm çalışma alanına ekleme
-2. Kayıtlı aramalar oluştur
-3. Bir bilgisayar grubu oluşturun
-4. Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
-5. Mantıksal Disk performans sayaçları Linux bilgisayarından toplar (% kullanılan Inode'ları; Boş megabayt; % Kullanılan alan; Disk aktarımı/sn; Disk Okuma/sn; Disk Yazma/sn)
-6. Linux bilgisayarlardan Syslog olaylarını Topla
-7. Windows bilgisayarlardan uygulama olay günlüğü'ndeki hata ve uyarı olaylarını Topla
-8. Windows bilgisayarlardan bellek kullanılabilir MBayt performans sayacı Topla
-9. Azure tanılama tarafından bir depolama hesabına yazılan IIS günlüklerini ve Windows olay günlüklerini toplayın
-10. Windows bilgisayarından özel günlükleri topla
+1. Çalışma alanına çözümler ekleme
+2. Kaydedilmiş aramalar oluşturun. Dağıtımların kaydedilen aramaları yanlışlıkla geçersiz kılmadığından emin olmak için, kaydedilen aramaların idempotency'sini geçersiz kılmak ve korumak için "savedSearches" kaynağına bir eTag özelliği eklenmelidir.
+3. Bilgisayar grubu oluşturma
+4. Windows aracısı yüklü bilgisayarlardan IIS günlüklerinin toplanmasını etkinleştirme
+5. Linux bilgisayarlarından Mantıksal Disk perf sayaçları toplamak (% Kullanılmış Inodes; Ücretsiz Megabayt; % Kullanılan Alan; Disk Aktarımları/sn; Disk Okuma/sn; Disk Yazma/sn)
+6. Linux bilgisayarlarından syslog etkinliklerini toplayın
+7. Windows bilgisayarlardan Uygulama Olay Günlüğü'nden Hata ve Uyarı olaylarını toplama
+8. Windows bilgisayarlardan Bellek Kullanılabilir Mbytes performans sayacı toplama
+9. Azure tanılama tarafından yazılan IIS günlüklerini ve Windows Olay günlüklerini bir depolama hesabına toplama
+10. Windows bilgisayardan özel günlükleri toplama
 
 ```json
 {
@@ -318,11 +318,11 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "Category": "VMSS",
-            "ETag": "*",
-            "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
-            "Version": 1
+            "category": "VMSS",
+            "eTag": "*",
+            "displayName": "VMSS Instance Count",
+            "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
+            "version": 1
           }
         },
         {
@@ -629,9 +629,9 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
 
 Örnek şablonu dağıtmak için:
 
-1. Ekli örneği bir dosyaya kaydedin, örneğin `azuredeploy.json` 
-2. Şablonu istediğiniz yapılandırmaya sahip olacak şekilde düzenleyin
-3. Şablonu dağıtmak için PowerShell veya komut satırını kullanma
+1. Ekli örneği bir dosyaya kaydetme, örneğin`azuredeploy.json` 
+2. İstediğiniş yapılandırmaya sahip olmak için şablonu düzenleme
+3. Şablonu dağıtmak için PowerShell'i veya komut satırını kullanma
 
 #### <a name="powershell"></a>PowerShell
 
@@ -648,16 +648,16 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 
 ## <a name="example-resource-manager-templates"></a>Örnek Kaynak Yöneticisi şablonları
 
-Azure hızlı başlangıç Şablonu Galerisi, aşağıdakiler dahil olmak üzere Log Analytics için çeşitli şablonlar içerir:
+Azure hızlı başlatma şablon galerisi, Günlük Analizi için aşağıdakiler dahil olmak üzere çeşitli şablonlar içerir:
 
-* [Windows çalıştıran bir sanal makineyi Log Analytics VM uzantısıyla dağıtma](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Log Analytics VM uzantısıyla Linux çalıştıran bir sanal makineyi dağıtma](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-* [Mevcut bir Log Analytics çalışma alanını kullanarak Azure Site Recovery izleme](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-* [Mevcut bir Log Analytics çalışma alanını kullanarak Azure Web Apps izleme](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Log Analytics var olan bir depolama hesabı ekleyin](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Log Analytics VM uzantısı ile Windows çalıştıran sanal bir makine dağıtma](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Log Analytics VM uzantısı ile Linux çalıştıran sanal bir makine dağıtma](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Varolan bir Günlük Analizi çalışma alanını kullanarak Azure Site Kurtarma'yı izleme](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Varolan bir Log Analytics çalışma alanını kullanarak Azure Web Uygulamalarını izleyin](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [Log Analytics'e varolan bir depolama hesabı ekleme](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak Yöneticisi şablonu kullanarak Azure VM 'Lerine Windows Aracısı dağıtın](../../virtual-machines/extensions/oms-windows.md).
+* [Kaynak Yöneticisi şablonu kullanarak Windows aracısını Azure VM'lerine dağıtın.](../../virtual-machines/extensions/oms-windows.md)
 
-* [Kaynak Yöneticisi şablonu kullanarak Azure VM 'Lerine Linux Aracısı dağıtın](../../virtual-machines/extensions/oms-linux.md).
+* [Kaynak Yöneticisi şablonu kullanarak Linux aracısını Azure VM'lerine dağıtın.](../../virtual-machines/extensions/oms-linux.md)

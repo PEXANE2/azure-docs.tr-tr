@@ -1,92 +1,92 @@
 ---
-title: 800 olmayan kaynaklar sayısı sınırı
-description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
+title: 800 sayım sınırı olmayan kaynaklar
+description: Bir kaynak grubunda 800'den fazla örneği olabilecek Azure kaynak türlerini listeler.
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937946"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örnekle sınırlı olmayan kaynaklar
 
-Varsayılan olarak, her kaynak grubunda bir kaynak türünün en fazla 800 örneğini dağıtabilirsiniz. Ancak, bazı kaynak türleri 800 örnek sınırından muaf tutulur. Bu makalede, bir kaynak grubunda 800 ' den fazla örneğe sahip olan Azure Kaynak türleri listelenmektedir. Diğer tüm kaynak türleri 800 örnek ile sınırlıdır.
+Varsayılan olarak, her kaynak grubunda en fazla 800 kaynak türü örneği dağıtabilirsiniz. Ancak, bazı kaynak türleri 800 örnek sınırından muaftır. Bu makalede, bir kaynak grubunda 800'den fazla örneği olabilecek Azure kaynak türleri listelenilmiştir. Diğer tüm kaynak türleri 800 örnekle sınırlıdır.
 
-Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlamak üzere desteğe başvurmanız gerekir. Bu kaynak türleri bu makalede belirtilmiştir.
+Bazı kaynak türleri için, 800 örnek sınırının kaldırılması için desteğe başvurmanız gerekir. Bu kaynak türleri bu makalede belirtilmiştir.
 
 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
-* automationAccounts
+* otomasyonHesaplar
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* kayıtlarında
-* kayıt/müşteri abonelikleri
+* Kayıt
+* kayıtlar/müşteriAbonelikleri
 * kayıtlar/ürünler
-* Doğrulama parametreleri
+* doğrulamaTuşları
 
-## <a name="microsoftbotservice"></a>Microsoft. BotService
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
+* botServices - Varsayılan olarak, 800 örnekleri ile sınırlıdır. Bu sınır desteğe başvurarak artırılabilir.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* disklerinden
+* Disk
 * images
 * anlık görüntüler
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
-* Kapsayıcı grupları
+* konteynerGruplar
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * kayıt defterleri/buildTasks
 * kayıt defterleri/buildTasks/listSourceRepositoryProperties
-* kayıt defterleri/buildTasks/Steps
-* kayıt defterleri/buildTasks/Steps/listBuildArguments
+* kayıt defterleri/buildGörevler/adımlar
+* kayıt defterleri/buildTasks/steps/listBuildArguments
 * kayıt defterleri/eventGridFilters
 * kayıt defterleri/çoğaltmalar
-* kayıt defterleri/görevler
-* kayıt defterleri/Web kancaları
+* kayıt defterleri/görevleri
+* kayıt defterleri/webhooks
 
-## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* sunucular
+* Sunucu
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* sunucular
+* Sunucu
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
-* Sunucu grupları
-* sunucular
-* serversv2
+* Servergroups
+* Sunucu
+* sunucularv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* leriniz
-* öznitelikleri
+* Küme
+* Ad alanları
 
-## <a name="microsoftexperimentation"></a>Microsoft. deneme
+## <a name="microsoftexperimentation"></a>Microsoft.Deneme
 
-* experimentWorkspaces
+* denemeÇalışma alanları
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
-* Oto Managedvmconfigurationprofiles
-* Configurationprofileatamalar
-* Guestconfigurationatamaları
-* yazılımıdır
+* otomatikManagedVmConfigurationProfiles
+* configurationProfileAtamaları
+* guestConfigurationAssignments
+* Yazılım
 * softwareUpdateProfile
 * softwareUpdates
 
@@ -96,23 +96,23 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
-* Tümleştirme hesapları
-* sürdürülen
+* entegrasyonHesapları
+* Iş akışı
 
-## <a name="microsoftnetapp"></a>Microsoft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
-* netAppAccounts
-* netAppAccounts/Capacityhavuzları
-* netAppAccounts/Capacityhavuzları/birimleri
-* netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri
-* netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler
+* netAppHesapları
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/volumes
+* netAppAccounts/capacityPools/volumes/mountTargets
+* netAppAccounts/capacityPools/volumes/snapshots
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* applicationGatewayWebApplicationFirewallPolicies
-* applicationSecurityGroups
-* Savunma Konakları
-* Ddosprotectionplanlar
+* uygulamaGatewayWebApplicationFirewallPolicies
+* uygulamaGüvenlikGrupları
+* burcuHosts
+* ddosProtectionPlans
 * dnszones
 * dnszones/A
 * dnszones/AAAA
@@ -125,9 +125,9 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * dnszones/SRV
 * dnszones/TXT
 * dnszones/tümü
-* dnszones/kayıt kümeleri
-* Networkıntpolicies Ilkeleri
-* NetworkInterfaces
+* dnszones/recordsets
+* ağNiyet Politikaları
+* ağArayüzler
 * privateDnsZones
 * privateDnsZones/A
 * privateDnsZones/AAAA
@@ -141,49 +141,49 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* Publicıpaddresses, varsayılan olarak 800 örnek Ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
-* serviceEndpointPolicies
-* trafficmanagerprofiles
+* publicIPAddresses - Varsayılan olarak, 800 örnekle sınırlıdır. Bu sınır desteğe başvurarak artırılabilir.
+* serviceEndpointPolitikalar
+* trafik yöneticisi profilleri
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
+* workspaceCollections - Varsayılan olarak, 800 örnekle sınırlıdır. Bu sınır desteğe başvurarak artırılabilir.
 
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* öznitelikleri
+* Ad alanları
 
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-* işlere
+* iş koleksiyonları
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* öznitelikleri
+* Ad alanları
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* uygulama
-* Kapsayıcı grupları
-* geçidinin
-* Mamak
-* kaynaklanır
+* uygulamalar
+* konteynerGruplar
+* Ağ geçit -leri
+* Ağlar
+* Sır -larını
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* storageAccounts
+* depolamaHesapları
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/API 'ler
-* barındıra
+* apiManagementAccounts/apis
+* Siteler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm kotalar ve limitlerin listesi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](azure-subscription-service-limits.md).
+Kotaların ve sınırların tam listesi için [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalarbölümüne](azure-subscription-service-limits.md)bakın.

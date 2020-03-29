@@ -1,6 +1,6 @@
 ---
-title: Azure ölçek kümesi şablonunda var olan bir sanal ağa başvurma
-description: Var olan bir Azure sanal makine ölçek kümesi şablonuna nasıl sanal ağ ekleneceğini öğrenin
+title: Azure ölçeği kümesi şablonundaki varolan sanal ağa başvuru
+description: Varolan Azure Sanal Makine Ölçeği Seti şablonuna sanal ağ eklemeyi öğrenin
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: e725e75b8b19fd8b3295226639b5e5aeb3736e34
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275542"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Azure ölçek kümesi şablonunda var olan bir sanal ağa başvuru ekleme
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Azure ölçeği kümesi şablonunda varolan bir sanal ağa başvuru ekleme
 
-Bu makalede, [temel ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) yeni bir tane oluşturmak yerine var olan bir sanal ağa dağıtılması için nasıl değiştirileceği gösterilmektedir.
+Bu makalede, yeni bir tane oluşturmak yerine varolan bir sanal ağa dağıtmak için [temel ölçek kümesi şablonu](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirilen gösterir.
 
 ## <a name="change-the-template-definition"></a>Şablon tanımını değiştirme
 
-Önceki bir [makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturduk. Şimdi bu şablonu kullanacağız ve var olan bir sanal ağa ölçek kümesi dağıtan bir şablon oluşturacak şekilde değiştirirsiniz. 
+Önceki [bir makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturmuştuk. Şimdi bu önceki şablonu kullanacağız ve varolan bir sanal ağa ölçek kümesi dağıtan bir şablon oluşturmak için değiştireceğiz. 
 
-İlk olarak bir `subnetId` parametresi ekleyin. Bu dize ölçek kümesi yapılandırmasına geçirilir ve ölçek kümesinin sanal makineleri dağıtmak için önceden oluşturulmuş alt ağı belirlemesine izin verir. Bu dize şu biçimde olmalıdır: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+İlk olarak, `subnetId` bir parametre ekleyin. Bu dize ölçek kümesi yapılandırmasına geçirilir ve ölçek kümesinin sanal makineleri dağıtmak için önceden oluşturulmuş alt ağı tanımlamasına olanak sağlar. Bu dize biçiminde olmalıdır:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Örneğin, ölçek kümesini ad `myvnet`, alt ağ `mysubnet`, kaynak grubu `myrg`ve abonelik `00000000-0000-0000-0000-000000000000`olan mevcut bir sanal ağa dağıtmak için, SubnetID şöyle olacaktır: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Örneğin, ölçek kümesini `myvnet`ad, alt ağ, `mysubnet`kaynak grubu `myrg`ve abonelik `00000000-0000-0000-0000-000000000000`içeren varolan bir sanal `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`ağa dağıtmak için subnetId: .
 
 ```diff
      },
@@ -38,7 +38,7 @@ Bu makalede, [temel ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss
    },
 ```
 
-Ardından, var olan bir sanal ağı kullanırken ve yenisini dağıtmanız gerekmiyorsa, sanal ağ kaynağını `resources` dizisinden silin.
+Ardından, varolan bir sanal `resources` ağ kullandığınızdan ve yeni bir ağ dağıtmanız gerekmeden sanal ağ kaynağını diziden silin.
 
 ```diff
    "variables": {},
@@ -66,7 +66,7 @@ Ardından, var olan bir sanal ağı kullanırken ve yenisini dağıtmanız gerek
 -    },
 ```
 
-Şablon dağıtılmadan önce sanal ağ zaten var, bu nedenle ölçek kümesinden sanal ağa bağımlı bir yan tümce belirtmeniz gerekmez. Aşağıdaki satırları silin:
+Şablon dağıtılmadan önce sanal ağ zaten var olduğundan, ölçek kümesinden sanal ağa bağlı bir yan tümce belirtmeye gerek yoktur. Aşağıdaki satırları silin:
 
 ```diff
      {
@@ -82,7 +82,7 @@ Ardından, var olan bir sanal ağı kullanırken ve yenisini dağıtmanız gerek
          "capacity": 2
 ```
 
-Son olarak, Kullanıcı tarafından ayarlanan `subnetId` parametresini geçirin (temel uygun ölçek kümesi şablonunun yaptığı, aynı dağıtımdaki VNET KIMLIĞINI almak için `resourceId` kullanmak yerine).
+Son olarak, `subnetId` kullanıcı tarafından ayarlanan parametreyi `resourceId` geçirin (aynı dağıtımda bir vnet in kimliğini almak yerine, temel uygulanabilir ölçek kümesi şablonu ne yapar).
 
 ```diff
                        "name": "myIpConfig",

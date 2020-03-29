@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911732"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
@@ -34,7 +34,7 @@ Aşağıdaki diyagram, Azure Data Box çözümü aracılığıyla şirket içind
 
 ![Data Box güvenliği](media/data-box-security/data-box-security-2.png)
 
-Veriler bu çözüm üzerinden akar, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için, [Azure Data Box izleme ve olay günlüğü](data-box-logs.md)' ne gidin.
+Veriler bu çözüm den akış yaptıkça, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için [Azure Veri Kutunuz için İzleme ve etkinlik günlüğe kaydetme'ye](data-box-logs.md)gidin.
 
 ## <a name="security-features"></a>Güvenlik özellikleri
 
@@ -50,7 +50,7 @@ Data Box cihazı aşağıdaki özelliklerle korunur:
 - Yalnızca Data Box’a özgün yazılım çalıştırır.
 - Kilitli bir durumda önyüklenir.
 - Cihaz erişimi, cihaz kilit açma şifresi ile kontrol edilir.
-- Cihaz içine ve cihazdan dışarı veri kopyalamak için erişim kimlik bilgileri. Azure portal 'deki **cihaz kimlik bilgileri** sayfasına tüm erişim [etkinlik günlüklerine](data-box-logs.md#query-activity-logs-during-setup)kaydedilir.
+- Cihaz içine ve cihazdan dışarı veri kopyalamak için erişim kimlik bilgileri. Azure portalındaki **Aygıt kimlik bilgileri** sayfasına tüm erişim etkinlik [günlüklerinde](data-box-logs.md#query-activity-logs-during-setup)günlüğe kaydedilir.
 
 ### <a name="data-box-data-protection"></a>Data Box veri koruması
 
@@ -58,7 +58,7 @@ Data Box içine ve dışına akıtılan veriler şu özelliklerle korunur:
 
 - Bekleyen veriler için 256 bit AES şifreleme.
 - Kullanım halindeki veriler için şifrelenmiş protokoller kullanılabilir.
-- Azure’a yapılan yüklenme tamamlandıktan sonra cihazdaki verilerin güvenli bir şekilde silinmesi. Data silinme, [NIST 800-88r1 standartlarında ata sabit disk sürücüleri için ek A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)'daki yönergelere göre belirlenir. Veri silinme olayı, [Sipariş geçmişine](data-box-logs.md#download-order-history)kaydedilir.
+- Azure’a yapılan yüklenme tamamlandıktan sonra cihazdaki verilerin güvenli bir şekilde silinmesi. Veri silme, [NIST 800-88r1 standartlarında ATA Sabit Disk Sürücüleri için Ek A'daki](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)kurallara uygundur. Veri silme olayı [sipariş geçmişine](data-box-logs.md#download-order-history)kaydedilir.
 
 ### <a name="data-box-service-protection"></a>Data Box hizmeti koruması
 
@@ -66,7 +66,7 @@ Data Box hizmeti aşağıdaki özelliklerle korunur.
 
 - Data Box hizmetine erişim için kuruluşunuzun Data Box içeren bir Azure aboneliği olmalıdır. Aboneliğiniz, Azure portalında erişebildiğiniz özellikleri yönetir.
 - Data Box hizmeti Azure’da barındırıldığından, Azure güvenlik özellikleriyle korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://www.microsoft.com/TrustCenter/Security/default.aspx)’ne gidin.
-- Data Box sırasına erişim rol tabanlı Access Control (RBAC) rolleri kullanılarak denetlenebilir. Daha fazla bilgi için bkz. [Data Box Order için erişim denetimini ayarlama](data-box-logs.md#set-up-access-control-on-the-order)
+- Veri Kutusu siparişine erişim, Rol tabanlı Erişim Denetimi (RBAC) rollerinin kullanımı yla denetlenebilir. Daha fazla bilgi için [bkz.](data-box-logs.md#set-up-access-control-on-the-order)
 - Data Box hizmeti, hizmette cihazın kilidini açmak için kullanılan kilit açma şifrelerini saklar.
 - Data Box hizmeti, hizmetteki sipariş ayrıntılarını ve durumunu depolar. Sipariş silindiğinde bu bilgiler de silinir.
 
@@ -80,7 +80,7 @@ Azure Data Box, hizmette şu anahtar örneklerinde kişisel bilgileri toplar ve 
 
   - Kişi adı
   - Telefon numarası
-  - E-posta
+  - Email
   - Açık adres
   - Şehir
   - Posta kodu
@@ -106,7 +106,7 @@ Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır:
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Güvenli cihaz yazılımı güncelleştirmesi için         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Veri koruma için         |
-|Ek A, [NıST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) ' deki ata sabit disk sürücüleri için      | Veri temizleme için         |
+|Ek A, [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) ATA Sabit Disk Sürücüler için      | Veri temizleme için         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

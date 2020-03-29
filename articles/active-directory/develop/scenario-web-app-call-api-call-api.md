@@ -1,6 +1,6 @@
 ---
-title: Web uygulamasından Web API 'si çağırma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (korumalı bir Web API 'SI çağırma)
+title: Bir web uygulamasından web api arama - Microsoft kimlik platformu | Azure
+description: Web API'larını çağıran bir web uygulaması oluşturmayı öğrenin (korumalı web API'sini çağırma)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758980"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API'lerini çağıran bir web uygulaması: Web API'sını arayın
 
-Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
+Artık bir belirteç var, korumalı web API arayabilirsiniz.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-`HomeController`eylemi için basitleştirilmiş kod aşağıda verilmiştir. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI appSettings. json dosyasında verilmiştir ve `webOptions`adlı bir değişkende okundu:
+Burada eylem için basitleştirilmiş `HomeController`kod. Bu kod, Microsoft Graph'ı aramak için bir belirteç alır. Microsoft Graph'ın REST API olarak nasıl adlandırılabildiğini göstermek için kod eklendi. Microsoft Graph API'nin URL'si appsettings.json dosyasında sağlanır `webOptions`ve aşağıdaki adlı bir değişkende okunur:
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Herhangi bir Web API 'sini çağırmak için aynı prensibi kullanabilirsiniz.
+> Herhangi bir web API aramak için aynı ilkeyi kullanabilirsiniz.
 >
-> Çoğu Azure Web API 'SI, API 'nin çağrılmasını kolaylaştıran bir SDK sağlar. Bu aynı zamanda Microsoft Graph de geçerlidir. Sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
+> Azure web API'lerinin çoğu, API'yi aramayı kolaylaştıran bir SDK sağlar. Bu, Microsoft Graph için de geçerlidir. Bir sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşı](scenario-web-app-call-api-production.md)
+> [Üretime taşıma](scenario-web-app-call-api-production.md)

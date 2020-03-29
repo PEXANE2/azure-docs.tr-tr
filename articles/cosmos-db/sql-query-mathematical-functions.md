@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde matematik işlevleri
-description: Bağımsız değişkenler olarak sunulan giriş değerlerine göre bir hesaplama gerçekleştirmek için Azure Cosmos DB matematik işlevleri hakkında bilgi edinin ve sayısal bir değer döndürün.
+title: Azure Cosmos DB sorgu dilinde matematiksel işlevler
+description: Bağımsız değişken olarak sağlanan giriş değerlerini temel alan bir hesaplama gerçekleştirmek ve sayısal bir değer döndürmek için Azure Cosmos DB'deki matematiksel işlevler hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,23 +8,23 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873276"
 ---
-# <a name="mathematical-functions-azure-cosmos-db"></a>Matematik işlevleri (Azure Cosmos DB)  
+# <a name="mathematical-functions-azure-cosmos-db"></a>Matematiksel işlevler (Azure Cosmos DB)  
 
-Matematiksel işlevler her bağımsız değişken olarak sağlanan ve sayısal bir değer döndürmesi giriş değerlerini temel alan, bir hesaplama gerçekleştirir.
+Matematiksel işlevlerin her biri, bağımsız değişken olarak sağlanan giriş değerlerini temel alan bir hesaplama yapar ve sayısal bir değer döndürür.
 
-Aşağıdaki örnekte olduğu gibi sorgular çalıştırabilirsiniz:
+Aşağıdaki örnek gibi sorguları çalıştırabilirsiniz:
 
 ```sql
     SELECT VALUE ABS(-4)
 ```
 
-Sonuç:
+Sonuç şudur:
 
 ```json
     [4]
@@ -32,24 +32,24 @@ Sonuç:
 
 ## <a name="functions"></a>İşlevler
 
-Aşağıdaki desteklenen yerleşik matematik işlevleri, genellikle giriş bağımsız değişkenlerine dayalı olarak bir hesaplama gerçekleştirir ve sayısal bir ifade döndürür.
+Aşağıdaki desteklenen yerleşik matematiksel işlevler, genellikle giriş bağımsız değişkenlerini temel alan bir hesaplama gerçekleştirir ve sayısal bir ifade döndürer.
   
 ||||  
 |-|-|-|  
-|[ABS](sql-query-abs.md)|[ACOS](sql-query-acos.md)|[ASIN](sql-query-asin.md)|  
-|[ATAN](sql-query-atan.md)|[ATN2](sql-query-atn2.md)|[TAVAN](sql-query-ceiling.md)|  
-|[COS](sql-query-cos.md)|[COT](sql-query-cot.md)|[DERECE](sql-query-degrees.md)|  
-|[EXP](sql-query-exp.md)|[KAT](sql-query-floor.md)|[GÜNLÜK](sql-query-log.md)|  
-|[LOG10](sql-query-log10.md)|[PI](sql-query-pi.md)|[GÜÇ](sql-query-power.md)|  
-|[RADYAN CİNSİNDEN](sql-query-radians.md)|[RAN](sql-query-rand.md)|[YUVARLAK](sql-query-round.md)|
-|[OTURUM](sql-query-sign.md)|[SIN](sql-query-sin.md)|[SQRT](sql-query-sqrt.md)|
-|[KARE](sql-query-square.md)|[TAN](sql-query-tan.md)|[TRUNC](sql-query-trunc.md)||  
+|[Abs](sql-query-abs.md)|[ACOS](sql-query-acos.md)|[ASIN](sql-query-asin.md)|  
+|[ATAN](sql-query-atan.md)|[ATN2](sql-query-atn2.md)|[CEILING](sql-query-ceiling.md)|  
+|[Çünkü](sql-query-cos.md)|[COT](sql-query-cot.md)|[DEGREES](sql-query-degrees.md)|  
+|[Exp](sql-query-exp.md)|[Kat](sql-query-floor.md)|[Günlük](sql-query-log.md)|  
+|[LOG10](sql-query-log10.md)|[PI](sql-query-pi.md)|[POWER](sql-query-power.md)|  
+|[RADIANS](sql-query-radians.md)|[RAND](sql-query-rand.md)|[ROUND](sql-query-round.md)|
+|[SIGN](sql-query-sign.md)|[SIN](sql-query-sin.md)|[Karekök](sql-query-sqrt.md)|
+|[Meydanı](sql-query-square.md)|[TAN](sql-query-tan.md)|[Trunc](sql-query-trunc.md)||  
   
-S_SAYI_ÜRET hariç tüm matematik işlevleri belirleyici işlevlerdir. Bu, belirli bir giriş değerleri kümesiyle her çağrıldıklarında aynı sonuçların döndürülmeyeceği anlamına gelir.
+RAND hariç tüm matematiksel fonksiyonlar deterministik fonksiyonlardır. Bu, belirli bir giriş değerleri kümesiyle çağrıldıkları her zaman aynı sonuçları döndürürler anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
-- [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplamlar](sql-query-aggregates.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Kullanıcı Tanımlı Fonksiyonlar](sql-query-udfs.md)
+- [Toplamalar](sql-query-aggregates.md)

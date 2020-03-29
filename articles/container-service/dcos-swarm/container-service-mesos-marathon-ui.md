@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure DC/OS kümesini Marathon Kullanıcı arabirimi ile yönetme
+title: (AmortismanA Uğradı) Marathon UI ile Azure DC/OS kümesini yönetme
 description: Marathon web kullanıcı arabirimini kullanarak Azure Kapsayıcı Hizmeti küme hizmetine kapsayıcıları dağıtın.
 author: iainfoulds
 ms.service: container-service
@@ -8,38 +8,38 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277798"
 ---
-# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Kullanım DıŞı Marathon Web Kullanıcı arabirimi aracılığıyla Azure Container Service DC/OS kümesini yönetme
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(AmortismanA Uğradı) Marathon web Kullanıcı Bira Sıtkı'sı aracılığıyla Azure Konteyner Hizmeti DC/OS kümesini yönetme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS, temel donanımı özetlerken, kümelenmiş iş yüklerini dağıtmak ve ölçeklendirmek için ortam sağlar. DC/OS’nin en üstünde, hesaplama iş yüklerini zamanlamayı ve yürütmeyi yöneten bir çerçeve vardır.
 
-Çerçeveler birçok popüler iş yükü için kullanılabilir, ancak bu belgede Marathon ile kapsayıcıları dağıtmaya nasıl başlacağınız açıklanır. 
+Birçok popüler iş yükü için çerçeveler mevcut olsa da, bu belge Marathon ile kapsayıcıdağıtmaya nasıl başlanır açıklanmaktadır. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu örneklerin üzerinden geçmeden önce, Azure Kapsayıcı Hizmeti’nde yapılandırılan bir DC/OS kümeniz olması gerekir. Bu kümeye uzaktan bağlantınız olması da gerekir. Bu öğeler hakkında daha fazla bilgi için, aşağıdaki makalelere bakın:
 
 * [Azure Container Service kümesi dağıtma](container-service-deployment.md)
-* [Azure Container Service kümesine bağlanma](../container-service-connect.md)
+* [Azure Kapsayıcı Hizmeti kümesine bağlanma](../container-service-connect.md)
 
 > [!NOTE]
-> Bu makalede, 80 yerel bağlantı noktası üzerinden DC/OS kümesine tünel yaptığınızı varsayılmaktadır.
+> Bu makalede, yerel bağlantı noktası 80 üzerinden DC /OS kümesine tünel varsayıyor.
 >
 
 ## <a name="explore-the-dcos-ui"></a>DC/OS kullanıcı arabirimini keşfetme
-Secure Shell (SSH) tüneli [oluşturulduğunda](../container-service-connect.md), http:\//localhost/. 'e gidin Bu, DC/OS web kullanıcı arabirimini yükler ve kullanılan kaynaklar, etkin aracılar ve çalışan hizmetler gibi, küme hakkında bilgileri gösterir.
+Secure Shell (SSH) tüneli [kurulmuş,](../container-service-connect.md)http göz\/atın: /localhost/ ile. Bu, DC/OS web kullanıcı arabirimini yükler ve kullanılan kaynaklar, etkin aracılar ve çalışan hizmetler gibi, küme hakkında bilgileri gösterir.
 
 ![DC/OS Kullanıcı Arabirimi](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Marathon kullanıcı arabirimini keşfetme
-Marathon Kullanıcı arabirimini görmek için bkz. http:\//localhost/Marathon. Bu ekranda, Azure Kapsayıcı Hizmeti DC/OS kümesinde yeni kapsayıcı veya başka bir uygulama başlatabilirsiniz. Kapsayıcıları ve uygulamaları çalıştırma hakkında bilgileri de görebilirsiniz.  
+Marathon UI'yi görmek için http:\//localhost/marathon'a göz atın. Bu ekranda, Azure Kapsayıcı Hizmeti DC/OS kümesinde yeni kapsayıcı veya başka bir uygulama başlatabilirsiniz. Kapsayıcıları ve uygulamaları çalıştırma hakkında bilgileri de görebilirsiniz.  
 
 ![Marathon kullanıcı arabirimi](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -49,8 +49,8 @@ Yeni kapsayıcıyı Marathon kullanarak dağıtmak için **Uygulama Oluştur**'a
 | Alan | Değer |
 | --- | --- |
 | Kimlik |nginx |
-| Hafıza | 32 |
-| Resim |nginx |
+| Bellek | 32 |
+| Görüntü |nginx |
 | Ağ |Bağlantı |
 | Ana Bilgisayar Bağlantı Noktası |80 |
 | Protokol |TCP |
@@ -83,7 +83,7 @@ Marathon ana sayfasına geri döndüğünüzde, kapsayıcının dağıtımın du
 
 ![Marathon ana sayfası kullanıcı arabirimi--kapsayıcı dağıtım durumu](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-DC/OS Web Kullanıcı arabirimine (http:\//localhost/) geri döndüğünüzde, DC/OS kümesinde bir görevin (Bu örnekte, Docker biçimli bir kapsayıcı) çalıştığını görürsünüz.
+DC/OS web Kullanıcı Aracı'na (http://\//localhost/) geri döndüğünüzde, DC/OS kümesinde bir görevin (bu durumda Docker biçimli bir kapsayıcı) çalıştığını görürsünüz.
 
 ![DC/OS web kullanıcı arabirimi--kümede çalışan görev](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,20 +91,20 @@ Görevin üzerinde çalıştığı küme düğümünü görmek için **Düğüml
 
 ![DC/OS web kullanıcı arabirimi--görev küme düğümü](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Kapsayıcıya ulaşın
+## <a name="reach-the-container"></a>Konteynere ulaşın
 
-Bu örnekte, uygulama ortak bir aracı düğümünde çalışmaktadır. Kümenin aracı FQDN 'sine göz atarak, uygulamaya internet üzerinden ulaşabilirsiniz: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`:
+Bu örnekte, uygulama bir ortak aracı düğüm üzerinde çalışıyor. Cluster'ın aracısı FQDN'ye göz atarak uygulamaya internetten ulaşırsınız: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, nerede:
 
 * **DNSPREFIX** Kümeyi dağıttığınızda sağladığınız DNS önekidir.
 * **REGION** kaynak grubunuzun bulunduğu bölgedir.
 
-    ![Internet 'ten NGINX](./media/container-service-mesos-marathon-ui/nginx.png)
+    ![İnternetten Nginx](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [DC/OS ve Marathon API’si ile çalışma](container-service-mesos-marathon-rest.md)
 
-* Mesos ile Azure Kapsayıcı Hizmeti’ne yakından bakın
+* Mesos ile Azure Container Service’e ilişkin ayrıntılar
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 

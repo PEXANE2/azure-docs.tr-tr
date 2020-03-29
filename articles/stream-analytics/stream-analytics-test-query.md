@@ -1,6 +1,6 @@
 ---
-title: Örnek verilerle Azure Stream Analytics işi test etme
-description: Bu makalede, bir Azure Stream Analytics işini, örnek girişi test etmek ve örnek verileri karşıya yüklemek için Azure portal nasıl kullanılacağı açıklanır.
+title: Azure Akış Analizi işini örnek verilerle test edin
+description: Bu makalede, bir Azure Akış Analizi işini sınamak, örnek giriş yapmak ve örnek verileri yüklemek için Azure portalının nasıl kullanılacağı açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,101 +9,101 @@ ms.topic: conceptual
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898397"
 ---
-# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda bir Azure Akışı Analizi işini test edin
 
-Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Akış kaynaklarınızdaki gelen verilerde bulunan sorguları test edebilir veya Azure portalında yerel bir dosyadan örnek verileri yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)yerel olarak da test edebilirsiniz.
+Azure Akış Analizi'nde, işinizi başlatmadan veya durdurmadan sorgunuzu test edebilirsiniz. Akış kaynaklarınızdan gelen verilerdeki sorguları sınayabilir veya Azure Portalı'ndaki yerel bir dosyadan örnek veriler yükleyebilirsiniz. Ayrıca yerel örnek verilerinizden veya [Visual Studio](stream-analytics-live-data-local-testing.md) ve Visual [Studio Code'da](visual-studio-code-local-run-live-input.md)canlı verilerinizden sorguları yerel olarak test edebilirsiniz.
 
-## <a name="automatically-sample-incoming-data-from-input"></a>Girişten gelen verileri otomatik olarak örnekle
+## <a name="automatically-sample-incoming-data-from-input"></a>Girişten gelen verileri otomatik olarak örnekleme
 
-Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
+Azure Akış Analizi, akış girişlerinizden olayları otomatik olarak getirir. Varsayılan örnekte sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesi ayarlayabilirsiniz.
 
 1. Azure Portal’da oturum açın.
 
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
-3. Stream Analytics işi sayfasında, **Iş topolojisi** başlığı altında **sorgu** ' yı seçerek sorgu Düzenleyicisi penceresini açın. 
+3. Akış Analizi iş sayfasında, **İş Topolojisi** başlığı altında Sorgu düzenleyicisi penceresini açmak için **Sorgu'yu** seçin. 
 
-4. Gelen olayların örnek listesini görmek için dosya simgesi olan giriş ' i seçin ve örnek olaylar **giriş önizlemede**otomatik olarak görünür.
+4. Gelen olayların örnek listesini görmek için dosya simgesiyle girişi seçin ve örnek olaylar **Giriş önizlemesinde**otomatik olarak görünür.
 
-   a. Verileriniz için serileştirme türü, JSON veya CSV olursa otomatik olarak algılanır. Açılır menüdeki seçeneğini değiştirerek JSON, CSV, AVRO el ile de değiştirebilirsiniz.
+   a. Verileriniz için serileştirme türü, JSON veya CSV'si varsa otomatik olarak algılanır. Açılan menüdeki seçeneği değiştirerek json, CSV, AVRO olarak da el ile değiştirebilirsiniz.
     
-   b. Verilerinizi **tablo** veya **Ham** biçimde görüntülemek için seçiciyi kullanın.
+   b. Verilerinizi **Tablo** veya **Ham** formatında görüntülemek için seçiciyi kullanın.
     
-   c. Gösterilen veriniz güncel değilse, en son olayları görmek için **Yenile** ' yi seçin.
+   c. Gösterilen verileriniz güncel değilse, en son olayları görmek için **Yenile'yi** seçin.
 
-   Aşağıdaki tablo, **tablo biçimindeki**verilerin bir örneğidir:
+   Aşağıdaki tablo **Tablo biçiminde**veri bir örnektir:
 
-   ![Tablo biçiminde örnek girişi Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-table.png)
+   ![Tablo formatında Azure Akış Analizi örnek girişi](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   Aşağıdaki tablo, **Ham biçimdeki**verilerin bir örneğidir:
+   Aşağıdaki tablo **Raw biçiminde**veri bir örnektir:
 
-   ![Ham biçimde Azure Stream Analytics örnek girişi](./media/stream-analytics-test-query/asa-sample-raw.png)
+   ![Azure Akış Analizi örnek girişi ham formatta](./media/stream-analytics-test-query/asa-sample-raw.png)
 
-5. Sorgunuzu gelen verilerle test etmek için **Test sorgusu**' nu seçin. Sonuçlar, **test sonuçları** sekmesinde görünür. Sonuçları indirmek için **sonuçları indir** ' i de seçebilirsiniz.
+5. Sorgunuzu gelen verilerle sınamak için **Test sorgusu'nun**. Sonuçlar Test **sonuçları** sekmesinde görünür. Sonuçları indirmek için **sonuçları karşıdan** yüklemeyi de seçebilirsiniz.
 
-   ![Azure Stream Analytics örnek testi sorgu sonuçları](./media/stream-analytics-test-query/asa-test-query.png)
+   ![Azure Akışı Analizi örnek test sorgu sonuçları](./media/stream-analytics-test-query/asa-test-query.png)
 
-6. Sorgunuzu belirli bir zaman aralığı gelen olaylara karşı test etmek için **Saat aralığını Seç**' i seçin.
+6. Sorgunuzu belirli bir gelen olaylar aralığına göre test etmek **için, zaman aralığını seçin'** i seçin.
    
-   ![Gelen örnek olaylar için zaman aralığını Azure Stream Analytics](./media/stream-analytics-test-query/asa-select-time-range.png)
+   ![Gelen örnek etkinlikler için Azure Akışı Analizi zaman aralığı](./media/stream-analytics-test-query/asa-select-time-range.png)
 
-7. Sorgunuzu test etmek için kullanmak istediğiniz olayların zaman aralığını ayarlayın ve **örnek**' i seçin. Bu zaman çerçevesinde, en fazla 1000 olay veya 1 MB, hangisi önce geldiğini elde edebilirsiniz.
+7. Sorgunuzu sınamak için kullanmak istediğiniz olayların zaman aralığını ayarlayın ve **Örnek'i**seçin. Bu süre içinde, hangisi önce gerçekleşirse, en fazla 1000 olay veya 1 MB'yi alabilirsiniz.
 
-   ![Gelen örnek olaylar için zaman aralığını ayarla Azure Stream Analytics](./media/stream-analytics-test-query/asa-set-time-range.png)
+   ![Azure Akış Analizi, gelen örnek etkinlikler için zaman aralığını belirlir](./media/stream-analytics-test-query/asa-set-time-range.png)
 
-8. Olaylar seçili zaman aralığı için örneklendikten sonra, **giriş önizleme** sekmesinde görünürler.
+8. Olaylar seçili zaman aralığı için örnekledikten **sonra, Giriş önizleme** sekmesinde görünür.
 
-   ![Azure Stream Analytics test sonuçlarını görüntüle](./media/stream-analytics-test-query/asa-view-test-results.png)
+   ![Azure Akışı Analizi test sonuçlarını görüntüleme](./media/stream-analytics-test-query/asa-view-test-results.png)
 
-9. Gelen olayların örnek listesini görmek için **Sıfırla** ' yı seçin. **Sıfırla**' yı seçerseniz, zaman aralığı seçiminiz kaybedilir. Sorgunuzu test etmek için **Test sorgusu** ' nu seçin ve sonuçları **test sonuçları** sekmesinde gözden geçirin.
+9. Gelen olayların örnek listesini görmek için **Sıfırla'yı** seçin. **Sıfırla'yı**seçerseniz, zaman aralığı seçiminiz kaybolur. Sorgunuzu test etmek ve **Test sonuçları** sekmesinde sonuçları gözden geçirmek için **Test sorgusunu** seçin.
 
-10. Sorgunuzda değişiklik yaptığınızda, yeni sorgu mantığını test etmek için **sorguyu Kaydet** ' i seçin. Bu, sorgunuzu yinelemeli olarak değiştirmenize ve çıktının nasıl değiştiği hakkında daha fazla test etmenize olanak tanır.
+10. Sorgunuzda değişiklik yaptığınızda, yeni sorgu mantığını sınamak için **sorguyu kaydet'i** seçin. Bu, sorgunuzu yinelemeli olarak değiştirmenize ve çıktının nasıl değiştiğini görmek için yeniden sınamanıza olanak tanır.
 
-11. Tarayıcıda gösterilen sonuçları doğruladıktan sonra işi **başlatmaya** hazırsınız demektir.
+11. Tarayıcıda gösterilen sonuçları doğruladıktan sonra, işi **başlatmaya** hazırsınız.
 
-## <a name="upload-sample-data-from-a-local-file"></a>Yerel bir dosyadan örnek verileri karşıya yükleme
+## <a name="upload-sample-data-from-a-local-file"></a>Yerel bir dosyadan örnek veri yükleme
 
-Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek için yerel bir dosyadaki örnek verileri kullanabilirsiniz.
+Azure Akış Analizi sorgunuzu test etmek için canlı verileri kullanmak yerine yerel bir dosyadan örnek verileri kullanabilirsiniz.
 
 1. Azure Portal’da oturum açın.
    
-2. Var olan Stream Analytics işinizi bulun ve seçin.
+2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
-3. Stream Analytics işi sayfasında, **Iş topolojisi** başlığı altında **sorgu** ' yı seçerek sorgu Düzenleyicisi penceresini açın.
+3. Akış Analizi iş sayfasında, **İş Topolojisi** başlığı altında Sorgu düzenleyicisi penceresini açmak için **Sorgu'yu** seçin.
 
-4. Sorgunuzu yerel bir dosya ile test etmek için, **giriş önizleme** sekmesinde **örnek girişi yükle** ' yi seçin. 
+4. Sorgunuzu yerel bir dosyayla test etmek için **Giriş önizleme** sekmesinde **örnek girişi yükle'yi** seçin. 
 
-   ![Örnek dosyayı karşıya yükleme Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![Azure Akışı Analytics yükleme örnek dosya](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Sorguyu test etmek için yerel dosyanızı karşıya yükleyin. Dosyaları yalnızca JSON, CSV veya AVRO biçimleriyle karşıya yükleyebilirsiniz. **Tamam**’ı seçin.
+5. Sorguyu test etmek için yerel dosyanızı yükleyin. Dosyaları yalnızca JSON, CSV veya AVRO formatlarına yükleyebilirsiniz. **Tamam'ı**seçin.
 
-   ![Örnek dosyayı karşıya yükleme Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![Azure Akışı Analytics yükleme örnek dosya](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. Dosyayı karşıya yükledikten hemen sonra form içindeki dosya içeriğini tablo olarak veya ham biçiminde de görebilirsiniz. **Sıfırla**' yı seçerseniz, örnek veriler önceki bölümde açıklanan gelen giriş verilerine geri döner. Sorguyu dilediğiniz zaman test etmek için başka bir dosya yükleyebilirsiniz.
+6. Dosyayı yükler yüklemez, formdaki dosya içeriğini tablo olarak veya ham biçiminde de görebilirsiniz. **Sıfırla'yı**seçerseniz, örnek veriler önceki bölümde açıklanan gelen giriş verilerine geri döner. Sorguyu istediğiniz zaman sınamak için başka bir dosya yükleyebilirsiniz.
 
-7. Sorguyu karşıya yüklenen örnek dosyaya karşı test etmek için **Test sorgusu** ' nu seçin.
+7. Sorgunuzu yüklenen örnek dosyayla karşı test etmek için **Test sorgusunu** seçin.
 
-8. Test sonuçları, sorgunuza göre gösterilir. Sorgunuzu değiştirebilir ve sorguyu **Kaydet** ' i seçerek yeni sorgu mantığını test edebilirsiniz. Bu, sorgunuzu yinelemeli olarak değiştirmenize ve çıktının nasıl değiştiği hakkında daha fazla test etmenize olanak tanır.
+8. Test sonuçları sorgunuza göre gösterilir. Sorgunuzu değiştirebilir ve yeni sorgu mantığını sınamak için **sorguyu kaydet'i** seçebilirsiniz. Bu, sorgunuzu yinelemeli olarak değiştirmenize ve çıktının nasıl değiştiğini görmek için yeniden sınamanıza olanak tanır.
 
 9. Sorguda birden çok çıktı kullandığınızda, sonuçlar seçili çıktıya göre gösterilir. 
 
-   ![Seçili çıktıyı Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
+   ![Azure Akış Analizi seçilen çıktı](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
-10. Tarayıcıda gösterilen sonuçları doğruladıktan sonra, işi **başlatabilirsiniz** .
+10. Tarayıcıda gösterilen sonuçları doğruladıktan sonra, işi **başlatabilirsiniz.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Stream Analytics kullanarak bir IoT çözümü oluşturun](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Bu öğretici, ücretsiz olarak trafiği taklit edecek bir veri Oluşturucu ile uçtan uca bir çözüm oluşturmanıza kılavuzluk eder.
+* [Stream Analytics'i kullanarak bir IoT çözümü oluşturun:](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics)Bu öğretici, gişedeki trafiği simüle edecek bir veri jeneratörüyle uçtan uca bir çözüm oluşturmanıza rehberlik edecektir.
 
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
-* [Ortak Stream Analytics kullanım desenlerine yönelik sorgu örnekleri](stream-analytics-stream-analytics-query-patterns.md)
+* [Yaygın Akış Analizi kullanım desenleri için sorgu örnekleri](stream-analytics-stream-analytics-query-patterns.md)
 
-* [Azure Stream Analytics için girişleri anlayın](stream-analytics-add-inputs.md)
+* [Azure Akış Analizi için girişleri anlama](stream-analytics-add-inputs.md)
 
-* [Azure Stream Analytics çıkışlarını anlayın](stream-analytics-define-outputs.md)
+* [Azure Akış Analitiği'nden çıktıları anlama](stream-analytics-define-outputs.md)

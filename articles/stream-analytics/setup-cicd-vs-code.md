@@ -1,6 +1,6 @@
 ---
-title: CI/CD NPM paketini kullanarak bir Azure Stream Analytics işi dağıtma
-description: Bu makalede bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için Azure Stream Analytics CI/CD NPM paketinin nasıl kullanılacağı açıklanır.
+title: CI/CD npm paketini kullanarak Azure Akışı Analizi işini dağıtma
+description: Bu makalede, sürekli bir tümleştirme ve dağıtım işlemi ayarlamak için Azure Akış Analizi CI/CD npm paketinin nasıl kullanılacağı açıklanmaktadır.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,48 +9,48 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76962230"
 ---
-# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD NPM paketini kullanarak bir Azure Stream Analytics işi dağıtma 
+# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD npm paketini kullanarak Azure Akışı Analizi işini dağıtma 
 
-Stream Analytics işleriniz için sürekli tümleştirme ve dağıtım işlemi ayarlamak üzere Azure Stream Analytics CI/CD NPM paketini kullanabilirsiniz. Bu makalede, her bir CI/CD sistemiyle NPM paketinin yanı sıra Azure Pipelines dağıtım için özel yönergelerin nasıl kullanılacağı açıklanır.
+Stream Analytics işleriniz için sürekli bir tümleştirme ve dağıtım işlemi ayarlamak için Azure Akış Analizi CI/CD npm paketini kullanabilirsiniz. Bu makalede, npm paketinin genel olarak herhangi bir CI/CD sistemiyle nasıl kullanılacağının yanı sıra Azure Pipelines ile dağıtım için özel yönergeler açıklanmaktadır.
 
-PowerShell ile dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Şablon dosyası ile dağıtma ve Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Ayrıca, bir [nesnenin bir kaynak yöneticisi şablonunda parametre olarak nasıl kullanılacağı](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)hakkında daha fazla bilgi edinebilirsiniz.
+Powershell ile dağıtma hakkında daha fazla bilgi için kaynak [yöneticisi şablon dosyası ve Azure PowerShell ile dağıtma'ya](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)bakın. Ayrıca, [Kaynak Yöneticisi şablonunda bir nesnenin parametre olarak](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)nasıl kullanılacağı hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="build-the-vs-code-project"></a>VS Code projeyi oluşturma
+## <a name="build-the-vs-code-project"></a>VS Kodu projesini oluşturun
 
-**Asa-streamanalytics-cicd** NPM paketini kullanarak Azure Stream Analytics işleri için sürekli tümleştirme ve dağıtım sağlayabilirsiniz. NPM paketi, [Stream Analytics Visual Studio Code projelerinin](quick-create-vs-code.md)Azure Resource Manager şablonlarını oluşturmak için araçlar sağlar. Visual Studio Code yüklenmeden Windows, macOS ve Linux 'ta kullanılabilir.
+**Asa-streamanalytics-cicd** npm paketini kullanarak Azure Akış Analizi işleri için sürekli tümleştirme ve dağıtım sağlayabilirsiniz. npm [paketi, Stream Analytics Visual Studio Code projelerinin](quick-create-vs-code.md)Azure Kaynak Yöneticisi şablonlarını oluşturmak için araçlar sağlar. Visual Studio Code yüklemeden Windows, macOS ve Linux'ta kullanılabilir.
 
-Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya `npm install -g azure-streamanalytics-cicd` komutu aracılığıyla [Global olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz. Bu, **Azure Pipelines**bir derleme Işlem hattının PowerShell veya Azure CLI betik görevinde de kullanılabilecek olan önerilen yaklaşımdır.
+Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya komut u yla `npm install -g azure-streamanalytics-cicd` genel [olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz. Bu, Azure Ardışık Bir yapı ardışık hattının PowerShell veya Azure CLI komut dosyası görevinde de kullanılabilen önerilen **yaklaşımdır.**
 
-Paketi yükledikten sonra, Azure Resource Manager şablonlarının çıktısını almak için aşağıdaki komutu kullanın. **ScriptPath** bağımsız değişkeni, projenizdeki **aşama QL** dosyasının mutlak yoludur. Asaproj. JSON ve JobConfig. JSON dosyalarının betik dosyası ile aynı klasörde olduğundan emin olun. **OutputPath** belirtilmemişse, şablonlar projenin **bin** klasörü altındaki **Dağıt** klasörüne yerleştirilir.
+Paketi yükledikten sonra, Azure Kaynak Yöneticisi şablonlarını çıktılamak için aşağıdaki komutu kullanın. **ScriptPath** bağımsız değişkeni projenizdeki **asaql** dosyasına giden mutlak yoldur. Asaproj.json ve JobConfig.json dosyalarının komut dosyası dosyasıyla aynı klasörde olduğundan emin olun. **OutputPath** belirtilmemişse, şablonlar projenin **çöp kutusu** klasörü altında **Dağıt** klasörüne yerleştirilir.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
 ```
-Örnek (macOS 'ta)
+Örnek (macOS'ta)
 ```powershell
 azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
-Bir Stream Analytics Visual Studio Code projesi başarıyla oluşturulduğunda, **bin/[Debug/Retail]/Deploy** klasörü altında aşağıdaki iki Azure Resource Manager şablon dosyasını oluşturur: 
+Bir Akış Analizi Görsel Stüdyo Kodu projesi başarıyla oluşturduğunda, **depo gözü/[Hata Ayıklama/Perakende Satış]/Dağıt** klasörü altında aşağıdaki iki Azure Kaynak Yöneticisi şablon dosyası oluşturur: 
 
-*  Şablon dosyası Kaynak Yöneticisi
+*  Kaynak Yöneticisi şablon dosyası
 
        [ProjectName].JobTemplate.json 
 
-*  Kaynak Yöneticisi Parameters dosyası
+*  Kaynak Yöneticisi parametreleri dosyası
 
        [ProjectName].JobTemplate.parameters.json   
 
-Parameters. JSON dosyasındaki varsayılan parametreler Visual Studio Code projenizdeki ayarlardan alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
+parameters.json dosyasındaki varsayılan parametreler Visual Studio Code projenizdeki ayarlardan dır. Başka bir ortama dağıtmak istiyorsanız, parametreleri buna göre değiştirin.
 
 > [!NOTE]
-> Tüm kimlik bilgileri için varsayılan değerler null olarak ayarlanır. Buluta dağıtmadan önce değerleri ayarlamanız **gerekir** .
+> Tüm kimlik bilgileri için varsayılan değerler null olarak ayarlanır. Buluta dağıtılmadan önce değerleri ayarlamanız **gerekir.**
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -60,136 +60,136 @@ Parameters. JSON dosyasındaki varsayılan parametreler Visual Studio Code proje
 
 ## <a name="deploy-with-azure-pipelines"></a>Azure Pipelines ile dağıtma
 
-Bu bölümde, NPM kullanarak Azure Pipelines [oluşturma](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) ve [yayınlama](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) işlem hatları oluşturma ayrıntıları anlatılmaktadır.
+Bu bölümde, npm kullanarak Azure Ardışık Hatları [oluşturma](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) ve [serbest bırakma](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) nasıl oluşturulacak ayrıntıları.
 
-Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projenize gidin.
+Bir web tarayıcısı açın ve Azure Akışı Analitik Görsel Stüdyo Kodu projenize gidin.
 
-1. Sol gezinti menüsünde işlem **hatları** ' nın altında, **yapılar**' ı seçin. Ardından **Yeni işlem hattı** seçin
+1. Sol gezinti menüsünde **Pipelines** altında **Yapılar'ı**seçin. Ardından **Yeni ardışık**
 
-   ![Yeni Azure işlem hattı oluşturma](./media/setup-cicd-vs-code/new-pipeline.png)
+   ![Yeni Azure Ardışık Bir Erzama Oluşturma](./media/setup-cicd-vs-code/new-pipeline.png)
 
-2. YAML olmadan bir işlem hattı oluşturmak için **Klasik düzenleyiciyi kullan** ' ı seçin.
+2. YAML olmadan bir boru hattı oluşturmak için **klasik düzenleyiciyi kullan'ı** seçin.
 
-3. Kaynak türü, takım projesi ve deponuzu seçin. Daha sonra **Devam** seçeneğini belirleyin.
+3. Kaynak türünüzü, takım projenizi ve deponuzu seçin. Daha sonra **Devam** seçeneğini belirleyin.
 
-   ![Azure Stream Analytics projesi seçin](./media/setup-cicd-vs-code/select-repo.png)
+   ![Azure Akış Analizi projesini seçin](./media/setup-cicd-vs-code/select-repo.png)
 
-4. **Şablon seçin** sayfasında **boş iş**' ı seçin.
+4. **Şablon** seç sayfasında Boş **iş'i**seçin.
 
-### <a name="add-npm-task"></a>NPM görevi Ekle
+### <a name="add-npm-task"></a>npm görev ekle
 
-1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. Görev aramasına "NPM" yazın ve **NPM**' yi seçin.
+1. **Görevler** sayfasında, **Aracı iş 1'in**yanındaki artı işaretini seçin. Görev aramasında "npm" girin ve **npm'yi**seçin.
 
-   ![NPM görevi seçin](./media/setup-cicd-vs-code/search-npm.png)
+   ![npm görev seçin](./media/setup-cicd-vs-code/search-npm.png)
 
-2. Göreve bir **görünen ad**verin. **Komut** seçeneğini *özel* olarak değiştirin ve **komut ve bağımsız değişkenler**' de aşağıdaki komutu girin. Kalan varsayılan seçenekleri bırakın.
+2. Göreve bir **Görüntü adı**verin. **Komut** seçeneğini *özel* olarak değiştirin ve Komut ve **bağımsız değişkenlerde**aşağıdaki komutu girin. Kalan varsayılan seçenekleri bırakın.
 
    ```cmd
    install -g azure-streamanalytics-cicd
    ```
 
-   ![NPM görevi için yapılandırma girin](./media/setup-cicd-vs-code/npm-config.png)
+   ![npm görevi için yapılandırmaları girin](./media/setup-cicd-vs-code/npm-config.png)
 
-### <a name="add-command-line-task"></a>Komut satırı görevi Ekle
+### <a name="add-command-line-task"></a>Komut satırı görevi ekleme
 
-1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Komut satırı**araması yapın.
+1. **Görevler** sayfasında, **Aracı iş 1'in**yanındaki artı işaretini seçin. Komut **satırı**için arama .
 
-2. Göreve bir **görünen ad** verin ve aşağıdaki betiği girin. Betiği depo adınızla ve proje adınızla değiştirin.
+2. Göreve bir **Görüntü adı** verin ve aşağıdaki komut dosyasını girin. Komut dosyasını depo adınız ve proje adınız ile değiştirin.
 
    ```cmd
    azure-streamanalytics-cicd build -scriptPath $(Build.SourcesDirectory)/myASAProject/myASAProj.asaql
    ```
 
-   ![Komut satırı görevi için yapılandırma girin](./media/setup-cicd-vs-code/commandline-config.png)
+   ![Komut satırı görevi için yapılandırmaları girin](./media/setup-cicd-vs-code/commandline-config.png)
 
-### <a name="add-copy-files-task"></a>Dosya kopyalama görevi Ekle
+### <a name="add-copy-files-task"></a>Kopya dosyaları görev ekleme
 
-1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Kopya dosyalarını**arayın. Ardından aşağıdaki konfigürasyonları girin.
+1. **Görevler** sayfasında, **Aracı iş 1'in**yanındaki artı işaretini seçin. Kopya **la dosyalarını**arayın. Ardından aşağıdaki yapılandırmaları girin.
 
-   |Parametre|Girdi|
+   |Parametre|Giriş|
    |-|-|
-   |Görünen ad|Dosyaları kopyala: $ (Build. artifactstagingdirectory)|
-   |Kaynak klasör|`$(system.defaultworkingdirectory)`| 
+   |Görünen ad|Dosyaları kopyala: $(build.artifactstagingdirectory)|
+   |Kaynak Klasör|`$(system.defaultworkingdirectory)`| 
    |İçindekiler| `**\Deploy\**` |
-   |Hedef klasör| `$(build.artifactstagingdirectory)`|
+   |Hedef Klasör| `$(build.artifactstagingdirectory)`|
 
-   ![Kopyalama görevi için yapılandırma girin](./media/setup-cicd-vs-code/copy-config.png)
+   ![Kopyalama görevi için yapılandırmaları girin](./media/setup-cicd-vs-code/copy-config.png)
 
-### <a name="add-publish-build-artifacts-task"></a>Derleme yapılarını Yayımla görevi Ekle
+### <a name="add-publish-build-artifacts-task"></a>Yapı yapı larını yayımla görev ekle
 
-1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Derleme yapıtları Yayımla** ' yı arayın ve siyah ok simgesiyle seçeneği belirleyin. 
+1. **Görevler** sayfasında, **Aracı iş 1'in**yanındaki artı işaretini seçin. Yapı **yapılarını** yayımla'yı arayın ve siyah ok simgesiyle seçeneği belirleyin. 
 
 2. Varsayılan yapılandırmaların hiçbirini değiştirmeyin.
 
-### <a name="save-and-run"></a>Kaydet ve Çalıştır
+### <a name="save-and-run"></a>Kaydet ve çalıştır
 
-NPM, komut satırı, dosyaları kopyala ve yapı yapılarını Yayımla görevlerini tamamladıktan sonra **& kuyruğu kaydet**' i seçin. İstendiğinde, bir kaydet yorumu girin ve **Kaydet ve Çalıştır '** ı seçin.
+npm, komut satırı, dosyaları kopyalama ve yapı yapı görevlerini yayımlamayı bitirdikten sonra **& sırasını kaydet'i**seçin. Sizden istendiğinde, bir kaydet yorumu girin ve **Kaydet ve çalıştır'ı**seçin.
 
-## <a name="release-with-azure-pipelines"></a>Azure Pipelines yayın
+## <a name="release-with-azure-pipelines"></a>Azure Ardışık Hatları ile Sürüm
 
-Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projenize gidin.
+Bir web tarayıcısı açın ve Azure Akışı Analitik Görsel Stüdyo Kodu projenize gidin.
 
-1. Sol gezinti menüsündeki işlem **hatları** altında **yayınlar**' ı seçin. Ardından **Yeni işlem hattı**' nı seçin.
+1. Sol gezinti menüsünde **Pipelines** **altında, Sürümler'i**seçin. Ardından **Yeni ardışık hattı**seçin.
 
-2. **Boş bir iş ile başla**' yı seçin.
+2. **Boş bir iş ile başlat'ı**seçin.
 
-3. **Yapıtlar** kutusunda **+ yapıt Ekle**' yi seçin. **Kaynak**altında, az önce oluşturduğunuz derleme işlem hattını seçin ve **Ekle**' yi seçin.
+3. **Yapılar** kutusunda , **+ Yapı ekle'yi**seçin. **Kaynak**altında, yeni oluşturduğunuz yapı ardışık hattını seçin ve **Ekle'yi**seçin.
 
-   ![Derleme işlem hattı yapıtı girin](./media/setup-cicd-vs-code/build-artifact.png)
+   ![Yapı boru hattı artifakı girin](./media/setup-cicd-vs-code/build-artifact.png)
 
-4. **İşi test ortamına dağıtmak**için **Aşama 1** adını değiştirin.
+4. **Test ortamına işi dağıtmak için**Aşama **1'in** adını değiştirin.
 
-5. Yeni bir aşama ekleyin ve uygulamayı **üretim ortamına dağıtın**.
+5. Yeni bir aşama ekleyin ve **üretim ortamına iş dağıtın**adını.
 
-### <a name="add-tasks"></a>Görev Ekle
+### <a name="add-tasks"></a>Görev ekleme
 
-1. Görevler açılan menüsünde **işi test et**' i seçin. 
+1. Görev açılır tarihinden, **test ortamıiçin İşi dağıt'ı**seçin. 
 
-2. **Aracı işi** ' nin yanındaki **+** seçin ve *Azure Kaynak grubu dağıtımı*' nı arayın. Aşağıdaki parametreleri girin:
+2. Aracı **+** **işinin** yanındakini seçin ve *Azure kaynak grubu dağıtımı*için arama yapın. Aşağıdaki parametreleri girin:
 
    |Ayar|Değer|
    |-|-|
-   |Görünen ad| *MyASAJob dağıtma*|
+   |Görünen ad| *myASAJob'ı dağıtın*|
    |Azure aboneliği| Aboneliğinizi seçin.|
-   |Eylem| *Kaynak grubu oluştur veya güncelleştir*|
-   |Kaynak grubu| Stream Analytics işinizi içerecek test kaynak grubu için bir ad seçin.|
+   |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
+   |Kaynak grubu| Akış Analizi işinizi içerecek test kaynak grubu için bir ad seçin.|
    |Konum|Test kaynak grubunuzun konumunu seçin.|
-   |Şablon konumu| *Bağlı yapıt*|
-   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
-   |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
-   |Dağıtım modu|Kaydetmenin|
+   |Şablon konumu| *Bağlantılı artefakt*|
+   |Şablon| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
+   |Şablon parametreleri|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
+   |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $(test_eventhubname)|
+   |Dağıtım modu|Artımlı|
 
-3. Görevler açılan menüsünde **işi üretim ortamına dağıt**' ı seçin.
+3. Görev açılır tarihinden, **işi üretim ortamına dağıt'ı**seçin.
 
-4. **Aracı işi** ' nin yanındaki **+** seçin ve *Azure Kaynak grubu dağıtımı*' nı arayın. Aşağıdaki parametreleri girin:
+4. Aracı **+** **işinin** yanındakini seçin ve *Azure kaynak grubu dağıtımı*için arama yapın. Aşağıdaki parametreleri girin:
 
    |Ayar|Değer|
    |-|-|
-   |Görünen ad| *MyASAJob dağıtma*|
+   |Görünen ad| *myASAJob'ı dağıtın*|
    |Azure aboneliği| Aboneliğinizi seçin.|
-   |Eylem| *Kaynak grubu oluştur veya güncelleştir*|
+   |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
    |Kaynak grubu| Stream Analytics işinizi içerecek üretim kaynak grubu için bir ad seçin.|
-   |Konum|Üretim kaynağı grubunuzun konumunu seçin.|
-   |Şablon konumu| *Bağlı yapıt*|
-   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
-   |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
-   |Dağıtım modu|Kaydetmenin|
+   |Konum|Üretim kaynak grubunuzun konumunu seçin.|
+   |Şablon konumu| *Bağlantılı artefakt*|
+   |Şablon| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
+   |Şablon parametreleri|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
+   |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $(eventhubname)|
+   |Dağıtım modu|Artımlı|
 
-### <a name="create-release"></a>Yayın oluştur
+### <a name="create-release"></a>Sürüm oluşturma
 
-Bir yayın oluşturmak için sağ üst köşedeki **yayın oluştur** ' u seçin.
+Sürüm oluşturmak için sağ üst köşede **sürüm oluştur'u** seçin.
 
-![Azure Pipelines kullanarak yayın oluşturma](./media/setup-cicd-vs-code/create-release.png)
+![Azure Ardışık Hatlar'ı kullanarak sürüm oluşturma](./media/setup-cicd-vs-code/create-release.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Azure Data Lake Store Gen1 için yönetilen kimliği çıkış havuzu olarak kullanmak için, Azure 'a dağıtılmadan önce PowerShell kullanarak hizmet sorumlusuna erişim sağlamanız gerekir. [Kaynak Yöneticisi şablonuyla yönetilen kimlik ile ADLS 1. dağıtma](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)hakkında daha fazla bilgi edinin.
+Azure Veri Gölü Deposu Gen1 için Yönetilen Kimlik'i çıktı olarak kullanmak için, Azure'a dağıtmadan önce PowerShell'i kullanarak hizmet ilkesine Erişim sağlamanız gerekir. [Kaynak Yöneticisi şablonu yla Yönetilen Kimlik ile ADLS Gen1'in nasıl dağıtılancaya kadar dağıtılabildiğini](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)öğrenin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: Visual Studio Code Azure Stream Analytics bulut işi oluşturma (Önizleme)](quick-create-vs-code.md)
-* [Sorguları Visual Studio Code ile yerel olarak test Stream Analytics (Önizleme)](visual-studio-code-local-run.md)
-* [Visual Studio Code ile Azure Stream Analytics araştırma (Önizleme)](visual-studio-code-explore-jobs.md)
+* [Hızlı başlangıç: Visual Studio Code'da Bir Azure Akışı Analizi bulut işi oluşturun (Önizleme)](quick-create-vs-code.md)
+* [Visual Studio Code (Önizleme) ile yerel olarak Test Akışı Analizi sorguları](visual-studio-code-local-run.md)
+* [Visual Studio Code (Önizleme) ile Azure Akış Analizini Keşfedin](visual-studio-code-explore-jobs.md)

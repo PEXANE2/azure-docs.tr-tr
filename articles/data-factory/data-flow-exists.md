@@ -1,6 +1,6 @@
 ---
-title: Eşleme veri akışında dönüştürme var
-description: Azure Data Factory eşleme veri akışında var olan dönüştürmeyi kullanarak mevcut satırları denetleyin
+title: Veri akışını eşlemede dönüşüm var
+description: Azure Veri Fabrikası haritalama veri akışında varolan dönüşümü kullanarak varolan satırları denetleme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930401"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
+# <a name="exists-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede dönüşüm var
 
-Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS```benzerdir.
+Var olan dönüştürme, verilerinizin başka bir kaynakta mı yoksa akışta mı var olduğunu denetleyen bir satır filtreleme dönüşümüdür. Çıktı akışı, sol akıştaki sağ akışta var olan veya olmayan tüm satırları içerir. Var olan dönüşüm ```SQL WHERE EXISTS``` benzer ```SQL WHERE NOT EXISTS```ve .
 
 ## <a name="configuration"></a>Yapılandırma
 
-1. **Sağ Akış** açılan menüsünde var olan veri akışını kontrol ettiğiniz verileri seçin.
-1. Mevcut **tür** ayarında verilerin mevcut olup olmadığını mı yoksa mevcut mi olduğunu belirtin.
-1. **Özel bir ifade**isteyip istemediğinizi seçin.
-1. Mevcut koşullarınız olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
+1. **Sağ akış** açılır düşüşünde var oluşu için hangi veri akışını denetlediğinizi seçin.
+1. **Varla türü** ayarında var olacak verileri mi yoksa var olmadığını mı aradığınızı belirtin.
+1. **Özel ifade**isteyip istemediğinizi seçin.
+1. Var olan koşullar olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akışta bir sütun arasında eşitlik arar. Hesaplanmış bir değer üzerinden karşılaştırmayapmak için sütun açılır sütunun üzerine gidin ve **Hesaplanan sütunu**seçin.
 
-![Mevcut ayarlar](media/data-flow/exists.png "1 var")
+![Var ayarları var](media/data-flow/exists.png "var 1")
 
-### <a name="multiple-exists-conditions"></a>Birden çok mevcut koşul
+### <a name="multiple-exists-conditions"></a>Birden çok var olan koşullar
 
-Her akıştaki birden çok sütunu karşılaştırmak için var olan bir satırın yanındaki artı simgesine tıklayarak yeni bir mevcut koşul ekleyin. Her ek koşul bir "and" ifadesiyle birleştirilir. İki sütunu karşılaştırmak aşağıdaki ifadeyle aynıdır:
+Her akıştan birden çok sütunu karşılaştırmak için, varolan bir satırın yanındaki artı simgesini tıklatarak yeni bir varolan koşul ekleyin. Her ek koşul bir "ve" deyimi ile birleştirilir. İki sütunu karşılaştırmak aşağıdaki ifadeyle aynıdır:
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>Özel ifade
 
-"Ve" ve "eşittir" dışındaki işleçleri içeren serbest biçimli bir ifade oluşturmak için **özel ifade** alanını seçin. Mavi kutuya tıklayarak veri akışı ifade Oluşturucusu aracılığıyla özel bir ifade girin.
+"ve" ve "eşittir" dışındaki işleçleri içeren bir serbest biçim **ifadesi** oluşturmak için Özel ifade alanını seçin. Mavi kutuya tıklayarak veri akışı ifade oluşturucu su aracılığıyla özel bir ifade girin.
 
-![Özel ayarları var](media/data-flow/exists1.png "Özel var")
+![Özel ayarları var](media/data-flow/exists1.png "özel var")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -55,13 +55,13 @@ Her akıştaki birden çok sütunu karşılaştırmak için var olan bir satır�
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `checkForChanges` adlı, sol akış `NameNorm2` ve sağ Akış `TypeConversions`alan, var olan bir dönüşümdir.  EXISTS koşulu, her bir akışta `EMPID` ve `Region` sütunları eşleşiyorsa true döndüren ifadedir `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`. Varlığını denetliyoruz, `negate` false 'tur. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, `broadcast` değer `'none'`.
+Aşağıdaki örnek, sol akışı `checkForChanges` ve sağ `NameNorm2` akışı `TypeConversions`alan bir dönüştürme dir.  Var olan koşul, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` her akıştaki `EMPID` sütunlar `Region` eşleşiyorsa doğru döndüren ifadedir. Var olup olmadığını kontrol `negate` ettiğimiz için yanlış. Optimize sekmesinde herhangi bir yayını etkinleştirmiyoruz, bu yüzden `broadcast` değeri `'none'`var.
 
-Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
+Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
 
-![Mevcut örnek](media/data-flow/exists-script.png "Mevcut örnek")
+![Varvar örneği](media/data-flow/exists-script.png "Varvar örneği")
 
-Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
+Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
 
 ```
 NameNorm2, TypeConversions
@@ -74,4 +74,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Benzer dönüşümler [arama](data-flow-lookup.md) ve [birleşimdir](data-flow-join.md).
+Benzer dönüşümler [Arama](data-flow-lookup.md) ve [Birleştirme'dir.](data-flow-join.md)

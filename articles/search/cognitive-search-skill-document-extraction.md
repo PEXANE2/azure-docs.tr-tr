@@ -1,7 +1,7 @@
 ---
-title: Belge ayıklama Bilişsel Beceri (Önizleme)
+title: Belge Çıkarma bilişsel beceri (önizleme)
 titleSuffix: Azure Cognitive Search
-description: Zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. Bu yetenek Şu anda genel önizlemededir.
+description: Zenginleştirme ardışık alanı içindeki bir dosyadan içerik ayıklar. Bu beceri şu anda genel önizlemede.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
 ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76837740"
 ---
-# <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
+# <a name="document-extraction-cognitive-skill"></a>Belge Çıkarma bilişsel beceri
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
+> Bu beceri şu anda genel önizlemede. Önizleme işlevi hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. Şu anda portal veya .NET SDK desteği yok.
 
-**Belge ayıklama** becerisi, zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. Bu, normalde, diğer yetenekler tarafından oluşturulabilecek dosyalarla beceri yürütmeden önce gerçekleşen belge ayıklama adımının avantajlarından yararlanmanızı sağlar.
+**Belge Ayıklama** becerisi, zenginleştirme ardışık alanındaki bir dosyadan içerik ayıklar. Bu, normalde diğer beceriler tarafından oluşturulabilir dosyaları ile skillset yürütme önce olur belge ayıklama adımı yararlanmak için izin verir.
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve dizin oluşturma aşamasında belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücret tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve dizin oluşturmada belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Resim çıkarma [fiyatlandırması fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. util. Belgetextractionbeceri
+Microsoft.Skills.Util.DocumentExtractionSkill
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Girişler            | İzin Verilen Değerler | Açıklama |
 |-----------------|----------------|-------------|
-| `parsingMode`   | `default` <br/> `text` <br/> `json`  | Saf metin veya JSON olmayan dosyalardan belge ayıklama için `default` olarak ayarlayın. Düz metin dosyalarında performansı artırmak için `text` olarak ayarlayın. JSON dosyalarından yapılandırılmış içeriği ayıklamak için `json` olarak ayarlayın. `parsingMode` açıkça tanımlanmamışsa, `default`olarak ayarlanır. |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Her dosyadan tüm meta verileri ve metin içeriğini ayıklamak için `contentAndMetadata` olarak ayarlayın. Yalnızca [içerik türü belirli meta verileri](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (örneğin, yalnızca. png dosyalarına özgü meta veriler) ayıklamak için `allMetadata` olarak ayarlayın. `dataToExtract` açıkça tanımlanmamışsa, `contentAndMetadata`olarak ayarlanır. |
-| `configuration` | Aşağıya bakın. | Belge ayıklamanın nasıl gerçekleştirileceğini belirten isteğe bağlı parametrelerin bir sözlüğü. Desteklenen yapılandırma özelliklerinin açıklamaları için aşağıdaki tabloya bakın. |
+| `parsingMode`   | `default` <br/> `text` <br/> `json`  | Saf `default` metin veya json olmayan dosyalardan belge ayıklama için ayarlayın. Düz `text` metin dosyalarındaki performansı artırmak için ayarlayın. Json `json` dosyalarından yapılandırılmış içerik ayıklamak için ayarlayın. Açıkça `parsingMode` tanımlanmamışsa, '' olarak `default`ayarlanır. |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Her `contentAndMetadata` dosyadaki tüm meta verileri ve metin içeriğini ayıklamak için ayarlayın. Yalnızca `allMetadata` [içerik türüne özgü meta verileri](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) ayıklamak için ayarlayın (örneğin, yalnızca .png dosyalarına özgü meta veriler). Açıkça `dataToExtract` tanımlanmamışsa, '' olarak `contentAndMetadata`ayarlanır. |
+| `configuration` | Aşağıya bakın. | Belge ayıklamanın nasıl gerçekleştirildiğini ayarlayan isteğe bağlı parametreler sözlüğü. Desteklenen yapılandırma özelliklerinin açıklamaları için aşağıdaki tabloya bakın. |
 
-| Yapılandırma parametresi   | İzin Verilen Değerler | Açıklama |
+| Yapılandırma Parametresi   | İzin Verilen Değerler | Açıklama |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Veri kümesindeki gömülü görüntüleri veya resim dosyalarını yoksaymak için `none` olarak ayarlayın. Bu varsayılandır. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, niteliğin belge çözme kapsamında normalleştirilmiş görüntüler dizisi oluşturmasını sağlamak üzere `generateNormalizedImages` olarak ayarlayın. Bu eylem `parsingMode` `default` olarak ayarlanmasını ve `dataToExtract` `contentAndMetadata`olarak ayarlanmasını gerektirir. Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, [JFK demo](https://github.com/Microsoft/AzureSearch_JFK_Files)bölümünde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi) tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen Tekdüzen görüntü çıkışına neden olan diğer işleme başvurur. Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>`generateNormalizedImagePerPage`ayarlarsanız, PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri `generateNormalizedImages` ayarlandıysa aynı kabul edilir.
-| `normalizedImageMaxWidth` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000 ' dir. | 
-| `normalizedImageMaxHeight` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük yüksekliği (piksel cinsinden). Varsayılan değer 2000 ' dir. |
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Veri `none` kümesinde katışılmış görüntüleri veya görüntü dosyalarını yok sayacak şekilde ayarlayın. Bu varsayılandır. <br/>[Bilişsel becerileri kullanarak görüntü](cognitive-search-concept-image-scenarios.md)analizi `generateNormalizedImages` için, beceri belge çatlama bir parçası olarak normalleştirilmiş görüntülerin bir dizi oluşturmak için ayarlayın. Bu eylem `parsingMode` için `default` ayarlanmış `dataToExtract` ve ayarlanır `contentAndMetadata`gerektirir. Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntüleri eklediğinizde tutarlı görüntülemeyi (örneğin, [JFK demosunda](https://github.com/Microsoft/AzureSearch_JFK_Files)görüldüğü gibi grafik denetimindeki aynı boyuttaki fotoğraflar) teşvik etmek için tek tip görüntü çıkışıyla sonuçlanan, boyutlandırılmış ve döndürülen ek işleme anlamına gelir. Bu seçeneği kullandığınızda, bu bilgiler her görüntü için oluşturulur.  <br/>Eğer `generateNormalizedImagePerPage`ayarlarsanız, PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde ele alınacaktır, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilmiş.  PDF olmayan dosya türleri ayarlanmış gibi `generateNormalizedImages` aynı şekilde işlem göreceksiniz.
+| `normalizedImageMaxWidth` | 50-10000 arasında herhangi bir tümsavar | Oluşturulan normalleştirilmiş görüntüler için maksimum genişlik (piksel olarak). Varsayılan değer 2000’dir. | 
+| `normalizedImageMaxHeight` | 50-10000 arasında herhangi bir tümsavar | Oluşturulan normalleştirilmiş görüntüler için maksimum yükseklik (piksel olarak). Varsayılan değer 2000’dir. |
 
 > [!NOTE]
-> Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. [OCR becerisi](cognitive-search-skill-ocr.md) , İngilizce dışındaki diller için maksimum genişlik ve yükseklik 4200 ve ingilizce için 10000 ' i destekler.  Maksimum sınırları artırırsanız, Beceri tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
-## <a name="skill-inputs"></a>Beceri girişleri
+> Normalleştirilmiş görüntüler için maksimum genişlik ve yükseklik için 2000 piksel varsayılan [OCR beceri](cognitive-search-skill-ocr.md) ve [görüntü analizi beceri](cognitive-search-skill-image-analysis.md)tarafından desteklenen maksimum boyutlara dayanmaktadır. [OCR becerisi,](cognitive-search-skill-ocr.md) İngilizce olmayan diller için maksimum 4200, İngilizce için 10000 maksimum genişlik ve yüksekliği destekler.  Maksimum sınırları artırırsanız, skillset tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
+## <a name="skill-inputs"></a>Beceri girdileri
 
 | Giriş adı     | Açıklama |
 |--------------------|-------------|
-| file_data | İçeriğin ayıklanabilmesi gereken dosya. |
+| file_data | İçeriğin ayıklanması gereken dosya. |
 
-"File_data" girişi şöyle tanımlanmış bir nesne olmalıdır:
+"file_data" girişi aşağıdaki gibi tanımlanmış bir nesne olmalıdır:
 
 ```json
 {
@@ -62,22 +62,22 @@ Parametreler büyük/küçük harfe duyarlıdır.
 }
 ```
 
-Bu dosya başvuru nesnesi 3 farklı bir şekilde oluşturulabilir:
+Bu dosya başvuru nesnesi 3 şekilde n içinden biri oluşturulabilir:
 
- - Dizin Oluşturucu tanımınızda `allowSkillsetToReadFileData` parametresi "true" olarak ayarlanıyor.  Bu işlem, blob veri kaynağınızdan indirilen özgün dosya verilerini temsil eden bir nesne olan `/document/file_data` bir yol oluşturur. Bu parametre yalnızca blob depolamada bulunan veriler için geçerlidir.
+ - Dizinleyici tanımınızdaki parametreyi `allowSkillsetToReadFileData` "true" olarak ayarlama.  Bu, blob `/document/file_data` veri kaynağınızdan indirilen özgün dosya verilerini temsil eden bir nesne olan bir yol oluşturur. Bu parametre yalnızca Blob depolamadaki veriler için geçerlidir.
 
- - Dizin Oluşturucu tanımınızda `imageAction` parametresi `none`dışında bir değere ayarlanıyor.  Bu, tek tek geçirilirse (yani `/document/normalized_images/*`), bu beceriye giriş için gerekli kuralı izleyen bir görüntü dizisi oluşturur.
+ - Dizinleyici tanımınızdaki parametreyi `imageAction` ' den `none`başka bir değere ayarlama  Bu, tek tek geçilmesi durumunda bu beceriye giriş için gerekli kuralı izleyen `/document/normalized_images/*`bir dizi görüntü oluşturur (örn. ).
 
- - Özel bir beceriye sahip olmak, yukarıdaki gibi tam olarak tanımlanmış bir JSON nesnesi döndürür.  `$type` parametresi tam olarak `file` olarak ayarlanmalıdır ve `data` parametresi dosya içeriğinin temel 64 kodlu bayt dizisi verileri olmalıdır.
+ - Özel bir beceri dönüş bir json nesnesi tam olarak yukarıda olarak tanımlanan olması.  Parametre `$type` tam olarak `file` ayarlanmalıdır `data` ve parametre dosya içeriğinin kodlanmış 64 kodlu bayt dizi verileri olmalıdır.
 
-## <a name="skill-outputs"></a>Yetenek çıkışları
+## <a name="skill-outputs"></a>Beceri çıktıları
 
-| Çıkış adı    | Açıklama |
+| Çıktı adı    | Açıklama |
 |--------------|-------------|
-| content | Belgenin metinsel içeriği. |
-| normalized_images | `imageAction`, `none`başka bir değere ayarlandığında, yeni *normalized_images* alanı bir görüntü dizisi içerir. Her bir görüntünün çıkış biçimi hakkında daha fazla bilgi için bkz. [görüntü ayıklama belgeleri](cognitive-search-concept-image-scenarios.md) . |
+| content | Belgenin metin içeriği. |
+| normalized_images | `imageAction` Bir değer diğer sonra `none`ayarlandığında, yeni *normalized_images* alanı görüntülerin bir dizi içerecektir. Her görüntünün çıktı biçimi hakkında daha fazla bilgi için [görüntü ayıklama için belgelere](cognitive-search-concept-image-scenarios.md) bakın. |
 
-##  <a name="sample-definition"></a>Örnek tanım
+##  <a name="sample-definition"></a>Örnek tanımı
 
 ```json
  {
@@ -148,5 +148,5 @@ Bu dosya başvuru nesnesi 3 farklı bir şekilde oluşturulabilir:
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Bilişsel arama senaryolarında görüntülerden bilgi işleme ve çıkarma](cognitive-search-concept-image-scenarios.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Bilişsel arama senaryolarında görüntülerden bilgi işleme ve ayıklama](cognitive-search-concept-image-scenarios.md)

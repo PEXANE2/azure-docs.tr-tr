@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus konu filtreleri | Microsoft Docs
-description: Bu makalede, abonelerin filtreleri belirterek bir konudan hangi iletileri almak istediğini nasıl tanımlayabileceği açıklanmaktadır.
+title: Azure Servis Veri Servisi konu filtreleri | Microsoft Dokümanlar
+description: Bu makalede, abonelerin filtreleri belirterek bir konudan hangi iletileri almak istediklerini nasıl tanımlayabilecekleri açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: spelluru
 ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774491"
 ---
 # <a name="topic-filters-and-actions"></a>Konu başlığı filtreleri ve eylemleri
 
-Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlayabilir. Bu iletiler bir veya daha fazla adlandırılmış abonelik kuralı biçiminde belirtilir. Her kural, belirli iletileri seçen bir koşuldan ve seçili iletiyi açıklama oluşturan bir eylemden oluşur. Eşleşen her kural koşulu için abonelik, iletinin, her eşleşme kuralı için farklı şekilde açıklama eklenebilecek bir kopyasını üretir.
+Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlayabilir. Bu iletiler, bir veya daha fazla adlandırılmış abonelik kuralı biçiminde belirtilir. Her kural, belirli iletileri seçen bir koşul ve seçili iletiye açıklama ekleyen bir eylemden oluşur. Eşleşen her kural koşulu için abonelik, iletinin, her eşleşme kuralı için farklı şekilde açıklama eklenebilecek bir kopyasını üretir.
 
-Yeni oluşturulan her konu aboneliğinin bir ilk varsayılan abonelik kuralı vardır. Kural için açıkça bir filtre koşulu belirtmezseniz, uygulanan filtre, tüm iletilerin abonelikte seçili olmasını sağlayan **doğru** filtredir. Varsayılan kuralda ilişkili ek açıklama eylemi yok.
+Yeni oluşturulan her konu aboneliğinin ilk varsayılan abonelik kuralı vardır. Kural için bir filtre koşulu açıkça belirtmezseniz, uygulanan filtre tüm iletilerin aboneliğe seçilmesini sağlayan **gerçek** filtredir. Varsayılan kuralın ilişkili ek açıklama eylemi yoktur.
 
-Service Bus üç filtre koşulu destekler:
+Servis Veri Servisi üç filtre koşullarını destekler:
 
--   *Boole filtreleri* - **truefilter** ve **yanlışfiltre** tüm gelen iletilerin (**true**) ya da abonelik için seçili olmayan iletilerin (**false**) hiçbirinin seçilmemesine neden olur.
+-   *Boolean filtreleri* - TrueFilter ve **FalseFilter,** gelen tüm iletilerin **(doğru)** veya gelen iletilerin hiçbirinin abonelik için seçilmesine**neden**olur. **FalseFilter**
 
--   *SQL filtreleri* -bir **sqlfilter** , gelen iletilerin Kullanıcı tanımlı özellikler ve sistem özelliklerine karşı ARACıDA değerlendirilen bir SQL benzeri koşullu ifade barındırır. Tüm sistem özelliklerinin koşullu ifadede `sys.` ön eki olmalıdır. [Filtre koşullarının SQL-Language alt kümesi](service-bus-messaging-sql-filter.md) , özelliklerin varlığını (`EXISTS``IS NULL`), mantıksal olmayan/ve/veya, İlişkisel işleçleri, basit sayısal aritmetiğini ve `LIKE`ile eşleşen basit metin düzenlerini sınar.
+-   *SQL Filtreler -* **SqlFilter,** gelen iletilerin kullanıcı tanımlı özellikleri ve sistem özelliklerine göre broker'da değerlendirilen SQL benzeri koşullu bir ifade tutar. Tüm sistem özellikleri koşullu `sys.` ifadeile önceden belirlenmiş olmalıdır. [Filtre koşulları için SQL alt kümesi,](service-bus-messaging-sql-filter.md) özelliklerin`EXISTS`varlığı ( ), yanı sıra`IS NULL`null-values ( ), mantıksal Değİl/VE/VEYA, ilişkisel işleçler, basit `LIKE`sayısal aritmetik ve basit metin deseni ile eşleşen .
 
--   *Bağıntı filtreleri* -bir **correlationfilter** , gelen bir veya daha fazla iletinin Kullanıcı ve sistem özelliklerine göre eşleşen bir koşullar kümesi tutar. Yaygın olarak kullanılan bir kullanım, **CorrelationId** özelliğiyle eşleşmedir, ancak uygulama **ContentType**, **Label**, **MessageID**, **ReplyTo**, **replytosessionıd**, **SessionID**, **to**ve Kullanıcı tanımlı özelliklerle eşleşmeyi de seçebilir. Bir özellik için gelen iletinin değeri, bağıntı filtresinde belirtilen değere eşitse bir eşleşme oluşur. Dize ifadeleri için karşılaştırma büyük/küçük harfe duyarlıdır. Birden çok eşleşme özelliği belirtirken, filtre bunları mantıksal ve koşul olarak birleştirir, yani filtrenin eşleşmesi için tüm koşulların eşleşmesi gerekir.
+-   *Korelasyon Filtreleri* - **Korelasyon Filtresi,** gelen iletinin kullanıcı ve sistem özelliklerinden bir veya daha fazlasına göre eşleşen bir dizi koşul tutar. Ortak **kullanım, CorrelationId** özelliğiyle eşleştirmektir, ancak uygulama aynı zamanda **ContentType**, **Label**, **MessageId**, **ReplyToSessionId**, SessionId , **TosessionId**, To , To , **to**, ve kullanıcı tanımlı özelliklere karşı eşleşmeyi de seçebilir. **SessionId** Gelen iletinin bir özellik için değeri korelasyon filtresinde belirtilen değere eşit olduğunda eşleşme vardır. Dize ifadeleri için karşılaştırma büyük/küçük harf duyarlıdır. Birden çok eşleme özelliği belirtirken, filtre bunları mantıksal ve koşul olarak birleştirir, yani filtrenin eşleşmesi için tüm koşulların eşleşmesi gerekir.
 
-Tüm Filtreler ileti özelliklerini değerlendirir. Filtreler ileti gövdesini değerlendiremez.
+Tüm filtreler ileti özelliklerini değerlendirir. Filtreler ileti gövdesini değerlendiremez.
 
-Karmaşık filtre kuralları işlem kapasitesi gerektirir. Özellikle, SQL filtre kurallarının kullanımı, abonelik, konu başlığı ve ad alanı düzeyinde genel ileti aktarım hızını daha düşük bir şekilde sonuçlanır. Mümkün olduğunda uygulamalar, işleme göre çok daha verimli olduklarından ve bu nedenle aktarım hızı üzerinde daha az etkisi olduğundan SQL benzeri filtreler üzerinden bağıntı filtreleri seçmelidir.
+Karmaşık filtre kuralları işleme kapasitesi gerektirir. Özellikle, SQL filtresi kurallarının kullanımı, abonelik, konu ve ad alanı düzeyinde daha düşük genel ileti girişiyle sonuçlanır. Mümkün olduğunda, uygulamalar sql benzeri filtreler yerine korelasyon filtrelerini seçmelidir, çünkü işlemede çok daha verimlidirler ve bu nedenle veri metot üzerinde daha az etkiye sahiptirler.
 
 ## <a name="actions"></a>Eylemler
 
-SQL filtre koşulları ile, özellikleri ve değerlerini ekleyerek, kaldırarak veya değiştirerek iletiye açıklama eklenebilir bir eylem tanımlayabilirsiniz. Bu eylem, SQL UPDATE deyimi söz dizimini kullanan [SQL benzeri bir ifade kullanır](service-bus-messaging-sql-filter.md) . İşlem eşleştirdikten sonra ve ileti abonelikte seçildikten sonra ileti üzerinde gerçekleştirilir. İleti özelliklerindeki değişiklikler, aboneliğe kopyalanmış ileti için özeldir.
+SQL filtre koşulları yla, özellikleri ve değerlerini ekleyerek, kaldırarak veya değiştirerek iletiyi açıklamaek sıralayabilen bir eylem tanımlayabilirsiniz. Eylem, SQL UPDATE deyimi sözdizimine gevşek bir şekilde yaslanan [SQL benzeri bir ifade kullanır.](service-bus-messaging-sql-filter.md) Eylem, eşleştirildikten sonra ve ileti aboneliğe seçilmeden önce iletiüzerinde gerçekleştirilir. İleti özelliklerindeki değişiklikler, aboneliğe kopyalanan iletiye özeldir.
 
-## <a name="usage-patterns"></a>Kullanım desenleri
+## <a name="usage-patterns"></a>Kullanım şekilleri
 
-Bir konu için en basit kullanım senaryosu, her aboneliğin bir konuya gönderilen her iletinin bir kopyasını aldığından ve bu da bir yayın deseninin yapılmasını sağlar.
+Bir konu için en basit kullanım senaryosu, her aboneliğin bir konuya gönderilen her iletinin bir kopyasını almasını ve bu da bir yayın deseni sağlamasıdır.
 
-Filtreler ve eylemler iki ek desen grubunu etkinleştirir: bölümlendirme ve yönlendirme.
+Filtreler ve eylemler iki desen grubu daha sağlar: bölümleme ve yönlendirme.
 
-Bölümlendirme, çeşitli mevcut konu aboneliklerine iletileri öngörülebilir ve birbirini dışlayan şekilde dağıtmak için filtreler kullanır. Bölümlendirme deseninin bir sistem, her biri, genel verilerin bir alt kümesini tutan bölmeleri özdeş olan çok sayıda farklı bağlamı işlemek üzere ölçeklenirken kullanılır. Örneğin, müşteri profili bilgileri. Bölümlendirme ile, Yayımcı, bölümleme modeli bilgisine gerek kalmadan iletiyi bir konuya gönderir. Daha sonra ileti, bölümün ileti işleyicisi tarafından alınabilecek doğru aboneliğe taşınır.
+Bölümleme, iletileri varolan birkaç konu aboneliğine öngörülebilir ve birbirini dışlayan bir şekilde dağıtmak için filtreler kullanır. Bölümleme deseni, bir sistem, her biri genel verilerin bir alt kümesini tutan işlevsel olarak aynı bölmelerde birçok farklı bağlamı işlemek üzere ölçeklendirildiğinde kullanılır; örneğin, müşteri profili bilgileri. Bölümleme ile, bir yayımcı bölümleme modeli hakkında herhangi bir bilgi gerektirmeden bir konuya iletiyi gönderir. İleti daha sonra, bölümün ileti işleyicisi tarafından alınabileceği doğru aboneye taşınır.
 
-Yönlendirme, ileti aboneliklerine öngörülebilir bir şekilde ileti dağıtmak için filtreleri kullanır, ancak özel olması gerekmez. [Otomatik iletme](service-bus-auto-forwarding.md) özelliği ile birlikte, konu filtreleri bir Azure bölgesindeki ileti dağıtımı için bir Service Bus ad alanı içinde karmaşık yönlendirme grafikleri oluşturmak için kullanılabilir. Azure Service Bus ad alanları arasında bir köprü görevi gören Azure Işlevleri veya Azure Logic Apps, iş kolu uygulamalarına doğrudan tümleştirmeyle karmaşık küresel topolojiler oluşturabilirsiniz.
+Yönlendirme, iletileri konu abonelikleri arasında öngörülebilir bir şekilde dağıtmak için filtreler kullanır, ancak münhasır olması gerekmez. [Otomatik yönlendirme](service-bus-auto-forwarding.md) özelliğiyle birlikte, konu filtreleri, Bir Azure bölgesinde ileti dağıtımı için Hizmet Veri Gönderi ad alanı içinde karmaşık yönlendirme grafikleri oluşturmak için kullanılabilir. Azure İşbu'lar veya Azure Mantıksal Uygulamaları Azure Hizmet Veri Sitesi ad alanları arasında bir köprü görevi görürken, iş yeri uygulamalarına doğrudan entegrasyon içeren karmaşık küresel topolojiler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [SQLFilter söz dizimi](service-bus-messaging-sql-filter.md)

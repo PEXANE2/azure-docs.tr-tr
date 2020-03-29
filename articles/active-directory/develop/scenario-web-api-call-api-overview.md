@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran bir Web API 'SI oluşturma-Microsoft Identity platform | Mavisi
-description: Aşağı akış Web API 'Lerini (genel bakış) çağıran bir Web API 'SI oluşturmayı öğrenin.
+title: Web API'lerini çağıran bir web API'sı oluşturma - Microsoft kimlik platformu | Azure
+description: Akış aşağı web API'lerini çağıran bir web API'sini nasıl oluşturabilirsiniz (genel bakış).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,31 +15,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701748"
 ---
-# <a name="scenario-a-web-api-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran bir Web API 'SI
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran bir web API'si
 
-Web API 'Lerini çağıran bir Web API 'SI oluşturmak için bilmeniz gerekenleri öğrenin.
+Web API'leri çağıran bir web API'sı oluşturmak için bilmeniz gerekenleri öğrenin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu senaryoda, korumalı bir Web API 'SI Web API 'Lerini çağırdığında, "bir Web API 'sini koruma" senaryosunun üzerine oluşturulur. Bu temel senaryo hakkında daha fazla bilgi edinmek için bkz. [Senaryo: korumalı Web API 'si](scenario-protected-web-api-overview.md).
+Korunan bir web API'sinin web API'lerini çağırdığı bu senaryo, "Web API'sini koruyun" senaryosunun üzerine oluşturur. Bu temel senaryo hakkında daha fazla bilgi edinmek için [senaryo: Korumalı web API'sine](scenario-protected-web-api-overview.md)bakın.
 
 ## <a name="overview"></a>Genel Bakış
 
-- Web, Masaüstü, mobil veya tek sayfalı uygulama istemcisi (eşlik eden diyagramda temsil edilmez) korumalı bir Web API 'sini çağırır ve "Authorization" HTTP üstbilgisinde JSON Web Token (JWT) taşıyıcı belirteci sağlar.
-- Korunan Web API 'SI, belirteci doğrular ve Microsoft kimlik doğrulama kitaplığı (MSAL) `AcquireTokenOnBehalfOf` Azure Active Directory yöntemini kullanarak korunan Web API 'sinin Kullanıcı adına ikinci bir Web API 'sini veya aşağı akış Web API 'sini çağırabilmesini sağlar.
-- Korunan Web API 'SI ayrıca aynı kullanıcı adına diğer aşağı akış API 'Leri için belirteçleri istemek üzere `AcquireTokenSilent`de çağırabilir. `AcquireTokenSilent`, gerektiğinde belirteci yeniler.
+- Web, masaüstü, mobil veya tek sayfalı uygulama istemcisi (eşlik eden diyagramda temsil edilmez) korumalı web API'sını çağırır ve "Yetkilendirme" HTTP üstbilgisinde bir JSON Web Belirteci (JWT) taşıyıcı belirteci sağlar.
+- Korumalı web API belirteci doğrular ve korumalı web `AcquireTokenOnBehalfOf` API'sinin kullanıcı adına ikinci bir web API'sını veya aşağı akış web API'sini çağırabilmesi için Azure Etkin Dizin'den (Azure AD) başka bir belirteç istemek için Microsoft Kimlik Doğrulama Kitaplığı (MSAL) yöntemini kullanır.
+- Korumalı web API'si, aynı kullanıcı adına diğer akış aşağı API'leri için belirteçleri istemek için daha sonra arayabilir. `AcquireTokenSilent` `AcquireTokenSilent`gerektiğinde belirteci yeniler.
 
-![Web API 'sini çağıran Web API 'SI diyagramı](media/scenarios/web-api.svg)
+![Web API çağıran bir web API diyagramı](media/scenarios/web-api.svg)
 
-## <a name="specifics"></a>Özelliklerini
+## <a name="specifics"></a>Özellikleri
 
-API izinleriyle ilgili uygulama kaydı bölümü klasik bir uygulamadır. Uygulama yapılandırması, JWT taşıyıcı belirtecini bir aşağı akış API 'SI belirtecine göre değiştirmek için OAuth 2,0 adına sahip akış kullanımını içerir. Bu belirteç, Web API 'sinin denetleyicilerinde kullanılabildiği belirteç önbelleğine eklenir ve ardından aşağı akış API 'Leri çağırmak için sessizce bir belirteç alabilir.
+API izinleri ile ilgili uygulama kayıt bölümü klasiktir. Uygulama yapılandırması, JWT taşıyıcı belirtecinin bir alt akış API'si için bir belirteci yle değiş tokuş etmek için OAuth 2.0 On-Behalf-Of akışını kullanmayı içerir. Bu belirteç, web API denetleyicilerinde kullanılabildiği belirteç önbelleğine eklenir ve daha sonra akış aşağı API'lerini çağırmak için sessizce bir belirteç edinebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
