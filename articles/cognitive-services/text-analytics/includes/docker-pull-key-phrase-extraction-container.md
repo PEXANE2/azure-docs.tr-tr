@@ -1,7 +1,7 @@
 ---
-title: Anahtar İfade Ayıklama kapsayıcısı için Docker Pull
+title: Anahtar Tümcecik Çıkarma kabı için Docker çekme
 titleSuffix: Azure Cognitive Services
-description: Anahtar İfade Ayıklama kapsayıcısı için Docker Pull komutu
+description: Anahtar Tümcecik Çıkarma kabı için Docker çekme komutu
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 59313528e4beb343f9ac1103d3f9f2faae5dfc16
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966691"
 ---
-#### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Anahtar İfade Ayıklama kapsayıcısı için Docker Pull
+#### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Anahtar Tümcecik Çıkarma kabı için Docker çekme
 
-Microsoft Container Registry bir kapsayıcı görüntüsünü indirmek için [komutunukullanın.`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)
+Microsoft [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Kapsayıcı Kayıt Defteri'nden bir kapsayıcı resmi indirmek için komutu kullanın.
 
-Metin Analizi kapsayıcıları için kullanılabilir etiketlerin tam açıklaması için, Docker Hub 'ındaki [anahtar ifade ayıklama](https://go.microsoft.com/fwlink/?linkid=2018757) kapsayıcısına bakın.
+Metin Analizi kapsayıcıları için kullanılabilir etiketlerin tam açıklaması için Docker Hub'daki [Anahtar Tümcecik Çıkarma](https://go.microsoft.com/fwlink/?linkid=2018757) kabına bakın.
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest

@@ -1,7 +1,7 @@
 ---
-title: Pano-Language Understanding-LUO
+title: Pano - Dil Anlama - LUIS
 titleSuffix: Azure Cognitive Services
-description: Eğitilen uygulamanızın panosundan hedefleri ve varlıkları onarın. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir.
+description: Eğitimli uygulamanızın panosuyla niyetleri ve varlıkları düzeltin. Pano, düzeltilmesi gereken niyet vurgularıyla birlikte genel uygulama bilgilerini görüntüler.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,163 +12,163 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888210"
 ---
-# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
+# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için Pano'yu kullanma
 
-Örnek utbotları kullanırken eğitilen uygulamanızın amaçları ile ilgili sorunları bulup giderin. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir. 
+Örnek sözlerinizi kullanırken, eğitimli uygulamanızın amaçlarıyla ilgili sorunları bulun ve düzeltin. Pano, düzeltilmesi gereken niyet vurgularıyla birlikte genel uygulama bilgilerini görüntüler. 
 
-Pano analizini gözden geçirin yinelemeli bir işlemdir ve modelinizi değiştirirken yineleyin ve modelinizi geliştirebilirsiniz.
+Pano çözümlemesi yinelemeli bir işlemdir, modelinizi değiştirip geliştirirken tekrarlayın.
 
-Bu sayfada, _yalnızca desen_ uygulamaları olarak bilinen amaçlar içinde herhangi bir örnek yok bulunmayan uygulamalar için ilgili Analize sahip olmayacaktır. 
+Bu sayfada, yalnızca desenli uygulamalar olarak bilinen, kasıtlı olarak örnek bir söz lemesi olmayan uygulamalar için ilgili analizler _olmayacaktır._ 
 
-## <a name="what-issues-can-be-fixed-from-dashboard"></a>Panodan hangi sorunlar düzeltilenebilir?
+## <a name="what-issues-can-be-fixed-from-dashboard"></a>Panodan hangi sorunlar giderilebilir?
 
-Panoda giderilen üç sorun şunlardır:
+Panoda ele alınan üç sorun:
 
 |Sorun|Grafik rengi|Açıklama|
 |--|--|--|
-|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının %10 ' dan %15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
-|Belirsiz tahmin|Orange|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
-|Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
+|Veri dengesizliği|-|Bu, örnek sözleşmelerin miktarı önemli ölçüde değiştiğinde oluşur. Tüm niyetler, Yok niyeti _dışında, kabaca_ aynı sayıda örnek söze sahip olmak zorunda. Uygulamadaki toplam söyleyiş miktarının yalnızca %10-15'ine sahip olmalıdır.<br><br> Veriler dengesiz, ancak niyet doğruluğu belirli eşiğin üzerindeyse, bu dengesizlik bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın - diğer sorunların temel nedeni olabilir.**|
+|Belirsiz tahminler|Orange|Bu, en yüksek niyet ve bir sonraki niyetin puanları, [olumsuz örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek sözleme nedeniyle bir sonraki eğitimde takla atabilecek kadar yakın olduğunda ortaya çıkar. |
+|Yanlış tahminler|Red|Bu, etiketli amaç (içinde olduğu amaç) için bir örnek söyleyiş öngörülmediğinde oluşur.|
 
-Doğru tahminler mavi renkle gösterilir.
+Doğru tahminler mavi renkle temsil edilir.
 
-Panoda bu sorunlar gösterilir ve hangi amaçlardan etkilendiğine ve uygulamayı geliştirmek için ne yapmanız gerektiğini size bildirir. 
+Pano bu sorunları gösterir ve hangi amaçların etkilendiğini söyler ve uygulamayı geliştirmek için ne yapmanız gerektiğini önerir. 
 
-## <a name="before-app-is-trained"></a>Uygulama eğitilmadan önce 
+## <a name="before-app-is-trained"></a>Uygulama eğitilmeden önce 
 
-Uygulamayı eğmadan önce, pano düzeltme önerisi içermez. Bu önerileri görmek için uygulamanızı eğitme.  
+Uygulamayı eğitmeden önce, pano düzeltmeler için herhangi bir öneri içermez. Bu önerileri görmek için uygulamanızı eğitin.  
 
-## <a name="check-your-publishing-status"></a>Yayımlama durumunuzu denetleyin
+## <a name="check-your-publishing-status"></a>Yayımlama durumunuzu kontrol edin
 
-**Yayımlama durumu** kartı, etkin sürümün son yayımlama bilgileri hakkında bilgi içerir. 
+**Yayımlama durum** kartı, etkin sürümün son yayımı hakkında bilgi içerir. 
 
-Etkin sürümün, düzeltilmesi istediğiniz sürüm olduğunu denetleyin. 
+Etkin sürümün düzeltmek istediğiniz sürüm olup olmadığını denetleyin. 
 
-![Pano, uygulamanın dış hizmetlerini, yayımlanan bölgelerini ve toplu uç nokta isabetlerini gösterir.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Pano, uygulamanın dış hizmetlerini, yayımlanmış bölgelerini ve toplu bitiş noktası isabetlerini gösterir.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Bu, tüm dış Hizmetleri, yayımlanan bölgeleri ve toplanmış uç nokta isabetlerini de gösterir. 
+Bu ayrıca herhangi bir dış hizmetleri, yayımlanmış bölgeleri ve toplu bitiş noktası isabetlerini gösterir. 
 
-## <a name="review-training-evaluation"></a>Eğitim değerlendirmesini gözden geçirin
+## <a name="review-training-evaluation"></a>Eğitim değerlendirmesini gözden geçirme
 
-**Eğitim değerlendirme** kartı, uygulamanın genel doğruluk alanının toplu özetini içerir. Puan, amaç kalitesini gösterir. 
+**Eğitim değerlendirme** kartı, uygulamanızın alana göre genel doğruluğunun toplu özetini içerir. Puan niyet kalitesini gösterir. 
 
-![Eğitim değerlendirme kartı, uygulamanızın genel doğruluğu hakkındaki ilk bilgi alanını içerir.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
+![Eğitim değerlendirme kartı, uygulamanızın genel doğruluğu hakkında ilk bilgi alanını içerir.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-Grafik, doğru şekilde tahmin edilen hedefleri ve farklı renklerle ilgili sorun bölgelerini gösterir. Uygulamayı önerilerle geliştirdıkça bu puan artar. 
+Grafik, doğru tahmin edilen amaçları ve farklı renklere sahip sorunlu alanları gösterir. Önerilerle uygulamayı geliştirin, bu puan artar. 
 
-Önerilen düzeltmeler sorun türüne göre ayrılır ve uygulamanız için en önemidir. Her amaç için sorunları gözden geçirmeyi ve gidermeyi tercih ediyorsanız, sayfanın en altında **[hatalar Içeren amaçlar](#intents-with-errors)** kartını kullanın. 
+Önerilen düzeltmeler sorun türüne göre ayrılır ve uygulamanız için en önemli düzeltmelerdir. Amaç başına sorunları gözden geçirmek ve gidermek isterseniz, sayfanın alt kısmında hata kartı **[olan Intents'i](#intents-with-errors)** kullanın. 
 
-Her bir sorun alanının düzeltilmesi gereken amaçları vardır. Amaç adını seçtiğinizde, **Amaç** sayfası, söylemeye uygulanan bir filtre ile açılır. Bu filtre, soruna neden olan söyleymelere odaklanabilmenizi sağlar.
+Her sorun alanının düzeltilmesi gereken amaçları vardır. Niyet adını seçtiğinizde, **Niyet** sayfası dile gelenlere uygulanan bir filtreyle açılır. Bu filtre, soruna neden olan söyleyişlere odaklanmanızı sağlar.
 
-### <a name="compare-changes-across-versions"></a>Sürümler arasındaki değişiklikleri karşılaştırın
+### <a name="compare-changes-across-versions"></a>Sürümler arasında değişiklikleri karşılaştırma
 
-Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Yeni sürümde, amacın örnek ara penceresinde önerilen değişiklikleri yapıp yeniden eğitme. Pano sayfasının **eğitim değerlendirme** kartında, değişiklikleri karşılaştırmak için **eğitilen sürümden değişikliği göster** ' i kullanın. 
+Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Yeni sürümde, niyetin örnek söyleyişlerinde önerilen değişiklikleri yapın, ardından tekrar eğitin. Pano sayfasının **Eğitim değerlendirme** kartında, değişiklikleri karşılaştırmak için **eğitilmiş sürümden göster değişikliğini** kullanın. 
 
-![Sürümler arasındaki değişiklikleri karşılaştırın](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
+![Sürümler arasında değişiklikleri karşılaştırma](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
-### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Örnek işleme ve yeniden eğitim ekleyerek veya düzenleyerek sürümü onarın
+### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Örnek söz ve yeniden eğitim ekleyerek veya düzenleyerek sürümü düzeltme
 
-Uygulamanızı düzeltmeye yönelik birincil yöntem, örnek işleme ve yeniden tren eklemek veya düzenlemek olacaktır. Yeni veya değiştirilmiş deterslar, [değişen](luis-concept-utterance.md)söyleylerdeki yönergeleri izlemelidir.
+Uygulamanızı düzeltmenin birincil yöntemi, örnek söz lerinizi eklemek veya yeniden eğitmek tir. Yeni veya değiştirilmiş söyleyinçler [çeşitli söyleymeler](luis-concept-utterance.md)için yönergeleri takip etmek gerekir.
 
-Örnek ekleme örnekleri şunları yapan birisi tarafından yapılmalıdır:
+Örnek söz ekleme, şu kişiler tarafından yapılmalıdır:
 
-* , farklı amaçlarındıklarla neler olduğunu yüksek ölçüde anlayabiliyor.
-* bir amaca göre, başka bir amaç ile nasıl karışabildiğini bilir.
-* , birbirleriyle genellikle karıştı olan iki amaç tek bir amaç halinde daraltılacağına karar verebilir. Bu durumda, farklı veriler varlıklarla birlikte kullanıma alınmalıdır.
+* farklı niyetlerde ne söylenmeleri olduğunu yüksek derecede anlayışa sahiptir.
+* bir niyetle söylenmelerin başka bir niyetle nasıl karıştırılabileceğini bilir.
+* sık sık birbiriyle karıştırılan iki niyetin tek bir niyete çöküp çökmeyeceğine karar verebilir. Bu durumda, farklı veriler varlıklarla birlikte çekilmesi gerekir.
 
 ### <a name="patterns-and-phrase-lists"></a>Desenler ve tümcecik listeleri
 
-Analiz sayfası, [desenlerin](luis-concept-patterns.md) veya [tümcecik listelerinin](luis-concept-feature.md)ne zaman kullanılacağını göstermez. Bunları eklerseniz, yanlış veya belirsiz tahminlerde yardımcı olabilir, ancak veri dengesizliği ile ilgili yardım vermez. 
+Analiz sayfası [desen](luis-concept-patterns.md) veya [ifade listelerinin](luis-concept-feature.md)ne zaman kullanılacağını belirtmez. Bunları eklerseniz, yanlış veya belirsiz tahminlerde yardımcı olabilir, ancak veri dengesizliği ile yardımcı olmaz. 
 
-### <a name="review-data-imbalance"></a>Veri dengesizliği gözden geçirme
+### <a name="review-data-imbalance"></a>Veri dengesizliğini gözden geçirme
 
-Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.
+Bu sorunla başlayın - diğer sorunların temel nedeni olabilir.
 
-**Veri dengesizliği** amaç listesi, veri dengesizliği ' nı düzeltmek için daha fazla söylenmesi gereken amaçları gösterir. 
+**Veri dengesizliği** niyet listesi, veri dengesizliğini düzeltmek için daha fazla söyleyiş gerektiren niyetleri gösterir. 
 
-**Bu sorunu onarmak için**:
+**Bu sorunu gidermek için:**
 
-* Hedefe daha fazla konuşma ekleyin ve ardından yeniden eğitme. 
+* Niyete daha fazla söz ekleyin ve sonra tekrar eğitin. 
 
-Panoda önerilmediği takdirde, yok amacını eklemeyin.
+Panoda önerilmedikçe Yok amacına söz eklemeyin.
 
 > [!Tip]
-> Hangi amaçlarla ilgili daha fazla bilgi gerektiren hızlı bir görsel kılavuz olarak, sayfa üzerindeki üçüncü bölümü, **utterer (sayı)** ayarıyla birlikte **Amaç uyarınca** kullanın.  
-    veri dengesizliği olan amaçları bulmak için ' Utterslar (sayı) ' ![kullanın.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+> Sayfadaki üçüncü bölümü kullanın, **Utterances (sayı)** ayarı ile **niyet başına Söyleyerek,** hangi niyet daha fazla söyleyiş gerekir hızlı bir görsel kılavuz olarak.  
+    ![Veri dengesizliği olan niyetleri bulmak için 'Söyleyişler (sayı)' kullanın.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
-### <a name="review-incorrect-predictions"></a>Yanlış tahminleri gözden geçirin
+### <a name="review-incorrect-predictions"></a>Yanlış tahminleri gözden geçirme
 
-**Yanlış tahmin** hedefi listesi, belirli bir amaç için örnek olarak kullanılan ancak farklı amaçlar için tahmin edilen, utterler içeren amaçları gösterir. 
+**Yanlış tahmin** niyet listesi, belirli bir amaç için örnek olarak kullanılan, ancak farklı niyetler için öngörülen, söyleyiyi olan niyetleri gösterir. 
 
-**Bu sorunu onarmak için**:
+**Bu sorunu gidermek için:**
 
-* Söz konusu hedefe daha fazla özel olacak şekilde düzenleyin ve yeniden eğitme.
-* Söyleyceler çok yakından hizalanmışsa ve yeniden eğitmeniz halinde hedefleri birleştirin.
+* Niyete daha açık olması için söyleyişleri edin ve tekrar eğitin.
+* Eğer söyleyişçok yakından hizalanmış ve tekrar eğitmek ise niyetleri birleştirin.
 
 ### <a name="review-unclear-predictions"></a>Belirsiz tahminleri gözden geçirin
 
-**Belirsiz tahmin** hedefi listesi, en yakın Rival kadar çok önemli olmayan tahminlere sahip olan amaçları, [negatif örnekleme](luis-how-to-train.md#train-with-all-data)nedeniyle sonraki eğitimin en üst amacına göre değişiklik gösterebilir.
+**Belirsiz tahmin** niyet listesi, en yakın rakibinden yeterince uzak olmayan tahmin puanları ile, bu söyleyiş için üst niyet [olumsuz örnekleme](luis-how-to-train.md#train-with-all-data)nedeniyle, bir sonraki eğitimde değişebilir tahmin puanları ile niyetleri gösterir .
 
-**Bu sorunu giderme**.
+**Bu sorunu gidermek için;**
 
-* Söz konusu hedefe daha fazla özel olacak şekilde düzenleyin ve yeniden eğitme.
-* Söyleyceler çok yakından hizalanmışsa ve yeniden eğitmeniz halinde hedefleri birleştirin.
+* Niyete daha açık olması için söyleyişleri edin ve tekrar eğitin.
+* Eğer söyleyişçok yakından hizalanmış ve tekrar eğitmek ise niyetleri birleştirin.
 
-## <a name="utterances-per-intent"></a>Amaç başına söylenme
+## <a name="utterances-per-intent"></a>Niyet başına söylenmeler
 
-Bu kart, amaçlar genelinde uygulamanın genel durumunu gösterir. Amaçları ve yeniden eğitme yaparken, sorunlar için bu karta göz atma konusuna geçin.
+Bu kart, tüm amaçlı uygulamalarda genel uygulama durumunu gösterir. Eğer niyetleri düzeltmek ve yeniden eğitmek gibi, sorunlar için bu karta göz atmaya devam edin.
 
-Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.
+Aşağıdaki grafikte, düzeltilmesi gereken neredeyse hiçbir sorun olmayan dengeli bir uygulama gösterilmektedir.
 
-![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
+![Aşağıdaki grafikte, düzeltilmesi gereken neredeyse hiçbir sorun olmayan dengeli bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
 
-Aşağıdaki grafikte, çok sayıda sorunu gidermek için kötü bir dengeli uygulama gösterilmektedir.
+Aşağıdaki grafik, düzeltilmesi gereken birçok sorunla birlikte düşük dengeli bir uygulamayı gösterir.
 
-![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Aşağıdaki grafikte, düzeltilmesi gereken neredeyse hiçbir sorun olmayan dengeli bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Amaç hakkında bilgi almak için her bir amaç çubuğunun üzerine gelin. 
+Niyet hakkında bilgi almak için her niyetin çubuğunun üzerine geçin. 
 
-![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Aşağıdaki grafikte, düzeltilmesi gereken neredeyse hiçbir sorun olmayan dengeli bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-Bu sorunla birlikte en çok sorunlu hedefleri üzerine odaklanabilmeniz için amaçları sorun türüne göre düzenlemek için **sıralama ölçütü** özelliğini kullanın. 
+Bu sorunla ilgili en sorunlu amaclara odaklanabilmeniz için, amaçları sorun türüne göre düzenlemek için **Sıralama** özelliğini kullanın. 
 
-## <a name="intents-with-errors"></a>Hatalı amaçlar
+## <a name="intents-with-errors"></a>Hataları olan niyetler
 
-Bu kart, belirli bir amaç için sorunları incelemenizi sağlar. Bu kartın varsayılan görünümü en sorunlu hedefdir, bu sayede çabalarınızın nereye odaklanacağı hakkında bilgi sahibi olabilirsiniz.
+Bu kart, belirli bir amaç için sorunları gözden geçirmenize olanak tanır. Bu kartın varsayılan görünümü, çabalarınızı nereye odakladığınızı bilmeniz için en sorunlu amaçtır.
 
-![Hatalar içeren amaçlar, belirli bir amaç için sorunları incelemenizi sağlar. Kart, en çok sorunlu amaçlar için varsayılan olarak filtrelenir. bu sayede çabalarınıza odaklanmayı bilirsiniz.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
+![Hata kartı olan Intents, belirli bir amaç için sorunları gözden geçirmenize olanak tanır. Kart varsayılan olarak en sorunlu niyetlere filtrelenir, böylece çabalarınızı nereye odakladığınızı bilirsiniz.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-Üstteki halka grafiğinde, üç sorun türü genelinde amaç ile ilgili sorunlar gösterilmektedir. Üç sorun türünde sorunlar varsa, her türün aşağıdaki bir grafiği vardır ve tüm Rival hedefleri ile birlikte. 
+Üst donut grafik üç sorun türleri arasında niyet ile sorunları gösterir. Üç sorun türünde sorunlar varsa, her türün rakip niyetlerle birlikte aşağıda kendi grafiği vardır. 
 
-### <a name="filter-intents-by-issue-and-percentage"></a>Hedefleri soruna ve yüzdeye göre filtrele
+### <a name="filter-intents-by-issue-and-percentage"></a>Amaçları soruna ve yüzdeye göre filtreleme
 
-Kartın bu bölümü, hata eşiğin dışında kalan örnek bulmalar bulmanıza olanak tanır. İdeal tahminlerden önemli olmasını isteyebilirsiniz. Bu yüzde iş ve müşteri odaklı olur. 
+Kartın bu bölümü, hata eşiğinizden düşen örnek söyleyişleri bulmanızı sağlar. İdeal olarak doğru tahminlerin önemli olmasını istersiniz. Bu yüzde iş ve müşteri odaklı. 
 
-İşletmeniz için rahat bir şekilde sahip olduğunuz eşik yüzdelerini saptayın. 
+İşletmeniz için rahat olduğunuz eşik yüzdelerini belirleyin. 
 
-Filtre, belirli bir sorunla olan amaçları bulmanıza olanak sağlar:
+Filtre, belirli bir sorunla ilgili amaçları bulmanızı sağlar:
 
 |Filtre|Önerilen yüzde|Amaç|
 |--|--|--|
-|En sorunlu amaçlar|-|**Buradan başlayın** -bu amaca göre, uygulamayı diğer düzeltmelerden daha fazla düzeltme.|
-|Aşağıdaki tahminleri doğru yapın|%60|Bu, seçilen amaç içindeki, doğru olan, ancak eşiğin altında güven puanı bulunan utterslar yüzdesinin yüzdesidir. |
-|Yukarıdaki belirsiz Öngörüler|%15|Bu, en yakın Rival amacına karışarak seçili amaç içindeki dıklarının yüzdesidir.|
-|Yukarıdaki yanlış tahminler|%15|Bu, seçilen amaç içindeki, yanlış tahmin edilen madıklarından yüzdesidir. |
+|En sorunlu niyetler|-|**Buradan başlayın** - Bu niyetle gelen belaları düzeltmek, uygulamayı diğer düzeltmelerden daha iyi hale getirecektir.|
+|Aşağıdaki tahminleri düzeltin|%60|Bu, seçilen niyetteki doğru olan ancak eşiğin altında bir güven puanına sahip olan söyleyiş yüzdesidir. |
+|Yukarıdaki belirsiz tahminler|%15|Bu, seçilen niyetteki ve en yakın rakip niyetle karıştırılan söyleyiş yüzdesidir.|
+|Yukarıdaki yanlış tahminler|%15|Bu, seçili niyetteki yanlış tahmin edilen söyleyiş yüzdesidir. |
 
 ### <a name="correct-prediction-threshold"></a>Doğru tahmin eşiği
 
-Size güvenilir bir tahmin güvenilirliği puanı nedir? Uygulama geliştirmenin başlangıcında %60, Hedefinizdeki olabilir. Seçilen amaç içinde düzeltilmesi gereken tüm çakışmaları bulmak için aşağıdaki %60 oranında **doğru tahminleri** kullanın.
+Size güvenli bir tahmin güven puanı nedir? Uygulama geliştirmenin başlangıcında hedefinizin %60'ı olabilir. Düzeltilmesi gereken seçili niyetle herhangi bir söyleyiş bulmak için aşağıdaki **doğru tahminleri** %60 oranında kullanın.
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Belirsiz veya yanlış tahmin eşiği
 
-Bu iki filtre, eşiğin ötesinde seçili amaç içindeki uttasları bulmanıza olanak tanır. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahmine dayalı olarak% 10-15 hata oranı rahat olursa, bu değerin üzerindeki tüm çakışmaları bulmak için filtre eşiğini %15 olarak ayarlayın. 
+Bu iki filtre, eşiğinizin ötesinde seçili niyette söz bulmanızı sağlar. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahminler için %10-15 hata oranıyla rahatsanız, bu değerin üzerindeki tüm tüm sözcükleri bulmak için filtre eşiğini %15'e ayarlayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure kaynaklarınızı yönetin](luis-how-to-azure-subscription.md)
+* [Azure kaynaklarınızı yönetme](luis-how-to-azure-subscription.md)

@@ -1,64 +1,111 @@
 ---
 title: Form Tanıma'daki yenilikler
 titleSuffix: Azure Cognitive Services
-description: Form tanıyıcı API 'sindeki en son değişiklikleri anlayın.
+description: Form Recognizer API'deki en son değişiklikleri anlayın.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155180"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
-Bu makalede, form tanıyıcı API 'sinin yeni sürümleriyle birlikte gelen büyük değişiklikler vurgulanmaktadır.
+Form Recognizer hizmeti sürekli olarak güncelleştirilir. Özellik geliştirmeleri, düzeltmeler ve belge güncelleştirmeleri ile güncel kalmak için bu makaleyi kullanın.
 
 > [!NOTE]
-> Bu belge kümesindeki hızlı başlangıçlar ve kılavuzlar, aksini belirtmedikleri takdirde her zaman API 'nin en son sürümünü kullanır.
+> Form Recognizer için hızlı başlangıçlar ve kılavuzlar belirtilmediği sürece HER zaman API'nin en son sürümünü kullanır.
 
-## <a name="form-recognizer-20-preview"></a>Form tanıyıcı 2,0 (Önizleme)
+## <a name="march-2020"></a>Mart 2020 
+
+### <a name="extraction-enhancements"></a>Çıkarma geliştirmeleri
+
+Bu sürüm, çıkarma geliştirmeleri ve doğruluk geliştirmeleri, özellikle, aynı metin satırında birden çok anahtar/değer çiftini etiketleme ve ayıklama özelliğini içerir. 
+ 
+### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Form Tanıyan Örnek Etiketleme Aracı artık açık kaynak kodlu
+
+Form Recognizer Örnek Etiketleme Aracı artık açık kaynak projesi olarak kullanılabilir. Bunu çözümlerinize entegre edebilir ve ihtiyaçlarınızı karşılamak için müşteriye özel değişiklikler yapabilirsiniz.
+
+Form Tanıyıcısı Örnek Etiketleme Aracı hakkında daha fazla bilgi için [GitHub'da](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)bulunan belgeleri inceleyin.
+
+### <a name="labeling-value-types"></a>Değer türlerini etiketleme
+
+Değer türleri artık Form Recognizer Örnek Etiketleme Aracı ile kullanılabilir. Bu değer türleri şu anda desteklenir: 
+
+* Dize
+* Sayı 
+* Tamsayı
+* Tarih 
+* Zaman
+
+Bu resim, Form Tanıyıcı Örnek Etiketleme Aracı içinde değer türü seçiminin nasıl göründüğünü gösterir:
+
+> [!div class="mx-imgBorder"]
+> ![Örnek etiketleme aracı ile değer türü seçimi](./media/whats-new/formre-value-type.png)
+
+Ayıklanan tablo JSON çıktısı mevcuttur. `pageResults`
+
+### <a name="table-visualization"></a>Tablo görselleştirme 
+
+Form Recognizer Etiketleme Aracı artık belgede tanınan tabloları görüntüler. Bu, Form Tanıyan Örnek Etiketleme Aracı ile etiketleme ve çözümlemeden önce belgeden tanınan ve çıkarılan tabloları görüntülemenize olanak tanır. Bu özellik katmanlar seçeneği kullanılarak açılabilir/kapatılabilir. 
+
+Bu, tabloların nasıl tanındığı ve ayıklandırılınbir örneğidir:
+
+> [!div class="mx-imgBorder"]
+> ![Örnek etiketleme aracını kullanarak tablo görselleştirmesi](./media/whats-new/formre-table-viz.png)
+
+> [!IMPORTANT]
+> Etiketleme tabloları desteklenmez. Tablolar otomatik olarak tanınmıyor ve iade ediliyorsa, bunları yalnızca anahtar/değer çiftleri olarak etiketleyebilirsiniz. Tabloları anahtar/değer çiftleri olarak etiketlerken, lütfen her hücreyi bir değer olarak etiketleyin.
+
+### <a name="tls-12-enforcement"></a>TLS 1.2 zorlaması
+
+* TLS 1.2 artık bu hizmete tüm HTTP istekleri için uygulanır. Daha fazla bilgi için Azure [Bilişsel Hizmetler güvenliği'ne](../cognitive-services-security.md)bakın.
+
+## <a name="january-2020"></a>Ocak 2020
+
+Bu sürüm Form Recognizer 2.0 (önizleme) tanıttı. Aşağıdaki bölümlerde, yeni özellikler, geliştirmeler ve değişiklikler hakkında daha fazla bilgi bulabilirsiniz. 
 
 ### <a name="new-features"></a>Yeni özellikler
 
 * **Özel model**
-  * **Etiketlerle eğitme** Artık el ile etiketlenmiş verileri olan özel bir modeli eğitebilirsiniz. Bu, daha iyi çalışan modellerle sonuçlanır ve anahtar içermeyen karmaşık formlarla veya formlarla çalışan modeller oluşturabilir.
-  * **Zaman uyumsuz API** Zaman uyumsuz API çağrılarını, büyük veri kümelerini ve dosyalarını eğitmek ve analiz etmek için kullanabilirsiniz.
-  * **TIFF dosyası desteği** Artık TIFF belgelerinden eğitim alabilir ve verileri ayıklayabilirsiniz.
-  * **Ayıklama doğruluk iyileştirmeleri**
+  * **Etiketlerle tren** Artık el ile etiketlenmiş verilerle özel bir model eğitebilirsiniz. Bu, daha iyi performans gösteren modeller ile sonuçlanır ve anahtarsız değerler içeren karmaşık formlarla veya formlarla çalışan modeller üretebilir.
+  * **Eşyokkron API** Büyük veri kümelerini ve dosyalarını eğitmek ve çözümlemek için async API çağrılarını kullanabilirsiniz.
+  * **TIFF dosya desteği** Artık TIFF belgelerinden veri aktarabilir ve ayıklayabilirsiniz.
+  * **Çıkarma doğruluğu iyileştirmeleri**
 
 * **Önceden oluşturulmuş makbuz modeli**
-  * **İpucu tutarları** Artık tıp tutarlarını ve diğer el yazısı değerlerini ayıklayabilirsiniz.
-  * **Satır öğesi ayıklama** Makbuzlardan satır öğesi değerlerini ayıklayabilirsiniz.
-  * **Güvenirlik değerleri** Her Ayıklanan değer için modelin güvenini görüntüleyebilirsiniz.
-  * **Ayıklama doğruluk iyileştirmeleri**
+  * **İpucu tutarları** Artık ipucu tutarlarını ve diğer el yazısı değerleri ayıklayabilirsiniz.
+  * **Satır öğesi çıkarma** Makbuzlardan satır öğesi değerlerini ayıklayabilirsiniz.
+  * **Güven değerleri** Çıkarılan her değer için modelin güvenini görüntüleyebilirsiniz.
+  * **Çıkarma doğruluğu iyileştirmeleri**
 
-* **Düzen ayıklama** Artık formlarınızın metin verilerini ve tablo verilerini ayıklamak için Düzen API 'sini kullanabilirsiniz.
+* **Düzen çıkarma** Artık formlarınızdan metin verilerini ve tablo verilerini ayıklamak için Düzen API'sini kullanabilirsiniz.
 
-### <a name="custom-model-api-changes"></a>Özel model API 'SI değişiklikleri
+### <a name="custom-model-api-changes"></a>Özel model API değişiklikleri
 
-Eğitimin tüm API 'Leri ve özel modelleri kullanma yeniden adlandırıldı ve bazı zaman uyumlu yöntemler artık zaman uyumsuzdur. Önemli değişiklikler aşağıda verilmiştir:
+Özel modelleriçin tüm API'ler yeniden adlandırıldı ve bazı eşzamanlı yöntemler artık eşzamanlı. Aşağıdaki önemli değişiklikler şunlardır:
 
-* Bir modele eğitim süreci artık zaman uyumsuzdur. **/Custom/modeller** API çağrısı üzerinden eğitim başlatırsınız. Bu çağrı, eğitim sonuçlarını döndürmek için **özel/modeller/{ModelId}** içine geçirebilmeniz için BIR işlem kimliği döndürür.
-* Anahtar/değer ayıklama işlemi artık **/Custom/models/{modelid}/Analyze** API çağrısı tarafından başlatıldı. Bu çağrı, ayıklama sonuçlarını döndürmek için **özel/modeller/{ModelId}/analiz Zeresults/{Resultıd}** içine geçirebilmeniz için BIR işlem kimliği döndürür.
-* Eğitme işlemi için işlem kimlikleri, **Işlem konumu** üst bilgisi DEĞIL, http yanıtlarının **konum** üstbilgisinde bulunur.
+* Bir modeli eğitme süreci artık bir senkron. **/custom/models** API çağrısı ile eğitime başlatırsınız. Bu arama, eğitim sonuçlarını döndürmek için **özel/modellere/{modelID}** ye aktarabileceğiniz bir işlem kimliği döndürür.
+* Anahtar/değer ayıklama şimdi **/custom/models/{modelID}/analyze** API çağrısı tarafından başlatılır. Bu arama, çıkarma sonuçlarını döndürmek için **özel/modellere/{modelID}/analyzeResults/{resultID}'e** geçebileceğiniz bir işlem kimliği döndürür.
+* Tren işlemi için operasyon işlemi şimdi, **Operasyon** Konum üstbilgisinde değişiklik değişiklik altbilgisinde **Location** bulundu.
 
-### <a name="receipt-api-changes"></a>Giriş API 'SI değişiklikleri
+### <a name="receipt-api-changes"></a>Makbuz API değişiklikleri
 
-Satış alındılarını okumak için API 'Ler yeniden adlandırıldı.
+Satış makbuzlarını okumak için API'ler yeniden adlandırıldı.
 
-* Alındı verileri ayıklama işlemi artık **/prebuilt/teselt/Analyze** API çağrısı tarafından başlatılır. Bu çağrı, ayıklama sonuçlarını döndürmek için **/prebuilt/pot/analanaliz Zeresults/{resultid}** öğesine geçirebilen BIR işlem kimliği döndürür.
+* Makbuz veri ayıklama şimdi **/prebuilt/receipt/analyze** API çağrısı tarafından başlatılır. Bu arama, çıkarma sonuçlarını döndürmek için **/prebuilt/receipt/analyzeResults/{resultID}** adresine geçirebileceğiniz bir işlem kimliği döndürür.
 
-### <a name="output-format-changes"></a>Çıkış biçimi değişiklikleri
+### <a name="output-format-changes"></a>Çıktı biçimi değişiklikleri
 
-Tüm API çağrılarına yönelik JSON yanıtlarının yeni biçimleri vardır. Bazı anahtarlar ve değerler eklenmiştir, kaldırılmıştır veya yeniden adlandırılır. Geçerli JSON biçimlerinin örnekleri için hızlı başlangıçlara bakın.
+Tüm API çağrıları için JSON yanıtları yeni biçimlere sahiptir. Bazı anahtarlar ve değerler eklendi, kaldırıldı veya yeniden adlandırıldı. Geçerli JSON biçimleriörnekleri için hızlı başlangıçlara bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Form tanıyıcı API 'lerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)kullanmaya başlamak için [hızlı](quickstarts/curl-train-extract.md) başlangıcı doldurun.
+[Form Recognizer API'leri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)ile başlamak için hızlı bir [başlangıç](quickstarts/curl-train-extract.md) tamamlayın.

@@ -1,7 +1,7 @@
 ---
-title: Kapsayıcıları yapılandırma-yüz
+title: Kapsayıcıları yapılandırma - Yüz
 titleSuffix: Azure Cognitive Services
-description: Yüz kapsayıcı çalışma zamanı ortamı, `docker run` komutu bağımsız değişkenleri kullanılarak yapılandırılır. Hem gerekli hem de isteğe bağlı ayarlar vardır.
+description: Face kapsayıcı çalışma zamanı ortamı komut `docker run` bağımsız değişkenleri kullanılarak yapılandırılır. Hem gerekli hem de isteğe bağlı ayarlar vardır.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,97 +12,97 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76167971"
 ---
-# <a name="configure-face-docker-containers"></a>Yüz Docker kapsayıcılarını yapılandırma
+# <a name="configure-face-docker-containers"></a>Yüz Docker kaplarını yapılandırın
 
-**Yüz** kapsayıcı çalışma zamanı ortamı, `docker run` komutu bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
+**Face** kapsayıcı çalışma zamanı ortamı komut `docker run` bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcı birkaç isteğe bağlı ayarları ile birlikte birkaç gerekli ayarları vardır. Komutun birkaç [örneği](#example-docker-run-commands) mevcuttur. Kapsayıcıya özgü ayarlar fatura ayarlarıdır. 
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), Ve [ `Eula` ](#eula-setting) ayarları birlikte kullanılır ve bunları; Aksi takdirde, tüm üç için geçerli değerler sağlamanız gerekir kapsayıcınızı başlatılamıyor. Bir kapsayıcı örneği oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalama](face-how-to-install-containers.md#billing).
+> [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)ve [`Eula`](#eula-setting) ayarlar birlikte kullanılır ve her üçü için de geçerli değerler sağlamanız gerekir; aksi takdirde konteyneriniz çalışmayabaşlamaz. Bir kapsayıcıyı anında kullanmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için [Faturalandırma'ya](face-how-to-install-containers.md#billing)bakın.
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
-`ApiKey` Ayar kapsayıcısı için fatura bilgileri izlemek için kullanılan Azure kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olması gerekir.
+Ayar, `ApiKey` kapsayıcının fatura bilgilerini izlemek için kullanılan Azure kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değer [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen Bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olmalıdır.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: bilişsel **Hizmetler** kaynak yönetimi, **anahtarlar** altında
+* Azure portalı: **Bilişsel Hizmetler** Kaynak Yönetimi, **Anahtarlar** altında
 
-## <a name="applicationinsights-setting"></a>Applicationınsights ayarı
+## <a name="applicationinsights-setting"></a>ApplicationInsights ayarı
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Yapılandırma ayarı faturalama
+## <a name="billing-configuration-setting"></a>Faturalandırma yapılandırma ayarı
 
-`Billing` ayarı, Azure üzerinde bulunan bilişsel _Hizmetler_ kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+Ayar, `Billing` kapsayıcının fatura bilgilerini ölçmede kullanılan _Azure'daki Bilişsel Hizmetler_ kaynağının bitiş noktası URI'yi belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve değer Azure'daki _Bilişsel Hizmetler_ kaynağı için geçerli bir bitiş noktası URI olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanımı bildirir.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: bilişsel **hizmetlere** genel bakış, `Endpoint` etiketli
+* Azure portalı: **Bilişsel Hizmetlere** Genel Bakış, etiketli`Endpoint`
 
-_Yüz_ yönlendirmeyi, örnekte gösterildiği gibi uç nokta URI 'sine eklemeyi unutmayın. 
+Örnekte gösterildiği _gibi, Yüz_ yönlendirmesini bitiş noktası URI'ye eklemeyi unutmayın. 
 
-|Gereklidir| Ad | Veri türü | Açıklama |
+|Gerekli| Adı | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](face-how-to-install-containers.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
+|Evet| `Billing` | Dize | Faturalandırma uç noktası URI. FaturaLAMA URI'si edinme hakkında daha fazla bilgi için [gerekli parametreleri toplamaya](face-how-to-install-containers.md#gathering-required-parameters)bakın. Daha fazla bilgi ve bölgesel uç noktaların tam listesi [için, Bilişsel Hizmetler için Özel alt alan adları bölümüne](../cognitive-services-custom-subdomains.md)bakın. |
 
 <!-- specific to face only -->
 
 ## <a name="cloudai-configuration-settings"></a>CloudAI yapılandırma ayarları
 
-Yapılandırma ayarlarında `CloudAI` bölümü kapsayıcınıza benzersiz kapsayıcı özgü seçenekler sağlar. Aşağıdaki ayarları ve nesneleri yüz kapsayıcıda desteklenir `CloudAI` bölümü
+Bölümdeki `CloudAI` yapılandırma ayarları, kapsayıcınıza özgü kapsayıcıya özgü seçenekler sağlar. Aşağıdaki ayarlar ve `CloudAI` nesneler, bölümdeki Yüz kapsayıcısı için desteklenir
 
-| Ad | Veri türü | Açıklama |
+| Adı | Veri türü | Açıklama |
 |------|-----------|-------------|
-| `Storage` | Nesne | Yüz tanıma kapsayıcı tarafından kullanılan depolama senaryo. Depolama senaryoları ve için ilişkili ayarları hakkında daha fazla bilgi için `Storage` nesne, bkz: [depolama senaryo ayarları](#storage-scenario-settings) |
+| `Storage` | Nesne | Yüz kapsayıcısı tarafından kullanılan depolama senaryosu. `Storage` Nesne için depolama senaryoları ve ilişkili ayarlar hakkında daha fazla bilgi için [bkz.](#storage-scenario-settings) |
 
-### <a name="storage-scenario-settings"></a>Depolama senaryosu ayarları
+### <a name="storage-scenario-settings"></a>Depolama senaryo ayarları
 
-Yüz tanıma kapsayıcı, blob, önbellek, meta verileri ve sıra veri, ne saklanan bağlı olarak depolar. Örneğin, eğitim dizinleri ve sonuçları bir büyük kişi grubu için blob veri depolanır. Yüz tanıma kapsayıcı ile etkileşim kurulurken iki farklı depolama senaryoları ve bu tür verilerin depolama sağlar:
+Yüz kapsayıcısı, depolanan lara bağlı olarak blob, önbellek, meta veri ve sıra verilerini depolar. Örneğin, büyük bir kişi grubunun eğitim dizinleri ve sonuçları blob verisi olarak depolanır. Yüz kapsayıcısı, bu tür verilerle etkileşimde ve depolamasırasında iki farklı depolama senaryosu sağlar:
 
-* Hafıza  
-  Tüm dört veri türlerini bellekte depolanır. Dağılımı ya da bunların kalıcıdır. Yüz tanıma kapsayıcı durdurulmuş veya kaldırılmış, tüm bu kapsayıcı için depolama birimindeki verileri bozulur.  
-  Yüz tanıma kapsayıcısı için varsayılan depolama senaryosu budur.
+* Bellek  
+  Dört veri türü de bellekte depolanır. Dağıtılmadı, ısrarda da değiller. Yüz kapsayıcısı durdurulur veya kaldırılırsa, bu kapsayıcının depolama sındaki tüm veriler yok edilir.  
+  Bu, Yüz kapsayıcısı için varsayılan depolama senaryosudur.
 * Azure  
-  Yüz tanıma kapsayıcı, bu dört veri türleri arasında kalıcı depolama dağıtmak için Azure depolama ve Azure Cosmos DB kullanır. BLOB ve kuyruk verileri Azure Depolama tarafından işlenir. Meta veriler ve önbellek verileri Azure Cosmos DB tarafından işlenir. Yüz tanıma kapsayıcı durdurulmuş veya kaldırılmış, tüm veriler bu kapsayıcı için depolama alanında kalır Azure depolama ve Azure Cosmos DB içinde depolanan.  
-  Azure depolama senaryo tarafından kullanılan kaynakları aşağıdaki ek gereksinimlere sahiptir.
-  * Azure depolama kaynağı StorageV2 hesap türü kullanmalısınız.
-  * Azure Cosmos DB kaynağı MongoDB için Azure Cosmos DB API 'sini kullanmalıdır
+  Yüz kapsayıcısı, bu dört veri türünü kalıcı depolama alanına dağıtmak için Azure Depolama ve Azure Cosmos DB'yi kullanır. Blob ve sıra verileri Azure Depolama tarafından işlenir. Meta veriler ve önbellek verileri Azure Cosmos DB tarafından işlenir. Yüz kapsayıcısı durdurulur veya kaldırılırsa, söz sözlegelen kapsayıcının depolama sındaki tüm veriler Azure Depolama ve Azure Cosmos DB'de depolanır.  
+  Azure depolama senaryosu tarafından kullanılan kaynaklar aşağıdaki ek gereksinimlere sahiptir
+  * Azure Depolama kaynağı StorageV2 hesap türünü kullanmalıdır
+  * Azure Cosmos DB kaynağı, MongoDB için Azure Cosmos DB'nin API'sini kullanmalıdır
 
-Tarafından yönetilen depolama senaryolar ve ilişkili yapılandırma ayarları `Storage` altında nesne `CloudAI` yapılandırma bölümü. Aşağıdaki yapılandırma ayarları kullanılabilir `Storage` nesnesi:
+Depolama senaryoları ve ilişkili yapılandırma `Storage` `CloudAI` ayarları, yapılandırma bölümü altında nesne tarafından yönetilir. Nesnede `Storage` aşağıdaki yapılandırma ayarları mevcuttur:
 
-| Ad | Veri türü | Açıklama |
+| Adı | Veri türü | Açıklama |
 |------|-----------|-------------|
-| `StorageScenario` | Dize | Kapsayıcı tarafından desteklenen depolama senaryo. Aşağıdaki değerler kullanılabilir<br/>`Memory` -Varsayılan değer. Kapsayıcı, tek bir düğüm, geçici kullanım için kalıcı olmayan, olmayan dağıtılmış ve bellek içi depolama kullanır. Bu kapsayıcı için depolama kapsayıcısı durdurulmuş veya kaldırılmış olmadığını yok edilir.<br/>`Azure` -Kapsayıcı, depolama için Azure kaynaklarını kullanır. Bu kapsayıcı için depolama kapsayıcısı durdurulmuş veya kaldırılmış olmadığını kalıcı hale getirilir.|
-| `ConnectionStringOfAzureStorage` | Dize | Kapsayıcı tarafından kullanılan Azure depolama kaynağı için bağlantı dizesi.<br/>Bu ayar, yalnızca aşağıdaki durumlarda geçerlidir `Azure` için belirtilen `StorageScenario` yapılandırma ayarı. |
-| `ConnectionStringOfCosmosMongo` | Dize | Kapsayıcı tarafından kullanılan Azure Cosmos DB kaynak için MongoDB bağlantı dizesi.<br/>Bu ayar, yalnızca aşağıdaki durumlarda geçerlidir `Azure` için belirtilen `StorageScenario` yapılandırma ayarı. |
+| `StorageScenario` | Dize | Kapsayıcı tarafından desteklenen depolama senaryosu. Aşağıdaki değerler kullanılabilir<br/>`Memory`- Varsayılan değer. Kapsayıcı, tek düğümlü, geçici kullanım için kalıcı olmayan, dağıtılmamış ve bellek içi depolama kullanır. Kapsayıcı durdurulur veya kaldırılırsa, bu kapsayıcının deposu yok edilir.<br/>`Azure`- Kapsayıcı depolama için Azure kaynaklarını kullanır. Kapsayıcı durdurulur veya kaldırılırsa, bu kapsayıcının depolama alanı kalıcıdır.|
+| `ConnectionStringOfAzureStorage` | Dize | Kapsayıcı tarafından kullanılan Azure Depolama kaynağının bağlantı dizesi.<br/>Bu ayar yalnızca `Azure` yapılandırma ayarı `StorageScenario` için belirtilmişse geçerlidir. |
+| `ConnectionStringOfCosmosMongo` | Dize | Kapsayıcı tarafından kullanılan Azure Cosmos DB kaynağıiçin MongoDB bağlantı dizesi.<br/>Bu ayar yalnızca `Azure` yapılandırma ayarı `StorageScenario` için belirtilmişse geçerlidir. |
 
-Örneğin, aşağıdaki komutu, Azure depolama senaryosu belirtir ve örnek bağlantı dizeleri yüz kapsayıcı verilerini depolamak için kullanılan Azure depolama ve Cosmos DB kaynakları sağlar.
+Örneğin, aşağıdaki komut Azure depolama senaryosunu belirtir ve Yüz kapsayıcısı için veri depolamak için kullanılan Azure Depolama ve Cosmos DB kaynakları için örnek bağlantı dizeleri sağlar.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-Depolama senaryosu alanından ayrı olarak yönetilir takar giriş ve çıkış takar. Tek bir kapsayıcı için bu özellikleri birleşimi belirtebilirsiniz. Örneğin, aşağıdaki komutu için Docker bağlama bağlama tanımlar `D:\Output` klasörü çıkış bağlama olarak konak makinedeki sonra JSON biçiminde çıktı bağlama için günlük dosyalarını kaydetme yüz kapsayıcı görüntüsünden bir kapsayıcı oluşturur. Komut ayrıca Azure depolama senaryosu belirtir ve örnek bağlantı dizeleri yüz kapsayıcı verilerini depolamak için kullanılan Azure depolama ve Cosmos DB kaynakları sağlar.
+Depolama senaryosu giriş bağlarından ve çıktı bağlarından ayrı olarak işlenir. Tek bir kapsayıcı için bu özelliklerin bir birleşimini belirtebilirsiniz. Örneğin, aşağıdaki komut, çıkış yuvası olarak ana `D:\Output` bilgisayar makinesindeki klasöre bir Docker bağlama yuvası tanımlar, ardından Yüz kapsayıcı görüntüsünden bir kapsayıcıanlık olarak JSON formatında günlük dosyalarını çıkış yuvasına kaydeder. Komut ayrıca Azure depolama senaryosunu belirtir ve Yüz kapsayıcısı için veri depolamak için kullanılan Azure Depolama ve Cosmos DB kaynakları için örnek bağlantı dizeleri sağlar.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-## <a name="eula-setting"></a>EULA'yı ayarlama
+## <a name="eula-setting"></a>Eula ayarı
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluentd ayarları
+## <a name="fluentd-settings"></a>Akıcı ayarlar
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -110,46 +110,46 @@ Depolama senaryosu alanından ayrı olarak yönetilir takar giriş ve çıkış 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Günlük ayarları
+## <a name="logging-settings"></a>Oturum açma ayarları
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Bağlama ayarları
+## <a name="mount-settings"></a>Montaj ayarları
 
-Kullanım bağlama okumak ve kapsayıcı gelen ve giden veri yazmak için bağlar. Bir giriş bağlama belirtin veya çıkış bağlama belirterek `--mount` seçeneğini [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutu.
+Kapsayıcıya ve kapsayıcıdan veri okumak ve yazmak için bağlama bağlarını kullanın. Docker `--mount` [run](https://docs.docker.com/engine/reference/commandline/run/) komutundaki seçeneği belirterek bir giriş yuvası veya çıktı montajı belirtebilirsiniz.
 
-Yüz kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıkış taklarını kullanmaz. 
+Yüz kapları, eğitim veya hizmet verilerini depolamak için giriş veya çıktı montajları kullanmaz. 
 
-Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](face-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
+Ana bilgisayar montaj konumunun tam sözdizimi ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, docker hizmet hesabı tarafından kullanılan izinler ile ana bilgisayar montaj konum izinleri arasındaki bir çakışma nedeniyle [ana bilgisayarın](face-how-to-install-containers.md#the-host-computer)montaj konumuna erişilemeyebilir. 
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe bağlı| Adı | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmiyor| `Input` | Dize | Yüz kapsayıcıları bunu kullanmaz.|
-|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İzin verilmiyor| `Input` | Dize | Yüz kapları bunu kullanmaz.|
+|İsteğe bağlı| `Output` | Dize | Çıkış montaj hedefi. Varsayılan değer: `/output`. Bu günlüklerin yeridir. Buna kapsayıcı günlükleri de dahildir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın 
+## <a name="example-docker-run-commands"></a>Örnek docker çalıştır komutları 
 
-Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](face-how-to-install-containers.md#stop-the-container) bu.
+Aşağıdaki örnekler, komutların nasıl yazılabildiğini `docker run` ve kullanılacağını göstermek için yapılandırma ayarlarını kullanır.  Bir kez çalışırken, kapsayıcı [onu durdurunkadar](face-how-to-install-containers.md#stop-the-container) çalışmaya devam ediyor.
 
-* **Satır devamlılık karakteri**: aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak `\`ters eğik çizgi kullanır. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. 
-* **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
+* **Satır devamı karakteri**: Aşağıdaki bölümlerdeki Docker komutları, `\`çizgi devamı karakteri olarak arka çizgiyi kullanır. Ana bilgisayar işletim sisteminizin gereksinimlerine göre bunu değiştirin veya kaldırın. 
+* **Bağımsız değişken sırası**: Docker kapsayıcılarını çok iyi bilmediğiniz sürece bağımsız değişkenlerin sırasını değiştirmeyin.
 
-Yerine {_argument_name_} kendi değerlerinizle:
+{_argument_name_} 'yi kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-| **{API_KEY}** | Azure `Face` Keys sayfasında `Face` kaynağının bitiş noktası anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `Face` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](face-how-to-install-containers.md#gathering-required-parameters) konusuna bakın. |
+| **{API_KEY}** | Azure `Face` Tuşları sayfasındaki `Face` kaynağın bitiş noktası anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Faturalandırma bitiş noktası değeri Azure `Face` Genel Bakış sayfasında kullanılabilir.| Açık örnekler için [gerekli parametreleri toplamaya](face-how-to-install-containers.md#gathering-required-parameters) bakın. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](face-how-to-install-containers.md#billing).
-> ApiKey değeri, Azure `Cognitive Services` kaynak anahtarları sayfasından alınan **anahtardır** . 
+> `Eula`Kapsayıcıyı `Billing`çalıştırmak `ApiKey` için , ve seçenekler belirtilmelidir; aksi takdirde, kapsayıcı başlamaz.  Daha fazla bilgi için [Faturalandırma'ya](face-how-to-install-containers.md#billing)bakın.
+> ApiKey değeri, Azure `Cognitive Services` Kaynak anahtarları sayfasındaki **Anahtardır.** 
 
-## <a name="face-container-docker-examples"></a>Yüz kapsayıcı Docker örnekleri
+## <a name="face-container-docker-examples"></a>Yüz konteyner Docker örnekleri
 
-Aşağıdaki Docker örnekleri, yüz kapsayıcısı için verilmiştir. 
+Aşağıdaki Docker örnekleri yüz konteyneri içindir. 
 
 ### <a name="basic-example"></a>Temel örnek 
 
@@ -161,7 +161,7 @@ Aşağıdaki Docker örnekleri, yüz kapsayıcısı için verilmiştir.
   ApiKey={API_KEY} 
   ```
 
-### <a name="logging-example"></a>Günlüğe kaydetme örneği 
+### <a name="logging-example"></a>Günlük örneği 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
@@ -172,4 +172,4 @@ Aşağıdaki Docker örnekleri, yüz kapsayıcısı için verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Gözden geçirme [yükleme ve kapsayıcıları çalıştırın](face-how-to-install-containers.md)
+* [Kapsayıcıların nasıl yüklenir ve çalıştırılabildiğini](face-how-to-install-containers.md) gözden geçirin

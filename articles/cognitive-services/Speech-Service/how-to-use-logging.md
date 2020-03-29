@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK günlüğü-konuşma hizmeti
+title: Konuşma SDK günlüğü - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sında (C++, C#, Python, amaç-C, Java) günlüğe kaydetmenin nasıl etkinleştirileceği hakkında bilgi edinin.
+description: Konuşma SDK'da (C++, C#, Python, Objective-C, Java) oturum açmayı etkinleştirme hakkında bilgi edinin.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74805799"
 ---
-# <a name="enable-logging-in-the-speech-sdk"></a>Konuşma SDK 'sında günlüğü etkinleştirme
+# <a name="enable-logging-in-the-speech-sdk"></a>Konuşma SDK'da oturum açmayı etkinleştirme
 
-Dosyaya günlük kaydı, konuşma SDK 'Sı için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında, konuşma SDK 'sının temel bileşenlerinden ek bilgi ve Tanılamalar sağlar. Konuşma yapılandırma nesnesindeki `Speech_LogFilename` özellik, günlük dosyasının konumu ve adı olarak ayarlanarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduktan sonra günlüğe kaydetme işlemi Global olarak etkinleştirilir ve daha sonra devre dışı bırakılamaz. Çalışan bir günlüğe kaydetme oturumu sırasında bir günlük dosyasının adını değiştiremezsiniz.
+Dosyaya günlüğe kaydetme, Konuşma SDK için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında Konuşma SDK'nın temel bileşenlerinden ek bilgi ve tanılama sağlar. Bir konuşma yapılandırma nesnesi üzerindeki özelliği `Speech_LogFilename` günlük dosyasının konumuna ve adına ayarlayarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduğunda ve daha sonra devre dışı bırakılamadıktan sonra günlüğe kaydetme genel olarak etkinleştirilir. Çalışan günlük oturumu sırasında günlük dosyasının adını değiştiremezsiniz.
 
 > [!NOTE]
-> JavaScript dışında, desteklenen tüm konuşma SDK 'Sı programlama dillerinde konuşma SDK sürümü 1.4.0 bu yana günlüğe kaydetme kullanılabilir.
+> Giriş, JavaScript hariç, desteklenen tüm Konuşma SDK programlama dillerinde Konuşma SDK sürümü 1.4.0'dan beri kullanılabilir.
 
 ## <a name="sample"></a>Örnek
 
-Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. `SpeechConfig` örnek olarak alma ve `config`adında bir örnek oluşturduğunuzu kabul etmek için:
+Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. Örnek `SpeechConfig` olarak almak ve bir örnek oluşturduğunuzu varsayarak: `config`
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -48,18 +48,18 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
 ```
 
-Config nesnesinden bir tanıyıcı oluşturabilirsiniz. Bu, tüm tanıyıcılar için günlüğe kaydetmeyi etkinleştirir.
+Config nesnesinden bir tanıyıcı oluşturabilirsiniz. Bu, tüm tanıyanlar için günlüğe kaydetmeyi sağlar.
 
 > [!NOTE]
-> Yapılandırma nesnesinden bir `SpeechSynthesizer` oluşturursanız, günlüğe kaydetme etkinleştirilmeyecektir. Ancak günlüğe kaydetme etkinleştirilirse, `SpeechSynthesizer`tanılamayı da alacaksınız.
+> Config nesnesinden bir oluşturmazsanız, `SpeechSynthesizer` günlüğe kaydetmeyi etkinleştirmez. Ancak günlüğe kaydetme etkinse, `SpeechSynthesizer`'den tanılama da alırsınız.
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Farklı platformlarda günlük dosyası oluşturma
 
-Windows veya Linux için, günlük dosyası kullanıcının yazma iznine sahip olduğu herhangi bir yolda olabilir. Diğer işletim sistemlerindeki dosya sistemi konumlarına yazma izinleri, varsayılan olarak sınırlı veya kısıtlanmış olabilir.
+Windows veya Linux için, günlük dosyası kullanıcının için yazma izni olan herhangi bir yolda olabilir. Diğer işletim sistemlerinde dosya sistemi konumları için yazma izinleri varsayılan olarak sınırlı veya sınırlı olabilir.
 
 ### <a name="universal-windows-platform-uwp"></a>Evrensel Windows Platformu (UWP)
 
-UWP uygulamalarının, uygulama verileri konumlarından birine (yerel, dolaşım veya geçici) günlük dosyaları yerleştirmeleri gerekir. Yerel uygulama klasöründe bir günlük dosyası oluşturulabilir:
+UWP uygulamalarının günlük dosyalarını uygulama veri konumlarından birine (yerel, dolaşım veya geçici) yerle bir etmesi gerekir. Yerel uygulama klasöründe bir günlük dosyası oluşturulabilir:
 
 ```csharp
 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -67,11 +67,11 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-UWP uygulamalarına yönelik dosya erişimi izni hakkında daha fazla bilgi [edinebilirsiniz.](https://docs.microsoft.com/windows/uwp/files/file-access-permissions)
+UWP uygulamaları için dosya erişim izni hakkında daha fazla bilgiye [buradan](https://docs.microsoft.com/windows/uwp/files/file-access-permissions)ulaşabilirsiniz.
 
 ### <a name="android"></a>Android
 
-Bir günlük dosyasını iç depolamaya, dış depolamaya veya önbellek dizinine kaydedebilirsiniz. Dahili depolamada veya önbellek dizininde oluşturulan dosyalar uygulamaya özeldir. Dış depolamada bir günlük dosyası oluşturmak tercih edilir.
+Günlük dosyasını dahili depolama alanına, dış depolama alanına veya önbellek dizinine kaydedebilirsiniz. İç depolama alanında veya önbellek dizininde oluşturulan dosyalar uygulamaya özeldir. Harici depolama alanında bir günlük dosyası oluşturmak tercih edilir.
 
 ```java
 File dir = context.getExternalFilesDir(null);
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolamaya kaydeder. Bir Kullanıcı Dosya Yöneticisi ile dosyaya erişebilir (genellikle `Android/data/ApplicationName/logfile.txt`). Uygulama kaldırıldığında dosya silinir.
+Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolama alanına kaydeder. Bir kullanıcı dosya yöneticisi (genellikle) `Android/data/ApplicationName/logfile.txt`ile dosyaerişebilirsiniz. Uygulama kaldırıldığında dosya silinir.
 
-Ayrıca, bildirim dosyasında `WRITE_EXTERNAL_STORAGE` izin istemeniz gerekir:
+Ayrıca, bildirim `WRITE_EXTERNAL_STORAGE` dosyasında izin istemeniz gerekir:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -91,11 +91,11 @@ Ayrıca, bildirim dosyasında `WRITE_EXTERNAL_STORAGE` izin istemeniz gerekir:
 </manifest>
 ```
 
-Android uygulamaları için veri ve dosya depolama hakkında daha fazla bilgi [edinebilirsiniz.](https://developer.android.com/guide/topics/data/data-storage.html)
+Android uygulamaları için veri ve dosya depolama hakkında daha fazla bilgi [burada](https://developer.android.com/guide/topics/data/data-storage.html)bulabilirsiniz.
 
 #### <a name="ios"></a>iOS
 
-Yalnızca uygulama korumalı alanının içindeki dizinlere erişilebilir. Dosyalar belgeler, kitaplık ve geçici dizinlerde oluşturulabilir. Belgeler dizinindeki dosyalar, bir kullanıcı tarafından kullanılabilir hale getirilebilir. Aşağıdaki kod parçacığı, uygulama belge dizininde bir günlük dosyası oluşturmayı gösterir:
+Yalnızca uygulama ve dizinlerine erişilebilir. Dosyalar belgelerde, kitaplıkta ve geçici dizinlerde oluşturulabilir. Belge dizinindeki dosyalar bir kullanıcıtarafından kullanılabilir hale getirilebilir. Aşağıdaki kod snippet uygulama belgesi dizini bir günlük dosyası oluşturma gösterir:
 
 ```objc
 NSString *filePath = [
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Oluşturulan bir dosyaya erişmek için aşağıdaki özellikleri uygulamanın `Info.plist` özellik listesine ekleyin:
+Oluşturulan bir dosyaya erişmek için aşağıdaki `Info.plist` özellikleri uygulamanın özellik listesine ekleyin:
 
 ```xml
 <key>UIFileSharingEnabled</key>
@@ -113,9 +113,9 @@ Oluşturulan bir dosyaya erişmek için aşağıdaki özellikleri uygulamanın `
 <true/>
 ```
 
-İOS dosya sistemi hakkında daha fazla bilgi [edinebilirsiniz.](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)
+iOS Dosya Sistemi hakkında daha fazla hizmeti [burada](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub 'da örneklerimizi keşfet](https://aka.ms/csspeech/samples)
+> [Örneklerimizi GitHub'da keşfedin](https://aka.ms/csspeech/samples)

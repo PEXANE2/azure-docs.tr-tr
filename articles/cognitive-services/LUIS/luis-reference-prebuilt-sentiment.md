@@ -1,7 +1,7 @@
 ---
-title: Yaklaşım Analizi-LUSıS
+title: Duygusallık analizi - LUIS
 titleSuffix: Azure Cognitive Services
-description: Yaklaşım analizi yapılandırılmışsa, yaklaşım analizi LUIS json yanıtı içerir.
+description: Duygusallık analizi yapılandırılırsa, LUIS json yanıtı duygusallık analizini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
 ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270415"
 ---
 # <a name="sentiment-analysis"></a>Yaklaşım analizi
-Yaklaşım analizi yapılandırılmışsa, yaklaşım analizi LUIS json yanıtı içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
+Duygusallık analizi yapılandırılırsa, LUIS json yanıtı duygusallık analizini içerir. [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerinde duygu analizi hakkında daha fazla bilgi edinin.
 
 
-## <a name="resolution-for-sentiment"></a>Yaklaşım için çözüm
+## <a name="resolution-for-sentiment"></a>Duyarlılık için çözüm
 
-Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri.
+Duyarlılık verileri, verilerin pozitif (1'e yakın) veya negatif (0'a yakın) duyarlılığını gösteren 1 ile 0 arasında bir puandır.
 
-#### <a name="english-language"></a>[İngilizce dili](#tab/english)
+#### <a name="english-language"></a>[Ingilizce](#tab/english)
 
-Kültür `en-us`olduğunda yanıt şu şekilde olur:
+Kültür olduğunda, `en-us`yanıt:
 
 ```JSON
 "sentimentAnalysis": {
@@ -39,7 +39,7 @@ Kültür `en-us`olduğunda yanıt şu şekilde olur:
 
 #### <a name="other-languages"></a>[Diğer diller](#tab/other-languages)
 
-Diğer tüm kültürler için yanıt şöyledir:
+Diğer tüm kültürler için, yanıt:
 
 ```JSON
 "sentimentAnalysis": {
@@ -50,5 +50,5 @@ Diğer tüm kültürler için yanıt şöyledir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 

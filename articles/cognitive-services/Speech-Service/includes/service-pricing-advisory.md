@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: dapine
 ms.openlocfilehash: ceb062cc5272fae0030c331ad7c9c6c870763df7
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74829039"
 ---
 > [!NOTE]
-> Test edilirken sistem bir döküm gerçekleştirir. Fiyatlandırma hizmet sunumuna ve abonelik düzeyine göre farklılık gösterdiğinden, bu göz önünde bulundurmanız önemlidir. [En son ayrıntılar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)için her zaman resmi Azure bilişsel hizmetler fiyatlandırma-konuşma hizmeti ' ne bakın.
+> Test ederken, sistem bir transkripsiyon gerçekleştirecektir. Fiyat teklifi ve abonelik düzeyi başına değiştiğiiçin, bu durum göz önünde bulundurulması gereken bir öneme bağlıdır. Her zaman resmi Azure Bilişsel Hizmetler fiyatlandırmasına bakın - [En son ayrıntılar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)için konuşma hizmeti.

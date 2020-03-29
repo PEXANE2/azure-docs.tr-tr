@@ -1,45 +1,52 @@
 ---
-title: Etkin öğrenme önerileri-Soru-Cevap Oluşturma
-description: Etkin öğrenme önerileri, sorularınızı ve yanıt çiftiyle Kullanıcı Gönderimleri temelinde alternatif sorular önererek bilgi Bankalarınızın kalitesini artırmanıza olanak tanır.
+title: Aktif öğrenme önerileri - QnA Maker
+description: Aktif öğrenme önerileri, soru ve yanıt çiftinize kullanıcı gönderimlerine dayalı alternatif sorular önererek bilgi tabanınızın kalitesini artırmanızı sağlar.
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 56f3ab870e148c39912d4f1f5e6e7133a5df4a98
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/19/2020
+ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053148"
 ---
-# <a name="active-learning-suggestions"></a>Etkin öğrenme önerileri
+# <a name="active-learning-suggestions"></a>Aktif öğrenme önerileri
 
-_Etkin öğrenme önerileri_ özelliği, sorularınızı ve yanıt çiftiyle Kullanıcı Gönderimlerini temel alan alternatif sorular önererek bilgi Bankalarınızın kalitesini iyileştirmenize olanak tanır. Bu önerileri, mevcut sorulara ekleyerek veya reddetmek için gözden geçirin.
+_Aktif öğrenme önerileri_ özelliği, soru ve yanıt çiftinize kullanıcı gönderimlerine dayalı alternatif sorular önererek bilgi tabanınızın kalitesini artırmanızı sağlar. Bu önerileri, varolan sorulara ekleyerek veya reddederek gözden geçirin.
 
-Bilgi tabanınız otomatik olarak değişmez. Değişikliklerin etkili olabilmesi için önerileri kabul etmelisiniz. Bu öneriler, sorular ekler ancak mevcut soruları değiştirmez veya kaldırmaz.
+Bilgi tabanınız otomatik olarak değişmez. Herhangi bir değişikliğin etkili olması için önerileri kabul etmelisiniz. Bu öneriler soru ekler, ancak varolan soruları değiştirmez veya kaldırmaz.
 
-## <a name="what-is-active-learning"></a>Etkin öğrenimi nedir?
+## <a name="what-is-active-learning"></a>Aktif öğrenme nedir?
 
-Soru-Cevap Oluşturma örtük ve açık geri bildirimlerle yeni soru çeşitlemeleri öğreniyor.
+QnA Maker örtük ve açık geribildirim ile yeni soru varyasyonları öğrenir.
 
-* [Örtük geri bildirim](#how-qna-makers-implicit-feedback-works) : derecelendiricisini, bir Kullanıcı sorusunun çok yakın puanlar içeren birden fazla yanıtı olduğunda ve bunu geri bildirim olarak düşündüğünde anlamıştır. Bunun gerçekleşmesi için herhangi bir şey yapmanız gerekmez.
-* [Açık geri bildirim](#how-you-give-explicit-feedback-with-the-train-api) – bilgi bankasından en az çeşitlere sahip birden çok yanıt döndürülürse, istemci uygulama kullanıcıya doğru soru olduğunu sorar. Kullanıcının açık geri bildirimi, [eğitme API](../How-to/improve-knowledge-base.md#train-api)'siyle soru-cevap oluşturma gönderilir.
+* [Örtük geri bildirim](#how-qna-makers-implicit-feedback-works) – Ranker, bir kullanıcı sorusunun çok yakın olan puanları içeren birden çok yanıtı olduğunda anlar ve bunu geri bildirim olarak görür. Bunun olması için bir şey yapmana gerek yok.
+* [Açık geri bildirim](#how-you-give-explicit-feedback-with-the-train-api) – Puanlarda çok az değişiklik olan birden çok yanıt bilgi tabanından döndürüldüğünde, istemci uygulaması kullanıcıya hangi sorunun doğru soru olduğunu sorar. Kullanıcının açık geri bildirimi [Tren API'si](../How-to/improve-knowledge-base.md#train-api)ile QnA Maker'a gönderilir.
 
-Her iki yöntem de, kümelenmiş benzer sorgularla birlikte derecelendiricisini sağlar.
+Her iki yöntem de sıralamacıya kümelenmiş benzer sorgularla sağlar.
 
-## <a name="how-active-learning-works"></a>Etkin öğrenme nasıl kullanılır?
+## <a name="how-active-learning-works"></a>Aktif öğrenme nasıl çalışır?
 
-Etkin öğrenme, Soru-Cevap Oluşturma tarafından döndürülen en çok birkaç yanıtın puanlarını temel alarak tetiklenir. Sorgu ile eşleşen QnA kümeleri arasındaki puan farklılıkları küçük bir aralıkta yer alıyorsa, sorgu olası her bir QnA çiftinin her biri için olası bir öneri (alternatif bir soru olarak) olarak değerlendirilir. Belirli bir QnA çifti için önerilen soruyu kabul ettikten sonra, diğer çiftler için reddedilir. Önerileri kabul ettikten sonra, kaydetmeyi ve eğiteyi unutmamanız gerekir.
+Aktif öğrenme, QnA Maker tarafından döndürülen en iyi birkaç yanıtın puanlarına göre tetiklenir. Sorguyla eşleşen QnA kümeleri arasındaki puan farkları küçük bir aralıkta yatıyorsa, sorgu olası QnA çiftlerinin her biri için olası bir öneri (alternatif soru olarak) olarak kabul edilir. Belirli bir QnA çifti için önerilen soruyu kabul ettiğinizde, diğer çiftler için reddedilir. Önerileri kabul ettikten sonra, kaydetmek ve tren hatırlamak gerekir.
 
-Etkin öğrenme, uç noktaların makul bir miktar ve çeşitli kullanım sorguları elde ettiği durumlarda olası en iyi önerileri sağlar. 5 veya daha fazla benzer sorgu kümelenirken, her 30 dakikada bir Soru-Cevap Oluşturma, kabul etmek veya reddetmek için Bilgi Bankası tasarımcısına yönelik kullanıcı tabanlı soruları önerir. Tüm öneriler benzerlik ile birlikte kümelenir ve diğer sorular için en önemli öneriler, son kullanıcılara göre belirli sorguların sıklığına göre görüntülenir.
+Etkin öğrenme, uç noktaların makul miktarda ve çeşitli kullanım sorguları aldığı durumlarda mümkün olan en iyi önerileri verir. Her 30 dakikada bir 5 veya daha fazla benzer sorgu kümelendiğinde, QnA Maker kullanıcı tabanlı soruları bilgi bankası tasarımcısına kabul etmesi veya reddetmesi için önerir. Tüm öneriler benzerlik tarafından bir araya toplanır ve alternatif sorular için en iyi öneriler, son kullanıcıların belirli sorgularının sıklığına göre görüntülenir.
 
-Soru-Cevap Oluşturma portalında sorular Önerildikten sonra, bu önerileri gözden geçirmeniz ve kabul etmeniz veya reddetmeniz gerekir. Önerileri yönetmek için bir API yok.
+Sorular QnA Maker portalında önerildiği nde, bu önerileri gözden geçirmeniz ve reddetmeniz veya reddetmeniz gerekir. Önerileri yönetmek için bir API yok.
 
-## <a name="how-qna-makers-implicit-feedback-works"></a>Soru-Cevap Oluşturma örtük geri bildirimi nasıl kullanılır?
+## <a name="turn-on-active-learning"></a>Etkin öğrenmeyi açma
 
-Soru-Cevap Oluşturma örtük geri bildirimleri, puan yakınlığını tespit etmek için bir algoritma kullanır ve ardından etkin öğrenme önerileri sağlar. Yakınlık belirleme algoritması basit bir hesaplama değil. Aşağıdaki örnekteki aralıklar düzeltilmez, ancak algoritmanın yalnızca etkisini anlamak için kılavuz olarak kullanılmalıdır.
+Varsayılan olarak, etkin öğrenme **kapalıdır.**
+Aktif öğrenmeyi kullanmak için:
+* QnA Maker'ın bilgi tabanınız için alternatif sorular toplaması için [aktif öğrenmeyi açmanız](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) gerekir.
+* Önerilen alternatif soruları görmek için, Edit sayfasında [görünüm seçeneklerini kullanın.](../How-To/improve-knowledge-base.md#view-suggested-questions)
 
-Bir sorunun puanı %80 gibi oldukça emin olduğunda, etkin öğrenme için kabul edilen puanlar aralığı, yaklaşık %10 ' da geniştir. Güven puanı azaldıkça %40, puanlar aralığı da yaklaşık olarak %4 içinde azalır.
+## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker'ın örtük geri bildirimi nasıl çalışır?
 
-Aşağıdaki JSON yanıtında bir sorgudan Soru-Cevap Oluşturma generateAnswer, A, B ve C puanları yakınlıyordu ve öneri olarak kabul edilir.
+QnA Maker'ın örtük geri bildirimi, skor yakınlığını belirlemek için bir algoritma kullanır ve ardından aktif öğrenme önerileri yapar. Yakınlığı belirlemek için algoritma basit bir hesaplama değildir. Aşağıdaki örnekteki aralıkların düzeltilmesi amaçlanmaz, ancak yalnızca algoritmanın etkisini anlamak için bir kılavuz olarak kullanılmalıdır.
+
+Bir sorunun puanı %80 gibi son derece kendinden emin olduğunda, aktif öğrenme için düşünülen puan aralığı yaklaşık %10'dur. Güven puanı %40 gibi azaldıkça, puan aralığı da yaklaşık %4'lük bir azalma sağlar.
+
+QnA Maker'S generateAnswer bir sorgu aşağıdaki JSON yanıtı, A, B ve C için puanları yakın ve öneri olarak kabul edilecektir.
 
 ```json
 {
@@ -109,20 +116,20 @@ Aşağıdaki JSON yanıtında bir sorgudan Soru-Cevap Oluşturma generateAnswer,
 }
 ```
 
-Soru-Cevap Oluşturma en iyi yanıt olduğunu bilmez. En iyi yanıtı seçmek ve yeniden eğitme için Soru-Cevap Oluşturma portalın öneriler listesini kullanın.
+QnA Maker hangi cevabın en iyi cevap olduğunu bilmeyecek. En iyi yanıtı seçmek ve yeniden eğitmek için QnA Maker portalının öneri listesini kullanın.
 
 
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Tren API 'SI ile açık geri bildirim verme
+## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Tren API'si ile nasıl açık geri bildirimde
 
-Soru-Cevap Oluşturma cevapın en iyi yanıtı olduğu hakkında açık geri bildirimde bulunmak gerekir. En iyi yanıt nasıl belirlenir ve şunlar olabilir:
+QnA Maker cevaplardan hangisinin en iyi cevap olduğu konusunda açık geri bildirime ihtiyaç duyar. En iyi yanıtın nasıl belirlendiği size kalmış ve şunları içerebilir:
 
-* Kullanıcı geri bildirimi, yanıtlardan birini seçme.
-* Kabul edilebilir puan aralığını belirleme gibi iş mantığı.
-* Hem Kullanıcı geri bildirimi hem de iş mantığı birleşimi.
+* Yanıtlardan birini seçerek kullanıcı geri bildirimi.
+* Kabul edilebilir bir puan aralığını belirlemek gibi iş mantığı.
+* Hem kullanıcı geri bildirimi hem de iş mantığının birleşimi.
 
-Kullanıcı onu seçtikten sonra, Soru-Cevap Oluşturma doğru yanıtı göndermek için [eğitme API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) 'sini kullanın.
+Kullanıcı seçtikten sonra QnA Maker'a doğru yanıtı göndermek için [Tren API'sini](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) kullanın.
 
 ## <a name="next-step"></a>Sonraki adım
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası 'nı sorgulama](query-knowledge-base.md)
+> [Bilgi tabanını sorgula](query-knowledge-base.md)

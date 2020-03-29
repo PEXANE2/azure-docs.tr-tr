@@ -1,7 +1,7 @@
 ---
-title: LUSıS uygulamanızı oluşturmaya yönelik en iyi uygulamalar
+title: LUIS uygulamanızı oluşturmak için en iyi uygulamalar
 titleSuffix: Azure Cognitive Services
-description: LUSıS uygulamanızın modelinden en iyi sonuçları elde etmek için en iyi uygulamaları öğrenin.
+description: LUIS uygulamanızın modelinden en iyi sonuçları almak için en iyi uygulamaları öğrenin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,95 +12,95 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280918"
 ---
-# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Dil anlama (LUSıS) uygulaması oluşturmak için en iyi uygulamalar
-LUSıS uygulamanızı derlemek için uygulama yazma işlemini kullanın: 
+# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Dil anlama (LUIS) uygulaması oluşturmak için en iyi uygulamalar
+LUIS uygulamanızı oluşturmak için uygulama yazma işlemini kullanın: 
 
-* Yapı dil modelleri (amaçlar ve varlıklar)
-* Birkaç eğitim örneği ekleyin (amaç başına 15-30)
-* Uç noktada Yayımla
-* Uç noktasından test 
+* Dil modelleri oluşturma (niyet ler ve varlıklar)
+* Birkaç eğitim örneği söyleyiş ekleyin (niyet başına 15-30)
+* Bitiş noktasına yayımlama
+* Uç noktadan test 
 
-Uygulamanız [yayımlandıktan](luis-how-to-publish-app.md)sonra, uç noktadan özellikler, yayımlama ve test için geliştirme yaşam döngüsünü kullanın. Daha fazla örnek ekleyerek bir sonraki yazma döngüsüne başlamamayın çünkü bu, LUSıS 'ın gerçek dünyada Kullanıcı utcileri ile modelinizi öğrenmesinin izin vermez. 
+Uygulamanız [yayımlandıktan](luis-how-to-publish-app.md)sonra, son noktadan özellikler eklemek, yayımlamak ve test etmek için geliştirme yaşam döngüsünü kullanın. Luis'in modelinizi gerçek dünyadaki kullanıcı söyleyerek öğrenmesine izin vermediği için bir sonraki yazma döngüsüne daha fazla örnek söyleyerek başlamayın. 
 
-Her iki örneğin ve uç nokta çeşidinin geçerli kümesi, bir bütün olarak, yüksek tahmin puanlarının döndürülünceye kadar bu noktaları genişletmeyin. [Etkin öğrenimi](luis-concept-review-endpoint-utterances.md)kullanarak puanları geliştirir. 
-
-
+Hem örnek hem de bitiş noktası sözcüklerinin geçerli kümesi kendinden emin, yüksek tahmin puanları dönene kadar söyleyemeleri genişletmeyin. Aktif öğrenmeyi kullanarak puanları [artırın.](luis-concept-review-endpoint-utterances.md) 
 
 
-## <a name="do-and-dont"></a>Bunu yapmak ve yok
-Aşağıdaki listede LUIS uygulamaları için en iyi uygulamaları içerir:
+
+
+## <a name="do-and-dont"></a>Yap ve yapma
+Aşağıdaki liste LUIS uygulamaları için en iyi uygulamaları içerir:
 
 |Yapın|Yapmayın|
 |--|--|
-|[Ayrı amaçlar tanımlayın](#do-define-distinct-intents)<br>[Amaçlar 'a tanımlayıcı ekleme](#do-add-descriptors-to-intents) |[Amaçlar için birçok örnek ekleme](#dont-add-many-example-utterances-to-intents)<br>[Birkaç veya basit varlık kullanın](#dont-use-few-or-simple-entities) |
-|[Her amaç için çok genel ve çok özel arasında bir tatlı noktası bulun](#do-find-sweet-spot-for-intents)|[LUSıS 'yi eğitim platformu olarak kullanma](#dont-use-luis-as-a-training-platform)|
-|[Uygulamanızı sürümleriyle tekrarlayarak oluşturun](#do-build-your-app-iteratively-with-versions)<br>[Model ayrıştırma için varlık oluşturma](#do-build-for-model-decomposition)|[Diğer biçimleri yoksayarak aynı biçimdeki birçok örnek utde ekleyin](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Sonraki yinelemelerde desenler ekleme](#do-add-patterns-in-later-iterations)|[Amaç ve varlıkların tanımını karıştırma](#dont-mix-the-definition-of-intents-and-entities)|
-|Hiçbiri amacı dışında [tüm amaçlar genelinde utbotlarınızı dengeleyin](#balance-your-utterances-across-all-intents) .<br>[Hiçbiri amacına örnek ekleme](#do-add-example-utterances-to-none-intent)|[Tüm olası değerlerle tanımlayıcı oluştur](#dont-create-descriptors-with-all-the-possible-values)|
-|[Etkin öğrenme için öneri özelliğinden yararlanın](#do-leverage-the-suggest-feature-for-active-learning)|[Çok fazla desen ekleme](#dont-add-many-patterns)|
-|[Toplu test ile uygulamanızın performansını izleyin](#do-monitor-the-performance-of-your-app)|[Her tek örnekle eğitim ve yayımlama eklendi](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Farklı amaçları tanımlama](#do-define-distinct-intents)<br>[Niyetlere tanımlayıcıekleme](#do-add-descriptors-to-intents) |[Niyetlere birçok örnek söyleyiş ekleme](#dont-add-many-example-utterances-to-intents)<br>[Az sayıda veya basit varlık kullanma](#dont-use-few-or-simple-entities) |
+|[Her amaç için çok genel ve çok özel arasında tatlı bir nokta bulun](#do-find-sweet-spot-for-intents)|[LUIS'i eğitim platformu olarak kullanın](#dont-use-luis-as-a-training-platform)|
+|[Uygulamanızı sürümlerle yinelemeli olarak oluşturun](#do-build-your-app-iteratively-with-versions)<br>[Model ayrıştırma için varlıklar oluşturma](#do-build-for-model-decomposition)|[Diğer biçimleri yoksayarak, aynı biçimde birçok örnek sözcük ekleme](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Sonraki yinelemelerde desen ekleme](#do-add-patterns-in-later-iterations)|[Niyet ve varlıkların tanımını karıştırın](#dont-mix-the-definition-of-intents-and-entities)|
+|Yok niyet dışında [tüm niyetler arasında söyleyiş dengeleyin.](#balance-your-utterances-across-all-intents)<br>[None amacına örnek söz ekleme](#do-add-example-utterances-to-none-intent)|[Mümkün olan tüm değerlere sahip tanımlayıcılar oluşturma](#dont-create-descriptors-with-all-the-possible-values)|
+|[Etkin öğrenme için önerme özelliğinden yararlanın](#do-leverage-the-suggest-feature-for-active-learning)|[Çok fazla desen ekleme](#dont-add-many-patterns)|
+|[Toplu testile uygulamanızın performansını izleme](#do-monitor-the-performance-of-your-app)|[Tren ve her bir örnek söyleyiş ile yayınlamak eklendi](#dont-train-and-publish-with-every-single-example-utterance)|
 
-## <a name="do-define-distinct-intents"></a>Farklı hedefleri tanımlayın
-Sözlük her hedefi için yalnızca bu amaç için ve farklı bir hedefi ile çakışan olduğundan emin olun. Örneğin, hava yolu fışıkları ve oteller gibi seyahat düzenlemelerini işleyen bir uygulamaya sahip olmak istiyorsanız, bu konu alanlarının farklı amaçlar halinde veya aynı amaca göre, utterance içindeki belirli veriler için varlıklar kullanabilirsiniz.
+## <a name="do-define-distinct-intents"></a>Farklı niyetler tanımla
+Her amaç için kelime sadece bu amaç için ve farklı bir niyet ile örtüşen olmadığından emin olun. Örneğin, havayolu uçuşları ve oteller gibi seyahat düzenlemelerini ele alan bir uygulamanız olmasını istiyorsanız, bu konu alanlarını ayrı niyetler olarak veya söz konusu veri için varlıklarla aynı niyette olmayı seçebilirsiniz.
 
-Sözlük iki amaçları arasında aynı ise, amacı birleştirin ve varlıkları kullanın. 
+İki amaç arasındaki sözcük aynıysa, amacı birleştirin ve varlıkları kullanın. 
 
-Aşağıdaki örnek konuşma göz önünde bulundurun:
+Aşağıdaki örnek söyleyerek göz önünde bulundurun:
 
 |Örnek konuşmalar|
 |--|
-|Kitap bir uçuş|
-|Kitap bir otel|
+|Bir uçuş rezervasyonu yapın|
+|Otel rezervasyonu yapın|
 
-`Book a flight` ve `Book a hotel` aynı `book a `sözlüğünü kullanır. Bu biçim aynı şekilde aynıdır, bu nedenle `flight` farklı kelimeleri ve ayıklanan varlıklar olarak `hotel` aynı amaç olmalıdır. 
+`Book a flight`ve `Book a hotel` aynı kelime `book a `kullanmak . Bu biçim aynıdır, bu nedenle çıkarılan varlıkların farklı `flight` sözcükleri ile `hotel` aynı niyetolmalıdır. 
 
-## <a name="do-add-descriptors-to-intents"></a>Amaçlar 'a tanımlayıcı ekleme
+## <a name="do-add-descriptors-to-intents"></a>Niyetlere tanımlayıcılar ekleme
 
-Tanımlayıcılar, bir amaç için özellikleri tanımlamaya yardımcı olur. Bir tanımlayıcı, bu amaç için önemli olan sözcüklerin bir ifade listesi veya bu amaç için önemli bir varlık olabilir. 
+Tanımlayıcılar, bir amaç için özellikleri açıklamaya yardımcı olur. Tanımlayıcı, bu amaç için önemli olan sözcüklerin veya bu amaç için önemli olan bir varlığın bir ifade listesi olabilir. 
 
-## <a name="do-find-sweet-spot-for-intents"></a>Tatlı nokta hedefleri için Bul
-LUIS verilerden öngörü, hedefleri örtüşmez belirlemek için kullanın. Çakışan amaçlar LUSıS 'yi şaşırtır. Hedefi Puanlama en yakın olduğunu sonucudur başka bir amaç. LUIS her zaman eğitim verilerde aynı tam yolunu kullanmadığından, ilk veya ikinci eğitim olma şansı çakışan bir amacı vardır. Bu çevir/flop gerçekleşmemesi için her bir amaç için utterance 'in puanına sahip olmasını istiyorsunuz. İyi ayrım hedefleri için beklenen üst amaca her seferinde neden olur. 
+## <a name="do-find-sweet-spot-for-intents"></a>Niyetler için tatlı bir nokta bulmak mı
+Niyetlerinizin çakışıp örtüşmeyecek olmadığını belirlemek için LUIS'in tahmin verilerini kullanın. Örtüşen niyetler LUIS'in kafasını karıştırır. Sonuç, en yüksek puanlama niyetinin başka bir amacla çok yakın olmasıdır. LUIS her eğitim için veriler arasında aynı yolu kullanmadığından, çakışan bir niyetin eğitimde birinci veya ikinci olma şansı vardır. Her niyet için söyleyiş puanının birbirinden daha uzak olmasını istiyorsunuz, böylece bu flip/flop gerçekleşmez. Niyetler için iyi bir ayrım her zaman beklenen üst niyet neden olmalıdır. 
  
 <a name="#do-build-the-app-iteratively"></a>
 
-## <a name="do-build-your-app-iteratively-with-versions"></a>Uygulamanızı sürümleriyle tekrarlayarak oluşturma
+## <a name="do-build-your-app-iteratively-with-versions"></a>Uygulamanızı sürümlerle yinelemeli olarak oluşturun
 
-Her yazma döngüsünün, var olan sürümden klonlanan yeni bir [Sürüm](luis-concept-version.md)içinde olması gerekir. 
+Her yazma döngüsü yeni bir [sürüm](luis-concept-version.md)içinde olmalıdır , varolan bir sürümden klonlanmış. 
 
-## <a name="do-build-for-model-decomposition"></a>Model ayrıştırma için derleme yap
+## <a name="do-build-for-model-decomposition"></a>Model ayrıştırma için yapı oluşturma
 
-Model ayrıştırma işleminin tipik bir süreci vardır:
+Model ayrıştırma tipik bir işlem vardır:
 
-* istemci uygulamanın kullanıcı amaçları temelinde **Amaç** oluşturun
-* gerçek dünya Kullanıcı girişine göre 15-30 örnek ekleme
-* örnek utde üst düzey veri kavramını etiketle
-* veri kavramını alt bileşenlere Böl
-* alt bileşenlere tanımlayıcı (Özellikler) ekleme
-* amaca tanımlayıcı (Özellikler) ekleme 
+* istemci uygulamasının kullanıcı amaçlarına göre **Niyet** oluşturma
+* gerçek kullanıcı girişine dayalı 15-30 örnek söz eklemek
+* örnek söyleyiş etiket üst düzey veri kavramı
+* veri kavramını alt bileşenlere ayırma
+* alt bileşenlere tanımlayıcı (özellikler) ekleme
+* niyete tanımlayıcılar (özellikler) eklemek 
 
-Amacınızı oluşturduktan sonra, örnek bir şekilde, aşağıdaki örnekte varlık ayrıştırma açıklanmaktadır. 
+Bir kez niyet oluşturduktan ve örnek ifadeler ekledikten sonra, aşağıdaki örnek varlık ayrışma açıklar. 
 
-Bir utterde çıkarmak istediğiniz tüm veri kavramlarını tanımlayarak başlayın. Bu, makineniz tarafından öğrenilen varlıktır. Ardından, tümceciğini parçalarını parçalara ayırın. Bu, alt bileşenleri (varlıklar olarak), tanımlayıcılar ve kısıtlamalarla birlikte tanımlamayı içerir. 
+Bir söyleyerek ayıklamak istediğiniz tüm veri kavramlarını tanımlayarak başlayın. Bu senin makineden öğrenilen varlığın. Sonra ifadeyi kendi parçalarına ayrıştırın. Bu, alt bileşenleri (varlık olarak) tanımlamanın yanı sıra tanımlayıcılar ve kısıtlamaları içerir. 
 
-Örneğin, bir adresi ayıklamak istiyorsanız, en iyi makine tarafından öğrenilen varlık `Address`olarak çağrılabilir. Adresi oluştururken, sokak adresi, şehir, eyalet ve posta kodu gibi bazı alt bileşenlerinden bazılarını yapın. 
+Örneğin bir adres ayıklamak istiyorsanız, makinede öğrenilen en `Address`üst varlık çağrılabilir. Adresi oluştururken, sokak adresi, şehir, eyalet ve posta kodu gibi bazı alt bileşenlerini tanımlayın. 
 
-Posta kodunu normal bir **ifadeye geçirerek bu** öğeleri oluşturmaya devam edin. Cadde adresini bir cadde numarası (önceden oluşturulmuş bir sayı kullanarak), sokak adı ve sokak türü bölümlerine ayırın. Cadde türü, Avenue, Circle, Road ve Lane gibi bir **tanımlayıcı** listesi ile açıklanabilir.
+Posta kodunu normal bir ifadeyle **kısıtlayarak** bu öğeleri çürütmeye devam edin. Sokak adresini bir sokak numarasının (önceden oluşturulmuş bir numara kullanarak), bir sokak adının ve sokak türüne ayırın. Sokak türü, cadde, daire, yol ve şerit gibi **tanımlayıcı** bir listeyle tanımlanabilir.
 
-V3 yazma API 'SI, model ayrıştırma için izin verir. 
+V3 yazma API modeli ayrıştırma sağlar. 
 
-## <a name="do-add-patterns-in-later-iterations"></a>Daha sonraki yinelemelerde desenler ekleme
+## <a name="do-add-patterns-in-later-iterations"></a>Sonraki yinelemelerde desen ekleme
 
-Desenler eklemeden önce uygulamanın nasıl davrandığını anlamanız gerekir [, çünkü desenler](luis-concept-patterns.md) daha fazla örneğe göre daha fazla ağırlıklı ve güvenle eğrilticektir. 
+Desenler örnek söyleyişlerden daha ağır ağırlıklı olduğundan ve güveni çarpıtacağı [için, uygulamanın desen](luis-concept-patterns.md) eklemeden önce nasıl bir şekilde nasıl hissettiğini anlamalısınız. 
 
-Uygulamanızın nasıl davranacağını anladıktan sonra, uygulamanıza uygulanan desenler ekleyin. Bunları her [yineleme](luis-concept-app-iteration.md)ile eklemeniz gerekmez. 
+Uygulamanızın nasıl bir şekilde hissettiğini anladıktan sonra, uygulamanız için geçerli olan desenler ekleyin. Her [yineleme](luis-concept-app-iteration.md)ile bunları eklemeniz gerekmez. 
 
-Model tasarımınızın başına ekleme konusu yoktur, ancak model, modelin bu şekilde test edildikten sonra modeli nasıl değiştirdiğinin daha kolay bir şekilde görülebilir. 
+Model tasarımınızın başında bunları eklemenin bir sakıncası yoktur, ancak model söyleyerek test edildikten sonra her desenin modeli nasıl değiştirdiğini görmek daha kolaydır. 
  
 <!--
 
@@ -129,66 +129,66 @@ For more information:
 
 <a name="balance-your-utterances-across-all-intents"></a>
 
-## <a name="do-balance-your-utterances-across-all-intents"></a>Tüm Amaçlar genelinde deterlerinizi dengeleyin
+## <a name="do-balance-your-utterances-across-all-intents"></a>Tüm niyetler arasında söyleyişlerinizi dengeleyin
 
-LULAR tahminlerinin doğru olması için, her bir amaç içindeki (hiçbiri amacı hariç) örnek miktarları görece eşit olmalıdır. 
+LUIS tahminlerinin doğru olabilmesi için, her bir niyetteki örnek sözcük lerin miktarının (Yok niyeti hariç) nispeten eşit olması gerekir. 
 
-100 örnek ile ilgili bir amaç varsa ve 20 örnek elde ediyorsanız, 100-utterance amacına daha yüksek bir tahmin ücreti sunulacaktır.  
+100 örnek söz ve 20 örnek söyleyiş ile bir niyet iseniz, 100-söyleyiş niyeti tahmin daha yüksek bir oran olacaktır.  
 
-## <a name="do-add-example-utterances-to-none-intent"></a>Örnek konuşma hiçbiri hedefi ekleme
+## <a name="do-add-example-utterances-to-none-intent"></a>None amacına örnek söz ekleme
 
-Bu amaç, uygulamanızın dışındaki her şeyi gösteren geri dönüş amacını gösterir. Bir örnek utterance hiçbiri LUIS uygulamanızı geri kalanında her 10 örnek konuşma için hedefi ekleyin.
+Bu amaç, uygulamanızın dışındaki her şeyi gösteren geri dönüş niyetidir. LUIS uygulamanızın geri kalanında her 10 örnek söyleyiş için None niyetine bir örnek söyleyiş ekleyin.
 
-## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Etkin öğrenme için Öner özelliğinden yararlanın
+## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Aktif öğrenme için önerme özelliğinden yararlanın
 
-Amaçlar için daha fazla örnek ekleme yerine, [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)'Nin **Gözden geçirme uç noktası araslarını** düzenli olarak kullanın. Uygulamayı sürekli olarak konuşma uç noktası almak için bu listeyi artan ve değiştirme.
+Kasıtlı olarak daha fazla örnek sözcük eklemek [yerine, etkin öğrenme](luis-how-to-review-endpoint-utterances.md)'nin **İnceleme uç nokta larını** düzenli olarak kullanın. Uygulama sürekli uç nokta söyleyerek alıyor olduğundan, bu liste büyüyor ve değişiyor.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Uygulamanızın performansını izleyin
 
-Bir [Batch test](luis-concept-batch-test.md) kümesi kullanarak tahmin doğruluğunu izleyin. 
+[Toplu iş testi](luis-concept-batch-test.md) kümesini kullanarak tahmin doğruluğunu izleyin. 
 
-[Örnek](luis-concept-utterance.md) Aralık veya uç nokta utaları olarak kullanılmayan ayrı bir Aralık kümesini saklayın. Uygulamayı test kümeniz için geliştirilir. Gerçek kullanıcı konuşma yansıtmak için test uyarlayın. Uygulamanın her bir yinelemesini veya sürümünü değerlendirmek için bu test kümesini kullanın. 
+[Örnek söz](luis-concept-utterance.md) veya uç nokta söyleyiş olarak kullanılmayan ayrı bir sözcük kümesi tutun. Test setiniz için uygulamayı geliştirmeye devam edin. Test kümesini gerçek kullanıcı söyleyicilerini yansıtacak şekilde uyarla. Uygulamanın her yinelemesini veya sürümünü değerlendirmek için bu test kümesini kullanın. 
 
-## <a name="dont-add-many-example-utterances-to-intents"></a>Birçok örnek konuşma için hedefleri ekleme
+## <a name="dont-add-many-example-utterances-to-intents"></a>Niyetlere çok fazla örnek söz eklemeyin
 
-Uygulama yayımlandıktan sonra, yalnızca geliştirme yaşam döngüsü sürecinde etkin öğrenmeden gelen utbotları ekleyin. Konuşma çok benzer bir desen ekleyin. 
+Uygulama yayınlandıktan sonra, yalnızca geliştirme yaşam döngüsü sürecinde aktif öğrenmeden gelen sözlerle ekleyin. Söyleyişler çok benzerse, bir desen ekleyin. 
 
-## <a name="dont-use-few-or-simple-entities"></a>Birkaç veya basit varlık kullanmayın
+## <a name="dont-use-few-or-simple-entities"></a>Az sayıda veya basit varlık kullanmayın
 
-Varlıklar, veri ayıklama ve tahmin için oluşturulmuştur. Her bir amaç, amaca göre verileri tanımlayan makine tarafından öğrenilen varlıkların olması önemlidir. Bu, istemci uygulamanızın ayıklanan varlığı kullanması gerekmiyorsa bile, LUTO 'NıN amacı tahmin etmesine yardımcı olur. 
+Varlıklar veri ayıklama ve tahmin için oluşturulur. Her niyetin, amaçtaki verileri açıklayan makineden öğrenilen varlıklara sahip olması önemlidir. Bu, istemci uygulamanızın ayıklanan varlığı kullanması gerekmese bile, LUIS'in amacı tahmin etmesini sağlar. 
 
-## <a name="dont-use-luis-as-a-training-platform"></a>LUIS eğitim platformu olarak kullanmayın
+## <a name="dont-use-luis-as-a-training-platform"></a>LUIS'i eğitim platformu olarak kullanmayın
 
-LUIS, bir dil modeli etki özeldir. Genel bir doğal dil eğitimi platformu olarak çalışması amaçlıyordu. 
+LUIS, bir dil modelinin etki alanına özgüdür. Bu genel bir doğal dil eğitim platformu olarak çalışmak anlamına gelmez. 
 
-## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Diğer biçimlere yoksayılıyor aynı biçimde, birçok örnek Konuşma ekleme
+## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Diğer biçimleri yoksayarak, aynı biçimde çok sayıda örnek sözcük eklemeyin
 
-LUIS, içinde bir amaç'ın konuşma çeşitlemeleri bekliyor. Konuşma, aynı genel anlamı yaparken farklılık gösterebilir. Değişimleri utterance uzunluğu, word seçeneği ve word yerleştirme içerebilir. 
+LUIS bir niyetin söyleyişlerinde farklılıklar bekler. Aynı genel anlamı sahip iken söyleyemeler değişebilir. Varyasyonlar, sözcük uzunluğu, sözcük seçimi ve sözcük yerleşimini içerebilir. 
 
-|Aynı biçimi kullanma|Değişen biçimini kullanın|
+|Aynı biçimi kullanmayın|Farklı biçim kullanma|
 |--|--|
-|Seattle bilet satın alma<br>Paris bilet satın alma<br>Orlando bilet satın alma|Seattle 1 bilet satın alma<br>Ayırma paris'e sonraki Pazartesi kırmızı göz üzerindeki iki bilgisayar lisansı<br>3 biletleri için spring sonu tarihleri arasında Orlando için kitap istiyorum|
+|Seattle'a bilet al<br>Paris'e bilet al<br>Orlando'ya bilet al|Seattle için 1 bilet satın alın<br>Önümüzdeki Pazartesi Paris'e kırmızı göz üzerinde rezerv iki koltuk<br>Bahar tatili için Orlando'ya 3 bilet ayırtmak istiyorum.|
 
-Farklı miktarlarını, ikinci sütun kullanan farklı fiiller (satın alma, ayrılmış, kitabı) (1, iki, 3), ve sözcükler ancak tüm farklı düzenlenişlerini uçak bileti seyahat satın bağdaştırıcılar aynı amaca sahip. 
+İkinci sütunda farklı fiiller (satın alma, rezerv, kitap), farklı miktarlarda (1, iki, 3) ve kelimelerin farklı düzenlemeleri kullanılır, ancak hepsi seyahat için uçak bileti satın alma niyetine sahiptir. 
 
-## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Hedefleri ve varlıkların tanımı bir arada kullanmayın
+## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Niyet ve varlıkların tanımını karıştırmayın
 
-Botunuzun sürecek bir hedefi için herhangi bir işlem oluşturun. Varlıklar, bu eylem mümkün kılan parametreleri olarak kullanma. 
+Botunuzun yapacağı herhangi bir eylem için bir niyet oluşturun. Varlıkları, bu eylemi mümkün kınlayan parametreler olarak kullanın. 
 
-Hava yolu fışıklarından kitap oluşturacak bir bot için, bir **muhasebeci** amaç oluşturun. Her Havayolu ya da her hedef için bir hedefi oluşturmayın. Bu veri parçalarını [varlık](luis-concept-entity-types.md) olarak kullanın ve örnekleri örnek olarak işaretleyin. 
+Havayolu uçuşları için rezervasyon yaptıracak bir bot için **BookFlight** amacı oluşturun. Her havayolu veya her varış noktası için bir niyet oluşturmayın. Bu verileri [varlık](luis-concept-entity-types.md) olarak kullanın ve bunları örnek sözlerle işaretleyin. 
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Tüm olası değerlerle tanımlayıcı oluşturma
+## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Tüm olası değerlere sahip tanımlayıcılar oluşturmayın
 
-Tanımlayıcı [tümceciği listelerinde](luis-concept-feature.md) birkaç örnek sağlayın, ancak her sözcüğe değil. LUIS genelleştirir ve bağlam dikkate alır. 
+Açıklayıcı [tümcecik listelerinde](luis-concept-feature.md) birkaç örnek sağlayın, ancak her sözcük tespret indeğil. LUIS genelleştirir ve bağlamı dikkate alır. 
 
-## <a name="dont-add-many-patterns"></a>Birçok desen ekleme
+## <a name="dont-add-many-patterns"></a>Çok desen eklemeyin
 
-Çok fazla [desen](luis-concept-patterns.md)eklemeyin. LUIS, daha az sayıda örnek ile hızlı bir şekilde öğrenmek için tasarlanmıştır. Sistem gereksiz yere aşırı yükleme yapmaz.
+Çok fazla desen [eklemeyin.](luis-concept-patterns.md) LUIS daha az örnekle hızlı bir şekilde öğrenmek içindir. Gereksiz yere sistemi aşırı yüklemeyin.
 
-## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Yoksa, eğitmek ve her tek örnek utterance ile yayımlama
+## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Her bir örnekle eğitilip yayınlamayın
 
-10 veya 15 konuşma, eğitim ve yayımlamadan önce ekleyin. Tahmin doğruluğunu etkisini görmenize olanak sağlar. Tek bir utterance ekleme puanına göre görünür bir etkisi olmayabilir. 
+Eğitim ve yayıncılık önce 10 veya 15 kelime ekleyin. Bu, tahmin doğruluğu üzerindeki etkisini görmenizi sağlar. Tek bir sözcük eklemek skor üzerinde gözle görülür bir etki yaratmayabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulamanızı LUSıS uygulamanızda nasıl [planlayacağınızı](luis-how-plan-your-app.md) öğrenin.
+* LUIS [uygulamanızda uygulamanızı nasıl planlayınız](luis-how-plan-your-app.md) öğrenin.

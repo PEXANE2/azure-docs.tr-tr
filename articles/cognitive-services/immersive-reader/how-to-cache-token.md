@@ -1,7 +1,7 @@
 ---
-title: Kimlik doğrulama belirtecini önbelleğe alma
+title: Kimlik doğrulaması belirtecini önbelleğe alma
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, kimlik doğrulama belirtecinin nasıl önbelleğe alınacağını gösterilecektir.
+description: Bu makalede, kimlik doğrulama belirteci önbelleğe nasıl gösterecektir.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946171"
 ---
-# <a name="how-to-cache-the-authentication-token"></a>Kimlik doğrulama belirtecini önbelleğe alma
+# <a name="how-to-cache-the-authentication-token"></a>Kimlik doğrulama belirteci önbelleğe nasıl
 
-Bu makalede, uygulamanızın performansını artırmak için kimlik doğrulama belirtecinin nasıl önbelleğe alınacağını gösterilmektedir.
+Bu makalede, uygulamanızın performansını artırmak için kimlik doğrulama belirteci önbelleğe nasıl gösterin.
 
 ## <a name="using-aspnet"></a>ASP.NET kullanma
 
-Bir belirteci almak için kullanılan **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet paketini içeri aktarın. Daha sonra, bir `AuthenticationResult`almak için aşağıdaki kodu kullanın ve bu, [modern okuyucu kaynağını](./how-to-create-immersive-reader.md)oluştururken aldığınız kimlik doğrulama değerlerini kullanır.
+Bir belirteç elde etmek için kullanılan **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet paketini içe aktarın. Ardından, Sürükleyici Okuyucu kaynağını `AuthenticationResult` [oluşturduğunuzda](./how-to-create-immersive-reader.md)var olan kimlik doğrulama değerlerini kullanarak aşağıdaki kodu kullanın.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult` nesnesi, SDK kullanarak derinlikli okuyucu başlatılırken kullanacağınız gerçek belirteç olan bir `AccessToken` özelliğine sahiptir. Ayrıca belirtecin ne zaman sona ereceğini belirten bir `ExpiresOn` özelliğine sahiptir. Tam ekran okuyucuyu başlatmadan önce belirtecin süresi dolup dolmadığını denetleyebilir ve yalnızca süresi dolmuşsa yeni bir belirteç elde edebilirsiniz.
+Nesne, `AuthenticationResult` SDK'yı kullanarak Sürükleyici Okuyucuyu başlatırken kullanacağınız gerçek belirteç olan bir `AccessToken` özelliğe sahiptir. Ayrıca belirteç süresi nin ne zaman dolacağını gösteren bir `ExpiresOn` özelliğe sahiptir. Sürükleyici Okuyucu'yu başlatmadan önce, belirteci süresinin dolup dolmadığını denetleyebilir ve yalnızca süresi dolmuşsa yeni bir belirteç edinebilirsiniz.
 
-## <a name="using-nodejs"></a>Node. JS kullanma
+## <a name="using-nodejs"></a>Düğüm.JS kullanma
 
-[**İstek**](https://www.npmjs.com/package/request) NPM paketini projenize ekleyin. [Tam ekran okuyucu kaynağını](./how-to-create-immersive-reader.md)oluştururken aldığınız kimlik doğrulama değerlerini kullanarak bir belirteci almak için aşağıdaki kodu kullanın.
+[**İstek**](https://www.npmjs.com/package/request) npm paketini projenize ekleyin. Sürükleyici Okuyucu kaynağını oluşturduğunuzda sahip olduğunuz kimlik doğrulama değerlerini kullanarak bir belirteç elde etmek için aşağıdaki kodu [kullanın.](./how-to-create-immersive-reader.md)
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-`expires_on` özelliği, belirtecin süresinin dolacağı tarih ve saat olarak 1 Ocak 1970 ' den beri UTC 'den itibaren saniye sayısı olarak ifade edilir. Yeni bir tane edinmeyi denemeden önce belirtecinizin süresi dolup gösterilmeyeceğini öğrenmek için bu değeri kullanın.
+Özellik, `expires_on` belirteç süresinin dolduğu tarih ve saattir ve 1 Ocak 1970 UTC'den bu yana saniye sayısı olarak ifade edilir. Belirteçlerinizin yeni bir tane edinmeye çalışmadan önce süresinin dolup dolmadığını belirlemek için bu değeri kullanın.
 
 ```javascript
 async function getToken() {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* Sürükleyici [Okuyucu SDK Referans](./reference.md) keşfedin

@@ -1,75 +1,75 @@
 ---
-title: Müşteri tarafından yönetilen anahtarları yapılandırmak için Azure portal kullanın
+title: Müşteri tarafından yönetilen anahtarları yapılandırmak için Azure portalını kullanma
 titleSuffix: Cognitive Services
-description: Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma hakkında bilgi edinin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal edebilmesini sağlar.
+description: Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırmak için Azure portalını nasıl kullanacağınızı öğrenin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bettirmenize ve iptal etmenizi sağlar.
 services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: ad97bde447a7bfbddca480b8561403f2cee7e25a
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 22bd3afcf30b8b8ebce18b22d5419d49ec8c3b4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79372287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053600"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırın
 
-Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault'u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Bilişsel Hizmetler kaynağı ve anahtar kasası aynı bölgede ve aynı Azure Etkin Dizini (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
-Bu makalede, [Azure Portal](https://portal.azure.com/)kullanılarak müşteri tarafından yönetilen anahtarlarla bir Azure Key Vault nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../../key-vault/quick-create-portal.md).
+Bu makalede, [Azure portalını](https://portal.azure.com/)kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-portal.md)
 
-## <a name="configure-azure-key-vault"></a>Azure Key Vault Yapılandır
+## <a name="configure-azure-key-vault"></a>Azure Key Vault'u yapılandırma
 
-Müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasında iki özellik ayarlanmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Bu özellikler varsayılan olarak etkinleştirilmez, ancak yeni veya var olan bir anahtar kasasında PowerShell veya Azure CLı kullanılarak etkinleştirilebilir.
+Müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasında iki özellik ayarlanmasını gerektirir, **Yumuşak Silme** ve **Temizleme.** Bu özellikler varsayılan olarak etkinleştirilmez, ancak yeni veya varolan bir anahtar kasasında PowerShell veya Azure CLI kullanılarak etkinleştirilebilir.
 
 > [!IMPORTANT]
-> **Yumuşak silme** ve **Temizleme** özellikleri etkin değilse ve anahtarınızı silerseniz, bilişsel hizmet kaynağınızın verilerini kurtaramazsınız.
+> **Yumuşak Silme** ve **Temizleme** özelliklerini etkinleştirmediyseniz ve anahtarınızı silerseniz, Bilişsel Hizmet kaynağınızdaki verileri kurtaramazsınız.
 
-Mevcut bir anahtar kasasında bu özellikleri etkinleştirmeyi öğrenmek için aşağıdaki makalelerden birinde **geçici silme özelliğini etkinleştirme** ve **Temizleme korumasını etkinleştirme** başlıklı bölümlere bakın:
+Varolan bir anahtar kasasında bu özellikleri nasıl etkinleştireceklerini öğrenmek için aşağıdaki makalelerden birinde **yumuşak silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın:
 
-- [PowerShell ile geçici silme nasıl kullanılır](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
-- [CLI ile geçici silme nasıl kullanılır](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli).
+- [PowerShell ile yumuşak silme nasıl kullanılır.](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+- [CLI ile yumuşak silme nasıl kullanılır.](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli)
 
-Azure depolama şifrelemesi ile yalnızca 2048 boyutundaki RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Key Vault anahtarlar** .
+Azure Depolama şifrelemesi ile yalnızca 2048 boyutunda RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için [Azure Key Vault tuşları, sırlar ve sertifikalar hakkında](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)Key Vault **tuşlarına** bakın.
 
-## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
+## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştirme
 
-Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
+Azure portalında müşteri tarafından yönetilen anahtarları etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. Bilişsel hizmetler kaynağına gidin.
-1. Bilişsel hizmetler kaynağınızın **Ayarlar** dikey penceresinde **şifreleme**' ye tıklayın. Aşağıdaki şekilde gösterildiği gibi, **müşteri tarafından yönetilen anahtarlar** seçeneğini belirleyin.
+1. Bilişsel Hizmetler kaynağınıza gidin.
+1. Bilişsel Hizmetler kaynağınızın **Ayarlar** bıyığınızda **Şifreleme'yi**tıklatın. Aşağıdaki şekilde gösterildiği gibi **Müşteri Yönetilen Anahtarlar** seçeneğini seçin.
 
-    ![Müşteri tarafından yönetilen anahtarların nasıl seçileceğini gösteren ekran görüntüsü](../media/cognitive-services-encryption/selectcmk.png)
+    ![Müşteri Yönetilen Anahtarları'nın nasıl seçilebildiğini gösteren ekran görüntüsü](../media/cognitive-services-encryption/selectcmk.png)
 
 ## <a name="specify-a-key"></a>Bir anahtar belirtin
 
-Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra bilişsel hizmetler kaynağıyla ilişkilendirilecek bir anahtar belirtme fırsatına sahip olacaksınız.
+Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, Bilişsel Hizmetler kaynağıyla ilişkilendirmek için bir anahtar belirtme fırsatınız olur.
 
-### <a name="specify-a-key-as-a-uri"></a>URI olarak bir anahtar belirtin
+### <a name="specify-a-key-as-a-uri"></a>Uri olarak bir anahtar belirtin
 
-Bir anahtarı URI olarak belirtmek için şu adımları izleyin:
+Bir anahtarı URI olarak belirtmek için aşağıdaki adımları izleyin:
 
-1. Azure portal anahtar URI 'sini bulmak için, anahtar kasanıza gidin ve **anahtarlar** ayarını seçin. İstediğiniz anahtarı seçin ve ardından sürümlerini görüntülemek için anahtara tıklayın. Bu sürümün ayarlarını görüntülemek için bir anahtar sürüm seçin.
-1. URI sağlayan **anahtar tanımlayıcı** alanının değerini kopyalayın.
+1. Azure portalındaki URI anahtarını bulmak için anahtar kasanıza gidin ve **Keys** ayarını seçin. İstenilen tuşu seçin ve ardından sürümlerini görüntülemek için tuşa tıklayın. Bu sürümün ayarlarını görüntülemek için önemli bir sürüm seçin.
+1. URI'yi sağlayan **Anahtar Tanımlayıcı** alanının değerini kopyalayın.
 
-    ![Anahtar Kasası anahtar URI 'sini gösteren ekran görüntüsü](../media/cognitive-services-encryption/key-uri-portal.png)
+    ![Anahtar kasa anahtarı URI'yi gösteren ekran görüntüsü](../media/cognitive-services-encryption/key-uri-portal.png)
 
-1. Depolama hesabınızın **şifreleme** ayarları ' nda **anahtar URI 'si girin** seçeneğini belirleyin.
-1. Kopyaladığınız URI 'yi **anahtar URI** alanına yapıştırın.
+1. Depolama hesabınızın **Şifreleme** ayarlarında **URI tuşuna girin** seçeneğini belirleyin.
+1. **Anahtar URI** alanına kopyaladığınız URI'yi yapıştırın.
 
-   ![Anahtar URI 'sini girmeyi gösteren ekran görüntüsü](../media/cognitive-services-encryption/ssecmk2.png)
+   ![URI tuşuna nasıl girilir gösteren ekran görüntüsü](../media/cognitive-services-encryption/ssecmk2.png)
 
 1. Anahtar kasasını içeren aboneliği belirtin.
 1. Yaptığınız değişiklikleri kaydedin.
 
-### <a name="specify-a-key-from-a-key-vault"></a>Anahtar kasasından anahtar belirtme
+### <a name="specify-a-key-from-a-key-vault"></a>Anahtar kasasından bir anahtar belirtin
 
-Anahtar kasasından bir anahtar belirtmek için öncelikle anahtar içeren bir anahtar kasanızın olduğundan emin olun. Anahtar kasasından bir anahtar belirtmek için şu adımları izleyin:
+Bir anahtar kasasından bir anahtar belirtmek için, önce anahtar içeren bir anahtar kasanız olduğundan emin olun. Anahtar kasasından bir anahtar belirtmek için aşağıdaki adımları izleyin:
 
-1. **Key Vault seçin** seçeneğini belirleyin.
+1. Anahtar **Kasası seçeneğini** seçin.
 1. Kullanmak istediğiniz anahtarı içeren anahtar kasasını seçin.
 1. Anahtar kasasından anahtarı seçin.
 
@@ -79,33 +79,34 @@ Anahtar kasasından bir anahtar belirtmek için öncelikle anahtar içeren bir a
 
 ## <a name="update-the-key-version"></a>Anahtar sürümünü güncelleştirme
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, bilişsel hizmetler kaynağını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları uygulayın:
+Anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için Bilişsel Hizmetler kaynağını güncelleştirin. Şu adımları uygulayın:
 
-1. Bilişsel hizmetler kaynağınız ' ne gidin ve **şifreleme** ayarlarını görüntüleyin.
-1. Yeni anahtar sürümünün URI 'sini girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.
+1. Bilişsel Hizmetler kaynağınıza gidin ve **Şifreleme** ayarlarını görüntüleyin.
+1. Yeni anahtar sürümü için URI'yi girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.
 1. Yaptığınız değişiklikleri kaydedin.
 
 ## <a name="use-a-different-key"></a>Farklı bir anahtar kullanın
 
-Şifreleme için kullanılan anahtarı değiştirmek için şu adımları izleyin:
+Şifreleme için kullanılan anahtarı değiştirmek için aşağıdaki adımları izleyin:
 
-1. Bilişsel hizmetler kaynağınız ' ne gidin ve **şifreleme** ayarlarını görüntüleyin.
-1. Yeni anahtar için URI girin. Alternatif olarak, anahtar kasasını seçip yeni bir anahtar seçebilirsiniz.
+1. Bilişsel Hizmetler kaynağınıza gidin ve **Şifreleme** ayarlarını görüntüleyin.
+1. Yeni anahtar için URI'yi girin. Alternatif olarak, anahtar kasasını seçebilir ve yeni bir anahtar seçebilirsiniz.
 1. Yaptığınız değişiklikleri kaydedin.
 
-## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
+## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı
 
-Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, bilişsel hizmetler kaynağınız daha sonra Microsoft tarafından yönetilen anahtarlarla şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakmak için şu adımları izleyin:
+Müşteri tarafından yönetilen anahtarları devre dışı dışı bettiğinizde, Bilişsel Hizmetler kaynağınız Microsoft tarafından yönetilen anahtarlarla şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakabilmek için aşağıdaki adımları izleyin:
 
-1. Bilişsel hizmetler kaynağınız ' ne gidin ve **şifreleme** ayarlarını görüntüleyin.
-1. **Kendi anahtarınızı kullanın** ayarının yanındaki onay kutusunun işaretini kaldırın.
+1. Bilişsel Hizmetler kaynağınıza gidin ve **Şifreleme** ayarlarını görüntüleyin.
+1. **Kendi anahtar ayarınızı Kullan'ın** yanındaki onay kutusunu seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Bilişsel hizmetler müşteri tarafından yönetilen anahtar Istek Formu](https://aka.ms/cogsvc-cmk)
-* [Yüz Hizmetleri, bekleyen verilerin şifrelenmesi](../Face/face-encryption-of-data-at-rest.md)
-* [Bekleyen verilerin şifrelenmesi Soru-Cevap Oluşturma](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Bekleyen verilerin hizmet şifrelemesini Language Understanding](../LUIS/luis-encryption-of-data-at-rest.md)
-* [Bekleyen verilerin şifrelenmesi Content Moderator](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Bekleyen verilerin Translator şifrelemesi](../translator/translator-encryption-of-data-at-rest.md)
+* [Azure Anahtar Kasası Nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Bilişsel Hizmetler Müşteri Tarafından Yönetilen Anahtar Talep Formu](https://aka.ms/cogsvc-cmk)
+* [Yüz Hizmetleri'nde veri şifrelemesi](../Face/face-encryption-of-data-at-rest.md)
+* [QnA Maker veri şifrelemesi](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
+* [Dil Anlama hizmeti şifrelemesi veri lerini istirahatte](../LUIS/luis-encryption-of-data-at-rest.md)
+* [İçerik Moderatör veri şifreleme stoyon](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
+* [Veri şifrelemesi](../translator/translator-encryption-of-data-at-rest.md)
+* [Veri personalizer şifreleme stoyat](../personalizer/personalizer-encryption-of-data-at-rest.md)

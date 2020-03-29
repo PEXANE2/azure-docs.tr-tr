@@ -1,56 +1,60 @@
 ---
-title: Kişiselleştirici kaynağı oluştur
-description: Hizmet yapılandırması, hizmetin yeniden nasıl davrandığını, hizmetin ne sıklıkla incelendiğine, modelin ne sıklıkta geri alınacağını ve ne kadar veri depolandığını içerir.
+title: Personalizer kaynağı oluşturma
+description: Hizmet yapılandırması, hizmetin ödülleri nasıl ele aldığı, hizmetin ne sıklıkta araştırdığını, modelin ne sıklıkta yeniden eğitildiğini ve ne kadar veri depolanırını içerir.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: cb14415f3a5950ad1534d9eb8da94198a41f4f91
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/26/2020
+ms.openlocfilehash: adb97db53d1fc0b6f0cdb14b697c82ec52501b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336054"
 ---
-# <a name="create-a-personalizer-resource"></a>Bir kişiselleştirici kaynağı oluşturma
+# <a name="create-a-personalizer-resource"></a>Personalizer kaynağı oluşturma
 
-Kişiselleştirici kaynak, kişiselleştirici öğrenme döngüsüyle aynı şeydir. Tek bir kaynak veya öğrenme döngüsü, sahip olduğunuz her konu etki alanı veya içerik alanı için oluşturulur. Aynı döngüde birden çok içerik alanı kullanmayın çünkü bu, öğrenme döngüsünü şaşırtır ve zayıf tahminler sağlar.
+Bir Personalizer kaynak Bir Personalizer öğrenme döngüsü olarak aynı şeydir. Sahip olduğunuz her konu etki alanı veya içerik alanı için tek bir kaynak veya öğrenme döngüsü oluşturulur. Bu, öğrenme döngüsünün kafasını karıştıracağı ve kötü tahminler sağlayacağından, aynı döngüde birden çok içerik alanı kullanmayın.
 
-Kişiselleştirici 'in bir Web sayfasının birden fazla içerik alanı için en iyi içeriği seçmesini istiyorsanız, her biri için farklı bir öğrenme döngüsü kullanın.
+Personalizer'ın bir web sayfasının birden fazla içerik alanı için en iyi içeriği seçmesini istiyorsanız, her biri için farklı bir öğrenme döngüsü kullanın.
 
 
-## <a name="create-a-resource-in-the-azure-portal"></a>Azure portal bir kaynak oluşturun
+## <a name="create-a-resource-in-the-azure-portal"></a>Azure portalında kaynak oluşturma
 
-Her geri bildirim döngüsü için bir kişiselleştirici kaynağı oluşturun.
+Her geri bildirim döngüsü için bir Personalizer kaynağı oluşturun.
 
-1. [Azure portalda](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) oturum açın. Önceki bağlantı sizi, kişiselleştirici hizmeti için **Oluştur** sayfasına götürür.
-1. Hizmet adınızı girin, bir abonelik, konum, fiyatlandırma katmanı ve kaynak grubu seçin.
+1. [Azure portalında](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)oturum açın. Önceki bağlantı, personalizer hizmeti için **Oluştur** sayfasına götürür.
+1. Hizmet adınızı girin, abonelik, konum, fiyatlandırma katmanı ve kaynak grubu seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![, öğrenme döngüsü olarak da adlandırılan, kişiselleştirici kaynak oluşturmak için Azure portal kullanın.](./media/how-to-create-resource/how-to-create-personalizer-resource-learning-loop.png)
+    > ![Öğrenme döngüsü olarak da adlandırılan Personalizer kaynağını oluşturmak için Azure portalını kullanın.](./media/how-to-create-resource/how-to-create-personalizer-resource-learning-loop.png)
 
-1. Kaynağı oluşturmak için **Oluştur** ' u seçin.
+1. Kaynağı oluşturmak için **Oluştur'u** seçin.
 
-1. Kaynağınız dağıtıldıktan sonra, kişiselleştirici kaynağına gitmek için **Kaynağa Git** düğmesini seçin. [Öğrenme döngüsünü yapılandırmak](how-to-settings.md)için yeni kaynağın **yapılandırma** sayfasına gidin.
+1. Kaynağınız dağıtıldıktan sonra, Personalizer kaynağınıza gitmek **için Kaynağa Git** düğmesini seçin.
 
-## <a name="create-a-resource-with-the-azure-cli"></a>Azure CLı ile kaynak oluşturma
+1. Kaynağınız için **Hızlı başlangıç** sayfasını seçin ve ardından bitiş noktanız ve anahtarınız için değerleri kopyalayın. Rank ve Reward API'lerini kullanmak için hem kaynak bitiş noktasının hem de anahtarın gerekir.
 
-1. Aşağıdaki komutla Azure CLı 'da oturum açın:
+1. [Öğrenme döngüsünü yapılandırmak](how-to-settings.md)için yeni kaynağın **Yapılandırma** sayfasını seçin.
 
-    ```bash
+## <a name="create-a-resource-with-the-azure-cli"></a>Azure CLI ile kaynak oluşturma
+
+1. Azure CLI'de aşağıdaki komutla oturum açın:
+
+    ```azurecli-interactive
     az login
     ```
 
-1. Kişiselleştirici kaynakla kullanmak istediğiniz tüm Azure kaynaklarını yönetmek için mantıksal bir gruplama olan bir kaynak grubu oluşturun.
+1. Personalizer kaynağıyla kullanmak istediğiniz tüm Azure kaynaklarını yönetmek için mantıksal bir gruplandırma olan bir kaynak grubu oluşturun.
 
 
-    ```bash
+    ```azurecli-interactive
     az group create \
         --name your-personalizer-resource-group \
         --location westus2
     ```
 
-1. Mevcut bir kaynak grubu için aşağıdaki komutla yeni bir kişiselleştirici kaynak ve _öğrenme döngüsü_oluşturun.
+1. Varolan bir kaynak grubu için aşağıdaki komutla yeni bir Personalizer kaynağı, _öğrenme döngüsü_oluşturun.
 
-    ```bash
+    ```azurecli-interactive
     az cognitiveservices account create \
         --name your-personalizer-learning-loop \
         --resource-group your-personalizer-resource-group \
@@ -59,6 +63,19 @@ Her geri bildirim döngüsü için bir kişiselleştirici kaynağı oluşturun.
         --location westus2 \
         --yes
     ```
+
+    Bu, kaynak bitiş noktanızı içeren bir JSON **nesnesi**döndürür.
+
+1. **Kaynak anahtarınızı**almak için aşağıdaki Azure CLI komutunu kullanın.
+
+    ```azurecli-interactive
+        az cognitiveservices account keys list \
+        --name your-personalizer-learning-loop \
+        --resource-group your-personalizer-resource-group
+    ```
+
+    Rank ve Reward API'lerini kullanmak için hem kaynak bitiş noktasının hem de anahtarın gerekir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yapılandırma](how-to-settings.md) Kişiselleştirici öğrenme döngüsü
+* [Yapılandırma](how-to-settings.md) Personalizer öğrenme döngüsü

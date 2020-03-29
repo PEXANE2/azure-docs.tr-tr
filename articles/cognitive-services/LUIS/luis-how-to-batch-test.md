@@ -1,7 +1,7 @@
 ---
-title: Batch testi gerçekleştirme-LUSıS
+title: Toplu iş testi nasıl gerçekleştirilecek - LUIS
 titleSuffix: Azure Cognitive Services
-description: Yanlış amaçlar ve varlıklara sahip olan uttersları bulmak için Language Understanding (LUSıS) toplu işlem testi kümelerini kullanın.
+description: Yanlış niyet ve varlıklara sahip sözlerle ilgili söz bulma ları bulmak için Dil Bilgisi (LUIS) toplu test kümelerini kullanın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,99 +12,99 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904348"
 ---
-# <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Örnek sözlerle toplu test
 
- Toplu işlem testi, geçerli eğitilen modelinize ait, LUSıS 'deki performansını ölçecek kapsamlı bir sınamadır. Toplu iş testi için kullanılan veri kümeleri, tahmin çalışma zamanı uç noktasından alınan amaçlar veya deterlerden örnek olarak yer almamalıdır. 
+ Toplu test, LUIS'teki performansını ölçmek için mevcut eğitimli modeliniz üzerinde kapsamlı bir testtir. Toplu iş testi için kullanılan veri kümeleri, tahmin çalışma zamanı bitiş noktasından alınan niyetveya deyişlen örnek söyleyişlerini içermemelidir. 
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>Batch testi için bir veri kümesi dosyasını içeri aktarma
+## <a name="import-a-dataset-file-for-batch-testing"></a>Toplu iş testi için bir veri kümesi dosyası alma
 
-1. Üstteki çubukta **Test** ' i seçin ve ardından **Batch test paneli**' ni seçin.
+1. Üst çubukta **Test'i** ve ardından **Toplu İşlem test panelini**seçin.
 
-    ![Batch test bağlantısı](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Toplu İşlem Eki](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. **Veri kümesini Içeri aktar**seçeneğini belirleyin. **Yeni veri kümesini Içeri aktar** iletişim kutusu görünür. **Dosya Seç** ' i seçin ve test etmek için *1.000 ' den fazla* yer içermeyen doğru [JSON biçimine](luis-concept-batch-test.md#batch-file-format) sahip bir JSON dosyası bulun.
+2. **Veri kümesini Aktar'ı**seçin. Yeni veri kümesi iletişim kutusunu **içe aktarın** görüntülenir. **Dosyayı Seçin'i** seçin ve test etmek için *en fazla 1.000* sözcük içeren doğru [JSON biçimine](luis-concept-batch-test.md#batch-file-format) sahip bir JSON dosyasını bulun.
 
-    İçeri aktarma hataları tarayıcının üst kısmındaki kırmızı bir bildirim çubuğunda raporlanır. İçeri aktarma hataları olduğunda, hiçbir veri kümesi oluşturulmaz. Daha fazla bilgi için bkz. [genel hatalar](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Alma hataları tarayıcının üst kısmındaki kırmızı bildirim çubuğunda bildirilir. Bir aktarımhataları olduğunda, veri kümesi oluşturulmaz. Daha fazla bilgi için [genel hatalara](luis-concept-batch-test.md#common-errors-importing-a-batch)bakın.
 
-3. **Veri kümesi adı** alanına veri kümesi dosyanız için bir ad girin. Veri kümesi dosyası *etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi** yer içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin. 
+3. **Dataset Adı** alanına, veri kümesi dosyanızın adını girin. Dataset *dosyası, etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi sözcük** içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin. 
 
-4. **Done** (Bitti) öğesini seçin. Veri kümesi dosyası eklenir.
+4. **Done** (Bitti) öğesini seçin. Dataset dosyası eklenir.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Veri kümesini çalıştırma, yeniden adlandırma, dışarı aktarma veya silme
+## <a name="run-rename-export-or-delete-dataset"></a>Veri kümesini çalıştırma, yeniden adlandırma, dışa aktarma veya silme
 
-Veri kümesini çalıştırmak, yeniden adlandırmak, dışarı aktarmak veya silmek için veri kümesi satırının sonundaki üç nokta (***...***) düğmesini kullanın.
+Veri kümesini çalıştırmak, yeniden adlandırmak, dışa aktarmak veya silmek için veri kümesi satırının sonundaki elips (***...***) düğmesini kullanın.
 
-![Veri kümesi eylemleri](./media/luis-how-to-batch-test/batch-testing-options.png)
+![Dataset Eylemleri](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Eğitilen uygulamanızda Batch testi çalıştırma
+## <a name="run-a-batch-test-on-your-trained-app"></a>Eğitimli uygulamanızda toplu iş testi çalıştırın
 
 Testi çalıştırmak için veri kümesi adını seçin. Test tamamlandığında, bu satır veri kümesinin test sonucunu görüntüler.
 
-![Batch test sonucu](./media/luis-how-to-batch-test/run-test.png)
+![Toplu Test Sonucu](./media/luis-how-to-batch-test/run-test.png)
 
-İndirilebilir veri kümesi, toplu test için karşıya yüklenen dosyadır.
+İndirilebilir veri kümesi, toplu iş testi için yüklenen dosyayla aynıdır.
 
 |Durum|Anlamı|
 |--|--|
-|![Başarılı test yeşil daire simgesi](./media/luis-how-to-batch-test/batch-test-result-green.png)|Tüm söyleymalar başarılı.|
-|![Kırmızı x simgesi başarısız test](./media/luis-how-to-batch-test/batch-test-result-red.png)|En az bir söylenişi hedefi tahmine uymuyor.|
-|![Teste hazırlanma simgesi](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test çalıştırılmaya hazırlanıyor.|
+|![Başarılı test yeşil daire simgesi](./media/luis-how-to-batch-test/batch-test-result-green.png)|Tüm söyleyişler başarılıdır.|
+|![Başarısız test kırmızı x simgesi](./media/luis-how-to-batch-test/batch-test-result-red.png)|En az bir söyleyiş niyeti tahmin eşleşmiyor.|
+|![Test simgesine hazır](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test çalışmaya hazır.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Batch test sonuçlarını görüntüle 
+## <a name="view-batch-test-results"></a>Toplu iş testi sonuçlarını görüntüleme 
 
-Batch test sonuçlarını gözden geçirmek için **sonuçları göster**' i seçin.
+Toplu iş testi sonuçlarını gözden geçirmek için **Sonuçları Gör'üni**seçin.
 
-![Batch test sonuçları](./media/luis-how-to-batch-test/run-test-results.png)
+![Toplu test sonuçları](./media/luis-how-to-batch-test/run-test-results.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 
-## <a name="filter-chart-results"></a>Grafik sonuçlarını filtrele
+## <a name="filter-chart-results"></a>Filtre grafiği sonuçları
 
-Grafiği belirli bir amaç veya varlığa göre filtrelemek için, sağ taraftaki filtreleme panelinde amacı veya varlığı seçin. Veri noktaları ve kendi dağıtım güncelleştirmeleri seçiminize göre grafiğe göre yapılır. 
+Grafiği belirli bir amaç veya tevkiye göre filtrelemek için, sağ taraftaki filtreleme panelindeki amaç veya varlığı seçin. Seçiminize göre grafikteki veri noktaları ve bunların dağılımı güncellenir. 
  
-![Görselleştirilen Batch test sonucu](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Görselleştirilmiş Toplu İşlem Test Sonucu](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-## <a name="view-single-point-utterance-data"></a>Tek noktalı söylenişi verilerini görüntüle
+## <a name="view-single-point-utterance-data"></a>Tek noktalı söyleyiş verilerini görüntüleme
 
-Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktasının üzerine gelin. Sayfanın alt kısmındaki utterlik listesine karşılık gelen utterlik listesini almak için bir veri noktası seçin. 
+Grafikte, tahmin kesinlik puanını görmek için bir veri noktasının üzerine gezin. Sayfanın altındaki sözcük listesinde karşılık gelen söyleyişini almak için bir veri noktası seçin. 
 
-![Seçili söylenişi](./media/luis-how-to-batch-test/selected-utterance.png)
+![Seçilen söyleyiş](./media/luis-how-to-batch-test/selected-utterance.png)
 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>Bölüm verilerini görüntüle
+## <a name="view-section-data"></a>Bölüm verilerini görüntüleme
 
-Dört bölümden oluşan grafikte, grafiğin sağ üst köşesinde **yanlış pozitif** gibi bölüm adını seçin. Grafiğin altında, bu bölümdeki tüm söyleymalar bir listede grafiğin altında görüntülenir. 
+Dört bölümlü grafikte, grafiğin sağ üst kısmındaki **False Positive** gibi bölüm adını seçin. Grafiğin altında, bu bölümdeki tüm sözcükler grafiğin altında bir listede görüntülenir. 
 
-![Bölüme göre seçilen söyleyleri](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Bölüme göre seçilen söyleyinmeler](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-Bu önceki görüntüde, söylenişi `switch on`, birlikte çalışan amaç ile etiketlidir, ancak None hedefinin tahminini almış olur. Bu, beklenen tahmini yapmak için, en çok daha fazla örnek elde edilmesi gerektiğini belirten bir göstergesidir. 
+Bu önceki resimde, söyleyiş `switch on` TurnAllOn niyeti ile etiketlenir, ancak Yok niyet tahmini aldı. Bu, TurnAllOn niyetinin beklenen tahmini yapabilmek için daha fazla örnek söze ihtiyacı olduğunun bir göstergesidir. 
 
-Grafiğin kırmızı renkte iki bölümü, beklenen tahminiyle eşleşmeyen utterlere işaret ediyor. Bu, LUIN daha fazla eğitim ihtiyacı olan SÖYLERE işaret ediyor. 
+Grafiğin kırmızı ile iki bölümü, beklenen tahminle eşleşmeyan söyleyişleri gösterir. Bunlar, LUIS'in daha fazla eğitime ihtiyacı olduğunu gösteriyor. 
 
-Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
+Grafiğin yeşil deki iki bölümü beklenen tahminle eşleşti.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Test, LUP uygulamanızın doğru amaçları ve varlıkları algıladığını gösteriyorsa, daha fazla yer etiketleyerek veya özellik ekleyerek LUSıS uygulamanızın performansını iyileştirebilmek için çalışabilirsiniz. 
+Test, LUIS uygulamanızın doğru amaçları ve varlıkları tanımadığını gösteriyorsa, daha fazla sözcük etiketleyerek veya özellikler ekleyerek LUIS uygulamanızın performansını artırmak için çalışabilirsiniz. 
 
-* [LUSıS ile önerilen bir şekilde etiketleme](luis-how-to-review-endpoint-utterances.md) 
-* [LUSıS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md) 
-* [Toplu iş testini bu öğreticiyle anlayın](luis-tutorial-batch-testing.md)
-* [Batch test kavramlarını öğrenin](luis-concept-batch-test.md).
+* [Etiket LUIS ile önerilen söyleyünmeler](luis-how-to-review-endpoint-utterances.md) 
+* [LUIS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md) 
+* [Bu öğretici ile toplu test anlama](luis-tutorial-batch-testing.md)
+* [Toplu iş testi kavramlarını öğrenin.](luis-concept-batch-test.md)

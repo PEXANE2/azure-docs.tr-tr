@@ -1,7 +1,7 @@
 ---
-title: Bilişsel hizmetler Metin Analizi kaynak oluşturma
+title: Bilişsel Hizmetler Metin Analizi kaynağı oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bilişsel hizmetler Metin Analizi kaynağı oluşturmayı öğrenin.
+description: Bilişsel Hizmetler Metin Analizi kaynağını nasıl oluşturabileceğinizi öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,31 +10,31 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: d3b65174f3d161e0b8780a890f297d9d1c812b44
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383423"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Bilişsel hizmetler Metin Analizi kaynak oluşturma
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>Bilişsel Hizmetler Metin Analizi kaynağı oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Kaynak oluştur**' u seçin ve ardından **aı + Machine Learning** > **metin analizi**' na gidin.
-   Ya da [metin analizi oluştur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)' a gidin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. **Kaynak Oluştur'u**seçin ve ardından **Yapay AI + Machine Learning** > **Text Analytics**adresine gidin.
+   Veya Metin [Analizi Oluştur'a](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)gidin.
 1. Gerekli tüm ayarları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
-    |Name|Bir ad girin (2-64 karakter).|
+    |Adı|Bir ad girin (2-64 karakter).|
     |Abonelik|Uygun aboneliği seçin.|
-    |Konum|Yakın bir konum seçin.|
-    |Fiyatlandırma katmanı| Standart fiyatlandırma katmanı olan **S**'yi girin.|
+    |Konum|Yakındaki bir konumu seçin.|
+    |Fiyatlandırma katmanı| Standart fiyatlandırma katmanı **olan S'yi**girin.|
     |Kaynak grubu|Kullanılabilir bir kaynak grubu seçin.|
 
-1. **Oluştur**' u seçin ve kaynağın oluşturulmasını bekleyin. Tarayıcınız yeni oluşturulan kaynak sayfasına otomatik olarak yeniden yönlendirir.
-1. Yapılandırılmış `endpoint` ve bir API anahtarını toplayın:
+1. **Oluştur'u**seçin ve kaynağın oluşturulmasını bekleyin. Tarayıcınız otomatik olarak yeni oluşturulan kaynak sayfasına yönlendirir.
+1. Yapılandırılan `endpoint` ve api anahtarını toplayın:
 
-    |Portalda kaynak sekmesi|Ayar|Value|
+    |Portaldaki kaynak sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel Bakış**|Uç Nokta|Uç noktayı kopyalayın. `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`benzer şekilde görünür.|
-    |**Belirlenmesine**|API anahtarı|İki anahtardan birini kopyalayın. Boşluk veya tire içermeyen 32 karakterlik alfasayısal bir dizedir: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
+    |**Genel bakış**|Uç Nokta|Bitiş noktasını kopyalayın. Bu benzer görünüyor `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
+    |**Anahtarlar**|API Anahtarı|İki anahtardan birini kopyala. Boşluk suz veya tiresiz 32 karakterlik alfasayısal bir dize: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|

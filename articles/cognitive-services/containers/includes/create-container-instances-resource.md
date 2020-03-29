@@ -1,7 +1,7 @@
 ---
 title: Kapsayıcı desteği
 titleSuffix: Azure Cognitive Services
-description: Azure Container Instance kaynağı oluşturmayı öğrenin.
+description: Azure kapsayıcı örnek kaynağını nasıl oluşturabilirsiniz öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692522"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Azure Container Instance kaynağı oluşturma
+## <a name="create-an-azure-container-instance-resource"></a>Azure Kapsayıcı Örneği kaynağı oluşturma
 
-1. Container Instances için [Oluştur](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) sayfasına gidin.
+1. Kapsayıcı Örnekleri için [Oluştur](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) sayfasına gidin.
 
-2. **Temel bilgiler** sekmesinde, aşağıdaki ayrıntıları girin:
+2. Temel **bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
     |Ayar|Değer|
     |--|--|
     |Abonelik|Aboneliğinizi seçin.|
-    |Kaynak grubu|Kullanılabilir kaynak grubunu seçin veya `cognitive-services`gibi yeni bir tane oluşturun.|
-    |Kapsayıcı adı|`cognitive-container-instance`gibi bir ad girin. Ad, daha küçük bir harf olmalıdır.|
+    |Kaynak grubu|Kullanılabilir kaynak grubunu seçin veya `cognitive-services`yeni bir tane oluşturun.|
+    |Kapsayıcı adı|Gibi bir ad `cognitive-container-instance`girin. Ad alt kapaklarda olmalıdır.|
     |Konum|Dağıtım için bir bölge seçin.|
-    |Görüntü türü|Kapsayıcı resminiz kimlik bilgileri gerektirmeyen bir kapsayıcı kayıt defterinde depolanıyorsa `Public`seçin. Kapsayıcı yansımanıza erişim için kimlik bilgileri gerekiyorsa `Private`' yi seçin. Kapsayıcı görüntüsünün `Public` mı yoksa `Private` ("genel önizleme") olup olmadığına ilişkin ayrıntılar için [kapsayıcı depoları ve resimlere](../../cognitive-services-container-support.md#container-repositories-and-images) bakın. |
-    |Görüntü adı|Bilişsel hizmetler kapsayıcı konumunu girin. Konum, `docker pull` komutuna bir bağımsız değişken olarak kullanılan şeydir. Kullanılabilir görüntü adları ve bunlara karşılık gelen depo için [kapsayıcı depoları ve görüntüleri](../../cognitive-services-container-support.md#container-repositories-and-images) inceleyin.<br><br>Görüntü adı, üç bölümden oluşan tam olarak nitelenmiş olmalıdır. İlk olarak, kapsayıcı kayıt defteri, ardından depo, son olarak görüntü adı: `<container-registry>/<repository>/<image-name>`.<br><br>Aşağıda, `mcr.microsoft.com/azure-cognitive-services/keyphrase` Azure bilişsel hizmetler deposu altında Microsoft Container Registry Anahtar İfade Ayıklama görüntüsünü temsil eden bir örnek verilmiştir. Diğer bir örnek `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`, kapsayıcı önizleme kapsayıcısı kayıt defterinin Microsoft deposundaki konuşma metin görüntüsünü temsil eden bir örnektir. |
+    |Görüntü türü|Kapsayıcı resminiz kimlik bilgileri gerektirmeyen bir kapsayıcı kayıt defterinde `Public`depolanmışsa, 'yi seçin. Kapsayıcı resminize erişmek kimlik bilgileri `Private`gerektiriyorsa, 'yi seçin. Kapsayıcı görüntüsünün veya `Public` ("Genel Önizleme") olup olmadığı yla `Private` ilgili ayrıntılar için [kapsayıcı depolarına ve görüntülerine](../../cognitive-services-container-support.md#container-repositories-and-images) bakın. |
+    |Görüntü adı|Bilişsel Hizmetler konteyner konumunu girin. Konum, `docker pull` komutun bağımsız değişkeni olarak kullanılan yerdir. Kullanılabilir resim adları ve bunların karşılık gelen depoları için [kapsayıcı depolarına](../../cognitive-services-container-support.md#container-repositories-and-images) ve görüntülerine bakın.<br><br>Görüntü adı üç bölümden belirten tam nitelikli olmalıdır. İlk olarak, konteyner kayıt defteri, sonra depo, nihayet `<container-registry>/<repository>/<image-name>`görüntü adı: .<br><br>Aşağıda, `mcr.microsoft.com/azure-cognitive-services/keyphrase` Azure Bilişsel Hizmetler deposu nun altındaki Microsoft Kapsayıcı Kayıt Defteri'ndeki Anahtar Tümcecik Ayıklama görüntüsünü temsil eden bir örnek verilmiştir. Başka bir `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` örnek, Kapsayıcı Önizleme kapsayıcı kayıt defterinin Microsoft deposunda Metin Için Konuşma görüntüsünü temsil eder. |
     |İşletim sistemi türü|`Linux`|
-    |Boyut|Belirli bilişsel hizmet Kapsayıcınızın boyutunu önerilen önerilerle değiştirin:<br>2 CPU çekirdeği<br>4 GB
+    |Boyut|Belirli Bilişsel Hizmet kapsayıcınız için önerilen önerilerin boyutunu değiştirin:<br>2 CPU çekirdeği<br>4 GB
 
-3. **Ağ** sekmesinde, aşağıdaki ayrıntıları girin:
+3. **Ağ** sekmesinde aşağıdaki ayrıntıları girin:
 
     |Ayar|Değer|
     |--|--|
-    |Bağlantı Noktaları|TCP bağlantı noktasını `5000`olarak ayarlayın. 5000 numaralı bağlantı noktasında kapsayıcıyı kullanıma sunar.|
+    |Bağlantı Noktaları|TCP bağlantı noktasını `5000`' n' olarak ayarlayın 5000 portundaki konteynırı ortaya çıkarır.|
 
-4. **Gelişmiş** sekmesinde, Azure Container Instance kaynağının kapsayıcı faturalama ayarları Için gereken **ortam değişkenlerini** girin:
+4. **Gelişmiş** sekmesinde, Azure Kapsayıcı Örneği kaynağının kapsayıcı faturalandırma ayarları için gerekli **Ortam Değişkenlerini** girin:
 
     | Anahtar | Değer |
     |--|--|
-    |`apikey`|Kaynağın **anahtarlar** sayfasından kopyalanmış. Boşluk veya kesik çizgi olmayan 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Kaynağın **genel bakış** sayfasından kopyalanmış.|
+    |`apikey`|Kaynağın **Keys** sayfasından kopyalanır. Boşluksuz veya tiresiz 32 alfanümerik karakterli bir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`dizedir.|
+    |`billing`|Kaynağın **Genel Bakış** sayfasından kopyalanır.|
     |`eula`|`accept`|
 
-5. **Gözden geçir ve oluştur** 'a tıklayın
-6. Doğrulama işleminden sonra oluşturma işlemini tamamladıktan sonra **Oluştur** ' a tıklayın.
+5. **Gözden Geçir ve Oluştur'u** tıklatın
+6. Doğrulama geçtikten sonra, oluşturma işlemini tamamlamak için **Oluştur'u** tıklatın
 7. Kaynak başarıyla dağıtıldığında,

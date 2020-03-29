@@ -1,7 +1,7 @@
 ---
-title: Kurumsal kavramlar-LUSıS
+title: Kurumsal kavramlar - LUIS
 titleSuffix: Azure Cognitive Services
-description: Büyük LUIS uygulama ve LUIS ve soru-cevap Oluşturucu birlikte dahil olmak üzere birden fazla uygulama için tasarım kavramları anlayın.
+description: Büyük LUIS uygulamaları veya LUIS ve QnA Maker gibi birden fazla uygulama için tasarım kavramlarını birlikte anlayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,73 +12,73 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221067"
 ---
-# <a name="enterprise-strategies-for-a-luis-app"></a>Bir LUIS uygulaması için Kurumsal stratejileri
-Bu tasarım stratejiler Kurumsal uygulamanız için gözden geçirin.
+# <a name="enterprise-strategies-for-a-luis-app"></a>LUIS uygulaması için kurumsal stratejiler
+Kurumsal uygulamanız için bu tasarım stratejilerini gözden geçirin.
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Kotayı aşan LUIS istekler zaman beklediğiniz
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Kotanın ötesinde LUIS isteklerini beklediğiniz zaman
 
-Lua 'nın, Azure kaynağının fiyatlandırma katmanına bağlı olarak aylık bir kotası ve saniye başına kotayı vardır. 
+LUIS, Azure kaynağının fiyatlandırma katmanına bağlı olarak aylık kotanın yanı sıra ikinci kotaya da sahiptir. 
 
-LUSıS uygulama isteği hızlarınız izin verilen [Kota oranını](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)aşarsa şunları yapabilirsiniz:
+LUIS uygulama istek oranınız izin verilen [kota oranını](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)aşarsa, şunları yapabilirsiniz:
 
-* Yükü [aynı uygulama tanımına](#use-multiple-apps-with-same-app-definition)sahip daha fazla lusıs uygulamasına yayın. Bu, isteğe bağlı olarak, bir [KAPSAYıCıDAN](luis-container-howto.md)halsıs çalıştırmayı içerir. 
-* Uygulamaya [birden çok anahtar](#assign-multiple-luis-keys-to-same-app) oluşturun ve atayın. 
+* [Aynı uygulama tanımıyla](#use-multiple-apps-with-same-app-definition)yükü daha fazla LUIS uygulamasına yayın. Buna isteğe bağlı olarak bir [kapsayıcıdan](luis-container-howto.md)LUIS çalıştırıl. 
+* Uygulamanın birden çok anahtarı oluşturun ve [atayın.](#assign-multiple-luis-keys-to-same-app) 
 
-### <a name="use-multiple-apps-with-same-app-definition"></a>Birden fazla uygulama ile aynı uygulama tanımı kullanın
-Özgün LUIS uygulaması dışarı aktardıktan sonra ayrı uygulamalarda uygulama içeri aktarın. Her uygulamanın kendi uygulama kimliği vardır. Tüm uygulamalar arasında aynı anahtarı kullanarak yerine yayımladığınızda, her uygulama için ayrı bir anahtar oluşturun. Böylece hiç tek uygulama doludur tüm uygulamalar arasında yük dengeleyin. Kullanımı izlemek için [Application Insights](luis-tutorial-bot-csharp-appinsights.md) ekleyin. 
+### <a name="use-multiple-apps-with-same-app-definition"></a>Aynı uygulama tanımına sahip birden fazla uygulama kullanma
+Orijinal LUIS uygulamasını dışa aktarın ve uygulamayı ayrı uygulamalara aktarın. Her uygulamanın kendi uygulama kimliği vardır. Tüm uygulamalarda aynı anahtarı kullanmak yerine yayımladığınızda, her uygulama için ayrı bir anahtar oluşturun. Tek bir uygulamanın bunalmış olmaması için tüm uygulamalardaki yükü dengeleyin. Kullanımı izlemek için [Uygulama Öngörüleri](luis-tutorial-bot-csharp-appinsights.md) ekleyin. 
 
-Tüm uygulamalar arasında aynı üst amaç alabilmek için birinci ve ikinci amacı arasında hedefi tahmin LUIS konuşma küçük çeşitleri için uygulamalar arasında farklı sonuçlar vermek kafanız, olmadığını yetecek kadar geniş olduğundan emin olun. 
+Tüm uygulamalar arasında aynı üst niyeti elde etmek için, birinci ve ikinci niyet arasındaki niyet tahmininin LUIS'in karıştırılmayacak kadar geniş olduğundan emin olun ve bu da uygulamalar arasında küçük farklılıklar için farklı sonuçlar verir. 
 
-Bu eşdüzey uygulamalara eğitim yaparken, [tüm verilerle eğdiğinizden](luis-how-to-train.md#train-with-all-data)emin olun.
+Bu kardeş uygulamaları eğitirken, [tüm verilerle eğitim yaptığınızdan](luis-how-to-train.md#train-with-all-data)emin olun.
 
-Tek bir uygulama yöneticisi olarak belirleyin. Gözden geçirme için önerilen herhangi bir konuşma ana uygulamaya eklenen ardından için tüm diğer uygulamaları geri taşınır. Uygulamanın tam bir dışarı aktarma veya etiketli konuşma asıl alt öğelerine yüklenirken budur. Yükleme işlemi, [tek](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) bir şekilde veya bir [toplu iş](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)için [luya](luis-reference-regions.md) Web sitesinden veya yazma API 'sinden yapılabilir. 
+Ana olarak tek bir uygulama belirleyin. Gözden geçirilmesi önerilen tüm ifadeler ana uygulamaya eklenmeli ve diğer tüm uygulamalara geri taşınmalıdır. Bu, ya uygulamanın tam bir dışa aktarMası dır ya da ana kaynaktan çocuklara etiketlenmiş sözcükleri yükler. Yükleme ya [LUIS](luis-reference-regions.md) web sitesinden veya tek bir [söyleyiş](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) için veya bir [toplu iş](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)için api yazma yapılabilir. 
 
-Her iki haftada bir, etkin öğrenme için [uç nokta çeşidinin](luis-how-to-review-endpoint-utterances.md) ve sonra yeniden eğitme ve yeniden yayımlama gibi düzenli bir inceleme zamanlayın. 
+Her iki haftada bir, etkin öğrenme için [uç nokta söyleyişleri](luis-how-to-review-endpoint-utterances.md) gibi periyodik bir inceleme planlayın, ardından yeniden eğitin ve yeniden yayımlayın. 
 
-### <a name="assign-multiple-luis-keys-to-same-app"></a>Birden çok LUIS anahtarları aynı uygulamaya atama
-LUIS uygulamanızı daha fazla uç noktası İsabeti tek anahtarının kota izin verdiğinden, oluşturma ve daha fazla anahtarları LUIS uygulaması için atama alırsa. Bir traffic manager oluşturma veya yük dengeleyici uç nokta sorguları uç nokta anahtarlarını yönetme. 
+### <a name="assign-multiple-luis-keys-to-same-app"></a>Aynı uygulamaya birden fazla LUIS anahtarı atama
+LUIS uygulamanız, tek anahtarınızın kotasının izin verdiğinden daha fazla uç nokta isabeti alıyorsa, LUIS uygulamasına daha fazla anahtar oluşturun ve atayın. Bitiş noktası anahtarlarında uç nokta sorgularını yönetmek için bir trafik yöneticisi veya yük bakiyesi oluşturun. 
 
-## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Tek parça uygulamanızı yanlış hedefi döndürdüğünde
-Uygulamanız çok çeşitli Kullanıcı çeşitlerini tahmin etmek istiyorsanız, [dağıtım modelini](#dispatch-tool-and-model)uygulamayı göz önünde bulundurun. Tek parça bir uygulamayı kesme LUIS üst uygulama arasında hedefleri ve alt uygulamalar arasında yanıltıcı yerine başarıyla ıntents arasında odağı algılama sağlar. 
+## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Yekpare uygulamanız yanlış niyet döndürdüğünde
+Uygulamanız çok çeşitli kullanıcı söyleyişlerini tahmin etmek içinyapılmışsa, [gönderim modelini](#dispatch-tool-and-model)uygulamayı düşünün. Yekpare bir uygulamayı birbirinden ayırmak, LUIS'in, ana uygulama ile alt uygulamalar arasındaki niyetler arasında kafa karıştırmak yerine, algılamayı kasıtlı lar arasında başarılı bir şekilde odaklamasına olanak tanır. 
 
-Her iki hafta gibi etkin öğrenme için [uç nokta utinlerini düzenli olarak gözden geçirin](luis-how-to-review-endpoint-utterances.md) , sonra yeniden eğitme ve yeniden yayımlayın. 
+Her iki haftada bir olduğu gibi, her iki haftada bir gibi [uç nokta sözcüklerinin](luis-how-to-review-endpoint-utterances.md) periyodik bir incelemesini planlayın, ardından yeniden eğitin ve yeniden yayımlayın. 
 
-## <a name="when-you-need-to-have-more-than-500-intents"></a>500'den fazla hedefleri gerektiğinde
-500 ' den fazla amaç içeren bir Office Yardımcısı geliştirdiğinizi varsayın. 200 amacı, Toplantı zamanlama için ilişkiliyse, ilgili anımsatıcılar 200 olan, iş arkadaşlarınızın hakkında bilgi alma 200 olduğundan ve e-posta göndermek için 200 olan, grubunun hedefleri böylece her grubu tek bir uygulama olarak, ardından her hedefi içeren üst düzey bir uygulama oluşturabilirsiniz. En üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın. Ardından, [dağıtım modelinin öğreticisinde](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
+## <a name="when-you-need-to-have-more-than-500-intents"></a>500'den fazla niyete sahip olmanız gerektiğinde
+500'den fazla amacı olan bir ofis asistanı geliştirdiğinizi varsayalım. 200 niyet zamanlama toplantılarıyla ilgiliyse, 200'ü anımsatıcılarla ilgilidir, 200'ü iş arkadaşları hakkında bilgi almakla ilgilidir ve 200'ü e-posta göndermek için, her grubun tek bir uygulamada olması için niyetleri gruplandırmak için, ardından her amacı içeren üst düzey bir uygulama oluşturun. Üst düzey uygulamayı oluşturmak için [gönderme modelini](#dispatch-tool-and-model) kullanın. Daha sonra [gönderme modelinin öğreticisinde](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)gösterildiği gibi basamaklı aramayı kullanmak için botunuzu değiştirin. 
 
-## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Çeşitli LUIS ve soru-cevap Oluşturucu uygulamaları birleştirmek gerektiğinde
-Bir bot 'a yanıt vermesi gereken birkaç LUVE QnA Maker uygulaması varsa, en üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın.  Ardından, [dağıtım modelinin öğreticisinde](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
+## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Birkaç LUIS ve QnA maker uygulamalarını birleştirmeniz gerektiğinde
+Bir bota yanıt vermesi gereken birkaç LUIS ve QnA üreticisi uygulamanız varsa, üst düzey uygulamayı oluşturmak için [gönderme modelini](#dispatch-tool-and-model) kullanın.  Daha sonra [gönderme modelinin öğreticisinde](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)gösterildiği gibi basamaklı aramayı kullanmak için botunuzu değiştirin. 
 
-## <a name="dispatch-tool-and-model"></a>Dağıtım aracı ve modeli
-Birden çok LUO ve/veya Soru-Cevap Oluşturma uygulamalarını bir üst LUO uygulamasında birleştirmek için [Botbuilder-Tools](https://github.com/Microsoft/botbuilder-tools) ' da bulunan [dağıtım][dispatch-tool] komut satırı aracını kullanın. Bu yaklaşım, tüm konular ve farklı alt konu etki alanlarını ayrı uygulamalar da dahil olmak üzere bir üst etki alanınız olanak tanır. 
+## <a name="dispatch-tool-and-model"></a>Gönderme aracı ve modeli
+Birden fazla LUIS ve/veya QnA Maker uygulamasını bir üst LUIS uygulamasında birleştirmek için [BotBuilder araçlarında](https://github.com/Microsoft/botbuilder-tools) bulunan [Dispatch][dispatch-tool] komut satırı aracını kullanın. Bu yaklaşım, ayrı uygulamalarda tüm konular ve farklı alt konu etki alanlarını içeren bir üst etki alanına sahip olmak sağlar. 
 
-![Kavramsal gönderme mimarisi görüntüsü](./media/luis-concept-enterprise/dispatch-architecture.png)
+![Sevk mimarisinin kavramsal görüntüsü](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Ana etki alanı, uygulamalar listesinde `Dispatch` adlı bir sürüme sahip HALSıS 'de belirtilmiştir. 
+Üst etki alanı, uygulamalar listesinde `Dispatch` adı geçen bir sürümle LUIS'te belirtilir. 
 
-Sohbet bot, utterance 'i alır, ardından tahmin için üst LUO uygulamasına gönderir. Üst uygulamadan alınan en iyi tahmin amacı, hangi LUO alt uygulamasının bir sonraki çağrıldığını belirler. Sohbet botu, daha belirli bir tahmin için alt uygulamaya gelen söylenişi 'yi gönderir.
+Sohbet botu söyleyişi alır, ardından tahmin için üst LUIS uygulamasına gönderir. Üst uygulamadan öngörülen en yüksek amaç, bir sonraki sırada hangi LUIS alt uygulamasının çağrıldığını belirler. Sohbet botu daha özel bir tahmin için çocuk uygulamasına söyleyiş gönderir.
 
-Bot Builder v4 [dağıtıcısı-Application-öğreticisi](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)' nden bu çağrı hiyerarşisinin nasıl yapıldığını anlayın.  
+Bu arama hiyerarşisinin Bot Builder v4 [dispatcher-application-tutorial'den](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)nasıl yapıldığını anlayın.  
 
-### <a name="intent-limits-in-dispatch-model"></a>Gönderme modeli hedefi sınırları
-Gönderme uygulama en fazla 500 gönderme kaynağı, 500 hedefleri için eşdeğer yok. 
+### <a name="intent-limits-in-dispatch-model"></a>Gönderme modelinde amaç sınırları
+Bir sevk uygulaması, maksimum olarak 500 niyete eşdeğer 500 sevk kaynağına sahiptir. 
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-* [Bot Framework SDK 'Sı](https://github.com/Microsoft/botframework)
-* [Dağıtım modeli öğreticisi](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
-* [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools)
-* Dağıtım modeli bot örneği- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
+* [Bot çerçeve SDK](https://github.com/Microsoft/botframework)
+* [Gönderme modeli öğretici](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
+* [Sevk CLI](https://github.com/Microsoft/botbuilder-tools)
+* Sevkiyat modeli bot örneği - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Düğüm.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Toplu işi test](luis-how-to-batch-test.md) etme hakkında bilgi edinin
+* [Toplu iş bir toplu iş test](luis-how-to-batch-test.md) etmeyi öğrenin
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

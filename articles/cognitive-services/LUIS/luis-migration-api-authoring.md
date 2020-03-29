@@ -1,7 +1,7 @@
 ---
-title: API 'de yazma değişiklikleri
+title: API'deki değişiklikleri yazma
 titleSuffix: Azure Cognitive Services
-description: Authoring v2 ve v3 API 'Leri değişmiştir. Yazma API 'Lerinin nasıl kullanılacağını anlamak için bu kılavuzu kullanın.
+description: V2 ve V3 API'leri yazarken değişti. Yazma API'lerini nasıl kullanacağımı anlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: eb01ccc211be55885b945c40bd88553818b0ab78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507808"
 ---
-# <a name="authoring-api-changes"></a>API değişiklikleri yazma 
+# <a name="authoring-api-changes"></a>API değişikliklerini yazma 
 
-Yazma API 'Leri, v3 için [makine tarafından öğrenilen varlıklarla model ayrışmaya](luis-concept-data-extraction.md)izin vermek üzere güncelleştirilir. 
+Yazma API'leri, V3 için, [makinede öğrenilen varlıklarla model ayrıştırmalarına](luis-concept-data-extraction.md)izin vermek için güncelleştirilir. 
 
-V2 veya Preview v3 API 'lerinde yazabilirsiniz. Aynı uygulama aynı zamanda v2 veya v3 tahmin uç noktası yanıtlarını kullanmayı da tercih edebilir. Yazma ve tahmin uç noktası yanıtı için aynı API sürümüne sahip olmanız gerekmez.
+V2'de yazabilir veya V3 APIS'yi önizleyebilirsiniz. Aynı uygulama v2 veya V3 tahmin bitiş noktası yanıtlarını kullanmayı da seçebilir. Yazma ve tahmin bitiş noktası yanıtı için API'nin aynı sürümüne sahip olmak zorunda değildir.
 
-LUıS portalı, yalnızca v3 yazma API 'Lerini kullanır.
+LUIS portalı v3 yazma API'lerini yalnızca kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-V3 API için [tahmin uç noktasındaki değişiklikleri](luis-migration-api-v3.md) gözden geçirin.
+V3 API için [tahmin bitiş noktasındaki değişiklikleri](luis-migration-api-v3.md) gözden geçirin.

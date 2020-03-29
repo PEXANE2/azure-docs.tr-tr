@@ -1,7 +1,7 @@
 ---
-title: Bing Yazım Denetimi API'si v5 'i v7 'ye yükseltme
+title: Bing Yazım Denetimi API v5'i v7'ye yükseltin
 titleSuffix: Azure Cognitive Services
-description: Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını tanımlar.
+description: Sürüm 7'yi kullanmak için uygulamanızın güncelleştirmeniz gereken bölümlerini tanımlar.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500813"
 ---
-# <a name="spell-check-api-upgrade-guide"></a>Yazım Denetimi API'si Yükseltme Kılavuzu
+# <a name="spell-check-api-upgrade-guide"></a>Yazım Denetimi API yükseltme kılavuzu
 
-Bu yükseltme Kılavuzu, sürüm 5 ve Bing Yazım Denetimi API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
+Bu yükseltme kılavuzu, Bing Yazım Denetimi API'sinin sürüm 5 ve sürüm 7 arasındaki değişiklikleri tanımlar. Sürüm 7'yi kullanmak üzere güncelleştirmeniz gereken uygulamanızın bölümlerini belirlemenize yardımcı olmak için bu kılavuzu kullanın.
 
 ## <a name="breaking-changes"></a>Yeni değişiklikler
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin: `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
+- Bitiş noktasının sürüm numarası v5'ten v7'ye değiştirildi. Örneğin, `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
 
-### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
+### <a name="error-response-objects-and-error-codes"></a>Hata yanıt nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekleri artık `ErrorResponse` yanıt gövdesinde bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
-  - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+- Nesneye `Error` aşağıdaki alanlar eklendi.  
+  - `subCode`&mdash;Mümkünse hata kodunu ayrık kovalara bölümler
+  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgi
    
 
-- V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.  
+- V5 hata kodlarını aşağıdaki olası `code` `subCode` ve değerlerle değiştirdi.  
   
-|Kod|Alt|Açıklama
+|Kod|Subcode|Açıklama
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Uygulanmadı|Alt kod koşullarından herhangi biri gerçekleştiğinde Bing ServerError hatası döndürüyor. HTTP durum kodu 500 ise yanıt bu hataları içerir.
-|Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|, İsteğin herhangi bir bölümü geçerli olmadığı zaman Bing, ınvalidrequest döndürür. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
-|Ratelimitexcebaşında||Bing, sorgu/saniye (QPS) veya aylık sorgu (QPM) kotası her aşışınızda Ratelimitexceden başına döndürür.<br/><br/>QPM 'yi aştıysanız Bing, QPS ve 403 değerini aştıysanız, 429 HTTP durum kodunu döndürür.
-|Invalidauthorleştirme|AuthorizationMissing<br/>Authorizationartıklık|Bing çağıranın kimliğini doğrulayamayan Bing, ınvalidauthortıcıyla geri döndürür. Örneğin, `Ocp-Apim-Subscription-Key` üst bilgi eksik veya abonelik anahtarı geçerli değil.<br/><br/>Birden fazla kimlik doğrulama yöntemi belirtirseniz artıklık oluşur.<br/><br/>Hata eksik ise, HTTP durum kodu 401 ' dir.
-|InsufficientAuthorization|AuthorizationDisabled<br/>Authorization, zaman aşımına uğradı|Çağıranın kaynağa erişim izni olmadığında Bing, InsufficientAuthorization döndürür. Abonelik anahtarı devre dışı bırakılmışsa veya süresi dolmuşsa bu durum oluşabilir. <br/><br/>Hata InsufficientAuthorization ise, HTTP durum kodu 403 ' dir.
+|SunucuHatası|Beklenmeyen Hata<br/>Kaynak Hatası<br/>Uygulanmadı|Alt kod koşullarından herhangi biri oluştuğunda Bing ServerError'ı döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
+|Geçersizİstek|ParametreEksik<br/>ParametreGeçersiz Değer<br/>httpİzin verilen<br/>Engellendi|Bing, isteğin herhangi bir bölümü geçerli olmadığında Geçersiz İstek'i döndürür. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya ParameterGeçersizDeğer ise, HTTP durum kodu 400'dür.<br/><br/>Hata httpNotAllowed ise, HTTP durum kodu 410.
+|RateLimitAşıldı||Bing, sorgularınızı saniyede (QPS) veya aylık sorgularınızı (QPM) kotanızı aştığınızda RateLimitExceeded'i döndürür.<br/><br/>QPS'yi aştıysanız Bing, HTTP durum kodu 429'u ve QPM'yi aştıysanız 403'ü döndürür.
+|Geçersiz Yetkilendirme|Yetkilendirme Eksik<br/>YetkilendirmeRedundancy|Bing arayanın kimliğini doğrulayamadığınızda Bing Geçersiz Yetkilendirme'yi döndürür. Örneğin, `Ocp-Apim-Subscription-Key` üstbilgi eksik veya abonelik anahtarı geçerli değil.<br/><br/>Birden fazla kimlik doğrulama yöntemi belirtirseniz artıklık oluşur.<br/><br/>Hata Geçersiz Yetkilendirme ise, HTTP durum kodu 401'dir.
+|Yetersiz Yetkilendirme|YetkilendirmeDevre Dışı<br/>Yetkilendirme Süresi Doldu|Arayan kaynağa erişmek için izinleri yoksa Bing Yetersiz Yetkilendirme döndürür. Bu, abonelik anahtarı devre dışı bırakılmışsa veya süresi dolmuşsa oluşabilir. <br/><br/>Hata Yetersiz Yetkilendirme ise, HTTP durum kodu 403'dür.
 
-- Aşağıda önceki hata kodları yeni kodlara eşlenir. V5 hata kodlarıyla bir bağımlılık yaptıysanız, kodunuzu uygun şekilde güncelleştirin.  
+- Aşağıdaki önceki hata kodlarını yeni kodlara eşler. v5 hata kodlarına bağımlı bir şekilde ele geçirdiyseniz, kodunuzu buna göre güncelleştirin.  
   
-|Sürüm 5 kodu|Sürüm 7 Code. alt kod
+|Sürüm 5 kodu|Sürüm 7 code.subCode
 |-|-
-|RequestParameterMissing yok|Invalidrequest. ParameterMissing yok
-Requestparameterınvalidvalue|Invalidrequest. Parameterınvalidvalue
-Resourceaccessreddedildi|InsufficientAuthorization
-ExceededVolume|Ratelimitexcebaşında
-ExceededQpsLimit|Ratelimitexcebaşında
-Devre dışı|InsufficientAuthorization. AuthorizationDisabled
-UnexpectedError|ServerError. UnexpectedError
-DataSourceErrors|Sunucuhatası. ResourceError
-AuthorizationMissing|Invalidauthorleştirme. AuthorizationMissing
-HttpNotAllowed|Invalidrequest. HttpNotAllowed
-UserAgentMissing|Invalidrequest. ParameterMissing yok
-Uygulanmadı|ServerError. NotImplemented
-Invalidauthorleştirme|Invalidauthorleştirme
-Invalidauthorizationmethod|Invalidauthorleştirme
-MultipleAuthorizationMethod|Invalidauthorasyon. Authorizationartıklık
-ExpiredAuthorizationToken|InsufficientAuthorization. Authorization, zaman aşımına uğradı
-InsufficientScope|InsufficientAuthorization
-Engellendi|Invalidrequest. engellendi
+|İstekParametreEksik|Geçersizİstek.ParametreEksik
+İstekParametreGeçersiz Değer|Geçersizİstek.ParametreGeçersiz Değer
+Kaynak Erişim Reddedildi|Yetersiz Yetkilendirme
+Aşan Hacim|RateLimitAşıldı
+AşıldıQpsLimit|RateLimitAşıldı
+Devre dışı|Yetersiz Yetkilendirme.YetkilendirmeDevre Dışı
+Beklenmeyen Hata|ServerError.unexpectedError
+DataSourceErrors|ServerError.ResourceError
+Yetkilendirme Eksik|Geçersiz Yetkilendirme.YetkilendirmeEksik
+httpİzin verilen|Geçersizİstek.HttpNotAllowed
+UserAgentEksik|Geçersizİstek.ParametreEksik
+Uygulanmadı|ServerError.NotImplemented
+Geçersiz Yetkilendirme|Geçersiz Yetkilendirme
+Geçersiz Yetkilendirme Yöntemi|Geçersiz Yetkilendirme
+Çoklu Yetkilendirme Yöntemi|GeçersizYetkilendirme.YetkilendirmeReduncy
+Süresi Dolmuş YetkilendirmeToken|Yetersiz Yetkilendirme.Yetkilendirme Süresi Doldu
+Yetersiz Kapsam|Yetersiz Yetkilendirme
+Engellendi|Geçersizİstek.Engellendi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

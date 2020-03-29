@@ -1,49 +1,56 @@
 ---
-title: Konuşmayı metne dönüştürme için otomatik dil algılamayı kullanma
+title: Metinden metne konuşma için otomatik dil algılama nasıl kullanılır?
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'Sı, konuşmadan metne yönelik otomatik dil algılamayı destekler. Bu özellik kullanılırken, belirtilen ses, belirtilen dil listesi ile karşılaştırılır ve en büyük olasılıkla eşleşme belirlenir. Döndürülen değer daha sonra, konuşma için kullanılan dil modelini seçmek için kullanılabilir.
+description: Konuşma SDK metin konuşma için otomatik dil algılama destekler. Bu özelliği kullanırken, sağlanan ses verilen dil listesiyle karşılaştırılır ve en olası eşleşme belirlenir. Döndürülen değer daha sonra metin konuşma için kullanılan dil modelini seçmek için kullanılabilir.
 services: cognitive-services
-author: susanhu
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: qiohu
-zone_pivot_groups: programming-languages-set-seven
-ms.openlocfilehash: bc438c3e606fefc10e9ffbb64c79f7167d9af062
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/16/2020
+ms.author: dapine
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122058"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239596"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Konuşmayı metne dönüştürme için otomatik dil algılama
+# <a name="automatic-language-detection-for-speech-to-text"></a>Metinden metne konuşma için otomatik dil algılama
 
-Otomatik dil algılama, sunulan dillerin listesine kıyasla konuşma SDK 'sına geçirilen sesle ilgili en büyük olasılıkla eşleşmeyi saptamak için kullanılır. Otomatik dil algılama tarafından döndürülen değer daha sonra konuşmayı metne dönüştürme için dil modelini seçmek ve daha doğru bir döküm sağlamak için kullanılır. Hangi dillerin kullanılabilir olduğunu görmek için bkz. [dil desteği](language-support.md).
+Otomatik dil algılama, sağlanan dillerin listesiyle karşılaştırıldığında Konuşma SDK'sına aktarılan ses için en olası eşleşmeyi belirlemek için kullanılır. Otomatik dil algılama ile döndürülen değer, daha doğru bir transkripsiyon sağlayarak, metin konuşma için dil modelini seçmek için kullanılır. Hangi dillerin kullanılabildiği hakkında [bkz.](language-support.md)
 
-Bu makalede, `SpeechRecognizer` nesnesini oluşturmak ve algılanan dili almak için `AutoDetectSourceLanguageConfig` kullanmayı öğreneceksiniz.
+Bu makalede, bir `AutoDetectSourceLanguageConfig` `SpeechRecognizer` nesne oluşturmak ve algılanan dili almak için nasıl kullanılacağını öğreneceksiniz.
 
 > [!IMPORTANT]
-> Bu özellik yalnızca, C# C++ ve Java için konuşma SDK 'sı için kullanılabilir.
+> Bu özellik yalnızca C#, C++, Java ve Python için SDK Speech için kullanılabilir.
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile otomatik dil algılama
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>Konuşma SDK ile otomatik dil algılama
 
-Otomatik dil algılama 'nın Şu anda algılama başına iki dilin hizmet tarafı sınırı vardır. `AudoDetectSourceLanguageConfig` nesneniz oluşturulurken bu sınırlamayı aklınızda bulundurun. Aşağıdaki örneklerde bir `AutoDetectSourceLanguageConfig`oluşturup `SpeechRecognizer`oluşturmak için kullanacaksınız.
+Otomatik dil algılama şu anda algılama başına iki dil hizmet tarafı sınırı vardır. Nesnenizi oluştururken bu `AudoDetectSourceLanguageConfig` sınırlamayı aklınızda bulundurun. Aşağıdaki örneklerde, bir `AutoDetectSourceLanguageConfig`, sonra oluşturmak `SpeechRecognizer`için kullanabilirsiniz .
 
 > [!TIP]
-> Ayrıca, metinde konuşma yaparken kullanılacak özel bir model de belirtebilirsiniz. Daha fazla bilgi için bkz. [Otomatik dil algılama için özel model kullanma](#use-a-custom-model-for-automatic-language-detection).
+> Metin konuşma yaparken kullanılacak özel bir model de belirtebilirsiniz. Daha fazla bilgi için [bkz.](#use-a-custom-model-for-automatic-language-detection)
 
-Aşağıdaki kod parçacıkları, uygulamalarınızda otomatik dil algılamayı nasıl kullanacağınızı göstermektedir:
+Aşağıdaki parçacıklar uygulamalarınızda otomatik dil algılamanın nasıl kullanılacağını gösterir:
 
 ::: zone pivot="programming-language-csharp"
 
 ```csharp
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "de-DE" });
-using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig))
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromLanguages(
+        new string[] { "en-US", "de-DE" });
+
+using (var recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig))
 {
     var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
-    var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+    var autoDetectSourceLanguageResult =
+        AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
     var detectedLanguage = autoDetectSourceLanguageResult.Language;
 }
 ```
@@ -52,11 +59,18 @@ using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLangu
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-auto recognizer = SpeechRecognizer::FromConfig(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```cpp
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
+
+auto recognizer = SpeechRecognizer::FromConfig(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
-auto autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
+auto autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
 
@@ -64,12 +78,19 @@ auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 
 ::: zone pivot="programming-language-java"
 
-```Java
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
-SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```java
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
+
+SpeechRecognizer recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 Future<SpeechRecognitionResult> future = recognizer.recognizeOnceAsync();
 SpeechRecognitionResult result = future.get(30, TimeUnit.SECONDS);
-AutoDetectSourceLanguageResult autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.fromResult(result);
+AutoDetectSourceLanguageResult autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult.fromResult(result);
 String detectedLanguage = autoDetectSourceLanguageResult.getLanguage();
 
 recognizer.close();
@@ -81,11 +102,27 @@ result.close();
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Otomatik dil algılama için özel model kullanma
+::: zone pivot="programming-language-python"
 
-Konuşma hizmeti modellerini kullanarak dil algılamayı ayarlamanın yanı sıra, gelişmiş bir tanıma için özel bir model de belirtebilirsiniz. Özel bir model sağlanmazsa, hizmet varsayılan dil modelini kullanacaktır.
+```Python
+auto_detect_source_language_config = \
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["en-US", "de-DE"])
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, 
+        auto_detect_source_language_config=auto_detect_source_language_config, 
+        audio_config=audio_config)
+result = speech_recognizer.recognize_once()
+auto_detect_source_language_result = speechsdk.AutoDetectSourceLanguageResult(result)
+detected_language = auto_detect_source_language_result.language
+```
 
-Aşağıdaki kod parçacıkları, konuşma hizmeti çağrınızla özel bir modelin nasıl belirtildiğini gösterir. Algılanan dil `en-US`, varsayılan model kullanılır. Algılanan dil `fr-FR`, özel model için uç nokta kullanılır:
+::: zone-end
+
+## <a name="use-a-custom-model-for-automatic-language-detection"></a>Otomatik dil algılama için özel bir model kullanma
+
+Konuşma hizmeti modellerini kullanarak dil algılamaya ek olarak, gelişmiş tanıma için özel bir model belirtebilirsiniz. Özel bir model sağlanmadıysa, hizmet varsayılan dil modelini kullanır.
+
+Aşağıdaki parçacıklar, Konuşma hizmetine yapılan çağrınızda özel bir modelin nasıl belirtilen olduğunu göstermektedir. Algılanan dil `en-US`ise, varsayılan model kullanılır. Algılanan dil `fr-FR`ise, özel model için bitiş noktası kullanılır:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -95,33 +132,56 @@ var sourceLanguageConfigs = new SourceLanguageConfig[]
     SourceLanguageConfig.FromLanguage("en-US"),
     SourceLanguageConfig.FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR")
 };
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(sourceLanguageConfigs);
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
+```cpp
 std::vector<std::shared_ptr<SourceLanguageConfig>> sourceLanguageConfigs;
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("en-US"));
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("en-US"));
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-```Java
+```java
 List sourceLanguageConfigs = new ArrayList<SourceLanguageConfig>();
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("en-US"));
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("en-US"));
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(
+        sourceLanguageConfigs);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+ en_language_config = speechsdk.languageconfig.SourceLanguageConfig("en-US")
+ fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
+ auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
+        sourceLanguageConfigs=[en_language_config, fr_language_config])
 ```
 
 ::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Konuşma SDK başvuru belgeleri](speech-sdk.md)
+- [Konuşma SDK referans belgeleri](speech-sdk.md)

@@ -1,7 +1,7 @@
 ---
-title: Project Acoustics Bake çözünürlüğü
+title: Proje Akustik Bake Çözünürlük
 titlesuffix: Azure Cognitive Services
-description: Bu kavramsal genel bakış, Acoustics önemli çözünürlükler arasındaki farkı açıklar.
+description: Bu kavramsal bakış, akustik pişirirken kaba ve ince çözünürlükler arasındaki farkı açıklar.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,30 +12,30 @@ ms.date: 04/05/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854359"
 ---
-# <a name="project-acoustics-bake-resolution"></a>Project Acoustics Bake çözünürlüğü
-Bu kavramsal genel bakış, Acoustics önemli çözünürlükler arasındaki farkı açıklar. Bu ayarı, fırın iş akışının Yoklame adımı sırasında seçersiniz.
+# <a name="project-acoustics-bake-resolution"></a>Proje Akustik Bake Çözünürlük
+Bu kavramsal bakış, akustik pişirirken kaba ve ince çözünürlükler arasındaki farkı açıklar. Pişirme iş akışının Problar adımı nda bu ayarı seçersiniz.
 
-## <a name="Coarse-vs-Fine-Resolution"></a>Kaba ve ince çözünürlük
+## <a name="coarse-vs-fine-resolution"></a><a name="Coarse-vs-Fine-Resolution"></a>Kaba vs ince çözünürlük
 
-Kaba ve ince çözünürlük ayarları arasındaki tek fark, benzetimi gerçekleştirilen sıklıktır. İnce, en yüksek bir sıklık olarak yüksek bir sıklık kullanır. Bu, akustik simülasyonu üzerinde bazı etkilere sahiptir:
+Kaba ve ince çözünürlük ayarları arasındaki tek fark simülasyonun gerçekleştirilme sıklığıdır. Fine, kabafrekansın iki katı kadar yüksek bir frekans kullanır. Bunun akustik simülasyon üzerinde bir dizi etkisi vardır:
 
-* Kalın uzunlukla ilgili dalga uzunluğu, doğru uzunluktadır ve bu nedenle voxters, büyük olur.
-* Benzetim süresi, Voxel boyutuyla doğrudan ilişkilidir. Bu, ince bir bakışta 16 kat daha hızlı bir şekilde daha hızlı bir şekilde gerçekleşir.
-* (Örneğin, kapıların veya pencerelerin) Voxel boyutundan küçük olması benzetimi yapılamıyor. Kaba ayar, bu küçük portalların bazılarının benzetimine neden olabilir; Bu nedenle, çalışma zamanında ses geçirmez. Bu durum, VOX, ' ı görüntüleyerek olup olmadığını görebilirsiniz.
-* Düşük simülasyon sıklığı, köşeler ve kenarlar etrafında daha az dağıtılmış olur.
-* Ses kaynakları "doldurulmuş" voxkine (geometri içeren voxx) içinde bulunamaz. Bu, ses olmadan sonuçlanır. Ses kaynaklarını, ince ayar kullanılırken daha büyük voxksel nesnelerin içine kalmayacak şekilde yerleştirmek daha zordur.
-* Daha büyük voxne, aşağıda gösterildiği gibi portallara intrude. İlk görüntü, büyük bir çözüm kullanılarak aynı Doorway, ikincisi ise kaba bir kullanılarak oluşturulmuştur. Kırmızı işaretlerle gösterildiği gibi, Doorway için ince ayar kullanılarak çok daha az yetkisiz erişim vardır. Mavi çizgi, geometri tarafından tanımlanan Doorway, kırmızı çizgi ise Voxel boyutuyla tanımlanan etkin akustik portaldır. Bu yetkisiz giriş, belirli bir durumda nasıl çalındığında, tam olarak, sahneye ait nesnelerinizin boyut ve konumlarına göre belirlenen ve portalın geometrisi ile nasıl bir satıra göre belirlenir.
+* Kaba için dalga boyu inceden iki kat daha uzundur ve bu nedenle voxel'ler iki kat daha büyüktür.
+* Simülasyon süresi doğrudan voxel boyutu ile ilgilidir, kaba fırında yaklaşık 16 kat daha hızlı ince bir fırında n için yapılır.
+* Voxel boyutundan daha küçük portallar (örneğin, kapı veya pencereler) simüle edilemez. Kaba ayar, bu küçük portalların bazılarının simüle edilmemelerine neden olabilir; bu nedenle, çalışma zamanında ses geçirilmez. Voxel'leri görüntüleyerek bunun olup olmadığını görebilirsiniz.
+* Düşük simülasyon frekansı, köşeler ve kenarlar etrafında daha az kırınım sağlar.
+* Ses kaynakları "dolu" voxel'lerin (yani geometri içeren voxel'lerin) içinde bulunamaz. Bu hiçbir ses ile sonuçlanır. Ses kaynaklarını yerleştirmek, böylece ince ayarı kullanırken olduğundan daha büyük kaba voxels içinde değildir yerleştirmek daha zordur.
+* Daha büyük voxels portalları içine daha fazla izinsiz olacak, aşağıda gösterildiği gibi. İlk görüntü kaba kullanılarak oluşturulurken, ikincisi ince çözünürlük kullanılarak aynı kapıdır. Kırmızı işaretler ile belirtildiği gibi, ince ayar kullanarak kapı içine çok daha az saldırı vardır. Mavi çizgi geometri ile tanımlandığı gibi kapı, kırmızı çizgi voxel boyutu ile tanımlanan etkili akustik portal ise. Bu saldırının belirli bir durumda nasıl sonuçlandığı tamamen voxel'lerin, sahnedeki nesnelerin izine ve konumuna göre belirlenen portalın geometrisiyle nasıl hizalandığına bağlıdır.
 
-![Gerçek zamanlı olmayan bir Doorway doldurma için kalın ekran görüntüsü](media/unreal-coarse-bake.png)
+![Unreal bir kapı doldurma kaba voxels Ekran görüntüsü](media/unreal-coarse-bake.png)
 
-![Gerçek olmayan bir Doorway içinde ince voxunlar ekran görüntüsü](media/unreal-fine-bake.png)
+![Unreal bir kapı da ince voxels Ekran görüntüsü](media/unreal-fine-bake.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Gerçek zamanlı](unreal-baking.md) veya [Unity](unity-baking.md) eklentilerimizi kullanarak gerçekçi ve iyi çözünürlük ayarları yapın.
+[Unreal](unreal-baking.md) veya [Unity](unity-baking.md) eklentilerimizi kullanarak kaba ve ince çözünürlük ayarlarını kendiniz deneyin.

@@ -1,7 +1,7 @@
 ---
-title: Anahtar İfade Ayıklama kapsayıcı Docker örnekleri
+title: Anahtar Tümceme Çıkarma konteyner docker örnekleri
 titleSuffix: Azure Cognitive Services
-description: Anahtar İfade Ayıklama kapsayıcı Docker örnekleri
+description: Anahtar Tümceme Çıkarma konteyner docker örnekleri
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: dapine
 ms.openlocfilehash: bc0375369db351038c7ac550cbe51415a0b3e069
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148508"
 ---
-### <a name="key-phrase-extraction-container-docker-examples"></a>Anahtar İfade Ayıklama kapsayıcı Docker örnekleri
+### <a name="key-phrase-extraction-container-docker-examples"></a>Anahtar Tümceme Çıkarma konteyner docker örnekleri
 
-Aşağıdaki Docker örnekleri Anahtar İfade Ayıklama kapsayıcısı içindir.
+Aşağıdaki docker örnekleri Anahtar Tümcecik Çıkarma kapsayıcısı içindir.
 
 #### <a name="basic-example"></a>Temel örnek 
 
@@ -30,7 +30,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} 
   ```
 
-#### <a name="logging-example"></a>Günlüğe kaydetme örneği 
+#### <a name="logging-example"></a>Günlük örneği 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

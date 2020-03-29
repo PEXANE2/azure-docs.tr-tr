@@ -1,7 +1,7 @@
 ---
-title: Özel bir sesli konuşma hizmeti oluşturma
+title: Özel Ses Oluşturma - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Verilerinizi karşıya yüklemeye hazırsanız, özel sesli portala gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır.
+description: Verilerinizi yüklemeye hazır olduğunuzda, Özel Ses portalına gidin. Özel Ses projesi oluşturun veya seçin. Proje, ses eğitiminiz için kullanmayı niyetettiğiniz veriler olarak doğru dili/yerel durumu ve cinsiyet özelliklerini paylaşmalıdır.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,140 +11,140 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717319"
 ---
-# <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
+# <a name="create-a-custom-voice"></a>Özel Ses Oluşturma
 
-[Özel ses için verileri hazırlama](how-to-custom-voice-prepare-data.md)bölümünde, özel bir sesi ve farklı biçim gereksinimlerini eğitebilmeniz için kullanabileceğiniz farklı veri türlerini açıklıyoruz. Verilerinizi hazırladıktan sonra, bunları [özel ses portalına](https://aka.ms/custom-voice-portal)veya özel ses eğitimi API 'sine yüklemeye başlayabilirsiniz. Burada, Portal üzerinden özel bir sesli eğitim adımlarını açıklanmaktadır.
-
-> [!NOTE]
-> Bu sayfada özel [sesle çalışmaya](how-to-custom-voice.md) başlayın ve özel [Ses için verileri hazırlayın](how-to-custom-voice-prepare-data.md)ve özel bir ses projesi oluşturmuş olursunuz.
-
-Özel ses için desteklenen dilleri denetleyin: [Özelleştirme dili](language-support.md#customization).
-
-## <a name="upload-your-datasets"></a>Veri kümelerinizi karşıya yükleyin
-
-Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, bir UK vurgu ile Ingilizce olarak işiniz durumunda `en-GB` ' yi seçin.
-
-**Veri** sekmesine gidin ve **verileri karşıya yükle**' ye tıklayın. Sihirbazda, hazırladığınız verilerle eşleşen doğru veri türünü seçin.
-
-Karşıya yüklediğiniz her veri kümesinin seçtiğiniz veri türü için gereksinimleri karşılaması gerekir. Karşıya yüklenmeden önce verilerinizi doğru şekilde biçimlendirmek önemlidir. Bu, verilerin özel ses hizmeti tarafından doğru şekilde işlenmesini sağlar. [Özel ses için veri hazırlama](how-to-custom-voice-prepare-data.md) sayfasına gidin ve verilerinizin rightly biçimlendirildiğinden emin olun.
+[Özel Ses için veri hazırlama'da,](how-to-custom-voice-prepare-data.md)özel bir ses ve farklı biçim gereksinimlerini eğitmek için kullanabileceğiniz farklı veri türlerini tanımladık. Verilerinizi hazırladıktan sonra, bunları Özel Ses [portalına](https://aka.ms/custom-voice-portal)veya Özel Ses eğitim API'si aracılığıyla yüklemeye başlayabilirsiniz. Burada portal üzerinden özel bir ses eğitim adımları açıklar.
 
 > [!NOTE]
-> Ücretsiz abonelik (F0) kullanıcıları iki veri kümesini eşzamanlı olarak karşıya yükleyebilir. Standart abonelik (S0) kullanıcıları beş veri kümesini eşzamanlı olarak karşıya yükleyebilir. Sınıra ulaştıysanız, veri kümelerinden en az biri içeri aktarmayı bitirene kadar bekleyin. Sonra yeniden deneyin.
+> Bu sayfa, Özel [Ses ile başlayın](how-to-custom-voice.md) ve [Özel Ses için veri hazırlayın](how-to-custom-voice-prepare-data.md)ve bir Özel Ses projesi oluşturduk okudum varsayar.
+
+Özel ses için desteklenen dilleri kontrol [edin: özelleştirme için dil.](language-support.md#customization)
+
+## <a name="upload-your-datasets"></a>Veri kümelerinizi yükleyin
+
+Verilerinizi yüklemeye hazır olduğunuzda, Özel [Ses portalına](https://aka.ms/custom-voice-portal)gidin. Özel Ses projesi oluşturun veya seçin. Proje, ses eğitiminiz için kullanmayı niyetettiğiniz veriler olarak doğru dili/yerel durumu ve cinsiyet özelliklerini paylaşmalıdır. Örneğin, sahip `en-GB` olduğunuz ses kayıtlarının İngiltere aksanıyla İngilizce olarak yapIlip yapılmadığını seçin.
+
+**Veri** sekmesine gidin ve **Verileri Yükle'yi**tıklatın. Sihirbazda, hazırladıklarına uyan doğru veri türünü seçin.
+
+Yüklediğiniz her veri kümesi, seçtiğiniz veri türü için gereksinimleri karşılamalıdır. Verilerinizi yüklenmeden önce doğru biçimlendirmek önemlidir. Bu, verilerin Özel Ses hizmeti tarafından doğru bir şekilde işlenmesini sağlar. Özel [Ses için veri hazırlamaya](how-to-custom-voice-prepare-data.md) gidin ve verilerinizin doğru biçimlendirilmiş olduğundan emin olun.
 
 > [!NOTE]
-> Abonelik başına içeri aktarılmaya izin verilen en fazla veri kümesi sayısı 10. ücretsiz abonelik (F0) kullanıcıları ve Standart abonelik (S0) kullanıcıları için 500. zip dosyalarıdır.
+> Ücretsiz abonelik (F0) kullanıcıları aynı anda iki veri kümesi yükleyebilirsiniz. Standart abonelik (S0) kullanıcıları aynı anda beş veri kümesi yükleyebilir. Sınıra ulaşırsanız, veri kümelerinizden en az birinin içe aktarma yı bitirmesini bekleyin. O zaman tekrar dene.
 
-Veri kümeleri, karşıya yükle düğmesine ulaştıktan sonra otomatik olarak onaylanır. Veri doğrulama, dosya biçimlerini, boyutunu ve örnekleme oranını doğrulamak için ses dosyalarındaki denetim dizilerini içerir. Varsa hataları düzeltin ve yeniden gönder. Veri alma isteği başarıyla başlatıldığında, yeni karşıya yüklediğiniz veri kümesine karşılık gelen veri tablosunda bir giriş görmeniz gerekir.
+> [!NOTE]
+> Abonelik başına alınmasına izin verilen maksimum veri kümesi sayısı, ücretsiz abonelik (F0) kullanıcıları için 10.zip dosyası ve standart abonelik (S0) kullanıcıları için 500'dür.
 
-Aşağıdaki tabloda, içeri aktarılan veri kümeleri için işleme durumları gösterilmektedir:
+Yükleme düğmesine bastığınızda veri kümeleri otomatik olarak doğrulanır. Veri doğrulama, dosya biçimlerini, boyutlarını ve örnekleme hızlarını doğrulamak için ses dosyalarında bir dizi denetim içerir. Varsa hataları düzeltin ve yeniden gönderin. Veri alma isteği başarıyla başlatıldığında, veri tablosunda yeni yüklediğiniz veri kümesine karşılık gelen bir giriş görmeniz gerekir.
+
+Aşağıdaki tablo, içe aktarılan veri kümeleri için işleme durumlarını gösterir:
 
 | Durum | Anlamı |
 | ----- | ------- |
 | İşleniyor | Veri kümeniz alındı ve işleniyor. |
-| Başarılı oldu | Veri kümeniz doğrulandıktan sonra artık bir ses modeli oluşturmak için kullanılabilir. |
-| Başarısız | Veri kümeniz, çok sayıda nedenden dolayı işleme sırasında başarısız oldu, örneğin dosya hataları, veri sorunları veya ağ sorunları. |
+| Başarılı oldu | Veri kümeniz doğrulandı ve artık bir ses modeli oluşturmak için kullanılabilir. |
+| Başarısız | Dosya hataları, veri sorunları veya ağ sorunları gibi birçok nedenden dolayı veri kümeniz işleme sırasında başarısız oldu. |
 
-Doğrulama işlemi tamamlandıktan sonra, **utterslar** sütunundaki veri kümelerinizin her biri için eşleşen Masların toplam sayısını görebilirsiniz. Seçtiğiniz veri türü uzun ses segmentlemesini gerektiriyorsa, bu sütun yalnızca kendi betiklerinizi temel alarak veya konuşma dökümü hizmeti aracılığıyla sizin için segmentettiğimiz göz asyonları yansıtır. Başarılı bir şekilde içeri aktarılan ve bunların eşleme dökümlerinin ayrıntı sonuçlarını görüntülemek için doğrulanan veri kümesini daha fazla indirebilirsiniz. İpucu: uzun ses segmentlenmesi, veri işlemeyi tamamlayacak bir saatten uzun sürebilir.
+Doğrulama tamamlandıktan sonra, **Tümlemeler** sütununda her bir veri kümeniz için eşleşen tüm sözcük sayısını görebilirsiniz. Seçtiğiniz veri türü uzun ses segmentasyonu gerektiriyorsa, bu sütun yalnızca transkriptlerinize veya konuşma transkripsiyon hizmetinize dayanarak sizin için bölümlediğimiz söylemleri yansıtır. Başarıyla aktarılan konuşmaların ayrıntı sonuçlarını ve bunların eşleme transkriptlerini görüntülemek için doğrulanmış veri kümesini daha da indirebilirsiniz. İpucu: uzun ses segmentasyonunun veri işlemeyi tamamlaması bir saatten fazla sürebilir.
 
-En-US ve zh-CN veri kümeleri için, bir raporu daha fazla indirebilir ve kayıtlarınızın her biri için telaffuz puanlarını ve gürültü düzeyini kontrol edebilirsiniz. Söyleniş puanı 0 ile 100 arasındadır. 70 altındaki bir puan, normalde bir konuşma hatası veya betik uyuşmazlığını gösterir. Ağır bir vurgu, telaffuz puanınızı azaltabilir ve üretilen dijital sesi etkileyebilir.
+en-US ve zh-CN veri kümeleri için, her kayıt için telaffuz puanlarını ve gürültü düzeyini kontrol etmek için bir rapor daha indirebilirsiniz. Telaffuz puanı 0 ile 100 arasında değişir. 70'in altındaki bir puan normalde bir konuşma hatası veya komut dosyası uyuşmazlığı gösterir. Ağır bir vurgu telaffuz puanınızı azaltabilir ve oluşturulan dijital sesi etkileyebilir.
 
-Daha yüksek sinyalden gürültü oranı (SNR), Sesinizdeki küçük paraziti gösterir. Profesyonel Studios adresinde kayıt yaparak genellikle 50 + SNR 'ye ulaşabilirsiniz. 20 ' nin altında bir SNR ile ses, üretilen sesinize açık gürültü oluşmasına neden olabilir.
+Daha yüksek bir sinyal-gürültü oranı (SNR) sesinizde daha düşük gürültü yü gösterir. Genellikle profesyonel stüdyolarda kayıt yaparak 50+ SNR'a ulaşabilirsiniz. 20'nin altında Bir SNR ile ses oluşturulan ses bariz gürültü neden olabilir.
 
-Düşük telaffuz puanlarla veya kötü bir sinyal gürültüsü oranlarına sahip tüm sinyalleri yeniden kaydetmeyi düşünün. Yeniden kaydedemeyebilirsiniz, bu ilgili söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu
+Düşük telaffuz puanları veya düşük sinyal-gürültü oranları ile tüm söyleyiyi yeniden kaydetmeyi düşünün. Yeniden kaydedemezseniz, bu sözcükleri veri kümenizden çıkarabilirsiniz.
 
-## <a name="build-your-custom-voice-model"></a>Özel ses modelinizi oluşturma
+## <a name="build-your-custom-voice-model"></a>Özel ses modelinizi oluşturun
 
-Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kullanabilirsiniz.
+Veri setiniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kullanabilirsiniz.
 
-1.  **Metinden konuşmaya > özel sesli > eğitimi**' ne gidin.
+1.  Metinden Konuşmaya > **Özel Ses > Eğitimine**gidin.
 
-2.  **Modeli eğitme**' ye tıklayın.
+2.  **Tren modeline**tıklayın.
 
-3.  Ardından, bu modeli tanımlamanızı sağlayacak bir **ad** ve **Açıklama** girin.
+3.  Ardından, bu modeli tanımlamanıza yardımcı olacak bir **Ad** ve **Açıklama** girin.
 
-    Bir adı dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sensimi için isteğiniz için kullandığınız adı kullanacaktır. Yalnızca harfler, rakamlar ve-, \_ve (', ') gibi birkaç noktalama karakteri kullanılabilir. Farklı ses modelleri için farklı adlar kullanın.
+    Bir ad dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sentezi isteğinizdeki sesi belirtmek için kullandığınız ad olacaktır. Yalnızca harflere, sayılara ve -, \_, , ve (', ') gibi birkaç noktalama işaretine izin verilir. Farklı ses modelleri için farklı adlar kullanın.
 
-    **Description** alanının yaygın bir kullanımı, modeli oluşturmak için kullanılan veri kümelerinin adlarını kaydetmek olur.
+    **Açıklama** alanının yaygın kullanımı, modeli oluşturmak için kullanılan veri kümelerinin adlarını kaydetmektir.
 
-4.  **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya birden çok veri kümesi seçin. Göndermeden önce vurdıklarla sayısını denetleyin. En-US ve zh-CN ses modelleri için herhangi bir sayıda utterde başlayabilirsiniz. Diğer yerel ayarlarda, bir sesi eğitebilmek için 2.000 'den fazla yer seçmelisiniz.
+4.  Eğitim **veri sini seç** sayfasından, eğitim için kullanmak istediğiniz bir veya birden çok veri kümesini seçin. Göndermeden önce söylentin sayısını kontrol edin. En-US ve zh-CN ses modelleri için herhangi bir sayıda söyleyiş ile başlayabilirsiniz. Diğer yerel yerler için, bir sesi eğitebilmek için 2.000'den fazla sözcük seçmeniz gerekir.
 
     > [!NOTE]
-    > Yinelenen ses adları eğitiminden kaldırılacak. Seçtiğiniz veri kümelerinin birden çok. zip dosyası arasında aynı ses adlarını içermediğinden emin olun.
+    > Yinelenen ses adları eğitimden kaldırılır. Seçtiğiniz veri kümelerinin birden çok .zip dosyasında aynı ses adlarını içermediğinden emin olun.
 
     > [!TIP]
-    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. Genel olarak kullanılabilir [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer bir bağlantı üretebilmeniz için en son sinir TTS teknolojisine sahip bir model eğitmek Istiyorsanız [özel ses ekibine başvurun](https://go.microsoft.com/fwlink/?linkid=2108737) .
+    > Kaliteli sonuçlar için aynı hoparlörden gelen veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri toplam 6.000'den az farklı söz içeriyorsa, ses modelinizi İstatistiksel Parametrik Sentez tekniği ile eğiteceksiniz. Eğitim verilerinizin toplam 6.000 farklı kelime sayısını aşması durumunda, Concatenation Synthesis tekniği ile bir eğitim sürecini başlatmış olursunuz. Normalde concatenation teknolojisi daha doğal ve daha yüksek sadakat ses sonuçları neden olabilir. Kamuya açık [sinirsel seslere](language-support.md#neural-voices)eşdeğer bir dijital ses üretebilen en son Nöral TTS teknolojisine sahip bir model eğitmek istiyorsanız [Özel Ses ekibiyle iletişime geçin.](https://go.microsoft.com/fwlink/?linkid=2108737)
 
-5.  Ses modelinizi oluşturmaya başlamak için **eğitme** ' ye tıklayın.
+5.  Ses modelinizi oluşturmaya başlamak için **Tren'i** tıklatın.
 
-Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: Işlem, başarılı, başarısız.
+Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tablo da durumu görüntüler: İşleme, Başarılı, Başarısız.
 
-Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline dönüştürme sürecini yansıtır.
+Gösterilen durum, burada gösterildiği gibi veri kümenizi bir ses modeline dönüştürme işlemini yansıtır.
 
 | Durum | Anlamı |
 | ----- | ------- |
-| İşleniyor | Ses modeliniz oluşturuluyor. |
+| İşleniyor | Ses modelin oluşturuluyor. |
 | Başarılı oldu | Ses modeliniz oluşturuldu ve dağıtılabilir. |
-| Başarısız | Ses modeliniz birçok nedenden dolayı eğitiminde başarısız oldu, örneğin görülmeyen veri sorunları veya ağ sorunları. |
+| Başarısız | Ses modeliniz, örneğin görünmeyen veri sorunları veya ağ sorunları gibi birçok nedenden dolayı eğitimde başarısız oldu. |
 
-Eğitim süresi, işlenen ses verilerinin hacmine bağlı olarak değişir. Tipik saatler, yaklaşık olarak 30 dakika boyunca yaklaşık 40 saat, 20.000 utterlerin saati kadar arasındadır. Model eğitiminizi başarılı olduktan sonra test edebilirsiniz.
-
-> [!NOTE]
-> Ücretsiz abonelik (F0) kullanıcıları aynı anda bir ses yazı tipi eğitebilir. Standart abonelik (S0) kullanıcıları aynı anda üç ses de eğitebilir. Sınıra ulaştıysanız, en az bir ses yazı tipinden eğitim bitene kadar bekleyip yeniden deneyin.
+Eğitim süresi işlenen ses verilerinin hacmine bağlı olarak değişir. Tipik zamanlar, yüzlerce söz için yaklaşık 30 dakika ile 20.000 kelime için 40 saat arasında değişir. Model eğitiminiz başarılı olduktan sonra, bunu test etmeye başlayabilirsiniz.
 
 > [!NOTE]
-> Abonelik başına eğitime izin verilen maksimum ses modeli sayısı, ücretsiz abonelik (F0) kullanıcıları için 10 modeldir ve Standart abonelik (S0) kullanıcıları için 100.
+> Ücretsiz abonelik (F0) kullanıcıları aynı anda bir sesli yazı tipi eğitebilirsiniz. Standart abonelik (S0) kullanıcıları aynı anda üç sesi eğitebilir. Sınıra ulaşırsanız, ses yazı tiplerinizden en az birinin eğitimini bitirmesini bekleyin ve sonra yeniden deneyin.
 
-Sinir Voice eğitim özelliğini kullanıyorsanız, gerçek zamanlı akış senaryoları için en iyi duruma getirilmiş bir modeli eğitme veya zaman uyumsuz [Long-Audio birleştirmede](long-audio-api.md)en iyi duruma GETIRILMIŞ bir HD sinir modeli seçebilirsiniz.  
+> [!NOTE]
+> Abonelik başına eğitilmesine izin verilen maksimum ses modeli sayısı ücretsiz abonelik (F0) kullanıcıları için 10 model ve standart abonelik (S0) kullanıcıları için 100 modeldir.
 
-## <a name="test-your-voice-model"></a>Ses modelinizi test etme
+Eğer nöral ses eğitim yeteneği kullanıyorsanız, gerçek zamanlı akış senaryoları için optimize edilmiş bir model veya eşzamanlı [uzun ses sentezi](long-audio-api.md)için optimize edilmiş bir HD nöral modeli eğitmek için seçebilirsiniz.  
 
-Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan önce test edebilirsiniz.
+## <a name="test-your-voice-model"></a>Ses modelinizi test edin
 
-1.  **Metinden konuşmaya > özel sesli > teste**gidin.
+Ses yazı tipiniz başarıyla oluşturulmadan sonra, kullanım için dağıtmadan önce test edebilirsiniz.
 
-2.  **Test Ekle**' ye tıklayın.
+1.  Metinden Konuşmaya > **Özel Ses > Testine**gidin.
 
-3.  Test etmek istediğiniz bir veya daha fazla modeli seçin.
+2.  **Test Ekle'yi**tıklatın.
 
-4.  Sesinizin konuşmasını istediğiniz metni sağlayın. Tek seferde birden çok modeli test etmeyi seçtiyseniz, farklı modeller için test için aynı metin kullanılacaktır.
+3.  Test etmek istediğiniz bir veya birden çok modeli seçin.
+
+4.  Sesin(ler) konuşmasını istediğiniz metni sağlayın. Aynı anda birden çok modeli test etmeyi seçtiyseniz, aynı metin farklı modeller için sınama için kullanılır.
 
     > [!NOTE]
-    > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
+    > Metninizin dili, ses yazı tipinizin diliyle aynı olmalıdır. Sadece başarılı eğitimli modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.  **Oluştur**'a tıklayın.
+5.  **Oluştur'u**tıklatın.
 
-Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
+Sınav isteğinizi gönderdikten sonra, test sayfasına geri döneceksiniz. Tablo şimdi yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı sentezlemek birkaç dakika sürebilir. Durum sütununda **Başarılı**olduğunu söylediğinde, sesi oynatabilir veya metin girişini (.txt dosyası) ve ses çıktısını (.wav dosyası) indirebilir ve kalite için ikincisini daha fazla değerlendirebilirsiniz.
 
-Test sonuçlarını, test için seçtiğiniz her modellerin ayrıntı sayfasında de bulabilirsiniz. **Eğitim** sekmesine gidin ve model ayrıntısı sayfasına girmek için model adına tıklayın.
+Test sonuçlarını, test için seçtiğiniz her modelin ayrıntı sayfasında da bulabilirsiniz. **Eğitim** sekmesine gidin ve model ayrıntı sayfasını girmek için model adını tıklatın.
 
-## <a name="create-and-use-a-custom-voice-endpoint"></a>Özel bir ses uç noktası oluşturma ve kullanma
+## <a name="create-and-use-a-custom-voice-endpoint"></a>Özel bir ses bitiş noktası oluşturma ve kullanma
 
-Ses modelinizi başarıyla oluşturup test ettikten sonra, özel bir metin okuma uç noktasına dağıtırsınız. Sonra bu uç noktayı, REST API aracılığıyla metinden konuşmaya istekleri yaparken her zamanki uç noktanın yerine kullanırsınız. Özel uç noktanız yalnızca yazı tipini dağıtmak için kullandığınız abonelik tarafından çağrılabilir.
+Ses modelinizi başarıyla oluşturduktan ve test ettikten sonra, bu modeli özel bir Metin-Konuşma bitiş noktasına dağımış olursunuz. Daha sonra, REST API'de Metinden Konuşmaya isteklerini yaparken bu bitiş noktasını normal bitiş noktasının yerine kullanırsınız. Özel bitiş noktanız yalnızca yazı tipini dağıtmak için kullandığınız abonelik tarafından çağrılabilir.
 
-Yeni bir özel ses uç noktası oluşturmak için, **metinden konuşmaya > özel sesli > dağıtımına**gidin. **Uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel ses modelini seçin.
+Yeni bir özel ses bitiş noktası oluşturmak için **Metinden Konuşmaya > Özel Ses > Dağıtım'a**gidin. **Bitiş Noktası Ekle'yi** seçin ve özel bitiş noktanız için bir **Ad** ve **Açıklama** girin. Ardından, bu bitiş noktasıyla ilişkilendirmek istediğiniz özel ses modelini seçin.
 
-**Ekle** düğmesine tıkladıktan sonra, uç nokta tablosunda, yeni uç noktanız için bir giriş görürsünüz. Yeni bir uç noktanın örneklendirilecek birkaç dakika sürebilir. Dağıtımın durumu **başarılı**olduğunda, uç nokta kullanıma hazırdır.
-
-> [!NOTE]
-> Ücretsiz abonelik (F0) kullanıcılarının yalnızca bir modeli dağıtılmış olabilir. Standart abonelik (S0) kullanıcıları, her biri kendi özel sesiyle en fazla 50 uç nokta oluşturabilir.
+**Ekle** düğmesini tıklattıktan sonra, bitiş noktası tablosunda, yeni bitiş noktanız için bir giriş görürsünüz. Yeni bir bitiş noktasının anlık olarak anını vermek birkaç dakika sürebilir. Dağıtım durumu **Başarılı**olduğunda, bitiş noktası kullanıma hazırdır.
 
 > [!NOTE]
-> Özel sesinizi kullanmak için, ses modeli adını belirtmeniz, özel URI 'yi doğrudan bir HTTP isteğinde kullanmanız ve aynı aboneliği kullanarak TTS hizmetinin kimlik doğrulamasından geçmesi gerekir.
+> Ücretsiz abonelik (F0) kullanıcıları yalnızca bir model dağıtılabilir. Standart abonelik (S0) kullanıcıları, her biri kendi özel sesiyle 50 uç nokta oluşturabilir.
 
-Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri göstermek için bağlantıya tıklayın.
+> [!NOTE]
+> Özel sesinizi kullanmak için ses modeli adını belirtmeniz, özel URI'yi doğrudan bir HTTP isteğinde kullanmanız ve TTS hizmetinin kimlik doğrulamasına geçmek için aynı aboneliği kullanmanız gerekir.
 
-Uç noktanın çevrimiçi testi, özel ses portalı aracılığıyla da kullanılabilir. Uç noktanızı test etmek için **uç nokta ayrıntısı** sayfasından **uç noktayı denetle** ' yi seçin. Uç nokta testi sayfası görüntülenir. Söylenen metni (metin kutusunda düz metin veya [SSML biçiminde](speech-synthesis-markup.md) ) girin. Özel ses yazı tipinde konuşulan metni dinlemek için **Yürüt**' ü seçin. Bu test özelliği, özel konuşma sensıs kullanımınıza göre ücretlendirilir.
+Bitiş noktanız dağıtıldıktan sonra, bitiş noktası adı bağlantı olarak görünür. Uç nokta tuşu, uç nokta URL'si ve örnek kod gibi uç noktanıza özgü bilgileri görüntülemek için bağlantıyı tıklatın.
 
-Özel uç nokta, metinden konuşmaya istekleri için kullanılan standart uç nokta ile aynıdır. Daha fazla bilgi için bkz. [REST API](rest-text-to-speech.md) .
+Bitiş noktasının çevrimiçi testi ne özel ses portalı aracılığıyla da kullanılabilir. Bitiş noktanızı test etmek **için, Bitiş Noktası ayrıntı** sayfasından bitiş noktasını **kontrol** et'i seçin. Bitiş noktası test sayfası görüntülenir. Konuşulacak metni girin (metin kutusuna düz metin veya [SSML biçiminde.](speech-synthesis-markup.md) Özel ses yazı tipinizde konuşulan metni duymak için **Oynat'ı**seçin. Bu test özelliği, özel konuşma sentezi kullanımınıza karşı ücretlendirilir.
+
+Özel bitiş noktası, metinden konuşmaya istekleri için kullanılan standart uç noktayla işlevsel olarak aynıdır. Daha fazla bilgi için [REST API'ye](rest-text-to-speech.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kılavuz: ses örneklerinizi kaydetme](record-custom-voice-samples.md)
-* [Metinden konuşmaya API başvurusu](rest-text-to-speech.md)
-* [Uzun ses API 'SI](long-audio-api.md)
+* [Kılavuz: Ses örneklerinizi kaydetme](record-custom-voice-samples.md)
+* [Metinden Konuşmaya API başvurusu](rest-text-to-speech.md)
+* [Uzun Ses API'si](long-audio-api.md)

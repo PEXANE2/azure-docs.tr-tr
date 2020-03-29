@@ -1,7 +1,7 @@
 ---
-title: Çevrimdışı değerlendirme yöntemini kullanma-kişiselleştirici
+title: Çevrimdışı Değerlendirme yöntemini kullanın - Personalizer
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, uygulamanızın verimliliğini ölçmek ve öğrenme döngünüzü çözümlemek için çevrimdışı değerlendirmeyi kullanma açıklanmaktadır.
+description: Bu makalede, uygulamanızın etkinliğini ölçmek ve öğrenme döngünüzü analiz etmek için çevrimdışı değerlendirmenin nasıl kullanılacağı açıklanacaktır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,66 +11,66 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: diberry
 ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623600"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
 
-Çevrimdışı değerlendirme, kodunuzu değiştirmeden veya Kullanıcı deneyimini etkilemeden, kişiselleştirici hizmetin verimliliğini test etmenize ve değerlendirmenize olanak tanıyan bir yöntemdir. Çevrimdışı değerlendirme, farklı derecelendirmelerinin nasıl gerçekleştirildiğini karşılaştırmak için uygulamanızdan derecelendirme ve yeniden kullanma API 'Lerine gönderilen geçmiş verileri kullanır.
+Çevrimdışı değerlendirme, kodunuzu değiştirmeden veya kullanıcı deneyimini etkilemeden Kisilikhizmetinin etkinliğini test etmenizi ve değerlendirmenizi sağlayan bir yöntemdir. Çevrimdışı değerlendirme, farklı sıralamaların nasıl performans gösterdiğini karşılaştırmak için uygulamanızdan Rank ve Reward API'lerine gönderilen geçmiş verileri kullanır.
 
-Çevrimdışı değerlendirme bir tarih aralığında gerçekleştirilir. Aralık, geçerli saat kadar geç bitebilirler. Aralığın başı, [veri saklama](how-to-settings.md)için belirtilen gün sayısından daha fazla olamaz.
+Çevrimdışı değerlendirme bir tarih aralığında gerçekleştirilir. Aralık geçerli saat kadar geç bitirebilir. Aralığın [başlangıcı, veri saklama](how-to-settings.md)için belirtilen gün sayısından fazla olamaz.
 
-Çevrimdışı değerlendirme aşağıdaki soruları yanıtlamanıza yardımcı olabilir:
+Çevrimdışı değerlendirme, aşağıdaki soruları yanıtlamanıza yardımcı olabilir:
 
-* Başarıyla kişiselleştirmeye yönelik kişiselleştirici dereceleri ne kadar etkili?
-    * Kişiselleştirici çevrimiçi makine öğrenme ilkesi tarafından gerçekleştirilen ortalama yeniden ödüller nelerdir?
-    * Kişiselleştirici, uygulamanın varsayılan olarak ne kadar yapıldığına ilişkin verimliliğinden nasıl karşılaştırılır?
-    * Kişiselleştirme için rastgele bir seçeneğin karşılaştırılma verimliliği ne olur?
-    * Farklı öğrenme ilkelerinin karşılaştırılma verimliliği el ile belirtilmiş olabilir mi?
-* İçeriğin hangi özellikleri başarılı kişiselleştirmeye daha fazla veya daha az katkıda bulunur?
-* Eylemlerin hangi özellikleri başarılı kişiselleştirmeye daha fazla veya daha az katkıda bulunur?
+* Personalizer başarılı kişiselleştirme için ne kadar etkili?
+    * Personalizer online makine öğrenme politikası ile elde edilen ortalama ödüller nelerdir?
+    * Personalizer, uygulamanın varsayılan olarak ne yapacağının etkinliğiyle nasıl karşılaştırılır?
+    * Ne Kişiselleştirme için rasgele bir seçim karşılaştırmalı etkinliği olurdu?
+    * El ile belirlenen farklı öğrenme politikalarının karşılaştırmalı etkinliği ne olurdu?
+* Bağlamın hangi özellikleri başarılı kişiselleştirmeye az çok katkıda bulunuyor?
+* Eylemlerin hangi özellikleri başarılı kişiselleştirmeye az ya da çok katkıda bulunuyor?
 
-Ayrıca, çevrimdışı değerlendirme, kişiselleştirmenin gelecekte sonuçları geliştirmek için kullanabileceği daha iyileştirilmiş öğrenme ilkelerini keşfetmede kullanılabilir.
+Buna ek olarak, Çevrimdışı Değerlendirme, Personalizer'ın gelecekte sonuçları iyileştirmek için kullanabileceği daha optimize edilmiş öğrenme ilkelerini keşfetmek için kullanılabilir.
 
-Çevrimdışı değerlendirmeler, araştırma için kullanılacak olayların yüzdesine ilişkin rehberlik sağlamaz.
+Çevrimdışı değerlendirmeler, keşif için kullanılacak olayların yüzdesi konusunda kılavuz sağlamaz.
 
-## <a name="prerequisites-for-offline-evaluation"></a>Çevrimdışı değerlendirme önkoşulları
+## <a name="prerequisites-for-offline-evaluation"></a>Çevrimdışı değerlendirme için ön koşullar
 
-Aşağıda, temsili çevrimdışı değerlendirme için önemli noktalar verilmiştir:
+Temsilci çevrimdışı değerlendirme için önemli hususlar şunlardır:
 
-* Yeterli veri yok. Önerilen minimum değer en az 50.000 olaydır.
-* Temsilci Kullanıcı davranışı ve trafiği ile dönemlerden veri toplayın.
+* Yeterli veriye sahip. Önerilen minimum en az 50.000 olaydır.
+* Temsili kullanıcı davranışı ve trafik içeren dönemlere ait verileri toplayın.
 
-## <a name="discovering-the-optimized-learning-policy"></a>İyileştirilmiş öğrenme ilkesini keşfetme
+## <a name="discovering-the-optimized-learning-policy"></a>Optimize edilmiş öğrenme politikasını keşfetme
 
-Kişiselleştirici, otomatik olarak daha iyi bir öğrenme ilkesi bulmaya yönelik çevrimdışı değerlendirme işlemini kullanabilir.
+Personalizer otomatik olarak daha optimal bir öğrenme ilkesi keşfetmek için çevrimdışı değerlendirme işlemini kullanabilirsiniz.
 
-Çevrimdışı değerlendirmeyi gerçekleştirdikten sonra, geçerli çevrimiçi ilkeyle karşılaştırıldığında, bu yeni ilkeyle kişiselleştirici 'nin karşılaştırılma verimliliğini görebilirsiniz. Daha sonra bu öğrenme ilkesini, indirerek ve ardından modeller ve Ilke paneline yükleyerek, kişiselleştirmede hemen etkili hale getirmek için uygulayabilirsiniz. Ayrıca, gelecekteki analizler veya kullanımı için de indirebilirsiniz.
+Çevrimdışı değerlendirmeyi yaptıktan sonra, Personalizer'ın bu yeni politikayla karşılaştırmalı etkinliğini geçerli çevrimiçi politikayla karşılaştırıldığında görebilirsiniz. Daha sonra bu öğrenme politikasını Personalizer'da hemen etkili hale getirmek için, indirerek ve Modeller ve Politika paneline yükleyerek uygulayabilirsiniz. Ayrıca gelecekteki analiz veya kullanım için indirebilirsiniz.
 
-Değerlendirmede yer alan geçerli ilkeler:
+Değerlendirmede yer alan güncel ilkeler:
 
 | Öğrenme ayarları | Amaç|
 |--|--|
-|**Çevrimiçi Ilke**| Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi |
-|**Çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
-|**Rastgele Ilke**|Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.|
-|**Özel İlkeler**|Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.|
-|**İyileştirilmiş Ilke**|Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.|
+|**Online Politika**| Personalizer'da kullanılan güncel Öğrenme Politikası |
+|**Taban çizgisi**|Uygulamanın varsayılanı (Rank aramalarında gönderilen ilk Eylem tarafından belirlendiği gibi)|
+|**Rasgele İlke**|Her zaman sağlanan eylemlerrastgele seçim döndürür hayali bir Sıralama davranışı.|
+|**Özel İlkeler**|Değerlendirmeye başlarken ek Öğrenme İlkeleri yüklenir.|
+|**Optimize İlke**|Değerlendirme, optimize edilmiş bir ilkeyi bulma seçeneğiyle başlatıldıysa, aynı zamanda karşılaştırılır ve geçerli politikanın yerine, onu karşılayabilir veya çevrimiçi öğrenme ilkesi haline getirebilirsiniz.|
 
-## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Çevrimdışı değerlendirme sonuçlarının uygunluğunu anlama
+## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Çevrimdışı değerlendirme sonuçlarının alaka düzeyini anlama
 
-Çevrimdışı bir değerlendirme çalıştırdığınızda sonuçların _güvenilirlik sınırlarını_ çözümlemek çok önemlidir. Bunlar genişlerse, uygulamanızın kesin veya önemli olması için yeterli miktarda veri almamış olması anlamına gelir. Sistem daha fazla veri biriktirdiği ve çevrimdışı değerlendirmeleri daha uzun süreler üzerinde çalıştırtıkça, güven aralıkları daha dar olur.
+Çevrimdışı bir değerlendirme çalıştırdığınızda, sonuçların _güven sınırlarını_ çözümlemek çok önemlidir. Bunlar genişse, uygulamanızın ödül tahminlerinin kesin veya önemli olması için yeterli veri almadığı anlamına gelir. Sistem daha fazla veri biriktirdikçe ve daha uzun dönemlerde çevrimdışı değerlendirmeler çalıştırdığınızda, güven aralıkları daralır.
 
 ## <a name="how-offline-evaluations-are-done"></a>Çevrimdışı değerlendirmeler nasıl yapılır?
 
-Çevrimdışı değerlendirmeler, **onay verilen değerlendirme**adlı bir yöntem kullanılarak yapılır.
+Çevrimdışı **Değerlendirmeler, Counterfactual Evaluation**adı verilen bir yöntem kullanılarak yapılır.
 
-Kişiselleştirici, kullanıcıların davranışının (ve dolayısıyla rediklerin) geriye dönük olarak tahmin edilmesi olanaksız hale geldiği varsayımına dayanır (Kullanıcı görenden farklı bir şeyler gösterilirse, kişiselleştirici ne olduğunu bilmez) ve yalnızca bilgi edinebilirsiniz ölçülen ödüller.
+Personalizer, kullanıcıların davranışlarının (ve dolayısıyla ödüllerin) geriye dönük olarak tahmin edilmesinin imkansız olduğu varsayımıüzerine kuruludur (Kullanıcıya gördüklerinden farklı bir şey gösterilmiş olsaydı ne olurdu bilemeyiz) ve sadece ölçülen ödüller.
 
-Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
+Bu değerlendirmeler için kullanılan kavramsal süreçtir:
 
 ```
 [For a given _learning policy), such as the online learning policy, uploaded learning policies, or optimized candidate policies]:
@@ -91,22 +91,22 @@ Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
 }
 ```
 
-Çevrimdışı değerlendirme yalnızca gözlemlenen Kullanıcı davranışını kullanır. Bu işlem, özellikle uygulamanız çok sayıda eylemden çağrı yapar durumunda büyük hacimlerdeki verileri atar.
+Çevrimdışı değerlendirme yalnızca gözlenen kullanıcı davranışını kullanır. Bu işlem, özellikle uygulamanız çok sayıda eylemle sıralama çağrıları yapıyorsa, büyük hacimli verileri atar.
 
 
-## <a name="evaluation-of-features"></a>Özelliklerin değerlendirmesi
+## <a name="evaluation-of-features"></a>Özelliklerin değerlendirilmesi
 
-Çevrimdışı değerlendirmeler, eylemler veya bağlam için belirli özelliklerin ne kadarının daha yüksek bir kapsamda dengelendiği hakkında bilgi sağlayabilir. Bilgiler, belirtilen süre ve verilere karşı değerlendirme kullanılarak hesaplanır ve zaman içinde değişebilir.
+Çevrimdışı değerlendirmeler, eylemler veya bağlam için belirli özelliklerin ne kadarının daha yüksek ödüller için tartArttığı hakkında bilgi sağlayabilir. Bilgiler, verilen süre ve verilere göre değerlendirme kullanılarak hesaplanır ve zamana göre değişebilir.
 
-Özellik değerlendirmelerini ve şunları yapmanızı öneririz:
+Özellik değerlendirmelerine bakmanızı ve şunları sormanızı öneririz:
 
-* Uygulamanız veya sisteminiz, daha etkili olanlar hakkında daha fazla bilgi sağlar.
-* Düşük verimlilik nedeniyle hangi özellikler kaldırılabileceği? Düşük verimlilik özellikleri makine öğrenimine _gürültü_ ekler.
-* Yanlışlıkla dahil edilen herhangi bir özellik var mı? Bunlara örnek olarak şunlar verilebilir: Kullanıcı tarafından tanımlanabilen bilgiler, yinelenen kimlikler, vb.
-* Yasal veya sorumlu kullanım konuları nedeniyle kişiselleştirmek için kullanılmaması gereken istenmeyen özellikler var mı? İstenmeyen özelliklerle ara sunucu (diğer bir deyişle, yakından yansıtabilir veya bunlarla ilişkilendirilebilir) olan özellikler var mı?
+* Uygulamanız veya sisteminiz daha etkili olanların çizgisinde başka hangi, ek özellikler sağlayabilir?
+* Düşük etkinlik nedeniyle hangi özellikler kaldırılabilir? Düşük etkinlik özellikleri makine öğrenimine _gürültü_ katar.
+* Yanlışlıkla dahil olan herhangi bir özellik var mı? Bunlara örnek olarak şunlar verilebilir: kullanıcı tanımlayıcı bilgiler, yinelenen kimlikler, vb.
+* Düzenleyici veya sorumlu kullanım konuları nedeniyle kişiselleştirmek için kullanılmaması gereken istenmeyen özellikler var mı? İstenmeyen özellikler proxy olabilir (yani, yakından ayna veya ilişkili) özellikleri var mı?
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kişiselleştirici yapılandırma](how-to-settings.md)
-[çevrimdışı değerlendirmeler çalıştırma](how-to-offline-evaluation.md) , [kişiselleştirici 'in nasıl çalıştığını](how-personalizer-works.md) anlama
+[Yapılandırın Personalizer](how-to-settings.md)
+[Çalıştır Çevrimdışı Değerlendirmeler](how-to-offline-evaluation.md) Nasıl [Personalizer Çalışır](how-personalizer-works.md) anlayın

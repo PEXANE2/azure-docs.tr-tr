@@ -1,7 +1,7 @@
 ---
-title: Doğrudan hat konuşma konuşma hizmeti
+title: Doğrudan Satır Konuşma - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma yazılım geliştirme seti (SDK) ile doğrudan hat konuşmayı kullanan ses yardımcılarının özelliklerine, özelliklerine ve kısıtlamalarına genel bakış.
+description: Konuşma Yazılımı Geliştirme Kiti (SDK) ile Doğrudan Satır Konuşması kullanan Sesli asistanların özelliklerine, yeteneklerine ve kısıtlamalarına genel bakış.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,60 +11,60 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: dapine
 ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367814"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech nedir?
 
-**Doğrudan hat konuşma** , esnek ve genişletilebilir bir ses Yardımcısı oluşturmaya yönelik sağlam, uçtan uca bir çözümdür. Bu, bot çerçevesi ve doğrudan hat konuşma kanalı tarafından desteklenir. Bu, botlar ile sesli ve sesli etkileşim için iyileştirilmiştir.
+**Direct Line Speech,** esnek ve genişletilebilir bir ses asistanı oluşturmak için güçlü, uçtan uca bir çözümdür. Bu Bot Framework ve doğrudan hat konuşma kanalı tarafından desteklenmektedir, bu ses-in için optimize edilmiş, botlar ile ses-out etkileşim.
 
-[Ses yardımcıları](voice-assistants.md) kullanıcıları dinler ve genellikle geri konuşarak bir işlem gerçekleştirebilir. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir.
+[Sesli asistanlar](voice-assistants.md) kullanıcıları dinler ve yanıt olarak bir eylemde, sık sık geri dönerler. Kullanıcının konuşmasını yazıya geçirmek için [metinden metne](speech-to-text.md) sözcük kullanırlar, ardından metnin doğal dil anlayışı konusunda harekete geçerler. Bu eylem sık sık [metinden konuşmaya](text-to-speech.md)oluşturulan yardımcıdan sözlü çıktı içerir.
 
-Doğrudan hat konuşma, sesli Yardımcılar için en yüksek özelleştirme ve gelişmiş algoritmaların mümkündür düzeylerini sunmaktadır. Bu, görev tamamlama veya komut ve denetim kullanımı ile birlikte açık uçlu, doğal veya sonlandırımlar olan konuşma senaryoları için tasarlanmıştır. Bu yüksek düzeyde esneklik daha büyük bir karmaşıklıkla gelir ve doğal dil girişi kullanılarak iyi tanımlanmış görevler kapsamındaki senaryolar, kolaylaştırılmış bir çözüm deneyimi için [özel komutları (Önizleme)](custom-commands.md) düşünmek isteyebilir.
+Direct Line Speech, ses asistanları için en yüksek düzeyde özelleştirme ve gelişmişlik sunar. Görev tamamlama veya komut ve denetim kullanımı yla ikisinin açık uçlu, doğal veya melezleri olan konuşma senaryoları için tasarlanmıştır. Bu yüksek esneklik derecesi daha büyük bir karmaşıklıkla birlikte gelir ve doğal dil girişi kullanarak iyi tanımlanmış görevlere yönelik senaryolar, kolaylaştırılmış bir çözüm deneyimi için [Özel Komutları (Önizleme)](custom-commands.md) olarak değerlendirmek isteyebilir.
 
-## <a name="getting-started-with-direct-line-speech"></a>Doğrudan hat konuşmaya başlarken
+## <a name="getting-started-with-direct-line-speech"></a>Doğrudan Satır Konuşması ile başlarken
 
-Doğrudan hat konuşmayı kullanarak bir ses Yardımcısı oluşturmaya yönelik ilk adım, [bir konuşma aboneliği anahtarı almak](get-started.md), bu abonelikle ilişkilendirilmiş yeni bir bot oluşturmak ve bot 'U doğrudan hat konuşma kanalına bağlamak içindir.
+Direct Line Speech kullanarak bir ses asistanı oluşturmak için ilk adımlar [bir konuşma abonelik anahtarı almak](get-started.md)için, bu abonelik ile ilişkili yeni bir bot oluşturmak ve Doğrudan Hat Konuşma kanalına bot bağlamak için.
 
-   ![Doğrudan hat konuşma düzenleme hizmeti akışının kavramsal diyagramı](media/voice-assistants/overview-directlinespeech.png "Konuşma kanalı akışı")
+   ![Doğrudan Satır Konuşma orkestrasyon hizmet akışının kavramsal diyagramı](media/voice-assistants/overview-directlinespeech.png "Konuşma Kanalı akışı")
 
-Doğrudan hat konuşmayı kullanarak basit bir ses Yardımcısı oluşturmaya yönelik tam bir adım adım kılavuz için, konuşma [için konuşma öğreticisine ve doğrudan hat konuşma kanalına sahip konuşmayı etkinleştirme öğreticisine](tutorial-voice-enable-your-bot-speech-sdk.md)bakın.
+Direct Line Speech kullanarak basit bir ses asistanı oluşturma konusunda eksiksiz, adım adım kılavuz için, [Konuşma SDK ve Doğrudan Hat Konuşma kanalı ile botunuzu etkinleştirme eğitimine](tutorial-voice-enable-your-bot-speech-sdk.md)bakın.
 
-Ayrıca, kod çalıştırıp API 'Leri hızla öğrenmenizi sağlayacak hızlı başlangıçlara da sunuyoruz. Bu tablo, dile ve platforma göre düzenlenen sesli yardım hızlı başlangıçlarını bir listesini içerir.
+Ayrıca, kod çalıştırmanız ve API'leri hızlı bir şekilde öğrenmeniz için hızlı başlangıçlar da sunuyoruz. Bu tablo, dil ve platform tarafından düzenlenen sesli asistan hızlı başlatmalistesini içerir.
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Gözat](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Gözat](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Gözat](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 
-Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekler, çeşitli popüler programlama dillerinde Yardımcınıza bağlanmak için istemci uygulamasını kapsar.
+Ses asistanı oluşturmak için örnek kod GitHub'da kullanılabilir. Bu örnekler, çeşitli popüler programlama dillerinde yardımcınıza bağlanmak için istemci uygulamasını kapsar.
 
-* [Ses Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
-* [Öğretici: konuşma SDK 'Sı ile yardımcınızı etkinleştirme,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Ses asistanı örnekleri (SDK)](https://aka.ms/csspeech/samples)
+* [Öğretici: Ses Konuşma SDK, C ile asistanınızı etkinleştirin #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Özelleştirme
 
-Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
+Konuşma hizmeti kullanılarak oluşturulmuş ses [yardımcıları, konuşmadan metne, metinden](speech-to-text.md) [konuşmaya](text-to-speech.md)ve [özel anahtar kelime seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen tüm özelleştirme seçeneklerini kullanabilir.
 
 > [!NOTE]
-> Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
+> Özelleştirme seçenekleri dile/yerele göre değişir [(bkz. desteklenen diller).](supported-languages.md)
 
-Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)için ideal bir ektir. Doğrudan hat konuşması uyumlu bir bot ile çalışabilse de, bu kaynaklar yüksek kaliteli konuşma deneyimleri için yeniden kullanılabilir bir temel ve hızla çalışmaya başlamak için ortak destekleyici beceriler ve modeller sağlar.
+Doğrudan Satır Konuşma ve ses asistanları için ilişkili işlevselliği [Sanal Yardımcısı Çözüm ve Kurumsal Şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)için ideal bir ektir. Direct Line Speech herhangi bir uyumlu botla çalışsa da, bu kaynaklar yüksek kaliteli konuşma deneyimleri için yeniden kullanılabilir bir temel inyanıtın yanı sıra hızlı bir şekilde başlamak için ortak destekleyici beceriler ve modeller sağlar.
 
-## <a name="reference-docs"></a>Başvuru belgeleri
+## <a name="reference-docs"></a>Referans dokümanları
 
 * [Konuşma SDK'sı](speech-sdk-reference.md)
 * [Azure Bot Hizmeti](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
-* [Konuşma SDK 'sını alın](speech-sdk.md)
+* [Konuşma hizmeti abonelik anahtarını ücretsiz alın](get-started.md)
+* [Konuşma SDK alın](speech-sdk.md)
 * [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)
+* [Sanal Asistan Çözüm ve Kurumsal Şablon alın](https://github.com/Microsoft/AI)

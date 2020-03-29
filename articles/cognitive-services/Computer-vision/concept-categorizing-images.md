@@ -1,7 +1,7 @@
 ---
-title: Resim kategorisi-Görüntü İşleme
+title: Görüntü kategorizasyonu - Bilgisayarlı Vizyon
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si resim kategorisi özelliği ile ilgili kavramları öğrenin.
+description: BilgisayarLı Görme API'sinin görüntü kategorizasyonu özelliğiyle ilgili kavramları öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 477349f1addf71a30e8ecb179266d8eac5510887
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244759"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Görüntüleri konuya göre kategorilere ayırın
 
-Etiketlere ve açıklamaya ek olarak, Görüntü İşleme görüntüde algılanan taksonomi tabanlı kategorileri döndürür. Etiketlerin aksine, Kategoriler bir üst/alt öğe hiyerarşisinde düzenlenir ve bunlardan daha az (86, binlerce etiketin aksine) bulunur. Tüm kategori adları Ingilizce 'Dir. Kategori oluşturma işlemi, veya daha yeni Etiketler modeli ile yapılabilir.
+Etiketlere ve açıklamaya ek olarak, Computer Vision görüntüde algılanan taksonomi tabanlı kategorileri döndürür. Etiketlerden farklı olarak, kategoriler bir üst/alt kalıtsal hiyerarşide düzenlenir ve bunlardan daha azdır (binlerce etiketin aksine 86). Tüm kategori adları İngilizcedir. Kategorilere ayırma kendisi veya yeni etiketleri modeli yanında yapılabilir.
 
 ## <a name="the-86-category-concept"></a>86 kategori kavramı
 
-Bilgisayar görme, aşağıdaki diyagramda 86 kategorilerinin listesini kullanarak bir görüntüyü büyük ölçüde veya özel olarak kategorilere ayırmaz. Metin biçiminde tam taksonomi için bkz. [Kategori Taksonomisi](category-taxonomy.md).
+Bilgisayar görüşü, aşağıdaki diyagramdaki 86 kategorinin listesini kullanarak görüntüyü genel olarak veya özel olarak kategorilere ayırabilir. Metin biçiminde tam taksonomi için bkz. [Kategori Taksonomisi](category-taxonomy.md).
 
-![Kategori sınıflandırmasında tüm kategorilerin gruplanmış listeleri](./Images/analyze_categories-v2.png)
+![Kategori taksonomi kategorisindeki tüm kategorilerin gruplanmış listeleri](./Images/analyze_categories-v2.png)
 
-## <a name="image-categorization-examples"></a>Resim kategorisi örnekleri
+## <a name="image-categorization-examples"></a>Resim kategorizasyonu örnekleri
 
-Aşağıdaki JSON yanıtında, örnek görüntüyü görsel özelliklerine göre kategorilere ayırırken ne Görüntü İşleme döndürdüğü gösterilmektedir.
+Aşağıdaki JSON yanıtı, örnek görüntüyü görsel özelliklerine göre kategorilere ayırırken Computer Vision'ın ne döndürdediğini göstermektedir.
 
-![Apartman binasının çatı üzerindeki kadın](./Images/woman_roof.png)
+![Bir apartmanın çatısında bir kadın](./Images/woman_roof.png)
 
 ```json
 {
@@ -51,15 +51,22 @@ Aşağıdaki JSON yanıtında, örnek görüntüyü görsel özelliklerine göre
 }
 ```
 
-Aşağıdaki tabloda tipik bir görüntü kümesi ve her görüntü için Görüntü İşleme tarafından döndürülen kategori gösterilmektedir.
+Aşağıdaki tabloda tipik bir görüntü kümesi ve her görüntü için Computer Vision tarafından döndürülen kategori gösterilebilir.
 
-| Image | Category |
+| Görüntü | Kategori |
 |-------|----------|
-| ![Aile olarak bir arada bulunan dört kişi](./Images/family_photo.png) | people_group |
-| ![Bir Grassy alanında oturan bir pupa](./Images/cute_dog.png) | animal_dog |
-| ![Bir dağ rock on gün sonra duran bir kişi](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Bir tablodaki içerik içeriğini bir satır içinde oluşturma](./Images/bread.png) | food_bread |
+| ![Dört kişi bir aile gibi birlikte poz verdi](./Images/family_photo.png) | people_group |
+| ![Çimenli bir tarlada oturan bir köpek yavrusu](./Images/cute_dog.png) | animal_dog |
+| ![Gün batımında bir dağ kayası üzerinde duran bir kişi](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Masada bir yığın ekmek rolü](./Images/bread.png) | food_bread |
+
+## <a name="use-the-api"></a>API’yi kullanma
+
+Kategorizasyon özelliği, Analyze [Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Categories` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"categories"` bölümün içeriği için dize ayrıştını.
+
+* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntüleri etiketleme](concept-tagging-images.md) ve [görüntüleri açıklama](concept-describing-images.md)hakkında kavramları öğrenin.
+[Görüntüleri etiketleme](concept-tagging-images.md) ve [görüntüleri açıklama](concept-describing-images.md)ile ilgili kavramları öğrenin.

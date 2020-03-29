@@ -1,7 +1,7 @@
 ---
-title: API v5 'ten v7-Bing Web Araması API'si sürümüne yükseltme
+title: API v5'ten v7'ye yükseltme - Bing Web Arama API'si
 titleSuffix: Azure Cognitive Services
-description: Bing Web Araması v7 API 'Lerini kullanmak için uygulamanızın hangi bölümlerinin güncelleştirme gerektirdiğini belirleme.
+description: Uygulamanızın Bing Web Arama v7 API'lerini kullanmak için güncelleştirmeler gerektirdiğini belirleyin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881315"
 ---
-# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Araması API'si v5 'ten v7 'ye yükseltme
+# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Arama API v5'ten v7'ye yükseltme
 
-Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
+Bu yükseltme kılavuzu, Bing Web Arama API sürümü 5 ve sürüm 7 arasındaki değişiklikleri tanımlar. Sürüm 7'yi kullanmak üzere güncelleştirmeniz gereken uygulamanızın bölümlerini belirlemenize yardımcı olmak için bu kılavuzu kullanın.
 
 ## <a name="breaking-changes"></a>Yeni değişiklikler
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https:\/\/api.Cognitive.Microsoft.com/Bing/**v 7.0**/Search.
+- Bitiş noktasının sürüm numarası v5'ten v7'ye değiştirildi. Örneğin, https:\/\/api.cognitive.microsoft.com/bing/**v7.0**/search.
 
-### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
+### <a name="error-response-objects-and-error-codes"></a>Hata yanıt nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekleri artık `ErrorResponse` yanıt gövdesinde bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
-  - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+- Nesneye `Error` aşağıdaki alanlar eklendi.  
+  - `subCode`&mdash;Mümkünse hata kodunu ayrık kovalara bölümler
+  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgi
 
 
-- V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
+- V5 hata kodlarını aşağıdaki olası `code` `subCode` ve değerlerle değiştirdi.
 
-|Kod|Alt|Açıklama
+|Kod|Subcode|Açıklama
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Uygulanmadı|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
-|Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
-|Ratelimitexcebaşında||Bing, sorgu/saniye (QPS) veya aylık sorgu (QPM) kotası her aşışınızda Ratelimitexceden başına döndürür.<br/><br/>QPM 'yi aştıysanız Bing, QPS ve 403 değerini aştıysanız, 429 HTTP durum kodunu döndürür.
-|Invalidauthorleştirme|AuthorizationMissing<br/>Authorizationartıklık|Bing çağıranın kimliğini doğrulayamayan Bing, ınvalidauthortıcıyla geri döndürür. Örneğin, `Ocp-Apim-Subscription-Key` üst bilgi eksik veya abonelik anahtarı geçerli değil.<br/><br/>Birden fazla kimlik doğrulama yöntemi belirtirseniz artıklık oluşur.<br/><br/>Hata eksik ise, HTTP durum kodu 401 ' dir.
-|InsufficientAuthorization|AuthorizationDisabled<br/>Authorization, zaman aşımına uğradı|Çağıranın kaynağa erişim izni olmadığında Bing, InsufficientAuthorization döndürür. Bu hata, abonelik anahtarı devre dışı bırakılmışsa veya süresi dolmuşsa oluşabilir. <br/><br/>Hata InsufficientAuthorization ise, HTTP durum kodu 403 ' dir.
+|SunucuHatası|Beklenmeyen Hata<br/>Kaynak Hatası<br/>Uygulanmadı|Bing, alt kod koşullarından herhangi biri oluştuğunda ServerError'ı döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
+|Geçersizİstek|ParametreEksik<br/>ParametreGeçersiz Değer<br/>httpİzin verilen<br/>Engellendi|Bing, isteğin herhangi bir bölümü geçerli olmadığında Geçersiz İstek'i döndürür. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya ParameterGeçersizDeğer ise, HTTP durum kodu 400'dür.<br/><br/>Hata httpNotAllowed ise, HTTP durum kodu 410.
+|RateLimitAşıldı||Bing, sorgularınızı saniyede (QPS) veya aylık sorgularınızı (QPM) kotanızı aştığınızda RateLimitExceeded'i döndürür.<br/><br/>QPS'yi aştıysanız Bing, HTTP durum kodu 429'u ve QPM'yi aştıysanız 403'ü döndürür.
+|Geçersiz Yetkilendirme|Yetkilendirme Eksik<br/>YetkilendirmeRedundancy|Bing, arayan kişinin kimliğini doğrulayamıyorsa Geçersiz Yetkilendirme'yi döndürür. Örneğin, `Ocp-Apim-Subscription-Key` üstbilgi eksik veya abonelik anahtarı geçerli değil.<br/><br/>Birden fazla kimlik doğrulama yöntemi belirtirseniz artıklık oluşur.<br/><br/>Hata Geçersiz Yetkilendirme ise, HTTP durum kodu 401'dir.
+|Yetersiz Yetkilendirme|YetkilendirmeDevre Dışı<br/>Yetkilendirme Süresi Doldu|Arayan kaynağa erişmek için izinleri yoksa Bing Yetersiz Yetkilendirme döndürür. Abonelik anahtarı devre dışı bırakılmışsa veya süresi dolmuşsa, bu hata oluşabilir. <br/><br/>Hata Yetersiz Yetkilendirme ise, HTTP durum kodu 403'dür.
 
-- Aşağıda önceki hata kodları yeni kodlara eşlenir. V5 hata kodlarıyla bir bağımlılık yaptıysanız, kodunuzu uygun şekilde güncelleştirin.
+- Aşağıdaki önceki hata kodlarını yeni kodlara eşler. v5 hata kodlarına bağımlı bir şekilde ele geçirdiyseniz, kodunuzu buna göre güncelleştirin.
 
-|Sürüm 5 kodu|Sürüm 7 Code. alt kod
+|Sürüm 5 kodu|Sürüm 7 code.subCode
 |-|-
-|RequestParameterMissing yok|Invalidrequest. ParameterMissing yok
-Requestparameterınvalidvalue|Invalidrequest. Parameterınvalidvalue
-Resourceaccessreddedildi|InsufficientAuthorization
-ExceededVolume|Ratelimitexcebaşında
-ExceededQpsLimit|Ratelimitexcebaşında
-Devre dışı|InsufficientAuthorization. AuthorizationDisabled
-UnexpectedError|ServerError. UnexpectedError
-DataSourceErrors|Sunucuhatası. ResourceError
-AuthorizationMissing|Invalidauthorleştirme. AuthorizationMissing
-HttpNotAllowed|Invalidrequest. HttpNotAllowed
-UserAgentMissing|Invalidrequest. ParameterMissing yok
-Uygulanmadı|ServerError. NotImplemented
-Invalidauthorleştirme|Invalidauthorleştirme
-Invalidauthorizationmethod|Invalidauthorleştirme
-MultipleAuthorizationMethod|Invalidauthorasyon. Authorizationartıklık
-ExpiredAuthorizationToken|InsufficientAuthorization. Authorization, zaman aşımına uğradı
-InsufficientScope|InsufficientAuthorization
-Engellendi|Invalidrequest. engellendi
+|İstekParametreEksik|Geçersizİstek.ParametreEksik
+İstekParametreGeçersiz Değer|Geçersizİstek.ParametreGeçersiz Değer
+Kaynak Erişim Reddedildi|Yetersiz Yetkilendirme
+Aşan Hacim|RateLimitAşıldı
+AşıldıQpsLimit|RateLimitAşıldı
+Devre dışı|Yetersiz Yetkilendirme.YetkilendirmeDevre Dışı
+Beklenmeyen Hata|ServerError.unexpectedError
+DataSourceErrors|ServerError.ResourceError
+Yetkilendirme Eksik|Geçersiz Yetkilendirme.YetkilendirmeEksik
+httpİzin verilen|Geçersizİstek.HttpNotAllowed
+UserAgentEksik|Geçersizİstek.ParametreEksik
+Uygulanmadı|ServerError.NotImplemented
+Geçersiz Yetkilendirme|Geçersiz Yetkilendirme
+Geçersiz Yetkilendirme Yöntemi|Geçersiz Yetkilendirme
+Çoklu Yetkilendirme Yöntemi|GeçersizYetkilendirme.YetkilendirmeReduncy
+Süresi Dolmuş YetkilendirmeToken|Yetersiz Yetkilendirme.Yetkilendirme Süresi Doldu
+Yetersiz Kapsam|Yetersiz Yetkilendirme
+Engellendi|Geçersizİstek.Engellendi
 
 
-## <a name="non-breaking-changes"></a>Kırılamayan değişiklikler  
+## <a name="non-breaking-changes"></a>Kırılmayan değişiklikler  
 
 ### <a name="headers"></a>Üst bilgiler
 
-- İsteğe bağlı [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üst bilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
+- İsteğe bağlı [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üstbilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresi eklendi. Yanıtın içermesini istediğiniz yanıt sayısını belirtmek için bu parametreyi kullanın. Yanıtlar, sıralamaya göre seçilir. Örneğin, bu parametreyi üç (3) olarak ayarlarsanız, yanıt, en çok üç dereceli yanıtı içerir.  
+- [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresi eklendi. Yanıtın dahil etmesini istediğiniz yanıt sayısını belirtmek için bu parametreyi kullanın. Cevaplar sıralamaya göre seçilir. Örneğin, bu parametreyi üçe (3) ayarlarsanız, yanıt ilk üç sırada yer alan yanıtları içerir.  
 
-- [Yükseltme](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresi eklendi. Bu parametreyi `answerCount` , derecelendirmesinden bağımsız olarak bir veya daha fazla yanıt türünü açıkça içerecek şekilde kullanın. Örneğin, Videoları ve görüntüleri yanıta yükseltmek için, *videoları videolar, görüntüler*olarak ayarlamanız gerekir. Yükseltmek istediğiniz yanıtların listesi `answerCount` sınıra göre sayılmaz. Örneğin, `answerCount` 2 ise ve `promote` *videolar, görüntüler*olarak ayarlanırsa, yanıt Web sayfaları, Haberler, videolar ve görüntüler içerebilir.
+- Sorgu yu [parametresi eklendi.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) Sıralamalarından bağımsız olarak, bir veya daha fazla yanıt türünü açıkça eklemek için bu parametreyi birlikte `answerCount` kullanın. Örneğin, video ve görüntüleri yanıta tanıtmak için, *videoları, görüntüleri*için teşvik ayarlamak istiyorum. Tanıtmak istediğiniz yanıtlistesi sınıra `answerCount` dahil edilmez. Örneğin, 2 `answerCount` ise `promote` ve *videolar, görüntüler*olarak ayarlanmışsa, yanıt web sayfaları, haberler, videolar ve görüntüler içerebilir.
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- Alanı webanswer nesnesine eklediniz. [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) `someResultsRemoved` Alan, yanıtın Web yanıtındaki bazı sonuçları dışarıda bırakıldığını belirten bir Boole değeri içerir.  
+- `someResultsRemoved` [Alanı WebYanıt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) nesnesine ekledi. Alan, yanıtın web yanıtından bazı sonuçlar dışlayıp dışlanmadığını gösteren bir Boolean değeri içerir.  

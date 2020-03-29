@@ -1,7 +1,7 @@
 ---
-title: Verilerinizi dışarı veya silme-Özel Görüntü İşleme Hizmeti
+title: Verilerinizi dışa aktarma veya silme - Özel Vizyon Hizmeti
 titleSuffix: Azure Cognitive Services
-description: Verileriniz üzerinde tam denetim sahibi olursunuz. Bu makalede, Özel Görüntü İşleme Hizmeti verilerinizi nasıl görüntüleyebileceğiniz, dışarı aktardığınızda veya silebileceğiniz açıklanır.
+description: Verileriniz üzerinde tam denetime devam emlabilirsiniz. Bu makalede, Özel Vizyon Hizmeti'nde verilerinizi nasıl görüntüleyebilir, dışa aktarabileceğiniz veya silebileceğiniz açıklanmaktadır.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 82d9f4508db376ebbe69ef772c15fb732391a31d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73718976"
 ---
-# <a name="export-or-delete-user-data-in-custom-vision"></a>Özel Görüntü İşleme Kullanıcı verilerini dışarı aktarma veya silme
+# <a name="export-or-delete-user-data-in-custom-vision"></a>Özel Görme'de kullanıcı verilerini dışa aktarma veya silme
 
-Özel Görüntü İşleme, hizmeti çalıştırmak için Kullanıcı verilerini toplar, ancak müşteriler Özel Görüntü İşleme [eğitim API 'lerini](https://go.microsoft.com/fwlink/?linkid=865446)kullanarak verilerini görüntüleme, dışarı aktarma ve silme konusunda tam denetime sahiptir.
+Custom Vision hizmeti çalıştırmak için kullanıcı verilerini toplar, ancak müşteriler Özel Görme [Eğitim API'lerini](https://go.microsoft.com/fwlink/?linkid=865446)kullanarak verilerini görüntüleme, dışa aktarma ve silme üzerinde tam kontrole sahiptir.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Özel Görüntü İşleme Kullanıcı verilerini dışarı ve silmeyi öğrenmek için aşağıdaki tabloya bakın.
+Özel Görme'de kullanıcı verilerini nasıl dışa aktarıp silebilirsiniz öğrenmek için aşağıdaki tabloya bakın.
 
-| Veriler | Dışarı aktarma Işlemi | Silme Işlemi |
+| Veri | İhracat Operasyonu | Silme İşlemi |
 | ---- | ---------------- | ---------------- |
-| Hesap bilgileri (abonelik anahtarları) | [Getaccountınfo](https://go.microsoft.com/fwlink/?linkid=865446) | Azure portal kullanarak silin (Azure abonelikleri). Veya CustomVision.ai Settings sayfasındaki "Hesabınızı silme" düğmesini (Microsoft hesabı abonelikleri) kullanarak | 
-| Yineleme ayrıntıları | [GetIteration](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteıteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Yineleme performansı ayrıntıları | [Getıterationperformance](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteıteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Yineleme listesi | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteıteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Projeler ve proje ayrıntıları | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) ve [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Resim etiketleri | [Gettag](https://go.microsoft.com/fwlink/?linkid=865446) ve [getTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Görüntüler | [Gettaggedimages](https://go.microsoft.com/fwlink/?linkid=865446) (resim indirmesi için URI sağlar) ve [Getuntaggedimages](https://go.microsoft.com/fwlink/?linkid=865446) (görüntü indirmesi için URI sağlar) | [Deleteımages](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Aktarılmış modeller | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Hesap silme işleminden sonra silindi |
+| Hesap Bilgileri (Abonelik Anahtarları) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Azure portalLarını kullanarak silin (Azure Abonelikleri). Veya CustomVision.ai ayarlar sayfasındaki "Hesabınızı Sil" düğmesini (Microsoft Hesap Abonelikleri) kullanma | 
+| Yineleme Ayrıntıları | [GetIteration](https://go.microsoft.com/fwlink/?linkid=865446) | [Silme](https://go.microsoft.com/fwlink/?linkid=865446) |
+| Yineleme Performans Detayları | [GetIterationPerformans](https://go.microsoft.com/fwlink/?linkid=865446) | [Silme](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Yinelemeler listesi | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [Silme](https://go.microsoft.com/fwlink/?linkid=865446) |
+| Projeler ve proje detayları | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) ve [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [Proje silme](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Resim etiketleri | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) ve [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [Silme Etiketi](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Görüntüler | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (resim indirme için uri sağlar) ve [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (resim indirme için uri sağlar) | [Görüntüleri Silme](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Dışa Aktarılan Modeller | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Hesap silinmesi üzerine silindi |

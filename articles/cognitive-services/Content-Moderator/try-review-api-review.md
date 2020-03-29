@@ -1,7 +1,7 @@
 ---
-title: REST API konsolu ile denetleme incelemeleri oluşturma-Content Moderator
+title: REST API konsolu ile ılımlılık değerlendirmeleri oluşturun - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
-description: İnsan denetlemesi için görüntü veya metin incelemesi oluşturmak üzere Azure Content Moderator gözden geçirme API 'Lerini kullanın.
+description: İnsan Moderasyonu için görüntü veya metin incelemeleri oluşturmak için Azure İçerik Moderatör İnceleme API'lerini kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757133"
 ---
-# <a name="create-human-reviews-rest"></a>İnsan incelemeleri oluşturma (REST)
+# <a name="create-human-reviews-rest"></a>İnsan yorumları oluşturun (REST)
 
-, İnsan moderatör 'nin değerlendirilmesine yönelik depolamayı ve görüntüleme içeriğini [gözden geçirir](./review-api.md#reviews) . Bir Kullanıcı bir gözden geçirmeyi tamamladığında, sonuçlar belirtilen geri çağırma uç noktasına gönderilir. Bu kılavuzda, API konsolundan REST API 'Lerini gözden geçirme ' yi kullanarak İncelemeleri ayarlamayı öğreneceksiniz. API 'lerin yapısını anladıktan sonra, bu çağrıları REST ile uyumlu herhangi bir platforma kolayca bağlayabilirsiniz.
+[İncelemeler,](./review-api.md#reviews) insan moderatörlerin değerlendirmek için içeriği saklar ve görüntüler. Bir kullanıcı incelemeyi tamamladığında, sonuçlar belirtilen geri arama bitiş noktasına gönderilir. Bu kılavuzda, API konsolu aracılığıyla derleme REST API'lerini kullanarak incelemeleri nasıl ayarlayacağımı öğreneceksiniz. API'lerin yapısını anladıktan sonra, bu çağrıları REST uyumlu herhangi bir platforma kolayca iletebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
+- İçerik Moderatör [İnceleme araç](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya bir hesap oluşturun.
 
-## <a name="create-a-review"></a>İnceleme oluştur
+## <a name="create-a-review"></a>İnceleme oluşturma
 
-Bir gözden geçirme oluşturmak için, **[Gözden geçirme-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API başvurusu oluşturma sayfasına gidin ve anahtar bölgeniz için düğmeyi seçin (bunu [Inceleme aracının](https://contentmoderator.cognitive.microsoft.com/) **KIMLIK bilgileri** sayfasında uç nokta URL 'sinde bulabilirsiniz). Bu, REST API çağrılarını kolayca oluşturabileceğiniz ve çalıştırabileceğiniz API konsolunu başlatır.
+İnceleme oluşturmak için Gözden **[Geçirme -](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API başvuru sayfası oluşturun ve anahtar bölgeniz için düğmeyi seçin (bunu [Gözden Geçirme aracının](https://contentmoderator.cognitive.microsoft.com/) **Kimlik Bilgileri** sayfasında Ki Bitiş Noktası URL'sinde bulabilirsiniz). Bu, REST API çağrılarını kolayca oluşturabileceğiniz ve çalıştırabileceğiniz API konsolu'nu başlatır.
 
-![İnceleme-bölge seçimini al](images/test-drive-region.png)
+![İnceleme - Bölge seçimini alın](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>REST çağrı parametrelerini girin
 
-**TeamName**ve **OCP-apim-Subscription-Key**değerlerini girin:
+**TeamName**ve **Ocp-Apim-Abonelik-Anahtar**için değerleri girin:
 
-- **TeamName**: [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) hesabınızı ayarlarken oluşturduğunuz takım kimliği (gözden geçirme aracınızın **kimlik bilgileri ekranındaki kimlik alanında bulunur** ).
-- **OCP-apim-Subscription-Key**: Content moderator anahtarınız. Bunu [İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **Ayarlar** sekmesinde bulabilirsiniz.
+- **teamName**: [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) hesabınızı ayarlarken oluşturduğunuz takım kimliği (İnceleme aracınızın Kimlik Bilgileri ekranında **Kimlik** alanında bulunur).
+- **Ocp-Apim-Abonelik-Anahtar**: İçerik Moderatör anahtarınız. Bunu [Gözden Geçir aracının](https://contentmoderator.cognitive.microsoft.com) **Ayarlar** sekmesinde bulabilirsiniz.
 
-### <a name="enter-a-review-definition"></a>Bir gözden geçirme tanımı girin
+### <a name="enter-a-review-definition"></a>İnceleme tanımı girin
 
-JSON isteğini aşağıdaki alanlarla girmek için **İstek gövdesi** kutusunu düzenleyin:
+JSON isteğini aşağıdaki alanları içeren girmek için **İstek gövde** kutusunu edin:
 
-- **Meta veri**: geri çağırma uç noktanıza döndürülecek özel anahtar-değer çiftleri. Anahtar [İnceleme aracında](https://contentmoderator.cognitive.microsoft.com)tanımlanan kısa bir koddur, etiket olarak görünür.
-- **İçerik**: görüntü ve video içeriği söz konusu olduğunda, içeriğin işaret ettığı bir URL dizesidir. Metin içeriği için bu gerçek metin dizesidir.
-- **ContentID**: özel bir tanımlayıcı dizesi. Bu dize, API 'ye geçirilir ve geri çağırma yoluyla döndürülür. Bir denetleme işinin sonuçlarıyla iç tanımlayıcıları veya meta verileri ilişkilendirmek için faydalıdır.
-- **Callbackendpoint**: (isteğe bağlı) Gözden geçirme tamamlandığında geri çağırma BILGILERINI alacak URL.
+- **Meta veriler**: Geri arama bitiş noktanıza döndürülecek özel anahtar değeri çiftleri. Anahtar [Gözden Geçirme aracında](https://contentmoderator.cognitive.microsoft.com)tanımlanan kısa bir kodsa, etiket olarak görünür.
+- **İçerik**: Resim ve Video içeriği söz konusu olduğunda, bu içeriğe işaret eden bir URL dizesidir. Metin içeriği için bu gerçek metin dizesidir.
+- **ContentId**: Özel tanımlayıcı dize. Bu dize API'ye aktarılır ve geri arama yoluyla döndürülür. İç tanımlayıcıları veya meta verileri ılımlılık işinin sonuçlarıyla ilişkilendirmede yararlıdır.
+- **CallbackEndpoint**: (İsteğe bağlı) İnceleme tamamlandığında geri arama bilgilerini almak için URL.
 
-Varsayılan istek gövdesi, oluşturabileceğiniz farklı gözden geçirmeler türlerini gösterir:
+Varsayılan istek gövdesi, oluşturabileceğiniz farklı inceleme türlerinin örneklerini gösterir:
 
 ```json
 [Image]
@@ -127,29 +127,29 @@ Varsayılan istek gövdesi, oluşturabileceğiniz farklı gözden geçirmeler t�
 ]
 ```
 
-### <a name="submit-your-request"></a>İsteğinizi gönderme
+### <a name="submit-your-request"></a>İsteğinizi gönderin
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** `200 OK`olur ve **yanıt içeriği** kutusu İnceleme için bir kimlik görüntüler. Aşağıdaki adımlarda kullanmak için bu KIMLIĞI kopyalayın.
+**Gönder**’i seçin. İşlem başarılı olursa, **Yanıt** durumu `200 OK`ve **Yanıt içerik** kutusu gözden geçirme için bir kimlik görüntüler. Aşağıdaki adımlarda kullanmak üzere bu kimliği kopyalayın.
 
-![İnceleme-konsol yanıt içeriği oluştur kutusu İnceleme KIMLIĞINI görüntüler](images/test-drive-review-2.PNG)
+![İnceleme - Konsol Oluştur Yanıt içerik kutusu gözden geçirme kimliğini görüntüler](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Yeni incelemeyi inceleyin
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com) > **görüntü**/**metin**/**video** (kullandığınız içeriğe bağlı olarak) öğesini **gözden geçir** ' i seçin. Karşıya yüklediğiniz içerik görünür, insan gözden geçirmesi için hazırlanın.
+Gözden [Geçir aracında,](https://contentmoderator.cognitive.microsoft.com)**Resim**/**Metni**/**Videosunu** İncele (kullandığınız içeriğe bağlı olarak) **seçin.** >  Yüklediğiniz içerik, insan incelemesi için hazır görünmelidir.
 
-![Futbol topu araç görüntüsünü gözden geçirme](images/test-drive-review-5.PNG)
+![Bir futbol topunun araç görüntüsünü gözden geçirme](images/test-drive-review-5.PNG)
 
-## <a name="get-review-details"></a>İnceleme ayrıntılarını al
+## <a name="get-review-details"></a>İnceleme ayrıntılarını alın
 
-Mevcut bir gözden geçirme hakkındaki ayrıntıları almak için [İnceleme-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) API başvurusunu Al sayfasına gidin ve bölgeniz için (anahtarınızın yönettiği bölge) düğmesini seçin.
+Varolan bir incelemeyle ilgili ayrıntıları almak için [Gözden Geçirme -](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) API başvuru sayfasına gidin ve bölgeniz (anahtarınızın yönetildiği bölge) düğmesini seçin.
 
-![İş akışı-bölge seçimini al](images/test-drive-region.png)
+![İş akışı - Bölge seçimini alın](images/test-drive-region.png)
 
-REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım için, **Revieıd** , gözden geçirmeyi oluştururken ALDıĞıNıZ benzersiz kimlik dizesidir.
+Yukarıdaki bölümde olduğu gibi REST arama parametrelerini girin. Bu adım için **reviewId,** incelemeyi oluşturduğunuzda aldığınız benzersiz kimlik dizesidir.
 
-![İnceleme-konsol oluşturma sonuçları al](images/test-drive-review-3.PNG)
+![İnceleme - Konsol oluştur Sonuçları alın](images/test-drive-review-3.PNG)
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** `200 OK`olur ve **yanıt içeriği** kutusu, gözden GEÇIRME ayrıntılarını aşağıdakiler gibi JSON biçiminde görüntüler:
+**Gönder**’i seçin. İşlem başarılı olursa, **Yanıt** durumu `200 OK`ve **Yanıt içerik** kutusu inceleme ayrıntılarını JSON biçiminde aşağıdaki gibi görüntüler:
 
 ```json
 {  
@@ -184,12 +184,12 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım
 }
 ```
 
-Yanıtta aşağıdaki alanlara göz atın:
+Yanıtta aşağıdaki alanları dikkate alın:
 
-- **durumlarına**
-- **Reviewerresulttags**: Bu, insan gözden geçirme ekibi tarafından el ile eklenen herhangi bir etiket varsa görünür ( **CreatedBy** alanı gösteriliyor).
-- **meta veriler**: Bu, insan gözden geçirme ekibi değişiklik yapmadan önce incelemeye eklenen etiketleri gösterir.
+- **durum**
+- **reviewerResultTags**: İnsan inceleme ekibi tarafından el ile herhangi bir etiket eklenmiştirsa **(oluşturulanBy** alanı gösterilir).
+- **meta veriler**: İnsan inceleme ekibi değişiklik yapmadan önce, incelemede başlangıçta eklenen etiketleri gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, REST API kullanarak içerik denetleme İncelemeleri oluşturmayı öğrendiniz. Ardından, İncelemeleri [E-ticaret denetleme](./ecommerce-retail-catalog-moderation.md) öğreticisi gibi uçtan uca bir denetleme senaryosuna tümleştirin.
+Bu kılavuzda, REST API'sini kullanarak içerik Denetleme yorumlarının nasıl oluşturulabileceğinizi öğrendiniz. Ardından, yorumları [E-ticaret Denetleme](./ecommerce-retail-catalog-moderation.md) Öğreticisi gibi uçdan uca bir Denetleme senaryosuna entegre edin.

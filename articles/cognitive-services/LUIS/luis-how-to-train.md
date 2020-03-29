@@ -1,7 +1,7 @@
 ---
-title: Uygulama eğitimi-LUSıS
+title: Tren uygulaması - LUIS
 titleSuffix: Azure Cognitive Services
-description: Eğitim, doğal dil anlama geliştirmek için Language Understanding (LUIS) uygulama sürümü eğitiminde işlemidir. Ekleme, düzenleme, etiketleme veya varlıkları, amacı veya konuşma silme gibi bir Modeli'ne güncelleştirmelerinden sonra LUIS uygulamanızı eğitin.
+description: Eğitim, dil anlayışınızı geliştirmek için Dil Anlayışı (LUIS) uygulama sürümünü öğretme sürecidir. Varlıkları, niyetleri veya söyleyiyi ekleme, düzenleme, etiketleme veya silme gibi modelgüncellemelerinden sonra LUIS uygulamanızı eğitin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219868"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>LUSıS uygulamasının etkin sürümünü eğitme 
+# <a name="train-your-active-version-of-the-luis-app"></a>LUIS uygulamasının aktif sürümünü eğitin 
 
-Eğitim, doğal dil anlama geliştirmek için Language Understanding (LUIS) uygulamanızı eğitiminde işlemidir. Ekleme, düzenleme, etiketleme veya varlıkları, amacı veya konuşma silme gibi bir Modeli'ne güncelleştirmelerinden sonra LUIS uygulamanızı eğitin. 
+Eğitim, dil anlayışınızı geliştirmek için Dil Anlayışı (LUIS) uygulamanızı öğretme sürecidir. Varlıkları, niyetleri veya söyleyiyi ekleme, düzenleme, etiketleme veya silme gibi modelgüncellemelerinden sonra LUIS uygulamanızı eğitin. 
 
-Bir uygulamayı eğitim ve [test etme](luis-concept-test.md) işlemi yinelemeli bir işlemdir. LUIS uygulamanızı eğitme sonra varlıkları ve hedefleri doğru olarak tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
+Bir uygulamayı eğitmek ve [test etmek](luis-concept-test.md) yinelemeli bir süreçtir. LUIS uygulamanızı eğittinden sonra, niyetve varlıkların doğru tanıyıp tanınmadınsını görmek için bu uygulamayı örnek sözlerle test elersiniz. Değilse, LUIS uygulamasında güncellemeler yapın, eğitin ve tekrar test edin. 
 
-Eğitim LUIS Portalı'nda etkin sürüme uygulanır. 
+Eğitim LUIS portalındaki aktif sürüme uygulanır. 
 
-## <a name="how-to-train-interactively"></a>Etkileşimli olarak eğitme
+## <a name="how-to-train-interactively"></a>Etkileşimli eğitim nasıl
 
-[Luu portalındaki](https://www.luis.ai)yinelemeli işlemi başlatmak için, Ilk olarak lusıs uygulamanızı en az bir kez eğmeniz gerekir. Eğitim önce en az bir utterance her hedefi olduğundan emin olun.
+[LUIS portalında](https://www.luis.ai)yinelemeli işlemi başlatmak için öncelikle LUIS uygulamanızı en az bir kez eğitmeniz gerekir. Eğitimden önce her niyetin en az bir söz aldığından emin olun.
 
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanıza erişin. 
 
-1. Uygulamanızda, üst panelde **eğit** ' i seçin. 
+1. Uygulamanızda üst panelde **Tren'i** seçin. 
 
-1. Eğitim tamamlandığında tarayıcının en üstünde bir bildirim görüntülenir.
+1. Eğitim tamamlandığında, tarayıcının üst kısmında bir bildirim görüntülenir.
 
 ## <a name="training-date-and-time"></a>Eğitim tarihi ve saati
 
-Eğitim tarihi ve saati GMT + 2 ' dir. 
+Eğitim tarihi ve saati GMT + 2'dir. 
 
 ## <a name="train-with-all-data"></a>Tüm verilerle eğitim
 
-Eğitim negatif örnekleme küçük bir yüzdesine kullanır. Küçük negatif örnekleme yerine tüm verileri kullanmak istiyorsanız, [API](#version-settings-api-use-of-usealltrainingdata)'yi kullanın.
+Eğitim, negatif örneklemenin küçük bir yüzdesini kullanır. Küçük negatif örnekleme yerine tüm verileri kullanmak istiyorsanız, [API'yi](#version-settings-api-use-of-usealltrainingdata)kullanın.
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Sürüm Ayarları API 'SI Usealltraıningdata kullanımı
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>UseAllTrainingData sürüm ayarları API kullanımı
 
-Bu özelliği kapatmak için `UseAllTrainingData` true olarak ayarlanan [Sürüm Ayarları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 'sini kullanın. 
+Bu özelliği kapatmak için `UseAllTrainingData` true setli [Sürüm ayarları API'sini](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) kullanın. 
 
 ## <a name="unnecessary-training"></a>Gereksiz eğitim
 
-Tek her değişiklikten sonra eğitme gerekmez. Eğitim, sonra bir grup değişiklikleri modele uygulanır ve test etmek veya yayımlamak için yapmanız gereken sonraki adım olan yapılmalıdır. Eğitim, test veya yayımlamak ihtiyacınız yoksa, gerekli değildir. 
+Her değişiklikten sonra antrenman yapmanıza gerek yok. Eğitim, modele bir dizi değişiklik uygulandıktan sonra yapılmalıdır ve yapmak istediğiniz bir sonraki adım test etmek veya yayımlamaktır. Test etmeniz veya yayınlamanız gerekmiyorsa, eğitim etüt gerekmez. 
 
 ## <a name="training-with-the-rest-apis"></a>REST API'leri ile eğitim
 
-Lua portalındaki eğitim, **eğitme** düğmesine basmanın tek adımından oluşur. REST API'leri ile eğitim iki adımlı bir işlemdir. Birincisi, HTTP POST ile [eğitim isteğidir](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) . Ardından HTTP Get ile [eğitim durumunu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) isteyin. 
+LUIS portalında eğitim Tren **düğmesine** basarak tek bir adımdır. REST API'leri ile eğitim iki aşamalı bir süreçtir. Bunlardan ilki HTTP POST ile [eğitim talep](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) etmektir. Ardından HTTP Get ile [eğitim durumunu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) isteyin. 
 
-Eğitim tamamlandığında öğrenmek için tüm modelleri başarıyla eğitilir kadar durum yoklaması gerekir. 
+Eğitimin ne zaman tamamlanacağını bilmek için, tüm modeller başarılı bir şekilde eğitilene kadar durumu yoklamanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Etkileşimli test](luis-interactive-test.md)
-* [Toplu işlem testi](luis-how-to-batch-test.md)
+* [Toplu işe testi](luis-how-to-batch-test.md)

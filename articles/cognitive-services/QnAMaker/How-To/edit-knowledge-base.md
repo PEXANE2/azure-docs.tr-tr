@@ -1,109 +1,79 @@
 ---
-title: Bilgi Bankası - soru-cevap Oluşturucu Düzenle
-titleSuffix: Azure Cognitive Services
-description: Soru-cevap Oluşturucu, kullanımı kolay bir düzenleme deneyimi sunarak bilgi bankanızı içeriğini yönetmenizi sağlar.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Bir bilgi tabanını edin - QnA Maker
+description: QnA Maker, kullanımı kolay bir düzenleme deneyimi sunarak bilgi tabanınızın içeriğini yönetmenize olanak tanır.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131646"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Soru-cevap Oluşturucu, Bilgi Bankası Düzenle
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>Bilgi tabanınızda QnA kümelerini edin
 
-Soru-cevap Oluşturucu, kullanımı kolay bir düzenleme deneyimi sunarak bilgi bankanızı içeriğini yönetmenizi sağlar.
+QnA Maker, kullanımı kolay bir düzenleme deneyimi sunarak bilgi tabanınızın içeriğini yönetmenize olanak tanır.
 
-<a name="add-datasource"></a>
+QnA kümeleri, dosya veya URL gibi bir veri kaynağından eklenir veya editoryal kaynak olarak eklenir. Bir editoryal kaynak QnA kümesinin QnA portalına el ile eklandığını gösterir. Tüm QnA setleri düzenleme için kullanılabilir.
 
-## <a name="edit-your-knowledge-base-content"></a>Bilgi Bankası içeriğinizi düzenleyin
+## <a name="add-an-editorial-qna-set"></a>Editoryal QnA kümesi ekleme
+1. [QnA portalında](https://www.qnamaker.ai/)oturum açın, ardından QnA kümesini eklemek için bilgi tabanını seçin.
+1. Bilgi tabanının **EDIT** sayfasında, yeni bir QnA kümesi eklemek için **QnA kümesi** ekle'yi seçin.
 
-1.  Üst gezinti çubuğunda **bilgi tabanlarımı** seçin. 
+1. Yeni QnA kümesi satırına, gerekli **Soru** ve **Yanıt** alanlarını ekleyin. Diğer alanlar isteğe bağlıdır. Tüm alanlar herhangi bir zamanda değiştirilebilir.
 
-    Oluşturduğunuz veya paylaştığınız tüm hizmetleri, **son değiştirilme** tarihinin azalan sırasına göre görebilirsiniz.
+1. İsteğe bağlı olarak, **alternatif tümce**ekleyin. Alternatif tümce, özgün sorudan önemli ölçüde farklı olan ancak aynı yanıtı vermesi gereken herhangi bir soru biçimidir.
 
-    ![My bilgi Bankalarından](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    Bilgi tabanınız yayınlandığında ve aktif öğrenimiaçık olduğunda, QnA Maker kabul etmeniz için alternatif tümce seçenekleri toplar. Bu seçimler, tahmin doğruluğunu artırmak için seçilir.
 
-1. Düzenlemeler yapmak için belirli bir Bilgi Bankası'nı seçin.
- 
-1. **Ayarlar**' ı seçin. Burada zorunlu alan hizmet adını düzenleyebilirsiniz.
-  
-    |Hedef|Eylem|
-    |--|--|
-    |URL ekle|Bilgi bankasını **Yönet-> ' + URL Ekle '** bağlantısına tıklayarak Bilgi Bankası 'na yenı bir SSS içeriği eklemek Için yeni URL 'ler ekleyebilirsiniz.|
-    |URL Sil|Var olan URL'ler Sil simgesini seçerek silebilirsiniz, çöp kutusu.|
-    |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
-    |Dosya Ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
-    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
-    |Güncelleştir|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Gerekli olursa yönetim katmanı Azure Portal'dan da güncelleştirebilirsiniz.
+1. İsteğe bağlı olarak, **meta veri**ekleyin. Meta verileri görüntülemek için bağlam menüsünde **Seçenekleri Görüntüle'yi** seçin. Meta veriler, istemci uygulamasının sohbet botu gibi sağladığı yanıtlara filtreler sağlar.
 
-1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.    
+1. İsteğe bağlı olarak, **izleme istemleri**ekleyin. İzleme istemleri, istemci uygulamasına kullanıcıya sunması için ek konuşma yolları sağlar.
 
-    ![Kaydet ve eğitme](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. Yeni QnA kümesi de dahil olmak üzere tahminleri görmek için **Kaydet'i seçin ve train'i** seçin.
 
-    >[!CAUTION]
-    >**Kaydet ve eğitme**seçmeden önce sayfadan ayrılırsanız tüm değişiklikler kaybedilir.
+## <a name="edit-a-qna-set"></a>QnA kümesini ayarlama
 
-## <a name="add-a-qna-pair"></a>Soru-Cevap çifti ekleme
+Herhangi bir QnA kümesindeki herhangi bir alan, orijinal veri kaynağından bağımsız olarak düzenlenebilir. Bağlam araç çubuğunda bulunan geçerli **Görünüm Seçenekleri** ayarlarınız nedeniyle bazı alanlar görünmeyebilir.
 
-Bilgi Bankası tablosuna yeni bir satır eklemek için **Düzenle** sayfasında **QNA Pair Ekle** ' yi seçin.
+## <a name="delete-a-qna-set"></a>QnA kümesini silme
 
-![Soru-cevap çifti Ekle](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+QnA'yı silmek için, QnA satırının en sağındaki **sil** simgesini tıklatın. Bu kalıcı bir operasyon. Geri alınamaz. Setleri silmeden önce KB'nizi **Yayımlama** sayfasından dışa aktarmayı düşünün.
 
-## <a name="delete-a-qna-pair"></a>Soru-cevap çifti Sil
+![QnA kümesini silme](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-Bir QnA 'yi silmek için QnA satırının en sağındaki **Sil** simgesine tıklayın. Bu kalıcı bir işlemdir. Geri alınamaz. Çiftleri silinmeden önce **Yayımla** sayfasından KB 'nizi dışarı aktarmayı düşünün. 
+## <a name="find-the-qna-set-id"></a>QnA ayarlı kimliğini bulun
 
-![Soru-cevap çifti Sil](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+QnA ayarlı kimliğini bulmanız gerekiyorsa, iki yerde bulabilirsiniz:
 
-## <a name="add-alternate-questions"></a>Diğer sorular ekleyin
+* İlgilendiğiniz QnA kümesi satırındaki silme simgesine odaklanın. Gezinme metni QnA ayarlı kimliği içerir.
+* Bilgi tabanını dışa aktarın. Bilgi tabanında ayarlanan her QnA, QnA kümesi kimliğini içerir.
 
-Bir kullanıcı sorgu için bir eşleşme olasılığını artırmak için var olan bir soru-cevap çifti diğer sorular ekleyin.
+## <a name="add-alternate-questions"></a>Alternatif sorular ekleme
 
-![Diğer sorular ekleyin](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+Bir kullanıcı sorgusunda eşleşme olasılığını artırmak için varolan bir QnA kümesine alternatif sorular ekleyin.
 
-## <a name="add-metadata"></a>meta veri ekleme
+![Alternatif Sorular Ekle](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-Önce **Görünüm seçeneklerini**belirleyip **meta verileri göster**' i seçerek meta veri çiftleri ekleyin. Bu, meta veri sütununu görüntüler. Sonra, bir meta veri çifti eklemek için **+** işaretini seçin. Bu çift bir anahtar ve bir değer içerir.
+## <a name="linking-qna-sets"></a>QnA Kümelerini Bağlama
+
+QnA kümelerini [bağlama, takip istemleri](multiturn-conversation.md)ile sağlanır. Bu, bilgi tabanı düzeyinde yönetilen QnA kümeleri arasındaki mantıksal bir bağlantıdır. QnA Maker portalında takip istemlerini atabilirsiniz.
+
+Yanıtın meta verilerinde QnA kümelerini bağlayamadığınız.
+
+## <a name="add-metadata"></a>Meta veri ekleme
+
+Önce **Görünüm seçeneklerini**seçerek meta veri kümeleri ekleyin, ardından meta **verileri göster'i**seçin. Bu, meta veri sütununa görüntüler. Ardından, meta **+** veri kümesi eklemek için işareti seçin. Bu küme bir anahtar ve bir değerden oluşur.
+
+## <a name="save-changes-to-the-qna-sets"></a>QnA kümelerine değişiklikleri kaydetme
+
+Değişiklikleri kaybetmemek için düzenli olarak **Kaydet'i** seçin ve değişiklikler yaptıktan sonra eğitin.
 
 ![Meta veri ekleme](../media/qnamaker-how-to-edit-kb/add-metadata.png)
-
-> [!TIP]
-> Düzenli olarak kaydedin ve değişiklikleri kaybetmek istemiyorsanız düzenlemeler yaptıktan sonra Bilgi Bankası eğitme emin olun.
-
-## <a name="manage-large-knowledge-bases"></a>Büyük bilgi bankalarından yönetme
-
-* **Veri kaynağı grupları**: qnas, ayıklandıkları veri kaynağına göre gruplandırılır. Genişlet veya daralt veri kaynağı.
-
-    ![Veri kaynağı sorularını ve yanıtlarını daraltmak ve genişletmek için Soru-Cevap Oluşturma veri kaynağı çubuğunu kullanın](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **Bilgi Bankası ara**: Bilgi Bankası tablosunun en üstündeki metin kutusuna yazarak bilgi bankasında arama yapabilirsiniz. Soru, yanıt veya meta veri içeriğini aramak için ENTER'a tıklayın. Arama filtresi kaldırmak için X simgesine tıklayın.
-
-    ![Görünümü yalnızca filtre eşleme öğelerine düşürmek için soruların ve yanıtların üzerindeki Soru-Cevap Oluşturma arama kutusunu kullanın](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **Sayfalandırma**: büyük bilgi bankaslarını yönetmek için veri kaynaklarından hızlıca geçiş yapın
-
-    ![Soruların ve yanıtların sayfalarında gezinmek için soruların ve yanıtların üzerinde Soru-Cevap Oluşturma sayfalandırma özelliklerini kullanın](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>Bilgi bankaları Sil
-
-Bilgi Bankası (KB) silinmesi kalıcı bir işlemdir. Geri alınamaz. Bilgi Bankası 'nı silmeden önce, Bilgi Bankası 'nı Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından dışarı aktarmanız gerekir. 
-
-KB 'nizi [ortak çalışanlarla](collaborate-knowledge-base.md) paylaşıyorsanız, herkes KB 'ye erişimi kaybeder. 
-
-## <a name="delete-azure-resources"></a>Azure kaynaklarını silme 
-
-Soru-cevap Oluşturucu, bilgi bankaları için kullanılan Azure kaynakları silerseniz, bilgi bankalarından artık çalışmaz. Herhangi bir kaynağı silmeden önce, bilgi temellerinizi **Ayarlar** sayfasından dışarı aktardığınızdan emin olun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası 'nda işbirliği yapma](./collaborate-knowledge-base.md)
+> [Bilgi bankası üzerinde birlikte çalışma](./collaborate-knowledge-base.md)
+
+* [QnA Maker tarafından kullanılan Azure kaynaklarını yönetme](set-up-qnamaker-service-azure.md)

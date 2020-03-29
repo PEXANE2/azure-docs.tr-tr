@@ -1,49 +1,49 @@
 ---
-title: Tasarım Bilgi Bankası-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) kümesi ve isteğe bağlı meta veri kümesinden oluşur.
+title: Tasarım bilgi tabanı - QnA Maker
+description: QnA Maker bilgi tabanı, her QnA çiftiyle ilişkili bir dizi soru-cevap (QnA) kümesi ve isteğe bağlı meta verilerden oluşur.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844334"
 ---
-# <a name="question-and-answer-set-concepts"></a>Soru ve yanıt kümesi kavramları
+# <a name="question-and-answer-set-concepts"></a>Soru-cevap seti kavramları
 
-Bilgi Bankası, soru ve yanıt (QnA) kümelerinden oluşur.  Her küme bir yanıta sahiptir ve bir küme, bu _Yanıt_ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler.
+Bir bilgi tabanı soru-cevap (QnA) kümelerinden oluşur.  Her kümenin bir yanıtı vardır ve bir küme bu _yanıtla_ilişkili tüm bilgileri içerir. Bir yanıt gevşek bir veritabanı satırı veya veri yapısı örneği benzer olabilir.
 
 ## <a name="question-and-answer-sets"></a>Soru ve yanıt kümeleri
 
-Bir soru-cevap (QnA) kümesindeki **gerekli** ayarlar şunlardır:
+Soru-cevap (QnA) kümesinde **gerekli** ayarlar şunlardır:
 
-* farklı bir metinle, ancak aynı Yanıt ile Kullanıcı sorusunun metniyle hizalamak için makine öğrenimine Soru-Cevap Oluşturma için kullanılan Kullanıcı sorgusunun **soru** metni.
-* **Yanıt** -kümenin yanıtı, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır
+* bir **soru** - qnA Maker'ın makine öğreniminde kullanılan kullanıcı sorgu metni, kullanıcının sorusunun metniyle farklı ifadelerle hizalamak için ama aynı cevap
+* **cevap** - setin yanıtı, kullanıcı sorgusu ilişkili soruyla eşleştiğinde döndürülen yanıttır
 
-Her küme bir **kimlik**ile temsil edilir.
+Her küme bir **kimlikle**temsil edilir.
 
 Bir küme için **isteğe bağlı** ayarlar şunlardır:
 
-* **Sorunun alternatif biçimleri** -bu, soru-cevap oluşturma çok çeşitli soru açısından doğru yanıtı döndürmenize yardımcı olur
-* **Meta**veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
-* Çoklu çift **istemler**, çok yönlü bir konuşmaya devam etmek için kullanılır
+* **Sorunun alternatif formları** - Bu QnA Maker soru tümceleri daha geniş bir yelpazede için doğru yanıtı dönmek yardımcı olur
+* **Meta veriler**: Meta veriler, QnA çiftiyle ilişkili etiketlerdir ve anahtar değer çiftleri olarak temsil edilir. Meta veri etiketleri QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirildiği kümeyi sınırlamak için kullanılır.
+* **Çok dönüşlü istemler,** çok döndürülme devam etmek için kullanılır
 
-![Soru-cevap Oluşturucu bilgi bankalarından](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
+![QnA Maker bilgi üsleri](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
-## <a name="editorially-add-to-knowledge-base"></a>Bilgi Bankası'na bilgi bankanızı düzenleyerek Ekle
+## <a name="editorially-add-to-knowledge-base"></a>Editoryal bilgi tabanına eklemek
 
-Bilgi bankasını doldurmak için önceden mevcut içeriğiniz yoksa, Soru-Cevap Oluşturma portalında QnA Sets edıtoru olarak ekleyebilirsiniz. Bilgi bankanızı güncelleştirmeyi öğrenebilirsiniz [burada](../How-To/edit-knowledge-base.md).
+Bilgi tabanını doldurmak için önceden varolan içeriğiniz yoksa, QnA Maker portalına editoryal olarak QnA kümeleri ekleyebilirsiniz. Bilgi tabanınızı nasıl güncelleştirteceklerinizi [buradan](../How-To/edit-knowledge-base.md)öğrenin.
 
-## <a name="editing-your-knowledge-base-locally"></a>Bilgi bankaınızı yerel olarak Düzenle
+## <a name="editing-your-knowledge-base-locally"></a>Bilgi tabanınızı yerel olarak düzenleme
 
-Bilgi Bankası oluşturulduktan sonra, yerel dosyalar aracılığıyla dışarı aktarmak ve yeniden içeri aktarmak yerine [soru-cevap oluşturma portalındaki](https://qnamaker.ai)Bilgi Bankası metninde düzenleme yapmanız önerilir. Ancak, bir bilgi bankasını yerel olarak düzenlemeniz gerektiği zamanlar olabilir.
+Bir bilgi tabanı oluşturulduktan sonra, yerel dosyalar üzerinden dışa aktarma ve yeniden alma yerine [QnA Maker portalındaki](https://qnamaker.ai)bilgi bankası metninde yapılan ları yapmanız önerilir. Ancak, yerel olarak bir bilgi tabanını düzenlilmeye ihtiyaç duyduğunuz zamanlar olabilir.
 
-Bilgi Bankası 'nı **Ayarlar** sayfasından dışarı aktarın ve Bilgi Bankası 'Nı Microsoft Excel ile düzenleyin. Verdiğiniz dosyayı düzenlemek için başka bir uygulama kullanmayı seçerseniz, uygulama tam olarak uyumlu olmadığından sözdizimi hataları verebilir. Microsoft Excel 'in TSV dosyaları genellikle biçimlendirme hataları sunmaz.
+Bilgi tabanını **Ayarlar** sayfasından dışa aktarın ve ardından bilgi tabanını Microsoft Excel ile birlikte edin. Dışa aktarılan dosyanızı yeniden kullanmak için başka bir uygulama kullanmayı seçerseniz, uygulama tam TSV uyumlu olmadığından sözdizimi hatalarına neden olabilir. Microsoft Excel'in TSV dosyaları genellikle herhangi bir biçimlendirme hatası getirmez.
 
-Düzenlemelerinizi tamamladıktan sonra, **Ayarlar** sayfasından TSV dosyasını yeniden içeri aktarın. Bu işlem, geçerli bilgi bankasını içeri aktarılan Bilgi Bankası ile tamamen değiştirir.
+Yaptığınız da, tsv dosyanızı **Ayarlar** sayfasından yeniden içe aktarın. Bu tamamen ithal bilgi tabanı ile geçerli bilgi tabanı yerini alacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma Bilgi Bankası yaşam döngüsü](./development-lifecycle-knowledge-base.md)
+> [QnA Maker'da bilgi tabanı yaşam döngüsü](./development-lifecycle-knowledge-base.md)

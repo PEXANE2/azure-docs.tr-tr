@@ -1,7 +1,7 @@
 ---
-title: Tam ekran okuyucu düğmesini özelleştirme
+title: Immersive Reader düğmesini özelleştirin
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, tam ekran okuyucuyu Başlatan düğmeyi nasıl özelleştireceğiniz gösterilmektedir.
+description: Bu makalede, Immersive Reader başlattı düğmesini özelleştirmek için nasıl gösterecektir.
 services: cognitive-services
 author: metanMSFT
 manager: guillasi
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946215"
 ---
-# <a name="how-to-customize-the-immersive-reader-button"></a>Tam ekran okuyucu düğmesini özelleştirme
+# <a name="how-to-customize-the-immersive-reader-button"></a>Immersive Reader düğmesini özelleştirme
 
-Bu makalede, tam ekran okuyucuyu uygulamanızın ihtiyaçlarına uyacak şekilde Başlatan düğmenin nasıl özelleştirileceği gösterilmektedir.
+Bu makalede, uygulamanızın gereksinimlerine uyacak şekilde Immersive Reader'ı başlatan düğmenin nasıl özelleştirilenbir şekilde özelleştirilen gösterilmiştir.
 
-## <a name="add-the-immersive-reader-button"></a>Derinlikli okuyucu düğmesini ekleme
+## <a name="add-the-immersive-reader-button"></a>Sürükleyici Okuyucu düğmesini ekle
 
-Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu başlatan düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Class özniteliğini kullanın.
+Immersive Reader SDK, Sürükleyici Okuyucuyu başlatan düğme için varsayılan stil sağlar. Bu `immersive-reader-button` stili etkinleştirmek için sınıf özniteliğini kullanın.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -31,7 +31,7 @@ Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu başlatan düğme için varsayılan
 
 ## <a name="customize-the-button-style"></a>Düğme stilini özelleştirme
 
-Düğme stilini ayarlamak için `data-button-style` özniteliğini kullanın. İzin verilen değerler `icon`, `text`ve `iconAndText`. Varsayılan değer: `icon`.
+Düğmenin `data-button-style` stilini ayarlamak için özniteliği kullanın. İzin verilen `icon`değerler `text`, `iconAndText`ve . Varsayılan değer: `icon`.
 
 ### <a name="icon-button"></a>Simge düğmesi
 
@@ -65,7 +65,7 @@ Bu, aşağıdakileri işler:
 
 ## <a name="customize-the-button-text"></a>Düğme metnini özelleştirme
 
-`data-locale` özniteliğini kullanarak düğme için dili ve alt metni yapılandırın. İngilizce varsayılan dildir.
+Özniteliği kullanarak düğmenin dilini ve alt `data-locale` metnini yapılandırın. İngilizce varsayılan dildir.
 
 ```html
 <div class='immersive-reader-button' data-locale='fr-FR'></div>
@@ -73,7 +73,7 @@ Bu, aşağıdakileri işler:
 
 ## <a name="customize-the-size-of-the-icon"></a>Simgenin boyutunu özelleştirme
 
-Derinlikli okuyucu simgesinin boyutu `data-icon-px-size` özniteliği kullanılarak yapılandırılabilir. Bu, simgenin boyutunu piksel cinsinden ayarlar. Varsayılan boyut 20 px ' dir.
+Immersive Reader simgesinin boyutu öznitelik kullanılarak `data-icon-px-size` yapılandırılabilir. Bu, simgenin piksel boyutunu ayarlar. Varsayılan boyutu 20px olduğunu.
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
@@ -81,4 +81,4 @@ Derinlikli okuyucu simgesinin boyutu `data-icon-px-size` özniteliği kullanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* Sürükleyici [Okuyucu SDK Referans](./reference.md) keşfedin

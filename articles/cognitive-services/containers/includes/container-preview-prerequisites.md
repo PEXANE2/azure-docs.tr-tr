@@ -1,25 +1,25 @@
 ---
-title: Kapsayıcı genel önizleme önkoşulları
+title: Konteyner Genel Önizleme Ön Koşulları
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
-description: Genel Önizleme kapsayıcıları için ortak önkoşul
+description: Genel önizleme kapsayıcıları için ortak ön koşul
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: e5d40c9ffd32320ba685e2bdbd3095b4eeec3484
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73524053"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure aboneliği kullanın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-account] oluşturun.
-* [Azure CLI][azure-cli] 'yı (az) yükler.
-* [Docker altyapısı][docker-engine] ve DOCKER CLI 'nın konsol penceresinde çalışıp çalışmadığını doğrulama.
+* Azure aboneliği kullanın. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz][free-account] bir hesap oluşturun.
+* Azure [CLI'yi][azure-cli] (az) yükleyin.
+* [Docker motoru][docker-engine] ve Docker CLI bir konsol penceresinde çalıştığını doğrulayın.
 
 [free-account]: https://azure.microsoft.com/free
 [azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
