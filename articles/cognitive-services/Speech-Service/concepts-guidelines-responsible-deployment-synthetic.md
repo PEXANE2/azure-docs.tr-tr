@@ -1,7 +1,7 @@
 ---
-title: Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler
+title: Sentetik ses teknolojisinin sorumlu dağıtımına ilişkin yönergeler
 titleSuffix: Azure Cognitive Services
-description: Microsoft 'un yapay ses teknolojisini kullanmaya yönelik genel tasarım yönergeleri. Bunlar, Microsoft 'un sesli tatatsyon, müşteriler ve konuşma ile ilgili yapay bir sesin sorumlu geliştirilmesine kılavuzluk eden kişiler sayesinde geliştirildiği çalışmalar üzerinde geliştirilmiştir.
+description: Microsoft'un sentetik ses teknolojisini kullanma yla ilgili genel tasarım yönergeleri. Bunlar, Microsoft'un ses yeteneği, tüketiciler ve konuşma bozukluğu olan bireylerle sentetik sesin sorumlu gelişimine rehberlik etmek için yürüttüğü çalışmalarda geliştirilmiştir.
 services: cognitive-services
 author: benoah
 manager: nitinme
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
 ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836777"
 ---
-# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler
-Yapay ses teknolojisini kullanmaya yönelik Microsoft 'un genel tasarım yönergeleri aşağıda verilmiştir. Bunlar, Microsoft 'un sesli tatathı, tüketicilerle ve yapay sesten sorumlu geliştirmeye kılavuzluk etmek için konuşma içermeyen kişilerin geliştirdiği çalışmalar üzerinde geliştirilmiştir.
+# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Sentetik ses teknolojisinin sorumlu dağıtımına ilişkin yönergeler
+Microsoft'un sentetik ses teknolojisini kullanma yla ilgili genel tasarım yönergeleri aşağıda verilmiştir. Bunlar, Microsoft'un ses yeteneği, tüketiciler ve konuşma bozukluğu olan bireylerin sentetik sesin sorumlu gelişimine rehberlik etmek için yürüttüğü çalışmalarda geliştirilmiştir.
 
-## <a name="general-considerations"></a>Genel hususlar
-Yapay konuşma teknolojisinin dağıtımı için, çoğu senaryo genelinde aşağıdaki yönergeler geçerlidir.
+## <a name="general-considerations"></a>Dikkat edilmesi gereken temel noktalar
+Sentetik konuşma teknolojisinin dağıtımı için, çoğu senaryoda aşağıdaki yönergeler uygulanır.
 
-### <a name="disclose-when-the-voice-is-synthetic"></a>Ses yapay olduğunda açıklayadır
-Bir sesin oluşturulduğu bir sesin, yalnızca zararlı sonuçlar riskini en aza indirir, ancak aynı zamanda sesi teslim eden kuruluştaki güveni de artırır. [Nasıl açıklayacağınızı](concepts-disclosure-guidelines.md)öğrenin.
+### <a name="disclose-when-the-voice-is-synthetic"></a>Ses sentetik olduğunda açıklama
+Bir sesin bilgisayar tarafından oluşturulduğunun açıklanması sadece aldatmadan kaynaklanan zararlı sonuçlar riskini en aza indirmekle kalmıyor, aynı zamanda sesi veren kuruluşa olan güveni de artırır. [Nasıl ifşa ediniliş hakkında](concepts-disclosure-guidelines.md)daha fazla bilgi edinin.
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Senaryonuz için uygun ses türlerini seçin
-Kullanım bağlamını ve yapay seslendirme ile ilişkili potansiyel güvenliğini aşmanızı 'yi dikkatle değerlendirin. Örneğin, yüksek kaliteli yapay sesler, kişisel mesajlaşma, mali işlemler veya insan uyumluluk veya emplik gerektiren karmaşık durumlar gibi yüksek riskli senaryolar için uygun olmayabilir. Kullanıcılar ses türleri için farklı beklentiler de içerebilir. Örneğin, hassas haberleri yapay bir ses tarafından okunmayı dinlerken, bazı kullanıcılar haberleri daha empathetic ve insan benzeri bir şekilde okumayı tercih ederken, diğerleri daha çok monoton, taraflı olmayan sesi tercih eder. Kullanıcı tercihlerini daha iyi anlamak için uygulamanızı test etmeyi düşünün.
+Kullanım bağlamını ve sentetik ses kullanımıyla ilgili olası zararları dikkatlice düşünün. Örneğin, kişisel mesajlaşma, finansal işlemler veya insan adaptasyonu veya empati gerektiren karmaşık durumlar gibi yüksek riskli senaryolarda yüksek doğrulukta sentetik sesler uygun olmayabilir. Kullanıcıların ses türleri için farklı beklentileri de olabilir. Örneğin, hassas haberlerin sentetik bir ses tarafından okunmasını dinlerken, bazı kullanıcılar haberin daha empatik ve insana benzer bir şekilde okunmasını tercih ederken, diğerleri daha monoton, tarafsız bir sesi tercih ediyor. Kullanıcı tercihlerini daha iyi anlamak için uygulamanızı test etmeyi düşünün.
 
-### <a name="be-transparent-about-capabilities-and-limitations"></a>Yetenekler ve sınırlamalar hakkında saydam olun
-Kullanıcılar, yüksek uygunlukta yapay sesli aracılarla etkileşim kurarken daha yüksek beklentileri daha yüksektir. Sonuç olarak, sistem özellikleri bu beklentileri karşılamıyorsa, güven zarar görebilir ve hatta zararlı deneyimler oluşmasına neden olabilir.
+### <a name="be-transparent-about-capabilities-and-limitations"></a>Yetenekler ve sınırlamalar konusunda şeffaf olun
+Kullanıcılar yüksek sadakat sentetik ses ajanları ile etkileşim de daha yüksek beklentileri olması muhtemeldir. Sonuç olarak, sistem yetenekleri bu beklentileri karşılamadığında, güven zarar görebilir ve hoş olmayan ve hatta zararlı deneyimlere neden olabilir.
 
-### <a name="provide-optional-human-support"></a>İsteğe bağlı insan desteği sağlama
-Belirsiz, işlem senaryolarında (örneğin, bir çağrı Destek Merkezi), kullanıcılar isteklerine uygun bir şekilde yanıt vermek için her zaman bir bilgisayar aracısına güvenmiyor. İnsan desteği, sistemin ses veya yeteneğinin gerçekçi kaliteden bağımsız olarak bu durumlarda gerekli olabilir.
+### <a name="provide-optional-human-support"></a>İsteğe bağlı insan desteği sağlayın
+Belirsiz, işlem senaryolarında (örneğin, bir çağrı destek merkezi), kullanıcılar her zaman bir bilgisayar aracısına isteklerini uygun şekilde yanıtvermesi için güvenmezler. Bu gibi durumlarda, sistemin sesinin gerçekçi kalitesi veya yeteneği ne olursa olsun insan desteği gerekebilir.
 
-## <a name="considerations-for-voice-talent"></a>Ses taçödünç alma konuları
-Ses aktörleri gibi Sesli aktörler ile çalışırken, yapay sesler oluşturmak için aşağıdaki kılavuz geçerlidir.
+## <a name="considerations-for-voice-talent"></a>Ses yeteneği için dikkat edilmesi gerekenler
+Sentetik sesler oluşturmak için ses aktörleri gibi ses yeteneğiyle çalışırken aşağıdaki kılavuz geçerlidir.
 
-### <a name="obtain-meaningful-consent-from-voice-talent"></a>Sesli tatatdan anlamlı onay alın
-Ses tatatzı, ses yazı tipi (nasıl ve nerede kullanılır) üzerinde denetim sahibi olmak için kullanılır ve her zaman dengelenebilir. Bu nedenle, sistem sahipleri, sesli tastasyondan açık yazılı bir izin almalıdır ve kullanım örnekleri, kullanım süresi, kullanım süresi ve benzerlerini açık şekilde sözleşmeli belirtimlere sahip olmalıdır. Bazı ses tastası, teknolojinin olası kötü amaçlı kullanımlarıyla uyumlu değildir ve teknolojinin özellikleri hakkında sistem sahipleri tarafından eğitilmeli. Ses taçanız ve onayı hakkında daha fazla bilgi edinmek için [sesli tatatyi](https://aka.ms/disclosure-voice-talent)okuyun.
-
-
-## <a name="considerations-for-those-with-speech-disorders"></a>Konuşma yemekleriyle ilgili konular
-Konuşma olmayan kişilerle çalışırken yapay sesli teknoloji oluşturmak veya dağıtmak için aşağıdaki yönergeler geçerlidir.
-
-### <a name="provide-guidelines-to-establish-contracts"></a>Sözleşmeleri oluşturmak için yönergeler sağlama
-Konuşma yardımı için yapay bir ses kullanan kişilerle sözleşme oluşturmaya yönelik yönergeler sağlar. Sözleşme, sese sahip olan tarafları, kullanım süresini, sahiplik aktarma ölçütlerini, ses yazı tipini silmeye yönelik yordamları ve yetkisiz erişimi engelleme yapmayı düşünmelidir. Ayrıca, bu kişinin izin vermiş olması halinde aile üyelerine bir daha fazla ölülinden sonra, ses yazı tipi sahipliğinin sözleşme aktarımını etkinleştirin.
-
-### <a name="account-for-inconsistencies-in-speech-patterns"></a>Konuşma desenlerinde tutarsızlıklar için hesap
-Kendi ses yazı tiplerini kaydeden konuşma olmayan kişiler için, konuşma düzenlerinde (slurhalka veya belirli sözcükleri pronounce Me) tutarsızlıklar, kayıt işlemini karmaşıklaştırabilir. Bu durumlarda yapay sesli teknoloji ve kayıt oturumları bunlara uyum sağlamalıdır (yani, kesmeler ve ek sayıda kayıt oturumu sağlar).
-
-### <a name="allow-modification-over-time"></a>Zaman içinde değişikliğe izin ver
-Konuşmaya sahip kişiler, eskime seslerini yansıtmak için yapay seslerinde güncelleştirmeler yapmayı ister (örneğin, puberty 'e ulaşan bir çocuk). Bireyler, zaman içinde değişen stil tercihleri de içerebilir ve değiştirme, aksan veya diğer ses özelliklerinde değişiklik yapmak isteyebilir.
+### <a name="obtain-meaningful-consent-from-voice-talent"></a>Ses yeteneğinden anlamlı onay alın
+Ses yeteneği, ses yazı tipleri üzerinde kontrolsahibi olmayı (nasıl ve nerede kullanılacağı) ve her kullanıldığında telafi edilmesini bekler. Sistem sahipleri bu nedenle ses yeteneğinden açık yazılı izin almalı ve kullanım durumları, kullanım süresi, tazminat ve benzeri konularda açık sözleşme özelliklerine sahip olmalıdır. Bazı ses yetenekleri teknolojinin potansiyel kötü niyetli kullanımları habersiz ve teknolojinin yetenekleri hakkında sistem sahipleri tarafından eğitilmelidir. Ses yeteneği ve rızası hakkında daha fazla bilgi [için, Ses Yetenek için İfşaat](https://aka.ms/disclosure-voice-talent)okuyun.
 
 
-## <a name="reference-docs"></a>Başvuru belgeleri
+## <a name="considerations-for-those-with-speech-disorders"></a>Konuşma bozukluğu olanlar için dikkat edilmesi gerekenler
+Konuşma bozukluğu olan kişilerle çalışırken, sentetik ses teknolojisi oluşturmak veya dağıtmak için aşağıdaki kurallar uygulanır.
 
-* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
-* [Geçişi genel bakış](concepts-gating-overview.md)
-* [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
-* [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)
+### <a name="provide-guidelines-to-establish-contracts"></a>Sözleşmeler oluşturmak için yönergeler sağlayın
+Konuşmada yardım için sentetik ses kullanan kişilerle sözleşme ler oluşturmak için yönergeler sağlayın. Sözleşme, sesin sahibi tarafları, kullanım süresini, mülkiyet devri kriterlerini, ses yazı tipini silme prosedürlerini ve yetkisiz erişimi nasıl önleyeceğini belirtmeyi düşünmelidir. Ayrıca, bu kişinin izin vermişse, ölümden sonra sesli font sahipliğinin aile üyelerine sözleşmeden geçirilmesini etkinleştirin.
+
+### <a name="account-for-inconsistencies-in-speech-patterns"></a>Konuşma kalıplarında tutarsızlıklar için hesap
+Kendi ses yazı tiplerini kaydeden konuşma bozukluğu olan kişiler için, konuşma desenindeki tutarsızlıklar (belirli sözcükleri telaffuz edememe veya telaffuz edememe) kayıt işlemini zorlaştırabilir. Bu gibi durumlarda, sentetik ses teknolojisi ve kayıt oturumları bunları barındırmalıdır (diğer bir deyişle, molalar ve ek sayıda kayıt oturumu sağlar).
+
+### <a name="allow-modification-over-time"></a>Zaman içinde değişiklik yapılmasına izin ver
+Konuşma bozukluğu olan bireyler yaşlanmayı yansıtmak için sentetik ses güncellemeleri yapmak arzusu (örneğin, ergenlik ulaşan bir çocuk). Bireyler de zaman içinde değişen stilistik tercihleri olabilir ve pitch, aksan veya diğer ses özellikleri değişiklik yapmak isteyebilirsiniz.
+
+
+## <a name="reference-docs"></a>Referans dokümanları
+
+* [Ses Yetenek için Açıklama](https://aka.ms/disclosure-voice-talent)
+* [Gating Genel Bakış](concepts-gating-overview.md)
+* [Nasıl Açıklar?](concepts-disclosure-guidelines.md)
+* [Açıklama Tasarım Desenleri](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
-* [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
-* [Açıklama tasarım desenleri](concepts-disclosure-patterns.md)
+* [Ses Yetenek için Açıklama](https://aka.ms/disclosure-voice-talent)
+* [Nasıl Açıklar?](concepts-disclosure-guidelines.md)
+* [Açıklama Tasarım Desenleri](concepts-disclosure-patterns.md)

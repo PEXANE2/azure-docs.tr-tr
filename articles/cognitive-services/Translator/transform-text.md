@@ -1,7 +1,7 @@
 ---
-title: Metni Dönüştür-Translator Metin Çevirisi API'si
+title: Metni dönüştürme - Çevirmen Metin API'si
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si kullanarak metni dönüştürün.
+description: Çevirmen Metin API'sini kullanarak metni dönüştürün.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68594901"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>TransformText yöntemini kullanma
+# <a name="how-to-use-the-transformtext-method"></a>TransformText yöntemi nasıl kullanılır?
 
 > [!NOTE]
-> Bu yöntem kullanım dışıdır. Translator Metin Çevirisi API'si V 3.0 sürümünde kullanılamaz.
+> Bu yöntem amortismana hazırdır. Çevirmen Metin API'sinin V3.0'ında kullanılamaz.
 
-TransformText yöntemi, bir sosyal medya için bir metin normalleştirme işlevidir ve bu, girişin normalleştirilmiş bir biçimini döndürür. Yöntemi, makine çevirisi veya Kullanıcı tarafından oluşturulan içeriklerde genellikle bulunmayan Temizleme giriş metnini bekleyen diğer uygulamalar için bir ön işleme adımı olarak kullanılabilir. İşlev şu anda yalnızca Ingilizce girişle çalışır.
+TransformText yöntemi, girişin normalleştirilmiş bir biçimini döndüren sosyal medya için bir metin normalleştirme işlevidir. Yöntem, makine çevirisinde veya genellikle sosyal medyada veya kullanıcı tarafından oluşturulan içerikte bulunmayan temiz giriş metni bekleyen diğer uygulamalarda ön işleme adımı olarak kullanılabilir. İşlev şu anda yalnızca İngilizce girişi yle çalışır.
 
-Yöntemi, HTTP üzerinden al kullanan bir yeniden hizmet hizmetidir. Basit XML ve JSON serileştirmesini destekler.
+Yöntem, GET over HTTP'yi kullanan bir restful hizmetidir. Basit XML ve JSON serileştirmedestekler.
 
 ## <a name="parameters"></a>Parametreler
 
 | Parametre | Açıklama |
 |:---|:---|
-| Yetkilendirme üst bilgisi | **Gerekli** Uygulamayı tanımlamak için kullanılan HTTP üstbilgisi. Anahtar kullan: "Yetkilendirme" ve değer: "Taşıyıcı" + "" + erişim belirteci. Ayrıntılar için buraya gidin.|
-| dil | **Gerekli** Dil kodunu temsil eden bir dize. Bu parametre, dil **adı olarak yalnızca** İngilizce ile desteklenir.|
-| category | **Isteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca **genel**varsayılan seçeneğini destekler.|
-| tümce | **Gerekli** Düzeltmek istediğiniz bir cümle. |
+| Yetkilendirme üstbilgi | **Gerekli** Uygulamayı tanımlamak için kullanılan HTTP üstbilgisi. Anahtar kullanın: "Yetkilendirme" ve değer: "Taşıyıcı" + " + erişim belirteci. Ayrıntılar için buraya gidin.|
+| language | **Gerekli** Dil kodunu temsil eden bir dize. Bu parametre, dil adı olarak **yalnızca İngilizce'yi en** olarak destekler.|
+| category | **İsteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca varsayılan seçeneği **genel**destekler.|
+| Cümle | **Gerekli** Düzeltmek istediğiniz bir cümle. |
 
-## <a name="return-value"></a>Dönüş değeri
+## <a name="return-value"></a>Döndürülen değer
 
-Dönüş değeri, dönüştürülmüş tümceyi sağlar.
+İade değeri dönüştürülen tümceyi sağlar.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json

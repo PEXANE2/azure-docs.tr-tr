@@ -1,5 +1,5 @@
 ---
-title: Content Moderator özel listelere C# karşı görüntüleri denetleme
+title: C# 'da görüntüleri özel listelere göre kontrol edin - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
 description: C# için Content Moderator SDK'sını kullanarak görüntüleri özel görüntü listeleriyle denetleme.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931765"
 ---
-# <a name="moderate-with-custom-image-lists-in-c"></a>İçindeki özel görüntü listeleriyle ortaC#
+# <a name="moderate-with-custom-image-lists-in-c"></a>C'de özel görüntü listeleri ile orta #
 
 Bu makalede, aşağıdaki amaçlarla [.NET için Content Moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanmaktadır:
 - Özel görüntü listesi oluşturma
@@ -32,9 +32,9 @@ Bu makalede, aşağıdaki amaçlarla [.NET için Content Moderator SDK](https://
 > [!NOTE]
 > Liste sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 görüntü listesidir**.
 
-Bu kılavuzun konsol uygulaması, görüntü listesi API 'SI ile gerçekleştirebileceğiniz bazı görevleri benzetir.
+Bu kılavuzun konsol uygulaması, görüntü listesi API'si ile gerçekleştirebileceğiniz bazı görevleri simüle eder.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetleri için kaydolma
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator istemcisini oluşturma
 
-Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin. `AzureEndpoint` ve `CMSubscriptionKey` alanlarını Endpoint URL 'nizin ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin. Bitiş `AzureEndpoint` noktası `CMSubscriptionKey` URL'niz ve abonelik anahtarınızın değerleriyle alanları ve alanları güncelleştirin. Bunları Azure portalında kaynağınızın **Hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Listeye görüntü koleksiyonu eklemek için yöntem oluşturma
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu kılavuz, listedeki görüntülere etiketlerin nasıl uygulanacağını göstermez. 
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu kılavuz, listedeki resimlere etiketlerin nasıl uygulanacağı göstermiyor. 
 
 ```csharp
 /// <summary>

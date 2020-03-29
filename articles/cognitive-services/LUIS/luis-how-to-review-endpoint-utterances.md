@@ -1,7 +1,7 @@
 ---
-title: Kullanıcı utslerini gözden geçirme-LUSıS
+title: Kullanıcı söyleyişlerini inceleyin - LUIS
 titleSuffix: Azure Cognitive Services
-description: Etkin öğrenimi tarafından yakalanan bir şekilde gözden geçirerek, okuma ve varlık kullanımı için varlıkları seçin; değişiklikleri kabul edin, eğitme ve yayımlayın.
+description: Okuma dünyası söyleygisleri için niyet seçmek ve varlıkları işaretlemek için aktif öğrenme tarafından yakalanan sözleri gözden geçirin; değişiklikleri kabul edin, eğitin ve yayınlayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,60 +12,60 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219857"
 ---
-# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta söyleyerek LUIS uygulaması nasıl geliştirilir?
 
-Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin öğrenme](luis-concept-review-endpoint-utterances.md)olarak adlandırılır. Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu yazılanları inceleyerek, bu okuma dünyasının amacını seçin ve varlıkları işaretleyin. Bu değişiklikleri örnek söyleyenlerinde kabul edin ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
+Doğru tahminler için uç nokta söyleyişlerini gözden geçirme işlemine [Etkin öğrenme](luis-concept-review-endpoint-utterances.md)denir. Etkin öğrenme uç nokta sorgularını yakalar ve kullanıcının emin olmadığı uç nokta söyleyişlerini seçer. Bu okuma dünyası söyleyişlerinin amacını seçmek ve varlıkları işaretlemek için bu sözleri gözden geçiriyorsunuz. Bu değişiklikleri örnek sözlerinizi kabul edin, ardından eğitin ve yayınlayın. LUIS daha sonra daha doğru bir şekilde söyleyiş tanımlar.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
+## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştirme
 
-Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe yazmanız gerekir. Bu, `log=true` QueryString parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) çağırarak gerçekleştirilir.
+Etkin öğrenmeyi etkinleştirmek için kullanıcı sorgularını günlüğe kaydetmeniz gerekir. Bu querystring parametresi ve değeri `log=true` ile [bitiş noktası sorgusu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) çağırarak gerçekleştirilir.
 
-Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
+Doğru bitiş noktası sorgusunu oluşturmak için LUIS portalını kullanın.
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis.ai/), uygulamalar listesinden uygulamanızı seçin.
-1. **Yönet** bölümüne gidin ve **Azure kaynakları**' nı seçin.
-1. Atanan tahmin kaynağı için **sorgu parametrelerini değiştir**' i seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![, etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
-
-1. Kaydet ' i seçerek Kaydet **günlüklerine** geçiş **yapın.**
+1. Önizleme [LUIS portalında](https://preview.luis.ai/)uygulamanızı uygulamalar listesinden seçin.
+1. **Yönet** bölümüne gidin ve ardından **Azure kaynaklarını**seçin.
+1. Atanan tahmin kaynağı için **sorgu parametrelerini değiştir'i**seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![, etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+    > ![Etkin öğrenme için gerekli olan günlükleri kaydetmek için LUIS portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
-     Bu eylem, `log=true` QueryString parametresini ekleyerek örnek URL 'YI değiştirir. Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
+1. Geçiş **Kaydet günlükleri** sonra **Bitti'yi**seçerek kaydedin.
 
-## <a name="correct-intent-predictions-to-align-utterances"></a>Söylemeleri hizalamak için amaç tahminleri doğru
+    > [!div class="mx-imgBorder"]
+    > ![Etkin öğrenme için gerekli olan günlükleri kaydetmek için LUIS portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-Her söylük, **hizalanmış amaç** sütununda gösterilen önerilen bir amaca sahiptir.
+     Bu eylem, sorgu string `log=true` parametresini ekleyerek örnek URL'yi değiştirir. Çalışma zamanı bitiş noktasına öngörü sorguları yaparken değiştirilen örnek sorgu URL'sini kopyalayın ve kullanın.
+
+## <a name="correct-intent-predictions-to-align-utterances"></a>Söyleyiyi hizalamak için doğru niyet tahminleri
+
+Her söyleyyenin **Hizalanmış niyet** sütununda görüntülenen önerilen bir niyeti vardır.
 
 > [!div class="mx-imgBorder"]
-> [![gözden geçirme uç noktası, LUO 'nun emin olduğu](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
+> [![LUIS'in emin olmadığı son nokta söyleyişlerini gözden geçirin](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-Bu amacı kabul ediyorsanız onay işaretini seçin. Öneri katılmıyorum doğru hedefi hizalı hedefi aşağı açılan listeden seçin, sonra hizalanmış amaç sağındaki onay işaretini seçin. Onay işaretini seçtikten sonra, söylenişi hedefe taşınır ve **Gözden geçirme uç noktası uttasları** listesinden kaldırılır.
+Bu amacı kabul ederseniz, onay işaretini seçin. Öneriye katılmıyorsanız, hizalanmış niyet açılır listesinden doğru niyeti seçin ve ardından hizalanan niyetin sağındaki onay işaretini seçin. Onay işaretini seçtikten sonra, söyleyiş niyete taşınır ve **Gözden Geçir Bitiş Noktası Sözleri** listesinden kaldırılır.
 
 > [!TIP]
-> **Gözden geçirme uç noktası dıklarından** gelen tüm örnek varlık tahminlerini gözden geçirmek ve düzeltmek için amaç ayrıntıları sayfasına gitmeniz önemlidir.
+> **İnceleme Endpoint Utterances** listesindeki tüm örnek tüm sözlülüklerden varlık tahminlerini gözden geçirmek ve düzeltmek için Niyet ayrıntıları sayfasına gitmek önemlidir.
 
-## <a name="delete-utterance"></a>Utterance Sil
+## <a name="delete-utterance"></a>Söyleyiyi silme
 
-Her utterance gözden geçirme listesinden silinebilir. Silindikten sonra listeden yeniden görünmez. Uç noktasından aynı utterance kullanıcının girdiği olsa bile bu geçerlidir.
+Her söyleyiş gözden geçirme listesinden silinebilir. Silindikten sonra, listede bir daha görünmez. Bu, kullanıcı bitiş noktasından aynı söyleyiyi girse bile geçerlidir.
 
-Söylenişi 'i silmeniz gerekip gerekmediğini bilmiyorsanız, bunu hiçbiri amacına taşıyın veya `miscellaneous` gibi yeni bir amaç oluşturun ve bu amaca göre taşıyın.
+Söyleyiyi silmeniz gerektiğinden emin değilseniz, söyleyiyi Yok amacına taşıyın veya `miscellaneous` bu amaçla yeni bir niyet oluşturun ve söyleyiyi bu amaca taşıyın.
 
-## <a name="disable-active-learning"></a>Etkin öğrenmeyi devre dışı bırak
+## <a name="disable-active-learning"></a>Aktif öğrenmeyi devre dışı
 
-Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, varsayılan değer false olduğu için, `log=false` QueryString parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) ayarlanarak ve QueryString değeri olmadan gerçekleştirilir.
+Etkin öğrenmeyi devre dışı kalım için kullanıcı sorgularını günlüğe kaydetmeyin. Bu, varsayılan değer yanlış `log=false` olduğundan, sorgustring parametresi ve değeri ile bitiş noktası [sorgusu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) ayarlayarak veya querystring değerini kullanmayarak gerçekleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen söyleylerini etiketledikten sonra performansın nasıl artdığı test etmek için, üst panelde **Test** ' i seçerek test konsoluna erişebilirsiniz. Test konsolunu kullanarak uygulamanızı test etme hakkında yönergeler için bkz. [uygulamanızı eğitme ve test](luis-interactive-test.md)etme.
+Önerilen sözcükleri etiketledikten sonra performansın nasıl iyileştiğini test etmek için, üst panelde **Test'i** seçerek test konsoluna erişebilirsiniz. Test konsolunu kullanarak uygulamanızı nasıl sınayacağınıza ilişkin talimatlar için [Train'e bakın ve uygulamanızı test edin.](luis-interactive-test.md)

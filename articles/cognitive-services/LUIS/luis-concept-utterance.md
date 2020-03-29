@@ -1,7 +1,7 @@
 ---
-title: İyi örnek utterer-LUSıS
+title: İyi örnek söz - LUIS
 titleSuffix: Azure Cognitive Services
-description: Söyleyceler, uygulamanızın yorumlamak için gereken kullanıcıdan gelen giriştir. Kullanıcıların girecağı tümcecikleri toplayın. Aynı şeyi gösteren, ancak sözcük uzunluğu ve sözcük yerleşimi içinde farklı şekilde oluşturulan utterleri dahil edin.
+description: İfadeler kullanıcının yaptığı ve uygulamanızın yorumlaması gereken girişlerdir. Kullanıcıların gireceğini düşündüğünüz ifadeleri toplayın. Aynı anlama gelen ancak sözcük uzunluğu ve sözcük yerleştirmede farklı olarak oluşturulmuş sözcük leri ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,85 +12,85 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219923"
 ---
-# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
+# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS uygulamanız için iyi sözlerle ne olduğunu anlayın
 
-**Söyleyceler** , uygulamanızın yorumlamak için gereken kullanıcıdan gelen giriştir. LUO 'dan amaçları ve varlıkları ayıklamak için, her bir amaç için çeşitli farklı örnek türlerini yakalamak önemlidir. Etkin öğrenimi veya yeni vavaslar üzerinde eğitim almaya devam etme süreci, sanal makine tarafından öğrenilen zeka 'nın sağladığı zeka açısından önemlidir.
+**Söyleyişler,** uygulamanızın yorumlanması gereken kullanıcıdan gelen girişlerdir. LUIS'i, niyet ve varlıkları onlardan ayıklamak için eğitmek için, her amaç için çeşitli örnek söylentiler yakalamak önemlidir. Aktif öğrenme, ya da yeni söyleyişler üzerinde eğitmeye devam süreci, LUIS'in sağladığı makinede öğrenilen zeka için gereklidir.
 
-Kullanıcıların girebileceği düşündüklerini toplayın. Aynı şeyi gösteren, ancak çeşitli yollarla oluşturulan utterleri dahil edin:
+Kullanıcıların gireceğini düşündüğünüz söyleyiyi toplayın. Aynı anlama gelen ancak çeşitli şekillerde inşa edilen söyleyişleri ekleyin:
 
-* Utterance uzunluğu-istemci uygulamanız için kısa, orta ve uzun
+* Söyleyiş uzunluğu - kısa, orta ve uzun istemci-uygulama için
 * Sözcük ve tümcecik uzunluğu 
-* Sözcük yerleşimi-noktadan itibaren, ortadaki ve sonunda varlık
-* Denetleyicilerinin 
+* Sözcük yerleştirme - sözcük başında, orta ve sözcük sonunda varlık
+* Dilbilgisi 
 * Çoğullaştırma
-* Kesintilerinden kaynaklanan
-* Ad ve fiil seçimi
-* Noktalama-doğru, yanlış ve dilbilgisi kullanımı çok iyi
+* Dallanma
+* Isim ve fiil seçimi
+* Noktalama - doğru, yanlış ve dilbilgisi kullanarak iyi bir çeşitlilik
 
-## <a name="how-to-choose-varied-utterances"></a>Değişen detersliği seçme
+## <a name="how-to-choose-varied-utterances"></a>Nasıl çeşitli söyleyinmeler seçmek için
 
-LUSıS modelinize [örnek eklemeler ekleyerek](luis-how-to-add-example-utterances.md) ilk kez başladıysanız göz önünde bulundurmanız gereken bazı ilkeler aşağıda verilmiştir.
+Luis modelinize [örnek sözlerle](luis-how-to-add-example-utterances.md) ilk başladığınızda, aklınızda bulundurmanız gereken bazı ilkeler şunlardır.
 
-### <a name="utterances-arent-always-well-formed"></a>Utterslar her zaman iyi biçimlendirilmemiş
+### <a name="utterances-arent-always-well-formed"></a>Söylenmeler her zaman iyi şekilli değildir.
 
-"" Kayıt "veya" Paris uçuş "gibi bir cümle parçası olan" benim için Istanbul için bir bilet  Kullanıcılar genellikle yazım hataları yapar. Uygulamanızı planlarken, LUO 'ya geçirmeden önce Kullanıcı girişini düzeltmek için [Bing yazım denetimi](luis-tutorial-bing-spellcheck.md) kullanıp kullanmayacağınızı düşünün. 
+"Benim için Paris'e bilet ayırt" gibi bir cümle ya da "Rezervasyon" ya da "Paris uçuşu" gibi bir cümlenin bir parçası olabilir.  Kullanıcılar genellikle yazım hataları yapar. Uygulamanızı planlarken, kullanıcı girişini LUIS'e geçirmeden önce düzeltmek için [Bing Yazım Denetimi'ni](luis-tutorial-bing-spellcheck.md) kullanıp kullanmadığınızı göz önünde bulundurun. 
 
-Kullanıcı araslarını yazım denetimi yapmazsanız, LUSıS 'yi, yazım hataları ve yazım hataları içeren uttaslar üzerinde eğitmelisiniz.
+Kullanıcı sözcülerini hecelemiyorsanız, LUIS'i yazım hataları ve yazım hataları içeren söyleyişler konusunda eğitmelisiniz.
 
-### <a name="use-the-representative-language-of-the-user"></a>Kullanıcının temsili dilini kullan
+### <a name="use-the-representative-language-of-the-user"></a>Kullanıcının temsil dilini kullanma
 
-Utterlere seçerken, yaygın bir terim veya tümcecik, istemci uygulamanızın tipik kullanıcısı için doğru olmayabilir. Etki alanı deneyimine sahip olmayabilir. Bir kullanıcının yalnızca uzman olmaları durumunda söyledikleri terimleri veya tümceleri kullanırken dikkatli olun.
+Söyleyiş leri seçerken, ortak bir terim veya tümcecik olduğunu düşündüğünüz şeyin istemci uygulamanızın tipik kullanıcısı için doğru olmayabileceğini unutmayın. Etki alanı deneyimi olmayabilir. Bir kullanıcının yalnızca bir uzman olsaydı söyleyeceği terimleri veya tümcecikleri kullanırken dikkatli olun.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Değişen terminolojiyi ve ifade ' i seçin
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Çeşitli terminolojinin yanı sıra tümceleri seçin
 
-Fark eden tümce desenleri oluşturmaya yönelik çabalar oluştursanız bile, bazı sözlük tekrarlamaya devam edersiniz.
+Çeşitli cümle kalıpları oluşturmak için çaba gösterseniz bile, yine de bazı kelime tekraredecektir bulacaksınız.
 
-Bu örnek aşağıdaki adımları uygulayın:
+Şu örnek sözlerle ele alalım:
 
 |Örnek konuşmalar|
 |--|
-|how do I get a computer?|
-|Where do I get a computer?|
-|I want to get a computer, how do I go about it?|
-|When can I have a computer?| 
+|Nasıl bir bilgisayar alabilirim?|
+|Bilgisayarı nereden bulabilirim?|
+|Bilgisayar almak istiyorum, nasıl yapabilirim?|
+|Ne zaman bir bilgisayarım olabilir?| 
 
-Buradaki temel terim, "bilgisayar" olarak farklılık gösterir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUU bağlamdaki Eşanlamlı sözcükleri akıllıca çıkarabilir, ancak eğitim için utumslar oluştururken bunları değiştirmek her zaman daha iyidir.
+Buradaki temel terim, "bilgisayar", çeşitli değildir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu ve hatta sadece makine gibi alternatifleri kullanın. LUIS, eş anlamlıları bağlamından akıllıca çıkartabilir, ancak eğitim için söyleşiler oluşturduğunuzda, bunları değiştirmek her zaman daha iyidir.
 
-## <a name="example-utterances-in-each-intent"></a>Her amaç için örnek söylenme
+## <a name="example-utterances-in-each-intent"></a>Her niyette örnek söz
 
-Her bir amaç, en az 15 örnek bir olmalıdır. Herhangi bir örnek elde gerektirmeyen bir amaç varsa, LUO 'yı eğitemeyeceksiniz. Bir veya çok az örnek ile ilgili bir amaç varsa, Lu, amacı doğru tahmin edemeyebilir. 
+Her niyetin en az 15 örnek söz emesi gerekir. Herhangi bir örnek söyleyiş olmayan bir niyet varsa, LUIS eğitmek mümkün olmayacaktır. Eğer bir veya çok az örnek söyleyiş ile bir niyet varsa, LUIS doğru niyet tahmin olmayabilir. 
 
-## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Her yazma yinelemesi için küçük sayıda 15 utterations ekleyin
+## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Her yazma yinelemesi için 15 kelimeden oluşan küçük gruplar ekleyin
 
-Modelin her yinelemesinde, büyük miktarlarda sayı eklemeyin. Sayıları 15 ' te ekleyin. Yeniden [eğitin](luis-how-to-train.md), [yayımlayın](luis-how-to-publish-app.md)ve [Test](luis-interactive-test.md) edin.  
+Modelin her yinelemesinde, büyük miktarda söyleyiş eklemeyin. 15 miktarda söyleyinmeekleyin. [Tren](luis-how-to-train.md), [yayınlamak](luis-how-to-publish-app.md), ve tekrar [test](luis-interactive-test.md) edin.  
 
-LUSıS, lular model yazarı tarafından dikkatle seçilmiş olan deterleri olan etkili modeller oluşturur. Çok fazla sayıda söyleyme eklemek karışıklık sunduğundan önemli değildir.
+LUIS, LUIS modeli yazarı tarafından özenle seçilen söyleyerek etkili modeller oluşturur. Çok fazla söyleyiş eklemek değerli değildir çünkü kafa karışıklığına yol açar.
 
-Birkaç noktadır başlamak daha iyidir, ardından doğru amaç tahmini ve varlık ayıklama için [uç nokta utslerini gözden geçirin](luis-how-to-review-endpoint-utterances.md) .
+Birkaç söyleyiş ile başlamak için daha iyidir, sonra doğru niyet tahmini ve varlık çıkarma için [uç nokta söyleyiş gözden geçirin.](luis-how-to-review-endpoint-utterances.md)
 
-## <a name="utterance-normalization"></a>Utterance normalleştirmesi
+## <a name="utterance-normalization"></a>Söyleyiş normalleştirme
 
-Utterance normalleştirme, eğitim ve tahmin sırasında noktalama ve aksanların etkilerini gözardı eden bir işlemdir.
+Söyleyerek normalleştirme, eğitim ve tahmin sırasında noktalama işaretlerinin ve aksamaların etkilerini göz ardı etme işlemidir.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Aksanların ve noktalama işaretlerinin utterance normalleştirilmesi
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Aksatçlar ve noktalama işaretleri için söyleyiş normalleştirmesi
 
-Uygulama JSON dosyasında bir ayar olduğundan, uygulamayı oluşturduğunuzda veya içeri aktardığınızda utterance normalleştirmesi tanımlanmıştır. Söylenişi normalleştirme ayarları varsayılan olarak kapalıdır. 
+Uygulama JSON dosyasında bir ayar olduğu için uygulamayı oluşturduğunuzda veya içe aktardığınızda söyleyiş normalleştirmesi tanımlanır. Söyleyiş normalleştirme ayarları varsayılan olarak kapatılır. 
 
-Aksanlar, metin içindeki işaretler veya işaretlerdir, örneğin: 
+Aksenler, metin deki işaretler veya işaretlerdir: 
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Uygulamanız üzerinde normalleştirmeyi kapatırsa, **Test** bölmesi, toplu iş testleri ve uç nokta sorguları, vurgu veya noktalama kullanan tüm söyler için değişecektir.
+Uygulamanız normale dönerse, **Test** bölmesindeki puanlar, toplu testler ve uç nokta sorguları aksan veya noktalama işareti kullanarak tüm tüm tüm sözcükler için değişir.
 
-`settings` parametresindeki lusıs JSON uygulama dosyanıza aksanlar veya noktalama işaretleri için söylenişi normalleştirmesini açın.
+Parametredeki LUIS JSON uygulama dosyanıza aksama veya noktalama `settings` işaretleri için söyleyiş normalleştirmesini açın.
 
 ```JSON
 "settings": [
@@ -99,57 +99,57 @@ Uygulamanız üzerinde normalleştirmeyi kapatırsa, **Test** bölmesi, toplu i�
 ] 
 ```
 
-**Noktalama işareti** , modelleriniz eğitilen ve uç nokta sorgularınız tahmin etmeden önce, noktalama işaretlerinden kaldırılacak şekilde görünür. 
+**Noktalama işaretlerini** normalleştirmek, modelleriniz eğitilmeden ve bitiş noktası sorgularınız tahmin edilmeden önce noktalama işaretlerinin dile gelenlerden kaldırılacağı anlamına gelir. 
 
-**Aksanların** normalleştirilmesi, karakterleri normal karakterlerle birlikte gelen aksan işaretleri ile değiştirir. Örneğin: `Je parle français` `Je parle francais`olur. 
+**Aksiyi** normalleştirmek, karakterlerin yerine, düzenli karakterlerle birlikte, söyleyişdeki aksitlerle değiştirilir. Örneğin: `Je parle français` olur `Je parle francais`. 
 
-Normalleştirme, örnek ifade veya tahmin yanıtlarınızda noktalama ve aksanlar görmeyecek ve yalnızca eğitim ve tahmin sırasında yoksayıladıklarından emin değildir.
+Normalleştirme, örnek söyleyişlerinizde veya tahmin yanıtlarınızda noktalama işaretleri ve aksanlar görmeyeceğiniz anlamına gelmez, yalnızca eğitim ve tahmin sırasında göz ardı edilecekleri anlamına gelir.
 
 
 ### <a name="punctuation-marks"></a>Noktalama işaretleri
 
-Noktalama, LUIS, ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir. 
+Noktalama, LUIS'te ayrı bir belirteçtir. Sonunda bir dönem içeren bir söyleyiş sonunda bir dönem içermeyen bir söyleyiş iki ayrı sözcük ve iki farklı tahminler alabilirsiniz. 
 
-Noktalama işareti normalleştirilmezse, bazı istemci uygulamalar bu işaretlere anlam yerleştirebilir, varsayılan olarak, Lu, noktalama işaretlerini yoksayar. Her iki stilin de aynı göreli puanları döndürmesi için, örnek uttlarınızın hem noktalama işaretlerini hem de noktalama işaretlerini kullantığınızdan emin olun. 
+Noktalama işaretleri normalleştirilemezse, bazı istemci uygulamaları bu işaretlerüzerinde önem ifade edebileceğinden, LUIS varsayılan olarak noktalama işaretlerini göz ardı etmez. Her iki stilin de aynı göreli puanları döndürebilmesi için örnek söyleyişlerinizin hem noktalama işaretlerini hem de noktalama işaretlerini kullanmadığından emin olun. 
 
-Modelin noktalama işaretlerini (noktalama işaretleri içeren ve olmayan) veya özel sözdizimi ile noktalama işaretlerini gözardı etmek daha kolay olan [desenlerdeki](luis-concept-patterns.md) noktalama işaretlerini işlediği emin olun: `I am applying for the {Job} position[.]`
+Modelin noktalama işaretlerini örnek sözdiziminde (noktalama işaretlerine sahip olma ve sahip olmamak) veya özel sözdizimi yle noktalama işaretlerini yok saymanın daha kolay olduğu [desenlerde](luis-concept-patterns.md) işlediğinden emin olun:`I am applying for the {Job} position[.]`
 
-Noktalama, istemci uygulamanızda belirli bir anlamı yoksa, noktalama işaretlerini normalleştirerek [noktalama işaretlerini yok saymayı](#utterance-normalization) düşünün. 
+Noktalama işaretleri istemci uygulamanızda belirli bir anlam ifade etmemişse, noktalama işaretlerini normalleştirerek [noktalama işaretlerini yok saymayı](#utterance-normalization) düşünün. 
 
-### <a name="ignoring-words-and-punctuation"></a>Sözcükler ve noktalama işaretleri yoksayılıyor
+### <a name="ignoring-words-and-punctuation"></a>Sözcükleri ve noktalama işaretlerini yok sayma
 
-Desenlerde belirli sözcükleri veya noktalama işaretlerini yoksaymak isterseniz, `[]`köşeli ayraçın _Yoksay_ sözdizimini içeren bir [desen](luis-concept-patterns.md#pattern-syntax) kullanın. 
+Desenlerde belirli sözcükleri veya noktalama işaretlerini yoksaymak istiyorsanız, kare ayraçların `[]`sözdizimini yok _sayan_ bir [desen](luis-concept-patterns.md#pattern-syntax) kullanın. 
 
-## <a name="training-utterances"></a>Eğitim konuşmaları
+## <a name="training-utterances"></a>Eğitim söyleyişleri
 
-Eğitim genellikle belirleyici değildir: söylenişi tahmini sürümler veya uygulamalar arasında biraz farklılık gösterebilir. [Sürüm ayarları](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 'sini, tüm eğitim verilerini kullanmak üzere `UseAllTrainingData` ad/değer çiftiyle güncelleştirerek, belirleyici olmayan eğitimi kaldırabilirsiniz.
+Eğitim genellikle belirleyici değildir: söyleyiş tahmini sürümler veya uygulamalar arasında biraz farklılık gösterebilir. Tüm eğitim verilerini kullanmak için [sürüm ayarları](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API'sini `UseAllTrainingData` ad/değer çiftiyle güncelleyerek deterministik olmayan eğitimi kaldırabilirsiniz.
 
-## <a name="testing-utterances"></a>Söyleyceler test etme 
+## <a name="testing-utterances"></a>Testleri söyleyünmeler 
 
-Geliştiriciler, bir [tahmin uç noktası](luis-how-to-azure-subscription.md) URL 'sine utser göndererek, lusıs uygulamasının gerçek trafikle test edilmesine başlamamalıdır. Bu [Söyleyime, gözden geçirme](luis-how-to-review-endpoint-utterances.md)ve varlıkların performansını geliştirmek için kullanılır. LUSıS Web sitesi test bölmesi ile gönderilen testler, uç nokta aracılığıyla gönderilmez ve bu nedenle etkin öğrenimine katkıda bulunun. 
+Geliştiriciler, [öngörü bitiş noktası](luis-how-to-azure-subscription.md) URL'sine söz göndererek LUIS uygulamalarını gerçek trafikle test etmeye başlamalıdır. Bu söyleyişler, [İnceleme ile](luis-how-to-review-endpoint-utterances.md)niyet ve varlıkların performansını artırmak için kullanılır. LUIS web sitesi test bölmesi ile gönderilen testler bitiş noktası üzerinden gönderilmez ve bu nedenle aktif öğrenme için katkıda bulunmaz. 
 
-## <a name="review-utterances"></a>Detersliği gözden geçirme
+## <a name="review-utterances"></a>Sözlerle ilgili incelemeleri gözden geçirin
 
-Modelinize eğitilen, yayımladım ve [uç nokta](luis-glossary.md#endpoint) sorgularını aldıktan sonra, Luo tarafından önerilen noktaları [gözden geçirin](luis-how-to-review-endpoint-utterances.md) . LUO, amaç veya varlık için düşük puanları olan uç nokta dıklarını seçer. 
+Modeliniz eğitildikten, yayımlandıktan ve [uç nokta](luis-glossary.md#endpoint) sorguları aldıktan sonra LUIS tarafından önerilen [söyleyileri gözden geçirin.](luis-how-to-review-endpoint-utterances.md) LUIS, amaç veya varlık için düşük puanları olan uç nokta lı söyleyişleri seçer. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-[En iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin ve bunları düzenli yazma döngünüzün bir parçası olarak uygulayın.
+En iyi uygulamaları gözden [geçirin](luis-concept-best-practices.md) ve bunları normal yazma döngünüzün bir parçası olarak uygulayın.
 
-## <a name="label-for-word-meaning"></a>Word anlamı etiketi
+## <a name="label-for-word-meaning"></a>Sözcük anlamı için etiket
 
-Word choice veya word düzenleme aynıdır, ancak aynı şeyi anlamına gelmez, bu varlıkla etiket değil. 
+Sözcük seçimi veya sözcük düzenlemesi aynıysa, ancak aynı anlama gelmiyorsa, varlıkla etiketlemeyin. 
 
-Aşağıdaki söyleyenlerdeki sözcük `fair` bir hograf. Aynı yazıldığından, ancak farklı bir anlama sahiptir:
+Aşağıdaki ifadeler, kelime `fair` bir homograf olduğunu. Aynı yazıldığından ancak farklı bir anlamı vardır:
 
 |İfade|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|Bu yaz Seattle bölgesinde ne tür ilçe fuarları yapılıyor?|
+|Seattle inceleme için geçerli derecelendirme adil mi?|
 
-Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, sözcüğü ilk utterde `fair` etiketleyin, ancak ikinciden değil.
+Bir olay varlığının tüm olay verilerini bulmasını `fair` istiyorsanız, sözcüğü ilk sözcükte etiketle, ancak ikincisinde etiketlemeyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcı araslarını anlamak için bir LUO uygulamasını eğitme hakkında daha fazla bilgi için bkz. [örnek ekleme](luis-how-to-add-example-utterances.md) .
+Bkz. Kullanıcı sözcüklerini anlamak için bir LUIS uygulamasının eğitimi hakkında bilgi almak için [örnek sözcük ekle.](luis-how-to-add-example-utterances.md)
 

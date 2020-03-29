@@ -1,7 +1,7 @@
 ---
-title: Batch test TSV biçimi-Soru-Cevap Oluşturma
+title: Toplu test TSV formatı - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Batch testi için TSV biçimini anlayın
+description: Toplu iş testi için TSV biçimini anlama
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: reference
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: dccf034b6497651db70b6cc09fff3f1b1d645a1b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507830"
 ---
-# <a name="batch-testing-tsv-format"></a>Toplu işlem testi TSV biçimi
+# <a name="batch-testing-tsv-format"></a>Toplu test TSV formatı
 
-Toplu iş testi, [kaynak koddan](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) veya [indirilebilen bir yürütülebilir dosya](https://aka.ms/qna_btzip)olarak yüklenebilir. Batch testini çalıştırmak için komutun biçimi:
+Toplu işlem [kaynak kodundan](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) veya indirilebilir bir [çalıştırılabilir sıkıştırılmış](https://aka.ms/qna_btzip)olarak kullanılabilir. Toplu iş testini çalıştırmak için komutun biçimi:
 
 ```console
 batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.tsv
 ```
 
-|Larına|Beklenen değer|
+|Param|Beklenen Değer|
 |--|--|
-|1|[TSV giriş alanlarıyla](#tsv-input-fields) biçimlendirilen TSV dosyasının adı|
-|2|Soru-Cevap Oluşturma portalının Yayımla sayfasında ana BILGISAYARıNıZ ile uç nokta için URI.|
-|3|UÇ nokta anahtarı, Soru-Cevap Oluşturma portalının Yayımla sayfasında bulunur.|
-|4|sonuçlar için Batch testi tarafından oluşturulan TSV dosyasının adı.|
+|1|[TSV giriş alanları](#tsv-input-fields) ile biçimlendirilmiş tsv dosyasının adı|
+|2|Son nokta için URI, QnA Maker portalının Yayın sayfasından YOUR-HOST ile.|
+|3|ENDPOINT-KEY, QnA Maker portalının Yayımlama sayfasında bulunur.|
+|4|sonuçlar için toplu test tarafından oluşturulan tsv dosyasının adı.|
 
-Toplu test için TSV biçimini anlamak ve uygulamak üzere aşağıdaki bilgileri kullanın. 
+Toplu iş testi için TSV biçimini anlamak ve uygulamak için aşağıdaki bilgileri kullanın. 
 
 ## <a name="tsv-input-fields"></a>TSV giriş alanları
 
-|TSV giriş dosyası alanları|Notlar|
+|TSV giriş dosya alanları|Notlar|
 |--|--|
-|KBID|Yayımlama sayfasında KB KIMLIĞINIZ bulundu.|
-|Soru|Kullanıcının girebileceği soru.|
-|Meta veri etiketleri|Seçim|
-|Üst parametre|Seçim| 
-|Beklenen yanıt KIMLIĞI|Seçim|
+|KBID|KB Kimliğiniz Yayımlama sayfasında bulunur.|
+|Soru|Kullanıcının gireceği soru.|
+|Meta veri etiketleri|isteğe bağlı|
+|Üst parametre|isteğe bağlı| 
+|Beklenen yanıt kimliği|isteğe bağlı|
 
-![Toplu iş testi için TSV dosyası için giriş biçimi.](media/batch-test/input-tsv-format-batch-test.png)
+![Toplu işlem için TSV dosyası için giriş biçimi.](media/batch-test/input-tsv-format-batch-test.png)
 
 ## <a name="tsv-output-fields"></a>TSV çıkış alanları 
 
-|TSV çıkış dosyası parametreleri|Notlar|
+|TSV Çıkış dosya parametreleri|Notlar|
 |--|--|
-|KBID|Yayımlama sayfasında KB KIMLIĞINIZ bulundu.|
+|KBID|KB Kimliğiniz Yayımlama sayfasında bulunur.|
 |Soru|Giriş dosyasından girilen soru.|
-|Yanıt|Bilgi tabanınızdan en iyi yanıt.|
-|Yanıt KIMLIĞI|Yanıt KIMLIĞI|
-|Puan|Yanıt için tahmin puanı. |
-|Meta veri etiketleri|döndürülen Yanıtla ilişkili|
-|Beklenen yanıt KIMLIĞI|isteğe bağlı (yalnızca beklenen yanıt KIMLIĞI verildiğinde)|
-|Yargı|isteğe bağlı, değerler: doğru veya hatalı (yalnızca beklenen yanıt verildiğinde)|
+|Yanıt|Bilgi tabanınızdan en iyi cevap.|
+|Yanıt Kimliği|Yanıt Kimliği|
+|Puan|Cevap için tahmin puanı. |
+|Meta veri etiketleri|döndürülen yanıtla ilişkili|
+|Beklenen yanıt kimliği|isteğe bağlı (yalnızca beklenen yanıt kimliği verildiğinde)|
+|Yargı etiketi|isteğe bağlı, değerler olabilir: doğru veya yanlış (sadece beklenen yanıt verildiğinde)|

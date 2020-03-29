@@ -1,7 +1,7 @@
 ---
-title: Translator Metin Çevirisi API'si Breakcümle yöntemi
+title: Çevirmen Metin API Kesme Cümlesi Yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si Breakcümlesini metodu, tümce sınırlarının bir metin parçasına konumlandırılmasını belirler.
+description: Çevirmen Metin API BreakSentence yöntemi, cümle sınırlarının bir metin parçasındaki konumlandırmasını tanımlar.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548127"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Metin Çevirisi API'si 3,0: Breakcümlesi
+# <a name="translator-text-api-30-breaksentence"></a>Çevirmen Metin API 3.0: Kesme Cümlesi
 
-Tümce sınırlarının metin parçasına konumlandırılmasını belirler.
+Cümle sınırlarının bir metin parçasındaki konumlandırmasını tanımlar.
 
 ## <a name="request-url"></a>İstek URL'si
 
-`POST` isteği gönder:
+Bir `POST` istek gönderin:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
@@ -31,26 +31,26 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 ## <a name="request-parameters"></a>İstek parametreleri
 
-Sorgu dizesine geçirilen istek parametreleri şunlardır:
+Sorgu dizesinde geçirilen istek parametreleri şunlardır:
 
-| Sorgu parametresi | Açıklama |
+| Sorgu Parametresi | Açıklama |
 | -------| ----------- |
-| api-version <img width=200/>   | **Gerekli sorgu parametresi**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır. |
-| language | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metninin dilini tanımlayan dil etiketi. Bir kod belirtilmemişse, otomatik dil algılama uygulanır. |
-| betiğini çalıştırın    | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metni tarafından kullanılan betiği tanımlayan betik etiketi. Bir komut dosyası belirtilmemişse, dilin varsayılan betiği kabul edilecektir.  | 
+| api-sürümü <img width=200/>   | **Gerekli sorgu parametresi**.<br/>İstemci tarafından istenen API sürümü. Değer. `3.0` |
+| language | **İsteğe bağlı sorgu parametresi**.<br/>Giriş metninin dilini tanımlayan dil etiketi. Kod belirtilmemişse, otomatik dil algılama uygulanır. |
+| betiğini çalıştırın    | **İsteğe bağlı sorgu parametresi**.<br/>Giriş metni tarafından kullanılan komut dosyasını tanımlayan komut dosyası etiketi. Bir komut dosyası belirtilmemişse, dilin varsayılan komut dosyası varsayalım.  | 
 
-İstek üstbilgileri şunları içerir:
+İstek üstbilgisi şunları içerir:
 
 | Üst bilgiler | Açıklama |
 | ------- | ----------- |
-| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
-| Content-Type | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`. |
-| İçerik Uzunluğu    | **Gerekli istek üst bilgisi**.<br/>İstek gövdesinin uzunluğu.  | 
-| X-Clienttraceıd   | **İsteğe bağlı**.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.  | 
+| Kimlik doğrulama üstbilgisi(lar) <img width=200/>  | **Gerekli istek üstbilgi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulama için kullanılabilir seçeneklere</a>bakın. |
+| İçerik Türü | **Gerekli istek üstbilgi**.<br/>Yükün içerik türünü belirtir. Olası değerler `application/json`şunlardır: . |
+| İçerik Uzunluğu    | **Gerekli istek üstbilgi**.<br/>İstek gövdesinin uzunluğu.  | 
+| X-ClientTraceId   | **İsteğe bağlı**.<br/>İsteği benzersiz olarak tanımlamak için istemci tarafından oluşturulan GUID. 'li bir sorgu parametresi kullanarak sorgu dizesinde izleme kimliği eklerseniz, `ClientTraceId`bu üstbilginin atlayabildiğinizi unutmayın.  | 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, `Text`adlı dize özelliğine sahip bir JSON nesnesidir. Tümce sınırları `Text` özelliğinin değeri için hesaplanır. Bir metin parçasına sahip örnek bir istek gövdesi şöyle görünür:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, dize özelliğine `Text`sahip bir JSON nesnesidir. Cümle sınırları `Text` özelliğin değeri için hesaplanır. Tek bir metin parçası olan örnek bir istek gövdesi aşağıdaki gibi görünür:
 
 ```json
 [
@@ -60,26 +60,26 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 Aşağıdaki sınırlamalar geçerlidir:
 
-* Dizi en fazla 100 öğe içerebilir.
-* Bir dizi öğesinin metin değeri boşluk dahil 10.000 karakteri aşamaz.
-* İstekte bulunan metnin tamamı boşluk dahil 50.000 karakteri aşamaz.
-* `language` sorgu parametresi belirtilirse, tüm dizi öğeleri aynı dilde olmalıdır. Aksi halde, dil otomatik algılama her bir dizi öğesine bağımsız olarak uygulanır.
+* Dizi en fazla 100 öğeye sahip olabilir.
+* Bir dizi öğesinin metin değeri boşluklar da dahil olmak üzere 10.000 karakteri geçemez.
+* İsteğe dahil edilen metnin tamamı boşluklar da dahil olmak üzere 50.000 karakteri geçemez.
+* Sorgu `language` parametresi belirtilirse, tüm dizi öğeleri aynı dilde olmalıdır. Aksi takdirde, dil otomatik algılama bağımsız olarak her dizi öğesine uygulanır.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
-Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
+Başarılı bir yanıt, giriş dizisindeki her dize için bir sonucu olan bir JSON dizisidir. Sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `sentLen`: metin öğesindeki Tümcelerin uzunluklarını temsil eden bir tamsayılar dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır. 
+  * `sentLen`: Metin öğesindeki cümlelerin uzunluklarını temsil eden bir dizi toplamcı. Dizinin uzunluğu cümle sayısıdır ve değerler her cümlenin uzunluğudur. 
 
-  * `detectedLanguage`: aşağıdaki özellikler aracılığıyla algılanan dili açıklayan bir nesne:
+  * `detectedLanguage`: Algılanan dili aşağıdaki özelliklerle açıklayan bir nesne:
 
-     * `language`: algılanan dilin kodu.
+     * `language`: Algılanan dilin kodu.
 
-     * `score`: sonucun güvenilirliği belirten bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
+     * `score`: Sonuca olan güveni gösteren bir float değeri. Skor sıfır ve bir arasında dır ve düşük bir puan düşük bir güven gösterir.
      
-    `detectedLanguage` özelliğinin yalnızca dil otomatik algılaması istendiğinde sonuç nesnesinde bulunduğunu unutmayın.
+    Özelliğin `detectedLanguage` yalnızca dil otomatik algılaması istendiğinde sonuç nesnesinde bulunduğunu unutmayın.
 
-Örnek bir JSON yanıtı:
+Bir örnek JSON yanıtı:
 
 ```json
 [
@@ -106,7 +106,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
 ## <a name="response-status-codes"></a>Yanıt durum kodları
 
-Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
+Aşağıda, bir isteğin döndürdettiği olası HTTP durum kodları vereme olasılığı ve 
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
@@ -121,31 +121,31 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>401</td>
-    <td>İsteğin kimliği doğrulanamadı. Kimlik bilgilerinin belirtildiğinden ve geçerli olduğundan emin olun.</td>
+    <td>İstek doğrulanamadı. Kimlik bilgilerinin belirtilmiş ve geçerli olup olmadığını denetleyin.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>İstek yetkili değil. Ayrıntılar hata iletisini denetleyin. Bu genellikle bir deneme aboneliği ile birlikte sunulan tüm ücretsiz çevirilerin kullanıldığını gösterir.</td>
+    <td>İstek yetkili değil. Ayrıntılar hata iletisini denetleyin. Bu genellikle deneme aboneliği ile sağlanan tüm ücretsiz çevirilerin kullanıldığını gösterir.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>İstemci istek sınırlarını aştığından, sunucu isteği reddetti.</td>
+    <td>İstemci istek sınırlarını aştığı için sunucu isteği reddetti.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bunu şu şekilde bildirin: hatanın tarih ve saati, `X-RequestId`yanıt üstbilgisinden identifier `X-ClientTraceId`ve istek üstbilgisinden istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bunu şu şekilde bildirin: hatanın tarih ve saati, `X-RequestId`yanıt üstbilgisinden identifier `X-ClientTraceId`ve istek üstbilgisinden istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 
-Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator metin çevirisi API'si başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
+Bir hata oluşursa, istek de bir JSON hata yanıtı döndürecek. Hata kodu, hatayı daha fazla kategorilere ayırmak için 3 basamaklı HTTP durum kodunu ve ardından 3 basamaklı bir sayıyı birleştiren 6 basamaklı bir sayıdır. Yaygın hata kodları [v3 Translator Text API başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, tek bir cümle için tümce sınırlarının nasıl alınacağını gösterir. Tümce dili, hizmet tarafından otomatik olarak algılanır.
+Aşağıdaki örnek, tek bir cümle için cümle sınırlarının nasıl elde edilebildiğini gösterir. Tümcenin dili servis tarafından otomatik olarak algılanır.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

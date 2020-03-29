@@ -1,7 +1,7 @@
 ---
-title: Zaman serisi verilerinizde anomali algılayıcı API 'sini kullanma
+title: Zaman serisi verilerinizde Anomali Dedektörü API'si nasıl kullanılır?
 titleSuffix: Azure Cognitive Services
-description: Verilerinize toplu olarak veya akış verilerinde nasıl bilgi alabileceğinizi öğrenin.
+description: Verilerinizdeki anormallikleri toplu olarak veya veri akışında nasıl algılayıcı olarak algılayıcı olarak öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71840216"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl yapılır: zaman serisi verilerinizde anomali algılayıcısı API 'sini kullanma  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl kullanılır: Zaman serisi verilerinizde Anomali Dedektörü API'sını kullanın  
 
-[Anomali algılayıcı API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) iki anomali algılama yöntemi sağlar. Anormallikleri, zaman serilerinden bir toplu iş olarak algılayabilir ya da verileriniz en son veri noktasının anomali durumunu algılayarak oluşturulur. Algılama modeli, her bir veri noktasının beklenen değeriyle birlikte anomali sonuçları ve üst ve düşük anomali algılama sınırlarını döndürür. Bu değerleri normal değerlerin aralığını görselleştirmek ve verilerdeki bozukluklar için kullanabilirsiniz.
+[Anomali Dedektörü API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) anomali algılama iki yöntem sağlar. Anormallikleri times serisiniz boyunca bir toplu iş olarak algılayabilir veya verileriniz en son veri noktasının anomali durumunu algılayarak oluşturulur. Algılama modeli, her veri noktasının beklenen değeri ve üst ve alt anomali algılama sınırları ile birlikte anomali sonuçlarını döndürür. bu değerleri, normal değerlerin ve verilerdeki anormalliklerin aralığını görselleştirmek için kullanabilirsiniz.
 
 ## <a name="anomaly-detection-modes"></a>Anomali algılama modları 
 
-Anomali algılayıcı API 'SI algılama modları sağlar: Batch ve streaming.
+Anomali Dedektörü API algılama modları sağlar: toplu ve akış.
 
 > [!NOTE]
-> Aşağıdaki istek URL 'Leri, aboneliğiniz için uygun uç noktayla birleştirilmelidir. Örneğin: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`.
+> Aşağıdaki istek URL'leri aboneliğiniz için uygun bitiş noktasıyla birleştirilmelidir. Örneğin, `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
-### <a name="batch-detection"></a>Toplu iş algılama
+### <a name="batch-detection"></a>Toplu işlem algılama
 
-Belirli bir zaman aralığı boyunca veri noktaları için bir toplu iş boyunca anomali algılama için, zaman serisi verilerinize sahip aşağıdaki istek URI 'sini kullanın: 
+Belirli bir zaman aralığındaki veri noktaları nın bir bölümündeki anormallikleri algılamak için, zaman serisi verilerinizle aşağıdaki istek URI'yi kullanın: 
 
 `/timeseries/entire/detect`. 
 
-Zaman serisi verilerinizi aynı anda gönderdiğinizde, API tüm seriyi kullanarak bir model oluşturur ve her bir veri noktasını onunla analiz eder.  
+Zaman serisi verilerinizi aynı anda göndererek, API tüm seriyi kullanarak bir model oluşturur ve her veri noktasını onunla analiz edecektir.  
 
 ### <a name="streaming-detection"></a>Akış algılama
 
-Akış verilerinde anormallikleri sürekli olarak algılamak için, en son veri noktanmla aşağıdaki istek URI 'sini kullanın: 
+Veri akışındaki anormallikleri sürekli olarak algılamak için, en son veri noktanızla aşağıdaki istek URI'yi kullanın: 
 
 `/timeseries/last/detect'`. 
 
-Yeni veri noktalarını oluştururken gönderdiğinizde verilerinizi gerçek zamanlı olarak izleyebilirsiniz. Gönderme yaptığınız veri noktalarıyla bir model oluşturulur ve API, zaman serisinde en son noktanın bir anomali olup olmadığını tespit eder.
+Oluşturduğunuz yeni veri noktaları göndererek verilerinizi gerçek zamanlı olarak izleyebilirsiniz. Gönderdiğiniz veri noktalarıyla bir model oluşturulur ve API zaman serisindeki en son noktanın bir anormallik olup olmadığını belirler.
 
-## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alt ve üst anomali algılama sınırlarını ayarlama
+## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alt ve üst anomali algılama sınırlarının ayarlanması
 
-Varsayılan olarak anomali algılama için üst ve alt sınırlar `expectedValue`, `upperMargin` ve `lowerMargin` kullanılarak hesaplanır. Farklı sınırlara ihtiyaç duyuyorsanız, `upperMargin` veya `lowerMargin` ' ye `marginScale` ' ı uygulayaöneririz. Sınırlar aşağıdaki şekilde hesaplanır:
+Varsayılan olarak, anomali tespiti için üst ve `expectedValue`alt `upperMargin`sınırlar `lowerMargin`, , ve . Farklı sınırlar gerektiriyorsa, bir `marginScale` `upperMargin` veya . `lowerMargin` Sınırlar aşağıdaki gibi hesaplanır:
 
-|Oluşturmasını  |Hesaplama  |
+|Sınır  |Hesaplama  |
 |---------|---------|
 |`upperBoundary` | `expectedValue + (100 - marginScale) * upperMargin`        |
 |`lowerBoundary` | `expectedValue - (100 - marginScale) * lowerMargin`        |
 
-Aşağıdaki örneklerde farklı sensitivities bir anomali algılayıcı API sonucu gösterilmektedir.
+Aşağıdaki örnekler, farklı hassasiyetlerde bir Anomaly Detector API sonucu nu göstermektedir.
 
-### <a name="example-with-sensitivity-at-99"></a>99 ile duyarlılık içeren örnek
+### <a name="example-with-sensitivity-at-99"></a>99 hassasiyetli örnek
 
-![Varsayılan duyarlılık](../media/sensitivity_99.png)
+![Varsayılan Duyarlılık](../media/sensitivity_99.png)
 
-### <a name="example-with-sensitivity-at-95"></a>95 ile duyarlılık içeren örnek
+### <a name="example-with-sensitivity-at-95"></a>95 hassasiyetli örnek
 
-![99 duyarlılığı](../media/sensitivity_95.png)
+![99 Hassasiyet](../media/sensitivity_95.png)
 
-### <a name="example-with-sensitivity-at-85"></a>85 ile duyarlılık içeren örnek
+### <a name="example-with-sensitivity-at-85"></a>85 hassasiyetli örnek
 
-![85 duyarlılığı](../media/sensitivity_85.png)
+![85 Hassasiyet](../media/sensitivity_85.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Anomali algılayıcı API nedir?](../overview.md)
-* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Anomali Algılayıcısı API'si nedir?](../overview.md)
+* [Hızlı başlangıç: Anomali Dedektörü REST API'yi kullanarak zaman serisi verilerinizdeki anormallikleri tespit edin](../quickstarts/detect-data-anomalies-csharp.md)

@@ -1,7 +1,7 @@
 ---
 title: Dil Algılama kapsayıcı örneğini doğrulama
 titleSuffix: Azure Cognitive Services
-description: Dil Algılama kapsayıcı örneğini doğrulamayı öğrenin.
+description: Dil Algılama kapsayıcı örneğini nasıl doğrulayatılabildiğini öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968623"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>Dil Algılama kapsayıcı örneğini doğrulama
 
-1. **Genel bakış** sekmesini SEÇIN ve IP adresini kopyalayın.
-1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
+1. Genel **Bakış** sekmesini seçin ve IP adresini kopyalayın.
+1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir, bu da kapsayıcının çalıştığını bilmenizi sağlar.
 
-    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleyin](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. Kapsayıcının Swagger sayfasına gitmek için **hizmet API 'Si açıklaması** bağlantısını seçin.
+1. Kapsayıcının Swagger sayfasına gitmek için **Servis API Açıklama** bağlantısını seçin.
 
-1. **Post** API 'lerinden birini seçin ve **dene**' yi seçin. Parametreler, bu örnek girişi içeren görüntülenir:
+1. **POST** API'lerden herhangi birini seçin ve **Tazyit'i**seçin. Parametreler, bu örnek girişi içeren görüntülenir:
 
     ```json
     {
@@ -49,13 +49,13 @@ ms.locfileid: "70968623"
     }
     ```
 
-1. **Showstats** öğesini olarak `true`ayarlayın.
+1. **Set showStats** için `true`.
 
-1. Metnin yaklaşımını belirlemek için **Yürüt** ' ü seçin.
+1. Metnin duyarlılığını belirlemek için **Yürüt'ü** seçin.
 
-    Kapsayıcıda paketlenmiş model, 0 ile 1 arasında değişen bir puan üretir; burada 0 negatif yaklaşım ve 1 pozitif yaklaşım olur.
+    Konteynerde paketlenmiş olan model 0 ile 1 arasında değişen bir skor üretir, 0 negatif duygu ve 1 pozitif duygudur.
 
-    Döndürülen JSON yanıtı, güncelleştirilmiş metin girişi için yaklaşım içerir:
+    Döndürülen JSON yanıtı güncelleştirilmiş metin girişi için duyarlılık içerir:
 
     ```json
     {
@@ -127,4 +127,4 @@ ms.locfileid: "70968623"
     }
     ```
 
-Artık yanıt yükünün JSON verilerinin belgelerini, bunlara karşılık gelen `id`özgün istek yükü belgeleriyle ilişkilendirebiliriz. Her belge, `characterCount` ve `transactionCount`gibi çeşitli istatistiklerle bağımsız olarak değerlendirilir. Ayrıca, `detectedLanguages` her elde edilen belge `name`,, ve algılanan her dil için `score` , `iso6391Name`, ve ile dizi içerir. Birden çok dil algılandığında `score` , en olası dili belirlemede kullanılır.
+Artık yanıt yükü JSON verilerinin belgelerini, ilgili lerine göre orijinal istek yükü `id`belgeleriyle ilişkilendirebiliriz. Her belge gibi çeşitli istatistikleri içeren `characterCount` `transactionCount`bağımsız olarak işlenir. Ayrıca, elde edilen her `detectedLanguages` belge `name`, `iso6391Name`, `score` ve algılanan her dil için dizi vardır. Birden çok dil algılandığında, `score` en olası dili belirlemek için kullanılır.

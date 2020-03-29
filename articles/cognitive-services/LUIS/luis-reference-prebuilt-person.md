@@ -1,7 +1,7 @@
 ---
-title: Personbadı önceden oluşturulmuş varlık-LUSıS
+title: PersonName önceden oluşturulmuş varlık - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede personName içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale, Dil Anlama (LUIS) kişi Adı önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,18 +12,18 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273428"
 ---
-# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sorumlu adı önceden oluşturulmuş varlık
-Önceden oluşturulmuş personName varlık kişi adlarını algılar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için personName içeren örnek Konuşma ekleme gerekmez. personName varlığı Ingilizce ve Çince [kültürlerde](luis-reference-prebuilt-entities.md)desteklenir.
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Bir LUIS uygulaması için PersonName önceden oluşturulmuş varlık
+Önceden oluşturulmuş kişi Adı varlığı kişi adlarını algılar. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına kişi adı içeren örnek sözcükler eklemeniz gerekmez. personName varlık İngilizce ve Çin [kültürlerinde](luis-reference-prebuilt-entities.md)desteklenir.
 
-## <a name="resolution-for-personname-entity"></a>PersonName varlık için çözümleme
+## <a name="resolution-for-personname-entity"></a>PersonName entity için çözünürlük
 
-Sorgu için aşağıdaki varlık nesneleri döndürülür:
+Aşağıdaki varlık nesneleri sorgu için döndürülür:
 
 `Is Jill Jones in Cairo?`
 
@@ -31,7 +31,7 @@ Sorgu için aşağıdaki varlık nesneleri döndürülür:
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```json
 "entities": {
@@ -40,8 +40,8 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 "entities": {
@@ -67,7 +67,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **yerleşik. personName** varlığının çözümlenme durumunu göstermektedir.
+Aşağıdaki örnek, **builtin.personName** varlığının çözümünü gösterir.
 
 ```json
 "entities": [
@@ -83,6 +83,6 @@ Aşağıdaki örnek, **yerleşik. personName** varlığının çözümlenme duru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[E-posta](luis-reference-prebuilt-email.md), [sayı](luis-reference-prebuilt-number.md)ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.
+[E-posta,](luis-reference-prebuilt-email.md) [numara](luis-reference-prebuilt-number.md)ve [ordinal](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Inceleme aracı ile içerik iş akışlarını tanımlama ve kullanma-Content Moderator
+title: İnceleme aracı yla içerik iş akışlarını tanımlayın ve kullanın - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
-description: İçerik ilkelerinize göre özel iş akışlarını ve eşikleri tanımlamak için Azure Content Moderator iş akışı Tasarımcısı ' nı kullanabilirsiniz.
+description: Azure İçerik Moderatöriş akışı tasarımcısını, içerik ilkelerinize göre özel iş akışları ve eşikleri tanımlamak için kullanabilirsiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,76 +11,76 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
 ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754249"
 ---
-# <a name="define-and-use-moderation-workflows"></a>Denetleme iş akışlarını tanımlama ve kullanma
+# <a name="define-and-use-moderation-workflows"></a>Moderasyon iş akışlarını tanımlama ve kullanma
 
-Bu kılavuzda, [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com) Web sitesinde [iş akışlarını](../review-api.md#workflows) ayarlamayı ve kullanmayı öğreneceksiniz. İş akışları, içeriği daha verimli bir şekilde işlemek için kullanabileceğiniz bulut tabanlı özelleştirilmiş filtrelerdir. İş akışları, farklı yollarla içerik filtrelemek için çeşitli hizmetlere bağlanabilir ve ardından uygun eylemi gerçekleştirebilir. Bu kılavuzda, içeriği filtrelemek ve tipik bir denetleme senaryosunda insan incelemelerini ayarlamak için Content Moderator bağlayıcısının (varsayılan olarak dahil) nasıl kullanılacağı gösterilmektedir.
+Bu kılavuzda, [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com) web sitesinde [iş akışlarının](../review-api.md#workflows) nasıl ayarlanıp kullanılacağını öğreneceksiniz. İş akışları, içeriği daha verimli işlemek için kullanabileceğiniz bulut tabanlı özelleştirilmiş filtrelerdir. İş akışları, içeriği farklı şekillerde filtrelemek ve ardından uygun eylemi yapmak için çeşitli hizmetlere bağlanabilir. Bu kılavuz, içeriği filtrelemek ve tipik bir ılımlılık senaryosunda insan yorumları ayarlamak için İçerik Moderatör bağlayıcısını (varsayılan olarak dahil) nasıl kullanacağınızı gösterir.
 
-## <a name="create-a-new-workflow"></a>Yeni iş akışı oluşturma
+## <a name="create-a-new-workflow"></a>Yeni bir iş akışı oluşturma
 
-[Content moderator gözden geçirme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve oturum açın. **Ayarlar** sekmesinde **iş akışları**' nı seçin.
+[İçerik Moderatör İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve oturum açın. **Ayarlar** sekmesinde **İş Akışları'nı**seçin.
 
 ![İş akışları ayarı](images/2-workflows-0.png)
 
-Sonraki ekranda, **Iş akışı Ekle**' yi seçin.
+Bir sonraki ekranda **İş Akışı Ekle'yi**seçin.
 
 ![İş akışı ekleme](images/2-workflows-1.png)
 
-### <a name="assign-a-name-and-description"></a>Ad ve açıklama ata
+### <a name="assign-a-name-and-description"></a>Ad ve açıklama atama
 
-İş akışınızı adlandırın, bir açıklama girin ve iş akışının görüntüleri veya metinleri işlemesini seçin.
+İş akışınızı adlandırın, bir açıklama girin ve iş akışının görüntüleri veya metni işleyip işlemeyeceğini seçin.
 
 ![İş akışı adı ve açıklaması](images/image-workflow-create.PNG)
 
-### <a name="define-evaluation-criteria"></a>Değerlendirme ölçütlerini tanımlama
+### <a name="define-evaluation-criteria"></a>Değerlendirme kriterlerini tanımlama
 
-Sonraki ekranda, **IF** bölümüne gidin. Üstteki açılan menüden **koşul**' ı seçin. Bu, iş akışının işlem yapması için gereken koşulu yapılandırmanıza olanak tanır. Birden çok koşul kullanmak istiyorsanız bunun yerine **bileşim** ' ı seçin. 
+Bir sonraki ekranda **If** bölümüne gidin. Üst açılır menüde **Koşul'u**seçin. Bu, iş akışının hangi durumda işlem yapacağı koşulu yapılandırmanızı sağlar. Birden çok koşul kullanmak istiyorsanız, bunun yerine **Kombinasyon'u** seçin. 
 
-Sonra bir bağlayıcı seçin. Bu örnek **Content moderator**kullanır. Seçtiğiniz bağlayıcıya bağlı olarak, veri çıktısı için farklı seçenekler alacaksınız. Diğer bağlayıcıları ayarlamayı öğrenmek için araç ayarlarını Inceleyin kılavuzunun [Bağlayıcılar](./configure.md#connectors) bölümüne bakın.
+Ardından, bir bağlayıcı seçin. Bu örnekte **İçerik Moderatörü**kullanır. Seçtiğiniz bağlayıcıbağlı olarak, veri çıkışı için farklı seçenekler alırsınız. Diğer bağlayıcıları nasıl ayarlayacaklarını öğrenmek için İnceleme aracı ayarları kılavuzunun [Bağlayıcılar](./configure.md#connectors) bölümüne bakın.
 
-![İş akışı bağlayıcısını seçin](images/image-workflow-connect-to.PNG)
+![İş akışı bağlayıcısı seçin](images/image-workflow-connect-to.PNG)
 
-Kullanmak için istediğiniz çıktıyı seçin ve denetlenecek koşulları ayarlayın.
+Kullanmak için istenilen çıktıyı seçin ve karşı kontrol etmek için koşulları ayarlayın.
 
-![İş akışı koşulunu tanımla](images/image-workflow-condition.PNG)
+![İş akışı koşulunu tanımlama](images/image-workflow-condition.PNG)
 
-### <a name="define-the-action"></a>Eylemi tanımlayın
+### <a name="define-the-action"></a>Eylemi tanımlama
 
-Bir eylem seçtiğinizde, **ardından** bölümüne gidin. Aşağıdaki örnek bir resim incelemesi oluşturur ve bir etiketi atar. İsteğe bağlı olarak, alternatif (Else) bir yol ekleyebilir ve bu yolu da bir eylem olarak ayarlayabilirsiniz.
+Bir eylem seçtiğiniz **Then** bölümüne gidin. Aşağıdaki örnek, bir görüntü incelemesi oluşturur ve bir etiket atar. İsteğe bağlı olarak, alternatif (Else) yol ekleyebilir ve bunun için de bir eylem ayarlayabilirsiniz.
 
-![İş akışı eylemini tanımla](images/image-workflow-action.PNG)
+![İş akışı eylemini tanımlama](images/image-workflow-action.PNG)
 
 ### <a name="save-the-workflow"></a>İş akışını kaydetme
 
-İş akışı adına göz önünde Iş akışı API 'SI ile bir denetleme işi başlatmak için adın olması gerekir (aşağıya bakın). Son olarak, iş akışını sayfanın üst kısmındaki **Kaydet** düğmesini kullanarak kaydedin.
+İş akışı adını not edin; İş Akışı API'si ile ılımlılık işine başlamak için ada ihtiyacınız vardır (aşağıya bakın). Son olarak, sayfanın üst kısmındaki **Kaydet** düğmesini kullanarak iş akışını kaydedin.
 
 ## <a name="test-the-workflow"></a>İş akışını test etme
 
-Özel bir iş akışı tanımladığınıza göre, bunu örnek içerikle test edin. **Iş akışları** ' na gidin ve Ilgili **iş akışını Yürüt** düğmesini seçin.
+Artık özel bir iş akışı tanımladığınıza göre, örnek içerikle test edin. İş **Akışları'na** gidin ve ilgili **İş Akışını Yürüt** düğmesini seçin.
 
 ![İş akışı testi](images/image-workflow-execute.PNG)
 
-Bu [örnek görüntüyü](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) yerel sürücünüze kaydedin. Sonra **Dosya Seç** ' i seçin ve görüntüyü iş akışına yükleyin.
+Bu [örnek görüntüyü](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) yerel sürücünüze kaydedin. Ardından **Dosya(lar) seçin** ve görüntüyü iş akışına yükleyin.
 
-![Görüntüye bir teklife uygulanan bir çalıştırıcı](images/sample-text.jpg)
+![Görüntüye bir alıntı eklenmiş bir koşucu](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>İlerleme izleme
 
-Bir sonraki açılan pencerede iş akışının ilerleme durumunu görüntüleyebilirsiniz.
+Bir sonraki açılır pencerede iş akışının ilerlemesini görüntüleyebilirsiniz.
 
 ![İş akışı yürütmeyi izleme](images/image-workflow-job.PNG)
 
-### <a name="verify-workflow-action"></a>İş akışı eylemini doğrula
+### <a name="verify-workflow-action"></a>İş akışı eylemini doğrulama
 
-**İnceleme** ' nin altındaki **görüntü** sekmesine gidin ve yeni oluşturulan bir görüntü incelemesi olduğunu doğrulayın.
+**Gözden Geçir'in** altındaki **Resim** sekmesine gidin ve yeni oluşturulan bir görüntü incelemesi olduğunu doğrulayın.
 
 ![Görüntüleri inceleme](images/image-workflow-review.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, Content Moderator [Gözden geçirme aracından](https://contentmoderator.cognitive.microsoft.com)denetleme iş akışlarını ayarlamayı ve kullanmayı öğrendiniz. Ardından, programlama yoluyla iş akışları oluşturmayı öğrenmek için [REST API kılavuzuna](../try-review-api-workflow.md) bakın.
+Bu kılavuzda, İçerik Moderatör [İnceleme aracından](https://contentmoderator.cognitive.microsoft.com)ılımlılık iş akışlarını nasıl ayarlayıp kullanacağınızı öğrendiniz. Ardından, iş akışlarının programlı olarak nasıl oluşturulabildiğini öğrenmek için [REST API kılavuzuna](../try-review-api-workflow.md) bakın.

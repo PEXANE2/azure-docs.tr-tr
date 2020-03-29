@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: özel bir komut (Önizleme) oluşturma-konuşma hizmeti'
+title: 'Quickstart: Özel Komut oluşturma (Önizleme) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede barındırılan özel komutlar uygulaması oluşturup test edersiniz.
+description: Bu makalede, barındırılan özel komutlar uygulaması oluşturmak ve sına.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,147 +11,147 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76155596"
 ---
-# <a name="quickstart-create-a-custom-command-preview"></a>Hızlı başlangıç: özel komut oluşturma (Önizleme)
+# <a name="quickstart-create-a-custom-command-preview"></a>Quickstart: Özel Komut Oluşturma (Önizleme)
 
-Bu makalede, barındırılan özel komutlar uygulaması oluşturmayı ve test yapmayı öğreneceksiniz.
-Uygulama "TV 'yi aç" gibi bir söylik algılar ve "Tamam, TV 'yi açarak" daha basit bir iletiyle yanıt verir.
+Bu makalede, barındırılan özel komutlar uygulamasını nasıl oluşturup test edeceğinizi öğreneceksiniz.
+Uygulama "tv açmak" gibi bir söyleyiş tanıyacak ve basit bir mesaj ile yanıt verecek "Tamam, tv açma".
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bir konuşma aboneliği.
+- Konuşma aboneliği.
 
-Konuşma aboneliğiniz yoksa, [konuşma Studio](https://speech.microsoft.com/) 'ya giderek ve **konuşma kaynağı oluştur**' u seçerek bir tane oluşturabilirsiniz.
+Konuşma aboneliğiniz yoksa, [Konuşma Stüdyosu'na](https://speech.microsoft.com/) gidip **Konuşma Kaynağı Oluştur'u**seçerek bir konuşma oluşturabilirsiniz.
 
   > [!div class="mx-imgBorder"]
-  > [![proje oluşturun](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
+  > [![Proje](media/custom-speech-commands/create-new-subscription.png) oluşturma](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Önizleme süresince yalnızca westus2 bölgesi desteklenir.
+  > Önizleme sırasında sadece westus2 bölgesi desteklenir.
 
-## <a name="go-to-the-speech-studio-for-custom-commands"></a>Özel komutlar için konuşma Studio 'ya gidin
+## <a name="go-to-the-speech-studio-for-custom-commands"></a>Özel Komutlar için Konuşma Stüdyosuna gidin
 
-1. Web tarayıcınızı açın ve [konuşma Studio](https://speech.microsoft.com/) 'ya gidin
-1. Portalda oturum açmak için kimlik bilgilerinizi girin
+1. Web tarayıcınızı açın ve [Konuşma Stüdyosu'na](https://speech.microsoft.com/) gidin
+1. Portalda oturum açmanız için kimlik bilgilerinizi girin
 
-   - Varsayılan görünüm, konuşma abonelikleri listesidir
+   - Varsayılan görünüm, Konuşma abonelikleri listenizdir
      > [!NOTE]
-     > Abonelik Seç sayfasını görmüyorsanız, üstteki çubukta ayarlar menüsünden "konuşma kaynakları" ' nı seçerek buraya gidebilirsiniz.
+     > Seçili abonelik sayfasını görmüyorsanız, üst çubuktaki ayarlar menüsünden "Konuşma kaynakları" seçeneğini seçerek oraya gidebilirsiniz.
 
-1. Konuşma aboneliğinizi seçin ve ardından **Studio 'Ya git** ' i seçin.
-1. **Özel komutları seçin (Önizleme)**
+1. Konuşma aboneliğinizi seçin ve ardından **Stüdyoya Git'i** seçin
+1. Özel Komutları Seçin **(Önizleme)**
 
-Varsayılan görünüm, oluşturduğunuz özel komutlar uygulamalarının bir listesidir.
+Varsayılan görünüm, oluşturduğunuz Özel Komutuygulamalarının listesidir.
 
-## <a name="create-a-custom-commands-project"></a>Özel komutlar projesi oluşturma
+## <a name="create-a-custom-commands-project"></a>Özel Komutlar projesi oluşturma
 
-1. Yeni proje oluşturmak için **Yeni proje** ' yi seçin
+1. Yeni bir proje oluşturmak için **Yeni projeyi** seçin
 
    > [!div class="mx-imgBorder"]
-   > ![proje oluşturun](media/custom-speech-commands/create-new-project.png)
+   > ![Proje oluşturma](media/custom-speech-commands/create-new-project.png)
 
 1. Proje adını ve dilini girin.
-1. Bir yazma kaynağı seçin. Geçerli bir yazma kaynağı yoksa, **Yeni kaynak oluştur**' u seçerek bir tane oluşturun.
+1. Bir yazma kaynağı seçin. Geçerli bir yazarlık kaynağı yoksa, yeni **kaynak oluştur'u**seçerek bir tane oluşturun.
 
    > [!div class="mx-imgBorder"]
    > ![Kaynak oluşturma](media/custom-speech-commands/create-new-resource.png)
 
-   1. Kaynak adı, Grup, konum ve fiyatlandırma katmanını girin.
+   1. Kaynak adını, grubu, konumu ve fiyatlandırma katmanını girin.
 
          > [!NOTE]
-         > "Kaynak grubu" alanına istenen kaynak grubu adını girerek kaynak grupları oluşturabilirsiniz. Kaynak grubu, **Oluştur** seçildiğinde oluşturulur.
+         > İstediğiniz kaynak grubu adını "Kaynak Grubu" alanına girerek kaynak grupları oluşturabilirsiniz. **Create** seçildiğinde kaynak grubu oluşturulur.
 
-1. Projenizi oluşturmak için **Oluştur** ' a tıklayın.
+1. Projenizi oluşturmak için **Oluştur'u** tıklatın.
 1. Oluşturulduktan sonra projenizi seçin.
 
-Artık görünümlerinizin özel komutlar uygulamanıza genel bir bakış olması gerekir.
+Görünümünüz artık Özel Komutlar uygulamanızın genel görünümü olmalıdır.
 
-## <a name="update-luis-resources-optional"></a>LUSıS kaynaklarını güncelleştirme (Isteğe bağlı)
+## <a name="update-luis-resources-optional"></a>LUIS Kaynaklarını Güncelleştir (İsteğe Bağlı)
 
-Yeni proje penceresinde yazma kaynak kümesini güncelleştirebilir ve çalışma zamanı sırasında girişleri tanımak için kullanılan bir tahmin kaynağı ayarlayabilirsiniz.
+Yeni proje penceresinde yazarlık kaynağı kümesini güncelleştirebilir ve çalışma zamanında girişleri tanımak için kullanılan bir tahmin kaynağı ayarlayabilirsiniz.
 
 > [!NOTE]
-> Uygulamanız, yazma kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin isteğinde bulunan bir tahmin kaynağı ayarlamanız gerekecektir.
+> Uygulamanız, yazar kaynak tarafından sağlanan 1.000 isteğin ötesinde öngörüler talep etmeden önce bir tahmin kaynağı ayarlamanız gerekir.
 
 > [!div class="mx-imgBorder"]
-> ![LUSıS kaynaklarını ayarlama](media/custom-speech-commands/set-luis-resources.png)
+> ![LUIS Kaynaklarını Ayarla](media/custom-speech-commands/set-luis-resources.png)
 
-1. Sol bölmedeki **Ayarlar** ' ı ve ardından orta bölmedeki **lusıs kaynakları** ' nı seçerek lusıs kaynakları bölmesine gidin.
-1. Bir tahmin kaynağı seçin veya **Yeni kaynak oluştur** ' u seçerek bir tane oluşturun
+1. Sol bölmeden **Ayarlar'ı** seçerek LUIS Kaynakları bölmesine gidin ve ardından orta bölmeden **LUIS Kaynakları'nı** seçin.
+1. Bir tahmin kaynağı seçin veya **yeni kaynak oluştur'u** seçerek bir kaynak oluşturun
 1. **Kaydet**’i seçin
 
-## <a name="create-a-new-command"></a>Yeni bir komut oluştur
+## <a name="create-a-new-command"></a>Yeni bir Komut oluşturma
 
-Artık bir komut oluşturabilirsiniz. Tek bir utterance, `turn on the tv`ve `Ok, turning on the TV`ileti ile yanıt verecek bir örnek kullanalım.
+Artık bir Komut oluşturabilirsiniz. Tek bir sözcük `turn on the tv`alacak bir örnek kullanalım ve mesajla `Ok, turning on the TV`yanıt verelim.
 
-1. Komutlar ' ın yanındaki `+` simgesini seçerek yeni bir komut oluşturun ve adı verin `TurnOn`
+1. Komutların yanındaki simgeyi `+` seçerek yeni bir Komut oluşturun ve ona ad verin`TurnOn`
 1. **Kaydet**’i seçin
 
 > [!div class="mx-imgBorder"]
-> ![komut](media/custom-speech-commands/create-add-command.png) oluşturma
+> ![Komut oluşturma](media/custom-speech-commands/create-add-command.png)
 
-Bir komut bir kümesidir:
+Komut bir kümedir:
 
 | Grup            | Açıklama                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Örnek Cümleler | Kullanıcının bu komutu tetikleyebilmesi için söyledikleri örnek                                                                 |
-| Parametreler       | Komutu tamamlaması için gereken bilgiler                                                                                |
-| Tamamlama kuralları | Komutu yerine getirmek için gerçekleştirilecek eylemler. Örneğin, kullanıcıya yanıt vermek veya başka bir Web hizmetiyle iletişim kurmak için |
-| Gelişmiş kurallar   | Daha belirgin veya karmaşık durumları işlemek için ek kurallar                                                              |
+| Örnek Cümleler | Kullanıcının bu Komutu tetiklemek için söyleyebileceği örnek söylenmeler                                                                 |
+| Parametreler       | Komutanlığı tamamlamak için gerekli bilgiler                                                                                |
+| Tamamlama Kuralları | Komutanlığı yerine getirmek için yapılacak işlemler. Örneğin, kullanıcıya yanıt vermek veya başka bir web hizmetiyle iletişim kurmak için |
+| Gelişmiş Kurallar   | Daha spesifik veya karmaşık durumları işlemek için ek kurallar                                                              |
 
-### <a name="add-a-sample-sentence"></a>Örnek tümce ekleme
+### <a name="add-a-sample-sentence"></a>Örnek Cümle Ekle
 
-Örnek cümleler ile başlayalım ve kullanıcının şunları söyleyebileceğiniz bir örnek sunalım:
+Örnek Cümlelerile başlayalım ve kullanıcının söyleyebileceği nelere bir örnek verelim:
 
 ```
 turn on the tv
 ```
 
-Şimdilik, tamamlanma kurallarına taşıyabilmemiz için parametresiz bir parametre yoktu.
+Şimdilik, Tamamlama Kuralları'na geçebilmemiz için parametrelerimiz yok.
 
-### <a name="add-a-completion-rule"></a>Tamamlama kuralı ekleme
+### <a name="add-a-completion-rule"></a>Tamamlama Kuralı Ekleme
 
-Şimdi bir eylemin gerçekleştiğini belirten kullanıcıya yanıt vermek için bir tamamlama kuralı ekleyin.
+Şimdi, bir eylemin yapıldığını belirten kullanıcıya yanıt vermek için bir Tamamlama Kuralı ekleyin.
 
-1. Tamamlama kuralları ' nın yanındaki `+` simgesini seçerek yeni bir tamamlama kuralı oluşturun
+1. Tamamlama Kuralları'nın yanındaki simgeyi `+` seçerek yeni bir Tamamlama Kuralı oluşturma
 1. Kural adını girin
 1. Eylem ekleme
-   1. Eylemler ' in yanındaki `+` simgesini seçerek yeni bir konuşma yanıtı eylemi oluşturun ve `SpeechResponse` ' ı seçin.
+   1. Eylemler'in yanındaki simgeyi `+` seçerek yeni bir Konuşma Yanıtı Eylemi oluşturun ve`SpeechResponse`
    1. Yanıtı girin
 
    > [!NOTE]
-   > Normal metin bir tire ile başlamalıdır. Daha fazla ayrıntı için [buraya](https://aka.ms/sc-lg-format) gidin
+   > Normal metin bir tire ile başlamalıdır. Daha fazla bilgi için [buraya](https://aka.ms/sc-lg-format) gidin
 
    > [!div class="mx-imgBorder"]
-   > Konuşma yanıtı oluşturma ![](media/custom-speech-commands/create-speech-response-action.png)
+   > ![Konuşma yanıtı oluşturma](media/custom-speech-commands/create-speech-response-action.png)
 
-1. Kuralı kaydetmek için **Kaydet** ' e tıklayın
+1. Kuralı kaydetmek için **Kaydet'i** tıklatın
 
 > [!div class="mx-imgBorder"]
-> ![tamamlama kuralı oluşturma](media/custom-speech-commands/create-basic-completion-response-rule.png)
+> ![Tamamlama kuralı oluşturma](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
 | Ayar    | Önerilen değer                          | Açıklama                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
-| Kural Adı  | "ConfirmationResponse"                   | Kuralın amacını açıklayan bir ad          |
-| Koşullar | Hiçbiri                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
-| Eylemler    | SpeechResponse "-Tamam, TV 'yi açma" | Kural koşulu true olduğunda gerçekleştirilecek eylem |
+| Kural Adı  | "Onay Yanıtı"                   | Kuralın amacını açıklayan bir ad          |
+| Koşullar | None                                     | Kuralın ne zaman çalıştırılacakolabileceğini belirleyen koşullar    |
+| Eylemler    | SpeechResponse "- Tamam, TV'yi açmak" | Kural koşulu doğru olduğunda yapılacak eylem |
 
 ## <a name="try-it-out"></a>Deneyin
 
-Test sohbeti panelini kullanarak davranışı test edin.
+Test sohbet panelini kullanarak davranışı test edin.
 
 > [!div class="mx-imgBorder"]
-> Web sohbeti ile test ![](media/custom-speech-commands/create-basic-test-chat.png)
+> ![Web sohbeti ile test edin](media/custom-speech-commands/create-basic-test-chat.png)
 
-- Şunu yazın: "TV 'yi açma"
-- Beklenen yanıt: "Tamam, TV 'yi açma"
+- Yazın: "televizyonu açın"
+- Beklenen yanıt: "Tamam, tv açma"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
+> [Quickstart: Parametreler (Önizleme) ile Özel Komut oluşturma](./quickstart-custom-speech-commands-create-parameters.md)

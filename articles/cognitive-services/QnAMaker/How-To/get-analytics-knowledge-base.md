@@ -1,7 +1,7 @@
 ---
-title: Bilgi Bankası 'nda analiz-Soru-Cevap Oluşturma
+title: Bilgi bankası nda analitik - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Soru-Cevap Oluşturma, Soru-Cevap Oluşturma hizmetinizin oluşturulması sırasında Application Insights 'ı etkinleştirdiyseniz tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights 'tan almak için örnek sorguları çalıştırın.
+description: QnA Maker hizmetinizin oluşturulması sırasında App Insights'ı etkinleştirdiyseniz, QnA Maker tüm sohbet günlüklerini ve diğer telemetrileri saklar. Sohbet günlüklerinizi App Insights'tan almak için örnek sorguları çalıştırın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: e769bde39bc796b5b598109328b468b15385f38a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650410"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
-Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./set-up-qnamaker-service-azure.md)sırasında Application Insights 'ı etkinleştirdiyseniz tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights 'tan almak için örnek sorguları çalıştırın.
+QnA [Maker, QnA Maker hizmetinizin oluşturulması](./set-up-qnamaker-service-azure.md)sırasında App Insights'ı etkinleştirdiyseniz, tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights'tan almak için örnek sorguları çalıştırın.
 
-1. App Insights kaynağına gidin.
+1. App Insights kaynağınıza gidin.
 
-    ![Application Insights kaynağınızı seçin](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Uygulama öngörüleri kaynağınızı seçin](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. **Günlük (Analiz)** öğesini seçin. Soru-Cevap Oluşturma Telemetriyi Sorgulayabileceğiniz yeni bir pencere açılır.
+2. **Günlük (Analytics) seçeneğini belirleyin.** QnA Maker telemetrisini sorgulayabileceğiniz yeni bir pencere açılır.
 
-3. Aşağıdaki sorguyu yapıştırın ve çalıştırın.
+3. Aşağıdaki sorguya yapıştırın ve çalıştırın.
 
     ```kusto
     requests
@@ -44,11 +44,11 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    Sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
+    Sorguyu çalıştırmak için **Çalıştır**'ı seçin.
 
-    [kullanıcılardan gelen soruları, yanıtları ve puanı öğrenmek için ![sorgu Çalıştır](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![Kullanıcılardan gelen soruları, yanıtları ve puanı belirlemek için sorguçalıştırma](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi bankasında diğer analizler için sorgular çalıştırma
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>QnA Maker bilgi tabanınızda diğer analizler için sorgular çalıştırın
 
 ### <a name="total-90-day-traffic"></a>Toplam 90 günlük trafik
 
@@ -60,7 +60,7 @@ requests
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Belirli bir dönemdeki toplam soru trafiği
+### <a name="total-question-traffic-in-a-given-time-period"></a>Belirli bir zaman dilimindeki toplam soru trafiği
 
 ```kusto
 //Total Question Traffic in a given time period
@@ -99,7 +99,7 @@ requests
 | summarize count() by performanceBucket, KbId
 ```
 
-### <a name="unanswered-questions"></a>Yanıtlanmayan sorular
+### <a name="unanswered-questions"></a>Yanıtlanmamış sorular
 
 ```kusto
 // Unanswered questions

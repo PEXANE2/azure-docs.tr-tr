@@ -1,7 +1,7 @@
 ---
-title: Kapsayıcı gereksinimleri ve önerileri
+title: Konteyner gereksinimleri ve öneriler
 titleSuffix: Azure Cognitive Services
-description: Yaklaşım Analizi kapsayıcı gereksinimleri
+description: Duyarlılık Analizi konteyner gereksinimleri
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 08/20/2019
 ms.author: dapine
 ms.openlocfilehash: a193c4f3f46e6ea496ba93eb8db0af4ecf5757b0
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70051288"
 ---
-| Kapsayıcı | Minimum | Önerilen | TPS<br>(En düşük, en yüksek)|
+| Kapsayıcı | Minimum | Önerilen | Tps<br>(Minimum, Maksimum)|
 |-----------|---------|-------------|--|
-| Duygu Analizi | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek | 15, 30 |
+| Yaklaşım Analizi | 1 çekirdekli, 2 GB bellek | 1 çekirdekli, 4 GB bellek | 15, 30 |

@@ -1,7 +1,7 @@
 ---
-title: DatetimeV2 önceden oluşturulmuş varlıklar-LUSıS
+title: DatetimeV2 Önceden oluşturulmuş varlıklar - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede datetimeV2 sahip önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makalede, Dil Anlama (LUIS) datetimeV2 önceden oluşturulmuş varlık bilgileri vardır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,22 +12,22 @@ ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
 ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270730"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>BIR LUIS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
-**DatetimeV2** önceden oluşturulmuş varlık tarih ve saat değerlerini ayıklar. Bu değerler kullanılacağı istemci programları için standartlaştırılmış bir biçimde çözümleyin. Bir söylenişi 'nin tamamlanmamış bir tarih veya saati olduğunda, Luo, uç nokta yanıtında _hem geçmiş hem de gelecekteki değerleri_ içerir. Bu varlık zaten eğitildi çünkü uygulama hedefleri için datetimeV2 içeren örnek Konuşma ekleme gerekmez.
+**DatetimeV2** önceden oluşturulmuş varlık tarih ve saat değerlerini ayıklar. Bu değerler, istemci programlarının tüketilmesi için standartlaştırılmış bir biçimde çözülür. Bir söyleyşinin tamamlanmamış bir tarih veya saati olduğunda, LUIS bitiş noktası yanıtında _hem geçmiş hem de gelecekteki değerleri_ içerir. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına datetimeV2 içeren örnek beyanlar eklemeniz gerekmez.
 
 ## <a name="types-of-datetimev2"></a>DatetimeV2 türleri
-DatetimeV2, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub deposundan yönetilir.
+DatetimeV2, [Tanıyanlar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub deposundan yönetilir.
 
 ## <a name="example-json"></a>Örnek JSON
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `8am on may 2nd 2019`
 
@@ -53,7 +53,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/1-2)
 
 ```json
 
@@ -115,18 +115,18 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 |Özellik adı |Özellik türü ve açıklaması|
 |---|---|
-|Varlık|Tarih, saat, tarih aralığı veya zaman aralığı türü ile utterden çıkarılan **dize** metni.|
-|type|**dize** - [datetimeV2 alt türlerinden](#subtypes-of-datetimev2) biri
-|startIndex|**int** -varlığın başladığı noktada dizin.|
-|endIndex|**int** -varlığın bittiği noktada dizin.|
-|çözüm|, Bir, iki veya dört [Çözümleme değeri](#values-of-resolution)olan bir `values` dizisine sahiptir.|
-|end|`value`ile aynı biçimdeki bir zamanın veya tarih aralığının bitiş değeri. Yalnızca `type` `daterange`, `timerange`veya `datetimerange` ise kullanılır|
+|Varlık|**string** - Tarih, saat, tarih aralığı veya zaman aralığı türü ile söyleyişten çıkarılan metin.|
+|type|**string** - [DatetimeV2 alt türlerinden](#subtypes-of-datetimev2) biri
+|Startındex|**int** - Varlığın başladığı söyleyiş deki dizin.|
+|endIndex|**int** - Varlığın sona erdiği söyleyişdeki dizin.|
+|çözüm|Bir, `values` iki veya dört çözünürlük değeri olan bir dizi [vardır.](#values-of-resolution)|
+|end|Bir saatin veya tarih aralığının bitiş `value`değeri, aynı biçimde . `type` Yalnızca `daterange`, `timerange`veya`datetimerange`|
 
 * * *
 
-## <a name="subtypes-of-datetimev2"></a>DatetimeV2 öbeklerinin
+## <a name="subtypes-of-datetimev2"></a>DatetimeV2 alt türleri
 
-**DatetimeV2** önceden oluşturulmuş varlık aşağıdaki alt türleri içerir ve aşağıdaki tabloda her birine örnek verilmiştir:
+**DatetimeV2** önceden oluşturulmuş varlık aşağıdaki alt türleri vardır ve her biri örnekleri aşağıdaki tabloda sağlanır:
 * `date`
 * `time`
 * `daterange`
@@ -134,23 +134,23 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 * `datetimerange`
 
 
-## <a name="values-of-resolution"></a>Çözüm değerleri
-* Tarih veya saat utterance içinde tam olarak belirtilen ve anlaşılır ise sahip bir öğe dizisi.
-* DatetimeV2 değer belirsiz ise sahip iki öğe dizisi. Belirsizlik eksikliği belirli bir yıl, saat veya zaman aralığı içerir. Örnekler için [belirsiz tarihlere](#ambiguous-dates) bakın. Zaman zaman da için belirsiz veya'da, her iki değeri de dahil edilir.
-* Utterance belirsizlik sahip iki öğe varsa, dizi dört öğelere sahiptir. Bu belirsizlik işlemler sırasında sahip öğeleri içerir:
-  * Bir tarih veya yıl için belirsiz tarih aralığı
-  * Bir saat veya seçeceğine da belirsiz bir zaman aralığı veya Pasifik Örneğin, 3:00 Nisan 3.
+## <a name="values-of-resolution"></a>Çözünürlük değerleri
+* Söyleyişdeki tarih veya saat tam olarak belirtilmiş ve kesinse dizinin bir öğesi vardır.
+* DatetimeV2 değeri belirsizse dizi iki öğeye sahiptir. Belirsizlik belirli bir yıl, zaman veya zaman aralığı eksikliği içerir. Örnekler için [Belirsiz tarihlere](#ambiguous-dates) bakın. A.M. için zaman belirsiz olduğunda. veya P.M., her iki değer dahildir.
+* Söyleyiş belirsizliği ile iki öğe varsa dizi dört öğevardır. Bu belirsizlik, sahip olan öğeleri içerir:
+  * Yıla göre belirsiz bir tarih veya tarih aralığı
+  * A.M. olarak belirsiz bir zaman veya zaman aralığı. görüntülenir. Örneğin, 3 Nisan 03:00.
 
-`values` dizisinin her öğesi aşağıdaki alanlara sahip olabilir:
+`values` Dizinin her öğesi aşağıdaki alanlara sahip olabilir:
 
 |Özellik adı|Özellik açıklaması|
 |--|--|
-|Timex|saat, tarih veya tarih aralığı, TIMEX3 için [ıso 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) Izleyen ve timeml dilini kullanarak ek açıklama için ÖZNITELIKLERINI izleyen TIMEX biçiminde ifade edilir. Bu ek açıklama [TIMEX yönergelerine](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)göre açıklanmıştır.|
-|alma|`before`, `after`gibi değerin nasıl kullanılacağını betimleyen dönem.|
-|type|Şu öğelerden biri olabilecek alt tür: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|değer|**Seçim.** Yyyy-aa-gg (Tarih), ss: DD: SS (saat) YYYY-AA-GG SS: DD: SS (DateTime) biçiminde bir DateTime nesnesi. `type` `duration`, değer saniye sayısıdır (süre) <br/> Yalnızca `type` `datetime` veya `date`, `time`veya ' süre ise kullanılır.|
+|Timex|[ISO 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) ve TimeML dilini kullanarak ek açıklama için TIMEX3 özniteliklerini izleyen TIMEX biçiminde ifade edilen saat, tarih veya tarih aralığı. Bu ek açıklama [TIMEX yönergelerinde](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)açıklanmıştır.|
+|mod|gibi değerin nasıl kullanılacağını açıklamak `before` `after`için kullanılan terim .|
+|type|Aşağıdaki öğelerden biri olabilir alt türü: `datetime` `date`, `time` `daterange`, `timerange` `datetimerange`, `duration` `set`, , , .|
+|value|**Isteğe bağlı.** Yyyy-MM-dd (tarih), HH:mm:ss (zaman) yyyy-MM-dd HH:mm:ss (datetime) biçiminde bir tarih nesnesi. `duration`Ise, `type` değer saniye sayısıdır (süre) <br/> Yalnızca , `type` `datetime` `date`, `time`veya 'süresi ise kullanılır.|
 
-## <a name="valid-date-values"></a>Geçerli bir tarih değerleri
+## <a name="valid-date-values"></a>Geçerli tarih değerleri
 
 **DatetimeV2** aşağıdaki aralıklar arasındaki tarihleri destekler:
 
@@ -158,24 +158,24 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 |----------|-------------|
 | 1 Ocak 1900   | 31 Aralık 2099 |
 
-## <a name="ambiguous-dates"></a>Belirsiz tarihleri
+## <a name="ambiguous-dates"></a>Belirsiz tarihler
 
-LUIS, tarihi geçmiş veya gelecekteki olabilir, her iki değer sağlar. Ay ve yıl olmadan tarih içeren bir utterance buna bir örnektir.
+Tarih geçmişte veya gelecekte olabilirse, LUIS her iki değeri de sağlar. Bir örnek yıl olmadan ay ve tarih içeren bir söyleyiş.
 
-Örneğin, aşağıdaki utterance verildiğinde:
+Örneğin, aşağıdaki söyleyerek göz önüne alındığında:
 
 `May 2nd`
 
-* 3 Mayıs 2017 bugünün tarihini ise LUIS, hem "2017-05-02" ve "2018-05-02" değerleri sağlar.
-* Bugünün tarihi 1 Mayıs 2017 olduğunda LUIS, hem "2016-05-02" ve "2017-05-02" değerleri sağlar.
+* Bugünün tarihi 3 Mayıs 2017 ise, LUIS hem "2017-05-02" hem de "2018-05-02" değerlerini sağlar.
+* Bugünün tarihi 1 Mayıs 2017 olduğunda, LUIS hem "2016-05-02" hem de "2017-05-02" değerlerini sağlar.
 
-Aşağıdaki örnek, "2 Mayıs" varlık çözümleme gösterir. Bu çözüm, bugünün tarihini 2 Mayıs 2017 ve 1 Mayıs 2018'e genel bakış arasında bir tarih olduğunu varsayar.
-`timex` alanında `X` olan alanlar, utterance 'te açıkça belirtilmeyen tarihin parçalarından oluşur.
+Aşağıdaki örnek, varlığın "2 Mayıs" çözümünü gösterir. Bu karar, bugünün tarihinin 2 Mayıs 2017 ile 1 Mayıs 2018 tarihleri arasında olduğunu varsayıyor.
+`X` Alandaki alanlar, tarihin söyleyişte açıkça belirtilmeyen bölümleridir. `timex`
 
-## <a name="date-resolution-example"></a>Tarih çözümleme örneği
+## <a name="date-resolution-example"></a>Tarih çözümlemesi örneği
 
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `May 2nd`
 
@@ -204,7 +204,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/2-2)
 
 ```json
 "entities": {
@@ -272,11 +272,11 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 ```
 * * *
 
-## <a name="date-range-resolution-examples-for-numeric-date"></a>Sayısal tarih için tarih aralığı çözümleme örnekleri
+## <a name="date-range-resolution-examples-for-numeric-date"></a>Sayısal tarih için tarih aralığı çözümörnekleri
 
-`datetimeV2` varlık tarih ve saat aralıklarını ayıklar. `start` ve `end` alanları aralığın başlangıcını ve sonunu belirtir. Söylenişi `May 2nd to May 5th`için, Lua, hem geçerli yıl hem de bir sonraki yıl için **terterange** değerleri sağlar. `timex` alanında, `XXXX` değerleri yılın belirsizliğin olduğunu gösterir. `P3D`, zaman döneminin üç gün uzunluğunda olduğunu gösterir.
+Varlık `datetimeV2` tarih ve saat aralıklarını ayıklar. Ve `start` `end` alanlar aralığın başlangıcını ve sonunu belirtir. Söyleyiş `May 2nd to May 5th`için, LUIS hem geçerli yıl hem de gelecek yıl için **daterange** değerleri sağlar. Alandaki `timex` `XXXX` değerler yılın belirsizliğini gösterir. `P3D`sürenin üç gün sürdüğünü gösterir.
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `May 2nd to May 5th`
 
@@ -309,7 +309,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 ```
 
 
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/3-2)
 
 ```json
 
@@ -376,11 +376,11 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 ```
 * * *
 
-## <a name="date-range-resolution-examples-for-day-of-week"></a>Tarih aralığı çözümleme örnekler için haftanın günü
+## <a name="date-range-resolution-examples-for-day-of-week"></a>Haftanın günü için tarih aralığı çözüm örnekleri
 
-Aşağıdaki örnek, **ludatetimeV2** 'ın söylenişi `Tuesday to Thursday`çözümlemek için nasıl kullandığını gösterir. Bu örnekte, geçerli 19 Haziran tarihtir. LUO, ' dan önce gelen tarih aralıklarının her ikisi için de **meterange** değerleri içerir ve geçerli tarihi izler.
+Aşağıdaki örnek, LUIS'in söyleyiyi `Tuesday to Thursday`çözmek için **datetimeV2'yi** nasıl kullandığını gösterir. Bu örnekte, geçerli tarih 19 Haziran'dır. LUIS, geçerli tarihten önce gelen ve izleyen tarih aralıklarının her ikisi için **tarih aralığı** değerlerini içerir.
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `Tuesday to Thursday`
 
@@ -411,7 +411,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/4-2)
 
 ```json
 "entities": {
@@ -477,24 +477,24 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 ```
 * * *
 
-## <a name="ambiguous-time"></a>Belirsiz saat
-Saat veya zaman aralığı belirsiz ise iki saat öğe değerleri dizisi vardır. Belirsiz bir saat olduğunda, her iki saat değerlerine sahip ve Pasifik saatler.
+## <a name="ambiguous-time"></a>Belirsiz zaman
+Zaman veya zaman aralığı belirsizse, değerler dizisinin iki zaman öğesi vardır. Belirsiz bir zaman olduğunda, değerlerin her ikisi de A.M. vardır. ve p.m. Kez.
 
-## <a name="time-range-resolution-example"></a>Zaman aralığı çözümleme örneği
+## <a name="time-range-resolution-example"></a>Zaman aralığı çözümlü örnek
 
-DatetimeV2 JSON yanıtı API v3 'de değiştirildi. Aşağıdaki örnek, bir zaman aralığına sahip olan utterliği çözümlemek için LUIN **datetimeV2** 'in nasıl kullandığını gösterir.
+DatetimeV2 JSON yanıtı API V3 değişti. Aşağıdaki örnek, LUIS'in zaman aralığı olan söyleyiyi çözmek için **datetimeV2'yi** nasıl kullandığını gösterir.
 
-API v2 'deki değişiklikler:
-* `datetimeV2.timex.type` özellik, üst düzeyde döndürüldüğünden, `datetimev2.type`artık döndürülmüyor.
-* `datetimeV2.value` özelliği `datetimeV2.timex`olarak yeniden adlandırıldı.
+API V2 değişiklikler:
+* `datetimeV2.timex.type`özelliği artık döndürülmez, çünkü üst düzeyde `datetimev2.type`döndürülür, .
+* Özellik' `datetimeV2.value` in adı `datetimeV2.timex`.
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `from 6pm to 7pm`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/5-1)
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```JSON
 
@@ -517,9 +517,9 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/5-2)
 
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 
@@ -582,9 +582,9 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 
 * * *
 
-## <a name="time-resolution-example"></a>Zaman çözümleme örneği
+## <a name="time-resolution-example"></a>Zaman çözümlemesi örneği
 
-Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
+Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 `8am`
 
@@ -609,7 +609,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/6-2)
 
 ```json
 "entities": {
@@ -669,20 +669,20 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 * * *
 
-## <a name="deprecated-prebuilt-datetime"></a>Önceden oluşturulmuş kullanım dışı tarih/saat
+## <a name="deprecated-prebuilt-datetime"></a>Amortismana kılmış önceden oluşturulmuş tarih zamanı
 
-`datetime` önceden oluşturulmuş varlık kullanım dışıdır ve **datetimeV2**ile değiştirilmiştir.
+`datetime` Önceden oluşturulmuş varlık amortismana ve **datetimeV2**ile değiştirilir.
 
-`datetime`, LUSıS uygulamanızda `datetimeV2` ile değiştirmek için aşağıdaki adımları izleyin:
+LUIS `datetime` uygulamanızda değiştirmek `datetimeV2` için aşağıdaki adımları tamamlayın:
 
-1. LUSıS Web arabiriminin **varlıklar** bölmesini açın.
-2. **Tarih saat** önceden oluşturulmuş varlığı silin.
-3. **Önceden oluşturulmuş varlık Ekle** ' ye tıklayın
-4. **DatetimeV2** öğesini seçin ve **Kaydet**' e tıklayın.
+1. LUIS web arabiriminin **Varlıklar** bölmesini açın.
+2. Tarih **saati** önceden oluşturulmuş varlığı silin.
+3. **Önceden oluşturulmuş varlık ekle'yi** tıklatın
+4. **DatetimeV2'yi** seçin ve **Kaydet'i**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Boyut](luis-reference-prebuilt-dimension.md), [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
+[Boyut,](luis-reference-prebuilt-dimension.md) [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
 

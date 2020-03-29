@@ -1,7 +1,7 @@
 ---
-title: Özel model formu tanıyıcı için eğitim verileri kümesi oluşturma
+title: Özel bir model için eğitim veri seti oluşturma - Form Tanıyın
 titleSuffix: Azure Cognitive Services
-description: Eğitim veri kümesinin, form tanıyıcı modeli eğitimi için iyileştirildiğini nasıl sağlayacağınızı öğrenin.
+description: Eğitim veri setinizin Form Tanıyıcısı modelini eğitmek için optimize edilmiş olduğundan nasıl emin olanın.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
 ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75380635"
 ---
-# <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
+# <a name="build-a-training-data-set-for-a-custom-model"></a>Özel bir model için eğitim veri seti oluşturma
 
-Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlara eğmesi için kendi eğitim verilerinizi sağlarsınız. Bir modeli beş doldurulmuş form veya boş bir form ile eğitebilirsiniz (dosya adında "boş" sözcüğünü ve iki doldurulmuş formu dahil etmeniz gerekir. Eğecek yeterli sayıda doldurulmuş formunuz olsa da, eğitim veri kümesine boş bir form eklemek, modelin doğruluğunu iyileştirebilir.
+Form Recognizer özel modelini kullandığınızda, modelin sektöre özel formlarınıza göre eğitim görebilmeleri için kendi eğitim verilerinizi sağlarsınız. Beş doldurulmuş form veya boş bir forma sahip bir model eğitebilirsiniz (dosya adına "boş" sözcüğü eklemeniz gerekir) artı iki doldurulmuş form. Eğitebileceğiniz yeterli doldurulmuş formunuzun olsa bile, eğitim veri setinize boş bir form eklemek modelin doğruluğunu artırabilir.
 
-El ile veri etiketli eğitim verileri kullanmak istiyorsanız, aynı türde en az beş form ile başlamanız gerekir. Etiketli formları ve boş bir formu aynı veri kümesinde kullanmaya devam edebilirsiniz.
+El ile etiketlenmiş eğitim verilerini kullanmak istiyorsanız, aynı türden en az beş formla başlamalısınız. Yine de aynı veri kümesinde etiketlenmemiş formları ve boş bir formu kullanabilirsiniz.
 
-## <a name="training-data-tips"></a>Eğitim verileri ipuçları
+## <a name="training-data-tips"></a>Eğitim veri ipuçları
 
-Eğitim için en iyi duruma getirilmiş bir veri kümesi kullanılması önemlidir. [Özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) işlemindeki en iyi sonuçları aldığınızdan emin olmak için aşağıdaki ipuçlarını kullanın:
+Eğitim için optimize edilmiş bir veri kümesi kullanmak önemlidir. [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) işleminden en iyi sonuçları aldığınızdan emin olmak için aşağıdaki ipuçlarını kullanın:
 
-* Mümkünse, görüntü tabanlı belgeler yerine metin tabanlı PDF belgelerini kullanın. Taranan PDF 'Ler görüntü olarak işlenir.
-* Doldurulmuş formlarda, tüm alanlarının doldurulduğu örnekleri kullanın.
+* Mümkünse, resim tabanlı belgeler yerine metin tabanlı PDF belgeleri kullanın. Taranan PDF'ler görüntü olarak işlenir.
+* Doldurulmuş formlar için, tüm alanlarının doldurulduğu örnekleri kullanın.
 * Her alanda farklı değerlere sahip olan formlar kullanın.
-* Form görüntüleriniz daha düşük kaliteden fazlaysa daha büyük bir veri kümesi kullanın (örneğin, 10-15 görüntü).
-* Eğitim veri kümesinin toplam boyutu en fazla 500 sayfa olabilir.
+* Form görüntüleriniz daha düşük kalitedeyse, daha büyük bir veri kümesi kullanın (örneğin, 10-15 görüntü).
+* Eğitim veri kümesinin toplam boyutu 500 sayfaya kadar olabilir.
 
 ## <a name="general-input-requirements"></a>Genel giriş gereksinimleri
 
-Eğitim verileri ayarlamış olduğunuz tüm form tanıyıcı içeriği için giriş gereksinimlerini de takip ettiğinizden emin olun. 
+Eğitim veri setinizin tüm Form Tanıyıcı içeriğiiçin giriş gerekliliklerini de takip edeceğinden emin olun. 
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="upload-your-training-data"></a>Eğitim verilerinizi karşıya yükleyin
+## <a name="upload-your-training-data"></a>Eğitim verilerinizi yükleyin
 
-Eğitim için kullanacağınız form belgelerinin bir kümesini birlikte yerleştirdiğinizde, bir Azure Blob depolama kapsayıcısına yüklemeniz gerekir. Bir kapsayıcı ile Azure depolama hesabı oluşturmayı bilmiyorsanız [Azure Portal Için Azure Storage hızlı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)başlangıcını takip edin.
+Eğitim için kullanacağınız form belgeleri kümesini bir araya getirdiğinizde, bunu bir Azure blob depolama kapsayıcısına yüklemeniz gerekir. Azure [portalı için Azure Depolama hızlı başlat'ını](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)izleyerek kapsayıcıyla nasıl bir Azure depolama hesabı oluşturabileceğinizi bilmiyorsanız.
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Verilerinizi alt klasörlerde düzenleme (isteğe bağlı)
 
-Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API 'si yalnızca depolama kapsayıcının kökünde bulunan form belgelerini kullanacaktır. Ancak, API çağrısında belirtirseniz, alt klasörlerdeki verilerle eğitebilirsiniz. Normal olarak, [eğitme özel model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) çağrısının gövdesi aşağıdaki biçimde olur, burada `<SAS URL>` kapsayıcının paylaşılan erişim imzası URL 'sidir:
+Varsayılan olarak, [Tren Özel Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API'si yalnızca depolama kapsayıcınızın kökünde bulunan form belgelerini kullanır. Ancak, API çağrısında belirtirseniz alt klasörlerdeki verilerle eğitebilirsiniz. Normalde, Train Custom [Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) aramasının gövdesi, konteynerinizin Paylaşılan erişim imza URL'si aşağıdaki `<SAS URL>` formu oluşturur:
 
 ```json
 {
@@ -52,7 +52,7 @@ Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsof
 }
 ```
 
-İstek gövdesine aşağıdaki içeriği eklerseniz, API alt klasörlerde bulunan belgelerle eğitecektir. `"prefix"` alan isteğe bağlıdır ve eğitim verilerini, yolları verilen dizeyle başlayan dosyalar olarak sınırlandırır. Bu nedenle, örneğin `"Test"`bir değeri, API 'nin yalnızca "test" kelimesiyle başlayan dosya veya klasörlere bakmasına neden olur.
+Aşağıdaki içeriği istek gövdesine eklerseniz, API alt klasörlerde bulunan belgelerle çalışır. Alan `"prefix"` isteğe bağlıdır ve eğitim veri kümesini, yolları verilen dizeyle başlayan dosyalarla sınırlandıracaktır. Bu nedenle, `"Test"`örneğin, API'nin yalnızca "Test" sözcüğüyle başlayan dosya veya klasörlere bakması için bir değer elde edecektir.
 
 ```json
 {
@@ -67,8 +67,8 @@ Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsof
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğitim veri kümesi oluşturmayı öğrendiğinize göre, özel bir form tanıyıcı modelini eğtirecek ve formlarınızda kullanmaya başlamak için hızlı başlangıç izleyin.
+Artık bir eğitim veri kümesi oluşturmayı öğrendiğinize göre, özel bir Form Tanıyıcı modelini eğitmek için hızlı bir başlangıç yapın ve formlarınızda kullanmaya başlayın.
 
-* [Hızlı başlangıç: bir modeli eğitme ve kıvrımlı kullanarak form verilerini ayıklama](./quickstarts/curl-train-extract.md)
-* [Hızlı başlangıç: Python ile REST API bir modeli eğitme ve form verilerini ayıklama](./quickstarts/python-train-extract.md)
+* [Quickstart: CURL kullanarak bir model ve ayıklama formu verileri tren](./quickstarts/curl-train-extract.md)
+* [Quickstart: Python ile REST API'yi kullanarak bir model ve ayıklama formu verileri eğitin](./quickstarts/python-train-extract.md)
 * [REST API ve Python kullanarak etiketlerle eğitme](./quickstarts/python-labeled-data.md)

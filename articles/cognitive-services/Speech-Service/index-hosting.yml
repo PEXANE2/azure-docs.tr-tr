@@ -1,39 +1,38 @@
 ### YamlMime:Landing
 title: Barındırma belgeleri
-summary: Konuşma hizmeti kapsayıcıları, konuşmadan metne ve metin okuma senaryolarında, standart veya özelleştirilmiş modeller dahil olmak üzere kullanılabilir.
+summary: Konuşma hizmeti kapsayıcıları, standart veya özelleştirilmiş modelleri kapsayan hem Metinden metne hem de Metinden Konuşmaya senaryolar için kullanılabilir.
 metadata:
-  title: Barındırma belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
+  title: Hosting belgeleri - Öğreticiler, API Başvuru - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79366709"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415898"
 landingContent:
 - title: Barındırma hakkında
   linkLists:
   - linkListType: concept
     links:
-    - text: Konuşma kapsayıcılarını yükleyip çalıştırma
+    - text: Konuşma kapsayıcılarını yükleme ve çalıştırma
       url: speech-container-howto.md
-    - text: Kubernetes ve Held ile konuşma kapsayıcıları
+    - text: Kubernetes ve Helm ile konuşma kapları
       url: speech-container-howto-on-premises.md
-    - text: Azure Container Instances üzerinde konuşma kapsayıcıları
+    - text: Azure kapsayıcı örneklerinde konuşma kapsayıcıları
       url: deploy-speech-on-container-instances.md
 - title: Oluşturma ve yapılandırma
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure konuşma kaynağı oluşturma
+    - text: Azure Konuşma kaynağı oluşturma
       url: get-started.md#new-resource
     - text: Konuşma kapsayıcılarını yapılandırma
       url: speech-container-configuration.md
@@ -43,5 +42,5 @@ landingContent:
     links:
     - text: Desteklenen bölgeler
       url: regions.md
-    - text: Bağımsız bulutlar
+    - text: Egemen bulutlar
       url: sovereign-clouds.md

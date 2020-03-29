@@ -1,7 +1,7 @@
 ---
 title: Tanılama günlüğüne kaydetme
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzda bir Azure bilişsel hizmeti için tanılama günlüğünü etkinleştirmek üzere adım adım yönergeler sağlanmaktadır. Bu Günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veriler sağlar.
+description: Bu kılavuz, bir Azure Bilişsel Hizmeti için tanıgünlüğe kaydetmeyi etkinleştirmek için adım adım yönergeler sağlar. Bu günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veri sağlar.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,74 +10,74 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71827908"
 ---
-# <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için tanılama günlüğünü etkinleştirme
+# <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Bilişsel Hizmetler için tanısal günlüğe kaydetmeyi etkinleştirme
 
-Bu kılavuzda bir Azure bilişsel hizmeti için tanılama günlüğünü etkinleştirmek üzere adım adım yönergeler sağlanmaktadır. Bu Günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veriler sağlar. Devam etmeden önce, [Bing Web araması](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview), [konuşma Hizmetleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)veya [Luo](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)gibi en az bir bilişsel hizmetin aboneliğine sahip bir Azure hesabınızın olması gerekir.
+Bu kılavuz, bir Azure Bilişsel Hizmeti için tanıgünlüğe kaydetmeyi etkinleştirmek için adım adım yönergeler sağlar. Bu günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veri sağlar. Devam etmeden önce, [Bing Web Arama,](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview) [Konuşma Hizmetleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)veya [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)gibi en az bir Bilişsel Hizmet aboneliğine sahip bir Azure hesabınız olmalıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Tanılama günlüğünü etkinleştirmek için, günlük verilerinizi depolamak üzere bir yere ihtiyacınız vardır. Bu öğretici, Azure depolama ve Log Analytics kullanır.
+Tanılama günlüğünü etkinleştirmek için günlük verilerinizi depolayacak bir yere ihtiyacınız vardır. Bu öğretici, Azure Depolama ve Günlük Analizi'ni kullanır.
 
-* [Azure depolama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) -ilke denetimi, statik analiz veya yedekleme için tanılama günlüklerini saklar. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğu sürece, depolama hesabının kaynak yayma günlükleriyle aynı abonelikte olması gerekmez.
-* [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) -bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine izin veren esnek bir günlük araması ve Analiz Aracı.
-
-> [!NOTE]
-> Ek yapılandırma seçenekleri kullanılabilir. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)kullanma.
-
-## <a name="enable-diagnostic-log-collection"></a>Tanılama günlüğü toplamayı etkinleştir  
-
-Azure portal kullanarak tanılama günlüğünü etkinleştirerek başlayalım.
+* [Azure depolama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) - İlke denetimi, statik çözümleme veya yedekleme için tanılama günlüklerini korur. Depolama hesabı, ayarı yapılandıran kullanıcının her iki aboneye de uygun RBAC erişimine sahip olması nedeniyle kaynak yayan günlüklerle aynı abonelikte olması gerekmez.
+* [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) - Bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine olanak tanıyan esnek bir günlük arama ve analiz aracı.
 
 > [!NOTE]
-> Bu özelliği PowerShell veya Azure CLı kullanarak etkinleştirmek için [Azure kaynaklarınızdan günlük verilerini toplama ve](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)kullanma bölümünde sunulan yönergeleri kullanın.
+> Ek yapılandırma seçenekleri mevcuttur. Daha fazla bilgi edinmek için azure [kaynaklarından günlük verilerini topla ve tüketme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)bilgisini görün.
 
-1. Azure portal gidin. Ardından bilişsel hizmetler kaynağını bulup seçin. Örneğin, aboneliğiniz Bing Web Araması.   
-2. Ardından, sol taraftaki gezinti menüsünden **izleme** ' yi bulun ve **Tanılama ayarları**' nı seçin. Bu ekran, bu kaynak için daha önce oluşturulmuş tüm tanılama ayarlarını içerir.
-3. Kullanmak istediğiniz önceden oluşturulmuş bir kaynak varsa, bunu şimdi seçebilirsiniz. Aksi takdirde **+ Tanılama ayarı Ekle**' yi seçin.
-4. Ayar için bir ad girin. Ardından, **bir depolama hesabına arşiv** ' i seçin ve **Log Analytics 'e gönderin**.
-5. Yapılandırma istendiğinde, tanılama günlüklerini depolamak için kullanmak istediğiniz depolama hesabı ve OMS çalışma alanını seçin. **Note**: bir depolama HESABıNıZ veya OMS çalışma alanınız yoksa, bir tane oluşturmak için istemleri izleyin.
-6. **Denetim**, **RequestResponse**ve **allölçümleri**' ni seçin. Ardından tanılama günlüğü verilerinize ait saklama süresini ayarlayın. Bir bekletme ilkesi sıfır olarak ayarlandıysa, bu günlük kategorisinin olayları süresiz olarak depolanır.
-7. **Kaydet** düğmesine tıklayın.
+## <a name="enable-diagnostic-log-collection"></a>Tanılama günlüğü toplamayı etkinleştirme  
 
-Günlüğe kaydetme verilerinin sorgu ve analiz için kullanılabilir olması iki saate kadar sürebilir. Hemen hiç şey görmüyorsanız endişelenmeyin.
+Azure portalını kullanarak tanılama günlüğe kaydetmeyi etkinleştirerek başlayalım.
 
-## <a name="view-and-export-diagnostic-data-from-azure-storage"></a>Azure depolama 'dan tanılama verilerini görüntüleme ve dışarı aktarma
+> [!NOTE]
+> PowerShell veya Azure CLI'yi kullanarak bu özelliği etkinleştirmek için, [Azure kaynaklarından veri topla ve bunları tüket'](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)te sağlanan yönergeleri kullanın.
 
-Azure depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için optimize edilmiş sağlam bir nesne depolama çözümüdür. Bu bölümde, depolama hesabınızı 30 günlük zaman dilimi boyunca toplam işlemler için sorgulamayı ve verileri Excel 'e aktarmayı öğreneceksiniz.
+1. Azure portalına gidin. Ardından, Bilişsel Hizmetler kaynağını bulun ve seçin. Örneğin, Bing Web Arama aboneliğiniz.   
+2. Ardından, sol daki gezinme menüsünden **İzleme'yi** bulun ve **Tanılama ayarlarını**seçin. Bu ekran, bu kaynak için daha önce oluşturulmuş tüm tanılama ayarlarını içerir.
+3. Kullanmak istediğiniz daha önce oluşturulmuş bir kaynak varsa, şimdi seçebilirsiniz. Aksi takdirde , **seçin + Tanıayar ekleyin**.
+4. Ayar için bir ad girin. Ardından **bir depolama hesabına Arşiv'i** seçin ve **Analytics'i günlüğe gönderin.**
+5. Yapılandırmanız istendiğinde, tanı günlüklerini depolamak için kullanmak istediğiniz depolama hesabı ve OMS çalışma alanını seçin. **Not**: Depolama hesabınız veya OMS çalışma alanınız yoksa, oluşturmak için istemleri izleyin.
+6. **Denetim**, **RequestResponse**ve **AllMetrics'i**seçin. Ardından tanılama günlüğü verilerinizin bekletme süresini ayarlayın. Bekletme ilkesi sıfıra ayarlanırsa, bu günlük kategorisine ait olaylar süresiz olarak depolanır.
+7. **Kaydet**'e tıklayın.
 
-1. Azure portal, son bölümde oluşturduğunuz Azure depolama kaynağını bulun.
-2. Sol taraftaki gezinti menüsünde, **izleme** ' yi bulun ve **ölçümler**' i seçin.
-3. Sorgunuzu yapılandırmak için kullanılabilir açılan listeleri kullanın. Bu örnekte, zaman aralığını **son 30 güne** ve **işleme**ölçüsüne ayarlayalim.
-4. Sorgu tamamlandığında, son 30 gün içinde bir işlem görselleştirmesi görürsünüz. Bu verileri dışarı aktarmak için sayfanın üst kısmında bulunan **Excel 'e aktar** düğmesini kullanın.
+Verileri sorgulamak ve çözümlemek için kullanılabilir hale gelmeleri iki saat kadar sürebilir. Eğer hemen bir şey görmüyorsan endişelenme.
 
-[Azure depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)'da Tanılama verileri ile yapabilecekleriniz hakkında daha fazla bilgi edinin.
+## <a name="view-and-export-diagnostic-data-from-azure-storage"></a>Azure Depolama'dan tanılama verilerini görüntüleme ve dışa aktarma
+
+Azure Depolama, büyük miktarda yapılandırılmamış veri depolamak için optimize edilmiş sağlam bir nesne depolama çözümüdür. Bu bölümde, 30 günlük bir zaman dilimi içinde toplam hareketler için depolama hesabınızı sorgulamayı ve verileri excel'e aktarmayı öğreneceksiniz.
+
+1. Azure portalından, son bölümde oluşturduğunuz Azure Depolama kaynağını bulun.
+2. Sol daki gezinme menüsünden **İzleme'yi** bulun ve **Ölçümler'i**seçin.
+3. Sorgunuzu yapılandırmak için kullanılabilir açılır bırakma işlemlerini kullanın. Bu örnek için, zaman aralığını **Son 30 gün** ve **Hareket**için metrik olarak ayarlayalım.
+4. Sorgu tamamlandığında, son 30 gün içinde hareketin görselleştirilmesini görürsünüz. Bu verileri dışa aktarmak için, sayfanın üst kısmında bulunan **Excel'e Dışa** Aktar düğmesini kullanın.
+
+[Azure Depolama'da](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)tanılama verileriyle neler yapabileceğiniz hakkında daha fazla bilgi edinin.
 
 ## <a name="view-logs-in-log-analytics"></a>Log Analytics’te günlükleri görüntüleme
 
-Kaynağınızın Log Analytics verilerini araştırmak için bu yönergeleri izleyin.
+Kaynağınız için günlük analitiği verilerini keşfetmek için bu yönergeleri izleyin.
 
-1. Azure portal, sol taraftaki gezinti menüsünden **Log Analytics** bulun ve seçin.
+1. Azure portalından, sol daki gezinme menüsünden **Log Analytics'i** bulun ve seçin.
 2. Tanılamayı etkinleştirirken oluşturduğunuz kaynağı bulun ve seçin.
-3. **Genel**altında **günlükleri**bulun ve seçin. Bu sayfadan, günlüklerinizi karşılaştırarak sorgular çalıştırabilirsiniz.
+3. **Genel**altında , bulun ve **Günlükleri**seçin. Bu sayfadan, günlüklerinize karşı sorguları çalıştırabilirsiniz.
 
 ### <a name="sample-queries"></a>Örnek sorgular
 
-Günlük verilerinizi araştırmak için kullanabileceğiniz birkaç temel kusto sorgusu aşağıda verilmiştir.
+Burada, günlük verilerinizi keşfetmek için kullanabileceğiniz birkaç temel Kusto sorgusu verebilirsiniz.
 
-Belirli bir süre boyunca Azure bilişsel hizmetler 'deki tüm tanılama günlükleri için bu sorguyu çalıştırın:
+Azure Bilişsel Hizmetleri'nden gelen tüm tanılama günlükleri için bu sorguyan bu sorguyun belirli bir süre boyunca çalıştırın:
 
 ```kusto
 AzureDiagnostics
 | where ResourceProvider == "MICROSOFT.COGNITIVESERVICES"
 ```
 
-En son 10 günlüğü görmek için bu sorguyu çalıştırın:
+En son 10 günlükleri görmek için bu sorguyu çalıştırın:
 
 ```kusto
 AzureDiagnostics
@@ -85,7 +85,7 @@ AzureDiagnostics
 | take 10
 ```
 
-İşlemleri **kaynağa**göre gruplamak için bu sorguyu çalıştırın:
+Bu sorguydan **Kaynak'a**göre grup işlemlerine çalıştırın:
 
 ```kusto
 AzureDiagnostics
@@ -101,7 +101,7 @@ AzureDiagnostics
 by OperationName
 ```
 
-Zaman içinde her 10 s için ayrılmış olan sayımlar tarafından bölünen işlem hacmi görüntülemek için bu sorguyu çalıştırın.
+Her 10'lu için binned sayıları ile OperationName tarafından bölünmüş zaman içinde işlem hacmini görüntülemek için bu sorguyu çalıştırın.
 
 ```kusto
 AzureDiagnostics
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Günlük kaydını etkinleştirmeyi ve ayrıca çeşitli Azure hizmetleri tarafından desteklenen ölçümleri ve günlük kategorilerini öğrenmek için, Microsoft Azure içindeki [ölçümlere genel bakışı](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) ve [Azure tanılama günlükleri makalelerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) makalesini okuyun.
-* Olay Hub 'ları hakkında bilgi edinmek için şu makaleleri okuyun:
+* Günlüğe kaydetmeyi ve çeşitli Azure hizmetleri tarafından desteklenen ölçümleri ve günlük kategorilerini nasıl etkinleştireceklerini anlamak için, hem Microsoft Azure'daki [ölçümlere Genel Bakış'ı](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) hem de [Azure Tanı Günlükleri makalelerine Genel Bakış'ı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) okuyun.
+* Etkinlik merkezleri hakkında bilgi edinmek için bu makaleleri okuyun:
   * [Azure Event Hubs nedir?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
   * [Event Hubs kullanmaya başlayın](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
-* [Azure depolama 'dan ölçümleri ve tanılama günlüklerini](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs)okuyun.
-* [Azure izleyici günlüklerinde günlük aramalarını anlayın](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-new).
+* [Azure Depolama'dan İndirme ölçümleri ve tanılama günlüklerini](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs)okuyun.
+* [Azure Monitor günlüklerinde günlük aramalarını anla'yı](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-new)okuyun.

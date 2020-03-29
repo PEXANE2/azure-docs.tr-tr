@@ -1,7 +1,7 @@
 ---
-title: Önceden oluşturulmuş tüm varlıklar-LUSıS
+title: Tüm Önceden Oluşturulmuş Varlıklar - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Language Understanding (LUIS), dahil edilen önceden oluşturulmuş varlıklar listesi içerir.
+description: Bu makalede, Dil Anlama (LUIS) dahil olan önceden oluşturulmuş varlıkların listelerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,307 +12,307 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219725"
 ---
-# <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
+# <a name="entities-per-culture-in-your-luis-model"></a>LUIS modelinizde kültür başına varlıklar
 
-Language Understanding (LUIS), önceden oluşturulmuş varlıklar sağlar. Uygulamanızda önceden oluşturulmuş bir varlık eklendiğinde LUIS uç nokta yanıtta ilgili varlık öngörü içerir. Tüm örnek konuşma de sahip bir varlık olarak etiketlenmiştir. Önceden **oluşturulmuş varlıkların davranışı** değiştirilemez. Önceden oluşturulmuş varlıklarla aksi belirtilmediği sürece tüm LUIS uygulaması yerel (kültür) kullanılabilir. Aşağıdaki tabloda her bir kültür için desteklenen önceden oluşturulmuş varlıklar gösterilmektedir.
+Dil Anlama (LUIS) önceden oluşturulmuş varlıklar sağlar. Önceden oluşturulmuş bir varlık uygulamanıza dahil edildiğinde, LUIS bitiş noktası yanıtında karşılık gelen varlık tahminini içerir. Tüm örnek söyleyişler de varlıkla etiketlenir. Önceden oluşturulmuş varlıkların davranışı **değiştirilemez.** Aksi belirtilmedikçe, önceden oluşturulmuş varlıklar tüm LUIS uygulama yerel bölgelerinde (kültürlerde) kullanılabilir. Aşağıdaki tablo, her kültür için desteklenen önceden oluşturulmuş varlıkları gösterir.
 
-|Culture (Kültür)|Subcultures|Notlar|
+|Kültür|Alt kültürler|Notlar|
 |--|--|--|
 |Çince|[zh-CN](#chinese-entity-support)||
-|Felemenkçe|[NL-NL](#dutch-entity-support)||
-|Türkçe|[en-US (Amerikan)](#english-american-entity-support)||
-|Fransızca|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-fr (Fransa)](#french-france-entity-support), ||
+|Felemenkçe|[nl-NL](#dutch-entity-support)||
+|Türkçe|[tr-US (Amerikan)](#english-american-entity-support)||
+|Fransızca|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-FR (Fransa)](#french-france-entity-support), ||
 |Almanca|[de-DE](#german-entity-support)||
-|İtalyanca|[BT BT](#italian-entity-support)||
+|İtalyanca|[it-BT](#italian-entity-support)||
 |Japonca|[ja-JP](#japanese-entity-support)||
 |Korece|[ko-KR](#korean-entity-support)||
-|Portekizce|[PT-BR (Brezilya)](#portuguese-brazil-entity-support)||
-|İspanyolca|[es-es (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
-|Türkçe|[Türkçe](#turkish-entity-support)|Türkçe 'da önceden oluşturulmuş varlık desteklenmez|
+|Portekizce|[pt-BR (Brezilya)](#portuguese-brazil-entity-support)||
+|İspanyolca|[es-ES (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
+|Türkçe|[Türkçe](#turkish-entity-support)|Türkçe'de önceden inşa edilmiş varlıklar desteklenmez|
 
-## <a name="prediction-endpoint-runtime"></a>Tahmin uç noktası çalışma zamanı
+## <a name="prediction-endpoint-runtime"></a>Tahmin bitiş noktası çalışma süresi
 
-Önceden oluşturulmuş bir varlığın belirli bir dilde kullanılabilirliği, tahmin uç noktası çalışma zamanı sürümü tarafından belirlenir.
+Önceden oluşturulmuş bir varlığın belirli bir dilde kullanılabilirliği, tahmin bitiş noktası çalışma zamanı sürümüyle belirlenir.
 
-## <a name="chinese-entity-support"></a>Çince varlık desteği
+## <a name="chinese-entity-support"></a>Çin taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```zh-CN``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="dutch-entity-support"></a>Felemenkçe varlık desteği
+## <a name="dutch-entity-support"></a>Hollanda taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```nl-NL``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[Hem](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="english-american-entity-support"></a>İngilizce (Amerika) varlık desteği
+## <a name="english-american-entity-support"></a>İngilizce (American) varlık desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```en-US``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-france-entity-support"></a>Fransızca (Fransa) varlık desteği
+## <a name="french-france-entity-support"></a>Fransız (Fransa) taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```fr-FR``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |   -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |   -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-canadian-entity-support"></a>Fransızca (Kanada) varlık desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```fr-CA``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="german-entity-support"></a>Alman varlık desteği
+## <a name="german-entity-support"></a>Alman taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```de-DE``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="italian-entity-support"></a>İtalyanca varlık desteği
+## <a name="italian-entity-support"></a>İtalyan taraf desteği
 
-İtalyan ön derlenmiş yaş, para birimi, boyut, sayı, yüzde _çözünürlüğü_ v2 ve v3 önizlemesinden değişti.
+İtalyan önceden oluşturulmuş yaş, para birimi, boyut, sayı, yüzde _çözünürlüğü_ V2 ve V3 önizleme değiştirildi.
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```it-IT``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[Hem](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="japanese-entity-support"></a>Japonca varlık desteği
+## <a name="japanese-entity-support"></a>Japon varlık desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```ja-JP``` |
 ------|:------:|
-[Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2,-   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2,-   |
-[Hem](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2,-   |
+[Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, -   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, -   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2,-   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, -   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2,-   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2,-   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, -   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="korean-entity-support"></a>Korece varlık desteği
+## <a name="korean-entity-support"></a>Kore varlık desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```ko-KR``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    -   |
-[Hem](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    -   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    -   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    -   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    -   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    -   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    -   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="portuguese-brazil-entity-support"></a>Portekizce (Brezilya) varlık desteği
+## <a name="portuguese-brazil-entity-support"></a>Portekizce (Brezilya) taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```pt-BR``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-spain-entity-support"></a>İspanyolca (İspanya) varlık desteği
+## <a name="spanish-spain-entity-support"></a>İspanyolca (İspanya) taraf desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```es-ES``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    V2, V3   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    V2, V3   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="spanish-mexico-entity-support"></a>İspanyolca (Meksika) varlık desteği
 
-Aşağıdaki varlıkların desteklenir:
+Aşağıdaki varlıklar desteklenir:
 
 |Önceden oluşturulmuş varlık|```es-MX``` |
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
-[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    -   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesirli birim (ör. kuruş)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>tarih aralığı<br>time<br>zaman aralığı   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>Ağırlık<br>bilgi (ör. bit/bayt)<br>uzunluk (ör. metre)<br>hız (ör. saat başına mil)  |    -   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
+[CoğrafyaV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Keyphrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
+[Numarası](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Den](luis-reference-prebuilt-percentage.md)   |    -   |
-[Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
-[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    -   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
+[Kişi Adı](luis-reference-prebuilt-person.md)   |    -   |
+[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>kelvin<br>rankine<br>şarküteri<br>Santigrat   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-[Kullanım dışı bırakılan varlıklarda](luis-reference-prebuilt-deprecated.md) notlara bakın
+[Amortismana dayalı önceden oluşturulmuş varlıklar](luis-reference-prebuilt-deprecated.md) hakkındaki notları görme
 
-KeyPhrase, Portekizce (Brezilya)-```pt-BR```tüm alt kültürleri için kullanılamaz.
+KeyPhrase Portekizce (Brezilya) tüm alt kültürleri kullanılamaz - ```pt-BR```.
 
-## <a name="turkish-entity-support"></a>Türkçe varlık desteği
+## <a name="turkish-entity-support"></a>Türk taraf desteği
 
-**Türkçe sürümünde desteklenen önceden oluşturulmuş varlık yok.**
+**Türkçe'de önceden desteklenen bir varlık yoktur.**
 
 <!--
 
@@ -339,11 +339,11 @@ See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.m
 KeyPhrase is not available.
 -->
 
-## <a name="contribute-to-prebuilt-entity-cultures"></a>Önceden oluşturulmuş varlık kültürler için katkıda bulunan
-Önceden oluşturulmuş varlıklarla tanıyıcıları metin açık kaynak projenin geliştirilir. Projeye [katkıda bulunun](https://github.com/Microsoft/Recognizers-Text) . Bu proje, para birimi başına kültür örneklerini içerir.
+## <a name="contribute-to-prebuilt-entity-cultures"></a>Önceden oluşturulmuş varlık kültürlerine katkıda bulunmak
+Önceden oluşturulmuş varlıklar Tanıyanlar-Metin açık kaynak projesinde geliştirilmiştir. Projeye [katkıda bulunun.](https://github.com/Microsoft/Recognizers-Text) Bu proje, kültür başına para birimi örneklerini içerir.
 
-GeographyV2 ve PersonName tanıyıcıları metin projeye dahil değil. Önceden oluşturulmuş bu varlıklarla ilgili sorunlar için lütfen bir [destek isteği](../../azure-portal/supportability/how-to-create-azure-support-request.md)açın.
+GeographyV2 ve PersonName Tanıyanlar-Metin projesine dahil değildir. Bu önceden oluşturulmuş varlıklarla ilgili sorunlar için lütfen bir [destek isteği](../../azure-portal/supportability/how-to-create-azure-support-request.md)açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sayı](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)ve [para birimi](luis-reference-prebuilt-currency.md) varlıkları hakkında bilgi edinin.
+[Sayı,](luis-reference-prebuilt-number.md) [datetimeV2](luis-reference-prebuilt-datetimev2.md)ve [para birimi](luis-reference-prebuilt-currency.md) varlıkları hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Sıralı önceden oluşturulmuş varlık-LUSıS
+title: Ordinal Prebuilt entity - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Language Understanding (LUIS) önceden oluşturulmuş sıralı varlık bilgileri içerir.
+description: Bu makale, Dil Anlama (LUIS) içinde ordinal önceden oluşturulmuş varlık bilgileri içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273437"
 ---
-# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıralı önceden oluşturulmuş varlık
-Sıra numarası, küme içindeki bir nesnenin sayısal bir gösterimidir: `first`, `second`, `third`. Bu varlık zaten eğitildi çünkü uygulama hedefleri için sıralı içeren örnek Konuşma ekleme gerekmez. Sıralı varlık [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir.
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için ordinal önceden oluşturulmuş varlık
+Ordinal sayı, bir nesnenin bir küme içindeki `first` `second`sayısal `third`gösterimidir: , . Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına yönetmelik içeren örnek sözcükler eklemeniz gerekmez. Ordinal varlık birçok [kültürde](luis-reference-prebuilt-entities.md)desteklenir.
 
-## <a name="types-of-ordinal"></a>Sıra türü
-Sıra, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub deposundan yönetilir
+## <a name="types-of-ordinal"></a>Ordinal türleri
+Ordinal [Recognizers-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub deposundan yönetilir
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Önceden oluşturulmuş sıralı varlık için çözümleme
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Önceden oluşturulmuş ordinal varlık için çözünürlük
 
-Sorgu için aşağıdaki varlık nesneleri döndürülür:
+Aşağıdaki varlık nesneleri sorgu için döndürülür:
 
 `Order the second option`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```json
 "entities": {
@@ -41,8 +41,8 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **yerleşik. Ordinal** varlığının çözünürlüğünü gösterir.
+Aşağıdaki örnek, **yerleşik ordinal** varlığın çözünürlüğünü gösterir.
 
 ```json
 "entities": [
@@ -88,6 +88,6 @@ Aşağıdaki örnek, **yerleşik. Ordinal** varlığının çözünürlüğünü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.
+[OrdinalV2,](luis-reference-prebuilt-ordinal-v2.md)telefon [numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.

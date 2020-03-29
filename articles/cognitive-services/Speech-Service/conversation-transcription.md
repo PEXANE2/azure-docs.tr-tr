@@ -1,81 +1,81 @@
 ---
-title: Konuşma dökümü (Önizleme)-konuşma hizmeti
+title: Konuşma Transkripsiyon (Önizleme) - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz olarak dökümünü sağlamak için konuşma tanımayı, konuşmacı tanımayı ve tümce oluşturma işlevini her konuşmacı (daha da bilinen) birleştiren bir konuşmaya metin çözümüdür.
+description: Konuşma Transkripsiyonu, herhangi bir konuşmanın transkripsiyonunu sağlamak için tanıma, konuşmacı kimliği ve ishal özelliğini birleştiren toplantılar için bir çözümdür.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79367831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479748"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>Konuşma dökümü nedir (Önizleme)?
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Toplantılarda Konuşma Transkripsiyonu Nedir (Önizleme)?
 
-Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz olarak dökümünü sağlamak için konuşma tanımayı, konuşmacı tanımayı ve tümce oluşturma işlevini her konuşmacı (daha da _bilinen) birleştiren_bir [konuşmaya metin](speech-to-text.md) çözümüdür. Konuşma dökümü, kimin ne olduğunu ve ne zaman söylediklerini belirlemek için konuşmalarda hoparlörleri ayırt eder ve geliştiricilerin çok oyunculu bir savunma gerçekleştiren uygulamalarına konuşmadan metin eklemesini kolaylaştırır.
+Konuşma Transkripsiyonu, herhangi bir konuşmanın gerçek zamanlı ve/veya eşzamanlı transkripsiyonu sağlamak için her konuşmacıya _(ishal_olarak da bilinir) konuşma tanıma, konuşmacı tanımlama ve cümle atıfını birleştiren bir [konuşma-metin](speech-to-text.md) çözümüdür. Konuşma Transkripsiyonu, konuşmadaki konuşmacıları kimin ne zaman söylediğini belirlemek için ayırt eder ve geliştiricilerin çok hoparlörlü ishal gerçekleştiren uygulamalarına metinden metne eklemelerini kolaylaştırır.
 
 ## <a name="key-features"></a>Önemli özellikler
 
-- **Zaman damgaları** -her konuşmacı söylenişi bir zaman damgasına sahiptir, böylece bir tümceciğin ne zaman olduğunu kolayca bulabilirsiniz.
-- **Okunabilir döküm dosyaları** -döküm, metnin söylediklerle yakından eşleştiğinden emin olmak için biçimlendirme ve noktalama işaretleri otomatik olarak eklenir.
-- Kullanıcı **profilleri** -Kullanıcı profilleri, Kullanıcı ses örnekleri toplayıp imza oluşturmaya gönderilerek oluşturulur.
-- **Konuşmacı kimliği** -konuşmacılar Kullanıcı profilleri kullanılarak tanımlanır ve her birine bir _Konuşmacı tanımlayıcısı_ atanır.
-- **Çok konuşmacı** belirleme-her konuşmacı tanımlayıcısı ile ses akışını sendikme ne olduğunu söylediklerinizi belirleme.
-- **Gerçek** zamanlı döküm: konuşmaların ne zaman ve ne zaman söylediğini belirten canlı yazılı betikler sağlar.
-- **zaman uyumsuz** döküm: çok kanallı bir ses akışı kullanarak dökümü daha yüksek doğruluk sağlar.
+- **Zaman damgaları** - her konuşmacı nın bir zaman damgası vardır, böylece bir ifadenin ne zaman söylendiğini kolayca bulabilirsiniz.
+- **Okunabilir transkriptler** - transkriptler, metnin söylenenlerle yakından eşleştiğinden emin olmak için otomatik olarak biçimlendirme ve noktalama işaretlerine sahiptir.
+- **Kullanıcı profilleri** - kullanıcı ses örnekleri toplanıp imza oluşturmaya gönderilerek kullanıcı profilleri oluşturulur.
+- **Hoparlör tanımlama** - hoparlörler kullanıcı profilleri kullanılarak tanımlanır ve her birine bir _hoparlör tanımlayıcısı_ atanır.
+- **Çok hoparlörlü ishal** - her hoparlör tanımlayıcısı ile ses akışını sentezleyerek kimin ne söylediğini belirleyin.
+- **Gerçek zamanlı transkripsiyon** - konuşma oluyor ken kim ne diyor ve ne zaman canlı transkript sağlar.
+- **asynchronous transkripsiyon** – çok kanallı ses akışı kullanarak transkriptleri daha yüksek doğrulukla sağlar.
 
 > [!NOTE]
-> Konuşma dökümü, odada bulunan hoparlör sayısına bir sınır koymasa da, oturum başına 2-10 hoparlörleri için en iyi duruma getirilmiştir.
+> Konuşma Transkripsiyon odadaki hoparlör sayısı bir sınır koymak olmasa da, oturum başına 2-10 hoparlörler için optimize edin.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-### <a name="inclusive-meetings"></a>Kapsamlı toplantılar
+### <a name="inclusive-meetings"></a>Dahil toplantılar
 
-Engelli ve işitme güçlüğü çeken katılımcılar gibi herkese açık bir şekilde toplantılar yapmak için gerçek zamanlı olarak döküm almak önemlidir. Gerçek zamanlı modda konuşma dökümü, sesi alıp kim olduğunu belirler ve tüm toplantı katılımcılarının bir gecikme süresi olmadan toplantıya katılmasını sağlar.
+Sağır ve işitme zorkatılımcılar gibi toplantılar herkes için kapsayıcı hale getirmek için, gerçek zamanlı olarak transkripsiyon olması önemlidir. Gerçek zamanlı modda konuşma transkripsiyonu toplantı ses alır ve kim ne diyor belirler, tüm toplantı katılımcıları transkript takip etmek ve gecikmeden toplantıya katılmak için izin.
 
 ### <a name="improved-efficiency"></a>Geliştirilmiş verimlilik
 
-Toplantı katılımcıları toplantıya odaklanabilir ve görüşme dekontunu göz önünde bırakabilir. Katılımcılar, toplantıya etkin bir şekilde geçebilir ve bir sonraki adımda hızlı bir şekilde hareket edebilir ve Not almak yerine el yazısı ve toplantı sırasında eksik olabilir.
+Toplantı katılımcıları toplantıya odaklanabilir ve not alma yı Konuşma Transkripsiyonuna bırakabilir. Katılımcılar, not almak ve toplantı sırasında bir şeyleri kaçırmak yerine transkripti kullanarak toplantıya aktif olarak katılabilir ve sonraki adımları hızlı bir şekilde takip edebilirler.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Bu, konuşma dökümünü nasıl çalıştığına ilişkin üst düzey bir genel bakıştır.
+Bu, Konuşma Transkripsiyonunun nasıl çalıştığına ilişkin üst düzey bir genel bakıştır.
 
-![Içeri aktarma konuşma dökümü diyagramı](media/scenarios/conversation-transcription-service.png)
+![İthalat Konuşma Transkripsiyon Diyagramı](media/scenarios/conversation-transcription-service.png)
 
 ## <a name="expected-inputs"></a>Beklenen girişler
 
-- **Çok kanallı ses akışı** – belirtim ve tasarım ayrıntıları için bkz. [MICROSOFT Speech cihaz SDK mikrofonu](https://aka.ms/cts/microphone). Daha fazla bilgi edinmek veya bir geliştirme seti satın almak için bkz. [Microsoft Speech cihaz SDK 'Sını alma](https://aka.ms/cts/getsdk).
-- **Kullanıcı ses örnekleri** – konuşma dökümü, konuşmadan önce Kullanıcı profilleri gerektirir. Her kullanıcıdan ses kayıtları toplamanız gerekir, sonra da ses doğrulamak ve Kullanıcı profilleri oluşturmak için kayıtları [Imza oluşturma hizmetine](https://aka.ms/cts/signaturegenservice) göndermeniz gerekir.
+- **Çok kanallı ses akışı** – Belirtim ve tasarım ayrıntıları için [Microsoft Konuşma Aygıtı SDK Mikrofonu'na](https://aka.ms/cts/microphone)bakın. Daha fazla bilgi edinmek veya geliştirme kiti satın almak için [Bkz. Microsoft Konuşma Aygıtı SDK'yı edinin.](https://aka.ms/cts/getsdk)
+- **Kullanıcı ses örnekleri** - Konuşma Transkripsiyon konuşma öncesinde kullanıcı profilleri gerekir. Her kullanıcıdan ses kayıtları toplamanız, ardından sesi doğrulamak ve kullanıcı profilleri oluşturmak için kayıtları [İmza Oluşturma Hizmeti'ne](https://aka.ms/cts/signaturegenservice) göndermeniz gerekir.
 
-## <a name="real-time-vs-asynchronous"></a>Gerçek zamanlı vs. zaman uyumsuz
+## <a name="real-time-vs-asynchronous"></a>Gerçek zamanlı vs asynchronous
 
-Konuşma dökümü üç döküm modu sunar:
+Konuşma Transkripsiyon üç transkripsiyon modu sunar:
 
 ### <a name="real-time"></a>Gerçek zamanlı
 
-Ses verileri, konuşmacı tanımlayıcısı + döküm betiği döndürmek için canlı olarak işlenir. Döküm çözümünüz gereksiniminizde, konuşma katılımcılarına devam eden konuşmaları canlı döküm görünümü sağlamak istiyorsanız bu modu seçin. Örneğin, toplantıları daha erişilebilir hale getirmek için bir uygulama oluşturmak, işitme engellerin ve çok zor katılımcılarının gerçek zamanlı döküm için ideal bir kullanım durumdur.
+Ses verileri hoparlör tanımlayıcısı + transkript dönmek için canlı işlenir. Transkripsiyon çözüm gereksiniminiz, konuşma katılımcılarına devam eden konuşmalarının canlı bir transkript görünümünü sağlamaksa bu modu seçin. Örneğin, toplantıları daha erişilebilir hale getirmek için bir uygulama oluşturmak, işitme engelli ve işitme zoru olan katılımcıların gerçek zamanlı transkripsiyon için ideal bir kullanım örneğidir.
 
-### <a name="asynchronous"></a>En
+### <a name="asynchronous"></a>Zaman uyumsuz
 
-Ses verileri, konuşmacı tanımlayıcısını ve dökümünü döndürecek toplu işlem olarak işlenir. Döküm çözümünüz gereksiniminizi canlı döküm görünümü olmadan daha yüksek doğruluk sağlamak istiyorsanız bu modu seçin. Örneğin, Toplantı katılımcılarının kaçırılmış toplantılara kolayca yakalayabilmesini sağlamak için bir uygulama oluşturmak istiyorsanız, yüksek doğruluk dökümü elde etmek için zaman uyumsuz döküm modunu kullanın.
+Ses verileri hoparlör tanımlayıcısı ve transkript dönmek için toplu işlenir. Transkripsiyon çözüm gereksiniminiz canlı transkript görünümü olmadan daha yüksek doğruluk sağlamaksa bu modu seçin. Örneğin, toplantı katılımcılarının kaçırılan toplantıları kolayca yakalamasına olanak sağlayacak bir uygulama oluşturmak istiyorsanız, yüksek doğruluklu transkripsiyon sonuçları elde etmek için eşzamanlı transkripsiyon modunu kullanın.
 
-### <a name="real-time-plus-asynchronous"></a>Gerçek zamanlı ve zaman uyumsuz
+### <a name="real-time-plus-asynchronous"></a>Gerçek zamanlı artı asynchronous
 
-Ses verileri, konuşmacı tanımlayıcısı + döküm döndüren canlı olarak işlenir ve ayrıca zaman uyumsuz işleme aracılığıyla yüksek doğruluk dökümü almak için bir istek oluşturulur. Uygulamanızın gerçek zamanlı bir dökümle ihtiyacı varsa, ancak konuşma veya toplantı gerçekleştirildikten sonra kullanılmak üzere daha yüksek doğruluk dökümü gerektiren bu modu seçin.
+Ses verileri hoparlör tanımlayıcısı + transkript döndürmek için canlı olarak işlenir ve buna ek olarak, bir istek de asynchronous işleme yoluyla yüksek doğrulukta transkript almak için oluşturulur. Uygulamanızın gerçek zamanlı transkripsiyon acısı varsa, ancak konuşma veya toplantı gerçekleştikten sonra kullanım için daha yüksek bir doğruluk dökümü gerektiriyorsa bu modu seçin.
 
 ## <a name="language-support"></a>Dil desteği
 
-Şu anda görüşme dökümü şu bölgelerde "en-US" ve "zh-CN" yi destekler: *merkezileştirme* ve *eastaya*. Ek yerel ayar desteği gerekiyorsa [konuşma dökümü özelliği ekibi](mailto:CTSFeatureCrew@microsoft.com)' ne başvurun.
+Şu anda, Konuşma Transkripsiyon aşağıdaki bölgelerde "en-US" ve "zh-CN" destekler: *centralus* ve *eastasia*. Ek yerel destek gerekiyorsa, [Konuşma Transkripsiyon Özelliği Ekibi'ne](mailto:CTSFeatureCrew@microsoft.com)başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşmaları gerçek zamanlı olarak dönüştürme](how-to-use-conversation-transcription-service.md)
+> [Konuşmaları gerçek zamanlı olarak aktarma](how-to-use-conversation-transcription-service.md)

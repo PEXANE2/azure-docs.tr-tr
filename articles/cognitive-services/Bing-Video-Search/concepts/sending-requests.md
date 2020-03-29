@@ -1,7 +1,7 @@
 ---
-title: Bing Video Arama API'si arama istekleri Gönder
+title: Bing Video Arama API'sine arama istekleri gönderme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Bing Video Arama API'si gönderilen isteklerin yanı sıra döndürdüğü JSON yanıt nesnesinin parametreleri ve öznitelikleri açıklanmaktadır.
+description: Bu makalede, Bing Video Arama API'sine gönderilen isteklerin parametreleri ve özniteliklerinin yanı sıra döndürdüğü JSON yanlışlığı anlatılıyor.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220297"
 ---
-# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Arama API'si arama istekleri gönderiliyor
+# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Arama API'sine arama istekleri gönderme
 
-Bu makalede, Bing Video Arama API'si gönderilen isteklerin yanı sıra döndürdüğü JSON yanıt nesnesinin parametreleri ve öznitelikleri açıklanmaktadır. 
+Bu makalede, Bing Video Arama API'sine gönderilen isteklerin parametreleri ve özniteliklerinin yanı sıra döndürdüğü JSON yanlışlığı anlatılıyor. 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Bing Otomatik Öneri API'si ile arama terimleri önerin
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Bing Autosuggest API ile arama terimleri öner
 
 Kullanıcıların arama terimlerini gireceği bir arama kutusu sağlıyorsanız deneyimi geliştirmek için [Bing Otomatik Öneri API'sini](../../bing-autosuggest/get-suggested-search-terms.md) kullanın. API, kullanıcı yazarken kısmi arama terimlerine dayalı önerilen sorgu dizelerini yönetin.
 
-Kullanıcı, arama terimini girdikten sonra, [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) sorgu parametresini ayarlamadan önce URL 'yi kodlayın. Örneğin kullanıcı *sailing dinghies* terimini girerse `q` öğesini `sailing+dinghies` veya `sailing%20dinghies` olarak ayarlayın.
+Kullanıcı arama terimini girdikten [sonra, q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) sorgu parametresini ayarlamadan önce URL kodlayın. Örneğin kullanıcı *sailing dinghies* terimini girerse `q` öğesini `sailing+dinghies` veya `sailing%20dinghies` olarak ayarlayın.
 
-## <a name="sending-a-request"></a>İstek gönderiliyor
+## <a name="sending-a-request"></a>İstek gönderme
 
 Video arama sonuçlarını almak için aşağıdaki uç noktaya bir GET isteği gönderirsiniz:  
   
@@ -39,17 +39,17 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
    
 İstek, HTTPS protokolünü kullanmalıdır.
 
-Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Bir sunucudan çağrılar yapıldığında API 'nin gelecekteki sürümleri için tek bir yükseltme noktası da sağlanır.
+Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Sunucudan arama yapmak, API'nin gelecekteki sürümleri için tek bir yükseltme noktası da sağlar.
 
   
 İstek kullanıcının arama terimini içeren [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) sorgu parametresini belirtmelidir. Tercihe bağlı olmakla birlikte, istek, sonuçların gelmesini istediğiniz pazarı tanımlayan [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) sorgu parametresini de belirtmelidir. `pricing` gibi isteğe bağlı sorgu parametrelerinin bir listesi için bkz. [Sorgu Parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters). Tüm sorgu parametre değerleri URL olarak kodlanmış olmalıdır.  
   
 İstek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) üstbilgisini belirtmelidir. İsteğe bağlı olmakla birlikte şu üstbilgileri de belirtmeniz önerilir:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
+-   [Kullanıcı Aracısı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
+-   [X-Arama Yeri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
 İstemci IP'si ve konum üstbilgileri konuma duyarlı içerik döndürmek için önemlidir.  
 

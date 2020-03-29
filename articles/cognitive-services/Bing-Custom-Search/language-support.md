@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - Bing özel arama API'si
+title: Dil desteği - Bing Özel Arama API'si
 titleSuffix: Azure Cognitive Services
-description: Bing özel arama API'si için desteklenen diller ve bölgeler listesi.
+description: Bing Özel Arama API'si için desteklenen dillerin ve bölgelerin listesi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66388574"
 ---
-# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing özel arama API'si için dil ve bölge desteği
+# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Özel Arama API'si için dil ve bölge desteği
 
-Bing özel arama API'si, birden fazla üç düzine ülkeler/bölgeler, çoğu birden fazla dili destekler.
+Bing Özel Arama API'si, çoğu birden fazla dili olan üç düzineden fazla ülkeyi/bölgeyi destekler.
 
-İsteğe bağlı olsa da, istek belirtmelidir [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) gelen sonuçların istediğiniz Pazar tanımlayan sorgu parametresi. İsteğe bağlı sorgu parametreleri listesi için bkz. [sorgu parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
+İsteğe bağlı olsa da, istek, sonuçların nereden gelmesini istediğinizi tanımlayan [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) sorgu parametresini belirtmelidir. İsteğe bağlı sorgu parametreleri listesi için [sorgu parametrelerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) bakın
 
-Kullanarak bir ülke/bölge belirtin `cc` sorgu parametresi. Bir ülke/bölge belirtirseniz, kullanarak bir veya daha fazla dil kodunu da belirtmeniz gerekir `Accept-Language` başlığı. Desteklenen diller, ülke/bölgeye göre değişiklik gösterir; Her ülkesinde/bölgesinde için verilen **pazarlara** tablo.
+Sorgu parametresini `cc` kullanarak bir ülke/bölge belirtebilirsiniz. Bir ülke/bölge belirtirseniz, `Accept-Language` üstbilgi kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller ülkeye/bölgeye göre değişir; **piyasalar** tablosundaki her ülke/bölge için verilir.
 
-`Accept-Language` Üstbilgi ve `setLang` sorgu parametresi karşılıklı olarak birbirini dışlar — her ikisini birden belirtmeyin. Ayrıntılar için bkz [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+Üstbilgi `Accept-Language` ve `setLang` sorgu parametresi birbirini dışlayan her ikisini de belirtmez. Ayrıntılar için [bkz.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)
 
-## <a name="countriesregions"></a>Ülkeler/bölgeler
+## <a name="countriesregions"></a>Ülkeler / Bölgeler
 
 |Ülke/bölge|Kod|
 |-------|----|
@@ -42,7 +42,7 @@ Kullanarak bir ülke/bölge belirtin `cc` sorgu parametresi. Bir ülke/bölge be
 |Finlandiya|FI|
 |Fransa|GS|
 |Almanya|DE|
-|Hong Kong SAR|HK|
+|Hong Kong ÖİB|HK|
 |Hindistan|IN|
 |Endonezya|Kimlik|
 |İtalya|BT|
@@ -69,47 +69,47 @@ Kullanarak bir ülke/bölge belirtin `cc` sorgu parametresi. Bir ülke/bölge be
 |Amerika Birleşik Devletleri|ABD|
 
 
-## <a name="markets"></a>Pazarlar
+## <a name="markets"></a>Piyasa
 
-|Ülke/bölge|Dil|Pazar kod|
+|Ülke/bölge|Dil|Piyasa Kodu|
 |-------|--------|-----------|
 |Arjantin|İspanyolca|es-AR|
-|Avustralya|Türkçe|tr-AU|
+|Avustralya|Türkçe|en-AU|
 |Avusturya|Almanca|de-AT|
-|Belçika|Felemenkçe|NL-olabilir|
-|Belçika|Fransızca|FR-olabilir|
+|Belçika|Felemenkçe|nl-BE|
+|Belçika|Fransızca|fr-BE|
 |Brezilya|Portekizce|pt-BR|
-|Kanada|Türkçe|CA tr|
+|Kanada|Türkçe|tr-CA|
 |Kanada|Fransızca|fr-CA|
-|Şili|İspanyolca|ES-CL|
-|Danimarka|Danca|v-DK|
-|Finlandiya|Fince|FI-FI|
+|Şili|İspanyolca|es-CL|
+|Danimarka|Danca|da-DK|
+|Finlandiya|Fince|fi-FI|
 |Fransa|Fransızca|fr-FR|
 |Almanya|Almanca|de-DE|
-|Hong Kong ÖİB|Geleneksel Çince|zh-HK|
-|Hindistan|Türkçe|tr-giriş|
-|Endonezya|Türkçe|tr kimliği|
-|İtalya|İtalyanca|İt-IT|
+|Hong Kong, SAR|Geleneksel Çince|zh-HK|
+|Hindistan|Türkçe|en-IN|
+|Endonezya|Türkçe|tr-ID|
+|İtalya|İtalyanca|it-IT|
 |Japonya|Japonca|ja-JP|
 |Güney Kore|Korece|ko-KR|
-|Malezya|Türkçe|MY tr|
+|Malezya|Türkçe|en-MY|
 |Meksika|İspanyolca|es-MX|
-|Hollanda|Felemenkçe|NL-NL|
-|Yeni Zelanda|Türkçe|tr NZ|
-|Norveç|Norveççe|no-NO|
+|Hollanda|Felemenkçe|nl-NL|
+|Yeni Zelanda|Türkçe|en-NZ|
+|Norveç|Norveççe|Hayır|
 |Çin|Çince|zh-CN|
 |Polonya|Lehçe|pl-PL|
 |Portekiz|Portekizce|pt-PT|
-|Filipinler|Türkçe|tr PH|
+|Filipinler|Türkçe|en-PH|
 |Rusya|Rusça|ru-RU|
 |Suudi Arabistan|Arapça|ar-SA|
-|Güney Afrika|Türkçe|tr-ZA|
+|Güney Afrika|Türkçe|en-ZA|
 |İspanya|İspanyolca|es-ES|
 |İsveç|İsveççe|sv-SE|
-|İsviçre|Fransızca|FR-CH|
+|İsviçre|Fransızca|fr-CH|
 |İsviçre|Almanca|de-CH|
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
-|Birleşik Krallık|Türkçe|en-GB|
-|Amerika Birleşik Devletleri|Türkçe|en-US|
-|Amerika Birleşik Devletleri|İspanyolca|ES-ABD|
+|Birleşik Krallık|Türkçe|tr-TR|
+|Amerika Birleşik Devletleri|Türkçe|tr-TR|
+|Amerika Birleşik Devletleri|İspanyolca|es-ABD|

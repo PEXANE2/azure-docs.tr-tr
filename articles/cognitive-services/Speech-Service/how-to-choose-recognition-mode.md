@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK 'Sı ile konuşma tanıma modunu seçme
+title: Konuşma SDK ile konuşma tanıma modu seçin
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sını kullanırken en iyi tanıma modunu seçme hakkında bilgi edinin.
+description: Konuşma SDK'sını kullanırken en iyi tanıma modunu nasıl seçeceğinizi öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79079823"
 ---
-# <a name="choose-a-speech-recognition-mode"></a>Konuşma tanıma modunu seçin
+# <a name="choose-a-speech-recognition-mode"></a>Konuşma tanıma modu nu seçin
 
-Konuşmayı metne dönüştürme işlemlerini değerlendirirken, [konuşma SDK 'sı](speech-sdk.md) , konuşmayı işlemek için birden çok mod sağlar. Kavramsal olarak bazen *Tanıma modu*olarak da adlandırılır. Bu makalede çeşitli tanıma modları karşılaştırılır.
+Konuşmadan metne tanıma işlemleri göz önüne alındığında, [Konuşma SDK](speech-sdk.md) konuşma işleme için birden çok mod sağlar. Kavramsal olarak, bazen *tanıma modu*denir. Bu makalede, çeşitli tanıma modları karşılaştırılır.
 
-## <a name="recognize-once"></a>Bir kez tanı
+## <a name="recognize-once"></a>Bir kez tanıyın
 
-Her seferinde bir "cümleyi" tek seferde işlemek istiyorsanız, "bir kez tanı" işlevini kullanın. Bu yöntem, bir sonraki duraklatmaya kadar algılanan konuşmanın başlangıcında başlayan girişten tanınan bir şekilde algılar. Genellikle, bir, bir tümcenin veya bir düşünün sonunu işaret eden bir duraklama.
+Her söyleyişi bir defada bir "cümle" olarak işlemek istiyorsanız, "bir kez tanı" işlevini kullanın. Bu yöntem, algılanan konuşmanın başlangıcından bir sonraki duraklamaya kadar başlayarak girişten tanınan bir söylemi algılar. Genellikle, bir duraklama bir cümlenin veya düşünce çizgisinin sonunu işaretler.
 
-Tanınan bir zaman sonunda hizmet, bu istekten ses işlemeyi durduruyor. Maksimum tanıma sınırı 20 saniyelik bir cümle süresi olur.
+Tanınan bir sözcük sonunda, hizmet bu istekten gelen sesi işlemeyi durdurur. Tanıma için maksimum sınır 20 saniyelik bir ceza süresidir.
 
 ::: zone pivot="programming-language-csharp"
 
-`RecognizeOnceAsync` işlevini kullanma hakkında daha fazla bilgi için bkz. [.net konuşma SDK belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
+İşlevin `RecognizeOnceAsync` kullanımı hakkında daha fazla bilgi için [.NET Speech SDK dokümanlarına](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)bakın.
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-`RecognizeOnceAsync` işlevini kullanma hakkında daha fazla bilgi için [ C++ konuşma SDK belgelerine](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)bakın.
+İşlevin `RecognizeOnceAsync` kullanımı hakkında daha fazla bilgi için [C++ Konuşma SDK dokümanlarına](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)bakın.
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-`recognizeOnceAsync` işlevini kullanma hakkında daha fazla bilgi için bkz. [Java konuşma SDK belgeleri](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable).
+İşlevin `recognizeOnceAsync` kullanımı hakkında daha fazla bilgi için [Java Konuşma SDK dokümanlarına](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)bakın.
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-`recognize_once` işlevini kullanma hakkında daha fazla bilgi için bkz. [Python konuşma SDK belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult).
+İşlevin `recognize_once` kullanımı hakkında daha fazla bilgi için [Python Speech SDK dokümanlarına](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)bakın.
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -66,13 +66,13 @@ result = speech_recognizer.recognize_once()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Ek diller için bkz. [konuşma SDK 'sı başvuru belgeleri](speech-to-text.md#speech-sdk-reference-docs).
+Ek diller için [Konuşma SDK başvuru dokümanlarına](speech-to-text.md#speech-sdk-reference-docs)bakın.
 
 ::: zone-end
 
 ## <a name="continuous"></a>Sürekli
 
-Uzun süre çalışan tanıma gerekirse, sürekli tanıma için başlangıç ve karşılık gelen durdurma işlevlerini kullanın. Başlat işlevi başlar ve durdurma işlevini çağırana veya sessizlik içinde çok fazla zamana kadar tüm eşyaları işlemeye devam eder. Sürekli modu kullanırken, oluşumdan sonra tetiklendirilecektir çeşitli olaylara kaydolduğunuzdan emin olun. Örneğin, "tanınan" olay konuşma tanıma oluştuğunda ateşlenir. Tanımayı işlemek için bir olay işleyiciniz olması gerekir.
+Uzun süreli tanımaya ihtiyacınız varsa, sürekli tanıma için başlangıç ve karşılık gelen durdurma işlevlerini kullanın. Başlatma işlevi, durdurma işlevini çağırana veya sessizlikte çok fazla zaman geçene kadar tüm tüm söyleyişleri başlatAcak ve işlemeye devam edecektir. Sürekli modu kullanırken, meydana geldiğinde ortaya çıkacak çeşitli olaylara kaydolduğunuzdan emin olun. Örneğin, konuşma tanıma gerçekleştiğinde "tanınan" olay yangınları. Tanımayı işlemek için bir olay işleyicisi olması gerekir.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -154,17 +154,17 @@ speech_recognizer.stop_continuous_recognition()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Ek diller için bkz. [konuşma SDK 'sı başvuru belgeleri](speech-to-text.md#speech-sdk-reference-docs).
+Ek diller için [Konuşma SDK başvuru dokümanlarına](speech-to-text.md#speech-sdk-reference-docs)bakın.
 
 ::: zone-end
 
-## <a name="dictation"></a>Etme
+## <a name="dictation"></a>Dikte
 
-Sürekli tanıma kullanırken, ilgili "dikte etmeyi etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, konuşma yapılandırma örneğinin noktalama gibi tümce yapılarının sözcük açıklamalarını yorumlamasını sağlar. Örneğin, "kasadaki gerçek zamanlı olarak", "kasadaki canlı mısınız?" metni olarak yorumlanabilir.
+Sürekli tanıma kullanırken, ilgili "dikte işlemini etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, noktalama işaretleri gibi tümce yapılarının sözcük açıklamalarını yorumlamak için konuşma config örneğine neden olur. Örneğin, "Şehirde mi yaşıyorsunuz soru işareti" sözü "Şehirde mi yaşıyorsunuz?" şeklinde yorumlanır.
 
 ::: zone pivot="programming-language-csharp"
 
-`EnableDictation` işlevini kullanma hakkında daha fazla bilgi için bkz. [.net konuşma SDK belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation).
+İşlevin `EnableDictation` kullanımı hakkında daha fazla bilgi için [.NET Speech SDK dokümanlarına](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)bakın.
 
 ```csharp
 // Enable diction
@@ -174,7 +174,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-`EnableDictation` işlevini kullanma hakkında daha fazla bilgi için [ C++ konuşma SDK belgelerine](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)bakın.
+İşlevin `EnableDictation` kullanımı hakkında daha fazla bilgi için [C++ Konuşma SDK dokümanlarına](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)bakın.
 
 ```cpp
 // Enable diction
@@ -184,7 +184,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-`enableDictation` işlevini kullanma hakkında daha fazla bilgi için bkz. [Java konuşma SDK belgeleri](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable).
+İşlevin `enableDictation` kullanımı hakkında daha fazla bilgi için [Java Konuşma SDK dokümanlarına](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)bakın.
 
 ```java
 // Enable diction
@@ -194,7 +194,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-`enable_dictation` işlevini kullanma hakkında daha fazla bilgi için bkz. [Python konuşma SDK belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--).
+İşlevin `enable_dictation` kullanımı hakkında daha fazla bilgi için [Python Speech SDK dokümanlarına](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)bakın.
 
 ```python
 # Enable diction
@@ -204,11 +204,11 @@ SpeechConfig.enable_dictation()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Ek diller için bkz. [konuşma SDK 'sı başvuru belgeleri](speech-to-text.md#speech-sdk-reference-docs).
+Ek diller için [Konuşma SDK başvuru dokümanlarına](speech-to-text.md#speech-sdk-reference-docs)bakın.
 
 ::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub 'da ek konuşma SDK 'Sı örneklerini keşfet](https://aka.ms/csspeech/samples)
+> [GitHub'da ek Konuşma SDK örneklerini keşfedin](https://aka.ms/csspeech/samples)

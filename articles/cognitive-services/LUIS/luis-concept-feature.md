@@ -1,7 +1,7 @@
 ---
-title: Özellikler-LUSıS
+title: Özellikler - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bir dil modeli, ipuçlarını, etiket veya sınıflandırmak istediğiniz giriş anlamayı hakkında sağlamaya özellikleri ekleyin.
+description: Etiketlemek veya sınıflandırmak istediğiniz girişi nasıl tanıyacağınız hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,83 +12,83 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221001"
 ---
-# <a name="machine-learned-features"></a>Makine tarafından öğrenilen Özellikler 
+# <a name="machine-learned-features"></a>Makinede öğrenilen özellikler 
 
-Machine Learning 'de, bir _özellik_ , sistem engellerinizin öğrendiği & öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir. Language Understanding (LUSıS) ' de bir özellik, amaç ve varlıklarınız hakkında ne kadar önemli olduğunu açıklar ve açıklar.
+Makine öğreniminde bir _özellik,_ sisteminizin gözlemlediği & öğrendiği verilerin ayırt edici bir özelliği veya niteliğidir. Dil Anlama (LUIS) 'de bir özellik, amacınız ve varlıklarınız hakkında neyin önemli olduğunu açıklar ve açıklar.
 
-[ÖNIZLEME luın portalında](https://preview.luis.ai)özellikler, amacı veya varlığı _anlatmak_ için kullanıldıklarından _tanımlayıcılardır_ .  
+Önizleme [LUIS portalında,](https://preview.luis.ai)özellikleri _tanımlayıcıdır,_ çünkü amaç veya varlığı _tanımlamak_ için kullanılırlar.  
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Language Understanding Özellikler (_tanımlayıcılar_)
+## <a name="features-_descriptors_-in-language-understanding"></a>Dil Anlamada Özellikler (_tanımlayıcılar)_
 
-Tanımlayıcılar olarak da bilinen özellikler, örnek söylerinizi belirlemek Language Understanding yardım için ipuçlarına açıklama sağlar. Şu özellikler mevcuttur: 
+Tanımlayıcı olarak da bilinen özellikler, Dil Anlama'nın örnek sözcüklerini tanımlamasına yardımcı olacak ipuçlarını açıklar. Şu özellikler mevcuttur: 
 
-* Amaçlar veya varlıklar için özellik olarak ifade listesi
-* Amaçlar veya varlıklara özellikler olarak varlıklar
+* Niyetveya tüzel kişiliklere özellik olarak ifade listesi
+* Niyetlere veya varlıklara özellik olarak varlıklar
 
 Özellikler, model ayrıştırma için şemanızın gerekli bir parçası olarak düşünülmelidir. 
 
-## <a name="what-is-a-phrase-list"></a>Tümcecik listesi nedir?
+## <a name="what-is-a-phrase-list"></a>İfade listesi nedir
 
-Tümcecik listesi, belirlemeye çalıştığınız kavramı belirlemeye yardımcı olan sözcüklerin, deyimlerin, sayıların veya diğer karakterlerin bir listesidir. Liste büyük/küçük harfe duyarlıdır. 
+Tümcecik listesi, tanımlamaya çalıştığınız kavramı tanımlamaya yardımcı olan sözcüklerin, tümceciklerin, sayıların veya diğer karakterlerin listesidir. Liste büyük/küçük harf duyarsız. 
 
 ## <a name="when-to-use-a-phrase-list"></a>Tümcecik listesi ne zaman kullanılır?
 
-Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin eşleşmesi değil, öğesine benzer öğeleri belirler. LUSıS uygulamanızın yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerekiyorsa, bir tümcecik listesi kullanın. 
+Bir tümcecik listesiyle, LUIS bağlamı dikkate alır ve tam bir metin eşleşmesine benzer, ancak tam olmayan öğeleri tanımlamak için genelleştirir. Yeni öğeleri genelleştirebilmek ve tanımlayabilmek için LUIS uygulamanıza ihtiyacınız varsa, bir ifade listesi kullanın. 
 
-Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi yeni örnekleri tanıyabilmek istediğinizde, makine tarafından öğrenilen bir varlıkla başlayın. Ardından, LUO 'NUN benzer anlamlara sahip sözcüklerin bulmasına yardımcı olan bir tümcecik listesi oluşturun. Bu tümcecik listesi, LUSıS 'in bu sözcüklerin değerine ek anlam ekleyerek örnekleri tanımasını sağlar. 
+Yeni kişilerin adlarını tanıması gereken bir toplantı zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi yeni örnekleri tanıyabilmek istediğinizde, makinede öğrenilen bir varlıkla başlayın. Ardından, LUIS'in benzer anlamdaki sözcükleri bulmasına yardımcı olan bir ifade listesi oluşturun. Bu ifade listesi, luis'in bu sözcüklerin değerine ek önem ekleyerek örnekleri tanımasını yönlendirir. 
 
-Hedefleri ve varlıkları anlama kalitesini geliştirme ile yardımcı etki alanına özel sözlük ifade listeleri gibidir. 
+Tümcecik listeleri, hem amaçların hem de varlıkların anlama kalitesini artırmaya yardımcı olan etki alanına özgü kelime dağarcığı gibidir. 
 
-## <a name="considerations-when-using-a-phrase-list"></a>Tümcecik listesi kullanırken dikkat edilecek noktalar
+## <a name="considerations-when-using-a-phrase-list"></a>İfade listesi kullanırken dikkat edilmesi gerekenler
 
-Bir tümcecik listesi, varsayılan olarak uygulamadaki tüm modellere uygulanır. Bu, tüm amaçları ve varlıkları çapraz bir şekilde ifade eden tümcecik listelerinde çalışacaktır. Ölülebilirlik için, yalnızca ilgili olduğu modellere bir tümcecik listesi uygulamanız gerekir. 
+Varsayılan olarak uygulamadaki tüm modellere bir ifade listesi uygulanır. Bu, tüm niyet ve varlıkları geçebilecek tümcecik listeleri için çalışır. Decomposability için, yalnızca ilgili modellere bir tümcecik listesi uygulamanız gerekir. 
 
-Bir tümcecik listesi oluşturur (varsayılan olarak genel olarak oluşturulur), daha sonra bunu belirli bir modele tanımlayıcı (özellik) olarak uygularsanız, diğer modellerden kaldırılır. Bu kaldırma, uygulandığı model için tümcecik listesine ilgi ekler ve modelin sağladığı doğruluğu artırmaya yardımcı olur. 
+Bir tümcecik listesi oluşturursanız (varsayılan olarak genel olarak oluşturulur), daha sonra belirli bir modele tanımlayıcı (özellik) olarak uygularsanız, diğer modellerden kaldırılır. Bu kaldırma, uygulandığı modeliçin ifade listesine alaka ekler ve modelde sağladığı doğruluğu artırmaya yardımcı olur. 
 
-`enabledForAllModels` bayrağı, bu model kapsamını API 'de denetler. 
+Bayrak `enabledForAllModels` API'deki bu model kapsamını denetler. 
 
 <a name="how-to-use-phrase-lists"></a>
 
-### <a name="how-to-use-a-phrase-list"></a>Tümcecik listesi kullanma
+### <a name="how-to-use-a-phrase-list"></a>İfade listesi nasıl kullanılır?
 
-Amaç veya varlığınızda şu gibi önemli sözcükler ya da tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) :
+Amacınız veya tüzel kişiliğiniz gibi önemli sözcük veya tümceciklere sahipolduğunda [bir ifade listesi oluşturun:](luis-how-to-add-features.md)
 
-* sektör koşulları
+* endüstri terimleri
 * Argo
-* kısaltmaları
-* şirkete özgü dil
-* başka bir dilden, ancak uygulamanızda sık kullanılan dil
-* örneğinizdeki önemli sözcükler ve tümcecikler
+* Kısaltma
+* şirkete özel dil
+* başka bir dilden gelen ancak uygulamanızda sık kullanılan dil
+* örnek sözlerindeki anahtar sözcükler ve ifadeler
 
-Olası her sözcük veya **tümceciği eklemeyin.** Bunun yerine, bir kerede birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlama. Liste zamanla büyüdükçe, bazı terimlerin birçok formu (eş anlamlı) olduğunu fark edebilirsiniz. Bunları başka bir listeye bölün. 
+Mümkün olan her kelimeyi veya tümceciği **eklemeyin.** Bunun yerine, aynı anda birkaç sözcük veya tümcecik ekleyin, ardından yeniden eğitin ve yayımlayın. Liste zamanla büyüdükçe, bazı terimlerin birçok biçimi (eşanlamlısı) olduğunu görebilirsiniz. Bunları başka bir listeye ayır. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Bir varlık özellik olarak ne zaman kullanılır? 
+## <a name="when-to-use-an-entity-as-a-feature"></a>Bir varlığın özellik olarak ne zaman kullanılacağı 
 
 Bir varlık, amaç veya varlık düzeyinde bir özellik olarak eklenebilir. 
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Amaç özelliği olarak varlık
+### <a name="entity-as-a-feature-to-an-intent"></a>Bir amacın özelliği olarak varlık
 
-Varlığın algılanması amaç için önemli olduğunda bir amaca tanımlayıcı (özellik) olarak bir varlık ekleyin.
+Bu varlığın algılanması amaç için önemli olduğunda, bir amaca tanımlayıcı (özellik) olarak bir varlık ekleyin.
 
-Örneğin, amaç bir uçuş sağlamak için ise ve varlık bilet bilgileri (örneğin, bilgisayar sayısı, kaynak ve hedef) ise, Bilet bilgileri varlığının bulunması, kitap kolu hedefinin tahminiyle ilgili ağırlık eklemesi gerekir. 
+Örneğin, amaç bir uçuş rezervasyonuysa ve varlık bilet bilgileriyse (koltuk sayısı, menşei ve varış noktası gibi), bilet bilgileri varlığını bulmak kitap uçuş niyetinin tahminine ağırlık katmalıdır. 
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Başka bir varlığa özellik olarak varlık
+### <a name="entity-as-a-feature-to-another-entity"></a>Başka bir varlığın özelliği olarak varlık
 
-Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabilmesi durumunda başka bir varlığa (B) bir özellik olarak eklenmelidir.
+Bir varlık (A), varlığın (B) tahmini için önemli olduğunda, bir varlık (B) özelliği olarak başka bir varlığa (B) eklenmelidir.
 
-Örneğin, sokak adresi varlığı (A) algılanırsa, sokak adresini bulma (A), sevkiyat adresi varlığı için tahmine ağırlık ekler (B). 
+Örneğin, sokak adresi varlığı (A) algılanırsa, (A) sokak adresini bulmak, sevkiyat adresi varlığı (B) için tahmine ağırlık katar. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
+[En iyi uygulamaları](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-LUSıS uygulamanıza özellikler ekleme hakkında daha fazla bilgi edinmek için bkz. [özellik ekleme](luis-how-to-add-features.md) .
+LUIS uygulamanıza nasıl özellikler ekleyeceğiniz hakkında daha fazla bilgi edinmek için [Özellikler Ekle'ye](luis-how-to-add-features.md) bakın.

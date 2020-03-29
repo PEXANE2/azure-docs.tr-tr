@@ -1,7 +1,7 @@
 ---
-title: Inceleme Aracı ayarlarını yapılandırma-Content Moderator
+title: Gözden Geçirme araç ayarlarını yapılandır - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
-description: Content Moderator için ekibiniz, Etiketler, bağlayıcılar, iş akışları ve kimlik bilgilerinizi yapılandırmak ya da almak için Inceleme aracını kullanın.
+description: İçerik Moderatörü için ekibinizi, etiketlerinizi, bağlayıcılarınızı, iş akışlarını ve kimlik bilgilerini yapılandırmak veya almak için Gözden Geçirme aracını kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,133 +11,133 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220132"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com) , panodaki **Ayarlar** menüsünde erişebileceğiniz bazı önemli özellikler vardır.
+[Gözden Geçirme aracı,](https://contentmoderator.cognitive.microsoft.com) panodaki **Ayarlar** menüsünden erişebileceğiniz birkaç önemli özelliğe sahiptir.
 
-![Content Moderator gözden geçirme ayarları menüsü](images/settings-1.png)
+![İçerik Moderatör İnceleme çok ayarlar menüsü](images/settings-1.png)
 
-## <a name="manage-team-and-subteams"></a>Ekip ve alt takımları yönetme
+## <a name="manage-team-and-subteams"></a>Ekibi ve alt takımları yönetme
 
-**Takım** sekmesi, takımınızın ve alt takımlarınızın&mdash;, bazı [insan İncelemeleri](../review-api.md#reviews) başlatıldığında bildirimde bulunulerişebilecek Kullanıcı gruplarını yönetmenizi sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
+**Takım** sekmesi, belirli insan&mdash; [incelemeleri](../review-api.md#reviews) başlatıldığında haberdar edilebilen ekip ve alt kullanıcı gruplarını yönetmenize olanak tanır. Yalnızca bir takımınız olabilir (Gözden Geçirme aracına kaydolduğunuzda oluşturduğunuz) ancak birden çok alt takım oluşturabilirsiniz. Takım yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve farklı alt takımlara atayabilir.
 
-![Araç takımı ayarlarını gözden geçirme](images/settings-2-team.png)
+![Araç ekibi ayarlarını gözden geçirme](images/settings-2-team.png)
 
-Alt takımlar, belirli içerik kategorilerini gözden geçirmek için adanmış, yükseltme ekipleri veya takımlar oluşturmak için faydalıdır. Örneğin, daha fazla gözden geçirmek için yetişkinlere yönelik içeriği ayrı bir ekibe gönderebilirsiniz.
+Alt ekipler, belirli içerik kategorilerini gözden geçirmeye adanmış yükseltme ekipleri veya ekipler oluşturmak için yararlıdır. Örneğin, daha fazla inceleme için yetişkinlere uygun içeriği ayrı bir ekibe gönderebilirsiniz.
 
-Bu bölümde, subekipler oluşturma ve anında İncelemeleri hızlı bir şekilde atama işlemleri açıklanmaktadır. Ancak, belirli ölçütlere göre incelemeler atamak için [Iş akışları](workflows.md) kullanabilirsiniz.
+Bu bölümde, alt takımların nasıl oluşturulup anında inceleme atayılabildiğiniz açıklanmaktadır. Ancak, belirli ölçütlere göre incelemeler atamak için [İş Akışlarını](workflows.md) kullanabilirsiniz.
 
 ### <a name="create-a-subteam"></a>Alt takım oluşturma
 
-**Alt takımlar** bölümüne gidin ve **alt takım Ekle**' ye tıklayın. İletişim kutusuna alt takımınızın adını girin ve **Kaydet**' e tıklayın.
+**Alt Takımlar** bölümüne gidin ve Alt **Takım Ekle'yi**tıklatın. Alt takım adınızı iletişim kutusuna girin ve **Kaydet'i**tıklatın.
 
-![Alt takım adı](images/1-Teams-2.PNG)
+![Alt Takım Adı](images/1-Teams-2.PNG)
 
-#### <a name="invite-teammates"></a>Ekip mates 'i davet etme
+#### <a name="invite-teammates"></a>Takım arkadaşlarını davet et
 
-Zaten varsayılan ekibin üyesi olmayan bir alt ekibe bir Kullanıcı atayamazsınız, bu nedenle önce varsayılan ekibe gözden geçirenler eklemeniz gerekir. **Takım** sekmesinde **davet et** ' e tıklayın.
+Varsayılan takımın zaten bir üyesi değilse, bir alt takıma birini atayamazsınız, bu nedenle önce varsayılan takıma gözden geçirenleri eklemeniz gerekir. **Takım** sekmesinde **Davet et'i** tıklatın.
 
 ![Kullanıcıları davet etme](images/invite-users.png)
 
-#### <a name="assign-teammates-to-subteam"></a>Ekip mates 'yi alt ekibe atama
+#### <a name="assign-teammates-to-subteam"></a>Alt takıma takım arkadaşları atama
 
-Varsayılan takımınızdan bir veya daha fazla alt takıma üye atamak için **üye Ekle** düğmesine tıklayın. Yalnızca bir alt takıma mevcut kullanıcıları ekleyebilirsiniz. İnceleme aracında olmayan yeni kullanıcılar eklemek için, takım ayarları sayfasındaki "davet" düğmesini kullanarak bunları davet edin.
+Varsayılan ekibinizden bir veya daha fazla alt takıma üye atamak için **Üye Ekle** düğmesini tıklatın. Varolan kullanıcıları yalnızca bir alt takıma ekleyebilirsiniz. İnceleme aracında olmayan yeni kullanıcılar eklemek için, Takım Ayarları sayfasındaki "Davet Et" düğmesini kullanarak onları davet edin.
 
-![Alt takım üyeleri atama](images/1-Teams-3.PNG)
+![Alt takım üyelerini atama](images/1-Teams-3.PNG)
 
-### <a name="assign-reviews-to-subteams"></a>Alt takımlara incelemeler atama
+### <a name="assign-reviews-to-subteams"></a>Alt takımlara yorum atama
 
-Alt ekiplerinizi oluşturduktan ve üyeleri atadıktan sonra, bu alt takımlara içerik [İncelemeleri](../review-api.md#reviews) atamaya başlayabilirsiniz. Bu, sitenin **Gözden geçirme** sekmesinden yapılır.
-Bir alt takıma içerik atamak için sağ üst köşedeki üç noktaya tıklayın, **Git**' i seçin ve bir alt takım seçin.
+Alt takımlarınızı oluşturduktan ve üyeleri atadıktan sonra, bu alt takımlara içerik [incelemeleri](../review-api.md#reviews) atamaya başlayabilirsiniz. Bu, sitenin **Gözden Geçirme** sekmesinden yapılır.
+Bir alt takıma içerik atamak için sağ üst köşedeki elipsleri tıklatın, **"Taşı"** seçeneğini belirleyin ve bir alt takım seçin.
 
-![Alt ekibe görüntü incelemesi atama](images/3-review-image-subteam-1.png)
+![Alt takıma resim incelemesi atama](images/3-review-image-subteam-1.png)
 
-### <a name="switch-between-subteams"></a>Alt takımlar arasında geçiş yap
+### <a name="switch-between-subteams"></a>Alt takımlar arasında geçiş
 
-Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incelemelerini değiştirmek üzere bu alt takımlar arasında geçiş yapabilirsiniz. **Gözden geçir** sekmesinde **varsayılan** etiketli açılan menüyü seçin ve **alt takım seç**' i seçin. Farklı alt takımlar için içerik incelemelerini, ancak yalnızca sizin üye olduğunu görüntüleyebilirsiniz.
+Birden fazla alt takımın üyesiyseniz, sizin için hangi içerik yorumlarının görüntülendiğini değiştirmek için bu alt takımlar arasında geçiş yapabilirsiniz. Gözden **Geçir** sekmesinde, **Varsayılan** etiketli açılır menüyü seçin ve **Alt Takımı Seçin'i**seçin. Farklı alt takımların içerik incelemelerini, ancak yalnızca sizin üye olduğunuz kişileri görüntüleyebilirsiniz.
 
-![Alt takımlar arasında geçiş yap](images/3-review-image-subteam-2.png)
+![Alt takımlar arasında geçiş](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Etiketler
 
-**Etiketler** sekmesi, **ıyetişkin** (**a**) ve **isracy** (**r**)&mdash;iki varsayılan denetleme etiketine ek olarak özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi, iki varsayılan ılımlılık etiketleri&mdash;**isadult** (**a**) ve **isracy** (**r)** ek olarak özel ılımlılık etiketleri tanımlamanızı sağlar. Özel bir etiket oluşturduğunuzda, varsayılan etiketlerin yanında incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek incelemelerde hangi etiketlerin görüneceğini değiştirebilirsiniz.
 
-!["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
+![Etiketler görünüm, "Görünür" onay kutuları da dahil olmak üzere](images/tags-4-disable.png)
 
-### <a name="create-custom-tags"></a>Özel Etiketler oluşturma
+### <a name="create-custom-tags"></a>Özel etiketler oluşturma
 
 Yeni bir etiket oluşturmak için ilgili alanlara kısa bir kod, ad ve açıklama girmeniz gerekir.
 
-- **Kısa kod**: etiketinize yönelik iki harfli bir kod girin. Örnek: **CB**
-- **Ad**: boşluk olmadan küçük harfli bir kısa ve açıklayıcı etiket adı girin. Örnek: **ıbulber**.
-- **Açıklama**: (isteğe bağlı) etiketlerinizin hedeflediği içerik türünün bir açıklamasını girin. Örnek: **tasber bulun tasviri veya örnekleri**.
+- **Kısa kod**: Etiketiniz için iki harfli bir kod girin. Örnek: **cb**
+- **Adı**: Boşluksuz küçük harfe kısa ve açıklayıcı bir etiket adı girin. Örnek: **isbullying**.
+- **Açıklama**: (isteğe bağlı) Etiketinizin hedeflenedığı içeriğin açıklamasını girin. Örnek: **Resim veya siber zorbalık örnekleri.**
 
-Etiket eklemek için **Ekle** ' ye tıklayın ve etiket oluşturmayı bitirdiğinizde **Kaydet** ' e tıklayın.
+Etiket eklemek için **Ekle'yi** tıklatın ve etiket oluşturmayı bitirdiğinizde **Kaydet'i** tıklatın.
 
-![İnceleme aracı yeni etiket oluştur iletişim kutusu](images/settings-3-tags.png)
+![İnceleme aracı yeni etiket iletişim kutusu oluşturma](images/settings-3-tags.png)
 
-### <a name="delete-tags"></a>Etiketleri Sil
+### <a name="delete-tags"></a>Etiketleri silme
 
 Etiketler listesindeki girişlerinin yanındaki çöp kutusu simgesini seçerek özel etiketleri silebilirsiniz, ancak varsayılan etiketleri silemezsiniz.
 
 ## <a name="connectors"></a>Bağlayıcılar
 
-**Bağlayıcılar** sekmesi, içerik [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı yollarla içeriği işleyebilen, hizmete özgü eklentiler olan bağlayıcılarınızı yönetmenizi sağlar.
+**Bağlayıcılar** sekmesi, içeriği [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı şekillerde işleyebilen hizmete özel eklentiler olan bağlayıcılarınızı yönetmenize olanak tanır.
 
-Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık**olarak işaretleyebilir, küfür bulun vb. Ancak, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, yüz bağlayıcısını kullanmak için bir [yüz](https://docs.microsoft.com/azure/cognitive-services/face/overview) abonelik anahtarı almanız gerekir) kullanabilirsiniz.
+Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı, içeriği **yetişkinlere uygun** veya **müstehcen**olarak işaretleyebilen, küfür bulabileceğiniz ve benzeri İçerik yöneticisi olan İçerik Moderatörü bağlayıcısıdır. Ancak, burada listelenen diğer bağlayıcıları, ilgili hizmetleri için kimlik bilgilerine sahip olduğunuz sürece (örneğin Yüz konektörünü kullanmak için bir [Yüz](https://docs.microsoft.com/azure/cognitive-services/face/overview) abonelik anahtarı almanız gerekir) kullanabilirsiniz.
 
-[İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
+[Gözden Geçirme aracı](./human-in-the-loop.md) aşağıdaki bağlayıcıları içerir:
 
 - Duygu Tanıma
 - Yüz
-- PhotoDNA bulut hizmeti
+- PhotoDNA Bulut Hizmeti
 - Metin Analizi
 
 ### <a name="add-a-connector"></a>Bağlayıcı ekleme
 
-Bir bağlayıcı eklemek için (ve içerik [iş akışlarında](../review-api.md#workflows)kullanılabilir hale getirmek için), uygun **Bağlan** düğmesini seçin. Sonraki iletişim kutusunda, bu hizmet için abonelik anahtarınızı girin. İşiniz bittiğinde yeni bağlayıcınızın sayfanın en üstünde görünmesi gerekir.
+Bağlayıcı eklemek (ve içerik [iş akışlarında](../review-api.md#workflows)kullanıma hazır hale getirmek) için uygun **Bağlan** düğmesini seçin. Bir sonraki iletişim kutusunda, bu hizmet için abonelik anahtarınızı girin. Işiniz bittiğinde, yeni bağlayıcınız sayfanın üst kısmında görünmelidir.
 
-![Content Moderator bağlayıcı ayarları](images/settings-4-connectors.png)
+![İçerik Moderatör Bağlayıcıları Ayarları](images/settings-4-connectors.png)
 
 ## <a name="workflows"></a>İş akışları
 
-**İş** akışları sekmesi, [iş](../review-api.md#workflows)akışlarınızı yönetmenizi sağlar. İş akışları, içerik için bulut tabanlı filtrelerdir ve içeriği farklı yollarla sıralamak ve uygun işlemleri yapmak için bağlayıcılarla birlikte çalışırlar. Burada, iş akışlarınızı tanımlayabilir, düzenleyebilir ve test edebilirsiniz. Bunun nasıl yapılacağını gösteren yönergeler için bkz. [iş akışlarını tanımlama ve kullanma](Workflows.md) .
+**İş akışları** [sekmesi, iş akışlarınızı](../review-api.md#workflows)yönetmenize olanak tanır. İş akışları içerik için bulut tabanlı filtrelerdir ve içeriği farklı şekillerde sıralamak ve uygun eylemleri yapmak için bağlayıcılarla birlikte çalışırlar. Burada, iş akışlarınızı tanımlayabilir, edinebilir ve sınayabilirsiniz. Bkz. İş akışlarını nasıl yapılacağını belirlemek için [tanımlayın ve kullanın.](Workflows.md)
 
-![Content Moderator Iş akışı ayarları](images/settings-5-workflows.png)
+![İçerik Moderatör İş Akışı Ayarları](images/settings-5-workflows.png)
 
 ## <a name="credentials"></a>Kimlik Bilgileri
 
-**Kimlik bilgileri** sekmesi, bir rest çağrısından veya istemci SDK 'sına ait denetleme hizmetlerinden birine erişmeniz gereken Content moderator abonelik anahtarınız için hızlı erişim sağlar.
+**Kimlik Bilgileri** sekmesi, Bir REST çağrısından veya istemci SDK'dan herhangi bir Denetleme hizmetine erişmeniz gereken İçerik Moderatörabonelik anahtarınıza hızlı erişim sağlar.
 
-![Content Moderator kimlik bilgileri](images/settings-6-credentials.png)
+![İçerik Moderatör Kimlik Bilgileri](images/settings-6-credentials.png)
 
-### <a name="use-external-credentials-for-workflows"></a>İş akışları için dış kimlik bilgilerini kullan
+### <a name="use-external-credentials-for-workflows"></a>İş akışları için dış kimlik bilgilerini kullanma
 
-[İnceleme aracı](https://contentmoderator.cognitive.microsoft.com) , kaydolduğunuzda Azure Content moderator Hizmetleri için ücretsiz bir deneme anahtarı oluşturur, ancak Azure hesabınızdan mevcut bir anahtarı kullanacak şekilde de yapılandırabilirsiniz. Bu, büyük ölçekli senaryolar için önerilir, çünkü ücretsiz deneme anahtarları katı kullanım sınırlarına sahiptir ([fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)).
+[İnceleme aracı,](https://contentmoderator.cognitive.microsoft.com) kaydolduğunuzda Azure İçerik Yöneticisi hizmetleri için ücretsiz bir deneme anahtarı oluşturur, ancak Azure hesabınızdaki varolan bir anahtarı kullanacak şekilde de yapılandırabilirsiniz. Ücretsiz deneme anahtarları sıkı kullanım limitlerine[(Fiyatlandırma ve sınırlar)](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)sahip olduğundan, bu büyük ölçekli senaryolar için önerilir.
 
-Azure 'da bir [Content moderator kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) oluşturduysanız, bu sayfaya Azure Portal ve **anahtarlar** dikey penceresini seçin. Anahtarlarınızın birini kopyalayın.
+Azure'da bir [İçerik Moderatörü kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) oluşturduysanız, Azure portalında bu kaynakiçin gidin ve **Keys** bıçağını seçin. Anahtarlarından birini kopyala.
 
-![Azure portal anahtarları Content Moderator](images/credentials-azure-portal-keys.PNG)
+![Azure portalında İçerik Moderatör tuşları](images/credentials-azure-portal-keys.PNG)
 
-[İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **kimlik bilgileri** sekmesinde, **iş akışı ayarları** bölmesine gidin, **Düzenle**' yi seçin ve anahtarınızı **OCP-apim-Subscription-Key** alanına yapıştırın. Artık, denetleme API 'Lerini çağıran iş akışları Azure kimlik bilgilerinizi kullanacaktır.
+Gözden [Geçirme aracının](https://contentmoderator.cognitive.microsoft.com) **Kimlik Bilgileri** sekmesinde, **İş Akışı Ayarları** bölmesine gidin, **Düzenleme'yi**seçin ve anahtarınızı **Ocp-Apim-Abonelik-Anahtar** alanına yapıştırın. Şimdi, ılımlılık API'lerini arayan iş akışları Azure kimlik bilgilerinizi kullanır.
 
 > [!NOTE]
-> **Iş akışı ayarları** bölmesindeki diğer iki alan özel terim ve görüntü listeleri içindir. Bunlar hakkında bilgi edinmek için [özel terimleri](../try-terms-list-api.md) veya [özel görüntü](../try-image-list-api.md) kılavuzlarını inceleyin.
+> **İş Akışı Ayarları** bölmesindeki diğer iki alan özel terim ve resim listeleri içindir. Bunlar hakkında bilgi edinmek için [Özel terimlere](../try-terms-list-api.md) veya [Özel resimler](../try-image-list-api.md) kılavuzlarına bakın.
 
-### <a name="use-your-azure-account-with-the-review-apis"></a>Azure hesabınızı İnceleme API 'Leriyle kullanma
+### <a name="use-your-azure-account-with-the-review-apis"></a>Azure hesabınızı inceleme API'leri ile kullanma
 
-Azure anahtarınızı gözden geçirme API 'Leriyle birlikte kullanmak için, kaynak KIMLIĞINIZI almanız gerekir. Azure portal Content Moderator kaynağına gidin ve **Özellikler** dikey penceresini seçin. Kaynak KIMLIĞI değerini kopyalayın ve gözden geçirme aracının **kimlik bilgileri** sekmesinin **beyaz listelenmiş kaynak kimliği** alanına yapıştırın.
+Azure anahtarınızı inceleme API'leri ile kullanmak için Kaynak Kimliğinizi almanız gerekir. Azure portalındaki İçerik Yöneticisi kaynağınıza gidin ve **Özellikler** bıçağını seçin. Kaynak Kimliği değerini kopyalayın ve Gözden Geçirme aracının **Kimlik Bilgileri** sekmesinin **Beyaz Listelenmiş Kaynak Kimliği(ler)** alanına yapıştırın.
 
-![Azure portal Content Moderator kaynak KIMLIĞI](images/credentials-azure-portal-resourceid.PNG)
+![Azure portalında İçerik Moderatör Kaynak Kimliği](images/credentials-azure-portal-resourceid.PNG)
 
-Abonelik anahtarınızı her iki yere de girdiyseniz, gözden geçirme aracı hesabınızla birlikte gelen deneme anahtarı kullanılmaz, ancak kullanılabilir olmaya devam edecektir.
+Abonelik anahtarınızı her iki yerde de girdiyseniz, İnceleme aracı hesabınızla birlikte gelen deneme anahtarı kullanılmaz, ancak kullanılabilir kalır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçerik denetleme senaryolarında Inceleme aracını kullanmaya başlamak için [İnceleme aracının hızlı](../quick-start.md) başlangıcını izleyin.
+İçerik Denetleme senaryolarında İnceleme aracını kullanmaya başlamak için [Gözden Geçirme aracını hızlı](../quick-start.md) bir şekilde izleyin.

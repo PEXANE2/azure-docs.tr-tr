@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - Bing otomatik öneri API'si
+title: Dil desteği - Bing Autosuggest API
 titleSuffix: Azure Cognitive Services
-description: Bing otomatik öneri API'si için desteklenen diller ve bölgeler listesi.
+description: Bing Autosuggest API için desteklenen dillerin ve bölgelerin listesi.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60547345"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing otomatik öneri API'si için dil ve bölge desteği
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API için dil ve bölge desteği
 
-Bing otomatik öneri API'si tarafından desteklenen dilleri listeler.
+Aşağıda Bing Autosuggest API tarafından desteklenen diller listelenir.
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
 | Arapça      | `ar`          |
 | Çince (Çin Halk Cumhuriyeti)     | `zh-CN`          |
-| Çince (Hong Kong ÖİB)    | `zh-HK`          |
+| Çince (Hong Kong SAR)    | `zh-HK`          |
 | Çince (Tayvan)     | `zh-TW`          |
 | Danca      | `da`          |
-| Flamanca (Belçika)       | `nl-BE`          |
-| Hollanda dili (Hollanda)      | `nl-NL`          |
+| Felemenkçe (Belçika)       | `nl-BE`          |
+| Felemenkçe (Hollanda)      | `nl-NL`          |
 | İngilizce (Avustralya)    | `en-AU`          |
 | İngilizce (Kanada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| İngilizce (Hindistan)    | `en-IN`          |
 | İngilizce (Endonezya)     | `en-ID`          |
 | İngilizce (Malezya)     | `en-MY`          |
 | İngilizce (Yeni Zelanda)    | `en-NZ`          |
 | İngilizce (Filipinler)     | `en-PH`          |
 | İngilizce (Güney Afrika)    | `en-ZA`          |
-| İngilizce (Birleşik Krallık)    | `en-GB`          |
+| İngilizce (İngiltere)    | `en-GB`          |
 | İngilizce (ABD)    | `en-US`          |
 | Fince     | `fi`          |
 | Fransızca (Belçika)     | `fr-BE`          |
@@ -66,5 +66,5 @@ Bing otomatik öneri API'si tarafından desteklenen dilleri listeler.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Bilişsel hizmetler belgeleri sayfası](https://docs.microsoft.com/azure/cognitive-services/)
-- [Azure Bilişsel hizmetler ürün sayfası](https://azure.microsoft.com/services/cognitive-services/)
+- [Azure Bilişsel Hizmetler Dokümantasyon sayfası](https://docs.microsoft.com/azure/cognitive-services/)
+- [Azure Bilişsel Hizmetler Ürün sayfası](https://azure.microsoft.com/services/cognitive-services/)

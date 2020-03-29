@@ -1,7 +1,7 @@
 ---
-title: Dil desteği-Bing Haber Arama API'si
+title: Dil desteği - Bing Haberler Arama API
 titleSuffix: Azure Cognitive Services
-description: Bing Haber Arama API'si tarafından desteklenen doğal dillerin, ülkelerin ve bölgelerin listesi.
+description: Bing Haber Arama API'sı tarafından desteklenen doğal dillerin, ülkelerin ve bölgelerin listesi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,106 +11,106 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220198"
 ---
-# <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing Haber Arama API'si için dil ve bölge desteği
+# <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing Haberler Arama API'si için dil ve bölge desteği
 
-Bing Haber Arama API'si, birden fazla dili olan çok sayıda ülkeyi/bölgeyi destekler. Bir ülkeyi/bölgeyi bir sorgu ile belirtmek, birincil olarak bu ülkenin/bölgedeki ilgi alanları temelinde arama sonuçlarını iyileştirmesini sağlar. Ayrıca, sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
+Bing Haberler Arama API'si, çoğu birden fazla dili olan çok sayıda ülkeyi/bölgeyi destekler. Sorgulu bir ülke/bölge belirtmek, öncelikle arama sonuçlarını o ülkedeki/bölgedeki ilgi alanlarına göre hassaslaştırmak için hizmet eder. Ayrıca, sonuçlar Bing'e bağlantılar içerebilir ve bu bağlantılar Bing kullanıcı deneyimini belirtilen ülkeye/bölgeye veya dile göre yerelleştirebilir.
 
-`cc` sorgu parametresini kullanarak bir ülke/bölge belirtebilirsiniz. Bir ülke/bölge belirtirseniz, `Accept-Language` HTTP üstbilgisini kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller, countr/bölgeye göre farklılık gösterir. Bunlar, pazarlar tablosundaki her bir ülke/bölge için verilir.
+Sorgu parametresini `cc` kullanarak bir ülke/bölge belirtebilirsiniz. Bir ülke/bölge belirtirseniz, HTTP üstbilgisini `Accept-Language` kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller countr/region'a göre değişir; piyasalar tablosundaki her ülke/bölge için verilir.
 
-Alternatif olarak, `mkt` sorgu parametresini ve **pazarlar** tablosundan bir kodu kullanarak pazara de belirtebilirsiniz. Bir pazar aynı anda belirtildiğinde bir ülke/bölge ve tercih edilen dil belirtilir. `setLang` sorgu parametresi bu durumda bir dil koduna ayarlanabilir. Bu, Kullanıcı Bing 'i başka bir dilde görmeyi tercih etmediği müddetçe, genellikle `mkt` tarafından belirtilen dildir.
+Alternatif olarak, sorgu parametresini `mkt` ve **Piyasalar** tablosundan bir kodu kullanarak piyasayı belirtebilirsiniz. Bir pazar belirtilmesi aynı anda bir ülke/ bölge ve tercih edilen bir dil belirtir. Sorgu `setLang` parametresi bu durumda bir dil koduolarak ayarlanabilir; genellikle bu, kullanıcı Bing'i başka bir dilde görmeyi tercih etmediği sürece aynı `mkt` dildir.
 
-## <a name="supported-markets-for-news-search-endpoint"></a>Haber arama uç noktası için desteklenen pazarlar
+## <a name="supported-markets-for-news-search-endpoint"></a>Haber arama bitiş noktası için desteklenen pazarlar
 
-`/news/search` uç noktası için aşağıdaki tabloda, `mkt` sorgu parametresini belirtmek için kullanabileceğiniz Pazar kodu değerleri listelenmektedir. Bing yalnızca bu pazarlar için içerik döndürür. Liste değişebilir.  
+`/news/search` Bitiş noktası için aşağıdaki tablo, sorgu parametresini `mkt` belirtmek için kullanabileceğiniz piyasa kodu değerlerini listeler. Bing yalnızca bu pazarlar için içeriği döndürür. Liste değiştirilebilir.  
 
-`cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının listesi için bkz. [Ülke kodları](#countrycodes).  
+`cc` Sorgu parametresinde belirtebileceğiniz ülke/bölge kodları listesi için Ülke [Kodları'na](#countrycodes)bakın.  
 
-|Ülke/bölge|Dil|Pazar kodu|  
+|Ülke/bölge|Dil|Piyasa kodu|  
 |---------------------|--------------|-----------------|
-|Danimarka|Danca|v-DK|
+|Danimarka|Danca|da-DK|
 |Avusturya|Almanca|de-AT|
 |İsviçre|Almanca|de-CH|
 |Almanya|Almanca|de-DE|
-|Avustralya|Türkçe|tr-AU|
-|Kanada|Türkçe|CA tr|
-|Birleşik Krallık|Türkçe|en-GB|
-|Endonezya|Türkçe|En-KIMLIĞI|
-|İrlanda|Türkçe|IE tr|
-|Hindistan|Türkçe|tr-giriş|
-|Malezya|Türkçe|En-MY|
-|Yeni Zelanda|Türkçe|tr NZ|
-|Filipinler Cumhuriyeti|Türkçe|En-PH|
-|Singapur|Türkçe|En-SG|
+|Avustralya|Türkçe|en-AU|
+|Kanada|Türkçe|tr-CA|
+|Birleşik Krallık|Türkçe|tr-TR|
+|Endonezya|Türkçe|tr-ID|
+|İrlanda|Türkçe|en-IE|
+|Hindistan|Türkçe|en-IN|
+|Malezya|Türkçe|en-MY|
+|Yeni Zelanda|Türkçe|en-NZ|
+|Filipinler Cumhuriyeti|Türkçe|en-PH|
+|Singapur|Türkçe|en-SG|
 |Amerika Birleşik Devletleri|Türkçe|tr-TR|
-|Türkçe|Genel|En-WW|
-|Türkçe|Genel|En-XA|
-|Güney Afrika|Türkçe|En-ZA|
+|Türkçe|genel|en-WW|
+|Türkçe|genel|en-XA|
+|Güney Afrika|Türkçe|en-ZA|
 |Arjantin|İspanyolca|es-AR|
 |Şili|İspanyolca|es-CL|
 |İspanya|İspanyolca|es-ES|
 |Meksika|İspanyolca|es-MX|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
-|İspanyolca|Genel|es-XL|
-|Finlandiya|Fince|FI-FI|  
-|Fransa|Fransızca|fr-of|
+|Amerika Birleşik Devletleri|İspanyolca|es-ABD|
+|İspanyolca|genel|es-XL|
+|Finlandiya|Fince|fi-FI|  
+|Fransa|Fransızca|fr-BE|
 |Kanada|Fransızca|fr-CA|
-|Belçika|Felemenkçe|nl-|
-|İsviçre|Fransızca|FR-CH|
+|Belçika|Felemenkçe|nl-BE|
+|İsviçre|Fransızca|fr-CH|
 |Fransa|Fransızca|fr-FR|  
-|İtalya|İtalyanca|İt-IT|
-|Hong Kong Çin ÖİB|Geleneksel Çince|zh-HK|  
+|İtalya|İtalyanca|it-IT|
+|Hong Kong ÖİB|Geleneksel Çince|zh-HK|  
 |Tayvan|Geleneksel Çince|zh-TW|
 |Japonya|Japonca|ja-JP|  
 |Güney Kore|Korece|ko-KR|  
-|Hollanda|Felemenkçe|NL-NL|  
+|Hollanda|Felemenkçe|nl-NL|  
 |Çin Halk Cumhuriyeti|Çince|zh-CN|  
 |Brezilya|Portekizce|pt-BR|
 |Rusya|Rusça|ru-RU|  
 |İsveç|İsveççe|sv-SE|  
 |Türkiye|Türkçe|tr-TR|  
 
-## <a name="supported-markets-for-news-endpoint"></a>Haber uç noktası için desteklenen pazarlar
-`/news` uç noktası için aşağıdaki tabloda, `mkt` sorgu parametresini belirtmek için kullanabileceğiniz Pazar kodu değerleri listelenmektedir. Bing yalnızca bu pazarlar için içerik döndürür. Liste değişebilir.  
+## <a name="supported-markets-for-news-endpoint"></a>Haber bitiş noktası için desteklenen pazarlar
+`/news` Bitiş noktası için aşağıdaki tablo, sorgu parametresini `mkt` belirtmek için kullanabileceğiniz piyasa kodu değerlerini listeler. Bing yalnızca bu pazarlar için içeriği döndürür. Liste değiştirilebilir.  
 
-`cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının listesi için bkz. [Ülke kodları](#countrycodes).  
+`cc` Sorgu parametresinde belirtebileceğiniz ülke/bölge kodları listesi için Ülke [Kodları'na](#countrycodes)bakın.  
 
-|Ülke/bölge|Dil|Pazar kodu|  
+|Ülke/bölge|Dil|Piyasa kodu|  
 |---------------------|--------------|-----------------|
-|Danimarka|Danca|v-DK|
+|Danimarka|Danca|da-DK|
 |Almanya|Almanca|de-DE|
-|Avustralya|Türkçe|tr-AU|
-|Birleşik Krallık|Türkçe|en-GB|
+|Avustralya|Türkçe|en-AU|
+|Birleşik Krallık|Türkçe|tr-TR|
 |Amerika Birleşik Devletleri|Türkçe|tr-TR|
-|Türkçe|Genel|En-WW|
+|Türkçe|genel|en-WW|
 |Şili|İspanyolca|es-CL|
 |Meksika|İspanyolca|es-MX|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
-|Finlandiya|Fince|FI-FI|  
+|Amerika Birleşik Devletleri|İspanyolca|es-ABD|
+|Finlandiya|Fince|fi-FI|  
 |Kanada|Fransızca|fr-CA|
 |Fransa|Fransızca|fr-FR|  
-|İtalya|İtalyanca|İt-IT|
+|İtalya|İtalyanca|it-IT|
 |Brezilya|Portekizce|pt-BR|
 |Çin Halk Cumhuriyeti|Çince|zh-CN|
 
-## <a name="supported-markets-for-news-trending-endpoint"></a>Haber eğilim uç noktası için desteklenen pazarlar
-`/news/trendingtopics` uç noktası için aşağıdaki tabloda, `mkt` sorgu parametresini belirtmek için kullanabileceğiniz Pazar kodu değerleri listelenmektedir. Bing yalnızca bu pazarlar için içerik döndürür. Liste değişebilir.  
+## <a name="supported-markets-for-news-trending-endpoint"></a>Haber trendi uç noktası için desteklenen piyasalar
+`/news/trendingtopics` Bitiş noktası için aşağıdaki tablo, sorgu parametresini `mkt` belirtmek için kullanabileceğiniz piyasa kodu değerlerini listeler. Bing yalnızca bu pazarlar için içeriği döndürür. Liste değiştirilebilir.  
 
-`cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının listesi için bkz. [Ülke kodları](#countrycodes).  
+`cc` Sorgu parametresinde belirtebileceğiniz ülke/bölge kodları listesi için Ülke [Kodları'na](#countrycodes)bakın.  
 
-|Ülke/bölge|Dil|Pazar kodu|  
+|Ülke/bölge|Dil|Piyasa kodu|  
 |---------------------|--------------|-----------------|
 |Almanya|Almanca|de-DE|
-|Avustralya|Türkçe|tr-AU|
-|Birleşik Krallık|Türkçe|en-GB|
+|Avustralya|Türkçe|en-AU|
+|Birleşik Krallık|Türkçe|tr-TR|
 |Amerika Birleşik Devletleri|Türkçe|tr-TR|
-|Kanada|Türkçe|CA tr|
-|Hindistan|Türkçe|tr-giriş|
+|Kanada|Türkçe|tr-CA|
+|Hindistan|Türkçe|en-IN|
 |Fransa|Fransızca|fr-FR|
 |Kanada|Fransızca|fr-CA|
 |Brezilya|Portekizce|pt-BR|
@@ -120,7 +120,7 @@ Alternatif olarak, `mkt` sorgu parametresini ve **pazarlar** tablosundan bir kod
 <a name="countrycodes"></a>   
 ### <a name="country-codes"></a>Ülke kodları  
 
-Aşağıda, `cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodları verilmiştir. Liste değişebilir.  
+Sorgu parametresinde belirtebileceğin ülke/bölge `cc` kodları aşağıda veda edilebistir. Liste değiştirilebilir.  
 
 |Ülke/bölge|Ülke kodu|  
 |---------------------|------------------|  
@@ -135,7 +135,7 @@ Aşağıda, `cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodları 
 |Finlandiya|FI|  
 |Fransa|GS|  
 |Almanya|DE|  
-|Hong Kong Çin ÖİB|HK|  
+|Hong Kong ÖİB|HK|  
 |Hindistan|IN|  
 |Endonezya|Kimlik|  
 |İtalya|BT|  
@@ -162,4 +162,4 @@ Aşağıda, `cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodları 
 |Amerika Birleşik Devletleri|ABD|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bing Haber Arama uç noktaları hakkında daha fazla bilgi için bkz. [Haber Arama API v7 Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+Bing Haber Arama bitiş noktaları hakkında daha fazla bilgi [için, Haber Arama API v7 referans](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)bakın.

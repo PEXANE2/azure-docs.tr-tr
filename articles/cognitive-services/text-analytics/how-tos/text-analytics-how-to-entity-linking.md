@@ -1,7 +1,7 @@
 ---
-title: Metin Analizi API'si ile varlık tanımayı kullanın
+title: Metin Analizi API'si ile varlık tanıma yı kullanma
 titleSuffix: Azure Cognitive Services
-description: Metin Analizi REST API metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme hakkında bilgi edinin.
+description: Text Analytics REST API ile metinde bulunan bir varlığın kimliğini nasıl tanımlayıp ayrıştıracaklarını öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,154 +11,154 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79203500"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizinde Adlandırılmış Varlık Tanıma nasıl kullanılır?
 
-Metin Analizi API'si, yapılandırılmamış metin almanıza ve Web hakkında daha fazla bilgi için bağlantılarla birlikte, Kesinleştirme varlıklarının bir listesini döndürmenize olanak tanır. API, adlandırılmış varlık tanıma (NER) ve varlık bağlamayı destekler.
+Text Analytics API, yapılandırılmamış metin almanıza ve web'deki daha fazla bilgiye bağlantılar içeren, kararsız varlıkların listesini döndürmenize olanak tanır. API hem adlandırılmış varlık tanıma (NER) hem de varlık bağlantısını destekler.
 
 ### <a name="entity-linking"></a>Varlık Bağlama
 
-Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, bir sözcüğün `Mars` bir oluşumunu Planet 'e veya War 'ın gerçekleşen ' ine mi başvurduğunu belirlemek). Bu işlem, tanınan varlıkları metinde bağlamak için uygun bir dilde Bilgi Bankası 'nın bulunmasını gerektirir. Varlık bağlama, bu Bilgi Bankası olarak [Vikipedi](https://www.wikipedia.org/) kullanır.
+Varlık bağlama, metinde bulunan bir varlığın kimliğini tanımlama ve ayrıştırabilme yeteneğidir (örneğin, kelimenin `Mars` oluşumunun gezegene mi yoksa Roma savaş tanrısına mı atıfta bulunduğunu belirlemek). Bu işlem, metinde tanınan varlıkları bağlamak için uygun bir dilde bir bilgi tabanının bulunmasını gerektirir. Entity Linking bu bilgi üssü olarak [Vikipedi'yi](https://www.wikipedia.org/) kullanır.
 
 
-### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
+### <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık Tanıma (NER)
 
-Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler, örneğin: kişi, konum, olay, ürün ve kuruluş gibi kategorilere ayırma yeteneğidir.  
+Adlandırılmış Varlık Tanıma (NER), metindeki farklı varlıkları belirleyebilme ve bunları kişi, konum, etkinlik, ürün ve kuruluş gibi önceden tanımlanmış sınıflar veya türler halinde kategorize etme yeteneğidir.  
 
-Sürüm 3 ' te başlayarak Metin Analizi API'si bu özelliği, telefon numarası, sosyal güvenlik numarası, e-posta adresi ve banka hesap numarası gibi kişisel ve hassas bilgi türlerini de tanımlayabilir.  Bu varlıkların belirlenmesi, hassas belgeleri sınıflandırırken ve kişisel bilgilerin redakklarında yardımcı olabilir.
+Metin Analizi API'sinin bu özelliği sürüm 3'ten başlayarak, telefon numarası, Sosyal Güvenlik Numarası, e-posta adresi ve banka hesap numarası gibi kişisel ve hassas bilgi türlerini de tanımlayabilir.  Bu varlıkların tanımlanması, hassas belgelerin sınıflandırılmasına ve kişisel bilgilerin yeniden düzenlenmesine yardımcı olabilir.
 
-## <a name="named-entity-recognition-versions-and-features"></a>Adlandırılmış varlık tanıma sürümleri ve özellikleri
+## <a name="named-entity-recognition-versions-and-features"></a>Adlandırılmış Varlık Tanıma sürümleri ve özellikleri
 
-Metin Analizi API'si, adlandırılmış varlık tanıma-v2 ve v3 'in iki sürümünü sunmaktadır. Sürüm 3 (Genel Önizleme), tespit edilebilir ve kategorilere ayrılmamış varlıklarda daha fazla ayrıntı sağlar.
+Text Analytics API, Adlandırılmış Varlık Tanıma'nın v2 ve v3 olmak gibi iki versiyonunu sunar. Sürüm 3 (Genel önizleme), algılanabilen ve kategorilere ayrılabilen varlıklarda daha fazla ayrıntı sağlar.
 
 | Özellik                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
-| Tek ve toplu istekler için Yöntemler                          | X      | X      |
-| Çeşitli kategoriler genelinde temel varlık tanıma              | X      | X      |
+| Tek ve toplu iş istekleri için yöntemler                          | X      | X      |
+| Çeşitli kategorilerde temel varlık tanıma              | X      | X      |
 | Tanınan varlıklar için genişletilmiş sınıflandırma                 |        | X      |
-| Varlık bağlama ve NER istekleri göndermek için ayrı uç noktalar. |        | X      |
-| Model sürümü oluşturma                                                |        | X      |
+| Varlık bağlantı ve NER isteklerini göndermek için ayrı uç noktaları. |        | X      |
+| Model sürümü                                                |        | X      |
 
-Bilgi için bkz. [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
+Bilgi için [dil desteğine](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) bakın.
 
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
 ### <a name="entity-types"></a>Varlık türleri
 
-Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v3 aşağıdaki varlık kategorilerini algılayabilir:
+Adlandırılmış Varlık Tanıma v3, birden çok türde genişletilmiş algılama sağlar. Şu anda, NER v3 varlıkların aşağıdaki kategorileri tanıyabilir:
 
 * Genel
-* Kişisel bilgiler 
+* Kişisel Bilgiler 
 
-Desteklenen varlıkların ve dillerin ayrıntılı bir listesi için, [ner v3 desteklenen varlık türleri](../named-entity-types.md) makalesine bakın.
+Desteklenen varlıkların ve dillerin ayrıntılı bir listesi için [NER v3 desteklenen varlık türleri](../named-entity-types.md) makalesine bakın.
 
-### <a name="request-endpoints"></a>İstek uç noktaları
+### <a name="request-endpoints"></a>Uç noktaları isteme
 
-Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+Adlandırılmış Varlık Tanıma v3, NER ve varlık bağlantı istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıda bir URL biçimi kullanın:
 
-HI
-* Genel varlıklar-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+NER
+* Genel varlıklar -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Kişisel bilgiler-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Kişisel bilgiler -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
 Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Model sürümü oluşturma
+### <a name="model-versioning"></a>Model sürümü
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
 ### <a name="entity-types"></a>Varlık türleri
 
 > [!NOTE]
-> Adlandırılmış varlık tanıma (NER) sürüm 2 yalnızca aşağıdaki varlıkları destekler. NER v3 genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
+> Adlandırılmış Varlık Tanıma(NER) sürüm 2 yalnızca aşağıdaki varlıkları destekler. NER v3 genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
 
 | Tür  | SubType | Örnek |
 |:-----------   |:------------- |:---------|
 | Kişi        | Yok\*         | "Jeff", "Bill Gates"     |
 | Konum      | Yok\*         | "Redmond, Washington", "Paris"  |
-| Kuruluş  | Yok\*         | MICROSOFT   |
+| Kuruluş  | Yok\*         | "Microsoft"   |
 | Miktar      | Sayı        | "6", "altı"     |
-| Miktar      | Yüzde    | "%50", "50 yüzdesi"|
-| Miktar      | Numarasını       | "2.", "saniye"     |
-| Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Para birimi      | "$10,99"     |
+| Miktar      | Yüzde    | "%50", "yüzde elli"|
+| Miktar      | Sıralı       | "2.", "ikinci"     |
+| Miktar      | Yaş           | "90 günlük", "30 yaşında"    |
+| Miktar      | Para birimi      | "$10.99"     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
-| DateTime      | Yok\*         | "6:12:30 4, 2012"      |
-| DateTime      | Tarih          | "2 Mayıs, 2017", "05/02/2017"   |
-| DateTime      | Zaman          | "08:00", "8:00"  |
-| DateTime      | DateRange     | "2 Mayıs-5 Mayıs 'ta olabilir"    |
-| DateTime      | TimeRange     | "6pm-7pm"     |
-| DateTime      | Süre      | "1 dakika ve 45 saniye"   |
-| DateTime      | Ayarla           | "her Salı"     |
+| DateTime      | Yok\*         | "4 Şubat 2012 6:30"      |
+| DateTime      | Tarih          | "2 Mayıs 2017", "05.02.2017"   |
+| DateTime      | Zaman          | "Sabah 8", "8:00"  |
+| DateTime      | Tarih Aralığı     | "2 Mayıs - 5 Mayıs"    |
+| DateTime      | Zaman Aralığı     | "18:00-19:00"     |
+| DateTime      | Süre      | "1 dakika 45 saniye"   |
+| DateTime      | Ayarla           | "Her Salı"     |
 | URL'si           | Yok\*         | "https:\//www.bing.com"    |
 | Email         | Yok\*         | "support@contoso.com" |
-| ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
-| IP Adresi    | Yok\*         | alana 10.0.0.100 |
+| ABD Telefon Numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
+| IP Adresi    | Yok\*         | "10.0.0.100" |
 
-giriş ve ayıklanan varlıklara göre \*, bazı varlıklar `SubType`yok edebilir.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
+\*Girdi ve ayıklanan varlıklara bağlı olarak, bazı varlıklar `SubType`.  Listelenen desteklenen tüm varlık türleri yalnızca İngilizce, Çince Basitleştirilmiş, Fransızca, Almanca ve İspanyolca dilleri için kullanılabilir.
 
-### <a name="request-endpoints"></a>İstek uç noktaları
+### <a name="request-endpoints"></a>Uç noktaları isteme
 
-Adlandırılmış varlık tanıma v2, NER ve varlık bağlama istekleri için tek bir uç nokta kullanır:
+Adlandırılmış Varlık Tanıma v2, NER ve varlık bağlantı istekleri için tek bir uç nokta kullanır:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor
+## <a name="sending-a-rest-api-request"></a>REST API isteği gönderme
 
 ### <a name="preparation"></a>Hazırlık
 
-Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin, dil.
+Bu formatta JSON belgeleriniz olmalıdır: kimlik, metin, dil.
 
-Her belge 5.120 karakterden oluşmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir.
+Her belge 5.120 karakterin altında olmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir.
 
-### <a name="structure-the-request"></a>İsteği yapısı
+### <a name="structure-the-request"></a>İsteği yapılandırma
 
-POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek için aşağıdaki bağlantılardan [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
+Bir POST isteği oluşturun. [Postacı'yı](text-analytics-how-to-call-api.md) veya **API test** konsolu'nu aşağıdaki bağlantılarda kullanarak hızlı bir şekilde bir tane sini yapılandırAbilir ve gönderebilirsiniz. 
 
 > [!NOTE]
-> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
+> Metin Analizi kaynağınızın anahtarını ve bitiş noktanızı azure portalında bulabilirsiniz. Bunlar, **kaynak yönetimi**altında kaynağın **Hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-[Adlandırılmış varlık tanıma v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
+[Adlandırılmış Varlık Tanıma v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
-Sürüm 3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+Sürüm 3, NER ve varlık bağlantı istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıda bir URL biçimi kullanın:
 
-HI
-* Genel varlıklar-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+NER
+* Genel varlıklar -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Kişisel bilgi varlıkları-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Kişisel bilgi kuruluşları -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
 Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-[Adlandırılmış varlık tanıma (NER) v2 başvurusu](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+[Adlandırılmış Varlık Tanıma (NER) v2 başvurusu](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-Sürüm 2, varlık bağlama ve NER istekleri için aşağıdaki uç noktayı kullanır: 
+Sürüm 2 varlık bağlama ve NER istekleri için aşağıdaki bitiş noktasını kullanır: 
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-Metin Analizi API'si anahtarınızı dahil etmek için bir istek üst bilgisi ayarlayın. İstek gövdesinde, hazırladığınız JSON belgelerini sağlayın.
+Metin Analizi API anahtarınızı içerecek şekilde bir istek üstbilgisi ayarlayın. İstek gövdesinde, hazırladığınız JSON belgelerini sağlayın.
 
 ### <a name="example-ner-request"></a>Örnek NER isteği 
 
-Aşağıda, API 'ye gönderebilecek içeriklere bir örnek verilmiştir. İstek biçimi, her iki API sürümü için de aynıdır.
+Aşağıda, API'ye gönderebilecek içerik örneği verilmiştir. İstek biçimi, API'nin her iki sürümü için de aynıdır.
 
 ```json
 {
@@ -172,23 +172,23 @@ Aşağıda, API 'ye gönderebilecek içeriklere bir örnek verilmiştir. İstek 
 }
 ```
 
-## <a name="post-the-request"></a>İsteği gönder
+## <a name="post-the-request"></a>İsteğin ivetini gönderme
 
-İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için isteklerin boyutu ve sayısı hakkında genel bakış konusundaki [veri sınırları](../overview.md#data-limits) bölümüne bakın.
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebileceğiniz isteklerin boyutu ve sayısı hakkında bilgi için genel bakışta [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
-Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonuçlar yanıt içinde hemen döndürülür.
+Text Analytics API'si devletsizdir. Hesabınızda hiçbir veri depolanır ve sonuçlar yanıtta hemen döndürülür.
 
 ## <a name="view-results"></a>Sonuçları görüntüleme
 
-Tüm POST istekleri, kimlik ve algılanan varlık özelliklerine sahip JSON biçimli bir yanıt döndürür.
+Tüm POST istekleri, d'ler ve algılanan varlık özellikleriyle JSON biçimlendirilmiş bir yanıt döndürer.
 
-Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [metin farklarını işleme](../concepts/text-offsets.md) .
+Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz. Çok dilli ve emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi [için metin uzaklıklarını nasıl](../concepts/text-offsets.md) işleyeceğinize bakın.
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Örnek v3 yanıtları
 
-Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
+Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için yanıtlar aşağıdadır. 
 
 #### <a name="example-ner-response"></a>Örnek NER yanıtı
 
@@ -241,7 +241,7 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
 }
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Örnek NER v2 yanıtı
 ```json
@@ -282,15 +282,15 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, bilişsel hizmetler 'deki Metin Analizi kullanarak varlık bağlama kavramlarını ve iş akışını öğrendiniz. Özet:
+Bu makalede, Bilişsel Hizmetlerde Metin Analizi'ni kullanarak bağlantı sağlayan varlık için kavramları ve iş akışını öğrendiniz. Özet:
 
-* Adlandırılmış varlık tanıma, iki sürümde seçili diller için kullanılabilir.
-* İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
-* POST istekleri bir veya daha fazla uç noktaya gönderilir, bu, kişiselleştirilmiş bir [erişim anahtarı ve aboneliğiniz için geçerli bir uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak gönderilir.
-* Bağlı varlıklardan oluşan yanıt çıkışı (her belge KIMLIĞI için güven puanları, uzaklıklar ve Web bağlantıları dahil) herhangi bir uygulamada kullanılabilir
+* Adlandırılmış Varlık Tanıma, seçili diller için iki sürümde kullanılabilir.
+* İstek gövdesindeki JSON belgeleri bir kimlik, metin ve dil kodu içerir.
+* POSTA istekleri, kişiselleştirilmiş erişim anahtarı ve aboneliğiniz için geçerli [olan bir uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak bir veya daha fazla uç noktaya gönderilir.
+* Her belge kimliği için bağlantılı varlıklardan (güven puanları, uzaklıklar ve web bağlantıları dahil) oluşan yanıt çıktısı herhangi bir uygulamada kullanılabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
 * [Yenilikler](../whats-new.md)

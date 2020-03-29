@@ -1,36 +1,36 @@
 ---
-title: 'Hızlı başlangıç: yayımlama bilgi tabanı, REST, Python-Soru-Cevap Oluşturma'
-description: Bu Python REST tabanlı hızlı başlangıç, bilgi tabanınızı yayımlar ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
+title: 'Quickstart: Bilgi tabanı, REST, Python - QnA Maker yayımlayın'
+description: Bu Python REST tabanlı quickstart bilgi tabanınızı yayınlar ve uygulamanızda veya sohbet botunuzda çağrılabilecek bir bitiş noktası oluşturur.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 6f053ecbd58d3c2527c1b904437dcc4715c76af1
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851657"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Hızlı başlangıç: Python kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
-REST tabanlı bu hızlı başlangıçta, Bilgi Bankası (KB) program aracılığıyla yayımlama aracılığıyla size yol gösterir. Yayımlama, bilgi tabanının en son sürümünü adanmış bir Azure Bilişsel Arama dizinine gönderir ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
+Bu REST tabanlı quickstart programlı bilgi tabanı (KB) yayımlama ile size yol. Yayımlama, bilgi tabanının en son sürümünü özel bir Azure Bilişsel Arama dizinine iter ve uygulamanızda veya sohbet botunuzda çağrılabilecek bir bitiş noktası oluşturur.
 
-Bu hızlı başlangıçta Soru-Cevap Oluşturma REST API 'Leri çağrıları yapılır:
+Bu hızlı başlangıç QnA Maker REST API'leri çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.7](https://www.python.org/downloads/)
-* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
-* Aşağıda gösterildiği gibi, `kbid` sorgu dizesi parametresindeki URL 'de Soru-Cevap Oluşturma Bilgi Bankası (KB) KIMLIĞI bulundu.
+* [Bir QnA Maker hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalı. Anahtar ve bitiş noktanızı (kaynak adını içerir) almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin.
+* QnA Maker bilgi bankası (KB) Kimliği `kbid` URL'de bulunan sorgu dize parametresi aşağıda gösterildiği gibi.
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
     Henüz bir bilgi bankanız yoksa, bu hızlı başlangıçta kullanmak için bir örneğini oluşturabilirsiniz: [Yeni bilgi bankası oluşturma](../how-to/create-knowledge-base.md).
 
 > [!NOTE]
-> Tam çözüm dosyası (ler) [ **Azure-Samples/bilişsel hizmetler-qnamaker-Python** GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)bulunur.
+> Tam çözüm dosyası(lar) Azure [ **Örnekleri/bilişsel hizmetler-qnamaker-python** GitHub deposundan](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)edinilebilir.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Bilgi bankası Python dosyası oluşturma
 
@@ -48,9 +48,9 @@ Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine e
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
 
-## <a name="add-post-request-to-publish-knowledge-base"></a>Bilgi Bankası yayımlama için POST isteği Ekle
+## <a name="add-post-request-to-publish-knowledge-base"></a>Bilgi tabanını yayınlamak için POST isteği ekleme
 
-Sonra gerekli sabitleri, Bilgi Bankası yayımlama için soru-cevap Oluşturucu API'si bir HTTPS isteği yapar ve yanıtı alan aşağıdaki kodu ekleyin:
+Gerekli sabitlerden sonra, bir bilgi tabanı yayımlamak için QnA Maker API'ye https isteğinde bulunan ve yanıtı alan aşağıdaki kodu ekleyin:
 
 [!code-python[Add a POST request to publish knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=17-26 "Add a POST request to publish knowledge base")]
 
@@ -60,7 +60,7 @@ Diğer yanıtlarda döndürülen yanıt değiştirilmez.
 
 ## <a name="build-and-run-the-program"></a>Programı derleme ve çalıştırma
 
-Programı çalıştırmak için aşağıdaki komutu bir komut satırına yazın. Bilgi Bankası yayımlama ve başarı veya hata 204 yazdırmak için soru-cevap Oluşturucu API'si isteği gönderir.
+Programı çalıştırmak için aşağıdaki komutu bir komut satırına yazın. Bilgi tabanını yayımlamak için QnA Maker API'ye istek gönderecek, ardından başarı veya hatalar için 204'ün çıktısını alacaktır.
 
 ```bash
 python publish-kb-3x.py
@@ -70,7 +70,7 @@ python publish-kb-3x.py
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](./get-answer-from-knowledge-base-python.md)ihtiyacınız vardır.
+Bilgi tabanı yayımlandıktan [sonra, bir yanıt oluşturmak için bitiş noktası URL'sine](./get-answer-from-knowledge-base-python.md)ihtiyacınız var.
 
 > [!div class="nextstepaction"]
 > [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK 'Sı ile bir istemciden komutları yerine getirmek
+title: Konuşma SDK ile bir müşteriden komutları yerine getirmek için nasıl
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, konuşma SDK 'Sı ile bir istemcide özel komut etkinliklerinin nasıl işleneceğini açıkladık.
+description: Bu makalede, Konuşma SDK ile bir istemci üzerinde Özel Komutlar faaliyetleri nasıl ele açıklayacağız.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: donkim
 ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367758"
 ---
-# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Konuşma SDK 'Sı (Önizleme) ile bir istemciden komutları yerine getirmek
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Konuşma SDK (Önizleme) ile bir istemciden komutları yerine getirin
 
-Özel bir komut uygulaması kullanarak görevleri gerçekleştirmek için, bağlı bir istemci cihazına özel yük gönderebilirsiniz.
+Özel Komutlar uygulamasını kullanarak görevleri tamamlamak için bağlı bir istemci aygıtına özel yükler gönderebilirsiniz.
 
-Bu makalede şunları yapmanız gerekir:
+Bu makalede, şunları yapacaksınız:
 
-- Özel komutlar uygulamanızdan özel bir JSON yükü tanımlama ve gönderme
-- C# UWP konuşma SDK 'sı istemci UYGULAMASıNDAN özel JSON yükü içeriğini alma ve görselleştirme
+- Özel Komutlar uygulamanızdan özel bir JSON yükü tanımlayın ve gönderin
+- C# UWP Speech SDK istemci uygulamasından özel JSON yük içeriğini alın ve görselleştirin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma hizmeti için bir Azure abonelik anahtarı
-  - [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
-- Önceden oluşturulmuş özel komutlar uygulaması
-  - [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
-- Bir konuşma SDK 'Sı etkin istemci uygulaması
-  - [Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)](./quickstart-custom-speech-commands-speech-sdk.md)
+- Konuşma hizmeti için Azure abonelik anahtarı
+  - [Ücretsiz bir tane alın](get-started.md) veya [Azure portalında](https://portal.azure.com) oluşturun
+- Daha önce oluşturulmuş bir Özel Komutuygulaması
+  - [Quickstart: Parametreler (Önizleme) ile Özel Komut oluşturma](./quickstart-custom-speech-commands-create-parameters.md)
+- Konuşma SDK istemci uygulamasını etkinleştirildi
+  - [Quickstart: Konuşma SDK (Önizleme) ile Özel Komut uygulamasına bağlanın](./quickstart-custom-speech-commands-speech-sdk.md)
 
-## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
+## <a name="optional-get-started-fast"></a>İsteğe bağlı: Hızlı başlayın
 
-Bu makalede, adım adım, bir istemci uygulamanın özel komutlar uygulamanızla nasıl konuştuğu nasıl yapılacağı açıklanmaktadır. Hemen ' yi kullanmayı tercih ediyorsanız, bu makalede kullanılan tam, kullanıma hazır kaynak kodu [konuşma SDK örnekleri](https://aka.ms/csspeech/samples)bölümünde bulunur.
+Bu makalede, adım adım, Özel Komutlar uygulama konuşmak için bir istemci uygulaması yapmak nasıl açıklanır. Sağa dalmayı tercih ederseniz, bu makalede kullanılan tam, derlenmeye hazır kaynak kodu [Konuşma SDK Örnekleri'nde](https://aka.ms/csspeech/samples)mevcuttur.
 
-## <a name="fulfill-with-json-payload"></a>JSON yükü ile yerine
+## <a name="fulfill-with-json-payload"></a>JSON yükü ile yerine getirin
 
-1. Daha önce oluşturduğunuz özel komutlar uygulamanızı [konuşma Studio](https://speech.microsoft.com/) 'dan açın
-1. Kullanıcıya geri yanıt veren daha önce oluşturulmuş kurala sahip olduğunuzdan emin olmak için **tamamlama kuralları** bölümüne bakın
-1. Doğrudan istemciye yük göndermek için, etkinlik Gönder eylemiyle yeni bir kural oluşturun
+1. [Konuşma Stüdyosundan](https://speech.microsoft.com/) daha önce oluşturulmuş Özel Komutlar uygulamanızı açın
+1. Kullanıcıya yanıt veren daha önce oluşturulmuş kuralın olduğundan emin olmak için **Tamamlanma Kuralları** bölümünü denetleyin
+1. Bir yükü doğrudan istemciye göndermek için, Etkinlik Gönder eylemiyle yeni bir kural oluşturun
 
    > [!div class="mx-imgBorder"]
-   > Etkinlik tamamlanma kuralını gönder ![](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
+   > ![Etkinlik tamamlama kuralı nı gönder](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
    | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
-   | Kural Adı | Güncelleştirme Devemlak | Kuralın amacını açıklayan bir ad |
-   | Koşullar | Gerekli parametre-`OnOff` ve `SubjectDevice` | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları |
-   | Eylemler | `SendActivity` (aşağıya bakın) | Kural koşulu true olduğunda gerçekleştirilecek eylem |
+   | Kural Adı | GüncellemeDeviceState | Kuralın amacını açıklayan bir ad |
+   | Koşullar | Gerekli Parametre `OnOff` - ve`SubjectDevice` | Kuralın ne zaman çalıştırılacakolabileceğini belirleyen koşullar |
+   | Eylemler | `SendActivity`(aşağıya bakın) | Kural koşulu doğru olduğunda yapılacak eylem |
 
    > [!div class="mx-imgBorder"]
-   > Etkinlik yükünü gönder](media/custom-speech-commands/fulfill-sdk-send-activity-action.png) ![
+   > ![Etkinlik yükünü Gönder](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
 
    ```json
    {
@@ -67,11 +67,11 @@ Bu makalede, adım adım, bir istemci uygulamanın özel komutlar uygulamanızla
    }
    ```
 
-## <a name="create-visuals-for-device-on-or-off-state"></a>Cihaz üzerinde veya Kapalı durumuna görsel oluşturma
+## <a name="create-visuals-for-device-on-or-off-state"></a>Durum içinde veya dışında aygıt için görsel oluşturma
 
-[Hızlı başlangıç: konuşma SDK 'sı (Önizleme) Ile özel bir komut uygulamasına bağlanma](./quickstart-custom-speech-commands-speech-sdk.md) `turn on the tv`, `turn off the fan`gibi komutları ele alan bir konuşma SDK 'sı istemci uygulaması oluşturdunuz. Şimdi bu komutların sonucunu görebilmeniz için bazı görseller ekleyin.
+[Quickstart: Konuşma SDK (Önizleme) ile özel komut uygulamasına bağlanın](./quickstart-custom-speech-commands-speech-sdk.md) gibi `turn on the tv`komutları işleyen bir `turn off the fan`Konuşma SDK istemci uygulaması oluşturdunuz. Şimdi bu komutların sonucunu görebilmeniz için bazı görseller ekleyin.
 
-Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **Off** etiketli kutular ekleyin `MainPage.xaml.cs`
+Aşağıdaki XML'yi kullanarak **Açık** veya **Kapalı'yı** gösteren metin içeren etiketli kutular ekleme`MainPage.xaml.cs`
 
 ```xml
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
@@ -90,14 +90,14 @@ Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **Off** eti
 </StackPanel>
 ```
 
-## <a name="handle-customizable-payload"></a>Özelleştirilebilir yükü işle
+## <a name="handle-customizable-payload"></a>Özelleştirilebilir yükü işleme
 
-Artık bir JSON yükü oluşturduğunuza göre, seri durumdan çıkarmayı işlemek için [JSON.net](https://www.newtonsoft.com/json) kitaplığına bir başvuru ekleyebilirsiniz.
+Artık bir JSON yükü oluşturduğunuza göre, seri oluşturmayı işlemek için [JSON.NET](https://www.newtonsoft.com/json) kitaplığına bir başvuru ekleyebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> Etkinlik yükünü gönder](media/custom-speech-commands/fulfill-sdk-json-nuget.png) ![
+> ![Etkinlik yükünü Gönder](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
 
-`InitializeDialogServiceConnector` `ActivityReceived` olay işleyicinizde aşağıdakileri ekleyin. Ek kod, etkinliğin yükünü ayıklar ve TV veya fan 'nin görsel durumunu uygun şekilde değiştirir.
+Olay `InitializeDialogServiceConnector` işleyicinize `ActivityReceived` aşağıdakileri ekleyin. Ek kod, yükü etkinlikten ayıklar ve buna göre televizyonun veya fanın görsel durumunu değiştirir.
 
 ```C#
 connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
@@ -134,12 +134,12 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="try-it-out"></a>Deneyin
 
 1. Uygulamayı başlatma
-1. Mikrofonu etkinleştir ' i seçin
-1. Konuşma düğmesini seçin
-1. `turn on the tv` söyleyin
-1. TV 'nin görsel durumu "açık" olarak değiştirilmelidir
+1. Mikrofonu Etkinleştir'i seçin
+1. Konuş düğmesini seçin
+1. Söyle`turn on the tv`
+1. Televizyonun görsel durumu "On" olarak değiştirilmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
+> [Nasıl yapılır: Özel Komut parametrelerine doğrulama ekleme (önizleme)](./how-to-custom-speech-commands-validations.md)

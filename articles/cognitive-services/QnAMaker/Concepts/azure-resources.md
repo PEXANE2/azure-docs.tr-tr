@@ -1,179 +1,181 @@
 ---
-title: Azure kaynakları-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma, her biri farklı amaçla çeşitli Azure kaynakları kullanır. Bunların nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlayıp seçmenizi veya fiyatlandırma katmanınızı ne zaman değiştireceğimizi görmenizi sağlar. Bunların birleşimde nasıl kullanıldığını anlamak, sorunları ortaya çıktığında bulmanıza ve düzeltmenize izin verir.
+title: Azure kaynakları - QnA Maker
+description: QnA Maker, her biri farklı bir amaca sahip olmak üzere birkaç Azure kaynağı kullanır. Bunların tek tek nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlamanıza ve seçmenize veya fiyatlandırma katmanınızı ne zaman değiştireceğinize bilmenize olanak tanır. Bunların birlikte nasıl kullanıldığını anlamak, sorunları oluştuğunda bulmanızı ve düzeltmenizi sağlar.
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/25/2020
+ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284254"
 ---
-# <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
+# <a name="azure-resources-for-qna-maker"></a>QnA Maker için azure kaynakları
 
-Soru-Cevap Oluşturma, her biri farklı amaçla çeşitli Azure kaynakları kullanır. Bunların nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlayıp seçmenizi veya fiyatlandırma katmanınızı ne zaman değiştireceğimizi görmenizi sağlar. Bunların _birleşimde_ nasıl kullanıldığını anlamak, sorunları ortaya çıktığında bulmanıza ve düzeltmenize izin verir.
+QnA Maker, her biri farklı bir amaca sahip olmak üzere birkaç Azure kaynağı kullanır. Bunların tek tek nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlamanıza ve seçmenize veya fiyatlandırma katmanınızı ne zaman değiştireceğinize bilmenize olanak tanır. _Bunların birlikte_ nasıl kullanıldığını anlamak, sorunları oluştuğunda bulmanızı ve düzeltmenizi sağlar.
 
 ## <a name="resource-planning"></a>Kaynak planlama
 
-İlk olarak bir Soru-Cevap Oluşturma Bilgi Bankası geliştirirken, prototip aşamasında, hem test hem de üretim için tek bir Soru-Cevap Oluşturma kaynağı olması yaygındır.
+Prototip aşamasında ilk olarak bir QnA Maker bilgi tabanı geliştirdiğiniz zaman, hem test hem de üretim için tek bir QnA Maker kaynağına sahip olmak yaygındır.
 
-Projenin geliştirme aşamasına geçtiğinizde şunları göz önünde bulundurmanız gerekir:
+Projenin geliştirme aşamasına geçdiğinizde şunları göz önünde bulundurmalısınız:
 
-* Bilgi Bankası sisteminizin kaç dilde tutacağız
-* bilgi Bankalarınızın içinde/içinden kullanılabilir olması gereken bölge sayısı
-* her etki alanındaki sisteminizin tutacağız belge sayısı
+* bilgi bankası sisteminizin kaç dil tutacağı
+* bilgi tabanınızın kullanılabilir olması için kaç bölgeye ihtiyacınız var/
+* Sisteminizin her etki alanında kaç belge tutacağını
 
-Tek bir Soru-Cevap Oluşturma kaynağına sahip olmak için, aynı dile, aynı bölgeye ve aynı konu etki alanı birleşimine sahip tüm bilgi bankalarının bir arada olmasını planlayın.
+Tek bir QnA Maker kaynağının aynı dile, aynı bölgeye ve aynı konu etki alanı birleşimine sahip tüm bilgi tabanlarını tutmasını planlayın.
 
-## <a name="pricing-tier-considerations"></a>Fiyatlandırma Katmanı konuları
+## <a name="pricing-tier-considerations"></a>Fiyatlandırma katmanı hususları
 
-Genellikle dikkate almanız gereken üç parametresi vardır:
+Genellikle göz önünde bulundurmanız gereken üç parametre vardır:
 
-* **Aktarım hızı ihtiyacınız hizmetten**: uygun seçin [uygulama planı](https://azure.microsoft.com/pricing/details/app-service/plans/) uygulama hizmetiniz için gereksinimlerinize göre. Yapabilecekleriniz [ölçeği](https://docs.microsoft.com/azure/app-service/manage-scale-up) veya uygulama azaltın. Bunun yanı sıra Azure Bilişsel Arama SKU seçiminizi de etkilemelidir, daha fazla ayrıntı için [buradaki](https://docs.microsoft.com/azure/search/search-sku-tier)ayrıntıları inceleyin.
+* **Hizmetten ihtiyacınız olan iş:**
+    * İhtiyaçlarınıza göre Uygulama hizmetiniz için uygun [Uygulama Planını](https://azure.microsoft.com/pricing/details/app-service/plans/) seçin. Uygulamayı [büyütebilir](https://docs.microsoft.com/azure/app-service/manage-scale-up) veya küçültebilirsiniz.
+    * Bu da Azure **Bilişsel Arama** SKU seçim etkilemeli, [burada](https://docs.microsoft.com/azure/search/search-sku-tier)daha fazla bilgi bakın. Ayrıca, çoğaltmaları ile Bilişsel Arama [kapasitesini](../../../search/search-capacity-planning.md) ayarlamanız gerekebilir.
 
-* **Boyutuna ve sayısına bilgi bankalarından**: uygun seçin [Azure arama SKU](https://azure.microsoft.com/pricing/details/search/) senaryonuz için. Genellikle, farklı konu etki alanlarının sayısına göre ihtiyacınız olan bilgi tabanı sayısına karar verirsiniz. Konu etki alanı (tek bir dil için) bir bilgi tabanında olmalıdır.
+* **Boyut ve bilgi temellerinin sayısı**: Senaryonuz için uygun [Azure arama SKU'yu](https://azure.microsoft.com/pricing/details/search/) seçin. Genellikle, farklı konu etki alanlarının sayısına bağlı olarak ihtiyacınız olan bilgi tabanlarının sayısına karar verirsiniz. Bir kez konu etki alanı (tek bir dil için) tek bir bilgi tabanında olmalıdır.
 
-    N katmanında izin verilen en fazla dizin, belirli bir katman içinde N-1 bilgi bankalarından yayımlayabilirsiniz. Ayrıca, en büyük boyutu ve katman izin verilen belge sayısını denetleyin.
+    N-1 bilgi tabanlarını, N'nin katmanda izin verilen en yüksek dizinler olduğu belirli bir katmanda yayımlayabilirsiniz. Ayrıca, katman başına izin verilen maksimum boyutu ve belge sayısını da kontrol edin.
 
-    Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin, yazma ve test için tüm bilgi tabanları için kullanılır.
+    Örneğin, katmanınızda izin verilen 15 dizin varsa, 14 bilgi tabanı (yayımlanmış bilgi tabanı başına 1 dizin) yayımlayabilirsiniz. On beşinci indeks yazma ve test için tüm bilgi üsleri için kullanılır.
 
-* **Kaynağı olarak belge sayısı**: soru-cevap Oluşturucu management hizmetinin ücretsiz SKU portalı ve API'leri (1 MB boyut her), 3 aracılığıyla yönetebileceğiniz belge sayısını sınırlar. Standart SKU yönetebileceğiniz belge sayısı için hiçbir sınır vardır. Daha fazla ayrıntı görmek [burada](https://aka.ms/qnamaker-pricing).
+* **Kaynak olarak belge sayısı**: QnA Maker yönetim hizmetinin ücretsiz SKU'su, portal ve API'ler aracılığıyla yönetebileceğiniz belge sayısını 3 ile sınırlar (her biri 1 MB boyutunda). Standart SKU'nun yönetebileceğiniz belge sayısıyla sınırı yoktur. [Burada](https://aka.ms/qnamaker-pricing)daha fazla bilgi bakın.
 
-Aşağıdaki tabloda bazı üst düzey yönergeler verilmektedir.
+Aşağıdaki tablo size bazı üst düzey yönergeler verir.
 
-|                        | Soru-cevap Oluşturucu Yönetimi | App Service | Azure Bilişsel Arama | Sınırlamalar                      |
+|                        | QnA Maker Yönetimi | App Service | Azure Bilişsel Arama | Sınırlamalar                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Deneme        | Ücretsiz SKU             | Ücretsiz Katmanı   | Ücretsiz Katmanı    | En fazla 2 KB'leri, 50 MB boyutunda yayımlama  |
-| Geliştirme/Test Ortamı   | Standart SKU         | Paylaşılan      | Temel        | 14 adede kadar KB'leri, 2 GB boyutunu yayımlama    |
-| Üretim ortamı | Standart SKU         | Temel       | Standart     | En fazla 49 KB'leri, 25 GB boyutunu yayımlama |
+| Deneme        | Ücretsiz SKU             | Ücretsiz Katman   | Ücretsiz Katman    | 2 KB'ye kadar, 50 MB boyutunda yayımla  |
+| Geliştirme/Test Ortamı   | Standart SKU         | Paylaşımlı      | Temel        | 14 KB'ye kadar, 2 GB boyutunda yayınlayın    |
+| Üretim Ortamı | Standart SKU         | Temel       | Standart     | 49 KB'ye kadar, 25 GB boyutunda yayınlayın |
 
-## <a name="when-to-change-a-pricing-tier"></a>Fiyatlandırma katmanının ne zaman değiştirileceği
+## <a name="when-to-change-a-pricing-tier"></a>Fiyatlandırma katmanıne ne zaman değişiklik yapmak
 
-|Yükseltin|Neden|
+|Yükseltme|Neden|
 |--|--|
-|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Soru-Cevap Oluşturma Management SKU 'SU|Bilgi bankalarınızda daha fazla QnA kümesi veya belge kaynağı olmasını istiyorsunuz.|
-|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU 'SU|Bilgi tabanınız, bir sohbet bot gibi istemci uygulamanızdan daha fazla istek sunması gerekir.|
-|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Bilişsel Arama hizmeti|Birçok Bilgi Bankası 'na sahip olmanız planlanır.|
+|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker yönetimi SKU|Bilgi tabanınızda daha fazla QnA kümesi veya belge kaynağı olmasını istiyorsunuz.|
+|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU ve Bilişsel Arama katmanı kontrol edin ve [Bilişsel Arama kopyaları oluşturmak](../../../search/search-capacity-planning.md)|Bilgi tabanınızın, sohbet botu gibi istemci uygulamanızdan daha fazla istek sunması gerekir.|
+|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Bilişsel Arama hizmeti|Birçok bilgi tabanına sahip olmayı planlıyorsun.|
 
-[Azure portal App Service güncelleyerek](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)en son çalışma zamanı güncelleştirmelerini alın.
+[Azure portalında Uygulama Hizmetinizi güncelleyerek](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)en son çalışma zamanı güncellemelerini alın.
 
-## <a name="resource-naming-considerations"></a>Kaynak adlandırma konuları
+## <a name="resource-naming-considerations"></a>Kaynak adlandırma hususları
 
-`qna-westus-f0-b`gibi Soru-Cevap Oluşturma kaynağın kaynak adı diğer kaynakları adlandırmak için de kullanılır.
+QnA Maker kaynağının kaynak adı, `qna-westus-f0-b`örneğin, diğer kaynakların adlarını almak için de kullanılır.
 
-Azure portal oluştur penceresi, bir Soru-Cevap Oluşturma kaynağı oluşturup diğer kaynakların fiyatlandırma katmanlarını seçmenizi sağlar.
-
-> [!div class="mx-imgBorder"]
-> Soru-Cevap Oluşturma kaynak oluşturma için Azure portal ekran görüntüsünü ![](../media/concept-azure-resource/create-blade.png)
-
-Kaynaklar oluşturulduktan sonra, isteğe bağlı Application Insights kaynağı dışında aynı ada sahip olur, bu da karakterleri ada erteler.
+Azure portalı oluşturma penceresi, bir QnA Maker kaynağı oluşturmanıza ve diğer kaynakların fiyatlandırma katmanlarını seçmenize olanak tanır.
 
 > [!div class="mx-imgBorder"]
-> Azure portal kaynak listesinin ekran görüntüsünü ![](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
+> ![QnA Maker kaynak oluşturma için Azure portalının ekran görüntüsü](../media/concept-azure-resource/create-blade.png)
+
+Kaynaklar oluşturulduktan sonra, karakterleri ada gönderen isteğe bağlı Application Insights kaynağı dışında aynı ada sahiptirler.
+
+> [!div class="mx-imgBorder"]
+> ![Azure portal kaynak kaydının ekran görüntüsü](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
 
 > [!TIP]
-> Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda yeni bir kaynak grubu oluşturun. Bu, kaynak grubuna göre arama yaparken Soru-Cevap Oluşturma kaynağıyla ilişkili tüm kaynakları görmenizi sağlar.
+> Bir QnA Maker kaynağı oluşturduğunuzda yeni bir kaynak grubu oluşturun. Bu, kaynak grubuna göre arama yaparken QnA Maker kaynağıyla ilişkili tüm kaynakları görmenizi sağlar.
 
 > [!TIP]
-> Kaynak veya kaynak grubu adı içindeki fiyatlandırma katmanlarını göstermek için bir adlandırma kuralı kullanın. Yeni bir Bilgi Bankası oluşturma veya yeni belgeler ekleme hakkında hata aldığınızda, Bilişsel Arama fiyatlandırma katmanı sınırı yaygın bir sorundur.
+> Kaynak veya kaynak grubu adı içindeki fiyatlandırma katmanlarını belirtmek için bir adlandırma kuralı kullanın. Yeni bir bilgi tabanı oluşturmaktan veya yeni belgeler eklemekten hatalar aldığınızda, Bilişsel Arama fiyatlandırma katmanı sınırı yaygın bir sorundur.
 
 ## <a name="resource-purposes"></a>Kaynak amaçları
 
-Soru-Cevap Oluşturma ile oluşturulan her Azure kaynağı belirli bir amaca sahiptir:
+QnA Maker ile oluşturulan her Azure kaynağının belirli bir amacı vardır:
 
-* Soru-Cevap Oluşturma kaynağı
+* QnA Maker kaynağı
 * Bilişsel Arama kaynağı
 * App Service
-* Uygulama planı hizmeti
-* Application Insights hizmeti
+* Uygulama Planı Hizmeti
+* Uygulama Öngörüleri Hizmeti
 
 
 ### <a name="cognitive-search-resource"></a>Bilişsel Arama kaynağı
 
-[Bilişsel arama](../../../search/index.yml) kaynak şu şekilde kullanılır:
+[Bilişsel Arama](../../../search/index.yml) kaynağı aşağıdakileri yapmak için kullanılır:
 
-* QnA kümelerini depolayın
-* Çalışma zamanında QnA kümelerinin başlangıç derecelendirmesini (Ranker #1) sağlama
+* QnA kümelerini saklayın
+* Çalışma zamanında QnA kümelerinin ilk sıralamasını (ranker #1) sağlayın
 
 #### <a name="index-usage"></a>Dizin kullanımı
 
-Kaynak, bir dizinin test dizini olarak davranmasını ve kalan dizinlerin her biri yayımlanmış bir Bilgi Bankası ile ilişkilendirilmesi için bir dizin tutar.
+Kaynak, test dizini olarak hareket etmek için bir dizin tutar ve kalan dizinler her biri bir yayımlanmış bilgi tabanıyla ilişkilidir.
 
-15 Dizin tutmak için ücretlendirilen bir kaynak, 14 yayımlanan bilgi esaslarını tutar ve tüm bilgi temellerini test etmek için bir dizin kullanılır. Etkileşimli test bölmesini kullanan bir sorgunun test dizinini kullanması, ancak yalnızca belirli Bilgi Bankası ile ilişkili belirli bir bölümden sonuçları döndürmesi için, bu test dizini Bilgi Bankası tarafından bölümlenir.
+15 dizin tutmak için fiyatlı bir kaynak, 14 yayınlanan bilgi üsleri tutar ve bir dizin tüm bilgi tabanları test etmek için kullanılır. Bu test dizini, etkileşimli test bölmesi kullanan bir sorgunun test dizinini kullanmasına, ancak yalnızca belirli bilgi tabanıyla ilişkili belirli bölümden sonuçları döndürecek şekilde bilgi tabanına göre bölümlenir.
 
 #### <a name="language-usage"></a>Dil kullanımı
 
-Soru-Cevap Oluşturma kaynağında oluşturulan ilk bilgi tabanı, Bilişsel Arama kaynağı ve tüm dizinleri için ayarlanmış _tek_ dili belirlemekte kullanılır. Bir Soru-Cevap Oluşturma Hizmeti için yalnızca _bir dil kümesi_ kullanabilirsiniz.
+QnA Maker kaynağında oluşturulan ilk bilgi tabanı, Bilişsel Arama kaynağı ve tüm dizinleri için _tek_ dil kümesini belirlemek için kullanılır. QnA Maker hizmeti için yalnızca bir _dil ayarlayabilirsiniz._
 
-### <a name="qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağı
+### <a name="qna-maker-resource"></a>QnA Maker kaynağı
 
-Soru-Cevap Oluşturma kaynak, çalışma zamanında QnA kümelerinin yazma ve yayımlama API 'Lerinin yanı sıra doğal dil işleme (NLP) tabanlı ikinci derecelendirme katmanını (Ranker #2) erişim sağlar.
+QnA Maker kaynağı, çalışma zamanında QnA kümelerinin doğal dil işleme (NLP) tabanlı ikinci sıralama katmanına (ranker #2) yazma ve yayımlama API'lerine erişim sağlar.
 
-İkinci derecelendirme, meta veri ve izleme istemlerini içerebilen akıllı filtreler uygular.
+İkinci sıralama, meta veri ve izleme istemleri içerebilen akıllı filtreler uygular.
 
-#### <a name="qna-maker-resource-configuration-settings"></a>Soru-Cevap Oluşturma kaynak yapılandırma ayarları
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker kaynak yapılandırma ayarları
 
-[Soru-cevap oluşturma portalında](https://qnamaker.ai)yeni bir Bilgi Bankası oluşturduğunuzda, **dil** ayarı kaynak düzeyinde uygulanan tek ayardır. Kaynak için ilk Bilgi Bankası 'nı oluştururken dili seçersiniz. 
+[QnA Maker portalında](https://qnamaker.ai)yeni bir bilgi tabanı oluşturduğunuzda, **Dil** ayarı kaynak düzeyinde uygulanan tek ayardır. Kaynak için ilk bilgi tabanını oluştururken dili seçersiniz.
 
-### <a name="app-service-and-app-service-plan"></a>App Service ve App Service planı
+### <a name="app-service-and-app-service-plan"></a>Uygulama hizmeti ve Uygulama servis planı
 
-[App Service](../../../app-service/index.yml) , istemci uygulamanız tarafından, yayımlanan bilgi matrahına çalışma zamanı uç noktası aracılığıyla erişmek için kullanılır.
+[Uygulama hizmeti,](../../../app-service/index.yml) istemci uygulamanız tarafından, yayınlanmış bilgi tabanlarına çalışma süresi bitiş noktası üzerinden erişmek için kullanılır.
 
-Yayımlanan Bilgi Bankası 'nı sorgulamak için, yayımlanan tüm bilgi tabanları aynı URL uç noktasını kullanır, ancak rota içinde **bilgi BANKASı kimliğini** belirtir.
+Yayımlanmış bilgi tabanını sorgulamak için, yayımlanmış tüm bilgi tabanları aynı URL bitiş noktasını kullanır, ancak rota içindeki **bilgi temel kimliğini** belirtin.
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) , sohbet günlüklerini ve telemetrisini toplamak için kullanılır. Hizmetiniz hakkında bilgi edinmek için ortak [kusto sorgularını](../how-to/get-analytics-knowledge-base.md) gözden geçirin.
+[Uygulama Öngörüleri](../../../azure-monitor/app/app-insights-overview.md) sohbet günlükleri ve telemetri toplamak için kullanılır. Hizmetiniz hakkında bilgi almak için ortak [Kusto sorgularını](../how-to/get-analytics-knowledge-base.md) gözden geçirin.
 
-## <a name="share-services-with-qna-maker"></a>Hizmetleri Soru-Cevap Oluşturma ile paylaşma
+## <a name="share-services-with-qna-maker"></a>Hizmetleri QnA Maker ile paylaşın
 
-Soru-Cevap Oluşturma çeşitli Azure kaynakları oluşturur. Yönetim ve maliyet paylaşımının avantajlarından yararlanmak için aşağıdaki tabloyu kullanarak neleri paylaşabdiklerinizi ve neleri paylaşabileceğinizi öğrenin:
+QnA Maker birkaç Azure kaynağı oluşturur. Yönetimi azaltmak ve maliyet paylaşımından yararlanmak için, neyi paylaşıp paylaşamayacağınızı anlamak için aşağıdaki tabloyu kullanın:
 
-|Hizmet|Paylaşın|Neden|
+|Hizmet|Paylaş|Neden|
 |--|--|--|
-|Cognitive Services|X|Tasarım tarafından mümkün değil|
-|App Service planı|✔|App Service planı için ayrılan sabit disk alanı. Aynı App Service planını paylaşan diğer uygulamalar önemli disk alanı kullanıyorsa, QnAMaker App Service örneği sorunlarla karşılaşacaktır.|
-|App Service|X|Tasarım tarafından mümkün değil|
+|Bilişsel hizmetler|X|Tasarım la mümkün değil|
+|App Service planı|✔|Bir Uygulama Hizmeti planı için ayrılan sabit disk alanı. Aynı Uygulama Hizmeti planını paylaşan diğer uygulamalar önemli disk alanı kullanıyorsa, QnAMaker Uygulama Hizmeti örneği sorunlarla karşılaşır.|
+|App Service|X|Tasarım la mümkün değil|
 |Application Insights|✔|Paylaşılabilir|
-|Arama hizmeti|✔|1. `testkb` QnAMaker hizmeti için ayrılmış bir addır; başkaları tarafından kullanılamaz.<br>2. `synonym-map` ad ile eş anlamlı eşleme QnAMaker hizmeti için ayrılmıştır.<br>3. yayımlanan bilgi tabanı sayısı arama hizmeti katmanıyla sınırlıdır. Kullanılabilir ücretsiz dizinler varsa, diğer hizmetler bunları kullanabilir.|
+|Arama hizmeti|✔|1. `testkb` QnAMaker hizmeti için ayrılmış bir addır; başkaları tarafından kullanılamaz.<br>2. Adı `synonym-map` ile eşanlamlı harita QnAMaker hizmeti için ayrılmıştır.<br>3. Yayınlanan bilgi üslerinin sayısı Arama hizmeti katmanı ile sınırlıdır. Ücretsiz dizinler varsa, diğer hizmetler bunları kullanabilir.|
 
-### <a name="using-a-single-cognitive-search-service"></a>Tek bir Bilişsel Arama hizmeti kullanma
+### <a name="using-a-single-cognitive-search-service"></a>Tek bir Bilişsel Arama hizmetini kullanma
 
-Portal üzerinden bir QnA hizmeti ve bağımlılıklarını (arama gibi) oluşturursanız, sizin için bir arama hizmeti oluşturulur ve Soru-Cevap Oluşturma hizmetine bağlanır. Bu kaynaklar oluşturulduktan sonra, önceden var olan bir arama hizmetini kullanmak için App Service ayarını güncelleştirebilir ve yeni oluşturduğunuz birini kaldırabilirsiniz.
+Portal üzerinden bir QnA hizmeti ve onun bağımlılıklarını (Arama gibi) oluşturursanız, sizin için bir Arama hizmeti oluşturulur ve QnA Maker hizmetine bağlanır. Bu kaynaklar oluşturulduktan sonra, önceden varolan bir Arama hizmetini kullanmak ve yeni oluşturduğunuz hizmeti kaldırmak için Uygulama Hizmeti ayarını güncelleştirebilirsiniz.
 
-Soru-Cevap Oluşturma, Soru-Cevap Oluşturma kaynak oluşturma işleminin parçası olarak oluşturutından farklı bir bilişsel hizmet kaynağı kullanmak üzere [nasıl yapılandıracağınızı](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
+QnA Maker kaynak oluşturma sürecinin bir parçası olarak oluşturulan farklı bir Bilişsel Hizmet kaynağını kullanacak şekilde QnA Maker'ı [nasıl yapılandıracak](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) şekilde yapılandırılabildiğinizi öğrenin.
 
-## <a name="management-service-region"></a>Yönetim hizmeti bölgesi
+## <a name="management-service-region"></a>Yönetim hizmet bölgesi
 
-Soru-Cevap Oluşturma yönetim hizmeti yalnızca Soru-Cevap Oluşturma portalı ve ilk veri işleme için kullanılır. Bu hizmet yalnızca **Batı ABD** bölgesinde kullanılabilir. Bu Batı ABD hizmetinde hiçbir müşteri verisi depolanmaz.
+QnA Maker'ın yönetim hizmeti yalnızca QnA Maker portalı ve ilk veri işleme için kullanılır. Bu hizmet yalnızca **Batı ABD** bölgesinde kullanılabilir. Bu Batı ABD hizmetinde hiçbir müşteri verisi depolanır.
 
-## <a name="keys-in-qna-maker"></a>Soru-Cevap Oluşturma anahtarlar
+## <a name="keys-in-qna-maker"></a>QnA Maker'daki Anahtarlar
 
-Soru-Cevap Oluşturma hizmetiniz iki tür anahtara sahiptir: uygulama hizmetinde barındırılan çalışma zamanında kullanılan anahtar ve **sorgu uç noktası anahtarları** **yazma** .
+QnA Maker hizmetiniz iki tür anahtarla ilgilenir: Uygulama hizmetinde barındırılan çalışma süresiyle birlikte kullanılan anahtarları ve **sorgu bitiş noktası anahtarlarını** **yazma.**
 
-**Abonelik anahtarınızı**arıyorsanız, [terminoloji değişmiştir](#subscription-keys).
+**Abonelik anahtarınızı**arıyorsanız, [terminoloji değişti.](#subscription-keys)
 
-API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
+API'ler aracılığıyla hizmete istekte bulunmak için bu anahtarları kullanın.
 
 ![Anahtar yönetimi](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Ad|Konum|Amaç|
+|Adı|Konum|Amaç|
 |--|--|--|
-|Anahtar yazma|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
-|Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
+|Yazma anahtarı|[Azure portalında](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [QnA Maker yönetim hizmeti API'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API'ler, bilgi tabanınızdaki soruları ve yanıtları yeniden atamasına ve bilgi tabanınızı yayımlamanıza izin verir. Bu anahtarlar, yeni bir QnA Maker hizmeti oluşturduğunuzda oluşturulur.<br><br>Bu **anahtarları, Anahtarlar** **sayfasındaki Bilişsel Hizmetler** kaynağında bulabilirsiniz.|
+|Sorgu bitiş noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, kullanıcı sorusuna yanıt almak için yayımlanmış bilgi bankası bitiş noktasını sorgulamak için kullanılır. Bu sorgu bitiş noktasını genellikle sohbet botunuzda veya QnA Maker hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar, QnA Maker bilgi tabanınızı yayımladığınızda oluşturulur.<br><br>Bu anahtarları **Hizmet ayarları** sayfasında bulun. Açılan menüdeki sayfanın sağ üst kısmındaki kullanıcı menüsünden bu sayfayı bulun.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları
 
-Hüküm yazma ve sorgu uç noktası anahtarı düzeltici koşullardır. Önceki terim **abonelik anahtarıdır**. Abonelik anahtarlarına başvuran başka belgeler görürseniz, bunlar yazma ve sorgu uç noktası anahtarlarına eşdeğerdir (çalışma zamanında kullanılır).
+Yazma terimleri ve sorgu bitiş noktası anahtarı düzeltici terimlerdir. Önceki dönem **abonelik anahtarı**oldu. Abonelik anahtarlarına atıfta bulunan diğer belgeler görürseniz, bunlar yazma ve sorgu bitiş noktası anahtarlarına eşdeğerdir (çalışma zamanında kullanılır).
 
-Hangi anahtarı bulmanız gerektiğini öğrenmek için, anahtarın ne eriştiğini, Bilgi Bankası yönetimini veya Bilgi Bankası sorguladığını bilmeniz gerekir.
+Hangi anahtarı bulmanız gerektiğini bilmek için anahtarın neye erişebildiğini, bilgi bankası yönetimi veya bilgi bankası sorgusuna erişmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Soru-Cevap Oluşturma [Bilgi Bankası](knowledge-base.md) hakkında bilgi edinin
-* [Bilgi Bankası yaşam döngüsünü](development-lifecycle-knowledge-base.md) anlama
-* Hizmeti ve Bilgi Bankası [sınırlarını](../limits.md) gözden geçirin
+* QnA Maker [bilgi tabanı](knowledge-base.md) hakkında bilgi edinin
+* Bilgi [tabanı yaşam döngüsünü](development-lifecycle-knowledge-base.md) anlama
+* Hizmet ve bilgi temel [limitlerini](../limits.md) gözden geçirin
 

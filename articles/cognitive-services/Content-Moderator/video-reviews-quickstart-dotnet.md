@@ -1,7 +1,7 @@
 ---
-title: .NET-Content Moderator kullanarak video incelemeleri oluşturma
+title: .NET kullanarak video incelemeleri oluşturma - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, video İncelemeleri oluşturmak için ile C# Content moderator SDK 'sını kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri sağlanmaktadır.
+description: Bu makale, video incelemeleri oluşturmak için C# ile İçerik Moderatör SDK'yı kullanmaya hızla başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931668"
 ---
-# <a name="create-video-reviews-using-net"></a>.NET kullanarak video incelemeleri oluşturma
+# <a name="create-video-reviews-using-net"></a>.NET'i kullanarak video incelemeleri oluşturma
 
-Bu makalede, [ C# ile Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
+Bu makalede, [C# ile İçerik Moderatör SDK'yı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanmaya hızla başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanmaktadır:
 
-- İnsan moderatör için video incelemesi oluşturma
-- Bir incelemeye kareler ekleme
-- İnceleme için çerçeveleri al
-- İnceleme durumunu ve ayrıntılarını alın
-- İncelemeyi Yayımla
+- İnsan moderatörler için video incelemesi oluşturma
+- Gözden geçirmeye çerçeve ekleme
+- İnceleme için çerçeveleri alın
+- İncelemenin durumunu ve ayrıntılarını alın
+- İncelemeyi yayımla
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
-- Bu makalede [, videoyu (bkz. hızlı başlangıç)](video-moderation-api.md) dağıttığınız ve yanıt verilerinin bulunduğu varsayılmaktadır. Bu, insan moderatör için çerçeve tabanlı incelemeler oluşturmak için gereklidir.
+- İçerik Moderatör [İnceleme araç](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya bir hesap oluşturun.
+- Bu makalede, videoyu [denetlediğinizi varsayar (bkz. hızlı başlangıç)](video-moderation-api.md) ve yanıt verilerine sahipsiniz. İnsan moderatörler için çerçeve tabanlı incelemeler oluşturmak için ihtiyacınız var.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın inceleme oluşturma amacıyla inceleme API'sini çağırabildiğinden emin olun
 
@@ -40,36 +40,36 @@ SDK örneğinizde Azure tarafından sağlanan API anahtarını kullanmayı planl
 
 İnceleme aracı tarafından oluşturulan ücretsiz deneme anahtarını kullanırsanız, inceleme aracı hesabınız anahtarı zaten tanıyordur ve bu nedenle ek bir adım gerekli değildir.
 
-### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Videonuzu ve video çerçevelerini gözden geçirilmek üzere hazırlama
+### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Videonuzu ve video çerçevelerinizi incelemeye hazırlayın
 
-URL 'Lerinin olması gerektiğinden, gözden geçirilmesi gereken video ve örnek video çerçeveleri çevrimiçi olarak yayımlanmalıdır.
+İncelenecek video ve örnek video çerçeveleri, URL'lerine ihtiyacınız olduğundan çevrimiçi olarak yayınlanmalıdır.
 
 > [!NOTE]
-> Program, gözden geçirme API 'sinin kullanımını göstermek için rastgele yetişkin/racy puanlarını içeren videodan el ile kaydedilen ekran görüntülerini kullanır. Gerçek dünyada bir durumda, görüntü oluşturmak ve puanları atamak için [video denetleme çıktısını](video-moderation-api.md#run-the-program-and-review-the-output) kullanırsınız. 
+> Program, inceleme API'sinin kullanımını göstermek için rastgele yetişkinlere uygun/müstehcen puanlarla videodan el ile kaydedilmiş ekran görüntülerini kullanır. Gerçek dünyada, görüntü oluşturmak ve puanlar atamak için [video denetleme çıktısını](video-moderation-api.md#run-the-program-and-review-the-output) kullanırsınız. 
 
-Video için, gözden geçirme aracının Player görünümünde videoyu oynaması için bir akış uç noktası gerekir.
+Video için, inceleme aracının videoyu oynatıcı görünümünde oynatıcı görünümünde oynatıcı da oynatabilmesi için bir akış bitiş noktasına ihtiyacınız vardır.
 
-![Video tanıtımı küçük resmi](images/ams-video-demo-view.PNG)
+![Video demo küçük resim](images/ams-video-demo-view.PNG)
 
-- Bildirim URL 'SI için bu [Azure Media Services demo](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) sayfasında **URL 'yi** kopyalayın.
+- Bildirim URL'si için bu [Azure Medya Hizmetleri demo](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) sayfasındaki **URL'yi** kopyalayın.
 
 Video çerçeveleri (görüntüler) için aşağıdaki görüntüleri kullanın:
 
-![Video çerçevesi küçük resmi 1](images/ams-video-frame-thumbnails-1.PNG) | ![Video çerçevesi küçük resmi 2](images/ams-video-frame-thumbnails-2.PNG) | ![Video çerçevesi küçük resmi 3](images/ams-video-frame-thumbnails-3.PNG) |
+![Video kare küçük resim 1](images/ams-video-frame-thumbnails-1.PNG) | ![Video kare küçük resim 2](images/ams-video-frame-thumbnails-2.PNG) | ![Video kare küçük resim 3](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
-[Çerçeve 1](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [Çerçeve 2](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [Kare 3](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
+[Çerçeve 1](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [Çerçeve 2](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [Çerçeve 3](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturun
 
 1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
-1. Projeyi **Videoincelemeleri**olarak adlandırın.
+1. Proje **VideoReviews**adı .
 
 1. Bu projeyi çözümün tekil başlangıç projesi olarak seçin.
 
 ### <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-TermLists projesi için aşağıdaki NuGet paketlerini yükler.
+TermLists projesi için aşağıdaki NuGet paketlerini yükleyin.
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -78,7 +78,7 @@ TermLists projesi için aşağıdaki NuGet paketlerini yükler.
 
 ### <a name="update-the-programs-using-statements"></a>Programı deyimler kullanarak güncelleştirme
 
-Programın using deyimlerini aşağıdaki şekilde değiştirin.
+Programın aşağıdaki ifadeleri kullanarak değiştirin.
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Özel özellikler ekleme
 
-Aşağıdaki özel özellikleri, ad alanı **Videoincelemeleri**, sınıf **programına**ekleyin. `AzureEndpoint` ve `CMSubscriptionKey` alanlarını Endpoint URL 'nizin ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Namespace **VideoReviews,** sınıf **Programı**için aşağıdaki özel özellikleri ekleyin. Bitiş `AzureEndpoint` noktası `CMSubscriptionKey` URL'niz ve abonelik anahtarınızın değerleriyle alanları ve alanları güncelleştirin. Bunları Azure portalında kaynağınızın **Hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 
 ```csharp
@@ -129,9 +129,9 @@ namespace VideoReviews
         private const int throttleRate = 2000;
 ```
 
-### <a name="create-content-moderator-client-object"></a>Content Moderator Istemci nesnesi oluştur
+### <a name="create-content-moderator-client-object"></a>İçerik Moderatör Üden nesnesi oluşturma
 
-Aşağıdaki yöntem tanımını ad alanı **Videoincelemeleri**, sınıf **programına**ekleyin.
+Namespace **VideoReviews**, sınıf **Programı**için aşağıdaki yöntem tanımı ekleyin.
 
 ```csharp
 /// <summary>
@@ -152,22 +152,22 @@ public static ContentModeratorClient NewClient()
 
 ## <a name="create-a-video-review"></a>Video incelemesi oluşturma
 
-**Contentmoderatorclient. İncelemeleri. Createvideoincelemeleri**ile bir video incelemesi oluşturun. Daha fazla bilgi için bkz. [API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+**ContentModeratorClient.Reviews.CreateVideoReviews**ile bir video incelemesi oluşturun. Daha fazla bilgi için bkz. [API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-**Createvideoincelemeleri** aşağıdaki gerekli parametrelere sahiptir:
-1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
-1. Content Moderator takım adınız.
-1. Bir **ılist \<CreateVideoReviewsBodyItem >** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
+**CreateVideoReviews** aşağıdaki gerekli parametrelere sahiptir:
+1. MIME türü içeren ve "uygulama/json" olması gereken bir dize. 
+1. İçerik Moderatör takım adınız.
+1. Bir **IList\<CreateVideoReviewsBodyItem>** nesne. Her **CreateVideoReviewsBodyItem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlatma, aynı anda bir gözden geçirme oluşturur.
 
-**Createvideo, Sbodyıtem** 'ın birkaç özelliği vardır. En azından, aşağıdaki özellikleri ayarlarsınız:
-- **İçerik**. Gözden geçirilecek videonun URL 'SI.
-- **ContentID**. Video incelemeye atanacak bir KIMLIK.
-- **Durum**. Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
+**CreateVideoReviewsBodyItem'in** çeşitli özellikleri vardır. En azından aşağıdaki özellikleri ayarlarsınız:
+- **İçerik**. Gözden geçirilecek videonun URL'si.
+- **ContentId**. Video incelemesine atamak için bir kimlik.
+- **Durum**. Değeri "Yayımlanmamış" olarak ayarlayın. Ayarlamazsanız, varsayılan olarak "Beklemede", bu da video incelemesinin yayınlandığı ve insan incelemesinin beklemede olduğu anlamına gelir. Bir video incelemesi yayınlandıktan sonra, artık video çerçeveleri, bir transkript veya transkript ılımlılık sonucu ekleyebilirsiniz.
 
 > [!NOTE]
-> **Createvideoincelemeleri** bir ılist \<string > döndürür. Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir. 
+> **CreateVideoReviews** bir IList\<dize> döndürür. Bu dizelerin her biri bir video incelemesi için bir kimlik içerir. Bu kimlikler GUID'dir ve **ContentId** özelliğinin değeriyle aynı değildir. 
 
-Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
+Ad alanı VideoReviews, sınıf Programı için aşağıdaki yöntem tanımı ekleyin.
 
 ```csharp
 /// <summary>
@@ -209,29 +209,29 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 
 ## <a name="add-video-frames-to-the-video-review"></a>Video incelemesine video çerçeveleri ekleme
 
-**Contentmoderatorclient. Review. AddVideoFrameUrl** (video çerçeveleriyse çevrimiçi olarak barındırılıyorsa) veya **contentmoderatorclient. Review. AddVideoFrameStream** (video çerçeveleriz yerel olarak barındırılıyorsa) ile bir video incelemesine video çerçeveleri eklersiniz. Bu hızlı başlangıçta, video çerçevelerlerinizin çevrimiçi olarak barındırıldığı varsayılmaktadır ve bu nedenle **Addvideoframeurl 'si**kullanılır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+**ContentModeratorClient.Reviews.AddVideoFrameUrl** (video çerçeveleriniz çevrimiçi barındırılıyorsa) veya **ContentModeratorClient.Reviews.AddVideoFrameStream** (video çerçeveleriniz yerel olarak barındırılıyorsa) ile bir video incelemesine video çerçeveleri eklersiniz. Bu hızlı başlatma, video karelerinizin çevrimiçi olarak barındırılan bir yer olduğunu varsayar ve bu nedenle **AddVideoFrameUrl'yi**kullanır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
-**Addvideoframeurl** aşağıdaki gerekli parametrelere sahiptir:
-1. "Application/JSON" olması gereken bir MIME türü içeren bir dize.
-1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
-1. Bir **ılist \<VideoFrameBodyItem >** nesnesi. Her **Videoframebodyıtem** nesnesi bir video çerçevesini temsil eder.
+**AddVideoFrameUrl** aşağıdaki gerekli parametrelere sahiptir:
+1. MIME türü içeren ve "uygulama/json" olması gereken bir dize.
+1. İçerik Moderatör takım adınız.
+1. Video inceleme kimliği **CreateVideoReviews**tarafından döndürülür.
+1. **Bir IList\<VideoFrameBodyItem>** nesne. Her **VideoFrameBodyItem** nesnesi bir video çerçeveyi temsil eder.
 
-**Videoframebodyıtem** aşağıdaki özelliklere sahiptir:
-- **Zaman damgası**. Video çerçevesinin alındığı videodaki süreyi saniye cinsinden içeren bir dize.
-- **FrameImage**. Video çerçevesinin URL 'SI.
-- **Meta veri**. Bir IList \<VideoFrameBodyItemMetadataItem >. **Videoframebodyıtemmetadataıtem** yalnızca bir anahtar/değer çiftidir. Geçerli anahtarlar şunlardır:
-- **gözden geçirmeyi öneririz**. Video çerçevesinin insan incelemesi önerilse doğru.
-- **adultScore**. Video çerçevesindeki yetişkinlere yönelik içeriğin önem derecesini derecelendiren, 0 ile 1 arasında bir değer.
-- **a**. Video yetişkinlere yönelik içerik içeriyorsa doğru.
-- **Oycyscore**. Video çerçevesindeki süslü içeriğin önem derecesini derecelendiren, 0 ile 1 arasında bir değer.
-- **r**. Video çerçevesi, süslü içerik içeriyorsa doğru.
-- **Reviewerresulttags**. Bir IList \<VideoFrameBodyItemReviewerResultTagsItem >. **VideoFrameBodyItemReviewerResultTagsItem** yalnızca bir anahtar/değer çiftidir. Bir uygulama, video çerçevelerini düzenlemek için bu etiketleri kullanabilir.
+**VideoFrameBodyItem** aşağıdaki özelliklere sahiptir:
+- **Zaman damgası.** Saniyeler içinde video çerçevesinin çekildiği videoyu içeren bir dize.
+- **FrameImage**. Video çerçevesinin URL'si.
+- **Meta veriler**. Bir IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** sadece bir anahtar/değer çiftidir. Geçerli anahtarlar şunlardır:
+- **yorumTavsiye edilir**. Video çerçevesinin insan tarafından incelenmesi önerilirse doğrudur.
+- **adultScore**. Video çerçevesindeki yetişkinlere uygun içeriğin önem derecesini belirten 0'dan 1'e kadar bir değer.
+- **bir**. Video yetişkinlere uygun içerik içeriyorsa doğrudur.
+- **racyScore**. Video çerçevesindeki müstehcen içeriğin şiddetini belirten 0'dan 1'e kadar olan bir değer.
+- **r**. Video çerçevesi müstehcen içerik içeriyorsa doğrudur.
+- **İncelemeSonucuEtiketler**. Bir IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** sadece bir anahtar / değer çifti. Bir uygulama video çerçeveleri düzenlemek için bu etiketleri kullanabilirsiniz.
 
 > [!NOTE]
-> Bu hızlı başlangıç, **adultScore** ve **racyscore** özellikleri için rastgele değerler üretir. Bir üretim uygulamasında, bu değerleri bir Azure Media Service olarak dağıtılan [video denetleme hizmetinden](video-moderation-api.md)elde edersiniz.
+> Bu hızlı başlatma **adultScore** ve **racyScore** özellikleri için rasgele değerler oluşturur. Bir üretim uygulamasında, bu değerleri Azure Medya Hizmeti olarak dağıtılan [video denetleme hizmetinden](video-moderation-api.md)elde elabilirsiniz.
 
-Aşağıdaki yöntem tanımlarını ad alanı Videoincelemeleri, sınıf programına ekleyin.
+Ad alanı VideoReviews, sınıf Programı için aşağıdaki yöntem tanımları ekleyin.
 
 ```csharp
 <summary>
@@ -291,15 +291,15 @@ static void AddFrame(ContentModeratorClient client, string review_id, string url
     Thread.Sleep(throttleRate);
 ```
 
-## <a name="get-video-frames-for-video-review"></a>Video incelemesi için video çerçeveleri al
+## <a name="get-video-frames-for-video-review"></a>Video incelemesi için video çerçeveleri alın
 
-Bir video incelemesi için, **Contentmoderatorclient. Review. GetVideoFrames**ile video çerçevelerini alabilirsiniz. **GetVideoFrames** aşağıdaki gerekli parametrelere sahiptir:
-1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
-1. Alınacak ilk video çerçevesinin sıfır tabanlı dizini.
-1. Alınacak video çerçevelerinin sayısı.
+**ContentModeratorClient.Reviews.GetVideoFrames**ile video incelemesi için video çerçevelerini alabilirsiniz. **GetVideoFrames** aşağıdaki gerekli parametrelere sahiptir:
+1. İçerik Moderatör takım adınız.
+1. Video inceleme kimliği **CreateVideoReviews**tarafından döndürülür.
+1. Almak için ilk video çerçevesinin sıfır tabanlı dizin.
+1. Elde etmek için video kare sayısı.
 
-Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
+Ad alanı VideoReviews, sınıf Programı için aşağıdaki yöntem tanımı ekleyin.
 
 ```csharp
 /// <summary>
@@ -319,13 +319,13 @@ static void GetFrames(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="get-video-review-information"></a>Video inceleme bilgilerini al
+## <a name="get-video-review-information"></a>Video inceleme bilgileri alın
 
-**Contentmoderatorclient. İncelemeleri. GetReview**ile bir video incelemesinin bilgilerini alacaksınız. **Getreview** aşağıdaki gerekli parametrelere sahiptir:
-1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
+**ContentModeratorClient.Reviews.GetReview**ile bir video incelemesi için bilgi almak. **GetReview** aşağıdaki gerekli parametrelere sahiptir:
+1. İçerik Moderatör takım adınız.
+1. Video inceleme kimliği **CreateVideoReviews**tarafından döndürülür.
 
-Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
+Ad alanı VideoReviews, sınıf Programı için aşağıdaki yöntem tanımı ekleyin.
 
 ```csharp
 /// <summary>
@@ -345,13 +345,13 @@ private static void GetReview(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="publish-video-review"></a>Video incelemesi Yayımla
+## <a name="publish-video-review"></a>Video incelemesi yayınlama
 
-**Contentmoderatorclient. İncelemeleri. PublishVideoReview**ile bir video incelemesi yayımlarsınız. **Publishvideoreview** aşağıdaki gerekli parametrelere sahiptir:
-1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
+**ContentModeratorClient.Reviews.PublishVideoReview**ile bir video incelemesi yayınlamak . **PublishVideoReview** aşağıdaki gerekli parametrelere sahiptir:
+1. İçerik Moderatör takım adınız.
+1. Video inceleme kimliği **CreateVideoReviews**tarafından döndürülür.
 
-Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
+Ad alanı VideoReviews, sınıf Programı için aşağıdaki yöntem tanımı ekleyin.
 
 ```csharp
 /// <summary>
@@ -370,7 +370,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 
-**Ana** yöntem tanımını ad alanı videoincelemeleri, sınıf programına ekleyin. Son olarak, program sınıfını ve Videoincelemeleri ad alanını kapatın.
+Ad alanı VideoReviews, sınıf Programı ana **yöntem** tanımı ekleyin. Son olarak, Program sınıfını ve VideoReviews ad alanını kapatın.
 
 ```csharp
 static void Main(string[] args)
@@ -539,16 +539,16 @@ Open your Content Moderator Dashboard and select Review > Video to see the revie
 Press any key to close the application.
 ```
 
-## <a name="check-out-your-video-review"></a>Video incelemeniz için göz atın
+## <a name="check-out-your-video-review"></a>Video incelemenize göz atın
 
-Son olarak, **Gözden**geçirme >**video** ekranında Content moderator gözden geçirme araç hesabınızda video incelemesini görürsünüz.
+Son olarak, **Video**>İnceleme**ekranında** İçerik Moderatörü inceleme aracı hesabınızda video incelemesini görürsünüz.
 
-![İnsan moderatör için video incelemesi](images/ams-video-review.PNG)
+![İnsan moderatörler için video incelemesi](images/ams-video-review.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET için bu ve diğer Content Moderator hızlı başlangıçlara yönelik [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın.
+İçerik [Moderatör .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözüm](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) bu ve diğer İçerik Moderatör hızlı .NET için başlar alın.
 
-Video incelemesinin [dökümünü](video-transcript-moderation-review-tutorial-dotnet.md) ekleme hakkında bilgi edinin. 
+Video incelemesine [transkript moderasyonu](video-transcript-moderation-review-tutorial-dotnet.md) nasıl ekleyeceğinizi öğrenin. 
 
-[Tüm video denetleme çözümünü](video-transcript-moderation-review-tutorial-dotnet.md)geliştirme hakkında ayrıntılı öğreticiye göz atın.
+Tam bir [video ılımlılık çözümü](video-transcript-moderation-review-tutorial-dotnet.md)geliştirmek için nasıl ayrıntılı öğretici göz atın.

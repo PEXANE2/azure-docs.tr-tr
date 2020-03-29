@@ -1,7 +1,7 @@
 ---
-title: App-LUSıS Yayımla
+title: Uygulama yayınlama - LUIS
 titleSuffix: Azure Cognitive Services
-description: Oluşturma ve etkin LUIS uygulamanızı test etme bitirdikten sonra istemci uygulamanız için kullanılabilir uç noktaya yayımlayarak kolaylaştırır.
+description: Etkin LUIS uygulamanızı oluşturmayı ve test etmeyi bitirdiğinizde, son noktaya kadar yayınlayarak istemci uygulamanızın kullanıma sunulmasını sağlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,88 +11,88 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053427"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin ve eğitimli uygulamanızı bir evreleme veya üretim bitiş noktasına kadar yayımlayın
 
-Etkin LUSıS uygulamanızı oluşturma, eğitim ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin. 
+Etkin LUIS uygulamanızı oluşturmayı, eğitmenizi ve test etmeyi bitirdiğinizde, uygulamayı bitiş noktasına kadar yayınlayarak istemci uygulamanızın kullanımına açın. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Yayımlama
 
-1. Uç noktaya yayımlamak için, üstteki sağ panelde **Yayımla** ' yı seçin. 
+1. Bitiş noktasına yayımlamak için, üst, sağ panelde **Yayımla'yı** seçin. 
 
-    ![En üstte Yayımla düğmesi, sağ gezinti çubuğu](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Üstte, sağ gezinme çubuğunda yayımlama düğmesi](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Yayımlanan tahmin uç noktası için ayarlarınızı seçip **Yayımla**' yı seçin.
+1. Yayınlanan tahmin bitiş noktası için ayarlarınızı seçin ve ardından **Yayımla'yı**seçin.
 
-    ![Yayınlama Ayarları ' nı ve ardından Yayınla düğmesini seçin](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Yayımlama ayarlarını seçin ve ardından Yayımla düğmesini seçin](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Yayımlama Yuvaları
+### <a name="publishing-slots"></a>Yayın yuvaları
 
 Açılır pencere görüntülendiğinde doğru yuvayı seçin: 
 
-* Hazırlık
+* Hazırlama
 * Üretim 
 
-Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip olmak üzere, hem yayımlama yuvaları hem de uygulamanızın iki farklı sürümünün kullanılabilmesini sağlar. 
+Bu, her iki yayımlama yuvasını da kullanarak, uygulamanızın iki farklı sürümünü yayınlanan uç noktalarda veya aynı sürümü iki farklı uç noktada kullanılabilir hale getirmek için izin verir. 
 
 ### <a name="publishing-regions"></a>Yayımlama bölgeleri
 
-Uygulama, ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **Yönet** sayfasından LUO portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır. 
+Uygulama,**[Azure Kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **Yönet** -> sayfasından LUIS portalına eklenen LUIS tahmini uç nokta kaynaklarıyla ilişkili tüm bölgelerde yayınlanır. 
 
-Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus**ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
+Örneğin, [www.luis.ai'da](https://www.luis.ai)oluşturulan bir uygulama için, **westus** ve **eastus**olmak üzere iki bölgede bir LUIS kaynağı oluşturursanız ve bunları kaynak olarak uygulamaya eklerseniz, uygulama her iki bölgede de yayınlanır. LUIS bölgeleri hakkında daha fazla bilgi için [bölgelere](luis-reference-regions.md)bakın.
 
 > [!TIP]
-> 3 yazma bölgesi vardır. Yayımlamak istediğiniz bölgede yazmanız gerekir. Tüm bölgelerde yayımlamanız gerekiyorsa, yazma işleminizi ve elde edilen eğitilen modeli tüm 3 yazma bölgelerinde yönetmeniz gerekir. 
+> 3 yazma bölgesi vardır. Yayınlamak istediğiniz bölgede yazar olmalısınız. Tüm bölgelere yayımlamanız gerekiyorsa, yazma işleminizi ve elde edilen eğitilmiş modeli 3 yazma bölgesinde yönetmeniz gerekir. 
 
 
 ## <a name="configuring-publish-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
+Yuvayı seçtikten sonra yayımlama ayarlarını şu şekilde yapılandırın:
 
 * Yaklaşım analizi
-* Yazım denetimi-yalnızca v2 tahmin uç noktası
-* Konuşma primi 
+* Yazım düzeltmesi - yalnızca v2 tahmini bitiş noktası
+* Konuşma astarı 
 
-Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir. 
+Yayımladıktan sonra, bu ayarlar **Yönet** bölümünün **Ayarlar** sayfasını inceleyebilirsiniz. Her yayımlamada ayarları değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız değişiklikler de iptal edilir. 
 
-### <a name="when-your-app-is-published"></a>Uygulamanız yayımlandığında
+### <a name="when-your-app-is-published"></a>Uygulamanız yayınlandığında
 
-Uygulamanız başarıyla yayımlandığında, tarayıcının en üstünde bir başarı bildirimi görüntülenir. Bildirim Ayrıca uç noktalara bir bağlantı içerir. 
+Uygulamanız başarıyla yayımlandığında, tarayıcının üst kısmında bir başarı bildirimi görüntülenir. Bildirim, uç noktalara bir bağlantı da içerir. 
 
-Uç nokta URL'sini gerekiyorsa, bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz. 
+Bitiş noktası URL'ye ihtiyacınız varsa bağlantıyı seçin. Ayrıca üst menüde **Yönet'i** seçerek bitiş noktası URL'lerine, ardından sol menüde **Azure Kaynakları'nı** seçebilirsiniz. 
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 <a name="enable-sentiment-analysis"></a>
 
-Yaklaşım analizi, LUTO 'NıN yaklaşım ve anahtar tümceciği analizi sağlamak için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile tümleştirilemesine olanak tanır. 
+Duyarlılık analizi, LUIS'in [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile entegre edinip duyarlılık ve anahtar sözcük analizi sağlamasına olanak tanır. 
 
-Metin analizi anahtarı belirtmeniz gerekmez ve Azure hesabınızda bu hizmet için fatura ücret alınmaz. 
+Metin Analizi anahtarı sağlamanız gerekmez ve bu hizmet için Azure hesabınıza fatura landırma ücreti alınmaz. 
 
-Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri. `positive`, `neutral`ve `negative` 'nin yaklaşım etiketi desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
+Duyarlılık verileri, verilerin pozitif (1'e yakın) veya negatif (0'a yakın) duyarlılığını gösteren 1 ile 0 arasında bir puandır. Duyarlılık etiketi `positive`, `neutral`, `negative` ve desteklenen kültür başına. Şu anda, sadece İngilizce duygu etiketleri destekler. 
 
-Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-concept-data-extraction.md#sentiment-analysis)
+Duyarlılık analizi ile JSON uç nokta yanıtı hakkında daha fazla bilgi için, [Sentiment analizine](luis-concept-data-extraction.md#sentiment-analysis) bakın
 
-## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
+## <a name="spelling-correction"></a>Yazım düzeltmesi
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-, Azın Kullanıcı söylenişi tahminiyle önce yazım için düzeltmeler yapılır. Yanıtta yazım denetimi de dahil olmak üzere, özgün yazıdaki tüm değişiklikleri görebilirsiniz.
+Yazım düzeltmeleri LUIS kullanıcı söyleyiş tahmini önce yapılır. Yanıtta yazım da dahil olmak üzere orijinal söyleyişdeki değişiklikleri görebilirsiniz.
 
-## <a name="speech-priming"></a>Konuşma primi
+## <a name="speech-priming"></a>Konuşma astarı
 
-Konuşma primi, metin konuşmaya dönüştürme işleminden önce, konuşma Hizmetleri için LUSıS modelinin gönderilmesini kullanma sürecinden oluşur. Bu, konuşma hizmetinin modelinize daha doğru konuşma dönüştürmesi sağlamasına izin verir. Bu, bir konuşma araması yaparak ve bir LUO yanıtı geri alarak tek bir çağrıda botu ve LUSıS isteklerini ve yanıtlarını sağlar. Genel olarak daha az gecikme sağlar.
+Konuşma astarı, metnin konuşmaya dönüştürülmesinden önce LUIS modelini Konuşma hizmetlerine gönderme işlemidir. Bu, konuşma hizmetinin modeliniz için konuşma dönüştürmeyi daha doğru bir şekilde sağlamasına olanak tanır. Bu bot Konuşma ve LUIS istekleri ve yanıtları bir konuşma arama sı ve luis yanıt geri alarak bir arama sağlar. Genel olarak daha az gecikme alanı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. Azure abonelik anahtarına anahtar eklemek için [anahtarları yönetme](./luis-how-to-azure-subscription.md) ve Bing yazım denetimi anahtarı ayarlama ve sonuçlara tüm amaçları ekleme.
-* Yayımlanan uygulamanızı test konsolunda test etme hakkında yönergeler için bkz. [uygulamanızı eğitme ve test](luis-interactive-test.md) etme.
+* LUIS'e Azure abonelik anahtarına anahtar eklemek ve Bing Büyüsü Denetimi anahtarını nasıl ayarlayıp tüm amaçları sonuçlara dahil etmek için [Yönet tuşlarına](./luis-how-to-azure-subscription.md) bakın.
+* Yayınlanan [uygulamanızı](luis-interactive-test.md) test konsolunda nasıl test edebilirsiniz yönergeleri için Train ve test edin.
 

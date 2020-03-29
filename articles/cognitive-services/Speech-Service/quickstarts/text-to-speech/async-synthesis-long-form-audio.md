@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: uzun biçimli ses (Önizleme) için zaman uyumsuz birleştirme-konuşma hizmeti'
+title: 'Quickstart: Uzun biçimli ses için asynchronous sentezi (Önizleme) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Zaman uyumsuz olarak metni konuşmaya dönüştürmek için uzun ses API 'sini kullanın ve hizmet tarafından sunulan bir URI 'den ses çıkışını alın. Bu REST API, 10.000 karakterden büyük veya 50 paragrafından oluşan metin dosyalarını sentezleştirilmiş konuşmaya dönüştürmeli içerik sağlayıcıları için idealdir.
+description: Metni eş senkronize bir şekilde konuşmaya dönüştürmek ve hizmet tarafından sağlanan bir URI'den ses çıktısını almak için Uzun Ses API'sini kullanın. Bu REST API, 10.000 karakterden veya 50 paragraftan büyük metin dosyalarını sentezlenmiş konuşmaya dönüştürmesi gereken içerik sağlayıcıları için idealdir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331085"
 ---
-# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
+# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Quickstart: Python'da uzun biçimli ses için asynchronous sentezi (Önizleme)
 
-Bu hızlı başlangıçta, metin okumayı zaman uyumsuz olarak dönüştürmek ve hizmet tarafından sunulan bir URI 'den ses çıktısını almak için uzun ses API 'sini kullanacaksınız. Bu REST API, metinden 5.000 karakterden (veya uzunluğu 10 dakikadan uzun) daha büyük bir sesi birleştirmesini gerektiren içerik sağlayıcıları için idealdir. Daha fazla bilgi için bkz. [uzun ses API 'si](../../long-audio-api.md).
+Bu hızlı başlatmada, metni eş senkronize bir şekilde konuşmaya dönüştürmek ve hizmet tarafından sağlanan bir URI'den ses çıktısını almak için Uzun Ses API'sini kullanırsınız. Bu REST API, 5.000 karakterden (veya 10 dakikadan fazla uzunlukta) metinden ses sentezlesi gereken içerik sağlayıcılar için idealdir. Daha fazla bilgi için [Uzun Ses API'si'ne](../../long-audio-api.md)bakın.
 
 > [!NOTE]
-> Uzun biçimli ses için zaman uyumsuz birleştirme yalnızca [özel sinir seslerle](../../how-to-custom-voice.md#custom-neural-voices)kullanılabilir.
+> Uzun formses için asenkron sentezi sadece [Özel Nöral Sesler](../../how-to-custom-voice.md#custom-neural-voices)ile kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* Python 2.7. x veya 3. x.
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)veya sık kullandığınız metin düzenleyiciniz.
-* Bir Azure aboneliği ve bir konuşma hizmeti abonelik anahtarı. Anahtarı almak için bir [Azure hesabı oluşturun](../../get-started.md#new-resource) ve [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) . Konuşma kaynağını oluştururken, fiyatlandırma katmanınızın **S0**olarak ayarlandığından ve konumun [desteklenen bir bölgeye](../../regions.md#standard-and-neural-voices)ayarlandığından emin olun.
+* Python 2.7.x veya 3.x.
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin editörü.
+* Azure aboneliği ve Konuşma hizmeti abonelik anahtarı. [Bir Azure hesabı oluşturun](../../get-started.md#new-resource) ve anahtarı almak için [bir konuşma kaynağı oluşturun.](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) Konuşma kaynağı oluşturulurken, fiyatlandırma katmanınızın **S0'a,** konumun uzun süre desteklenen bir [bölgeye](../../regions.md#standard-and-neural-voices)ayarlandıklarından emin olun.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Sonra bu kod parçacığını `voice_synthesis_client.py`adlı bir dosyaya kopyalayın.
+Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Ardından bu kod parçacıklarını adlı `voice_synthesis_client.py`bir dosyaya kopyalayın.
 
 ```python
 import argparse
@@ -52,11 +52,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 > [!NOTE]
 > Bu modülleri kullanmadıysanız, programınızı çalıştırmadan önce bunları yüklemeniz gerekir. Bu paketleri yüklemek için şunu çalıştırın: `pip install requests urllib3`.
 
-Bu modüller, bağımsız değişkenleri ayrıştırmak, HTTP isteğini oluşturmak ve metinden konuşmaya uzun ses REST API çağırmak için kullanılır.
+Bu modüller bağımsız değişkenleri ayrışdırmak, HTTP isteğini oluşturmak ve metinden konuşmaya uzun ses REST API'sini çağırmak için kullanılır.
 
-## <a name="get-a-list-of-supported-voices"></a>Desteklenen seslerin listesini al
+## <a name="get-a-list-of-supported-voices"></a>Desteklenen seslerin listesini alma
 
-Bu kod, metinden konuşmaya dönüştürmek için kullanabileceğiniz kullanılabilir seslerin bir listesini alır. Kodu `voice_synthesis_client.py`ekleyin:
+Bu kod, metinden konuşmaya dönüştürmek için kullanabileceğiniz kullanılabilir seslerin bir listesini alır. Kodu `voice_synthesis_client.py`ekle:
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -78,12 +78,12 @@ if args.voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuza test etme
 
-Şimdiye kadar yaptığınız işlemi test edelim. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
+Şu ana kadar ne yaptığını test edelim. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
 
-* `<your_key>`, konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<region>`, konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin `eastus` (örneğin: veya). `westus` Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
 
 Şu komutu çalıştırın:
 
@@ -91,7 +91,7 @@ if args.voices:
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-Aşağıdakine benzer bir çıktı görürsünüz:
+Şuna benzer bir çıktı görürsünüz:
 
 ```console
 There are xx voices available:
@@ -102,14 +102,14 @@ Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xx
 
 ## <a name="prepare-input-files"></a>Giriş dosyalarını hazırlama
 
-Giriş metin dosyası hazırlayın. Düz metin veya SSML metni olabilir. Giriş dosyası gereksinimleri için bkz. [birleştirme için içerik hazırlama](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
+Giriş metin dosyası hazırlayın. Düz metin veya SSML metni olabilir. Giriş dosyası gereksinimleri [için, içeriğisenteze](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)nasıl hazırlayacağınızda görün.
 
-## <a name="convert-text-to-speech"></a>Metni konuşmaya Dönüştür
+## <a name="convert-text-to-speech"></a>Metni konuşmaya dönüştürme
 
-Giriş metin dosyasını hazırladıktan sonra, konuşma birleştirme için bu kodu ekleyin `voice_synthesis_client.py`:
+Giriş metin dosyası hazırlandıktan sonra, konuşma sentezi için bu kodu `voice_synthesis_client.py`ekleyin:
 
 > [!NOTE]
-> ' concatenateResult ', isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> 'concatenateResult' isteğe bağlı bir parametredir. Bu parametre ayarlanmazsa, ses çıkışları paragraf başına oluşturulur. Ayrıca parametre ayarlayarak 1 çıkış içine ses concatecateed olabilir. Varsayılan olarak, ses çıkışı riff-16khz-16bit-mono-pcm olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için [Ses çıkış biçimlerine](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)bakın.
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -170,15 +170,15 @@ if args.submit:
         time.sleep(10)
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuza test etme
 
-Kaynak olarak giriş dosyanızı kullanarak metni sentezleştirme isteği oluşturalım. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
+Giriş dosyanızı kaynak olarak kullanarak metni sentezlemek için bir istekte bulunalım. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
 
-* `<your_key>`, konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<region>`, konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<input>`, metin okuma için hazırladığınız metin dosyasının yoluyla değiştirin.
-* `<locale>`, istenen çıkış yerel ayarıyla değiştirin. Daha fazla bilgi için bkz. [dil desteği](../../language-support.md#neural-voices).
-* `<voice_guid>` istenen çıkış sesiyle değiştirin. [Desteklenen seslerin listesini al](#get-a-list-of-supported-voices)tarafından döndürülen sesden birini kullanın.
+* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin `eastus` (örneğin: veya). `westus` Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Metinden konuşmaya hazırladığınız metin dosyasına giden yolu değiştirin. `<input>`
+* İstediğin `<locale>` çıkış yerel le değiştirin. Daha fazla bilgi için [dil desteğine](../../language-support.md#neural-voices)bakın.
+* İstediğiniz çıkış sesi ile değiştirin. `<voice_guid>` [Desteklenen seslerin listesini al](#get-a-list-of-supported-voices)tarafından döndürülen seslerden birini kullanın.
 
 Bu komutla metni konuşmaya dönüştürün:
 
@@ -187,11 +187,11 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 ```
 
 > [!NOTE]
-> 1 ' den fazla giriş dosyası varsa, birden fazla istek göndermeniz gerekir. Farkında olması gereken bazı sınırlamalar vardır. 
-> * İstemcinin her bir Azure abonelik hesabı için saniyede en fazla **5** istek göndermesine izin verilir. Sınırlama aştıysa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen saniye başına istek miktarını azaltın
-> * Sunucunun her bir Azure abonelik hesabı için en fazla **120** istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Sınırlama aşıldıysa, sunucu 429 hata kodu (çok fazla istek) döndürür. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin
+> 1'den fazla giriş dosyanız varsa, birden çok istek göndermeniz gerekir. Farkında olması gereken bazı sınırlamalar vardır. 
+> * İstemci, her Azure abonelik hesabı için sunucuya saniyede en fazla **5** istek gönderebilir. Sınırlamayı aşarsa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen istek miktarını saniyede azaltın
+> * Sunucunun her Azure abonelik hesabı için **120'ye** kadar istek çalışmasına ve sıraya girmesine izin verilir. Sınırlamayı aşarsa, sunucu 429 hata kodu (çok fazla istek) döndürecektir. Lütfen bazı istekler tamamlanana kadar yeni istek göndermeyi bekleyin ve kaçının
 
-Aşağıdakine benzer bir çıktı görürsünüz:
+Şuna benzer bir çıktı görürsünüz:
 
 ```console
 Submit synthesis request successful
@@ -209,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-Sonuç, hizmet tarafından oluşturulan giriş metnini ve ses çıktı dosyalarını içerir. Bu dosyaları bir zip dosyasına indirebilirsiniz.
+Sonuç, hizmet tarafından oluşturulan giriş metnini ve ses çıktısı dosyalarını içerir. Bir zip bu dosyaları indirebilirsiniz.
 
-## <a name="remove-previous-requests"></a>Önceki istekleri kaldır
+## <a name="remove-previous-requests"></a>Önceki istekleri kaldırma
 
-Sunucu, her bir Azure aboneliği hesabı için en fazla **20.000** istek tutar. İstek miktarınız bu sınırlamayı aşarsa, lütfen yenilerini oluşturmadan önce önceki istekleri kaldırın. Mevcut istekleri kaldırmazsanız bir hata bildirimi alırsınız.
+Sunucu, her Azure abonelik hesabı için en fazla **20.000** istek tutar. İstek tutarınız bu sınırlamayı aşarsa, lütfen yenilerini yapmadan önce önceki istekleri kaldırın. Varolan istekleri kaldırmazsanız, bir hata bildirimi alırsınız.
 
-Kodu `voice_synthesis_client.py`ekleyin:
+Kodu `voice_synthesis_client.py`ekle:
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -246,12 +246,12 @@ if args.delete:
     deleteSynthesis(args.synthesisId)
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuza test etme
 
-Şimdi, daha önce gönderdiğiniz istekleri görmeyi denetlim. Devam etmeden önce, bu istekteki birkaç şeyi güncelleştirmeniz gerekir:
+Şimdi, daha önce hangi istekleri gönderdiğinize bakalım. Devam etmeden önce, bu istekteki birkaç şeyi güncelleştirmeniz gerekir:
 
-* `<your_key>`, konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<region>`, konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin `eastus` (örneğin: veya). `westus` Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
 
 Şu komutu çalıştırın:
 
@@ -259,7 +259,7 @@ if args.delete:
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-Bu, yaptığınız sensıs isteklerinin bir listesini döndürür. Aşağıdakine benzer bir çıktı görürsünüz:
+Bu, yaptığınız sentez isteklerinin bir listesini döndürecektir. Şöyle bir çıktı görürsünüz:
 
 ```console
 There are <number> synthesis requests submitted:
@@ -270,12 +270,12 @@ ID : xxx , Name : xxx : Succeeded
 
 Şimdi, daha önce gönderilen bir isteği kaldıralım. Aşağıdaki kodda birkaç şeyi güncelleştirmeniz gerekir:
 
-* `<your_key>`, konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<region>`, konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* `<synthesis_id>`, önceki istekte döndürülen değerle değiştirin.
+* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin `eastus` (örneğin: veya). `westus` Bu bilgiler, [Azure portalındaki](https://aka.ms/azureportal)kaynağınız için **Genel Bakış** sekmesinde kullanılabilir.
+* Önceki `<synthesis_id>` istekte döndürülen değerle değiştirin.
 
 > [!NOTE]
-> Durumu ' Running '/' bekliyor ' olan istekler kaldırılamaz veya silinemez.
+> 'Çalışan'/'Bekletme' durumu olan istekler kaldırılamaz veya silinemez.
 
 Şu komutu çalıştırın:
 
@@ -283,18 +283,18 @@ ID : xxx , Name : xxx : Succeeded
 python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-Aşağıdakine benzer bir çıktı görürsünüz:
+Şöyle bir çıktı görürsünüz:
 
 ```console
 delete voice synthesis xxx
 delete successful
 ```
 
-## <a name="get-the-full-client"></a>Tam istemciyi al
+## <a name="get-the-full-client"></a>Tam istemciyi alın
 
-Tamamlanan `voice_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)'da indirilebilir.
+Tamamlanan `voice_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)indirmek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uzun ses API 'SI hakkında daha fazla bilgi edinin](../../long-audio-api.md)
+> [Uzun Ses API'si hakkında daha fazla bilgi edinin](../../long-audio-api.md)

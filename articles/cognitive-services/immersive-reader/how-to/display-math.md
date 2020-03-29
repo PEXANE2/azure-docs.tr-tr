@@ -1,7 +1,7 @@
 ---
-title: Modern okuyucuda matematik görüntüleme
+title: Sürükleyici Okuyucuda matematiği görüntüleyin
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, tam ekran okuyucu 'da matematik görüntüleme yöntemi gösterilmektedir.
+description: Bu makalede, Nasıl Sürükleyici Reader matematik görüntülemek için gösterecektir.
 author: pasta
 manager: guillasi
 ms.service: cognitive-services
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946127"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>Modern okuyucuda matematik görüntüleme
+# <a name="how-to-display-math-in-the-immersive-reader"></a>Sürükleyici Okuyucu'da matematik nasıl görüntülenir?
 
-Tam ekran okuyucu matematiksel biçimlendirme dili ([MathML](https://developer.mozilla.org/docs/Web/MathML)) biçiminde sağlandığında matematiği gösterebilir.
-MIME türü, derinlikli okuyucu [öbeği](../reference.md#chunk)aracılığıyla ayarlanabilir. Daha fazla bilgi için bkz. [desteklenen MIME türleri](../reference.md#supported-mime-types) .
+Sürükleyici Okuyucu Matematik Biçimlendirme Dili[(MathML)](https://developer.mozilla.org/docs/Web/MathML)şeklinde sağlandığında matematik görüntüleyebilirsiniz.
+MIME türü Immersive Reader [yığın](../reference.md#chunk)üzerinden ayarlanabilir. Daha fazla bilgi için [desteklenen MIME türlerine](../reference.md#supported-mime-types) bakın.
 
-## <a name="send-math-to-the-immersive-reader"></a>Matematik okuyucuyu tam ekran okuyucuya gönderin
-Bir ekran derinlikli okuyucuya matematik göndermek için, MathML içeren bir öbek sağlayın ve MIME türünü ```application/mathml+xml```; olarak ayarlayın.
+## <a name="send-math-to-the-immersive-reader"></a>Matematiği Sürükleyici Okuyucuya Gönder
+Sürükleyici Okuyucu'ya matematik göndermek için MathML içeren bir yığın verin ve MIME ```application/mathml+xml```türünü ayarlayın;
 
-Örneğin, içeriğiniz aşağıdaki olsaydı:
+Örneğin, içeriğiniz aşağıdakiler olsaydı:
 
 ```html
 <div id='ir-content'>
@@ -53,7 +53,7 @@ Bir ekran derinlikli okuyucuya matematik göndermek için, MathML içeren bir ö
 </div>
 ```
 
-Ardından, aşağıdaki JavaScript 'ı kullanarak içeriğinizi görüntüleyebilirsiniz.
+Ardından aşağıdaki JavaScript'i kullanarak içeriğinizi görüntüleyebilirsiniz.
 
 ```javascript
 const data = {
@@ -67,10 +67,10 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-Tam ekran okuyucuyu başlattığınızda şunları görmeniz gerekir:
+Sürükleyici Okuyucuyu başlattığınızda şunları görmeniz gerekir:
 
-![Modern okuyucudaki matematik](../media/how-tos/1-math.png)
+![Sürükleyici Okuyucuda Matematik](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../reference.md) keşfet
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](../reference.md) keşfedin

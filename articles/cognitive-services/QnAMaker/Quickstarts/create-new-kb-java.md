@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851833"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
@@ -20,16 +20,16 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [KB Oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [İşlem Ayrıntılarını Alma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Java örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) | [başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+[Referans belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java Örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
-* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
+* [Bir QnA Maker hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalı. Anahtar ve bitiş noktanızı (kaynak adını içerir) almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin.
 
-[Örnek kod](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) , Java ile soru-cevap oluşturma için GitHub deposunda kullanılabilir.
+[Örnek kod,](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) Java'lı QnA Maker için GitHub repo'sunda mevcuttur.
 
 ## <a name="create-a-knowledge-base-file"></a>Bilgi bankası dosyası oluşturma
 
@@ -44,12 +44,12 @@ Aşağıdaki satırları `CreateKB.java` adlı dosyanın en üstüne ekleyerek p
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine erişmek için `CreateKB` sınıfına gerekli sabitleri ekleyin.
 
-[Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve kaynak adınızı almak için Soru-Cevap Oluşturma kaynağınız için Azure portal **hızlı başlangıç** ' ı seçin.
+[Bir QnA Maker hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalı. Anahtar ve kaynak adınızı almak için QnA Maker kaynağınız için Azure portalında **Hızlı Başlat'ı** seçin.
 
 Aşağıdaki değerleri ayarlayın:
 
-* `<your-qna-maker-subscription-key>`, **anahtar** bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
-* `<your-resource-name>`- **kaynak adınız** , yazma için yazma uç noktası URL 'sini `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`biçiminde oluşturmak için kullanılır. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
+* `<your-qna-maker-subscription-key>`- **Anahtar** 32 karakterli bir dizedir ve Azure portalında, QnA Maker kaynağında, Quickstart sayfasında mevcuttur. Bu, tahmin bitiş noktası anahtarıyla aynı değildir.
+* `<your-resource-name>`- **Kaynak adınız,** yazarlık için son nokta URL'sini `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`oluşturmak için kullanılır. Bu, tahmin bitiş noktasını sorgulamak için kullanılan URL ile aynı url değildir.
 
 Sınıfı bitirmek için küme ayracı eklemeniz gerekmez; bu, hızlı başlangıcın sonundaki en son kod parçacığındadır.
 
@@ -117,7 +117,7 @@ Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 ```
 
 ## <a name="add-a-main-method"></a>Main yöntemi ekleme
-Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem KIMLIĞI, yanıt gönder üst bilgisi alan **konumunda**döndürülür, ardından Get isteğindeki yolun bir parçası olarak kullanılır. `while` döngüsü tamamlandıysa durumu yeniden dener.
+Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem kimliği POST yanıt üstbilgi alanı **Konumu'nda**döndürülür ve get isteğinde rotanın bir parçası olarak kullanılır. Döngü `while` tamamlanmazsa durumu yeniden dener.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

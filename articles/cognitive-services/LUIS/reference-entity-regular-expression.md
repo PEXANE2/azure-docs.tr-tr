@@ -1,7 +1,7 @@
 ---
-title: Normal ifade varlık türü-LUSıS
+title: Normal ifade varlık türü - LUIS
 titleSuffix: Azure Cognitive Services
-description: Normal ifade, ham söylenişi metin için en iyisidir. Küçük büyük harf duyarlı ve kültürel bir değişken yok sayar.  Normal ifadenin eşleştirilmesi, yazım denetimi değişiklikleri karakter düzeyinde belirteci düzeyinde değil sonra uygulanır.
+description: Düzenli bir ifade ham söyleyiş metni için en iyisidir. Bu durumda yok sayar ve kültürel varyant yok sayar.  Normal ifade eşleştirmesi, belirteç düzeyinde değil, karakter düzeyindeki yazım denetimi değişikliklerinden sonra uygulanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74841226"
 ---
 # <a name="regular-expression-entity"></a>Normal ifade varlığı
 
-Normal ifade varlığı, sağladığınız normal ifade düzenine göre bir varlığı ayıklar.
+Normal bir ifade varlığı, sağladığınız normal bir ifade desenine göre bir varlığı ayıklar.
 
-Normal ifade, ham söylenişi metin için en iyisidir. Küçük büyük harf duyarlı ve kültürel bir değişken yok sayar.  Normal ifadenin eşleştirilmesi, yazım denetimi değişiklikleri karakter düzeyinde belirteci düzeyinde değil sonra uygulanır. Normal ifade çok karmaşık ise (birçok köşeli ayraç kullanma gibi), bu ifadeyi modele ekleyemezsiniz. [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) kitaplığının tümünü değil, bölümünü kullanır.
+Düzenli bir ifade ham söyleyiş metni için en iyisidir. Bu durumda yok sayar ve kültürel varyant yok sayar.  Normal ifade eşleştirmesi, belirteç düzeyinde değil, karakter düzeyindeki yazım denetimi değişikliklerinden sonra uygulanır. Normal ifade çok köşeli ayraç kullanmak gibi çok karmaşıksa, ifadeyi modele ekleyebilirsiniz. [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) kitaplığın tamamını değil, bir kısmını kullanır.
 
-**Varlık, şu durumlarda iyi bir uyum:**
+**Varlık iyi bir uyum zaman:**
 
-* Veriler tutarlı olarak tutarlı bir çeşitlerle biçimlendirilir.
-* Normal ifadede 2 ' den fazla iç içe geçme düzeyi gerekmez.
+* Veriler sürekli olarak aynı zamanda tutarlı olan herhangi bir varyasyonla biçimlendirilir.
+* Normal ifade iç içe geçme 2 düzeyden fazla gerekmez.
 
 ![Normal ifade varlığı](./media/luis-concept-entities/regex-entity.png)
 
-## <a name="usage-considerations"></a>Kullanım konuları
+## <a name="usage-considerations"></a>Kullanım da göz önünde bulundurulması gerekenler
 
-Normal ifadeler, eşleştirmeye beklediğinizden daha fazla eşleşemez. Buna bir örnek `one` ve `two`gibi sayısal bir kelime eşleştirmedir. Aşağıdaki Regex, sayı `one` diğer sayılarla birlikte eşleşir:
+Normal ifadeler, beklediğiniz ifadelerden daha fazla eşleşebilir. Bunun bir örneği gibi sayısal kelime `one` eşleştirme `two`ve . Diğer sayılarla birlikte sayıyla `one` eşleşen aşağıdaki regex'e örnek olarak verilmiştir:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Bu Regex ifadesi Ayrıca, `phone`gibi bu sayılarla biten sözcüklerle eşleşir. Bu gibi sorunları gidermek için, Regex eşleşmelerin, hesap sözcük sınırlarına uyduğundan emin olun. Bu örnek için sözcük sınırları kullanmanın Regex ifadesi aşağıdaki Regex içinde kullanılır:
+Bu regex ifadesi aynı zamanda bu sayılarla `phone`biten sözcüklerle de eşleşir, örneğin. Bu gibi sorunları gidermek için, regex eşleşmelerinin sözcük sınırlarını dikkate aldığından emin olun. Bu örnek için sözcük sınırlarını kullanmak için regex aşağıdaki regex kullanılır:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,11 +46,11 @@ Bu Regex ifadesi Ayrıca, `phone`gibi bu sayılarla biten sözcüklerle eşleşi
 
 ### <a name="example-json"></a>Örnek JSON
 
-`kb[0-9]{6}`kullanırken, normal ifade varlık tanımı olarak, aşağıdaki JSON yanıtı sorgu için döndürülen normal ifade varlıklarını içeren bir örnektir:
+Normal `kb[0-9]{6}`ifade varlık tanımı olarak kullanırken, aşağıdaki JSON yanıtı sorgu için döndürülen normal ifade varlıklarıyla örnek bir ifadedir:
 
 `When was kb123456 published?`:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmini uç nokta yanıtı](#tab/V2)
 
 ```JSON
 "entities": [
@@ -64,10 +64,10 @@ Bu Regex ifadesi Ayrıca, `phone`gibi bu sayılarla biten sözcüklerle eşleşi
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmini uç nokta yanıtı](#tab/V3)
 
 
-Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
+Bu JSON sorgu `verbose=false` dizesinde ayarlanırsa:
 
 ```json
 "entities": {
@@ -77,7 +77,7 @@ Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
 }
 ```
 
-Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
+Bu JSON sorgu `verbose=true` dizesinde ayarlanırsa:
 
 ```json
 "entities": {
@@ -106,4 +106,4 @@ Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](tutorial-regex-entity.md), **normal ifade** varlığını kullanarak, düzenli olarak biçimlendirilen verileri bir noktadan ayıklamak için bir uygulama oluşturun.
+Bu [öğreticide,](tutorial-regex-entity.md) **Düzenli İfade** varlığını kullanarak bir sözcükten sürekli biçimlendirilmiş verileri ayıklamak için bir uygulama oluşturun.

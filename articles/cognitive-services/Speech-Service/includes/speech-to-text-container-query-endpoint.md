@@ -7,30 +7,30 @@ ms.topic: include
 ms.date: 01/21/2020
 ms.author: dapine
 ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77563317"
 ---
-### <a name="speech-to-text-or-custom-speech-to-text"></a>Konuşmadan metne veya Özel Konuşma Tanıma metne dönüştürme
+### <a name="speech-to-text-or-custom-speech-to-text"></a>Konuşmadan metne veya Özel Konuşmadan metne
 
-Kapsayıcı, [konuşma SDK 'sı](../index.yml)aracılığıyla erişilen WebSocket tabanlı sorgu uç noktası API 'leri sağlar. Varsayılan olarak, konuşma SDK 'Sı çevrimiçi konuşma hizmetlerini kullanır. Kapsayıcıyı kullanmak için başlatma yöntemini değiştirmeniz gerekir.
+Kapsayıcı, [Konuşma SDK'sı](../index.yml)aracılığıyla erişilen websocket tabanlı sorgu uç noktası API'leri sağlar. Varsayılan olarak, Konuşma SDK çevrimiçi konuşma hizmetleri kullanır. Kapsayıcıyı kullanmak için başlatma yöntemini değiştirmeniz gerekir.
 
 > [!TIP]
-> Kapsayıcı ile konuşma SDK 'sını kullanırken, Azure konuşma kaynak [aboneliği anahtarını veya bir kimlik doğrulama taşıyıcı belirtecini](../rest-speech-to-text.md#authentication)sağlamanız gerekmez.
+> Konuşma SDK'sını kapsayıcılarla kullanırken, Azure Konuşma kaynak [abonelik anahtarını veya kimlik doğrulama taşıyıcı belirteci](../rest-speech-to-text.md#authentication)sağlamanız gerekmez.
 
 Aşağıdaki örneklere bakın.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Bu Azure-Cloud başlatma çağrısını kullanarak değiştirin:
+Bu Azure bulutu başlatma çağrısını kullanarak değiştirin:
 
 ```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-kapsayıcı [konağını](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kullanarak bu çağrıya:
+bu çağrıya konteyner [ana bilgisayarını](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kullanarak:
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -38,14 +38,14 @@ var config = SpeechConfig.FromHost(
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-Bu Azure-Cloud başlatma çağrısını kullanarak değiştirin:
+Bu Azure bulutu başlatma çağrısını kullanarak değiştirin:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-kapsayıcı [konağını](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kullanarak bu çağrıya:
+bu çağrıya konteyner [ana bilgisayarını](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kullanarak:
 
 ```python
 speech_config = speechsdk.SpeechConfig(

@@ -1,7 +1,7 @@
 ---
-title: Yaklaşım Analizi kapsayıcı Docker örnekleri
+title: Duygu Analizi konteyner docker örnekleri
 titleSuffix: Azure Cognitive Services
-description: Yaklaşım Analizi kapsayıcı Docker örnekleri
+description: Duygu Analizi konteyner docker örnekleri
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: dapine
 ms.openlocfilehash: c384d9d8af932db343aad106b6e89ea87821d900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148507"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>Yaklaşım Analizi kapsayıcı Docker örnekleri
+### <a name="sentiment-analysis-container-docker-examples"></a>Duygu Analizi konteyner docker örnekleri
 
-Aşağıdaki Docker örnekleri Yaklaşım Analizi kapsayıcısı içindir.
+Aşağıdaki docker örnekleri Sentiment Analysis konteyner içindir.
 
 #### <a name="basic-example"></a>Temel örnek 
 
@@ -30,7 +30,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} 
   ```
 
-#### <a name="logging-example"></a>Günlüğe kaydetme örneği 
+#### <a name="logging-example"></a>Günlük örneği 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

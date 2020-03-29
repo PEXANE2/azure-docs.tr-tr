@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 0e8a6a0ffa451337b9e7ea7590cfe614fc1129a1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943845"
 ---
-Konuşma hizmetine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream`oluşturun. Sonra akış sınıfınızın bir örneğinden bir `AudioConfig` oluşturun ve akışın sıkıştırma biçimini belirtin.
+Sıkıştırılmış ses biçiminde Konuşma hizmetine akış `PullAudioInputStream` yapmak `PushAudioInputStream`için, oluştur veya. Ardından, akış `AudioConfig` sınıfınızın sıkıştırma biçimini belirten bir örneğini oluşturun.
 
-`pushStream` adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+OPUS/OGG adlı `pushStream` bir giriş akışı sınıfınız olduğunu varsayalım. Kodunuz şu şekilde görünebilir:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

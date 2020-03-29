@@ -1,7 +1,7 @@
 ---
-title: Kubernetes config ve Deploy adımları Yaklaşım Analizi
+title: Duyarlılık Analizi Kubernetes config ve dağıtım adımları
 titleSuffix: Azure Cognitive Services
-description: Kubernetes config ve Deploy adımları Yaklaşım Analizi
+description: Duyarlılık Analizi Kubernetes config ve dağıtım adımları
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262071"
 ---
-### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Yaklaşım Analizi kapsayıcısını bir AKS kümesine dağıtma
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Duygu Analizi kapsayıcısını bir AKS kümesine dağıtma
 
-1. Azure CLı 'yi açın ve Azure 'da oturum açın.
+1. Azure CLI'yi açın ve Azure'da oturum açın.
 
     ```azurecli
     az login
     ```
 
-1. AKS kümesinde oturum açın. `your-cluster-name` ve `your-resource-group` uygun değerlerle değiştirin.
+1. AKS kümesinde oturum açın. `your-cluster-name` Değiştirin `your-resource-group` ve uygun değerlerle.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Bu komut çalıştıktan sonra şuna benzer bir ileti bildirir:
+    Bu komut çalıştırıladıktan sonra, aşağıdakilere benzer bir ileti bildirir:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Azure hesabınızda kullanabileceğiniz birden fazla aboneliğiniz varsa ve `az aks get-credentials` komutu bir hatayla döndürülürse, yaygın bir sorun, yanlış aboneliği kullanmaktır. Azure CLı oturumunuzun bağlamını, kaynaklarını oluşturduğunuz aboneliğin aynısını kullanacak şekilde ayarlayın ve yeniden deneyin.
+    > Azure hesabınızda kullanabileceğiniz birden çok aboneliğiniz `az aks get-credentials` varsa ve komut bir hatayla döndürürse, sık karşılaşılan bir sorun yanlış aboneliği kullanıyor olmasıdır. Azure CLI oturumunuzun bağlamını, kaynakları oluşturduğunuz aboneliği kullanacak ve yeniden deneyin.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. İstediğiniz metin düzenleyicisini açın. Bu örnek Visual Studio Code kullanır.
+1. Seçtiğim metin düzenleyicisini açın. Bu örnek, Visual Studio Code kullanır.
 
     ```console
     code .
     ```
 
-1. Metin Düzenleyicisi içinde, *Sentiment. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value` ve `apikey/value` kendi bilgileriniz ile değiştirdiğinizden emin olun.
+1. Metin düzenleyicisi *içinde, sentiment.yaml*adlı yeni bir dosya oluşturun ve aşağıdaki YAML'yi yapıştırın. Kendi `apikey/value` bilgilerinizle `billing/value` değiştirip değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,25 +95,25 @@ ms.locfileid: "78262071"
     ```
 
 1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
-1. Kubernetes `apply` komutunu, hedefi olarak *Sentiment. YAML* dosyası ile çalıştırın:
+1. Kubernetes `apply` komutunu *sentiment.yaml* dosyasıyla hedef olarak çalıştırın:
 
     ```console
     kubectl apply -f sentiment.yaml
     ```
 
-    Komut, dağıtım yapılandırmasını başarılı bir şekilde uyguladıktan sonra aşağıdaki çıktıya benzer bir ileti görünür:
+    Komut dağıtım yapılandırmasını başarıyla uyguladığında, aşağıdaki çıktıya benzer bir ileti görüntülenir:
 
     ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Pod 'ın dağıtıldığını doğrulayın:
+1. Bölmenin dağıtıldığını doğrulayın:
 
     ```console
     kubectl get pods
     ```
 
-    Pod 'un çalışma durumunun çıkışı:
+    Bölmenin çalışma durumu için çıktı:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -126,7 +126,7 @@ ms.locfileid: "78262071"
     kubectl get services
     ```
 
-    Pod 'daki *yaklaşım hizmetinin çalışma* durumunun çıkışı:
+    Bölmedeki *duyarlılık* hizmetinin çalışma durumu için çıktı:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

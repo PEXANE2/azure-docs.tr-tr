@@ -1,7 +1,7 @@
 ---
-title: Bing Video Arama API'si kullanarak Web 'de popüler videolar için arama yapın
+title: Bing Video Arama API'sini kullanarak popüler videolar için web'de arama yapın
 titleSuffix: Azure Cognitive Services
-description: Web 'i popüler videolar için aramak üzere Bing Video Arama API'si nasıl kullanacağınızı öğrenin.
+description: Popüler videolar için web'de arama yapmak için Bing Video Arama API'sını nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500606"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si popüler videolar alın 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si ile popüler videolar alın 
 
-Bing Video Arama API'si, günümüzün popüler videolarını Web üzerinden ve farklı kategorilerde bulmanıza olanak sağlar. 
+Bing Video Arama API'sı, web'de ve farklı kategorilerde günümüzün popüler videolarını bulmanızı sağlar. 
 
-## <a name="get-request"></a>İsteği al
+## <a name="get-request"></a>İstek AL
 
-Günümüzün popüler videolarını Bing Video Arama API'si almak için aşağıdaki GET isteğini gönderin:  
+Bing Video Arama API'sinden günümüzün popüler videolarını almak için aşağıdaki GET isteğini gönderin:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -37,25 +37,25 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="market-support"></a>Pazar desteği
 
-Aşağıdaki pazarlar, popüler videoları destekler.  
+Aşağıdaki pazarlar popüler videoları destekler.  
  
--   En-AU (Ingilizce, Avustralya)  
--   en-CA (Ingilizce, Kanada)  
--   en-GB (Ingilizce, Büyük Britanya)  
--   En-KIMLIĞI (Ingilizce, Endonezya)  
--   en-IE (Ingilizce, Irlanda)  
--   En-ın (Ingilizce, Hindistan)  
--   En-NZ (Ingilizce, Yeni Zelanda)  
--   En-PH (Ingilizce, Filipinler)  
--   En-SG (Ingilizce, Singapur)  
--   en-US (Ingilizce, Birleşik Devletler)  
--   En-WW (Ingilizce, dünya çapında toplam kod)  
--   En-ZA (Ingilizce, Güney Afrika)  
+-   tr-AU (İngilizce, Avustralya)  
+-   tr-CA (İngilizce, Kanada)  
+-   tr-GB (İngilizce, Büyük Britanya)  
+-   en-ID (İngilizce, Endonezya)  
+-   en-IE (İngilizce, İrlanda)  
+-   tr-IN (İngilizce, Hindistan)  
+-   en-NZ (İngilizce, Yeni Zelanda)  
+-   tr-PH (İngilizce, Filipinler)  
+-   en-SG (İngilizce, Singapur)  
+-   tr-US (İngilizce, Amerika Birleşik Devletleri)  
+-   tr-WW (İngilizce, Dünya çapında toplam kod)  
+-   en-ZA (İngilizce, Güney Afrika)  
 -   zh-CN (Çince, Çin)
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı  
 
-Aşağıdaki örnek, kategori ve alt kategori ile listelenmiş popüler videolar içeren bir API yanıtı gösterir. Yanıt Ayrıca en popüler popüler videolar olan başlık videoları içerir ve bir veya daha fazla kategoriden gelebilir.  
+Aşağıdaki örnek, kategori ye ve alt kategoriye göre listelenen popüler videoları içeren bir API yanıtı gösterir. Yanıt aynı zamanda en popüler popüler videolar olan ve bir veya daha fazla kategoriden gelebilecek banner videoları içerir.  
 
 ```json
 {  
@@ -124,4 +124,4 @@ Aşağıdaki örnek, kategori ve alt kategori ile listelenmiş popüler videolar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Video öngörüleri edinin](video-insights.md)
+> [Video içgörüleri edinme](video-insights.md)

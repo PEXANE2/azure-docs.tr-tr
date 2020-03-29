@@ -1,24 +1,24 @@
 ---
-title: Bilgi Bankası Soru-Cevap Oluşturma sorgulama-
-description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
+title: Bilgi tabanını sorgula - QnA Maker
+description: Bir bilgi tabanı yayınlanmalıdır. Yayımlandıktan sonra, bilgi tabanı, generateAnswer API kullanılarak çalışma zamanı tahmin bitiş noktasında sorgulanır.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220726"
 ---
-# <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
+# <a name="query-the-knowledge-base-for-answers"></a>Yanıtlar için bilgi tabanını sorgula
 
-Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır. Sorgu, soru metnini ve diğer ayarları içerir. Bu, bir yanıta en iyi eşleşmeyi Soru-Cevap Oluşturma seçmenize yardımcı olabilir.
+Bir bilgi tabanı yayınlanmalıdır. Yayımlandıktan sonra, bilgi tabanı, generateAnswer API kullanılarak çalışma zamanı tahmin bitiş noktasında sorgulanır. Sorgu, QnA Maker'ın bir yanıtla mümkün olan en iyi eşleşmeyi seçmesine yardımcı olmak için soru metnini ve diğer ayarları içerir.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Soru-Cevap Oluşturma en iyi yanıtı seçmek için Kullanıcı sorgusunu nasıl işler?
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker en iyi yanıtı seçmek için kullanıcı sorgusunu nasıl işler?
 
-Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) soru-cevap oluşturma Bilgi Bankası, bir bot veya başka bir Istemci uygulamasından [generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sindeki bir Kullanıcı sorgusu alır. Aşağıdaki diyagramda, Kullanıcı sorgusu alındığında işlem gösterilmektedir.
+Eğitilmiş ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker bilgi [bankası, GenerateAnswer API'de](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)bir bot veya başka bir istemci uygulamasından bir kullanıcı sorgusu alır. Aşağıdaki diyagram, kullanıcı sorgusu nun alındığı işlemi göstermektedir.
 
-![Bir Kullanıcı sorgusu için derecelendirme modeli işlemi](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Kullanıcı sorgusu için sıralama modeli işlemi](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
 ### <a name="ranker-process"></a>Ranker işlemi
 
@@ -26,23 +26,23 @@ Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create
 
 |Adım|Amaç|
 |--|--|
-|1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
-|2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
-|3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Bu değiştirilen sorgu bir Azure Bilişsel Arama dizinine gönderilir ve bu da sonuçların `top` sayısını alır. Bu sonuçlarda doğru yanıt yoksa `top` değerini biraz artırın. Genellikle, `top` için 10 değeri sorguların %90 ' de işe yarar.|
-|5|Soru-Cevap Oluşturma, kullanıcı sorgusuyla getirilen QnA sonuçları arasındaki benzerliği belirlemede anlamlı ve anlamsal tabanlı bir şekilde kullanır.|
-|6|Makine tarafından öğrenilen derecelendiricisini modeli, güven puanlarını ve yeni Derecelendirme sırasını öğrenmek için 5. adımdan farklı özellikleri kullanır.|
-|7|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
+|1|İstemci uygulaması kullanıcı sorgusunu [GenerateAnswer API'sine](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)gönderir.|
+|2|QnA Maker, kullanıcı sorgusunu dil algılama, yazım layıcılar ve sözcük ayırıcılarla önceden işler.|
+|3|Bu ön işleme, en iyi arama sonuçları için kullanıcı sorgusunu değiştirmek için alınır.|
+|4|Bu değiştirilmiş sorgu, sonuç sayısını alan bir Azure `top` Bilişsel Arama Dizini'ne gönderilir. Bu sonuçlarda doğru yanıt yoksa, değerini biraz `top` artırın. Genellikle, sorguların% 90 `top` çalışır için 10 değeri.|
+|5|QnA Maker, kullanıcı sorgusu ile getirilen QnA sonuçları arasındaki benzerliği belirlemek için sözdizimve anlamsal tabanlı featurization kullanır.|
+|6|Makineden öğrenilen sıralamacı modeli, güven puanlarını ve yeni sıralama sırasını belirlemek için adım 5'ten farklı özellikleri kullanır.|
+|7|Yeni sonuçlar sıralı sırada istemci uygulamasına döndürülür.|
 |||
 
-Kullanılan özellikler arasında şunlar yer alır, ancak sözcük düzeyi semantikleri, bir Corpus içindeki terim düzeyi önem derecesi ve derin öğrenilen anlam modelleri, iki metin dizesi arasında benzerlik ve ilgi belirleme açısından sınırlı değildir.
+Kullanılan özellikler, sözcük düzeyindesemantik, bir korpusta terim düzeyi önemi ve iki metin dizeleri arasındaki benzerlik ve alaka düzeyini belirlemek için derin öğrenilen semantik modelleri içerir, ancak bunlarla sınırlı değildir.
 
-## <a name="http-request-and-response-with-endpoint"></a>Uç nokta ile HTTP isteği ve yanıtı
-Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bir sohbet bot ile tümleştirilebilen REST tabanlı bir HTTP uç noktası oluşturur.
+## <a name="http-request-and-response-with-endpoint"></a>UÇ NOKTAİlE HTTP isteği ve yanıtı
+Bilgi tabanınızı yayımladığınızda, hizmet genellikle bir sohbet botu olan uygulamanıza entegre edilebilen REST tabanlı bir HTTP bitiş noktası oluşturur.
 
-### <a name="the-user-query-request-to-generate-an-answer"></a>Bir yanıt oluşturmak için Kullanıcı sorgulama isteği
+### <a name="the-user-query-request-to-generate-an-answer"></a>Yanıt oluşturmak için kullanıcı sorgusu isteği
 
-Kullanıcı sorgusu, son kullanıcının Bilgi Bankası 'nda `How do I add a collaborator to my app?`gibi sorduğu sorudır. Sorgu genellikle doğal bir dil biçiminde veya soruyu temsil eden birkaç anahtar kelimedir, örneğin `help with collaborators`. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
+Kullanıcı sorgusu, son kullanıcının bilgi tabanını sorduğu sorudur. `How do I add a collaborator to my app?` Sorgu genellikle doğal dil biçiminde veya soruyu temsil eden birkaç `help with collaborators`anahtar kelimededir, örneğin. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınıza gönderilir.
 
 ```json
 {
@@ -59,13 +59,13 @@ Kullanıcı sorgusu, son kullanıcının Bilgi Bankası 'nda `How do I add a col
 }
 ```
 
-[Scorethreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)ve [strictfilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)gibi özellikleri ayarlayarak yanıtı kontrol edersiniz.
+[Yanıtı scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)ve strictFilters gibi özellikleri ayarlayarak [denetlersiniz.](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)
 
-Doğru ve nihai yanıtı bulmak için konuşmayı, soruları ve yanıtları belirginleştirebilmek için [Çoklu açma işleviyle](../how-to/multiturn-conversation.md) birlikte [konuşma bağlamını](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) kullanın.
+Doğru ve son yanıtı bulmak için, konuşmanın soruları ve yanıtları hassaslaştırmasına devam etmek için [çok döndürme işlevine](../how-to/multiturn-conversation.md) sahip [konuşma bağlamını](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) kullanın.
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>Yanıt oluşturmak için bir çağrıdan yanıt
+### <a name="the-response-from-a-call-to-generate-an-answer"></a>Yanıt oluşturmak için bir çağrının yanıtı
 
-HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla en iyi yanıt alırsınız.
+HTTP yanıtı, belirli bir kullanıcı sorgusu için en iyi eşleşmeyi temel alan bilgi tabanından alınan yanıttır. Yanıt, yanıtı ve tahmin puanını içerir. `top` Özellik ile birden fazla üst yanıt istediyseniz, her biri bir puana sahip birden fazla üst yanıt alırsınız.
 
 ```json
 {
@@ -99,4 +99,4 @@ HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Güvenirlik puanı](./confidence-score.md)
+> [Güvenilirlik puanı](./confidence-score.md)

@@ -1,5 +1,5 @@
 ---
-title: Bilişsel hizmetler ve Machine Learning
+title: Bilişsel Hizmetler ve Makine Öğrenimi
 titleSuffix: Azure Cognitive Services
 description: Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.
 services: cognitive-services
@@ -10,136 +10,136 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
 ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75531488"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
-Bilişsel hizmetler, nesnelerin veya yüzlerinin tanınması için metin analizi veya görüntüleri analiz etme gibi genel sorunları çözümlemek için makine öğrenimi özellikleri sağlar. Bu hizmetleri kullanmak için özel makine öğrenimine veya veri bilimi bilgisine ihtiyacınız yoktur. 
+Bilişsel Hizmetler, metni duygusal duygular için analiz etmek veya nesneleri veya yüzleri tanımak için görüntüleri analiz etmek gibi genel sorunları çözmek için makine öğrenimi yetenekleri sağlar. Bu hizmetleri kullanmak için özel makine öğrenimi veya veri bilimi bilgisine ihtiyacınız yoktur. 
 
-Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin özelliklerini destekleyen bir hizmet grubudur. Hizmetler, doğru hizmeti bulmanıza yardımcı olmak için farklı kategorilere ayrılmıştır. 
+[Bilişsel Hizmetler,](welcome.md) her biri farklı, genelleştirilmiş tahmin yeteneklerini destekleyen bir hizmet grubudur. Hizmetler, doğru hizmeti bulmanıza yardımcı olmak için farklı kategorilere ayrılmıştır. 
 
 |Hizmet kategorisi|Amaç|
 |--|--|
-|[Seçim](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneri sunan uygulamalar derleyin.|
+|[Karar](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
 |[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
-|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
-|[Konuşmayı](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
-|[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
+|[Arama](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
+|[Konuşma](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
+|[Görsel](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
 
-Bilişsel hizmetler 'i şu durumlarda kullanın:
+Şunları yaptığınızda Bilişsel Hizmetleri kullanın:
 
-* Genelleştirilmiş bir çözüm kullanabilirler.
-* Bir programlama REST API veya SDK 'dan çözüme erişin. 
+* Genelleştirilmiş bir çözüm kullanabilir.
+* Bir programlama REST API veya SDK'dan erişim çözümüne. 
 
-Şu durumlarda başka bir makine öğrenimi çözümü kullanın:
+Şunları yaptığınızda başka bir makine öğrenme çözümü kullanın:
 
-* Algoritmayı seçmeniz ve çok özel verilerde eğitmeniz gerekir.
+* Algoritmayı seçmeniz ve çok özel veriler üzerinde eğitim vermem gerekir.
 
-## <a name="what-is-machine-learning"></a>Makine öğrenmesi nedir?
+## <a name="what-is-machine-learning"></a>Machine learning nedir?
 
-Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algoritmayı birlikte getiren bir kavramdır. Veriler ve algoritma eğitilirken, çıktı farklı verilerle tekrar kullanabileceğiniz bir modeldir. Eğitilen model yeni verileri temel alan öngörüler sağlar. 
+Makine öğrenimi, belirli bir ihtiyacı çözmek için verileri ve algoritmayı bir araya getirdiğiniz bir kavramdır. Veri ve algoritma eğitildikten sonra, çıktı farklı verilerle yeniden kullanabileceğiniz bir modeldir. Eğitilen model, yeni verilere dayalı öngörüler sağlar. 
 
-Machine Learning sistemi oluşturma işlemi, Machine Learning veya veri bilimi hakkında bazı bilgiler gerektirir.
+Bir makine öğrenme sistemi oluşturma süreci makine öğrenimi veya veri bilimi hakkında bilgi gerektirir.
 
-Makine öğrenimi, [Azure Machine Learning (AML) ürünleri ve Hizmetleri](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)kullanılarak sağlanır.
+Makine öğrenimi [Azure Machine Learning (AML) ürün ve hizmetleri](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)kullanılarak sağlanır.
 
-## <a name="what-is-a-cognitive-service"></a>Bilişsel hizmet nedir?
+## <a name="what-is-a-cognitive-service"></a>Bilişsel Hizmet Nedir?
 
-Bilişsel hizmet, bir makine öğrenimi çözümünde bileşenlerin bir kısmını veya tümünü sağlar: veri, algoritma ve eğitilen model. Bu hizmetler, makine öğrenimi veya veri bilimi konusunda deneyim sahibi olmadan verileriniz hakkında genel bilgi gerektirmek üzere tasarlanmıştır. Bu hizmetler hem REST API hem de dil tabanlı SDK 'lar sağlar. Sonuç olarak, hizmetleri kullanmak için programlama dili bilgisine sahip olmanız gerekir.
+Bilişsel Hizmet, bir makine öğrenme çözümündeki bileşenlerin bir kısmını veya tümlerini sağlar: veri, algoritma ve eğitilmiş model. Bu hizmetler, makine öğrenimi veya veri bilimi ile ilgili deneyime ihtiyaç duymadan verileriniz hakkında genel bilgi gerektirmektedir. Bu hizmetler hem REST API(lar) hem de dil tabanlı SDK'lar sağlar. Sonuç olarak, hizmetleri kullanmak için programlama dili bilgisine sahip olmanız gerekir.
 
-## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Bilişsel hizmetler ve Azure Machine Learning (AML) nasıl benzerdir?
+## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Bilişsel Hizmetler ve Azure Machine Learning (AML) nasıl benzer?
 
-Her ikisi de iş işlemlerini geliştirmek üzere yapay zeka (AI) uygulamanın son hedefine sahiptir, ancak her birinin ilgili tekliflerde bunu sağladığı her bir farklılık farklıdır. 
+Her ikisi de iş operasyonlarını geliştirmek için yapay zeka (AI) uygulama nihai hedefi var, her ilgili teklifleri bu sağlar nasıl farklı olsa. 
 
-Genellikle, izleyiciler farklıdır:
+Genel olarak, izleyiciler farklıdır:
 
-* Bilişsel hizmetler, makine öğrenimi deneyimi olmayan geliştiriciler içindir.
-* Azure Machine Learning, veri bilimcileri için tasarlanmıştır. 
+* Bilişsel Hizmetler, makine öğrenme deneyimi olmayan geliştiriciler içindir.
+* Azure Machine Learning veri bilimciler için özel olarak tasarlanmıştır. 
 
-## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Bilişsel hizmet, Machine Learning 'ten farklı midir?
+## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Bilişsel Hizmetin makine öğreniminden farkı nedir?
 
-Bilişsel hizmet, sizin için eğitilen bir model sağlar. Bu, verileri ve algoritmayı bir REST API birlikte ve bir SDK 'dan kullanılabilir hale getirir. Senaryonuza bağlı olarak bu hizmeti dakikalar içinde de uygulayabilirsiniz.  Bilişsel hizmet, resimlerdeki metin veya öğe tanımlamalarında anahtar ifadeler gibi genel sorunlara yanıt verir. 
+Bilişsel Hizmet sizin için eğitimli bir model sağlar. Bu, bir REST API(lar) veya SDK'dan edinilebilen verileri ve algoritmayı bir araya getirir. Senaryonuza bağlı olarak bu hizmeti birkaç dakika içinde uygulayabilirsiniz.  Bilişsel Hizmet, metindeki anahtar tümcecikler veya resimlerdeki öğe tanımlama gibi genel sorunlara yanıt sağlar. 
 
-Machine Learning, genellikle başarıyla uygulanması için daha uzun bir süre gerektiren bir işlemdir. Bu süre, bir bilişsel hizmet tarafından sunulan aynı işlevselliğe ulaşmak için veri toplama, Temizleme, dönüştürme, algoritma seçimi, model eğitimi ve dağıtım üzerinde harcanmıştır. Machine Learning sayesinde, yüksek düzeyde özelleştirilmiş ve/veya belirli sorunlara yanıt vermek mümkündür. Machine Learning sorunları, sorunun önemli ve verilerin yanı sıra veri bilimi 'nin uzmanlığı ile ilgili konular hakkında bilgi sahibi olmanızı gerektirir.
+Makine öğrenimi genellikle başarılı bir şekilde uygulanması için daha uzun bir süre gerektiren bir süreçtir. Bu süre, Bilişsel Hizmet tarafından sağlanan aynı işlevsellik düzeyine ulaşmak için veri toplama, temizleme, dönüştürme, algoritma seçimi, model eğitimi ve dağıtım için harcanır. Makine öğrenimi ile, son derece özel ve / veya özel sorunlara cevap sağlamak mümkündür. Makine öğrenimi problemleri, göz önünde bulundurulan sorunun belirli konusu ve verilerinin yanı sıra veri biliminde uzmanlık gerektirir.
 
-## <a name="what-kind-of-data-do-you-have"></a>Ne tür veriler kullanıyorsunuz?
+## <a name="what-kind-of-data-do-you-have"></a>Ne tür verileriniz var?
 
-Bilişsel hizmetler, bir hizmet grubu olarak, eğitilen model için hiçbiri, bazıları veya tüm özel verileri gerektirebilir. 
+Bilişsel Hizmetler, bir hizmet grubu olarak, eğitilmiş model için hiçbir, bazı veya tüm özel verileri gerektiremez. 
 
-### <a name="no-additional-training-data-required"></a>Ek eğitim verileri gerekmez
+### <a name="no-additional-training-data-required"></a>Ek eğitim verisi gerekmez
 
-Tam eğitilen bir model sağlayan hizmetler _siyah kutu_olarak kabul edilebilir. Bunların nasıl çalıştığını veya bunları eğitede hangi verilerin kullanıldığını bilmeniz gerekmez. Tahmin almak için verilerinizi tamamen eğitilen bir modele taşıyın. 
+Tam eğitimli bir model sağlayan hizmetler _bir kara kutu_olarak kabul edilebilir. Nasıl çalıştıklarını veya onları eğitmek için hangi verilerin kullanıldığını bilmeniz gerekmez. Bir tahmin almak için verilerinizi tam eğitimli bir modele getirirsiniz. 
 
-### <a name="some-or-all-training-data-required"></a>Eğitim verilerinin bazıları veya tümü gereklidir
+### <a name="some-or-all-training-data-required"></a>Gerekli eğitim verilerinin bir kısmı veya tümü
 
-Bazı hizmetler kendi verilerinizi getirip bir modeli eğmenize imkan tanır. Bu sayede, kendi verileriniz ile hizmetin verilerini ve algoritmasını kullanarak modeli genişletebilirsiniz. Çıktı, gereksinimlerinize göre eşleşir. Kendi verilerinizi getirdiğinizde, verileri hizmete özgü bir şekilde etiketlemeniz gerekebilir. Örneğin, çiçekleri tanımlamak için bir modeli eğitmeniz durumunda, her görüntüde çiçek konumunun yanı sıra modeli eğitme gibi çiçek görüntülerinin kataloğunu sağlayabilirsiniz. 
+Bazı hizmetler, kendi verilerinizi getirmenize ve ardından bir model eğitmenize olanak sağlar. Bu, hizmetin verilerini ve algoritmasını kullanarak modeli kendi verilerinizle genişletmenize olanak tanır. Çıktı ihtiyaçlarınıza uyuyor. Kendi verilerinizi getirdiğinizde, verileri hizmete özgü bir şekilde etiketlemeniz gerekebilir. Örneğin, çiçekleri tanımlamak için bir model eğitiyorumsa, modeli eğitmek için her görüntüdeki çiçeğin konumuyla birlikte çiçek görüntülerinin bir kataloğunu sağlayabilirsiniz. 
 
-Bir hizmet kendi verilerini iyileştirmek için veri sağlamanıza _izin_ verebilir. Bir hizmet, veri sağlamanızı _gerektirebilir_ . 
+Bir hizmet, kendi verilerini geliştirmek için veri sağlamanıza _izin_ verebilir. Bir hizmet, veri sağlamanızı _gerektirebilir._ 
 
-### <a name="real-time-or-near-real-time-data-required"></a>Gerçek zamanlı veya neredeyse gerçek zamanlı veriler gerekiyor
+### <a name="real-time-or-near-real-time-data-required"></a>Gerçek zamanlı veya yakın gerçek zamanlı veri gerekli
 
-Etkin bir model oluşturmak için bir hizmetin gerçek zamanlı veya neredeyse gerçek zamanlı verilere ihtiyacı olabilir. Bu hizmetler, model verilerini önemli miktarda işler. 
+Bir hizmetin etkili bir model oluşturmak için gerçek zamanlı veya neredeyse gerçek zamanlı verilere ihtiyacı olabilir. Bu hizmetler önemli miktarda model verisi işlenir. 
 
 ## <a name="service-requirements-for-the-data-model"></a>Veri modeli için hizmet gereksinimleri
 
-Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne göre kategorilere ayırır.
+Aşağıdaki veriler, her hizmeti hangi tür verilere izin verdiğine veya gerektirdiğine göre kategorilere ayırıyor.
 
-|Bilişsel hizmet|Eğitim verisi gerekli değil|Eğitim verilerinin bazılarını veya tümünü sağlarsınız|Gerçek zamanlı veya neredeyse gerçek zamanlı veri toplama|
+|Bilişsel Hizmet|Eğitim verisi gerekmez|Eğitim verilerinin bir kısmını veya tamamını sağlarsınız|Gerçek zamanlı veya yakın gerçek zamanlı veri toplama|
 |--|--|--|--|
-|[Anomali algılayıcısı](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomali Algılayıcısı](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Arama |x|||
-|[Görüntü İşleme](./Computer-vision/Home.md)|x|||
+|[BilgisayarLı Vizyon](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
-|[Yüz tanıma](./Face/Overview.md)|x|x||
-|[Form tanıyıcı](./form-recognizer/overview.md)||x||
-|[Modern okuyucu](./immersive-reader/overview.md)|x|||
-|[Mürekkep tanıyıcı](./Ink-recognizer/overview.md)|x|x||
-|[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Kişiselleştirici](./personalizer/what-is-personalizer.md)|x*|x*|x|
-|[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
-|[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
-|[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
-|[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
+|[Özel Görüntü](./Custom-Vision-Service/home.md)||x||
+|[Yüz](./Face/Overview.md)|x|x||
+|[Form Tanıma](./form-recognizer/overview.md)||x||
+|[Tam Ekran Okuyucu](./immersive-reader/overview.md)|x|||
+|[Mürekkep Tanıma](./Ink-recognizer/overview.md)|x|x||
+|[Dil Anlama (LUIS)](./LUIS/what-is-luis.md)||x||
+|[Kişiselleştirme](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[QnA Üreticisi](./QnAMaker/Overview/overview.md)||x||
+|[Hoparlör Tanıyıcı](./speaker-recognition/home.md)||x||
+|[Konuşma Metni-Konuşma (TTS)](speech-service/text-to-speech.md)|x|x||
+|[Konuşma Konuşma-metin (STT)](speech-service/speech-to-text.md)|x|x||
 |[Konuşma Çevirisi](speech-service/speech-translation.md)|x|||
 |[Metin Analizi](./text-analytics/overview.md)|x|||
-|[Translator Metin Çevirisi](./translator/translator-info-overview.md)|x|||
-|[Translator Metin Çevirisi-özel çevirici](./translator/custom-translator/overview.md)||x||
+|[Çevirmen Metni](./translator/translator-info-overview.md)|x|||
+|[Çevirmen Metin - özel çevirmen](./translator/custom-translator/overview.md)||x||
 
-\* Kişiselleştirici, ilkenizi ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalışırken) ihtiyaç duyuyor. Kişiselleştirici, ön veya Batch eğitimi için büyük geçmiş veri kümelerine gerek duyuyor. 
+*Personalizer'ın politikanızı ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalıştığı gibi) ihtiyacı vardır. Personalizer up-front veya toplu eğitim için büyük tarihsel veri kümeleri gerekmez. 
 
 ## <a name="where-can-you-use-cognitive-services"></a>Bilişsel Hizmetleri nerede kullanabilirsiniz?
  
-Hizmetler, REST API veya SDK çağrısı yapan tüm uygulamalar için kullanılır. Uygulama örnekleri arasında Web siteleri, botlar, sanal veya karma gerçeklik, masaüstü ve mobil uygulamalar sayılabilir. 
+Hizmetler, REST API(lar) veya SDK aramaları yapabilen herhangi bir uygulamada kullanılır. Uygulamalara örnek olarak web siteleri, botlar, sanal veya karma gerçeklik, masaüstü ve mobil uygulamalar verilebilir. 
 
-## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure Bilişsel Arama bilişsel hizmetlerle nasıl ilişkilidir?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure Bilişsel Arama'nın Bilişsel Hizmetlerle ilişkisi nedir?
 
-[Azure bilişsel arama](../search/search-what-is-azure-search.md) , isteğe bağlı olarak, dizin oluşturma iş yükleri için görüntü ve doğal dil işleme eklemek üzere bilişsel hizmetler kullanan ayrı bir bulut arama hizmetidir. Bilişsel hizmetler, tek tek API 'Leri çevreleyecek [yerleşik yetenekler](../search/cognitive-search-predefined-skills.md) aracılığıyla Azure bilişsel arama kullanıma sunulur. İzlenecek yollar için ücretsiz bir kaynak kullanabilirsiniz, ancak daha büyük birimler için [faturalanabilir bir kaynak](../search/cognitive-search-attach-cognitive-services.md) oluşturma ve ekleme planlaması gerçekleştirebilirsiniz.
+[Azure Bilişsel Arama,](../search/search-what-is-azure-search.md) iş yüklerini dizine görüntü ve doğal dil işleme eklemek için isteğe bağlı olarak Bilişsel Hizmetler kullanan ayrı bir bulut arama hizmetidir. Bilişsel Hizmetler, Azure Bilişsel Arama'da tek tek [API'leri](../search/cognitive-search-predefined-skills.md) saran yerleşik beceriler aracılığıyla ortaya çıkarır. İzler için ücretsiz bir kaynak kullanabilirsiniz, ancak daha büyük birimler için [faturalandırılabilir](../search/cognitive-search-attach-cognitive-services.md) bir kaynak oluşturmayı ve eklemeyi planlayabilirsiniz.
 
-## <a name="how-can-you-use-cognitive-services"></a>Bilişsel hizmetleri nasıl kullanabilirsiniz?
+## <a name="how-can-you-use-cognitive-services"></a>Bilişsel Hizmetleri nasıl kullanabilirsiniz?
 
-Her hizmet, verileriniz hakkında bilgi sağlar. Konuşmayı (ses) metne dönüştürme, metni birçok dile çevirme ve ardından bir bilgi tabanından yanıt almak için çevrilmiş dilleri kullanma gibi çözümleri zincirlemek üzere Hizmetleri birlikte birleştirebilirsiniz. Bilişsel hizmetler, kendi kendilerine akıllı çözümler oluşturmak için kullanılabilir olsa da, modelleri desteklemek veya geliştirme sürecini hızlandırmak için geleneksel makine öğrenimi projeleriyle de birleştirilebilir. 
+Her hizmet verileriniz hakkında bilgi sağlar. Konuşmaları (sesi) metne dönüştürme, metni birçok dile çevirme, ardından bir bilgi tabanından yanıt almak için çevrilmiş dilleri kullanma gibi çözümleri zincirlemek için hizmetleri birleştirebilirsiniz. Bilişsel Hizmetler kendi akıllı çözümler oluşturmak için kullanılabilir iken, onlar da modelleri tamamlamak veya geliştirme sürecini hızlandırmak için geleneksel makine öğrenme projeleri ile kombine edilebilir. 
 
-Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bilişsel hizmetler:
+Diğer makine öğrenimi araçları için dışa aktarılan modeller sağlayan Bilişsel Hizmetler:
 
-|Bilişsel hizmet|Model bilgileri|
+|Bilişsel Hizmet|Model bilgileri|
 |--|--|
-|[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
+|[Özel Görüntü](./custom-vision-service/home.md)|Android için Tensorflow için [dışa aktarma,](./Custom-Vision-Service/export-model-python.md) iOS11 için CoreML, Windows ML için ONNX|
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/concept-deep-learning-vs-machine-learning.md)
+* [Architecture Guide - Microsoft'ta makine öğrenimi ürünleri nelerdir?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Makine öğrenimi - Derin öğrenmeye giriş vs. makine öğrenimi](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilişsel hizmet hesabınızı [Azure Portal](cognitive-services-apis-create-account.md) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)ile oluşturun.
-* Bilişsel bir hizmette [kimlik doğrulaması](authentication.md) yapmayı öğrenin.
-* Sorun tanımlama ve hata ayıklama için [Tanılama günlüğünü](diagnostic-logging.md) kullanın. 
-* Bir Docker [kapsayıcısında](cognitive-services-container-support.md)bilişsel bir hizmet dağıtın.
-* [Hizmet güncelleştirmeleriyle](https://azure.microsoft.com/updates/?product=cognitive-services)güncel tutun.
+* Azure [portalında](cognitive-services-apis-create-account.md) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)ile Bilişsel Hizmet hesabınızı oluşturun.
+* Bilişsel Hizmete nasıl [doğrulaşmayı](authentication.md) öğrenin.
+* Sorun tanımlama ve hata ayıklama için [tanısal günlüğe kaydetmeyi](diagnostic-logging.md) kullanın. 
+* Bir Docker [konteyner](cognitive-services-container-support.md)içinde bir Bilişsel Hizmet dağıtmak.
+* [Hizmet güncellemelerini](https://azure.microsoft.com/updates/?product=cognitive-services)güncel tutun.

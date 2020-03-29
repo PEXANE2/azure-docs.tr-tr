@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma-konuşma hizmeti"
+title: 'Quickstart: Konuşma SDK ile Özel Komutlar uygulamasına bağlanın - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, özel komutlarla bir konuşma SDK 'Sı istemci uygulaması oluşturacaksınız.
+description: Bu makalede, Özel Komutlar ile bir Konuşma SDK istemci uygulaması oluşturacaktır.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156786"
 ---
-# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
+# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quickstart: Konuşma SDK (Önizleme) ile Özel Komutlar uygulamasına bağlanın
 
-Barındırılan özel komutlar uygulaması oluşturduktan sonra, bir istemci cihazından bu hizmetle iletişim başlatabilirsiniz.
+Barındırılan özel komutlar uygulaması oluşturduktan sonra, istemci aygıtından konuşmaya başlayabilirsiniz.
 
-Bu makalede şunları yapmanız gerekir:
+Bu makalede, şunları yapacaksınız:
 
-- Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
-- Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir istemci uygulaması oluşturun
+- Özel Komutlar uygulaması yayımlayın ve bir uygulama tanımlayıcısı (Uygulama Kimliği) alın
+- Özel Komutlar uygulamanızla konuşmanızı sağlamak için Konuşma SDK'sını kullanarak bir istemci uygulaması oluşturun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Henüz bir özel komutlar uygulaması oluşturmadıysanız, bu önceki hızlı başlangıçlarda bunu yapabilirsiniz:
+Bu makaleyi tamamlamak için Özel Komutlar uygulaması gereklidir. Henüz bir Özel Komut uygulaması oluşturmadıysanız, bunu önceki hızlı başlangıçlarda yapabilirsiniz:
 
-- [Hızlı başlangıç: özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-new.md)
-- [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Quickstart: Özel Komut Oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-new.md)
+- [Quickstart: Parametreler (Önizleme) ile Özel Komut oluşturma](./quickstart-custom-speech-commands-create-parameters.md)
 
-Ayrıca şunları da yapmanız gerekir:
+Ayrıca şunları yapmanız gerekir:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+- Konuşma Hizmetleri için Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md) veya [Azure portalında](https://portal.azure.com) oluşturun
 
-## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
+## <a name="optional-get-started-fast"></a>İsteğe bağlı: Hızlı başlayın
 
-Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanıza nasıl bağlayabileceğinizi adım adım açıklar. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
+Bu hızlı başlangıç, adım adım, Özel Komutlar uygulamanıza bağlanmak için bir istemci uygulaması nasıl yapılacağını açıklar. Sağa dalmayı tercih ederseniz, bu hızlı başlatmada kullanılan tam, derlenmeye hazır kaynak kodu klasörün `quickstart` altındaki Konuşma [SDK Örnekleri'nde](https://aka.ms/csspeech/samples) kullanılabilir.
 
-## <a name="step-1-publish-custom-commands-application"></a>1\. Adım: özel komutlar uygulaması yayımlama
+## <a name="step-1-publish-custom-commands-application"></a>Adım 1: Özel Komutlar uygulamasını yayımla
 
-1. [Önceden oluşturulmuş özel komutlar uygulamanızı](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla** ' yı seçin.
+1. Daha [önce oluşturulmuş Özel Komutlar uygulamanızı](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla'yı** seçin
 
    > [!div class="mx-imgBorder"]
-   > ![uygulama](media/custom-speech-commands/fulfill-sdk-publish-application.png) Yayımla
+   > ![Uygulama yayımlama](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. Uygulama KIMLIĞINI daha sonra kullanmak üzere yayımlama bildiriminden Kopyala
+1. Daha sonra kullanmak üzere yayımlama bildiriminden Uygulama Kimliğini kopyalama
 
-## <a name="step-2-create-a-visual-studio-project"></a>2\. Adım: Visual Studio projesi oluşturma
+## <a name="step-2-create-a-visual-studio-project"></a>Adım 2: Görsel Stüdyo projesi oluşturma
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="step-3-add-sample-code"></a>3\. Adım: örnek kod ekleme
+## <a name="step-3-add-sample-code"></a>Adım 3: Örnek kod ekleme
 
-Bu adımda, uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekler ve arka plan C# kod uygulamasını ekler.
+Bu adımda, uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ve C# kodunun arkasındaki uygulamayı ekliyoruz.
 
 ### <a name="xaml-code"></a>XAML kodu
 
 XAML kodunu ekleyerek uygulamanın kullanıcı arabirimini oluşturun.
 
-1. **Çözüm Gezgini**' de açın `MainPage.xaml`
+1. **Çözüm Gezgini'nde**, açık`MainPage.xaml`
 
-1. Tasarımcının XAML görünümünde, tüm içeriği aşağıdaki kod parçacığı ile değiştirin:
+1. Tasarımcının XAML görünümünde, tüm içeriği aşağıdaki kod parçacıklarıyla değiştirin:
 
    ```xml
    <Page
@@ -112,22 +112,22 @@ XAML kodunu ekleyerek uygulamanın kullanıcı arabirimini oluşturun.
    </Page>
    ```
 
-Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde güncelleştirilir.
+Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için güncelleştirilir.
 
-### <a name="c-code-behind-source"></a>C#arka plan kod kaynağı
+### <a name="c-code-behind-source"></a>C# kod arkası kaynağı
 
-Uygulamanın beklendiği gibi çalışması için arka plan kod kaynağını ekleyin. Arka plan kod kaynağı şunları içerir:
+Uygulamanın beklendiği gibi çalışması için kod arkasındaki kaynağı ekleyin. Kod arkası kaynağı şunları içerir:
 
-- `Speech` ve `Speech.Dialog` ad alanları için gerekli `using` deyimleri
-- Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
-- Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
-- Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
-- Metin okuma (akış desteği olmadan) çalmak için bir yardımcı
+- Ve ad alanları için gerekli `using` ifadeler `Speech.Dialog` `Speech`
+- Bir düğme işleyicisine bağlı mikrofon erişimi sağlamak için basit bir uygulama
+- İletileri ve uygulamadaki hataları sunmak için temel Kullanıcı Arabirimi yardımcıları
+- Daha sonra doldurulacak başlatma kodu yolu için bir iniş noktası
+- Metinden konuşmaya oynatma (akış desteği olmadan)
 - Daha sonra doldurulacak dinlemeye başlamak için boş bir düğme işleyicisi
 
-Arka plan kod kaynağını aşağıdaki gibi ekleyin:
+Kod arkası kaynağını aşağıdaki gibi ekleyin:
 
-1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyası `MainPage.xaml.cs` açın (`MainPage.xaml`altında gruplandırılır)
+1. **Solution Explorer'da,** kod arkasındaki `MainPage.xaml.cs` kaynak dosyayı `MainPage.xaml`açın (altında gruplandı)
 
 1. Dosyanın içeriğini aşağıdaki kodla değiştirin:
 
@@ -299,7 +299,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    }
    ```
 
-1. Aşağıdaki kodu `InitializeDialogServiceConnector` yöntem gövdesine ekleyin
+1. Yöntem gövdesine aşağıdaki kodu ekleyin`InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -314,9 +314,9 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. `YourApplicationId`, `YourSpeechSubscriptionKey`ve `YourServiceRegion` dizelerini, uygulamanız, konuşma aboneliğiniz ve [bölgeniz](regions.md) için kendi değerlerinizle değiştirin
+1. `YourApplicationId`Uygulamanız, `YourSpeechSubscriptionKey`konuşma aboneliğiniz ve [bölgeniz](regions.md) için dizeleri ve `YourServiceRegion` kendi değerlerinizle değiştirin
 
-1. `InitializeDialogServiceConnector` yöntemi gövdesinin sonuna aşağıdaki kod parçacığını ekleyin
+1. Yöntem gövdesinin sonuna aşağıdaki kod parçacığı ekine`InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -374,7 +374,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    };
    ```
 
-1. Aşağıdaki kod parçacığını `MainPage` sınıfındaki `ListenButton_ButtonClicked` yönteminin gövdesine ekleyin
+1. `MainPage` Sınıfta yöntemin `ListenButton_ButtonClicked` gövdesine aşağıdaki kod parçacığı ekleme
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -398,24 +398,24 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    }
    ```
 
-1. Değişikliklerinizi kaydetmek için menü çubuğundan **dosya** > **Tümünü Kaydet** ' i seçin
+1. Menü çubuğundan, değişikliklerinizi kaydetmek için **Tümlerini** > **Kaydet'i** seçin
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun hatasız olarak derlenmesi gerekir.
+1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözüm'üne** bakın' ı seçin. Kodun hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
+1. Uygulamayı başlatmak için **Hata Ayıklama** > **Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna) seçin. **Helloworld** penceresi görüntülenir.
 
-   ![Hızlı başlangıçta örnek UWP Sanal Yardımcısı C# uygulaması](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![C# örnek UWP sanal asistan uygulaması - quickstart](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. **Mikrofonu etkinleştir**' i seçin. Erişim izni isteği açılır ise, **Evet**' i seçin.
+1. **Mikrofonu Etkinleştir'i**seçin. Erişim izni isteği açılırsa **Evet'i**seçin.
 
-   ![Mikrofon erişimi izin isteği](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon erişim izni isteği](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. **Konuş**' u seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, doğrudan hat konuşma kanalına iletilir ve pencerede görüntülenen metne kaydedilir.
+1. **Konuş'u**seçin ve cihazınızın mikrofonuna İngilizce bir tümcecik veya cümle konuşun. Konuşmanız Doğrudan Satır Konuşması kanalına aktarılır ve pencerede görünen metne aktarılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: konuşma SDK 'sı (Önizleme) ile istemcideki komutları yerine getirmek](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
+> [Nasıl yapılır: Konuşma SDK (önizleme)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> ile istemci komutları yerine getirme[nasıl yapılır: Özel Komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)

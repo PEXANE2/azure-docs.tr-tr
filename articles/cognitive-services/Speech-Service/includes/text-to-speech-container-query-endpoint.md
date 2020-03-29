@@ -1,5 +1,5 @@
 ---
-title: Metin okuma kapsayıcısı uç noktası sorgula
+title: Metinden konuşmaya kapsayıcı bitiş noktasını sorgula
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: 8460ddca5cff2b3da540b5fa8cf66e0687892789
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73491194"
 ---
-Kapsayıcı, [REST tabanlı uç nokta API 'leri](../rest-text-to-speech.md)sağlar. Platform, çerçeve ve dil çeşitlemeleri için birçok [örnek kaynak kodu projesi](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) mevcuttur.
+Kapsayıcı [REST tabanlı uç nokta API'leri](../rest-text-to-speech.md)sağlar. Platform, çerçeve ve dil varyasyonları için birçok [örnek kaynak kodu projesi](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) mevcuttur.
 
-*Standart metin okuma* kapsayıcında, indirdiğiniz görüntü etiketinin yerel ve sesinden yararlanmalısınız. Örneğin, `latest` etiketini indirdiyseniz varsayılan yerel ayar `en-US` ve `JessaRUS` sestir. `{VOICE_NAME}` bağımsız değişkeni [`en-US-JessaRUS`](../language-support.md#standard-voices)olur. Aşağıda SSML örneğine bakın:
+Standart *Metinden konuşmaya* kapsayıcısıyla, indirdiğiniz görüntü etiketinin yerel görüntüsüne ve sesine güvenmelisiniz. Örneğin, `latest` etiketi indirdiyseniz varsayılan yerel alan `en-US` ve `JessaRUS` sestir. Argüman `{VOICE_NAME}` daha sonra [`en-US-JessaRUS`](../language-support.md#standard-voices)olacaktır . Aşağıdaki Örnek SSML'ye bakın:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -27,11 +27,11 @@ Kapsayıcı, [REST tabanlı uç nokta API 'leri](../rest-text-to-speech.md)sağl
 </speak>
 ```
 
-Ancak, *özel metin okuma* için [özel ses portalından](https://aka.ms/custom-voice-portal) **Ses/model** edinmeniz gerekir. Özel model adı, ses adı ile eşanlamlıdır. **Eğitim** sayfasına gidin ve `{VOICE_NAME}` bağımsız değişkeni olarak kullanılacak **ses/modeli** kopyalayın.
+Ancak, *Özel Metin-to-speech* için [özel ses portalıses](https://aka.ms/custom-voice-portal) **/ model** elde etmek gerekir. Özel model adı ses adı ile eş anlamlıdır. **Eğitim** sayfasına gidin ve bağımsız değişken olarak kullanmak `{VOICE_NAME}` üzere Ses / **modelini** kopyalayın.
 <br><br>
-:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Özel ses modeli-ses adı":::
+:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Özel ses modeli - ses adı":::
 
-Aşağıda SSML örneğine bakın:
+Aşağıdaki Örnek SSML'ye bakın:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -41,7 +41,7 @@ Aşağıda SSML örneğine bakın:
 </speak>
 ```
 
-Birkaç üstbilgiyi ve bir veri yükünü sağlayan bir HTTP POST isteği oluşturalım. `{VOICE_NAME}` yer tutucusunu kendi değeri ile değiştirin.
+Birkaç üstbilgi ve veri yükü sağlayan bir HTTP POST isteği oluşturalım. Yer `{VOICE_NAME}` tutucuyu kendi değerinizle değiştirin.
 
 ```curl
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
@@ -53,8 +53,8 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 
 Şu komut:
 
-* `speech/synthesize/cognitiveservices/v1` uç noktası için HTTP POST isteği oluşturur.
-* `audio/*` bir `Accept` üst bilgisini belirtir
-* `application/ssml+xml`bir `Content-Type` üst bilgisini belirtir, daha fazla bilgi için bkz. [İstek gövdesi](../rest-text-to-speech.md#request-body).
-* `riff-16khz-16bit-mono-pcm`bir `X-Microsoft-OutputFormat` üst bilgisini belirtir, daha fazla seçenek için [ses çıkışı](../rest-text-to-speech.md#audio-outputs)bölümüne bakın.
-* `{VOICE_NAME}` bitiş noktasına verilen [konuşma Sensi biçimlendirme dili (SSML)](../speech-synthesis-markup.md) isteği gönderir.
+* `speech/synthesize/cognitiveservices/v1` Bitiş noktası için bir HTTP POST isteği oluşturuyor.
+* Üstbilgi `Accept` belirtir`audio/*`
+* `Content-Type` Üstbilgi, `application/ssml+xml`daha fazla bilgi için istek [gövdesine](../rest-text-to-speech.md#request-body)bakın.
+* Bir `X-Microsoft-OutputFormat` üstbilgi belirtir `riff-16khz-16bit-mono-pcm`, daha fazla seçenek için [ses çıkışı](../rest-text-to-speech.md#audio-outputs)bakın .
+* Konuşma [Sentezi Biçimlendirme Dili (SSML)](../speech-synthesis-markup.md) isteğini bitiş noktasına gönderir. `{VOICE_NAME}`

@@ -1,7 +1,7 @@
 ---
-title: Önceden oluşturulmuş varlık sayısı-LUSıS
+title: Sayı Önceden Oluşturulmuş Varlık - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makale numarası önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS) içerir.
+description: Bu makale, Dil Anlama (LUIS) içinde sayı önceden oluşturulmuş varlık bilgileri içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273459"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için önceden oluşturulmuş varlık sayısı
-Hangi sayısal değerleri ölçme, express ve bilgi parçalarını tanımlamak için kullanılan birçok yolu vardır. Bu makalede yalnızca bazı olası örnekler yer almaktadır. LUIS, kullanıcı konuşma farklılığı yorumlar ve tutarlı bir sayısal değerleri döndürür. Bu varlık zaten eğitildi çünkü uygulama hedefleri için numarası içeren örnek Konuşma ekleme gerekmez.
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için önceden oluşturulmuş varlığın sayısı
+Sayısal değerlerin bilgi parçalarını ölçmek, ifade etmek ve açıklamak için kullanıldığı birçok yol vardır. Bu makalede, yalnızca bazı olası örnekler kapsar. LUIS, kullanıcı söyleyişlerinin varyasyonlarını yorumlar ve tutarlı sayısal değerler döndürür. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına numara içeren örnek sözcükeklemeler eklemeniz gerekmez.
 
 ## <a name="types-of-number"></a>Sayı türleri
-Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub deposundan yönetiliyor
+Numara, [Tanıyanlar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub deposundan yönetilir
 
 ## <a name="examples-of-number-resolution"></a>Sayı çözümleme örnekleri
 
@@ -38,17 +38,17 @@ Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-Luo, döndürdüğü JSON yanıtının `resolution` alanındaki **`builtin.number`** varlığın tanınan değerini içerir.
+LUIS, döndürdüğü JSON yanıtı **`builtin.number`** `resolution` alanında bir varlığın tanınmışdeğerini içerir.
 
-## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş numaralı çözümleme
+## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş sayı için çözünürlük
 
-Sorgu için aşağıdaki varlık nesneleri döndürülür:
+Aşağıdaki varlık nesneleri sorgu için döndürülür:
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```json
 "entities": {
@@ -57,9 +57,9 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
 
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 "entities": {
@@ -85,7 +85,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözüm için "iki düzine" utterance 24, değeri içeren bir JSON yanıtı, luıs'den gösterir.
+Aşağıdaki örnek, LUIS'in "iki düzine" ifadesi için 24 değerinin çözümünü içeren bir JSON yanıtını gösterir.
 
 ```json
 "entities": [
@@ -105,6 +105,6 @@ Aşağıdaki örnek, çözüm için "iki düzine" utterance 24, değeri içeren 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Para birimi](luis-reference-prebuilt-currency.md), [sıra sayısı](luis-reference-prebuilt-ordinal.md)ve [yüzde](luis-reference-prebuilt-percentage.md)bilgileri hakkında bilgi edinin.
+[Para birimi](luis-reference-prebuilt-currency.md), [ordinal](luis-reference-prebuilt-ordinal.md), ve [yüzdesi](luis-reference-prebuilt-percentage.md)hakkında bilgi edinin.

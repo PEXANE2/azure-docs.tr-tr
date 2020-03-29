@@ -1,41 +1,41 @@
 ---
-title: Veri değişikliği-LUSıS
-description: Language Understanding (LUIS) Öngörüler önce verileri nasıl değiştirilebilir öğrenin
+title: Veri değişikliği - LUIS
+description: Dil Anlama (LUIS) tahminlerinden önce verilerin nasıl değiştirilebileceğini öğrenin
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292073"
 ---
-# <a name="alter-utterance-data-before-or-during-prediction"></a>Öncesinde veya sırasında tahmin utterance verileri değiştirme
-LUIS, öncesinde veya sırasında tahmin utterance işlemek için yöntemler sağlar. Bunlar, [yazımı düzeltmeyi](luis-tutorial-bing-spellcheck.md)ve önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md)için saat dilimi sorunlarını düzeltmeyi içerir.
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Tahminden önce veya tahmin sırasında söyleyiş verilerini değiştirme
+LUIS, tahminden önce veya tahmin sırasında söyleyiyi manipüle etmenin yollarını sağlar. Bunlar yazım [düzeltme](luis-tutorial-bing-spellcheck.md)ve önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md)için saat dilimi sorunları sabitleme içerir.
 
-## <a name="correct-spelling-errors-in-utterance"></a>Utterance yazarken yazım hataları
+## <a name="correct-spelling-errors-in-utterance"></a>Söyleyişteki yazım hatalarını düzeltme
 
 
-### <a name="v3-runtime"></a>V3 çalışma zamanı
+### <a name="v3-runtime"></a>V3 çalışma süresi
 
-Deterance 'i LUSıS 'e göndermeden önce yazım düzeltmeleri için metin ön işleme. Doğru tahminlere sahip olduğunuzdan emin olmak için doğru yazılarla örnek söylemeleri kullanın.
+Söyleyiyi LUIS'e göndermeden önce yazım düzeltmeleri için ön işlem metni. Doğru tahminleri aldığınızdan emin olmak için doğru yazımla örnek sözcükleri kullanın.
 
-[Bing yazım denetimi](../bing-spell-check/overview.md) kullanarak lusıs 'e göndermeden önce metni düzeltin.
+METNI LUIS'e göndermeden önce düzeltmek için [Bing Yazım Denetimi'ni](../bing-spell-check/overview.md) kullanın.
 
-### <a name="prior-to-v3-runtime"></a>V3 çalışma zamanından önce
+### <a name="prior-to-v3-runtime"></a>V3 çalışma saatinden önce
 
-LUO, yazıdaki yazım hatalarını düzeltmek için [Bing yazım denetimi API'si v7](../Bing-Spell-Check/overview.md) kullanır. LUIS, hizmetle ilişkili anahtar gerekir. Anahtarı oluşturun ve sonra anahtar [noktasında](https://go.microsoft.com/fwlink/?linkid=2092356)QueryString parametresi olarak anahtarı ekleyin.
+LUIS, söyleyişdeki yazım hatalarını düzeltmek için [Bing Yazım Denetimi API V7'yi](../Bing-Spell-Check/overview.md) kullanır. LUIS'in bu hizmetle ilişkili anahtara ihtiyacı vardır. Anahtarı oluşturun, ardından [bitiş noktasına](https://go.microsoft.com/fwlink/?linkid=2092356)sorgu sonu parametresi olarak anahtarı ekleyin.
 
-Uç nokta için yazım düzeltmeleri çalışmak iki params gerektirir:
+Bitiş noktası çalışması için yazım düzeltmeleri için iki param gerektirir:
 
-|param|Değer|
+|Param|Değer|
 |--|--|
 |`spellCheck`|boole|
-|`bing-spell-check-subscription-key`|[Bing yazım denetimi API'si v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) uç noktası anahtarı|
+|`bing-spell-check-subscription-key`|[Bing Yazım Denetimi API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) uç noktası anahtarı|
 
-[Bing yazım denetimi API'si v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) bir hata algıladığında, orijinal söylenişi ve düzeltilen söylenişi, uç noktadan tahmine göre birlikte döndürülür.
+[Bing Yazım Denetimi API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) bir hata algıladığında, özgün söyleyiş ve düzeltilen söyleyiş bitiş noktasından gelen öngörülerle birlikte döndürülür.
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmini uç nokta yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Uç nokta için yazım düzeltmeleri çalışmak iki params gerektirir:
 }
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmini uç nokta yanıtı](#tab/V3)
 
 ```JSON
 {
@@ -69,48 +69,48 @@ Uç nokta için yazım düzeltmeleri çalışmak iki params gerektirir:
 
 * * *
 
-### <a name="list-of-allowed-words"></a>İzin verilen sözcüklerin listesi
-LUSıS 'de kullanılan Bing yazım denetimi API 'SI, yazım denetimi değişiklikleri sırasında yoksayılacak sözcüklerin listesini desteklemez. Sözcüklerin veya kısaltmalardan oluşan bir listeye izin vermeniz gerekiyorsa, duyun amaç tahmini için, duyun, duyun, duyun bir tahmin için gönderilmesi için istemci uygulamadaki söyliği işleyin.
+### <a name="list-of-allowed-words"></a>İzin verilen sözcüklerlistesi
+LUIS'te kullanılan Bing yazım denetimi API, yazım denetimi değişiklikleri sırasında göz ardı edilen sözcüklerin listesini desteklemez. Kelimelerin veya kısaltmaların listesine izin vermeniz gerekiyorsa, kasıtlı tahmin için söyleyişi LUIS'e göndermeden önce istemci uygulamasındaki söyleyiyi işlemeye devam edin.
 
-## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Önceden oluşturulmuş datetimeV2 varlık saat dilimini değiştirme
-Bir LUSıS uygulaması önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md) varlığını kullandığında, tahmin yanıtında bir tarih saat değeri döndürülebilir. Saat dilimi isteğin döndürmek için doğru datetime belirlemek için kullanılır. İstek bir bot veya alma için LUIS önce başka bir merkezi uygulamasından geliyorsa LUIS kullanır saat dilimi düzeltin.
+## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştirme
+Bir LUIS uygulaması önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md) varlığını kullandığında, tahmin yanıtında bir datetime değeri döndürülebilir. İsteğin saat dilimi, dönmek için doğru tarih saatini belirlemek için kullanılır. İstek LUIS'e gelmeden önce bir bottan veya başka bir merkezi uygulamadan geliyorsa, LUIS'in kullandığı saat dilimini düzeltin.
 
-### <a name="endpoint-querystring-parameter"></a>Uç nokta querystring parametresi
-Saat dilimi, kullanıcının saat dilimine `timezoneOffset` param kullanılarak [uç noktaya](https://go.microsoft.com/fwlink/?linkid=2092356) eklenerek düzeltilir. `timezoneOffset` değeri, zaman değiştirmek için dakika cinsinden pozitif veya negatif bir sayı olmalıdır.
+### <a name="endpoint-querystring-parameter"></a>Uç nokta sorgusustring parametresi
+Saat `timezoneOffset` dilimi, kullanıcının saat dilimini param kullanılarak [bitiş noktasına](https://go.microsoft.com/fwlink/?linkid=2092356) ekleyerek düzeltilir. Değeri pozitif `timezoneOffset` veya negatif sayı olmalıdır, dakika içinde, zaman değiştirmek için.
 
-|param|Değer|
+|Param|Değer|
 |--|--|
-|`timezoneOffset`|dakikalar içinde pozitif veya negatif sayı|
+|`timezoneOffset`|pozitif veya negatif sayı, dakika içinde|
 
-### <a name="daylight-savings-example"></a>Gün ışığından tasarruf örneği
-Gün ışığından yararlanma süresini ayarlamak için döndürülen önceden oluşturulmuş datetimeV2 gerekiyorsa, [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) sorgusu için dakikalar içinde `timezoneOffset` QueryString parametresini kullanmanız gerekir.
+### <a name="daylight-savings-example"></a>Gün ışığından yararlanma örneği
+Gün ışığından yararlanma saatini ayarlamak için döndürülen önceden oluşturulmuş datetimeV2'ye ihtiyacınız varsa, bitiş `timezoneOffset` [noktası](https://go.microsoft.com/fwlink/?linkid=2092356) sorgusu için dakika içinde +/- değeri olan sorgu dize parametresini kullanmanız gerekir.
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2 tahmin uç noktası isteği](#tab/V2)
-
-60 dakika ekleyin:
-
-https://{Region}. api. bilişsel. Microsoft. com/lusıs/v 2.0/Apps/{AppID}? q = ışıkları açık duruma getirin mi? **Timezonekayması = 60**& verbose = {boolean} & SpellCheck = {boolean} & hazırlama = {boolean} & Bing-Yazım-Denetim-abonelik-anahtar = {string} & günlük = {Boolean}
-
-60 dakika kaldırın:
-
-https://{Region}. api. bilişsel. Microsoft. com/lusıs/v 2.0/Apps/{AppID}? q = ışıkları açık duruma getirin mi? **Timezonekayması =-60**& verbose = {boolean} & SpellCheck = {boolean} & hazırlama = {boolean} & Bing-yazım denetimi-abonelik-anahtar = {string} & günlük = {Boolean}
-
-#### <a name="v3-prediction-endpoint-request"></a>[V3 tahmin uç noktası isteği](#tab/V3)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 tahmini bitiş noktası isteği](#tab/V2)
 
 60 dakika ekleyin:
 
-https://{Region}. api. bilişsel. Microsoft. com/LUG/v 3.0-Önizleme/uygulamalar/{AppID}/yuvalar/üretim/tahmin? sorgu = ışıkları açık duruma getirin mi? **Timezonekayması = 60**& SpellCheck = {boolean} & Bing-yazım denetimi-abonelik-anahtar = {string} & günlük = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-60 dakika kaldırın:
+60 dakika yıkın:
 
-https://{Region}. api. bilişsel. Microsoft. com/LUG/v 3.0-Önizleme/uygulamalar/{AppID}/yuvalar/üretim/tahmin? sorgu = ışıkları açık duruma getirin mi? **Timezonekayması =-60**& SpellCheck = {boolean} & Bing-yazım denetimi-abonelik-anahtar = {dize} & Log = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+#### <a name="v3-prediction-endpoint-request"></a>[V3 tahmini bitiş noktası isteği](#tab/V3)
+
+60 dakika ekleyin:
+
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+
+60 dakika yıkın:
+
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
 * * *
 
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# kodu timezoneOffset doğru değerini belirler.
-Aşağıdaki C# kod, sistem saatine göre doğru `timezoneOffset` belirlenmesi Için [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) sınıfının [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metodunu kullanır:
+## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# kodu zaman dilimiOft'un doğru değerini belirler
+Aşağıdaki C# kodu, sistem zamanına göre doğrubelirlemek `timezoneOffset` için [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) sınıfının [FindSystemZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) yöntemini kullanır:
 
 ```csharp
 // Get CST zone id
@@ -129,4 +129,4 @@ int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bu öğreticide yazım hatalarını düzeltin](luis-tutorial-bing-spellcheck.md)
+> [Bu öğretici ile yazım hatalarını düzeltme](luis-tutorial-bing-spellcheck.md)

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935951"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>İçindeki özel bir terim listesine karşı metin denetleC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Metni C'deki özel terim listesiyle karşıya çek #
 
 Azure Content Moderator'daki varsayılan genel terim listesi, içerik moderasyonu ihtiyaçlarının büyük bölümü için yeterlidir. Bununla birlikte, kuruluşunuza özgü terimleri elemek gerekebilir. Örneğin, daha fazla incelemek üzere rakiplerin adlarını etiketlemek isteyebilirsiniz. 
 
@@ -32,7 +32,7 @@ Bu makalede, aşağıdaki amaçlarla .NET için Content Moderator SDK'sı'nı ku
 - Liste bilgileri düzenleme.
 - Listede yapılan değişikliklerin yeni taramaya eklenmesi için dizini yenileyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetleri için kaydolma
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator istemcisini oluşturma
 
-Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin. `AzureEndpoint` ve `CMSubscriptionKey` alanlarını Endpoint URL 'nizin ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin. Bitiş `AzureEndpoint` noktası `CMSubscriptionKey` URL'niz ve abonelik anahtarınızın değerleriyle alanları ve alanları güncelleştirin. Bunları Azure portalında kaynağınızın **Hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 ```csharp
 /// <summary>
@@ -136,7 +136,7 @@ private const double latencyDelay = 0.5;
 Terim listesini **ContentModeratorClient.ListManagementTermLists.Create** ile oluşturursunuz. **Create** için ilk parametre MIME türünü içeren bir dizedir ve "application/json" olmalıdır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). İkinci parametre, yeni terim listesi için bir ad ve açıklama içeren **Body** nesnesidir.
 
 > [!NOTE]
-> Üst sınır, her biri **10.000 terimi aşmamak** kaydıyla **5 listedir**.
+> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
 
 namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
 
@@ -362,7 +362,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>Main metodunu oluşturma
+## <a name="compose-the-main-method"></a>Ana yöntemi oluşturma
 
 **TermLists** ad alanının **Program** sınıfına **Main** yöntemi tanımını ekleyin. Son olarak, **Program** sınıfını ve **TermLists** ad alanını kapatın.
 
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Çıkışı görmek uygulamayı çalıştırma
 
-Konsol çıktılarınız aşağıdakine benzer şekilde görünür:
+Konsol çıktınız aşağıdaki gibi görünecektir:
 
 ```console
 Creating term list.

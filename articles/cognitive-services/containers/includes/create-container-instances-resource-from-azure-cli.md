@@ -1,7 +1,7 @@
 ---
 title: Kapsayıcı desteği
 titleSuffix: Azure Cognitive Services
-description: Azure CLı 'dan Azure Container Instance kaynağı oluşturmayı öğrenin.
+description: Azure CLI'den bir Azure kapsayıcı örnek kaynağını nasıl oluşturabilirsiniz öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 01/06/2020
 ms.author: dapine
 ms.openlocfilehash: 700a04b58c13a9c7fd5301875226ca234cabeb96
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75689436"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLı 'dan Azure Container Instance kaynağı oluşturma
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI'den bir Azure Kapsayıcı Örneği kaynağı oluşturma
 
-Aşağıdaki YAML, Azure Container Instance kaynağını tanımlar. İçeriği kopyalayıp `my-aci.yaml` adlı yeni bir dosyaya yapıştırın ve açıklama değerlerini kendi değerlerinizle değiştirin. Geçerli YAML için [şablon biçimine][template-format] bakın. Kullanılabilir görüntü adları ve bunlara karşılık gelen depo için [kapsayıcı depoları ve görüntüleri][repositories-and-images] inceleyin. Kapsayıcı örnekleri için YAML başvurusu hakkında daha fazla bilgi için bkz. [YAML başvurusu: Azure Container Instances][aci-yaml-ref].
+Aşağıdaki YAML, Azure Kapsayıcı Örneği kaynağını tanımlar. İçeriği yeni bir dosyaya kopyalayın `my-aci.yaml` ve yapıştırın, adı ve yorumlanan değerleri kendi dosyanızla değiştirin. Geçerli YAML için [şablon biçimine][template-format] bakın. Kullanılabilir resim adları ve bunların karşılık gelen depoları için [kapsayıcı depolarına][repositories-and-images] ve görüntülerine bakın. Kapsayıcı örnekleri için YAML başvurusu hakkında daha fazla bilgi için [YAML başvurusuna bakın: Azure Kapsayıcı Örnekleri.][aci-yaml-ref]
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,18 +64,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> Tüm konumlar aynı CPU ve bellek kullanılabilirliğine sahip değildir. Konum ve işletim sistemi başına kapsayıcılar için kullanılabilir kaynakların listesinin [konumu ve kaynakları][location-to-resource] tablosuna bakın.
+> Tüm konumlar aynı CPU ve Bellek kullanılabilirliğine sahip değildir. Konum ve işletim sistemi başına kapsayıcılar için kullanılabilir kaynakların listelenmesi için konum ve [kaynaklar][location-to-resource] tablosuna bakın.
 
-[`az container create`][azure-container-create] komutu için oluşturduğumuz YAML dosyasına güveneceğiz. Azure CLı 'dan, `<resource-group>` `az container create` komutunu kendi kendinize koyarak yürütün. Ek olarak, bir YAML dağıtımı içindeki değerlerin güvenliğini sağlamak için [güvenli değerler][secure-values]bölümüne bakın.
+Komut için oluşturduğumuz YAML dosyasına [`az container create`][azure-container-create] güveneceğiz. Azure CLI'den, `az container create` kendi komutunuzun yerine `<resource-group>` komutu uygulayın. Ayrıca, BIR YAML dağıtım içinde değerleri güvence altına almak için [güvenli değerlere][secure-values]bakın.
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-Komutun çıkışı geçerli ise `Running...`, çıkış sonrasında yeni oluşturulan ACI kaynağını temsil eden bir JSON dizesine değişir. Kapsayıcı görüntüsü büyük olasılıkla bir süre için kullanılamayabilir, ancak kaynak artık dağıtılır.
+Komutun çıktısı, `Running...` bir süre sonra çıktıyeni oluşturulan ACI kaynağını temsil eden bir JSON dizesine değişikliklerden sonra geçerliyse. Kapsayıcı görüntüsü büyük olasılıkla bir süre için kullanılamıyor, ancak kaynak şimdi dağıtılır.
 
 > [!TIP]
-> YAML 'nin konumla eşleşecek şekilde ayarlanması gerektiği için, genel önizleme Azure bilişsel hizmet tekliflerinin konumlarına yakın bir şekilde dikkat edin.
+> YAML'nin konuma uyacak şekilde ayarlanması gerektiğinden, herkese açık önizleme Azure Bilişsel Hizmet tekliflerinin konumlarına çok dikkat edin.
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

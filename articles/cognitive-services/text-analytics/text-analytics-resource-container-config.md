@@ -1,7 +1,7 @@
 ---
-title: Kapsayıcıları yapılandırma-Metin Analizi
+title: Kapsayıcıları yapılandırma - Metin Analizi
 titleSuffix: Azure Cognitive Services
-description: Metin Analizi, her kapsayıcıyı ortak bir yapılandırma çerçevesiyle sağlar; böylece, kapsayıcılarınız için depolama, günlüğe kaydetme ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilir ve yönetebilirsiniz.
+description: Text Analytics, kapsayıcılarınızın depolama, günlük ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilmeniz ve yönetebilmeniz için her kapsayıcıya ortak bir yapılandırma çerçevesi sağlar.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,30 +12,30 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 8a39327275dca43ddb6ce0e46a3e3bb51ec4555b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795304"
 ---
-# <a name="configure-text-analytics-docker-containers"></a>Metin Analizi Docker kapsayıcılarını yapılandırma
+# <a name="configure-text-analytics-docker-containers"></a>Metin Analizi docker konteynerlerini yapılandırma
 
-Metin Analizi, her kapsayıcıyı ortak bir yapılandırma çerçevesiyle sağlar; böylece, kapsayıcılarınız için depolama, günlüğe kaydetme ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilir ve yönetebilirsiniz.
+Text Analytics, kapsayıcılarınızın depolama, günlük ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilmeniz ve yönetebilmeniz için her kapsayıcıya ortak bir yapılandırma çerçevesi sağlar.
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üç tane için de geçerli değerler sağlamanız gerekir; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](how-tos/text-analytics-how-to-install-containers.md#billing).
+> [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)ve [`Eula`](#eula-setting) ayarlar birlikte kullanılır ve her üçü için de geçerli değerler sağlamanız gerekir; aksi takdirde konteyneriniz çalışmayabaşlamaz. Bir kapsayıcıyı anında kullanmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için [Faturalandırma'ya](how-tos/text-analytics-how-to-install-containers.md#billing)bakın.
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
-`ApiKey` ayarı, kapsayıcının fatura bilgilerini izlemek için kullanılan Azure Kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen _metin analizi_ kaynağı için geçerli bir anahtar olması gerekir.
+Ayar, `ApiKey` kapsayıcının fatura bilgilerini izlemek için kullanılan Azure kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değer [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen Metin _Analizi_ kaynağı için geçerli bir anahtar olmalıdır.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: **metin analizi** kaynak yönetimi, **anahtarlar** altında
+* Azure portalı: **Text Analytics** kaynak yönetimi, **Keys** altında
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights ayarı
 
@@ -43,21 +43,21 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 ## <a name="billing-configuration-setting"></a>Faturalandırma yapılandırma ayarı
 
-`Billing` ayarı, Azure 'da kapsayıcının fatura bilgilerini ölçmek için kullanılan _metin analizi_ kaynağının uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'da bir __metin analizi_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+Ayar, `Billing` kapsayıcının fatura bilgilerini ölçmede kullanılan _Azure'daki Metin Analizi_ kaynağının bitiş noktası URI'yi belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve değer Azure'daki __Text Analytics_ kaynağı için geçerli bir bitiş noktası URI olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanımı bildirir.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: **metin analizi** genel bakış, etiketli `Endpoint`
+* Azure portalı: **Metin Analizine** Genel Bakış, etiketli`Endpoint`
 
-|Gerekli| Ad | Veri türü | Açıklama |
+|Gerekli| Adı | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
+|Evet| `Billing` | Dize | Faturalandırma uç noktası URI. FaturaLAMA URI'si edinme hakkında daha fazla bilgi için [gerekli parametreleri toplamaya](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)bakın. Daha fazla bilgi ve bölgesel uç noktaların tam listesi [için, Bilişsel Hizmetler için Özel alt alan adları bölümüne](../cognitive-services-custom-subdomains.md)bakın. |
 
-## <a name="eula-setting"></a>EULA ayarı
+## <a name="eula-setting"></a>Eula ayarı
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Akışkan entd ayarları
+## <a name="fluentd-settings"></a>Akıcı ayarlar
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -65,50 +65,50 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Günlük kaydı ayarları
+## <a name="logging-settings"></a>Oturum açma ayarları
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Bağlama ayarları
+## <a name="mount-settings"></a>Montaj ayarları
 
-Kapsayıcıya ve kapsayıcılardan veri okumak ve buradan veri yazmak için BIND bağlama kullanın. [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunda `--mount` seçeneğini belirterek bir giriş bağlama veya çıkış bağlama belirtebilirsiniz.
+Kapsayıcıya ve kapsayıcıdan veri okumak ve yazmak için bağlama bağlarını kullanın. Docker `--mount` [run](https://docs.docker.com/engine/reference/commandline/run/) komutundaki seçeneği belirterek bir giriş yuvası veya çıktı montajı belirtebilirsiniz.
 
-Metin Analizi kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıkış taklarını kullanmaz. 
+Metin Analizi kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıktı montajları kullanmaz. 
 
-Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
+Ana bilgisayar montaj konumunun tam sözdizimi ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, [ana bilgisayar'ın](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)montaj konumu, docker servis hesabı tarafından kullanılan izinler ile ana bilgisayar montaj konum izinleri arasındaki bir çakışma nedeniyle erişilemeyebilir. 
 
-|İsteğe bağlı| Ad | Veri türü | Açıklama |
+|İsteğe bağlı| Adı | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmiyor| `Input` | Dize | Metin Analizi kapsayıcılar bunu kullanmaz.|
-|İsteğe bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` ' dır. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İzin verilmiyor| `Input` | Dize | Metin Analizi kapsayıcıları bunu kullanmaz.|
+|İsteğe bağlı| `Output` | Dize | Çıkış montaj hedefi. Varsayılan değer: `/output`. Bu günlüklerin yeridir. Buna kapsayıcı günlükleri de dahildir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları 
+## <a name="example-docker-run-commands"></a>Örnek docker çalıştır komutları 
 
-Aşağıdaki örnekler `docker run` komutlarının nasıl yazılacağını ve kullanılacağını göstermek için yapılandırma ayarlarını kullanır.  Çalışan bir kez, kapsayıcıyı [durduruncaya](how-tos/text-analytics-how-to-install-containers.md#stop-the-container) kadar çalışmaya devam eder.
+Aşağıdaki örnekler, komutların nasıl yazılabildiğini `docker run` ve kullanılacağını göstermek için yapılandırma ayarlarını kullanır.  Bir kez çalışırken, kapsayıcı [onu durdurunkadar](how-tos/text-analytics-how-to-install-containers.md#stop-the-container) çalışmaya devam ediyor.
 
-* **Satır devamlılık karakteri**: aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak `\`ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. 
-* **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
+* **Satır devam karakteri**: Aşağıdaki bölümlerdeki docker komutları, `\`çizgi devamı karakteri olarak arka çizgiyi kullanır. Ana bilgisayar işletim sisteminizin gereksinimlerine göre bunu değiştirin veya kaldırın. 
+* **Bağımsız değişken sırası**: Docker kapları hakkında çok bilginiz olmadıkça bağımsız değişkenlerin sırasını değiştirmeyin.
 
-{_Argument_name_} değerini kendi değerlerinizle değiştirin:
+{_argument_name_} 'yi kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-| **{API_KEY}** | `Text Analytics` kaynağın uç nokta anahtarı Azure `Text Analytics` Keys sayfasında kullanılabilir. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `Text Analytics` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) konusuna bakın. |
+| **{API_KEY}** | Azure `Text Analytics` Tuşları sayfasında `Text Analytics` bulunan kaynağın bitiş noktası anahtarı. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Faturalandırma bitiş noktası değeri Azure `Text Analytics` Genel Bakış sayfasında kullanılabilir.| Açık örnekler için [gerekli parametreleri toplamaya](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) bakın. |
 
 > [!IMPORTANT]
-> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](how-tos/text-analytics-how-to-install-containers.md#billing).
-> ApiKey değeri, Azure `Text Analytics` kaynak anahtarları sayfasından alınan **anahtardır** . 
+> `Eula`Kapsayıcıyı `Billing`çalıştırmak `ApiKey` için , ve seçenekler belirtilmelidir; aksi takdirde, kapsayıcı başlamaz.  Daha fazla bilgi için [Faturalandırma'ya](how-tos/text-analytics-how-to-install-containers.md#billing)bakın.
+> ApiKey değeri, Azure `Text Analytics` Kaynak anahtarları sayfasındaki **Anahtardır.** 
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Dil Algılama](#tab/language)
+#### <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Yaklaşım Analizi](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Duygusallık Analizi](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
@@ -116,5 +116,5 @@ Aşağıdaki örnekler `docker run` komutlarının nasıl yazılacağını ve ku
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kapsayıcıları yüklemeyi ve çalıştırmayı](how-tos/text-analytics-how-to-install-containers.md) inceleyin
-* Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın
+* [Kapsayıcıların nasıl yüklenir ve çalıştırılabildiğini](how-tos/text-analytics-how-to-install-containers.md) gözden geçirin
+* Daha fazla [Bilişsel Hizmet Kapsayıcısı](../cognitive-services-container-support.md) Kullanın

@@ -1,7 +1,7 @@
 ---
-title: Coğrafya v2 önceden oluşturulmuş varlık-LUSıS
+title: Coğrafya V2 önceden inşa edilmiş varlık - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede geographyV2 içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale, Dil Anlama (LUIS) coğrafyaV2 önceden oluşturulmuş varlık bilgileri içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273502"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için GeographyV2 önceden oluşturulmuş varlık
-Önceden oluşturulmuş geographyV2 varlık yerler algılar. Bu varlık zaten eğitildi çünkü GeographyV2 içeren uygulama hedefleri için örnek Konuşma ekleme gerekmez. GeographyV2 varlığı Ingilizce [kültür](luis-reference-prebuilt-entities.md)' de desteklenir.
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için GeographyV2 önceden oluşturulmuş varlık
+Önceden oluşturulmuş coğrafyaV2 varlık yerleri algılar. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına GeographyV2 içeren örnek beyanlar eklemeniz gerekmez. GeographyV2 varlığı İngiliz [kültüründe](luis-reference-prebuilt-entities.md)desteklenir.
 
-## <a name="subtypes"></a>Alt türleri
-Coğrafi konumları subtypes vardır:
+## <a name="subtypes"></a>Alt
+Coğrafi konumların alt türleri vardır:
 
-|Alt tür|Amaç|
+|Alt|Amaç|
 |--|--|
 |`poi`|ilgi noktası|
-|`city`|Şehir adı|
-|`countryRegion`|Ülke veya bölgesinin adı|
-|`continent`|Kıta adı|
-|`state`|Eyalet veya bölge adı|
+|`city`|şehrin adı|
+|`countryRegion`|ülke veya bölgenin adı|
+|`continent`|kıtanın adı|
+|`state`|eyaletin veya ilin adı|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlık için çözümleme
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlığı için çözünürlük
 
-Sorgu için aşağıdaki varlık nesneleri döndürülür:
+Aşağıdaki varlık nesneleri sorgu için döndürülür:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
 }
 ```
 
-Önceki JSON 'da, `poi` **Ilgi noktası**için bir kısaltmadır.
+Önceki JSON yılında, `poi` **Point of Interest**için bir kısaltmadır.
 
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
 
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 "entities": {
@@ -163,7 +163,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **yerleşik. geographyV2** varlığının çözünürlüğünü gösterir.
+Aşağıdaki örnek, **builtin.geographyV2** varlığının çözümünü gösterir.
 
 ```json
 "entities": [
@@ -209,6 +209,6 @@ Aşağıdaki örnek, **yerleşik. geographyV2** varlığının çözünürlüğ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[E-posta](luis-reference-prebuilt-email.md), [sayı](luis-reference-prebuilt-number.md)ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.
+[E-posta,](luis-reference-prebuilt-email.md) [numara](luis-reference-prebuilt-number.md)ve [ordinal](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.

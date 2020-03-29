@@ -1,7 +1,7 @@
 ---
-title: Translator Metin Çevirisi API'si alfabede yöntemi
+title: Çevirmen Metin API Çeviri Yöntemi
 titleSuffix: Azure Cognitive Services
-description: Bir dildeki metni, Translator Metin Çevirisi API'si alfabede bulunan yöntemle bir betikten başka bir betiğe dönüştürür.
+description: Çevirmen Metin API Çeviri yöntemiyle metni bir komut dosyasından bir komut dosyasından başka bir komut dosyasına dönüştürün.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837273"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Metin Çevirisi API'si 3,0: alfabede
+# <a name="translator-text-api-30-transliterate"></a>Çevirmen Metin API 3.0: Çeviri
 
-Bir dildeki metni bir betikten başka bir betiğe dönüştürür.
+Bir dildeki metni bir komut dosyasından başka bir komut dosyasına dönüştürür.
 
 ## <a name="request-url"></a>İstek URL'si
 
-`POST` isteği gönder:
+Bir `POST` istek gönderin:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
@@ -31,55 +31,55 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 ## <a name="request-parameters"></a>İstek parametreleri
 
-Sorgu dizesine geçirilen istek parametreleri şunlardır:
+Sorgu dizesinde geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>api sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
+    <td>api-sürümü</td>
+    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API sürümü. Değer. `3.0`</td>
   </tr>
   <tr>
     <td>language</td>
-    <td>*Gerekli parametre*.<br/>Bir betikten diğerine dönüştürülecek metnin dilini belirtir. Olası diller, hizmet tarafından [desteklenen diller](./v3-0-languages.md)için sorgulanarak elde edilen `transliteration` kapsamında listelenmiştir.</td>
+    <td>*Gerekli parametre*.<br/>Bir komut dosyasından diğerine dönüştürmek için metnin dilini belirtir. Olası diller, desteklenen `transliteration` [diller](./v3-0-languages.md)için hizmet sorgulayarak elde edilen kapsamda listelenir.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Gerekli parametre*.<br/>Giriş metni tarafından kullanılan betiği belirtir. Seçili dil için kullanılabilir giriş betikleri bulmak için `transliteration` kapsamını kullanarak [desteklenen dilleri](./v3-0-languages.md) arayın.</td>
+    <td>*Gerekli parametre*.<br/>Giriş metni tarafından kullanılan komut dosyasını belirtir. Seçili dil için `transliteration` kullanılabilir giriş komut dosyalarını bulmak için kapsamı kullanarak [desteklenen dillere](./v3-0-languages.md) bakın.</td>
   </tr>
   <tr>
-    <td>Toscrıpt</td>
-    <td>*Gerekli parametre*.<br/>Çıkış betiğini belirtir. Seçilen giriş dili ve giriş betiği birleşimi için kullanılabilir çıkış betikleri bulmak için `transliteration` kapsamını kullanarak [desteklenen dilleri](./v3-0-languages.md) arayın.</td>
+    <td>toScript</td>
+    <td>*Gerekli parametre*.<br/>Çıktı komut dosyasını belirtir. Seçilen giriş dili ve `transliteration` giriş komut dosyası birleşimi için kullanılabilir çıktı komut dosyalarını bulmak için kapsamı kullanarak [desteklenen dillere](./v3-0-languages.md) bakın.</td>
   </tr>
 </table> 
 
-İstek üstbilgileri şunları içerir:
+İstek üstbilgisi şunları içerir:
 
 <table width="100%">
   <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
-    <td>Kimlik doğrulama üst bilgisi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
+    <td>Kimlik doğrulama üstbilgisi(lar)</td>
+    <td><em>Gerekli istek üstbilgi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulama için kullanılabilir seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
+    <td>İçerik Türü</td>
+    <td>*Gerekli istek üstbilgi*.<br/>Yükün içerik türünü belirtir. Olası değerler `application/json`şunlardır: .</td>
   </tr>
   <tr>
-    <td>İçerik uzunluğu</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
+    <td>İçerik Uzunluğu</td>
+    <td>*Gerekli istek üstbilgi*.<br/>İstek gövdesinin uzunluğu.</td>
   </tr>
   <tr>
-    <td>X-Clienttraceıd</td>
-    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
+    <td>X-ClientTraceId</td>
+    <td>*İsteğe bağlı*.<br/>İsteği benzersiz olarak tanımlamak için istemci tarafından oluşturulan GUID. 'li bir sorgu parametresi kullanarak sorgu dizesinde izleme kimliği eklerseniz, `ClientTraceId`bu üstbilginin atlayabildiğinizi unutmayın.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, dönüştürülecek dizeyi temsil eden `Text`adlı dize özelliği olan bir JSON nesnesidir.
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, dönüştürmek için dize `Text`temsil eden bir dize özelliği ile bir JSON nesnesidir.
 
 ```json
 [
@@ -90,19 +90,19 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 Aşağıdaki sınırlamalar geçerlidir:
 
-* Dizi en fazla 10 öğe içerebilir.
-* Bir dizi öğesinin metin değeri boşluk dahil 1.000 karakteri aşamaz.
-* İstekte bulunan metnin tamamı boşluk dahil 5.000 karakteri aşamaz.
+* Dizi en fazla 10 öğeye sahip olabilir.
+* Bir dizi öğesinin metin değeri boşluklar da dahil olmak üzere 1.000 karakteri geçemez.
+* İsteğe dahil edilen metnin tamamı boşluklar da dahil olmak üzere 5.000 karakteri geçemez.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
-Başarılı bir yanıt, Giriş dizisindeki her öğe için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
+Başarılı bir yanıt, giriş dizisindeki her öğe için bir sonucu olan bir JSON dizisidir. Sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `text`: giriş dizesini çıkış betiğine dönüştürmenin sonucu olan bir dize.
+  * `text`: Giriş dizesinin çıkış komut dosyasına dönüştürülmesi sonucu oluşan dize.
   
-  * `script`: çıkışta kullanılan betiği belirten bir dize.
+  * `script`: Çıktıda kullanılan komut dosyasını belirten bir dize.
 
-Örnek bir JSON yanıtı:
+Bir örnek JSON yanıtı:
 
 ```json
 [
@@ -124,10 +124,10 @@ Başarılı bir yanıt, Giriş dizisindeki her öğe için bir sonuç içeren bi
 
 ## <a name="response-status-codes"></a>Yanıt durum kodları
 
-Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
+Aşağıda, bir isteğin döndürdettiği olası HTTP durum kodları vereme olasılığı ve 
 
 <table width="100%">
-  <th width="20%">Durum kodu</th>
+  <th width="20%">Durum Kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>
@@ -139,39 +139,39 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>401</td>
-    <td>İsteğin kimliği doğrulanamadı. Kimlik bilgilerinin belirtildiğinden ve geçerli olduğundan emin olun.</td>
+    <td>İstek doğrulanamadı. Kimlik bilgilerinin belirtilmiş ve geçerli olup olmadığını denetleyin.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>İstek yetkili değil. Ayrıntılar hata iletisini denetleyin. Bu genellikle bir deneme aboneliği ile birlikte sunulan tüm ücretsiz çevirilerin kullanıldığını gösterir.</td>
+    <td>İstek yetkili değil. Ayrıntılar hata iletisini denetleyin. Bu genellikle deneme aboneliği ile sağlanan tüm ücretsiz çevirilerin kullanıldığını gösterir.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>İstemci istek sınırlarını aştığından, sunucu isteği reddetti.</td>
+    <td>İstemci istek sınırlarını aştığı için sunucu isteği reddetti.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bunu şu şekilde bildirin: hatanın tarih ve saati, `X-RequestId`yanıt üstbilgisinden identifier `X-ClientTraceId`ve istek üstbilgisinden istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisi `X-RequestId`istek tanımlayıcısı ve istek üst bilgisi `X-ClientTraceId`istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bunu şu şekilde bildirin: hatanın tarih ve saati, `X-RequestId`yanıt üstbilgisinden identifier `X-ClientTraceId`ve istek üstbilgisinden istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 
-Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator metin çevirisi API'si başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
+Bir hata oluşursa, istek de bir JSON hata yanıtı döndürecek. Hata kodu, hatayı daha fazla kategorilere ayırmak için 3 basamaklı HTTP durum kodunu ve ardından 3 basamaklı bir sayıyı birleştiren 6 basamaklı bir sayıdır. Yaygın hata kodları [v3 Translator Text API başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnekte, iki Japonca dizenin roman Japonca 'ya nasıl dönüştürüleceği gösterilmektedir.
+Aşağıdaki örnek, iki Japonca dizesinin Romanlaştırılmış Japonca'ya nasıl dönüştürüldüğünü gösterir.
 
-Bu örnekteki isteğin JSON yükü:
+Bu örnekte istek için JSON yükü:
 
 ```json
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Unicode karakterlerini desteklemeyen bir komut satırı penceresinde kıvrımlı kullanıyorsanız, aşağıdaki JSON yükünü uygulayın ve `request.txt`adlı bir dosyaya kaydedin. Dosyayı `UTF-8` kodlamasıyla kaydettiğinizden emin olun.
+Unicode karakterlerini desteklemeyen bir komut satırı penceresinde cURL kullanıyorsanız, aşağıdaki JSON yükünü alın ve `request.txt`adlı bir dosyaya kaydedin. Dosyayı kodlama ile `UTF-8` kaydettiğinden emin olun.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

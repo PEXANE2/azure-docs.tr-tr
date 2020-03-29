@@ -1,7 +1,7 @@
 ---
-title: Marka Algılama-Görüntü İşleme
+title: Marka algılama - BilgisayarLı Vizyon
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, nesne algılamada özelleştirilmiş bir mod ele alınmaktadır; Görüntü İşleme API'si kullanarak marka ve/veya amblem algılama.
+description: Bu makalede, nesne algılama özel bir modu tartışır; BilgisayarLı Vizyon API'sini kullanarak marka ve/veya logo algılama.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131729"
 ---
-# <a name="detect-popular-brands-in-images"></a>Görüntülerde popüler markaların algılanması
+# <a name="detect-popular-brands-in-images"></a>Resimlerdeki popüler markaları algılama
 
-Marka algılama, resimlerde veya videoda ticari markaların tanımlanması için binlerce küresel logoın bir veritabanını kullanan [nesne algılamasında](concept-object-detection.md) özelleştirilmiş bir moddur. Bu özelliği örneğin, sosyal medya veya en popüler medya ürün yerleştirmesi üzerinde en popüler olan markalar öğrenmek için kullanabilirsiniz.
+Marka algılama, resim veya videodaki ticari markaları tanımlamak için binlerce küresel logodan oluşan bir veritabanı kullanan özel bir [nesne algılama](concept-object-detection.md) modudur. Bu özelliği, örneğin, hangi markaların sosyal medyada en popüler olduğunu veya medya ürün yerleştirmesinde en yaygın olduğunu keşfetmek için kullanabilirsiniz.
 
-Görüntü İşleme Hizmeti belirli bir görüntüde marka logoları olup olmadığını algılar; Bu durumda, bir marka adı, Güvenirlik puanı ve logo etrafındaki bir sınırlayıcı kutunun koordinatlarını döndürür.
+Computer Vision hizmeti, belirli bir resimde marka logoları olup olmadığını algılar; eğer öyleyse, marka adını, güven puanını ve logo etrafındaki sınırlayıcı kutunun koordinatlarını döndürür.
 
-Yerleşik logo veritabanı, tüketici elektroniği, giyme ve daha birçok konuda popüler markaların yer aldığı bir şeydir. Aradığınız marka Görüntü İşleme Hizmeti tarafından algılanmadığını fark ederseniz, [özel görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) hizmetini kullanarak kendi amblem algıanızı oluşturma ve eğitim konusunda daha iyi bir işlem yapabilirsiniz.
+Yerleşik logo veritabanı tüketici elektroniği, giyim ve daha popüler markaları kapsar. Aradığınız markanın Computer Vision hizmeti tarafından algılanmadığını fark ederseniz, [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) hizmetini kullanarak kendi logo dedektörünüzü oluşturmave eğitme hizmeti daha iyi sunulabilir.
 
 ## <a name="brand-detection-example"></a>Marka algılama örneği
 
-Aşağıdaki JSON yanıtları, örnek görüntülerde markalar algılayarak ne Görüntü İşleme döndüğünü gösterir.
+Aşağıdaki JSON yanıtları, örnek görüntülerde markaları algılarken Computer Vision'ın neleri döndürettiğini göstermektedir.
 
-![Microsoft etiketi ve logosu içeren kırmızı bir gömlek](./Images/red-shirt-logo.jpg)
+![Üzerinde Microsoft etiketi ve logosu olan kırmızı bir gömlek](./Images/red-shirt-logo.jpg)
 
 ```json
 "brands":[  
@@ -45,9 +45,9 @@ Aşağıdaki JSON yanıtları, örnek görüntülerde markalar algılayarak ne G
 ]
 ```
 
-Bazı durumlarda, marka algılayıcısı hem logo görüntüsünü hem de stilize marka adını iki ayrı logo olarak seçer.
+Bazı durumlarda, marka dedektörü iki ayrı logo olarak hem logo görüntü ve stilize marka adı alır.
 
-![Üzerinde bir Microsoft etiketi ve logosu olan gri bir elter](./Images/gray-shirt-logo.jpg)
+![Üzerinde Microsoft etiketi ve logosu olan gri bir sweatshirt](./Images/gray-shirt-logo.jpg)
 
 ```json
 "brands":[  
@@ -74,7 +74,7 @@ Bazı durumlarda, marka algılayıcısı hem logo görüntüsünü hem de stiliz
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-Marka algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. **Visualfeatures** sorgu parametresine `Brands` ekleyin. Ardından, tam JSON yanıtını aldığınızda `"brands"` bölümünün içeriği için dizeyi ayrıştırın.
+Marka algılama [özelliği, Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Brands` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"brands"` bölümün içeriği için dize ayrıştını.
 
-* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

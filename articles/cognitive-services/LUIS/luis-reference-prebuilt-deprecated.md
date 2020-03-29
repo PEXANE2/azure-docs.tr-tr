@@ -1,7 +1,7 @@
 ---
-title: Kullanımdan kaldırılan önceden oluşturulmuş varlıklar-LUSıS
+title: Amortismana Hazır Varlıklar - LUIS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Language Understanding (LUIS) kullanım dışı önceden oluşturulmuş varlık bilgileri içerir.
+description: Bu makale, Dil Anlama (LUIS) önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,21 +12,21 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270670"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUSıS uygulamasında kullanımdan kaldırılan önceden oluşturulmuş varlıklar
-Aşağıdaki önceden oluşturulmuş varlıklar kullanım dışıdır ve yeni LUIS uygulamalara eklenemez.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUIS uygulamasında önceden oluşturulmuş varlıklar
+Aşağıdaki önceden oluşturulmuş varlıklar amortismana alınır ve yeni LUIS uygulamalarına eklenemez.
 
-* **Tarih saat**: TarihSaat kullanan var olan lusıs uygulamaları **datetimeV2**'e geçirilmelidir, **ancak DateTime varlığı** onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
-* **Coğrafya**: **Coğrafya** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
-* **Ansiklopedi**: **ansıklopedı** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
+* **Datetime**: **Datetime** kullanan varolan LUIS uygulamaları **datetimeV2'ye**geçirilmelidir, ancak datetime varlığı onu kullanan önceden varolan uygulamalarda çalışmaya devam eder.
+* **Coğrafya**: **Coğrafya** kullanan mevcut LUIS uygulamaları Aralık 2018'e kadar desteklenir.
+* **Ansiklopedi**: Ansiklopedi **kullanan** mevcut LUIS uygulamaları Aralık 2018'e kadar desteklenir.
 
 ## <a name="geography-culture"></a>Coğrafya kültürü
-**Coğrafya** yalnızca `en-us` yerel ayarında kullanılabilir.
+**Coğrafya** yalnızca `en-us` yerel olarak kullanılabilir.
 
 #### <a name="3-geography-subtypes"></a>3 Coğrafya alt türleri
 
@@ -40,10 +40,10 @@ Aşağıdaki önceden oluşturulmuş varlıklar kullanım dışıdır ve yeni LU
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Ansiklopedi kültürü
-**Ansiklopedi** yalnızca `en-US` yerel ayarında kullanılabilir.
+**Ansiklopedi** yalnızca `en-US` yerel olarak kullanılabilir.
 
-#### <a name="encyclopedia-subtypes"></a>Ansiklopedi alt türleri
-Aşağıdaki tabloda Ansiklopedi yerleşik varlık içeren 100'den fazla alt türleri: genellikle birden çok türlerine ek olarak, ansiklopedi varlıkları eşle. Örneğin, sorgu Ronald Reagan verir:
+#### <a name="encyclopedia-subtypes"></a>Ansiklopedi alt tipleri
+Ansiklopedi yerleşik varlık aşağıdaki tabloda 100'den fazla alt türü içerir: Ayrıca, ansiklopedi varlıkları genellikle birden çok türle eşler. Örneğin, Ronald Reagan'ın verir sorgusu:
 
 ```json
 {
@@ -65,7 +65,7 @@ Aşağıdaki tabloda Ansiklopedi yerleşik varlık içeren 100'den fazla alt tü
  ```
 
 
-Önceden oluşturulmuş varlık   |   Önceden oluşturulmuş varlık (alt türleri)   |   Örnek konuşma
+Önceden oluşturulmuş varlık   |   Önceden oluşturulmuş varlık (alt türler)   |   Örnek konuşma
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Aşağıdaki tabloda Ansiklopedi yerleşik varlık içeren 100'den fazla alt tü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Boyut](luis-reference-prebuilt-dimension.md), [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
+[Boyut,](luis-reference-prebuilt-dimension.md) [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
 

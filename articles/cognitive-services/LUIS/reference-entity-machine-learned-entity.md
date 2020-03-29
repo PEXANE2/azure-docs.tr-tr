@@ -1,7 +1,7 @@
 ---
-title: Makine tarafından öğrenilen varlık türü-LUSıS
+title: Makineden öğrenilen varlık tipi - LUIS
 titleSuffix: Azure Cognitive Services
-description: Makine tarafından öğrenilen varlık, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
+description: Makinede öğrenilen varlık, LUIS uygulamaları oluşturmak için tercih edilen varlıktır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75552007"
 ---
 # <a name="machine-learned-entity"></a>Makine tarafından öğrenilen varlık
 
-Makine tarafından öğrenilen varlık, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
+Makinede öğrenilen varlık, LUIS uygulamaları oluşturmak için tercih edilen varlıktır.
 
 
 ## <a name="example-json"></a>Örnek JSON
 
-Uygulamanın, [ayrıştırılmış varlık öğreticisi](tutorial-machine-learned-entity.md)gibi, pizza sıra aldığını varsayalım. Her sipariş farklı boyutlar dahil olmak üzere birkaç farklı Pizzas içerebilir.
+[Uygulamanın, decomposable entity öğretici](tutorial-machine-learned-entity.md)si gibi pizza siparişleri aldığını varsayalım. Her sipariş, farklı boyutlarda da dahil olmak üzere birkaç farklı pizza içerebilir.
 
 Örnek konuşmalar şunlardır:
 
-|Pizza uygulaması için örnek bildirimler|
+|Pizza uygulaması için örnek söz|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,15 +36,15 @@ Uygulamanın, [ayrıştırılmış varlık öğreticisi](tutorial-machine-learne
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmini uç nokta yanıtı](#tab/V3)
 
-Makine tarafından öğrenilen bir varlık, kısıtlamalar ve tanımlayıcılar içeren çok sayıda alt bileşeni olabileceğinden, bu yalnızca bir örnektir. Bu, varlığınızın ne kadar Dönebileceğinize ilişkin bir kılavuz olarak kabul edilmelidir.
+Makinede öğrenilen bir varlığın kısıtlamaları ve tanımlayıcıları olan birçok alt bileşeni olabileceğinden, bu yalnızca bir örnektir. Bu, varlığınızın ne leri geri döneceği ne için bir rehber olarak düşünülmelidir.
 
 Sorguyu göz önünde bulundurun:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
+Bu JSON sorgu `verbose=false` dizesinde ayarlanırsa:
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
 
 ```
 
-Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
+Bu JSON sorgu `verbose=true` dizesinde ayarlanırsa:
 
 ```json
 "entities": {
@@ -341,13 +341,13 @@ Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmini uç nokta yanıtı](#tab/V2)
 
-Bu varlık v2 tahmin çalışma zamanında kullanılamıyor.
+Bu varlık V2 tahmin çalışma zamanında kullanılamaz.
 * * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Eğitim](tutorial-machine-learned-entity.md), [Kavramlar](luis-concept-entity-types.md#design-entities-for-decomposition)ve [nasıl yapılır Kılavuzu](luis-how-to-add-entities.md#create-a-machine-learned-entity)dahil olmak üzere makine tarafından öğrenilen varlık hakkında daha fazla bilgi edinin.
+Bir [öğretici,](tutorial-machine-learned-entity.md) [kavramlar](luis-concept-entity-types.md#design-entities-for-decomposition)ve [nasıl-nasıl kılavuzu](luis-how-to-add-entities.md#create-a-machine-learned-entity)da dahil olmak üzere makine öğrenilen varlık hakkında daha fazla bilgi edinin.
 
 [Liste](reference-entity-list.md) varlığı ve [normal ifade](reference-entity-regular-expression.md) varlığı hakkında bilgi edinin.

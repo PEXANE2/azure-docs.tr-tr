@@ -1,7 +1,7 @@
 ---
-title: Azure Container Instances üzerinde LUSıS kapsayıcısını dağıtma
+title: Azure Kapsayıcı örneklerinde LUIS kapsayıcısı dağıtma
 titleSuffix: Azure Cognitive Services
-description: LUSıS kapsayıcısını bir Azure Container örneğine dağıtın ve bir Web tarayıcısında test edin.
+description: LUIS kapsayıcısını azure kapsayıcıörneğine dağıtın ve bir web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: dapine
 ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75689428"
 ---
-# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Azure Container Instances 'a Language Understanding (LUSıS) kapsayıcısını dağıtma
+# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Dil Bilgisi (LUIS) kapsayıcısını Azure Kapsayıcıörneklerine dağıtma
 
-Bilişsel Hizmetler [lusıs](luis-container-howto.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)'a dağıtmayı öğrenin. Bu yordam bir anomali algılayıcısı kaynağı oluşturmayı gösterir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
+Bilişsel Hizmetler [LUIS](luis-container-howto.md) kapsayıcısını Azure [Kapsayıcı örneklerine](https://docs.microsoft.com/azure/container-instances/)nasıl dağıtabileceğinizi öğrenin. Bu yordam, bir Anomali Dedektörü kaynağının oluşturulmasını göstermektedir. Sonra ilişkili konteyner görüntü çekme tartışmak. Son olarak, bir tarayıcıdan iki orkestrasyon egzersiz yeteneğini vurgulamak. Kapsayıcıların kullanılması, geliştiricilerin dikkatini altyapı yönetiminden uygulama geliştirmeye odaklanmak yerine uzaklaştırabilir.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 
@@ -27,16 +27,16 @@ Bilişsel Hizmetler [lusıs](luis-container-howto.md) kapsayıcısını Azure [C
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 
-LUSıS kapsayıcısı, çalışma zamanında çekilecek bir `.gz` modeli dosyası gerektirir. Kapsayıcı, kapsayıcı örneğinden bir birim bağlaması aracılığıyla bu model dosyasına erişebilmelidir. Azure dosya paylaşma oluşturma hakkında bilgi için bkz. [dosya paylaşma oluşturma](../../storage/files/storage-how-to-create-file-share.md). Daha sonra ihtiyacınız olacak şekilde Azure depolama hesabı adı, anahtar ve dosya paylaşımının adını göz önünde ayırın.
+LUIS kapsayıcısı `.gz` çalışma zamanında çekilen bir model dosyası gerektirir. Kapsayıcı, bu model dosyasına Kapsayıcı örneğinden bir ses montajı aracılığıyla erişebilmeli. Azure dosya paylaşımı oluşturma hakkında bilgi [için](../../storage/files/storage-how-to-create-file-share.md)bkz. Azure Depolama hesap adını, anahtarını ve dosya paylaşım adını daha sonra ihtiyaç darayacağınız için not alın.
 
-### <a name="export-and-upload-packaged-luis-app"></a>Paketlenmiş LUSıS uygulamasını dışarı ve karşıya yükleme
+### <a name="export-and-upload-packaged-luis-app"></a>Paketli LUIS uygulamasını dışa aktarma ve yükleme
 
-LUO modelini (paketlenmiş uygulama) Azure dosya paylaşımında karşıya yüklemek için <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener"> <span class="docon docon-navigate-external x-hidden-focus"> </span>önce bu dosyayı Luo portalından dışarı aktarmanız </a>gerekir. Azure portal, depolama hesabı kaynağının **genel bakış** sayfasına gidin ve **dosya paylaşımları**' nı seçin. Son oluşturduğunuz dosya paylaşımının adını seçip **karşıya yükle** düğmesini seçin.
+LUIS modelini (paket uygulama) Azure dosya paylaşımına yüklemek için <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">önce <span class="docon docon-navigate-external x-hidden-focus"> </span>LUIS portalından dışa aktarmanız </a>gerekir. Azure portalından, depolama hesabı kaynağının **Genel Bakış** sayfasına gidin ve **Dosya paylaşımlarını**seçin. Yakın zamanda oluşturduğunuz dosya paylaşım adını seçin ve ardından **Yükle** düğmesini seçin.
 
 > [!div class="mx-imgBorder"]
-> ![dosya paylaşımında karşıya yükle](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+> ![Dosya paylaşımına yükleme](media/luis-how-to-deploy-to-aci/upload-file-share.png)
 
-LUSıS model dosyasını karşıya yükleyin.
+LUIS model dosyasını yükleyin.
 
 [!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 

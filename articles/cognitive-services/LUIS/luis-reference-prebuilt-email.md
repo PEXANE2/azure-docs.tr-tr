@@ -1,7 +1,7 @@
 ---
-title: LUSıS önceden oluşturulmuş varlıklar e-posta başvurusu
+title: LUIS Önceden oluşturulmuş varlıklar e-posta başvurusu
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, e-posta içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale, Dil Anlama (LUIS) e-posta önceden oluşturulmuş varlık bilgileri içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273476"
 ---
-# <a name="email-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için e-posta önceden oluşturulmuş varlık
-Bir utterance tüm e-posta adresinden e-posta ayıklama içerir. Bu varlık zaten eğitildi çünkü içeren e-posta uygulaması hedefleri için örnek Konuşma ekleme gerekmez. E-posta varlığı yalnızca `en-us` kültür içinde desteklenir.
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için önceden oluşturulmuş varlığı e-postayla gönder
+E-posta çıkarma bir söyleyiş tüm e-posta adresi içerir. Bu varlık zaten eğitimli olduğundan, uygulama amaçlarına e-posta içeren örnek sözcükler eklemeniz gerekmez. E-posta varlığı `en-us` yalnızca kültür de desteklenir.
 
-## <a name="resolution-for-prebuilt-email"></a>Önceden oluşturulmuş bir e-posta için çözümleme
+## <a name="resolution-for-prebuilt-email"></a>Önceden oluşturulmuş e-posta için çözünürlük
 
-Sorgu için aşağıdaki varlık nesneleri döndürülür:
+Aşağıdaki varlık nesneleri sorgu için döndürülür:
 
 `please send the information to patti@contoso.com`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 
 ```json
 "entities": {
@@ -38,9 +38,9 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
 
-Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 ```json
 "entities": {
@@ -66,7 +66,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnekte, **yerleşik. e-posta** varlığının çözümlemesi gösterilmektedir.
+Aşağıdaki örnek, **builtin.email** kuruluşunun çözünürlüğünü gösterir.
 
 ```json
 "entities": [
@@ -85,6 +85,6 @@ Aşağıdaki örnekte, **yerleşik. e-posta** varlığının çözümlemesi gös
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-Sayı, sıra [sayısı](luis-reference-prebuilt-number.md)ve [](luis-reference-prebuilt-ordinal.md) [yüzde](luis-reference-prebuilt-percentage.md)bilgileri hakkında bilgi edinin.
+[Sayı](luis-reference-prebuilt-number.md), [ordinal](luis-reference-prebuilt-ordinal.md), ve [yüzdesi](luis-reference-prebuilt-percentage.md)hakkında bilgi edinin.
