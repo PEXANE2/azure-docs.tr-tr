@@ -1,6 +1,6 @@
 ---
-title: Bir kullanıcının parola - Azure Active Directory sıfırlama | Microsoft Docs
-description: Azure Active Directory'yi kullanarak bir kullanıcının parolasını sıfırlama konusunda yönergeler.
+title: Kullanıcıparolalarını sıfırlama - Azure Etkin Dizini | Microsoft Dokümanlar
+description: Azure Active Directory'yi kullanarak bir kullanıcının parolasını sıfırlama hakkında talimatlar.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -15,47 +15,47 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69032667"
 ---
-# <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak bir kullanıcının parolasını sıfırlama
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak kullanıcının parolalarını sıfırlama
 
-Yönetici olarak, kullanıcı bir cihaz dışında kilitli, parolasını unutursa, ya da kullanıcı hiç parola almadıysanız, bir kullanıcının parolasını sıfırlayabilirsiniz.
-
->[!Note]
->Azure AD kiracınıza kullanıcı için giriş dizini olmadıkça mümkün olmayacaktır kullanarak parolalarını sıfırlayabilir. Bu, başka bir kuruluşa, bir Microsoft hesabı ya da bir Google hesabı bir hesap kullanarak kuruluşunuz için kullanıcı oturum açarsa, kullanıcının parolasını sıfırlamasını belirleyemeyeceğinizi anlamına gelir.<br><br>Kullanıcı bir Windows Server Active Directory olarak yetki kaynağı varsa, yalnızca üzerinde parola geri yazma özelliğini etkinleştirdiyseniz parolayı sıfırlamak mümkün olacaktır.<br><br>Bir kaynak olarak dış Azure AD yetkilisi kullanıcınız varsa parolayı sıfırlamak mümkün olmayacaktır. Yalnızca kullanıcı veya bir Yönetici Kılavuzu dış Azure AD'de, parolayı sıfırlayabilirsiniz.
+Yönetici olarak, parola unutulursa, kullanıcı bir aygıtın kilitlenirse veya kullanıcı hiç parola almamışsa, kullanıcının parolasını sıfırlayabilirsiniz.
 
 >[!Note]
->Bir yönetici değilseniz ve bunun yerine kendi iş veya Okul parolanızı sıfırlamaya ilişkin yönergeler arıyorsanız bkz [iş veya Okul parolanızı sıfırlama](../user-help/active-directory-passwords-update-your-own-password.md).
+>Azure AD kiracınız bir kullanıcının ev dizini olmadığı sürece, parolalarını sıfırlayamazsınız. Bu, kullanıcınızın başka bir kuruluştan, microsoft hesabından veya bir Google hesabından bir hesap kullanarak kuruluşunuzda oturum açıyorsa, parolalarını sıfırlayamadığınız anlamına gelir.<br><br>Kullanıcınızın Windows Server Active Directory olarak yetki kaynağı varsa, parolayı yalnızca parola yazma sırtını açtıysanız sıfırlayabilirsiniz.<br><br>Kullanıcınızın Harici Azure REKLAMı olarak yetki kaynağı varsa, parolayı sıfırlayamazsınız. Parolayı yalnızca kullanıcı veya Harici Azure AD'deki bir yönetici sıfırlayabilir.
 
-## <a name="to-reset-a-password"></a>Parola sıfırlama
+>[!Note]
+>Yönetici değilseniz ve bunun yerine kendi iş veya okul parolanızı sıfırlama hakkında yönergeler arıyorsanız, [bkz.](../user-help/active-directory-passwords-update-your-own-password.md)
 
-1. [Azure Portal](https://portal.azure.com/) Kullanıcı Yöneticisi veya parola Yöneticisi olarak oturum açın. Kullanılabilir roller hakkında daha fazla bilgi için bkz: [Azure Active Directory'de yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+## <a name="to-reset-a-password"></a>Parolayı sıfırlamak için
 
-2. Seçin **Azure Active Directory**seçin **kullanıcılar**arayın ve sıfırlama ihtiyacı olan kullanıcıyı seçin ve ardından **parola sıfırlama**.
+1. [Azure portalında](https://portal.azure.com/) kullanıcı yöneticisi veya parola yöneticisi olarak oturum açın. Kullanılabilir roller hakkında daha fazla bilgi için Azure [Etkin Dizini'nde yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
-    **Alain Charon - profili** sayfası görünür ile **parolayı Sıfırla** seçeneği.
+2. **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin, sıfırlamaya ihtiyacı olan kullanıcıyı arayın ve seçin ve ardından **Parolayı Sıfırla'yı**seçin.
 
-    ![Parola sıfırlama seçeneği vurgulanmış olan kullanıcının profil sayfası](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+    **Alain Charon - Profil** sayfası **Sıfırlama parolası** seçeneğiyle görüntülenir.
 
-3. İçinde **parolayı Sıfırla** sayfasında **parolayı Sıfırla**.
+    ![Kullanıcının profil sayfası, parolayı sıfırla seçeneği vurgulanmış](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+
+3. **Parolayı Sıfırla** sayfasında **parolayı sıfırla'yı**seçin.
 
     > [!Note]
-    > Azure Active Directory kullanırken, Kullanıcı için geçici bir parola otomatik olarak oluşturulur. Şirket içi Active Directory kullanırken, kullanıcının parolasını oluşturursunuz.
+    > Azure Etkin Dizini kullanırken, kullanıcı için otomatik olarak geçici bir parola oluşturulur. Etkin Dizin'i şirket içinde kullanırken, kullanıcı için parolayı oluşturursunuz.
 
-4. Parolayı kopyalayın ve kullanıcıya verin. Kullanıcı, sonraki oturum açma işlemi sırasında parolasını değiştirmeye gerekir.
+4. Parolayı kopyalayın ve kullanıcıya verin. Kullanıcının bir sonraki oturum açma işlemi sırasında parolayı değiştirmesi gerekir.
 
     >[!Note]
-    >Geçici parola her zaman geçerli olsun. Kullanıcı, sonraki oturum açışında parolasını çalışmaya devam edecek, bakılmaksızın geçici parolayı oluşturulmasının üzerinden ne kadar zaman geçti.
+    >Geçici parolanın süresi hiç dolmaz. Kullanıcı bir sonraki girişinde, geçici parola nın oluşturulmasından bu yana geçen sürene bakılmaksızın parola çalışmaya devam eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı parola sıfırlama sonra aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
+Kullanıcınızın parolasını sıyrıkla sıyrıkla dıktan sonra aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
 
-- [Ekleme veya kullanıcıları Sil](add-users-azure-active-directory.md)
+- [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md)
 
 - [Kullanıcılara rol atama](active-directory-users-assign-role-azure-portal.md)
 
@@ -63,4 +63,4 @@ Kullanıcı parola sıfırlama sonra aşağıdaki temel işlemleri gerçekleşti
 
 - [Temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md)
 
-Veya temsilci atayarak, ilkeleri kullanarak ve kullanıcı hesapları paylaşma gibi daha karmaşık kullanıcı senaryoları gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için bkz: [Azure Active Directory kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
+Veya temsilci atama, ilkeleri kullanma ve kullanıcı hesaplarını paylaşma gibi daha karmaşık kullanıcı senaryoları gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için [Azure Etkin Dizin kullanıcı yönetimi belgelerine](../users-groups-roles/index.yml)bakın.

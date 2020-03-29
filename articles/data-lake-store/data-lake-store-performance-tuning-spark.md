@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 Spark performansı ayarlama yönergeleri | Microsoft Docs
-description: Azure Data Lake depolama Gen1 Spark performansı ayarlama yönergeleri
+title: Azure Veri Gölü Depolama Gen1 Kıvılcım Performans Tuning Yönergeleri | Microsoft Dokümanlar
+description: Azure Veri Gölü Depolama Gen1 Kıvılcım Performans Tuning Yönergeleri
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -13,106 +13,106 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436520"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake depolama Gen1 üzerinde Spark için performans ayarlama Kılavuzu
+# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Veri Gölü Depolama Gen1'de Spark için performans alamı kılavuzu
 
-Spark üzerinde performans ayarlama, kümenizde çalışan uygulamaların sayısı göz önüne almanız gerekir.  Varsayılan olarak, 4 çalıştırabileceğiniz uygulamalar, HDI kümesi üzerinde aynı anda (Not: değiştirilebilir varsayılan ayardır).  Varsayılan ayarları geçersiz kılar ve kümenin daha fazla bilgi için bu uygulamaları kullanmak için daha az uygulamaları kullanmaya karar verebilirsiniz.  
+Spark'ta performansı alarken, kümenizde çalışacak uygulama sayısını göz önünde bulundurmanız gerekir.  Varsayılan olarak, HDI kümenizde aynı anda 4 uygulama çalıştırabilirsiniz (Not: varsayılan ayar değişebilir).  Varsayılan ayarları geçersiz kılmak ve bu uygulamalar için kümenin daha fazlasını kullanabilmek için daha az uygulama kullanmaya karar verebilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
-* **Bir Azure Data Lake depolama Gen1 hesap**. Bir oluşturma hakkında yönergeler için bkz: [Azure Data Lake depolama Gen1 ile çalışmaya başlama](data-lake-store-get-started-portal.md)
-* **Azure HDInsight kümesinde** bir Data Lake depolama Gen1 hesabına erişim. Bkz: [ile Data Lake depolama Gen1 bir HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Küme için Uzak Masaüstü etkinleştirdiğinizden emin olun.
-* **Data Lake depolama Gen1 üzerinde Spark kümesi çalıştıran**.  Daha fazla bilgi için [Data Lake depolama Gen1 analiz etmek için kullanım HDInsight Spark kümesi](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Performans ayarlama yönergeleri Data Lake depolama Gen1**.  Genel performans için bkz [Data Lake depolama Gen1 performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure Veri Gölü Depolama Gen1 hesabı.** Nasıl oluşturulacağına ilişkin talimatlar için [bkz.](data-lake-store-get-started-portal.md)
+* Veri Gölü Depolama Gen1 hesabına erişim içeren **Azure HDInsight kümesi.** Bkz. [Veri Gölü Depolama Gen1 ile hdinsight kümesi oluşturun.](data-lake-store-hdinsight-hadoop-use-portal.md) Küme için Uzak Masaüstü'nü etkinleştirdiğinizden emin olun.
+* **Veri Gölü Depolama Gen1 üzerinde Spark küme çalışıyor.**  Daha fazla bilgi için [Bkz. Veri Gölü Depolama Gen1'deki verileri analiz etmek için HDInsight Spark kümesini kullanın](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Veri Gölü Depolama Gen1'de performans alamı yönergeleri.**  Genel performans kavramları için bkz: [Veri Gölü Depolama Gen1 Performans Tuning Kılavuzu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
 
 ## <a name="parameters"></a>Parametreler
 
-Spark işleri çalıştırırken, Data Lake depolama Gen1 performansı artırmak için ayarlanabilecek en önemli ayarlar şunlardır:
+Spark işlerini çalıştırırken, Veri Gölü Depolama Gen1'de performansı artırmak için ayarlanabilecek en önemli ayarlar şunlardır:
 
-* **Yürütücü sayısı** -yürütülebilecek eşzamanlı görev sayısı.
+* **Num-yürütücüler** - Yürütülebilir eşzamanlı görevlerin sayısı.
 
-* **Bellek içi Yürütücü** -her Yürütücü için ayrılmış bellek miktarı.
+* **Yürütme-bellek** - Her uygulayıcıya ayrılan bellek miktarı.
 
-* **Yürütücü çekirdek** -her Yürütücü için ayrılan çekirdek sayısı.                     
+* **Uygulayıcı çekirdekler** - Her uygulayıcıya ayrılan çekirdek sayısı.                     
 
-**Yürütücü sayısı** Yürütücü sayısı en fazla paralel olarak çalıştırabileceğiniz görevlerin sayısını ayarlar.  Paralel olarak çalıştırılabilir görevleri gerçek sayısını bellek ve CPU kaynaklarını kümenizde kullanılabilir sınırlıdır.
+**Num-uygulayıcılar** Num-uygulayıcıları paralel olarak çalıştırılabilen en fazla görev sayısını ayarlar.  Paralel olarak çalıştırılabilen gerçek görev sayısı, kümenizde bulunan bellek ve CPU kaynaklarıyla sınırlanır.
 
-**Bellek içi Yürütücü** her yürütücüsüne atanan bellek miktarıdır.  Her Yürütücü için gereken belleği işine bağlıdır.  Karmaşık işlemleri için bellek daha yüksek olması gerekir.  Okuma ve yazma gibi basit işlemler için bellek gereksinimleri daha düşük olacaktır.  Her Yürütücü için bellek miktarı Ambari görüntülenebilir.  Ambari, Spark için gidin ve yapılandırmaları sekmesini görüntüleyin.  
+**Yürütücü-bellek** Bu, her yürütücüye ayrılan bellek miktarıdır.  Her uygulayıcı için gereken bellek işe bağlıdır.  Karmaşık işlemler için belleğin daha yüksek olması gerekir.  Okuma yazma gibi basit işlemler için bellek gereksinimleri daha düşük olacaktır.  Her uygulayıcıiçin bellek miktarı Ambari'de görüntülenebilir.  Ambari'de Kıvılcım'a gidin ve Configs sekmesini görüntüleyin.  
 
-**Yürütücü çekirdek** bu Yürütücü çalıştırılabilir paralel iş parçacığı sayısını belirleyen Yürütücü başına kullanılan çekirdek miktarını belirler.  Örneğin, çekirdek Yürütücü = 2, her Yürütücü Yürütücü içinde 2 Paralel Görevler çalıştırabilirsiniz.  Yürütücü çekirdek işin bağımlı olacaktır.  Daha fazla Paralel Görevler her Yürütücü işleyebilmesi için büyük miktarda bellek görev başına g/ç yoğun iş gerektirmez.
+**Executor çekirdekleri** Bu, uygulayıcı başına çalıştırılabilen paralel iş parçacığı sayısını belirleyen, uygulayıcı başına kullanılan çekirdek miktarını ayarlar.  Örneğin, yürütme çekirdekleri = 2 ise, her uygulayıcı sıyrıkta 2 paralel görev çalıştırabilir.  Gerekli uygulayıcı çekirdekler işe bağlı olacaktır.  G/Ç ağır işleri, her uygulayıcının daha paralel görevleri işleyebilir, böylece görev başına büyük miktarda bellek gerektirmez.
 
-Varsayılan olarak, iki sanal YARN çekirdek Spark HDInsight üzerinde çalışırken her fiziksel çekirdek için tanımlanır.  Bu sayı, eşzamanlılık ve bağlam birden fazla iş parçacığından değiştirme miktarı iyi bir dengesini sunar.  
+Varsayılan olarak, HDInsight'ta Kıvılcım çalıştırırken her fiziksel çekirdek için iki sanal YARN çekirdeği tanımlanır.  Bu sayı, eşzamanlılık ve birden çok iş parçacığı anahtarlama bağlam miktarı iyi bir denge sağlar.  
 
 ## <a name="guidance"></a>Rehber
 
-Data Lake depolama Gen1 verilerle çalışmak için analitik iş yükleri çalıştırırken Spark, Data Lake depolama Gen1 ile en iyi performansı elde etmek için en son HDInsight sürümü kullanmanızı öneririz. Daha fazla g/ç yoğun iş olduğunda, belirli parametreleri performansını artırmak için yapılandırılabilir.  Data Lake depolama Gen1 yüksek aktarım hızı işleyebilen bir yüksek düzeyde ölçeklenebilir depolama platformudur.  Data Lake depolama Gen1 gelen ve eşzamanlılık g/ç için yeniden artırır, iş okuma veya yazmaları ağırlıklı olarak oluşuyorsa, performansı arttırabilir.
+Data Lake Storage Gen1'deki verilerle çalışmak için Spark analitik iş yüklerini çalıştırırken, Data Lake Storage Gen1 ile en iyi performansı elde etmek için en son HDInsight sürümünü kullanmanızı öneririz. İşiniz daha yoğun olduğunda, belirli parametreler performansı artırmak için yapılandırılabilir.  Data Lake Storage Gen1, yüksek iş verime işlenebilen yüksek ölçeklenebilir bir depolama platformudur.  İş esas olarak okuma veya yazmadan oluşuyorsa, Data Lake Storage Gen1'e ve Data Lake Storage Gen1'e görülcesini artırmak performansı artırabilir.
 
-Yoğun g/ç işleri için eşzamanlılığı artırmak için birkaç genel yol vardır.
+G/Ç yoğun işler için eşzamanlılığı artırmanın birkaç genel yolu vardır.
 
-**1. adım: Kaç tane uygulamalarını kümenizde çalışan belirlemek** – geçerli de dahil olmak üzere kümede kaç çalıştırmaya bilmeniz gerekir.  4 vardır varsayılan değerleri ayarı varsayar her Spark için aynı anda çalıştırılan uygulamalar.  Bu nedenle yalnızca % 25 oranında kümenin her uygulama için kullanılabilir olacaktır.  Daha iyi performans elde etmek için Yürütücü sayısına değiştirerek Varsayılanları geçersiz kılabilir.  
+**Adım 1: Kümenizde kaç uygulamanın çalıştığını belirleyin** – Kümede geçerli uygulama da dahil olmak üzere kaç uygulamanın çalıştığını bilmeniz gerekir.  Her Kıvılcım ayarı için varsayılan değerler, aynı anda çalışan 4 uygulama olduğunu varsayar.  Bu nedenle, her uygulama için kümenin yalnızca %25'ine sahip olursunuz.  Daha iyi performans elde etmek için, uygulayıcıların sayısını değiştirerek varsayılanları geçersiz kılabilirsiniz.  
 
-**2. adım: Bellek içi Yürütücü ayarlamak** – ayarlamak için ilk şey Yürütücü-bellektir.  Bellek üzerinde çalıştırmak için oluşturacağınız işi bağımlı olacaktır.  Yürütücü başına daha az bellek ayırarak eşzamanlılığı artırabilir.  Yetersiz bellek özel durumları iş çalıştırdığınızda görürseniz, bu parametrenin değerini artırmanız gerekir.  Daha fazla bellek, daha büyük miktarda bellek sahip olan bir kümeye kullanarak veya kümenizin boyutunu artırmayı almak bir alternatiftir.  Daha fazla bellek, daha fazla eşzamanlılık başka bir deyişle, kullanılacak, daha fazla yürütücüler olanak sağlar.
+**Adım 2: Yürütme-bellek ayarlayın** - ayarlanan ilk şey yürütücü-bellek.  Bellek, çalıştıracağınız işe bağlı olacaktır.  Uygulayıcı başına daha az bellek ayırarak eşzamanlılığı artırabilirsiniz.  İşinizi çalıştırdığınızda bellek dışında özel durumlar görürseniz, bu parametrenin değerini artırmanız gerekir.  Bir alternatif bellek daha yüksek miktarda veya küme boyutunu artırarak bir küme kullanarak daha fazla bellek elde etmektir.  Daha fazla bellek, daha fazla yürütücü kullanılmasına olanak sağlar, bu da daha fazla eşzamanlılık anlamına gelir.
 
-**3. adım: Yürütücü çekirdek kümesi** – karmaşık işlemleri sahip olmaması için g/ç kullanımlı iş yükleri, İşte bu kadar çok sayıda Paralel Görevler Yürütücü başına sayısını artırmak için Yürütücü çekirdek başlatmak iyi.  Yürütücü çekirdek sayısı 4'e ayarlanması, iyi bir başlangıç noktasıdır.   
+**Adım 3: Yürütme çekirdeklerini ayarlayın** – Karmaşık işlemleri olmayan G/Ç yoğun iş yükleri için, uygulayıcı başına paralel görev sayısını artırmak için çok sayıda yürütme çekirdeğiyle başlamak iyidir.  Uygulayıcı çekirdekleri 4'e ayarlamak iyi bir başlangıçtır.   
 
     executor-cores = 4
-Yürütücü çekirdek sayısının artırılması farklı Yürütücü çekirdeğiyle deneyebilirsiniz. Bu nedenle daha fazla paralellik verir.  Daha karmaşık işlemler sahip işler için Yürütücü başına çekirdek sayısını azaltmanız gerekir.  Yürütücü çekirdek sayısı 4'ten yüksek ayarlanmış ardından çöp toplama verimsiz ve performansı düşebilir.
+Uygulayıcı çekirdek lerin sayısını artırmak, farklı yürütücü çekirdeklerle denemeler yapabilmeniz için size daha fazla paralellik sağlayacaktır.  Daha karmaşık işlemleri olan işler için, uygulayıcı başına çekirdek sayısını azaltmanız gerekir.  Yürütme çekirdekleri 4'ten yüksek olarak ayarlanırsa, çöp toplama verimsiz hale gelebilir ve performansı düşürebilir.
 
-**4. adım: Kümenin YARN bellek miktarını belirlemek** – Ambari bu bilgi kullanılabilir.  YARN için gidin ve yapılandırmaları sekmesini görüntüleyin.  YARN bellek Bu pencerede görüntülenir.  
-Not penceresinde olmakla birlikte, varsayılan YARN kapsayıcı boyutu da görebilirsiniz.  YARN kapsayıcı boyutu Yürütücü parametresi başına bellek ile aynıdır.
+**Adım 4: Kümedeki İplik belleği miktarını belirleyin** – Bu bilgiler Ambari'de mevcuttur.  İPLik'e gidin ve Configs sekmesini görüntüleyin.  İplik belleği bu pencerede görüntülenir.  
+Penceredeyken varsayılan İplik kapsayıcı boyutunu da görebilirsiniz.  İPLIK kapsayıcı boyutu, yürütme parametresi başına bellekle aynıdır.
 
     Total YARN memory = nodes * YARN memory per node
-**5. adım: Yürütücü sayısı hesaplayın**
+**Adım 5: Num-uygulayıcıları hesaplama**
 
-**Bellek kısıtlama hesaplamak** -Yürütücü sayısı parametresi, bellek veya CPU sınırlıdır.  Bellek kısıtlama, uygulamanız için kullanılabilir YARN bellek miktarına göre belirlenir.  Toplam YARN bellek alın ve yürütücü bellekle bölen gerekir.  Kısıtlama, biz uygulamaları sayısına göre bölmek için uygulama sayısı için XML'deki ölçeklendirilmiş olması gerekiyor.
+**Bellek kısıtlamasını hesapla** - Num-executors parametresi bellek veya CPU tarafından sınırlandırılır.  Bellek kısıtlaması, uygulamanız için kullanılabilir İplik belleği miktarına göre belirlenir.  Toplam İplik belleği almalı ve bunu uygulayıcı-bellek le bölmelisiniz.  Uygulama sayısı için kısıtlamanın ortadan kaldırılmasını gerekir, bu nedenle uygulama sayısına bölünür.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**CPU kısıtlaması hesaplamak** -CPU sınırlama bölü Yürütücü başına çekirdek sayısı, toplam sanal çekirdek olarak hesaplanır.  2 sanal çekirdek her fiziksel çekirdek için vardır.  Bellek kısıtlama benzer, bölme uygulamaları sayısına göre sahibiz.
+**CPU kısıtlamasını hesapla** - CPU kısıtlaması, uygulayıcı başına çekirdek sayısına bölünen toplam sanal çekirdek olarak hesaplanır.  Her fiziksel çekirdek için 2 sanal çekirdek vardır.  Bellek kısıtlamasına benzer şekilde, uygulama sayısına göre bölünürüz.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Yürütücü sayısı Ayarla** – Yürütücü sayısı parametresi en az bellek kısıtlaması ile CPU alarak belirlenir. 
+**Set num-executors** – num-executors parametresi bellek kısıtlaması ve CPU kısıtlaması minimum alarak belirlenir. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Yürütücü sayısı, daha yüksek bir sayı ayarlandığında, performans mutlaka artırmaz.  Daha fazla yürütücüler ekleme ekleyeceksiniz dikkate almanız gereken potansiyel olarak performansı düşürebilir her ek Yürütücü için fazladan ek yükü.  Yürütücü sayısı küme kaynakları tarafından sınırlanan.    
+Daha fazla sayıda num-uygulayıcıayar mutlaka performansı artırmaz.  Daha fazla yürütücü eklemenin her ek uygulayıcı için ekstra ek yükü ekleyeceğini ve bunun performansı düşürebileceğini göz önünde bulundurmalısınız.  Num-yürütücüler küme kaynakları ile sınırlanır.    
 
-## <a name="example-calculation"></a>Örnek hesaplama
+## <a name="example-calculation"></a>Örnek Hesaplama
 
-Şu anda kullandığınız 2 çalıştıran 8 D4v2 düğümlerinin oluşan bir küme varsayalım uygulamaları çalıştırmak için seçeceğiz de dahil olmak üzere.  
+Şu anda çalıştırmak için gidiyoruz biri de dahil olmak üzere 2 uygulama çalışan 8 D4v2 düğümleri oluşan bir küme olduğunu varsayalım.  
 
-**1. adım: Kaç tane uygulamalarını kümenizde çalışan belirlemek** – 2 olduğunu bildiğiniz çalıştırılacak seçeceğiz de dahil olmak üzere kümenizdeki uygulamaları.  
+**Adım 1: Kümenizde kaç uygulamanın çalıştığını belirleyin** – kümenizde çalıştıracağınız uygulama da dahil olmak üzere 2 uygulama nız olduğunu biliyorsunuz.  
 
-**2. adım: Bellek içi Yürütücü ayarlamak** – Bu örnekte, 6 GB bellek Yürütücü g/ç yoğunluklu iş için yeterli olacağını olan belirleriz.  
+**Adım 2: Uygulayıcı belleği ayarlayın** – bu örnek için, 6 GB yürütme belleği nin G/Ç yoğun iş için yeterli olacağını belirleriz.  
 
     executor-memory = 6GB
-**3. adım: Yürütücü çekirdek kümesi** – bu bir g/ç yoğunluklu iş olduğundan, size çekirdek sayısı 4 her Yürütücü ayarlayabilirsiniz.  Yürütücü başına çekirdek sayısı 4 çöp toplama sorunlara neden olabilir, daha büyük için ayarlanıyor.  
+**Adım 3: Executor çekirdekleri ayarlayın** – Bu G/Ç yoğun bir iş olduğundan, her uygulayıcıiçin çekirdek sayısını 4 olarak ayarlayabiliriz.  Uygulayıcı başına çekirdekleri 4'ten büyük olarak ayarlamak çöp toplama sorunlarına neden olabilir.  
 
     executor-cores = 4
-**4. adım: Kümenin YARN bellek miktarını belirlemek** – biz her D4v2 25 GB YARN bellek olduğunu öğrenmek için ambarı'na gidin.  YARN bellek, 8 düğüm olduğundan, 8 ile çarpılır.
+**Adım 4: Kümedeki İplik bellek miktarını belirleyin** – Her D4v2'nin 25 GB İplik belleğe sahip olduğunu öğrenmek için Ambari'ye gideceğiz.  8 düğüm olduğundan, kullanılabilir İplik belleği 8 ile çarpılır.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**5. adım: Yürütücü sayısı hesaplamak** – Yürütücü sayısı parametresi en düşük bellek kısıtlamanın alarak belirlenir ve CPU sınırlama bölünmüş tarafından Spark üzerinde çalıştırılan uygulamalar için sayısı.    
+**Adım 5: num-executors hesaplamak** - num-executors parametresi bellek kısıtlaması ve CPU kısıtlaması # Spark üzerinde çalışan tarafından bölünerek minimum alarak belirlenir.    
 
-**Bellek kısıtlama hesaplamak** – bellek kısıtlama bellek Yürütücü başına bölü toplam YARN bellek olarak hesaplanır.
+**Bellek kısıtlamasını hesapla** – Bellek kısıtlaması, uygulayıcı başına bellek tarafından bölünen toplam İPlik bellek olarak hesaplanır.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**CPU kısıtlaması hesaplamak** -CPU sınırlama bölü Yürütücü başına çekirdek sayısı toplam yarn çekirdek olarak hesaplanır.
+**CPU kısıtlamasını hesapla** - CPU kısıtlaması, uygulayıcı başına çekirdek sayısına bölünen toplam iplik çekirdeği olarak hesaplanır.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Kümesi Yürütücü sayısı**
+**Set num-executors**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

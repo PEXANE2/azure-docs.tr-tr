@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid kaynak grubu olay şeması
-description: Kaynak grubu olayları Azure Event Grid ile sağlanan özellikleri tanımlar
+title: Azure Olay Izgara kaynak grubu olay şeması
+description: Azure Olay Ağıtı ile kaynak grubu etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,47 +8,47 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561702"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Kaynak grupları için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Kaynak grupları için Azure Olay Izgara olay şeması
 
-Bu makale, kaynak grubu olayları için şema ve özellikleri sağlar. Olay şemaları için bir giriş için bkz [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, kaynak grubu olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Azure Abonelikleriniz ve kaynak grupları, aynı olay türleri gösterin. Olay türlerini, kaynak değişiklikleri veya Eylemler ilgilidir. Birincil olayları kaynak grubu içindeki kaynaklar için kaynak grubu yayma ve Azure abonelikleri abonelik kaynaklarla ilgili olayları yayma farktır.
+Azure abonelikleri ve kaynak grupları aynı etkinlik türlerini yayır. Olay türleri kaynak değişiklikleri veya eylemlerle ilişkilidir. Birincil fark, kaynak gruplarının kaynak grubu içindeki kaynaklar için olaylar yayıyor olması ve Azure abonelikleri abonelik genelinde kaynaklar için olaylar yontmaktadır.
 
-Kaynak olayları için PUT, PATCH, GÖNDERİ oluşturulur ve silme işlemleri gönderilen `management.azure.com`. ALMA işlemleri, olayları oluşturmayın. İşlemler için veri düzlemi gönderilen (gibi `myaccount.blob.core.windows.net`) olayları oluşturmayın. Eylem olaylar, bir kaynak için anahtarları listeleme gibi işlemler için olay verilerini sağlar.
+Kaynak olayları PUT, PATCH, POST ve DELETE işlemleri `management.azure.com`için oluşturulur. GET işlemleri etkinlik oluşturmaz. Veri düzlemine gönderilen `myaccount.blob.core.windows.net`işlemler (gibi) olay oluşturmaz. Eylem olayları, bir kaynağın anahtarlarını listeleme gibi işlemler için olay verileri sağlar.
 
-Bir kaynak grubu için olaylara abone olduğunuzda, uç noktanız için kaynak grubunun tüm olaylarını alır. Olaylar, olay, bir sanal makine güncelleştiriliyor gibi görmek istediğiniz zamanda belki de yeni bir giriş dağıtım geçmişini yazma gibi sizin için önemli olmayan olaylar içerebilir. Tüm olayları, uç noktada almak ve kullanmak istediğiniz olayları işleyen kod yazın. Veya olay aboneliği oluştururken bir filtre ayarlayabilirsiniz.
+Bir kaynak grubu için etkinliklere abone olduğunuzda, bitiş noktanız bu kaynak grubu için tüm olayları alır. Olaylar, sanal bir makineyi güncelleştirme gibi görmek istediğiniz olayları ve dağıtım geçmişinde yeni bir giriş yazma gibi sizin için önemli olmayan olayları da içerebilir. Tüm olayları bitiş noktanızda alabilir ve işlemek istediğiniz olayları işleyen kod yazabilirsiniz. Veya olay aboneliği ni oluştururken bir filtre ayarlayabilirsiniz.
 
-Program aracılığıyla olayları işlemek için olayları bakarak sıralayabilirsiniz `operationName` değeri. Örneğin, olay uç noktanızı eşit olan işlemleri için olayları yalnızca işleyebilir `Microsoft.Compute/virtualMachines/write` veya `Microsoft.Storage/storageAccounts/write`.
+Olayları programlı bir şekilde işlemek `operationName` için, değeri bakarak olayları sıralayabilirsiniz. Örneğin, olay bitiş noktanız yalnızca eşit `Microsoft.Compute/virtualMachines/write` olan veya `Microsoft.Storage/storageAccounts/write`.
 
-Etkinlik konusu işlemin hedef kaynağın kaynak kimliğidir. Bir kaynak için olayları filtrelemek için bu kaynak sağlayan olay aboneliği oluştururken kimliği.  Bir kaynak türüne göre filtre uygulamak için aşağıdaki biçimde bir değer kullanın: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Olay konusu, işlemin hedefi olan kaynağın kaynak kimliğidir. Bir kaynak için olayları filtrelemek için, olay aboneliği oluştururken bu kaynak kimliğini sağlayın.  Kaynak türüne göre filtre uygulayın, aşağıdaki biçimde bir değer kullanın:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Örnek betikler ve öğreticiler listesi için bkz: [kaynak grubu olay kaynağı](event-sources.md#resource-groups).
+Örnek komut dosyaları ve öğreticilerin listesi için [Kaynak grubu olay kaynağına](event-sources.md#resource-groups)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Bir VM oluşturulduğunda veya bir depolama hesabı silinmiş gibi kaynak grupları Yönetimi olayları Azure Kaynak Yöneticisi'nden gösterin.
+Kaynak grupları, Bir VM oluşturulduğunda veya bir depolama hesabının silindiği zaman gibi Azure Kaynak Yöneticisi'nden yönetim olayları yayar.
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceActionCancel | Kaynak üzerinde işlem iptal edildiğinde oluşturulur. |
-| Microsoft.Resources.ResourceActionFailure | Kaynak eylem başarısız olduğunda oluşturulur. |
-| Microsoft.Resources.ResourceActionSuccess | Kaynak üzerinde işlem başarılı olduğunda oluşturulur. |
-| Microsoft.Resources.ResourceDeleteCancel | Arandığında silme işlemi iptal edildi. Bu olay, bir şablon dağıtımı iptal edildiğinde gerçekleşir. |
-| Microsoft.Resources.ResourceDeleteFailure | Arandığında delete işlemi başarısız oluyor. |
-| Microsoft.Resources.ResourceDeleteSuccess | Arandığında silme işlemi başarılı olur. |
-| Microsoft.Resources.ResourceWriteCancel | Arandığında oluşturma veya güncelleştirme işlemi iptal edildi. |
-| Microsoft.Resources.ResourceWriteFailure | Arandığında oluşturma veya güncelleştirme işlemi başarısız olur. |
-| Microsoft.Resources.ResourceWriteSuccess | Arandığında oluşturma veya güncelleştirme işlemi başarılı olur. |
+| Microsoft.Resources.ResourceActionCancel | Kaynak üzerindeki eylem iptal edildiğinde yükseltilir. |
+| Microsoft.Resources.ResourceActionFailure | Kaynak üzerindeki eylem başarısız olduğunda yükseltildi. |
+| Microsoft.Resources.ResourceActionBaşarı | Kaynak üzerindeki eylem başarılı olduğunda yükseltilir. |
+| Microsoft.Resources.ResourceDeleteCancel | Silme işlemi iptal edildiğinde yükseltilir. Bu olay, şablon dağıtımı iptal edildiğinde gerçekleşir. |
+| Microsoft.Resources.ResourceDeleteFailure | Silme işlemi başarısız olduğunda yükseltildi. |
+| Microsoft.Resources.ResourceDeleteSuccess | Silme işlemi başarılı olduğunda yükseltilir. |
+| Microsoft.Resources.ResourceWriteCancel | Oluşturma veya güncelleştirme işlemi iptal edildiğinde yükseltilir. |
+| Microsoft.Resources.ResourceWriteFailure | Oluşturma veya güncelleştirme işlemi başarısız olduğunda yükseltildi. |
+| Microsoft.Resources.ResourceWriteSuccess | Oluşturma veya güncelleştirme işlemi başarılı olduğunda yükseltilir. |
 
 ## <a name="example-event"></a>Örnek olay
 
-İçin şemayı aşağıdaki örnekte bir **ResourceWriteSuccess** olay. Aynı şemaya kullanılan **ResourceWriteFailure** ve **ResourceWriteCancel** olayları için farklı değerlerle `eventType`.
+Aşağıdaki örnek, **ResourceWriteSuccess** olayının şeasını gösterir. Aynı şema KaynakYazma Hatası ve **ResourceWriteCancel** için farklı `eventType`değerlere sahip olaylar için kullanılır. **ResourceWriteFailure**
 
 ```json
 [{
@@ -108,7 +108,7 @@ Bir VM oluşturulduğunda veya bir depolama hesabı silinmiş gibi kaynak grupla
 }]
 ```
 
-İçin şemayı aşağıdaki örnekte bir **ResourceDeleteSuccess** olay. Aynı şemaya kullanılan **ResourceDeleteFailure** ve **ResourceDeleteCancel** olayları için farklı değerlerle `eventType`.
+Aşağıdaki örnek, **ResourceDeleteSuccess** olayının şemasını gösterir. Aynı şema **KaynakDeleteFailure** ve **ResourceDeleteCancel** için farklı değerlere sahip olaylar için `eventType`kullanılır.
 
 ```json
 [{
@@ -174,7 +174,7 @@ Bir VM oluşturulduğunda veya bir depolama hesabı silinmiş gibi kaynak grupla
 }]
 ```
 
-İçin şemayı aşağıdaki örnekte bir **ResourceActionSuccess** olay. Aynı şemaya kullanılan **ResourceActionFailure** ve **ResourceActionCancel** olayları için farklı değerlerle `eventType`.
+Aşağıdaki örnek, **ResourceActionSuccess** olayının şeasını gösterir. Aynı şema **KaynakEylemFailure** ve **ResourceActioniçin** farklı değerlere `eventType`sahip olaylar için kullanılır.
 
 ```json
 [{   
@@ -230,37 +230,37 @@ Bir VM oluşturulduğunda veya bir depolama hesabı silinmiş gibi kaynak grupla
 }]
 ```
 
-## <a name="event-properties"></a>Olay Özellikleri
+## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey veri vardır:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| topic | string | Olay kaynağı tam kaynak yolu. Bu alan, yazılabilir değil. Event Grid, bu değeri sağlar. |
-| subject | string | Yayımcı tarafından tanımlanan olay konu yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| id | string | Olayın benzersiz tanımlayıcısı. |
-| data | object | Kaynak grubu olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid, şemanın en üst düzey özellikleri tanımlar. Event Grid, bu değeri sağlar. |
-
-Veri nesnesi, aşağıdaki özelliklere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| authorization | object | İşlem için istenen yetkilendirme. |
-| claims | object | Talep özellikleri. Daha fazla bilgi için [JWT belirtimi](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Kaynak grubu olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+Veri nesnesi aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| yetkilendirme | object | İşlem için istenen yetkilendirme. |
+| Iddia | object | İddiaların özellikleri. Daha fazla bilgi için [JWT belirtimine](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)bakın. |
 | correlationId | string | Sorun giderme için bir işlem kimliği. |
-| httpRequest | object | İşlem ayrıntıları. Bu nesne yalnızca olan mevcut bir kaynağı güncelleştirirken dahil ya da bir kaynak siliniyor. |
-| resourceProvider | string | İşlemi kaynak sağlayıcı. |
-| resourceUri | string | İşlemi kaynak URI'si. |
-| operationName | string | Alınan işlemi. |
-| status | string | İşlemin durumu. |
-| subscriptionId | string | Kaynak abonelik kimliği. |
-| tenantId | string | Kaynak Kiracı kimliği. |
+| httpİstek | object | Operasyonun detayları. Bu nesne yalnızca varolan bir kaynağı güncellerken veya bir kaynağı silerken dahil edilir. |
+| resourceSağlayıcı | string | İşlem için kaynak sağlayıcısı. |
+| resourceUri | string | İşlemdeki kaynağın URI'si. |
+| operationName | string | Yapılan operasyon. |
+| durum | string | İşlemin durumu. |
+| subscriptionId | string | Kaynağın abonelik kimliği. |
+| tenantId | string | Kaynağın kiracı kimliği. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid aboneliği şema](subscription-creation-schema.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

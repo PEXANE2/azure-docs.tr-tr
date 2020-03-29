@@ -1,276 +1,276 @@
 ---
-title: Micro odak Kurumsal Geliştirici 4.0 Azure sanal Makineler'de Micro odak CICS BankDemo ' ayarlayın
-description: Azure sanal makinelerinde (VM'ler) Micro odak Enterprise Server ve kurumsal Geliştirici kullanmayı öğrenmek için Micro odak BankDemo uygulamayı çalıştırın.
+title: Azure Sanal Makinelerde Micro Focus Enterprise Developer 4.0 için Micro Focus CICS BankDemo'u ayarlama
+description: Micro Focus Enterprise Server ve Enterprise Developer'ı kullanmayı öğrenmek için Azure Sanal Makineler'de (VM) Micro Focus BankDemo uygulamasını çalıştırın.
 author: sread
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621328"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro odak Kurumsal Geliştirici 4.0 azure'da Micro odak CICS BankDemo ' ayarlayın
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure'da Micro Focus Enterprise Developer 4.0 için Micro Focus CICS BankDemo'u ayarlama
 
-Micro odak Enterprise Server 4.0 ve Azure üzerinde Kurumsal Geliştirici 4.0 ayarladığınızda, IBM z/OS iş yüklerinin dağıtımı test edebilirsiniz. Bu makalede CICS BankDemo, Enterprise Developer ile birlikte gelen bir örnek uygulamanın nasıl gösterir.
+Azure'da Micro Focus Enterprise Server 4.0 ve Enterprise Developer 4.0'ı ayarladığınızda, IBM z/OS iş yüklerinin dağıtımlarını test edebilirsiniz. Bu makalede, Kurumsal Geliştirici ile birlikte gelen örnek bir uygulama olan CICS BankDemo nasıl kurulaca›r› gösterilmektedir.
 
-CICS müşteri bilgileri, denetim sistemi birçok çevrimiçi ana bilgisayar uygulaması tarafından kullanılan işlem platformu anlamına gelir. BankDemo uygulama öğrenme Enterprise Server ve kurumsal Geliştirici nasıl çalışır ve yönetme ve yeşil ekran terminaller tam gerçek bir uygulamayı dağıtmak için idealdir.
+CCs Müşteri Bilgi Kontrol Sistemi, online ana bilgisayar uygulamalarının çoğu tarafından kullanılan işlem platformu anlamına gelir. BankDemo uygulaması, Enterprise Server ve Enterprise Developer'ın nasıl çalıştığını ve yeşil ekran terminalleriyle birlikte gerçek bir uygulamayı nasıl yönetip dağıtılacak yapılacağını öğrenmek için idealdir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bir VM ile [Kurumsal Geliştirici](set-up-micro-focus-azure.md). Enterprise Developer Enterprise Server Geliştirme ve test amaçları için eksiksiz bir örnek üzerindeki olduğunu aklınızda bulundurun. Kurumsal demo için kullanılan sunucu örneğinin örneğidir.
+- [Kurumsal Geliştirici](set-up-micro-focus-azure.md)ile bir VM . Enterprise Developer'ın geliştirme ve test amacıyla enterprise server'ın tam bir örneğine sahip olduğunu unutmayın. Bu örnek, demo için kullanılan Enterprise Server örneğidir.
 
-- [SQL Server Express 2017 sürümü](https://www.microsoft.com/sql-server/sql-server-editions-express). İndirin ve kurumsal Geliştirici VM'ye yükleyin. Kuruluş Sunucusu CICS bölgelerin yönetimi için bir veritabanı gerektirir ve BankDemo uygulama ayrıca BANKDEMO adlı bir SQL Server veritabanı kullanır. Bu Tanıtım, her iki veritabanı için SQL Server Express kullandığınızı varsayar. Yükleme sırasında temel Yükleme'yi seçin.
+- [SQL Server 2017 Express sürümü](https://www.microsoft.com/sql-server/sql-server-editions-express). Enterprise Developer VM'ye indirin ve yükleyin. Enterprise Server CICS bölgelerinin yönetimi için bir veritabanı gerektirir ve BankDemo uygulaması da BANKDEMO adlı bir SQL Server veritabanı kullanır. Bu demo, her iki veritabanı için de SQL Server Express kullandığınızı varsayar. Yüklerken temel yüklemeyi seçin.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS, veritabanını yönetme ve T-SQL betiğini çalıştırmak için kullanılır. İndirin ve kurumsal Geliştirici VM'ye yükleyin.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS veritabanlarını yönetmek ve Bir T-SQL komut dosyası çalıştırmak için kullanılır. Enterprise Developer VM'ye indirin ve yükleyin.
 
-- [Visual Studio 2019](https://azure.microsoft.com/downloads/) en son hizmet paketiyle veya [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), ücretsiz olarak indirebilirsiniz.
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/) ile en son hizmet paketi veya [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), ücretsiz olarak indirebilirsiniz.
 
-- Masaüstü veya başka bir rumba 3270 öykünücüsü.
+- Rumba Masaüstü veya başka bir 3270 emülatörü.
 
 ## <a name="configure-the-windows-environment"></a>Windows ortamını yapılandırma
 
-VM üzerinde Kurumsal Geliştirici 4.0 yükledikten sonra birlikte Enterprise Server örneğini yapılandırmanız gerekir. Bunu yapmak için birkaç ek Windows özelliklerini şu şekilde yüklemeniz gerekir.
+Enterprise Developer 4.0'ı VM'ye yükledikten sonra, onunla birlikte gelen Enterprise Server örneğini yapılandırmanız gerekir. Bunu yapmak için aşağıdaki gibi birkaç ek Windows özelliği yüklemeniz gerekir.
 
-1. Kurumsal Server 4.0 oluşturduğunuz VM'de oturum açma için RDP kullanın.
+1. Oluşturduğunuz Enterprise Server 4.0 VM'de oturum açmak için RDP'yi kullanın.
 
-2. Tıklayın **arama** yanındaki simge **Başlat** düğmesi ve türü **Windows özellikleri**. Sunucu Yöneticisi Rol Ekle ve Özellik Ekleme Sihirbazı açılır.
+2. **Başlat** düğmesinin yanındaki **Arama** simgesine tıklayın ve **Windows özelliklerini**yazın. Sunucu Yöneticisi Rolleri ve Özellikleri Ekle Sihirbazı açılır.
 
-3. Seçin **Web sunucusu (IIS) rolü**, ardından aşağıdaki seçeneklerini işaretleyin:
+3. **Web Sunucusu (IIS) Rolü'nü**seçin ve ardından aşağıdaki seçenekleri denetleyin:
 
-    - Web yönetimi araçları
-    - IIS 6 Yönetim uyumluluğu (mevcut özelliklerin tümünü Seç)
+    - Web Yönetim Araçları
+    - IIS 6 Yönetim Uyumluluğu (mevcut tüm özellikleri seçin)
     - IIS Yönetim Konsolu
-    - IIS Yönetim betikleri ve araçları
-    - IIS Yönetim hizmeti
+    - IIS Yönetim Komut Dosyaları ve Araçları
+    - IIS Yönetim Hizmeti
 
-4. Seçin **World Wide Web Hizmetleri**, aşağıdaki seçeneklerini işaretleyin:
+4. **World Wide Web Services'ı**seçin ve aşağıdaki seçenekleri kontrol edin:
 
-     Uygulama geliştirme özellikleri:
-    - .NET genişletilebilirliği
+     Uygulama Geliştirme Özellikleri:
+    - .NET Genişletilebilirliği
     - ASP.NET
-    - Ortak HTTP özellikleri: Mevcut özelliklerin tümünü Ekle
-    - Durum ve Tanılama: Mevcut özelliklerin tümünü Ekle
+    - Yaygın HTTP Özellikleri: Tüm kullanılabilir özellikleri ekleme
+    - Sağlık ve Tanılama: Mevcut tüm özellikleri ekleyin
     - Güvenlik:
         - Temel Kimlik Doğrulaması
         - Windows Kimlik Doğrulaması
 
-5. Seçin **Windows İşlem Etkinleştirme hizmeti** ve tüm alt öğeleri.
+5. **Windows İşlem Etkinleştirme Hizmeti'ni** ve tüm çocuklarını seçin.
 
-6. İçin **özellikleri**, kontrol **Microsoft .NET framework 3.5.1**, aşağıdaki seçeneklerini işaretleyin:
+6. **Özellikler**için **Microsoft .NET framework 3.5.1 seçeneğini**işaretleyin ve aşağıdaki seçenekleri denetleyin:
 
-    - Windows Communication Foundation HTTP etkinleştirme
-    - Windows Communication Foundation HTTP olmayan etkinleştirme
+    - Windows İletişim Vakfı HTTP Aktivasyon
+    - Windows Communication Foundation NON-HTTP Etkinleştirme
 
-7. İçin **özellikleri**, kontrol **Microsoft .NET framework 4.6**, aşağıdaki seçeneklerini işaretleyin:
+7. **Özellikler**için **Microsoft .NET framework 4.6'yı**denetleyin ve aşağıdaki seçenekleri denetleyin:
 
-   - Adlandırılmış kanal etkinleştirmesi
-   - TCP etkinleştirme
-   - TCP bağlantı noktası paylaşma
+   - Adlı Boru Aktivasyonu
+   - TCP Etkinleştirme
+   - TCP Bağlantı Noktası Paylaşma
 
-     ![Rol ve Özellik Ekleme Sihirbazı'nı ekleyin: Rol Hizmetleri](media/01-demo-roles.png)
+     ![Roller ve Özellikler Sihirbazı Ekle: Rol Hizmetleri](media/01-demo-roles.png)
 
-8. Tüm seçenekleri seçtikten sonra tıklayın **sonraki** yüklemek için.
+8. Tüm seçenekleri seçtiğinizde, yüklemek için **İleri'yi** tıklatın.
 
-9. Windows özellikleri sonra Git **Denetim Masası \> sistem ve güvenlik \> Yönetimsel Araçlar**seçip **Hizmetleri**. Ekranı aşağı kaydırın ve aşağıdaki Hizmetleri çalıştıran ve ayarlayın sağlayın **otomatik**:
+9. Windows özelliklerinden sonra, **Denetim \> Masası Sistemi \> ve Güvenlik Yönetim Araçları'na**gidin ve **Hizmetleri**seçin. Aşağı kaydırın ve aşağıdaki hizmetlerin çalıştığını ve **Otomatik**olarak ayarlandıklarına emin olun:
 
-    - **NetTcpPortSharing**
-    - **Net.Pipe Dinleyici Bağdaştırıcısı**
-    - **NET.TCP dinleyicisi bağdaştırıcısı**
+    - **Nettcpportsharing**
+    - **Net.Boru Dinleyici Adaptörü**
+    - **Net.tcp Dinleyici Adaptörü**
 
-10. IIS ve WAS'ta desteğini yapılandırmak için menüden bulun **Micro odak Kurumsal Geliştirici komut istemi (64-bit)** ve Farklı Çalıştır **yönetici**.
+10. IIS ve WAS desteğini yapılandırmak için, menüden **Micro Focus Enterprise Developer Command Prompt'ı (64 bit)** bulun ve **Yönetici**olarak çalıştırın.
 
-11. Tür **wassetup – i** basın **Enter**.
+11. Yazı **wassetup -i** ve **Enter**tuşuna basın .
 
-12. Betik çalıştıktan sonra pencereyi kapatabilirsiniz.
+12. Komut dosyası çalıştırıladıktan sonra pencereyi kapatabilirsiniz.
 
-## <a name="configure-the-local-system-account-for-sql-server"></a>SQL Server için yerel sistem hesabını yapılandırın
+## <a name="configure-the-local-system-account-for-sql-server"></a>SQL Server için yerel sistem hesabını yapılandırma
 
-Veritabanları ve diğer nesneleri oluşturma ve SQL Server'da oturum açabilmesi bazı kurumsal sunucu işlemlerini gerekir. Bu işlemler, yerel sistem hesabını kullanır, bu nedenle, bu hesaba sysadmin yetki vermeniz gerekir.
+Bazı Enterprise Server işlemlerinin SQL Server'da oturum açabilmesi ve veritabanları ve diğer nesneler oluşturabilmesi gerekir. Bu işlemler yerel sistem hesabını kullanır, bu nedenle bu hesaba sysadmin yetkisini vermeniz gerekir.
 
-1. Başlatma **SSMS** tıklatıp **Connect** yerel SQLEXPRESS Windows kimlik doğrulaması kullanarak sunucuya bağlanma. Kullanılabilir olması **sunucu adı** listesi.
+1. Windows Kimlik Doğrulaması'nı kullanarak yerel SQLEXPRESS Sunucusuna bağlanmak için **SSMS'i** başlatın ve **Bağlan'ı** tıklatın. **Sunucu Adı** listesinde bulunmalıdır.
 
-2. Sol tarafta, genişletin **güvenlik** klasörü ve select **oturumları**.
+2. Solda, **Güvenlik** klasörünü genişletin ve **Oturum Açma'yı**seçin.
 
-3. Seçin **NT AUTHORITY\\sistem** seçip **özellikleri**.
+3. **NT YEtkİ\\SİsteMİ'ni** seçin ve **Özellikler'i**seçin.
 
-4. Seçin **sunucu rolleri** ve **sysadmin**.
+4. **Sunucu Rolleri'ni** seçin ve **sysadmin'i denetleyin.**
 
-     ![SSMS Nesne Gezgini penceresi: Oturum Açma Özellikleri](media/02-demo-explorer.png)
+     ![SSMS Object Explorer penceresi: Giriş Özellikleri](media/02-demo-explorer.png)
 
-## <a name="create-the-bankdemo-database-and-all-its-objects"></a>BankDemo veritabanı ve tüm nesneleri oluşturma
+## <a name="create-the-bankdemo-database-and-all-its-objects"></a>BankDemo veritabanını ve tüm nesnelerini oluşturun
 
-1. Açık **Windows Explorer** gidin **C:\\kullanıcılar\\genel\\belgeleri\\Micro odak\\Kurumsal Geliştirici\\ Örnekleri\\anabilgisayar\\CICS\\DotNet\\BankDemo\\SQL**.
+1. **Windows Explorer'ı** açın ve **C'ye\\gidin:\\\\Kullanıcılar\\Ortak\\Belgeler\\\\Micro\\Focus Enterprise Geliştirici\\Örnekleri Mainframe\\CICS\\DotNet BankDemo SQL**.
 
-2. İçeriğini kopyalayın **BankDemoCreateAll.SQL** panonuza dosyasına.
+2. **BankDemoCreateAll.SQL** dosyasının içeriğini panonuza kopyalayın.
 
-3. Açık **SSMS**. Sağ tarafta tıklayın **sunucu** seçip **yeni sorgu**.
+3. Açık **SSMS**. Sağda **Sunucu'yu** tıklatın ve **Yeni Sorgu'yu**seçin.
 
-4. Panonun içindekileri yapıştırın **yeni sorgu** kutusu.
+4. Pano içeriğini **Yeni Sorgu** kutusuna yapıştırın.
 
-5. Tıklayarak SQL yürütme **yürütme** gelen **komut** sorgu yukarıda sekmesi.
+5. Sorgunun üstündeki **Komut** sekmesinden **Yürüt'e** tıklayarak SQL'i çalıştırın.
 
-Sorgu, herhangi bir hata ile çalıştırmanız gerekir. İşlem tamamlandığında BankDemo uygulama için örnek veritabanı vardır.
+Sorgu hatasız çalıştırılmalıdır. Tamamlandığında, BankDemo uygulaması için örnek veritabanına sahip olursunuz.
 
-![SQLQuery1.sql output](media/03-demo-query.png)
+![SQLQuery1.sql çıktı](media/03-demo-query.png)
 
-## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Veritabanı tabloları ve nesneleri oluşturulmuş olduğunu doğrulayın
+## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Veritabanı tablolarının ve nesnelerin oluşturulduğunu doğrulama
 
-1. Sağ **BANKDEMO** seçin ve veritabanı **Yenile**.
+1. **BANKDEMO** veritabanına sağ tıklayın ve **Yenile'yi**seçin.
 
-2. Genişletin **veritabanı** seçip **tabloları**. Aşağıdaki gibi görmeniz gerekir.
+2. **Veritabanını** genişletin ve **Tablolar'ı**seçin. Aşağıdaki gibi bir şey görmelisiniz.
 
-     ![Nesne Gezgini'nde genişletilmiş BANKDEMO tablo](media/04-demo-explorer.png)
+     ![BANKDEMO tablosu Object Explorer'da genişletildi](media/04-demo-explorer.png)
 
-## <a name="build-the-application-in-enterprise-developer"></a>Kurumsal Geliştirici uygulama oluşturun
+## <a name="build-the-application-in-enterprise-developer"></a>Uygulamayı Enterprise Developer'da oluşturun
 
-1. Visual Studio'yu açın ve oturum açın.
+1. Visual Studio'u açın ve oturum açın.
 
-2. Altında **dosya** seçin menü seçeneği **proje/çözüm Aç**, gitmek **C:\\kullanıcılar\\genel\\belgeleri\\Micro Odak\\Kurumsal Geliştirici\\örnekleri\\anabilgisayar\\CICS\\DotNet\\BankDemo**seçip **sln**dosya.
+2. **Dosya** menüsü seçeneği altında, **Proje/Çözüm Aç**seçeneğini belirleyin, **C:\\Users\\Public\\Documents\\Micro\\Focus Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo'ya**gidin ve **sln** dosyasını seçin.
 
-3. Nesneleri incelemek için biraz zaman ayırın. Çözüm Gezgini'nde, yanı sıra CopyBooks (CPY) ve JCL CBL uzantılı COBOL programlar gösterilmektedir.
+3. Nesneleri incelemek için biraz zaman ayırın. COBOL programları CopyBooks (CPY) ve JCL ile birlikte CBL uzantısı ile Solution Explorer gösterilir.
 
-4. Sağ **BankDemo2** proje ve select **başlangıç projesi olarak ayarla**.
-
-    > [!NOTE]
-    > Bu Tanıtım için kullanılmayan HCOSS (SQL Server için konak Uyumluluk seçeneği), kullanım BankDemo proje yapar.
-
-5. İçinde **Çözüm Gezgini**, sağ **BankDemo2** proje ve select **yapı**.
+4. **BankDemo2** Projesi'ne sağ tıklayın ve **Başlangıç Projesi olarak Set'i**seçin.
 
     > [!NOTE]
-    > HCOSS yapılandırılmamış gibi yapı çözüm düzeyinde hatalarla sonuçlanır.
+    > BankDemo Projesi, bu demo için kullanılmayan HCOSS'u (SQL Server için Host Uyumluluk Seçeneği) kullanır.
 
-6. Proje derlenirken inceleyin **çıkış** penceresi. Bu işlem, aşağıdaki resimdeki gibi görünmelidir.
+5. **Çözüm Gezgini'nde** **BankDemo2** Project'e sağ tıklayın ve **Oluştur'u**seçin.
 
-     ![Çıktı penceresi başarılı derleme gösterme](media/05-demo-output.png)
+    > [!NOTE]
+    > HCOSS yapılandırılmamalarından, çözüm düzeyinde bina hatalara neden olabilir.
 
-## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>Bölge veritabanı BankDemo uygulamasına dağıtma
+6. Proje oluşturulduğunda, **Çıktı** penceresini inceleyin. Aşağıdaki resme benzer görünmesi gerekir.
 
-1. Bir kurumsal Geliştirici komut istemi (64-bit) yönetici olarak açın.
+     ![Başarılı yapıyı gösteren çıkış penceresi](media/05-demo-output.png)
 
-2. Gidin **genel %\\belgeleri\\Micro odak\\Kurumsal Geliştirici\\örnekleri\\anabilgisayar\\CICS\\DotNet\\ BankDemo**.
+## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>BankDemo uygulamasını Bölge veritabanına dağıtın
 
-3. Komut isteminde çalıştırmak **bankdemodbdeploy** ve, örneğin dağıtmak bir veritabanı için parametresini ekleyin:
+1. Yönetici olarak bir Kurumsal Geliştirici komut istemi (64 bit) açın.
+
+2. **%GENEL%\\\\Belgeler Micro Focus\\Enterprise\\\\Geliştirici\\örnekleri\\Mainframe\\CICS DotNet BankDemo**gidin.
+
+3. Komut isteminde, **bankdemodbdeploy** yürütmek ve veritabanı için parametre dağıtmak için, örneğin dahil:
 
     ```
     bankdemodbdeploy (local)/sqlexpress
     ```
 
 > [!NOTE]
-> Eğik çizgi (/) değil ters eğik çizgi kullandığınızdan emin olun (\\). Bu betik, bir süredir çalıştırır.
+> Geriye doğru eğik çizgi (/) değil,\\ileri eğik çizgi (/) kullandığınızdan emin olun. Bu komut dosyası bir süre çalışır.
 
-![Yönetim: Kurumsal Geliştirici komut istemi penceresi](media/06-demo-cmd.png)
+![Yönetim: Kurumsal Geliştirici Komut Istem penceresi](media/06-demo-cmd.png)
 
-## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>.NET için kuruluş yöneticisi BankDemo bölge oluştur
+## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>.NET için Kurumsal Yönetici'de BankDemo Bölgesini Oluşturun
 
-1. Açık **.NET Yönetim kuruluş sunucusu** kullanıcı Arabirimi.
+1. **.NET Administration** UI için Enterprise Server'ı açın.
 
-2. Windows MMC ek bileşenini başlatmak için **Başlat** menüsünde seçin **Micro odak Kurumsal Geliştirici \> yapılandırma \> .NET yönetici kuruluş sunucusu**. (Windows Server'de seçin **Micro odak Kurumsal Geliştirici \> .NET yönetici kuruluş sunucusu**).
+2. MMC snap-in başlatmak için, Windows **Başlat** menüsünden, **Micro Focus Enterprise Developer \> Configuration \> Enterprise Server için .NET Admin**seçin. (Windows Server **için .NET \> Admin için Micro Focus Enterprise Developer Enterprise Server'ı**seçin).
 
-3. Genişletin **bölgeleri** seçip sağ tıklayın ve sol bölmedeki kapsayıcısında **CICS**.
+3. Sol bölmedeki **Bölgeler** kapsayıcısını genişletin ve **ardından CICS'yi**sağ tıklatın.
 
-4. Seçin **tanımlamak bölge** adlı yeni bir CICS bölgesi oluşturmak için **BANKDEMO**, (yerel) veritabanında barındırılan.
+4. (Yerel) veritabanında barındırılan **BANKDEMO**adlı yeni bir CICS Bölgesi oluşturmak için **Bölgeyi Tanımla'yı** seçin.
 
-5. Veritabanı sunucusu örneğine sağlayın, tıklayın **sonraki**ve ardından bölge adı girin **BANKDEMO**.
+5. Veritabanı sunucusu örneğini veri, **İleri'yi**tıklatın ve ardından bölge adını **BANKDEMO**girin.
 
-     ![Bölge iletişim kutusu tanımlayın](media/07-demo-cics.png)
+     ![Bölge iletişim kutusunu tanımla](media/07-demo-cics.png)
 
-6. Bölgeler arası veritabanı için bölge tanım dosyasını seçmek için bulun **bölge\_bankdemo\_db.config** içinde **C:\\kullanıcılar\\genel\\ Belgeler\\Micro odak\\Kurumsal Geliştirici\\örnekleri\\anabilgisayar\\CICS\\DotNet\\BankDemo**.
+6. Bölgeler arası veritabanı için bölge tanım dosyasını seçmek için, **C\_bölgesinde\_bankdemo db.config'i** **bulun:\\\\\\\\\\\\\\Kullanıcılar\\Genel\\Belgeler Mikro Odak Kurumsal Geliştirici Örnekleri Mainframe\\CICS DotNet BankDemo**.
 
-     ![Bölge - bölge adı tanımlayın: BANKDEMO](media/08-demo-cics.png)
+     ![Bölge Tanımla - Bölge adı: BANKDEMO](media/08-demo-cics.png)
 
-7.           **Son**'a tıklayın.
+7. **Son**'a tıklayın.
 
-## <a name="create-xa-resource-definitions"></a>XA Kaynak tanımları oluşturma
+## <a name="create-xa-resource-definitions"></a>XA Kaynak Tanımları Oluşturma
 
-1. Sol bölmesinde **.NET Yönetim için Enterprise Server** kullanıcı Arabiriminde, genişletme **sistem**ve ardından **XA Kaynak tanımları**. Bu ayar, kuruluş sunucusu ve uygulama veritabanlarını ile bölgeye nasıl birlikte çalışır tanımlar.
+1. **.NET Administration** UI için Enterprise Server'ın sol bölmesinde, **Sistemi**genişletin ve ardından **XA Kaynak Tanımları.** Bu ayar, Bölgenin Enterprise Server ve uygulama veritabanları ile nasıl birlikte çalıştığını tanımlar.
 
-2. Sağ **XA Kaynak tanımları** seçip **sunucuyu eklemek**.
+2. **XA Kaynak Tanımları'na** sağ tıklayın ve **Sunucu Örneği Ekle'yi**seçin.
 
-3. Aşağı açılan kutusunda **veritabanı hizmet örneği**. Bu, yerel makine SQLEXPRESS olacaktır.
+3. Açılan kutuda **Veritabanı Hizmet Örneği'ni**seçin. Bu yerel makine SQLEXPRESS olacaktır.
 
-4. Örneği altından seçin **XA Kaynak tanımları (machinename\\sqlexpress)** kapsayıcı ve tıklatın **Ekle**.
+4. **XA Kaynak\\Tanımları (makine adı sqlexpress)** kapsayıcısının altından örneği seçin ve **Ekle'yi**tıklatın.
 
-5. Seçin **veritabanı XA kaynak tanımı** yazın **BANKDEMO** için **adı** ve **bölge**.
+5. **Veritabanı XA Kaynak Tanımı'nı** seçin ve ardından **Ad** ve **Bölge**için **BANKDEMO** yazın.
 
-     ![Yeni veritabanı XA kaynak tanımı filtresi](media/09-demo-xa.png)
+     ![Yeni Veritabanı XA Kaynak Tanımı ekranı](media/09-demo-xa.png)
 
-6. Üç noktaya tıklayın ( **...** ) için bağlantı dizesi sihirbazını getirir. İçin **sunucu adı**, türü **(yerel)\\SQLEXPRESS**. İçin **oturum açma**seçin **Windows kimlik doğrulaması**. Veritabanı adını yazın **BANKDEMO**
+6. Bağlantı Dizesihirbazı sihirbazını getirmek için elipsleri (**...**) tıklatın. **Sunucu Adı**için , yazın **\\(yerel) SQLEXPRESS**. **Logon**için **Windows Kimlik Doğrulama'yı**seçin. Veritabanı adı için **BANKDEMO** yazın
 
-     ![Bağlantı dizesi ekran Düzenle](media/10-demo-string.png)
+     ![Bağlantı String ekranına getir](media/10-demo-string.png)
 
 7. Bağlantıyı test edin.
 
-## <a name="start-the-bankdemo-region"></a>BANKDEMO bölge Başlat
+## <a name="start-the-bankdemo-region"></a>BANKDEMO Bölgesini Başlat
 
 > [!NOTE]
-> İlk adım büyük/küçük harf önemlidir: Yeni oluşturduğunuz XA kaynak tanımı bölge ayarlamanız gerekir.
+> İlk adım önemlidir: Bölge'yi yeni oluşturduğunuz XA Kaynak Tanımı'nı kullanacak şekilde ayarlamanız gerekir.
 
-1. Gidin **BANDEMO CICS bölge** altında **bölgeleri kapsayıcı**ve ardından **bölge başlangıç dosyası Düzenle** gelen **eylemleri** bölme. SQL özellikleri aşağı kaydırın ve girin **bankdemo** için **XA kaynak adı**, veya nokta seçmek için kullanın.
+1. **Bölgeler Kapsayıcısı**altındaki **BANDEMO CICS Bölgesi'ne** gidin ve ardından **Eylemler** bölmesinden **Bölge Başlatma Dosyasını Edit'i** seçin. SQL özelliklerine gidin ve **XA kaynak adı**için **bankdemo** girin veya seçmek için elipsleri kullanın.
 
-2. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydetmek için simge.
+2. Değişikliklerinizi kaydetmek için **Kaydet** simgesini tıklatın.
 
-3. Sağ **BANKDEMO CICS bölge** içinde **konsol** bölmesi ve seçin **başlatma/durdurma bölge**.
+3. **Konsol** bölmesinde **BANKDEMO CICS Bölgesi'ne** sağ tıklayın ve **Başlat/Durdur Bölgesi'ni**seçin.
 
-4. ' In en altındaki **başlatma/durdurma bölge** Ortadaki bölmeden seçin açılan kutusunda **Başlat**. Birkaç saniye sonra bölgeyi başlatır.
+4. Orta bölmede görünen **Başlat/Durdur Bölgesi** kutusunun alt kısmında **Başlat'ı**seçin. Birkaç saniye sonra bölge başlar.
 
      ![SQL Başlat/Durdur kutusu](media/11-demo-sql.png)
 
-     ![CICS bölge BANKDEMO - başlangıç ekranı](media/12-demo-cics.png)
+     ![CICS Bölge BANKDEMO - Ekran başladı](media/12-demo-cics.png)
 
-## <a name="create-a-listener"></a>Bir dinleyici oluşturun
+## <a name="create-a-listener"></a>Dinleyici oluşturma
 
-BankDemo uygulamaya erişim TN3270 oturumlar için bir dinleyici oluşturun.
+BankDemo uygulamasına erişen TN3270 oturumları için bir dinleyici oluşturun.
 
-1. Sol bölmede genişletin **yapılandırma düzenleyicileri** seçip **dinleyici**.
+1. Sol bölmede, **Configuration Editors'u** genişletin ve **Dinleyici'yi**seçin.
 
-2. Tıklayın **açık dosya** simgesini seçip alt **seelistener.exe.config** dosya. Bu dosya, düzenlenecek ve kuruluş sunucusu her başladığında yüklenir.
+2. **Dosyayı Aç** simgesine tıklayın ve **seelistener.exe.config** dosyasını seçin. Bu dosya düzenlenir ve Enterprise Server her başlatılında yüklenir.
 
-3. İki bölgeleri (ESDEMO ve JCLDEMO) önceden tanımlanmış dikkat edin.
+3. Daha önce tanımlanan iki bölgeye (ESDEMO ve JCLDEMO) dikkat edin.
 
-4. BANKDEMO için yeni bir bölge oluşturmak için **bölgeleri**seçip **bölge ekleme**.
+4. BANKDEMO için yeni bir Bölge oluşturmak için **Bölgeler'i**sağ tıklatın ve **Bölge Ekle'yi**seçin.
 
-5. Seçin **BANKDEMO bölge**.
+5. **BANKDEMO Bölgesini**seçin.
 
-6. Sağ tıklayarak bir TN3270 kanalı eklemek **BANKDEMO bölge** seçerek **Ekle kanal**.
+6. **BANKDEMO Bölgesi'ni** sağ tıklayarak ve **Kanal Ekle'yi**seçerek Bir TN3270 kanalı ekleyin.
 
-7. İçin **adı**, girin **TN3270**. İçin **bağlantı noktası**, girin **9024**. ESDEMO uygulama, bağlantı noktası 9230 kullanır, bu nedenle, farklı bir bağlantı noktası kullanmanız gerekir.
+7. **Ad**için **TN3270**girin. **Bağlantı Noktası**için , **9024**girin. ESDEMO uygulaması farklı bir bağlantı noktası kullanmanız gerekir, bu yüzden port 9230 kullanır.
 
-8. Dosyayı kaydetmek için tıklatın **Kaydet** simgesi veya **dosya** \> **Kaydet**.
+8. Dosyayı kaydetmek için **Kaydet** simgesini tıklatın veya **Dosya** \> **Yı küçül'**'i seçin.
 
-9. Dinleyici başlatmak için tıklatın **dinleyicisi başlatın** simgesine ya da seçin **seçenekleri** \> **dinleyicisi başlatın**.
+9. Dinleyiciyi başlatmak için **Dinleyiciyi Başlat** simgesini tıklatın veya **Options** \> **Start Listener'ı**seçin.
 
-     ![Dinleyici yapılandırma Düzenleyicisi windows](media/13-demo-listener.png)
+     ![Dinleyici Yapılandırma Düzenleyicisi pencereleri](media/13-demo-listener.png)
 
 
-## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba BankDemo uygulamaya erişmek için yapılandırma
+## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba'yı BankDemo uygulamasına erişmek için yapılandırın
 
-Gerçekleştirmeniz gereken son Rumba, 3270 öykünücüsü kullanarak bir 3270 oturum yapılandırma şeydir. Bu adım, oluşturduğunuz dinleyicisi BankDemo uygulamaya erişim sağlar.
+Yapmanız gereken son şey Rumba, bir 3270 emülatörü kullanarak bir 3270 oturum yapılandırmaktır. Bu adım, oluşturduğunuz dinleyici aracılığıyla BankDemo uygulamasına erişmenizi sağlar.
 
-1. Windows gelen **Başlat** menüsünde Rumba Masaüstü başlatın.
+1. Windows **Başlat** menüsünden Rumba Desktop'ı başlatın.
 
-2. Altında **bağlantıları** menü öğesi, select **TN3270**.
+2. **Connections** menü öğesinin altında **TN3270'i**seçin.
 
-3. Tıklayın **Ekle** ve türü **127.0.0.1** IP adresi ve **9024** için kullanıcı tanımlı bir bağlantı noktası.
+3. IP adresi için **Ekle** ve **127.0.0.1** yazın ve kullanıcı tanımlı bağlantı noktası için **9024'ü** tıklatın.
 
-4. İletişim kutusunun altındaki tıklatın **Connect**. Siyah CICS ekran görünür.
+4. İletişim kutusunun alt kısmında **Bağlan'ı**tıklatın. Siyah bir CICS ekranı görüntülenir.
 
-5. Tür **banka** BankDemo uygulamanın ilk 3270 ekranı görüntülemek için.
+5. BankDemo uygulaması için ilk 3270 ekranını görüntülemek için **banka** yazın.
 
-6. Kullanıcı kimliği için tür **B0001** ve herhangi bir şey parolasını yazın. İlk ekrana BANK20 açılır.
+6. Kullanıcı Kimliği için **B0001** yazın ve parola için her şeyi yazın. İlk ekran BANK20 açılır.
 
-![Ana görüntü Hoş Geldiniz ekranı](media/14-demo.png)
-![anabilgisayar görüntüleme - Rumba - alt tanıtım ekran](media/15-demo.png)
+![Mainframe Ekran](media/14-demo.png)
+![Karşılama ekranı Mainframe Ekran - Rumba - Alt Sistem Gösterim ekranı](media/15-demo.png)
 
-Tebrikler! Micro odak kuruluş sunucusu kullanarak Azure'da bir CICS uygulaması şimdi çalışıyor.
+Tebrikler! Şimdi Micro Focus Enterprise Server kullanarak Azure'da bir CICS uygulaması çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kuruluş sunucusu, Azure üzerinde Docker kapsayıcılarında çalıştırın](run-enterprise-server-container.md)
-- [Ana bilgisayar geçişi - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Azure'da Docker kapsayıcılarında Enterprise Server'ı çalıştırın](run-enterprise-server-container.md)
+- [Ana Bilgisayar Geçişi - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Sorun giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Azure'a geçiş için ana bilgisayar demystifying](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [Azure geçişiiçin ana bilgisayarın mymystifying](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

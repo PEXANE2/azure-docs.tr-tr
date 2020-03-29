@@ -1,65 +1,65 @@
 ---
-title: Azure Veri Kataloğu 'nda veri kaynaklarını bulma
-description: Bu makalede, Azure Veri Kataloğu portalının arama ve filtreleme ve isabet vurgulama özelliklerini kullanma dahil olmak üzere Azure Veri Kataloğu ile kayıtlı veri varlıklarını bulma işlemi anlatılmaktadır.
+title: Azure Veri Kataloğu'nda veri kaynakları nasıl keşfedilir?
+description: Bu makalede, Azure Veri Kataloğu ile kayıtlı veri varlıklarının nasıl keşfedilebilen, arama ve filtreleme ve Azure Veri Kataloğu portalının isabet vurgulama özelliklerini kullanma gibi bilgiler vurgulanmaktadır.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736369"
 ---
-# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarını bulma
+# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu'nda veri kaynakları nasıl keşfedilir?
 
 ## <a name="introduction"></a>Giriş
 
-Azure Veri Kataloğu, kurumsal veri kaynakları için kayıt ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, Veri Kataloğu, kullanıcıların veri kaynaklarını bulmasına, anlamasına ve kullanmasına yardımcı olur. Kuruluşların mevcut verilerinden daha fazla değer almasını sağlar. Veri kaynağı veri kataloğuna kaydedildikten sonra, ihtiyacınız olan verileri bulmayı kolayca arayabilmeniz için meta verileri hizmet tarafından dizine alınır.
+Azure Veri Kataloğu, kurumsal veri kaynakları için bir kayıt ve keşif sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Başka bir deyişle, Veri Kataloğu insanların veri kaynaklarını keşfetmeye, anlamamıza ve kullanmamıza yardımcı olur. Kuruluşların varolan verilerinden daha fazla değer elde etmelerine yardımcı olur. Bir veri kaynağı Veri Kataloğu'na kaydedildikten sonra, meta verileri hizmet tarafından dizine eklenir, böylece ihtiyacınız olan verileri bulmak için kolayca arama yapabilirsiniz.
 
 ## <a name="searching-and-filtering"></a>Arama ve filtreleme
 
-Veri kataloğunda bulma iki birincil mekanizma kullanır: arama ve filtreleme.
+Veri Kataloğunda Bulma iki birincil mekanizma kullanır: arama ve filtreleme.
 
 Arama hem sezgisel hem de güçlü olacak şekilde tasarlanmıştır. Varsayılan olarak, arama terimleri kullanıcı tarafından ek açıklamalar dahil olmak üzere katalogdaki herhangi bir özellikle eşleştirilir.
 
-Filtreleme, aramayı tamamlamak üzere tasarlanmıştır. Uzmanlar, veri kaynağı türü, nesne türü ve Etiketler gibi belirli özellikleri seçebilirsiniz. Yalnızca eşleşen veri varlıklarını görüntüleyebilir ve arama sonuçlarını eşleşen varlıklarla kısıtlayabilirsiniz.
+Filtreleme, aramayı tamamlamak üzere tasarlanmıştır. Uzmanlar, veri kaynağı türü, nesne türü ve etiketler gibi belirli özellikleri seçebilirsiniz. Yalnızca eşleşen veri varlıklarını görüntüleyebilir ve arama sonuçlarını eşleşen varlıklarla sınırlandırabilirsiniz.
 
-Arama ve filtreleme birleşimini kullanarak, ihtiyacınız olan veri kaynaklarını saptamak için veri kataloğu 'Na kaydedilmiş veri kaynaklarında hızlıca gezinebilirsiniz.
+Arama ve filtreleme nin bir birleşimini kullanarak, ihtiyacınız olan veri kaynaklarını keşfetmek için Veri Kataloğu'na kayıtlı olan veri kaynaklarında hızla gezinebilirsiniz.
 
-## <a name="search-syntax"></a>Söz dizimi arama
+## <a name="search-syntax"></a>Sözdizimini ara
 
-Varsayılan boş metin araması basit ve sezgisel olsa da, arama sonuçları üzerinde daha fazla denetim için veri kataloğu arama sözdizimini de kullanabilirsiniz. Veri Kataloğu arama aşağıdaki teknikleri destekler:
+Varsayılan ücretsiz metin araması basit ve sezgisel olsa da, arama sonuçları üzerinde daha fazla denetim için Veri Kataloğu arama sözdizimini de kullanabilirsiniz. Veri Kataloğu aramaaşağıdaki teknikleri destekler:
 
-| Teknik | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında | Örnek |
+| Teknik | Kullanım | Örnek |
 | --- | --- | --- |
-| Temel arama |Bir veya daha fazla arama terimi kullanan temel arama. Sonuçlar, belirtilen koşullara bir veya daha fazlasına sahip herhangi bir özellikle eşleşen varlıklardır. |`sales data` |
-| Özellik kapsamı |Yalnızca arama teriminin belirtilen özellikle eşleştiği veri kaynaklarını döndürün. |`name:finance` |
-| Boole işleçleri |Boole işlemlerini kullanarak bir aramayı genişletin veya daraltın. |`finance NOT corporate` |
-| Parantez ile gruplandırma |Özellikle Boolean işleçleriyle birlikte mantıksal yalıtım elde etmek üzere sorgunun parçalarını gruplamak için ayraçları kullanın. |`name:finance AND (tags:Q1 OR tags:Q2)` |
-| Karşılaştırma işleçleri |Sayısal ve Tarih veri türlerine sahip özellikler için eşitlik dışındaki karşılaştırmaları kullanın. |`modifiedTime > "11/05/2014"` |
+| Temel arama |Bir veya daha fazla arama terimleri kullanan temel arama. Sonuçlar, belirtilen terimlerden biriyle veya daha fazlasıyla herhangi bir özelliği eşleştirebilen varlıklardır. |`sales data` |
+| Özellik kapsamları |Yalnızca arama teriminin belirtilen özellikile eşleştiği veri kaynaklarını döndürün. |`name:finance` |
+| Boole işleçleri |Boolean işlemlerini kullanarak aramayı genişletin veya daraltın. |`finance NOT corporate` |
+| Parantez ile gruplandırma |Özellikle Boolean işleçleri ile birlikte mantıksal yalıtım elde etmek için sorgunun bölümlerini gruplandırmak için parantez kullanın. |`name:finance AND (tags:Q1 OR tags:Q2)` |
+| Karşılaştırma işleçleri |Sayısal ve tarih veri türleri olan özellikler için eşitlik dışındaki karşılaştırmalar kullanın. |`modifiedTime > "11/05/2014"` |
 
-Veri Kataloğu araması hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](/rest/api/datacatalog/#search-syntax-reference) makalesi.
+Veri Kataloğu araması hakkında daha fazla bilgi için [Azure Veri Kataloğu](/rest/api/datacatalog/#search-syntax-reference) makalesine bakın.
 
 ## <a name="hit-highlighting"></a>İsabet vurgulama
 
-Arama sonuçlarını görüntülediğinizde, belirtilen arama terimleriyle eşleşen (veri varlık adı, açıklama ve Etiketler gibi) görüntülenen tüm özellikler, belirli bir veri varlığının belirli bir arama tarafından neden döndürüldüğünü belirlemeyi kolaylaştırmak için vurgulanır.
+Arama sonuçlarını görüntülediğinizde, belirli bir veri varlığının belirli bir arama tarafından neden döndürüldedildiğini belirlemeyi kolaylaştırmak için belirtilen arama terimleriyle (veri varlık adı, açıklama ve etiketler gibi) eşleşen görüntülenen özellikler vurgulanır.
 
 > [!NOTE]
-> İsabet Vurgulamayı devre dışı bırakmak için, veri kataloğu portalındaki **vurgu** anahtarını kullanın.
+> Isabet vurgulamayı kapatmak için Veri Kataloğu portalındaki **Vurgu** anahtarını kullanın.
 
-Arama sonuçlarını görüntülediğinizde, isabet vurgulaması etkinleştirilmiş olsa bile, her zaman bir veri varlığının neden dahil edilmediğini her zaman açık olmayabilir. Tüm özellikler varsayılan olarak arandığından, bir sütun düzeyi özelliğindeki eşleşme nedeniyle bir veri varlığı döndürülebilir. Birden çok Kullanıcı, kendi etiketleri ve açıklamalarıyla kayıtlı veri varlıklarına açıklama ekleyebilir, ancak arama sonuçları listesinde tüm meta veriler gösterilmez.
+Arama sonuçlarını görüntülediğinizde, isabet vurgulama etkin olsa bile bir veri varlığının neden dahil edildiği her zaman açık olmayabilir. Tüm özellikler varsayılan olarak arandığından, sütun düzeyindeki bir özellikteki eşleşme nedeniyle bir veri kıymeti döndürülebilir. Ayrıca, birden çok kullanıcı kayıtlı veri varlıklarına kendi etiketleri ve açıklamalarıyla açıklama eklediği için, tüm meta veriler arama sonuçları listesinde görüntülenmez.
 
-Varsayılan kutucuk görünümünde, arama sonuçlarında görüntülenen her kutucuk, eşleşme sayısını ve bunların konumunu hızlıca görüntüleyebilmeniz ve isterseniz bunlara atlayabilmeniz için arama **terimi eşleşmelerini görüntüle** simgesini içerir.
+Varsayılan döşeme görünümünde, arama sonuçlarında görüntülenen her döşeme, eşlenin sayısını ve konumlarını hızla görüntüleyebilmeniz ve isterseniz onlara atlamak için bir **Görünüm arama terimi eşler** simgesi içerir.
 
- ![Azure Veri Kataloğu portalında vurgulama ve arama eşleşmeleri](./media/data-catalog-how-to-discover/search-matches.png)
+ ![Azure Veri Kataloğu portalında isabet vurgulama ve arama eşleşmeleri](./media/data-catalog-how-to-discover/search-matches.png)
 
 ## <a name="summary"></a>Özet
 
-Veri Kataloğu ile veri kaynağı kaydetme, veri kaynağından Katalog hizmetine yapısal ve açıklayıcı meta verileri kopyaladığından, veri kaynağının keşfve anlaşılması daha kolay hale gelir. Bir veri kaynağını kaydettikten sonra, veri kataloğu portalı içinden filtreleme ve arama işlemlerini kullanarak bulabilirsiniz.
+Veri Kataloğu'na bir veri kaynağı kaydetmek, veri kaynağından katalog hizmetine yapısal ve açıklayıcı meta verileri kopyaladığı için, veri kaynağının bulunması ve anlaşılması daha kolay hale gelir. Bir veri kaynağını kaydettikten sonra, Veri Kataloğu portalı içinden filtreleme ve arama kullanarak bu kaynağı keşfedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri kaynaklarını bulma hakkında adım adım ayrıntılar için bkz. [Azure Veri Kataloğu 'nu kullanmaya başlama](data-catalog-get-started.md).
+* Veri kaynaklarını nasıl keşfedeceğimiz hakkında adım adım ayrıntılar için Azure [Veri Kataloğu ile Başlayın'a](data-catalog-get-started.md)bakın.

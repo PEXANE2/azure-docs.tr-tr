@@ -1,6 +1,6 @@
 ---
-title: Azure AD galeri uygulaması eklenirken sorun | Microsoft Docs
-description: Azure AD galeri uygulamaları ve bunların çözülmesine yönelik yapabilecekleriniz eklerken ortak sorunları insanların yüz anlama
+title: Azure AD Galerisi uygulaması ekleme sorunu | Microsoft Dokümanlar
+description: Azure AD Galerisi uygulamalarını eklerken insanların karşılaştığı sık karşılaşılan sorunları ve bunları çözmek için neler yapabileceğinizi anlama
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,119 +16,119 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784437"
 ---
-# <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD galeri uygulaması eklenirken sorun oluştu
+# <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD Galerisi uygulaması ekleme sorunu
 
-Bu makalede Azure AD galeri uygulamaları ve bunların çözülmesine yönelik yapabilecekleriniz eklerken ortak sorunları insanların yüz anlamanıza yardımcı olur.
+Bu makale, Azure AD Galerisi uygulamalarını eklerken insanların karşılaştığı sık karşılaşılan sorunları ve bunları çözmek için neler yapabileceğinizi anlamanıza yardımcı olur.
 
-## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>"Ekle" düğmesi tıkladım ve uygulamamın görünür uzun sürdü
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>"Ekle" düğmesini tıklattım ve uygulamamın görünmesi uzun zaman aldı
 
-Bazı durumlarda, 1-2 dakika sürebilir (ve bazı durumlarda daha uzun) bir uygulama dizininize eklendikten sonra görünür. Bu normal beklenen performans olmamasına karşın, uygulama eklenmesi devam ederken tıklayarak görebilirsiniz **bildirimleri** simgesine (zil) sağ üst kısmındaki [Azure portalında](https://portal.azure.com/) ve aranıyor için bir **sürüyor** veya **tamamlandı** etiketli bildirim **uygulama ekleniyor.**
+Bazı durumlarda, bir uygulamanın dizininize ekledikten sonra görünmesi 1-2 dakika (ve bazen daha uzun sürebilir). Bu beklenen normal performans olmasa da, [Azure portalının](https://portal.azure.com/) sağ üst kısmındaki **Bildirimler** simgesine (çan) tıklayarak ve Ekleme uygulaması etiketli Devam **Veya** **Tamamlanmış** bir bildirim arayarak uygulama ekinin devam ettiğini **görebilirsiniz.**
 
-Uygulamanızı hiçbir zaman eklenir veya tıklandığında hatayla karşılaşan **Ekle** düğmesi, gördüğünüz bir **bildirim** içinde bir **hata** durumu. Bir destek mühendisiyle paylaşın veya daha fazla bilgi için hata hakkındaki ayrıntılar istiyorsanız, içindeki adımları izleyerek hata hakkında daha fazla bilgi görebilirsiniz [portal bildirimi ayrıntılarını görmek nasıl](#how-to-see-the-details-of-a-portal-notification) bölümü.
+Uygulamanız hiçbir zaman eklenmezveya **Ekle** düğmesini tıklattığınızda bir hatayla karşılaşırsanız, **hata** durumunda bir **Bildirim** görürsünüz. Bir destek mühendisiyle daha fazla bilgi edinmek veya paylaşmak için hata hakkında daha fazla ayrıntı istiyorsanız, portal bildirimi bölümünün [ayrıntılarını nasıl görebilirsiniz](#how-to-see-the-details-of-a-portal-notification) bölümündeki adımları izleyerek hata hakkında daha fazla bilgi görebilirsiniz.
 
-## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>"Ekle" düğmesi tıkladım ve uygulamamın görünmedi
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>"Ekle" düğmesini tıklattım ve uygulamam görüntülenmedi
 
-Bazı durumlarda, geçici bir sorun, ağ sorunlarını veya bir hata nedeniyle, bir uygulama ekleme başarısız. ' A tıkladığınızda böyle söyleyebilirsiniz **bildirimleri** simgesine (zil) sağ üst köşesinde Azure portalı ve kırmızı (!) simgesi yanındaki bakın, **uygulamasını ekleme** bildirim. Bu, uygulama oluştururken bir hata oluştu gösterir.
+Bazen, geçici sorunlar, ağ sorunları veya bir hata nedeniyle, bir uygulama ekleme başarısız olur. Azure portalının sağ üst kısmındaki **Bildirimler** simgesine (çan) tıkladığınızda ve **Uygulama Ekleme** bildiriminizin yanında kırmızı (!) bir simge gördüğünüzde bunun gerçekleştiğini söyleyebilirsiniz. Bu, uygulamayı oluştururken bir hata olduğunu gösterir.
 
-Tıklandığında bir hatayla karşılaşırsanız **Ekle** düğmesi, gördüğünüz bir **bildirim** içinde bir **hata** durumu. Bir destek mühendisiyle paylaşın veya daha fazla bilgi için hata hakkındaki ayrıntılar istiyorsanız, içindeki adımları izleyerek hata hakkında daha fazla bilgi görebilirsiniz [portal bildirimi ayrıntılarını görmek nasıl](#how-to-see-the-details-of-a-portal-notification) bölümü.
+**Ekle** düğmesini tıklattığınızda bir hatayla karşılaşırsanız, **Hata** durumunda bir **Bildirim** görürsünüz. Bir destek mühendisiyle daha fazla bilgi edinmek veya paylaşmak için hata hakkında daha fazla ayrıntı istiyorsanız, portal bildirimi bölümünün [ayrıntılarını nasıl görebilirsiniz](#how-to-see-the-details-of-a-portal-notification) bölümündeki adımları izleyerek hata hakkında daha fazla bilgi görebilirsiniz.
 
-## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Bunu ekledikten sonra Uygulamam ayarlama bilmiyorum
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Uygulamayı ekledikten sonra nasıl ayarlıyorum bilmiyorum
 
-Uygulamaları hakkında daha fazla bilgi yardıma ihtiyacınız olursa [nasıl Azure Active Directory ile SaaS uygulamalarını tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) makale başlatmak için iyi bir yerdir.
+Uygulamalar hakkında bilgi edinmek için yardıma ihtiyacınız varsa, [SaaS Uygulamalarını Azure Active Directory makalesiyle Nasıl Tümleştirilir Eğitimler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) başlamak için iyi bir yerdir.
 
-Bu, ek olarak [Azure AD uygulamaları belge kitaplığı](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) , Azure AD ile çoklu oturum açma ve nasıl çalıştığı hakkında daha fazla bilgi edinmek için yardımcı olur.
+Buna ek olarak, [Azure AD Uygulamaları Belge Kitaplığı,](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) Azure AD ile tek oturum açma ve nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur.
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portal bildirimi ayrıntılarını görme
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portal bildiriminin ayrıntılarını görme
 
-Aşağıdaki adımları izleyerek, herhangi bir portal bildirim ayrıntılarını görebilirsiniz:
+Aşağıdaki adımları izleyerek herhangi bir portal bildiriminin ayrıntılarını görebilirsiniz:
 
-1.  Seçin **bildirimleri** Azure portalının sağ üst kısımdaki simgesine (zil)
+1.  Azure portalının sağ üst kısmındaki **Bildirimler** simgesini (çan) seçin
 
-2.  Herhangi bir bildirim seçin bir **hata** durumu (yanında bir kırmızı (!) sahip olanlar).
+2.  **Hata** durumundaki herhangi bir bildirimi (yanlarında kırmızı (!) olanlar) seçin.
 
     >[!NOTE]
-    >Bildirimlerde tıklayamazsınız bir **başarılı** veya **sürüyor** durumu.
+    >**Bildirimleri Başarılı** veya Devam **Halinde** tıklatamazsınız.
     >
     >
 
-4.  Sağlanan bilgileri kullanmak **bildirim ayrıntılarını** sorun hakkında daha fazla ayrıntı anlamak için.
+4.  Sorunla ilgili daha fazla ayrıntıyı anlamak için **Bildirim Ayrıntıları** altındaki bilgileri kullanın.
 
-5.  Hala yardıma ihtiyacınız varsa, bu bilgiler sorununuzu Yardım almak için bir destek mühendisi veya ürün grubu ile paylaşabilirsiniz.
+5.  Hala yardıma ihtiyacınız varsa, sorununuzla ilgili yardım almak için bu bilgileri bir destek mühendisi veya ürün grubuyla da paylaşabilirsiniz.
 
-6.  Tıklayın **kopyalama** **simgesi** sağındaki **kopyalama hatası** desteği veya ürün grubu mühendisiyle paylaşın için tüm bildirim ayrıntılarını kopyalamak için metin kutusu.
+6.  Destek veya ürün grubu mühendisiyle paylaşmak üzere tüm bildirim ayrıntılarını kopyalamak için **Kopyala hatası** textbox'ın sağındaki **kopya** **simgesini** tıklatın.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Bir destek mühendisiyle bildirim ayrıntılarını göndererek Yardım alma
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Bir destek mühendisine bildirim ayrıntıları göndererek nasıl yardım alabilirsiniz?
 
-Paylaştığınız çok önemli olduğu **aşağıda listelenen tüm ayrıntıları** böylece bunlar hızlıca Yardım yardıma ihtiyacınız varsa, bir destek mühendisi ile. Bu bir kolayca ile yapabileceğiniz **bir ekran görüntüsü almayı** veya tıklayarak **kopyalama hata simgesi**, sağında bulunan **kopyalama hatası** metin.
+Yardıma ihtiyacınız varsa **aşağıda listelenen tüm ayrıntıları** bir destek mühendisiile paylaşmanız çok önemlidir, böylece bunlar size hızlı bir şekilde yardımcı olabilir. Bunu ekran görüntüsü **alarak** veya **Kopyala hata** textbox'ının sağında bulunan **Kopyala hata simgesine**tıklayarak kolayca yapabilirsiniz.
 
-## <a name="notification-details-explained"></a>Bildirim ayrıntıları açıklaması
+## <a name="notification-details-explained"></a>Bildirim Detayları Açıklandı
 
-Aşağıdaki açıklamalar bildirimleri hakkında daha fazla ayrıntı için bkz.
+Bildirimler hakkında daha fazla bilgi için aşağıdaki açıklamalara bakın.
 
-### <a name="essential-notification-items"></a>Önemli bildirim öğeleri
+### <a name="essential-notification-items"></a>Temel Bildirim Öğeleri
 
-- **Başlık** – bildirimin açıklayıcı bir başlık
+- **Başlık** – bildirimin açıklayıcı başlığı
 
-  * Örneğin, **uygulama proxy'si ayarları**
+  * Örnek – **Uygulama proxy ayarları**
 
-- **Açıklama** – ne işlemi nedeniyle oluştu açıklaması
+- **Açıklama** – operasyon sonucunda meydana gelen şeyin açıklaması
 
-  -   Örneğin, **girilen iç url başka bir uygulama tarafından zaten kullanılıyor**
+  -   Örnek – **Girilen dahili url zaten başka bir uygulama tarafından kullanılıyor**
 
-- **Bildirim kimliği** – bildirim benzersiz kimliği
+- **Bildirim Kimliği** – bildirimin benzersiz kimliği
 
-  -   Örneğin, **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Örnek – **istemciBildirim-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
-- **İstemci istek kimliği** – tarayıcınız tarafından yapılan belirli bir istek kimliği
+- **İstemci İstek Kimliği** – tarayıcınız tarafından yapılan özel istek kimliği
 
-  -   Örneğin, **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Örnek – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
-- **Zaman damgası UTC** – sırasında bildirim gerçekleştiği, UTC zaman damgası
+- **Zaman Damgası UTC** – bildirimin gerçekleştiği zaman damgası, UTC'de
 
-  -   Örneğin, **2017-03-23T19:50:43.7583681Z**
+  -   Örnek – **2017-03-23T19:50:43.7583681Z**
 
-- **İç işlem kimliği** – hata sistemlerimizde aramak için kullanabileceğiniz iç kimliği
+- **Dahili İşlem Kimliği** – sistemlerimizdeki hatayı aramak için kullanabileceğimiz dahili kimlik
 
-  -   Örneğin, **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Örnek – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **UPN** – işlemi gerçekleştiren kullanıcının
+- **UPN** – işlemi gerçekleştiren kullanıcı
 
-  -   Örneğin, **tperkins\@f128.info**
+  -   Örnek – **tperkins\@f128.info**
 
-- **Kiracı kimliği** – işlemi gerçekleştiren kullanıcının üyesi olduğu kiracının benzersiz kimliği
+- **Kiracı Kimliği** – işlemi gerçekleştiren kullanıcının, kiracının üyesi olduğu benzersiz kimliği
 
-  -   Örneğin, **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Örnek – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
-- **Kullanıcı nesne kimliği** – işlemi gerçekleştiren kullanıcının benzersiz kimliği
+- **Kullanıcı nesnekimliği** – işlemi gerçekleştiren kullanıcının benzersiz kimliği
 
-  -   Örneğin, **17f84be4-51f8-483a-b533-383791227a99**
+  -   Örnek – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>Ayrıntılı bildirim öğeleri
+### <a name="detailed-notification-items"></a>Ayrıntılı Bildirim Öğeleri
 
--   **Görünen ad** – **(boş olabilir)** hatanın ayrıntılı bir görünen ad
+-   **Görüntü Adı** – **(boş olabilir)** hata için daha ayrıntılı bir ekran adı
 
-    -   Örneğin, **uygulama proxy'si ayarları**
+    -   Örnek – **Uygulama proxy ayarları**
 
--   **Durum** – bildirim özel durumu
+-   **Durum** – bildirimin özel durumu
 
-    -   Örneğin, **başarısız oldu**
+    -   Örnek – **Başarısız**
 
--   **Nesne Kimliği** – **(boş olabilir)** karşı işlemi gerçekleştirildi nesne kimliği
+-   **Nesne Kimliği** - **(boş olabilir)** işlemin gerçekleştirildiği nesne kimliği
 
-    -   Örneğin, **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Örnek – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Ayrıntılar** – ayrıntılı açıklaması ne işlemi nedeniyle oluştu
+-   **Ayrıntılar** – operasyon sonucunda meydana gelen şeyin ayrıntılı açıklaması
 
-    -   Örneğin, **iç url `https://bing.com/` zaten kullanımda olduğundan geçerli değil.**
+    -   Örnek – **İç url `https://bing.com/` zaten kullanımda olduğu için geçersizdir**
 
--   **Kopyalama hatası** – tıklayın **Kopyala simgesine** sağındaki **kopyalama hatası** desteği veya ürün grupla paylaşmak için tüm bildirim ayrıntılarını kopyalamak için metin kutusu 
+-   **Kopyalama hatası** – Destek veya ürün grubuyla paylaşmak için tüm bildirim ayrıntılarını kopyalamak için **Kopyala hatası** textbox'ın sağındaki **kopya simgesine** tıklayın 
 -   engineer (mühendis)
 
-    -   Örnek ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Örnek```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

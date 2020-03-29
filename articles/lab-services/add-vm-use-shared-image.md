@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs paylaşılan görüntü kullanarak VM ekleme | Microsoft Docs
-description: Azure DevTest Labs eklenen paylaşılan görüntü galerisinden bir görüntü kullanarak sanal makine (VM) eklemeyi öğrenin
+title: Azure DevTest Labs'da paylaşılan bir görüntü kullanarak VM ekleme | Microsoft Dokümanlar
+description: Azure DevTest Labs'daki ekli paylaşılan resim galerisinden bir resmi kullanarak sanal makine (VM) eklemeyi öğrenin
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
 ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68775597"
 ---
-# <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Ekli paylaşılan görüntü galerisinden bir görüntü kullanarak VM ekleme
-Azure DevTest Labs, laboratuvarınızda paylaşılan bir görüntü Galerisi eklemenize ve ardından galerideki görüntüleri laboratuvarda oluşturduğunuz sanal makinelerin temeli olarak kullanmanıza olanak tanır. Laboratuvarınızda paylaşılan görüntü Galerisi 'ni nasıl ekleyeceğinizi öğrenmek için bkz. [paylaşılan görüntü galerisini yapılandırma](configure-shared-image-gallery.md). Bu makalede, ekli paylaşılan görüntü galerisindeki bir görüntüyü temel olarak kullanarak laboratuvara nasıl bir VM ekleyebileceğiniz gösterilmektedir. 
+# <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Ekli paylaşılan resim galerisinden bir görüntü kullanarak VM ekleme
+Azure DevTest Labs, paylaşılan bir resim galerisini laboratuarınıza eklemenize ve galerideki görüntüleri laboratuvarda oluşturduğunuz VM'ler için üs olarak kullanmanıza olanak tanır. Paylaşılan bir resim galerisini laboratuarınıza nasıl ekleyeceklerinizi öğrenmek için [paylaşılan resim galerisini Yapıla'ya](configure-shared-image-gallery.md)bakın. Bu makalede, bağlı paylaşılan resim galerisinden bir görüntüyü temel olarak kullanarak laboratuvarınıza nasıl VM ekleyeceğiniz gösterilmektedir. 
 
-## <a name="azure-portal"></a>Azure portal
-Bu bölümde, ekli paylaşılan görüntü galerisindeki bir görüntüye göre laboratuvarınızı bir VM 'ye eklemek için Azure portal nasıl kullanacağınızı öğreneceksiniz. Bu bölüm, Azure portal kullanarak VM oluşturmaya yönelik ayrıntılı adım adım yönergeler sağlamaz. Bu ayrıntılar için bkz. [VM oluşturma-Azure Portal](devtest-lab-add-vm.md). Bu yalnızca, ekli paylaşılan görüntü galerisinden bir görüntü seçtiğiniz ve bir görüntünün kullanmak istediğiniz bir sürümünü seçebileceğiniz adımları vurgular. 
+## <a name="azure-portal"></a>Azure portalında
+Bu bölümde, ekli paylaşılan resim galerisinden alınan bir resme dayanarak laboratuvarınıza VM eklemek için Azure portalını nasıl kullanacağınızı öğrenirsiniz. Bu bölümde, Azure portalını kullanarak bir VM oluşturmak için ayrıntılı adım adım yönergeler sağlamaz. Bu ayrıntılar için [vm - Azure portalı oluştur'a](devtest-lab-add-vm.md)bakın. Yalnızca ekli paylaşılan resim galerisinden bir resim seçtiğiniz ve kullanmak istediğiniz resmin bir sürümünü seçtiğiniz adımları vurgular. 
 
-Laboratuvarınızda bir VM eklerken, ekli paylaşılan görüntü galerisinden temel görüntü olarak bir görüntü seçebilirsiniz: 
+Laboratuvarınıza VM eklerken, temel resim olarak ekli paylaşılan resim galerisinden bir resim seçebilirsiniz: 
 
-![Taban için paylaşılan bir görüntü seçin](./media/add-vm-use-shared-image/select-shared-image-for-base.png)
+![Taban için paylaşılan bir resim seçin](./media/add-vm-use-shared-image/select-shared-image-for-base.png)
 
-Ardından, **Laboratuvar kaynağı oluştur** sayfasının **Gelişmiş ayarlar** sekmesinde, temel görüntü olarak kullanmak istediğiniz görüntünün sürümünü seçebilirsiniz:
+Ardından, **Laboratuvar kaynak** sayfasının **Gelişmiş ayarlar** sekmesinde, temel resim olarak kullanmak istediğiniz resmin sürümünü seçebilirsiniz:
 
-![Görüntü sürümü seçin](./media/add-vm-use-shared-image/select-version-shared-image.png)
+![Resim sürümünü seçin](./media/add-vm-use-shared-image/select-version-shared-image.png)
 
-VM oluşturulduktan sonra görüntünün farklı bir sürümünü kullanarak geçiş yapabilirsiniz. 
+VM oluşturulduktan sonra görüntünün farklı bir sürümünü kullanmaya geçebilirsiniz. 
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
-Paylaşılan görüntü Galerisi görüntüsünü kullanarak bir sanal makine oluşturmak için Azure Resource Manager şablonu kullanıyorsanız, **Özellikler** bölümünde **parça kimliği** için bir değer belirtin. Aşağıdaki örneğe bakın: 
+Paylaşılan resim galerisi görüntüsünü kullanarak sanal bir makine oluşturmak için bir Azure Kaynak Yöneticisi şablonu kullanıyorsanız, **Özellikler** bölümünde **paylaşılanImageId** için bir değer belirtin. Aşağıdaki örneğe bakın: 
 
 ```json
 "resources": [
@@ -53,16 +53,16 @@ Paylaşılan görüntü Galerisi görüntüsünü kullanarak bir sanal makine ol
 ],
 ```
 
-Kaynak Yöneticisi Şablon örneği için bkz. GitHub deponuzdaki [paylaşılan görüntü Galerisi görüntüsünü kullanarak sanal makine oluşturma](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage) . 
+Tam bir Kaynak Yöneticisi şablonu örneği için [bkz.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage) 
 
 ## <a name="rest-api"></a>REST API
 
-1. İlk olarak, paylaşılan görüntü galerisinde görüntünün KIMLIĞINI almanız gerekir. Bir yol, ekli paylaşılan görüntü galerisindeki tüm görüntüleri aşağıdaki GET komutunu kullanarak listeetmenin bir yoludur. 
+1. İlk olarak, paylaşılan resim galerisinde görüntünün kimliğini almanız gerekir. Bir yol aşağıdaki GET komutunu kullanarak ekli paylaşılan resim galerisindeki tüm görüntüleri listelemektir. 
 
     ```rest
     GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
     ```
-2. Önceki çağrısından `properties.SharedImageId`ALDıĞıNıZ paylaşılan görüntünün kimliğini GEÇIREREK sanal makinelerde Put yöntemini çağırın.
+2. Bir önceki çağrıdan aldığınız paylaşılan görüntünün kimliğini sanal makinelere geçirerek `properties.SharedImageId`PUT yöntemini çağırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir laboratuvara paylaşılan görüntü Galerisi ekleyip bunu yapılandırma hakkında bilgi edinmek için bkz. [paylaşılan görüntü galerisini yapılandırma](configure-shared-image-gallery.md).
+Paylaşılan bir resim galerisini bir laboratuvara nasıl ekleyip yapılandırışla nasıl yapılandırılabildiğini öğrenmek için [paylaşılan resim galerisini Yapılandır'a](configure-shared-image-gallery.md)bakın.
