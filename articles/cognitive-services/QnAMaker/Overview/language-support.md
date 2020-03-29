@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - soru-cevap Oluşturucu
+title: Dil desteği - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Kültür, doğal Bilgi Bankası'nda soru-cevap Oluşturucu tarafından desteklenen dillerin listesi. Aynı Bilgi Bankası dillerde karıştırmayın.
+description: Bilgi tabanınız için QnA Maker tarafından desteklenen kültür, doğal dillerlistesi. Dilleri aynı bilgi tabanında karıştırmayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220561"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker kaynak ve bilgi üsleri için dil desteği
 
-Kaynak için ilk Bilgi Bankası oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
+Kaynaktaki ilk bilgi tabanını oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
 
-Dil, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların uygunluğunu belirler.
+Dil, QnA Maker'ın kullanıcı sorgularına yanıt olarak sağladığı sonuçların alaka düzeyini belirler.
 
 [Dil seçiminin etkisi](../how-to/language-knowledge-base.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="languages-supported"></a>Desteklenen diller
 
-Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen dilleri içerir. 
+Aşağıdaki liste, QnA Maker kaynağı için desteklenen dilleri içerir. 
 
 |Dil|
 |--|
 |Arapça|
 |Ermenice|
 |Bengali|
-|Bask dili|
+|Baskça|
 |Bulgarca|
 |Katalanca|
 |Chinese_Simplified|
@@ -44,10 +44,10 @@ Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen diller
 |Danca|
 |Felemenkçe|
 |Türkçe|
-|Estonca|
+|Estonya Dili|
 |Fince|
 |Fransızca|
-|Galiçya dili|
+|Galiçya Dili|
 |Almanca|
 |Yunanca|
 |Gucerat dili|
@@ -56,7 +56,7 @@ Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen diller
 |Macarca|
 |İzlandaca|
 |Endonezce|
-|İrlanda dili|
+|İrlandaca|
 |İtalyanca|
 |Japonca|
 |Kannada dili|
@@ -79,9 +79,9 @@ Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen diller
 |İsveççe|
 |Tamil dili|
 |Telugu dili|
-|Tay Dili|
+|Tayca|
 |Türkçe|
-|Ukrayna dili|
+|Ukraynaca|
 |Urduca|
 |Vietnamca|
 

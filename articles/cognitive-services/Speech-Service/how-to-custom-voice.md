@@ -1,7 +1,7 @@
 ---
-title: Özel sesli konuşma hizmeti ile birleştirmenin geliştirilmesi
+title: Custom Voice ile sentezi geliştirin - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Özel ses, markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir konuşmaya metin deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
+description: Özel Ses, markanız için tanınabilir, türünün tek bir sesini oluşturmanıza olanak tanıyan çevrimiçi araçlar kümesidir. Başlamak için gereken tek şey bir avuç ses dosyası ve ilgili transkripsiyonlar. Özel bir metin den metine deneyim oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
 ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220484"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
-[Özel ses](https://aka.ms/customvoice) , markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir metin okuma deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
+[Özel Ses,](https://aka.ms/customvoice) markanız için tanınabilir, türünün tek bir sesini oluşturmanıza olanak tanıyan çevrimiçi araçlar kümesidir. Başlamak için gereken tek şey bir avuç ses dosyası ve ilgili transkripsiyonlar. Özel bir metinden konuşmaya deneyim oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 
-## <a name="whats-in-custom-voice"></a>Özel ses nedir?
+## <a name="whats-in-custom-voice"></a>Özel Ses'te neler var?
 
-Özel sesle başlamadan önce bir Azure hesabı ve bir konuşma hizmeti aboneliğine sahip olmanız gerekir. Bir hesap oluşturduktan sonra verilerinizi hazırlayabilir, modellerinizi eğitmenizi, test edebilir, ses kalitesini değerlendirebilir ve sonunda özel ses modelinizi dağıtabilirsiniz.
+Özel Ses ile başlamadan önce bir Azure hesabı ve Konuşma hizmeti aboneliği ne ihtiyacınız vardır. Bir hesap oluşturduktan sonra, verilerinizi hazırlayabilir, modellerinizi eğitebilir ve test edebilir, ses kalitesini değerlendirebilir ve sonuçta özel ses modelinizi dağıtabilirsiniz.
 
-Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kullanarak özel bir ses modeli oluşturma adımları vurgulanmaktadır. Daha fazla bilgi edinmek için bağlantıları kullanın.
+Aşağıdaki diyagram, [Özel Ses portalını](https://aka.ms/customvoice)kullanarak özel bir ses modeli oluşturma adımlarını vurgular. Daha fazla bilgi edinmek için bağlantıları kullanın.
 
-![Özel ses mimarisi diyagramı](media/custom-voice/custom-voice-diagram.png)
+![Özel Ses mimarisi diyagramı](media/custom-voice/custom-voice-diagram.png)
 
-1. [Abone olun ve proje oluşturun](#set-up-your-azure-account) -Azure hesabı oluşturun ve bir konuşma hizmeti aboneliği oluşturun. Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve özel ses portalına erişmenizi sağlar. Ardından, konuşma hizmeti aboneliğinizi kullanarak ilk özel ses projenizi oluşturun.
+1. [Abone olun ve proje oluşturun](#set-up-your-azure-account) - Bir Azure hesabı oluşturun ve bir Konuşma hizmeti aboneliği oluşturun. Bu birleştirilmiş abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve Özel Ses portalına erişim sağlar. Ardından, Konuşma hizmeti aboneliğinizi kullanarak ilk Özel Ses projenizi oluşturun.
 
-2. [Karşıya veri yükleme](how-to-custom-voice-create-voice.md#upload-your-datasets) -özel ses portalı veya özel ses API 'sini kullanarak verileri (ses ve metin) karşıya yükleyin. Portalda, Söyleniş puanlarını ve sinyal-gürültü oranlarını araştırabilir ve değerlendirebilirsiniz. Daha fazla bilgi için bkz. [özel ses için verileri hazırlama](how-to-custom-voice-prepare-data.md).
+2. [Veri yükleme](how-to-custom-voice-create-voice.md#upload-your-datasets) - Özel Ses portalı veya Özel Ses API'sini kullanarak veri (ses ve metin) yükleyin. Portaldan telaffuz puanlarını ve sinyal-gürültü oranlarını araştırabilir ve değerlendirebilirsiniz. Daha fazla bilgi [için, Özel Ses için veri hazırlama ya da nasıl hazırlanacağını](how-to-custom-voice-prepare-data.md)görün.
 
-3. [Modelinize eğitme](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) : verilerinizi kullanarak özel bir metinden konuşmaya ses modeli oluşturun. Modeli farklı dillerde eğitebilirsiniz. Eğitim sonrasında modelinizi test edin ve sonuçtan memnun kaldıysanız modeli dağıtabilirsiniz.
+3. [Modelinizi eğitin](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) – Özel bir metinden konuşmaya ses modeli oluşturmak için verilerinizi kullanın. Farklı dillerde bir model eğitebilirsiniz. Eğitimden sonra, modelinizi test edin ve sonuçtan memnunsanız, modeli dağıtabilirsiniz.
 
-4. [Modelinizi dağıtın](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) -metinden konuşmaya ses modeliniz için özel bir uç nokta oluşturun ve bunu, ürün, araç ve uygulamalarınızda konuşma sensimi için kullanın.
+4. [Modelinizi dağıtın](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - Metinden konuşmaya ses modeliniz için özel bir bitiş noktası oluşturun ve ürünlerinizde, araçlarınızda ve uygulamalarınızda konuşma sentezi için kullanın.
 
-## <a name="custom-neural-voices"></a>Özel sinir sesleri
+## <a name="custom-neural-voices"></a>Özel Sinirsel sesler
 
-Sinir ses özelleştirme özelliği şu anda seçili müşterilerle sınırlı olan genel önizlemededir. Başlamak için bu [uygulama formunu](https://go.microsoft.com/fwlink/?linkid=2108737) doldurun.
+Nöral ses özelleştirme özelliği şu anda genel önizlemede, seçili müşterilerle sınırlıdır. Başlamak için bu [başvuru formunu](https://go.microsoft.com/fwlink/?linkid=2108737) doldurun.
 
 > [!NOTE]
-> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak, bireyler ve topluluğu 'in haklarını korumaktır. Bu nedenle, özel sinir Voice tüm müşterilerin genel kullanımına açık değildir. Teknolojiden yalnızca uygulamalarınız incelendikten ve bunu etlenmiş ICS ilkelerimize göre hizalı olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Uygulama geçişi sürecimiz](https://aka.ms/custom-neural-gating-overview)hakkında daha fazla bilgi edinin.
+> Microsoft'un sorumlu AI'yi tasarlama taahhüdünün bir parçası olarak, amacımız bireylerin ve toplumun haklarını korumak ve şeffaf insan-bilgisayar etkileşimlerini teşvik etmektir. Bu nedenle, Özel Nöral Ses genellikle tüm müşteriler için kullanılabilir değildir. Teknolojiye ancak uygulamalarınız incelendikten ve etik ilkelerimize uygun olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Uygulama gating sürecimiz](https://aka.ms/custom-neural-gating-overview)hakkında daha fazla bilgi edinin.
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
-Özel bir model oluşturmak için Özel Konuşma Tanıma portalını kullanabilmeniz için bir konuşma hizmeti aboneliği gerekir. Azure 'da bir konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin. Bir Azure hesabınız yoksa, yeni bir hesap için kaydolabilirsiniz.  
+Özel Bir model oluşturmak için Özel Konuşma portalını kullanabilmeniz için konuşma hizmeti aboneliği gerekir. Azure'da konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin. Azure hesabınız yoksa, yeni bir hesabınız için kaydolabilirsiniz.  
 
-Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, özel sesli portalda oturum açmanız ve aboneliğinizi bağlamanız gerekir.
+Bir Azure hesabı ve Konuşma hizmeti aboneliği oluşturduktan sonra, Özel Ses portalında oturum açmanız ve aboneliğinizi bağlamanız gerekir.
 
-1. Azure portal konuşma hizmeti abonelik anahtarınızı alın.
-2. [Özel ses portalında](https://aka.ms/custom-voice)oturum açın.
+1. Azure portalından Konuşma hizmeti abonelik anahtarınızı alın.
+2. Özel Ses [portalında](https://aka.ms/custom-voice)oturum açın.
 3. Aboneliğinizi seçin ve bir konuşma projesi oluşturun.
-4. Başka bir konuşma aboneliğine geçiş yapmak isterseniz, üstteki gezinmede bulunan dişli simgesini kullanın.
+4. Başka bir Konuşma aboneliğine geçmek istiyorsanız, üst gezintide bulunan dişli simgesini kullanın.
 
 > [!NOTE]
-> Özel ses hizmeti 30 günlük ücretsiz deneme anahtarını desteklemez. Hizmeti kullanabilmeniz için önce Azure 'da oluşturulmuş bir F0 veya S0 anahtarınız olmalıdır.
+> Custom Voice hizmeti 30 günlük ücretsiz deneme anahtarını desteklemiyor. Hizmeti kullanabiliyor sanız, Azure'da f0 veya S0 anahtarı nın oluşturulması gerekir.
 
 ## <a name="how-to-create-a-project"></a>Proje oluşturma
 
-Veriler, modeller, testler ve uç noktalar gibi içerikler, özel ses portalındaki **Projeler** halinde düzenlenmiştir. Her proje, oluşturmak istediğiniz sesin ülke/dil ve cinsiyetine özgüdür. Örneğin, Birleşik Devletler (en-US) içinde Ingilizce kullanan çağrı merkezinizin sohbet botları için kadın sesi için bir proje oluşturabilirsiniz.
+Veri, model, test ve uç nokta gibi içerik, Özel Ses portalındaki **Projeler'de** düzenlenir. Her proje bir ülkeye/dile ve oluşturmak istediğiniz sesin cinsiyetine özgüdür. Örneğin, çağrı merkezinizin ABD'de İngilizce kullanan sohbet botları için bir kadın sesi için bir proje oluşturabilirsiniz (tr-US).
 
-İlk projenizi oluşturmak için, **metinden konuşmaya/özel ses** sekmesini seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Projeyi oluşturduktan sonra dört sekme görürsünüz: **veri**, **eğitim**, **Test**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
+İlk projenizi oluşturmak için **Metinden Konuşmaya/Özel Ses** sekmesini seçin ve ardından **Yeni Proje'yi**tıklatın. Projenizi oluşturmak için sihirbaz tarafından sağlanan yönergeleri izleyin. Bir proje oluşturduktan sonra dört sekme görürsünüz: **Veri,** **Eğitim,** **Test**ve **Dağıtım.** Her sekmeyi nasıl kullanacağınızı öğrenmek için [Sonraki adımlarda](#next-steps) sağlanan bağlantıları kullanın.
 
 > [!IMPORTANT]
-> [Özel ses portalı](https://aka.ms/custom-voice) yakın zamanda güncelleştirildi! CRIS.ai portalında veya API 'lerle önceki veriler, modeller, testler ve yayımlanmış uç noktalar oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
+> [Özel Ses portalı](https://aka.ms/custom-voice) yakın zamanda güncellendi! önceki verileri, modelleri, testleri ve yayımlanmış bitiş noktalarını CRIS.ai portalında veya API'lerle oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel ses verileri hazırlama](how-to-custom-voice-prepare-data.md)
-- [Özel bir ses oluşturun](how-to-custom-voice-create-voice.md)
-- [Kılavuz: ses örneklerinizi kaydetme](record-custom-voice-samples.md)
+- [Özel Ses verileri hazırlama](how-to-custom-voice-prepare-data.md)
+- [Özel Ses Oluşturma](how-to-custom-voice-create-voice.md)
+- [Kılavuz: Ses örneklerinizi kaydetme](record-custom-voice-samples.md)

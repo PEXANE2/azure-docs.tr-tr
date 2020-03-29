@@ -1,23 +1,22 @@
 ### YamlMime:Landing
-title: Konuşma çevirisi belgeleri
-summary: Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmadan metne çevirisini sağlar
+title: Konuşma çeviri belgeleri
+summary: Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşma-konuşma ve konuşma-metin çevirisini sağlar
 metadata:
-  title: Konuşma çevirisi belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
+  title: Konuşma çevirisi belgeleri - Öğreticiler, API Başvuru - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367984"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415336"
 landingContent:
 - title: Konuşma çevirisi hakkında
   linkLists:
@@ -29,19 +28,19 @@ landingContent:
     links:
     - text: Konuşmayı metne çevirme
       url: quickstarts/translate-speech-to-text.md
-    - text: Konuşmayı birden çok hedef dile çevirme
+    - text: Konuşmayı birden çok hedef dile çevirin
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Konuşmayı konuşmaya çevirme
       url: quickstarts/translate-speech-to-speech.md
-- title: Konuşma çevirisi ile geliştirme
+- title: Konuşma çevirisi ile geliştirin
   linkLists:
   - linkListType: learn
     links:
-    - text: Konuşmayı gerçek zamanlı olarak çevir
+    - text: Konuşmayı gerçek zamanlı olarak çevirin
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: REST API 'lerle metin çevirme ve birleştirme
+    - text: REST API'leri ile metni çevirip sentezleme
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
 - title: Başvuru
   linkLists:

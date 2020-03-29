@@ -1,30 +1,29 @@
 ---
-title: İçerik çevirisini önleme-Translator Metin Çevirisi API'si
+title: İçerik çevirisini önleme - Çevirmen Metin API
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si içerik çevirisini önleyin. Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar.
+description: Çevirmen Metin API ile içeriğin çevrilmesini engelleyin. Çevirmen Metin API'si, içeriğin çevrilmemesi için etiketlemenize olanak tanır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: 15a36451c18d65df6667f24284f3f69f3d1c06b8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052479"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si içerik çevirisini önleme
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Çevirmen Metin API ile içerik çevirisi nasıl engellenir?
 
-Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar. Örneğin, kod, marka adı veya yerelleştirmeden anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
+Çevirmen Metin API'si, içeriğin çevrilmemesi için etiketlemenize olanak tanır. Örneğin, kod, bir marka adı veya yerelleştirildiğinde anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
 
-## <a name="methods-for-preventing-translation"></a>Çeviriyi önlemek için Yöntemler
-1. Twitter etiketine kaçış @somethingtopassthrough veya #somethingtopassthrough. Çeviri sonrasında kaçış işaretini kaldır. Bu, geçerli Twitter etiketleri için normal ifadedir: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Bir etiket bir "@" işareti ile başlamalı, ardından bir karakter ve ardından bir veya daha fazla karakter, rakam veya alt çizgi gelmelidir. Etiketlerin kısa tutulması ve açılış etiketinin önünde bir boşluk olması önerilir.
+## <a name="methods-for-preventing-translation"></a>Çevirinin önlenmesi için yöntemler
 
-2. İçeriğinizi `notranslate`etiketleyin. Bu, yalnızca Input textType 'ın HTML olarak ayarlandığı durumlarda çalıştığını tasarlayabilmesini sağlamaktır
+1. İçeriğinizi ' `notranslate`le etiketle. Bu yalnızca giriş textType HTML olarak ayarlandığında bu çalışır tasarım gereğidir
 
    Örnek:
 
@@ -38,13 +37,13 @@ Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleye
    <div>This will be translated. </div>
    ```
 
-3. Belirli bir çeviri yapmak için [dinamik sözlüğü](dynamic-dictionary.md) kullanın.
+2. Belirli bir çeviri reçete etmek için [dinamik sözlüğü](dynamic-dictionary.md) kullanın.
 
-4. Dizeyi çeviri için Translator Metin Çevirisi API'si iletmeyin.
+3. Çeviri için dizeyi Çevirmen Metin API'sine geçirmeyin.
 
-5. Özel çevirici: bir tümceciği %100 olasılığa sahip bir ifadenin çevirisi yapmak için [özel çevirmende bir sözlük](custom-translator/what-is-dictionary.md) kullanın.
+4. Özel Çevirmen: %100 olasılıklı bir ifadenin çevirisini reçete etmek için [Özel Çevirmen'de sözlük](custom-translator/what-is-dictionary.md) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Translator API çağrısındaki çeviriyi önleyin](reference/v3-0-translate.md)
+> [Translator API aramanızda çeviriden kaçının](reference/v3-0-translate.md)

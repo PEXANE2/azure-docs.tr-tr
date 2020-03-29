@@ -1,7 +1,7 @@
 ---
-title: Bir tanıma modeli belirtme-yüz
+title: Tanıma modeli nasıl belirtilir - Yüz
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure yüz uygulamanızla birlikte kullanılacak tanınma modelini nasıl seçeceğiniz gösterilmektedir.
+description: Bu makalede, Azure Yüz uygulamanızda hangi tanıma modelini kullanacağınızı nasıl seçeceğiniz gösterilecek.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76938834"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
-Bu kılavuzda, Azure yüz hizmetini kullanarak yüz algılama, tanımlama ve benzerlik arama için bir yüz tanıma modeli belirtme konusu gösterilmektedir.
+Bu kılavuz, Azure Yüz hizmetini kullanarak yüz algılama, tanımlama ve benzerlik araması için yüz tanıma modelini nasıl belirtdiğinizi gösterir.
 
-Yüz hizmeti, görüntülerde insan yüzeyleri üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimlerine ve araştırmada ilerlemeleri temel alan modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncelleştirmeleri olarak sunduk. Geliştiriciler, yüz tanıma modeli 'nin hangi sürümünü kullanmak istediğinizi belirtme seçeneğine sahiptir; Kullanım durumlarına en uygun modeli seçebilirler.
+Face hizmeti, görüntülerdeki insan yüzleri ne zıddatları üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimleri ve araştırmadaki gelişmelere dayanarak modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncellemeleri olarak sunuyoruz. Geliştiriciler, yüz tanıma modelinin hangi sürümünü kullanmak istediklerini belirtme seçeneğine sahiptir; kullanım durumlarına en uygun modeli seçebilirler.
 
-Yeni bir Kullanıcı kullanıyorsanız en son modeli kullanmanızı öneririz. Model çakışmalarını önlarken farklı yüz işlemlerinde nasıl belirteceğinizi öğrenmek için okumaya devam edin. İleri düzey bir kullanıcıysanız ve en son modele geçiş yapmanız gerekip gerekmediğine emin değilseniz, yeni modeli değerlendirmek ve sonuçları geçerli veri kümesi kullanarak karşılaştırmak için [farklı modelleri değerlendir](#evaluate-different-models) bölümüne atlayın.
+Yeni bir kullanıcıysanız, en son modeli kullanmanızı öneririz. Model çakışmalarından kaçınırken farklı Yüz işlemlerinde nasıl belirtilen öğrenmek için okumaya devam edin. Gelişmiş bir kullanıcıysanız ve en son modele geçmeniz gerekip gerekmediğine emin değilseniz, yeni modeli değerlendirmek ve geçerli veri kümenizi kullanarak sonuçları karşılaştırmak için [farklı modelleri Değerlendir](#evaluate-different-models) bölümüne geçin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-AI yüz tanıma ve tanımlama kavramlarını tanımanız gerekir. Değilseniz, önce bu nasıl yapılır kılavuzlarını inceleyin:
+AI yüz algılama ve tanımlama kavramlarına aşina olmalısınız. Değilseniz, önce şu nasıl yapılacağını anlatan kılavuzlara bakın:
 
-* [Görüntüdeki yüzeyleri algılama](HowtoDetectFacesinImage.md)
-* [Görüntüdeki yüzeyleri belirleme](HowtoIdentifyFacesinImage.md)
+* [Görüntüdeki yüzleri niçin algılarsın?](HowtoDetectFacesinImage.md)
+* [Görüntüdeki yüzleri tanımlama](HowtoIdentifyFacesinImage.md)
 
-## <a name="detect-faces-with-specified-model"></a>Belirtilen modelle yüzler Algıla
+## <a name="detect-faces-with-specified-model"></a>Belirtilen modele sahip yüzleri algılama
 
-Yüz algılama, insan yüzlerini görsel olarak tanımlar ve bunların sınırlayıcı kutu konumlarını bulur. Ayrıca, yüzün özelliklerini ayıklar ve bu özellikleri, kimlik ' de kullanılmak üzere depolar. Bu bilgilerin tümü bir yüzün temsilini oluşturur.
+Yüz algılama, insan yüzlerinin görsel simgelerini tanımlar ve sınırlayıcı kutusu konumlarını bulur. Ayrıca yüzün özelliklerini ayıklar ve kimlik kullanımı için saklar. Tüm bu bilgiler tek bir yüzün temsilini oluşturur.
 
-Tanınma modeli, yüz özellikleri ayıklandığında kullanılır, bu nedenle algılama işlemini gerçekleştirirken bir model sürümü belirtebilirsiniz.
+Tanıma modeli, yüz özellikleri ayıklandığında kullanılır, böylece Algıla işlemi gerçekleştirirken bir model sürümü belirtebilirsiniz.
 
-[Yüz algılama] API 'sini kullanırken, model sürümünü `recognitionModel` parametresiyle atayın. Kullanılabilir değerler şunlardır:
+[Yüz - API'yi] algılayış ırken, `recognitionModel` model sürümünü parametreyle atayın. Kullanılabilir değerler şunlardır:
 
 * `recognition_01`
 * `recognition_02`
 
-İsteğe bağlı olarak, _Recognıtionmodel_ 'in yanıt olarak döndürülüp döndürülmeyeceğini belirtmek Için _returnrecognıtionmodel_ parametresini (varsayılan **yanlış**) belirtebilirsiniz. Bu nedenle, [yüz algılama] REST API için bir istek URL 'si şöyle görünür:
+İsteğe bağlı olarak, _tanımaModeliyanıt_ olarak döndürülmelidir olup olmadığını belirtmek için _returnRecognitionModel_ parametre (varsayılan **yanlış)** belirtebilirsiniz. Yani, Yüz için bir istek URL [- Detect] REST API aşağıdaki gibi görünecektir:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
-İstemci kitaplığını kullanıyorsanız, sürümü temsil eden bir dize geçirerek `recognitionModel` için değeri atayabilirsiniz.
-Atanmamış olarak bırakırsanız, varsayılan model sürümü (_recognition_01_) kullanılacaktır. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
+İstemci kitaplığını kullanıyorsanız, sürümü temsil `recognitionModel` eden bir dize geçirerek değeri atayabilirsiniz.
+Atanmamış olarak bırakırsanız, varsayılan model sürümü _(recognition_01)_ kullanılır. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 
-## <a name="identify-faces-with-specified-model"></a>Belirtilen modelle yüzeyleri tanımla
+## <a name="identify-faces-with-specified-model"></a>Belirtilen modele sahip yüzleri tanımlama
 
-Yüz tanıma hizmeti bir görüntüden yüz verileri çıkarabilir ve bunu bir **kişi** nesnesiyle (örneğin, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API çağrısı aracılığıyla) Ilişkilendirebilir ve birden çok **kişi** nesnesi bir **persongroup**'ta birlikte depolanabilir. Daha sonra **Yeni bir yüz** , bir Person ( [Yüz - Belirleme] tanıma çağrısıyla) ile karşılaştırılabilir ve bu gruptaki eşleşen kişi belirlenebilir.
+Yüz hizmeti, bir görüntüden yüz verilerini ayıklayabilir ve bir **Kişi** nesnesiyle ilişkilendirebilir (örneğin, [yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API ekle çağrısı aracılığıyla) ve birden çok **Kişi** nesnesi bir **PersonGroup'ta**birlikte depolanabilir. Daha sonra, yeni bir yüz bir **PersonGroup** [(Yüz ile] karşılaştırılabilir - Arama tanımlayın) ve bu grup içinde eşleşen kişi tanımlanabilir.
 
-Bir **persongroup** 'un tüm **kişiler**için benzersiz bir tanıma modeli olması gerekir ve bunu grubu oluştururken `recognitionModel` parametresini kullanarak belirtebilirsiniz ([PersonGroup - Oluşturma] veya [LargePersonGroup - Oluşturma]). Bu parametreyi belirtmezseniz, özgün `recognition_01` modeli kullanılır. Bir grup her zaman ile oluşturulduğu tanıma modelini kullanır ve bu modele eklendiğinde yeni yüzler bu modelle ilişkilendirilir; Bu, bir grubun oluşturulduktan sonra değiştirilemez. Bir **persongroup** 'un hangi modele yapılandırıldığını görmek Için, _Returnrecognıtionmodel_ parametresi **true**olarak ayarlanmış olan [Kişilik grubu-al] API 'sini kullanın.
+**Bir PersonGroup'un** tüm **Kişi**için tek bir benzersiz tanıma modeli `recognitionModel` olmalıdır ve grubu oluştururken bunu parametreyi kullanarak belirtebilirsiniz[(PersonGroup - Create] veya [LargePersonGroup - Create]). Bu parametreyi belirtmezseniz, `recognition_01` özgün model kullanılır. Bir grup her zaman oluşturulduğu tanıma modelini kullanır ve yeni yüzler bu modele eklendiğinde bu modelle ilişkilendirilir; bu, bir grubun oluşturulduktan sonra değiştirilemez. **Bir PersonGroup'un** hangi modelle yapılandırıldığı görmek için [PersonGroup ' u] kullanın - _ReturnRecognitionModel_ parametresi **doğru**olarak ayarlanmış API'yi alın.
 
 .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
@@ -69,15 +69,15 @@ string personGroupId = "mypersongroupid";
 await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
-Bu kodda, KIMLIĞI `mypersongroupid` olan bir **kişilik grubu** oluşturulur ve yüz özelliklerini ayıklamak için _recognition_02_ modelini kullanmak üzere ayarlanır.
+Bu kodda, **PersonGroup** kimliği `mypersongroupid` olan bir Kişi Grubu oluşturulur ve yüz özelliklerini ayıklamak için _recognition_02_ modelini kullanmak üzere ayarlanmıştır.
 
-Buna karşılık, bu **kişinin** karşılaştırılacağı yüzeyleri tespit etmek için kullanılacak modeli ( [Yüz algılama] API 'si aracılığıyla) belirlemeniz gerekir. Kullandığınız model, her zaman **Persongroup**'un yapılandırmasıyla tutarlı olmalıdır; Aksi takdirde, işlem uyumsuz modeller nedeniyle başarısız olur.
+Buna bağlı olarak, bu **Kişi Grubu** [(Yüz - API algıla)] karşılaştırıldığında yüzleri algılarken hangi modeli kullanacağınızı belirtmeniz gerekir. Kullandığınız model her zaman **PersonGroup'un**yapılandırmasıyla tutarlı olmalıdır; aksi takdirde, işlem uyumsuz modeller nedeniyle başarısız olur.
 
-[Yüz - Belirleme] tanıma API 'sinde değişiklik yoktur; Yalnızca algılama sürümünde model sürümünü belirtmeniz gerekir.
+Yüz'de değişiklik yok [- API'yi tanımla;] yalnızca algılama modeli sürümünü belirtmeniz gerekir.
 
-## <a name="find-similar-faces-with-specified-model"></a>Belirtilen modelle benzer yüzler bulun
+## <a name="find-similar-faces-with-specified-model"></a>Belirtilen modele sahip benzer yüzleri bulma
 
-Ayrıca, benzerlik arama için bir tanıma modeli de belirtebilirsiniz. Çok [Çok yönlü liste-oluştur] API 'Si veya [Largecelist-oluştur]ile yüz listesini oluştururken `recognitionModel` model sürümünü atayabilirsiniz. Bu parametreyi belirtmezseniz, özgün `recognition_01` modeli kullanılır. Yüz listesi, her zaman ile oluşturulduğu tanıma modelini kullanır ve bunlara eklendiğinde yeni yüzler bu modelle ilişkilendirilecektir; Bu, oluşturulduktan sonra değiştirilemez. Yüz listesinin hangi modelde yapılandırıldığını görmek için, şu şekilde, _Returnrecognıtionmodel_ parametresi **true**olarak ayarlanmış olan çok [Çok yönlü liste-Al] API 'sini kullanın.
+Benzerlik araması için bir tanıma modeli de belirtebilirsiniz. [FaceList] ile yüz listesini `recognitionModel` oluştururken model sürümünü atayabilirsiniz - API oluştur veya [LargeFaceList - Oluştur]. Bu parametreyi belirtmezseniz, `recognition_01` özgün model kullanılır. Bir yüz listesi her zaman oluşturulduğu tanıma modelini kullanır ve yeni yüzler bu modele eklendiğinde bu modelle ilişkilendirilir; bu oluşturulduktan sonra değiştirilemez. Bir yüz listesinin hangi modelle yapılandırıldığı görmek [için, FaceList'i] kullanın - _ReturnRecognitionModel_ parametresi ile API'yi **doğru**olarak ayarlayın.
 
 .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
@@ -85,41 +85,41 @@ Ayrıca, benzerlik arama için bir tanıma modeli de belirtebilirsiniz. Çok [Ç
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
-Bu kod, özellik ayıklama için _recognition_02_ modelini kullanarak `My face collection`adlı bir yüz listesi oluşturur. Bu yüz listesini, benzer yüzler için yeni bir algılanan bir yüze aradığınızda, bu yüz _recognition_02_ modeli kullanılarak algılanan ([Yüz algılama]) olmalıdır. Önceki bölümde olduğu gibi, modelin tutarlı olması gerekir.
+Bu kod, özellik ayıklama için `My face collection` _recognition_02_ modelini kullanarak adlı bir yüz listesi oluşturur. Bu yüz listesini yeni algılanan bir yüze benzer yüzler için aradiğinizde, _bu yüzün recognition_02_ modeli kullanılarak algılanmış olması gerekir ([Yüz - Algılama]) Önceki bölümde olduğu gibi, model tutarlı olması gerekir.
 
-Yüz, benzer bir API 'yi [Yüz-benzerini bulun] ; Yalnızca algılama sürümünde model sürümünü belirtirsiniz.
+Yüzde'de değişiklik yok [- Benzer API'yi bul;] yalnızca algılamada model sürümünü belirtirsiniz.
 
-## <a name="verify-faces-with-specified-model"></a>Belirtilen modelle yüzeyleri doğrula
+## <a name="verify-faces-with-specified-model"></a>Belirtilen modelle yüzleri doğrulama
 
-Yüz doğrulama API 'si, iki [Yüz-doğrulama] aynı kişiye ait olup olmadığını denetler. Doğrulama API 'sinde, tanıma modelleriyle ilgili bir değişiklik yoktur, ancak yalnızca aynı modelde algılanan yüzeyleri karşılaştırabilirsiniz. Bu nedenle, iki yüzün her ikisi de `recognition_01` veya `recognition_02`kullanılarak algılanmaları gerekir.
+[Yüz - ApI'yi doğrula,] iki yüzün aynı kişiye ait olup olmadığını denetler. Tanıma modelleri ile ilgili Olarak Doğrula API'sinde bir değişiklik yoktur, ancak yalnızca aynı modelle algılanan yüzleri karşılaştırabilirsiniz. Yani, iki yüz her ikisi de `recognition_01` kullanarak `recognition_02`tespit edilmiş olması gerekir ya da .
 
-## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirin
+## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirme
 
-_Recognition_01_ performanslarını ve verilerinizde _recognition_02_ modelleri karşılaştırmak istiyorsanız şunları yapmanız gerekir:
+Verilerinizdeki _recognition_01_ ve _recognition_02_ modellerin performanslarını karşılaştırmak isterseniz, şunları yapmanız gerekir:
 
-1. _Recognition_01_ ve _Recognition_02_ sırasıyla iki **kişilik grubu**oluşturun.
-1. Yüzleri algılamak ve bu iki **Personb grubu**için eğitim işlemini tetiklemek ve **Person** [PersonGroup - Eğitme] API 'si ile eğitim sürecini tetiklemek için görüntü verilerinizi kullanın.
-1. Yüz ile test edin [Yüz - Belirleme] hem **persongroup**'lar üzerinde hem de sonuçları karşılaştırın.
+1. Sırasıyla _recognition_01_ ve _recognition_02_ iki **PersonGroup**s oluşturun.
+1. Yüzleri algılamak ve bu iki **Person** **PersonGroup'un**kişilerine kaydetmek için görüntü verilerinizi kullanın ve [PersonGroup - Train] API ile eğitim sürecini tetikleyin.
+1. Yüz le Test - Her iki **PersonGroup'ta**da [tanımlayın] ve sonuçları karşılaştırın.
 
-Normalde bir güvenirlik eşiği (sıfır ile arasında bir değer, modelin bir yüzü belirlemek için ne kadar güvenli olacağını belirleyen bir değer) belirtirseniz, farklı modeller için farklı eşikler kullanmanız gerekebilir. Bir modelin eşiği, diğer ile paylaşılmak üzere tasarlanmamıştır ve aynı sonuçları üretmeyecektir.
+Normalde bir güven eşiği (bir yüzü tanımlamak için modelin ne kadar emin olması gerektiğini belirleyen sıfır ile bir değer arasındaki değer) belirtirseniz, farklı modeller için farklı eşikler kullanmanız gerekebilir. Bir model için bir eşik başka bir modelle paylaşılmak için değildir ve mutlaka aynı sonuçları üretmek olmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, farklı yüz hizmeti API 'Leri ile kullanmak üzere tanınma modelini nasıl belirtdiğinize öğrendiniz. Sonra, yüz algılamayı kullanmaya başlamak için hızlı başlangıç izleyin.
+Bu makalede, farklı Yüz hizmeti API'leri ile kullanılacak tanıma modelini nasıl belirtileceğinizi öğrendiniz. Ardından, yüz algılama kullanmaya başlamak için hızlı bir başlangıç izleyin.
 
-* [Yüz .NET SDK 'Sı](../Quickstarts/csharp-sdk.md)
-* [Yüz Python SDK 'Sı](../Quickstarts/python-sdk.md)
-* [Yüz go SDK 'Sı](../Quickstarts/go-sdk.md)
+* [Yüz .NET SDK](../Quickstarts/csharp-sdk.md)
+* [Yüz Python SDK](../Quickstarts/python-sdk.md)
+* [Yüz Git SDK](../Quickstarts/go-sdk.md)
 
-[Yüz algılama]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
-[Yüz-benzerini bulun]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
+[Yüz - Algılama]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
+[Yüz - Benzer Bul]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
 [Yüz - Belirleme]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
-[Yüz-doğrulama]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
+[Yüz - Doğrula]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
 [PersonGroup - Oluşturma]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
-[Kişilik grubu-al]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
+[PersonGroup - Alın]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
 [PersonGroup Person - Add Face]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
 [PersonGroup - Eğitme]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
 [LargePersonGroup - Oluşturma]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d
-[Çok yönlü liste-oluştur]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b
-[Çok yönlü liste-Al]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c
-[Largecelist-oluştur]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc
+[FaceList - Oluştur]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b
+[FaceList - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c
+[LargeFaceList - Oluştur]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc

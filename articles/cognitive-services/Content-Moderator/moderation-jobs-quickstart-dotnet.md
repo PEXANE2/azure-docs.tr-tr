@@ -1,7 +1,7 @@
 ---
-title: .NET-Content Moderator kullanarak denetleme işlerini kullanma
+title: .NET kullanarak ılımlılık işlerini kullanma - İçerik Moderatör
 titleSuffix: Azure Cognitive Services
-description: Azure Content Moderator görüntü veya metin içeriğine yönelik uçtan uca içerik denetleme işleri başlatmak için Content Moderator .NET SDK 'sını kullanın.
+description: Azure İçerik Moderatörü'nde resim veya metin içeriği için uçlardan uca içerik denetleme işleri başlatmak için İçerik Moderatörü .NET SDK'yı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76294346"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Denetleme işlerini tanımlama ve kullanma (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Moderasyon işlerini tanımlayın ve kullanın (.NET)
 
-Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevleri için bir sarmalayıcı türü görevi görür. Bu kılavuzda, [.NET için Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
+Bir ılımlılık iş içerik ılımlılık, iş akışları ve değerlendirmeleri işlevselliği için sarıcı bir tür olarak hizmet vermektedir. Bu kılavuz, [.NET için İçerik Moderatör SDK'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlar:
 
 - Tarama ve insan denetimciler için incelemeler oluşturma için bir denetim işi başlatma
 - Bekleyen incelemenin durumunu alma
 - İncelemeyi izleme ve son durumunu alma
-- İnceleme sonuçlarını geri çağırma URL 'sine gönder
+- İnceleme sonuçlarını geri arama URL'sine gönderme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
+- İçerik Moderatör [İnceleme araç](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya bir hesap oluşturun.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın inceleme oluşturma amacıyla inceleme API'sini çağırabildiğinden emin olun
 
@@ -45,7 +45,7 @@ Bir denetimi işi, API'leri kullanarak içeriğinizi tarar ve inceleme oluşturm
 
 İş akışının adını denetim işini başlatan kodunuzda kullanırsınız.
 
-## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturma
+## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturun
 
 1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
@@ -80,7 +80,7 @@ using System.Threading;
 Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin.
 
 > [!IMPORTANT]
-> **AzureEndpoint** ve **cmsubscriptionkey** alanlarını Endpoint URL 'nizin ve abonelik anahtarınızın değerleriyle güncelleştirin.
+> **AzureEndpoint** ve **CMSubscriptionKey** alanlarını bitiş noktası URL'niz ve abonelik anahtarınızın değerleriyle güncelleştirin.
 
 ```csharp
 /// <summary>
@@ -121,10 +121,10 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>Uygulamaya özgü ayarları başlatma
 
-Aşağıdaki sabitleri ve statik alanları Program.cs dosyasındaki **Program** sınıfına ekleyin.
+Aşağıdaki sabitleri ve statik alanları Program.cs dosyasında **Program** sınıfına ekleyin.
 
 > [!NOTE]
-> TeamName sabitini, Content Moderator aboneliğinizi oluştururken kullandığınız ada ayarlayın. TeamName 'i Content Moderator Web sitesinden alabilirsiniz.
+> TeamName sabitini, Content Moderator aboneliğinizi oluştururken kullandığınız ada ayarlayın. TeamName değerini Content Moderator Web sitesinden alın.
 > Oturum açtıktan sonra **Ayarlar** (araçlar) menüsünden **Kimlik Bilgileri**'ni seçin.
 >
 > Takım adınız **API** bölümündeki **Id** alanının değeridir.
@@ -316,4 +316,4 @@ Aşağıdaki örneğe benzer bir yanıt alırsınız:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu ve diğer .NET için Content Moderator hızlı başlangıçları için [Content Moderator .NET SDK'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın ve tümleştirmeniz üzerinde çalışmaya başlayın.
+Bu ve diğer .NET için Content Moderator hızlı başlangıçları için [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) edinin ve tümleştirmeniz üzerinde çalışmaya başlayın.

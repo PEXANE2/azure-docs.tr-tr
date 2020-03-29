@@ -1,7 +1,7 @@
 ---
-title: Gerçek zamanlı konuşma dökümü (Önizleme)-konuşma hizmeti
+title: Gerçek zamanlı Konuşma Transkripsiyon (Önizleme) - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'Sı ile gerçek zamanlı konuşma dökümünü nasıl kullanacağınızı öğrenin. , C#Ve C++Java için kullanılabilir.
+description: Konuşma SDK ile gerçek zamanlı Konuşma Transkripsiyon nasıl kullanılacağını öğrenin. C++, C#ve Java için kullanılabilir.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76263736"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı konuşma dökümü (Önizleme)
+# <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı Konuşma Transkripsiyon (Önizleme)
 
-Konuşma **SDK 'sının konuşma API 'si** , `PullStream` veya `PushStream`kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve diğer konuşmalar gerçekleştirmenize olanak tanır. Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
+Konuşma SDK'nın **ConversationTranscriber** API kullanarak Konuşma hizmetine ses akışı sağlayarak birden fazla katılımcı ekleme, kaldırma ve tanımlama `PullStream` `PushStream`yeteneği ile toplantı ve diğer konuşmaları transkripsiyonu yapmanızı sağlar. Bu konu, Konuşma SDK 'de (sürüm 1.8.0 veya daha sonra) Konuşma-metin kullanmayı bilmenizi gerektirir. Daha fazla bilgi için konuşma [hizmetleri nelerdir'e](overview.md)bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Windows, Linux ve Android 'de, C++ C#, ve Java için konuşma API 'si desteklenir.
-- Şu anda şu bölgelerde "en-US" ve "zh-CN" dillerinde kullanılabilir: _merkezileştirme_ ve _eastaya_.
-- Kayıttan yürütme başvuru akışı olan 7 MIC dairesel çok mikrofonlu bir dizi gerektirir. Microphone dizisinin [belirtimizi](https://aka.ms/sdsdk-microphone)karşılaması gerekir.
-- [Konuşma cihazları SDK 'sı](speech-devices-sdk.md) , uygun cihazlar ve görüşme dökümünü gösteren örnek bir uygulama sağlar.
+- ConversationTranscriber API, Windows, Linux ve Android'de C++, C#ve Java için desteklenir.
+- Şu anda aşağıdaki bölgelerde "en-US" ve "zh-CN" dillerinde mevcuttur: _centralus_ ve _eastasia_.
+- Oynatma başvuru akışına sahip 7 mikrofonlu dairesel çoklu mikrofon dizisi gerektirir. Mikrofon dizisi [belirtimimizi](https://aka.ms/sdsdk-microphone)karşılamalı.
+- [Konuşma Cihazları SDK](speech-devices-sdk.md) uygun cihazlar ve Konuşma Transkripsiyon gösteren bir örnek uygulama sağlar.
 
 ## <a name="optional-sample-code-resources"></a>İsteğe bağlı örnek kod kaynakları
 
-Konuşma cihaz SDK 'Sı, 8 kanal kullanan gerçek zamanlı ses yakalama için Java 'da örnek kod sağlar.
+Konuşma Aygıtı SDK, 8 kanal kullanarak gerçek zamanlı ses çekimi için Java'da örnek kod sağlar.
 
-- [ROOBO cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
+- [ROOBO cihaz örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
 - [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir konuşma hizmeti aboneliği. Bir [konuşma deneme aboneliği yoksa bir konuşma deneme aboneliği edinebilirsiniz](https://azure.microsoft.com/try/cognitive-services/) .
+Konuşma hizmeti aboneliği. Yoksa [Konuşma deneme aboneliği alabilirsiniz.](https://azure.microsoft.com/try/cognitive-services/)
 
 ## <a name="create-voice-signatures"></a>Ses imzaları oluşturma
 
-İlk adım, etkin konuşmacı tanıma için konuşma katılımcıları için ses imzaları oluşturmaktır.
+İlk adım, verimli konuşmacı tanımlaması için konuşma katılımcıları için sesli imzalar oluşturmaktır.
 
-### <a name="audio-input-requirements"></a>Ses girişi gereksinimleri
+### <a name="audio-input-requirements"></a>Ses giriş gereksinimleri
 
-- Ses imzaları oluşturmak için giriş sesi dalga dosyası 16 bit örneklerde, 16 kHz örnek hızında ve tek kanal (mono) biçiminde olmalıdır.
+- Ses imzaları oluşturmak için giriş ses dalgası dosyası 16 bit örnekleri, 16 kHz örnek hızı ve tek bir kanal (mono) biçiminde olmalıdır.
 - Her ses örneği için önerilen uzunluk otuz saniye ile iki dakika arasındadır.
 
 ### <a name="sample-code"></a>Örnek kod
 
-Aşağıdaki örnek, içindeki C# [REST API kullanarak](https://aka.ms/cts/signaturegenservice) sesli imza oluşturmanın iki farklı yolunu göstermektedir. "YourSubscriptionKey" için gerçek bilgileri, "Hoparlörkervoice. wav" için dalga dosyası adınızı ve `{region}` ve "YourServiceRegion" (_hacmor_ _eastasıya_) bölgeniz için eklemeniz gerektiğini unutmayın.
+Aşağıdaki örnek, C#'daki REST [API'sini kullanarak](https://aka.ms/cts/signaturegenservice) ses imzası oluşturmanın iki farklı yolunu gösterir. Gerçek bilgileri "YourSubscriptionKey", dalga dosya adınızı "speakerVoice.wav" ve bölgeniz `{region}` için "YourServiceRegion"_(centralus_ veya _eastasia)_ yerine almanız gerektiğini unutmayın.
 
 ```csharp
 class Program
@@ -102,20 +102,20 @@ class Program
 }
 ```
 
-## <a name="transcribe-conversations"></a>Konuşmalar
+## <a name="transcribe-conversations"></a>Konuşmaları transkripsiyonu
 
-Aşağıdaki örnek kod, üç hoparlör için konuşmaları gerçek zamanlı olarak nasıl oluşturacağınızı gösterir. Yukarıda gösterildiği gibi, her konuşmacı için zaten ses imzaları oluşturmuş olduğunuzu varsayar. SpeechConfig nesnesini oluştururken "YourSubscriptionKey" ve "YourServiceRegion" için gerçek bilgileri değiştirin.
+Aşağıdaki örnek kod, üç konuşmacı için konuşmaların gerçek zamanlı olarak nasıl yazıya aktarılabildiğini gösterir. Yukarıda gösterildiği gibi her hoparlör için sesli imzalar oluşturduğunuzu varsayar. SpeechConfig nesnesini oluştururken gerçek bilgileri "YourSubscriptionKey" ve "YourServiceRegion" yerine bulundurun.
 
 Örnek kod vurguları şunlardır:
 
-- `Guid.NewGuid()` kullanılarak oluşturulan bir toplantı tanımlayıcısı kullanarak `SpeechConfig` nesnesinden `Conversation` nesnesi oluşturma
-- `ConversationTranscriber` nesnesi oluşturma ve konuşmaya başlamak için `JoinConversationAsync()` ile konuşmayı birleştirin
-- İlgilendiğiniz olayları kaydetme
-- Konuşma nesnesini kullanarak konuşmaya katılımcı ekleme veya konuşmayı kaldırma
+- `Conversation` Kullanarak oluşturulan toplantı `SpeechConfig` tanımlayıcısını kullanarak nesneden nesne oluşturma`Guid.NewGuid()`
+- Bir `ConversationTranscriber` nesne oluşturma ve `JoinConversationAsync()` transkripsiyon başlatmak için konuşma katılmak
+- İlgi çekici olayları kaydetme
+- Konuşma nesnesini kullanarak konuşmaya katılımcı ekleme veya kaldırma
 - Ses akışı
-- Konuşma SDK 'Sı sürüm 1.9.0 ve her ikisi de `int` ve `string` değer türlerinin her ikisi de ses imza sürümü alanında desteklenir.
+- Konuşma SDK sürüm 1.9.0 ve `int` itibaren `string` hem ve değer türleri ses imzası sürüm alanında desteklenir.
 
-Döküm ve konuşmacı tanımlayıcı, kayıtlı olaylara geri dönmeyecektir.
+Transkripsiyon ve hoparlör tanımlayıcısı kayıtlı olaylarda geri gelir.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -218,4 +218,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Zaman uyumsuz konuşma dökümü](how-to-async-conversation-transcription.md)
+> [Zaman uyumsuz Konuşma Transkripsiyonu](how-to-async-conversation-transcription.md)

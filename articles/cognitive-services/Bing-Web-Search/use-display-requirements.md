@@ -1,7 +1,7 @@
 ---
-title: Bing arama API'leri için gereksinimleri görüntülemek ve kullanın
+title: Bing Arama API'leri için kullanım ve görüntüleme gereksinimleri
 titleSuffix: Azure Cognitive Services
-description: Görüntüleme gereksinimleri uygulamalarınıza Bing arama API'leri sonuçlardan arayın.
+description: Uygulamalarınızda Bing Arama API'lerinden gelen arama sonuçlarını görüntüleme gereksinimleri.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60499894"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Arama API’si kullanım ve görüntüleme gereksinimleri
 
-Bu kullanım ve görüntü gereksinimleri aşağıdaki Bing arama ilişkileri meta verileri ve diğer sinyaller dahil olmak üzere API'lerinden, ilgili bilgiler ve içerik herhangi bir uygulama için geçerlidir.
+Bu kullanım ve görüntüleme gereksinimleri, ilişkiler, meta veriler ve diğer sinyaller de dahil olmak üzere aşağıdaki Bing Arama API'lerinden içeriğin ve ilişkili bilgilerin uygulanması için geçerlidir.
 
 - Bing Özel Arama
 - Bing Varlık Arama
@@ -34,138 +34,138 @@ Bu kullanım ve görüntü gereksinimleri aşağıdaki Bing arama ilişkileri me
 ## <a name="definitions"></a>Tanımlar
 
 
-|Terim  |Açıklama  |
+|Sözleşme Dönemi  |Açıklama  |
 |---------|---------|
-|Yanıt     | Bir kategori sonuçlarının bir yanıt döndürdü. Örneğin, Bing Web araması API'si yanıtı yanıtlar Web sonuçları, resim, video, visual ve haber kategorileri içerebilir. |
-|Yanıt     | Tüm yanıtlar ve yanıt olarak tek bir arama API'sine çağrıda alınan ilişkili veriler. |
-|Sonuç    | Bir öğe bir yanıt bilgileri. Örneğin, bir tek haber makaleyle bağlantılı veri kümesini haber yanıtında bir sonucudur. |
-|Arama API'leri    | toplu olarak, Bing özel arama, varlık araması, resim arama, haber arama, Video arama, görsel arama, yerel iş arama ve Web arama API'leri. |
+|Yanıt     | Yanıt olarak döndürülen bir sonuç kategorisi. Örneğin, Bing Web Arama API'sinden gelen bir yanıt, web sayfası sonuçları, resim, video, görsel ve haber kategorilerinde yanıtlar içerebilir. |
+|Yanıt     | Arama API'sine yapılan tek bir çağrıya yanıt olarak alınan tüm yanıtlar ve ilişkili veriler. |
+|Sonuç    | Yanıttaki bir bilgi öğesi. Örneğin, tek bir haber makalesiyle bağlantılı veri kümesi, bir haber yanıtıyla sonuçlanır. |
+|API Arama    | topluca, Bing Özel Arama, Varlık Arama, Görüntü Arama, Haber Arama, Video Arama, Görsel Arama, Yerel İş Arama ve Web Arama API'leri. |
 
-## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing yazım denetimi ve Bing otomatik öneri API'si kısıtlamaları
+## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Yazım Denetimi ve Bing Otomatik Öner API kısıtlamaları
 
 Yapma:
 
-- Kopyalama, saklamak veya Bing yazım denetimi veya Bing otomatik öneri API'leri almaya herhangi bir veri önbelleği.
-- Bing yazım denetimi veya Bing otomatik öneri API'leri machine learning'e ya da benzer algoritmik etkinliği bir parçası olarak almaya verileri kullanın. Bu veriler eğitmek, değerlendirmek ya da siz veya üçüncü taraflara sunabilir yeni veya var olan hizmetleri geliştirmek için kullanmayın.
+- Bing Yazım Denetimi'nden veya Bing Otomatik Öner API'lerinden aldığınız verileri kopyalayın, depolayın veya önbelleğe alın.
+- Bing Yazım Denetimi veya Bing Otomatik Öner API'lerden aldığınız verileri herhangi bir makine öğrenimi veya benzer algoritmik etkinliğin bir parçası olarak kullanın. Bu verileri, sizin veya üçüncü tarafların sunabileceği yeni veya mevcut hizmetleri eğitmek, değerlendirmek veya geliştirmek için kullanmayın.
 
 ## <a name="bing-search-apis"></a>Bing Arama API’leri
 
 > [!NOTE]
-> Bu bölümdeki gereksinimleri yalnızca arama, Bing yazım denetimi veya Bing otomatik öneri içermez API'leri için geçerlidir. 
+> Bu bölümdeki gereksinimler yalnızca Bing Yazım Denetimi veya Bing Otomatik Öner'i içermeyen Arama API'leri için geçerlidir. 
 
 ### <a name="internet-search-experience-requirements"></a>Internet arama deneyimi gereksinimleri
 
-Yanıtları döndürülen tüm veriler, yalnızca internet arama deneyimleri kullanılabilir. Bir internet arama deneyimi görüntülenen içerik anlamına gelir: 
+Yanıtlarda döndürülen tüm veriler yalnızca internet arama deneyimlerinde kullanılabilir. Bir internet arama deneyimi görüntülenen içerik anlamına gelir: 
 
-- İlgili olduğundan ve yanıt verdiğinden son kullanıcının doğrudan sorgu ya da diğer göstergesi arama ilgi ve hedefi (örneğin, bir kullanıcı belirtilen arama sorgusu). 
+- Son kullanıcının doğrudan sorgusuyla veya arama ilgi alanı ve amaçlarının (örneğin, kullanıcı tarafından gösterilen bir arama sorgusu) diğer göstergesiyle alakalı ve yanıt verir. 
 
-- Kullanıcıların bulmasına ve yanıtın veri kaynağına gidin yardımcı olur. Örneğin, yanıt köprüler tıklanabilir bağlantılar sağlama.
+- Kullanıcıların yanıtın veri kaynaklarını bulmasına ve bu kaynaklara gitmesini sağlar. Örneğin, yanıttaki köprülerden tıklanabilir bağlantılar sağlar.
 
-- Aralarından seçim yapabileceğiniz kullanıcı için birden çok sonuç içerir. 
+- Kullanıcının seçebilmek için birden çok sonuç içerir. 
 
-- Kullanıcıların arama olanak sağlayan bir yerleşimden var.
+- Kullanıcıların arama yapmalarını sağlayan bir yerleşimdedir.
 
-- İçeriğin bir internet arama sonucu olduğunu görünür bir göstergesi içerir. Örneğin, "web" içeriği olan ifade.
+- İçeriğin bir internet arama sonucu olduğuna dair görünür bir gösterge içerir. Örneğin, içeriğin "web'den" olduğunu belirten bir ifade.
 
-- Bing arama API'si verilerinizi uygulanabilir yasa ve üçüncü taraf haklarını ihlal etmemesini sağlamak için tüm diğer uygun ölçüler içerir. Ölçüler ne olabilir, yasal danışmanlar uygun belgelere bakın.
+- Bing Arama API verilerinizin geçerli yasaları veya üçüncü taraf haklarını ihlal etmediğinden emin olmak için diğer uygun önlemleri içerir. Hangi önlemlerin uygun olabileceğini belirlemek için yasal danışmanlarınıza danışın.
 
-Yalnızca bu internet arama deneyimi gereksinimleri için keşif URL'si, bu makalenin sonraki bölümlerinde açıklandığı istisnadır. 
+Bu internet arama deneyimi gereksinimlerinin tek istisnası, bu makalede daha sonra açıklandığı gibi URL keşfidir. 
 
 ### <a name="restrictions"></a>Kısıtlamalar
 
 Yapma:
 
-- Kopyalama, saklamak veya tüm veriler yanıtları önbelleğe alma (hariç tutma tarafından izin verilen azami ölçüde [kesintisiz hizmet devamlılığı](#continuity-of-service). 
+- Yanıtlardan gelen verileri kopyalama, depolama veya önbelleğe alma [(hizmetin sürekliliğinin](#continuity-of-service)izin verdiği ölçüde bekletme hariç. 
 
-- Machine learning'e ya da benzer algoritmik etkinlik kapsamında arama API'lerinden alınan veriler kullanın. Bu veriler eğitmek, değerlendirmek ya da siz veya üçüncü taraflara sunabilir yeni veya var olan hizmetleri geliştirmek için kullanmayın.
+- Arama API'lerinden alınan verileri herhangi bir makine öğrenimi veya benzer algoritmik etkinliğin bir parçası olarak kullanın. Bu verileri, sizin veya üçüncü tarafların sunabileceği yeni veya mevcut hizmetleri eğitmek, değerlendirmek veya geliştirmek için kullanmayın.
 
-- (Dışındaki herhangi bir gereksinim ihlal etmemesini şekilde yeniden biçimlendirmek üzere), sonuçları içerik değiştirme yasaların gerektirdiği durumlar ya da Microsoft tarafından kabul sürece. 
+- Yasaların gerektirdiği veya Microsoft tarafından kabul edilmedikçe, sonuçların içeriğini (başka bir gereksinimi ihlal etmeyecek şekilde yeniden biçimvermek dışında) değiştirin. 
 
-- Öznitelik bilgileri ve URL'leri sonucu içerikle ilişkili atlayın.
+- Sonuç içeriğiyle ilişkili atıf bilgilerini ve URL'leri atla.
 
-- Yeniden sıralama, tarafından atlandığını dahil olmak üzere, sonuçları bir sipariş veya derecelendirme sağlandığında, yasaların gerektirdiği durumlar haricinde bir yanıt olarak görüntülenen veya Microsoft tarafından kabul. 
+- Yasalar gerektirmedikçe veya Microsoft tarafından kabul edilmedikçe, bir sipariş veya sıralama sağlandığında, ihmal dahil olmak üzere yeniden sipariş verin. 
 
     > [!NOTE]
-    > Bu gereksinim Bing özel arama API'si için portal aracılığıyla uygulanan yeniden sıralama için geçerli değildir.
+    > Bu gereksinim, Bing Özel Arama API'si için portal üzerinden uygulanan yeniden sıralama için geçerli değildir.
 
-- Diğer içerik yanıt herhangi bir bölümü içinde bir kullanıcının diğer içerik yanıtın bir parçası olduğunu düşünüyorsanız sunulmasını şekilde görüntüleyin. 
+- Yanıtın herhangi bir bölümündeki diğer içeriği, kullanıcının diğer içeriğin yanıtın bir parçası olduğuna inanmasına yol açacak şekilde görüntüleyin. 
 
-- Bir yanıt herhangi bir bölümünü görüntüleyen herhangi bir sayfa üzerinde Microsoft tarafından sağlanmayan reklamları görüntüleyin. 
+- Yanıtın herhangi bir bölümünü görüntüleyen herhangi bir sayfada Microsoft tarafından sağverilmeyecek reklamları görüntüleyin. 
 
-- Yanıt sayfalarındaki tüm tanıtım görüntüle:
-    - Bing görüntü, haber arama, Video arama veya görsel arama API'leri
-    - Filtrelenmiş olan veya birincil (veya yalnızca) sınırlı görüntü, haber ve/veya video veya görsel arama sonuçları.
+- Yanıtlar içeren sayfalarda herhangi bir reklam görüntüleme:
+    - Bing Görüntüsü, Haber Arama, Video Arama veya Görsel Arama API'lerinden
+    - Bunlar, öncelikle (veya yalnızca) görüntü, haber ve/veya video veya görsel arama sonuçlarıyla filtrelenir veya sınırlıdır.
 
 ### <a name="notices-and-branding"></a>Bildirimler ve markalama 
 Yapın:
 
-- İşlevsel bir köprü göze çarpacak şekilde dahil [Microsoft gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=521839), neredeyse her noktasında bir kullanıcı bir arama sorgusu giriş imkanı kullanıcı deneyimi (UX). Bağ etiketi **Microsoft gizlilik bildirimi**.
+- Kullanıcı deneyimindeki (UX) kullanıcıya arama sorgusu girebilme olanağı sunan her noktaya yakın olan [Microsoft Gizlilik Bildirimi'ne](https://go.microsoft.com/fwlink/?LinkId=521839)işlevsel bir köprü ekleyin. Köprümicrosoft **Gizlilik Bildirimi'ni**etiketle.
 
-- Bing, tutarlı marka öne [Bing olan marka kullanım kılavuzuna](https://go.microsoft.com/fwlink/?linkid=833278), neredeyse her bir kullanıcı bir arama sorgusu giriş imkanı UX noktası. Böyle bir marka gerekir kullanıcıya açıkça durum Microsoft internet arama deneyimini güçlendiren.
+- Kullanıcıya arama sorgusu giriş yapma olanağı sunan UX'deki her noktaya yakın bing ticari marka kullanım [yönergeleriyle](https://go.microsoft.com/fwlink/?linkid=833278)tutarlı olarak Bing markasını belirgin bir şekilde görüntüleyin. Bu tür bir marka, Microsoft'un internet arama deneyimine güç verdiğini kullanıcıya açıkça belirtmelidir.
 
-- Microsoft, aksi takdirde, kullanımınız için yazma belirtmediği sürece her yanıt (veya bir yanıt bölümü) Microsoft'a, Bing Web araması, resim arama, haber arama, Video araması ve görsel arama API'leri görüntülenen özniteliği. Bu açıklanan [Bing olan marka kullanım kılavuzuna](https://go.microsoft.com/fwlink/?linkid=833278). 
+- Microsoft kullanımınız için yazılı olarak aksi belirtmediği sürece Bing Web Arama, Resim Arama, Haber Arama, Video Arama ve Görsel Arama API'lerinden görüntülenen her yanıtı (veya yanıtın bir kısmını) Microsoft'a atfedebilirsiniz. Bu, [Bing Ticari Marka Kullanım Yönergeleri'nde](https://go.microsoft.com/fwlink/?linkid=833278)açıklanmıştır. 
 
 Yapma:
 
-- Belirli kullanımınız için yazılı olarak Aksi halde Microsoft belirtmediği sürece öznitelik yanıtları (veya yanıtlarını bölümlerini) Bing özel arama API'den Microsoft, görüntülenir.
+- Microsoft özel kullanımınız için yazılı olarak aksi belirtmediği sürece, Bing Özel Arama API'sinden görüntülenen yanıtları (veya yanıtların bölümlerini) Microsoft'a atfedin.
 
 ### <a name="transferring-responses"></a>Yanıtları aktarma
 
-Bir Mesajlaşma uygulaması veya sosyal medya posta, aşağıdaki durumlardan gibi başka bir kullanıcı, arama API'si yanıt aktarmak için bir kullanıcı devre dışı bırakırsanız: 
+Bir kullanıcının bir Arama API'sinden bir yanıtı başka bir kullanıcıya (örneğin, bir mesajlaşma uygulaması veya sosyal medya gönderimi gibi) aktarmasını sağlarsanız, aşağıdaki ler geçerlidir: 
 
-- Aktarılan yanıtları gerekir:
-  - Aktarma kullanıcıya görüntülenen yanıtların içeriğinden değiştirilmemiş olan içerik oluşur. Biçimlendirme değişikliklerini verilebilir.
-  - Herhangi bir veri meta veri biçiminde dahil.
-  - Bing Web, görüntü, Haberler, Video ve görsel API'ler yanıtlar için Bing tarafından desteklenen bir internet arama deneyimini aracılığıyla görüntüleme dilini gösteren yanıt alındı. Örneğin, Bing bu görüntü ile ilgili daha fazla "Bing tarafından desteklenen" veya "Bilgi" gibi dil görüntüleyebilir veya Bing logosu kullanabilirsiniz.
-  - Bing özel arama API'si yanıtlar almak için bir internet arama deneyimi görüntüleme dilini gösteren yanıt alındı. Örneğin, "Hakkında daha fazla bilgi bu arama sonucunda." gibi dil görüntüleyebilir
-  - Yanıtı oluşturmak için kullanılan tam sorgu çarpacak şekilde görüntüleyin.
-  - Tanınmış bir bağlantı veya benzer attribution yanıtının temel alınan kaynağa doğrudan veya bir arama motoru (bing.com, m.bing.com veya özel arama hizmetinizi uygunsa) üzerinden içerir.
-- Yanıtları aktarımını otomatik değildir. Aktarım NET bir şekilde yanıt aktarmak için bir hedefi evidencing bir kullanıcı eylemi tarafından başlatılmalıdır.
-- Aktarma kullanıcının sorgusuna yanıt olarak görüntülenen yanıtları aktarmak için bir kullanıcı yalnızca sağlayabilir.
+- Aktarılan yanıtlar şunları yapmalı:
+  - Aktaran kullanıcıya görüntülenen yanıtların içeriğinden değiştirilmemiş içerikten oluşur. Değişiklikleri biçimlendirmek caizdir.
+  - Meta veri formuna herhangi bir veri eklemeyin.
+  - Bing Web, Resim, Haber, Video ve Görsel API'lerden gelen yanıtlar için, yanıtın Bing tarafından desteklenen bir internet arama deneyimi aracılığıyla elde edildiğini belirten görüntü dili. Örneğin, "Powered by Bing" veya "Bing'de bu resim hakkında daha fazla bilgi edinin" gibi bir dil görüntüleyebilir veya Bing logosunu kullanabilirsiniz.
+  - Bing Özel Arama API'sinden gelen yanıtlar için, yanıtın bir internet arama deneyimi aracılığıyla elde edildiğini belirten bir dil görüntüleyin. Örneğin, "Bu arama sonucu hakkında daha fazla bilgi edinin" gibi bir dil görüntüleyebilirsiniz.
+  - Yanıtı oluşturmak için kullanılan tam sorguyu belirgin bir şekilde görüntüleyin.
+  - Doğrudan veya arama motoru (bing.com, m.bing.com veya özel arama hizmetiniz aracılığıyla yanıtın altında yatan kaynağa belirgin bir bağlantı veya benzer bir atıf ekleyin).
+- Yanıtların aktarımını otomatikleştiremeyebilirsiniz. Bir aktarım, bir yanıtı aktarma niyetini açıkça iptal eden bir kullanıcı eylemi tarafından başlatılmalıdır.
+- Bir kullanıcının yalnızca aktaran kullanıcının sorgusuna yanıt olarak görüntülenen yanıtları aktarmasını etkinleştirebilirsiniz.
 
-### <a name="continuity-of-service"></a>Kesintisiz hizmet devamlılığı 
+### <a name="continuity-of-service"></a>Hizmetin sürekliliği 
 
-Kopyalamayın, depolamak veya tüm veriler arama API yanıtları önbelleğe alma. Ancak, sürekliliği ve veri işleme hizmeti erişimi etkinleştirmek için sonuçları yalnızca aşağıdaki koşullarda Koru:
+Arama API yanıtlarından herhangi bir veriyi kopyalamayın, depolamayın veya önbelleğe almayın. Ancak, hizmet erişiminin ve veri oluşturmanın sürekliliğini sağlamak için, sonuçları yalnızca aşağıdaki koşullar altında saklayabilirsiniz:
 
 #### <a name="device"></a>Cihaz
 
-Tutulan sonuçlar yalnızca kullanılabilir olması koşuluyla, sonuçları bir aygıtta saati (i) 24 saatten daha az için sorgu veya (ii) şirketin başka bir sorgu için güncelleştirilmiş sonuçları, bir kullanıcının gönderdiğini kadar korumak bir kullanıcı sağlayabilir:
+Bir kullanıcının sorgu nun verildiği andan itibaren (i) 24 saat veya (ii) kullanıcı güncelleştirilmiş sonuçlar için başka bir sorgu gönderene kadar, yalnızca tutulan sonuçların kullanılabilmiş olması koşuluyla, bir aygıttaki sonuçları bir aygıtta saklamasını sağlayabilirsiniz:
 
-- Kullanıcının erişim sağlamak için daha önce bu cihazda (örneğin, durumunda hizmet kesintisini) söz konusu kullanıcı için döndürülen sonuçlanır.
-- Kullanıcının sinyaller (örneğin, durumunda beklenen hizmet kesintisi) göre kullanıcının gereksinimlerinin olasılığına kişiselleştirilmiş, proaktif sorgu için döndürülen sonuçlarını depolamak için.
+- Kullanıcının söz konusu cihazda daha önce bu kullanıcıya iade edilen sonuçlara erişmesini sağlamak için (örneğin, hizmet kesintisi durumunda).
+- Kullanıcının sinyallerine dayalı olarak (örneğin, beklenen hizmet kesintisi durumunda) kullanıcının gereksinimleri beklentisiyle kişiselleştirilmiş proaktif sorgunuz için döndürülen sonuçları depolamak için.
 
-#### <a name="server"></a>Sunucusu
+#### <a name="server"></a>Sunucu
 
-Güvenli bir şekilde sizin denetlediğiniz bir sunucuda tek bir kullanıcı için belirli sonuçları tutabilir ve yalnızca tutulan sonuçları görüntüleyin:
+Tek bir kullanıcıya özgü sonuçları, kontrol ettiğiniz bir sunucuda güvenli bir şekilde saklayabilir ve yalnızca tutulan sonuçları görüntüleyebilirsiniz:
 
-- Çözümünüzdeki bu kullanıcıya daha önce döndürülen sonuçların geçmiş bir rapora erişmek kullanıcı etkinleştirmek için. Sonuçları değil (i) 21 günden fazla bir süre zamanından sonra son kullanıcının ilk sorgu korunur ve (ii) bir kullanıcının yeni veya yinelenen sorgusuna yanıt olarak görüntülenir.
-- Kullanıcı gereksinimlerini, kullanıcının sinyalleri üzerinde temel olasılığına proaktif sorgunuz için döndürülen sonuçlarını depolamak için kişiselleştirilmiş. Bu sonuçları saati (i) 24 saatten daha az için sorgu veya (ii) şirketin başka bir sorgu için güncelleştirilmiş sonuçları bir kullanıcının gönderdiğini kadar depolayabilirsiniz.
+- Kullanıcının çözümde daha önce bu kullanıcıya döndürülen sonuçların geçmiş raporuna erişmesini sağlamak için. Sonuçlar (i) son kullanıcının ilk sorgusundan itibaren 21 günden fazla tutulamaz ve (ii) kullanıcının yeni veya yinelenen sorgusuna yanıt olarak görüntülenemez.
+- Kullanıcının sinyallerine dayalı olarak, kullanıcının gereksinimleri beklentisiyle kişiselleştirilmiş proaktif sorgunuz için döndürülen sonuçları depolamak için. Bu sonuçları sorgu nun zamanından itibaren 24 saat veya (ii) kullanıcı güncelleştirilmiş sonuçlar için başka bir sorgu gönderene kadar daha az bir süre için depolayabilirsiniz.
 
-Korunan her sonuçları belirli bir kullanıcı için başka bir kullanıcı için sonuçlarla commingled olamaz. Diğer bir deyişle, her kullanıcı sonuçlarını korunur ve gerekir ayrı olarak teslim.
+Tutulduğunda, belirli bir kullanıcının sonuçları başka bir kullanıcının sonuçlarıyla hesaplanamaz. Diğer bir süre, her kullanıcının sonuçları ayrı olarak tutulmalıdır.
 
 ### <a name="general"></a>Genel 
 
-Tutulan sonuçları tüm sunumu için:
+Tüm tutulan sonuçların sunumu için:
 
-- Sorgunun gönderildiği zaman açık, görünür bir bildirim içerir.
-- Mevcut bir düğme veya benzer bir kullanıcı için yeniden sorgular ve almak için anlamına gelir, sonuçları güncelleştirildi. 
-- Sonuçları sunuda marka Bing korur.
-- silin (ve gerekirse yeni bir sorgu ile yenileme) belirtilen zaman dilimlerine içindeki depolanmış sonuç.
+- Sorgunun gönderildiği saate ait açık ve görünür bir bildirim ekleyin.
+- Yeniden sorgulamak ve güncelleştirilmiş sonuçlar elde etmek için kullanıcıya bir düğme veya benzer araçlar sunun. 
+- Sonuçların sunumunda Bing markasını koruyun.
+- Depolanan sonuçları belirtilen zaman dilimleri içinde silin (ve gerekirse yeni bir sorguyla yenileyin).
 
-### <a name="non-display-url-discovery"></a>Görüntü olmayan URL'yi bulma 
+### <a name="non-display-url-discovery"></a>Görüntülendirilmeyen URL bulma 
 
-Yalnızca, kullanıcı ya da müşteri için bir sorgu duyarlı bilgi kaynakları URL'lerini keşfetme uygulamalarınızdaki için bir internet olmayan arama deneyimini araması yanıtlarında kullanabilirsiniz. Bir rapor ya da benzer yanıt sağladığınız böyle URL'leri kopyalayabilirsiniz:
+Arama yanıtlarını yalnızca kullanıcınızdan veya müşterinizden gelen bir sorguya yanıt veren bilgi kaynaklarının URL'lerini keşfetmek amacıyla internet dışı bir arama deneyiminde kullanabilirsiniz. Bu tür URL'leri sağladığınız bir raporda veya benzer yanıtta kopyalayabilirsiniz:
 
-- Yalnızca bu kullanıcı veya müşteri, yanıt olarak sorgu.
-- Yalnızca bu önemli ek değerli içerik, sorgu ile ilgili içeriyorsa.
+- Yalnızca bu kullanıcıya veya müşteriye, bu sorguya yanıt olarak.
+- Yalnızca sorguyla ilgili önemli ek değerli içerik içeriyorsa.
 
-Arama API'lerinin önceki bölümlerde kullanın ve görüntü gereksinimleri aşağıdaki istisnalar dışında bu görüntü olmayan kullanım için geçerli değildir: 
+Arama API'lerinin önceki bölümleri aşağıdakiler dışında bu ekran dışı kullanım için geçerli değildir: 
 
-- Değil önbellek, kopyalama veya herhangi bir veri veya içerik, saklamak veya daha önce açıklanan kopyalama, sınırlı URL dışındaki arama yanıt öğesinden türetilen.
-- Arama API'lerinden alınan (URL'leri dahil) veri kullanımını herhangi bir uygulanabilir yasalar veya üçüncü taraf haklarını ihlal etmemesini sağlamak.
-- Herhangi bir arama dizini veya machine learning veya benzer algoritmik etkinlik kapsamında arama API'lerinden alınan (URL'leri dahil) veri kullanmayın. Bu veri train oluşturma, değerlendirmek veya siz veya üçüncü taraflara sunabilir hizmetlerini geliştirmek için kullanmayın.
+- Arama yanıtından daha önce açıklanan sınırlı URL kopyalama dışında herhangi bir veriyi veya içeriği önbelleme, kopyalamaveya saklamayın.
+- Arama API'lerinden alınan verileri (URL'ler dahil) kullanmanızın yürürlükteki yasaları veya üçüncü taraf haklarını ihlal etmediğinden emin olun.
+- Arama API'lerinden alınan verileri (URL'ler dahil) herhangi bir arama dizininin veya makine öğreniminin veya benzer algoritmik etkinliğin bir parçası olarak kullanmayın. Bu verileri sizin veya üçüncü tarafların sunabileceği hizmetleri oluşturmak, değerlendirmek veya iyileştirmek için kullanmayın.
 
 ## <a name="gdpr-compliance"></a>GDPR uyumluluğu  
 
-Genel veri koruma yönetmeliği (GDPR) ve arama API'leri, Bing yazım denetimi API'si ve Bing otomatik öneri API'si çağrılarını bağlantılı olarak işlenir Avrupa Birliği tabi kişisel verileri göre siz ve Microsoft olduğunu biliyoruz. bağımsız veri denetleyicilerine GDPR altında. Bağımsız olarak, GDPR ile uyum için sorumlu olursunuz.  
+Avrupa Birliği Genel Veri Koruma Yönetmeliği'ne (GDPR) tabi olan ve Arama API'lerine, Bing Yazım Denetimi API'sine veya Bing Otomatik Öner API'ye yapılan aramalarla bağlantılı olarak işlenen kişisel verilerle ilgili olarak, sizin ve Microsoft'un GDPR altında bağımsız veri denetleyicileri. GDPR'ye uyumunuzdan bağımsız olarak siz sorumlusunuz.  
 

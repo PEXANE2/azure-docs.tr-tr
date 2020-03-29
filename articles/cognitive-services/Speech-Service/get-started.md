@@ -1,7 +1,7 @@
 ---
 title: Konuşma tanıma hizmetini ücretsiz olarak deneyin
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmetini kullanmaya başlamak kolay ve ekonomik bir işlemdir. Hizmetin neler yapabileceğini keşfedebilmeniz ve gereksinimlerinize uygun olup olmadığına karar verebilmeniz için ücretsiz olarak iki seçenek mevcuttur.
+description: Konuşma hizmeti ile başlamak kolay ve uygun fiyatlı. Hizmetin neler yapabileceğini keşfedebilmeniz ve ihtiyaçlarınız için doğru olup olmadığına karar verebilmeniz için ücretsiz olarak iki seçenek mevcuttur.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,89 +12,89 @@ ms.date: 02/26/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
 ms.openlocfilehash: f74e3ea3d20ad2666b434e009cf62add6f88d200
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219670"
 ---
 # <a name="try-the-speech-service-for-free"></a>Konuşma tanıma hizmetini ücretsiz olarak deneyin
 
-Bu makalede, hizmetin neler yapabileceğini keşfedebilmeniz ve gereksinimlerinize uygun olup olmadığına karar vermek için konuşma hizmetini ücretsiz olarak test etmek için bir seçenek belirleyin. Durumunuza ve kullanım örneğine bağlı olarak aşağıdaki iki seçenekten birini belirleyin:
+Bu makalede, hizmetin neler yapabileceğini keşfetmek ve gereksinimleriniz için doğru olup olmadığına karar vermek için Konuşma hizmetini ücretsiz olarak kolayca sınamak için bir seçenek seçebilirsiniz. Durumunuza ve kullanım durumunuza bağlı olarak aşağıdaki iki seçenekten birini seçin:
 
-- [1. seçenek](#no-card): kredi kartı bilgilerini (mevcut bir Azure hesabınız olması gerekir) sağlamadan hemen **ücretsiz deneme** API anahtarları alın. **Ücretsiz deneme süresi** 30 gün sürer ve veriler sonda silinir. Bu seçenek, hizmet ile hızlı deneme için idealdir.
-- [2. seçenek](#new-resource): **ücretsiz bir abonelik** (kredi kartı bilgileri gerekir) kullanarak Azure 'da yeni bir konuşma kaynağı oluşturun. **Ücretsiz abonelik** , genellikle ücretli bir aboneliğe göre daha sıkı bir ücret sınırlarına sahiptir. Hizmeti test etmek istiyorsanız bu seçenek en iyi seçenektir, ancak gelecekte ücretli bir aboneliğe yükseltmeyi ve veri kaybetmek istemediğinizi de planlayın.
+- [Seçenek 1](#no-card): Kredi kartı bilgileri vermeden hemen **ücretsiz deneme** API anahtarları alın (mevcut bir Azure hesabınız olması gerekir). **Ücretsiz deneme** 30 gün sürer ve veriler sonunda silinir. Bu seçenek, hizmetle hızlı deneme için en iyisidir.
+- [Seçenek 2](#new-resource): **Ücretsiz abonelik** (kredi kartı bilgileri gereklidir) kullanarak ücretsiz olarak Azure'da yeni bir Konuşma kaynağı oluşturun. **Ücretsiz abonelik,** ücretli abonelikten daha katı ücret limitlerine sahiptir. Hizmeti sınamak, ancak gelecekte ücretli bir aboneye yükseltmeyi planlıyorsanız ve veri kaybetmek istemiyorsanız, bu seçenek en iyisidir.
 
-## <a id="no-card"></a>Konuşma hizmeti 'ni kredi kartı bilgisi olmadan deneyin
+## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>Kredi kartı bilgisi olmadan Konuşma hizmetini deneyin
 
-30 günlük ücretsiz denemeyi etkinleştirmek ve API anahtarları almak için aşağıdaki adımları izleyin. Deneme süreniz, aşağıdaki adımlar tamamlandıktan hemen sonra başlar.
+30 günlük ücretsiz deneme sürümünü etkinleştirmek ve API tuşlarını almak için aşağıdaki adımları tamamlayın. Deneme süreniz, aşağıdaki adımlar tamamlandıktan hemen sonra başlar.
 
-1. Bilişsel [hizmeti 'Ni deneyin](https://azure.microsoft.com/try/cognitive-services/)' e gidin.
-1. **Konuşma API 'leri** sekmesini seçin.
-1. **API anahtarını al**' ı seçin.
+1. Bilişsel [Hizmet deneyin](https://azure.microsoft.com/try/cognitive-services/)gidin.
+1. Konuşma **API'leri** sekmesini seçin.
+1. **API Anahtarı Al'ı**seçin.
 
-Faturalandırma seçimlerinizle karşılaşırsınız. Ücretsiz seçeneğini belirleyin ve ardından kullanıcı sözleşmesini okuyun ve onaylayın. Konuşma hizmetini 30 gün boyunca ücretsiz olarak denemek için kullanabileceğiniz anahtarlarla karşılaşırsınız.
+Size fatura landırma seçenekleri sunulacaktır. Ücretsiz seçeneği seçin ve ardından kullanıcı sözleşmesini okuyun ve onaylayın. Konuşma hizmetini 30 gün boyunca ücretsiz olarak denemek için kullanabileceğiniz anahtarlarla birlikte sunulur.
 
-## <a id="new-resource"></a>Azure kaynağı oluşturarak konuşma hizmetini deneyin
+## <a name="try-the-speech-service-by-creating-an-azure-resource"></a><a id="new-resource"></a>Azure kaynağı oluşturarak Konuşma hizmetini deneyin
 
-Aşağıdaki adımlar için hem Microsoft hesabı hem de bir Azure hesabınızın olması gerekir. Bir Microsoft hesabı yoksa, [Microsoft hesabı portalında](https://account.microsoft.com/account)ücretsiz bir ücret karşılığında kaydolabilirsiniz. **Microsoft hesabıyla oturum açın** ' yi seçin ve ardından oturum açmak Istendiğinde **Microsoft hesabı oluştur**' u seçin. Oluşturun ve yeni Microsoft hesabınızı doğrulamak için adımları izleyin.
+Aşağıdaki adımlar için hem Microsoft hesabına hem de Azure hesabına ihtiyacınız var. Microsoft hesabınız yoksa, [Microsoft hesap portalından](https://account.microsoft.com/account)ücretsiz olarak kaydolabilirsiniz. **Microsoft ile Oturum Aç'ı** seçin ve oturum açmam istendiğinde Microsoft hesabı **oluştur'u**seçin. Yeni Microsoft hesabınızı oluşturmak ve doğrulamak için adımları izleyin.
 
-Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin, **ücretsiz Başlat**' ı seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun.
+Bir Microsoft hesabınız olduktan sonra Azure [kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin , **ücretsiz Başlat'ı**seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun.
 
 > [!NOTE]
-> Konuşma hizmetinde iki hizmet katmanı vardır: ücretsiz ve abonelik, farklı sınırlamalara ve avantajlara sahiptir. Ücretsiz bir Azure hesabı için kaydolduğunuzda, hizmet kredisi $200 ile birlikte gelir ve ücretli bir konuşma hizmeti aboneliğine uygulayabileceğiniz, 30 güne kadar geçerli olur.
+> Konuşma hizmetinin iki hizmet katmanı vardır: farklı sınırlamaları ve avantajları olan ücretsiz ve abonelik. Ücretsiz bir Azure hesabına kaydolduğunuzda, 30 güne kadar geçerli olan ücretli konuşma hizmeti aboneliği ne kadar uygulayabileceğiniz 200 TL'lik hizmet kredisi yle birlikte gelir.
 >
-> Ücretsiz, düşük hacimli konuşma hizmeti katmanını kullanıyorsanız, ücretsiz deneme veya hizmet kredinizin süresi dolduktan sonra bile bu ücretsiz aboneliği koruyabilirsiniz.
+> Ücretsiz, düşük hacimli Konuşma hizmeti katmanını kullanırsanız, ücretsiz deneme veya hizmet krediniz indikten sonra bile bu ücretsiz aboneliği koruyabilirsiniz.
 >
-> Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-konuşma hizmeti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Daha fazla bilgi için Bilişsel [Hizmetler fiyatlandırma - Konuşma hizmetine](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın.
 
 ### <a name="create-the-resource"></a>Kaynağı oluşturma
 
-Azure hesabınızda bir konuşma hizmeti kaynak (ücretsiz veya Ücretli katman) eklemek için:
+Azure hesabınıza bir Konuşma hizmeti kaynağı (ücretsiz veya ücretli katman) eklemek için:
 
-1. Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
+1. Portalın sol üst kısmında **bir kaynak oluştur'u** seçin. **Kaynak Oluştur'u**görmüyorsanız, sol üstteki daraltılmış menüyü seçerek her zaman bulabilirsiniz:
 
-   ![daraltılmış gezinti düğmesi](media/index/collapsed-nav.png)
+   ![daraltılmış navigasyon düğmesi](media/index/collapsed-nav.png)
 
-1. **Yeni** pencerede, arama kutusuna "konuşma" YAZıN ve ENTER tuşuna basın.
+1. **Yeni** pencerede, arama kutusuna "konuşma" yazın ve ENTER tuşuna basın.
 
-1. Arama sonuçlarında **konuşma**' yı seçin.
+1. Arama sonuçlarında **Konuşma'yı**seçin.
 
-   ![Konuşma Arama sonuçları](media/index/speech-search.png)
+   ![konuşma arama sonuçları](media/index/speech-search.png)
 
-1. **Oluştur**' u seçin, sonra:
+1. **Oluştur'u**seçin, sonra:
 
-   - Yeni kaynağınız için benzersiz bir ad verin. Ad, aynı hizmete bağlı birden çok abonelik arasında ayrım yapmanıza yardımcı olur.
-   - Yeni kaynak ücretleri nasıl faturalandırılır belirlemek için ilişkili olduğu Azure aboneliğini seçin.
+   - Yeni kaynağınız için benzersiz bir ad verin. Ad, aynı hizmete bağlı birden çok abonelik arasında ayrım yapmaya yardımcı olur.
+   - Ücretlerin nasıl faturalandırıldırıldırıldığını belirlemek için yeni kaynağın ilişkili olduğu Azure aboneliğini seçin.
    - Kaynağın kullanılacağı [bölgeyi](regions.md) seçin.
-   - Ücretsiz (F0) ya da ücretli (S0) fiyatlandırma katmanını seçin. Her katmana yönelik fiyatlandırma ve kullanım kotaları hakkında tam bilgi için, **tam fiyatlandırma ayrıntılarını görüntüle**' yi seçin.
-   - Bu konuşma abonelik için yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubu aboneliği atayın. Kaynak düzenlenir, çeşitli Azure aboneliklerinizi tutmak Yardım gruplandırır.
-   - **Oluştur**’u seçin. Bu işlem sizi dağıtıma genel bakış ve dağıtım ilerleme durumu iletilerini görüntüleyecek şekilde götürür.
+   - Ücretsiz (F0) veya ücretli (S0) fiyatlandırma katmanı seçin. Her katman için fiyatlandırma ve kullanım kotaları hakkında tam bilgi **için, tam fiyatlandırma ayrıntılarını görüntüle'yi**seçin.
+   - Bu Konuşma aboneliği için yeni bir kaynak grubu oluşturun veya aboneliği varolan bir kaynak grubuna atayın. Kaynak grupları, çeşitli Azure aboneliklerinizi düzenli tutmanıza yardımcı olur.
+   - **Oluştur'u**seçin. Bu, sizi dağıtıma genel bakışa götürür ve dağıtım ilerleme iletilerini görüntüler.
 
 > [!NOTE]
-> Bir veya birden çok bölgede standart katman abonelikleri sınırsız sayıda oluşturabilirsiniz. Ancak, yalnızca bir ücretsiz katman abonelik oluşturabilir. Ücretsiz katmanda 7 gün boyunca kullanılmamış olarak kalan model dağıtımları otomatik olarak kullanımdan kaldırılacaktır.
+> Bir veya birden çok bölgede sınırsız sayıda standart katman aboneliği oluşturabilirsiniz. Ancak, yalnızca bir serbest katmanlı abonelik oluşturabilirsiniz. 7 gün boyunca kullanılmayan ücretsiz katmandaki model dağıtımları otomatik olarak devre dışı kalır.
 
-Yeni konuşma kaynağınızın dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra **Kaynağa Git** ' i seçin ve sol gezinti bölmesinde konuşma hizmeti abonelik anahtarlarınızı göstermek için **anahtarlar** ' ı seçin. Her aboneliğin, iki anahtarı vardır; uygulamanızda iki anahtarı kullanabilirsiniz. Bir anahtarı kod düzenleyicinize veya başka bir konuma hızlıca kopyalamak/yapıştırmak için, her bir anahtarın yanındaki Kopyala düğmesini seçin, pencereler arasında Pano içeriğini istenen konuma yapıştırın.
+Yeni Konuşma kaynağınızı dağıtmak birkaç dakika nızı alır. Dağıtım tamamlandıktan sonra **kaynağa Git'i** seçin ve sol gezinti bölmesinde Konuşma hizmeti abonelik anahtarlarınızı görüntülemek için **Tuşlar'ı** seçin. Her aboneliğin iki anahtarı vardır; uygulamanızda her iki anahtarı da kullanabilirsiniz. Kod düzenleyicinize veya başka bir konuma bir anahtarı hızla kopyalamak/yapıştırmak için, her anahtarın yanındaki kopyala düğmesini seçin, pano içeriğini istenilen konuma yapıştırmak için pencereleri değiştirin.
 
 > [!IMPORTANT]
-> Bu abonelik anahtarları bilişsel hizmet API 'nize erişmek için kullanılır. Anahtarlarınızı paylaşmayın. Bunları güvenli bir şekilde depolayın (örneğin, Azure Key Vault kullanarak). Ayrıca, bu anahtarların düzenli olarak yeniden oluşturulması önerilir. API çağrısı yapmak için yalnızca bir anahtar gereklidir. İlk anahtarı yeniden oluştururken, hizmete devam eden erişim için ikinci anahtarı kullanabilirsiniz.
+> Bu abonelik anahtarları Bilişsel Hizmet API'nıza erişmek için kullanılır. Anahtarlarınızı paylaşmayın. Örneğin Azure Key Vault'u kullanarak güvenli bir şekilde saklayın. Ayrıca bu anahtarları düzenli olarak yenilemenizi öneririz. API araması yapmak için yalnızca bir anahtar gereklidir. İlk anahtarı yenilerken, hizmete sürekli erişim için ikinci anahtarı kullanabilirsiniz.
 
-## <a name="switch-to-a-new-subscription"></a>Yeni bir aboneliğe geçme
+## <a name="switch-to-a-new-subscription"></a>Yeni bir abonelmeye geçiş
 
-Bir abonelikten diğerine geçmek için örneğin, ücretsiz deneme süresinin sona erdiği veya uygulamanızı yayımladığınızda değiştirin kodunuzu bölge ve abonelik anahtarı ile yeni bir Azure kaynak bölge ve abonelik anahtarı.
+Örneğin, ücretsiz deneme süreniz sona erdiğinde veya uygulamanızı yayımladığınızda bir abonelikten diğerine geçmek için, kodunuzdaki bölge ve abonelik anahtarını yeni Azure kaynağının bölge ve abonelik anahtarıyla değiştirin.
 
 ## <a name="about-regions"></a>Bölgeler hakkında
 
-- Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, bir konuşma yapılandırması oluştururken `westus`gibi bölge kodunu sağlarsınız.
-- Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
-- Bir bölgede oluşturulan anahtarları yalnızca bu bölgede geçerlidir. Diğer bölgeler ile kullanılmaya çalışılırsa, kimlik doğrulama hataları neden olur.
+- Uygulamanız bir [Konuşma SDK](speech-sdk.md)kullanıyorsa, konuşma `westus`yapılandırması oluştururken bölge kodunu sağlarsınız.
+- Uygulamanız Konuşma hizmetinin [REST API'lerinden](rest-apis.md)birini kullanıyorsa, bölge istekte bulunmak ta iken kullandığınız bitiş noktası URI'nin bir parçasıdır.
+- Bir bölge için oluşturulan anahtarlar yalnızca o bölgede geçerlidir. Bunları diğer bölgelerle kullanmaya çalışmak kimlik doğrulama hatalarına neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-10 dakikalık başlangıçtan biriyle tamamlamak veya SDK örneklerimizi denetleyin:
+10 dakikalık hızlı başlangıçlarımızdan birini tamamlayın veya SDK örneklerimize göz atın:
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [konuşma SDK örneklerinde](speech-sdk.md#get-the-samples) konuşmayı tanıma
+> [Hızlı başlangıç: C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [Speech SDK örneklerindeki](speech-sdk.md#get-the-samples) konuşmayı tanıyın

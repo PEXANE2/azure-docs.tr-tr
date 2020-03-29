@@ -1,7 +1,7 @@
 ---
-title: Yüz Algılama-Görüntü İşleme
+title: Yüz algılama - Bilgisayarlı Görme
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si yüz algılama özelliği ile ilgili kavramları öğrenin.
+description: Bilgisayarlı Görme API'sinin yüz algılama özelliğiyle ilgili kavramları öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244710"
 ---
-# <a name="face-detection-with-computer-vision"></a>Görüntü İşleme ile yüz algılama
+# <a name="face-detection-with-computer-vision"></a>BilgisayarLı Görme ile yüz algılama
 
-Görüntü İşleme, görüntü içindeki insan yüzlerini algılayabilir ve algılanan her yüz için yaş, cinsiyet ve dikdörtgen oluşturabilir. 
+Computer Vision görüntü deki insan yüzlerini algılayabilir ve algılanan her yüz için yaş, cinsiyet ve dikdörtgen oluşturabilir. 
 
 > [!NOTE]
-> Bu özellik ayrıca Azure [yüz](/azure/cognitive-services/face/) hizmeti tarafından sunulur. Yüz tanıma ve poz algılama gibi daha ayrıntılı yüz analizi için bu alternatif bölümüne bakın. 
+> Bu özellik Azure [Face](/azure/cognitive-services/face/) hizmeti tarafından da sunulur. Yüz tanımlama ve poz algılama dahil olmak üzere daha ayrıntılı yüz analizi için bu alternatife bakın. 
 
 ## <a name="face-detection-examples"></a>Yüz algılama örnekleri
 
-Aşağıdaki örnek, tek bir insan yüzü içeren bir görüntü için Görüntü İşleme tarafından döndürülen JSON yanıtını gösterir.
+Aşağıdaki örnek, Bilgisayar Lı Görüş tarafından tek bir insan yüzü içeren bir görüntü için döndürülen JSON yanıtını göstermektedir.
 
 ![Görüntü Analizi Damdaki Kadının Yüzü](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ Aşağıdaki örnek, tek bir insan yüzü içeren bir görüntü için Görünt�
 }
 ```
 
-Sonraki örnekte, birden çok insan yüzü içeren bir görüntü için döndürülen JSON yanıtı gösterilmektedir.
+Sonraki örnek, birden çok insan yüzü içeren bir görüntü için döndürülen JSON yanıtını gösterir.
 
-![Vizyon aile fotoğraf yüzünüzü analiz etme](./Images/family_photo_face.png)
+![Vizyon Analiz Aile Fotoğraf Yüz](./Images/family_photo_face.png)
 
 ```json
 {
@@ -111,6 +111,9 @@ Sonraki örnekte, birden çok insan yüzü içeren bir görüntü için döndür
 }
 ```
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="use-the-api"></a>API’yi kullanma
 
-Yüz algılama özelliğini kullanma hakkında daha fazla bilgi için bkz. [görüntü başvurusunu çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) belgeleri.
+Yüz algılama [özelliği, Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Faces` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"faces"` bölümün içeriği için dize ayrıştını.
+
+* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

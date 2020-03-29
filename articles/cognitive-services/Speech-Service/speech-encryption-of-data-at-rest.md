@@ -1,7 +1,7 @@
 ---
-title: Bekleyen verilerin konuşma hizmeti şifrelemesi
+title: Veri konuşma hizmeti şifrelemesi
 titleSuffix: Azure Cognitive Services
-description: Bekleyen verilerin konuşma hizmeti şifrelemesi.
+description: Konuşma hizmeti veri şifrelemesi.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79372364"
 ---
-# <a name="speech-service-encryption-of-data-at-rest"></a>Bekleyen verilerin konuşma hizmeti şifrelemesi
+# <a name="speech-service-encryption-of-data-at-rest"></a>Veri konuşma hizmeti şifrelemesi
 
-Konuşma hizmeti, verileri buluta kalıcı hale geldiğinde otomatik olarak şifreler. Konuşma hizmeti şifrelemesi, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
+Konuşma Hizmeti, verilerinizi bulutta kalıcı hale geldiğinde otomatik olarak şifreler. Konuşma hizmeti şifrelemesi verilerinizi korur ve kuruluş güvenliği ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur.
 
-## <a name="about-cognitive-services-encryption"></a>Bilişsel hizmetler şifreleme hakkında
+## <a name="about-cognitive-services-encryption"></a>Bilişsel Hizmetler şifrelemesi hakkında
 
-[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak güvenlidir ve şifreleme avantajlarından yararlanmak için kodunuzu veya uygulamalarınızı değiştirmeniz gerekmez.
+Veriler [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifreleme kullanılarak şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetildiği anlamına gelir. Verileriniz varsayılan olarak güvenlidir ve şifrelemeden yararlanmak için kodunuzu veya uygulamalarınızı değiştirmeniz gerekmez.
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 
-Özel Konuşma Tanıma ve özel ses kullandığınızda, konuşma hizmeti aşağıdaki verileri bulutta saklayabilir:  
+Özel Konuşma ve Özel Ses kullandığınızda, Konuşma hizmeti aşağıdaki verileri bulutta depolayabilir:  
 
-* Konuşma izleme verileri-yalnızca özel uç noktanıza yönelik izlemeyi etkinleştirirseniz
-* Eğitim ve test verileri karşıya yüklendi
+* Konuşma izleme verileri - yalnızca özel bitiş noktanız için izleme yi açarsanız
+* Yüklenen eğitim ve test verileri
 
-Varsayılan olarak, verileriniz Microsoft 'un depolama alanında depolanır ve aboneliğiniz Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca kendi depolama hesabınızı hazırlama seçeneğiniz de vardır. Mağaza erişimi yönetilen kimlik tarafından yönetilir ve konuşma hizmeti konuşma izleme verileri, özelleştirme eğitimi verileri ve özel modeller gibi kendi verilerinize doğrudan erişemez.
+Varsayılan olarak, verileriniz Microsoft'un depolama alanında depolanır ve aboneliğiniz Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca kendi depolama hesabınızı hazırlama seçeneğiniz de var. Mağazaya erişim Yönetilen Kimlik tarafından yönetilir ve Konuşma hizmeti konuşma izleme verileri, özelleştirme eğitim verileri ve özel modeller gibi kendi verilerinize doğrudan erişemez.
 
-Yönetilen kimlik hakkında daha fazla bilgi için bkz. [Yönetilen kimlikler nelerdir](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Yönetilen Kimlik hakkında daha fazla bilgi için yönetilen [kimliklerin neler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)olduğunu görün.
 
-## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Özelleştirme ve günlüğe kaydetme için kendi depolama alanınızı (BYOS) getirme
+## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Özelleştirme ve günlüğe kaydetme için kendi depolama alanınızı (BYOS) getirin
 
-Kendi depolama alanınızı getirmek üzere erişim istemek için, [konuşma hizmetini doldurun ve kendi depolama alanını getir (KCG) istek formunu alın](https://aka.ms/cogsvc-cmk). Onaylandığında, özelleştirme ve günlüğe kaydetme için gereken verileri depolamak üzere kendi depolama hesabınızı oluşturmanız gerekir. Bir depolama hesabı eklerken, konuşma hizmeti kaynağı sistem tarafından atanmış bir yönetilen kimliği etkinleştirir. Sistem tarafından atanan yönetilen kimlik etkinleştirildikten sonra, bu kaynak Azure Active Directory (AAD) ile kaydedilir. Kaydolduktan sonra, yönetilen kimliğe depolama hesabına erişim verilir. Burada Yönetilen kimlikler hakkında daha fazla bilgi edinebilirsiniz. Yönetilen kimlik hakkında daha fazla bilgi için bkz. [Yönetilen kimlikler nelerdir](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Kendi depolama alanınızı getirmek için erişim talebinde bulunmak için Konuşma hizmetini doldurun ve gönderin [- kendi depolama alanınızı (BYOS) talep formu getirin.](https://aka.ms/cogsvc-cmk) Onaylandıktan sonra, özelleştirme ve günlüğe kaydetme için gereken verileri depolamak için kendi depolama hesabınızı oluşturmanız gerekir. Bir depolama hesabı eklerken, Konuşma hizmeti kaynağı yönetilen kimlik atanmış bir sistem sağlar. Atanan yönetilen kimlik sistem etkinleştirildikten sonra, bu kaynak Azure Etkin Dizini'ne (AAD) kaydedilir. Kaydedildikten sonra, yönetilen kimlik depolama hesabına erişim hakkı verilecektir. Yönetilen Kimlikler hakkında daha fazla bilgi için burada bulabilirsiniz. Yönetilen Kimlik hakkında daha fazla bilgi için yönetilen [kimliklerin neler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)olduğunu görün.
 
 > [!IMPORTANT]
-> Sistem tarafından atanan yönetilen kimlikleri devre dışı bırakırsanız, depolama hesabına erişim kaldırılır. Bu, konuşma hizmetinin depolama hesabına erişmesi gereken bölümlerinin çalışmayı durdurmasına neden olur.  
+> Yönetilen kimlikler atanan sistemi devre dışı btanırsanız, depolama hesabına erişim kaldırılır. Bu, Konuşma hizmetinin depolama hesabına erişim gerektiren bölümlerinin çalışmayı durdurmasına neden olur.  
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-BYOS Şu anda şu bölgelerde kullanılabilir:
+BYOS şu anda şu bölgelerde kullanılabilir:
 
 * ABD Orta Güney
 * Batı ABD 2
@@ -52,5 +52,5 @@ BYOS Şu anda şu bölgelerde kullanılabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma hizmeti-kendi depolama alanınızı getir (KCG) istek formu](https://aka.ms/cogsvc-cmk)
-* [Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [Konuşma hizmeti - kendi depolama alanınızı (BYOS) talep formuna getirin](https://aka.ms/cogsvc-cmk)
+* [Yönetilen kimlikler nelerdir.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)

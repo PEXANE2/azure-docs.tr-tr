@@ -1,7 +1,7 @@
 ---
-title: Bir soru-cevap Oluşturucu Bilgi Bankası'na chit sohbet ekleme
+title: QnA Maker bilgi tabanına chit-chat ekleme
 titleSuffix: Azure Cognitive Services
-description: Bir KB oluşturduğunuzda botunuz için kişisel chit sohbet ekleyerek daha damıtarak konuşma bağlamında kullanılabilen ve ilgi çekici kolaylaştırır. Soru-cevap Oluşturucu üst chit-sohbet, önceden doldurulmuş bir dizi, KB kolayca eklemenize olanak sağlar.
+description: Botunuza kişisel sohbet eklemek, bir KB oluşturduğunuzda daha konuşkan ve ilgi çekici hale getirir. QnA Maker kolayca üst chit-chat önceden doldurulur bir dizi eklemek için izin verir, KB içine.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220715"
 ---
-# <a name="add-chit-chat-to-a-knowledge-base"></a>Bilgi Bankası'na Chit sohbet Ekle
+# <a name="add-chit-chat-to-a-knowledge-base"></a>Bilgi tabanına Chit-chat ekleme
 
-Botunuz için Sohbet chit ekleyerek daha damıtarak konuşma bağlamında kullanılabilen ve ilgi çekici kolaylaştırır. Soru-cevap Oluşturucu chit sohbet özelliği üst chit-sohbet, önceden doldurulmuş bir dizi, Bilgi Bankası (KB) kolayca eklemenize olanak sağlar. Bu botunuzun ait kişilik için bir başlangıç noktası olabilir ve bu saat ve bunları sıfırdan yazmak maliyeti kaydedecek.  
+Botunuzun chit-chat ekleme daha konuşma ve ilgi çekici hale getirir. QnA maker'daki chit-chat özelliği, bilgi tabanınıza (KB) önceden doldurulmuş bir üst chit-chat kümesini kolayca eklemenize olanak tanır. Bu bot kişiliği için bir başlangıç noktası olabilir, ve size zaman ve sıfırdan bunları yazma maliyeti kazandıracak.  
 
-Bu veri kümesinde, profesyonel, kolay ve WIT gibi birden çok kişinin sesinde, tek BT-sohbet için 100 senaryo vardır. Botunuzun ait ses en çok benzeyen bir kişi seçin. Kullanıcı sorgusu verildiğinde, soru-cevap Oluşturucu en yakın bilinen chit sohbet soru-cevap ile eşleştirmeye çalışır.  
+Bu dataset profesyonel, dostu ve Esprili gibi birden fazla kişi, ses chit-sohbet yaklaşık 100 senaryoları vardır. Botunuzun sesine en çok benzeyen kişiliği seçin. Bir kullanıcı sorgusu göz önüne alındığında, QnA Maker en yakın bilinen chit-chat QnA ile eşleştirmeye çalışır.  
 
-Farklı kişiselleştirimler için bazı örnekler aşağıda verilmiştir. Tüm kişilik [veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) , kişiselleştirimler hakkındaki ayrıntılarla birlikte görebilirsiniz.
+Farklı kişiliklerin bazı örnekleri aşağıdadır. Tüm kişilik [veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) kişiliklerin ayrıntılarıyla birlikte görebilirsiniz.
 
-`When is your birthday?`Kullanıcı sorgusu için, her kişilik stilli bir yanıt vardır:
+Kullanıcı sorgusu `When is your birthday?`için, her kişiliğin stilde bir yanıtı vardır:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |Kişilik|Örnek|
 |--|--|
-|Professional|Yaş gerçekten bana uygulanmaz.|
-|Uygun|Gerçekten bir yaşı yok.|
-|Wtty|Kullanım süresi ücretsizdir.|
-|Giriş|Yaşı yok.|
-|Heyecanlandırdı|Ben bir bot kullanıyorum, bu yüzden bir yaşı yok.|
+|Professional|Yaş benim için geçerli değil.|
+|Dostu|Aslında bir yaşım yok.|
+|Esprili|Yaşım yok.|
+|Bakım|Benim bir yaşım yok.|
+|Hevesli|Ben bir robotum, o yüzden yaşım yok.|
 ||
 
 
 ## <a name="language-support"></a>Dil desteği
 
-CHIT-chat veri kümeleri aşağıdaki dillerde desteklenmektedir:
+Chit-chat veri kümeleri aşağıdaki dillerde desteklenir:
 
 |Dil|
 |--|
@@ -56,35 +56,35 @@ CHIT-chat veri kümeleri aşağıdaki dillerde desteklenmektedir:
 |İspanyolca|
 
 
-## <a name="add-chit-chat-during-kb-creation"></a>KB oluşturma sırasında chit sohbet ekleme
-Kaynak URL ve dosyaları ekledikten sonra Bilgi Bankası oluşturma sırasında chit sohbet ekleme seçeneği mevcuttur. Sohbet chit temeliniz olarak kullanmak istediğiniz kişilik seçin. CHIT-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten bir sohbet desteğine sahipseniz, **hiçbiri**' ni seçin. 
+## <a name="add-chit-chat-during-kb-creation"></a>KB oluşturma sırasında chit-chat ekleme
+Bilgi tabanı oluşturma sırasında, kaynak URL'lerinizi ve dosyalarınızı ekledikten sonra, chit-chat ekleme seçeneği vardır. Chit-chat tabanınız olarak istediğiniz kişiliği seçin. Chit-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten chit-chat desteği varsa, **Yok'u**seçin. 
 
-## <a name="add-chit-chat-to-an-existing-kb"></a>Mevcut bir KB olarak Chit sohbet Ekle
-KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Uygun **. tsv** biçimindeki tüm CHIT-chat veri kümelerine bir bağlantı vardır. İstediğiniz kişilik indirin ve ardından dosya kaynağı olarak karşıya yükleyin. İndirin ve dosyayı karşıya yüklemeyi zaman biçimi veya meta veri düzenleme olmadan emin olun. 
+## <a name="add-chit-chat-to-an-existing-kb"></a>Varolan bir KB'ye Chit-chat ekleme
+KB'nizi seçin ve **Ayarlar** sayfasına gidin. Uygun **.tsv** formatında tüm chit-chat veri kümelerine bir bağlantı vardır. İstediğinizi kişiliği indirin ve dosya kaynağı olarak yükleyin. Dosyayı indirip yüklerken biçimi veya meta verileri yüklemediğinizde bunları değil. 
   
-![Sohbet chit mevcut KB olarak Ekle](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+![Mevcut KB'ye chit-chat ekleme](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
-## <a name="edit-your-chit-chat-questions-and-answers"></a>Sohbet chit sorular ve yanıtlar Düzenle
-KB düzenlediğinizde chit Sohbeti, seçtiğiniz kişilik üzerinde temel için yeni bir kaynağı görürsünüz. Artık sorular değiştirilmiş ekleyebilir veya yanıtlar, gibi başka bir kaynağı ile düzenleyin. 
+## <a name="edit-your-chit-chat-questions-and-answers"></a>Sohbet sorularınızı ve yanıtlarınızı edin
+KB'nizi yaptığınızda, seçtiğiniz kişiliğe göre sohbet için yeni bir kaynak görürsünüz. Artık başka bir kaynakta olduğu gibi değiştirilmiş sorular ekleyebilir veya yanıtları değiştirebilirsiniz. 
 
-![Sohbet chit Bankalarıyla Düzenle](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
+![Chit-chat Qna'ları edin](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-Meta verileri görüntülemek için, araç çubuğunda **seçenekleri görüntüle** ' yi seçin ve **meta verileri göster**' i seçin.
+Meta verileri görüntülemek için araç çubuğunda **Seçenekleri Görüntüle'yi** seçin ve ardından meta verileri **göster'i**seçin.
 
-## <a name="add-additional-chit-chat-questions-and-answers"></a>Ek chit sohbet sorularını ve yanıtlarını Ekle
-Değil önceden tanımlanmış ayarlanmış olan yeni chit sohbet soru-cevap ekleyebilirsiniz. Zaten chit sohbet kümesinde kapsamında bir soru-cevap çifti çoğaltma değil emin olun. Yeni bir GIT-chat QnA eklediğinizde, **düzenleme** kaynağınıza eklenir. Derecelendiricisini 'ın bu tek bir sohbet olduğunu anlaması için, aşağıdaki görüntüde görüldüğü gibi "düzenleme: chitchat" meta veri anahtarını/değer çiftini ekleyin:
+## <a name="add-additional-chit-chat-questions-and-answers"></a>Ek chit-chat soruları ve yanıtları ekleyin
+Önceden tanımlanmış kümede olmayan yeni chit-chat QnA ekleyebilirsiniz. Zaten chit-chat kümesinde kapsanan bir QnA çiftini çoğaltmadığınızdan emin olun. Yeni bir chit-chat QnA eklediğinizde, **bu içerik Editoryal** kaynağınıza eklenir. Ranker bu chit-chat olduğunu anladığını sağlamak için, meta veri anahtarı / değer çifti ekleyin "Editoryal: chitchat", aşağıdaki resimde görüldüğü gibi:
    
-![! [CHIT-chat QnAs Ekle] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [Chit-chat QnAs ekle] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
-## <a name="delete-chit-chat-from-an-existing-kb"></a>Mevcut bir KB chit sohbet Sil
-KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Belirli chit sohbet kaynağınızı seçili kişilik adlı bir dosya olarak listelenir. Bu kaynak dosyası olarak silebilirsiniz.
+## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit-chat'i varolan bir KB'den silme
+KB'nizi seçin ve **Ayarlar** sayfasına gidin. Belirli chit-chat kaynağınız, seçili kişilik adı olan bir dosya olarak listelenir. Bunu kaynak dosya olarak silebilirsiniz.
 
-![KB chit sohbet Sil](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
+![KB'den chit-chat silme](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası içeri aktarma](../Tutorials/migrate-knowledge-base.md)
+> [Bilgi tabanı alma](../Tutorials/migrate-knowledge-base.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 

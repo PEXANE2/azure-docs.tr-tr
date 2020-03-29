@@ -1,5 +1,5 @@
 ---
-title: Görüntüleri sınıflandırıcı ile programlama yoluyla test etmek için tahmin uç noktası kullanın Özel Görüntü İşleme
+title: Görüntüleri sınıflandırıcı ile programlı olarak test etmek için tahmin bitiş noktasını kullanma - Özel Görme
 titleSuffix: Azure Cognitive Services
 description: Özel Görüntü İşleme sınıflandırıcınızla programlama yoluyla görüntüleri test etmek için API’nin nasıl kullanılacağını öğrenin.
 services: cognitive-services
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169943"
 ---
-# <a name="use-your-model-with-the-prediction-api"></a>Tahmin API 'SI ile modelinizi kullanma
+# <a name="use-your-model-with-the-prediction-api"></a>Tahmin API'si ile modelinizi kullanın
 
-Modelinize eğtikten sonra yansımaları, tahmin API uç noktasına göndererek programlama yoluyla test edebilirsiniz.
+Modelinizi eğitdikten sonra, görüntüleri Tahmin API bitiş noktasına göndererek programlı olarak sınayabilirsiniz.
 
 > [!NOTE]
-> Bu belgede, Tahmin API’sine görüntü göndermek için C# kullanımı gösterilmektedir. Daha fazla bilgi ve örnek için bkz. [tahmin API 'si başvurusu](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> Bu belgede, Tahmin API’sine görüntü göndermek için C# kullanımı gösterilmektedir. Daha fazla bilgi ve örnekler için [Tahmin API başvurusuna](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)bakın.
 
-## <a name="publish-your-trained-iteration"></a>Eğitilen yinelelerinizi yayımlayın
+## <a name="publish-your-trained-iteration"></a>Eğitimli yinelemenizi yayımlayın
 
 [Özel Görüntü İşleme web sayfasından](https://customvision.ai) projenizi ve __Performans__ sekmesini seçin.
 
-Tahmin API 'sine görüntü göndermek için öncelikle, __Yayımla__ ' yı seçerek ve yayımlanan yineleme için bir ad belirterek, yinelemeyi tahmin etmek üzere yayımlamanız gerekir. Bu, modelinizi Özel Görüntü İşleme Azure kaynağınızın tahmin API 'SI için erişilebilir hale getirir.
+Görüntüleri Tahmin API'sine göndermek için, önce __yayımla'yı__ seçerek ve yayımlanan yineleme için bir ad belirterek yapılabilecek tahmin yinelemenizi yayımlamanız gerekir. Bu, modelinizin Özel Vizyon Azure kaynağınızın Tahmin API'si için erişilebilir olmasını sağlar.
 
-![Performans sekmesi, Yayınla düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/unpublished-iteration.png)
+![Performans sekmesi, Yayımla düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/unpublished-iteration.png)
 
-Modelinize başarıyla yayımlandıktan sonra, sol taraftaki kenar çubuğundan yineleinizin yanında "yayımlandı" etiketini görürsünüz ve bu adın adı yinelemenin açıklamasında görüntülenir.
+Modeliniz başarıyla yayımlandıktan sonra, sol kenar çubuğunda yinelemenizin yanında bir "Yayımlanmış" etiketi görünür ve adı yinelemenin açıklamasında görünür.
 
-![Performans sekmesi, yayımlanan etiketi çevreleyen kırmızı bir dikdörtgen ve yayımlanan yinelemenin adı ile gösterilir.](./media/use-prediction-api/published-iteration.png)
+![Performans sekmesi, Yayımlanmış etiketi ni ve yayımlanmış yinelemenin adını çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>URL ve tahmin anahtarını alma
 
-Modeliniz yayımlandıktan sonra, __tahmin URL 'sini__seçerek gerekli bilgileri alabilirsiniz. Bu, tahmin __URL 'si__ ve __tahmin anahtarı__da dahil olmak üzere, tahmin API 'si kullanımıyla ilgili bilgileri içeren bir iletişim kutusu açar.
+Modeliniz yayınlandıktan sonra, __Tahmin URL'sini__seçerek gerekli bilgileri alabilirsiniz. Bu, Tahmin URL'si ve __Tahmin__ __Anahtarı__da dahil olmak üzere Tahmin API'sını kullanmak için bilgi içeren bir iletişim kutusu açar.
 
-![Performans sekmesi, tahmin URL 'SI düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/published-iteration-prediction-url.png)
+![Performans sekmesi, Tahmin URL düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Performans sekmesi, bir görüntü dosyası ve tahmin anahtarı değeri kullanımı için tahmin URL 'SI değerini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/prediction-api-info.png)
+![Performans sekmesi, bir resim dosyasını ve Tahmin Anahtarı değerini kullanmak için Tahmin URL değerini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/prediction-api-info.png)
 
 
-Bu kılavuzda, bir yerel görüntü kullanacaksınız, bu nedenle geçici bir konuma **bir görüntü dosyanız** varsa, URL 'yi kopyalayın. İlgili __tahmin anahtarı__ değerini de kopyalayın.
+Bu kılavuzda, yerel bir resim kullanacaksınız, bu nedenle **bir resim dosyanız varsa** URL'yi geçici bir konuma kopyalayın. İlgili __Tahmin-Anahtar__ değerini de kopyalayın.
 
 ## <a name="create-the-application"></a>Uygulama oluşturma
 
-1. Visual Studio 'da yeni C# bir konsol uygulaması oluşturun.
+1. Visual Studio'da yeni bir C# konsol uygulaması oluşturun.
 
 1. __Program.cs__ dosyasının gövdesi olarak aşağıdaki kodu kullanın.
 
@@ -109,13 +109,13 @@ Bu kılavuzda, bir yerel görüntü kullanacaksınız, bu nedenle geçici bir ko
     ```
 
 1. Aşağıdaki bilgileri değiştirin:
-   * `namespace` alanını projenizin adı olarak ayarlayın.
-   * Yer tutucu `<Your prediction key>`, daha önce aldığınız anahtar değerle değiştirin.
-   * Yer tutucu `<Your prediction URL>`, daha önce aldığınız URL ile değiştirin.
+   * `namespace` Alanı projenizin adına ayarlayın.
+   * Yer tutucuyu `<Your prediction key>` daha önce aldığınız anahtar değeriyle değiştirin.
+   * Yer tutucuyu `<Your prediction URL>` daha önce aldığınız URL ile değiştirin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı çalıştırdığınızda, konsolunda bir görüntü dosyasının yolunu girmeniz istenir. Görüntü daha sonra tahmin API 'sine gönderilir ve tahmin sonuçları JSON biçimli bir dize olarak döndürülür. Aşağıda örnek bir yanıt verilmiştir.
+Uygulamayı çalıştırdığınızda, konsoldaki bir resim dosyasına bir yol girmeniz istenir. Görüntü daha sonra Tahmin API'sine gönderilir ve tahmin sonuçları JSON biçimlendirilmiş dize olarak döndürülür. Aşağıda örnek bir yanıt verilmiştir.
 
 ```json
 {
@@ -132,10 +132,10 @@ Uygulamayı çalıştırdığınızda, konsolunda bir görüntü dosyasının yo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, özel görüntü sınıflandırıcıya/algılayıcısının görüntülerini nasıl göndereleceğini ve C# SDK ile programlı bir şekilde yanıt almanızı öğrendiniz. Daha sonra, ile C#uçtan uca senaryoları nasıl tamamlayacağınızı veya farklı bır DIL SDK 'sını kullanmaya başlamanızı öğrenin.
+Bu kılavuzda, görüntüleri özel görüntü sınıflandırıcınıza/dedektörünüze göndermeyi ve C# SDK ile programlı bir yanıt almayı öğrendiniz. Ardından, C# ile uçlardan uca senaryoları nasıl tamamlayarak başka bir dil sdk kullanmaya nasıl başlanın.
 
 * [Hızlı başlangıç: .NET SDK](csharp-tutorial.md)
 * [Hızlı başlangıç: Python SDK](python-tutorial.md)
-* [Hızlı başlangıç: Java SDK](java-tutorial.md)
-* [Hızlı başlangıç: düğüm SDK 'Sı](node-tutorial.md)
-* [Hızlı başlangıç: go SDK](go-tutorial.md)
+* [Quickstart: Java SDK](java-tutorial.md)
+* [Quickstart: Düğüm SDK](node-tutorial.md)
+* [Quickstart: SDK git](go-tutorial.md)

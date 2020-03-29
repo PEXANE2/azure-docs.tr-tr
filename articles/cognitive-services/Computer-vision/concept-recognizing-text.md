@@ -1,7 +1,7 @@
 ---
-title: Yazılı, el yazısı metin tanıma-Görüntü İşleme
+title: Basılı, el yazısı metin tanıma - Bilgisayar Vizyonu
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si kullanarak görüntülerde yazdırılmış ve el yazısı metinleri tanıma ile ilgili kavramlar.
+description: Bilgisayar Lı Vizyon API'sini kullanarak resimlerde basılı ve el yazısı yla yazılmış metinlerin tanınmasıile ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,86 +12,86 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220165"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
 
-Görüntü İşleme görüntülerde görüntülenen yazdırılmış veya el yazısı metinleri algılayan ve ayıklayan bir dizi hizmet sağlar. Bu, notalma, tıbbi kayıtlar, güvenlik ve bankacılık gibi çeşitli senaryolarda faydalıdır. Aşağıdaki üç bölüm, her biri farklı kullanım durumları için en iyi duruma getirilmiş üç farklı metin tanıma API 'si ayrıntısıyla
+Computer Vision, görüntülerde görünen basılı veya el yazısı metni algılayan ve ayıklayan bir dizi hizmet sağlar. Bu, not alma, tıbbi kayıtlar, güvenlik ve bankacılık gibi çeşitli senaryolarda yararlıdır. Aşağıdaki üç bölümde, her biri farklı kullanım örnekleri için optimize edilmiş üç farklı metin tanıma API'si ayrıntılı olarak açıklanır.
 
-## <a name="read-api"></a>API 'YI oku
+## <a name="read-api"></a>API'yi okuyun
 
-Okuma API 'SI, en son tanınma modellerimizi kullanarak bir görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilen bir karakter akışına dönüştürür. Metin açısından ağır görüntüler (dijital olarak taranan belgeler gibi) ve çok sayıda görsel gürültü içeren görüntüler için iyileştirilmiştir. Her metin satırı için hangi tanıma modelinin kullanılacağını, hem yazdırılmış hem de el yazısı metinle birlikte destekleyeceğini belirleyen bir görüntü oluşturur. Okuma API 'SI, büyük belgeler bir sonuç döndürmek için birkaç dakika sürebileceğinden zaman uyumsuz olarak yürütülür.
+Read API, en son tanıma modellerimizi kullanarak görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilir bir karakter akışına dönüştürür. Metin ağırlıklı görüntüler (dijital olarak taranmış belgeler gibi) ve çok fazla görsel gürültüye sahip görüntüler için optimize edilmiştir. Her metin satırı için hangi tanıma modelinin kullanılacağını belirleyecek ve görüntüleri hem basılı hem de el yazısıyla yazılmış metinlerle destekler. Daha büyük belgelerin bir sonucu döndürmesi birkaç dakika sürebileceğinden, Read API eş senkronize olarak yürütülür.
 
-Okuma işlemi, tanınan sözcüklerin orijinal satır gruplamalarını çıktıda saklar. Her satır sınırlayıcı kutu koordinatları ile gelir ve satırdaki her sözcüğün kendi koordinatları de vardır. Bir sözcük düşük güvenilirlikle tanınıyorsa, bu bilgiler de bu bilgileri verir. Daha fazla bilgi edinmek için bkz. [API başvuru belgeleri oku](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma API 'si önizleme başvurusu belgeleri](https://go.microsoft.com/fwlink/?linkid=2118322) .
+Read işlemi, çıktısında tanınan sözcüklerin özgün satır gruplarını tutar. Her satır sınırlayıcı kutu koordinatları ile birlikte gelir ve satır içindeki her sözcüğün de kendi koordinatları vardır. Bir sözcük düşük güvenle tanınıyorsa, bu bilgi de iletilir. Daha fazla bilgi edinmek için [OKUMA API başvuru dokümanlarına](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) bakın ve [API Önizleme başvuru dokümanlarını okuyun.](https://go.microsoft.com/fwlink/?linkid=2118322)
 
 > [!NOTE]
-> Bu özellik yalnızca Ingilizce ve Ispanyolca (Önizleme) metin için kullanılabilir.
+> Bu özellik yalnızca İngilizce ve İspanyolca (önizleme) metinler için kullanılabilir.
 
 ### <a name="image-requirements"></a>Görüntü gereksinimleri
 
-Okuma API 'SI, aşağıdaki gereksinimleri karşılayan görüntülerle birlikte kullanılabilir:
+Read API, aşağıdaki gereksinimleri karşılayan görüntülerle çalışır:
 
-- Resim JPEG, PNG, BMP, PDF veya TIFF biçiminde sunulmalıdır.
-- Resmin boyutları 50 x 50 ve 10000 x 10000 piksel arasında olmalıdır. PDF sayfaları 17 x 17 inç veya daha küçük olmalıdır.
-- Resmin dosya boyutu 20 megabayttan (MB) az olmalıdır.
+- Görüntü JPEG, PNG, BMP, PDF veya TIFF formatında sunulmalıdır.
+- Görüntünün boyutları 50 x 50 ile 10000 x 10000 piksel arasında olmalıdır. PDF sayfaları 17 x 17 inç veya daha küçük olmalıdır.
+- Görüntünün dosya boyutu 20 megabayttan (MB) az olmalıdır.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-Serbest katmanlı bir abonelik kullanıyorsanız, okuma API 'SI yalnızca bir PDF veya TIFF belgesinin ilk iki sayfasını işler. Ücretli abonelikle, en fazla 200 sayfa işleyebilir. Ayrıca API 'nin sayfa başına en fazla 300 satırı algılayacağına de unutmayın.
+Ücretsiz katman aboneliği kullanıyorsanız, Okuma API'si yalnızca PDF veya TIFF belgesinin ilk iki sayfasını işler. Ücretli abonelikle birlikte, 200 sayfaya kadar işlenir. Ayrıca, API'nin sayfa başına en fazla 300 satır algıladığını unutmayın.
 
-## <a name="ocr-optical-character-recognition-api"></a>OCR (optik karakter tanıma) API 'SI
+## <a name="ocr-optical-character-recognition-api"></a>OCR (optik karakter tanıma) API'si
 
-Görüntü İşleme optik karakter tanıma (OCR) API 'SI okuma API 'siyle benzerdir, ancak eşzamanlı olarak yürütülür ve büyük belgeler için en iyi duruma getirilmemiştir. Daha önceki bir tanıma modeli kullanır, ancak daha fazla dilde çalışmaktadır; desteklenen dillerin tam listesi için bkz. [dil desteği](language-support.md#text-recognition) .
+Computer Vision'ın optik karakter tanıma (OCR) API'si Read API'sine benzer, ancak eşzamanlı olarak yürütülür ve büyük belgeler için optimize edilmez. Daha önceki bir tanıma modeli kullanır, ancak daha fazla dille çalışır; desteklenen dillerin tam listesi için [Dil desteğine](language-support.md#text-recognition) bakın.
 
-Gerekirse, OCR, tanınan metnin dönüşünün, yatay görüntü ekseni hakkında derece cinsinden döndürme farkını düzeltir. OCR Ayrıca, aşağıdaki çizimde görüldüğü gibi her sözcüğün çerçeve koordinatlarını de sağlar.
+Gerekirse, OCR yatay görüntü ekseni hakkında derece lerde dönme ofset döndürerek tanınan metnin dönüşünü düzeltir. OCR ayrıca aşağıdaki resimde görüldüğü gibi, her sözcüğün çerçeve koordinatlarını sağlar.
 
-![Döndürülmekte olan bir görüntü ve metnin okunmakta ve ayırıcılarından biri](./Images/vision-overview-ocr.png)
+![Döndürülen ve metni okunan ve resmedilen bir görüntü](./Images/vision-overview-ocr.png)
 
-Daha fazla bilgi edinmek için [OCR başvuru belgelerine](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) bakın.
+Daha fazla bilgi edinmek için [OCR başvuru dokümanlarına](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) bakın.
 
 ### <a name="image-requirements"></a>Görüntü gereksinimleri
 
-OCR API 'SI aşağıdaki gereksinimleri karşılayan görüntülerde çalışmaktadır:
+OCR API, aşağıdaki gereksinimleri karşılayan görüntüler üzerinde çalışır:
 
-* Resim JPEG, PNG, GIF veya BMP biçiminde sunulmalıdır.
-* Giriş resminin boyutu 50 x 50 ve 4200 x 4200 piksel arasında olmalıdır.
-* Görüntüdeki metin, 90 derecenin herhangi bir katı ve 40 derecenin küçük bir açısı ile döndürülebilir.
+* Görüntü JPEG, PNG, GIF veya BMP biçiminde sunulmalıdır.
+* Giriş görüntüsünün boyutu 50 x 50 ile 4200 x 4200 piksel arasında olmalıdır.
+* Görüntüdeki metin 90 derecenin herhangi bir katı artı 40 dereceye kadar küçük bir açı ile döndürülebilir.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-Metnin baskın olduğu fotoğraflardan, kısmen tanınan sözcüklerden hatalı pozitif sonuçlar gelebilir. Bazı fotoğraflarda, özellikle metin içermeyen fotoğraflar, görüntü türüne bağlı olarak değişiklik gösterebilir.
+Metnin baskın olduğu fotoğraflarda, kısmen tanınan sözcüklerden yanlış pozitif sonuçlar gelebilir. Bazı fotoğraflarda, özellikle de metin içermeyen fotoğraflarda, görüntünün türüne bağlı olarak hassasiyet değişebilir.
 
-## <a name="recognize-text-api"></a>Metin Tanıma API 'SI
+## <a name="recognize-text-api"></a>Metin API'yi Tanıyın
 
 > [!NOTE]
-> Metin Tanıma API 'SI, okuma API 'sinin yararına kullanım dışı bırakılıyor. Okuma API 'SI benzer yeteneklere sahiptir ve PDF, TIFF ve çok sayfalı dosyaları işleyecek şekilde güncelleştirilir.
+> Metin API'yi Tanıyın, Okuma API'si lehine amortismana uğruyor. Read API benzer özelliklere sahiptir ve PDF, TIFF ve çok sayfalı dosyaları işlemek için güncelleştirilir.
 
-Metin Tanıma API 'SI OCR ile benzerdir, ancak zaman uyumsuz olarak yürütülür ve güncelleştirilmiş tanıma modellerini kullanır. Daha fazla bilgi edinmek için [metın tanıma API başvuru belgelerine](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) bakın.
+Metin API'yi TanıOCR'a benzer, ancak eş senkronize olarak yürütür ve güncelleştirilmiş tanıma modellerini kullanır. Daha fazla bilgi edinmek için [Metin API başvuru dokümanlarını tanı](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) yat.
 
 ### <a name="image-requirements"></a>Görüntü gereksinimleri
 
-Metin Tanıma API 'SI aşağıdaki gereksinimleri karşılayan görüntülerle birlikte çalışmaktadır:
+Metin API'yi Tanıyın, aşağıdaki gereksinimleri karşılayan görüntülerle çalışır:
 
-- Resim JPEG, PNG veya BMP biçiminde sunulmalıdır.
-- Resmin boyutları 50 x 50 ve 4200 x 4200 piksel arasında olmalıdır.
-- Resmin dosya boyutu 4 megabayttan (MB) az olmalıdır.
+- Görüntü JPEG, PNG veya BMP biçiminde sunulmalıdır.
+- Görüntünün boyutları 50 x 50 ile 4200 x 4200 piksel arasında olmalıdır.
+- Görüntünün dosya boyutu 4 megabayttan (MB) az olmalıdır.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Metin tanıma işlemlerinin doğruluğu görüntülerin kalitesine bağlıdır. Aşağıdaki faktörler yanlış okunmasına neden olabilir:
+Metin tanıma işlemlerinin doğruluğu görüntülerin kalitesine bağlıdır. Aşağıdaki etkenler yanlış bir okumaya neden olabilir:
 
 * Bulanık görüntüler.
 * El yazısı veya bitişik el yazısı metin.
 * Artistik yazı tipi stilleri.
 * Küçük metin boyutu.
 * Karmaşık arka planlar, gölgeler ya da metnin üzerinde parlama veya perspektif bozukluk.
-* Sözcüklerin Beginnings büyük harfli veya eksik büyük harfler.
+* Kelimelerin başında büyük harf veya eksik harfler.
 * Alt simge, üst simge veya üstü çizili metin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Basit C# bir uygulamada metin tanımayı uygulamak Için [metin ayıklama (okuma)](./QuickStarts/CSharp-hand-text.md) hızlı başlangıcını izleyin.
+Basit bir C# uygulamasında metin tanımayı uygulamak için [Extract metnini (Oku)](./QuickStarts/CSharp-hand-text.md) hızlı bir şekilde izleyin.

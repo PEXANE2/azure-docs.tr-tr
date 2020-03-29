@@ -1,7 +1,7 @@
 ---
-title: Modern okuyucu tanımlama bilgisi Ilkesini ayarlama
+title: Sürükleyici Okuyucu Çerez Politikası Nı Ayarla
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, tam ekran okuyucu için tanımlama bilgisi ilkesini ayarlama gösterilmektedir.
+description: Bu makalede, Immersive Reader için çerez ilkesini nasıl ayarlayacağınızı gösterecektir.
 services: cognitive-services
 author: pasta
 manager: guillasi
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
 ms.openlocfilehash: 6de651f1eb51ea1bc941c2af675c8a8d5b0f9cd7
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946116"
 ---
-# <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>Derinlikli okuyucu için tanımlama bilgisi ilkesini ayarlama
+# <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>Immersive Reader için çerez ilkesi nasıl ayarlanır?
 
-Tam ekran okuyucu, varsayılan olarak tanımlama bilgisi kullanımını devre dışı bırakır. Tanımlama bilgisi kullanımını etkinleştirirseniz, tam ekran okuyucu Kullanıcı tercihlerini korumak ve özellik kullanımını izlemek için tanımlama bilgilerini kullanabilir. Derinlikli okuyucuda tanımlama bilgisi kullanımını etkinleştirirseniz, lütfen AB tanımlama bilgisi uyumluluk Ilkesinin gereksinimlerini göz önünde bulundurun. Bu, ana bilgisayar uygulamasının, AB tanımlama bilgisi uyumluluk Ilkesiyle uyumlu olarak gerekli Kullanıcı onayını elde etmek için sorumluluğudur.
+Immersive Reader varsayılan olarak çerez kullanımını devre dışı kalacaktır. Çerez kullanımını etkinleştiriseniz, Immersive Reader kullanıcı tercihlerini korumak ve özellik kullanımını izlemek için tanımlama bilgilerini kullanabilir. Sürükleyici Okuyucu'da çerez kullanımını etkinleştirdiyseniz, lütfen AB Çerez Uyumluluk Politikası'nın gereksinimlerini göz önünde bulundurun. AB Çerez Uyumluluk Politikası uyarınca gerekli kullanıcı onayı almak ev sahibi uygulamanın sorumluluğundadır.
 
-Tanımlama bilgisi İlkesi, derinlikli okuyucu [seçenekleri](../reference.md#options)aracılığıyla ayarlanabilir. Daha fazla bilgi için bkz. The [ıepolicy enum](../reference.md#cookiepolicy-enum) .
+Çerez ilkesi, Sürükleyici Okuyucu [seçenekleri](../reference.md#options)aracılığıyla ayarlanabilir. Daha fazla bilgi için [CookiePolicy enum'a](../reference.md#cookiepolicy-enum) bakın.
 
-## <a name="enable-cookie-usage"></a>Tanımlama bilgisi kullanımını etkinleştir
+## <a name="enable-cookie-usage"></a>Çerez Kullanımını Etkinleştir
 
 ```javascript
 var options = {
@@ -33,7 +33,7 @@ var options = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 ```
 
-## <a name="disable-cookie-usage"></a>Tanımlama bilgisi kullanımını devre dışı bırak
+## <a name="disable-cookie-usage"></a>Çerez Kullanımını Devre Dışı
 
 ```javascript
 var options = {
@@ -45,7 +45,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](../quickstart-nodejs.md) başlangıcını görüntüleyin
-* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](../tutorial-python.md) görüntüleyin
-* Swift [öğreticisini](../tutorial-ios-picture-immersive-reader.md) kullanarak tam ekran okuyucu SDK 'sı ile neler yapabileceğinizi görün.
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../reference.md) keşfet
+* Node.js kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Düğüm.js quickstart'ı](../quickstart-nodejs.md) görüntüleyin
+* Python kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Python öğreticisini](../tutorial-python.md) görüntüleyin
+* Swift'i kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Swift öğreticisini](../tutorial-ios-picture-immersive-reader.md) görüntüleyin
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](../reference.md) keşfedin

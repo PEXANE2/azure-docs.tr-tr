@@ -1,7 +1,7 @@
 ---
-title: Varlık Ekle-LUSıS
+title: Varlıklar ekle - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulama tarafından fullfıbcustomer istekleri için kullanılır.
+description: Dil Anlama (LUIS) uygulamalarında kullanıcı söyleyişlerinden önemli verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulaması tarafından müşteri isteklerini fullfil için kullanılır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,185 +12,185 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220913"
 ---
-# <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme 
+# <a name="add-entities-to-extract-data"></a>Veri ayıklamak için varlıklar ekleme 
 
-Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulamanız tarafından fullfıbcustomer istekleri için kullanılır.
+Dil Anlama (LUIS) uygulamalarında kullanıcı söyleyişlerinden önemli verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, müşteri uygulamanız tarafından fullfil müşteri istekleriiçin kullanılır.
 
-Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bazen uygulamanızın görevini gerçekleştirmek gerekli olan ve bilgi ıntent'e ilgili varlıkları anlatmaktadır. Hedefe bir örnek ekleme veya bir amaca göre örnek ekleme (önce veya sonrası) bir amaca bakış ekleyerek varlıklar oluşturabilirsiniz.
+Varlık, ayıklanması istediğiniz sözcüğün veya tümceciği temsil eder. Varlıklar, amaç ile ilgili bilgileri açıklar ve bazen uygulamanızın görevini yerine getirmesi için gereklidir. Bir amaca örnek bir söz eklediğinizde veya bir niyete örnek bir söz eklediğinizde (önce veya sonra) bir niyete örnek bir söz ekleyerek varlıklar oluşturabilirsiniz.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Varlıkları planlayın, ardından Oluştur ve etiketle
+## <a name="plan-entities-then-create-and-label"></a>Varlıkları planlayın, ardından oluşturma ve etiketleme
 
-Makine tarafından öğrenilen varlıklar, örnek dıklarından oluşturabilir veya **varlıklar** sayfasından oluşturulabilir. 
+Makinede öğrenilen varlıklar örnek sözlerden oluşturulabilir veya **Varlıklar** sayfasından oluşturulabilir. 
 
-Genel olarak, portalda makine tarafından öğrenilen bir varlık oluşturmadan önce varlıkları planlama süresini harcamanız en iyi uygulamadır. Daha sonra örnekte, makinenizde öğrendiğiniz şekilde, alt bileşenlere ve tanımlayıcılara ve kısıtlamalara göre daha ayrıntılı bilgi vererek makine tarafından öğrenilen varlığı oluşturun. [Birleştirilebilen varlık öğreticisi](tutorial-machine-learned-entity.md) , bu yöntemin nasıl kullanılacağını gösterir. 
+Genel olarak, en iyi uygulama portalda makine öğrenilen bir varlık oluşturmadan önce varlıkları planlamak için zaman harcamaktır. Daha sonra örnek söyleyişmakineöğrenilen varlık alt bileşenleri ve tanımlayıcılar ve kısıtlamalar olarak o anda bildiğiniz kadar ayrıntı ile oluşturun. [Decomposable varlık öğretici](tutorial-machine-learned-entity.md) nasıl bu yönteminin kullanılacağını gösterir. 
 
-Varlıkları planlamanın bir parçası olarak, metin ile eşleşen varlıklara (önceden oluşturulmuş varlıklar, normal ifade varlıkları veya liste varlıkları gibi) ihtiyacınız olduğunu bilirsiniz. Bunları örnek bir şekilde etiketlendirmeleri için **varlıklar** sayfasından oluşturabilirsiniz. 
+Varlıkları planlamanın bir parçası olarak, metin eşleştirme varlıklara (önceden oluşturulmuş varlıklar, normal ifade varlıkları veya liste varlıkları gibi) ihtiyacınız olduğunu bilirsiniz. Bunları, örnek sözlerle etiketlenmeden önce **Varlıklar** sayfasından oluşturabilirsiniz. 
 
-Etiketleme sırasında tek tek varlıkları etiketleyebilir ve ardından bir üst makineye öğrenilen varlık oluşturabilirsiniz. Ya da bir üst makine öğrenmiş varlıkla başlayabilir ve alt varlıklarda bir varlık oluşturabilir. 
+Etiketleme yaparken, tek tek varlıkları etiketleyebilir ve ardından üst makineden öğrenilen bir varlık oluşturabilirsiniz. Ya da üst makineden öğrenilen bir varlıkla başlayıp alt varlıklara ayrıştırabilirsiniz. 
 
 > [!TIP] 
->Sözcükler, istemci uygulamasında ayıklandığında kullanılmasa bile, bir varlığı gösterebilen tüm kelimeleri etiketleyebilir. 
+>İstemci uygulamasında ayıklandığında sözcükler kullanılmasa bile, varlığı gösterebilecek tüm sözcükleri etiketlendirin. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Etiketleme öncesinde veya etiketleyerek bir varlık oluşturma
+## <a name="creating-an-entity-before-or-with-labeling"></a>Etiketlemeden önce veya etiketleme ile önce bir varlık oluşturma
 
-Her bir varlığın hangi varlıkları oluşturmak veya uygulamaya ekleneceğini anlamak için aşağıdaki tabloyu kullanın. 
+Uygulamanın hangi varlıkların nerede oluşturulacağını veya uygulamaya ekleyebileceğinizi anlamak için aşağıdaki tabloyu kullanın. 
 
-|Varlık türü|LUSıS portalında varlık oluşturma|
+|Varlık türü|LUIS portalında varlık nerede oluşturulur?|
 |--|--|
-|Makine tarafından öğrenilen varlık|Varlıklar veya amaç ayrıntısı|
-|Liste varlığı|Varlıklar veya amaç ayrıntısı|
+|Makine tarafından öğrenilen varlık|Varlıklar veya Niyet ayrıntısı|
+|Liste varlığı|Varlıklar veya Niyet ayrıntısı|
 |Normal ifade varlığı|Varlıklar|
 |Pattern.any varlığı|Varlıklar|
 |Önceden oluşturulmuş varlık|Varlıklar|
 |Önceden oluşturulmuş etki alanı varlığı|Varlıklar|
 
-**Varlıklar** sayfasından tüm varlıkları oluşturabilir veya **Amaç ayrıntısı** sayfasında, varlığı etiketlemenin bir parçası olarak bir dizi varlık oluşturabilirsiniz. Bir varlığı yalnızca **Amaç ayrıntısı** sayfasından bir örnek olarak _etiketleyebilir_ . 
+**Varlıklar** sayfasından tüm varlıkları oluşturabilir veya **Amaç ayrıntı** sayfasındaki örnek teypteki varlığı etiketlemenin bir parçası olarak birkaç varlık oluşturabilirsiniz. Bir varlığı yalnızca **Niyet ayrıntısı** sayfasından örnek bir sözle _etiketleyebilirsiniz._ 
 
-## <a name="create-a-machine-learned-entity"></a>Makine tarafından öğrenilen bir varlık oluşturma
+## <a name="create-a-machine-learned-entity"></a>Makinede öğrenilen bir varlık oluşturma
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Metin ile eşleşen bir varlık oluşturma
+## <a name="create-a-text-matching-entity"></a>Metin eşleştirme varlık oluşturma
 
-Metin eşleştirme varlıklarını kullanma, verileri ayıklamak için çeşitli yollar sağlar:
+Metin eşleştirme varlıkları kullanma veri ayıklamak için çeşitli yollar sağlar:
 
 |Metin eşleştirme varlıkları|Amaç|
 |--|--|
-|[Varlık listeleme](#add-list-entities-for-exact-matches)|alternatif formlar olarak eş anlamlılarla birlikte kurallı adların listesi|
-|Normal ifade varlığı|normal ifade varlığı kullanarak metni Eşleştir|
-|[Önceden oluşturulmuş varlık](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|sayı, e-posta, tarih gibi ortak veri türlerini Eşleştir|
-|Önceden oluşturulmuş etki alanı varlığı|seçili konu etki alanlarını kullanarak Eşleştir|
-|[Model. any](#add-a-patternany-entity)| çevreleyen metinle kolayca karışabilme varlıkları eşleştirmek için|  
+|[Liste varlığı](#add-list-entities-for-exact-matches)|alternatif formlar olarak eşanlamlıları ile birlikte kanonik adların listesi|
+|Normal ifade varlığı|normal bir ifade varlığı kullanarak metni eşleştirme|
+|[Önceden oluşturulmuş varlık](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|sayı, e-posta, tarih gibi yaygın veri türlerini eşleştirme|
+|Önceden oluşturulmuş etki alanı varlığı|seçili konu etki alanlarını kullanarak eşleştirme|
+|[Desen.herhangi bir](#add-a-patternany-entity)| çevreleyen metinle kolayca karıştırılabilecek varlıkları eşleştirmek için|  
 
-Önceden oluşturulmuş varlıklar, herhangi bir özel eğitim verisi sağlamadan çalışır. Diğer varlıkların, müşteri eğitim verileri (liste varlığının öğeleri gibi) veya bir ifade (normal ifade veya model gibi) sağlamanız gerekir.
+Önceden oluşturulmuş varlıklar herhangi bir özel eğitim verisi sağlamadan çalışır. Diğer varlıkların müşteri eğitim verilerini (List entity'in öğeleri gibi) veya bir ifade (normal bir ifade veya desen.any gibi) sağlamanız gerekir.
 
 <a name="add-list-entities"></a>
 
 ### <a name="how-to-create-a-new-custom-entity"></a>Yeni bir özel varlık oluşturma
 
-1. LUU portalında **Yönet** bölümüne, ardından **varlıklar** sayfasına gidin. 
-1. **+ Oluştur**' u seçin ve varlık türünü seçin. 
-1. Varlığı yapılandırmaya devam edin, sonra işiniz bittiğinde **Oluştur** ' u seçin. 
+1. LUIS portalında, **Yönet** bölümüne, ardından **Varlıklar** sayfasına gidin. 
+1. + **Oluştur'u**seçin, ardından varlık türünü seçin. 
+1. Varlığı yapılandırmaya devam edin ve bittiğinde **Oluştur'u** seçin. 
 
 ### <a name="add-list-entities-for-exact-matches"></a>Tam eşleşmeler için liste varlıkları ekleme
 
-Liste varlık ilgili sözcükler sabit, kapalı bir kümesini temsil eder. Yazar olarak, yazar olarak listeyi değiştireyken, LUYA listeyi küçültmez veya küçülemez. Ayrıca, bir [list Entity. JSON biçimi (başvuru-varlık-List. MD # örnek-JSON------------------------- 
+Liste varlıkları, sabit, kapalı bir ilgili sözcük kümesini temsil ediyor. Siz, yazar olarak, listeyi değiştirebilirsiniz, luis büyümek veya liste küçültmek olmaz. Ayrıca bir [list entity .json formatı (referans-entity-list.md#example-json-to-içe aktarma-liste içine-varlık) kullanarak varolan bir liste varlığı için içe aktarabilirsiniz. 
 
-Aşağıdaki listede kurallı adı ve eş anlamlılar gösterilmektedir. 
+Aşağıdaki liste, kanonik adı ve eşanlamlıları gösterir. 
 
-|Renk listesi öğe adı|Renk eşanlamlıları|
+|Renk - liste öğesi adı|Renk - eşanlamlı|
 |--|--|
-|Kırmızı|Crimson, kan, Apple, Fire-Engine|
-|Mavi|gök, Azure, Cobalt|
-|Renkli|Kelly, limon sarısı|
+|Red|kızıl, kan, elma, itfaiye|
+|Mavi|gökyüzü, masmavi, kobalt|
+|Yeşil|kelly, kireç|
 
-Bir liste varlığı oluşturmak için yordamını kullanın. Liste varlığı oluşturulduktan sonra, bir amaç için örnek söyleyeni etiketlemenize gerek yoktur. Liste öğeleri ve eş anlamlılar, tam metin kullanılarak eşleştirilir. 
+Bir liste varlığı oluşturmak için yordamı kullanın. Liste varlığı oluşturulduktan sonra, örnek sözcüklerini bir niyetle etiketlemeniz gerekmez. Liste öğeleri ve eşanlamlılar tam metin kullanılarak eşlenir. 
 
-1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
+1. **Yapı** bölümünden sol paneldeki **Varlıkları** seçin ve sonra **+ Oluştur'u**seçin.
 
-1. **Varlık türü oluştur** iletişim kutusunda, varlığın adını girin, örneğin `Colors` ve **liste**seçin.
-1. **Liste varlığı oluştur** iletişim kutusunda **Yeni alt liste ekle...** ' da, `Green`gibi bir liste öğesi adı girin ve sonra eşanlamlı ekleyin.
+1. Varlık **türü** iletişim kutusu oluştur'da, varlık adı girin, `Colors` gibi ve **Liste'yi**seçin.
+1. Liste **varlık** iletişim kutusunda, **yeni alt liste ekle....** gibi liste öğesi adını `Green`girin, ardından eş anlamlılar ekleyin.
 
     > [!div class="mx-imgBorder"]
-    > ![varlık ayrıntısı sayfasında bir liste varlığı olarak renklerin bir listesini oluşturun.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Varlık ayrıntı sayfasında liste varlığı olarak renklerin listesini oluşturun.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. Liste öğeleri ve eş anlamlılar ekleme işiniz bittiğinde **Oluştur**' u seçin.
+1. Liste öğeleri ve eşanlamlılar eklemeyi bitirdiğinizde **Oluştur'u**seçin.
 
-    Uygulamada bir değişiklik grubuyla işiniz bittiğinde, uygulamayı **eğiten** unutmayın. Uygulamayı tek bir değişiklikten sonra eğmeyin. 
+    Uygulamada bir grup değişiklik yaptığınızda, uygulamayı **eğitmeyi** unutmayın. Tek bir değişiklikten sonra uygulamayı eğitme. 
 
     > [!NOTE]
-    > Bu yordam, **Amaç ayrıntısı** sayfasında bir liste varlığının bir örnek ile oluşturulmasını ve etiketlenmesini gösterir. Aynı varlığı **varlıklar** sayfasından da oluşturabilirsiniz.
+    > Bu yordam, **Niyet ayrıntı** sayfasındaki örnek bir sözcükten bir liste varlığı oluşturmayı ve etiketlemeyi gösterir. Varlıklar **sayfasından** da aynı varlığı oluşturabilirsiniz.
 
-## <a name="add-a-role-for-an-entity"></a>Bir varlık için rol ekleme
+## <a name="add-a-role-for-an-entity"></a>Varlık için rol ekleme
 
-Rol, bir varlığın bağlam temelinde adlandırılmış bir alt türüdür. 
+Rol, bağlama dayalı bir varlığın adlandırılmış bir alt türüdür. 
 
 ### <a name="add-a-role-to-distinguish-different-contexts"></a>Farklı bağlamları ayırt etmek için rol ekleme
 
-Aşağıdaki söyleyde iki konum vardır ve her biri, `to` ve `from`gibi sözcükler tarafından anlam olarak belirtilmiştir: 
+Aşağıdaki söyleyiş, iki konum vardır ve her biri gibi etrafında kelimelerle `to` semantik olarak belirtilir ve: `from` 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-Bu yordamda, önceden oluşturulmuş bir geographyV2 varlığına `origin` ve `destination` rolleri ekleyin.
+Bu yordamda, `origin` `destination` önceden oluşturulmuş bir geographyV2 varlığına ekleme ve roller.
 
-1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin.
+1. **Yapı** bölümünden sol paneldeki **Varlıkları** seçin.
 
-1. **+ Önceden oluşturulmuş varlık Ekle**' yi seçin. **GeographyV2** ' ı seçin ve **bitti**' yi seçin. Bu, uygulamaya önceden oluşturulmuş bir varlık ekler.
+1. Select **+ Önceden oluşturulmuş varlık ekle**. **GeographyV2'yi** seçin ve **Bitti'yi**seçin. Bu, uygulamaya önceden oluşturulmuş bir varlık ekler.
     
     Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın. 
 
-1. **Varlıklar sayfa listesinden** yeni eklenen önceden oluşturulmuş geographyV2 varlığını seçin. 
-1. Yeni bir rol eklemek için, **rol eklenmemiş** **+** ileri ' yi seçin.
-1. **Rol... TextBox yazın** `Origin` rolün adını girin ve ardından girin. İkinci bir rol adı `Destination` ekleyin ve ardından girin. 
+1. **Varlıklar** sayfa listesinden yeni eklenen önceden oluşturulmuş geographyV2 varlığını seçin. 
+1. Yeni bir rol eklemek **+** için, **eklenen rolleri yok'un**yanına seçin.
+1. Türü **rolü...** textbox'ına, rolün `Origin` adını girin ve sonra girin. `Destination` Sonra ikinci bir rol adı girin. 
 
     > [!div class="mx-imgBorder"]
-    > Konum varlığına kaynak rolü eklemenin ekran görüntüsünü ![](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Konum varlığına Başlangıç rolü ekleme ekran görüntüsü](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    Rol önceden oluşturulmuş varlığa eklenir, ancak bu varlık kullanılarak herhangi bir söyleye eklenmez. 
+    Rol önceden oluşturulmuş varlığa eklenir, ancak bu varlığı kullanan herhangi bir söze eklenmez. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Örnekte bir rol ile metin etiketle
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Örnek bir sözlemede rol içeren metni etiketleme
 
-1. Rolü kullanan örnek bir parametre olan amaç ayrıntıları sayfasına gidin. 
-1. Rol ile etiketlemek için, örnekte varlık etiketini (metin altında Solid Line) seçin ve ardından açılır listeden **varlık paletinde görüntüle** ' yi seçin. 
-
-    > [!div class="mx-imgBorder"]
-    > varlık paletinde görünüm seçme ![ekran görüntüsü](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    Varlık paleti sağ tarafta açılır. 
-
-1. Varlığı seçin, sonra paletin en altına gidin ve rolü seçin. 
+1. Rolü kullanan örnek sözcüklerle birlikte Niyet ayrıntıları sayfasına gidin. 
+1. Rolü etiketlemek için, örnek söyleyişdeki varlık etiketini (metin altındaki düz çizgi) seçin ve ardından açılan listeden **varlık paletinde Görünüm'ü** seçin. 
 
     > [!div class="mx-imgBorder"]
-    > varlık paletinde görünüm seçme ![ekran görüntüsü](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Varlık Paletinde Görünüm'ü seçme ekran görüntüsü](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    Varlık paleti sağa açılır. 
+
+1. Varlığı seçin, ardından paletin altına gidin ve rolü seçin. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Varlık Paletinde Görünüm'ü seçme ekran görüntüsü](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Bir model ekleyin. herhangi bir varlık
+## <a name="add-a-patternany-entity"></a>Desen ekle.herhangi bir varlık
 
-[Desen. tüm](luis-concept-entity-types.md) varlıklar yalnızca [desenlere](luis-how-to-model-intent-pattern.md)göre geçerlidir, amaç örnekleri değildir. Bu varlık türü, değişken uzunluğu ve sözcük seçimi varlıklarının sonuna Bul LUIS yardımcı olur. Bu varlık içindeki bir desenle kullanıldığından LUIS son varlık utterance şablonda olduğu bilir.
+[Desen.herhangi bir](luis-concept-entity-types.md) varlık sadece [desenlerde](luis-how-to-model-intent-pattern.md)geçerlidir, niyetin örnek söyleyişlerinde değil. Bu tür bir varlık, LUIS'in değişen uzunluk ve sözcük seçimindeki varlıkların sonunu bulmasına yardımcı olur. Bu varlık bir desende kullanıldığından, LUIS varlığın sonunun sözcük şablonunda nerede olduğunu bilir.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Bir model oluşturma adımları. herhangi bir varlık
+### <a name="steps-to-create-a-patternany-entity"></a>Bir desen oluşturmak için adımlar.herhangi bir varlık
 
-1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
+1. **Yapı** bölümünden sol paneldeki **Varlıkları** seçin ve sonra **+ Oluştur'u**seçin.
 
-1. **Varlık türü seç** iletişim kutusunda, **ad** kutusuna varlık adını girin ve ardından model ' i seçin **.** tür olarak **yazın** ve **Oluştur**' u seçin.
+1. Varlık türü iletişim kutusunu **seç,** **Ad** kutusuna varlık adını girin ve **Desen.Any'yi** **Tür** olarak seçin ve ardından **Oluştur'u**seçin.
 
-    Bu varlığı kullanarak [bir desen oluşturduktan](luis-how-to-model-intent-pattern.md) sonra varlık, birleştirilmiş bir makine tarafından öğrenilen ve metin eşleştirme algoritması ile ayıklanır. 
+    Bu varlığı kullanarak [bir desen sözcük](luis-how-to-model-intent-pattern.md) oluşturmayaptığınızda, varlık birleştirilmiş makine öğrenilen ve metin eşleştirme algoritması ile ayıklanır. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Desen kullanmak için desen şablonu oluşturma. herhangi bir varlık
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Desen kullanmak için bir desen şablonu söyleyiş oluşturma.herhangi bir varlık
 
-Deseni kullanmak için, **desen sayfasında,** **uygulama performansını iyileştirme** bölümünde, `Where is **{HumanResourcesFormTitle}** on the server?`gibi doğru küme ayracı sözdizimi ile bir desen ekleyin.
+Deseni kullanmak için.herhangi bir varlık, **Desenler** sayfasında, **uygulama performansını geliştir** bölümünde, doğru kıvırcık `Where is **{HumanResourcesFormTitle}** on the server?`ayraç sözdizimi ile bir desen ekleyin.
 
 Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın. 
 
-## <a name="do-not-change-entity-type"></a>Varlık türünü değiştirme
+## <a name="do-not-change-entity-type"></a>Varlık türünü değiştirmeyin
 
-LUIS, ekleme veya kaldırma, varlık oluşturmak için gerekenler bilmediği varlık türünü değiştirmek izin vermez. Türü değiştirmek için biraz daha farklı bir adla doğru türde yeni bir varlık oluşturmak iyidir. Varlık oluşturulduktan sonra eski etiketli varlık adı her utterance içinde kaldırıp yeni varlık adı ekleyin. Tüm sesleri relabeled sonra eski varlığı silin. 
+LUIS, varlığı oluşturmak için ne ekleyeceğini veya kaldıracağını bilmediği için varlığın türünü değiştirmenize izin vermez. Türü değiştirmek için, biraz farklı bir ada sahip doğru türde yeni bir varlık oluşturmak daha iyidir. Varlık oluşturulduktan sonra, her bir sözcükte, eski etiketli varlık adını kaldırın ve yeni varlık adını ekleyin. Tüm söyleyişler yeniden etiketlendikten sonra, eski varlığı silin. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Önceden oluşturulmuş modeller kullanma](howto-add-prebuilt-models.md) 
+> [Önceden oluşturulmuş modelleri kullanma](howto-add-prebuilt-models.md) 
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
-* [Eğitme](luis-how-to-train.md)
-* [Test](luis-interactive-test.md) etme
-* [Yayımlama](luis-how-to-publish-app.md)
-* Lıklarını
-    * [Kavramlar ](luis-concept-patterns.md)
+* Nasıl [eğitilir?](luis-how-to-train.md)
+* Nasıl [test](luis-interactive-test.md) edile
+* Nasıl [yayımlanır?](luis-how-to-publish-app.md)
+* Desen:
+    * [Kavramlar](luis-concept-patterns.md)
     * [Sözdizimi](reference-pattern-syntax.md)
-* [Önceden oluşturulmuş varlıklar GitHub deposu](https://github.com/Microsoft/Recognizers-Text)
-* [Veri ayıklama kavramları](luis-concept-data-extraction.md)
+* [Önceden inşa edilmiş varlıklar GitHub deposu](https://github.com/Microsoft/Recognizers-Text)
+* [Veri Çıkarma kavramları](luis-concept-data-extraction.md)
 
 
  

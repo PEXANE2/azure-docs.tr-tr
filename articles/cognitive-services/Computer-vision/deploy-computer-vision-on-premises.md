@@ -1,36 +1,36 @@
 ---
-title: Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
+title: Kubernetes ve Helm ile Bilgisayarlı Vizyon konteynerini kullanma
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme kapsayıcısını bir Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
+description: Computer Vision kapsayıcısını bir Azure Kapsayıcı Örneği'ne dağıtın ve bir web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 22ec16f66c463cde49adbc9c472e461169df5eeb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 126060875c09d70b8680447d78b7cf6ccdd782af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458027"
 ---
-# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Helm ile Bilgisayarlı Vizyon konteynerini kullanma
 
-Şirket içi Görüntü İşleme Kapsayıcılarınızı yönetmenin bir seçeneği, Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve Held kullanarak bir Görüntü İşleme kapsayıcı görüntüsü tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan hizmetleri nasıl test ettireceğiz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [görüntü işleme kapsayıcıları yükleyip çalıştırma](computer-vision-how-to-install-containers.md).
+Bilgisayar Lı Vizyon kapsayıcılarınızı şirket içinde yönetmek için seçeneklerden biri Kubernetes ve Helm kullanmaktır. Bir Computer Vision konteyner görüntüsünü tanımlamak için Kubernetes ve Helm'i kullanarak bir Kubernetes paketi oluşturacağız. Bu paket, şirket içinde bir Kubernetes kümesine dağıtılacaktır. Son olarak, dağıtılan hizmetlerin nasıl test edilebildiğini araştıracağız. Kubernetes orkestrasyonu olmadan Docker kapsayıcıları çalıştırma hakkında daha fazla bilgi için Computer [Vision kapsayıcılarını yükleyin ve çalıştırın.](computer-vision-how-to-install-containers.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Şirket içinde Görüntü İşleme kapsayıcıları kullanmadan önce aşağıdaki Önkoşullar:
+Bilgisayar Lı Vizyon kapsayıcılarını şirket içinde kullanmadan önce aşağıdaki ön koşullar:
 
-|Gerekli|Amaç|
-|--|--|
-| Azure hesabı | Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-azure-account] oluşturun. |
-| Kubernetes CLı | [Kubernetes CLI][kubernetes-cli] , paylaşılan kimlik bilgilerinin kapsayıcı kayıt defterinden yönetilmesi için gereklidir. Kubernetes, Kubernetes paket yöneticisi olan helk 'dan önce de gereklidir. |
-| Held CLı | [HELı CLI][helm-install] yüklemesinin bir parçası olarak, [Tiller][tiller-install]yükleyecek Held 'yi de başlatmalısınız. |
-| Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
+| Gerekli | Amaç |
+|----------|---------|
+| Azure Hesabı | Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz][free-azure-account] bir hesap oluşturun. |
+| Kubernetes CLI | [Kubernetes CLI,][kubernetes-cli] konteyner kayıt defterinden paylaşılan kimlik bilgilerini yönetmek için gereklidir. Kubernetes de Helm, Kubernetes paket yöneticisi önce gereklidir. |
+| Dümen CLI | Bir dümen grafiği (konteyner paketi tanımı) yüklemek için kullanılan [Helm CLI][helm-install]yükleyin. |
+| Bilgisayarlı Vizyon kaynağı |Kapsayıcıyı kullanabilmek için aşağıdakilere sahip olmalısınız:<br><br>Bir Azure **Computer Vision** kaynağı ve ilişkili API bitiş noktası URI anahtarı. Her iki değer de kaynak için Genel Bakış ve Anahtarlar sayfalarında kullanılabilir ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **Keys** sayfasındaki mevcut iki kaynak anahtarından biri<br><br>**{ENDPOINT_URI}**: **Genel Bakış** sayfasında sağlanan bitiş noktası|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -38,19 +38,19 @@ ms.locfileid: "74383790"
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
+### <a name="container-requirements-and-recommendations"></a>Konteyner gereksinimleri ve öneriler
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes kümesine bağlanma
+## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes kümesine bağlanın
 
-Ana bilgisayarın kullanılabilir bir Kubernetes kümesi olması beklenmektedir. Bir Kubernetes kümesinin bir ana bilgisayara nasıl dağıtılacağını anlamak için bir [Kubernetes kümesi dağıtmaya](../../aks/tutorial-kubernetes-deploy-cluster.md) yönelik Bu öğreticiye bakın.
+Ana bilgisayarın kullanılabilir bir Kubernetes kümesine sahip olması beklenir. Bir Kubernetes kümesini ana bilgisayara nasıl dağıtılayabilirsiniz kavramsal bir anlayış için [bir Kubernetes kümesini dağıtma](../../aks/tutorial-kubernetes-deploy-cluster.md) yla ilgili şu öğreticiye bakın.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker kimlik bilgilerini Kubernetes kümesiyle paylaşma
 
-Kubernetes kümesinin, `containerpreview.azurecr.io` Container kayıt defterinden yapılandırılan resimleri `docker pull` izin vermek için, Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt defteri erişim önkoşulu ' ndan belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki [`kubectl create`][kubectl-create] komutunu yürütün.
+Kubernetes kümesinin `docker pull` `containerpreview.azurecr.io` konteyner kayıt defterinden yapılandırılan görüntü(ler)e izin vermek için docker kimlik bilgilerini kümeye aktarmanız gerekir. Konteyner [`kubectl create`][kubectl-create] kayıt defteri erişim ön koşulundan sağlanan kimlik bilgilerine dayalı bir *docker-registry gizli* oluşturmak için aşağıdaki komutu çalıştırın.
 
-Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. `<username>`, `<password>`ve `<email-address>` kapsayıcı kayıt defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
+Seçtiğiniz komut satırı arabirimi, aşağıdaki komutu çalıştırın. 'yi `<username>` `<password>`ve `<email-address>` kapsayıcı kayıt defteri kimlik bilgilerini değiştirdiğinden emin olun.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,35 +61,35 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> `containerpreview.azurecr.io` kapsayıcı kayıt defterine zaten erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
+> Kapsayıcı kayıt defterine `containerpreview.azurecr.io` zaten erişiminiz varsa, bunun yerine genel bayrağı kullanarak bir Kubernetes sırrı oluşturabilirsiniz. Docker yapılandırmanız JSON'a karşı yürüten aşağıdaki komutu düşünün.
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-Gizli dizi başarıyla oluşturulduğunda konsola aşağıdaki çıktı yazdırılır.
+Aşağıdaki çıktı, gizli başarıyla oluşturulduğunda konsola yazdırılır.
 
 ```console
 secret "containerpreview" created
 ```
 
-Gizli dizinin oluşturulduğunu doğrulamak için, [`kubectl get`][kubectl-get] `secrets` bayrağıyla yürütün.
+Sırrın oluşturulduğunu doğrulamak için bayrakla `secrets` birlikte çalıştırın. [`kubectl get`][kubectl-get]
 
 ```console
 kubectl get secrets
 ```
 
-`kubectl get secrets` yürütmek, yapılandırılan tüm gizli dizileri yazdırır.
+Yapılandırılan `kubectl get secrets` tüm sırların baskılarını yürütme.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
 containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Held grafik değerlerini yapılandırma
+## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Miğfer grafiği değerlerini yapılandırma
 
-*Oku*adlı bir klasör oluşturarak başlayın, ardından aşağıdaki YAML içeriğini *Chart. yıml*adlı yeni bir dosyaya yapıştırın.
+*Read*adlı bir klasör oluşturarak başlayın, ardından aşağıdaki YAML içeriğini *Chart.yml*adlı yeni bir dosyaya yapıştırın.
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp `values.yaml`adlı bir dosyaya yapıştırın. `# {ENDPOINT_URI}` ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
+Miğfer grafiği varsayılan değerlerini yapılandırmak için aşağıdaki YAML'yi `values.yaml`kopyalayıp yapıştırın. `# {ENDPOINT_URI}` Yorumları ve `# {API_KEY}` yorumları kendi değerlerinizle değiştirin.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -118,11 +118,11 @@ read:
 ```
 
 > [!IMPORTANT]
-> `billing` ve `apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
+> `billing` Ve `apikey` değerleri sağlanmazise, hizmetler 15 dakika sonra sona erer. Aynı şekilde, hizmetler kullanılamadığı için doğrulama başarısız olur.
 
-*Okuma* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp `deployment.yaml`adlı bir dosyaya yapıştırın. `deployment.yaml` dosyası bir hela şablonu olarak görev yapar.
+*Okuma* dizininin altında bir *şablonlar* klasörü oluşturun. Aşağıdaki YAML'yi kopyalayıp yapıştırın. `deployment.yaml` Dosya `deployment.yaml` Bir Helm şablonu olarak hizmet verecektir.
 
-> Şablonlar, Kubernetes 'in anlayabileceği YAML biçimli kaynak açıklamaları olan bildirim dosyaları oluşturur. [-Help grafik şablonu Kılavuzu][chart-template-guide]
+> Şablonlar, Kubernetes'in anlayabileceği YAML biçimli kaynak açıklamaları olan bildirim dosyaları oluşturur. [- Dümen Grafiği Şablon Kılavuzu][chart-template-guide]
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -163,25 +163,25 @@ spec:
     app: read-app
 ```
 
-Şablon, bir yük dengeleyici hizmetini ve okuma için kapsayıcının/görüntünüzün dağıtımını belirtir.
+Şablon, bir yük dengeleyici hizmeti ve Read için kapsayıcınızın/resminizin dağıtımını belirtir.
 
-### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (helk grafiği)
+### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (Dümen grafiği)
 
-*Helk grafiği* `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini yapılandırmayı içerir.
+*Miğfer grafiği,* konteyner kayıt defterinden hangi docker `containerpreview.azurecr.io` görüntüsünün(ler) çekilecek yapılandırmasını içerir.
 
-> [Helk grafiği][helm-charts] , Ilgili bir Kubernetes kaynakları kümesini tanımlayan bir dosya koleksiyonudur. Tek bir grafik, bir veya daha çok karmaşık, örneğin, HTTP sunucuları, veritabanları, önbellekler gibi tam bir Web uygulaması yığını gibi basit bir şeyi dağıtmak için kullanılabilir.
+> [Miğfer grafiği,][helm-charts] ilgili bir Kubernetes kaynaklarını açıklayan bir dosya topluluğudur. Tek bir grafik basit bir şey dağıtmak için kullanılabilir, bir memcached pod gibi, ya da karmaşık bir şey, HTTP sunucuları, veritabanları, önbellekleri ile tam bir web uygulaması yığını gibi, ve benzeri.
 
-Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntülerini ve `containerpreview.azurecr.io` Container kayıt defterinden karşılık gelen hizmeti çeker.
+Sağlanan *Helm grafikleri,* Bilgisayar Görme Hizmeti'nin docker görüntülerini `containerpreview.azurecr.io` ve ilgili hizmeti konteyner kayıt defterinden çeker.
 
-## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine helk grafiğini yükler
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine Miğfer grafiğini yükleme
 
-*Helk grafiğini*yüklemek için [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. `read` klasörünün üzerindeki dizinden install komutunu yürütdiğinizden emin olun.
+*Dümen grafiğini*yüklemek için komutu [`helm install`][helm-install-cmd] yürütmemiz gerekir. Klasörün üstündeki dizinden yükleme komutunu `read` çalıştırdığından emin olun.
 
 ```console
-helm install read --name read
+helm install read ./read
 ```
 
-İşte başarılı bir yüklemenin yürütülmesini beklemeniz gerekebilecek bir örnek çıktı:
+Başarılı bir yükleme yürütmesinden görmeyi bekleyebilecekleriniz bir örnek çıktı aşağıda verilmiştir:
 
 ```console
 NAME: read
@@ -203,13 +203,13 @@ NAME    READY  UP-TO-DATE  AVAILABLE  AGE
 read    0/1    1           0          0s
 ```
 
-Kubernetes dağıtımının tamamlanması birkaç dakika sürebilir. Hem yığınların hem de hizmetlerin düzgün bir şekilde dağıtıldığını ve kullanılabilir olduğunu onaylamak için aşağıdaki komutu yürütün:
+Kubernetes dağıtımının tamamlanması birkaç dakika sürebilir. Hem bölmelerin hem de hizmetlerin düzgün şekilde dağıtılmış ve kullanılabilir olduğunu doğrulamak için aşağıdaki komutu uygulayın:
 
 ```console
 kubectl get all
 ```
 
-Aşağıdaki çıktıya benzer bir şey görmeniz beklenir:
+Aşağıdaki çıktıya benzer bir şey görmeyi beklemelisiniz:
 
 ```console
 kubectl get all
@@ -232,10 +232,10 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Kubernetes Service (AKS) ' de Held ile uygulama yükleme hakkında daha fazla bilgi için, [buraya gidin][installing-helm-apps-in-aks].
+Azure Kubernetes Hizmetinde (AKS) Helm ile uygulama yükleme hakkında daha fazla bilgi [için burayı ziyaret edin.][installing-helm-apps-in-aks]
 
 > [!div class="nextstepaction"]
-> [Bilişsel hizmetler kapsayıcıları][cog-svcs-containers]
+> [Bilişsel Hizmetler Konteynerler][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
@@ -245,7 +245,6 @@ Azure Kubernetes Service (AKS) ' de Held ile uygulama yükleme hakkında daha fa
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm
 [helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
-[tiller-install]: https://helm.sh/docs/install/#installing-tiller
 [helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

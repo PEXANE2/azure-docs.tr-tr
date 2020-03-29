@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - Bing yazım denetimi API'si
+title: Dil desteği - Bing Yazım Denetimi API
 titleSuffix: Azure Cognitive Services
-description: Doğal Bing yazım denetimi API'si tarafından desteklenen dillerin listesi.
+description: Bing Yazım Denetimi API tarafından desteklenen doğal dillerin listesi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390157"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing yazım denetimi API'si dil ve bölge desteği
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing Yazım Denetimi API'si için dil ve bölge desteği
 
-Bu diller, Bing yazım denetimi API'si tarafından desteklenir (yalnızca `spell` modu).
+Bu diller Bing Yazım Denetimi API 'si (yalnızca modda) `spell` tarafından desteklenir.
 
-Başka bir dilde çalışmak için lütfen unutmayın `en-US`, `mkt` ayarlanması gerekir ve her iki `Accept-Language` veya `setLang` , açıklandığı ayarlanmalıdır [yazım denetimi API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Başka bir dilile çalışmak `en-US`için, `mkt` Yazım Denetimi `Accept-Language` [API v7 referansında](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference) açıklandığı gibi ayarlanmalı ve ayarlanmalıdır veya `setLang` ayarlanmalıdır.
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
 | Arapça      | `ar`          |
 | Çince (Çin Halk Cumhuriyeti)     | `zh-CN`          |
-| Çince (Hong Kong ÖİB)    | `zh-HK`          |
+| Çince (Hong Kong SAR)    | `zh-HK`          |
 | Çince (Tayvan)     | `zh-TW`          |
 | Danca      | `da`          |
-| Flamanca (Belçika)       | `nl-BE`          |
-| Hollanda dili (Hollanda)      | `nl-NL`          |
+| Felemenkçe (Belçika)       | `nl-BE`          |
+| Felemenkçe (Hollanda)      | `nl-NL`          |
 | İngilizce (Avustralya)    | `en-AU`          |
 | İngilizce (Kanada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| İngilizce (Hindistan)    | `en-IN`          |
 | İngilizce (Endonezya)     | `en-ID`          |
 | İngilizce (Malezya)     | `en-MY`          |
 | İngilizce (Yeni Zelanda)    | `en-NZ`          |
 | İngilizce (Filipinler)     | `en-PH`          |
 | İngilizce (Güney Afrika)    | `en-ZA`          |
-| İngilizce (Birleşik Krallık)    | `en-GB`          |
+| İngilizce (İngiltere)    | `en-GB`          |
 | İngilizce (ABD)    | `en-US`          |
 | Fince     | `fi`          |
 | Fransızca (Belçika)     | `fr-BE`          |

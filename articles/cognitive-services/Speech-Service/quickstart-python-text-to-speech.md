@@ -1,7 +1,7 @@
 ---
-title: Metin okuma, Python-konuşma hizmetini Dönüştür
+title: Metinden konuşmaya dönüştürme, Python - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Python ve metin okuma REST API kullanarak metin okumayı nasıl dönüştürebileceğinizi öğreneceksiniz. Bu kılavuzda yer örnek metni konuşma sentezi işaretleme dili (SSML'yi) olarak yapılandırılmıştır. Bu, ses ve konuşma yanıtın dili seçmenize olanak sağlar.
+description: Bu makalede, Python ve Text-to-Speech REST API'yi kullanarak metinden konuşmaya nasıl dönüştüreceğinizi öğreneceksiniz. Bu kılavuzda yer alan örnek metin Konuşma Sentezi Biçimlendirme Dili (SSML) olarak yapılandırılmıştır. Bu, konuşma yanıtının sesini ve dilini seçmenize olanak tanır.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119717"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365795"
 ---
-# <a name="convert-text-to-speech-using-python"></a>Python kullanarak metin okumayı dönüştürme
+# <a name="convert-text-to-speech-using-python"></a>Python'u kullanarak metinden konuşmaya dönüştürme
 
-Bu makalede, Python ve metin okuma REST API kullanarak metin okumayı nasıl dönüştürebileceğinizi öğreneceksiniz. Bu kılavuzdaki istek gövdesi [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md)olarak yapılandırılmıştır ve bu da yanıtın ses ve dilini seçmenizi sağlar.
+Bu makalede, Python'u ve metinden konuşmaya REST API'yi kullanarak metinden konuşmaya nasıl dönüştüreceğinizi öğreneceksiniz. Bu kılavuzdaki istek gövdesi, yanıtın sesini ve dilini seçmenize olanak tanıyan [Konuşma Sentezi Biçimlendirme Dili (SSML)](speech-synthesis-markup.md)olarak yapılandırılmıştır.
 
-Bu makalede, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
+Bu makalede, Konuşma hizmeti kaynağı olan bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekmektedir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Python 2.7.x veya 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)veya sık kullandığınız metin düzenleyiciniz
-* Konuşma hizmeti için bir Azure abonelik anahtarı
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin editörü
+* Konuşma hizmeti için Azure abonelik anahtarı
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
@@ -43,11 +43,11 @@ from xml.etree import ElementTree
 > [!NOTE]
 > Bu modülleri kullanmadıysanız, programınızı çalıştırmadan önce bunları yüklemeniz gerekir. Bu paketleri yüklemek için şunu çalıştırın: `pip install requests`.
 
-Bu modüller, metin okuma API çağrısı bir zaman damgasına sahip bir dosya konuşma yanıtı yazmak ve bir HTTP isteği oluşturmak için kullanılır.
+Bu modüller, zaman damgalı bir dosyaya konuşma yanıtı yazmak, HTTP isteğini oluşturmak ve metinden konuşmaya API'yi çağırmak için kullanılır.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Abonelik anahtarı ve bir komut istemi için TTS oluşturma
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Abonelik anahtarını ayarlayın ve TTS için bir istem oluşturun
 
-Sonraki birkaç bölümde yetkilendirmeyi ele alırken, metin okuma API'si çağırmayı ve yanıt doğrulamak için yöntem oluşturacaksınız. Bu örnek xenapp'i bazı kod Python ile çalışır ekleyerek başlayalım 2.7.x ve 3.x.
+Sonraki birkaç bölümde yetkilendirmeyi işlemek, metinden konuşmaya API'yi çağırmak ve yanıtı doğrulamak için yöntemler oluşturacaksınız. Bu örneğin Python 2.7.x ve 3.x ile çalışmasını sağlayacak bazı kodlar ekleyerek başlayalım.
 
 ```python
 try:
@@ -56,7 +56,7 @@ except NameError:
     pass
 ```
 
-Ardından, bir sınıf oluşturalım. Biz bizim belirteç değişimi ve metin okuma API'si Çağırma yöntemlerini nerede giriyorum budur.
+Sonra, bir sınıf oluşturalım. Burada belirteç değişimi için yöntemlerimizi koyacağız ve metinden konuşmaya API'yi çağıracağız.
 
 ```python
 class TextToSpeech(object):
@@ -67,15 +67,15 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-`subscription_key`, Azure portal benzersiz anahtarınızdan farklıdır. `tts` kullanıcıdan konuşmaya dönüştürülecek metni girmesini ister. Bu giriş bir dize sabit değeri, olduğundan karakter kaçış karakterleri gerekmez. Son olarak, `timestr` dosyanızı adlandırmak için kullanacağımız geçerli saati alır.
+Azure `subscription_key` portalından benzersiz anahtarınızdır. `tts`kullanıcıdan konuşmaya dönüştürülecek metni girmesini ister. Bu giriş bir dize gerçek, bu nedenle karakterler in kaçmasına gerek yoktur. Son `timestr` olarak, dosyanızı adlandırmak için kullanacağımız geçerli saati alır.
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-Metin okuma REST API, kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir exchange gereklidir. Bu örnek, `issueToken` uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı de değiş tokuş eder.
+Metinden konuşmaya REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Bir erişim jetonu almak için bir değişim gereklidir. Bu örnek, bitiş noktasını kullanarak bir erişim belirteci için Konuşma hizmeti abonelik anahtarınızı `issueToken` değiştirir.
 
-Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, `fetch_token_url`değerini güncelleştirin. Tam liste için bkz. [bölgeler](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Bu örnek, Konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, `fetch_token_url`değeri güncelleştirin. Tam liste için [Bölgeler'e](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)bakın.
 
-Bu kodu `TextToSpeech` sınıfa kopyalayın:
+Bu kodu sınıfa kopyalayın: `TextToSpeech`
 
 ```python
 def get_token(self):
@@ -88,23 +88,23 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> Kimlik doğrulaması hakkında daha fazla bilgi için bkz. [bir erişim belirteciyle kimlik doğrulama](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> Kimlik doğrulama hakkında daha fazla bilgi için [erişim belirteciyle Kimlik Doğrulaması'na](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)bakın.
 
-## <a name="make-a-request-and-save-the-response"></a>Bir istekte bulunmak ve yanıt Kaydet
+## <a name="make-a-request-and-save-the-response"></a>İstekte bulunun ve yanıtı kaydedin
 
-Burada, derleme isteği ve konuşma yanıt kaydetmek için yedekleyeceksiniz. İlk olarak, `base_url` ve `path`ayarlamanız gerekir. Bu örnek, Batı ABD uç nokta kullanmakta olduğunuz varsayılır. Kaynağınız farklı bir bölgeye kayıtlıysa, `base_url`güncelleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Burada isteği oluşturup konuşma yanıtını kaydedebilirsiniz. İlk olarak, ayarlamak `base_url` gerekir `path`ve . Bu örnek, Batı ABD bitiş noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, 'yi `base_url`güncelleştirdiğinizden emin olun Daha fazla bilgi için konuşma [hizmet bölgelerine](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)bakın.
 
-Ardından, istek için gerekli üst bilgileri eklemeniz gerekir. `User-Agent` kaynak adı ile güncelleştirdiğinizden emin olun (Azure portal içinde bulunur) ve `X-Microsoft-OutputFormat` tercih ettiğiniz ses çıktısına ayarlayın. Çıkış biçimlerinin tam listesi için bkz. [Ses çıkışları](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Ardından, istek için gerekli üstbilgi eklemeniz gerekir. Kaynağınızın adıyla `User-Agent` güncelleştirip (Azure portalında bulunan) ve tercih `X-Microsoft-OutputFormat` ettiğiniz ses çıktısına ayarladığınızdan emin olun. Çıktı biçimlerinin tam listesi için [Ses çıktılarına](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)bakın.
 
-Ardından, istek gövdesi konuşma sentezi işaretleme dili (SSML'yi) kullanarak oluşturun. Bu örnek yapıyı tanımlar ve daha önce oluşturduğunuz `tts` girişi kullanır.
+Daha sonra Konuşma Sentezi Biçimlendirme Dili (SSML) kullanarak istek gövdesini oluşturun. Bu örnek yapıyı tanımlar ve `tts` daha önce oluşturduğunuz girişi kullanır.
 
 >[!NOTE]
-> Bu örnek `Guy24KRUS` ses yazı tipini kullanır. Microsoft tarafından sunulan seslerin/dillerin tüm listesi için bkz. [dil desteği](language-support.md).
-> Markanız için benzersiz ve tanınabilir bir ses oluşturmaya ilgileniyorsanız, bkz. [özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md).
+> Bu örnek `Guy24kRUS` ses yazı tipini kullanır. Microsoft tarafından sağlanan seslerin/dillerin tam listesi için [Dil desteğine](language-support.md)bakın.
+> Markanız için benzersiz, tanınabilir bir ses oluşturmak istiyorsanız, [bkz.](how-to-customize-voice-font.md)
 
-Son olarak, hizmete istek yapacaksınız. İstek başarılı olur ve 200 durum kodu döndürülmesine ise konuşma yanıt zaman damgalı bir dosyaya yazılır.
+Son olarak, servise bir istekte bulunacaksınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, konuşma yanıtı zaman damgalı bir dosyaya yazılır.
 
-Bu kodu `TextToSpeech` sınıfa kopyalayın:
+Bu kodu sınıfa kopyalayın: `TextToSpeech`
 
 ```python
 def save_audio(self):
@@ -122,7 +122,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -139,7 +139,7 @@ def save_audio(self):
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Neredeyse bitti. Son adım, sınıfının örneği ve işlevlerinizin çağrı sağlamaktır.
+Neredeyse bitti. Son adım, sınıf anlık ve işlevleri aramak tır.
 
 ```python
 if __name__ == "__main__":
@@ -151,26 +151,26 @@ if __name__ == "__main__":
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-İşte bu kadar metin okuma örnek uygulamanızı çalıştırmak hazır olursunuz. Komut satırını (veya terminal oturumu), proje dizinine gidin ve çalıştırın:
+İşte bu, metinden konuşmaya örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), proje dizininize gidin ve çalıştırın:
 
 ```console
 python tts.py
 ```
 
-İstendiğinde, ne olursa olsun metin okuma dönüştürmek istediğiniz içinde yazın. Başarılı olursa, konuşma dosyanın proje klasöründe bulunur. Yürütün, sık kullanılan media player kullanarak.
+İstendiğinde, metinden konuşmaya dönüştürmek istediğiniz her şeyi yazın. Başarılı olursa, konuşma dosyası proje klasörünüzde bulunur. En sevdiğiniz medya oynatıcıkullanarak oynayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan olan gizli bilgilerin kaldırdığınızdan emin olun.
+Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan gizli bilgileri kaldırdıklarından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub 'da Python örneklerini keşfet](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
+> [GitHub'da Python örneklerini keşfedin](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Metin Okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Metni konuşmaya dönüştürmek için Python ve konuşma SDK 'sını kullanma](quickstarts/speech-to-text-from-microphone.md)
+* [Metin okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Metinden konuşmaya dönüştürmek için Python ve Speech SDK'yı kullanma](quickstarts/speech-to-text-from-microphone.md)
 * [Özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md)
 * [Özel bir ses oluşturmak için ses örneklerini kaydetme](record-custom-voice-samples.md)

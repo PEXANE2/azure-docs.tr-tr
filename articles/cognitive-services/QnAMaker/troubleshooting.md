@@ -1,262 +1,272 @@
 ---
-title: Sorun giderme-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin listesi, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenizi sağlayacak.
+title: Sorun Giderme - QnA Maker
+description: QnA Maker hizmeti ile ilgili en sık sorulan soruların küratörlüğünü, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenize yardımcı olacaktır.
 ms.topic: troubleshooting
-ms.date: 02/21/2020
+ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296108"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284271"
 ---
-# <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
+# <a name="troubleshooting-for-qna-maker"></a>QnA Maker için sorun giderme
 
-Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin listesi, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenizi sağlayacak.
+QnA Maker hizmeti ile ilgili en sık sorulan soruların küratörlüğünü, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenize yardımcı olacaktır.
 
 <a name="how-to-get-the-qnamaker-service-hostname"></a>
 
+## <a name="manage-predictions"></a>Tahminleri yönetme
+
 <details>
-<summary><b>QnAMaker hizmet uç noktasını alma</b></summary>
+<summary><b>Sorgu tahminleri için iş geleni performansını nasıl artırabilirim?</b></summary>
 
-**Yanıt**: qnaoluşturucu hizmeti uç noktası, Qnamaker desteği veya UserVoice ile iletişim kurmak için hata ayıklama amacıyla faydalıdır. Uç nokta şu biçimdeki bir URL 'dir: https://your-resource-name.azurewebsites.net.
+**Yanıt**: İş-iş performansı sorunları, hem Uygulama hizmetiniz hem de Bilişsel Aramanız için ölçeklendirmeniz gerektiğini gösterir. Performansı artırmak için Bilişsel Aramanıza bir yineleme eklemeyi düşünün.
 
-1. [Azure Portal](https://portal.azure.com) QnAMaker hizmetinize (kaynak grubu) gidin
+[Fiyatlandırma katmanları](Concepts/azure-resources.md)hakkında daha fazla bilgi edinin.
+</details>
+
+<details>
+<summary><b>QnAMaker hizmet bitiş noktası nasıl elde e</b></summary>
+
+**Cevap**: QnAMaker hizmet bitiş noktası, QnAMaker Desteği veya UserVoice ile iletişim kurduğunuzda hata ayıklama amacıyla yararlıdır. Bitiş noktası bu biçimde bir https://your-resource-name.azurewebsites.netURL'dir: .
+
+1. [Azure portalındaki](https://portal.azure.com) QnAMaker hizmetinize (kaynak grubu) gidin
 
     ![Azure portalında QnAMaker Azure kaynak grubu](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
-1. Soru-Cevap Oluşturma kaynakla ilişkili App Service seçin. Genellikle, adlar aynıdır.
+1. QnA Maker kaynağıyla ilişkili Uygulama Hizmeti'ni seçin. Genellikle, adlar aynıdır.
 
-     ![QnAMaker uygulama hizmetini seçin](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+     ![QnAMaker Uygulama Hizmetini Seçin](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. Uç nokta URL 'SI genel bakış bölümünde kullanılabilir
+1. Bitiş noktası URL'si Genel Bakış bölümünde mevcuttur
 
     ![QnAMaker uç noktası](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
 
 </details>
 
-## <a name="manage-the-knowledge-base"></a>Bilgi Bankası'nı yönetme
+## <a name="manage-the-knowledge-base"></a>Bilgi tabanını yönetin
 
 <details>
-<summary><b>Soru-Cevap Oluşturma bir parçasını yanlışlıkla sildim, ne yapmam gerekir?</b></summary>
+<summary><b>QnA Maker'ımın bir parçasını yanlışlıkla sildim, ne yapmalıyım?</b></summary>
 
-**Cevap**: arama veya Web uygulaması gibi soru-cevap oluşturma kaynakla birlikte oluşturulan Azure hizmetlerinden hiçbirini silmeyin. Bunlar Soru-Cevap Oluşturma çalışması için gereklidir, Soru-Cevap Oluşturma doğru çalışmayı durdurur.
+**Yanıt**: Arama veya Web Uygulaması gibi QnA Maker kaynağıyla birlikte oluşturulan Azure hizmetlerinin hiçbirini silmeyin. Bunlar QnA Maker için gereklidir, eğer birini silerseniz, QnA Maker doğru çalışmayı durdurur.
 
-Kalıcı soru ve cevap çiftlerini, dosyaları, URL'ler, özel sorular ve yanıtlar, bilgi bankalarından veya Azure kaynakları dahil olmak üzere tüm siler. Bilgi Bankalarınızın herhangi bir bölümünü silmeden önce, bilgi bankaınızı **Ayarlar** sayfasından dışarı aktardığınızdan emin olun.
+Soru ve yanıt çiftleri, dosyalar, URL'ler, özel sorular ve yanıtlar, bilgi tabanları veya Azure kaynakları dahil olmak üzere tüm silmeler kalıcıdır. Bilgi tabanınızın herhangi bir bölümünü silmeden önce bilgi tabanınızı **Ayarlar** sayfasından dışa aktardığınızdan emin olun.
 
 </details>
 
 <details>
-<summary><b>URL 'lerim neden soru-cevap çiftlerini ayıklamıyor?</b></summary>
+<summary><b>Neden URL(ler)/dosya(lar) soru-cevap çiftlerini ayıklamıyor?</b></summary>
 
-**Cevap**: soru-cevap oluşturma geçerli SSS URL 'lerinden bazı soru-cevap (QNA) içeriğini otomatik olarak ayıklayamıyor olabilir. Böyle durumlarda soru-cevap içeriğini bir .txt dosyasına yapıştırma ve aracı, veri alabilen, bkz. Alternatif olarak, [soru-cevap oluşturma portalı](https://qnamaker.ai)aracılığıyla bilgi bankasında içerik ekleyebilirsiniz.
-
-</details>
-
-<details>
-<summary><b>Bilgi bankasını ne kadar büyük bir şekilde oluşturabilirim?</b></summary>
-
-**Cevap**: bilgi bankasındaki boyut, soru-cevap oluşturma hizmeti oluştururken seçtiğiniz Azure Search SKU 'suna bağlıdır. Daha ayrıntılı bilgi için [burayı](./Tutorials/choosing-capacity-qnamaker-deployment.md) okuyun.
+**Cevap**: QnA Maker'ın geçerli SSS URL'lerinden bazı soru-cevap (QnA) içeriğini otomatik olarak ayıklayamamış olması mümkündür. Bu gibi durumlarda, QnA içeriğini bir .txt dosyasına yapıştırabilir ve aracın onu yutup yutup yutamadığını görebilirsiniz. Alternatif olarak, [QnA Maker portalı](https://qnamaker.ai)aracılığıyla bilgi tabanınıza editoryal içerik ekleyebilirsiniz.
 
 </details>
 
 <details>
-<summary><b>Yeni bir Bilgi Bankası oluşturmaya çalıştığımda neden açılan kutuda hiçbir şey göremiyorum?</b></summary>
+<summary><b>Ne kadar büyük bir bilgi tabanı oluşturabilirim?</b></summary>
 
-**Cevap**: Azure 'da henüz hiç soru-cevap oluşturma hizmeti oluşturmadınız. Bunu nasıl yapacağınızı öğrenmek için [buradan](./How-To/set-up-qnamaker-service-azure.md) okuyun.
-
-</details>
-
-<details>
-<summary><b>Bilgi Bankası 'nı başkalarıyla paylaşmak Nasıl yaparım? mı?</b></summary>
-
-**Cevap**: soru-cevap oluşturma bir hizmet düzeyinde paylaşım çalışır, diğer bir deyişle, hizmette tüm bilgi tabanları paylaşılır. Bilgi Bankası 'nda nasıl [işbirliği yapılacağını okuyun](./How-To/collaborate-knowledge-base.md) .
+**Yanıt**: Bilgi tabanının boyutu, QnA Maker hizmetini oluştururken seçtiğiniz Azure aramasının SKU'suna bağlıdır. Daha fazla bilgi için [burayı](./Tutorials/choosing-capacity-qnamaker-deployment.md) okuyun.
 
 </details>
 
 <details>
-<summary><b>Bilgi Bankası 'nı değiştirmek için aynı AAD kiracısında olmayan bir katkıda bulunan bir Bilgi Bankası paylaşabilir misiniz?</b></summary>
+<summary><b>Yeni bir bilgi tabanı oluşturmaya çalıştığımda neden açılır da bir şey göremiyorum?</b></summary>
 
-**Yanıt**: paylaşım, Azure rol tabanlı erişim denetimi 'NI (RBAC) temel alır. Azure 'da _herhangi_ bir kaynağı başka bir kullanıcıyla paylaşabilmek için soru-cevap oluşturma de paylaşabilirsiniz.
-
-</details>
-
-<details>
-<summary><b>5 QnAMaker bilgi tabanı içeren bir App Service planınız varsa. Her birinin yalnızca 1 QnAMaker Bilgi Bankası 'na erişebilmeleri için 5 farklı kullanıcıya okuma/yazma hakları atayabilir misiniz?</b></summary>
-
-**Cevap**: tek bir bilgi bankasını değil, tüm QnAMaker hizmetini paylaşabilirsiniz.
+**Yanıt**: Azure'da henüz herhangi bir QnA Maker hizmeti oluşturmadın. Bunu nasıl yapacağınızı öğrenmek için [burayı](./How-To/set-up-qnamaker-service-azure.md) okuyun.
 
 </details>
 
 <details>
-<summary><b>Hiçbir iyi eşleşme bulunamadığında varsayılan iletiyi nasıl değiştirebilirim?</b></summary>
+<summary><b>Bir bilgi tabanını başkalarıyla nasıl paylaşırım?</b></summary>
 
-**Cevap**: varsayılan Ileti, App Service 'teki ayarların bir parçasıdır.
-- Azure portalında uygulama hizmeti kaynağınıza gidin
+**Cevap**: QnA Maker hizmeti düzeyinde paylaşım çalışmaları, yani hizmetteki tüm bilgi üsleri paylaşılacaktır. [Burada](./How-To/collaborate-knowledge-base.md) nasıl bir bilgi tabanında işbirliği okuyun.
+
+</details>
+
+<details>
+<summary><b>Bir bilgi tabanını değiştirmek için aynı AAD kiracı olmayan bir katılımcı ile bir bilgi tabanı paylaşabilir miyim?</b></summary>
+
+**Yanıt**: Paylaşım, Azure rol tabanlı erişim denetimine (RBAC) dayanır. Azure'daki _herhangi bir_ kaynağı başka bir kullanıcıyla paylaşabiliyorsanız, QnA Maker'ı da paylaşabilirsiniz.
+
+</details>
+
+<details>
+<summary><b>5 QnAMaker bilgi tabanına sahip bir Uygulama Hizmet Planınız varsa. Her biri sadece 1 QnAMaker bilgi tabanına erişebilsin diye 5 farklı kullanıcıya okuma/yazma hakları atayabilir misiniz?</b></summary>
+
+**Cevap**: Bireysel bilgi tabanlarını değil, tüm QnAMaker hizmetini paylaşabilirsiniz.
+
+</details>
+
+<details>
+<summary><b>İyi eşleşme bulunamadında varsayılan iletiyi nasıl değiştirebilirim?</b></summary>
+
+**Yanıt**: Varsayılan ileti, Uygulama hizmetinizdeki ayarların bir parçasıdır.
+- Azure portalındaki Uygulama hizmeti kaynağınıza gidin
 
 ![qnamaker appservice](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
 - **Ayarlar** seçeneğine tıklayın
 
-![qnamaker appservice ayarları](./media/qnamaker-faq/qnamaker-appservice-settings.png)
-- **Defaultanswer** ayarının değerini değiştirme
-- App service'ı yeniden başlatın
+![qnamaker uygulama ayarları](./media/qnamaker-faq/qnamaker-appservice-settings.png)
+- **Varsayılan Yanıt** ayarının değerini değiştirme
+- Uygulama hizmetinizi yeniden başlatın
 
-![qnamaker appservice yeniden başlatma](./media/qnamaker-faq/qnamaker-appservice-restart.png)
+![qnamaker appservice yeniden](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-
-</details>
-
-<details>
-<summary><b>Neden SharePoint bağlantım ayıklanmıyor?</b></summary>
-
-**Cevap**: daha fazla bilgi için bkz. [veri kaynağı konumları](./Concepts/knowledge-base.md#data-source-locations) .
 
 </details>
 
 <details>
-<summary><b>Bilgi tabanmda yaptığım güncelleştirmeler Yayımla ' ya yansıtılmıyor. Neden olmasın?</b></summary>
+<summary><b>SharePoint bağlantım neden çıkarılamıyor?</b></summary>
 
-**Cevap**: bir tablo güncelleştirmesinde, testte veya ayarda, yayımlanmadan önce kaydedilmesi gereken her düzenleme işlemi. Her düzenleme işleminden sonra **Kaydet ve eğitme** düğmesine tıkladığınızdan emin olun.
+**Cevap**: Daha fazla bilgi için [Veri kaynağı konumları](./Concepts/knowledge-base.md#data-source-locations) bakın.
 
 </details>
 
 <details>
-<summary><b>Bilgi Bankası zengin veri veya multimedyayı destekliyor mu?</b></summary>
+<summary><b>Bilgi tabanıma yaptığım güncelleştirmeler yayımlamaya yansıtılmıyor. Neden olmasın?</b></summary>
+
+**Cevap**: Tablo güncelleştirmesinde, test edilsin veya ayaryapken her bir edit işleminin yayımlanabilmesi için kaydedilmesi gerekir. Her bir düzenlenen işlemden sonra **Kaydet ve train** düğmesini tıklattığınızdan emin olun.
+
+</details>
+
+<details>
+<summary><b>Bilgi bankası zengin verileri veya multimedyayı destekliyor mu?</b></summary>
 
 **Cevap**:
 
-#### <a name="multimedia-auto-extraction-for-files-and-urls"></a>Dosyalar ve URL 'Ler için çoklu ortam otomatik ayıklama
+#### <a name="multimedia-auto-extraction-for-files-and-urls"></a>Dosyalar ve URL'ler için multimedya otomatik çıkarma
 
-* URL 'ler-HTML-Markaşağı dönüştürme özelliği sınırlıdır.
-* Dosyalar-desteklenmiyor
+* URL'ler - sınırlı HTML'den Markdown'a dönüştürme özelliği.
+* Dosyalar - desteklenmiyor
 
-#### <a name="answer-text-in-markdown"></a>Markaşağı 'da yanıt metni
-Soru-cevap kümesi Bilgi Bankası 'nda olduğunda, bir yanıtın markaşağı metnini düzenleyerek genel URL 'lerden kullanılabilen medyaya bağlantılar ekleyebilirsiniz.
+#### <a name="answer-text-in-markdown"></a>İşaretlemetin yanıtla
+QnA kümeleri bilgi tabanında olduğunda, genel URL'lerden kullanılabilen ortambağlantıları içerecek şekilde bir yanıtın işaretleme metnini edinebilirsiniz.
 
 
 </details>
 
 <details>
-<summary><b>Soru-Cevap Oluşturma Ingilizce olmayan dilleri destekliyor mu?</b></summary>
+<summary><b>QnA Maker İngilizce olmayan dilleri destekliyor mu?</b></summary>
 
-**Cevap**: [desteklenen diller](./Overview/languages-supported.md)hakkında daha fazla ayrıntı görüntüleyin.
+**Cevap**: Desteklenen [diller](./Overview/languages-supported.md)hakkında daha fazla bilgi için bkz.
 
-Birden çok dil içerik varsa, her dil için ayrı bir hizmet oluşturmak emin olun.
+Birden çok dilden içeriğiniz varsa, her dil için ayrı bir hizmet oluşturduğunuzdan emin olun.
 
 </details>
 
 ## <a name="manage-service"></a>Hizmeti yönetme
 
 <details>
-<summary><b>App Service 'i ne zaman yeniden başlatmalıyım?</b></summary>
+<summary><b>Uygulama hizmetimi ne zaman yeniden başlatmalıyım?</b></summary>
 
-**Cevap**: **Kullanıcı ayarları** [sayfasındaki](https://www.qnamaker.ai/UserSettings) **Endpoint Keys** tablosunda Bilgi Bankası 'nın sürüm değerinin yanında uyarı simgesi olduğunda App Service 'i yenileyin.
-
-</details>
-
-<details>
-<summary><b>Var olan arama hizmetimi sildim. Bunu nasıl giderebilirim?</b></summary>
-
-**Cevap**: bir Azure bilişsel arama dizinini silerseniz, işlem nihai ve Dizin kurtarılamıyor.
+**Cevap**: **Kullanıcı Ayarları** [sayfasındaki](https://www.qnamaker.ai/UserSettings) **Bitiş Noktası tuşları** tablosundaki bilgi tabanının sürüm değerinin yanında dikkat simgesi olduğunda uygulama hizmetinizi yenileyin.
 
 </details>
 
 <details>
-<summary><b>Arama hizmetimde `testkb` dizinimi sildim. Bunu nasıl giderebilirim?</b></summary>
+<summary><b>Varolan Arama hizmetimi sildim. Bunu nasıl düzeltebilirim?</b></summary>
 
-**Cevap**: eski verileriniz kurtarılamıyor. Yeni bir Soru-Cevap Oluşturma kaynağı oluşturun ve bilgi bankanızı tekrar oluşturun.
-
-</details>
-
-<details>
-<summary><b>Uç nokta anahtarlarımı ne zaman yenilemem gerekir?</b></summary>
-
-**Cevap**: Bu anahtarların tehlikede olduğunu düşünüyorsanız, uç nokta anahtarlarınızı yenileyin.
+**Yanıt**: Bir Azure Bilişsel Arama dizinini silerseniz, işlem son işlemdir ve dizin kurtarılamaz.
 
 </details>
 
 <details>
-<summary><b>Birden çok dil kullanarak Bilgi Bankası için aynı Azure Bilişsel Arama kaynağını kullanabilir miyim?</b></summary>
+<summary><b>Arama hizmetimde dizinimi `testkb` sildim. Bunu nasıl düzeltebilirim?</b></summary>
 
-**Cevap**: birden çok dil ve birden çok bilgi tabanı kullanmak için, kullanıcının her dil için bir soru-cevap oluşturma kaynağı oluşturması gerekir. Bu, dil başına ayrı bir Azure Arama hizmeti oluşturur. Tek bir Azure arama hizmetinde farklı dil bilgi bankalarından karıştırma sonuçları düşürülmüş ilgi düzeyi neden olur.
-
-</details>
-
-<details>
-<summary><b>Soru-Cevap Oluşturma tarafından kullanılan Azure Bilişsel Arama kaynağının adını nasıl değiştirebilirim?</b></summary>
-
-**Cevap**: Azure bilişsel arama kaynağının adı, sonunda bazı rastgele harfler eklenmiş soru-cevap oluşturma kaynak adıdır. Bu soru-cevap Oluşturucu için birden çok arama kaynakları ayırt zorlaştırır. Ayrı bir arama hizmeti oluşturun (istediğiniz şekilde adlandırın) ve QnA hizmetinize bağlayın. Adımlar, [bir Azure aramasını yükseltmek](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)için yapmanız gereken adımlara benzerdir.
+**Cevap**: Eski verileriniz kurtarılamaz. Yeni bir QnA Maker kaynağı oluşturun ve bilgi tabanınızı yeniden oluşturun.
 
 </details>
 
 <details>
-<summary><b>Soru-Cevap Oluşturma `Runtime core is not initialized,` döndürüldüğünde bunu nasıl giderebilirim?</b></summary>
+<summary><b>Son nokta anahtarlarımı ne zaman yenilemem gerekiyor?</b></summary>
 
-**Cevap**: App Service için disk alanı dolu olabilir. Disk alanınızı çözme adımları:
+**Cevap**: Son nokta anahtarlarınızı, açığa alındıklarına şüpheleniyorsanız yenileyin.
 
-1. [Azure Portal](https://portal.azure.com), soru-cevap oluşturma App Service ' i seçin ve ardından hizmeti durdurun.
-1. Uygulama hizmetinde hala **geliştirme araçları**' nı ve **Gelişmiş Araçlar**' ı seçin, sonra da **Git**' i seçin. Bu, yeni bir tarayıcı penceresi açar.
-1. Komut satırı aracını açmak için **hata ayıklama konsolu**' nu ve ardından **cmd** ' yi seçin.
-1. _Site/Wwwroot/veri/QnAMaker/_ dizine gidin.
-1. Adı `rd`başlayan tüm klasörleri kaldırın.
+</details>
 
-    Aşağıdakileri **silmeyin** :
+<details>
+<summary><b>Birden çok dil kullanarak bilgi tabanları için aynı Azure Bilişsel Arama kaynağını kullanabilir miyim?</b></summary>
 
-    * KbIdToRankerMappings. txt dosyası
-    * EndpointSettings. JSON dosyası
+**Cevap**: Birden çok dil ve birden çok bilgi tabanı nı kullanmak için, kullanıcının her dil için bir QnA Maker kaynağı oluşturması zorundadır. Bu, dil başına ayrı bir Azure arama hizmeti oluşturur. Tek bir Azure arama hizmetinde farklı dil bilgisi tabanlarının karıştırılması, sonuçların alaka düzeyinin düşmesine neden olur.
+
+</details>
+
+<details>
+<summary><b>QnA Maker tarafından kullanılan Azure Bilişsel Arama kaynağının adını nasıl değiştirebilirim?</b></summary>
+
+**Cevap**: Azure Bilişsel Arama kaynağının adı, sonunda bazı rasgele harflerekilen QnA Maker kaynak adıdır. Bu, QnA Maker için birden çok Arama kaynağı ayırt etmeyi zorlaştırır. Ayrı bir arama hizmeti oluşturun (istediğiniz şekilde adlandırın) ve QnA Hizmetinize bağlayın. Adımlar, [Azure aramasını yükseltmek](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)için yapmanız gereken adımlara benzer.
+
+</details>
+
+<details>
+<summary><b>QnA Maker `Runtime core is not initialized,` döndüğünde nasıl düzeltebilirim?</b></summary>
+
+**Cevap**: Uygulama hizmetinizin disk alanı dolu olabilir. Disk alanınızı düzeltme adımları:
+
+1. Azure [portalında](https://portal.azure.com)QnA Maker'ın Uygulama hizmetini seçin ve ardından hizmeti durdurun.
+1. Uygulama hizmeti nde yken, **Geliştirme Araçları'nı**seçin, sonra **Gelişmiş Araçlar,** sonra **Git**. Bu yeni bir tarayıcı penceresi açar.
+1. Komut satırı aracını açmak için **Hata Ayıklama konsolunu,** ardından **CMD'yi** seçin.
+1. _Siteye/wwwroot/Data/QnAMaker/_ dizinine gidin.
+1. Adı `rd`ile başlayan tüm klasörleri kaldırın
+
+    Aşağıdakileri **silmeyin:**
+
+    * KbIdToRankerMappings.txt dosyası
+    * EndpointSettings.json dosyası
     * EndpointKeys klasörü
 
-1. App Service 'i başlatın.
-1. Şimdi çalıştığını doğrulamak için bilgi bankaıza erişin.
+1. Uygulama hizmetini başlatın.
+1. Şimdi çalıştığını doğrulamak için bilgi tabanınıza erişin.
 
 </details>
 
-## <a name="integrate-with-other-services-including-bots"></a>Botlar gibi diğer hizmetlerle tümleştirme
+## <a name="integrate-with-other-services-including-bots"></a>Botlar da dahil olmak üzere diğer hizmetlerle tümleştirme
 
 <details>
-<summary><b>Soru-Cevap Oluşturma kullanmak için bot Framework 'Ü kullanmam gerekir mi?</b></summary>
+<summary><b>QnA Maker'ı kullanmak için Bot Framework'u kullanmam gerekiyor mu?</b></summary>
 
-**Cevap**: hayır, soru-cevap oluşturma Ile [bot çerçevesini](https://github.com/Microsoft/botbuilder-dotnet) kullanmanıza gerek yoktur. Ancak, Soru-Cevap Oluşturma [Azure bot hizmetinde](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)birkaç şablondan biri olarak sunulur. Bot hizmeti, Microsoft robot altyapısı aracılığıyla, hızla akıllı robot geliştirme sağlar ve bir sunucusuz ortamda çalışır.
-
-</details>
-
-<details>
-<summary><b>Soru-Cevap Oluşturma yeni bir bot nasıl oluşturabilirim?</b></summary>
-
-**Cevap**: Azure bot hizmeti ile bot 'nizi oluşturmak için [Bu](./Quickstarts/create-publish-knowledge-base.md) belgelerde verilen yönergeleri izleyin.
+**Cevap**: Hayır, QnA Maker ile [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) kullanmanız gerekmez. Ancak, QnA Maker [Azure Bot Hizmeti'ndeki](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)birkaç şablondan biri olarak sunulur. Bot Hizmeti, Microsoft Bot Framework aracılığıyla hızlı akıllı bot geliştirme sağlar ve sunucusuz bir ortamda çalışır.
 
 </details>
 
 <details>
-<summary><b>Nasıl yaparım? mevcut bir Azure bot hizmeti ile farklı bir Bilgi Bankası mı kullanıyorsunuz?</b></summary>
+<summary><b>QnA Maker ile nasıl yeni bir bot oluşturabilirim?</b></summary>
 
-**Cevap**: bilgi tabanınız hakkında aşağıdaki bilgilere sahip olmanız gerekir:
-
-* Bilgi Bankası KIMLIĞI.
-* Bilgi Bankası 'nın yayımlanan bitiş noktası özel alt etki alanı adı, `host`olarak bilinen, yayımlama sonrasında **Ayarlar** sayfasında bulunur.
-* Bilgi Bankası 'nın yayımlanmış uç nokta anahtarı-yayımladıktan sonra **Ayarlar** sayfasında bulunur.
-
-Bu bilgilerle, Azure portal bot 'ın App Service 'e gidin. **Ayarlar-> yapılandırma-> uygulama ayarları**altında bu değerleri değiştirin.
-
-Bilgi Bankası 'nın uç nokta anahtarı, ABS hizmetindeki `QnAAuthkey` etiketlidir.
+**Cevap**: Azure Bot Hizmeti ile Botunuzu oluşturmak için [bu](./Quickstarts/create-publish-knowledge-base.md) belgelerdeki yönergeleri izleyin.
 
 </details>
 
 <details>
-<summary><b>İki veya daha fazla istemci uygulaması Bilgi Bankası 'nı paylaşabilir mi?</b></summary>
+<summary><b>Varolan bir Azure bot hizmetiyle farklı bir bilgi tabanını nasıl kullanırım?</b></summary>
 
-**Cevap**: Evet, Bilgi Bankası herhangi bir sayıda istemciden sorgulanabilir. Bilgi bankasından gelen yanıt yavaş veya zaman aşımına uğrar görünüyorsa, Bilgi Bankası ile ilişkili App Service 'in hizmet katmanını yükseltmeyi göz önünde bulundurun.
+**Cevap**: Bilgi tabanınız hakkında aşağıdaki bilgilere sahip olmanız gerekir:
+
+* Bilgi bankası kimliği.
+* Bilgi bankasının yayımlandıktan sonra **Ayarlar** sayfasında `host`bulunan , " olarak bilinen endpoint özel alt etki alanı adı.
+* Bilgi tabanının yayınlanan uç nokta anahtarı - yayımladıktan sonra **Ayarlar** sayfasında bulunur.
+
+Bu bilgilerle, Azure portalındaki botunuzun uygulama hizmetine gidin. **Ayarlar -> Yapılandırma -> Uygulama ayarları**altında, bu değerleri değiştirin.
+
+Bilgi tabanının uç nokta anahtarı `QnAAuthkey` ABS hizmetinde etiketlenir.
 
 </details>
 
 <details>
-<summary><b>Soru-Cevap Oluşturma Hizmeti web siteme Nasıl yaparım? eklemek mi istiyorsunuz?</b></summary>
+<summary><b>İki veya daha fazla istemci uygulaması bir bilgi tabanını paylaşabilir mi?</b></summary>
 
-**Cevap**: soru-cevap oluşturma hizmetini Web sitenize web sohbeti denetimi olarak eklemek için aşağıdaki adımları izleyin:
+**Cevap**: Evet, bilgi bankası herhangi bir sayıda istemciden sorgulanabilir. Bilgi tabanından gelen yanıt yavaş veya zaman dışında görünüyorsa, bilgi tabanıyla ilişkili uygulama hizmeti için hizmet katmanını yükseltmeyi düşünün.
 
-1. [Buradaki](./Quickstarts/create-publish-knowledge-base.md)YÖNERGELERI izleyerek SSS bot uygulamanızı oluşturun.
-2. [Buradaki](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) adımları izleyerek Web sohbetini etkinleştirin
+</details>
+
+<details>
+<summary><b>QnA Maker hizmetini web siteme nasıl yerleştirebilirim?</b></summary>
+
+**Cevap**: QnA Maker hizmetini web sitenize web sohbet kontrolü olarak yerleştirmek için aşağıdaki adımları izleyin:
+
+1. [Burada](./Quickstarts/create-publish-knowledge-base.md)yönergeleri izleyerek SSS bot oluşturun.
+2. [Buradaki](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) adımları izleyerek web sohbetini etkinleştirin
 
 </details>
 
@@ -267,6 +277,6 @@ Bilgi Bankası 'nın uç nokta anahtarı, ABS hizmetindeki `QnAAuthkey` etiketli
 
 **Cevap**:
 
-Soru-cevap Oluşturucu hizmetinizi oluşturduğunuzda, bir Azure bölgesi seçildi. Bilgi bankaları ve günlük dosyaları, bu bölgede depolanır.
+QnA Maker hizmetinizi oluştururken, bir Azure bölgesi seçtiniz. Bilgi üsleriniz ve günlük dosyalarınız bu bölgede depolanır.
 
 </details>

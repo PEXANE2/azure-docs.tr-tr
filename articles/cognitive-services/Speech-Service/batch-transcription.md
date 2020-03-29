@@ -1,65 +1,74 @@
 ---
-title: Toplu iş dökümü kullanma-konuşma hizmeti
+title: Toplu transkripsiyon nedir - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Batch transkripsiyonu, depolama, Azure BLOB'ları gibi ses büyük bir miktarını konuşmaların istiyorsanız idealdir. Adanmış REST API'sini kullanarak bir paylaşılan erişim imzası (SAS) URI ses dosyalarının üzerine gelin ve döküm zaman uyumsuz olarak alır.
+description: Azure Blobs gibi büyük miktarda sesin depoda transkripsiyonu yapmak istiyorsanız toplu transkripsiyon idealdir. Özel REST API'sini kullanarak, paylaşılan erişim imzası (SAS) URI ile ses dosyalarını işaret edebilir ve eşitsiz bir şekilde transkripsiyonları alabilirsiniz.
 services: cognitive-services
-author: PanosPeriorellis
+author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: panosper
-ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.date: 03/18/2020
+ms.author: wolfma
+ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500007"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131595"
 ---
-# <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
+# <a name="what-is-batch-transcription"></a>Toplu transkripsiyon nedir?
 
-Toplu iş dökümü, depolamada büyük miktarda ses dökümünü yapmak için idealdir. Adanmış REST API kullanarak, paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarını alabilirsiniz.
+Toplu transkripsiyon, depolama alanında büyük miktarda ses transkripsiyonu yapmanızı sağlayan bir dizi REST API işlemidir. Paylaşılan erişim imzası (SAS) URI ile ses dosyalarını işaret edebilir ve eşitsiz bir şekilde transkripsiyon sonuçlarını alabilirsiniz.
 
-API, zaman uyumsuz konuşmayı metne dönüştürme ve diğer özellikleri sunar. Yöntemleri şunları yapmak için REST API kullanabilirsiniz:
+Asynchronous konuşma-metin transkripsiyon özelliklerinden sadece biridir. Aşağıdaki yöntemleri aramak için toplu transkripsiyon REST API'lerini kullanabilirsiniz:
 
-- Toplu işleme istekleri oluşturma
-- Durumu Sorgula
-- Döküm sonuçlarını indir
-- Hizmetten döküm bilgilerini sil
 
-Ayrıntılı API, `Custom Speech transcriptions`başlığı altında [Swagger belgesi](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)olarak kullanılabilir.
 
-Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır. Şu anda bir işin çalışma durumuna ne zaman değişene ilişkin bir tahmin yoktur. Normal sistem yükü altında, dakikalar içinde gerçekleşmelidir. Çalışma durumunda, gerçek döküm gerçek zamanlı olarak daha hızlı işlenir.
+|    Toplu Transkripsiyon Operasyonu                                             |    Yöntem    |    REST API Çağrı                                   |
+|------------------------------------------------------------------------------|--------------|----------------------------------------------------|
+|    Yeni bir transkripsiyon oluşturur.                                              |    POST      |    api/speechtotext/v2.0/transkripsiyonları            |
+|    Kimlik doğrulaması yapılan abonelik için transkripsiyonların listesini alır.    |    GET       |    api/speechtotext/v2.0/transkripsiyonları            |
+|    Çevrimdışı transkripsiyonlar için desteklenen yerel leştirilmiş yerel lerin listesini alır.              |    GET       |    api/speechtotext/v2.0/transkripsiyonlar/yerel    |
+|    Kimliğiyle tanımlanan transkripsiyonun mutable ayrıntılarını güncelleştirir.    |    Yama     |    api/speechtotext/v2.0/transkripsiyonlar/{id}       |
+|    Belirtilen transkripsiyon görevini siler.                                 |    DELETE    |    api/speechtotext/v2.0/transkripsiyonlar/{id}       |
+|    Verilen kimlikle tanımlanan transkripsiyonu alır.                        |    GET       |    api/speechtotext/v2.0/transkripsiyonlar/{id}       |
 
-Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez ve gözlemlemeye yönelik eşzamanlılık gereksinimleriniz yoktur.
 
-## <a name="prerequisites"></a>Önkoşullar
 
-### <a name="subscription-key"></a>Abonelik anahtarı
 
-Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
+[Swagger belgesi](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)olarak kullanılabilen ayrıntılı API'yi gözden `Custom Speech transcriptions`geçirip test edebilirsiniz.
+
+Toplu transkripsiyon işleri en iyi çaba temelinde zamanlanır. Şu anda bir işin çalışan duruma ne zaman değdiyi ne zaman değiştiş tir diye bir tahmin bulunmamaktadır. Normal sistem yükü altında, birkaç dakika içinde gerçekleşmesi gerekir. Bir kez çalışan durumda, gerçek transkripsiyon ses gerçek zamanlı daha hızlı işlenir.
+
+Kullanımı kolay API'nin yanında, özel uç noktaları dağıtmanız gerekmez ve gözlemlemek için eşzamanlılık gereksinimleriniz yoktur.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+### <a name="subscription-key"></a>Abonelik Anahtarı
+
+Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [Başlat kılavuzumuzu](get-started.md)takip ederek [Azure portalından](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
 >[!NOTE]
-> Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz Abonelik anahtarları (F0) işe yaramaz. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Toplu transkripsiyon kullanmak için Konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmıyor. Daha fazla bilgi için [fiyatlandırma ve limitler](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)e bakın.
 
 ### <a name="custom-models"></a>Özel modeller
 
-Akustik veya dil modellerini özelleştirmeyi planlıyorsanız, [akustik modelleri özelleştirme](how-to-customize-acoustic-models.md) ve [Özelleştirme dili modellerini tasarlama](how-to-customize-language-model.md)' daki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model kimliklerine ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model KIMLIĞINI alabilirsiniz. Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta gerekli değildir.
+Akustik veya dil modellerini özelleştirmeyi planlıyorsanız, [akustik modelleri özelleştir](how-to-customize-acoustic-models.md) ve [özelleştirme dil modellerini](how-to-customize-language-model.md)tasarla'daki adımları izleyin. Oluşturulan modelleri toplu transkripsiyonda kullanmak için, onların model kimliklerini kullanmanız gerekir. Modelin ayrıntılarını incelerken model kimliğini alabilirsiniz. Toplu transkripsiyon hizmeti için dağıtılan özel bir bitiş noktası gerekmez.
 
-## <a name="the-batch-transcription-api"></a>Batch tanıma API'si
+## <a name="the-batch-transcription-api"></a>Toplu Transkripsiyon API
 
 ### <a name="supported-formats"></a>Desteklenen biçimler
 
-Batch tanıma API'si, aşağıdaki biçimlerde destekler:
+Toplu Transkripsiyon API aşağıdaki biçimleri destekler:
 
-| Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16-bit | 8 kHz veya 16 kHz, mono veya stereo |
-| MP3 | PCM | 16-bit | 8 kHz veya 16 kHz, mono veya stereo |
-| OGG | GEÇERLİ | 16-bit | 8 kHz veya 16 kHz, mono veya stereo |
+| Biçimlendir | Codec | Bitrate | Örnek Oranı                     |
+|--------|-------|---------|---------------------------------|
+| WAV    | PCM   | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
+| Mp3    | PCM   | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
+| Ogg    | Opus  | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
 
-Stereo ses akışları için, sol ve sağ kanallar, döküm sırasında bölünür. Her kanal için bir JSON sonuç dosyası oluşturuluyor. Söylenişi başına oluşturulan zaman damgaları, geliştiricinin sıralı bir son döküm oluşturmasını sağlar.
+Stereo ses akışları için, transkripsiyon sırasında sol ve sağ kanallar ayrılır. Her kanal için bir JSON sonuç dosyası oluşturuluyor. Söyleyiş başına oluşturulan zaman damgaları, geliştiricinin sıralı bir son transkript oluşturmasına olanak tanır.
 
 ### <a name="configuration"></a>Yapılandırma
 
@@ -85,11 +94,11 @@ Yapılandırma parametreleri JSON olarak sağlanır:
 
 ### <a name="configuration-properties"></a>Yapılandırma özellikleri
 
-Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
+Transkripsiyon yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 :::row:::
    :::column span="1":::
-      **Parametresinin**
+      **Parametre**
    :::column-end:::
    :::column span="2":::
       **Açıklama**
@@ -99,55 +108,55 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `ProfanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler, küfür filtrelemesini devre dışı bırakmak için `None`, küfür ile `Masked`, sonuçtan tüm küfür kaldırmak için `Removed` veya "küfür" etiketleri eklemek için `Tags`. Varsayılan ayar `Masked`.
+      Tanıma sonuçlarında küfürle nasıl başa çıkılacağını belirtir. Kabul edilen `None` değerler küfür filtrelemi `Masked` devre dışı, küfür leri yıldız yıldızlarıyla değiştirmek, `Removed` sonuçtan tüm küfürleri kaldırmak veya `Tags` "küfür" etiketleri eklemektir. Varsayılan ayar `Masked` değeridir.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `PunctuationMode`
    :::column-end:::
    :::column span="2":::
-      Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Kabul edilen değerler, noktalama işaretlerini devre dışı bırakmak için `None`, Açık (konuşulan) noktalama işareti `Dictated`, kod çözücüsünün noktalama ile başa çıkmasına izin vermek için `Automatic` veya dikte ve otomatik noktalama kullanımı `DictatedAndAutomatic`. Varsayılan ayar `DictatedAndAutomatic`.
+      Tanıma sonuçlarında noktalama işaretlerinin nasıl işleyeceğini belirtir. Kabul edilen `None` değerler noktalama işaretlerini devre `Dictated` dışı bırakmak, açık (konuşulan) `Automatic` noktalama işaretini ima etmek, kod `DictatedAndAutomatic` çözücünün noktalama işaretleriyle başa çıkmasına izin vermek veya dikte edilmiş ve otomatik noktalama işaretini kullanmaktır. Varsayılan ayar `DictatedAndAutomatic` değeridir.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddWordLevelTimestamps`
    :::column-end:::
    :::column span="2":::
-      Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını etkinleştirmek için `true` ve devre dışı bırakmak için `false` (varsayılan değer).
+      Çıktıya sözcük düzeyi zaman damgalarının eklenmesi gerekip gerekeceğini belirtir. Kabul edilen `true` değerler, sözcük düzeyi `false` zaman damgalarını ve (varsayılan değer) devre dışı düşürecek şekilde etkinleştirilir.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) `true` devre dışı bırakmak için kullanılır.
+      Duygu analizinin söyleyeme uygulanıp uygulanamaması gerektiğini belirtir. Kabul edilen `true` değerler etkinleştirmek ve `false` (varsayılan değer) devre dışı bırakılır.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) etkinleştirir. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.
+      İki ses içeren mono kanal olması beklenen girişte ishal analizi yapılması gerektiğini belirtir. Kabul edilen `true` değerler, isisization `false` ve (varsayılan değer) devre dışı bırakılır. Aynı zamanda `AddWordLevelTimestamps` doğru ayarlanmalıdır.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `TranscriptionResultsContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 'da yazılabilir bir kapsayıcıya [HIZMET SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda depolanacak.
+      Azure'da yazılabilir bir kapsayıcıya [hizmet SAS](../../storage/common/storage-sas-overview.md) ile isteğe bağlı URL. Sonuç bu kapsayıcıda saklanır.
 :::row-end:::
 
 ### <a name="storage"></a>Depolama
 
-Toplu iş dökümü, ses okumak ve depoya yazmak için [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) destekler.
+Toplu transkripsiyon, ses okuma ve depolamaya transkripsiyon yazma için [Azure Blob depolamasını](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) destekler.
 
-## <a name="the-batch-transcription-result"></a>Toplu iş dökümü sonucu
+## <a name="the-batch-transcription-result"></a>Toplu transkripsiyon sonucu
 
-Mono giriş sesi için bir döküm sonuç dosyası oluşturuluyor. Stereo giriş sesi için iki döküm sonuç dosyası oluşturuluyor. Her birinin bu yapıya sahiptir:
+Mono giriş ses için bir transkripsiyon sonuç dosyası oluşturuluyor. Stereo giriş ses için iki transkripsiyon sonuç dosyası oluşturulmaktadır. Her biri bu yapıya sahiptir:
 
 ```json
 {
-  "AudioFileResults":[ 
+  "AudioFileResults":[
     {
       "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
       "AudioFileUrl": null                                  'always null'
@@ -209,20 +218,20 @@ Mono giriş sesi için bir döküm sonuç dosyası oluşturuluyor. Stereo giriş
 
 Sonuç şu formları içerir:
 
-|Biçim|İçerik|
-|-|-|
-|`Lexical`|Tanınan gerçek sözcükler.
-|`ITN`|Tanınan metnin ters metin normalleştirilmiş biçimi. Kısaltmalar ("Doctor Smith"-"Dr Smith"), telefon numaraları ve diğer dönüşümler uygulanır.
-|`MaskedITN`|Küfür maskeleme uygulanmış ıTYPEFORM.
-|`Display`|Tanınan metnin görüntüleme formu. Buna eklenen noktalama işaretleri ve büyük harfleri dahildir.
+| Form        | İçerik                                                                                                                                                  |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Lexical`   | Gerçek kelimeler tanındı.                                                                                                                             |
+| `ITN`       | Tanınan metnin ters metin normalleştirilmiş biçimi. Kısaltmalar ("doctor smith" to "dr smith"), telefon numaraları ve diğer dönüşümler uygulanır. |
+| `MaskedITN` | Küfür maskeleme ile ITN formu uygulanır.                                                                                                             |
+| `Display`   | Tanınan metnin görüntü formu. Eklenen noktalama işaretleri ve büyük harf dahildir.                                                             |
 
-## <a name="speaker-separation-diarization"></a>Konuşmacı ayrımı (Diarleştirme)
+## <a name="speaker-separation-diarization"></a>Hoparlör ayrımı (Isarizasyon)
 
-Kararlama, hoparlörleri ses parçasıyla ayırma işlemidir. Batch Işlem hatmız, daha fazla seçim destekleiyor ve mono kanal kayıtlarında iki hoparlörleri tanıyor. Özellik, stereo kayıtlarında kullanılamaz.
+Ishal, hoparlörleri bir ses parçasında ayırma işlemidir. Toplu işlem hattımız isisizasyonu destekler ve mono kanal kayıtlarında iki hoparlörü tanıyabilir. Özellik stereo kayıtlarında kullanılamaz.
 
-Tüm döküm çıktısı bir `SpeakerId`içerir. Eğer kullanım kullanılmıyorsa, JSON çıktısında `"SpeakerId": null` gösterir. Bu iki sesi destekliyoruz, böylece hoparlörler `"1"` veya `"2"`olarak tanımlanır.
+Tüm transkripsiyon `SpeakerId`çıktısı bir . İshal kullanılmazsa, JSON çıkışında gösterir. `"SpeakerId": null` Ishal için iki sesi destekliyoruz, bu `"1"` nedenle `"2"`hoparlörler veya .
 
-Daha fazla bilgi almak için, aşağıda gösterildiği gibi, HTTP isteğine ilgili parametresini eklemeniz yeterlidir.
+Ishal talebinde bulunmak için, http isteğinde aşağıda gösterildiği gibi ilgili parametreyi eklemeniz yeterlidir.
 
  ```json
 {
@@ -238,21 +247,21 @@ Daha fazla bilgi almak için, aşağıda gösterildiği gibi, HTTP isteğine ilg
 }
 ```
 
-Yukarıdaki istekteki parametreler gösterildiği gibi, sözcük düzeyi zaman damgalarının de ' açık ' olması gerekir.
+Yukarıdaki istekteki parametrelerin gösterdiği gibi sözcük düzeyinde ki zaman damgalarının da 'açık' olması gerekir.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Yaklaşım özelliği, ses içinde ifade edilen yaklaşımı tahmin eder. Yaklaşım, `Negative`, `Neutral`ve `Positive` yaklaşımı için 0 ile 1 arasında bir değere göre ifade edilir. Örneğin, yaklaşım Analizi çağrı merkezi senaryolarında kullanılabilir:
+Duygu özelliği ses ifade duyguları tahmin ediyor. Duygu için `Negative`0 ve 1 arasında bir `Neutral`değer `Positive` ile ifade edilir , ve duygu. Örneğin, duygu analizi çağrı merkezi senaryolarında kullanılabilir:
 
-- Müşteri memnuniyeti hakkında Öngörüler alın
-- Aracıların performansı hakkında öngörüler elde edin (çağrıları alan takım)
-- Bir çağrının negatif yönde bir değer aldığı zaman içindeki kesin noktayı bulma
-- Negatif bir çağrıyı pozitif bir yöne çevirip iyi ne oldu?
-- Beğendikleri müşterileri ve bir ürün veya hizmet hakkında neleri beğendiklerinizi tanımlayın
+- Müşteri memnuniyeti hakkında bilgi edinin
+- Acentelerin performansı hakkında bilgi edinin (çağrıları alan ekip)
+- Bir aramanın negatif yönde dönüş yaptığında tam zamanı bulma
+- Negatif bir çağrıyı olumlu bir yöne dönüştürürken ne iyi gitti?
+- Müşterilerin bir ürün veya hizmet hakkında nelerden hoşlanıp hoşlanmadıklarını belirleme
 
-Yaklaşım, sözcük temelli biçime göre ses kesimine göre puanlanır. Bu ses segmentinin içindeki metnin tamamı, yaklaşımı hesaplamak için kullanılır. Tüm döküm için bir toplama yaklaşımı hesaplanmıyor.
+Duygusallık sözlü formuna göre ses segmenti başına puanlanır. Bu ses segmentindeki tüm metin duyarlılığı hesaplamak için kullanılır. Transkripsiyon un tamamı için hiçbir toplu duyarlılık hesaplanmıyor. Şu anda duygu analizi sadece İngilizce dil için kullanılabilir.
 
-Bir JSON çıkış örneği aşağıdaki gibi görünür:
+Bir JSON çıktı örneği aşağıdaki gibi görünür:
 
 ```json
 {
@@ -290,33 +299,36 @@ Bir JSON çıkış örneği aşağıdaki gibi görünür:
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Döküm hizmeti, çok sayıda gönderilen dökümü işleyebilir. Döküm [yöntemindeki](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)bir `GET` ile döküm durumunu sorgulayabilirsiniz. `take` parametresini (birkaç yüz) belirterek, döndürülen bilgileri makul bir boyuta tutun. Sonuçları aldıktan sonra hizmetten düzenli olarak döküm [silme](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) . Bu, döküm yönetimi çağrılarındaki Hızlı yanıtları garanti eder.
+Transkripsiyon hizmeti gönderilen transkripsiyonların çok sayıda işleyebilir. Transkripsiyonlarınızın `GET` durumunu [transkripsiyon yöntemi](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)ile sorgulayabilirsiniz. `take` Parametreyi (birkaç yüz) belirterek bilgileri makul bir boyuta döndürür. Sonuçları aldıktan sonra [transkripsiyonları](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) hizmetten düzenli olarak silin. Bu, transkripsiyon yönetimi aramalarından gelen hızlı yanıtları garanti eder.
 
 ## <a name="sample-code"></a>Örnek kod
 
-Tüm örnekler, `samples/batch` alt dizininin içindeki [GitHub örnek deposunda](https://aka.ms/csspeech/samples) bulunur.
+Tam örnekler alt dizinin içindeki [GitHub örnek deposunda](https://aka.ms/csspeech/samples) `samples/batch` mevcuttur.
 
-Örnek kodu Abonelik bilgileriniz, hizmet bölgesi, ses dosyasına işaret edilecek SAS URI 'SI ve özel bir akustik veya dil modeli kullanmak istiyorsanız model kimlikleri ile özelleştirmeniz gerekir.
+> [!NOTE]
+> Toplu transkripsiyon işlevi yukarıda açıklanan REST API ile ortaya çıkmıştır. Böylece Toplu transkripsiyon REST destekleyen hemen hemen her programlama dili veya ortamından kullanılabilir. Aşağıdaki örnekler ve GitHub'daki örnekler yalnızca temsilidir ve API'nin nerede kullanılabileceğini ifade **etmez.**
+
+Örnek kodu abonelik bilgileriniz, hizmet bölgeniz, yazıya uygun ses dosyasını işaret eden SAS URI ve özel bir akustik veya dil modeli kullanmak istediğinizde model iyelikleri ile özelleştirmeniz gerekir.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-Örnek kod, istemciyi ayarlar ve döküm isteğini gönderir. Daha sonra durum bilgilerini yoklayacak ve döküm ilerlemesiyle ilgili ayrıntıları yazdıracaktır.
+Örnek kod istemciyi ayarlar ve transkripsiyon isteğini gönderir. Daha sonra durum bilgileri için anketler ve transkripsiyon ilerleme hakkında ayrıntıları yazdırmak.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.cris.ai/swagger/ui/index)inceleyin. Burada gösterilen tam örnek için `samples/batch` alt dizininde [GitHub](https://aka.ms/csspeech/samples) ' a gidin.
+Önceki aramalar hakkında ayrıntılı bilgi için [Swagger belgemize](https://westus.cris.ai/swagger/ui/index)bakın. Burada gösterilen tam örnek için `samples/batch` alt dizinde [GitHub'a](https://aka.ms/csspeech/samples) gidin.
 
-Ses gönderme ve döküm durumu almak için zaman uyumsuz Kurulum not alın. Oluşturduğunuz .NET HTTP istemci istemcisidir. Ses dosyası ayrıntılarını göndermek için bir `PostTranscriptions` yöntemi ve sonuçları almak için bir `GetTranscriptions` yöntemi vardır. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions`, döküm durumunu almak üzere bir tanıtıcı oluşturmak için onu kullanır.
+Ses deftere nakletmek ve transkripsiyon durumu almak için eşzamanlı kuruluma dikkat edin. Oluşturduğunuz istemci bir .NET HTTP istemcisidir. Ses dosyası `PostTranscriptions` ayrıntılarını göndermek için bir yöntem `GetTranscriptions` ve sonuçları almak için bir yöntem vardır. `PostTranscriptions`bir tutamaç `GetTranscriptions` döndürür ve transkripsiyon durumunu almak için bir tutamaç oluşturmak için kullanır.
 
-Geçerli örnek kod, özel bir model belirtmez. Hizmet, dosya veya dosyalar fotoğrafını için temel modelleri kullanır. Modelleri belirtmek için model kimliklerini akustik ve dil modeli için aynı yönteme geçirebilirsiniz.
+Geçerli örnek kod özel bir model belirtmez. Hizmet, dosyayı veya dosyaları çevirmek için temel modelleri kullanır. Modelleri belirtmek için, akustik ve dil modeli için model disleri ile aynı yöntemi aktarabilirsiniz.
 
 > [!NOTE]
-> Ana hat düzenlemeleri için, taban çizgisi modellerinin KIMLIĞINI bildirmeniz gerekmez. Yalnızca bir dil modeli KIMLIĞI belirtirseniz (ve akustik model KIMLIĞI yoksa), eşleşen bir akustik model otomatik olarak seçilir. Yalnızca bir akustik model KIMLIĞI belirtirseniz, eşleşen bir dil modeli otomatik olarak seçilir.
+> Temel transkripsiyonlar için, temel modeller için kimliği bildirmeniz gerekmez. Yalnızca bir dil modeli kimliği (ve akustik model kimliği) belirtirseniz, eşleşen bir akustik model otomatik olarak seçilir. Yalnızca akustik model kimliği belirtirseniz, eşleşen bir dil modeli otomatik olarak seçilir.
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
-Örneği, [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)`samples/batch` dizininde bulabilirsiniz.
+Örneği `samples/batch` [GitHub örnek deposunda](https://aka.ms/csspeech/samples)dizinde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
+- [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)

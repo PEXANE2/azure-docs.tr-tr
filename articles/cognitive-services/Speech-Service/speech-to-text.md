@@ -1,7 +1,7 @@
 ---
-title: Konuşmayı metne dönüştürme-konuşma hizmeti
+title: Konuşmadan metne - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmadan metne özelliği, ses akışlarının metin halinde gerçek zamanlı olarak dökümünü sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metin girişini kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, metinden konuşmaya (konuşma birleştirme) ve konuşma çevirisi özellikleriyle sorunsuz bir şekilde çalışır.
+description: Konuşmadan metne özellik, ses akışlarının metin içine gerçek zamanlı olarak transkripsiyonu yapılmasını sağlar. Uygulamalarınız, araçlarınız veya aygıtlarınız bu metin girişinde tüketebilir, görüntüleyebilir ve işlem yapabilir. Bu hizmet metinden konuşmaya (konuşma sentezi) ve konuşma çeviri özellikleriyle sorunsuz bir şekilde çalışır.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,51 +10,53 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 2854f4e8d91164c8ae1f35761d6f605cae725245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371265"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052644"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
-Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
+Konuşma tanıma olarak da bilinen Konuşma hizmetinden metinden metne metin, ses akışlarının metin içine gerçek zamanlı olarak transkripsiyonu yapılmasını sağlar. Uygulamalarınız, araçlarınız veya aygıtlarınız bu metin üzerinde komut girişi olarak tüketebilir, görüntüleyebilir ve işlem yapabilir. Bu hizmet, Microsoft'un Cortana ve Office ürünleri için kullandığı tanıma teknolojisiyle desteklenmektedir. <a href="./speech-translation.md" target="_blank">Çeviri <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ve <a href="./text-to-speech.md" target="_blank">metinden konuşmaya <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmet teklifleri ile sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metine dillerin tam listesi için [desteklenen dillere](language-support.md#speech-to-text)bakın.
+
+Konuşmadan metne hizmet, Evrensel dil modelini kullanmaktan varsayılan olarak gelir. Bu model Microsoft'a ait veriler kullanılarak eğitildi ve bulutta dağıtıldı. Konuşma ve dikte senaryoları için en uygun uyracak. Benzersiz bir ortamda tanıma ve transkripsiyon için metinden metne sözcük kullanırken, özel akustik, dil ve telaffuz modelleri oluşturabilir ve eğitebilirsiniz. Özelleştirme, ortam gürültüsünü veya sektöre özgü kelime dağarcığını ele almak için yararlıdır.
 
 > [!NOTE]
-> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API 'Leri kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
-> - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
+> Bing Konuşması 15 Ekim 2019 tarihinde kullanımdan kaldırıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API'lerini kullanıyorsa, Konuşma hizmetine geçiş inizi yardımcı olacak kılavuzlar oluşturduk.
+> - [Bing Konuşmasından Konuşma hizmetine geçiş](how-to-migrate-from-bing-speech.md)
 
-## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
+## <a name="get-started-with-speech-to-text"></a>Konuşmadan metne kadar işe başlayın
 
-Konuşmaya metin hizmetine [konuşma SDK 'sı](speech-sdk.md)aracılığıyla ulaşılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
+Konuşma-metin hizmeti [Konuşma SDK](speech-sdk.md)üzerinden kullanılabilir. Çeşitli dillerde ve platformlarda hızlı başlangıçlar olarak kullanılabilen birkaç yaygın senaryo vardır:
 
- - [Hızlı başlangıç: mikrofon girişi ile konuşmayı tanıma](quickstarts/speech-to-text-from-microphone.md)
- - [Hızlı başlangıç: bir dosyadan konuşmayı tanıma](quickstarts/speech-to-text-from-file.md)
- - [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md)
+ - [Quickstart: Mikrofon girişi yle konuşmayı tanıma](quickstarts/speech-to-text-from-microphone.md)
+ - [Hızlı başlatma: Dosyadaki konuşmayı tanıma](quickstarts/speech-to-text-from-file.md)
+ - [Quickstart: Blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md)
 
-Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 'leri](rest-speech-to-text.md).
+Konuşmadan metne REST hizmetini kullanmayı tercih ediyorsanız, [BKZ.](rest-speech-to-text.md)
 
 ## <a name="tutorials-and-sample-code"></a>Öğreticiler ve örnek kod
 
-Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
+Konuşma hizmetini kullanma fırsatınız olduktan sonra, Konuşma SDK ve LUIS'i kullanarak konuşma nın amacını nasıl tanıyabileceğinizi öğreten öğreticimizi deneyin.
 
-- [Öğretici: konuşma SDK 'Sı ve LUVE ile konuşmayla ilgili amaçları kullanarak konuşmayı tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
+- [Öğretici: C kullanarak Konuşma SDK ve LUIS ile konuşma niyetleri tanıyın #](how-to-recognize-intents-from-speech-csharp.md)
 
-Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı bir tanıma ve özel modellerle çalışma gibi yaygın senaryoları kapsar.
+Konuşma SDK için örnek kod GitHub mevcuttur. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek çekim tanıma ve özel modeller ile çalışma gibi yaygın senaryoları kapsar.
 
-- [Konuşmaya metin örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Toplu iş dökümü örnekleri (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Konuşma-metin örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Toplu transkripsiyon örnekleri (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
 ## <a name="customization"></a>Özelleştirme
 
-Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](how-to-custom-speech.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](supported-languages.md) bölümüne bakın.
+Standart Konuşma hizmeti modeline ek olarak, özel modeller oluşturabilirsiniz. Özelleştirme konuşma stili, kelime ve arka plan gürültüsü gibi konuşma tanıma engelleri aşmak için yardımcı olur, [Özel Konuşma](how-to-custom-speech.md)bakın. Özelleştirme seçenekleri dile/yerel ere göre değişir, desteği doğrulamak için [desteklenen dillere](supported-languages.md) bakın.
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
-- [Konuşma SDK 'sını alın](speech-sdk.md)
+- [Konuşma hizmeti abonelik anahtarını ücretsiz alın](get-started.md)
+- [Konuşma SDK alın](speech-sdk.md)

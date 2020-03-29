@@ -1,42 +1,42 @@
 ---
-title: Kapsayıcıları yüklemek ve çalıştırmak-Görüntü İşleme
+title: Kapsayıcılar nasıl yüklenir ve çalıştırılır - Bilgisayar Lı Görüş
 titleSuffix: Azure Cognitive Services
-description: İndirme, yükleme ve bu izlenecek yol öğreticide görüntü işleme için kapsayıcıları çalıştırmak nasıl.
+description: Bu geçiş eğitiminde Computer Vision için kapsayıcıları nasıl karşıdan yükleyin, yükler ve çalıştırın.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 530a8848eceecb1a15d14ce1fef2aa58a3ef5908
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f8d19ded32f7f4a90b23106b6cec53418eef407e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220253"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458044"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Okuma kapsayıcıları yükleyip çalıştırma (Önizleme)
+# <a name="install-and-run-read-containers-preview"></a>Okuma kapları yükleme ve çalıştırma (Önizleme)
 
-Kapsayıcılar, Görüntü İşleme API 'Lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için harika. Bu makalede bir Görüntü İşleme kapsayıcısını indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
+Kapsayıcılar, BilgisayarLı Vizyon API'lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar belirli güvenlik ve veri yönetimi gereksinimleri için harikadır. Bu makalede, bir Computer Vision kapsayıcısını nasıl indireceğinizi, yükleyeceğinizi ve çalıştıracağınız öğrenilir.
 
-Tek bir Docker kapsayıcısı olan *Read*, görüntü işleme için kullanılabilir. *Okuma* kapsayıcısı, çeşitli nesnelerin görüntülerini, alış irsaliyeleri, posterler ve iş kartları gibi farklı yüzeylerle ve arka planlarla *algılayıp ayıklamanızı* sağlar. Ayrıca, *okuma* kapsayıcısı resimlerde *el yazısı metın* ALGıLAR ve PDF, TIFF ve çok sayfalı dosya desteği sağlar. Daha fazla bilgi için bkz. [okuma](concept-recognizing-text.md#read-api) API 'si belgeleri.
+Tek bir Docker konteyner, *Read*, Computer Vision için kullanılabilir. *Read* kapsayıcısı, makbuzlar, posterler ve kartvizitler gibi farklı yüzeylere ve arka planlara sahip çeşitli nesnelerin görüntülerinden *yazdırılan metni* algılamanızı ve ayıklamanızı sağlar. Ayrıca, *Read* kapsayıcısı resimlerdeki *el yazısı metni* algılar ve PDF, TIFF ve çok sayfalı dosya desteği sağlar. Daha fazla bilgi için [Okuma](concept-recognizing-text.md#read-api) API belgelerine bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
+Kapsayıcıları kullanmadan önce aşağıdaki ön koşulları karşılamanız gerekir:
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
-|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir.| 
-|Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
+|Docker altyapısı| Docker [Engine'in ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Docker, kapsayıcıların Azure'a bağlanmasına ve fatura verilerini göndermesine izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows'da**Docker, Linux kapsayıcılarını destekleyecek şekilde de yapılandırılmalıdır.<br><br>|
+|Docker ile aşinalık | Docker kavramları hakkında, kayıt defterleri, depolar, konteynerler ve konteyner resimleri nin yanı sıra `docker` temel komutlar hakkında temel bilgilere sahip olmalısınız.| 
+|Bilgisayarlı Vizyon kaynağı |Kapsayıcıyı kullanabilmek için aşağıdakilere sahip olmalısınız:<br><br>Bir Azure **Computer Vision** kaynağı ve ilişkili API bitiş noktası URI anahtarı. Her iki değer de kaynak için Genel Bakış ve Anahtarlar sayfalarında kullanılabilir ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **Keys** sayfasındaki mevcut iki kaynak anahtarından biri<br><br>**{ENDPOINT_URI}**: **Genel Bakış** sayfasında sağlanan bitiş noktası|
 
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
+## <a name="request-access-to-the-private-container-registry"></a>Özel konteyner kayıt defterine erişim isteği
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -46,31 +46,31 @@ Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız g
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Gelişmiş vektör uzantısı desteği
+### <a name="advanced-vector-extension-support"></a>Gelişmiş Vektör Uzantısı desteği
 
-**Ana** bilgisayar, Docker kapsayıcısını çalıştıran bilgisayardır. Ana bilgisayar [Gelişmiş vektör uzantılarını](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) desteklemelidir (AVX2). Aşağıdaki komutla Linux konaklarda AVX2 desteğini denetleyebilirsiniz:
+**Ana bilgisayar,** docker kapsayıcısını çalıştıran bilgisayardır. Ana bilgisayar [Gelişmiş Vektör Uzantılarını](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) *desteklemelidir.* Aşağıdaki komutla Linux ana bilgisayarlarında AVX2 desteğini kontrol edebilirsiniz:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> Ana bilgisayar, AVX2 desteklemek için *gereklidir* . Kapsayıcı, AVX2 desteği olmadan *düzgün çalışmaz.*
+> Ana bilgisayar AVX2 desteklemek için *gereklidir.* Konteyner AVX2 desteği olmadan doğru *çalışmaz.*
 
-### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
+### <a name="container-requirements-and-recommendations"></a>Konteyner gereksinimleri ve öneriler
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` kapsayıcı görüntüsünü al
+## <a name="get-the-container-image-with-docker-pull"></a>Konteyner görüntüsünü`docker pull`
 
-Okuma için kapsayıcı görüntüleri kullanılabilir.
+Read için kapsayıcı görüntüler mevcuttur.
 
-| Kapsayıcı | Container Registry/depo/görüntü adı |
+| Kapsayıcı | Konteyner Kayıt Defteri / Depo / Resim Adı |
 |-----------|------------|
 | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-Bir kapsayıcı görüntüsünü indirmek için [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanın.
+Kapsayıcı [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) görüntüsünü indirmek için komutu kullanın.
 
-### <a name="docker-pull-for-the-read-container"></a>Okuma kapsayıcısı için Docker çekme
+### <a name="docker-pull-for-the-read-container"></a>Read konteyneri için Docker çekme
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
@@ -78,18 +78,18 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
+## <a name="how-to-use-the-container"></a>Kapsayıcı nasıl kullanılır?
 
-Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
+Kapsayıcı [ana bilgisayara](#the-host-computer)yüklendikten sonra, kapsayıcıyla çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` komutuna daha fazla [örnek](computer-vision-resource-container-config.md) kullanılabilir. 
-1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
+1. Gerekli fatura ayarlarıyla [kapsayıcıyı çalıştırın.](#run-the-container-with-docker-run) Komutun `docker run` daha fazla [örneği](computer-vision-resource-container-config.md) mevcuttur. 
+1. [Kapsayıcının tahmin bitiş noktasını sorgula.](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı `docker run` ile çalıştırma
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı çalıştırın`docker run`
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
+Kapsayıcıyı çalıştırmak için [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Değerleri ve `{API_KEY}` değerleri nasıl elde edineceklerine ilişkin ayrıntılar için [gerekli parametreleri](#gathering-required-parameters) `{ENDPOINT_URI}` toplamaya bakın.
 
-`docker run` komut [örnekleri](computer-vision-resource-container-config.md#example-docker-run-commands) mevcuttur.
+Komut [örnekleri](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` mevcuttur.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -99,17 +99,17 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Bu komut:
+Şu komut:
 
-* Kapsayıcı görüntüsünden okuma kapsayıcısını çalıştırır.
+* Kapsayıcı görüntüsünden Read kapsayıcısını çalıştırın.
 * 8 CPU çekirdeği ve 16 gigabayt (GB) bellek ayırır.
-* TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
-* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
+* TCP bağlantı noktası 5000'i açığa çıkarır ve kapsayıcı için sözde TTY ayırır.
+* Çıktıktan sonra kapsayıcıotomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-`docker run` komutuna daha fazla [örnek](./computer-vision-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
+Komutun `docker run` daha fazla [örneği](./computer-vision-resource-container-config.md#example-docker-run-commands) mevcuttur. 
 
 > [!IMPORTANT]
-> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> `Eula`Kapsayıcıyı `Billing`çalıştırmak `ApiKey` için , ve seçenekler belirtilmelidir; aksi takdirde, kapsayıcı başlamaz.  Daha fazla bilgi için [Faturalandırma'ya](#billing)bakın.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -117,21 +117,21 @@ Bu komut:
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
+## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin bitiş noktasını sorgula
 
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
+Kapsayıcı REST tabanlı sorgu tahmin bitiş noktası API'leri sağlar. 
 
-Kapsayıcı API 'Leri için `http://localhost:5000`konak kullanın.
+Kapsayıcı API'leri için ana bilgisayarı `http://localhost:5000`kullanın.
 
-### <a name="asynchronous-read"></a>Zaman uyumsuz okuma
+### <a name="asynchronous-read"></a>Asynchronous okuyun
 
-Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki `POST /vision/v2.0/read/core/asyncBatchAnalyze` ve `GET /vision/v2.0/read/operations/{operationId}` işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, HTTP GET isteğine tanımlayıcı olarak kullanılan bir `operationId` döndürür.
+Bilgisayar Görme `POST /vision/v2.0/read/core/asyncBatchAnalyze` hizmetinin ilgili REST işlemlerini nasıl kullandığına benzer şekilde görüntüyü eş senkronize okumak için birlikte ve `GET /vision/v2.0/read/operations/{operationId}` işlemleri kullanabilirsiniz. Asynchronous POST yöntemi, `operationId` http GET isteğine identifer olarak kullanılan bir yöntem döndürür.
 
-Swagger kullanıcı arabiriminden, tarayıcıda genişletmek için `asyncBatchAnalyze` seçin. Ardından, **deneyin** > **dosyayı seçin**. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
+Havalı UI'den tarayıcıda `asyncBatchAnalyze` genişletmek için "genişlet" seçeneğini belirleyin. Sonra **dosyayı seç'i seçin.** > **Choose file** Bu örnekte, aşağıdaki görüntüyü kullanacağız:
 
-![sekmeler vs alanları](media/tabs-vs-spaces.png)
+![sekmeler vs boşluklar](media/tabs-vs-spaces.png)
 
-Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** durum kodu döndürür. Yanıtın bir parçası olarak, isteğin sonuç uç noktasını tutan bir `operation-location` üst bilgisi vardır.
+Eşzamanlı POST başarıyla çalıştırıldığında, bir HTTP **202** durum kodu döndürür. Yanıtın bir parçası olarak, `operation-location` istek için sonuç bitiş noktasını tutan bir üstbilgi vardır.
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
  server: Kestrel
 ```
 
-`operation-location` tam URL 'dir ve bir HTTP GET aracılığıyla erişilir. Önceki görüntüden `operation-location` URL 'sini yürütmenin JSON yanıtı aşağıda verilmiştir:
+Tam `operation-location` nitelikli URL ve bir HTTP GET üzerinden erişilir. Aşağıda, url'nin önceki resimden yürütülmesinden `operation-location` kaynaklanan JSON yanıtı vereme yanıtı veremehakkı ve
 
 ```json
 {
@@ -184,9 +184,9 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 }
 ```
 
-### <a name="synchronous-read"></a>Zaman uyumlu okuma
+### <a name="synchronous-read"></a>Senkron okuma
 
-Bir görüntüyü eşzamanlı olarak okumak için `POST /vision/v2.0/read/core/Analyze` işlemini kullanabilirsiniz. Resim tamamen okunsa ve yalnızca API bir JSON yanıtı döndürüyor. Bunun tek istisnası bir hata meydana gelir. Bir hata oluştuğunda aşağıdaki JSON döndürülür:
+Görüntüyü eşzamanlı `POST /vision/v2.0/read/core/Analyze` olarak okumak için işlemi kullanabilirsiniz. Görüntü bütünüyle okunduğunda, o zaman ve ancak o zaman API bir JSON yanıtı döndürmektedir. Bunun tek istisnası bir hata oluşursa. Bir hata oluştuğunda aşağıdaki JSON döndürülür:
 
 ```json
 {
@@ -194,7 +194,7 @@ Bir görüntüyü eşzamanlı olarak okumak için `POST /vision/v2.0/read/core/A
 }
 ```
 
-JSON yanıt nesnesi, zaman uyumsuz sürümle aynı nesne grafiğine sahiptir. Bir JavaScript kullanıcısı ve tür güvenliği isterseniz, JSON yanıtını bir `AnalyzeResult` nesnesi olarak dönüştürmek için aşağıdaki türler kullanılabilir.
+JSON yanıt nesnesi, eşzamanlı sürümle aynı nesne grafiğine sahiptir. Bir JavaScript kullanıcısıysanız ve tür güvenliği istiyorsanız, JSON yanıtını nesne `AnalyzeResult` olarak atmak için aşağıdaki türler kullanılabilir.
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,25 +241,25 @@ export interface Word {
 }
 ```
 
-Örnek kullanım örneği için, <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">burada <span class="docon docon-navigate-external x-hidden-focus"></span> TypeScript korumalı alanı</a> ' na bakın ve kullanım kolaylığını görselleştirmek için **Çalıştır** ' ı seçin.
+Örnek kullanım örneğinde, <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">typeScript kum havuzuna <span class="docon docon-navigate-external x-hidden-focus"></span> bakın</a> ve kullanım kolaylığını görselleştirmek için **Çalıştır'ı** seçin.
 
-## <a name="stop-the-container"></a>Kapsayıcıyı durdur
+## <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-config.md#mount-settings) ve günlüğü etkin olarak çalıştırırsanız kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermek için yararlı olan günlük dosyaları oluşturur.
+Kapsayıcıyı çıktı [yuvası](./computer-vision-resource-container-config.md#mount-settings) ve günlüğe kaydetme etkinken çalıştırıyorsanız, kapsayıcı kapsayıcıyı çalıştırırken veya çalıştırırken meydana gelen sorunları gidermeye yardımcı olan günlük dosyaları oluşturur.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
-Bilişsel hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
+Bilişsel Hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak fatura bilgilerini Azure'a gönderir.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapılandırma](./computer-vision-resource-container-config.md).
+Bu seçenekler hakkında daha fazla bilgi için [yapı kaplarını yapıya kullanabilirsiniz.](./computer-vision-resource-container-config.md)
 
 <!--blogs/samples/video course -->
 
@@ -267,21 +267,21 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, kavramlar ve indirme, yükleme ve görüntü işleme kapsayıcıları çalıştırmak için iş akışı öğrendiniz. Özet:
+Bu makalede, Computer Vision kapsayıcılarını indirmek, yüklemek ve çalıştırmak için kavramları ve iş akışını öğrendiniz. Özet:
 
-* Görüntü İşleme, Docker için bir Linux kapsayıcısı sağlar ve bu da kapsülleme okur.
-* Kapsayıcı görüntüleri, Azure 'daki "kapsayıcı önizlemesi" kapsayıcı kayıt defterinden indirilir.
-* Docker kapsayıcı görüntüleri çalıştırın.
-* Kapsayıcının ana bilgisayar URI 'sini belirterek okuma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
-* Bir kapsayıcı örneği oluşturulurken, fatura bilgilerini belirtmeniz gerekir.
+* Computer Vision, Docker için Read'i kapsülleden bir Linux konteyneri sağlar.
+* Kapsayıcı görüntüleri Azure'daki "Kapsayıcı Önizleme" kapsayıcı kayıt defterinden indirilir.
+* Konteyner görüntüleri Docker'da çalışır.
+* Kabın ana bilgisayarı URI'yi belirterek Read kaplarında işlemleri aramak için REST API veya SDK'yı kullanabilirsiniz.
+* Bir kapsayıcıyı anında kullanırken fatura bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]
-> Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenmekte olan resim veya metin) Microsoft 'a göndermez.
+> Bilişsel Hizmetler kapsayıcıları ölçüm için Azure'a bağlı olmadan çalışma lisansı na sahip değildir. Müşterilerin, konteynerlerin fatura bilgilerini her zaman ölçüm hizmetiyle iletmesini sağlaması gerekir. Bilişsel Hizmetler kapsayıcıları müşteri verilerini (örneğin, analiz edilen resim veya metin) Microsoft'a göndermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Yapılandırma ayarları için [kapsayıcıları](computer-vision-resource-container-config.md) yapılandırmayı gözden geçir
-* Basılan ve el yazısı metni tanıma hakkında daha fazla bilgi edinmek için [görüntü işleme genel bakışı](Home.md) inceleyin
-* Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [görüntü işleme API'si](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) başvurun.
-* Görüntü İşleme işlevlerle ilgili sorunları çözmek için [sık sorulan sorular (SSS)](FAQ.md) bölümüne bakın.
-* Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın
+* Yapılandırma ayarları için [kapsayıcıları yapılandırmayı](computer-vision-resource-container-config.md) gözden geçirin
+* Yazdırılan ve el yazısıyla yazılmış metni tanıma hakkında daha fazla bilgi edinmek için [Computer Vision'a genel bakışı](Home.md) gözden geçirin
+* Kapsayıcı tarafından desteklenen yöntemler hakkında ayrıntılı bilgi için [BilgisayarLı Vizyon API'sine](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bakın.
+* Computer Vision işleviyle ilgili sorunları çözmek için [sık sorulan sorulara (SSS)](FAQ.md) bakın.
+* Daha fazla [Bilişsel Hizmet Kapsayıcısı](../cognitive-services-container-support.md) Kullanın

@@ -1,7 +1,7 @@
 ---
-title: Bing Haber Arama API'si sorguları gönderme
+title: Bing Haberler Arama API'sine sorgu gönderme
 titleSuffix: Azure Cognitive Services
-description: Bing Haber Arama API'si, Web 'de ilgili haberler öğeleri için arama yapmanızı sağlar. API 'ye arama sorguları gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın.
+description: Bing Haberleri Arama API'sı, alakalı haber öğeleri için web'de arama yapmanızı sağlar. API'ye arama sorguları gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75383728"
 ---
-# <a name="sending-queries-to-the-bing-news-search-api"></a>Bing Haber Arama API'si sorguları gönderme
+# <a name="sending-queries-to-the-bing-news-search-api"></a>Bing Haberler Arama API'sine sorgu gönderme
 
-Bing Haber Arama API'si, Web 'de ilgili haberler öğeleri için arama yapmanızı sağlar. API 'ye arama sorguları gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın.
+Bing Haberleri Arama API'sı, alakalı haber öğeleri için web'de arama yapmanızı sağlar. API'ye arama sorguları gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="sending-a-request"></a>İstek gönderiliyor
+## <a name="sending-a-request"></a>İstek gönderme
 
 Yalnızca haber arama sonuçlarını almak için aşağıdaki uç noktaya bir GET isteği gönderirsiniz:
 
@@ -39,14 +39,14 @@ Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci u
 
 İstek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#subscriptionkey) üstbilgisini belirtmelidir. İsteğe bağlı olmakla birlikte şu üstbilgileri de belirtmeniz önerilir:
 
-- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#useragent)
+- [Kullanıcı Aracısı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#clientip)
-- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#location)
+- [X-Arama Yeri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#location)
 
 İstemci IP'si ve konum üstbilgileri konuma duyarlı içerik döndürmek için önemlidir.
 
-Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üst Bilgiler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headers).
+Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üstbilgiler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headers).
 
 Aşağıda önerilen tüm sorgu parametrelerini ve üstbilgilerini içeren bir haber isteği gösterilmektedir. Bing API'lerinden birini ilk kez çağırıyorsanız istemci kimliği üst bilgisini eklemeyin. İstemci kimliğini yalnızca önceden bir Bing API'sini çağırdıysanız ve Bing, kullanıcı ve cihaz birleşimi için bir istemci kimliği döndürdüyse dahil edin.
 
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-## <a name="bing-news-search-api-response"></a>Bing Haber Arama API'si yanıtı
+## <a name="bing-news-search-api-response"></a>Bing Haber Arama API yanıtı
 
 Aşağıda, bir önceki isteğin yanıtı gösterilmektedir. Örnek ayrıca yanıt üst bilgilerini de göstermektedir.
 
@@ -284,7 +284,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bing haber arama nedir?](../search-the-web.md). 
+* [Bing Haber Arama nedir?](../search-the-web.md). 
 * [Bugünün en iyi haberlerini alın](search-for-news.md#get-todays-top-news)
-* [Kategoriye göre haberleri al](search-for-news.md#get-news-by-category)
-* [Popüler haberleri al](search-for-news.md#get-trending-news)
+* [Kategoriye göre haber alın](search-for-news.md#get-news-by-category)
+* [Popüler haberleri alın](search-for-news.md#get-trending-news)

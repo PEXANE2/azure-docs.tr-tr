@@ -1,85 +1,85 @@
 ---
-title: İstek limitleri-Translator Metin Çevirisi API'si
+title: İstek sınırları - Çevirmen Metin API
 titleSuffix: Azure Cognitive Services
-description: Bu makalede Translator Metin Çevirisi API'si için istek sınırları listelenmektedir. Ücretler, istek başına 5.000 karakter sınırlaması olan istek sıklığıyla değil, karakter sayısına göre ücretlendirilir. Karakter sınırları, abonelik tabanlıdır ve F0 ile 2.000.000 karakter arasında sınırlanır.
+description: Bu makalede, Çevirmen Metin API'si için istek sınırları listelenmiştir. Ücretler karakter sayısına göre tahakkuk eder, istek başına 5.000 karakter sınırı olan sıklık isteğine bağlı olarak tahakkuk eder. Karakter sınırları abonelik tabanlıdır ve F0 saatte 2 milyon karakterle sınırlıdır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498939"
 ---
-# <a name="request-limits-for-translator-text"></a>Translator Metin Çevirisi için istek sınırları
+# <a name="request-limits-for-translator-text"></a>Çevirmen Metni için istek sınırları
 
-Bu makale Translator Metin Çevirisi API'si için azaltma sınırları sağlar. Hizmetler çeviri, alfabelik, cümle uzunluğu algılama, dil algılama ve alternatif çeviriler içerir.
+Bu makalede, Çevirmen Metin API'si için azaltma sınırları sağlanmaz. Hizmetler arasında çeviri, çeviri, cümle uzunluğu algılama, dil algılama ve alternatif çeviriler yer almaktadır.
 
 ## <a name="character-and-array-limits-per-request"></a>İstek başına karakter ve dizi sınırları
 
-Her çeviri isteği 5.000 karakterle sınırlıdır. İstek sayısına göre değil, karakter başına ücretlendirilirsiniz. Daha kısa istekler göndermeniz önerilir.
+Her çeviri isteği, çevirdiğiniz tüm hedef dillerde 5.000 karakterle sınırlıdır. Örneğin, 3 farklı dile çevirmek için 1.500 karakterlik bir çeviri isteği göndermek, istek sınırını karşılayan 1.500x3 = 4.500 karakterlik bir istek boyutuyla sonuçlanır. Karakter başına ücretlendirilirsiniz, istek sayısına göre değil. Daha kısa istekler gönderilmesi önerilir.
 
-Aşağıdaki tabloda Translator Metin Çevirisi API'si her bir işlemi için dizi öğesi ve karakter sınırları listelenmektedir.
+Aşağıdaki tabloda, Çevirmen Metin API'sinin her çalışması için dizi öğesi ve karakter sınırları listelenmiştir.
 
-| İşlem | Dizi öğesinin en büyük boyutu |   En fazla dizi öğesi sayısı |  En fazla Istek boyutu (karakter) |
+| İşlem | Dizi Elemanının Maksimum Boyutu |   Maksimum Dizi Öğesi Sayısı |  Maksimum İstek Boyutu (karakterler) |
 |:----|:----|:----|:----|
-| Çevirme | 5\.000 | 100   | 5\.000 |
-| Karakter Dönüştürme | 5\.000 | 10    | 5\.000 |
+| Çevirme | 5.000 | 100   | 5.000 |
+| Karakter Dönüştürme | 5.000 | 10    | 5.000 |
 | Algılama | 10,000 | 100 |   50.000 |
 | BreakSentence | 10,000    | 100 | 50.000 |
 | Sözlük Arama| 100 |  10  | 1000 |
-| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2\.000 |
+| Sözlük Örnekleri | Metin için 100 ve çeviri için 100 (200 toplam)| 10|   2.000 |
 
 ## <a name="character-limits-per-hour"></a>Saat başına karakter sınırları
 
-Saat başına karakter sınırınız Translator Metin Çevirisi abonelik katmanınızı temel alır. 
+Saat başına karakter sınırınız Çevirmen Metni abonelik katmanınızı temel almaktadır. 
 
-Saatlik kota, saat boyunca eşit olarak tüketilmelidir. Örneğin, saat başına 2.000.000 karakterlik F0 katman sınırında, karakterler dakikada kabaca 33.300 karakterden daha hızlı bir şekilde tüketilmelidir (2.000.000 karakter, 60 dakikaya bölünür).
+Saatlik kota saat boyunca eşit olarak tüketilmelidir. Örneğin, saatte 2 milyon karakterlik F0 katman sınırında, karakterler dakikada yaklaşık 33.300 karakterden daha hızlı tüketilmemelidir (2 milyon karakter 60 dakikaya bölünür).
 
-Bu sınırlara ulaşan veya daha fazla bilgi alırsanız veya kısa bir süre içinde kotanın bir kısmını çok büyük bir süre gönderirseniz, muhtemelen kota dışı bir yanıt alacaksınız. Eşzamanlı isteklerde sınır yoktur.
+Bu sınırlara ulaşır veya aşarak ulaşırsanız veya kotanın büyük bir kısmını kısa sürede gönderirseniz, büyük olasılıkla kota dışı bir yanıt alırsınız. Eşzamanlı isteklerde sınır yoktur.
 
 | Katman | Karakter sınırı |
 |------|-----------------|
-| F0 | 2\.000.000 karakter/saat |
-| S1 | 40.000.000 karakter/saat |
-| S2/C2 | 40.000.000 karakter/saat |
-| S3/C3 | 120.000.000 karakter/saat |
-| S4/C4 | 200.000.000 karakter/saat |
+| F0 | Saatte 2 milyon karakter |
+| S1 | Saatte 40 milyon karakter |
+| S2 / C2 | Saatte 40 milyon karakter |
+| S3 / C3 | Saatte 120 milyon karakter |
+| S4 / C4 | Saatte 200 milyon karakter |
 
-[Çok hizmet abonelikleri](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) limitleri S1 katmanıyla aynı.
+Çoklu [hizmet abonelikleri](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) için sınırlar S1 katmanı ile aynıdır.
 
-Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel çevirici kullanan özel çeviri modelleri saniyede 1.800 karakter ile sınırlıdır.
+Bu sınırlar Microsoft'un standart çeviri modelleri ile sınırlıdır. Özel Çevirmen kullanan özel çeviri modelleri saniyede 1.800 karakterle sınırlıdır.
 
 ## <a name="latency"></a>Gecikme süresi
 
-Translator Metin Çevirisi API'si, özel modeller kullanılırken Standart modeller ve 120 saniye kullanarak en fazla 15 saniyelik gecikme süresine sahiptir. Genellikle, *100 karakter içindeki metin* yanıtları 150 milisaniyelik ile 300 milisaniyeye döndürülür. Özel çevirmen modelleri sürekli istek hızında benzer gecikme özelliklerine sahiptir ve istek hızlarınız aralıklı olduğunda daha yüksek bir gecikme süresine sahip olabilir. Yanıt süreleri, istek ve dil çiftinin boyutuna bağlı olarak değişir. Bu zaman diliminde bir çeviri veya [hata yanıtı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) almazsanız lütfen kodunuzu, ağ bağlantınızı kontrol edin ve yeniden deneyin. 
+Çevirmen Metin API'si, standart modelleri kullanarak maksimum 15 saniye, özel modelleri kullanırken ise 120 saniye gecikme süreye sahiptir. Genellikle, *100 karakter içindeki metin yanıtları* 150 milisaniye ile 300 milisaniye arasında döndürülür. Özel çevirmen modelleri, sürekli istek oranı yla ilgili benzer gecikme süreözelliklerine sahiptir ve istek oranınız aralıklı olduğunda daha yüksek bir gecikme gecikmesi olabilir. Yanıt süreleri, isteğin ve dil çiftinin boyutuna bağlı olarak değişir. Bu süre içinde bir çeviri veya [hata yanıtı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) almazsanız, lütfen kodunuzu, ağ bağlantınızı ve yeniden deneyini kontrol edin. 
 
-## <a name="sentence-length-limits"></a>Tümce uzunluğu sınırları
+## <a name="sentence-length-limits"></a>Cümle uzunluğu sınırları
 
-[Breakcümlesi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) işlevini kullanırken, cümle uzunluğu 275 karakterle sınırlıdır. Bu diller için özel durumlar mevcuttur:
+[Kesme Cümlesi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) işlevini kullanırken, cümle uzunluğu 275 karakterle sınırlıdır. Bu diller için istisnalar vardır:
 
-| Dil | Kodlayın | Karakter sınırı |
+| Dil | Kod | Karakter sınırı |
 |----------|------|-----------------|
-| Çince | zh | 132 |
+| Çince | Zh | 132 |
 | Almanca | de | 290 |
-| İtalyanca | it | 280 |
-| Japonca | ja | 150 |
-| Portekizce | yönergelerinin | 290 |
+| İtalyanca | bu | 280 |
+| Japonca | Ja | 150 |
+| Portekizce | pt | 290 |
 | İspanyolca | es | 280 |
-| İtalyanca | it | 280 |
-| Tay dili | 11 | 258 |
+| İtalyanca | bu | 280 |
+| Tayca | inci | 258 |
 
 > [!NOTE]
-> Bu sınır, çeviriler için geçerlidir.
+> Bu sınır çeviriler için geçerli değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Bölgesel kullanılabilirlik](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator Metin Çevirisi API'si Başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 Translator Metin Çevirisi API’si başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

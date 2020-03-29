@@ -1,7 +1,7 @@
 ---
-title: Adlandırılmış varlık tanıma için desteklenen türler
+title: Adlandırılmış Varlık Tanıma için Desteklenen Türleri
 titleSuffix: Azure Cognitive Services
-description: Metin Analizi API'si desteklenen varlık türleri hakkında bilgi edinin.
+description: Metin Analizi API'sinde desteklenen varlık türleri hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086894"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Adlandırılmış varlık tanıma sürüm 3 için desteklenen türler (Önizleme)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Adlandırılmış Varlık Tanıma Sürüm 3 için Desteklenen Türleri (Önizleme)
 
-Metin Analizi API'si, metinde bulunan varlıkların belirlenmesini ve ayırt etme özelliğini sağlar. [Adlandırılmış varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md) (ner), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar halinde kategorilere ayırma olanağıdır.
+Text Analytics API, metinde bulunan varlıkları tanımlama ve ayrıştırmak için bir yetenek sağlar. [Varlık Tanıma](how-tos/text-analytics-how-to-entity-linking.md) (NER) adlı kişi, metindeki farklı varlıkları tanımlama ve bunları önceden tanımlanmış sınıflara kategorilere ayırma yeteneğidir.
 
 ## <a name="entity-types"></a>Varlık türleri
 
 Desteklenen varlık türleri ve alt türleri (varsa) aşağıda listelenmiştir:
 
-#### <a name="generaltabgeneral"></a>[Genel](#tab/general)
+#### <a name="general"></a>[Genel](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-informationtabpersonal"></a>[Kişisel bilgiler](#tab/personal)
+#### <a name="personal-information"></a>[Kişisel bilgiler](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
@@ -37,4 +37,4 @@ Desteklenen varlık türleri ve alt türleri (varsa) aşağıda listelenmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](how-tos/text-analytics-how-to-entity-linking.md)
+* [Metin Analizinde Adlandırılmış Varlık Tanıma nasıl kullanılır?](how-tos/text-analytics-how-to-entity-linking.md)

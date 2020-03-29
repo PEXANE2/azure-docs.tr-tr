@@ -1,35 +1,35 @@
 ---
-title: Diğer uygulamalarla tümleştirin-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma, sohbet botları gibi istemci uygulamalarıyla ve Language Understanding (LUSıS) gibi diğer doğal dil işleme hizmetlerine tümleştirilir.
+title: Diğer uygulamalarla tümleştirme - QnA Maker
+description: QnA Maker, sohbet botları gibi istemci uygulamalarına ve Dil Anlama (LUIS) gibi diğer doğal dil işleme hizmetlerine entegre dir.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300528"
 ---
-# <a name="design-knowledge-base-for-client-applications"></a>İstemci uygulamaları için Bilgi Bankası tasarlama
+# <a name="design-knowledge-base-for-client-applications"></a>İstemci uygulamaları için tasarım bilgi tabanı
 
-Soru-Cevap Oluşturma, sohbet botları gibi istemci uygulamalarıyla ve Language Understanding (LUSıS) gibi diğer doğal dil işleme hizmetlerine tümleştirilir.
+QnA Maker, sohbet botları gibi istemci uygulamalarına ve Dil Anlama (LUIS) gibi diğer doğal dil işleme hizmetlerine entegre dir.
 
-## <a name="integration-with-a-conversational-client"></a>Konuşma istemcisiyle tümleştirme
+## <a name="integration-with-a-conversational-client"></a>Konuşma istemcisi ile tümleştirme
 
-Soru-Cevap Oluşturma, [Microsoft bot Framework](https://dev.botframework.com/)gibi konuşma istemci uygulamalarıyla tümleşir. Soru-Cevap Oluşturma gönderilen metnin temizlenmesi veya dönüştürülmesi gerekmez. Soru-Cevap Oluşturma doğal dilleri kabul eder ve en iyi yanıtı döndürür.
+QnA Maker, [Microsoft Bot Framework](https://dev.botframework.com/)gibi konuşma istemcisi uygulamalarıyla tümleşir. QnA Maker'a gönderilen metnin temizlenmesi veya dönüştürülmesi gerekmez. QnA Maker doğal dilleri kabul eder ve en iyi cevabı geri verir.
 
-## <a name="create-a-bot-without-writing-any-code"></a>Herhangi bir kod yazmadan bir bot oluştur
+## <a name="create-a-bot-without-writing-any-code"></a>Kod yazmadan bir bot oluşturma
 
-Bilgi tabanınızı yayımladıktan sonra, **bir bot Oluştur düğmesini seçerek** **Yayımla** sayfasından bir bot oluşturun. Düğmeyi seçtikten sonra ne olacağını öğrenmek için [bot öğreticisini](../Quickstarts/create-publish-knowledge-base.md) kullanın.
+Bilgi tabanınızı yayımladıktan **sonra, Bot Oluştur** düğmesini seçerek **Yayımla** sayfasından bir bot oluşturun. Düğmeyi seçtikten sonra ne olacağını öğrenmek için [bot öğreticisini](../Quickstarts/create-publish-knowledge-base.md) kullanın.
 
-## <a name="providing-multi-turn-conversations"></a>Çoklu açma konuşmaları sağlama
+## <a name="providing-multi-turn-conversations"></a>Çok döndürerek konuşmalar sağlama
 
-Bir bot istemcisi, bilgi tabanınızdan en iyi seçili yanıtı sağlar ve yanıt çok yönlü bir QnA kümesinin parçasıysa, izleme istemleri sağlayabilir. Bilgi bankamanıza çok yönlü konuşma sorusu ve yanıt [kümeleri eklemeyi öğrenin](../how-to/multiturn-conversation.md) .
+Bir bot istemcisi bilgi tabanınızdan en iyi seçilen yanıtı sağlar ve yanıt çok döndürülme QnA kümesinin bir parçasıysa izleme istemleri sağlayabilir. Bilgi [tabanınıza](../how-to/multiturn-conversation.md) çok döndürme sorusu ve yanıt kümelerini nasıl ekleyeceğinizi öğrenin.
 
 ## <a name="natural-language-processing"></a>Doğal dil işleme
 
-Soru-Cevap Oluşturma doğal dil işleme kullanan soruları işlerken, birden fazla bilgi bankasından gelen soruları yanıtlayan daha büyük bir sisteminin bir parçası de kullanılabilir. Belirli bir bilgi tabanına başlamadan önce doğal dil işleme sağlamak için, Soru-Cevap Oluşturma başka bir bilişsel hizmetle, Language Understanding (LUU) ile birleştirebilirsiniz. Lune zaman ve nasıl kullanılacağı [ve soru-cevap oluşturma](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) birlikte hakkında daha fazla bilgi edinin.
+QnA Maker, doğal dil işleme kullanan soruları işlerken, birden çok bilgi tabanından gelen soruları yanıtlayan daha büyük bir sistemin bir parçası da kullanılabilir. Belirli bir bilgi tabanına gelmeden önce doğal dil işleme sağlamak için QnA Maker'ı başka bir Bilişsel Hizmet olan Dil Anlayışı (LUIS) ile birleştirebilirsiniz. LUIS ve [QnA Maker'ın](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) ne zaman ve nasıl kullanılacağı hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Soru-Cevap Oluşturma için geliştirme döngüsünün [kavramlarını](development-lifecycle-knowledge-base.md) öğrenin.
+QnA Maker için geliştirme döngüsü [kavramlarını](development-lifecycle-knowledge-base.md) öğrenin.

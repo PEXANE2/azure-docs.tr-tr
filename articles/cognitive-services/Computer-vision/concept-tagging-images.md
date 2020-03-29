@@ -1,7 +1,7 @@
 ---
-title: İçerik etiketleri-Görüntü İşleme
+title: İçerik etiketleri - BilgisayarLı Vizyon
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si resimler etiketleme özelliğiyle ilgili kavramları öğrenin.
+description: BilgisayarLı Görme API'sinin görüntü etiketleme özelliğiyle ilgili kavramları öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244520"
 ---
 # <a name="applying-content-tags-to-images"></a>Resimlere içerik etiketleri uygulama
 
-Görüntü İşleme, nesnelerin binlerce tanınabilir nesne, canlı, manzara ve eylemlere göre, etiketleri döndürür. Belirsiz veya herkesçe bilinmeyen etiketler söz konusu olduğunda, API yanıtı, etiketin anlamının bilinen bir ortama ilişkin bağlamda açıklığa kavuşturulması için "ipuçları" sağlar. Etiketler taksonomi olarak tanınmaz ve hiçbir devralma hiyerarşisi yoktur. Bir içerik etiketi koleksiyonu, tam tümceler halinde biçimlendirilmiş insan tarafından okunabilir dilde görüntülenen bir görüntü 'açıklamasının' temelini oluşturur. Şu noktada görüntü açıklaması için desteklenen tek dilin İngilizce olduğunu unutmayın.
+Computer Vision, binlerce tanınabilir nesneye, canlıya, manzaraya ve eyleme dayalı etiketleri döndürür. Belirsiz veya herkesçe bilinmeyen etiketler söz konusu olduğunda, API yanıtı, etiketin anlamının bilinen bir ortama ilişkin bağlamda açıklığa kavuşturulması için "ipuçları" sağlar. Etiketler taksonomi olarak tanınmaz ve hiçbir devralma hiyerarşisi yoktur. Bir içerik etiketi koleksiyonu, tam tümceler halinde biçimlendirilmiş insan tarafından okunabilir dilde görüntülenen bir görüntü 'açıklamasının' temelini oluşturur. Şu noktada görüntü açıklaması için desteklenen tek dilin İngilizce olduğunu unutmayın.
 
-Bir görüntüyü karşıya yükledikten veya bir görüntü URL 'SI belirttikten sonra, görüntüde tanımlanan nesneleri, canlı kullanımları ve eylemleri temel alan algoritma çıkış etiketleri Görüntü İşleme. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzeri öğeleri de kapsar.
+Resmi karşıya yükledikten veya resim URL'sini belirttikten sonra, Görüntü İşleme algoritmaları resimde tanımlanan nesnelere, canlılara ve eylemlere dayanarak etiketlerin çıkışını yapar. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzeri öğeleri de kapsar.
 
 ## <a name="image-tagging-example"></a>Resim etiketleme örneği
 
-Aşağıdaki JSON yanıtında, örnek görüntüde algılanan görsel özellikleri etiketlerken ne Görüntü İşleme döndürdüğü gösterilmektedir.
+Aşağıdaki JSON yanıtı, örnek görüntüde algılanan görsel özellikleri etiketlerken Computer Vision'ın ne döndürür olduğunu gösterir.
 
-![Mavi Ev ve ön bahçe](./Images/house_yard.png).
+![Mavi bir ev ve ön bahçe.](./Images/house_yard.png).
 
 ```json
 {
@@ -83,6 +83,13 @@ Aşağıdaki JSON yanıtında, örnek görüntüde algılanan görsel özellikle
 }
 ```
 
+## <a name="use-the-api"></a>API’yi kullanma
+
+Etiketleme özelliği, [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Tags` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"tags"` bölümün içeriği için dize ayrıştını.
+
+* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntüleri kategorilere ayırma](concept-categorizing-images.md) ve [görüntüleri açıklama](concept-describing-images.md)hakkında kavramlar öğrenin.
+[Görüntüleri kategorilere ayırma](concept-categorizing-images.md) ve [görüntüleri tanımlama](concept-describing-images.md)ile ilgili kavramları öğrenin.

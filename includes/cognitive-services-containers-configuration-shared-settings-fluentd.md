@@ -5,21 +5,21 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67712493"
 ---
-Bir açık kaynak veri toplayıcı birleşik günlük kaydı için Fluentd olur. `Fluentd` Ayarlarını yönetmek için kapsayıcının bağlantı bir [Fluentd](https://www.fluentd.org) sunucusu. Kapsayıcı günlüklerini yazma izni veren bir Fluentd oturum açma sağlayıcısı kapsayıcı içerir ve isteğe bağlı olarak ölçüm verileri Fluentd sunucusuna.
+Fluentd, birleşik günlüğe kaydetme için açık kaynak kodlu bir veri toplayıcısidir. Ayarlar, `Fluentd` kapsayıcının [Akıcı](https://www.fluentd.org) bir sunucuya bağlantısını yönetir. Kapsayıcı, kapsayıcınızın günlükler ve isteğe bağlı olarak akıcı bir sunucuya metrik veri yazmasına olanak tanıyan bir Akıcı günlük sağlayıcısı içerir.
 
-Aşağıdaki tabloda altında desteklenen yapılandırma ayarları açıklanmaktadır `Fluentd` bölümü.
+Aşağıdaki tabloda `Fluentd` bölüm altında desteklenen yapılandırma ayarları açıklanmaktadır.
 
-| Ad | Veri türü | Açıklama |
+| Adı | Veri türü | Açıklama |
 |------|-----------|-------------|
-| `Host` | Dize | Fluentd sunucusunun DNS ana bilgisayar adını veya IP adresi. |
-| `Port` | Tamsayı | Fluentd sunucusunun bağlantı noktası.<br/> 24224 varsayılan değerdir. |
-| `HeartbeatMs` | Tamsayı | Milisaniye cinsinden sinyal aralığı. Bu aralığı süresi dolmadan önce olay trafik gönderildi, bir sinyal Fluentd sunucuya gönderilir. 60000 milisaniye (1 dakika) varsayılan değerdir. |
-| `SendBufferSize` | Tamsayı | Gönderme işlemleri için ayrılan bayt cinsinden ağ arabellek alanı. 32768 bayt (32 kilobayt) varsayılan değerdir. |
-| `TlsConnectionEstablishmentTimeoutMs` | Tamsayı | Zaman aşımı, Fluentd sunucusuyla bir SSL/TLS bağlantı kurmak için milisaniye cinsinden. 10000 milisaniye (10 saniye) varsayılan değerdir.<br/> Varsa `UseTLS` yanlış olarak bu değeri yok sayıldı ayarlanmış. |
-| `UseTLS` | Boole | Kapsayıcı Fluentd sunucusu ile iletişim kurmak için SSL/TLS kullanıp kullanmayacağını belirtir. Varsayılan değer false'tur. |
+| `Host` | Dize | Fluentd sunucusunun IP adresi veya DNS ana bilgisayar adı. |
+| `Port` | Tamsayı | Fluentd sunucusunun bağlantı noktası.<br/> Varsayılan değer 24224'dür. |
+| `HeartbeatMs` | Tamsayı | Kalp atışı aralığı, milisaniye cinsinden. Bu aralık sona ermeden önce olay trafiği gönderilmemişse, Akıcı sunucuya bir sinyal gönderilir. Varsayılan değer 60000 milisaniyedir (1 dakika). |
+| `SendBufferSize` | Tamsayı | İleti işlemleri için ayrılan ağ arabelleği alanı, baytlar içinde. Varsayılan değer 32768 bayt (32 kilobayt) 'dır. |
+| `TlsConnectionEstablishmentTimeoutMs` | Tamsayı | Zaman alakart, milisaniye cinsinden, Fluentd sunucusuyla bir SSL/TLS bağlantısı kurmak için. Varsayılan değer 10000 milisaniye (10 saniye) olur.<br/> Yanlış `UseTLS` olarak ayarlanmışsa, bu değer yoksayılır. |
+| `UseTLS` | Boole | Kapsayıcının Fluentd sunucusuyla iletişim kurmak için SSL/TLS kullanıp kullanmaması gerektiğini gösterir. Varsayılan değer false'tur. |

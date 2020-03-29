@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: e77e61fc977231effb098c1cbe80cf2e6666c489
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943863"
 ---
-Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeniyle, GStreamer ikili dosyaları derlenmez ve konuşma SDK 'Sı ile bağlantılı değildir. Bunun yerine, Android için önceden oluşturulmuş ikilileri kullanmanız gerekir. Önceden oluşturulmuş kitaplıkları indirmek için bkz. [Android için yükleme geliştirme](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
+Sıkıştırılmış ses işleme [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisans lama nedenleriyle GStreamer ikilileri derlenmez ve Konuşma SDK ile bağlantılı değildir. Bunun yerine, Android için önceden oluşturulmuş ikilileri kullanmanız gerekir. Önceden oluşturulmuş kitaplıkları indirmek [için Android geliştirme için yükleme](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)ye bakın.
 
-`libgstreamer_android.so` gereklidir. GStreamer eklentilerinizin `libgstreamer_android.so`bağlı olduğundan emin olun.
+`libgstreamer_android.so` gereklidir. GStreamer eklentilerinizin ' ile `libgstreamer_android.so`bağlantılı olduğundan emin olun.
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Aşağıda bir örnek `Android.mk` ve `Application.mk` dosyası verilmiştir. `gstreamer` paylaşılan nesnesini oluşturmak için şu adımları izleyin:`libgstreamer_android.so`.
+Aşağıda `Android.mk` bir `Application.mk` örnek ve dosya verilmiştir. `gstreamer` Paylaşılan nesneyi oluşturmak için`libgstreamer_android.so`aşağıdaki adımları izleyin: .
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Ubuntu 16,04 veya 18,04 ' de aşağıdaki komutu kullanarak `libgstreamer_android.so` oluşturabilirsiniz. Aşağıdaki komut satırları yalnızca [ANDROID NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) Ile [GStreamer Android sürüm 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) için sınanmıştır.
+Ubuntu 16.04 veya 18.04 üzerinde aşağıdaki komutu kullanarak oluşturabilirsiniz. `libgstreamer_android.so` Aşağıdaki komut satırları sadece [Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) ile [Gstreamer Android sürüm 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) için test edilmiştir.
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Paylaşılan nesne (`libgstreamer_android.so`) oluşturulduktan sonra geliştirici, konuşma SDK 'Sı tarafından yüklenebilmeleri için paylaşılan nesneyi Android uygulamasına yerleştirmelidir.
+Paylaşılan nesne (`libgstreamer_android.so`) kurulduktan sonra uygulama geliştiricisinin paylaşılan nesneyi Android uygulamasına yerleştirmesi gerekir, böylece konuşma SDK tarafından yüklenebilir.

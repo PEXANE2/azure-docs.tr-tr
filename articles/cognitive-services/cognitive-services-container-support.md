@@ -1,7 +1,7 @@
 ---
 title: Kapsayıcı desteği
 titleSuffix: Azure Cognitive Services
-description: Docker kapsayıcıları yakın Bilişsel hizmetler verilerinize nasıl edinebildiğini öğrenin.
+description: Docker kapsayıcıların Bilişsel Hizmetleri verilerinize nasıl yaklaştırabileceğini öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,97 +11,97 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: dapine
 ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219417"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Azure Bilişsel hizmetler kapsayıcı desteği
+# <a name="container-support-in-azure-cognitive-services"></a>Azure Bilişsel Hizmetlerde konteyner desteği
 
-Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'da kullanılabilen aynı zengin API 'Leri kullanmasına izin verir ve [Docker kapsayıcılarıyla](https://www.docker.com/what-container)gelen hizmetlerin dağıtılması ve barındıralınması için esneklik sağlar. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil bir alt kümesi için kullanılabilir:
+Azure Bilişsel Hizmetler'deki kapsayıcı desteği, geliştiricilerin Azure'da kullanılabilen aynı zengin API'leri kullanmasına olanak tanır ve [Docker kapsayıcılarıyla](https://www.docker.com/what-container)birlikte gelen hizmetleri nerede dağıtıp barındıracakları konusunda esneklik sağlar. Konteyner desteği şu anda Azure Bilişsel Hizmetlerinin bir alt kümesi için kullanılabilir:
 
 > [!div class="checklist"]
-> * [Anomali algılayıcısı][ad-containers]
-> * [Görüntü İşleme][cv-containers]
-> * [Ünüzü][fa-containers]
-> * [Form tanıyıcı][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
+> * [Anomali Algılayıcısı][ad-containers]
+> * [BilgisayarLı Vizyon][cv-containers]
+> * [Yüz][fa-containers]
+> * [Form Tanıma][fr-containers]
+> * [Dil Anlama (LUIS)][lu-containers]
 > * [Konuşma Hizmeti API’si][sp-containers]
 > * [Metin Analizi][ta-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
-Kapsayıcı içinde bir uygulama veya onun bağımlılıklarını & yapılandırması gibi hizmet birlikte bir kapsayıcı görüntüsüne paketlenmiştir yazılım dağıtımı için bir yaklaşımdır. Çok az kayıpla veya hiç değişiklik yapmadan kapsayıcı görüntüsü, bir kapsayıcı konağı üzerinde dağıtılabilir. Birbirine ve bir sanal makine değerinden daha küçük bir kaplama alanı ile temel işletim sistemi, yalıtılmış kapsayıcılardır. Kapsayıcılar için kısa vadeli görevleri kapsayıcı görüntülerinden oluşturulan ve artık gerekli olmadığında kaldırıldı.
+Kapsayıcılaştırma, bir uygulamanın veya hizmetin bağımlılıkları & yapılandırması da dahil olmak üzere kapsayıcı görüntüsü olarak birlikte paketlendiği yazılım dağıtımına yönelik bir yaklaşımdır. Çok az değişiklik veya hiç değişiklik olmadan, bir kapsayıcı görüntüsü bir kapsayıcı ana bilgisayara dağıtılabilir. Kapsayıcılar birbirinden ve altta yatan işletim sisteminden sanal bir makineden daha küçük bir ayak izine sahip izole edilmiştir. Kapsayıcılar kısa süreli görevler için kapsayıcı görüntülerinden anında çıkarılabilir ve artık gerekmediğinde kaldırılabilir.
 
-Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)kullanılabilir. Bu hizmetler için Azure kaynakları oluşturmak ve araştırmak üzere [Azure Portal](https://portal.azure.com/) oturum açın.
+Bilişsel Hizmetler kaynakları [Microsoft Azure'da](https://azure.microsoft.com)kullanılabilir. Bu hizmetler için Azure kaynakları oluşturmak ve keşfetmek için [Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="features-and-benefits"></a>Özellikler ve avantajlar
 
-- **Sabit altyapı**: değişikliklere uyum sağlayabilirken, düzenli ve güvenilir bir bilinen sistem parametreleri kümesinden yararlanmak Için DevOps ekiplerini etkinleştirin. Kapsayıcılar, öngörülebilir bir ekosistem içinde Pivot esnekliği sağlar ve yapılandırma drmasını önler.
-- **Veriler üzerinde denetim**: müşterilerin bu bilişsel hizmetlerin verileri nerede işleyeceğini seçmesine izin verin. Bu, verileri buluta Gönder olamaz, ancak Bilişsel hizmetler teknoloji erişmesi gereken müşteriler için gereklidir. Karma ortamlarda, veriler, yönetim, kimlik ve güvenlik arasında tutarlılık desteği.
-- **Model güncelleştirmeleri üzerinde denetim**: müşterilere, çözümlerinde dağıtılan modellerin sürümü oluşturma ve güncelleştirme konusunda esneklik sağlar.
-- **Taşınabilir mimari**: Azure 'da, şirket içinde ve kenarda dağıtılabilecek taşınabilir bir uygulama mimarisi oluşturmayı etkinleştirin. Kapsayıcılar doğrudan [Azure Kubernetes hizmetine](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)veya [Azure Stack](/azure-stack/operator)dağıtılan bir [Kubernetes](https://kubernetes.io/) kümesine dağıtılabilir. Daha fazla bilgi için bkz. [Azure Stack Için Kubernetes dağıtma](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Yüksek aktarım hızı/düşük gecikme süresi**: müşterilerin uygulama mantığına ve verilerine fiziksel olarak yakın şekilde çalışmasını sağlayarak yüksek aktarım hızı ve düşük gecikme süreli gereksinimlere yönelik ölçeklendirme olanağı sağlar. Kapsayıcılar, saniye başına işlem (TPS) cap değil ve gerekli donanım kaynakları sağlarsanız, isteğe bağlı işlemek için yukarı ve dışarı ölçeklendirme yapılabilir.
-- **Ölçeklenebilirlik**: sürekli büyüyen ve Kubernetes gibi kapsayıcı düzenleme yazılımıyla birlikte artan popülerlik. ölçeklenebilirlik, Forefront of teknolojik gelişmelerden oluşur. Ölçeklenebilir bir küme kurucusu üzerinde derleme, uygulama geliştirme ve yüksek kullanılabilirlik.
+- **Değişmez altyapı**: DevOps ekiplerinin bilinen sistem parametrelerinin tutarlı ve güvenilir bir kümesinden yararlanmasını sağlarken, değişime uyum sağlayabilmelerini sağlar. Kapsayıcılar, öngörülebilir bir ekosistem içinde dönme ve yapılandırma sürüklenmesini önleme esnekliği sağlar.
+- **Veri denetimi**: Müşterilerin bu Bilişsel Hizmetlerin verilerini nerede işletireceğini seçmelerine izin verin. Bu, buluta veri gönderemeyen ancak Bilişsel Hizmetler teknolojisine erişmeye ihtiyaç duyan müşteriler için gereklidir. Veri, yönetim, kimlik ve güvenlik genelinde karma ortamlarda tutarlılığı destekleyin.
+- **Model güncelleştirmeleri üzerinde denetim**: Müşterilere çözümlerinde dağıtılan modellerin sürümlenmesi ve güncellenmesinde esneklik sağlayın.
+- **Taşınabilir mimari**: Azure'da, şirket içinde ve kenarda dağıtılabilen taşınabilir bir uygulama mimarisioluşturulmasını etkinleştirin. Kapsayıcılar doğrudan Azure [Kubernetes Hizmetine](../aks/index.yml), [Azure Kapsayıcı Örneklerine](../container-instances/index.yml)veya [Azure Yığını'na](/azure-stack/operator)dağıtılan bir [Kubernetes](https://kubernetes.io/) kümesine dağıtılabilir. Daha fazla bilgi için bkz: [Kubernetes'i Azure Yığınına Dağıt.](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+- **Yüksek iş sonu / düşük gecikme süresi**: Bilişsel Hizmetlerin uygulama mantığına ve verilerine fiziksel olarak yakın çalışmasını sağlayarak müşterilere yüksek iş ve düşük gecikme süresi gereksinimlerini ölçeklendirme olanağı sağlar. Kapsayıcılar hareketleri saniyede (TPS) kapatmaz ve gerekli donanım kaynaklarını sağlarsanız talebi işlemek için hem yukarı hem de dışarı ölçeklendirmek için yapılabilir.
+- **Ölçeklenebilirlik**: Kubernetes gibi konteynerizasyon ve konteyner orkestrasyon yazılımının giderek artan popülaritesi ile; ölçeklenebilirlik teknolojik gelişmelerin ön planda yer almaktadır. Ölçeklenebilir küme temeli üzerine inşa edilebilen uygulama geliştirme, yüksek kullanılabilirlik sunar.
 
-## <a name="containers-in-azure-cognitive-services"></a>Azure Bilişsel hizmetler, kapsayıcılar
+## <a name="containers-in-azure-cognitive-services"></a>Azure Bilişsel Hizmetlerde Kapsayıcılar
 
-Azure Bilişsel hizmetler kapsayıcılar, Docker kapsayıcıları, aşağıdaki dizi her biri, Azure Bilişsel hizmetler hizmetlerden işlevlerinin bir alt kümesini içeren sağlar:
+Azure Bilişsel Hizmetler kapsayıcıları, her biri Azure Bilişsel Hizmetler'deki hizmetlerden bir işlev alt kümesi içeren aşağıdaki Docker kapsayıcıkümesini sağlar:
 
 | Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
 |---------|----------|----------|-------------|
-|[Anomali algılayıcısı][ad-containers] |F0, S0|**Anomali-algılayıcı** |Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim iste](https://aka.ms/adcontainer)|
-|[Görüntü İşleme][cv-containers] |F0, S1|**Okuma** |Farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazdırılan metin ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Okuma kapsayıcısı Şu anda yalnızca Ingilizce ile çalışmaktadır.|
-|[Ünüzü][fa-containers] |F0, S0|**Ünüzü** |Görüntülerdeki İnsan yüzlerini algılar ve yüz yer işareti (örneğin, noses ve gözler), cinsiyet, geçerlilik süresi ve diğer makine tahmin yüz özellikleri dahil olmak üzere, öznitelikleri tanımlar. Yüz algılama ek olarak, iki yüzün aynı görüntü ya da farklı görüntüleri bir güven puanı kullanarak aynı olduğundan veya bir benzeyen olmadığını görmek için bir veritabanında yüzleri karşılaştırın veya aynı yüz zaten kontrol edebilirsiniz. Bu gibi durumlarda, benzer yüzlerden de paylaşılan visual nitelikler kullanarak gruplar halinde düzenleyebilirsiniz.<br>[Erişim iste](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[Form tanıyıcı][fr-containers] |F0, S0|**Form tanıyıcı** |Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim iste](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS][lu-containers] |F0, S0|**Lusıs** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Bir eğitilen veya yayımlanmış dil anlama modeli olarak da bilinen bir LUIS uygulaması bir docker kapsayıcısına yükler ve kapsayıcının API uç noktalardan gelen sorgu tahminler elde etmek için erişim sağlar. Kapsayıcıda sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [Luo portalına](https://www.luis.ai) geri yükleyebilirsiniz.|
+|[Anomali dedektörü][ad-containers] |F0, S0|**Anomali-Dedektör** |Anomali Dedektörü API'sı, zaman serisi verilerinizdeki anormallikleri makine öğrenimi ile izlemenizi ve algılamanızı sağlar.<br>[Erişim izni isteme](https://aka.ms/adcontainer)|
+|[BilgisayarLı Vizyon][cv-containers] |F0, S1|**Okuma** |Makbuzlar, posterler ve kartvizitler gibi farklı yüzeylere ve arka planlara sahip çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Read kapsayıcısı ayrıca resimlerdeki *el yazısı metni* algılar ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Read kapsayıcısı şu anda yalnızca İngilizce ile çalışır.|
+|[Yüz][fa-containers] |F0, S0|**Yüz** |Görüntülerdeki insan yüzlerini algılar ve yüz işaretleri (burun ve gözler gibi), cinsiyet, yaş ve makine tarafından öngörülen diğer yüz özellikleri gibi özellikleri tanımlar. Algılamaya ek olarak, Face aynı görüntüdeki iki yüzün veya farklı görüntülerin bir güven puanı kullanarak aynı olup olmadığını denetleyebilir veya benzer veya aynı yüzün zaten var olup olmadığını görmek için yüzleri veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel özellikleri kullanarak benzer yüzleri gruplar halinde düzenleyebilir.<br>[Erişim izni isteme](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[Form tanıyıcı][fr-containers] |F0, S0|**Form Tanıma** |Form Anlama, anahtar değeri çiftleri ve tabloları formlardan tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim izni isteme](https://aka.ms/FormRecognizerContainerRequestAccess)|
+|[LUIS][lu-containers] |F0, S0|**LUIS** ([resim](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Luis uygulaması olarak da bilinen eğitimli veya yayımlanmış bir Dil Bilgisi modelini bir docker konteynerine yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıdan sorgu günlükleri toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [LUIS portalına](https://www.luis.ai) geri yükleyebilirsiniz.|
 |[Konuşma Hizmeti API’si][sp-containers-stt] |F0, S0|**Konuşmayı metne dönüştürme** |Sürekli, gerçek zamanlı konuşmaları metne dönüştürür.|
-|[Konuşma Hizmeti API’si][sp-containers-cstt] |F0, S0|**Özel Konuşma Tanıma metin** |Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme.|
+|[Konuşma Hizmeti API’si][sp-containers-cstt] |F0, S0|**Özel Konuşma-metin** |Sürekli gerçek zamanlı konuşmayı özel bir model kullanarak metne dönüştürür.|
 |[Konuşma Hizmeti API’si][sp-containers-tts] |F0, S0|**Metin okuma** |Metni, doğal sesli konuşmaya dönüştürür.|
-|[Konuşma Hizmeti API’si][sp-containers-ctts] |F0, S0|**Özel metin okuma** |Özel bir model kullanarak metni doğal-sounkonuşmaya dönüştürür.|
-|[Metin Analizi][ta-containers-keyphrase] |F0, S|**Anahtar ifade ayıklama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Ana noktaları belirleyin, anahtar ifadeleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. |
-|[Metin Analizi][ta-containers-language]|F0, S|**Dil algılama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |En fazla 120 dil için hangi dil giriş metni yazılır ve rapor istekte gönderilen her belge için bir tek dil kodu algılar. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. |
-|[Metin Analizi][ta-containers-sentiment]|F0, S|**Yaklaşım Analizi** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Ham metin pozitif veya negatif yaklaşım hakkında ipuçları için analiz eder. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir. Analiz modelleri metin ve doğal dil Microsoft teknolojilerinin kapsamlı bir gövdesi kullanarak önceden eğitilir. API, [seçili dillerde](./text-analytics/language-support.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir. |
+|[Konuşma Hizmeti API’si][sp-containers-ctts] |F0, S0|**Özel Metinden konuşmaya** |Özel bir model kullanarak metni doğal görünen konuşmaya dönüştürür.|
+|[Metin Analizi][ta-containers-keyphrase] |F0, S|**Anahtar Tümceme Çıkarma** ([resim](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Ana noktaları tanımlamak için anahtar tümcecikleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. |
+|[Metin Analizi][ta-containers-language]|F0, S|**Dil Algılama** ([resim](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |120'ye kadar dil için, giriş metninin hangi dilde yazıldığını algılar ve istek üzerine gönderilen her belge için tek bir dil kodu bildirir. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. |
+|[Metin Analizi][ta-containers-sentiment]|F0, S|**Duygu Analizi** ([resim](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Olumlu veya olumsuz duygular hakkında ipuçları için ham metni analiz eder. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir. Analiz modelleri, Microsoft'un kapsamlı metin ve doğal dil teknolojileri gövdesi kullanılarak önceden eğitilmiştir. API, [seçili dillerde](./text-analytics/language-support.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
 -->
 
-Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları içinde desteklenir. Tek bir bilişsel hizmetler oluşturup bir adet tek kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler genelinde aynı faturalandırma anahtarını kullanabilirsiniz:
+Buna ek olarak, bazı kapsayıcılar Bilişsel Hizmetler [**All-In-One sunan**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları desteklenir. Tek bir Bilişsel Hizmetler Hepsi Bir Kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler arasında aynı faturalandırma anahtarını kullanabilirsiniz:
 
 * Görüntü İşleme
 * Yüz
 * LUIS
 * Metin Analizi
 
-## <a name="container-availability-in-azure-cognitive-services"></a>Azure Bilişsel hizmetler kapsayıcı kullanılabilirlik
+## <a name="container-availability-in-azure-cognitive-services"></a>Azure Bilişsel Hizmetler'de konteyner kullanılabilirliği
 
-Azure aboneliğiniz üzerinden genel kullanıma açık Azure Bilişsel hizmetler kapsayıcıları ve Docker kapsayıcı görüntülerini Microsoft kapsayıcı kayıt defteri veya Docker Hub çekilebilir. Uygun kayıt defterinden bir kapsayıcı görüntüsünü indirmek için [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanabilirsiniz.
+Azure Bilişsel Hizmetler kapsayıcıları Azure aboneliğiniz aracılığıyla herkese açıktır ve Docker kapsayıcı görüntüleri Microsoft Konteyner Kayıt Defteri'nden veya Docker Hub'ından çekilebilir. Uygun kayıt defterinden bir konteyner görüntüsü indirmek için [docker çekme](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Şu anda, aşağıdaki kapsayıcılara erişmek için bir kaydolma işlemini doldurmanız gerekir. burada, sizin, şirketiniz ve kapsayıcıları uygulamak istediğiniz kullanım durumu ile ilgili soruları içeren bir soru formunu doldurun ve gönderebilirsiniz. Erişim izni verildiğinde ve kimlik bilgilerini sağladıktan sonra, Azure Container Registry tarafından barındırılan özel bir kapsayıcı kayıt defterinden kapsayıcı görüntülerini çekebilirsiniz.
-> * [Anomali algılayıcısı](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
-> * [Ünüzü](Face/face-how-to-install-containers.md)
-> * [Form tanıyıcı](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
+> Şu anda, aşağıdaki kapsayıcılara erişmek için bir kayıt işlemini tamamlamanız ve sizinle, şirketinizle ve kapsayıcıları uygulamak istediğiniz kullanım örneği yle ilgili sorular içeren bir soru formu doldurmanız ve gönderdiğiniz bir kayıt işlemini tamamlamanız gerekir. Erişim izni verildikten ve kimlik bilgileri sağlandıktan sonra, Azure Konteyner Kayıt Defteri tarafından barındırılan özel bir kapsayıcı kayıt defterinden kapsayıcı görüntülerini çekebilirsiniz.
+> * [Anomali dedektörü](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [Yüz](Face/face-how-to-install-containers.md)
+> * [Form Tanıma](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [Okuma](computer-vision/computer-vision-how-to-install-containers.md)
-> * [Konuşmadan metne ve metinden konuşmaya](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
+> * [Konuşmadan metne ve Metinden konuşmaya](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure Bilişsel hizmetler kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
+Azure Bilişsel Hizmetler kapsayıcılarını kullanmadan önce aşağıdaki ön koşulları karşılamanız gerekir:
 
-**Docker altyapısı**: Docker altyapısının yerel olarak yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)ve [Windows](https://docs.docker.com/docker-for-windows/)üzerinde Docker ortamını yapılandıran paketler sağlar. Windows Docker Linux kapsayıcıları destekleyecek şekilde yapılandırılması gerekir. Docker Kapsayıcıları ayrıca doğrudan [Azure Kubernetes hizmetine](../aks/index.yml) veya [Azure Container Instances](../container-instances/index.yml)dağıtılabilir.
+**Docker Engine**: Docker Engine'i yerel olarak kurmuş olmalısınız. Docker, [macOS,](https://docs.docker.com/docker-for-mac/) [Linux](https://docs.docker.com/engine/installation/#supported-platforms)ve [Windows'da](https://docs.docker.com/docker-for-windows/)Docker ortamını yapılandıran paketler sağlar. Windows'da Docker, Linux kapsayıcılarını destekleyecek şekilde yapılandırılmalıdır. Docker kapsayıcıları doğrudan Azure [Kubernetes Hizmeti'ne](../aks/index.yml) veya [Azure Kapsayıcı Örnekleri'ne](../container-instances/index.yml)de dağıtılabilir.
 
-Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır.
+Docker, kapsayıcıların Azure'a bağlanmasına ve fatura verilerini göndermesine izin verecek şekilde yapılandırılmalıdır.
 
-**Microsoft Container Registry ve Docker Ile benzerlik**: kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Microsoft Container Registry ve Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir.
+**Microsoft Konteyner Kayıt Defteri ve Docker ile aşinalık**: Hem Microsoft Konteyner Kayıt Defteri hem de Docker kavramları,kayıt defterleri, depolar, `docker` kapsayıcılar ve kapsayıcı görüntüleri gibi temel bilgilere ve temel komutlar hakkında bilgi sahibi olmalısınız.
 
-Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).
+Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
 
-Kapsayıcılara sunucu ve bellek ayırma gereksinimleri dahil olmak üzere kendi gereksinimleriyle de sahip olabilir.
+Tek tek kapsayıcıların sunucu ve bellek ayırma gereksinimleri de dahil olmak üzere kendi gereksinimleri olabilir.
 
 [!INCLUDE [Cognitive Services container security](containers/includes/cognitive-services-container-security.md)]
 
@@ -109,17 +109,17 @@ Kapsayıcılara sunucu ve bellek ayırma gereksinimleri dahil olmak üzere kendi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilişsel hizmetler ile kullanabileceğiniz [kapsayıcı Tarifler](containers/container-reuse-recipe.md) hakkında bilgi edinin.
+Bilişsel Hizmetler ile kullanabileceğiniz [konteyner tarifleri](containers/container-reuse-recipe.md) hakkında bilgi edinin.
 
-Yükleme ve Azure Bilişsel hizmetler, kapsayıcılar tarafından sağlanan işlevselliği keşfedin:
+Azure Bilişsel Hizmetleri'nde kapsayıcılar tarafından sağlanan işlevselliği yükleyin ve keşfedin:
 
-* [Anomali algılayıcı kapsayıcıları][ad-containers]
-* [Görüntü İşleme kapsayıcılar][cv-containers]
-* [Yüz kapsayıcıları][fa-containers]
-* [Form tanıyıcı kapsayıcıları][fr-containers]
-* [Language Understanding (LUSıS) kapsayıcıları][lu-containers]
-* [Konuşma hizmeti API kapsayıcıları][sp-containers]
-* [Metin Analizi kapsayıcılar][ta-containers]
+* [Anomali Dedektörü konteynerleri][ad-containers]
+* [Bilgisayarlı Vizyon kapları][cv-containers]
+* [Yüz kapları][fa-containers]
+* [Form Tanıyıcı kapları][fr-containers]
+* [Dil Anlama (LUIS) kapları][lu-containers]
+* [Konuşma Hizmeti API kapları][sp-containers]
+* [Metin Analizi kapları][ta-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
