@@ -1,6 +1,6 @@
 ---
 title: Spark etkinliğini kullanarak verileri dönüştürme
-description: Spark etkinliğini kullanarak bir Azure Data Factory ardışık düzeninde Spark programları çalıştırarak verileri dönüştürmeyi öğrenin.
+description: Spark Etkinliği'ni kullanarak Azure veri fabrikası ardışık hattından Spark programlarını çalıştırarak verileri nasıl dönüştürdüğünüzi öğrenin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,22 +11,22 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
 ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912962"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki Spark etkinliğini kullanarak verileri dönüştürme
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-spark.md)
 > * [Geçerli sürüm](transform-data-using-spark.md)
 
-Bir [Data Factory işlem](concepts-pipelines-activities.md) hattındaki Spark etkinliği, [kendi](compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) bağlı HDInsight kümeniz üzerinde bir Spark programı yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. İsteğe bağlı Spark bağlı hizmeti kullandığınızda Data Factory, verileri işlemek için tam zamanında bir Spark kümesi oluşturur ve işlem tamamlandıktan sonra kümeyi siler. 
+Veri Fabrikası [ardışık ardışık](concepts-pipelines-activities.md) ardışık spark [etkinliği, kendi veya](compute-linked-services.md#azure-hdinsight-linked-service) [isteğe bağlı](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight kümenizde bir Kıvılcım programı yürütür. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır. İsteğe bağlı bir Spark bağlantılı hizmeti kullandığınızda, Veri Fabrikası verileri işlemek için tam zamanında bir Kıvılcım kümesi oluşturur ve işleme tamamlandıktan sonra kümeyi siler. 
 
 
-## <a name="spark-activity-properties"></a>Spark etkinlik özellikleri
-Spark etkinliğinin örnek JSON tanımı aşağıda verilmiştir:    
+## <a name="spark-activity-properties"></a>Kıvılcım etkinlik özellikleri
+Burada bir Kıvılcım Etkinliği örnek JSON tanımı:    
 
 ```json
 {
@@ -57,37 +57,37 @@ Spark etkinliğinin örnek JSON tanımı aşağıda verilmiştir:
 
 Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmaktadır:
 
-| Özellik              | Açıklama                              | Gereklidir |
+| Özellik              | Açıklama                              | Gerekli |
 | --------------------- | ---------------------------------------- | -------- |
-| ad                  | İşlem hattındaki etkinliğin adı.    | Yes      |
+| ad                  | Boru hattındaki etkinliğin adı.    | Evet      |
 | açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| type                  | Spark etkinliği için etkinlik türü HDInsightSpark ' dir. | Yes      |
-| linkedServiceName     | Spark programının çalıştığı HDInsight Spark bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| SparkJobLinkedService | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan Azure depolama bağlı hizmeti.  Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca bir Azure depolama bağlı hizmeti olabilir. | Hayır       |
-| rootPath              | Spark dosyasını içeren Azure Blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. Bu klasörün yapısıyla ilgili ayrıntılar için klasör yapısı bölümüne (sonraki bölüm) bakın. | Yes      |
-| entryFilePath         | Spark kodunun/paketinin kök klasörünün göreli yolu. Giriş dosyası bir Python dosyası ya da. jar dosyası olmalıdır. | Yes      |
-| className             | Uygulamanın Java/Spark ana sınıfı      | Hayır       |
-| arguments             | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır       |
-| proxyUser             | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı | Hayır       |
-| Mini yapılandırma           | Spark yapılandırma özellikleri için değerler belirtin: [Spark yapılandırma-uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Hayır       |
-| GetDebugInfo          | Spark günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) mini iş Linkedservice tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
+| type                  | Spark Activity için etkinlik türü HDInsightSpark'tır. | Evet      |
+| linkedServiceName     | Spark programının çalıştığı HDInsight Spark Bağlantılı Hizmetin adı. Bu bağlantılı hizmet hakkında bilgi edinmek için [Bkz. Compute bağlantılı hizmetler](compute-linked-services.md) makalesine bakın. | Evet      |
+| SparkJobLinkedService | Spark iş dosyasını, bağımlılıkları ve günlükleri tutan Azure Depolama bağlantılı hizmet.  Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca Azure Depolama'ya bağlı bir hizmet olabilir. | Hayır       |
+| rootPath              | Azure Blob kapsayıcısı ve Spark dosyasını içeren klasör. Dosya adı büyük/küçük harf duyarlıdır. Bu klasörün yapısı yla ilgili ayrıntılar için klasör yapısı bölümüne (sonraki bölüm) bakın. | Evet      |
+| entryFilePath         | Kıvılcım kodunun/paketinin kök klasörüne göreli yol. Giriş dosyası python dosyası veya .jar dosyası olmalıdır. | Evet      |
+| Classname             | Uygulamanın Java/Spark ana sınıfı      | Hayır       |
+| Bağımsız değişken             | Spark programına komut satırı bağımsız değişkenlerinin listesi. | Hayır       |
+| proxyKullanıcı             | Spark programını yürütmek için taklit etmek için kullanıcı hesabı | Hayır       |
+| kıvılcımConfig           | Konu yla listelenen Spark yapılandırma özellikleri için değerleri belirtin: [Spark Yapılandırması - Uygulama özellikleri.](https://spark.apache.org/docs/latest/configuration.html#available-properties) | Hayır       |
+| getDebugInfo          | Kıvılcım günlük dosyalarının, sparkJobLinkedService tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan Azure depolama alanına kopyalandığında belirtir. İzin verilen değerler: Yok, Her Zaman veya Hata. Varsayılan değer: Hiçbiri. | Hayır       |
 
 ## <a name="folder-structure"></a>Klasör yapısı
-Spark işleri Pig/Hive işlerinin daha genişdir. Spark işleri için, jar paketleri (Java SıNıFYOLUNA yerleştirilmiş), Python dosyaları (PYTHONPATH üzerine yerleştirilmiş) ve diğer tüm dosyalar gibi birden çok bağımlılığı sağlayabilirsiniz.
+Kıvılcım işleri Pig/Hive işlerinden daha genişletilebilir. Kıvılcım işleri için kavanoz paketleri (java CLASSPATH'e yerleştirilir), python dosyaları (PYTHONPATH'e yerleştirilir) ve diğer dosyalar gibi birden çok bağımlılık sağlayabilirsiniz.
 
-HDInsight bağlı hizmeti tarafından başvurulan Azure Blob depolama alanında aşağıdaki klasör yapısını oluşturun. Ardından, bağımlı dosyaları **Entryfilepath**tarafından temsil edilen kök klasördeki uygun alt klasörlere yükleyin. Örneğin, Python dosyalarını pyfiles alt klasörüne ve jar dosyalarını kök klasörün jar dosyaları dışındaki alt klasörüne yükleyin. Çalışma zamanında Data Factory hizmeti, Azure Blob depolamada aşağıdaki klasör yapısını bekliyor:     
+HDInsight bağlantılı hizmet tarafından başvurulan Azure Blob depolama alanında aşağıdaki klasör yapısını oluşturun. Daha sonra, bağımlı dosyaları **entryFilePath**tarafından temsil edilen kök klasöründe uygun alt klasörlere yükleyin. Örneğin, python dosyalarını pyFiles alt klasörüne ve kavanoz dosyalarına kök klasörün kavanoz alt klasörüne yükleyin. Çalışma zamanında, Veri Fabrikası hizmeti Azure Blob depolamaalanında aşağıdaki klasör yapısını bekler:     
 
-| Yol                  | Açıklama                              | Gereklidir | Tür   |
+| Yol                  | Açıklama                              | Gerekli | Tür   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.` (kök)            | Depolama bağlı hizmetindeki Spark işinin kök yolu | Yes      | Klasör |
-| &lt;Kullanıcı tanımlı &gt; | Spark işinin giriş dosyasını işaret eden yol | Yes      | Dosya   |
-| ./jars                | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir | Hayır       | Klasör |
-| ./pyFiles             | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir | Hayır       | Klasör |
-| ./files               | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir | Hayır       | Klasör |
-| ./archives            | Bu klasördeki tüm dosyalar sıkıştırılmamış | Hayır       | Klasör |
-| ./logs                | Spark kümesinden günlükleri içeren klasör. | Hayır       | Klasör |
+| `.`(kök)            | Depolama bağlantılı hizmetteki Kıvılcım işinin kök yolu | Evet      | Klasör |
+| &lt;kullanıcı tanımlı&gt; | Kıvılcım işinin giriş dosyasına işaret eden yol | Evet      | Dosya   |
+| ./kavanozlar                | Bu klasörün altındaki tüm dosyalar yüklenir ve kümenin java sınıf yoluna yerleştirilir | Hayır       | Klasör |
+| ./pyFiles             | Bu klasörün altındaki tüm dosyalar yüklenir ve kümenin PYTHONPATH'ine yerleştirilir | Hayır       | Klasör |
+| ./dosyalar               | Bu klasörün altındaki tüm dosyalar yüklenir ve uygulayıcı çalışma dizinine yerleştirilir | Hayır       | Klasör |
+| ./arşivler            | Bu klasörün altındaki tüm dosyalar sıkıştırılmamış | Hayır       | Klasör |
+| ./günlükleri                | Spark kümesinden günlükleri içeren klasör. | Hayır       | Klasör |
 
-HDInsight bağlı hizmeti tarafından başvurulan Azure Blob depolamada iki Spark iş dosyası içeren bir depolama örneği aşağıda verilmiştir.
+Aşağıda, HDInsight bağlantılı hizmet tarafından başvurulan Azure Blob Depolama'sında iki Spark iş dosyası içeren bir depolama alanı örneği verilmiştir.
 
 ```
 SparkJob1
@@ -108,14 +108,14 @@ SparkJob2
     logs
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın: 
+Verileri başka şekillerde nasıl dönüştüreceklerini açıklayan aşağıdaki makalelere bakın: 
 
 * [U-SQL etkinliği](transform-data-using-data-lake-analytics.md)
-* [Hive etkinliği](transform-data-using-hadoop-hive.md)
-* [Pig etkinliği](transform-data-using-hadoop-pig.md)
-* [MapReduce etkinliği](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
-* [Spark etkinliği](transform-data-using-spark.md)
+* [Kovan aktivitesi](transform-data-using-hadoop-hive.md)
+* [Domuz aktivitesi](transform-data-using-hadoop-pig.md)
+* [MapAz etkinliği](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop Akış etkinliği](transform-data-using-hadoop-streaming.md)
+* [Kıvılcım etkinliği](transform-data-using-spark.md)
 * [.NET özel etkinliği](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Batch yürütme etkinliği](transform-data-using-machine-learning.md)
-* [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)
+* [Makine Öğrenimi Toplu Yürütme Etkinliği](transform-data-using-machine-learning.md)
+* [Depolanan yordam etkinliği](transform-data-using-stored-procedure.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Trafik Analizi şema güncelleştirmesi-Mart 2020 | Microsoft Docs
-description: Trafik Analizi şemasında yeni alanlarla örnek sorgular.
+title: Azure trafik analizi şeması güncellemesi - Mart 2020 | Microsoft Dokümanlar
+description: Trafik Analitiği şemasında yeni alanlar içeren örnek sorgular.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 0e9d37e3a89473e59b94168f8f8c80e7a6621107
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969071"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Trafik Analizi şemasında yeni alanlarla örnek sorgular (Ağustos 2019 şema güncelleştirmesi)
+# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Trafik Analitiği şemasında yeni alanlar içeren örnek sorgular (Ağustos 2019 şema güncelleştirmesi)
 
-[Trafik Analizi log şeması](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) , aşağıdaki yeni alanları içerecek şekilde güncelleştirilmiştir: **SrcPublicIPs_s** , **DestPublicIPs_s**, **NSGRule_s**. Önümüzdeki birkaç ay içinde şu eski alanlar kullanım dışı olacaktır: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
-Yeni alanlar, kaynak ve hedef IP 'Ler hakkında bilgi sağlar ve sorguları basitleştirir.
+[Trafik Analizi Günlüğü şeması](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) aşağıdaki yeni alanları içerecek şekilde güncellendi: **SrcPublicIPs_s** , **DestPublicIPs_s**, **NSGRule_s**. Önümüzdeki birkaç ay içinde, aşağıdaki eski alanlar amortismana sunulacak: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
+Yeni alanlar kaynak ve hedef IP'ler hakkında bilgi sağlar ve sorguları basitleştirir.
 
-Aşağıda, eski alanların yenilerle nasıl değiştirileceği gösterilmektedir.
+Aşağıda, eski alanların yenileriyle nasıl değiştirilini gösteren üç örnek verilmiştir.
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>Örnek 1-VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s, PublicIPs_s
+## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>Örnek 1 - VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s, PublicIPs_s
 
-Azure ve dış genel akışlar için kaynak ve hedef durumları, özellikle Azucumhuriyeti ve ExternalPublic akışları için FlowDirection_s alanından çıkarması gerekmez. Bir NVA (ağ sanal gereci) söz konusu olduğunda, FlowDirection_s alanı da kullanılmak üzere uygunsuz olabilir.
+Azure Genel ve Harici Genel akışları için özellikle FlowDirection_s alanından Azure ve Dış genel akışlar için Kaynak ve hedef durumları çıkarmak zorunda değiliz. Bir NVA (Network Virtual Appliance) durumunda, FlowDirection_s alanı da kullanılamayacağı kadar uygun olmayabilir.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -72,11 +72,11 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 ```
 
 
-## <a name="example-2---nsgrules_s"></a>Örnek 2-NSGRules_s
+## <a name="example-2---nsgrules_s"></a>Örnek 2 - NSGRules_s
 
-Önceki alan biçimiydi: < Dizin değeri 0) > | < NSG_RULENAME > |<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+Önceki alan biçimi: <Dizin değeri 0)>|<NSG_RULENAME>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-Daha önce NSG ve Nsgrular genelinde veri toplamak için kullandık. Şimdi toplamıyoruz. NSGList_s yalnızca bir NSG ve NSGRules_s yalnızca bir kural içermesi için de kullanılır. Bu nedenle, buradaki karmaşık biçimlendirmeyi kaldırdık ve aynı şekilde, aşağıda bahsedilen gibi diğer alanlarda de bulabilirsiniz:
+Daha önce nsg ve NSGRules genelinde veri toplamak için kullanılır. Şimdi bir araya değiliz. Yani NSGList_s sadece bir NSG ve NSGRules_s da sadece bir kural içeren içerir. Bu yüzden burada karmaşık biçimlendirme kaldırdık ve aynı aşağıda belirtildiği gibi diğer alanlarda bulunabilir:
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -101,16 +101,16 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>Örnek 3-FlowCount_d
+## <a name="example-3---flowcount_d"></a>Örnek 3 - FlowCount_d
 
-NSG genelinde verileri kulüetdiğimiz için FlowCount_d yalnızca AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d olur.
-Yukarıdaki 4 ' ün yalnızca 1 ' i sıfır değil ve REST üç olacak 0 olur. Ayrıca, akışın yakalandığı NIC 'deki durum ve sayı olduğunu gösterir.
+Biz NSG genelinde kulüp veri olmadığından, FlowCount_d sadece + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d AllowedInFlows_d.
+Yukarıdaki 4'ün sadece 1'i sıfırsız, geri kalan üç kişi ise 0 olacaktır. Ve bu, niş'te akışın yakalandığı durumu ve sayımı gösterir.
 
-Akışa izin verildiyse, "Izin verilen" önekli alanlardan biri doldurulur. Diğer bir deyişle "reddedildi" önekli bir alan doldurulur.
-Akış geldiği takdirde, alanlardan biri "InFlows_d" sonsabit alanı gibi "\_d" ile sabitlenir. Else "OutFlows_d" doldurulacak.
+Akışa izin verilirse, "İzin Verilen" ile önceden belirlenmiş alanlardan biri doldurulur. Yoksa "Reddedildi" ile önceden belirlenmiş bir alan doldurulur.
+Akış gelen ise, "d"\_ile sabitlenmiş alanlardan biri "InFlows_d" suffixed alan olarak doldurulur. Başka "OutFlows_d" doldurulur.
 
-2 ' den fazla koşula bağlı olarak, 4 ' ten hangisini doldurabileceğinizi biliyoruz.
+Yukarıdaki 2 koşula bağlı olarak, 4'ten hangisinin doldurulacağını biliyoruz.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Sık sorulan soruların yanıtlarını almak için bkz. [Traffic ANALYTICS SSS](traffic-analytics-faq.md) , işlevlerle ilgili ayrıntıları görmek için bkz. [Trafik Analizi belgeleri](traffic-analytics.md)
+Sık sorulan soruların yanıtlarını almak için, işlevsellikle ilgili ayrıntıları görmek için [Trafik analizi SSS](traffic-analytics-faq.md) bölümüne bakın, [Trafik analizi belgelerine](traffic-analytics.md) bakın

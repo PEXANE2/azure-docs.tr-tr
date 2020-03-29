@@ -1,7 +1,7 @@
 ---
-title: Azure VNET ağ geçidi ve bağlantılarında sorun giderme-Azure CLı
+title: Azure VNET Ağ Geçidi ve Bağlantıları Sorun Giderme - Azure CLI
 titleSuffix: Azure Network Watcher
-description: Bu sayfada Azure ağ Izleyicisi 'ni kullanarak Azure CLı sorunlarını giderme açıklanmaktadır
+description: Bu sayfa, Azure Ağ İzleyicisi sorun giderme Azure CLI'nin nasıl kullanılacağını açıklar
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,43 +13,43 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: dc0aa8e6099a7ec017aead2fe0f16e9712e17936
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840732"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure ağ Izleyicisi Azure CLı kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure Ağ İzleyicisi Azure CLI kullanarak Sanal Ağ Ağ Geçidi ve Bağlantıları Sorun Giderme
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
-> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
+> - [Powershell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Ağ Izleyicisi, Azure 'daki ağ kaynaklarınızı kavramak üzere birçok özellik sağlar. Bu yeteneklerden biri kaynak sorun gidermeye sahiptir. Kaynak sorunlarını giderme, Portal, PowerShell, CLı veya REST API aracılığıyla çağrılabilir. Çağrıldığında, ağ Izleyicisi bir sanal ağ geçidinin veya bir bağlantının sistem durumunu inceler ve bulgularını döndürür.
+Ağ İzleyicisi, Azure'daki ağ kaynaklarınızı anlamayla ilgili olarak birçok özellik sağlar. Bu özelliklerden biri kaynak sorun gidermedir. Kaynak sorun giderme portalı, PowerShell, CLI veya REST API üzerinden çağrılabilir. Ağ İzleyicisi çağrıldığında, Sanal Ağ Ağ Ağ Geçidi'nin veya Bağlantının sistem durumunu inceler ve bulgularını döndürür.
 
-Bu makaledeki adımları gerçekleştirmek için [Mac, Linux ve Windows Için Azure komut satırı arabirimini (CLI) yüklemeniz](/cli/azure/install-azure-cli)gerekir.
+Bu makaledeki adımları gerçekleştirmek için [Mac, Linux ve Windows (CLI) için Azure komut satırı arabirimini yüklemeniz](/cli/azure/install-azure-cli)gerekir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
+Bu senaryo, Ağ İzleyicisi oluşturmak için [Ağ İzleyicisi Oluştur'daki](network-watcher-create.md) adımları zaten izlediğinizi varsayar.
 
-Desteklenen ağ geçidi türlerinin bir listesi için, [desteklenen ağ geçidi türleri](network-watcher-troubleshoot-overview.md#supported-gateway-types)' ni ziyaret edin.
+Desteklenen ağ geçidi türlerinin listesi ziyaret, [Desteklenen Ağ Geçidi türleri.](network-watcher-troubleshoot-overview.md#supported-gateway-types)
 
 ## <a name="overview"></a>Genel Bakış
 
-Kaynak sorunlarını giderme, sanal ağ geçitleri ve bağlantılarıyla ortaya çıkan sorunları gidermeye yönelik bir özellik sağlar. Kaynak sorun gidermeye bir istek yapıldığında, Günlükler sorgulanmakta ve incelenmekte olur. İnceleme tamamlandığında sonuçlar döndürülür. Kaynak sorun giderme istekleri uzun süren isteklerdir, bu da bir sonuç döndürmek için birden çok dakika sürebilir. Sorun gidermeye ait Günlükler, belirtilen depolama hesabındaki bir kapsayıcıda depolanır.
+Kaynak sorun giderme, Sanal Ağ Ağ Ağ Geçitleri ve Bağlantıları ile ortaya çıkan sorun giderme olanağı sağlar. Kaynak sorun giderme için bir istek yapıldığında, günlükler sorgulanır ve denetlenir. Denetim tamamlandığında, sonuçlar döndürülür. Kaynak sorun giderme istekleri, sonucu döndürmek için birden çok dakika sürebilir uzun çalışan istekler vardır. Sorun giderme günlükleri belirtilen bir depolama hesabında bir kapsayıcıda depolanır.
 
-## <a name="retrieve-a-virtual-network-gateway-connection"></a>Sanal ağ geçidi bağlantısı alma
+## <a name="retrieve-a-virtual-network-gateway-connection"></a>Sanal Ağ Ağ Geçidi Bağlantısı Alma
 
-Bu örnekte, kaynak sorunlarını giderme bir bağlantıda çalıştırılmakta. Ayrıca, bir sanal ağ geçidi de geçirebilirsiniz. Aşağıdaki cmdlet, bir kaynak grubundaki VPN bağlantılarını listeler.
+Bu örnekte, bağlantıda kaynak sorun giderme çalıştırılıyor. Ayrıca bir Sanal Ağ Ağ Ağ Geçidi geçirebilirsiniz. Aşağıdaki cmdlet bir kaynak grubundaki vpn bağlantılarını listeler.
 
 ```azurecli
 az network vpn-connection list --resource-group resourceGroupName
 ```
 
-Bağlantının adına sahip olduktan sonra, kaynak kimliğini almak için bu komutu çalıştırabilirsiniz:
+Bağlantının adını aldıktan sonra, kaynak kimliğini almak için bu komutu çalıştırabilirsiniz:
 
 ```azurecli
 az network vpn-connection show --resource-group resourceGroupName --ids vpnConnectionIds
@@ -57,7 +57,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Kaynak sorun giderme, kaynağın durumuyla ilgili verileri döndürür, ayrıca günlükleri gözden geçirilecek bir depolama hesabına kaydeder. Bu adımda, mevcut bir depolama hesabı varsa bir depolama hesabı oluşturuyoruz, onu kullanabilirsiniz.
+Kaynak sorun giderme, kaynağın durumu yla ilgili verileri döndürür, ayrıca günlükleri gözden geçirilecek bir depolama hesabına kaydeder. Bu adımda, bir depolama hesabı oluştururuz, varolan bir depolama hesabı varsa, bunu kullanabilirsiniz.
 
 1. Depolama hesabı oluşturma
 
@@ -65,7 +65,7 @@ Kaynak sorun giderme, kaynağın durumuyla ilgili verileri döndürür, ayrıca 
     az storage account create --name storageAccountName --location westcentralus --resource-group resourceGroupName --sku Standard_LRS
     ```
 
-1. Depolama hesabı anahtarlarını al
+1. Depolama hesabı anahtarlarını alın
 
     ```azurecli
     az storage account keys list --resource-group resourcegroupName --account-name storageAccountName
@@ -77,22 +77,22 @@ Kaynak sorun giderme, kaynağın durumuyla ilgili verileri döndürür, ayrıca 
     az storage container create --account-name storageAccountName --account-key {storageAccountKey} --name logs
     ```
 
-## <a name="run-network-watcher-resource-troubleshooting"></a>Ağ Izleyicisi kaynak sorunlarını giderme
+## <a name="run-network-watcher-resource-troubleshooting"></a>Ağ İzleyicikaynak sorun giderme çalıştırın
 
-`az network watcher troubleshooting` cmdlet 'ini kullanarak kaynak sorunlarını giderin. Cmdlet 'i kaynak grubu, ağ izleyicisinin adı, bağlantı kimliği, depolama hesabının kimliği ve sorun giderme sonuçlarını depolamak için Blobun yolu geçiririz.
+Cmdlet ile `az network watcher troubleshooting` kaynakları giderme. Cmdlet kaynak grubunu, Ağ İzleyicisinin adını, bağlantıkimliğini, depolama hesabının kimliğini ve sorun giderme sonuçlarını depolamak için blob'a giden yolu geçiyoruz.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}
 ```
 
-Cmdlet 'ini çalıştırdığınızda, ağ Izleyicisi, sistem durumunu doğrulamak için kaynağı gözden geçirir. Sonuçları kabuğa döndürür ve sonuçların günlüklerini belirtilen depolama hesabında depolar.
+Cmdlet'i çalıştırdıktan sonra, Ağ İzleyicisi durumu doğrulamak için kaynağı gözden geçirir. Sonuçları kabuka döndürür ve sonuçların günlüklerini belirtilen depolama hesabında saklar.
 
 ## <a name="understanding-the-results"></a>Sonuçları anlama
 
-Eylem metni, sorunun nasıl çözüleceği hakkında genel rehberlik sağlar. Sorun için bir eylem uygulanabilir ise, ek kılavuzlarla bir bağlantı sağlanır. Ek bir kılavuz olmadığı durumlarda yanıt, bir destek talebi açmak için URL 'yi sağlar.  Yanıtın özellikleri ve dahil olan özellikler hakkında daha fazla bilgi için [ağ Izleyicisi sorunlarını giderme genel bakış](network-watcher-troubleshoot-overview.md) ' ı ziyaret edin
+Eylem metni, sorunun nasıl çözüleceği konusunda genel yönerge ler sağlar. Sorun için bir eylem yapılabilirse, ek yönergeyle birlikte bir bağlantı sağlanır. Ek bir kılavuz bulunmadığı durumlarda, yanıt bir destek örneği açmak için url sağlar.  Yanıtın özellikleri ve nelerin dahil olduğu hakkında daha fazla bilgi için [Network Watcher Sorun Giderme Sorunu Özeti'ne genel bakışı](network-watcher-troubleshoot-overview.md) ziyaret edin
 
-Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
+Azure depolama hesaplarından dosya indirme yle ilgili talimatlar için [,.NET'i kullanarak Azure Blob depolama alanına başlayın'a](../storage/blobs/storage-dotnet-how-to-use-blobs.md)bakın. Kullanılabilecek bir diğer araç da Depolama Gezgini'dir. Depolama Gezgini hakkında daha fazla bilgiyi aşağıdaki bağlantıda bulabilirsiniz: [Depolama Gezgini](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VPN bağlantısını durduran ayarlar değiştirildiyse, ağ güvenlik grubunu ve söz konusu olabilecek güvenlik kurallarını izlemek için [ağ güvenlik gruplarını yönetme](../virtual-network/manage-network-security-group.md) bölümüne bakın.
+VPN bağlantısını durduran ayarlar değiştirildiyse, ağ güvenlik grubunu ve söz konusu olabilecek güvenlik kurallarını izlemek için [Ağ Güvenlik Gruplarını Yönet'e](../virtual-network/manage-network-security-group.md) bakın.

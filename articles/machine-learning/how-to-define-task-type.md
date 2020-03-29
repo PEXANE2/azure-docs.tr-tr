@@ -1,7 +1,7 @@
 ---
-title: Otomatik makine öğrenimi çalıştırması için makine öğrenimi görevi tanımlama
+title: Otomatik makine öğrenimi çalışması için makine öğrenimi görevi tanımlayın
 titleSuffix: Azure Machine Learning
-description: Otomatik makine öğrenimi çalıştırması için makine öğrenimi görevi tanımlama hakkında bilgi edinin
+description: Otomatik makine öğrenimi çalışması için makine öğrenimi görevini nasıl tanımlayın
 services: machine-learning
 author: RachelKellam
 ms.author: rakellam
@@ -11,52 +11,52 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: a58959904559cd3b2cec27762f2df93cfea72abd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75540535"
 ---
-# <a name="how-to-define-a-machine-learning-task"></a>Makine öğrenimi görevi tanımlama 
+# <a name="how-to-define-a-machine-learning-task"></a>Makine öğrenimi görevi nasıl tanımlanır? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede desteklenen makine öğrenimi görevlerini ve bunları otomatik makine öğrenimi (otomatik ML) deneme çalıştırması için nasıl tanımlayacağınızı öğrenirsiniz.
+Bu makalede, desteklenen makine öğrenimi görevlerini ve bunları otomatik leştirilmiş bir makine öğrenimi (otomatik ML) deneme çalışması için nasıl tanımlayabileceğinizi öğrenirsiniz.
 
 
-## <a name="What is a machine learning task?"></a>Machine Learning görevi nedir?
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a>Makine öğrenimi görevi nedir?
 
-Bir makine öğrenimi görevi, bir tahmine dayalı model oluşturarak çözülemekte olan sorunun türünü temsil eder. Otomatik ML, sınıflandırma, regresyon ve zaman serisi tahmini dahil olmak üzere üç farklı görev türünü destekler.
+Makine öğrenimi görevi, tahmine dayalı bir model oluşturarak çözülen sorun türünü temsil eder. Otomatik ML sınıflandırma, regresyon ve zaman serisi tahmini de dahil olmak üzere üç farklı türde görevi destekler.
 
 Görev türü| Açıklama| Örnek
 ----|----|----
-Sınıflandırma | Bir veri kümesindeki belirli bir satırın kategorisini tahmin etmek için görev. | Kredi kartında sahtekarlık algılama. Hedef sütun, *doğru* veya *yanlış*kategorileriyle **sahtekarlık tespit etti** . Bu durumda, verilerdeki her satırı doğru ya da yanlış olarak sınıflandırıyoruz.
-Regresyon | Sürekli miktar çıkışını tahmin etmek için görev. | Kendi özelliklerine göre otomobil maliyeti, hedef sütun **Fiyat**olur.
-Tahmin |Gelecekteki eğilimlerin yönünü belirlemede bilinçli tahminler yapma görevi.| Enerji taleplerini önümüzdeki 48 saat boyunca tahmin edin. Hedef sütun **talep** olur ve tahmini değerler, enerji talebinde desenleri göstermek için kullanılır.
+Sınıflandırma | Bir veri kümesinde belirli bir satırın kategorisini tahmin etme görevi. | Kredi kartında dolandırıcılık tespiti. Hedef *sütun, Doğru* veya *Yanlış*kategorilerinde **Algılanan Sahtekarlık** olacaktır. Bu durumda, verilerdeki her satırı doğru veya yanlış olarak sınıflandırıyoruz.
+Regresyon | Sürekli bir miktar çıktısını tahmin etme görevi. | Otomobil maliyeti özelliklerine göre, hedef sütun **fiyat**olacaktır.
+Tahmin etme |Gelecekteki eğilimlerin yönünü belirlemede bilinçli tahminlerde bulunma görevi.| Önümüzdeki 48 saat boyunca enerji talebini tahmin edin. Hedef sütun **talep** olacak ve öngörülen değerler enerji talebindeki desenleri göstermek için kullanılacaktır.
 
-Otomatikleştirilen ML Otomasyon ve ayarlama işlemi sırasında aşağıdaki algoritmaları destekler. Bir kullanıcı olarak, algoritma belirtmek gerek yoktur.
+Otomatik ML, otomasyon ve aparat işlemi sırasında aşağıdaki algoritmaları destekler. Bir kullanıcı olarak algoritmayı belirtmenize gerek yoktur.
 
-Sınıflandırma | Regresyon | Zaman serisi tahmin
+Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 -- |-- |--
-[Lojistik regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Esnek Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Esnek Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Gradyan artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)|[Karar ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Komşuları en yakın](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Komşuları en yakın](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Komşuları en yakın](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Doğrusal SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Serbest Şekil](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Serbest Şekil](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[C-Destek vektör sınıflandırma (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Lojistik Regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)|[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineer SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[C-Destek Vektör Sınıflandırması (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN doğrusal sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||
-[Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
+[DNN Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN Lineer Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Sade Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||
+[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
 
 
 ### <a name="set-the-task-type"></a>Görev türünü ayarlama
-Otomatik ML denemeleri için görev türünü SDK veya Azure Machine Learning Studio ile ayarlayabilirsiniz.
+SDK veya Azure Machine Learning stüdyosuyla yaptığınız otomatik ML denemeleri için görev türünü ayarlayabilirsiniz.
 
-Deneme türünü belirtmek için `AutoMLConfig` oluşturucusunda `task` parametresini kullanın.
+Deneme `task` türünü belirtmek `AutoMLConfig` için oluşturucudaki parametreyi kullanın.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -65,7 +65,7 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task="classification")
 ```
 
-Görevi, Azure Machine Learning Studio 'da otomatik ML deneme çalıştırması oluşturma ' nın bir parçası olarak ayarlayabilirsiniz. 
+Görevi Azure Machine Learning stüdyosunda otomatik ML deneme çalıştırma oluşturmanızın bir parçası olarak ayarlayabilirsiniz. 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
@@ -74,8 +74,8 @@ Görevi, Azure Machine Learning Studio 'da otomatik ML deneme çalıştırması 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ Azure Machine Learning 'de [Otomatikleştirilmiş ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.
-+ Azure Machine Learning [bir zaman serisi tahmin modeli için otomatik eğitim](how-to-auto-train-forecast.md) hakkında daha fazla bilgi edinin
-+ [Otomatik Machine Learning sınıflandırma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) öğreticisini deneyin.
-+ [Otomatik Machine Learning gerileme](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) örnek Not defterini deneyin.
++ Azure Machine Learning'de [otomatik ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.
++ Azure Machine Learning'de [bir zaman serisi tahmin modelini otomatik olarak eğitme](how-to-auto-train-forecast.md) hakkında daha fazla bilgi edinin
++ Otomatik [Makine Öğrenimi Sınıflandırma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) sıyrıkını deneyin.
++ Otomatik [Makine Öğrenme Regresyon](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) örnek not defterini deneyin.
 

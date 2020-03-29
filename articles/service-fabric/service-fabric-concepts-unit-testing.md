@@ -1,60 +1,60 @@
 ---
-title: Azure Service Fabric ile birim testi durum bilgisi olan hizmetler
-description: Durum bilgisi olan hizmetlerin Service Fabric birim testi kavramları ve yöntemleri hakkında bilgi edinin.
+title: Azure Hizmet Kumaşı'nda devlet hizmetlerini test etme
+description: Birim test Hizmeti Kumaş Stateful Services kavramları ve uygulamaları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433921"
 ---
-# <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric 'de birim testi durum bilgisi olan hizmetler
+# <a name="unit-testing-stateful-services-in-service-fabric"></a>Hizmet Kumaşı'nda devlet hizmetlerini test etme birimi
 
-Bu makalede, durum bilgisi olan hizmetlerin Service Fabric birim testi kavramlarını ve yöntemleri ele alınmaktadır. Service Fabric içinde birim testi, uygulama kodunun etkin bir şekilde birden çok farklı bağlamda çalışması nedeniyle kendi önemli noktaları sunar. Bu makalede, uygulama kodunun çalıştıraşabolduğu her farklı bağlamda kapsamında olmasını sağlamak için kullanılan uygulamalar açıklanmaktadır.
+Bu makalede, birim test Hizmet Kumaş Stateful Services kavramları ve uygulamaları kapsar. Hizmet Kumaşı içindeki birim testi, uygulama kodunun birden çok farklı bağlam altında etkin bir şekilde çalıştırışla gerçekleştirilmesi nedeniyle kendi değerlendirmelerini hak eder. Bu makalede, uygulama kodunun çalıştırabileceği farklı bağlamların her birinin altında yer alan uygulamaları açıklar.
 
-## <a name="unit-testing-and-mocking"></a>Birim testi ve sahte işlem
-Bu makalenin bağlamındaki birim testi, MSTest veya NUnit gibi bir Test Çalıştırıcısı bağlamı içinde yürütülebilecek otomatikleştirilmiş sınamadır. Bu makalede yer alan birim testleri, bir veritabanı veya yeniden bir API gibi uzak bir kaynağa karşı işlem gerçekleştirmez. Bu uzak kaynaklar moclanmış olmalıdır. Bu makalenin bağlamında, Uzak kaynaklar için dönüş değerlerini taklit eder, kaydeder ve denetler.
+## <a name="unit-testing-and-mocking"></a>Birim testi ve alay etme
+Bu makalebağlamında birim testi, MSTest veya NUnit gibi bir test koşucusu bağlamında yürütülebilen otomatik testtir. Bu makaledeki birim testleri, veritabanı veya RESTFul API gibi uzak bir kaynağa karşı işlem gerçekleştirmez. Bu uzak kaynaklarla alay edilmeli. Bu makalebağlamında alay etmek, uzak kaynakların iade değerlerini taklit edecek, kaydeder ve denetler.
 
-### <a name="service-fabric-considerations"></a>Service Fabric konuları
-Service Fabric durum bilgisi olan bir hizmetin birim testi çeşitli hususlar içerir. İlk olarak, hizmet kodu birden çok düğümde ve farklı roller altında yürütülür. Birim testleri, tüm kapsama ulaşmak için her rolün altındaki kodu değerlendirmelidir. Farklı roller birincil, etkin Ikincil, boşta Ikincil ve bilinmiyor olur. None rolü genellikle bu rolün void veya null hizmet olarak nitelemediği için hiçbir özel kapsama ihtiyaç duyar Service Fabric. İkinci olarak, her düğüm verilen herhangi bir noktada rolünü değiştirecek. Tüm kapsama ulaşmak için, kod yürütme yolunun, gerçekleşen rol değişiklikleriyle test edilmelidir.
+### <a name="service-fabric-considerations"></a>Servis Kumaş ı hususlar
+Birim test bir Hizmet Kumaş stateful hizmet çeşitli hususlar vardır. İlk olarak, hizmet kodu birden çok düğümde ancak farklı roller altında yürütülür. Birim testleri tam kapsama elde etmek için her rolü n altında kodu değerlendirmek gerekir. Farklı roller Birincil, Etkin İkincil, Boşta İkincil ve Bilinmeyen olacaktır. Hizmet Kumaşı bu rolü geçersiz veya geçersiz hizmet olarak gördüğü için, None rolü genellikle özel bir kapsama gerektirmez. İkinci olarak, her düğüm herhangi bir noktada rolünü değiştirir. Tam kapsama elde etmek için, kod yürütme yolunun rol değişiklikleri meydana gelen sınanması gerekir.
 
-## <a name="why-unit-test-stateful-services"></a>Birim test durum bilgisi neden Hizmetleri? 
-Birim testi durum bilgisi olan hizmetler, geleneksel uygulama veya etki alanına özgü birim testi tarafından yakalanmak zorunda olmaması gereken bazı yaygın hataları açmaya yardımcı olabilir. Örneğin, durum bilgisi olan hizmette herhangi bir bellek içi durum varsa, bu tür bir test, bu bellek içi durumun her yinelemede eşitlenmiş olduğunu doğrulayabilirler. Bu tür bir test, durum bilgisi olan bir hizmetin Service Fabric düzenleme tarafından uygun bir şekilde geçirilen iptal belirteçlerini yanıt verdiğini de doğrulayabilirsiniz. İptaller tetiklendiğinde hizmet, uzun süre çalışan ve/veya zaman uyumsuz işlemleri durdurur.  
+## <a name="why-unit-test-stateful-services"></a>Neden birim test stateful hizmetleri? 
+Birim test durumlu hizmetleri mutlaka geleneksel uygulama veya etki alanına özgü birim testi tarafından yakalanmış olmaz yapılan bazı yaygın hataları ortaya çıkarmak için yardımcı olabilir. Örneğin, durum bilgisi hizmetinin bellek durumu varsa, bu tür bir sınama, bu bellek içi durumunun her yineleme de eşit tutulduğunu doğrulayabilir. Bu tür sınama, hizmet veren bir hizmetin Service Fabric orkestrasyonunun uygun şekilde geçtiği iptal belirteçlerine yanıt verdiğini de doğrulayabilir. İptaller tetiklendiğinde, hizmet uzun süren ve/veya eşzamanlı işlemleri durdurmalıdır.  
 
-## <a name="common-practices"></a>Ortak uygulamalar
+## <a name="common-practices"></a>Yaygın uygulamalar
 
-Aşağıdaki bölümde, durum bilgisi olan bir hizmet olan birim testi için en sık kullanılan uygulamalar üzerinde yer verilmiştir. Ayrıca, bir sahte işlem katmanının Service Fabric düzenleme ve durum yönetimine yakından uyum sağlamak için sahip olması gerektiğini de önerir. [Servicefabric. moizler](https://www.nuget.org/packages/ServiceFabric.Mocks/) , 3.3.0 veya üzeri olarak, önerilen ve aşağıdaki ana işlevleri içeren bir kitaplıktır.
+Aşağıdaki bölümde, birim olarak kullanılan bir hizmeti test etmek için en yaygın uygulamalar hakkında tavsiyelerde bulunmaktadır. Ayrıca, alaycı bir katmanın Service Fabric orkestrasyon ve devlet yönetimine yakın bir şekilde hizalanması gerektiğini de önerir. [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 3.3.0 veya daha sonra olarak önerilen alay işlevselliği sağlayan ve aşağıda özetlenen uygulamaları izleyen tür kütüphane biridir.
 
-### <a name="arrangement"></a>Sidir
+### <a name="arrangement"></a>Düzenleme
 
 #### <a name="use-multiple-service-instances"></a>Birden çok hizmet örneği kullanma
-Birim testleri, durum bilgisi olan bir hizmetin birden çok örneğini yürütmelidir. Bu, Service Fabric kümede gerçekten ne olduğunu taklit eder; burada, farklı düğümlerde hizmetinizi çalıştıran birden çok çoğaltma sağlar. Bu örneklerin her biri, ancak farklı bir bağlam altında yürütülecektir. Testi çalıştırırken, her örnek kümede beklenen rol yapılandırması ile aynı olmalıdır. Örneğin, hizmetin hedef çoğaltma boyutu 3 ' ün olması bekleniyorsa, Service Fabric farklı düğümlerde üç çoğaltma sağlar. Bunlardan biri birincil ve diğer iki, etkin Ikincil.
+Birim testleri, birden çok durumlu hizmet örneğini yürütmelidir. Bu, Service Fabric'in hizmetinizi farklı düğümler arasında çalıştıran birden çok yinelemeyi karşıladığı kümede gerçekte ne olduğunu simüle eder. Ancak, bu örneklerin her biri farklı bir bağlam altında yürütülecektir. Testi çalıştırırken, her örnek kümede beklenen rol yapılandırması ile astarlanmalıdır. Örneğin, hizmetin hedef yineleme boyutu3 olması bekleniyorsa, Hizmet Kumaşı farklı düğümlerde üç yineleme sağlar. Biri birincil, diğeri Aktif İkincil'dir.
 
-Çoğu durumda, hizmet yürütme yolu bu rollerin her biri için biraz farklılık gösterecektir. Örneğin, hizmet etkin bir Ikincil bilgisayardan gelen istekleri kabul etmemelidir, ikincil üzerinde bir isteğin denendiğini belirten bilgilendirici bir özel durum oluşturması için hizmette bu durum için bir denetim olabilir. Birden çok örneğe sahip olmak, bu durumun sınanması için izin verir.
+Çoğu durumda, hizmet yürütme yolunun ki bu rollerin her biri için biraz değişir. Örneğin, hizmet etkin bir ikincil istekkabul etmiyorsa, hizmetin ikincil bir istek denendiğini gösteren bilgilendirici bir özel durumu geri atmak için bu servis için bir denetimi olabilir. Birden çok örneğin olması bu durumun sınanmasını sağlar.
 
-Ayrıca, birden çok örneğe sahip olmak, testlerin bu örneklerin her birinin rollerini değiştirmesine izin verir ve bu da, rolün değişmesinin ne olmasına rağmen yanıtların tutarlı olduğunu doğrular.
+Ayrıca, birden çok örneğin olması, testlerin rol değişikliklerine rağmen yanıtların tutarlı olduğunu doğrulamak için bu örneklerin her birinin rollerini değiştirmesine olanak tanır.
 
-#### <a name="mock-the-state-manager"></a>Durum yöneticisini sahte
-Durum Yöneticisi uzak bir kaynak olarak kabul edilmelidir ve bu nedenle moclanmış. Durum Yöneticisi 'ni izlerken, okunabilmesi ve doğrulanabilmesi için durum yöneticisine nelerin kaydedildiğini izlemek üzere temeldeki bellek içi depolama alanı olması gerekir. Bunu gerçekleştirmenin basit bir yolu, güvenilir koleksiyonların her türünün sahte örneklerini oluşturmaktır. Bu moizler içinde, bu koleksiyonda gerçekleştirilen işlemlerle yakından hizalanan bir veri türü kullanın. Her güvenilir koleksiyon için önerilen bazı veri türleri aşağıda verilmiştir
+#### <a name="mock-the-state-manager"></a>Devlet müdürüyle alay et
+Devlet Yöneticisi uzak bir kaynak olarak ele alınmalıdır ve bu nedenle alay. Devlet yöneticisiyle alay ederken, okunup doğrulanabilmesi için devlet yöneticisine kaydedilenleri izlemek için bazı temel bellek içi depolama alanı olması gerekir. Bunu başarabilmek için basit bir yol, Güvenilir Koleksiyon türlerinin her birinin sahte örnekleri oluşturmaktır. Bu mocks içinde, bu koleksiyona karşı gerçekleştirilen işlemleri ile yakından uyumlu bir veri türü kullanın. Aşağıda, her güvenilir koleksiyon için önerilen bazı veri türleri verilmiştir
 
-- Ireliabledictionary < TKey, TValue >-> System. Collections. eşzamanlı. ConcurrentDictionary < TKey, TValue >
-- Ireliablequeue\<T >-> System. Collections. Generic. Queue\<T >
-- Ireliableconcurrentqueue\<T >-> System. Collections. eşzamanlı. ConcurrentQueue\<T >
+- IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
-#### <a name="many-state-manager-instances-single-storage"></a>Birçok durum Yöneticisi örneği, tek depolama
-Daha önce belirtildiği gibi, durum Yöneticisi ve güvenilir koleksiyonlar uzak bir kaynak olarak değerlendirilmelidir. Bu nedenle, bu kaynaklar, ve birim testlerinde mocize edilmelidir. Bununla birlikte, durum bilgisi olan bir hizmetin birden çok örneğini çalıştırırken, her bir çalışma durumu yöneticisinin farklı durum bilgisi olan hizmet örneklerinde eşitlenmiş olması zor olur. Durum bilgisi olan hizmet kümede çalıştığında, Service Fabric her bir ikincil çoğaltmanın durum yöneticisini birincil çoğaltmayla tutarlı tutma işlemini gerçekleştirir. Bu nedenle, testler rol değişikliklerinin benzetimini yapabilmesi için aynı şekilde davranmalıdır.
+#### <a name="many-state-manager-instances-single-storage"></a>Birçok Devlet Yöneticisi Örnekleri, tek depolama
+Daha önce de belirtildiği gibi, Devlet Yöneticisi ve Güvenilir Koleksiyonlar uzak bir kaynak olarak ele alınmalıdır. Bu nedenle, bu kaynaklar birim testleri içinde alay edilmelidir ve olacaktır. Ancak, birden çok durumlu hizmet örneği çalıştırırken, alay edilen her bir devlet yöneticisinin farklı durum lu hizmet örnekleri arasında eşittutulması zor olacaktır. Durum hizmeti kümeüzerinde çalışırken, Hizmet Dokusu her ikincil yinelemenin durum yöneticisini birincil yinelemeyle tutarlı tutmayı önemser. Bu nedenle, rol değişikliklerini simüle edebilmeleri için testlerin aynı şekilde olması gerekir.
 
-Bu eşitlemenin kolay bir şekilde elde edilebileceği, her güvenilir koleksiyona yazılan verileri depolayan temel nesne için tek bir model kullanmaktır. Örneğin, durum bilgisi olan bir hizmet `IReliableDictionary<string, string>`kullanıyorsa. Sahte durum Yöneticisi `IReliableDictionary<string, string>`bir sahte döndürmelidir. Bu sahte, yazılan anahtar/değer çiftlerini izlemek için bir `ConcurrentDictionary<string, string>` kullanabilir. `ConcurrentDictionary<string, string>`, hizmete geçirilen durum yöneticilerinin tüm örnekleri tarafından kullanılan bir tek olmalıdır.
+Bu eşitlemenin elde edilebilmiş basit bir yolu, her Güvenilir Koleksiyon'a yazılan verileri depolayan temel nesne için bir singleton deseni kullanmaktır. Örneğin, devlet hizmeti bir `IReliableDictionary<string, string>`. Sahte devlet müdürü bir alay `IReliableDictionary<string, string>`iade etmelidir . Bu mock, `ConcurrentDictionary<string, string>` yazılan anahtar/değer çiftlerini izlemek için a'yı kullanabilir. Hizmete `ConcurrentDictionary<string, string>` geçirilen devlet yöneticilerinin tüm örnekleri tarafından kullanılan bir singleton olmalıdır.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>İptal belirteçlerini takip edin
-İptal belirteçleri, durum bilgisi olan hizmetlerin önemli, yaygın olarak daha fazla bir yönüdür. Service Fabric, durum bilgisi olan bir hizmet için birincil çoğaltma başladığında bir iptal belirteci sağlanır. Bu iptal belirtecinin, kaldırıldığında hizmete işaret edilmesi veya farklı bir role indirgenmeye yönelik olması amaçlanmıştır. Durum bilgisi olan hizmet, Service Fabric uzun süre çalışan veya zaman uyumsuz işlemleri durdurup, bu sayede rol değişikliği iş akışını tamamlayabilmelidir.
+İptal belirteçleri, devlet hizmetlerinin önemli ama yaygın olarak gözden kaçan bir yönüdur. Service Fabric, devlet hizmeti için birincil çoğaltma başlattığında, bir iptal belirteci sağlanır. Bu iptal belirteci, hizmet kaldırıldığında veya farklı bir role düşürüldüğünde hizmete sinyal vermek için tasarlanmıştır. Hizmet Kumaşı'nın rol değişikliği iş akışını tamamlayabilmesi için, devlet hizmeti uzun süren veya eşzamanlı işlemleri durdurmalıdır.
 
-Birim testlerini çalıştırırken, RunAsync, ChangeRoleAsync, OpenAsync ve CloseAsync için belirtilen tüm iptal belirteçleri, test yürütmesi sırasında tutulmalıdır. Bu belirteçlerin tutulması, teste bir hizmetin kapatılmasını veya indirgenmesini sağlar ve hizmetin uygun şekilde yanıt verdiğini doğrular.
+Birim testleri çalıştırılırken, Test yürütme sırasında RunAsync, ChangeRoleAsync, OpenAsync ve CloseAsync'e sağlanan iptal belirteçleri tutulmalıdır. Bu belirteçlere tutunmak, testin bir hizmet kapatmaveya indirgeme simülasyonunu simüle etmesine ve hizmetin uygun şekilde yanıt verdiğini doğrulamasına olanak sağlar.
 
-#### <a name="test-end-to-end-with-mocked-remote-resources"></a>Korumalı uzak kaynaklarla uçtan uca test
-Birim testleri, durum bilgisi olan hizmetin durumunu mümkün olduğunca değiştirebilen uygulama kodunun çoğunu yürütmelidir. Testlerin doğası gereği daha fazla uçtan uca olması önerilir. Mevcut olan tek hareketler, uzak kaynak etkileşimlerini kaydetmek, benzetimini yapmak ve/veya doğrulamalardır. Bu, durum Yöneticisi ve güvenilir koleksiyonlara sahip etkileşimleri içerir. Aşağıdaki kod parçacığı, uçtan uca testi gösteren bir test için gherkaya bir örnektir:
+#### <a name="test-end-to-end-with-mocked-remote-resources"></a>Alay edilen uzak kaynaklarla uçuca test etme
+Birim testleri, devlet hizmetinin durumunu mümkün olduğunca değiştirebilecek uygulama kodunun çoğunu yürütmelidir. Testlerin doğada uçtan uca olması önerilir. Var olan tek alay, uzak kaynak etkileşimlerini kaydetmek, simüle etmek ve/veya doğrulamaktır. Bu, Devlet Yöneticisi ve Güvenilir Koleksiyonlar ile etkileşimleri içerir. Aşağıdaki parçacık, uçtan uca testi gösteren bir test için gherkin örneğidir:
 
 ```
     Given stateful service named "fabric:/MyApp/MyService" is created
@@ -68,48 +68,48 @@ Birim testleri, durum bilgisi olan hizmetin durumunu mümkün olduğunca değiş
     Then the request should should return the "John Smith" employee
 ```
 
-Bu test, birincil olarak yükseltildiğinde bir çoğaltmada yakalanan verilerin ikincil bir çoğaltma için kullanılabilir olduğunu onaylar. Güvenilir bir koleksiyonun çalışan verileri için yedekleme deposu olduğu varsayıldığında, bu test ile yakalanabilecek bir hata, uygulama kodunun yeni çalışanı kaydetmek için işlem üzerinde `CommitAsync` yürütülemediğinden meydana gelebilir. Bu durumda, çalışanları almaya yönelik ikinci istek ilk istek tarafından eklenen çalışanı döndürmez.
+Bu test, bir yinelemede yakalanan verilerin birincil yinelemeye yükseltildiğinde ikincil bir yineleme için kullanılabilir olduğunu ileri sürmektedir. Güvenilir bir koleksiyonun çalışan verileri için destek deposu olduğunu varsayarsak, uygulama kodunun yeni çalışanı kaydetmek `CommitAsync` için hareketi yürütmemesi durumunda, bu testle yakalanabilecek Aa olası hatasıdır. Bu durumda, çalışanları almak için ikinci istek ilk istek tarafından eklenen çalışan iade olmaz.
 
-### <a name="acting"></a>Makta
-#### <a name="mimic-service-fabric-replica-orchestration"></a>Çoğaltma düzenleme Service Fabric benzeme
-Birden çok hizmet örneği yönetirken, testlerin bu hizmetleri Service Fabric düzenleme ile aynı şekilde başlatması ve kapatması gerekir. Örneğin, yeni bir birincil çoğaltmada bir hizmet oluşturulduğunda Service Fabric, CreateServiceReplicaListener, OpenAsync, ChangeRoleAsync ve RunAsync komutunu çağıracaktır. Yaşam döngüsü olayları aşağıdaki makalelerde belgelenmiştir:
+### <a name="acting"></a>Davranı
+#### <a name="mimic-service-fabric-replica-orchestration"></a>Mimic Service Kumaş çoğaltma orkestrasyonu
+Birden çok hizmet örneğini yönetirken, testler bu hizmetleri Service Fabric düzenlemesiyle aynı şekilde başlatmalı ve yıkmalıdır. Örneğin, yeni bir birincil yinelemede bir hizmet oluşturulduğunda, Hizmet Dokusu CreateServiceReplicaListener, OpenAsync, ChangeRoleAsync ve RunAsync'i çağırır. Yaşam döngüsü olayları aşağıdaki makalelerde belgelenmiştir:
 
-- [Durum bilgisi olan hizmet başlatma](service-fabric-reliable-services-lifecycle.md#stateful-service-startup)
-- [Durum bilgisi olan hizmet kapatması](service-fabric-reliable-services-lifecycle.md#stateful-service-shutdown)
-- [Durum bilgisi olan hizmet birincil takas](service-fabric-reliable-services-lifecycle.md#stateful-service-primary-swaps)
+- [Stateful Service Startup](service-fabric-reliable-services-lifecycle.md#stateful-service-startup)
+- [Stateful Service Shutdown](service-fabric-reliable-services-lifecycle.md#stateful-service-shutdown)
+- [Devlet Hizmeti Birincil Swaps](service-fabric-reliable-services-lifecycle.md#stateful-service-primary-swaps)
 
-#### <a name="run-replica-role-changes"></a>Çoğaltma rolü değişikliklerini Çalıştır
-Birim testleri, hizmet örneklerinin rollerini Service Fabric düzenleme ile aynı şekilde değiştirmeli. Rol durumu makinesi aşağıdaki makalede belgelenmiştir:
+#### <a name="run-replica-role-changes"></a>Yineleme rol değişikliklerini çalıştırma
+Birim testleri, Hizmet Kumaşı düzenlemesiile aynı şekilde hizmet örneklerinin rollerini değiştirmelidir. Rol durumu makinesi aşağıdaki makalede belgelenmiştir:
 
-[Çoğaltma rolü durum makinesi](service-fabric-concepts-replica-lifecycle.md#replica-role)
+[Çoğaltma Rol Durum Makinesi](service-fabric-concepts-replica-lifecycle.md#replica-role)
 
-Rol değişikliklerinin benzetimini yapmak, testin daha kritik yönlerinden biridir ve çoğaltmanın durumunun birbirleriyle tutarlı olmadığı sorunları ortaya çıkarabilir. Statik veya sınıf düzeyi örnek değişkenlerinde bellek içi durumu depolanmasından dolayı tutarsız çoğaltma durumu oluşabilir. Bunun örnekleri, iptal belirteçleri, numaralandırmalar ve yapılandırma nesneleri/değerleri olabilir. Bu Ayrıca, hizmetin, rol değişikliğinin oluşmasına izin vermek için RunAsync sırasında verilen iptal belirteçlerini de daha da fazla bir şekilde ele aldığından emin olur. Rol değişikliklerinin benzetimini yapmak, bir RunAsync birden çok kez çağrıya izin vermek için kod yazıldıysa oluşabilecek sorunları da açığa çıkarabilir.
+Rol değişikliklerinin simüle edilmesi, sınamanın en kritik yönlerinden biridir ve yinelemenin durumunun birbiriyle tutarlı olmadığı sorunları ortaya çıkarabilir. Bellek durumu statik veya sınıf düzeyi örnek değişkenlerinde depolama nedeniyle tutarsız yineleme durumu oluşabilir. Buna örnek olarak iptal belirteçleri, enumlar ve yapılandırma nesneleri/değerleri verilebilir. Bu, hizmetin rol değişikliğinin gerçekleşmesine izin vermek için RunAsync sırasında sağlanan iptal belirteçlerine saygı göstermesini de sağlar. Rol değişikliklerinin simüle edilmesi, RunAsync'in birden çok kez çağrılması için kod yazılmazsa ortaya çıkabilecek sorunları da ortaya çıkarabilirsiniz.
 
-#### <a name="cancel-cancellation-tokens"></a>İptal belirteçlerini iptal et
-RunAsync için girilen iptal belirtecinin iptal edildiği mevcut birim testleri olmalıdır. Bu, testin hizmetin düzgün bir şekilde kapanıp kapanmadığını doğrulamasına olanak sağlar. Bu kapatma sırasında, uzun süre çalışan veya zaman uyumsuz işlemlerin durdurulması gerekir. Bir hizmette mevcut olabilecek uzun süre çalışan bir işlem örneği, güvenilir bir kuyruktaki iletileri dinleyen bir işlemdir. Bu, doğrudan RunAsync veya bir arka plan iş parçacığı içinde bulunabilir. Bu iptal belirteci iptal edilirse, uygulamanın işlemden çıkmak için mantık içermesi gerekir.
+#### <a name="cancel-cancellation-tokens"></a>İptal belirteçlerini iptal etme
+RunAsync'e sağlanan iptal belirteci iptal edildiği birim testleri olmalıdır. Bu, testin hizmetin düzgün bir şekilde kapandığını doğrulamasına olanak sağlar. Bu kapatma sırasında uzun süren veya eşzamanlı işlemler durdurulmalıdır. Bir hizmette var olabilecek uzun süren bir işlem örneği, Güvenilir Sıra'daki iletileri dinleyen bir işlemdir. Bu doğrudan RunAsync veya bir arka plan iş parçacığı içinde bulunabilir. Bu iptal belirteci iptal edilirse, uygulama operasyondan çıkma mantığını içermelidir.
 
-Durum bilgisi olan hizmetler herhangi bir önbelleği veya yalnızca birincil üzerinde bulunması gereken bellek içi durumu kullanıyorsa, şu anda atılmalıdır. Bu, düğüm daha sonra tekrar bir birincil haline gelirse bu durumun tutarlı olmasını sağlamaktır. İptal testi testi, bu durumun düzgün şekilde atılanmasını doğrulamaya izin verir.
+Devlet hizmetleri yalnızca birincil üzerinde bulunması gereken herhangi bir önbellek veya bellek durumu kullanırsanız, bu anda bertaraf edilmelidir. Bu, düğüm daha sonra birincil hale gelirse bu durum tutarlı olduğundan emin olmaktır. İptal testi, testin bu durumu doğru bir şekilde bertaraf edilmesini doğrulamasına olanak sağlar.
 
-#### <a name="execute-requests-against-multiple-replicas"></a>Birden çok çoğaltmalara karşı istekleri yürütün
-Onaylama testleri, farklı çoğaltmalara karşı aynı isteği yürütmelidir. Rol değişiklikleri ile eşleştirildiği zaman, tutarlılık sorunları ele alınabilir. Örnek bir test aşağıdaki adımları gerçekleştirebilir:
-1. Geçerli birincil için bir yazma isteği yürütün
-2. Geçerli birincil için adım 1 ' de yazılan verileri döndüren bir okuma isteği yürütün
-3. İkincili birincil olarak yükseltin. Bu ayrıca geçerli birincili ikinciye indirgemelidir
-4. Adım 2 ' den yeni ikinciye karşı aynı okuma isteğini yürütün.
+#### <a name="execute-requests-against-multiple-replicas"></a>Birden çok yinelemeye karşı istekleri yürütme
+Assert testleri farklı yineleme karşı aynı isteği yürütmek gerekir. Rol değişiklikleriyle eşleştirildiğinde, tutarlılık sorunları ortaya çıkarılabilir. Örnek bir test aşağıdaki adımları gerçekleştirebilir:
+1. Geçerli birincil karşı bir yazma isteği yürütme
+2. 1. adımda yazılan verileri geçerli birincil eteklerine karşı döndüren bir okuma isteği yürütme
+3. Birincil bir ikincil teşvik edin. Bu da ikincil geçerli birincil düşürmek gerekir
+4. Yeni ikincil karşı adım 2 aynı okuma isteği yürütmek.
 
-Son adımda, test döndürülen verilerin tutarlılığını sağlayabilir. Bunun açığa çıkmasına neden olabilecek bir sorun, hizmet tarafından döndürülen verilerin bellekte, ancak sonunda güvenilir bir koleksiyon tarafından yedeklenme sürecinde olması olabilir. Bu bellek içi veriler, güvenilir koleksiyonda bulunan özellikler ile düzgün şekilde korunmayabilir.
+Son adımda, test döndürülen verilerin tutarlı olduğunu ileri sürebilir. Bunun ortaya çıkarabileceği olası bir sorun, hizmet tarafından döndürülen verilerin bellekte olması, ancak sonuçta güvenilir bir koleksiyon tarafından desteklenen olmasıdır. Bellek içi veriler, güvenilir koleksiyonda bulunanlarla düzgün bir şekilde eşit tutulmayabilir.
 
-Bellek içi veriler genellikle, güvenilir bir koleksiyonda bulunan verilerin ikincil dizinlerini veya toplanmasını oluşturmak için kullanılır.
+Bellek içi veriler genellikle güvenilir bir koleksiyonda bulunan ikincil dizinler veya veri toplamaları oluşturmak için kullanılır.
 
-### <a name="asserting"></a>Gerçekleştirmesini istemekle
-#### <a name="ensure-responses-match-across-replicas"></a>Çoğaltmalarda yanıtların eşleştiğinden emin olun
-Birim testleri, birincil öğesine geçişten sonra, belirli bir istek için bir yanıtın birden çok çoğaltmalarda tutarlı olduğunu onaylar. Bu, yanıtta belirtilen verilerin güvenilir bir koleksiyon tarafından desteklenmediğini veya bu verileri çoğaltmalar arasında eşitlemesine yönelik bir mekanizmadan bellek içinde tutulmasını mümkün hale getirebilirler. Bu, Service Fabric yeniden dengeledikten veya yeni bir birincil çoğaltmaya yük devreden sonra hizmetin tutarlı yanıtları geri göndereceğini sağlar.
+### <a name="asserting"></a>Iddia
+#### <a name="ensure-responses-match-across-replicas"></a>Yanıtların yinelemeler arasında eşleştirilmesini sağlama
+Birim testleri, belirli bir istek için verilen yanıtın birincil egeçtikten sonra birden çok yineleme arasında tutarlı olduğunu ileri sürmelidir. Bu, yanıtta sağlanan verilerin güvenilir bir koleksiyon tarafından yedeklenmediği veya bu verileri yinelemeler arasında eşitlemek için bir mekanizma olmadan bellekte tutulduğu olası sorunları ortaya çıkarabilir. Bu, Hizmet Kumaşı yeniden dengeledikten veya yeni bir birincil yinelemeye geçemedikten sonra hizmetin tutarlı yanıtları geri göndermesini sağlar.
 
-#### <a name="verify-service-respects-cancellation"></a>Hizmet ve iptali doğrulama
-İptal belirteci iptal edildiğinde sonlandırılması gereken uzun süre çalışan veya zaman uyumsuz süreçler, iptalden sonra gerçekten sonlandırıldığı doğrulandıktan sonra doğrulanmalıdır. Bu, çoğaltma değiştirme rollerinin, birincil olmayan çoğaltmadaki çalışmayı amaçlamayan işlemlerin geçiş tamamlanmadan önce durdurulmasını sağlar. Bu Ayrıca, bu tür bir işlemin Service Fabric bir rol değişikliği veya kapatılma isteğinin tamamlanmasını engellediği sorunları da açığa çıkarabilir.
+#### <a name="verify-service-respects-cancellation"></a>Hizmetin iptale saygı gösterin
+İptal jetonu iptal edildiğinde sonlandırılması gereken uzun süren veya eşzamanlı işlemler, iptal edildikten sonra fiilen sonlandırıldıkları doğrulanmalıdır. Bu, yineleme değiştirme rollerine rağmen, geçiş tamamlanmadan önce birincil olmayan yineleme durağında çalışmaya devam etmek için tasarlanmayan işlemlerin olmasını sağlar. Bu, böyle bir işlemin Hizmet Kumaşı'ndan gelen rol değiştirme veya kapatma isteğinin tamamlanmasını engellediği sorunları da ortaya çıkarabilir.
 
-#### <a name="verify-which-replicas-should-serve-requests"></a>Hangi çoğaltmaların istekleri sunması gerektiğini doğrulayın
-Bir istek birincil olmayan bir çoğaltmaya yönlendiriliyorsa, testlerin beklenen davranışı onayı gerekir. Service Fabric, ikincil çoğaltmalara istek sunma olanağı sağlar. Bununla birlikte, güvenilir koleksiyonlara yazma işlemleri yalnızca birincil çoğaltmadan gerçekleştirilebilir. Uygulamanız yalnızca birincil kopyaların istek görmesi için veya yalnızca bir istek alt kümesi bir ikincil tarafından işlenebilmesini istiyorsa, testlerin hem pozitif hem de negatif durumlar için beklenen davranışı onayı gerekir. İstek olan negatif durum, isteği işleyememesi gereken bir kopyaya yönlendirilir ve bu da pozitif bir değer olmalıdır.
+#### <a name="verify-which-replicas-should-serve-requests"></a>Hangi yinelemelerin isteklere hizmet etmesi gerektiğini doğrulayın
+Bir istek birincil olmayan bir yinelemeye yönlendirilirse, testler beklenen davranışı ileri sürmelidir. Service Fabric, ikincil yinelemelerin isteklere hizmet etmesini sağlar. Ancak, güvenilir koleksiyonlara yazdığı yazmayalnızca birincil yinelemeden oluşabilir. Uygulamanız yalnızca istekleri sunmak için birincil yinelemeler için niyetinde yse veya yalnızca bir istek alt kümesi ikincil tarafından ele alınabilirse, testler hem olumlu hem de negatif durumlar için beklenen davranışı öne sürmelidir. İstek olan negatif durum, isteği işlememesi gereken bir yinelemeye yönlendirilir ve pozitif olan tersi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Birim testi durum bilgisi olan hizmetleri](service-fabric-how-to-unit-test-stateful-services.md)nasıl kullanacağınızı öğrenin.
+Durum hizmetlerini nasıl [birleştirin](service-fabric-how-to-unit-test-stateful-services.md)öğrenin.

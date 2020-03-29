@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: yakınlık yerleştirme gruplarını kullanın'
-description: Azure PowerShell kullanarak yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
+title: 'PowerShell: Yakınlık yerleşim işlemi gruplarını kullan'
+description: Azure PowerShell'i kullanarak yakınlık yerleşim grupları oluşturma ve kullanma hakkında bilgi edinin.
 services: virtual-machines
 ms.service: virtual-machines
 ms.topic: article
@@ -9,22 +9,22 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208534"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell kullanarak VM 'Leri yakınlık yerleşimi gruplarına dağıtma
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell'i kullanarak yakın yerleşim gruplarına VM dağıtma
 
 
-Olası en düşük gecikme süresini elde etmek üzere VM 'Leri olabildiğince yakın bir şekilde almak için, bunları bir [yakınlık yerleşimi grubu](co-location.md#proximity-placement-groups)içinde dağıtmanız gerekir.
+VM'leri mümkün olduğunca yakın hale getirmek ve mümkün olan en düşük gecikmeyi elde etmek için, bunları bir [yakınlık yerleşim grubu](co-location.md#proximity-placement-groups)içinde dağıtmanız gerekir.
 
-Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Yakınlık yerleşimi grupları, düşük gecikme süresinin gereksinim olduğu iş yükleri için faydalıdır.
+Yakınlık yerleşim grubu, Azure hesaplama kaynaklarının fiziksel olarak birbirine yakın olduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Yakınlık yerleşimgrupları, düşük gecikme nin bir gereklilik olduğu iş yükleri için yararlıdır.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Yakınlık yerleştirme grubu oluşturma
-[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 'ini kullanarak bir yakınlık yerleşimi grubu oluşturun. 
+[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet'i kullanarak bir yakınlık yerleşim grubu oluşturun. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -38,9 +38,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Yakınlık yerleşimi gruplarını Listele
+## <a name="list-proximity-placement-groups"></a>Yakınlık yerleşim gruplarını listele
 
-[Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) cmdlet 'ini kullanarak yakınlık yerleşimi gruplarının tümünü listeleyebilirsiniz.
+[Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) cmdlet'i kullanarak tüm yakınlık yerleşim gruplarını listeleyebilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makineyi oluşturmak için [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) kullandığınızda yakınlık YERLEŞIMI grubu kimliğine başvurmak için `-ProximityPlacementGroup $ppg.Id` kullanarak yakınlık yerleşimi grubunda bir VM oluşturun.
+VM'yi oluşturmak `-ProximityPlacementGroup $ppg.Id` için [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) kullandığınızda yakınlık yerleşim grubu kimliğine başvurmak için yakınlık yerleşim grubunda bir VM oluşturun.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -62,16 +62,16 @@ New-AzVm `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-Sanal makineyi, [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup)kullanarak yerleştirme grubunda görebilirsiniz.
+[Get-AzProximityPlacementGroup'u](/powershell/module/az.compute/get-azproximityplacementgroup)kullanarak yerleşim grubunda VM'yi görebilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Var olan bir VM 'yi bir yakınlık yerleşimi grubuna taşıma
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Varolan bir VM'yi yakınlık yerleşim grubuna taşıma
 
-Ayrıca, bir yakınlık yerleşimi grubuna var olan bir VM ekleyebilirsiniz. Önce VM 'yi durdurup yeniden başlatmanız gerekir, sonra VM 'yi güncelleştirip yeniden başlatın.
+Ayrıca, bir yakınlık yerleşim grubuna varolan bir VM ekleyebilirsiniz. Önce VM'yi durdurup, sonra VM'yi güncelleştirmeli ve yeniden başlatmalısınız.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -81,9 +81,9 @@ Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacement
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
-### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Var olan bir VM 'yi bir yakınlık yerleşimi grubundan taşıyın
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Varolan bir VM'yi yakınlık yerleşim grubundan çıkarma
 
-Bir sanal makineyi bir yakınlık yerleşimi grubundan kaldırmak için önce VM 'yi durdurup, ardından VM 'yi güncelleştirip yeniden başlatmanız gerekir.
+Bir VM'yi yakınlık yerleşim grubundan kaldırmak için, önce VM'yi durdurmanız, sonra VM'yi güncelleştirmeniz ve yeniden başlatmanız gerekir.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -96,11 +96,11 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Kullanılabilirlik Kümeleri
-Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluşturabilirsiniz. Bir kullanılabilirlik kümesi oluşturmak için [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet 'i ile aynı `-ProximityPlacementGroup` parametresini kullanın ve kullanılabilirlik kümesinde oluşturulan tüm VM 'lerin aynı yakınlık yerleştirme grubunda de oluşturulması gerekir.
+Ayrıca, yakınlık yerleşim grubunuzun içinde bir kullanılabilirlik kümesi de oluşturabilirsiniz. Kullanılabilirlik `-ProximityPlacementGroup` kümesi oluşturmak için [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet ile aynı parametreyi kullanın ve kullanılabilirlik kümesinde oluşturulan tüm VM'ler de aynı yakınlık yerleşim grubunda oluşturulur.
 
-Bir yakınlık yerleşimi grubuna var olan bir kullanılabilirlik kümesi eklemek veya kaldırmak için, önce kullanılabilirlik kümesindeki tüm VM 'Leri durdurmanız gerekir. 
+Bir yakınlık yerleşim grubuna varolan kullanılabilirlik kümesini eklemek veya kaldırmak için, öncelikle kullanılabilirlik kümesindeki tüm VM'leri durdurmanız gerekir. 
 
-### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Var olan bir kullanılabilirlik kümesini yakınlık yerleşimi grubuna Taşı
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Varolan kullanılabilirlik kümesini yakınlık yerleşim grubuna taşıma
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -122,7 +122,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Var olan bir kullanılabilirlik kümesini yakınlık yerleşimi grubundan taşıyın
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Yakınlık yerleşim grubundan ayarlanan varolan kullanılabilirliği taşıma
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -146,12 +146,12 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Ölçek kümeleri
 
-Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. Bir ölçek kümesi oluşturmak için [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ile aynı `-ProximityPlacementGroup` parametresini kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
+Ayrıca, yakınlık yerleşim grubunda bir ölçek kümesi de oluşturabilirsiniz. Bir ölçek `-ProximityPlacementGroup` kümesi oluşturmak için [Yeni AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşim grubunda oluşturulacak.
 
 
-Bir yakınlık yerleşimi grubuna var olan bir ölçek kümesi eklemek veya kaldırmak için, önce ölçek kümesini durdurmanız gerekir. 
+Yakınlık yerleşim grubuna varolan ölçek kümesini eklemek veya kaldırmak için önce ölçek kümesini durdurmanız gerekir. 
 
-### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Mevcut bir ölçek kümesini yakınlık yerleşimi grubuna taşıma
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Varolan bir ölçek kümesini yakınlık yerleşim grubuna taşıma
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
@@ -161,7 +161,7 @@ Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupN
 Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
-### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Varolan ölçek kümesini bir yakınlık yerleşimi grubundan taşıyın
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Yakınlık yerleşim grubundan ayarlanan varolan bir ölçeği taşıma
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
@@ -173,4 +173,4 @@ Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ayrıca, yakınlık yerleşimi grupları oluşturmak için [Azure CLI](../linux/proximity-placement-groups.md) 'yi de kullanabilirsiniz.
+Yakınlık yerleşim grupları oluşturmak için [Azure CLI'yi](../linux/proximity-placement-groups.md) de kullanabilirsiniz.

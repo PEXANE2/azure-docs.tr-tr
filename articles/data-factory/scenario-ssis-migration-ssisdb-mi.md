@@ -1,6 +1,6 @@
 ---
-title: SSIS, veritabanı iş yükü hedefi olarak Azure SQL veritabanı yönetilen örneği ile geçiş
-description: SSIS, veritabanı iş yükü hedefi olarak Azure SQL veritabanı yönetilen örneği ile geçiş.
+title: Azure SQL Veritabanı ile SSIS geçişi veritabanı iş yükü hedefi olarak örnek yönetilen
+description: Azure SQL Veritabanı ile SSIS geçişi, veritabanı iş yükü hedefi olarak örnek yönetildi.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -12,35 +12,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929774"
 ---
-# <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS, veritabanı iş yükü hedefi olarak Azure SQL veritabanı yönetilen örneği ile geçiş
+# <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>Azure SQL Veritabanı ile SSIS geçişi veritabanı iş yükü hedefi olarak örnek yönetilen
 
-Şirket içindeki SQL Server veritabanı iş yüklerini Azure SQL veritabanı yönetilen örneği 'ne geçirirken, [Azure Data Migration hizmeti](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) ve [DMS kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojileri](https://docs.microsoft.com/azure/dms/resource-network-topologies)hakkında bilgi sahibi olmanız gerekir.
+Veritabanı iş yüklerini SQL Server'dan azure SQL Veritabanı yönetilen örneğe aktarırken, [Azure Veri Geçiş Hizmeti'ni](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) ve Azure SQL Veritabanı [ağ topolojilerini DMS kullanarak örnek geçişleri yönetmiş](https://docs.microsoft.com/azure/dms/resource-network-topologies)olmalısınız.
 
-Bu makalede, SSIS kataloğunda (SSSıSDB) depolanan SQL Server Integration Service (SSIS) paketlerinin geçirilmesi ve SSIS paket yürütmelerinin zamanlaması olan SQL Server Agent işleri ele alınmaktadır.
+Bu makalede, SSIS kataloğunda (SSISDB) depolanan SQL Server Integration Service (SSIS) paketlerinin geçişi ve SSIS paket yürütmelerini zamanlayan SQL Server Agent işleri üzerinde duruluyor.
 
-## <a name="migrate-ssis-catalog-ssisdb"></a>SSIS kataloğunu (SSSıSDB) geçirme
+## <a name="migrate-ssis-catalog-ssisdb"></a>Göçmen SSIS kataloğu (SSISDB)
 
-Ssssıs [paketlerini Azure SQL veritabanı yönetilen örneği 'Ne geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)makalesinde açıklandığı gıbı, SSıSDB geçişi DMS kullanılarak yapılabilir.
+SSISDB geçişi, makalede açıklandığı gibi DMS kullanılarak yapılabilir: [SSIS paketlerini Azure SQL Veritabanı yönetilen bir örneğe geçirin.](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
-## <a name="ssis-jobs-to-azure-sql-database-managed-instance-agent"></a>SSIS işleri Azure SQL veritabanı yönetilen örnek aracısına
+## <a name="ssis-jobs-to-azure-sql-database-managed-instance-agent"></a>Azure SQL Veritabanı yönetilen örnek aracısına SSIS işleri
 
-Azure SQL veritabanı yönetilen örneği, yalnızca şirket içi SQL Server Agent gibi yerel, birinci sınıf bir Scheduler 'a sahiptir.  SSIS işlerinin geçiş aracı henüz kullanılamadığından, Azure SQL veritabanı yönetilen örnek aracısına betikler/el ile kopyalama aracılığıyla SQL Server Agent geçirilmesi gerekir.
+Azure SQL Veritabanı yönetilen örnek, sql server agent gibi bir yerel, birinci sınıf zamanlayıcı vardır.  SSIS işleri için bir geçiş aracı henüz kullanılamadığından, sql server agent'dan komut dosyaları/manuel kopya yoluyla azure SQL Veritabanı yönetilen örnek agent'a geçirilmeleri gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
-- [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+- [Azure-SSIS Tümleştirme Çalışma Süresi](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 - [Azure Veritabanı Geçiş Hizmeti](https://docs.microsoft.com/azure/dms/dms-overview)
-- [DMS kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojileri](https://docs.microsoft.com/azure/dms/resource-network-topologies)
-- [SSIS paketlerini Azure SQL veritabanı yönetilen örneği 'ne geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [Azure SQL Veritabanı için ağ topolojileri DMS kullanarak örnek geçişleri yönetti](https://docs.microsoft.com/azure/dms/resource-network-topologies)
+- [SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [Azure 'da dağıtılan SSIS paketlerini çalıştırma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)
+- [Azure'da SSISDB'ye bağlanın](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
+- [Azure'da dağıtılan SSIS paketlerini çalıştırma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)

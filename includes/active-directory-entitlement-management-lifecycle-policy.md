@@ -9,36 +9,36 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76694386"
 ---
-## <a name="lifecycle"></a>Yaşam Döngüsü
+## <a name="lifecycle"></a>Yaşam döngüsü
 
-**Yaşam döngüsü** sekmesinde, kullanıcının erişim paketine atamanın ne zaman sona ereceğini belirtirsiniz. Ayrıca, kullanıcıların atamalarını genişletip genişletemeyeceğini de belirtebilirsiniz.
+Yaşam **Döngüsü** sekmesinde, bir kullanıcının erişim paketine atamasının süresinin ne zaman dolduğunu belirtirsiniz. Ayrıca, kullanıcıların atamalarını genişletip genişletemeyeceğini de belirtebilirsiniz.
 
-1. **Süre sonu** bölümünde, **erişim paketi atamalarının süresi** **bitiş tarihi**, **gün sayısı**veya **hiçbir zaman**olarak ayarlanır.
+1. Sona **Erme** bölümünde, Access paketi atamaları ayarlanan **tarih**, **Gün Sayısı**veya **Asla** **sona erer.**
 
-    **Tarih**açısından, gelecekte bir sona erme tarihi seçin.
+    **Tarih için,** gelecekte bir son kullanma tarihi seçin.
 
-    **Gün sayısı**için 0 ila 3660 gün arasında bir sayı belirtin.
+    **Gün sayısı**için, 0 ile 3660 gün arasında bir sayı belirtin.
 
-    Seçiminize bağlı olarak, bir kullanıcının erişim paketine atanması belirli bir tarihte, belirli bir gün sonra onaylandıktan sonra veya hiçbir zaman sona erer.
+    Seçiminizi temel alan, bir kullanıcının erişim paketine atamasının süresi belirli bir tarihte, onaylandıktan sonraki belirli bir sayıda veya hiç sona erer.
 
-1. Ek ayarları göstermek için **Gelişmiş süre sonu ayarlarını göster** ' e tıklayın.
+1. Ek ayarları göstermek için **gelişmiş son kullanma ayarlarını göster'i** tıklatın.
 
-    ![Erişim paketi yaşam döngüsü süre sonu ayarları](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
+    ![Erişim paketi - Yaşam Döngüsü Sona Erme ayarları](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
 
-1. Kullanıcının atamalarını genişletmesine izin vermek için **kullanıcıların erişimi genişlemesine Izin ver** seçeneğini belirleyin **.**
+1. Kullanıcının atamalarını genişletmesine izin vermek için, **kullanıcıların Evet'e erişimi genişletmesine izin ver'i** ayarlayın. **Yes**
 
-    İlkede uzantılara izin veriliyorsa, Kullanıcı bir e-posta 14 gün ve ayrıca erişim paketi atamasının, atamayı genişletmesini istemek üzere süre sonu olarak ayarlanmayacak şekilde 1 gün alır. Kullanıcı, erişimi uzatmak için bir istek gönderdiğinde, erişim paketine erişim sağlamak için kullanılan ilkede, bir uzantı tarihi, atamaların kullanım süresini veya daha önce olmalıdır. Örneğin, ilke, atamaların 30 Haziran tarihinde süre sonu olarak ayarlandığını gösteriyorsa, bir kullanıcının istemesi için izin verilen en fazla uzantı 30 Haziran 'da olur.
+    İlkede uzantılara izin verilirse, kullanıcı 14 gün ve ayrıca erişim paketi atamasının süresi dolmadan 1 gün önce bir e-posta alır ve atamayı uzatmalarını sağlar. Kullanıcı erişimi genişletmek için bir istek gönderirse, uzatma tarihi, kullanıcıya erişim paketine erişim izni vermek için kullanılan ilkede tanımlandığı şekilde atamaların süresinin dolması durumunda olmalıdır. Örneğin, ilke atamaların 30 Haziran'da sona erecek şekilde ayarlı olduğunu gösteriyorsa, bir kullanıcının isteyebileceği maksimum uzantı 30 Haziran'dır.
 
-    Bir kullanıcının erişimi genişletilmişse, belirtilen uzatma tarihine (ilkeyi oluşturan kullanıcının saat diliminde ayarlanan Tarih) sonra erişim paketini isteyemeyecektir.
+    Bir kullanıcının erişimi genişletilirse, belirtilen uzatma tarihinden (ilkeyi oluşturan kullanıcının saat diliminde ayarlanan tarih) ardından erişim paketini isteyemezler.
 
-1. Uzantı vermek için onay gerektirmek için, uzantıyı **Evet**'e **vermek üzere onay gerektir** seçeneğini belirleyin.
+1. Bir uzantı vermek için onay gerektirmek için, **Evet**uzantısı **vermek için onay ayarlamayı** ayarlayın.
 
-    **İstekler** sekmesinde belirtilen onay ayarları da kullanılacaktır.
+    **İstekler** sekmesinde belirtilen onay ayarları kullanılır.
 
-1. **İleri** veya **Güncelleştir**' e tıklayın.
+1. İleri veya **Güncelleştir'i** tıklatın. **Update**

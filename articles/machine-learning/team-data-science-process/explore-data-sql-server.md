@@ -1,6 +1,6 @@
 ---
-title: SQL Server sanal makinesinde - Team Data Science Process verilerini keşfedin
-description: Bir SQL Server VM'si SQL veya Python gibi programlama dilini kullanarak azure'da depolanan verileri araştırmak nasıl.
+title: SQL Server sanal makinesindeki verileri keşfedin - Takım Veri Bilimi Süreci
+description: SQL veya Python gibi bir programlama dilini kullanarak Azure'da SQL Server VM'de depolanan verileri nasıl keşfedebilirsiniz?
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,60 +12,60 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720104"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure üzerindeki SQL Server Sanal Makinesi verilerini keşfetme
 
-Bu makalede, bir SQL Server VM'si, azure'da depolanan verileri araştırmak nasıl ele alınmaktadır. Verileri incelemek için SQL veya Python kullanın.
+Bu makalede, Azure'da bir SQL Server VM'de depolanan verilerin nasıl keşfedileni kapsar. Verileri incelemek için SQL veya Python'u kullanın.
 
-Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
+Bu [görev, Ekip Veri Bilimi Sürecinde](overview.md)bir adımdır.
 
 > [!NOTE]
-> Bu belgede örnek SQL deyimlerinde veri SQL Server'da olduğunu varsayalım. Aksi takdirde, verilerinizi SQL Server'a taşıma hakkında bilgi edinmek için bulut veri bilimi işlemi eşlemesi bakın.
+> Bu belgedeki örnek SQL deyimleri verilerin SQL Server'da olduğunu varsayar. Değilse, verilerinizi SQL Server'a nasıl taşıyarak taşıyabildiğini öğrenmek için bulut veri bilimi işlem haritasına bakın.
 > 
 > 
 
-## <a name="sql-dataexploration"></a>SQL betikleri ile SQL verilerini keşfet
-SQL Server veri depolarında keşfetmek için kullanılan SQL betiklerini birkaç örnek aşağıda verilmiştir.
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>SQL komut dosyalarıyla SQL verilerini keşfedin
+Burada, SQL Server'daki veri depolarını keşfetmek için kullanılabilecek birkaç örnek SQL komut dosyası verebilirsiniz.
 
-1. Gün başına gözlemler sayısını alın
+1. Günlük gözlem sayısını alın
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Kategorik bir sütundaki düzeylerini Al
+2. Düzeyleri kategorik bir sütunda alma
    
     `select  distinct <column_name> from <databasename>`
-3. Kategorik iki sütunu birlikte düzey sayısını Al 
+3. İki kategorik sütunun birleşimiyle düzey sayısını alma 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Sayısal sütunlara dağıtımı Al
+4. Sayısal sütunlar için dağıtımı alın
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Pratik bir örnek için, [NYC TAXI veri kümesini](https://www.andresmh.com/nyctaxitrips/) kullanabilir ve [IPython Not defteri 'ni kullanarak ıpnb başlıklı NYC veri denetimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) öğesine başvurabilirsiniz ve bir uçtan uca izlenecek yol SQL Server.
+> Pratik bir örnek için, [NYC Taksi veri kümesini](https://www.andresmh.com/nyctaxitrips/) kullanabilir ve uçtan uca bir geçiş için [IPython Notebook ve SQL Server'ı kullanarak NYC Veri çekişmesi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) başlıklı IPNB'ye bakabilirsiniz.
 > 
 > 
 
-## <a name="python"></a>Python ile SQL verilerini keşfet
-Veri [bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)bölümünde belgelendiği gibi verileri incelemek ve veri SQL Server özellikler oluşturmak için Python kullanma. Veritabanından verileri bir Pandas DataFrame 'e yükleyin ve daha sonra işlem yapabilirsiniz. Biz veritabanına bağlanma ve veri çerçevesi'Bu bölümde veri yükleme işleminin belgeleyin.
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>Python ile SQL verilerini keşfedin
+Veriler SQL Server'da yken verileri keşfetmek ve özellikler oluşturmak için Python'u kullanmak, veri [bilimi ortamınızda İşlem Azure Blob verilerinde](data-blob.md)belgelenen Python kullanarak Azure blob'daki verileri işlemeye benzer. Veritabanındaki verileri pandadataframe'e yükleyin ve daha sonra daha fazla işlenebilir. Veritabanına bağlanma ve verileri bu bölümdeki DataFrame'e yükleme işlemini belgeliyoruz.
 
-Aşağıdaki bağlantı dizesi biçimi python'dan pyodbc (Değiştir servername, dbname, kullanıcı adı ve parola, belirli değerleri içeren) kullanarak bir SQL Server veritabanına bağlanmak için kullanılabilir:
+Aşağıdaki bağlantı dize biçimi pyodbc kullanarak Python'dan bir SQL Server veritabanına bağlanmak için kullanılabilir (sunucu adı, dbname, kullanıcı adı ve parolayı belirli değerlerle değiştirin):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 'daki [Pandas kitaplığı](https://pandas.pydata.org/) , Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, sonuçları bir SQL Server veritabanından bir Pandas veri çerçevesine döndürülen okur:
+Python'daki [Pandalar kitaplığı,](https://pandas.pydata.org/) Python programlaması için veri işleme için zengin bir veri yapıları kümesi ve veri çözümleme araçları sağlar. Aşağıdaki kod, SQL Server veritabanından Pandas veri çerçevesine döndürülen sonuçları okur:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Artık, [veri bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)konusunda ele alınan Pandas dataframe ile çalışabilirsiniz.
+Artık veri bilimi ortamınızda Konu [İşlemi Azure Blob verilerinde](data-blob.md)ele alınan Pandas DataFrame ile çalışabilirsiniz.
 
-## <a name="the-team-data-science-process-in-action-example"></a>Team Data Science Process eylem örnekte
-Ortak bir veri kümesi kullanan Cortana Analytics Işleminin uçtan uca bir anlatım örneği için, bkz: [SQL Server using the Team Data Science Process](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>Eylem örneğinde Takım Veri Bilimi Süreci
+Genel bir veri kümesi ni kullanarak Cortana Analitik Süreci'nin uçtan uca bir geçiş örneği için, [Takım Veri Bilimi Süreci'ni iş başında görün: SQL Server'ı kullanarak.](sql-walkthrough.md)
 

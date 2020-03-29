@@ -1,6 +1,6 @@
 ---
-title: Cihaz grupları - Azure IOT Edge için otomatik dağıtım | Microsoft Docs
-description: Otomatik dağıtımlar, paylaşılan etiketlere göre cihaz grupları yönetmek için Azure IOT Edge'de kullanın.
+title: Aygıt grupları için otomatik dağıtım - Azure IoT Edge | Microsoft Dokümanlar
+description: Paylaşılan etiketlere dayalı aygıt gruplarını yönetmek için Azure IoT Edge'de otomatik dağıtımları kullanma
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,129 +9,129 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76895972"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>IOT Edge otomatik dağıtımlar tek tek cihazlarda veya uygun ölçekte anlama
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Tek cihazlar için veya ölçekte IoT Edge otomatik dağıtımları anlayın
 
-Otomatik dağıtımlar ve katmanlı dağıtım, çok sayıda IoT Edge cihazda modülleri yönetmenize ve yapılandırmanıza yardımcı olur.
+Otomatik dağıtımlar ve katmanlı dağıtım, çok sayıda IoT Edge aygıtındaki modülleri yönetmenize ve yapılandırmanıza yardımcı olur.
 
-Azure IoT Edge, modülleri IoT Edge cihazlarda çalışacak şekilde yapılandırmanın iki yolunu sağlar. İlk yöntem, modülleri cihaz başına temelinde dağıtmaktır. Bir dağıtım bildirimi oluşturun ve ardından ada göre belirli bir cihaza uygularsınız. İkinci yöntem, modülleri bir tanımlı koşullar kümesini karşılayan herhangi bir kayıtlı cihaza otomatik olarak dağıtmaktır. Bir dağıtım bildirimi oluşturup, cihaz ikizi [Etiketler](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) temelinde hangi cihazların uygulanacağını tanımlarsınız.
+Azure IoT Edge, modülleri IoT Edge aygıtlarında çalışacak şekilde yapılandırmanın iki yolunu sağlar. İlk yöntem, modülleri cihaz başına dağıtmaktır. Bir dağıtım bildirimi oluşturun ve ardından belirli bir aygıta ada göre uygularsınız. İkinci yöntem, modülleri tanımlanan koşullar kümesini karşılayan kayıtlı herhangi bir aygıta otomatik olarak dağıtmaktır. Bir dağıtım bildirimi oluşturur sunuz ve ardından aygıt ikizindeki [etiketlere](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) göre hangi aygıtlara uygulandığını tanımlarsınız.
 
-Bu makale, toplu olarak *IoT Edge otomatik dağıtımlar*olarak adlandırılan cihazları yapılandırma ve izleme konusunda odaklanır. Temel dağıtım adımları aşağıdaki gibidir:
+Bu makalede, topluca *IoT Edge otomatik dağıtımları*olarak adlandırılan aygıt filolarının yapılandırılması ve izlenmesi üzerinde duruluyor.Temel dağıtım adımları aşağıdaki gibidir:
 
-1. İşleci bir modül kümesini ve hedef cihazları açıklayan bir dağıtımı tanımlar. Her dağıtımda bu bilgileri yansıtan bir dağıtım bildirimi vardır.
-2. IoT Hub hizmeti, bunları belirtilen modüllerle yapılandırmak için hedeflenen tüm cihazlarla iletişim kurar.
-3. IOT Hub hizmeti, IOT Edge cihazları alır ve işleci için kullanılabilir hale getirir.  Örneğin, bir operatör, bir sınır cihazının ne zaman başarıyla yapılandırılmadığı veya bir modülün çalışma zamanında başarısız olup olmadığını görebilir.
-4. Herhangi bir zamanda hedefleme koşullara uyan IOT Edge cihazları yeni dağıtım için yapılandırılmış.
+1. İşleç, bir modül kümesini ve hedef aygıtları açıklayan bir dağıtım tanımlar.Her dağıtım, bu bilgileri yansıtan bir dağıtım bildirimine sahiptir.
+2. IoT Hub hizmeti, bildirilen modüllerle yapılandırmak için tüm hedeflenen aygıtlarla iletişim kurar.
+3. IoT Hub hizmeti, IoT Edge aygıtlarından durumu alır ve operatör tarafından kullanılabilir hale getirir.Örneğin, bir operatör Edge aygıtının başarıyla yapılandırılmadığını veya bir modülün çalışma zamanında arızalı olup olmadığını görebilir.
+4. İstediğinzaman, hedefleme koşullarını karşılayan yeni IoT Edge aygıtları dağıtım için yapılandırılır.
 
-Bu makalede, yapılandırma ve dağıtım izleme alan her bir bileşeni açıklar. Oluşturma ve dağıtımı güncelleştirme yönergeleri için bkz [dağıtma ve izleme uygun ölçekte IOT Edge modülleri](how-to-deploy-monitor.md).
+Bu makalede, bir dağıtımı yapılandırma ve izlemeyle ilgili her bileşen açıklanmaktadır. Dağıtım oluşturma ve güncelleme için Bkz. [Dağıtım ve Ölçekte IoT Edge modüllerini izleyin.](how-to-deploy-monitor.md)
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-IOT Edge otomatik dağıtım, IOT Edge modül görüntüleri hedeflenen bir IOT Edge cihazlarının örnekler olarak çalıştırmak için atar. Karşılık gelen başlatma parametreleri ile modüllerin listesini dahil etmek için bir IOT Edge dağıtımı bildirimi yapılandırarak çalışır. Bir dağıtım, tek bir cihaza (cihaz KIMLIĞINE göre) veya bir cihaz grubuna (etiketlere göre) atanabilir. Bir IoT Edge cihaz bir dağıtım bildirimi aldıktan sonra, kapsayıcı görüntülerini ilgili kapsayıcı depolarından indirir ve yükler ve bunları uygun şekilde yapılandırır. Dağıtım oluşturulduktan sonra, bir operatör hedeflenen cihazların doğru yapılandırılıp yapılandırılmadığını görmek için dağıtım durumunu izleyebilir.
+IoT Edge otomatik dağıtım, hedeflenen IoT Edge aygıtları kümesinde örnek olarak çalışması için IoT Edge modül görüntülerini atar. Bir IoT Edge dağıtım bildirimini, ilgili başlatma parametrelerine sahip modüllerin listesini içerecek şekilde yapılandırarak çalışır.Dağıtım, tek bir aygıta (Aygıt Kimliği'ne dayalı olarak) veya bir aygıt grubuna (etiketlere dayalı) atanabilir.Bir IoT Edge aygıtı bir dağıtım bildirimi aldığında, kapsayıcı görüntülerini ilgili kapsayıcı depolarından karşıdan yükler ve buna göre yapılandırır.Dağıtım oluşturulduktan sonra, bir operatör hedeflenen aygıtların doğru şekilde yapılandırılıp yapılandırılmadığını görmek için dağıtım durumunu izleyebilir.
 
-IOT Edge cihazları yalnızca bir dağıtım ile yapılandırılabilir. Dağıtımı almadan önce aşağıdaki önkoşulların cihazda olmalıdır:
+Yalnızca IoT Edge aygıtları dağıtımla yapılandırılabilir. Dağıtıma geçebilmek için aşağıdaki ön koşullar aygıtta olmalıdır:
 
 * Temel işletim sistemi
-* Moby ya da Docker gibi bir kapsayıcı yönetim sistemi
-* IOT Edge çalışma zamanı sağlama
+* Moby veya Docker gibi bir konteyner yönetim sistemi
+* IoT Edge çalışma zamanının sağlanması
 
 ### <a name="deployment-manifest"></a>Dağıtım bildirimi
 
-Bir dağıtım bildirimi hedeflenen IOT Edge cihazlarında yapılandırılması için modülleri açıklayan bir JSON belgesidir. Gerekli sistem modüllerine (özellikle IOT Edge aracısı ve IOT Edge hub'ı) dahil olmak üzere tüm modüller için yapılandırma meta verilerini içeriyor.  
+Dağıtım bildirimi, hedeflenen IoT Edge aygıtlarında yapılandırılacak modülleri açıklayan bir JSON belgesidir. Gerekli sistem modülleri (özellikle IoT Edge aracısı ve IoT Edge hub' ı) dahil olmak üzere tüm modüller için yapılandırma meta verilerini içerir.  
 
-Her bir modül için yapılandırma meta verilerini içerir:
+Her modül için yapılandırma meta verileri şunları içerir:
 
 * Sürüm
 * Tür
-* Durum (örneğin, çalışıyor veya durduruldu)
+* Durum (örneğin, çalışan veya durdurulmuş)
 * Yeniden başlatma ilkesi
-* Görüntü ve kapsayıcı kayıt defteri
-* Giriş ve çıkış veri yolları
+* Resim ve konteyner kayıt defteri
+* Veri giriş ve çıktı yolları
 
-Bir özel kapsayıcı kayıt defteri modülü görüntüsü depolanırsa, IOT Edge aracısı kayıt defteri kimlik bilgilerini tutar.
+Modül görüntüsü özel bir kapsayıcı kayıt defterinde depolanırsa, IoT Edge aracısı kayıt defteri kimlik bilgilerini tutar.
 
 ### <a name="target-condition"></a>Hedef koşul
 
-Hedef koşul, dağıtımın kullanım ömrü boyunca sürekli olarak değerlendirilir. Gereksinimleri karşılayan yeni cihazları dahil edin ve artık yapan herhangi bir mevcut cihaza kaldırılır. Dağıtım Hizmeti herhangi bir hedef koşulu değişiklik algılarsa yeniden başlatılır.
+Hedef koşul, dağıtım ömrü boyunca sürekli olarak değerlendirilir. Gereksinimleri karşılayan tüm yeni aygıtlar dahildir ve artık olmayan varolan aygıtlar kaldırılır. Hizmet herhangi bir hedef koşul değişikliği algılarsa dağıtım yeniden etkinleştirilir.
 
-Örneğin, hedef koşul etiketleriyle bir dağıtımınız vardır. ortam = ' prod '. Dağıtımı devre dışı yaslanıp, 10 üretim cihaz bulunur. Modüller, bu 10 cihazları başarıyla yüklenir. IoT Edge Aracısı durumu 10 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve 0 bekleyen yanıt gösterir. Şimdi tags.environment ile beş daha fazla cihaz Ekle 'prod' =. Hizmet değişikliği algılar ve IoT Edge Aracı durumu 15 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve beş yeni cihaza dağıtırken 5 bekleyen yanıt olur.
+Örneğin, hedef koşul etiketleri.environment = 'prod' olan bir dağıtım var. Dağıtımı başlattığınızda, 10 üretim aygıtı vardır. Modüller bu 10 cihaza başarıyla yüklenir. IoT Edge aracısı durumu 10 toplam aygıt, 10 başarılı yanıt, 0 hata yanıtları ve 0 bekleyen yanıtgösterir. Şimdi tags.environment = 'prod' ile beş aygıt daha ekleyin. Hizmet değişikliği algılar ve IoT Edge aracısı durumu, beş yeni aygıta dağıtılırken 15 toplam aygıt, 10 başarılı yanıt, 0 hata yanıtı ve 5 bekleyen yanıt olur.
 
-Hedef cihazları seçmek için Device ikizi etiketlerindeki herhangi bir Boole koşulunu, Device ikizi bildirilen özellikleri veya DeviceID 'yi kullanın. Etiketleri koşul kullanmak istiyorsanız, "tags" eklemeniz gerekir:{} cihaz ikizi özelliklerini aynı düzeyde altında bölümünde. [Cihaz ikizindeki etiket hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
+Hedef aygıtları seçmek için aygıt ikizi etiketleri, aygıt ikizi bildirilen özellikler veya deviceId'deki herhangi bir Boolean koşulunu kullanın. Koşul'u etiketlerle kullanmak istiyorsanız, "etiketler" eklemeniz gerekir:{} aygıttaki ikiz bölüm özellikleriyle aynı düzeydedir. [Aygıt ikizindeki etiketler hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Hedef koşulları örnekleri:
+Hedef koşullara örnekler:
 
-* DeviceID = 'linuxprod1'
-* Tags.Environment = 'prod'
-* Tags.Environment = 'prod' AND tags.location = 'westus'
-* Tags.Environment = 'prod' veya tags.location = 'westus'
-* Tags.operator 'John' = ve tags.environment = 'prod' değil DeviceID = 'linuxprod1'
-* Properties. bildirilen. devicemodel = ' 4000x '
+* deviceId ='linuxprod1'
+* tags.environment ='prod'
+* tags.environment = 'prod' VE tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' VE tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* properties.reported.devicemodel = '4000x'
 
-Bir hedef koşul oluştururken bu kısıtlamaları göz önünde bulundurun:
+Bir hedef koşul oluşturuyorsanız bu kısıtlamaları göz önünde bulundurun:
 
-* Device ikizi 'da, yalnızca etiketleri, bildirilen özellikleri veya DeviceID 'yi kullanarak bir hedef koşul oluşturabilirsiniz.
-* Çift tırnak işareti, herhangi bir bölümünü hedef koşulu izin verilmez. Tek tırnak işareti kullanın.
-* Tek tırnak, hedef koşulu değerlerini temsil eder. Bu nedenle, cihaz adı bir parçası ise tek tırnak işareti ile başka bir tek tırnak işareti kaçış gerekir. Örneğin, bir cihazı hedeflemeniz adlı `operator'sDevice`, yazma `deviceId='operator''sDevice'`.
-* Sayı, harf ve şu karakterleri hedef koşulu değerlerde izin verilir: `-:.+%_#*?!(),=@;$`.
+* Aygıt ikizinde, yalnızca etiketleri, bildirilen özellikleri veya deviceId'i kullanarak bir hedef koşulu oluşturabilirsiniz.
+* Hedef koşulun herhangi bir bölümünde çift tırnak işaretine izin verilmez. Tek tırnak işaretleri kullanın.
+* Tek tırnak işaretleri hedef koşulun değerlerini temsil ediyor. Bu nedenle, aygıt adının bir parçasıysa, tek bir tekliften başka bir teklifle kaçmalısınız. Örneğin, adlı `operator'sDevice`bir aygıtı hedeflemek için , yazın. `deviceId='operator''sDevice'`
+* Sayılar, harfler ve aşağıdaki karakterler hedef koşul değerlerinde izin verilir: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Öncelik
 
-Öncelikli bir dağıtım hedeflenen cihaza göre diğer dağıtımlar uygulanması gerektiğini tanımlar. Dağıtım ile daha büyük sayılar daha yüksek öncelikli belirten pozitif bir tamsayı önceliktir. IOT Edge cihazı birden fazla dağıtım tarafından hedeflendiğinde, en yüksek önceliğe sahip dağıtım uygulanır.  Düşük önceliklere sahip dağıtımlar uygulanmaz ve birleştirilirler.  Bir cihaz eşit önceliğe sahip iki veya daha fazla dağıtıma hedefleniyorsa, en son oluşturulan dağıtım (oluşturma zaman damgasıyla belirlenir) geçerlidir.
+Öncelik, diğer dağıtımlara göre hedeflenen aygıta dağıtım uygulanıp uygulanmayacağını tanımlar. Dağıtım önceliği, daha büyük sayıların daha yüksek önceliği gösteren pozitif bir tamsayıdır. Bir IoT Edge aygıtı birden fazla dağıtım tarafından hedeflenirse, en yüksek önceliğe sahip dağıtım geçerlidir.Daha düşük önceliklere sahip dağıtımlar uygulanmaz ve birleştirilmeyecektir.Bir aygıt eşit önceliğe sahip iki veya daha fazla dağıtımla hedeflenirse, en son oluşturulan dağıtım (oluşturma zaman damgası tarafından belirlenir) uygulanır.
 
 ### <a name="labels"></a>Etiketler
 
-Etiketler, dağıtımları filtrelemek ve gruplamak için kullanabileceğiniz dize anahtar/değer çiftleridir. Bir dağıtımda birden fazla etiket olabilir. Etiketler isteğe bağlıdır ve IoT Edge cihazlarının gerçek yapılandırmasını etkilemez.
+Etiketler, dağıtımları filtrelemek ve gruplandırmak için kullanabileceğiniz dize anahtar/değer çiftleridir.Dağıtımda birden çok etiket olabilir. Etiketler isteğe bağlıdır ve IoT Edge aygıtlarının gerçek yapılandırmasını etkilemez.
 
 ### <a name="metrics"></a>Ölçümler
 
-Varsayılan olarak, tüm dağıtımlar dört ölçüm üzerinde rapor alır:
+Varsayılan olarak, tüm dağıtımlar dört ölçüm üzerinde rapor:
 
-* **Hedeflenen** , dağıtım hedefleme durumuyla eşleşen IoT Edge cihazları gösterir.
-* **Uygulanan** , daha yüksek öncelikli bir dağıtım tarafından hedeflenilmemiş hedeflenen IoT Edge cihazları gösterir.
-* **Raporlama başarısı** , modüllerin başarıyla dağıtıldığını bildiren IoT Edge cihazları gösterir.
-* **Raporlama hatası** , bir veya daha fazla modülün başarıyla dağıtılmadığını bildiren IoT Edge cihazları gösterir. Daha fazla hata araştırmak, bu cihazlar için uzaktan bağlanma ve günlük dosyalarını görüntülemek için.
+* **Hedeflenen,** Dağıtım hedefleme koşuluyla eşleşen IoT Edge aygıtlarını gösterir.
+* **Uygulanan,** daha yüksek öncelikli başka bir dağıtım tarafından hedeflenmeyen hedeflenen IoT Edge aygıtlarını gösterir.
+* **Raporlama Başarısı,** modüllerin başarıyla dağıtıldığını bildiren IoT Edge aygıtlarını gösterir.
+* **Raporlama Hatası,** bir veya daha fazla modülün başarıyla dağıtılmadığı bildirilen IoT Edge aygıtlarını gösterir. Hatayı daha fazla araştırmak için, bu aygıtlara uzaktan bağlanın ve günlük dosyalarını görüntüleyin.
 
-Ayrıca, dağıtımı izlemeye ve yönetmeye yardımcı olması için kendi özel ölçümlerinizi de tanımlayabilirsiniz.
+Ayrıca, dağıtımı izlemeye ve yönetmeye yardımcı olmak için kendi özel ölçümlerinizi tanımlayabilirsiniz.
 
-Ölçümler, cihazların bir dağıtım yapılandırması uygulamanın bir sonucu olarak yeniden rapor edebileceği çeşitli durumların Özet sayısını sağlar. Ölçümler, [ikizi bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)( *Lastdesiredstatus* veya *lastconnecttime*gibi) sorgulayabilirler. Örneğin:
+Ölçümler, aygıtların dağıtım yapılandırması uygulaması sonucunda geri bildirebileceği çeşitli durumların özet sayımlarını sağlar. Ölçümler [edgeHub modülü ikiz bildirilen özellikleri](module-edgeagent-edgehub.md#edgehub-reported-properties)sorgulayabilirsiniz , *lastDesiredStatus* veya *lastConnectTime*gibi . Örnek:
 
 ```sql
 SELECT deviceId FROM devices
   WHERE properties.reported.lastDesiredStatus.code = 200
 ```
 
-Kendi ölçümlerinizi eklemek isteğe bağlıdır ve IoT Edge cihazlarının gerçek yapılandırmasını etkilemez.
+Kendi ölçümlerinizi eklemek isteğe bağlıdır ve IoT Edge aygıtlarının gerçek yapılandırmasını etkilemez.
 
 ## <a name="layered-deployment"></a>Katmanlı dağıtım
 
-Katmanlı dağıtımlar, oluşturulması gereken benzersiz dağıtım sayısını azaltmak için birlikte birleştirilebilecek otomatik dağıtımlardır. Katmanlı dağıtımlar, aynı modüllerin birçok otomatik dağıtımda farklı birleşimlerde yeniden kullanıldığı senaryolarda faydalıdır.
+Katmanlı dağıtımlar, oluşturulması gereken benzersiz dağıtım sayısını azaltmak için biraraya getirilebilen otomatik dağıtımlardır. Katmanlı dağıtımlar, aynı modüllerin birçok otomatik dağıtımda farklı kombinasyonlarda yeniden kullanıldığı senaryolarda yararlıdır.
 
-Katmanlı dağıtımlar, herhangi bir otomatik dağıtımla aynı temel bileşenlere sahiptir. Cihazları, cihaz ikklerindeki etiketlere göre hedefleyin ve Etiketler, ölçümler ve durum raporlama etrafında aynı işlevleri sağlar. Katmanlı dağıtımlar da bunlara atanmış öncelikler vardır, ancak bir cihaza hangi dağıtımın uygulanacağını belirleyen önceliği kullanmak yerine, bir cihaza birden çok dağıtımın nasıl derecelendirilir olduğunu belirler. Örneğin, iki katmanlı dağıtımda aynı ada sahip bir modül veya bir yol varsa, düşük önceliğin üzerine yazıldığında, yüksek önceliğe sahip katmanlı dağıtım uygulanır.
+Katmanlı dağıtımlar, tüm otomatik dağıtımlarla aynı temel bileşenlere sahiptir. Aygıtikizleri üzerindeki etiketlere göre cihazları hedefler ve etiketler, ölçümler ve durum raporlaması etrafında aynı işlevselliği sağlarlar. Katmanlı dağıtımların öncelikleri de vardır, ancak aygıta hangi dağıtımın uygulandığını belirlemek için önceliği kullanmak yerine, öncelik bir aygıtta birden çok dağıtımın nasıl sıralanır olduğunu belirler. Örneğin, iki katmanlı dağıtımda aynı ada sahip bir modül veya rota varsa, daha yüksek önceliğe sahip katmanlı dağıtım, alt önceliğe göre yazılırken uygulanır.
 
-Sistem çalışma zamanı modülleri, edgeAgent ve edgeHub, katmanlı dağıtımın bir parçası olarak yapılandırılmamıştır. Katmanlı bir dağıtım tarafından hedeflenen tüm IoT Edge cihazlara, önce standart bir Otomatik dağıtıma uygulanmış olması gerekir. Otomatik dağıtım, katmanlı dağıtımların eklenebileceği temeli sağlar.
+Sistem çalışma zamanı modülleri, edgeAgent ve edgeHub, katmanlı dağıtımın bir parçası olarak yapılandırılmamıştır. Katmanlı dağıtım tarafından hedeflenen herhangi bir IoT Edge aygıtının önce standart bir otomatik dağıtıma ihtiyacı vardır. Otomatik dağıtım, katmanlı dağıtımların eklenebileceği tabanı sağlar.
 
-IoT Edge bir cihaz yalnızca bir standart otomatik dağıtım uygulayabilir, ancak birden çok katmanlı otomatik dağıtımlar uygulayabilir. Bir cihazın hedeflediği katmanlı dağıtımlar, bu cihaz için otomatik dağıtımdan daha yüksek önceliğe sahip olmalıdır.
+Bir IoT Edge aygıtı bir ve yalnızca bir standart otomatik dağıtım uygulayabilir, ancak birden çok katmanlı otomatik dağıtım uygulayabilir. Bir aygıtı hedefleyen katmanlı dağıtımların, o aygıtın otomatik dağıtımından daha yüksek bir önceliğe sahip olması gerekir.
 
-Örneğin, binaları yöneten bir şirketin aşağıdaki senaryosunu göz önünde bulundurun. Güvenlik kameraları, hareket sensörleri ve yükseltme 'lerden veri toplamak için IoT Edge modüller geliştirirler. Ancak, tüm binaları üç modülü de kullanamaz. Standart otomatik dağıtımlar sayesinde şirketin, binalarının ihtiyaç duyduğu tüm modül birleşimleri için bireysel dağıtımlar oluşturması gerekir.
+Örneğin, binaları yöneten bir şirketin aşağıdaki senaryosunu göz önünde bulundurun. Güvenlik kameralarından, hareket sensörlerinden ve asansörlerden veri toplamak için IoT Edge modülleri geliştirdiler. Ancak, tüm binaları her üç modülleri kullanabilirsiniz. Standart otomatik dağıtımlarla, şirketin binalarının ihtiyaç duyduğu tüm modül kombinasyonları için ayrı ayrı dağıtımlar oluşturması gerekir.
 
-![Standart otomatik dağıtımların her modül birleşimine uygun olması gerekir](./media/module-deployment-monitoring/standard-deployment.png)
+![Standart otomatik dağıtımlar her modül kombinasyonuna uyum sağlamalı](./media/module-deployment-monitoring/standard-deployment.png)
 
-Ancak, şirket katmanlı Otomatik dağıtıma geçtiğinde, yönetmek üzere daha az dağıtım olan binaları için aynı modül kombinasyonlarını oluşturamazlar. Her modülün kendi katmanlı bir dağıtımı vardır ve cihaz etiketleri her oluşturmaya hangi modüllerin ekleneceğini belirler.
+Ancak, şirket katmanlı otomatik dağıtımlara geçtikten sonra, yönetebilecekleri daha az dağıtım olan binaları için aynı modül kombinasyonlarını oluşturabileceklerini fark ederler. Her modülün kendi katmanlı dağıtımı vardır ve aygıt etiketleri her binaya hangi modüllerin eklendiğine yönelik tanımlar.
 
-![Katmanlı otomatik dağıtımlar, aynı modüllerin farklı yollarla birleştirileceği senaryoları basitleştirir](./media/module-deployment-monitoring/layered-deployment.png)
+![Katmanlı otomatik dağıtımlar, aynı modüllerin farklı şekillerde birleştirildiği senaryoları basitleştirir](./media/module-deployment-monitoring/layered-deployment.png)
 
-### <a name="module-twin-configuration"></a>Module ikizi yapılandırması
+### <a name="module-twin-configuration"></a>Modül ikiz yapılandırması
 
-Katmanlı dağıtımlarla çalışırken, kasıtlı olarak veya başka bir şekilde, bir cihazı hedefleyen aynı modüle sahip iki dağıtıma sahip olabilirsiniz. Bu durumlarda, daha yüksek öncelikli dağıtımın ikizi modülünün üzerine yazıp yazmayacağını veya sonuna ekleme yapıp etmeyeceğine karar verebilirsiniz. Örneğin, 100 farklı cihaza aynı modülü uygulayan bir dağıtıma sahip olabilirsiniz. Ancak, bu cihazların 10 ' u güvenli tesislerde ve proxy sunucularıyla iletişim kurmak için ek yapılandırma gerekir. Bu 10 cihazın, temel dağıtımdan var olan modül ikizi bilgilerinin üzerine yazmadan güvenli bir şekilde iletişim kurmasına olanak tanıyan modül ikizi özellikleri eklemek için katmanlı bir dağıtım kullanabilirsiniz.
+Katmanlı dağıtımlarla çalışırken, kasıtlı olarak veya başka bir şekilde, aynı modüle sahip bir aygıtı hedefleyen iki dağıtıma sahip olabilirsiniz. Bu gibi durumlarda, daha yüksek öncelikli dağıtım ın modülün üzerine mi yoksa buna ek mi yazılması gerektiğine karar verebilirsiniz. Örneğin, aynı modülü 100 farklı aygıta uygulayan bir dağıtımınız olabilir. Ancak, bu aygıtlardan 10'u güvenli tesislerdedir ve proxy sunucuları aracılığıyla iletişim kurmak için ek yapılandırmaya ihtiyaç duyar. Bu 10 aygıtın temel dağıtımdan varolan modül ikiz bilgilerini üzerine yazmadan güvenli bir şekilde iletişim kurmasını sağlayan modül ikiz özellikleri eklemek için katmanlı bir dağıtım kullanabilirsiniz.
 
-Dağıtım bildiriminde Module ikizi istenen özellikleri ekleyebilirsiniz. Standart dağıtımda, bir katman ikizi Module, katmanlı bir dağıtımda istenen özelliklerin yeni bir alt kümesini **bildirebilirsiniz.**
+Dağıtım bildiriminde modül ikiz istenilen özellikleri ekleyebilirsiniz. Standart bir **dağıtımda,** modül ikizinin istenilen bölümüne özellikler eklerseniz, katmanlı bir dağıtımda istenen özelliklerin yeni bir alt kümesini bildirebilirsiniz.
 
-Örneğin, standart bir dağıtımda, sanal sıcaklık algılayıcısı modülünü 5 saniyelik aralıklarla veri göndermesini söyleyen aşağıdaki istenen özelliklerle ekleyebilirsiniz:
+Örneğin, standart bir dağıtımda, 5 saniyelik aralıklarla veri göndermesini söyleyen aşağıdaki istenilen özelliklere sahip simüle edilmiş sıcaklık sensörü modülünü ekleyebilirsiniz:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -142,7 +142,7 @@ Dağıtım bildiriminde Module ikizi istenen özellikleri ekleyebilirsiniz. Stan
 }
 ```
 
-Aynı cihazların bazılarını veya tümünü hedefleyen katmanlı bir dağıtımda, sanal algılayıcının 1000 ileti göndermesini ve sonra durdurmasını söyleyen bir özellik ekleyebilirsiniz. Var olan özelliklerin üzerine yazmak istemezsiniz, bu nedenle, istenen özellikler içinde yeni özelliği içeren `layeredProperties`adlı yeni bir bölüm oluşturursunuz:
+Aynı aygıtların bazılarını veya tümünü hedefleyen katmanlı bir dağıtımda, benzetilen sensöre 1000 ileti göndermesini ve ardından durmasını söyleyen bir özellik ekleyebilirsiniz. Varolan özelliklerin üzerine yazmak istemezsiniz, bu nedenle istenen özellikler içinde `layeredProperties`yeni bir bölüm oluşturursunuz, yeni özelliği içerir:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -152,7 +152,7 @@ Aynı cihazların bazılarını veya tümünü hedefleyen katmanlı bir dağıt�
 }
 ```
 
-Her iki dağıtımda de uygulanmış bir cihaz, sanal sıcaklık algılayıcısı için ikizi modülünde aşağıdaki özellikleri yansıtır:
+Her iki dağıtım uygulanan bir aygıt, simüle edilmiş sıcaklık sensörü için modül ikizinde aşağıdaki özellikleri yansıtır:
 
 ```json
 "properties": {
@@ -166,36 +166,36 @@ Her iki dağıtımda de uygulanmış bir cihaz, sanal sıcaklık algılayıcıs�
 }
 ```
 
-İkizi modülünün `properties.desired` alanını katmanlı bir dağıtımda ayarlarsanız, daha düşük öncelikli dağıtımlarda Bu modülün istenen özelliklerinin üzerine yazar.
+Modül ikizinin `properties.desired` alanını katmanlı bir dağıtımda ayarlarsanız, daha düşük öncelikli dağıtımlarda bu modül için istenen özelliklerin üzerine yazılır.
 
-## <a name="phased-rollout"></a>Aşamalı dağıtımı
+## <a name="phased-rollout"></a>Aşamalı kullanıma sunulması
 
-Aşamalı yapabildiği değişiklikleri operatörün insanın ufkunu genişleten bir IOT Edge cihazları kümesine dağıtır, genel bir işlemdir. Aşamalı olarak geniş ölçek bozucu değişiklikler yapma riskini azaltmak için değişiklik olmaktır. Otomatik dağıtımlar, IoT Edge cihazları arasında aşamalı piyasaya çıkarma yönetimine yardımcı olur.
+Aşamalı kullanıma alma, bir işleç tarafından ioT Edge aygıtlarının genişletilmesi kümesine değişiklikler dağıttığı genel bir işlemdir. Amaç, geniş ölçekli kırma değişiklikleri yapma riskini azaltmak için kademeli olarak değişiklik yapmaktır. Otomatik dağıtımlar, bir IoT Edge aygıtı filosunda aşamalı kullanıma sunulmasının yönetilmesine yardımcı olur.
 
-Aşamalı aşağıdaki aşamaları ve adımları çalıştırılır:
+Aşamalı bir rollout aşağıdaki aşamalar ve adımlar yürütülür:
 
-1. Bunları sağlama ve cihaz ikizi etiketi gibi ayarlayarak IOT Edge cihazları, bir test ortamı kurmak `tag.environment='test'`. Test ortamı, dağıtımın sonunda hedeflenecek üretim ortamını yansıtmalıdır.
-2. İstenen modülleri ve yapılandırmaları da dahil olmak üzere bir dağıtım oluşturun. IOT Edge cihazı ortam test hedefleme koşul hedeflemelidir.
-3. Yeni modül yapılandırması test ortamında doğrulayın.
-4. Dağıtım hedefleme koşula yeni bir etiket ekleyerek bir alt kümesini üretim IOT Edge cihazları içerecek şekilde güncelleştirin. Ayrıca, dağıtım önceliğini şu anda bu cihazları hedefleyen diğer dağıtımlar daha yüksek olduğundan emin olun
-5. Dağıtım durumu görüntüleyerek dağıtım hedeflenen IOT Cihazlarında başarılı olduğunu doğrulayın.
-6. Kalan tüm üretim IOT Edge cihazları hedeflemek için dağıtım güncelleştirin.
+1. IoT Edge aygıtlarının bir test ortamı nı oluşturarak ve `tag.environment='test'`bir aygıt ikiz etiketi ni ayarlayarak .Sınama ortamı, dağıtımın sonunda hedefalacağı üretim ortamını yansıtmalıdır.
+2. İstenilen modülleri ve yapılandırmaları içeren bir dağıtım oluşturun. Hedefleme koşulu, test IoT Edge aygıt ortamını hedeflemelidir.
+3. Test ortamındaki yeni modül yapılandırmasını doğrulayın.
+4. Hedefleme durumuna yeni bir etiket ekleyerek üretim IoT Edge aygıtlarının bir alt kümesini içerecek şekilde dağıtımı güncelleştirin. Ayrıca, dağıtım önceliğinin şu anda bu aygıtlara hedeflenen diğer dağıtımlardan daha yüksek olduğundan emin olun
+5. Dağıtım durumunu görüntüleyerek dağıtımın hedeflenen IoT Aygıtlarında başarılı olduğunu doğrulayın.
+6. Kalan tüm üretim IoT Edge aygıtlarını hedeflemek için dağıtımı güncelleştirin.
 
 ## <a name="rollback"></a>Geri alma
 
-Bir hata veya yanlış yapılandırmalarını geri alırsanız, dağıtımları alınabilir. Bir dağıtım, bir IoT Edge cihazının mutlak modül yapılandırmasını tanımladığından, hedef tüm modülleri kaldırsa bile, ek bir dağıtımın aynı cihaza daha düşük bir önceliğe de hedeflenmiş olması gerekir.  
+Hatalar veya yanlış yapılandırmalar alırsanız dağıtımlar geri alınabilir.Dağıtım, bir IoT Edge aygıtıiçin mutlak modül yapılandırmasını tanımladığından, hedef tüm modülleri kaldırmak olsa bile, ek bir dağıtımın aynı aygıta daha düşük bir öncelikle hedefleştirilmesi gerekir.  
 
-Dağıtım silindiğinde, modüller hedeflenen cihazlardan kaldırılmaz. Boş bir dağıtım olsa bile, cihazlar için yeni bir yapılandırma tanımlayan başka bir dağıtım olması gerekir.
+Dağıtımın silmesi, modülleri hedeflenen aygıtlardan kaldırmaz. Boş bir dağıtım olsa bile aygıtlar için yeni bir yapılandırma tanımlayan başka bir dağıtım olmalıdır.
 
-Geri alma işlemleri, aşağıdaki sırayla gerçekleştirin:
+Aşağıdaki sırayla geri alma gerçekleştirin:
 
-1. İkinci bir dağıtım aynı cihazı kümesinin hedeflenir onaylayın. Geri alma amacı, tüm modülleri kaldırmak için ise, ikinci dağıtımı modüllerin içermemelidir.
-2. Değiştirin veya hedef koşul ifadesi, böylece cihazlar artık hedefleme koşula uyan geri almak istediğiniz dağıtımın kaldırın.
-3. Dağıtım durumunu görüntüleyerek geri alma başarılı olduğunu doğrulayın.
-   * Toplu geri dağıtım durumu geri alındı cihazlar için artık göstermelidir.
-   * İkinci dağıtımı artık geri alındı cihazlar için dağıtım durumunu içermelidir.
+1. İkinci bir dağıtımın da aynı aygıt kümesini hedeflediğini doğrulayın. Geri alma nın amacı tüm modülleri kaldırmaksa, ikinci dağıtım herhangi bir modül içermemelidir.
+2. Aygıtların artık hedefleme koşuluna uymaması için geri almak istediğiniz dağıtımın hedef koşulu ifadesini değiştirin veya kaldırın.
+3. Geri alma durumunu görüntüleyerek geri alma nın başarılı olduğunu doğrulayın.
+   * Geri alma dağıtımı artık geri alındı aygıtlar için durum göstermemelidir.
+   * İkinci dağıtım şimdi geri alındı aygıtlar için dağıtım durumunu içermelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Oluşturmak, güncelleştirmek veya bir dağıtımda silmek için adımlarında yol [dağıtma ve izleme uygun ölçekte IOT Edge modülleri](how-to-deploy-monitor.md).
-* Gibi diğer IOT Edge kavramları hakkında daha fazla bilgi [IOT Edge çalışma zamanı](iot-edge-runtime.md) ve [IOT Edge modülleri](iot-edge-modules.md).
+* Dağıtım'da bir dağıtım oluşturmak, güncelleştirmek veya silmek [ve IoT Edge modüllerini ölçekte izlemek](how-to-deploy-monitor.md)için adımları gözden geçirin.
+* [IoT Edge çalışma zamanı](iot-edge-runtime.md) ve [IoT Edge modülleri](iot-edge-modules.md)gibi diğer IoT Edge kavramları hakkında daha fazla bilgi edinin.

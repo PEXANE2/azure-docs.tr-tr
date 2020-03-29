@@ -1,6 +1,6 @@
 ---
-title: Uygulamaları HA için yönlendirme trafiği-Azure CLı-Traffic Manager
-description: Azure CLı betik örneği-yüksek uygulamaların kullanılabilirliği için trafiği yönlendirme
+title: Uygulamaların HA için rota trafiği - Azure CLI - Trafik Yöneticisi
+description: Azure CLI komut dosyası örneği - Uygulamaların yüksek kullanılabilirliği için rota trafiği
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -16,15 +16,15 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: rohink
 ms.openlocfilehash: e4912e0e285d41bf2de4cf439788a943251cfae8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934786"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Azure CLı kullanarak yüksek uygulamaların kullanılabilirliği için trafiği yönlendirme
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Azure CLI kullanarak uygulamaların yüksek kullanılabilirliği için rota trafiği
 
-Bu betik bir kaynak grubu, iki App Service planı, iki Web uygulaması, bir Traffic Manager profili ve iki Traffic Manager uç noktası oluşturur. Traffic Manager, trafiği birincil bölge olarak bir bölgedeki uygulamaya ve birincil bölgedeki uygulama kullanılamadığında ikincil bölgeye yönlendirir. Betiği yürütmeden önce, MyWebApp, MyWebAppL1 ve MyWebAppL2 değerlerini Azure 'daki benzersiz değerlerle değiştirmeniz gerekir. Betiği çalıştırdıktan sonra, birincil bölgedeki uygulamaya mywebapp.trafficmanager.net URL 'SI ile erişebilirsiniz.
+Bu komut dosyası bir kaynak grubu, iki uygulama hizmeti planı, iki web uygulaması, bir trafik yöneticisi profili ve iki trafik yöneticisi bitiş noktası oluşturur. Trafik Yöneticisi trafiği birincil bölge olarak bir bölgedeki uygulamaya ve birincil bölgedeki uygulama kullanılamadığında ikincil bölgeye yönlendirir. Komut dosyasını uygulamadan önce MyWebApp, MyWebAppL1 ve MyWebAppL2 değerlerini Azure genelinde benzersiz değerlerle değiştirmeniz gerekir. Komut dosyasını çalıştırdıktan sonra, birincil bölgedeki uygulamaya URL mywebapp.trafficmanager.net ile erişebilirsiniz.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -37,7 +37,7 @@ Bu betik bir kaynak grubu, iki App Service planı, iki Web uygulaması, bir Traf
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme 
 
-Betik örneği çalıştırıldıktan sonra, kaynak grubunu, App Service uygulamayı ve tüm ilgili kaynakları kaldırmak için izle komutu kullanılabilir.
+Komut dosyası örneği çalıştırıldıktan sonra, kaynak grubunu, Uygulama Hizmeti uygulamasını ve ilgili tüm kaynakları kaldırmak için izleme komutu kullanılabilir.
 
 ```azurecli
 az group delete --name myResourceGroup1 --yes
@@ -51,13 +51,13 @@ Bu betik bir kaynak grubu, web uygulaması, traffic manager profili ve tüm ilgi
 | Komut | Notlar |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | App Service planı oluşturur. Bu, Azure Web uygulamanız için bir sunucu grubu gibidir. |
-| [az WebApp Web Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | App Service planı içinde bir Azure Web uygulaması oluşturur. |
-| [az Network Traffic-Manager profili oluşturma](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Bir Azure Traffic Manager profili oluşturur. |
-| [az Network Traffic-Manager uç noktası oluştur](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager profiline bir uç nokta ekler. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | App Service planı oluşturur. Bu, Azure web uygulamanız için bir sunucu çiftliği gibidir. |
+| [az webapp web oluşturmak](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Uygulama Hizmeti planı içinde bir Azure web uygulaması oluşturur. |
+| [az ağ trafik yöneticisi profili oluşturmak](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Bir Azure Traffic Manager profili oluşturur. |
+| [az ağ trafik yöneticisi bitiş noktası oluşturmak](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager profiline bir uç nokta ekler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
 
-Ek App Service CLı betiği örnekleri, [Azure ağ belgelerinde](../cli-samples.md)bulunabilir.
+Ek App Service CLI komut dosyası örnekleri [Azure Ağ belgelerinde](../cli-samples.md)bulunabilir.

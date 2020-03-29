@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C içinde self servis parola sıfırlama | Microsoft Docs
-description: Azure Active Directory B2C ' de müşterileriniz için self servis parola sıfırlamanın nasıl ayarlanacağını gösterir
+title: Azure Active Directory B2C'de self servis parola sıfırlama | Microsoft Dokümanlar
+description: Azure Active Directory B2C'deki müşterileriniz için self servis parola sıfırlama nın nasıl ayarlan olduğunu gösterir
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,33 +11,33 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d6dad52c8a3e63c64bb8e0e0030e8c50b5bab42c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183117"
 ---
-# <a name="set-up-self-service-password-reset-for-your-customers"></a>Müşterileriniz için self servis parola sıfırlamayı ayarlama
+# <a name="set-up-self-service-password-reset-for-your-customers"></a>Müşterileriniz için self servis parola sıfırlama
 
-Self servis parola sıfırlama özelliği sayesinde, yerel hesaplara kaydolan müşterilerimiz parolalarını kendi kendilerine sıfırlayabilir. Bu, özellikle uygulamanızın milyonlarca müşteriyi düzenli olarak kullanıyorsa, destek personelinizdeki yükü önemli ölçüde azaltır. Şu anda, doğrulanmış bir e-posta adresi kullanmak desteklenen tek kurtarma yöntemidir.
+Self servis parola sıfırlama özelliği sayesinde, yerel hesaplara kaydolan müşterileriniz parolalarını kendi başlarına sıfırlayabilir. Bu, özellikle uygulamanızın düzenli olarak kullanan milyonlarca müşterisi varsa, destek personelinizin üzerindeki yükü önemli ölçüde azaltır. Şu anda, doğrulanmış bir e-posta adresi kullanarak desteklenen tek kurtarma yöntemidir.
 
 > [!NOTE]
-> Bu makale, kimlik sağlayıcısı olarak **yerel hesap oturumu açma** kullanan v1 **oturum açma** Kullanıcı akışı bağlamında kullanılan self servis parola sıfırlama için geçerlidir. Uygulamanızdan çağrılan, tamamen özelleştirilebilir parola sıfırlama Kullanıcı akışları gerekiyorsa, [Bu makaleye](user-flow-overview.md)bakın.
+> Bu makale, kimlik sağlayıcısı olarak **Yerel Hesap SignIn'i** kullanan V1 **Sign in** user akışı bağlamında kullanılan self servis parola sıfırlama için geçerlidir. Uygulamanızdan çağrılan kullanıcı akışlarını tamamen özelleştirilebilir parola sıfırlamanız gerekiyorsa, [bu makaleye](user-flow-overview.md)bakın.
 >
 >
 
-Varsayılan olarak, dizininizde self servis parola sıfırlama özelliği açık değildir. Açmak için aşağıdaki adımları kullanın:
+Varsayılan olarak, dizininizin self servis parola sıfırlaması açık değildir. Açmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) abonelik Yöneticisi olarak oturum açın. Bu, dizininizi oluştururken kullandığınız iş veya okul hesabı ya da aynı Microsoft hesabı.
-2. **Azure Active Directory** açın (sol taraftaki Gezinti çubuğunda).
-3. Seçenekler dikey penceresinde aşağı kaydırın ve **parola sıfırlama**' yı seçin.
-4. **Self servis parola sıfırlamayı etkin** **olarak ayarlayın**.
-5. Sayfanın üst kısmından **Kaydet**'e tıklayın. İşiniz bitti!
+1. Abonelik Yöneticisi olarak [Azure portalında](https://portal.azure.com/) oturum açın. Bu, iş veya okul hesabı veya dizini oluşturmak için kullandığınız Microsoft hesabıyla aynıdır.
+2. **Azure Etkin Dizini'ni** açın (sol taraftaki gezinti çubuğunda).
+3. Seçenekler bıçağını aşağı kaydırın ve **Parola sıfırlama'yı**seçin.
+4. **Tüm'e** **etkin olan Self servis parola sıfırlamayı** ayarlayın.
+5. Sayfanın üst kısmından **Kaydet**'e tıklayın. Senin bitirdin!
 
-Test etmek için, bir kimlik sağlayıcısı olarak yerel hesapları olan oturum açma Kullanıcı akışındaki "Şimdi Çalıştır" özelliğini kullanın. Yerel hesap oturum açma sayfasında (bir e-posta adresi ve parola girin veya Kullanıcı adı ve parola girdiğinizde), müşteri deneyimini doğrulamak için **hesabınıza erişemiyor musunuz?** seçeneğine tıklayın.
+Sınamak için, kimlik sağlayıcısı olarak yerel hesapları olan oturum açma kullanıcı akışında "Şimdi Çalıştır" özelliğini kullanın. Yerel hesap oturum açma sayfasında (e-posta adresi ve parola veya kullanıcı adı ve parola girdiğiniz yer) müşteri deneyimini doğrulamak için **hesabınıza erişemez mi?**
 
 > [!NOTE]
-> Self servis parola sıfırlama sayfaları, [Şirket markası özelliği](../active-directory/fundamentals/customize-branding.md)kullanılarak özelleştirilebilir.
+> Self servis parola sıfırlama [sayfaları, şirket markalandırma özelliği](../active-directory/fundamentals/customize-branding.md)kullanılarak özelleştirilebilir.
 >
 >
 

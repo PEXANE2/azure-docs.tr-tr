@@ -1,6 +1,6 @@
 ---
-title: Birden çok örnek arasında bölüm yükünü dengeleme-Azure Event Hubs | Microsoft Docs
-description: Olay işlemcisi ve Azure Event Hubs SDK kullanarak, uygulamanızın birden çok örneğinde bölüm yükünün nasıl dengeleneceğini açıklar.
+title: Birden çok örnekte bakiye bölüm yükü - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
+description: Bir olay işlemcisi ve Azure Etkinlik Hub'ları SDK'yı kullanarak uygulamanızın birden fazla örneği arasında bölüm yükünü nasıl dengeleriz açıklar.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
 ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907662"
 ---
-# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Uygulamanızın birden çok örneği arasında bölüm yükünü dengeleme
-Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok örneğini çalıştırabilir ve yükün kendileri arasında dengelenmesi sağlayabilirsiniz. Eski sürümlerde, [Eventprocessorhost](event-hubs-event-processor-host.md) , alma sırasında programınızın birden çok örneği ve kontrol noktası olayları arasındaki yükü dengelemenize izin verildi. Yeni sürümlerde (5,0 sonraki sürümler), **Eventprocessorclient** (.net ve Java) veya **Eventhubconsumerclient** (Python ve JavaScript) aynı şekilde yapmanıza olanak sağlar. Geliştirme modeli olayları kullanarak daha basit hale getirilir. Bir olay işleyicisini kaydederek ilgilendiğiniz olaylara abone olursunuz.
+# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Uygulamanızın birden çok örneği arasında bakiye bölüm yükü
+Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok örneğini çalıştırabilir ve yükü kendi aralarında dengelemesini sağlayabilirsiniz. Eski [sürümlerde, EventProcessorHost](event-hubs-event-processor-host.md) alırken programınızın birden çok örneği ile denetim noktası olayları arasındaki yükü dengelemenize olanak sağlar. Yeni sürümlerde (5.0 itibaren), **EventProcessorClient** (.NET ve Java) veya **EventHubConsumerClient** (Python ve JavaScript) aynı şeyi yapmanızı sağlar. Geliştirme modeli olaylar kullanılarak daha basit hale getirilir. Bir etkinlik işleyicisi kaydederek ilgilendiğiniz etkinliklere abone olursunuz.
 
-Bu makalede, bir olay hub 'ından olayları okumak için birden çok örnek kullanmanın örnek bir senaryosu açıklanmakta ve daha sonra, aynı anda birden çok bölümden gelen ve yük dengelemeye olanak tanıyan olay işlemcisi istemcisinin özellikleri hakkında ayrıntılı bilgi verir. aynı Olay Hub 'ını ve tüketici grubunu kullanan tüketiciler.
+Bu makalede, olayları bir olay merkezinden okumak için birden çok örnek kullanmak için bir örnek senaryo açıklanır ve ardından olay işlemci istemcisinin özellikleri hakkında ayrıntılı bilgi verir, bu da aynı anda birden çok bölümden olayları almanızı ve diğer diğer leriyle bakiye yüklemenize olanak tanır aynı etkinlik merkezini ve tüketici grubunu kullanan tüketiciler.
 
 > [!NOTE]
-> Event Hubs için ölçeklendirmek için anahtar bölümlenmiş tüketici olur. Tersine [rakip tüketiciler](https://msdn.microsoft.com/library/dn568101.aspx) düzeni, bölünmüş bir tüketici modeli sağlar büyük ölçekli Çekişme performans sorunu kaldırma ve uçtan uca paralellik etkinleştirme.
+> Olay Hub'ları için ölçeklendirmenin anahtarı, bölümlenmiş tüketicilerin fikridir. [Rakip tüketici](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseni, çekişme darboğazını ortadan kaldırarak ve uçlardan uca paralelliği kolaylaştırarak yüksek ölçek sağlar.
 
 ## <a name="example-scenario"></a>Örnek senaryo
 
-Örnek bir senaryo 100.000 havaalanlarından izleyen bir giriş güvenliği şirketi düşünün. Her dakika, bir hareket algılayıcısı, kapı/pencere açık algılayıcı, cam kesmesi algılayıcısı vb. gibi çeşitli sensörlerden, her girişe yüklenmiş olan verileri alır. Şirket, kendi giriş neredeyse gerçek zamanlı etkinliğini izlemek vatandaşlar için bir web sitesi sağlar.
+Örnek bir senaryo olarak, 100.000 evi izleyen bir ev güvenlik şirketi düşünün. Her dakika, bir hareket dedektörü, kapı / pencere açık sensör, cam kırılma dedektörü, ve benzeri, her evde yüklü gibi çeşitli sensörlerveri alır. Şirket sakinleri için neredeyse gerçek zamanlı olarak evlerinin etkinliğini izlemek için bir web sitesi sağlar.
 
-Her algılayıcı verileri olay hub'ına gönderir. Olay hub'ı 16 bölümleri ile yapılandırılır. Tüketim uçta, bu olayları okuyabilen, bunları birleştirebilen (filtre, toplama ve benzeri) bir mekanizmaya ihtiyacınız vardır ve toplamanın, daha sonra Kullanıcı dostu bir Web sayfasına yansıtılmasına neden olan bir Depolama Blobu ile dökümünü alabilirsiniz.
+Her sensör verileri bir olay merkezine iter. Olay hub'ı 16 bölümle yapılandırılır. Tüketen uçta, bu olayları okuyabilen, bunları birleştirebilen (filtre, toplam vb.) ve toplamı kullanıcı dostu bir web sayfasına yansıtılan bir depolama blob'una atabilmeniz için bir mekanizmaya ihtiyacınız vardır.
 
-## <a name="write-the-consumer-application"></a>Tüketici uygulaması yazma
+## <a name="write-the-consumer-application"></a>Tüketici başvurusunu yazın
 
-Dağıtılmış bir ortamda tüketici tasarlarken, senaryo aşağıdaki gereksinimleri ele almalısınız.
+Tüketiciyi dağıtılmış bir ortamda tasarlarken, senaryo aşağıdaki gereksinimleri karşılamalıdır:
 
-1. **Ölçek:** birkaç Event Hubs bölümleri okumaya sahipliğini her bir tüketici içeren birden fazla tüketici oluşturun.
-2. **Yük Dengeleme:** artırmak veya dinamik olarak tüketiciler azaltın. Örneğin, her giriş için yeni bir algılayıcı türü (örneğin, gizli monoxide algılayıcısı) eklendiğinde, olay sayısını artırır. Bu durumda, ' % s'işleci (insan) tüketici örneği sayısını artırır. Tüketici havuzu oldukları, bölüm sayısını dengeleyebilir sonra yeni eklenen tüketicileriyle yük paylaşma.
-3. **Hatalarda sorunsuz bir şekilde sürdürülür:** Bir tüketici (**tüketici a**) başarısız olursa (örneğin, tüketiciyi barındıran sanal makine aniden kilitlenirse), diğer tüketiciler **tüketici a** 'nın sahip olduğu bölümleri alabilir ve devam edebilir. Ayrıca, devamlılık noktası, adlı bir *denetim noktası* veya *uzaklığı*, tam noktada olmalıdır **tüketici A** hatalı veya biraz daha önceki.
-4. **Olayları tüketme:** Önceki üç işaret, tüketicinin yönetimiyle ilgilenirken, olayları tüketmek ve bu konuyla ilgili bir şey yapmak için kod olmalıdır. Örneğin, bunu toplayın ve BLOB depolamaya yükleyin.
+1. **Ölçek:** Her tüketicinin birkaç Etkinlik Hub'ı bölümünden okuma sahipliğini almasıyla birden çok tüketici oluşturun.
+2. **Yük dengesi:** Tüketicileri dinamik olarak artırın veya azaltın. Örneğin, her eve yeni bir sensör türü (örneğin, karbon monoksit dedektörü) eklendiğinde, olay sayısı artar. Bu durumda, operatör (bir insan) tüketici örneklerinin sayısını artırır. Daha sonra, tüketicilerin havuzu, yeni eklenen tüketicilerle yükü paylaşmak için sahip oldukları bölüm sayısını yeniden dengeleyebilir.
+3. **Hatalarda sorunsuz özgeçmiş:** Bir tüketici **(tüketici A)** başarısız olursa (örneğin, tüketiciyi barındıran sanal makine aniden çöker), diğer tüketiciler **tüketici A'ya** ait bölümleri alıp devam edebilir. Ayrıca, bir *kontrol noktası* veya *ofset*olarak adlandırılan devam noktası, **tüketici A** başarısız olduğu tam noktada olmalıdır, ya da biraz bundan önce.
+4. **Olayları tüketin:** Önceki üç nokta tüketici yönetimi ile ilgili olsa da, olayları tüketmek ve onunla yararlı bir şey yapmak için kod olmalıdır. Örneğin, toplayıp blob depolama alanına yükleyin.
 
 ## <a name="event-processor-or-consumer-client"></a>Olay işlemcisi veya tüketici istemcisi
 
-Bu gereksinimleri karşılamak için kendi çözümünüzü derlemeniz gerekmez. Azure Event Hubs SDK 'Ları bu işlevselliği sağlar. .NET veya Java SDK 'larında, bir olay işlemcisi istemcisi (EventProcessorClient) ve Python ve Java betik SDK 'lerinde EventHubConsumerClient komutunu kullanırsınız. SDK 'nın eski sürümünde bu özellikleri destekleyen olay işleyicisi ana bilgisayarı (EventProcessorHost).
+Bu gereksinimleri karşılamak için kendi çözümünüzü oluşturmanız gerekmez. Azure Etkinlik Hub'ları SDK'ları bu işlevselliği sağlar. .NET veya Java SDK'larında bir olay işlemci istemcisi (EventProcessorClient) ve Python ve Java Script SDK'larında EventHubConsumerClient kullanırsınız. SDK'nın eski sürümünde, bu özellikleri destekleyen olay işlemci ana bilgisayarı (EventProcessorHost) idi.
 
-Üretim senaryolarının çoğunluğunda, olayları okumak ve işlemek için olay işlemcisi istemcisini kullanmanızı öneririz. İşlemci istemcisinin, ilerleme durumunu kontrol etmek için bir yol sağlarken bir olay hub 'ının tüm bölümlerindeki olayları performans ve hataya dayanıklı bir şekilde işlemeye yönelik sağlam bir deneyim sağlamaya yöneliktir. Olay işlemcisi istemcileri, belirli bir olay hub 'ı için bir tüketici grubu bağlamında birlikte çalışabilme özelliği de vardır. İstemciler, grup için kullanılabilir veya kullanılamaz hale geldiğinde iş dağıtımını ve iş dengelemeyi otomatik olarak yönetir.
+Üretim senaryolarının çoğu için, olayları okumak ve işlemek için olay işlemci istemcisini kullanmanızı öneririz. İşlemci istemcisi, bir olay merkezinin tüm bölümlerindeki olayları gerçekleştirme ve hataya dayanıklı bir şekilde işlemek için sağlam bir deneyim sağlarken, ilerlemesini kontrol etmek için bir araç sağlamayı amaçlamaktadır. Olay işlemci istemcileri, belirli bir olay merkezi için bir tüketici grubu bağlamında işbirliği içinde çalışabilme yeteneğine sahiptir. İstemciler, örnekler kullanılabilir hale geldikçe veya grup için kullanılamadığında, işlerin dağıtımını ve dengelemesini otomatik olarak yönetir.
 
-## <a name="partition-ownership-tracking"></a>İzleme bölümü sahipliği
+## <a name="partition-ownership-tracking"></a>Bölüm sahipliği izleme
 
-Bir olay işlemcisi örneği, genellikle bir veya daha fazla bölümden olayları sahipleyip işler. Bölümlerin sahipliği, bir olay hub 'ı ve Tüketici grubu birleşimiyle ilişkili tüm etkin olay işlemcisi örnekleri arasında eşit olarak dağıtılır. 
+Olay işlemci si örneği genellikle bir veya daha fazla bölümden olayları alır ve işler. Bölümlerin sahipliği, bir olay merkezi ve tüketici grubu birleşimi ile ilişkili tüm etkin olay işlemci örnekleri arasında eşit olarak dağıtılır. 
 
-Her olay işlemcisine, bir denetim noktası deposundaki bir girişi ekleyerek veya güncelleştirerek bölümlerin, benzersiz bir tanımlayıcı ve talep sahipliği olarak verilmiş olması sağlanır. Tüm olay işlemcisi örnekleri, kendi işleme durumunu güncelleştirmek ve diğer etkin örnekler hakkında bilgi edinmek için bu mağazanızla düzenli olarak iletişim kurar. Bu veriler daha sonra etkin işlemciler arasında yükü dengelemek için kullanılır. Yeni örnekler, ölçeği genişletmek için işleme havuzuna katılabilir. Örnekler doğru olduğunda, hatalardan veya ölçeği ölçeklendirilerek, Bölüm sahipliği diğer etkin işlemcilere düzgün şekilde aktarılır.
+Her olay işlemcisi benzersiz bir tanımlayıcı verilir ve bir denetim noktası deposunda bir giriş ekleyerek veya güncelleştirerek bölümlerin sahipliğini talep eder. Tüm olay işlemci örnekleri, kendi işleme durumunu güncelleştirmenin yanı sıra diğer etkin durumlar hakkında bilgi edinmek için bu mağazayla düzenli olarak iletişim kurar. Bu veriler daha sonra etkin işlemciler arasındaki yükü dengelemek için kullanılır. Yeni örnekler ölçeklendirmek için işleme havuzuna katılabilir. Örnekler, hatalar nedeniyle veya küçültülmek için aşağı gittiğinde, bölüm sahipliği incelikle diğer etkin işlemcilere aktarılır.
 
-Denetim noktası deposundaki bölüm sahipliği kayıtları, Event Hubs ad alanı, Olay Hub 'ı adı, Tüketici grubu, olay işlemci tanımlayıcısı (sahip olarak da bilinir), bölüm kimliği ve son değiştirilme zamanı izler.
+Denetim noktası deposundaki bölüm sahipliği kayıtları Olay Hub'ları ad alanını, olay hub adını, tüketici grubunu, olay işlemci tanımlayıcısını (sahibi olarak da bilinir), bölüm kimliğini ve son değiştirilen zamanı izler.
 
 
 
-| Event Hubs ad alanı               | Olay Hub'ı adı | **Tüketici grubu** | Sahip                                | Bölüm KIMLIĞI | Son değiştirme zamanı  |
+| Event Hubs ad alanı               | Olay Hub'ı adı | **Tüketici grubu** | Sahip                                | Bölüm Kimliği | Son değiştirilen süre  |
 | ---------------------------------- | -------------- | :----------------- | :----------------------------------- | :----------- | :------------------ |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 3be3f9d3-9d9e-4c50-9491-85ece8334ff6 | 0            | 2020-01-15T01:22:15 |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | f5cc5176-ce96-4bb4-bbaa-a0e3a9054ecf | 1            | 2020-01-15T01:22:17 |
@@ -67,30 +67,30 @@ Denetim noktası deposundaki bölüm sahipliği kayıtları, Event Hubs ad alan�
 |                                    |                | :                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
-Her olay işlemcisi örneği bir bölümün sahipliğini alır ve bölümü bilinen son [denetim noktasından](# Checkpointing)işlemeye başlar. Bir işlemci başarısız olursa (VM kapanır), diğer örnekler son değiştirilme zamanına bakarak bunu algılar. Diğer örnekler, önceden etkin olmayan örneğe ait olan bölümlerin sahipliğini almaya çalışır ve denetim noktası deposu, bir bölümün sahipliğinin yalnızca birinin başarılı olmasını garanti eder. Bu nedenle, belirli bir zamanda, bir bölümden çok sayıda olay alan bir işlemci vardır.
+Her olay işlemci örneği bir bölümün sahipliğini kazanır ve bilinen son [denetim noktasından](# Checkpointing)bölümü işlemeye başlar. Bir işlemci başarısız olursa (VM kapanır), diğer örnekler bunu son değiştirilen zamana bakarak algılar. Diğer örnekler, daha önce etkin olmayan örneğin sahip olduğu bölümlerin sahipliğini almaya çalışır ve denetim noktası deposu, örneklerden yalnızca birinin bir bölümün sahipliğini talep etmeyi başardığını garanti eder. Yani, herhangi bir zaman belirli bir noktada, en fazla bir işlemci bir bölümden olayları alan var.
 
 ## <a name="receive-messages"></a>İleti alma
 
-Bir olay işlemcisi oluşturduğunuzda, olayları ve hataları işleyecek işlevleri belirtirsiniz. Olayları işleyen işleve yapılan her çağrı, belirli bir bölümden tek bir olay sağlar. Bu olayı işlemek sizin sorumluluğunuzdadır. Tüketicinin her iletiyi en az bir kez işlediğinden emin olmak istiyorsanız, yeniden deneme mantığı ile kendi kodunuzu yazmanız gerekir. Ancak kired iletiler hakkında dikkatli olun.
+Bir olay işlemcisi oluşturduğunuzda, olayları ve hataları işleyecek işlevleri belirtirsiniz. Olayları işleyen işleve yapılan her çağrı, belirli bir bölümden tek bir olay sunar. Bu olayla ilgilenmek senin sorumluluğunda. Tüketicinin her iletiyi en az bir kez işlediğinden emin olmak istiyorsanız, yeniden deneme mantığıyla kendi kodunuzu yazmanız gerekir. Ama zehirli mesajlar konusunda dikkatli olun.
 
-Şeyleri nispeten hızlı yapmanızı öneririz. Diğer bir deyişle, mümkün olduğunca az işlem yapın. Depolama alanına yazmanız ve bazı yönlendirme yapmanız gerekiyorsa, iki Tüketici grubu kullanmak ve iki olay işlemcisi olması daha iyidir.
+İşleri nispeten hızlı yapmanızı öneririz. Diğer bir zamanda, mümkün olduğunca az işlem yapın. Depolamaya yazmanız ve bazı yönlendirmeler yapmanız gerekiyorsa, iki tüketici grubu kullanmak ve iki olay işlemcisi olması daha iyidir.
 
 ## <a name="checkpointing"></a>Denetim noktası oluşturma
 
-*Checkişaret* , bir olay işlemcisinin bir bölüm içinde son başarılı bir şekilde işlenen etkinliğin konumunu işaretleyen veya işleme yaptığı bir işlemdir. Bir kontrol noktasının işaretlenmesi genellikle olayları işleyen ve bir tüketici grubu içindeki bölüm başına temelinde gerçekleşen işlev içinde yapılır. 
+*Denetim noktası,* olay işlemcisinin bir bölüm içinde başarıyla işlenen son olayın konumunu işaretlediği veya işlediği bir işlemdir. Bir denetim noktası işaretleme genellikle olayları işleyen ve bir tüketici grubu içinde bölüm başına bazda oluşan işlev içinde yapılır. 
 
-Bir olay işlemcisinin bir bölümden bağlantısı kesilirse, başka bir örnek, bu bölümün daha önce ilgili tüketici grubundaki son işlemci tarafından kaydedilen denetim noktasında bölümü işlemeye da yardımcı olabilir. İşlemci bağlandığı zaman, okumayı başlatacak konumu belirtmek için Olay Hub 'ına geçişi geçirir. Bu şekilde, hem aşağı akış uygulamaları için olayları "tamamlanmış" olarak işaretlemek ve bir olay işlemcisi geçtiğinde dayanıklılık sağlamak için Checkmark 'ı kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. 
+Bir olay işlemcisi bir bölümden kesilirse, başka bir örnek, söz konusu bölümün son işlemcisi tarafından daha önce işlenen denetim noktasındaki bölümü işlemeye devam edebilir. İşlemci bağlandığında, okumaya başlanacak konumu belirtmek için ofset'i olay merkezine geçirir. Bu şekilde, hem alt akış uygulamaları tarafından olayları "tamamlandı" olarak işaretlemek hem de bir olay işlemcisi çöktürdüğünde esneklik sağlamak için denetim noktasını kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. 
 
-Denetim noktası bir olayı işlenen olarak işaretlemek için gerçekleştirildiğinde, denetim noktası deposundaki bir giriş, olayın kayması ve sıra numarası ile eklenir veya güncelleştirilir. Kullanıcılar, denetim noktasını güncelleştirme sıklığından önce karar almalıdır. Başarılı bir şekilde işlenen her olayın ardından güncelleştirme, temel alınan denetim noktası deposuna bir yazma işlemi tetiklediği için performans ve maliyet etkilerine sahip olabilir. Ayrıca, her bir olayın denetim noktası, bir Service Bus sırasının bir olay hub 'ından daha iyi bir seçenek olabileceği sıraya alınmış mesajlaşma deseninin bir göstergesi olduğunu gösteriyor. Event Hubs arkasında büyük ölçekte "en az bir kez" teslim alma olur. Aşağı Akış sistemlerine ıdempotent yaparak bu hatalardan kurtarma kolayca veya sonucunda aynı olayları birden çok kez alınan yeniden başlatır.
+Bir olayı işlenmiş olarak işaretlemek için denetim noktası yapıldığında, denetim noktası deposundaki bir giriş, olayın ofset ve sıra numarasıyla eklenir veya güncelleştirilir. Kullanıcılar denetim noktasını güncelleştirme sıklığına karar vermelidir. Başarıyla işlenen her olaydan sonra güncelleştirme, temel denetim noktası deposuna bir yazma işlemini tetikledikçe performans ve maliyet etkilerine sahip olabilir. Ayrıca, her bir olayı denetlemek, Hizmet Veri Servisi sırasının olay hub'ından daha iyi bir seçenek olabileceği sıralanmış bir ileti deseni göstergesidir. Olay Hub'larının arkasındaki fikir, büyük ölçekte "en az bir kez" teslimat elde etmektir. Downstream sistemlerinizi iktidarlı hale getirerek, aynı olayların birden çok kez alınmasıyla sonuçlanan hatalardan veya yeniden başlatmalardan kurtarmak kolaydır.
 
 ## <a name="thread-safety-and-processor-instances"></a>İş parçacığı güvenliği ve işlemci örnekleri
 
-Varsayılan olarak, olay işlemcisi veya tüketicisi iş parçacığı güvenlidir ve zaman uyumlu bir şekilde davranır. Bir bölüme yönelik olaylar geldiğinde, olayları işleyen işlev çağrılır. İleti göndericisi, arka planda diğer iş parçacıklarında çalışmaya devam ettiğinden, sonraki iletiler ve bu işlev için bu işleve yapılan çağrılar arka planda sıraya açılır. Bu iş parçacığı güvenliği, iş parçacığı güvenli koleksiyonları gereksinimini ortadan kaldırır ve performansı önemli ölçüde artırır.
+Varsayılan olarak, olay işlemcisi veya tüketici iş parçacığı güvenlidir ve eşzamanlı bir şekilde çalışır. Olaylar bir bölüm için geldiğinde, olayları işleyen işlev çağrılır. İleti pompası diğer iş parçacıkları üzerinde arka planda çalışmaya devam ettikçe sonraki iletiler ve bu işlev için aramalar arka planda sıraya. Bu iş parçacığı güvenliği, iş parçacığı güvenli koleksiyonihtiyacını ortadan kaldırır ve performansı önemli ölçüde artırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki hızlı çalışmaya bakın:
+Aşağıdaki hızlı başlangıçları görün:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [Javascript](get-started-node-send-v2.md)

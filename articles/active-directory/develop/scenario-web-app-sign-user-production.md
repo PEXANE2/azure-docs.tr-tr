@@ -1,6 +1,6 @@
 ---
-title: Kullanıcılara oturum açan Web uygulamasını üretime taşıma-Microsoft Identity platform | Mavisi
-description: Kullanıcılara oturum açan bir Web uygulaması oluşturmayı öğrenin (üretime geçin)
+title: Kullanıcılarda işaretleyen web uygulamasını üretime taşıyın - Microsoft kimlik platformu | Azure
+description: Kullanıcılarda işaretleyen bir web uygulaması oluşturmayı öğrenin (üretime geçin)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,15 +15,15 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768097"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>Kullanıcılara oturum açan Web uygulaması: üretime taşı
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Kullanıcılarda işaretleyen web uygulaması: Üretime geç
 
-Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş olduğunuza göre, bunu üretime taşımayı öğrenin.
+Artık web API'lerini aramak için bir jetonu nasıl alacağınızı bildiğinize göre, nasıl üretime geçeceğinizi öğrenin.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
@@ -34,33 +34,33 @@ Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş 
 Chrome tarayıcısının yeni sürümleriyle ilgili olası sorunları anladığınızdan emin olun
 
 > [!div class="nextstepaction"]
-> [Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme](howto-handle-samesite-cookie-changes-chrome-browser.md)
+> [Chrome tarayıcısında SameSite çerez değişiklikleri nasıl işleyebilir](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
-### <a name="scenario-for-calling-web-apis"></a>Web API 'Leri çağırma senaryosu
+### <a name="scenario-for-calling-web-apis"></a>Web API'lerini arama senaryosu
 
-Web uygulamanız kullanıcılara kaydolduktan sonra, oturum açmış kullanıcılar adına Web API 'Leri çağırabilir. Web API 'Lerinden Web API 'Leri çağırmak aşağıdaki senaryonun nesnesidir:
+Web uygulamanız kullanıcılarda oturum larını imzaladıktan sonra, oturum açmış kullanıcılar adına web API'lerini arayabilir. Web uygulamasından web API'lerini aramak aşağıdaki senaryonun nesnesidir:
 
 > [!div class="nextstepaction"]
 > [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
 
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Derin bakış: ASP.NET Core Web uygulaması öğreticisi
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Derin dalış: ASP.NET Core web uygulaması öğretici
 
-Bu ASP.NET Core öğreticisiyle kullanıcıların oturum açma yolları hakkında bilgi edinin: 
+Bu ASP.NET Core öğreticisiyle kullanıcılarda oturum açmanın diğer yolları hakkında bilgi edinin: 
 
 > [!div class="nextstepaction"]
-> [Web uygulamalarınızın kullanıcılara oturum açmasını ve geliştiriciler için Microsoft Identity platformu ile API 'Leri çağırmasını sağlama](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [Web uygulamalarınızın kullanıcılarda oturum açmasını ve geliştiriciler için Microsoft kimlik platformuyla API'leri aramasını sağlama](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-Bu aşamalı öğreticide, bir Web uygulaması için, ' deki hesaplara oturum açma ekleme dahil olmak üzere üretime hazırlı kod vardır:
+Bu aşamalı öğretici, bir web uygulaması için, hesaplarla oturum açma nın nasıl eklendirilebildiğini de içeren üretime hazır koda sahiptir:
 
 - Kuruluşunuz
 - Birden çok kuruluş
-- İş veya okul hesapları ya da kişisel Microsoft hesapları
+- İş veya okul hesapları veya kişisel Microsoft hesapları
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Ulusal bulutlar
 
-## <a name="sample-code-java-web-app"></a>Örnek kod: Java Web uygulaması
+## <a name="sample-code-java-web-app"></a>Örnek kod: Java web uygulaması
 
-GitHub 'da bu örnekten Java Web uygulaması hakkında daha fazla bilgi edinin: 
+GitHub'daki bu örnekten Java web uygulaması hakkında daha fazla bilgi edinin: 
 
 > [!div class="nextstepaction"]
-> [Kullanıcılara Microsoft Identity platformu ve çağrıları ile oturum açan bir Java Web uygulaması Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Microsoft kimlik platformu ile kullanıcıları imzalayan ve Microsoft Graph çağıran bir Java Web uygulaması](https://github.com/Azure-Samples/ms-identity-java-webapp)

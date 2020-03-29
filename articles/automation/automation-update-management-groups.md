@@ -1,24 +1,24 @@
 ---
 title: Azure Güncelleştirme Yönetimi ile dinamik grupları kullanma
-description: Bu makalede, dinamik grupların Azure Otomasyonu Güncelleştirme Yönetimi ile nasıl çalıştığı açıklanır.
+description: Bu makalede, dinamik grupların Azure Otomasyon Güncelleştirme Yönetimi ile nasıl çalıştığı açıklanmaktadır.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75420392"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Güncelleştirme Yönetimi ile dinamik grupları kullanma
 
-Güncelleştirme Yönetimi, güncelleştirme dağıtımları için Azure veya Azure olmayan VM 'Lerin dinamik bir grubunu hedefleyebilme olanağı sağlar. Bu gruplar dağıtım zamanında değerlendirilir, böylece, makineleri eklemek için dağıtımınızı düzenlemeniz gerekmez.
+Update Management, güncelleştirme dağıtımları için dinamik bir Azure veya Azure olmayan VM grubunu hedefleme olanağı sağlar. Bu gruplar dağıtım zamanında değerlendirilir, böylece makine eklemek için dağıtımınızı yapmanız gerekmez.
 
 ## <a name="azure-machines"></a>Azure makineleri
 
-Bu gruplar bir sorgu tarafından tanımlanır, bir güncelleştirme dağıtımı başladığında, o grubun üyeleri değerlendirilir. Dinamik Gruplar klasik VM 'Ler ile çalışmaz. Sorgunuzu tanımlarken, dinamik grubu doldurmak için aşağıdaki öğeler birlikte kullanılabilir:
+Bu gruplar bir sorgu tarafından tanımlanır, bir güncelleştirme dağıtım başladığında, bu grubun üyeleri değerlendirilir. Dinamik gruplar klasik VM'lerle çalışmaz. Sorgunuzu tanımlarken, dinamik grubu doldurmak için aşağıdaki öğeler birlikte kullanılabilir:
 
 * Abonelik
 * Kaynak grupları
@@ -27,16 +27,16 @@ Bu gruplar bir sorgu tarafından tanımlanır, bir güncelleştirme dağıtımı
 
 ![Grupları seçin](./media/automation-update-management/select-groups.png)
 
-Dinamik bir grubun sonuçlarını önizlemek için **Önizleme** düğmesine tıklayın. Bu önizlemede, bu sırada grup üyeliği gösterilmektedir. Bu örnekte, Tag **rolüne** sahip makineleri **BackEndServer**'a eşit olarak arıyor. Bu etiket daha fazla makineye eklendiyse, bu Etiketler bu gruba karşı gelecekteki tüm dağıtımlara eklenecektir.
+Dinamik bir grubun sonuçlarını önizlemek için **Önizleme** düğmesini tıklatın. Bu önizleme o zaman grup üyeliğini gösterir, bu örnekte, biz **etiketI Ile** makineleri arıyoruz **BackendServer**eşittir. Daha fazla makine bu etiketi eklediyse, bu grup karşı gelecekteki dağıtımlara eklenir.
 
-![Önizleme grupları](./media/automation-update-management/preview-groups.png)
+![önizleme grupları](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Azure dışı makineler
+## <a name="non-azure-machines"></a>Azure olmayan makineler
 
-Azure dışı makinelerde, bilgisayar grupları olarak da bilinen kayıtlı aramalar, dinamik grubu oluşturmak için kullanılır. Kayıtlı bir aramanın nasıl oluşturulduğunu öğrenmek için bkz. [bilgisayar grubu oluşturma](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Grubunuz oluşturulduktan sonra, kaydedilen aramalar listesinden bunu seçebilirsiniz. Kaydedilen aramada bilgisayarları o anda önizlemek için **Önizleme** ' ye tıklayın.
+Azure olmayan makinelerde, bilgisayar grupları olarak da adlandırılan kaydedilmiş aramalar dinamik grubu oluşturmak için kullanılır. Kaydedilmiş bir aramayı nasıl oluşturabilirsiniz öğrenmek için [bkz.](../azure-monitor/platform/computer-groups.md#creating-a-computer-group) Grubunuzun oluşturulduktan sonra kaydedilen aramalar listesinden seçebilirsiniz. O anda kaydedilen aramadaki bilgisayarları önizlemek için **Önizleme'yi** tıklatın.
 
 ![Grupları seçin](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dinamik bir grup oluşturduktan sonra [bir güncelleştirme dağıtımı oluşturabilirsiniz](automation-tutorial-update-management.md)
+Dinamik bir grup oluşturduktan sonra, [Güncelleştirme Dağıtımı Oluşturabilirsiniz](automation-tutorial-update-management.md)

@@ -1,6 +1,6 @@
 ---
-title: REST API kullanarak iş ilerlemesini denetleme | Microsoft Docs
-description: Bu makalede Azure Media Services V2 REST API kullanılarak yapılan işin ilerlemesini nasıl denetleyeceğinizi gösterilmektedir.
+title: REST API kullanarak iş ilerleme kontrol etmek için nasıl | Microsoft Dokümanlar
+description: Bu makalede, Azure Media Services v2 REST API'yi kullanarak iş ilerlemesinin nasıl denetlenilebildiğini göstereceğimiz gösterilmiştir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: cac8622c95ca2cb08ef412ac7117caac0c52ca56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773608"
 ---
-# <a name="how-to-check-job-progress"></a>Nasıl yapılır: iş ilerlemesini denetleme
+# <a name="how-to-check-job-progress"></a>Nasıl yapılsın: iş ilerlemesini denetleyin
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
-İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. İşin durum özelliğini kullanarak Iş durumunu görebilirsiniz. Durum özelliği hakkında daha fazla bilgi için bkz. [Iş varlığı özellikleri](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+İşleri çalıştırdığınızda, genellikle iş ilerlemesini izlemek için bir yol gerekir. İş'in Devlet özelliğini kullanarak İş durumunu öğrenebilirsiniz. Devlet mülkiyeti hakkında daha fazla bilgi için [İş Varlık Özellikleri'ne](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)bakın.
 
-## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
+## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
-AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
+AMS API'sine nasıl bağlanabileceğiniz hakkında bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
 
 ## <a name="check-job-progress"></a>İşin ilerleme durumunu denetleme
 
@@ -65,9 +65,9 @@ Yanıt:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Media Services işlemler REST API genel bakış](media-services-rest-how-to-use.md)
+[Medya Hizmetleri operasyonları REST API genel bakış](media-services-rest-how-to-use.md)

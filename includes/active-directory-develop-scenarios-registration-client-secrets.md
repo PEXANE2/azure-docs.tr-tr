@@ -1,6 +1,6 @@
 ---
 title: include dosyası
-description: Gizli istemci senaryosu giriş sayfaları için dosya ekleme (Daemon, Web uygulaması, Web API)
+description: gizli istemci senaryo açılış sayfaları (daemon, web uygulaması, web API) için dosya dahil
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,32 +15,32 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773378"
 ---
-## <a name="register-secrets-or-certificates"></a>Gizli dizileri veya sertifikaları Kaydet
+## <a name="register-secrets-or-certificates"></a>Sırları veya sertifikaları kaydetme
 
-Tüm gizli istemci uygulamaları için bir gizli dizi veya sertifika kaydetmeniz gerekir. [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) etkileşimli deneyim aracılığıyla veya komut satırı araçlarını (PowerShell gibi) kullanarak uygulama gizli dizilerini kaydedebilirsiniz.
+Herhangi bir gizli istemci başvurusu gelince, bir gizli veya sertifika kayıt gerekir. Uygulama sırlarınızı [Azure portalındaki](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) etkileşimli deneyimle veya komut satırı araçlarını (PowerShell gibi) kullanarak kaydedebilirsiniz.
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Uygulama kayıt portalını kullanarak istemci gizli dizilerini kaydetme
+### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Başvuru kayıt portalını kullanarak istemci sırlarını kaydetme
 
-İstemci kimlik bilgilerinin yönetimi, bir uygulama için **sertifikalar & gizli** diziler sayfasında gerçekleşir:
+İstemci kimlik bilgilerinin yönetimi, bir uygulama için **Sertifikalar & sırları** sayfasında gerçekleşir:
 
-![Sertifikalar & gizlilikler sayfası](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+![Sertifikalar & sırlar sayfası](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Gizli istemci uygulamasının kaydı sırasında, uygulama gizli anahtarı (istemci gizli dizisi olarak da adlandırılır) Azure AD tarafından oluşturulur. **Yeni istemci parolası**' nı seçtiğinizde bu oluşturma gerçekleşir. Bu noktada, **Kaydet**' i seçmeden önce uygulamanızda kullanılması için gizli dizeyi panoya kopyalamanız gerekir. Bu dize daha fazla sunulmaz.
-- Uygulama kaydı sırasında sertifikayı karşıya yüklemek için **sertifikayı karşıya yükle** düğmesini kullanırsınız. Azure AD yalnızca uygulamada doğrudan kayıtlı olan sertifikaları destekler ve sertifika zincirlerini takip etmeyin.
+- Uygulama sırrı (istemci sırrı olarak da adlandırılır), gizli istemci uygulamasının kaydı sırasında Azure AD tarafından oluşturulur. Bu **nesil, Yeni istemci sırrını**seçtiğinizde gerçekleşir. Bu noktada, **Kaydet'i**seçmeden önce uygulamanızda kullanılmak üzere gizli dizeyi panoya kopyalamanız gerekir. Bu dize artık sunulmayacak.
+- Başvuru kaydı sırasında, sertifikayı yüklemek için **Sertifika** yükle düğmesini kullanırsınız. Azure AD, yalnızca uygulamada doğrudan kayıtlı olan ve sertifika zincirlerini izlemeyen sertifikaları destekler.
 
-Ayrıntılar için bkz [. hızlı başlangıç: Web API 'lerine erişmek için istemci uygulaması yapılandırma | Uygulamanıza kimlik bilgileri ekleyin](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+Ayrıntılar için [Quickstart: Web API'lerine erişmek için istemci uygulamasını yapılandırın | Uygulamanıza kimlik bilgileri ekleyin.](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)
 
 
 
-### <a name="register-client-secrets-by-using-powershell"></a>İstemci gizli dizilerini PowerShell kullanarak kaydetme
+### <a name="register-client-secrets-by-using-powershell"></a>PowerShell'i kullanarak istemci sırlarını kaydetme
 
-Alternatif olarak, komut satırı araçlarını kullanarak uygulamanızı Azure AD 'ye kaydedebilirsiniz. [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneği, BIR Azure AD uygulaması ile uygulama gizli dizisi veya sertifikasının nasıl kaydedileceği gösterilmektedir:
+Alternatif olarak, komut satırı araçlarını kullanarak uygulamanızı Azure AD'ye kaydedebilirsiniz. [Active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneği, bir uygulama sırrının veya sertifikanın Azure AD uygulamasıyla nasıl kaydedilebildiğini gösterir:
 
-- Uygulama gizliliğini kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- Bir uygulama ile bir sertifikayı kaydetme hakkında ayrıntılı bilgi için bkz. [AppCreationScripts-withCert/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- Bir uygulama sırrının nasıl kaydedileceklerine ilişkin ayrıntılar için [AppCreationScripts/Configure.ps1 'e](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)bakın.
+- Bir sertifikanın bir uygulamaya nasıl kaydedilenhakkında daha fazla bilgi için [AppCreationScripts-withCert/Configure.ps1'e](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)bakın.

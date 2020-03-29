@@ -1,6 +1,6 @@
 ---
-title: Azure CDN-Azure depolama ile statik bir Web sitesi tümleştirme
-description: Azure Content Delivery Network (CDN) kullanarak bir Azure depolama hesabından statik Web sitesi içeriğini önbelleğe alma hakkında bilgi edinin.
+title: Statik bir web sitesini Azure CDN ile tümleştirme - Azure Depolama
+description: Azure İçerik Dağıtım Ağı'nı (CDN) kullanarak bir Azure Depolama hesabından statik web sitesi içeriğini nasıl önbelleğe aldığınızı öğrenin.
 author: normesta
 ms.service: storage
 ms.subservice: blobs
@@ -8,58 +8,58 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
 ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76908559"
 ---
-# <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir Web sitesini Azure CDN tümleştirme
+# <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir web sitesini Azure CDN ile tümleştirme
 
-Azure depolama hesabında barındırılan [statik bir Web sitesinden](storage-blob-static-website.md) içerik önbelleğe almak için [Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) etkinleştirebilirsiniz. Statik Web siteniz için özel etki alanı uç noktasını yapılandırmak, özel SSL sertifikaları sağlamak ve özel yeniden yazma kuralları yapılandırmak için Azure CDN kullanabilirsiniz. Azure CDN yapılandırma ek ücretlere neden olur, ancak tutarlı düşük gecikme süreleriyle Web sitenize yerden sağlar dünyanın. Azure CDN, ayrıca kendi sertifikanızı ile SSL şifrelemesi sağlar. 
+[Azure İçerik Teslim Ağı'nın (CDN)](../../cdn/cdn-overview.md) Azure depolama hesabında barındırılan statik bir web [sitesinden](storage-blob-static-website.md) içerik önbelleğe almalarını etkinleştirebilirsiniz. Azure CDN'yi statik web sitenizin özel etki alanı bitiş noktasını yapılandırmak, özel SSL sertifikaları sağlamak ve özel yeniden yazma kurallarını yapılandırmak için kullanabilirsiniz. Azure CDN'nin yapılandırılması ek ücretlerle sonuçlanır, ancak dünyanın her yerinden web sitenize tutarlı düşük gecikme süreleri sağlar. Azure CDN, kendi sertifikanızla Birlikte SSL şifrelemesi de sağlar. 
 
-Azure CDN fiyatlandırması hakkında daha fazla bilgi için bkz: [Azure CDN fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
+Azure CDN fiyatlandırması hakkında bilgi için Azure [CDN fiyatlandırması'na](https://azure.microsoft.com/pricing/details/cdn/)bakın.
 
-## <a name="enable-azure-cdn-for-your-static-website"></a>Statik Web siteniz için Azure CDN etkinleştirme
+## <a name="enable-azure-cdn-for-your-static-website"></a>Statik web siteniz için Azure CDN'yi etkinleştirme
 
-Statik Web siteniz için Azure CDN doğrudan depolama hesabınızdan etkinleştirebilirsiniz. CDN uç noktanız için [büyük dosya indirmeyi en iyi duruma getirme](../../cdn/cdn-optimization-overview.md#large-file-download) gibi gelişmiş yapılandırma ayarları belirtmek istiyorsanız, bir CDN profili ve uç noktası oluşturmak üzere bunun yerine [Azure CDN uzantısını](../../cdn/cdn-create-new-endpoint.md) kullanabilirsiniz.
+Statik web siteniz için Azure CDN'yi doğrudan depolama hesabınızdan etkinleştirebilirsiniz. CDN uç noktanız için [büyük dosya indirmeyi en iyi duruma getirme](../../cdn/cdn-optimization-overview.md#large-file-download) gibi gelişmiş yapılandırma ayarları belirtmek istiyorsanız, bir CDN profili ve uç noktası oluşturmak üzere bunun yerine [Azure CDN uzantısını](../../cdn/cdn-create-new-endpoint.md) kullanabilirsiniz.
 
-1. Azure portal depolama hesabınızı bulun ve hesaba genel bakış ' ı görüntüleyin.
+1. Azure portalında depolama hesabınızı bulun ve hesaba genel bakışı görüntüleyin.
 
-2. Seçin **Azure CDN** altında **Blob hizmeti** Azure CDN yapılandırmak için menüsünde.
+2. Azure CDN'yi yapılandırmak için **Blob Hizmeti** menüsü nün altındaki **Azure CDN'yi** seçin.
 
     **Azure CDN** sayfası görünür.
 
     ![CDN uç noktası oluşturma](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
 
-3. **CDN profili** bölümünde yeni veya var olan bir CDN profili belirtin. 
+3. **CDN profil** bölümünde yeni veya varolan bir CDN profili belirtin. 
 
-4. CDN uç noktası için bir fiyatlandırma katmanı belirtin. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/). Her katmanda kullanılabilen özellikler hakkında daha fazla bilgi için bkz. [Azure CDN ürün özelliklerini karşılaştırma](../../cdn/cdn-features.md).
+4. CDN bitiş noktası için bir fiyatlandırma katmanı belirtin. Fiyatlandırma hakkında daha fazla bilgi edinmek için [İçerik Dağıtım Ağı fiyatlandırmasına](https://azure.microsoft.com/pricing/details/cdn/)bakın. Her katmanda kullanılabilen özellikler hakkında daha fazla bilgi için Azure [CDN ürün özelliklerini karşılaştır'a](../../cdn/cdn-features.md)bakın.
 
-5. **CDN uç noktası adı** alanında, CDN uç noktanız için bir ad belirtin. CDN uç noktası Azure genelinde benzersiz olmalıdır.
+5. **CDN bitiş noktası adı** alanında, CDN bitiş noktanız için bir ad belirtin. CDN bitiş noktası Azure genelinde benzersiz olmalıdır.
 
-6. **Kaynak ana bilgisayar adı** alanında, sizin için statik Web sitesi uç noktası olduğunuzu belirtin. 
+6. **Origin ana bilgisayar adı** alanında statik web sitesi bitiş noktası olduğunuzu belirtin. 
 
-   Statik Web sitesi uç noktanızı bulmak için, depolama hesabınız için **statik Web sitesi** ayarları ' na gidin.  Birincil uç noktayı kopyalayın ve CDN yapılandırmasına yapıştırın.
+   Statik web sitesi bitiş noktanızı bulmak için depolama hesabınız için **Statik web sitesi** ayarlarına gidin.  Birincil bitiş noktasını kopyalayın ve CDN yapılandırmasına yapıştırın.
 
    > [!IMPORTANT]
-   > Protokol tanımlayıcısını (*örn.* https) ve URL 'nin sonundaki eğik çizgiyi kaldırdığınızdan emin olun. Örneğin, statik Web sitesi uç noktası `https://mystorageaccount.z5.web.core.windows.net/`ise, **kaynak ana bilgisayar adı** alanında `mystorageaccount.z5.web.core.windows.net` belirtirsiniz.
+   > Protokol tanımlayıcısını *(örn.* HTTPS) ve URL'deki son çizgiyi kaldırdıktan emin olun. Örneğin, statik web sitesi bitiş `https://mystorageaccount.z5.web.core.windows.net/`noktası ise, `mystorageaccount.z5.web.core.windows.net` **Origin ana bilgisayar adı** alanında belirtirsiniz.
 
-   Aşağıdaki görüntüde örnek bir uç nokta yapılandırması gösterilmektedir:
+   Aşağıdaki resimde bir örnek bitiş noktası yapılandırması gösterilmektedir:
 
-   ![Örnek CDN uç noktası yapılandırmasını gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+   ![Örnek CDN bitiş noktası yapılandırması gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-7. **Oluştur**' u seçin ve ardından yaymasını bekleyin. Uç nokta oluşturulduktan sonra uç nokta listesinde görünür.
+7. **Oluştur'u**seçin ve ardından yayılmasını bekleyin. Uç nokta oluşturulduktan sonra uç nokta listesinde görünür.
 
-8. CDN uç noktasının doğru şekilde yapılandırıldığını doğrulamak için, ayarlarına gitmek üzere uç noktaya tıklayın. Depolama hesabınız için CDN genel görünümünde, uç nokta ana bilgisayar adını bulun ve aşağıdaki görüntüde gösterildiği gibi uç noktaya gidin. CDN uç noktanızın biçimi `https://staticwebsitesamples.azureedge.net`benzer olacaktır.
+8. CDN bitiş noktasının doğru şekilde yapılandırıldığından doğrulamak için, ayarlarına gitmek için bitiş noktasını tıklatın. Depolama hesabınız için CDN genel bakışından, aşağıdaki resimde gösterildiği gibi bitiş noktası ana bilgisayar adını bulun ve bitiş noktasına gidin. CDN bitiş noktanızın biçimi `https://staticwebsitesamples.azureedge.net`.
 
-    ![CDN uç noktasına genel bakış gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![CDN bitiş noktasına genel bakışı gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-9. CDN uç noktası yayma işlemi tamamlandıktan sonra, CDN uç noktasına gitmek daha önce statik Web sitenize yüklediğiniz index. html dosyasının içeriğini görüntüler.
+9. CDN uç noktası yayılımı tamamlandıktan sonra, CDN bitiş noktasına gezinmek, daha önce statik web sitenize yüklediğiniz index.html dosyasının içeriğini görüntüler.
 
-10. CDN uç noktanıza ait kaynak ayarlarını gözden geçirmek için, CDN uç noktanıza ilişkin **Ayarlar** bölümünde **kaynak** ' a gidin. **Kaynak türü** alanının *özel kaynak* olarak ayarlandığını ve **kaynak konak adı** alanının statik Web sitesi uç noktasını görüntülediğini görürsünüz.
+10. CDN bitiş noktanızın başlangıç ayarlarını gözden geçirmek için, CDN bitiş noktanızın **Ayarlar** bölümünün altındaki **Origin'e** gidin. **Origin türü** alanının *Özel Başlangıç* olarak ayarladığını ve Origin ana **bilgisayar adı** alanının statik web sitesi bitiş noktanızı görüntülediğini görürsünüz.
 
-    ![CDN uç noktası için kaynak ayarlarını gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![CDN bitiş noktası için Başlangıç ayarlarını gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
 ## <a name="remove-content-from-azure-cdn"></a>Azure CDN'den içerik kaldırma
 
@@ -73,4 +73,4 @@ Azure CDN'de daha önce önbelleğe alınmış bir nesne, yaşam süresi sona er
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Seçim Azure CDN uç noktanıza özel bir etki alanı ekleyin. Bkz. [öğretici: Azure CDN uç noktanıza özel etki alanı ekleme](../../cdn/cdn-map-content-to-custom-domain.md).
+(İsteğe bağlı) Azure CDN bitiş noktanıza özel bir etki alanı ekleyin. Bkz. [Öğretici: Azure CDN bitiş noktanıza özel bir etki alanı ekleyin.](../../cdn/cdn-map-content-to-custom-domain.md)

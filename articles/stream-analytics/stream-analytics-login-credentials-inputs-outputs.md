@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics işlerinde oturum açma kimlik bilgilerini döndürme
-description: Bu makalede, giriş kimlik bilgilerini güncelleştirmek açıklanır ve çıkış işlerini Azure Stream Analytics'te havuzlarını.
+title: Azure Akış Analizi işlerinde oturum açma kimlik bilgilerini döndürme
+description: Bu makalede, Azure Akış Analizi işlerinde giriş ve çıktı lavabolarının kimlik bilgileri nasıl güncelleştirilen açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,79 +9,79 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425967"
 ---
-# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Giriş ve çıkışları bir Stream Analytics işi yönelik oturum açma kimlik bilgilerini döndürme
+# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Akış Analizi İşi giriş ve çıkışları için giriş kimlik bilgilerini döndürme
 
-Bir giriş veya çıkış bir Stream Analytics işi, kimlik bilgilerini yeniden her işi yeni kimlik bilgileriyle güncelleştirmeniz gerekir. İş kimlik bilgilerini güncelleştirmeden önce durdurmalı, iş çalışırken kimlik bilgilerini değiştiremez. Stream Analytics iş durdurup arasında gecikme azaltmak için son çıktısını bir işten sürdürme destekler. Bu konuda, oturum açma kimlik bilgilerini döndürme ve yeni kimlik bilgileriyle iş yeniden başlatma işlemi açıklanmaktadır.
+Bir Akış Analizi işinin giriş veya çıktısı için kimlik bilgilerini yeniden oluşturduğunuzda, işi yeni kimlik bilgileriyle güncelleştirmeniz gerekir. Kimlik bilgilerini güncelleştirmeden önce işi durdurmanız gerekir, iş çalışırken kimlik bilgilerini değiştiremezsiniz. İşi durdurma ve yeniden başlatma arasındaki gecikmeyi azaltmak için Stream Analytics, bir işi son çıktısından itibaren sürdürmeyi destekler. Bu konu, oturum açma kimlik bilgilerini döndürme ve işi yeni kimlik bilgileriyle yeniden başlatma işlemini açıklar.
 
-## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>Yeni kimlik bilgilerini yeniden oluşturun ve işiniz yeni kimlik bilgileriyle güncelleştirin 
+## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>Yeni kimlik bilgilerini yeniden oluşturun ve yeni kimlik bilgileriyle işinizi güncelleştirin 
 
-Bu bölümde, biz size yeniden kimlik bilgileri Blob Depolama, Event Hubs, SQL veritabanı ve tablo depolama için yol gösterir. 
+Bu bölümde, Blob Depolama, Olay Hub'ları, SQL Veritabanı ve Tablo Depolama için kimlik bilgilerini yeniden oluşturma konusunda size yol bulacağız. 
 
-### <a name="blob-storagetable-storage"></a>BLOB Depolama/tablo depolama
-1. Azure portalında oturum açın > Stream Analytics işi için giriş/çıkış kullanılan depolama hesabını bulun.    
-2. Ayarları bölümünden açın **erişim anahtarları**. İki varsayılan anahtarlar (key1, key2), arasındaki işinizi tarafından kullanılmayan bir çekme ve onu yeniden oluştur:  
-   ![Depolama hesabı için anahtarları yeniden oluştur](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
+### <a name="blob-storagetable-storage"></a>Blob depolama/Tablo depolama
+1. Azure portalında oturum açın > Akış Analizi işi için giriş/çıktı olarak kullandığınız depolama hesabına göz atın.    
+2. Ayarlar bölümünden **Erişim tuşlarını**açın. İki varsayılan anahtar (key1, key2) arasında, işiniz tarafından kullanılmayan ı seçin ve yeniden oluşturun:  
+   ![Depolama hesabı için anahtarları yeniden oluşturma](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Yeni oluşturulan anahtarı kopyalayın.    
-4. Stream Analytics işinizi Azure portalından Gözat > seçin **Durdur** ve durdurmak işin tamamlanmasını bekleyin.    
-5. Blob/tablo bulun depolama giriş/çıkış kimlik bilgilerini güncelleştirmek istiyorsanız.    
-6. Bulma **depolama hesabı anahtarı** alan ve yeni oluşturulan anahtarınızı yapıştırın > tıklatın **Kaydet**.    
-7. Değişikliklerinizi kaydettiğinizde bir bağlantı testi otomatik olarak başlayacaktır, Bildirimler sekmesinden görüntüleyebilirsiniz. İki bildirim vardır: biri, güncelleştirmeyi kaydetmeye karşılık gelir ve bağlantıyı test etmek için diğer karşılık gelir:  
-   ![Anahtar düzenleme sonra bildirimler](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
-8. Devam [son durdurulma süresi, iş başlangıç](#start-your-job-from-the-last-stopped-time) bölümü.
+4. Azure portalından Stream Analytics işinize göz atın > **Dur'u** seçin ve işin durmasını bekleyin.    
+5. Kimlik bilgilerini güncelleştirmek istediğiniz Blob/Table depolama girişini/çıktısını bulun.    
+6. Depolama **Hesabı Anahtarı** alanını bulun ve yeni oluşturduğunuz anahtarı kaydet'e > **yapıştırın.**    
+7. Değişikliklerinizi kaydettiğinizde bağlantı testi otomatik olarak başlar, bildirimler sekmesinden görüntüleyebilirsiniz. İki bildirim vardır- biri güncelleştirmeyi kaydetmeye karşılık gelir, diğeri ise bağlantıyı sınamaya karşılık gelir:  
+   ![Anahtarı düzenlemeden sonra bildirimler](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
+8. Son [durdurulan zaman bölümünden işinize başlamak](#start-your-job-from-the-last-stopped-time) için devam edin.
 
 ### <a name="event-hubs"></a>Event Hubs
 
-1. Azure portalında oturum açın > Stream Analytics işi için giriş/çıkış kullanılan olay hub'ı bulun.    
-2. Ayarları bölümünden açın **paylaşılan erişim ilkeleri** ve gerekli erişim ilkesini seçin. Arasında **birincil anahtar** ve **ikincil anahtar**, işinizi tarafından kullanılmayan bir tane seçin ve bunu yeniden oluştur:  
-   ![Event Hubs için anahtarları yeniden oluştur](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
+1. Azure portalında oturum açın > Akış Analizi işi için giriş/çıktı olarak kullandığınız Etkinlik Hub'ına göz atın.    
+2. Ayarlar bölümünden **Paylaşılan erişim ilkelerini** açın ve gerekli erişim ilkesini seçin. Birincil **Anahtar** ve **İkincil Anahtar**arasında, işiniz tarafından kullanılmayan ı seçin ve yeniden oluşturun:  
+   ![Olay Hub'ları için anahtarları yeniden oluşturma](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Yeni oluşturulan anahtarı kopyalayın.    
-4. Stream Analytics işinizi Azure portalından Gözat > seçin **Durdur** ve durdurmak işin tamamlanmasını bekleyin.    
-5. Hub'ları giriş/çıkış kimlik bilgilerini güncelleştirmek istediğiniz olayı bulun.    
-6. Bulma **olay hub'ı ilke anahtarı** alan ve yeni oluşturulan anahtarınızı yapıştırın > tıklatın **Kaydet**.    
-7. Bağlantı testi yaptığınız değişiklikleri kaydettiğinizde, otomatik olarak başlatılacak başarıyla geçti emin olun.    
-8. Devam [son durdurulma süresi, iş başlangıç](#start-your-job-from-the-last-stopped-time) bölümü.
+4. Azure portalından Stream Analytics işinize göz atın > **Dur'u** seçin ve işin durmasını bekleyin.    
+5. Kimlik bilgilerini güncelleştirmek istediğiniz Olay hub'larını/çıktısını bulun.    
+6. Olay **Hub İlkesi Anahtarı** alanını bulun ve yeni oluşturduğunuz anahtarı yapıştırın > **Kaydet'i**tıklatın.    
+7. Değişikliklerinizi kaydettiğinizde bağlantı testi otomatik olarak başlar, başarılı bir şekilde geçtiğinden emin olun.    
+8. Son [durdurulan zaman bölümünden işinize başlamak](#start-your-job-from-the-last-stopped-time) için devam edin.
 
-### <a name="sql-database"></a>SQL Veritabanı
+### <a name="sql-database"></a>SQL Database
 
-Mevcut bir kullanıcının oturum açma kimlik bilgilerini güncelleştirmek için SQL veritabanına bağlanmak gerekir. Azure portalı veya SQL Server Management Studio gibi bir istemci araç kullanarak kimlik bilgilerini güncelleştirebilirsiniz. Bu bölümde, Azure portalını kullanarak kimlik bilgilerini güncelleştirme işlemini gösterir.
+Varolan bir kullanıcının giriş kimlik bilgilerini güncelleştirmek için SQL veritabanına bağlanmanız gerekir. Kimlik bilgilerini Azure portalı veya SQL Server Management Studio gibi istemci tarafı aracını kullanarak güncelleştirebilirsiniz. Bu bölümde, Azure portalı kullanılarak kimlik bilgilerini güncelleştirme işlemi gösterilmektedir.
 
-1. Azure portalında oturum açın > için Stream Analytics işi çıktı olarak kullanılan SQL veritabanı göz atın.    
-2. Gelen **Veri Gezgini**, oturum açma/bağlanma veritabanınıza > Yetkilendirme türü olarak seçin **SQL server kimlik doğrulaması** > yazın, **oturum açma** ve  **Parola** ayrıntıları > seçin **Tamam**.  
-   ![SQL veritabanı için kimlik bilgilerini yeniden oluşturun](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+1. Azure portalında oturum açın > Akış Analizi işi için çıktı olarak kullandığınız SQL veritabanına göz atın.    
+2. **Data**explorer'dan, veritabanınıza giriş/bağlanma > **Oturum Açma** ve **Parola** ayrıntılarınızda SQL sunucu **kimlik doğrulaması** olarak Yetkilendirme türünü seçin > Tamam'ı **seçin**>.  
+   ![SQL veritabanı için kimlik bilgilerini yeniden oluşturma](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
-3. Sorgu sekmesinde aşağıdaki sorguyu çalıştırarak, kullanıcının parolasını değiştirmek (değiştirdiğinizden emin olun `<user_name>` adınızı içeren ve `<new_password>` yeni parolanızla):  
+3. Sorgu sekmesinde, aşağıdaki sorguyu çalıştırarak kullanıcınızdan birinin parolasını değiştirin `<user_name>` (kullanıcı adınız `<new_password>` ve yeni parolanızla değiştirdiğinizden emin olun):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'
    Alter role db_owner Add member `<user_name>`
    ```
 
-4. Yeni parolayı not edin.    
-5. Stream Analytics işinizi Azure portalından Gözat > seçin **Durdur** ve durdurmak işin tamamlanmasını bekleyin.    
-6. Kimlik bilgilerini döndürme istiyorsanız SQL veritabanı çıkışı bulun. Parolasını güncelleştirin ve değişiklikleri kaydedin.    
-7. Bağlantı testi yaptığınız değişiklikleri kaydettiğinizde, otomatik olarak başlatılacak başarıyla geçti emin olun.    
-8. Devam [son durdurulma süresi, iş başlangıç](#start-your-job-from-the-last-stopped-time) bölümü.
+4. Yeni parolayı not alın.    
+5. Azure portalından Stream Analytics işinize göz atın > **Dur'u** seçin ve işin durmasını bekleyin.    
+6. Kimlik bilgilerini döndürmek istediğiniz SQL veritabanı çıktısını bulun. Parolayı güncelleştirin ve değişiklikleri kaydedin.    
+7. Değişikliklerinizi kaydettiğinizde bağlantı testi otomatik olarak başlar, başarılı bir şekilde geçtiğinden emin olun.    
+8. Son [durdurulan zaman bölümünden işinize başlamak](#start-your-job-from-the-last-stopped-time) için devam edin.
 
 ### <a name="power-bi"></a>Power BI
-1. Azure portalında oturum açın > Stream Analytics işinizi bulun > seçin **Durdur** ve durdurmak işin tamamlanmasını bekleyin.    
-2. Kimlik bilgilerini yenilemek istediğiniz Power BI çıkışına bulun > tıklatın **yetkilendirmeyi yenilemek** (başarı iletisini görmeniz gerekir) > **Kaydet** değişiklikleri.    
-3. Bağlantı testi değişikliklerinizi kaydettiğinizde, otomatik olarak başlatılır, emin olun, başarıyla geçti.    
-4. Devam [son durdurulma süresi, iş başlangıç](#start-your-job-from-the-last-stopped-time) bölümü.
+1. Azure portalında oturum açın > Stream Analytics işinize göz atın > **Dur'u** seçin ve işin durmasını bekleyin.    
+2. Kimlik bilgilerini yenilemek istediğiniz Power BI çıktısını bulun > **yetkilendirmeyi** yenile'yi tıklatın (bir başarı iletisi görmeniz gerekir) > Değişiklikleri **Kaydet.**    
+3. Değişikliklerinizi kaydettiğinizde bağlantı testi otomatik olarak başlar, başarılı bir şekilde geçtiğinden emin olun.    
+4. Son [durdurulan zaman bölümünden işinize başlamak](#start-your-job-from-the-last-stopped-time) için devam edin.
 
-## <a name="start-your-job-from-the-last-stopped-time"></a>Son durdurulma süresi, iş başlangıç
+## <a name="start-your-job-from-the-last-stopped-time"></a>Son durdurulan zamandan itibaren işinizi başlatın
 
-1. İşin gidin **genel bakış** bölmesinde > seçin **Başlat** işi başlatmak için.    
-2. Seçin **son durdurulduğunda** > tıklatın **Başlat**. Daha önce işlemi çalıştırıldı ve bazı çıkış vardı "son durdurulduğunda" seçeneği yalnızca göründüğüne dikkat edin oluşturulur. İş son çıktı değerinin saat başlatılır.
-   ![Stream Analytics işini başlatın](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
+1. İşi başlatmak için **Başlat'ı** seçin > işin **Genel Bakış** bölmesine gidin.    
+2. **En son ne zaman durdurulur** > **Başlat'ı**tıklatın. "Son durdurulduğunda" seçeneğinin yalnızca işi daha önce çalıştırdığınızda ve bazı çıktıları oluşturduysanız göründüğünü unutmayın. İş, son çıktı değerinin zamanına göre yeniden başlatılır.
+   ![Akış Analizi işini başlatın](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

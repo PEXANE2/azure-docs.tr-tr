@@ -1,75 +1,75 @@
 ---
 title: Azure Otomasyonu ile dosya içeriği değişikliklerini görüntüleme
-description: Değiştirilen bir dosyanın içeriğini görüntülemek için değişiklik izlemenin dosya içeriği değiştirme özelliğini kullanın.
+description: Değiştirilen bir dosyanın içeriğini görüntülemek için Değiştir izlemenin dosya içeriği değiştirme özelliğini kullanın.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75418820"
 ---
-# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Değişiklik İzleme ile izlenmekte olan bir dosyanın içeriğini görüntüleme
+# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Değişiklik İzleme ile izlenen bir dosyanın içeriğini görüntüleme
 
-Dosya içeriği izleme, Değişiklik İzleme ile izlenmekte olan bir değişiklikten önce ve sonra bir dosyanın içeriğini görüntülemenizi sağlar. Bunu yapmak için, her değişiklik oluştuktan sonra dosya içeriğini bir depolama hesabına kaydeder.
+Dosya içeriği izleme, Değişiklik İzleme ile izlenen bir değişiklikten önce ve sonra bir dosyanın içeriğini görüntülemenize olanak tanır. Bunu yapmak için, her değişiklik gerçekleştikten sonra dosya içeriğini bir depolama hesabına kaydeder.
 
 ## <a name="requirements"></a>Gereksinimler
 
-* Dosya içeriğini depolamak için Kaynak Yöneticisi dağıtım modelini kullanan standart bir depolama hesabı gerekir. Premium ve klasik dağıtım modeli depolama hesapları kullanılmamalıdır. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../storage/common/storage-create-storage-account.md)
+* Dosya içeriğini depolamak için Kaynak Yöneticisi dağıtım modelini kullanan standart bir depolama hesabı gereklidir. Premium ve klasik dağıtım modeli depolama hesapları kullanılmamalıdır. Depolama hesapları hakkında daha fazla bilgi için Azure [depolama hesapları hakkında](../storage/common/storage-create-storage-account.md) bilgi
 
-* Kullanılan depolama hesabında yalnızca 1 Otomasyon hesabı bağlı olabilir.
+* Kullanılan depolama hesabı yalnızca 1 Otomasyon Hesabı bağlı olabilir.
 
-* Otomasyon hesabınızda [değişiklik izleme](automation-change-tracking.md) etkinleştirilir.
+* [Otomasyon](automation-change-tracking.md) Hesabınızda Değişiklik İzleme etkinleştirilir.
 
-## <a name="enable-file-content-tracking"></a>Dosya içeriği izlemeyi etkinleştir
+## <a name="enable-file-content-tracking"></a>Dosya içeriği izlemeyi etkinleştirme
 
-1. Azure portal Otomasyon hesabınızı açın ve sonra **değişiklik izleme**' yi seçin.
-2. Üstteki menüde **Ayarları Düzenle**' yi seçin.
-3. **Dosya içeriği** ' ni seçin ve **bağlantı**' ya tıklayın. Bu, **değişiklik izleme Için Içerik ekleme konumunu** açar.
+1. Azure portalında Otomasyon hesabınızı açın ve ardından **Izlemeyi Değiştir'i**seçin.
+2. Üst menüde **Ayarları Edit'i**seçin.
+3. **Dosya İçeriği'ni** seçin ve **Bağlantı'yı**tıklatın. Bu, **Değişiklik İzleme** için İçerik Konumu Ekle bölmesini açar.
 
    ![seçin](./media/change-tracking-file-contents/enable.png)
 
-4. Dosya içeriğini depolamak için kullanılacak aboneliği ve depolama hesabını seçin. Tüm mevcut izlenen dosyalar için dosya içeriği izlemeyi etkinleştirmek istiyorsanız, **Tüm ayarlar için dosya Içeriğini karşıya yükle** **' yi seçin.** Bunu, daha sonra her dosya yolu için değiştirebilirsiniz.
+4. Dosya içeriğini depolamak için kullanılacak abonelik ve depolama hesabını seçin. Varolan tüm izlenen dosyalar için dosya içeriği izlemeyi etkinleştirmek istiyorsanız, **tüm ayarlar için Yükleme dosyası içeriğini**açmak için **Açık'ı** seçin. Daha sonra her dosya yolu için bunu değiştirebilirsiniz.
 
-   ![depolama hesabı ayarla](./media/change-tracking-file-contents/storage-account.png)
+   ![depolama hesabı ayarlama](./media/change-tracking-file-contents/storage-account.png)
 
-5. Etkinleştirildikten sonra, depolama hesabı ve SAS URI 'Leri gösterilir. SAS URI 'Lerinin 365 gün sonra süre sonu olur ve yeniden **Oluştur** düğmesine tıklayarak yeniden oluşturulabilir.
+5. Etkinleştirildiğinde, depolama hesabı ve SAS Uris gösterilir. SAS Uris'in süresi 365 gün sonra sona erer ve **Yeniden Oluştur** düğmesini tıklatarak yeniden oluşturulabilir.
 
-   ![Hesap anahtarlarını listeleme](./media/change-tracking-file-contents/account-keys.png)
+   ![liste hesap anahtarları](./media/change-tracking-file-contents/account-keys.png)
 
-## <a name="add-a-file"></a>Dosya Ekle
+## <a name="add-a-file"></a>Dosya ekleme
 
-Aşağıdaki adımlarda, bir dosya için değişiklik izlemeyi açma işleminde izlenecek yol gösterilmektedir:
+Aşağıdaki adımlar, bir dosya için değişiklik izlemeyi açmada size yol açar:
 
-1. **Değişiklik izleme** **Ayarları Düzenle** sayfasında, **Windows dosyaları** veya **Linux dosyaları** sekmesini seçin ve **Ekle** ' ye tıklayın.
+1. **İzlemeyi Değiştir'in** **Ayarları Değiştir** **sayfasında, Windows Files** veya Linux **Dosyaları** sekmesini seçin ve **Ekle'yi** tıklatın
 
-1. Dosya yolu için bilgileri doldurun ve **Tüm ayarlar için dosya Içeriğini karşıya yükle**altında **true** ' ı seçin. Bu ayar yalnızca bu dosya yolu için dosya içeriği izlemeyi mümkün.
+1. Dosya yolunun bilgilerini doldurun ve **tüm ayarlar için Yükleme dosyası içeriğialtında** **True'yu** seçin. Bu ayar, yalnızca bu dosya yolu için dosya içeriği izleme sağlar.
 
-   ![Linux dosyası ekleme](./media/change-tracking-file-contents/add-linux-file.png)
+   ![linux dosyası ekleme](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>İzlenen bir dosyanın içeriğini görüntüleme
 
-1. Dosya veya yoldaki bir dosya için bir değişiklik algılandıktan sonra portalda görüntülenir. Değişiklik listesinden dosya değişikliğini seçin. **Değişiklik ayrıntıları** bölmesi görüntülenir.
+1. Dosya veya yoldaki bir dosya için bir değişiklik algılandıktan sonra, portalda gösterir. Değişiklik listesinden dosya değişikliğini seçin. **Ayrıntıları Değiştir** bölmesi görüntülenir.
 
    ![liste değişiklikleri](./media/change-tracking-file-contents/change-list.png)
 
-1. **Ayrıntıları değiştir** sayfasında, dosyanın içeriğini görmek için, sol üstteki, dosya bilgilerini görüntüle ' ye tıklayarak dosya **içeriğini görüntüle** ' ye tıklayın.
+1. Ayrıntıları **Değiştir** sayfasında, dosya bilgilerinin önce ve sonra, sol üstte, dosyanın içeriğini görmek için **Dosya İçerik Değişikliklerini** Görüntüle'yi tıklatın.
 
-   ![değişiklik ayrıntıları](./media/change-tracking-file-contents/change-details.png)
+   ![ayrıntıları değiştirme](./media/change-tracking-file-contents/change-details.png)
 
-1. Yeni sayfa, dosya içeriğini yan yana görünümde gösterir. Ayrıca, değişikliklerin satır içi görünümünü görmek için **satır içi** ' ı da seçebilirsiniz.
+1. Yeni sayfa, dosya içeriğini yan yana görünümde gösterir. Değişikliklerin satır satır görünümünü görmek için **Satır Çizgisi'ni** de seçebilirsiniz.
 
-   ![dosya değişikliklerini görüntüle](./media/change-tracking-file-contents/view-file-changes.png)
+   ![dosya değişikliklerini görüntüleme](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çözümü kullanma hakkında daha fazla bilgi edinmek için Değişiklik İzleme öğreticisini ziyaret edin:
+Çözümü kullanma hakkında daha fazla bilgi edinmek için İzlemeyi Değiştir'deki öğreticiyi ziyaret edin:
 
 > [!div class="nextstepaction"]
 > [Ortamınızdaki değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)
 
-* Ayrıntılı değişiklik izleme verilerini görüntülemek için [Azure izleyici günlüklerinde günlük aramalarını](../log-analytics/log-analytics-log-searches.md) kullanın.
+* Ayrıntılı değişiklik izleme verilerini görüntülemek için [Azure Monitor günlüklerinde Günlük aramalarını](../log-analytics/log-analytics-log-searches.md) kullanın.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Google Bigquery'den verileri kopyalama
-description: Desteklenen bir havuz veri depolarına Google Bigquery'den bir data factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Veri Fabrikası'nı kullanarak Google BigQuery'deki verileri kopyalama
+description: Bir veri fabrikası ardışık alanında bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına Google BigQuery'deki verileri nasıl kopyalaylaydestekleyeceğini öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,57 +13,57 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929417"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Google Bigquery'den verileri kopyalama
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Google BigQuery'deki verileri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de Google Bigquery'den verileri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliğine genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, Google BigQuery'deki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı özetlanmaktadır. Kopyalama [etkinliğine](copy-activity-overview.md) genel bir genel bakış sunan Kopyalama Etkinliği genel bakış makalesine dayanıyor.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Google BigQuery Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Google BigQuery bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Google Bigquery'den verileri hiçbir desteklenen havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Verileri Google BigQuery'den desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Veri Fabrikası bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak üzere bir sürücüyü el ile yüklemeniz gerekmez.
+Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak için bir sürücüyü el ile yüklemeniz gerekmez.
 
 >[!NOTE]
->Bu, Google BigQuery Bağlayıcısı BigQuery API'ler üzerinde oluşturulmuştur. Dikkat edin, maksimum oran gelen istekleri ve, proje başına temelinde uygun kotalar zorlar BigQuery sınırları bakın [kotalar ve limitler - API istekleri](https://cloud.google.com/bigquery/quotas#api_requests). Hesap için çok fazla eş zamanlı istek tetiklemez emin olun.
+>Bu Google BigQuery bağlayıcısı BigQuery API'lerinin üzerine inşa edilmiştir. BigQuery'nin gelen isteklerin maksimum oranını sınırladığını ve proje başına uygun kotaları uyguladığını unutmayın, [Kotalar & Limitler - API isteklerine](https://cloud.google.com/bigquery/quotas#api_requests)bakın. Hesaba çok fazla eşzamanlı istek tetiklemediğinden emin olun.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Google BigQuery Bağlayıcısı özel Data Factory varlıkları tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Google BigQuery bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Google BigQuery bağlı hizmeti için aşağıdaki özellikleri desteklenir.
+Aşağıdaki özellikler Google BigQuery bağlantılı hizmet için desteklenir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır **GoogleBigQuery**. | Yes |
-| project | Sorgulamanın yapılacağı varsayılan BigQuery projenin proje kimliği.  | Yes |
-| additionalProjects | Genel proje kimliklerinin virgülle ayrılmış bir listesini, erişimi BigQuery yansıtıyor.  | Hayır |
-| requestGoogleDriveScope | Google drive'a erişim istenip istenmeyeceğini belirtir. Google Drive erişimine BigQuery veri Google Drive verilerle birleştirmek birleştirilmiş tablolar için destek sağlar. Varsayılan değer **false**.  | Hayır |
-| authenticationType | Kimlik doğrulaması için kullanılan OAuth 2.0 kimlik doğrulama mekanizması. Yalnızca şirket içinde barındırılan tümleştirme çalışma zamanını ServiceAuthentication kullanılabilir. <br/>İzin verilen değerler **UserAuthentication** ve **ServiceAuthentication**. Daha fazla özellik ve bu kimlik doğrulama türleri için JSON örnekleri bu tabloda aşağıdaki bölümlere sırasıyla bakın. | Yes |
+| type | Tür özelliği **GoogleBigQuery**olarak ayarlanmalıdır. | Evet |
+| proje | Karşı sorgulanacak varsayılan BigQuery projesinin proje kimliği.  | Evet |
+| ekProjeler | Erişmek için kamu BigQuery projelerinin proje ids'lerinin virgülle ayrılmış bir listesi.  | Hayır |
+| İstekGoogleDriveScope | Google Drive'a erişim isteyip istemeyeceğiniz. Google Drive erişimine izin vermek, BigQuery verilerini Google Drive'daki verilerle birleştiren federe tablolar için destek sağlar. Varsayılan değer **false** şeklindedir.  | Hayır |
+| authenticationType | Kimlik doğrulama için kullanılan OAuth 2.0 kimlik doğrulama mekanizması. ServiceAuthentication yalnızca Kendi barındırılan Tümleştirme Çalışma Süresi'nde kullanılabilir. <br/>İzin verilen değerler **UserAuthentication** ve **ServiceAuthentication'dır.** Bu tablonun altındaki bölümlere bakın, sırasıyla bu kimlik doğrulama türleri için daha fazla özellik ve JSON örnekleri. | Evet |
 
-### <a name="using-user-authentication"></a>Kullanıcı kimlik doğrulaması kullanma
+### <a name="using-user-authentication"></a>Kullanıcı kimlik doğrulamasını kullanma
 
-"AuthenticationType" özelliği ayarlanmış **UserAuthentication**, önceki bölümde açıklanan genel özellikleri ile birlikte aşağıdaki özellikleri belirtin:
+"AuthenticationType" özelliğini **UserAuthentication**olarak ayarlayın ve önceki bölümde açıklanan genel özelliklerle birlikte aşağıdaki özellikleri belirtin:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| clientID | Yenileme belirteci oluşturmak için kullanılan uygulama kimliği. | Hayır |
-| clientSecret | Yenileme belirteci oluşturmak için kullanılan uygulama gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
-| refreshToken | Google BigQuery erişim yetkisi vermek için kullanılan alınan yenileme belirteci. Birinden almayı öğrenme [alma OAuth 2.0 erişim belirteçleri](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) ve [Bu topluluk blogu](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| clientId | Yenileme belirteci oluşturmak için kullanılan uygulamanın kimliği. | Hayır |
+| clientSecret | Yenileme belirteci oluşturmak için kullanılan uygulamanın sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
+| yenilemeToken | Google'dan elde edilen yenileme belirteci BigQuery'ye erişim yetkisi vermek için kullanılır. [OAuth 2.0 erişim jetonları](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) ve bu topluluk [blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)edinme nasıl bir tane öğrenin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
 
 **Örnek:**
 
@@ -91,16 +91,16 @@ Google BigQuery bağlı hizmeti için aşağıdaki özellikleri desteklenir.
 }
 ```
 
-### <a name="using-service-authentication"></a>Hizmet kimlik doğrulaması kullanma
+### <a name="using-service-authentication"></a>Hizmet kimlik doğrulamasını kullanma
 
-"AuthenticationType" özelliği ayarlanmış **ServiceAuthentication**, önceki bölümde açıklanan genel özellikleri ile birlikte aşağıdaki özellikleri belirtin. Bu kimlik doğrulama türü, yalnızca şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde kullanılabilir.
+"AuthenticationType" özelliğini **ServiceAuthentication**olarak ayarlayın ve önceki bölümde açıklanan genel özelliklerle birlikte aşağıdaki özellikleri belirtin. Bu kimlik doğrulama türü yalnızca Kendi barındırılan Tümleştirme Çalışma Süresi'nde kullanılabilir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| e-posta | ServiceAuthentication için kullanılan hizmet hesabı e-posta kimliği. Yalnızca şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde kullanılabilir.  | Hayır |
-| keyFilePath | Hizmet hesabı e-posta adresi kimliğini doğrulamak için kullanılan .p12 anahtar dosyasının tam yolu. | Hayır |
-| trustedCertPath | SSL üzerinden bağlanırken sunucu doğrulamak için kullanılan güvenilir CA sertifikaları içeren bir .pem dosyasının tam yolu. Yalnızca şirket içinde barındırılan tümleştirme çalışma zamanını SSL kullandığınızda, bu özelliği ayarlayabilirsiniz. Varsayılan değer tümleştirme çalışma zamanının yüklü cacerts.pem dosyasıdır.  | Hayır |
-| useSystemTrustStore | Sistem güven deposundan veya bir belirtilen .pem dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer **false**.  | Hayır |
+| e-posta | ServiceAuthentication için kullanılan hizmet hesabı e-posta kimliği. Yalnızca Kendi kendine barındırılan Tümleştirme Çalışma Süresi'nde kullanılabilir.  | Hayır |
+| keyFilePath | Hizmet hesabı e-posta adresinin kimliğini doğrulamak için kullanılan .p12 anahtar dosyasına tam yol. | Hayır |
+| güvenilirCertPath | SSL üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca Kendi barındırılan Tümleştirme Çalışma Süresi'nde SSL kullandığınızda ayarlanabilir. Varsayılan değer, tümleştirme çalışma süresiyle yüklü cacerts.pem dosyasıdır.  | Hayır |
+| useSystemTrustStore | Sistem güven deposundan veya belirtilen bir .pem dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -126,16 +126,16 @@ Google BigQuery bağlı hizmeti için aşağıdaki özellikleri desteklenir.
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, Google BigQuery veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Google BigQuery veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
-Google Bigquery'den verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **GoogleBigQueryObject**. Aşağıdaki özellikler desteklenir:
+Google BigQuery'den veri kopyalamak için, veri kümesinin tür özelliğini **GoogleBigQueryObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **GoogleBigQueryObject** | Yes |
-| veri kümesi | Google BigQuery veri kümesinin adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
-| tableName | Tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `dataset` ve `table`kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **GoogleBigQueryObject** | Evet |
+| Dataset | Google BigQuery veri kümesinin adı. |Hayır (etkinlik kaynağında "sorgu" belirtilirse)  |
+| tablo | Masanın adı. |Hayır (etkinlik kaynağında "sorgu" belirtilirse)  |
+| tableName | Masanın adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü `dataset` `table`için, kullanım ve . | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
 
 **Örnek**
 
@@ -156,16 +156,16 @@ Google Bigquery'den verileri kopyalamak için dataset öğesinin type özelliği
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Google BigQuery kaynak türüne göre desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Google BigQuery kaynak türü tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
-### <a name="googlebigquerysource-as-a-source-type"></a>Bir kaynak türü olarak GoogleBigQuerySource
+### <a name="googlebigquerysource-as-a-source-type"></a>Kaynak türü olarak GoogleBigQuerySource
 
-Google Bigquery'den verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **GoogleBigQuerySource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü.
+Google BigQuery'den veri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **GoogleBigQuerySource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır **GoogleBigQuerySource**. | Yes |
-| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının türü özelliği **GoogleBigQuerySource**olarak ayarlanmalıdır. | Evet |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
 **Örnek:**
 
@@ -199,9 +199,9 @@ Google Bigquery'den verileri kopyalamak için kopyalama etkinliği için kaynak 
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri fabrikasında kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi [için](copy-activity-overview.md#supported-data-stores-and-formats)bkz.

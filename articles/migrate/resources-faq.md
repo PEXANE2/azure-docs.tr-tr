@@ -1,79 +1,79 @@
 ---
-title: Azure geçişi hakkında SSS
-description: Azure geçişi hizmeti hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure Geçiş SSS
+description: Azure Geçiş hizmeti yle ilgili sık sorulan soruların yanıtlarını alın.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
 ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926723"
 ---
-# <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
+# <a name="azure-migrate-common-questions"></a>Azure Geçiş: Sık sorulan sorular
 
-Bu makalede, Azure geçişi hakkında sık sorulan sorular yanıtlanmaktadır. Bu makaleyi okuduktan sonra sorularınız varsa, bunları [Azure geçişi forumuna](https://aka.ms/AzureMigrateForum)gönderebilirsiniz. Ayrıca, şu makaleleri inceleyebilirsiniz:
+Bu makalede, Azure Geçiş hakkında sık sorulan soruları yanıtlar. Bu makaleyi okuduktan sonra sorularınız varsa, bunları [Azure Geçiş forumunda](https://aka.ms/AzureMigrateForum)yayınlayabilirsiniz. Ayrıca bu makaleleri gözden geçirebilirsiniz:
 
-- [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
-- [Bulma, değerlendirme ve bağımlılık görselleştirmesiyle](common-questions-discovery-assessment.md) ilgili sorular
+- [Azure Geçiş cihazı](common-questions-appliance.md) yla ilgili sorular
+- [Keşif, değerlendirme ve bağımlılık görselleştirme](common-questions-discovery-assessment.md) ile ilgili sorular
 
 ## <a name="what-is-azure-migrate"></a>Azure Geçişi nedir?
 
-Azure geçişi, şirket içi uygulamalarınızın ve iş yüklerinizin yanı sıra özel ve genel bulut VM 'lerinin bulmayı, değerlendirmesini ve geçişini izlemek için merkezi bir merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve üçüncü taraf ISV teklifleri sağlar. [Daha fazla bilgi edinin](migrate-services-overview.md).
+Azure Geçiş, şirket içi uygulamalarınızın ve iş yüklerinizin ve özel ve genel bulut VM'lerinizin Azure'a keşfini, değerlendirmesini ve geçişini izlemek için merkezi bir hub sağlar. Hub, değerlendirme ve geçiş için Azure Geçiş araçları ve üçüncü taraf ISV teklifleri sağlar. [Daha fazla bilgi edinin](migrate-services-overview.md).
 
-## <a name="what-can-i-do-with-azure-migrate"></a>Azure geçişi ile ne yapabilirim?
+## <a name="what-can-i-do-with-azure-migrate"></a>Azure Geçiş ile ne yapabilirim?
 
-Azure geçişi 'ni kullanarak şirket içi altyapıyı, uygulamaları ve verileri bulun, değerlendirin ve Azure 'a geçirin. Azure geçişi, şirket içi VMware VM 'Leri, Hyper-V VM 'Leri, fiziksel sunucular, diğer sanallaştırılmış VM 'Ler, veritabanları, Web uygulamaları ve sanal masaüstleri için değerlendirme ve geçişi destekler. 
+Şirket içi altyapıyı, uygulamaları ve verileri Azure'a keşfetmek, değerlendirmek ve geçirmek için Azure Geçiş'i kullanın. Azure Geçiş, şirket içi VMware VM'lerin, Hyper-V VM'lerin, fiziksel sunucuların, diğer sanallaştırılmış SANAL'ların, veritabanlarının, web uygulamalarının ve sanal masaüstü bilgisayarların değerlendirilmesini ve geçişini destekler. 
 
-## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure geçişi ile Azure Site Recovery arasındaki fark nedir?
+## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure Geçiş ve Azure Site Kurtarma arasındaki fark nedir?
 
-[Azure geçişi](migrate-services-overview.md) , değerlendirme ve Azure 'a geçiş için merkezi bir merkez sağlar. 
+[Azure Geçişi,](migrate-services-overview.md) değerlendirme ve Azure'a geçiş için merkezi bir hub sağlar. 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) bir olağanüstü durum kurtarma çözümüdür. 
+[Azure Site Kurtarma](../site-recovery/site-recovery-overview.md) bir olağanüstü durum kurtarma çözümüdür. 
 
-Azure geçişi: sunucu geçiş aracı bazı şirket içi makinelerin geçiş ve geçiş geçişi için bazı arka uç Site Recovery işlevleri kullanır.
+Azure Geçiş: Sunucu Geçişi aracı, bazı şirket içi makinelerin kaldırma ve kaydırma geçişi için bazı arka uç Site Kurtarma işlevlerini kullanır.
 
-## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure geçişi: Sunucu değerlendirmesi ve harıta araç seti arasındaki fark nedir?
+## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Geçiş: Sunucu Değerlendirmesi ve MAP Araç Seti arasındaki fark nedir?
 
-Sunucu değerlendirmesi, geçiş hazırlığı ve Azure 'a geçiş için iş yüklerinin değerlendirmesi hakkında değerlendirme sağlar. [Microsoft değerlendirme ve planlama (eşleme) araç seti](https://www.microsoft.com/download/details.aspx?id=7826) , Windows istemci ve sunucu işletim sistemlerinin daha yeni sürümleri için geçiş planlaması ve yazılım kullanımı izleme dahil diğer görevlerle yardımcı olur. Bu senaryolar için harıta araç setini kullanmaya devam edin.
+Sunucu Değerlendirmesi, geçişe hazır olma ve Azure'a geçiş için iş yüklerinin değerlendirilmesi konusunda yardımcı olmak için değerlendirme sağlar. [Microsoft Değerlendirme ve Planlama (MAP) Araç Seti,](https://www.microsoft.com/download/details.aspx?id=7826) Windows istemcisi ve sunucu işletim sistemlerinin yeni sürümleri için geçiş planlaması ve yazılım kullanım izleme dahil olmak üzere diğer görevlere yardımcı olur. Bu senaryolar için MAP Araç Kiti'ni kullanmaya devam edin.
 
-## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Sunucu değerlendirmesi ve Site Recovery Dağıtım Planlayıcısı arasındaki fark nedir?
+## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Sunucu Değerlendirmesi ile Site Kurtarma Dağıtım Planlayıcısı arasındaki fark nedir?
 
-Sunucu değerlendirmesi bir geçiş planlama aracıdır. Site Recovery Dağıtım Planlayıcısı bir olağanüstü durum kurtarma planlama aracıdır.
+Sunucu Değerlendirmesi bir geçiş planlama aracıdır. Site Kurtarma Dağıtım Planlayıcısı bir olağanüstü durum kurtarma planlama aracıdır.
 
-Ne yapmak istediğinize göre aracınızı seçin:
+Yapmak istediğiniz şeye göre aracınızı seçin:
 
-- **Azure 'da şirket içi geçiş planlama**: Şirket Içi sunucularınızı Azure 'a geçirmeyi planlıyorsanız, geçiş planlaması Için Sunucu değerlendirmesi kullanın. Sunucu değerlendirmesi değerlendirir şirket içi iş yükleri ve geçiş yapmanıza yardımcı olacak yönergeler ve araçlar sağlar. Geçiş planı gerçekleştirildikten sonra, makineleri Azure 'a geçirmek için Azure geçişi: sunucu geçişi gibi araçları kullanabilirsiniz.
-- **Azure 'da olağanüstü durum kurtarmayı planlayın**: Şirket içinden Azure 'a olağanüstü durum kurtarma ayarlamayı Site Recovery için Site Recovery dağıtım planlayıcısı kullanın. Dağıtım Planlayıcısı, olağanüstü durum kurtarma amacıyla Şirket içi ortamınızın derinlemesine ve Site Recovery özgü bir değerlendirmesini sağlar. Çoğaltma ve yük devretme gibi olağanüstü durum kurtarma ile ilgili öneriler sağlar.
+- **Şirket içi Azure'a geçiş planı**: Şirket içi sunucularınızı Azure'a taşımayı planlıyorsanız, geçiş planlaması için Sunucu Değerlendirmesi'ni kullanın. Sunucu Değerlendirmesi şirket içi iş yüklerini değerlendirir ve geçiş edersiniz yardımcı olacak kılavuz lar ve araçlar sağlar. Geçiş planı kullanıma hazır olduktan sonra, makineleri Azure'a geçirmek için Azure Geçiş: Sunucu Geçişi gibi araçları kullanabilirsiniz.
+- **Azure'a olağanüstü durum kurtarma planı :** Site Kurtarma ile şirket içi olağanüstü durum kurtarmayı şirket içinde Azure'a ayarlamayı planlıyorsanız, Site Kurtarma Dağıtım Planlayıcısı'nı kullanın. Dağıtım Planlayıcısı, olağanüstü durum kurtarma amacıyla şirket içi ortamınızın site içi Kurtarma'ya özgü derin bir değerlendirmesini sağlar. Çoğaltma ve başarısızlık gibi olağanüstü durum kurtarma yla ilgili öneriler sağlar.
 
-## <a name="how-does-server-migration-work-with-site-recovery"></a>Sunucu geçişi Site Recovery ile nasıl çalışır?
+## <a name="how-does-server-migration-work-with-site-recovery"></a>Site Kurtarma ile Sunucu Geçişi nasıl çalışır?
 
-- Şirket içi VMware VM 'lerinin *aracısız* geçişini gerçekleştirmek Için Azure geçişi: sunucu geçişi ' ni kullanıyorsanız, geçiş Işlemi Azure geçişi 'ne yereldir ve Site Recovery kullanılmaz.
-- VMware VM 'lerinin *aracı tabanlı* geçişini gerçekleştirmek Için Azure geçişi: sunucu geçişi kullanıyorsanız veya Hyper-V VM 'lerini veya fiziksel sunucuları geçirirseniz, Azure geçişi: sunucu geçişi Azure Site Recovery çoğaltma altyapısını kullanır.
+- Şirket içi VMware VM'lerin *aracısız* geçişini gerçekleştirmek için Azure Geçişi: Sunucu Geçişi'ni kullanıyorsanız, geçiş azure geçişine özgüdür ve Site Kurtarma kullanılmaz.
+- VMware VM'lerin *aracı tabanlı* geçişini gerçekleştirmek için Azure Geçiş: Sunucu Geçişi'ni kullanıyorsanız veya Hyper-VM'leri veya fiziksel sunucuları geçişi yaparsanız, Azure Geçiş: Sunucu Geçişi Azure Site Kurtarma çoğaltma altyapısını kullanır.
 
-## <a name="which-geographies-are-supported"></a>Hangi geographıes destekleniyor?
+## <a name="which-geographies-are-supported"></a>Hangi coğrafyalar desteklenir?
 
-- **VMware VM 'leri**: VMware VM 'Leri Için Azure geçişi [desteklenen coğrafi grafları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) gözden geçirin.
-- **Hyper-v VM 'leri**: Hyper-v VM 'Leri Için Azure geçişi [desteklenen coğrafi grafları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) gözden geçirin.
+- **VMware VM'ler : VMware**VM'ler için Azure Geçiş [destekli coğrafyaları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) inceleyin.
+- **Hyper-V VM'ler : Hyper-V**VM'ler için Azure Geçiş [destekli coğrafyaları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) gözden geçirin.
 
 ## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 
-İhtiyacınız olan aracı belirleyip, ardından aracı bir Azure geçişi projesine ekleyin. 
+İhtiyacınız olan aracı tanımlayın ve ardından aracı bir Azure Geçiş projesine ekleyin. 
 
-Bir ISV aracı veya Movere eklemek için:
+ISV aracı veya Movere eklemek için:
 
-1. Bir lisans edinerek veya ücretsiz deneme için, araç ilkesine uygun olarak kaydolun. Araçlar için lisanslama, ISV veya araç lisanslama modeline göre belirlenir.
-2. Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin.
+1. Araç politikasına uygun olarak lisans alarak başlayın veya ücretsiz deneme sürümüne kaydolun. Araçlar için lisanslama ISV veya araç lisanslama modeline uygun olarak yapılır.
+2. Her araçta, Azure Geçiş'e bağlanma seçeneği vardır. Aracı Azure Geçiş'e bağlamak için araç yönergelerini ve belgelerini izleyin.
 
-Geçiş yolculuğunu Azure geçişi projesi içinden, Azure 'da ve diğer araçlarda izleyebilirsiniz.
+Geçiş seyahatinizi Azure Geçiş projesi nin içinden, Azure'dan ve diğer araçlardan izleyebilirsiniz.
 
-## <a name="how-do-i-delete-a-project"></a>Nasıl yaparım? bir proje silinsin mi?
+## <a name="how-do-i-delete-a-project"></a>Bir projeyi nasıl silebilirim?
 
-[Projeyi silmeyi](how-to-delete-project.md)öğrenin. 
+Projeyi nasıl [sildiğinizi](how-to-delete-project.md)öğrenin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.
+Azure [Geçiş genel görünümünü](migrate-services-overview.md)okuyun.

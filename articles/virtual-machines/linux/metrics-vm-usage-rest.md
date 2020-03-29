@@ -1,6 +1,6 @@
 ---
-title: REST API kullanarak Azure sanal makine kullanım verilerini alın
-description: Azure REST API 'Lerini kullanarak bir sanal makine için kullanım ölçümleri toplayın.
+title: REST API'sini kullanarak Azure Sanal Makine kullanım verilerini alın
+description: Sanal Makine için kullanım ölçümlerini toplamak için Azure REST API'lerini kullanın.
 author: rloutlaw
 ms.service: virtual-machines
 ms.subservice: monitoring
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944747"
 ---
-# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API kullanarak sanal makine kullanım ölçümlerini alın
+# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API'sini kullanarak Sanal Makine kullanım ölçümlerini alın
 
-Bu örnek, [Azure REST API](/rest/api/azure/)kullanarak bir [Linux sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) için CPU kullanımının nasıl alınacağını gösterir.
+Bu örnek, [Azure REST API'sini](/rest/api/azure/)kullanarak bir [Linux Sanal Makine](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) için CPU kullanımının nasıl alınır olduğunu gösterir.
 
-Tüm başvuru belgelerini ve REST API için ek örnekleri [Azure IZLEYICI Rest başvurusunda](/rest/api/monitor)bulabilirsiniz. 
+REST API'si için eksiksiz başvuru belgeleri ve ek örnekler [Azure Monitor REST başvurusunda](/rest/api/monitor)mevcuttur. 
 
 ## <a name="build-the-request"></a>İsteği oluşturma
 
-Bir sanal makineden alınan [CPU ölçüsünü yüzde](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) olarak toplamak IÇIN aşağıdaki get isteğini kullanın
+Sanal Makine'den Yüzde [CPU metriklerini](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) toplamak için aşağıdaki GET isteğini kullanın
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -35,28 +35,28 @@ Aşağıdaki üstbilgiler gereklidir:
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
+|*İçerik Türü:*|Gereklidir. `application/json` olarak ayarlayın.|  
 |*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |  
 
 ### <a name="uri-parameters"></a>URI parametreleri
 
 | Adı | Açıklama |
 | :--- | :---------- |
-| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | Kaynakla ilişkili Azure Kaynak grubunun adı. Bu değeri Azure Resource Manager API, CLı veya portaldan edinebilirsiniz. |
-| VMName | Azure sanal makinesinin adı. |
-| metricnames | Geçerli [Load Balancer ölçümlerinin](/azure/load-balancer/load-balancer-standard-diagnostics)virgülle ayrılmış listesi. |
-| api-version | İstek için kullanılacak API sürümü.<br /><br /> Bu belgede, yukarıdaki URL 'ye dahil edilen api-Version `2018-01-01`yer almaktadır.  |
-| TimeSpan | Döndürülen ölçümlerin zaman aralığını tanımlayan aşağıdaki biçimdeki `startDateTime_ISO/endDateTime_ISO` dize. Bu isteğe bağlı parametre, örnekteki verilerin bir gününü döndürecek şekilde ayarlanır. |
+| subscriptionId | Azure aboneliğini tanımlayan abonelik kimliği. Birden çok aboneliğiniz varsa, [bkz.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) |
+| resourceGroupName | Kaynakla ilişkili Azure kaynak grubunun adı. Bu değeri Azure Kaynak Yöneticisi API, CLI veya portaldan alabilirsiniz. |
+| vmname | Azure Sanal Makine'nin adı. |
+| metrik adlar | Geçerli [Yük Dengeleyici ölçümlerinin](/azure/load-balancer/load-balancer-standard-diagnostics)virgülle ayrılmış listesi. |
+| api-sürümü | İstek için kullanılacak API sürümü.<br /><br /> Bu belge, yukarıdaki `2018-01-01`URL'de yer alan api sürümünü kapsar.  |
+| Timespan | Döndürülen ölçümlerin `startDateTime_ISO/endDateTime_ISO` zaman aralığını tanımlayan aşağıdaki biçimi içeren dize. Bu isteğe bağlı parametre, örnekte bir günlük veri değerini döndürecek şekilde ayarlanmıştır. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>İstek gövdesi
 
-Bu işlem için istek gövdesi gerekli değil.
+Bu işlem için istek organına gerek yoktur.
 
 ## <a name="handle-the-response"></a>Yanıtı işleme
 
-200 durum kodu, ölçüm değerleri listesi başarıyla döndürüldüğünde döndürülür. [Başvuru belgelerinde](/rest/api/monitor/metrics/list#errorresponse)hata kodlarının tam bir listesi bulunur.
+Durum kodu 200, metrik değerler listesi başarıyla döndürüldüğünde döndürülür. [Başvuru belgelerinde](/rest/api/monitor/metrics/list#errorresponse)hata kodlarının tam listesi bulunur.
 
 ## <a name="example-response"></a>Örnek yanıt 
 

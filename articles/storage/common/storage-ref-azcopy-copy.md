@@ -1,6 +1,6 @@
 ---
-title: AzCopy kopyası | Microsoft Docs
-description: Bu makale, AzCopy kopyalama komutu için başvuru bilgileri sağlar.
+title: azcopy kopya| Microsoft Dokümanlar
+description: Bu makalede, azcopy copy komutu için referans bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,51 +9,51 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933795"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
-Kaynak verileri bir hedef konuma kopyalar.
+Kaynak verileri hedef konuma kopyalar.
 
-## <a name="synopsis"></a>Özeti
+## <a name="synopsis"></a>Özet
 
-Kaynak verileri bir hedef konuma kopyalar. Desteklenen yönergeler şunlardır:
+Kaynak verileri hedef konuma kopyalar. Desteklenen yol tarifleri şunlardır:
 
-  - Yerel < > Azure Blobu (SAS veya OAuth kimlik doğrulaması)
-  - Yerel < > Azure dosyaları (Share/Directory SAS kimlik doğrulaması)
-  - Yerel <-> ADLS Gen 2 (SAS, OAuth veya SharedKey kimlik doğrulaması)
-  - Azure Blob (SAS veya genel)-Azure Blob > (SAS veya OAuth kimlik doğrulaması)
-  - Azure Blob (SAS veya genel)-> Azure dosyaları (SAS)
-  - Azure dosyaları (SAS)-Azure dosyaları > (SAS)
-  - Azure dosyaları (SAS)-> Azure Blob (SAS veya OAuth kimlik doğrulaması)
-  - AWS S3 (erişim anahtarı)-> Azure Blok Blobu (SAS veya OAuth kimlik doğrulaması)
+  - yerel < > Azure Blob (SAS veya OAuth kimlik doğrulaması)
+  - yerel < > Azure Dosyaları (Paylaş/dizin SAS kimlik doğrulaması)
+  - yerel < > ADLS Gen 2 (SAS, OAuth veya SharedKey kimlik doğrulaması)
+  - Azure Blob (SAS veya genel) > Azure Blob (SAS veya OAuth kimlik doğrulaması)
+  - Azure Blob (SAS veya genel) -Azure Dosyaları (SAS) >
+  - Azure Dosyaları (SAS) -> Azure Dosyaları (SAS)
+  - Azure Dosyaları (SAS) -> Azure Blob (SAS veya OAuth kimlik doğrulaması)
+  - AWS S3 (Access Key) -> Azure Blok Blob (SAS veya OAuth kimlik doğrulaması)
 
 Daha fazla bilgi için lütfen örneklere bakın.
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
-- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
+- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Gelişmiş
 
-AzCopy, dosya uzantısına veya içeriğe (uzantı belirtilmediyse) göre yerel diskten karşıya yüklenirken dosyaların içerik türünü otomatik olarak algılar.
+AzCopy, dosya uzantısına veya içeriğe bağlı olarak yerel diskten yükleme yaparken dosyaların içerik türünü otomatik olarak algılar (uzantı belirtilmemişse).
 
-Yerleşik arama tablosu küçüktür, ancak UNIX üzerinde, bu adlardan biri veya birkaçı altında varsa, yerel sistemin MIME. Types dosyaları tarafından Genişletilebilir:
+Yerleşik arama tablosu küçüktür, ancak Unix'te, bu adlardan biri veya birkaçı altında varsa yerel sistemin mim.types dosyası(lar) tarafından artırılır:
 
-- /etc/Mime.exe
+- /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-Windows 'da MIME türleri kayıt defterinden ayıklanır. Bu özellik bir bayrağın yardımıyla kapatılabilir. Lütfen bayrak bölümüne bakın.
+Windows'da MIME türleri kayıt defterinden ayıklanır. Bu özellik bir bayrak yardımıyla kapatılabilir. Lütfen bayrak bölümüne bakın.
 
-Bir ortam değişkenini komut satırını kullanarak ayarlarsanız, bu değişken komut satırı geçmişinizde okunabilir olacaktır. Komut satırı geçmişinizden kimlik bilgilerini içeren değişkenleri temizlemeyi göz önünde bulundurun. Değişkenlerin geçmişinizde görünmesini önlemek için, kullanıcıya kimlik bilgilerini istemek ve ortam değişkenini ayarlamak için bir komut dosyası kullanabilirsiniz.
+Komut satırını kullanarak bir ortam değişkeni ayarlarsanız, bu değişken komut satırı geçmişinizde okunabilir. Komut satırı geçmişinizden kimlik bilgilerini içeren değişkenleri temizlemeyi düşünün. Değişkenlerin geçmişinizde görünmesini engellemek için, kullanıcıdan kimlik bilgilerini almak ve ortam değişkenini ayarlamak için bir komut dosyası kullanabilirsiniz.
 
 ```
 azcopy copy [source] [destination] [flags]
@@ -61,186 +61,186 @@ azcopy copy [source] [destination] [flags]
 
 ## <a name="examples"></a>Örnekler
 
-OAuth kimlik doğrulaması kullanarak tek bir dosyayı karşıya yükleyin. AzCopy 'a henüz oturum açmadıysanız, lütfen aşağıdaki komutu çalıştırmadan önce AzCopy Login komutunu çalıştırın.
+OAuth kimlik doğrulamasını kullanarak tek bir dosya yükleyin. Henüz AzCopy'ye giriş yapmadıysanız, aşağıdaki komutu çalıştırmadan önce lütfen azcopy giriş komutunu çalıştırın.
 
-- AzCopy CP "/Path/to/dosya.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blobu]"
+- azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[konteyner]/[path/to/blob]"
 
-Yukarıdaki gibi, ancak bu kez dosya içeriğinin MD5 karmasını de hesaplar ve BLOB 'un Content-MD5 özelliği olarak kaydeder:
+Yukarıdaki gibi, ama bu kez de dosya içeriğinin MD5 karma hesap ve blob İçerik-MD5 özelliği olarak kaydedin:
 
-- AzCopy CP "/Path/to/dosya.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blob]"--put-MD5
+- azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[konteyner]/[path/to/blob]" --put-md5
 
-SAS belirteci kullanarak tek bir dosyayı karşıya yükle:
+SAS belirteci kullanarak tek bir dosya yükleme:
 
-- AzCopy CP "/Path/to/DosyaYolu" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blobu]? [SAS] "
+- azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]"
 
-SAS belirteci ve boru kullanarak tek bir dosyayı karşıya yükleme (yalnızca blok blob 'lar):
+SAS belirteci ve boru kullanarak tek bir dosya yükleyin (yalnızca blobs'ı engelleyin):
   
-- Cat "/Path/to/dosya.txt" | AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- kedi "/path/to/file.txt" | azcopy cp "https://[hesap].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]"
 
-Bir SAS belirteci kullanarak tüm dizini karşıya yükleyin:
+SAS belirteci kullanarak tüm bir dizin yükleyin:
   
-- AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" --özyinelemeli=gerçek
 
 or
 
-- AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true--put-MD5
+- azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" --özyinelemeli=true--put-md5
 
-Bir SAS belirteci ve joker karakter (*) kullanarak bir dosya kümesini karşıya yükleyin:
+SAS belirteci ve joker karakter (*) karakterleri kullanarak bir dosya kümesi yükleyin:
 
-- AzCopy CP "/path/*foo/* Bar/*. pdf" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/Directory]? [SAS] "
+- azcopy cp "/path/*foo/* bar/*.pdf" "https://[account].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]"
 
-Bir SAS belirteci ve joker karakter (*) kullanarak dosyaları ve dizinleri karşıya yükleyin:
+SAS belirteci ve joker karakter (*) karakterleri kullanarak dosya ve dizin yükleyin:
 
-- AzCopy CP "/path/*foo/* Bar *" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- azcopy cp "/path/*foo/* bar*" "https://[account].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" --özyinelemeli=gerçek
 
-OAuth kimlik doğrulaması kullanarak tek bir dosyayı indirin. AzCopy 'a henüz oturum açmadıysanız, lütfen aşağıdaki komutu çalıştırmadan önce AzCopy Login komutunu çalıştırın.
+OAuth kimlik doğrulamasını kullanarak tek bir dosyayı indirin. Henüz AzCopy'ye giriş yapmadıysanız, aşağıdaki komutu çalıştırmadan önce lütfen azcopy giriş komutunu çalıştırın.
 
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]" "/Path/to/dosya.txt"
+- azcopy cp "https://[hesap].blob.core.windows.net/[konteyner]/[path/to/blob]" "/path/to/file.txt"
 
-SAS belirteci kullanarak tek bir dosyayı indirme:
+SAS belirteci kullanarak tek bir dosyayı indirin:
 
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ""/Path/to/dosya.txt "
+- azcopy cp "https://[hesap].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]" "/path/to/file.txt"
 
-Bir SAS belirteci kullanarak tek bir dosyayı indirin ve sonra çıktıyı bir dosyaya (yalnızca blok Blobları) boru edin:
+SAS belirteci kullanarak ve çıktıyı bir dosyaya borulayarak tek bir dosyayı indirin (yalnızca blobs'u engelleyin):
   
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ">"/Path/to/dosya.txt "
+- azcopy cp "https://[hesap].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]" > "/path/to/file.txt"
 
-Bir SAS belirteci kullanarak tüm dizini indirin:
+SAS belirteci kullanarak tüm bir dizin indirin:
   
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] ""/Path/to/dir "--özyinelemeli = true
+- azcopy cp "https://[account].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" "/path/to/dir" --özyinelemeli=true
 
-URL 'lerde joker karakter (*) kullanmayla ilgili bir yer.
+URL'lerde joker karakter (*) kullanma yla ilgili bir not:
 
-Bir URL 'de joker karakter kullanmanın yalnızca iki desteklenen yolu vardır. 
+Bir URL'de joker karakter kullanmanın yalnızca iki desteklenen yolu vardır. 
 
-- Bir URL 'nin son eğik çizgiden (/) hemen sonra birini kullanabilirsiniz. Bu, bir dizindeki tüm dosyaları bir alt dizine yerleştirmeksizin doğrudan hedefe kopyalar.
+- Bir URL'nin son ileri eğik çizgi (/) sonra bir kullanabilirsiniz. Bu, dizindeki tüm dosyaları bir alt dizine yerleştirmeden doğrudan hedefe kopyalar.
 
-- URL yalnızca bir kapsayıcıya başvurduğu ve bir blob 'a değil, bir kapsayıcının adında de kullanabilirsiniz. Bu yaklaşımı, kapsayıcıların bir alt kümesinden dosyaları almak için kullanabilirsiniz.
+- URL yalnızca bir kapsayıcıya atıfta bulunduğu sürece, bir blob için değil, bir kapsayıcı adına da kullanabilirsiniz. Bu yaklaşımı, kapsayıcıların bir alt kümesinden dosya almak için kullanabilirsiniz.
 
-Bir dizinin içeriğini içeren dizinin kendisini kopyalamadan indirin.
+İçeren dizinin kendisini kopyalamadan dizinin içeriğini indirin.
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[Path/to/Folder]/*? [SAS] ""/Path/to/dir "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[konteyner]/[path/to/folder]/*? [SAS]" "/yol/to/dir"
 
-Bir depolama hesabının tamamını indirin.
+Tüm depolama hesabını indirin.
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/" "/Path/to/dir"--özyinelemeli
+- azcopy cp "https://[srcaccount].blob.core.windows.net/" "/path/to/dir" --özyinelemeli
 
-Kapsayıcı adında bir joker karakter simgesi (*) kullanarak bir depolama hesabı içindeki kapsayıcıların bir alt kümesini indirin.
+Kapsayıcı adına joker karakter simgesi (*) kullanarak depolama hesabı içindeki kapsayıcıların bir alt kümesini indirin.
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/[kapsayıcı * adı]" "/Path/to/dir"--özyinelemeli
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[konteyner*adı]" "/path/to/dir" --özyinelemeli
 
-Bir SAS belirteci kullanarak tek bir blobu başka bir bloba kopyalama.
+SAS belirteci kullanarak tek bir blob'u başka bir blob'a kopyalayın.
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[yol/to/blob]? [SAS] "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]" "https://[destaccount].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]"
 
-SAS belirtecini ve OAuth belirtecini kullanarak tek bir blobu başka bir bloba kopyalama. Kaynak hesap URL 'sinin sonunda bir SAS belirteci kullanmanız gerekir, ancak AzCopy Login komutunu kullanarak AzCopy oturumu açarsanız hedef hesaba bir tane ihtiyaç kalmaz. 
+Bir SAS belirteci ve OAuth belirteci kullanarak tek bir blob'u başka bir blob'a kopyalayın. Kaynak hesap URL'sinin sonunda bir SAS belirteci kullanmanız gerekir, ancak azcopy giriş komutunu kullanarak AzCopy'ye giriş yaptığınızda hedef hesabın adedine gerek yoktur. 
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob] "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]" "https://[destaccount].blob.core.windows.net/[konteyner]/[path/to/blob]"
 
-SAS belirteci kullanarak bir blob sanal dizinini diğerine kopyalayın:
+Bir blob sanal dizinini Bir SAS belirteci kullanarak diğerine kopyalayın:
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" "https://[destaccount].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" --özyinelemeli=gerçek
 
-Bir SAS belirteci kullanarak tüm blob kapsayıcılarını, dizinleri ve bloblarını depolama hesabından diğerine kopyalayın:
+SAS belirteci kullanarak depolama hesabından diğerine tüm blob kapları, dizinleri ve blobları kopyalayın:
 
-- AzCopy CP "https://[srcaccount]. blob. Core. Windows. net? [SAS] "" https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- azcopy cp "https://[srcaccount].blob.core.windows.net? [SAS]" "https://[destaccount].blob.core.windows.net? [SAS]" --özyinelemeli=gerçek
 
-Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3 ' den blob depolamaya tek bir nesne kopyalama. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
+Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3'ten Blob Depolama'ya tek bir nesneyi kopyalayın. İlk olarak, AWS S3 kaynağı için ortam değişkenini AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ayarlayın.
   
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- azcopy cphttps://s3.amazonaws.com/" [kova]/[nesne]" "https://[destaccount].blob.core.windows.net/[konteyner]/[path/to/blob]? [SAS]"
 
-Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin tamamını blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
+Bir erişim anahtarı ve SAS belirteci kullanarak Tüm dizini AWS S3'ten Blob Depolama'ya kopyalayın. İlk olarak, AWS S3 kaynağı için ortam değişkenini AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- azcopy cphttps://s3.amazonaws.com/" [kova]/[klasör]" "https://[destaccount].blob.core.windows.net/[konteyner]/[path/to/directory]? [SAS]" --özyinelemeli=gerçek
 
-[Folder] yer tutucusunu daha iyi anlamak için lütfen https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html başvurun.
+Lütfen [klasör] yer tutucuyu daha iyi anlamak için https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html bakın.
 
-Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
+Bir erişim anahtarı ve SAS belirteci kullanarak tüm kovaları Amazon Web Services'ten (AWS) Blob Depolama'ya kopyalayın. İlk olarak, AWS S3 kaynağı için ortam değişkenini AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- azcopy cphttps://s3.amazonaws.com/" " "https://[destaccount].blob.core.windows.net? [SAS]" --özyinelemeli=gerçek
 
-Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
+Bir erişim anahtarı ve SAS belirteci kullanarak tüm kovaları bir Amazon Web Hizmetleri (AWS) bölgesinden Blob Depolama'ya kopyalayın. İlk olarak, AWS S3 kaynağı için ortam değişkenini AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ayarlayın.
 
-- AzCopy CP "https://s3-[Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- azcopy cphttps://s3-" [region].amazonaws.com/" "https://[destaccount].blob.core.windows.net? [SAS]" --özyinelemeli=gerçek
 
-Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarına ve SAS belirtecine ihtiyacınız olacaktır. AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarladığınızdan emin olun.
+Kova adına joker karakter simgesi (*) kullanarak bir kova alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarı ve Bir SAS belirteci gerekir. AWS S3 kaynağı için ortam değişkenini AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ayarladıklarından emin olun.
 
-- AzCopy CP "https://s3.amazonaws.com/[Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- azcopy cphttps://s3.amazonaws.com/" [bucket*name]/" "https://[destaccount].blob.core.windows.net? [SAS]" --özyinelemeli=gerçek
 
 ## <a name="options"></a>Seçenekler
 
-**--BLOB türü** dize, hedefteki blob türünü tanımlar. Bu, Blobları karşıya yüklemek için ve hesaplar arasında kopyalama sırasında kullanılır (varsayılan ' Algıla '). Geçerli değerler ' Detect ', ' BlockBlob ', ' PageBlob ' ve ' AppendBlob ' değerleridir. Hesaplar arasında kopyalama yaparken, ' Algıla ' değeri AzCopy 'in hedef Blobun türünü belirlemek için kaynak Blobun türünü kullanmasına neden olur. Bir dosya karşıya yüklenirken, ' Algıla ' dosyanın dosya uzantısına bağlı olarak bir VHD veya VHDX dosyası olup olmadığını belirler. Dosya bir VHD veya VHDX dosyası ile karşılaşırsanız AzCopy dosyayı bir Sayfa Blobu olarak değerlendirir. (varsayılan "Algıla")
+**--blob tipi** dize Hedefteki blob türünü tanımlar. Bu, blob'ları yüklemek ve hesaplar arasında kopyalama yaparken kullanılır (varsayılan 'Algılama'). Geçerli değerler 'Algıla', 'BlockBlob', 'PageBlob', ve 'AppendBlob'u içerir. Hesaplar arasında kopyalama yaparken, 'Algıla' değeri AzCopy'nin hedef blob türünü belirlemek için kaynak blob türünü kullanmasına neden olur. Bir dosya yüklerken, 'Algıla' dosyanın dosya uzantısına dayalı bir VHD veya VHDX dosyası olup olmadığını belirler. Dosya bir VHD veya VHDX dosyasıe eter sayılsa, AzCopy dosyayı bir sayfa blob'u olarak ele alar. (varsayılan "Algılama")
 
-**--Block-blob-katmanlı** dize, blok bloblarını doğrudan tercih ettiğiniz [erişim katmanına](../blobs/storage-blob-storage-tiers.md) yükler. (varsayılan ' none '). Geçerli değerler ' none ', ' Hot ', ' cool ' ve ' Archive ' değerleridir. ' None ' veya katman geçirilmemişse, BLOB depolama hesabının katmanını miras alır.
+**--block-blob-tier** string Upload blok blobs doğrudan seçtiğiniz [erişim katmanına.](../blobs/storage-blob-storage-tiers.md) (varsayılan 'Yok'). Geçerli değerler 'Yok', 'Sıcak', 'Cool' ve 'Arşiv' içerir. 'Yok' veya hiçbir katman geçirilirse, blob depolama hesabının katmanını devralır.
 
-**--blok-boyut-MB** float, Azure depolama 'ya yükleme yaparken ve Azure depolama 'dan indirerek bu blok boyutunu (MIB 'de belirtilir) kullanır. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (örneğin: 0,25).
+**--block-size-mb** float Azure Depolama'ya yüklerken ve Azure Depolama'dan indirirken bu blok boyutunu (MiB'de belirtilir) kullanın. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (Örneğin: 0.25).
 
-**--Cache-Control** dize Cache-Control üst bilgisini ayarlar. İndirilmek üzere döndürüldü.
+**--önbellek denetimi** dizesi Önbellek denetimi üstbilgisini ayarlayın. İndirme tarihinde iade edildi.
 
-**--Çek uzunluğu**                         Aktarımdan sonra hedefteki bir dosyanın uzunluğunu denetleyin. Kaynak ve hedef arasında uyuşmazlık varsa, aktarım başarısız olarak işaretlenir. (varsayılan doğru)
+**--çek uzunluğu**                         Aktarımdan sonra hedefteki bir dosyanın uzunluğunu kontrol edin. Kaynak ve hedef arasında bir uyumsuzluk varsa, aktarım başarısız olarak işaretlenir. (varsayılan true)
 
-**--Check-MD5** dizesi, indirme sırasında ne kadar MD5 karmalarının doğrulanması gerektiğini belirtir. Yalnızca indirme sırasında kullanılabilir. Kullanılabilir seçenekler: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan "Failiffarklı")
+**--check-md5** dizesi İndirilirken MD5 hashes'in ne kadar kesin olarak doğrulanması gerektiğini belirtir. Yalnızca indirirken kullanılabilir. Kullanılabilir seçenekler: NoCheck, LogOnly, FailifDifferent, FailifDifferentOrMissing. (varsayılan "FailIfDifferent")
 
-**--Content-Disposition** dize, Content-Disposition üst bilgisini ayarlar. İndirilmek üzere döndürüldü.
+**--içerik-disposition** dizesi İçerik-disposition üstbilgisini ayarlayın. İndirme tarihinde iade edildi.
 
-**--Content-** Encoding dize, Content-Encoding üst bilgisini ayarlar. İndirilmek üzere döndürüldü.
+**--içerik kodlama** dizesi İçerik kodlama üstbilgisini ayarlayın. İndirme tarihinde iade edildi.
 
-**--Content-** Language string içerik-Language üst bilgisini ayarlar. İndirilmek üzere döndürüldü.
+**--içerik dili** dizesi İçerik-dil üstbilgisini ayarlayın. İndirme tarihinde iade edildi.
 
-**--Content-Type** dizesi dosyanın Içerik türünü belirtir. Tahmin yok-MIME türü anlamına gelir. İndirilmek üzere döndürüldü.
+**--içerik türü** dize dosyanın içerik türünü belirtir. No-guess-mime-type anlamına gelir. İndirme tarihinde iade edildi.
 
-**--sıkıştırmayı aç**                           İçerik kodlaması sıkıştırılmış olduklarını gösteriyorsa, indirme sırasında dosyaları otomatik olarak aç. Desteklenen içerik kodlama değerleri ' gzip ' ve ' söndür ' değerleridir. '. Gz '/'. gzip ' veya '. ZZ ' dosya uzantıları gerekli değildir, ancak varsa kaldırılacaktır.
+**--dekompresyon**                           İçerik kodlamaları sıkıştırılmış olduklarını gösteriyorsa, dosyaları indirirken otomatik olarak dekomprese edin. Desteklenen içerik kodlama değerleri 'gzip' ve 'deflate' vardır. '.gz'/'.gzip' veya '.zz' dosya uzantıları gerekli değildir, ancak varsa kaldırılır.
 
-**--exclude-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tutar. Örneğin: A; Malar Sağ
+**--öznitelik dizesini dışla (Yalnızca** Windows) Öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tut. Örneğin: A; S; R
 
-**--exclude-blob türü** dize Isteğe bağlı olarak, bloblardan veya hesaptan blob kopyalanırken hariç tutulacak blob türünü (Blockblob/Pageblob/appendblob) belirler. Bu bayrağın kullanılması, verileri Azure olmayan hizmetten hizmetten kopyalamak için geçerli değildir. Birden fazla BLOB '; ' ile ayrılmalıdır.
+**--blob tipi** dize İsteğe bağlı olarak blob türünü (BlockBlob/ PageBlob/ AppendBlob) kapsayıcıdan veya hesaptan lekeler kopyalarken hariç tutmak için belirtir. Bu bayrağın kullanımı, azure hizmeti olmayan hizmetlerden hizmete veri kopyalamak için geçerli değildir. Birden fazla blob ';' ile ayrılmalıdır.
 
-**--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
+**--exclude-path** string Kopyalanırken bu yolları hariç tut. Bu seçenek joker karakter (*) desteklemez. Göreli yol önekini denetler (Örneğin: myFolder;myFolder/subDirName/file.pdf). Hesap geçişi ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
-**--exclude-model** dize, kopyalama sırasında bu dosyaları hariç tutar. Bu seçenek joker karakterler (*) destekler
+**--exclude-desen dizesi** Kopyalanırken bu dosyaları hariç tut. Bu seçenek joker karakter destekler (*)
 
-**--takip-symlinks**                      Yerel dosya sisteminden karşıya yüklerken sembolik bağlantıları izleyin.
+**--takip-symlinks**                      Yerel dosya sisteminden yüklerken sembolik bağlantıları izleyin.
 
-**--** ---arası Isteğe bağlı olarak kaynak hedef birleşimini belirtir. Örneğin: LocalBlob, BlobLocal, LocalBlobFS.
+**--from-to** string İsteğe bağlı olarak kaynak hedef birleşimini belirtir. Örneğin: LocalBlob, BlobLocal, LocalBlobFS.
 
-**-h,--** kopyalama için yardım yardımı
+**-h, --kopyalama** için yardım
 
-**--Include-Attributes** dize (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
+**--include-öznitelikler** dizesi (yalnızca Windows) Öznitelikleri öznitelik listesiyle eşleşen dosyaları ekleyin. Örneğin: A; S; R
 
-**--include-path** dizesi kopyalama sırasında yalnızca bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF).
+**--include-path** string Kopyalama yaparken yalnızca bu yolları ekleyin. Bu seçenek joker karakter (*) desteklemez. Göreli yol önekini denetler (Örneğin: myFolder;myFolder/subDirName/file.pdf).
 
-**--Include-model** dize, kopyalama sırasında yalnızca bu dosyaları içerir. Bu seçenek joker karakterler (*) destekler. '; ' Kullanarak dosyaları ayırın.
+**--include-desen dizesi** Kopyalarken yalnızca bu dosyaları ekleyin. Bu seçenek joker karakter (*) destekler. ';' kullanarak dosyaları ayırın.
 
-**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan "BILGI")
+**--günlük düzeyi** dizesi Günlük dosyasının günlük ayrıntılılığını, kullanılabilir düzeyleri: INFO(tüm istek/yanıtlar), UYARI(yavaş yanıtlar), HATA (yalnızca başarısız istekler) ve NONE(çıkış günlüğü yok) olarak tanımlayın. (varsayılan "BİlGİ")
 
-**--meta veri** dizesi bu anahtar-değer çiftleri ile meta veri olarak Azure depolama 'Ya karşıya yükleyin.
+**--meta** veri olarak bu anahtar değer çiftleri ile Azure Depolama'ya yükleme meta veri.
 
-**--No-tahmin-MIME türü**                   AzCopy 'in, dosyanın uzantısına veya içeriğine göre içerik türünü algılamasını önler.
+**--no-guess-mime-type**                   AzCopy'nin dosyanın uzantısına veya içeriğine bağlı olarak içerik türünü algılamasını engeller.
 
-**--** bu bayrak true olarak ayarlandıysa, dizenin üzerine yazma, hedefteki çakışan dosya ve Blobların üzerine yazar. Olası değerler ' true ', ' false ', ' ifSourceNewer ' ve ' Prompt ' değerleridir. (varsayılan "true")
+**--bu** bayrak doğru ayarlanmışsa, dize üzerine çakışan dosyaları ve blobs hedef yazma. Olası değerler 'true', 'false', 'ifSourceNewer' ve 'prompt' içerir. (varsayılan "true")
 
-**--Page-blob katmanı** dizesi bu blob katmanını kullanarak sayfa blobunu Azure depolama 'ya yükler. (varsayılan "none")
+**--sayfa-blob katmanlı** string Bu blob katmanını kullanarak Azure Depolama'ya sayfa yükleme sayfası blob. (varsayılan "Yok")
 
-**--Preserve-son değiştirilme zamanı**          Yalnızca hedef dosya sistemi olduğunda kullanılabilir.
+**--koruma-son-değiştirilmiş-zaman**          Yalnızca hedef dosya sistemi olduğunda kullanılabilir.
 
-**--PUT-MD5**                             Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
+**--put-md5**                             Her dosyanın bir MD5 karma sını oluşturun ve karmayı hedef blob veya dosyanın İçerik-MD5 özelliği olarak kaydedin. (Varsayılan olarak karma oluşturulmadı.) Yalnızca yükleme yaparken kullanılabilir.
 
-**--özyinelemeli**                            Yerel dosya sisteminden karşıya yüklerken alt dizinlere yinelemeli olarak bakın.
+**--özyinelemeli**                            Yerel dosya sisteminden yükleme yaparken alt dizinlere özyinelemeli olarak bakın.
 
-**--S2S-Algıla-kaynak-değiştirildi**           Numaralandırdıktan sonra kaynağın değiştirilip değiştirilmediğini denetleyin.
+**--s2s-detect-source-changed**           Sayısallöldükten sonra kaynağın değişip değişmediğini denetleyin.
 
-**--S2S-Handle-geçersiz-Metadata** dize, geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: Excludeifgeçersiz, Failifgeçersiz, Renameifgeçersiz. (varsayılan "Excludeifgeçersiz")
+**--s2s-işlemi-geçersiz-meta veri** dizesi Geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: ExcludeIfGeçersiz, FailIfInvalid, RenameIfInvalid. (varsayılan "ExcludeIfGeçersiz")
 
-**--S2S-Preserve-Access-Tier**             Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için lütfen [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanlarını](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) inceleyin. Erişim katmanını ayarlamanın desteklenme durumlarında, lütfen s2sPreserveAccessTier = false kullanarak erişim katmanını kopyalamayı atlayın. (varsayılan doğru)
+**--s2s-koruma-erişim katmanı**             Hizmet kopyalamaya hizmet sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanı ayarlamayı desteklediğinden emin olmak için lütfen Azure Blob depolama alanına [bakın: sıcak, serin ve arşiv erişim katmanları.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) Erişim katmanı ayarlamanın desteklenmediğini zedeleme durumlarında, lütfen kopyalama erişim katmanını atlamak için s2sPreserveAccessTier=false'u kullanın. (varsayılan true)
 
-**--S2S-Preserve-Özellikler**              Hizmetten hizmete kopyalama sırasında tam özellikleri koruyun. AWS S3 ve Azure dosya için tek dosya kaynağı için liste işlemi, nesnelerin ve dosyaların tam özelliklerini döndürmez. Tam özellikleri korumak için AzCopy, nesne veya dosya başına bir ek istek göndermelidir. (varsayılan doğru)
+**--s2s-koruma-özellikleri**              Hizmet kopyalamaya hizmet sırasında tüm özellikleri koruyun. AWS S3 ve Azure Dosyası tek dosya kaynağı olmayan için liste işlemi nesnelerin ve dosyaların tüm özelliklerini döndürmez. Tüm özellikleri korumak için AzCopy'nin nesne veya dosya başına bir ek istek göndermesi gerekir. (varsayılan true)
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
-**--Cap-Mbps uint32**      Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.
+**--kap-mbps uint32**      Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.
 
-**--komut çıktısının çıkış türü** dize biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer ' text ' değeridir. (varsayılan "metin")
+**--output türü** dize Komutun çıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer 'metin'dir. (varsayılan "metin")
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

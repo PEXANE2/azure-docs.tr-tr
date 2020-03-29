@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.author: lugoldbe
 ms.openlocfilehash: 22af1f413bef0c69eb732f75fa03049140e4c7e3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964317"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Bu makalede, bir kaynak grubu, depolama hesabı ve kapsayıcı, Olay Hub 'ı ve bir Azure Veri Gezgini kümesi ve veritabanı oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Aşağıdaki içeriği `template.json`adında bir dosyaya kaydedin. Bu dosyayı kod örneğini çalıştırmak için kullanacaksınız.
+Bu makalede, bir kaynak grubu, bir depolama hesabı ve kapsayıcı, bir olay merkezi ve bir Azure Veri Gezgini kümesi ve veritabanı oluşturmak için bir Azure Kaynak Yöneticisi şablonu kullanırsınız. Aşağıdaki içeriği ada `template.json`sahip bir dosyaya kaydedin. Kod örneğini çalıştırmak için bu dosyayı kullanırsınız.
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Traffic Manager için Azure CLı örnekleri | Microsoft Docs
+title: Trafik Yöneticisi için Azure CLI Örnekleri| Microsoft Dokümanlar
 description: Azure CLI Örnekleri
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,19 +13,19 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
 ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938006"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Traffic Manager için Azure CLI örnekleri
 
-Aşağıdaki tablo, Azure CLı kullanılarak oluşturulan Traffic Manager Bash betiklerinin bağlantılarını içerir.
+Aşağıdaki tablo, Azure CLI kullanılarak oluşturulmuş Trafik Yöneticisi için bash komut dosyasına bağlantılar içerir.
 
 |Başlık  |Açıklama |
 |---------|---------|
-|[Yüksek uygulama kullanılabilirliği için birden çok bölge genelinde trafiği yönlendirme](./scripts/traffic-manager-cli-websites-high-availability.md)   |    İki App Service planı, iki Web uygulaması, bir Traffic Manager profili ve iki Traffic Manager uç noktası oluşturur.     |
+|[Yüksek uygulama kullanılabilirliği için birden fazla bölgede doğrudan trafik](./scripts/traffic-manager-cli-websites-high-availability.md)   |    İki uygulama hizmeti planı, iki web uygulaması, bir trafik yöneticisi profili ve iki trafik yöneticisi bitiş noktası oluşturur.     |
 |    |         |
 
 

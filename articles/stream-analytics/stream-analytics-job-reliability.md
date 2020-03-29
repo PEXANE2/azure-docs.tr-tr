@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics işlerinde hizmet kesintilerini önleme
-description: Bu makalede, yükseltme, Stream Analytics işleri dayanıklı hale yönergeler açıklanmaktadır.
+title: Azure Akış Analizi işlerinde hizmet kesintilerinden kaçının
+description: Bu makalede, Akış Analizi işlerinizi esnek hale getirme kılavuzu açıklanmaktadır.
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: d2d21e081b274bd985c48dac91fff5203a6b5b8a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425982"
 ---
-# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Stream Analytics işi güvenilirlik garanti sırasında hizmet güncelleştirmeleri
+# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Hizmet güncellemeleri sırasında Stream Analytics iş güvenilirliğini garanti edin
 
-Tam olarak yönetilen bir hizmet olan yeni hizmet işlevlerini ve geliştirmeleri hızlı bir hızda özelliği parçasıdır. Sonuç olarak, Stream Analytics, bir hizmet güncelleştirmesinden tek haftalık (veya daha sık) temelinde dağıtma olabilir. Ne kadarlık testi bitti ne olursa olsun yine de, var olan, çalışan bir iş sunulmasıyla bir hata nedeniyle kesilebilir sokması mümkündür. Görev açısından kritik işler çalıştırıyorsanız, bu risklerin kaçınılması gerekir. Azure 'un **[eşleştirilmiş bölge](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelini izleyerek bu riski azaltabilirsiniz. 
+Tam olarak yönetilen bir hizmet olmanın bir parçası da yeni hizmet işlevselliğini ve iyileştirmelerini hızlı bir şekilde sunabilme yeteneğidir. Sonuç olarak, Stream Analytics bir hizmet güncelleştirmesi haftalık (veya daha sık) olarak dağıtılabilir. Ne kadar sınama yapılırsa yapılsın, bir hatanın sunulması nedeniyle varolan, çalışan bir işin kopma riski vardır. Görev açısından kritik işler de yürütüyorsanız, bu risklerden kaçınılması gerekir. Azure'un **[eşleştirilmiş bölge](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelini izleyerek bu riski azaltabilirsiniz. 
 
-## <a name="how-do-azure-paired-regions-address-this-concern"></a>Azure eşleştirilmiş bölgeleri başlıklarla bu nasıl karşılayabileceği?
+## <a name="how-do-azure-paired-regions-address-this-concern"></a>Azure eşleştirilmiş bölgeler bu sorunu nasıl giderir?
 
-Stream Analytics, eşleştirilmiş bölgelerin işlerinde ayrı toplu işler üzerinde güncelleştirilir garanti eder. Sonuç olarak, olası sorunları belirlemek ve düzeltmek için güncelleştirmeler arasında yeterli zaman aralığı vardır.
+Akış Analizi, eşleştirilmiş bölgelerdeki işlerin ayrı gruplar halinde güncelleştirilmelerini garanti eder. Sonuç olarak, olası sorunları belirlemek ve bunları düzeltmek için güncelleştirmeler arasında yeterli bir zaman farkı vardır.
 
-_Orta Hindistan dışında_ (eşleştirilmiş olan bölge, Güney Hindistan, Stream Analytics durum yok), Stream Analytics için bir güncelleştirme dağıtımı, eşleştirilmiş bölgelerin kümesinde aynı anda oluşmaz. Birden çok bölgede dağıtımları **aynı gruptaki** oluşabilir **aynı anda**.
+Orta Hindistan (eşleştirilmiş bölgesi Güney Hindistan, Stream Analytics varlığı olmayan) _dışında,_ Stream Analytics'e bir güncelleştirmenin dağıtımı eşleştirilmiş bölgeler kümesinde aynı anda gerçekleşmez. **Aynı gruptaki** birden çok bölgede dağıtımlar **aynı anda**oluşabilir.
 
-Makale **[kullanılabilirlik ve eşleştirilmiş bölgelerin](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** bölgeleri halindedir en güncel bilgilere sahip.
+**[Kullanılabilirlik ve eşleştirilmiş bölgelerle](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** ilgili makale, hangi bölgelerin eşlendiğine ilişkin en güncel bilgilere sahiptir.
 
-Aynı işlerin her ikisi de eşleştirilmiş bölgelere dağıtılması önerilir. Sonra [Bu işleri](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) , beklenmeyen bir şeyler gerçekleştiğinde bildirim almak için izlemeniz gerekir. Stream Analytics bir hizmet güncelleştirmesinden sonra bu işlerden biri [başarısız durumunda](https://docs.microsoft.com/azure/stream-analytics/job-states) sonlanıyorsa, kök nedeni belirlemenize yardımcı olması için müşteri desteğiyle iletişim kurun. Ayrıca, herhangi bir aşağı akış tüketicilerinin yükünü sağlıklı iş çıktısına devreder.
+Aynı işleri her iki eşlenen bölgeye dağıtmak önerilir. Daha sonra beklenmedik bir şey olduğunda haberdar olmak için [bu işleri izlemek](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) gerekir. Bu işlerden biri, Akış Analizi hizmeti güncelleştirmesi sonrasında [Başarısız](https://docs.microsoft.com/azure/stream-analytics/job-states) durumda kalırsa, temel nedeni belirlemeye yardımcı olmak için müşteri desteğine başvurabilirsiniz. Ayrıca sağlıklı iş çıktısı için herhangi bir downstream tüketiciler üzerinde başarısız olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Stream analytics'e giriş](stream-analytics-introduction.md)
-* [Stream Analytics ile çalışmaya başlama](stream-analytics-real-time-fraud-detection.md)
+* [Akış Analizine Giriş](stream-analytics-introduction.md)
+* [Akış Analizi ile çalışmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics Yönetimi REST API Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Akış Analizi sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics yönetimi REST API referansı](https://msdn.microsoft.com/library/azure/dn835031.aspx)

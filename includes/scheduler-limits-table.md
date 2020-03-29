@@ -9,29 +9,29 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75392311"
 ---
-Aşağıdaki tabloda, Azure Scheduler 'daki önemli kotalar, sınırlar, varsayılanlar ve kısıtlamaların her biri açıklanmaktadır.
+Aşağıdaki tabloda Azure Zamanlayıcısı'ndaki ana kotalar, sınırlar, varsayılanlar ve azaltmaların her biri açıklanmaktadır.
 
-| Kaynak | Limit açıklaması |
+| Kaynak | Sınırlama açıklaması |
 | -------- | ----------------- |
-| **İş boyutu** | En büyük iş boyutu 16.000 ' dir. Bir PUT veya PATCH işlemi, bu sınırdan daha büyük bir iş boyutuyla sonuçlanırsa, 400 hatalı bir Istek durum kodu döndürülür. | 
-| **İş koleksiyonları** | Azure aboneliği başına en fazla iş koleksiyonu sayısı 200.000 ' dir. | 
-| **Koleksiyon başına iş** | Varsayılan olarak, en fazla iş sayısı, ücretsiz bir iş koleksiyonundaki beş iş ve standart iş koleksiyonundaki 50 işlerdir. İş koleksiyonundaki en fazla iş sayısını değiştirebilirsiniz. Bir iş koleksiyonundaki tüm işler, iş koleksiyonunda ayarlanan değer ile sınırlıdır. En yüksek iş kotasından daha fazla iş oluşturmayı denerseniz, istek 409 çakışma durum kodu ile başarısız olur. | 
-| **Başlangıç zamanı** | Maksimum "başlangıç saati" değeri 18 aydır. |
-| **Yinelenme aralığı** | En fazla yinelenme aralığı 18 aydır. | 
-| **Sıklık** | Varsayılan olarak, en fazla sıklık kotası, ücretsiz bir iş koleksiyonundaki bir saat ve standart iş koleksiyonundaki bir dakika olur. <p>Bir iş koleksiyonundaki en yüksek frekansı en fazla değerden düşük hale getirebilirsiniz. İş koleksiyonundaki tüm işler, iş koleksiyonunda ayarlanan değer ile sınırlıdır. İş koleksiyonundaki en yüksek sıklıkta bir iş oluşturmayı denerseniz, istek 409 çakışma durum kodu ile başarısız olur. | 
-| **Gövde boyutu** | Bir istek için en büyük gövde boyutu 8.192 karakter olur. |
-| **İstek URL 'SI boyutu** | İstek URL 'SI için en büyük boyut 2.048 karakter olur. |
-| **Üstbilgi sayısı** | Üst bilgi sayısı 50 üst bilgi. | 
-| **Toplam üst bilgi boyutu** | En büyük toplam üst bilgi boyutu 4.096 karakter. |
-| **Zaman Aşımı** | İstek zaman aşımı statiktir, diğer bir deyişle yapılandırılamaz. HTTP eylemleri için 60 saniyedir. Daha uzun süre çalışan işlemler için HTTP zaman uyumsuz protokollerini izleyin. Örneğin, hemen 202 döndürün, ancak arka planda çalışmaya devam edin. | 
-| **İş geçmişi** | İş geçmişinde depolanan en büyük yanıt gövdesi 2.048 bayttır. |
-| **İş geçmişi saklama** | İş geçmişi en fazla iki ay veya son 1.000 yürütmeler için tutulur. | 
-| **Tamamlanan ve hatalı iş bekletme** | Tamamlanan ve hatalı işler 60 gün boyunca tutulur. |
+| **İş boyutu** | Maksimum iş büyüklüğü 16.000'dir. BIR PUT veya PATCH işlemi bu sınırdan daha büyük bir iş boyutuyla sonuçlanırsa, 400 Kötü İstek durum kodu döndürülür. | 
+| **İş koleksiyonları** | Azure aboneliği başına en fazla iş koleksiyonu sayısı 200.000'dir. | 
+| **Koleksiyon başına işler** | Varsayılan olarak, en fazla iş sayısı ücretsiz bir iş koleksiyonunda beş iş ve standart bir iş koleksiyonunda 50 iştir. Bir iş koleksiyonundaki en fazla iş sayısını değiştirebilirsiniz. İş koleksiyonundaki tüm işler, iş koleksiyonunda ayarlanan değerle sınırlıdır. En yüksek iş kotası daha fazla iş oluşturmaya çalışırsanız, istek 409 Çakışma durum kodu ile başarısız olur. | 
+| **Başlama zamanı** | En fazla "başlama saati" 18 aydır. |
+| **Yineleme süresi** | Maksimum nüks süresi 18 aydır. | 
+| **Frequency** | Varsayılan olarak, maksimum sıklık kotası ücretsiz bir iş koleksiyonunda bir saat ve standart bir iş koleksiyonunda bir dakikadır. <p>Bir iş koleksiyonundaki maksimum sıklığı maksimumdan daha düşük yapabilirsiniz. İş koleksiyonundaki tüm işler, iş koleksiyonunda ayarlanan değerle sınırlıdır. İş koleksiyonundaki en yüksek frekanstan daha yüksek sıklıkta bir iş oluşturmaya çalışırsanız, istek 409 Çakışma durum koduyla başarısız olur. | 
+| **Vücut boyutu** | Bir istek için maksimum gövde boyutu 8.192 chars olduğunu. |
+| **URL boyutu isteği** | İstek URL'si için maksimum boyut 2.048 karakterdir. |
+| **Üstbilgi sayısı** | En yüksek üstbilgi sayısı 50 üstbilgidir. | 
+| **Toplam üstbilgi boyutu** | Maksimum toplam üstbilgi boyutu 4.096 karakterdir. |
+| **Zaman aşımı** | İstek zaman acısı statiktir, yani yapılandırılamaz. ve HTTP eylemleri için 60 saniyedir. Daha uzun süren işlemler için HTTP eşzamanlı protokollerini izleyin. Örneğin, hemen bir 202 döndürün, ancak arka planda çalışmaya devam edin. | 
+| **İş geçmişi** | İş geçmişinde depolanan maksimum yanıt gövdesi 2.048 bayttır. |
+| **İş geçmişi tutma** | İş geçmişi iki aya kadar veya son 1000 infaza kadar saklanır. | 
+| **Tamamlanmış ve hatalı iş tutma** | Tamamlanan ve hatalı işler 60 gün tutulur. |
 ||| 
 

@@ -1,7 +1,7 @@
 ---
 title: Dizin oluşturma sırasında yerleşik metin ve görüntü işleme
 titleSuffix: Azure Cognitive Search
-description: Veri ayıklama, doğal dil, görüntü işleme bilişsel becerileri, Azure Bilişsel Arama işlem hattındaki ham içeriğe semantik ve yapı ekler.
+description: Veri çıkarma, doğal dil, görüntü işleme bilişsel becerileri, Azure Bilişsel Arama boru hattındaham içeriğe anlamsallık ve yapı ekler.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,49 +9,49 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76933379"
 ---
-# <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Dizin oluşturma sırasında metin ve görüntü işleme için yerleşik bilişsel yetenekler (Azure Bilişsel Arama)
+# <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Dizin oluşturma sırasında metin ve görüntü işleme için yerleşik bilişsel beceriler (Azure Bilişsel Arama)
 
-Bu makalede, Azure Bilişsel Arama ile sunulan bilişsel yetenekler hakkında bilgi edinirsiniz ve içeriği ve yapıyı ayıklamak için bir beceri ekleyebilirsiniz. Bilişsel *beceri* , içeriği bir şekilde dönüştüren bir modül veya işlemdir. Genellikle, veri veya devlet yapısını çıkaran ve bu nedenle giriş verilerini anlamamızı genişlettiğini sağlayan bir bileşendir. Neredeyse her zaman çıktı metin tabanlıdır. *Beceri* , enzenginleştirme işlem hattını tanımlayan yeteneklerin koleksiyonudur. 
+Bu makalede, Azure Bilişsel Arama ile sağlanan ve içeriği ve yapıyı ayıklamak için bir beceriye dahil edebilirsiniz bilişsel beceriler hakkında bilgi edinin. *Bilişsel beceri,* içeriği bir şekilde dönüştüren bir modül veya işlemdir. Genellikle, veri ayıklar veya çıkars yapısı bir bileşenidir ve bu nedenle giriş verileri anlayışımızı genişletir. Hemen hemen her zaman, çıktı metin tabanlıdır. *Beceri,* zenginleştirme boru hattını tanımlayan beceriler topluluğudur. 
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 
 
 ## <a name="built-in-skills"></a>Yerleşik yetenekler
 
-Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle, çoğu beceri önceden eğitilen modelleri temel alır. Bu, modeli kendi eğitim verilerinizi kullanarak eğitemeyeceğiniz anlamına gelir. Aşağıdaki tabloda Microsoft tarafından sunulan yetenekler numaralandırılır ve açıklanmaktadır. 
+Çeşitli beceriler, tükettikleri veya ürettikleri şeyde esnektir. Genel olarak, çoğu beceri önceden eğitilmiş modellere dayanır, bu da modeli kendi eğitim verilerinizi kullanarak eğitemeyeceğiniz anlamına gelir. Aşağıdaki tablo, Microsoft tarafından sağlanan becerileri sıralar ve açıklar. 
 
-| İmde | Açıklama |
+| Beceri | Açıklama |
 |-------|-------------|
-|[Microsoft. yetenekler. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar.|
-| [Microsoft. yetenekler. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Bu beceri, terim yerleştirme, dil kuralları, diğer koşullara yakınlık ve dönem kaynak veride ne kadar olağandışı olduğunu temel alan önemli tümcecikleri algılamak için önceden eğitilen bir model kullanır. |
-| [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Bu beceri, hangi dilin kullanıldığını (belge başına bir dil KIMLIĞI) algılamak için önceden eğitilen bir model kullanır. Aynı metin kesimlerinde birden çok dil kullanıldığında çıktı, ağırlıklı kullanılan dilin LCıD 'si olur.|
-| [Microsoft. yetenekler. Text. Mergeskıll](cognitive-search-skill-textmerger.md) | Bir alan koleksiyonundan metni tek bir alanda birleştirir.  |
-| [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md) | Bu beceri, sabit bir kategori kümesi için varlık oluşturmak üzere önceden eğitilen bir model kullanır: kişiler, konum, kuruluş, e-postalar, URL 'Ler, tarih saat alanları. |
-| [Microsoft. yetenekler. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Bu beceri, belirli bir metinden kişisel olarak tanımlanabilir bilgileri ayıklamak için önceden eğitilen bir model kullanır. Bu beceri ayrıca metinde algılanan PII varlıklarını maskeleme için çeşitli seçenekler sunar.  |
-| [Microsoft. yetenekler. Text. Sentimentbecerisi](cognitive-search-skill-sentiment.md)  | Bu beceri, kayıt temelinde bir kayıtta olumlu veya olumsuz bir yaklaşım almak için önceden eğitilen bir model kullanır. Puan 0 ile 1 arasındadır. Bağımsız puanlar, yaklaşım algılanmadığında hem null durum hem de nötr olarak kabul edilen metin için oluşur.  |
-| [Microsoft. yetenekler. Text. Splitbeceri](cognitive-search-skill-textsplit.md) | İçeriği artımlı olarak zenginleştirmek veya genişletmek için metni sayfalara böler. |
-| [Microsoft. yetenekler. Text. Translationbeceri](cognitive-search-skill-text-translation.md) | Bu beceri, normalleştirmeyi veya yerelleştirme kullanım örnekleri için giriş metnini çeşitli dillerde dönüştürmek üzere önceden eğitilen bir model kullanır. |
-| [Microsoft. yetenekler. Vision. ımageanalysisbeceri](cognitive-search-skill-image-analysis.md) | Bu beceri bir görüntünün içeriğini tanımlamak ve bir metin açıklaması oluşturmak için bir görüntü algılama algoritması kullanır. |
-| [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md) | Optik karakter tanıma. |
-| [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md) | Filtrelemeye, varsayılan bir değere atamaya ve verileri bir koşula göre birleştirmeye izin verir.|
-| [Microsoft. yetenekler. util. Belgetextractionbeceri](cognitive-search-skill-document-extraction.md) | Zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. |
-| [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md) | Çıktıyı bir karmaşık türe eşler (bir tam ad, çok satırlı bir adres veya soyadı ve bir kişisel tanımlayıcı birleşimi için kullanılabilen çok parçalı veri türü). |
-| [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Özel bir Web API 'sine HTTP çağrısı yaparak bir AI zenginleştirme işlem hattının genişletilebilirliğini sağlar |
+|[Microsoft.Skills.Text.CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Özel, kullanıcı tarafından tanımlanan sözcük ve tümcecikler listesinden metin arar.|
+| [Microsoft.Skills.Text.KeyphraseSkill](cognitive-search-skill-keyphrases.md) | Bu beceri, terim yerleşimine, dil kurallarına, diğer terimlere yakınlığı ve terimin kaynak veriler içinde ne kadar olağandışı olduğuna bağlı olarak önemli ifadeleri algılamak için önceden eğitilmiş bir model kullanır. |
+| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Bu beceri, hangi dilin kullanıldığını (belge başına bir dil kimliği) algılamak için önceden eğitilmiş bir model kullanır. Aynı metin segmentleri içinde birden çok dil kullanıldığında, çıktı ağırlıklı olarak kullanılan dilin LCID'sidir.|
+| [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Alanlar koleksiyonundan gelen metni tek bir alanda birleştirir.  |
+| [Microsoft.Skills.Text.EntityTanıma Beceri](cognitive-search-skill-entity-recognition.md) | Bu beceri, belirli kategoriler kümesi için varlıklar oluşturmak için önceden eğitilmiş bir model kullanır: kişiler, konum, kuruluş, e-postalar, URL'ler, tarih alanları. |
+| [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Bu beceri, belirli bir metinden kişisel olarak tanımlanabilir bilgileri ayıklamak için önceden eğitilmiş bir model kullanır. Bu beceri, metinde algılanan KIŞISEL bilgiler varlıklarını maskeleme için çeşitli seçenekler de sunar.  |
+| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Bu beceri, kayıt bazında olumlu veya olumsuz duygular elde etmek için önceden eğitilmiş bir model kullanır. Skor 0 ile 1 arasındadır. Nötr puanları, hem algılanamadığı zaman hem de nötr olarak kabul edilen metin için null durum için oluşur.  |
+| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | İçeriği artımlı olarak zenginleştirebilmeniz veya zenginleştirebilmeniz için metni sayfalara böler. |
+| [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md) | Bu beceri, giriş metnini normalleştirme veya yerelleştirme kullanım örnekleri için çeşitli dillere çevirmek için önceden eğitilmiş bir model kullanır. |
+| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Bu beceri, görüntünün içeriğini tanımlamak ve metin açıklaması oluşturmak için bir görüntü algılama algoritması kullanır. |
+| [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optik karakter tanıma. |
+| [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md) | Filtreleme, varsayılan değer atama ve bir koşula göre verileri birleştirme sağlar.|
+| [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Zenginleştirme ardışık alanı içindeki bir dosyadan içerik ayıklar. |
+| [Microsoft.Skills.Util.ShaperBeceri](cognitive-search-skill-shaper.md) | Çıktıyı karmaşık bir türe eşler (tam ad, çok satırlı adres veya soyadı ve kişisel tanımlayıcının birleşimi için kullanılabilecek çok parçalı veri türü.) |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Özel bir Web API'sine HTTP çağrısı yaparak bir AI zenginleştirme boru hattının genişletilebilirliğini sağlar |
 
 
-[Özel bir yetenek](cognitive-search-custom-skill-web-api.md)oluşturma hakkında yönergeler için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md) ve [örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md).
+Özel bir [beceri](cognitive-search-custom-skill-web-api.md)oluşturma kılavuzu için, [bkz.](cognitive-search-custom-skill-interface.md) [Example: Creating a custom skill for AI enrichment](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Özel yetenekler arabirim tanımı](cognitive-search-custom-skill-interface.md)
-+ [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Özel Beceriler arayüz tanımı](cognitive-search-custom-skill-interface.md)
++ [Öğretici: AI ile zenginleştirilmiş indeksleme](cognitive-search-tutorial-blob.md)

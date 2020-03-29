@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Mobile Center ile Gerçek Kullanıcı Ölçümleri-Azure Traffic Manager
-description: Gerçek Kullanıcı Ölçümleri Traffic Manager göndermek için Visual Studio Mobile Center kullanarak geliştirilmiş mobil uygulamanızı ayarlama
+title: Visual Studio Mobile Center ile Gerçek Kullanıcı Ölçümleri - Azure Trafik Yöneticisi
+description: Gerçek Kullanıcı Ölçümlerini Trafik Yöneticisine göndermek için Visual Studio Mobile Center'ı kullanarak geliştirilen mobil uygulamanızı ayarlayın
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -14,54 +14,54 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 3106334e1fb3e3000cbd09e00e413b34a1b55e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939179"
 ---
-# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center ile Traffic Manager Gerçek Kullanıcı Ölçümleri gönderme
+# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center ile Gerçek Kullanıcı Ölçümleri Trafik Yöneticisine Nasıl Gönderilir?
 
-Visual Studio Mobile Center kullanarak geliştirilmiş mobil uygulamanızı, adımları izleyerek Traffic Manager Gerçek Kullanıcı Ölçümleri göndermek için ayarlayabilirsiniz:
+Visual Studio Mobile Center kullanarak geliştirilen mobil uygulamanızı, Aşağıdaki adımları izleyerek Trafik Yöneticisi'ne Gerçek Kullanıcı Ölçümleri göndermek için ayarlayabilirsiniz:
 
 >[!NOTE]
-> Şu anda, Traffic Manager 'a Gerçek Kullanıcı Ölçümleri gönderilmesi yalnızca Android için desteklenir.
+> Şu anda, Gerçek Kullanıcı Ölçümlerini Trafik yöneticisine göndermek yalnızca Android için desteklenir.
 
-Gerçek Kullanıcı Ölçümleri yapılandırmak için bir anahtar edinmeniz ve uygulamanızı RUM paketiyle birlikte yapmanız gerekir.
+Gerçek Kullanıcı Ölçümlerini yapılandırmak için bir anahtar edinmeniz ve RUM paketiyle uygulamanızı enstrümanlamanız gerekir.
 
-## <a name="step-1-obtain-a-key"></a>1\. Adım: anahtar alma
+## <a name="step-1-obtain-a-key"></a>Adım 1: Bir anahtar edinin
     
-İstemci uygulamanızdan Traffic Manager alıp gönderdiğiniz ölçümler, Gerçek Kullanıcı Ölçümleri (RUM) anahtarı olarak adlandırılan benzersiz bir dize kullanılarak hizmet tarafından tanımlanır. Azure portal, bir REST API veya PowerShell/CLı arabirimlerini kullanarak bir RUM anahtarı alabilirsiniz.
+Müşteri uygulamanızdan aldığınız ve Trafik Yöneticisi'ne gönderdiğiniz ölçümler, gerçek kullanıcı ölçümleri (RUM) Anahtarı adı verilen benzersiz bir dize kullanılarak servis tarafından tanımlanır. Azure portalını, REST API'sini kullanarak veya PowerShell / CLI arabirimlerini kullanarak bir RUM anahtarı alabilirsiniz.
 
-Aşağıdaki yordamı kullanarak Azure portal kullanarak RUM anahtarını elde etmek için:
-1. Bir tarayıcıdan Azure portal oturum açın. Henüz bir hesabınız yoksa, ücretsiz bir aylık deneme sürümü için kaydolabilirsiniz.
-2. Portalın arama çubuğunda, değiştirmek istediğiniz Traffic Manager profili adını arayın ve ardından görüntülenen sonuçlarda Traffic Manager profiline tıklayın.
-3. Traffic Manager profili sayfasında, **Ayarlar**altında **gerçek Kullanıcı ölçümleri** ' a tıklayın.
-4. Yeni bir RUM anahtarı oluşturmak için **anahtar oluştur** ' a tıklayın.
+Aşağıdaki yordamı kullanarak Azure portalını kullanarak RUM Anahtarı'nı elde etmek için:
+1. Bir tarayıcıdan Azure portalında oturum açın. Henüz bir hesabınız yoksa, bir aylık ücretsiz denemeye kaydolabilirsiniz.
+2. Portalın arama çubuğunda, değiştirmek istediğiniz Traffic Manager profili adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
+3. Trafik Yöneticisi profil sayfasında, **Ayarlar**altında **Gerçek Kullanıcı Ölçümleri'ni** tıklatın.
+4. Yeni bir RUM Anahtarı oluşturmak için **Oluştur Tuşu'na** tıklayın.
         
-   ![Gerçek Kullanıcı Ölçümleri anahtar oluştur](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Gerçek Kullanıcı Ölçümleri oluşturma anahtarı](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Şekil 1: anahtar oluşturmayı Gerçek Kullanıcı Ölçümleri**
+   **Şekil 1: Gerçek Kullanıcı Ölçümleri anahtar üretimi**
 
-5. Sayfada, oluşturulan RUM anahtarı ve HTML sayfanıza katıştırılması gereken bir JavaScript kod parçacığı görüntülenir.
+5. Sayfada oluşturulan RUM Anahtarı ve HTML sayfanıza katıştırılması gereken bir JavaScript kod parçacığı görüntülenir.
  
-   ![Gerçek Kullanıcı Ölçümleri anahtarı için JavaScript kodu](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
+   ![Gerçek Kullanıcı Ölçümleri anahtarı için Javascript kodu](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **Şekil 2: anahtar ve ölçüm JavaScript Gerçek Kullanıcı Ölçümleri**
+   **Şekil 2: Gerçek Kullanıcı Ölçümleri Anahtar ve Ölçüm JavaScript**
  
-6. RUM anahtarını kopyalamak için **Kopyala** düğmesine tıklayın. 
+6. RUM Anahtarını kopyalamak için **Kopyala** düğmesini tıklatın. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2\. Adım: uygulamanızı Mobile Center SDK 'nın RUM paketiyle birlikte Işaretleme
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Adım 2: Mobil Merkezi SDK RUM paketi ile uygulama enstrüman
 
-Visual Studio Mobile Center 'a yeni başladıysanız, [Web sitesini](https://mobile.azure.com)ziyaret edin. SDK tümleştirmesi hakkında ayrıntılı yönergeler için bkz. [Android SDK kullanmaya](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)başlama.
+Visual Studio Mobile Center'da yeniyseniz, [web sitesini](https://mobile.azure.com)ziyaret edin. SDK entegrasyonu hakkında ayrıntılı talimatlar için Android [SDK ile başlarken](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)bakın.
 
-Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
+Gerçek Kullanıcı Ölçümlerini kullanmak için aşağıdaki yordamı tamamlayın:
 
-1.  SDK 'Yı projeye ekleyin
+1.  Projeye SDK ekle
 
-    ATM RUM SDK 'sının önizlemesi sırasında, paket deposuna açık bir başvuru yapmanız gerekir.
+    ATM RUM SDK önizlemesi sırasında, paket deposuna açıkça başvurmanız gerekir.
 
-    **App/Build. Gradle** dosyasında aşağıdaki satırları ekleyin:
+    **Uygulama/build.gradle** dosyanızda aşağıdaki satırları ekleyin:
 
     ```groovy
     repositories {
@@ -70,7 +70,7 @@ Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
         }
     }
     ```
-    **App/Build. Gradle** dosyasında aşağıdaki satırları ekleyin:
+    **Uygulama/build.gradle** dosyanızda aşağıdaki satırları ekleyin:
 
     ```groovy
     dependencies {
@@ -80,16 +80,16 @@ Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
     }
     ```
 
-2. SDK 'Yı başlatma
+2. SDK'yı başlatın
 
-    Uygulamanızın ana etkinlik sınıfını açın ve aşağıdaki içeri aktarma deyimlerini ekleyin:
+    Uygulamanızın ana etkinlik sınıfını açın ve aşağıdaki alma bildirimlerini ekleyin:
 
     ```java
     import com.microsoft.azure.mobile.MobileCenter;
     import com.microsoft.azure.mobile.rum.RealUserMeasurements;
     ```
 
-    Aynı dosyada `onCreate` geri aramayı arayın ve aşağıdaki kodu ekleyin:
+    Aynı dosyada `onCreate` geri arama arayın ve aşağıdaki kodu ekleyin:
 
     ```java
     RealUserMeasurements.setRumKey("<Your RUM Key>");
@@ -97,10 +97,10 @@ Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Gerçek Kullanıcı ölçümleri](traffic-manager-rum-overview.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager nasıl çalıştığını](traffic-manager-overview.md) öğrenin
+- [Gerçek Kullanıcı Ölçümleri](traffic-manager-rum-overview.md) hakkında daha fazla bilgi edinin
+- [Trafik Yöneticisi'nin nasıl çalıştığını](traffic-manager-overview.md) öğrenin
 - [Mobile Center](https://docs.microsoft.com/mobile-center/) hakkında daha fazla bilgi edinin
-- Mobile Center 'a [kaydolun](https://mobile.azure.com)
-- Traffic Manager tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
+- Mobil Merkez'e [kaydolun](https://mobile.azure.com)
+- Trafik Yöneticisi tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
+- Trafik Yöneticisi profilini nasıl [oluşturabilirsiniz](traffic-manager-create-profile.md) öğrenin
 

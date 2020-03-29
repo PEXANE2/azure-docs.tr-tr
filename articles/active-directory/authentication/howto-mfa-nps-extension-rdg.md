@@ -1,6 +1,6 @@
 ---
-title: RDG 'YI Azure MFA NPS Uzantısı ile tümleştirme-Azure Active Directory
-description: Uzak Masaüstü Ağ Geçidi altyapınızı Azure mfa'yı Microsoft Azure için ağ ilkesi sunucusu uzantısı kullanarak tümleştirin
+title: RDG'yi Azure MFA NPS uzantısı ile tümleştir - Azure Etkin Dizini
+description: Microsoft Azure için Ağ Politikası Sunucusu uzantısını kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı Azure MFA ile tümleştirin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,378 +12,378 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425469"
 ---
-# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ İlkesi Sunucusu (NPS) uzantısı ve Azure AD kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ İlkesi Sunucusu (NPS) uzantısı ve Azure AD'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
-Bu makalede ayrıntıları Uzak Masaüstü Ağ Geçidi altyapınızı Azure multi-Factor Authentication (MFA) ile tümleştirmek için Microsoft Azure için ağ ilkesi sunucusu (NPS) uzantısını kullanarak sağlar.
+Bu makalede, Microsoft Azure için Ağ İlkesi Sunucusu (NPS) uzantısını kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı Azure Çok Faktörlü Kimlik Doğrulaması (MFA) ile tümleştirmek için ayrıntılar verilmektedir.
 
-Ağ İlkesi Sunucusu (NPS) uzantısı için Azure, müşterilerin korumanıza olanak tanır. uzak kimlik denetimi içeri arama kullanıcı hizmeti (RADIUS) istemci kimlik doğrulaması Azure'ı kullanarak bulut tabanlı [multi-Factor Authentication (MFA)](multi-factor-authentication.md). Bu çözüm, kullanıcı oturum açmaları ve işlemleri için ikinci bir güvenlik katmanı eklemek için iki aşamalı doğrulama sağlar.
+Azure için Ağ İlkesi Sunucusu (NPS) uzantısı, müşterilerin Azure'un bulut tabanlı [Çok Faktörlü Kimlik Doğrulaması (MFA)](multi-factor-authentication.md)kullanarak Uzaktan Kimlik Doğrulama Çevirmeli Kullanıcı Hizmeti (RADIUS) istemci kimlik doğrulamasını korumasına olanak tanır. Bu çözüm, kullanıcı oturum açma ve hareketlere ikinci bir güvenlik katmanı eklemek için iki aşamalı doğrulama sağlar.
 
-Bu makalede, Azure için NPS uzantısı kullanarak NPS altyapı ile Azure mfa'yı tümleştirmek için adım adım yönergeler sağlar. Bu, bir Uzak Masaüstü Ağ Geçidi oturum açmaya çalışan kullanıcılar için güvenli doğrulama sağlar.
+Bu makalede, Azure için NPS uzantısını kullanarak NPS altyapısını Azure MFA ile tümleştirmek için adım adım yönergeler sağlanmaktadır. Bu, Uzak Masaüstü Ağ Geçidi'nde oturum açmaya çalışan kullanıcılar için güvenli doğrulama sağlar.
 
 > [!NOTE]
-> Bu makale MFA sunucu dağıtımlarıyla kullanılmamalıdır ve yalnızca Azure MFA (bulut tabanlı) dağıtımlarıyla birlikte kullanılmalıdır.
+> Bu makale MFA Server dağıtımlarında kullanılmamalı ve yalnızca Azure MFA (Bulut tabanlı) dağıtımlarıyla kullanılmalıdır.
 
-Ağ İlkesi ve erişim Hizmetleri'ni (NPS) kuruluşlar yeteneği aşağıdakileri sağlar:
+Ağ İlkesi ve Erişim Hizmetleri (NPS), kuruluşlara aşağıdakileri yapma olanağı sağlar:
 
-* Yönetim Merkezi konumlarını ve denetim kimin bağlanabilir belirterek ağ isteklerinin gün bağlantıların ne zaman izin verilir, bağlantıları süresini ve istemcilerin bağlanın ve benzeri güvenlik düzeyini tanımlar. Bu ilkelerin her VPN ya da Uzak Masaüstü (RD) Ağ Geçidi sunucusuna belirtmek yerine, bu ilkeler, bir kez merkezi bir konumda belirtilebilir. RADIUS protokolü, merkezi kimlik doğrulaması, yetkilendirme ve hesap işlemleri (AAA) sağlar.
-* Kurmak ve cihazları Kısıtlanmamış veya kısıtlanmış ağ kaynaklarına erişim izni olup olmadığını belirleyen Ağ Erişim Koruması (NAP) istemci sistem durumu ilkeleri uygular.
-* Kimlik doğrulama ve yetkilendirme erişim için 802.1 zorlamak için sağladıkları x özellikli kablosuz erişim noktaları ve Ethernet anahtarları.
+* Kimlerin bağlanabileceğini, günlük bağlantılara hangi saatlerde izin verilebileni, bağlantıların süresini ve istemcilerin bağlanmak için kullanması gereken güvenlik düzeyini ve benzeri bilgileri belirterek ağ isteklerinin yönetimi ve denetimi için merkezi konumları tanımlayın. Bu ilkeleri her VPN veya Uzak Masaüstü (RD) Ağ Geçidi sunucusunda belirtmek yerine, bu ilkeler merkezi bir konumda bir kez belirtilebilir. RADIUS protokolü merkezi Kimlik Doğrulama, Yetkilendirme ve Muhasebe (AAA) sağlar.
+* Aygıtlara ağ kaynaklarına sınırsız veya sınırlı erişim verilip verilmeyeceğini belirleyen Ağ Erişim Koruması (NAP) istemci sistem durumu ilkelerini belirleyin ve uygulayın.
+* 802.1x özellikli kablosuz erişim noktalarına ve Ethernet anahtarlarına erişmek için kimlik doğrulama ve yetkilendirmeyi zorlamak için bir araç sağlayın.
 
-Genellikle kuruluşlar VPN ilkelerinin yönetimini basitleştirmek ve merkezileştirmek için NPS (RADIUS) kullanır. Ancak, çoğu kuruluş ayrıca NPS RD Masaüstü Bağlantısı Yetkilendirme İlkeleri (RD Cap'leri) yönetimini merkezden gerçekleştirin ve kolaylaştırmak için kullanır.
+Genellikle, kuruluşlar VPN ilkelerinin yönetimini basitleştirmek ve merkezileştirmek için NPS (RADIUS) kullanır. Ancak, birçok kuruluş RD Masaüstü Bağlantı Yetkilendirme İlkeleri'nin (RD CAP'leri) yönetimini basitleştirmek ve merkezileştirmek için NPS'yi de kullanır.
 
-Kuruluşlar, NPS güvenliğini ve yüksek düzeyde uyumluluk sağlamak için Azure MFA ile de tümleştirebilirsiniz. Bu kullanıcılar oturum açmak için Uzak Masaüstü Ağ geçidi için iki aşamalı doğrulama oluşturmanızı sağlar. Kullanıcıların erişim verilmesi için kendi denetimde kullanıcının sahip olduğu bilgilerle birlikte, kullanıcı adı/parola bileşimini sağlamanız gerekir. Bu bilgileri güvenilir ve kolayca yinelenen, bir cep telefonu numarası, telefona numarası, uygulamayı bir mobil cihaz ve benzeri gibi. RDG Şu anda 2FA için Microsoft Authenticator uygulama yöntemlerinden telefon aramasını ve anında iletme bildirimlerini desteklemektedir. Desteklenen kimlik doğrulama yöntemleri hakkında daha fazla bilgi için, bkz [kullanıcılarınızın kimlik doğrulama yöntemlerini kullanma belirleme](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Kuruluşlar, güvenliği artırmak ve yüksek düzeyde uyumluluk sağlamak için NPS'yi Azure MFA ile tümleştirebilir. Bu, kullanıcıların Uzak Masaüstü Ağ Geçidi'nde oturum açmak için iki aşamalı doğrulama oluşturmalarını sağlamaya yardımcı olur. Kullanıcılara erişim hakkı verebilmesi için, kullanıcı adı/parola birleşimini kullanıcının kontrolündeki bilgilerle birlikte sağlamaları gerekir. Bu bilgilere güvenilmeli ve cep telefonu numarası, sabit hat numarası, mobil cihazdaki uygulama gibi kolayca çoğaltılamaz. RDG şu anda 2FA için Microsoft kimlik doğrulama uygulaması yöntemlerinden gelen telefon görüşmesi ve anında iletme bildirimlerini destekler. Desteklenen kimlik doğrulama yöntemleri hakkında daha fazla bilgi için, [kullanıcılarınızın kullanabileceği kimlik doğrulama yöntemlerini belirleyin](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)bölümüne bakın.
 
-Azure için NPS uzantısı kullanıma açılmadan önce yapılandırın ve ayrı bir MFA sunucusu şirket içi ortamda içindeaçıklandığıgibikorumaktümleşikNPSveAzuremfa'yıortamlarıiçinikiaşamalıdoğrulamayıuygulamaayarlarınışahsenyapmasınıistedinizmüşterilervardı.[ Uzak Masaüstü Ağ geçidi ve Azure multi-Factor Authentication sunucusu RADIUS kullanan](howto-mfaserver-nps-rdg.md).
+Azure için NPS uzantısı kullanılabilirliğinden önce, tümleşik NPS ve Azure MFA ortamları için iki aşamalı doğrulama uygulamak isteyen [müşterilerin, RADIUS'u kullanarak Uzak Masaüstü Ağ Geçidi ve Azure Çok Faktörlü Kimlik Doğrulama Sunucusu'nda](howto-mfaserver-nps-rdg.md)belgelenen şirket içi ortamda ayrı bir MFA Server'ı yapılandırmaları ve bakımını yapmak zorunda kaldılar.
 
-Azure için NPS uzantısı kullanılabilirliğini artık kuruluşların güvenli RADIUS istemci kimlik doğrulaması için şirket içi tabanlı MFA çözümünü veya bir bulut tabanlı MFA çözümünü dağıtmak için seçmenizi sağlar.
+Azure için NPS uzantısı kullanılabilirliği artık kuruluşlara RADIUS istemci kimlik doğrulamasını güvence altına almak için şirket içi tabanlı bir MFA çözümü veya bulut tabanlı MFA çözümünün dağıtılması seçeneği sunuyor.
 
-## <a name="authentication-flow"></a>Kimlik doğrulama akışı
+## <a name="authentication-flow"></a>Kimlik Doğrulama Akışı
 
-Kullanıcıların Uzak Masaüstü Ağ Geçidi aracılığıyla ağ kaynaklarına erişim verilmesi için bir RD Bağlantı Yetkilendirme İlkesi (RD CAP) ve bir RD kaynak yetkilendirme ilkesi (RD RAP) belirtilen koşulları karşılaması gerekir. RD CAP kimin RD ağ geçitlerine bağlanmak için yetkili belirtin. Uzak Masaüstü veya kullanıcı RD Ağ geçidi üzerinden bağlanmasına izin verilen uzaktan uygulamaları gibi ağ kaynaklarına RD RAP belirtin.
+Kullanıcılara Uzak Masaüstü Ağ Geçidi aracılığıyla ağ kaynaklarına erişim hakkı verilebilmek için, bir RD Bağlantı Yetkilendirme İlkesi (RD CAP) ve bir RD Kaynak Yetkilendirme İlkesi 'nde (RD RAP) belirtilen koşulları karşılamaları gerekir. RD AP'leri, RD Ağ Geçitleri'ne bağlanmayetkisinin kim olduğunu belirtir. RD RAP'leri, kullanıcının RD Ağ Geçidi üzerinden bağlanmasına izin verilen uzak masaüstü veya uzak uygulamalar gibi ağ kaynaklarını belirtir.
 
-RD Ağ geçidi için RD Cap'leri bir merkezi ilke deposunu kullanmak üzere yapılandırılabilir. RD Ağ Geçidi üzerinde işlendikçe RD RAP bir merkezi ilke kullanamazsınız. Merkezi ilke deposu olarak hizmet veren başka bir NPS sunucusunun RADIUS istemcisi için RD Cap'leri merkezi ilke deposu kullanmak üzere yapılandırılmış bir RD Ağ Geçidi örneğidir.
+RD Ağ Geçidi, RD AP'leri için merkezi bir ilke deposu kullanacak şekilde yapılandırılabilir. RD RAP'leri, RD Ağ Geçidi'nde işlendiği için merkezi bir ilke kullanamaz. RD AP'leri için merkezi bir ilke deposu kullanmak üzere yapılandırılan bir RD Ağ Geçidi örneği, merkezi ilke deposu olarak hizmet veren başka bir NPS sunucusunun RADIUS istemcisidir.
 
-Azure için NPS uzantısı NPS ve Uzak Masaüstü Ağ geçidi ile tümleştirildiğinde, başarılı kimlik doğrulaması akışı aşağıdaki gibidir:
+Azure için NPS uzantısı NPS ve Uzak Masaüstü Ağ Geçidi ile tümleşik olduğunda, başarılı kimlik doğrulama akışı aşağıdaki gibidir:
 
-1. Uzak Masaüstü Ağ Geçidi sunucusu, Uzak Masaüstü oturumu gibi bir kaynağa bağlanmak için bir Uzak Masaüstü kullanıcı kimlik doğrulama isteği alır. Bir RADIUS istemcisi işlevi gören, Uzak Masaüstü Ağ Geçidi sunucusu, RADIUS erişim isteğini ileti isteği dönüştürür ve NPS uzantısı, yüklü olduğu, RADIUS (NPS'yi) sunucusuna ileti gönderir.
-1. Kullanıcı adı ve parola birleşimini Active Directory'de doğrulanır ve kullanıcının kimliği doğrulanır.
-1. NPS bağlantı isteği ve ağ ilkelerinde belirtilen tüm koşullar karşılanıyorsa (örneğin, zaman gün veya grubun üyelik kısıtlamaları), bir istek için ikincil kimlik doğrulaması ile Azure MFA NPS uzantısı tetikler.
-1. Azure MFA, Azure AD ile iletişim kurar, kullanıcının ayrıntılarını alır ve desteklenen bir yöntemle ikincil kimlik doğrulaması gerçekleştirir.
-1. MFA testini başarılı olduktan sonra Azure MFA NPS uzantısı sonucu iletişim kurar.
-1. Uzantının yüklü, NPS sunucusunun bir RADIUS Erişim Kabul iletisi RD CAP ilkesi için Uzak Masaüstü Ağ Geçidi sunucusuna gönderir.
-1. Kullanıcı, RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim izni verilir.
+1. Uzak Masaüstü Ağ Geçidi sunucusu, uzak masaüstü oturumu gibi bir kaynağa bağlanmak için uzak bir masaüstü kullanıcısından kimlik doğrulama isteği alır. RADIUS istemcisi olarak hareket eden Uzak Masaüstü Ağ Geçidi sunucusu isteği RADIUS Erişim İsteği iletisine dönüştürür ve iletiyi NPS uzantısının yüklü olduğu RADIUS (NPS) sunucusuna gönderir.
+1. Kullanıcı adı ve parola birleşimi Active Directory'de doğrulanır ve kullanıcının kimliği doğrulanır.
+1. NPS Bağlantı İsteği ve Ağ İlkeleri'nde belirtilen tüm koşullar karşılanırsa (örneğin, günün saati veya grup üyeliği kısıtlamaları), NPS uzantısı Azure MFA ile ikincil kimlik doğrulaması isteğini tetikler.
+1. Azure MFA, Azure AD ile iletişim kurar, kullanıcının ayrıntılarını alır ve desteklenen yöntemleri kullanarak ikincil kimlik doğrulamasını gerçekleştirir.
+1. MFA mücadelesinin başarısı üzerine, Azure MFA sonucu NPS uzantısına iletir.
+1. Uzantın yüklü olduğu NPS sunucusu, UZAK Masaüstü Ağ Geçidi sunucusuna RD CAP ilkesi için RADIUS Erişim Kabul iletisi gönderir.
+1. Kullanıcıya RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim izni verilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu bölümde, Uzak Masaüstü Ağ geçidi ile Azure mfa'yı tümleştirme önce gerekli önkoşulları açıklanmaktadır. Başlamadan önce aşağıdaki önkoşulların yerinde olması gerekir.  
+Bu bölümde, Azure MFA'yı Uzak Masaüstü Ağ Geçidi ile tümleştirmeden önce gereken ön koşullar ayrıntılı olarak açıklanmaktadır. Başlamadan önce, aşağıdaki ön koşullara sahip olmalısınız.  
 
 * Uzak Masaüstü Hizmetleri (RDS) altyapısı
-* Azure MFA lisans
+* Azure MFA Lisansı
 * Windows Server yazılımı
-* Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rol
-* Azure Active Directory, şirket içi Active Directory ile eşitlenmiş
-* Azure Active Directory GUID kimliği
+* Ağ Politikası ve Erişim Hizmetleri (NPS) rolü
+* Azure Etkin Dizini şirket içi Active Directory ile senkronize edildi
+* Azure Etkin Dizin GUID Kimliği
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Uzak Masaüstü Hizmetleri (RDS) altyapısı
 
-Çalışan bir Uzak Masaüstü Hizmetleri (RDS) altyapısının yerinde olması gerekir. Bunu yapmazsanız, aşağıdaki hızlı başlangıç şablonunu kullanarak bu altyapıyı Azure 'da hızlıca oluşturabilirsiniz: [Uzak Masaüstü oturumu koleksiyonu dağıtımı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
+Çalışan bir Uzak Masaüstü Hizmetleri (RDS) altyapınız olmalıdır. Bunu yapmazsanız, aşağıdaki hızlı başlangıç şablonunu kullanarak azure'da bu altyapıyı hızla oluşturabilirsiniz: [Uzak Masaüstü Oturum Koleksiyonu dağıtımı oluşturun.](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)
 
-El ile test etmek için hızlı bir şekilde şirket içi RDS altyapı oluşturmak istiyorsanız, bir dağıtmak için adımları izleyin.
-**Daha fazla bilgi edinin**: [RDS 'yi Azure hızlı başlangıç](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) ve [temel RDS altyapı dağıtımı](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ile dağıtın.
+Test amacıyla şirket içi RDS altyapısını el ile hızlı bir şekilde oluşturmak istiyorsanız, bir tanesini dağıtmak için aşağıdaki adımları izleyin.
+**Daha fazla bilgi :** Azure hızlı başlatma ve Temel RDS altyapı dağıtımı ile [RDS'yi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure) [dağıtın.](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure)
 
-### <a name="azure-mfa-license"></a>Azure MFA lisans
+### <a name="azure-mfa-license"></a>Azure MFA Lisansı
 
-Gerekli bir lisans Azure MFA için hangi Azure AD Premium ya da dahil diğer grupları kullanılabilir. Tüketim tabanlı lisans gibi kullanıcı başına veya kimlik doğrulaması lisans başına Azure mfa NPS uzantısı ile uyumlu değildir. Daha fazla bilgi için [Azure multi-Factor Authentication'ı alma](concept-mfa-licensing.md). Sınama amacıyla bir deneme aboneliğini kullanabilirsiniz.
+Gerekli olan, Azure AD Premium veya onu içeren diğer paketler aracılığıyla kullanılabilen Azure MFA lisansıdır. Azure MFA'nın kullanıcı başına veya kimlik doğrulama lisansları gibi tüketim etütleri NPS uzantısı ile uyumlu değildir. Daha fazla bilgi için Azure [Çok Faktörlü Kimlik Doğrulama'yı nasıl edinirebilirsiniz.](concept-mfa-licensing.md) Sınama amacıyla deneme aboneliği kullanabilirsiniz.
 
 ### <a name="windows-server-software"></a>Windows Server yazılımı
 
-NPS uzantısı, Windows Server 2008 R2 SP1 gerektirir veya üstü yüklü NPS rol hizmetine sahip. Bu bölümdeki tüm adımlar, Windows Server 2016'yı kullanarak gerçekleştirildi.
+NPS uzantısı, NPS rol hizmeti yüklü Windows Server 2008 R2 SP1 veya üzeri gerektirir. Bu bölümdeki tüm adımlar Windows Server 2016 kullanılarak gerçekleştirilmiştir.
 
-### <a name="network-policy-and-access-services-nps-role"></a>Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rol
+### <a name="network-policy-and-access-services-nps-role"></a>Ağ Politikası ve Erişim Hizmetleri (NPS) rolü
 
-NPS rol hizmetinin işlevselliğinin yanı sıra ağ erişim ilkesi sistem sağlığı hizmeti RADIUS sunucusu ve istemci sağlar. Bu rol altyapınızda en az iki bilgisayara yüklenmesi gerekir: Uzak Masaüstü Ağ geçidi ve başka bir üye sunucu veya etki alanı denetleyicisi. Varsayılan olarak, zaten Uzak Masaüstü Ağ geçidi olarak yapılandırılmış bilgisayarda rolüdür.  Ayrıca NPS rolü üzerinde en az bir etki alanı denetleyicisi veya üye sunucu gibi başka bir bilgisayar üzerinde yüklemeniz gerekir.
+NPS rol hizmeti RADIUS sunucu ve istemci işlevselliğinin yanı sıra Ağ Erişim Politikası sağlık hizmeti sağlar. Bu rol altyapınızdaki en az iki bilgisayara yüklenmelidir: Uzak Masaüstü Ağ Geçidi ve başka bir üye sunucu veya etki alanı denetleyicisi. Varsayılan olarak, rol zaten Uzak Masaüstü Ağ Geçidi olarak yapılandırılan bilgisayarda mevcuttur.  NPS rolünü en azından etki alanı denetleyicisi veya üye sunucu gibi başka bir bilgisayara yüklemeniz gerekir.
 
-NPS rolü yükleme hakkında bilgi için Windows Server 2012 veya daha eski hizmet bkz [NAP sistem durumu ilkesi sunucusu yükleme](https://technet.microsoft.com/library/dd296890.aspx). NPS, bir etki alanı denetleyicisinde NPS'yi yüklemek için öneri de dahil olmak üzere en iyi bir açıklaması için bkz. [NPS için en iyi](https://technet.microsoft.com/library/cc771746).
+NPS rol hizmeti Windows Server 2012 veya daha büyük yükleme hakkında bilgi [için](https://technet.microsoft.com/library/dd296890.aspx)bkz. NPS'yi bir etki alanı denetleyicisine yükleme önerisi de dahil olmak üzere NPS için en iyi uygulamaların açıklaması [için](https://technet.microsoft.com/library/cc771746)Bkz.
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory, şirket içi Active Directory ile eşitlenmiş
+### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Etkin Dizini şirket içi Active Directory ile senkronize edildi
 
-NPS uzantısını kullanmak için şirket içi kullanıcıları Azure AD ile eşitlenen ve MFA için etkinleştirilmiş olmalıdır. Bu bölümde, şirket içi kullanıcıların AD Connect kullanarak Azure AD ile eşitlenir varsayılır. Azure AD hakkında bilgi için bkz [şirket içi dizinlerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
+NPS uzantısını kullanmak için şirket içi kullanıcıların Azure AD ile senkronize edilmesi ve MFA için etkinleştirilmesi gerekir. Bu bölümde, şirket içi kullanıcıların AD Connect kullanılarak Azure AD ile senkronize edildigini varsayar. Azure AD bağlantısı hakkında bilgi için bkz. Şirket [içi dizinlerinizi Azure Etkin Dizini ile tümleştirin.](../hybrid/whatis-hybrid-identity.md)
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID kimliği
+### <a name="azure-active-directory-guid-id"></a>Azure Etkin Dizin GUID Kimliği
 
-NPS uzantısını yüklemek için Azure AD'nin GUID bilmeniz gerekir. Azure AD GUID'i bulmak için yönergeler aşağıda verilmiştir.
+NPS uzantısını yüklemek için Azure AD'nin GUID'ini bilmeniz gerekir. Azure REKLAM'ın GUID'ini bulma yönergeleri aşağıda verilmiştir.
 
-## <a name="configure-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulamasını yapılandırma
+## <a name="configure-multi-factor-authentication"></a>Çok Faktörlü Kimlik Doğrulamayı Yapılandırma
 
-Bu bölümde, Azure mfa'yı Uzak Masaüstü Ağ geçidi ile tümleştirmeye yönelik yönergeler sağlar. Yönetici olarak, kullanıcılar şirket içinde çok faktörlü cihazlar ya da uygulamaları kaydedebilmek için önce Azure MFA hizmetini yapılandırmanız gerekir.
+Bu bölümde, Azure MFA'nın Uzak Masaüstü Ağ Geçidi ile tümleştirilmesi için yönergeler sağlanmaktadır. Yönetici olarak, kullanıcıların çok faktörlü aygıtlarını veya uygulamalarını kendi kendilerine kaydedebilmeleri için Azure MFA hizmetini yapılandırmanız gerekir.
 
-Bağlantısındaki [bulutta Azure multi Factor Authentication kullanmaya başlama](howto-mfa-getstarted.md) , Azure AD kullanıcıları için mfa'yı etkinleştirmek için.
+Azure AD kullanıcılarınız için MFA'yı etkinleştirmek için [buluttaki Azure Çok Faktörlü Kimlik Doğrulaması ile başlarken](howto-mfa-getstarted.md) ki adımları izleyin.
 
-### <a name="configure-accounts-for-two-step-verification"></a>İki aşamalı doğrulama için hesaplarını yapılandırma
+### <a name="configure-accounts-for-two-step-verification"></a>İki aşamalı doğrulama için hesapları yapılandırma
 
-Bir hesap için mfa'yı etkinleştirildikten sonra ikinci kimlik doğrulama faktörü için kullanın ve iki aşamalı doğrulama kullanarak kimlik doğrulaması güvenilir bir cihaz başarılı bir şekilde yapılandırmadığınız sürece MFA İlkesi tarafından yönetilen kaynaklara oturum açamazsınız.
+MFA için bir hesap etkinleştirildikten sonra, ikinci kimlik doğrulama faktörü için kullanılacak güvenilir bir aygıtı başarıyla yapılandırıp iki aşamalı doğrulama kullanarak kimlik doğrulaması yapılandırana kadar MFA ilkesi tarafından yönetilen kaynaklarda oturum açamazsınız.
 
-Bağlantısındaki [Azure multi-Factor Authentication benim için ne demektir?](../user-help/multi-factor-authentication-end-user.md) anlamak ve cihazlarınızı MFA için kullanıcı hesabınız ile düzgün şekilde yapılandırmak için.
+Azure Çok [Faktörlü Kimlik Doğrulama'daki](../user-help/multi-factor-authentication-end-user.md) adımları izleyin?
 
-## <a name="install-and-configure-nps-extension"></a>Yükleme ve NPS uzantısı yapılandırma
+## <a name="install-and-configure-nps-extension"></a>NPS uzantısını yükleme ve yapılandırma
 
-Bu bölümde, Uzak Masaüstü Ağ Geçidi istemci kimlik doğrulaması için Azure mfa'yı kullanmak için RDS altyapı yapılandırma için yönergeler sağlar.
+Bu bölümde, UZAK Masaüstü Ağ Geçidi ile istemci kimlik doğrulaması için Azure MFA'yı kullanacak RDS altyapısını yapılandırmak için yönergeler sağlanmaktadır.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID kimliği Al
+### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID Kimliğini Edinin
 
-NPS uzantısı yapılandırma işleminin bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgileri ve Azure AD Kimliğini sağlamanız gerekir. Aşağıdaki adımlar Kiracı kimliğini almak nasıl gösterir
+NPS uzantısı yapılandırmasının bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgileri ve Azure AD Kimliği sağlamanız gerekir. Aşağıdaki adımlar, kiracı kimliğini nasıl alacağınızı gösterir.
 
-1. Oturum [Azure portalında](https://portal.azure.com) Azure kiracısının genel Yöneticisi olarak.
-1. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
-1. **Özellikler**’i seçin.
-1. Özellikler dikey penceresinde, dizin Kimliği'nin yanındaki tıklayın **kopyalama** kimliği panoya kopyalamak için aşağıda gösterildiği gibi simgesi.
+1. Azure kiracısının genel yöneticisi olarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure portalı menüsünde **Azure Active Directory'yi**seçin veya herhangi bir sayfadan **Azure Active Directory'yi** arayın ve seçin.
+1. **Özellikleri**seçin.
+1. Özellikler bıyıkta, Dizin Kimliğinin yanında, kimliği panoya kopyalamak için aşağıda gösterildiği gibi **Kopyala** simgesini tıklatın.
 
-   ![Azure portal dizin KIMLIĞI alınıyor](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portalından Dizin Kimliği alma](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
 
-NPS uzantısı, Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rolü yüklü bir sunucuya yükleyin. Tasarımınızı için RADIUS sunucusu olarak işlev görür.
+Ağ İlkesi ve Erişim Hizmetleri (NPS) rolünün yüklü olduğu bir sunucuya NPS uzantısını yükleyin. Bu, tasarımınız için RADIUS sunucusu olarak işlev görür.
 
 > [!Important]
-> Uzak Masaüstü Ağ Geçidi sunucunuzda NPS uzantısı yüklemeyin emin olun.
+> NPS uzantısını Uzak Masaüstü Ağ Geçidi sunucunuza yüklemediğinizden emin olun.
 >
 
-1. İndirme [NPS uzantısı](https://aka.ms/npsmfa).
-1. Yürütülebilir kurulum dosyası (NpsExtnForAzureMfaInstaller.exe) NPS sunucusuna kopyalayın.
-1. NPS sunucusunda çift **NpsExtnForAzureMfaInstaller.exe**. İstenirse, tıklayın **çalıştırma**.
-1. NPS uzantısı için Azure mfa'yı Kurulum iletişim kutusunda, yazılım lisans koşullarını gözden geçirin. kontrol **lisans hüküm ve koşulları kabul ediyorum**, tıklatıp **yükleme**.
-1. NPS uzantısı için Azure mfa'yı Kurulum iletişim kutusunda **Kapat**.
+1. [NPS uzantısını](https://aka.ms/npsmfa)indirin.
+1. Kurulum yürütülebilir dosyasını (NpsExtnForAzureMfaInstaller.exe) NPS sunucusuna kopyalayın.
+1. NPS sunucusunda, **NpsExtnForAzureMfaInstaller.exe'yi**çift tıklatın. İstenirse, **Çalıştır'ı**tıklatın.
+1. Azure MFA Kurulumu için NPS Uzantısı iletişim kutusunda, yazılım lisans koşullarını gözden geçirin, **lisans hüküm ve koşullarını kabul ediyorum**seçeneğini işaretleyin ve **Yükle'yi**tıklatın.
+1. Azure MFA Kurulumu iletişim kutusu için NPS Uzantısı'nda **Kapat'ı**tıklatın.
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Bir PowerShell betiğini kullanarak NPS uzantısı ile kullanım için sertifikaları yapılandırma
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>PowerShell komut dosyası kullanarak NPS uzantısı ile kullanılacak sertifikaları yapılandırma
 
-Ardından, iletişimlerin güvenliğini sağlamak ve güvencesi sağlamak için NPS uzantısı tarafından sertifikalar kullanmak için yapılandırmanız gerekir. NPS bileşenleri otomatik olarak imzalanan bir sertifika kullanmak için NPS ile yapılandıran bir Windows PowerShell Betiği içerir.
+Ardından, güvenli iletişim ve güvence sağlamak için Sertifikaları NPS uzantısı tarafından kullanılmak üzere yapılandırmanız gerekir. NPS bileşenleri, NPS ile kullanılmak üzere kendi imzalı bir sertifikayı yapılandıran bir Windows PowerShell komut dosyası içerir.
 
-Komut aşağıdaki eylemleri gerçekleştirir:
+Komut dosyası aşağıdaki eylemleri gerçekleştirir:
 
-* Otomatik olarak imzalanan bir sertifika oluşturur
-* Hizmet sorumlusu Azure AD için sertifikanın ortak anahtarını ilişkilendirir
-* Sertifika yerel makine deposu
-* Sertifikanın özel anahtarı ağ kullanıcı erişimi verir
-* Ağ İlkesi Sunucusu hizmetini yeniden başlatır
+* Kendi imzalı sertifika oluşturur
+* Azure AD'de ortak sertifika anahtarını hizmet sorumlusuna ilişkilendirin
+* Sertifikayı yerel makine mağazasında saklar
+* Sertifikanın ağ kullanıcısı için özel anahtarına erişim sağlar
+* Ağ Politikası Sunucusu hizmetini yeniden başlatır
 
-Kendi sertifikalarını kullanmak istiyorsanız, Azure AD'de hizmet sorumlusu sertifikanıza ortak anahtarı ilişkilendirmek vb. gerekir.
+Kendi sertifikalarınızı kullanmak istiyorsanız, sertifikanızın ortak anahtarını Azure AD'deki hizmet ilkesiyle ilişkilendirmeniz gerekir.
 
-Betiği kullanmak için Azure AD yönetici kimlik bilgilerinizi ve daha önce kopyaladığınız Azure AD Kiracı Kimliğinizi uzantısı sağlar. Betik, NPS uzantısı yüklü olduğu her NPS sunucusunda çalıştırın. Ardından şunları yapın:
+Komut dosyasını kullanmak için uzantıyı Azure AD Yöneticisi kimlik bilgileriniz ve daha önce kopyaladığınız Azure AD kiracı kimliğiyle birlikte sağlayın. Komut dosyasını, NPS uzantısını yüklediğiniz her NPS sunucusunda çalıştırın. Ardından şunları yapın:
 
-1. Bir yönetici Windows PowerShell istemi açın.
-1. PowerShell isteminde `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`basın **ENTER**.
-1. Tür `.\AzureMfaNpsExtnConfigSetup.ps1`basın **ENTER**. Betik, Azure Active Directory PowerShell Modülü yüklü olup olmadığını denetler. Yüklü değilse, komut sizin için modülünü yükler.
+1. Yönetimwindows PowerShell istemini açın.
+1. PowerShell komut isteminde `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` **ENTER**yazın ve enter tuşuna basın.
+1. Yazın `.\AzureMfaNpsExtnConfigSetup.ps1`ve **ENTER**tuşuna basın. Komut dosyası, Azure Active Directory PowerShell modülünün yüklü olup olmadığını denetler. Yüklenmezse, komut dosyası modülü sizin için yükler.
 
-   ![Azure AD PowerShell 'de AzureMfaNpsExtnConfigSetup. ps1 çalıştırma](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Azure'da AzureMfaNpsExtnConfigSetup.ps1'i Azure AD PowerShell'de çalıştırma](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. PowerShell modülünün yükleme betiği doğruladıktan sonra Azure Active Directory PowerShell modülü iletişim kutusunu görüntüler. İletişim kutusunda, Azure AD yönetici kimlik bilgilerini ve parolayı girin ve tıklayın **oturum**.
+1. Komut dosyası PowerShell modülünün yüklenmesini doğruladıktan sonra Azure Active Directory PowerShell modülü iletişim kutusunu görüntüler. İletişim kutusuna Azure AD yönetici kimlik bilgilerinizi ve parolanızı girin ve **Oturum Aç'ı**tıklatın.
 
-   ![PowerShell 'de Azure AD kimlik doğrulaması](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![PowerShell'de Azure AD'ye kimlik doğrulama](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. İstendiğinde, pano 'ya kopyaladığınız Dizin KIMLIĞINI daha önce yapıştırın ve **ENTER**tuşuna basın.
+1. İstendiğinde, daha önce kopyaladığınız Dizin Kimliğini panoya yapıştırın ve **ENTER**tuşuna basın.
 
-   ![PowerShell 'de dizin KIMLIĞI yerleştirme](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![PowerShell'e Dizin Kimliği gir](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-1. Betik, otomatik olarak imzalanan bir sertifika oluşturur ve başka yapılandırma değişiklikleri gerçekleştirir. Çıktı, görüntüyü aşağıda gösterildiği gibi olması gerekir.
+1. Komut dosyası kendi imzalı bir sertifika oluşturur ve diğer yapılandırma değişikliklerini gerçekleştirir. Çıktı aşağıda gösterilen resim gibi olmalıdır.
 
-   ![Otomatik olarak imzalanan sertifikayı gösteren PowerShell çıkışı](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![PowerShell'in kendi imzalı sertifikasını gösteren çıktısı](./media/howto-mfa-nps-extension-rdg/image7.png)
 
-## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Uzak Masaüstü Ağ Geçidi üzerinde NPS bileşenlerini yapılandırma
+## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Uzak Masaüstü Ağ Geçidi'nde NPS bileşenlerini yapılandırma
 
-Bu bölümde, Uzak Masaüstü Ağ Geçidi bağlantısı Yetkilendirme İlkeleri ve diğer RADIUS ayarlarını yapılandırın.
+Bu bölümde, Uzak Masaüstü Ağ Geçidi bağlantı yetkilendirme ilkelerini ve diğer RADIUS ayarlarını yapılandırırsınız.
 
-Kimlik doğrulama akışı, Uzak Masaüstü Ağ Geçidi ile NPS uzantısının yüklendiği NPS sunucusu arasında RADIUS iletilerinin değiştirilmesini gerektirir. Başka bir deyişle, Uzak Masaüstü Ağ Geçidi hem NPS uzantısı, yüklü olduğu bir NPS sunucusunun RADIUS istemci ayarları yapılandırmalısınız.
+Kimlik doğrulama akışı, RADIUS iletilerinin Uzak Masaüstü Ağ Geçidi ile NPS uzantısının yüklü olduğu NPS sunucusu arasında değiş tokuş edilmesini gerektirir. Bu, RADIUS istemci ayarlarını hem Uzak Masaüstü Ağ Geçidi'nde hem de NPS uzantısının yüklü olduğu NPS sunucusunda yapılandırmanız gerektiği anlamına gelir.
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Uzak Masaüstü Ağ Geçidi bağlantısı yetkilendirme ilkeleri merkezi deposunu kullanmak üzere yapılandırma
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Merkezi depokullanmak için Uzak Masaüstü Ağ Geçidi bağlantı yetkilendirme ilkelerini yapılandırma
 
-Uzak Masaüstü Bağlantısı Yetkilendirme İlkeleri (RD Cap'leri) bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanmak için koşulları belirtin. RD CAP yerel olarak depolanabilir (varsayılan) ya da depolanabilir NPS çalıştıran merkezi bir RD CAP Deposu içinde. RDS ile Azure mfa'yı tümleştirmesini yapılandırmak için merkezi bir depo kullanımını belirtmeniz gerekir.
+Uzak Masaüstü bağlantı yetkilendirme ilkeleri (RD AP'leri), Uzak Masaüstü Ağ Geçidi sunucusuna bağlanma gereksinimlerini belirtir. RD AP'leri yerel olarak (varsayılan) depolanabilir veya NPS çalıştıran merkezi bir RD CAP deposunda depolanabilir. Azure MFA'nın RDS ile tümleştirilmesini yapılandırmak için merkezi bir mağazanın kullanımını belirtmeniz gerekir.
 
-1. RD Ağ Geçidi sunucusunda açın **Sunucu Yöneticisi**.
-1. Menüsünde **Araçları**, işaret **Uzak Masaüstü Hizmetleri**ve ardından **Uzak Masaüstü Ağ Geçidi Yöneticisi**.
-1. RD Ağ Geçidi Yöneticisi'nde sağ  **\[sunucu adı\] (yerel)** , tıklatıp **özellikleri**.
-1. Özellikler iletişim kutusunda, seçmek **RD CAP Store** sekmesi.
-1. RD CAP Store sekmesinde **NPS çalıştıran merkezi sunucu**. 
-1. İçinde **NPS çalıştıran sunucu için bir ad veya IP adresi girin** alan, NPS uzantısını yüklediğiniz sunucunun IP adresini veya sunucu adını yazın.
+1. RD Ağ Geçidi sunucusunda **Server Manager'ı**açın.
+1. Menüde **Araçlar'ı**tıklatın, **Uzak Masaüstü Hizmetleri'ni**işaret edin ve ardından Uzak Masaüstü Ağ **Geçidi Yöneticisi'ni**tıklatın.
+1. RD Ağ Geçidi Yöneticisi'nde ** \[Sunucu\] Adı (Yerel)** seçeneğini sağ tıklatın ve **Özellikler'i**tıklatın.
+1. Özellikler iletişim kutusunda **RD CAP Store** sekmesini seçin.
+1. RD CAP Store sekmesinde, **NPS çalıştıran Merkezi sunucuyu**seçin. 
+1. NPS alanını **çalıştıran sunucunun ad veya IP adresi girin'de, NPS** uzantısını yüklediğiniz sunucunun IP adresini veya sunucu adını yazın.
 
-   ![NPS sunucunuzun adını veya IP adresini girin](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![NPS Sunucunuzun adını veya IP Adresini girin](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. **Ekle**'ye tıklayın.
-1. İçinde **paylaşılan gizli diziyi** iletişim kutusunda, paylaşılan gizlilik girin ve ardından **Tamam**. Bu paylaşılan gizli dizinin kaydedin ve kaydı güvenli bir şekilde saklayın emin olun.
+1. **Ekle**’ye tıklayın.
+1. Paylaşılan **Gizli** iletişim kutusuna paylaşılan bir gizli girin ve ardından **Tamam'ı**tıklatın. Bu paylaşılan sırrı kaydettiğinizi ve kaydı güvenli bir şekilde sakladığınızı sağlayın.
 
    >[!NOTE]
-   >Paylaşılan gizliliğin, RADIUS sunucuları ve istemciler arasında güven oluşturmak için kullanılır. Uzun ve karmaşık bir parola oluşturun.
+   >Paylaşılan gizli RADIUS sunucuları ve istemcileri arasında güven kurmak için kullanılır. Uzun ve karmaşık bir sır oluşturun.
    >
 
-   ![Güven sağlamak için paylaşılan gizlilik oluşturma](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Güven oluşturmak için paylaşılan bir sır oluşturma](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. **Tamam**’a tıklayarak iletişim kutusunu kapatın.
 
-### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Uzak Masaüstü Ağ Geçidi NPS'ye RADIUS zaman aşımı değerini yapılandırma
+### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Uzak Masaüstü Ağ Geçidi NPS'de RADIUS zaman aşım değerini yapılandırma
 
-Kullanıcıların kimlik bilgilerini doğrulamak için zaman olduğundan emin olmak için iki aşamalı doğrulamanın, yanıtlar almasına ve yanıt RADIUS iletiler için RADIUS zaman aşımı değeri ayarlamak gereklidir.
+Kullanıcıların kimlik bilgilerini doğrulamak, iki aşamalı doğrulama gerçekleştirmek, yanıt almak ve RADIUS iletilerine yanıt vermek için zaman olduğundan emin olmak için RADIUS zaman aşma değerini ayarlamak gerekir.
 
-1. RD Ağ Geçidi sunucusunda, Sunucu Yöneticisi'ni açın. Menüsünde **Araçları**ve ardından **ağ ilkesi sunucusu**.
-1. İçinde **NPS (yerel)** genişletin **RADIUS istemcileri ve sunucuları**seçip **uzak RADIUS sunucu**.
+1. RD Ağ Geçidi sunucusunda Server Manager'ı açın. Menüde **Araçlar'ı**tıklatın ve ardından **Ağ İlkesi Sunucusu'nu**tıklatın.
+1. **NPS (Yerel)** konsolunda RADIUS **İstemcileri ve Sunucularını**genişletin ve **Uzak RADIUS Sunucusu'nu**seçin.
 
-   ![Uzak RADIUS sunucusunu gösteren ağ Ilkesi sunucusu yönetim konsolu](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![Remote RADIUS Server'ı gösteren Ağ İlkesi Sunucusu yönetim konsolu](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. Ayrıntılar bölmesinde **TS Ağ Geçidi sunucusu GRUBUNU**.
+1. Ayrıntılar bölmesinde, **TS GATEWAY SERVER GROUP'u**çift tıklatın.
 
    >[!NOTE]
-   >NPS ilkelerinin merkezi sunucu yapılandırıldığında bu RADIUS sunucu grubu oluşturuldu. RD Ağ Geçidi grubunda birden daha fazla olması durumunda bu sunucuya veya sunucu grubu RADIUS iletileri iletir.
+   >Bu RADIUS Server Group, NPS ilkeleri için merkezi sunucuyu yapılandırdığınızda oluşturulmuştur. RD Ağ Geçidi, RADIUS iletilerini, grupta birden fazla ysa, bu sunucuya veya sunucu grubuna ileter.
    >
 
-1. İçinde **TS Ağ Geçidi sunucusu grubu özellikleri** iletişim kutusunda, RD Cap'leri depolamak ve ardından yapılandırılmış NPS sunucusu adı ve IP adresi seçin **Düzenle**.
+1. **TS GATEWAY SERVER GROUP Properties** iletişim kutusunda, RD AP'lerini depolamak için yapılandırdığınız NPS sunucusunun IP adresini veya adını seçin ve ardından **Edit'i**tıklatın.
 
-   ![Daha önce yapılandırılan NPS sunucusunun IP veya adını seçin](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![Daha önce yapılandırılan NPS Sunucusunun IP veya adını seçin](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. İçinde **RADIUS sunucusu Düzenle** iletişim kutusunda **Yük Dengeleme** sekmesi.
-1. İçinde **Yük Dengeleme** sekmesinde **istek kabul etmeden önce yanıt almadan saniye sayısını bırakılan** alan, varsayılan değer 3 ila 30 ila 60 saniye arasında bir değer olarak değiştirin.
-1. İçinde **sunucu kullanılamaz olarak tanımlandığında istekler arasındaki saniye sayısını** alanında, önceki adımda belirtilen değerden büyük veya ona eşit bir değer 30 saniye varsayılan değeri değiştirin.
+1. RADIUS **Server'ı Düzenleme** iletişim kutusunda **Yük Dengeleme** sekmesini seçin.
+1. Yük **Dengeleme** sekmesinde, **istek düşürülmeden önce yanıtsız saniye sayısı** olarak kabul edilir, varsayılan değeri 3'ten 30 ile 60 saniye arasında bir değere değiştirin.
+1. Sunucu **nun kullanılamayan alan olarak tanımlandığında istekler arasındaki saniye sayısında,** varsayılan değeri 30 saniyeyi önceki adımda belirttiğiniz değere eşit veya daha büyük bir değere değiştirin.
 
-   ![Yük Dengeleme sekmesinde RADIUS sunucusu zaman aşımı ayarlarını düzenleyin](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![Yük dengeleme sekmesinde Radius Server zaman sonu ayarlarını düzenleme](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. Tıklayın **Tamam** iletişim kutularını kapatmak için iki kez.
+1. İletişim kutularını kapatmak için Iki kez **Tamam'ı** tıklatın.
 
-### <a name="verify-connection-request-policies"></a>Bağlantı isteği ilkeleri doğrulayın
+### <a name="verify-connection-request-policies"></a>Bağlantı İstek İlkelerini Doğrula
 
-RD Ağ Geçidi bağlantısı Yetkilendirme İlkeleri için bir merkezi ilke deposunu kullanmak üzere yapılandırdığınızda, varsayılan olarak, RD Ağ Geçidi UÇ istekleri NPS sunucusuna iletmek için yapılandırılır. NPS sunucusu ile Azure mfa'yı uzantısı yüklü, RADIUS erişim isteğini işler. Aşağıdaki adımlar varsayılan bağlantı isteği ilkesi nasıl gösterir.  
+Varsayılan olarak, bağlantı yetkilendirme ilkeleri için merkezi bir ilke deposu kullanacak şekilde RD Ağ Geçidi'ni yapılandırdığınızda, RD Ağ Geçidi CAP isteklerini NPS sunucusuna iletecek şekilde yapılandırılır. Azure MFA uzantısı yüklü NPS sunucusu, RADIUS erişim isteğini işler. Aşağıdaki adımlar, varsayılan bağlantı isteği ilkesini nasıl doğrulayabileceğinizi gösterir.  
 
-1. NPS (yerel) konsolunda, RD Ağ Geçidi üzerinde genişletin **ilkeleri**seçip **bağlantı isteği ilkeleri**.
-1. Çift **TS Ağ Geçidi kimlik doğrulama İlkesi**.
-1. İçinde **TS Ağ Geçidi kimlik doğrulama İlkesi Özellikleri** iletişim kutusu, tıklayın **ayarları** sekmesi.
-1. Üzerinde **ayarları** iletme, bağlantı isteği altında sekmesini **kimlik doğrulaması**. RADIUS istemcisi, kimlik doğrulama istekleri iletmek için yapılandırılır.
+1. RD Ağ Geçidi'nde, NPS (Yerel) konsolunda, **İlkeler'i**genişletin ve **Bağlantı İstek İlkeleri'ni**seçin.
+1. **TS GATEWAY YETKILENDIRME POLİtİkASI'nı**çift tıklatın.
+1. **TS GATEWAY YETKILENDIRME POLİtİkASI özellikleri** iletişim kutusunda **Ayarlar** sekmesini tıklatın.
+1. **Ayarlar** sekmesinde, Bağlantı İsteğini İleten'in altında **Kimlik Doğrulama'yı**tıklatın. RADIUS istemcisi kimlik doğrulama isteklerini iletmek için yapılandırılır.
 
-   ![Sunucu grubunu belirten kimlik doğrulama ayarlarını yapılandırın](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![Sunucu grubunu belirten Kimlik Doğrulama Ayarlarını Yapılandırma](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. Tıklayın **iptal**.
+1. **İptal'i**tıklatın.
 
 >[!NOTE]
-> Bağlantı isteği ilkesi oluşturma hakkında daha fazla bilgi için, [bağlantı isteği ilkelerini](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) aynı şekilde yapılandırma makalesini inceleyin. 
+> Bir bağlantı isteği ilkesi oluşturma hakkında daha fazla bilgi için makaleye bakın, aynı için [bağlantı isteği ilkeleri](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) belgeleri yapılandırmak. 
 
-## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS uzantısı, yüklü olduğu sunucuda NPS yapılandırma
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS uzantısının yüklendiği sunucuda NPS'yi yapılandırma
 
-NPS uzantısı, yüklü olduğu bir NPS sunucusu ile NPS sunucu Uzak Masaüstü Ağ Geçidi üzerinde RADIUS mesaj alışverişi gerekir. Bu ileti değişim etkinleştirmek için NPS uzantısı Hizmeti'nin yüklendiği sunucuda NPS bileşenleri yapılandırmanız gerekir.
+NPS uzantısıyüklü NPS sunucusu uzak masaüstü ağ geçidinde NPS sunucusu ile RADIUS iletileri alışverişi gerekir. Bu ileti alışverişini etkinleştirmek için, NPS uzantı hizmetinin yüklendiği sunucudaki NPS bileşenlerini yapılandırmanız gerekir.
 
-### <a name="register-server-in-active-directory"></a>Sunucusu Active Directory'de Kaydettir
+### <a name="register-server-in-active-directory"></a>Aktif Dizine Sunucu Kaydet
 
-Bu senaryoda düzgün çalışması için NPS sunucusunun Active Directory'de kayıtlı olması gerekir.
+Bu senaryoda düzgün çalışabilmek için NPS sunucusunun Active Directory'de kaydedilmesi gerekir.
 
-1. NPS sunucusunda açın **Sunucu Yöneticisi**.
-1. Sunucu Yöneticisi'nde **Araçları**ve ardından **ağ ilkesi sunucusu**.
-1. Sağ tıklayın ağ ilkesi sunucusu konsolunda **NPS (yerel)** ve ardından **Active Directory'de kayıt sunucusu**.
-1. Tıklayın **Tamam** iki kez.
+1. NPS sunucusunda **Server Manager'ı**açın.
+1. Server Manager'da **Araçlar'ı**tıklatın ve ardından **Ağ İlkesi Sunucusu'na**tıklayın.
+1. Network Policy Server konsolunda **NPS (Yerel) düğmesine**sağ tıklayın ve ardından **Active Directory'de Sunucuyu Kaydet'e**tıklayın.
+1. **Tamam'ı** iki kez tıklatın.
 
-   ![NPS sunucusunu Active Directory kaydetme](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![NPS sunucusunu Active Directory'de kaydedin](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-1. Konsolunu sonraki yordam için açık bırakın.
+1. Bir sonraki yordam için konsolu açık bırakın.
 
-### <a name="create-and-configure-radius-client"></a>Oluşturma ve RADIUS istemci yapılandırma
+### <a name="create-and-configure-radius-client"></a>RADIUS istemcisi oluşturma ve yapılandırma
 
-Uzak Masaüstü Ağ Geçidi NPS sunucusunun RADIUS istemcisi olarak yapılandırılması gerekir.
+Uzak Masaüstü Ağ Geçidi'nin NPS sunucusuna RADIUS istemcisi olarak yapılandırılması gerekir.
 
-1. NPS uzantısı yüklü olduğu, buna NPS sunucusunda **NPS (yerel)** konsolunda, sağ **RADIUS istemcileri** tıklatıp **yeni**.
+1. NPS uzantısının yüklü olduğu NPS sunucusunda, **NPS (Yerel)** konsolunda **RADIUS İstemleri'ni** sağ tıklatın ve **Yeni'yi**tıklatın.
 
-   ![NPS konsolunda yeni bir RADIUS Istemcisi oluşturma](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![NPS konsolunda Yeni RADIUS İstemci oluşturma](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. İçinde **yeni RADIUS istemcisi** iletişim kutusunda, gibi kolay bir ad verin _ağ geçidi_ve IP adresi ya da Uzak Masaüstü Ağ Geçidi sunucusunun DNS adı.
-1. İçinde **paylaşılan gizlilik** ve **paylaşılan gizliliği onayla** alanları önceden kullanmış olduğunuz aynı parolayı girin.
+1. Yeni **RADIUS İstemci** iletişim kutusunda, _Ağ Geçidi_ve Uzak Masaüstü Ağ Geçidi sunucusunun IP adresi veya DNS adı gibi kolay bir ad sağlayın.
+1. Paylaşılan **gizli** ve Paylaşılan gizli alanları **onayla,** daha önce kullandığınız aynı sırrı girin.
 
-   ![Kolay bir ad ve IP veya DNS adresi yapılandırın](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Dostu bir adı ve IP veya DNS adresini yapılandırma](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. Tıklayın **Tamam** yeni RADIUS istemcisi iletişim kutusunu kapatın.
+1. Yeni RADIUS İstemci iletişim kutusunu kapatmak için **Tamam'ı** tıklatın.
 
-### <a name="configure-network-policy"></a>Ağ İlkesi yapılandırma
+### <a name="configure-network-policy"></a>Ağ İlkesi'ni Yapılandırma
 
-NPS sunucusu ile Azure mfa'yı uzantısı atanmış merkezi ilke deposu bağlantı yetkilendirme ilkesi (CAP) için olduğunu hatırlayın. Bu nedenle, bir büyük harf geçerli bağlantı isteklerini yetkilendirmek için NPS sunucusuna uygulamak gerekir.  
+Azure MFA uzantılı NPS sunucusunun Bağlantı Yetkilendirme İlkesi (CAP) için belirlenmiş merkezi ilke deposu olduğunu hatırlayın. Bu nedenle, geçerli bağlantı isteklerini yetkilendirmek için NPS sunucusunda bir CAP uygulamanız gerekir.  
 
-1. NPS sunucusunda, NPS (yerel) konsolunu açın, **ilkeleri**, tıklatıp **ağ ilkeleri**.
-1. Sağ **diğer erişim sunucularına bağlantı**, tıklatıp **yinelenen ilke**.
+1. NPS Sunucusu'nda NPS (Yerel) konsolu açın, **İlkeler'i**genişletin ve **Ağ İlkeleri'ni**tıklatın.
+1. **Diğer erişim sunucularına bağlantılara**sağ tıklayın ve **Yinelenen İlke'yi**tıklatın.
 
-   ![Diğer erişim sunucuları ilkesiyle bağlantıyı çoğaltın](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![Diğer erişim sunucuları ilkesine bağlantı yıkın](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. Sağ **diğer erişim sunucularına bağlantı kopyalama**, tıklatıp **özellikleri**.
-1. İçinde **diğer erişim sunucularına bağlantı kopyalama** iletişim kutusundaki **ilke adı**, gibi uygun bir ad girin _RDG_CAP_. Denetleme **etkin ilke**seçip **erişim ver**. İsteğe bağlı olarak **ağ erişim sunucusu türü**seçin **Uzak Masaüstü Ağ Geçidi**, veya olarak bırakılabilir **belirtilmemiş**.
+1. **Diğer erişim sunucularına Bağlantı Kopyala'yı**sağ tıklatın ve **Özellikler'i**tıklatın.
+1. Diğer **erişim sunucularına Bağlantı Kopyala** iletişim kutusunda, **İlke adına,** _RDG_CAP_gibi uygun bir ad girin. **İlke etkin**denetleyin ve **Erişim Eve Ver'i**seçin. İsteğe bağlı olarak, **Ağ erişim sunucusu türünde,** Uzak Masaüstü **Ağ Geçidi'ni**seçin veya **belirtilmemiş**olarak bırakabilirsiniz.
 
-   ![İlkeyi adlandırın, etkinleştirin ve erişim izni verin](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![İlkeyi adlandırın, etkinleştirin ve erişim izni](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. Tıklayın **kısıtlamaları** sekmesini tıklatıp denetleyin **istemcilerin kimlik doğrulama yöntemi anlaşmadan bağlanmasına izin ver**.
+1. Kısıtlamalar sekmesini tıklatın ve kimlik doğrulama yöntemi üzerinde pazarlık yapmadan **istemcilerin** **bağlanmasına izin ver'i**işaretleyin.
 
    ![İstemcilerin bağlanmasına izin vermek için kimlik doğrulama yöntemlerini değiştirme](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. İsteğe bağlı olarak, tıklayın **koşullar** sekmesini ve bağlantının, örneğin, belirli bir Windows grubu üyeliği'da yetkilendirilmesi karşılanması gereken koşulları ekleyin.
+1. İsteğe bağlı olarak, **Koşullar** sekmesini tıklatın ve bağlantının yetkilendirilen olması için karşılanması gereken koşulları ekleyin (örneğin, belirli bir Windows grubuna üyelik).
 
    ![İsteğe bağlı olarak bağlantı koşullarını belirtin](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. **Tamam**’a tıklayın. İlgili Yardım konusunu görüntülemek için sorulduğunda **Hayır**.
-1. Erişim verir ve yeni ilkeniz ilkenin etkinleştirildiğini listenin başında olduğundan emin olun.
+1. **Tamam**'a tıklayın. Karşılık gelen Yardım konusunu görüntülemek istendiğinde, **Hayır'ı**tıklatın.
+1. Yeni ilkenizin listenin en üstünde olduğundan, ilkenin etkin olduğundan ve erişim sağladığından emin olun.
 
    ![İlkenizi listenin en üstüne taşıyın](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Yapılandırmayı doğrulama
 
-Yapılandırmayı doğrulamak için uygun bir RDP istemcisi ile Uzak Masaüstü Ağ geçidi için oturum açmanız gerekir. Bağlantı Yetkilendirme ilkelerinizi tarafından izin verilen ve Azure MFA için etkinleştirilmiş bir hesap kullandığınızdan emin olun.
+Yapılandırmayı doğrulamak için, uygun bir RDP istemcisi ile Uzak Masaüstü Ağ Geçidi'nde oturum açmanız gerekir. Bağlantı Yetkilendirme İlkeleriniz tarafından izin verilen ve Azure MFA için etkinleştirilen bir hesap kullandığınızdan emin olun.
 
-Aşağıdaki görüntüde gösterdiği gibi kullandığınız **Uzak Masaüstü Web erişimi** sayfası.
+Aşağıdaki resimde de belirtildiği gibi, **Uzak Masaüstü Web Erişimi** sayfasını kullanabilirsiniz.
 
-![Uzak Masaüstü Web Erişimi test etme](./media/howto-mfa-nps-extension-rdg/image25.png)
+![Uzak Masaüstü Web Erişiminde Test](./media/howto-mfa-nps-extension-rdg/image25.png)
 
-Kimlik bilgilerinizi birincil kimlik doğrulaması için başarıyla girildikten sonra Uzak Masaüstü Bağlantısı iletişim kutusu başlatma uzak bağlantı durumunu aşağıda gösterildiği gibi gösterir. 
+Birincil kimlik doğrulama için kimlik bilgilerinizi başarıyla girdikten sonra, Uzak Masaüstü Bağlantısı iletişim kutusu aşağıda gösterildiği gibi uzaktan bağlantı başlatma durumunu gösterir. 
 
-Başarılı bir şekilde Azure mfa'yı daha önce yapılandırdığınız ikincil kimlik doğrulama yöntemi ile kimlik doğrulaması, kaynağa bağlıdır. Ancak, ikincil kimlik doğrulaması başarılı olmazsa, kaynağa erişimi reddedilir. 
+Azure MFA'da daha önce yapılandırdığınız ikincil kimlik doğrulama yöntemiyle başarılı bir şekilde kimlik doğrulaması yaptıysanız, kaynağa bağlısınız. Ancak, ikincil kimlik doğrulaması başarılı olmazsa, kaynağa erişiminiz engellenir. 
 
-![Uzak bağlantı başlatma Uzak Masaüstü Bağlantısı](./media/howto-mfa-nps-extension-rdg/image26.png)
+![Uzak Masaüstü Bağlantısı uzaktan bağlantı başlatma](./media/howto-mfa-nps-extension-rdg/image26.png)
 
-Aşağıdaki örnekte, kimlik doğrulayıcı uygulamasını bir Windows phone'da ikincil kimlik doğrulaması sağlamak için kullanılır.
+Aşağıdaki örnekte, windows phone'daki Authenticator uygulaması ikincil kimlik doğrulamasını sağlamak için kullanılır.
 
-![Doğrulamayı gösteren Windows Phone Authenticator uygulaması örneği](./media/howto-mfa-nps-extension-rdg/image27.png)
+![Doğrulamayı gösteren örnek Windows Phone Authenticator uygulaması](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-İkincil kimlik doğrulama yöntemi başarıyla doğruladıktan sonra Uzak Masaüstü Ağ Geçidi normal şekilde oturum açtığınız. Ancak, güvenilir bir cihazda bir mobil uygulama kullanarak ikincil bir kimlik doğrulama yöntemi kullanmanız gerektiğinden oturum açma işlemi, aksi takdirde daha güvenlidir.
+İkincil kimlik doğrulama yöntemini kullanarak başarılı bir şekilde kimlik doğrulaması yaptıktan sonra, Uzak Masaüstü Ağ Geçidi'ne normal olarak giriş yapmış olursunuz. Ancak, güvenilir bir cihazda bir mobil uygulamayı kullanarak ikincil bir kimlik doğrulama yöntemi kullanmanız gerektiğinden, oturum açma işlemi aksi takdirde olduğundan daha güvenlidir.
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Başarılı oturum açma olayları için Olay Görüntüleyicisi günlüklerini görüntüle
+### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Başarılı oturum açma etkinlikleri için Olay Görüntüleyicisi günlüğünü görüntüleme
 
-Başarılı oturum açma olaylarını Windows Olay Görüntüleyicisi günlükleri görüntülemek için Windows Terminal Hizmetleri ve Windows güvenlik günlükleri sorgulamak için aşağıdaki Windows PowerShell komutunu verebilir.
+Windows Event Viewer günlüklerinde başarılı oturum açma olaylarını görüntülemek için, Windows Terminal Hizmetleri ve Windows Güvenlik günlüklerini sorgulamak için aşağıdaki Windows PowerShell komutunu düzenleyebilirsiniz.
 
-Ağ geçidi işlem günlüklerinde başarılı oturum açma olaylarını sorgulamak için _(olay görüntüleyicisi\uygulama ve hizmet Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , aşağıdaki PowerShell komutlarını kullanın:
+Ağ Geçidi operasyonel günlüklerinde _(Olay Görüntüleyicisi\Uygulamalar ve Hizmetler Günlükleri\Microsoft\Windows\TerminalServices-Gateway\Operational)_ başarılı oturum açma olaylarını sorgulamak için aşağıdaki PowerShell komutlarını kullanın:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
-* Bu komut, kullanıcının kaynak yetkilendirme ilkesi gereksinimlerini (RD RAP) sağlandığından ve erişim izni verildi gösteren Windows olayları görüntüler.
+* Bu komut, kullanıcının kaynak yetkilendirme ilkesi gereksinimlerini (RD RAP) karşıladığını ve erişim izni verildiğini gösteren Windows olaylarını görüntüler.
 
 ![PowerShell kullanarak olayları görüntüleme](./media/howto-mfa-nps-extension-rdg/image28.png)
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
-* Bu komut, kullanıcı bağlantısı yetkilendirme ilkesi gereksinimleri sağlandığında gösteren olayları görüntüler.
+* Bu komut, kullanıcının bağlantı yetkilendirme ilkesi gereksinimlerini karşıladığını gösteren olayları görüntüler.
 
 ![PowerShell kullanarak bağlantı yetkilendirme ilkesini görüntüleme](./media/howto-mfa-nps-extension-rdg/image29.png)
 
-Bu günlük ve filtre olay kimlikleri, 300 ve 200 üzerinde görüntüleyebilirsiniz. Başarılı oturum açma olaylarını Güvenlik Olay Görüntüleyicisi günlüklerinde sorgulamak için aşağıdaki komutu kullanın:
+Ayrıca bu günlüğü görüntüleyebilir ve olay lı 300 ve 200'de filtreuygulayabilirsiniz. Güvenlik olay görüntüleyicisi günlüklerinde başarılı oturum açma olaylarını sorgulamak için aşağıdaki komutu kullanın:
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-* Bu komut, merkezi NPS veya RD Ağ Geçidi sunucusu üzerinde çalıştırılabilir.
+* Bu komut, merkezi NPS veya RD Ağ Geçidi Sunucusu'nda çalıştırılabilir.
 
-![Başarılı oturum açma olayları örneği](./media/howto-mfa-nps-extension-rdg/image30.png)
+![Başarılı oturum açma etkinliklerini örnekle](./media/howto-mfa-nps-extension-rdg/image30.png)
 
-Aşağıda gösterildiği gibi güvenlik günlüğü ya da Ağ İlkesi ve Erişim Hizmetleri özel görünümü da görüntüleyebilirsiniz:
+Güvenlik günlüğünü veya Ağ İlkesi ve Erişim Hizmetleri özel görünümünü aşağıda gösterildiği gibi görüntüleyebilirsiniz:
 
-![Ağ Ilkesi ve erişim Hizmetleri Olay Görüntüleyicisi](./media/howto-mfa-nps-extension-rdg/image31.png)
+![Ağ İlkesi ve Erişim Hizmetleri Etkinlik Görüntüleyici](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-Azure MFA için NPS uzantısı yüklendiği sunucuda Olay Görüntüleyicisi'ni uygulama günlükleri uzantısına özel bulabilirsiniz _uygulama ve Hizmetleri Logs\Microsoft\AzureMfa_.
+Azure MFA için NPS uzantısını yüklediğiniz sunucuda, _Uygulama ve Hizmetler Günlükleri\Microsoft\AzureMfa'da_uzantıya özgü Olay Görüntüleyen uygulama günlüklerini bulabilirsiniz.
 
-![Olay Görüntüleyicisi AuthZ uygulama günlükleri](./media/howto-mfa-nps-extension-rdg/image32.png)
+![Olay Görüntüleyici AuthZ uygulama günlükleri](./media/howto-mfa-nps-extension-rdg/image32.png)
 
-## <a name="troubleshoot-guide"></a>Sorun giderme kılavuzu
+## <a name="troubleshoot-guide"></a>Sorun Giderme Kılavuzu
 
-Yapılandırma beklendiği gibi çalışmıyorsa, sorun giderme başlamak için ilk kullanıcının Azure mfa'yı kullanmak için yapılandırıldığını doğrulamak için yerdir. Bağlanma kullanıcının [Azure portalında](https://portal.azure.com). Kullanıcıların ikincil doğrulama için istenir ve başarıyla kimlik doğrulaması, Azure MFA'ın hatalı bir yapılandırma ortadan kaldırabilir.
+Yapılandırma beklendiği gibi çalışmıyorsa, sorun gidermeye başlamak için ilk sırada kullanıcının Azure MFA kullanacak şekilde yapılandırıldığı doğrulanır. Kullanıcının [Azure portalına](https://portal.azure.com)bağlanmasını sağlar. Kullanıcılardan ikincil doğrulama istenirse ve başarılı bir şekilde kimlik doğrulaması yapılabiliyorsa, Azure MFA'nın yanlış yapılandırması kaldırabilirsiniz.
 
-Azure MFA için kullanıcı olarak çalışıyorsa, ilgili olay günlüklerini gözden geçirmelisiniz. Bunlar, güvenlik olayı, ağ geçidi işletimsel ve önceki bölümde açıklanan Azure mfa'yı günlükleri içerir.
+Azure MFA kullanıcı(lar) için çalışıyorsa, ilgili Etkinlik günlüklerini gözden geçirmelisiniz. Bunlar arasında önceki bölümde tartışılan Güvenlik Olayı, Ağ Geçidi işletim ihdası ve Azure MFA günlükleri yer almaktadır.
 
-Aşağıda güvenlik günlüğü başarısız oturum açma olayı (olay kimliği 6273) gösteren bir örnek çıktı verilmiştir.
+Aşağıda, başarısız bir oturum açma olayını (Olay Kimliği 6273) gösteren Güvenlik günlüğünün örnek bir çıktısı verilmiştir.
 
-![Başarısız oturum açma olayının örneği](./media/howto-mfa-nps-extension-rdg/image33.png)
+![Başarısız oturum açma olayı örneği](./media/howto-mfa-nps-extension-rdg/image33.png)
 
-İlgili bir olay AzureMFA günlüklerinden aşağıdadır:
+AzureMFA günlüklerinden ilgili bir olay aşağıda verilmiştir:
 
-![Örnek Azure MFA oturum açma Olay Görüntüleyicisi](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Olay Görüntüleyicisi'nde Azure MFA girişine örnek](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-Gerçekleştirmek için Gelişmiş Seçenekleri sorun giderin, NPS hizmetinin yüklendiği NPS veritabanı biçimi günlük dosyalarına başvurun. Bu günlük dosyaları oluşturulur _%SystemRoot%\System32\Logs_ klasör virgülle ayrılmış metin dosyalarını olarak.
+Gelişmiş sorun giderme seçenekleri gerçekleştirmek için, NPS hizmetinin yüklü olduğu NPS veritabanı biçimi günlük dosyalarına başvurun. Bu günlük dosyaları _%SystemRoot%\System32\Logs_ klasöründe virgülle sınırlandırılmış metin dosyaları olarak oluşturulur.
 
-Bunlar bir açıklaması için günlük dosyaları, bkz: [NPS veritabanı biçimi günlük dosyalarını yorumlamak](https://technet.microsoft.com/library/cc771748.aspx). Bu günlük dosyaları girişleri bir elektronik tablo veya bir veritabanı aktarmadan yorumlamak zor olabilir. Günlük dosyaları yorumlama içinde yardımcı olmak için birkaç IAS Çözümleyicileri çevrimiçi bulabilirsiniz.
+Bu günlük dosyalarının açıklaması için [NPS Veritabanı Biçim Günlüğü Dosyalarını Yorumla'ya](https://technet.microsoft.com/library/cc771748.aspx)bakın. Bu günlük dosyalarındaki girişleri bir elektronik tabloya veya veritabanına aktarmadan yorumlamak zor olabilir. Günlük dosyalarını yorumlamada size yardımcı olmak için çevrimiçi birkaç IAS ayrıştıcı sıyrık bulabilirsiniz.
 
-Aşağıdaki resimde bir çıktı gösterir böyle indirilebilir [paylaşılan yazılım uygulama](https://www.deepsoftware.com/iasviewer).
+Aşağıdaki resimde böyle bir indirilebilir [shareware uygulama](https://www.deepsoftware.com/iasviewer)çıktısı gösterir.
 
-![Örnek paylaşılan yazılım uygulaması IAS ayrıştırıcısı](./media/howto-mfa-nps-extension-rdg/image35.png)
+![Örnek Shareware uygulaması IAS parser](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Son olarak, için ek sorun giderme seçenekleri, bir protokol çözümleyici kullanabileceğiniz gibi [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Son olarak, ek sorun giderme seçenekleri için, bir protokol çözümleyicisi kullanabilirsiniz, bu tür [Microsoft İleti Çözümleyicisi](https://technet.microsoft.com/library/jj649776.aspx).
 
-Microsoft Message Analyzer görüntüden aşağıdaki kullanıcı adını içeren RADIUS protokolü filtrelenmiş ağ trafiğini gösterir **CONTOSO\AliceC**.
+Microsoft İleti Çözümleyicisi'nden aşağıdaki resim, KULLANıCı adı **CONTOSO\AliceC'i**içeren RADIUS protokolünde filtreuygulanmış ağ trafiğini gösterir.
 
-![Filtrelenmiş trafiği gösteren Microsoft Ileti Çözümleyicisi](./media/howto-mfa-nps-extension-rdg/image36.png)
+![Filtreuygulanmış trafiği gösteren Microsoft İleti Çözümleyicisi](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,138 +1,138 @@
 ---
-title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi-eski
-description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
+title: Azure Otomasyonunda Kaynak Denetimi entegrasyonu - Eski
+description: Bu makalede, Azure Otomasyonu'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 651b97dabfd3cce858ea1f905a39c10bd7d81c41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75417434"
 ---
-# <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi-eski
+# <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonunda kaynak denetimi entegrasyonu - Eski
 
 > [!NOTE]
-> Kaynak denetimi için yeni bir deneyim vardır. Yeni deneyim hakkında daha fazla bilgi edinmek için bkz. [kaynak denetimi (Önizleme)](source-control-integration.md).
+> Kaynak denetimi için yeni bir deneyim vardır. Yeni deneyim hakkında daha fazla bilgi edinmek için [Kaynak Denetimi (Önizleme) konusuna](source-control-integration.md)bakın.
 
-Kaynak denetimi tümleştirmesi Otomasyon hesabınızdaki runbook 'ları GitHub Kaynak denetimi deposu ile ilişkilendirmenize olanak tanır. Kaynak denetimi, takımınızla kolayca işbirliği yapmanızı, değişiklikleri izlemenizi ve Runbook 'larınızın önceki sürümlerine geri dönmeyi sağlar. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test veya üretim Otomasyon hesaplarınızla eşitlemenize olanak tanır. bu sayede geliştirme ortamınızda test edilmiş kodu üretim otomasyonuna yükseltmeniz kolaylaşır hesabı.
+Kaynak denetimi tümleştirmesi, Otomasyon hesabınızdaki runbook'ları GitHub kaynak denetim deposuyla ilişkilendirmenize olanak tanır. Kaynak denetimi, ekibinizle kolayca işbirliği yapmanızı, değişiklikleri izlemenizi ve runbook'larınızın önceki sürümlerine geri dönmenizi sağlar. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test veya üretim Otomasyon hesaplarınız ile senkronize etmenizi sağlayarak geliştirme ortamınızda test edilmiş kodu üretim Otomasyonunuz ile tanıtmanızı kolaylaştırır Hesabı.
 
-Kaynak denetimi, Azure Automation 'dan kaynak denetimine kod göndermenize veya Runbook 'larınızı kaynak denetiminden Azure Otomasyonu 'na çekbırakmanıza olanak tanır. Bu makalede, Azure Otomasyonu ortamınızda kaynak denetiminin nasıl ayarlanacağı açıklanır. Azure Otomasyonu 'Nu GitHub deponuza erişmek ve kaynak denetimi tümleştirmesi kullanılarak yapılabilecek farklı işlemlere yol gösterecek şekilde yapılandırarak başlayacağız. 
+Kaynak denetimi, kaynak denetimi için kodu Azure Otomasyonu'ndan itmenize veya runbook'larınızı kaynak denetiminden Azure Otomasyonuna çekmenize olanak tanır. Bu makalede, Azure Otomasyon ortamınızda kaynak denetiminin nasıl ayarlanır. Azure Otomasyonunu GitHub deponuza erişmek ve kaynak denetimi tümleştirmesini kullanarak yapılabilecek farklı işlemlerde yürüyecek şekilde yapılandırarak işe başlıyoruz. 
 
 > [!NOTE]
-> Kaynak denetimi PowerShell [Iş akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks) 'larının yanı sıra [PowerShell runbook](automation-runbook-types.md#powershell-runbooks)'larının de çekmesini ve kullanılmasını destekler. [Grafik runbook 'ları](automation-runbook-types.md#graphical-runbooks) henüz desteklenmiyor.
+> Kaynak [denetimi, PowerShell İş Akışı runbook'ların](automation-runbook-types.md#powershell-workflow-runbooks) yanı sıra [PowerShell runbook'larını](automation-runbook-types.md#powershell-runbooks)çekme ve itme desteklemektedir. [Grafik çalışma kitapları](automation-runbook-types.md#graphical-runbooks) henüz desteklenmez.
 
-Otomasyon hesabınız için kaynak denetimi yapılandırmak için gereken iki basit adım vardır ve yalnızca bir GitHub hesabınız varsa. Bunlar:
+Otomasyon hesabınız için kaynak denetimini yapılandırmak için gereken iki basit adım vardır ve yalnızca bir tane zaten bir GitHub hesabınız varsa. Bunlar:
 
-## <a name="step-1--create-a-github-repository"></a>1\. adım – GitHub deposu oluşturma
+## <a name="step-1--create-a-github-repository"></a>Adım 1 – GitHub deposu oluşturma
 
-Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponuz varsa, mevcut hesabınızda oturum açın ve aşağıdaki adım 2 ' den başlayın. Aksi takdirde, [GitHub](https://github.com/)' a gidin, yeni bir hesap için kaydolun ve [Yeni bir depo oluşturun](https://help.github.com/articles/create-a-repo/).
+Zaten bir GitHub hesabınız ve Azure Otomasyonu'na bağlamak istediğiniz bir deponuz varsa, mevcut hesabınızda oturum açın ve aşağıdaki adım 2'den başlayın. Aksi takdirde, [GitHub](https://github.com/)gidin, yeni bir hesap için kaydolun ve [yeni bir depo oluşturun.](https://help.github.com/articles/create-a-repo/)
 
-## <a name="step-2--set-up-source-control-in-azure-automation"></a>2\. adım – Azure Otomasyonu 'nda kaynak denetimi ayarlama
+## <a name="step-2--set-up-source-control-in-azure-automation"></a>Adım 2 – Azure Otomasyonu'nda kaynak denetimi ayarlama
 
-1. Azure portal Otomasyon hesabı sayfasından, **Hesap ayarları**altında, **kaynak denetimi** ' ne tıklayın.
+1. Azure portalındaki Otomasyon Hesabı sayfasından, **Hesap Ayarları**altında **Kaynak Denetimi'ni tıklatın.**
 
-2. GitHub hesabı ayrıntılarınızı yapılandırabileceğiniz **kaynak denetimi** sayfası açılır. Yapılandırılacak parametrelerin listesi aşağıdadır:  
+2. **GitHub** hesap bilgilerinizi yapılandırabileceğiniz Kaynak Denetimi sayfası açılır. Yapılandırılacak parametrelerin listesi aşağıdadır:  
 
    | **Parametre** | **Açıklama** |
    |:--- |:--- |
    | Kaynak Seçin |Kaynağı seçin. Şu anda yalnızca **GitHub** desteklenir. |
-   | Yetkilendirme |GitHub deponuza Azure Otomasyonu erişimi sağlamak için **Yetkilendir** düğmesine tıklayın. Zaten GitHub hesabınızda farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra, sayfa, **yetkilendirme özelliği**altında GitHub Kullanıcı adınızı gösterir. |
+   | Yetkilendirme |Azure Otomasyonu'nun GitHub deponuza erişmesini sağlamak için **Yetkilendirme** düğmesini tıklatın. GitHub hesabınızda zaten farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra, sayfa **Yetkilendirme Özelliği**altında GitHub kullanıcı adınızı gösterir. |
    | Depo seçin |Kullanılabilir depolar listesinden bir GitHub deposu seçin. |
-   | Dal seçin |Kullanılabilir dallar listesinden bir dal seçin. Yalnızca dal oluşturmadıysanız, **ana** dal gösterilir. |
-   | Runbook klasörü yolu |Runbook klasörü yolu, kodunuzu göndermek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/FolderName/subklasöradı**biçiminde girilmesi gerekir. Yalnızca runbook klasörü yolundaki runbook 'lar Otomasyon hesabınızla eşitlenir. Runbook klasör yolunun alt klasörlerindeki runbook **'lar eşitlenmez.** Depodaki tüm runbook 'ları eşitlemek için **/** kullanın. |
-3. Örneğin, **RootFolder**adlı ve **alt**klasörü adlı bir klasör içeren **powershellscripts** adlı bir havuzunuz varsa. Her klasör düzeyini eşitlemek için aşağıdaki dizeleri kullanabilirsiniz:
+   | Şube seçin |Kullanılabilir dallar listesinden bir dal seçin. Herhangi bir dal oluşturmadıysanız yalnızca **ana** dal gösterilir. |
+   | Runbook klasör yolu |Runbook klasör yolu, kodunuzu itmek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/foldername/subfoldername**biçiminde girilmelidir. Yalnızca runbook klasörü yolundaki runbook'lar Otomasyon hesabınızla senkronize edilir. Runbook klasörü yolunun alt klasörlerinde **runbook'lar eşitlenmez.** Depo **/** altındaki tüm runbook'ları eşitlemek için kullanın. |
+3. Örneğin, **RootFolder**adlı bir klasör içeren **PowerShellScripts** adlı bir deponuz varsa, **alt klasör**ü. Her klasör düzeyini eşitlemek için aşağıdaki dizeleri kullanabilirsiniz:
 
-   1. Runbook 'ları **depodan**eşitlemek için, runbook klasörü yolu */*
-   2. Runbook 'ları **RootFolder**'a eşitlemek için Runbook klasörü yolu */RootFolder* olur
-   3. Runbook 'ları **alt**klasörden eşitlemek için, runbook klasörü yolu */RootFolder/alt klasörüdür*.
-4. Parametreleri yapılandırdıktan sonra, **kaynak denetimi ayarlama** sayfasında görüntülenir.  
+   1. Runbook'ları **depodan**eşitlemek için runbook klasör yolu*/*
+   2. Runbook'ları **RootFolder'dan**eşitlemek için runbook klasör yolu */RootFolder*
+   3. Runbook'ları **Alt Klasör'den**eşitlemek için runbook klasör yolu */RootFolder/SubFolder'dır.*
+4. Parametreleri yapılandırıldıktan sonra **Kaynak Denetimi Ayarla** sayfasında görüntülenir.  
 
-    ![Ayarları gösteren kaynak denetimi sayfası](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
-5. **Tamam**' a tıkladığınızda, kaynak denetimi tümleştirmesi artık Otomasyon hesabınız için yapılandırılmıştır ve GitHub bilgileriniz ile güncelleştirilmeleri gerekir. Artık, tüm kaynak denetimi eşitleme işi geçmişinizi görüntülemek için bu bölüme tıklayabilirsiniz.  
+    ![Ayarları gösteren Kaynak denetim sayfası](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
+5. **Tamam'ı**tıklattığınızda, kaynak denetimi tümleştirmesi artık Otomasyon hesabınız için yapılandırılır ve GitHub bilgilerinizle güncelleştirilmelidir. Şimdi tüm kaynak denetimi eşitleme iş geçmişini görüntülemek için bu bölümü tıklayabilirsiniz.  
 
     ![Geçerli yapılandırılmış kaynak denetimi yapılandırması için değerler](media/source-control-integration-legacy/automation-RepoValues.png)
-6. Kaynak denetimini ayarladıktan sonra, Otomasyon hesabınızda Iki [değişken varlık](automation-variables.md) oluşturulur. Ayrıca, bir yetkili uygulama GitHub hesabınıza eklenir.
+6. Kaynak denetimini ayarladıktan sonra, Otomasyon hesabınızda iki [değişken varlık](automation-variables.md) oluşturulur. Ayrıca, GitHub hesabınıza yetkili bir uygulama eklenir.
 
-   * **Microsoft. Azure. Automation. SourceControl. Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
+   * **Microsoft.Azure.Automation.SourceControl.Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
 
      | **Parametre** | **Değer** |
      |:--- |:--- |
-     | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |Dize |
-     | `Value` |{"Branch":\<*dal adınızı*>, "runbookfolderpath":\<*Runbook klasör yolu*>, "providertype":\<*GitHub > Için 1 değeri*, "depo" *:\<* , "Kullanıcı adı": *GitHub Kullanıcı adınızı*>} |
+     | `Value` |{"Şube":\<*Şube adınız*>,"RunbookFolderPath":\<*Runbook klasör* yolu\<>,"ProviderType":*GitHub için 1* \<değeri vardır>,"Depo":*Deponuzun adı*>,"Kullanıcı adı":\<*GitHub kullanıcı adınız*>} |
 
-   * **Microsoft. Azure. Automation. SourceControl. OAuthToken**değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
+   * **Microsoft.Azure.Automation.SourceControl.OAuthToken**değişkeni, OAuthToken'inizin güvenli şifreli değerini içerir.  
 
      |**Parametre**            |**Değer** |
      |:---|:---|
-     | `Name`  | Microsoft. Azure. Automation. SourceControl. OAuthToken |
-     | `Type`  | Bilinmiyor (şifreli) |
-     | `Value` | <*şifreli OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | `Type`  | Bilinmeyen (Şifreli) |
+     | `Value` | <*Şifreli OAuthToken*> |  
 
      ![Kaynak denetim değişkenlerini gösteren bir pencere](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **Otomasyon kaynak denetimi** , GitHub hesabınıza yetkili bir uygulama olarak eklenir. Uygulamayı görüntülemek için: GitHub giriş sayfanızda, **profilinize** > **ayarları** > **uygulamalar**' a gidin. Bu uygulama, Azure Otomasyonu 'nun GitHub deponuzu bir Otomasyon hesabıyla eşitlemesini sağlar.  
+   * **Otomasyon Kaynak Kontrolü,** GitHub hesabınıza yetkili bir uygulama olarak eklenir. Uygulamayı görüntülemek için: GitHub giriş sayfanızdan **profil** > **Ayarları** > **Uygulamaları'na**gidin. Bu uygulama, Azure Otomasyon'un GitHub deponuzu bir Otomasyon hesabıyla senkronize etmesine olanak tanır.  
 
-     ![GitHub 'daki uygulama ayarları](media/source-control-integration-legacy/automation-GitApplication.png)
+     ![GitHub'daki uygulama ayarları](media/source-control-integration-legacy/automation-GitApplication.png)
 
-## <a name="using-source-control-in-automation"></a>Otomasyon 'da kaynak denetimini kullanma
+## <a name="using-source-control-in-automation"></a>Otomasyonda Kaynak Kontrolü Kullanma
 
-### <a name="check-in-a-runbook-from-azure-automation-to-source-control"></a>Azure Otomasyonu 'ndan kaynak denetimine runbook 'u iade etme
+### <a name="check-in-a-runbook-from-azure-automation-to-source-control"></a>Kaynak denetimi için Azure Otomasyonu'ndan bir runbook'u iade etme
 
-Runbook denetimi, Azure Otomasyonu 'ndaki bir runbook 'ta yaptığınız değişiklikleri kaynak denetimi deponuza göndermenize olanak tanır. Aşağıda runbook 'u iade etme adımları verilmiştir:
+Runbook check-in, Azure Otomasyonu'ndaki bir runbook'ta yaptığınız değişiklikleri kaynak denetim deponuza itmenize olanak tanır. Runbook'ta iade etmek için gereken adımlar aşağıda verilmiştir:
 
-1. Otomasyon hesabınızdan [Yeni bir metinsel runbook oluşturun](automation-first-runbook-textual.md)veya [var olan bir metin runbook 'unu düzenleyin](automation-edit-textual-runbook.md). Bu Runbook bir PowerShell Iş akışı ya da bir PowerShell betiği runbook 'u olabilir.  
-2. Runbook 'unuzu düzenledikten sonra kaydedin ve **düzenleme** sayfasında **iade et** ' e tıklayın.  
+1. Otomasyon Hesabınızdan [yeni bir metin çalışması oluşturun](automation-first-runbook-textual.md)veya [varolan, metinsel bir runbook'u edin.](automation-edit-textual-runbook.md) Bu runbook bir PowerShell İş Akışı veya PowerShell komut dosyası runbook olabilir.  
+2. Runbook'unuzu ayarladıktan sonra kaydedin ve **Edit** sayfasından **iade** yi tıklatın.  
 
-    ![GitHub düğmesine iade etmeyi gösteren pencere](media/source-control-integration-legacy/automation-CheckinButton.png)
+    ![İadeyi GitHub düğmesine gösteren bir pencere](media/source-control-integration-legacy/automation-CheckinButton.png)
 
      > [!NOTE] 
-     > Azure Otomasyonu 'nda iade etme, kaynak denetiinizdeki mevcut olan kodun üzerine yazar. Git, git **Add + git COMMIT + git Push** için git eşdeğeri komut satırı yönergesi  
+     > Azure Otomasyonu'ndan yapılan iade, kaynak denetiminizde şu anda bulunan kodun üzerine yazar. Check-in için Git eşdeğer komut satırı yönergesi **git ekle + git commit + git itme**  
 
-3. **İade et**' e tıkladığınızda, bir onay iletisiyle istenir ve devam etmek için **Evet** ' e tıklayın.  
+3. **Check-in'i**tıklattığınızda, bir onay iletisi ile istenir, devam etmek için **Evet'i** tıklatın.  
 
-    ![Kaynak denetimine iade etmeyi onaylayan bir iletişim kutusu](media/source-control-integration-legacy/automation-CheckinMessage.png)
-4. İade etme kaynak denetim runbook 'unu başlatır: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Bu runbook GitHub 'a bağlanır ve değişiklikleri Azure Automation 'tan deponuza gönderir. İade edilen iş geçmişini görüntülemek için **kaynak denetimi tümleştirme** sekmesine dönün ve depo eşitleme sayfasını açmak için tıklayın. Bu sayfada tüm kaynak denetim işleriniz gösterilmektedir.  Görüntülemek istediğiniz işi seçin ve ayrıntılarını görüntülemek için tıklayın.  
+    ![Kaynak denetimine iadeyi onaylayan bir iletişim kutusu](media/source-control-integration-legacy/automation-CheckinMessage.png)
+4. Check-in kaynak denetim runbook başlar: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Bu runbook GitHub'a bağlanır ve Azure Otomasyonu'ndan deponuza değişiklikleri zorlar. İş geçmişinde denetlenenleri görüntülemek için **Kaynak Denetim Tümleştirme** sekmesine geri dön ve Depo Eşsenkronizasyon sayfasını açmak için tıklatın. Bu sayfa, tüm kaynak denetim işlerinizi gösterir.  Görüntülemek istediğiniz işi seçin ve ayrıntıları görüntülemek için tıklatın.  
 
-    ![Eşitleme işinin sonuçlarını gösteren pencere](media/source-control-integration-legacy/automation-CheckinRunbook.png)
+    ![Eşitleme işinin sonuçlarını gösteren bir pencere](media/source-control-integration-legacy/automation-CheckinRunbook.png)
 
    > [!NOTE]
-   > Kaynak denetimi runbook 'ları, görüntüleyemezsiniz veya düzenleyemezsiniz. Runbook listenizde gösterilmediğinden, işler listenizde gösterilen eşitleme işleri görürsünüz.
+   > Kaynak denetimi runbook'ları, görüntüleyemediğiniz veya edemeyeceğiniz özel Otomasyon runbook'larıdır. Bunlar runbook listenizde görünmese de, iş listenizde eşitleme işleri gösterir.
 
-5. Değiştirilen runbook 'un adı, iade edilen runbook için bir giriş parametresi olarak gönderilir. Runbook 'u **Depo eşitleme** sayfasında genişleterek [iş ayrıntılarını görüntüleyebilirsiniz](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) .  
+5. Değiştirilen runbook'un adı, denetlenen runbook için giriş parametresi olarak gönderilir. **Repository Synchronization** sayfasında runbook genişleterek [iş ayrıntılarını görüntüleyebilirsiniz.](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)  
 
-    ![Bir eşitleme işi için girişi gösteren pencere](media/source-control-integration-legacy/automation-CheckinInput.png)
-6. Değişiklikleri görüntülemek için, iş tamamlandığında GitHub deponuzu yenileyin.  Bir COMMIT iletisi ile deponuzda bir kayıt olmalıdır: **Azure Otomasyonu 'Nda *Runbook adı* güncelleştirildi.**  
+    ![Eşitleme işi için girişi gösteren bir pencere](media/source-control-integration-legacy/automation-CheckinInput.png)
+6. Değişiklikleri görüntülemek için iş tamamlandığında GitHub deponuzu yenileyin.  Deponuzda bir commit ileti ile bir taahhüt olmalıdır: **Azure Otomasyonunda Güncelleştirilmiş *Runbook Adı.* **  
 
-### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Runbook 'ları kaynak denetiminden Azure Otomasyonu 'na eşitleme
+### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Çalışma kitaplarını kaynak denetiminden Azure Otomasyonuna eşitleme
 
-Depo eşitleme sayfasındaki Eşitle düğmesi, deponuzdaki runbook klasörü yolundaki tüm runbook 'ları Otomasyon hesabınıza çekmesini sağlar. Aynı depo birden fazla Otomasyon hesabıyla eşitlenebilir. Aşağıda runbook eşitleme adımları verilmiştir:
+Depo Senkronizasyon sayfasındaki eşitleme düğmesi, deponuzun runbook klasörü yolundaki tüm runbook'ları Otomasyon hesabınıza çekmenize olanak tanır. Aynı depo birden fazla Otomasyon hesabına eşitlenebilir. Bir runbook'u eşitleme adımları aşağıda verilmiştir:
 
-1. Kaynak denetimini ayarladığınız Otomasyon hesabından **kaynak denetimi tümleştirmesi/depo eşitleme** sayfasını açın ve **Eşitle**' ye tıklayın.  Bir onay iletisi alırsınız, devam etmek için **Evet** ' e tıklayın.  
+1. Kaynak denetimini ayarladığınız Otomasyon hesabından **Kaynak Denetimi Tümleştirme/Depo Eşitleme** sayfasını açın ve **Eşitle'yi**tıklatın.  Bir onay iletisi ile istenir, devam etmek için **Evet'i** tıklatın.  
 
-    ![Tüm runbook 'ların eşitleneceğini onaylayan ileti ile Eşitle düğmesi](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
+    ![Tüm runbook'ların senkronize olacağını onaylayan iletiyle eşitleme düğmesi](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. Eşitleme runbook 'u başlatır: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. Bu runbook GitHub 'a bağlanır ve değişiklikleri deponuzdan Azure Otomasyonu 'na çeker. Bu eylem için **Depo eşitleme** sayfasında yeni bir iş görmeniz gerekir. Eşitleme işi hakkındaki ayrıntıları görüntülemek için, iş ayrıntıları sayfasını açmak üzere tıklayın.  
+2. Sync runbook başlar: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. Bu runbook GitHub'a bağlanır ve deponuzdaki değişiklikleri Azure Otomasyonu'na çeker. Bu eylem için Depo **Eşsenkronizasyon** sayfasında yeni bir iş görmeniz gerekir. Eşitleme işiyle ilgili ayrıntıları görüntülemek için iş ayrıntıları sayfasını açmak için tıklatın.  
 
-    ![GitHub deposunda eşitleme işinin Eşitleme sonuçlarını gösteren bir pencere](media/source-control-integration-legacy/automation-SyncRunbook.png)
+    ![GitHub deposunda eşitleme işinin eşitleme sonuçlarını gösteren bir pencere](media/source-control-integration-legacy/automation-SyncRunbook.png)
 
     > [!NOTE]
-    > Kaynak denetiminden eşitleme, şu anda kaynak denetimindeki **Tüm** runbook 'Lar için Automation hesabınızda mevcut olan runbook 'ların taslak sürümünün üzerine yazar. Git 'in eşitleme için git eşdeğeri komut satırı yönergesi **git pull**
+    > Kaynak denetiminden gelen bir eşitleme, şu anda kaynak denetiminde olan **TÜM** runbook'lar için Otomasyon hesabınızda bulunan runbook'ların taslak sürümünün üzerine yazar. Eşitlemek için Git eşdeğer komut satırı yönergesi **git çekme**
 
-![Askıya alınmış bir kaynak denetimi eşitleme işinden tüm günlükleri gösteren bir pencere](media/source-control-integration-legacy/automation-AllLogs.png)
+![Askıya alınan kaynak denetimi eşitleme işindeki tüm günlükleri gösteren pencere](media/source-control-integration-legacy/automation-AllLogs.png)
 
-## <a name="disconnecting-source-control"></a>Kaynak denetiminin bağlantısı kesiliyor
+## <a name="disconnecting-source-control"></a>Kaynak denetiminin kesilmesi
 
-GitHub hesabınızla bağlantıyı kesmek için depo eşitleme sayfasını açın ve **bağlantıyı kes**' e tıklayın. Kaynak denetimini kestikten sonra, daha önce eşitlenmiş olan runbook 'lar Otomasyon hesabınızda kalır, ancak depo eşitleme sayfası etkinleştirilmeyecektir.  
+GitHub hesabınızla bağlantınızı kesmek için Depo Eşsenkronizasyon sayfasını açın ve **Bağlantıyı Kes'i**tıklatın. Kaynak denetimini kestikten sonra, daha önce eşitlenen runbook'lar Otomasyon hesabınızda kalır, ancak Depo Eşsenkronizasyon sayfası etkinleştirilmez.  
 
-  ![Kaynak denetiminin bağlantısını kesmek için bağlantıyı kes düğmesini gösteren bir pencere](media/source-control-integration-legacy/automation-Disconnect.png)
+  ![Kaynak denetimini kesmek için Bağlantıyı Kesme düğmesini gösteren bir pencere](media/source-control-integration-legacy/automation-Disconnect.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kaynak denetimi tümleştirmesi hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:  
 
-* [Azure Otomasyonu: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Otomasyonu: Azure DevOps kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* [Azure Otomasyonu: Azure Otomasyonunda Kaynak Kontrol Entegrasyonu](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Otomasyonu: Azure DevOps kullanarak Runbook Kaynak Denetimini Tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

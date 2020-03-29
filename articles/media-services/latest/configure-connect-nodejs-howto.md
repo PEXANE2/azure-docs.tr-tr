@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 API-Node. js ' ye bağlanma
-description: Bu makalede, Node. js ile Media Services v3 API 'sine nasıl bağlanacağı gösterilmektedir.
+title: Azure Medya Hizmetleri v3 API'ye bağlanın - Düğüm.js
+description: Bu makalede, Node.js ile Media Services v3 API'ye nasıl bağlanılacağın gösterildiği gösterilmiştir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896109"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API-Node. js ' ye bağlanma
+# <a name="connect-to-media-services-v3-api---nodejs"></a>Medya Hizmetlerine bağlan v3 API - Düğüm.js
 
-Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 Node. js SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
+Bu makalede, hizmet ana oturum açma yöntemini kullanarak Azure Media Services v3 düğümü.js SDK'ya nasıl bağlanabileceğinizi gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- [Node.js](https://nodejs.org/en/download/)’yi yükleyin.
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
+- [Node.js](https://nodejs.org/en/download/)yükleyin.
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun.
 
 > [!IMPORTANT]
-> [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
+> Adlandırma kurallarını gözden [geçirin.](media-services-apis-overview.md#naming-conventions)
 
-## <a name="create-packagejson"></a>Package. JSON oluştur
+## <a name="create-packagejson"></a>package.json oluştur
 
-1. En sevdiğiniz düzenleyiciyi kullanarak bir Package. JSON dosyası oluşturun.
+1. En sevdiğiniz düzenleyiciyi kullanarak bir package.json dosyası oluşturun.
 1. Dosyayı açın ve aşağıdaki kodu yapıştırın:
 
 ```json
@@ -56,9 +56,9 @@ Aşağıdaki paketler belirtilmelidir:
 
 |Paket|Açıklama|
 |---|---|
-|`azure-arm-mediaservices`|SDK Azure Media Services. <br/>En son Azure Media Services paketini kullandığınızdan emin olmak için [NPM 'yi Azure-ARM-mediaservices 'ı yüklemek](https://www.npmjs.com/package/azure-arm-mediaservices/)için denetleyin.|
-|`azure-storage`|Depolama SDK 'Sı. Dosyalar varlıklara yüklenirken kullanılır.|
-|`ms-rest-azure`| Oturum açmak için kullanılır.|
+|`azure-arm-mediaservices`|Azure Medya Hizmetleri SDK. <br/>En son Azure Medya Hizmetleri paketini kullandığınızdan emin olmak için [NPM'nin azure-arm-mediaservices yükle'sini](https://www.npmjs.com/package/azure-arm-mediaservices/)kontrol edin.|
+|`azure-storage`|Depolama SDK. Varlıklara dosya yüklerken kullanılır.|
+|`ms-rest-azure`| Oturum vermek için kullanılır.|
 
 En son paketi kullandığınızdan emin olmak için aşağıdaki komutu çalıştırabilirsiniz:
 
@@ -66,11 +66,11 @@ En son paketi kullandığınızdan emin olmak için aşağıdaki komutu çalış
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>Node. js istemcisine bağlanma
+## <a name="connect-to-nodejs-client"></a>Düğüm.js istemcisine bağlan
 
-1. En sevdiğiniz düzenleyiciyi kullanarak bir. js dosyası oluşturun.
-1. Dosyasını açın ve aşağıdaki kodu yapıştırın.
-1. "Endpoint config" bölümündeki değerleri, [erişim API 'lerinden](access-api-cli-how-to.md)aldığınız değerlere ayarlayın.
+1. En sevdiğiniz düzenleyiciyi kullanarak bir .js dosyası oluşturun.
+1. Dosyayı açın ve aşağıdaki kodu yapıştırın.
+1. "Uç nokta config" bölümündeki değerleri [erişim API'lerinden](access-api-cli-how-to.md)aldığınız değerlere ayarlayın.
 
 ```js
 'use strict';
@@ -116,7 +116,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 
 ## <a name="run-your-app"></a>Uygulamanızı çalıştırma
 
-Bir komut istemi açın. Örneğin dizinine gidin ve aşağıdaki komutları yürütün:
+Bir komut istemi açın. Örneğin dizinine göz atın ve aşağıdaki komutları uygulayın:
 
 ```
 npm install 
@@ -125,10 +125,10 @@ node index.js
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Media Services kavramlar](concepts-overview.md)
+- [Medya Hizmetleri kavramları](concepts-overview.md)
 - [NPM azure-arm-mediaservices yüklemesi](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Media Services [Node. js başvuru](/javascript/api/overview/azure/mediaservices/management) belgelerini inceleyin ve Node. js ile Media Services API 'sinin nasıl kullanılacağını gösteren [örneklere](https://github.com/Azure-Samples/media-services-v3-node-tutorials) göz atın.
+Medya Hizmetleri [Node.js ref](/javascript/api/overview/azure/mediaservices/management) belgelerini keşfedin ve Media Services API'nin node.js ile nasıl kullanılacağını gösteren [örneklere](https://github.com/Azure-Samples/media-services-v3-node-tutorials) göz atın.
 

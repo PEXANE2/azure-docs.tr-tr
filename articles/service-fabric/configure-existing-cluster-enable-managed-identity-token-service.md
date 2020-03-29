@@ -1,30 +1,30 @@
 ---
-title: Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma
-description: Mevcut bir Azure Service Fabric kümesinde Yönetilen kimlikler desteğini etkinleştirme
+title: Varolan bir Hizmet Kumaşı kümesinde yönetilen kimlik desteğini yapılandırma
+description: 'Varolan bir Azure Hizmet Kumaşı kümesinde yönetilen kimlik desteğini şu şekilde etkinleştirebilirsiniz:'
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934958"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma (Önizleme)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Yönetilen kimlik desteğini varolan bir Hizmet Kumaşı kümesinde yapılandırma (önizleme)
 
-Service Fabric uygulamalarınızda [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanmak üzere önce kümede *yönetilen kimlik belirteci hizmetini* etkinleştirin. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice**adı altında çalışan Service Fabric Explorer görebilirsiniz.
+Hizmet Kumaşı uygulamalarınızda [Azure kaynakları için Yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/overview.md) kullanmak için, önce kümedeki Yönetilen Kimlik *Belirteç Hizmeti'ni* etkinleştirin. Bu hizmet, Yönetilen kimliklerini kullanarak Service Fabric uygulamalarının kimlik doğrulamalarından ve onlar adına erişim belirteçleri almaktan sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **Sistem** bölümünün altında, kumaş adı altında çalışan Service Fabric Explorer'da **görebilirsiniz:/System/ManagedIdentityTokenService**.
 
 > [!NOTE]
-> **Yönetilen kimlik belirteci hizmetini**etkinleştirmek için Service Fabric Runtime sürümü 6.5.658.9590 veya üzeri gereklidir.  
+> **Yönetilen Kimlik Belirteç Hizmeti**etkinleştirmek için Service Fabric runtime sürüm 6.5.658.9590 veya daha yüksek gereklidir.  
 >
-> Küme kaynağını açıp **temel** bileşenler bölümündeki **Service Fabric sürümü** özelliğini denetleyerek Azure Portal bir kümenin Service Fabric sürümünü bulabilirsiniz.
+> Küme kaynağını açıp **Essentials** bölümünde **Service Fabric sürüm** özelliğini kontrol ederek Bir kümenin Hizmet Kumaşı sürümünü Azure portalından bulabilirsiniz.
 >
-> Küme **el ile** yükseltme modundaysa, önce bunu 6.5.658.9590 veya sonraki bir sürüme yükseltmeniz gerekir.
+> Küme **Manuel** yükseltme modundaysa, önce 6.5.658.9590 veya sonrası yükseltmeniz gerekir.
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Mevcut kümede *yönetilen kimlik belirteci hizmetini* etkinleştir
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Varolan bir kümede *Yönetilen Kimlik Belirteç Hizmetini* etkinleştirme
 
-Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için iki değişiklik belirten bir küme yükseltmesi başlatmanız gerekir: (1) yönetilen kimlik belirteci hizmetini etkinleştirme ve (2) her düğümün yeniden başlatılmasını isteme. İlk olarak, aşağıdaki kod parçacığını kümeniz Azure Resource Manager şablonu ekleyin:
+Yönetilen Kimlik Belirteci Hizmetini varolan bir kümede etkinleştirmek için, iki değişiklik belirten bir küme yükseltmesi başlatmanız gerekir: (1) Yönetilen Kimlik Belirteci Hizmetini etkinleştirme ve (2) her düğümün yeniden başlatılmasını istemek. İlk olarak, kümeAzure Kaynak Yöneticisi şablonunuzu aşağıdaki snippet ekleyin:
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için i
 ]
 ```
 
-Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, temel ayar `forceRestart`. ayarların geri kalanı için mevcut değerlerinizi kullanın.  
+Değişikliklerin etkili olması için, yükseltme küme de ilerledikçe her düğümde Hizmet Kumaşı çalışma zamanının güçlü bir şekilde yeniden başlatılmasını belirtmek için yükseltme ilkesini değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilen sistem hizmetinin başlatılmasını ve her düğümüzerinde çalışmasını sağlar. Aşağıdaki snippet olarak, `forceRestart` temel ayardır; ayarların geri kalanı için varolan değerleri kullanın.  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kü
 ```
 
 > [!NOTE]
-> Yükseltmenin başarıyla tamamlanmasından sonra, sonraki yükseltmelerin etkilerini en aza indirmek için `forceRestart` ayarını geri almayı unutmayın. 
+> Yükseltmenin başarıyla tamamlanmasından sonra, sonraki yükseltmelerin etkisini en aza indirmek için `forceRestart` ayarı geri döndürmeyi unutmayın. 
 
 ## <a name="errors-and-troubleshooting"></a>Hatalar ve sorun giderme
 
-Dağıtım aşağıdaki iletiyle başarısız olursa, kümenin yeterince yüksek bir Service Fabric sürümünde çalışmadığı anlamına gelir:
+Dağıtım aşağıdaki iletiyle başarısız olursa, kümenin yeterince yüksek bir Hizmet Kumaşı sürümünde çalışmadığı anlamına gelir:
 
 ```json
 {
@@ -69,7 +69,7 @@ Dağıtım aşağıdaki iletiyle başarısız olursa, kümenin yeterince yüksek
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Sistem tarafından atanan yönetilen kimlik ile Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Kullanıcı tarafından atanan yönetilen kimlik ile bir Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Hizmet kodundan Service Fabric uygulamasının yönetilen kimliğinden yararlanın](./how-to-managed-identity-service-fabric-app-code.md)
-* [Azure Service Fabric uygulamasına diğer Azure kaynaklarına erişim izni verme](./how-to-grant-access-other-resources.md)
+* [Sistem tarafından atanmış yönetilen bir kimliğe sahip bir Azure Hizmet Kumaşı uygulamasını dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Kullanıcı tarafından atanan yönetilen bir kimliğe sahip bir Azure Hizmet Kumaşı uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Hizmet kodundan Hizmet Kumaşı uygulamasının yönetilen kimliğinden yararlanma](./how-to-managed-identity-service-fabric-app-code.md)
+* [Azure Hizmet Kumaşı uygulamasına diğer Azure kaynaklarına erişim hakkı verme](./how-to-grant-access-other-resources.md)
