@@ -1,6 +1,6 @@
 ---
-title: Power BI ile Azure Analysis Services bağlanma | Microsoft Docs
-description: Power BI kullanarak bir Azure Analysis Services sunucusuna nasıl bağlanacağınızı öğrenin. Bağlandıktan sonra kullanıcılar model verilerini keşfedebilir.
+title: Power BI ile Azure Analiz Hizmetlerine Bağlanın | Microsoft Dokümanlar
+description: Power BI'yi kullanarak Azure Analiz Hizmetleri sunucusuna nasıl bağlanabileceğinizi öğrenin. Bağlandıktan sonra, kullanıcılar model verilerini keşfedebilir.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,45 +8,45 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573110"
 ---
 # <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
-Azure 'da bir sunucu oluşturup buna bir tablosal Model dağıttıktan sonra, kuruluşunuzdaki kullanıcılar bağlanmaya ve verileri keşfetmeye başlamaya hazırsınız. 
+Azure'da bir sunucu oluşturduktan ve ona bir tabular modeli dağıttıktan sonra, kuruluşunuzdaki kullanıcılar bağlanmaya ve verileri keşfetmeye hazırdır. 
 
 > [!TIP]
-> [Power BI Desktop](https://powerbi.microsoft.com/desktop/)en son sürümünü kullandığınızdan emin olun.
+> [Power BI Desktop'ın](https://powerbi.microsoft.com/desktop/)en son sürümünü kullandığınızdan emin olun.
 > 
 > 
   
 ## <a name="connect-in-power-bi-desktop"></a>Power BI Desktop'ta bağlanma
 
-1. Power BI Desktop'ta, **Veri Al** > **Azure** > **Azure Analysis Services veritabanı**'na tıklayın.
+1. Power BI Desktop'da **Veri** > Al**Azure** > **Azure Analiz Hizmetleri veritabanını**tıklatın.
 
-2. **Sunucu**' da sunucu adını girin. Tam URL 'YI eklediğinizden emin olun; Örneğin, asazure://westcentralus.asazure.windows.net/advworks.
+2. **Sunucu'da**sunucu adını girin. TAM URL'yi eklediğinden emin olun; örneğin, asazure://westcentralus.asazure.windows.net/advworks.
 
-3. **Veritabanında**, bağlamak istediğiniz tablosal model veritabanının veya perspektifinin adını biliyorsanız buraya yapıştırın. Aksi takdirde, bu alanı boş bırakıp daha sonra bir veritabanı veya perspektif seçebilirsiniz.
+3. **Veritabanı'nda,** bağlanmak istediğiniz tabular model veritabanının veya perspektifinin adını biliyorsanız, buraya yapıştırın. Aksi takdirde, bu alanı boş bırakabilir ve daha sonra bir veritabanı veya perspektif seçebilirsiniz.
 
-4. Bir bağlantı seçeneği seçin ve ardından **Bağlan**' a basın. 
+4. Bağlantı seçeneğini seçin ve ardından **Bağlan'a**basın. 
 
-    Hem **canlı Bağlan** hem de **içeri aktarma** seçenekleri desteklenir. Ancak, Içeri aktarma modunda bazı sınırlamalar olduğundan canlı bağlantılar kullanmanız önerilir; özellikle sunucu performansı, içeri aktarma sırasında etkilenebilir. Ayrıca, model Power BI hizmeti yenilenirse, **Power BI erişime Izin ver** ayarı yalnızca **canlı Bağlan**' ı seçerken geçerlidir.
+    Hem **Canlı Bağlan** hem de **İçe Aktarma** seçenekleri desteklenir. Ancak, Alma modubazı sınırlamalar var, çünkü canlı bağlantıları kullanmanızı tavsiye; en önemlisi, sunucu performansı alma sırasında etkilenebilir. Ayrıca, model Power BI hizmetinde yenilenecekse, **Power BI ayarından erişime izin** ver yalnızca Canlı **Bağlan'ı**seçerken geçerlidir.
 
-5. İstenirse, oturum açma kimlik bilgilerinizi girin. 
+5. İstenirse, giriş kimlik bilgilerinizi girin. 
 
-6. **Gezgin**'de, sunucuyu genişletin, ardından bağlanmak istediğiniz modeli veya perspektifi seçin ve ardından **Bağlan**' a tıklayın. Bu görünüm için tüm nesneleri göstermek üzere bir modele veya perspektife tıklayın.
+6. **Navigator'da**sunucuyu genişletin, ardından bağlanmak istediğiniz modeli veya perspektifi seçin ve sonra **Bağlan'ı**tıklatın. Bu görünümiçin tüm nesneleri göstermek için bir model veya perspektifi tıklatın.
 
-    Model, rapor görünümünde boş bir raporla Power BI Desktop açılır. Alanlar listesi, tüm gizli olmayan model nesnelerini görüntüler. Bağlantı durumu sağ alt köşede gösterilir.
+    Model, Power BI Desktop'da Rapor görünümünde boş bir raporla açılır. Alanlar listesinde gizli olmayan tüm model nesneleri görüntülenir. Bağlantı durumu sağ alt köşede gösterilir.
 
-## <a name="connect-in-power-bi-service"></a>Power BI (hizmet) içinde Bağlan
+## <a name="connect-in-power-bi-service"></a>Power BI'ye bağlan (servis)
 
-1. Sunucunuzdaki modelinize canlı bağlantısı olan Power BI Desktop bir dosya oluşturun.
-2. [Power BI](https://powerbi.microsoft.com), veri > **dosyalarını** **Al** ' a tıklayın ve ardından. pbix dosyanızı bulun ve seçin.
+1. Sunucunuzdaki modelinize canlı bağlantısı olan bir Power BI Masaüstü dosyası oluşturun.
+2. [Power BI'de](https://powerbi.microsoft.com)Veri > **Dosyalarını** **Al'ı**tıklatın ve sonra .pbix dosyanızı bulup seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-[Azure Analysis Services  bağlanma](analysis-services-connect.md)  
+[Azure Analiz Hizmetlerine Bağlanın](analysis-services-connect.md)   
 [İstemci kitaplıkları](analysis-services-data-providers.md)
 

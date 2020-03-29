@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB parametreli sorgular
-description: SQL parametreli sorguların, Kullanıcı girişi için güçlü işleme ve kaçışı nasıl sağladığını ve SQL ekleme aracılığıyla verilerin yanlışlıkla açıklanmasını nasıl önleyeceğinizi öğrenin.
+title: Azure Cosmos DB'de parametreli sorgular
+description: SQL parametreli sorguların kullanıcı girişinin sağlam bir şekilde işlemesini ve kaçmasını nasıl sağladığını öğrenin ve SQL enjeksiyonu yoluyla verilerin yanlışlıkla açığa alınmasını önleyin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870828"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB parametreli sorgular
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB'de parametreli sorgular
 
-Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip sorguları destekler. Parametreli SQL, Kullanıcı girişi için güçlü işleme ve kaçış sağlar ve SQL ekleme aracılığıyla verilerin yanlışlıkla açıklanmasını önler.
+Cosmos DB, tanıdık @ gösterimi ile ifade edilen parametrelerle sorguları destekler. Parametreli SQL, kullanıcı girişinin sağlam bir şekilde işlemesini ve kaçmasını sağlar ve SQL enjeksiyonu yoluyla verilerin kazara maruz kalmasını önler.
 
 ## <a name="examples"></a>Örnekler
 
-Örneğin, `lastName` ve `address.state` parametre olarak alan ve kullanıcı girişine göre `lastName` ve `address.state` çeşitli değerleri için yürütebileceği bir sorgu yazabilirsiniz.
+Örneğin, `lastName` parametre `address.state` olarak alan bir sorgu yazabilir ve kullanıcı `lastName` girişine `address.state` dayalı olarak çeşitli değerler için çalıştırabilirsiniz.
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip so
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Daha sonra bu isteği aşağıdaki gibi parametreli bir JSON sorgusu olarak Cosmos DB gönderebilirsiniz:
+Daha sonra bu isteği aşağıdaki gibi parametrelendirilmiş JSON sorgusu olarak Cosmos DB'ye gönderebilirsiniz:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Daha sonra bu isteği aşağıdaki gibi parametreli bir JSON sorgusu olarak Cosm
     }
 ```
 
-Aşağıdaki örnek, en üstteki bağımsız değişkeni parametreli bir sorgu ile ayarlar: 
+Aşağıdaki örnek, parametreli bir sorguyla TOP bağımsız değişkenini ayarlar: 
 
 ```sql
     {
@@ -50,7 +50,7 @@ Aşağıdaki örnek, en üstteki bağımsız değişkeni parametreli bir sorgu i
     }
 ```
 
-Parametre değerleri geçerli bir JSON olabilir: dizeler, sayılar, Boole değerleri, null, hatta diziler veya iç içe geçmiş JSON. Cosmos DB şemaya daha az olduğundan, parametreler hiçbir türe göre doğrulanmaz.
+Parametre değerleri geçerli bir JSON olabilir: dizeleri, sayılar, Booleans, null, çift diziler veya iç içe JSON. Cosmos DB şemasız olduğundan, parametreler herhangi bir türe göre doğrulanmaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

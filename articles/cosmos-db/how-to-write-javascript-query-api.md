@@ -1,28 +1,28 @@
 ---
-title: Azure Cosmos DB içindeki JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazma
-description: Azure Cosmos DB içinde JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazmayı öğrenin
+title: Azure Cosmos DB'deki JavaScript sorgu API'sini kullanarak depolanan yordamları ve tetikleyicileri yazma
+description: Azure Cosmos DB'deki JavaScript Sorgu API'sini kullanarak depolanmış yordamları ve tetikleyicileri nasıl yazarak yazacaklarınız öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441720"
 ---
-# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>JavaScript sorgu API 'sini kullanarak Azure Cosmos DB saklı yordamları ve Tetikleyicileri yazma
+# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>JavaScript sorgu API'sini kullanarak Azure Cosmos DB'de depolanmış yordamlar ve tetikleyiciler nasıl yazılır?
 
-Azure Cosmos DB, saklı yordamları veya Tetikleyicileri yazmak için kullanılabilecek herhangi bir SQL dili bilgisi olmadan akıcı bir JavaScript arabirimi kullanarak iyileştirilmiş sorgular gerçekleştirmenizi sağlar. Azure Cosmos DB 'de JavaScript sorgu API 'SI desteği hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB makalesinde JavaScript Dil tümleşik sorgu API 'si Ile çalışma](javascript-query-api.md) .
+Azure Cosmos DB, depolanan yordamları veya tetikleyicileri yazmak için kullanılabilecek SQL dili hakkında hiçbir bilgi sahibi olmadan akıcı bir JavaScript arabirimi kullanarak en iyi duruma getirilmiş sorguları gerçekleştirmenize olanak tanır. Azure Cosmos DB'deki JavaScript Sorgu API desteği hakkında daha fazla bilgi edinmek için Azure [Cosmos DB makalesinde JavaScript dili tümleşik sorgu API'siyle çalışma](javascript-query-api.md) başlıklı makaleye bakın.
 
-## <a id="stored-procedures"></a>JavaScript sorgu API 'SI kullanılarak saklı yordam
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>JavaScript sorgu API'sini kullanarak depolanan yordam
 
-Aşağıdaki kod örneği, JavaScript sorgu API 'sinin saklı yordam bağlamında nasıl kullanıldığına ilişkin bir örnektir. Saklı yordam, bir giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve bir meta veri belgesini, giriş öğesinin boyut özelliğine göre minSize, maxSize ve totalSize ile `__.filter()` yöntemini kullanarak güncelleştirir.
+Aşağıdaki kod örneği, JavaScript sorgu API'sinin depolanan yordam bağlamında nasıl kullanıldığına bir örnektir. Depolanan yordam, giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve giriş `__.filter()` öğesinin boyutuna bağlı olarak minSize, maxSize ve totalSize ile yöntemi kullanarak bir meta veri belgesini güncelleştirir.
 
 > [!NOTE]
-> `__` (çift alt çizgi), JavaScript sorgu API 'SI kullanılırken `getContext().getCollection()` bir diğer addır.
+> `__`(çift alt çizgi) JavaScript `getContext().getCollection()` sorgu API'sını kullanırken bir diğer addır.
 
 ```javascript
 /**
@@ -80,14 +80,14 @@ function insertDocumentAndUpdateMetadata(item) {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB içindeki saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler hakkında bilgi edinmek için aşağıdaki makalelere bakın:
+Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Cosmos DB içindeki saklı yordamlar, Tetikleyiciler, Kullanıcı tanımlı işlevlerle çalışma](how-to-use-stored-procedures-triggers-udfs.md)
+* [Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler, kullanıcı tanımlı işlevlerle nasıl çalışılı?](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Azure Cosmos DB depolanan yordamları kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
+* [Azure Cosmos DB'de depolanan yordamları kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
 
-* Azure Cosmos DB ' de [ön Tetikleyiciler](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) ve [tetiklemeleri](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) kaydetme ve kullanma
+* Azure Cosmos DB'de [ön tetikleyiciler](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) ve [tetikleyiciler](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) kaydetme ve kullanma
 
-* [Kullanıcı tanımlı işlevleri Azure Cosmos DB kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md#udfs)
+* [Azure Cosmos DB'de kullanıcı tanımlı işlevleri kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 
 * [Azure Cosmos DB'de yapay bölümleme anahtarları](synthetic-partition-keys.md)

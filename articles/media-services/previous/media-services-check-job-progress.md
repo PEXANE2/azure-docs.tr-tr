@@ -1,6 +1,6 @@
 ---
-title: Proje .NET kullanarak ilerlemeyi izleme
-description: İşin ilerleme durumunu izlemek ve durum güncelleştirmeleri göndermek için olay işleyicisini kullanmayı öğrenin. Kod örneği yazıldığı C# ve .NET için Media Services SDK'sını kullanır.
+title: .NET kullanarak İş İlerlemeyi İzle
+description: İş ilerlemesini izlemek ve durum güncelleştirmeleri göndermek için olay işleyicisi kodunu nasıl kullanacağınızı öğrenin. Kod örneği C# ile yazılır ve .NET için Medya Hizmetleri SDK'sını kullanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64867095"
 ---
-# <a name="monitor-job-progress-using-net"></a>Proje .NET kullanarak ilerlemeyi izleme 
+# <a name="monitor-job-progress-using-net"></a>.NET kullanarak İş İlerlemeyi İzle 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
-İşleri çalıştırmak, genellikle iş ilerleme durumunu izlemek için bir yol gerektirir. (Bu konuda açıklandığı gibi) StateChanged olay işleyicisi tanımlama veya medya Hizmetleri iş bildirimlerini izlemek için Azure kuyruk depolama kullanarak ilerleme durumunu kontrol edebilirsiniz (açıklandığı [bu](media-services-dotnet-check-job-progress-with-queues.md) konuda).
+İşleri çalıştırdığınızda, genellikle iş ilerlemesini izlemek için bir yol gerekir. Bir StateChanged olay işleyicisi (bu konuda açıklandığı gibi) tanımlayarak veya Medya Hizmetleri iş bildirimlerini izlemek için Azure Kuyruk depolama sını kullanarak [(bu](media-services-dotnet-check-job-progress-with-queues.md) konuda açıklandığı gibi) ilerlemedurumunu denetleyebilirsiniz.
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>İşin ilerleme durumunu izlemek için StateChanged olay işleyicisini tanımlama
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>İş ilerlemesini izlemek için StateChanged olay işleyicisini tanımlama
 
-Aşağıdaki kod örneği StateChanged olay işleyicisini tanımlar. Bu olay işleyicisi, işin ilerleme durumunu izler ve durumuna bağlı olarak güncel durumu sağlar. Kod ayrıca LogJobStop yöntemi tanımlar. Bu yardımcı yöntemi, hata ayrıntılarını günlüğe kaydeder.
+Aşağıdaki kod örneği, StateChanged olay işleyicisini tanımlar. Bu olay işleyicisi iş ilerlemesini izler ve duruma bağlı olarak güncelleştirilmiş durum sağlar. Kod ayrıca LogJobStop yöntemini de tanımlar. Bu yardımcı yöntem hata ayrıntılarını günlüğe kaydeder.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

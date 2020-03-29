@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services olaylara yeniden davranıyor | Microsoft Docs
-description: Bu makalede, Media Services olaylarına abone olmak için Azure Event Grid nasıl kullanılacağı açıklanır.
+title: Azure Medya Hizmetleri olaylarına tepki verme | Microsoft Dokümanlar
+description: Bu makalede, Medya Hizmetleri etkinliklerine abone olmak için Azure Olay Ağıt'ın nasıl kullanılacağı açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,37 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
 ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887893"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid olaylarını işleme
 
-Media Services olaylar, uygulamaların, modern sunucusuz mimariler kullanılarak farklı olaylara (örneğin, iş durumu değiştirme olayı) tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz. Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi web kancasına dahil olmak üzere olay işleyicisine [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir ve yalnızca kullandığınız kadar ödersiniz. Fiyatlandırma hakkında bilgi için bkz. [Event Grid fiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/).
+Medya Hizmetleri olayları, uygulamaların modern sunucusuz mimariler kullanarak farklı olaylara (örneğin, iş durumu değişikliği olayı) tepki göstermesine olanak sağlar. Bunu karmaşık kod veya pahalı ve verimsiz yoklama hizmetlerine gerek kalmadan yapar. Bunun yerine, etkinlikler [Azure İşlevleri](https://azure.microsoft.com/services/functions/), Azure Mantıksal [Uygulamaları](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi Web hook'unuz gibi etkinlik işleyicilerine [Azure Olay Izgarası](https://azure.microsoft.com/services/event-grid/) üzerinden itilir ve yalnızca kullandığınız kadar ını ödenersiniz. Fiyatlandırma hakkında daha fazla bilgi için [Olay Ağı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/event-grid/)bakın.
 
-Media Services olaylarının kullanılabilirliği Event Grid [kullanılabilirliğine](../../event-grid/overview.md) bağlıdır ve Event Grid olduğu gibi diğer bölgelerde kullanılabilir hale gelir.  
+Ortam Hizmetleri etkinlikleri için kullanılabilirlik Olay Izgara [kullanılabilirliğine](../../event-grid/overview.md) bağlıdır ve Olay Izgara'nın yaptığı gibi diğer bölgelerde kullanılabilir hale gelir.  
 
-## <a name="media-services-events-and-schemas"></a>Media Services olayları ve şemaları
+## <a name="media-services-events-and-schemas"></a>Medya Hizmetleri etkinlikleri ve şemalar
 
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. Media Services olaylar, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. Media." ile başladığı için bir Media Services olayı tanımlayabilirsiniz.
+Olay [ızgarası,](../../event-grid/concepts.md#event-subscriptions) olay iletilerini abonelere yönlendirmek için olay aboneliklerini kullanır. Medya Hizmetleri olayları, verilerinizdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft.Media" ile başladığı için bir Medya Hizmetleri olayını tanımlayabilirsiniz.
 
-Daha fazla bilgi için bkz. [Media Services olay şemaları](media-services-event-schemas.md).
+Daha fazla bilgi için Medya [Hizmetleri etkinlik şemalarına](media-services-event-schemas.md)bakın.
 
-## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
+## <a name="practices-for-consuming-events"></a>Etkinlikleri tüketme uygulamaları
 
-Media Services olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
+Medya Hizmetleri olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
 
-* Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabildiğiniz için, olayların belirli bir kaynaktan olduğunu varsaymamak, ancak beklediğiniz depolama hesabından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
-* Benzer şekilde, eventType için hazırlanmakta olan bir olay olduğunu ve aldığınız tüm olayların istediğiniz tür olacağını kabul edin.
-* Anladığınızı alanları yoksayın.  Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
-* Olayları belirli bir olayla sınırlamak için "konu" önekini ve sonek eşleşmelerini kullanın.
+* Birden çok abonelik olayları aynı olay işleyicisine yönlendirecek şekilde yapılandırılabildiği için, olayların belirli bir kaynaktan geldiğini varsaymak değil, beklediğiniz depolama hesabından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
+* Benzer şekilde, eventType'ın işlemeye hazır olup olmadığını denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını varsaymayın.
+* Anlamadığınız alanları yoksay.  Bu uygulama, gelecekte eklenebilir yeni özelliklere karşı esnek tutmanıza yardımcı olacaktır.
+* Olayları belirli bir olayla sınırlamak için "özne" öneki ve sonek eşleşmelerini kullanın.
 
 > [!NOTE]
-> Olaylar Event Grid [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)konusuna tabidir. API 'Leri kullanarak olay bildirimleri almak istiyorsanız, [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) veya [Java SDK](https://github.com/Azure-Samples/media-services-v3-java)ile olayları kullanma örneklerine bakın.
+> Olaylar, Olay Izgara [Hizmet Düzeyi Sözleşmesi'ne (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)tabidir. API'leri kullanarak olay bildirimleri almak istiyorsanız, [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) veya [Java SDK](https://github.com/Azure-Samples/media-services-v3-java)ile olayların nasıl tüketilene ilişkin örneklere bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Olayları izleme-Portal](monitor-events-portal-how-to.md)
-* [Olayları izleme-CLı](job-state-events-cli-how-to.md)
+* [Olayları izleyin - portal](monitor-events-portal-how-to.md)
+* [Olayları izleme - CLI](job-state-events-cli-how-to.md)

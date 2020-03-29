@@ -1,6 +1,6 @@
 ---
-title: Azure Relay Karma Bağlantılar protokol Kılavuzu | Microsoft Docs
-description: Bu makalede, dinleyici ve gönderici rollerinde istemcileri bağlamak için Karma Bağlantılar geçişine sahip istemci tarafı etkileşimleri açıklanmaktadır.
+title: Azure Röle Hibrit Bağlantılar protokol kılavuzu | Microsoft Dokümanlar
+description: Bu makalede, dinleyici ve gönderen rollerindeki istemcileri bağlamak için Karma Bağlantılar rölesi ile istemci tarafı etkileşimleri açıklanmaktadır.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -15,168 +15,168 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: clemensv
 ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514961"
 ---
-# <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Karma Bağlantılar Protokolü
+# <a name="azure-relay-hybrid-connections-protocol"></a>Azure Röle Karma Bağlantılar protokolü
 
-Azure Relay, Azure Service Bus platformunun temel özellik özellikleri ' nin bir biridir. Geçiş özelliğinin yeni _karma bağlantılar_ ÖZELLIĞI, http ve WebSockets temel alınarak güvenli, açık protokol bir geliştir. Özel bir protokol temeli üzerinde oluşturulmuş olan, eşit olarak adlandırılmış _BizTalk Services_ özelliğin yerini alır. Karma Bağlantılar Azure Uygulama Hizmetleri 'ne tümleştirme, olduğu gibi çalışmaya devam edecektir.
+Azure Röle, Azure Hizmet Veri Servisi platformunun temel özellik direklerinden biridir. _Röle'nin_ yeni Karma Bağlantılar özelliği, HTTP ve WebSockets'e dayalı güvenli, açık protokol evrimidir. Bu özel bir protokol temeli üzerine inşa edilmiş eski, eşit adlı _BizTalk Hizmetleri_ özelliği yerini almıştır. Karma Bağlantıların Azure Uygulama Hizmetlerine entegrasyonu olduğu gibi çalışmaya devam edecektir.
 
-Karma Bağlantılar iki bağlantılı uygulama arasında çift yönlü, ikili akış iletişimini ve basit veri birimi akışını mümkün bir şekilde sunar. Her iki taraf da NAT veya güvenlik duvarlarının arkasında bulunabilir.
+Karma Bağlantılar, ağ bağlantılı iki uygulama arasında çift yönlü, ikili akış iletişimi ve basit veri gram akışı sağlar. Ya da her iki taraf DA NaTs veya güvenlik duvarları arkasında ikamet edebilir.
 
-Bu makalede, dinleyici ve gönderici rollerinde istemcileri bağlamak için Karma Bağlantılar geçişine sahip istemci tarafı etkileşimleri açıklanmaktadır. Ayrıca, dinleyicilerinin yeni bağlantıları ve istekleri nasıl kabul edeceğini de açıklar.
+Bu makalede, dinleyici ve gönderen rollerindeki istemcileri bağlamak için Karma Bağlantılar rölesi ile istemci tarafı etkileşimleri açıklanmaktadır. Ayrıca, dinleyicilerin yeni bağlantıları ve istekleri nasıl kabul ettiği de açıklanır.
 
 ## <a name="interaction-model"></a>Etkileşim modeli
 
-Karma Bağlantılar geçişi, Azure bulutu 'nda tarafların kendi ağ perspektifinden bulabilecekleri ve bağlanabileceği bir buluşma noktası sağlayarak iki tarafı birbirine bağlar. Buluşma noktasına bu ve diğer belgelerde, API 'lerde ve ayrıca Azure portal "hibrit Connection" adı verilir. Karma Bağlantılar hizmet uç noktası, bu makalenin geri kalanı için "hizmet" olarak adlandırılır.
+Karma Bağlantılar geçişi, Azure bulutunda tarafların kendi ağlarının bakış açısından keşfedebileceği ve bağlanabileceği bir buluşma noktası sağlayarak iki tarafı birbirine bağlar. Buluşma noktası, bu ve diğer belgelerde, API'lerde ve azure portalında "Karma Bağlantı" olarak adlandırılır. Karma Bağlantılar hizmet bitiş noktası, bu makalenin geri kalanı için "hizmet" olarak adlandırılır.
 
-Hizmet, Web yuvası bağlantılarını ve HTTP (S) isteklerini ve yanıtlarını geçişe olanak tanır.
+Hizmet, Web Soket bağlantılarını ve HTTP(S) isteklerini ve yanıtlarını aktarmaya olanak tanır.
 
-Etkileşim modeli, diğer birçok ağ API 'si tarafından belirlenen terminolojiler. İlk olarak gelen bağlantıları işlemeye hazır olduğunu gösteren bir dinleyici vardır ve sonra bunları geldikçe kabul eder. Diğer tarafta, bir istemci dinleyiciye bağlanır, bu da bağlantının çift yönlü iletişim yolu kurmak için kabul edilmesini bekliyor. "Connect," "Listen" ve "Accept" çoğu yuva API 'Lerinde bulduğunuz şartlardır.
+Etkileşim modeli, diğer birçok ağ API'sı tarafından oluşturulan terminolojiye bağlıdır. İlk olarak gelen bağlantıları işlemeye hazır olduğunu belirten ve daha sonra geldiklerinde bunları kabul eden bir dinleyici vardır. Diğer tarafta, bir istemci dinleyiciye bağlanır ve bu bağlantının çift yönlü bir iletişim yolu oluşturmak için kabul edilmesini bekleyiş eder. "Bağlan", "Dinle" ve "Kabul Et", çoğu soket API'sinde bulduğunuz terimlerdir.
 
-Herhangi bir geçişli iletişim modelinde, bir hizmet uç noktası için giden bağlantılar oluşturan taraf vardır. Bu, "Listener" öğesini de collotial 'da "istemci" yapar ve diğer terminoloji aşırı yüklerine neden olabilir. Bu nedenle Karma Bağlantılar için kullanılan kesin terminoloji aşağıdaki gibidir:
+Aktarılan herhangi bir iletişim modeli, bir hizmet bitiş noktasına doğru giden bağlantıları yapan taraflardan herhangi biri vardır. Bu "dinleyici" de konuşma dilinde kullanımı bir "istemci" yapar ve aynı zamanda diğer terminoloji aşırı neden olabilir. Bu nedenle Hibrit Bağlantılar için kullanılan kesin terminoloji aşağıdaki gibidir:
 
-Bir bağlantının her iki tarafındaki programlar, hizmet istemcileri olduklarından "istemciler" olarak adlandırılır. Bağlantıları bekleyen ve kabul eden istemci, "dinleyicisi" veya "dinleyici rolü" olarak kabul edilir. Hizmet aracılığıyla bir dinleyiciye doğru yeni bir bağlantı başlatan istemciye "gönderici" adı verilir veya "Gönderen rolü" olarak adlandırılır.
+Bir bağlantının her iki tarafındaki programlara "istemciler" denir, çünkü hizmete istemciler. Bağlantıları bekleyen ve kabul eden istemci "dinleyici" veya "dinleyici rolünde" olduğu söylenir. Hizmet aracılığıyla dinleyiciye karşı yeni bir bağlantı başlatan istemciye "gönderen" denir veya "gönderen rolü" bulunmaktadır.
 
 ### <a name="listener-interactions"></a>Dinleyici etkileşimleri
 
-Dinleyicinin hizmet ile beş etkileşimi vardır; tüm hat ayrıntıları, bu makalenin ilerleyen kısımlarında başvuru bölümünde açıklanmaktadır.
+Dinleyicinin hizmetle beş etkileşimi vardır; tüm tel ayrıntıları daha sonra bu makalede referans bölümünde açıklanmıştır.
 
-Dinleme, kabul etme ve Istek iletileri hizmetten alınır. Yenileme ve ping işlemleri dinleyici tarafından gönderilir.
+Dinleme, Kabul et ve İstek iletileri hizmetten alınır. Yenileme ve Ping işlemleri dinleyici tarafından gönderilir.
 
-#### <a name="listen-message"></a>Dinleme iletisi
+#### <a name="listen-message"></a>İletiyi dinleme
 
-Bir dinleyicinin bağlantıları kabul etmeye hazır olduğunu göstermek için bir giden WebSocket bağlantısı oluşturur. Bağlantı el sıkışması, geçiş ad alanında yapılandırılmış bir karma bağlantı adını ve bu ad üzerinde "dinler" seçeneğini karşılayan bir güvenlik belirtecini taşır.
+Dinleyicinin bağlantıları kabul etmeye hazır olduğunu servise hazır göstermek için giden bir WebSocket bağlantısı oluşturur. Bağlantı el sıkışması, Röle ad alanında yapılandırılan bir Karma Bağlantı'nın adını ve bu adüzerinde "Dinle" hakkını veren bir güvenlik belirteci taşır.
 
-WebSocket hizmet tarafından kabul edildiğinde, kayıt tamamlanır ve sonraki tüm etkileşimleri etkinleştirmek için "denetim kanalı" olarak, belirlenen WebSocket etkin tutulur. Hizmet, tek bir karma bağlantı için en fazla 25 eşzamanlı dinleyici sağlar. Appkancaların kotası belirlenecek.
+WebSocket hizmet tarafından kabul edildiğinde, kayıt tamamlanır ve kurulan WebSocket sonraki tüm etkileşimleri etkinleştirmek için "kontrol kanalı" olarak canlı tutulur. Bu hizmet, tek bir Karma Bağlantı için en fazla 25 eşzamanlı dinleyiciye izin verir. AppHooks için kota belirlenecektir.
 
-Karma Bağlantılar için, iki veya daha fazla etkin dinleyici varsa, gelen bağlantılar bunlar arasında rastgele sırada dağıtılır; Dengeli dağıtım, en iyi çaba ile denenir.
+Karma Bağlantılar için, iki veya daha fazla etkin dinleyici varsa, gelen bağlantılar aralarında rastgele sırayla dengelenir; adil dağıtım en iyi çaba ile denenir.
 
 #### <a name="accept-message"></a>İletiyi kabul et
 
-Bir gönderici hizmette yeni bir bağlantı açtığında hizmet, karma bağlantıda etkin dinleyicilerden birini seçer ve bildirir. Bu bildirim, açık denetim kanalı üzerinden JSON iletisi olarak dinleyiciye gönderilir. İleti, dinleyicinin bağlantıyı kabul etmek için bağlanması gereken WebSocket uç noktasının URL 'sini içerir.
+Gönderen hizmette yeni bir bağlantı açtığında, hizmet Hibrit Bağlantı'daki etkin dinleyicilerden birini seçer ve not eder. Bu bildirim, dinleyiciye açık denetim kanalı üzerinden JSON iletisi olarak gönderilir. İleti, dinleyicinin bağlantıyı kabul etmek için bağlanması gereken WebSocket bitiş noktasının URL'sini içerir.
 
-URL, ek bir iş olmadan doğrudan dinleyici tarafından kullanılmalıdır.
-Kodlanan bilgiler, gönderenin bağlantının uçtan uca kurulmasını beklemek zorunda olduğu sürece, yalnızca kısa bir süre için geçerlidir. Kabul edilecek en fazla 30 saniye. URL yalnızca bir başarılı bağlantı girişimi için kullanılabilir. Buluşma URL 'SI ile WebSocket bağlantısı kurulduunda, bu WebSocket üzerindeki tüm diğer etkinlikler gönderene ve göndericiye gönderilir. Bu, hizmet tarafından herhangi bir müdahale veya yorum olmadan gerçekleşir.
+URL, herhangi bir ekstra çalışma olmadan doğrudan dinleyici tarafından kullanılabilir ve kullanılmalıdır.
+Kodlanmış bilgiler yalnızca kısa bir süre için geçerlidir, gönderen bağlantının uçtan uca kurulmasını beklemek istediği sürece. Varsayılması gereken en fazla 30 saniyedir. URL yalnızca başarılı bir bağlantı denemesi için kullanılabilir. Randevu URL'si ile WebSocket bağlantısı kurulur kurulmaz, bu WebSocket'teki diğer tüm etkinlikler gönderene iletilir. Bu hizmet tarafından herhangi bir müdahale veya yorum olmadan olur.
 
-### <a name="request-message"></a>İstek iletisi
+### <a name="request-message"></a>İleti isteği
 
-WebSocket bağlantılarına ek olarak, bu yetenek karma bağlantıda açık bir şekilde etkinleştirilirse, dinleyici bir gönderenden gelen HTTP isteği çerçevelerini de alabilir.
+WebSocket bağlantılarına ek olarak, bu özellik Karma Bağlantı'da açıkça etkinleştirilmişse, dinleyici bir gönderenden DE HTTP istek çerçeveleri alabilir.
 
-HTTP desteğiyle Karma Bağlantılar eklenen dinleyiciler `request` hareketini IŞLEMELIDIR. `request` işlemeyen ve bu nedenle bağlantı sırasında yinelenen zaman aşımı hatalarına neden olabilecek bir dinleyici, gelecekte hizmet tarafından listelenebilir.
+HTTP desteğiyle Hibrit Bağlantılara bağlanan `request` dinleyiciler hareketi işlemelidir. Bağlı yken işlemeyen `request` ve bu nedenle tekrarlanan zaman acısı hatalarına neden olan bir dinleyici, gelecekte hizmet tarafından kara listeye alınabilir.
 
-Http başlık ayrıştırma kitaplıkları JSON ayrıştırıcılarının bir nadir olması nedeniyle, HTTP çerçeve üst bilgisi meta verileri, dinleyici çerçevesi tarafından daha kolay işleme için JSON 'a çevrilir. Yalnızca gönderici ile geçiş HTTP ağ geçidi arasındaki ilişki için ilgili olan HTTP meta verileri, yetkilendirme bilgileri de dahil değildir. HTTP istek gövdeleri, ikili WebSocket çerçeveleri olarak saydam olarak aktarılır.
+HTTP çerçeve üstbilgi meta verileri, dinleyici çerçevesi tarafından daha basit kullanım için JSON'a çevrilir, ayrıca HTTP üstbilgi ayrıştırma kitaplıkları JSON ayrıştırıcılarından daha nadirdir. Yalnızca gönderen ile Röle HTTP ağ geçidi arasındaki ilişkiyle ilgili olan ve yetkilendirme bilgileri de dahil olmak üzere http meta verileri iletilir. HTTP istek gövdeleri saydam olarak ikili WebSocket çerçeveleri olarak aktarılır.
 
-Dinleyici, eşdeğer bir yanıt hareketini kullanarak HTTP isteklerine yanıt verebilir.
+Dinleyici, eşdeğer bir yanıt hareketi kullanarak HTTP isteklerine yanıt verebilir.
 
-İstek/yanıt akışı, varsayılan olarak denetim kanalını kullanır, ancak gerektiğinde farklı bir buluşma WebSocket 'e "yükseltilir". Ayrı WebSocket bağlantıları her bir istemci konuşması için üretilen işi geliştirir, ancak bu, basit istemciler için mümkün olmayan daha fazla bağlantıyla dinleyiciye yük duyar.
+İstek/yanıt akışı varsayılan olarak denetim kanalını kullanır, ancak gerektiğinde farklı bir randevu WebSocket'e "yükseltilebilir". Farklı WebSocket bağlantıları her istemci konuşması için iş bilgisini artırır, ancak dinleyiciye, hafif istemciler için arzu edilen şekilde mümkün olmayan daha fazla bağlantıyla yüklenir.
 
-Denetim kanalında, istek ve yanıt gövdelerinin boyutu en fazla 64 kB ile sınırlıdır. HTTP üstbilgisi meta verileri toplam 32 kB ile sınırlıdır. İstek veya yanıt bu eşiği aşarsa, dinleyiciyi [kabul etme](#accept-message)ile eşdeğer bir hareket kullanarak bir buluşma WebSocket 'e yükseltmeniz gerekir.
+Kontrol kanalında, istek ve yanıt gövdeleri en fazla 64 kB boyutuyla sınırlıdır. HTTP üstbilgi meta verileri toplam 32 kB ile sınırlıdır. İstek veya yanıt bu eşiği aşarsa, dinleyici [Kabul'ü](#accept-message)işlemeye eşdeğer bir hareket kullanarak randevu websocket'e yükseltmeli.
 
-İstekler için hizmet, isteklerin denetim kanalı üzerinden yönlendirilip yönlendirilmeyeceğine karar verir. Bu, bir isteğin 64 kB (üst bilgiler ve gövde) dışında veya istek ["öbekli" aktarım kodlaması](https://tools.ietf.org/html/rfc7230#section-4.1) ile gönderiliyorsa ve hizmetin, Isteğin 64 KB 'yi aşmasına veya isteğin okunmasına neden olması beklendiğinde Hizmet, isteği randevu üzerinden teslim etmeyi seçerse, yalnızca randevu adresini dinleyiciye geçirir.
-Daha sonra dinleyici, buluşma WebSocket 'i SAĞLAMALıDıR ve hizmet, her zaman, buluşma WebSocket üzerinden gövdeler dahil tüm isteği teslim eder. Yanıt Ayrıca, buluşma WebSocket ' i de kullanmalıdır.
+İstekler için, hizmet istekleri denetim kanalı üzerinden yönlendirip yönlendirmemeye karar verir. Buna, bir isteğin 64 kB'yi (üstbilgi artı gövde) aşıldığı veya isteğin ["tıklımtıklı" aktarım kodlaması](https://tools.ietf.org/html/rfc7230#section-4.1) ile gönderildiği ve hizmetin isteğin 64kB'yi aşmasını beklemek için nedeni varsa veya isteği okumanın anlık olmadığı durumlarda sınırlı olmayabilir. Hizmet randevu üzerinde isteği iletmeyi seçerse, yalnızca randevu adresini dinleyiciye geçirir.
+Dinleyici sonra randevu WebSocket kurmak gerekir ve hizmet derhal randevu WebSocket üzerinde organları da dahil olmak üzere tam istek sunar. Yanıt MUST da randevu WebSocket kullanın.
 
-Denetim kanalını gelen istekler için, dinleyici Denetim kanalının veya buluşma aracılığıyla yanıt verip vermeyeceğine karar verir. Hizmet, her isteğin denetim kanalı üzerinden yönlendirildiği bir buluşma adresi içermelidir. Bu adres yalnızca geçerli istekten yükseltmek için geçerlidir.
+Denetim kanalı üzerinden gelen istekler için dinleyici, kontrol kanalı üzerinden mi yoksa randevu yoluyla mı yanıt vereceğine karar verir. Hizmet, kontrol kanalı üzerinden yönlendirilen her isteğin bulunduğu bir randevu adresi içermelidir. Bu adres yalnızca geçerli istekten yükseltme için geçerlidir.
 
-Dinleyici yükseltmeyi seçerse, yanıt, belirlenen randevu yuvası üzerinden bağlantı kurar ve bu yanıtı derhal teslim eder.
+Dinleyici yükseltmeyi seçerse, bağlanır ve yanıtı kurulan randevu soketi üzerinden hemen iletilir.
 
-Buluşma WebSocket 'i kurulduktan sonra, dinleyicinin isteklerin ve yanıtların aynı istemciden daha fazla işlenmesi için bu uygulamayı koruması gerekır. Hizmet, gönderici ile HTTPS yuva bağlantısı devam ettiğinden ve bu gönderenden gelen tüm istekleri korunan WebSocket üzerinden yönlendirdiği sürece, için WebSocket 'in bakımını sürdüder. Dinleyici, arka planda buluşma WebSocket ' i seçerse, sonraki bir isteğin zaten devam ettiğinden bağımsız olarak, hizmet gönderici bağlantısını da kaldırır.
+Randevu WebSocket kurulduktan sonra, dinleyici aynı istemciden gelen istek ve yanıtları daha fazla işlemek için bunu korumak GEREKIR. Hizmet, gönderenle HTTPS soketi bağlantısı devam ettiği sürece WebSocket'i koruyacak ve gönderenden gelen sonraki tüm istekleri korunan WebSocket üzerinden yönlendirecektir. Dinleyici randevu WebSocket'i kendi tarafından bırakmayı seçerse, sonraki bir isteğin devam edip etmediğine bakılmaksızın hizmet gönderene olan bağlantıyı da düşürür.
 
-#### <a name="renew-operation"></a>Yenileme işlemi
+#### <a name="renew-operation"></a>İşlemi yenileme
 
-Dinleyiciyi kaydetmek için kullanılması gereken güvenlik belirteci ve dinleyici etkin durumdayken Denetim kanalının kullanım süresini sürdürmeye devam edebilirsiniz. Belirtecin süre sonu devam eden bağlantıları etkilemez, ancak Denetim kanalının süre sonu sonunda veya kısa bir süre sonra hizmet tarafından bırakılmasına neden olur. "Yenileme" işlemi, Denetim kanalının genişletilmiş dönemler için korunabilmesi için, dinleyicinin denetim kanalı ile ilişkili belirtecin yerini alacak şekilde göndereceği bir JSON iletisidir.
+Dinleyiciyi kaydetmek ve denetim kanalının tutulması için kullanılması gereken güvenlik belirteci, dinleyici etkinken sona erebilir. Belirteç süresi nin sona ermesi devam eden bağlantıları etkilemez, ancak denetim kanalının son kullanma anında veya hemen sonrasında hizmet tarafından düşürülmesine neden olur. "Yenileme" işlemi, denetim kanalının uzun süre korunabilmesi için dinleyicinin denetim kanalıyla ilişkili belirteci değiştirmek için gönderebileceği bir JSON iletisidir.
 
 #### <a name="ping-operation"></a>Ping işlemi
 
-Denetim kanalı uzun bir süre boşta kalırsa, yük dengeleyiciler veya NAT 'Lar gibi aracılar TCP bağlantısını bırakabilir. "Ping" işlemi, kanalda ağ rotasında herkesin bağlantının canlı olduğunu anımsatan ve dinleyici için "canlı" test görevi gören küçük miktarda veri göndererek bunu önler. Ping başarısız olursa, denetim kanalı kullanılamaz olarak kabul edilmelidir ve dinleyicinin yeniden yapılandırılması gerekir.
+Kontrol kanalı uzun süre boşta kalırsa, yük dengeleyicileri veya NAT'ler gibi yoldaki aracılar TCP bağlantısını düşürebilir. "Ping" işlemi, kanala bağlantının canlı olması gerektiğini hatırlatan kanala az miktarda veri göndererek bunu önler ve aynı zamanda dinleyici için "canlı" bir test görevi de vermektedir. Ping başarısız olursa, denetim kanalı kullanılamaz olarak kabul edilmeli ve dinleyici yeniden bağlanmalıdır.
 
-### <a name="sender-interaction"></a>Gönderici etkileşimi
+### <a name="sender-interaction"></a>Gönderen etkileşimi
 
-Gönderenin hizmet ile iki etkileşimi vardır: bir Web yuvasını bağlar veya HTTPS üzerinden istek gönderir. İstek, gönderen rolünden bir Web soketinden gönderilemez.
+Gönderenin hizmetle iki etkileşimi vardır: bir Web Soketi bağlanır veya https üzerinden istek gönderir. İstekler gönderen rolünden bir Web Soketi üzerinden gönderilemez.
 
 #### <a name="connect-operation"></a>Bağlanma işlemi
 
-"Bağlan" işlemi, hizmet üzerinde bir WebSocket açar, karma bağlantının adını ve (isteğe bağlı olarak varsayılan olarak gereklidir) sorgu dizesinde "Gönder" izni veren bir güvenlik belirteci sağlar. Daha sonra hizmet daha önce açıklanan şekilde dinleyiciyle etkileşime girer ve dinleyici bu WebSocket 'e katılmış bir buluşma bağlantısı oluşturur. WebSocket kabul edildikten sonra, bu WebSocket üzerindeki diğer tüm etkileşimler bağlı bir dinleyiciye sahiptir.
+"Bağlan" işlemi, Hizmette Hibrit Bağlantı'nın adını ve (isteğe bağlı olarak, varsayılan olarak gerekli olan) sorgu dizesinde "Gönder" izni veren bir güvenlik belirteci sağlayan bir WebSocket açar. Hizmet daha sonra daha önce açıklandığı şekilde dinleyici ile etkileşime girerken, dinleyici bu WebSocket ile birleştirilmiş bir randevu bağlantısı oluşturur. WebSocket kabul edildikten sonra, bu WebSocket üzerindeki diğer tüm etkileşimler bağlı bir dinleyiciyle yapılır.
 
 #### <a name="request-operation"></a>İstek işlemi
 
-Özelliğin etkinleştirildiği Karma Bağlantılar için gönderici, dinleyicilerine büyük ölçüde Kısıtlanmamış HTTP istekleri gönderebilir.
+Özelliğin etkin hale alındığı Karma Bağlantılar için gönderen dinleyicilere büyük ölçüde sınırsız HTTP istekleri gönderebilir.
 
-Sorgu dizesine veya isteğin bir HTTP üstbilgisine gömülü olan bir geçiş erişim belirteci hariç, geçiş işlemi, geçiş adresi üzerindeki tüm HTTP işlemlerine ve geçiş adresi yolunun tüm soneklerine tamamen saydamdır ve bu, dinleyiciyi uçtan uca yetkilendirme ve hatta [CORS](https://www.w3.org/TR/cors/)gibi http uzantı özellikleri üzerinde tam olarak bırakır.
+Sorgu dizesinde veya isteğin BIR HTTP üstbilgisinde gömülü olan Bir Röle erişim belirteci dışında, Röle adresindeki tüm HTTP işlemleri ve Röle adres yolunun tüm sonekleri için tamamen saydamdır ve dinleyiciyi uçtan uca yetkilendirme yi ve hatta [CORS](https://www.w3.org/TR/cors/)gibi HTTP uzantısı özelliklerini tamamen kontrol eder.
 
-Geçiş uç noktası ile gönderici yetkilendirmesi varsayılan olarak açıktır, ancak Isteğe bağlıdır. Karma bağlantının sahibi anonim gönderenlerin izin vermeyi seçebilir. Hizmet, yetkilendirme bilgilerini şu şekilde durdurur, inceleyebilir ve bu bilgileri uygular:
+Relay bitiş ucuile gönderen yetkilendirmesi varsayılan olarak açık, ancak IsteğE BAĞLı. Karma Bağlantı'nın sahibi anonim gönderenlere izin vermeyi seçebilir. Hizmet, yetkilendirme bilgilerini aşağıdaki gibi yakalar, inceler ve şeritlendirir:
 
-1. Sorgu dizesi bir `sb-hc-token` ifadesi içeriyorsa, ifade her zaman sorgu dizesinden çıkarılır. Geçiş yetkilendirmesi açıksa değerlendirilir.
-2. İstek üst bilgileri bir `ServiceBusAuthorization` üst bilgisi içeriyorsa, üst bilgi ifadesi her zaman üst bilgi koleksiyonundan çıkarılır.
-   Geçiş yetkilendirmesi açıksa değerlendirilir.
-3. Yalnızca geçiş yetkilendirmesi açıksa ve istek başlıkları bir `Authorization` üst bilgisi içeriyorsa ve önceki ifadelerden hiçbiri yoksa, üst bilgi değerlendirilir ve kaldırılır. Aksi takdirde, `Authorization`her zaman olduğu gibi geçirilir.
+1. Sorgu dizesi `sb-hc-token` bir ifade içeriyorsa, ifade HER ZAMAN sorgu dizesinden çıkarılır. Röle yetkisi açıksa değerlendirilecektir.
+2. İstek üstbilgileri bir `ServiceBusAuthorization` üstbilgi içeriyorsa, üstbilgi ifadesi HER ZAMAN üstbilgi koleksiyonundan çıkarılır.
+   Röle yetkisi açıksa değerlendirilecektir.
+3. Yalnızca Röle yetkilendirmesi açıksa ve `Authorization` istek üstbilgileri üstbilgi içeriyorsa ve önceki ifadelerden hiçbiri yoksa, üstbilgi değerlendirilir ve silinecektir. Aksi takdirde, her zaman olduğu gibi `Authorization`geçirilir.
 
-Etkin dinleyici yoksa hizmet bir 502 "bozuk ağ geçidi" hata kodu döndürür. Hizmet isteği işlemek üzere görünmezse, hizmet 60 saniyeden sonra bir 504 "ağ geçidi zaman aşımı" döndürür.
+Etkin bir dinleyici yoksa, hizmet 502 "Kötü Ağ Geçidi" hata kodu döndürecek. Hizmet isteği işleyecek gibi görünmüyorsa, hizmet 60 saniye sonra 504 "Ağ Geçidi Zaman Alacaktır" döndürdü.
 
-### <a name="interaction-summary"></a>Etkileşim Özeti
+### <a name="interaction-summary"></a>Etkileşim özeti
 
-Bu etkileşim modelinin sonucu gönderici istemcisinin bir dinleyiciye bağlı olan ve başka ön kimlik ya da hazırlık gerektiren bir "temiz" WebSocket ile el sıkışmasını sağlar. Bu model, tüm mevcut WebSocket istemci uygulamalarının, WebSocket istemci katmanına doğru bir şekilde oluşturulmuş bir URL sağlayarak Karma Bağlantılar hizmetinden yararlanmasını sağlar.
+Bu etkileşim modelinin sonucu, gönderen istemcinin bir dinleyiciye bağlı olan ve daha fazla önsöz veya hazırlık gerektirmeyen "temiz" bir WebSocket ile el sıkışmadan çıkmasıdır. Bu model, varolan tüm WebSocket istemci uygulamalarının, WebSocket istemci katmanına doğru şekilde oluşturulmuş bir URL sağlayarak Karma Bağlantılar hizmetinden kolayca yararlanmasını sağlar.
 
-Dinleyicinin kabul etme etkileşimi aracılığıyla aldığı randevu bağlantısı WebSocket 'i de temizler ve "kabul etme" işlemlerini ayırt eden en az ek soyutlama ile mevcut bir WebSocket sunucu uygulamasına devredilebilir. çerçevesinin yerel ağ dinleyicileri ve uzaktan "kabul etme" işlemlerini Karma Bağlantılar.
+Dinleyicinin kabul etkileşimi aracılığıyla elde ettiği randevu bağlantısı WebSocket de temizdir ve "kabul et" işlemleri arasında ayrım yapan bazı minimal ekstra soyutlama ile mevcut websocket sunucu uygulamasına teslim edilebilir kendi çerçeveyerel ağ dinleyicive Hibrid Bağlantılar uzaktan "kabul" işlemleri.
 
-HTTP istek/yanıt modeli, göndericiye Isteğe bağlı yetkilendirme katmanıyla büyük ölçüde kısıtlanmamış bir HTTP protokol yüzeyi alanı sağlar. Dinleyici, bir aşağı akış HTTP isteğine geri dönebilir veya olduğu gibi, HTTP gövdeleri taşıyan ikili çerçeveler ile işlenen önceden ayrıştırılmış bir HTTP isteği üst bilgisi bölümü alır. Yanıtlar aynı biçimi kullanır. 64 KB 'den az istek ve yanıt gövdesi olan etkileşimler, tüm gönderenler için paylaşılan tek bir Web yuvası üzerinden işlenebilir. Daha büyük istekler ve yanıtlar, buluşma modeli kullanılarak işlenebilir.
+HTTP istek/yanıt modeli gönderene isteğe bağlı yetkilendirme katmanı içeren büyük ölçüde sınırsız BIR HTTP protokol yüzey alanı sağlar. Dinleyici, http gövdeleri taşıyan ikili çerçeveler ile, bir downstream HTTP isteğine dönüştürülebilen veya olduğu gibi ele alınabilen önceden ayrıştırılmış bir HTTP istek üstbilgi bölümü alır. Yanıtlar aynı biçimi kullanır. 64 KB'den az istek ve yanıt gövdesiile etkileşimler, tüm gönderenler için paylaşılan tek bir Web Soketi üzerinden işlenebilir. Daha büyük istekler ve yanıtlar randevu modeli kullanılarak işlenebilir.
 
 ## <a name="protocol-reference"></a>Protokol başvurusu
 
 Bu bölümde, daha önce açıklanan protokol etkileşimlerinin ayrıntıları açıklanmaktadır.
 
-Tüm WebSocket bağlantıları, 443 numaralı bağlantı noktasında, genellikle bazı WebSocket çerçevesi veya API tarafından soyutlanarak HTTPS 1,1 ' den yükseltme olarak yapılır. Buradaki açıklama, belirli bir çerçeve önermeksizin uygulama nötr olarak tutulur.
+Tüm WebSocket bağlantıları, genellikle bazı WebSocket çerçevesi veya API tarafından soyutlanan HTTPS 1.1'den bir yükseltme olarak 443 bağlantı noktasında yapılır. Burada açıklama belirli bir çerçeve önermeden, uygulama tarafsız tutulur.
 
-### <a name="listener-protocol"></a>Dinleyici Protokolü
+### <a name="listener-protocol"></a>Dinleyici protokolü
 
-Dinleyici Protokolü iki bağlantı hareketlerinden ve üç ileti işlemden oluşur.
+Dinleyici protokolü iki bağlantı hareketi ve üç ileti hareketinden oluşur.
 
-#### <a name="listener-control-channel-connection"></a>Dinleyici denetim kanalı bağlantısı
+#### <a name="listener-control-channel-connection"></a>Dinleyici kontrol kanalı bağlantısı
 
-Denetim kanalı şu şekilde bir WebSocket bağlantısı oluşturularak açılır:
+Denetim kanalı, aşağıdakiler için bir WebSocket bağlantısı oluşturarak açılır:
 
 `wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...`
 
-`namespace-address`, genellikle form `{myname}.servicebus.windows.net`karma bağlantıyı barındıran Azure Relay ad alanının tam etki alanı adıdır.
+Genellikle `namespace-address` formun `{myname}.servicebus.windows.net`Karma Bağlantısını barındıran Azure Röle ad alanının tam nitelikli alan adıdır.
 
-Sorgu dizesi parametre seçenekleri aşağıdaki gibidir.
+Sorgu dize parametresi seçenekleri aşağıdaki gibidir.
 
-| Parametre        | Gereklidir | Açıklama
+| Parametre        | Gerekli | Açıklama
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Evet      | Dinleyici rolü için parametre **SB-HC-Action = dinleme** olmalıdır
-| `{path}`         | Evet      | Bu dinleyiciyi kaydettirmek için önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yolu. Bu ifade, sabit `$hc/` yolu kısmına eklenir.
-| `sb-hc-token`    | Evet\*    | Dinleyici, **dinleme** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
-| `sb-hc-id`       | Hayır       | Bu istemci tarafından sağlanan isteğe bağlı KIMLIK, uçtan uca tanılama izlemesini sağlar.
+| `sb-hc-action`   | Evet      | Dinleyici rolü için parametre **sb-hc-action=listen** olmalıdır
+| `{path}`         | Evet      | Bu dinleyiciyi kaydetmek için önceden yapılandırılmış Karma Bağlantı'nın URL kodlanmış ad alanı yolu. Bu ifade sabit `$hc/` yol bölümüne eklenir.
+| `sb-hc-token`    | Evet\*    | Dinleyici, **Dinleme** hakkını veren ad alanı veya Karma Bağlantı için geçerli, URL kodlu Hizmet Veri Yoluna Paylaşılan Erişim Belirteci sağlamalıdır.
+| `sb-hc-id`       | Hayır       | İstemci tarafından sağlanan bu isteğe bağlı kimlik, uçtan uca tanılama izleme sağlar.
 
-WebSocket bağlantısı, karma bağlantı yolunun kaydedilmediği veya geçersiz ya da eksik bir belirteç ya da başka bir hata nedeniyle başarısız olursa, normal HTTP 1,1 durum geri bildirim modeli kullanılarak hata geri bildirimi sağlanır. Durum açıklaması, Azure destek personeline iletilebiliyor bir hata izleme kimliği içeriyor:
+WebSocket bağlantısı, Karma Bağlantı yolunun kaydedilememesi veya geçersiz veya eksik bir belirteci veya başka bir hata nedeniyle başarısız olursa, hata geri bildirimi normal HTTP 1.1 durum geri bildirimi modeli kullanılarak sağlanır. Durum açıklaması, Azure destek personeline iletilebilecek bir hata izleme kimliği içerir:
 
-| Kodlayın | Hata          | Açıklama
+| Kod | Hata          | Açıklama
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Bulunamadı      | Karma bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
-| 401  | Yetkilendirilmemiş   | Güvenlik belirteci eksik veya hatalı biçimlendirilmiş ya da geçersiz.
-| 403  | Yasak      | Bu eylem için güvenlik belirteci bu yol için geçerli değil.
-| 500  | İç hata | Hizmette bir sorun oluştu.
+| 404  | Bulunamadı      | Karma Bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
+| 401  | Yetkisiz   | Güvenlik belirteci eksik veya yanlış bilgilendirilmiş veya geçersiz.
+| 403  | Yasak      | Güvenlik belirteci, bu eylem için bu yol için geçerli değildir.
+| 500  | İç Hata | Serviste bir şeyler ters gitti.
 
-WebSocket bağlantısı, başlangıçta kurulduktan sonra hizmet tarafından kasıtlı olarak kapalıysa, bunu yapmanın nedeni, uygun bir WebSocket protokol hata kodu ile birlikte bir izleme KIMLIĞI de içeren açıklayıcı bir hata iletisiyle iletilir. Hizmet, bir hata durumuyla karşılaşmadan denetim kanalını kapatmayacak. Tüm temiz kapatmalar istemci tarafından denetlenir.
+WebSocket bağlantısı başlangıçta kurulduktan sonra hizmet tarafından kasıtlı olarak kapatılırsa, bunu yapmanın nedeni, izleme kimliği de içeren açıklayıcı bir hata iletisi ile birlikte uygun bir WebSocket iletişim kuralı hata kodu kullanılarak iletilir. Hizmet, bir hata durumuyla karşılaşmadan denetim kanalını kapatmaz. Herhangi bir temiz kapatma istemci tarafından denetlenir.
 
-| WS durumu | Açıklama
+| WS Durumu | Açıklama
 | --------- | -------------------------------------------------------------------------------
-| 1001      | Karma bağlantı yolu silinmiş veya devre dışı bırakılmış.
-| 1008      | Güvenlik belirtecinin süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi.
-| 1011      | Hizmette bir sorun oluştu.
+| 1001      | Karma Bağlantı yolu silindi veya devre dışı bırakıldı.
+| 1008      | Güvenlik belirteci süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi.
+| 1011      | Serviste bir şeyler ters gitti.
 
-#### <a name="accept-handshake"></a>El sıkışma kabul et
+#### <a name="accept-handshake"></a>El sıkışmayı kabul et
 
-"Kabul" bildirimi, hizmet tarafından daha önce oluşturulmuş denetim kanalı üzerinden bir WebSocket metin çerçevesinde JSON iletisi olarak dinleyiciye gönderilir. Bu iletiye yanıt yok.
+"Kabul et" bildirimi, hizmet tarafından websocket metin çerçevesinde daha önce kurulmuş bir denetim kanalı üzerinden JSON iletisi olarak dinleyiciye gönderilir. Bu iletiyi yanıtlamak yok.
 
-İleti şu anda aşağıdaki özellikleri tanımlayan "Accept" adlı bir JSON nesnesi içerir:
+İleti, şu anda aşağıdaki özellikleri tanımlayan "kabul et" adlı bir JSON nesnesi içerir:
 
-* **Adres** : gelen bir bağlantıyı kabul etmek üzere hizmete WebSocket oluşturmak IÇIN kullanılan URL dizesi.
-* **ID** : Bu bağlantı için benzersiz tanımlayıcı. KIMLIK gönderen istemcisi tarafından sağlandıysa, gönderenin sağladığı değer, aksi takdirde sistem tarafından oluşturulan bir değerdir.
-* **Connectheaders** : gönderen tarafından geçiş uç noktasına sağlanan tüm http üstbilgileri, ayrıca sec-WebSocket-Protocol ve SEC-WebSocket-Extensions üst bilgilerini içerir.
+* **adres** – gelen bir bağlantıyı kabul etmek için hizmete WebSocket'i kurmak için kullanılacak URL dizesi.
+* **id** – bu bağlantı için benzersiz tanımlayıcı. Kimlik gönderen istemci tarafından sağlanmışsa, gönderenin sağladığı değerdir, aksi takdirde sistem tarafından oluşturulan değerdir.
+* **connectHeaders** - gönderen tarafından Röle bitiş noktasına sağlanan tüm HTTP üstbilgi, ayrıca Sec-WebSocket-Protokolü ve Sec-WebSocket-Extensions üstbilgi içerir.
 
 ```json
 {
@@ -192,77 +192,77 @@ WebSocket bağlantısı, başlangıçta kurulduktan sonra hizmet tarafından kas
 }
 ```
 
-JSON iletisinde belirtilen adres URL 'SI dinleyici tarafından gönderici yuvasını kabul etme veya reddetme için WebSocket oluşturmak üzere kullanılır.
+JSON iletisinde sağlanan adres URL'si, gönderen soketi kabul etmek veya reddetmek için WebSocket'i oluşturmak için dinleyici tarafından kullanılır.
 
-##### <a name="accepting-the-socket"></a>Yuva kabul ediliyor
+##### <a name="accepting-the-socket"></a>Soketi kabul etme
 
-Kabul etmek için, dinleyici, girilen adrese bir WebSocket bağlantısı kurar.
+Kabul etmek için dinleyici, sağlanan adrese bir WebSocket bağlantısı kurar.
 
-"Kabul" iletisi bir `Sec-WebSocket-Protocol` üst bilgisi içeriyorsa, dinleyicinin yalnızca bu protokolü desteklemesi durumunda WebSocket 'i kabul etmesi beklenmektedir. Ayrıca, WebSocket kurulduğu için üst bilgiyi ayarlar.
+"Kabul et" iletisi bir `Sec-WebSocket-Protocol` üstbilgi taşıyorsa, dinleyicinin yalnızca bu protokolü destekliyorsa WebSocket'i kabul edin. Ayrıca, WebSocket kuruldukça üstbilgi ayarlar.
 
-Aynı `Sec-WebSocket-Extensions` üst bilgisi için de geçerlidir. Çerçeve bir uzantıyı destekliyorsa, üst bilgiyi uzantı için gereken `Sec-WebSocket-Extensions` el sıkışma 'nın sunucu tarafı yanıtı olarak ayarlanmalıdır.
+Aynı `Sec-WebSocket-Extensions` üstbilgi için de geçerlidir. Çerçeve bir uzantıyı destekliyorsa, üstbilgi uzantısı için gerekli `Sec-WebSocket-Extensions` el sıkışmanın sunucu tarafındaki yanıtına ayarlamalıdır.
 
-Kabul etme yuvasını oluşturmak için URL 'nin olduğu gibi kullanılması gerekir, ancak aşağıdaki parametreleri içerir:
+URL kabul soketi kurmak için olduğu gibi kullanılmalıdır, ancak aşağıdaki parametreleri içerir:
 
-| Parametre      | Gereklidir | Açıklama
+| Parametre      | Gerekli | Açıklama
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için, parametrenin `sb-hc-action=accept` olması gerekir
+| `sb-hc-action` | Evet      | Bir soketi kabul etmek için parametre`sb-hc-action=accept`
 | `{path}`       | Evet      | (aşağıdaki paragrafa bakın)
-| `sb-hc-id`     | Hayır       | Önceki **kimlik**açıklamasına bakın.
+| `sb-hc-id`     | Hayır       | **Id'nin**önceki açıklamasına bakın.
 
-`{path}`, bu dinleyicinin kaydedileceği önceden yapılandırılmış karma bağlantının URL kodlamalı ad alanı yoludur. Bu ifade, sabit `$hc/` yolu kısmına eklenir.
+`{path}`bu dinleyiciyi kaydetmek için önceden yapılandırılmış Karma Bağlantı'nın URL kodlanmış ad alanı yoludur. Bu ifade sabit `$hc/` yol bölümüne eklenir.
 
-`path` ifadesi bir sonek ve eğik çizgiden sonra kayıtlı adı izleyen bir sorgu dizesi ifadesiyle genişletilebilir.
-Bu, gönderici istemcisinin HTTP üstbilgilerini içermesi mümkün olmadığında, dağıtım bağımsız değişkenlerini kabul eden dinleyiciye geçmesini sağlar. Bu işlem, dinleyici çerçevesinin sabit yol bölümünü ve kayıtlı adı yoldan ayrıştırmasına ve geri kalan bir sorgu dizesi bağımsız `sb-`değişkeni olmadan, bağlantının kabul edilip edilmeyeceğini saptarken uygulama için kullanılabilir olmasını sağlar.
+İfade, `path` bir sonek ve bir ayırma ileri eğik çizgi sonra kayıtlı adı izleyen bir sorgu dize ifadesi ile uzatılabilir.
+Bu, GÖNDEREN istemcinin, HTTP üstbilgilerini eklemesi mümkün olmadığında, gönderme bağımsız değişkenlerini kabul eden dinleyiciye geçirmesini sağlar. Beklenti, dinleyici çerçevesinin sabit yol bölümünü ve kayıtlı adı yoldan ayırıp, kalan adı, muhtemelen bağlantının `sb-`kabul edip etmeyeceğine karar vermek için uygulama için önceden belirlenmiş herhangi bir sorgu dize bağımsız değişkeni olmadan, geri kalanı yapar.
 
-Daha fazla bilgi için, aşağıdaki "Gönderen Protokolü" bölümüne bakın.
+Daha fazla bilgi için aşağıdaki "Gönderen Protokolü" bölümüne bakın.
 
-Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir:
+Bir hata varsa, hizmet aşağıdaki gibi yanıtlayabilir:
 
-| Kodlayın | Hata          | Açıklama
+| Kod | Hata          | Açıklama
 | ---- | -------------- | -----------------------------------
 | 403  | Yasak      | URL geçerli değil.
-| 500  | İç hata | Hizmette bir sorun oluştu
+| 500  | İç Hata | Serviste bir şeyler ters gitti.
 
- Bağlantı kurulduktan sonra, gönderen WebSocket kapandığında veya aşağıdaki durum ile sunucu WebSocket 'i kapatır:
+ Bağlantı kurulduktan sonra, gönderen WebSocket kapandığında veya aşağıdaki durumla sunucu WebSocket'i kapatır:
 
-| WS durumu | Açıklama                                                                     |
+| WS Durumu | Açıklama                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Gönderen istemcisi bağlantıyı kapatır.                                    |
-| 1001      | Karma bağlantı yolu silinmiş veya devre dışı bırakılmış.                        |
-| 1008      | Güvenlik belirtecinin süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
-| 1011      | Hizmette bir sorun oluştu.                                            |
+| 1001      | Gönderen istemci bağlantıyı kapatır.                                    |
+| 1001      | Karma Bağlantı yolu silindi veya devre dışı bırakıldı.                        |
+| 1008      | Güvenlik belirteci süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
+| 1011      | Serviste bir şeyler ters gitti.                                            |
 
-##### <a name="rejecting-the-socket"></a>Yuva reddediliyor
+##### <a name="rejecting-the-socket"></a>Soketi reddetme
 
- `accept` iletisini inceledikten sonra yuva reddedildiğinde, ret için nedeni olan durum kodunun ve durum açıklamasının gönderene tekrar akabilmesi için benzer bir el sıkışma gerekir.
+ İletiyi `accept` inceledikten sonra soketin reddedilmesi, durum kodunun ve durum açıklamasının reddedilme nedenini gönderene geri alabilmeleri için benzer bir el sıkışma gerektirir.
 
- Buradaki protokol tasarımı seçeneği, dinleyici istemci uygulamalarının bir WebSocket istemcisine güvenmeye devam edebilmesi ve fazladan, çıplak bir HTTP istemcisi kullanılmasına gerek kalmaması için bir WebSocket el sıkışması (tanımlı bir hata durumunda sona erdirmek üzere tasarlanmıştır) kullanmaktır.
+ Buradaki protokol tasarımı seçeneği, dinleyici istemci uygulamalarının bir WebSocket istemcisine güvenmeye devam edebilmeleri ve fazladan, çıplak bir HTTP istemcisi kullanması gerekmemesi için Bir WebSocket el sıkışması (tanımlı hata durumunda sona erecek şekilde tasarlanmıştır) kullanmaktır.
 
- Yuva reddetmek için istemci, `accept` iletiden adres URI 'sini alır ve buna aşağıdaki şekilde iki sorgu dizesi parametresi ekler:
+ Soketi reddetmek için istemci URI adresini `accept` iletiden alır ve iki sorgu dize sinimetresini aşağıdaki gibi ekler:
 
-| param                   | Gereklidir | Açıklama                              |
+| Param                   | Gerekli | Açıklama                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Evet      | Sayısal HTTP durum kodu.                |
-| SB-HC-statusDescription | Evet      | Red için insan tarafından okunabilen neden. |
+| sb-hc-statusCode        | Evet      | Sayısal HTTP durum kodu.                |
+| sb-hc-statusAçıklama | Evet      | Reddedilmenin insan tarafından okunabilir bir nedeni var. |
 
-Sonuç URI 'SI daha sonra bir WebSocket bağlantısı kurmak için kullanılır.
+Elde edilen URI daha sonra bir WebSocket bağlantısı kurmak için kullanılır.
 
-Doğru bir şekilde tamamlanırken, hiçbir WebSocket oluşturulmadığından HTTP hata kodu 410 ile bu el sıkışma özellikle başarısız olur. Bir sorun yanlış olursa aşağıdaki kodlar hatayı anlatmaktadır:
+Doğru şekilde tamamlanırken, websocket kurulmadığından, bu el sıkışma kasıtlı olarak bir HTTP hata kodu 410 ile başarısız olur. Bir şeyler yanlış giderse, aşağıdaki kodlar hatayı açıklar:
 
-| Kodlayın | Hata          | Açıklama                          |
+| Kod | Hata          | Açıklama                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Yasak      | URL geçerli değil.                |
-| 500  | İç hata | Hizmette bir sorun oluştu. |
+| 500  | İç Hata | Serviste bir şeyler ters gitti. |
 
-#### <a name="request-message"></a>İstek iletisi
+#### <a name="request-message"></a>İleti isteği
 
-`request` ileti, hizmet tarafından denetim kanalı üzerinden dinleyiciye gönderilir. Aynı ileti ayrıca, yeniden bir kez kurulduktan sonra buluşma WebSocket üzerinden gönderilir.
+İleti, `request` servis tarafından denetim kanalı üzerinden dinleyiciye gönderilir. Aynı ileti, kurulduktan sonra randevu WebSocket üzerinden de gönderilir.
 
-`request` iki bölümden oluşur: başlık ve ikili gövde çerçeveleri.
-Gövde yoksa gövde çerçeveleri atlanır. Bir gövdenin, istek iletisindeki Boolean `body` özelliği olup olmadığı göstergesi.
+İki `request` bölümden oluşur: bir üstbilgi ve ikili gövde çerçevesi(ler).
+Gövde yoksa, gövde çerçeveleri atlanır. Bir gövdenin var olup olmadığının `body` göstergesi, istek iletisindeki boolean özelliğidir.
 
-İstek gövdesi olan bir istek için, yapı şöyle görünebilir:
+İstek gövdesiolan bir istek için yapı aşağıdaki gibi görünebilir:
 
 ``` text
 ----- Web Socket text frame ----
@@ -282,8 +282,8 @@ FEFEFEFEFEFEFEFEFEFEF...
 ----------------------------------
 ```
 
-Dinleyicinin birden çok ikili çerçeveye bölünen istek gövdesini alma işlemesi gerekır (bkz. [WebSocket parçaları](https://tools.ietf.org/html/rfc6455#section-5.4)).
-FIN bayrağı ayarlanmış bir ikili çerçeve alındığında istek sona erer.
+Dinleyici MUST istek gövdesini birden çok ikili çerçeveye bölünmüş olarak alma işlemlerini işlemelidir (Bkz. [WebSocket parçaları).](https://tools.ietf.org/html/rfc6455#section-5.4)
+Fin bayrak kümesine sahip ikili bir çerçeve alındığı zaman istek sona erer.
 
 Gövdesi olmayan bir istek için yalnızca bir metin çerçevesi vardır.
 
@@ -299,24 +299,24 @@ Gövdesi olmayan bir istek için yalnızca bir metin çerçevesi vardır.
 ----------------------------------
 ```
 
-`request` için JSON içeriği aşağıdaki gibidir:
+JSON içeriği `request` aşağıdaki gibidir:
 
-* **Adres** URI dizesi. Bu istek için kullanılacak randevu adresidir. Gelen istek 64 kB 'tan büyükse, bu iletinin geri kalanı boş bırakılır ve istemcinin aşağıda açıklanan `accept` işlemine bir buluşma el sıkışma eşdeğerini başlatması gerekır. Hizmet daha sonra tüm `request` belirlenen Web yuvasına yerleştirir. Yanıtın 64 kB 'yi aşması bekleniyorsa, dinleyicinin de bir buluşma anlaşması başlatması ve yanıtı Kurulu Web soketi üzerinden aktarması gerekır.
+* **adres** - URI dizesi. Bu, bu istek için kullanılacak randevu adresidir. Gelen istek 64 kB'den büyükse, bu iletinin geri kalanı boş bırakılır ve istemci aşağıda açıklanan `accept` işlemle eşdeğer bir randevu el sıkışma sıcağa başlamalı. Hizmet daha sonra kurulan `request` Web soketinin tamını koyar. Yanıtın 64 kB'yi aşması bekleniyorsa, dinleyici MUST da bir randevu el sıkışması başlatın ve yanıtı kurulan Web soketi üzerinden aktarır.
 * **id** – dize. Bu istek için benzersiz tanımlayıcı.
-* **RequestHeaders** : Bu nesne, gönderen tarafından bitiş noktasına VERILEN tüm HTTP üstbilgilerini ve [yukarıda](#request-operation)açıklandığı gibi yetkilendirme bilgilerini ve ağ geçidiyle kesinlikle bağlantıyla ilişkili üst bilgileri içerir. Özellikle, `Via`hariç, [RFC7230](https://tools.ietf.org/html/rfc7230)içinde tanımlanan veya ayrılan tüm üstbilgiler çıkarılır ve iletilmez:
+* **requestHeaders** – bu nesne, yukarıda açıklandığı gibi yetkilendirme bilgileri ve [ağ](#request-operation)geçidiyle kesinlikle bağlantıyla ilgili üstbilgiler hariç olmak üzere, gönderen tarafından bitiş noktasına verilen tüm HTTP üstbilgilerini içerir. Özellikle, [RFC7230'da](https://tools.ietf.org/html/rfc7230)tanımlanan veya ayrılmış `Via`TÜM üstbilgi , hariç , soyulmuş ve iledilmez:
 
-  * `Connection` (RFC7230, Bölüm 6,1)
-  * `Content-Length` (RFC7230, Section 3.3.2)
-  * `Host` (RFC7230, Bölüm 5,4)
-  * `TE` (RFC7230, Bölüm 4,3)
-  * `Trailer` (RFC7230, Bölüm 4,4)
-  * `Transfer-Encoding` (RFC7230, Section 3.3.1)
-  * `Upgrade` (RFC7230, Bölüm 6,7)
-  * `Close` (RFC7230, Bölüm 8,1)
+  * `Connection`(RFC7230, Bölüm 6.1)
+  * `Content-Length`(RFC7230, Bölüm 3.3.2)
+  * `Host`(RFC7230, Bölüm 5.4)
+  * `TE`(RFC7230, Bölüm 4.3)
+  * `Trailer`(RFC7230, Bölüm 4.4)
+  * `Transfer-Encoding`(RFC7230, Bölüm 3.3.1)
+  * `Upgrade`(RFC7230, Bölüm 6.7)
+  * `Close`(RFC7230, Bölüm 8.1)
 
-* **Requesttarget** – dize. Bu özellik isteğin ["Istek hedefini" (RFC7230, bölüm 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) tutar. Bu, tüm `sb-hc-` önekli parametrelerden çıkarılır sorgu dizesi bölümünü içerir.
-* **Yöntem** -dize. Bu, [RFC7231 başına, Bölüm 4 '](https://tools.ietf.org/html/rfc7231#section-4)te istek yöntemidir. `CONNECT` yöntemi kullanılmamalıdır.
-* **gövde** – Boolean. Bir veya daha fazla ikili gövde çerçevesinin takip edilip edilmeyeceğini gösterir.
+* **requestTarget** – dize. Bu özellik, isteğin ["İstek Hedefi" (RFC7230, Bölüm 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) tutar. Bu, TÜM `sb-hc-` önceden belirlenmiş parametrelerden arındırılmış sorgu dize bölümünü içerir.
+* **yöntem** - dize. Bu [rfc7231, Bölüm 4](https://tools.ietf.org/html/rfc7231#section-4)başına istek yöntemidir. Yöntem `CONNECT` KULLANıLMAMALıDıR.
+* **vücut** – boolean. Bir veya daha fazla ikili gövde çerçevesinin aşağıdakileri yapıp olmadığını gösterir.
 
 ``` JSON
 {
@@ -337,20 +337,20 @@ Gövdesi olmayan bir istek için yalnızca bir metin çerçevesi vardır.
 
 ##### <a name="responding-to-requests"></a>İsteklere yanıt verme
 
-Alıcı yanıt vermelidir. Bağlantıyı sürdürirken, isteklere yanıt vermek için tekrarlanan hata, dinleyicinin kara listeye alınmasını sağlayabilir.
+Alıcı yanıt vermelidir. Bağlantıyı korurken isteklere yanıt verilmemesi dinleyicinin kara listeye alınmasına neden olabilir.
 
-Yanıtlar herhangi bir sırada gönderilebilir, ancak her isteğin 60 saniye içinde yanıtlanması veya teslimin başarısız olarak bildirilmesi gerekir. 60-ikinci son tarih, hizmet tarafından `response` çerçevesi alınana kadar sayılır. Birden çok ikili çerçeveye sahip devam eden bir yanıt 60 saniyeden uzun bir süre boşta bırakılamaz veya sonlandırılır.
+Yanıtlar herhangi bir sırada gönderilebilir, ancak her isteğe 60 saniye içinde yanıt verilmesi gerekir veya teslimat başarısız olduğu bildirilir. Çerçeve servis tarafından alınana kadar `response` 60 saniyelik süre sayılır. Birden çok ikili kare içeren devam eden bir yanıt 60 saniyeden fazla boşta olamaz veya sonlandırılır.
 
-İstek denetim kanalı üzerinden alınmışsa, yanıtın, isteğin alındığı yerden Denetim kanalında gönderilmesi ya da bir buluşma kanalı üzerinden gönderilmesi gerekir.
+İstek denetim kanalı üzerinden alınırsa, yanıt ya istek alındığı kontrol kanalında gönderilmeli ya da bir randevu kanalı üzerinden gönderilmesi gerekir.
 
-Yanıt, "Response" adlı bir JSON nesnesidir. Gövde içeriğini işlemeye yönelik kurallar, `request` iletisiyle tam olarak ve `body` özelliğine göre benzer.
+Yanıt , "yanıt" adlı bir JSON nesnesidir. Gövde içeriğini işleme kuralları, `request` iletide ve `body` özelliğe göre aynı dır.
 
-* **RequestId** – dize. Gerekli. Yanıt verilen `request` iletisinin `id` Özellik değeri.
-* **StatusCode** – sayı. Gerekli. bildirimin sonucunu gösteren sayısal bir HTTP durum kodu. [502 "bozuk ağ geçidi"](https://tools.ietf.org/html/rfc7231#section-6.6.3) ve [504 "ağ geçidi zaman aşımı"](https://tools.ietf.org/html/rfc7231#section-6.6.5)dışında, [RFC7231, Bölüm 6 '](https://tools.ietf.org/html/rfc7231#section-6) nın tüm durum kodlarına izin verilir.
-* **StatusDescription** -dize. İSTEĞE BAĞLI. HTTP durum-RFC7230 başına kod nedeni tümceciği [, Bölüm 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
-* **ResponseHeaders** – dış http yanıtında ayarlanacak http üst bilgileri.
-  `request`olduğu gibi, RFC7230 tanımlı üst bilgiler kullanılmamalıdır.
-* **gövde** – Boolean. İkili gövde çerçevesinin takip edilip edilmeyeceğini belirtir.
+* **requestId** – dize. Gerekli. Yanıtlanan `id` iletinin `request` özellik değeri.
+* **statusCode** – numara. Gerekli. bildirimin sonucunu gösteren sayısal bir HTTP durum kodu. [502 "Bad Gateway"](https://tools.ietf.org/html/rfc7231#section-6.6.3) ve [504 "Gateway Timeout"](https://tools.ietf.org/html/rfc7231#section-6.6.5)dışında [RFC7231, Bölüm 6](https://tools.ietf.org/html/rfc7231#section-6) tüm durum kodları izin verilir.
+* **statusDescription** - string. Isteğe bağlı. [RFC7230, Bölüm 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2) başına HTTP durum kodu neden tümcecik
+* **responseHeaders** – HTTP başlıkları harici bir HTTP yanıtında ayarlanacak.
+  `request`RFC7230 tanımlı üstbilgide olduğu gibi kullanılmamalıdır.
+* **vücut** – boolean. İkili gövde çerçevesi(ler)in izleyip izlemediğini gösterir.
 
 ``` text
 ----- Web Socket text frame ----
@@ -370,39 +370,39 @@ Yanıt, "Response" adlı bir JSON nesnesidir. Gövde içeriğini işlemeye yöne
 ----------------------------------
 ```
 
-##### <a name="responding-via-rendezvous"></a>Buluşma aracılığıyla yanıt verme
+##### <a name="responding-via-rendezvous"></a>Randevu yoluyla yanıt verme
 
-64 kB 'ı aşan yanıtlar için, yanıt bir buluşma yuvası üzerinden teslim alınmalıdır. Ayrıca, istek 64 kB 'yi aşarsa ve `request` yalnızca adres alanını içeriyorsa, `request`elde etmek için bir buluşma yuvası oluşturulmalıdır. Bir buluşma soketi oluşturulduktan sonra, ilgili istemciden gelen yanıtların ve bu ilgili istemciden gelen isteklerin yanıtları devam ederken buluşma yuvası üzerinden teslim edilmesi gerekır.
+64 kB'yi aşan yanıtlar için yanıt bir randevu soketi üzerinden teslim edilmelidir. Ayrıca, istek 64 kB'yi aşıyorsa ve `request` yalnızca adres alanını içeriyorsa, bir randevu `request`soketi oluşturulmalıdır. Bir randevu soketi kurulduktan sonra, ilgili istemciye verilen yanıtlar ve ilgili istemciden gelen sonraki istekler devam ederken randevu soketi üzerinden teslim edilmelidir.
 
-`request` `address` URL 'SI, buluşma yuvasını oluşturmak için olduğu gibi kullanılmalıdır, ancak aşağıdaki parametreleri içerir:
+`request` URL `address` olarak kullanılmalıdır-randevu soketi kurmak için, ancak aşağıdaki parametreleri içerir:
 
-| Parametre      | Gereklidir | Açıklama
+| Parametre      | Gerekli | Açıklama
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için, parametrenin `sb-hc-action=request` olması gerekir
+| `sb-hc-action` | Evet      | Bir soketi kabul etmek için parametre`sb-hc-action=request`
 
-Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir:
+Bir hata varsa, hizmet aşağıdaki gibi yanıtlayabilir:
 
-| Kodlayın | Hata           | Açıklama
+| Kod | Hata           | Açıklama
 | ---- | --------------- | -----------------------------------
-| 400  | Geçersiz Istek | Tanınmayan eylem veya URL geçerli değil.
-| 403  | Yasak       | URL 'nin süresi doldu.
-| 500  | İç hata  | Hizmette bir sorun oluştu
+| 400  | Geçersiz İstek | Tanınmayan eylem veya URL geçerli değildir.
+| 403  | Yasak       | URL'nin süresi doldu.
+| 500  | İç Hata  | Serviste bir şeyler ters gitti.
 
- Bağlantı kurulduktan sonra, istemci HTTP yuvası kapandığında veya aşağıdaki durum ile sunucu WebSocket 'i kapatır:
+ Bağlantı kurulduktan sonra, istemcinin HTTP soketi kapandığında veya aşağıdaki durumla birlikte sunucu WebSocket'i kapatır:
 
-| WS durumu | Açıklama                                                                     |
+| WS Durumu | Açıklama                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Gönderen istemcisi bağlantıyı kapatır.                                    |
-| 1001      | Karma bağlantı yolu silinmiş veya devre dışı bırakılmış.                        |
-| 1008      | Güvenlik belirtecinin süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
-| 1011      | Hizmette bir sorun oluştu.                                            |
+| 1001      | Gönderen istemci bağlantıyı kapatır.                                    |
+| 1001      | Karma Bağlantı yolu silindi veya devre dışı bırakıldı.                        |
+| 1008      | Güvenlik belirteci süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
+| 1011      | Serviste bir şeyler ters gitti.                                            |
 
 
-#### <a name="listener-token-renewal"></a>Dinleyici belirteci yenileme
+#### <a name="listener-token-renewal"></a>Dinleyici belirteç yenileme
 
-Dinleyici belirtecinin kullanım süresini sona ermek üzereyken, bir metin çerçevesi iletisini, belirlenen denetim kanalı aracılığıyla hizmete göndererek değiştirebilir. İleti şu anda aşağıdaki özelliği tanımlayan `renewToken`adlı bir JSON nesnesi içerir:
+Dinleyici belirteci süresi dolmak üzereyken, kurulan denetim kanalı üzerinden hizmete metin çerçevesi iletisi göndererek değiştirebilirsiniz. `renewToken`İleti, şu anda aşağıdaki özelliği tanımlayan bir JSON nesnesi içerir:
 
-* **belirteç** : ad alanı veya karma bağlantı için **dinleme** HAKKıNı engelleyen geçerli, URL kodlu Service Bus paylaşılan erişim belirteci.
+* **belirteci** – **Dinleme** hakkını veren ad alanı veya Karma Bağlantı için geçerli, URL kodlu Hizmet Veri Yolunda Paylaşılan Erişim belirteci.
 
 ```json
 {
@@ -413,99 +413,99 @@ Dinleyici belirtecinin kullanım süresini sona ermek üzereyken, bir metin çer
 }
 ```
 
-Belirteç doğrulaması başarısız olursa, erişim reddedilir ve bulut hizmeti denetim kanalı WebSocket 'sini bir hata ile kapatır. Aksi takdirde yanıt yoktur.
+Belirteç doğrulaması başarısız olursa, erişim reddedilir ve bulut hizmeti bir hatayla denetim kanalı WebSocket'i kapatır. Aksi takdirde cevap yoktur.
 
-| WS durumu | Açıklama                                                                     |
+| WS Durumu | Açıklama                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1008      | Güvenlik belirtecinin süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
+| 1008      | Güvenlik belirteci süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi. |
 
-### <a name="web-socket-connect-protocol"></a>Web yuvası bağlantı protokolü
+### <a name="web-socket-connect-protocol"></a>Web Soket ikbağlama protokolü
 
-Gönderen protokolü, dinleyicinin kurulma yöntemiyle etkili bir şekilde aynıdır.
-Amaç, uçtan uca WebSocket için en yüksek saydamlığa sahiptir. Bağlanılacak adres, dinleyiciyle aynıdır, ancak "eylem" farklıdır ve belirtecin farklı bir izni olması gerekir:
+Gönderen protokolü, dinleyicinin oluşturulme şekliyle etkin bir şekilde aynıdır.
+Amaç, uçten uca WebSocket için maksimum saydamlıktır. Bağlanacak adres dinleyiciyle aynıdır, ancak "eylem" farklıdır ve belirteci farklı bir izne ihtiyaç duyar:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-_Ad alanı-adresi_ , genellikle form `{myname}.servicebus.windows.net`karma bağlantıyı barındıran Azure Relay ad alanının tam etki alanı adıdır.
+_Ad alanı adresi,_ genellikle formun `{myname}.servicebus.windows.net`Karma Bağlantısını barındıran Azure Röle ad alanının tam nitelikli alan adıdır.
 
-İstek, uygulama tanımlı olanlar da dahil olmak üzere rastgele ek HTTP üstbilgileri içerebilir. Sağlanan tüm üst bilgiler dinleyiciye akar ve **Accept** denetim iletisinin `connectHeader` nesnesi üzerinde bulunabilir.
+İstek, uygulama tanımlı olanlar da dahil olmak üzere rasgele ekstra HTTP üstbilgileri içerebilir. Verilen tüm üstbilgi dinleyiciye akar ve **kabul** `connectHeader` denetimi iletisinin nesnesi üzerinde bulunabilir.
 
-Sorgu dizesi parametre seçenekleri aşağıdaki gibidir:
+Sorgu dize parametresi seçenekleri aşağıdaki gibidir:
 
-| param          | Gerekli mi? | Açıklama
+| Param          | Gerekli mi? | Açıklama
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Evet       | Gönderen rolü için, parametrenin `sb-hc-action=connect`olması gerekir.
+| `sb-hc-action` | Evet       | Gönderen rolü için parametre `sb-hc-action=connect`.
 | `{path}`       | Evet       | (aşağıdaki paragrafa bakın)
-| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
-| `sb-hc-id`     | Hayır        | Uçtan uca tanılama izlemeyi sağlayan ve kabul etme el sıkışması sırasında dinleyici için kullanılabilir hale getirilen isteğe bağlı bir KIMLIK.
+| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını veren ad alanı veya Karma Bağlantı için geçerli, URL kodlu Hizmet Veri Gönder'i Paylaşılan Erişim Jetonu sağlamalıdır.
+| `sb-hc-id`     | Hayır        | Uçtan uca tanılama izleme sağlayan ve kabul el sıkışması sırasında dinleyicinin kullanımına sunulan isteğe bağlı bir kimlik.
 
- `{path}`, bu dinleyicinin kaydedileceği önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yoludur. `path` ifadesi, daha fazla iletişim kurmak için bir sonek ve sorgu dizesi ifadesiyle genişletilebilir. Karma bağlantı yol `hyco`altına kayıtlıysa `path` ifadesi, burada tanımlanan sorgu dizesi parametreleri `hyco/suffix?param=value&...` olabilir. Ardından, bir bütün ifade aşağıdaki gibi olabilir:
+ Bu `{path}` dinleyiciyi kaydetmek için önceden yapılandırılmış Karma Bağlantı'nın URL kodlanmış ad alanı yoludur. İfade, `path` daha fazla iletişim kurmak için bir sonek ve sorgu dize ifadesi ile genişletilebilir. Karma Bağlantı yol `hyco`altında kayıtlıysa, `path` ifade `hyco/suffix?param=value&...` burada tanımlanan sorgu dize parametreleri tarafından izlenebilir. Daha sonra tam bir ifade aşağıdaki gibi olabilir:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-`path` ifade, "kabul" Denetim iletisinde yer alan adres URI 'sindeki dinleyiciye geçirilir.
+İfade, `path` URI'nin "kabul et" denetim iletisinde yer alan adresindeki dinleyiciye iletilir.
 
-WebSocket bağlantısı, karma bağlantı yolu kaydedilmediğinde, geçersiz veya eksik bir belirteç ya da başka bir hata nedeniyle başarısız olursa, normal HTTP 1,1 durum geri bildirim modeli kullanılarak hata geri bildirimi sağlanır. Durum açıklaması, Azure destek personeline iletilebiliyor bir hata izleme KIMLIĞI içeriyor:
+WebSocket bağlantısı, Karma Bağlantı yolunun kaydedilememesi, geçersiz veya eksik bir belirteç veya başka bir hata nedeniyle başarısız olursa, hata geri bildirimi normal HTTP 1.1 durum geri bildirimi modeli kullanılarak sağlanır. Durum açıklaması, Azure destek personeline iletilebilecek bir hata izleme kimliği içerir:
 
-| Kodlayın | Hata          | Açıklama
+| Kod | Hata          | Açıklama
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Bulunamadı      | Karma bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
-| 401  | Yetkilendirilmemiş   | Güvenlik belirteci eksik veya hatalı biçimlendirilmiş ya da geçersiz.
-| 403  | Yasak      | Güvenlik belirteci bu yol için geçerli değil ve bu eylem için.
-| 500  | İç hata | Hizmette bir sorun oluştu.
+| 404  | Bulunamadı      | Karma Bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
+| 401  | Yetkisiz   | Güvenlik belirteci eksik veya yanlış bilgilendirilmiş veya geçersiz.
+| 403  | Yasak      | Güvenlik belirteci bu yol ve bu eylem için geçerli değildir.
+| 500  | İç Hata | Serviste bir şeyler ters gitti.
 
-WebSocket bağlantısı, başlangıçta kurulduktan sonra hizmet tarafından kasıtlı olarak kapalıysa, bunu yapmanın nedeni, uygun bir WebSocket protokol hata kodu ile birlikte bir izleme KIMLIĞI de içeren açıklayıcı bir hata iletisiyle iletilir .
+WebSocket bağlantısı ilk kurulduktan sonra hizmet tarafından kasıtlı olarak kapatılırsa, bunu yapmanın nedeni, izleme kimliği de içeren açıklayıcı bir hata iletisi ile birlikte uygun bir WebSocket protokol hata kodu kullanılarak iletilir .
 
-| WS durumu | Açıklama
+| WS Durumu | Açıklama
 | --------- | ------------------------------------------------------------------------------- 
-| 1000      | Dinleyici, yuvayı kapatır.
-| 1001      | Karma bağlantı yolu silinmiş veya devre dışı bırakılmış.
-| 1008      | Güvenlik belirtecinin süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi.
-| 1011      | Hizmette bir sorun oluştu.
+| 1000      | Dinleyici soketi kapattı.
+| 1001      | Karma Bağlantı yolu silindi veya devre dışı bırakıldı.
+| 1008      | Güvenlik belirteci süresi doldu, bu nedenle yetkilendirme ilkesi ihlal edildi.
+| 1011      | Serviste bir şeyler ters gitti.
 
-### <a name="http-request-protocol"></a>HTTP istek Protokolü
+### <a name="http-request-protocol"></a>HTTP istek protokolü
 
-HTTP istek protokolü, protokol yükseltmeleri haricinde rastgele HTTP isteklerine izin verir.
-HTTP istekleri, karma bağlantı WebSocket istemcileri için kullanılan $hc indüzeltmesini olmadan varlığın normal çalışma zamanı adresine işaret edilir.
+HTTP istek protokolü, protokol yükseltmeleri dışında rasgele HTTP isteklerine izin verir.
+HTTP istekleri, karma bağlantılar WebSocket istemcileri için kullanılan $hc düzeltmesi olmadan varlığın normal çalışma zamanı adresine işaret edilir.
 
 ```
 https://{namespace-address}/{path}?sbc-hc-token=...
 ```
 
-_Ad alanı-adresi_ , genellikle form `{myname}.servicebus.windows.net`karma bağlantıyı barındıran Azure Relay ad alanının tam etki alanı adıdır.
+_Ad alanı adresi,_ genellikle formun `{myname}.servicebus.windows.net`Karma Bağlantısını barındıran Azure Röle ad alanının tam nitelikli alan adıdır.
 
-İstek, uygulama tanımlı olanlar da dahil olmak üzere rastgele ek HTTP üstbilgileri içerebilir. RFC7230 içinde doğrudan tanımlanmış olanlar hariç ( [istek iletisini](#Request message)görüntüle) dinleyiciye akış olan ve **istek** iletisinin `requestHeader` nesnesinde bulunan tüm sağlanan üst bilgiler.
+İstek, uygulama tanımlı olanlar da dahil olmak üzere rasgele ekstra HTTP üstbilgileri içerebilir. RFC7230'da doğrudan tanımlananlar dışında [(istek iletisine](#Request message)bakın) dinleyiciye akıve `requestHeader` **istek** iletisinin nesnesinde bulunabilir.
 
-Sorgu dizesi parametre seçenekleri aşağıdaki gibidir:
+Sorgu dize parametresi seçenekleri aşağıdaki gibidir:
 
-| param          | Gerekli mi? | Açıklama
+| Param          | Gerekli mi? | Açıklama
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
+| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını veren ad alanı veya Karma Bağlantı için geçerli, URL kodlu Hizmet Veri Gönder'i Paylaşılan Erişim Jetonu sağlamalıdır.
 
-Belirteç, `ServiceBusAuthorization` ya da `Authorization` HTTP üst bilgisinde de yapılabilir. Karma bağlantı anonim isteklere izin verecek şekilde yapılandırıldıysa belirteç atlanabilir.
+Belirteç, http üstbilgide `ServiceBusAuthorization` `Authorization` de taşınabilir. Hibrit Bağlantı anonim isteklere izin vermek üzere yapılandırılırsa belirteç atlanabilir.
 
-Hizmet, doğru bir HTTP proxy 'si olarak olmasa bile bir ara sunucu olarak davrandığı için, [RFC7230, Section 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1)ile uyumlu mevcut `Via` üst bilgisini `Via` bir başlık veya bir açıklama ekler.
-Hizmet, `Via`için geçiş ad alanı ana bilgisayar adını ekler.
+Hizmet, gerçek bir HTTP proxy olarak olmasa bile etkili bir proxy `Via` olarak hareket ettiği için, `Via` bir üstbilgi ekler veya [RFC7230, Bölüm 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1)ile uyumlu varolan üstbilgi açıklama.
+Hizmet, `Via`Relay ad alanı ana adını .
 
-| Kodlayın | İleti  | Açıklama                    |
+| Kod | İleti  | Açıklama                    |
 | ---- | -------- | ------------------------------ |
-| 200  | TAMAM       | İstek en az bir dinleyici tarafından işlendi.  |
-| 202  | Kabul edildi | İstek en az bir dinleyici tarafından kabul edildi. |
+| 200  | Tamam       | İstek en az bir dinleyici tarafından ele alınmıştır.  |
+| 202  | Accepted | İstek en az bir dinleyici tarafından kabul edilmiştir. |
 
-Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir. Yanıtın hizmetten mı yoksa dinleyicisinden mı kaynaklanıp `Via` üst bilgi varlığı aracılığıyla tanımlanabilir. Üst bilgi varsa, yanıt dinleyicisinden olur.
+Bir hata varsa, hizmet aşağıdaki gibi yanıtlayabilir. Yanıtın hizmetten mi yoksa dinleyiciden mi kaynaklandığı `Via` üstbilginin varlığı yla tanımlanabilir. Üstbilgi varsa, yanıt dinleyiciden dir.
 
-| Kodlayın | Hata           | Açıklama
+| Kod | Hata           | Açıklama
 | ---- | --------------- |--------- |
-| 404  | Bulunamadı       | Karma bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
-| 401  | Yetkilendirilmemiş    | Güvenlik belirteci eksik veya hatalı biçimlendirilmiş ya da geçersiz.
-| 403  | Yasak       | Güvenlik belirteci bu yol için geçerli değil ve bu eylem için.
-| 500  | İç hata  | Hizmette bir sorun oluştu.
-| 503  | Hatalı Ağ Geçidi     | İstek herhangi bir dinleyiciye yönlendirilemez.
-| 504  | Ağ geçidi zaman aşımı | İstek bir dinleyiciye yönlendirildi, ancak dinleyici, gerekli sürede alındı bildirimi gerçekleştirmedi.
+| 404  | Bulunamadı       | Karma Bağlantı yolu geçersiz veya temel URL hatalı biçimlendirilmiş.
+| 401  | Yetkisiz    | Güvenlik belirteci eksik veya yanlış bilgilendirilmiş veya geçersiz.
+| 403  | Yasak       | Güvenlik belirteci bu yol ve bu eylem için geçerli değildir.
+| 500  | İç Hata  | Serviste bir şeyler ters gitti.
+| 503  | Kötü Ağ Geçidi     | İstek herhangi bir dinleyiciye yönlendirilemedi.
+| 504  | Ağ Geçidi Zaman | İstek bir dinleyiciye yönlendirildi, ancak dinleyici gerekli süre içinde makbuz kabul etmedi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Backup ile Azure Site Recovery kullanma desteği
-description: Azure Site Recovery ve Azure Backup birlikte nasıl kullanılabileceğine ilişkin bir genel bakış sağlar.
+title: Azure Yedekleme ile Azure Site Kurtarma'yı kullanma desteği
+description: Azure Site Kurtarma ve Azure Yedekleme'nin birlikte nasıl kullanılabileceğine genel bir bakış sağlar.
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
 ms.openlocfilehash: d8c896bc655339fbd7d51f738fb629450e8c12ae
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72376210"
 ---
-# <a name="support-for-using-site-recovery-with-azure-backup"></a>Azure Backup ile Site Recovery kullanma desteği
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>Azure Yedekleme ile Site Kurtarma'yı kullanma desteği
 
-Bu makalede, [Azure Backup hizmetiyle](https://docs.microsoft.com/azure/backup/backup-overview)birlikte [Site Recovery hizmetini](site-recovery-overview.md) kullanma desteği özetlenmektedir.
+Bu makalede, [Azure Yedekleme hizmeti](https://docs.microsoft.com/azure/backup/backup-overview)ile birlikte Site Kurtarma [hizmetini](site-recovery-overview.md) kullanma desteği özetlenmiştir.
 
-**Eylem** | **Site Recovery desteği** | **Ayrıntılar**
+**Eylem** | **Site Recovery desteği** | **Şey**
 --- | --- | ---
-**Hizmetleri birlikte dağıtma** | Desteklenen | Hizmetler birlikte çalışabilir ve birlikte yapılandırılabilir.
-**Dosya yedekleme/geri yükleme** | Desteklenen | Yedekleme ve çoğaltma bir VM için etkinleştirildiğinde ve yedeklemeler çekilirken, kaynak tarafı VM 'lerde veya VM grupları üzerinde dosya geri yükleme konusu yoktur. Çoğaltma, çoğaltma durumunda hiçbir değişiklik yapmadan her zamanki gibi devam eder.
-**Disk geri yükleme** | Geçerli destek yok | Yedeklenen bir diski geri yüklerseniz, VM için çoğaltmayı yeniden devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
-**VM geri yükleme** | Geçerli destek yok | Bir VM 'yi veya VM grubunu geri yüklerseniz, VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.  
+**Hizmetleri birlikte dağıtma** | Destekleniyor | Hizmetler birlikte çalışabilir ve birlikte yapılandırılabilir.
+**Dosya yedekleme/geri yükleme** | Destekleniyor | VM için yedekleme ve çoğaltma etkinleştirildiğinde ve yedeklemeler alındığında, kaynak tarafındaki VM'lerde veya VM grubundaki dosyaları geri almakta bir sorun yoktur. Çoğaltma, çoğaltma durumunda hiçbir değişiklik olmadan her zamanki gibi devam ediyor.
+**Disk geri yükleme** | Geçerli destek yok | Yedeklenmiş bir diski geri yüklerseniz, VM için çoğaltmayı yeniden devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
+**VM geri yükleme** | Geçerli destek yok | Bir VM veya VM grubu geri yükseniz, VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.  
 
 

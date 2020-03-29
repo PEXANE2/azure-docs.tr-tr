@@ -1,6 +1,6 @@
 ---
-title: .NET ile Media Services iş bildirimlerini izlemek için Azure kuyruk depolama kullanma | Microsoft Docs
-description: Azure kuyruk depolama, Media Services iş bildirimlerini izlemek için kullanmayı öğrenin. Kod örneği yazıldığı C# ve .NET için Media Services SDK'sını kullanır.
+title: Medya Hizmetleri iş bildirimlerini .NET ile izlemek için Azure Kuyruk depolamasını kullanın | Microsoft Dokümanlar
+description: Medya Hizmetleri iş bildirimlerini izlemek için Azure Kuyruk depolama alanını nasıl kullanacağınızı öğrenin. Kod örneği C# ile yazılır ve .NET için Medya Hizmetleri SDK'sını kullanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64868096"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure kuyruk depolama kullanma 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Medya Hizmetleri iş bildirimlerini .NET ile izlemek için Azure Kuyruk depolamasını kullanma 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
-Kodlama işi çalıştırdığınızda, işin ilerleme durumunu izlemek için bir yol genellikle gerektirir. Media Services'ı için bildirimleri göndermeyi yapılandırabilirsiniz [Azure kuyruk depolama](../../storage/storage-dotnet-how-to-use-queues.md). Kuyruk Depolama'yı bildirim alarak, işin ilerleme durumunu izleyebilirsiniz. 
+Kodlama işlerini çalıştırdığınızda, genellikle iş ilerlemesini izlemek için bir yol gerekir. Medya Hizmetlerini [Azure Sıra depolama alanına](../../storage/storage-dotnet-how-to-use-queues.md)bildirim sunacak şekilde yapılandırabilirsiniz. Sıra depolamadan bildirimler alarak iş ilerlemesini izleyebilirsiniz. 
 
-Mesajlar için kuyruk depolama alanından herhangi bir dünyada erişilebilir. Kuyruk depolama Mesajlaşma mimarisi, güvenilir ve yüksek düzeyde ölçeklenebilir. Kuyruk depolama iletiler için yoklama diğer yöntemleri kullanmayı üzerinden önerilir.
+Sıra depolamasına teslim edilen iletilere dünyanın her yerinden erişilebilir. Sıra depolama ileti mimarisi güvenilir ve yüksek ölçeklenebilir. İletiler için Yoklama Sırası depolama diğer yöntemler kullanılarak üzerinde önerilir.
 
-Media Services bildirimlerini dinleme sık karşılaşılan bir senaryodur sonra bazı ek görevleri gerçekleştirmek için gereken bir içerik yönetim sistemi geliştiriyorsanız (sonraki adım bir iş akışında veya yayımlamak için tetikleyici için bir kodlama işi tamamlandıktan olduğu içeriği).
+Medya Hizmetleri bildirimlerini dinlemek için yaygın bir senaryo, kodlama işi tamamlandıktan sonra bazı ek görevleri gerçekleştirmesi gereken bir içerik yönetim sistemi geliştiriyorsanız (örneğin, bir iş akışındaki bir sonraki adımı tetiklemek veya yayımlamak için içeriği).
 
-Bu makalede, kuyruk Depolama'yı bildirim iletilerinin alınacağı gösterilmektedir.  
+Bu makalede, Sıra depolama dan bildirim iletileri almak için nasıl gösterir.  
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
-Kuyruk depolama kullanan bir Media Services uygulamaları geliştirirken, aşağıdakileri dikkate alın:
+Sıra depolama alanını kullanan Medya Hizmetleri uygulamalarını geliştirirken aşağıdakileri göz önünde bulundurun:
 
-* Kuyruk depolama, ilk-giren ilk çıkar garantili sağlamaz (FIFO) sıralı teslim. Daha fazla bilgi için [Azure kuyrukları ve Azure hizmet veri yolu kuyrukları karşılaştırıldığında ve Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* Kuyruk depolama, anında iletme hizmeti değil. Sıra yoklamak sahip.
-* İstenen sayıda kuyruk olabilir. Daha fazla bilgi için [kuyruk hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Kuyruk depolama, bazı sınırlamalar ve dikkat edilmesi gereken özellikleri vardır. Bunlar [Azure kuyrukları ve Azure hizmet veri yolu kuyrukları karşılaştırıldığında ve Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Sıra depolama, ilk ilk çıkış (FIFO) sipariş edilen teslimat garantisi sağlamaz. Daha fazla bilgi için bkz: [Azure Kuyrukları ve Azure Hizmet Veri Sırası Karşılaştırıldığında ve Zıt.](https://msdn.microsoft.com/library/azure/hh767287.aspx)
+* Sıra depolama bir itme hizmeti değildir. Sırayı yoklamalısın.
+* İstediğiniz sayıda sıra nız olabilir. Daha fazla bilgi için [Sıra Hizmeti REST API'ye](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)bakın.
+* Sıra depolamanın dikkat edilmesi gereken bazı sınırlamalar ve ayrıntılar vardır. Bunlar Azure [Kuyrukları ve Azure Hizmet Veri Biş Kuyrukları Karşılaştırıldığında ve Zıt](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
 ## <a name="net-code-example"></a>.NET kodu örneği
 
-Bu bölümdeki kod örneği, şunları yapar:
+Bu bölümdeki kod örneği aşağıdakileri yapar:
 
-1. Tanımlar **EncodingJobMessage** bildirim iletisi biçimine eşleyen sınıfı. Kod nesnelerin kuyruktan alınan iletiler seri durumdan çıkarır **EncodingJobMessage** türü.
-2. Medya Hizmetleri ve depolama hesabı bilgileri app.config dosyasından yükler. Kod örneği oluşturmak için bu bilgileri kullanır. **CloudMediaContext** ve **CloudQueue** nesneleri.
-3. Kodlama işinin hakkında bildirim iletileri alan bir sıra oluşturur.
-4. Kuyruğa eşlenen bildirim uç noktası oluşturur.
-5. Bildirim uç noktası işe ekler ve kodlama işi gönderir. Birden çok bildirim uç noktaları bir işe bağlı olabilir.
-6. Geçişleri **NotificationJobState.FinalStatesOnly** için **AddNew** yöntemi. (Bu örnekte, yalnızca son iş işlemleri durumlarda ilginizi duyuyoruz.)
+1. Bildirim iletisi biçimiyle eşleyen **EncodingJobMessage** sınıfını tanımlar. Kod, kuyruktan alınan iletileri **EncodingJobMessage** türündeki nesnelere dönüştürür.
+2. Medya Hizmetleri ve Depolama hesap bilgilerini app.config dosyasından yükler. Kod örneği, **CloudMediaContext** ve **CloudQueue** nesnelerini oluşturmak için bu bilgileri kullanır.
+3. Kodlama işiyle ilgili bildirim iletileri alan sırayı oluşturur.
+4. Kuyruğa eşlenen bildirim bitiş noktasını oluşturur.
+5. Bildirim bitiş noktasını işe bağlar ve kodlama işini gönderir. Bir işe birden çok bildirim bitiş noktası eklenmiş olabilir.
+6. **BildirimJobState.FinalStatesOnly** **AddNew** yöntemine geçer. (Bu örnekte, yalnızca iş işlemenin son durumlarıyla ilgileniyoruz.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Geçirirseniz **NotificationJobState.All**, aşağıdaki durum değişikliği bildirimleri Al: kuyruğa alınan, zamanlanan, işleme ve tamamlandı. Ancak, daha önce belirtildiği gibi kuyruk depolama sıralı teslim garanti etmez. İletileri sipariş kullanılacağı **zaman damgası** özelliği (tanımlanan **EncodingJobMessage** aşağıdaki örnekte türü). Yinelenen iletileri mümkündür. Yineleme denetimi yapılacak kullanın **ETag özelliği** (tanımlanan **EncodingJobMessage** türü). Bazı durum değişikliği bildirimleri atlandı da mümkündür.
-8. İşi kuyruğa her 10 saniyede kontrol ederek tamamlanmış duruma almak bekler. Bunlar işlendikten sonra iletileri siler.
-9. Kuyruk ve bildirim bitiş noktasını siler.
+7. **NotificationJobState.All'ı**geçerseniz, aşağıdaki durum değişikliği bildirimlerinin tümünü alırsınız: sıraya, zamanlanmış, işlenir ve tamamlanır. Ancak, daha önce belirtildiği gibi, Sıra depolama sipariş teslim garanti etmez. İleti leri sipariş etmek için **Timestamp** özelliğini kullanın (aşağıdaki örnekte **EncodingJobMessage** türünde tanımlanır). Yinelenen iletiler mümkündür. Yinelenenleri denetlemek için **ETag özelliğini** **(EncodingJobMessage** türünde tanımlanan) kullanın. Bazı durum değişikliği bildirimleri atlanır da mümkündür.
+8. Her 10 saniyede bir sırayı işaretleyerek işin tamamlanma durumuna gelmesini bekler. İletileri işlendikten sonra siler.
+9. Sırayı ve bildirim bitiş noktasını siler.
 
 > [!NOTE]
-> Aşağıdaki örnekte gösterildiği gibi bir işin durumunu izlemek için önerilen yöntem, bildirim iletileri dinleyerek verilmiştir:
+> Bir işin durumunu izlemenin önerilen yolu, aşağıdaki örnekte gösterildiği gibi bildirim iletilerini dinlemektir:
 >
-> Alternatif olarak, kullanarak bir işin durumuna iade edilemedi **IJob.State** özelliği.  Bir işin tamamlanması hakkında bir bildirim iletisi üzerinde duruma gelebilir **IJob** ayarlanır **tamamlandı**. **IJob.State** özelliği kısa bir gecikme ile doğru durumunu yansıtır.
+> Alternatif olarak, **IJob.State** özelliğini kullanarak bir işin durumunu kontrol edebilirsiniz.  Bir işin tamamlanmasıyla ilgili bir bildirim iletisi, **IJob'daki** durum **Tamamlanmaya**ayarlı olmadan önce gelebilir. **IJob.State** özelliği hafif bir gecikme ile doğru durumu yansıtır.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
 1. Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
-2. Yeni bir klasör oluşturun (klasör herhangi bir yerde olabilir yerel sürücünüzde) ve kodlama ve akışını sağlamak veya aşamalı indirmek istediğiniz bir .mp4 dosyasını buraya kopyalayın. Bu örnekte "C:\Media" yol kullanılır.
-3. Bir başvuru ekleyin **System.Runtime.Serialization** kitaplığı.
+2. Yeni bir klasör oluşturun (klasör yerel sürücünüzde herhangi bir yerde olabilir) ve kodlamak ve akış veya aşamalı olarak indirmek istediğiniz bir .mp4 dosyasını kopyalayın. Bu örnekte, "C:\Media" yolu kullanılır.
+3. **System.Runtime.Serialization** kitaplığına bir başvuru ekleyin.
 
 ### <a name="code"></a>Kod
 
@@ -342,7 +342,7 @@ namespace JobNotification
 }
 ```
 
-Yukarıdaki örnek aşağıdaki çıktıyı üretilen: Değerlerinize göre değişir.
+Önceki örnekte aşağıdaki çıktı üretilir: Değerleriniz değişir.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

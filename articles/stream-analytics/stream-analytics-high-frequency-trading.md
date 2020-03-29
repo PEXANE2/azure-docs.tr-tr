@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics kullanarak yüksek frekanslı ticaret
+title: Azure Akış Analitiği'ni kullanarak yüksek frekanslı ticaret
 description: Azure Stream Analytics işinde doğrusal regresyon modeli eğitimi ve puanlamasını gerçekleştirme.
 author: mamccrea
 ms.author: mamccrea
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426217"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics ile yüksek frekanslı alım-satım simülasyonu
@@ -64,13 +64,13 @@ Oluşturulan bazı örnek olaylar aşağıda verilmiştir:
 >Olayın zaman damgası **lastUpdated** şeklindedir (dönem zamanı cinsinden).
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>Yüksek frekanslı alım-satım için tahmine dayalı model
-Gösterim amacıyla, bu çalışmada Darryl Shen tarafından [makalesinde](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html) anlatılan bir doğrusal model kullandık.
+Gösteri amacıyla, darryl Shen tarafından [açıklanan](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)doğrusal bir model kullanıyoruz.
 
 Hacim sipariş dengesizliği (VOI) geçerli teklif/satış fiyatı ve hacim ile son fiyat dalgalanmasından gelen teklif/satış fiyatı ve hacmin bir fonksiyonudur. Makale, VOI ile gelecekteki fiyat hareketi arasındaki bağıntıyı tanımlar. Geçmiş 5 VOI değeri ile son 10 fiyat dalgalanmasındaki fiyat değişikliği arasında doğrusal bir model oluşturur. Model, doğrusal regresyonla önceki günün verileri kullanılarak çalıştırılır. 
 
 Çalıştırılan model, geçerli alım-satım günündeki teklifler üzerinden gerçek zamanlı fiyat değişikliği tahminleri yapmak için kullanılır. Yeterince büyük bir fiyat değişikliği tahmini elde edildiğinde, alım-satım işlemi yürürlüğe konur. Eşik ayarına bağlı olarak, bir alım-satım gününde tek bir hisse senedi için binlerce alım-satım yapılması beklenebilir.
 
-![Toplu sipariş dengesizliği tanımı](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Birim sipariş dengesizliği tanımı](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Şimdi, Azure Stream Analytics işindeki çalıştırma ve tahmin işlemlerini ortaya koyalım.
 
@@ -202,7 +202,7 @@ modelInput AS (
 
 Azure Stream Analytics'in yerleşik bir doğrusal regresyon işlevi olmadığından, doğrusal modelin katsayılarını hesaplamak için **SUM** ve **AVG** toplama işlevlerini kullanırız.
 
-![Doğrusal regresyon Matematik formülü](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Doğrusal regresyon matematik formülü](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -450,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Power BI grafik görselini arasında denge kurar](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Esnaf Güç BI grafik görsel](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![Grafik PNL Power BI görsel](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![PNL Güç BI grafik görsel](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Özet

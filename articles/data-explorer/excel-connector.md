@@ -1,5 +1,5 @@
 ---
-title: Microsoft Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirme
+title: Microsoft Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin
 description: Bu makalede, Azure Veri Gezgini için Excel bağlayıcısını nasıl kullanacağınızı öğreneceksiniz.
 author: orspod
 ms.author: orspodek
@@ -8,68 +8,68 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849063"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirme
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin
 
-Azure Veri Gezgini, Excel 'deki verilere bağlanmak için iki seçenek sunar: yerel bağlayıcıyı kullanın veya Azure Veri Gezgini bir sorgu içeri aktarın. Bu makalede, Excel 'de yerel bağlayıcının nasıl kullanılacağı ve verileri almak ve görselleştirmek için Azure Veri Gezgini kümesine nasıl bağlanacağınız gösterilmektedir.
+Azure Veri Gezgini, Excel'deki verilere bağlanmak için iki seçenek sunar: yerel bağlayıcıyı kullanın veya Azure Veri Gezgini'nden bir sorgu içe aktarma. Bu makalede, Excel'deki yerel bağlayıcıyı nasıl kullanacağınızı ve verileri almak ve görselleştirmek için Azure Veri Gezgini kümesine nasıl bağlanabileceğinizi gösterir.
 
-Azure Veri Gezgini Excel yerel Bağlayıcısı Excel 'e sorgu sonuçları verme olanağı sunar. Ayrıca ek hesaplamalar veya görselleştirmeler için Excel veri kaynağı olarak bir KQL sorgusu da ekleyebilirsiniz.
+Azure Veri Gezgini Excel yerel bağlayıcısı, sorgu sonuçlarını Excel'e dışa aktarma olanağı sunar. Ek hesaplamalar veya görselleştirmeler için Excel veri kaynağı olarak bir KQL sorgusu da ekleyebilirsiniz.
 
-## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Excel veri kaynağı olarak kusto sorgusu tanımlama ve verileri Excel 'e yükleme
+## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Kusto sorgusunu Excel veri kaynağı olarak tanımlayın ve verileri Excel'e yükleyin
 
-1. **Microsoft Excel**'i açın.
-1. **Veri** **sekmesinde Azure** **Veri Gezgini** > Azure 'dan veri > **Al** ' ı seçin.
+1. **Microsoft Excel'i**açın.
+1. **Veri** sekmesinde, Azure > **Veri Gezgini'nden**Veri**From Azure** >  **Al'ı**seçin.
 
-    ![Azure Veri Gezgini veri al](media/excel-connector/get-data-from-adx.png)
+    ![Azure Veri Gezgini'nden veri alma](media/excel-connector/get-data-from-adx.png)
 
-1. **Azure Veri Gezgini (kusto)** penceresinde aşağıdaki alanları tamamlayıp **Tamam**' ı seçin.
+1. Azure **Veri Gezgini (Kusto)** penceresinde, aşağıdaki alanları tamamlayın ve **Tamam'ı**seçin.
 
-    ![Azure Veri Gezgini (kusto) penceresi](media/excel-connector/adx-connection-window.png)
+    ![Azure Veri Gezgini (Kusto) penceresi](media/excel-connector/adx-connection-window.png)
     
     |Alan   |Açıklama |
     |---------|---------|
-    |**İçi**   |   Küme adı (zorunlu)      |    
-    |**Veritabanı**     |    Veritabanının adı      |    
-    |**Tablo adı veya Azure Veri Gezgini sorgusu**    |     Tablo veya Azure Veri Gezgini sorgusunun adı    | 
+    |**Küme**   |   Kümeadı (zorunlu)      |    
+    |**Database**     |    Veritabanının adı      |    
+    |**Tablo adı veya Azure Veri Gezgini sorgusu**    |     Tablonun adı veya Azure Veri Gezgini sorgusu    | 
     
     **Gelişmiş Seçenekler:**
 
      |Alan   |Açıklama |
     |---------|---------|
-    |**Sorgu sonucu kayıt numarasını sınırla**     |     Excel 'e yüklenen kayıtların sayısını sınırlayın  |    
-    |**Sorgu sonuç verileri boyutunu sınırla (bayt)**    |    Veri boyutunu sınırla      |   
-    |**Sonuç kümesi kesilmesini devre dışı bırak**    |         |      
-    |**Ek set deyimleri (noktalı virgülle ayrılmış)**    |    Veri kaynağına uygulanacak `set` deyimlerini ekleyin     |   
+    |**Sorgu sonuç kayıt numarasını sınırla**     |     Excel'e yüklenen kayıt sayısını sınırlama  |    
+    |**Sorgu sonuç veri boyutunu sınırlama (bayt)**    |    Veri boyutunu sınırlama      |   
+    |**Sonuç kümesini devre dışı bırak**    |         |      
+    |**Ek Set deyimleri (yarı iki nokta nokta ile ayrılmış)**    |    Veri `set` kaynağına uygulanacak ifadeler ekleme     |   
 
-1.  **Gezgin** bölmesinde doğru tabloya gidin. Tablo önizleme bölmesinde, verilerde değişiklik yapmak için **verileri Dönüştür** ' ü seçin veya Excel 'e yüklemek için **Yükle** ' yi seçin.
+1.  **Gezgin** bölmesinde, doğru tabloya gidin. Tablo önizleme bölmesinde, verilerinizde değişiklik yapmak için **Verileri Dönüştür'i** veya Excel'e yüklemek için **Yükle'yi** seçin.
 
 ![Tablo önizleme penceresi](media/excel-connector/navigate-table-preview-window.png)
 
    > [!TIP]
-   > **Veritabanı** ve/veya **tablo adı ya da Azure Veri Gezgini sorgusu** zaten belirtilmişse, doğru tablo önizleme bölmesi otomatik olarak açılır. 
+   > **Veritabanı** ve/veya **Tablo adı veya Azure Veri Gezgini sorgusu** zaten belirtilmişse, doğru tablo önizleme bölmesi otomatik olarak açılır. 
 
-## <a name="analyze-and-visualize-data-in-excel"></a>Excel 'de verileri çözümleme ve görselleştirme
+## <a name="analyze-and-visualize-data-in-excel"></a>Excel'de verileri analiz edin ve görselleştirin
 
-Veriler Excel 'e yüklendikten ve Excel sayfanızda kullanılabildiğinde, ilişkileri ve görselleri oluşturarak verileri çözümleyebilir, özetler ve görselleştirebilirsiniz. 
+Veriler excel'e yüklendikten ve Excel sayfanızda kullanılabilir hale geldikten sonra, ilişkiler ve görseller oluşturarak verileri analiz edebilir, özetleyebilir ve görselleştirebilirsiniz. 
 
-1.  **Tablo tasarımı** sekmesinde **PivotTable ile Özetle**' yi seçin. **PivotTable oluştur** penceresinde, ilgili tabloyu seçin ve **Tamam**' ı seçin.
+1.  Tablo **Tasarımı** sekmesinde **PivotTable ile Özetle'yi**seçin. **PivotTable Oluştur** penceresinde, ilgili tabloyu seçin ve **Tamam'ı**seçin.
 
-    ![Özet Tablo Oluştur](media/excel-connector/create-pivot-table.png)
+    ![Pivot tablosu oluşturma](media/excel-connector/create-pivot-table.png)
 
-1. Özet tablolar oluşturmak için **PivotTable alanları** bölmesinde ilgili tablo sütunlarını seçin. Aşağıdaki örnekte, **EventID** ve **State** seçilidir.
+1. **PivotTable Alanları** bölmesinde, özet tablolar oluşturmak için ilgili tablo sütunlarını seçin. Aşağıdaki örnekte **EventId** ve **Durum** seçili.
     
     ![PivotTable alanlarını seçin](media/excel-connector/pivot-table-pick-fields.png)
 
-1. **PivotTable çözümle** sekmesinde, tabloya göre görseller oluşturmak için **PivotChart** ' ı seçin. 
+1. **PivotTable Analyze** sekmesinde, tabloya dayalı görseller oluşturmak için **PivotChart'ı** seçin. 
 
-    ![Özet Grafik](media/excel-connector/pivot-table-analyze-pivotchart.png)
+    ![Özet grafik](media/excel-connector/pivot-table-analyze-pivotchart.png)
 
-1. Aşağıdaki örnekte, hava durumu olaylarıyla ilgili ek bilgileri görüntülemek için **olay kimliği**, **StartTime**ve **EventType** bilgilerini kullanın.
+1. Aşağıdaki örnekte, hava durumu olayları hakkında ek bilgileri görüntülemek için **Olay Kimliği**, **Başlangıç Saati**ve **EventType'ı** kullanın.
 
     ![Verileri görselleştirme](media/excel-connector/visualize-excel-data.png)
 
@@ -77,4 +77,4 @@ Veriler Excel 'e yüklendikten ve Excel sayfanızda kullanılabildiğinde, iliş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft Excel 'e aktarılan bir Azure Veri Gezgini kusto sorgusu kullanarak verileri görselleştirme](excel-blank-query.md)
+[Microsoft Excel'e aktarılan Azure Veri Gezgini Kusto sorgusukullanarak verileri görselleştirin](excel-blank-query.md)

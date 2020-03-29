@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu Edge işlem yönetimi | Microsoft Docs
-description: Tetikleyici, modüller, işlem yapılandırmasını görüntüleme gibi Edge işlem ayarları yönetme, yapılandırma, Azure veri kutusu Edge üzerinde Azure Portalından kaldırmak açıklar.
+title: Azure Veri Kutusu Kenarı bilgi işlem yönetimi | Microsoft Dokümanlar
+description: Tetikleyici, modüller, görünüm bilgi işlem yapılandırması gibi Edge bilgi işlem ayarlarını nasıl yönetiştireceklerini, Azure Veri Kutusu Kenarı'nızdaki Azure portalı üzerinden yapılandırmayı nasıl kaldırabilirsiniz' açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,68 +9,68 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65953129"
 ---
-# <a name="manage-compute-on-your-azure-data-box-edge"></a>İşlem, Azure veri kutusu edge'de yönetme
+# <a name="manage-compute-on-your-azure-data-box-edge"></a>Azure Veri Kutusu Kenarınızda bilgi işlem yönetme
 
-Bu makalede, Azure veri kutusu Edge üzerinde işlem yönetme. İşlem Azure portal aracılığıyla yönetmenize veya yerel web kullanıcı Arabirimi. Modüller, Tetikleyiciler, yönetmek için Azure portalını kullanın ve işlem yapılandırması ve yerel web kullanıcı Arabirimi, işlem ayarlarını yönetmek için.
+Bu makalede, Azure Veri Kutusu Kenarınızdaki bilgi işlem nasıl yönetilmeye açıklanmaktadır. İşlemi Azure portalı üzerinden veya yerel web web ui üzerinden yönetebilirsiniz. Modülleri, tetikleyicileri ve bilgi işlem yapılandırmasını yönetmek için Azure portalını ve bilgi işlem ayarlarını yönetmek için yerel web ui'sini kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Tetikleyicileri yönetme
-> * İşlem yapılandırmasını yönetme
+> * İşlem yapılandırması yönetme
 
 
 ## <a name="manage-triggers"></a>Tetikleyicileri yönetme
 
-Bulut ortamınızda veya Cihazınızda üzerinde işlem gerçekleştirmek isteyebileceğiniz şeyler olaylardır. Örneğin, bir paylaşımında bir dosya oluşturulduğunda, bir olay olur. Tetikleyici olayları tetikleyebilir. Veri kutusu Edge için Tetikleyiciler, yanıt dosyası olayları veya bir zamanlama olabilir.
+Olaylar, bulut ortamınızda veya cihazınızda eylemde bulunmanızı isteyebileceğin şeylerdir. Örneğin, bir dosya bir paylaşımda oluşturulduğunda, bu bir olaydır. Tetikleyiciler olayları yükseltir. Veri Kutusu Kenarınız için tetikleyiciler dosya olaylarına veya zamanlamaya yanıt olarak olabilir.
 
-- **Dosya**: Bu tetikleyiciler gibi bir dosya değişikliği bir dosyanın dosya olaylara yanıt vermek için geçerlidir.
-- **Zamanlanmış**: Bu tetikleyiciler, yanıt olarak başlangıç tarihi, başlangıç saati ve yineleme aralığı ile tanımladığınız bir planlamada olan.
+- **Dosya**: Bu tetikleyiciler, dosya oluşturma, dosya değişikliği gibi dosya olaylarına yanıt olarak verilir.
+- **Zamanlanan**: Bu tetikleyiciler, başlangıç tarihi, başlangıç saati ve yineleme aralığıyla tanımlayabileceğiniz bir zamanlamaya yanıt olarak verilir.
 
 
-### <a name="add-a-trigger"></a>Bir tetikleyici ekleme
+### <a name="add-a-trigger"></a>Tetikleyici ekleme
 
-Bir tetikleyici oluşturmak için Azure portalında aşağıdaki adımları uygulayın.
+Tetikleyici oluşturmak için Azure portalında aşağıdaki adımları izleyin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **Edge işlem > tetikleyici**. Seçin **+ tetikleyicisi Ekle** komut çubuğunda.
+1. Azure portalında, Veri Kutusu Kenarı kaynağınıza gidin ve ardından **Edge bilgi işlem > Tetikleyici'ye**gidin. Komut çubuğuna **+ tetikleyici ekle'yi** seçin.
 
-    ![Tetikleyici Ekle'yi seçin](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Tetikleyici ekle'yi seçin](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. İçinde **tetikleyicisi Ekle** dikey penceresinde, Tetikleyiciniz için benzersiz bir ad sağlayın.
+2. **Tetik bıçağı ekle'de,** tetikleyiciniz için benzersiz bir ad sağlayın.
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. Seçin bir **türü** tetikleyici için. Seçin **dosya** tetikleyici olduğunda dosya olaya yanıt olarak. Seçin **zamanlanmış** tanımlanmış bir zamanda başlatmak ve belirli bir yineleme aralıklarla çalıştırmak için tetikleyici istediğinizde. Seçiminize bağlı olarak, farklı bir dizi seçenek sunulur.
+3. Tetikleyici için bir **Tür** seçin. Tetikleyici bir dosya olayına yanıt verirken **Dosya'yı** seçin. Tetikleyicinin tanımlı bir zamanda başlamasını ve belirli bir yineleme aralığında çalışmasını istediğinizde **Zamanlanmış'ı** seçin. Seçiminize bağlı olarak, farklı bir seçenek kümesi sunulur.
 
-    - **Dosya tetikleyici** -açılan listeden bir bağlı paylaşım seçin. Tetikleyici bu paylaşımın dosya olayı tetiklendiğinde bir Azure işlevi çağırır.
+    - **Dosya tetikleyicisi** - Monte edilmiş bir paylaşım açılır listesinden seçin. Bu paylaşımda bir dosya olayı başlatıldığında, tetikleyici bir Azure İşi çağırır.
 
         ![SMB paylaşımı ekleme](media/data-box-edge-manage-compute/add-file-trigger.png)
 
-    - **Zamanlanan tetikleyici** - başlangıç tarih/saat belirtin ve yineleme aralığı saat, dakika ve saniye. Ayrıca, bir konu adını girin. Bir konu, cihaza dağıtılan bir modül için tetikleyici yönlendirmek için esneklik sunar.
+    - **Zamanlanmış tetikleyici** - Başlangıç tarihini/saatini ve saat, dakika veya saniye cinsinden yineleme aralığını belirtin. Ayrıca, bir konunun adını girin. Bir konu, tetikleyiciyi aygıtta dağıtılan bir modüle yönlendirme esnekliği sağlar.
 
-        Bir örnek yol dizesi: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`.
+        Örnek bir rota `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`dizesi: .
 
         ![NFS paylaşımı ekleme](media/data-box-edge-manage-compute/add-scheduled-trigger.png)
 
-4. Seçin **Ekle** tetikleyicisi oluşturmak için. Tetikleyici oluşturma sürüyor bir bildirimi gösterir. Tetikleyici oluşturulduktan sonra dikey penceresinde Yeni Tetikleyici yansıtacak şekilde güncelleştirir.
+4. Tetikleyiciyi oluşturmak için **Ekle'yi** seçin. Bildirim, tetikleyici oluşturmanın devam ettiğini gösterir. Tetikleyici oluşturulduktan sonra, bıçak yeni tetikleyiciyi yansıtacak şekilde güncellenir.
  
     ![Güncelleştirilmiş tetikleyici listesi](media/data-box-edge-manage-compute/add-trigger-2.png)
 
-### <a name="delete-a-trigger"></a>Bir tetikleyiciyi silin
+### <a name="delete-a-trigger"></a>Tetikleyiciyi silme
 
-Bir tetikleyici silmek için Azure portalında aşağıdaki adımları uygulayın.
+Tetikleyiciyi silmek için Azure portalında aşağıdaki adımları izleyin.
 
-1. Tetikleyiciler listesinden silmek istediğiniz tetikleyiciyi seçin.
+1. Tetikleyiciler listesinden, silmek istediğiniz tetikleyiciyi seçin.
 
-    ![Tetikleyici seçin](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Tetikleyiciyi seçin](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. Sağ tıklayın ve ardından **Sil**.
+2. Sağ tıklatın ve sonra **Sil'i**seçin.
 
     ![Sil'i seçin](media/data-box-edge-manage-compute/add-trigger-1.png)
 
@@ -78,57 +78,57 @@ Bir tetikleyici silmek için Azure portalında aşağıdaki adımları uygulayı
 
     ![Silmeyi onayla](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-Silinmesini yansıtacak şekilde Tetikleyicileri güncelleştirmeleri listesi.
+Silmeyi yansıtacak tetikleyici güncelleştirmeleri listesi.
 
-## <a name="manage-compute-configuration"></a>İşlem yapılandırmasını yönetme
+## <a name="manage-compute-configuration"></a>İşlem yapılandırması yönetme
 
-İşlem yapılandırmasını görüntülemek için var olan bir işlem yapılandırmasını kaldırmak veya yenilemek veri kutusu Ucunuzdaki için IOT cihaz ve IOT Edge cihazı için erişim anahtarlarını eşitlemek için işlem yapılandırması için Azure portalını kullanın.
+Bilgi işlem yapılandırmasını görüntülemek, varolan bir bilgi işlem yapılandırmasını kaldırmak veya Veri Kutusu Edge cihazınız Için IoT aygıtı ve IoT Edge aygıtının erişim anahtarlarını eşitlemek için bilgi işlem yapılandırmasını yenilemek için Azure portalını kullanın.
 
-### <a name="view-compute-configuration"></a>İşlem yapılandırmasını görüntüleme
+### <a name="view-compute-configuration"></a>İşlem yapılandırması görüntüleme
 
-Cihazınız için işlem yapılandırmasını görüntülemek için Azure portalında aşağıdaki adımları uygulayın.
+Cihazınızın işlem yapılandırmasını görüntülemek için Azure portalında aşağıdaki adımları izleyin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **Edge işlem > modülleri**. Seçin **görüntülemek işlem** komut çubuğunda.
+1. Azure portalında, Veri Kutusu Kenarı kaynağınıza gidin ve ardından **Edge bilgi işlem > Modüllerine**gidin. Komut çubuğunda **Görünüm İşlemi'ni** seçin.
 
-    ![Görünüm işlem seçin](media/data-box-edge-manage-compute/view-compute-1.png)
+    ![İşlemi Görüntüle'yi seçin](media/data-box-edge-manage-compute/view-compute-1.png)
 
-2. İşlem yapılandırma Cihazınızda not edin. İşlem yapılandırıldığında, bir IOT hub'ı kaynak oluşturuldu. Bu IOT hub'ı kaynağı altında bir IOT cihaz ve bir IOT Edge cihazı yapılandırılır. IOT Edge Cihazınızda çalıştırmak için yalnızca Linux modülleri desteklenir.
+2. Cihazınızdaki işlem yapılandırmasını not edin. Hesaplamayı yapılandırdığınızda, bir IoT Hub kaynağı oluşturdunuz. Bu IoT Hub kaynağının altında, bir IoT aygıtı ve bir IoT Edge aygıtı yapılandırılır. IoT Edge aygıtında çalışmak üzere yalnızca Linux modülleri desteklenir.
 
-    ![Yapılandırmayı görüntüle](media/data-box-edge-manage-compute/view-compute-2.png)
+    ![Yapılandırmayı görüntüleme](media/data-box-edge-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>İşlem yapılandırmasını Kaldır
+### <a name="remove-compute-configuration"></a>İşlem yapılandırması kaldırma
 
-Cihazınız için var olan Edge işlem yapılandırmasını kaldırmak için Azure portalında aşağıdaki adımları uygulayın.
+Cihazınız için varolan Edge işlem yapılandırmasını kaldırmak için Azure portalında aşağıdaki adımları izleyin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **Edge işlem > başlama**. Seçin **kaldırmak işlem** komut çubuğunda.
+1. Azure portalında, Veri Kutusu Kenarı kaynağınıza gidin ve ardından **Edge bilgi işlem > başlayın.** Komut çubuğundaki **İşlemi Kaldır'ı** seçin.
 
-    ![Remove işlem seçin](media/data-box-edge-manage-compute/remove-compute-1.png)
+    ![İşlemi Kaldır'ı seçin](media/data-box-edge-manage-compute/remove-compute-1.png)
 
-2. İşlem yapılandırmasını kaldırırsanız, işlem yeniden kullanmanız gerektiği durumlarda Cihazınızı yeniden yapılandırmanız gerekir. Onayınız istendiğinde seçin **Evet**.
+2. Bilgi işlem yapılandırmasını kaldırırsanız, yeniden bilgi işlem kullanmanız gerektiğinde cihazınızı yeniden yapılandırmanız gerekir. Onay istendiğinde **Evet'i**seçin.
 
-    ![Remove işlem seçin](media/data-box-edge-manage-compute/remove-compute-2.png)
+    ![İşlemi Kaldır'ı seçin](media/data-box-edge-manage-compute/remove-compute-2.png)
 
-### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IOT cihaz ve IOT Edge cihazı ayarlama erişim anahtarları Eşitle
+### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT cihazını ve IoT Edge cihaz erişim anahtarlarını senkronize etme
 
-İşlem, veri kutusu Edge üzerinde yapılandırdığınızda, bir IOT cihaz ve bir IOT Edge cihazı oluşturulur. Bu cihazlar otomatik olarak simetrik erişim tuşu atanır. Güvenlik açısından en iyisi, bu anahtarlar düzenli olarak IOT Hub hizmeti ile döndürülür.
+Veri Kutusu Kenarı'nızda bilgi işlem yapılandırdığınızda, bir IoT aygıtı ve bir IoT Edge aygıtı oluşturulur. Bu aygıtlara otomatik olarak simetrik erişim anahtarları atanır. Güvenlik en iyi uygulama olarak, bu anahtarlar IoT Hub hizmeti üzerinden düzenli olarak döndürülür.
 
-Bu anahtarlarını döndürmek için oluşturduğunuz IOT Hub hizmetine gidin ve IOT cihaz veya IOT Edge cihazı seçin. Her cihaz, birincil erişim anahtarı ve bir ikincil erişim anahtarları vardır. Birincil erişim anahtarını ikincil erişim tuşunu atayın ve ardından birincil erişim anahtarını yeniden oluştur.
+Bu anahtarları döndürmek için oluşturduğunuz IoT Hub hizmetine gidebilir ve IoT aygıtını veya IoT Edge aygıtını seçebilirsiniz. Her aygıtın birincil erişim anahtarı ve ikincil erişim anahtarları vardır. Birincil erişim anahtarını ikincil erişim anahtarına atayın ve ardından birincil erişim anahtarını yeniden oluşturun.
 
-IOT cihaz ve IOT Edge cihaz anahtarları Döndürülmüş, en son erişim anahtarlarını almak için veri kutusu Ucunuzdaki yapılandırmasına yenilemek gerekir. Eşitleme, cihaz IOT cihaz ve IOT Edge cihazı için en son anahtarlarını edinmeniz yardımcı olur. Veri kutusu Edge yalnızca birincil erişim anahtarlarını kullanır.
+IoT aygıtınız ve IoT Edge aygıt tuşlarınız döndürüldüyse, en son erişim anahtarlarını almak için Veri Kutusu Kenarı'ndaki yapılandırmayı yenilemeniz gerekir. Eşitleme, aygıtın IoT aygıtınız ve IoT Edge aygıtınız için en son anahtarları elde edilmesine yardımcı olur. Veri Kutusu Kenarı yalnızca birincil erişim anahtarlarını kullanır.
 
-Cihazınız için erişim anahtarlarını eşitleme için Azure portalında aşağıdaki adımları uygulayın.
+Cihazınızın erişim anahtarlarını eşitlemek için Azure portalında aşağıdaki adımları izleyin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **Edge işlem > başlama**. Seçin **yenileme Yapılandırması** komut çubuğunda.
+1. Azure portalında, Veri Kutusu Kenarı kaynağınıza gidin ve ardından **Edge bilgi işlem > başlayın.** Komut çubuğundaki **yapılandırmayı yenile'yi** seçin.
 
-    ![Yenileme yapılandırması](media/data-box-edge-manage-compute/refresh-configuration-1.png)
+    ![Yapılandırmayı Yenile'yi seçin](media/data-box-edge-manage-compute/refresh-configuration-1.png)
 
-2. Seçin **Evet** onaylamanız istendiğinde.
+2. Onay istendiğinde **Evet'i** seçin.
 
-     ![Evet, istendiğinde seçin](media/data-box-edge-manage-compute/refresh-configuration-2.png)
+     ![İstendiğinde Evet'i seçin](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. Eşitleme tamamlandıktan sonra iletişim kutusunu kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [yönetin uç bilgi işlem, Azure portal aracılığıyla ağ](data-box-edge-extend-compute-access-modules.md).
+- [Azure portalı üzerinden Edge bilgi işlem ağını](data-box-edge-extend-compute-access-modules.md)nasıl yöneteceklerini öğrenin.

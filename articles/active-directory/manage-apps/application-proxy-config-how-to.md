@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy'si uygulaması yapılandırma | Microsoft Docs
-description: Oluşturun ve birkaç basit adımda bir uygulama proxy'si uygulaması yapılandırma hakkında bilgi edinin
+title: Uygulama Proxy uygulaması nasıl yapılandırılır | Microsoft Dokümanlar
+description: Birkaç basit adımda bir APplication Proxy uygulamasını nasıl oluşturup yapılandırılamayı öğrenin
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,56 +17,56 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67807849"
 ---
-# <a name="how-to-configure-an-application-proxy-application"></a>Uygulama proxy'si uygulaması yapılandırma
+# <a name="how-to-configure-an-application-proxy-application"></a>Uygulama Proxy uygulaması nasıl yapılandırılır?
 
-Bu makalede, şirket içi uygulamaları bulutta kullanıma sunmak için bir uygulama proxy'si uygulamasını Azure AD'ye nasıl anlamanıza yardımcı olur.
+Bu makale, şirket içi uygulamalarınızı buluta maruz bırakmak için Azure AD'deki bir Uygulama Proxy uygulamasını nasıl yapılandırabileceğinizi anlamanıza yardımcı olur.
 
 ## <a name="recommended-documents"></a>Önerilen belgeler
 
-İlk Yapılandırma ve Yönetim Portalı üzerinden bir uygulama proxy'si uygulaması oluşturma hakkında bilgi edinmek için izleyin [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md).
+Yönetici Portalı üzerinden ilk yapılandırmaları ve uygulama proxy uygulaması oluşturma hakkında bilgi edinmek için [Azure AD Application Proxy'yi kullanarak Uygulamaları](application-proxy-add-on-premises-application.md)Yayımla'yı izleyin.
 
-Bağlayıcı yapılandırma hakkında daha fazla bilgi için bkz [Azure portalında uygulama ara sunucusunu etkinleştirme](application-proxy-add-on-premises-application.md).
+Bağlayıcıları yapılandırma yla ilgili ayrıntılar için [Azure portalında Uygulama Proxy'sini Etkinleştir'e](application-proxy-add-on-premises-application.md)bakın.
 
-Sertifikaları karşıya yükleme ve özel etki alanlarını kullanma hakkında daha fazla bilgi için bkz: [Azure AD uygulama proxy'sinde özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
+Sertifika yükleme ve özel etki alanlarını kullanma hakkında daha fazla bilgi için Azure [AD Application Proxy'de özel etki alanlarıyla çalışma](application-proxy-configure-custom-domain.md)bilgisine bakın.
 
-## <a name="create-the-applicationsetting-the-urls"></a>Uygulama/ayarı URL'ler oluşturma
+## <a name="create-the-applicationsetting-the-urls"></a>Uygulama Oluşturma/URL'leri Ayarlama
 
-Adımları takip ediyorsanız [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md) belgeleri ve bu bilgi için hata ayrıntılarına ve düzeltmeye ilişkin öneriler görürsünüz alınırken bir hata uygulaması oluşturma uygulama. Çoğu hata iletileri, önerilen düzeltmeyi içerir. Sık karşılaşılan hataları önlemek için aşağıdakileri doğrulayın:
+Azure AD Application Proxy belgelerini [kullanarak Uygulama Yayımla](application-proxy-add-on-premises-application.md) adımlarını takip ediyorsanız ve uygulamayı oluştururken bir hata alıyorsanız, uygulamayı nasıl düzelteceğimiz le ilgili bilgi ve öneriler için hata ayrıntılarına bakın. Çoğu hata iletisi önerilen düzeltmeyi içerir. Sık karşılaşılan hataları önlemek için şu leri doğrulayın:
 
-- Uygulama proxy'si uygulaması oluşturmak için izne sahip bir yöneticisiniz
-- İç URL benzersizdir
-- Dış URL benzersizdir
-- URL'leri http veya https ile başlayamaz ve bitemez bir "/"
-- URL bir etki alanı adı veya IP adresi olmalıdır
+- Bir Uygulama Proxy uygulaması oluşturmak için izni olan bir yönetici vardır
+- Dahili URL benzersizdir
+- Harici URL benzersizdir
+- URL'ler http veya https ile başlar ve "/" ile sona erer
+- URL bir etki alanı adı olmalı, IP adresi değil
 
-Uygulamayı oluştururken sağ üst köşedeki hata iletisi görüntülenmelidir. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
+Uygulamayı oluştururken hata iletisi sağ üst köşede görüntülenmelidir. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
 
-![Uyarı istemi, Azure portalında nerede bulacağını gösterir](./media/application-proxy-config-how-to/error-message.png)
+![Azure portalında Bildirim istemini nerede bulacağımı gösterir](./media/application-proxy-config-how-to/error-message.png)
 
-## <a name="configure-connectorsconnector-groups"></a>Bağlayıcıların/bağlayıcı gruplarını yapılandırma
+## <a name="configure-connectorsconnector-groups"></a>Konektörleri/bağlayıcı gruplarını yapılandırma
 
-Bağlayıcı grupları ve bağlayıcılar hakkında uyarı nedeniyle uygulamanızı yapılandırma ile ilgili sorunlar yaşıyorsanız, bağlayıcı indirme hakkında ayrıntılar için uygulama proxy'sini etkinleştirme hakkında yönergeler bakın. Bağlayıcılar hakkında daha fazla bilgi edinmek istiyorsanız bkz [bağlayıcılar belgelerine](application-proxy-connectors.md).
+Bağlayıcılar ve bağlayıcı grupları hakkında uyarı nedeniyle uygulamanızı yapılandırmada güçlük çekiyorsanız, bağlayıcıları nasıl karşıdan yükleyin hakkında ayrıntılar için Uygulama Proxy'sini etkinleştirme yönergelerine bakın. Bağlayıcılar hakkında daha fazla bilgi edinmek istiyorsanız, [bağlayıcılar belgelerine](application-proxy-connectors.md)bakın.
 
-Bağlayıcılarınızı devre dışı ise bu hizmete bağlanamıyoruz anlamına gelir. Bu durum, genellikle tüm gereken bağlantı noktalarını açık olmadığından olur. Gerekli bağlantı noktalarının bir listesini görmek için etkinleştirme uygulama proxy'si belgelerin Önkoşullar bölümüne bakın.
+Bağlayıcılarınız etkin değilse, bu hizmete erişemedikleri anlamına gelir. Bunun nedeni genellikle gerekli tüm bağlantı noktalarının açık olmamasıdır. Gerekli bağlantı noktalarının listesini görmek için, etkinleştirilen Uygulama Proxy belgelerinin ön koşullar bölümüne bakın.
 
-## <a name="upload-certificates-for-custom-domains"></a>Özel etki alanları için sertifikaları karşıya yükle
+## <a name="upload-certificates-for-custom-domains"></a>Özel etki alanları için sertifika yükleme
 
-Özel etki alanlarına etki alanı, dış URL'leri belirtmenizi sağlar. Özel etki alanlarını kullanmak için bu etki alanı için sertifika karşıya gerekir. Özel etki alanları ve sertifikalar hakkında daha fazla bilgi için bkz: [Azure AD uygulama proxy'sinde özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
+Özel Etki Alanları, harici URL'lerinizin etki alanını belirtmenize olanak sağlar. Özel etki alanlarını kullanmak için, söz alan adı için sertifika yüklemeniz gerekir. Özel etki alanlarını ve sertifikaları kullanma hakkında daha fazla bilgi için Azure [AD Application Proxy'de özel etki alanlarıyla çalışma](application-proxy-configure-custom-domain.md)bilgisine bakın.
 
-Sertifikanızı karşıya yüklemeyi sorunlarla karşılaşıyorsanız, sertifikayla ilgili bir sorun hakkında daha fazla bilgi için portaldaki hata iletilerini arayın. Ortak sertifika sorunları şunlardır:
+Sertifikanızı yüklerken sorunlarla karşılaşıyorsanız, sertifikayla ilgili sorun hakkında ek bilgi için portaldaki hata iletilerini arayın. Yaygın sertifika sorunları şunlardır:
 
-- Süresi dolan sertifika
-- Otomatik olarak imzalanan sertifika
+- Süresi dolmuş sertifika
+- Sertifika kendi imzalı
 - Sertifika özel anahtar eksik
 
-Sertifikayı karşıya yüklemek çalışırken sağ üst köşedeki hata iletisini görüntüler. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
+Sertifikayı yüklemeye çalışırken sağ üst köşede hata iletisi görüntülenir. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md)
+[Azure AD Uygulama Ara Sunucusu ile uygulama yayımlama](application-proxy-add-on-premises-application.md)

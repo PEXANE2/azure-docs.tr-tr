@@ -1,6 +1,6 @@
 ---
-title: Kimlik doğrulama yöntemleri kullanım & Öngörüler-Azure Active Directory
-description: Azure AD self servis parola sıfırlama ve Multi-Factor Authentication kimlik doğrulama yöntemi kullanımı hakkında raporlama
+title: Kimlik doğrulama yöntemleri kullanımı & öngörüleri - Azure Active Directory
+description: Azure AD self servis parola sıfırlama ve Çok Faktörlü Kimlik Doğrulama yöntemi kullanımı hakkında raporlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,90 +12,90 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848519"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
+# <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanımı & öngörüleri (önizleme)
 
-Kullanım & öngörüleri, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak sağlar. Bu raporlama özelliği, kuruluşunuzda hangi yöntemlerin kaydedildiğini ve bunların nasıl kullanıldığını anlamak için gerekenleri sağlar.
+Kullanım & öngörüler, Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanızı sağlar. Bu raporlama özelliği, kuruluşunuz için hangi yöntemlerin kaydedildiğini ve bunların nasıl kullanıldığını anlama olanağı sağlar.
 
 ## <a name="permissions-and-licenses"></a>İzinler ve lisanslar
 
-Aşağıdaki roller kullanım ve öngörülere erişebilir:
+Aşağıdaki roller kullanıma ve öngörülere erişebilir:
 
 - Genel Yönetici
-- Güvenlik Okuyucusu
+- Güvenlik Okuyucu
 - Güvenlik Yöneticisi
-- Rapor okuyucu
+- Raporlar Okuyucu
 
-Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
+Kullanıma ve öngörülere erişmek için ek lisans gerekmez. Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
-Kimlik doğrulama yöntemi kullanımı ve öngörülerine erişmek için:
+Kimlik doğrulama yöntemi kullanımına ve öngörülerine erişmek için:
 
-1. [Azure portala](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **parola sıfırlama** > **kullanımı & öngörülere**gidin.
-1. **Kayıt** veya **kullanım** genel bakışlarından, gereksinimlerinize göre filtrelemek için önceden filtrelenmiş raporları açmayı seçebilirsiniz.
+1. [Azure portalına](https://portal.azure.com)göz atın.
+1. **Azure Active Directory** > **Password sıfırlama** > **Kullanımı & öngörülerine**göz atın.
+1. **Kayıt** veya **Kullanıma** genel bakışlardan, gereksinimlerinize göre filtrelemek için önceden filtrelenmiş raporları açmayı seçebilirsiniz.
 
-![Kullanım & öngörülerine genel bakış](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Kullanım & öngörülere genel bakış](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Kullanım & öngörülerini doğrudan erişmek için [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)gidin. Bu bağlantı sizi kayda genel bakış alanına getirir.
+Kullanıma & öngörülere doğrudan erişmek [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)için. Bu bağlantı, kayıt genel bakış size getirecektir.
 
-Kayıtlı kullanıcılar, kullanıcılar etkin ve kullanıcılara uygun Kutucuklar, kullanıcılarınız için aşağıdaki kayıt verilerini gösterir:
+Kullanıcılar kayıtlı, Kullanıcılar etkin ve Kullanıcılar yeteneğine sahip kutucuklar kullanıcılarınız için aşağıdaki kayıt verilerini gösterir:
 
-- Kayıtlı: bir Kullanıcı, kuruluşunuzun SSPR veya Multi-Factor Authentication ilkesini karşılamak için yeterli kimlik doğrulama yöntemine kaydolduklarında (veya bir yönetici), kayıtlı kabul edilir.
-- Etkin: SSPR ilkesi kapsamınlarsa Kullanıcı etkin kabul edilir. Bir grup için SSPR etkinse, bu grupta olmaları durumunda Kullanıcı etkin kabul edilir. SSPR tüm kullanıcılar için etkinleştirilirse, Kiracıdaki tüm kullanıcılar (konukları hariç) etkin kabul edilir.
-- Uyumlu: bir Kullanıcı, hem kaydolduklarında hem de etkinse yetenekli olarak değerlendirilir. Bu durum, gerekirse SSPR 'yi dilediğiniz zaman gerçekleştirebilecekleri anlamına gelir.
+- Kayıtlı: Bir kullanıcı( veya bir yönetici) kuruluşunuzun SSPR veya Çok Faktörlü Kimlik Doğrulama ilkesini karşılamak için yeterli kimlik doğrulama yöntemleri kaydetmişse kayıtlı kabul edilir.
+- Etkin: SSPR ilkesi kapsamında olan bir kullanıcı etkin kabul edilir. Bir grup için SSPR etkinse, kullanıcı bu gruptaysa etkin kabul edilir. Tüm kullanıcılar için SSPR etkinse, kiracıdaki (misafirler hariç) tüm kullanıcılar etkin kabul edilir.
+- Yetenekli: Bir kullanıcı, hem kayıtlı hem de etkinse yetenekli kabul edilir. Bu durum, gerektiğinde istedikleri zaman SSPR gerçekleştirebilecekleri anlamına gelir.
 
-Bu kutucukların herhangi birine veya bunlarda gösterilen öngörülere tıkladığınızda, kayıt ayrıntılarının önceden filtrelenmiş bir listesi görüntülenir.
+Bu döşemelerden herhangi birini tıklattığınızda veya bunlarda gösterilen öngörüler sizi önceden filtrelenmiş bir kayıt ayrıntıları listesine getirir.
 
-**Kayıt** sekmesindeki **kayıtlar** grafiği, kimlik doğrulama yöntemine göre başarılı ve başarısız kimlik doğrulama yöntemi kaydı sayısını gösterir. **Kullanım** sekmesindeki grafiği **sıfırlar** , kimlik doğrulama yöntemine göre parola sıfırlama akışı sırasında başarılı ve başarısız kimlik doğrulama sayısını gösterir.
+**Kayıt** sekmesindeki **Kayıtlar** grafiği, kimlik doğrulama yöntemiyle başarılı ve başarısız kimlik doğrulama yöntemi kayıtlarının sayısını gösterir. **Kullanım** sekmesindeki **Sıfırlama** grafiği, kimlik doğrulama yöntemiyle parola sıfırlama akışı sırasında başarılı ve başarısız kimlik doğrulamalarının sayısını gösterir.
 
-Grafiklerden birine tıkladığınızda, sizi önceden filtrelenmiş bir kayıt listesi veya sıfırlama olayları görüntülenir.
+Grafiklerden herhangi birini tıklattığınızda, önceden filtrelenmiş bir kayıt veya sıfırlama olayları listesine geçebilirsiniz.
 
-Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verilerinin tarih aralığını değiştirebilir ve grafikleri 24 saat, 7 gün veya 30 gün olarak sıfırlar.
+Üst, sağ köşedeki denetimi kullanarak, Kayıtlar ve Sıfırlayıcı grafiklerde gösterilen denetim verilerinin tarih aralığını 24 saat, 7 gün veya 30 gün olarak değiştirebilirsiniz.
 
-### <a name="registration-details"></a>Kayıt ayrıntıları
+### <a name="registration-details"></a>Kayıt bilgileri
 
-**Kayıtlı kullanıcılar**, **etkin**kullanıcılar veya **kullanıcılara** uygun kutucuk ya da Öngörüler ' e tıkladığınızda kayıt ayrıntılarına bu bilgiler gönderilir.
+**Kayıtlı Kullanıcılar'a**tıkladığınızda, **Kullanıcılar etkinleştirilmiş**veya **Kullanıcılar yetenekli** kutucuklar veya öngörüler kayıt ayrıntılarına ulaştıracaktır.
 
-Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
-
-- Adı
-- Kullanıcı adı
-- Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
-- Etkin durum (tümü, etkin, etkin değil)
-- Özellikli durum (tümü, uyumlu değil)
-- Yöntemler (uygulama bildirimi, uygulama kodu, telefon araması, SMS, e-posta, güvenlik soruları)
-
-Listenin en üstündeki denetimleri kullanarak bir Kullanıcı arayabilir ve gösterilen sütunlara göre Kullanıcı listesini filtreleyebilirsiniz.
-
-### <a name="reset-details"></a>Ayrıntıları Sıfırla
-
-Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntılarına getirir.
-
-Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
+Kayıt ayrıntıları raporu her kullanıcı için aşağıdaki bilgileri gösterir:
 
 - Adı
 - Kullanıcı adı
-- Özellik (tümü, kayıt, sıfırlama)
-- Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)
-- Durum (tümü, başarı, hata)
+- Kayıt durumu (Tümü, Kayıtlı, Kayıtlı Değil)
+- Etkin leştirilmiş durum (Tümü, Etkin, Etkin Değil)
+- Yetenekli durum (Tüm, Yetenekli, Yetenekli Değil)
+- Yöntemler (Uygulama bildirimi, Uygulama kodu, Telefon görüşmesi, SMS, E-posta, Güvenlik soruları)
 
-Listenin en üstündeki denetimleri kullanarak bir Kullanıcı arayabilir ve gösterilen sütunlara göre Kullanıcı listesini filtreleyebilirsiniz.
+Listenin üst kısmındaki denetimleri kullanarak, bir kullanıcı arayabilir ve gösterilen sütunlara göre kullanıcı listesini filtreleyebilirsiniz.
+
+### <a name="reset-details"></a>Ayrıntıları sıfırlama
+
+Kayıtlar veya Sıfırlama çizelgelerine tıkladığınızda sıfırlama ayrıntıları sizi getirecektir.
+
+Sıfırlama ayrıntıları raporu, aşağıdakiler de dahil olmak üzere son 30 güne ait kayıt ve sıfırlama olaylarını gösterir:
+
+- Adı
+- Kullanıcı adı
+- Özellik (Tümü, Kayıt, Sıfırlama)
+- Kimlik doğrulama yöntemi (Uygulama bildirimi, Uygulama kodu, Telefon görüşmesi, Ofis araması, SMS, E-posta, Güvenlik soruları)
+- Durum (Tümü, Başarı, Başarısızlık)
+
+Listenin üst kısmındaki denetimleri kullanarak, bir kullanıcı arayabilir ve gösterilen sütunlara göre kullanıcı listesini filtreleyebilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Bu raporlarda gösterilen veriler 60 dakikaya kadar ertelenecek. Verilerinizin en son ne olduğunu belirlemek için Azure portal bir "Son yenilenme" alanı bulunur.
+Bu raporlarda gösterilen veriler 60 dakikaya kadar geciktirilir. Verilerinizin ne kadar yeni olduğunu belirlemek için Azure portalında "Son yenilenen" bir alan bulunur.
 
-Kullanım ve Öngörüler verileri Azure Multi-Factor Authentication etkinlik raporlarının veya Azure AD oturum açma raporu 'nda bulunan bilgilerin yerini almaz.
+Kullanım ve öngörü verileri, Azure Çok Faktörlü Kimlik Doğrulama etkinlik raporlarının veya Azure AD oturum açma raporunda yer alan bilgilerin yerini alamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kimlik doğrulama yöntemleri kullanım raporu API 'SI ile çalışma](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Kuruluşunuz için kimlik doğrulama yöntemlerini seçme](concept-authentication-methods.md)
-- [Birleşik kayıt deneyimi](concept-registration-mfa-sspr-combined.md)
+- [Kimlik doğrulama yöntemleri yle çalışma kullanım raporu API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Kuruluşunuz için kimlik doğrulama yöntemleri seçme](concept-authentication-methods.md)
+- [Kombine kayıt deneyimi](concept-registration-mfa-sspr-combined.md)

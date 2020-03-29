@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services sınıf laboratuvarları için zamanlama oluşturma | Microsoft Docs
-description: Laboratuvardaki VM 'Lerin belirli bir zamanda başlamasını ve kapatılmasını sağlamak üzere Azure Lab Services sınıfta derslik Labs için zamanlamalar oluşturmayı öğrenin.
+title: Azure Laboratuvar Hizmetleri'ndeki sınıf laboratuvarları için zamanlama oluşturma | Microsoft Dokümanlar
+description: Laboratuvardaki VM'lerin belirli bir zamanda başlayıp kapanması için Azure Lab Hizmetleri'ndeki sınıf laboratuvarları için zamanlamaları nasıl oluşturacağınızhakkında bilgi edinin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,64 +14,64 @@ ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72330493"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarları için zamanlamalar oluşturma ve yönetme 
-Zamanlamalar, laboratuvardaki VM 'Lerin otomatik olarak başlamasını ve belirli bir zamanda kapatılmasını sağlamak için bir derslik Laboratuvarı yapılandırmanıza olanak tanır. Tek seferlik bir zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir derslik Laboratuvarı için zamanlama oluşturma ve yönetme adımları sunar: 
+# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'ndeki sınıf laboratuvarları için zamanlamaoluşturma ve yönetme 
+Zamanlamalar, laboratuvardaki VM'lerin belirli bir zamanda otomatik olarak başlayıp kapanması nı sağlayacak şekilde bir sınıf laboratuarı yapılandırmanıza olanak sağlar. Tek seferlik zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir sınıf laboratuvarı için zamanlamaoluşturmak ve yönetmek için adımlar verir: 
 
 > [!IMPORTANT]
-> VM 'lerin zamanlanan çalışma süresi, [bir kullanıcıya ayrılan kotaya](how-to-configure-student-usage.md#set-quotas-for-users)göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir. 
+> VM'lerin zamanlanan çalışma [süresi, kullanıcıya ayrılan kotaya](how-to-configure-student-usage.md#set-quotas-for-users)dahil edilmez. Kontenjan, öğrencinin VM'lerde harcadığı zamanlama saatleri dışındaki süreler içindir. 
 
-## <a name="set-a-schedule-for-the-lab"></a>Laboratuvar için zamanlama ayarlama
-Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/durdurulması için laboratuvar için zamanlanmış bir olay oluşturun. Daha önce belirttiğiniz Kullanıcı kotası, bu zamanlanan sürenin dışında her bir kullanıcıya atanan ek süredir. 
+## <a name="set-a-schedule-for-the-lab"></a>Laboratuvar için bir zamanlama ayarlama
+Laboratuardaki VM'lerin belirli zamanlarda otomatik olarak başlatılabilmesi/durdurulması için laboratuvar için zamanlanmış bir olay oluşturun. Daha önce belirttiğiniz kullanıcı kotası, bu zamanlanan saatin dışında her kullanıcıya atanan ek süredir. 
 
-1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
+1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **zamanlanmış olay ekle'yi** seçin. 
 
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/add-schedule-button.png)
-2. **Standart** **olay türünün**seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
+    ![Zamanlamalar sayfasında zamanlama düğmesi ekleme](../media/how-to-create-schedules/add-schedule-button.png)
+2. **Standart'ın** Olay **türü**seçildiğini onaylayın. Yalnızca VM'lerin başlangıç saatini belirtmek için **Başlat'ı** seçin. Yalnızca VM'lerin durmasını belirtmek için **Durdur'u** seçin. 
 7. **Yinele** bölümünde geçerli zamanlamayı seçin. 
 
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/select-current-schedule.png)
-5. **Yinele** iletişim kutusunda, aşağıdaki adımları uygulayın:
-    1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
-    3. **Başlangıç tarihini**belirtin.
-    4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
-    5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
-    6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
-    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
-    8. **Kaydet**’i seçin. 
+    ![Zamanlamalar sayfasında zamanlama düğmesi ekleme](../media/how-to-create-schedules/select-current-schedule.png)
+5. **Yinele** iletişim kutusunda aşağıdaki adımları yapın:
+    1. **Her** **hafta** tekrar alanı için ayarlı olduğunu doğrulayın. 
+    3. Başlangıç **tarihini**belirtin.
+    4. VM'lerin başlatılmasını istediğiniz **başlangıç saatini** belirtin.
+    5. VM'lerin kapatılacağını **niçin durduracağını** belirtin. 
+    6. Belirttiğiniz başlangıç ve durdurma saatleri için **saat dilimini** belirtin. 
+    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte, Pazartesi-Perşembe seçilir. 
+    8. **Kaydet'i**seçin. 
 
-        ![Yineleme zamanlaması ayarla](../media/how-to-create-schedules/set-repeat-schedule.png)
+        ![Yineleme çizelgesini ayarlama](../media/how-to-create-schedules/set-repeat-schedule.png)
 
-3. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
-4. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
+3. Şimdi, Notlar için **zamanlanan olay** ekle sayfasında **(isteğe bağlı)** zamanlama için herhangi bir açıklama veya not girin. 
+4. **Zamanlanan olay** ekle sayfasında **Kaydet'i**seçin. 
 
-    ![Haftalık zamanlama](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+    ![Haftalık program](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
-## <a name="view-schedules-in-calendar"></a>Takvim 'de zamanlamaları görüntüleme
-Aşağıdaki görüntüde gösterildiği gibi, Takvim görünümünde vurgulanmış olan zamanlanmış tarihleri ve zamanları görebilirsiniz:
+## <a name="view-schedules-in-calendar"></a>Takvimdeki zamanlamaları görüntüleme
+Takvim görünümünde vurgulanan zamanlanan tarihleri ve saatleri aşağıdaki resimde gösterildiği gibi görebilirsiniz:
 
 ![Takvim görünümündeki zamanlamalar](../media/how-to-create-schedules/schedules-calendar.png)
 
-Takvimdeki geçerli tarihe geçmek için sağ üst köşedeki **bugün** düğmesini seçin. Önceki haftaya ve **sağ oka** geçiş yapmak için **sol ok** ' i seçerek takvimdeki bir sonraki haftaya geçiş yapın. 
+Takvimdeki geçerli tarihe geçmek için sağ üst köşedeki **Bugün** düğmesini seçin. Takvimde bir sonraki haftaya geçmek için **sol oku** ve önceki haftaya geçmek için **sağ oku** seçin. 
 
-## <a name="edit-a-schedule"></a>Zamanlamayı Düzenle
-Takvimde vurgulanan bir zamanlamayı seçtiğinizde, zamanlamayı **düzenleme** veya **silme** düğmelerini görürsünüz. 
+## <a name="edit-a-schedule"></a>Zamanlamayı düzenleyin
+Takvimde vurgulanmış bir zamanlama seçtiğinizde, zamanlamayı **düzenleyecek** veya **silmek** için düğmeleri görürsünüz. 
 
-![Zamanlamayı Düzenle sayfası](../media/how-to-create-schedules/schedule-edit-button.png)
+![Zamanlama sayfasını düzenleyin](../media/how-to-create-schedules/schedule-edit-button.png)
 
-**Zamanlanmış olayı Düzenle** sayfasında, zamanlamayı güncelleştirebilir ve **Kaydet**' i seçebilirsiniz. 
+**Zamanlanan etkinlik** sayfasını düzenleyin, zamanlamayı güncelleştirebilir ve **Kaydet'i**seçebilirsiniz. 
 
 ## <a name="delete-a-schedule"></a>Zamanlamayı silme
 
-1. Bir zamanlamayı silmek için takvimde vurgulanan bir zamanlamayı seçin ve çöp kutusu simgesini (Sil) seçin:
+1. Zamanlamayı silmek için, takvimde vurgulanmış bir zamanlama seçin ve çöp kutusu simgesini (sil) düğmesini seçin:
 
-    ![Araç çubuğundaki Sil düğmesi](../media/how-to-create-schedules/schedule-delete-button.png)
-2. **Zamanlanmış olayı Sil** iletişim kutusunda, silme işlemini onaylamak için **Evet** ' i seçin. 
+    ![Araç çubuğundaki silme düğmesi](../media/how-to-create-schedules/schedule-delete-button.png)
+2. Silme **zamanlanan olay** iletişim kutusunda, silme işlemini onaylamak için **Evet'i** seçin. 
 
 
 
@@ -79,6 +79,6 @@ Takvimde vurgulanan bir zamanlamayı seçtiğinizde, zamanlamayı **düzenleme**
 Aşağıdaki makalelere bakın:
 
 - [Yönetici olarak, laboratuvar hesapları oluşturun ve yönetin](how-to-manage-lab-accounts.md)
-- [Laboratuvar sahibi olarak, Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md)
-- [Laboratuvar sahibi olarak, bir laboratuvarın kullanımını yapılandırma ve denetleme](how-to-configure-student-usage.md)
+- [Laboratuvar sahibi olarak, laboratuvarlar oluşturun ve yönetin](how-to-manage-classroom-labs.md)
+- [Laboratuvar sahibi olarak, bir laboratuvarın kullanımını yapılandırın ve kontrol edin](how-to-configure-student-usage.md)
 - [Laboratuvar kullanıcısı olarak, sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)

@@ -1,6 +1,6 @@
 ---
-title: SFTP hesabına Bağlan
-description: Azure Logic Apps kullanarak bir SFTP sunucusu için dosyaları izleyen, oluşturan, yöneten, gönderen ve alan görevleri ve işlemleri otomatikleştirin
+title: SFTP hesabına bağlanın
+description: Azure Logic Apps'ı kullanarak SSH aracılığıyla bir SFTP sunucusuiçin dosyaları izleyen, oluşturan, yöneten, gönderen ve alan görevleri ve işlemleri otomatikleştirin
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,114 +9,114 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789282"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
 > [!IMPORTANT]
-> SFTP Bağlayıcısı kullanım dışı olduğundan lütfen [SFTP-SSH bağlayıcısını](../connectors/connectors-sftp-ssh.md) kullanın. Mantıksal uygulama Tasarımcısı 'nda artık SFTP Tetikleyicileri ve eylemleri seçemezsiniz.
+> SFTP konektörü amortismana lı olduğundan lütfen [SFTP-SSH konektörünü](../connectors/connectors-sftp-ssh.md) kullanın. Artık Logic App Designer'da SFTP tetikleyicilerini ve eylemlerini seçemezsiniz.
 
-[Güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosya izleyen, oluşturan, gönderen ve alan görevleri otomatikleştirmek için, Azure Logic Apps ve SFTP bağlayıcısını kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür. Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
+[Güvenli Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatikleştirmek için Azure Logic Apps ve SFTP bağlayıcısını kullanarak tümleştirme iş akışlarını oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür. Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
 
-* Dosya eklendiğinde veya değiştirildiğinde izleyin.
-* Dosyaları alın, oluşturun, kopyalayın, güncelleştirin, listeleyin ve silin.
-* Dosya içeriğini ve meta verileri alın.
-* Arşivi klasörlere ayıklayın.
+* Dosyalar eklendiğinde veya değiştirildiğinde izleyin.
+* Dosyaları alın, oluşturun, kopyalayın, güncelleyin, listeleyin ve silin.
+* Dosya içeriği ve meta veriler alın.
+* Arşivleri klasörlere ayıklayın.
 
-SFTP sunucunuzdaki olayları izleyen ve çıktıyı diğer eylemler için kullanılabilir hale getirmek için Tetikleyicileri kullanabilirsiniz. SFTP sunucunuzda çeşitli görevleri gerçekleştiren işlemleri kullanabilirsiniz. Ayrıca, mantıksal uygulamanızdaki diğer eylemlere SFTP eylemlerinden gelen çıktıyı kullanın. Örneğin, SFTP sunucusundan düzenli olarak dosya alırsanız, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak bu dosyalar ve bunların içerikleri hakkında e-posta uyarıları gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
+SFTP sunucunuzdaki olayları izleyen ve çıktıyı diğer eylemler için kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. SFTP sunucunuzda çeşitli görevleri gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca, mantık uygulamanızda SFTP eylemlerinden elde edilen çıktıyı kullanarak başka eylemler de alabilirsiniz. Örneğin, SFTP sunucunuzdan düzenli olarak dosya alırsanız, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak bu dosyalar ve içerikleri hakkında e-posta uyarıları gönderebilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="limits"></a>Sınırlar
 
-SFTP Bağlayıcısı yalnızca *50 MB veya daha küçük* olan dosyaları işler ve [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)'yi desteklemez. Daha büyük dosyalar için [SFTP-SSH bağlayıcısını](../connectors/connectors-sftp-ssh.md)kullanın. SFTP Bağlayıcısı ve SFTP-SSH Bağlayıcısı arasındaki farklar için SFTP-SSH makalesindeki SFTP [-SSH Ile SFTP karşılaştırması](../connectors/connectors-sftp-ssh.md#comparison) konusunu gözden geçirin.
+SFTP bağlayıcısı yalnızca *50 MB veya daha küçük* dosyaları işler ve ileti [ödentiyi](../logic-apps/logic-apps-handle-large-messages.md)desteklemez. Daha büyük dosyalar için [SFTP-SSH konektörünü](../connectors/connectors-sftp-ssh.md)kullanın. SFTP konektörü ile SFTP-SSH konektörü arasındaki farklar için, [SFTP-SSH makalesinde SFTP-SSH ile SFTP'yi karşılaştır'ı](../connectors/connectors-sftp-ssh.md#comparison) gözden geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* SFTP sunucunuzun adresi ve hesap kimlik bilgileriniz, mantıksal uygulamanızın SFTP hesabınıza erişmesine izin verir. [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanmak için SSH özel ANAHTARıNA ve SSH özel anahtar parolasına erişmeniz de gerekir.
+* Mantık uygulamanızın SFTP hesabınıza erişmesini sağlayan SFTP sunucu adresiniz ve hesap kimlik bilgileriniz. [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanmak için bir SSH özel anahtarına ve SSH özel anahtar parolasına da erişmeniz gerekir.
 
   > [!NOTE]
   >
-  > SFTP Bağlayıcısı şu özel anahtar biçimlerini destekler: OpenSSH, ssh.com ve PuTTY
+  > SFTP bağlayıcısı bu özel anahtar biçimlerini destekler: OpenSSH, ssh.com ve PuTTY
   >
-  > Mantıksal uygulamanızı oluştururken, istediğiniz SFTP tetikleyicisini veya eylemini ekledikten sonra SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. 
-  > SSH özel anahtarı kullanıyorsanız, SSH özel anahtar dosyanızdaki anahtarı ***kopyalamadığınızdan*** emin olun ve bu anahtarı bağlantı ayrıntılarına ***yapıştırın*** , ***anahtarı el ile girmeyin veya düzenlemeyin***, bu da bağlantının başarısız olmasına neden olabilir. 
+  > Mantık uygulamanızı oluştururken, istediğiniz SFTP tetikleyicisini veya eylemi ekledikten sonra, SFTP sunucunuz için bağlantı bilgileri sağlamanız gerekir. 
+  > Bir SSH özel anahtarı kullanıyorsanız, anahtarı SSH özel anahtar dosyanızdan ***kopyaladığınızdan*** emin olun ve bu anahtarı bağlantı ayrıntılarına ***yapıştırın,*** ***anahtarı el ile girmeyin veya da***bağlantının arızalanmasına neden olabilir. 
   > Daha fazla bilgi için bu makaledeki sonraki adımlara bakın.
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
-* SFTP hesabınıza erişmek istediğiniz mantıksal uygulama. Bir SFTP tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir SFTP eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
+* SFTP hesabınıza erişmek istediğiniz mantık uygulaması. Bir SFTP tetikleyicisi ile başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Bir SFTP eylemi kullanmak için, mantık uygulamanızı başka bir tetikleyiciyle başlatın, **örneğin, Yineleme** tetikleyicisi.
 
 ## <a name="how-sftp-triggers-work"></a>SFTP nasıl çalışır?
 
-SFTP Tetikleyicileri, SFTP dosya sistemini yoklayarak ve Son yoklamadan bu yana değiştirilen herhangi bir dosyayı arayarak çalışır. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanıza olanak sağlar. Bu durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı bırakmanız gerekir. Yaygın olarak kullanılan bazı ayarlar şunlardır:
+SFTP, SFTP dosya sistemini yoklayarak ve son anketten bu yana değiştirilen herhangi bir dosyayı arayarak çalışmayı tetikler. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanızı sağlar. Bu gibi durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı beşinizgerekir. Bazı yaygın ayarlar şunlardır:
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler** > **tercihleri** ' ne gidin > **Aktar** > **Düzenle** > **zaman damgasını koru** > **devre dışı bırak** |
-| FileZilla | **Aktarım** > git > **aktarılan dosyaların zaman damgalarını koru ve** **devre dışı bırak** |
+| Winscp | **Seçeneklere** > Git**Tercihleri** > **Aktar** > **Değiştir** > Zaman**damgası** > Devre**Dışı** Bırak |
+| Filezilla | **AktarAn** > dosyaların > **Disable** devre dışı**bırak'ın zaman damgalarını kaydet** |
 |||
 
-Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
+Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlanıp kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlediğinde bir dosyanın devam eden değişiklikleri olabilir. Kısmen yazılmış bir dosyayı döndürmeyi önlemek için, tetikleyici son değişiklikler eki olan ancak bu dosyayı hemen döndürmeyen dosyanın zaman damgasını not eder. Tetikleyici, yalnızca sunucuyu yeniden yoklarken dosyayı döndürür. Bazen, bu davranış, tetikleyicinin yoklama aralığının iki katına kadar olan bir gecikmeye neden olabilir.
 
-## <a name="connect-to-sftp"></a>SFTP 'ye bağlanma
+## <a name="connect-to-sftp"></a>SFTP'ye bağlan
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak "SFTP" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
+1. Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "sftp" girin. Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin.
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "SFTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+   Varolan mantık uygulamaları için, eylem eklemek istediğiniz son adım altında **Yeni adımı**seçin. Arama kutusuna filtreniz olarak "sftp" girin. Eylemler listesinin altında, istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında eylem eklemek için işaretçinizin üzerine adımların arasında ilerleyin. Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın.
 
    > [!IMPORTANT]
    >
-   > **SSH özel anahtar ÖZELLIĞINDE SSH** özel anahtarınızı girdiğinizde, bu özellik için tüm ve doğru değeri sağladığınızdan emin olmanıza yardımcı olan bu ek adımları izleyin. 
-   > Geçersiz bir anahtar bağlantının başarısız olmasına neden olur.
+   > SSH özel anahtar anahtarınızı **SSH özel anahtar** özelliğine girdiğinizde, bu özellik için tam ve doğru değeri sağladığınızdan emin olmak için aşağıdaki ek adımları izleyin. 
+   > Geçersiz bir anahtar, bağlantının başarısız olmasını neden olur.
 
-   Herhangi bir metin düzenleyicisini kullanabilseniz de, örnek olarak Notepad. exe ' yi kullanarak anahtarınızın doğru şekilde kopyalanıp yapıştırılacağını gösteren örnek adımlar aşağıda verilmiştir.
+   Herhangi bir metin düzenleyicisini kullanabiliyor olsanız da, notepad.exe'yi örnek olarak kullanarak anahtarınızı doğru şekilde kopyalamayı ve yapıştırmayı gösteren örnek adımlar aşağıda verilmiştir.
 
-   1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak not defteri 'Ni kullanır.
+   1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak Not Defteri'ni kullanır.
 
-   1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
+   1. Not Defteri **Edit** menüsünde **Tümünü Seç'i**seçin.
 
-   1.  > **kopyasını** **Düzenle** ' yi seçin.
+   1. **Kopyayı** **Edit'i** > seçin.
 
-   1. Eklediğiniz SFTP tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *bütün* anahtarı yapıştırın. Anahtarı ***yapıştırdığınızdan emin olun*** . ***Anahtarı el ile girmeyin veya düzenleyemezsiniz***.
+   1. Eklediğiniz SFTP tetikleyicisinde veya eyleminde, kopyaladığınız *anahtarın tamamını* birden çok satırı destekleyen **SSH özel anahtar** özelliğine yapıştırın. Anahtarı ***yapıştırdığınızdan emin olun.*** ***Anahtarı el ile girmeyin veya atmayın.***
 
-1. Bağlantı ayrıntılarını girmeyi tamamladığınızda **Oluştur**' u seçin.
+1. Bağlantı ayrıntılarını girmeyi bitirdikten sonra **Oluştur'u**seçin.
 
-1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="examples"></a>Örnekler
 
 <a name="file-add-modified"></a>
 
-### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>SFTP tetikleyicisi: bir dosya eklendiğinde veya değiştirildiğinde
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>SFTP tetikleyicisi: Bir dosya eklendiğinde veya değiştirildiğinde
 
-Bu tetikleyici bir SFTP sunucusunda dosya eklendiğinde veya değiştirildiğinde bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen ve içeriğin belirtilen bir koşulu karşılayıp karşılamadığını temel alarak içeriği alan bir koşul ekleyebilirsiniz. Daha sonra dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre yerleştiren bir eylem ekleyebilirsiniz.
+Bu tetikleyici, bir SFTP sunucusuna bir dosya eklendiğinde veya değiştirildiğinde bir mantık uygulaması iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen ve içeriğin belirtilen bir koşulu karşılayıp karşılamadığını temel alan bir koşul ekleyebilirsiniz. Daha sonra, dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre koyan bir eylem ekleyebilirsiniz.
 
-**Kurumsal örnek**: Bu tetikleyiciyi, Müşteri emirlerini temsil eden yeni dosyalar IÇIN BIR SFTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra, daha fazla işleme için siparişin içeriğini almak ve bu siparişi bir Siparişler veritabanında depolamak için **Dosya Içeriğini al** gıbı bır SFTP eylemi kullanabilirsiniz.
+**Kurumsal örnek**: Müşteri siparişlerini temsil eden yeni dosyalar için bir SFTP klasörünü izlemek için bu tetikleyiciyi kullanabilirsiniz. Daha **sonra, siparişin içeriğini** daha fazla işlemek için almak ve bu siparişi bir sipariş veritabanında depolamak için dosya içeriğini al gibi bir SFTP eylemi kullanabilirsiniz.
 
 <a name="get-content"></a>
 
-### <a name="sftp-action-get-content"></a>SFTP eylemi: içerik al
+### <a name="sftp-action-get-content"></a>SFTP eylemi: İçerik alın
 
-Bu eylem, SFTP sunucusundaki bir dosyanın içeriğini alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin uyması gereken bir koşulu ekleyebilirsiniz. Koşul doğru ise, içeriği alan eylem çalıştırılabilir.
+Bu eylem, içeriği Bir SFTP sunucusundaki bir dosyadan alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin karşılaması gereken bir koşul ekleyebilirsiniz. Koşul doğruysa, içeriği alan eylem çalıştırılabilir.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sftpconnector/)gözden geçirin.
+Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sftpconnector/)inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

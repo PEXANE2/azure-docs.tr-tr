@@ -1,51 +1,51 @@
 ---
-title: Azure portal kullanarak Azure genel IP 'yi başka bir Azure bölgesine taşıma
-description: Azure genel IP 'yi, Azure portal kullanarak bir Azure bölgesinden diğerine taşımak için Azure Resource Manager şablonu kullanın.
+title: Azure portalını kullanarak Azure Genel IP'sini başka bir Azure bölgesine taşıyın
+description: Azure genel ipini azure portalını kullanarak bir Azure bölgesinden diğerine taşımak için Azure Kaynak Yöneticisi şablonunu kullanın.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75641410"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure portal kullanarak Azure genel IP 'yi başka bir bölgeye taşıma
+# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure Genel IP'sini Azure portalını kullanarak başka bir bölgeye taşıyın
 
-Mevcut Azure genel IP 'lerini bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırma ve SKU ile genel bir IP oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak genel bir IP 'yi başka bir bölgeye taşımak isteyebilirsiniz.
+Varolan Azure Genel IP'lerinizi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, aynı yapılandırmaya ve sku sınamak için ortak bir IP oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak genel bir IP'yi başka bir bölgeye taşımak isteyebilirsiniz.
 
-Azure genel IP 'Leri bölgeye özeldir ve bir bölgeden diğerine taşınamaz. Bununla birlikte, genel bir IP 'nin var olan yapılandırmasını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, genel IP 'yi bir şablona dışarı aktararak, hedef bölgeyle eşleşecek parametreleri değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Azure Genel Ip'leri bölgeye özgür ve bir bölgeden diğerine taşınamamaktadır. Ancak, genel bir IP'nin varolan yapılandırmasını dışa aktarmak için bir Azure Kaynak Yöneticisi şablonu kullanabilirsiniz.  Daha sonra, ortak IP'yi şablona dışa aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve ardından şablonu yeni bölgeye dağıtarak kaynağı başka bir bölgeye ayarlayabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için [Bkz. Hızlı Başlangıç: Azure portalını kullanarak Azure Kaynak Yöneticisi şablonları oluşturun ve dağıtın.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure genel IP 'nin taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
+- Azure Genel IP'sinin taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
-- Azure genel IP 'Leri bölgeler arasında taşınamaz.  Yeni genel IP 'yi hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
+- Azure Genel IP'leri bölgeler arasında taşınamamaktadır.  Yeni kamu ip'ini hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
 
-- Genel bir IP yapılandırmasını dışarı aktarmak ve başka bir bölgede genel IP oluşturmak üzere şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
+- Ortak bir IP yapılandırması dışa aktarmak ve başka bir bölgede genel BIR IP oluşturmak için bir şablon dağıtmak için Ağ Katılımcısı rolüne veya daha yükseğe ihtiyacınız olur.
 
-- Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları (NSG 'ler) ve sanal ağlar dahil değildir ancak bunlarla sınırlı değildir.
+- Kaynak ağ düzenini ve şu anda kullanmakta olduğunuz tüm kaynakları tanımlayın. Bu düzen, yük dengeleyicileri, ağ güvenlik gruplarını (NSG'ler) ve sanal ağlar içerir, ancak bunlarla sınırlı değildir.
 
-- Azure aboneliğinizin, kullanılan hedef bölgede ortak IP 'Ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
+- Azure aboneliğinizin, kullanılan hedef bölgede herkese açık IP'ler oluşturmanıza olanak sağladığını doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işlem için genel IP 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işlem için genel IP'lerin eklenmesini destekleyecek yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
-## <a name="prepare-and-move"></a>Hazırlama ve taşıma
-Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandırma taşıma için genel IP 'nin nasıl hazırlanacağı ve Azure portal kullanarak genel IP yapılandırmasını hedef bölgeye nasıl taşıyacağınız gösterilmektedir.
+## <a name="prepare-and-move"></a>Hazırlanın ve hareket edin
+Aşağıdaki adımlar, kaynak yöneticisi şablonu kullanarak ortak IP'yi yapılandırma hareketine nasıl hazırlayacağımı ve ortak IP yapılandırmasını Azure portalını kullanarak hedef bölgeye nasıl taşıyarak göstereceğimizdir.
 
-### <a name="export-the-template-and-deploy-from-a-script"></a>Şablonu dışarı aktarma ve bir betikten dağıtma
+### <a name="export-the-template-and-deploy-from-a-script"></a>Şablonu dışa aktarma ve komut dosyasından dağıtma
 
-1. [Azure portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
-2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
-3. > **Ayarları** > **şablonu dışarı aktar**' ı seçin.
-4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. Çevrimiçi düzenleyicide **Parameters. JSON** dosyasını açmak için **şablon** > **parametreleri Düzenle** ' ye tıklayın.
-8. Genel IP adının parametresini düzenlemek için kaynak genel IP adındaki **parametreler** > **DEĞERINI** hedef ortak IP 'nizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
+1. [Azure portalı](https://portal.azure.com) > **Kaynak Gruplarına**giriş yapın.
+2. Kaynak genel IP'yi içeren Kaynak Grubu'nu bulun ve üzerine tıklayın.
+3. **Ayarlar** > **> Verme şablonunu**seçin.
+4. **Dışa Aktarma şablonu** bıçak'ta **Dağıt'ı** seçin.
+5. Çevrimiçi düzenleyicideki **parametreleri.json** dosyasını açmak için **ŞABLON** > Parametrelerini**Edit'i** tıklatın.
+8. Ortak IP adının parametresini değiştirmek için, kaynak genel IP adından hedef genel IP adının **parametreleri** > **altındaki** özelliği değiştirin, adın tırnak içinde olduğundan emin olun:
 
     ```json
             {
@@ -59,11 +59,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
             }
 
     ```
-8.  Düzenleyicide **Kaydet** ' e tıklayın.
+8.  Editörde **Kaydet'i** tıklatın.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon > şablonu** **Düzenle** ' ye tıklayın.
+9.  Çevrimiçi düzenleyicide **template.json** dosyasını açmak için **ŞABLON** > **Edit şablonuna** tıklayın.
 
-10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
+10. Genel IP'nin taşınacağı hedef bölgeyi değiştirmek için, kaynakların altındaki **konum** özelliğini **değiştirin:**
 
     ```json
             "resources": [
@@ -89,11 +89,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
              ]
     ```
 
-11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bölge için kod, boşluk içermeyen bölge adıdır, **Orta ABD** = **merkezileştirme**.
+11. Bölge konum kodları edinmek için [Azure Konumları'na](https://azure.microsoft.com/global-infrastructure/locations/)bakın.  Bir bölgenin kodu boşluksuz bölge adıdır, **Orta ABD** = **centralus.**
 
-12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+12. İsterseniz şablondaki diğer parametreleri de değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - **Template. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
+    * **Sku** - **Template.json** dosyasındaki **sku** > **ad** özelliğini değiştirerek yapılandırmadaki genel IP'nin sku'yu standarttan temele veya temelden standarda değiştirebilirsiniz:
 
         ```json
           "resources": [
@@ -108,9 +108,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
             },
         ```
 
-        Temel ve standart SKU genel IP 'leri arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Temel ve standart sku genel ips arasındaki farklar hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
 
-    * **Ortak IP ayırma yöntemi** ve **boşta kalma zaman aşımı** - **publicıpallocationmethod** özelliğini **dinamik** veya **statik** olarak **dinamik**olarak değiştirerek şablonda bu seçeneklerin her ikisini de değiştirebilirsiniz . Boşta **kalma zaman aşımı özelliği,** istediğiniz tutara göre değiştirilebilir.  Varsayılan değer **4**' dir:
+    * **Genel IP ayırma yöntemi** ve **Boşta zaman ayarı** - **PublicIPAllocationMethod** özelliğini **Dinamik'ten** **Statik** veya **Dynamic** **Statik'e** dinamik olarak değiştirerek şablondaki bu seçeneklerin her ikisini de değiştirebilirsiniz. Boşta zaman dilimi, **boşta kalanTimeoutInMinutes** özelliğini istediğiniz miktarda değiştirerek değiştirilebilir.  Varsayılan **4:**
 
         ```json
           "resources": [
@@ -134,34 +134,34 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 
         ```
 
-        Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Ayırma yöntemleri ve boşta kalma zaman ayırma değerleri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
 
 
-13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
+13. Çevrimiçi düzenleyicide **Kaydet'i** tıklatın.
 
-14. Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için > **temel bilgiler** **aboneliğine** tıklayın.
+14. Hedef genel IP'nin dağıtılanacağı aboneliği seçmek için **BASICS** > **Aboneliği'ni** tıklatın.
 
-15. Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15. Hedef genel IP'nin dağıtılacayacağı kaynak grubunu seçmek için **BASICS** > **Kaynak grubunu** tıklatın.  Hedef genel IP için yeni bir kaynak grubu oluşturmak için **yeni oluştur'u** tıklatabilirsiniz.  Adın varolan kaynak public IP'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
-16.  > **konumun** , genel IP 'nin dağıtılmasını istediğiniz hedef **konuma ayarlandığını doğrulayın** .
+16. **TEMELS** > **Konumunu** doğrulayın, genel IP'nin dağıtılmasını istediğiniz hedef konuma ayarlanır.
 
-17. **Ayarların** , yukarıdaki parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
+17. **SETTINGS** altında, adın yukarıdaki parametre düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 
-18. **Hüküm ve koşullar**altındaki kutuyu işaretleyin.
+18. ŞARTLAR VE **KOŞULLAR**altında kutuyu işaretleyin.
 
-19. Hedef ortak IP 'yi dağıtmak için **satın al** düğmesine tıklayın.
+19. Hedef genel IP'yi dağıtmak için **Satın Alma** düğmesini tıklatın.
 
-## <a name="discard"></a>At
+## <a name="discard"></a>Vazgeç
 
-Hedef ortak IP 'yi atmak isterseniz, hedef ortak IP 'yi içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
+Hedef genel IP'yi atmak istiyorsanız, hedef ortak IP'yi içeren kaynak grubunu silin.  Bunu yapmak için, portaldaki panonuzdaki kaynak **Delete** grubunu seçin ve genel bakış sayfasının üst kısmındasil'i seçin.
 
 ## <a name="clean-up"></a>Temizleme
 
-Değişiklikleri uygulamak ve genel IP 'nin taşınmasını tamamlamak için kaynak genel IP veya kaynak grubunu silin. Bunu yapmak için, portalda panodaki genel IP veya kaynak grubunu seçin ve her sayfanın en üstünde **Sil** ' i seçin.
+Değişiklikleri işlemek ve genel IP'nin hareketini tamamlamak için kaynak ortak IP veya kaynak grubunu silin. Bunu yapmak için, portaldaki panonuzdan genel IP veya **Delete** kaynak grubunu seçin ve her sayfanın üst kısmındasil'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure genel IP 'sini bir bölgeden diğerine taşımış ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
+Bu eğitimde, bir Azure Genel IP'sini bir bölgeden diğerine taşıdınız ve kaynak kaynaklarını temizlediniz.  Azure'da kaynakları bölgeler arasında taşıma ve olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek için şu na bakın:
 
 
 - [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi Cihazınızda bir PCM'yi değiştirme | Microsoft Docs
-description: Kaldırın ve güç ve soğutma Modülü (PCM), StorSimple Cihazınızda değiştirin açıklanmaktadır
+title: StorSimple 8000 serisi cihazınızda pcm değiştirin | Microsoft Dokümanlar
+description: StorSimple cihazınızdaki Güç ve Soğutma Modülü 'nün (PCM) nasıl kaldırılıp değiştirilebildiğini açıklar
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,130 +15,130 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60632506"
 ---
-# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Güç ve soğutma modülü, StorSimple Cihazınızda değiştirin
+# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>StorSimple cihazınızın güç ve soğutma modülünü değiştirme
 ## <a name="overview"></a>Genel Bakış
-Güç ve soğutma Modülü (PCM) Microsoft Azure StorSimple Cihazınızı bir güç ve soğutma fanları birincil ve ebod denetlenen oluşur. Yalnızca bir modelin her kasa için sertifikalı PCM yoktur. Birincil muhafaza bir 764 W PCM için sertifikalıdır ve EBOD muhafazası bir 580 W PCM için sertifikalıdır. Değiştirme yordam muhafaza birincil ve EBOD muhafazası PCMs farklı olsa da, aynıdır.
+Microsoft Azure StorSimple cihazınızdaki Güç ve Soğutma Modülü (PCM), birincil ve EBOD muhafazaları aracılığıyla kontrol edilen bir güç kaynağı ve soğutma fanlarından oluşur. Her muhafaza için onaylı pcm yalnızca bir model vardır. Birincil kasa 764 W PCM için onaylanır ve EBOD muhafazası 580 W PCM için onaylanır. Birincil kasa ve EBOD muhafazasının PC'leri farklı olsa da, değiştirme yordamı aynıdır.
 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
-* Bir PCM Kaldır
-* PCM'yi değiştirme yükleyin
+* PCM'yi kaldırma
+* Yedek PCM yükleme
 
 > [!IMPORTANT]
-> Kaldırma ve bir PCM'yi değiştirme gözden önce güvenlik bilgileri [StorSimple donanım bileşeni değişimi](storsimple-8000-hardware-component-replacement.md).
+> Bir PCM'yi çıkarmadan ve değiştirmeden [önce, StorSimple donanım bileşeni değiştirmedeki](storsimple-8000-hardware-component-replacement.md)güvenlik bilgilerini gözden geçirin.
 
 
-## <a name="before-you-replace-a-pcm"></a>Önce bir PCM'yi değiştirme
-PCM'yi değiştirme önce aşağıdaki önemli sorunları dikkat edin:
+## <a name="before-you-replace-a-pcm"></a>Bir PCM'yi değiştirmeden önce
+PCM'nizi değiştirmeden önce aşağıdaki önemli konulara dikkat edin:
 
-* Güç kaynağı PCM biri başarısız olursa, hatalı Modülü yüklü bırakın, ancak güç kablosunu kaldırın. Fan power kutusu almak ve doğru soğutma sağlamaya devam devam eder. Fan başarısız olursa PCM hemen değiştirilmesi gerekiyor.
-* PCM kaldırmadan önce güç PCM ana anahtarı (mevcut olduğu) kapatarak veya fiziksel olarak güç kablosunu kaldırarak bağlantısını kesin. Bu, bir uyarı sistem bir güç kapatma olup sağlar.
-* Diğer PCM hatalı bir PCM'yi değiştirme önce devam eden bir sistem işlemi için işlevsel olduğundan emin olun. Hatalı bir PCM'yi tarafından tam olarak işlevsel bir PCM olabildiğince çabuk değiştirilmelidir.
-* PCM modülü değiştirme tamamlanması yalnızca birkaç dakika sürer, ancak elektriği engellemek için PCM'yi kaldırmanın 10 dakika içinde tamamlanmalıdır.
-* Yedek pil modülü içermemesi fabrikasından sevk değiştirme 764 W PCM modülleri unutmayın. Pil, hatalı bir PCM'yi kaldırın ve değişiklik gerçekleştirmeden önce değiştirme Modül Ekle gerekecektir. Daha fazla bilgi için bkz. nasıl [kaldırın ve bir yedek pil Modül Ekle](storsimple-8000-battery-replacement.md).
+* PCM'nin güç kaynağı arızalanırsa, hatalı modülü takılı bırakın, ancak güç kablosunu çıkarın. Fan kasadan güç almaya ve uygun soğutma sağlamaya devam edecektir. Fan başarısız olursa, PCM'nin derhal değiştirilmesi gerekir.
+* PCM'yi çıkarmadan önce, ana anahtarı (varsa) kapatarak veya güç kablosunu fiziksel olarak çıkararak PCM'den gücü kesin. Bu, sisteminize bir güç kapatmanın yakın olduğu konusunda bir uyarı sağlar.
+* Hatalı PCM'yi değiştirmeden önce diğer PCM'nin sürekli sistem çalışması için işlevsel olduğundan emin olun. Hatalı bir PCM mümkün olan en kısa sürede tam operasyonel bir PCM ile değiştirilmelidir.
+* PCM modül değişiminin tamamlanması sadece birkaç dakika sürer, ancak aşırı ısınmayı önlemek için başarısız PCM'nin çıkarılmasından sonraki 10 dakika içinde tamamlanması gerekir.
+* Fabrikadan gönderilen yedek 764 W PCM modüllerinin yedek pil modüllerini içermediğini unutmayın. Pili hatalı PCM'nizden çıkarmanız ve değiştirme gerçekleştirmeden önce değiştirme modülüne takmanız gerekir. Daha fazla bilgi için yedek pil modüllerini nasıl [kaldırıp takabilirsiniz.](storsimple-8000-battery-replacement.md)
 
-## <a name="remove-a-pcm"></a>Bir PCM Kaldır
-Microsoft Azure StorSimple cihazınızın güç ve soğutma Modülü (PCM) kaldırmak hazır olduğunuzda aşağıdaki yönergeleri izleyin.
+## <a name="remove-a-pcm"></a>PCM'yi kaldırma
+Microsoft Azure StorSimple aygıtınızdan bir Güç ve Soğutma Modülü (PCM) kaldırmaya hazır olduğunuzda bu yönergeleri izleyin.
 
 > [!NOTE]
-> PCM kaldırmadan önce doğru değiştirme (764 W birincil kasa için) veya 580 W EBOD muhafazası için sahip olduğunuzu doğrulayın.
+> PCM'nizi çıkarmadan önce, doğru bir değiştirmeniz olduğunu doğrulayın (birincil kasa için 764 W veya EBOD muhafazası için 580 W).
 
-#### <a name="to-remove-a-pcm"></a>Bir PCM kaldırmak için
-1. Azure Klasik portalında **Ayarları > İzleme > donanım sistem durumu**. Altındaki PCM bileşenlerinin durumunu **paylaşılan bileşenleri** PCM başarısız oldu tanımlamak için:
+#### <a name="to-remove-a-pcm"></a>PCM'yi kaldırmak için
+1. Azure klasik portalında **Ayarlar > Donanım sağlığını >'yı**tıklatın. Hangi PCM'nin başarısız olduğunu belirlemek için **Paylaşılan bileşenler** altındaki PCM bileşenlerinin durumunu denetleyin:
    
-   * Bir güç kaynağı PCM 0'da başarısız oldu, durumunu **güç kaynağı PCM 0'da** kırmızı olur.
-   * Bir güç kaynağı PCM 1'de başarısız oldu, durumunu **güç kaynağı PCM 1'deki** kırmızı olur.
-   * PCM 1'deki fan başarısız oldu, ya da durumunu **0 için PCM 0'da Soğuyor** veya **PCM 0'da Soğuyor 1** kırmızı olur.
-2. PCM'yi birincil muhafaza arkasında bulun. 8600 model çalıştırıyorsanız, Sistem Birim kimlik ön panelini LED görünen numarasına bakarak birincil muhafaza belirleyin. Birim birincil muhafaza görüntülenen kodu varsayılandır **00**varsayılan birim üzerinde EBOD muhafazası görüntülenen kimlik bilgileriyse **01**. Aşağıdaki tablo ve diyagram LED görüntü ön panelini açıklanmaktadır.
+   * PCM 0'daki bir güç kaynağı başarısız olduysa, **PCM 0'deki Güç Kaynağı'nın** durumu kırmızı olacaktır.
+   * PCM 1'deki bir güç kaynağı başarısız olduysa, **PCM 1'deki Güç Kaynağı'nın** durumu kırmızı olacaktır.
+   * PCM 1'deki fan başarısız olduysa, **PCM 0 için Soğutma 0** veya **PCM 0 için Soğutma 1** durumu kırmızı olacaktır.
+2. Başarısız PCM'yi birincil kasanın arkasına bulun. 8600 model çalıştırıyorsanız, ön panel LED ekranında gösterilen Sistem Birimi Kimlik Numarasına bakarak birincil muhafazayı tanımlayın. Birincil kasada görüntülenen varsayılan Birim Kimliği **00'dir,** EBOD kasası üzerinde görüntülenen varsayılan Birim Kimliği **ise 01'dir.** Aşağıdaki diyagram ve tablo LED ekranın ön panelini açıklar.
    
-    ![Ön OPS panelindeki sistem kimliği](./media/storsimple-power-cooling-module-replacement/IC740991.png)
+    ![Ön OPS panelinde sistem kimliği](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
-     **Şekil 1** cihazın ön panel  
+     **Şekil 1** Cihazın ön paneli  
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Sesi kapa düğmesi |
-   | 2 |Sistem güç |
+   | 1 |Sessiz düğmesi |
+   | 2 |Sistem gücü |
    | 3 |Modül hatası |
    | 4 |Mantıksal hata |
-   | 5 |Birim kimliği görüntüleme |
-3. İzleme gösterge LED'lerini birincil muhafaza arkasında, hatalı bir PCM'yi tanımlamak için de kullanılabilir. Aşağıdaki diyagram ve LED'lerini hatalı bir PCM'yi bulmak için nasıl kullanılacağını anlamak için tablosuna bakın. Örneğin, ışığı karşılık gelen **fanı başarısız** olan aydınlatma, fan başarısız oldu. Benzer şekilde, ışığı karşılık gelen **AC başarısız** olan aydınlatma, güç kaynağı başarısız oldu. 
+   | 5 |Birim kimlik ekranı |
+3. Birincil kasanın arka sındaki izleme göstergesi LED'leri hatalı PCM'yi tanımlamak için de kullanılabilir. Hatalı PCM'yi bulmak için LED'lerin nasıl kullanılacağını anlamak için aşağıdaki diyagrama ve tabloya bakın. Örneğin, **Fan Fail'e** karşılık gelen LED yanıyorsa, fan başarısız olur. Aynı şekilde, **AC Fail'e** karşılık gelen LED yanıyorsa, güç kaynağı başarısız olur. 
    
-    ![Cihaz PCM izleme gösterge LED'lerini devre kartı](./media/storsimple-power-cooling-module-replacement/IC740992.png)
+    ![Cihaz PCM izleme göstergesi LED'lerin arka düzlemi](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    
-     **Şekil 2** arka of PCM gösterge LED'lerini ile
+     **Şekil 2** Gösterge LED'li PCM'nin arkası
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
    | 1 |AC güç kesintisi |
-   | 2 |Fanı hatalı |
-   | 3 |Pil hata |
+   | 2 |Fan arızası |
+   | 3 |Pil arızası |
    | 4 |PCM TAMAM |
-   | 5 |DC Güç kesintisi |
-   | 6 |Pil Sağlıklı |
-4. Başarısız PCM modülü bulmak için StorSimple cihazı arkasına aşağıdaki diyagrama bakın. PCM 0'da sol taraftaki ve PCM 1 sağ tarafta. Aşağıdaki tablo, modülleri açıklar.
+   | 5 |DC güç kesintisi |
+   | 6 |Pil sağlıklı |
+4. Başarısız PCM modülünün yerini bulmak için StorSimple cihazının arka sının aşağıdaki diyagramına bakın. PCM 0 solda, PCM 1 sağda. Aşağıdaki tablo modülleri açıklar.
    
-     ![Cihaz birincil kutusu modüllerinin devre kartı](./media/storsimple-power-cooling-module-replacement/IC740994.png)
+     ![Cihaz birincil muhafaza modüllerinin arka düzlemi](./media/storsimple-power-cooling-module-replacement/IC740994.png)
    
-     **Şekil 3** eklenti modülleri ile cihaz arkasına 
+     **Şekil 3** Eklenti modüllü cihazın arkası 
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
    | 3 |Denetleyici 0 |
    | 4 |Denetleyici 1 |
-5. Hatalı bir PCM'yi açın ve güç kaynağı kablosunun bağlantısını kesin. PCM şimdi kaldırabilirsiniz.
-6. Mandal ve PCM tanıtıcısı thumb arasındaki erişebildiğinizden kenarını kavrayın ve birlikte tanıtıcı açacak biçimde sığdırması.
+5. Hatalı PCM'yi kapatın ve güç kaynağı kablosunu kapatın. Artık PCM'yi kaldırabilirsiniz.
+6. Başparmağınız ve işaret parmağınız arasındaki PCM tutucunun mandalı ve yan tarafını tutun ve tutamacı açmak için birbirine sıkın.
    
-    ![PCM tanıtıcısı açılıyor](./media/storsimple-power-cooling-module-replacement/IC740995.png)
+    ![PCM Kolu Açma](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
-    **Şekil 4** PCM tanıtıcısı açma
-7. Tanıtıcı kavramayın ve PCM kaldırın.
+    **Şekil 4** PCM tutamacını açma
+7. Kolu tutun ve PCM'yi çıkarın.
    
-    ![Cihaz PCM'i kaldırılıyor](./media/storsimple-power-cooling-module-replacement/IC740996.png)
+    ![Aygıt PCM'yi Kaldırma](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
-    **Şekil 5** PCM'i kaldırılıyor
+    **Şekil 5** PCM'yi kaldırma
 
-## <a name="install-a-replacement-pcm"></a>PCM'yi değiştirme yükleyin
-StorSimple Cihazınızı bir PCM yüklemek için bu yönergeleri izleyin. Yedek pili Modülü (764 W PCMs için yalnızca geçerlidir) PCM'yi değiştirme yüklemeden önce eklediğiniz emin olun. Daha fazla bilgi için bkz. nasıl [kaldırın ve bir yedek pil Modül Ekle](storsimple-8000-battery-replacement.md).
+## <a name="install-a-replacement-pcm"></a>Yedek PCM yükleme
+StorSimple cihazınıza bir PCM yüklemek için aşağıdaki yönergeleri izleyin. Yedek PCM'yi takmadan önce yedek pil modüllerini taktığınıza emin olun (yalnızca 764 W PCM için geçerlidir). Daha fazla bilgi için yedek pil modüllerini nasıl [kaldırıp takabilirsiniz.](storsimple-8000-battery-replacement.md)
 
-#### <a name="to-install-a-pcm"></a>Bir PCM yüklemek için
-1. Bu kasa için doğru değiştirme PCM sahip olduğunuzu doğrulayın. Birincil muhafaza bir 764 W PCM gerekir ve bir 580 W PCM EBOD muhafazası gerekiyor. EBOD muhafazası 764 W PCM kullanıp birincil kasası 580 W PCM denememeniz gerekir. Aşağıdaki görüntüde bu bilgileri için PCM yapıştırılmış etiketine tanımlamak nereye gösterir.
+#### <a name="to-install-a-pcm"></a>PCM yüklemek için
+1. Bu muhafaza için doğru yedek PCM'ye sahip olduğunuzu doğrulayın. Birincil kasanın 764 W PCM'ye, EBOD kasasının ise 580 W PCM'ye ihtiyacı vardır. Birincil kasadaki 580 W PCM'yi veya EBOD kasasındaki 764 W PCM'yi kullanmaya çalışmamalısınız. Aşağıdaki resim, PCM'ye yapıştırılmış etiketteki bu bilgilerin nerede tanımlandığı gösterilmektedir.
    
-    ![Cihaz PCM etiketi](./media/storsimple-power-cooling-module-replacement/IC740973.png)
+    ![Cihaz PCM Etiketi](./media/storsimple-power-cooling-module-replacement/IC740973.png)
    
     **Şekil 6** PCM etiketi
-2. Bağlayıcılar özellikle dikkat ederek ödeme muhafaza hasar olup olmadığını denetleyin. 
+2. Konektörlere özellikle dikkat edin, muhafazada hasar olup olup olup yok. 
    
    > [!NOTE]
-   > **Herhangi bir bağlayıcıyı PIN'ler Eğilmiş modülü yüklemeyin.**
+   > **Herhangi bir konektör pimi bükülürse modülü yüklemeyin.**
    > 
    > 
-3. Açık konuma PCM tanıtıcısı ile modülü kutu kaydırın.
+3. PCM tutamacı açık konumda olduğu için modülü kasaya kaydırın.
    
-    ![Cihaz PCM'i yükleniyor](./media/storsimple-power-cooling-module-replacement/IC740975.png)
+    ![Aygıt PCM'nin Kurulumu](./media/storsimple-power-cooling-module-replacement/IC740975.png)
    
-    **Şekil 7** PCM'i yükleniyor
-4. PCM tanıtıcısı el ile kapatın. Tanıtıcı Mandal ilgilenir gibi bir tıklama sesi.
-   
-   > [!NOTE]
-   > Bağlayıcı PIN'ler bağlı olmak için yavaşça mandalı bırakılıyor olmadan tutamacı tug. Çıkış PCM slaytlar, tutma bağlayıcıların bağlı önce kapatıldı anlamına gelir.
-   
-5. Güç kaynağı ve PCM power kabloları bağlayın.
-6. Basınç Tahliye bales güvenli hale getirin.
-7. PCM üzerinde açın.
-8. Değiştirme başarılı olup olmadığını doğrulayın: StorSimple cihaz Yöneticisi hizmetinizin Azure portalında, cihazınıza gidin ve ardından **Ayarları > İzleme > donanım sistem durumu**. Altında **paylaşılan bileşenleri**, PCM durumu yeşil olmalıdır.
+    **Şekil 7** PCM'nin yüklenmesi
+4. PCM tutamacını manuel olarak kapatın. Tutamaç devreye girerken bir tıklama duymalısınız.
    
    > [!NOTE]
-   > Bu değişiklik tamamen başlatmak için PCM birkaç dakika sürebilir.
+   > Konektör pimlerinin çatladığından emin olmak için, mandalını bırakmadan tutamacı hafifçe çekebilirsiniz. PCM dışarı kaydırılırsa, bu, konektörler devreye girmeden önce mandalı kapalı olduğu anlamına gelir.
+   
+5. Güç kablolarını güç kaynağına ve PCM'ye bağlayın.
+6. Gerinim kabartma balyalarını sabitle.
+7. PCM'yi açın.
+8. Değiştirmenin başarılı olduğunu doğrulayın: StorSimple Device Manager hizmetinizin Azure portalında cihazınıza gidin ve ardından **Ayarlar > Donanım sağlığını >.** Paylaşılan **bileşenler**altında, PCM'nin durumu yeşil olmalıdır.
+   
+   > [!NOTE]
+   > Değiştirilen PCM'nin tamamen başlatılması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [StorSimple donanım bileşeni değişimi](storsimple-8000-hardware-component-replacement.md).
+[StorSimple donanım bileşen değiştirme](storsimple-8000-hardware-component-replacement.md)hakkında daha fazla bilgi edinin.
 

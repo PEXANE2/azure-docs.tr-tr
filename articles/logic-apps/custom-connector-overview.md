@@ -1,33 +1,33 @@
 ---
 title: Özel bağlayıcı konu bağlantıları
-description: Özel Bağlayıcılar oluşturma, kullanma, paylaşma ve onaylama hakkındaki konuların bağlantıları
+description: Özel bağlayıcıların nasıl oluşturulup kullanılacağı, paylaşılabilenve sertifikalayabilen konulara bağlantılar
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
 ms.openlocfilehash: d91d46e0119c22f4f2538ab5ea982ca4418256cf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792661"
 ---
-# <a name="custom-connectors-in-logic-apps"></a>Logic Apps özel bağlayıcılar
+# <a name="custom-connectors-in-logic-apps"></a>Mantık Uygulamalarında Özel Bağlayıcılar
 
-Herhangi bir kod yazmadan, [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Power otomatikleştirir](https://flow.microsoft.com)ve [Power Apps](https://powerapps.microsoft.com)ile iş akışları ve uygulamalar oluşturabilirsiniz. Uygulamaları, verileri ve iş süreçlerini tümleştirmenize yardımcı olmak için bu hizmetler, Microsoft Hizmetleri ve ürünleri için (GitHub, Salesforce, Twitter ve daha fazlası gibi) ek hizmetler için [~ 200 bağlayıcılarını](https://docs.microsoft.com/connectors/) sunmaktadır.
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Power Automate](https://flow.microsoft.com) ve [Power Apps](https://powerapps.microsoft.com) ile herhangi bir kod yazmadan iş akışları ve uygulamalar oluşturabilirsiniz. Uygulamaları, verileri ve iş süreçlerini entegre etmenize yardımcı olmak için bu hizmetler Microsoft hizmetleri ve ürünlerinin yanı sıra GitHub, Salesforce, Twitter ve daha fazlası gibi diğer hizmetler için [~200 konektör](https://docs.microsoft.com/connectors/) sunar.
 
-Yine de bazı durumlarda önceden oluşturulmuş bir bağlayıcı olarak sağlanmayan API'leri, hizmetleri ve sistemleri çağırmak isteyebilirsiniz. Gereksinimlerinize daha fazla uyarlanmış senaryoları desteklemek için, kendi tetikleyicileri ve eylemleri olan *özel bağlayıcılar* oluşturabilirsiniz. Bağlayıcılar belge sitesi özel bağlayıcılar hakkında kapsamlı temel ve gelişmiş öğreticilere sahiptir. [Özel bağlayıcıya genel bakış](https://docs.microsoft.com/connectors/custom-connectors/)ile başlayabilirsiniz, ancak Ayrıca belirli bir alanla ilgili ayrıntılar için doğrudan bu konulara gidebilirsiniz:
+Yine de bazı durumlarda önceden oluşturulmuş bir bağlayıcı olarak sağlanmayan API'leri, hizmetleri ve sistemleri çağırmak isteyebilirsiniz. Gereksinimlerinize daha fazla uyarlanmış senaryoları desteklemek için, kendi tetikleyicileri ve eylemleri olan *özel bağlayıcılar* oluşturabilirsiniz. Bağlayıcılar dokümantasyon sitesi, özel bağlayıcılar hakkında eksiksiz temel ve gelişmiş eğitimlere sahiptir. [Özel bağlayıcıgenel bakışile](https://docs.microsoft.com/connectors/custom-connectors/)başlayabilirsiniz, ancak belirli bir alan la ilgili ayrıntılar için doğrudan bu konulara gidebilirsiniz:
 
-* [Logic Apps Bağlayıcısı oluşturma](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
+* [Logic Apps bağlayıcısı oluşturma](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
 
 * [OpenAPI tanımından özel bağlayıcı oluşturma](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition)
 
-* [Bir Postman koleksiyonundan özel bağlayıcı oluşturun](https://docs.microsoft.com/connectors/custom-connectors/define-postman-collection)
+* [Postman koleksiyonundan özel bağlayıcı oluşturma](https://docs.microsoft.com/connectors/custom-connectors/define-postman-collection)
 
 * [Bir mantıksal uygulamadan özel bağlayıcı kullanma](https://docs.microsoft.com/connectors/custom-connectors/use-custom-connector-logic-apps)
 
-* [Kuruluşunuzda özel bağlayıcılar paylaşma](https://docs.microsoft.com/connectors/custom-connectors/share)
+* [Kuruluşunuzda özel bağlayıcıları paylaşma](https://docs.microsoft.com/connectors/custom-connectors/share)
 
 * [Bağlayıcılarınızı Microsoft sertifikası için gönderme](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
 

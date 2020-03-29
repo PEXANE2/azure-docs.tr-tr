@@ -1,6 +1,6 @@
 ---
-title: BLOB Depolama hesabından bir Azure Media Services varlığa kopyalama | Microsoft Docs
-description: Bu konuda, Media Services varlığa mevcut bir bloba kopyalama gösterilmektedir. Bu örnek, Azure Media Services .NET SDK uzantıları kullanır.
+title: Bir depolama hesabından bir Azure Medya Hizmetleri varlığına blob'ları kopyalama | Microsoft Dokümanlar
+description: Bu konu, varolan bir blob'un Bir Medya Hizmetleri Varlığına nasıl kopyalanılabildiğini gösterir. Örnekte Azure Medya Hizmetleri .NET SDK Uzantıları kullanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068902"
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Bir Media Services varlığa mevcut blobları kopyalama
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Varolan lekelerin Bir Medya Hizmetleri Varlığına Kopyalanması
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
-Bu makale kullanarak yeni bir Azure Media Services (AMS) varlık içinde bir depolama hesabından BLOB kopyalama [Azure Media Services .NET SDK uzantıları](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+Bu makalede, [Azure Medya Hizmetleri .NET SDK Uzantıları](https://github.com/Azure/azure-sdk-for-media-services-extensions/)nı kullanarak bir depolama hesabındaki lekelerin yeni bir Azure Medya Hizmetleri (AMS) varlığına nasıl kopyalanış edilebildiğini gösterilmektedir.
 
-Medya hizmet API'lerini kullanarak olmadan Media Services tarafından oluşturulan blob kapsayıcı içeriğini değiştirme denememeniz gerekir.
+Medya Hizmeti API'lerini kullanmadan Media Services tarafından oluşturulan blob kapsayıcılarının içeriğini değiştirmeye çalışmamalısınız.
 
-Genişletme yöntemleri ile çalışır:
+Uzantı yöntemleri aşağıdakilerle çalışır:
 
-- Normal varlıklar.
-- Canlı arşiv varlıklar (FragBlob biçimi).
-- Kaynak ve hedef varlıklar farklı Media Services hesapları için (hatta. farklı veri merkezleri arasında) ait. Ancak bunu yaptığınızda yansıtılır olabilir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [veri aktarımları](https://azure.microsoft.com/pricing/#header-11).
+- Düzenli varlıklar.
+- Canlı arşiv varlıkları (FragBlob formatı).
+- Farklı Medya Hizmetleri hesaplarına ait kaynak ve hedef varlıklar (farklı veri merkezlerinde bile). Ancak, bu nedenle tahakkuk eden ücretler olabilir. Fiyatlandırma hakkında daha fazla bilgi için [Veri Aktarımları'na](https://azure.microsoft.com/pricing/#header-11)bakın.
 
-Makalede, iki kod örneği gösterilmektedir:
+Makalede iki kod örneği gösterilmektedir:
 
-1. Başka bir AMS hesabının yeni bir varlık içinde bir AMS hesabının bir varlığı blobları kopyalayın.
-2. Blobları bazı depolama hesabından AMS hesabına yeni bir varlık kopyalayın.
+1. Bir AMS hesabındaki bir kıymetteki lekeleri başka bir AMS hesabındaki yeni bir varlığa kopyalayın.
+2. Bazı depolama hesabındaki lekeleri AMS hesabındaki yeni bir varlığa kopyalayın.
 
-## <a name="copy-blobs-between-two-ams-accounts"></a>Blobları iki AMS hesapları arasında kopyalama  
+## <a name="copy-blobs-between-two-ams-accounts"></a>İki AMS hesabı arasındaki lekeleri kopyalama  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-İki Media Services hesabı. Makaleye göz atın [Media Services hesabı oluşturma](media-services-portal-create-account.md).
+İki Medya Hizmetleri hesabı. Makaleye bakın [Medya Hizmetleri Hesabı Oluşturma .](media-services-portal-create-account.md)
 
 ### <a name="download-sample"></a>Örnek indirme
-Bu makaledeki adımları takip edebilirsiniz ya da bu makalede açıklanan kodu içeren bir örnek indirebileceğiniz [burada](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
+Bu makaledeki adımları izleyebilir veya bu makalede açıklanan kodu içeren bir örneği [buradan](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)indirebilirsiniz.
 
 ### <a name="set-up-your-project"></a>Projenizi ayarlama
 
-1. Bölümünde anlatıldığı gibi geliştirme ortamınızı ayarlama [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md). 
-2. .config dosyasına appSettings bölümünü ekleyin ve Media Services hesaplarınızı, hedef depolama hesabı ve kaynak varlık kimliğini göre güncelleştirin  
+1. [.NET ile Medya Hizmetleri geliştirmede](media-services-dotnet-how-to-use.md)açıklandığı gibi geliştirme ortamınızı ayarlayın. 
+2. .config dosyasına appAyarlar bölümünü ekleyin ve Medya Hizmetleri hesaplarınıza, hedef depolama hesabınıza ve kaynak varlık kimliğine dayalı değerleri güncelleştirin.  
 
 ```xml
 <appSettings>
@@ -76,9 +76,9 @@ Bu makaledeki adımları takip edebilirsiniz ya da bu makalede açıklanan kodu 
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Bir varlığı başka bir AMS hesabının bir varlığı bir AMS hesabına bloblarından kopyalama
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Bir AMS hesabındaki bir kıymetteki lekeleri başka bir AMS hesabındaki bir varlığa kopyalama
 
-Aşağıdaki kod uzantısı kullanır **IAsset.Copy** tüm dosyaları kaynak varlıkta tek uzantısını kullanarak hedef varlığa kopyalamak için yöntemi.
+Aşağıdaki kod, tek bir uzantı kullanarak kaynak kıymetteki tüm dosyaları hedef kıymete kopyalamak için uzantı **IAsset.Copy** yöntemini kullanır.
 
 ```csharp
 using System;
@@ -158,17 +158,17 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>BLOB Depolama hesabından AMS hesabına kopyalayın. 
+## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Depo hesabındaki lekeleri AMS hesabına kopyalama 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-- BLOB'ları kopyalamak istediğiniz bir depolama hesabı.
-- BLOB'ları kopyalamak istediğiniz bir AMS hesabının.
+- Lekeleri kopyalamak istediğiniz bir Depolama hesabı.
+- Lekeleri kopyalamak istediğiniz bir AMS hesabı.
 
 ### <a name="set-up-your-project"></a>Projenizi ayarlama
 
-1. Bölümünde anlatıldığı gibi geliştirme ortamınızı ayarlama [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md). 
-2. .config dosyasına appSettings bölümünü ekleyin ve kaynak depolama ve hedef AMS hesaplarınızı temel alan değerlerini güncelleştirin.
+1. [.NET ile Medya Hizmetleri geliştirmede](media-services-dotnet-how-to-use.md)açıklandığı gibi geliştirme ortamınızı ayarlayın. 
+2. .config dosyasına appAyarlar bölümünü ekleyin ve kaynak depolama alanınıza ve hedef AMS hesaplarınıza göre değerleri güncelleştirin.
 
 ```xml
 <appSettings>
@@ -185,9 +185,9 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Bazı depolama hesabından AMS hesabına yeni bir varlık blobları kopyalayın
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Bazı depolama hesabındaki lekeleri AMS hesabındaki yeni bir varlığa kopyalama
 
-Aşağıdaki kod BLOB'ları bir depolama hesabından bir Media Services varlığına kopyalar. 
+Aşağıdaki kod, bir depolama hesabından Bir Medya Hizmetleri varlığına blobs kopyalar. 
 
 >[!NOTE]
 >Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.

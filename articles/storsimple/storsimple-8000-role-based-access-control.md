@@ -1,6 +1,6 @@
 ---
-title: StorSimple için rol tabanlı erişim denetimini kullanma | Microsoft Docs
-description: Azure rol tabanlı erişim denetimi (RBAC) StorSimple bağlamında kullanmayı açıklar.
+title: StorSimple için Rol Tabanlı Erişim Denetimini Kullanma | Microsoft Dokümanlar
+description: StorSimple bağlamında Azure Role tabanlı Erişim Denetimi'nin (RBAC) nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,34 +15,34 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66159084"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>StorSimple için rol tabanlı erişim denetimi
+# <a name="role-based-access-control-for-storsimple"></a>StorSimple için Rol Tabanlı Erişim Kontrolü
 
-Bu makalede, Azure rol tabanlı Access Control (RBAC), StorSimple cihazınız için nasıl kullanılabileceğini ilgili kısa bir açıklama sağlar. RBAC, Azure için ayrıntılı erişim yönetimi sunar. RBAC, herkesin vermek yerine işlerini yapmak için StorSimple kullanıcılara erişimi yalnızca doğru miktarda sınırsız erişimi vermek için kullanın. Azure'da erişim yönetimini temel bilgileri hakkında daha fazla bilgi için bkz. [Azure portalında rol tabanlı erişim denetimi ile çalışmaya başlama](../role-based-access-control/overview.md).
+Bu makalede, StorSimple aygıtınız için Azure Role Tabanlı Erişim Denetimi'nin (RBAC) nasıl kullanılabileceğinin kısa bir açıklaması yer alır. RBAC, Azure için ince taneli erişim yönetimi sunar. Herkese sınırsız erişim sağlamak yerine, StorSimple kullanıcılarına işlerini yapmaları için doğru miktarda erişim sağlamak için RBAC'ı kullanın. Azure'da erişim yönetiminin temelleri hakkında daha fazla bilgi için azure [portalında Rol Tabanlı Erişim Denetimi'ne başlayın'a](../role-based-access-control/overview.md)bakın.
 
-Bu makale, daha sonra Azure portalında ya da güncelleştirme 3.0 çalıştıran StorSimple 8000 serisi cihazlar için geçerlidir.
+Bu makale, Azure portalında Güncelleştirme 3.0 veya daha sonra çalıştıran StorSimple 8000 serisi aygıtlar için geçerlidir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>RBAC rolleri için StorSimple
+## <a name="rbac-roles-for-storsimple"></a>StorSimple için RBAC rolleri
 
-RBAC, rollerine göre atanabilir. Rol, ortamda kullanılabilir kaynaklara dayalı belirli izin düzeyleri emin olun. StorSimple kullanıcıların seçebileceği rolleri iki tür vardır: yerleşik veya özel.
+RBAC rollere göre atanabilir. Roller, ortamdaki kullanılabilir kaynaklara dayalı belirli izin düzeylerini sağlar. StorSimple kullanıcılarının aralarından seçim yapabileceği iki tür rol vardır: yerleşik veya özel.
 
-* **Yerleşik roller** -yerleşik roller sahip, katkıda bulunan, okuyucu veya kullanıcı erişimi Yöneticisi olabilir. Daha fazla bilgi için [Azure rol tabanlı erişim denetimi için yerleşik roller](../role-based-access-control/built-in-roles.md).
+* **Yerleşik roller** - Yerleşik roller sahibi, katkıda bulunan, okuyucu veya kullanıcı erişim yöneticisi olabilir. Daha fazla bilgi için Azure [Rol Tabanlı Erişim Denetimi için Yerleşik rollere](../role-based-access-control/built-in-roles.md)bakın.
 
-* **Özel roller** -yerleşik roller ihtiyaçlarınıza uygun değil, StorSimple için özel bir RBAC rolleri oluşturabilirsiniz. Özel bir RBAC rolü oluşturmak için yerleşik bir rol ile başlatmak, düzenlemek ve ortamında içeri aktarın. Rolünün karşıya yükleme ve indirme, Azure PowerShell veya Azure CLI kullanılarak yönetilir. Daha fazla bilgi için [rol tabanlı erişim denetimi için özel roller oluşturma](../role-based-access-control/custom-roles.md).
+* **Özel roller** - Yerleşik roller gereksinimlerinize uymuyorsa, StorSimple için özel RBAC rolleri oluşturabilirsiniz. Özel bir RBAC rolü oluşturmak için yerleşik bir rolile başlayın, onu edin ve sonra ortamda geri aktarın. Rolün indirilip yüklenmesi Azure PowerShell veya Azure CLI kullanılarak yönetilir. Daha fazla bilgi için [bkz.](../role-based-access-control/custom-roles.md)
 
-Azure portalında StorSimple cihaz kullanıcı için kullanılabilen farklı rolleri görüntülemek için StorSimple cihaz Yöneticisi hizmetinize gidin ve ardından Git **erişim denetimi (IAM) > rolleri**.
+Azure portalında bir StorSimple aygıt kullanıcısı için kullanılabilen farklı rolleri görüntülemek için StorSimple Device Manager hizmetinize gidin ve ardından **Access denetimine (IAM) > Roller'e**gidin.
 
 
-## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>StorSimple altyapı yöneticisi için özel bir rol oluşturun
+## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>StorSimple Infrastructure Administrator için özel bir rol oluşturma
 
-Aşağıdaki örnekte, biz yerleşik rolü ile Başlat **okuyucu** tüm kaynak kapsamlar görüntülemek için ancak bunları düzenlemek veya yenilerini oluşturma olanağı sağlar. Biz sonra yeni bir özel rol StorSimple altyapı yöneticisi oluşturmak için bu rol genişletme Bu rol, StorSimple cihazlar için altyapı yönetebilen kullanıcılara atanır.
+Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntülemesine izin veren ancak bunları yeniden oluşturmamalarını veya yenilerini oluşturmamalarını sağlayan yerleşik rol **Reader** ile başlarız. Daha sonra yeni bir özel rol StorSimple Infrastructure admin oluşturmak için bu rolü genişletmek. Bu rol, StorSimple aygıtları için altyapıyı yönetebilen kullanıcılara atanır.
 
 1. Windows PowerShell'i yönetici olarak çalıştırın.
 
@@ -50,7 +50,7 @@ Aşağıdaki örnekte, biz yerleşik rolü ile Başlat **okuyucu** tüm kaynak k
 
     `Connect-AzAccount`
 
-3. Okuyucu rolü, bilgisayarınızda bir JSON şablon olarak dışarı aktarın.
+3. Bilgisayarınızda JSON şablonu olarak Reader rolünü dışa aktarın.
 
     ```powershell
     Get-AzRoleDefinition -Name "Reader"
@@ -58,21 +58,21 @@ Aşağıdaki örnekte, biz yerleşik rolü ile Başlat **okuyucu** tüm kaynak k
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. JSON dosyasını Visual Studio'da açın. Tipik bir RBAC rolü üç ana bölümden oluşur gördüğünüz **eylemleri**, **NotActions**, ve **AssignableScopes**.
+4. Visual Studio'da JSON dosyasını açın. Tipik bir RBAC rolünün üç ana bölümden oluştuğunu görürsünüz, **Eylemler,** **NotActions**ve **AtamaKTaOlan Kapsamlar.**
 
-    İçinde **eylem** bölümü, tüm bu rol için izin verilen işlemler listelenmiştir. Her eylem bir kaynak Sağlayıcısı'ndan atanır. Bir StorSimple altyapı yöneticisi kullanan `Microsoft.StorSimple` kaynak sağlayıcısı.
+    **Eylem** bölümünde, bu rol için izin verilen tüm işlemler listelenir. Her eylem bir kaynak sağlayıcıdan atanır. StorSimple altyapı yöneticisi için `Microsoft.StorSimple` kaynak sağlayıcısını kullanın.
 
-    Tüm kaynak sağlayıcıları kullanılabilir ve kaydedilen aboneliğinizdeki görmek için PowerShell kullanın.
+    Aboneliğinizde mevcut ve kayıtlı tüm kaynak sağlayıcılarını görmek için PowerShell'i kullanın.
 
     `Get-AzResourceProvider`
 
-    Ayrıca, kaynak sağlayıcıları yönetmek tüm kullanılabilir için PowerShell cmdlet'lerini de denetleyebilirsiniz.
+    Ayrıca, kaynak sağlayıcılarını yönetmek için mevcut tüm PowerShell cmdlets'leri denetleyebilirsiniz.
 
-    İçinde **NotActions** bölümler, tüm özel bir RBAC rolü için kısıtlı eylemleri listelenir. Bu örnekte, hiçbir Eylemler kısıtlıdır.
+    **NotActions** bölümlerinde, belirli bir RBAC rolü için kısıtlanmış tüm eylemler listelenir. Bu örnekte, hiçbir eylem kısıtlanmaz.
     
-    Altında **AssignableScopes**, abonelik kimlikleri listelenir. RBAC rolü kullanıldığı açık bir abonelik kimliği içerdiğinden emin olun. Doğru abonelik kimliği belirtilmezse, aboneliğinizdeki bir role içeri aktarmak için izin verilmez.
+    **AtamaKapsamı**altında, abonelik teşekkülleri listelenir. RBAC rolünün kullanıldığı yerde açık abonelik kimliği içerdiğinden emin olun. Doğru abonelik kimliği belirtilmemişse, aboneliğinizdeki rolü içe aktarmanıza izin verilmez.
 
-    Önceki konuları göz önünde bulundurarak dosyasını düzenleyin.
+    Dosyayı önceki hususları göz önünde bulundurarak edin.
 
     ```json
     {
@@ -102,18 +102,18 @@ Aşağıdaki örnekte, biz yerleşik rolü ile Başlat **okuyucu** tüm kaynak k
     }
     ```
 
-6. Özel bir RBAC rolü ortamına geri alın.
+6. Özel RBAC rolünü ortama geri aktarın.
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
-Bu rol artık rolleri listesinde görünmelidir **erişim denetimi** dikey penceresi.
+Bu rol artık **Access denetim** bıçağındaki roller listesinde görünmelidir.
 
-![Görünüm RBAC rolleri](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![RBAC rollerini görüntüleyin](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-Daha fazla bilgi için Git [özel roller](../role-based-access-control/custom-roles.md).
+Daha fazla bilgi için [Özel rollere](../role-based-access-control/custom-roles.md)gidin.
 
-### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Örnek çıktı PowerShell aracılığıyla özel rol oluşturma
+### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>PowerShell üzerinden özel rol oluşturma için örnek çıktı
 
 ```powershell
 Connect-AzAccount
@@ -161,39 +161,39 @@ NotActions       : {}
 AssignableScopes : {/subscriptions/<subscription_ID>/}
 ```
 
-## <a name="add-users-to-the-custom-role"></a>Kullanıcılar için özel Rol Ekle
+## <a name="add-users-to-the-custom-role"></a>Kullanıcıları özel role ekleme
 
-Rol atamasının kapsamı olan kaynak, kaynak grubu veya abonelik içinden erişim verebilirsiniz. Erişim sağlarken, üst düğümüne erişim izni unutmayın alt tarafından devralınır. Daha fazla bilgi için Git [rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
+Rol atamasının kapsamı olan kaynak, kaynak grubu veya abonelik içinden erişim verebilirsiniz. Erişim sağlarken, üst düğümde verilen erişimin çocuk tarafından devredildiğini unutmayın. Daha fazla bilgi için [rol tabanlı erişim denetimine](../role-based-access-control/overview.md)gidin.
 
-1. Git **erişim denetimi (IAM)** . Tıklayın **+ Ekle** erişim denetimi dikey penceresinde.
+1. Access **denetimine (IAM)** gidin. Erişim kontrol bıçağına **+ Ekle'yi** tıklatın.
 
-    ![Erişim için RBAC rolü Ekle](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![RBAC rolüne erişim ekleme](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
-2. Atamak istediğiniz rolü seçin, bu durumda **StorSimple altyapı yöneticisi**.
+2. Atamak istediğiniz rolü seçin, bu durumda **StorSimple Infrastructure Admin**' dir.
 
 3. Dizininizde, erişim vermek istediğiniz kullanıcı, grup veya uygulamayı seçin. Görünen adlar, e-posta adresleri ve nesne tanımlayıcıları ile dizinde arama yapabilirsiniz.
 
-4. Seçin **Kaydet** atamayı oluşturmak için.
+4. Atamayı oluşturmak için **Kaydet'i** seçin.
 
-    ![RBAC rolü için izinleri ekleme](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![RBAC rolüne izin ekleme](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
-Bir **kullanıcı ekleme** bildirim ilerleme durumunu izler. Kullanıcı başarıyla eklendikten sonra kullanıcılar erişim denetimi listesi güncelleştirilir.
+**Bir Ekleme kullanıcı** bildirimi ilerlemeyi izler. Kullanıcı başarıyla eklendikten sonra Access denetimindeki kullanıcıların listesi güncelleştirilir.
 
-## <a name="view-permissions-for-the-custom-role"></a>Özel rolü için izinleri görüntüle
+## <a name="view-permissions-for-the-custom-role"></a>Özel rol için izinleri görüntüleme
 
-Bu rolü oluşturduktan sonra Azure portalında bu role sahip ilişkilendirilmiş izinleri görüntüleyebilirsiniz.
+Bu rol oluşturulduktan sonra, Azure portalında bu rolile ilişkili izinleri görüntüleyebilirsiniz.
 
-1. Bu rolle ilişkilendirilen izinleri görüntülemek için Git **erişim denetimi (IAM) > rolleri > StorSimple altyapı yöneticisi**. Bu roldeki kullanıcılar listesi görüntülenir.
+1. Bu rolile ilişkili izinleri görüntülemek için **Access denetimine (IAM)**> Rolleri > StorSimple Infrastructure Admin'e gidin. Bu roldeki kullanıcıların listesi görüntülenir.
 
-2. StorSimple altyapı yönetici bir kullanıcı seçin ve tıklayın **izinleri**.
+2. StorSimple Infrastructure Admin kullanıcısını seçin ve **İzinler'i**tıklatın.
 
-    ![StorSimple altyapısı Yönetici rolü için izinleri görüntüle](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
+    ![StorSimple Infra Admin rolü için izinleri görüntüleyin](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 
-3. Bu rolle ilişkilendirilen izinleri görüntülenir.
+3. Bu rolile ilişkili izinler görüntülenir.
 
-    ![StorSimple altyapısı yönetici rolünde kullanıcıları görüntüle](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
+    ![StorSimple Infra Admin rolündeki kullanıcıları görüntüleyin](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [iç ve dış kullanıcılar için özel roller atama](../role-based-access-control/role-assignments-external-users.md).
+[Dahili ve harici kullanıcılar için özel roller atamayı](../role-based-access-control/role-assignments-external-users.md)öğrenin.

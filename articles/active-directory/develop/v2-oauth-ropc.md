@@ -1,7 +1,7 @@
 ---
-title: Kaynak sahibi parola kimlik bilgileri izni ile oturum açma | Mavisi
+title: Kaynak sahibi şifre kimlik bilgileri hibesi ile oturum açın | Azure
 titleSuffix: Microsoft identity platform
-description: Kaynak sahibi parola kimlik bilgisi (ROPC) izni kullanılarak tarayıcı daha az kimlik doğrulama akışlarını destekler.
+description: Kaynak sahibi parola kimlik bilgisi (ROPC) hibesini kullanarak tarayıcısız kimlik doğrulama akışlarını destekleyin.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,40 +18,40 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76700694"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform ve OAuth 2,0 kaynak sahibi parolası kimlik bilgileri
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft kimlik platformu ve OAuth 2.0 Kaynak Sahibi Parola Kimlik Bilgileri
 
-Microsoft Identity platform, bir uygulamanın kullanıcının parolasını doğrudan işleyerek oturum açmasına izin veren [OAuth 2,0 kaynak sahibi parola kimlik bilgileri (ROPC) vermeyi](https://tools.ietf.org/html/rfc6749#section-4.3)destekler.  Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
+Microsoft kimlik platformu, bir uygulamanın parolalarını doğrudan işleyerek kullanıcıda oturum açmasına olanak tanıyan [OAuth 2.0 Kaynak Sahibi Parola Kimlik Bilgileri (ROPC) hibesini](https://tools.ietf.org/html/rfc6749#section-4.3)destekler.  Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
 
 > [!WARNING]
-> Microsoft, ROPC _akışını kullanmanıza tavsiye_ eder. Çoğu senaryoda, daha güvenli alternatifler kullanılabilir ve önerilir. Bu akış uygulamada çok yüksek düzeyde güven gerektirir ve diğer akışlarda bulunmayan riskleri taşır. Bu akışı yalnızca daha fazla güvenli akış kullanılmıyorsa kullanmanız gerekir.
+> Microsoft, ROPC _not_ akışını kullanmamanızı önerir. Çoğu senaryoda, daha güvenli alternatifler kullanılabilir ve önerilir. Bu akış, uygulamaya çok yüksek derecede güven gerektirir ve diğer akışlarda bulunmayan riskleri taşır. Bu akışı yalnızca diğer daha güvenli akışlar kullanılamıyorduğunda kullanmalısınız.
 
 > [!IMPORTANT]
 >
-> * Microsoft Identity platform uç noktası, kişisel hesaplara değil yalnızca Azure AD kiracılar için ROPC 'yi destekler. Bu, kiracıya özgü bir uç nokta (`https://login.microsoftonline.com/{TenantId_or_Name}`) veya `organizations` uç noktası kullanmanız gerektiği anlamına gelir.
-> * Bir Azure AD kiracısına davet edilen kişisel hesaplar ROPC kullanamaz.
-> * Parolası olmayan hesaplar ROPC aracılığıyla oturum açamaz. Bu senaryo için, bunun yerine uygulamanız için farklı bir akış kullanmanızı öneririz.
-> * Kullanıcıların uygulamada oturum açmak için Multi-Factor Authentication (MFA) kullanması gerekiyorsa, bunun yerine engellenecektir.
-> * ROPC, [karma kimlik Federasyonu](/azure/active-directory/hybrid/whatis-fed) senaryolarında (örneğin, Azure AD ve şirket içi hesapların kimliğini doğrulamak IÇIN kullanılan ADFS) desteklenmez. Kullanıcılar, şirket içi kimlik sağlayıcılarına tam sayfa yönlendirirse, Azure AD bu kimlik sağlayıcısına karşı Kullanıcı adını ve parolayı test edemeyebilir. Öte yandan [doğrudan kimlik doğrulaması](/azure/active-directory/hybrid/how-to-connect-pta) , ropc ile desteklenir.
+> * Microsoft kimlik platformu bitiş noktası, kişisel hesaplar için değil, yalnızca Azure AD kiracıları için ROPC'yi destekler. Bu, kiracıya özgü bir bitiş noktası`https://login.microsoftonline.com/{TenantId_or_Name}`() `organizations` veya bitiş noktası kullanmanız gerektiği anlamına gelir.
+> * Azure AD kiracısına davet edilen kişisel hesaplar ROPC kullanamaz.
+> * Parolası olmayan hesaplar ROPC üzerinden oturum açabiliyor. Bu senaryo için, uygulamanız için farklı bir akış kullanmanızı öneririz.
+> * Kullanıcıların uygulamada oturum açmak için çok faktörlü kimlik doğrulama (MFA) kullanması gerekiyorsa, bunun yerine engellenir.
+> * ROPC karma kimlik [federasyonu](/azure/active-directory/hybrid/whatis-fed) senaryolarında desteklenmez (örneğin, Azure AD ve ADFS şirket içi hesapların kimliğini doğrulamak için kullanılır). Kullanıcılar tam sayfa şirket içi kimlik sağlayıcılarına yönlendiriliyorsa, Azure AD kullanıcı adını ve parolayı bu kimlik sağlayıcısıyla karşısına tam olarak test edemez. [Ancak, geçiş kimlik doğrulaması](/azure/active-directory/hybrid/how-to-connect-pta) ROPC ile desteklenir.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
-Aşağıdaki diyagramda ROPC akışı gösterilmektedir.
+Aşağıdaki diyagram ROPC akışını gösterir.
 
-![Kaynak sahibi parola kimlik bilgisi akışını gösteren diyagram](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Kaynak sahibinin parola kimlik bilgi akışını gösteren diyagram](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Yetkilendirme isteği
 
-ROPC Flow tek bir istek: istemci kimliğini ve kullanıcının kimlik bilgilerini ıDP 'ye gönderir ve ardından dönüşte belirteçleri alır. İstemci, bunu yapmadan önce kullanıcının e-posta adresini (UPN) ve parolasını istemelidir. Başarılı bir istekten hemen sonra istemci, kullanıcının kimlik bilgilerini bellekten güvenli bir şekilde serbest bırakmalıdır. Onları hiçbir şekilde kaydetmemesi gerekir.
+ROPC akışı tek bir istektir: istemci kimliğini ve kullanıcı kimlik bilgilerini IDP'ye gönderir ve karşılığında belirteçleri alır. İstemci bunu yapmadan önce kullanıcının e-posta adresini (UPN) ve şifresini talep etmelidir. Başarılı bir istekten hemen sonra, istemci kullanıcının kimlik bilgilerini bellekten güvenli bir şekilde serbest bırakmalıdır. Onları asla kurtarmamalı.
 
 > [!TIP]
-> Bu isteği Postman 'da yürütmeyi deneyin!
-> [![bu isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Postacı bu isteği yürütmeyi deneyin!
+> [![Postacı'da bu isteği çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -70,14 +70,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gereklidir | Kullanıcının oturum açmasını istediğiniz dizin kiracısı. Bu, GUID veya kolay ad biçiminde olabilir. Bu parametre `common` veya `consumers`olarak ayarlanamaz, ancak `organizations`olarak ayarlanabilir. |
-| `client_id` | Gereklidir | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. | 
-| `grant_type` | Gereklidir | Ayarlanmalıdır `password`. |
-| `username` | Gereklidir | Kullanıcının e-posta adresi. |
-| `password` | Gereklidir | Kullanıcının parolası. |
-| `scope` | Önerilen | Uygulamanın gerektirdiği, [kapsam](v2-permissions-and-consent.md)veya izinlerin boşlukla ayrılmış bir listesi. Etkileşimli bir akışta yönetici veya Kullanıcı bu kapsamları daha önce kabul etmelidir. |
-| `client_secret`| Bazen gerekli | Uygulamanız ortak bir istemcise `client_secret` veya `client_assertion` dahil edilemez.  Uygulama gizli bir istemcise, dahil edilmiş olmalıdır. | 
-| `client_assertion` | Bazen gerekli | Sertifika kullanılarak oluşturulan, farklı bir `client_secret`biçimi.  Daha fazla ayrıntı için bkz. [sertifika kimlik bilgileri](active-directory-certificate-credentials.md) . | 
+| `tenant` | Gerekli | Kullanıcıyı oturum açmak istediğiniz dizin kiracı. Bu GUID veya dostu ad biçiminde olabilir. Bu parametre ayarlanamıyor `common` veya `consumers`, ama ' `organizations`olarak ayarlanabilir . |
+| `client_id` | Gerekli | Uygulama (istemci) kimliği, Uygulamanıza atanan [Azure portalı - Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasıdır. | 
+| `grant_type` | Gerekli | Ayarlanmış `password`olmalı. |
+| `username` | Gerekli | Kullanıcının e-posta adresi. |
+| `password` | Gerekli | Kullanıcının parolası. |
+| `scope` | Önerilen | Uygulamanın gerektirdiği [kapsamların](v2-permissions-and-consent.md)veya izinlerin yer le ayrılmış bir listesi. Etkileşimli bir akışta, yönetici veya kullanıcı bu kapsamları önceden kabul etmelidir. |
+| `client_secret`| Bazen gerekli | Uygulamanız genel bir istemciyse, `client_secret` `client_assertion` uygulama dahil edilemez veya dahil edilemez.  Uygulama gizli bir istemciyse, eklenmelidir. | 
+| `client_assertion` | Bazen gerekli | Farklı bir `client_secret`form , bir sertifika kullanılarak oluşturulan.  Daha fazla ayrıntı için [sertifika kimlik bilgilerine](active-directory-certificate-credentials.md) bakın. | 
 
 ### <a name="successful-authentication-response"></a>Başarılı kimlik doğrulama yanıtı
 
@@ -96,25 +96,25 @@ Aşağıdaki örnekte başarılı bir belirteç yanıtı gösterilmektedir:
 
 | Parametre | Biçimlendir | Açıklama |
 | --------- | ------ | ----------- |
-| `token_type` | Dize | Her zaman `Bearer`olarak ayarlayın. |
-| `scope` | Boşlukla ayrılmış dizeler | Erişim belirteci döndürülürse, bu parametre erişim belirtecinin geçerli olduğu kapsamları listeler. |
-| `expires_in`| int | Dahil edilen erişim belirtecinin geçerli olduğu saniye sayısı. |
-| `access_token`| Donuk dize | İstenen [kapsamlar](v2-permissions-and-consent.md) için verildi. |
-| `id_token` | JWT | Özgün `scope` parametresi `openid` kapsamını içeriyorsa verildi. |
-| `refresh_token` | Donuk dize | Özgün `scope` parametresi `offline_access`dahil edilmek için verilir. |
+| `token_type` | Dize | Her zaman `Bearer`. |
+| `scope` | Boşluk ayrılmış dizeleri | Bir erişim belirteci döndürüldüyse, bu parametre erişim belirteci için geçerli olan kapsamları listeler. |
+| `expires_in`| int | Dahil edilen erişim jetonunun geçerli olduğu saniye sayısı. |
+| `access_token`| Opak dize | İstenen [kapsamlar](v2-permissions-and-consent.md) için verilir. |
+| `id_token` | Jwt | Özgün `scope` parametre `openid` kapsamı dahil ise verilir. |
+| `refresh_token` | Opak dize | Orijinal `scope` parametre dahil sayılsa `offline_access`verilir. |
 
-Yenileme belirtecini, [OAuth kod akışı belgelerinde](v2-oauth2-auth-code-flow.md#refresh-the-access-token)açıklanan akışı kullanarak yeni erişim belirteçleri elde etmek ve belirteçleri yenilemek için kullanabilirsiniz.
+Yeni erişim belirteçleri elde etmek ve [OAuth Code akış belgelerinde](v2-oauth2-auth-code-flow.md#refresh-the-access-token)açıklanan aynı akışı kullanarak belirteçleri yenilemek için yenileme belirteci kullanabilirsiniz.
 
 ### <a name="error-response"></a>Hata yanıtı
 
-Kullanıcı doğru Kullanıcı adını veya parolayı sağlamadıysa veya istemci istenen onayı almadıysanız, kimlik doğrulaması başarısız olur.
+Kullanıcı doğru kullanıcı adını veya parolayı sağlamamışsa veya istemci istenen onayı almadıysa, kimlik doğrulama başarısız olur.
 
 | Hata | Açıklama | İstemci eylemi |
 |------ | ----------- | -------------|
-| `invalid_grant` | Kimlik doğrulaması başarısız oldu | Kimlik bilgileri hatalıydı veya istemcinin istenen kapsamlar için izni yok. Kapsamlar verilmezse `consent_required` bir hata döndürülür. Bu durum oluşursa, istemci bir Web görünümü veya tarayıcı kullanarak kullanıcıyı etkileşimli bir istemde göndermelidir. |
-| `invalid_request` | İstek yanlış oluşturulmuş | İzin türü `/common` veya `/consumers` kimlik doğrulama bağlamlarında desteklenmiyor.  Bunun yerine `/organizations` veya kiracı KIMLIĞINI kullanın. |
+| `invalid_grant` | Kimlik doğrulama başarısız oldu | Kimlik bilgileri yanlıştı veya istemcinin istenen kapsamlar için izni yok. Kapsamlar verilmezse, bir `consent_required` hata döndürülür. Bu durumda, istemci bir web görünümü veya tarayıcı kullanarak etkileşimli bir komut istemi kullanıcı göndermesi gerekir. |
+| `invalid_request` | İstek yanlış yapılmış. | Hibe türü `/common` veya `/consumers` kimlik doğrulama bağlamlarında desteklenmez.  Bunun `/organizations` yerine bir kiracı kimliği kullanın. |
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Örnek konsol uygulamasını](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)kullanarak ropc 'nizi kendiniz deneyin.
-* V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
+* [Örnek konsol uygulamasını](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)kullanarak ROPC'yi kendiniz deneyin.
+* v2.0 bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.

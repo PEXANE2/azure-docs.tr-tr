@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı işleri anlama | Microsoft Docs
-description: Geliştirici Kılavuzu - birden fazla cihazda çalıştırılacak işleri zamanlama, IOT hub'ınıza bağlı. İşler, etiketler ve istenen özelliklerini güncelleştirmek ve birden fazla cihazda doğrudan metotları çağırma.
+title: Azure IoT Hub işlerini anlama | Microsoft Dokümanlar
+description: Geliştirici kılavuzu - IoT hub'ınıza bağlı birden çok cihazda çalışacak işleri zamanlama. İşler etiketleri ve istenen özellikleri güncelleyebilir ve birden çok cihazda doğrudan yöntemleri çağırabilir.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,34 +9,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65409045"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Birden fazla cihazda işleri zamanlama
 
-Azure IOT hub'ı etkinleştirir yapı taşları gibi bir dizi [cihaz ikizi özelliklerini ve etiketlerini](iot-hub-devguide-device-twins.md) ve [doğrudan yöntemler](iot-hub-devguide-direct-methods.md). Genellikle, arka uç uygulamaları güncelleştirme ve IOT cihazlarını toplu ve zamanlanan tarihte ile etkileşim kurmak cihaz yöneticilerin ve operatörlerin olanak tanır. İşleri zamanlanan saatte cihaz ikizi güncelleştirmeleri ve bir dizi cihazda karşı doğrudan metotları yürütme. Örneğin, operatör başlatır ve bir grup için yapı işlemlerini kesintiye uğratan olmazdı birer 43 ve 3 kat oluşturmadaki cihazı yeniden başlatmak için bir iş izleyen bir arka uç uygulaması kullanmanız gerekir.
+Azure IoT Hub, aygıt ikiz [özellikleri ve etiketleri ve](iot-hub-devguide-device-twins.md) doğrudan yöntemler gibi bir dizi yapı taşını etkinleştirir. [direct methods](iot-hub-devguide-direct-methods.md) Genellikle, arka uç uygulamaları aygıt yöneticilerinin ve operatörlerin IoT aygıtlarını toplu olarak ve zamanlanmış bir zamanda güncelleştirmelerine ve bunlarla etkileşimde kalmalarını sağlar. İşler, aygıt ikiz güncelleştirmelerini ve zamanlanmış bir anda bir dizi aygıta karşı doğrudan yöntemleri çalıştırın. Örneğin, bir operatör, binanın işleyişini kesintiye uğratmayacak şekilde bina 43 ve kat 3'teki bir dizi aygıtı yeniden başlatmak için bir işi başlatan ve izleyen bir arka uç uygulaması kullanır.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Planlamak ve ilerlemeyi izlemek gerektiğinde aşağıdaki etkinliklerin herhangi bir dizi cihazda işlemleriyle göz önünde bulundurun:
+Bir aygıt kümesinde aşağıdaki etkinliklerden herhangi birini zamanlamanız ve izlemeniz gerektiğinde işleri kullanmayı düşünün:
 
 * İstenen özellikleri güncelleştirme
-* Etiketleri güncelleştirin
-* Doğrudan metotları çağırma
+* Etiketleri güncelleştir
+* Doğrudan yöntemleri çağırma
 
 ## <a name="job-lifecycle"></a>İş yaşam döngüsü
 
-İşleri çözüm arka ucu tarafından başlatılan ve IOT Hub tarafından korunur. Hizmet kullanıma yönelik bir URI aracılığıyla bir işi başlatabilirsiniz (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) ve hizmeti kullanıma yönelik bir URI aracılığıyla yürütülürken bir işin ilerlemesi için sorgu (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`). Bir iş başlatıldıktan sonra işleri çalıştırma durumunu yenilemek için bir iş sorgusu çalıştırın.
+İşler çözüm arka uç tarafından başlatılır ve IoT Hub tarafından korunur. Bir hizmeti bakan URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) ve hizmete bakan URI ( ) aracılığıyla yürütme işi`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`ilerleme için sorgu yoluyla bir iş başlatabilirsiniz. Bir iş başlatıldıktan sonra işleri çalıştırma durumunu yenilemek için bir iş sorgusu çalıştırın.
 
 > [!NOTE]
-> Bir işi başlattığınızda, özellik adları ve değerleri yalnızca US-ASCII yazdırılabilir içerebilir alfasayısal karakterler, aşağıdaki, tüm hariç: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Bir işi başlattığınızda, özellik adları ve değerleri, aşağıdaki kümedekiler dışında yalnızca US-ASCII yazdırılabilir alfasayısal içerebilir:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
-## <a name="jobs-to-execute-direct-methods"></a>Doğrudan yöntemler çalıştırılacak işleri
+## <a name="jobs-to-execute-direct-methods"></a>Doğrudan yöntemleri çalıştıracak işler
 
-Aşağıdaki kod parçacığını yürütmeye yönelik HTTPS 1.1 istek ayrıntılarını gösterir bir [doğrudan yöntemini](iot-hub-devguide-direct-methods.md) bir iş kullanarak cihazları bir dizi:
+Aşağıdaki parçacık, bir işi kullanan bir aygıt kümesinde [doğrudan](iot-hub-devguide-direct-methods.md) bir yöntem yürütmek için HTTPS 1.1 istek ayrıntılarını gösterir:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -58,7 +58,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Sorgu koşulu, bir tek bir cihaz kimliği veya cihaz aşağıdaki örneklerde gösterildiği gibi kimlikleri listesi de olabilir:
+Sorgu koşulu, aşağıdaki örneklerde gösterildiği gibi tek bir aygıt kimliğinde veya aygıt kimlikleri listesinde de bulunabilir:
 
 ```
 "queryCondition" = "deviceId = 'MyDevice1'"
@@ -66,9 +66,9 @@ Sorgu koşulu, bir tek bir cihaz kimliği veya cihaz aşağıdaki örneklerde g�
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
 
-[IOT Hub sorgu dili](iot-hub-devguide-query-language.md) ek ayrıntılı IOT Hub sorgu dili kapsar.
+[IoT Hub Sorgu Dili,](iot-hub-devguide-query-language.md) IoT Hub sorgu dilini ek ayrıntılarla kapsar.
 
-Aşağıdaki kod parçacığı, istek ve yanıt testMethod tüm cihazlarda contoso-hub-1'adlı bir doğrudan yöntem çağırma için zamanlanan bir işin gösterir:
+Aşağıdaki snippet contoso-hub-1 tüm cihazlarda testMethod adlı doğrudan bir yöntem çağırmak için zamanlanan bir iş için istek ve yanıt gösterir:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -100,9 +100,9 @@ Date: Fri, 03 May 2019 01:46:18 GMT
 {"jobId":"job01","type":"scheduleDeviceMethod","status":"queued"}
 ```
 
-## <a name="jobs-to-update-device-twin-properties"></a>Cihaz ikizi özelliklerini güncelleştirmek için işlemler
+## <a name="jobs-to-update-device-twin-properties"></a>Aygıt ikiz özelliklerini güncelleştirme işleri
 
-Aşağıdaki kod parçacığında, bir iş kullanarak cihaz ikizi özelliklerini güncelleştirmek için HTTPS 1.1 istek ayrıntılarını gösterir:
+Aşağıdaki parçacık, bir işi kullanarak aygıt ikiz özelliklerini güncelleştirmek için HTTPS 1.1 istek ayrıntılarını gösterir:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -121,9 +121,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin* özellik için geçerli etag eşleşme gerekir; Örneğin, `etag="*"`.
+> *UpdateTwin* özelliği geçerli bir etag eşleşmesi gerektirir; örneğin, `etag="*"`.
 
-Aşağıdaki kod parçacığı, istek ve yanıt için test-contoso-hub-1 üzerinde'cihaz için cihaz ikizi özelliklerini güncelleştirmek için zamanlanmış bir işi gösterir:
+Aşağıdaki snippet, contoso-hub-1'deki test aygıtı için aygıt ikiz özelliklerini güncelleştirmek üzere zamanlanan bir iş için istek ve yanıtı gösterir:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -158,9 +158,9 @@ Date: Fri, 03 May 2019 22:45:13 GMT
 {"jobId":"job02","type":"scheduleUpdateTwin","status":"queued"}
 ```
 
-## <a name="querying-for-progress-on-jobs"></a>Devam eden işler üzerinde sorgulama
+## <a name="querying-for-progress-on-jobs"></a>İşlerde ilerleme için sorgulama
 
-Aşağıdaki kod parçacığı için işleri sorgulamak için HTTPS 1.1 istek ayrıntılarını gösterir:
+Aşağıdaki parçacık, iş sorgulama için HTTPS 1.1 istek ayrıntılarını gösterir:
 
 ```
 GET /jobs/v2/query?api-version=2018-06-30[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
@@ -169,53 +169,53 @@ Authorization: <config.sharedAccessSignature>
 Content-Type: application/json; charset=utf-8
 ```
 
-Yanıttan continuationToken sağlanır.
+DevamıToken yanıt tan sağlanır.
 
-Her bir cihaz kullanarak iş yürütme durumunu sorgulayabilirsiniz [cihaz ikizleri, işler ve ileti yönlendirme için IOT Hub sorgu dili](iot-hub-devguide-query-language.md).
+[Aygıt ikizleri, işleri ve ileti yönlendirmesi için IoT Hub sorgu dilini](iot-hub-devguide-query-language.md)kullanarak her aygıttaki iş yürütme durumunu sorgulayabilirsiniz.
 
-## <a name="jobs-properties"></a>İş özellikleri
+## <a name="jobs-properties"></a>İşler Özellikleri
 
-Aşağıdaki liste, sorgulanırken işleri veya iş sonuçları için kullanılabilir ilgili açıklamalar ve özelliklerini gösterir.
+Aşağıdaki liste, iş veya iş sonuçları için sorgulanırken kullanılabilecek özellikleri ve ilgili açıklamaları gösterir.
 
 | Özellik | Açıklama |
 | --- | --- |
-| **jobId** |Uygulama için İş Kimliği sağlanmadı. |
-| **startTime** |Uygulama, işin başlangıç saati (ISO 8601) sağlanır. |
-| **endTime** |IOT Hub, iş tamamlandığında (ISO 8601) tarihi sağlanır. Yalnızca iş 'Tamamlandı' durumuna ulaştıktan sonra geçerli. |
-| **type** |İşleri türleri: |
-| | **scheduleUpdateTwin**: Bir dizi istenen özellikleri veya etiketleri güncelleştirmek için kullanılan bir proje. |
-| | **scheduleDeviceMethod**: Cihaz ikizlerini kümesi üzerinde bir cihaz yöntemini çağırmak için kullanılan bir proje. |
-| **status** |İşin geçerli durumu. Durum için olası değerler: |
-| | **Bekleyen**: Zamanlanmış ve iş hizmeti tarafından işlenmek üzere bekleniyor. |
-| | **Zamanlanmış**: Gelecekteki bir zamanı için zamanlandı. |
-| | **Çalışan**: Şu anda etkin iş. |
-| | **İptal**: İş iptal edildi. |
-| | **Başarısız**: İş başarısız oldu. |
-| | **Tamamlanan**: İşi tamamlandı. |
-| **deviceJobStatistics** |İşin yürütme hakkındaki istatistiklerdir. |
+| **Jobıd** |Başvuru iş için kimlik sağladı. |
+| **startTime** |Uygulama iş için başlangıç saati (ISO-8601) sağladı. |
+| **endTime** |IoT Hub, işin ne zaman tamamlandığı na ilişkin tarih (ISO-8601) sağladı. Yalnızca iş 'tamamlanmış' duruma ulaştıktan sonra geçerlidir. |
+| **Türü** |İş türleri: |
+| | **scheduleUpdateTwin**: İstenilen özellikler veya etiketler kümesini güncelleştirmek için kullanılan bir iş. |
+| | **scheduleDeviceMethod**: Aygıt ikizlerinin setinde bir cihaz yöntemini çağırmak için kullanılan iş. |
+| **durum** |İşin şu anki durumu. Durum için olası değerler: |
+| | **bekleme :** Planlanmış ve iş hizmeti tarafından alınmayı bekliyor. |
+| | **scheduled**: Gelecekte bir süre için zamanlanır. |
+| | **running**: Şu anda etkin iş. |
+| | **iptal :** İş iptal edildi. |
+| | **başarısız**: İş başarısız oldu. |
+| | **tamamladı**: İş tamamlandı. |
+| **cihazJobStatistics** |İşin yürütülmesiyle ilgili istatistikler. |
 | | **deviceJobStatistics** özellikleri: |
-| | **deviceJobStatistics.deviceCount**: İşteki cihaz sayısı. |
-| | **deviceJobStatistics.failedCount**: İş başarısız olduğu cihaz sayısı. |
-| | **deviceJobStatistics.succeededCount**: İş yeri başarılı cihazların sayısı. |
-| | **deviceJobStatistics.runningCount**: İşi çalışmakta olan cihazların sayısı. |
-| | **deviceJobStatistics.pendingCount**: İşi çalıştırmak için bekleyen cihaz sayısı. |
+| | **deviceJobStatistics.deviceCount**: İşteki aygıt sayısı. |
+| | **deviceJobStatistics.failedCount**: İşin başarısız olduğu aygıt sayısı. |
+| | **deviceJobStatistics.succeededCount**: İşin başarılı olduğu aygıt sayısı. |
+| | **deviceJobStatistics.runningCount**: Şu anda işi çalıştıran aygıt sayısı. |
+| | **deviceJobStatistics.pendingCount**: İşi çalıştırmak için bekleyen aygıt sayısı. |
 
-### <a name="additional-reference-material"></a>Ek başvuru malzemesi
+### <a name="additional-reference-material"></a>Ek referans materyali
 
-IOT Hub Geliştirici Kılavuzu'nda olan diğer başvuru konularını içerir:
+IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunlardır:
 
-* [IOT Hub uç noktaları](iot-hub-devguide-endpoints.md) her IOT hub'ı ortaya koyan çalışma zamanı ve yönetim işlemleri için çeşitli uç noktaları açıklar.
+* [IoT Hub uç noktaları,](iot-hub-devguide-endpoints.md) her IoT hub'ın çalışma zamanı ve yönetim işlemleri için ortaya çıkardığı çeşitli uç noktaları açıklar.
 
-* [Azaltma ve kotalar](iot-hub-devguide-quotas-throttling.md) IOT Hub hizmeti ve hizmetin kullandığınızda beklenir azaltma davranışını uygulanan kotalar açıklar.
+* [Azaltma ve kotalar,](iot-hub-devguide-quotas-throttling.md) IoT Hub hizmetine uygulanan kotaları ve hizmeti kullandığınızda bekleyeceğiniz azaltma davranışını açıklar.
 
-* [Azure IOT cihaz ve hizmet SDK'ları](iot-hub-devguide-sdks.md) çeşitli dil IOT hub'ı ile etkileşim kuran hem cihaz hem de hizmet uygulamaları geliştirirken kullanabileceğiniz SDK'ları listeler.
+* [Azure IoT aygıt ve hizmet SDK'ları,](iot-hub-devguide-sdks.md) IoT Hub ile etkileşimde bulunan hem aygıt hem de hizmet uygulamaları geliştirdiğinizde kullanabileceğiniz çeşitli dil SDK'larını listeler.
 
-* [Cihaz ikizleri, işler ve ileti yönlendirme için IOT Hub sorgu dili](iot-hub-devguide-query-language.md) IOT Hub sorgu dili açıklar. IOT Hub'ından, cihaz ikizleri ve işler hakkında bilgi almak için bu sorgu dili kullanın.
+* [Aygıt ikizleri, işleri ve ileti yönlendirmesi için IoT Hub sorgu dili,](iot-hub-devguide-query-language.md) IoT Hub sorgu dilini açıklar. IoT Hub'dan aygıtınız ve işleriniz hakkında bilgi almak için bu sorgu dilini kullanın.
 
-* [IOT hub'ı MQTT desteği](iot-hub-mqtt-support.md) ve MQTT protokolünü için IOT hub'ı desteği hakkında daha fazla bilgi sağlar.
+* [IoT Hub MQTT desteği,](iot-hub-mqtt-support.md) MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede açıklanan kavramları bazıları denemek için aşağıdaki IOT hub'ı öğreticiye bakın:
+Bu makalede açıklanan bazı kavramları denemek için aşağıdaki IoT Hub öğreticisine bakın:
 
 * [İşleri zamanlama ve yayınlama](iot-hub-node-node-schedule-jobs.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB uygulamanız için doğru tutarlılık düzeyini seçin
-description: Azure Cosmos DB içinde uygulamanız için doğru tutarlılık düzeyini seçme.
+description: Azure Cosmos DB'deki uygulamanız için doğru tutarlılık düzeyini seçme.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441914"
 ---
 # <a name="choose-the-right-consistency-level"></a>Doğru tutarlılık düzeyini seçme 
 
-Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya bağlı dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasında temel zorunluluğunu getirir yapın. Ticari olarak kullanılabilen en çok dağıtılmış veritabanları, geliştiricilerin iki üstün tutarlılık modeli arasından seçim yapmasını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Azure Cosmos DB, geliştiricilerin iyi tanımlanmış beş tutarlılık modeli arasından seçim yapmasına olanak sağlar: *güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek* ve *nihai*. Bu tutarlılık modellerinin her biri iyi tanımlanmış, sezgisel ve belirli gerçek dünyada senaryolar için kullanılabilir. Beş tutarlılık modelinin her biri, kesin [kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) sağlar ve kapsamlı SLA 'lar tarafından desteklenir. Aşağıdaki basit konular, birçok yaygın senaryoda doğru seçim yapmanıza yardımcı olur.
+Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya dayanan dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve üretim arasındaki temel dengeyi sağlar. Ticari olarak kullanılabilen dağıtılmış veritabanlarının çoğu geliştiricilerden iki aşırı tutarlılık modeli arasında seçim yapmalarını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Azure Cosmos DB geliştiriciler beş iyi tanımlanmış tutarlılık modelleri arasında seçim yapmanızı sağlar: *güçlü*, *sınırlı bayatlık*, *oturum*, *tutarlı önek* ve *nihai*. Bu tutarlılık modellerinin her biri iyi tanımlanmış, sezgiseldir ve belirli gerçek dünya senaryoları için kullanılabilir. Beş tutarlılık modelinin her biri hassas [kullanılabilirlik ve performans dengeleri](consistency-levels-tradeoffs.md) sağlar ve kapsamlı SLA'lar tarafından desteklenir. Aşağıdaki basit hususlar birçok yaygın senaryoda doğru seçimi yapmak yardımcı olacaktır.
 
 ## <a name="sql-api-and-table-api"></a>SQL API ve Tablo API'si
 
-Uygulamanız SQL API veya Tablo API'si kullanılarak derlenip aşağıdaki noktaları göz önünde bulundurun:
+Uygulamanız SQL API veya Tablo API'si kullanılarak oluşturulmuşsa aşağıdaki noktaları göz önünde bulundurun:
 
-- Birçok gerçek Dünya senaryosunda, oturum tutarlılığı en iyi seçenektir ve önerilen seçenektir. Daha fazla bilgi için bkz. [uygulamanıza yönelik oturum belirtecini yönetme](how-to-manage-consistency.md#utilize-session-tokens).
+- Birçok gerçek dünya senaryosu için oturum tutarlılığı en uygun maliyetlidir ve önerilen seçenektir. Daha fazla bilgi için bkz: [Uygulamanız için oturum belirteci nasıl yönetilir.](how-to-manage-consistency.md#utilize-session-tokens)
 
-- Uygulamanız güçlü tutarlılık gerektiriyorsa, sınırlanmış stalet tutarlılığı düzeyi kullanmanız önerilir.
+- Uygulamanız güçlü tutarlılık gerektiriyorsa, sınırlı bayatlık tutarlılık düzeyi kullanmanız önerilir.
 
-- Yazma işlemlerinde oturum tutarlılığı ve tek basamaklı milisaniyelik gecikme süresi tarafından sağlananlara daha sıkı tutarlılık garantisi gerekiyorsa, sınırlanmış stalet tutarlılığı düzeyi kullanmanız önerilir.  
+- Oturum tutarlılığı ve yazmalar için tek basamaklı-milisaniye gecikmesi tarafından sağlananlardan daha sıkı tutarlılık garantilerine ihtiyacınız varsa, sınırlı bayatlık tutarlılık düzeyi kullanmanız önerilir.  
 
-- Uygulamanız nihai tutarlılık gerektiriyorsa, tutarlı ön ek tutarlılık düzeyi kullanmanız önerilir.
+- Uygulamanız nihai tutarlılık gerektiriyorsa, tutarlı önek tutarlılığı düzeyi kullanmanız önerilir.
 
-- Oturum tutarlılığı tarafından sağlananlara göre daha az sıkı tutarlılık garantisi gerekiyorsa, tutarlı ön ek tutarlılık düzeyi kullanmanız önerilir.
+- Oturum tutarlılığı tarafından sağlananlardan daha az sıkı tutarlılık garantilerine ihtiyacınız varsa, tutarlı önek tutarlılık düzeyi kullanmanız önerilir.
 
-- En yüksek kullanılabilirliğe ve en düşük gecikme süresine ihtiyaç duyuyorsanız, nihai tutarlılık düzeyini kullanın.
+- En yüksek kullanılabilirliğe ve en düşük gecikme süresine ihtiyacınız varsa, nihai tutarlılık düzeyini kullanın.
 
-- Performanstan ödün vermeden daha yüksek veri dayanıklılığı gerekiyorsa, uygulama katmanında özel bir tutarlılık düzeyi oluşturabilirsiniz. Daha fazla bilgi için bkz. [uygulamalarınızda özel eşitleme uygulama](how-to-custom-synchronization.md).
+- Performanstan ödün vermeden daha yüksek veri dayanıklılığına ihtiyacınız varsa, uygulama katmanında özel bir tutarlılık düzeyi oluşturabilirsiniz. Daha fazla bilgi için bkz: [Uygulamalarınızda özel senkronizasyon nasıl uygulanır.](how-to-custom-synchronization.md)
 
-## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra, MongoDB ve Gremlin API 'Leri
+## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra, MongoDB ve Gremlin API'leri
 
-- Apache Cassandra ve Cosmos DB tutarlılık düzeylerinde sunulan "tutarlılık düzeyi okuma" arasında eşleme hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve Cosmos DB API 'leri](consistency-levels-across-apis.md#cassandra-mapping).
+- Apache Cassandra ve Cosmos DB tutarlılık düzeylerinde sunulan "Tutarlılık Düzeyini Oku" arasındaki haritalama yla ilgili ayrıntılar için [Tutarlılık düzeyleri ve Cosmos DB API'leri'ne](consistency-levels-across-apis.md#cassandra-mapping)bakın.
 
-- MongoDB ve Azure Cosmos DB tutarlılık düzeylerinin "okuma sorunu" ile eşleme ayrıntıları için bkz. [tutarlılık düzeyleri ve Cosmos DB API 'leri](consistency-levels-across-apis.md#mongo-mapping).
+- MongoDB'nin "Okuma Endişesi" ve Azure Cosmos DB tutarlılık düzeyleri arasındaki haritalama yla ilgili ayrıntılar için [Tutarlılık düzeyleri ve Cosmos DB API'leri'ne](consistency-levels-across-apis.md#mongo-mapping)bakın.
 
-## <a name="consistency-guarantees-in-practice"></a>Uygulamada tutarlılık garantisi
+## <a name="consistency-guarantees-in-practice"></a>Uygulamada tutarlılık garantileri
 
-Uygulamada genellikle daha güçlü tutarlılık garantisi alabilirsiniz. Bir okuma işleminin tutarlılık garantisi, istediğiniz veritabanı durumunun yeniliği ve sıralamasına karşılık gelir. Okuma tutarlılığı, yazma/güncelleştirme işlemlerinin sıralaması ve yayılması ile bağlantılıdır.  
+Uygulamada, genellikle daha güçlü tutarlılık garantileri alabilirsiniz. Okuma işlemi için tutarlılık garantileri, istediğiniz veritabanı durumunun tazeliğine ve siparişine karşılık gelir. Okuma tutarlılığı, yazma/güncelleştirme işlemlerinin sıralanmasına ve yayılmasına bağlıdır.  
 
-* Tutarlılık düzeyi, **sınırlı stalet**olarak ayarlandığında, Cosmos DB istemcilerin, daha önceki bir yazma değerini her zaman okumasını sağlar ve bu pencere, bir gecikme süresi penceresiyle sınırlı bir gecikme olur.
+* Tutarlılık düzeyi **bayatlık sınırlı**olarak ayarlandığında, Cosmos DB müşterilerin her zaman bir önceki yazma değerini okumak garanti, bayatlık penceresi ile sınırlı bir gecikme ile.
 
-* Tutarlılık düzeyi **güçlü**olarak ayarlandığında, stalet penceresi sıfıra eşdeğerdir ve istemciler, yazma işleminin en son taahhüt edilen değerini okumak için garanti edilir.
+* Tutarlılık düzeyi **güçlü**olarak ayarlandığında, bayatlık penceresi sıfıra eşdeğerdir ve istemcilerin yazma işleminin en son taahhüt edilen değerini okumaları garanti edilir.
 
-* Kalan üç tutarlılık düzeyi için, stalet penceresi büyük ölçüde iş yükünüze bağımlıdır. Örneğin, veritabanında yazma işlemi yoksa, son, **oturum**veya **tutarlı ön ek** tutarlılık düzeylerine sahip bir okuma **işlemi, güçlü**tutarlılık düzeyiyle bir okuma işlemiyle aynı sonuçları elde etmek olasıdır.
+* Kalan üç tutarlılık düzeyi için, bayatlık penceresi büyük ölçüde iş yükünüze bağlıdır. Örneğin, veritabanında yazma işlemi yoksa, **nihai**, **oturum**veya **tutarlı önek** tutarlılık düzeyleriiçeren bir okuma işlemi, güçlü tutarlılık düzeyine sahip bir okuma işlemiyle aynı sonuçları verir.
 
-Azure Cosmos hesabınız, güçlü tutarlılık dışında bir tutarlılık düzeyiyle yapılandırıldıysa, olasılık açısından *olasılığa sınırlı bir Stalet* (PBS) ölçüsüne bakarak istemcilerinizin iş yükleriniz için güçlü ve tutarlı okumalar alabilir olasılığını fark edebilirsiniz. Bu ölçüm Azure portal kullanıma sunulur, daha fazla bilgi edinmek için bkz. [Izleme olasılığa yönelik sınırlı Stalet (PBS) ölçümü](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Azure Cosmos hesabınız güçlü tutarlılık dışında bir tutarlılık düzeyiyle yapılandırılırsa, *Probabilistically Bounded Staleness* (PBS) ölçüsüne bakarak müşterilerinizin iş yükleri için güçlü ve tutarlı okumalar alma olasılığını öğrenebilirsiniz. Bu metrik, daha fazla bilgi edinmek için Azure portalında açıklanır, [bkz.](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
 
-Dayalı sınırlanmış stalet, nihai tutarlılığın ne kadar olduğunu gösterir. Bu ölçüm, Azure Cosmos hesabınızda halen yapılandırdığınız tutarlılık düzeyinden daha güçlü bir tutarlılık elde etme konusunda bir fikir sağlar. Diğer bir deyişle, yazma ve okuma bölgelerinin bir birleşimi için kesin olarak tutarlı okuma elde etme olasılığını (milisaniye olarak ölçülür) görebilirsiniz.
+Olasılıklı sınırlı bayatlık ne kadar nihai tutarlılık olduğunu gösterir. Bu metrik, Azure Cosmos hesabınızda şu anda yapılandırdığınız tutarlılık düzeyine göre ne sıklıkta daha güçlü bir tutarlılık elde edebileceğinize dair bir fikir sağlar. Başka bir deyişle, yazma ve okuma bölgelerinin birleşimi için güçlü tutarlı okumalar alma olasılığını (milisaniye cinsinden ölçülür) görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki makalelerde tutarlılık düzeyleri hakkında daha fazla bilgi edinin:
 
-* [Cosmos DB API 'lerde tutarlılık düzeyi eşleme](consistency-levels-across-apis.md)
-* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
-* [Uygulamanız için oturum belirtecini yönetme](how-to-manage-consistency.md#utilize-session-tokens)
-* [Gerçekçi sınırlı Eskime durumu (PBS) ölçüsünü izleyin](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [Cosmos DB API'leri arasında tutarlılık düzeyi eşleme](consistency-levels-across-apis.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans dengeleri](consistency-levels-tradeoffs.md)
+* [Başvurunuz için oturum belirteci nasıl yönetilir?](how-to-manage-consistency.md#utilize-session-tokens)
+* [Olasılığa Dayalı Sınırlanmış Eskime Durumu (PBS) ölçümünü izleme](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

@@ -1,6 +1,6 @@
 ---
-title: Uygulamalar listemde beklenmedik bir uygulama | Microsoft Docs
-description: Kiracınızdaki tüm uygulamalar ve kurumsal uygulamaları altındaki tüm uygulamalar listenizde uygulamaları görüntülenme anlama hakkında
+title: Uygulama listemde beklenmeyen uygulama | Microsoft Dokümanlar
+description: Kiracınızdaki tüm uygulamaları nasıl görebilirsiniz ve Kurumsal Uygulamalar altındaki Tüm Uygulamalar listenizde uygulamaların nasıl göründüğünü anlama
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,113 +16,113 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781106"
 ---
-# <a name="unexpected-application-in-my-applications-list"></a>Uygulamalar listemde beklenmedik bir uygulama
+# <a name="unexpected-application-in-my-applications-list"></a>Uygulama listemdeki beklenmeyen uygulama
 
-Bu makale, uygulamaların nasıl görünür anlamanıza yardımcı, **tüm uygulamaları** altında listesinde **kurumsal uygulamalar**. 
+Bu makale, **Uygulamaların Kurumsal Uygulamalar**altında Tüm **Uygulamalar** listenizde nasıl göründüğünü anlamanıza yardımcı olur. 
 
-## <a name="how-to-see-all-applications-in-your-tenant"></a>Kiracınızdaki tüm uygulamaları görme
+## <a name="how-to-see-all-applications-in-your-tenant"></a>Kiracınızdaki tüm uygulamaları nasıl görebilirsiniz?
 
-Kiracınızdaki tüm uygulamaları görmek için kullanmanız gerekir **filtre** gösterilecek denetim **tüm uygulamaları** altında **tüm uygulamaları** listesi. Şu adımları uygulayın:
+Kiracınızdaki tüm uygulamaları görmek için Tüm **Uygulamalar** listesinin altında **Tüm Uygulamaları** göstermek için **Filtre** denetimini kullanmanız gerekir. Şu adımları uygulayın:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici** veya **ortak yönetici**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kurumsal uygulamalar** Azure Active Directory sol taraftaki gezinti menüsünde.
+4.  Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
 
-5.  tıklayın **tüm uygulamaları** tüm uygulamaların bir listesini görüntülemek için.
+5.  **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
 
-6.  kullan **filtre** üst kısmındaki denetim **tüm uygulamalar listesini**.
+6.  **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini tıklatın.
 
-7.  Üzerinde **filtre** bölmesinde, **Göster** seçeneğini **tüm uygulamalar.**
+7.  **Filtre** bölmesinde, Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
 
-## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Neden belirli bir uygulamanın tüm uygulamalar listemde görünmüyor?
+## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Neden tüm uygulamalar listemde belirli bir uygulama görünüyor?
 
-İçin filtre olduğunda **tüm uygulamaları**, **tüm uygulamaları** **listesi** kiracınızda her hizmet sorumlusu nesne gösterir. Hizmet sorumlusu nesneleri çeşitli şekillerde bu listede görünebilir:
+**Tüm Uygulamalara**filtrelendiğinde, **Tüm Uygulamalar** **Listesi** kiracınızdaki her Hizmet Sorumlusu nesnesini gösterir. Hizmet Sorumlusu nesneleri bu listede çeşitli şekillerde görünebilir:
 
-1. Herhangi bir uygulama uygulama galerisinden eklediğinizde de dahil olmak üzere:
+1. Aşağıdakiler de dahil olmak üzere uygulama galerisinden herhangi bir uygulama eklediğinizde:
 
-   1. **Azure AD galeri uygulamaları** – çoklu oturum açma için Azure AD ile önceden tümleştirilmiş uygulama
+   1. **Azure AD Galerisi Uygulamaları** – Azure AD ile tek oturum açma için önceden tümleştirilmiş bir uygulama
 
-   2. **Uygulama Proxy uygulamaları** – güvenli çoklu oturum açmayı harici olarak sağlamak istiyorsanız, şirket içi ortamınızda çalışan bir uygulama
+   2. **Uygulama Proxy Uygulamaları** – Şirket içi ortamınızda çalışan ve harici olarak güvenli tek oturum açmanızı istediğiniz bir uygulama
 
-   3. **Özel olarak geliştirilmiş uygulamaların** – kuruluşunuzun Azure AD uygulama geliştirme platformu üzerinde geliştirmek isteyen, ancak bu mevcut olmayabilir henüz uygulama
+   3. **Özel olarak geliştirilmiş Uygulamalar** – Kuruluşunuzun Azure AD Uygulama Geliştirme Platformu'nda geliştirmek istediği ancak henüz var olmayan bir uygulama
 
-   4. **Galeri dışı uygulamalar** – kendi uygulamalarınızı getirin! İstediğiniz herhangi bir web bağlantısına veya bir kullanıcı adı ve parola alanını işleyen herhangi bir uygulama SAML veya Openıd Connect protokolleri destekler veya çoklu oturum açma için Azure AD ile tümleştirmek istediğiniz SCIM destekler.
+   4. **Galeri Dışı Uygulamalar** – Kendi uygulamalarınızı getirin! İstediğiniz herhangi bir web bağlantısı veya kullanıcı adı ve parola alanı oluşturan herhangi bir uygulama, SAML veya OpenID Connect protokollerini destekler veya Azure AD ile tek oturum açmak için tümleştirmek istediğiniz SCIM'i destekler.
 
-2. Kaydolmak için gerekli ya da 3 için oturum açarken<sup>rd</sup> taraf uygulaması Azure Active Directory ile tümleşik. Bir örnek [Smartsheet](https://app.smartsheet.com/b/home) veya [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Azure Active Directory ile tümleşik<sup>3.</sup> Bir örnek [Smartsheet](https://app.smartsheet.com/b/home) veya [DocuSign](https://www.docusign.net/member/MemberLogin.aspx)olduğunu.
 
-3. Kaydolmak için gerekli ya da bir kullanıcı veya gruba bir birinci taraf uygulaması için bir lisans eklemek istediğiniz [Microsoft Office 365](https://products.office.com/)
+3. [Microsoft Office 365](https://products.office.com/) gibi bir birinci taraf uygulamasına kaydolurken veya bir kullanıcıya veya gruba lisans eklerken
 
-4. Eklediğinizde, yeni bir uygulama kaydı kullanarak özel olarak geliştirilmiş uygulama oluşturarak [uygulama kayıt defteri](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. [Uygulama Kayıt Defteri'ni](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 
-5. Eklediğinizde, yeni bir uygulama kaydı kullanarak özel olarak geliştirilmiş uygulama oluşturarak [V2.0 uygulama kayıt portalı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. [V2.0 Uygulama Kayıt portalını](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 
-6. Bir uygulama eklediğinizde Visual Studio'nun kullanarak geliştirirken [ASP.net kimlik doğrulama yöntemleri](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) veya [bağlı hizmetler](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6. Visual Studio'nun [ASP.net Kimlik Doğrulama Yöntemleri](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) ni veya Bağlı [Hizmetleri](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) kullanarak geliştirdiğiniz bir uygulama eklerken
 
-7. Kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda [Azure AD PowerShell Modülü](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. [Azure AD PowerShell Modül'u](/powershell/azure/install-adv2?view=azureadps-2.0) kullanarak bir hizmet temel nesnesi oluşturduğunuzda
 
-8. Olduğunda, [uygulamaya onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) veri kiracınızda kullanmak için yönetici olarak
+8. Yönetici olarak [bir uygulamayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) kiracınızdaki verileri kullanmayı kabul ettiğinizde
 
-9. Olduğunda bir [kullanıcı uygulamaya onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) veri kiracınızda kullanmak için
+9. Bir [kullanıcı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) kiracınızdaki verileri kullanmak için bir uygulamayı kabul ettiğinde
 
-10. Kiracınızda verileri depolayan belirli hizmetleri etkinleştirdiğinizde. Bir parola sıfırlama İlkesi parolanızı depolamak için bir hizmet sorumlusu olarak Modellenen sıfırlama, güvenli bir örnektir.
+10. Kiracınızda veri depolayan belirli hizmetleri etkinleştirdiğinizde. Parola sıfırlama ilkenizi güvenli bir şekilde depolamak için hizmet sorumlusu olarak modellenen Parola Sıfırlama, bir örnektir.
 
-Uygulama dizininize nasıl eklenir üzerinde daha ayrıntılı bilgi edinmek için okumaya devam [uygulamaları Azure AD'ye neden ve nasıl eklenir](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added).
+Uygulamaların dizininize nasıl eklendiklerine ilişkin daha fazla bilgi almak [için, uygulamaların Azure AD'ye nasıl ve neden eklenmesini](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)okuyun.
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Bir uygulama için belirli bir kullanıcının veya grubun atamasını kaldırmak istiyorum
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Belirli bir kullanıcının veya grubun atamasını bir uygulamaya kaldırmak istiyorum
 
-Bir kullanıcı veya uygulamaya Grup atamasını kaldırmak için listelenen adımları izleyin. [kurumsal bir uygulamayı Azure Active Directory'de bir kullanıcı veya grup atamasını kaldırmak](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) makalesi.
+Bir uygulamaya kullanıcı veya grup atamasını kaldırmak için, Azure Active Directory makalesindeki [bir kurumsal uygulamadan kullanıcı veya grup atamasını kaldır'da](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) listelenen adımları izleyin.
 
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Her kullanıcı için tüm uygulama erişimi devre dışı bırakmak istiyorum
+## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Her kullanıcı için bir uygulamaya tüm erişimi devre dışı kalmak istiyorum
 
-Bir uygulama için tüm kullanıcı oturum açma işlemleri devre dışı bırakmak için listelenen adımları izleyin. [kullanıcı oturum açma işlemleri için kurumsal bir uygulamayı Azure Active Directory'de devre dışı bırak](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) makalesi.
+Bir uygulamada tüm kullanıcı oturum açmalarını devre dışı katmak [için, Azure Active Directory makalesinde bir kurumsal uygulama için kullanıcı oturum açmalarını devre dışı bırak'da](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) listelenen adımları izleyin.
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Bir uygulamayı tamamen silmek istiyorum
 
-İçin **bir uygulamayı silmek**, şu adımları izleyin:
+**Bir uygulamayı silmek**için aşağıdaki adımları izleyin:
 
-1. Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici** veya **ortak yönetici**
+1. Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kurumsal uygulamalar** Azure Active Directory sol taraftaki gezinti menüsünde.
+4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
 
-5. tıklayın **tüm uygulamaları** tüm uygulamaların bir listesini görüntülemek için.
+5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
 
-   * Burada show istediğiniz uygulamayı göremiyorsanız kullanın **filtre** üst kısmındaki denetim **tüm uygulamalar listesini** ayarlayıp **Göster** seçeneğini **tüm Uygulamalar.**
+   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
 
 6. Silmek istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra tıklayın **Sil** üst uygulamanın simgesinden **genel bakış** bölmesi.
+7. Uygulama yüklendikten sonra, üst uygulamanın **Genel Bakış** bölmesinden **Sil** simgesini tıklatın.
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Herhangi bir uygulama için tüm gelecek kullanıcı onayı işlemleri devre dışı bırakmak istiyorum
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Gelecekteki tüm kullanıcı onayı işlemlerini herhangi bir uygulamaya devre dışı kalmak istiyorum
 
-Tüm dizininizin engellemek için son kullanıcıların herhangi bir uygulama konusunda çekince kullanıcı onayı devre dışı bırakılıyor. Yöneticiler, yine de kullanıcı adına onay verebilir. Uygulama onay hakkında daha fazla bilgi edinin ve neden olabilir veya onay verme istemeyebilir okumak için [anlama kullanıcı ve yönetici onayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Tüm dizininizin kullanıcı onayını devre dışı bırakmak, son kullanıcıların herhangi bir uygulamaya onay vermesini engeller. Yöneticiler yine de kullanıcı adına izin verebilir. Uygulama onayı hakkında daha fazla bilgi edinmek ve neden izin vermek veya istemeyebilirsiniz hakkında daha fazla bilgi edinmek için, [Kullanıcı yı ve yönetici onayLarını anlama'yı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)okuyun.
 
-İçin **tüm dizininizdeki tüm gelecek kullanıcı onayı işlemleri devre dışı**, şu adımları izleyin:
+**Tüm dizininizdeki gelecekteki tüm kullanıcı onayı işlemlerini devre dışı katmak**için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  Tıklayın **kullanıcı ayarları**.
+5.  **Kullanıcı ayarlarını**tıklatın.
 
-6.  Ayarlayarak tüm gelecek kullanıcı onayı işlemleri devre dışı **kullanıcılar uygulamaların verilerine erişmesine izin verebilir** geç **Hayır** tıklatıp **Kaydet** düğmesi.
+6.  Kullanıcılar'ı ayarlayarak gelecekteki tüm kullanıcı onayı işlemlerini devre dışı kullanabilirsiniz, **uygulamaların verilerine erişmesine izin vererek** **Hayır'a** geçiş yapabilir ve **Kaydet** düğmesini tıklatabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)

@@ -1,67 +1,67 @@
 ---
-title: Etiketler ile veri kümeleri oluşturma ve araştırma
+title: Etiketlerle veri kümeleri oluşturma ve keşfetme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning etiketleme projelerinizden veri etiketlerini dışarı aktarmayı öğrenin ve makine öğrenimi görevleri için bunları kullanın.
+description: Azure Machine Learning etiketleme projelerinizden veri etiketleri nasıl dışa aktaracağınızı ve bunları makine öğrenimi görevleri için nasıl kullanacağınızı öğrenin.
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76549495"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve araştırma
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve keşfetme
 
-Bu makalede, veri etiketlerini bir Azure Machine Learning veri etiketleme projesinden dışarı aktarmayı ve bunları, veri araştırması için bir Pandas dataframe veya görüntü dönüştürmesi için Torchvision veri kümesi gibi popüler biçimlere yüklemeyi öğreneceksiniz. 
+Bu makalede, bir Azure Machine Learning veri etiketleme projesinden veri etiketlerini nasıl dışa aktaracağınızı ve bunları veri arama için pandalar veri çerçevesi veya görüntü dönüştürme için Torchvision veri kümesi gibi popüler biçimlere yüklemeyi öğreneceksiniz. 
 
-## <a name="what-are-datasets-with-labels"></a>Etiketleri olan veri kümeleri nelerdir 
+## <a name="what-are-datasets-with-labels"></a>Etiketlerle veri kümeleri nedir 
 
-Etiketlere sahip Azure Machine Learning veri kümeleri etiket özelliği olan [Tabulardataset](how-to-create-register-datasets.md#dataset-types) ' tir, bunlara etiketli veri kümeleri olarak başvuracağız. Bu özel Tabulardataset türleri yalnızca Azure Machine Learning veri etiketleme projelerinin çıktısı olarak oluşturulur. [Bu adımlarla](how-to-create-labeling-projects.md)bir veri etiketleme projesi oluşturun. Machine Learning, çok etiketli veya çok sınıflı ve nesne tanımlamasının sınırlı kutular ile birlikte görüntü sınıflandırması için veri etiketleme projelerini destekler.
+Etiketli Azure Machine Learning veri kümeleri etiket özelliğine sahip [TabularDatasets'tir,](how-to-create-register-datasets.md#dataset-types) bunları etiketli veri kümeleri olarak adlandıracağız. Bu belirli Türde Veri Kümeleri yalnızca Azure Machine Learning veri etiketleme projelerinin çıktısı olarak oluşturulur. [Bu adımlarla](how-to-create-labeling-projects.md)bir veri etiketleme projesi oluşturun. Machine Learning, çok etiketli veya çok katmanlı görüntü sınıflandırması ve nesne tanımlama ve sınırlı kutularla nesne tanımlama için veri etiketleme projelerini destekler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
-* [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
-    * [Azure-contrib-DataSet](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) paketini yükler
-* Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
-* Azure Machine Learning veri etiketleme projesine erişim. Etiketleme projeniz yoksa, [Bu adımlarla](how-to-create-labeling-projects.md)bir tane oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://aka.ms/AMLFree) bir hesap oluşturun.
+* [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya Azure Machine Learning [stüdyosuna](https://ml.azure.com/)erişim.
+    * [Azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) paketini yükleme
+* Bir Makine Öğrenme çalışma alanı. Bkz. [Azure Makine Öğrenimi çalışma alanı oluşturun.](how-to-manage-workspace.md)
+* Azure Machine Learning veri etiketleme projesine erişim. Etiketleme projeniz yoksa, [bu adımlarla](how-to-create-labeling-projects.md)bir proje oluşturun.
 
-## <a name="export-data-labels"></a>Veri etiketlerini dışarı aktar 
+## <a name="export-data-labels"></a>Veri etiketlerini dışa aktarma 
 
-Bir veri etiketleme projesini tamamladığınızda, etiket verilerini etiketleme projesinden dışarı aktarabilirsiniz. Bunu yaptığınızda, hem verilere hem de etiketlerine olan başvuruyu yakalayıp [Coco formatında](http://cocodataset.org/#format-data) veya bir Azure Machine Learning veri kümesi olarak dışarı aktarabilirsiniz. Etiketleme projenizin **proje ayrıntıları** sayfasında **dışarı aktar** düğmesini kullanın.
+Bir veri etiketleme projesini tamamladığınızda, etiket verilerini bir etiketleme projesinden dışa aktarabilirsiniz. Bunu yapmak, hem verilere hem de etiketlerine yapılan başvuruyu yakalamanıza ve bunları [COCO biçiminde](http://cocodataset.org/#format-data) veya Azure Machine Learning veri seti olarak dışa aktarmanıza olanak tanır. Etiketleme projenizin **Proje ayrıntıları** sayfasındaki **Dışa** Aktarma düğmesini kullanın.
 
-### <a name="coco"></a>COCO 
+### <a name="coco"></a>Coco 
 
- COCO dosyası, Azure Machine Learning çalışma alanının varsayılan Blob deposunda *dışarı aktarma/Coco*içindeki bir klasörde oluşturulur. 
+ COCO dosyası, Azure Machine Learning çalışma alanının varsayılan blob deposunda *dışa aktarma/coco*içindeki bir klasörde oluşturulur. 
 
-### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning veri kümesi
+### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning veri seti
 
-Azure Machine Learning Studio 'nun **veri kümeleri** bölümünde, aktarılmış Azure Machine Learning veri kümesine erişebilirsiniz. Veri kümesi **ayrıntıları** sayfası, Python 'daki etiketlerinize erişmek için örnek kod de sağlar.
+Azure Machine Learning stüdyonuzun Veri **Setleri** bölümünden dışa aktarılan Azure Machine Learning veri kümesine erişebilirsiniz. Dataset **Details** sayfası, etiketlerinize Python'dan erişmek için örnek kod da sağlar.
 
-![Aktarılmış veri kümesi](./media/how-to-create-labeling-projects/exported-dataset.png)
+![Dışa aktarılan veri kümesi](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="explore-labeled-datasets"></a>Etiketli veri kümelerini keşfet
+## <a name="explore-labeled-datasets"></a>Etiketli veri kümelerini keşfedin
 
-Veri araştırması için popüler açık kaynaklı kitaplıkların yanı sıra görüntü dönüştürme ve eğitimle ilgili kitaplıklar için, etiketli veri kümelerinizi bir Pandas dataframe veya Torchvision veri kümesine yükleyin.
+Etiketli veri kümelerinizi, veri arama için popüler açık kaynak kitaplıklarından yararlanmak için pandalar veri çerçevesine veya Torchvision veri setine yükleyin ve PyTorch görüntü dönüşümü ve eğitimi için kitaplıklar sağladı.
 
-### <a name="pandas-dataframe"></a>Pandas dataframe
+### <a name="pandas-dataframe"></a>Pandalar veri çerçevesi
 
-Etiketli veri kümelerini, `azureml-contrib-dataset` sınıfındaki [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) yöntemi ile bir Pandas dataframe 'e yükleyebilirsiniz. Aşağıdaki kabuk komutuyla sınıfı yüklersiniz: 
+Etiketli veri kümelerini sınıftaki yöntemle pandalar [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) veri `azureml-contrib-dataset` çerçevesine yükleyebilirsiniz. Sınıfı aşağıdaki kabuk komutuyla yükleyin: 
 
 ```shell
 pip install azureml-contrib-dataset
 ```
 
 >[!NOTE]
->Hizmetin geliştirilmesi için çalışdığımız için, azureml. contrib ad alanı sıklıkla değişir. Bu nedenle, bu ad alanındaki her şey Microsoft tarafından tam olarak desteklenmez ve önizleme olarak değerlendirilmelidir.
+>Hizmeti geliştirmeye çalıştığımıziçin azureml.contrib ad alanı sık sık değişir. Bu nedenle, bu ad alanındaki her şey önizleme olarak kabul edilmeli ve Microsoft tarafından tam olarak desteklenmemelidir.
 
-Bir Pandas dataframe 'e dönüştürürken dosya akışları için aşağıdaki dosya işleme seçeneklerini sunuyoruz.
-* İndir: veri dosyalarınızı yerel bir yola Indirin.
-* Bağla: veri dosyalarınızı bağlama noktasına bağlayın. Bağlama yalnızca Azure Machine Learning Not defteri VM ve Azure Machine Learning Işlem gibi Linux tabanlı işlem için geçerlidir.
+Pandalar veri çerçevesine dönüştürürken dosya akışları için aşağıdaki dosya işleme seçeneklerini sunuyoruz.
+* İndir: Veri dosyalarınızı yerel bir yola indirin.
+* Mount: Veri dosyalarınızı bir montaj noktasına monte edin. Mount, Azure Machine Learning dizüstü bilgisayarı VM ve Azure Machine Learning Compute dahil olmak üzere yalnızca Linux tabanlı bilgi işlem için çalışır.
 
 ```Python
 import azureml.contrib.dataset
@@ -76,9 +76,9 @@ img = mpimg.imread(animal_pd.loc[0,'image_url'])
 imgplot = plt.imshow(img)
 ```
 
-### <a name="torchvision-datasets"></a>Torchvision veri kümeleri
+### <a name="torchvision-datasets"></a>Torchvision veri setleri
 
-Etiketli veri kümelerini, `azureml-contrib-dataset` sınıfından de [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) yöntemiyle birlikte Torchvision veri kümesine yükleyebilirsiniz. Bu yöntemi kullanmak için [Pytorch](https://pytorch.org/) yüklü olmalıdır. 
+Sınıftan [da to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) yöntemiyle etiketli veri kümelerini Torchvision `azureml-contrib-dataset` veri kümesine yükleyebilirsiniz. Bu yöntemi kullanmak için [PyTorch'un](https://pytorch.org/) yüklü olması gerekir. 
 
 ```python
 from torchvision.transforms import functional as F
@@ -97,4 +97,4 @@ imgplot = plt.imshow(gray_image)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tüm eğitim örneği için [Etiketler Not defteri ile veri kümesine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) bakın.
+* Tam eğitim örneği için [etiketlernotiçeren veri kümesine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) bakın.

@@ -1,6 +1,6 @@
 ---
-title: Canlı akış için sorun giderme kılavuzu | Microsoft Docs
-description: Bu makale, canlı akış sorunlarını Azure Media Services gidermeye yönelik öneriler sağlar.
+title: Canlı akış için sorun giderme kılavuzu | Microsoft Dokümanlar
+description: Bu makalede, Azure Medya Hizmetleri'nin canlı akış sorunlarının nasıl giderilene ilişkin öneriler de yer avurmaktadır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74885611"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Canlı akış sorun giderme kılavuzu  
 
-Bu makalede, bazı canlı akış sorunlarını gidermeye yönelik öneriler verilmektedir.
+Bu makalede, bazı canlı akış sorunları gidermek için nasıl öneriler verir.
 
 ## <a name="issues-related-to-on-premises-encoders"></a>Şirket içi kodlayıcılarla ilgili sorunlar
-Bu bölümde, canlı kodlama için etkinleştirilmiş AMS kanallarına tek bir bit hızlı akış gönderecek şekilde yapılandırılan şirket içi kodlayıcılarla ilgili sorunları gidermeye yönelik öneriler verilmektedir.
+Bu bölümde, canlı kodlama için etkinleştirilen AMS kanallarına tek bir bit hızı akışı gönderecek şekilde yapılandırılan şirket içi kodlayıcılarla ilgili sorunları nasıl gidereceğimize ilişkin öneriler verilir.
 
-### <a name="problem-would-like-to-see-logs"></a>Sorun: günlükleri görmek Ister misiniz?
-* **Olası sorun**: hata ayıklama sorunlarında yardımcı olabilecek kodlayıcı günlükleri bulunamıyor.
+### <a name="problem-would-like-to-see-logs"></a>Sorun: Günlükleri görmek ister misiniz
+* **Olası sorun**: Hata ayıklama sorunlarına yardımcı olabilecek kodlayıcı günlüklerini bulamıyorum.
   
-  * **Telestream kablolu dönüştürme**: genellikle C:\Users\{username} \appdata\roaming\kablo 
-  * **Dinamik**kullanım: bulma, yönetim portalında günlüklere bağlantılar içeriyor. **İstatistikler**, ardından **Günlükler**' e tıklayın. **Günlük dosyaları** sayfasında, tüm liveevent öğeleri için günlüklerin bir listesini görürsünüz. geçerli oturumunuzla eşleşen bir tane seçin. 
-  * **Flash Media Live Encoder**: **günlük dizinini** , **kodlama günlüğü** sekmesine giderek bulabilirsiniz.
+  * **Telestream Wirecast**: Genellikle C:\Users\{kullanıcı adı}\AppData\Roaming\Wirecast\ altında günlükleri bulabilirsiniz 
+  * **Elemental Live**: Yönetim portalında günlüklere bağlantılar bulabilirsiniz. **İstatistikler**tıklayın, sonra **Günlükleri**. Günlük **Dosyaları** sayfasında, tüm LiveEvent öğeleriiçin günlüklerin listesini görürsünüz; geçerli oturumunuzla eşleşen oturumu seçin. 
+  * **Flash Media Live Encoder**: **Günlük Dizini...** Kodlama **Günlüğü** sekmesine yönlendirerek bulabilirsiniz.
 
-### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Sorun: aşamalı bir akışın çıktısını almak için bir seçenek yoktur
-* **Olası sorun**: kullanılan kodlayıcı otomatik olarak titreşimsiz hale gelmiyor. 
+### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Sorun: Aşamalı bir akışı çıkarmak için bir seçenek yoktur
+* **Potansiyel sorun**: Kullanılan kodlayıcı otomatik olarak deinterlace değildir. 
   
-    **Sorun giderme adımları**: kodlayıcı arabirimi içinde bir taramasız seçenek bulun. Taramayı kaldırma etkinleştirildikten sonra, aşamalı çıkış ayarları için tekrar kontrol edin. 
+    **Sorun giderme adımları**: Kodlayıcı arabirimi içinde iç içe geçmiş seçeneği arayın. Ara yıkıntma etkinleştirildikten sonra, aşamalı çıkış ayarlarını yeniden denetleyin. 
 
-### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Sorun: birkaç kodlayıcı çıkış ayarı denendi ve yine de bağlantı kurulamıyor.
-* **Olası sorun**: Azure kodlama kanalı düzgün şekilde sıfırlanamadı. 
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Sorun: Birkaç kodlayıcı çıkış ayarını denedim ve hala bağlanamadı.
+* **Olası sorun**: Azure kodlama kanalı düzgün sıfırlanmadı. 
   
-    **Sorun giderme adımları**: kodlayıcının artık AMS 'ye itilmemesi, kanalı durdurup sıfırlaması durumunda olduğundan emin olun. Yeniden çalışmaya başladıktan sonra, kodlayıcınızı yeni ayarlarla bağlamayı deneyin. Bu sorunu düzeltmezse, tamamen yeni bir kanal oluşturmayı deneyin, bazen birkaç başarısız denemeden sonra kanallar bozulabilir.  
-* **Olası sorun**: GOP boyutu veya anahtar çerçevesi ayarları en uygun değildir. 
+    **Sorun giderme adımları**: Kodlayıcının artık AMS'ye itmediğinden emin olun, kanalı durdurun ve sıfırlayın. Bir kez daha çalışan, yeni ayarlar ile kodlayıcı bağlamayı deneyin. Bu hala sorunu düzeltmezse, tamamen yeni bir kanal oluşturmayı deneyin, bazen kanallar birkaç başarısız denemeden sonra bozuk olabilir.  
+* **Potansiyel sorun**: GOP boyutu veya anahtar kare ayarları en iyi değildir. 
   
-    **Sorun giderme adımları**: önerilen GOP boyutu veya ana kare aralığı iki saniyedir. Bazı kodlayıcılar bu ayarı çerçeve sayısında hesaplar, diğerleri saniyeler kullanır. Örneğin: 30 fps 'ye kadar, GOP boyutu 60 kare olur ve bu da 2 saniyeye eşittir.  
-* **Olası sorun**: kapalı bağlantı noktaları akışı engelliyor. 
+    **Sorun giderme adımları**: Önerilen GOP boyutu veya anahtar kare aralığı iki saniyedir. Bazı kodlayıcılar bu ayarı kare sayısı olarak hesaplarken, diğerleri saniye kullanır. Örneğin: 30 fps çıkarken, GOP boyutu 2 saniyeye eşdeğer 60 kare olacaktır.  
+* **Potansiyel sorun**: Kapalı bağlantı noktaları akışı engelliyor. 
   
-    **Sorun giderme adımları**: RTMP aracılığıyla akış yaparken, 1935 ve 1936 giden bağlantı noktalarının açık olduğunu onaylamak için güvenlik duvarı ve/veya proxy ayarlarını kontrol edin. 
+    **Sorun giderme adımları**: RTMP üzerinden akış yaparken, 1935 ve 1936 bağlantı noktalarının açık olduğunu doğrulamak için güvenlik duvarı ve/veya proxy ayarlarını kontrol edin. 
 
 > [!NOTE]
-> Sorun giderme adımlarını takip ettikten sonra, Azure portal kullanarak bir destek bileti gönderebilirsiniz.
+> Sorun giderme adımlarını takip ettikten sonra hala başarılı bir şekilde akış yapamıyorsanız, Azure portalını kullanarak bir destek bileti gönderin.
 > 
 > 
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

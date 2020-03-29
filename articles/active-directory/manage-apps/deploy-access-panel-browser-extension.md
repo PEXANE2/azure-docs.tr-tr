@@ -1,6 +1,6 @@
 ---
-title: Azure erişim paneli uzantısını dağıtmak için bir GPO kullanarak IE | Microsoft Docs
-description: Internet Explorer eklenti için uygulamalarım portalında dağıtmak için Grup İlkesi kullanma
+title: GPO kullanarak IE için Azure Erişim Paneli Uzantısını Dağıtma | Microsoft Dokümanlar
+description: Uygulamalarım portalı için Internet Explorer eklentisini dağıtmak için grup ilkesini kullanma.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,157 +16,157 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67807677"
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Nasıl yapılır: Grup İlkesi'ni kullanarak Internet Explorer için erişim paneli uzantısını dağıtma
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Nasıl yapılır: Grup ilkesini kullanarak Internet Explorer için Erişim Masası uzantısını dağıtma
 
-Bu öğreticide, uzaktan erişim paneli uzantısını Internet Explorer için kullanıcılarınızın makinelerde yüklemek için Grup İlkesi kullanımı gösterilmektedir. Bu uzantıyı kullanarak yapılandırılan uygulamalarında oturum açmak için gereken Internet Explorer kullanıcılar için gerekli olan [parola tabanlı çoklu oturum açma](what-is-single-sign-on.md#password-based-sso).
+Bu öğretici, Internet Explorer için Erişim Masası uzantısını kullanıcılarınızın makinelerine uzaktan yüklemek için grup ilkesinin nasıl kullanılacağını gösterir. Bu uzantı, [parola tabanlı tek oturum](what-is-single-sign-on.md#password-based-sso)açma kullanılarak yapılandırılan uygulamalarda oturum açmanız gereken Internet Explorer kullanıcıları için gereklidir.
 
-Yöneticiler'in bu uzantının dağıtımı otomatik hale getirmek önerilir. Aksi takdirde, kullanıcılar indirin ve uzantı kendilerinin yüklemesi kullanıcı hataya ve yönetici izinleri gerektiren gerekir. Bu öğretici, bir Grup İlkesi'ni kullanarak yazılım dağıtımlarını otomatikleştirme yöntemi içerir. [Grup İlkesi hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+Yöneticilerin bu uzantının dağıtımını otomatikleştirmesi önerilir. Aksi takdirde, kullanıcıların kullanıcı hatasına yatkın olan ve yönetici izinleri gerektiren uzantıyı kendileri karşıdan yüklemeleri ve yüklemeleri gerekir. Bu öğretici, grup ilkesini kullanarak yazılım dağıtımlarını otomatikleştirmek için kullanılan bir yöntemi kapsar. [Grup ilkesi hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-Erişim paneli uzantısı için de kullanılabilir olan [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) ve [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), hangi hiçbiri yüklemek için yönetici izinleri gerektirir.
+Erişim Masası [uzantısı, yüklemek](https://go.microsoft.com/fwLink/?LinkID=311859) için yönetici izni gerektirmeyen Chrome ve [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998)için de kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Ayarlamış olduğunuz [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), ve kullanıcılarınızın makineleri etki alanınıza katılmış.
-* Grup İlkesi nesnesi (GPO) düzenlemek için "Ayarları düzenleme" izniniz olmalıdır. Varsayılan olarak, şu güvenlik gruplarının üyeleri bu izne sahiptir: Etki alanı yöneticileri, kuruluş yöneticileri ve Grup İlkesi Oluşturucu Sahipleri. [Daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* [Active Directory Domain Services'ı](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)kurdunuz ve kullanıcılarınızın makinelerini etki alanınıza katıldınız.
+* Grup İlkesi Nesnesini (GPO) yeniden atamak için "Ayarları düzelt" iznine sahip olmalısınız. Varsayılan olarak, aşağıdaki güvenlik gruplarının üyeleri şu izne sahiptir: Etki Alanı Yöneticileri, Kurumsal Yöneticiler ve Grup İlkesi Oluşturucusu Sahipleri. [Daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>1\. adım: Dağıtım noktası oluştur
+## <a name="step-1-create-the-distribution-point"></a>Adım 1: Dağıtım noktasını oluşturma
 
-İlk olarak, uzaktan üzerinde uzantıyı yüklemek istediğiniz makineleri tarafından erişilebilen bir ağ konumu üzerinde Yükleyici paketini yerleştirmeniz gerekir. Bunu yapmak için şu adımları uygulayın:
+İlk olarak, yükleyici paketini uzantıyı uzaktan yüklemek istediğiniz makineler tarafından erişilebilen bir ağ konumuna yerleştirmeniz gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1. Sunucuda bir yönetici olarak oturum açın.
-1. İçinde **Sunucu Yöneticisi'ni** penceresinde, Git **dosya ve depolama hizmetleri**.
+1. Sunucuda yönetici olarak oturum açın.
+1. Sunucu **Yöneticisi** penceresinde, **Dosyalar ve Depolama Hizmetleri'ne**gidin.
 
-    ![Açık dosyalar ve depolama hizmetleri](./media/deploy-access-panel-browser-extension/files-services.png)
+    ![Dosyaları ve Depolama Hizmetlerini Aç](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Git **paylaşımları** sekmesi. Ardından **görevleri** > **yeni paylaşım...**
+1. **Paylaşımlar** sekmesine gidin. Ardından **Görevler** > **Yeni Paylaşım'ı tıklatın...**
 
-    ![Ekran görüntüsü, görevleri ekrandan yeni paylaşım yeri gösterir.](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Ekran görüntüsü, Görevler ekranından Yeni Paylaşım'ın nerede bulunacağını gösterir](./media/deploy-access-panel-browser-extension/shares.png)
 
-1. Tamamlamak **yeni paylaşım Sihirbazı** ve kullanıcılarınızın makinelerden erişilebildiğinden emin olmak için izinleri ayarlayın. [Paylaşımları hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Aşağıdaki Microsoft Windows Installer paketi (.msi dosyası) indirin: [Erişim paneli Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
-1. Yükleyici paket paylaşımında istenen bir konuma kopyalayın.
+1. Yeni **Paylaşım Sihirbazı'nı** tamamlayın ve kullanıcılarınızın makinelerinden erişilebilmesini sağlamak için izinler ayarlayın. [Paylaşımlar hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc753175.aspx)
+1. Aşağıdaki Microsoft Windows Installer paketini indirin (.msi dosyası): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Yükleyici paketini paylaşımda istenilen konuma kopyalayın.
 
-    ![.Msi dosyasını paylaşıma kopyalayın.](./media/deploy-access-panel-browser-extension/copy-package.png)
+    ![.msi dosyasını paylaşıma kopyalama](./media/deploy-access-panel-browser-extension/copy-package.png)
 
-1. İstemci makineleriniz Yükleyici paketini paylaşımından erişmek mümkün olduğunu doğrulayın.
+1. İstemci makinelerinizin yükleyici paketine paylaşımdan erişebildiğini doğrulayın.
 
-## <a name="step-2-create-the-group-policy-object"></a>2\. adım: Grup İlkesi nesnesi oluşturma
+## <a name="step-2-create-the-group-policy-object"></a>Adım 2: Grup ilkesi nesnesini oluşturma
 
-1. Active Directory etki alanı Hizmetleri (AD DS) yüklemenizi barındıran sunucuda oturum açın.
-1. Sunucu Yöneticisi'nde Git **Araçları** > **Grup İlkesi Yönetimi**.
+1. Active Directory Domain Services (AD DS) yüklemenizi barındıran sunucuda oturum açın.
+1. Sunucu Yöneticisi'nde, **Tools** > **Group İlke Yönetimi'ne**gidin.
 
-    ![Araçlar'a gidin > Grup İlkesi Yönetimi](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Grup Politika Yönetimi > Araçlara Git](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
-1. Sol bölmesinde **Grup İlkesi Yönetimi** penceresinde, kuruluş birimi (OU) hiyerarşisini görüntülemek ve hangi kapsamda grup ilkesini uygulamak istediğiniz belirleyin. Örneğin, test etmek için birkaç kullanıcılara dağıtmak için küçük bir OU çekme karar verebilir ya da kuruluşunuzun tamamıyla dağıtmak için bir en üst düzey OU seçin.
+1. **Grup İlkesi Yönetimi** penceresinin sol bölmesinde, Kuruluş Birimi (OU) hiyerarşinizi görüntüleyin ve grup ilkesini hangi kapsamda uygulamak istediğinizi belirleyin. Örneğin, sınama için birkaç kullanıcıya dağıtmak için küçük bir OU seçmeye karar verebilir veya tüm kuruluşunuza dağıtmak için üst düzey bir OU seçebilirsiniz.
 
    > [!NOTE]
-   > Oluşturma veya, kuruluş birimine (OU) Düzenle, Sunucu Yöneticisi'ne geri geçmek ve gitmek istiyorsanız, **Araçları** > **Active Directory Kullanıcıları ve Bilgisayarları**.
+   > Kuruluş Birimlerinizi (OS) oluşturmak veya değiştirmek istiyorsanız, Server Manager'a geri dön ve **Tools** > **Active Directory Users and Computers'a**gidin.
 
-1. Bir OU seçtikten sonra sağ tıklatın ve seçin **bu etki alanında GPO oluştur ve buraya bağla...**
+1. Ou seçtikten sonra, sağ tıklayın ve **bu etki alanında bir GPO oluştur'u seçin ve buraya bağla...**
 
-    ![Ekran görüntüsü oluştur yeni bir GPO seçenek gösterir.](./media/deploy-access-panel-browser-extension/create-gpo.png)
+    ![Ekran görüntüsü yeni bir GPO Oluştur seçeneğini gösterir](./media/deploy-access-panel-browser-extension/create-gpo.png)
 
-1. İçinde **yeni GPO** istemi, yeni Grup İlkesi nesnesi için bir ad yazın.
-1. Grup İlkesi nesnesini, oluşturduğunuz ve seçin sağ **Düzenle**.
+1. Yeni **GPO** isteminde, yeni Grup İlkesi Nesnesi için bir ad yazın.
+1. Oluşturduğunuz Grup İlkesi Nesnesi'ni sağ tıklatın ve **Edit'i**seçin.
 
-## <a name="step-3-assign-the-installation-package"></a>3\. adım: Yükleme paketini atayın
+## <a name="step-3-assign-the-installation-package"></a>Adım 3: Yükleme paketini atama
 
-1. Temel uzantısını dağıtmak isteyip istemediğinizi belirleyin **Bilgisayar Yapılandırması** veya **Kullanıcı Yapılandırması**. Kullanırken [Bilgisayar Yapılandırması](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), uzantıyı hangi kullanıcıların oturum açın, bilgisayara yüklenir. İle [Kullanıcı Yapılandırması](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), kullanıcılar, bunları bağımsız olarak hangi bilgisayarların oturum açmak için yüklü uzantılıdır.
-1. Sol bölmesinde **Grup İlkesi Yönetimi Düzenleyicisi** penceresi, seçtiğiniz yapılandırma türüne aşağıdaki klasör yolları birini gidin:
+1. Uzantıyı **Bilgisayar Yapılandırmasına** veya Kullanıcı **Yapılandırmasına**göre dağıtmak isteyip istemeyeceğiniz belirlendir. Bilgisayar [yapılandırması](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)kullanırken, uzantı, hangi kullanıcının oturum açmasından bağımsız olarak bilgisayara yüklenir. [Kullanıcı yapılandırması](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)ile, kullanıcılar hangi bilgisayarlarda oturum açtıklarına bakılmaksızın uzantıyı kendileri için yüklü dür.
+1. **Grup İlkesi Yönetimi Düzenleyicisi** penceresinin sol bölmesinde, seçtiğiniz yapılandırma türüne bağlı olarak aşağıdaki klasör yollarından hangisine gidin:
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Sağ **yazılım yüklemesi**, ardından **yeni** > **paket...**
-1. Yükleyici paketi içeren paylaşılan klasöre gidin [1. adım: Dağıtım noktası oluştur](#step-1-create-the-distribution-point).msi dosyasını seçin ve tıklayın **açık**.
+1. Sağ tıklayın **Yazılım yükleme,** sonra **Yeni** > Paket seçin **...**
+1. Adım 1'den yükleyici paketini içeren paylaşılan klasöre [gidin: Dağıtım Noktası nı oluşturun,](#step-1-create-the-distribution-point).msi dosyasını seçin ve **Aç'ı**tıklatın.
 
    > [!IMPORTANT]
-   > Paylaşım bu aynı sunucuda bulunuyorsa, yerel dosya yolu yerine bir ağ dosya yolu .msi eriştiğiniz doğrulayın.
+   > Paylaşım aynı sunucuda bulunuyorsa, .msi'ye yerel dosya yolu yerine ağ dosyası yolu üzerinden eriştinettiğinizi doğrulayın.
 
     ![Paylaşılan klasörden yükleme paketini seçin](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. İçinde **yazılım dağıtma** anında, select **atanan** dağıtım yönteminize için. Daha sonra, **Tamam**'a tıklayın.
+1. Yazılım **Dağıt** komut isteminde, dağıtım yönteminiz için **Atanmış'ı** seçin. Ardından **Tamam**'a tıklayın.
 
-Uzantı artık, seçtiğiniz kuruluş dağıtılır. [Grup İlkesi Yazılım yükleme hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+Uzantı artık seçtiğiniz OU'ya dağıtılır. [Grup İlkesi Yazılım Yükleme si hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4\. Adım: Uzantı için Internet Explorer otomatik etkinleştir
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Adım 4: Internet Explorer için uzantıyı otomatik olarak etkinleştirin
 
-Kullanmadan önce yükleyici çalıştırmanın yanı sıra, her uzantısını Internet Explorer için açıkça etkinleştirilmesi gerekir. Grup İlkesi kullanarak erişim panelinde uzantıyı etkinleştirmek için aşağıdaki adımları izleyin:
+Yükleyiciyi çalıştırmanın yanı sıra, Internet Explorer için her uzantı nın kullanılabilmesi için açıkça etkinleştirilmesi gerekir. Grup ilkesini kullanarak Access Panel Uzantısını etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. İçinde **Grup İlkesi Yönetimi Düzenleyicisi** penceresinde, yapılandırma türüne seçerseniz, aşağıdaki yollardan birini gidin [3. adım: Yükleme paketini Ata](#step-3-assign-the-installation-package):
+1. Grup **İlkesi Yönetimi Düzenleyicisi** penceresinde, Adım 3'te hangi yapılandırma türünü seçtiğinize bağlı olarak aşağıdaki yollardan [hangisine gidin: Yükleme Paketini atama:](#step-3-assign-the-installation-package)
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 
-1. Sağ **eklenti listesi**seçip **Düzenle**.
+1. **Sağ tıkla Ekle Listesi**ve **Edit'i**seçin.
 
-    !["Eklenti Listesi" sağ tıklayın ve "Düzenle" yi seçin](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
+    ![Sağ tıklayın "Eklenti Listesi" ve "Edit" seçin](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
 
-1. İçinde **eklenti listesi** penceresinde **etkin**. Ardından, altında **seçenekleri** bölümünde **göster...** .
+1. Eklenti **Listesi** penceresinde **Etkin'i**seçin. Ardından, **Seçenekler** bölümünün altında **Göster......** seçeneğini tıklatın.
 
-    ![Etkinleştir'i tıklatın ve ardından göster...](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
+    ![Etkinleştir'i tıklatın, ardından Göster'i tıklatın...](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
 
-1. İçinde **içeriğini göster** penceresinde aşağıdaki adımları gerçekleştirin:
+1. İçeriği **Göster** penceresinde aşağıdaki adımları gerçekleştirin:
 
-   1. İlk sütun için ( **değer adı** alan), kopyalama ve aşağıdaki sınıf kimliği: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   1. İkinci sütun için ( **değer** alan), aşağıdaki değer: `1`
-   1. Tıklayın **Tamam** kapatmak için **içeriğini göster** penceresi.
+   1. İlk sütun **(Değer Adı** alanı) için aşağıdaki Sınıf Kimliğini kopyalayın ve yapıştırın:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   1. İkinci sütun **(Değer** alanı) için aşağıdaki değeri yazın:`1`
+   1. **İçeriği Göster** penceresini kapatmak için **Tamam'ı** tıklatın.
 
       ![Önceki adımda belirtilen değerleri doldurun](./media/deploy-access-panel-browser-extension/show-contents.png)
 
-1. Tıklayın **Tamam** yaptığınız değişiklikleri uygulamak ve kapatmak için **eklenti listesi** penceresi.
+1. Değişikliklerinizi uygulamak ve Eklenti Listesi penceresini kapatmak için **Tamam'ı** tıklatın. **OK**
 
-Seçili OU'ya makineler için şimdi Uzantının etkinleştirilmesi gerekir. [Etkinleştirmek veya Internet Explorer eklentileri devre dışı bırakmak için Grup İlkesi'ni kullanma hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/dn454941.aspx)
+Uzantı şimdi seçili OU'daki makineler için etkinleştirilmelidir. [Internet Explorer eklentilerini etkinleştirmek veya devre dışı katmak için grup ilkesini kullanma hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>5\. adım (isteğe bağlı): "Parolayı anımsa" istemini devre dışı bırakın
+## <a name="step-5-optional-disable-remember-password-prompt"></a>Adım 5 (İsteğe bağlı): "Parolayı Hatırla" istemini devre dışı
 
-Kullanıcılar Web sitelerine erişim paneli uzantısını kullanarak oturum açtığınızda, Internet Explorer "parolanızı depolamak istiyorsunuz?" isteyen aşağıdaki istemi gösterebilir
+Kullanıcılar Access Panel Uzantısı'nı kullanarak web sitelerinde oturum açtıklarında, Internet Explorer aşağıdaki istem 'Parolanızı saklamak ister misiniz?" diye soran bir istem gösterebilir.
 
-![Gösterilir "parolanızı... depolamak istiyorsanız" istemi](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
+!["Parolanızı saklamak ister misiniz..." Istemi](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
 
-Ardından kullanıcılarınız bu istemi görüntülemesini engellemek istiyorsanız, otomatik tamamlama parolaları anımsamaya çalışmaktan gelen önlemek için aşağıdaki adımları izleyin:
+Kullanıcılarınızın bu istemi görmesini engellemek istiyorsanız, otomatik olarak parolaları hatırlamaktan korunmak için aşağıdaki adımları izleyin:
 
-1. İçinde **Grup İlkesi Yönetimi Düzenleyicisi** penceresi, aşağıda listelenen yoluna gidin. Bu yapılandırma ayarı yalnızca altında kullanılabilir **Kullanıcı Yapılandırması**.
+1. Grup **İlkesi Yönetimi Düzenleyicisi** penceresinde, aşağıda listelenen yola gidin. Bu yapılandırma ayarı yalnızca **Kullanıcı Yapılandırması**altında kullanılabilir.
 
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-1. Adlı ayarı bulmak **kullanıcı adları ve parolalar formlarında Otomatik Tamamlama özelliği açmak**.
+1. **Formlarda kullanıcı adları ve parolalar için otomatik tamamlama özelliğini aç**adlı ayarı bulun.
 
    > [!NOTE]
-   > Active Directory önceki sürümlerinde bu ayar adıyla listesinde **parolaları kaydetmek için otomatik tamamlama izin verme**. Bu öğreticide açıklanan ayarı için bu ayarı yapılandırmanın farklıdır.
+   > Active Directory önceki sürümlerinde ad ile bu ayarı listeleyebilir **otomatik şifreleri kaydetmek için otomatik olarak tam izin vermez.** Bu ayarın yapılandırması, bu öğreticide açıklanan ayardan farklıdır.
 
-    ![Kullanıcı Ayarları altında şunun unutmayın](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
+    ![Kullanıcı Ayarları altında bunu aramayı unutmayın](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
 
-1. Yukarıdaki ayar sağ tıklatın ve seçin **Düzenle**.
-1. Başlıklı penceresinde **kullanıcı adları ve parolalar formlarında Otomatik Tamamlama özelliği açmak**seçin **devre dışı bırakılmış**.
+1. Yukarıdaki ayarı sağ tıklatın ve **Edit'i**seçin.
+1. **Formlar üzerindeki kullanıcı adları ve parolalar için otomatik tamamlama özelliğini aç**başlıklı pencerede **Devre Dışı' yı**seçin.
 
-    ![Otomatik Tamamlama özelliğini Aç "Devre dışı" seçeneğini belirleyin](./media/deploy-access-panel-browser-extension/disable-passwords.png)
+    ![Otomatik tamamlama özelliğini açmak için "Devre Dışı" seçeneğini belirleyin](./media/deploy-access-panel-browser-extension/disable-passwords.png)
 
-1. Tıklayın **Tamam** bu değişiklikleri uygulamak ve penceresini kapatın.
+1. Bu değişiklikleri uygulamak ve pencereyi kapatmak için **Tamam'ı** tıklatın.
 
-Kullanıcılar artık kendi kimlik bilgilerini veya kullanım otomatik tamamlama daha önce depolanan kimlik bilgilerine depolamak mümkün olacaktır. Ancak, bu ilke otomatik tamamlama, arama alanlar gibi form alanlarını diğer türleri için kullanmaya devam etmek kullanıcılara izin vermez.
+Kullanıcılar artık kimlik bilgilerini depolayamayacak veya daha önce depolanan kimlik bilgilerine erişmek için otomatik tamamlama yı kullanamayacak. Ancak, bu ilke kullanıcıların arama alanları gibi diğer form alanları türleri için otomatik tamamlama kullanmaya devam etmesine olanak sağlar.
 
 > [!WARNING]
-> Bazı kimlik bilgileri, bu ilke depolamak kullanıcıları seçtikten sonra bu ilke etkinleştirilirse *değil* zaten depolanmış kimlik bilgilerini temizleyin.
+> Kullanıcılar bazı kimlik bilgilerini depolamayı seçtikten sonra bu ilke etkinleştirilirse, bu ilke zaten depolanmış olan kimlik bilgilerini *temizlemez.*
 
-## <a name="step-6-testing-the-deployment"></a>6\. Adım: Test etme ve dağıtım
+## <a name="step-6-testing-the-deployment"></a>Adım 6: Dağıtımı test etme
 
-Uzantı dağıtımı başarılı olup olmadığını doğrulamak için aşağıdaki adımları izleyin:
+Uzantı dağıtımının başarılı olup olmadığını doğrulamak için aşağıdaki adımları izleyin:
 
-1. Kullanarak dağıttıysanız **Bilgisayar Yapılandırması**, seçtiğiniz OU'ya ait bir istemci makinesi oturum [2. adım: Grup İlkesi nesnesi oluşturmak](#step-2-create-the-group-policy-object). Kullanarak dağıttıysanız **Kullanıcı Yapılandırması**, ilgili OU'ya ait bir kullanıcı olarak oturum açtığınızdan emin olun.
-1. Bu, birkaç oturum açma işlemleri için tam olarak bu makineyle güncelleştirmek Grup İlkesi değişikliklerinin sürebilir. Güncelleştirmeyi zorlamak için açık bir **komut istemi** penceresi ve şu komutu çalıştırın: `gpupdate /force`
-1. Yüklemenin gerçekleşmesi makineyi yeniden başlatmanız gerekir. Önyükleme sırasında uzantı normal yükler önemli ölçüde daha uzun sürebilir.
-1. Yeniden başlattıktan sonra açın **Internet Explorer**. Pencerenin sağ üst köşesindeki üzerinde tıklayın **Araçları** (dişli simgesi) seçip **eklentileri yönetme**.
-1. İçinde **Eklentileri Yönet** penceresinde doğrulayın **erişim paneli uzantısını** yüklü olduğundan ve kendi **durumu** ayarlanmış **etkin**.
+1. **Bilgisayar Yapılandırması'nı**kullanarak dağıttıysanız, Adım 2'de seçtiğiniz OU'ya ait bir istemci makinesinde oturum [açın: Grup İlkesi Nesnesini Oluşturun.](#step-2-create-the-group-policy-object) **Kullanıcı Yapılandırması'nı**kullanarak dağıttıysanız, o OU'ya ait bir kullanıcı olarak oturum açtığınızdan emin olun.
+1. Grup ilkesi değişikliklerinin bu makineyle tam olarak güncelleştirilen birkaç oturum açma alması gerekebilir. Güncelleştirmeyi zorlamak için Komut **İstemi** penceresini açın ve aşağıdaki komutu çalıştırın:`gpupdate /force`
+1. Yüklemenin gerçekleşmesi için makineyi yeniden başlatmanız gerekir. Önyükleme, uzantı yüklenirken normalden çok daha fazla zaman alabilir.
+1. Yeniden başladıktan sonra **Internet Explorer'ı**açın. Pencerenin sağ üst köşesinde **Araçlar'ı** (vites simgesi) tıklatın ve ardından **eklentileri yönet'i**seçin.
+1. **Eklentileri Yönet** penceresinde, Access Panel **Uzantısı'nın** yüklendiğini ve **Durumunun** **Etkin**olarak ayarlandığını doğrulayın.
 
-   ![Erişim paneli uzantısı yüklü ve etkin olduğunu doğrulayın](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Access Panel Uzantısı'nın yüklü ve etkin olduğunu doğrulayın](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Uygulama erişimi ve Azure Active Directory ile çoklu oturum açma](what-is-single-sign-on.md)
-* [Erişim paneli uzantısını Internet Explorer için sorun giderme](manage-access-panel-browser-extension.md)
+* [Azure Active Directory ile uygulama erişimi ve tek oturum açma](what-is-single-sign-on.md)
+* [Internet Explorer için Erişim Masası Uzantısısorun Giderme](manage-access-panel-browser-extension.md)

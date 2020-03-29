@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Eşitleme hizmeti örnekleri | Microsoft Docs'
-description: Bu sayfa, Azure AD örneğinde ilgili özel konular listelenmiştir.
+title: 'Azure AD Connect: Hizmet örneklerini eşitleme | Microsoft Dokümanlar'
+description: Bu sayfa, Azure AD örnekleri için özel hususlar belgeler.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66298826"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Örneklerle ilgili özel konular
-Azure AD Connect ile Azure AD örneğini dünya çapında en yaygın olarak kullanılan ve Office 365. Ancak diğer örnekleri de vardır ve bu URL'leri ve diğer özel durumlar için farklı gereksinimler vardır.
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Örneğin özel hususlar
+Azure AD Connect en yaygın olarak azure AD ve Office 365'in dünya çapındaki örneğiyle kullanılır. Ama diğer örnekleri de vardır ve bu URL'ler ve diğer özel hususlar için farklı gereksinimleri vardır.
 
-## <a name="microsoft-cloud-germany"></a>Microsoft Bulut Almanya
-[Microsoft Cloud Almanya](https://www.microsoft.de/cloud-deutschland) bir Alman veri Emanetçisi tarafından işletilir bağımsız bir bulut.
+## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Almanya
+[Microsoft Cloud Germany,](https://www.microsoft.de/cloud-deutschland) bir Alman veri mütevellisi tarafından işletilen egemen bir bulutdur.
 
-| URL'lerin Ara sunucuda açmak için |
+| URL'ler proxy sunucusunda açılacak |
 | --- |
 | \*.microsoftonline.de |
-| \*. windows.net |
-| \+ Sertifika iptal listeleri |
+| \*.windows.net |
+| +Sertifika İptal Listeleri |
 
-Azure AD kiracınız ile oturum açtığınızda onmicrosoft.de etki alanında bir hesap kullanmanız gerekir.
+Azure AD kiracınızda oturum açarak oturum açbaktığınızda, onmicrosoft.de etki alanında bir hesap kullanmanız gerekir.
 
-Microsoft Cloud Almanya'da şu anda mevcut özellikler:
+Şu anda Microsoft Cloud Almanya'da bulunmayan özellikler:
 
-* **Parola geri yazma** Önizleme ile Azure AD Connect sürümünüzü 1.1.570.0 ve sonra kullanılabilir.
-* Diğer Azure AD Premium hizmetlerine kullanılabilir değil.
+* **Parola geri yazımı,** Azure AD Connect sürümü 1.1.570.0 ve sonrasında önizleme için kullanılabilir.
+* Diğer Azure AD Premium hizmetleri kullanılamıyor.
 
-## <a name="microsoft-azure-government"></a>Microsoft Azure Kamu
-[Microsoft Azure kamu bulutundaki](https://azure.microsoft.com/features/gov/) ABD kamu bulutudur.
+## <a name="microsoft-azure-government"></a>Microsoft Azure Yönetimi
+[Microsoft Azure Devlet bulutu,](https://azure.microsoft.com/features/gov/) ABD hükümeti için bir bulut.
 
-Bu bulut DirSync önceki sürümleri tarafından desteklenen sahip. Derlemeden Azure AD Connect 1.1.180, bulutta yeni nesil desteklenir. Bu, yalnızca ABD tabanlı uç noktalarını kullanarak ve farklı bir proxy sunucunuz açmak için URL'lerin listesini sahiptir.
+Bu bulut DirSync önceki sürümleri tarafından desteklenmiştir. Azure AD Connect'in 1.1.180'lik yapısından bulutun yeni nesli desteklenir. Bu nesil yalnızca ABD tabanlı uç noktaları kullanıyor ve proxy sunucunuzda açılacak farklı bir URL listesine sahip.
 
-| URL'lerin Ara sunucuda açmak için |
+| URL'ler proxy sunucusunda açılacak |
 | --- |
-| \*. microsoftonline.com |
+| \*.microsoftonline.com |
 | \*.microsoftonline.us |
-| \*. windows.net (otomatik Azure kamu kiracısı algılama için gereklidir) |
+| \*.windows.net (Otomatik Azure Kamu kiracı algılaması için gereklidir) |
 | \*.gov.us.microsoftonline.com |
-| \+ Sertifika iptal listeleri |
+| +Sertifika İptal Listeleri |
 
 > [!NOTE]
-> Azure AD Connect itibaren sürüm 1.1.647.0, kayıt defterinde AzureInstance değeri ayarı artık, sağlanan gerekli, *. proxy sunucularınızda windows.net açıksa. Ancak, kendi Azure AD Connect sunucuları Internet bağlantısı izin vermeyen müşteriler için aşağıdaki el ile yapılandırma kullanılabilir.
+> Azure AD Connect sürüm 1.1.647.0 itibariyle, proxy sunucunuzda *.windows.net açık olması koşuluyla, kayıt defterinde AzureInstance değerini ayarlamak artık gerekli değildir. Ancak, Azure AD Connect sunucularından Internet bağlantısına izin vermemektedir(
 
-### <a name="manual-configuration"></a>El ile yapılandırma
+### <a name="manual-configuration"></a>Manuel Yapılandırma
 
-Aşağıdaki el ile yapılandırma adımları, Azure AD Connect kullanan Azure kamu eşitleme uç noktaları emin olmak için kullanılır.
+Azure AD Connect'in Azure Kamu senkronizasyon uç noktalarını kullandığından emin olmak için aşağıdaki el ile yapılandırma adımları kullanılır.
 
-1. Azure AD Connect yüklemesi başlatın.
-2. Burada, EULA kabul etmek için gereken ilk sayfasını gördüğünüzde, devam eder ancak Yükleme Sihirbazı'nı çalıştıran bırakın.
-3. Regedit komutunu çalıştırın ve kayıt defteri anahtarını `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` değerine `4`.
-4. Azure AD Connect Yükleme Sihirbazı'için geri EULA'yı kabul edin ve devam gidin. Yükleme sırasında kullandığınızdan emin olun **özel yapılandırma** yükleme yolu (ve hızlı yükleme), ardından devam yüklemeyi her zaman olduğu gibi.
+1. Azure AD Connect yüklemesini başlatın.
+2. EULA'yı kabul etmeniz gereken ilk sayfayı gördüğünüzde, devam etmeyin ancak yükleme sihirbazını çalışır durumda bırakın.
+3. Regedit'i başlatın ve `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` kayıt `4`defteri anahtarını değerle değiştirin.
+4. Azure AD Connect yükleme sihirbazına geri dön, EULA'yı kabul et ve devam et. Yükleme sırasında, **özel yapılandırma** yükleme yolunu (Express yüklemesi değil) kullandığınızdan emin olun, ardından yüklemeye her zamanki gibi devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

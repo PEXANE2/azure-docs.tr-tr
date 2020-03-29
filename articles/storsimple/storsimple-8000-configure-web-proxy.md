@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihaz için web proxy ayarlama | Microsoft Docs
-description: StorSimple için Windows PowerShell, StorSimple cihazınız için web proxy ayarlarını yapılandırmak için kullanmayı öğrenin.
+title: StorSimple 8000 serisi cihaz için web proxy'yi ayarlama | Microsoft Dokümanlar
+description: StorSimple cihazınızIçin web proxy ayarlarını yapılandırmak için StorSimple için Windows PowerShell'i nasıl kullanacağınızı öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,145 +15,145 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65204260"
 ---
-# <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple cihazınız için Web Proxy'yi Yapılandır
+# <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple aygıtınız için web proxy'yi yapılandırın
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, yapılandırmak ve StorSimple cihazınız için web proxy ayarlarını görüntülemek için StorSimple için Windows PowerShell'i kullanmayı açıklar. Web proxy ayarlarını, bulutla iletişim kurarken StorSimple cihaz tarafından kullanılır. Web proxy sunucusu, güvenlik, filtre içeriğini kolayca bant genişliği gereksinimlerini veya hatta Yardım analizlerle önbellek katmanı eklemek için kullanılır.
+Bu öğretici, StorSimple aygıtınız için web proxy ayarlarını yapılandırmak ve görüntülemek için StorSimple için Windows PowerShell'in nasıl kullanılacağını açıklar. Web proxy ayarları, bulutla iletişim kurarken StorSimple aygıtı tarafından kullanılır. Bir web proxy sunucusu, bant genişliği gereksinimlerini kolaylaştırmak ve hatta analitik konusunda yardımcı olmak için başka bir güvenlik katmanı eklemek, içeriği filtrelemek, önbellek eklemek için kullanılır.
 
-Bu öğreticideki yönergeler yalnızca StorSimple 8000 serisi fiziksel cihazlar için geçerlidir. Web proxy yapılandırması, StorSimple bulut Gereci (8010 ve 8020) üzerinde desteklenmiyor.
+Bu öğreticideki kılavuz yalnızca StorSimple 8000 serisi fiziksel aygıtlar için geçerlidir. Web proxy yapılandırması StorSimple Cloud Appliance (8010 ve 8020) üzerinde desteklenmez.
 
-Web proxy'si bir _isteğe bağlı_ StorSimple cihazınız için yapılandırma. StorSimple için Windows PowerShell aracılığıyla yalnızca web Ara sunucusu yapılandırabilirsiniz. Yapılandırmanın iki adımlı bir işlem aşağıdaki gibidir:
+Web proxy, StorSimple aygıtınız için _isteğe bağlı_ bir yapılandırmadır. StorSimple için web proxy'yi yalnızca Windows PowerShell üzerinden yapılandırabilirsiniz. Yapılandırma aşağıdaki gibi iki adımlı bir işlemdir:
 
-1. İlk StorSimple cmdlet'leri için Kurulum Sihirbazı'nı veya Windows PowerShell aracılığıyla web proxy ayarlarını yapılandırın.
-2. Ardından StorSimple cmdlet'leri için Windows PowerShell aracılığıyla yapılandırılan web proxy ayarlarını sağlar.
+1. Önce StorSimple cmdlets için kurulum sihirbazı veya Windows PowerShell üzerinden web proxy ayarlarını yapılandırırsınız.
+2. Daha sonra StorSimple cmdlets için Windows PowerShell üzerinden yapılandırılan web proxy ayarlarını etkinleştirin.
 
-Web proxy yapılandırması tamamlandıktan sonra yapılandırılmış web proxy ayarlarını hem Microsoft Azure StorSimple cihaz Yöneticisi hizmeti hem de Windows PowerShell için StorSimple görüntüleyebilirsiniz.
+Web proxy yapılandırması tamamlandıktan sonra, hem Microsoft Azure StorBasit Aygıt Yöneticisi hizmetinde hem de StorSimple için Windows PowerShell'de yapılandırılan web proxy ayarlarını görüntüleyebilirsiniz.
 
-Bu öğreticide okuduktan sonra şunları yapabilir:
+Bu öğretici okuduktan sonra, mümkün olacak:
 
-* Web ara Sunucusu Kurulum Sihirbazı'nı ve cmdlet'lerini kullanarak yapılandırın.
-* Web proxy cmdlet'lerini kullanarak etkinleştirirsiniz.
-* Web proxy ayarları Azure portalında görüntüleyin.
-* Web proxy yapılandırması sırasında hataları giderin.
+* Kurulum sihirbazı ve cmdlets kullanarak web proxy yapılandırın.
+* Cmdlets kullanarak web proxy etkinleştirin.
+* Azure portalında web proxy ayarlarını görüntüleyin.
+* Web proxy yapılandırması sırasında hataları giderme.
 
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell aracılığıyla Web proxy yapılandırma
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell üzerinden web proxy'yi yapılandırın
 
-Web proxy ayarlarını yapılandırmak için şunlardan birini kullanın:
+Web proxy ayarlarını yapılandırmak için aşağıdakilerden birini kullanırsınız:
 
-* Yapılandırma adımlarınıza kılavuzluk için Kurulum Sihirbazı'nı tıklatın.
-* StorSimple için Windows PowerShell cmdlet'leri.
+* Yapılandırma adımlarını size yönlendirmek için kurulum sihirbazı.
+* StorSimple için Windows PowerShell'de cmdletler.
 
-Bu yöntemlerin her biri, aşağıdaki bölümlerde ele alınmıştır.
+Bu yöntemlerin her biri aşağıdaki bölümlerde ele alınmıştır.
 
-## <a name="configure-web-proxy-via-the-setup-wizard"></a>Kurulum Sihirbazı aracılığıyla Web Proxy'yi Yapılandır
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Kurulum sihirbazı aracılığıyla web proxy'yi yapılandır
 
-Web proxy yapılandırma adımlarında size yol göstermesi için Kurulum Sihirbazı'nı kullanın. Cihazınızda Web proxy'sini yapılandırmak için aşağıdaki adımları gerçekleştirin.
+Web proxy yapılandırması için adımlar boyunca size rehberlik etmek için kurulum sihirbazını kullanın. Cihazınızda web proxy'sini yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Kurulum Sihirbazı aracılığıyla Web proxy'sini yapılandırmak için
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Kurulum sihirbazı aracılığıyla web proxy yapılandırmak için
 
-1. Seri konsol menüsünde seçeneği 1 **tam erişimle oturum açmak** ve **cihaz Yöneticisi parolası**. Kurulum Sihirbazı oturumu başlatmak için aşağıdaki komutu yazın:
+1. Seri konsol menüsünde, seçenek 1'i seçin, **tam erişimle giriş yapın** ve aygıt yöneticisi **parolasını**sağlayın. Kurulum sihirbazı oturumunu başlatmak için aşağıdaki komutu yazın:
    
     `Invoke-HcsSetupWizard`
-2. Bu, cihaz kaydı için Kurulum Sihirbazı'nı kullandığınız ilk kez ise, web proxy yapılandırması gelene kadar tüm gerekli ağ ayarlarını yapılandırmak gerekir. Cihazınız zaten kayıtlıysa, web proxy yapılandırması gelene kadar tüm yapılandırılmış ağ ayarlarını kabul edin. Kurulum Sihirbazı'nda web proxy ayarlarını yapılandırmak isteyip istemediğiniz sorulduğunda yazın **Evet**.
-3. İçin **Web Proxy URL'si**, web proxy sunucu IP adresini veya tam etki alanı adı (FQDN) belirtin ve TCP bağlantı noktası numarası bulutla iletişim kurarken kullanması için Cihazınızı istersiniz. Aşağıdaki biçimi kullanın:
+2. Aygıt kaydı için kurulum sihirbazını ilk kez kullandıysanız, web proxy yapılandırmasına ulaşana kadar gerekli tüm ağ ayarlarını yapılandırmanız gerekir. Aygıtınız zaten kayıtlıysa, web proxy yapılandırmasına ulaşana kadar yapılandırılan tüm ağ ayarlarını kabul edin. Kurulum sihirbazında, web proxy ayarlarını yapılandırması istendiğinde **Evet**yazın.
+3. Web **Proxy URL'si için,** web proxy sunucunuzun IP adresini veya tam nitelikli alan adını (FQDN) ve bulutla iletişim kurarken cihazınızın kullanmasını istediğiniz TCP bağlantı noktası numarasını belirtin. Şu biçimi kullanın:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
-    Varsayılan olarak, TCP bağlantı noktası 8080 belirtilir.
-4. Kimlik doğrulaması türü olarak seçin **NTLM**, **temel**, veya **hiçbiri**. En az güvenli kimlik doğrulaması için proxy sunucusu yapılandırması, temel üyeliktir. NT LAN Manager (NTLM), bir üç yönlü Mesajlaşma sistemi (bazen dört ek bütünlüğü gerekliyse) kullanan bir yüksek oranda güvenli ve karmaşık kimlik doğrulama protokolü olan bir kullanıcının kimliğini doğrulamak için. Varsayılan kimlik doğrulaması, NTLM olur. Daha fazla bilgi için [temel](https://hc.apache.org/httpclient-3.x/authentication.html) ve [NTLM kimlik doğrulaması](https://hc.apache.org/httpclient-3.x/authentication.html). 
+    Varsayılan olarak, TCP bağlantı noktası numarası 8080 belirtilir.
+4. Kimlik doğrulama türünü **NTLM,** **Temel**veya **Yok**olarak seçin. Temel proxy sunucusu yapılandırması için en az güvenli kimlik doğrulamasıdır. NT LAN Yöneticisi (NTLM), bir kullanıcının kimliğini doğrulamak için üç yönlü bir ileti sistemi (bazen dört, ek bütünlük gerekiyorsa) kullanan son derece güvenli ve karmaşık bir kimlik doğrulama protokolüdür. Varsayılan kimlik doğrulaması NTLM'dir. Daha fazla bilgi için [Temel](https://hc.apache.org/httpclient-3.x/authentication.html) ve [NTLM kimlik doğrulamabilgisine](https://hc.apache.org/httpclient-3.x/authentication.html)bakın. 
    
    > [!IMPORTANT]
-   > **StorSimple cihaz Yöneticisi hizmeti, cihaz izleme grafiklerini, temel sırasında çalışmıyor veya cihaz için proxy sunucusu yapılandırmasını NTLM kimlik doğrulaması etkin. İzleme grafiklerini çalışmak söz konusu kimlik doğrulamasını NONE olarak ayarlandığından emin olmak gerekir.**
+   > **StorSimple Device Manager hizmetinde, aygıt için proxy sunucu yapılandırmasında Temel veya NTLM kimlik doğrulaması etkinleştirildiğinde aygıt izleme grafikleri çalışmaz. İzleme çizelgelerin çalışması için kimlik doğrulamanın NONE olarak ayarlandığından emin olmanız gerekir.**
   
-5. Kimlik doğrulamasını etkinleştirdiyseniz, kaynağı bir **Web Proxy kullanıcı adı** ve **Web ara sunucu parolasını**. Parolayı onaylamanız gerekir.
+5. Kimlik doğrulamasını etkinleştirdiyseniz, bir **Web Proxy Kullanıcı Adı** ve Web Proxy **Şifresi**girin. Ayrıca parolayı onaylamanız gerekir.
    
-    ![StorSimple cihaz1'de Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751830.png)
+    ![StorSimple Device1'de Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751830.png)
 
-Cihazınız ilk kez kaydediyorsanız, kayıt ile devam edin. Cihazınız zaten kayıtlı, sihirbaz kapanır. Yapılandırılmış ayarlar kaydedildi.
+Cihazınızı ilk kez kaydediyorsanız, kayıt la devam edin. Aygıtınız zaten kayıtlıysa sihirbaz çıkar. Yapılandırılan ayarlar kaydedilir.
 
-Web proxy şimdi etkinleştirildi. Atlayabilirsiniz [web Ara sunucusu etkinleştirmek](#enable-web-proxy) adım ve doğrudan [görünüm web proxy ayarları Azure portalında](#view-web-proxy-settings-in-the-azure-portal).
+Web proxy şimdi etkinleştirildi. [Web proxy'yi etkinleştir](#enable-web-proxy) adımını atlayabilir ve doğrudan Azure [portalındaki web proxy ayarlarını görüntüleyebilirsiniz.](#view-web-proxy-settings-in-the-azure-portal)
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>StorSimple cmdlet'leri için Windows PowerShell aracılığıyla Web Proxy'yi Yapılandır
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>StorSimple cmdlets için Windows PowerShell üzerinden web proxy yapılandırma
 
-StorSimple cmdlet'leri için Windows PowerShell aracılığıyla Web proxy ayarlarını yapılandırmak için alternatif bir yolu var. Web proxy'sini yapılandırmak için aşağıdaki adımları gerçekleştirin.
+Web proxy ayarlarını yapılandırmanın alternatif bir yolu StorSimple cmdlets için Windows PowerShell üzerinden. Web proxy'sini yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-configure-web-proxy-via-cmdlets"></a>Cmdlet'leri aracılığıyla Web proxy'sini yapılandırmak için
-1. Seri konsol menüsünde seçeneği 1 **tam erişimle oturum açmak**. İstendiğinde, sağlayın **cihaz Yöneticisi parolası**. Varsayılan parola `Password1`.
+#### <a name="to-configure-web-proxy-via-cmdlets"></a>Cmdlets ile web proxy yapılandırmak için
+1. Seri konsol menüsünde, seçenek 1 seçin, **tam erişim ile giriş yapın.** İstendiğinde, **aygıt yöneticisi parolasını**girin. Varsayılan `Password1`parola.
 2. Komut istemine şunları yazın:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
-    Sağlayın ve istendiğinde parolayı onaylayın.
+    İstendiğinde parolayı sağlayın ve onaylayın.
    
-    ![StorSimple cihaz3 Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751831.png)
+    ![StorSimple Device3'te Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751831.png)
 
-Web Ara sunucusu artık yapılandırılmıştır ve etkinleştirilmesi gerekir.
+Web proxy şimdi yapılandırıldı ve etkin leştirilmesi gerekiyor.
 
-## <a name="enable-web-proxy"></a>Web ara sunucusunu etkinleştirme
+## <a name="enable-web-proxy"></a>Web proxy'sini etkinleştirme
 
-Web ara sunucusu, varsayılan olarak devre dışıdır. StorSimple Cihazınızda web proxy ayarlarını yapılandırdıktan sonra web proxy ayarlarını etkinleştirmek için StorSimple için Windows PowerShell kullanın.
+Web proxy varsayılan olarak devre dışı bırakılır. StorSimple cihazınızdaki web proxy ayarlarını yapılandırdıktan sonra, web proxy ayarlarını etkinleştirmek için StorSimple için Windows PowerShell'i kullanın.
 
 > [!NOTE]
-> **Web proxy'sini yapılandırmak için Kurulum Sihirbazı'nı kullandıysanız, bu adım gerekli değildir. Web proxy, Kurulum Sihirbazı oturumu sonra otomatik olarak varsayılan olarak etkindir.**
+> **Web proxy'sini yapılandırmak için kurulum sihirbazını kullandıysanız bu adım gerekli değildir. Web proxy varsayılan olarak bir kurulum sihirbazı oturumundan sonra etkinleştirilir.**
 
 
-Cihazınızdaki web proxy'sini etkinleştirmek StorSimple için Windows PowerShell içinde aşağıdaki adımları gerçekleştirin:
+Cihazınızda web proxy'sini etkinleştirmek için StorSimple için Windows PowerShell'de aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-enable-web-proxy"></a>Web proxy'sini etkinleştirmek için
-1. Seri konsol menüsünde seçeneği 1 **tam erişimle oturum açmak**. İstendiğinde, sağlayın **cihaz Yöneticisi parolası**. Varsayılan parola `Password1`.
+1. Seri konsol menüsünde, seçenek 1 seçin, **tam erişim ile giriş yapın.** İstendiğinde, **aygıt yöneticisi parolasını**girin. Varsayılan `Password1`parola.
 2. Komut istemine şunları yazın:
    
     `Enable-HcsWebProxy`
    
-    Şimdi, StorSimple Cihazınızda web proxy yapılandırması etkinleştirdiniz.
+    Artık StorSimple cihazınızda web proxy yapılandırmasını etkinleştirdin.
    
-    ![StorSimple cihaz4 Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751832.png)
+    ![StorSimple Device4'te Web Proxy'yi Yapılandır](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Web proxy ayarları Azure portalında görüntüleme
+## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Azure portalında web proxy ayarlarını görüntüleme
 
-Web proxy ayarları Windows PowerShell arabirimi aracılığıyla yapılandırılır ve portalın içinde değiştirilemez. Ancak, bu yapılandırılmış ayarlar portalında görüntüleyebilirsiniz. Web proxy görüntülemek için aşağıdaki adımları gerçekleştirin.
+Web proxy ayarları Windows PowerShell arabirimi üzerinden yapılandırılır ve portal içinden değiştirilemez. Ancak, bu yapılandırılmış ayarları portalda görüntüleyebilirsiniz. Web proxy'sini görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-web-proxy-settings"></a>Web proxy ayarlarını görüntülemek için
-1. Gidin **StorSimple cihaz Yöneticisi hizmeti > cihazlar**. Seçin ve bir cihaza tıklayın ve ardından Git **cihaz Ayarları > Ağ**.
+1. Aygıtlar > **StorSimple Aygıt Yöneticisi hizmetine**gidin. Bir aygıtı seçin ve tıklatın ve ardından **Aygıt ayarları > Ağına**gidin.
 
-    ![Ağa tıklayın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
+    ![Ağ'ı tıklatın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. İçinde **ağ ayarları** dikey penceresinde tıklayın **Web proxy** Döşe.
+2. Ağ **ayarları** çubuğunda, **Web proxy** döşemesini tıklatın.
 
-    ![Web proxy tıklayın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
+    ![Web proxy'yi tıklatın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. İçinde **Web proxy** dikey penceresinde, StorSimple Cihazınızda yapılandırılmış web proxy ayarları gözden geçirin.
+3. Web **proxy** blade'inde, StorSimple cihazınızda yapılandırılan web proxy ayarlarını gözden geçirin.
    
-    ![Görünümü web proxy ayarları](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
+    ![Web proxy ayarlarını görüntüleme](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
 
 ## <a name="errors-during-web-proxy-configuration"></a>Web proxy yapılandırması sırasında hatalar
 
-Web proxy ayarları hatalı yapılandırıldıysa, hata iletileri için Windows PowerShell'de kullanıcı için StorSimple görüntülenir. Aşağıdaki tabloda, bu hata iletileri, olası nedenler ve önerilen eylemler bazıları açıklanmaktadır.
+Web proxy ayarları yanlış yapılandırılırsa, hata iletileri StorSimple için Windows PowerShell kullanıcıya görüntülenir. Aşağıdaki tabloda bu hata iletilerinin bazıları, bunların olası nedenleri ve önerilen eylemler açıklanmaktadır.
 
-| Seri yok. | HRESULT hata kodu | Olası kök nedeni | Önerilen eylem |
+| Seri no. | HRESULT hata Kodu | Olası kök neden | Önerilen eylem |
 |:--- |:--- |:--- |:--- |
-| 1. |0x80070001 |Komutu, pasif denetleyiciden çalıştırın ve etkin denetleyiciyle iletişim kurmak mümkün değildir. |Komut etkin denetleyicide çalıştırın. Pasif denetleyicisinden komutu çalıştırmak için etkin denetleyiciyi pasif gelen bağlantı düzeltmeniz gerekir. Bu bağlantı bozuk ise Microsoft Support etkileşim kurun gerekir. |
-| 2. |0x800710dd - işlem tanımlayıcısı geçerli değil |Ara sunucu ayarlarını, StorSimple Cloud Appliance'ta desteklenmez. |Ara sunucu ayarlarını, StorSimple Cloud Appliance'ta desteklenmez. Bu, yalnızca StorSimple fiziksel cihaz üzerindeki yapılandırılabilir. |
-| 3. |0x80070057 - geçersiz parametre |Bir proxy ayarları için sağlanan parametreler geçerli değil. |URI, doğru biçimde sağlanmadı. Aşağıdaki biçimi kullanın: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
-| 4. |0x800706ba - RPC sunucusu kullanılamıyor |Kök nedeni aşağıdakilerden biridir:</br></br>Küme ayarlama değil. </br></br>DataPath hizmeti çalışmıyor.</br></br>Komutu, pasif denetleyiciden çalıştırın ve etkin denetleyiciyle iletişim kurmak mümkün değildir. |Küme çalışır durumda ve datapath hizmetinin çalıştığından emin olmak için Microsoft Support etkileşim kurun.</br></br>Komut etkin denetleyiciden çalıştırın. Pasif denetleyicisinden komutu çalıştırmak istiyorsanız, edilgen denetleyici etkin denetleyiciyle iletişim kurabildiğinden emin olmanız gerekir. Bu bağlantı bozuk ise Microsoft Support etkileşim kurun gerekir. |
-| 5. |0X800706be - RPC çağrısı başarısız oldu |Küme çalışmıyor. |Küme olduğundan emin olmak için Microsoft Support etkileşim kurun. |
-| 6. |0x8007138f - küme kaynağı bulunamadı |Platform Hizmet küme kaynağı bulunamadı. Bu yükleme uygun olmadığında oluşabilir. |Cihazı fabrika ayarlarına döndürebilirsiniz gerekebilir. Bir platform kaynak oluşturmanız gerekebilir. Sonraki adımlar için Microsoft Desteği'ne başvurun. |
-| 7. |0x8007138c - küme kaynağı çevrimiçi değil |Platform veya datapath küme kaynağı çevrimiçi değil. |Datapath ve platform Hizmet kaynağı çevrimiçi olduğundan emin olmak için Microsoft Support başvurun. |
+| 1. |0x80070001 |Komut pasif denetleyiciden çalıştırılır ve etkin denetleyici ile iletişim kuramaz. |Etkin denetleyicideki komutu çalıştırın. Komutu pasif denetleyiciden çalıştırmak için, bağlayımı pasiften etkin denetleyiciye sabitlemeniz gerekir. Bu bağlantı bozuksa Microsoft Desteği'ni meşgul edmelisiniz. |
+| 2. |0x800710dd - Operasyon tanımlayıcısı geçerli değil |Proxy ayarları StorSimple Cloud Appliance'ta desteklenmez. |Proxy ayarları StorSimple Cloud Appliance'ta desteklenmez. Bunlar yalnızca StorSimple fiziksel aygıtında yapılandırılabilir. |
+| 3. |0x80070057 - Geçersiz parametre |Proxy ayarları için sağlanan parametrelerden biri geçerli değildir. |URI doğru biçimde sağlanmaz. Aşağıdaki biçimi kullanın:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 4. |0x800706ba - RPC sunucusu kullanılamıyor |Temel neden aşağıdakilerden biridir:</br></br>Küme açık değil. </br></br>Datapath hizmeti çalışmıyor.</br></br>Komut pasif denetleyiciden çalıştırılır ve etkin denetleyici ile iletişim kuramaz. |Kümenin dolduğundan ve datapath hizmetinin çalıştığından emin olmak için Microsoft Desteği'ni meşgul edin.</br></br>Komutu etkin denetleyiciden çalıştırın. Komutu pasif denetleyiciden çalıştırmak istiyorsanız, pasif denetleyicinin etkin denetleyiciyle iletişim kurabileceğinden emin olmalısınız. Bu bağlantı bozuksa Microsoft Desteği'ni meşgul edmelisiniz. |
+| 5. |0x800706be - RPC arama başarısız oldu |Küme düştü. |Kümenin açık olduğundan emin olmak için Microsoft Desteği'ni meşgul edin. |
+| 6. |0x8007138f - Küme kaynağı bulunamadı |Platform hizmet küme kaynağı bulunamadı. Bu, yükleme uygun olmadığında gerçekleşebilir. |Cihazınızda bir fabrika sıfırlama gerçekleştirmeniz gerekebilir. Bir platform kaynağı oluşturmanız gerekebilir. Sonraki adımlar için Microsoft Desteği'ne başvurun. |
+| 7. |0x8007138c - Küme kaynağı çevrimiçi değil |Platform veya datapath küme kaynakları çevrimiçi değildir. |Veri yolu ve platform hizmet kaynağının çevrimiçi olduğundan emin olmak için Microsoft Destek'e başvurun. |
 
 > [!NOTE]
-> * Yukarıdaki hata iletilerinin listesi kapsamlı değildir.
-> * Web proxy ayarlarıyla ilgili hatalar, StorSimple cihaz Yöneticisi hizmetinizin Azure portalında görüntülenmez. Yapılandırma tamamlandıktan sonra web Ara sunucusu ile ilgili bir sorun olduğunda cihaz durumu değişir **çevrimdışı** Klasik portalda. |
+> * Yukarıdaki hata iletileri listesi ayrıntılı değildir.
+> * Web proxy ayarlarıyla ilgili hatalar StorSimple Device Manager hizmetinizde Azure portalında görüntülenmez. Yapılandırma tamamlandıktan sonra web proxy ile ilgili bir sorun varsa, aygıt durumu klasik portalda **Çevrimdışı** olarak değişecektir.|
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Cihazınızı dağıtma veya web Ara sunucu ayarlarını yapılandırma herhangi bir sorun yaşarsanız başvurmak [StorSimple cihaz dağıtımınızın sorunlarını giderdikten](storsimple-troubleshoot-deployment.md).
-* StorSimple cihaz Yöneticisi hizmetini kullanmayı öğrenmek için Git [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* Cihazınızı dağıtırken veya web proxy ayarlarını yapılandırırken herhangi bir sorunla karşılaşırsanız, [StorSimple aygıt dağıtımınızı sorun gidermeye](storsimple-troubleshoot-deployment.md)bakın.
+* StorSimple Device Manager hizmetini nasıl kullanacağınızı öğrenmek için [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini kullanın.](storsimple-8000-manager-service-administration.md)
 

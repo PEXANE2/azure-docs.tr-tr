@@ -15,23 +15,23 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456860"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Depolama Gezgini’ni Azure Dosya depolama ile kullanma
 
 Azure Dosya Depolama, standart Sunucu İleti Blogu (SMB) Protokolü kullanarak bulutta dosya paylaşımı sunan bir hizmettir. SMB 2.1 ve SMB 3.0 desteklenir. Azure File Storage, Azure’a dosya paylaşımı kullanan eski uygulamaları maliyetli yeniden yazdırmaya ihtiyaç duymadan ve hızla taşıyabilmenizi sağlar. Verileri genel olarak herkese açık kullanıma sunmak veya uygulama verilerini özel olarak depolamak için Dosya Depolama’yı kullanabilirsiniz. Bu makalede, dosya paylaşımları ve dosyalarla çalışmak üzere Depolama Gezgini’ni nasıl kullanacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 - [Depolama Gezgini’ni indirip yükleme](https://www.storageexplorer.com/)
 
-- [Bir Azure depolama hesabı veya hizmetine bağlanma](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Azure depolama hesabına veya hizmetine bağlanma](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Dosya Paylaşımı oluşturma
 
@@ -199,27 +199,27 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
 
     - **Bir dosya paylaşımına dosya yükleme**
 
-        a.  Ana bölmedeki araç çubuğunda **Karşıya Yükle**’yi ve ardından açılır listedeki **Dosyaları Karşıya Yükle**’yi seçin.
+        a.  Ana bölmenin araç çubuğunda **Yükle'yi**ve ardından açılan menüden **Dosyaları Yükle'yi** seçin.
 
         ![Dosyaları karşıya yükleme](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. **Dosyaları Karşıya Yükle** iletişim kutusunda, **Dosyalar** metin kutusunun sağ tarafındaki üç noktayı ( **…** ) seçerek karşıya yüklemek istediğiniz dosyaları belirleyin.
+        b. **Dosyaları Karşıya Yükle** iletişim kutusunda, **Dosyalar** metin kutusunun sağ tarafındaki üç noktayı (**…**) seçerek karşıya yüklemek istediğiniz dosyaları belirleyin.
 
         ![Dosya ekleme](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. **Karşıya Yükle**’yi seçin.
+        c. **Yükle'yi**seçin.
 
     - **Bir dosya paylaşımına klasör yükleme**
         
-        a. Ana bölmedeki araç çubuğunda **Karşıya Yükle**’yi ve ardından açılır listedeki **Klasörü Karşıya Yükle**’yi seçin.
+        a. Ana bölmenin araç **çubuğunda,** açılan menüden Yükle ve ardından **Klasörü Yükle'yi** seçin.
 
         ![Klasörü karşıya yükle menüsü](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. **Klasörü karşıya yükle** iletişim kutusunda, **Klasör** metin kutusunun sağ tarafındaki üç noktayı ( **…** ) seçerek içeriklerini karşıya yüklemek istediğiniz klasörü belirleyin.
+        b. **Klasörü karşıya yükle** iletişim kutusunda, **Klasör** metin kutusunun sağ tarafındaki üç noktayı (**…**) seçerek içeriklerini karşıya yüklemek istediğiniz klasörü belirleyin.
 
         c. İsteğe bağlı olarak, seçili klasörün içeriklerinin yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
 
-        d. **Karşıya Yükle**’yi seçin.
+        d. **Yükle'yi**seçin.
 
     - **Bir dosyayı yerel bilgisayarınıza indirme**
         
@@ -229,7 +229,7 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
         
         c. **İndirilen dosyanın kaydedileceği konumu seçin** iletişim kutusunda, dosyanın indirilmesini istediğiniz konumu ve dosyaya vermek istediğiniz adı belirtin.
 
-        d. **Kaydet**’i seçin.
+        d. **Kaydet'i**seçin.
 
     - **Bir dosyayı yerel bilgisayarınızda açma**
         

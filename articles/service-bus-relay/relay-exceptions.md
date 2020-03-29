@@ -1,6 +1,6 @@
 ---
-title: Azure geçiş özel durumları ve bunların nasıl çözüleceğine | Microsoft Docs
-description: Azure geçiş özel durumları ve bunları çözmenize yardımcı olacak önerilen eylemler listesi.
+title: Azure Röle özel durumları ve bunları nasıl çözeceğiniz | Microsoft Dokümanlar
+description: Azure Röle özel durumları ve bunları çözmeye yardımcı olmak için yapabileceğiniz önerilen eylemler listesi.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,63 +15,63 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60749045"
 ---
-# <a name="azure-relay-exceptions"></a>Azure geçiş özel durumları
+# <a name="azure-relay-exceptions"></a>Azure Röle özel durumları
 
-Bu makalede, Azure geçişi API'leri tarafından oluşturulan bazı özel durumlar listelenir. Bu başvuru değişebilir, bu nedenle geri Güncelleştirmeleri denetle.
+Bu makalede, Azure Röle API'leri tarafından oluşturulabilecek bazı özel durumlar listelenir. Bu başvuru değişebilir, bu nedenle güncelleştirmeleri kontrol edin.
 
-## <a name="exception-categories"></a>Özel durum kategorisi
+## <a name="exception-categories"></a>Özel durum kategorileri
 
-Geçiş API'leri, aşağıdaki kategorilere ayrılır özel durumlar oluşturun. Ayrıca özel durumları çözmek yardımcı olacak önerilen eylemleri listelenmiştir.
+Röle API'leri, aşağıdaki kategorilere düşebilecek özel durumlar oluşturur. Ayrıca, özel durumları çözmeye yardımcı olmak için alabileceğiniz önerilen eylemler de listelenir.
 
-*   **Kodlama hatası kullanıcı**: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [ System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
+*   **Kullanıcı kodlama hatası**: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
 
-    **Genel eylem**: Devam etmeden önce bu kodu düzeltmek bu seçeneği deneyin.
-*   **Kurulumu/yapılandırma hatası**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
+    **Genel eylem**: Devam etmeden önce kodu düzeltmeye çalışın.
+*   **Kurulum/yapılandırma hatası**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
 
-    **Genel eylem**: Yapılandırmanızı gözden geçirin. Gerekirse, yapılandırmasını değiştirin.
-*   **Geçici özel durumlar**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
+    **Genel eylem**: Yapılandırmanızı gözden geçirin. Gerekirse yapılandırmayı değiştirin.
+*   **Geçici özel durumlar**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
-    **Genel eylem**: İşlemi yeniden deneyin veya kullanıcılara bildirin.
-*   **Diğer özel durumlar**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
+    **Genel eylem**: İşlemi yeniden deneyin veya kullanıcıları bilgilendirin.
+*   **Diğer istisnalar**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
 
-    **Genel eylem**: Belirli özel durum türü. Aşağıdaki bölümde bulunan tabloya bakın. 
+    **Genel eylem**: Özel durum türüne özgü. Aşağıdaki bölümdeki tabloya bakın. 
 
 ## <a name="exception-types"></a>Özel durum türleri
 
-Aşağıdaki tabloda, Mesajlaşma özel durum türlerini ve bunlara ait nedenlerin listeler. Özel durumları çözmek yardımcı olacak önerilen eylemleri Not alır.
+Aşağıdaki tabloda ileti özel durum türleri ve bunların nedenleri listelenir. Ayrıca, özel durumları çözmeye yardımcı olmak için yapabileceğiniz eylemleri de not alır.
 
-| **Özel durum türü** | **Açıklama** | **Önerilen eylem** | **Otomatik veya hemen yeniden deneme sırasında dikkat edin.** |
+| **Özel durum türü** | **Açıklama** | **Önerilen eylem** | **Otomatik veya anında yeniden deneme notu** |
 | --- | --- | --- | --- |
-| [zaman aşımı](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Sunucu istenen işlemi tarafından denetlenen belirtilen süre içinde yanıt vermedi [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). Sunucu istenen işlemi tamamlanmış olabilir. Bu, ağ veya diğer altyapı gecikmeler nedeniyle oluşabilir. |Tutarlılık için sistem durumunu denetleyin ve ardından, gerekirse, yeniden deneyin. Bkz: [TimeoutException](#timeoutexception). |Bazı durumlarda yeniden başlatma yardımcı; yeniden deneme mantığı için kod ekleyin. |
-| [Geçersiz işlem](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |İstenen kullanıcı işlemi, sunucu veya hizmet içinde izin verilmiyor. Özel durum iletisi ayrıntıları için bkz. |Kod ve belgelere bakın. İstenen işlem geçerli olduğundan emin olun. |Yeniden deneme yardımcı olmaz. |
-| [İşlem iptal edildi](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Zaten kapalı, durduruldu veya atılmış bir nesne üzerinde bir işlem çağırmak için bir deneme yapılır. Nadiren de olsa, ortam işlem zaten atıldı. |Kodu kontrol edip atılan nesneye işlemleri çağırma kullanılamaz olduğundan emin olun. |Yeniden deneme yardımcı olmaz. |
-| [Yetkisiz erişim](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesne bir belirteci alınamadı, belirteci geçersiz veya işlemi gerçekleştirmek için gerekli talep belirteci içermiyor. |Belirteç sağlayıcısı doğru değerlerle oluşturulduğundan emin olun. Erişim denetimi hizmetinin yapılandırmasını denetleyin. |Bazı durumlarda yeniden başlatma yardımcı; yeniden deneme mantığı için kod ekleyin. |
-| [Bağımsız değişken özel durumunu](https://msdn.microsoft.com/library/system.argumentexception.aspx),<br /> [Bağımsız değişken Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx),<br />[Bağımsız değişkeni aralık dışında](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |Bir veya daha fazlasını oluştu:<br />Yöntemine sağlanan bir veya daha fazla bağımsız değişken geçersiz.<br /> Sağlanan URI [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Oluştur](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) bir veya daha fazla yol kesimi içeriyor.<br />Sağlanan URI düzeni [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Oluştur](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) geçersiz. <br />Özellik değeri, 32 KB'den daha büyük. |Çağıran kod denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. |Yeniden deneme yardımcı olmaz. |
-| [Server Busy](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Hizmet şu anda isteğinizi mümkün değil. |İstemci bir süre bekleyin. ardından işlemi yeniden deneyin. |İstemci, belirli bir süre sonra yeniden. Yeniden deneme sonuçları farklı bir özel durum, o özel durumu yeniden deneme davranışını kontrol edin. |
-| [Kota aşıldı](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Mesajlaşma varlığı, izin verilen boyut üst sınırına. |Alanı varlık içinde varlık veya onun alt iletilerini alma oluşturun. Bkz: [QuotaExceededException](#quotaexceededexception). |İletiler sırada kaldırdıysanız, yeniden deneme yardımcı olabilir. |
-| [İleti boyutu aşıldı](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |İleti yükü 256 KB'lik sınırını aşıyor. İleti boyutu 256 KB'lık sınırı olduğunu unutmayın. İleti boyutu, Sistem özellikleri ve herhangi bir Microsoft .NET yükü içerebilir. |İleti yükü azaltın, ardından işlemi yeniden deneyin. |Yeniden deneme yardımcı olmaz. |
+| [Zaman aşımı](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Sunucu, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)tarafından denetlenen belirtilen süre içinde istenen işlemi yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu ağ veya diğer altyapı gecikmeleri nedeniyle olabilir. |Tutarlılık için sistem durumunu denetleyin ve gerekirse yeniden deneyin. [Bkz. TimeoutException](#timeoutexception). |Yeniden deneme bazı durumlarda yardımcı olabilir; koda yeniden deneme mantığı ekleyin. |
+| [Geçersiz İşlem](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |İstenen kullanıcı işlemine sunucu veya hizmet içinde izin verilmez. Ayrıntılar için özel durum iletisi bakın. |Kodu ve belgeleri kontrol edin. İstenen işlemin geçerli olduğundan emin olun. |Yeniden denemenin bir faydası olmaz. |
+| [İşlem İptal Edildi](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Zaten kapatılmış, iptal edilmiş veya elden çıkarılmış bir nesne üzerinde bir işlem çağırma girişiminde bulunulması. Nadir durumlarda, ortam işlemi zaten bertaraf edilir. |Kodu denetleyin ve elden çıkarılan bir nesne üzerinde işlem çağırmadığından emin olun. |Yeniden denemenin bir faydası olmaz. |
+| [Yetkisiz Erişim](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi bir belirteç elde edemedi, belirteç geçersiz veya belirteç işlemi gerçekleştirmek için gerekli iddiaları içermez. |Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control hizmetinin yapılandırmasını denetleyin. |Yeniden deneme bazı durumlarda yardımcı olabilir; koda yeniden deneme mantığı ekleyin. |
+| [Bağımsız Değişken Özel Durumu](https://msdn.microsoft.com/library/system.argumentexception.aspx),<br /> [Bağımsız değişken Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx),<br />[Bağımsız değişken kapsama alanı dışında](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |Aşağıdakilerden biri veya birkaçı oluştu:<br />Yönteme verilen bir veya daha fazla bağımsız değişken geçersizdir.<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create'e](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) sağlanan URI, bir veya daha fazla yol kesimi içerir.<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create'e](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) verilen URI şeması geçersizdir. <br />Özellik değeri 32 KB'den büyüktür. |Arama kodunu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. |Yeniden denemenin bir faydası olmaz. |
+| [Sunucu Meşgul](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Hizmet şu anda isteği işleyemez. |İstemci bir süre bekleyebilir ve işlemi yeniden deneyebilir. |İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durum la ilgili yeniden deneme davranışını denetleyin. |
+| [Kota Aşıldı](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |İleti varlığı izin verilen maksimum boyutuna ulaştı. |Varlıktan veya alt sıralarından iletiler alarak varlıkta alan oluşturun. Bkz. [QuotaExceededException](#quotaexceededexception). |Bu arada iletiler kaldırıldıysa yeniden deneyin yardımcı olabilir. |
+| [İleti Boyutu Aşıldı](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |İleti yükü 256-KB sınırını aşıyor. 256-KB sınırının toplam ileti boyutu olduğunu unutmayın. Toplam ileti boyutu, sistem özelliklerini ve microsoft .NET genel merkezlerini içerebilir. |İleti yükünün boyutunu küçültün ve işlemi yeniden deneyin. |Yeniden denemenin bir faydası olmaz. |
 
-## <a name="quotaexceededexception"></a>QuotaExceededException
+## <a name="quotaexceededexception"></a>Quotaexceededexception
 
-[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) belirli bir varlığa kotasının aşıldığını gösterir.
+[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception), belirli bir varlık için belirlenen kotanın aşıldığını gösterir.
 
-Bu özel durum geçişi için sarmalar [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), dinleyicileri sayısı için bu endpoint aşıldığını gösterir. Bu belirtilen **MaximumListenersPerEndpoint** özel durum iletisi değeri.
+Röle için, bu özel durum [System.ServiceModel.QuotaExceededException'ı](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx)sarar, bu da bu bitiş noktası için en fazla dinleyici sayısının aşıldığını gösterir. Bu durum iletisinin **MaximumListenersPerEndpoint** değerinde gösterilir.
 
-## <a name="timeoutexception"></a>TimeoutException
-A [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) kullanıcı tarafından başlatılan bir işlemin işlemi zaman aşımı süresinden daha uzun sürdüğünü gösterir. 
+## <a name="timeoutexception"></a>Timeoutexception
+[TimeoutException,](https://msdn.microsoft.com/library/system.timeoutexception.aspx) kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
 
-Değerini kontrol edin [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) özelliği. Bu sınıra ulaşılması da neden olabilir bir [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
+[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) özelliğinin değerini denetleyin. Bu sınıra ulaşmak, [Bir TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)neden olabilir.
 
-Geçiş için geçiş gönderen bağlantısı ilk kez açtığınızda, zaman aşımı özel durumları alabilirsiniz. Bu özel durumun sık karşılaşılan iki nedeni vardır:
+Röle için, bir röle gönderen bağlantısını ilk açtığınızda zaman acısı özel durumları alabilirsiniz. Bu özel durum için iki ortak nedeni vardır:
 
-*   [Opentimeout =](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) değeri çok küçük (hatta tarafından bir saniyenin varsa) olabilir.
-* Bir şirket içi geçiş dinleyicisinin yanıt vermiyor olabilir (veya dinleyicileri yeni istemci bağlantılarını kabul etmesini engelleyen bir güvenlik duvarı kuralları sorunların karşılaşabilirsiniz) ve [opentimeout =](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) küçüktür yaklaşık 20 saniye değerdir.
+*   [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) değeri çok küçük olabilir (saniyenin bir kısmı yla bile olsa).
+* Şirket içi röle dinleyicisi yanıt vermiyor olabilir (veya dinleyicilerin yeni istemci bağlantılarını kabul etmelerini yasaklayan güvenlik duvarı kuralları sorunlarıyla karşılaşabilir) ve [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) değeri yaklaşık 20 saniyeden kısadır.
 
 Örnek:
 
@@ -81,18 +81,18 @@ The time allotted to this operation may have been a portion of a longer timeout.
 ```
 
 ### <a name="common-causes"></a>Olası nedenler
-Bu hatanın yaygın nedenleri şunlardır:
+Bu hatanın iki yaygın nedeni vardır:
 
-*   **Yanlış yapılandırma**
+*   **Hatalı yapılandırma**
     
-    İşlem zaman aşımı işletimsel koşul için çok küçük olabilir. İstemci SDK'sı işlemi zaman aşımı'için varsayılan değer 60 saniyedir. Kodunuzda değeri çok küçük bir şeye ayarlanmış olup olmadığını denetleyin. Bir işlemin tamamlanması için geçen süreyi CPU kullanımı ve ağ durumunu etkileyebilecek unutmayın. İşlem zaman aşımı çok düşük bir değere ayarlı değil iyi bir fikirdir.
-*   **Geçici bir hizmet hatası**
+    Operasyon zaman, operasyonel durum için çok küçük olabilir. İstemci SDK'daki işlem zaman anına varsayılan değer 60 saniyedir. Kodunuzdaki değerin çok küçük bir şeye ayarlanıp ayarlanıp ayarlanıp ayarlanıp ayarlmadığını denetleyin. CPU kullanımının ve ağın durumunun bir işlemin tamamlanması için gereken süreyi etkileyebileceğini unutmayın. Operasyon zaman larını çok küçük bir değere ayarlamamak iyi bir fikirdir.
+*   **Geçici servis hatası**
 
-    Bazen, geçiş hizmeti isteklerinin işlenmesinde gecikmelere karşılaşabilirsiniz. Bu, örneğin, yüksek trafiği dönemlerinde gerçekleşebilir. Bu meydana gelirse, işlem başarılı olana kadar bir gecikmeden sonra işleminizi yeniden deneyin. Aynı işlem sonra birden fazla girişimde başarısız olmaya devam ederse, kontrol [Azure hizmet durumu sitesine](https://azure.microsoft.com/status/) vardır bilinen hizmet kesintileri olup olmadığını görmek için.
+    Bazen, Röle hizmeti istekleri işlemede gecikmeler yaşayabilir. Bu, örneğin, yüksek trafik dönemlerinde olabilir. Bu durumda, işlem başarılı olana kadar bir gecikmeden sonra işleminizi yeniden deneyin. Aynı işlem birden çok denemeden sonra başarısız olmaya devam ederse, bilinen hizmet kesintileri olup olmadığını görmek için [Azure hizmet durum sitesini](https://azure.microsoft.com/status/) denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure geçişi ile ilgili SSS](relay-faq.md)
-* [Bir geçiş ad alanı oluşturma](relay-create-namespace-portal.md)
-* [.NET ve Azure geçişi ile çalışmaya başlama](relay-hybrid-connections-dotnet-get-started.md)
-* [Azure geçişi ve Node ile çalışmaya başlama](relay-hybrid-connections-node-get-started.md)
+* [Azure Röle SSS'leri](relay-faq.md)
+* [Röle ad alanı oluşturma](relay-create-namespace-portal.md)
+* [Azure Röle ve .NET ile başlayın](relay-hybrid-connections-dotnet-get-started.md)
+* [Azure Röle ve Düğüm ile başlayın](relay-hybrid-connections-node-get-started.md)
 

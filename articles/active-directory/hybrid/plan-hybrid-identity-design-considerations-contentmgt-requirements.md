@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - içerik yönetimi gereksinimlerini Azure | Microsoft Docs
-description: İşletmenizin içerik yönetimi gereksinimlerini belirlemek nasıl Öngörüler sağlar. Bir kullanıcı kendi cihazını olduğunda, genellikle, bunlar da, kullandıkları uygulama göre değişen birden çok kimlik bilgilerini olabilir. Kurumsal kimlik bilgilerini kullanarak oluşturulan ilkeleri ve kişisel kimlik bilgilerini kullanarak hangi içerik oluşturuldu ayırt etmek önemlidir. Kimlik çözümünüz bulut ile etkileşimde bulunmayı sırasında son kullanıcı için sorunsuz bir deneyim sağlamak için hizmetler kendi gizliliklerini sağlamak ve veri sızıntısına karşı koruma artırın.
+title: Karma kimlik tasarımı - içerik yönetimi gereksinimleri Azure | Microsoft Dokümanlar
+description: İşletmenizin içerik yönetimi gereksinimlerini nasıl belirleyene ilişkin bilgiler sağlar. Genellikle bir kullanıcıkendi aygıtı olduğunda, kullandıkları uygulamaya göre dönüşümlü olacak birden çok kimlik bilgileri de olabilir. Kişisel kimlik bilgileri kullanılarak hangi içeriğin oluşturulduğunu, şirket kimlik bilgileri kullanılarak oluşturulaniçeriğin farklılaşması önemlidir. Kimlik çözümünüz, son kullanıcıya sorunsuz bir deneyim sunarken, gizliliklerini sağlamak ve veri sızıntısına karşı korumayı artırmak için bulut hizmetleriyle etkileşimkurabilmeli.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64918437"
 ---
-# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için bir içerik yönetim gereksinimlerini belirleme
-İşletmeniz için içerik yönetimi gereksinimlerini anlamaya kararınız üzerinde kullanmak için hangi karma kimlik çözümü doğrudan etkileyebilir. Birden çok cihaz ve kullanıcıların kendi cihazlarını getirmesine yeteneğini işyerinde ile ([KCG](https://aka.ms/byodcg)), şirketin kendi verilerini korumanız gerekir ancak bu aynı zamanda kullanıcı gizliliğini korumanız gerekir. Bir kullanıcı kendi cihazını olduğunda, genellikle, bunlar da, kullandıkları uygulama göre değişen birden çok kimlik bilgilerini olabilir. Kurumsal kimlik bilgilerini kullanarak oluşturulan ilkeleri ve kişisel kimlik bilgilerini kullanarak hangi içerik oluşturuldu ayırt etmek önemlidir. Kimlik çözümünüz bulut ile etkileşimde bulunmayı sırasında son kullanıcı için sorunsuz bir deneyim sağlamak için hizmetler kendi gizliliklerini sağlamak ve veri sızıntısına karşı koruma artırın. 
+# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için içerik yönetimi gereksinimlerini belirleme
+İşletmeniziçin içerik yönetimi gereksinimlerini anlamak, hangi karma kimlik çözümünüzün kullanılacağına ilişkin kararınızı doğrudan etkileyebilir. Birden fazla cihazın yaygınlaşması ve kullanıcıların kendi cihazlarını[(BYOD)](https://aka.ms/byodcg)getirebilme yeteneği sayesinde, şirket kendi verilerini korumalıdır, ancak aynı zamanda kullanıcının gizliliğini de sağlam tutmalıdır. Genellikle bir kullanıcıkendi aygıtı olduğunda, kullandıkları uygulamaya göre dönüşümlü olacak birden çok kimlik bilgileri de olabilir. Kişisel kimlik bilgileri kullanılarak hangi içeriğin oluşturulduğunu, şirket kimlik bilgileri kullanılarak oluşturulaniçeriğin farklılaşması önemlidir. Kimlik çözümünüz, son kullanıcıya sorunsuz bir deneyim sunarken, gizliliklerini sağlamak ve veri sızıntısına karşı korumayı artırmak için bulut hizmetleriyle etkileşimkurabilmeli. 
 
-Kimlik çözümünüzü farklı teknik denetimler tarafından içerik yönetimi, aşağıdaki çizimde gösterildiği gibi sağlamak için kullanmalarını kullanılabilir:
+Aşağıdaki şekilde gösterildiği gibi içerik yönetimi sağlamak için kimlik çözümünüz farklı teknik kontrollerden yararlanacaktır:
 
-![Güvenlik denetimleri](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
+![güvenlik kontrolleri](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
-**Kimlik Yönetimi sisteminizde yararlanarak güvenlik denetimleri**
+**Kimlik yönetim sisteminizden yararlanacak güvenlik denetimleri**
 
-Genel olarak, içerik yönetimi gereksinimlerini Kimlik Yönetimi sisteminizde aşağıdaki alanlarda özelliğinden yararlanır:
+Genel olarak, içerik yönetimi gereksinimleri aşağıdaki alanlarda kimlik yönetim sisteminizden yararlanacaktır:
 
-* Gizlilik: bir kaynağa sahip kullanıcı tanımlama ve uygulama bütünlüğünü korumak için uygun denetimler.
-* Veri Sınıflandırması: kullanıcı veya grup ve kendi sınıflandırmasını göre bir nesneye erişim düzeyini belirleyin. 
-* Veri sızıntısı koruma: güvenlik denetimleri veri sızıntısını önlemek için korumak için sorumlu kullanıcının kimliğini doğrulamak için kimlik sistemi ile etkileşim gerekecektir. Bu da izleme amaçlı denetimi için önemlidir.
+* Gizlilik: Kaynağı olan kullanıcıyı tanımlamak ve bütünlüğü korumak için uygun denetimleri uygulamak.
+* Veri Sınıflandırması: kullanıcıyı veya grubu ve bir nesneye erişim düzeyini sınıflandırmasına göre tanımlayın. 
+* Veri Kaçağı Koruması: Sızıntıyı önlemek için verileri korumaktan sorumlu güvenlik kontrollerinin kullanıcının kimliğini doğrulamak için kimlik sistemiyle etkileşime geçmesi gerekir. Bu aynı zamanda iz amacı nı denetlemek için de önemlidir.
 
 > [!NOTE]
-> Okuma [bulut hazırlığı için veri sınıflandırması](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) en iyi uygulamalar ve veri sınıflandırması için yönergeler hakkında daha fazla bilgi.
+> En iyi uygulamalar ve veri sınıflandırması yönergeleri hakkında daha fazla bilgi için [buluta hazırlık için veri sınıflandırmasını](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) okuyun.
 > 
 > 
 
-Ne zaman, karma kimlik çözümü planlama olun, kuruluşunuzun gereksinimlerine göre aşağıdaki soruların yanıtlanmasını:
+Karma kimlik çözümünüzü planlarken, aşağıdaki soruların kuruluşunuzun gereksinimlerine göre yanıtlanmasını sağlayın:
 
-* Şirketinizin güvenlik denetimleri, veri gizliliği zorunlu yerinde var mı?
-  * Yanıt Evet ise, güvenlik denetimleri benimsemek için oluşturacağınız karma kimlik çözümü ile tümleştirebilir olacak mı?
+* Şirketinizin veri gizliliğini uygulamak için güvenlik denetimleri var mı?
+  * Evet ise, güvenlik denetimleri benimseyeceğiniz karma kimlik çözümüyle entegre edebilecek mi?
 * Şirketiniz veri sınıflandırması kullanıyor mu?
-  * Yanıt Evet ise, geçerli çözüm benimsemek için oluşturacağınız karma kimlik çözümü ile tümleştirebilir mi?
-* Şirketiniz veri sızıntısını için herhangi bir çözümü şu anda var mı? 
-  * Yanıt Evet ise, geçerli çözüm benimsemek için oluşturacağınız karma kimlik çözümü ile tümleştirebilir mi?
-* Şirket kaynaklarına erişimi denetlemek gerekiyor mu?
-  * Evet ise, hangi kaynakların tür?
-  * Yanıt Evet ise, hangi düzeyde bilgi gerekli mi?
-  * Yanıt Evet ise, Denetim günlüğü bulunduğu gerekir? Şirket içi veya bulutta?
-* Şirketinizin hassas verileri (Ssn'ler, kredi kartı numaraları, vs.) içeren e-postaları şifrelemek gerekiyor mu?
-* Şirketinizin, dış iş ortakları ile paylaşılan tüm belgeleri/contents şifrelemek gerekiyor mu?
-* Şirketinizin belirli türden bir e-postaları şirket ilkeleri zorunlu tutmanıza gerek yoktur (tüm yanıt yapın, iletme)?
+  * Evet ise, mevcut çözüm benimseyeceğiniz karma kimlik çözümü ile entegre mümkün mü?
+* Şirketinizin şu anda veri sızıntısı için herhangi bir çözümü var mı? 
+  * Evet ise, mevcut çözüm benimseyeceğiniz karma kimlik çözümü ile entegre mümkün mü?
+* Şirketinizin kaynaklara erişimi denetlemesi gerekiyor mu?
+  * Evet ise, ne tür kaynaklar?
+  * Evet ise, ne düzeyde bilgi gereklidir?
+  * Evet ise, denetim günlüğünerede olmalıdır? Şirket içinde mi, bulutta mı?
+* Şirketinizin hassas veriler (SSN'ler, kredi kartı numaraları, vb.) içeren e-postaları şifrelemesi gerekiyor mu?
+* Şirketinizin harici iş ortaklarıyla paylaşılan tüm belgeleri/içerikleri şifrelemesi gerekiyor mu?
+* Şirketinizin belirli türde e-postalar üzerinde şirket politikaları uygulaması gerekiyor mu (tüm bunları yanıtlamayın, iletmeyin)?
 
 > [!NOTE]
-> Her yanıtı Not ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri koruma stratejisini tanımlayın](plan-hybrid-identity-design-considerations-data-protection-strategy.md) her seçeneğin olumlu/olumsuz değerlendirilir ve seçeneklerin geçilir.  En iyi seçeneği işletmenizi uygun seçersiniz bu soruları yanıtladığınızda gerekir.
+> Her yanıtı not almayı unutmayın ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri Koruma Stratejisini Tanımla,](plan-hybrid-identity-design-considerations-data-protection-strategy.md) mevcut seçeneklerin ve her seçeneğin avantajlarının/dezavantajlarının üzerinden geçecektir.  Bu soruları yanıtlayarak, işletme ihtiyaçlarınıza en uygun seçeneği seçecektir.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Erişim denetimi gereksinimleri belirleme](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+[Erişim denetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)

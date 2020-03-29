@@ -1,6 +1,6 @@
 ---
 title: Mantıksal uygulamaları sahte verilerle test etme
-description: Üretim ortamlarını etkilemeden sahte verilerle mantıksal uygulamaları test etmek için statik sonuçlar ayarlayın
+description: Üretim ortamlarını etkilemeden sahte verilerle mantık uygulamalarını test etmek için statik sonuçlar ayarlama
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,137 +9,137 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790269"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statik sonuçlar ayarlayarak sahte verilerle mantıksal uygulamaları test edin
+# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statik sonuçlar ayarlayarak sahte verilerle mantık uygulamalarını test edin
 
-Logic Apps 'i sınarken, çeşitli nedenlerle uygulamalar, hizmetler ve sistemler için gerçekten çağrı yapma veya erişme izniniz olmayabilir. Genellikle bu senaryolarda, farklı koşul yolları çalıştırmanız, hatalara zorlamak, belirli ileti yanıt gövdelerini sağlamanız veya hatta bazı adımları atlamayı denemeniz gerekebilir. Mantıksal uygulamanızdaki bir eylem için statik sonuçlar ayarlayarak, çıkış verilerini bu eylemden yapılandırabilirsiniz. Bir eylem üzerinde statik sonuçların etkinleştirilmesi eylemi çalıştırmaz, ancak bunun yerine sahte verileri döndürür.
+Mantıksal uygulamalarınızı sınarken, çeşitli nedenlerle uygulamaları, hizmetleri ve sistemleri gerçekten aramaya veya erişime hazır olmayabilirsiniz. Genellikle bu senaryolarda, farklı durum yolları çalıştırmak, hataları zorlamak, belirli ileti yanıt gövdeleri sağlamak, hatta bazı adımları atlamayı denemek zorunda kalabilirsiniz. Mantık uygulamanızdaki bir eylem için statik sonuçlar ayarlayarak, bu eylemden çıktı verileriyle alay edebilirsiniz. Bir eylemde statik sonuçları etkinleştirmek eylemi çalıştırmaz, ancak bunun yerine sahte verileri döndürür.
 
-Örneğin, Outlook 365 posta gönder eylemi için statik sonuçlar ayarlarsanız, Logic Apps altyapısı, Outlook 'U çağırmak ve e-posta göndermek yerine yalnızca statik sonuçlar olarak belirttiğiniz sahte verileri döndürür.
+Örneğin, Outlook 365 posta gönderimi için statik sonuçlar ayarlarsanız, Logic Apps altyapısı Outlook'u arayıp e-posta göndermek yerine statik sonuç olarak belirttiğiniz sahte verileri döndürür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa <a href="https://azure.microsoft.com/free/" target="_blank">ücretsiz bir Azure hesabı için kaydolun</a>.
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
-* Statik sonuçları ayarlamak istediğiniz mantıksal uygulama
+* Statik sonuçlar ayarlamak istediğiniz mantık uygulaması
 
 <a name="set-up-static-results"></a>
 
-## <a name="set-up-static-results"></a>Statik sonuçları ayarla
+## <a name="set-up-static-results"></a>Statik sonuçları ayarlama
 
-1. Henüz yapmadıysanız, [Azure portal](https://portal.azure.com)Logic Apps tasarımcısında mantıksal uygulamanızı açın.
+1. Azure [portalında](https://portal.azure.com)henüz yapmadıysanız, mantık uygulamanızı Logic Apps Designer'da açın.
 
-1. Statik sonuçları ayarlamak istediğiniz eylemde, şu adımları izleyin: 
+1. Statik sonuçlar ayarlamak istediğiniz eylemde aşağıdaki adımları izleyin: 
 
-   1. Eylemin sağ üst köşesinde üç nokta ( *...* ) düğmesini seçin ve **statik sonuç**' i seçin, örneğin:
+   1. Eylemin sağ üst köşesinde, elipsleri (*...*) düğmesini seçin ve **Statik sonucu**seçin , örneğin:
 
-      !["Statik sonuç" > "statik sonucu etkinleştir" i seçin](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+      !["Statik sonuç" > "Statik Sonucu Etkinleştir" seçeneğini belirleyin](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. **Statik sonucu etkinleştir**' i seçin. Gerekli (*) Özellikler için, eylemin yanıtı için döndürmek istediğiniz sahte çıkış değerlerini belirtin.
+   1. **Statik Sonucu Etkinleştir'i**seçin. Gerekli (*) özellikler için, eylemin yanıtı için döndürmek istediğiniz sahte çıktı değerlerini belirtin.
 
-      Örneğin, HTTP eylemi için gereken özellikler şunlardır:
+      Örneğin, HTTP eylemi için gerekli özellikler şunlardır:
 
       | Özellik | Açıklama |
       |----------|-------------|
-      | **Durum** | Döndürülecek eylemin durumu |
-      | **Durum Kodu** | Döndürülecek belirli durum kodu |
-      | **Üst Bilgiler** | Döndürülecek üst bilgi içeriği |
+      | **Durum** | İade etmek için eylemin durumu |
+      | **Durum Kodu** | Döndürülecek özel durum kodu |
+      | **Üst Bilgiler** | Döndürülecek üstbilgi içeriği |
       |||
 
-      !["Statik sonucu etkinleştir" i seçin](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      !["Statik Sonucu Etkinleştir" seçeneğini belirleyin](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      JavaScript Nesne Gösterimi (JSON) biçiminde sahte verileri girmek için **JSON moduna geç** ' i (!["JSON moduna geç"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) seçin.
+      JavaScript Nesne Gösterimi (JSON) biçiminde sahte veri girmek **için JSON Moduna Geç** 'i seçin (!["JSON Moduna Geç"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)seçeneğini belirleyin.
 
-   1. İsteğe bağlı özellikler için **isteğe bağlı alanları Seç** listesini açın ve sonra da, kullanmak istediğiniz özellikleri seçin.
+   1. İsteğe bağlı özellikler **için, isteğe bağlı alanları seç** listesini açın ve alay etmek istediğiniz özellikleri seçin.
 
       ![İsteğe bağlı özellikleri seçin](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Kaydetmeye hazırsanız **bitti**' yi seçin.
+1. Kaydetmeye hazır **olduğunuzda, Bitti'yi**seçin.
 
-   Eylemin sağ üst köşesinde bulunan başlık çubuğu artık, statik sonuçları etkinleştirdiğini belirten bir test Beaker simgesi (statik sonuçlar için![simgesi](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) gösterir.
+   Eylemin sağ üst köşesinde, başlık çubuğu artık statik sonuçları etkinleştirdiğinizi![gösteren bir](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)test beher simgesi (statik sonuçlar için simge) gösterir.
 
    ![Etkin statik sonuçları gösteren simge](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   Sahte verileri kullanan önceki çalıştırmaları bulmak için, bu konunun ilerleyen kısımlarında [statik sonuçlar kullanan çalıştırmaları bulma](#find-runs-mock-data) bölümüne bakın.
+   Sahte verileri kullanan önceki çalıştırmaları bulmak için, bu konunun ilerleyen saatlerinde [statik sonuçlar kullanan çalıştıran bul'a](#find-runs-mock-data) bakın.
 
 <a name="reuse-sample-outputs"></a>
 
-## <a name="reuse-previous-outputs"></a>Önceki çıktıları yeniden kullan
+## <a name="reuse-previous-outputs"></a>Önceki çıktıları yeniden kullanma
 
-Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa, sahte çıktılar olarak yeniden kullanabilirsiniz. çıkışları bu çalıştırdan kopyalayabilir ve yapıştırabilirsiniz.
+Mantık uygulamanızın sahte çıktılar olarak yeniden kullanabileceğiniz çıktılarla birlikte önceki bir çalışması varsa, bu çalıştırmadan çıkan çıktıları kopyalayıp yapıştırabilirsiniz.
 
-1. Henüz yapmadıysanız, [Azure portal](https://portal.azure.com)Logic Apps tasarımcısında mantıksal uygulamanızı açın.
+1. Azure [portalında](https://portal.azure.com)henüz yapmadıysanız, mantık uygulamanızı Logic Apps Designer'da açın.
 
-1. Mantıksal uygulamanızın ana menüsünde **genel bakış**' ı seçin.
+1. Mantık uygulamanızın ana menüsünde **Genel Bakış'ı**seçin.
 
-1. **Çalıştırma geçmişi** bölümünde, istediğiniz mantıksal uygulama çalıştırmasını seçin.
+1. Geçmiş **Çalıştır** bölümünde, istediğiniz mantık uygulamasını seçin.
 
-1. Mantıksal uygulamanızın iş akışında istediğiniz çıkışları içeren eylemi bulun ve genişletin.
+1. Mantık uygulamanızın iş akışında, istediğiniz çıktılara sahip eylemi bulun ve genişletin.
 
-1. **Ham çıkışları göster** bağlantısını seçin.
+1. Ham **çıktıları göster** bağlantısını seçin.
 
-1. Tam JavaScript Nesne Gösterimi (JSON) nesnesini ya da kullanmak istediğiniz belirli alt bölümü (örneğin, çıktılar bölümü ya da yalnızca üstbilgiler bölümü) kopyalayın.
+1. JavaScript Nesne Gösterimi (JSON) nesnesinin tamamını veya kullanmak istediğiniz belirli alt bölümü (örneğin, çıktılar bölümünü, hatta yalnızca üstbilgi bölümünü kopyalayın.
 
-1. [Statik sonuçları ayarla](#set-up-static-results)bölümünde eyleminiz için **statik sonuç** kutusunu açma adımlarını izleyin.
+1. **Statik sonuçları** ayarla'daki eyleminiz için [Set up static results](#set-up-static-results)Statik sonuç kutusunu açmak için adımları izleyin.
 
-1. **Statik sonuç** kutusu açıldıktan sonra, iki adımdan birini seçin:
+1. Statik **sonuç** kutusu açıldıktan sonra aşağıdakilerden birini seçin:
 
-   * Bir JSON nesnesini tamamen yapıştırmak için **JSON moduna geç** ' i seçin (!["JSON moduna geç" ' i seçin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
+   * Tam bir JSON nesnesini yapıştırmak **için JSON Moduna Geç** 'i seçin (!["JSON Moduna Geç"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)seçeneğini belirleyin:
 
-     ![Tüm nesne için "JSON moduna geç" i seçin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+     ![Tam nesne için "JSON Moduna Geç" seçeneğini belirleyin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
-   * Yalnızca bir JSON bölümünü yapıştırmak için bu bölümün etiketinin yanındaki bu bölüm için **JSON moduna geç** ' i seçin, örneğin:
+   * Bu bölümün etiketinin yanındaki sadece bir JSON bölümünü yapıştırmak için, örneğin, bu bölüm için **JSON Moduna Geç'i** seçin:
 
-     ![Çıktılar için "JSON moduna geç" seçeneğini belirleyin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+     ![Çıktılar için "JSON Moduna Geç" seçeneğini belirleyin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
 
-1. JSON düzenleyicisinde, daha önce kopyalanmış JSON dosyanızı yapıştırın.
+1. JSON editöründe, daha önce kopyalanmış JSON'unuzu yapıştırın.
 
    ![JSON modu](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. İşiniz bittiğinde **Bitti**'yi seçin. Ya da tasarımcıya dönmek için **Düzenleyici modunu değiştir** ' i (!["Düzenleyici modunu değiştir"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) seçin.
+1. İşiniz bittiğinde **Bitti**'yi seçin. Veya tasarımcıya dönmek için **Düzenleyici Modunu Değiştir** 'i seçin (!["Düzenleyici Modunu Değiştir"i](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)seçin.
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>Statik sonuçlar kullanan çalıştırmaları bulun
+## <a name="find-runs-that-use-static-results"></a>Statik sonuçlar kullanan çalıştırmaları bulma
 
-Mantıksal uygulamanızın çalışma geçmişi, eylemlerin statik sonuçlar kullanacağı çalıştırmaları tanımlar. Bu çalışmaları bulmak için şu adımları izleyin:
+Mantık uygulamanızın çalışma geçmişi, eylemlerin statik sonuçları kullandığı çalıştırmaları tanımlar. Bu çalıştırmaları bulmak için aşağıdaki adımları izleyin:
 
-1. Mantıksal uygulamanızın ana menüsünde **genel bakış**' ı seçin. 
+1. Mantık uygulamanızın ana menüsünde **Genel Bakış'ı**seçin. 
 
-1. Sağ bölmede, **çalışma geçmişi**altında, **statik sonuçlar** sütununu bulun. 
+1. Sağ bölmede, **Çalışır geçmişi**altında, **Statik Sonuçlar** sütununa bulabilirsiniz. 
 
-   Sonuçları olan eylemleri içeren herhangi bir çalışan, **statik sonuçlar** sütununun **etkin**olarak ayarlanmış olduğunu, örneğin:
+   Sonuçlarla eylemleri içeren herhangi bir çalıştırma, Statik **Sonuçlar** sütununa **Etkin**olarak ayarlanmış ,örneğin:
 
-   ![Çalışma geçmişi-statik sonuçlar sütunu](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   ![Çalışma geçmişi - statik sonuçlar sütunu](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. Statik sonuçlar kullanan eylemleri görüntülemek için, **statik sonuçlar** sütununun **etkin**olarak ayarlandığı, istediğiniz çalıştırmayı seçin.
+1. Statik sonuçları kullanan eylemleri görüntülemek için Statik **Sonuçlar** sütununun **Etkin**olarak ayarlandığı çalıştır'ı seçin.
 
-   Statik sonuçlar kullanan eylemler, test Beaker (statik sonuçlar için![simgesi](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) simgesini gösterir, örneğin:
+   Statik sonuçları kullanan eylemler, örneğin test![kabını](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)(statik sonuçlar için simge) simgesini gösterir:
 
-   ![Çalıştırma geçmişi-statik sonuçlar kullanan eylemler](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   ![Geçmiş çalıştırma - statik sonuçlar kullanan eylemler](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
-## <a name="disable-static-results"></a>Statik sonuçları devre dışı bırak
+## <a name="disable-static-results"></a>Statik sonuçları devre dışı
 
-Statik sonuçları kapatmak, son kurulumdan değerleri oluşturmaz. Bu nedenle, bir sonraki sefer statik sonuçları açtığınızda önceki değerlerinizi kullanmaya devam edebilirsiniz.
+Statik sonuçları kapatmak, son kurulumunuzdaki değerleri atmaz. Bu nedenle, statik sonuçları bir dahaki sefere açtığınızda, önceki değerlerinizi kullanmaya devam edebilirsiniz.
 
-1. Statik çıkışları devre dışı bırakmak istediğiniz eylemi bulun. Eylemin sağ üst köşesinde, test Beaker simgesini seçin (statik sonuçlar için![simgesini](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
+1. Statik çıktıları devre dışı kakmak istediğiniz eylemi bulun. Eylemin sağ üst köşesinde, test beher simgesini seçin![( Statik](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)sonuçlar için simge).
 
-   ![Statik sonuçları devre dışı bırak](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![Statik sonuçları devre dışı](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. **Statik sonucu devre dışı bırak** > **bitti**' yi seçin.
+1. Statik Sonucu > **Devre Dışı Devre Tonu'nun 'u**seçin. **Disable Static Result**
 
-   ![Statik sonuçları devre dışı bırak](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![Statik sonuçları devre dışı](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>Başvuru
 
-Temel alınan iş akışı tanımlarınızda Bu ayar hakkında daha fazla bilgi için bkz. [statik sonuçlar-Iş akışı tanımlama dili ve Runtimeconfiguration Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) [. Staticresult-çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
+Temel iş akışı tanımlarınızda bu ayar hakkında daha fazla bilgi için statik [sonuçlar - İş Akışı Tanımı Dili için Şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) ve [runtimeConfiguration.staticResult - Runtime yapılandırma ayarlarına](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Logic Apps](../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin
+* [Azure Mantık Uygulamaları](../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin

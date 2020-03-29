@@ -1,57 +1,57 @@
 ---
-title: FabricTransport ayarlarını değiştir
-description: Farklı aktör yapılandırmalarına yönelik Azure Service Fabric aktör iletişim ayarlarını yapılandırma hakkında bilgi edinin.
+title: FabricTransport ayarlarını değiştirme
+description: Azure Service Fabric aktör iletişim ayarlarını farklı aktör yapılandırmaları için yapılandırma hakkında bilgi edinin.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645591"
 ---
-# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors için FabricTransport ayarlarını yapılandırma
+# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Güvenilir Aktörler için FabricTransport ayarlarını yapılandırın
 
 Yapılandırabileceğiniz ayarlar şunlardır:
-- C#: [Fabrictransportremotingsettings](
+- C#: [FabricTransportRemotingAyarlar](
 https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java: [Fabrictransportremotingsettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java: [FabricTransportRemotingAyarlar](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
-FabricTransport varsayılan yapılandırmasını aşağıdaki yollarla değiştirebilirsiniz.
+FabricTransport'un varsayılan yapılandırmasını aşağıdaki yollarla değiştirebilirsiniz.
 
-## <a name="assembly-attribute"></a>Derleme özniteliği
+## <a name="assembly-attribute"></a>Montaj özniteliği
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) özniteliğinin aktör istemci ve aktör hizmeti derlemelerine uygulanması gerekir.
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) özniteliği aktör istemci ve aktör hizmet meclisleri üzerinde uygulanması gerekir.
 
-Aşağıdaki örnekte, FabricTransport OperationTimeout ayarlarının varsayılan değerinin nasıl değiştirileceği gösterilmektedir:
+Aşağıdaki örnek, FabricTransport OperationTimeout ayarlarının varsayılan değerinin nasıl değiştirilebildiğini gösterir:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
     [assembly:FabricTransportActorRemotingProvider(OperationTimeoutInSeconds = 600)]
    ```
 
-   İkinci örnek, FabricTransport MaxMessageSize ve Operationtimeoutınseconds varsayılan değerlerini değiştirir.
+   İkinci örnek, FabricTransport MaxMessageSize ve OperationTimeoutInSeconds varsayılan değerlerini değiştirir.
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
     [assembly:FabricTransportActorRemotingProvider(OperationTimeoutInSeconds = 600,MaxMessageSize = 134217728)]
    ```
 
-## <a name="config-package"></a>Yapılandırma paketi
+## <a name="config-package"></a>Config paketi
 
-Varsayılan yapılandırmayı değiştirmek için bir [yapılandırma paketi](service-fabric-application-and-service-manifests.md) kullanabilirsiniz.
+Varsayılan yapılandırmayı değiştirmek için [bir config paketi](service-fabric-application-and-service-manifests.md) kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Linux düğümlerinde, sertifikaların ped biçimli olması gerekir. Linux için sertifikaları bulma ve yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Linux 'ta sertifikaları yapılandırma](./service-fabric-configure-certificates-linux.md). 
+> Linux düğümlerinde sertifikalar PEM biçimlendirilmiş olmalıdır. Linux için sertifikaları bulma ve yapılandırma hakkında daha fazla bilgi edinmek için [bkz.](./service-fabric-configure-certificates-linux.md) 
 > 
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Aktör hizmeti için FabricTransport ayarlarını yapılandırma
+### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Aktör hizmeti için FabricTransport ayarlarını yapılandırın
 
-Settings. xml dosyasına bir TransportSettings bölümü ekleyin.
+settings.xml dosyasına TransportSettings bölümü ekleyin.
 
-Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettings" olarak arar. Bu bulunamazsa, SectionName 'i "TransportSettings" olarak denetler.
+Varsayılan olarak, aktör kodu SectionName'i&gt;"ActorName&lt;TransportSettings" olarak arar. Bu bulunmazsa, SectionName'i "TransportSettings" olarak denetler.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -68,9 +68,9 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettin
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Aktör istemci derlemesi için FabricTransport ayarlarını yapılandırma
+### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Aktör istemci derlemesi için FabricTransport ayarlarını yapılandırın
 
-İstemci bir hizmetin parçası olarak çalışmıyorsa, Client. exe dosyası ile aynı konumda bir "&lt;Client exe name&gt;. Settings. xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
+İstemci bir hizmetin parçası olarak çalışmıyorsa,&lt;istemci .exe dosyasıyla aynı konumda "Client Exe Name&gt;.settings.xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -90,9 +90,9 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettin
   </Settings>
    ```
 
-* Ikincil sertifikayla güvenli aktör hizmeti/Istemcisi için FabricTransport ayarları yapılandırılıyor.
-  İkinci sertifika bilgileri, CertificateFindValuebySecondary parametresi eklenerek eklenebilir.
-  Dinleyici TransportSettings için örnek aşağıda verilmiştir.
+* İkincil Sertifika ile Güvenli Aktör Hizmeti/İstemci için FabricTransport Ayarlarını Yapılandırma.
+  İkincil sertifika bilgileri parametre CertificateFindValuebySecondary ekleyerek eklenebilir.
+  Aşağıda Dinleyici Taşıma Ayarları için örnek verilmiştir.
 
   ```xml
   <Section Name="TransportSettings">
@@ -106,7 +106,7 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettin
   <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
   </Section>
    ```
-   Aşağıda, Istemci TransportSettings için örnek verilmiştir.
+   Aşağıda İstemci Taşıma Ayarları için örnek verilmiştir.
 
   ```xml
   <Section Name="TransportSettings">
@@ -120,9 +120,9 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettin
   <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
   </Section>
    ```
-  * Aktör hizmeti/Istemcisinin konu adını kullanarak güvenliğini sağlamak için FabricTransport ayarlarını yapılandırma.
-    Kullanıcının FindBySubjectName olarak findType sağlaması, Certificateıssuerthumbbaskılar ve CertificateRemoteCommonNames değerlerini eklemesi gerekir.
-    Dinleyici TransportSettings için örnek aşağıda verilmiştir.
+  * Konu Adı Kullanarak Aktör Hizmetini/İstemciyi Güvence Altına Almak için FabricTransport Ayarlarını Yapılandırma.
+    Kullanıcı findBySubjectName olarak findType sağlamak için, SertifikaIssuerThumbprints ve SertifikaRemoteCommonNames değerleri ekleyin.
+    Aşağıda Dinleyici Taşıma Ayarları için örnek verilmiştir.
 
     ```xml
     <Section Name="TransportSettings">
@@ -136,7 +136,7 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettin
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-    Aşağıda, Istemci TransportSettings için örnek verilmiştir.
+    Aşağıda İstemci Taşıma Ayarları için örnek verilmiştir.
 
   ```xml
    <Section Name="TransportSettings">

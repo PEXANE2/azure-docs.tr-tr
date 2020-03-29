@@ -1,6 +1,6 @@
 ---
-title: 264 Çoklu bit hızı 4K ses 5.1 | Microsoft Docs
-description: Konusuna genel bir fikir veren **264 Çoklu bit hızı 4K ses 5.1** görev hazır.
+title: 264 Çoklu Bitrate 4K Ses 5.1 | Microsoft Dokümanlar
+description: Konu, **264 Çoklu Bitrate 4K Audio 5.1** görev ön kümesine genel bir bakış sağlar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463693"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
-`Media Encoder Standard` kodlama işi oluştururken kullanabileceğiniz hazır kodlama kümesi tanımlar. Kullanabilir bir `preset name` hangi biçimine medya dosyanızı kodlamak istediğiniz belirtmek için. Veya kendi JSON veya XML tabanlı hazır (UTF-8 veya UTF-16 kodlamasını kullanıyor. oluşturabilirsiniz Ardından kodlayıcıya hazır özel geçirmeniz gerekir. Bu tarafından desteklenen tüm hazır adlarının listesi için `Media Encoder Standard` Kodlayıcı bkz [Media Encoder Standard için görev ön ayarları](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama ön ayarları kümesini tanımlar. A'yı, `preset name` medya dosyanızı kodlamak istediğiniz biçimi belirtmek için de kullanabilirsiniz. Veya kendi JSON veya XML tabanlı hazır ayarlarınızı (UTF-8 veya UTF-16 kodlaması kullanarak) oluşturabilirsiniz. Daha sonra özel ön ayarını kodlayıcıya geçirirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi [için, Ortam Kodlayıcı Standardı için Görev Hazır Ayarları'na](media-services-mes-presets-overview.md)bakın.  
   
- Bu konu başlığı altında gösterilir `H264 Multiple Bitrate 4K Audio 5.1` XML ve JSON biçiminde hazır.  
+ Bu `H264 Multiple Bitrate 4K Audio 5.1` konu, XML ve JSON biçiminde önceden ayarlanmışı gösterir.  
   
- Bu önceden ayarlanmış 20000 kbps ila 1000 KB/sn ve AAC 5.1 ses arasında değişen 12 GOP hizalı MP4 dosyaları kümesini oluşturur. Profili hakkında ayrıntılı bilgi için örnekleme hızını, vb. Bu bit hızı, hazır, XML veya JSON aşağıda tanımlanan inceleyin. Her öğeye anlamına gelir ve geçerli değerlerini her öğe için açıklamalar için bkz [Media Encoder Standard şeması](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Premium ayrılmış birim almalısınız 4K türüyle kodlar. Daha fazla bilgi için [ölçek kodlama nasıl](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Bu ön ayar, 20000 kbps ile 1000 kbps arasında değişen 12 GOP uyumlu MP4 dosyası ve AAC 5.1 ses kümesi üretir. Bu önceden ayarlanmış profil, bitrate, örnekleme hızı vb. hakkında ayrıntılı bilgi için aşağıda tanımlanan XML veya JSON'u inceleyin. Her öğenin ne anlama geldiğini ve her öğe için geçerli değerleri açıklamaları için [Ortam Kodlayıcı Standart şemasına](media-services-mes-schema.md)bakın.  
   
 > [!NOTE]
->  Değiştirirken `Width` ve `Height` katmanları arasında değerleri en boy oranını tutarlı kalmasından emin olun. Örneğin: 1920 x 1080, 1280 x 720, 1080 x 576 640 x 360. En boy oranlarına bir karışımını gibi kullanmamalısınız: 1280 x 720, 720 x 480, 640 x 360.  
+>  4K kodları ile Premium ayrılmış birim türünü almalısınız. Daha fazla bilgi [için, Kodlamayı Ölçeklendirme ye bakın.](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)  
+  
+> [!NOTE]
+>  Katmanlar arasında `Width` `Height` ve değerleri değiştirirken, en boy oranının tutarlı kaldığından emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640x360. 1280x720, 720x480, 640x360 gibi en boy oranlarının bir karışımını kullanmamalısınız.  
   
  XML  
   

@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu Edge Cihazınızı izleyin | Microsoft Docs
-description: Azure veri kutusu Ucunuzdaki izlemek için yerel web kullanıcı Arabirimi ve Azure portalını kullanmayı açıklar.
+title: Azure Veri Kutusu Kenar ı aygıtınızı izleyin | Microsoft Dokümanlar
+description: Azure Veri Kutusu Kenarınızı izlemek için Azure portalının ve yerel web Kullanıcı Arabirimi'nin nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756751"
 ---
-# <a name="monitor-your-azure-data-box-edge"></a>Azure veri kutusu Ucunuzdaki izleme
+# <a name="monitor-your-azure-data-box-edge"></a>Azure Veri Kutusu Kenarınızı İzleyin
 
-Bu makalede, Azure veri kutusu Edge izlemeyi öğrenin. Cihazınızı izlemek için Azure portalı veya yerel web kullanıcı Arabirimi kullanabilirsiniz. Cihaz olaylarını görüntülemek, yapılandırmak ve Uyarıları yönetme ve ölçümleri görüntülemek için Azure portalını kullanın. Yerel web kullanıcı Arabirimi, fiziksel cihazınızın çeşitli cihaz bileşenleri donanım durumunu görüntülemek için kullanın.
+Bu makalede, Azure Veri Kutusu Kenarınızın nasıl izlendiği açıklanmaktadır. Cihazınızı izlemek için Azure portalını veya yerel web kullanıcı arabirimi'ni kullanabilirsiniz. Aygıt olaylarını görüntülemek, uyarıları yapılandırmak ve yönetmek ve ölçümleri görüntülemek için Azure portalını kullanın. Çeşitli aygıt bileşenlerinin donanım durumunu görüntülemek için fiziksel aygıtınızdaki yerel web ui'sini kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Cihaz olayları ve karşılık gelen Uyarıları görüntüle
-> * Cihaz bileşenlerinin donanım durumunu görüntüleme
-> * Cihazınız için kapasite ve işlem ölçümlerini görüntüleme
-> * Yapılandırma ve Uyarıları yönetme
+> * Aygıt olaylarını ve ilgili uyarıları görüntüleme
+> * Aygıt bileşenlerinin donanım durumunu görüntüleme
+> * Cihazınızın kapasite ve işlem ölçümlerini görüntüleme
+> * Uyarıları yapılandırma ve yönetme
 
-## <a name="view-device-events"></a>Cihaz olaylarını görüntüle
+## <a name="view-device-events"></a>Cihaz olaylarını görüntüleme
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-device-events.md)]
 
 ## <a name="view-hardware-status"></a>Donanım durumunu görüntüleme
 
-Yerel web UI cihaz bileşenlerinizi donanım durumunu görüntülemek için aşağıdaki adımları uygulayın.
+Aygıt bileşenlerinizin donanım durumunu görüntülemek için yerel web UI'de aşağıdaki adımları izleyin.
 
-1. Yerel web kullanıcı Arabirimine cihazınızın bağlanın.
-2. Git **Bakım > donanım durumunu**. Çeşitli cihaz bileşenlerinin durumunu görüntüleyebilirsiniz.
+1. Cihazınızın yerel web ui'sine bağlanın.
+2. Bakım **> Donanım durumuna**gidin. Çeşitli aygıt bileşenlerinin durumunu görüntüleyebilirsiniz.
 
     ![Donanım durumunu görüntüleme](media/data-box-edge-monitor/view-hardware-status.png)
 

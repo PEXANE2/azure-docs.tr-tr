@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi yedekleme kopyalama | Microsoft Docs
-description: Bir yedek kopya ve dosya kurtarma, StorSimple sanal dizisi hakkında bilgi edinin.
+title: StorSimple Virtual Array yedeklemesini klonlayın | Microsoft Dokümanlar
+description: Bir yedeklemeyi nasıl klonlayacağını ve StorSimple Virtual Array' inizden bir dosyayi kurtarmayı öğrenin.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,127 +15,127 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580937"
 ---
-# <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array'iniz yedekten kopyalama
+# <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array'inizin bir yedeğinden klonlama
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, bir yedekleme kümesi paylaşımları veya Microsoft Azure StorSimple Virtual Array'iniz birimlerde kopyalamak nasıl adım adım açıklanır. Kopyalanan yedekleme silinmiş veya kayıp bir dosyayı kurtarmak için kullanılır. Bu makalede, StorSimple sanal bir dosya sunucusu olarak yapılandırılmış dizi öğe düzeyinde kurtarma gerçekleştirmek için ayrıntılı adımları da içerir.
+Bu makalede, Microsoft Azure StorBasit Sanal Dizinizde paylaşımlarınızın veya birimlerinizin yedek kümesinin nasıl klonlanması adım adım açıklanmaktadır. Klonlanmış yedekleme, silinmiş veya kaybolan bir dosyayı kurtarmak için kullanılır. Makale ayrıca, dosya sunucusu olarak yapılandırılan StorSimple Virtual Array'inizde öğe düzeyinde kurtarma gerçekleştirmek için ayrıntılı adımlar da içerir.
 
-## <a name="clone-shares-from-a-backup-set"></a>Bir yedekleme kümesinden kopya paylaşımları
+## <a name="clone-shares-from-a-backup-set"></a>Yedekleme kümesinde kopya paylaşımları
 
-**Paylaşımları kopyalamak denemeden önce bu işlemi tamamlamak için cihazda yeterli alan olduğundan emin olun.** İçinde bir yedek kopyadan kopyalamak için [Azure portalında](https://portal.azure.com/), aşağıdaki adımları gerçekleştirin.
+**Paylaşımları klonlamaya çalışmadan önce, bu işlemi tamamlamak için aygıtta yeterli alana sahip olduğundan emin olun.** [Azure portalında](https://portal.azure.com/)bir yedeklemeden klonlamak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-clone-a-share"></a>Bir paylaşımı kopyalamak için
+#### <a name="to-clone-a-share"></a>Bir payı klonlamak için
 
-1. Gözat **cihazları** dikey penceresi. Seçin ve Cihazınızı tıklayın ve ardından **paylaşımları**. Kopyalamak için bağlam menüsünü açmak için paylaşıma sağ tıklayın, istediğiniz paylaşımı seçin. Seçin **kopya**.
+1. **Cihazlar** a.ş.'ye göz atın. Cihazınızı seçin ve tıklatın ve sonra **Paylaşımlar'ı**tıklatın. Klonlamak istediğiniz paylaşımı seçin, bağlam menüsünü çağırmak için paylaşıma sağ tıklayın. **Klon'u**seçin.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/cloneshare1.png)
-2. İçinde **kopya** dikey penceresinde tıklayın **yedekleme > seçin** ve ardından aşağıdakileri yapın: 
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/cloneshare1.png)
+2. **Klon** **bıçağında, Yedekleme > Seçin'i** tıklatın ve ardından aşağıdakileri yapın: 
    
-   a.    Zaman aralığı tabanlı bu cihaz üzerinde bir yedek filtreleyin. Aralarından seçim yapabileceğiniz **son 7 gün**, **son 30 gündeki**, ve **son yıl**.
+   a.    Bu aygıttaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son 7 **gün, Son** **30 gün**ve Geçmiş **yıl**arasından seçim yapabilirsiniz.
    
-   b.    Filtrelenmiş yedeklemeleri görüntülenen listede kopyalama yapılacak bir yedekleme seçin.
+   b.    Görüntülenen filtre uygulanmış yedeklemeler listesinde, klonlamak için bir yedekleme seçin.
    
-   c.    **Tamam**'ı tıklatın.
+   c.    **Tamam**'a tıklayın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/cloneshare3.png)
-3. İçinde **kopya** dikey penceresinde tıklayın **hedef ayarları** ve ardından aşağıdakileri yapın:
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/cloneshare3.png)
+3. **Klon** bıçağında Hedef **ayarları'nı** tıklatın ve ardından aşağıdakileri yapın:
    
-   a.    Bir paylaşım adı belirtin. Paylaşım adı 3-127 karakter içermelidir.
+   a.    Bir paylaşım adı sağlayın. Paylaşım adı 3-127 karakter içermelidir.
    
-   b.    İsteğe bağlı olarak kopyalanan paylaşım için bir açıklama sağlayın.
+   b.    İsteğe bağlı olarak klonlanan pay için bir açıklama sağlayın.
    
-   c.    Geri yüklediğiniz paylaşım türünü değiştiremezsiniz. Katmanlı bir paylaşım, bir katmanlı ve yerel olarak sabitlenmiş bir yerel olarak sabitlenmiş paylaşımı kopyalanmış olan.
+   c.    Geri aldığınız payın türünü değiştiremezsiniz. Katmanlı bir pay katmanlı olarak klonlanır ve yerel olarak sabitlenmiş bir pay yerel olarak sabitlenir.
    
-   d.    Kapasite kopyalama paylaşımın boyutuna eşit olarak ayarlanır.
+   d.    Kapasite, klonlamakta olduğunuz payın boyutuna eşit olarak ayarlanır.
    
-   e.    Bu paylaşım için Yöneticiler atayın. Kopyalama tamamlandıktan sonra dosya Gezgini aracılığıyla paylaşım özelliklerini değiştirmek mümkün olacaktır.
+   e.    Bu paylaşım için yöneticileri atayın. Klon tamamlandıktan sonra Dosya Gezgini aracılığıyla paylaşım özelliklerini değiştirebilirsiniz.
    
-   f.    **Tamam**'ı tıklatın.
+   f.    **Tamam**'a tıklayın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
-4. Tıklayın **kopya** bir kopyalama işi başlatılamadı. İş tamamlandıktan sonra kopyalama işlemi başlar ve size bildirilir. Kopya ilerlemesini izlemek için Git **işleri** dikey penceresini ve iş ayrıntılarını görüntülemek için iş'e tıklayın.
-5. Kopyalama başarıyla oluşturulduktan sonra geri gidin **paylaşımları** Cihazınızda dikey.
-6. Artık Cihazınızda paylaşımlarını listesinde yeni kopyalanan paylaşım görüntüleyebilirsiniz. Katmanlı bir paylaşım katmanlı olarak kopyalanan ve yerel olarak sabitlenmiş bir paylaşım olarak yerel olarak sabitlenmiş bir paylaşımı.
+4. Klon işi başlatmak için **Clone'u** tıklatın. İş tamamlandıktan sonra klon işlemi başlar ve size bildirilir. Klonlamanın ilerlemesini izlemek için **İşler** bıçağına gidin ve iş ayrıntılarını görüntülemek için işi tıklatın.
+5. Klon başarıyla oluşturulduktan sonra cihazınızdaki **Paylaşımlar** bıçağına geri gidin.
+6. Artık cihazınızdaki paylaşımlar listesinde ki yeni klonlanmış payı görüntüleyebilirsiniz. Katmanlı bir pay katmanlı olarak klonlanır ve yerel olarak sabitlenmiş bir pay yerel olarak sabitlenmiş bir pay olarak.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
-## <a name="clone-volumes-from-a-backup-set"></a>Bir yedekleme kümesi birimlerden kopyalama
+## <a name="clone-volumes-from-a-backup-set"></a>Yedekleme kümesinden kopya birimleri
 
-Azure portalında bir yedeği kopyalamak için bir paylaşım kopyalarken ayarlara benzer adımları yapmanız gerekir. Kopyalama işlemi, aynı sanal cihazda yeni bir birime yedekleme klonlar; farklı bir cihaza kopyalanamıyor.
+Azure portalında bir yedeklemeden klonlamak için, bir paylaşımı klonlarken kine benzer adımlar gerçekleştirmeniz gerekir. Klon işlemi, yedeklemeyi aynı sanal aygıtta yeni bir ses düzeyine klonlar; farklı bir aygıta klonlayamazsınız.
 
-#### <a name="to-clone-a-volume"></a>Bir birimi kopyalama
+#### <a name="to-clone-a-volume"></a>Bir birimi klonlamak için
 
-1. Gözat **cihazları** dikey penceresi. Seçin ve Cihazınızı tıklayın ve ardından **birimleri**. Bağlam menüsünü açmak için birime sağ tıklayın, kopyalamak istediğiniz bir birimi seçin. Seçin **kopya**.
+1. **Cihazlar** a.ş.'ye göz atın. Cihazınızı seçin ve tıklatın ve sonra **Birimler'i**tıklatın. Klonlamak istediğiniz birimi seçin, bağlam menüsünü çağırmak için birimi sağ tıklatın. **Klon'u**seçin.
    
    ![Bir birimi kopyalama](./media/storsimple-virtual-array-clone/clonevolume1.png)
-2. İçinde **kopya** dikey penceresinde tıklayın **yedekleme** ve ardından aşağıdakileri yapın: 
+2. **Klon** bıçağında **Yedekleme'yi** tıklatın ve ardından aşağıdakileri yapın: 
    
-   a.    Zaman aralığı tabanlı bu cihaz üzerinde bir yedek filtreleyin. Aralarından seçim yapabileceğiniz **son 7 gün**, **son 30 gündeki**, ve **son yıl**. 
+   a.    Bu aygıttaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son 7 **gün, Son** **30 gün**ve Geçmiş **yıl**arasından seçim yapabilirsiniz. 
    
-   b.    Filtrelenmiş yedeklemeleri görüntülenen listede kopyalama yapılacak bir yedekleme seçin.
+   b.    Görüntülenen filtre uygulanmış yedeklemeler listesinde, klonlamak için bir yedekleme seçin.
    
-   c.    **Tamam**'ı tıklatın.
+   c.    **Tamam**'a tıklayın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/clonevolume3.png)
-3. İçinde **kopya** dikey penceresinde tıklayın **hedef birim ayarları** ve ardından aşağıdakileri yapın::
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/clonevolume3.png)
+3. **Klon** bıçağında, **Hedef ses ayarlarını** tıklatın ve ardından aşağıdakileri yapın:
    
-   a. Cihaz adını otomatik olarak doldurulur.
+   a. Aygıt adı otomatik olarak doldurulur.
    
-   b. Bir birim adı için sağlamak **birim kopyalanan**. Birim adı 3 ile 127 karakter içermelidir.
+   b. **Klonlanan birim**için bir birim adı sağlayın. Birim adı 3 ila 127 karakter içermelidir.
    
-   c. Birim türünü, özgün birimin otomatik olarak ayarlanır. Katmanlı birim katmanlı olarak kopyalanan ve yerel olarak sabitlenmiş bir birim olarak yerel olarak sabitlenmiş.
+   c. Birim türü otomatik olarak özgün ses birimine ayarlanır. Katmanlı bir birim katmanlı olarak klonlanır ve yerel olarak sabitlenmiş bir birim yerel olarak sabitlenir.
    
-   d. İçin **bağlı Konaklar**, tıklayın **seçin**.
+   d. Bağlı **ana bilgisayarlar**için **Seç'i**tıklatın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. İçinde **bağlı Konaklar** dikey penceresinde mevcut bir ACR'yi seçin veya yeni ACR ekleyin. Yeni ACR eklemek için bir ACR adı ve konak IQN sağlamanız gerekir. **Seç**'e tıklayın.
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/clonevolume4.png)
+4. Bağlı **ana bilgisayar** bıçaklarında, varolan bir ACR'den seçim seçin veya yeni bir ACR ekleyin. Yeni bir ACR eklemek için bir ACR adı ve ana bilgisayar IQN sağlamanız gerekir. **Seç'i**tıklatın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/clonevolume5.png)
-5. Tıklayın **kopya** bir kopyalama işi başlatmak için.
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/clonevolume5.png)
+5. Klon işi başlatmak için **Clone'u** tıklatın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/clonevolume6.png)  
-6. Kopyalama, kopyalama işiniz oluşturulduktan sonra başlar. Kopya oluşturulduktan sonra Cihazınızda birimleri dikey penceresinde görüntülenir. Katmanlı birim katmanlı olarak kopyalanan ve yerel olarak sabitlenmiş bir birim, yerel olarak sabitlenmiş bir birim kopyalanmış unutmayın.
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+6. Klon işi oluşturulduktan sonra klonlama başlar. Klon oluşturulduktan sonra cihazınızdaki Volumes bıçağında görüntülenir. Katmanlı bir birimin katmanlı olarak klonlanmış olduğunu ve yerel olarak sabitlenmiş bir birimin yerel olarak sabitlenmiş bir birim olarak klonlanmış olduğunu unutmayın.
    
-   ![Bir yedekleme kopyalama](./media/storsimple-virtual-array-clone/clonevolume8.png)
-7. Birimin çevrimiçi birimler listesinde göründükten sonra kullanılabilir bir birimdir. İSCSI Başlatıcı konakta iSCSI Başlatıcı Özellikleri penceresinde hedeflerin listesini yenileyin. Kopyalanan birim adını içeren yeni bir hedef 'olarak durum sütununun altında inactive' görüntülenmesi gerekir.
-8. Hedef seçin ve tıklayın **Connect**. Durumu değiştirmek başlatıcının hedef bağlandıktan sonra **bağlı**.
-9. İçinde **Disk Yönetimi** penceresinde bağlı birimleri görünür aşağıdaki çizimde gösterildiği gibi. Bulunan birime sağ tıklayın (disk adına tıklayın) ve ardından **Çevrimiçi**’ne tıklayın.
+   ![Yedekleme yi klonlama](./media/storsimple-virtual-array-clone/clonevolume8.png)
+7. Birim, birimler listesinde çevrimiçi olarak göründüğünde, birim kullanılabilir. iSCSI başlatıcısı ana bilgisayarda, iSCSI başlatıcı özellikleri penceresindeki hedeflerin listesini yenileyin. Klonlanmış birim adını içeren yeni bir hedef, durum sütununun altında 'etkin olmayan' olarak görünmelidir.
+8. Hedefi seçin ve **Bağlan'ı**tıklatın. Başlatıcı hedefe bağlandıktan sonra durum **Bağlı**olarak değiştirilmelidir.
+9. Disk **Yönetimi** penceresinde, monte edilen birimler aşağıdaki resimde gösterildiği gibi görünür. Bulunan birime sağ tıklayın (disk adına tıklayın) ve ardından **Çevrimiçi**’ne tıklayın.
 
 > [!IMPORTANT]
-> Zaman birimi veya paylaşımı bir yedekleme kümesinden kopyalamak kopyalama işi başarısız olursa çalışırken, bir hedef birimi veya paylaşım hala portalda oluşturulabilir. Bu hedef birimde veya bu öğeden doğan gelecekteki sorunları en aza indirmek için portaldaki paylaşıma önemlidir.
+> Bir yedekleme kümesinden bir birim veya paylaşım klonlamaya çalışırken, klon işi başarısız olursa, portalda bir hedef birim veya paylaşım oluşturulabilir. Bu öğeden kaynaklanan gelecekteki sorunları en aza indirmek için bu hedef hacmi ni silmeniz veya portaldaki paylaşımınız önemlidir.
 > 
 > 
 
-## <a name="item-level-recovery-ilr"></a>Öğe düzeyinde kurtarmayı (ILR)
+## <a name="item-level-recovery-ilr"></a>Öğe düzeyinde kurtarma (ILR)
 
-Bu sürüm, StorSimple sanal bir dosya sunucusu olarak yapılandırılmış dizi öğe düzeyinde kurtarmayı (ILR) sunar. Özellik StorSimple cihazında tüm paylaşımlar bulut yedeğinden dosya ve klasörlerin parçalı kurtarma gerçekleştirmenize izin verir. Bir Self Servis modeli kullanarak son yedeklerden silinen dosyaları geri alabilirsiniz.
+Bu sürüm, dosya sunucusu olarak yapılandırılan StorSimple Virtual Array'de madde düzeyinde kurtarma (ILR) sunar. Bu özellik, StorSimple aygıtındaki tüm paylaşımların bulut yedeklemesinden dosya ve klasörlerin parçalı kurtarmasını yapmanızı sağlar. Self servis bir model kullanarak son yedeklemelerden silinen dosyaları alabilirsiniz.
 
-Her paylaşımına sahip bir *.backups* en son yedeklemelerin içeren klasör. İstenen yedekleme gidin, ilgili dosyaları ve klasörleri yedekten kopyalayın ve bunları geri yükleyin. Bu özellik, yedeklerden dosyaları geri yüklemek için administrators çağrıları ortadan kaldırır.
+Her paylaşımda en son yedeklemeleri içeren bir *.backups* klasörü vardır. İstediğiniz yedeklemeye gidebilir, ilgili dosya ve klasörleri yedeklemeden kopyalayabilir ve geri yükleyebilirsiniz. Bu özellik, yöneticilerin dosyaları yedeklemelerden geri alma çağrılarını ortadan kaldırır.
 
-1. ILR gerçekleştirirken, dosya Gezgini yedeklemelerini görüntüleyebilirsiniz. Yedekleme için bakmak için istediğiniz belirli paylaşımına tıklayın. Göreceğiniz bir *.backups* oluşturulan tüm yedeklemeleri depolayan bir paylaşım kapsamında klasörü. Genişletin *.backups* yedekleri görüntülemek için klasör. Klasör tüm yedekleme hiyerarşi ayrılmış görünümünü gösterir. Bu görünüm, isteğe bağlı oluşturulan ve genellikle yalnızca birkaç oluşturmak için saniye sürer.
+1. ILR gerçekleştirirken, yedekleri Dosya Gezgini aracılığıyla görüntüleyebilirsiniz. Yedeklemeye bakmak istediğiniz belirli paylaşımı tıklatın. Tüm yedeklemeleri depolayan paylaşımın altında oluşturulan bir *.backups* klasörü görürsünüz. Yedekleri görüntülemek için *.backups* klasörünü genişletin. Klasör, tüm yedekleme hiyerarşisinin bdeki görünümünü gösterir. Bu görünüm isteğe bağlı olarak oluşturulur ve genellikle oluşturmak yalnızca birkaç saniye sürer.
    
-   Son beş yedeklemeler bu şekilde görüntülenir ve bir öğe düzeyinde kurtarma gerçekleştirmek için kullanılabilir. Beş son yedeklemelerin hem planlanmış varsayılan hem de el ile yedeklemeler içerir.
+   Son beş yedekleme bu şekilde görüntülenir ve madde düzeyinde bir kurtarma gerçekleştirmek için kullanılabilir. Son beş yedekleme, hem varsayılan zamanlanmış hem de el ile yedekleri içerir.
    
-   * **Zamanlanmış yedeklemeler** olarak adlı &lt;cihaz adı&gt;Longtermretentionpolicy YYYYMMDD SSDDSS UTC.
-   * **El ile yedeklemeler** Ad-özel-YYYYMMDD-SSDDSS-UTC adlandırılmış.
+   * Aygıt adı &lt;&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC olarak adlandırılan **zamanlanmış yedeklemeler.**
+   * Ad-hoc-YYYYMMDD-HHMMSS-UTC olarak adlandırılan **manuel yedeklemeler.**
      
      ![](./media/storsimple-virtual-array-clone/image14.png)
 
-2. Silinen dosyanın en son sürümünü içeren bir yedekleme belirleyin. Klasör adı önceki örneklerin her bir UTC zaman damgası içeriyor ancak, klasör oluşturulduğu zamanı, yedekleme başlatıldığında gerçek cihaz zamandır. Klasör zaman damgası bulun ve yedeklemeleri tanımlamak için kullanın.
+2. Silinen dosyanın en son sürümünü içeren yedeklemeyi tanımlayın. Klasör adı, önceki servis taleplerinin her birinde bir UTC zaman damgası içerse de, klasörün oluşturulduğu saat yedeklemenin başlatıldığu gerçek aygıt zamanıdır. Yedekleri bulmak ve tanımlamak için klasör zaman damgasını kullanın.
 
-3. Önceki adımda tanımladığınız yedeklemesine geri yüklemek istediğiniz dosyayı veya klasörü bulun. Not izinlerine sahip olduğunuz klasörleri ve dosyaları yalnızca görüntüleyebilir. Belirli dosyaları veya klasörleri erişemiyorsanız, bir paylaşım yöneticisine başvurun. Yönetici, paylaşım izinleri düzenleyebilir ve belirli dosya veya klasöre erişim vermek için dosya Gezgini'ni kullanabilirsiniz. Paylaşım yönetici bir kullanıcı grubu yerine tek bir kullanıcı olduğunu bir önerilen en iyi yöntemdir.
+3. Önceki adımda tanımladığınız yedeklemede geri yüklemek istediğiniz klasörü veya dosyayı bulun. Not, yalnızca izinli olduğunuz dosyaları veya klasörleri görüntüleyebilirsiniz. Belirli dosya veya klasörlere erişemiyorsanız, paylaşım yöneticisine başvurun. Yönetici, paylaşım izinlerini erişmek ve belirli bir dosya veya klasöre erişim sağlamak için Dosya Gezgini'ni kullanabilir. Paylaşım yöneticisinin tek bir kullanıcı yerine bir kullanıcı grubu olması önerilen en iyi uygulamadır.
 
-4. Dosya veya klasör uygun StorSimple dosya sunucusu paylaşımına kopyalayın.
+4. Dosyayı veya klasörü StorSimple dosya sunucunuzdaki uygun paylaşıma kopyalayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanma hakkında daha fazla bilgi edinin [StorSimple sanal yerel web UI aracılığıyla dizininiz yönetmek](storsimple-ova-web-ui-admin.md).
+[StorSimple Sanal Dizinizi yerel web Kullanıcı Birliğini kullanarak nasıl yöneteceğimiz](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.
 

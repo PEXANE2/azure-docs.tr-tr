@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge sınırları | Microsoft Docs
-description: Azure Data Box Edge için sistem sınırlarını ve önerilen boyutları açıklar.
+title: Azure Veri Kutusu Kenar sınırları | Microsoft Dokümanlar
+description: Azure Veri Kutusu Kenarı için sistem sınırlarını ve önerilen boyutları açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72244308"
 ---
-# <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge sınırları
+# <a name="azure-data-box-edge-limits"></a>Azure Veri Kutusu Kenar sınırları
 
-Microsoft Azure Data Box Edge çözümünüzü dağıtırken ve işletirken bu limitleri göz önünde bulundurun.
+Microsoft Azure Veri Kutusu Kenarı çözümünüzü dağıtırken ve çalıştırırken bu sınırları göz önünde bulundurun.
 
-## <a name="data-box-edge-service-limits"></a>Hizmet sınırlarını Data Box Edge
+## <a name="data-box-edge-service-limits"></a>Veri Kutusu Kenarı hizmet limitleri
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-edge-device-limits"></a>Cihaz sınırlarını Data Box Edge
+## <a name="data-box-edge-device-limits"></a>Veri Kutusu Kenarı cihaz sınırları
 
-Aşağıdaki tabloda Data Box Edge cihazının sınırları açıklanmaktadır.
+Aşağıdaki tabloda Veri Kutusu Kenarı aygıtının sınırları açıklanmaktadır.
 
 | Açıklama | Değer |
 |---|---|
-|Hayır. cihaz başına dosya |100.000.000 |
-|Hayır. cihaz başına paylaşım sayısı |24 |
-|Hayır. kapsayıcı başına paylaşım sayısı |1 |
+|Hayır. cihaz başına dosyaların |100 milyon |
+|Hayır. cihaz başına hisse |24 |
+|Hayır. konteyner başına hisse |1 |
 |Bir paylaşıma yazılan en büyük dosya boyutu| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure depolama sınırları
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Karşıya veri yükleme uyarıları
+## <a name="data-upload-caveats"></a>Veri yükleme uyarıları
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 

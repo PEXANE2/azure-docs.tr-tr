@@ -1,6 +1,6 @@
 ---
-title: Raspberry Pi C kullanarak Azure IOT hub'a bağlanma | Microsoft Docs
-description: Ayarlama ve Raspberry Pi Raspberry Pi, Azure bulut platformuna veri göndermek için Azure IOT hub'a bağlanma hakkında bilgi edinin
+title: Raspberry Pi'yi C kullanarak Azure IoT Hub'ına bağlayın | Microsoft Dokümanlar
+description: Azure bulut platformuna veri göndermek için Raspberry Pi'yi Azure IoT Hub'ına nasıl kurup bağlayabilirsiniz öğrenin
 author: wesmc7777
 ms.service: iot-hub
 services: iot-hub
@@ -9,190 +9,190 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67838769"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi için Azure IoT Hub (C) bağlanma
+# <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi'yi Azure IoT Hub'ına (C) bağlayın
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Bu öğreticide, Raspbian çalıştıran Raspberry Pi çalışmanın temel bilgileri öğrenerek başlayın. Daha sonra kullanarak cihazlarınızı buluta sorunsuz bir şekilde bağlanmak nasıl öğrenin [Azure IOT hub'ı](about-iot-hub.md). Windows 10 IoT Core örnekleri için Git [Windows Dev Center](https://www.windowsondevices.com/).
+Bu eğitimde, Raspbian çalışan Raspberry Pi ile çalışmanın temellerini öğrenerek başlar. Daha sonra [Azure IoT Hub'ını](about-iot-hub.md)kullanarak aygıtlarınızı buluta sorunsuz bir şekilde nasıl bağlayacaklarınız öğrenirsiniz. Windows 10 IoT Core örnekleri için [Windows Geliştirme Merkezi'ne](https://www.windowsondevices.com/)gidin.
 
-Bir paket henüz yok mu? Deneyin [Raspberry Pi çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md). Veya yeni bir paket satın [burada](https://azure.microsoft.com/develop/iot/starter-kits).
+Henüz bir çantan yok mu? [Raspberry Pi online simülatörü](iot-hub-raspberry-pi-web-simulator-get-started.md)deneyin. Ya da [burada](https://azure.microsoft.com/develop/iot/starter-kits)yeni bir kit satın alın.
 
-## <a name="what-you-do"></a>Neler
+## <a name="what-you-do"></a>Ne yaparsınız
 
-* IOT hub oluşturun.
+* Bir IoT hub'ı oluşturun.
 
-* Bir cihaz IOT hub'ına PI sayısı için kaydedin.
+* Pi için bir cihazı IoT hub'ınıza kaydedin.
 
-* Raspberry Pi ayarlayın.
+* Kurulum Raspberry Pi.
 
-* Pi sensör verilerini IOT hub'ınıza gönderilecek örnek uygulamayı çalıştırın.
+* Sensör verilerini IoT hub'ınıza göndermek için Pi'de örnek bir uygulama çalıştırın.
 
-Raspberry Pi'yi oluşturduğunuz IOT hub'a bağlayın. Ardından BME280 algılayıcıdan sıcaklık ve nem verileri toplamak için Pi üzerinde bir örnek uygulamayı çalıştırın. Son olarak, IOT hub'ınıza sensör verilerini gönderin.
+Raspberry Pi'yi oluşturduğunuz bir IoT hub'ına bağlayın. Daha sonra Bir BME280 sensöründen sıcaklık ve nem verilerini toplamak için Pi'de örnek bir uygulama çalıştırırsınız. Son olarak, sensör verilerini IoT hub'ınıza gönderirsiniz.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-* Azure IOT hub oluşturma ve yeni cihaz bağlantı dizesini almak nasıl.
+* Azure IoT hub'ı oluşturma ve yeni aygıt bağlantı dizenizi nasıl edinebilirsiniz?
 
-* Pi BME280 algılayıcısı ile bağlanma.
+* Pi'yi BME280 sensörüyle nasıl bağlayabilirsiniz?
 
-* Pi üzerinde bir örnek uygulamayı çalıştırarak algılayıcı verilerini toplamak nasıl.
+* Pi'de örnek bir uygulama çalıştırarak sensör verileri nasıl toplanır?
 
-* IOT hub'ınıza sensör verilerini gönderme işlemini.
+* Sensör verilerini IoT hub'ınıza nasıl gönderirim?
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
 ![Ne gerekiyor](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
-* Raspberry Pi 2 veya Raspberry Pi 3 Pano.
+* Raspberry Pi 2 veya Raspberry Pi 3 tahtası.
 
-* Etkin bir Azure aboneliği. Azure hesabınız yoksa, [ücretsiz Azure deneme hesabı oluşturma](https://azure.microsoft.com/free/) yalnızca birkaç dakika içinde.
+* Etkin bir Azure aboneliği. Azure hesabınız yoksa, birkaç dakika içinde [ücretsiz bir Azure deneme hesabı oluşturun.](https://azure.microsoft.com/free/)
 
-* Bir izleyici, bir USB klavye ve fare Pi bağlanan.
+* Pi'ye bağlanan bir monitör, USB klavye ve fare.
 
-* Bir Mac veya Windows veya Linux çalıştıran bir bilgisayar.
+* Windows veya Linux çalıştıran bir Mac veya bilgisayar.
 
-* Internet bağlantısı.
+* İnternet bağlantısı.
 
-* 16 GB veya üzeri microSD kartı.
+* 16 GB veya üzeri microSD kart.
 
-* İşletim sistemi görüntüsünü microSD kartı üzerine yazmak için bir USB SD bağdaştırıcı veya microSD kartı.
+* İşletim sistemi görüntüsünü microSD karta yakmak için bir USB-SD adaptörü veya microSD kart.
 
-* 5-volt 2 amp power 6 ft mikro USB kablosu ile sağlayın.
+* 6-ayak mikro USB kablosu ile 5 volt 2-amp güç kaynağı.
 
 Aşağıdaki öğeler isteğe bağlıdır:
 
-* Bir birleştirilmiş Adafruit BME280 sıcaklık, baskısı ve nem algılayıcı.
+* Monte edilmiş Bir Adafruit BME280 sıcaklık, basınç ve nem sensörü.
 
-* Bir breadboard.
+* Ekmek tahtası.
 
-* 6 F/dk anahtar kablolarına.
+* 6 F/M jumper telleri.
 
-* Yayılmış 10 mm LED.
+* Dağınık 10 mm LED.
 
 > [!NOTE]
-> Kod örneği sanal sensör verilerini desteklediğinden, bu öğeler isteğe bağlıdır.
+> Kod örneği simüle sensör verilerini desteklediği için bu öğeler isteğe bağlıdır.
 >
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir cihaz IOT hub'ı Kaydet
+## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir aygıtı IoT hub'ına kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="set-up-raspberry-pi"></a>Raspberry Pi ' ayarlayın
+## <a name="set-up-raspberry-pi"></a>Raspberry Pi'yi kur
 
-Raspberry Pi şimdi ayarlayın.
+Şimdi Raspberry Pi'yi hazırla.
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>PI sayısı için Raspbian işletim sistemini yükleme
+### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi için Raspbian işletim sistemini kurun
 
-MicroSD kartı Raspbian görüntüyü yüklemesi için hazırlayın.
+Raspbian görüntüsünün yüklenmesi için microSD kartı hazırlayın.
 
-1. Raspbian indirin.
+1. Karşıdan yükleme Raspbian.
 
-   1. [Masaüstü ile Raspbian Esnetme indirme](https://www.raspberrypi.org/downloads/raspbian/) (.zip dosyasında).
+   1. [Download Raspbian Stretch Masaüstü ile](https://www.raspberrypi.org/downloads/raspbian/) (.zip dosyası).
 
-   2. Raspbian görüntünün bilgisayarınızdaki bir klasöre ayıklayın.
+   2. Raspbian görüntüsünü bilgisayarınızdaki bir klasöre ayıklayın.
 
-2. Raspbian microSD kartı yükleyin.
+2. MicroSD karta Raspbian'ı yükleyin.
 
-   1. [Etcher SD kart yazıcı yardımcı programını yükleyip](https://etcher.io/).
+   1. [Download ve Etcher SD kart brülör programı yükleyin.](https://etcher.io/)
 
-   2. Etcher çalıştırın ve 1. adımda ayıkladığınız Raspbian görüntüsünü seçin.
+   2. Etcher'ı çalıştırın ve adım 1'de çıkardığınız Raspbian görüntüsünü seçin.
 
-   3. MicroSD kartı sürücüyü seçin. Etcher zaten doğru sürücü seçmiş olabilirsiniz olduğunu unutmayın.
+   3. microSD kart sürücüsünü seçin. Etcher'ın doğru sürücüyü seçmiş olabileceğini unutmayın.
 
-   4. MicroSD kartı Raspbian yüklemek için Flash'ı tıklatın.
+   4. Raspbian'ı microSD karta yüklemek için Flash'ı tıklatın.
 
-   5. Yükleme tamamlandığında microSD kartı bilgisayarınızdan kaldırın. Etcher otomatik olarak çıkarır veya tamamlandıktan sonra microSD kartı çıkarır çünkü microSD kartı doğrudan kaldırmak güvenlidir.
+   5. Yükleme tamamlandığında microSD kartı bilgisayarınızdan çıkarın. Etcher tamamlandığında microSD kartı otomatik olarak çıkardığı veya çıkardığı için microSD kartı doğrudan çıkarmak güvenlidir.
 
-   6. MicroSD kartı PI yerleştirin.
+   6. MicroSD kartı Pi'ye takın.
 
-### <a name="enable-ssh-and-spi"></a>SSH ve SPI etkinleştir
+### <a name="enable-ssh-and-spi"></a>SSH ve SPI'yi etkinleştirme
 
-1. Pi monitör, klavye ve fare bağlayın, PI başlatın ve ardından kullanarak Raspbian için oturum açın `pi` kullanıcı adı ve `raspberry` parolası.
+1. Pi'yi monitöre, klavyeye ve fareye bağlayın, Pi'yi `pi` başlatın ve `raspberry` kullanıcı adı ve parola olarak kullanarak Raspbian'da oturum açın.
  
-2. Raspberry simgesine tıklayın > **tercihleri** > **Raspberry Pi yapılandırma**.
+2. **Tercihleri** > **Raspberry Pi Yapılandırma**> Ahududu simgesini tıklatın.
 
-   ![Raspbian tercihleri menüsü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
+   ![Raspbian Tercihleri menüsü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. Üzerinde **arabirimleri** sekmesinde, belirleyin **SPI** ve **SSH** için **etkinleştirme**ve ardından **Tamam**. Yoksa ve fiziksel algılayıcınız varsa sanal sensör verilerini kullanmak istiyorsanız, bu adım isteğe bağlıdır.
+3. **Arabirimler** sekmesinde, Spi **ve** **SSH'yi** **Etkinleştirmek**için ayarlayın ve ardından **Tamam'ı**tıklatın. Fiziksel sensörlerinizi yoksa ve simüle edilmiş sensör verilerini kullanmak istiyorsanız, bu adım isteğe bağlıdır.
 
-   ![SPI ve Raspberry Pi üzerinde SSH'ı etkinleştir](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
+   ![Raspberry Pi'de SPI ve SSH'yi etkinleştirin](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE]
-> SSH ve SPI etkinleştirmek için daha fazla başvuru belgeleri üzerinde bulabilirsiniz [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) ve [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+> SSH ve SPI'yi etkinleştirmek için [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) ve [RASPI-CONFIG'de](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)daha fazla başvuru belgesi bulabilirsiniz.
 >
 
-### <a name="connect-the-sensor-to-pi"></a>Pi algılayıcı bağlanma
+### <a name="connect-the-sensor-to-pi"></a>Sensörü Pi'ye bağlayın
 
-Bir LED'i ve bir BME280 Pi gibi bağlanmak için breadboard ve anahtar kablo kullanın. Algılayıcı yoksa [bu bölümü atlayın](#connect-pi-to-the-network).
+Aşağıdaki gibi Pi bir LED ve BME280 bağlamak için ekmek tahtası ve jumper telleri kullanın. Sensör yoksa, bu bölümü [atlayın.](#connect-pi-to-the-network)
 
-![Raspberry Pi ve algılayıcı bağlantı](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
+![Raspberry Pi ve sensör bağlantısı](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 algılayıcı sıcaklık ve nem veri toplayabilir. Ve varsa cihaz ve bulut arasındaki iletişimi LED yanıp sönme.
+BME280 sensörü sıcaklık ve nem verilerini toplayabilir. Cihaz ve bulut arasında bir iletişim varsa LED yanıp söner.
 
-Algılayıcı sabitlemek için aşağıdaki bağlantı kullanın:
+Sensör pimleri için aşağıdaki kabloları kullanın:
 
-| Başlangıç (sensör ve LED)     | Bitiş (Pano)            | Kablo rengi   |
+| Başlangıç (Sensör & LED)     | End (Pano)            | Kablo Rengi   |
 | -----------------------  | ---------------------- | ------------: |
-| LED VDD (PIN 5G)         | GPIO 4 (Pin 7)         | Beyaz kablosu   |
-| LED GND (PIN 6G)         | GND (PIN 6)            | Siyah kablo   |
-| VDD (PIN 18F)            | 3.3V PWR (Pin 17)      | Beyaz kablosu   |
-| GND (PIN 20F)            | GND (PIN 20)           | Siyah kablo   |
-| SCK (PIN 21F)            | SPI0 SCLK (Pin 23)     | Turuncu kablosu  |
-| SDO (PIN 22F)            | SPI0 MISO (PIN 21)     | Sarı kablosu  |
-| SDI (Pin 23F)            | SPI0 MOSI (Pin 19)     | Yeşil kablosu   |
-| CS (PIN 24F)             | SPI0 CS (PIN 24)       | Mavi kablosu    |
+| LED VDD (Pin 5G)         | GPIO 4 (Pin 7)         | Beyaz kablo   |
+| LED GND (Pin 6G)         | GND (Pin 6)            | Siyah kablo   |
+| VDD (Pin 18F)            | 3.3V PWR (Pin 17)      | Beyaz kablo   |
+| GND (Pin 20F)            | GND (Pin 20)           | Siyah kablo   |
+| SCK (Pin 21F)            | SPI0 SCLK (Pin 23)     | Turuncu kablo  |
+| SDO (Pin 22F)            | SPI0 MISO (Pin 21)     | Sarı kablo  |
+| SDI (Pin 23F)            | SPI0 MOSI (Pin 19)     | Yeşil kablo   |
+| CS (Pin 24F)             | SPI0 CS (Pin 24)       | Mavi kablo    |
 
-Görüntülemek için tıklayın [Raspberry Pi 2 ve 3 PIN eşlemeleri](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) referans.
+[Raspberry Pi 2 & 3 Pin haritalamalarını](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) görüntülemek için tıklayınız.
 
-Raspberry Pi'yi BME280 başarıyla bağlandıktan sonra aşağıdaki resim gibi olmalıdır.
+BME280'i Raspberry Pi'nize başarıyla bağladıktan sonra, aşağıdaki resim gibi olmalıdır.
 
 ![Bağlı Pi ve BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4-connected-pi.png)
 
-### <a name="connect-pi-to-the-network"></a>Pi ağa bağlanma
+### <a name="connect-pi-to-the-network"></a>Pi'yi ağa bağlayın
 
-Pi üzerinde mikro USB kablosu ve güç kaynağı kullanarak etkinleştirin. Pi, kablolu ağa bağlanacak veya takip için Ethernet kablosu kullanın [yönergeleri Raspberry Pi Foundation'dan](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi, kablosuz ağa bağlanmak için. Bir not gerek Pi'yi ağa başarıyla bağlandı sonra [Pi'yi IP adresini](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+Mikro USB kablosunu ve güç kaynağını kullanarak Pi'yi açın. Pi'yi kablolu ağınıza bağlamak için Ethernet kablosunu kullanın veya Pi'yi kablosuz ağınıza bağlamak için [Raspberry Pi Foundation'dan gelen talimatları](https://www.raspberrypi.org/learning/software-guide/wifi/) izleyin. Pi'niz ağa başarıyla bağlandıktan sonra, [Pi'nizin IP adresini](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)not almanız gerekir.
 
 ![Kablolu ağa bağlı](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 
-## <a name="run-a-sample-application-on-pi"></a>Pi üzerinde bir örnek uygulamayı çalıştırma
+## <a name="run-a-sample-application-on-pi"></a>Pi'de örnek bir uygulama çalıştırma
 
-### <a name="sign-into-your-raspberry-pi"></a>Raspberry Pi'yi'nda oturum açın
+### <a name="sign-into-your-raspberry-pi"></a>Raspberry Pi'nizi kaydedin
 
-1. Raspberry Pi'yi bağlanmak için ana bilgisayarınız aşağıdaki SSH istemcilerden birini kullanın.
+1. Raspberry Pi'nize bağlanmak için ana bilgisayarınızdan aşağıdaki SSH istemcilerinden birini kullanın.
    
-   **Windows kullanıcıları**
-   1. İndirme ve yükleme [PuTTY](https://www.putty.org/) Windows için. 
-   1. IP adresini, ana bilgisayar adı (veya IP adresi) PI bölümüne kopyalayın ve SSH bağlantı türü olarak seçin.
+   **Windows Kullanıcıları**
+   1. Windows için [PuTTY'yi](https://www.putty.org/) indirin ve yükleyin. 
+   1. Pi'nizin IP adresini Ana Bilgisayar adı (veya IP adresi) bölümüne kopyalayın ve bağlantı türü olarak SSH'yi seçin.
    
-   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
+   ![Macun](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
 
-   **Mac ve Ubuntu kullanıcıları**
+   **Mac ve Ubuntu Kullanıcıları**
 
-   Yerleşik bir SSH istemcisi, Ubuntu veya Macos'ta kullanın. Çalıştırmanız gerekebilir `ssh pi@<ip address of pi>` Pi SSH aracılığıyla bağlanmak için.
+   Ubuntu veya macOS'ta yerleşik SSH istemcisini kullanın. Pi'yi SSH üzerinden bağlamak için çalıştırmanız `ssh pi@<ip address of pi>` gerekebilir.
    > [!NOTE]
-   > Varsayılan kullanıcı adı `pi` , ve parola `raspberry`.
+   > Varsayılan kullanıcı adı `pi` ve parola `raspberry`.
 
 
 ### <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
-1. Aşağıdaki komutu çalıştırarak örnek uygulamayı kopyalayın:
+1. Aşağıdaki komutu çalıştırarak örnek uygulamayı klonla:
 
    ```bash
    sudo apt-get install git-core
    git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app.git
    ```
 
-2. Kurulum betiğini çalıştırın:
+2. Kurulum komut dosyalarını çalıştırın:
 
    ```bash
    cd ./iot-hub-c-raspberrypi-client-app
@@ -201,18 +201,18 @@ Pi üzerinde mikro USB kablosu ve güç kaynağı kullanarak etkinleştirin. Pi,
    ```
 
    > [!NOTE] 
-   > Varsa, **fiziksel BME280 yoksa**, kullanabilirsiniz '--simulated-data' sıcaklık ve nem verileri benzetimini yapmak için komut satırı parametresi olarak. `sudo ./setup.sh --simulated-data`
+   > Fiziksel **bir BME280'iniz yoksa,** sıcaklık&nem verilerini simüle etmek için komut satırı parametresi olarak '--simüle edilmiş veri' kullanabilirsiniz. `sudo ./setup.sh --simulated-data`
    >
 
-### <a name="build-and-run-the-sample-application"></a>Örnek uygulaması derleme ve çalıştırma
+### <a name="build-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
-1. Örnek uygulama, aşağıdaki komutu çalıştırarak oluşturun:
+1. Aşağıdaki komutu çalıştırarak örnek uygulama oluşturun:
 
    ```bash
    cmake . && make
    ```
    
-   ![Derleme çıkışı](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
+   ![Üretim oluşturma](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
 
 1. Aşağıdaki komutu çalıştırarak örnek uygulamayı çalıştırın:
 
@@ -221,21 +221,21 @@ Pi üzerinde mikro USB kablosu ve güç kaynağı kullanarak etkinleştirin. Pi,
    ```
 
    > [!NOTE] 
-   > Kopyalama cihaz bağlantı dizesini tek tırnak yapıştırma emin olun.
+   > Aygıt bağlantı dizesini tek tırnak içine kopyalayıp yapıştırdığınızdan emin olun.
    >
 
-Algılayıcı verilerini ve IOT hub'ınıza gönderdiği iletileri gösterir aşağıdaki çıktıyı görmeniz gerekir.
+Sensör verilerinin ve IoT hub’ınıza gönderilen iletilerin gösterildiği aşağıdaki çıkışı görmelisiniz.
 
-![Çıkış - IOT hub'ınıza Raspberry Pi'dan gönderilen algılayıcı verileri](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
+![Çıkış - Raspberry Pi'den IoT hub'ınıza gönderilen sensör verileri](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>Hub'ınıza tarafından alınan iletileri okuma
+## <a name="read-the-messages-received-by-your-hub"></a>Hub'ınız tarafından alınan iletileri okuma
 
-Cihazınızdan IOT hub tarafından alınan iletileri izlemeye yönelik bir yolu, Visual Studio Code için Azure IOT araçları kullanmaktır. Daha fazla bilgi için bkz. [göndermek ve IOT Hub ve cihaz arasında iletileri almak Visual Studio Code için Azure IOT Araçları](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+IoT hub'ınız tarafından cihazınızdan alınan iletileri izlemenin bir yolu, Görsel Stüdyo Kodu için Azure IoT Araçlarını kullanmaktır. Daha fazla bilgi edinmek [için, cihazınızla IoT Hub arasında ileti gönderip almak için Visual Studio Kodu için Azure IoT Araçlarını Kullanın'a](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)bakın.
 
-Cihazınız tarafından gönderilen verileri işlemek daha fazla yolu için açın sonraki bölüme devam edin.
+Cihazınız tarafından gönderilen verileri işlemenin daha fazla yolu için bir sonraki bölüme devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Algılayıcı verilerini toplamak ve IOT hub'ına göndermek için örnek bir uygulama çalıştırdınız.
+Sensör verilerini toplamak ve IoT hub'ınıza göndermek için örnek bir uygulama çalıştırdınız.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect eşitleme: AD geri dönüşüm kutusunu etkinleştirme | Microsoft Docs'
-description: Bu konuda, Azure AD Connect ile AD geri dönüşüm kutusu özelliğinin kullanılmasını önerir.
+title: Azure AD Connect eşitlemesini etkinleştirme AD geri dönüşüm kutusu | Microsoft Dokümanlar
+description: Bu konu, Azure AD Connect ile AD Geri Dönüşüm Kutusu özelliğinin kullanılmasını önerir.
 services: active-directory
-keywords: AD geri dönüşüm kutusu, yanlışlıkla silinmesi, kaynak bağlantısı
+keywords: AD Geri Dönüşüm Kutusu, yanlışlıkla silme, kaynak çapa
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,32 +18,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382904"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect eşitleme: AD geri dönüşüm kutusunu etkinleştirme
-Şirket içi Active, Azure AD'ye eşitlenen dizinlerinize için AD Geri Dönüşüm Kutusu özelliği etkinleştirmeniz önerilir. 
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect eşitlemesini etkinleştirme AD geri dönüşüm kutusu
+Şirket içi Etkin Dizinleriniz için Azure AD ile senkronize edilen AD Geri Dönüşüm Kutusu özelliğini etkinleştirmeniz önerilir. 
 
-Şirket içi yanlışlıkla sildiyseniz AD kullanıcı nesnesi ve bu özelliği kullanarak, Azure AD geri yükler karşılık gelen Azure AD kullanıcı nesnesi geri yükleme.  AD Geri Dönüşüm Kutusu özelliği hakkında daha fazla bilgi için makalesine bakın [geri silinmiş Active Directory nesneleri için senaryoya genel bakış](https://technet.microsoft.com/library/dd379542.aspx).
+Bir şirket içi AD kullanıcı nesnesini yanlışlıkla sildiyseniz ve özelliği kullanarak geri yüklediyseniz, Azure AD ilgili Azure AD kullanıcı nesnesini geri yükler.  AD Geri Dönüşüm Kutusu özelliği hakkında bilgi için, [Silinen Etkin Dizin Nesnelerini Geri Getirmek için](https://technet.microsoft.com/library/dd379542.aspx)Makale Senaryogenel Bakış'a bakın.
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>AD Geri Dönüşüm Kutusu'nu etkinleştirme avantajları
-Bu özellik, Azure AD kullanıcı nesnelerinin aşağıdakileri yaparak geri yükleme konusunda yardımcı olur:
+## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>AD geri dönüşüm kutusu etkinleştirme yararları
+Bu özellik, aşağıdakileri yaparak Azure AD kullanıcı nesnelerini geri yardımcı olur:
 
-* Şirket içi yanlışlıkla sildiyseniz AD kullanıcı nesnesi, karşılık gelen Azure AD kullanıcı nesnesi, sonraki eşitleme döngüsünde silinecek. Azure AD varsayılan olarak, silinen tutar geçici olarak silinen durumunda 30 gün boyunca Azure AD kullanıcı nesnesi.
+* Şirket içinde bir AD kullanıcı nesnesini yanlışlıkla sildiyseniz, ilgili Azure AD kullanıcı nesnesi bir sonraki eşitleme döngüsünde silinir. Varsayılan olarak, Azure AD silinen Azure AD kullanıcı nesnesini 30 gün boyunca yumuşak silinmiş durumda tutar.
 
-* Şirket içi varsa AD Geri Dönüşüm Kutusu özelliği etkin, silinen geri AD kullanıcı nesnesi, kaynak bağlantısı değerini değiştirmeden şirket. Zaman kurtarılan şirket içi AD kullanıcı nesnesini Azure AD'ye eşitlenen, Azure AD olacaktır geri yükleme karşılık gelen geçici olarak silinen Azure AD kullanıcı nesnesi. Kaynak bağlantısı özniteliği hakkında daha fazla bilgi için makalesine bakın [Azure AD Connect: Tasarım kavramları](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Şirket içinde AD Geri Dönüşüm Kutusu özelliği etkinse, silinen şirket içi AD kullanıcı nesnesini Kaynak Bağlantı değerini değiştirmeden geri yükleyebilirsiniz. Kurtarılan şirket içi AD kullanıcı nesnesi Azure AD ile eşitlendiğinde, Azure AD ilgili yumuşak silinmiş Azure AD kullanıcı nesnesini geri yükler. Kaynak Çapa özniteliği hakkında daha fazla bilgi için [Azure AD Connect: Tasarım kavramları](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)makalesine bakın.
 
-* Şirket içi olmayan AD geri dönüşüm kutusu özelliğinin etkin olabilir silinmiş nesneyi değiştirmek için bir AD kullanıcı nesnesi oluşturmak için gerekli. Azure AD Connect eşitleme hizmeti için kaynak bağlantısı özniteliği sistem tarafından oluşturulan AD özniteliği (örneğin, objectGUID) kullanmak için yapılandırılmışsa, yeni oluşturulan AD kullanıcı nesnesi silinen AD kullanıcı nesnesi aynı değere kaynak bağlantısı yoktur. Yeni oluşturulan AD kullanıcı nesnesini Azure AD'ye eşitlendiğinde, Azure AD yeni bir oluşturur geçici olarak silinen geri yüklemek yerine Azure AD kullanıcı nesnesini Azure AD'ye kullanıcı nesnesi.
+* Şirket içi AD Geri Dönüşüm Kutusu özelliği etkinleştirmediyseniz, silinen nesneyi değiştirmek için bir AD kullanıcı nesnesi oluşturmanız gerekebilir. Azure AD Connect Eşitleme Hizmeti, Kaynak Bağlantı özelliği için sistem tarafından oluşturulan AD özniteliğini (ObjectGuid gibi) kullanacak şekilde yapılandırılırsa, yeni oluşturulan AD kullanıcı nesnesi silinen AD kullanıcı nesnesi ile aynı Kaynak Bağlantı değerine sahip olmaz. Yeni oluşturulan AD kullanıcı nesnesi Azure AD ile eşitlendiğinde, Azure AD yumuşak silinmiş Azure AD kullanıcı nesnesini geri getirmek yerine yeni bir Azure AD kullanıcı nesnesi oluşturur.
 
 > [!NOTE]
-> Varsayılan olarak, Azure AD tutar kalıcı olarak silinmeden önce 30 gün boyunca Azure AD kullanıcı nesnelerinin geçici olarak silinen durumunda silindi. Bununla birlikte, Yöneticiler bu tür nesneleri silme işlemini hızlandırabilirsiniz. Kalıcı olarak silinen nesneleri sonra artık kurtarılabilir, şirket içinde AD Geri Dönüşüm Kutusu özelliği etkin olsa bile.
+> Varsayılan olarak, Azure AD silinmiş Azure AD kullanıcı nesnelerini kalıcı olarak silinmeden önce 30 gün boyunca yumuşak silinmiş durumda tutar. Ancak, yöneticiler bu tür nesnelerin silinmesini hızlandırabilir. Nesneler kalıcı olarak silindikten sonra, şirket içi AD Geri Dönüşüm Kutusu özelliği etkinleştirilse bile artık kurtarılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Genel bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Anlama ve eşitleme özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

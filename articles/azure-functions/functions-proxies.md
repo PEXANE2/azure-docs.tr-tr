@@ -1,121 +1,121 @@
 ---
-title: Azure Işlevleri 'nde proxy ile çalışma
-description: Azure işlev proxy'lerini kullanmaya nasıl genel bakış
+title: Azure İşlevleri'ndeki yakınlıklarla çalışma
+description: Azure İşlevleri Proxies'in nasıl kullanılacağına genel bakış
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849199"
 ---
-# <a name="work-with-azure-functions-proxies"></a>Azure işlev proxy'leri ile çalışma
+# <a name="work-with-azure-functions-proxies"></a>Azure İşlevleri Proxies ile çalışma
 
-Bu makalede, yapılandırma ve Azure işlev proxy'lerini ile çalışmak açıklanmaktadır. Bu özellik ile başka bir kaynak tarafından uygulanan işlev uygulamanız üzerindeki uç noktaları belirtebilirsiniz. İstemciler için hala tek bir API yüzeyi sunarken büyük API birden fazla işlev uygulaması (olduğu gibi bir mikro Hizmet Mimarisi) uygulamasına ayırmak için bu proxy'ler kullanabilirsiniz.
+Bu makalede, Azure İşlevleri Proxies nasıl yapılandırılatır ve çalışır. Bu özellik sayesinde, işlev uygulamanızda başka bir kaynak tarafından uygulanan uç noktaları belirtebilirsiniz. Bu yakınlıkları, istemciler için tek bir API yüzeyi sunarken, büyük bir API'yi birden çok işlev uygulamasına (mikro hizmet mimarisinde olduğu gibi) ayırmak için kullanabilirsiniz.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> Faturalama standart işlevleri, proxy yürütme için geçerlidir. Daha fazla bilgi için [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/).
+> Standart İşlevler faturalandırma proxy yürütmeleri için geçerlidir. Daha fazla bilgi için Azure [İşlevler fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/)'na bakın.
 
-## <a name="create"></a>Bir ara sunucu oluşturma
+## <a name="create-a-proxy"></a><a name="create"></a>Proxy oluşturma
 
-Bu bölümde bir ara sunucu işlevleri Portalı'nda oluşturma işlemini gösterir.
+Bu bölümde, Işlevler portalında nasıl bir proxy oluşturabileceğiniz gösterilmektedir.
 
-1. Açık [Azure portalda]ve ardından işlev uygulamanıza gidin.
-2. Sol bölmede seçin **yeni proxy**.
-3. Ara sunucunuz için bir ad belirtin.
-4. Sunulan uç noktası belirterek bu işlev uygulamasını yapılandırma **rota şablonu** ve **HTTP yöntemleri**. Bu parametreler için kurallara göre davranır [HTTP Tetikleyicileri].
-5. Ayarlama **arka uç URL'si** başka bir uç nokta için. Bu uç nokta, başka bir işlev uygulaması bir işlevde olabilir veya başka bir API olabilir. Değer statik olması gerekmez ve ona başvuran [uygulama ayarları] ve [Özgün istemci İstek parametreleri].
-6. **Oluştur**’a tıklayın.
+1. Azure [portalını]açın ve ardından işlev uygulamanıza gidin.
+2. Sol bölmede Yeni **proxy'yi**seçin.
+3. Proxy için bir ad girin.
+4. **Rota şablonu** ve **HTTP yöntemlerini**belirterek bu işlev uygulamasında maruz kalan bitiş noktasını yapılandırın. Bu parametreler [HTTP tetikleyicileri]için kurallara göre olur.
+5. Arka **uç URL'sini** başka bir bitiş noktasına ayarlayın. Bu bitiş noktası başka bir işlev uygulamasında bir işlev olabilir veya başka bir API olabilir. Değerin statik olması gerekmez ve [özgün istemci isteğinden]uygulama [ayarlarına] ve parametrelere başvuruyapabilir.
+6. **Oluştur'u**tıklatın.
 
-İşlev uygulamanız üzerinde yeni bir uç nokta olarak ara sunucunuz artık yok. İstemci açısından bakıldığında, Azure işlevleri'nde bir HttpTrigger eşdeğerdir. Proxy URL'si kopyalayarak ve sık kullanılan HTTP istemci ile test, yeni proxy deneyebilirsiniz.
+Proxy'niz artık işlev uygulamanızda yeni bir bitiş noktası olarak var. İstemci açısından bakıldığında, Azure İşlevlerinde Bir HttpTetikleyici'ye eşdeğerdir. Proxy URL'sini kopyalayarak ve en sevdiğiniz HTTP istemcisiyle test ederek yeni proxy'nizi deneyebilirsiniz.
 
-## <a name="modify-requests-responses"></a>İsteklerin ve yanıtların değiştirme
+## <a name="modify-requests-and-responses"></a><a name="modify-requests-responses"></a>İstek leri ve yanıtları değiştirme
 
-Azure işlev proxy'lerini ile isteklerini ve arka uç alınan yanıtları değiştirebilirsiniz. Bu dönüştürmeler sınıfında tanımlandığı gibi değişkenleri kullanabilirsiniz [değişkenlerini kullanma].
+Azure İşlevler Proxies ile, istekve yanıtları arka uçtan değiştirebilirsiniz. Bu dönüşümler, Kullanım değişkenlerinde tanımlandığı gibi [değişkenleri kullanabilir.]
 
-### <a name="modify-backend-request"></a>Arka uç istek değiştirme
+### <a name="modify-the-back-end-request"></a><a name="modify-backend-request"></a>Arka uç isteğini değiştirme
 
-Varsayılan olarak, özgün istek bir kopyası olarak arka uç isteği başlatıldı. Arka uç URL'si ayarlamanın yanı sıra HTTP yöntemi, üst bilgiler ve sorgu dizesi parametreleri değişiklik yapabilirsiniz. Değiştirilmiş değerlere başvurabilirsiniz [uygulama ayarları] ve [Özgün istemci İstek parametreleri].
+Varsayılan olarak, arka uç isteği özgün isteğin bir kopyası olarak başharfe çevrilir. Arka uç URL'sini ayarlamanın yanı sıra, HTTP yönteminde, üstbilgive sorgu dize parametrelerinde değişiklikler yapabilirsiniz. Değiştirilen [değerler, özgün istemci isteğinden] [uygulama ayarlarına] ve parametrelere başvurulabilir.
 
-Arka uç istekleri portalda, proxy ayrıntısı sayfasının *istek geçersiz kılma* bölümüne genişleterek değişiklik yapılabilir. 
+Arka uç istekleri, proxy ayrıntı sayfasının *istek geçersiz kılma* bölümünü genişleterek portalda değiştirilebilir. 
 
-### <a name="modify-response"></a>Yanıtı değiştirebilir
+### <a name="modify-the-response"></a><a name="modify-response"></a>Yanıtı değiştirme
 
-Varsayılan olarak, istemci yanıtı arka uç yanıtı bir kopyası olarak başlatılır. Yanıtın durum kodu, neden ifadesini, üstbilgi ve gövde değişiklik yapabilirsiniz. Değiştirilmiş değerlere başvurabilirsiniz [uygulama ayarları], [Özgün istemci İstek parametreleri], ve [arka uç yanıtı Parametreler].
+Varsayılan olarak, istemci yanıtı arka uç yanıtının bir kopyası olarak başolarak başlar. Yanıtın durum kodunda, neden tümceciğinde, üstbilgide ve gövdede değişiklikler yapabilirsiniz. Değiştirilen değerler [uygulama ayarlarına,] [özgün istemci isteğinden parametrelere]ve [arka uç yanıtından parametrelere]başvurulabilir.
 
-Arka uç istekleri portalda, proxy ayrıntısı sayfasının *yanıt geçersiz kılma* bölümüne genişleterek değişiklik yapılabilir. 
+Arka uç istekleri, proxy ayrıntı sayfasının *yanıt geçersiz kılma* bölümünü genişleterek portalda değiştirilebilir. 
 
-## <a name="using-variables"></a>Değişkenlerini kullanma
+## <a name="use-variables"></a><a name="using-variables"></a>Değişken kullanma
 
-Bir ara sunucu yapılandırmasını statik olması gerekmez. Değişkenler özgün istemci isteği, arka uç yanıtı ya da uygulama ayarları kullanacak şekilde koşul.
+Proxy yapılandırmasının statik olması gerekmez. Özgün istemci isteği, arka uç yanıtı veya uygulama ayarlarından değişkenleri kullanmak üzere koşullandırmayapabilirsiniz.
 
-### <a name="reference-localhost"></a>Başvuru yerel işlevler
-Kullanabileceğiniz `localhost` bir işlev aynı işlev uygulamasında bir gidiş dönüş proxy isteği doğrudan başvurmak için.
+### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Yerel işlevlere başvurun
+Bir gidiş-dönüş proxy isteği olmadan, doğrudan aynı işlev uygulaması içinde bir işlev başvuru kullanabilirsiniz. `localhost`
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` bir yerel yol HTTP ile tetiklenen işlevi başvurur. `/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"`rotada yerel bir HTTP tetiklenen işlevi referans olacaktır`/api/httptriggerC#1`
 
  
 >[!Note]  
->İşlevinizi kullanıyorsa *işlevi, yönetici veya sys* yetkilendirme düzeyleri, kod ve ClientID, orijinal işlev URL'sini göre sağlamak gerekir. Bu durumda, başvurunun şöyle görünmesi gerekir: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` bu anahtarların [Uygulama ayarları] depolanmasını ve proxy 'leriniz ile başvurmayı öneririz. Bu, kaynak kodunuzda gizli dizileri depolamayı önler. 
+>Işleviniz *işlev, yönetici veya sys* yetkilendirme düzeyleri kullanıyorsa, özgün işlev URL'sine göre kodu ve istemciyi sağlamanız gerekir. Bu durumda başvuru şu şekilde `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` görünür: Bu anahtarları [uygulama ayarlarında] saklamanızı ve yakınlık larınızdakilere başvurmanızı öneririz. Bu, sırları kaynak kodunuzda depolamayı önler. 
 
-### <a name="request-parameters"></a>Başvuru İstek parametreleri
+### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Referans istek parametreleri
 
-İstek parametreleri, giriş olarak arka uç URL'si özelliği veya isteklerini ve yanıtlarını değiştirme işleminin parçası olarak kullanabilirsiniz. Temel Ara sunucu yapılandırmasında belirtilen rota şablondaki bazı parametreler bağlanabilir ve diğerleri gelen istek özelliklerinden gelebilir.
+İstek parametrelerini arka uç URL özelliğine giriş olarak veya istek ve yanıtları değiştirmenin bir parçası olarak kullanabilirsiniz. Bazı parametreler temel proxy yapılandırmasında belirtilen rota şablonundan bağlanabilir ve diğerleri gelen isteğin özelliklerinden gelebilir.
 
-#### <a name="route-template-parameters"></a>Şablon parametreleri yolu
-Yol şablonunda kullanılan parametreleri adı tarafından başvurulan kullanılabilir. Parametre adları ayraç içine alınır ({}).
+#### <a name="route-template-parameters"></a>Rota şablon parametreleri
+Rota şablonunda kullanılan parametreler ada göre başvurulabilecek şekilde kullanılabilir. Parametre adları ayraçlarla çevrilidir{}( ).
 
-Örneğin, bir proxy gibi bir rota şablonuna sahip `/pets/{petId}`, arka uç URL'si değerini içerebilir `{petId}`, olarak `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. Rota şablonu bir joker karakter olarak gibi kesilip kesilmediğini `/api/{*restOfPath}`, değer `{restOfPath}` kalan yol kesimleri gelen istek dize gösterimidir.
+Örneğin, bir proxy'de , arka `/pets/{petId}`uç URL'si gibi bir `{petId}`rota şablonu varsa, `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`bu durumdaolduğu gibi . Rota şablonu, `/api/{*restOfPath}`gelen istekten kalan yol kesimlerinin dize gösterimi `{restOfPath}` gibi bir joker karakterde sonlanırsa.
 
-#### <a name="additional-request-parameters"></a>Ek İstek parametreleri
-Rota şablonu parametrelerine ek olarak, yapılandırma değerleri aşağıdaki değerler kullanılabilir:
+#### <a name="additional-request-parameters"></a>Ek istek parametreleri
+Rota şablonu parametrelerine ek olarak, config değerlerinde aşağıdaki değerler kullanılabilir:
 
-* **{request.method}** : Özgün istekte kullanılan HTTP yöntemi.
-* **{request.headers. \<HeaderName\>}** : özgün istekteki okunabilir bir üst bilgisi. Değiştirin *\<HeaderName\>* okumak istediğiniz üst bilgi adı. İstek üst bilgisi dahil edilmemişse, değer boş dize olacaktır.
-* **{request.querystring. \<ParameterName\>}** : özgün istekteki okunabilir bir sorgu dizesi parametresi. Değiştirin *\<ParameterName\>* ile okumak istediğiniz parametrenin adı. İstek parametre dahil edilmezse, boş bir dize değeri olacaktır.
+* **{request.method}**: Özgün istekte kullanılan HTTP yöntemi.
+* **{request.headers.\< Üstbilgi\>}**: Özgün istekten okunabilen bir üstbilgi. * \<\> ÜstbilgiName'yi* okumak istediğiniz üstbilginin adıile değiştirin. Üstbilgi isteğe dahil edilmezse, değer boş dize olacaktır.
+* **{request.querystring.\< ParameterName\>}**: Özgün istekten okunabilen bir sorgu dize parametresi. * \<\> ParametreName'yi* okumak istediğiniz parametrenin adıile değiştirin. Parametre isteğe dahil edilmezse, değer boş dize olacaktır.
 
-### <a name="response-parameters"></a>Başvuru arka uç yanıtı parametreleri
+### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>Referans arka uç yanıt parametreleri
 
-Yanıt parametrelerinin, yanıtı istemciye değiştirme işleminin parçası olarak kullanılabilir. Yapılandırma değerleri aşağıdaki değerler kullanılabilir:
+Yanıt parametreleri istemciye yanıt değiştirmenin bir parçası olarak kullanılabilir. Config değerlerinde aşağıdaki değerler kullanılabilir:
 
-* **{backend.response.statusCode}** : Arka uç yanıtta döndürülen HTTP durum kodu.
-* **{backend.response.statusReason}** : Arka uç yanıtta döndürülen HTTP neden deyimi.
-* **{backend.response.headers. \<HeaderName\>}** : arka uç yanıtı okuyabilen bir üst bilgisi. Değiştirin *\<HeaderName\>* okumak istediğiniz üst bilgi adı. Yanıt üst bilgisi dahil edilmemişse değeri boş dize olacaktır.
+* **{backend.response.statusCode}**: Arka uç yanıtında döndürülen HTTP durum kodu.
+* **{backend.response.statusReason}**: Arka uç yanıtında döndürülen HTTP nedeni tümceciği.
+* **{backend.response.headers.\< Üstbilgi\>}**: Arka uç yanıtından okunabilen bir üstbilgi. * \<\> ÜstbilgiName'yi* okumak istediğiniz üstbilginin adıile değiştirin. Üstbilgi yanıta dahil edilmezse, değer boş dize olacaktır.
 
-### <a name="use-appsettings"></a>Uygulama ayarları başvurusu
+### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Başvuru uygulama ayarları
 
-Ayrıca başvurabilirsiniz [uygulama ayarları işlev uygulaması için tanımlanan](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) yüzde işaretleri (%) ayarı adıyla çevreleyen tarafından.
+Ayrıca, ayar adını yüzde işaretleriyle çevreleyerek [işlev uygulaması için tanımlanan uygulama ayarlarına](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) da başvuruyapabilirsiniz (%).
 
-Örneğin, bir arka uç URL'si *https://%ORDER_PROCESSING_HOST%/api/orders* "% ORDER_PROCESSING_HOST % ORDER_PROCESSING_HOST ayarının değeri ile değiştirilmiştir" gerekir.
+Örneğin, bir arka uç *https://%ORDER_PROCESSING_HOST%/api/orders* URL'si "%ORDER_PROCESSING_HOST" ORDER_PROCESSING_HOST ayarın değeriyle değiştirilir.
 
 > [!TIP] 
-> Birden çok dağıtım olduğunda uygulama ayarları için arka uç ana bilgisayarları kullanın veya test ortamları. Bu şekilde, her zaman bu ortam için doğru arka uca varsayılır, emin olabilirsiniz.
+> Birden fazla dağıtım veya test ortamınız olduğunda arka uç ana bilgisayarları için uygulama ayarlarını kullanın. Bu şekilde, her zaman bu ortam için sağ arka uç konuşuyor emin olabilirsiniz.
 
-## <a name="debugProxies"></a>Proxy'leri sorunlarını giderme
+## <a name="troubleshoot-proxies"></a><a name="debugProxies"></a>Sorun Giderme Proxies
 
-Bayrağı ekleyerek `"debug":true` herhangi proxy'sine, `proxies.json` hata ayıklama günlük kaydını etkinleştirir. Günlükleri depolanır `D:\home\LogFiles\Application\Proxies\DetailedTrace` ve Gelişmiş araçlar (kudu) üzerinden erişilebilir. HTTP yanıtları de içeren bir `Proxy-Trace-Location` üstbilgi günlük dosyasına erişmek için bir URL.
+Bayrağınızdaki `proxies.json` herhangi `"debug":true` bir proxy'ye ekleyerek hata ayıklama günlüğe kaydetmeyi etkinleştireceksiniz. Günlükler depolanır `D:\home\LogFiles\Application\Proxies\DetailedTrace` ve gelişmiş araçlar (kudu) aracılığıyla erişilebilir. Herhangi bir HTTP yanıtı `Proxy-Trace-Location` da günlük dosyasına erişmek için bir URL ile bir üstbilgi içerir.
 
-İstemci tarafında bir ara sunucuya ekleyerek ayıklayabilirsiniz bir `Proxy-Trace-Enabled` başlığı ayarlayın `true`. Bu da dosya sistemine bir izleme günlüğü ve yanıt üst bilgi olarak izleme URL'sini döndürür.
+Bir `Proxy-Trace-Enabled` üstbilgi kümesi ekleyerek istemci tarafında bir proxy `true`hata ayıklama olabilir. Bu da dosya sistemine bir izleme günlüğe ve yanıt bir üstbilgi olarak izleme URL döndürecek.
 
-### <a name="block-proxy-traces"></a>Blok proxy izlemeleri
+### <a name="block-proxy-traces"></a>Proxy izlerini engelleme
 
-Güvenlik nedenleriyle herkesin bir izleme oluşturmak için hizmetinizi çağırmadan istemeyebilirsiniz. Bunlar olmadan oturum açma kimlik bilgilerinizi izleme içeriğine erişmek mümkün olmayacaktır, ancak izleme oluşturma kaynaklarını tüketir ve işlev proxy'lerini kullandığınızı gösterir.
+Güvenlik nedenleriyle, hizmetinizi arayan herkesin izleme oluşturmasına izin vermeyebilirsiniz. Oturum açma kimlik bilgileriniz olmadan izleme içeriğine erişemezler, ancak izleme oluşturmak kaynakları tüketir ve Işlev Ekseklerini kullandığınızı ortaya çıkarır.
 
-Ekleyerek izlemeleri tamamen devre dışı `"debug":false` herhangi belirli proxy'sine, `proxies.json`.
+Herhangi bir proxy'nize ekleyerek `"debug":false` izleri tamamen devre `proxies.json`dışı bırakma.
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma
 
-Yapılandırdığınız proxy depolanan bir *proxies.json* bir işlev uygulaması dizin kök dizininde bulunan dosya. El ile bu dosyasını düzenleyin ve herhangi birini kullandığınızda, uygulamanızın bir parçası olarak dağıtma [dağıtım yöntemleri](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) bu işlevleri destekler. 
+Yapılandırmayaptığınız eksekler, işlev uygulaması dizininin kökünde bulunan *bir yakınlık.json* dosyasında depolanır. İşlevlerin desteklediği [dağıtım yöntemlerinden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) herhangi birini kullandığınızda bu dosyayı el ile düzenlilebilir ve uygulamanızın bir parçası olarak dağıtabilirsiniz. 
 
 > [!TIP] 
-> Dağıtım yöntemlerinden birini ayarlamadıysanız, ayrıca çalışabileceğiniz *proxies.json* Portalı'nda dosya. İşlevi uygulamanızı seçin Git **Platform özellikleri**ve ardından **App Service Düzenleyicisi**. Bunu yaptığınızda, işlev uygulamanızın tüm dosya yapısı görüntüleyebilir ve ardından değişiklikleri yapın.
+> Dağıtım yöntemlerinden birini ayarlamadıysanız, portaldaki *yakınlık.json* dosyasıyla da çalışabilirsiniz. İşlev uygulamanıza gidin, **Platform özelliklerini**seçin ve ardından **App Service Editor'u**seçin. Bunu yaparak, işlev uygulamanızın tüm dosya yapısını görüntüleyebilir ve ardından değişiklikler yapabilirsiniz.
 
-*Proxies.JSON* adlandırılmış proxy ve bunların tanımlarının oluşan bir proxy nesnesi tarafından tanımlanır. İsteğe bağlı olarak, düzenleyici destekliyorsa, başvurabileceğiniz bir [JSON şeması](http://json.schemastore.org/proxies) için kod tamamlama. Bir örnek dosyası aşağıdakine benzeyebilir:
+*Proxies.json* adlandırılmış yakınlıklar ve tanımları oluşan bir yakınlık nesnesi ile tanımlanır. İsteğe bağlı olarak, düzenleyiciniz destekliyorsa, kod tamamlama için bir [JSON şemasına](http://json.schemastore.org/proxies) başvuruda bulunabilirsiniz. Örnek bir dosya aşağıdaki gibi görünebilir:
 
 ```json
 {
@@ -132,21 +132,21 @@ Yapılandırdığınız proxy depolanan bir *proxies.json* bir işlev uygulamas�
 }
 ```
 
-Her bir proxy gibi bir kolay ad sahip *proxy1* önceki örnekte. Karşılık gelen proxy tanım nesnesi, aşağıdaki özellikleri tarafından tanımlanır:
+Her proxy'nin, önceki örnekteki *proxy1* gibi dostu bir adı vardır. Karşılık gelen proxy tanımı nesnesi aşağıdaki özellikler tarafından tanımlanır:
 
-* **matchCondition**: gerekli--bu proxy yürütülmesini tetiklemek istekleri tanımlayan nesne. İle paylaşılan iki özellik içeriyor [HTTP Tetikleyicileri]:
-    * _yöntemleri_: bir dizi bir yanıt veren Ara sunucu HTTP yöntemleri. Belirtilmezse, proxy tüm HTTP yöntemleri rotadaki yanıt verir.
-    * _Rota_: gerekli--proxy, istek URL'lerini denetleme için rota şablonu tanımlar yanıt verir. Aksine HTTP tetikleyicileri, varsayılan değer yoktur.
-* **backendUri**: arka uç kaynağı için istek olacağı proxy URL'si. Bu değer, uygulama ayarları ve parametreleri özgün istemci istekten başvurabilirsiniz. Bu özellik dahil edilmezse, Azure işlevleri, bir HTTP 200 OK ile yanıt verir.
-* **requestOverrides**: arka uç isteği dönüştürmeleri tanımlayan bir nesne. Bkz: [requestOverrides nesnesi tanımlayın].
-* **responseOverrides**: istemci yanıtı dönüştürmeleri tanımlayan bir nesne. Bkz: [responseOverrides nesnesi tanımlayın].
+* **matchCondition**: Gerekli-- bu proxy yürütülmesini tetikleyen istekleri tanımlayan bir nesne. [HTTP tetikleyicileri]ile paylaşılan iki özellik içerir:
+    * _yöntemleri_: Proxy'nin yanıt verdiği BIR dizi HTTP yöntemi. Belirtilmemişse, proxy rotadaki tüm HTTP yöntemlerine yanıt verir.
+    * _rota_: Proxy'nizin yanıtladığı URL'lerin hangisini denetleyerek rota şablonunu tanımlar. HTTP tetikleyicilerinin aksine varsayılan değer yoktur.
+* **backendUri**: İsteğin yakınlaştırılması gereken arka uç kaynağının URL'si. Bu değer, özgün istemci isteğinden uygulama ayarlarına ve parametrelere başvuruyapabilir. Bu özellik dahil edilmezse, Azure İşlevleri HTTP 200 Ok ile yanıt verir.
+* **requestOverrides**: Arka uç isteğine dönüşümleri tanımlayan nesne. Bkz. [Bir istekOverrides nesnesi tanımlayın.]
+* **responsesOverrides**: İstemci yanıtına dönüşümleri tanımlayan bir nesnedir. Bkz. [Yanıtı TanımlaOverrides nesnesi].
 
 > [!NOTE] 
-> *Rota* Azure işlev proxy'lerini bir özellik değil dikkate *routeprefix öğesi* işlevi uygulama konağı Yapılandırma özelliği. Bir önek gibi dahil etmek istiyorsanız `/api`, içinde eklenmelidir *rota* özelliği.
+> Azure İşlemesi Eklerinde *rota* özelliği, İşlev Uygulaması ana bilgisayar yapılandırmasının *routePrefix* özelliğine uymaz. Gibi bir önek eklemek `/api`istiyorsanız, bu tür *rota* özelliğine dahil edilmelidir.
 
-### <a name="disableProxies"></a> Bireysel proxy'leri devre dışı bırak
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Bireysel vekilleri devre dışı
 
-Ekleyerek bireysel proxy'leri devre dışı bırakabilirsiniz `"disabled": true` proxy'sine `proxies.json` dosya. Bu, matchCondition 'a uyan isteklerin 404 döndürmesini sağlar.
+Dosyadaki proxy'ye ekleyerek `"disabled": true` tek tek proxy'leri devre dışı kullanabilirsiniz. `proxies.json` Bu, matchCondition'ı karşılayan tüm isteklerin 404'ün dönmesine neden olur.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -162,32 +162,32 @@ Ekleyerek bireysel proxy'leri devre dışı bırakabilirsiniz `"disabled": true`
 }
 ```
 
-### <a name="applicationSettings"></a> Uygulama ayarları
+### <a name="application-settings"></a><a name="applicationSettings"></a>Uygulama Ayarları
 
-Birçok uygulama ayarları tarafından proxy davranışı denetlenebilir. Bunların tümü özetlenen [işlevler uygulama ayarları başvurusu](./functions-app-settings.md)
+Proxy davranışı birkaç uygulama ayarı tarafından denetlenebilir. Bunların hepsi [Fonksiyonlar Uygulama Ayarları referansında](./functions-app-settings.md) özetlenmiştir
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reservedChars"></a> Ayrılmış karakterleri (biçimlendirme dizesi)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a>Ayrılmış Karakterler (dize biçimlendirme)
 
-Proxy 'ler, bir JSON dosyasının dışında tüm dizeleri okur ve bunu çıkış simgesi olarak kullanın. Proxy 'ler Ayrıca küme ayraçları da yorumlayabilir. Aşağıdaki örnek bir dizi örneğe bakın.
+Proxies bir kaçış sembolü olarak \ kullanarak, bir JSON dosyasının tüm dizeleri okuyun. Yakınlıklar da kıvırcık parantez yorumlamak. Aşağıdaki örneklerin tam kümesine bakın.
 
-|Karakter|Kaçan karakter|Örnek|
+|Karakter|Kaçan Karakter|Örnek|
 |-|-|-|
-|{veya}|{{veya}}|`{{ example }}` --> `{ example }`
+|{ veya }|{{ veya }}|`{{ example }}` --> `{ example }`
 | \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
-|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|\\\"| `\"example\"` --> `"example"`
+|"|\\\"| `\"example\"` --> `"example"`
 
-### <a name="requestOverrides"></a>RequestOverrides nesnesi tanımlayın
+### <a name="define-a-requestoverrides-object"></a><a name="requestOverrides"></a>Bir istekOverrides nesnesi tanımlayın
 
-RequestOverrides nesne isteği arka uç kaynağa çağrıldığında yapılan değişiklikleri tanımlar. Nesne, aşağıdaki özellikleri tarafından tanımlanır:
+RequestOverrides nesnesi, arka uç kaynağı çağrıldığında istekte yapılan değişiklikleri tanımlar. Nesne aşağıdaki özelliklerle tanımlanır:
 
-* **backend.Request.Method**: arka uç çağırmak için kullanılan HTTP yöntemi.
-* **backend.request.querystring.\<ParameterName\>** : A query string parameter that can be set for the call to the back-end. Değiştirin *\<ParameterName\>* ile belirlemek istediğiniz parametrenin adı. Boş dize sağlanırsa, parametrenin yine de arka uç isteğine dahil edildiğini lütfen unutmayın.
-* **backend.Request.Headers. \<HeaderName\>** : çağrı arka uç için ayarlanabilen üstbilgi. Değiştirin *\<HeaderName\>* ayarlamak istediğiniz üst bilgi adı. Boş bir dize sağlayın, üst bilgi arka uç isteği dahil edilmez.
+* **backend.request.method**: Arka uç çağırmak için kullanılan HTTP yöntemi.
+* **backend.request.querystring. ParameterName\>: Arka uçtaki çağrı için ayarlanabilen bir sorgu dizesi parametresi. \<** * \<\> ParameterName'i* ayarlamak istediğiniz parametrenin adıile değiştirin. Boş dize sağlanırsa, parametrenin hala arka uç isteğine dahil olduğunu unutmayın.
+* **backend.request.headers. Üstbilgi\>Adı : Arka uçtaki çağrı için ayarlanabilen üstbilgi. \<** * \<Üstbilgi\> Name'i* ayarlamak istediğiniz üstbilginin adı ile değiştirin. Boş dize sağlarsanız, üstbilgi arka uç isteğine dahil edilmez.
 
-Değerleri uygulama ayarları ve parametreleri özgün istemci istekten başvurabilirsiniz.
+Değerler, özgün istemci isteğinden uygulama ayarlarına ve parametrelere başvuruyapabilir.
 
 Örnek bir yapılandırma aşağıdaki gibi görünebilir:
 
@@ -210,16 +210,16 @@ Değerleri uygulama ayarları ve parametreleri özgün istemci istekten başvura
 }
 ```
 
-### <a name="responseOverrides"></a>ResponseOverrides nesnesi tanımlayın
+### <a name="define-a-responseoverrides-object"></a><a name="responseOverrides"></a>Yanıtı tanımlaOverrides nesnesi
 
-İstemciye geri geçirilen yanıta yapılan değişiklikleri requestOverrides nesneyi tanımlar. Nesne, aşağıdaki özellikleri tarafından tanımlanır:
+RequestOverrides nesnesi istemciye geri geçirilen yanıtta yapılan değişiklikleri tanımlar. Nesne aşağıdaki özelliklerle tanımlanır:
 
-* **response.statusCode**: istemciye döndürülecek HTTP durum kodu.
-* **response.statusReason**: istemciye döndürülecek HTTP neden deyimi.
-* **Response.body**: istemciye döndürülecek gövdesini dize gösterimi.
-* **Response.Headers. \<HeaderName\>** : yanıtı istemciye için ayarlayabileceğiniz bir üst bilgisi. Değiştirin *\<HeaderName\>* ayarlamak istediğiniz üst bilgi adı. Boş bir dize sağlayın, üst bilgi yanıtta dahil edilmez.
+* **response.statusCode**: İstemciye döndürülecek HTTP durum kodu.
+* **response.statusReason**: HTTP neden tümceciği istemciye iade edilir.
+* **response.body**: İstemciye iade edilecek gövdenin dize gösterimidir.
+* **response.headers. Üstbilgi\>Adı : İstemcinin yanıtı için ayarlanabilen üstbilgi. \<** * \<Üstbilgi\> Name'i* ayarlamak istediğiniz üstbilginin adı ile değiştirin. Boş dizeyi sağlarsanız, üstbilgi yanıta dahil edilmez.
 
-Uygulama ayarları, özgün istemci İstek parametreleri ve parametre değerlerini arka uç yanıtı başvuruda bulunabilir.
+Değerler, uygulama ayarlarına, özgün istemci isteğinden parametrelere ve arka uç yanıtından parametrelere başvurur.
 
 Örnek bir yapılandırma aşağıdaki gibi görünebilir:
 
@@ -241,15 +241,15 @@ Uygulama ayarları, özgün istemci İstek parametreleri ve parametre değerleri
 }
 ```
 > [!NOTE] 
-> Bu örnekte, yanıt gövdesi doğrudan, dolayısıyla no ayarlanmış `backendUri` özelliği gereklidir. Örnek API sahte işlem için Azure işlevleri proxy'leri nasıl kullanacağınızı gösterir.
+> Bu örnekte, yanıt gövdesi doğrudan ayarlanır, bu nedenle hiçbir `backendUri` özellik gereklidir. Örnek, API'lerle alay etmek için Azure İşlemesi'ni nasıl kullanabileceğinizi gösterir.
 
-[Azure portalda]: https://portal.azure.com
-[HTTP Tetikleyicileri]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Azure portalında]: https://portal.azure.com
+[HTTP tetikleyicileri]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
-[RequestOverrides nesnesi tanımlayın]: #requestOverrides
-[ResponseOverrides nesnesi tanımlayın]: #responseOverrides
-[Uygulama ayarları]: #use-appsettings
-[Değişkenlerini kullanma]: #using-variables
-[Özgün istemci İstek parametreleri]: #request-parameters
-[arka uç yanıtı Parametreler]: #response-parameters
+[Bir istekOverrides nesnesi tanımlayın]: #requestOverrides
+[Yanıtı tanımlaOverrides nesnesi]: #responseOverrides
+[uygulama ayarları]: #use-appsettings
+[Değişken kullanma]: #using-variables
+[orijinal istemci isteğiparametreleri]: #request-parameters
+[arka uç yanıtıparametreleri]: #response-parameters

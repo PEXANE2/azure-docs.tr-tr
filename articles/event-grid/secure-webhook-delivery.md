@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid 'de Azure AD ile güvenli Web kancası teslimi
-description: Azure Event Grid kullanılarak Azure Active Directory korunan HTTPS uç noktalarına olayların nasıl teslim edileceğini açıklar
+title: Azure Etkinlik Ağı'nda Azure AD ile Güvenli WebHook teslimatı
+description: Azure Etkinlik Ağıt'ı kullanarak Azure Etkin Dizini tarafından korunan HTTPS uç noktalarına etkinlikleri nasıl teslim edileteceklerini açıklar
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,35 +8,35 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
 ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931548"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Korunan uç noktalara Azure Active Directory olayları yayımlayın
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Olayları Azure Active Directory korumalı uç noktalarına yayımlama
 
-Bu makalede, olay aboneliğiniz ve Web kancası uç noktanız arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından nasıl yararlanabilmeniz açıklanmaktadır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Bu makalede, Etkinlik Aboneliğiniz ile webhook bitiş noktanız arasındaki bağlantıyı güvence altına almak için Azure Etkin Dizin'den nasıl yararlanılanıncaaçıklanmaktadır. Azure AD Uygulamalarına ve hizmet ilkelerine genel bakış için [Microsoft kimlik platformuna (v2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)bölümüne bakın.
 
-Bu makale, tanıtım için Azure portal kullanır, ancak özellik CLı, PowerShell veya SDK 'lar kullanılarak da etkinleştirilebilir.
+Bu makalede, gösteri için Azure portalı kullanır, ancak özellik CLI, PowerShell veya SDK'lar kullanılarak da etkinleştirilebilir.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-an-azure-ad-application"></a>Azure AD uygulaması oluşturma
+## <a name="create-an-azure-ad-application"></a>Azure AD Uygulaması Oluşturma
 
-Korumalı uç noktanız için bir Azure AD uygulaması oluşturarak başlayın. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview
-    - Korumalı API 'nizi bir Daemon uygulaması tarafından çağrılacak şekilde yapılandırın.
+Korumalı bitiş noktanız için bir Azure REKLAM Uygulaması oluşturarak başlayın. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Korumalı API'nizi bir daemon uygulaması tarafından çağrılacak şekilde yapılandırın.
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Azure AD uygulamanızı kullanmak için Event Grid etkinleştirme
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Azure REKLAM Uygulamanızı kullanmak için Olay Kılavuzunu Etkinleştirme
 
-Azure AD uygulamanızda bir rol ve hizmet ilkesi oluşturmak için aşağıdaki PowerShell betiğini kullanın. Azure AD uygulamanızdan kiracı KIMLIĞI ve nesne KIMLIĞI gerekir:
+Azure AD Uygulamanızda bir rol ve hizmet ilkesi oluşturmak için aşağıdaki PowerShell komut dosyasını kullanın. Azure REKLAM Uygulamanızdan Kiracı Kimliği ve Nesne Kimliği'ne ihtiyacınız olacaktır:
 
     > [!NOTE]
     > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-1. Azure AD kiracı KIMLIĞINIZI kullanmak için PowerShell betiğinin $myTenantId değiştirin.
-1. PowerShell betiğinin $myAzureADApplicationObjectId Azure AD uygulamanızın nesne KIMLIĞINI kullanacak şekilde değiştirin
-1. Değiştirilen betiği çalıştırın.
+1. Azure AD Kiracı Kimliğinizi kullanmak için PowerShell komut dosyasının $myTenantId değiştirin.
+1. Azure REKLAM Uygulamanızın Nesne Kimliğini kullanmak için PowerShell komut dosyasının $myAzureADApplicationObjectId değiştirme
+1. Değiştirilmiş komut dosyasını çalıştırın.
 
 ```PowerShell
 # This is your Tenant Id. 
@@ -112,19 +112,19 @@ Write-Host $myApp.AppRoles
     
 ## <a name="configure-the-event-subscription"></a>Olay aboneliğini yapılandırma
 
-Olay aboneliğiniz için oluşturma akışında, ' Web kancası ' uç nokta türünü seçin. Uç nokta URI 'nizi aldıktan sonra, olay abonelikleri oluştur dikey penceresinin en üstündeki ek özellikler sekmesine tıklayın.
+Etkinlik aboneliğiniz için oluşturma akışında bitiş noktası türü 'Web Hook'u seçin. Bitiş noktası URI'nizi verdikten sonra, etkinlik abonelikleri oluşturma bıçağının üst kısmındaki ek özellikler sekmesine tıklayın.
 
-![Uç nokta türü Web kancasını seçin](./media/secure-webhook-delivery/select-webhook.png)
+![Uç nokta türü webhook'u seçin](./media/secure-webhook-delivery/select-webhook.png)
 
-Ek Özellikler sekmesinde, ' AAD kimlik doğrulaması kullan ' kutusunu işaretleyin ve kiracı KIMLIĞINI ve uygulama KIMLIĞINI yapılandırın:
+Ek özellikler sekmesinde, 'AAD kimlik doğrulamasını kullan' kutusunu işaretleyin ve Kiracı Kimliği ve Uygulama Kimliğini yapılandırın:
 
-* Azure AD kiracı KIMLIĞINI betiğin çıktısından kopyalayın ve AAD kiracı KIMLIĞI alanına girin.
-* Azure AD uygulama KIMLIĞI 'ni betiğin çıktısından kopyalayın ve AAD uygulama KIMLIĞI alanına girin.
+* Azure AD Kiracı Kimliğini komut dosyasının çıktısından kopyalayın ve AAD Kiracı Kimliği alanına girin.
+* Azure AD Uygulama Kimliğini komut dosyasının çıktısından kopyalayın ve AAD Uygulama Kimliği alanına girin.
 
-    ![Güvenli Web kancası eylemi](./media/secure-webhook-delivery/aad-configuration.png)
+    ![Güvenli Webhook eylemi](./media/secure-webhook-delivery/aad-configuration.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimatlarını izleme hakkında bilgi için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
-* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için bkz. [Event Grid Security and Authentication](security-authentication.md).
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
+* Olay teslimlerini izleme hakkında daha fazla bilgi için [Bkz.](monitor-event-delivery.md)
+* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için [Olay Izgara güvenliği ve kimlik doğrulama](security-authentication.md)sı'na bakın.
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

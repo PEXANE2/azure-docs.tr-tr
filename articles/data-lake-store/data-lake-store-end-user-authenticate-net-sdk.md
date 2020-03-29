@@ -1,6 +1,6 @@
 ---
-title: "Son kullanıcı kimlik doğrulaması: Azure Active Directory'yi kullanarak .NET SDK'sı ile Azure Data Lake depolama Gen1 | Microsoft Docs"
-description: .NET SDK'sı ile Azure Active Directory kullanarak son kullanıcı kimlik doğrulaması ile Azure Data Lake depolama Gen1 elde öğrenin
+title: 'Son kullanıcı kimlik doğrulaması: .NET SDK ile Azure Veri Gölü Depolama Gen1 ile Azure Active Directory | Microsoft Dokümanlar'
+description: .NET SDK ile Azure Active Directory'yi kullanarak Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması nasıl elde edilenöğrenin
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,49 +12,49 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66243723"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak son kullanıcı kimlik doğrulaması ile Azure Data Lake depolama Gen1
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
-> * [Java kullanma](data-lake-store-end-user-authenticate-java-sdk.md)
-> * [.NET SDK’yı kullanma](data-lake-store-end-user-authenticate-net-sdk.md)
+> * [Java'yı kullanma](data-lake-store-end-user-authenticate-java-sdk.md)
+> * [.NET SDK’sını kullanma](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python’u kullanma](data-lake-store-end-user-authenticate-python.md)
-> * [REST API’sini kullanma](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API kullanma](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
-Bu makalede, Azure Data Lake depolama Gen1 son kullanıcı kimlik doğrulaması yapmak için .NET SDK'sı kullanma hakkında bilgi edinin. .NET SDK kullanarak hizmetten hizmete kimlik doğrulaması ile Data Lake depolama Gen1 bkz [hizmetten hizmete kimlik doğrulaması .NET SDK kullanarak Data Lake depolama Gen1 ile](data-lake-store-service-to-service-authenticate-net-sdk.md).
+Bu makalede, Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması yapmak için .NET SDK'yı nasıl kullanacağınızı öğrenirsiniz. .NET SDK'yı kullanarak Data Lake Storage Gen1 ile servise doğrudoğrulama için [,.NET SDK'yı kullanarak Veri Gölü Depolama Gen1 ile servise hizmet kimlik doğrulaması'na](data-lake-store-service-to-service-authenticate-net-sdk.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Visual Studio 2013 veya üzeri**. Visual Studio 2019 aşağıdaki yönergeleri kullanın.
+## <a name="prerequisites"></a>Ön koşullar
+* **Visual Studio 2013 ve üzeri**. Aşağıdaki talimatlar Visual Studio 2019'u kullanınız.
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Active Directory "Yerel" uygulama oluşturma**. Adımları tamamlamış olmanız gerekir [Azure Active Directory kullanarak son kullanıcı kimlik doğrulaması ile Data Lake depolama Gen1](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Azure Etkin Dizini "Yerel" Uygulama Oluşturun.** [Azure Etkin Dizini'ni kullanarak Veri Gölü Depolama Gen1 ile Son kullanıcı kimlik doğrulamaadımlarını](data-lake-store-end-user-authenticate-using-active-directory.md)tamamlamış olmalısınız.
 
 ## <a name="create-a-net-application"></a>.NET uygulaması oluşturma
-1. Visual Studio'da **dosya** menüsünde **yeni**, ardından **proje**.
-2. Seçin **konsol uygulaması (.NET Framework)** ve ardından **sonraki**.
-3. İçinde **proje adı**, girin `CreateADLApplication`ve ardından **Oluştur**.
+1. Visual Studio'da **Dosya** menüsünü, **Yeni'yi**ve ardından **Project'i**seçin.
+2. **Konsol Uygulaması (.NET Framework) seçeneğini**belirleyin ve ardından **İleri'yi**seçin.
+3. **Proje adına**, `CreateADLApplication`girin ve sonra **Oluştur'u**seçin.
 
 4. NuGet paketlerini projenize ekleyin.
 
    1. Çözüm Gezgini'nde proje adına sağ tıklayın ve **NuGet Paketlerini Yönet**'e tıklayın.
-   2. **NuGet Paket Yöneticisi** sekmesinde, **Paket kaynağının** **nuget.org** olarak ayarlandığından ve **Ön sürümü dahil et** onay kutusunun işaretli olduğundan emin olun.
+   2. **NuGet Paket Yöneticisi** sekmesinde, **Paket kaynağının** **nuget.org** ayarlandıklarına ve **ön sürüm onay** kutusunu n için denildiğinden emin olun.
    3. Aşağıdaki NuGet paketlerini arayıp yükleyin:
 
       * `Microsoft.Azure.Management.DataLake.Store` - Bu öğreticide v2.1.3-preview kullanılır.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - Bu öğreticide v2.2.12 kullanılır.
 
-        ![NuGet kaynağı ekleme](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Yeni bir Azure Data Lake hesabı oluşturma")
-   4. **NuGet Paket Yöneticisi**'ni kapatın.
+        ![NuGet kaynağı ekleme](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Yeni bir Azure Veri Gölü hesabı oluşturma")
+   4. **NuGet Paket Yöneticisini**kapatın.
 
 5. Açık **Program.cs**
-6. Kullanarak yerine aşağıdaki satırlarla ifadeleri:
+6. Using deyimlerini aşağıdaki satırlarla değiştirin:
 
     ```csharp
     using System;
@@ -72,11 +72,11 @@ Bu makalede, Azure Data Lake depolama Gen1 son kullanıcı kimlik doğrulaması 
     ```     
 
 ## <a name="end-user-authentication"></a>Son kullanıcı kimlik doğrulaması
-Bu kod parçacığı, .NET istemci uygulamanıza ekleyin. Yer tutucu değerlerini (önkoşul olarak listelenen) bir Azure AD yerel uygulaması alınan değerlerle değiştirin. Bu kod parçacığı uygulamanızın kimlik doğrulaması sağlar **etkileşimli olarak** ile Data Lake depolama Gen1, yani Azure kimlik bilgilerinizi girmeniz istenir.
+Bu parçacığı .NET istemci uygulamanıza ekleyin. Yer tutucu değerlerini, Azure AD yerel uygulamasından alınan değerlerle (ön koşul olarak listelenen) değiştirin. Bu parçacık, Uygulamanızın kimliğini Veri Gölü Depolama Gen1 ile **etkileşimli olarak** doğrulamanızı sağlar, bu da Azure kimlik bilgilerinizi girmeniz istendiği anlamına gelir.
 
-Kullanım kolaylığı için aşağıdaki kod parçacığı yeniden yönlendirme URI'si herhangi bir Azure aboneliği için geçerli olan ve istemci kimliği için varsayılan değerleri kullanır. Aşağıdaki kod parçacığında, yalnızca Kiracı kimliğiniz için değer sağlamanız gerekir Verilen yönergeleri kullanarak Kiracı kimliği alabilir [Kiracı Kimliğinizi alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+Kullanım kolaylığı için aşağıdaki parçacık, istemci kimliği ve uri'yi herhangi bir Azure aboneliği için geçerli olan yeniden yönlendirme için varsayılan değerleri kullanır. Aşağıdaki snippet'te yalnızca kiracı kimliğinizin değerini sağlamanız gerekir. Kiracı [kimliğini al'da](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)verilen talimatları kullanarak Kiracı Kimliğini alabilirsiniz.
     
-- Main() işlevi aşağıdaki kodla değiştirin:
+- Main() işlevini aşağıdaki kodla değiştirin:
 
     ```csharp
     private static void Main(string[] args)
@@ -94,16 +94,16 @@ Kullanım kolaylığı için aşağıdaki kod parçacığı yeniden yönlendirme
     }
     ```
 
-Bir önceki kod parçacığı hakkında bilmeniz gereken birkaç şey:
+Bir önceki parçacık hakkında bilinmesi gereken birkaç şey:
 
-* Yukarıdaki kod parçacığında, bir yardımcı işlevleri kullanır `GetTokenCache` ve `GetCreds_User_Popup`. Bu yardımcı işlevleri için kod kullanılabilir [github'da burada](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
-* Öğreticiyi daha hızlı tamamlamanıza yardımcı olması için kod parçacığı tüm Azure abonelikleri için varsayılan olarak kullanılabilir bir yerel uygulama istemci Kimliğini kullanır. Böylece **bu kod parçacığını uygulamanızda olduğu gibi kullanabilirsiniz**.
-* Ancak, kendi Azure AD etki alanınızı ve uygulama istemci kimliğinizi kullanmak istemiyorsanız, bir Azure AD yerel uygulaması oluşturmanız ve ardından oluşturduğunuz uygulamaya ait Azure AD kiracı kimliği, istemci kimliği ve yeniden yönlendirme URI’sini kullanmanız gerekir. Bkz: [Data Lake depolama Gen1 ile son kullanıcı kimlik doğrulaması için Active Directory uygulaması oluşturma](data-lake-store-end-user-authenticate-using-active-directory.md) yönergeler için.
+* Önceki snippet bir yardımcı işlevleri `GetTokenCache` `GetCreds_User_Popup`kullanır ve. Bu yardımcı işlevlerin kodu [burada GitHub'da](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)mevcuttur.
+* Snippet, öğreticiyi daha hızlı tamamlamanıza yardımcı olmak için, varsayılan olarak tüm Azure abonelikleri için kullanılabilen yerel bir uygulama istemci kimliği kullanır. Böylece **bu kod parçacığını uygulamanızda olduğu gibi kullanabilirsiniz**.
+* Ancak, kendi Azure AD etki alanınızı ve uygulama istemci kimliğinizi kullanmak istemiyorsanız, bir Azure AD yerel uygulaması oluşturmanız ve ardından oluşturduğunuz uygulamaya ait Azure AD kiracı kimliği, istemci kimliği ve yeniden yönlendirme URI’sini kullanmanız gerekir. Bkz. Talimatlar [için Data Lake Storage Gen1 ile son kullanıcı kimlik doğrulaması için Etkin Dizin Uygulaması Oluşturun.](data-lake-store-end-user-authenticate-using-active-directory.md)
 
   
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure Data Lake depolama Gen1 ile kimlik doğrulaması için son kullanıcı kimlik doğrulaması kullanmayı öğrendiniz .NET SDK kullanarak. Şimdi, Azure Data Lake depolama Gen1 ile çalışması için .NET SDK'sı kullanma hakkında konuşmak aşağıdaki makaleleri da bakabilirsiniz.
+Bu makalede, .NET SDK kullanarak Azure Veri Gölü Depolama Gen1 ile kimlik doğrulaması yapmak için son kullanıcı kimlik doğrulamasını nasıl kullanacağınızı öğrendiniz. Artık .NET SDK'nın Azure Veri Gölü Depolama Gen1 ile çalışmak için nasıl kullanılacağı hakkında aşağıdaki makalelere bakabilirsiniz.
 
-* [Data Lake depolama Gen1 hesap yönetim işlemlerini .NET SDK'sını kullanma](data-lake-store-get-started-net-sdk.md)
-* [Veri işlemleri .NET SDK kullanarak Data Lake depolama Gen1](data-lake-store-data-operations-net-sdk.md)
+* [.NET SDK kullanarak Veri Gölü Depolama Gen1 hesap yönetimi işlemleri](data-lake-store-get-started-net-sdk.md)
+* [.NET SDK kullanarak Veri Gölü Depolama Gen1 veri işlemleri](data-lake-store-data-operations-net-sdk.md)
 

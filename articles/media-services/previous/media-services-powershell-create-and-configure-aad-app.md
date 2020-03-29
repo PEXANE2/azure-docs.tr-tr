@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services API'sine erişmek için bir Azure AD uygulaması oluşturmak için PowerShell kullanma | Microsoft Docs
-description: Azure Active Directory (Azure AD) uygulama oluşturma ve Azure Media Services API'sine erişim kadar ayarlamak için PowerShell kullanmayı öğrenin.
+title: Azure Medya Hizmetleri API'sine erişmek için bir Azure AD uygulaması oluşturmak için PowerShell'i kullanın | Microsoft Dokümanlar
+description: Bir Azure Etkin Dizin (Azure AD) uygulaması oluşturmak ve Azure Medya Hizmetleri API'sine erişmek için kurmak için PowerShell'i nasıl kullanacağınızı öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ff7f8bc27d358c667b10c0bd3383e78b20494303
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64680126"
 ---
-# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Azure Media Services API'sine ile kullanmak için bir Azure AD uygulaması oluşturmak için PowerShell kullanma
+# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Azure Medya Hizmetleri API'sini kullanmak üzere bir Azure AD uygulaması oluşturmak için PowerShell'i kullanın
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
-Bir PowerShell Betiği, Azure Media Services kaynaklarına erişmek için bir Azure Active Directory (Azure AD) uygulama ve hizmet sorumlusu oluşturmak için kullanmayı öğrenin.  
+Azure Media Hizmetleri kaynaklarına erişmek için bir Azure Active Directory (Azure AD) uygulaması ve hizmet ilkesi oluşturmak için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bir Azure hesabı. Bir hesabınız yoksa, başlayan bir [Azure ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/). 
-- Bir Media Services hesabı. Daha fazla bilgi için [Azure portalında bir Azure Media Services hesabı oluşturma](media-services-portal-create-account.md).
+- Bir Azure hesabı. Hesabınız yoksa, [Azure ücretsiz deneme sürümüyle](https://azure.microsoft.com/pricing/free-trial/)başlayın. 
+- Bir Media Services hesabı. Daha fazla bilgi için [bkz.](media-services-portal-create-account.md)
 
-- Azure PowerShell. Daha fazla bilgi için [Azure PowerShell'in nasıl kullanılacağına](https://docs.microsoft.com/powershell/azure/overview).
+- Azure PowerShell. Daha fazla bilgi için [Azure PowerShell'i nasıl kullanacağınız bilgisine](https://docs.microsoft.com/powershell/azure/overview)bakın.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="create-an-azure-ad-app-by-using-powershell"></a>PowerShell kullanarak bir Azure AD uygulamanızı oluşturma  
+## <a name="create-an-azure-ad-app-by-using-powershell"></a>PowerShell'i kullanarak bir Azure AD uygulaması oluşturun  
 
 ```powershell
 Connect-AzAccount
@@ -61,9 +61,9 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-- [Rol tabanlı erişim denetimini Azure PowerShell kullanarak yönetme](../../role-based-access-control/role-assignments-powershell.md)
-- [Sertifikaları kullanarak arka plan programları el ile yapılandırma](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
+- [Azure PowerShell'i kullanarak Rol Tabanlı Erişim Denetimini Yönetme](../../role-based-access-control/role-assignments-powershell.md)
+- [Sertifikaları kullanarak daemon uygulamalarını el ile yapılandırma](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanmaya başlama [dosyaları hesabınıza Yükleniyor](media-services-portal-upload-files.md).
+[Hesabınıza dosya yüklemeye](media-services-portal-upload-files.md)başlayın.

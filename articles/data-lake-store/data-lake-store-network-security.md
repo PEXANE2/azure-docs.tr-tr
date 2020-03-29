@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage 1. Nesil'de ağ güvenliği | Microsoft Docs
-description: Nasıl sanal ağ tümleştirmesi anlamak Azure Data Lake depolama Gen1 çalışır
+description: Azure Veri Gölü Depolama Gen1'de sanal ağ tümleştirmenin nasıl çalıştığını anlama
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612697"
 ---
-# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake depolama Gen1 için sanal ağ tümleştirmesi
+# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Veri Gölü Depolama Gen1 için sanal ağ entegrasyonu
 
-Bu makale için Azure Data Lake depolama Gen1 sanal ağ tümleştirmesi tanıtır. Sanal ağ tümleştirmesi ile hesaplarınızı yalnızca belirli sanal ağlardan ve alt ağlardan gelen trafiği kabul edecek şekilde yapılandırabilirsiniz. 
+Bu makalede, Azure Veri Gölü Depolama Gen1 için sanal ağ tümleştirmesi tanıtış. Sanal ağ tümleştirmesi ile hesaplarınızı yalnızca belirli sanal ağlardan ve alt ağlardan gelen trafiği kabul edecek şekilde yapılandırabilirsiniz. 
 
 Bu özellik, Data Lake Storage hesabınızı dışarıdan gelebilecek tehditlere karşı korumanıza yardımcı olur.
 
@@ -65,29 +65,29 @@ Data Lake Storage hesaplarını sanal ağ erişimiyle sınırlandırmaya ek olar
 Giden trafiği hedef hesap URL'sine göre filtrelemek için sanal ağınızda bir güvenlik duvarı çözümü kullanın. Yalnızca onaylanan Data Lake Storage 1. Nesil hesaplarına erişim izni verin.
 
 Kullanılabilen seçeneklerin bazıları şunlardır:
-- [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/overview): [Dağıtma ve Azure bir güvenlik duvarı yapılandırma](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) sanal ağınız için. Giden Data Lake Storage trafiğinin güvenliğini sağlayın, bilinen ve onaylı hesap URL'si ile kilitleyin.
-- [Ağ sanal Gereci](https://azure.microsoft.com/solutions/network-appliances/) Güvenlik Duvarı: Yöneticinize, yalnızca belirli Güvenlik Duvarı'nı ticari satıcılarla kullanımına izin verebilir. Aynı işlevi gerçekleştirmek için Azure Market'te bulunan ağ sanal gereci güvenlik duvarı çözümlerinden birini kullanın.
+- [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/overview): Sanal ağınızda bir [Azure Güvenlik Duvarı dağıtın ve yapılandırın](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Giden Data Lake Storage trafiğinin güvenliğini sağlayın, bilinen ve onaylı hesap URL'si ile kilitleyin.
+- [Sanal ağ gereci](https://azure.microsoft.com/solutions/network-appliances/) güvenlik duvarı: Yöneticiniz yalnızca belirli ticari güvenlik duvarı satıcılarının kullanılmasına izin veriyor olabilir. Aynı işlevi gerçekleştirmek için Azure Market'te bulunan ağ sanal gereci güvenlik duvarı çözümlerinden birini kullanın.
 
 > [!NOTE]
 > Veri yolunda güvenlik duvarı kullanmak yeni bir atlama eklenmesine neden olur. Bu durum ağ performansını ve uçtan uca veri alışverişini etkileyebilir. Kullanılabilen aktarım hızı ve bağlantı gecikme süresi bu durumdan etkilenebilir. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Data Lake depolama Gen1 sanal ağ tümleştirme desteği kullanılabilir öncesinde oluşturulmuş olan HDInsight kümeleri, bu yeni özellik destekleyecek şekilde yeniden oluşturulmalıdır.
+- Veri Gölü Depolama Gen1 sanal ağ tümleştirme desteği kullanılabilir olmadan önce oluşturulan HDInsight kümeleri bu yeni özelliği desteklemek için yeniden oluşturulmalıdır.
  
-- Yeni bir HDInsight kümesi oluşturduğunuzda ve sanal ağ tümleştirmesi etkinleştirilmiş bir Data Lake Storage 1. Nesil hesabını seçtiğinizde bu işlem başarısız olur. Öncelikle sanal ağ kuralını devre dışı bırakmanız gerekir. Alternatif olarak Data Lake Storage hesabının **Güvenlik duvarı ve sanal ağlar** dikey penceresinde **Tüm ağlardan ve hizmetlerden erişime izin ver**'i seçebilirsiniz. Son olarak sanal ağ kuralı yeniden etkinleştirerek veya devre dışı bırakmak seçerek önce HDInsight kümesi oluşturup **tüm ağlar ve hizmetlerden erişime izin ver**. Daha fazla bilgi için [Özel durumlar](#exceptions) bölümüne bakın.
+- Yeni bir HDInsight kümesi oluşturduğunuzda ve sanal ağ tümleştirmesi etkinleştirilmiş bir Data Lake Storage 1. Nesil hesabını seçtiğinizde bu işlem başarısız olur. Öncelikle sanal ağ kuralını devre dışı bırakmanız gerekir. Alternatif olarak Data Lake Storage hesabının **Güvenlik duvarı ve sanal ağlar** dikey penceresinde **Tüm ağlardan ve hizmetlerden erişime izin ver**'i seçebilirsiniz. Ardından, sanal ağ kuralını yeniden etkinleştirmeden veya **tüm ağlardan ve hizmetlerden erişime izin verme**seçeneğini kaldırmadan önce HDInsight kümesini oluşturun. Daha fazla bilgi için [Özel durumlar](#exceptions) bölümüne bakın.
 
-- Data Lake depolama Gen1 sanal ağ Tümleştirmesi ile işe yaramazsa [kimliklerini Azure kaynakları için yönetilen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Veri Gölü Depolama Gen1 sanal ağ tümleştirmesi [Azure kaynakları için yönetilen kimliklerle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)çalışmaz.
   
 - Sanal ağ tümleştirmesi etkin Data Lake Storage 1. Nesil hesabınızdaki dosya ve klasör verilerine portaldan erişim sağlayamazsınız. Bu kısıtlamaya sanal ağ içindeki VM'lerden erişim ve Veri Gezgini kullanımı gibi etkinlikler dahildir. Hesap yönetimi etkinlikleri çalışmaya devam eder. Sanal ağ tümleştirmesi etkin Data Lake Storage hesabınızdaki dosya ve klasör verilerine portal dışı kaynaklardan erişim sağlayabilirsiniz. Bu kaynaklara SDK erişimi, PowerShell betikleri ve portaldan başlatılmayan diğer tüm Azure hizmetleri dahildir. 
 
 ## <a name="configuration"></a>Yapılandırma
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1\. adım: Sanal ağınızı bir Azure AD hizmet uç noktası kullanmak için yapılandırma
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1. Adım: Sanal ağınızı bir Azure AD hizmet uç noktasını kullanacak şekilde yapılandırma
 
 1.  Azure portala gidin ve hesabınızda oturum açın.
  
-2.  [Yeni bir sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)aboneliğinizdeki. İsterseniz var olan bir sanal ağa da gidebilirsiniz. Sanal ağın Data Lake Storage 1. Nesil hesabıyla aynı bölgede olması gerekir.
+2.  Aboneliğinizde [yeni bir sanal ağ oluşturun.](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) İsterseniz var olan bir sanal ağa da gidebilirsiniz. Sanal ağın Data Lake Storage 1. Nesil hesabıyla aynı bölgede olması gerekir.
  
 3.  **Sanal ağ** dikey penceresinde **Hizmet uç noktaları**'nı seçin.
  
@@ -99,7 +99,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
      ![Select the Microsoft.AzureActiveDirectory hizmet uç noktasını seçme](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  Bağlantı izni vermek istediğiniz alt ağları seçin. **Add (Ekle)** seçeneğini belirleyin.
+6.  Bağlantı izni vermek istediğiniz alt ağları seçin. **Ekle'yi**seçin.
 
     ![Alt ağı seçme](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -107,7 +107,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
  
     ![Hizmet uç noktası ekleme başarılı](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2\. adım: İzin verilen sanal ağ veya alt ağ için Data Lake depolama Gen1 hesabınızı ayarlama
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2. Adım: Data Lake Storage 1. Nesil hesabınız için izin verilen sanal ağı veya alt ağı ayarlama
 
 1.  Sanal ağınızı yapılandırdıktan sonra aboneliğinizde [yeni bir Azure Data Lake Storage 1. Nesil hesabı](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account) oluşturun. İsterseniz var olan bir Data Lake Storage 1. Nesil hesabına da gidebilirsiniz. Data Lake Storage 1. Nesil hesabının sanal ağ ile aynı bölgede olması gerekir.
  
@@ -120,15 +120,15 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
 3.  **Seçili ağlar**'ı seçin.
  
-4.  **Var olan sanal ağı ekle**’yi seçin.
+4.  **Varolan sanal ağ ekle'yi**seçin.
 
     ![Var olan sanal ağı ekle](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  Bağlantıya izin vermek istediğiniz sanal ağları ve alt ağları seçin. **Add (Ekle)** seçeneğini belirleyin.
+5.  Bağlantıya izin vermek istediğiniz sanal ağları ve alt ağları seçin. **Ekle'yi**seçin.
 
     ![Sanal ağı ve alt ağları seçme](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  Sanal ağların ve alt ağların listede düzgün şekilde gösterildiğinden emin olun. **Kaydet**’i seçin.
+6.  Sanal ağların ve alt ağların listede düzgün şekilde gösterildiğinden emin olun. **Kaydet'i**seçin.
 
     ![Yeni kuralı kaydetme](media/data-lake-store-network-security/config-adls-4.png)
 

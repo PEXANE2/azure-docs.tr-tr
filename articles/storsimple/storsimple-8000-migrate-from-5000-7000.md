@@ -1,6 +1,6 @@
 ---
-title: Veri çubuğunda StorSimple 8000 serisi cihaz için 5000-7000 Serisi geçirme | Microsoft Docs
-description: Bir genel bakış ve önkoşullar geçiş özelliği sağlar.
+title: StorSimple 5000-7000 serisi verileri 8000 serisi cihaza geçirin| Microsoft Dokümanlar
+description: Geçiş özelliğine genel bir bakış ve ön koşullar sağlar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,116 +14,116 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631683"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>8000 serisi cihaz için StorSimple 5000-7000 serisinden veri geçirme
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 serisindeki verileri 8000 serisi cihaza geçirme
 
 > [!IMPORTANT]
-> - 31 Temmuz 2019, StorSimple 5000/7000 Serisi (EOS) destek durumu sonuna ulaşacak. StorSimple 5000/7000 Serisi müşteriler belgede açıklanan alternatifleri birine geçiş öneririz.
-> - Geçişi şu anda destekli bir işlemdir. StorSimple 5000-7000 Serisi cihazınızın 8000 serisi cihazına veri geçirmeyi düşünüyorsanız, Microsoft Support geçiş zamanlamak gerekir. Microsoft Support sonra aboneliğiniz geçiş için etkinleştirir. Daha fazla bilgi için bkz. nasıl [bir destek bileti açın](storsimple-8000-contact-microsoft-support.md).
-> - Hizmet isteği dosya sonra birkaç hafta Geçiş Planı yürütmek ve gerçekten geçişi başlatmak için beklemeniz gerekebilir.
-> - Microsoft Support başvurmadan önce gözden geçirin ve tamamlamak mutlaka [geçiş önkoşulları](#migration-prerequisites) makalesinde belirtilen.
+> - 31 Temmuz 2019'da StorSimple 5000/7000 serisi destek sonu (EOS) durumuna ulaşacak. StorSimple 5000/7000 serisi müşterilerin belgede açıklanan alternatiflerden birine geçiş yapmanızı öneririz.
+> - Geçiş şu anda yardımcı bir işlemdir. StorSimple 5000-7000 serisi aygıtınızdaki verileri 8000 serisi bir aygıta aktarmak istiyorsanız, Microsoft Desteği ile geçiş zamanlamanız gerekir. Microsoft Destek daha sonra geçiş aboneliğinizi etkinleştirecektir. Daha fazla bilgi için [Destek biletinin](storsimple-8000-contact-microsoft-support.md)nasıl açılacağını görün.
+> - Hizmet isteğini dosyaladıktan sonra, geçiş planını yürütmek ve geçişi gerçekten başlatmak birkaç hafta sürebilir.
+> - Microsoft Destek'e başvurmadan önce, makalede belirtilen [Geçiş ön koşullarının](#migration-prerequisites) gözden geçirilip tamamlandığından emin olun.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede sağlayan StorSimple 8000 serisi fiziksel cihazının verilerini veya bir 8010/8020 bulut Gereci geçirilecek StorSimple 5000-7000 Serisi müşterilere geçiş özelliği sunmaktadır. Bu makalede ayrıca bir 5000-7000 Serisi eski bir 8000 serisi fiziksel cihaza veya Bulut Gereci verileri geçirmek için gerekli adımları indirilebilir bir adım adım kılavuz bağlar.
+Bu makalede, StorSimple 5000-7000 serisi müşterilerin verilerini StorSimple 8000 serisi fiziksel aygıta veya 8010/8020 bulut cihazına geçirmelerine olanak tanıyan geçiş özelliği tanıtıştır. Bu makalede, 5000-7000 serisi eski bir cihazdan 8000 serisi fiziksel veya bulut aygıtına veri geçirmek için gereken adımların indirilebilir adım adım walkthrough'una da bağlantılar.
 
-Bu makalede, hem şirket içi 8000 serisi cihaz ek olarak StorSimple Cloud Appliance geçerlidir.
+Bu makale, hem şirket içi 8000 serisi cihaz hem de StorSimple Cloud Appliance için geçerlidir.
 
 
-## <a name="migration-feature-versus-host-side-migration"></a>Geçiş özelliğini konak tarafı geçiş karşılaştırması
+## <a name="migration-feature-versus-host-side-migration"></a>Ana bilgisayar tarafı geçişine karşı geçiş özelliği
 
-Geçiş özelliğini kullanarak verilerinizi taşıyabilir veya bir konak tarafı geçiş yaparak. Bu bölümde, her bir yöntemin Artıları ve eksileri dahil olmak üzere özelliklerini açıklar. Hangi yöntemini kullanmak, verileri geçirmek istediğiniz anlamak için bu bilgileri kullanın.
+Geçiş özelliğini kullanarak veya ana bilgisayar tarafı geçişi gerçekleştirerek verilerinizi taşıyabilirsiniz. Bu bölümde artıları ve eksileri de dahil olmak üzere her yöntemin özellikleri açıklanmaktadır. Verilerinizi geçirmek için hangi yöntemi takip etmek istediğinizi bulmak için bu bilgileri kullanın.
 
-Geçiş özelliğini 8000 serisi için olağanüstü durum kurtarma (DR) işlemi 7000/5000 Series'den benzetimini yapar. Bu özellik 8000 serisi biçimine azure'da 5000/7000 Serisi biçimden veri geçirmenizi sağlar. Geçiş işlemi StorSimple geçiş aracı kullanılarak başlatılır. Araç, indirme ve yedekleme meta verilerinin dönüştürülmesi 8000 serisi Cihazınızı başlar ve sonra cihazdaki birimleri kullanıma sunmak için en son yedeklemesini kullanır.
+Geçiş özelliği, 7000/5000 serisinden 8000 serisine kadar bir olağanüstü durum kurtarma (DR) işlemini simüle eder. Bu özellik, verileri Azure'da 5000/7000 seri biçiminden 8000 seri biçimine geçirmenize olanak tanır. Geçiş işlemi StorSimple Geçiş aracı kullanılarak başlatılır. Araç, 8000 serisi aygıttaki yedekleme meta verilerinin karşıdan yüksesini ve dönüşümlerini başlatır ve ardından aygıttaki birimleri ortaya çıkarmak için en son yedeklemeyi kullanır.
 
-|      | Uzmanları                                                                                                                                     |Simgeler                                                                                                                                                              |
+|      | Artıları                                                                                                                                     |Simgeler                                                                                                                                                              |
 |------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Geçiş işlemi 5000/7000 serisinin alınan yedeklemeler geçmişini korur.                                               | Bu geçiş kullanıcılar verilere erişmeye çalıştıklarında, verileri bu nedenle veri indirme maliyetler Azure'dan indirir.                                     |
-| 2.   | Veri yok konak tarafta geçirilir.                                                                                                     | İşlemi, yedekleme ve en son yedekleme (Geçiş aracını kullanarak tahmin edilebilir) 8000 serisinin ortaya başlangıcı arasındaki kapalı kalma süresi gerekir. |
-| 3.   | Bu işlem, tüm ilkeleri, bant genişliği şablonları, şifreleme ve diğer ayarları 8000 serisi cihazlarda korur.                      | Kullanıcı erişimini yalnızca kullanıcı tarafından erişilen verileri yeniden getirecek ve veri kümesinin tamamında yeniden doldurma değil.                                                  |
-| 4.   | Bu işlem, zaman uyumsuz olarak üretim etkilemeden gerçekleştirilir azure'da tüm eski yedeklemeler dönüştürmek için ek zaman gerektirir. | Geçiş yalnızca bir bulut yapılandırma düzeyinde gerçekleştirilebilir.  Bir bulut yapılandırmasında tek birimleri ayrı olarak geçirilemez                       |
+| 1.   | Geçiş işlemi, 5000/7000 serisinde alınan yedeklemelerin geçmişini korur.                                               | Kullanıcılar verilere erişmeye çalıştıklarında, bu geçiş verileri Azure'dan karşıdan indirir ve böylece veri indirme maliyetleri ne olur.                                     |
+| 2.   | Ana bilgisayar tarafında hiçbir veri geçirilir.                                                                                                     | İşlem, yedeklemenin başlangıcı ile 8000 serisinde su yüzüne çıkan en son yedekleme arasında kapalı kalma süresi ne kadar dır (geçiş aracı kullanılarak tahmin edilebilir). |
+| 3.   | Bu işlem, 8000 serisi aygıttaki tüm ilkeleri, bant genişliği şablonlarını, şifrelemeyi ve diğer ayarları korur.                      | Kullanıcı erişimi yalnızca kullanıcılar tarafından erişilen verileri geri getirir ve tüm veri kümesini yeniden sulandıramaz.                                                  |
+| 4.   | Bu işlem, Azure'daki tüm eski yedeklemeleri dönüştürmek için ek süre gerektirir ve bu yedeklemeler üretimi etkilemeden eşzamanlı olarak yapılır | Geçiş yalnızca bulut yapılandırma düzeyinde yapılabilir.  Bulut yapılandırmasındaki tek tek birimler ayrı olarak geçirilemez                       |
 
-Bir konak tarafı geçiş 8000 serisi bağımsız olarak ayarlama ve veriler için 8000 serisi cihaz 5000/7000 Serisi CİHAZDAN kopyalama sağlar. Bunun eşdeğeri olan bir depolama cihazından başka bir geçirme veri. Çeşitli araçlar Diskboss, robocopy gibi verileri kopyalamak için kullanılır.
+Ana bilgisayar geçişi, 8000 serisinin bağımsız olarak ayarlanmasına ve verilerin 5000/7000 serisi aygıttan 8000 serisi aygıta kopyalanmasına olanak tanır. Bu, verileri bir depolama aygıtından diğerine geçirmekle eşdeğerdir. Verileri kopyalamak için Diskboss, robocopy gibi çeşitli araçlar kullanılır.
 
-|      | Uzmanları                                                                                                                      |Simgeler                                                                                                                                                                                                      |
+|      | Artıları                                                                                                                      |Simgeler                                                                                                                                                                                                      |
 |------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Geçiş aşamalı bir şekilde bir birim temelinde yaklaşıldığında.                                               | Önceki yedekler (5000/7000 serisinin taken) 8000 serisi Cihazınızı kullanılamaz.                                                                                                       |
-| 2.   | Azure üzerinde bir depolama hesabına veri birleştirme olanak tanır.                                                       | İlk yedekleme 8000 serisinin bulutta Azure'a yedeklenmesi 8000 serisinin gereksinimlerini şirket tüm veriler daha uzun bir süre sürer.                                                                     |
-| 3.   | Başarılı bir geçiş tüm verileri gerecinde yerel. Verilere erişirken hiçbir gecikmeleri vardır. | Azure depolama alanı tüketimi, veriler 5000/7000 CİHAZDAN silinene kadar artacaktır.                                                                                                        |
-| 4.   |                                                                                                                           | Geçiş sırasında bu verilerin 7000/5000 Serisi cihaz büyük miktarda veri varsa, maliyetleri ve Azure'dan veri indirmeye ilgili gecikmeleri ödenmesini azure'dan indirilmesi gerekir. |
+| 1.   | Geçişe hacim bazında aşamalı olarak yaklaşılabilir.                                               | Önceki yedeklemeler (5000/7000 serisi yle alınan) 8000 serisi cihazda kullanılamaz.                                                                                                       |
+| 2.   | Azure'da verilerin tek bir depolama hesabında birleştirilmesine olanak tanır.                                                       | 8000 serisindeki bulutun ilk yedeklemesi daha uzun sürer, çünkü 8000 serisindeki tüm verilerin Azure'a yedeklemesi gerekir.                                                                     |
+| 3.   | Başarılı bir geçişin ardından, cihazın tüm verileri yereldir. Verilere erişirken gecikme yok. | Veriler 5000/7000 aygıtından silinene kadar Azure depolama tüketimi artar.                                                                                                        |
+| 4.   |                                                                                                                           | 7000/5000 serisi aygıtında büyük miktarda veri varsa, geçiş sırasında bu verilerin azure'dan indirilmesi gerekir ve bu da Azure'dan veri indirmeyle ilgili maliyetlere ve gecikmelere neden olur |
 
-Bu makalede yalnızca 8000 serisi cihaz 5000/7000'den geçiş özelliğe odaklanır. Konak tarafı geçiş hakkında daha fazla bilgi için Git [geçiş diğer depolama cihazlarından](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
+Bu makale, yalnızca 5000/7000 ile 8000 serisi aygıttan geçiş özelliğine odaklanır. Ana bilgisayar tarafı geçişi hakkında daha fazla bilgi için [diğer depolama aygıtlarından Geçiş'e](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)gidin.
 
-## <a name="migration-prerequisites"></a>Geçiş önkoşulları
+## <a name="migration-prerequisites"></a>Geçiş ön koşulları
 
-Eski 5000 veya 7000 Serisi Cihazınızı ve StorSimple 8000 serisi cihaz geçiş önkoşulları şunlardır.
+İşte eski 5000 veya 7000 serisi cihaz ve 8000 serisi StorSimple cihaz için geçiş ön koşulları vardır.
 
 > [!IMPORTANT]
-> Gözden geçirin ve Microsoft Support olan hizmet isteği dosya önce geçiş önkoşulları tamamlayın.
+> Microsoft Destek'e bir hizmet isteği sunmadan önce geçiş ön koşullarıgözden geçirin ve tamamlayın.
 
-### <a name="for-the-50007000-series-device-source"></a>5000/7000 Serisi cihaz (kaynak)
+### <a name="for-the-50007000-series-device-source"></a>5000/7000 serisi cihaz için (kaynak)
 
-Geçişe başlamadan önce şunlardan emin olun:
+Geçişe başlamadan önce şunları emin olun:
 
-* Bilgisayarınızda, 5000 veya cihaz 7000 Serisi kaynak; cihazın live veya aşağı.
+* 5000 veya 7000 serisi kaynak cihazınız var; cihaz canlı veya aşağı olabilir.
 
     > [!IMPORTANT]
-    > Geçiş süreci boyunca bu cihaz seri erişimi olmasını öneririz. Cihaz sorunları var olmalıdır, seri erişim gidermeye yardımcı olabilir.
+    > Geçiş işlemi boyunca bu aygıta seri erişime sahip olduğunuzu öneririz. Herhangi bir aygıt sorunu olması halinde, seri erişim sorun giderme konusunda yardımcı olabilir.
 
-* Yazılım sürümü v2.1.1.518 5000 veya 7000 Serisi kaynak cihazınız çalışıyor veya üzeri. Önceki sürümleri desteklenmez.
-* 5000 veya 7000 Serisi çalıştığı sürümünü doğrulamak için Web kullanıcı Arabirimi sağ üst köşesinde arayın. Bu, cihazınızın çalışan yazılım sürümü görüntülemelidir. Geçiş için 5000 veya 7000 Serisi v2.1.1.518 çalıştırıyor olmalıdır.
+* 5000 veya 7000 serisi kaynak cihazınız v2.1.1.518 veya sonraki yazılım sürümünü çalıştırıyor. Önceki sürümler desteklenmez.
+* 5000 veya 7000 serisinin çalıştığını doğrulamak için Web UI'nizin sağ üst köşesine bakın. Bu, cihazınızın çalıştırdığı yazılım sürümünü görüntülemelidir. Geçiş için, 5000 veya 7000 serisi v2.1.1.518 çalışıyor olmalıdır.
 
-    ![Eski cihaz üzerinde yazılım sürümü](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
+    ![Eski aygıtta yazılım sürümünü denetleme](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Canlı Cihazınızı v2.1.1.518 çalışmıyor ya da daha sonra lütfen sisteminiz için gerekli en düşük sürümü yükseltin. Ayrıntılı yönergeler için başvurmak [v2.1.1.518 için sisteminizi yükseltin](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
-    * V2.1.1.518 çalıştırıyorsanız, web kullanıcı Arabirimi için kayıt defteri geri yükleme hatalarının herhangi bir bildirim olup olmadığını görmek için gidin. Kayıt defteri geri yükleme işlemi başarısız oldu, kayıt defterini geri yüklemeyi çalıştırın. Nasıl daha fazla bilgi için Git [kayıt defterini geri yüklemeyi Çalıştır](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
-    * V2.1.1.518 çalışmıyordu aşağı bir cihazınız varsa v2.1.1.518 çalıştıran yeni bir cihaza bir yük devretme gerçekleştirin. 5000/7000 serisinin StorSimple cihazınızın DR için ayrıntılı yönergeler için bkz.
-    * Bir bulut anlık görüntüsünü alarak cihazınız için verileri yedekleyin.
-    * Kaynak cihazda çalışmakta olan tüm diğer etkin yedekleme işlerini denetleyin. Bu StorSimple veri koruma konsol konağı işleri içerir. Geçerli işlerinin tamamlanmasını bekleyin.
+    * Canlı cihazınız v2.1.1.518 veya daha yeni bir şekilde çalışmıyorsa, lütfen sisteminizi gerekli minimum sürüme yükseltin. Ayrıntılı talimatlar için [sisteminizi v2.1.1.518'e yükseltin'e](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)bakın.
+    * V2.1.1.518 çalıştırıyorsanız, kayıt defteri geri yükleme hataları için herhangi bir bildirim olup olmadığını görmek için web UI'ye gidin. Kayıt defteri geri yüklemesi başarısız olduysa, kayıt defteri geri yüklemeyi çalıştırın. Daha fazla bilgi [için, kayıt defteri geri yükleme](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)çalıştırın nasıl gidin.
+    * V2.1.1.518 çalışmayan bir aşağı aygıtınız varsa, v2.1.1.518 çalıştıran bir değiştirme aygıtına bir hata gerçekleştirin. Ayrıntılı talimatlar için 5000/7000 serisi StorSimple cihazınızın DR'sine bakın.
+    * Bulut anlık görüntüsünü alarak cihazınızın verilerini yedekle.
+    * Kaynak aygıtta çalışan diğer etkin yedekleme işlerini denetleyin. Buna StorSimple Veri Koruma Konsolu ana bilgisayardaki işler de dahildir. Geçerli işlerin tamamlanmasını bekleyin.
 
 
-### <a name="for-the-8000-series-physical-device-target"></a>8000 serisi fiziksel cihazının (hedef)
+### <a name="for-the-8000-series-physical-device-target"></a>8000 serisi fiziksel cihaz (hedef) için
 
-Geçişe başlamadan önce şunlardan emin olun:
+Geçişe başlamadan önce şunları emin olun:
 
-* Hedef 8000 serisi Cihazınızı, kayıtlı ve çalışır durumdadır. Daha fazla bilgi için bkz. nasıl [StorSimple Yöneticisi hizmeti ile StorSimple Cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md).
-* 8000 serisi Cihazınızı en son StorSimple 8000 serisi güncelleştirme 5'in yüklü olan ve 6.3.9600.17845 veya sonraki bir sürümü çalışıyor. Cihazınızı en son güncelleştirmelerin yüklü olmaması durumunda, yükseltmeye devam etmeden önce en son güncelleştirmeleri yüklemeniz gerekir. Daha fazla bilgi için bkz. nasıl [8000 serisi Cihazınızı en son güncelleştirmeyi yükleme](storsimple-8000-install-update-5.md).
-* Azure aboneliğinizi geçiş için etkin. Aboneliğinizin etkin değilse, geçiş için aboneliğinizi etkinleştirmek için Microsoft Support başvurun.
+* Hedef 8000 serisi cihazınız kayıtlı ve çalışıyor. Daha fazla bilgi için [StorSimple cihazınızı StorSimple Manager hizmetiyle nasıl dağıtılayabilirsiniz.](storsimple-8000-deployment-walkthrough-u2.md)
+* 8000 serisi cihazınız da en son StorSimple 8000 Serisi Güncelleme 5 yüklü ve 6.3.9600.17845 veya daha sonraki sürümü çalışıyor. Aygıtınızda en son güncelleştirmeler yüklü değilse, geçişe devam etmeden önce en son güncelleştirmeleri yüklemeniz gerekir. Daha fazla bilgi için, [8000 serisi cihazınıza en son güncelleştirmeyi](storsimple-8000-install-update-5.md)nasıl yükleyebilirsiniz.
+* Azure aboneliğiniz geçiş için etkinleştirildi. Aboneliğiniz etkinleştirilemiyorsa, aboneliğinizi geçiş için etkinleştirmek için Microsoft Destek'e başvurun.
 
-### <a name="for-the-80108020-cloud-appliance-target"></a>8010/8020 bulut Gereci için (hedef)
+### <a name="for-the-80108020-cloud-appliance-target"></a>8010/8020 bulut cihazı için (hedef)
 
-Geçişe başlamadan önce emin olun:
+Geçişe başlamadan önce şunları sağlayın:
 
-* Hedef bulut gereciniz, kayıtlı ve çalışır durumdadır. Daha fazla bilgi için bkz. nasıl [Dağıt ve StorSimple bulut Gereci yönetme](storsimple-8000-cloud-appliance-u2.md).
-* En son StorSimple 8000 serisi güncelleştirme 5 yazılım sürümü 6.3.9600.17845 cloud appliance'ınız çalışıyor. Bulut gereciniz güncelleştirme 5 çalışmıyorsa geçirme işlemine devam etmeden önce yeni güncelleştirme 5 bulut gerecini oluşturun. Daha fazla bilgi için bkz. nasıl [8010/8020 bulut Gereci oluşturma](storsimple-8000-cloud-appliance-u2.md).
+* Hedef bulut cihazınız kayıtlı ve çalışıyor. Daha fazla bilgi için StorSimple Cloud Appliance'ı nasıl [dağıtıp yönetebilirsiniz.](storsimple-8000-cloud-appliance-u2.md)
+* Bulut cihazınız en son StorSimple 8000 Serisi Güncelleme 5 yazılım sürümünü 6.3.9600.17845 olarak çalıştırıyor. Bulut cihazınız Güncelleme 5'i çalıştırmıyorsa, geçişe geçmeden önce yeni bir Update 5 bulut cihazı oluşturun. Daha fazla bilgi için [8010/8020 bulut cihazının](storsimple-8000-cloud-appliance-u2.md)nasıl oluşturulabildiğini öğrenin.
 
-### <a name="for-the-computer-running-storsimple-migration-tool"></a>StorSimple geçiş aracını çalıştıran bir bilgisayar için
+### <a name="for-the-computer-running-storsimple-migration-tool"></a>StorSimple Geçiş aracını çalıştıran bilgisayar için
 
-StorSimple geçiş aracı, 5000-7000 Serisi için 8000 serisi bir cihaza bir Storsimple'dan verileri geçirmek için sağlayan bir kullanıcı Arabirimi tabanlı bir araçtır. StorSimple geçiş aracını yüklemek için aşağıdaki gereksinimleri karşılayan bir bilgisayar kullanın.
+StorSimple Geçiş aracı, StorSimple 5000-7000 serisindeki verileri 8000 serisi bir aygıta geçirmenizi sağlayan Kullanıcı Arabirimi tabanlı bir araçtır. StorSimple Geçiş aracını yüklemek için aşağıdaki gereksinimleri karşılayan bir bilgisayar kullanın.
 
-Bilgisayarın Internet bağlantısı olduğundan ve:
+Bilgisayar internet bağlantısı na sahiptir ve:
 
-* Aşağıdaki işletim sistemi çalıştıran
+* Aşağıdaki işletim sistemini çalıştırıyor
     * Windows 10.
-    * Windows Server 2012 R2 (veya üzeri) StorSimple geçiş aracını yüklemek için.
-* .NET 4.5.2'nin yükledi.
-* En az 5 GB boş alan aracını yükleme ve kullanma için vardır.
+    * Windows Server 2012 R2 (veya üstü) StorSimple Geçiş aracını yüklemek için.
+* .NET 4.5.2 yüklü.
+* Aracı yüklemek ve kullanmak için en az 5 GB boş alana sahiptir.
 
 > [!TIP]
-> StorSimple cihazınız için bir Windows Server konağının bağlıysa, Windows Server ana bilgisayarında geçiş aracı yükleyebilirsiniz.
+> StorSimple aygıtınız bir Windows Server ana bilgisayarına bağlıysa, geçiş aracını Windows Server ana bilgisayarına yükleyebilirsiniz.
 
-#### <a name="to-install-storsimple-migration-tool"></a>StorSimple geçiş aracını yüklemek için
+#### <a name="to-install-storsimple-migration-tool"></a>StorSimple Geçiş aracını yüklemek için
 
-StorSimple geçiş aracı bilgisayarınıza yüklemek için aşağıdaki adımları gerçekleştirin.
+Bilgisayarınızda StorSimple Geçiş aracını yüklemek için aşağıdaki adımları gerçekleştirin.
 
-1. Klasörü kopyalama _StorSimple8000SeriesMigrationTool_ Windows bilgisayarınıza. Yazılım kopyalandığı sürücüsünde yeterli alan olduğunu doğrulayın.
+1. _StorSimple8000SeriesMigrationTool_ klasörünü Windows bilgisayarınıza kopyalayın. Yazılımın kopyalandığı sürücünün yeterli alana sahip olduğundan emin olun.
 
-    Aracı yapılandırma dosyasını Aç _StorSimple8000SeriesMigrationTool.exe.config_ klasöründe. Dosyanın bir parçacığı aşağıda verilmiştir.
+    Araç config _dosyasını açın StorSimple8000SeriesMigrationTool.exe.config_ klasöründe. İşte dosyanın parçacığı.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -134,20 +134,20 @@ StorSimple geçiş aracı bilgisayarınıza yüklemek için aşağıdaki adımla
         <add key="ResourceGroupName" value="YourResourceGroupName" />
 
     ```
-2. Anahtarlar için karşılık gelen değerleri düzenleyin ve değiştirin:
+2. Tuşlara karşılık gelen değerleri edin ve değiştirin:
 
-    * `UserName` – Azure portalında oturum açmak için kullanıcı adı.
-    * `SubscriptionName and SubscriptionId` – Adı ve kimliği Azure aboneliğiniz için. StorSimple cihaz Yöneticisi hizmetinize giriş sayfası, altında **genel**, tıklayın **özellikleri**. Abonelik adı kopyalayın ve abonelik kimliği, hizmetiniz ile ilişkili.
-    * `ResourceName` – Azure portalında StorSimple cihaz Yöneticisi hizmetinizin adını. Ayrıca hizmet özellikleri altında gösterilir.
-    * `ResourceGroup` – Azure portalında StorSimple cihaz Yöneticisi hizmetiniz ile ilişkili kaynak grubunun adı. Ayrıca hizmet özellikleri altında gösterilir.
-    ![Hedef cihaz için onay hizmet özellikleri](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId` – Azure Active Directory Kiracı Kimliğini Azure portalında. Microsoft Azure için bir yönetici olarak oturum açın. Microsoft Azure portalında **Azure Active Directory**. Altında **Yönet**, tıklayın **özellikleri**. Kiracı kimliği görüntülenir **dizin kimliği** kutusu.
-    ![İçin Azure Active Directory Kiracı kimliği denetle](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
+    * `UserName`– Azure portalında oturum açmak için kullanıcı adı.
+    * `SubscriptionName and SubscriptionId`– Azure aboneliğiniz için ad ve kimlik. StorSimple Device Manager hizmet açılış sayfanızda, **Genel**altında **Özellikler'i**tıklatın. Hizmetinizle ilişkili Abonelik adını ve Abonelik Kimliğini kopyalayın.
+    * `ResourceName`– Azure portalındaki StorSimple Device Manager hizmetinizin adı. Ayrıca hizmet özellikleri altında gösterilir.
+    * `ResourceGroup`– Azure portalındaki StorSimple Device Manager hizmetinizle ilişkili kaynak grubunun adı. Ayrıca hizmet özellikleri altında gösterilir.
+    ![Hedef aygıt için servis özelliklerini denetleme](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
+    * `TenantId`– Azure portalında Azure Active Directory Kiracı Kimliği. Yönetici olarak Microsoft Azure'da oturum açın. Microsoft Azure portalında **Azure Etkin Dizini'ni**tıklatın. **Yönet**'in altında **Özellikler**’e tıklayın. Kiracı kimliği **Dizin Kimliği** kutusunda gösterilir.
+    ![Azure Etkin Dizini için Kiracı Kimliğini Denetleme](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
-3.  Yapılandırma dosyasına yapılan değişiklikleri kaydedin.
-4.  Çalıştırma _StorSimple8000SeriesMigrationTool.exe_ aracını başlatmak için. Kimlik bilgileri istendiğinde, Azure portalında aboneliğinizle ilişkili kimlik bilgilerini sağlayın. 
-5.  StorSimple Geçiş Aracı kullanıcı Arabirimi görüntülenir.
+3.  Config dosyasına yapılan değişiklikleri kaydedin.
+4.  Aracı başlatmak için _StorSimple8000SeriesMigrationTool.exe_ çalıştırın. Kimlik bilgileri istendiğinde, Azure portalında aboneliğinizle ilişkili kimlik bilgilerini sağlayın. 
+5.  StorSimple Geçiş aracı Kullanıcı Arabirimi görüntülenir.
   
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Adım adım yönergeler için karşıdan yükleme [veri bir StorSimple 5000-7000 Serisi 8000 serisi bir cihaza geçirme](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).
+[StorSimple 5000-7000 serisinden 8000 serisi bir cihaza verileri](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)nasıl geçirilir ile ilgili adım adım yönergeleri indirin.

@@ -1,6 +1,6 @@
 ---
-title: Azure MFA Kullanıcı verileri toplama-Azure Active Directory
-description: Azure Multi-Factor Authentication kullanıcıların kimliğini doğrulamaya yardımcı olmak için hangi bilgiler kullanılır?
+title: Azure MFA kullanıcı veri toplama - Azure Active Directory
+description: Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulaması tarafından kimlik doğrulamasına yardımcı olmak için hangi bilgiler kullanılır?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,182 +12,182 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848298"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication Kullanıcı verisi koleksiyonu
+# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Çok Faktörlü Kimlik Doğrulama kullanıcı veri toplama
 
-Bu belgede, kaldırmak istediğiniz olayda Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve Azure MFA (bulut tabanlı) tarafından toplanan kullanıcı bilgilerinin nasıl bulunacağı açıklanmaktadır.
+Bu belge, kaldırmak istediğiniz durumlarda Azure Çok Faktörlü Kimlik Doğrulama Sunucusu (MFA Server) ve Azure MFA (Bulut Tabanlı) tarafından toplanan kullanıcı bilgilerinin nasıl bulunacağını açıklar.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>Toplanan bilgiler
 
-MFA sunucusu, NPS uzantısı ve Windows Server 2016 Azure MFA AD FS bağdaştırıcısı, aşağıdaki bilgileri toplar ve 90 gün boyunca depolar.
+MFA Server, NPS Uzantı ve Windows Server 2016 Azure MFA AD FS Bağdaştırıcısı aşağıdaki bilgileri 90 gün boyunca toplar ve saklar.
 
-Kimlik doğrulama denemeleri (Raporlama ve sorun giderme için kullanılır):
+Kimlik Doğrulama Denemeleri (raporlama ve sorun giderme için kullanılır):
 
 - Zaman damgası
 - Kullanıcı adı
 - Ad
 - Soyadı
 - E-posta Adresi
-- User Group
-- Kimlik doğrulama yöntemi (telefon araması, SMS mesajı, mobil uygulama, OATH belirteci)
-- Telefon araması modu (Standart, PIN)
-- Kısa mesaj yönü (tek yönlü, çift yönlü)
-- Kısa mesaj modu (OTP, OTP + PIN)
-- Mobil uygulama modu (Standart, PIN)
-- OATH belirteci modu (Standart, PIN)
+- Kullanıcı Grubu
+- Kimlik Doğrulama Yöntemi (Telefon Görüşmesi, Kısa Mesaj, Mobil Uygulama, YEMIN Belirteci)
+- Telefon Arama Modu (Standart, PIN)
+- Metin İleti Yönü (Tek Yönlü, İki Yönlü)
+- Metin Mesaj Modu (OTP, OTP + PIN)
+- Mobil Uygulama Modu (Standart, PIN)
+- OATH Belirteç Modu (Standart, PIN)
 - Kimlik Doğrulama Türü
 - Uygulama Adı
-- Birincil çağrı ülke kodu
-- Birincil arama telefon numarası
-- Birincil çağrı uzantısı
-- Birincil çağrının kimliği doğrulandı
-- Birincil çağrı sonucu
-- Yedekleme çağrısı ülke kodu
-- Yedekleme araması telefon numarası
-- Yedekleme çağrısı uzantısı
-- Yedekleme çağrısının kimliği doğrulandı
-- Yedekleme çağrısı sonucu
-- Genel kimlik doğrulamalı
-- Genel sonuç
+- Birincil Arama Ülke Kodu
+- Birincil Arama Telefon Numarası
+- Birincil Arama Uzantısı
+- Birincil Çağrı Kimlik Doğrulaması
+- Birincil Çağrı Sonucu
+- Yedek Arama Ülke Kodu
+- Yedek Arama Telefon Numarası
+- Yedek Arama Uzantısı
+- Yedek Arama Kimlik Doğrulaması
+- Yedek Arama Sonucu
+- Genel Kimlik Doğrulaması
+- Genel Sonuç
 - Sonuçlar
-- Denetiminden
+- Kimlik doğrulaması
 - Sonuç
-- IP adresi başlatılıyor
+- IP Adresi Başlatma
 - Cihazlar
-- Cihaz belirteci
+- Aygıt Belirteci
 - Cihaz Türü
-- Mobil uygulama sürümü
+- Mobil Uygulama Sürümü
 - İşletim Sistemi Sürümü
 - Sonuç
-- Bildirim için kullanılan denetim
+- Bildirim Için Kullanılan Denetim
 
-Etkinleştirmeler (Microsoft Authenticator mobil uygulamada bir hesabı etkinleştirmeye çalışır):
+Etkinleştirmeler (Microsoft Authenticator mobil uygulamasında bir hesabı etkinleştirme girişimleri):
 - Kullanıcı adı
 - Hesap Adı
 - Zaman damgası
-- Etkinleştirme kodu sonucunu al
-- Başarıyı etkinleştir
-- Etkinleştirme hatası
-- Etkinleştirme durumu sonucu
-- Cihaz adı
+- Etkinleştirme Kodu Sonucu Alın
+- Başarıyı Etkinleştir
+- Hatayı Etkinleştir
+- Etkinleştirme Durumu Sonucu
+- Cihaz Adı
 - Cihaz Türü
 - Uygulama Sürümü
-- OATH belirteci etkin
+- YEMIN Belirteci Etkin
 
-Bloklar (engellenen durumu ve raporlamayı tespit etmek için kullanılır):
+Bloklar (engellenen durumu belirlemek ve raporlama kiçin kullanılır):
 
-- Engelleme zaman damgası
-- Kullanıcı adına göre engelle
+- Blok Zaman Damgası
+- Kullanıcı Adına Göre Blok
 - Kullanıcı adı
 - Ülke Kodu
 - Telefon Numarası
-- Telefon numarası biçimli
-- Uzantı
-- Uzantıyı temizle
+- Telefon Numarası Biçimlendirilmiş
+- Dahili numara
+- Temizleme Uzantısı
 - Engellendi
-- Engelleme Nedeni
-- Tamamlama zaman damgası
-- Tamamlanma nedeni
+- Blok Nedeni
+- Tamamlama Zaman Damgası
+- Tamamlama Nedeni
 - Hesap Kilitli
-- Sahtekarlık Uyarısı
-- Sahtekarlık uyarısı engellenmedi
+- Dolandırıcılık Uyarısı
+- Dolandırıcılık Uyarısı Engellenmiyor
 - Dil
 
-Atlanır (Raporlama için kullanılır):
+Baypas (raporlama için kullanılır):
 
-- Zaman damgasını atla
-- Saniye Cinsinden Geçiş Süresi
-- Kullanıcı adına göre atla
+- Zaman Damgasını Bayındır
+- Saniye atlama
+- Kullanıcı Adına Göre Bypass
 - Kullanıcı adı
 - Ülke Kodu
 - Telefon Numarası
-- Telefon numarası biçimli
-- Uzantı
-- Uzantıyı temizle
-- Atlama nedeni
-- Tamamlama zaman damgası
-- Tamamlanma nedeni
-- Atlama kullanıldı
+- Telefon Numarası Biçimlendirilmiş
+- Dahili numara
+- Temizleme Uzantısı
+- Baypas Nedeni
+- Tamamlama Zaman Damgası
+- Tamamlama Nedeni
+- Bypass Kullanılan
 
-Değişiklikler (Kullanıcı değişikliklerini MFA sunucusu veya Azure AD ile eşitlemek için kullanılır):
+Değişiklikler (kullanıcı değişikliklerini MFA Server veya Azure AD ile eşitlemek için kullanılır):
 
-- Zaman damgasını Değiştir
+- Zaman Damgasını Değiştir
 - Kullanıcı adı
-- Yeni ülke kodu
-- Yeni telefon numarası
-- Yeni uzantı
-- Yeni yedek ülke kodu
-- Yeni yedek telefon numarası
-- Yeni yedekleme uzantısı
+- Yeni Ülke Kodu
+- Yeni Telefon Numarası
+- Yeni Uzantı
+- Yeni Yedekleme Ülke Kodu
+- Yeni Yedek Telefon Numarası
+- Yeni Yedekleme Uzantısı
 - Yeni PIN
-- PIN Değişimi Gerekiyor
-- Eski cihaz belirteci
-- Yeni cihaz belirteci
+- PIN Değişimi Gerekli
+- Eski Cihaz Belirteci
+- Yeni Cihaz Belirteci
 
-## <a name="gather-data-from-mfa-server"></a>MFA sunucusundan veri toplama
+## <a name="gather-data-from-mfa-server"></a>MFA Server'dan veri toplama
 
-MFA sunucusu sürüm 8,0 veya üzeri için aşağıdaki işlem, yöneticilerin kullanıcılar için tüm verileri dışarı aktaralmasına izin verir:
+MFA Server sürüm 8.0 veya üzeri için aşağıdaki işlem yöneticilerin kullanıcılar için tüm verileri dışa aktarmasına olanak tanır:
 
-- MFA sunucunuzda oturum açın, **Kullanıcılar** sekmesine gidin, söz konusu kullanıcıyı seçin ve **Düzenle** düğmesine tıklayın. Kullanıcıya geçerli MFA ayarlarını sağlamak için her sekmenin ekran görüntülerini (alt-PrtScn) alın.
-- MFA sunucusunun komut satırından, JSON biçimli bir dosya oluşturmak için yolu yükleme `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` göre değiştirerek aşağıdaki komutu çalıştırın.
-- Yöneticiler, belirli bir kullanıcı için toplanan veya daha büyük bir raporlama çözümüne dahil olan tüm MFA bulut hizmeti bilgilerini dışarı aktarma seçeneği olarak Web hizmeti SDK GetUserGdpr işlemini de kullanabilir.
-- Eklenen veya değiştirilen Kullanıcı kaydının tüm örneklerini bulmak için, "\<username >" (aramaya tırnak işareti dahil) için `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` ve tüm yedeklemeleri arayın.
-   - Bu kayıtlar MFA sunucusu UX, günlük bölümü, günlük dosyaları sekmesindeki **"Kullanıcı değişikliklerini günlüğe kaydet"** seçeneğinin işaretini kaldırarak sınırlı olabilir (ancak ortadan kaldırılamaz).
-   - Syslog yapılandırıldıysa ve **"Kullanıcı değişikliklerini günlüğe kaydet"** , MFA sunucusu UX, günlük bölümü, syslog sekmesinde işaretlenirse, bunun yerine günlük girdileri Syslog 'dan toplanabilir.
-- MultiFactorAuthSvc. log ve, kimlik doğrulama girişimleriyle ilgili diğer MFA sunucusu günlük dosyalarındaki Kullanıcı adının diğer örnekleri, işletimsel ve MultiFactorAuthGdpr. exe dışarı aktarma veya Web hizmeti SDK 'Sı kullanılarak verilen bilgilere göre ele alınır. GetUserGdpr.
+- MFA Sunucunuzda oturum açın, **Kullanıcılar** sekmesine gidin, söz konusu kullanıcıyı seçin ve **Düzenleme** düğmesini tıklatın. Kullanıcıya geçerli MFA ayarlarını sağlamak için her sekmeye ait ekran görüntülerini (Alt-PrtScn) alın.
+- MFA Server'ın komut satırından, JSON biçimlendirilmiş bir `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` dosya oluşturmak için yüklemenize göre yolu değiştirerek aşağıdaki komutu çalıştırın.
+- Yöneticiler ayrıca, Belirli bir kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini dışa aktarmak veya daha büyük bir raporlama çözümüne dahil etmek için Web Hizmeti SDK GetUserGdpr işlemini bir seçenek olarak kullanabilir.
+- Kullanıcı `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` kaydının eklenen\<veya değiştirilen tüm örneklerini bulmak için " kullanıcı adı>" (aramadaki teklifleri içerir) için yapılan yedeklemeler.
+   - Bu kayıtlar, MFA Server UX, Günlük bölümü, Günlük Dosyaları sekmesindeki **"Kullanıcı değişikliklerini günlüğe kaydetme"** işaretlerini kaldırarak sınırlandırılabilir (ancak ortadan kaldırılmaz).
+   - Syslog yapılandırılırsa ve MFA Server UX, Günlük bölümü, Syslog sekmesinde **"Kullanıcı değişikliklerini kaydet"** işaretlenirse, günlük girişleri bunun yerine syslog'dan toplanabilir.
+- MultiFactorAuthSvc.log ve kimlik doğrulama girişimleri ile ilgili diğer MFA Server günlük dosyaları kullanıcı adının diğer oluşumları multiFactorAuthGdpr.exe ihracat veya Web Hizmeti SDK kullanılarak sağlanan bilgilere operasyonel ve yinelemeli olarak kabul edilir KullanıcıGdpr alın.
 
-## <a name="delete-data-from-mfa-server"></a>MFA sunucusundan verileri silme
+## <a name="delete-data-from-mfa-server"></a>MFA Server'dan veri silme
 
-MFA sunucusunun komut satırından, bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için, yolu yükleme `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` göre değiştirerek aşağıdaki komutu çalıştırın.
+MFA Server'ın komut satırından, bu kullanıcı için toplanan `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` tüm MFA bulut hizmeti bilgilerini silmek için yüklemenize göre yolu değiştirerek aşağıdaki komutu çalıştırın.
 
-- Dışarı aktarmaya dahil edilen veriler gerçek zamanlı olarak silinir, ancak işlemsel veya yinelenen verilerin tamamen kaldırılması 30 güne kadar sürebilir.
-- Yöneticiler, belirli bir kullanıcı için toplanan veya daha büyük bir raporlama çözümüne dahil olan tüm MFA bulut hizmeti bilgilerini silme seçeneği olarak Web hizmeti SDK DeleteUserGdpr işlemini de kullanabilir.
+- Dışa aktarmada yer alan veriler gerçek zamanlı olarak silinir, ancak operasyonel veya yinelemeli verilerin tamamen kaldırılması 30 gün kadar sürebilir.
+- Yöneticiler ayrıca Web Hizmeti SDK DeleteUserGdpr işlemini, belirli bir kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek veya daha büyük bir raporlama çözümüne dahil etmek için bir seçenek olarak kullanabilirler.
 
-## <a name="gather-data-from-nps-extension"></a>NPS uzantısından veri toplama
+## <a name="gather-data-from-nps-extension"></a>NPS Uzantı'dan veri toplama
 
-Dışarı aktarma isteği yapmak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
+Dışa Aktarma için istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın.
 
-- MFA bilgileri dışarı aktarmaya dahildir, bu da tamamlanması saat veya gün olabilir.
-- AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh ve AzureMfa/AuthZ/AuthZOptCh olay günlüklerinde Kullanıcı adının oluşumları işletimsel kabul edilir ve dışarı aktarma sırasında verilen bilgilere karşı silinir.
+- MFA bilgileri, tamamlanması saatler veya günler sürebilir dışa aktarmada yer alır.
+- AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh ve AzureMfa/AuthZ/AuthZ/AuthZOptCh olay günlüklerinde kullanıcı adının oluşumları, dışa aktarmada sağlanan bilgilere işlevsel ve yinelemeli olarak kabul edilir.
 
-## <a name="delete-data-from-nps-extension"></a>NPS uzantısından verileri silme
+## <a name="delete-data-from-nps-extension"></a>NPS Uzantısından verileri silme
 
-Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yönelik bir hesap isteğinin kapatılmasını sağlamak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
+Bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için Hesap Kapat için bir istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın.
 
-- Verilerin tam olarak kaldırılması 30 güne kadar sürebilir.
+- Verilerin tamamen kaldırılması 30 gün kadar sürebilir.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS bağdaştırıcıdan veri toplama
+## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS Adaptöründen veri toplama
 
-Dışarı aktarma isteği yapmak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın. 
+Dışa Aktarma için istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın. 
 
-- MFA bilgileri dışarı aktarmaya dahildir, bu da tamamlanması saat veya gün olabilir.
-- AD FS Izleme/hata ayıklama olay günlüklerinde (etkinse) Kullanıcı adının oluşumları işletimsel kabul edilir ve dışarı aktarma sırasında sağlanan bilgilere göre tekrarlanmaktadır.
+- MFA bilgileri, tamamlanması saatler veya günler sürebilir dışa aktarmada yer alır.
+- AD FS İzleme/Hata Ayıklama olay günlüklerinde (etkinse) kullanıcı adının oluşumları, dışa aktarmada sağlanan bilgilere operasyonel ve yinelemeli olarak kabul edilir.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS bağdaştırıcısındaki verileri silme
+## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS Adaptörü'nden veri silme
 
-Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yönelik bir hesap isteğinin kapatılmasını sağlamak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
+Bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için Hesap Kapat için bir istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın.
 
-- Verilerin tam olarak kaldırılması 30 güne kadar sürebilir.
+- Verilerin tamamen kaldırılması 30 gün kadar sürebilir.
 
 ## <a name="gather-data-for-azure-mfa"></a>Azure MFA için veri toplama
 
-Dışarı aktarma isteği yapmak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
+Dışa Aktarma için istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın.
 
-- MFA bilgileri dışarı aktarmaya dahildir, bu da tamamlanması saat veya gün olabilir.
+- MFA bilgileri, tamamlanması saatler veya günler sürebilir dışa aktarmada yer alır.
 
-## <a name="delete-data-for-azure-mfa"></a>Azure MFA için verileri silme
+## <a name="delete-data-for-azure-mfa"></a>Azure MFA için Verileri Silme
 
-Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yönelik bir hesap isteğinin kapatılmasını sağlamak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
+Bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için Hesap Kapat için bir istekte bulunmak için [Microsoft Gizlilik Portalı'nı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) kullanın.
 
-- Verilerin tam olarak kaldırılması 30 güne kadar sürebilir.
+- Verilerin tamamen kaldırılması 30 gün kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[MFA sunucusu raporlama](howto-mfa-reporting.md)
+[MFA Server raporlama](howto-mfa-reporting.md)

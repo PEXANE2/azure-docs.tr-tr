@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme erişim denetimi - Azure | Microsoft Docs
-description: Bu makalede, Uzaktan izleme çözüm hızlandırıcısının rol tabanlı erişim denetimlerine (RBAC) nasıl yapılandıracağınız hakkında bilgi sağlar.
+title: Uzaktan İzleme erişim kontrolü - Azure | Microsoft Dokümanlar
+description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında rol tabanlı erişim denetimlerini (RBAC) nasıl yapılandırabileceğiniz hakkında bilgi
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,95 +9,95 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67203139"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Uzaktan izleme çözüm hızlandırıcısının rol tabanlı erişim denetimlerini yapılandırın
+# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcısında rol tabanlı erişim denetimlerini yapılandırma
 
-Bu makalede Uzaktan izleme çözüm hızlandırıcısının rol tabanlı erişim denetimleri yapılandırma hakkında bilgi sağlar. Çözümdeki belirli özelliklere bireysel kullanıcılar için erişimi kısıtlamak rol tabanlı erişim denetimleri sağlar.
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında rol tabanlı erişim denetimleri nasıl yapılandırılabilen hakkında bilgi verilmektedir. Rol tabanlı erişim denetimleri, tek tek kullanıcıların erişiminin çözümdeki belirli özelliklerle kısıtlanmasına izin verir.
 
-## <a name="default-settings"></a>Varsayılan ayarları
+## <a name="default-settings"></a>Varsayılan ayarlar
 
-Uzaktan izleme çözümü ilk kez dağıttığınızda, iki rol vardır: **Yönetici** ve **salt okunur**.
+Uzaktan İzleme çözümünü ilk dağıttığınızda iki rol vardır: **Yalnızca Yönetici** ve **Yalnızca Oku.**
 
-Herhangi bir kullanıcının **yönetici** rolü aşağıdaki aşağıdaki izinleri de dahil olmak üzere, çözüm tam erişime sahiptir. Bir kullanıcı **salt okunur** rolü yalnızca çözüm görüntüleme erişimi olacaktır.
+**Yönetici** rolündeki herhangi bir kullanıcı, aşağıdaki izinler de dahil olmak üzere çözüme tam erişime sahiptir. **Yalnızca Oku** rolündeki bir kullanıcı yalnızca çözümü görüntülemek için erişene sahip olur.
 
 | İzin            | Yönetici | Salt Okunur |
 |----------------       |-------|-----------|
-| Çözümü görüntüle         | Evet   | Evet       |
-| Güncelleştirme uyarıları         | Evet   | Hayır        |
-| Uyarıları Sil         | Evet   | Hayır        |
-| Cihazları oluşturun        | Evet   | Hayır        |
-| Güncelleştirme cihazlar        | Evet   | Hayır        |
-| Cihazları silme        | Evet   | Hayır        |
-| Cihaz grupları oluşturma  | Evet   | Hayır        |
-| Cihaz grupları güncelleştir  | Evet   | Hayır        |
-| Cihaz grupları Sil  | Evet   | Hayır        |
-| Kuralları oluşturma          | Evet   | Hayır        |
-| Güncelleştirme kuralları          | Evet   | Hayır        |
-| Kurallarını Sil          | Evet   | Hayır        |
+| Çözümü Görüntüle         | Evet   | Evet       |
+| Alarmları güncelleştirin         | Evet   | Hayır        |
+| Alarmları silme         | Evet   | Hayır        |
+| Aygıtlar oluşturma        | Evet   | Hayır        |
+| Cihazları güncelleştir        | Evet   | Hayır        |
+| Aygıtları silme        | Evet   | Hayır        |
+| Aygıt grupları oluşturma  | Evet   | Hayır        |
+| Aygıt gruplarını güncelleştirme  | Evet   | Hayır        |
+| Aygıt gruplarını silme  | Evet   | Hayır        |
+| Kurallar oluşturma          | Evet   | Hayır        |
+| Kuralları güncelleştir          | Evet   | Hayır        |
+| Kuralları silme          | Evet   | Hayır        |
 | İş oluşturma           | Evet   | Hayır        |
-| Güncelleştirme SIM Yönetimi | Evet   | Hayır        |
+| SIM yönetimini güncelleştirin | Evet   | Hayır        |
 
-Varsayılan olarak, dağıtılan çözümü kullanıcıya otomatik olarak atanır **yönetici** rolü ve bir Azure Active Directory Uygulama sahibi. Bir uygulamanın sahibi olarak, Azure portalı üzerinden diğer kullanıcılara roller atayabilirsiniz. Çözümdeki rol atamak için başka bir kullanıcının isterseniz, Azure portalında bir uygulamanın sahibi olarak da ayarlanmalıdır.
+Varsayılan olarak, çözümü dağıtan kullanıcıya otomatik olarak **Yönetici** rolü atanır ve bir Azure Etkin Dizin uygulaması sahibidir. Uygulama sahibi olarak, Azure portalı aracılığıyla diğer kullanıcılara roller atayabilirsiniz. Başka bir kullanıcının çözümde rol atamasını istiyorsanız, bunların Azure portalında uygulama sahibi olarak da ayarlanması gerekir.
 
 > [!NOTE]
-> Çözümü dağıtan kullanıcı **yalnızca kişi** kimler görüntüleyebilir, hemen sonra kendi edilmiş oluşturuldu. Vermek için uygulamayı salt okunur, yönetici veya bkz. aşağıdaki yönergeler aşağıda üzerinde kullanıcı eklemek veya kaldırmak bir özel rol olarak görüntülemek üzere başkalarının erişebileceği.
+> Çözümü dağıtan kullanıcı, oluşturulduktan hemen sonra bu çözümü görüntülenebilen **tek kişidir.** Başkalarının uygulamayı Salt Oku, Yönetici veya Özel bir rol olarak görüntülemesine izin vermek için, kullanıcı ekleme veya kaldırma ile ilgili aşağıdaki yönergeleri izleyin.
 
-## <a name="add-or-remove-users"></a>Kullanıcı eklemek veya kaldırmak
+## <a name="add-or-remove-users"></a>Kullanıcı ekleme veya kaldırma
 
-Bir Azure Active Directory Uygulama sahibi ekleyip bir kullanıcı bir role Uzaktan izleme çözümü için Azure portalını kullanabilirsiniz. Aşağıdaki adımları kullanın [Azure Active Directory kuruluş uygulaması](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) Uzaktan izleme çözümünü dağıttığınızda oluşturuldu.
+Azure Etkin Dizin uygulaması sahibi olarak, Bir kullanıcıyı Uzaktan İzleme çözümünden bir role eklemek veya kaldırmak için Azure portalını kullanabilirsiniz. Aşağıdaki adımlar, Uzaktan İzleme çözümünü dağıttığınızda oluşturulan [Azure Etkin Dizin kurumsal uygulamasını](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) kullanır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Denetleme [kullanıcıdır dizinde](../active-directory/fundamentals/add-users-azure-active-directory.md) kullanmakta olduğunuz. İçin oturum açarken kullanılacak dizini seçtiğiniz [Microsoft Azure IOT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) site. Dizin adı sağ üst köşesinde görülebilir [sayfa](https://www.azureiotsolutions.com/Accelerators).
+1. Kullanıcının kullanmakta olduğunuz [dizinde olup olmadığını](../active-directory/fundamentals/add-users-azure-active-directory.md) kontrol edin. [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) sitesinde oturum açken kullanılacak dizini seçtiniz. Dizin adı [sayfanın](https://www.azureiotsolutions.com/Accelerators)sağ üst köşesinde görünür.
 
-1. Bulma **Kurumsal uygulama** Azure portalında, çözümünüz için. Bir kez vardır, listeye ayarlayarak filtre **uygulama türü** için **tüm uygulamaları**. Uygulama tarafından uygulama adınızı arayın. Uzaktan izleme çözümünüzü adı uygulama adıdır. Aşağıdaki ekran görüntüsünde, çözüm ve uygulamanın görünen adları olan **contoso rm4**.
+1. Azure portalında çözümünüz için **Kurumsal uygulamasını** bulun. Oraya vardıktan sonra, **Uygulama Türünü** **Tüm Uygulamalara**ayarlayarak listeye filtre uygulayın. Uygulama adınızı arayın. Uygulama adı Uzaktan İzleme çözümünüzün adıdır. Aşağıdaki ekran görüntüsünde, çözüm ve uygulama ekran adları **contoso-rm4'tür.**
 
     ![Kurumsal uygulama](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. Uygulamayı tıklayarak ve ardından uygulama sahibi olduğunuz denetleyin **sahipleri**. Aşağıdaki ekran görüntüsünde **Contoso yönetici** sahiplerinden biri olan **contoso rm4** uygulama:
+1. Uygulamayı tıklatıp **Sahipleri**tıklatarak uygulamanın sahibi olduğunuzu kontrol edin. Aşağıdaki ekran görüntüsünde, **Contoso admin** **contoso-rm4** uygulamasının sahibidir:
 
     ![Sahipler](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
-    Sahibi değilseniz, listeye eklemek için var olan bir sahip istemeniz gerekir. Sahipleri uygulama rolleri gibi atayabilirsiniz yalnızca **yönetici** veya **salt okunur** diğer kullanıcılara.
+    Sahibiniz değilseniz, varolan bir sahipten sizi listeye eklemesini istemeniz gerekir. Yalnızca **sahipleri, Yönetici** veya Yalnızca **Diğer** Kullanıcılara Oku gibi uygulama rollerini atayabilir.
 
-1. Uygulama rollerine atanmış kullanıcıların listesini görmek için tıklayın **kullanıcılar ve gruplar**.
+1. Uygulamada rollere atanan kullanıcıların listesini görmek için **Kullanıcılar ve gruplar'ı**tıklatın.
 
-1. Bir kullanıcı eklemek için tıklatın **+ Ekle kullanıcı**ve ardından **kullanıcılar ve gruplar, hiçbiri seçili** dizinden kullanıcı seçin.
+1. Kullanıcı eklemek için **+ Kullanıcı Ekle'yi**tıklatın ve ardından Kullanıcılar ve gruplar, Dizin'den bir kullanıcı seçmek için **Seçili Yok'u** tıklatın.
 
-1. Kullanıcının bir rol atamak için tıklayın **Select rolü, hiçbiri seçili** ve seçmeniz **yönetici** veya **salt okunur** kullanıcı rolü. Tıklayın **seçin**ve ardından **atama**.
+1. Kullanıcıyı bir role atamak için **Rolü Seç, Seçili Yok'u** tıklatın ve Kullanıcı için **Yönetici** veya **Yalnızca Oku** rolünü seçin. **Seç'i**tıklatın ve sonra **Atla'yı**tıklatın.
 
     ![Rol seç](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
-1. Kullanıcı rolü tarafından tanımlanan izinlere sahip Uzaktan izleme çözümü artık erişebilirsiniz.
+1. Kullanıcı artık rol tarafından tanımlanan izinlerle Uzaktan İzleme çözümüne erişebilir.
 
-1. Kullanıcıların uygulamadaki silebilirsiniz **kullanıcılar ve gruplar** portalında sayfası.
+1. **Kullanıcılar ve** portaldaki gruplar sayfasındaki kullanıcıları uygulamadan silebilirsiniz.
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
-Uzaktan izleme çözümü içeren **yönetici** ve **salt okunur** ilk dağıtıldığında rolleri. Farklı izin kümeleri ile özel roller ekleyebilirsiniz. Özel rol tanımlamak için gerekir:
+Uzaktan İzleme **çözümü, Ilk** dağıtıldığında Yalnızca Yönetici ve **Yalnızca Oku** rollerini içerir. Farklı izin kümeleriyle özel roller ekleyebilirsiniz. Özel bir rol tanımlamak için şunları yapmanız gerekir:
 
-- Azure portalında uygulama için yeni bir rolü ekleyin.
-- Yeni rol için bir ilke, kimlik doğrulama ve yetkilendirme mikro hizmet tanımlayın.
-- Çözümün web kullanıcı Arabirimi güncelleştirin.
+- Azure portalındaki uygulamaya yeni bir rol ekleyin.
+- Kimlik Doğrulama ve Yetkilendirme mikrohizmetinde yeni rol için bir ilke tanımlayın.
+- Çözümün web kullanıcı arabirimi güncelleştirin.
 
-### <a name="define-a-custom-role-in-the-azure-portal"></a>Azure portalında bir özel rol tanımlayın
+### <a name="define-a-custom-role-in-the-azure-portal"></a>Azure portalında özel bir rol tanımlama
 
-Aşağıdaki adımları, Azure Active Directory'de bir uygulamaya bir rol ekleme işlemi açıklanmaktadır. Bu örnekte, oluşturma, güncelleştirme ve silme cihazları Uzaktan izleme çözümüne üyelerinin izin veren yeni bir rol oluşturun.
+Aşağıdaki adımlar, Azure Etkin Dizin'deki bir uygulamaya nasıl rol ekleyeceğinizaçıklanmaktadır. Bu örnekte, üyelerin Uzaktan İzleme çözümünde aygıtlar oluşturmasına, güncelleştirmesine ve silmesine olanak tanıyan yeni bir rol oluşturursunuz.
 
-1. Bulma **uygulama kaydı** Azure portalında, çözümünüz için. Uzaktan izleme çözümünüzü adı uygulama adıdır. Aşağıdaki ekran görüntüsünde, çözüm ve uygulamanın görünen adları olan **contoso rm4**.
+1. Azure portalında çözümünüz için **Uygulama kaydını** bulun. Uygulama adı Uzaktan İzleme çözümünüzün adıdır. Aşağıdaki ekran görüntüsünde, çözüm ve uygulama ekran adları **contoso-rm4'tür.**
 
     ![Uygulama kaydı](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. Uygulamanızı seçin ve ardından **bildirim**. Varolan iki gördüğünüz [uygulama rolleri](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) uygulama için tanımlanmış:
+1. Uygulamanızı seçin ve ardından **Manifest'i**tıklatın. Uygulama için tanımlanan iki varolan [uygulama rolü](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) görebilirsiniz:
 
-    ![Görünüm bildirimi](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
+    ![Bildirimi görüntüle](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
-1. Adlı bir rol eklemek için bildirimi düzenleyin **ManageDevices** aşağıdaki kod parçacığında gösterildiği gibi. Bir GUID gibi benzersiz bir dize için yeni rol kimliği gerekir. Bir hizmet gibi kullanarak yeni bir GUID oluşturabileceğiniz [çevrimiçi GUID Oluşturucu](https://www.guidgenerator.com/):
+1. Aşağıdaki parçacıkta gösterildiği gibi **ManageDevices** adlı bir rol eklemek için bildirimi edin. Yeni rol kimliği için GUID gibi benzersiz bir dize gerekir. [Online GUID Jeneratör](https://www.guidgenerator.com/)gibi bir hizmet kullanarak yeni bir GUID oluşturabilirsiniz:
 
     ```json
     "appRoles": [
@@ -136,13 +136,13 @@ Aşağıdaki adımları, Azure Active Directory'de bir uygulamaya bir rol ekleme
 
     Değişiklikleri kaydedin.
 
-### <a name="define-a-policy-for-the-new-role"></a>Yeni rol için ilke tanımlama
+### <a name="define-a-policy-for-the-new-role"></a>Yeni rol için bir ilke tanımlama
 
-Azure Portalı'nda uygulama rolü eklemek için bir ilke tanımlamanız gerekir sonra [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) cihazları yönetmek için gereken izinleri atar rolü için.
+Rolü Azure portalındaki uygulamaya ekledikten sonra, aygıtları yönetmek için gereken izinleri atayan rol için [roles.json'da](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) bir ilke tanımlamanız gerekir.
 
-1. Kopya [Uzaktan izleme mikro Hizmetler](https://github.com/Azure/remote-monitoring-services-dotnet) github deposunu yerel makinenize.
+1. GitHub'dan yerel makinenize [Uzaktan İzleme Mikrohizmetleri](https://github.com/Azure/remote-monitoring-services-dotnet) deposunu klonla.
 
-1. Düzen **auth/Services/data/policies/roles.json** ilkesi eklemek için dosya **ManageDevices** aşağıdaki kod parçacığında gösterildiği gibi rol. **Kimliği** ve **rol** değerlerini önceki bölümde uygulama bildirimindeki rol tanımı eşleşmesi gerekir. Biri izin verilen eylemlerin listesini sağlayan **ManageDevices** oluşturmak, güncelleştirmek ve çözüme bağlı cihazları silmek için rolü:
+1. Aşağıdaki parçacıkta gösterildiği gibi **ManageDevices** rolü için ilke eklemek için **auth/Services/data/policies/roles.json** dosyasını edin. **Kimlik** ve **Rol** değerleri, önceki bölümdeki uygulama bildirimindeki rol tanımıyla eşleşmelidir. İzin verilen eylemlerin listesi, **ManageDevices** rolündeki bir kişinin çözüme bağlı aygıtlar oluşturmasına, güncelleştirmesine ve silmesine olanak tanır:
 
     ```json
     {
@@ -184,11 +184,11 @@ Azure Portalı'nda uygulama rolü eklemek için bir ilke tanımlamanız gerekir 
     }
     ```
 
-1. Tamamladığınızda düzenleme **Services/data/policies/roles.json** dosya, yeniden oluşturun ve kimlik doğrulama ve yetkilendirme mikro hizmet için çözüm hızlandırıcınız yeniden dağıtın.
+1. **Hizmetler/veri/ilkeler/roles.json** dosyasını düzenlemeyi bitirdiğinizde, Kimlik Doğrulama ve Yetkilendirme mikro hizmetini çözüm hızlandırıcınıza yeniden oluşturup yeniden dağıtın.
 
-### <a name="how-the-web-ui-enforces-permissions"></a>Web kullanıcı Arabirimi izinleri nasıl zorunlu kılar
+### <a name="how-the-web-ui-enforces-permissions"></a>Web UI izinleri nasıl zorlar?
 
-Kullanıcı Arabirimi kullanan web [kimlik doğrulama ve yetkilendirme mikro hizmet](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) hangi eylemleri belirlemek için bir kullanıcının Al ve hangi denetimlerin kullanıcı Arabiriminde görünür izin verilir. Örneğin, çözümünüz çağrılırsa **contoso rm4**, web kullanıcı Arabirimi aşağıdaki isteği göndererek geçerli kullanıcı için izin verilen eylemlerin bir listesini alır:
+Web Kullanıcı Arama Birimi, bir kullanıcının hangi eylemleri yapmasına izin verildiğini ve kullanıcı nın Kullanıcı Sürümü'nde hangi denetimlerin görülebilen denetimleri belirlemek için [Kimlik Doğrulama ve Yetkilendirme mikro hizmetini](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) kullanır. Örneğin, **çözümünüze contoso-rm4**adı verilirse, web Kullanıcı Arabirimi aşağıdaki isteği göndererek geçerli kullanıcı için izin verilen eylemlerin listesini alır:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -197,7 +197,7 @@ X-Source: true
 Authorization: Bearer <JWT Token from ADAL>
 ```
 
-Bir kullanıcı için adlı **cihaz Yöneticisi** içinde **ManageDevices** rolü, yanıt gövdesinde şu JSON içerir:
+**ManageDevices** rolünde **Aygıt Yöneticisi** adlı bir kullanıcı için yanıt, gövdede aşağıdaki JSON'u içerir:
 
 ```json
 {
@@ -212,7 +212,7 @@ Bir kullanıcı için adlı **cihaz Yöneticisi** içinde **ManageDevices** rol�
 }
 ```
 
-Alınan aşağıdaki kod [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) içinde [web kullanıcı Arabirimi](https://github.com/Azure/pcs-remote-monitoring-webui/) izinleri bildirimli olarak nasıl zorlanır gösterir:
+[deviceDelete.js'nin](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) web Kullanıcı Arama [Sürümü'nden](https://github.com/Azure/pcs-remote-monitoring-webui/) aşağıdaki snippet, izinlerin nasıl açık bir şekilde uygulandığını gösterir:
 
 ```json
 <FlyoutContent>
@@ -224,13 +224,13 @@ Alınan aşağıdaki kod [deviceDelete.js](https://github.com/Azure/pcs-remote-m
 </FlyoutContent>
 ```
 
-Daha fazla bilgi için [korumalı bileşenleri](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). Ek izinler tanımlayabilirsiniz [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) dosya.
+Daha fazla bilgi için [Bkz. Korumalı Bileşenler.](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md) [AuthModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) dosyasında ek izinler tanımlayabilirsiniz.
 
-### <a name="how-the-microservices-enforce-permissions"></a>Mikro hizmetler izinleri nasıl zorla
+### <a name="how-the-microservices-enforce-permissions"></a>Mikro hizmetler izinleri nasıl uygular?
 
-Mikro hizmetler, ayrıca yetkisiz API istekleri karşı korumak için izinleri denetleyin. Bir mikro hizmet, bir API isteği aldığında, kodunu çözer ve kullanıcı kimliği ve kullanıcı rolüyle ilişkilendirilen izinleri almak için JWT belirtecini doğrular.
+Mikro hizmetler, yetkisiz API isteklerine karşı koruma izinlerini de denetler. Bir microservice bir API isteği aldığında, kullanıcı kimliğini ve kullanıcırolüyle ilişkili izinleri almak için JWT belirtecinin kodlarını çözer ve doğrular.
 
-Alınan aşağıdaki kod [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) dosyası [IoTHub Yöneticisi mikro hizmet](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager), izinleri nasıl zorlanır gösterir:
+[IoTHub Manager microservice](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) dosyasından aşağıdaki snippet, izinleri nasıl zorlanır gösterir:
 
 ```csharp
 [HttpDelete("{id}")]
@@ -243,11 +243,11 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, nasıl rol tabanlı erişim denetimleri Uzaktan izleme çözüm hızlandırıcısının uygulanan öğrendiniz.
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında rol tabanlı erişim denetimlerinin nasıl uygulandığını öğrendiniz.
 
-Bkz: [Time Series Insights Gezgini için erişim denetimleri yapılandırma](iot-accelerators-remote-monitoring-rbac-tsi.md) Uzaktan izleme çözüm Hızlandırıcısını Time Series Insights Gezgininde erişimi yönetme hakkında bilgi.
+Uzaktan İzleme çözüm hızlandırıcısındaki Zaman Serisi Öngörüler kaşifine erişimi yönetme hakkında bilgi almak [için Time Series Insights explorer'ın erişim denetimlerini yapılandırın.](iot-accelerators-remote-monitoring-rbac-tsi.md)
 
-Uzaktan izleme çözüm Hızlandırıcısını hakkında daha fazla kavramsal bilgi için bkz. [Uzaktan izleme mimarisi](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+Uzaktan İzleme çözüm hızlandırıcısı hakkında daha fazla kavramsal bilgi için [bkz.](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-Uzaktan izleme çözümü özelleştirme hakkında daha fazla bilgi için bkz. [özelleştirme ve yeniden dağıtma bir mikro hizmet](iot-accelerators-microservices-example.md)
+Uzaktan İzleme çözümünü özelleştirme hakkında daha fazla bilgi için, [bir microservice'i Özelleştir ve yeniden dağıtma](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

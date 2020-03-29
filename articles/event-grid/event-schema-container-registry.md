@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid kapsayıcı kayıt defteri olay şeması
-description: Kapsayıcı kayıt defteri olayları Azure Event Grid ile sağlanan özellikleri tanımlar
+title: Azure Olay Izgara Kapsayıcı Kayıt Defteri olay şeması
+description: Azure Olay Ağıt'ı ile Konteyner Kayıt Defteri etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345473"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Kapsayıcı kayıt defteri için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-container-registry"></a>Konteyner Kayıt Defteri için Azure Olay Izgara olay şeması
 
-Bu makalede, kapsayıcı kayıt defteri olaylarını şema ve özellikleri sağlar. Olay şemaları için bir giriş için bkz [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, Kapsayıcı Kayıt Defteri olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Azure Container Registry, aşağıdaki olay türlerini gösterir:
+Azure Kapsayıcı Kayıt Defteri aşağıdaki olay türlerini yayır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Görüntü gönderildiğinde oluşturulur. |
-| Microsoft.ContainerRegistry.ImageDeleted | Görüntü silindiğinde oluşturulur. |
-| Microsoft.ContainerRegistry.ChartPushed | Helm grafiği gönderildiğinde oluşturulur. |
-| Microsoft.ContainerRegistry.ChartDeleted | Helm grafiği silindiğinde oluşturulur. |
+| Microsoft.ContainerRegistry.ImagePushed | Bir görüntü itildiğinde yükseltilir. |
+| Microsoft.ContainerRegistry.ImageDeleted | Görüntü silindiğinde yükseltilir. |
+| Microsoft.ContainerRegistry.ChartPushed | Bir Helm grafiği itildiğinde yükseltilir. |
+| Microsoft.ContainerRegistry.ChartDeleted | Bir Miğfer grafiği silindiğinde yükseltilir. |
 
 ## <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnek, olay gönderilen görüntüyü şemasını gösterir: 
+Aşağıdaki örnek, bir görüntünün itilen olayışeme sini gösterir: 
 
 ```json
 [{
@@ -65,7 +65,7 @@ Aşağıdaki örnek, olay gönderilen görüntüyü şemasını gösterir:
 }]
 ```
 
-Silinmiş bir görüntü olayın şeması benzer:
+Silinen bir görüntünün şeması benzer:
 
 ```json
 [{
@@ -95,7 +95,7 @@ Silinmiş bir görüntü olayın şeması benzer:
 }]
 ```
 
-Olay gönderildi bir grafik için şema görüntülenen bir gönderilen olay için şemaya benzer, ancak bir istek nesnesi içermez:
+Grafik itilen bir olayın şeması, görüntülenmiş bir itme olayının şemasına benzer, ancak bir istek nesnesi içermez:
 
 ```json
 [{
@@ -123,7 +123,7 @@ Olay gönderildi bir grafik için şema görüntülenen bir gönderilen olay iç
 }]
 ```
 
-Silinmiş hesap olayın şeması kasasına silinen olay için şemaya benzer, ancak bir istek nesnesi içermez:
+Silinen bir grafik için şema, görüntülenmiş silinmiş bir olayın şemasına benzer, ancak bir istek nesnesi içermez:
 
 ```json
 [{
@@ -151,55 +151,55 @@ Silinmiş hesap olayın şeması kasasına silinen olay için şemaya benzer, an
 }]
 ```
 
-## <a name="event-properties"></a>Olay Özellikleri
+## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey veri vardır:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| topic | string | Olay kaynağı tam kaynak yolu. Bu alan, yazılabilir değil. Event Grid, bu değeri sağlar. |
-| subject | string | Yayımcı tarafından tanımlanan olay konu yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| id | string | Olayın benzersiz tanımlayıcısı. |
-| data | object | BLOB Depolama olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid, şemanın en üst düzey özellikleri tanımlar. Event Grid, bu değeri sağlar. |
-
-Veri nesnesi, aşağıdaki özelliklere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| id | string | Olay Kimliği |
-| timestamp | string | Olayın gerçekleştiği zaman. |
-| action | string | Belirtilen olayın kapsayan eylem. |
-| target | object | Olay hedefi. |
-| request | object | Olayı oluşturan istek. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Blob depolama olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
-Hedef nesne, aşağıdaki özelliklere sahiptir:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| mediaType | string | Başvurulan nesnenin MIME türü. |
-| size | integer | İçeriğin bayt sayısı. Uzunluk alanı ile aynıdır. |
-| digest | string | Kayıt defteri V2 HTTP API belirtimi tarafından tanımlanan içeriği, Özet. |
-| length | integer | İçeriğin bayt sayısı. Boyut alanına ile aynıdır. |
-| repository | string | Depo adı. |
-| tag | string | Etiket adı. |
-| name | string | Grafik adı. |
-| version | string | Grafik sürümü. |
-
-İstek nesnesi, aşağıdaki özelliklere sahiptir:
+Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| id | string | Olayı başlatan isteği kimliği. |
-| addr | string | IP veya ana bilgisayar adı ve büyük olasılıkla bağlantı noktası olayı başlatan istemci bağlantısı. Standart http isteğinden RemoteAddr değerdir. |
-| host | string | Harici olarak erişilebilen ana bilgisayar adını http ana bilgisayar üstbilgisi gelen isteklerde tarafından belirtilen kayıt defteri örneği. |
+| id | string | Olay kimliği. |
+| timestamp | string | Olayın meydana geldiği saat. |
+| action | string | Sağlanan olayı kapsayan eylem. |
+| Hedef | object | Olayın hedefi. |
+| istek | object | Olayı oluşturan istek. |
+
+Hedef nesne aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| Mediatype | string | Başvurulan nesnenin MIME türü. |
+| size | integer | İçeriğin bayt sayısı. Uzunluk alanıyla aynı. |
+| digest | string | Kayıt Defteri V2 HTTP API Belirtimi tarafından tanımlandığı gibi içeriğin özeti. |
+| length | integer | İçeriğin bayt sayısı. Boyut alanıyla aynı. |
+| depo | string | Depo adı. |
+| etiket | string | Etiket adı. |
+| ad | string | Grafik adı. |
+| version | string | Grafik versiyonu. |
+
+İstek nesnesi aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| id | string | Olayı başlatan isteğin kimliği. |
+| Adresi | string | IP veya ana bilgisayar adı ve olayı başlatan istemci bağlantısının büyük olasılıkla bağlantı noktası. Bu değer, standart http isteğinden RemoteAddr'dır. |
+| konak | string | Gelen isteklerde http ana bilgisayar üstbilgisinde belirtildiği gibi, kayıt defteri örneğinin dışarıdan erişilebilir ana adı. |
 | method | string | Olayı oluşturan istek yöntemi. |
-| useragent | string | İsteğin kullanıcı aracısını üstbilgisi. |
+| Useragent | string | İsteğin kullanıcı aracısı üstbilgisi. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid aboneliği şema](subscription-creation-schema.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

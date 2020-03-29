@@ -1,6 +1,6 @@
 ---
-title: Spark Azure Cosmos DB Cassandra API üzerinde tablo kopyalama işlemleri
-description: Bu makalede Azure Cosmos DB Cassandra API tablolar arasında veri kopyalama ayrıntıları
+title: Spark'tan Azure Cosmos DB Cassandra API'deki tablo kopyalama işlemleri
+description: Bu makalede, Azure Cosmos DB Cassandra API tabloları arasında veri kopyalama küçleğe nasıl ayrıntıları
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445623"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Spark Azure Cosmos DB Cassandra API üzerinde tablo kopyalama işlemleri
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Spark'tan Azure Cosmos DB Cassandra API'deki tablo kopyalama işlemleri
 
-Bu makalede, Spark 'tan Azure Cosmos DB Cassandra API tablolar arasında verilerin nasıl kopyalanacağı açıklanır. Bu makalede açıklanan komutlar Ayrıca Apache Cassandra tablolarından Azure Cosmos DB Cassandra API tablolarına veri kopyalamak için de kullanılabilir.
+Bu makalede, Spark'tan Azure Cosmos DB Cassandra API'daki tablolar arasındaki verilerin nasıl kopyalanır. Bu makalede açıklanan komutlar, Apache Cassandra tablolarından Azure Cosmos DB Cassandra API tablolarına verileri kopyalamak için de kullanılabilir.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API configuration
+## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="insert-sample-data"></a>Örnek veri Ekle 
+## <a name="insert-sample-data"></a>Örnek veri ekleme 
 ```scala
 val booksDF = Seq(
    ("b00001", "Arthur Conan Doyle", "A study in scarlet", 1887,11.33),
@@ -127,7 +127,7 @@ sqlContext
   .load
   .show
 ```
-Çıkış-
+Çıktı-
 ```
 +-------+------------------+--------------------+----------+-------------+
 |book_id|       book_author|           book_name|book_price|book_pub_year|
@@ -146,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- * Java uygulaması kullanarak [Cassandra API hesabı, veritabanı ve tablo oluşturmaya](create-cassandra-api-account-java.md) başlama.
+ * Java uygulamasını kullanarak [Cassandra API hesabı, veritabanı ve tablo oluşturmaya](create-cassandra-api-account-java.md) başlayın.
  * Java uygulaması kullanarak [Cassandra API tablosuna örnek verileri yükleme](cassandra-api-load-data.md).
  * Java uygulaması kullanarak [Cassandra API hesabından verileri sorgulama](cassandra-api-query-data.md).

@@ -1,6 +1,6 @@
 ---
-title: FMP4 öbekleri oluşturan bir Azure Media Services kodlama görevi oluştur | Microsoft Docs
-description: Bu konuda fMP4 öbekleri oluşturan bir kodlama görevi oluşturma işlemini gösterir. Bu görevi, Media Encoder Standard ve Media Encoder Premium iş akışı Kodlayıcı ile kullanıldığında, çıktı varlığındaki fMP4 öbekleri ISO MP4 dosyaları yerine içerir.
+title: FMP4 öbeklerini oluşturan bir Azure Medya Hizmetleri kodlama görevi oluşturma | Microsoft Dokümanlar
+description: Bu konu, fMP4 öbeklerini oluşturan bir kodlama görevinin nasıl oluşturulacağını gösterir. Bu görev Media Encoder Standard veya Media Encoder Premium İş Akışı kodlayıcısı ile kullanıldığında, çıktı varlığı ISO MP4 dosyaları yerine fMP4 parçaları içerir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463876"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>FMP4 öbekleri oluşturan bir kodlama görevi oluşturun
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 parçaları oluşturan bir kodlama görevi oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, parçalanmış MP4 oluşturan bir kodlama görevi oluşturma işlemi gösterilmektedir (fMP4) öbekleri ISO MP4 dosyaları yerine. FMP4 öbekleri oluşturmak için **Media Encoder Standard** veya **Media Encoder Premium iş akışı** bir kodlama görevi oluşturmak ve ayrıca belirlemek için Kodlayıcı **AssetFormatOption.AdaptiveStreaming**  seçeneği bu kod parçacığında gösterildiği gibi:  
+Bu makalede, ISO MP4 dosyaları yerine parçalanmış MP4 (fMP4) parçaları oluşturan bir kodlama görevinasıl oluşturulacağı gösterilmektedir. fMP4 parçaları oluşturmak için, bir kodlama görevi oluşturmak ve ayrıca bu kod snippet gösterildiği gibi **AssetFormatOption.AdaptiveStreaming** seçeneğini belirtmek için **Media Encoder Standard** veya Media **Encoder Premium İş Akışı** kodlayıcısını kullanın:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,16 +32,16 @@ Bu makalede, parçalanmış MP4 oluşturan bir kodlama görevi oluşturma işlem
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Media Services .NET SDK ile kodlama
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Medya Hizmetleri ile Kodlama .NET SDK
 
-Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK'sını kullanır:
+Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Medya Hizmetleri .NET SDK'yı kullanır:
 
-- Bir kodlama işi oluşturun.
-- Bir başvuru almak **Media Encoder Standard** Kodlayıcı.
-- Bir kodlama görevi işe ekleyin ve kullanılacağını belirtin **Uyarlamalı akış** hazır. 
-- FMP4 öbekleri ve bir .ism dosyası içeren bir çıkış varlık oluşturun.
-- İş ilerleme durumunu denetlemek için bir olay işleyicisi ekleyin.
-- İşi Gönder.
+- Kodlama işi oluşturun.
+- **Media Encoder Standart kodlayıcısına** başvurun.
+- İşe bir kodlama görevi ekleyin ve **Uyarlanabilir Akış** hazır kümesini kullanmayı belirtin. 
+- FMP4 parçaları ve bir .ism dosyası içeren bir çıktı kıymeti oluşturun.
+- İş ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
+- İşi gönderin.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Media Services Encoding genel bakış](media-services-encode-asset.md)
+[Medya Hizmetleri Kodlama Genel Bakış](media-services-encode-asset.md)
 

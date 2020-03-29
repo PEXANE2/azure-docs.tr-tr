@@ -1,30 +1,30 @@
 ---
-title: Jupi Not defterlerindeki verilere erişim-Azure Notebooks önizlemesi
-description: Dosyalara, REST API 'Lerine, veritabanlarına ve farklı Azure depolama kaynaklarına bir Jupyter Not defterinden erişmeyi öğrenin.
+title: Jupyter dizüstü bilgisayarlardaki verilere erişin - Azure Dizüstü Bilgisayarlar Önizleme
+description: Jupyter dizüstü bilgisayarından dosyalara, REST API'lerine, veritabanlarına ve farklı Azure Depolama kaynaklarına nasıl erişiriz öğrenin.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646356"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Not defterinde bulut verilerine erişme
 
-İlginç bir Jupyter not defteri iş verileri gerektiriyor. Aslında, dizüstü bilgisayarlar, lifeblood verilerdir.
+Jupyter dizüstü bilgisayarında ilginç işler yapmak veri gerektirir. Veri, gerçekten, dizüstü bilgisayarların can damarıdır.
 
-Verilerle yapabilecekleriniz [projeye veri dosyaları alma](work-with-project-data-files.md)olsa bile gibi komutları kullanarak `curl` gelen içinde doğrudan bir dosyayı indirmek için bir not defteri. Ancak, REST API'ler, ilişkisel veritabanları gibi dosya olmayan kaynaklardan kullanılabilir daha kapsamlı verilerle çalışın ve bulut depolama gibi Azure tabloları gerektiğini, olasıdır.
+Bir dosyayı doğrudan indirmek için not defterinin `curl` içinden gelen komutları kullanarak bile [veri dosyalarını bir projeye](work-with-project-data-files.md)kesinlikle aktarabilirsiniz. Ancak, REST API'leri, ilişkisel veritabanları ve Azure tabloları gibi bulut depolama gibi dosya dışı kaynaklardan edinilebilen çok daha kapsamlı verilerle çalışmanız gerekebilir.
 
-Bu makalede, bu farklı seçenekler kısaca özetler. Veri erişim en iyi eylem görüneceğinden, çalıştırılabilir kod içinde bulabilirsiniz [Azure not defterleri örnekleri - veri erişimi](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
+Bu makalede, bu farklı seçenekler kısaca özetler. Veri erişimi en iyi iş başında görüldüğünden, Azure Not Defterleri Örneklerinde runnable kodu bulabilirsiniz [- Verilerinize erişin.](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API'leri
 
-Genel olarak bakıldığında, yüksek miktarda veri Internet'ten kullanılabilir dosyaları üzerinden değil, ancak REST API'leri aracılığıyla erişilir. Neyse ki, bir not defteri hücre istediğiniz herhangi bir kod içerebileceğinden, JSON veri istekleri göndermek ve almak için kod kullanabilirsiniz. Ardından, JSON, bir pandas dataframe gibi kullanmak istediğiniz her biçimine dönüştürebilirsiniz.
+Genel olarak konuşursak, Internet'ten elde edilen büyük miktardaki verilere dosyalar aracılığıyla değil, REST API'leri aracılığıyla erişilir. Neyse ki, bir not defteri hücresi istediğiniz kodu içerebildiği için, istek göndermek ve JSON verileri almak için kodu kullanabilirsiniz. Daha sonra bu JSON'u pandalar veri çerçevesi gibi kullanmak istediğiniz biçime dönüştürebilirsiniz.
 
-REST API kullanarak verilere erişmek için başka bir uygulamada kullandığınız bir not defterinin kod hücreleri aynı kodu kullanın. İstekleri kitaplığını kullanarak genel yapısı şu şekildedir:
+REST API kullanarak verilere erişmek için, not defterinin kod hücrelerinde başka bir uygulamada kullandığınız kodu kullanın. İstek kitaplığını kullanan genel yapı aşağıdaki gibidir:
 
 ```python
 import pandas
@@ -43,41 +43,41 @@ if response.status_code == 200:
 
 ## <a name="azure-sql-databases"></a>Azure SQL veritabanları
 
-SQL Server veritabanlarını pyodbc veya pymssql kitaplıkları yardıma erişebilir.
+Sql Server veritabanlarına pyodbc veya pymssql kitaplıkları yardımıyla erişebilirsiniz.
 
-[Bir Azure SQL veritabanını sorgulamak için Python kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) AdventureWorks verilerini içeren bir veritabanı oluşturma hakkında yönergeler verir ve bu verileri Sorgulama işlemi gösterilmektedir. Bu makalede örnek not defterinde aynı kod gösterilmektedir.
+[Bir Azure SQL veritabanını sorgulamak için Python'u kullanın,](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) Size AdventureWorks verilerini içeren bir veritabanı oluşturma yla ilgili yönergeler verir ve bu verileri nasıl sorgularız gösterir. Aynı kod, bu makalenin örnek not defterinde gösterilir.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
-Azure depolama, ilişkisel olmayan depolama, sahip olduğunuz veriler ve nasıl erişim sağlaması gereken türüne bağlı olarak birkaç farklı türde sağlar:
+Azure Depolama, sahip olduğunuz veri türüne ve bu depolama alanına nasıl erişmeniz gerektiğine bağlı olarak birkaç farklı ilişkisel olmayan depolama alanı sağlar:
 
-- Tablo depolama: toplanan algılayıcı günlükler, tanılama günlükleri ve benzeri gibi tablo biçimindeki veriler için düşük maliyetli, yüksek hacimli depolama sağlar.
-- BLOB Depolama: her türden veriyi dosya benzeri depolama sağlar.
+- Tablo Depolama: toplanan sensör günlükleri, tanılama günlükleri ve benzeri gibi tablo verileri için düşük maliyetli, yüksek hacimli depolama sağlar.
+- Blob depolama: her tür veri için dosya benzeri depolama sağlar.
 
-Örnek Not Defteri hem tabloları ve bloblar için salt okunur erişime izin vermek için paylaşılan erişim imzası kullanma dahil olmak üzere, bloblar ile çalışma gösterir.
+Örnek not defteri, yalnızca okunur şekilde okunabilir blob'lara erişime izin vermek için paylaşılan erişim imzasının nasıl kullanılacağı da dahil olmak üzere hem tablolarla hem de lekelerle çalışmayı gösterir.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Cosmos DB tamamen dizinli bir NoSQL deposu için JSON belgelerini sağlar). Aşağıdaki makaleler birkaç python'dan Cosmos DB ile çalışmak için farklı yollar sunar:
+Azure Cosmos DB, JSON belgeleri için tam dizinlenmiş bir NoSQL deposu sağlar). Aşağıdaki makaleler Python Cosmos DB ile çalışmak için farklı yollar bir dizi sağlar:
 
-- [Python ile uygulama oluşturma bir SQL API'si](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [MongoDB için Azure Cosmos DB API 'SI ile bir Flask uygulaması oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Python ve Gremlin API kullanarak bir grafik veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Python ve Azure Cosmos DB ile Cassandra uygulaması derleme](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [API uygulaması, Python ve Azure Cosmos DB ile tablo oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Python ile bir SQL API uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [MongoDB için Azure Cosmos DB'nin API'si ile bir Flask uygulaması oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Python ve Gremlin API'sini kullanarak grafik veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
+- [Python ve Azure Cosmos DB ile Cassandra uygulaması oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Python ve Azure Cosmos DB ile Tablo API uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-Cosmos DB ile çalışırken kullanabileceğiniz [azure cosmosdb tablo](https://pypi.org/project/azure-cosmosdb-table/) kitaplığı.
+Cosmos DB ile çalışırken [azure-cosmosdb-tablo](https://pypi.org/project/azure-cosmosdb-table/) kitaplığını kullanabilirsiniz.
 
 ## <a name="other-azure-databases"></a>Diğer Azure veritabanları
 
-Azure, bir dizi kullanabileceğiniz diğer veritabanı türleri sağlar. Aşağıdaki makaleleri veritabanlarınızdaki Python'dan erişmeye yönelik rehberlik sağlar:
+Azure, kullanabileceğiniz diğer veritabanı türleri sağlar. Aşağıdaki makaleler Python bu veritabanları erişmek için rehberlik sağlar:
 
-- [PostgreSQL için Azure veritabanı: Python kullanarak bağlanmak ve veri sorgulamak için](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Hızlı Başlangıç: Python ile Azure Redis cache'i kullanma](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [MySQL için Azure veritabanı: Python kullanarak bağlanmak ve veri sorgulamak için](https://docs.microsoft.com/azure/mysql/connect-python)
+- [PostgreSQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için Python'ı kullanma](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Hızlı başlangıç: Python ile Azure Redis Cache kullanma](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [MySQL için Azure Veritabanı: Python'u kullanarak bağlanma ve veri sorgulama](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
-  - [Azure Data Factory Kopyalama Sihirbazı](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+  - [Azure Veri Fabrikası için Kopyalama Sihirbazı](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Nasıl yapılır: Proje veri dosyalarıyla çalışma](work-with-project-data-files.md)
+- [Nasıl kullanılır: Proje veri dosyalarıyla çalışma](work-with-project-data-files.md)

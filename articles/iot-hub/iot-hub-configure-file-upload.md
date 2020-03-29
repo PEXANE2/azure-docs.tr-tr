@@ -1,6 +1,6 @@
 ---
-title: Karşıya dosya yüklemeyi yapılandırma için Azure portalını kullanma | Microsoft Docs
-description: Bağlı cihazlardan dosya yüklemeleri etkinleştirmek için IOT hub'ınızı yapılandırmak için Azure portalını kullanma ' % S'hedef Azure depolama hesabı yapılandırma hakkında bilgi içerir.
+title: Dosya yüklemesini yapılandırmak için Azure portalını kullanın | Microsoft Dokümanlar
+description: IoT hub'ınızı bağlı aygıtlardan dosya yüklemelerini etkinleştirmek için yapılandırmak için Azure portalını kullanma. Hedef Azure depolama hesabını yapılandırma yla ilgili bilgileri içerir.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,48 +9,48 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735052"
 ---
-# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure portalını kullanarak dosya yüklemeleri IOT hub'ı yapılandırma
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure portalını kullanarak IoT Hub dosya karşıya yükleme işlemlerini yapılandırma
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-## <a name="file-upload"></a>Karşıya dosya yükleme
+## <a name="file-upload"></a>Dosya yükleme
 
-Kullanılacak [dosya karşıya yükleme işlevselliği IOT Hub'ında](iot-hub-devguide-file-upload.md), önce hub'ınıza bir Azure depolama hesabı ilişkilendirmeniz gerekir. Seçin **karşıya dosya yükleme** dosya karşıya yükleme özelliklerini değiştirilmekte olan IOT hub'ının bir listesini görüntüleyin.
+[IoT Hub'da dosya yükleme işlevini](iot-hub-devguide-file-upload.md)kullanmak için öncelikle bir Azure Depolama hesabını hub'ınızla ilişkilendirmeniz gerekir. Değiştirilen IoT hub'ı için dosya yükleme özelliklerinin listesini görüntülemek için **Dosya yükleme'yi** seçin.
 
-![Görünüm IOT hub'ı dosyasını karşıya yükleyin, Portalı'ndaki ayarları](./media/iot-hub-configure-file-upload/file-upload-settings.png)
+![Portaldaki IoT Hub dosya yükleme ayarlarını görüntüleyin](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Depolama kapsayıcısı**: Azure portalı ile IOT Hub'ınızı ilişkilendirmek için geçerli Azure aboneliğinizde bir Azure depolama hesabındaki bir blob kapsayıcısını seçmek için kullanın. Gerekirse, bir Azure depolama hesabı oluşturabilirsiniz, **depolama hesapları** dikey penceresinde ve blob kapsayıcısını **kapsayıcıları** dikey penceresi. IOT hub'ı SAS URI'leriyle bu blob kapsayıcısında, karşıya dosya yükleme sırasında kullanılacak cihazlar için yazma izinlerine sahip otomatik olarak oluşturur.
+* **Depolama kapsayıcısı**: IoT Hub'ınızla ilişkilendirmek için geçerli Azure aboneliğinizdeki bir Azure Depolama hesabında bir blob kapsayıcısı seçmek için Azure portalını kullanın. Gerekirse, **Kapsayıcılar** bıçağında **Depolama hesapları** bıçak ve blob kapsayıcısı üzerinde bir Azure Depolama hesabı oluşturabilirsiniz. IoT Hub, aygıtların dosya yüklerken kullanmaları için bu blob kapsayıcısına yazma izinleri ile otomatik olarak SAS URI'leri oluşturur.
 
-   ![Portalda depolama kapsayıcıları karşıya dosya yükleme için görüntüleme](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
+   ![Portalda dosya yükleme için depolama kaplarını görüntüleme](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Karşıya yüklenen dosyalar için bildirimlerin**: Etkinleştirmek veya dosya karşıya yükleme bildirimleri aracılığıyla iki durumlu düğme devre dışı.
+* **Yüklenen dosyalar için bildirimler alın**: Geçiş yoluyla dosya yükleme bildirimlerini etkinleştirin veya devre dışı edin.
 
-* **SAS TTL**: Bu ayar, zaman yaşam IOT Hub tarafından cihaza verilen SAS URI'ın desteklenir. Bir saat için varsayılan olarak ayarlanmış, ancak kaydırıcıyı kullanarak diğer değerleri için özelleştirilebilir.
+* **SAS TTL**: Bu ayar, IoT Hub tarafından cihaza döndürülen SAS URI'lerinin canlı olarak zaman dilimidir. Varsayılan olarak bir saatolarak ayarlayın, ancak kaydırıcıyı kullanarak diğer değerlere göre özelleştirilebilir.
 
-* **Dosya bildirim ayarları varsayılan TTL**: Geçerlilik süresi doluncaya kadar önce zaman yaşam dosyasının bildirim karşıya yükleyin. Bir gün için varsayılan olarak ayarlanmış, ancak kaydırıcıyı kullanarak diğer değerleri için özelleştirilebilir.
+* **Dosya bildirim ayarları varsayılan TTL**: Süresi dolmadan önce dosya yükleme bildiriminin zaman aşımısüresi. Varsayılan olarak bir güne ayarlayın, ancak kaydırıcıyı kullanarak diğer değerlere göre özelleştirilebilir.
 
-* **Dosya bildirim en yüksek teslimat sayısı**: IOT hub'ı bir dosyayı teslim girişiminde sayısı bildirim karşıya yükleyin. Varsayılan olarak 10'a ayarlanmış ancak kaydırıcıyı kullanarak diğer değerleri için özelleştirilebilir.
+* **Dosya bildirimi maksimum teslimat sayısı**: IoT Hub'ının dosya yükleme bildirimini kaç kez sunmaya çalıştığı. Varsayılan olarak 10 olarak ayarlayın, ancak kaydırıcıyı kullanarak diğer değerlere göre özelleştirilebilir.
 
-   ![Portalda IOT hub'ı dosya yüklemeyi yapılandırma](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
+   ![Portalda IoT Hub dosya yüklemesini yapılandırma](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IOT hub'ı dosya karşıya yükleme özellikleri hakkında daha fazla bilgi için bkz. [dosyaları bir CİHAZDAN karşıya yükle](iot-hub-devguide-file-upload.md) IOT Hub Geliştirici Kılavuzu'nda.
+IoT Hub'ın dosya yükleme özellikleri hakkında daha fazla bilgi için, IoT Hub geliştirici kılavuzundaki [bir aygıttan dosya yükleme](iot-hub-devguide-file-upload.md) bölümüne bakın.
 
-Azure IOT hub'ı yönetme hakkında daha fazla bilgi için bu bağlantıları izleyin:
+Azure IoT Hub'ı yönetme hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları izleyin:
 
 * [IoT cihazlarını toplu yönetme](iot-hub-bulk-identity-mgmt.md)
-* [IOT hub'ı ölçümleri](iot-hub-metrics.md)
+* [IoT Hub ölçümleri](iot-hub-metrics.md)
 * [İşlemleri izleme](iot-hub-operations-monitoring.md)
 
-Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
+IoT Hub'ın yeteneklerini daha fazla keşfetmek için bkz:
 
-* [IOT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Yapay ZEKA, Azure IOT Edge ile uç cihazlarına dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
-* [IOT çözümünüzü baştan güvenli hale getirme](../iot-fundamentals/iot-security-ground-up.md)
+* [IoT Hub geliştirici kılavuzu](iot-hub-devguide.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT çözümünüzü sıfırdan emniyete](../iot-fundamentals/iot-security-ground-up.md)

@@ -1,6 +1,6 @@
 ---
-title: Self Servis uygulama erişimini kullanarak sorunu | Microsoft Docs
-description: Self Servis uygulama erişimi ile ilgili sorunları giderme
+title: Self servis uygulama erişimini kullanma sorunu | Microsoft Dokümanlar
+description: Self servis uygulama erişimiyle ilgili sorunları giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,86 +17,86 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784274"
 ---
-# <a name="problem-using-self-service-application-access"></a>Self Servis uygulama erişimini kullanarak sorunu
+# <a name="problem-using-self-service-application-access"></a>Self servis uygulama erişimini kullanma sorunu
 
-Self Servis uygulama erişiminin kullanıcıların uygulamaları kendi kendine bulmak harika bir yoludur bu uygulamalara erişimi onaylamak için iş grubuna isteğe bağlı olarak sağlar. Parola çoklu oturum uygulamalar'ın üzerinde sağ için kullanıcılara erişim panelleri üzerinden atanan kimlik bilgilerini yönetmek iş grubuna izin verebilirsiniz.
+Self servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine keşfetmelerine izin vermek ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasına izin vermek için harika bir yoldur. İş grubunun, bu kullanıcılara Parola Tek Oturum Açma Uygulamaları için atanan kimlik bilgilerini erişim panellerinden yönetmesine izin verebilirsiniz.
 
-Kullanıcılarınıza kendi erişim panellerine uygulamalardan Self bulabilmesi için önce etkinleştirmeniz gerekir **Self Servis uygulama erişiminin** Self bulmak ve istek izin vermek istiyorsanız uygulamalara erişim.
+Kullanıcılarınız uygulamaları erişim panelinden kendi kendine keşfedebilmeniz için, kullanıcıların kendi kendine keşfetmesine ve erişimini istemesine izin vermek istediğiniz uygulamalara **Self servis uygulama erişimini** etkinleştirmeniz gerekir.
 
-## <a name="general-issues-to-check-first"></a>İlk denetlenecek genel sorunlar
+## <a name="general-issues-to-check-first"></a>Önce kontrol etmek için genel konular
 
--   Self Servis uygulama erişiminin doğru yapılandırıldığından emin olun. "Self Servis uygulama erişimi yapılandırmak" bakın.
+-   Self servis uygulama erişiminin doğru şekilde yapılandırıldığından emin olun. Bkz. "Self servis uygulama erişimi nasıl yapılandırılabilen".
 
--   Kullanıcı veya grup, Self Servis uygulama erişimi istemek için etkinleştirildi emin olun.
+-   Kullanıcının veya grubun self servis uygulama erişimi istemesi için etkinleştirildiğinden emin olun.
 
--   Kullanıcı Self Servis uygulama erişimi için doğru yere ziyaret eden emin olun. Kullanıcılar gidebilirsiniz kendi [uygulama erişim panelinde](https://myapps.microsoft.com/) tıklatıp **+ Ekle** Self Servis erişimi etkin uygulamaları bulmak için düğme.
+-   Kullanıcının self servis uygulama erişimi için doğru yeri ziyaret edin. kullanıcılar [Uygulama Erişim Paneli'ne](https://myapps.microsoft.com/) gidebilir ve self servis erişimi etkinleştirdiğiniz uygulamaları bulmak için **+Ekle** düğmesini tıklatabilir.
 
--   Self Servis uygulama erişimini yalnızca kısa bir süre önce yapılandırıldıysa, giriş ve çıkış yeniden kullanıcının erişim paneline birkaç dakika sonra Self Servis erişimi değişiklikleri görüntülenmediğini görmek için oturum açmayı deneyin.
+-   Self servis uygulama erişimi yeni yapılandırıldıysa, self servis erişim değişikliklerinin görünüp görünmemediğini görmek için birkaç dakika sonra kullanıcının Access Paneli'nde oturum açma ve çıkma yapmayı deneyin.
 
-## <a name="how-to-configure-self-service-application-access"></a>Self Servis uygulama erişimi yapılandırma
+## <a name="how-to-configure-self-service-application-access"></a>Self servis uygulama erişimi nasıl yapılandırılabilen
 
-Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdaki adımları izleyin:
+Bir uygulamaya self servis uygulama erişimini etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. Açık [ **Azure portalı** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1. Azure [**Portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol taraftaki gezinti menüsünün üstünde.
+2. Tüm **hizmetleri** sol ana gezinme menüsünün üst kısmındatıklayarak **Azure Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kurumsal uygulamalar** Azure Active Directory sol taraftaki gezinti menüsünde.
+4. Azure Active Directory sol el gezinti menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
 
-5. tıklayın **tüm uygulamaları** tüm uygulamaların bir listesini görüntülemek için.
+5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
 
-   * Burada show istediğiniz uygulamayı göremiyorsanız kullanın **filtre** üst kısmındaki denetim **tüm uygulamalar listesini** ayarlayıp **Göster** seçeneğini **tüm Uygulamalar.**
+   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
 
-6. Self Servis etkinleştirmek istediğiniz uygulamayı seçin listeden erişim.
+6. Listeden Self servis erişimini etkinleştirmek istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra tıklayın **Self Servis** uygulamanın sol taraftaki gezinti menüsünde.
+7. Uygulama yüklendikten sonra, uygulamanın sol daki gezinme menüsünden **Self servis'i** tıklatın.
 
-8. Bu uygulama için Self Servis uygulama erişimini etkinleştirmek için kapatma **kullanıcıların bu uygulamaya erişim istemesine izin?** geç **Evet.**
+8. Bu uygulama için Self servis uygulama erişimini etkinleştirmek için, kullanıcıların bu uygulamaya **Yes.** **erişim isteğinde bulunmalarına izin ver'i açın?**
 
-9. Ardından, isteyen kullanıcıların bu uygulamaya erişimi eklenmelidir grup seçmek için etiketi yanındaki seçiciyi **atanan kullanıcılar hangi gruba eklenir?** ve bir grubu seçin.
+9. Ardından, bu uygulamaya erişim isteyen kullanıcıların eklenmesi gereken grubu seçmek için, **hangi gruba atanmalı etiketin** yanındaki seçiciyi tıklatın?
 
-10. **İsteğe bağlı:** Önce bir iş onayı iste istiyorsanız kullanıcılara erişim verilir, Ayarla **bu uygulamaya erişim vermeden önce onay gerektirir?** geç **Evet**.
+10. **İsteğe bağlı:** Kullanıcılara erişim izni verilmeden önce bir işletme onayı almak istiyorsanız, bu uygulamaya erişim izni vermeden önce **Onay** **İste'yi ayarlayın?**
 
-11. **İsteğe bağlı: Yalnızca, parola ile çoklu oturum üzerinde kullanan uygulamalar için** onaylanan kullanıcılar için bu uygulama için gönderilen parolaları belirlemek bu iş onaylayanlar izin vermek istediğiniz verilirse **kullanıcının parolalarını bunu onaylayanların izin ver Uygulama?**  geç **Evet**.
+11. **İsteğe bağlı: Yalnızca parola tek oturum açma kullanan uygulamalarda,** bu iş onaylayıcılarının onaylı kullanıcılar için bu uygulamaya gönderilen parolaları belirtmesine izin vermek istiyorsanız, **onaylayıcıları bu uygulama için kullanıcı parolalarını ayarlamak için** izin verin'i ayarlayın? **Yes**
 
-12. **İsteğe bağlı:** Bu uygulamaya erişimi onaylama için izin verilen iş onaylayanlar belirtmek için etiket yanındaki seçiciyi **kimin bu uygulamaya erişimi onaylama için verilir?** 10 adede kadar tek tek iş onaylayanları seçin.
+12. **İsteğe bağlı:** Bu uygulamaya erişimi onaylamasına izin verilen iş onaylayıcılarını belirtmek için, **10** tek tek iş onaylayıcısına kadar seçim yapmak için bu uygulamaya erişimi kim onaylamasına izin verilen etiketin yanındaki seçiciyi tıklatın.
 
     >[!NOTE]
-    > Grupları desteklenmez.
+    > Gruplar desteklenmez.
     >
     >
 
-13. **İsteğe bağlı:** **Rolleri gösterdiğiniz uygulamalar için**, Self Servis onaylanan kullanıcılar role atamak istiyorsanız yanındaki seçiciyi **bu uygulamada kullanıcılar hangi role atanmış?** rolüne seçmek için Bu kullanıcılara atanmış olmalıdır.
+13. **İsteğe bağlı:** **Rolleri ortaya çıkaran uygulamalarda**, bir role self servis onaylı kullanıcıları atamak istiyorsanız, bu uygulamada kullanıcıların hangi role atanması gerektiğinin yanındaki seçiciyi **tıklatın?**
 
-14. Tıklayın **Kaydet** tamamlamak için dikey pencerenin üstünde düğme.
+14. Bitirmek için bıçağın üst kısmındaki **Kaydet** düğmesini tıklatın.
 
-Self Servis uygulama yapılandırmasını tamamladıktan sonra kullanıcılar için gidebilir, [uygulama erişim panelinde](https://myapps.microsoft.com/) tıklatıp **+ Ekle** Self Servis etkin uygulamaları bulmak için düğme erişim. İş onaylayan bir bildirim Ayrıca bkz: kendi [uygulama erişim panelinde](https://myapps.microsoft.com/). Kullanıcı onay gerektiren bir uygulama için erişim istedi gelmeyeceğini e-posta etkinleştirebilirsiniz. 
+Self servis uygulama yapılandırmasını tamamladıktan sonra, kullanıcılar [Uygulama Erişim Paneli'ne](https://myapps.microsoft.com/) gidebilir ve Self servis erişimi etkinleştirdiğiniz uygulamaları bulmak için **+Ekle** düğmesini tıklatabilir. İş onaylayanlar da [Uygulama Erişim Paneli'nde](https://myapps.microsoft.com/)bir bildirim görürler. Bir kullanıcı onayını gerektiren bir uygulamaya erişim istediğinde, bir e-postayı bunları bildiren bir e-postayı etkinleştirebilirsiniz. 
 
-Bu onay, yani birden çok onaylayıcısı belirtirseniz, herhangi bir tek onaylayan uygulamaya erişimi onaylama tek onay iş akışları yalnızca destekler.
+Bu onaylar yalnızca tek onay iş akışlarını destekler, yani birden çok onaylayıcı belirtirseniz, herhangi bir tek onaylayıcı uygulamaya erişimi onaylayabilir.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Bu sorun giderme adımlarını sorunu çözmezse 
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Bu sorun giderme adımları sorunu çözmezse 
 
-Aşağıdaki bilgilerle varsa bir destek bileti açın:
+varsa aşağıdaki bilgileri içeren bir destek bileti açın:
 
--   Bağıntı hata kimliği
+-   Korelasyon hatası kimliği
 
 -   UPN (kullanıcı e-posta adresi)
 
--   Kiracı kimliği
+-   Kiracı Kimliği
 
 -   Tarayıcı türü
 
--   Saat dilimi ve saat/zaman çerçevesi sırasında hata oluşuyor
+-   Hata oluşur sırasında saat dilimi ve saat/zaman dilimi oluşur
 
--   Fiddler izlemeleri
+-   Kemancı izleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Active Directory Self Servis Grup Yönetimi için ayarlama](../users-groups-roles/groups-self-service-management.md)
+[Self servis grup yönetimi için Azure Active Directory'yi ayarlama](../users-groups-roles/groups-self-service-management.md)

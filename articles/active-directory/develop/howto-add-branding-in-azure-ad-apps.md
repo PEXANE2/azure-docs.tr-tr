@@ -1,5 +1,5 @@
 ---
-title: Uygulama markalama yönergeleri | Mavisi
+title: Uygulama markalama yönergeleri | Azure
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory'nin geliştirici yönelimli kaynakları için kapsamlı bir kılavuz
 services: active-directory
@@ -15,10 +15,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697498"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
@@ -56,7 +56,7 @@ Bu yönergelerin daha önceki bir sürümünde “mavi rozet” piktogramı kull
 
 Uygulamanız kaydolma ve oturum açma için ayrı yollar sunabilir. Aşağıdaki bölümlerde her iki duruma uygun görsel kılavuz sağlanmaktadır.
 
-**Uygulamanız son kullanıcının kaydolmasını destekliyorsa (örneğin, ücretsiz deneme sürümü veya freemium modeli)** : Kullanıcıların iş hesapları veya kişisel hesapları ile uygulamanıza erişmesine izin veren bir **oturum aç** düğmesi gösterebilirsiniz. Azure AD, uygulamanıza ilk eriştiklerinde bir izin alma istemi gösterecektir.
+**Uygulamanız son kullanıcının kaydolmasını destekliyorsa (örneğin, ücretsiz deneme sürümü veya freemium modeli)**: Kullanıcıların iş hesapları veya kişisel hesapları ile uygulamanıza erişmesine izin veren bir **oturum aç** düğmesi gösterebilirsiniz. Azure AD, uygulamanıza ilk eriştiklerinde bir izin alma istemi gösterecektir.
 
 **Uygulamanız yalnızca yöneticilerin verebileceği izinleri gerektiriyorsa veya uygulamanız kuruluş lisansı gerektiriyorsa**: Yönetici alımını kullanıcı oturum açma işleminden ayırın. **“Bu uygulamayı al” düğmesi** yöneticileri oturum açma ekranına yeniden yönlendirecek ve ardından kuruluştaki kullanıcılar adına izin vermelerini isteyecektir; bu düğme, son kullanıcı izin alma istemlerini uygulamanıza gizleme açısından ek avantaj sunar.
 
@@ -64,19 +64,19 @@ Uygulamanız kaydolma ve oturum açma için ayrı yollar sunabilir. Aşağıdaki
 
 “Uygulamayı al” bağlantınızın, Microsoft tarafından barındırılan kuruluş verilerine erişmek üzere bir kuruluş yöneticisinin uygulamanızı yetkilendirmesine izin vermek için kullanıcıyı Azure AD erişim verme (yetkilendirme) sayfasına yeniden yönlendirmesi gerekir. Nasıl erişim talep edileceğine ilişkin ayrıntılar [Integrating Applications with Azure Active Directory (Uygulamaları Azure Active Directory ile Tümleştirme)](quickstart-v1-integrate-apps-with-azure-ad.md) makalesinde açıklanmaktadır.
 
-Yöneticiler uygulamanıza izin verdikten sonra uygulamanızı kullanıcılarının Office 365 uygulama başlatıcı deneyimine ekleyebilirler (waffle menüsünden ve [https://portal.office.com/myapps](https://portal.office.com/myapps) bölümünden erişilebilir). Bu özelliği tanıtmak istiyorsanız “Bu uygulamayı kuruluşunuza ekleyin” gibi ifadeler kullanabilir ve aşağıdaki gibi bir düğme görüntüleyebilirsiniz:
+Yöneticiler uygulamanızı kabul ettikten sonra, uygulamayı kullanıcılarının Office 365 uygulama başlatıcısı deneyimine eklemeyi seçebilirler (waffle'dan ve nereden [https://portal.office.com/myapps](https://portal.office.com/myapps)erişilebilir). Bu özelliği tanıtmak istiyorsanız “Bu uygulamayı kuruluşunuza ekleyin” gibi ifadeler kullanabilir ve aşağıdaki gibi bir düğme görüntüleyebilirsiniz:
 
-![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![Microsoft logosunu ve "Kuruluşuma Ekle" metnini gösteren düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
 
-> *Zaten Microsoft 'tan Office 365 veya diğer iş Hizmetleri kullanıyorsanız, kuruluşunuzun verilerine > your_app_name < verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla > < your_app_name erişmesine izin verir.*
+> *Office 365'i veya Microsoft'un diğer iş hizmetlerini zaten kullanıyorsanız, kuruluşunuzun verilerine> <your_app_name erişim izni verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla <your_app_name> erişmesine olanak sağlar.*
 
 Uygulamanızda kullanmak üzere resmi Microsoft logosunu indirmek için, kullanmak istediğiniz logoya sağ tıklayın ve ardından bilgisayarınıza kaydedin.
 
 | Varlık                                | PNG biçimi | SVG biçimi |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft logosu  | ![PNG biçiminde indirilebilir Microsoft logosu](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![SVG biçiminde indirilebilir Microsoft logosu](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft logosu  | ![PNG formatında indirilebilir Microsoft logosu](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![SVG formatında indirilebilir Microsoft logosu](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Oturum açma için görsel kılavuz
 
@@ -88,16 +88,16 @@ Microsoft logosu ve “Microsoft ile Oturum Aç” ifadesinin bir arada sunulmas
 
 Aşağıdaki diyagramda, uygulamanızla birlikte varlıkları kullanırken Microsoft tarafından önerilen kırmızı çizgiler gösterilmektedir. Kırmızı çizgiler, “Microsoft ile Oturum Aç” veya kısa hali “Oturum Aç” sürümü için geçerlidir.
 
-!["Microsoft hesabıyla oturum açın" Redlines gösterir](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+!["Microsoft ile oturum aç" kırmızı çizgilerini gösterir](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Uygulamanızda kullanmak üzere resmi görüntüleri indirmek için kullanmak istediğiniz görüntüye sağ tıklayın ve ardından görüntüyü bilgisayarınıza kaydedin.
 
 | Varlık                                | PNG biçimi | SVG biçimi |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft ile Oturum Aç (koyu tema)  | ![İndirilebilir "Microsoft hesabıyla oturum açın" düğmesi Koyu tema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![İndirilebilir "Microsoft hesabıyla oturum açın" düğmesi Koyu tema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Microsoft ile Oturum Aç (açık tema) | ![İndirilebilir "Microsoft hesabıyla oturum açın" düğmesi açık Tema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![İndirilebilir "Microsoft hesabıyla oturum açın" düğmesi açık Tema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Oturum Aç (koyu tema)                 | ![İndirilebilir "oturum aç" kısa düğmesi Koyu tema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![İndirilebilir "oturum aç" kısa düğmesi Koyu tema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Oturum Aç (açık tema)                | ![İndirilebilir "oturum açma" kısa düğme açık teması PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![İndirilebilir "oturum aç" kısa düğme açık teması SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Microsoft ile Oturum Aç (koyu tema)  | ![İndirilebilir "Microsoft ile oturum açın" düğmesi koyu tema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![İndirilebilir "Microsoft ile oturum açın" düğmesi koyu tema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Microsoft ile Oturum Aç (açık tema) | ![İndirilebilir "Microsoft ile oturum açın" düğmesi ışık teması PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![İndirilebilir "Microsoft ile oturum açın" düğmesi ışık teması SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Oturum Aç (koyu tema)                 | ![İndirilebilir "Oturum Aç" kısa düğme koyu tema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![İndirilebilir "Oturum Aç" kısa düğme koyu tema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Oturum Aç (açık tema)                | ![İndirilebilir "Oturum aç" kısa düğme ışık teması PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![İndirilebilir "Oturum Aç" kısa düğme ışık teması SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Markalama için Yapılması ve Yapılmaması Gerekenler
 

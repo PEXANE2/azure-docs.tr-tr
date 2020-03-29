@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: paket yakalamaları yapılandırma'
-description: VPN ağ geçitleri üzerinde kullanabileceğiniz paket yakalama işlevleri hakkında bilgi edinin.
+title: 'Azure VPN Ağ Geçidi: Paket yakalamalarını yapılandırma'
+description: VPN ağ geçitlerinde kullanabileceğiniz paket yakalama işlevleri hakkında bilgi edinin.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
 ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75353513"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamaları yapılandırma
+# <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamalarını yapılandırma
 
-Bağlantı ve performansla ilgili sorunlar genellikle daha karmaşıktır ve sorunun nedenini azaltmak için önemli miktarda zaman ve çaba alır. Paket yakalama özelliği büyük ölçüde sorunun kapsamını ağın müşteri tarafında, ağın Azure tarafında veya arasında bir yerde olup olmadığı gibi, ağın belirli bölümleriyle daraltma süresini azaltmaya yardımcı olur. Sorun daraltıldıktan sonra, hata ayıklama ve düzeltici eylem gerçekleştirmek çok daha verimlidir.
+Bağlantı ve performansla ilgili sorunlar genellikle karmaşıktır ve sorunun nedenini daraltmak için önemli miktarda zaman ve çaba gerektirir. Paket yakalama yeteneği, sorunun ağın müşteri tarafında mı, ağın Azure tarafında mı yoksa arada bir yerde mi olduğu gibi sorunun kapsamını ağın belirli bölümlerine daraltma süresini büyük ölçüde azaltmaya yardımcı olur. Sorun daraltıldıktan sonra hata ayıklama ve düzeltici eylemde bulunma çok daha verimli olur.
 
-Paket yakalama için bazı yaygın olarak kullanılabilecek araçlar vardır. Bununla birlikte, bu araçları kullanarak ilgili paket yakalamalarını almak genellikle yüksek hacimli trafik senaryolarıyla çalışırken özellikle çok daha az zaman alır. Bir VPN ağ geçidi paket yakalaması tarafından sunulan filtreleme özellikleri, önemli bir farklılık haline gelir. Yaygın olarak kullanılabilir paket yakalama araçlarına ek olarak bir VPN Gateway paket yakalaması kullanabilirsiniz.
+Paket yakalama için yaygın olarak kullanılabilen bazı araçlar vardır. Ancak, bu araçları kullanarak ilgili paket yakalamalar almak genellikle özellikle yüksek hacimli trafik senaryoları ile çalışırken sık sık hantal. VPN ağ geçidi paket yakalama tarafından sağlanan filtreleme yetenekleri önemli bir ayırt edici olur. Yaygın olarak kullanılabilen paket yakalama araçlarına ek olarak bir VPN ağ geçidi paketi yakalama kullanabilirsiniz.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN Gateway paket yakalama filtreleme özellikleri
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN ağ geçidi paket yakalama filtreleme özellikleri
 
-VPN Gateway paket yakalamaları, ağ geçidinde veya müşteri gereksinimlerine bağlı olarak belirli bir bağlantıda çalıştırılabilir. Aynı anda birden çok tünelde paket yakalamalarını çalıştırabilirsiniz. Bir VPN ağ geçidi üzerinde filtreleme ile birlikte tek veya çift yönlü trafiği, ıKE ve ESP trafiğini ve iç paketleri yakalayabilirsiniz.
+VPN ağ geçidi paketi yakalamaları, müşteri ihtiyaçlarına bağlı olarak ağ geçidinde veya belirli bir bağlantıda çalıştırılabilir. Paket yakalamaları aynı anda birden çok tünelde de çalıştırabilirsiniz. VPN ağ geçidinde filtrelemenin yanı sıra tek veya çift yönlü trafiği, IKE ve ESP trafiğini ve iç paketleri yakalayabilirsiniz.
 
-Yüksek hacimli bir trafikte sorunları yalıtmak için 5 tanımlama grubu filtresi (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanılması yararlı olur.
+5 tuples filtresi (kaynak alt ağı, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanarak yüksek hacimli trafik sorunları yalıtma yararlıdır.
 
-Paket yakalamayı çalıştırırken, özellik başına yalnızca bir seçenek kullanabilirsiniz.
+Paket yakalamayı çalıştırırken özellik başına yalnızca bir seçenek kullanabilirsiniz.
 
-## <a name="setup-packet-capture-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
+## <a name="setup-packet-capture-using-powershell"></a>PowerShell kullanarak paket yakalama
 
-Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için aşağıdaki örneklere bakın. Parametre seçenekleri hakkında daha fazla bilgi için (örneğin, filtre oluşturma), bu PowerShell [belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
+Paket yakalamaları başlatmak ve durdurmak için PowerShell komutları için aşağıdaki örneklere bakın. Parametre seçenekleri (filtre oluşturma gibi) hakkında daha fazla bilgi için bu PowerShell [belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
 
-### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı Başlat
+### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı başlatma
 
 ```azurepowershell-interactive
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
+İsteğe bağlı parametre **-FilterData** filtre uygulamak için kullanılabilir.
 
-### <a name="stop-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı durdur
+### <a name="stop-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı durdurma
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName" -SasUrl "YourSASURL"
 ```
 
-### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>VPN Ağ Geçidi bağlantısı için paket yakalamayı Başlat
+### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>VPN ağ geçidi bağlantısı için paket yakalamayı başlatma
 
 ```azurepowershell-interactive
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
+İsteğe bağlı parametre **-FilterData** filtre uygulamak için kullanılabilir.
 
-### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>VPN ağ geçidi bağlantısında paket yakalamayı durdur
+### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>VPN ağ geçidi bağlantısında paket yakalamayı durdurma
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
@@ -62,10 +62,10 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 
-- Paket yakalamalarını çalıştırmak performansı etkileyebilir. Gerekli olmadığında paket yakalamayı durdurmayı unutmayın.
-- Önerilen minimum paket yakalama süresi 600 saniyedir. Yol üzerindeki birden çok bileşen arasındaki eşitleme sorunları nedeniyle, daha kısa bir paket yakalama süresi, verilerin tamamını sağlamayabilir.
-- Paket yakalama veri dosyaları PCAP biçiminde oluşturulur. PCAP dosyalarını açmak için Wireshark veya diğer yaygın olarak kullanılabilir uygulamaları kullanın.
+- Paket yakalamaları çalıştırmak performansı etkileyebilir. Gerekli olmadığında paket yakalamayı durdurmayı unutmayın.
+- Önerilen minimum paket yakalama süresi 600 saniyedir. Paket yakalama süresinin daha kısa olması, yoldaki birden çok bileşen arasında eşitleme sorunları nedeniyle tam veri sağlamayabilir.
+- Paket yakalama veri dosyaları PCAP biçiminde oluşturulur. PCAP dosyalarını açmak için Wireshark veya yaygın olarak kullanılabilen diğer uygulamaları kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VPN Gateway hakkında daha fazla bilgi için bkz. [VPN Gateway hakkında](vpn-gateway-about-vpngateways.md)
+VPN Ağ Geçidi hakkında daha fazla bilgi için [VPN Ağ Geçidi Hakkında](vpn-gateway-about-vpngateways.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Azure SignalR olay şeması
-description: Azure SignalR olayları Azure Event Grid ile sağlanan özellikleri tanımlar
+title: Azure Olay Izgarası Azure SignalR olay şeması
+description: Azure Event Grid ile Azure SinyalR etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: chenyl
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 06/11/2019
 ms.author: chenyl
 ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67789078"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure SignalR hizmeti için Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Hizmeti için Azure Olay Izgara etkinliği şeması
 
-Bu makalede, SignalR hizmet olayları için şema ve özellikleri sağlar. Olay şemaları için bir giriş için bkz [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, SignalR Service olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-SignalR hizmeti, aşağıdaki olay türlerini gösterir:
+SignalR Hizmeti aşağıdaki olay türlerini yayır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.SignalRService.ClientConnectionConnected | İstemci bağlantısı olduğunda oluşturulur. |
-| Microsoft.SignalRService.ClientConnectionDisconnected | Bağlantısı kesilen istemci bağlantı oluşturuldu. |
+| Microsoft.SignalRService.ClientConnectionConnected | İstemci bağlantısı bağlandığında yükseltildi. |
+| Microsoft.SignalRService.ClientConnectionBağlantısı kesildi | İstemci bağlantısı kesildiğinde yükseltildi. |
 
 ## <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnek, bir istemci şemasını bağlantı bağlı olay gösterir: 
+Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gösterir: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Aşağıdaki örnek, bir istemci şemasını bağlantı bağlı olay gösterir:
 }]
 ```
 
-İstemci bağlantı bağlantısı kesilmiş bir olayın şeması benzer: 
+İstemci bağlantısı bağlantısı kesilen bir olayın şeması benzer: 
 
 ```json
 [{
@@ -71,32 +71,32 @@ Aşağıdaki örnek, bir istemci şemasını bağlantı bağlı olay gösterir:
 }]
 ```
 
-## <a name="event-properties"></a>Olay Özellikleri
+## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey veri vardır:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| topic | dize | Olay kaynağı tam kaynak yolu. Bu alan, yazılabilir değil. Event Grid, bu değeri sağlar. |
-| subject | dize | Yayımcı tarafından tanımlanan olay konu yolu. |
-| eventType | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | dize | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| id | dize | Olayın benzersiz tanımlayıcısı. |
-| data | object | SignalR hizmeti olay verileri. |
-| dataVersion | dize | Veri nesnesinin şema sürümü. Yayımcı, şema sürümü tanımlar. |
-| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid, şemanın en üst düzey özellikleri tanımlar. Event Grid, bu değeri sağlar. |
-
-Veri nesnesi, aşağıdaki özelliklere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| timestamp | dize | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| hubName | dize | İstemci bağlantısı ait olduğu hub. |
-| ConnectionID | dize | İstemci bağlantısı için benzersiz tanımlayıcı. |
-| userId | dize | Talep kümesinde tanımlanan kullanıcı tanımlayıcısı. |
-| ErrorMessage | dize | Bağlantı neden olan hata bağlantısı kesildi. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | SignalR Service olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+Veri nesnesi aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| timestamp | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| hubName | string | İstemci bağlantısının ait olduğu hub. |
+| Connectionıd | string | İstemci bağlantısı için benzersiz tanımlayıcı. |
+| userId | string | Talepte tanımlanan kullanıcı tanımlayıcısı. |
+| errorMessage | string | Bağlantının kesilmesine neden olan hata. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid aboneliği şema](subscription-creation-schema.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

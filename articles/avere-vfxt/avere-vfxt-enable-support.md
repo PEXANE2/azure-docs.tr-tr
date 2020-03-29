@@ -1,47 +1,47 @@
 ---
-title: Avere vFXT-Azure desteğini etkinleştir
-description: Azure için avere vFXT 'den destek yüklemelerini etkinleştirme
+title: Avere vFXT için desteği etkinleştirin - Azure
+description: Azure için Avere vFXT'den destek yüklemelerini etkinleştirme
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: d12bbd1708ceb948aea982f9ed1ab36879e3751c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75415362"
 ---
 # <a name="enable-support-uploads"></a>Destek karşıya yüklemelerini etkinleştirme
 
-Azure için avere vFXT, kümeniz hakkında Destek verilerini otomatik olarak karşıya yükleyebilir. Bu karşıya yüklemeler, destek personelinin olası en iyi müşteri hizmetini sağlamasına imkan tanır.
+Azure için Avere vFXT, kümeniz hakkındaki destek verilerini otomatik olarak yükleyebilir. Bu yüklemeler, destek personelinin mümkün olan en iyi müşteri hizmetini sağlamasına olanak sağlar.
 
-## <a name="steps-to-enable-uploads"></a>Karşıya yüklemeleri etkinleştirme adımları
+## <a name="steps-to-enable-uploads"></a>Yüklemeleri etkinleştirme adımları
 
-Desteği etkinleştirmek için avere denetim masasından bu adımları izleyin. (Denetim Masası 'nı açmayı öğrenmek için [vFXT kümesine erişin](avere-vfxt-cluster-gui.md) .)
+Desteği etkinleştirmek için Avere Kontrol Paneli'nden şu adımları izleyin. (Kontrol panelinin nasıl açılacağını öğrenmek için [vFXT kümesine eriş'i](avere-vfxt-cluster-gui.md) okuyun.)
 
 1. Üstteki **Ayarlar** sekmesine gidin.
-1. Sol taraftaki **destek** bağlantısına tıklayın ve gizlilik ilkesini kabul edin.
+1. Soldaki **Destek** bağlantısını tıklayın ve gizlilik ilkesini kabul edin.
 
-   ![Gizlilik ilkesini kabul etmek için avere Denetim Masası 'Nı ve onay düğmesini içeren açılır pencereyi gösteren ekran görüntüsü](media/avere-vfxt-privacy-policy.png)
+   ![Gizlilik politikasını kabul etmek için Onay düğmesiyle Avere Kontrol Paneli ve açılır pencereyi gösteren ekran görüntüsü](media/avere-vfxt-privacy-policy.png)
 
-1. Destek yapılandırması sayfasında, soldaki üçgene tıklayarak **Müşteri bilgileri** bölümünü açın.
-1. **Karşıya yükleme bilgilerini yeniden doğrula** düğmesine tıklayın.
-1. Kümenin destek adını **benzersiz küme adı**olarak ayarlayın. Bu adın, personeli desteklemek için kümenizi benzersiz bir şekilde tanımladığından emin olun.
-1. **Istatistik izleme**, **genel bilgiler karşıya yükleme**ve **kilitlenme bilgileri karşıya yükleme**kutularını işaretleyin.
-1. **Gönder**'e tıklayın.
+1. Destek yapılandırma sayfasında, soldaki üçgene tıklayarak **Müşteri Bilgileri** bölümünü açın.
+1. Yükleme **bilgilerini yeniden ertele** düğmesini tıklatın.
+1. Kümenin destek adını **Benzersiz Küme Adı'nda**ayarlayın. Bu adın, personeli desteklemek için kümenizi benzersiz olarak tanımladığından emin olun.
+1. **İstatistik İzleme,** **Genel Bilgi Yükleme**ve **Crash Information Upload**için kutuları işaretleyin.
+1. **Gönder'i**tıklatın.
 
-   ![Destek ayarları sayfasının tamamlanan müşteri bilgisi bölümünün bulunduğu ekran görüntüsü](media/avere-vfxt-support-info.png)
+   ![Destek ayarları sayfasının tamamlanmış müşteri bilgileri bölümünü içeren ekran görüntüsü](media/avere-vfxt-support-info.png)
 
-1. Bölümü genişletmek için **güvenli proaktif destek (SPS)** sol tarafındaki üçgeni tıklatın.
-1. **SPS 'Yi etkinleştir bağlantısının**kutusunu işaretleyin.
-1. **Gönder**'e tıklayın.
+1. Bölümü genişletmek için **Güvenli Proaktif Destek'in (SPS)** solundaki üçgeni tıklatın.
+1. **SPS Bağlantısını Etkinleştir**için kutuyu işaretleyin.
+1. **Gönder'i**tıklatın.
 
-   ![Destek ayarları sayfasında tamamlanmış güvenli proaktif destek bölümünün bulunduğu ekran görüntüsü](media/avere-vfxt-support-sps.png)
+   ![Destek ayarları sayfasında tamamlanmış Güvenli Proaktif Destek bölümünü içeren ekran görüntüsü](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kümeye şirket içi veya mevcut bir bulut depolama sistemi eklemeniz gerekiyorsa, [depolamayı yapılandırma](avere-vfxt-add-storage.md)bölümündeki yönergeleri izleyin.
+Kümeye şirket içi veya varolan bir bulut depolama sistemi eklemeniz gerekiyorsa, [Depolamayı Yapılandır'daki](avere-vfxt-add-storage.md)yönergeleri izleyin.
 
-Kümeye istemci eklemeye başlamaya hazırsanız, [avere vFXT kümesini bağlama](avere-vfxt-mount-clients.md)konusunu okuyun.
+İstemcileri kümeye iliştirmeye başlamaya hazırsanız, [Avere vFXT kümesini dağı'nı](avere-vfxt-mount-clients.md)okuyun.

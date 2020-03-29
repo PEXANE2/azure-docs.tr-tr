@@ -1,6 +1,6 @@
 ---
-title: Spark 'dan Azure Cosmos DB Cassandra API silme işlemleri
-description: Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolardaki verileri silme ayrıntıları anlatılmaktadır
+title: Azure Cosmos DB Cassandra API'deki işlemleri Spark'tan silme
+description: Bu makalede, Azure Cosmos DB Cassandra API'deki tablolardaki verilerin Spark'tan nasıl silinir
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442082"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 'tan Azure Cosmos DB Cassandra API tablolarındaki verileri silme
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Azure Cosmos DB Cassandra API tablolarında bulunan verileri Spark'tan silme
 
-Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolarında verilerin nasıl silineceği açıklanır.
+Bu makalede, Azure Cosmos DB Cassandra API tablolarında Spark'tan verilerin nasıl silinir.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API configuration
+## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Örnek veri Oluşturucu
+## <a name="sample-data-generator"></a>Örnek veri üreteci
 Örnek veri oluşturmak için bu kod parçasını kullanacağız:
 
 ```scala
@@ -67,7 +67,7 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>API veri çerçevesi
+## <a name="dataframe-api"></a>Veri çerçevesi API'si
 
 ### <a name="delete-rows-that-match-a-condition"></a>Bir koşulla eşleşen satırları silme
 
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları sil
+### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları silme
 
 ```scala
 //1) Create dataframe
@@ -233,7 +233,7 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 
 ## <a name="rdd-api"></a>RDD API
 
-### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları sil
+### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları silme
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -300,7 +300,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@317927
 ```
 
-### <a name="delete-specific-columns"></a>Belirli sütunları Sil
+### <a name="delete-specific-columns"></a>Belirli sütunları silme
 
 ```scala
 //1) Create RDD 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect eşitleme:  ADSync hizmet hesabını değiştirme | Microsoft Docs'
-description: Bu konuda belge şifreleme anahtar ve parolalar değiştirildikten sonra iptal etmek nasıl açıklar.
+title: 'Azure AD Connect eşitlemi: ADSync hizmet hesabını değiştirme | Microsoft Dokümanlar'
+description: Bu konu belgesi, şifreleme anahtarını ve parola değiştirildikten sonra nasıl terk edilebildiğini açıklar.
 services: active-directory
 keywords: Azure AD eşitleme hizmeti hesabı, parola
 documentationcenter: ''
@@ -18,110 +18,110 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65139387"
 ---
-# <a name="changing-the-adsync-service-account-password"></a>Ad eşitleme hizmeti hesabı parolasını değiştirme
-Ad eşitleme hizmeti hesabı parolasını değiştirirseniz, şifreleme anahtarını terk ve ADSync hizmeti hesabı parolasını yeniden kadar eşitleme hizmeti mümkün başlangıç doğru olmayacaktır. 
+# <a name="changing-the-adsync-service-account-password"></a>ADSync servis hesabı parolasını değiştirme
+ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını bırakıp ADSync hizmet hesabı parolasını yeniden başlatana kadar Eşitleme Hizmeti doğru şekilde başlatılamaz. 
 
-Azure AD Connect Eşitleme hizmetlerini bir parçası olarak AD DS bağlayıcı hesabı ve ADSync hizmeti hesabı parolalarını depolamak için bir şifreleme anahtarı kullanır.  Bu hesapları, veritabanı içinde depolanmadan önce şifrelenir. 
+Azure AD Connect, Eşitleme Hizmetlerinin bir parçası olarak AD DS Bağlayıcı hesabının ve ADSync hizmet hesabının parolalarını depolamak için bir şifreleme anahtarı kullanır.  Bu hesaplar veritabanında depolandırılmadan önce şifrelenir. 
 
-Kullanılan şifreleme anahtarı kullanılarak güvenli [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI koruyan şifreleme anahtarı kullanarak **ADSync hizmeti hesabı**. 
+Kullanılan şifreleme anahtarı Windows [Veri Koruması (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)kullanılarak korunur. DPAPI, **ADSync hizmet hesabını**kullanarak şifreleme anahtarını korur. 
 
-Hizmet hesabı parolasını değiştirmeniz gerekirse yordamları kullanabileceğiniz [ADSync hizmeti hesabı şifreleme anahtarını bırakıp](#abandoning-the-adsync-service-account-encryption-key) bunu sağlamak için.  Şifreleme anahtarı herhangi bir nedenle iptal etmeniz gerekiyorsa bu yordamları da kullanılmalıdır.
+Servis hesabı parolasını değiştirmeniz gerekiyorsa, bunu gerçekleştirmek için [ADSync hizmet hesabı şifreleme anahtarını terk etme](#abandoning-the-adsync-service-account-encryption-key) yordamlarını kullanabilirsiniz.  Şifreleme anahtarını herhangi bir nedenle bırakmanız gerekiyorsa, bu yordamlar da kullanılmalıdır.
 
-## <a name="issues-that-arise-from-changing-the-password"></a>Parola değiştirmesini ortaya çıkan sorunları
+## <a name="issues-that-arise-from-changing-the-password"></a>Parolanın değiştirilmesinden kaynaklanan sorunlar
 Hizmet hesabı parolasını değiştirdiğinizde yapılması gereken iki şey vardır.
 
-İlk olarak, altında Windows hizmet denetimi yöneticisi parolasını değiştirmek gerekir.  Bu sorun çözülene kadar aşağıdaki hatalar görürsünüz:
+Öncelikle, Windows Service Control Manager altında parolayı değiştirmeniz gerekir.  Bu sorun çözülene kadar aşağıdaki hataları görürsünüz:
 
 
-- Windows hizmeti Denetim Yöneticisi'nde Eşitleme Hizmeti'ni başlatmak çalışırsanız hata alırsınız "**Windows yerel bilgisayarda Microsoft Azure AD eşitleme hizmeti başlatılamadı**". **1069. hata: Hizmet, bir oturum açma hatası nedeniyle başlatılamadı.** "
-- Altındaki Windows Olay Görüntüleyicisi, sistem olay günlüğüne bir hata ile içeren **olay kimliği 7038** ve ileti "**ADSync hizmeti şu hata nedeniyle şu anda yapılandırılmış parola olarak oturum açamadı: Kullanıcı adı veya parola doğru değil.** "
+- Windows Hizmet Denetim Yöneticisi'nde Eşitleme Hizmetini başlatmaya çalışırsanız, "**Windows, Yerel Bilgisayar'da Microsoft Azure AD Eşitleme hizmetini başlatamadı**" hatasını alırsınız. **Hata 1069: Hizmet bir oturum açma hatası nedeniyle başlamadı.**"
+- Windows Olay Görüntüleyicisi altında, sistem olay günlüğü **Olay Kimliği 7038** ile ilgili bir hata içerir ve **"ADSync hizmeti aşağıdaki hata nedeniyle şu anda yapılandırılan parolada olduğu gibi oturum açamadı: Kullanıcı adı veya parola yanlıştır.**"
 
-Parola güncelleştirdiyseniz, ikinci olarak, belirli koşullar altında eşitleme hizmeti artık DPAPI ile şifreleme anahtarını geri alabilirsiniz. Şifreleme anahtarı olmadan, eşitleme hizmeti şirket içine/dışına AD ile Azure AD eşitleme için gerekli olan parolaları şifresi çözülemiyor.
-Hataları gibi görürsünüz:
+İkinci olarak, belirli koşullar altında, parola güncelleştirilirse, Eşitleme Hizmeti artık DPAPI üzerinden şifreleme anahtarını alamaz. Şifreleme anahtarı olmadan, Eşitleme Hizmeti şirket içi AD ve Azure AD'ye/şirket içi AD'ye eşitlemek için gereken parolaların şifresini çözemez.
+Şu gibi hatalar görürsünüz:
 
-- Windows Hizmet Denetimi Yöneticisi altında eşitleme hizmeti başlatmayı deneyin ve şifreleme anahtarı alınamıyor bu hatayla başarısız oluyor "<strong>Windows yerel bilgisayarda Microsoft Azure AD eşitleme başlatılamadı. Daha fazla bilgi için sistem olay günlüğünü inceleyin. Microsoft olmayan bir hizmette varsa hizmet satıcısını ve-21451857952 hizmete özgü hata koduna bakın</strong>. "
-- Altındaki Windows Olay Görüntüleyicisi, uygulama olay günlüğüne bir hata içeriyor. **olay kimliği 6028** ve hata iletisi *"sunucu şifreleme anahtarı erişilemez."*
+- Windows Service Control Manager altında, Eşitleme Hizmetini başlatmaya çalışırsanız ve şifreleme anahtarını alamıyorsa, hatayla başarısız olur "<strong>Windows, Microsoft Azure AD Eşitlemeyi'ni Yerel Bilgisayarda başlatamaz. Daha fazla bilgi için Sistem Olayı günlüğünü inceleyin. Bu Microsoft'a ait olmayan bir hizmetse, hizmet satıcısına başvurun ve hizmete özgü hata kodu -21451857952'ye başvurun."</strong>
+- Windows Olay Görüntüleyicisi altında, uygulama olay günlüğü **Olay Kimliği 6028** ve hata iletisi *"Sunucu şifreleme anahtarına erişilemiyor"* hatası içerir.
 
-Bu hata almazsınız emin olmak için konusundaki yordamları izleyin [ADSync hizmeti hesabı şifreleme anahtarını bırakıp](#abandoning-the-adsync-service-account-encryption-key) parola değiştirme.
+Bu hataları almadığınızı sağlamak için, parolayı değiştirirken [ADSync hizmet hesabı şifreleme anahtarını terk etme](#abandoning-the-adsync-service-account-encryption-key) yordamlarını izleyin.
  
-## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Ad eşitleme hizmeti hesabı şifreleme anahtarını bırakıp
+## <a name="abandoning-the-adsync-service-account-encryption-key"></a>ADSync hizmet hesabı şifreleme anahtarını terk etme
 >[!IMPORTANT]
->Aşağıdaki yordamlar, yalnızca Azure AD Connect derleme 1.1.443.0 uygulanır veya daha eski.
+>Aşağıdaki yordamlar yalnızca Azure AD Connect build 1.1.443.0 veya daha büyük için geçerlidir.
 
-Şifreleme anahtarını iptal etmek için aşağıdaki yordamları kullanın.
+Şifreleme anahtarını terk etmek için aşağıdaki yordamları kullanın.
 
-### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Şifreleme anahtarını iptal etmeniz gerekiyorsa sizin yapmanız gerekenler
+### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Şifreleme anahtarını bırakmanız gerekiyorsa ne yapmalısınız?
 
-Şifreleme anahtarını iptal gerekiyorsa, bunu gerçekleştirmek için aşağıdaki yordamları kullanın.
+Şifreleme anahtarını bırakmanız gerekiyorsa, bunu gerçekleştirmek için aşağıdaki yordamları kullanın.
 
-1. [Eşitleme hizmeti durdurulamıyor](#stop-the-synchronization-service)
+1. [Eşitleme Hizmetini Durdur](#stop-the-synchronization-service)
 
-1. [Var olan şifreleme anahtarını iptal](#abandon-the-existing-encryption-key)
+1. [Varolan şifreleme anahtarını terk etme](#abandon-the-existing-encryption-key)
 
-2. [AD DS bağlayıcı hesabının parolasını girin](#provide-the-password-of-the-ad-ds-connector-account)
+2. [AD DS Bağlayıcıhesabının parolasını sağlama](#provide-the-password-of-the-ad-ds-connector-account)
 
-3. [Ad eşitleme hizmeti hesabının parolasını yeniden Başlat](#reinitialize-the-password-of-the-adsync-service-account)
+3. [ADSync hizmet hesabının parolasını yeniden başlatma](#reinitialize-the-password-of-the-adsync-service-account)
 
-4. [Eşitleme Hizmeti Başlat](#start-the-synchronization-service)
+4. [Eşitleme Hizmetini Başlat](#start-the-synchronization-service)
 
-#### <a name="stop-the-synchronization-service"></a>Eşitleme hizmeti durdurulamıyor
-İlk Windows hizmeti Denetim Yöneticisi'nde hizmetini durdurabilirsiniz.  Hizmet çalışırken durdurmak çalışmadığından emin olun.  İse, tamamlar ve ardından stop kadar bekleyin.
+#### <a name="stop-the-synchronization-service"></a>Eşitleme Hizmetini Durdur
+Önce Windows Service Control Manager'da hizmeti durdurabilirsiniz.  Hizmeti durdurmaya çalışırken çalışmıyorolduğundan emin olun.  Eğer öyleyse, tamamlanana kadar bekleyin ve sonra durdurun.
 
 
-1. Windows Hizmet Denetimi Yöneticisi (Başlangıç → Hizmetleri) gidin.
-2. Seçin **Microsoft Azure AD eşitleme** ve Durdur'u tıklatın.
+1. Windows Service Control Manager'a gidin (START → Hizmetler).
+2. **Microsoft Azure AD Eşitlemesini** seçin ve Durdur'u tıklatın.
 
-#### <a name="abandon-the-existing-encryption-key"></a>Var olan şifreleme anahtarını iptal
-Yeni şifreleme anahtarının oluşturulabilmesi mevcut şifreleme anahtarını iptal:
+#### <a name="abandon-the-existing-encryption-key"></a>Varolan şifreleme anahtarını terk etme
+Yeni şifreleme anahtarının oluşturulabilmesi için varolan şifreleme anahtarından vazgeçin:
 
-1. Azure AD Connect sunucunuza yönetici olarak oturum açın.
+1. Azure AD Connect Server'ınızda yönetici olarak oturum açın.
 
 2. Yeni bir PowerShell oturumu başlatın.
 
-3. Klasörüne gidin: `$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Klasöre gidin:`$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Komutu çalıştırın: `./miiskmu.exe /a`
+4. Komutu çalıştırın:`./miiskmu.exe /a`
 
-![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Azure AD Connect Sync Şifreleme Anahtarı Yardımcı Programı](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
-#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>AD DS bağlayıcı hesabının parolasını girin
-Veritabanı içinde depolanan mevcut parolalar artık şifresi çözülebilir gibi eşitleme hizmeti ile AD DS bağlayıcı hesabının parolasını sağlamanız gerekir. Eşitleme hizmeti yeni bir şifreleme anahtarı kullanarak parolalarını şifreler:
+#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>AD DS Bağlayıcıhesabının parolasını sağlama
+Veritabanında depolanan varolan parolaların şifresi artık çözülemeyeceğinden, Eşitleme Hizmeti'ni AD DS Bağlayıcı hesabının parolasıyla sağlamanız gerekir. Eşitleme Hizmeti, parolaları yeni şifreleme anahtarını kullanarak şifreler:
 
-1. Eşitleme Hizmeti Yöneticisi'ni (Başlangıç → eşitleme hizmeti) başlatın.
-</br>![Eşitleme Hizmeti Yöneticisi](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
-2. Git **Bağlayıcılar** sekmesi.
-3. Seçin **AD Bağlayıcısı** şirket içi için karşılık gelen AD. Birden fazla AD bağlayıcısı varsa, bunların her biri için aşağıdaki adımları yineleyin.
-4. Altında **eylemleri**seçin **özellikleri**.
-5. Açılan iletişim kutusunda, seçmek **Active Directory ormanına Bağlan**:
-6. AD DS hesap parolasını girin **parola** metin. Parolasını bilmiyorsanız, bu adımı gerçekleştirmeden önce bilinen bir değere ayarlamalısınız.
-7. Tıklayın **Tamam** yeni parolayı kaydedin ve açılır iletişim kutusunu kapatın.
-![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+1. Eşitleme Hizmet Yöneticisi'ni başlatın (START → Eşitleme Hizmeti).
+</br>![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
+2. **Bağlayıcılar** sekmesine gidin.
+3. Şirket içi AD'nize karşılık gelen **AD Bağlayıcısı'nı** seçin. Birden fazla AD bağlayıcınız varsa, her biri için aşağıdaki adımları yineleyin.
+4. **Eylemler**altında, **Özellikleri**seçin.
+5. Açılan iletişim kutusunda Etkin **Dizin Ormanı'na Bağlan'ı**seçin:
+6. **Parola** metin kutusuna AD DS hesabının parolasını girin. Parolasını bilmiyorsanız, bu adımı gerçekleştirmeden önce parolayı bilinen bir değere ayarlamanız gerekir.
+7. Yeni parolayı kaydetmek ve açılır pencere iletişim kutusunu kapatmak için **Tamam'ı** tıklatın.
+![Azure AD Connect Sync Şifreleme Anahtarı Yardımcı Programı](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
-#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Ad eşitleme hizmeti hesabının parolasını yeniden Başlat
-Eşitleme hizmeti için Azure AD hizmet hesabı parolasını doğrudan sağlayamaz. Bunun yerine, cmdlet'ini kullanmanız gerekir **Ekle ADSyncAADServiceAccount** Azure AD hizmet hesabını yeniden başlatmak için. Cmdlet, hesap parolasını sıfırlar ve eşitleme hizmeti için kullanılabilir hale getirir:
+#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>ADSync hizmet hesabının parolasını yeniden başlatma
+Azure AD hizmet hesabının parolasını doğrudan Eşitleme Hizmeti'ne sağlayamazsınız. Bunun yerine, Azure AD hizmet hesabını yeniden başlatmanız için cmdlet **Add-ADSyncAADServiceAccount'i** kullanmanız gerekir. Cmdlet hesap parolasını sıfırlar ve Eşitleme Hizmeti'ne verir:
 
 1. Azure AD Connect sunucusunda yeni bir PowerShell oturumu başlatın.
-2. Cmdlet'ini çalıştırma `Add-ADSyncAADServiceAccount`.
-3. Açılan iletişim kutusunda, Azure AD kiracınız için Azure AD genel yönetici kimlik bilgilerini sağlayın.
-![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
-4. Başarılı olursa, PowerShell komut istemi görürsünüz.
+2. Cmdlet `Add-ADSyncAADServiceAccount`çalıştırın.
+3. Açılır iletişim kutusunda, Azure AD kiracınız için Azure AD Global yönetici kimlik bilgilerini sağlayın.
+![Azure AD Connect Sync Şifreleme Anahtarı Yardımcı Programı](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
+4. Başarılı olursa, PowerShell komut istemini görürsünüz.
 
-#### <a name="start-the-synchronization-service"></a>Eşitleme Hizmeti Başlat
-Eşitleme hizmeti şifreleme anahtarını ve ihtiyaç duyduğu tüm parolalar erişebilir, Windows hizmeti Denetim Yöneticisi'nde hizmetini yeniden başlatabilirsiniz:
+#### <a name="start-the-synchronization-service"></a>Eşitleme Hizmetini Başlat
+Eşitleme Hizmeti şifreleme anahtarına ve ihtiyacı olan tüm parolalara erişebildiği için, Hizmeti Windows Service Control Manager'da yeniden başlatabilirsiniz:
 
 
-1. Windows Hizmet Denetimi Yöneticisi (Başlangıç → Hizmetleri) gidin.
-2. Seçin **Microsoft Azure AD eşitleme** ve yeniden Başlat'a tıklayın.
+1. Windows Service Control Manager'a gidin (START → Hizmetler).
+2. **Microsoft Azure AD Eşitlemeyi'ni** seçin ve Yeniden Başlat'ı tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Genel bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Anlama ve eşitleme özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

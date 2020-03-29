@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB içindeki GROUP BY yan tümcesi
+title: Azure Cosmos DB'deki GROUP BY yan tümcesi
 description: Azure Cosmos DB için GROUP BY yan tümcesi hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
 ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819099"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
+# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'deki GROUP BY yan tümcesi
 
-GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla özellik değerine göre böler.
+GROUP BY yan tümcesi, sorgunun sonuçlarını bir veya daha fazla belirtilen özelliğin değerlerine göre böler.
 
 > [!NOTE]
-> Azure Cosmos DB Şu anda, .NET SDK 3,3 ve üzeri sürümlerde ve JavaScript SDK 3,4 ve üzeri sürümlerde grubunu desteklemektedir.
-> Diğer dil SDK desteği şu anda kullanılamıyor ancak planlanmaktadır.
+> Azure Cosmos DB şu anda GROUP BY'yi .NET SDK 3.3 ve üzeri ve JavaScript SDK 3.4 ve üzeri destekler.
+> Diğer dil SDK'lar için destek şu anda mevcut değildir, ancak planlanmaktadır.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -39,25 +39,25 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
 
 - `<scalar_expression>`
   
-   Skalar sorgular ve skaler toplamalar dışında herhangi bir skaler ifadeye izin verilir. Her skaler ifadenin en az bir özellik başvurusu içermesi gerekir. Bağımsız ifadelerin veya her ifadenin kardinaliteinin sayısı için bir sınır yoktur.
+   Skaler alt sorgular ve skaler agregalar dışında herhangi bir skaler ifadeye izin verilir. Her skaler ifade en az bir özellik başvurusu içermelidir. Tek tek ifadelerin sayısı veya her ifadenin kardinalliği için bir sınır yoktur.
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesine dahil olan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Tek bir istisna, SELECT yan tümcesinde GROUP BY yan tümcesine eklenmeksizin görünebilen [toplu sistem işlevleridir](sql-query-aggregates.md). Ayrıca SELECT yan tümcesine her zaman sabit değerler ekleyebilirsiniz.
+  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesinde yer alan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Bir istisna, GROUP BY yan tümcesi içinde yer almadan SELECT yan tümcesinde görünebilen [toplam sistem işlevleridir.](sql-query-aggregates.md) Select yan tümcesi'ne her zaman gerçek değerleri ekleyebilirsiniz.
 
-  GROUP BY yan tümcesi SELECT, FROM ve WHERE yan tümcesinden sonra ve sınır sınırı tümceciğinden önce olmalıdır. Şu anda GROUP BY ORDER BY yan tümcesiyle birlikte kullanamazsınız, ancak bu planlanmaktadır.
+  GROUP BY yan tümcesi SELECT, FROM ve WHERE yan tümcesinden sonra ve OFSET LIMIT iyanından önce olmalıdır. Şu anda GROUP BY'yi order by yan tümcesi ile kullanamazsınız, ancak bu planlanmıştır.
 
-  GROUP BY yan tümcesi aşağıdakilerden hiçbirine izin vermez:
+  GROUP BY maddesi aşağıdakilerden hiçbirine izin vermez:
   
-- Diğer ad özellikleri veya diğer ad sistemi işlevleri (SELECT yan tümcesinde hala diğer ad kullanımına izin veriliyor)
-- Alt
-- Toplam sistem işlevleri (bunlar yalnızca SELECT yan tümcesinde kullanılabilir)
+- Diğer ad özellikleri veya diğer adlama sistemi işlevleri (diğer adı SELECT yan tümcesi içinde hala izin verilir)
+- Alt sorgular
+- Toplam sistem işlevleri (bunlara yalnızca SELECT yan tümcesinde izin verilir)
 
 ## <a name="examples"></a>Örnekler
 
-Bu örnekler, [Azure Cosmos db sorgu deneme alanı](https://www.documentdb.com/sql/demo)aracılığıyla kullanılabilen beslenme veri kümesini kullanır.
+Bu örnekler, [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo)aracılığıyla kullanılabilen beslenme veri kümesini kullanır.
 
-Örneğin, her bir, her bir Mdgroup 'taki öğelerin toplam sayısını döndüren bir sorgu aşağıda verilmiştir:
+Örneğin, her foodGroup'taki toplam öğe sayısını döndüren bir sorgu aşağıda verilmiştir:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -65,7 +65,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Bazı sonuçlar (sonuçları sınırlandırmak için TOP anahtar sözcüğü kullanılır):
+Bazı sonuçlar şunlardır (TOP anahtar kelime sonuçları sınırlamak için kullanılır):
 
 ```json
 [{
@@ -86,7 +86,7 @@ Bazı sonuçlar (sonuçları sınırlandırmak için TOP anahtar sözcüğü kul
 }]
 ```
 
-Bu sorgu, sonuçları bölmek için kullanılan iki ifadeye sahiptir:
+Bu sorguda sonuçları bölmek için kullanılan iki ifade vardır:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -119,7 +119,7 @@ Bazı sonuçlar şunlardır:
 }]
 ```
 
-Bu sorgu GROUP BY yan tümcesinde bir sistem işlevine sahiptir:
+Bu sorgu, GROUP BY yan tümcesinde bir sistem işlevine sahiptir:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -148,7 +148,7 @@ Bazı sonuçlar şunlardır:
 }]
 ```
 
-Bu sorgu, öğe özelliği ifadesinde hem anahtar sözcükleri hem de sistem işlevlerini kullanır:
+Bu sorgu, öğe özelliği ifadesinde hem anahtar kelimeleri hem de sistem işlevlerini kullanır:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion
@@ -156,7 +156,7 @@ FROM Food f
 GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
 [{
@@ -173,6 +173,6 @@ Sonuçlar şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Başlangıç](sql-query-getting-started.md)
+- [Başlarken](sql-query-getting-started.md)
 - [SELECT yan tümcesi](sql-query-select.md)
-- [Toplama işlevleri](sql-query-aggregates.md)
+- [Toplam fonksiyonlar](sql-query-aggregates.md)

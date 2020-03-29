@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs için Azure PowerShell örnekleri | Microsoft Docs
-description: Azure PowerShell örnekler-Bildirim Hub 'ları oluşturmanıza ve yönetmenize yardımcı olacak betikler.
+title: Azure Bildirim Hub'ları için Azure PowerShell Örnekleri | Microsoft Dokümanlar
+description: Azure PowerShell Örnekleri - Bildirim hub'ları oluşturmanıza ve yönetmenize yardımcı olacak komut dosyaları.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -15,16 +15,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213336"
 ---
-# <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure Notification Hubs Azure PowerShell örnekleri
+# <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure Bildirim Hub'ları için Azure PowerShell örnekleri
 
-Aşağıdaki tabloda Azure Notification Hubs için örnek Azure PowerShell betiklerin bağlantıları yer almaktadır.
+Aşağıdaki tablo, Azure Bildirim Hub'ları için azure PowerShell komut dosyalarını örnekleyen bağlantılar içerir.
 
 | Açıklama | Bağlantı |
 | ----------- | ---- |
-|[Bildirim Hub 'ı oluşturma](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği örnek bir Bildirim Hub 'ı oluşturur. |
+|[Bildirim merkezi oluşturma](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası bir örnek bildirim hub'ı oluşturur. |

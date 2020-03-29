@@ -1,6 +1,6 @@
 ---
-title: Azure CDN ile büyük dosya indirme iyileştirme
-description: Bu makalede, ne kadar büyük dosya indirme iyileştirilebilir açıklanmaktadır.
+title: Azure CDN ile büyük dosya indirme optimizasyonu
+description: Bu makalede, büyük dosya karşıyüklemelerinin nasıl optimize edilebildiği açıklanmaktadır.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,130 +15,130 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593777"
 ---
-# <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme iyileştirme
+# <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme optimizasyonu
 
-Dosya boyutu içeriğin internet üzerinden sunulan gelişmiş işlevselliği, Gelişmiş grafikleri ve zengin medya içeriği nedeniyle büyütmeye devam edin. Bu büyüme faktörlerden tarafından yönetilir: geniş bant sızma, daha ucuz depolama cihazları, yüksek çözünürlüklü video ve İnternet'e bağlı cihazların (IOT) yaygın artırın. Büyük dosyalar için bir hızlı ve verimli bir teslim mekanizması kesintisiz ve eğlenceli bir tüketici deneyiminin sağlanması önemlidir.
+Gelişmiş işlevsellik, gelişmiş grafikler ve zengin medya içeriği sayesinde internet üzerinden teslim edilen içeriğin dosya boyutları büyümeye devam eder. Bu büyüme birçok faktörtarafından yönlendirilir: geniş bant penetrasyonu, daha büyük ucuz depolama cihazları, yüksek tanımlı video yaygın artış, ve internete bağlı cihazlar (IoT). Büyük dosyalar için hızlı ve verimli bir dağıtım mekanizması, sorunsuz ve keyifli bir tüketici deneyimi sağlamak için çok önemlidir.
 
-Büyük dosyaların teslimini çeşitli zorluklar vardır. İlk olarak, uygulamaların tüm verileri sıralı olarak indirmesini değil çünkü büyük dosya indirme için geçen ortalama süre önemli olabilir. Bazı durumlarda, ilk bölümü olmadan önce dosyaya son kısmını uygulamalar indirmesini. Yalnızca az miktarda bir dosya istenen veya bir kullanıcı bir indirme duraklatır, yükleme başarısız olabilir. Content delivery Network'te (CDN), dosyanın tamamı kaynak sunucudan aldıktan sonra indirme ayrıca kadar gecikebilir. 
+Büyük dosyaların teslimi çeşitli zorluklar vardır. İlk olarak, uygulamalar tüm verileri sırayla karşıdan yüklemeyebileceğinden, büyük bir dosyayı indirmek için ortalama süre önemli olabilir. Bazı durumlarda, uygulamalar ilk bölümden önce bir dosyanın son bölümünü karşıdan yükleyebilir. Yalnızca küçük bir dosya istendiğinde veya bir kullanıcı karşıdan yüklemeyi duraklattığında, karşıdan yükleme başarısız olabilir. İndirme, içerik dağıtım ağı (CDN) tüm dosyayı kaynak sunucudan alana kadar da gecikebilir. 
 
-İkinci olarak, bir kullanıcının machine ve dosya arasındaki gecikme süresi, bunların içeriğini görüntüleyebilir hızını belirler. Ayrıca, Ağ Tıkanıklığı ve kapasite sorunları, aktarım hızı da etkiler. Sunucuları ve kullanıcılar arasındaki büyük mesafeler kalite azaltan gerçekleşmesi, paket kaybı için ek fırsatlar oluşturun. Sınırlı performans tarafından kalite azalmasına neden ve artan paket kaybı tamamlamak bir dosya indirme için bekleme süresini artırabilir. 
+İkinci olarak, kullanıcının makinesi yle dosya arasındaki gecikme, içeriği görüntüleme hızını belirler. Buna ek olarak, ağ tıkanıklığı ve kapasite sorunları da iş buzunu etkiler. Sunucular ve kullanıcılar arasındaki daha büyük mesafeler, paket kaybının oluşması için ek fırsatlar oluşturur ve bu da kaliteyi azaltır. Sınırlı iş verime ve artan paket kaybından kaynaklanan kalite düşüşü, dosya karşıdan yüklemesinin tamamlanması için bekleme süresini artırabilir. 
 
-Üçüncü olarak, çok büyük dosyaları içinde tamamen teslim edilemedi. Kullanıcılar bir indirme aracılığıyla olan sürenin yarısına ulaşıldığında iptal veya yalnızca ilk birkaç dakika uzunluğunda bir MP4 video izleyin. Bu nedenle, yazılım ve medya teslim şirketlerine yalnızca istenen dosyasının bölümünü sunmak istiyorsunuz. İstenen bölümlerinden etkili bir dağıtım çıkış trafiği kaynak sunucudan azaltır. Etkin dağıtım, bellek ve g/ç baskı kaynak sunucusunda de azaltır. 
-
-
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Azure CDN ile büyük dosyaların teslimini Microsoft gelen en iyi duruma getirme
-
-**Azure CDN standart Microsoft gelen** uç noktaları dosya boyutu büyük dosyaları olmadan bir uç sunun. Ek özellikler büyük dosyaların teslimini hızlandırmak için varsayılan olarak açık olabilir.
-
-### <a name="object-chunking"></a>Öbekleme nesnesi 
-
-**Azure CDN standart Microsoft gelen** nesne Öbekleme adında bir teknik kullanır. Büyük dosya istendiğinde, CDN dosyanın daha küçük parçalara kaynaktan alır. CDN POP sunucunun tam veya bayt aralığı dosya isteği aldıktan sonra CDN uç sunucusu dosyayı kaynaktan 8 MB'lık parçalar halinde ister. 
-
-CDN uç öbek ulaştıktan sonra bu önbelleğe alınmış ve hemen kullanıcıya sunulan. CDN, ardından sonraki öbek paralel prefetches. Bu önceden getirme içeriği gecikmesini azaltır kullanıcı önceden bir öbek kalmasını sağlar. Bu işlem tüm kadar devam eder (istenirse) dosyasını indirdiğiniz, tüm bayt aralıkları (istenirse) kullanılabilir, veya istemci bağlantıyı sonlandırır. 
-
-Bayt aralığı isteği hakkında daha fazla bilgi için bkz. [RFC 7233](https://tools.ietf.org/html/rfc7233).
-
-Bunlar aldığı gibi CDN herhangi öbekleri önbelleğe alır. Dosyanın tamamı, CDN önbelleğinin üzerinde önbelleğe alınması gerekmez. Dosya veya bayt aralıkları için sonraki istekler CDN önbelleğinden sunulur. Aksi takdirde öbekleri CDN'de önbelleğe alınır, önceden getirme öbekleri kaynaktan istemek için kullanılır. Bu iyileştirme, bayt aralığı isteklerini destekleme özelliği, kaynak sunucu üzerinde kullanır; Kaynak sunucu bayt aralığı isteklerini desteklemiyorsa, bu en iyi duruma getirme etkili değildir. 
-
-### <a name="conditions-for-large-file-optimization"></a>Büyük dosya iyileştirmesi için koşullar
-Büyük dosya iyileştirmesi özelliklerini **Azure CDN standart Microsoft gelen** genel web teslimi iyileştirme türünü kullandığınızda varsayılan olarak açık olabilir. En büyük dosya boyutu sınırı yoktur.
+Üçüncü olarak, birçok büyük dosya bunların bütünüyle teslim edilmez. Kullanıcılar, uzun bir MP4 videonun yalnızca ilk birkaç dakikasını yarıya indirebilir veya izleyebilir. Bu nedenle, yazılım ve medya dağıtım şirketleri yalnızca istenen bir dosyanın bölümünü teslim etmek istiyorum. İstenen bölümlerin verimli bir şekilde dağıtılması, kaynak sunucusundan çıkış trafiğini azaltır. Verimli dağıtım, kaynak sunucusundaki bellek ve G/Ç basıncını da azaltır. 
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Verizon'dan Azure CDN ile büyük dosyaların teslimini en iyi duruma getirme
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Microsoft'tan Azure CDN ile büyük dosyaların teslimi için optimize edin
 
-**Azure CDN standart Verizon** ve **verizon'dan Azure CDN Premium** uç noktaları dosya boyutu büyük dosyaları olmadan bir uç sunun. Ek özellikler büyük dosyaların teslimini hızlandırmak için varsayılan olarak açık olabilir.
+Microsoft uç **noktalarından Azure CDN Standardı,** dosya boyutunda üst sınırı olmayan büyük dosyalar sunar. Büyük dosyaların teslimini daha hızlı yapmak için ek özellikler varsayılan olarak açık olur.
 
-### <a name="complete-cache-fill"></a>Tam önbelleğini doldurma
+### <a name="object-chunking"></a>Nesne parçalama 
 
-Varsayılan tam Önbelleği doldurma özelliği CDN bir ilk isteği terk kaybolur veya, bir dosya önbelleğine çekmesine olanak sağlar. 
+**Microsoft'tan Azure CDN Standard** nesne ötme adı verilen bir teknik kullanır. Büyük bir dosya istendiğinde, CDN dosyanın daha küçük parçalarını kaynaktan alır. CDN POP sunucusu tam veya bayt aralığı dosya isteği aldıktan sonra, CDN kenar sunucusu dosyayı 8 MB'lık parçalar halinde kaynağından ister. 
 
-Tam önbellek dolgu büyük varlıklar için kullanışlıdır. Genellikle, kullanıcıların onları baştan yüklemeyin. Aşamalı indirme kullanırlar. Varsayılan davranış, varlık kaynak sunucusundan bir arka planda getirme başlatmak için uç sunucusunu zorlar. Ardından, uç sunucusunun yerel önbelleğine varlıktır. Tam nesne önbellekte sonra uç sunucusunu CDN önbelleğe alınmış nesne için bayt aralığı isteklerini karşılar.
+Yığın CDN kenarına geldikten sonra önbelleğe alınıp hemen kullanıcıya sunulur. CDN daha sonra bir sonraki parçayı paralel olarak önceden getirir. Bu ön alma, içeriğin kullanıcıdan bir yığın önde kalmasını sağlar ve bu da gecikme süresini azaltır. Bu işlem, tüm dosya indirilene (istenirse), tüm bayt aralıkları kullanılabilir olana (istenirse) veya istemci bağlantıyı sonlandırıncaya kadar devam eder. 
 
-Varsayılan davranış kural altyapısı aracılığıyla devre dışı bırakılabilir **verizon'dan Azure CDN Premium**.
+Bayt aralığı isteği hakkında daha fazla bilgi için [RFC 7233'e](https://tools.ietf.org/html/rfc7233)bakın.
 
-### <a name="peer-cache-fill-hot-filing"></a>Eş Önbelleği doldurma hot dosyalama
+CDN, alınan tüm parçaları önbelleğe almaz. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıkları için sonraki istekler CDN önbelleğinden sunulur. Tüm parçalar CDN'de önbelleğe alınmamışsa, prefetch kaynaktan parçalar istemek için kullanılır. Bu optimizasyon, başlangıç sunucusunun bayt aralığı isteklerini destekleme yeteneğine dayanır; Kaynak sunucu bayt aralığı isteklerini desteklemiyorsa, bu optimizasyon etkili değildir. 
 
-Varsayılan eş önbellek dolgu hot dosyalama özelliği, karmaşık bir özel algoritması kullanır. Ek edge sunucuları bant genişliğine göre önbelleğe alma kullanan ve büyük, yüksek oranda popüler nesneleri için istemci isteklerini karşılamak için ölçümleri toplama ister. Bu özellik, bir kullanıcının kaynak sunucuya ek istekler çok sayıda gönderilen bir durum önler. 
-
-### <a name="conditions-for-large-file-optimization"></a>Büyük dosya iyileştirmesi için koşullar
-
-Büyük dosya iyileştirmesi özelliklerini **verizon'dan Azure CDN standart** ve **verizon'dan Azure CDN Premium** genel web teslimi iyileştirme türünü kullandığınızda varsayılan olarak açık olabilir. En büyük dosya boyutu sınırı yoktur. 
+### <a name="conditions-for-large-file-optimization"></a>Büyük dosya optimizasyonu için koşullar
+Genel web teslim optimizasyonu türünü **kullandığınızda, Microsoft'tan Azure CDN Standardı** için büyük dosya optimizasyonu özellikleri varsayılan olarak açıktır. Maksimum dosya boyutunda sınır yoktur.
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Akamai'den Azure CDN standart ile büyük dosyaların teslimini en iyi duruma getirme
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Verizon'dan Azure CDN ile büyük dosyaların teslimi için optimize edin
 
-**Azure CDN standart Akamai** profil uç noktaları büyük dosyaları dünya ölçeğinde kullanıcılar için verimli bir şekilde sunan bir özellik sunar. Kaynak sunucularındaki yükü azaltır çünkü özellik gecikmeleri azaltır.
+**Verizon'dan Azure CDN Standardı** ve Verizon uç **noktalarından Azure CDN Premium,** dosya boyutunda bir kapak olmadan büyük dosyalar sunar. Büyük dosyaların teslimini daha hızlı yapmak için ek özellikler varsayılan olarak açık olur.
 
-Büyük dosya iyileştirmesi tür özelliği, ağ iyileştirmeleri ve büyük dosyaları daha hızlı ve daha duyarlı bir şekilde sunmak için yapılandırmaları açar. Genel web teslimatı ile **akamai'den Azure CDN standart** uç noktaları yalnızca 1,8 GB altındaki dosyalar önbelleğe alır ve tünel (cache değil) dosyaları 150 GB'ye kadar. Büyük dosya iyileştirmesi önbellekler 150 GB'ye kadar dosyalar.
+### <a name="complete-cache-fill"></a>Tam önbellek dolgusu
 
-Belirli koşullar karşılandığında büyük dosya iyileştirmesi etkili olur. Koşullar içeren kaynak sunucunun nasıl çalıştığını ve boyutları ve istenen dosya türleri. 
+Varsayılan tam önbellek doldurma özelliği, cdn'nin ilk istek terk edildiğinde veya kaybolduğunda bir dosyayı önbelleğe çekmesini sağlar. 
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Büyük dosyaların teslimini iyileştirecektir Akamai CDN uç nokta yapılandırma
+Tam önbellek dolgusu büyük varlıklar için en yararlıdır. Genellikle, kullanıcılar bunları baştan sona indirmez. Onlar ilerici indirme kullanın. Varsayılan davranış, kenar sunucusunu kaynağı sunucudan varlığın arka plan getirmesini başlatmaya zorlar. Daha sonra, varlık kenar sunucusunun yerel önbelleğindedir. Tam nesne önbellekte olduktan sonra, kenar sunucusu önbelleğe alınmış nesne için CDN'ye bayt aralığı isteklerini yerine getirir.
 
-Yapılandırabileceğiniz, **akamai'den Azure CDN standart** teslim Azure portal aracılığıyla büyük dosyalar için en iyi duruma getirmek için uç nokta. Bunu yapmak için REST API veya istemci SDK'larından birini kullanabilirsiniz. İşlem için Azure Portalı aracılığıyla aşağıdaki adımlarda bir **akamai'den Azure CDN standart** profili:
+Varsayılan davranış **Verizon'dan Azure CDN Premium'daki**kurallar altyapısı aracılığıyla devre dışı bilebilir.
 
-1. Yeni bir uç nokta üzerinde bir Akamai eklemek için **CDN profili** sayfasında **uç nokta**.
+### <a name="peer-cache-fill-hot-filing"></a>Eş önbelleği doldurma sıcak dosyalama
 
-    ![Yeni uç nokta](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
+Varsayılan eş önbelleği doldurma özelliği, gelişmiş bir özel dosyalama algoritması kullanır. Büyük ve son derece popüler nesneler için istemci isteklerini yerine getirmek için bant genişliği ve toplu istek ölçümlerine dayalı ek kenar önbelleğe alma sunucuları kullanır. Bu özellik, çok sayıda ek isteğin kullanıcının başlangıç sunucusuna gönderildiği bir durumu önler. 
+
+### <a name="conditions-for-large-file-optimization"></a>Büyük dosya optimizasyonu için koşullar
+
+Genel web teslim optimizasyonu türünü kullandığınızda **Verizon'dan Azure CDN Standardı** ve **Verizon'dan Azure CDN Premium** için büyük dosya optimizasyonu özellikleri varsayılan olarak açıktır. Maksimum dosya boyutunda sınır yoktur. 
+
+
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Akamai'den Azure CDN Standardı ile büyük dosyaların teslimi için optimize edin
+
+Akamai profil uç **noktalarından Azure CDN Standardı,** büyük dosyaları ölçekte dünya çapındaki kullanıcılara verimli bir şekilde sunan bir özellik sunar. Özellik, kaynak sunuculardaki yükü azalttığından gecikme gevellerini azaltır.
+
+Büyük dosya optimizasyonu türü özelliği, büyük dosyaları daha hızlı ve daha hızlı bir şekilde sunmak için ağ optimizasyonlarını ve yapılandırmaları açar. **Akamai uç noktalarından Azure CDN Standard** ile genel web teslimi dosyaları yalnızca 1,8 GB'ın altında önbelleğe alabilir ve 150 GB'a kadar dosya tünel (önbellek değil) olabilir. Büyük dosya optimizasyonu dosyaları 150 GB'a kadar önbelleğe aldayır.
+
+Belirli koşullar yerine getirildiğinde büyük dosya optimizasyonu etkilidir. Koşullar, kaynak sunucunun nasıl çalıştığını ve istenen dosyaların boyutlarını ve türlerini içerir. 
+
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Büyük dosyaların teslimini en iyi duruma getirmek için akamai CDN bitiş noktasını yapılandırma
+
+Azure portalı üzerinden büyük dosyalar için teslimi optimize etmek için **Azure CDN Standardınızı Akamai** bitiş noktasından yapılandırabilirsiniz. Bunu yapmak için REST API'lerini veya istemci SDK'larından herhangi birini de kullanabilirsiniz. Aşağıdaki adımlar, **Akamai profilinden** bir Azure CDN Standardı için Azure portalı üzerinden işlemi gösterir:
+
+1. Akamai **CDN profil** sayfasında yeni bir bitiş noktası eklemek için **Bitiş Noktası'nı**seçin.
+
+    ![Yeni bitiş noktası](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. İçinde **için en iyi duruma getirilmiş** aşağı açılan listesinden **büyük dosya indirme**.
+2. Açılan liste **için Optimize Edilmiş** **listede, Büyük dosya karşıdan yükleme'yi**seçin.
 
-    ![Seçili büyük dosya iyileştirmesi](./media/cdn-large-file-optimization/cdn-large-file-select.png)
+    ![Büyük dosya optimizasyonu seçili](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
 
-CDN uç noktasını oluşturduktan sonra büyük dosya iyileştirmeler belirli ölçütlere uyan tüm dosyaları için geçerlidir. Aşağıdaki bölümde, bu işlemi açıklanmaktadır.
+CDN bitiş noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için büyük dosya optimizasyonları uygular. Aşağıdaki bölümde bu işlem açıklanmaktadır.
 
-### <a name="object-chunking"></a>Öbekleme nesnesi 
+### <a name="object-chunking"></a>Nesne parçalama 
 
-Büyük dosya iyileştirmesi ile **akamai'den Azure CDN standart** nesne Öbekleme adında bir teknik kullanır. Büyük dosya istendiğinde, CDN dosyanın daha küçük parçalara kaynaktan alır. CDN POP sunucunun tam veya bayt aralığı dosya isteği aldıktan sonra bu en iyi duruma getirme için desteklenen dosya türü olup olmadığını denetler. Dosya türünü dosya boyutu gereksinimleri karşılayıp karşılamadığını denetler. CDN uç sunucusu dosyayı dosya boyutu 10 MB'den daha büyük ise, 2 MB'lık parçalar halinde kaynaktan ister. 
+**Akamai'den Azure CDN Standard** ile büyük dosya optimizasyonu nesne öbeklenmesi adı verilen bir teknik kullanır. Büyük bir dosya istendiğinde, CDN dosyanın daha küçük parçalarını kaynaktan alır. CDN POP sunucusu tam veya bayt aralığı dosya isteği aldıktan sonra, dosya türünün bu optimizasyon için desteklenip desteklenmediğini denetler. Ayrıca, dosya türünün dosya boyutu gereksinimlerini karşılayıp karşılamadığını da denetler. Dosya boyutu 10 MB'dan büyükse, CDN kenar sunucusu dosyanın kaynağını 2 MB'lık parçalar halinde ister. 
 
-CDN uç öbek ulaştıktan sonra bu önbelleğe alınmış ve hemen kullanıcıya sunulan. CDN, ardından sonraki öbek paralel prefetches. Bu önceden getirme içeriği gecikmesini azaltır kullanıcı önceden bir öbek kalmasını sağlar. Bu işlem tüm kadar devam eder (istenirse) dosyasını indirdiğiniz, tüm bayt aralıkları (istenirse) kullanılabilir, veya istemci bağlantıyı sonlandırır. 
+Yığın CDN kenarına geldikten sonra önbelleğe alınıp hemen kullanıcıya sunulur. CDN daha sonra bir sonraki parçayı paralel olarak önceden getirir. Bu ön alma, içeriğin kullanıcıdan bir yığın önde kalmasını sağlar ve bu da gecikme süresini azaltır. Bu işlem, tüm dosya indirilene (istenirse), tüm bayt aralıkları kullanılabilir olana (istenirse) veya istemci bağlantıyı sonlandırıncaya kadar devam eder. 
 
-Bayt aralığı isteği hakkında daha fazla bilgi için bkz. [RFC 7233](https://tools.ietf.org/html/rfc7233).
+Bayt aralığı isteği hakkında daha fazla bilgi için [RFC 7233'e](https://tools.ietf.org/html/rfc7233)bakın.
 
-Bunlar aldığı gibi CDN herhangi öbekleri önbelleğe alır. Dosyanın tamamı, CDN önbelleğinin üzerinde önbelleğe alınması gerekmez. Dosya veya bayt aralıkları için sonraki istekler CDN önbelleğinden sunulur. Aksi takdirde öbekleri CDN'de önbelleğe alınır, önceden getirme öbekleri kaynaktan istemek için kullanılır. Bu iyileştirme, bayt aralığı isteklerini destekleme özelliği, kaynak sunucu üzerinde kullanır; Kaynak sunucu bayt aralığı isteklerini desteklemiyorsa, bu en iyi duruma getirme etkili değildir.
+CDN, alınan tüm parçaları önbelleğe almaz. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıkları için sonraki istekler CDN önbelleğinden sunulur. Tüm parçalar CDN'de önbelleğe alınmamışsa, prefetch kaynaktan parçalar istemek için kullanılır. Bu optimizasyon, başlangıç sunucusunun bayt aralığı isteklerini destekleme yeteneğine dayanır; Kaynak sunucu bayt aralığı isteklerini desteklemiyorsa, bu optimizasyon etkili değildir.
 
 ### <a name="caching"></a>Önbelleğe alma
-Büyük dosya iyileştirmesi, genel web teslimatı farklı varsayılan önbellek sona erme sürelerinden kullanır. Önbelleğe alma pozitif ve negatif HTTP yanıt kodlarına göre önbelleğe arasında ayırır. Kaynak sunucu bir cache-control aracılığıyla sona erme süresini belirtir veya sona erme yanıt üstbilgisi, CDN, değer geçerlidir. Kaynak belirttiğinizde değil ve bu dosyayı bu en iyi duruma getirme türü için türü ve boyutu koşullara uyan CDN büyük dosya iyileştirmesi için varsayılan değerleri kullanır. Aksi takdirde, CDN, genel web teslimatı için varsayılan değerleri kullanır.
+Büyük dosya optimizasyonu, genel web tesliminden farklı varsayılan önbelleğe alma süresi kullanır. HTTP yanıt kodlarına göre pozitif önbelleğe alma ve negatif önbelleğe alma arasında ayrım. Kaynak sunucu önbellek denetimi yoluyla bir son kullanma süresi belirtirse veya yanıtta üstbilginin süresi doluyorsa, CDN bu değeri onurlandırır. Kaynak belirtilmediğinde ve dosya bu optimizasyon türü için tür ve boyut koşullarıyla eşleşmiyorsa, CDN büyük dosya optimizasyonu için varsayılan değerleri kullanır. Aksi takdirde, CDN genel web teslimi için varsayılanları kullanır.
 
 
 |    | Genel web | Büyük dosya iyileştirmesi 
 --- | --- | --- 
-Önbelleğe alma: Pozitif <br> HTTP 200 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
-Önbelleğe alma: Negatif <br> HTTP 204 305, 404, <br> ve 405 | Yok. | 1 saniye 
+Önbelleğe alma: Pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
+Önbelleğe alma: Negatif <br> HTTP 204, 305, 404, <br> ve 405 | None | 1 saniye 
 
-### <a name="deal-with-origin-failure"></a>Kaynak hatası işlem
+### <a name="deal-with-origin-failure"></a>Menşe hatasıyla başa çık
 
-Kaynağı oku-zaman aşımı uzunluğu, genel web teslimatı büyük dosya iyileştirmesi türü için iki dakika için iki saniyelerden artar. Bu artış, erken zaman aşımı bağlantısı önlemek için daha büyük dosya boyutlarına hesaplar.
+Genel web teslimi için iki saniyeden büyük dosya optimizasyonu türü için iki dakikaya kadar başlangıç okuma-zaman ayırma uzunluğu artar. Bu artış, erken zaman alamasını önlemek için daha büyük dosya boyutlarını hesaplar.
 
-Bağlantı zaman aşımına uğradığında CDN bir sayı, bir "504 - ağ geçidi zaman aşımı" hatası istemciye gönderilmeden önce kaç kez yeniden dener. 
+Bağlantı zaman ları bittiğinde, CDN istemciye "504 - Ağ Geçidi Zaman Kaçaması" hatası göndermeden önce birkaç kez yeniden çalışır. 
 
-### <a name="conditions-for-large-file-optimization"></a>Büyük dosya iyileştirmesi için koşullar
+### <a name="conditions-for-large-file-optimization"></a>Büyük dosya optimizasyonu için koşullar
 
-Aşağıdaki tabloda, büyük dosya iyileştirmesi için karşılanması gereken ölçütleri kümesini listeler:
+Aşağıdaki tabloda, büyük dosya optimizasyonu için karşılanacak ölçütler kümesi listelenebvardır:
 
 Koşul | Değerler 
 --- | --- 
-Desteklenen dosya türleri | 3g, 2, 3gp, asf, AVI, bz2, dmg, exe, f4v, flv <br> GZ, hdp, ISO, jxr, m4v, mkv, mov, mp4 <br> MPEG mpg, mts, paket, qt, rm, swf, hedefi, <br> tgz, wdp, webm, webp, wma, wmv, zip  
-En küçük dosya boyutu | 10 MB 
+Desteklenen dosya türleri | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, katran, <br> tgz, wdp, webm, webp, wma, wmv, zip  
+Minimum dosya boyutu | 10 MB 
 En büyük dosya boyutu | 150 GB 
-Kaynak sunucu özellikleri | Bayt aralığı isteklerini desteklemesi gerekir 
+Kaynak sunucu özellikleri | Bayt aralığı isteklerini desteklemeli 
 
 ## <a name="additional-considerations"></a>Diğer konular
 
-Bu iyileştirme türü için aşağıdaki ek konuları göz önünde bulundurun:
+Bu optimizasyon türü için aşağıdaki ek yönleri göz önünde bulundurun:
 
-- Kümeleme işlemi, kaynak sunucuya ek istekler oluşturur. Ancak, genel kaynaktan sunulan veri hacmi çok daha küçüktür. Kümeleme sonuçlarında, CDN önbelleğe alma özelliklerini daha iyi.
+- Yığınlama işlemi, kaynak sunucuya ek istekler oluşturur. Ancak, kaynaktan teslim edilen verilerin toplam hacmi çok daha küçüktür. Yığınlama, CDN'de daha iyi önbelleğe alma özellikleriyle sonuçlanır.
 
-- Dosyanın daha küçük parçalara teslim edildiğinden bellek ve g/ç baskısı kaynak azaltılır.
+- Dosyanın daha küçük parçaları teslim olduğundan bellek ve G/Ç basıncı kaynağında azalır.
 
-- CDN önbelleğe alınmış öbekleri için var. kaynağı ek istek yok içeriğin süresi dolar veya önbellekten çıkarıldığı kadar
+- CDN'de önbelleğe alınan parçalar için, içeriğin süresi dolana veya önbellekten çıkarılana kadar kaynak için ek istek yoktur.
 
-- Kullanıcılar aralığı isteklerini CDN için normal bir dosya gibi davranılır yapabilir. En iyi duruma getirme, yalnızca geçerli bir dosya türü olan ve bayt aralığı 10 MB ile 150 GB arasında ise geçerlidir. İstenen ortalama dosya boyutu 10 MB'den küçükse, genel web teslimatı kullanın.
+- Kullanıcılar, normal bir dosya gibi işlem gören CDN'ye aralık isteklerinde bulunabilir. Optimizasyon yalnızca geçerli bir dosya türüyse ve bayt aralığı 10 MB ile 150 GB arasındaysa geçerlidir. İstenen ortalama dosya boyutu 10 MB'dan küçükse, bunun yerine genel web teslimini kullanın.
 

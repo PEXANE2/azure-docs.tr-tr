@@ -1,24 +1,24 @@
 ---
-title: Açılan Kullanıcı arabirimi öğesi
-description: Azure portal için Microsoft. Common. DropDown Kullanıcı arabirimi öğesini açıklar. Yönetilen bir uygulamayı dağıttığınızda kullanılabilir seçenekler arasından seçim yapmak için kullanın.
+title: DropDown UI öğesi
+description: Azure portalı için Microsoft.Common.DropDown UI öğesini açıklar. Yönetilen bir uygulamayı dağıtırken kullanılabilir seçeneklerden seçim yapmak için kullanın.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652391"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI öğesi
 
-Açılan liste içeren seçim denetimi.
+Açılır listeli bir seçim denetimi.
 
 ## <a name="ui-sample"></a>UI örneği
 
-![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Şema
 
@@ -54,12 +54,12 @@ Açılan liste içeren seçim denetimi.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `constraints.allowedValues` etiketi bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
-- Belirtilmişse, varsayılan değer `constraints.allowedValues`mevcut bir etiket olmalıdır. Belirtilmemişse, `constraints.allowedValues` ilk öğe seçilir. Varsayılan değer **null**.
-- `constraints.allowedValues` en az bir öğe içermelidir.
-- Zorunlu olmayan bir değere öykünmek için, `constraints.allowedValues`bir etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin.
+- Etiket, `constraints.allowedValues` bir öğenin görüntü metnidir ve değeri seçildiğinde öğenin çıktı değeridir.
+- Belirtilirse, varsayılan değer `constraints.allowedValues`. Belirtilmemişse, ilk `constraints.allowedValues` öğe seçilir. Varsayılan değer **null'** dur.
+- `constraints.allowedValues`en az bir öğeye sahip olmalıdır.
+- Gerekli olmayan bir değeri taklit etmek için, etiketve `""` değeri (boş dize) olan bir öğe ekleyin. `constraints.allowedValues`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
-* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
+* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
+* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.

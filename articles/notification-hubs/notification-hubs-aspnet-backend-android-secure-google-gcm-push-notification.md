@@ -1,8 +1,8 @@
 ---
-title: Azure Notification Hubs güvenli anında Iletme bildirimleri gönderme
-description: Azure 'dan bir Android uygulamasına güvenli anında iletme bildirimleri göndermeyi öğrenin. Java ve ile C#yazılan kod örnekleri.
+title: Azure Bildirim Hub'ları ile Güvenli Anında Iletme Bildirimleri Gönderme
+description: Azure'dan bir Android uygulamasına güvenli anında iletme bildirimleri gönderme yi öğrenin. Java ve C# ile yazılmış kod örnekleri.
 documentationcenter: android
-keywords: anında iletme bildirimi, anında iletme bildirimleri, anında iletme iletileri, Android anında iletme bildirimleri
+keywords: push notification,push bildirimleri,push iletileri,android push bildirimleri
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212173"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs güvenli anında Iletme bildirimleri gönderme
+# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Bildirim Hub'ları ile Güvenli Anında Iletme Bildirimleri Gönderme
 
 > [!div class="op_single_selector"]
 > * [Windows Evrensel](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -34,44 +34,44 @@ ms.locfileid: "71212173"
 ## <a name="overview"></a>Genel Bakış
 
 > [!IMPORTANT]
-> Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için bkz [Azure ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 
-Microsoft Azure anında iletme bildirimi desteği, hem tüketici hem de kurumsal uygulamalar için anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştıran, kullanımı kolay, çok platformlu, ölçeği genişletilmiş bir anında iletme ileti altyapısına erişmenizi sağlar. Mobil platformlar.
+Microsoft Azure'da anında bildirim desteği, kullanımı kolay, çok platformlu, ölçeklenmiş anında iletme iletisi altyapısına erişmenizi sağlar ve bu da hem tüketici hem de kurumsal uygulamalar için anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştırır mobil platformlar.
 
-Yasal düzenlemeler veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama, bildirime standart anında iletme bildirimi altyapısı üzerinden aktarılamayan bir şey eklemek isteyebilir. Bu öğreticide, istemci Android cihazı ile uygulama arka ucu arasında güvenli, kimliği doğrulanmış bir bağlantıyla gizli bilgiler göndererek aynı deneyimin nasıl elde edileceğini açıklar.
+Düzenleyici veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama bildirime standart anında iletme bildirimi altyapısı aracılığıyla aktarılamayan bir şey eklemek isteyebilir. Bu öğretici, istemci Android aygıt ve uygulama arka uç arasında güvenli, kimlik doğrulaması bağlantı yoluyla hassas bilgileri göndererek aynı deneyimi elde etmek için nasıl açıklanır.
 
-Yüksek düzeyde, akış şu şekildedir:
+Yüksek bir düzeyde, akış aşağıdaki gibidir:
 
-1. Uygulama arka ucu:
-   * Güvenli yükü arka uç veritabanında depolar.
-   * Bu bildirimin KIMLIĞINI Android cihazına gönderir (güvenli bilgi gönderilmez).
+1. Uygulama arka uç:
+   * Güvenli yükü arka uç veritabanında saklar.
+   * Bu bildirimin kimliğini Android cihazına gönderir (güvenli bilgi gönderilmez).
 2. Bildirim alırken cihazdaki uygulama:
-   * Android cihaz, güvenli yük isteyen arka uca iletişim kurar.
+   * Android cihazı, güvenli yükü talep etmek için arka uçla bağlantı kurur.
    * Uygulama, yükü cihazda bir bildirim olarak gösterebilir.
 
-Önceki akışta (ve bu öğreticide), Kullanıcı oturum açtıktan sonra cihazın yerel depolamada bir kimlik doğrulama belirteci depoladığını varsayması önemlidir. Bu yaklaşım, cihazın bu belirteci kullanarak bildirimin güvenli yükünü alabilmesi için sorunsuz bir deneyim sağlar. Uygulamanız, kimlik doğrulama belirteçlerini cihazda depolamaz veya bu belirteçlerin kullanım tarihi dolmuşsa, cihaz uygulamasının anında iletme bildirimi alındıktan sonra, kullanıcıdan uygulamayı başlatması için bir genel bildirim görüntülemesi gerekir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
+Önceki akışta (ve bu öğreticide) aygıtın, kullanıcı oturum açtıktan sonra yerel depolama alanında bir kimlik doğrulama belirteci depoladığının varsayılması önemlidir. Bu yaklaşım, aygıt bu belirteç kullanarak bildirimin güvenli yükünü alabildiği için sorunsuz bir deneyim garanti eder. Uygulamanız cihazda kimlik doğrulama belirteçleri depolamazveya bu belirteçlerin süresi dolmuşsa, anında iletme bildirimini aldıktan sonra kullanıcının uygulamayı başlatmasını isteyen genel bir bildirim görüntülemesi gerekir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
 
-Bu öğreticide, güvenli anında iletme bildirimlerinin nasıl gönderileceği gösterilmektedir. [Kullanıcılara bildirme](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) öğreticisini oluşturur, bu yüzden henüz yapmadıysanız bu öğreticideki adımları tamamlamalısınız.
+Bu öğretici, güvenli anında iletme bildirimleri nasıl gönderilen gösterir. [Kullanıcıları Bildir](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) öğreticisine göre inşa eder, bu nedenle önce bu öğreticideki adımları tamamlamanız gerekir.
 
 > [!NOTE]
-> Bu öğreticide, Bildirim Hub 'ınızı [Notification Hubs (Android) Ile çalışmaya](notification-hubs-android-push-notification-google-gcm-get-started.md)başlama konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır.
+> Bu öğretici, [Bildirim Hub'ları (Android) ile Başlarken](notification-hubs-android-push-notification-google-gcm-get-started.md)açıklandığı gibi bildirim hub'ınızı oluşturduğunuzu ve yapılandırdığınızı varsayar.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Android projesini değiştirme
 
-Yalnızca bir anında iletme bildiriminin *kimliğini* göndermek için uygulama arka uca değiştirdiğimize göre, Android uygulamanızı bu bildirimi işleyecek şekilde değiştirmeniz ve görüntülenecek güvenli iletiyi almak için arka uca geri çağrı yapmanız gerekir.
-Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri aldığında arka UCUNUZDAN kimliğini nasıl doğrulayacağını öğrenmeniz gerekir.
+Uygulamanızın arka ucunu yalnızca bir anında iletme bildiriminin *kimliğini* göndermek için değiştirdiğinize göre, bu bildirimi işlemek için Android uygulamanızı değiştirmeniz ve görüntülenecek güvenli iletiyi almak için arka uçunuzu geri aramanız gerekir.
+Bu amaca ulaşmak için, Android uygulamanızın anında iletme bildirimlerini aldığında arka uçla kendini nasıl doğrulayabildiğini bildiğinden emin olmalısınız.
 
-Şimdi, kimlik doğrulama üst bilgisi değerini uygulamanızın paylaşılan tercihlerine kaydetmek için *oturum açma* akışını değiştirin. Benzer mekanizmalar, uygulamanın kullanıcı kimlik bilgileri gerektirmeden kullanması gereken herhangi bir kimlik doğrulama belirtecini (örneğin, OAuth belirteçleri) depolamak için kullanılabilir.
+Şimdi, uygulamanızın paylaşılan tercihlerinde kimlik doğrulama üstbilgi değerini kaydetmek için *oturum açma* akışını değiştirin. Benzer mekanizmalar, uygulamanın kullanıcı kimlik bilgilerine gerek kalmadan kullanması gereken kimlik doğrulama belirteci (örneğin, OAuth belirteçleri) depolamak için kullanılabilir.
 
-1. Android uygulama projenizde, `MainActivity` sınıfının en üstüne aşağıdaki sabitleri ekleyin:
+1. Android uygulama projenizde, `MainActivity` sınıfın en üstündeki sabitleri ekleyin:
 
     ```java
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
-2. Hala sınıfında, `getAuthorizationHeader()` yöntemi aşağıdaki kodu içerecek şekilde güncelleştirin: `MainActivity`
+2. Hala `MainActivity` sınıfta, aşağıdaki `getAuthorizationHeader()` kodu içerecek şekilde yöntemi güncelleştirmek:
 
     ```java
     private String getAuthorizationHeader() throws UnsupportedEncodingException {
@@ -86,15 +86,15 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
         return basicAuthHeader;
     }
     ```
-3. Aşağıdaki `import` deyimlerini `MainActivity` dosyanın üst kısmına ekleyin:
+3. Dosyanın `import` üst kısmında aşağıdaki ifadeleri ekleyin: `MainActivity`
 
     ```java
     import android.content.SharedPreferences;
     ```
 
-Şimdi, bildirim alındığında çağrılan işleyiciyi değiştirin.
+Şimdi, bildirim alındığı zaman çağrılan işleyiciyi değiştirin.
 
-1. `MyHandler` Sınıfında `OnReceive()` yöntemi şunu içerecek şekilde değiştirin:
+1. `MyHandler` Sınıfta aşağıdakileri `OnReceive()` içerecek yöntemi değiştirin:
 
     ```java
     public void onReceive(Context context, Bundle bundle) {
@@ -103,7 +103,7 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
         retrieveNotification(secureMessageId);
     }
     ```
-2. Ardından, geri `retrieveNotification()` tutucuyu `{back-end endpoint}` dağıtım sırasında elde edilen arka uç bitiş noktasıyla değiştirerek yöntemini ekleyin:
+2. Ardından, `retrieveNotification()` arka uçunuzu dağıtırken `{back-end endpoint}` yer tutucuyu elde edilen arka uç noktayla değiştirerek yöntemi ekleyin:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {
@@ -134,15 +134,15 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
     }
     ```
 
-Bu yöntem, paylaşılan tercihlerinde depolanan kimlik bilgilerini kullanarak bildirim içeriğini almak için uygulamanızın arka uca çağrı yapın ve normal bir bildirim olarak görüntüler. Bildirim, uygulama kullanıcısına tam olarak diğer anında iletme bildirimleri gibi bakar.
+Bu yöntem, paylaşılan tercihlerde depolanan kimlik bilgilerini kullanarak bildirim içeriğini almak için uygulamanızı arka uç olarak çağırır ve normal bir bildirim olarak görüntüler. Bildirim, uygulama kullanıcısına diğer anında iletme bildirimleri gibi görünür.
 
-Eksik kimlik doğrulama üst bilgisi özelliğinin veya arka uç tarafından ret durumlarının işlenmesi tercih edilir. Bu durumların belirli işleme, genellikle hedef Kullanıcı deneyiminize bağlıdır. Bir seçenek, kullanıcının gerçek bildirimi almak için kimlik doğrulaması yapması için bir genel istem ile bir bildirim görüntülemektir.
+Eksik kimlik doğrulama üstbilgi özelliği veya geri uç tarafından reddedilme durumlarını işlemek tercih edilir. Bu servis taleplerini belirli şekilde işleme, çoğunlukla hedef kullanıcı deneyiminize bağlıdır. Seçeneklerden biri, kullanıcının gerçek bildirimi almak için kimlik doğrulaması için genel bir komut istemiyle bir bildirim görüntülemektir.
 
-## <a name="run-the-application"></a>Uygulamayı çalıştırma
+## <a name="run-the-application"></a>Uygulamayı Çalıştır
 
 Uygulamayı çalıştırmak için aşağıdaki eylemleri gerçekleştirin:
 
-1. **Apparka uç** 'nin Azure 'da dağıtıldığından emin olun. Visual Studio kullanıyorsanız, **Apparka uç** Web API uygulamasını çalıştırın. Bir ASP.NET Web sayfası görüntülenir.
-2. Çakışan Küreler, uygulamayı fiziksel bir Android cihazda veya Öykünücüde çalıştırın.
-3. Android uygulama kullanıcı arabiriminde, bir Kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değer olmalıdır.
-4. Android uygulama kullanıcı arabiriminde **oturum aç**' a tıklayın. Sonra **gönderme gönder**' e tıklayın.
+1. **AppBackend'in** Azure'da dağıtıldığından emin olun. Visual Studio kullanıyorsanız, **AppBackend** Web API uygulamasını çalıştırın. ASP.NET bir web sayfası görüntülenir.
+2. Eclipse'de, uygulamayı fiziksel bir Android cihazda veya emülatörde çalıştırın.
+3. Android uygulaması Kullanıcı Arabirimi'ne bir kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değerolmalıdır.
+4. Android uygulaması UI'de **Giriş Yap'ı**tıklatın. Ardından **Gönder tuşuna**bas.

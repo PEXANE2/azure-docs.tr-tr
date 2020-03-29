@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services encoding hata kodları | Microsoft Docs
-description: Bu konu, kodlama görevi yürütme sırasında bir hatayla karşılaşıldı durumunda döndürülebilen hata kodları listeler...
+title: Azure Medya Hizmetleri kodlama hata kodları | Microsoft Dokümanlar
+description: Bu konu, kodlama görevi yürütme sırasında bir hata yla karşılaşılması durumunda döndürülebilecek hata kodlarını listeler...
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64709517"
 ---
 # <a name="encoding-error-codes"></a>Kodlama hata kodları
 
-Aşağıdaki tabloda, kodlama görevi yürütme sırasında bir hatayla karşılaşıldı durumunda döndürülebilen hata kodları listelenmektedir.  .NET kodunuzu hata ayrıntıları almak için kullanın [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) sınıfı. REST kodunuzda hata ayrıntıları almak için kullanın [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
+Aşağıdaki tabloda, kodlama görevi yürütme sırasında bir hata yla karşılaşılması durumunda döndürülebilecek hata kodları listelenir.  .NET kodunuzda hata ayrıntıları almak için [Hata Ayrıntıları](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) sınıfını kullanın. REST kodunuzda hata ayrıntıları almak için [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API'sını kullanın.
 
-| ErrorDetail.Code | Hata için olası nedenler |
+| HataDetay.Kod | Olası hata nedenleri |
 | --- | --- |
-| Bilinmiyor |Görev yürütülürken bilinmeyen hata |
-| ErrorDownloadingInputAssetMalformedContent |Hatalı dosya adları, yanlış sıfır uzunluğu dosyaları gibi giriş varlığı yükleme hataları kapsayan hata kategorisi ve benzeri biçimlendirir. |
-| ErrorDownloadingInputAssetServiceFailure |Hizmet tarafında - yüklerken örnek ağ veya depolama hatalarını sorunları kapsar hata kategorisi. |
-| ErrorParsingConfiguration |Hata kategorisi nerede görev \<cref="MediaTask.PrivateData"/ bakın > (yapılandırma) geçerli değil, örneğin yapılandırması geçersiz XML içeriyor ya da geçerli bir sistem hazır değil. |
-| ErrorExecutingTaskMalformedContent |Girdi medya dosyalarının içindeki sorunları hata neden olduğu görevin yürütülmesi sırasında hata kategorisi. |
-| ErrorExecutingTaskUnsupportedFormat |Burada sağlanan dosyaları medya işleyicisini işleyemiyor - medya biçimlendirilmeyeceğini hata kategorisi desteklenen veya yapılandırmayla eşleşmiyor. Örneğin, bir yalnızca ses çıkışı, yalnızca video sahip bir varlık oluşturmak çalışıyor |
-| ErrorProcessingTask |İçeriği ilişkisiz bir medya işleyicisini görev işlenmesi sırasında karşılaştığı diğer hata kategorisi. |
-| ErrorUploadingOutputAsset |Çıktı varlığına karşıya yüklenirken bir hata kategorisi |
-| ErrorCancelingTask |Görev iptal edilmeye çalışılırken hatalar karşılamak için hata kategorisi |
-| TransientError |(Örn. geçici sorunu ele almak için hata kategorisi Azure depolama ile geçici ağ sorunları) |
+| Bilinmiyor |Görevi yürüterken bilinmeyen hata |
+| ErrorDownloadingInputAssetMalformedContent |Hatalı dosya adları, sıfır uzunluktaki dosyalar, yanlış biçimler ve benzeri giriş varlık larını indirmedeki hataları kapsayan hatalar kategorisi. |
+| ErrorDownloadingInputAssetServiceFailure |Hizmet tarafındaki sorunları kapsayan hatalar kategorisi (örneğin, indirme sırasında ağ veya depolama hataları). |
+| ErrorParsingConfiguration |Görevin \<cref="MediaTask.PrivateData"/> (yapılandırma) geçerli olmadığı, örneğin yapılandırmanın geçerli bir sistem önceden ayarlanmadığı veya geçersiz XML içerdiği hatalar kategorisi. |
+| ErrorExecutingTaskMalformedContent |Giriş ortamı dosyalarının içindeki sorunların hataya neden olduğu görevin yürütülmesi sırasındaki hatalar kategorisi. |
+| ErrorExecutingTaskUnsupportedFormat |Ortam işlemcisinin sağlanan dosyaları işleyemediği hatalar kategorisi - ortam biçimi desteklenmez veya Yapılandırma ile eşleşmez. Örneğin, yalnızca video su olan bir varlıktan yalnızca ses çıktısı oluşturmaya çalışmak |
+| Hata İşleme Görevi |Ortam işlemcisinin içerikle ilgisi olmayan görevin işlenmesi sırasında karşılaştığı diğer hatalar kategorisi. |
+| ErrorUploadingOutputAsset |Çıktı kıymetini yüklerken hata kategorisi |
+| HataİptalGörevi |Görevi iptal etmeye çalışırken hataları kapsayacak hatalar kategorisi |
+| Geçici Hata |Geçici sorunları kapsayacak hata kategorisi (örn. Azure Depolama ile geçici ağ sorunları) |
 
-Yardım almak için **Media Services** takım, açık bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+**Medya Hizmetleri** ekibinden yardım almak için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)açın.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -46,9 +46,9 @@ Yardım almak için **Media Services** takım, açık bir [destek bileti](https:
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>İlgili makaleler
-* [Gelişmiş kodlama görevleri, Media Encoder Standard hazır ayarlarını özelleştirerek gerçekleştirin](media-services-custom-mes-presets-with-dotnet.md)
-* [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md)
+## <a name="related-articles"></a>İlgili makaleler:
+* [Media Encoder Standart ön ayarlarını özelleştirerek gelişmiş kodlama görevleri gerçekleştirin](media-services-custom-mes-presets-with-dotnet.md)
+* [Kotalar ve Sınırlamalar](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
 [1]: https://azure.microsoft.com/pricing/details/media-services/

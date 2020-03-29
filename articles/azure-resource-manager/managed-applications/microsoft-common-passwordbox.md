@@ -1,24 +1,24 @@
 ---
-title: PasswordBox Kullanıcı arabirimi öğesi
-description: Azure portal için Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesini açıklar. Kullanıcıların yönetilen uygulamaları dağıttığı zaman gizli bir değer sağlamasına olanak sağlar.
+title: PasswordBox UI öğesi
+description: Azure portalı için Microsoft.Common.PasswordBox UI öğesini açıklar. Yönetilen uygulamaları dağıtırken kullanıcıların gizli bir değer sağlamasını sağlar.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652313"
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesi
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI öğesi
 
-Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
+Parola sağlamak ve onaylamak için kullanılabilecek bir denetim.
 
 ## <a name="ui-sample"></a>UI örneği
 
-![Microsoft. Common. PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
+![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
 
 ## <a name="schema"></a>Şema
 
@@ -51,11 +51,11 @@ Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Bu öğe `defaultValue` özelliğini desteklemiyor.
-- `constraints`uygulama ayrıntıları için bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
-- `options.hideConfirmation` **true**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false**.
+- Bu öğe `defaultValue` özelliği desteklemez.
+- Uygulama ayrıntıları `constraints`için [Microsoft.Common.TextBox](microsoft-common-textbox.md)bölümüne bakın.
+- Doğru `options.hideConfirmation` olarak **true**ayarlanmışsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
-* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
+* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
+* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.

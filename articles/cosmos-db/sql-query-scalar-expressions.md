@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB SQL sorgularında skaler ifadeler
-description: Azure Cosmos DB için skalar ifade SQL sözdizimi hakkında bilgi edinin. Bu makalede, işleçler kullanılarak skalar ifadelerin karmaşık ifadelerle nasıl birleştirileceğini de açıklanmaktadır.
+description: Azure Cosmos DB için skaler ifade SQL sözdizimi hakkında bilgi edinin. Bu makalede, işleçleri kullanarak skaler ifadeleri karmaşık ifadeler içine birleştirmek için nasıl açıklanır.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870743"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL sorgularında skaler ifadeler
 
-[Select yan tümcesi](sql-query-select.md) skaler ifadeleri destekler. Skaler bir ifade, semboller ve işleçleri tek bir değer almak için değerlendirilen bir birleşimidir. Skalar ifade örnekleri şunlardır: sabitler, özellik başvuruları, dizi öğesi başvuruları, diğer ad başvuruları veya işlev çağrıları. Skalar ifadeler, işleçler kullanılarak karmaşık ifadelerle birleştirilebilir.
+[SELECT yan tümcesi](sql-query-select.md) skaler ifadeleri destekler. Skaler ifade, tek bir değer elde etmek için değerlendirilebilecek semboller ve işleçlerin birleşimidir. Skaler ifadelere örnek olarak şunlar verilebilir: sabitler, özellik başvuruları, dizi öğesi başvuruları, diğer ad başvuruları veya işlev çağrıları. Skaler ifadeler işleçleri kullanarak karmaşık ifadeler olarak birleştirilebilir.
 
 ## <a name="syntax"></a>Sözdizimi
   
@@ -50,60 +50,60 @@ ms.locfileid: "74870743"
   
 - `<constant>`  
   
-   Sabit bir değeri temsil eder. Bkz: [sabitleri](sql-query-constants.md) ayrıntıları bölümü.  
+   Sabit bir değeri temsil eder. Ayrıntılar için [Sabitler](sql-query-constants.md) bölümüne bakın.  
   
 - `input_alias`  
   
-   Tarafından tanımlanan bir değeri temsil `input_alias` sunulan `FROM` yan tümcesi.  
-  Bu değer olmaması garanti **tanımlanmamış** –**tanımlanmamış** giriş değerleri atlanır.  
+   Yan tümcede `input_alias` tanıtılan tarafından `FROM` tanımlanan bir değeri temsil eder.  
+  Bu değer **tanımsız** değil garanti edilir - girişteki**tanımlanmamış** değerler atlanır.  
   
 - `<scalar_expression>.property_name`  
   
-   Bir nesnenin özellik değerini temsil eder. Özellik yok veya özelliğe bir nesne olmayan bir değer üzerinde başvuruluyorsa, ifade **tanımsız** değer olarak değerlendirilir.  
+   Bir nesnenin özelliğinin değerini temsil eder. Özellik yoksa veya özellik bir nesne olmayan bir değerüzerinde başvurulmuşsa, ifade **tanımlanmamış** değere değer değerlendirir.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Bir dizinin dizin `array_index` olan ad `property_name` veya dizi öğesiyle özelliğin değerini temsil eder. Özelliği/dizi dizini mevcut değil veya özellik/dizi dizininden başvurulan bir değeri bir nesne/dizisi olmayan ve ardından ifadeyi tanımlanmamış değerini hesaplar.  
+   Bir dizinin dizini `property_name` `array_index` ile ad veya dizi öğesi ile özelliğin bir değerini temsil eder. Özellik/dizi dizisi yoksa veya özellik/dizi dizidisi nesne/dizi olmayan bir değere başvurulmuşsa, ifade tanımlanmamış değere göre değerlendirilir.  
   
 - `unary_operator <scalar_expression>`  
   
-   Tek bir değer için uygulanan bir işleç temsil eder. Bkz: [işleçleri](sql-query-operators.md) ayrıntıları bölümü.  
+   Tek bir değere uygulanan bir işleci temsil eder. Ayrıntılar için [Operatörler](sql-query-operators.md) bölümüne bakın.  
   
 - `<scalar_expression> binary_operator <scalar_expression>`  
   
-   İki değer için uygulanan bir işleç temsil eder. Bkz: [işleçleri](sql-query-operators.md) ayrıntıları bölümü.  
+   İki değere uygulanan bir işleci temsil eder. Ayrıntılar için [Operatörler](sql-query-operators.md) bölümüne bakın.  
   
 - `<scalar_function_expression>`  
   
-   Bir işlev çağrısı sonucunu tarafından tanımlanan bir değeri temsil eder.  
+   İşlev çağrısının sonucuyla tanımlanan bir değeri temsil eder.  
   
 - `udf_scalar_function`  
   
-   Kullanıcı tanımlı skaler işlevin adı.  
+   Kullanıcı tanımlı skaler fonksiyonunun adı.  
   
 - `builtin_scalar_function`  
   
-   Yerleşik skaler işlevin adı.  
+   Yerleşik skaler işlevinin adı.  
   
 - `<create_object_expression>`  
   
-   Belirtilen özelliklere sahip yeni bir nesne oluşturarak elde ettiği değerle ve bunların değerlerini temsil eder.  
+   Belirtilen özelliklere ve değerlerine sahip yeni bir nesne oluşturarak elde edilen bir değeri temsil eder.  
   
 - `<create_array_expression>`  
   
-   Öğeleri olarak belirtilen değerlerle yeni bir dizi oluşturarak elde ettiği değerle temsil eder  
+   Öğe olarak belirtilen değerlere sahip yeni bir dizi oluşturarak elde edilen değeri temsil eder  
   
 - `parameter_name`  
   
-   Belirtilen parametre adı değerini temsil eder. Tek bir parametre adları olmalıdır \@ ilk karakteri olarak.  
+   Belirtilen parametre adının değerini temsil eder. Parametre adlarının ilk \@ karakter olarak tek bir olması gerekir.  
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Yerleşik veya Kullanıcı tanımlı skaler bir işlev çağrılırken, tüm bağımsız değişkenlerin tanımlanması gerekir. Bağımsız değişken tanımlanmamış, işlev çağrılmaz ve sonuç tanımsız olur.  
+  Yerleşik veya kullanıcı tanımlı skaler işlevi çağırırken, tüm bağımsız değişkenler tanımlanmalıdır. Bağımsız değişkenlerden herhangi biri tanımlanmamışsa, işlev çağrılmaz ve sonuç tanımsız olur.  
   
-  Bir nesne oluştururken, tanımlanmamış değeri atanır. herhangi bir özelliği atlandı ve oluşturulan nesneyi dahil değildir.  
+  Bir nesne oluşturulurken, tanımlanmamış değer atanan herhangi bir özellik atlanır ve oluşturulan nesneye dahil edilmez.  
   
-  Zaman dizisi, herhangi bir öğe değer oluşturma atandığı **tanımlanmamış** değeri atlandı ve oluşturulan nesneyi dahil değildir. Bu şekilde oluşturulan dizi dizinleri atlandı değil, onun yerine almak sonraki tanımlanan öğe neden olur.  
+  Bir dizi oluştururken, **tanımlanmamış** değer atanan herhangi bir öğe değeri atlanır ve oluşturulan nesneye dahil edilmez. Bu, bir sonraki tanımlanmış öğenin, oluşturulan dizinin dizinleri atlanmamış olacak şekilde yerini almasına neden olur.  
 
 ## <a name="examples"></a>Örnekler
 
@@ -119,7 +119,7 @@ Sonuçlar:
     }]
 ```
 
-Aşağıdaki sorguda, skaler ifadenin sonucu bir Boolean değer:
+Aşağıdaki sorguda, skaler ifadenin sonucu bir Boolean'dır:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
@@ -141,6 +141,6 @@ Sonuçlar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Alt](sql-query-subquery.md)
+- [Alt sorgular](sql-query-subquery.md)

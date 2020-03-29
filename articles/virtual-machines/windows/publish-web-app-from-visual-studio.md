@@ -1,6 +1,6 @@
 ---
-title: Visual Studio 'dan bir Azure VM 'de Web uygulaması yayımlama
-description: Visual Studio 'dan bir Azure sanal makinesine ASP.NET Web uygulaması yayımlama
+title: Visual Studio'dan Azure VM'ye Web Uygulaması yayınlama
+description: Visual Studio'dan Azure Sanal Makinesine ASP.NET Web Uygulaması Yayınlama
 services: virtual-machines-windows
 author: ghogen
 manager: jillfra
@@ -14,119 +14,119 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71970874"
 ---
-# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio 'dan bir Azure VM 'de ASP.NET Web uygulaması yayımlama
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio'dan azure vm'de ASP.NET bir Web Uygulaması yayınlama
 
-Bu belgede, Visual Studio 2019 ' de **Microsoft Azure sanal makineler** yayımlama özelliğini kullanarak bir Azure sanal MAKINESINE (VM) bir ASP.NET Web uygulamasının nasıl yayımlanacağı açıklanmaktadır.  
+Bu belge, Visual Studio 2019'daki **Microsoft Azure Sanal Makineler** yayımlama özelliğini kullanarak bir Azure sanal makinesinde (VM) ASP.NET bir web uygulamasının nasıl yayımlandırılabildiğini açıklar.  
 
-## <a name="prerequisites"></a>Önkoşullar
-Bir ASP.NET projesini bir Azure sanal makinesine yayımlamak için Visual Studio 'yu kullanabilmek üzere VM 'nin doğru şekilde ayarlanması gerekir.
+## <a name="prerequisites"></a>Ön koşullar
+Visual Studio'yu bir Azure VM'de ASP.NET bir proje yayınlamak için kullanabilmek için VM'nin doğru şekilde ayarlanması gerekir.
 
-- Makinenin bir ASP.NET Web uygulaması çalıştıracak şekilde yapılandırılması ve WebDeploy 'nin yüklü olması gerekir.
+- Makine, ASP.NET bir web uygulamasını çalıştıracak şekilde yapılandırılmalı ve WebDeploy yüklü olmalıdır.
 
-- VM 'nin yapılandırılmış bir DNS adı olmalıdır. Daha fazla bilgi için bkz. [WINDOWS VM için Azure Portal tam etki alanı adı oluşturma](portal-create-fqdn.md).
+- VM'nin bir DNS adı yapılandırılmış olması gerekir. Daha fazla bilgi için bkz. Windows [VM için Azure portalında tam nitelikli bir etki alanı adı oluşturun.](portal-create-fqdn.md)
 
-## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio 'Yu kullanarak ASP.NET Web uygulamanızı Azure VM 'de yayımlayın
-Aşağıdaki bölümde, mevcut bir ASP.NET Web uygulamasının bir Azure sanal makinesine nasıl yayımlanacağı açıklanmaktadır.
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio'yu kullanarak ASP.NET web uygulamanızı Azure VM'de yayımlayın
+Aşağıdaki bölümde, varolan bir ASP.NET web uygulamasının Azure sanal makinesinde nasıl yayımlanılabildiğini açıklanmaktadır.
 
-1. Web uygulaması çözümünüzü Visual Studio 2019 ' de açın.
-2. Çözüm Gezgini projeye sağ tıklayın ve Yayımla ' yı seçin **...**
-3. **Microsoft Azure sanal makineler**bulana kadar yayınlama seçeneklerinde gezinmek için sayfanın sağ tarafındaki oku kullanın.  
+1. Web uygulama çözümünüzü Visual Studio 2019'da açın.
+2. Solution Explorer'da projeyi sağ tıklatın ve **Yayımla'yı seçin...**
+3. **Microsoft Azure Sanal Makineleri**bulana kadar yayımlama seçenekleri arasında gezinmek için sayfanın sağındaki oku kullanın.  
 
-   ![Yayımla sayfası-sağ ok]
+   ![SayfaYı Yayımla - Sağ ok]
 
-4. **Microsoft Azure sanal makineler** simgesini seçin ve **Yayımla**' yı seçin.
+4. Microsoft **Azure Sanal Makineler** simgesini seçin ve **Yayımla'yı**seçin.
 
-   ![Yayımlama sayfası-Microsoft Azure sanal makine simgesi]
+   ![SayfaYayımla - Microsoft Azure Sanal Makine simgesi]
 
 5. Uygun hesabı seçin (sanal makinenize bağlı Azure aboneliği ile).  
-   - Visual Studio 'da oturum açtıysanız, hesap listesi tüm kimliği doğrulanmış hesaplarınızla doldurulur.  
-   - Oturum açmadıysanız veya ihtiyacınız olan Hesap listelenmiyorsa, "Hesap Ekle..." öğesini seçin. ve oturum açmak için istemleri takip edin.  
-   ![Azure hesap Seçicisi]  
+   - Visual Studio'da oturum açmışsanız, hesap listesi tüm kimlik doğrulaması yaptığınız hesaplarla doldurulur.  
+   - Oturum açmadıysanız veya ihtiyacınız olan hesap listede yoksa"Hesap ekle"yi seçin. ve oturum açmak için istemleri izleyin.  
+   ![Azure Hesap Seçici]  
 
-6. Mevcut sanal makineler listesinden uygun VM 'yi seçin.
+6. Varolan Sanal Makineler listesinden uygun VM'yi seçin.
 
    > [!Note]
-   > Bu listenin doldurulması biraz zaman alabilir.
+   > Bu listeyi doldurmak biraz zaman alabilir.
 
-   ![Azure VM Seçicisi]
+   ![Azure VM Seçici]
 
-7. Yayımlamaya başlamak için Tamam ' ı tıklatın.
+7. Yayımlamayı başlatmak için Tamam'ı tıklatın.
 
-8. Kimlik bilgileri istendiğinde, yayımlama haklarıyla yapılandırılan hedef VM 'de bir kullanıcı hesabının kullanıcı adını ve parolasını sağlayın. Bu kimlik bilgileri genellikle VM oluşturulurken kullanılan yönetici Kullanıcı adı ve parolasıdır.  
+8. Kimlik bilgileri istendiğinde, yayımlama haklarıyla yapılandırılan hedef VM'de bir kullanıcı hesabının kullanıcı adı ve parolasını girin. Bu kimlik bilgileri genellikle VM oluşturulurken kullanılan yönetici kullanıcı adı ve paroladır.  
 
-   ![WebDeploy oturumu açma]
+   ![WebDeploy Giriş]
 
 9. Güvenlik sertifikasını kabul edin.
 
-   ![Sertifika hatası]
+   ![Sertifika Hatası]
 
-10. Yayımla işleminin ilerleme durumunu denetlemek için çıkış penceresini izleyin.
+10. Yayımlama işleminin ilerlemesini denetlemek için Çıktı penceresini izleyin.
 
-    ![Çıkış Penceresi]
+    ![Çıktı Penceresi]
 
-11. Yayımlama başarılı olursa, yeni yayınlanan sitenin URL 'sini açmak için bir tarayıcı başlatılır.
+11. Yayımlama başarılı olursa, yeni yayınlanan sitenin URL'sini açmak için bir tarayıcı başlatılır.
 
-**Başarılı!**
+**Başarı!**
 
-Artık Web uygulamanızı bir Azure sanal makinesine başarıyla yayımladınız.
+Artık web uygulamanızı bir Azure sanal makinesinde başarıyla yayınladınız.
 
-## <a name="publish-page-options"></a>Yayımlama sayfası seçenekleri
+## <a name="publish-page-options"></a>Sayfa Seçeneklerini Yayımla
 
-Yayımlama Sihirbazı 'nı tamamladıktan sonra Yayımla sayfası, yeni yayımlama profili seçili olan belge ile birlikte açılır.
+Yayımlama sihirbazını tamamladıktan sonra, belgede yayımlama sayfası yeni yayımlama profili seçilerek açılır.
 
-### <a name="re-publish"></a>Yeniden Yayımla
+### <a name="re-publish"></a>Yeniden yayımla
 
-Web uygulamanızda güncelleştirmeleri yayımlamak için Yayımla sayfasındaki **Yayımla** düğmesini seçin.  
-- İstenirse, Kullanıcı adı ve parola girin.  
-- Yayımlama hemen başlar.
+Web uygulamanızda güncelleştirmeleri yayınlamak için Yayımla sayfasındaki **Yayımla** düğmesini seçin.  
+- İstenirse, kullanıcı adı ve parola girin.  
+- Yayıncılık hemen başlar.
 
-![Yayımlama sayfası-Yayımla düğmesi]
+![SayfaYı Yayımla - Yayımla düğmesi]
 
-### <a name="modify-publish-profile-settings"></a>Yayımlama profili ayarlarını değiştir
+### <a name="modify-publish-profile-settings"></a>Yayımlama profili ayarlarını değiştirme
 
-Yayımlama profili ayarlarını görüntülemek ve değiştirmek için **ayarlar...** ' ı seçin.  
+Yayımlama profili ayarlarını görüntülemek ve değiştirmek için **Ayarlar...'ı seçin.**  
 
-![Yayımlama sayfası-Ayarlar düğmesi]
+![Sayfayı Yayımla - Ayarlar düğmesi]
 
-Ayarlarınız şuna benzer görünmelidir:  
+Ayarlarınız şuna benzer:  
 
-![Yayımlama ayarları-bağlantı sayfası]
+![Ayarları Yayımla - Bağlantı sayfası]
 
 #### <a name="save-user-name-and-password"></a>Kullanıcı adını ve Parolayı Kaydet
-- Her yayımlamanızda kimlik doğrulama bilgilerini sağlamaktan kaçının. Bunu yapmak için, **Kullanıcı adı** ve **parola** alanlarını doldurun ve **Parolayı kaydet** kutusunu seçin.
-- Doğru bilgileri girdiğinizi onaylamak için **bağlantıyı doğrula** düğmesini kullanın.
+- Her yayımlamada kimlik doğrulama bilgilerini sağlamaktan kaçının. Bunu yapmak **için, Kullanıcı adı** ve **Parola** alanlarını doldurun ve parola kutusunu **kaydet'i** seçin.
+- Doğru bilgileri girdiğinizi doğrulamak için **Bağlantıyı Doğrula** düğmesini kullanın.
 
-#### <a name="deploy-to-clean-web-server"></a>Web sunucusuna dağıtma
+#### <a name="deploy-to-clean-web-server"></a>Web sunucusutemizlemek için dağıtın
 
-- Web sunucusunun her karşıya yüklemeden sonra Web uygulamasının temiz bir kopyasına sahip olduğundan ve önceki bir dağıtımdan başka hiçbir dosya ayrıldıktan emin olmak istiyorsanız, **Ayarlar** sekmesindeki **Hedefteki ek dosyaları Kaldır** onay kutusunu işaretleyebilirsiniz.
+- Web sunucusunun her yüklemeden sonra web uygulamasının temiz bir kopyasına sahip olduğundan ve önceki dağıtımdan başka dosya kalmadığından emin olmak istiyorsanız, **Ayarlar** sekmesindeki hedef onay **kutusundaek dosyaları kaldır'ı** denetleyebilirsiniz.
 
-- Uyarı: Bu ayarla yayımlama, Web sunucusunda bulunan tüm dosyaları siler (Wwwroot dizini). Bu seçenekle yayımlamadan önce makinenin durumunu öğrendiğinizden emin olun. 
+- Uyarı: Bu ayarda yayımlama, web sunucusunda bulunan tüm dosyaları (wwwroot dizinini) siler. Bu seçenek etkinken yayımlamadan önce makinenin durumunu bildiğinizden emin olun. 
 
-![Yayımlama ayarları-Ayarlar sayfası]
+![Ayarları Yayımla - Ayarlar sayfası]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM 'ye otomatik dağıtım için CI/CD ayarlama
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM'ye otomatik dağıtım için CI/CD ayarlama
 
-Azure Pipelines ile sürekli teslim işlem hattı ayarlamak için bkz. [Windows sanal makinesine dağıtma](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+Azure Ardışık Hatları ile sürekli bir teslim ardışık alanı ayarlamak için windows [sanal makineye dağıt'a](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)bakın.
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[Yayımla sayfası-sağ ok]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[Yayımlama sayfası-Microsoft Azure sanal makine simgesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
-[Azure hesap Seçicisi]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
-[Azure VM Seçicisi]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
-[WebDeploy oturumu açma]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
-[Sertifika hatası]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
+[SayfaYı Yayımla - Sağ ok]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[SayfaYayımla - Microsoft Azure Sanal Makine simgesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Azure Hesap Seçici]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
+[Azure VM Seçici]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[WebDeploy Giriş]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
+[Sertifika Hatası]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
 [Çıkış Penceresi]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[Yayımlama sayfası-Yayımla düğmesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
-[Yayımlama sayfası-Ayarlar düğmesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[Yayımlama ayarları-bağlantı sayfası]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
-[Yayımlama ayarları-Ayarlar sayfası]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png
+[SayfaYı Yayımla - Yayımla düğmesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Sayfayı Yayımla - Ayarlar düğmesi]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[Ayarları Yayımla - Bağlantı sayfası]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Ayarları Yayımla - Ayarlar sayfası]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi sorunlarını giderme | Microsoft Docs
-description: StorSimple cihaz Yöneticisi'ni tanımlar özelliği tanılamak ve gidermek StorSimple Virtual Array'iniz için kullanımı açıklanmaktadır.
+title: Sorun Giderme StorSimple Sanal Dizi | Microsoft Dokümanlar
+description: StorSimple Aygıt Yöneticisi tanılama özelliğini açıklar ve StorSimple Virtual Array'inizi gidermek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408447"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple sanal dizisi sorunlarını gidermek için StorSimple cihaz Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisi sorunlarını gidermek için StorSimple Device Manager hizmetini kullanma
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple cihaz Yöneticisi'ni sağlayan bir **Tanıla ve problemleri çözmenize** sanal diziniz ve bunları çözmek nasıl oluşabilecek yaygın olarak karşılaşılan sorunlardan bazılarını vurgular hizmeti Özet Dikey içinde ayarlama. Bu öğretici, StorSimple cihaz Yöneticisi hizmeti içinde sağlanan Self Servis sorun giderme özelliği tanıtır.
+StorSimple Aygıt Yöneticisi, sanal dizinizde sık karşılaşılan bazı sorunları ve bunları nasıl çözeceğinivurgulayan hizmet özeti bıçak içinde bir **Tanılama ve sorunları çözme** sağlar. Bu öğretici, StorSimple Device Manager hizmetinde sağlanan self servis sorun giderme özelliğini tanıtır.
 
 ![Sorunları tanılayın ve çözün](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
-## <a name="diagnose-and-solve-issues"></a>Tanılama ve sorun çözme
+## <a name="diagnose-and-solve-issues"></a>Sorunları tanılama ve çözme
 
-Bazı yaygın sorunlar StorSimple Virtual Array ile görüntüleyebilir ve çözümler, StorSimple cihaz Yöneticisi hizmeti Özet dikey penceresinden bu sorunların doğru gözden geçirin.
+StorSimple Virtual Array ile ilgili yaygın sorunlardan bazılarını görüntüleyebilir ve bu sorunların çözümlerini StorSimple Device Manager hizmet özet bıçaknızdan inceleyebilirsiniz.
 
-#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Sanal diziniz ile ilgili bir sorunu tanılamak için
+#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Sanal dizinizdeki bir sorunu tanılamak için
 
-1. Tıklayın **Tanıla ve problemleri çözmenize** sık karşılaşılan sorunların bir listesini görüntülemek için StorSimple cihaz Yöneticisi hizmeti Özet dikey penceresinin sol bölmede ayarlama.
+1. Sık karşılaşılan sorunların listesini görüntülemek için StorSimple Device Manager hizmet özet bıçakınızın sol bölmesinde tanılama **ve sorunları çözme** yi tıklatın.
 
-2. **Genişletin** gözden geçirmek için karşılaştığınızı sorun belirtisi üzerinde **önerilen adımlar** sorunu gidermeye yardımcı olmak için. İsterseniz, daha fazla başvuru için sağlanan ayrıntılı belgelere bağlantılar da gözden geçirebilirsiniz.
+2. Sorunla karşılaştığınız sorunun belirtisini **genişleterek** sorunu gidermede size yardımcı olacak **önerilen adımları** gözden geçirin. Dilerseniz, daha fazla başvuru için sağlanan ayrıntılı dokümantasyon bağlantılarını da inceleyebilirsiniz.
    
-    ![Bir sorun giderme](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
+    ![Sorun giderme](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. Sorununuzu bir başvuru bulunamıyor veya bu sorunu çözmek mümkün değilse, Microsoft Support daha fazla yardım için ulaşın.
+3. Sorununuz la ilgili bir başvuru bulamaz veya çözümleyemiyorsanız, daha fazla yardım için Microsoft Destek'e başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bilgi edinmek için nasıl [bir destek biletini günlüğe kaydetme](storsimple-virtual-array-log-support-ticket.md)
+Destek biletini nasıl [günlüğe kaydedebilirsiniz](storsimple-virtual-array-log-support-ticket.md) öğrenin
 

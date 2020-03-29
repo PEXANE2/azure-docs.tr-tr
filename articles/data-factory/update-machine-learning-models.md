@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak makine öğrenimi modellerini güncelleştirme
-description: Azure Data Factory ve makine öğrenimi kullanarak tahmine dayalı işlem hatları oluşturma işlemini açıklar.
+title: Azure Veri Fabrikası'nı kullanarak makine öğrenimi modellerini güncelleştirme
+description: Azure Veri Fabrikası ve makine öğrenimi kullanarak tahmine dayalı ardışık boru hatları oluşturmanın nasıl yapılacağını açıklar
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,29 +12,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73683251"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
-Bu makalede, [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar. Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
+# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Güncelleştirme Kaynağı etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
+Bu makale, ana Azure Veri Fabrikası - Azure Machine Learning tümleştirme makalesini tamamlamaktadır: [Azure Machine Learning ve Azure Veri Fabrikası'nı kullanarak tahmine dayalı ardışık hatlar oluşturun.](transform-data-using-machine-learning.md) Bunu zaten yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
 
 ## <a name="overview"></a>Genel Bakış
-Azure Machine Learning modellerini işlemin bir parçası olarak modelinize eğitim ve kaydedilir. Daha sonra bunu, tahmine dayalı bir Web hizmeti oluşturmak için kullanırsınız. Web hizmeti daha sonra Web sitelerinde, panolarda ve mobil uygulamalarda tüketilebilir.
+Azure Machine Learning modellerini operasyonel hale getirme sürecinin bir parçası olarak, modeliniz eğitilir ve kaydedilir. Daha sonra bir tahmine dayalı Web hizmeti oluşturmak için kullanabilirsiniz. Web hizmeti daha sonra web sitelerinde, panolarda ve mobil uygulamalarda tüketilebilir.
 
-Machine Learning kullanarak oluşturduğunuz modeller genellikle statik değildir. Yeni veriler kullanılabilir hale geldiğinde veya API 'nin tüketicisi kendi verilerine sahip olduğunda, modelin geri çekilmesi gerekir. Azure Machine Learning bir modeli nasıl yeniden eğitebilmeniz hakkındaki ayrıntılar için [Machine Learning modelini yeniden eğitme](../machine-learning/machine-learning-retrain-machine-learning-model.md) bölümüne bakın.
+Machine Learning kullanarak oluşturduğunuz modeller genellikle statik değildir. Yeni veriler kullanılabilir hale geldikçe veya API'nin tüketicisi kendi verileri olduğunda modelin yeniden eğitilmesi gerekir. Azure Machine Learning'de bir modeli nasıl yeniden eğitebileceğinizle ilgili ayrıntılar için [Bir Makine Öğrenimi Modelini Yeniden Eğit'e](../machine-learning/machine-learning-retrain-machine-learning-model.md) bakın.
 
-Yeniden eğitim sık gerçekleşebilir. Toplu yürütme etkinliği ve kaynak güncelleştirme etkinliği sayesinde, Data Factory kullanarak tahmine dayalı Web hizmetini yeniden eğitmek ve güncelleştirmek Azure Machine Learning modelini çalıştırabilirsiniz.
+Yeniden eğitim sık sık ortaya çıkabilir. Toplu Yürütme etkinliği ve Kaynak Güncelleştirme etkinliği yle, Veri Fabrikası'nı kullanarak Azure Machine Learning modelini yeniden zorlayabilir ve tahmine dayalı Web Hizmeti'ni güncelleştirebilirsiniz.
 
-Aşağıdaki resimde, eğitim ve tahmine dayalı Web Hizmetleri arasındaki ilişki gösterilmektedir.
+Aşağıdaki resimde eğitim ve tahmine dayalı Web Hizmetleri arasındaki ilişki gösterilmiştir.
 
 ![Web Hizmetleri](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning kaynak etkinliğini Güncelleştir
+## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning güncelleştirme kaynak etkinliği
 
-Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme etkinliği tanımlar.
+Aşağıdaki JSON snippet, Azure Machine Learning Toplu Yürütme etkinliğini tanımlar.
 
 ```json
 {
@@ -58,47 +58,47 @@ Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme e
 
 | Özellik                      | Açıklama                              | Gerekli |
 | :---------------------------- | :--------------------------------------- | :------- |
-| ad                          | İşlem hattındaki etkinliğin adı     | Evet      |
+| ad                          | Boru hattındaki etkinliğin adı     | Evet      |
 | açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| type                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Evet      |
-| linkedServiceName             | UpdateResourceEndpoint özelliği içeren bağlı hizmet Azure Machine Learning. | Evet      |
-| Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Evet      |
-| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Evet      |
-| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Evet      |
+| type                          | Azure Machine Learning Update Kaynak etkinliği için etkinlik türü **AzureMLUpdateResource'dır.** | Evet      |
+| linkedServiceName             | UpdateResourceEndpoint özelliğini içeren Azure Machine Learning bağlantılı hizmet. | Evet      |
+| eğitimliModelName              | Güncellenecek Web Hizmeti denemesinde Eğitilen Model modülünün adı | Evet      |
+| eğitimliModelLinkedServiceName | Güncelleştirme işlemi tarafından yüklenen ilearner dosyasını tutan Azure Depolama bağlantılı hizmetin adı | Evet      |
+| eğitimliModelFilePath          | Güncelleştirme işlemi tarafından yüklenen ilearner dosyasını temsil etmek için eğitilmişModelLinkedService'teki göreli dosya yolu | Evet      |
 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
 
-İşlemin tamamına bir modeli yeniden eğitmek ve tahmine dayalı Web hizmetlerini güncelleştirmek, aşağıdaki adımları içerir:
+Bir modeli yeniden eğitme ve tahmine dayalı Web Hizmetlerini güncelleştirme işlemlerini n için gereken süreç aşağıdaki adımları içerir:
 
-- **Toplu yürütme etkinliğini**kullanarak **eğitim Web hizmetini** çağırın. Eğitim Web hizmetini çağırmak, [Azure Machine Learning ve toplu yürütme etkinliğini Data Factory kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)bölümünde açıklanan bir tahmine dayalı Web hizmeti çağırma ile aynıdır. Eğitim Web hizmetinin çıktısı, tahmine dayalı Web hizmetini güncelleştirmek için kullanabileceğiniz bir iLearner dosyasıdır.
-- Web hizmetini yeni eğitilen modelle güncelleştirmek için, **Kaynağı Güncelleştir etkinliğini** kullanarak tahmine **dayalı Web hizmetinin** **kaynak güncelleştirme uç noktasını** çağırın.
+- **Toplu Yürütme etkinliğini**kullanarak eğitim Web **Hizmeti'ni** çağırın. Bir eğitim Web Hizmeti çağırmak, [Azure Machine Learning ve Data Factory Toplu Yürütme etkinliğini kullanarak tahmine dayalı ardışık hatlar oluşturma'da](transform-data-using-machine-learning.md)açıklanan tahmine dayalı bir Web Hizmetini çağırmakla aynıdır. Eğitim Web Hizmeti çıktısı, tahmine dayalı Web Hizmetini güncelleştirmek için kullanabileceğiniz bir iLearner dosyasıdır.
+- Web Hizmetini yeni eğitilmiş modelle **güncelleştirmek** için **Kaynak** Güncelleştirme etkinliğini kullanarak **tahmine dayalı Web Hizmetinin** güncelleştirme kaynağı bitiş noktasını çağırın.
 
-## <a name="azure-machine-learning-linked-service"></a>Bağlı hizmet Azure Machine Learning
+## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning bağlantılı hizmet
 
-Yukarıda bahsedilen uçtan uca iş akışının çalışması için iki Azure Machine Learning bağlantılı hizmet oluşturmanız gerekir:
+Yukarıda belirtilen uçtan uca iş akışının çalışması için iki Azure Machine Learning bağlantılı hizmet oluşturmanız gerekir:
 
-1. Eğitim Web hizmetine Azure Machine Learning bağlı bir hizmet olan bu bağlı hizmet, toplu yürütme etkinliği tarafından, [Azure Machine Learning ve Data Factory Batch yürütmesi kullanarak tahmine dayalı işlem hatları oluşturma konusunda bahsedilen özellikler ile aynı şekilde kullanılır Etkinlik](transform-data-using-machine-learning.md). Fark, eğitim Web hizmetinin çıkışı, daha sonra tahmine dayalı Web hizmetini güncelleştirmek için kaynak güncelleştirme etkinliği tarafından kullanılan bir iLearner dosyasıdır.
-2. Tahmine dayalı Web hizmetinin güncelleştirme kaynak uç noktasına Azure Machine Learning bağlı bir hizmet. Bu bağlı hizmet, yukarıdaki adımdan döndürülen iLearner dosyasını kullanarak tahmine dayalı Web hizmetini güncelleştirmek için kaynak güncelleştirme etkinliği tarafından kullanılır.
+1. Bir Azure Machine Learning eğitim web hizmetine bağlı bir hizmet, bu bağlantılı hizmet Toplu Yürütme etkinliği tarafından [Azure Machine Learning ve Data Factory Toplu Yürütme etkinliğini kullanarak tahmine dayalı ardışık hatlar oluşturma'da](transform-data-using-machine-learning.md)bahsedilenlerle aynı şekilde kullanılır. Fark eğitim web hizmeti çıktısı daha sonra tahmine dayalı web hizmetini güncelleştirmek için Kaynak etkinliği güncelleştirmek tarafından kullanılan bir iLearner dosyasıdır.
+2. Azure Machine Learning, tahmine dayalı web hizmetinin güncelleştirme kaynağı bitiş noktasına bağlı bir hizmet. Bu bağlantılı hizmet, yukarıdaki adımdan döndürülen iLearner dosyasını kullanarak tahmine dayalı web hizmetini güncelleştirmek için Kaynak'ı güncelleştir etkinliği tarafından kullanılır.
 
-İkinci Azure Machine Learning bağlı hizmeti için, Azure Machine Learning Web hizmetiniz klasik bir Web hizmeti veya yeni bir Web hizmeti olduğunda yapılandırma farklıdır. Farklar aşağıdaki bölümlerde ayrı olarak ele alınmıştır.
+İkinci Azure Machine Learning bağlantılı hizmetinde, Azure Machine Learning Web Hizmetiniz klasik bir Web Hizmeti veya yeni bir Web Hizmeti olduğunda yapılandırma farklıdır. Farklar aşağıdaki bölümlerde ayrı ayrı ele alınmıştır.
 
-## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web hizmeti yeni Azure Resource Manager Web hizmeti
+## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web hizmeti yeni Azure Kaynak Yöneticisi web hizmetidir
 
-Web hizmeti, Azure Resource Manager uç noktası sunan yeni bir Web hizmeti türüdür, ikinci **varsayılan olmayan** uç noktayı eklemeniz gerekmez. Bağlantılı hizmette bulunan **Updateresourceendpoint** şu biçimdedir:
+Web hizmeti, Azure Kaynak Yöneticisi bitiş noktasını ortaya çıkaran yeni web hizmeti türüyse, varsayılan **olmayan** ikinci bitiş noktasını eklemeniz gerekmez. Bağlı hizmetteki **updateResourceEndpoint** biçimindedir:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-Web hizmetini [Azure Machine Learning Web Hizmetleri portalında](https://services.azureml.net/)sorgularken URL 'deki yer tutucuları için değerler alabilirsiniz.
+[Azure Machine Learning Web Services Portal'da](https://services.azureml.net/)web hizmetini sorgularken URL'deki yer sahipleri için değerler alabilirsiniz.
 
-Güncelleştirme kaynak uç noktasının yeni türü hizmet sorumlusu kimlik doğrulaması gerektirir. Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve aboneliğin veya Web hizmetinin ait olduğu kaynak grubunun **katkıda** bulunan veya **sahip** rolü verin. [Azure kaynağını yönetmek için hizmet sorumlusu oluşturma ve izinleri atama](../active-directory/develop/howto-create-service-principal-portal.md)bölümüne bakın. Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
+Yeni güncelleştirme kaynak bitiş noktası türü, hizmet anabilim itimi gerektirir. Hizmet temel kimlik doğrulamasını kullanmak için, bir uygulama kuruluşunu Azure Etkin Dizini'ne (Azure AD) kaydedin ve aboneliğin veya web hizmetinin ait olduğu kaynak grubunun **Katılımcı** veya **Sahibi** rolünü ona bahşedin. Azure [kaynağını yönetmek için hizmet sorumlusu nun nasıl oluşturulup izinler atadığını](../active-directory/develop/howto-create-service-principal-portal.md)görün. Bağlantılı hizmeti tanımlamak için kullandığınız aşağıdaki değerlere dikkat edin:
 
 - Uygulama Kimliği
 - Uygulama anahtarı
 - Kiracı Kimliği
 
-Örnek bir bağlı hizmet tanımı aşağıda verilmiştir:
+Örnek bağlantılı hizmet tanımı aşağıda verilmiştir:
 
 ```json
 {
@@ -124,20 +124,20 @@ Güncelleştirme kaynak uç noktasının yeni türü hizmet sorumlusu kimlik do�
 }
 ```
 
-Aşağıdaki senaryo daha fazla ayrıntı sağlar. Bir Azure Data Factory işlem hattından Azure Machine Learning Studio modellerini yeniden eğitim ve güncelleştirme için bir örnektir.
+Aşağıdaki senaryo daha fazla ayrıntı sağlar. Azure Machine Learning stüdyo modellerini Azure Veri Fabrikası ardışık hattından yeniden eğitmek ve güncellemek için bir örneği vardır.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Örnek: Azure Machine Learning modeli yeniden eğitim ve güncelleştirme
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Örnek: Azure Machine Learning modelini yeniden eğitim ve güncelleme
 
-Bu bölüm, bir modeli yeniden eğitmek için **Azure Machine Learning Studio Batch yürütme etkinliğini** kullanan bir örnek işlem hattı sağlar. İşlem hattı Ayrıca, Puanlama Web hizmetindeki modeli güncelleştirmek için **Azure Machine Learning Studio güncelleştirme kaynağı etkinliğini** kullanır. Bu bölüm, örnekteki tüm bağlı hizmetler, veri kümeleri ve işlem hattı için JSON parçacıkları da sağlar.
+Bu bölümde, bir modeli yeniden eğitmek için **Azure Machine Learning stüdyo Toplu Yürütme etkinliğini** kullanan örnek bir ardışık kaynak sağlar. Ardışık hat, puanlama web hizmetindeki modeli güncelleştirmek için **Azure Machine Learning studio Update Resource etkinliğini** de kullanır. Bu bölümde ayrıca, örnekteki tüm bağlantılı hizmetler, veri kümeleri ve ardışık hatlar için JSON parçacıkları da verilmektedir.
 
-### <a name="azure-blob-storage-linked-service"></a>Azure Blob depolama bağlı hizmeti:
-Azure depolama aşağıdaki verileri içerir:
+### <a name="azure-blob-storage-linked-service"></a>Azure Blob depolama bağlantılı hizmet:
+Azure Depolama aşağıdaki verileri tutar:
 
-* eğitim verileri. Azure Machine Learning Studio eğitim Web hizmeti için giriş verileri.
-* iLearner dosyası. Azure Machine Learning Studio eğitim Web hizmeti 'nin çıktısı. Bu dosya aynı zamanda kaynak güncelleştirme etkinliğine giriştir.
+* eğitim verileri. Azure Machine Learning stüdyo eğitim web hizmeti için giriş verileri.
+* iLearner dosyası. Azure Machine Learning stüdyo eğitim web hizmetinden çıktı. Bu dosya, Kaynak Güncelleştirme etkinliğine giriştir.
 
-Bağlı hizmetin örnek JSON tanımı aşağıda verilmiştir:
+Bağlantılı hizmetin örnek JSON tanımı aşağıda verilmiştir:
 
 ```JSON
 {
@@ -151,8 +151,8 @@ Bağlı hizmetin örnek JSON tanımı aşağıda verilmiştir:
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Azure Machine Learning Studio eğitim uç noktası için bağlı hizmet
-Aşağıdaki JSON kod parçacığı, eğitim Web hizmetinin varsayılan uç noktasını işaret eden Azure Machine Learning bağlı bir hizmeti tanımlar.
+### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Azure Machine Learning stüdyo eğitimi bitiş noktası için bağlantılı hizmet
+Aşağıdaki JSON snippet, eğitim web hizmetinin varsayılan bitiş noktasına işaret eden bir Azure Machine Learning bağlantılı hizmeti tanımlar.
 
 ```JSON
 {
@@ -167,16 +167,16 @@ Aşağıdaki JSON kod parçacığı, eğitim Web hizmetinin varsayılan uç nokt
 }
 ```
 
-**Azure Machine Learning Studio**'Da, **MlEndpoint** ve **apikey**değerlerini almak için aşağıdakileri yapın:
+**Azure Machine Learning stüdyosunda,** **mlEndpoint** ve **apiKey**için değerler elde etmek için aşağıdakileri yapın:
 
-1. Sol taraftaki menüden **Web Hizmetleri** ' ne tıklayın.
-2. Web hizmetleri listesinde **eğitim Web hizmeti** ' ne tıklayın.
-3. **API anahtarı** metin kutusu ' nun yanındaki Kopyala ' ya tıklayın. Panodaki anahtarı Data Factory JSON düzenleyicisine yapıştırın.
-4. **Azure Machine Learning Studio**'DA **toplu yürütme** bağlantısı ' na tıklayın.
-5. İstek **URI** 'sini **istek** bölümünden kopyalayın ve Data Factory JSON düzenleyicisine yapıştırın.
+1. Sol menüde **WEB HİzMETLerİ'ni** tıklatın.
+2. Web hizmetleri listesinde **eğitim web hizmetini** tıklatın.
+3. **API anahtar** metin kutusunun yanındaki kopyayı tıklatın. Panodaki anahtarı Veri Fabrikası JSON düzenleyicisine yapıştırın.
+4. Azure **Machine Learning stüdyosunda** **BATCH EXECUTION** bağlantısını tıklatın.
+5. İstek **URI'sini** **İstek** bölümünden kopyalayın ve Veri Fabrikası JSON düzenleyicisine yapıştırın.
 
-### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Azure Machine Learning Studio güncelleştirilebilir Puanlama uç noktası için bağlı hizmet:
-Aşağıdaki JSON kod parçacığı, Puanlama Web hizmeti 'nin güncelleştirilebilir uç noktasını işaret eden Azure Machine Learning bağlı bir hizmeti tanımlar.
+### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Azure Machine Learning stüdyosu için bağlantılı hizmet puanlama bitiş noktası:
+Aşağıdaki JSON snippet, puanlama web hizmetinin güncel uç noktasını işaret eden bir Azure Machine Learning bağlantılı hizmeti tanımlar.
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Aşağıdaki JSON kod parçacığı, Puanlama Web hizmeti 'nin güncelleştirile
 ```
 
 ### <a name="pipeline"></a>İşlem hattı
-İşlem hattının iki etkinliği vardır: **AzureMLBatchExecution** ve **AzureMLUpdateResource**. Toplu yürütme etkinliği eğitim verilerini giriş olarak alır ve çıkış olarak bir iLearner dosyası üretir. Kaynağı Güncelleştir etkinliği daha sonra bu iLearner dosyasını alır ve tahmine dayalı Web hizmetini güncelleştirmek için onu kullanır.
+Ardışık işlemde iki etkinlik vardır: **AzureMLBatchExecution** ve **AzureMLUpdateResource.** Toplu Yürütme etkinliği, eğitim verilerini giriş olarak alır ve çıktı olarak bir iLearner dosyası üretir. Kaynak Güncelleştirme etkinliği daha sonra bu iLearner dosyasını alır ve tahmine dayalı web hizmetini güncelleştirmek için kullanır.
 
 ```JSON
 {
@@ -267,13 +267,13 @@ Aşağıdaki JSON kod parçacığı, Puanlama Web hizmeti 'nin güncelleştirile
 }
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:
+Verileri başka şekillerde nasıl dönüştüreceklerini açıklayan aşağıdaki makalelere bakın:
 
 * [U-SQL etkinliği](transform-data-using-data-lake-analytics.md)
-* [Hive etkinliği](transform-data-using-hadoop-hive.md)
-* [Pig etkinliği](transform-data-using-hadoop-pig.md)
-* [MapReduce etkinliği](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
-* [Spark etkinliği](transform-data-using-spark.md)
+* [Kovan aktivitesi](transform-data-using-hadoop-hive.md)
+* [Domuz aktivitesi](transform-data-using-hadoop-pig.md)
+* [MapAz etkinliği](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop Akış etkinliği](transform-data-using-hadoop-streaming.md)
+* [Kıvılcım etkinliği](transform-data-using-spark.md)
 * [.NET özel etkinliği](transform-data-using-dotnet-custom-activity.md)
-* [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)
+* [Depolanan yordam etkinliği](transform-data-using-stored-procedure.md)

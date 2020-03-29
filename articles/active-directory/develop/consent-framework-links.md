@@ -1,6 +1,6 @@
 ---
-title: Uygulama onayı nasıl kullanılır? | Microsoft Docs
-description: Azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. Azure AD 'de uygulama geliştirirken bu uygulamayı nasıl kullanabileceğinizi öğrenin
+title: Uygulama onayı nasıl çalışır | Microsoft Dokümanlar
+description: Azure AD'deki uygulamaları geliştirirken azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinin
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 15206f394f63e9373a4a0016588bc1e2e2c65d44
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697719"
 ---
-# <a name="how-application-consent-works"></a>Uygulama onayı nasıl kullanılır?
+# <a name="how-application-consent-works"></a>Uygulama onayı nasıl çalışır?
 
-Bu makale, Azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur. böylece, uygulamaları daha verimli bir şekilde geliştirebilirsiniz.
+Bu makale, uygulamaları daha etkili bir şekilde geliştirebilmeniz için Azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olmak içindir.
 
 ## <a name="recommended-documents"></a>Önerilen belgeler
 
-- [Bir kaynak sahibinin, bir uygulamanın kaynaklara erişimini yönetme konusunda](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent)genel bir bakış sağlar.
-- [Azure AD onay çerçevesinin izin nasıl uyguladığı konusunda](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)adım adım bir genel bakış alın.
-- Daha ayrıntılı bilgi edinmek için, çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için [izin çerçevesini nasıl kullandığını](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) öğrenin ve daha gelişmiş çok katmanlı uygulama düzenlerini destekler.
-- Daha ayrıntılı bilgi edinmek için [yetkilendirme kodu verme akışı sırasında OAuth 2,0 protokol katmanında izin nasıl desteklendiğini öğrenin.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- [Onay, bir kaynağın bir uygulamanın kaynaklara erişimini yönetmesine nasıl izin verdiği](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent)hakkında genel bir anlayış alın.
+- [Azure AD onay çerçevesinin onayı nasıl uyguladığına adım](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)adım genel bir bakış alın.
+- Daha fazla derinlik için, çok kiracılı bir uygulamanın daha gelişmiş çok katmanlı uygulama modellerini destekleyerek "kullanıcı" ve "yönetici" onayı uygulamak için [onay çerçevesini nasıl kullanabileceğini](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) öğrenin.
+- Daha fazla derinlik için, [yetkilendirme kodu hibe akışı sırasında OAuth 2.0 protokol katmanında onay ın nasıl desteklenedildiğini öğrenin.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

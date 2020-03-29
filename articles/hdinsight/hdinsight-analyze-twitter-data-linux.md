@@ -1,6 +1,6 @@
 ---
-title: Apache Hive-Azure HDInsight ile Twitter verilerini çözümleme
-description: Ham TWitter verilerini aranabilir bir Hive tablosuna dönüştürmek için HDInsight üzerinde Apache Hive ve Apache Hadoop kullanmayı öğrenin.
+title: Apache Hive ile Twitter verilerini analiz edin - Azure HDInsight
+description: Raw TWitter verilerini aranabilir bir Hive tablosuna dönüştürmek için HDInsight'ta Apache Hive ve Apache Hadoop'u nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435610"
 ---
-# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hive ve Apache Hadoop kullanarak Twitter verilerini çözümleme
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight'ta Apache Hive ve Apache Hadoop kullanarak Twitter verilerini analiz edin
 
-Twitter verilerini işlemek için [Apache Hive](https://hive.apache.org/) kullanmayı öğrenin. Sonuç, belirli bir kelime içeren en fazla sayıda fazla alanı gönderen Twitter kullanıcılarının bir listesidir.
+Twitter verilerini işlemek için [Apache Hive'ı](https://hive.apache.org/) nasıl kullanacağınızı öğrenin. Sonuç, belirli bir kelime içeren en çok tweets gönderilen Twitter kullanıcılarının bir listesidir.
 
 > [!IMPORTANT]  
-> Bu belgedeki adımlar HDInsight 3,6 ' de test edilmiştir.
+> Bu belgedeki adımlar HDInsight 3.6 üzerinde test edilmiştir.
 
 ## <a name="get-the-data"></a>Verileri alma
 
-Twitter, her Tweet için verileri bir JavaScript Nesne Gösterimi (JSON) belgesi olarak REST API aracılığıyla almanıza olanak sağlar. API için kimlik doğrulaması için [OAuth](https://oauth.net) gereklidir.
+Twitter, her tweet'in verilerini BIR REST API'si aracılığıyla JavaScript Object Notation (JSON) belgesi olarak almanıza olanak tanır. ApI'nin kimlik doğrulaması için [OAuth](https://oauth.net) gereklidir.
 
 ### <a name="create-a-twitter-application"></a>Twitter uygulaması oluşturma
 
-1. Bir Web tarayıcısından [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)oturum açın. Twitter hesabınız yoksa **Şimdi kaydolun** bağlantısını seçin.
+1. Bir web tarayıcısından, [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)oturum aç. Twitter hesabınız yoksa **Şimdi Kaydol** bağlantısını seçin.
 
-2. **Yeni uygulama oluştur**' u seçin.
+2. **Yeni Uygulama Oluştur'u**seçin.
 
-3. **Ad**, **Açıklama**, **Web sitesi**girin. **Web sitesi** alanı IÇIN bir URL oluşturabilirsiniz. Aşağıdaki tabloda, kullanılacak bazı örnek değerler gösterilmektedir:
+3. **Ad**, **Açıklama**, **Web Sitesi**girin . **Web Sitesi** alanı için bir URL hazırlayabilirsiniz. Aşağıdaki tabloda kullanılacak bazı örnek değerler gösterilmektedir:
 
    | Alan | Değer |
    |--- |--- |
-   | Ad |MyHDInsightApp |
+   | Adı |MyHDInsightApp |
    | Açıklama |MyHDInsightApp |
    | Web sitesi |`https://www.myhdinsightapp.com` |
 
-4. **Evet, kabul**ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur**' u seçin.
+4. **Evet'i seçin, katılıyorum**ve ardından **Twitter uygulamanızı oluştur'u**seçin.
 
-5. **İzinler** sekmesini seçin. Varsayılan izin **salt okunurdur**.
+5. **İzinler** sekmesini seçin. Varsayılan izin **yalnızca okunur.**
 
-6. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
+6. **Anahtarlar ve Erişim Jetonları** sekmesini seçin.
 
-7. **Erişim belirtecimi oluştur**' u seçin.
+7. **Erişim jetonumu oluştur'u**seçin.
 
-8. Sayfanın sağ üst köşesindeki **Test OAuth** ' ı seçin.
+8. Sayfanın sağ üst köşesinde **Test OAuth'u** seçin.
 
-9. **Tüketici anahtarı**, **Tüketici parolası**, **erişim belirteci**ve **erişim belirteci gizli**anahtarını yazın.
+9. Tüketici **anahtarı,** **Tüketici sırrı,** **Erişim belirteci**ve **Erişim belirteci gizli**yazın.
 
-### <a name="download-tweets"></a>Fazla doldurulabilir yükleme
+### <a name="download-tweets"></a>Tweetleri indirin
 
-Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve bunları **doldurulabilir. txt**adlı bir dosyaya kaydeder.
+Aşağıdaki Python kodu Twitter'dan 10.000 tweets indirir ve **tweets.txt**adlı bir dosyaya kaydedin.
 
 > [!NOTE]  
-> Python zaten yüklü olduğundan, HDInsight kümesinde aşağıdaki adımlar gerçekleştirilir.
+> Python zaten yüklü olduğundan, aşağıdaki adımlar HDInsight kümesinde gerçekleştirilir.
 
-1. Kümenize bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+1. Kümenize bağlanmak için [ssh komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME'yi kümenizin adıyla değiştirerek aşağıdaki komutu düzenleme ve ardından komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. [Pamallik](https://www.tweepy.org/), [ilerleme çubuğu](https://pypi.python.org/pypi/progressbar/2.2)ve diğer gerekli paketleri yüklemek için aşağıdaki komutları kullanın:
+1. [Tweepy,](https://www.tweepy.org/) [Progress çubuğunu](https://pypi.python.org/pypi/progressbar/2.2)ve diğer gerekli paketleri yüklemek için aşağıdaki komutları kullanın:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -78,13 +78,13 @@ Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve bunları **dold
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. **Gettweets.py**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
+1. **gettweets.py**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
    ```bash
    nano gettweets.py
    ```
 
-1. `Your consumer secret`, `Your consumer key`, `Your access token`ve `Your access token secret` kullanarak Twitter uygulamanızdaki ilgili bilgileri değiştirerek aşağıdaki kodu düzenleyin. Ardından düzenlenmiş kodu **gettweets.py** dosyasının içeriği olarak yapıştırın.
+1. Aşağıdaki kodu twitter uygulamanızdan `Your consumer secret` `Your consumer key`ilgili `Your access token`bilgileri `Your access token secret` değiştirerek ve değiştirerek düzenleme yapın. Ardından düzenlenen kodu **gettweets.py** dosyanın içeriği olarak yapıştırın.
 
    ```python
    #!/usr/bin/python
@@ -141,22 +141,22 @@ Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve bunları **dold
    ```
 
     > [!TIP]  
-    > Popüler anahtar sözcükleri izlemek için son satırdaki konular filtresini ayarlayın. Betiği çalıştırdığınız sırada popüler anahtar sözcüklerin kullanılması, verilerin daha hızlı yakalanmasını sağlar.
+    > Popüler anahtar kelimeleri izlemek için son satırdaki konular filtresini ayarlayın. Komut dosyasını çalıştırdığınızda popüler anahtar kelimeler kullanmak verilerin daha hızlı yakalanmasına olanak tanır.
 
-1. Dosyayı kaydetmek için **CTRL + X**, sonra **Y** kullanın.
+1. Dosyayı kaydetmek için **Ctrl + X,** ardından **Y'yi** kullanın.
 
-1. Dosyayı çalıştırmak ve arası dosyaları indirmek için aşağıdaki komutu kullanın:
+1. Dosyayı çalıştırmak ve tweetleri indirmek için aşağıdaki komutu kullanın:
 
     ```bash
     python gettweets.py
     ```
 
-    İlerleme göstergesi görünür. Bu, çok sayıda %100 ' e kadar sayılır ve bu da doldurulabilir.
+    İlerleme göstergesi görüntülenir. Tweetler indirildikçe %100'e kadar sayar.
 
    > [!NOTE]  
-   > İlerleme çubuğunun ileri bir süre sürüyorsa, eğilimi izlemek için filtreyi değiştirmelisiniz. Filtrenizin konusu hakkında çok fazla sayıda yer varsa, gereken 100 hayvan 'yı hızlıca alabilirsiniz.
+   > İlerleme çubuğunun ilerlemesi uzun sürüyorsa, popüler konuları izlemek için filtreyi değiştirmeniz gerekir. Filtrenizde konu yla ilgili birçok tweet olduğunda, gerekli 100 tweet'i hızlı bir şekilde alabilirsiniz.
 
-### <a name="upload-the-data"></a>Verileri karşıya yükleme
+### <a name="upload-the-data"></a>Verileri yükleyin
 
 Verileri HDInsight depolama alanına yüklemek için aşağıdaki komutları kullanın:
 
@@ -167,15 +167,15 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 Bu komutlar, verileri kümedeki tüm düğümlerin erişebileceği bir konumda depolar.
 
-## <a name="run-the-hiveql-job"></a>HiveQL işini çalıştırma
+## <a name="run-the-hiveql-job"></a>HiveQL işini çalıştırın
 
-1. [Hiveql](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) deyimlerini içeren bir dosya oluşturmak için aşağıdaki komutu kullanın:
+1. [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) deyimleri içeren bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
    ```bash
    nano twitter.hql
    ```
 
-    Dosyanın içeriği olarak aşağıdaki metni kullanın:
+    Aşağıdaki metni dosyanın içeriği olarak kullanın:
 
    ```hiveql
    set hive.exec.dynamic.partition = true;
@@ -283,17 +283,17 @@ Bu komutlar, verileri kümedeki tüm düğümlerin erişebileceği bir konumda d
    WHERE (length(json_response) > 500);
    ```
 
-1. **CTRL + X**tuşlarına basın ve ardından dosyayı kaydetmek için **Y** tuşuna basın.
+1. **Ctrl + X**tuşuna basın, ardından dosyayı kaydetmek için **Y** tuşuna basın.
 
-1. Dosyasında bulunan HiveQL 'i çalıştırmak için aşağıdaki komutu kullanın:
+1. Dosyada bulunan HiveQL çalıştırmak için aşağıdaki komutu kullanın:
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    Bu komut **Twitter. HQL** dosyasını çalıştırır. Sorgu tamamlandıktan sonra bir `jdbc:hive2//localhost:10001/>` istemi görürsünüz.
+    Bu komut **twitter.hql** dosyasını çalıştırın. Sorgu tamamlandıktan sonra bir `jdbc:hive2//localhost:10001/>` istem görürsünüz.
 
-1. Beeline istem içinden, verilerin içeri aktarıldığını doğrulamak için aşağıdaki sorguyu kullanın:
+1. Beeline komut isteminden, verilerin içe aktarıldığını doğrulamak için aşağıdaki sorguyu kullanın:
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -303,14 +303,14 @@ Bu komutlar, verileri kümedeki tüm düğümlerin erişebileceği bir konumda d
    ORDER BY cc DESC LIMIT 10;
    ```
 
-    Bu sorgu, ileti metninde **Azure** sözcüğünü içeren maksimum 10 adet Evcil hayvan döndürür.
+    Bu sorgu, ileti metninde **Azure** sözcüğü nün bulunduğu en fazla 10 tweet döndürür.
 
     > [!NOTE]  
-    > `gettweets.py` betikteki filtreyi değiştirdiyseniz, **Azure** 'u kullandığınız filtrelerden biriyle değiştirin.
+    > Komut dosyasındaki filtreyi `gettweets.py` değiştirdiyseniz, **Azure'u** kullandığınız filtrelerden biriyle değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yapılandırılmamış bir JSON veri kümesini yapılandırılmış bir [Apache Hive](https://hive.apache.org/) tablosuna nasıl dönüştürebileceğinizi öğrendiniz. HDInsight 'ta Hive hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Yapılandırılmamış bir JSON veri kümesini yapılandırılmış bir [Apache Hive](https://hive.apache.org/) tablosuna dönüştürmeyi öğrendiniz. HDInsight'ta Hive hakkında daha fazla bilgi edinmek için aşağıdaki belgelere bakın:
 
-* [HDInsight 'ı kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight kullanarak Uçuş gecikmesi verilerini çözümleme](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [HDInsight'ı kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [HDInsight'ı kullanarak uçuş gecikme verilerini analiz edin](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

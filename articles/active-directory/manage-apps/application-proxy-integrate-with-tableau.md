@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Uygulama proxy'si ve Tableau | Microsoft Docs
-description: Tableau dağıtımınız için uzaktan erişim sağlamak için Azure Active Directory (Azure AD) uygulama proxy'si kullanmayı öğrenin.
+title: Azure Active Directory Application Proxy ve Tableau | Microsoft Dokümanlar
+description: Tableau dağıtımınız için uzaktan erişim sağlamak için Azure Active Directory (Azure AD) Uygulama Proxy'sini nasıl kullanacağınızı öğrenin.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -14,73 +14,73 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65783860"
 ---
-# <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory Uygulama proxy'si ve Tableau 
+# <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory Application Proxy ve Tableau 
 
-Azure Active Directory Uygulama proxy'si ve Tableau, Tableau dağıtımınız için uzaktan erişim sağlamak için uygulama proxy'si kullanmak kolayca emin olmak için iş ortaklığı kurdu. Bu makalede, bu senaryo yapılandırma açıklanmaktadır.  
+Azure Active Directory Application Proxy ve Tableau, Tableau dağıtımınız için uzaktan erişim sağlamak için Uygulama Proxy'sini kolayca kullanabileceğinizden emin olmak için ortaklık sağladı. Bu makalede, bu senaryonun nasıl yapılandırılabildiğini açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-Bu makaledeki senaryoda, olduğunu varsayar:
+Bu makaledeki senaryo, sahip olduğunuzu varsayar:
 
-- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) yapılandırılmış. 
+- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) yapılandırıldı. 
 
-- Bir [uygulama ara sunucusu bağlayıcısını](application-proxy-add-on-premises-application.md) yüklü. 
+- Bir [Uygulama Proxy bağlayıcısı](application-proxy-add-on-premises-application.md) yüklendi. 
 
  
-## <a name="enabling-application-proxy-for-tableau"></a>Tableau için uygulama ara sunucusunu etkinleştirme 
+## <a name="enabling-application-proxy-for-tableau"></a>Tableau için Uygulama Proxy'sini Etkinleştirme 
 
-Uygulama Ara sunucusu OAuth 2.0 yetki akışı, düzgün çalışması Tableau için gerekli olduğu destekler. Başka bir deyişle, artık, yayımlama adımları izleyerek yapılandırma dışında bu uygulama, etkinleştirmek için gereken tüm özel adım vardır.
+Uygulama Proxy Tableau düzgün çalışması için gerekli olan OAuth 2.0 Hibe Akışı, destekler. Bu, bu uygulamayı etkinleştirmek için aşağıdaki yayımlama adımlarını izleyerek yapılandırmak dışında artık özel adımlar gerektirmemektedir.
 
 
 ## <a name="publish-your-applications-in-azure"></a>Uygulamalarınızı Azure'da yayımlayın 
 
-Tableau yayımlamak için Azure Portalı'nda bir uygulama yayımlamak gerekir.
+Tableau'yu yayınlamak için Azure Portalı'nda bir uygulama yayımlamanız gerekir.
 
-İçin:
+Için:
 
-- 1-8, bkz: adım yönergeleri ayrıntılı [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md). 
-- Tableau değerleri bulmak için uygulama proxy'si alanları hakkında bilgi, lütfen Tableau belgelerine bakın.  
+- 1-8 adımlarının ayrıntılı yönergeleri, [bkz.](application-proxy-add-on-premises-application.md) 
+- App Proxy alanları için Tableau değerlerini nasıl bulacağınız hakkında bilgi, lütfen Tableau belgelerine bakın.  
 
-**Uygulamanızı yayımlamak için**: 
+**Uygulamanızı yayınlamak için:** 
 
 
-1. Oturum [Azure portalında](https://portal.azure.com) uygulama yöneticisi olarak. 
+1. Uygulama yöneticisi olarak [Azure portalında](https://portal.azure.com) oturum açın. 
 
-2. Seçin **Azure Active Directory > Kurumsal uygulamalar**. 
+2. **Azure Active Directory > Kurumsal uygulamalarını**seçin. 
 
-3. Seçin **Ekle** dikey penceresinin üstünde. 
+3. Bıçağın üst kısmında **Ekle'yi** seçin. 
 
-4. Seçin **şirket içi uygulama**. 
+4. **Şirket içi uygulamayı**seçin. 
 
-5. Yeni uygulamanız hakkındaki bilgilerle gerekli alanları doldurun. Ayarları için aşağıdaki yönergeleri kullanın: 
+5. Yeni uygulamanız hakkında bilgi içeren gerekli alanları doldurun. Ayarlar için aşağıdaki kılavuzu kullanın: 
 
-    - **İç URL**: Bu uygulama, Tableau URL bir iç URL olması gerekir. Örneğin, `https://adventure-works.tableau.com`. 
+    - **Dahili URL**: Bu uygulamanın Tablo URL'si olan dahili bir URL'si olmalıdır. Örneğin, `https://adventure-works.tableau.com`. 
 
-    - **Ön kimlik doğrulama yöntemi**: Azure Active (önerilir ancak gerekli değildir) dizini. 
+    - **Ön kimlik doğrulama yöntemi**: Azure Active Directory (önerilir, ancak gerekli değildir). 
 
-6. Seçin **Ekle** dikey penceresinin üstünde. Uygulamanızı eklenir ve Hızlı Başlangıç menüsü açılır. 
+6. Bıçağın üst kısmında **Ekle'yi** seçin. Uygulamanız eklenir ve hızlı başlatma menüsü açılır. 
 
-7. Hızlı Başlangıç menüde **test etmek için kullanıcı atama**, ve en az bir kullanıcı uygulamaya ekleyin. Bu test hesabı şirket içi uygulamaya erişimi olduğundan emin olun. 
+7. Hızlı başlat menüsünde, **sınama için bir kullanıcı atay'ı**seçin ve uygulamaya en az bir kullanıcı ekleyin. Bu test hesabının şirket içi uygulamaya erişimi olduğundan emin olun. 
 
-8. Seçin **atama** test kullanıcı atama kaydetmek için. 
+8. Test kullanıcı atamasını kaydetmek için **Atla'yı** seçin. 
 
-9. (İsteğe bağlı) Uygulama Yönetimi sayfasında **çoklu oturum açma**. Seçin **tümleşik Windows kimlik doğrulaması** açılan menüsünden ve Tableau yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**’i seçin. 
+9. (İsteğe bağlı) Uygulama yönetimi sayfasında **Tek oturum açma'yı**seçin. Açılan menüden **Tümleşik Windows Kimlik Doğrulaması'nı** seçin ve Tableau yapılandırmanıza göre gerekli alanları doldurun. **Kaydet'i**seçin. 
 
  
 
-## <a name="testing"></a>Test Etme 
+## <a name="testing"></a>Sınama 
 
-Uygulamanızı şimdi test etmek hazırdır. Tableau, yayımlamak için kullanılan dış URL'sine erişin ve her iki uygulama için atanan bir kullanıcı olarak oturum açın.
+Başvurunuz artık test edilebiş hazırdır. Tableau'yu yayımlamak için kullandığınız harici URL'ye erişin ve her iki uygulamaya atanan bir kullanıcı olarak oturum açın.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD uygulama proxy'si hakkında daha fazla bilgi için bkz: [güvenli uzaktan erişim sağlamak şirket içi uygulamalara](application-proxy.md).
+Azure AD Uygulama Proxy hakkında daha fazla bilgi için [şirket içi uygulamalara nasıl güvenli uzaktan erişim sağlayacağınız](application-proxy.md)bilgisini öğrenin.
 

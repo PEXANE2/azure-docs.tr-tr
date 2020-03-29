@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps Twitter 'a bağlanma
-description: Azure Logic Apps kullanarak Twitter hesabınızdan izleme ve yönetme, takip eden kullanıcılar, diğer kullanıcılar, zaman çizelgelerinizi ve daha fazlasını içeren görevleri ve iş akışlarını otomatikleştirin.
+title: Azure Logic Apps'tan Twitter'a bağlanın
+description: Azure Logic Apps'ı kullanarak tweetleri izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin ve ayrıca takipçileriniz, takip eden kullanıcılarınız, diğer kullanıcılar, zaman çizelgeleri ve daha fazlası hakkında twitter hesabınızdan veri alın
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,79 +8,79 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789095"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Twitter 'ı izleyin ve yönetin
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps'ı kullanarak Twitter'ı izleyin ve yönetin
 
-Azure Logic Apps ve Twitter Bağlayıcısı sayesinde, sözgelimi Twitter, takiciler, kullanıcılar ve takip eden kullanıcılar, zaman çizelgeleri ve daha fazlası gibi diğer eylemlerle birlikte istediğiniz verileri izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
+Azure Logic Apps ve Twitter bağlayıcısı ile, twitter'da önemsediğiniz tweetler, takipçiler, kullanıcılar ve takip edilen kullanıcılar, zaman çizelgeleri ve daha fazlası gibi verileri izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilir ve örneğin diğer eylemlerle birlikte şunları yapabilirsiniz:
 
-* Fazla doldurulabilir, nakledin ve arama yapın.
-* İzleme, takip eden kullanıcılar, zaman çizelgeleri ve daha fazlası gibi verileri alın.
+* Tweetleri izleyin, gönderin ve arayın.
+* Takipçiler, takip edilen kullanıcılar, zaman çizelgeleri ve daha fazlası gibi veriler alın.
 
-Twitter hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. Twitter hesabınızla görev gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca, Twitter eylemlerinden alınan çıktıyı başka eylemlere de kullanabilirsiniz. Örneğin, belirli bir diyez etiketi ile yeni bir tweet göründüğünde, bolluk bağlayıcısıyla iletiler gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
+Twitter hesabınızdan yanıt alan ve çıktıyı diğer eylemleriçin kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. Twitter hesabınızla görevleri gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca diğer eylemler Twitter eylemleri çıkış kullanmak olabilir. Örneğin, belirli bir hashtag'e sahip yeni bir tweet göründüğünde, Slack bağlayıcısıyla ileti gönderebilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Twitter hesabınız ve Kullanıcı kimlik bilgileriniz
+* Twitter hesabınız ve kullanıcı kimlik bilgileriniz
 
-   Kimlik bilgileriniz, bir bağlantı oluşturmak ve Twitter hesabınıza erişmek için mantıksal uygulamanızı yetkilendirirsiniz.
+   Kimlik bilgileriniz, bir bağlantı oluşturmak ve Twitter hesabınıza erişmek için mantık uygulamanıza yetki vetir.
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
-* Twitter hesabınıza erişmek istediğiniz mantıksal uygulama. Twitter tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Twitter eylemini kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
+* Twitter hesabınıza erişmek istediğiniz mantık uygulaması. Bir Twitter tetikleyicisi ile başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Bir Twitter eylemi kullanmak için, mantık uygulamanızı başka bir tetikleyiciyle başlatın, örneğin, **Yineleme** tetikleyicisi.
 
 ## <a name="connect-to-twitter"></a>Twitter’a Bağlanma
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
 
 1. Bir yol seçin: 
 
-   * Boş Logic Apps için, arama kutusuna filtreniz olarak "Twitter" yazın. 
-   Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
+   * Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "twitter" girin. 
+   Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
 
      -veya-
 
-   * Mevcut mantıksal uygulamalar için: 
+   * Mevcut mantık uygulamaları için: 
    
-     * Eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
+     * Eylem eklemek istediğiniz son adımaltında Yeni **adımı**seçin. 
 
        -veya-
 
-     * Eylem eklemek istediğiniz adımlar arasında, işaretçinizi adımlar arasındaki oka taşıyın. 
-     Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+     * Eylem eklemek istediğiniz adımlar arasında, işaretçinizin üzerine adımların arasında ilerleyin. 
+     Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
      
-       Arama kutusuna filtreniz olarak "Twitter" yazın. 
-       Eylemler listesi altında istediğiniz eylemi seçin.
+       Arama kutusuna filtreniz olarak "twitter" girin. 
+       Eylemler listesinin altında, istediğiniz eylemi seçin.
 
-1. Twitter 'da oturum açmanız istenirse, mantıksal uygulamanıza erişimi yetkilendirebilmeniz için şimdi oturum açın.
+1. Twitter'da oturum açmanız istenirse, mantık uygulamanız için erişim yetkisi verebilmek için hemen oturum açın.
 
-1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter tetikleyicisi: yeni bir tweet gönderildiğinde
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter tetikleyicisi: Yeni bir tweet yayınlandığında
 
-Bu tetikleyici yeni bir tweet algıladığında, örneğin diyez etiketiyle, #Seattle bir mantıksal uygulama iş akışı başlatır. Örneğin, bu ara bellek bulunduğunda Dropbox bağlayıcısını kullanarak bir Dropbox hesabı gibi depolama alanına sahip bir dosya ekleyebilirsiniz. 
+Bu tetikleyici, tetikleyici yeni bir tweet algıladığında bir mantık uygulaması iş akışı başlatır, örneğin, hashtag ile, #Seattle. Örneğin, bu tweetler bulunduğunda, Dropbox konektörünü kullanarak Dropbox hesabı gibi tweet'lerin içeriğini içeren bir dosyayı depolama alanına ekleyebilirsiniz. 
 
-İsteğe bağlı olarak, en az belirtilen takipçilerin bulunduğu kullanıcılardan, uygun olan çok sayıda sahip olan bir koşul ekleyebilirsiniz.
+İsteğe bağlı olarak, uygun tweet'lerin en az sayıda takipçisi olan kullanıcılardan gelmesi gereken bir koşul ekleyebilirsiniz.
 
-**Kurumsal örnek**: Bu tetikleyiciyi, şirketiniz hakkındaki bilgileri izlemek ve bu IÇERIĞI bir SQL veritabanına yüklemek için kullanabilirsiniz.
+**Kurumsal örnek**: Bu tetikleyiciyi şirketinizle ilgili tweetleri izlemek ve tweetlerin içeriğini bir SQL veritabanına yüklemek için kullanabilirsiniz.
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter eylemi: bir tweet gönderin
+### <a name="twitter-action-post-a-tweet"></a>Twitter eylem: Bir tweet gönder
 
-Bu eylem bir tweet nakleder, ancak bu eylemi, Tweet 'in daha önce açıklanan tetikleyici tarafından bulunan çok fazla yer alan alanı içeriğini içermesi için ayarlayabilirsiniz. 
+Bu eylem bir tweet gönderir, ancak tweet'in daha önce açıklanan tetikleyici tarafından bulunan tweetlerin içeriğini içerebileceği şekilde eylemi ayarlayabilirsiniz. 
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/twitterconnector/)gözden geçirin.
+Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/twitterconnector/)inceleyin.
 
 ## <a name="get-support"></a>Destek alın
 

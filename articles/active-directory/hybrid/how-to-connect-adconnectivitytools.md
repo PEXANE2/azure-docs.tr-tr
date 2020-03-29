@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTool PowerShell Modülü nedir | Microsoft Docs'
-description: Bu belge, yeni ADConnectivity PowerShell modülü ve nasıl gidermeye yardımcı olmak için kullanılabilmesi için tanıtır.
+title: 'Azure AD Connect: ADConnectivityTool PowerShell Modülü nedir | Microsoft Dokümanlar'
+description: Bu belge, yeni ADConnectivity PowerShell modülünü ve sorun gidermeye yardımcı olmak için nasıl kullanılabileceğini tanıtır.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,70 +12,70 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64571119"
 ---
-# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell modülü ile Azure AD bağlantısı sorunlarını giderme
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell modülü ile Azure AD bağlantısını giderme
 
-Aşağıdakilerden biri kullanılan bir PowerShell modülü ADConnectivity aracıdır:
+ADConnectivity aracı aşağıdakilerden birinde kullanılan bir PowerShell modülüdür:
 
-- Bir ağ bağlantısı sorunu, başarılı doğrulama engellediğinde yükleme sırasında Active Directory sihirbazda sağlanan kullanıcı kimlik bilgileri.
-- Bir PowerShell oturumundan işlevleri çağıran bir kullanıcı tarafından yükleme gönderin.
+- Yükleme sırasında bir ağ bağlantısı sorunu, Kullanıcının Sihirbazı'nda sağladığı Active Directory kimlik bilgilerinin başarılı bir şekilde doğrulanmasını engellediğinde.
+- PowerShell oturumundan işlevleri çağıran bir kullanıcı tarafından yükleme sonrası.
 
-Aracı bulunur: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
+Araç şu adreste bulunur: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
 
-## <a name="adconnectivitytool-during-installation"></a>Yükleme sırasında ADConnectivityTool
+## <a name="adconnectivitytool-during-installation"></a>Kurulum sırasında ADConnectivityTool
 
-Üzerinde **dizinlerinizi bağlama** sayfa, Azure AD Connect bir ağ sorunu oluşursa ADConnectivityTool otomatik olarak Sihirbazı'nda birini kullanın işlevleri neler olduğunu belirlemek için.  Aşağıdakilerden herhangi biri ağ sorunları kabul edilebilir:
+**Dizinlerinizi Bağla** sayfasında, Azure AD Bağlantı Sihirbazı'nda, bir ağ sorunu oluşursa, ADConnectivityTool neler olup bittiğini belirlemek için işlevlerinden birini otomatik olarak kullanır.  Aşağıdakilerden herhangi biri ağ sorunları olarak kabul edilebilir:
 
-- Kullanıcı tarafından sağlanan orman adı yanlış yazıldı veya söz konusu orman yok 
-- Kullanıcı tarafından sağlanan orman ile ilişkili etki alanı denetleyicileri, UDP bağlantı noktası 389 kapalı
-- 'AD ormanı hesabını' penceresinde sağlanan kimlik bilgileri hedef orman ile ilişkili etki alanı denetleyicilerini almak için ayrıcalıklara sahip değil
-- Herhangi bir TCP bağlantı noktası 53, 88 veya 389 kullanıcı sağlanan orman ile ilişkili etki alanı denetleyicileri, kapalı 
-- Hem 389 UDP ve TCP bağlantı noktası (veya bağlantı noktaları) kapalı
-- DNS yüklenemedi, ilişkili etki alanı denetleyicileri için sağlanan orman/veya çözümlenen
+- Kullanıcının sağladığı Orman'ın adı yanlış yazıldı veya Orman'ın var olmadığını söyledi 
+- UDP bağlantı noktası 389, kullanıcının sağladığı Ormanla ilişkili Etki Alanı Denetleyicileri'nde kapatılır
+- 'AD orman hesabı' penceresinde sağlanan kimlik bilgileri, hedef Ormanile ilişkili Etki Alanı Denetleyicilerini almak için ayrıcalıklara sahip değildir
+- 53, 88 veya 389 TCP bağlantı noktalarından herhangi biri, kullanıcının sağladığı Ormanla ilişkili Etki Alanı Denetleyicileri'nde kapatılır 
+- Hem UDP 389 hem de TCP bağlantı noktası (veya bağlantı noktaları) kapalı
+- Sağlanan Orman ve\veya ilişkili Etki Alanı Denetleyicileri için DNS çözülemedi
 
-Bu sorunlardan biri bulunduğunda AADConnect Sihirbazı'nda ilgili hata iletisi görüntülenir:
+Bu sorunlardan herhangi biri bulunduğunda, AADConnect Sihirbazı'nda ilgili bir hata iletisi görüntülenir:
 
 
 ![Hata](media/how-to-connect-adconnectivitytools/error1.png)
 
-Örneğin, ne zaman biz çalıştığınız bir dizin eklemek **dizinlerinizi bağlama** ekran, Azure AD Connect bunu doğrulamak gereken ve 389 bağlantı noktası üzerinden etki alanı denetleyicisi ile iletişim kurabilmesi bekliyor.  Erişilemiyorsa, yukarıdaki ekran görüntüsünde gösterilen hata göreceğiz.  
+Örneğin, **dizinlere Bağlan** ekranına bir dizin eklemeye çalışırken, Azure AD Connect'in bunu doğrulaması gerekir ve bağlantı noktası 389 üzerinden bir etki alanı denetleyicisiyle iletişim kurabilmeyi bekler.  Eğer değilse, yukarıdaki ekran görüntüsünde gösterilen hatayı görürüz.  
 
-Arka planda gerçekten gerçekleşip olan Azure AD Connect aradığı `Start-NetworkConnectivityDiagnosisTools` işlevi.  Bir ağ bağlantısı sorunu nedeniyle kimlik doğrulama başarısız olduğunda bu işlev çağrılır.
+Aslında sahne arkasında olan şey, Azure AD Connect `Start-NetworkConnectivityDiagnosisTools` işlevi çağırıyor olmasıdır.  Bu işlev, bir ağ bağlantısı sorunu nedeniyle kimlik bilgilerinin doğrulaması başarısız olduğunda çağrılır.
 
-Son olarak, her aracın sihirbazından çağrıldığında ayrıntılı günlük dosyası oluşturulur. Günlük bulunan **C:\ProgramData\AADConnect\ADConnectivityTool-\<tarih >-\<zaman > .log**
+Son olarak, araç sihirbazdan çağrıldığında ayrıntılı bir günlük dosyası oluşturulur. Günlük **C:\ProgramData\AADConnect\ADConnectivityTool-\<tarih>-\<zaman>.log** bulunur
 
-## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools yükleme sonrası
-Azure AD Connect yüklendikten sonra herhangi bir ADConnectivityTools PowerShell modülündeki işlevleri kullanılabilir.  
+## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools kurulum sonrası
+Azure AD Connect yüklendikten sonra, ADConnectivityTools PowerShell modülündeki işlevlerden herhangi biri kullanılabilir.  
 
-İşlevler hakkında başvuru bilgisi bulabilirsiniz [ADConnectivityTools başvurusu](reference-connect-adconnectivitytools.md)
+[ADConnectivityTools Başvuru](reference-connect-adconnectivitytools.md) işlevleri hakkında referans bilgileri bulabilirsiniz
 
-### <a name="start-connectivityvalidation"></a>Başlangıç ConnectivityValidation
+### <a name="start-connectivityvalidation"></a>Başlangıç-Bağlantı Doğrulama
 
-Mümkün olduğundan bu işlevi çağırmak için kullanacağız **yalnızca** çağrılabilir el ile ADConnectivityTool.psm1 PowerShell içinde içeri aktarıldıktan sonra. 
+Bu işlevi yalnızca ADConnectivityTool.psm1 PowerShell'e alındıktan sonra manuel olarak **çağrılabildiği** için çağıracağız. 
 
-Bu işlev, belirtilen AD kimlik bilgilerini doğrulamak için Azure AD Connect Sihirbazı'nı çalıştıran aynı mantığı yürütür.  Ancak sorun ve önerilen bir çözüm hakkında daha ayrıntılı bir açıklama sağlar. 
+Bu işlev, sağlanan AD Kimlik Bilgilerini doğrulamak için Azure AD Bağlantı Sihirbazı'nın çalıştırdığı mantığı yürütür.  Ancak sorun ve önerilen bir çözüm hakkında çok daha ayrıntılı bir açıklama sağlar. 
 
-Bağlantı doğrulama aşağıdaki adımlardan oluşur:
--   Etki alanı FQDN'si (tam etki alanı adı) nesnesini alın
--   Kullanıcı 'Hesap oluştur yeni AD' seçtiyseniz, bu kimlik bilgileri Enterprise Administrators grubuna ait, doğrula
--   Get orman FQDN'si nesnesi
--   Bu en az bir etki alanına daha önce elde edilen orman FQDN'si nesneyle ilişkili erişilebilir olduğunu doğrulayın
--   Orman işlev düzeyini Windows Server 2003 veya daha büyük olduğundan emin olun.
+Bağlantı doğrulaması aşağıdaki adımlardan oluşur:
+-   Etki Alanı FQDN (tam nitelikli etki alanı adı) nesnesi alın
+-   Kullanıcı 'Yeni AD hesabı oluşturma' seçilirse, bu kimlik bilgileri Kurumsal Yöneticiler grubuna ait
+-   Orman FQDN nesnesi alın
+-   Daha önce elde edilen Orman FQDN nesnesiyle ilişkili en az bir etki alanına erişilebildiğini doğrulayın
+-   Ormanın işlevsel düzeyinin Windows Server 2003 veya daha büyük olduğunu doğrulayın.
 
-Kullanıcılar bu eylemler başarıyla yürütüldü bir dizin ekleyin.
+Tüm bu eylemler başarıyla yürütülürse, kullanıcı bir Dizin ekleyebilir.
 
-Bir sorun çözüldükten sonra bu işlevi kullanıcının çalıştırıyorsa (veya hiç sorun değil varsa) çıktı kullanıcının Azure AD Connect Sihirbazı için geri dönün ve kimlik bilgilerini yeniden eklemeyi deneyin gösterir.
+Kullanıcı bu işlevi bir sorun çözüldükten sonra çalıştırıyorsa (veya hiç sorun yoksa) çıktı, kullanıcının Azure AD Bağlantı Sihirbazı'na geri dönüp kimlik bilgilerini yeniden eklemeyi denemesini gösterir.
 
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Azure AD Connect: Hesaplar ve izinler](reference-connect-accounts-permissions.md)
-- [Hızlı yükleme](how-to-connect-install-express.md)
-- [Özel yükleme](how-to-connect-install-custom.md)
-- [ADConnectivityTools başvurusu](reference-connect-adconnectivitytools.md)
+- [Ekspres Kurulum](how-to-connect-install-express.md)
+- [Özel Kurulum](how-to-connect-install-custom.md)
+- [ADConnectivityTools Başvurusu](reference-connect-adconnectivitytools.md)
 

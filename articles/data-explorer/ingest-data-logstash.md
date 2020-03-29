@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini Logstash verileri alma
-description: Bu makalede, Azure veri Gezgini'nde Logstash içine (yükle) verilerin alımı öğrenin
+title: Logstash'tan Azure Veri Gezgini'ne veri alma
+description: Bu makalede, Logstash'tan Azure Veri Gezgini'ne nasıl veri öttürmeyi (yüklediğinizi) öğrenirsiniz
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
@@ -8,41 +8,41 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494534"
 ---
-# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Azure Veri Gezgini Logstash verileri alma
+# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash'tan Azure Veri Gezgini'ne veri alma
 
-[Logstash](https://www.elastic.co/products/logstash) açık kaynaklı, sunucu tarafı veri işleme işlem hattı, aynı anda birçok kaynaktan verileri alır, verileri dönüştüren ve sonra "Hazırlama" Sık kullandığınız için verileri gönderir. Bu makalede, hızlı ve yüksek oranda ölçeklenebilir bir veri keşfetme hizmeti günlük ve telemetri verileri için olan bu verileri Azure veri Gezgini'ne göndereceğiz. İlk olarak bir tablo ve veri eşleme bir test kümesini oluşturmak ve sonra tabloya veri göndermek ve sonuçları doğrulamak için Logstash doğrudan.
+[Logstash,](https://www.elastic.co/products/logstash) aynı anda birçok kaynaktan veri alan, verileri dönüştüren ve verileri en sevdiğiniz "zulaya" gönderen açık kaynak kodlu, sunucu tarafındaki bir veri işleme ardışık hattıdır. Bu makalede, bu verileri günlük ve telemetri verileri için hızlı ve yüksek ölçeklenebilir bir veri arama hizmeti olan Azure Veri Gezgini'ne gönderirsiniz. Başlangıçta bir test kümesinde bir tablo ve veri eşleme oluşturur ve ardından logstash'ı tabloya veri göndermek ve sonuçları doğrulamak için yönlendirirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Yoksa, oluşturun bir [ücretsiz Azure hesabı](https://azure.microsoft.com/free/) başlamadan önce.
-* Bir Azure Veri Gezgini [küme ve veritabanını test etme](create-cluster-database-portal.md)
-* 6 + sürümü Logstash [yükleme yönergeleri](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+* Azure aboneliği. Hesabınız yoksa, başlamadan önce ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* Azure Veri Gezgini [test kümesi ve veritabanı](create-cluster-database-portal.md)
+* Logstash sürüm 6+ [Kurulum talimatları](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
 
-Bir küme ve bir veritabanı oluşturduktan sonra bir tablo oluşturmak için zaman var.
+Bir küme ve veritabanına sahip olduktan sonra, bir tablo oluşturma nın zamanı gelmiştir.
 
-1. Bir tablo oluşturmak için veritabanı sorgu penceresinde aşağıdaki komutu çalıştırın:
+1. Tablo oluşturmak için veritabanı sorgu pencerenizde aşağıdaki komutu çalıştırın:
 
     ```Kusto
     .create table logs (timestamp: datetime, message: string)
     ```
 
-1. Yeni Tablo onaylamak için aşağıdaki komutu çalıştırın `logs` oluşturuldu ve boş olduğunu:
+1. Yeni tablonun `logs` oluşturulduğunu ve boş olduğunu doğrulamak için aşağıdaki komutu çalıştırın:
     ```Kusto
     logs
     | count
     ```
 
-## <a name="create-a-mapping"></a>Bir eşleme oluşturma
+## <a name="create-a-mapping"></a>Eşleme oluşturma
 
-Eşleme, hedef tablonun şemasına gelen verileri dönüştürmek için Azure Veri Gezgini tarafından kullanılır. Aşağıdaki komut adlı yeni bir eşleme oluşturur `basicmsg` , ayıklar özellikleri tarafından belirtildiği gelen json'dan `path` ve bunlara çıkaran `column`.
+Eşleme, Azure Veri Gezgini tarafından gelen verileri hedef tablo şemasına dönüştürmek için kullanılır. Aşağıdaki komut, `basicmsg` gelen json'dan özellikleri ayıklayan `path` ve bunları . `column`
 
 Sorgu penceresinde aşağıdaki komutu çalıştırın:
 
@@ -50,30 +50,30 @@ Sorgu penceresinde aşağıdaki komutu çalıştırın:
 .create table logs ingestion json mapping 'basicmsg' '[{"column":"timestamp","path":"$.@timestamp"},{"column":"message","path":"$.message"}]'
 ```
 
-## <a name="install-the-logstash-output-plugin"></a>Logstash çıkış eklentisini yükleme
+## <a name="install-the-logstash-output-plugin"></a>Logstash çıkış eklentisini yükleyin
 
-Logstash çıkış eklentisi, Azure Veri Gezgini ile iletişim kurar ve veri hizmetine gönderir.
-Eklentisini yüklemek için Logstash kök dizinini aşağıdaki komutu çalıştırın:
+Logstash çıktı eklentisi Azure Veri Gezgini ile iletişim kurar ve verileri hizmete gönderir.
+Eklentiyi yüklemek için Logstash kök dizininin içindeki aşağıdaki komutu çalıştırın:
 
 ```sh
 bin/logstash-plugin install logstash-output-kusto
 ```
 
-## <a name="configure-logstash-to-generate-a-sample-dataset"></a>Bir örnek veri oluşturmak için Logstash'i yapılandırma
+## <a name="configure-logstash-to-generate-a-sample-dataset"></a>Örnek bir veri kümesi oluşturmak için Logstash'ı yapılandır
 
-Logstash bir uçtan uca işlem hattı test etmek için kullanılan örnek olaylar oluşturabilir.
-Logstash zaten kullanıyorsanız ve kendi olay stream'e erişiminiz varsa, sonraki bölüme atlayın. 
+Logstash, uçlardan uca bir ardışık ardışık ardışık hattı sınamak için kullanılabilecek örnek olaylar oluşturabilir.
+Logstash'ı zaten kullanıyorsanız ve kendi etkinlik akışınıza erişin, bir sonraki bölüme gidin. 
 
 > [!NOTE]
-> Kendi verilerinizi kullanıyorsanız, önceki adımlarda tanımlanan tablo ve eşleme nesnelerini değiştirin.
+> Kendi verilerinizi kullanıyorsanız, tabloyu ve önceki adımlarda tanımlanan nesneleri eşlenin.
 
-1. (Vi kullanarak) gerekli işlem hattı ayarlarını içerecek yeni bir metin dosyasını düzenleyin:
+1. Gerekli ardışık lık ayarlarını içeren yeni bir metin dosyasını (vi kullanarak) edin:
 
     ```sh
     vi test.conf
     ```
 
-1. 1000 test olayları oluşturmak için Logstash'i söyleyecektir aşağıdaki ayarları yapıştırın:
+1. Logstash'a 1000 test olayı oluşturmasını söyleyecek aşağıdaki ayarları yapıştırın:
 
     ```ruby
     input {
@@ -85,11 +85,11 @@ Logstash zaten kullanıyorsanız ve kendi olay stream'e erişiminiz varsa, sonra
     }
     ```
 
-Bu yapılandırma ayrıca içerir `stdin` daha fazla ileti kendiniz yazmak sağlayacak giriş Eklentisi (kullandığınızdan emin olun *Enter* ardışık düzende göndermeniz).
+Bu yapılandırma, `stdin` kendiniz daha fazla ileti yazmanızı sağlayacak giriş eklentisini de içerir (bunları ardışık duruma göndermek için *Enter'u* kullandığınızdan emin olun).
 
-## <a name="configure-logstash-to-send-data-to-azure-data-explorer"></a>Azure veri Gezgini'ne veri göndermek için Logstash'i yapılandırma
+## <a name="configure-logstash-to-send-data-to-azure-data-explorer"></a>Azure Veri Gezgini'ne veri göndermek için Logstash'ı yapılandırma
 
-Aşağıdaki ayarlar, önceki adımda kullandığınız aynı config dosyasına yapıştırın. Yer tutucuları kurulumunuzu için uygun değerlerle değiştirin. Daha fazla bilgi için [AAD uygulaması oluşturuluyor](/azure/kusto/management/access-control/how-to-provision-aad-app). 
+Aşağıdaki ayarları önceki adımda kullanılan aynı config dosyasına yapıştırın. Tüm yer tutucuları kurulumunuz için ilgili değerlerle değiştirin. Daha fazla bilgi için Bkz. [AAD Uygulaması Oluşturma.](/azure/kusto/management/access-control/how-to-provision-aad-app) 
 
 ```ruby
 output {
@@ -108,16 +108,16 @@ output {
 
 | Parametre Adı | Açıklama |
 | --- | --- |
-| **Yolu** | Logstash eklentisi, Azure veri Gezgini'ne göndermeden önce geçici dosyaları olayları yazar. Bu parametre, dosyaları burada yazılmış bir yol ve dosya döndürme karşıya yükleme Azure Veri Gezgini hizmetine tetiklemek bir zaman ifadesi içerir.|
-| **ingest_url** | Kusto uç noktası alma ile ilgili iletişim için.|
-| **app_id**, **app_key**, ve **app_tenant**| Azure veri Gezgini'ne bağlanmak için gereken kimlik bilgileri. Alma ayrıcalıklarına sahip bir uygulama kullanma emin olun. |
+| **Yolu** | Logstash eklentisi, olayları Azure Veri Gezgini'ne göndermeden önce olayları geçici dosyalara yazar. Bu parametre, dosyaların yazılması gereken bir yol ve Azure Veri Gezgini hizmetine yüklemeyi tetiklemek için dosya döndürme için bir zaman ifadesi içerir.|
+| **ingest_url** | Yutma ile ilgili iletişim için Kusto bitiş noktası.|
+| **app_id**, **app_key**ve **app_tenant**| Azure Veri Gezgini'ne bağlanmak için gereken kimlik bilgileri. Yutma ayrıcalıklarına sahip bir uygulama kullandığınızdan emin olun. |
 | **Veritabanı**| Olayları yerleştirmek için veritabanı adı. |
-| **Tablo** | Olayları yerleştirmek için hedef tablo adı. |
-| **Eşleme** | Eşleme, gelen olay json dizesi (hangi sütuna hangi özelliğinin gider tanımlar) doğru satır biçime eşleştirmek için kullanılır. |
+| **Tablo** | Olayları yerleştirmek için tablo adını hedefle. |
+| **eşleme** | Eşleme, gelen bir olay json dizesini doğru satır biçimine eşlemek için kullanılır (hangi özelliğin hangi sütuna girdiğini tanımlar). |
 
-## <a name="run-logstash"></a>Logstash çalıştırın
+## <a name="run-logstash"></a>Run Logstash
 
-Şimdi Logstash çalıştırmak ve test ayarları hazırız.
+Artık Logstash'ı çalıştırmaya ve ayarlarımızı test etmeye hazırız.
 
 1. Logstash kök dizininde aşağıdaki komutu çalıştırın:
 
@@ -125,20 +125,20 @@ output {
     bin/logstash -f test.conf
     ```
 
-    Ekrana yazdırılan bilgiler ve ardından bizim örnek yapılandırma tarafından oluşturulan 1000 ileti görmeniz gerekir. Bu noktada, ayrıca daha fazla ileti el ile girebilirsiniz.
+    Ekrana yazdırılan bilgileri ve ardından örnek yapılandırmamız tarafından oluşturulan 1000 iletiyi görmeniz gerekir. Bu noktada, el ile daha fazla ileti de girebilirsiniz.
 
-1. Birkaç dakika sonra tanımlanan tablo iletileri görmek için aşağıdaki veri Gezgini sorguyu çalıştırın:
+1. Birkaç dakika sonra, tanımladığınız tablodaki iletileri görmek için aşağıdaki Veri Gezgini sorgusunu çalıştırın:
 
     ```Kusto
     logs
     | order by timestamp desc
     ```
 
-1. Logstash çıkmak için CTRL + C seçin
+1. Logstash'tan çıkmak için Ctrl+C'yi seçin
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veritabanınızda temizlemek için aşağıdaki komutu çalıştırarak `logs` tablosu:
+Tabloyu temizlemek için veritabanınızda aşağıdaki `logs` komutu çalıştırın:
 
 ```Kusto
 .drop table logs

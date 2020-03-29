@@ -1,6 +1,6 @@
 ---
-title: Azure CDN kurallar altyapısı için X-EC-Debug HTTP üstbilgileri | Microsoft Docs
-description: X-EC-Debug hata ayıklama önbellek isteği üst bilgisi istenen varlık için uygulanan önbellek İlkesi hakkında daha fazla bilgi sağlar. Verizon için bu üstbilgileri özgüdür.
+title: Azure CDN kuralları altyapısı için X-EC Hata Ayıklama HTTP üstbilgisi | Microsoft Dokümanlar
+description: X-EC hata ayıklama önbelleği önbilgisi üstbilgisi, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu başlıklar Verizon'a özgü.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,159 +15,159 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593832"
 ---
-# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN kurallar altyapısı için X-EC-Debug HTTP üstbilgileri
-Hata ayıklama önbellek istek üstbilgisi `X-EC-Debug`, istenen varlığa uygulanır önbellek İlkesi hakkında ek bilgi sağlar. Bu üst özgü **verizon'dan Azure CDN Premium** ürünleri.
+# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN kuralları altyapısı için X-EC Hata Ayıklama HTTP üstbilgisi
+Hata ayıklama önbellek istek `X-EC-Debug`üstbilgisi, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu başlıklar, **Verizon ürünlerinden Azure CDN Premium'a** özeldir.
 
 ## <a name="usage"></a>Kullanım
-POP sunuculardan bir kullanıcıya gönderilen yanıt içeriyor `X-EC-Debug` yalnızca aşağıdaki koşullar karşılandığında bir üst bilgi:
+POP sunucularından bir kullanıcıya gönderilen `X-EC-Debug` yanıt, üstbilgiyi yalnızca aşağıdaki koşullar yerine getirildiğinde içerir:
 
-- [Önbellek yanıt üst bilgileri hata ayıklama özelliği](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) kuralları altyapısını belirtilen istek için etkin.
-- Belirtilen isteği, yanıta dahil edilecek hata ayıklama önbellek yanıt üstbilgilerini kümesini tanımlar.
+- Hata [Ayıklama Önbellek Yanıt Üstbilgi özelliği,](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) belirtilen istek için kurallar altyapısında etkinleştirildi.
+- Belirtilen istek, yanıta dahil edilecek hata ayıklama önbelleğe alım sayıltıcı üstbilgi kümesini tanımlar.
 
-## <a name="requesting-debug-cache-information"></a>Hata ayıklama önbellek bilgi isteniyor
-Yanıta dahil edilecek hata ayıklama bilgilerini önbelleğe al tanımlamak için belirtilen istekte aşağıdaki yönergeleri kullanın:
+## <a name="requesting-debug-cache-information"></a>Hata ayıklama önbellek bilgilerini isteme
+Yanıta dahil edilecek hata ayıklama önbelleğe alım sayıltıcı bilgilerini tanımlamak için belirtilen istekte aşağıdaki yönergeleri kullanın:
 
-İstek üstbilgisi | Açıklama |
+İstek üst bilgisi | Açıklama |
 ---------------|-------------|
-X-EC-Debug: x-ec-önbellek | [Önbellek durum kodu](#cache-status-code-information)
-X-EC-Debug: x-ec-cache-remote | [Önbellek durum kodu](#cache-status-code-information)
-X-EC-Debug: x-ec-onay-önbelleğe alınabilir | [Önbelleğe alınabilir](#cacheable-response-header)
-X-EC-Debug: x-ec-cache-key | [Önbellek anahtarı](#cache-key-response-header)
-X-EC-Debug: x-ec-cache-durumu | [Önbellek durumu](#cache-state-response-header)
+X-EC-Hata Ayıklama: x-ec-önbellek | [Önbellek durum kodu](#cache-status-code-information)
+X-EC-Hata Ayıklama: x-ec-önbellek-uzaktan | [Önbellek durum kodu](#cache-status-code-information)
+X-EC-Hata Ayıklama: x-ec-check-önbelleğe | [Önbelleğe uygun](#cacheable-response-header)
+X-EC-Hata Ayıklama: x-ec-önbellek anahtarı | [Önbellek anahtarı](#cache-key-response-header)
+X-EC-Hata Ayıklama: x-ec-cache-state | [Önbellek durumu](#cache-state-response-header)
 
 ### <a name="syntax"></a>Sözdizimi
 
-Hata ayıklama önbellek yanıt üst bilgileri, aşağıdaki üst bilgi ve belirtilen yönergeleri istekte dahil ederek istenebilir:
+Hata ayıklama önbellek yanıt üstbilgiaşağıdaki üstbilgi ve istek te belirtilen yönergeleri ekleyerek istenebilir:
 
 `X-EC-Debug: Directive1,Directive2,DirectiveN`
 
-### <a name="sample-x-ec-debug-header"></a>Örnek X-EC-Debug üst bilgisi
+### <a name="sample-x-ec-debug-header"></a>Örnek X-EC-Hata Ayıklama üstbilgisi
 
 `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-## <a name="cache-status-code-information"></a>Durum kodu bilgilerini önbelleğe al
-X-EC-Debug yanıt üst bilgisi, bir sunucu ve aşağıdaki yönergeleri aracılığıyla yanıta işlenme belirleyebilirsiniz:
+## <a name="cache-status-code-information"></a>Önbellek durum kodu bilgileri
+X-EC Hata Ayıklama yanıt üstbilgisi bir sunucuyu ve yanıtı aşağıdaki yönergeler aracılığıyla nasıl işleyebilir:
 
-Üstbilgi | Açıklama
+Üst bilgi | Açıklama
 -------|------------
-X-EC-Debug: x-ec-önbellek | Bu üst bilgi içeriği CDN üzerinden yönlendirilir her bildirilir. Bu, isteği yerine getiren POP sunucu tanımlar.
-X-EC-Debug: x-ec-cache-remote | Bir kaynak kalkan sunucu veya bir ADN ağ geçidi sunucusu üzerinde istenen içeriğin yalnızca önbelleğe ilişkili olduğunda bu başlığı bildirilir.
+X-EC-Hata Ayıklama: x-ec-önbellek | Bu üstbilgi, içerik CDN üzerinden yönlendirildiğinde bildirilir. İsteği yerine getiren POP sunucusunu tanımlar.
+X-EC-Hata Ayıklama: x-ec-önbellek-uzaktan | Bu üstbilgi yalnızca istenen içeriğin bir başlangıç kalkanı sunucusunda veya ADN ağ geçidi sunucusunda önbelleğe alındığunda bildirilir.
 
-### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
+### <a name="response-header-format"></a>Yanıt üstbilgi biçimi
 
-X-EC-Debug üst bilgi önbelleği durum kodu bilgilerini aşağıdaki biçimde raporları:
+X-EC-Hata Ayıklama üstbilgisi önbellek durum kodu bilgilerini aşağıdaki biçimde bildirir:
 
 - `X-EC-Debug: x-ec-cache: <StatusCode from Platform (POP/ID)>`
 
 - `X-EC-Debug: x-ec-cache-remote: <StatusCode from Platform (POP/ID)>`
 
-Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terimler şu şekilde tanımlanır:
-- StatusCode: İstenen içerik önbelleği durum kodu ile temsil edilen CDN tarafından nasıl işlendiğini gösterir.
+Yukarıdaki yanıt üstbilgi sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
+- StatusCode: İstenen içeriğin önbellek durum kodu yla temsil edilen CDN tarafından nasıl işleneceğini gösterir.
     
-    Belirteç tabanlı kimlik doğrulama nedeniyle yetkisiz bir istek reddedildiğinde TCP_DENIED durum kodu hiçbiri yerine bildirilebilir. Ancak, NONE durum kodu, önbellek durumu raporları ya da günlük ham verileri görüntülerken kullanılacak devam eder.
+    Token Tabanlı Kimlik Doğrulama nedeniyle yetkisiz bir istek reddedildiğinde, TCP_DENIED durum kodu YOK yerine raporlanabilir. Ancak, ÖNbellek Durum raporları veya ham günlük verileri görüntülendiğinde NONE durum kodu kullanılmaya devam eder.
 
-- Platform: İçerik istendi platform gösterir. Aşağıdaki kodu, bu alan için geçerlidir:
+- Platform: İçeriğin istendiği platformu gösterir. Aşağıdaki kodlar bu alan için geçerlidir:
 
     Kod  | Platform
     ------| --------
-    ECAcc | HTTP büyük
-    ECS   | HTTP küçük
-    ECD   | Uygulama teslim ağı (ADN)
+    ECAcc | HTTP Büyük
+    Ecs   | HTTP Küçük
+    Eçg   | Uygulama Dağıtım Ağı (ADN)
 
-- POP: Gösterir [POP](cdn-pop-abbreviations.md) , işlenen istek. 
+- POP: İsteği işleyen [POP'u](cdn-pop-abbreviations.md) gösterir. 
 
-### <a name="sample-response-headers"></a>Örnek yanıt üstbilgileri
+### <a name="sample-response-headers"></a>Örnek yanıt üstbilgi
 
-Aşağıdaki örnek üstbilgileri, bir istek için önbellek durumu kodu bilgileri sağlayın:
+Aşağıdaki örnek üstbilgiler, bir istek için önbellek durum kodu bilgilerini sağlar:
 
 - `X-EC-Debug: x-ec-cache: TCP_HIT from ECD (lga/0FE8)`
 
 - `X-EC-Debug: x-ec-cache-remote: TCP_HIT from ECD (dca/EF00)`
 
-## <a name="cacheable-response-header"></a>Önbelleğe alınabilir yanıt üst bilgisi
-`X-EC-Debug: x-ec-check-cacheable` Yanıt üst bilgisi, istenen içeriği önbelleğe alınmamış olup olmadığını gösterir.
+## <a name="cacheable-response-header"></a>Önbelleğe uygun yanıt üstbilgi
+Yanıt `X-EC-Debug: x-ec-check-cacheable` üstbilgi, istenen içeriğin önbelleğe alınmış olup olmadığını gösterir.
 
-Bu yanıt üst bilgisi önbelleğe alma gerçekleşen olup olmadığını göstermez. Bunun yerine, istek önbelleğe almak için uygun olup olmadığını gösterir.
+Bu yanıt üstbilgi önbellek gerçekleşti olup olmadığını göstermez. Bunun yerine, isteğin önbelleğe almaya uygun olup olmadığını gösterir.
 
-### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
+### <a name="response-header-format"></a>Yanıt üstbilgi biçimi
 
-`X-EC-Debug` Şu biçimde bir istek önbelleğe alınmamış olup raporlama yanıt üst bilgisi olan:
+Bir `X-EC-Debug` isteğin önbelleğe alınmış olup olmadığını bildiren yanıt üstbilgisi aşağıdaki biçimdedir:
 
 `X-EC-Debug: x-ec-check-cacheable: <cacheable status>`
 
-Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılacak terimi şu şekilde tanımlanır:
+Yukarıdaki yanıt üstbilgi sözdiziminde kullanılan terim aşağıdaki gibi tanımlanır:
 
-Value  | Açıklama
+Değer  | Açıklama
 -------| --------
-EVET    | Talep edilen içeriği önbelleğe almak için uygun olduğunu gösterir.
-NO     | Talep edilen içeriği önbelleğe almak için uygun olduğunu gösterir. Bu durum aşağıdaki nedenlerden biri nedeniyle olabilir: <br /> -Müşteriye özgü yapılandırma: Hesabınıza belirli bir yapılandırma, bir varlık olarak önbelleğe alınan pop sunucuları engelleyebilirsiniz. Örneğin, kural altyapısı, istekleri uygun için önbellek atlama özelliği etkinleştirerek önbelleğe alınmasını bir varlık engelleyebilirsiniz.<br /> -Yanıt üst bilgilerini önbelleğe alır: İstenen varlığın Cache-Control veya Expires başlıklarına POP sunucuları, önbelleğe alınan engelleyebilirsiniz.
-BİLİNMİYOR | Sunucuları istenen varlık önbelleğe gerektirmediğine açamıyoruz gösterir. Bu durum, genellikle isteği nedeniyle belirteç tabanlı kimlik doğrulaması reddedildi oluşur.
+EVET    | İstenen içeriğin önbelleğe almaya uygun olduğunu gösterir.
+NO     | İstenen içeriğin önbelleğe alma için uygun olmadığını gösterir. Bu durum, aşağıdaki nedenlerden biri nedeniyle olabilir: <br /> - Müşteriye Özel Yapılandırma: Hesabınıza özgü bir yapılandırma, pop sunucuların bir varlığı önbelleğe almalarını engelleyebilir. Örneğin, Kurallar Motoru, geçerli istekleri için Bypass Önbelleği özelliğini etkinleştirerek bir varlığın önbelleğe alınmasını engelleyebilir.<br /> - Önbellek Yanıt Üstbilgileri: İstenen varlığın Önbellek Denetimi ve Süresi Dolan üstbilgileri POP sunucularının önbelleğe almalarını engelleyebilir.
+Bilinmeyen | Sunucuların istenen varlığın önbelleğe alınıp alınamayacağını değerlendiremediğini gösterir. Bu durum genellikle belirteç tabanlı kimlik doğrulaması nedeniyle istek reddedildiğinde oluşur.
 
-### <a name="sample-response-header"></a>Örnek yanıt üst bilgisi
+### <a name="sample-response-header"></a>Örnek yanıt üstbilgi
 
-Aşağıdaki örnek yanıt üst bilgisi, istenen içeriği önbelleğe alınmamış olup olmadığını gösterir:
+Aşağıdaki örnek yanıt üstbilgi, istenen içeriğin önbelleğe alınıp alınmadığını gösterir:
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Önbellek anahtarı yanıt üst bilgisi
-`X-EC-Debug: x-ec-cache-key` Yanıt üst bilgisi, istenen içerikle ilişkili fiziksel önbellek anahtarını belirtir. Fiziksel bir önbellek anahtarını önbelleğe alma amacıyla bir varlığı tanımlayan bir yol oluşur. Diğer bir deyişle, sunucuları bir varlık yolu göre önbelleğe alınmış bir sürümü için cache-anahtara göre tanımlanan şekilde kontrol eder.
+## <a name="cache-key-response-header"></a>Önbellek Anahtarı yanıt üstbilgi
+Yanıt `X-EC-Debug: x-ec-cache-key` üstbilgisi, istenen içerikle ilişkili fiziksel önbellek anahtarını gösterir. Fiziksel önbellek anahtarı önbelleğe alma amacıyla bir varlığı tanımlayan bir yol oluşur. Başka bir deyişle, sunucular önbellek anahtarı tarafından tanımlanan yoluna göre bir varlığın önbelleğe alınmış sürümünü denetler.
 
-Bu fiziksel önbellek anahtarı çift İleri eğik çizgi ile başlar (/ /) (HTTP veya HTTPS) içerik istemek için kullanılan protokolü tarafından izlenen. Bu protokol içerik erişim noktasıyla başlatır istenen varlığa göreli yolu tarafından izlenir (örneğin, _/000001/_ ).
+Bu fiziksel önbellek anahtarı, içeriği istemek için kullanılan protokolün (HTTP veya HTTPS) ardından çift ileri eğik çizgiyle (//) başlar. Bu protokolü, içerik erişim noktasıyla başlayan istenen varlığa giden göreli yol (örneğin, _/000001/ )._
 
-Varsayılan olarak HTTP platformları kullanmak üzere yapılandırılmış *standart önbellek*, yani sorgu dizelerini önbelleğe alma mekanizması tarafından göz ardı edilir. Bu tür bir yapılandırma, sorgu dizesi verileri dahil olmak üzere, önbellek anahtarını engeller.
+Varsayılan olarak, HTTP platformları *standart önbellek*kullanacak şekilde yapılandırılır, bu da sorgu dizelerinin önbelleğe alma mekanizması tarafından yoksayıldığı anlamına gelir. Bu tür yapılandırma, önbellek anahtarının sorgu dize verileri eklemesini engeller.
 
-Bir sorgu dizesi önbellek anahtarını kayıtlıysa, onu karma eşdeğerine dönüştürülür ve ardından istenen varlık adı ve dosya uzantısını arasında eklenir (örneğin, varlık&lt;karma değeri&gt;.html).
+Bir sorgu dizesi önbellek anahtarına kaydedilirse, karma eşdeğerine dönüştürülür ve sonra istenen varlığın adı ile dosya uzantısı arasına&lt;eklenir&gt;(örneğin, kıymet karma değeri .html).
 
-### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
+### <a name="response-header-format"></a>Yanıt üstbilgi biçimi
 
-`X-EC-Debug` Yanıt üst bilgisi şu biçimde fiziksel önbellek anahtarı bilgileri bildirir:
+`X-EC-Debug` Yanıt üstbilgisi fiziksel önbellek anahtarı bilgilerini aşağıdaki biçimde bildirir:
 
 `X-EC-Debug: x-ec-cache-key: CacheKey`
 
-### <a name="sample-response-header"></a>Örnek yanıt üst bilgisi
+### <a name="sample-response-header"></a>Örnek yanıt üstbilgi
 
-Aşağıdaki örnek yanıt üst bilgisi fiziksel önbellek anahtarı istenen içerik için gösterir:
+Aşağıdaki örnek yanıt üstbilgisi istenen içeriğin fiziksel önbellek anahtarını gösterir:
 
 `X-EC-Debug: x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
-## <a name="cache-state-response-header"></a>Önbellek durumu yanıt üst bilgisi
-`X-EC-Debug: x-ec-cache-state` Yanıt üst bilgisi cache durumu istenen içeriğin işlemi istendi zaman gösterir.
+## <a name="cache-state-response-header"></a>Önbellek durumu yanıt üstbilgi
+Yanıt `X-EC-Debug: x-ec-cache-state` üstbilgi, istenen içeriğin istendiği anda önbellek durumunu gösterir.
 
-### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
+### <a name="response-header-format"></a>Yanıt üstbilgi biçimi
 
-`X-EC-Debug` Yanıt üst bilgisi önbellek durumu bilgilerini aşağıdaki biçimde bildirir:
+Yanıt `X-EC-Debug` üstbilgisi önbellek durumu bilgilerini aşağıdaki biçimde bildirir:
 
 `X-EC-Debug: x-ec-cache-state: max-age=MASeconds (MATimePeriod); cache-ts=UnixTime (ddd, dd MMM yyyy HH:mm:ss GMT); cache-age=CASeconds (CATimePeriod); remaining-ttl=RTSeconds (RTTimePeriod); expires-delta=ExpiresSeconds`
 
-Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terimler şu şekilde tanımlanır:
+Yukarıdaki yanıt üstbilgi sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
 
-- MASeconds: İstenen içeriğin Cache-Control üst bilgileri tarafından tanımlandığı şekilde, max-age (saniye cinsinden) belirtir.
+- MASeconds: İstenen içeriğin Önbellek Denetimi üstbilgilerinde tanımlandığı maksimum yaşı (saniye cinsinden) gösterir.
 
-- MATimePeriod: Max-age değeri (diğer bir deyişle, MASeconds) daha büyük bir birim yaklaşık eşdeğerdir (örneğin, gün) dönüştürür. 
+- MATimePeriod: Maksimum yaş değerini (örneğin, MASeconds) daha büyük bir birimin yaklaşık eşdeğerine (örneğin, günler) dönüştürür. 
 
-- UnixTime: İstenen içerik önbelleği zaman damgası Unix saati (olarak da bilinen POSIX zaman ya da UNIX dönem) gösterir. Bir varlığın TTL hesaplanır başlangıç tarih/saat önbellek zaman damgasını gösterir. 
+- UnixTime: Unix zamanında istenen içeriğin önbellek zaman damgasını gösterir (POSIX zamanı veya Unix çağı olarak da bilinir). Önbellek zaman damgası, bir varlığın TTL'sinin hesaplanacağı başlangıç tarihini/saatini gösterir. 
 
-    Kaynak sunucu, sunucu veya sunucu Age yanıtı üstbilgisi döndürmezse, önbelleğe alma bir üçüncü taraf HTTP kullanmaz, önbellek zaman damgası her zaman zaman varlık alınan yeniden doğrulanır veya tarih/saat olacaktır. Aksi takdirde, POP sunucuları varlığın TTL şu şekilde hesaplamak için yaş alanı'nı kullanır: Alma/RevalidateDateTime - yaş.
+    Kaynak sunucu üçüncü taraf bir HTTP önbelleğe alma sunucusu kullanmıyorsa veya bu sunucu Yaş yanıt üstbilgisini döndürmüyorsa, önbellek zaman damgası her zaman varlığın alındığı veya yeniden geçersiz kılındığı tarih/saat olacaktır. Aksi takdirde, POP sunucuları varlığın TTL'sini aşağıdaki gibi hesaplamak için Yaş alanını kullanır: Alma/Yeniden DoğrulamaDateTime - Yaş.
 
-- ddd, dd MMM yyyy ss: dd: GMT: İstenen içerik önbelleği zaman damgasını gösterir. Daha fazla bilgi için lütfen yukarıdaki UnixTime terimi bakın.
+- ddd, dd MMM yyyy HH:mm:ss GMT: İstenen içeriğin önbellek zaman damgasını gösterir. Daha fazla bilgi için lütfen yukarıdaki UnixTime terimine bakın.
 
-- CASeconds: Önbellek zaman damgası beri geçen saniye sayısını belirtir.
+- CASeconds: Önbellek zaman damgası bu yana geçen saniye sayısını gösterir.
 
-- RTSeconds: Kendisi için önbelleğe alınmış içeriği yeni olarak kabul edilecek kalan saniye sayısını belirtir. Bu değer şu şekilde hesaplanır: RTSeconds max-age - = önbelleğe yaş.
+- RTSeconds: Önbelleğe alınmış içeriğin taze olarak kabul edileceği kalan saniye sayısını gösterir. Bu değer aşağıdaki gibi hesaplanır: RTSeconds = max-age - önbellek yaş.
 
-- RTTimePeriod: Kalan TTL değeri (diğer bir deyişle, RTSeconds) daha büyük bir birim yaklaşık eşdeğerdir (örneğin, gün) dönüştürür.
+- RTTimePeriod: Kalan TTL değerini (örneğin, RTSeconds) daha büyük bir birimin yaklaşık eşdeğerine (örneğin, günler) dönüştürür.
 
-- ExpiresSeconds: Belirtilen tarih/saat önce kalan saniye sayısını gösteren `Expires` yanıtı üstbilgisi. Varsa `Expires` yanıt üst bilgisi yanıta dahil ve bu terim değeri *hiçbiri*.
+- Sona ErenSaniye: `Expires` Yanıt üstbilgisinde belirtilen tarih/saatten önce kalan saniye sayısını gösterir. `Expires` Yanıt üstbilgiyanıta dahil edilmediyse, bu terimin değeri *yok.*
 
-### <a name="sample-response-header"></a>Örnek yanıt üst bilgisi
+### <a name="sample-response-header"></a>Örnek yanıt üstbilgi
 
-Aşağıdaki örnek yanıt üst bilgisi, istenen sırada talep edilen içeriği önbellek durumunu gösterir:
+Aşağıdaki örnek yanıt üstbilgi, istendiği anda istenen içeriğin önbellek durumunu gösterir:
 
 ```X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none```
 

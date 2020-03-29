@@ -1,6 +1,6 @@
 ---
-title: Azure CDN için geçerli POP IP listesini al | Microsoft Docs
-description: Geçerli POP listesini almayı öğrenin.
+title: Retrieve the current POP IP list for Azure CDN| Microsoft Dokümanlar
+description: Geçerli POP listesini nasıl alınabildiğini öğrenin.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -16,36 +16,36 @@ ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299241"
 ---
-# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini al
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini alma
 
-## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Verizon POP IP listesini al
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Verizon POP IP listesini alın
 
-Verizon 'in varlık noktası (POP) sunucuları için IP kümesini almak üzere REST API kullanabilirsiniz. Bu POP sunucuları, bir Verizon profilindeki Azure Content Delivery Network (CDN) uç noktaları ile ilişkili ( **Verizon 'Den**Verizon veya Azure CDN Premium**Azure CDN Standart** ) istekleri kaynak olarak sağlar. Bu IP kümesinin, bir istemcinin pop 'Lara istek yaparken göreceği IP 'lerden farklı olduğunu unutmayın. 
+Verizon'un varlık noktası (POP) sunucuları için IP kümesini almak için REST API'sini kullanabilirsiniz. Bu POP sunucuları, Verizon profilinde Azure İçerik Dağıtım Ağı (CDN) uç noktalarıyla ilişkili başlangıç sunucularına istekte bulunur **(Verizon'dan Azure CDN Standardı** veya **Verizon'dan Azure CDN Premium).** Bu IP kümesinin, bir istemcinin POP'lara istekte bulunmada göreceği IP'lerden farklı olduğunu unutmayın. 
 
-POP listesini almak için REST API işleminin sözdizimi için bkz. [Edge Nodes-List](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+POP listesini almak için REST API işleminin sözdizimi için Edge [Düğümleri - Liste'ye](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)bakın.
 
-## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Microsoft POP IP listesini al
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Microsoft POP IP listesini alma
 
-Uygulamanızı yalnızca Microsoft 'un Azure CDN trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız gerekir. Ayrıca, Microsoft 'tan Azure CDN tarafından gönderilen ' X-Iletilen-Host ' üst bilgisi için kabul edilebilir değerler kümesini kısıtlayabilirsiniz. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
+Yalnızca Microsoft'tan gelen Azure CDN trafiğini kabul etmek için uygulamanızı kilitlemek için arka uçiçin IP ALA'larını ayarlamanız gerekir. Azure CDN tarafından Microsoft'tan gönderilen 'X-Forwarded-Host' üstbilgisi için kabul edilen değerler kümesini de kısıtlayabilirsiniz. Bu adımlar aşağıdaki gibi ayrıntılı olarak açıklanmıştır:
 
-Microsoft 'un arka uç IP adresi alanından ve Azure 'un altyapı hizmetlerinden gelen Azure CDN trafiği kabul etmek için backenler için IP adresini yapılandırın. 
+Microsoft'un arka uç IP adres alanından ve Azure'un altyapı hizmetlerinden Azure CDN trafiğini kabul etmek için arka uçlarınız için IP YAPıŞTıRmayı yapılandırın. 
 
-* Microsoft 'un IPv4 arka uç IP alanından Azure CDN: 147.243.0.0/16
-* Microsoft 'un IPv6 arka uç IP alanından Azure CDN: 2a01:111:2050::/44
+* Microsoft'un IPv4 arka uç IP alanından Azure CDN: 147.243.0.0/16
+* Microsoft'un IPv6 arka uç IP alanından Azure CDN: 2a01:111:2050::/44
 
-Microsoft Hizmetleri için IP aralıkları ve hizmet etiketleri [burada](https://www.microsoft.com/download/details.aspx?id=56519) bulunabilir
+Microsoft hizmetleri için IP Aralıkları ve Hizmet etiketlerini [burada](https://www.microsoft.com/download/details.aspx?id=56519) bulabilirsiniz
 
 
 ## <a name="typical-use-case"></a>Tipik kullanım örneği
 
-Güvenlik nedeniyle bu IP listesini, kaynak sunucunuza yönelik isteklerin yalnızca geçerli bir Verizon POP 'tan yapılmasını zorlamak için kullanabilirsiniz. Örneğin, bir CDN uç noktasının kaynak sunucusu için ana bilgisayar adı veya IP adresi tespit edildiğinde, birisi istekleri doğrudan kaynak sunucuya yapabilir, bu nedenle Azure CDN tarafından belirtilen ölçekleme ve güvenlik yeteneklerini atlayarak. Döndürülen listedeki IP 'Leri, bir kaynak sunucuda yalnızca izin verilen IP 'Ler olarak ayarlayarak bu senaryo engellenebilir. En son POP listesine sahip olduğunuzdan emin olmak için, günde en az bir kez alın. 
+Güvenlik amacıyla, bu IP listesini, başlangıç sunucunuzdaki istekleriyalnızca geçerli bir Verizon POP'tan yapılan istekleri zorlamak için kullanabilirsiniz. Örneğin, bir kişi CDN bitiş noktasının başlangıç sunucusunun ana bilgisayar adını veya IP adresini keşfettiyse, doğrudan kaynak sunucuya istekte bulunarak Azure CDN tarafından sağlanan ölçekleme ve güvenlik özelliklerini atlayabilir. Döndürülen listedeki IP'leri bir başlangıç sunucusunda izin verilen tek IP olarak ayarlayarak, bu senaryo önlenebilir. En son POP listesine sahip olduğundan emin olmak için, günde en az bir kez alın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API hakkında daha fazla bilgi için bkz. [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).
+REST API hakkında bilgi için [Azure CDN REST API'ye](https://docs.microsoft.com/rest/api/cdn/)bakın.

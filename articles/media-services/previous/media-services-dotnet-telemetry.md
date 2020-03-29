@@ -1,6 +1,6 @@
 ---
-title: .NET ile Azure Media Services telemetri yapılandırma | Microsoft Docs
-description: Bu makalede .NET SDK kullanarak Azure Media Services telemetri kullanma gösterilmektedir.
+title: Azure Medya Hizmetleri telemetrisini .NET| ile yapılandırma Microsoft Dokümanlar
+description: Bu makalede, .NET SDK kullanarak Azure Medya Hizmetleri telemetrisini nasıl kullanacağınızı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61464955"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET ile Azure Media Services telemetri yapılandırma 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Azure Medya Hizmetleri telemetrisini .NET ile yapılandırma 
 
-Bu makalede .NET SDK kullanarak Azure Media Services (AMS) telemetri yapılandırırken sürebilir genel adımlar açıklanmaktadır. 
+Bu makalede, .NET SDK kullanarak Azure Medya Hizmetleri (AMS) telemetrisini yapılandırırken atabileceğiniz genel adımlar açıklanmaktadır. 
 
 >[!NOTE]
->Ayrıntılı bir açıklama ne AMS telemetri ve nasıl tüketicilerimizin kullanmak için bkz. [genel bakış](media-services-telemetry-overview.md) makalesi.
+>AMS telemetrisinin ne olduğu ve nasıl tüketili sürüleceğine ilişkin ayrıntılı açıklama için [genel bakış](media-services-telemetry-overview.md) makalesine bakın.
 
-Telemetri verileri aşağıdaki yollardan birini kullanabilir:
+Telemetri verilerini aşağıdaki yollardan birinde tüketebilirsiniz:
 
-- Verileri doğrudan Azure tablo depolama (örneğin, depolama SDK'sını kullanarak) okuyabilir. Telemetri depolama tabloları açıklaması için bkz: **telemetri bilgilerini kullanan** içinde [bu](https://msdn.microsoft.com/library/mt742089.aspx) makalesi.
+- Verileri doğrudan Azure Tablo Depolama'dan okuyun (örneğin, Depolama SDK'sını kullanarak). Telemetri depolama tablolarının açıklaması için [bu](https://msdn.microsoft.com/library/mt742089.aspx) makaledeki **Tüketen telemetri bilgilerine** bakın.
 
-Or
+Veya
 
-- Destek, Media Services .NET SDK depolama veri okumak için kullanın. Bu makalede, belirtilen bir AMS hesabının için telemetri etkinleştirme ve nasıl Azure Media Services .NET SDK kullanarak ölçümlerin sorgulanacağı gösterilmektedir.  
+- Depolama verilerini okumak için Medya Hizmetleri .NET SDK'daki desteği kullanın. Bu makalede, belirtilen AMS hesabı için telemetrinin nasıl etkinleştirilen ve Azure Medya Hizmetleri .NET SDK'yı kullanarak ölçümlerin nasıl sorgulanılacak sorgulanış edilebilmektedir.  
 
-## <a name="configuring-telemetry-for-a-media-services-account"></a>Media Services hesabı için telemetri yapılandırma
+## <a name="configuring-telemetry-for-a-media-services-account"></a>Medya Hizmetleri hesabı için telemetri yapılandırma
 
-Telemetri etkinleştirmek için aşağıdaki adımları gerekir:
+Telemetriyi etkinleştirmek için aşağıdaki adımlar gereklidir:
 
-- Media Services hesabına bağlı depolama hesabının kimlik bilgilerini alın. 
-- Bir bildirim uç noktası ile **EndPointType** kümesine **AzureTable** ve depolama tablosuna işaret eden endPointAddress.
+- Medya Hizmetleri hesabına iliştirilen depolama hesabının kimlik bilgilerini alın. 
+- **AzureTable'a** **ayarlanmış EndPointType** ve depolama tablosunu işaret eden endPointAddress ile bir Bildirim Bitiş Noktası oluşturun.
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -50,7 +50,7 @@ Telemetri etkinleştirmek için aşağıdaki adımları gerekir:
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 ```
 
-- İzlemek istediğiniz hizmetleri için izleme yapılandırmasını oluşturun. İzleme birden fazla yapılandırma ayarı izin verilir. 
+- İzlemek istediğiniz hizmetler için bir izleme yapılandırma ayarı oluşturun. En fazla birden fazla izleme yapılandırma ayarına izin verilmez. 
 
 ```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
@@ -61,15 +61,15 @@ Telemetri etkinleştirmek için aşağıdaki adımları gerekir:
             });
 ```
 
-## <a name="consuming-telemetry-information"></a>Telemetri bilgilerini kullanma
+## <a name="consuming-telemetry-information"></a>Telemetri bilgilerini tüketme
 
-Alıcı telemetri bilgileri hakkında daha fazla bilgi için bkz. [bu](media-services-telemetry-overview.md) makalesi.
+Telemetri bilgilerini tüketme hakkında bilgi için [bu](media-services-telemetry-overview.md) makaleye bakın.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
 1. Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
 
-2. Şu öğeye eklemek **appSettings** app.config dosyanızda tanımlanan:
+2. App.config dosyanızda tanımlanan **appAyarlar'a** aşağıdaki öğeyi ekleyin:
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />
@@ -77,7 +77,7 @@ Alıcı telemetri bilgileri hakkında daha fazla bilgi için bkz. [bu](media-ser
  
 ## <a name="example"></a>Örnek  
     
-Aşağıdaki örnek belirtilen bir AMS hesabının için telemetri etkinleştirme ve Azure Media Services .NET SDK kullanarak ölçümleri sorgulama işlemini gösterir.  
+Aşağıdaki örnekte, belirtilen AMS hesabı için telemetrinin nasıl etkinleştirilen ve Azure Medya Hizmetleri .NET SDK'yı kullanarak ölçümlerin nasıl sorgulanılanış gösterilmektedir.  
 
 ```csharp
 using System;

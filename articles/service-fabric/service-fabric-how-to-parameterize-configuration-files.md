@@ -1,27 +1,27 @@
 ---
-title: Azure Service Fabric yapılandırma dosyalarını Parametreleştirme
-description: Birden çok ortamı yönetirken yararlı bir tekniktir Service Fabric yapılandırma dosyalarını nasıl parametreleyeceğinizi öğrenin.
+title: Azure Hizmet Kumaşı'nda config dosyalarını parametreize
+description: Birden çok ortamı yönetirken yararlı bir teknik olan Service Fabric'te yapılandırma dosyalarını nasıl parametreleştirebilirsiniz öğrenin.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644639"
 ---
-# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric 'de yapılandırma dosyalarını Parametreleştirme
+# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric'te yapılandırma dosyaları nasıl parametreye kullanılır?
 
-Bu makalede, Service Fabric bir yapılandırma dosyasının nasıl parametreleştiriyapılacağı gösterilir.  Birden çok ortam için uygulamaları yönetmeye yönelik temel kavramlardan daha önce alışık değilseniz, [birden çok ortam için uygulamaları yönetme](service-fabric-manage-multiple-environment-app-configuration.md)makalesini okuyun.
+Bu makalede, Hizmet Kumaşı'nda bir yapılandırma dosyasını nasıl parametrenize aktarabileceğiniz gösterilmektedir.  Birden çok ortam için uygulamaları yönetmetemel kavramlarına zaten aşina değilseniz, [birden çok ortam için uygulamaları yönet'i](service-fabric-manage-multiple-environment-app-configuration.md)okuyun.
 
-## <a name="procedure-for-parameterizing-configuration-files"></a>Yapılandırma dosyalarını parametreize etme yordamı
+## <a name="procedure-for-parameterizing-configuration-files"></a>Yapılandırma dosyalarını parametreleme yordamı
 
 Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılandırma değerini geçersiz kılarsınız.
 
-1. Hizmet projenizde *\<hizmetim > \PackageRoot\Config\Settings.xml* dosyasını açın.
-1. Aşağıdaki XML 'i ekleyerek bir yapılandırma parametresi adı ve değeri (örneğin, önbellek boyutu 25 ' e eşit) ayarlayın:
+1. Hizmet projenizde * \<MyService>\PackageRoot\Config\Settings.xml* dosyasını açın.
+1. Aşağıdaki XML'yi ekleyerek, örneğin önbellek boyutu 25'e eşit bir yapılandırma parametre adı ve değeri ayarlayın:
 
    ```xml
     <Section Name="MyConfigSection">
@@ -30,15 +30,15 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
    ```
 
 1. Dosyayı kaydedin ve kapatın.
-1. *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
-1. ApplicationManifest. xml dosyasında, `Parameters` öğesinde bir parametre ve varsayılan değer bildirin.  Parametre adının hizmetin adını içermesi önerilir (örneğin, "hizmetim").
+1. * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
+1. ApplicationManifest.xml dosyasında, öğedeki bir parametre `Parameters` ve varsayılan değeri bildirin.  Parametre adının hizmetin adını içermesi önerilir (örneğin, "MyService").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. ApplicationManifest. xml dosyasının `ServiceManifestImport` bölümünde yapılandırma paketine, bölümüne ve parametresine başvurarak bir `ConfigOverrides` ve `ConfigOverride` öğesi ekleyin.
+1. ApplicationManifest.xml dosyasının `ServiceManifestImport` bölümünde, yapılandırma `ConfigOverrides` paketine, bölüme ve parametreye atıfta bulunarak a ve `ConfigOverride` öğe ekleyin.
 
    ```xml
     <ConfigOverrides>
@@ -53,9 +53,9 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
    ```
 
 > [!NOTE]
-> Bir ConfigOverride eklediğinizde Service Fabric her zaman uygulama bildiriminde belirtilen uygulama parametrelerini veya varsayılan değeri seçer.
+> ConfigOverride eklediğinizde, Service Fabric her zaman uygulama parametrelerini veya uygulama bildiriminde belirtilen varsayılan değeri seçer.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Visual Studio 'da kullanılabilen diğer uygulama yönetimi özellikleri hakkında daha fazla bilgi için bkz. [Visual Studio 'da Service Fabric uygulamalarınızı yönetme](service-fabric-manage-application-in-visual-studio.md).
+Visual Studio'da bulunan diğer uygulama yönetimi özellikleri hakkında daha fazla bilgi için Visual [Studio'daki Hizmet Kumaşı uygulamalarınızı yönet'e](service-fabric-manage-application-in-visual-studio.md)bakın.

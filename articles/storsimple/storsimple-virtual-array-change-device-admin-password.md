@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi cihaz Yöneticisi parolasını değiştirme | Microsoft Docs
-description: Cihaz Yöneticisi parolasını değiştirmek için Azure portalı veya StorSimple sanal dizisi web kullanıcı Arabirimi kullanmayı açıklar.
+title: StorSimple Virtual Array cihaz yönetici şifredeğiştir | Microsoft Dokümanlar
+description: Aygıt yöneticisi parolasını değiştirmek için Azure portalının veya StorSimple Virtual Array web Kullanıcı Arabirimi'nin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,67 +16,67 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580409"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple sanal dizisi cihaz Yöneticisi parolasını StorSimple cihaz Yöneticisi aracılığıyla değiştirme
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple Device Manager ile StorSimple Virtual Array aygıt yöneticisi parolasını değiştirme
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple sanal dizisi erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz Yöneticisi parolası girmeniz istenir. StorSimple cihazı ilk sağlanan çalışmaya ve varsayılan paroladır *Password1*. Verilerinizin güvenliği için ilk kez oturum açın ve bu parolayı değiştirmeniz gereklidir varsayılan parolasının süresi dolar.
+StorSimple Virtual Array'e erişmek için Windows PowerShell arabirimini kullandığınızda, aygıt yöneticisi parolasını girmeniz gerekir. StorSimple aygıtı ilk olarak sağlandığında ve başlatıldığında, varsayılan parola *Password1'dir.* Verilerinizin güvenliği için varsayılan parolailk oturum açğınızda sona erer ve bu parolayı değiştirmeniz gerekir.
 
-Cihaz, üretim ortamına dağıtıldıktan sonra herhangi bir zamanda cihaz Yöneticisi parolasını değiştirmek için yerel web kullanıcı Arabirimi veya Azure portalını kullanabilirsiniz. Bu yordamların her biri, bu makalede açıklanmıştır.
+Aygıt üretim ortamınızda dağıtıldıktan sonra istediğiniz zaman aygıt yöneticisi parolasını değiştirmek için yerel web UI'yi veya Azure portalını da kullanabilirsiniz. Bu yordamların her biri bu makalede açıklanmıştır.
 
- ![Cihazlar dikey penceresi](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
+ ![cihazlar bıçak](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
 ## <a name="use-the-azure-portal-to-change-the-password"></a>Parolayı değiştirmek için Azure portalını kullanma
 
-Azure Portalı aracılığıyla da cihaz Yöneticisi parolasını değiştirmek için aşağıdaki adımları gerçekleştirin.
+Azure portalı üzerinden aygıt yöneticisi parolasını değiştirmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Azure portal aracılığıyla cihaz Yöneticisi parolasını değiştirmek için
+#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Azure portalı üzerinden aygıt yöneticisi parolasını değiştirmek için
 
-1. Hizmet giriş sayfasında hizmetinizi seçin, hizmet adına çift tıklayın ve ardından içinde **Yönetim** bölümünde **cihazları**. Bu açılır **cihazları** tüm StorSimple Virtual Array cihazlarına listeleyen bir dikey pencere.
+1. Hizmet açılış sayfasında, hizmetinizi seçin, hizmet adını çift tıklatın ve ardından **Yönetim** bölümünde **Cihazlar'ı**tıklatın. Bu, tüm StorSimple Sanal Dizi aygıtlarınızı listeleyen **Cihazlar** bıçağını açar.
 
-2. İçinde **cihazları** dikey penceresinde, parola değişikliği gerektiren cihaza çift tıklayın.
+2. **Cihazlar** bıçağında, parola değişikliği gerektiren aygıta çift tıklayın.
 
-3. İçinde **ayarları** , cihazınız için dikey **güvenlik**.
+3. Cihazınızın **Ayarlar** bıtır'ına **güvenlik**'i tıklatın.
 
-4. İçinde **güvenlik ayarları** dikey penceresinde aşağıdakileri yapın:
+4. Güvenlik **Ayarları** bıçak, aşağıdakileri yapın:
    
-   1. Ekranı aşağı kaydırarak **cihaz Yöneticisi parolasını** bölümü. 8 ila 15 karakter içeren bir yönetici parolasını belirtin.
-   2. Parolayı onaylayın.
+   1. Aygıt Yöneticisi **Parola** bölümüne aşağı kaydırın. 8 ila 15 karakter içeren bir yönetici parolası sağlayın.
+   2. Parola’yı onaylayın.
    3. Dikey pencerenin en üstündeki **Kaydet**'e tıklayın.
 
-Cihaz Yöneticisi parolası artık güncelleştirilir. Değiştirilen bu parola, yerel olarak kullanıcının cihaza erişmek için kullanabilirsiniz.
+Aygıt yöneticisi parolası artık güncelleştirildi. Aygıta yerel olarak erişmek için bu değiştirilmiş parolayı kullanabilirsiniz.
 
-![Güvenlik ayarları dikey penceresi](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
+![Güvenlik ayarları blade](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>Parolayı değiştirmek için yerel web kullanıcı arabirimini kullanın
+## <a name="use-the-local-web-ui-to-change-the-password"></a>Parolayı değiştirmek için yerel web UI'ı kullanma
 
-Yerel web UI aracılığıyla cihaz Yöneticisi parolasını değiştirmek için aşağıdaki adımları gerçekleştirin.
+Yerel web UI aracılığıyla aygıt yöneticisi parolasını değiştirmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Yerel web UI aracılığıyla cihaz Yöneticisi parolasını değiştirmek için
+#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Yerel web UI üzerinden aygıt yöneticisi parolasını değiştirmek için
 
-1. Yerel web kullanıcı Arabirimi, tıklayın **Bakım** > **parola değişikliği** cihazınız için.
+1. Yerel web UI'sinde, cihazınız için **Bakım** > **Parlemi değişikliğini** tıklatın.
    
-    ![password1 değiştirme](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. Girin **geçerli parola**.
-3. Sağlayan bir **yeni parola**. Parola en az 8 karakter uzunluğunda olmalıdır. 3 / 4'ünü içermelidir: büyük harf, küçük harfler, sayısal ve özel karakter.
+    ![parolayı değiştir1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
+2. Geçerli **parolayı**girin.
+3. Yeni Bir **Parola**Sağlayın. Parola en az 8 karakter uzunluğunda olmalıdır. Aşağıdakilerden 4'ün 3'ünü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler.
    
-    Parolanızı son 24 parolaları aynı olamayacağını unutmayın.
+    Parolanızın son 24 parolayla aynı olamayacağını unutmayın.
 4. Onaylamak için parolayı yeniden girin.
    
-    ![Parola2 değiştirme](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. Sayfanın en altında tıklayın **Uygula**. Yeni parolayı şimdi uygulanır. Parola değiştirme başarılı olmazsa, aşağıdaki hatayı görürsünüz:
+    ![parolayı değiştir2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
+5. Sayfanın alt kısmında **Uygula'yı**tıklatın. Yeni parola şimdi uygulanır. Parola değişikliği başarılı olmazsa, aşağıdaki hatayı görürsünüz:
    
     ![parola hatası](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Parola başarıyla güncelleştirildikten sonra size bildirilir. Ardından, yerel olarak kullanıcının cihaza erişmek için bu değiştirilen parolayı kullanabilirsiniz.
+    Parola başarıyla güncelleştirildikten sonra size bildirilir. Daha sonra aygıta yerel olarak erişmek için bu değiştirilmiş parolayı kullanabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bilgi edinmek için nasıl [StorSimple Virtual Array'iniz yönetmek](storsimple-ova-web-ui-admin.md).
+[StorSimple Sanal Dizinizi nasıl yöneteceklerinizi](storsimple-ova-web-ui-admin.md)öğrenin.
 

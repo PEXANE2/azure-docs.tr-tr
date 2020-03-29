@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array için erişim denetimi kayıtları yönetme | Microsoft Docs
-description: StorSimple sanal dizisi bir birimde hangi ana bilgisayarların bağlanabileceği belirlemek için erişim denetimi kayıtları (Acr'leri) yönetme işlemi açıklanır.
+title: StorSimple Virtual Array için erişim kontrol kayıtlarını yönetme | Microsoft Dokümanlar
+description: StorSimple Virtual Array'de hangi ana bilgisayarların bir birime bağlanabileceğini belirlemek için erişim denetim kayıtlarının (ACR' ler) nasıl yönetilenini açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,118 +16,118 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724422"
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Virtual Array için erişim denetimi kayıtları yönetmek için StorSimple cihaz Yöneticisi'ni kullanın
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Virtual Array için erişim kontrol kayıtlarını yönetmek için StorSimple Device Manager'ı kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-Erişim denetimi kayıtları (Acr'leri), StorSimple sanal dizisi (diğer adıyla StorSimple şirket içi sanal cihazı) bir birimde hangi ana bilgisayarların bağlanabileceği belirtmenizi sağlar. Acr'leri belirli bir birim için ayarlanır ve konağın iSCSI tam adları (IQN'ler) içerir. Bir konak, bir birime bağlanmaya çalıştığında, cihaz söz konusu birimde IQN adı ile ilişkili ACR denetler ve bir eşleşme varsa, daha sonra bağlantı kurulur. **Erişim denetimi kayıtları** dikey pencerede **yapılandırma** bölümü cihaz Yöneticisi hizmetinizin ana karşılık gelen IQN'ler ile tüm erişim denetimi kayıtları görüntüler.
+Erişim denetim kayıtları (ACR'ler), StorSimple Virtual Array'de (StorSimple şirket içi sanal aygıt olarak da bilinir) hangi ana bilgisayarların bir birime bağlanabileceğini belirtmenize olanak tanır. ACRs belirli bir hacim için ayarlanır ve ev sahiplerinin iSCSI Nitelikli Adları (IQNs) içerir. Bir ana bilgisayar bir birime bağlanmaya çalıştığında, aygıt IQN adı için bu birimle ilişkili ACR'yi denetler ve eşleşme varsa, bağlantı kurulur. Aygıt Yöneticisi hizmetinizin **Yapılandırma** bölümündeki **Access denetim kayıtları,** tüm erişim kontrol kayıtlarını ana bilgisayarların ilgili IQN'larıyla görüntüler.
 
-![Erişim denetimi kayıtları Yönet](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
+![Erişim denetimi kayıtlarını yönetme](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
-Bu öğreticide, ACR ile ilgili aşağıdaki ortak görevler açıklanmaktadır:
+Bu öğretici, acr ile ilgili aşağıdaki ortak görevleri açıklar:
 
-* IQN Al
+* IQN'yi alın
 * Erişim denetimi kaydı ekleme
-* Bir erişim denetimi kaydını Düzenle
-* Bir erişim denetim kaydını silme
+* Erişim denetim kaydını edin
+* Erişim denetimi kaydını silme
 
 > [!IMPORTANT]
 > 
-> * Bir ACR'yi bir birime atarken, bu birimin bozuk olabilir çünkü birim eşzamanlı olarak birden fazla kümelenmemiş konağıyla erişmediğinden ilgileniriz.
-> * Bir ACR'yi bir birimden silerken, silme, okuma-yazma kesinti neden olabileceğinden karşılık gelen konak birimi eriştiğini değil emin olun.
+> * Bir ses birimine ACR atarken, birim birimin aynı anda kümelenmemiş birden fazla ana bilgisayar tarafından erişilemediğini, çünkü bu birimin bozuk olabileceğine dikkat edin.
+> * Bir ACR'yi bir birimden silerken, silme işlemi okuma yazma kesintisine neden olabileceğinden, ilgili ana bilgisayarın ses birimine erişemediğinden emin olun.
 
 
-## <a name="get-the-iqn"></a>IQN Al
+## <a name="get-the-iqn"></a>IQN'yi alın
 
-Windows Server 2012 çalıştıran bir Windows konağının IQN'sini almak için aşağıdaki adımları gerçekleştirin.
+Windows Server 2012'yi çalıştıran bir Windows ana bilgisayarının IQN'sini almak için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
-## <a name="add-an-acr"></a>Bir ACR ekleme
+## <a name="add-an-acr"></a>ACR ekleme
 
-Kullandığınız **erişim denetimi kayıtları** dikey pencerede **yapılandırma** Acr'leri eklemek için StorSimple cihaz Yöneticisi hizmetinizin bölümü. Genellikle, bir ACR ile tek bir birim ilişkilendirin.
+ACRs eklemek için StorSimple Device Manager hizmetinin **Yapılandırma** bölümünde **Access control records** blade'i kullanırsınız. Genellikle, bir ACR'yi tek bir ses düzeyiyle ilişkilendirin.
 
-Bir birim bir ACR ilişkilendirme hakkında daha fazla bilgi için Git [birim Ekle](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+Bir ACR'yi bir birimle ilişkilendirme hakkında bilgi [için, bir birim eklemeye](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)gidin.
 
 > [!IMPORTANT]
-> Bir ACR'yi bir birime atarken, bu birimin bozuk olabilir çünkü birim eşzamanlı olarak birden fazla kümelenmemiş konağıyla erişmediğinden ilgileniriz.
+> Bir ses birimine ACR atarken, birim birimin aynı anda kümelenmemiş birden fazla ana bilgisayar tarafından erişilemediğini, çünkü bu birimin bozuk olabileceğine dikkat edin.
 
 
-Bir ACR'yi eklemek için aşağıdaki adımları gerçekleştirin.
+ACR eklemek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-add-an-acr"></a>Bir ACR'yi eklemek için
+#### <a name="to-add-an-acr"></a>ACR eklemek için
 
-1. Hizmet giriş sayfasında hizmetinizi seçin, hizmet adına çift tıklayın ve ardından içinde **yapılandırma** bölümünde **erişim denetimi kayıtları**.
-2. İçinde **erişim denetimi kayıtları** dikey penceresinde tıklayın **Ekle**.
-3. İçinde **ACR ekleme** dikey penceresinde aşağıdakileri yapın:
+1. Hizmet açılış sayfasında, hizmetinizi seçin, hizmet adını çift tıklatın ve ardından **Yapılandırma** bölümünde **Access denetim kayıtlarını**tıklatın.
+2. Access **denetim kayıtları** bıçak, **Ekle'yi**tıklatın.
+3. **ACR ekle** bıçağında aşağıdakileri yapın:
    
     1. ACR’nize bir **Ad** verin.
     
-    2. Altında **iSCSI başlatıcısı adı**, Windows ana bilgisayarınız IQN adı sağlayın. Windows Server konağının IQN'sini almak için aşağıdakileri yapın:
+    2. **iSCSI Başlatıcı Adı**altında, Windows ana bilgisayarınızın IQN adını sağlayın. Windows Server ana bilgisayarınızın IQN'sini almak için aşağıdakileri yapın:
    
-    3. Microsoft iSCSI başlatıcısını Windows konağında başlatın. İSCSI başlatıcısı Özellikleri penceresinde üzerinde **yapılandırma** sekmesinde seçin ve dizeden kopyalama **Başlatıcı adı** alan.
-    Bu dizesini yapıştırabilir **IQN** alanındaki **ACR ekleme** dikey penceresi.
+    3. Microsoft iSCSI başlatıcısını Windows konağında başlatın. iSCSI Başlatıcısı Özellikleri penceresinin **Yapılandırma** sekmesinde, **Başlatıcı Adı** alanından dizeyi seçip kopyalayın.
+    **ACR ekle** bıçağındaki **IQN** alanına bu dizeyi yapıştırın.
    
-    6. Tıklayın **Ekle** ACR eklemek için.  
+    6. ACR eklemek için **Ekle'yi** tıklatın.  
    
-        ![Erişim denetimi kayıtları ekleyin](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
-4. Tablosal bu ekleme yansıtacak şekilde güncelleştirilir.
+        ![Erişim denetimi kayıtları ekleme](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
+4. Tabular listesi bu eklemeyi yansıtacak şekilde güncelleştirilir.
 
-## <a name="edit-an-acr"></a>Bir ACR'yi Düzenle
+## <a name="edit-an-acr"></a>Bir ACR'yi edin
 
-Kullandığınız **erişim denetimi kayıtları** dikey pencerede **yapılandırma** Acr'leri düzenlemek için Azure portalında cihaz Yöneticisi hizmetinizin bölümü.
+ACRs'leri düzenlemek için Azure portalındaki Aygıt Yöneticisi hizmetinin **Yapılandırma** bölümündeki **Access denetim kayıt** bıçaklarını kullanırsınız.
 
 > [!NOTE]
-> Şu anda kullanılmakta olan bir ACR'yi değiştirmeniz gerekir. Şu anda kullanılmakta olan bir birimi ile ilişkilendirilmiş bir ACR'yi düzenlemek için önce çevrimdışı duruma.
+> Şu anda kullanılmakta olan bir ACR'yi değiştirmemelisiniz. Şu anda kullanılmakta olan bir birimle ilişkili bir ACR'yi düzenlemek için önce birimi çevrimdışı duruma çıkarmanız gerekir.
 
 
-Bir ACR'yi düzenlemek için aşağıdaki adımları gerçekleştirin.
+Bir ACR'yi gerçekleştirmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-edit-an-acr"></a>Bir ACR'yi düzenlemek için
+#### <a name="to-edit-an-acr"></a>ACR'yi sağlamak için
 
-1. Hizmet giriş sayfasında hizmetinizi seçin, hizmet adına çift tıklayın ve ardından içinde **yapılandırma** bölümünde **erişim denetimi kayıtları**.
-2. İçinde **erişim denetimi kayıtları** erişim denetimi kayıtları tablosal cihaz listesinden dikey penceresinde değiştirmek istediğiniz ACR çift tıklayın.
-3. İçinde **düzenleme erişim denetimi kayıtları** dikey penceresinde aşağıdakileri yapın:
+1. Hizmet açılış sayfasında, hizmetinizi seçin, hizmet adını çift tıklatın ve ardından **Yapılandırma** bölümünde **Access denetim kayıtları.**
+2. Access **denetim kayıtları** bıçak, erişim kontrol kayıtlarının tablo listesinden, değiştirmek istediğiniz ACR'yi çift tıklatın.
+3. Erişim kontrol kayıtları blade **edit,** aşağıdakileri yapın:
    
-    1. ACR için IQN sağlayın.
+    1. ACR için IQN'yi tedarik edin.
    
-    2. Tıklayın **Kaydet** değiştirilmiş ACR kaydetmek için dikey pencerenin üst kısmındaki. Şu onaylama iletisini görürsünüz:
+    2. Değiştirilmiş ACR'yi kaydetmek için bıçağın üst kısmında **kaydet'i** tıklatın. Aşağıdaki onay iletisini görürsünüz:
    
-        ![Erişim denetimi kayıtları düzenleme](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
+        ![Erişim denetim kayıtlarını edin](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
-## <a name="delete-an-access-control-record"></a>Bir erişim denetim kaydını silme
+## <a name="delete-an-access-control-record"></a>Erişim denetimi kaydını silme
 
-Kullandığınız **yapılandırma** Acr'leri silmek için Azure portalında sayfası.
+ACRs'i silmek için Azure portalındaki **Yapılandırma** sayfasını kullanırsınız.
 
 > [!NOTE]
 > 
-> * Şu anda kullanılmakta olan bir ACR'yi silmemelisiniz. Şu anda kullanılmakta olan bir birimi ile ilişkilendirilmiş bir ACR'yi silmek için önce çevrimdışı duruma.
-> * Bir ACR'yi bir birimden silerken, silme, okuma-yazma kesinti neden olabileceğinden karşılık gelen konak birimi eriştiğini değil emin olun.
+> * Şu anda kullanılmakta olan bir ACR'yi silmemelisiniz. Şu anda kullanılmakta olan bir birimle ilişkili bir ACR'yi silmek için, önce birimi çevrimdışı duruma çıkarmanız gerekir.
+> * Bir ACR'yi bir birimden silerken, silme işlemi okuma yazma kesintisine neden olabileceğinden, ilgili ana bilgisayarın ses birimine erişemediğinden emin olun.
 
 
 Bir erişim denetim kaydını silmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-delete-an-access-control-record"></a>Bir erişim denetim kaydını silmek için
+#### <a name="to-delete-an-access-control-record"></a>Erişim denetim kaydını silmek için
 
-1. Hizmet giriş sayfasında hizmetinizi seçin, hizmet adına çift tıklayın ve ardından içinde **yapılandırma** bölümünde **erişim denetimi kayıtları**.
+1. Hizmet açılış sayfasında, hizmetinizi seçin, hizmet adını çift tıklatın ve ardından **Yapılandırma** bölümünde **Access denetim kayıtları.**
 
-2. İçinde **erişim denetimi kayıtları** erişim denetimi kayıtları tablosal cihaz listesinden dikey penceresinde silmek istediğiniz ACR çift tıklayın.
+2. Access **denetim kayıtları** bıçak, erişim kontrol kayıtlarının tablo listesinden, silmek istediğiniz ACR'yi çift tıklatın.
 
-3. Düzenleme erişim denetimi kayıtları dikey penceresinde tıklayın **Sil**.
+3. Access control records blade'i düzenle'de **Sil'i**tıklatın.
    
-    ![Delete ACRS](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
+    ![ACR'leri Silme](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. Onayınız istendiğinde tıklayın **Sil** silme işlemine devam etmek için. Tablosal silinmesini yansıtacak şekilde güncelleştirilir.
+4. Onay istendiğinde, silme işlemine devam etmek için **Sil'i** tıklatın. Tabular listesi silmeyi yansıtacak şekilde güncelleştirilir.
    
    ![Uyarı iletisi](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla bilgi edinin [birimleri ekleme ve yapılandırma Acr'leri](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+* [Birim ekleme ve AcR'leri yapılandırma](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)hakkında daha fazla bilgi edinin.
 

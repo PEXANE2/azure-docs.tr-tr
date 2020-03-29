@@ -1,48 +1,48 @@
 ---
-title: Geçici bağlantı hatalarını işleme-PostgreSQL için Azure veritabanı-tek sunucu
-description: PostgreSQL için Azure veritabanı-tek sunucu için geçici bağlantı hatalarını nasıl işleyeceğinizi öğrenin.
-keywords: PostgreSQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
+title: Geçici bağlantı hatalarını işleme - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: PostgreSQL - Single Server için Azure Veritabanı için geçici bağlantı hatalarını nasıl işleyeceğinizi öğrenin.
+keywords: postgresql bağlantısı,bağlantı dizesi,bağlantı sorunları,geçici hata,bağlantı hatası
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768852"
 ---
-# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı için geçici bağlantı hatalarını işleme-tek sunucu
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'nda geçici bağlantı hatalarını işleme - Tek Sunucu
 
-Bu makalede PostgreSQL için Azure veritabanı 'na bağlanan geçici hataların nasıl işleneceği açıklanır.
+Bu makalede, PostgreSQL için Azure Veritabanı'na bağlanan geçici hataların nasıl işleyeceğiniaçıklanmaktadır.
 
 ## <a name="transient-errors"></a>Geçici hatalar
 
-Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatadır. Genellikle bu hatalar, bırakılmakta olan veritabanı sunucusuna bağlantı olarak bildirimde yer vardır. Ayrıca sunucuya yeni bağlantılar açılamaz. Geçici hatalar, örneğin, donanım veya ağ hatası oluştuğunda meydana gelebilir. Başka bir nedenden dolayı PaaS hizmetinin kullanıma alınmış yeni bir sürümü olabilir. Bu olayların çoğu, sistem tarafından 60 saniyeden daha az bir süre içinde otomatik olarak azalır. Bulutta uygulama tasarlamaya ve geliştirmeye yönelik en iyi yöntem geçici hataların beklenmektedir. Her zaman herhangi bir bileşende ve bu durumları işlemek için uygun mantığın yerine gelebileceğini varsayın.
+Geçici hata olarak da bilinen geçici hata, kendi kendini çözecek bir hatadır. Genellikle bu hatalar bırakılan veritabanı sunucusuna bir bağlantı olarak tezahür eder. Ayrıca bir sunucuya yeni bağlantılar açılamaz. Geçici hatalar örneğin donanım veya ağ hatası oluştuğunda oluşabilir. Başka bir nedeni dışarı haddelenmiş olan bir PaaS hizmetinin yeni bir sürümü olabilir. Bu olayların çoğu sistem tarafından 60 saniyeden kısa bir sürede otomatik olarak azaltılır. Bulutta uygulama tasarlamak ve geliştirmek için en iyi uygulama geçici hatalar beklemektir. Herhangi bir bileşende herhangi bir zamanda gerçekleşebileceğini ve bu durumları işlemek için uygun mantığa sahip olabileceklerini varsayalım.
 
 ## <a name="handling-transient-errors"></a>Geçici hataları işleme
 
-Geçici hatalar, yeniden deneme mantığı kullanılarak işlenmelidir. Göz önünde bulundurulması gereken durumlar:
+Geçici hatalar yeniden deneme mantığı kullanılarak ele alınmalıdır. Göz önünde bulundurulması gereken durumlar:
 
-* Bir bağlantıyı açmaya çalıştığınızda bir hata oluşur
-* Sunucu tarafında boştaki bir bağlantı bırakılır. Bir komut verilmenize çalıştığınızda yürütülemiyor
-* Şu anda bir komutun yürütüldüğü etkin bir bağlantı bırakılır.
+* Bağlantıyı açmaya çalıştığınızda bir hata oluşur
+* Sunucu tarafına boşta bağlantı bırakılır. Bir komut vermeye çalıştığınızda yürütülemez
+* Şu anda bir komutuyguluyor etkin bir bağlantı bırakılır.
 
-İlk ve ikinci durum, işlemek için oldukça ileri bir işlemdir. Bağlantıyı tekrar açmayı deneyin. Başarılı olduğunuzda, geçici hata sistem tarafından azaltılmıştır. PostgreSQL için Azure veritabanınızı yeniden kullanabilirsiniz. Bağlantıyı yeniden denemeden önce beklemeleri önerilir. İlk yeniden denemeler başarısız olursa geri dönün. Bu şekilde, sistem hata durumu aşmak için kullanılabilen tüm kaynakları kullanabilir. İzlenecek iyi bir örüntü şunlardır:
+Birinci ve ikinci durumda oldukça düz ele almak için vardır. Bağlantıyı yeniden açmaya çalışın. Başarılı olduğunuzda, geçici hata sistem tarafından azaltıldı. PostgreSQL için Azure Veritabanınızı yeniden kullanabilirsiniz. Bağlantıyı yeniden denemeden önce beklemenizi öneririz. İlk yeniden denemeler başarısız olursa geri çek. Bu şekilde sistem hata durumunu aşmak için kullanılabilir tüm kaynakları kullanabilirsiniz. Takip etmek için iyi bir desen:
 
-* İlk yeniden denemeden önce 5 saniye bekleyin.
-* Aşağıdaki her yeniden denemede, bekleme süresini 60 saniyeye kadar artırın.
-* Uygulamanızın işlemi başarısız olduğu noktada en fazla yeniden deneme sayısını ayarlayın.
+* İlk denemenizden önce 5 saniye bekleyin.
+* Her bir yeniden deneme için, 60 saniyeye kadar bekleme yi katlanarak artırır.
+* Uygulamanızın işlemin başarısız olduğunu düşündüğü en yüksek yeniden deneme sayısını ayarlayın.
 
-Etkin bir işlem başarısız olursa, kurtarmanın doğru şekilde işlenmesi daha zordur. İki durum vardır: işlem, doğası halinde salt okunurdur, bağlantıyı yeniden açmak ve işlemi yeniden denemek güvenlidir. Ancak işlem veritabanına yazıyorsanız, işlemin geri alınması veya geçici hata yapılmadan önce başarılı olup olmadığını belirlemelisiniz. Bu durumda, yalnızca veritabanı sunucusundan kayıt onayı almamış olabilirsiniz.
+Etkin bir işlemle bağlantı başarısız olduğunda, kurtarmaişlemini doğru şekilde işlemek daha zordur. İki durum vardır: Hareket yalnızca salt okunursa, bağlantıyı yeniden açmak ve hareketi yeniden denemek güvenlidir. Ancak, hareket veritabanına da yazıyorsa, hareketin geri alınıp alınıp alınıp alınıp alınmayacağına veya geçici hata gerçekleşmeden önce başarılı olup olmadığını belirlemeniz gerekir. Bu durumda, veritabanı sunucusundan taahhüt onayını almamış olabilirsiniz.
 
-Bunu yapmanın bir yolu, istemci üzerinde tüm yeniden denemeler için kullanılan benzersiz bir KIMLIK oluşturmak içindir. Bu benzersiz KIMLIĞI işlemin bir parçası olarak sunucuya geçirin ve benzersiz bir kısıtlamaya sahip bir sütunda saklayın. Bu şekilde işlemi güvenle yeniden deneyebilirsiniz. Önceki işlem geri alınırsa ve istemci tarafından oluşturulan benzersiz KIMLIK henüz sistemde yoksa başarılı olur. Önceki işlem başarıyla tamamlandığından, benzersiz KIMLIK daha önce depolanıyorsa yinelenen bir anahtar ihlaline işaret eder.
+Bunu yapmanın bir yolu, tüm yeniden denemeler için kullanılan istemci üzerinde benzersiz bir kimlik oluşturmaktır. Bu benzersiz kimliği işlemin bir parçası olarak sunucuya aktarın ve benzersiz bir kısıtlaması olan bir sütunda saklarsınız. Bu şekilde hareketi güvenli bir şekilde yeniden deneyebilirsiniz. Önceki işlem geri alındıysa ve istemci sistemde henüz benzersiz bir kimlik oluşturmazsa başarılı olur. Önceki işlem başarıyla tamamlandığı için, benzersiz kimlik daha önce depolanmışsa yinelenen anahtar ihlalini gösteren başarısız olur.
 
-Programınız üçüncü taraf ara yazılım aracılığıyla PostgreSQL için Azure veritabanı ile iletişim kurduğunda, satıcıdan geçici hatalar için yeniden deneme mantığı içerip içermediğini öğrenin.
+Programınız Üçüncü taraf ara yazılımlar aracılığıyla PostgreSQL için Azure Veritabanı ile iletişim kurduğunda, satıcıya ara yazılımın geçici hatalar için yeniden deneme mantığı içerip içermediğini sorun.
 
-Yeniden deneme mantığını test ettiğinizden emin olun. Örneğin, PostgreSQL için Azure veritabanı sunucusu için işlem kaynaklarını ölçeklendirirken veya azaltılarken kodunuzu yürütmeyi deneyin. Uygulamanız herhangi bir sorun olmadan bu işlem sırasında karşılaşılan kısa kapalı kalma süresini işlemelidir.
+Mantığınızı yeniden denediğinizi test ettiğinizden emin olun. Örneğin, PostgreSQL sunucusu için Azure Veritabanınızın bilgi işlem kaynaklarını ölçeklerken veya küçülterek kodunuzu yürütmeyi deneyin. Uygulamanız, bu işlem sırasında karşılaşılan kısa kapalı kalma süresini sorunsuz bir şekilde ele almalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
