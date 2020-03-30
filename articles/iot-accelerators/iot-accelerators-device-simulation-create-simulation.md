@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61448569"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Öğretici: Oluşturma ve bir IOT cihaz simülasyonu çalıştırma
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Öğretici: IoT cihaz simülasyonu oluşturma ve çalıştırma
 
 Bu öğreticide, bir veya birden çok simülasyon cihazı kullanıp yeni bir IoT simülasyonu oluşturmak ve çalıştırmak için Cihaz Simülasyonu'nu kullanıyorsunuz.
 
@@ -28,15 +28,15 @@ Bu öğreticide şunları yaptınız:
 > * Simülasyonun ölçümlerini görüntüleme
 > * Simülasyonu durdurma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi izlemek için Azure aboneliğinizde Cihaz Simülasyonu'nun dağıtılmış örneğine sahip olmanız gerekir.
 
 Cihaz Simülasyonu'nu henüz dağıtmadıysanız, [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıç kılavuzunu tamamlamalısınız.
 
-## <a name="open-device-simulation"></a>Cihaz Simülasyonu'nu açma
+## <a name="open-device-simulation"></a>Cihaz Benzetimini açma
 
 Tarayıcınızda Cihaz Simülasyonu'nu çalıştırmak için, önce [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com)'na gidin. 
 

@@ -1,6 +1,6 @@
 ---
-title: Olay işlemcisi konağı - Azure Event Hubs kullanarak olay alma | Microsoft Docs
-description: Bu makalede, Azure Event denetim noktası yönetimini basitleştiren, kiralama ve olayları eçimi paralel okumaya hubs'da, olay işlemcisi konağı açıklanır.
+title: Olay İşlemcisi Ana Bilgisayar - Azure Etkinlik Hub'larını kullanarak etkinlik alma | Microsoft Dokümanlar
+description: Bu makalede, azure olay hub'larında etkinlik işlemcisi ana bilgisayaraçıklanır ve bu da denetim noktası yönetimini, kiralamayı ve olayları paralel olarak okumayı kolaylaştırır.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -14,47 +14,47 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162302"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372223"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
-> Bu makale, Azure Event Hubs SDK 'sının eski sürümü için geçerlidir. Kodunuzu SDK 'nın daha yeni sürümüne nasıl geçirebileceğinizi öğrenmek için, bu geçiş kılavuzlarını inceleyin. 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> Bu makale, Azure Olay Hub'ları SDK'nın eski sürümü için geçerlidir. Kodunuzu SDK'nın yeni sürümüne nasıl geçirteceklerinizi öğrenmek için bu geçiş kılavuzlarına bakın. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
-> - [Java betiği](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+> - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
 >
-> Ayrıca bkz. [uygulamanızın birden çok örneğinde bölüm yükünü dengeleme](event-processor-balance-partition-load.md).
+> Ayrıca, [bkz. Uygulamanızın birden çok örneği arasında Bakiye bölümü yükü.](event-processor-balance-partition-load.md)
 
-Azure Event Hubs, milyonlarca olayı düşük bir maliyet karşılığında kullanılabilir güçlü telemetri alma hizmetidir. Bu makalede, *olay Işlemcisi Konağı* (EPH) kullanılarak alınan olayların nasıl kullanılacağı açıklanır; checkişaret, kiralama ve paralel olay okuyucularının yönetimini kolaylaştıran akıllı bir tüketici Aracısı.  
+Azure Etkinlik Hub'ları, milyonlarca olayı düşük maliyetle aktarmak için kullanılabilen güçlü bir telemetri hizmetidir. Bu makalede, *Olay İşlemcisi Ana Bilgisayar* (EPH) kullanarak yutulan olayların nasıl tüketilen açıklanmıştır; kontrol noktaları, kiralama ve paralel etkinlik okuyucularının yönetimini kolaylaştıran akıllı bir tüketici aracısı.  
 
-Event Hubs için ölçeklendirmek için anahtar bölümlenmiş tüketici olur. [Rekabet tüketicilerinin](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseninin çekişme sorunlarını ortadan kaldırarak ve uçtan uca paralellik için kolaylaştırarak yüksek ölçeklenmesini sağlar.
+Olay Hub'ları için ölçeklendirmenin anahtarı, bölümlenmiş tüketicilerin fikridir. [Rakip tüketici](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseni, çekişme darboğazını ortadan kaldırarak ve uçlardan uca paralelliği kolaylaştırarak yüksek ölçek sağlar.
 
-## <a name="home-security-scenario"></a>Giriş güvenlik senaryosu
+## <a name="home-security-scenario"></a>Ev güvenlik senaryosu
 
-Örnek bir senaryo 100.000 havaalanlarından izleyen bir giriş güvenliği şirketi düşünün. Her dakika hareket algılayıcısı, kapı/penceresi açık algılayıcı, cam sonu algılayıcısı, her giriş sayfasında yüklü vb. gibi çeşitli sensörlerden alınan verileri alır. Şirket, kendi giriş neredeyse gerçek zamanlı etkinliğini izlemek vatandaşlar için bir web sitesi sağlar.
+Örnek bir senaryo olarak, 100.000 evi izleyen bir ev güvenlik şirketi düşünün. Her dakika, bir hareket dedektörü, kapı / pencere açık sensör, cam kırılma dedektörü, vb, her evde yüklü gibi çeşitli sensörlerveri alır. Şirket sakinleri için neredeyse gerçek zamanlı olarak evlerinin etkinliğini izlemek için bir web sitesi sağlar.
 
-Her algılayıcı verileri olay hub'ına gönderir. Olay hub'ı 16 bölümleri ile yapılandırılır. Alıcı uçta ise bu etkinlikleri, birleştirmek (filtreleme, toplama, vb.) ve ardından kullanıcı dostu bir web sayfasına gsyih bir depolama blobu için toplama dökümünü bir mekanizma gerekir.
+Her sensör verileri bir olay merkezine iter. Olay hub'ı 16 bölümle yapılandırılır. Tüketen uçta, bu olayları okuyabilen, bunları birleştirebilen (filtre, toplam, vb.) ve toplamı kullanıcı dostu bir web sayfasına yansıtılan bir depolama blob'una atabilmeniz için bir mekanizmaya ihtiyacınız vardır.
 
-## <a name="write-the-consumer-application"></a>Tüketici uygulaması yazma
+## <a name="write-the-consumer-application"></a>Tüketici başvurusunu yazın
 
-Dağıtılmış bir ortamda tüketici tasarlarken, senaryo aşağıdaki gereksinimleri ele almalısınız.
+Tüketiciyi dağıtılmış bir ortamda tasarlarken, senaryo aşağıdaki gereksinimleri karşılamalıdır:
 
-1. **Ölçek:** Her tüketiciye birkaç Event Hubs bölümden okuma sahipliği alan birden çok tüketici oluşturun.
-2. **Yük Dengeleme:** Tüketicileri dinamik olarak artırın veya azaltın. Örneğin, her giriş için yeni bir algılayıcı türü (örneğin, gizli monoxide algılayıcısı) eklendiğinde, olay sayısını artırır. Bu durumda, ' % s'işleci (insan) tüketici örneği sayısını artırır. Tüketici havuzu oldukları, bölüm sayısını dengeleyebilir sonra yeni eklenen tüketicileriyle yük paylaşma.
-3. **Hatalarda sorunsuz bir şekilde sürdürülür:** Bir tüketici (**tüketici a**) başarısız olursa (örneğin, tüketiciyi barındıran sanal makine aniden kilitlenirse), diğer tüketiciler **tüketici a** 'nın sahip olduğu bölümleri çekebilmelidir ve devam edebilir. Ayrıca, *denetim noktası* ya da *konum*olarak adlandırılan devamlılık noktası, **tüketicisinin** başarısız olduğu veya bundan biraz önce olması gereken kesin bir noktada olmalıdır.
-4. **Olayları tüketme:** Önceki üç işaret, tüketicinin yönetimiyle ilgilenirken, olayları tüketmek ve bununla ilgili bir şey yapmak için kod olmalıdır; Örneğin, bunu toplayın ve BLOB depolamaya yükleyin.
+1. **Ölçek:** Her tüketicinin birkaç Etkinlik Hub'ı bölümünden okuma sahipliğini almasıyla birden çok tüketici oluşturun.
+2. **Yük dengesi:** Tüketicileri dinamik olarak artırın veya azaltın. Örneğin, her eve yeni bir sensör türü (örneğin, karbon monoksit dedektörü) eklendiğinde, olay sayısı artar. Bu durumda, operatör (bir insan) tüketici örneklerinin sayısını artırır. Daha sonra, tüketicilerin havuzu, yeni eklenen tüketicilerle yükü paylaşmak için sahip oldukları bölüm sayısını yeniden dengeleyebilir.
+3. **Hatalarda sorunsuz özgeçmiş:** Bir tüketici **(tüketici A)** başarısız olursa (örneğin, tüketiciyi barındıran sanal makine aniden çöker), diğer tüketicilerin **a** tüketiciye ait bölümleri alıp devam edebilmeleri gerekir. Ayrıca, bir *kontrol noktası* veya *ofset*olarak adlandırılan devam noktası, **tüketici A** başarısız olduğu tam noktada olmalıdır, ya da biraz bundan önce.
+4. **Olayları tüketin:** Önceki üç nokta tüketici yönetimi ile ilgili iken, olayları tüketmek ve onunla yararlı bir şey yapmak için kod olmalıdır; örneğin, toplayıp blob depolamaya yükleyin.
 
-Bunun için kendi çözümünüzü oluşturmak yerine, Event Hubs bu işlevselliği [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arabirimi ve [eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) sınıfı aracılığıyla sağlar.
+Bunun için kendi çözümünüzü oluşturmak yerine, Olay Hub'ları bu işlevselliği [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arabirimi ve [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) sınıfı aracılığıyla sağlar.
 
-## <a name="ieventprocessor-interface"></a>Ieventprocessor arabirimini
+## <a name="ieventprocessor-interface"></a>IEventProcessor arabirimi
 
-İlk olarak, uygulamaları kullanan [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arabirimini uygular ve bu dört yöntem Içerir: [openAsync, CloseAsync, Processerrorasync ve ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Bu arabirim, Event Hubs gönderdiği olayları kullanma gerçek kodu içerir. Aşağıdaki kod, basit bir uygulama gösterilmektedir:
+İlk olarak, tüketen uygulamalar dört yöntem vardır [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arayüzü, uygulamak: [OpenAsync, CloseAsync, ProcessErrorAsync ve ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Bu arabirim, Olay Hub'larının gönderdiği olayları tüketmek için gerçek kodu içerir. Aşağıdaki kod basit bir uygulama gösterir:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -89,36 +89,36 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-Sonra, bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneği örneği oluşturun. Yük yüküne bağlı olarak, oluşturucuda [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneği oluşturulurken aşağıdaki parametreler kullanılır:
+Ardından, bir [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneğini anında anons edin. Aşırı yüke bağlı olarak, oluşturucuda [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneğini oluştururken aşağıdaki parametreler kullanılır:
 
-- **ana bilgisayar adı:** her bir tüketici örneğinin adı. Her **Eventprocessorhost** örneğinin bir tüketici grubu içindeki bu değişken için benzersiz bir değeri olması gerekir, bu nedenle bu değeri sabit olarak kodlayın.
-- **Eventhubpath:** Olay Hub 'ının adı.
-- **Consumergroupname:** Event Hubs varsayılan tüketici grubunun adı olarak **$Default** kullanır, ancak belirli bir işlem yönüdür için bir tüketici grubu oluşturmak iyi bir uygulamadır.
-- **Eventhubconnectionstring:** Azure portal alınabilecek Olay Hub 'ına yönelik bağlantı dizesi. Bu bağlantı dizesinin Olay Hub 'ında **dinleme** izinlerine sahip olması gerekir.
-- **StorageConnectionString:** İç kaynak yönetimi için kullanılan depolama hesabı.
+- **hostName:** her tüketici örneğinin adı. **EventProcessorHost** her örneği bir tüketici grubu içinde bu değişken için benzersiz bir değere sahip olmalıdır, bu nedenle bu değeri sabit kod yok.
+- **olayHubPath:** Olay merkezinin adı.
+- **consumerGroupName:** Olay Hub'ları varsayılan tüketici grubunun adı olarak **$Default** kullanır, ancak belirli işleme yönünüz için bir tüketici grubu oluşturmak iyi bir uygulamadır.
+- **olayHubConnectionString:** Azure portalından alınabilen olay hub'ına bağlantı dizesi. Bu bağlantı dizesi olay hub'ında **Dinleme** izinlerine sahip olmalıdır.
+- **depolamaConnectionString:** İç kaynak yönetimi için kullanılan depolama hesabı.
 
-Son olarak, tüketiciler [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneğini Event Hubs hizmetiyle kaydeder. Bir olay işlemcisi sınıfı EventProcessorHost örneğini kaydetme, olay işleme başlar. Kayıt, Event Hubs hizmetine tüketici uygulamasının bazı bölümlerinden olayları tüketmesini ve kullanım olaylarını her geldiğinde [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulama kodunu çağırmayı beklemesini ister. 
+Son olarak, tüketiciler [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneğini Event Hub'ları hizmetine kaydeder. EventProcessorHost bir örneği ile bir olay işlemci sınıfı kayıt olay işleme başlar. Kaydolmak, Olay Hub'ları hizmetine, tüketici uygulamasının bazı bölümlerindeki olayları tüketmesini beklemesini ve olayları tüketime ittiği zaman [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulama kodunu çağırmasını sağlar. 
 
 
 ### <a name="example"></a>Örnek
 
-Örneğin, 5 sanal makineleri (VM'ler) Imagine olayları ve her VM'de bir basit bir konsol uygulaması kullanan için ayrılmış, hangi gerçek tüketim çalışır. Ardından, her bir konsol uygulaması bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneği oluşturur ve Event Hubs hizmetine kaydeder.
+Örnek olarak, olayları tüketmeye adanmış 5 sanal makine (VM) ve her VM'de gerçek tüketim işini yapan basit bir konsol uygulaması olduğunu düşünün. Her konsol uygulaması daha sonra bir [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneği oluşturur ve olay hub'ları hizmetine kaydeder.
 
-Bu örnek senaryoda, 5 **Eventprocessorhost** örneklerine 16 Bölüm ayrıldığınızı varsayalım. Bazı **Eventprocessorhost** örnekleri diğerlerinden daha fazla bölümden oluşabilir. Bir **Eventprocessorhost** örneğinin sahip olduğu her bölüm için `SimpleEventProcessor` sınıfının bir örneğini oluşturur. Bu nedenle, her bölüme atanan bir genel `SimpleEventProcessor` 16 örnek vardır.
+Bu örnek senaryoda, 5 **EventProcessorHost** örneklerine 16 bölüm ayrıldı diyelim. Bazı **EventProcessorHost** örnekleri diğerlerinden daha birkaç bölüm kendi olabilir. **Bir EventProcessorHost** örneğinin sahip olduğu her bölüm için `SimpleEventProcessor` sınıfın bir örneğini oluşturur. Bu nedenle, `SimpleEventProcessor` her bölüme bir atanmış olmak üzere genel olarak 16 örnek vardır.
 
-Aşağıdaki listede, bu örnek özetlenmektedir:
+Aşağıdaki liste şu örneği özetley:
 
-- 16 event Hubs bölümler.
-- 5 VM, her VM'deki 1 tüketici uygulama (örneğin, Consumer.exe).
-- 5 EPH örneklerin kayıtlı, her VM Consumer.exe tarafından 1.
-- 5 EPH örneği tarafından oluşturulan 16 `SimpleEventProcessor` nesne.
-- 1 `SimpleEventProcessor` nesnesi, 1 EPH örneği 4 bölümden kaynaklanabilir.
+- 16 Olay Hub'ları bölümleri.
+- Her VM'de 5 VM, 1 tüketici uygulaması (örneğin Consumer.exe).
+- Consumer.exe tarafından her VM'de 1 adet kayıtlı 5 EPH örneği.
+- 5 `SimpleEventProcessor` EPH örneği tarafından oluşturulan 16 nesne.
+- 1 Consumer.exe uygulaması `SimpleEventProcessor` 4 nesne içerebilir, çünkü 1 EPH örneği 4 bölüme sahip olabilir.
 
-## <a name="partition-ownership-tracking"></a>İzleme bölümü sahipliği
+## <a name="partition-ownership-tracking"></a>Bölüm sahipliği izleme
 
-Bir bölüm EPH örneği (veya bir tüketici) sahipliğini, izleme için belirtilen Azure depolama hesabıyla izlenir. Basit bir tablo olarak izleme gibi görselleştirebilirsiniz. Sağlanan depolama hesabı altındaki BLOB'ları inceleyerek, gerçek uygulama görebilirsiniz:
+Bir EPH örneğine (veya tüketiciye) bir bölümün sahipliği, izleme için sağlanan Azure Depolama hesabı üzerinden izlenir. İzlemeyi aşağıdaki gibi basit bir tablo olarak görüntüleyebilirsiniz. Sağlanan Depolama hesabı nın altındaki lekeleri inceleyerek gerçek uygulamayı görebilirsiniz:
 
-| **Tüketici grubu adı** | **Bölüm KIMLIĞI** | **Ana bilgisayar adı (sahip)** | **Kira (veya sahiplik) Alım Süresi** | **Bölümdeki konum (kontrol noktası)** |
+| **Tüketici grubu adı** | **Bölüm Kimliği** | **Ana bilgisayar adı (sahibi)** | **Kira (veya mülkiyet) edinilen süre** | **Bölüm içinde ofset (denetim noktası)** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Tüketici\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Tüketici\_VM4 | 2018-04-15T01:22:13 | 734 |
@@ -127,87 +127,87 @@ Bir bölüm EPH örneği (veya bir tüketici) sahipliğini, izleme için belirti
 | : |   |   |   |   |
 | $Default | 15 | Tüketici\_VM3 | 2018-04-15T01:22:56 | 976 |
 
-Burada, her konağın belirli bir süre için (kiralama süresi) bir bölüm sahipliğini alır. Ardından konak başarısız olursa (VM kapatıldığında) kira süresi dolar. Diğer ana bölüm sahipliğini almayı denemek ve konaklardan birine başarılı olur. Bu işlem yeni bir sahip olan bölüm kirayı sıfırlar. Bu şekilde, aynı anda yalnızca tek bir okuyucu herhangi belirli bir bölümünün bir tüketici grubundaki okuma yapabilirsiniz.
+Burada, her ana bilgisayar belirli bir süre (kira süresi) için bir bölümün sahipliğini satın aldı. Bir ana bilgisayar başarısız olursa (VM kapanır), kira süresi dolur. Diğer ana bilgisayarlar bölümün sahipliğini almaya çalışır ve ana bilgisayarlardan biri başarılı olur. Bu işlem, yeni bir sahiple bölümün kirasını sıfırlar. Bu şekilde, bir seferde yalnızca tek bir okuyucu bir tüketici grubu içinde herhangi bir bölümden okuyabilirsiniz.
 
 ## <a name="receive-messages"></a>İleti alma
 
-[Processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) öğesine yapılan her çağrı bir olay koleksiyonu sunar. Bu olayları işlemek için sizin sorumluluğunuzdur. İşlemci konağının her iletiyi en az bir kez işlediğinden emin olmak istiyorsanız, kendi yeniden deneme kodu yazmanız gerekir. Ancak kired iletiler hakkında dikkatli olun.
+[ProcessEventsAsync'e](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) yapılan her çağrı bir etkinlik koleksiyonu sunar. Bu olaylarla başa çıkmak senin sorumluluğunda. İşlemci ana bilgisayarın her iletiyi en az bir kez işlediğinden emin olmak istiyorsanız, kendi kodunuzu yeniden denemeye devam etme nizi yazmanız gerekir. Ama zehirli mesajlar konusunda dikkatli olun.
 
-Görece şeyler yapmanız önerilir. diğer bir deyişle, mümkün olduğunca az miktarda işleme olarak yapın. Bunun yerine, tüketici gruplarını kullanın. Depolama alanına yazmanız ve bazı yönlendirme yapmanız gerekiyorsa, iki Tüketici grubu kullanmak ve ayrı olarak çalışan iki [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulaması olması daha iyidir.
+Bu nispeten hızlı şeyler yapmanız tavsiye edilir; diğer bir şey, mümkün olduğunca az işlem yapmak. Bunun yerine, tüketici gruplarını kullanın. Depolamaya yazmanız ve bazı yönlendirmeler yapmanız gerekiyorsa, iki tüketici grubu kullanmak ve ayrı olarak çalışan iki [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulamasına sahip olmak daha iyidir.
 
-İşleme sırasında belirli bir noktada ne artık okuma tamamlandı ve izlemek isteyebilirsiniz. Akış başlangıcına döndürmeyin için okuma, yeniden başlatırsanız izleme tutmak önemlidir. [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) , bu izlemeyi *kontrol noktaları*kullanarak basitleştirir. Bir konum veya uzaklık, belirli bir tüketici grubundaki belirli bir bölüm için bir denetim noktası, işlenen olduğunuz bu noktaya memnun iletileri. **Eventprocessorhost** içindeki bir kontrol noktasının Işaretlenmesi, [Partitioncontext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) nesnesinde [checkpointasync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) yöntemi çağırarak gerçekleştirilir. Bu işlem [Processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) yöntemi içinde yapılır, ancak [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync)içinde de yapılabilir.
+İşleminiz sırasında bir noktada, okuduklarınızı ve tamamladıklarınızı izlemek isteyebilirsiniz. Okumayı yeniden başlatmanız gerekiyorsa, akışı yeniden başlatmanız gerekiyorsa, izlemeyi sürdürmek önemlidir. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) *denetim noktaları*kullanarak bu izlemeyi basitleştirir. Denetim noktası, belirli bir tüketici grubu içinde belirli bir bölüm için bir konum veya ofsettir ve bu noktada iletileri işlediğinizi memnun etmişsinizdir. **EventProcessorHost'ta** bir denetim noktasını işaretleme, [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) nesnesindeki [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) yöntemini çağırarak gerçekleştirilir. Bu işlem [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) yöntemi içinde yapılır, ancak [CloseAsync'de](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync)de yapılabilir.
 
 ## <a name="checkpointing"></a>Denetim noktası oluşturma
 
-[Checkpointasync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) yönteminin iki aşırı yüklemesi vardır: ilki parametre olmadan, [Processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)tarafından döndürülen koleksiyonda en yüksek olay kaydırmasına denetim noktası ekler. Bu uzaklık, bir "yüksek su" işaretidir; Bu, çağırdığınızda, tüm son olayları işleyip varsayar. Bu şekilde bu yöntemi kullanırsanız, bir olay işleme kodunuzu döndürdü sonra çağrısından beklenir unutmayın. İkinci aşırı yükleme, denetim noktası için bir [eventdata](/dotnet/api/microsoft.azure.eventhubs.eventdata) örneği belirtmenizi sağlar. Bu yöntem, farklı türde bir filigran kontrol noktasına kullanmanıza olanak sağlar. Bu eşik ile bir "Düşük" Filigran uygulayabilir: olduğunuz belirli en düşük sıralı olay işlendi. Bu aşırı yükleme uzaklık yönetim esneklik olanağı sağlanır.
+[CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) yöntemiiki aşırı yüke sahiptir: ilki, parametreleri olmayan, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)tarafından döndürülen koleksiyondaki en yüksek olay mahsup noktalarıdır. Bu ofset bir "yüksek su" işaretidir; aradığınızda tüm son olayları işlediğinizi varsayar. Bu yöntemi bu şekilde kullanırsanız, diğer olay işleme kodunuz döndükten sonra aramanızın beklendiğini unutmayın. İkinci aşırı yükleme, denetim noktasına bir [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) örneği belirtmenize olanak tanır. Bu yöntem, denetim noktasına farklı bir filigran türü kullanmanızı sağlar. Bu filigranla bir "düşük su" işareti uygulayabilirsiniz: emin olduğunuz en düşük sıralı olay işlenmiştir. Bu aşırı yükleme, ofset yönetiminde esneklik sağlamak için sağlanır.
 
-Denetim noktası gerçekleştirildiğinde bölüme özgü bilgileri olan bir JSON dosyası (özellikle de, fark), oluşturucuda [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)'a sağlanan depolama hesabına yazılır. Bu dosya sürekli olarak güncelleştirilir. Denetim noktası oluşturma bağlamda göz önünde bulundurmanız önemlidir - kontrol noktası için uygun her ileti. Denetim noktası oluşturma için büyük olasılıkla kullanılan depolama hesabı, bu yükle başa değil, ancak denetim noktası her olay bir Service Bus kuyruğuna bir olay hub'den daha iyi bir seçenek olabilir bir kuyruğa alınan Mesajlaşma modeli simulatorda daha da önemlisi. Event Hubs arkasında büyük ölçekte "en az bir kez" teslim alma olur. Aşağı Akış sistemlerine ıdempotent yaparak bu hatalardan kurtarma kolayca veya sonucunda aynı olayları birden çok kez alınan yeniden başlatır.
+Denetim noktası yapıldığında, bölüme özgü bilgileri (özellikle ofset) içeren bir JSON dosyası, [EventProcessorHost'a](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)kurucu olarak verilen depolama hesabına yazılır. Bu dosya sürekli olarak güncelleştirilir. Bu bağlamda kontrol noktası dikkate almak önemlidir - her mesajı kontrol etmek akıllıca olacaktır. Denetim noktası için kullanılan depolama hesabı büyük olasılıkla bu yükü işlemez, ancak daha da önemlisi her olay kontrol noktası, hizmet veri servisi sırasının olay hub'ından daha iyi bir seçenek olabileceği sıralanmış bir ileti deseni göstergesidir. Olay Hub'larının arkasındaki fikir, büyük ölçekte "en az bir kez" teslimat elde etmektir. Downstream sistemlerinizi iktidarlı hale getirerek, aynı olayların birden çok kez alınmasıyla sonuçlanan hatalardan veya yeniden başlatmalardan kurtarmak kolaydır.
 
 ## <a name="thread-safety-and-processor-instances"></a>İş parçacığı güvenliği ve işlemci örnekleri
 
-Varsayılan olarak, [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) iş parçacığı güvenlidir ve [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)örneğine göre zaman uyumlu bir şekilde davranır. Bir bölüme yönelik olaylar geldiğinde, bu bölüm için **ıeventprocessor** örneğinde [processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) çağrılır ve bölüm Için **processeventsasync** 'e yönelik daha fazla çağrı engellenir. İleti göndericisi, arka planda diğer iş parçacıklarında çalışmaya devam ettiğinden, izleyen iletiler ve arka planda gerçekleştirilen **Processeventsasync** kuyruğuna yapılan çağrılar. Bu iş parçacığı güvenliği, iş parçacığı güvenli koleksiyonları gereksinimini ortadan kaldırır ve performansı önemli ölçüde artırır.
+Varsayılan olarak, [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) iş parçacığı güvenli ve [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)örneğine göre senkron bir şekilde çalışır. Olaylar bir bölüm için geldiğinde, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) bu bölüm için **IEventProcessor** örneğine çağrılır ve bölüm için **ProcessEventsAsync'e** yapılacak diğer çağrıları engeller. Sonraki iletiler ve **ProcessEventsAsync** çağrıları, ileti pompası diğer iş parçacıkları üzerinde arka planda çalıştırmaya devam ettikçe arka planda sıraya alınır. Bu iş parçacığı güvenliği, iş parçacığı güvenli koleksiyonihtiyacını ortadan kaldırır ve performansı önemli ölçüde artırır.
 
-## <a name="shut-down-gracefully"></a>Düzgün biçimde kapatılamadı
+## <a name="shut-down-gracefully"></a>Zarif bir şekilde kapatın
 
-Son olarak, [eventprocessorhost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) , tüm bölüm okuyucularının temiz bir şekilde kapatılmasını mümkün ve [eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)örneği kapatılırken her zaman çağrılmalıdır. Bunun yapılmaması, kira süre sonu ve dönem çakışmaları nedeniyle diğer **Eventprocessorhost** örnekleri başlatılırken gecikmelere neden olabilir. Dönem yönetimi, makalenin [Dönem](#epoch) bölümünde ayrıntılı olarak ele alınmıştır. 
+Son olarak, [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) tüm bölüm okuyucuların temiz bir kapatma sağlar ve her zaman [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)bir örnek kapatırken çağrılmalıdır. Aksi takdirde, kira süresi nin sona ermesi ve Dönem çakışmaları nedeniyle **EventProcessorHost'un** diğer örnekleri başlatıldığında gecikmelere neden olabilir. Dönem yönetimi makalenin [Dönem](#epoch) bölümünde ayrıntılı olarak ele alınmıştır. 
 
-## <a name="lease-management"></a>Kiralama Yönetimi
-Bir olay işlemcisi sınıfı EventProcessorHost örneğini kaydetme, olay işleme başlar. Ana bilgisayar örneği, büyük olasılıkla tüm konak örneklerinde bölümlerin eşit dağıtımı üzerinde uygun sonuç verir şekilde diğer konak örneklerden bazıları kapmasını bazı bölümlerini bir olay hub'ı üzerinde kiraları alır. Kiralanmış her bölüm için ana bilgisayar örneği sağlanan olay işlemcisi sınıfının bir örneğini oluşturur, ardından bu bölümün dışında olaylarını alır ve bunları olay işlemcisi örneğine geçirir. Daha fazla örnek eklenir ve daha fazla kira yakaladı EventProcessorHost sonunda tüm tüketicileri arasında yük dengeleyen.
+## <a name="lease-management"></a>Kira yönetimi
+EventProcessorHost bir örneği ile bir olay işlemci sınıfı kayıt olay işleme başlar. Ana bilgisayar örneği, olay hub'ının bazı bölümleri için kiralama lar alır ve büyük olasılıkla diğer ana bilgisayar örneklerinden bazılarını, tüm ana bilgisayar örnekleriarasında bölümlerin eşit dağılımında biraraya gelen bir şekilde kaplar. Kiralanan her bölüm için, ana bilgisayar örneği sağlanan olay işlemci sınıfının bir örneğini oluşturur, ardından bu bölümden olayları alır ve bunları olay işlemcisi örneğine geçirir. Daha fazla örnek eklendikçe ve daha fazla kiralama alındıkça, EventProcessorHost sonunda tüm tüketiciler arasındaki yükü dengeler.
 
-Daha önce açıklandığı gibi, izleme tablosu [Eventprocessorhost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync)öğesinin otomatik ölçeklendirme yapısını büyük ölçüde basitleştirir. Bir **Eventprocessorhost** örneği başlatıldıktan sonra, mümkün olduğunca fazla kira edinir ve olayları okumaya başlar. Süresi dolmak üzere olan kiralamalar, **Eventprocessorhost** , bir ayırma yerleştirerek bunları yenilemeye çalışır. Kira yenilemeye uygunsa, işlemci okumaya devam eder, ancak yoksa, okuyucu kapanır ve [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) çağırılır. **CloseAsync** , bu bölüm için son temizleme işlemini gerçekleştirmek için uygun bir zamandır.
+Daha önce açıklandığı gibi, izleme tablosu büyük ölçüde [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync)otomatik ölçekdoğasını kolaylaştırır. **EventProcessorHost** bir örnek başlar gibi, mümkün olduğunca çok sayıda kira kazanır ve olayları okumaya başlar. Kiralama lar sona ermek üzere olduğu için **EventProcessorHost** rezervasyon yaptırarak bunları yenilemeye çalışır. Kiralama yenileme için kullanılabilirse, işlemci okumaya devam ediyor, ancak değilse, okuyucu kapatılır ve [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) çağrılır. **CloseAsync** bu bölüm için herhangi bir son temizleme gerçekleştirmek için iyi bir zaman.
 
-**Eventprocessorhost** , bir [partitionmanageroptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) özelliği içerir. Bu özellik, kiralama yönetimine üzerinde denetim sağlar. [Ieventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulamanızı kaydetmeden önce bu seçenekleri ayarlayın.
+**EventProcessorHost** bir [PartitionManagerOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) özelliği içerir. Bu özellik, kira yönetimi üzerinde denetim sağlar. [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) uygulamanızı kaydetmeden önce bu seçenekleri ayarlayın.
 
-## <a name="control-event-processor-host-options"></a>Olay işlemcisi konağı seçeneklerini denetleme
+## <a name="control-event-processor-host-options"></a>Olay İşlemcisi Ana Bilgisayar seçeneklerini denetleme
 
-Ayrıca, [Registereventprocessorasync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) 'in bir aşırı yüklemesi parametre olarak bir [eventprocessoroptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) nesnesi alır. [Eventprocessorhost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) öğesinin davranışını denetlemek için bu parametreyi kullanın. [Eventprocessoroptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) dört özelliği ve bir olayı tanımlar:
+Ayrıca, [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) bir aşırı yükleme bir parametre olarak [Bir EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) nesne alır. [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) kendisi davranışını denetlemek için bu parametreyi kullanın. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) dört özellik ve bir olay tanımlar:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): [Processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)çağrısında almak istediğiniz koleksiyonun en büyük boyutu. Bu boyut en düşük, yalnızca en büyük boyutu değil. Alınacak daha az ileti varsa, **Processeventsasync** , kullanılabilir olduğu kadar çalışır.
-- [Prefetchcount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): istemcinin kaç ileti alacağını öğrenmek için temel AMQP kanalı tarafından kullanılan bir değer. Bu değer [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize)değerinden büyük veya buna eşit olmalıdır.
-- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Bu parametre **true**ise, bir bölümdeki olayları almak için temeldeki çağrı zaman aşımına uğrarsa [processeventsasync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) çağırılır. Bu yöntem, bölüm üzerinde işlem yapılmayan işlemler sırasında zaman tabanlı eylemler gerçekleştirmek için yararlıdır.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): bir okuyucu bölüm okumaya başladığında ilk sapmayı sağlamak için çağrılan bir işlev işaretçisi veya lambda ifadesinin ayarlanmasını sağlar. Bu sapmayı belirtmeden, bir uzaklığa sahip bir JSON dosyası [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) oluşturucusuna sağlanan depolama hesabına zaten kaydedilmediği için okuyucu en eski olayda başlar. Bu yöntem, okuyucu başlangıç davranışını değiştirmek istediğinizde kullanışlıdır. Bu yöntem çağrıldığında, nesne parametresi okuyucu başlatıldığına bölüm Kimliğini içerir.
-- [Exceptionreceivedeventargs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): [eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)içinde oluşan temeldeki tüm özel durumlarla ilgili bildirim almanızı sağlar. Beklediğiniz gibi şeyler çalışmıyorsanız, bu olay bakmaya başlamak için iyi bir yerdir.
+- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)bir çağrı almak istediğiniz koleksiyonun maksimum boyutu. Bu boyut minimum değil, yalnızca maksimum boyut. Alınacak daha az ileti varsa, **ProcessEventsAsync** kullanılabilir olduğu kadar çok iletiyle yürütülür.
+- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Istemcinin alması gereken ileti sayısının üst sınırını belirlemek için temel AMQP kanalı tarafından kullanılan değerdir. Bu değer [MaxBatchSize'dan](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize)büyük veya eşit olmalıdır.
+- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Bu parametre **doğruysa,** [ProcessEventsAsync,](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) altta yatan çağrı bir bölüm üzerinde olayları almak için zaman dışarı çağrıldı. Bu yöntem, bölüm üzerinde hareketsizlik dönemlerinde zaman tabanlı eylemler icra etmek için yararlıdır.
+- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Bir okuyucu bir bölümü okumaya başladığında ilk ofset sağlamak için çağrılan bir işlev işaretçisi veya lambda ifadesinin ayarlanmasını sağlar. Bu mahsup belirtmeden, bir ofset ile JSON dosyası zaten [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) oluşturucuya verilen depolama hesabına kaydedilmiş sürece, okuyucu en eski olay başlar. Bu yöntem, okuyucu başlangıç davranışını değiştirmek istediğinizde yararlıdır. Bu yöntem çağrıldığı zaman, nesne parametresi okuyucunun başlatıldığı bölümkimliği içerir.
+- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): [EventProcessorHost'ta](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)meydana gelen altta yatan özel durumlar hakkında bildirim almanızı sağlar. Işler beklediğiniz gibi çalışmıyorsa, bu olay aramaya başlamak için iyi bir yerdir.
 
-## <a name="epoch"></a>Süresinin
+## <a name="epoch"></a>Dönem
 
-Alma süresinin nasıl çalıştığı aşağıda verilmiştir:
+Alma dönemi şu şekilde çalışır:
 
-### <a name="with-epoch"></a>Dönem ile
-Dönem, hizmetin kullandığı, Bölüm/kira sahipliğini zorlamak için benzersiz bir tanımlayıcıdır (dönem değeri). [Createdönemler Chahize](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı bir alıcı oluşturun. Bu yöntem, dönem tabanlı bir alıcı oluşturur. Alıcı, belirtilen tüketici grubundan belirli bir olay hub 'ı bölümü için oluşturulur.
+### <a name="with-epoch"></a>Epoch ile
+Dönem, bölüm/kira sahipliğini zorlamak için hizmetin kullandığı benzersiz bir tanımlayıcıdır (dönem değeri). [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) yöntemini kullanarak Epoch tabanlı bir alıcı oluşturursunuz. Bu yöntem, Dönem tabanlı bir alıcı oluşturur. Alıcı, belirtilen tüketici grubundan belirli bir olay merkezi bölümü için oluşturulur.
 
-Dönem özelliği, kullanıcılara, aşağıdaki kurallara göre herhangi bir zamanda bir tüketici grubunda yalnızca bir alıcı olmasını sağlar:
+Çağ özelliği, kullanıcılara aşağıdaki kurallarla herhangi bir zamanda bir tüketici grubunda yalnızca bir alıcı olduğundan emin olma olanağı sağlar:
 
-- Bir tüketici grubunda mevcut alıcı yoksa, Kullanıcı herhangi bir dönem değeri olan bir alıcı oluşturabilir.
-- Bir dönem değeri olan bir alıcı varsa ve bir dönem değeri olan E2 (E1 < = E2) ile yeni bir alıcı oluşturulduysa, E1 ile alıcının bağlantısı otomatik olarak kesilir, E2 içeren alıcı başarıyla oluşturulur.
-- Bir dönem değeri E1 olan bir alıcı varsa ve bir dönem değeri > E2 ile yeni bir alıcı oluşturulduysa, bu durumda E2 oluşturma işlemi şu hatayla başarısız olur: "dönemi olan bir alıcı zaten var.
+- Bir tüketici grubunda varolan bir alıcı yoksa, kullanıcı herhangi bir dönem değeri olan bir alıcı oluşturabilir.
+- E1 değeri olan bir alıcı varsa ve e1 <= e2'nin bulunduğu e2'nin e2 değerine sahip yeni bir alıcı oluşturulursa, e1'li alıcı otomatik olarak kesilir, e2 ile alıcı başarıyla oluşturulur.
+- E1 değeri olan bir alıcı varsa ve e1 e2'nin e2'ye > bir çağ değeri ile yeni bir alıcı oluşturulursa, e2'nin hata ile başarısız olması durumunda e2'nin oluşturulması: E1 e1'li bir alıcı zaten vardır.
 
-### <a name="no-epoch"></a>Dönem yok
-[Createreceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı olmayan bir alıcı oluşturursunuz. 
+### <a name="no-epoch"></a>Hayır Dönem
+[CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) yöntemini kullanarak Dönem tabanlı olmayan bir alıcı oluşturursunuz. 
 
-Akış işlemede, kullanıcıların tek bir tüketici grubunda birden çok alıcı oluşturmak istediğiniz bazı senaryolar vardır. Bu tür senaryoları desteklemek için, dönem olmadan bir alıcı oluşturabilir ve bu durumda tüketici grubunda 5 ' e kadar eşzamanlı alıcıya izin veririz.
+Akış işleminde, kullanıcıların tek bir tüketici grubunda birden çok alıcı oluşturmak istediği bazı senaryolar vardır. Bu tür senaryoları desteklemek için, biz çığır açan bir alıcı oluşturmak için yeteneği var ve bu durumda biz tüketici grubunda en fazla 5 eşzamanlı alıcılar izin verir.
 
-### <a name="mixed-mode"></a>Karma mod
-Dönemi olan bir alıcı oluşturduğunuz ve sonra aynı tüketici grubunda dönem olmayan veya bunun tersini alan uygulama kullanımını önermiyoruz. Ancak, bu davranış oluştuğunda hizmet aşağıdaki kuralları kullanarak bunu işler:
+### <a name="mixed-mode"></a>Karışık Mod
+Çağlı bir alıcı oluşturup aynı tüketici grubunda çağ alabilmemeye veya tam tersi bir alıcıya geçtiğiniz uygulama kullanımını önermiyoruz. Ancak, bu davranış oluştuğunda, hizmet aşağıdaki kuralları kullanarak işler:
 
-- Zaten dönem E1 ile oluşturulmuş bir alıcı varsa ve etkin bir şekilde olay alıyorsa ve yeni bir alıcı, dönem olmadan oluşturulursa, yeni alıcı oluşturulması başarısız olur. Dönem alıcıları, her zaman sistemde önceliğe sahip olur.
-- Zaten bir dönem E1 ile oluşturulmuş ve bağlantısı kesilen bir alıcı varsa ve yeni bir MessagingFactory üzerinde dönem olmadan yeni bir alıcı oluşturulduysa yeni alıcı oluşturma işlemi başarılı olur. Burada sistemimizin, yaklaşık 10 dakika sonra "alıcı bağlantısının kesilmesi" algılayacağı bir desteklenmediği uyarısıyla vardır.
-- Dönem olmadan oluşturulmuş bir veya daha fazla alıcı varsa ve dönem E1 ile yeni bir alıcı oluşturulduysa, tüm eski alıcıların bağlantısı kesilir.
+- Zaten epoch e1 ile oluşturulan bir alıcı varsa ve aktif olaylar alıyorsa ve yeni bir alıcı hiçbir dönem ile oluşturulur, yeni alıcı oluşturulması başarısız olur. Dönem alıcıları her zaman sistemde önceliklidir.
+- Zaten epoch e1 ile oluşturulan bir alıcı vardı ve bağlantısı var ve yeni bir alıcı yeni bir MessagingFactory üzerinde hiçbir dönem ile oluşturulur, yeni alıcı oluşturulması başarılı olacaktır. Burada sistemimizin ~10 dakika sonra "alıcı kopukluğu"nu tespit edeceği bir uyarı vardır.
+- Bir veya daha fazla alıcı hiçbir dönem ile oluşturulur ve yeni bir alıcı dönem e1 ile oluşturulur, tüm eski alıcılar kesilir.
 
 
 > [!NOTE]
-> Dönemleri kullanan uygulamalar için farklı tüketici grupları kullanmanızı ve hataları önlemek için dönemler kullanmayan dönemleri kullanmanızı öneririz. 
+> Çağ kullanan uygulamalar ve hatalardan kaçınmak için çağ kullanmayanlar için farklı tüketici grupları kullanmanızı öneririz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Event Processor Host ile ilgili bilgi sahibi olduğunuza göre Event Hubs hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Olay İşlemcisi Ana Bilgisayar'ı bildiğinize göre, Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - Event Hubs kullanmaya başlayın
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [Javascript](get-started-java-send-v2.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
-* [GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+* [GitHub'da Etkinlik Hub'ları örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples)

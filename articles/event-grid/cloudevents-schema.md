@@ -1,38 +1,38 @@
 ---
-title: CloudEvents şemasında olaylarla Azure Event Grid kullanma
-description: Azure Event Grid olaylar için CloudEvents şemasının nasıl kullanılacağını açıklar. Hizmet, bulut olaylarının JSON uygulamasındaki olayları destekler.
+title: CloudEvents şemasındaki etkinliklerle Azure Etkinlik Ağıt'ı kullanma
+description: Azure Etkinlik Ağıt'taki etkinlikler için CloudEvents şemasını nasıl kullanacağımı açıklar. Hizmet, Bulut Etkinlikleri'nin JSON uygulamasındaki olayları destekler.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265083"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372441"
 ---
-# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması kullanma
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Olay Izgaraile CloudEvents v1.0 şema kullanın
 
-Azure Event Grid, [varsayılan olay şemasına](event-schema.md)ek olarak, [cloudevents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [http protokol bağlamasının](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları yerel olarak destekler. [Cloudevents](https://cloudevents.io/) , olay verilerini tanımlamaya yönelik [açık bir belirtimdir](https://github.com/cloudevents/spec/blob/v1.0/spec.md) .
+Varsayılan olay [şemasına](event-schema.md)ek olarak, Azure Event [Grid, CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [HTTP protokol bağlamanın](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları doğal olarak destekler. [CloudEvents](https://cloudevents.io/) olay verilerini açıklamak için açık bir [belirtimdir.](https://github.com/cloudevents/spec/blob/v1.0/spec.md)
 
-CloudEvents, yayımlama için ortak bir olay şeması sağlayarak ve bulut tabanlı olayları tüketerek birlikte çalışabilirliği basitleştirir. Bu şema, tek düzen araçları, & işleme olaylarını yönlendirme için standart yolları ve dış olay şemasının serisini kaldırma evrensel yollarını sağlar. Ortak bir şema ile, iş platformları arasında daha kolay bir şekilde tümleşebilir.
+CloudEvents, yayımlama ve bulut tabanlı etkinlikler tüketmek için ortak bir olay şeması sağlayarak birlikte çalışabilirliği kolaylaştırır. Bu şema, tek tip takımlama, olayları işleme & yönlendirmenin standart yolları ve dış olay şemasını deserialize etmenin evrensel yolları sağlar. Ortak bir şema ile, daha kolay platformlar arasında iş entegre edebilirsiniz.
 
-CloudEvents, [bulut Yerel Bilgi Işlem altyapısı](https://www.cncf.io/)aracılığıyla Microsoft gibi birkaç [ortak](https://github.com/cloudevents/spec/blob/master/community/contributors.md)şekilde oluşturulmuştur. Şu anda sürüm 1,0 olarak sunulmaktadır.
+CloudEvents, Microsoft da dahil olmak üzere birçok [ortak çalışan](https://github.com/cloudevents/spec/blob/master/community/contributors.md)tarafından Cloud Native [Computing Foundation](https://www.cncf.io/)aracılığıyla oluşturulmaktadır. Şu anda sürüm 1.0 olarak kullanılabilir.
 
-Bu makalede, Event Grid ile CloudEvents şemasının nasıl kullanılacağı açıklanır.
+Bu makalede, Olay Grid ile CloudEvents şeması nasıl kullanılacağı açıklanmaktadır.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Önizleme özelliğini yükle
+## <a name="install-preview-feature"></a>Önizleme özelliğini yükleme
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent şeması
 
-CloudEvents biçiminde Azure Blob depolama olayına bir örnek aşağıda verilmiştir:
+Aşağıda CloudEvents biçiminde bir Azure Blob Depolama olayı örneği verilmiştir:
 
 ``` JSON
 {
@@ -60,26 +60,26 @@ CloudEvents biçiminde Azure Blob depolama olayına bir örnek aşağıda verilm
 }
 ```
 
-Kullanılabilir alanlar, bunların türleri ve CloudEvents v 1.0 içindeki tanımlara ilişkin ayrıntılı bir açıklama [burada bulunabilir](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+CloudEvents v1.0'daki kullanılabilir alanların, türlerinin ve tanımlarının ayrıntılı bir [açıklamasına buradan ulaşabilirsiniz.](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)
 
-CloudEvents şeması ve Event Grid şeması 'nda teslim edilen olaylar için üst bilgi değerleri, `content-type`hariç aynıdır. CloudEvents şeması için, bu üst bilgi değeri `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid şeması için, bu üst bilgi değeri `"content-type":"application/json; charset=utf-8"`.
+CloudEvents şemasında ve Olay Izgara şemasında teslim edilen olaylar için üstbilgi değerleri `content-type`. CloudEvents şeması için bu üstbilgi `"content-type":"application/cloudevents+json; charset=utf-8"`değeri . Olay Izgara şeması için bu `"content-type":"application/json; charset=utf-8"`üstbilgi değeri .
 
-## <a name="configure-event-grid-for-cloudevents"></a>CloudEvents için Event Grid yapılandırma
+## <a name="configure-event-grid-for-cloudevents"></a>CloudEvents için Olay Izgara'yı Yapılandır
 
-CloudEvents şemasında olay girişi ve çıktısı için Event Grid kullanabilirsiniz. BLOB depolama olayları ve IoT Hub olayları ve özel olaylar gibi sistem olayları için CloudEvents kullanabilirsiniz. Ayrıca, bu olayları tel ve ileri doğru şekilde dönüştürebilir.
+CloudEvents şemasındaki olayların hem giriş hem de çıktısı için Olay Grid'i kullanabilirsiniz. CloudEvents'i Blob Depolama etkinlikleri, IoT Hub etkinlikleri ve özel olaylar gibi sistem etkinlikleri için kullanabilirsiniz. Ayrıca tel üzerinde ileri geri bu olayları dönüştürebilirsiniz.
 
 
 | Giriş şeması       | Çıktı şeması
 |--------------------|---------------------
 | CloudEvents biçimi | CloudEvents biçimi
-| Event Grid biçimi  | CloudEvents biçimi
-| Event Grid biçimi  | Event Grid biçimi
+| Olay Izgara biçimi  | CloudEvents biçimi
+| Olay Izgara biçimi  | Olay Izgara biçimi
 
-Tüm olay şemaları için Event Grid, bir olay kılavuzu konusuna yayımlarken ve olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](security-authentication.md).
+Tüm olay şemaları için Olay Izgarası, bir olay ızgarası konusuna yayımlarken ve bir olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için [Olay Izgara güvenliği ve kimlik doğrulaması'na](security-authentication.md)bakın.
 
 ### <a name="input-schema"></a>Giriş şeması
 
-Özel konu başlığı oluştururken özel konu için giriş şemasını ayarlarsınız.
+Özel konuyu oluştururken giriş şeasını özel bir konu için ayarlarsınız.
 
 Azure CLI için şunu kullanın:
 
@@ -111,7 +111,7 @@ New-AzureRmEventGridTopic `
 
 ### <a name="output-schema"></a>Çıktı şeması
 
-Olay aboneliğini oluştururken çıktı şemasını ayarlarsınız.
+Olay aboneliğini oluştururken çıktı şeasını ayarlarsınız.
 
 Azure CLI için şunu kullanın:
 
@@ -136,75 +136,70 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- Şu anda, olay CloudEvents şemasında teslim edildiğinde Azure Işlevleri uygulaması için Event Grid tetikleyicisi kullanamazsınız. HTTP tetikleyicisi kullanın. CloudEvents şemasında olayları alan bir HTTP tetikleyicisi uygulama örnekleri için bkz. [Azure işlevleri Ile Cloudevents kullanma](#azure-functions).
+ Şu anda, etkinlik CloudEvents şemasında teslim edildiğinde Azure İşlevler uygulaması için Olay Izgara tetikleyicisini kullanamazsınız. BIR HTTP tetikleyicisi kullanın. CloudEvents şemasında olay alan bir HTTP tetikleyicisi uygulama örnekleri için [bkz.](#azure-functions)
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v 1.0 ile uç nokta doğrulaması
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 ile Uç Nokta Doğrulama
 
-Zaten Event Grid biliyorsanız, uygunsuz kullanımı önlemek için Event Grid uç nokta doğrulama elsıkışmasının farkında olabilirsiniz. CloudEvents v 1.0, HTTP SEÇENEKLERI metodunu kullanarak kendi [uygunsuz kullanım koruma semantiğini](security-authentication.md#webhook-event-delivery) uygular. Bunun hakkında daha fazla bilgiyi [buradan](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) edinebilirsiniz. Çıkış için CloudEvents şeması kullanılırken, Event Grid Event Grid doğrulama olay mekanizması yerine CloudEvents v 1.0 kötüye kullanımı koruması ile birlikte kullanılır.
+Olay Izgara'yı zaten biliyorsanız, kötüye kullanımı önlemek için Olay Grid'in uç nokta doğrulama el sıkışmasını biliyor olabilirsiniz. CloudEvents v1.0, HTTP OPTIONS yöntemini kullanarak kendi [kötüye kullanım koruma semantikini](security-authentication.md#webhook-event-delivery) uygular. Bunun hakkında daha fazla bilgiyi [buradan](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) edinebilirsiniz. Çıktı için CloudEvents şemasını kullanırken, Olay Grid, Olay Grid doğrulama olay mekanizması yerine CloudEvents v1.0 kötüye kullanım koruması ile kullanır.
 
 <a name="azure-functions"></a>
 
-## <a name="use-with-azure-functions"></a>Azure Işlevleri ile kullanma
+## <a name="use-with-azure-functions"></a>Azure İşlevleriyle Kullanım
 
-[Azure işlevleri Event Grid bağlama](../azure-functions/functions-bindings-event-grid.md) , cloudevents 'i yerel olarak desteklemez, bu nedenle cloudevents iletilerini okumak için http ile tetiklenen işlevler kullanılır. CloudEvents 'i okumak için bir HTTP tetikleyicisi kullanırken, Event Grid tetikleyicisinin otomatik olarak yaptığı kod yazmanız gerekir:
+[Azure İşlemesi Olay Kılavuz bağlaması](../azure-functions/functions-bindings-event-grid.md) CloudEvents'i doğal olarak desteklemez, bu nedenle HTTP tarafından tetiklenen işlevler CloudEvents iletilerini okumak için kullanılır. CloudEvents'i okumak için bir HTTP tetikleyicisi kullanırken, Olay Izgara tetikleyicisinin otomatik olarak yaptığı şey için kod yazmanız gerekir:
 
-* [Abonelik doğrulama isteğine](../event-grid/security-authentication.md#webhook-event-delivery)bir doğrulama yanıtı gönderir.
-* İstek gövdesinde bulunan olay dizisinin öğesi başına işlevi bir kez çağırır.
+* [Abonelik doğrulama isteğine](../event-grid/security-authentication.md#webhook-event-delivery)doğrulama yanıtı gönderir.
+* İstek gövdesinde bulunan olay dizisinin öğesi başına bir kez işlevi çağırır.
 
-İşlevi yerel olarak veya Azure 'da çalıştırıldığında kullanılacak URL hakkında daha fazla bilgi için bkz. [http tetikleyici bağlama başvurusu belgeleri](../azure-functions/functions-bindings-http-webhook.md)
+İşlevi yerel olarak çağırmak için kullanılacak URL hakkında bilgi için veya Azure'da çalıştığında [HTTP tetikleyici bağlayıcı başvuru belgelerine](../azure-functions/functions-bindings-http-webhook.md) bakın
 
-Bir HTTP tetikleyicisi C# için aşağıdaki örnek kod, Event Grid tetikleme davranışının benzetimini yapar.  CloudEvents şemasında teslim edilen olaylar için bu örneği kullanın.
+BIR HTTP tetikleyicisi için aşağıdaki örnek C# kodu Olay Izgara tetikleyici davranışını simüle eder.  CloudEvents şemasında teslim edilen olaylar için bu örneği kullanın.
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == "OPTIONS")
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
 
     var requestmessage = await req.Content.ReadAsStringAsync();
     var message = JToken.Parse(requestmessage);
 
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
 
     return req.CreateResponse(HttpStatusCode.OK);
 }
 ```
 
-Bir HTTP tetikleyicisi için aşağıdaki örnek JavaScript kodu, Event Grid tetikleme davranışının benzetimini yapar. CloudEvents şemasında teslim edilen olaylar için bu örneği kullanın.
+Bir HTTP tetikleyicisi için aşağıdaki örnek JavaScript kodu Olay Izgara tetikleyici davranışını simüle eder. CloudEvents şemasında teslim edilen olaylar için bu örneği kullanın.
 
 ```javascript
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+    
+    if (req.method == "OPTIONS) {
+        // If the request is for subscription validation, send back the validation code
+        
         context.log('Validate request received');
-        var code = message[0].data.validationCode;
         context.res = { status: 200, body: { "ValidationResponse": code } };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
     }
-    else {
+    else
+    {
+        var message = req.body;
+        
         // The request is not for subscription validation, so it's for an event.
         // CloudEvents schema delivers one event at a time.
         var event = JSON.parse(message);
@@ -212,12 +207,13 @@ module.exports = function (context, req) {
         context.log('Time: ' + event.eventTime);
         context.log('Data: ' + JSON.stringify(event.data));
     }
+ 
     context.done();
 };
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimatlarını izleme hakkında bilgi için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
-* CloudEvents üzerinde test, yorum ve [katkıda bulunmanızı](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) öneririz.
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
+* Olay teslimlerini izleme hakkında daha fazla bilgi için [Bkz.](monitor-event-delivery.md)
+* CloudEvents'i test etmenizi, yorum yapmayı ve [bu etkinliklere katkıda bulunmanızı](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) öneririz.
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
