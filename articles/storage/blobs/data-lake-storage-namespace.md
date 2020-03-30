@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 2. hiyerarşik ad alanı
-description: Azure Data Lake Storage 2. için hiyerarşik ad alanı kavramını açıklar
+title: Azure Veri Gölü Depolama Gen2 Hiyerarşik Ad Alanı
+description: Azure Veri Gölü Depolama Gen2 için hiyerarşik ad alanı kavramını açıklar
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,41 +9,41 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153086"
 ---
-# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage 2. hiyerarşik ad alanı
+# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Veri Gölü Depolama Gen2 hiyerarşik ad alanı
 
-Azure Data Lake Storage 2., nesne depolama ölçeğinde dosya sistemi performansı sağlamasına izin veren bir anahtar mekanizması ve fiyatlar **hiyerarşik bir ad alanı**eklidir. Bu, bir hesabın içindeki nesne/dosya koleksiyonunun, bilgisayarınızdaki dosya sistemi ile aynı şekilde bir dizin ve iç içe geçmiş alt dizinler hiyerarşisi halinde düzenlenmesine izin verir. Hiyerarşik bir ad alanı etkinken, bir depolama hesabı, analiz motorları ve çerçeveler hakkında tanıdık dosya sistemi semantiği ile, nesne depolamanın ölçeklenebilirlik ve maliyet verimliliğini sağlamalarına sahip olur.
+Azure Veri Gölü Depolama Gen2'nin nesne depolama ölçeğinde ve fiyatlarda dosya sistemi performansı sağlamasına olanak tanıyan önemli bir **mekanizma, hiyerarşik**bir ad alanının eklenmesidir. Bu, bir hesaptaki nesnelerin/dosyaların toplanmasının bilgisayarınızdaki dosya sisteminin düzenlendiği gibi dizinler ve iç içe geçen alt dizinler hiyerarşisi içinde düzenlenmesini sağlar. Hiyerarşik ad alanı etkinken, bir depolama hesabı analitik altyapılara ve çerçevelere aşina olan dosya sistemi anlambilimiyle nesne depolamanın ölçeklenebilirliğini ve maliyet etkinliğini sağlama yeteneğine sahip olur.
 
-## <a name="the-benefits-of-a-hierarchical-namespace"></a>Hiyerarşik bir ad alanının avantajları
+## <a name="the-benefits-of-a-hierarchical-namespace"></a>Hiyerarşik ad alanının yararları
 
-Aşağıdaki avantajlar, blob verileri üzerinde hiyerarşik bir ad alanı uygulayan dosya sistemleriyle ilişkilendirilir:
+Aşağıdaki avantajlar, blob verileri üzerinde hiyerarşik bir ad alanı uygulayan dosya sistemleriyle ilişkilidir:
 
-- **Atomik dizin düzenlemesi:** Nesne, yol parçalarını belirtmek için nesne adında eğik çizgi (/) ekleme kuralı benimseerek yaklaşık bir dizin hiyerarşisini depolar. Bu kural nesneleri düzenlemek için çalışırken, bu kural, dizinleri taşıma, yeniden adlandırma veya silme gibi eylemler için Yardım sağlamaz. Gerçek dizinler olmadan, uygulamalar, dizin düzeyindeki görevleri başarmak için milyonlarca ayrı blob 'ları işlemelidir. Buna karşılık, hiyerarşik bir ad alanı tek bir girişi (üst dizin) güncelleştirerek bu görevleri işler.
+- **Atomik dizin manipülasyonu:** Nesne depoları, yol parçalarını belirtmek için nesne adına kesik (/) katıştırma kuralını benimseyerek bir dizin hiyerarşisine yakındır. Bu kural nesneleri düzenlemek için çalışırken, dizinleri taşıma, yeniden adlandırma veya silme gibi eylemler için hiçbir yardım sağlamaz. Gerçek dizinler olmadan, uygulamalar dizin düzeyinde görevler elde etmek için potansiyel olarak milyonlarca tek tek blob'u işlemelidir. Bunun aksine, hiyerarşik bir ad alanı bu görevleri tek bir girişi (üst dizini) güncelleştirerek işler.
 
-    Bu ciddi iyileştirme özellikle çok büyük veri analizi çerçeveleri için önemlidir. Hive, Spark, vb. gibi araçlar genellikle geçici konumlara çıkış yazar ve ardından işin sonunda konumu yeniden adlandırır. Hiyerarşik bir ad alanı olmadan, bu yeniden adlandırma genellikle analiz sürecinin kendisinden daha uzun sürebilir. Daha düşük iş gecikmesi, analiz iş yükleri için toplam sahip olma maliyeti (TCO) değerine eşit.
+    Bu dramatik optimizasyon, özellikle birçok büyük veri analizi çerçevesi için önemlidir. Hive, Kıvılcım, vb gibi araçlar genellikle geçici konumlara çıktı yazmak ve daha sonra işin sonunda konumu yeniden adlandırmak. Hiyerarşik bir ad alanı olmadan, bu yeniden adlandırma genellikle analiz işleminin kendisinden daha uzun sürebilir. Daha düşük iş gecikmesi, analitik iş yükleri için daha düşük toplam sahip olma maliyetine (TCO) eşittir.
 
-- **Tanıdık arabirim stili:** Dosya sistemleri, geliştiriciler ve kullanıcılar tarafından da benzer şekilde anlaşılacaktır. Data Lake Storage 2. tarafından açığa çıkarılan dosya sistemi arabirimi, büyük ve küçük bilgisayarlar tarafından kullanılan paradigmadır, buluta geçtiğinizde yeni bir depolama paradigması gerekmez.
+- **Tanıdık Arayüz Stili:** Dosya sistemleri hem geliştiriciler hem de kullanıcılar tarafından iyi anlaşılır. Veri Gölü Depolama Gen2 tarafından maruz dosya sistemi arayüzü bilgisayarlar tarafından kullanılan aynı paradigma, büyük ve küçük olduğu gibi buluta hareket zaman yeni bir depolama paradigması öğrenmek için gerek yoktur.
 
-Nesne mağazalarının depolamamasının bir hiyerarşik ad alanı, hiyerarşik bir ad alanı tarafından sınırlanıyor. Ancak, Data Lake Storage 2. hiyerarşik ad alanı doğrusal bir şekilde ölçeklendirilir ve veri kapasitesini veya performansını düşürür.
+Nesne depolarının tarihsel olarak hiyerarşik bir ad alanını desteklememiş olmasının nedenlerinden biri, hiyerarşik ad alanının ölçeği sınırlamış olmasıdır. Ancak, Veri Gölü Depolama Gen2 hiyerarşik ad alanı doğrusal ölçekler ve veri kapasitesi veya performansı düşürmez.
 
-## <a name="deciding-whether-to-enable-a-hierarchical-namespace"></a>Hiyerarşik bir ad alanını etkinleştirip etkinleştirmeyeceğine karar verme
+## <a name="deciding-whether-to-enable-a-hierarchical-namespace"></a>Hiyerarşik ad alanını etkinleştirmeye karar verme
 
-Hesabınızda hiyerarşik bir ad alanını etkinleştirdikten sonra, onu düz bir ad alanına geri döndüremezsiniz. Bu nedenle, nesne Mağazası iş yüklerinizin yapısını temel alan hiyerarşik bir ad alanını etkinleştirmek için mantıklı olup olmadığını göz önünde bulundurun.
+Hesabınızda hiyerarşik bir ad alanı etkinleştirdikten sonra, hesabı düz bir ad alanına geri döndüremezsiniz. Bu nedenle, nesne deposu iş yüklerinizin yapısına dayalı hiyerarşik bir ad alanı etkinleştirmek için mantıklı olup olmadığını düşünün.
 
-Bazı iş yükleri hiyerarşik bir ad alanını etkinleştirerek herhangi bir avantaj kazanmayabilir. Yedeklemeler, görüntü depolaması ve nesne kuruluşunun nesnelerden ayrı olarak depolandığı diğer uygulamalar (örneğin, ayrı bir veritabanında) sayılabilir. 
+Bazı iş yükleri hiyerarşik bir ad alanı etkinleştirerek herhangi bir yarar elde olmayabilir. Örnekler arasında yedeklemeler, görüntü depolama alanı ve nesne organizasyonunun nesnelerin kendilerinden ayrı olarak depolandığı diğer uygulamalar (örneğin: ayrı bir veritabanında). 
 
-Ayrıca, BLOB depolama özellikleri için destek ve Azure Service ekosistemi de büyümeye devam ederken, hiyerarşik bir ad alanı olan hesaplarda henüz desteklenmeyen bazı özellikler ve Azure hizmetleri vardır. [Bilinen sorunlara](data-lake-storage-known-issues.md)bakın. 
+Ayrıca, Blob depolama özellikleri ve Azure hizmet ekosistemi desteği büyümeye devam ederken, hiyerarşik ad alanına sahip hesaplarda henüz desteklenmeyen bazı özellikler ve Azure hizmetleri vardır. [Bkz. Bilinen Sorunlar](data-lake-storage-known-issues.md). 
 
-Genel olarak, dizinleri işleyen dosya sistemleri için tasarlanan depolama iş yükleri için hiyerarşik bir ad alanı etkinleştirmenizi öneririz. Bu, öncelikli olarak analiz işleme için olan tüm iş yüklerini içerir. Yüksek derecede kuruluş gerektiren veri kümeleri, hiyerarşik bir ad alanını etkinleştirerek de avantajdan yararlanabilir.
+Genel olarak, dizinleri işleyen dosya sistemleri için tasarlanmış depolama iş yükleri için hiyerarşik bir ad alanını açmanızı öneririz. Bu, öncelikle analitik işleme için olan tüm iş yüklerini içerir. Yüksek derecede organizasyon gerektiren veri kümeleri, hiyerarşik bir ad alanı etkinleştirerek de yarar sağlar.
 
-Hiyerarşik ad alanını etkinleştirme nedenleri bir TCO Analizi tarafından belirlenir. Genel olarak, depolama hızlandırmasının nedeniyle iş yükü gecikmede yapılan iyileştirmeler, daha az zaman için işlem kaynakları gerektirir. Hiyerarşik bir ad alanı tarafından etkinleştirilen atomik dizin düzenlemesi nedeniyle birçok iş yükü gecikmesi artırılabilir. Birçok iş yükünde, işlem kaynağı toplam maliyetinin %85 ' ünü temsil > eder ve bu nedenle iş yükü gecikmede bir azalma azalmasıyla önemli miktarda TCO tasarrufu elde edilir. Hiyerarşik bir ad alanının etkinleştirilmesinde depolama maliyetlerini artıran durumlarda bile, daha az işlem maliyeti nedeniyle TCO düşürüldü.
+Hiyerarşik bir ad alanını etkinleştirme nedenleri bir TCO analizi ile belirlenir. Genel olarak konuşursak, depolama hızlandırması nedeniyle iş yükü gecikmesindeki iyileştirmeler daha kısa bir süre için hesaplama kaynakları gerektirir. Hiyerarşik ad alanı tarafından etkinleştirilen atomik dizin işlemesi nedeniyle birçok iş yükü için gecikme sonu geliştirilebilir. Birçok iş yükünde, bilgi işlem kaynağı toplam maliyetin %85'> temsil eder ve bu nedenle iş yükü gecikmesinde bile mütevazı bir azalma önemli miktarda TCO tasarrufuna eşittir. Hiyerarşik bir ad alanının etkinleştirilmesinin depolama maliyetlerini artırdığı durumlarda bile, düşük işlem maliyetleri nedeniyle TCO yine de düşürülür.
 
-Veri depolama fiyatlarındaki farkları, işlem fiyatlarını ve düz bir hiyerarşik ad alanı olan hesaplar arasında hiyerarşik bir ad alanına karşı depolama kapasitesi ayırma fiyatlandırmasını çözümlemek için bkz. [Azure Data Lake Storage 2. fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Veri depolama fiyatları, işlem fiyatları ve depolama kapasitesi rezervasyon fiyatlandırmasındaki farklılıkları hiyerarşik ad alanına sahip hesaplar ile hiyerarşik ad alanı arasındaki farklılıkları analiz etmek için [Bkz.](https://azure.microsoft.com/pricing/details/storage/data-lake/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

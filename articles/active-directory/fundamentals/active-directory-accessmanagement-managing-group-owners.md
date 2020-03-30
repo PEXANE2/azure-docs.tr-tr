@@ -1,6 +1,6 @@
 ---
-title: Grup sahipleri - Azure Active Directory Ekle Kaldır | Microsoft Docs
-description: Azure Active Directory'yi kullanarak sahipleri ekleme veya kaldırma hakkında yönergeler grubu.
+title: Grup sahiplerine ekleme veya kaldırma - Azure Etkin Dizini | Microsoft Dokümanlar
+description: Azure Active Directory'yi kullanarak grup sahiplerinin nasıl ekleyeceğiniz veya kaldırılacağına ilişkin yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,52 +13,52 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f83a48ad13fe4ae217319b2aa85adf976aa6a7ae
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77149856"
 ---
-# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Ekleme veya Azure Active Directory'de Grup sahipleri kaldırma
-Azure Active Directory (Azure AD) gruplarına ait ve Grup sahipleri tarafından yönetilir. Grup sahipleri Kullanıcı veya hizmet sorumluları olabilir ve üyeliği dahil olmak üzere grubu yönetebilir. Yalnızca var olan Grup sahipleri veya grupları-Yöneticiler, Grup sahipleri atayabilir. Grup sahipleri güvenlik grubunun üyesi olması gerekmez.
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Etkin Dizini'nde grup sahipleri ekleme veya kaldırma
+Azure Etkin Dizin (Azure AD) grupları grup sahiplerine aittir ve yönetilir. Grup sahipleri kullanıcı veya hizmet sorumlusu olabilir ve üyelik de dahil olmak üzere grubu yönetebilir. Grup sahiplerini yalnızca varolan grup sahipleri veya grup yönetimi yöneticileri atayabilir. Grup sahiplerinin grubun üyesi olması gerekmez.
 
-Bir grubun sahibi olmadığında, Grup Yönetimi Yöneticiler grubu yine de yönetebilecektir. Her grubun en az bir sahibi olması önerilir. Sahipler bir gruba alındıktan sonra grubun son sahibi kaldırılamaz. Son sahibi gruptan kaldırmadan önce lütfen başka bir sahip seçtiğinizden emin olun.
+Bir grubun sahibi yoksa, grup yönetimi yöneticileri grubu yönetmeye devam edebilir. Her grubun en az bir sahibi olması önerilir. Sahipler bir gruba assgined sonra, grubun son sahibi kaldırılamaz. Lütfen son sahibini gruptan çıkarmadan önce başka bir sahip seçtiğinizden emin olun.
 
 ## <a name="add-an-owner-to-a-group"></a>Gruba sahip ekleme
-Aşağıda, bir kullanıcıyı Azure AD portalını kullanarak bir gruba sahip olarak ekleme yönergeleri verilmiştir. Bir hizmet sorumlusunu bir grubun sahibi olarak eklemek için, [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)'i kullanarak bunu yapmak için yönergeleri izleyin.
+Aşağıda, Azure AD portalını kullanan bir gruba kullanıcıyı sahip olarak ekleme yönergeleri verilmiştir. Bir grubun sahibi olarak bir hizmet müdürü eklemek için [PowerShell'i](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)kullanarak yönergeleri izleyin.
 
-### <a name="to-add-a-group-owner"></a>Bir grup sahibi eklemek için
+### <a name="to-add-a-group-owner"></a>Grup sahibi eklemek için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 
-2. **Azure Active Directory**, **gruplar**' ı seçin ve ardından sahip eklemek istediğiniz grubu seçin (Bu örnek Için *MDM ilkesi-Batı*).
+2. **Azure Etkin Dizini'ni**seçin, **Gruplar'ı**seçin ve ardından bir sahip eklemek istediğiniz grubu seçin (bu örnek *için, MDM ilkesi - Batı).*
 
-3. **MDM ilkesi-Batı genel bakış** sayfasında **sahipler**' i seçin.
+3. **MDM politikasında - Batı genel bakış** **sayfasında, Sahipleri**seçin.
 
-    ![MDM İlkesi - sahipleri seçeneğinin vurgulandığı Batı genel bakış sayfası](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
+    ![MDM ilkesi - Sahipleri seçeneği vurgulanan Batı Genel Bakış sayfası](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
 
-4. **MDM ilkesi-Batı-sahipler** sayfasında, **sahip Ekle**' yi seçin ve ardından yeni Grup sahibi olacak kullanıcıyı arayıp seçin ve ardından **Seç**' i seçin.
+4. **MDM ilkesinde - Batı - Sahipleri** sayfasında, Sahipleri **Ekle'yi**seçin ve ardından yeni grup sahibi olacak kullanıcıyı arayıp seçin ve sonra **Seç'i**seçin.
 
-    ![MDM İlkesi - Batı - sahipler sayfası ile sahipleri seçeneği vurgulanmış olarak Ekle](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
+    ![MDM politikası - Batı - Sahipleri ekle seçeneği vurgulanan sahipleri sayfası](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
 
-    Yeni sahibi seçtikten sonra, **sahipler** sayfasını yenileyebilir ve sahipler listesine eklenen adı görebilirsiniz.
+    Yeni sahibi ni seçtikten **sonra, Sahipler** sayfasını yenileyebilir ve sahipler listesine eklenen adı görebilirsiniz.
 
-## <a name="remove-an-owner-from-a-group"></a>Sahibi gruptan kaldırma
-Sahibi Azure AD kullanarak bir gruptan kaldırın.
+## <a name="remove-an-owner-from-a-group"></a>Sahibini gruptan kaldırma
+Azure AD'yi kullanarak bir grup sahibini gruptan kaldırın.
 
-### <a name="to-remove-an-owner"></a>Sahibi kaldırmak için
+### <a name="to-remove-an-owner"></a>Sahibini kaldırmak için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 
-2. **Azure Active Directory**, **gruplar**' ı seçin ve ardından sahibini kaldırmak istediğiniz grubu seçin (Bu örnek Için *MDM ilkesi-Batı*).
+2. **Azure Etkin Dizini'ni**seçin, **Gruplar'ı**seçin ve ardından sahibini kaldırmak istediğiniz grubu seçin (bu örnek için *MDM ilkesi - Batı).*
 
-3. **MDM ilkesi-Batı genel bakış** sayfasında **sahipler**' i seçin.
+3. **MDM politikasında - Batı genel bakış** **sayfasında, Sahipleri**seçin.
 
-    ![MDM İlkesi - sahipleri seçeneğinin vurgulandığı Batı genel bakış sayfası](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![MDM ilkesi - Sahipleri seçeneği vurgulanan Batı Genel Bakış sayfası](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
-4. **MDM ilkesi-Batı-sahipler** sayfasında, Grup sahibi olarak kaldırmak istediğiniz kullanıcıyı seçin, kullanıcının bilgileri sayfasından **Kaldır** ' ı seçin ve kararlarınızı onaylamak için **Evet** ' i seçin.
+4. **MDM ilkesinde - Batı - Sahipler** sayfasında, grup sahibi olarak kaldırmak istediğiniz kullanıcıyı seçin, kullanıcının bilgi sayfasından **kaldır'ı** seçin ve kararınızı onaylamak için **Evet'i** seçin.
 
-    ![Kaldır seçeneğinin vurgulandığı kullanıcı bilgi sayfası](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
+    ![Kaldır seçeneği vurgulanmış kullanıcı bilgileri sayfası](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
 
-    Sahibi kaldırdıktan sonra, **sahipler** sayfasına dönüp adın sahipler listesinden kaldırıldığını görebilirsiniz.
+    Sahibini kaldırdıktan sonra, **Sahipler** sayfasına geri dönebilir ve adın sahipler listesinden kaldırıldığını görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Active Directory grupları ile kaynaklara erişimi yönetme](active-directory-manage-groups.md)

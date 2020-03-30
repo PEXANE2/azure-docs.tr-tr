@@ -1,6 +1,6 @@
 ---
-title: HDInsight 'ta ML hizmetlerini çalıştırma-Azure
-description: Azure HDInsight 'ta ML Hizmetleri ile tahmine dayalı hale getirmek için veri modelinizi nasıl gerçekleştireceğinizi öğrenin.
+title: HDInsight'ta ML Hizmetlerini Operasyonelleştirin - Azure
+description: Azure HDInsight'ta ML Services ile öngörülerde bulunmak için veri modelinizi nasıl işlevsel hale getirebilirsiniz öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,36 +9,36 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71123559"
 ---
-# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini operationleştir
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta ML Hizmetleri kümesini operasyonel leştirin
 
-HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamamladıktan sonra, tahmine dayalı hale getirmek için modeli çalıştırabilirsiniz. Bu makalede, bu görevin nasıl gerçekleştirileceği hakkında yönergeler sağlanmaktadır.
+Veri modellemenizi tamamlamak için HDInsight'ta ML Hizmetleri kümesini kullandıktan sonra, tahminde bulunmak için modeli işlevsel hale getirebilirsiniz. Bu makalede, bu görevin nasıl gerçekleştirilene ilişkin yönergeler verilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
+* HDInsight'ta bir ML Hizmetleri kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun](../hdinsight-hadoop-create-linux-clusters-portal.md) ve Küme türü için **ML Hizmetleri'ni** seçin. **Cluster type**
 
-* Bir Secure Shell (SSH) istemcisi: Bir SSH istemcisi HDInsight kümesine uzaktan bağlanmak ve komutları doğrudan küme üzerinde çalıştırmak için kullanılır. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Güvenli Kabuk (SSH) istemcisi: HDInsight kümesine uzaktan bağlanmak ve komutları doğrudan küme üzerinde çalıştırmak için bir SSH istemcisi kullanılır. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Tek Box yapılandırmasıyla ML hizmetleri kümesini çalıştırma
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML Hizmetleri kümesini tek kutu yapılandırma ile operasyonel hale
 
 > [!NOTE]  
-> Aşağıdaki adımlar R Server 9,0 ve 9,1 ML Server için geçerlidir. ML Server 9,3 için, işlem [kullanım yapılandırmasını yönetmek üzere yönetim aracını kullanma](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)konusuna bakın.
+> Aşağıdaki adımlar R Server 9.0 ve ML Server 9.1 için geçerlidir. ML Server 9.3 için, [işletmeleştirme yapılandırmasını yönetmek için yönetim aracını kullanın'a](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)bakın.
 
 1. Kenar düğümüne SSH uygulayın.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-    Azure HDInsight ile SSH kullanma hakkında yönergeler için bkz [. HDInsight Ile SSH kullanma.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Azure HDInsight ile SSH'nin nasıl kullanılacağına ilişkin talimatlar için, [HDInsight ile SSH'yi kullan'a bakın.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-1. İlgili sürümün dizinini değiştirin ve net dll 'yi sudo edin: 
+1. İlgili sürüm için dizin değiştirin ve nokta net dll sudo: 
 
-    - Microsoft ML Server 9,1 için:
+    - Microsoft ML Server 9.1 için:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -48,39 +48,39 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. Seçim yapabileceğiniz seçeneklerle karşılaşırsınız. **Operationalization için ml Server yapılandırmak**üzere aşağıdaki ekran görüntüsünde gösterildiği gibi ilk seçeneği belirleyin.
+1. Seçim seçenekleri ile sunulmaktadır. **Operasyonelleştirme için ML Server'ı Yapılandırmak için**aşağıdaki ekran görüntüsünde gösterildiği gibi ilk seçeneği seçin.
 
-    ![R Server yönetim yardımcı programı seçme](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R sunucu Yönetimi yardımcı programı seçin](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. Artık ML Server nasıl kullanıma sunmayı istediğinizi belirleme seçeneği sunulur. Görüntülenen seçeneklerden ilk birini girerek **seçin.**
+1. Şimdi ML Server'ı nasıl işlevsel hale getirmek istediğinizi seçme seçeneği sunulur. Sunulan **seçeneklerden, A**girerek ilkini seçin.
 
-    ![R Server yönetim yardımcı programı operationınitialize](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R sunucu Yönetimi programı operasyonel](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-1. İstendiğinde, bir yerel yönetici kullanıcısının parolasını girin ve yeniden girin.
+1. İstendiğinde, yerel bir yönetici kullanıcısının parolasını girin ve yeniden girin.
 
-1. İşlemin başarılı olduğunu öneren çıktılar görmeniz gerekir. Ayrıca, menüden başka bir seçenek de seçmeniz istenir. Ana menüye dönmek için E ' yi seçin.
+1. İşlemin başarılı olduğunu gösteren çıktıları görmelisiniz. Menüden başka bir seçenek seçmeniz de istenir. Ana menüye geri dönmek için E'yi seçin.
 
-    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R sunucu Yönetimi yardımcı program başarısı](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-1. İsteğe bağlı olarak, aşağıdaki gibi bir tanılama testi çalıştırarak tanılama denetimleri gerçekleştirebilirsiniz:
+1. İsteğe bağlı olarak, tanılama testini aşağıdaki gibi çalıştırarak tanılama denetimleri gerçekleştirebilirsiniz:
 
-    a. Tanılama testlerini çalıştırmak için ana menüden **6** ' yı seçin.
+    a. Ana menüden tanılama testlerini çalıştırmak için **6'yı** seçin.
 
-    ![R Server yönetim yardımcı programı tanılaması](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![R sunucu Yönetimi yardımcı programı tanılama](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. Tanılama Testleri menüsünden **bir**seçin. İstendiğinde, yerel yönetici kullanıcısı için verdiğiniz parolayı girin.
+    b. Tanılama Testleri menüsünden **A**' yı seçin. İstendiğinde, yerel yönetici kullanıcısı için sağladığınız parolayı girin.
 
-    ![R Server yönetim yardımcı programı sınaması](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![R sunucu Yönetimi yardımcı program testi](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
-    c. Çıktıda genel sistem durumunun bir pass olduğunu gösterdiğini doğrulayın.
+    c. Çıktının genel sağlık durumunun bir geçiş olduğunu gösterdiğini doğrulayın.
 
-    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R sunucu Yönetimi yardımcı program geçişi](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
-    d. Gösterilen menü seçeneklerinde, ana menüye dönmek için **E** yazın ve ardından Yönetici yardımcı programından çıkmak için **8** yazın.
+    d. Sunulan menü seçeneklerinden, ana menüye dönmek için **E** girin ve yönetici yardımcı programı'ndan çıkmak için **8** girin.
 
-### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark Web hizmetini tükettiren uzun gecikmeler
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark'ta web hizmetini tüketirken uzun gecikmeler
 
-Apache Spark işlem bağlamında mrsdeploy işlevleriyle oluşturulmuş bir Web hizmetini kullanmaya çalışırken uzun gecikmeler yaşarsanız, bazı eksik klasörleri eklemeniz gerekebilir. Spark uygulaması mrsdeoploy işlevleri kullanılarak bir web hizmetinden çağrıldığında '*rserve2*' adlı bir kullanıcıya ait oluyor. Bu soruna geçici bir çözüm olarak:
+Apache Spark bilgi işlem bağlamında mrsdeploy işlevleriyle oluşturulan bir web hizmetini tüketmeye çalışırken uzun gecikmelerle karşılaşırsanız, bazı eksik klasörler eklemeniz gerekebilir. Spark uygulaması mrsdeoploy işlevleri kullanılarak bir web hizmetinden çağrıldığında '*rserve2*' adlı bir kullanıcıya ait oluyor. Bu soruna geçici bir çözüm olarak:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -96,9 +96,9 @@ Apache Spark işlem bağlamında mrsdeploy işlevleriyle oluşturulmuş bir Web 
     rxSparkConnect(reset = TRUE)
 
 
-Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. Artık, uç düğümünde işlem `mrsdeploy` kullanımına bağlanmak ve [Uzaktan yürütme](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) ile [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)gibi özellikleri kullanmaya başlamak için ristemcinizdeki paketi kullanabilirsiniz. Kümenizin bir sanal ağda ayarlanıp ayarlanmamasına bağlı olarak, SSH oturumu aracılığıyla bağlantı noktası iletme tüneli ayarlamanız gerekebilir. Aşağıdaki bölümlerde bu tüneli nasıl kuracağınız açıklanmaktadır.
+Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. Şimdi kenar düğümü `mrsdeploy` üzerinde operasyonelleştirme bağlanmak ve [uzaktan yürütme](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) ve [web hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)gibi özelliklerini kullanmaya başlamak için RClient üzerinde paketi kullanabilirsiniz. Kümenizin bir sanal ağda ayarlanıp ayarlanmamasına bağlı olarak, SSH oturumu aracılığıyla bağlantı noktası iletme tüneli ayarlamanız gerekebilir. Aşağıdaki bölümlerde bu tüneli nasıl kuracağınız açıklanmaktadır.
 
-### <a name="ml-services-cluster-on-virtual-network"></a>Sanal ağdaki ML Hizmetleri kümesi
+### <a name="ml-services-cluster-on-virtual-network"></a>Sanal ağda ML Hizmetleri kümesi
 
 12800 numaralı bağlantı noktası üzerinden kenar düğümüne trafik akışına izin verdiğinizden emin olun. Bu şekilde, Kullanıma Hazır Hale Getirme özelliğine bağlanmak için kenar düğümünü kullanabilirsiniz.
 
@@ -112,15 +112,15 @@ Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. 
     )
 
 
-`remoteLogin()` kenar düğümüne bağlanamadığı halde kenar düğümüne SSH uygulayabiliyorsanız, 12800 numaralı bağlantı noktası üzerinde trafiğe izin veren kuralın doğru şekilde ayarlanıp ayarlanmadığını doğrulamanız gerekir. Sorunla karşılaşmaya devam ederseniz, SSH üzerinden bağlantı noktası iletme tüneli oluşturarak bir geçici çözüm uygulayabilirsiniz. Yönergeler için aşağıdaki bölüme bakın:
+`remoteLogin()` kenar düğümüne bağlanamadığı halde kenar düğümüne SSH uygulayabiliyorsanız, 12800 numaralı bağlantı noktası üzerinde trafiğe izin veren kuralın doğru şekilde ayarlanıp ayarlanmadığını doğrulamanız gerekir. Sorunla karşılaşmaya devam ederseniz, SSH üzerinden bağlantı noktası iletme tüneli oluşturarak bir geçici çözüm uygulayabilirsiniz. Talimatlar için aşağıdaki bölüme bakın:
 
-### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>ML Hizmetleri kümesi sanal ağda ayarlanmadı
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>ML Hizmetleri kümesi sanal ağda ayarlanmaz
 
 Kümeniz sanal üzerinde ayarlanmamışsa veya sanal ağ üzerinden bağlantı kurma sorunları yaşıyorsanız, SSH bağlantı noktası iletme tünelini kullanabilirsiniz:
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-SSH oturumunuz etkin olduktan sonra, yerel makinenizin bağlantı noktası 12800 trafiği, SSH oturumunda sınır düğümünün bağlantı noktası 12800 ' e iletilir. `remoteLogin()` yönteminizde `127.0.0.1:12800` kullandığınızdan emin olun. Bu işlem, bağlantı noktası iletme yoluyla kenar düğümünün işlemleştirme 'e oturum açar.
+SSH oturumunuz etkin olduktan sonra, yerel makinenizin bağlantı noktası 12800'den gelen trafik, SSH oturumu aracılığıyla kenar düğümün 12800 bağlantı noktasına iletilir. `remoteLogin()` yönteminizde `127.0.0.1:12800` kullandığınızdan emin olun. Bu, kenar düğümünün bağlantı noktası yönlendirmesi aracılığıyla operasyonelizasyonuna giriş.
 
 
     library(mrsdeploy)
@@ -132,55 +132,55 @@ SSH oturumunuz etkin olduktan sonra, yerel makinenizin bağlantı noktası 12800
     )
 
 
-## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>HDInsight çalışan düğümlerinde operationınılan işlem düğümlerini ölçeklendirme
+## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>HDInsight işçi düğümlerinde operasyonel işlem düğümlerini ölçeklendirin
 
-İşlem düğümlerini ölçeklendirmek için, önce çalışan düğümlerinin yetkisini alın ve ardından kullanımdan kaldırılan çalışan düğümlerinde işlem düğümlerini yapılandırın.
+İşlem düğümlerini ölçeklendirmek için önce alt düğümleri devre dışı bırakıp, ardından devre dışı bırakılan alt düğümlerde işlem düğümlerini yapılandırın.
 
-### <a name="step-1-decommission-the-worker-nodes"></a>1\. adım: Çalışan düğümlerinin yetkisini alma
+### <a name="step-1-decommission-the-worker-nodes"></a>Adım 1: İşçi düğümlerinin devre dışı bırakılması
 
-ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)aracılığıyla yönetilmiyor. Çalışan düğümlerinin yetkisi yoksa YARN Kaynak Yöneticisi, sunucu tarafından alınan kaynakların farkında olmadığı için beklendiği gibi çalışmaz. Bu durumu önlemek için, işlem düğümlerini ölçeklendirmeden önce çalışan düğümlerinin yetkisinin alınması önerilir.
+ML Services kümesi [Apache Hadoop İPLik](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)üzerinden yönetilmez. Alt düğümler devre dışı kaldırılmazsa, IPN Kaynak Yöneticisi sunucu tarafından alınan kaynakların farkında olmadığından beklendiği gibi çalışmaz. Bu durumu önlemek için, işlem düğümlerini ölçeklendirmeden önce çalışan düğümlerinin yetkisinin alınması önerilir.
 
-Çalışan düğümlerinin yetkisini almak için aşağıdaki adımları izleyin:
+İşçi düğümlerini devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. Kümenin ambarı konsolunda oturum açın ve **konaklar** sekmesine tıklayın.
+1. Kümenin Ambari konsoluna giriş yapın ve **Hosts** sekmesine tıklayın.
 
-1. Çalışan düğümlerini seçin (kullanımdan kaldırılacak).
+1. İşçi düğümlerini seçin (kullanımdan kaldırılacak).
 
-1. **Eylemler**seçiliKonaklar > Konaklarbakımmodunuaç > ' a tıklayın. >  Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
+1. **Seçili Ana** > **Bilgisayar Ları** > **Hosts** > **Bakım Modunu Aç'ı**tıklatın. Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
 
-   ![Apache ambarı bakım modunu aç](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari Açma Bakım Modu](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* **Seçili** > Eylemler ' i seçin ve sonra da yük al ' a tıklayın > > 
-* Seçili **Eylemler** > seçin**NodeManager** **Konakları** > > **Al**' a tıklayın.
-* **Seçili** > eylemler seçin >, gün sonra Durdur ' a tıklayın. > 
-* Seçili **Eylemler** > ' i seçin**nodeyöneticileri** **Konakları** > > **Durdur**' a tıklayın.
-* **Eylemler** > **Seçili** konaklar Konaklar ' ı seçin > tüm bileşenleri Durdur ' a tıklayın. > 
+* **Seçili** >  **Ana** > Bilgisayarlar**DataNodes'i** seçin > **Komisyonu Kaldırma'yı**tıklatın.
+* **Seçili** >  **Eylemler** > Hosts**NodeManagers'ı** seçin > **Komisyonu Kaldırma'yı**tıklatın.
+* **Seçili** > **Eylemler'i** > seçin**Hosts DataNodes** > **Durdur'u**tıklatın.
+* **Seçili Eylemler** > **Hosts** > **NodeManagers'ı** seçin > **Durdur'a**tıklayın.
+* **Seçili** >  **Ana** > Bilgisayar**Ları'nı** seçin > **Tüm Bileşenleri Durdur'u**tıklatın.
 * Çalışan düğümlerinin seçimini kaldırın ve baş düğümleri seçin.
-*  >  **Eylemler** seçili Konaklar ' ı seçin > "konaklar tüm bileşenleri yeniden Başlat. > 
+* **Seçili** **Ana** > Bilgisayarlar > "**Hosts** > **Tüm Bileşenleri Yeniden Başlat'** ı seçin.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2\. adım: Her kullanımdan kaldırılan çalışan düğümlerinde işlem düğümlerini yapılandırın
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Adım 2: Kullanımdan kaldırılan her işçi düğümünde işlem düğümlerini yapılandırma
 
 1. Yetkisi alınan her çalışan düğümüne SSH uygulayın.
 
-1. Sahip olduğunuz ML Hizmetleri kümesi için ilgili DLL 'yi kullanarak yönetici yardımcı programını çalıştırın. ML Server 9,1 için aşağıdakileri çalıştırın:
+1. Sahip olduğunuz ML Hizmetleri kümesi için ilgili DLL'yi kullanarak yönetici yardımcı programını çalıştırın. ML Server 9.1 için aşağıdakileri çalıştırın:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. **Operationalization için ml Server yapılandırma**seçeneğini belirlemek üzere **1** girin.
+1. **İşleme için ML Server'ı Yapılandır seçeneğini**seçmek için **1** girin.
 
-1. Seçeneği`C. Compute node`belirlemek için **C** girin. Bu işlem çalışan düğümündeki işlem düğümünü yapılandırır.
+1. Seçeneğini **C** `C. Compute node`seçmek için C girin. Bu işlem çalışan düğümündeki işlem düğümünü yapılandırır.
 
 1. Yönetim Yardımcı Programından çıkın.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3\. adım: Web düğümüne işlem düğümleri ayrıntıları ekleme
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Adım 3: Web düğümünde bilgi işlem düğümleri ayrıntıları ekleme
 
-Kullanımdan kaldırılan tüm çalışan düğümleri işlem düğümünü çalıştıracak şekilde yapılandırıldıktan sonra, kenar düğümüne geri dönün ve kullanımdan kaldırılan çalışan düğümlerinin IP adreslerini ML Server Web düğümünün yapılandırmasına ekleyin:
+Tüm devre dışı bırakılan alt düğümler işlem düğümü çalıştırmak için yapılandırıldıktan sonra, kenar düğümüne geri gelin ve ML Server web düğümü yapılandırmasına devre dışı bırakılan alt düğümlerin IP adreslerini ekleyin:
 
 1. Kenar düğümüne SSH uygulayın.
 
 1. `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` öğesini çalıştırın.
 
-1. "URI 'Ler" bölümünü arayın ve çalışan düğümünün IP ve bağlantı noktası ayrıntılarını ekleyin.
+1. "Uris" bölümünü arayın ve alt düğümün IP ve bağlantı noktası ayrıntılarını ekleyin.
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",

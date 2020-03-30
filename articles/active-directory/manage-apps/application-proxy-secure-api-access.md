@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu ile şirket içi API 'Lere erişme
-description: Azure Active Directory uygulama proxy 'Si, yerel uygulamaların şirket içinde veya bulut VM 'Lerinde barındırmanıza olanak sağlayan API 'Lere ve iş mantığına güvenli bir şekilde erişmesini sağlar.
+title: Azure AD Application Proxy ile şirket içi API'lere erişin
+description: Azure Active Directory'nin Uygulama Proxy'si, yerel uygulamaların şirket içinde veya bulut VM'lerde barındırdığınız API'lere ve iş mantığına güvenli bir şekilde erişmesine olanak tanır.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -12,131 +12,131 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77166001"
 ---
-# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
+# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Application Proxy ile şirket içi API'lere güvenli erişim
 
-Şirket içinde çalışan veya bulutta sanal makinelerde barındırılan iş mantığı API 'Leri olabilir. Yerel Android, iOS, Mac veya Windows uygulamalarınızın, verileri kullanmak veya Kullanıcı etkileşimi sağlamak için API uç noktalarıyla etkileşimde olması gerekir. Azure AD Uygulama Ara Sunucusu ve [Azure Active Directory kimlik doğrulama kitaplıkları (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) , yerel uygulamalarınızın şirket içi API 'lerinize güvenli bir şekilde erişmesini sağlar. Azure Active Directory Uygulama Ara Sunucusu, güvenlik duvarı bağlantı noktalarını açan ve uygulama katmanında kimlik doğrulama ve yetkilendirmeyi denetleyen daha hızlı ve daha güvenli bir çözümdür. 
+Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı API'leri olabilir. Verileri kullanmak veya kullanıcı etkileşimi sağlamak için ana bilgisayardaki Android, iOS, Mac veya Windows uygulamalarınızın API uç noktalarıyla etkileşimde olması gerekir. Azure AD Application Proxy ve [Azure Etkin Dizin Kimlik Doğrulama Kitaplıkları (ADAL),](/azure/active-directory/develop/active-directory-authentication-libraries) yerel uygulamalarınızın şirket içi API'lerinize güvenli bir şekilde erişmesini sağlar. Azure Active Directory Application Proxy, güvenlik duvarı bağlantı noktalarını açmaktan ve uygulama katmanında kimlik doğrulama ve yetkilendirmeyi denetlemekten daha hızlı ve daha güvenli bir çözümdür. 
 
-Bu makalede, yerel uygulamaların erişebileceği bir Web API hizmetini barındırmak için bir Azure AD Uygulama Ara Sunucusu çözümü ayarlama işlemi adım adım açıklanmaktadır. 
+Bu makale, yerel uygulamaların erişebileceği bir web API hizmetini barındırmak için bir Azure AD Application Proxy çözümü kurmanıza yardımcı olabilir. 
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki diyagramda şirket içi API 'Leri yayımlamanın geleneksel bir yolu gösterilmektedir. Bu yaklaşım, 80 ve 443 gelen bağlantı noktalarını açmaya gerek duyar.
+Aşağıdaki diyagram, şirket içi API'leri yayımlamanın geleneksel bir yolunu gösterir. Bu yaklaşım, gelen bağlantı noktaları 80 ve 443 açılmasını gerektirir.
 
 ![Geleneksel API erişimi](./media/application-proxy-secure-api-access/overview-publish-api-open-ports.png)
 
-Aşağıdaki diyagramda, herhangi bir gelen bağlantı noktasını açmadan API 'Leri güvenli bir şekilde yayımlamak için Azure AD Uygulama Ara Sunucusu nasıl kullanabileceğiniz gösterilmektedir:
+Aşağıdaki diyagram, gelen bağlantı noktalarını açmadan API'leri güvenli bir şekilde yayımlamak için Azure AD Application Proxy'yi nasıl kullanabileceğinizi gösterir:
 
-![Azure AD Uygulama Ara Sunucusu API erişimi](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
+![Azure AD Application Proxy API erişimi](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak çalışarak ve kimlik doğrulama ve yetkilendirme sağlayarak çözümün omurgasını oluşturur. [Adal](/azure/active-directory/develop/active-directory-authentication-libraries) kitaplıklarını kullanarak, büyük bir platform dizisinden API 'lerinize erişebilirsiniz. 
+Azure AD Uygulama Proxy'si çözümün belkemiğini oluşturur, API erişimi için genel bir bitiş noktası olarak çalışır ve kimlik doğrulama ve yetkilendirme sağlar. [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) kitaplıklarını kullanarak API'lerinize çok çeşitli platformlardan erişebilirsiniz. 
 
-Azure AD Uygulama Ara Sunucusu kimlik doğrulaması ve yetkilendirme, Azure AD 'de oluşturulduğundan, yalnızca güvenilen cihazların uygulama proxy 'Si aracılığıyla yayınlanan API 'Lere erişebildiğinden emin olmak için Azure AD koşullu erişim 'i kullanabilirsiniz. Azure AD JOIN veya masaüstleri için Azure AD hibrit ve cihazlar için Intune ile yönetilen ' i kullanın. Ayrıca Azure Multi-Factor Authentication gibi Azure Active Directory Premium özelliklerden ve [Azure kimlik koruması](/azure/active-directory/active-directory-identityprotection)'nın makine öğrenimi ile desteklenen güvenliğinin avantajlarından yararlanabilirsiniz.
+Azure AD Uygulama Proxy kimlik doğrulaması ve yetkilendirmesi Azure AD'nin üzerine kurulduğundan, Yalnızca güvenilen aygıtların Application Proxy aracılığıyla yayınlanan API'lere erişebilmesini sağlamak için Azure AD Koşullu Erişimi kullanabilirsiniz. Masaüstü bilgisayarlar için Azure AD Join veya Azure AD Karma Birleştirme'yi ve aygıtlar için Intune Yönetilen'i kullanın. Ayrıca Azure Çok Faktörlü Kimlik Doğrulama gibi Azure Active Directory Premium özelliklerinden ve [Azure Kimlik Koruması'nın](/azure/active-directory/active-directory-identityprotection)makine öğrenimi destekli güvenliğinden de yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu yönergeyi izlemek için şunlar gerekir:
+Bu izbiyi takip etmek için şunları yapmanız gerekir:
 
-- Uygulama oluşturup kaydedebilirler bir hesapla Azure dizinine yönetici erişimi
-- Örnek Web API 'SI ve [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) yerel istemci uygulamaları 
+- Uygulamalar oluşturabilen ve kaydedebilen bir hesapla azure dizinine yönetici erişimi
+- Örnek web API ve yerel istemci uygulamaları[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
 
-## <a name="publish-the-api-through-application-proxy"></a>API 'YI uygulama proxy 'Si aracılığıyla yayımlama
+## <a name="publish-the-api-through-application-proxy"></a>UYGULAMA Proxy'si aracılığıyla API'yi yayımla
 
-Uygulama proxy 'si aracılığıyla intranetinizin dışında bir API yayımlamak için, Web uygulamalarını yayımlama ile aynı kalıbı takip edersiniz. Daha fazla bilgi için bkz. [öğretici: Azure Active Directory Içindeki uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md).
+Application Proxy aracılığıyla intranetinizin dışında bir API yayınlamak için, web uygulamalarını yayımlamak için aynı deseni izlersiniz. Daha fazla bilgi için [Bkz. Öğretici: Azure Active Directory'de Application Proxy aracılığıyla uzaktan erişim için şirket içi uygulama ekleyin.](application-proxy-add-on-premises-application.md)
 
-SecretAPI Web API 'sini uygulama proxy 'Si aracılığıyla yayımlamak için:
+Application Proxy aracılığıyla SecretAPI web API yayınlamak için:
 
-1. Örnek SecretAPI projesini yerel bilgisayarınızda veya intranette bir ASP.NET Web uygulaması olarak derleyin ve yayımlayın. Web uygulamasına yerel olarak erişebildiğinizden emin olun. 
+1. Örnek SecretAPI projesini yerel bilgisayarınızda veya intranetinizde ASP.NET bir web uygulaması olarak oluşturun ve yayınlayın. Web uygulamasına yerel olarak erişebildiğinizden emin olun. 
    
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory**' ni seçin. Ardından **Kurumsal uygulamalar**' ı seçin.
+1. Azure [portalında](https://portal.azure.com) **Azure Etkin Dizin'i**seçin. Ardından **Kurumsal uygulamaları**seçin.
    
-1. **Kurumsal uygulamalar-tüm uygulamalar** sayfasının en üstünde **Yeni uygulama**' yı seçin.
+1. Kurumsal uygulamaların üst kısmında **- Tüm uygulamalar** sayfasında, Yeni **uygulama**seçin.
    
-1. **Uygulama Ekle** sayfasında şirket **içi uygulamalar**' ı seçin. **Kendi şirket içi uygulamanızı ekleyin** sayfası görüntülenir.
+1. **Uygulama** ekle **sayfasında, şirket içi uygulamaları**seçin. **Kendi şirket içi uygulama sayfanızı ekle** görüntülenir.
    
-1. Yüklü bir uygulama proxy Bağlayıcısı yoksa, yüklemek isteyip istemediğiniz sorulur. Bağlayıcıyı indirmek ve yüklemek için **uygulama proxy bağlayıcısını indir** ' i seçin. 
+1. Yüklü bir Uygulama Proxy Bağlayıcısı yoksa, yüklemeniz istenir. Konektörü indirmek ve yüklemek için **Uygulama Proxy Bağlayıcısını İndir'i** seçin. 
    
-1. Uygulama proxy bağlayıcısını yükledikten sonra, **kendi şirket içi uygulamanızı ekleyin** sayfasında:
+1. Uygulama Proxy Bağlayıcısını yükledikten sonra kendi **şirket içi uygulama sayfanıza ekle:**
    
-   1. **Ad**' ın yanındaki *secretapi*yazın.
+   1. **Adın**yanında *SecretAPI*girin.
       
-   1. **Iç URL**'nin yanına, INTRANETINIZDEKI API 'ye erişmek için kullandığınız URL 'yi girin.
+   1. **Dahili Url'nin**yanında, api'ye intranetinizin içinden erişmek için kullandığınız URL'yi girin.
       
-   1. **Ön kimlik doğrulamanın** **Azure Active Directory**olarak ayarlandığından emin olun. 
+   1. Ön **Kimlik Doğrulama'nın** **Azure Etkin Dizini**olarak ayarlandıklarına emin olun. 
       
-   1. Sayfanın üst kısmında **Ekle** ' yi seçin ve uygulamanın oluşturulmasını bekleyin.
+   1. Sayfanın üst kısmında **Ekle'yi** seçin ve uygulamanın oluşturulmasını bekleyin.
    
    ![API uygulaması ekleme](./media/application-proxy-secure-api-access/3-add-api-app.png)
    
-1. **Kurumsal uygulamalar-tüm uygulamalar** sayfasında, **secretapi** uygulamasını seçin. 
+1. Kurumsal **uygulamalarda - Tüm uygulamalar** sayfasında **SecretAPI** uygulamasını seçin. 
    
-1. **Secretapi-genel bakış** sayfasında sol gezinmede **Özellikler** ' i seçin.
+1. **SecretAPI - Genel Bakış** sayfasında, sol gezintideki **Özellikler'i** seçin.
    
-1. API 'Lerin **Uygps** panelindeki son kullanıcılar için kullanılabilir olmasını istemezsiniz, bu nedenle **kullanıcılar için** **Özellikler** sayfasının alt kısmında **Hayır** olarak görünür yapın ve ardından **Kaydet**' i seçin.
+1. API'lerin **MyApps** panelinde son kullanıcılar tarafından kullanılabileceğini istemediğiniz için, **Kullanıcılar** tarafından Özellikler sayfasının alt kısmında **Kisiler'** i ayarlayın ve ardından **Kaydet'i**seçin. **No**
    
-   ![Kullanıcılara görünür değil](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
+   ![Kullanıcılar tarafından görülemez](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
    
-Web API 'nizi Azure AD Uygulama Ara Sunucusu ile yayımladınız. Şimdi, uygulamaya erişebilen kullanıcıları ekleyin. 
+Web API'nizi Azure AD Application Proxy aracılığıyla yayımladınız. Şimdi, uygulamaya erişebilen kullanıcıları ekleyin. 
 
-1. **Secretapi-genel bakış** sayfasında, sol gezinti bölmesinde **Kullanıcılar ve gruplar** ' ı seçin.
+1. **SecretAPI - Genel Bakış** sayfasında, sol navigasyondaki **Kullanıcıları ve grupları** seçin.
    
-1. **Kullanıcılar ve gruplar** sayfasında **Kullanıcı Ekle**' yi seçin.  
+1. Kullanıcılar **ve gruplar** sayfasında **Kullanıcı Ekle'yi**seçin.  
    
-1. **Atama Ekle** sayfasında, **Kullanıcılar ve gruplar**' ı seçin. 
+1. Atama **Ekle** **sayfasında, Kullanıcılar ve gruplar**seçin. 
    
-1. **Kullanıcılar ve gruplar** sayfasında, uygulamaya erişebilen kullanıcıları arayın ve en azından kendinize dahil edebilirsiniz. Tüm kullanıcılar ' ı seçtikten sonra **Seç**' i seçin. 
+1. Kullanıcılar **ve gruplar** sayfasında, en azından kendiniz de dahil olmak üzere uygulamaya erişebilecek kullanıcıları arayın ve seçin. Tüm kullanıcıları seçtikten sonra **Seç'i**seçin. 
    
-   ![Kullanıcı Seç ve ata](./media/application-proxy-secure-api-access/7-select-admin-user.png)
+   ![Kullanıcıyı seçme ve atama](./media/application-proxy-secure-api-access/7-select-admin-user.png)
    
-1. **Atama Ekle** sayfasında, **ata**' yı seçin. 
+1. **Atama Ekle** sayfasında, **Atama'yı**seçin. 
 
 > [!NOTE]
-> Tümleşik Windows kimlik doğrulaması kullanan API 'Ler için [ek adımlar](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)gerekebilir.
+> Tümleşik Windows Kimlik Doğrulaması kullanan [API'ler ek adımlar](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)gerektirebilir.
 
-## <a name="register-the-native-app-and-grant-access-to-the-api"></a>Yerel uygulamayı kaydetme ve API 'ye erişim izni verme
+## <a name="register-the-native-app-and-grant-access-to-the-api"></a>Yerel uygulamayı kaydedin ve API'ye erişim izni ver
 
-Yerel uygulamalar, belirli bir platformda veya cihazda kullanılmak üzere geliştirilen programlardır. Yerel uygulamanızın bir API 'ye bağlanıp bir API 'ye erişebilmesi için Azure AD 'ye kaydetmeniz gerekir. Aşağıdaki adımlarda, yerel bir uygulamanın nasıl kaydedileceği ve uygulama proxy 'Si aracılığıyla yayımladığınız Web API 'sine nasıl erişim verilecek gösterilmektedir.
+Yerel uygulamalar, belirli bir platformda veya cihazda kullanılmak üzere geliştirilmiş programlardır. Yerel uygulamanız bir API'ye bağlanıp erişemeden önce, uygulamayı Azure AD'ye kaydetmeniz gerekir. Aşağıdaki adımlar, yerel bir uygulamayı nasıl kaydedin ve Uygulama Proxy aracılığıyla yayınladığınız web API'sine nasıl erişirebildiğini gösterir.
 
 AppProxyNativeAppSample yerel uygulamasını kaydetmek için:
 
-1. Azure Active Directory **genel bakış** sayfasında **uygulama kayıtları**' i seçin ve **uygulama kayıtları** bölmesinin üst kısmında **Yeni kayıt**' yi seçin.
+1. Azure Active Directory **Overview** sayfasında, **Uygulama kayıtlarını**seçin ve **Uygulama kayıtları** bölmesinin üst kısmında Yeni **kayıt'ı**seçin.
    
-1. **Uygulama kaydetme** sayfasında:
+1. Bir başvuru sayfasını **kaydedin:**
    
-   1. **Ad**alanına *Appproxynativeappsample*yazın. 
+   1. **Adı**altında, *AppProxyNativeAppSample*girin. 
       
-   1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin. 
+   1. **Desteklenen hesap türleri**altında, tüm kuruluş **dizininde ve kişisel Microsoft hesaplarında Hesapları**seçin. 
       
-   1. **Yeniden yönlendirme URL 'si**altında, açılır istemci ' ı **(mobil & Masaüstü)** seçin ve ardından *https:\//appproxynativeapp*komutunu girin. 
+   1. **Url'yi Yeniden Yönlendirme**altında, açılır ve **Ortak istemci (mobil & masaüstü)** seçin ve sonra *https girin:\//appproxynativeapp*. 
       
-   1. **Kaydet**' i seçin ve uygulamanın başarıyla kaydedilmesini bekleyin. 
+   1. **Kaydol'u**seçin ve uygulamanın başarıyla kaydolmasını bekleyin. 
       
       ![Yeni uygulama kaydı](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
    
-AppProxyNativeAppSample uygulamasını şimdi Azure Active Directory kaydettiniz. Yerel uygulamanıza SecretAPI Web API 'sine erişim sağlamak için:
+AppProxyNativeAppSample uygulamasını Azure Active Directory'ye kaydettiniz. Yerel uygulamanızın SecretAPI web API'sine erişmesini sağlamak için:
 
-1. Azure Active Directory **genel bakış** > **uygulama kayıtları** sayfasında **Appproxynativeappsample** uygulamasını seçin. 
+1. Azure Active Directory **Overview** > **App Registrations** sayfasında **AppProxyNativeAppSample** uygulamasını seçin. 
    
-1. **Appproxynativeappsample** sayfasında, sol gezinti bölmesinde **API izinleri** ' ni seçin. 
+1. **AppProxyNativeAppSample** sayfasında, sol navigasyonda **API izinlerini** seçin. 
    
-1. **API izinleri** sayfasında **izin Ekle**' yi seçin.
+1. **API izinleri** sayfasında **izin ekle'yi**seçin.
    
-1. İlk **istek API 'si izinleri** sayfasında, **Kuruluşumun kullandığı API 'leri** seçin ve ardından **secretapi**' ı arayıp seçin. 
+1. İlk **İstek API izinleri** sayfasında, **kuruluşumun kullandığı API'leri** seçin ve ardından **SecretAPI'yi**arayın ve seçin. 
    
-1. Sonraki **istek API 'si izinleri** sayfasında, **user_impersonation**' nin yanındaki onay kutusunu Işaretleyin ve ardından **izin Ekle**' yi seçin. 
+1. Sonraki **İstek API izinleri** sayfasında, **user_impersonation**yanındaki onay kutusunu seçin ve ardından **İzin Ekle'yi**seçin. 
    
     ![Bir API seçin](./media/application-proxy-secure-api-access/10-secretapi-added.png)
    
-1. **API izinleri** sayfasına geri döndüğünüzde, diğer kullanıcıların uygulamaya tek tek izin vermesini engellemek için **contoso Için yönetici izni ver** ' i seçebilirsiniz. 
+1. **API izinleri** sayfasında, diğer kullanıcıların uygulamayı tek tek kabul etmesini önlemek **için Contoso için Grant admin onayı** seçebilirsiniz. 
 
 ## <a name="configure-the-native-app-code"></a>Yerel uygulama kodunu yapılandırma
 
-Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1.cs* dosyasındaki aşağıdaki kod parçacığı, adal kitaplığının API çağrısını istemek için belirteci almasına ve uygulama üstbilgisine taşıyıcı olarak iliştirmesine neden olur. 
+Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1.cs* dosyasından aşağıdaki parçacık, ADAL kitaplığı'nın API çağrısını istemek için belirteci edinmesine ve bunu uygulama üstbilgisine taşıyıcı olarak iliştirilmesine neden olur. 
    
    ```csharp
        AuthenticationResult result = null;
@@ -155,24 +155,24 @@ Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamas�
        MessageBox.Show(s);
    ```
    
-Yerel uygulamayı Azure Active Directory bağlanacak şekilde yapılandırmak ve API uygulama ara sunucusunu çağırmak için, NativeClient örnek uygulamasının *app. config* dosyasındaki yer tutucu DEğERLERINI Azure AD ile güncelleştirin: 
+Azure Active Directory'ye bağlanacak şekilde yerel uygulamayı yapılandırmak ve API App Proxy'yi aramak için, NativeClient örnek uygulamasının *App.config* dosyasındaki yer tutucu değerlerini Azure AD'deki değerlerle güncelleştirin: 
 
-- `<add key="ida:Tenant" value="" />` alanına **Dizin (kiracı) kimliğini** yapıştırın. Bu değeri (bir GUID), uygulamalarınızdan birinin **genel bakış** sayfasından bulabilir ve kopyalayabilirsiniz. 
+- Dizini **(kiracı) kimliğini** alana `<add key="ida:Tenant" value="" />` yapıştırın. Bu değeri (GUID) uygulamalarınızın genel **bakış** sayfasından bulabilir ve kopyalayabilirsiniz. 
   
-- AppProxyNativeAppSample **uygulaması (istemci) kimliğini** `<add key="ida:ClientId" value="" />` alanına yapıştırın. Bu değeri (bir GUID) AppProxyNativeAppSample **genel bakış** sayfasından bulup kopyalayabilirsiniz.
+- AppProxyNativeAppSample Uygulamasını **(istemci) kimliğini** alana `<add key="ida:ClientId" value="" />` yapıştırın. AppProxyNativeAppSample **Genel Bakış** sayfasından bu değeri (GUID) bulabilir ve kopyalayabilirsiniz.
   
-- AppProxyNativeAppSample **yeniden YÖNLENDIRME URI** 'sini `<add key="ida:RedirectUri" value="" />` alanına yapıştırın. Bu değeri (bir URI) AppProxyNativeAppSample **kimlik doğrulama** sayfasından bulup kopyalayabilirsiniz. 
+- AppProxyNativeAppSample Alanında **URI** `<add key="ida:RedirectUri" value="" />` Yönlendirme yapıştırın. AppProxyNativeAppSample **Kimlik Doğrulama** sayfasından bu değeri (URI) bulabilir ve kopyalayabilirsiniz. 
   
-- `<add key="todo:TodoListResourceId" value="" />` alanına SecretAPI **uygulama KIMLIĞI URI** 'sini yapıştırın. Bu değeri (bir URI), SecretAPI **BIR API** sayfasından bulup kopyalayabilirsiniz.
+- SecretAPI Uygulama **Kimliği** URI'yi `<add key="todo:TodoListResourceId" value="" />` alana yapıştırın. Bu değeri (URI) SecretAPI Expose bir **API** sayfasından bulabilir ve kopyalayabilirsiniz.
   
-- `<add key="todo:TodoListBaseAddress" value="" />` alanına SecretAPI **giriş sayfası URL 'sini** yapıştırın. Bu değeri (bir URL), SecretAPI **marka** sayfasından bulup kopyalayabilirsiniz.
+- SecretAPI Giriş **Sayfası** URL'sini `<add key="todo:TodoListBaseAddress" value="" />` alana yapıştırın. Bu değeri (URL) SecretAPI **Markalama** sayfasından bulabilir ve kopyalayabilirsiniz.
 
-Parametreleri yapılandırdıktan sonra yerel uygulamayı derleyin ve çalıştırın. **Oturum aç** düğmesini seçtiğinizde, uygulama oturum açmanıza olanak tanır ve sonra, secretapi 'e başarıyla bağlandığını doğrulamak için bir başarı ekranı görüntüler.
+Parametreleri yapılandırıldıktan sonra yerel uygulamayı oluşturun ve çalıştırın. **Oturum Aç** düğmesini seçtiğinizde, uygulama oturum açmanızı sağlar ve ardından SecretAPI'ye başarıyla bağdalı olduğunu doğrulamak için bir başarı ekranı görüntüler.
 
 ![Başarılı](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
-- [Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma](../develop/quickstart-configure-app-access-web-apis.md)
-- [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md)
+- [Öğretici: Azure Active Directory'de Application Proxy aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Hızlı başlatma: Web API'lerine erişmek için istemci uygulamasını yapılandırma](../develop/quickstart-configure-app-access-web-apis.md)
+- [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesi nasıl etkinleştirilir?](application-proxy-configure-native-client-application.md)

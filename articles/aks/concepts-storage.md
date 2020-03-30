@@ -1,66 +1,66 @@
 ---
-title: Kavramlar-Azure Kubernetes hizmetlerinde (AKS) depolama
-description: Azure Kubernetes Service 'teki (AKS) birimler, kalıcı birimler, depolama sınıfları ve talepler dahil depolama hakkında bilgi edinin
+title: Kavramlar - Azure Kubernetes Hizmetlerinde Depolama (AKS)
+description: Hacimler, kalıcı birimler, depolama sınıfları ve talepler dahil olmak üzere Azure Kubernetes Hizmetinde (AKS) depolama hakkında bilgi edinin
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596003"
 ---
-# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
+# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) uygulamaları için depolama seçenekleri
 
-Azure Kubernetes Service (AKS) içinde çalışan uygulamaların veri depolaması ve alması gerekebilir. Bazı uygulama iş yükleri için bu veri depolama alanı, düğüm silindiğinde artık gerekli olmayan yerel ve hızlı depolama alanını kullanabilir. Diğer uygulama iş yükleri, Azure platformunda daha düzenli veri birimlerinde devam eden bir depolama alanı gerektirebilir. Birden çok düğüm aynı veri birimlerini paylaşması veya Pod, farklı bir düğümde yeniden zamanlanırsa veri birimlerini yeniden iliştirmeniz gerekebilir. Son olarak, önemli verileri veya uygulama yapılandırma bilgilerini pods 'ye eklemeniz gerekebilir.
+Azure Kubernetes Hizmeti'nde (AKS) çalışan uygulamaların veri depolaması ve alması gerekebilir. Bazı uygulama iş yükleri için bu veri depolama, bakla silindiğinde artık gerekli olmayan düğümüzerinde yerel, hızlı depolama kullanabilir. Diğer uygulama iş yükleri, Azure platformunda daha düzenli veri birimlerinde kalıcı depolama gerektirebilir. Pod farklı bir düğüm üzerinde yeniden zamanlanmışsa, birden çok bölmenin aynı veri birimlerini paylaşması veya veri birimlerini yeniden eklemesi gerekebilir. Son olarak, hassas verileri veya uygulama yapılandırma bilgilerini bölmelere enjekte etmeniz gerekebilir.
 
-![Azure Kubernetes Services (AKS) kümesindeki uygulamalar için depolama seçenekleri](media/concepts-storage/aks-storage-options.png)
+![Azure Kubernetes Hizmetleri (AKS) kümesindeki uygulamalar için depolama seçenekleri](media/concepts-storage/aks-storage-options.png)
 
-Bu makalede AKS 'de uygulamalarınıza depolama sağlayan temel kavramlar tanıtılmaktadır:
+Bu makalede, AKS uygulamalarınıza depolama sağlayan temel kavramlar tanıtışlar:
 
-- [Dörtten](#volumes)
+- [Birim](#volumes)
 - [Kalıcı birimler](#persistent-volumes)
 - [Depolama sınıfları](#storage-classes)
 - [Kalıcı birim talepleri](#persistent-volume-claims)
 
 ## <a name="volumes"></a>Birimler
 
-Uygulamalar genellikle veri depolayabilmek ve alabilmesi gerekir. Kubernetes tipik olarak tek tek kaynakları, atılabilir kaynakları olarak değerlendirir ve uygulamaların verileri gerektiği şekilde kullanabilmesi ve kalıcı hale getirilebilmesi için farklı yaklaşımlar mevcuttur. Bir *birim* , veri ve uygulama yaşam döngüsü boyunca verileri depolamanın, almanın ve kalıcı hale getirmenin bir yolunu temsil eder.
+Uygulamaların genellikle veri depolayıp alabilmeleri gerekir. Kubernetes genellikle tek tek kullanımlık kaynaklar olarak ele aldığı için, uygulamaların verileri kullanması ve gerektiğinde devam etmesi için farklı yaklaşımlar mevcuttur. *Birim,* bölmeler arasında ve uygulama yaşam döngüsü nde verileri depolamanın, almanın ve kalıcı olarak saklamanın bir yolunu temsil eder.
 
-Verileri depolamak ve almak için geleneksel birimler, Azure depolama tarafından desteklenen Kubernetes kaynakları olarak oluşturulur. Bu veri birimlerini doğrudan veya Pod 'ye atanmak üzere el ile oluşturabilirsiniz veya Kubernetes onları otomatik olarak oluşturabilir. Bu veri birimleri, Azure disklerini veya Azure dosyalarını kullanabilir:
+Verileri depolamak ve almak için geleneksel birimler, Azure Depolama tarafından desteklenen Kubernetes kaynakları olarak oluşturulur. Bu veri hacimlerini doğrudan bölmelere atanacak şekilde el ile oluşturabilir veya Kubernetes'in bunları otomatik olarak oluşturmasını sağlayabilirsiniz. Bu veri birimleri Azure Diskleri veya Azure Dosyaları kullanabilir:
 
-- *Azure diskleri* , bir Kubernetes *veri diski* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD 'Ler tarafından desteklenen Azure Premium Depolama veya normal HDD 'Ler tarafından desteklenen Azure Standart depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
-- *Azure dosyaları* , Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilir. Dosyalar, verileri birden çok düğümde ve düğüm genelinde paylaşmanızı sağlar. Dosyalar, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama alanını kullanabilir.
+- *Azure Diskleri* bir Kubernetes *DataDisk* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD'ler tarafından desteklenen Azure Premium depolama alanını veya normal HDD'ler tarafından desteklenen Azure Standart depolama alanını kullanabilir. Çoğu üretim ve geliştirme iş yükü için Premium depolama alanını kullanın. Azure Diskler *ReadWriteOnce*olarak monte edilir, bu nedenle yalnızca tek bir bölme için kullanılabilir. Aynı anda birden çok bölmeyle erişilebilen depolama birimleri için Azure Dosyaları'nı kullanın.
+- *Azure Dosyaları,* Bir Azure Depolama hesabı tarafından desteklenen bir SMB 3.0 paylaşımını bölmelere takmak için kullanılabilir. Dosyalar, verileri birden çok düğüm ve bölme arasında paylaşmanıza izin eder. Dosyalar, normal HDD'ler tarafından desteklenen Azure Standart depolama alanını veya yüksek performanslı SSD'ler tarafından desteklenen Azure Premium depolama alanını kullanabilir.
 > [!NOTE] 
-> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
+> Azure Dosyaları, Kubernetes 1,13 veya daha yüksek çalıştıran AKS kümelerinde premium depolamayı destekler.
 
-Kubernetes 'te birimler, bilgilerin saklanabileceği ve alınabileceği yalnızca geleneksel bir diskten fazlasını temsil edebilir. Kubernetes birimleri, kapsayıcılar tarafından kullanılmak üzere bir pod 'a veri eklemenin bir yolu olarak da kullanılabilir. Kubernetes 'te ortak ek birim türleri şunlardır:
+Kubernetes'te birimler, bilgilerin depolanabileceği ve alınabildiği geleneksel bir diskten daha fazlasını temsil edebilir. Kubernetes hacimleri, kapsayıcılar tarafından kullanılmak üzere bir bölmeye veri enjekte etmenin bir yolu olarak da kullanılabilir. Kubernetes'te yaygın ek birim türleri şunlardır:
 
-- *Emptydir* -bu birim genellikle pod için geçici alan olarak kullanılır. Pod içindeki tüm kapsayıcılar birimdeki verilere erişebilir. Bu birim türüne yazılan veriler yalnızca Pod 'un kullanım ömrü boyunca devam ettirir-Pod silindiğinde birim silinir. Bu birim genellikle temel alınan yerel düğüm Disk depolamayı kullanır, ancak yalnızca düğümün belleğinde de bulunabilir.
-- *gizli* -bu birim parola gibi önemli verileri pods 'ye eklemek için kullanılır. İlk olarak Kubernetes API 'sini kullanarak bir gizli dizi oluşturursunuz. Pod veya dağıtımınızı tanımladığınızda, belirli bir gizli dizi istenebilir. Gizli diziler yalnızca, bir zamanlanmış Pod içeren düğümlere sağlanır ve gizli dizi diske yazılmadı ve *tmpfs*'de depolanır. Gizli anahtar gerektiren bir düğümdeki son Pod silindiğinde, parola, düğümün tmpfs 'den silinir. Gizli diziler belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanında yer alan Pod tarafından erişilebilir.
-- *Configmap* -bu birim türü, anahtar-değer çifti özelliklerini pods 'ye eklemek için kullanılır (örneğin, uygulama yapılandırma bilgileri). Bir kapsayıcı görüntüsü içinde uygulama yapılandırma bilgilerini tanımlamak yerine, bu dosyayı kolayca güncelleştirilebileceği ve dağıtıldığı için yeni düğüm örneklerine uygulanabilecek bir Kubernetes kaynağı olarak tanımlayabilirsiniz. Gizli anahtar kullanma gibi, ilk olarak Kubernetes API 'sini kullanarak bir ConfigMap oluşturursunuz. Bu ConfigMap, daha sonra bir pod veya dağıtım tanımladığınızda istenebilir. Configmaps, belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanında yer alan Pod tarafından erişilebilir.
+- *emptyDir* - Bu birim genellikle bir bölme için geçici alan olarak kullanılır. Bir bölmeiçindeki tüm kapsayıcılar birimdeki verilere erişebilir. Bu birim türüne yazılan veriler yalnızca bölmenin ömrü boyunca kalır - bölme silindiğinde, birim silinir. Bu birim genellikle altta yatan yerel düğüm disk depolama kullanır, ancak yalnızca düğümün belleğinde de bulunabilir.
+- *gizli* - Bu birim, parolalar gibi bölmelere hassas verileri enjekte etmek için kullanılır. Önce Kubernetes API'sini kullanarak bir Gizli oluşturursunuz. Bölmenizi veya dağıtımınızı tanımladığınızda, belirli bir Gizli istenebilir. Sırlar yalnızca bunu gerektiren zamanlanmış bir bölmeye sahip düğümlere sağlanır ve Gizli, diske yazılmayan *tmpfs'de*depolanır. Gizli gerektiren bir düğümdeki son bölme silindiğinde, Gizli düğümün tmpfs'sinden silinir. Sırlar belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanı içindeki bölmeler tarafından erişilebilir.
+- *configMap* - Bu birim türü, uygulama yapılandırma bilgileri gibi bölmelere anahtar değeri çifti özelliklerini enjekte etmek için kullanılır. Kapsayıcı görüntüsünde uygulama yapılandırma bilgilerini tanımlamak yerine, bunu kolayca güncelleştirilebilen ve dağıtılırken yeni bölme örneklerine uygulanabilen bir Kubernetes kaynağı olarak tanımlayabilirsiniz. Gizli kullanmak gibi, önce Kubernetes API'sini kullanarak bir ConfigMap oluşturursunuz. Bu ConfigMap daha sonra bir bölme veya dağıtım tanımladığınızda istenebilir. ConfigMaps belirli bir ad alanı içinde saklanır ve yalnızca aynı ad alanı içinde bölmeler tarafından erişilebilir.
 
 ## <a name="persistent-volumes"></a>Kalıcı birimler
 
-Pod yaşam döngüsünün bir parçası olarak tanımlanan ve oluşturulan birimler yalnızca Pod silinene kadar bulunur. Bir pod, özellikle de StatefulSets 'de bakım olayı sırasında farklı bir konakta yeniden zamanlanırsa, genellikle depolama alanının kalmasını bekler. *Kalıcı bir birim* (BD), Kubernetes API 'si tarafından oluşturulan ve yönetilen bir depolama kaynağıdır ve tek bir pod 'ın yaşam süresinden daha fazla olabilir.
+Pod yaşam döngüsünün bir parçası olarak tanımlanan ve oluşturulan birimler yalnızca bölme silinene kadar bulunur. Podlar genellikle bir bölme, özellikle StatefulSets'te bir bakım olayı sırasında farklı bir ana bilgisayarda yeniden zamanlanırsa depolama alanlarının kalmasını bekler. *Kalıcı birim* (PV), Kubernetes API tarafından oluşturulan ve yönetilen ve tek bir bölmenin ömrü dışında var olabilecek bir depolama kaynağıdır.
 
-Azure diskleri veya dosyaları, PersistentVolume sağlamak için kullanılır. Birimlerin önceki bölümünde belirtildiği gibi, disk veya dosya seçimi genellikle verilere veya performans katmanına eşzamanlı erişim gereksinimi ile belirlenir.
+Kalıcı Birim'i sağlamak için Azure Diskleri veya Dosyaları kullanılır. Birimler'in önceki bölümünde belirtildiği gibi, Disk veya Dosya seçimi genellikle verilere veya performans katmanına eşzamanlı erişim gereksinimine göre belirlenir.
 
-![Azure Kubernetes Services (AKS) kümesindeki kalıcı birimler](media/concepts-storage/persistent-volumes.png)
+![Azure Kubernetes Hizmetleri (AKS) kümesinde kalıcı birimler](media/concepts-storage/persistent-volumes.png)
 
-PersistentVolume bir küme yöneticisi tarafından *statik* olarak veya Kubernetes API sunucusu tarafından *dinamik olarak* oluşturulabilir. Bir pod zamanlanırsa ve şu anda kullanılamayan depolama alanı istiyorsa Kubernetes, temel alınan Azure disk veya dosya depolama alanını oluşturabilir ve pod 'a ekler. Dinamik sağlama, hangi tür Azure depolama biriminin oluşturulması gerektiğini belirlemek için bir *Storageclass* kullanır.
+PersistentVolume statik *bir* küme yöneticisi tarafından oluşturulabilir veya Dinamik *Olarak* Kubernetes API sunucusu tarafından oluşturulabilir. Bir bölme zamanlanmışsa ve şu anda kullanılamayan depolama yı talep ederse, Kubernetes altta yatan Azure Disk veya Dosyalar depolama alanını oluşturabilir ve bölmeye ekleyebilir. Dinamik sağlama, ne tür bir Azure depolama alanı oluşturulması gerektiğini belirlemek için bir *StorageClass* kullanır.
 
 ## <a name="storage-classes"></a>Depolama sınıfları
 
-Premium ve standart gibi farklı depolama katmanlarını tanımlamak için bir *Storageclass*oluşturabilirsiniz. StorageClass Ayrıca *reclaimPolicy*tanımlar. Bu reclaimPolicy pod silinir ve kalıcı hacim artık gerekli olmayabilir, temel alınan Azure depolama kaynağı davranışını denetler. Temel alınan depolama kaynağı silinmiş veya gelecekteki bir pod ile kullanılmak üzere saklanır.
+Premium ve Standart gibi farklı depolama katmanları tanımlamak için bir *StorageClass*oluşturabilirsiniz. StorageClass ayrıca geri *alma Politikası'nı*da tanımlar. Bu geri alma Politikası, bölme silindiğinde ve kalıcı birim artık gerekmediğinde, temel Azure depolama kaynağının davranışını denetler. Temel depolama kaynağı silinebilir veya gelecekteki bir bölmeyle kullanılmak üzere saklanabilir.
 
-AKS 'de, iki adet ilk StorageClasses oluşturulur:
+AKS'de iki ilk Depolama Sınıfı oluşturulur:
 
-- *varsayılan* -yönetilen bir disk oluşturmak Için Azure Standart depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
-- *yönetilen-Premium* -yönetilen disk oluşturmak Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kendisini kullanan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
+- *varsayılan* - Yönetilen Disk oluşturmak için Azure Standart depolama alanını kullanır. Geri alma ilkesi, kullanılan kalıcı birim silindiğinde temel Azure Diskinin silindiğini gösterir.
+- *yönetilen premium* - Yönetilen Disk'i oluşturmak için Azure Premium depolama alanını kullanır. Geri alma ilkesi, kullanılan kalıcı birim silindiğinde temel Azure Diskinin silindiğini yine gösterir.
 
-Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. `kubectl`kullanarak ek gereksinimler için bir StorageClass oluşturabilirsiniz. Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
+Kalıcı bir birim için StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. İhtiyacınız olan uygun depolama alanını kullanmaları için kalıcı hacimler isterken dikkatli olun. Ek ihtiyaçlar için bir StorageClass oluşturabilirsiniz. `kubectl` Aşağıdaki örnekte Premium Yönetilen Diskler kullanılır ve bölme silindiğinde temel Azure Diskinin *korunması* gerektiğini belirtir:
 
 ```yaml
 kind: StorageClass
@@ -76,13 +76,13 @@ parameters:
 
 ## <a name="persistent-volume-claims"></a>Kalıcı birim talepleri
 
-PersistentVolumeClaim, belirli bir StorageClass, erişim modu ve boyutun disk veya dosya depolamasını ister. Kubernetes API sunucusu, tanımlanan StorageClass temelinde talebi yerine getirmek için mevcut bir kaynak yoksa Azure 'da temel alınan depolama kaynağını dinamik olarak sağlayabilir. Pod tanımı, birim Pod 'a bağlandıktan sonra birim bağlama içerir.
+PersistentVolumeClaim, belirli bir StorageClass'ın Disk veya Dosya depolamasını, erişim modunu ve boyutunu ister. Kubernetes API sunucusu, tanımlanan StorageClass'ı temel alan talebi yerine getirmek için varolan bir kaynak yoksa Azure'daki temel depolama kaynağını dinamik olarak sağlayabilir. Bölme tanımı, birim bölmeye bağlandıktan sonra ses montajını içerir.
 
-![Azure Kubernetes Hizmetleri (AKS) kümesini Taleplerde kalıcı hacim](media/concepts-storage/persistent-volume-claims.png)
+![Azure Kubernetes Hizmetleri (AKS) kümesinde kalıcı birim talepleri](media/concepts-storage/persistent-volume-claims.png)
 
-Bir PersistentVolume, kullanılabilir bir depolama kaynağı tarafından istenen Pod 'a atandıktan sonra bir PersistentVolumeClaim 'e *bağlanır* . Talepler için kalıcı birimlerin 1:1 eşlemesi vardır.
+Kalıcı Birim, kullanılabilir bir depolama kaynağı isteğiolan bölmeye atandıktan sonra Kalıcı Birim Talebine *bağlanır.* Taleplere kalıcı birimlerin 1:1 eşlemi vardır.
 
-Aşağıdaki örnek YAML bildirimi, *yönetilen-Premium* storageclass kullanan kalıcı bir birim talebi gösterir ve şu boyutta bir disk *5 gi* ister:
+Aşağıdaki örnek YAML bildirimi, *yönetilen premium* StorageClass'ı kullanan ve disk 5Gi boyutunda bir Disk *5Gi* isteyen kalıcı bir topluluk iddiasını gösterir:
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ spec:
       storage: 5Gi
 ```
 
-Pod tanımı oluşturduğunuzda, kalıcı birim talebi istenen depolamayı istemek için belirtilir. Ayrıca, veri okumak ve yazmak için uygulamalarınız için *Volumemount* öğesini de belirtirsiniz. Aşağıdaki örnek YAML bildirimi, önceki kalıcı birim talebinin, */mnt/Azure*' da bir birimi bağlamak için nasıl kullanılabileceğini gösterir:
+Bir pod tanımı oluşturduğunuzda, kalıcı birim talebi istenen depolama istemek için belirtilir. Ayrıca, uygulamalarınızın veri okuması ve yazması için *ciltMount'u* da belirtin. Aşağıdaki örnek YAML bildirimi, önceki kalıcı birim talebinin */mnt/azure'a*bir birim monte etmek için nasıl kullanılabileceğini gösterir:
 
 ```yaml
 kind: Pod
@@ -120,22 +120,22 @@ spec:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlişkili en iyi uygulamalar için bkz. [AKS 'de depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
+İlişkili en iyi uygulamalar [için, AKS'deki depolama ve yedekleme ler için en iyi uygulamalara][operator-best-practices-storage]bakın.
 
-Azure diskleri veya Azure dosyaları kullanan dinamik ve statik birimler oluşturmayı öğrenmek için aşağıdaki nasıl yapılır makalelerine bakın:
+Azure Diskleri veya Azure Dosyaları kullanan dinamik ve statik birimlerin nasıl oluşturulup oluşturultamalarını görmek için aşağıdaki nasıl yapılBilen makalelere bakın:
 
-- [Azure disklerini kullanarak statik birim oluşturma][aks-static-disks]
-- [Azure dosyalarını kullanarak statik birim oluşturma][aks-static-files]
-- [Azure disklerini kullanarak dinamik birim oluşturma][aks-dynamic-disks]
-- [Azure dosyalarını kullanarak dinamik birim oluşturma][aks-dynamic-files]
+- [Azure Diskleri kullanarak statik bir birim oluşturma][aks-static-disks]
+- [Azure Dosyalarını kullanarak statik bir birim oluşturma][aks-static-files]
+- [Azure Diskleri kullanarak dinamik bir birim oluşturma][aks-dynamic-disks]
+- [Azure Dosyalarını kullanarak dinamik bir birim oluşturma][aks-dynamic-files]
 
-Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Çekirdek Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Kubernetes/AKS kümeleri ve iş yükleri][aks-concepts-clusters-workloads]
-- [Kubernetes/AKS kimliği][aks-concepts-identity]
-- [Kubernetes/AKS güvenliği][aks-concepts-security]
-- [Kubernetes/AKS sanal ağları][aks-concepts-network]
-- [Kubernetes/AKS ölçeği][aks-concepts-scale]
+- [Kubernetes / AKS kümeleri ve iş yükleri][aks-concepts-clusters-workloads]
+- [Kubernetes / AKS kimliği][aks-concepts-identity]
+- [Kubernetes / AKS güvenlik][aks-concepts-security]
+- [Kubernetes / AKS sanal ağlar][aks-concepts-network]
+- [Kubernetes / AKS ölçeği][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

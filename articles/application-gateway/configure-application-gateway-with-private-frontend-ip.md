@@ -1,7 +1,7 @@
 ---
-title: İç yük dengeleyici (ıLB) uç noktası yapılandırma
+title: Dahili yük dengeleyicisi (ILB) uç noktasını yapılandırma
 titleSuffix: Azure Application Gateway
-description: Bu makalede, Application Gateway özel bir ön uç IP adresi ile nasıl yapılandırılacağı hakkında bilgi sağlanır
+description: Bu makalede, özel bir ön uç IP adresi ile Uygulama Ağ Geçidi yapılandırmak için nasıl bilgi sağlar
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -9,108 +9,108 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
 ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198641"
 ---
-# <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>İç yük dengeleyici (ıLB) uç noktası ile uygulama ağ geçidi yapılandırma
+# <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Bir uygulama ağ geçidini dahili yük dengeleyicisi (ILB) uç noktası ile yapılandırma
 
-Azure Application Gateway, Internet 'e yönelik bir VIP ile veya Internet 'e açık olmayan bir iç uç nokta ile yapılandırılabilir. İç uç nokta, *iç yük dengeleyici (ıLB) uç noktası*olarak da bilinen, ön uç için özel bir IP adresi kullanır.
+Azure Uygulama Ağ Geçidi, Internet'e bakan bir VIP ile veya Internet'e maruz kalmamış dahili bir uç noktayla yapılandırılabilir. Dahili uç nokta, ön uç için özel bir IP adresi kullanır ve bu adres *dahili yük dengeleyicisi (ILB) uç noktası*olarak da bilinir.
 
-Ön uç özel IP adresi kullanarak ağ geçidini yapılandırmak, Internet 'e açık olmayan iç iş kolu uygulamaları için yararlıdır. Ayrıca, Internet 'e açık olmayan ancak hepsini bir kez deneme yük dağıtımı, oturum sürekliliği veya Güvenli Yuva Katmanı (SSL) sonlandırma gerektiren bir güvenlik sınırında olan çok katmanlı bir uygulama içindeki hizmetler ve katmanlar için de kullanışlıdır.
+Ön uçözel IP adresi kullanarak ağ geçidini yapılandırmak, Internet'e maruz olmayan şirket içi uygulamalar için yararlıdır. Ayrıca, Internet'e maruz kalmayan ancak yine de round-robin yük dağıtımı, oturum yapışkanlığı veya Güvenli Soketkatmanı (SSL) sonlandırma gerektiren bir güvenlik sınırında olan çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de yararlıdır.
 
-Bu makale, Azure portal kullanarak bir ön uç özel IP adresi ile uygulama ağ geçidi yapılandırma adımlarında size rehberlik eder.
+Bu makale, Azure portalını kullanarak bir uygulama ağ geçidini ön uçözel IP adresiyle yapılandırma adımları boyunca size yol gösterilmektedir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-<https://portal.azure.com> Azure portal oturum açın
+<https://portal.azure.com> adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, yeni bir sanal ağ oluşturursunuz. Uygulama ağ geçidini oluştururken aynı zamanda bir sanal makine oluşturabilirsiniz. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
+Azure'un oluşturduğunuz kaynaklar arasında iletişim kurabilmesi için sanal bir ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya varolan bir ağ kullanabilirsiniz. Bu örnekte, yeni bir sanal ağ oluşturursunuz. Uygulama ağ geçidini oluştururken aynı zamanda bir sanal makine oluşturabilirsiniz. Uygulama Ağ Geçidi örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: biri uygulama ağ geçidi için, diğeri de arka uç sunucuları için.
 
-1. Portal menüsünü genişletin ve **kaynak oluştur**' u seçin.
+1. Portal menüsünü genişletin ve **kaynak oluştur'u**seçin.
 2. **Ağ** ve ardından Öne Çıkanlar listesinde **Application Gateway**’i seçin.
-3. Uygulama ağ geçidinin adı ve yeni kaynak grubu için *myResourceGroupAG* Için *myappgateway* yazın.
-4. **Bölge**Için **(US) Orta ABD**seçin.
-5. **Katman**için **Standart**' ı seçin.
-6. **Sanal ağı Yapılandır** altında **Yeni oluştur**' u seçin ve ardından sanal ağ için şu değerleri girin:
+3. Uygulama ağ geçidinin adı için *myAppGateway'i* ve yeni kaynak grubu için *myResourceGroupAG'ı* girin.
+4. **Bölge**için **(ABD) Orta ABD'yi**seçin.
+5. **Katman**için **Standart'ı**seçin.
+6. **Sanal ağı Yapılandırma** altında yeni **oluştur'u**seçin ve ardından sanal ağ için bu değerleri girin:
    - *myVNet* - Sanal ağın adı.
    - *10.0.0.0/16* - Sanal ağın adres alanı.
    - *myAGSubnet* - Alt ağın adı.
    - *10.0.0.0/24* - Alt ağın adres alanı.
-   - arka uç alt ağ adı için *Mybackendsubnet* .
-   - *10.0.1.0/24* -arka uç alt ağ adres alanı için.
+   - *myBackendSubnet* - arka uç alt net adı için.
+   - *10.0.1.0/24* - arka uç alt net adres alanı için.
 
     ![Sanal ağ oluşturma](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 
-6. Sanal ağı ve alt ağı oluşturmak için **Tamam ' ı** seçin.
-7. **İleri ' yi seçin: ön uçlar**.
-8. **Ön uç IP adresi türü**için **özel**' i seçin.
+6. Sanal ağ ve alt ağ oluşturmak için **Tamam'ı** seçin.
+7. **Sonraki'ni seçin:Frontends.**
+8. **Frontend IP adresi türü için** **Özel'i**seçin.
 
-   Bu, varsayılan olarak dinamik bir IP adresi atamasıdır. Yapılandırılan alt ağın ilk kullanılabilir adresi, ön uç IP adresi olarak atanır.
+   Varsayılan olarak, dinamik bir IP adresi ataması. Yapılandırılan alt ağın kullanılabilir ilk adresi ön uç IP adresi olarak atanır.
    > [!NOTE]
-   > Ayrıldıktan sonra, IP adresi türü (statik veya dinamik) daha sonra değiştirilemez.
-9. **İleri ' yi seçin: Backenler**.
-10. **Arka uç Havuzu Ekle**' yi seçin.
-11. **Ad**Için *Appgatewaybackendpool*yazın.
-12. **Hedefleri olmayan arka uç havuzu ekleme**için **Evet**' i seçin. Hedefleri daha sonra ekleyeceksiniz.
-13. **Add (Ekle)** seçeneğini belirleyin.
-14. Ileri 'yi seçin **: yapılandırma**.
-15. **Yönlendirme kuralları**altında **Kural Ekle**' yi seçin.
-16. **Kural adı**Için *rrule-01*yazın.
-17. **Dinleyici adı**Için, *Listener-01*yazın.
-18. **Ön uç IP 'si**için **özel**' i seçin.
-19. Kalan Varsayılanları kabul edin ve **arka uç hedefleri** sekmesini seçin.
-20. **Hedef türü**Için **arka uç havuzu**' nu seçin ve ardından **appgatewaybackendpool**' u seçin.
-21. **Http ayarı**Için **Yeni oluştur**' u seçin.
-22. **Http ayar adı**için *http-Setting-01*yazın.
-23. **Arka uç Protokolü**için **http**' yi seçin.
-24. **Arka uç bağlantı noktası**için *80*yazın.
-25. Kalan Varsayılanları kabul edin ve **Ekle**' yi seçin.
-26. **Yönlendirme kuralı ekle** sayfasında **Ekle**' yi seçin.
-27. **Sonraki: Etiketler**' i seçin.
-28. **İleri ' yi seçin: gözden geçir + oluştur**.
-29. Özet sayfasındaki ayarları gözden geçirin ve ardından **Oluştur** ' u seçerek ağ kaynaklarını ve uygulama ağ geçidini oluşturun. Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Bir sonraki bölüme geçmeden önce Dağıtım başarıyla bitene kadar bekleyin.
+   > Ayrıldıktan sonra IP adresi türü (statik veya dinamik) daha sonra değiştirilemez.
+9. **Sonraki:Backends'i**seçin.
+10. **Arka uç havuzu ekle'yi**seçin.
+11. **Ad**için , *appGatewayBackendPool*yazın.
+12. **Hedefsiz arka uç havuzu ekle**için **Evet'i**seçin. Hedefleri daha sonra eklersiniz.
+13. **Ekle'yi**seçin.
+14. **Sonraki:Yapılandırma'yı**seçin.
+15. **Yönlendirme kuralları altında,** **kural ekle'yi**seçin.
+16. **Kural adı**için *Rrule-01*yazın.
+17. **Dinleyici adı için,** *Listener-01*yazın.
+18. **Frontend IP için** **Özel'i**seçin.
+19. Kalan varsayılanları kabul edin ve **Arka Uç hedefleri** sekmesini seçin.
+20. **Hedef türü için,** **Backend havuzu**seçin ve sonra **appGatewayBackendPool**seçin.
+21. **HTTP ayarı için**yeni **oluştur'u**seçin.
+22. **HTTP ayar adı için,** *http-setting-01*yazın.
+23. **Arka uç protokolü**için **HTTP'yi**seçin.
+24. **Backend bağlantı noktası**için, *80*yazın.
+25. Kalan varsayılanları kabul edin ve **Ekle'yi**seçin.
+26. Yönlendirme **kuralı** ekle sayfasında **Ekle'yi**seçin.
+27. **Sonraki seçin: Etiketler**.
+28. **Sonraki'ni Seçin: Gözden Geçirin + oluşturun.**
+29. Özet sayfasındaki ayarları gözden geçirin ve ardından ağ kaynaklarını ve uygulama ağ geçidini oluşturmak için **Oluştur'u** seçin. Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Sonraki bölüme geçmeden önce dağıtımın başarıyla bitmesini bekleyin.
 
-## <a name="add-backend-pool"></a>Arka uç Havuzu Ekle
+## <a name="add-backend-pool"></a>Arka uç havuzu ekleme
 
-Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek için kullanılır. Arka uç, NIC 'ler, sanal makine ölçek kümeleri, genel IP adresleri, iç IP adresleri, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. Bu örnekte, sanal makineleri hedef arka uç olarak kullanacaksınız. Var olan sanal makineleri kullanabilir ya da yeni bir tane oluşturabilirsiniz. Bu örnekte, Azure 'un uygulama ağ geçidi için arka uç sunucuları olarak kullandığı iki sanal makine oluşturursunuz.
+Arka uç havuzu, istekleri sağlayan arka uç sunucularına yönlendirmek için kullanılır. Arka uç NIC'lerden, sanal makine ölçek kümelerinden, genel IP adreslerinden, dahili IP adreslerinden, tam nitelikli alan adlarından (FQDN) ve Azure Uygulama Hizmeti gibi çok kiracılı arka uçlardan oluşabilir. Bu örnekte, hedef arka uç olarak sanal makineleri kullanın. Varolan sanal makineleri kullanabilir veya yenilerini oluşturabilirsiniz. Bu örnekte, Azure'un uygulama ağ geçidi için arka uç sunucusu olarak kullandığı iki sanal makine oluşturursunuz.
 
-Bunu yapmak için şunları yapın:
+Bunu yapmak için, siz:
 
-1. Arka uç sunucuları olarak kullanılan, *Myvm* ve *myVM2*olmak üzere iki yeni sanal makine oluşturun.
-2. Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere IIS 'yi yükler.
+1. İki yeni sanal makineler, *myVM* ve *myVM2,* arka uç sunucuları olarak kullanılan oluşturun.
+2. Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere IIS yükleyin.
 3. Arka uç sunucularını arka uç havuzuna ekleyin.
 
-### <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. **Kaynak oluştur**' u seçin.
-2. **İşlem** ' ı seçin ve ardından **sanal makine**' yi seçin.
+1. **Kaynak oluştur**’u seçin.
+2. **Bilgi İşlem'i** seçin ve ardından **Sanal makine'yi**seçin.
 4. Sanal makine için şu değerleri girin:
-   - **kaynak grubu**için *myResourceGroupAG* öğesini seçin.
-   - **sanal makine adı**Için *myvm* .
-   - **Görüntü**Için **Windows Server 2019 Datacenter** ' u seçin.
-   - **Kullanıcı adı**için *azureadmın* .
-   - *Azure123456!* **.**
-5. Kalan Varsayılanları kabul edin ve **İleri ' yi seçin: diskler**.
-6. Varsayılanları kabul edin ve **İleri ' yi seçin: ağ**.
+   - Kaynak grubu için **Resource group** *myResourceGroupAG'ı* seçin.
+   - *myVM* - **Sanal makine adı**için .
+   - **Görüntü**için **Windows Server 2019 Datacenter'ı** seçin.
+   - *azureadmin* - **Kullanıcı adı**için .
+   - *Azure123456!* **Şifre**için .
+5. Kalan varsayılanları kabul edin ve **Sonraki : Diskler'i**seçin.
+6. Varsayılanları kabul edin ve **Sonraki : Ağ' ı**seçin.
 7. Sanal ağ için **myVNet** öğesinin seçili olduğundan ve alt ağın **myBackendSubnet** olduğundan emin olun.
-8. Kalan Varsayılanları kabul edin ve **İleri: yönetim**' i seçin.
-9. Önyükleme tanılamayı devre dışı bırakmak için **Kapat** ' ı seçin.
-10. Kalan Varsayılanları kabul edin ve **İleri: Gelişmiş**' i seçin.
-11. **Sonraki: Etiketler**' i seçin.
-12. **İleri ' yi seçin: gözden geçir + oluştur**.
-13. Özet sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin. VM 'nin oluşturulması birkaç dakika sürebilir. Bir sonraki bölüme geçmeden önce Dağıtım başarıyla bitene kadar bekleyin.
+8. Kalan varsayılanları kabul edin ve **Sonraki : Yönetim'i**seçin.
+9. Önyükleme tanılamasını devre dışı kalmak için **Kapalı'yı** seçin.
+10. Kalan varsayılanları kabul edin ve **İleri : İleri 'yi**seçin.
+11. Sonraki seçin **: Etiketler**.
+12. Sonraki'ni Seçin **: Gözden Geçirin + oluşturun**.
+13. Özet sayfasındaki ayarları gözden geçirin ve ardından **Oluştur'u**seçin. VM'nin oluşturulması birkaç dakika sürebilir. Sonraki bölüme geçmeden önce dağıtımın başarıyla bitmesini bekleyin.
 
 ### <a name="install-iis"></a>IIS yükleme
 
-1. Cloud Shell açın ve **PowerShell**olarak ayarlandığından emin olun.
-    ![Private-frontendıp-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+1. Bulut Kabuğu'nu açın ve **PowerShell**olarak ayarlandığından emin olun.
+    ![özel-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın:
 
    ```azurepowershell
@@ -136,23 +136,23 @@ Bunu yapmak için şunları yapın:
 
 
 
-3. İkinci bir sanal makine oluşturun ve yeni tamamladığınız adımları kullanarak IIS yükleyin. Set-Azvmexgerin adı ve VMName için myVM2 girin.
+3. İkinci bir sanal makine oluşturun ve yeni tamamladığınız adımları kullanarak IIS yükleyin. MyVM2'yi adı ve VMName için Set-AzVMExtension'a girin.
 
-### <a name="add-backend-servers-to-backend-pool"></a>Arka uç sunucularını arka uç havuzuna Ekle
+### <a name="add-backend-servers-to-backend-pool"></a>Arka uç havuzuna arka uç sunucuları ekleme
 
-1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
-2. **Arka uç havuzlarını**seçin. **Appgatewaybackendpool**öğesini seçin.
-3. **Hedef türü** ' nün altında **sanal makine** ' yi seçin ve **hedef**altında myvm ile ilişkili vNIC 'i seçin.
+1. **Tüm kaynakları**seçin ve ardından **myAppGateway'i**seçin.
+2. **Arka uç havuzları**seçin. **AppGatewayBackendPool**seçin.
+3. **Hedef türü** altında **Sanal makine** seçin ve **Hedef**altında, myVM ile ilişkili vNIC seçin.
 4. MyVM2 eklemek için tekrarlayın.
-   ![Private-frontendıp-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
-5. Kaydet ' i seçin **.**
+   ![özel-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+5. **Kaydet'i seçin.**
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-1. Portalın **ön uç IP yapılandırması** sayfasına tıklayarak atanan ön uç IP 'nizi denetleyin.
-    ![Private-frontendıp-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
-2. Özel IP adresini kopyalayın ve ardından aynı VNet 'te veya şirket içinde bu VNet 'e bağlantısı olan Şirket içindeki bir VM 'deki tarayıcı adres çubuğuna yapıştırın ve Application Gateway erişmeyi deneyin.
+1. Portaldaki **Frontend IP Yapılandırmaları** sayfasına tıklayarak atanan ön uç IP'nizi kontrol edin.
+    ![özel-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+2. Özel IP adresini kopyalayın ve ardından aynı VNet'teki bir VM'deki tarayıcı adresi çubuğuna veya bu VNet'e bağlantısı olan şirket içi bağlantıya kopyalayın ve Uygulama Ağ Geçidi'ne erişmeye çalışın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Arka ucunuzun durumunu izlemek isterseniz, [Application Gateway Için arka uç sistem durumu ve tanılama günlükleri](application-gateway-diagnostics.md)bölümüne bakın.
+Arka uçlarınızın durumunu izlemek istiyorsanız, [Uygulama Ağ Geçidi için Arka uç sağlık ve tanıgünlüklerine](application-gateway-diagnostics.md)bakın.

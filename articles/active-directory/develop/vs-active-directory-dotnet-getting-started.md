@@ -1,6 +1,6 @@
 ---
-title: .NET MVC projelerinde Azure AD ile çalışmaya başlama | Mavisi
-description: Visual Studio bağlı hizmetleri kullanarak bir Azure AD 'ye bağlandıktan veya bağlantı kurulduktan sonra .NET MVC projelerinde Azure Active Directory kullanmaya başlama
+title: .NET MVC projelerinde Azure AD ile başlayın | Azure
+description: Visual Studio'ya bağlı hizmetleri kullanarak bir Azure REKLAM'ına bağlandıktan veya oluşturulduktan sonra .NET MVC projelerinde Azure Active Directory'yi kullanmaya nasıl başlarsınız?
 author: ghogen
 manager: jillfra
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
@@ -12,29 +12,29 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159497"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory kullanmaya başlama (ASP.NET MVC projeleri)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Etkin Dizin (mvc projeleri ASP.NET) ile başlarken
 
 > [!div class="op_single_selector"]
 > - [Başlarken](vs-active-directory-dotnet-getting-started.md)
 > - [Ne oldu](vs-active-directory-dotnet-what-happened.md)
 
-Bu makalede, Visual Studio 'nun **project > bağlı hizmetler** komutu aracılığıyla BIR ASP.NET MVC projesine Active Directory ekledikten sonra ek rehberlik sunulmaktadır. Hizmeti projenize henüz eklemediyseniz, bunu dilediğiniz zaman yapabilirsiniz.
+Bu makale, Visual Studio'nun **Project > Connected Services** komutu aracılığıyla ASP.NET bir MVC projesine Active Directory ekledikten sonra ek kılavuz sağlar. Hizmeti projenize zaten eklemediyseniz, bunu istediğiniz zaman yapabilirsiniz.
 
-Bağlı hizmet eklenirken projenizde yapılan değişiklikler için bkz. [MVC projem ne oldu?](vs-active-directory-dotnet-what-happened.md)
+MVC [projeme ne olduğunu görün?](vs-active-directory-dotnet-what-happened.md)
 
-## <a name="requiring-authentication-to-access-controllers"></a>Erişim denetleyicilerine kimlik doğrulaması gerektirme
+## <a name="requiring-authentication-to-access-controllers"></a>Denetleyicilere erişmek için kimlik doğrulama gerektirmesi
 
-Projenizdeki tüm denetleyiciler `[Authorize]` özniteliğiyle donatılmıştı. Bu öznitelik, bu denetleyicilere erişmeden önce kullanıcının kimliğinin doğrulanmasını gerektirir. Denetleyiciye anonim olarak erişilmesine izin vermek için bu özniteliği denetleyiciden kaldırın. İzinleri daha ayrıntılı bir düzeyde ayarlamak istiyorsanız, bu özniteliği denetleyici sınıfına uygulamak yerine yetkilendirme gerektiren her bir yönteme uygulayın.
+Projenizdeki tüm denetleyiciler `[Authorize]` bu özellikile süslenmiştir. Bu öznitelik, bu denetleyicilere erişmeden önce kullanıcının kimliğinin doğrulanmasını gerektirir. Denetleyiciye anonim olarak erişilebilmesi için bu özniteliği denetleyiciden kaldırın. İzinleri daha ayrıntılı bir düzeyde ayarlamak istiyorsanız, özniteliği denetleyici sınıfına uygulamak yerine yetkilendirme gerektiren her yönteme uygulayın.
 
-## <a name="adding-signin--signout-controls"></a>SignIn/SignOut denetimleri ekleme
+## <a name="adding-signin--signout-controls"></a>Oturum Açma / Oturum Açma Denetimleri Ekleme
 
-Görünümüne SignIn/SignOut denetimleri eklemek için `_LoginPartial.cshtml` kısmi görünümünü kullanarak, işlevselliği görünümlerinizin birine ekleyebilirsiniz. Standart `_Layout.cshtml` görünümüne eklenen işlevlere bir örnek aşağıda verilmiştir. (Sınıf gezinti çubuğu ile div içindeki son öğeye göz önünde bulunan):
+Görünümünüze SignIn/SignOut denetimlerini eklemek için, `_LoginPartial.cshtml` görünümlerinizden birine işlevselliği eklemek için kısmi görünümü kullanabilirsiniz. Aşağıda, standart `_Layout.cshtml` görünüme eklenen işlevsellik örneği verilmiştir. (Sınıf navbar-collapse ile div son öğeye dikkat edin):
 
 ```html
 <!DOCTYPE html>
@@ -83,5 +83,5 @@ Görünümüne SignIn/SignOut denetimleri eklemek için `_LoginPartial.cshtml` k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
-- [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v2-aspnet-webapp.md)
+- [Azure Etkin Dizin için kimlik doğrulama senaryoları](authentication-scenarios.md)
+- [ASP.NET bir web uygulamasına Microsoft ile oturum açma ekleme](quickstart-v2-aspnet-webapp.md)

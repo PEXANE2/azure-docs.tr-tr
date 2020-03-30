@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: b31714e62ba0e7a0e4882d9b9fa830b3a14fe855
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888519"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance"></a>Ağ sanal gereci aracılığıyla trafiği yönlendirme
+# <a name="route-traffic-through-a-network-virtual-appliance"></a>Bir ağ sanal gereci yoluyla trafiği yönlendirme
 
 Bu betik örneği, ön uç ve arka uç alt ağları ile sanal ağ oluşturur. Ayrıca iki alt ağ arasında trafiği yönlendirmek için IP iletme etkinleştirilmiş şekilde bir sanal makine de oluşturur. Betiği çalıştırdıktan sonra, sanal makineye güvenlik duvarı uygulaması gibi ağ yazılımı dağıtabilirsiniz.
 
-Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
+Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount`
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,15 +47,15 @@ Bu betik, bir kaynak grubu, sanal ağ ve ağ güvenliği grupları oluşturmak i
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Bir Azure sanal ağı ve ön uç alt ağı oluşturur. |
-| [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Arka uç ve DMZ alt ağları oluşturur. |
-| [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Internet 'ten sanal makineye erişmek için bir genel IP adresi oluşturur. |
-| [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) | Bir sanal ağ arabirimi oluşturur ve bunun için IP iletimini etkinleştirir. |
-| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu (NSG) oluşturur. |
+| [Yeni-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Bir Azure sanal ağı ve ön uç alt ağı oluşturur. |
+| [Yeni-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Arka uç ve DMZ alt ağları oluşturur. |
+| [Yeni-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | VM'ye Internet'ten erişmek için herkese açık bir IP adresi oluşturur. |
+| [Yeni-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Bir sanal ağ arabirimi oluşturur ve bunun için IP iletimini etkinleştirir. |
+| [Yeni-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu (NSG) oluşturur. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Sanal makineye gelen HTTP ve HTTPS bağlantı noktalarına izin veren NSG kuralları oluşturur. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)| NSG’leri ve rota tablolarını alt ağlarla ilişkilendirir. |
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)| Tüm rotalar için bir rota tablosu oluşturur. |
-| [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)| VM aracılığıyla trafiği alt ağlar ve Internet arasında yönlendirmek için yollar oluşturur. |
+| [Yeni-AzRouteTable](/powershell/module/az.network/new-azroutetable)| Tüm rotalar için bir rota tablosu oluşturur. |
+| [Yeni-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)| VM üzerinden alt ağlar ve Internet arasındaki trafiği yönlendirmek için yollar oluşturur. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Bir sanal makine oluşturur ve ona NIC’yi ekler. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)  | Bir kaynak grubunu ve içerdiği tüm kaynakları siler. |
 

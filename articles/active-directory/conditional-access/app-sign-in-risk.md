@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim Azure Active Directory risk algılamalarını kullanma
-description: Bu hızlı başlangıçta, oturum risklerine göre oturum açma işlemlerini engellemek için bir Azure Active Directory (Azure AD) koşullu erişim ilkesini nasıl yapılandırabileceğinizi öğreneceksiniz.
+title: Azure Active Directory Koşullu Erişim ile risk algılamalarını kullanma
+description: Bu hızlı başlangıçta, oturum risklerine göre oturum açma işlemlerini engellemek için bir Azure Etkin Dizin (Azure AD) Koşullu Erişim ilkesini nasıl yapılandırabileceğinizi öğrenirsiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,170 +12,170 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77186604"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Hızlı başlangıç: koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Hızlı başlatma: Azure Etkin Dizin Koşullu Erişim ile oturum riski algılandığında erişimi engelleyin  
 
-Ortamınızı korumalı tutmak için, şüpheli kullanıcıların oturum açmasını engellemek isteyebilirsiniz. [Azure Active Directory (Azure AD) kimlik koruması](../active-directory-identityprotection.md) her oturum açmayı analiz eder ve bir oturum açma girişiminin Kullanıcı hesabının meşru sahibi tarafından gerçekleştirilme olasılığını hesaplar. Bu olasılık (düşük, orta, yüksek), [oturum açma risk düzeyleri](concept-conditional-access-conditions.md#sign-in-risk)adlı bir hesaplanan değer biçiminde belirtilir. Oturum açma riski koşulunu ayarlayarak, belirli oturum açma risk düzeylerine yanıt vermek için bir koşullu erişim ilkesi yapılandırabilirsiniz.
+Ortamınızı korumak için şüpheli kullanıcıların oturum açmasını engellemek isteyebilirsiniz. [Azure Etkin Dizin (Azure AD) Kimlik Koruması,](../active-directory-identityprotection.md) her oturum açma işleminin çözümlemesi ve oturum açma girişiminin bir kullanıcı hesabının yasal sahibi tarafından gerçekleştirilme olasılığını hesaplar. Olasılık (düşük, orta, yüksek) oturum açma risk [düzeyleri](concept-conditional-access-conditions.md#sign-in-risk)olarak adlandırılan hesaplanmış bir değer şeklinde gösterilir. Oturum açma risk durumunu ayarlayarak, belirli oturum açma risk düzeylerine yanıt verecek koşullu erişim ilkesini yapılandırabilirsiniz.
 
-Bu hızlı başlangıçta, yapılandırılmış bir oturum açma risk düzeyi algılandığında oturum açmayı engelleyen bir [koşullu erişim ilkesinin](../active-directory-conditional-access-azure-portal.md) nasıl yapılandırılacağı gösterilmektedir.
+Bu hızlı başlatma, yapılandırılmış oturum açma risk düzeyi algılandığında oturum açma'yı engelleyen [Koşullu Erişim ilkesinin](../active-directory-conditional-access-azure-portal.md) nasıl yapılandırılabildiğini gösterir.
 
 ![İlke oluşturma](./media/app-sign-in-risk/1000.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
-- **Azure AD Premium P2 sürümüne erişim** -koşullu erişim Azure AD Premium P1 özelliği olsa da, bu hızlı başlangıçta senaryo kimlik koruması gerektirdiğinden bir P2 sürümü gerekir.
-- **Kimlik koruması** -bu hızlı başlangıçtaki senaryo kimlik korumasının etkinleştirilmesini gerektirir. Kimlik korumasını nasıl etkinleştireceğinizi bilmiyorsanız, bkz. [Azure Active Directory kimlik koruması etkinleştirme](../identity-protection/overview-identity-protection.md).
-- **Tor tarayıcısı** - [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) , gizliliğinizi çevrimiçi korumanıza yardımcı olacak şekilde tasarlanmıştır. Kimlik koruması, orta düzeyde risk düzeyine sahip anonim IP adreslerinden oturum açma işlemleri olarak bir Tor tarayıcısından oturum açma işlemlerini algılar. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
-- **Charon adlı bir sınama hesabı** -bir sınama hesabı oluşturmayı bilmiyorsanız bkz. [bulut tabanlı kullanıcılar ekleme](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Azure AD Premium P2 sürümüne erişim** - Koşullu Erişim bir Azure AD Premium P1 özelliği olsa da, bu hızlı başlatmasenaryosu kimlik koruması gerektirdiğinden bir P2 sürümüne ihtiyacınız vardır.
+- **Kimlik Koruması** - Bu hızlı başlatmadaki senaryo, Kimlik Korumasının etkinleştirilmesini gerektirir. Kimlik Korumayı nasıl etkinleştirdiğinizi bilmiyorsanız, [bkz.](../identity-protection/overview-identity-protection.md)
+- **Tor Browser** - [Tor Browser,](https://www.torproject.org/projects/torbrowser.html.en) çevrimiçi gizliliğinizi korumanıza yardımcı olmak için tasarlanmıştır. Kimlik Koruması, bir Tor Browser'dan oturum açma oturum açma olarak orta risk düzeyine sahip anonim IP adreslerinden algılar. Daha fazla bilgi için Azure [Etkin Dizin risk algılamalarına](../reports-monitoring/concept-risk-events.md)bakın.  
+- **Alain Charon adlı** bir test hesabı - Test hesabı oluşturmayı bilmiyorsanız, [bulut tabanlı kullanıcı ekle'ye](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)bakın.
 
-## <a name="test-your-sign-in"></a>Oturum açma bilgilerinizi test etme
+## <a name="test-your-sign-in"></a>Oturum açmanızı test edin
 
-Bu adımın amacı, test hesabınızın Tor tarayıcısını kullanarak kiracınıza erişebildiğinizden emin olmaktır.
+Bu adımın amacı, test hesabınızın Tor Browser'ı kullanarak kiracınıza erişebilmesini sağlamaktır.
 
-**Oturum açma bilgilerinizi test etmek için:**
+**Oturum açmanızı test etmek için:**
 
-1. [Azure Portal](https://portal.azure.com) Için **Charon**olarak oturum açın.
+1. [Azure portalınızda](https://portal.azure.com) **Alain Charon**olarak oturum açın.
 1. Oturumunuzu kapatın.
 
-## <a name="create-your-conditional-access-policy"></a>Koşullu erişim ilkenizi oluşturma
+## <a name="create-your-conditional-access-policy"></a>Koşullu Erişim ilkenizi oluşturun
 
-Bu hızlı başlangıçtaki senaryo, **anonım IP adreslerinden** gelen bir oturum açma riskini tespit etmek Için bir Tor tarayıcısından oturum açma kullanır. Bu risk algılamada risk düzeyi Orta. Bu risk algılamasına yanıt vermek için oturum açma riski koşulunu orta olarak ayarlarsınız. Bir üretim ortamında, oturum açma risk koşulunu yüksek veya orta ve yüksek olarak ayarlamanız gerekir.
+Bu hızlı başlatmadaki senaryo, **anonim IP adreslerinden** algılanan bir Oturum Açma özelliği oluşturmak için Bir Tor Browser'dan bir oturum açma özelliğini kullanır. Bu risk tespiti risk düzeyi orta. Bu risk algılamaya yanıt vermek için oturum açma risk durumunu ortama ayarlarsınız. Üretim ortamında, oturum açma risk durumunu yüksek veya orta ve yüksek olarak ayarlamalısınız.
 
-Bu bölüm, gerekli koşullu erişim ilkesinin nasıl oluşturulacağını gösterir. İlkenizde şunları ayarlayın:
+Bu bölümde, gerekli Koşullu Erişim ilkesinin nasıl oluşturulacak olduğu gösterilmektedir. İlkenizde şunları ayarlayın:
 
 | Ayar | Değer |
 | --- | --- |
 | Kullanıcılar ve gruplar | Alain Charon  |
 | Bulut uygulamaları | Tüm bulut uygulamaları |
 | Oturum açma riski | Orta |
-| Semantiği | Erişimi engelle |
+| İzin verme | Hizmete erişimi |
 
 ![İlke oluşturma](./media/app-sign-in-risk/130.png)
 
-**Koşullu erişim ilkenizi yapılandırmak için:**
+**Koşullu Erişim ilkenizi yapılandırmak için:**
 
-1. [Azure Portal](https://portal.azure.com) genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. Azure portal sol gezinti çubuğunda **Azure Active Directory**' e tıklayın.
+1. [Azure portalınızda](https://portal.azure.com) genel yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
+1. Azure portalında, sol daki gezinme çubuğunda **Azure Etkin Dizini'ni**tıklatın.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-1. **Azure Active Directory** sayfasındaki **güvenlik** bölümünde **koşullu erişim**' e tıklayın.
+1. Azure **Etkin Dizin** sayfasında, **Güvenlik** bölümünde **Koşullu Erişim'i**tıklatın.
 
    ![Koşullu Erişim](./media/app-sign-in-risk/03.png)
 
-1. **Koşullu erişim** sayfasında, üstteki araç çubuğundan **Ekle**' ye tıklayın.
+1. **Koşullu Erişim** sayfasında, üstteki araç çubuğunda **Ekle'yi**tıklatın.
 
-   ![Ad](./media/app-sign-in-risk/108.png)
+   ![Adı](./media/app-sign-in-risk/108.png)
 
-1. **Yeni** sayfada, **ad** metin kutusuna **Orta riskli düzey için erişimi engelle**yazın.
+1. **Yeni** sayfada, **Ad** metin kutusunda, **orta risk düzeyi için Erişimi Engelle**yazın.
 
-   ![Ad](./media/app-sign-in-risk/104.png)
+   ![Adı](./media/app-sign-in-risk/104.png)
 
-1. **Atama** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.
+1. **Atama** bölümünde, **Kullanıcılar ve gruplar'ı**tıklatın.
 
    ![Kullanıcılar ve gruplar](./media/app-sign-in-risk/06.png)
 
-1. **Kullanıcılar ve gruplar** sayfasında:
+1. Kullanıcılar **ve gruplar** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/107.png)
 
-   1. **Kullanıcı ve Grup Seç**' e tıklayın ve ardından **Kullanıcılar ve gruplar**' ı seçin.
-   1. **Seç**'e tıklayın.
-   1. **Seç** sayfasında, **Charon**' ı seçin ve ardından **Seç**' e tıklayın.
-   1. **Kullanıcılar ve gruplar** sayfasında **bitti**' ye tıklayın.
-1. **Bulut uygulamaları**' na tıklayın.
+   1. **Kullanıcıları ve grupları seçin'i**tıklatın ve ardından Kullanıcıları ve **grupları**seçin.
+   1. **Seç'i**tıklatın.
+   1. **Seç** sayfasında **Alain Charon'u**seçin ve sonra **Seç'i**tıklatın.
+   1. Kullanıcılar **ve gruplar** **sayfasında, Bitti'yi**tıklatın.
+1. **Bulut uygulamalarını**tıklatın.
 
    ![Bulut uygulamaları](./media/app-sign-in-risk/08.png)
 
-1. **Bulut uygulamaları** sayfasında:
+1. Bulut **uygulamaları** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/109.png)
 
-   1. **Tüm bulut uygulamaları**' na tıklayın.
+   1. **Tüm bulut uygulamalarını**tıklatın.
    1. **Bitti**’ye tıklayın.
-1. **Koşullar**' a tıklayın.
+1. **Koşullar'ı**tıklatın.
 
    ![Erişim denetimleri](./media/app-sign-in-risk/19.png)
 
 1. **Koşullar** sayfasında:
 
-   ![Oturum açma risk düzeyi](./media/app-sign-in-risk/21.png)
+   ![Oturum açma riski düzeyi](./media/app-sign-in-risk/21.png)
 
-   1. **Oturum açma riski**' na tıklayın.
-   1. **Yapılandırma**olarak **Evet**' e tıklayın.
-   1. Oturum açma risk düzeyi olarak **Orta**' yı seçin.
-   1. **Seç**'e tıklayın.
-   1. **Koşullar** sayfasında **bitti**' ye tıklayın.
-1. **Erişim denetimleri** bölümünde, **izin ver**' e tıklayın.
+   1. **Oturum Açma riskini**tıklatın.
+   1. **Yapılandırıldıkça** **Evet'i**tıklatın.
+   1. Oturum açma risk düzeyi olarak **Orta'yı**seçin.
+   1. **Seç'i**tıklatın.
+   1. **Koşullar** **sayfasında, Bitti'yi**tıklatın.
+1. Access **denetimleri** **bölümünde, Ver'i**tıklatın.
 
    ![Erişim denetimleri](./media/app-sign-in-risk/10.png)
 
-1. **İzin** sayfasında:
+1. **Hibe** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/105.png)
 
-   1. **Erişimi engelle**' yi seçin.
-   1. **Seç**'e tıklayın.
-1. **Ilkeyi etkinleştir** bölümünde, **Açık**' a tıklayın.
+   1. **Erişimi Engelle'yi**seçin.
+   1. **Seç'i**tıklatın.
+1. Etkinleştir **ilkesi** **bölümünde, '''yi**tıklatın.
 
    ![İlkeyi etkinleştirme](./media/app-sign-in-risk/18.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur'u**tıklatın.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Benzetimli bir oturum açmayı değerlendir
+## <a name="evaluate-a-simulated-sign-in"></a>Benzetimli oturum açma yı değerlendirme
 
-Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim **ilke aracı** ' nı kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.  
+Koşullu Erişim ilkenizi yapılandırdığınıza göre, büyük olasılıkla beklendiği gibi çalışıp çalışmadığını bilmek istersiniz. İlk adım olarak, test kullanıcınızın oturum açma simüle etmek için **ilke aracı ne olur** Koşullu Erişim kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.  
 
-Bu senaryo için **ilke İlkesi aracını** çalıştırdığınızda, **Orta risk düzeyi erişimini engelle** ayarı **uygulanacak ilkeler**altında listelenmelidir.
+Bu senaryo için **"if" ilke aracını** çalıştırdığınızda, **orta risk düzeyi için Engelle erişimi** uygulanacak **Ilkeler**altında listelenmelidir.
 
 ![Kullanıcı](./media/app-sign-in-risk/117.png)
 
-**Koşullu erişim ilkenizi değerlendirmek için:**
+**Koşullu Erişim ilkenizi değerlendirmek için:**
 
-1. [Koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfasında, üstteki menüden **What If**' ye tıklayın.  
+1. [Koşullu Erişim - İlkeler](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfasında, üstteki menüde **Ne Varsa'yı**tıklatın.  
 
    ![What If](./media/app-sign-in-risk/14.png)
 
-1. **Kullanıcı**' ya tıklayın, **Kullanıcılar** sayfasında **alan Charon** ' u seçin ve ardından **Seç**' e tıklayın.
+1. **Kullanıcı'yı**tıklatın, **Kullanıcılar** sayfasında **Alan Charon'u** seçin ve sonra **Seç'i**tıklatın.
 
    ![Kullanıcı](./media/app-sign-in-risk/116.png)
 
-1. **Oturum açma riski**olarak **Orta**' yı seçin.
+1. **Oturum açma riski**olarak, **Orta'yı**seçin.
 
    ![Kullanıcı](./media/app-sign-in-risk/119.png)
 
-1. **What If**' ye tıklayın.
+1. **What'ı**tıklatın.
 
-## <a name="test-your-conditional-access-policy"></a>Koşullu erişim ilkenizi test etme
+## <a name="test-your-conditional-access-policy"></a>Koşullu Erişim ilkenizi test edin
 
-Önceki bölümde, benzetimli bir oturum açma değerlendirmesini öğrendiniz. Bir simülasyonu ek olarak, beklenen şekilde çalıştığından emin olmak için koşullu erişim ilkenizi da test etmelisiniz.
+Önceki bölümde, benzetimli oturum açma nasıl değerlendirileceklerini öğrendiniz. Simülasyona ek olarak, beklendiği gibi çalıştığından emin olmak için Koşullu Erişim ilkenizi de test etmeniz gerekir.
 
-İlkenizi test etmek için, Tor tarayıcısı kullanılırken [Azure Portal](https://portal.azure.com) bir **alan** olarak oturum açmayı deneyin. Oturum açma denemeniz, koşullu erişim ilkeniz tarafından engellenmelidir.
+İlkinizi test etmek için, Tor Browser'ı kullanarak [Azure portalınızda](https://portal.azure.com) **Alan Charon** olarak oturum açmayı deneyin. Oturum açma girişiminiz Koşullu Erişim ilkeniz tarafından engellenmelidir.
 
 ![Multi-factor authentication](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, test kullanıcısını, Tor tarayıcısını ve koşullu erişim ilkesini silin:
+Artık gerekmediğinde, test kullanıcısını, Tor Browser'ı ve Koşullu Erişim ilkesini silin:
 
-- Bir Azure AD kullanıcısını nasıl silebileceğinizi bilmiyorsanız bkz. [Azure AD 'de kullanıcıları silme](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- İlkenizi silmek için ilkenizi seçin ve sonra hızlı erişim araç çubuğunda **Sil** ' e tıklayın.
+- Bir Azure REKLAM kullanıcısını nasıl sildiğinizi bilmiyorsanız, [bkz.](../fundamentals/add-users-azure-active-directory.md#delete-a-user)
+- İlkenizi silmek için ilkenizi seçin ve ardından hızlı erişim araç çubuğunda **Sil'i** tıklatın.
 
    ![Multi-factor authentication](./media/app-sign-in-risk/33.png)
 
-- Tor tarayıcısını kaldırma yönergeleri için bkz. [kaldırma](https://tb-manual.torproject.org/uninstalling/).
+- Tor Browser'ı kaldırmak için [Uninstalling](https://tb-manual.torproject.org/uninstalling/)bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Belirli uygulamalar IÇIN MFA gerektirirken](app-based-mfa.md) [kabul edilmesi Için kullanım koşulları gerektir](require-tou.md)
-> 
+> [Kullanım koşullarının kabul](require-tou.md)
+> edilmesini zorunlu kılması[belirli uygulamalar için MFA Gerektirir](app-based-mfa.md)

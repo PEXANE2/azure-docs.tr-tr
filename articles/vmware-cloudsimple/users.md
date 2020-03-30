@@ -1,6 +1,6 @@
 ---
-title: Azure VMware CloudSimple Portal kullanıcılarını görüntüleme-CloudSimple tarafından Azure VMware çözümü
-description: Azure portal aracılığıyla CloudSimple portalına erişimi olan kullanıcıların listesini görüntülemeyi açıklar
+title: Azure VMware CloudBasit portal kullanıcılarını görüntüleyin - CloudSimple tarafından Azure VMware Çözümü
+description: Azure portalı aracılığıyla CloudSimple portalına erişimi olan kullanıcıların listesini nasıl görüntüleyeceklerini açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564015"
 ---
-# <a name="view-the-list-of-cloudsimple-portal-users"></a>CloudSimple Portal kullanıcılarının listesini görüntüleyin
+# <a name="view-the-list-of-cloudsimple-portal-users"></a>CloudSimple portal kullanıcılarının listesini görüntüleyin
 
-Kullanıcılar CloudSimple portalına ilk kez erişirken kullanıcı listesine eklenir. Azure aracılığıyla CloudSimple portalına erişimi olan kullanıcıların listesini görüntülemek için, [cloudsimple portalına erişin](access-cloudsimple-portal.md), yan menüdeki **Hesap** ' ı seçin ve ardından cloudsimple portalındaki **Kullanıcılar** ' ı seçin.
+Kullanıcılar CloudSimple portalına ilk erişirken kullanıcı listesine eklenir. Azure üzerinden CloudSimple portalına erişimi olan kullanıcıların listesini görüntülemek için [CloudSimple portalına erişin,](access-cloudsimple-portal.md)yan menüde **Hesap'ı** seçin ve ardından CloudSimple portalındaki **Kullanıcıları** seçin.
 
-* Azure aboneliği, kiracı ve Kullanıcı kimlikleri dahil olmak üzere Kullanıcı ayrıntılarını göstermek için **Kullanıcılar** sayfasındaki bir girişe tıklayın.
+* Azure aboneliği, kiracı ve kullanıcı talimi de dahil olmak üzere kullanıcı ayrıntılarını görüntülemek için **Kullanıcılar** sayfasındaki bir girişi tıklatın.
 
-* Bir kullanıcı için etkinlik denetim günlüğünü görüntülemek için **Denetim günlüğü** sekmesini seçin.
-* Kullanıcı hesabını kilitlemek veya kilidini açmak için, Kullanıcı ayrıntılarını görüntülerken **kilitli** geçiş düğmesine tıklayın. Hesap kilidi açıldığında, Kullanıcı CloudSimple portalına erişebilir. Hesap kilitlendiğinde portala erişim engellenir.
+* Bir kullanıcıiçin bir denetim faaliyet günlüğünü görüntülemek için **Denetim günlüğü** sekmesini seçin.
+* Bir kullanıcı hesabını kilitlemek veya kilidini açmak için, kullanıcı ayrıntılarını görüntülerken **Kilitli** geçiş seçeneğini tıklatın. Hesabın kilidi açıldığında, kullanıcı CloudSimple portalına erişebilir. Hesap kilitlendiğinde, portala erişim engellenir.

@@ -1,6 +1,6 @@
 ---
-title: Bulut hizmeti rollerinin geri dönüşümlerine ilişkin yaygın nedenler | Microsoft Docs
-description: Aniden geri dönüşümlü bir bulut hizmeti rolü önemli bir kesinti oluşmasına neden olabilir. Rollerin geri dönüştürülmesine neden olan bazı yaygın sorunlar aşağıda verilmiştir. Bu, kapalı kalma süresini azaltmanıza yardımcı olabilir.
+title: Bulut Hizmeti rollerinin geri dönüştürülmesinin yaygın nedenleri | Microsoft Dokümanlar
+description: Aniden geri dönüşüm yapan bir bulut hizmeti rolü önemli kapalı kalma sürelerine neden olabilir. Rollerin geri dönüştürülmesine neden olan ve kapalı kalma süresini azaltmanıza yardımcı olabilecek bazı sık karşılaşılan sorunlar aşağıda verebilirsiniz.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,57 +15,57 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154971"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Rollerin geri dönüştürülmesine neden olan yaygın sorunlar
-Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri ele alınmaktadır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sunulmaktadır. Bir uygulamada sorun olduğunu belirten bir ifade, rol örneğinin başlayamadığını veya başlatma, meşgul ve durdurma durumları arasında geçiş yapar.
+Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri tartışılır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sağlar. Bir uygulamada bir sorunun var olduğunun bir göstergesi, rol örneğinin başlatılamaması veya başlatma, meşgul ve durdurma durumları arasında geçiş yaptığı dır.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="missing-runtime-dependencies"></a>Çalışma zamanı bağımlılıkları eksik
-Uygulamanızdaki bir rol, .NET Framework veya Azure yönetilen Kitaplığı 'nın parçası olmayan herhangi bir derlemeyi kullanıyorsa, bu derlemeyi uygulama paketine açıkça eklemeniz gerekir. Diğer Microsoft çerçevelerinin Azure 'da varsayılan olarak mevcut olmadığından emin olmak için aklınızda bulundurun. Rolünüz böyle bir çerçeveye dayanıyorsa, bu derlemeleri uygulama paketine eklemeniz gerekir.
+## <a name="missing-runtime-dependencies"></a>Eksik çalışma zamanı bağımlılıkları
+Uygulamanızdaki bir rol .NET Framework veya Azure yönetilen kitaplığın parçası olmayan herhangi bir derlemeye dayanıyorsa, bu derlemeyi uygulama paketine açıkça eklemeniz gerekir. Diğer Microsoft çerçevelerinin varsayılan olarak Azure'da kullanılmadığını unutmayın. Rolünüz böyle bir çerçeveye dayanıyorsa, bu derlemeleri uygulama paketine eklemeniz gerekir.
 
-Uygulamanızı oluşturmadan ve paketlemenize başlamadan önce aşağıdakileri doğrulayın:
+Uygulamanızı oluşturmadan ve paketlemeden önce aşağıdakileri doğrulayın:
 
-* Visual Studio kullanıyorsanız, projenizde Azure SDK 'sının veya .NET Framework bir parçası olmayan her Başvurulmuş derleme için yereli **Kopyala** özelliğinin **true** olarak ayarlandığından emin olun.
-* Web. config dosyasının, derleme öğesinde kullanılmayan derlemelere başvurmadığından emin olun.
-* Her. cshtml dosyasının **derleme eylemi** **içerik**olarak ayarlanır. Bu, dosyaların pakette doğru görünmesini ve başvurulan diğer dosyaların pakette görünmesini sağlar.
+* Visual studio kullanıyorsanız, Projenizde Azure SDK veya .NET Framework'ün parçası olmayan her başvurulan derleme için **Yerel Kopyala** özelliğinin **True** olarak ayarlandığından emin olun.
+* web.config dosyasının derleme öğesindeki kullanılmayan derlemelere başvurmadığından emin olun.
+* Her .cshtml dosyasının **Yapı Eylemi** **İçerik**olarak ayarlanır. Bu, dosyaların pakette doğru görünmesini sağlar ve başvurulan diğer dosyaların pakette görünmesini sağlar.
 
-## <a name="assembly-targets-wrong-platform"></a>Derleme yanlış platformu hedefliyor
-Azure, 64 bitlik bir ortamdır. Bu nedenle, 32 bitlik bir hedef için derlenen .NET derlemeleri Azure 'da çalışmaz.
+## <a name="assembly-targets-wrong-platform"></a>Montaj hedefleri yanlış platform
+Azure, 64 bit'lik bir ortamdır. Bu nedenle, 32 bit lik bir hedef için derlenen .NET derlemeleri Azure'da çalışmaz.
 
-## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Rol, başlatılırken veya durdurulurken işlenmemiş özel durumlar oluşturuyor
-[Başlangıçta], [OnStop]ve [Çalıştırma] yöntemlerini içeren [roleentrypoint] sınıfının yöntemleri tarafından oluşturulan tüm özel durumlar işlenmemiş özel durumlardır. Bu yöntemlerin birinde işlenmeyen bir özel durum oluşursa, rol geri dönüşüme eklenir. Rol tekrar tekrar geri dönüştürüldükten sonra, her başlatma denemesinde işlenmeyen bir özel durum oluşturulabilir.
+## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Rol, başlatma veya durdurma sırasında işlenmemiş özel durumlar atar
+[OnStart], [OnStop]ve [Çalıştır] yöntemlerini içeren [RoleEntryPoint] sınıfının yöntemleri tarafından atılan tüm özel durumlar işlenmemiştir. Bu yöntemlerden birinde işlenmemiş bir özel durum oluşursa, rol geri dönüştürür. Rol tekrar tekrar geri dönüşüm oluyorsa, her başlatmaya çalıştığında işlenmemiş bir özel durum atıyor olabilir.
 
-## <a name="role-returns-from-run-method"></a>Rol Run yönteminden geri döner
-[Çalıştırma] yöntemi süresiz olarak çalışacak şekilde tasarlanmıştır. Kodunuz [Çalıştırma] yöntemini geçersiz kılıyorsa, süresiz olarak uyku moduna alınmalıdır. [Çalıştırma] yöntemi döndürülürse, rol geri dönüştürülür.
+## <a name="role-returns-from-run-method"></a>Çalıştır yönteminden rol döndürür
+[Çalıştır] yöntemi süresiz olarak çalıştırmak için tasarlanmıştır. Kodunuz [Çalıştır] yöntemini geçersiz kılıyorsa, süresiz olarak uyumalıdır. [Çalıştır] yöntemi dönerse, rol geri dönüşüme olur.
 
-## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Yanlış DiagnosticsConnectionString ayarı
-Uygulama Azure tanılama kullanıyorsa, hizmet yapılandırma dosyanızda `DiagnosticsConnectionString` yapılandırma ayarı belirtilmelidir. Bu ayar, Azure 'daki depolama hesabınıza bir HTTPS bağlantısı belirtmelidir.
+## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Yanlış TanılamaBağlantıString ayarı
+Uygulama Azure Diagnostics kullanıyorsa, hizmet `DiagnosticsConnectionString` yapılandırma dosyanızın yapılandırma ayarını belirtmesi gerekir. Bu ayar, Azure'daki depolama hesabınıza bir HTTPS bağlantısı belirtmelidir.
 
-Uygulama paketinizi Azure 'a `DiagnosticsConnectionString` dağıtmadan önce ayarınızı doğru olduğundan emin olmak için aşağıdakileri doğrulayın:  
+Uygulama paketinizi `DiagnosticsConnectionString` Azure'a dağıtmadan önce ayarınızın doğru olduğundan emin olmak için aşağıdakileri doğrulayın:  
 
-* Bu `DiagnosticsConnectionString` ayar, Azure 'da geçerli bir depolama hesabına işaret eder.  
-  Varsayılan olarak, bu ayar öykünülmüş depolama hesabına işaret eder, bu nedenle uygulama paketinizi dağıtmadan önce bu ayarı açıkça değiştirmeniz gerekir. Bu ayarı değiştirmeyin, rol örneği tanılama izleyicisini başlatmaya çalıştığında bir özel durum oluşturulur. Bu, rol örneğinin sonsuza kadar geri dönüştürülmesine neden olabilir.
-* Bağlantı dizesi aşağıdaki [biçimde](../storage/common/storage-configure-connection-string.md)belirtilir. (Protokol HTTPS olarak belirtilmelidir.) *MyAccountName* değerini depolama hesabınızın adıyla ve *myaccountkey* değerini erişim anahtarınızla değiştirin:    
+* Ayar, `DiagnosticsConnectionString` Azure'daki geçerli bir depolama hesabını işaret ediyor.  
+  Varsayılan olarak, bu ayar taklit edilmiş depolama hesabını işaret eder, bu nedenle uygulama paketinizi dağıtmadan önce bu ayarı açıkça değiştirmeniz gerekir. Bu ayarı değiştirmezseniz, rol örneği tanılama izlemeyi başlatmaya çalıştığında bir özel durum atılır. Bu, rol örneğinin süresiz olarak geri dönüştürülmesine neden olabilir.
+* Bağlantı dizesi aşağıdaki [biçimde](../storage/common/storage-configure-connection-string.md)belirtilir. (Protokol HTTPS olarak belirtilmelidir.) *MyAccountName'yi* depolama hesabınızın adı ile değiştirin ve *MyAccountKey'i* erişim anahtarınızla değiştirin:    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  Uygulamanızı Microsoft Visual Studio için Azure Araçları 'nı kullanarak geliştiriyorsanız, bu değeri ayarlamak için özellik sayfalarını kullanabilirsiniz.
+  Microsoft Visual Studio için Azure Araçları'nı kullanarak uygulamanızı geliştiriyorsanız, bu değeri ayarlamak için özellik sayfalarını kullanabilirsiniz.
 
-## <a name="exported-certificate-does-not-include-private-key"></a>İçe aktarılmış sertifika özel anahtar içermiyor
-SSL altında bir Web rolü çalıştırmak için, verdiğiniz yönetim sertifikanızın özel anahtarı içerdiğinden emin olmanız gerekir. Sertifikayı dışarı aktarmak için *Windows Sertifika Yöneticisi* 'ni kullanırsanız, **özel anahtarı dışarı aktar** seçeneğini için **Evet** ' i seçtiğinizden emin olun. Sertifika, şu anda desteklenen tek Biçim olan PFX biçiminde aktarılmalıdır.
+## <a name="exported-certificate-does-not-include-private-key"></a>Dışa aktarılan sertifikaözel anahtar içermez
+SSL altında bir web rolü çalıştırmak için, dışa aktarılan yönetim sertifikanızın özel anahtarı içerdiğinden emin olmalısınız. Sertifikayı dışa aktarmak için *Windows Sertifika Yöneticisi'ni* kullanıyorsanız, özel anahtar seçeneğini **Dışa Aktar'a** **Evet'i** seçtiğinizden emin olun. Sertifika, şu anda desteklenen tek biçim olan PFX biçiminde dışa aktarılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Cloud Services için daha fazla [sorun giderme makalesini](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) görüntüleyin.
+Bulut hizmetleri için daha fazla [sorun giderme makalelerini](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) görüntüleyin.
 
-[Kevin Williamson 'ın blog serisinde](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)daha fazla rol geri dönüşüm senaryosu görüntüleyin.
+[Kevin Williamson'ın blog serisinde](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)daha fazla rol geri dönüşüm senaryoları görüntüleyin.
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[Başlangıçta]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Çalıştırma]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Onstart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[Onstop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
+[Çalıştırmak]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

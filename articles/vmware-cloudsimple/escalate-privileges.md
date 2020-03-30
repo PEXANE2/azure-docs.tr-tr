@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-AVS ayrıcalıklarına yükselt
-description: AVS özel bulutu vCenter 'da yönetim işlevleri gerçekleştirmek için AVS izinlerinin nasıl ilerletiloluşturulacağını açıklar
+title: CloudSimple tarafından Azure VMware Çözümü - CloudSimple ayrıcalıklarını artırın
+description: CloudSimple izinlerinin Özel Bulut vCenter'da yönetim işlevlerini gerçekleştirmek için nasıl yükseltileni açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,32 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90dd61fc9856978bab0b68de19d48493a8e0c5fd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025342"
 ---
-# <a name="escalate-avs-privileges-to-perform-administrative-functions-in-avs-private-cloud-vcenter"></a>AVS özel bulutu vCenter 'da yönetim işlevleri gerçekleştirmek için AVS ayrıcalıklarına iletin
+# <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>Private Cloud vCenter'da yönetim işlevleri gerçekleştirmek için CloudSimple ayrıcalıklarını artırın
 
-AVS ayrıcalıkları yaklaşımı, vCenter kullanıcılarına normal işlemler gerçekleştirmek için ihtiyaç duydukları ayrıcalıkları vermek üzere tasarlanmıştır. Bazı örneklerde, bir Kullanıcı belirli bir görevi gerçekleştirmek için ek ayrıcalıklar gerektirebilir. Bir vCenter SSO kullanıcısının ayrıcalıklarını sınırlı bir süre için ilerletebilirsiniz.
+CloudSimple ayrıcalıkları yaklaşımı, vCenter kullanıcılarına normal işlemleri gerçekleştirmek için ihtiyaç duydukları ayrıcalıkları sağlamak üzere tasarlanmıştır. Bazı durumlarda, bir kullanıcı belirli bir görevi gerçekleştirmek için ek ayrıcalıklar gerektirebilir.  Bir vCenter SSO kullanıcısının ayrıcalıklarını sınırlı bir süre için artırabilirsiniz.
 
-Yürüyen ayrıcalıkların nedenleri şunları içerebilir:
+Ayrıcalıkları tırmandırma nedenleri şunlardır:
 
-* Kimlik kaynakları yapılandırması
+* Kimlik kaynaklarının yapılandırması
 * Kullanıcı yönetimi
-* Dağıtılmış bağlantı noktası grubu silme
-* VCenter çözümlerini yükleme (yedekleme uygulamaları gibi)
+* Dağıtılmış bağlantı noktası grubunun silinmesi
+* vCenter çözümlerinin yüklenmesi (yedekleme uygulamaları gibi)
 * Hizmet hesapları oluşturma
 
 > [!WARNING]
-> İlerletilen ayrıcalıklı durumda gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir ve sisteminizin kullanılamaz hale gelmesine neden olabilir. Yalnızca yükseltme döneminde gerekli eylemleri gerçekleştirin.
+> Artırılmış ayrıcalıklı durumda gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir ve sisteminizin kullanılamamasına neden olabilir. Yalnızca yükseltme döneminde gerekli eylemleri gerçekleştirin.
 
-AVS portalından, vCenter ' ın yerel kullanıcısına ait ayrıcalıkları vCenter SSO 'da [ilerletin](escalate-private-cloud-privileges.md) . Yalnızca vCenter üzerinde ek kimlik sağlayıcısı yapılandırılmışsa uzak kullanıcının ayrıcalığını ilerletebilirsiniz. Ayrıcalıkların artırılması, seçilen kullanıcıyı vSphere yerleşik Yöneticiler grubuna eklemeyi içerir. Yalnızca bir Kullanıcı ilerletilen ayrıcalıklara sahip olabilir. Başka bir kullanıcının ayrıcalıklarını yükseltmeniz gerekiyorsa, önce geçerli kullanıcıların ayrıcalıklarını de ilerletin.
+CloudSimple portalından, vCenter SSO'daki CloudOwner yerel kullanıcısıiçin [ayrıcalıkları artırın.](escalate-private-cloud-privileges.md)  Uzak kullanıcıayrıcalığını yalnızca vCenter'da ek kimlik sağlayıcısı yapılandırılırsa artırabilirsiniz.  Ayrıcalıkların artması, seçilen kullanıcının vSphere yerleşik Yöneticiler grubuna eklenmesini içerir.  Yalnızca bir kullanıcı nın artırılmış ayrıcalıkları olabilir.  Başka bir kullanıcının ayrıcalıklarını yükseltmeniz gerekiyorsa, önce geçerli kullanıcıların ayrıcalıklarını artırın.
 
-Ek kimlik kaynaklarındaki kullanıcıların, CloudOwner grubunun üyesi olarak eklenmesi gerekir.
+Ek kimlik kaynaklarından gelen kullanıcılar CloudOwner grubunun üyeleri olarak eklenmelidir.
 
 > [!CAUTION]
-> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.
-Yükseltme döneminde, AVS, ortamda yanlışlıkla yapılan değişiklikleri belirlemek için ilişkili uyarı bildirimleriyle otomatik izleme kullanır.
+> Yeni kullanıcılar yalnızca *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group,* *Cloud-Global-Network-Admin-Group* veya *Cloud-Global-VM-Admin-Group'a*eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılır.  *Yöneticiler* grubuna yalnızca hizmet hesapları eklenmelidir ve hizmet hesapları vSphere web UI'da oturum açmak için kullanılmamalıdır.
+
+Yükseltme döneminde CloudSimple, ortama yapılan yanlışlıkla yapılan değişiklikleri belirlemek için ilişkili uyarı bildirimleriyle birlikte otomatik izleme kullanır.

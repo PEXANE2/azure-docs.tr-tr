@@ -1,6 +1,6 @@
 ---
-title: Linux 'ta kalıcı durum Azure Event Grid IoT Edge | Microsoft Docs
-description: Linux 'ta meta verileri kalıcı hale getirme
+title: Linux'ta kalıcı durum - Azure Event Grid IoT Edge | Microsoft Dokümanlar
+description: Linux'ta meta verileri kalıcı olarak sada
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086660"
 ---
-# <a name="persist-state-in-linux"></a>Linux 'ta durumu kalıcı yap
+# <a name="persist-state-in-linux"></a>Linux'ta kalıcı durum
 
-Event Grid modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Dağıtımlar ve yeniden başlatmalar genelinde verileri korumak için verileri kapsayıcı dosya sisteminin dışında kalıcı hale getirmeniz gerekir.
+Olay Izgara modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde depolanır. Kalıcılık olmadan, modül yeniden dağıtılırsa, oluşturulan tüm meta veriler kaybolur. Dağıtımlar ve yeniden başlatmalar arasında verileri korumak için, verileri kapsayıcı dosya sisteminin dışında kalıcı olarak devam etmiş olmanız gerekir.
 
-Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar, daha iyi performans için bellekte depolanır. Olay kalıcılığını da sağlamak için kalıcı olaylar bölümünü izleyin.
+Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar gelişmiş performans için bellekte depolanır. Olay kalıcılığını da etkinleştirmek için kalıcı olaylar bölümünü izleyin.
 
-Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getirme adımları sağlanmaktadır.
+Bu makalede, Linux dağıtımlarında kalıcılık ile Olay Izgara modülü dağıtmak için adımlar sağlar.
 
 > [!NOTE]
->Event Grid modülü UID `2000` ve ad `eventgriduser`olan düşük ayrıcalıklı bir kullanıcı olarak çalışır.
+>Olay Izgara modülü UID `2000` ve adı `eventgriduser`ile düşük ayrıcalıklı bir kullanıcı olarak çalışır.
 
-## <a name="persistence-via-volume-mount"></a>Birim bağlama aracılığıyla Kalıcılık
+## <a name="persistence-via-volume-mount"></a>Hacim montajı ile kalıcılık
 
- [Docker birimleri](https://docs.docker.com/storage/volumes/) , dağıtımları genelinde verileri korumak için kullanılır. Event Grid modülünü dağıtmanın bir parçası olarak Docker 'ın adlandırılmış bir birimi otomatik olarak oluşturmasını sağlayabilirsiniz. Bu seçenek en basit seçenektir. **Bağlar** bölümünde oluşturulacak birim adını aşağıdaki şekilde belirtebilirsiniz:
+ [Docker birimleri](https://docs.docker.com/storage/volumes/) dağıtımlar arasında verileri korumak için kullanılır. Docker'ın Olay Izgara modülünün dağıtımının bir parçası olarak otomatik olarak adlandırılmış bir birim oluşturmasına izin verebilirsiniz. Bu seçenek en basit seçenektir. **Bağlayıcılar** bölümünde oluşturulacak birim adı aşağıdaki gibi belirtebilirsiniz:
 
 ```json
   {
@@ -42,9 +42,9 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
 ```
 
 >[!IMPORTANT]
->Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/metadatadb**olmalıdır.
+>Bağlama değerinin ikinci bölümünü değiştirmeyin. Modül içinde belirli bir konuma işaret. Linux'taki Olay Izgara modülü için **/app/metadataDb**olmalıdır.
 
-Örneğin, aşağıdaki yapılandırma, meta verilerin kalıcı olacağı, **Yumurmetadatadbvol** birimi oluşturulmasına neden olur.
+Örneğin, aşağıdaki yapılandırma, meta verilerin kalıcı olacağı **egmetadataDbVol** biriminin oluşturulmasıyla sonuçlanır.
 
 ```json
  {
@@ -77,29 +77,29 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
 }
 ```
 
-Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini bağlayabilirsiniz.
+Bir ses düzeyi monte etmek yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini monte edebilirsiniz.
 
-## <a name="persistence-via-host-directory-mount"></a>Konak Dizin bağlama aracılığıyla Kalıcılık
+## <a name="persistence-via-host-directory-mount"></a>Ev sahibi dizini montajı ile kalıcılık
 
-Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de vardır.
+Docker birimi yerine, ana bilgisayar klasörü takma seçeneğiniz de vardır.
 
-1. İlk olarak, aşağıdaki komutu çalıştırarak **eventgriduser** ve ID **2000** adlı bir kullanıcı oluşturun:
+1. Önce aşağıdaki komutu çalıştırarak ana makinede ad **eventgriduser** ve ID **2000** ile bir kullanıcı oluşturun:
 
     ```sh
     sudo useradd -u 2000 eventgriduser
     ```
-1. Aşağıdaki komutu çalıştırarak konak dosyası sisteminde bir dizin oluşturun.
+1. Aşağıdaki komutu çalıştırarak ana bilgisayar dosya sisteminde bir dizin oluşturun.
 
    ```sh
    md <your-directory-name-here>
    ```
 
-    Örneğin, aşağıdaki komutu çalıştırmak **myhostdir**adlı bir dizin oluşturur.
+    Örneğin, aşağıdaki komutu çalıştıran myhostdir adlı bir dizin **oluşturacaktır.**
 
     ```sh
     md /myhostdir
     ```
-1. Sonra, aşağıdaki komutu çalıştırarak **eventgriduser** sahibini bu klasörün sahibi yapın.
+1. Ardından, aşağıdaki komutu çalıştırarak bu klasörün **eventgriduser** sahibi olun.
 
    ```sh
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
@@ -110,7 +110,7 @@ Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
     ```
-1. Dizini bağlamak ve Event Grid modülünü Azure portal yeniden dağıtmak için **bağlamalar** ' i kullanın.
+1. Dizini monte etmek ve Olay Ağı modüllerini Azure portalından yeniden dağıtmak için **Binds'i** kullanın.
 
     ```json
     {
@@ -157,20 +157,20 @@ Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de
     ```
 
     >[!IMPORTANT]
-    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/metadatadb** ve **/App/eventsdb** olması gerekir
+    >Bağlama değerinin ikinci bölümünü değiştirmeyin. Modül içinde belirli bir konuma işaret. Linux'taki Olay Izgara modülü için **/app/metadataDb** ve **/app/eventsDb** olmalıdır
 
 
-## <a name="persist-events"></a>Etkinlikleri kalıcı yap
+## <a name="persist-events"></a>Olayları devam etti
 
-Olay kalıcılığını etkinleştirmek için, önce yukarıdaki bölümleri kullanarak birim bağlama veya ana bilgisayar Dizin bağlama aracılığıyla meta veri kalıcılığını etkinleştirmeniz gerekir.
+Olay kalıcılığını etkinleştirmek için, önce yukarıdaki bölümleri kullanarak birim montaj veya ana bilgisayar dizini montajı yoluyla meta veri kalıcılığını etkinleştirmeniz gerekir.
 
-Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
+Kalıcı olaylar hakkında dikkat edilmesi gereken önemli şeyler:
 
-* Kalıcı olaylar, olay başına abonelik temelinde etkinleştirilir ve bir birim veya dizin bağlandıktan sonra kabul edilir.
-* Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
-* Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak genellikle büyük ölçekte fark edilebilir hale gelir.
+* Kalıcı olaylar, Etkinlik Aboneliği bazında etkinleştirilir ve bir birim veya dizin monte edildikten sonra kabul edilir.
+* Olay kalıcılığı, oluşturma zamanında bir Olay Aboneliği'nde yapılandırılır ve Olay Aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını geçişyapmak için Olay Aboneliğini silmeniz ve yeniden oluşturmanız gerekir.
+* Kalıcı olaylar bellek işlemlerine göre hemen hemen her zaman daha yavaştır, ancak hız farkı sürücünün özelliklerine son derece bağlıdır. Hız ve güvenilirlik arasındaki denge tüm mesajlaşma sistemleri doğasında ama genellikle sadece büyük ölçekte fark olur.
 
-Olay aboneliği üzerinde olay kalıcılığını etkinleştirmek için `persistencePolicy` `true`olarak ayarlayın:
+Etkinlik Aboneliği'nde olay kalıcılığını `persistencePolicy` etkinleştirmek için: `true`
 
  ```json
         {

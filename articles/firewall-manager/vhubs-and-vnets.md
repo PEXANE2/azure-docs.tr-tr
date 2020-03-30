@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?
-description: Azure Güvenlik Duvarı Yöneticisi ile hub sanal ağını veya güvenli sanal hub mimarilerini kullanarak karşılaştırın ve karşıtlığı yapın.
+description: Azure Güvenlik Duvarı Yöneticisi ile hub sanal ağı veya güvenli sanal hub mimarilerini kullanarak karşılaştırın ve karşılaştırın.
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444582"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?
 
-Azure Güvenlik Duvarı Yöneticisi, iki ağ mimarisi türü için güvenlik yönetimi sağlayabilir:
+Azure Güvenlik Duvarı Yöneticisi iki ağ mimarisi türü için güvenlik yönetimi sağlayabilir:
 
 - **güvenli sanal hub**
 
-   [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources) 'ı, hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
-- **Hub sanal ağı**
+   [Azure Sanal WAN Hub'ı,](../virtual-wan/virtual-wan-about.md#resources) hub ve kollu mimarileri kolayca oluşturmanıza olanak tanıyan Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, güvenli sanal *[hub](secured-virtual-hub.md)* olarak adlandırılır. 
+- **hub sanal ağ**
 
-   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmiş olmayan tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
+   Bu, oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağıdır. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, hub *sanal ağ*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı İlkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren kollu sanal ağları eşleyebilirsiniz. Ayrıca, herhangi bir konuşmayla bakmayan bağımsız sanal ağlarda güvenlik duvarlarını da yönetebilirsiniz.
 
 ## <a name="comparison"></a>Karşılaştırma
 
-Aşağıdaki tabloda bu iki mimari seçeneği karşılaştırılmaktadır ve kuruluşunuzun güvenlik gereksinimlerine göre hangisinin doğru olduğuna karar vermenize yardımcı olabilir:
+Aşağıdaki tablo bu iki mimari seçeneği karşılaştırır ve kuruluşunuzun güvenlik gereksinimleri için hangisinin doğru olduğuna karar vermenize yardımcı olabilir:
 
 
 |  |**Hub sanal ağı**|**Güvenli sanal hub**  |
 |---------|---------|---------|
-|**Temel alınan kaynak**     |Sanal ağ|Sanal WAN hub 'ı|
-|**Hub & bağlı bileşen**     |Sanal Ağ eşlemesini kullanır|Hub sanal ağ bağlantısı kullanılarak otomatik|
-|**Şirket içi bağlantı**     |10 Gbps ve 30 S2S bağlantısı VPN Gateway; ExpressRoute|Daha ölçeklenebilir VPN Gateway 20 Gbps ve 1000 S2S bağlantısı; Express Route|
-|**SDWAN kullanarak otomatik dal bağlantısı**      |Desteklenmiyor|Destekleniyor|
-|**Bölge başına hub 'lar**     |Bölge başına birden çok sanal ağ|Her bölge için tek bir sanal hub. Birden çok sanal WAN ile birden çok hub olabilir|
-|**Azure Güvenlik Duvarı – birden çok genel IP adresi**      |Müşteri tarafından sağlanmış|Otomatik olarak oluşturuldu. GA tarafından kullanılabilir.|
-|**Azure Güvenlik Duvarı Kullanılabilirlik Alanları**     |Destekleniyor|Önizlemede yok. GA tarafından kullanılabilir|
-|**Hizmet iş ortakları olarak üçüncü taraf güvenliği ile gelişmiş Internet güvenliği**     |Tercih edilen iş ortağı hizmetine müşteri tarafından sağlanan ve yönetilen VPN bağlantısı|Güvenilen güvenlik Iş ortağı akışı ve iş ortağı yönetim deneyimi aracılığıyla otomatikleştirilmiş|
-|**Trafiği hub 'a yönlendirmek için merkezi yol yönetimi**     |Müşteri tarafından yönetilen Kullanıcı tanımlı rota|BGP kullanılarak desteklenir|
-|**Application Gateway Web uygulaması güvenlik duvarı** |Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
-|**Ağ sanal gereci**|Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
+|**Altta yatan kaynak**     |Sanal ağ|Sanal WAN Hub|
+|**Hub & Spoke**     |Sanal ağ eşleme kullanır|Hub sanal ağ bağlantısı kullanarak otomatik|
+|**Ön-prem bağlantısı**     |10 Gbps ve 30 S2S bağlantıya kadar VPN Ağ Geçidi; Ekspres Rota|20 Gbps ve 1000 S2S bağlantısına kadar daha ölçeklenebilir VPN Ağ Geçidi; Ekspres Rota|
+|**SDWAN kullanarak otomatik şube bağlantısı**      |Desteklenmiyor|Destekleniyor|
+|**Bölge başına hub'lar**     |Bölge başına birden fazla Sanal Ağ|Bölge başına tek sanal hub. Birden çok Sanal WAN ile mümkün olan birden çok hub|
+|**Azure Güvenlik Duvarı – birden çok genel IP adresi**      |Sağlanan müşteri|Otomatik oluşturuldu. GA tarafından kullanılabilir olması.|
+|**Azure Güvenlik Duvarı Kullanılabilirlik Bölgeleri**     |Destekleniyor|Önizlemede kullanılamaz. GA tarafından kullanılabilir olması|
+|**Hizmet ortakları olarak üçüncü taraf Güvenlik ile gelişmiş Internet güvenliği**     |Müşteri, tercih edilen iş ortağı hizmetine VPN bağlantısı kurmuş ve yönetmiş|Güvenilir Güvenlik İş Ortağı akışı ve iş ortağı yönetimi deneyimi ile otomatikleştirilmiş|
+|**Trafiği hub'a yönlendirmek için merkezi rota yönetimi**     |Müşteri tarafından yönetilen Kullanıcı Tanımlı Rota|BGP kullanılarak desteklenir|
+|**Application Gateway üzerinde Web Uygulaması Güvenlik Duvarı** |Sanal Ağda Desteklendi|Şu anda spoke ağında desteklenir|
+|**Ağ Sanal Cihaz**|Sanal Ağda Desteklendi|Şu anda spoke ağında desteklenir|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış](deployment-overview.md)
-- [Güvenli sanal hub 'lar](secured-virtual-hub.md)hakkında bilgi edinin.
+- [Azure Güvenlik Duvarı Yöneticisi Önizleme dağıtımına genel bakışı](deployment-overview.md) gözden geçirin
+- Güvenli [Sanal Hub'lar](secured-virtual-hub.md)hakkında bilgi edinin.

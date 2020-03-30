@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim ilkelerini geçirme-Azure Active Directory
-description: Azure portal klasik ilkeleri geçirmek için bilmeniz gerekenler hakkında bilgi edinin.
+title: Koşullu Erişim ilkelerini geçir - Azure Etkin Dizini
+description: Azure portalında klasik ilkeleri geçirmek için bilmeniz gerekenleri öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,111 +12,111 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77185919"
 ---
-# <a name="conditional-access-classic-policy-migration"></a>Koşullu erişim klasik ilke geçişi
+# <a name="conditional-access-classic-policy-migration"></a>Koşullu Erişim klasik ilke geçişi
 
-Koşullu erişim, sinyalleri bir araya getirmek, kararlar almak ve kuruluş ilkelerini zorlamak için Azure Active Directory tarafından kullanılan araçtır. Koşullu erişim, yeni kimlik temelli denetim düzlemi 'nin kalmadır. Amaç hala aynı olsa da, yeni Azure portal sürümü Koşullu erişimin nasıl çalıştığına ilişkin önemli iyileştirmeler getirmiştir.
+Koşullu Erişim, Azure Active Directory tarafından sinyalleri bir araya getirmek, kararlar almak ve kuruluş ilkelerini uygulamak için kullanılan araçtır. Conditional Access, yeni kimlik güdümlü kontrol uçağının kalbinde yer alan bir yerdir. Amaç hala aynı olsa da, yeni Azure portalının sürümü Koşullu Erişim'in çalışma şekliyle ilgili önemli iyileştirmeler getirmiştir.
 
-Azure portal oluşturduğunuz ilkeleri şu nedenle geçirmeyi düşünün:
+Azure portalında oluşturmadığınız ilkeleri geçirmeyi düşünün, çünkü:
 
-- Artık, daha önce işleyemeyen senaryolara adres ekleyebilirsiniz.
+- Artık daha önce işlenemediğiniz senaryoları ele alabilirsiniz.
 - Bunları birleştirerek yönetmeniz gereken ilke sayısını azaltabilirsiniz.
-- Tüm koşullu erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz.
-- Klasik Azure portalı kullanımdan kaldırılacak.
+- Tüm Koşullu Erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz.
+- Azure klasik portalı kullanımdan kaldırılacak.
 
-Bu makalede, mevcut koşullu erişim ilkelerinizi yeni çerçeveye geçirmek için bilmeniz gerekenler açıklanmaktadır.
+Bu makalede, varolan Koşullu Erişim ilkelerinizi yeni çerçeveye geçirmek için bilmeniz gerekenler açıklanmaktadır.
 
 ## <a name="classic-policies"></a>Klasik ilkeler
 
-[Azure Portal](https://portal.azure.com)koşullu erişim Ilkeleri, **koşullu**erişim > **Azure Active Directory** > **güvenlik** altında bulunabilir. Kuruluşunuz Ayrıca bu sayfa kullanılarak oluşturulmuş eski koşullu erişim ilkelerine sahip olabilir. Bu ilkeler *Klasik ilkeler*olarak bilinir. Klasik ilkeler, içinde oluşturduğunuz koşullu erişim ilkelerdir:
+Azure [portalında,](https://portal.azure.com)Koşullu Erişim ilkeleri **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim**altında bulunabilir. Kuruluşunuz da bu sayfayı kullanarak oluşturulmayan eski Koşullu Erişim ilkeleri olabilir. Bu ilkeler klasik *ilkeler*olarak bilinir. Klasik ilkeler Koşullu Erişim ilkeleridir, oluşturduğunuz:
 
-- Klasik Azure portalı
-- Klasik Intune portalı
-- Intune Uygulama Koruması portalı
+- Azure klasik portalı
+- Intune klasik portal
+- Intune Uygulama Koruma portalı
 
-**Koşullu erişim** sayfasında, **Yönet** bölümünde [**Klasik ilkeler**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) ' i tıklatarak klasik ilkelerinize erişebilirsiniz. 
+**Koşullu Erişim** sayfasında, **Yönet** bölümündeki [**Klasik ilkeleri**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) tıklayarak klasik ilkelerinize erişebilirsiniz. 
 
-![Klasik ilkeler görünümünü gösteren Azure AD 'de koşullu erişim](./media/policy-migration/71.png)
+![Azure AD'de koşullu erişim klasik ilkeler görünümünü gösterir](./media/policy-migration/71.png)
 
-**Klasik ilkeler** görünümü şunları yapmak için bir seçenek sunar:
+**Klasik ilkeler** görünümü size aşağıdakileri yapmak için bir seçenek sunar:
 
-- Klasik ilkelerinize filtre uygulayın.
-- Klasik ilkeleri devre dışı bırakın.
-- Klasik bir ilkenin ayarlarını gözden geçirin ve devre dışı bırakın.
+- Klasik ilkelerinizi filtreleyin.
+- Klasik ilkeleri devre dışı.
+- Klasik bir ilkenin ayarlarını gözden geçirin ve devre dışı edin.
 
-   ![Mevcut ilke yapılandırması da dahil olmak üzere klasik ilke ayrıntıları](./media/policy-migration/74.png)
+   ![Varolan ilke yapılandırması da dahil olmak üzere klasik ilke ayrıntıları](./media/policy-migration/74.png)
 
 > [!WARNING]
-> Klasik bir ilke devre dışı bırakıldıktan sonra yeniden etkinleştirilemez.
+> Klasik bir ilke devre dışı bırakıldıktan sonra yeniden etkinleştirilenemez.
 
-Klasik bir ilkenin Ayrıntılar görünümü ayarları belgeetmenize, dahil edilen veya dışlanan grupları değiştirmenize ve ilkeyi devre dışı bırakmanıza olanak tanır.
+Klasik bir ilkenin ayrıntıları görünümü, ayarları belgelemenize, dahil edilen veya dışlanan grupları değiştirmenize ve ilkeyi devre dışı etmenize olanak tanır.
 
-![İlke ayrıntıları-dahil edilecek veya hariç tutulacak gruplar](./media/policy-migration/75.png)
+![İlke ayrıntıları - İçerecek veya hariç tutacağı gruplar](./media/policy-migration/75.png)
 
-Seçilen grupları değiştirerek veya belirli grupları dışlayarak, tüm dahil edilen kullanıcılar ve gruplar için ilkeyi devre dışı bırakmadan önce, birkaç test kullanıcısı için devre dışı bırakılmış bir ilkenin etkisini test edebilirsiniz.
+Seçili grupları değiştirerek veya belirli grupları hariç tutarak, dahil olan tüm kullanıcılar ve gruplar için ilkeyi devre dışı bırakmadan önce birkaç test kullanıcısı için devre dışı bırakılmış klasik ilkenin etkisini sınayabilirsiniz.
  
 ## <a name="migration-considerations"></a>Geçiş sırasında dikkat edilmesi gerekenler
 
-Bu makalede, Azure AD koşullu erişim ilkelerine *yeni ilkeler*de denir.
-Klasik ilkelerinizde, siz devre dışı bırakana kadar yeni ilkeleriniz ile yan yana çalışmaya devam edersiniz. 
+Bu makalede, Azure AD Koşullu Erişim ilkeleri *de yeni ilkeler*olarak adlandırılır.
+Klasik ilkeleriniz, siz bunları devre dışı bırakana veya silene kadar yeni ilkelerinizle yan yana çalışmaya devam eder. 
 
-Aşağıdaki yönleri bir ilke birleştirme bağlamında önemlidir:
+Bir politika konsolidasyonu bağlamında aşağıdaki hususlar önemlidir:
 
-- Klasik ilkeler belirli bir bulut uygulamasına bağlı olsa da, yeni bir ilkede gereken sayıda bulut uygulaması seçebilirsiniz.
-- Klasik bir ilkenin denetimleri ve bir bulut uygulaması için yeni bir ilke, tüm denetimlerin (*ve*) yerine getirilmesi gerekir. 
+- Klasik ilkeler belirli bir bulut uygulamasına bağlı olsa da, yeni bir ilkede istediğiniz kadar bulut uygulaması seçebilirsiniz.
+- Klasik bir ilkenin denetimleri ve bir bulut uygulaması için yeni bir ilke tüm denetimlerin *(AND)* yerine getirilmesini gerektirir. 
 - Yeni bir ilkede şunları yapabilirsiniz:
-   - Senaryonuz için gerekliyse birden çok koşulu birleştirin. 
-   - Erişim denetimi olarak birkaç verme gereksinimi seçin ve bunları mantıksal *veya* (seçili denetimlerden birini gerektir) ya da mantıksal *ve* (seçili denetimlerin tümünü gerektir) ile birleştirin.
+   - Senaryonuz tarafından gerekirse birden çok koşulu birleştirin. 
+   - Erişim denetimi olarak birkaç hibe gereksinimi seçin ve bunları mantıksal bir *OR* (seçili denetimlerden birini gerektirir) veya mantıksal *ve* (seçili denetimlerin tümünü gerektirir) ile birleştirin.
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="office-365-exchange-online"></a>Office 365 Exchange çevrimiçi
 
-İstemci uygulamaları gibi **Exchange Active Sync** içeren **Office 365 Exchange Online** için klasik ilkeleri geçirmek istiyorsanız, bunları yeni bir ilkede birleştirmeyebilirsiniz. 
+**Office 365 Exchange** için istemci uygulamaları koşulu olarak **Exchange Active Sync'i** içeren klasik ilkeleri çevrimiçi olarak geçirmek istiyorsanız, bunları yeni bir ilke halinde birleştiremeyebilirsiniz. 
 
-Bu, örneğin, tüm istemci uygulama türlerini desteklemek istiyorsanız, bu durumda olur. İstemci uygulamaları olarak **Exchange Active Sync** olan yeni bir ilkede, diğer istemci uygulamalarını seçemezsiniz.
+Bu, örneğin, tüm istemci uygulama türlerini desteklemek istiyorsanız durumdur. İstemci uygulamaları koşulu olarak **Exchange Active Sync** olan yeni bir ilkede, diğer istemci uygulamalarını seçemezsiniz.
 
-![Koşullu erişim istemci uygulamalarını seçme](./media/policy-migration/64.png)
+![İstemci uygulamalarını seçme koşullu Erişim](./media/policy-migration/64.png)
 
-Klasik ilkeleriniz çeşitli koşullar içeriyorsa, tek bir yeni ilkeye birleştirme de mümkün değildir. İstemci uygulamaları tarafından yapılandırılan **Exchange Active Sync** olan yeni bir ilke diğer koşulları desteklemez:   
+Klasik ilkeleriniz çeşitli koşullar içeriyorsa, yeni bir ilke de birleştirilmesi mümkün değildir. Müşteri uygulamaları koşulolarak yapılandırılan **Exchange Active Sync** olan yeni bir ilke diğer koşulları desteklemez:   
 
-![Exchange ActiveSync seçili koşulları desteklemiyor](./media/policy-migration/08.png)
+![Exchange ActiveSync seçili koşulları desteklemez](./media/policy-migration/08.png)
 
-İstemci uygulamaları koşulu yapılandırılmış **Exchange Active Sync** olan yeni bir ilkeniz varsa, diğer tüm koşulların yapılandırılmadığından emin olmanız gerekir. 
+İstemci uygulamaları koşulu yapılandırıldıkça **Exchange Active Sync'e** sahip yeni bir ilkeniz varsa, diğer tüm koşulların yapılandırılmadığını zedeleniz gerekir. 
 
-![Koşullu erişim koşulları](./media/policy-migration/16.png)
+![Koşullu Erişim koşulları](./media/policy-migration/16.png)
  
-İstemci uygulamaları koşulu olarak **Exchange Active Sync** içeren Office 365 Exchange Online için uygulama tabanlı klasik ilkeler **desteklenen** ve **Desteklenmeyen** cihaz platformlarına izin verir. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](concept-conditional-access-conditions.md#device-platforms) sınırlayabilirsiniz. 
+Office 365 Exchange Online için, istemci uygulamaları koşulu olarak **Exchange Active Sync'i** içeren uygulama tabanlı klasik ilkeler **desteklenen** ve **desteklenmeyen** aygıt platformlarına izin verir. İlgili yeni bir ilkede tek tek aygıt platformlarını yapılandıramasanız da, desteği yalnızca [desteklenen aygıt platformları](concept-conditional-access-conditions.md#device-platforms) ile sınırlandırabilirsiniz. 
 
-![Koşullu erişim Exchange ActiveSync seçin](./media/policy-migration/65.png)
+![Koşullu Erişim Exchange ActiveSync seçin](./media/policy-migration/65.png)
 
-Şunları içeriyorsa, istemci uygulamaları olarak **Exchange Active Sync** içeren birden fazla klasik ilkeyi birleştirebilirsiniz:
+Varsa, istemci uygulamaları koşulu olarak **Exchange Active Sync'i** içeren birden çok klasik ilkeyi birleştirebilirsiniz:
 
-- Yalnızca koşul olarak **Exchange Active Sync** 
-- Erişim vermek için çeşitli gereksinimler
+- Koşul olarak yalnızca **Exchange Etkin Eşitleme** 
+- Yapılandırılan erişim izni için çeşitli gereksinimler
 
-Yaygın olarak kullanılan bir senaryo şu şekilde birleştirilir:
+Ortak senaryolardan biri şu şekildedir:
 
-- Klasik Azure portalından cihaz tabanlı klasik bir ilke 
+- Azure klasik portalından aygıt tabanlı klasik ilke 
 - Intune uygulama koruma portalında uygulama tabanlı klasik bir ilke 
  
-Bu durumda, klasik ilkelerinizi her iki gereksinimin de seçildiği yeni bir ilkede birleştirebilirsiniz.
+Bu durumda, klasik ilkelerinizi her iki gereksinimi de seçili olan yeni bir ilke de birleştirebilirsiniz.
 
-![Koşullu erişim izni denetimleri](./media/policy-migration/62.png)
+![Koşullu Erişim hibe denetimleri](./media/policy-migration/62.png)
 
 ### <a name="device-platforms"></a>Cihaz platformları
 
-Uygulama tabanlı denetimlerle klasik ilkeler, cihaz platformu koşulu olarak iOS ve Android ile önceden yapılandırılmıştır. 
+Uygulama tabanlı denetimlere sahip klasik ilkeler, aygıt platformu koşulu olarak iOS ve Android ile önceden yapılandırılmıştır. 
 
-Yeni bir ilkede, desteklemek istediğiniz [cihaz platformlarını](concept-conditional-access-conditions.md#device-platforms) tek tek seçmeniz gerekir.
+Yeni bir ilkede, tek tek desteklemek istediğiniz [aygıt platformlarını](concept-conditional-access-conditions.md#device-platforms) seçmeniz gerekir.
 
-![Koşullu erişim cihaz platformları seçimi](./media/policy-migration/41.png)
+![Koşullu Erişim aygıt platformları seçimi](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yeni ilke kararlarının etkisini öğrenmek için koşullu erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)
-- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek istiyorsanız bkz. [koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, bkz. [nasıl yapılır: koşullu erişim dağıtımınızı Plan Azure Active Directory](plan-conditional-access.md). 
+- [Yeni ilke kararlarının etkisini belirlemek için Koşullu Erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)
+- Koşullu Erişim ilkesini nasıl yapılandıracağınıbilmek istiyorsanız, [Koşullu Erişim ortak ilkelerine](concept-conditional-access-policy-common.md)bakın.
+- Ortamınız için Koşullu Erişim ilkelerini yapılandırmaya hazırsanız, [Azure Etkin Dizini'nde Koşullu Erişim dağıtımınızı nasıl planlayın makalesine](plan-conditional-access.md)bakın. 

@@ -1,7 +1,7 @@
 ---
 title: Basit sorgu söz dizimi
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de tam metin arama sorguları için kullanılan basit sorgu söz dizimi başvurusu.
+description: Azure Bilişsel Arama'da tam metin arama sorguları için kullanılan basit sorgu sözdizimine başvuru.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,78 +20,78 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152678"
 ---
-# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit sorgu söz dizimi
+# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da basit sorgu sözdizimi
 
-Azure Bilişsel Arama iki adet Lucene tabanlı sorgu dili uygular: [basit sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) ve [Lucene sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Azure Bilişsel Arama 'de basit sorgu söz dizimi, benzer/slop seçeneklerini dışlar.  
+Azure Bilişsel Arama iki Lucene tabanlı sorgu dili uygular: [Basit Sorgu Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) ve [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Azure Bilişsel Arama'da, basit sorgu sözdizimi bulanık/slop seçeneklerini dışlar.  
 
 > [!NOTE]
-> Basit sorgu söz dizimi, [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri IÇIN kullanılır, bu API 'nin [$Filter](search-filters.md) parametresi için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
+> Basit sorgu sözdizimi, [Arama Belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API'sinin **arama** parametresi içinde geçirilen sorgu ifadeleri için kullanılır ve bu API'nin [$filter](search-filters.md) parametresi için kullanılan [OData sözdizimi](query-odata-filter-orderby-syntax.md) ile karıştırılmamalıdır. Bu farklı sözdizimilerin sorgu oluşturmak, dizeleri kaçmak ve benzeri için kendi kuralları vardır.
 >
-> Azure Bilişsel Arama, **arama** parametresinde daha karmaşık sorgular için alternatif bir [tam Lucene sorgu söz dizimi](query-lucene-syntax.md) sağlar. Her bir sözdiziminin sorgu ayrıştırma mimarisi ve avantajları hakkında daha fazla bilgi edinmek için bkz. [tam metin aramasının Azure bilişsel arama nasıl çalıştığı](search-lucene-query-architecture.md).
+> Azure Bilişsel Arama, **arama** parametresi'ndeki daha karmaşık sorgular için alternatif bir [tam Lucene sorgu sözdizimi](query-lucene-syntax.md) sağlar. Sorgu ayrıştırma mimarisi ve her sözdiziminin yararları hakkında daha fazla bilgi edinmek için Azure [Bilişsel Arama'da tam metin aramanın nasıl çalıştığını](search-lucene-query-architecture.md)görün.
 
-## <a name="how-to-invoke-simple-parsing"></a>Basit ayrıştırma çağırma
+## <a name="how-to-invoke-simple-parsing"></a>Basit ayrıştırma nasıl çağrılabilir?
 
-Basit sözdizimi varsayılandır. Çağırma yalnızca sözdizimini tam değerinden basit olarak sıfırlarsanız gereklidir. Sözdizimini açıkça ayarlamak için `queryType` Search parametresini kullanın. Geçerli değerler, varsayılan olarak `simple` ve Lucene için `full` `simple|full`içerir. 
+Basit sözdizimi varsayılandır. Çağırma yalnızca sözdizimini tamdan basite sıfırlıyorsanız gereklidir. Sözdizimini açıkça ayarlamak için `queryType` arama parametresini kullanın. Geçerli değerler, `simple` varsayılan olarak ve `full` Lucene için içerir. `simple|full` 
 
-## <a name="query-behavior-anomalies"></a>Sorgu davranışı bozuklukları
+## <a name="query-behavior-anomalies"></a>Davranış anormalliklerini sorgula
 
-Bir veya daha fazla terim içeren herhangi bir metin, sorgu yürütmesi için geçerli bir başlangıç noktası olarak kabul edilir. Azure Bilişsel Arama, metnin çözümlenmesi sırasında bulunan tüm Çeşitlemeler dahil olmak üzere, koşulların herhangi birini veya tümünü içeren belgelerle eşleşir. 
+Bir veya daha fazla terime sahip herhangi bir metin, sorgu yürütmesi için geçerli bir başlangıç noktası olarak kabul edilir. Azure Bilişsel Arama, metnin analizi sırasında bulunan varyasyonlar da dahil olmak üzere terimlerin herhangi birini veya tümününi içeren belgeleri eşler. 
 
-Bu seslerin yanı sıra, Azure Bilişsel Arama sorgu yürütmesinin bir yönü vardır. Bu işlem, giriş dizesine daha fazla terim ve işleç eklendikçe, arama sonuçlarını azaltmak yerine artan sonuçlara neden *olabilir* . Bu genişletmenin gerçekten gerçekleşmediği, bir NOT işlecinin eklenmesine bağlıdır, AND veya OR davranışları açısından nasıl yorumlanmadığını belirleyen bir `searchMode` parametresi ayarıyla birleştirilir. Varsayılan, `searchMode=Any`ve NOT işleci verildiğinde, işlem bir veya eylem olarak hesaplanır; Örneğin, `"New York" NOT Seattle` Seattle olmayan tüm şehirleri döndürür.  
+Bu kulağa ne kadar basit gelse de, Azure Bilişsel Arama'da sorgu yürütmenin beklenmeyen *sonuçlara* yol açabilecek bir yönü vardır ve giriş dizesine daha fazla terim ve işleç eklendikçe arama sonuçlarını azaltmak yerine artabilir. Bu genişletmenin gerçekten gerçekleşip gerçekleşmeyeceği, NOT işlecinin `searchMode` eklenmesine ve NOT'un VE veya OR davranışları açısından nasıl yorumlandığını belirleyen bir parametre ayarı ile birleştirilmesine bağlıdır. Varsayılan `searchMode=Any`ve NOT işleci göz önüne alındığında, işlem Seattle olmayan tüm `"New York" NOT Seattle` şehirleri döndüren bir OR eylemi olarak hesaplanır.  
 
-Genellikle, kullanıcıların daha fazla yerleşik gezinti yapılarına sahip olan e-ticaret sitelerinin aksine, içerik üzerinde arama yapan uygulamalar için Kullanıcı etkileşimi desenlerinde bu davranışları görmeniz daha olasıdır. Daha fazla bilgi için, bkz. [işleç](#not-operator). 
+Tipik olarak, daha yerleşik gezinme yapılarına sahip e-ticaret sitelerinin aksine, kullanıcıların bir sorguya bir operatör ekleme olasılığının daha yüksek olduğu, içerik üzerinde arama yapan uygulamalar için kullanıcı etkileşim ibdesi bu davranışları görme olasılığınız daha yüksektir. Daha fazla bilgi için [NOT işlecine](#not-operator)bakın. 
 
-## <a name="boolean-operators-and-or-not"></a>Boole işleçleri (ve, veya DEĞIL) 
+## <a name="boolean-operators-and-or-not"></a>Boolean operatörleri (VE, VEYA, Değİl) 
 
-Eşleşen belgelerin bulunduğu bir dizi zengin ölçüt kümesi oluşturmak için işleçleri bir sorgu dizesine ekleyebilirsiniz. 
+Eşleşen belgelerin bulunduğu zengin bir ölçüt kümesi oluşturmak için işleçleri sorgu dizesi'ne gömebilirsiniz. 
 
-### <a name="and-operator-"></a>AND işleci `+`
+### <a name="and-operator-"></a>VE operatörü`+`
 
-AND işleci bir artı işareti. Örneğin, `wifi+luxury` hem `wifi` hem de `luxury`içeren belgeler için arama yapılır.
+AND işleci bir artı işaretidir. Örneğin, `wifi+luxury` her ikisini ve `wifi` `luxury`.'yi içeren belgeleri arar.
 
-### <a name="or-operator-"></a>OR işleci `|`
+### <a name="or-operator-"></a>VEYA operatörü`|`
 
-OR işleci dikey bir çubuk veya boru karakterdir. Örneğin, `wifi | luxury` `wifi` veya `luxury` ya da her ikisini de içeren belgeleri arayacak.
+OR işleci dikey bir çubuk veya boru karakteridir. Örneğin, `wifi | luxury` her ikisini `wifi` veya `luxury` her ikisini içeren belgeleri arar.
 
 <a name="not-operator"></a>
 
-### <a name="not-operator--"></a>İşleç `-` DEĞIL
+### <a name="not-operator--"></a>NOT operatörü`-`
 
-NOT işleci eksi işareti. Örneğin, `wifi –luxury` `wifi` terimi olan ve/veya `luxury` olmayan (ve/veya `searchMode`tarafından denetlenen) belgeleri arar.
+NOT işleci eksi işaretidir. Örneğin, `wifi –luxury` `wifi` terimi olan ve/veya olmayan `luxury` (ve/veya `searchMode`denetlenmeyen) belgeler aranır.
 
 > [!NOTE]  
->  `searchMode` seçeneği, NOT işleci olan bir terimin bir `+` veya `|` işleci yokluğunda, sorgudaki diğer koşullara göre mi yoksa ORed mi olduğunu denetler. `searchMode` `any` (varsayılan) veya `all`olarak ayarlan, hatırlayın. `any`kullanıyorsanız, daha fazla sonuç ekleyerek sorguların geri çağrılması artar ve varsayılan olarak `-` "veya NOT" olarak yorumlanır. Örneğin, `wifi -luxury` `wifi` terimi veya `luxury`terimi içermeyen belgelerle eşleşir. `all`kullanırsanız, daha az sonuç ekleyerek sorguların duyarlığını artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` `wifi` terimi içeren belgelerle eşleşir ve "merkezlerini" terimini içermez. Bu, `-` işleci için daha sezgisel bir davranıştır. Bu nedenle, aramaları geri çağırmak yerine duyarlık için iyileştirmek istiyorsanız `searchMode=any` yerine `searchMode=all` kullanmayı düşünmelisiniz *ve* kullanıcılarınız aramalardaki `-` işlecini kullanır.
+>  Seçenek, `searchMode` NOT işleci ile bir terimin ANDed veya ORed sorguda bir `+` veya `|` işleç yokluğunda diğer terimler ile olup olmadığını denetler. (varsayılan) veya `searchMode` `any` `all`. olarak ayarlanabilen geri çağırma Kullanırsanız, `any`daha fazla sonuç ekleyerek sorguların geri çağrılması `-` artar ve varsayılan olarak "VEYA Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren veya terimi `luxury`içermeyen belgelereşleşir. Kullanırsanız, `all`daha az sonuç ekleyerek sorguların kesinliğini artırır ve varsayılan olarak "VE Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren ve "lüks" terimini içermeyen belgeler eşleşir. Bu operatör için `-` tartışmasız daha sezgisel bir davranıştır. Bu nedenle, aramaları `searchMode=all` geri `searchMode=any` çağırmak yerine kesinlik için optimize etmek *and* istiyorsanız kullanmayı düşünmelisiniz `-` ve kullanıcılarınız aramalarda operatörü sık sık kullanır.
 
 ## <a name="suffix-operator"></a>Sonek işleci
 
-Sonek işleci bir yıldız `*`. Örneğin, `lux*`, `lux`ile başlayan, büyük/küçük harf yok sayılarak bir terim içeren belgeler için arama yapılır.  
+Sonek işleci bir yıldız `*`işaretidir. Örneğin, `lux*` "büyük/küçük/ yoksayma" `lux`ile başlayan bir terimi olan belgeleri arar.  
 
-## <a name="phrase-search-operator"></a>Tümcecik arama işleci
+## <a name="phrase-search-operator"></a>İfade arama operatörü
 
-Tümcecik işleci, tırnak işaretleri `" "`bir tümceciği barındırır. Örneğin, `Roach Motel` (tırnak işareti olmadan) herhangi bir sırada `Roach` ve/veya `Motel` içeren belgeleri aradığında, `"Roach Motel"` (tırnak işaretleriyle) yalnızca bu tümceciği içeren belgelerle ve bu sırada (metin analizi hala geçerlidir) eşleşir.
+Tümcecik işleci, bir tümceciği tırnak işaretlerine `" "`eler. Örneğin, (tırnak işaretleri olmadan) herhangi `Roach` bir sırada `Motel` ve/veya `"Roach Motel"` herhangi bir yerde bulunan belgeleri ararken, `Roach Motel` (tırnak işaretleriyle) yalnızca tüm tüm ifadeyi birlikte ve bu sırada içeren belgelerle eşleşir (metin çözümlemesi hala geçerlidir).
 
-## <a name="precedence-operator"></a>Öncelik operatörü
+## <a name="precedence-operator"></a>Öncelik işleci
 
-Öncelik işleci, dizeyi parantez `( )`içine alır. Örneğin `motel+(wifi | luxury)`, Motel dönemi ve `wifi` veya `luxury` (ya da her ikisi) içeren belgeleri arayacak.  
+Öncelik işleci dizeyi parantez içine `( )`alar. Örneğin, `motel+(wifi | luxury)` motel terimini ve ya `wifi` veya `luxury` (veya her ikisini) içeren belgeleri arayacaktır.  
 
-## <a name="escaping-search-operators"></a>Kaçış arama işleçleri  
+## <a name="escaping-search-operators"></a>Arama operatörlerinden kaçış  
 
- Yukarıdaki sembolleri, arama metninin gerçek parçası olarak kullanmak için, bir ters eğik çizgiyle önek olarak önüne alınmalıdır. Örneğin, `luxury\+hotel` `luxury+hotel`terimi sonucunu elde eder. Daha tipik durumlarda bu kurala göre basit hale getirmek için, bu kuralın kaçışın gerekli olmadığı iki özel durum vardır:  
+ Yukarıdaki sembolleri arama metninin gerçek bir parçası olarak kullanabilmek için, bir ters eğik çizgi ile önseerek kaçmış olmalıdır. Örneğin, `luxury\+hotel` terim `luxury+hotel`neden olur. İşleri daha tipik durumlar için basitleştirmek için, bu kuralın kaçışın gerekli olmadığı iki istisna vardır:  
 
-- NOT işleci `-`, bir dönemin ortasında değil, boşluktan sonra gelen ilk karakter olması durumunda yalnızca kaçışlı olması gerekir. Örneğin, `wi-fi` tek bir terimdir; Yani, GUID 'Ler (`3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`gibi) tek bir belirteç olarak değerlendirilir.
-- Sonek işlecinin `*`, yalnızca boşluktan önceki son karakter olması, bir terimin ortasında olmaması durumunda değil, bunun önüne alınması gerekir. Örneğin, `wi*fi` tek bir belirteç olarak değerlendirilir.
+- NOT işlecinin `-` yalnızca bir dönemin ortasında ysa, beyazuzaydan sonraki ilk karakter olması durumunda kaçması gerekir. Örneğin, `wi-fi` tek bir terimdir; oysa GUID'ler (örneğin) `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`tek bir belirteç olarak kabul edilir.
+- Sonek işlecinin `*` yalnızca beyaz uzaydan önceki son karakter olması durumunda, bir terimin ortasında ysa kaçılması gerekir. Örneğin, `wi*fi` tek bir belirteç olarak kabul edilir.
 
 > [!NOTE]  
->  Kaçış belirteçleri birlikte tutar, ancak çözümleme moduna bağlı olarak metin analizi bunları bölebilir. Ayrıntılar için bkz. [Azure &#40;bilişsel arama&#41; REST API dil desteği](index-add-language-analyzers.md) .  
+>  Kaçan belirteçleri bir arada tutsa da, metin çözümlemesi çözümleme moduna bağlı olarak onları bölebilir. Ayrıntılar için [Azure Bilişsel Arama REST API &#40;&#41;Dil desteğine](index-add-language-analyzers.md) bakın.  
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
++ [Arama Belgeleri &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene sorgu söz dizimi](query-lucene-syntax.md)
 + [OData ifadesi söz dizimi](query-odata-filter-orderby-syntax.md) 

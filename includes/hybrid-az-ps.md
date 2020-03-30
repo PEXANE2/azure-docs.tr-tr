@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ee0d990a8959a8d9430ca909a37f6c233afe530d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73748094"
 ---
-Bu makaledeki adımlar ve Örnekler Azure PowerShell az modules kullanır. Az modules 'i bilgisayarınıza yerel olarak yüklemek için bkz. [Azure PowerShell Install](/powershell/azure/install-az-ps). Yeni az modülle ilgili daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az). PowerShell cmdlet 'leri sıklıkla güncelleştirilir. En son sürümü çalıştırmıyorsanız, yönergelerde belirtilen değerler başarısız olabilir. Sisteminizde yüklü PowerShell sürümlerini bulmak için `Get-Module -ListAvailable Az` cmdlet 'ini kullanın.
+Bu makaledeki adımlar ve örneklerAzure PowerShell Az modüllerini kullanır. Az modüllerini bilgisayarınıza yerel olarak yüklemek için Azure [PowerShell'i yükleyin'e](/powershell/azure/install-az-ps)bakın. Yeni Az modülü hakkında daha fazla bilgi edinmek için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az) PowerShell cmdlets sık sık güncellenir. En son sürümü çalıştırmıyorsanız, yönergelerde belirtilen değerler başarısız olabilir. PowerShell'in yüklü sürümlerini sisteminizde bulmak `Get-Module -ListAvailable Az` için cmdlet'i kullanın.

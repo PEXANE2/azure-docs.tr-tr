@@ -1,7 +1,7 @@
 ---
-title: ADAL to MSAL geçiş kılavuzu (MSAL iOS/macOS) | Mavisi
+title: ADAL - MSAL geçiş kılavuzu (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: İOS/macOS için MSAL ve ObjectiveC için Azure AD kimlik doğrulama kitaplığı (ADAL) arasındaki farkları öğrenin. ObjC) ve iOS/macOS için MSAL 'e geçiş yapma.
+description: iOS/macOS için MSAL ile ObjectiveC için Azure AD Kimlik Doğrulama Kitaplığı (ADAL) arasındaki farkları öğrenin. ObjC) ve iOS/macOS için MSAL'a nasıl geçirilir.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,139 +14,139 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085185"
 ---
-# <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
+# <a name="migrate-applications-to-msal-for-ios-and-macos"></a>uygulamaları iOS ve macOS için MSAL'a geçirin
 
-Azure Active Directory kimlik doğrulama kitaplığı ([adal hedefi-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)), v 1.0 uç noktası aracılığıyla Azure Active Directory hesaplarıyla çalışacak şekilde oluşturulmuştur.
+Azure Active Directory Authentication Library[(ADAL Objective-C),](https://github.com/AzureAD/azure-activedirectory-library-for-objc)v1.0 bitiş noktası üzerinden Azure Active Directory hesaplarıyla çalışmak üzere oluşturulmuştur.
 
-İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL) Microsoft Identity platformu aracılığıyla Azure Active Directory (Azure AD) hesapları, kişisel Microsoft hesapları ve Azure AD B2C hesapları gibi tüm Microsoft kimlikleriyle çalışacak şekilde oluşturulmuştur (resmi olarak Azure AD v 2.0 uç noktası).
+iOS ve macOS için Microsoft Kimlik Doğrulama Kitaplığı (MSAL), Azure Active Directory (Azure AD) hesapları, kişisel Microsoft hesapları ve Azure AD B2C hesapları gibi tüm Microsoft kimlikleriyle Çalışmak üzere oluşturulmuştür (resmi olarak). Azure AD v2.0 bitiş noktası).
 
-Microsoft Identity platformu Azure Active Directory v 1.0 ile birkaç önemli farka sahiptir. Bu makalede bu farklılıklar vurgulanmıştır ve bir uygulamayı ADAL 'dan MSAL 'e geçirmeye yönelik rehberlik sunulmaktadır.
+Microsoft kimlik platformu, Azure Active Directory v1.0 ile birkaç önemli farka sahiptir. Bu makale, bu farklılıkları vurgular ve bir uygulamayı ADAL'dan MSAL'a geçirmek için kılavuz sağlar.
 
-## <a name="adal-and-msal-app-capability-differences"></a>ADAL ve MSAL App yetenek farkları
+## <a name="adal-and-msal-app-capability-differences"></a>ADAL ve MSAL uygulama özelliği farklılıkları
 
 ### <a name="who-can-sign-in"></a>Kimler oturum açabilir
 
 * ADAL yalnızca Azure AD hesapları olarak da bilinen iş ve okul hesaplarını destekler.
 * MSAL, Hotmail.com, Outlook.com ve Live.com gibi kişisel Microsoft hesaplarını (MSA hesapları) destekler.
-* MSAL, iş ve okul hesaplarını ve Azure AD B2C hesaplarını destekler.
+* MSAL iş ve okul hesaplarını ve Azure AD B2C hesaplarını destekler.
 
-### <a name="standards-compliance"></a>Standartlar uyumluluğu
+### <a name="standards-compliance"></a>Standartlara uygunluk
 
-* Microsoft Identity platform uç noktası, OAuth 2,0 ve OpenID Connect standartlarını izler.
+* Microsoft kimlik Platformu bitiş noktası, OAuth 2.0 ve OpenId Connect standartlarını izler.
 
 ### <a name="incremental-and-dynamic-consent"></a>Artımlı ve dinamik onay
 
-* Azure Active Directory v 1.0 uç noktası, uygulama kaydı sırasında tüm izinlerin önceden bildirilmesini gerektirir. Bu, izinlerin statik olduğu anlamına gelir.
-* Microsoft Identity platformu izinleri dinamik olarak isteyebilmesini sağlar. Uygulamalar, izinleri yalnızca gerekli olduğu gibi isteyebilir ve uygulama onlara ihtiyaç duyarken daha fazla istekte bulunabilir.
+* Azure Active Directory v1.0 bitiş noktası, başvuru kaydı sırasında tüm izinlerin önceden bildirilmesini gerektirir. Bu, bu izinlerin statik olduğu anlamına gelir.
+* Microsoft kimlik platformu, izinleri dinamik olarak istemenize olanak tanır. Uygulamalar yalnızca gerektiği gibi izin isteyebilir ve uygulamanın ihtiyacı olduğu şekilde daha fazlasını isteyebilir.
 
-Azure Active Directory v 1.0 ile Microsoft Identity platformu arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesi nedir?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Azure Active Directory v1.0 ile Microsoft kimlik platformu arasındaki farklar hakkında daha fazla [bilgi](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)için bkz.
 
-## <a name="adal-and-msal-library-differences"></a>ADAL ve MSAL kitaplığı farklılıkları
+## <a name="adal-and-msal-library-differences"></a>ADAL ve MSAL kütüphane farklılıkları
 
-MSAL public API 'SI, Azure AD v 1.0 ile Microsoft Identity platformu arasındaki birkaç önemli farkı yansıtır.
+MSAL genel API'si, Azure AD v1.0 ile Microsoft kimlik platformu arasındaki birkaç önemli farkı yansıtır.
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>ADAuthenticationContext yerine MSALPublicClientApplication
 
-`ADAuthenticationContext`, ADAL uygulamasının oluşturduğu ilk nesnedir. ADAL örneğini temsil eder. Uygulamalar her bir Azure Active Directory bulut ve kiracı (yetkili) birleşimi için `ADAuthenticationContext` yeni bir örneğini oluşturur. Aynı `ADAuthenticationContext` birden çok ortak istemci uygulaması için belirteçleri almak üzere kullanılabilir.
+`ADAuthenticationContext`bir ADAL uygulamasının oluşturduğu ilk nesnedir. ADAL'ın anlık bir anını temsil eder. Uygulamalar, her Azure `ADAuthenticationContext` Etkin Dizin bulutu ve kiracı (yetki) birleşimi için yeni bir örnek oluşturur. Aynı `ADAuthenticationContext` birden çok ortak istemci uygulamaları için belirteçleri almak için kullanılabilir.
 
-MSAL ' de, ana etkileşim, [OAuth 2,0 genel istemcisinden](https://tools.ietf.org/html/rfc6749#section-2.1)sonra Modellenen bir `MSALPublicClientApplication` nesnesi aracılığıyla yapılır. Bir `MSALPublicClientApplication` örneği, her bir yetkili için yeni bir örnek oluşturmaya gerek kalmadan birden çok AAD bulutları ve kiracılar ile etkileşim kurmak için kullanılabilir. Çoğu uygulama için, bir `MSALPublicClientApplication` örneği yeterlidir.
+MSAL'da ana etkileşim, `MSALPublicClientApplication` [OAuth 2.0 Public Client'dan](https://tools.ietf.org/html/rfc6749#section-2.1)sonra modellenen bir nesne aracılığıyla dır. Bir örneği, her bir yetki için yeni bir örnek oluşturmaya gerek kalmadan birden çok AAD bulutu ve kiracıyla etkileşim kurmak için `MSALPublicClientApplication` kullanılabilir. Çoğu uygulama için `MSALPublicClientApplication` bir örnek yeterlidir.
 
 ### <a name="scopes-instead-of-resources"></a>Kaynaklar yerine kapsamlar
 
-ADAL 'da, bir uygulamanın Azure Active Directory v 1.0 uç noktasından belirteçleri almak için `https://graph.microsoft.com` gibi bir *kaynak* tanımlayıcısı sağlaması gerekiyordu. Bir kaynak, bir dizi kapsam veya uygulama bildiriminde oAuth2Permissions, anladığı şekilde tanımlayabilir. Bu izin verilen istemci uygulamaları, uygulama kaydı sırasında önceden tanımlanmış belirli bir kapsam kümesi için bu kaynaktan belirteç ister.
+ADAL'da, bir uygulamanın *resource* Azure Active Directory `https://graph.microsoft.com` v1.0 bitiş noktasından belirteçler edinmegibi bir kaynak tanımlayıcısı sağlaması gerekiyordu. Bir kaynak, anladığı kapsamları veya oAuth2Permissions uygulama bildiriminde bir dizi tanımlayabilirsiniz. Bu, istemci uygulamalarının uygulama kaydı sırasında önceden tanımlanmış belirli kapsamlar kümesi için bu kaynaktan belirteçler istemesine olanak tanır.
 
-MSAL ' de, tek bir kaynak tanımlayıcısı yerine, uygulamalar istek başına bir kapsam kümesi sağlar. Kapsam, kaynak tanımlayıcısı ve ardından kaynak/izin biçiminde bir izin adı gelir. Örneğin, `https://graph.microsoft.com/user.read`
+MSAL'da, uygulamalar istek başına bir dizi kapsam sağlar. Kapsam, kaynak/izin formunda bir izin adı izleyen bir kaynak tanımlayıcısIdır. Örneğin, `https://graph.microsoft.com/user.read`
 
-MSAL içinde kapsam sağlamanın iki yolu vardır:
+MSAL'da kapsam sağlamanın iki yolu vardır:
 
-* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örneğin: 
+* Uygulamalarınızın ihtiyaç duyduğu tüm izinlerin bir listesini sağlayın. Örnek: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
-    Bu durumda, uygulama `directory.read` ve `directory.write` izinlerini ister. Bu uygulama için önceden kabul etmedikleri takdirde, kullanıcıdan bu izinleri onaylaması istenir. Uygulama, kullanıcının uygulama için zaten onay aldığı ek izinler de alabilir. Kullanıcılardan yalnızca yeni izinleri veya verilmemiş izinleri onaylaması istenir.
+    Bu durumda, uygulama ve `directory.read` `directory.write` izinleri ister. Kullanıcıdan, bu uygulama için daha önce izin vermedikleri takdirde bu izinleri kabul etmesi istenir. Uygulama, kullanıcının uygulama için önceden onayladığı ek izinler de alabilir. Kullanıcıdan yalnızca yeni izinler veya verilmeyen izinler için onay vermesi istenir.
 
-* `/.default` kapsamı.
+* `/.default` Kapsam.
 
-Bu, her uygulama için yerleşik kapsamdır. Uygulama kaydedildiğinde yapılandırılan izinlerin statik listesine başvurur. Davranışı `resource`benzerdir. Bu, geçiş sırasında, benzer bir kapsam ve Kullanıcı deneyimi kümesinin korunmasını sağlamak için yararlı olabilir.
+Bu, her uygulama için yerleşik kapsamdır. Uygulama kaydedildiğinde yapılandırılan izinlerin statik listesini ifade eder. Davranışları, `resource`. Bu, benzer kapsamlar ve kullanıcı deneyimi kümesinin korunduğundan emin olmak için geçiş yaparken yararlı olabilir.
 
-`/.default` kapsamını kullanmak için kaynak tanımlayıcısına `/.default` ekleyin. Örneğin: `https://graph.microsoft.com/.default`. Kaynağınız eğik çizgiyle (`/`) sonlanıyorsa, önde gelen eğik çizgi da dahil olmak üzere `/.default`eklemeniz gerekir. Bu, içinde çift eğik çizgi (`//`) içeren bir kapsamın oluşmasına neden olur.
+`/.default` Kapsamı kullanmak için kaynak `/.default` tanımlayıcısına ek. Örneğin: `https://graph.microsoft.com/.default`. Kaynağınız bir eğik`/`çizgi ile sona `/.default`ererse ( ), yine de, önde gelen ileri eğik çizgi de dahil olmak üzere, içinde çift ileri eğik çizgi ()`//`olan bir kapsam sonuçlanan ekgerekir.
 
-"/PST varsayılan" kapsamını kullanma hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) bulabilirsiniz
+Burada "/.default" [kapsamını](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) kullanma hakkında daha fazla bilgi okuyabilirsiniz
 
-### <a name="supporting-different-webview-types--browsers"></a>Farklı WebView türlerini destekleme & tarayıcılar
+### <a name="supporting-different-webview-types--browsers"></a>Tarayıcılar & farklı Web View türlerini destekleme
 
-ADAL yalnızca iOS için UIWebView/WKWebView ve macOS için WebView destekler. İOS için MSAL, bir yetkilendirme kodu istenirken Web içeriğini görüntülemeye yönelik daha fazla seçeneği destekler ve artık `UIWebView`desteklememektedir. Kullanıcı deneyimini ve güvenliğini iyileştirebilecek.
+ADAL yalnızca iOS için UIWebView/WKWebView'ı ve macOS için WebView'ı destekler. iOS için MSAL, yetkilendirme kodu talep ederken web içeriğini görüntülemek için `UIWebView`daha fazla seçeneği destekler ve artık desteklemez; hangi kullanıcı deneyimi ve güvenliğini artırabilir.
 
-Varsayılan olarak, iOS üzerinde MSAL, iOS 12 + cihazlarında kimlik doğrulaması için önerilen Web bileşeni olan [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)kullanır. Uygulamalar ve Safari tarayıcısı arasında tanımlama bilgisi paylaşımı aracılığıyla çoklu oturum açma (SSO) avantajları sağlar.
+Varsayılan olarak, iOS'taki MSAL, Apple'ın iOS 12+ cihazlarda kimlik doğrulama için önerdiği web bileşeni olan [ASWebAuthenticationSession'ı](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)kullanır. Uygulamalar ve Safari tarayıcısı arasında çerez paylaşımı yoluyla Tek Oturum Açma (SSO) avantajları sağlar.
 
-Uygulama gereksinimlerine ve istediğiniz son kullanıcı deneyimine bağlı olarak farklı bir Web bileşeni kullanmayı tercih edebilirsiniz. Daha fazla seçenek için [desteklenen Web görünümü türleri](customize-webviews.md) bölümüne bakın.
+Uygulama gereksinimlerine ve istediğiniz son kullanıcı deneyimine bağlı olarak farklı bir web bileşeni kullanmayı seçebilirsiniz. Daha fazla seçenek için [desteklenen web görünümü türlerine](customize-webviews.md) bakın.
 
-ADAL 'dan MSAL 'e geçiş yaparken, `WKWebView` iOS ve macOS 'ta ADAL 'e benzer kullanıcı deneyimini sağlar. Mümkünse iOS üzerinde `ASWebAuthenticationSession` geçiş yapmanız önerilir. MacOS için `WKWebView`kullanmanızı öneririz.
+ADAL'dan MSAL'a `WKWebView` geçiş yaparken, iOS ve macOS'ta ADAL'a en çok benzer kullanıcı deneyimini sağlar. Mümkünse iOS'a `ASWebAuthenticationSession` geçmenizi öneririz. macOS için, kullanmanızı `WKWebView`öneririz.
 
-### <a name="account-management-api-differences"></a>Hesap yönetimi API 'SI farkları
+### <a name="account-management-api-differences"></a>Hesap yönetimi API farkları
 
-`acquireToken()` veya `acquireTokenSilent()`ADAL yöntemlerini çağırdığınızda, kimliği doğrulanan hesabı temsil eden `id_token` talepler listesini içeren bir `ADUserInformation` nesnesi alırsınız. Ayrıca, `ADUserInformation` `upn` talebine göre bir `userId` döndürür. İlk etkileşimli belirteç alma işleminden sonra ADAL, geliştiricilerin tüm sessiz çağrılarda `userId` sağlamasını bekler.
+ADAL `acquireToken()` yöntemlerini aradiğinizde `acquireTokenSilent()`veya , `ADUserInformation` kimlik doğrulaması yapılan `id_token` hesabı temsil eden hesaptan bir talep listesi içeren bir nesne alırsınız. Ayrıca, `ADUserInformation` `upn` iddiaya `userId` dayalı bir döndürür. İlk etkileşimli belirteç ediniminden sonra, ADAL geliştiricinin tüm sessiz aramaları sağlamasını `userId` bekler.
 
-ADAL bilinen Kullanıcı kimliklerini almak için bir API sağlamıyor. Bu hesapları kaydetmek ve yönetmek için uygulamayı kullanır.
+ADAL, bilinen kullanıcı kimliklerini almak için api sağlamaz. Bu hesapları kaydetmek ve yönetmek için uygulamaya güvenir.
 
-MSAL, belirteç almak zorunda kalmadan MSAL tarafından bilinen tüm hesapları listelemek için bir API kümesi sağlar.
+MSAL, bir belirteç elde etmek zorunda kalmadan MSAL tarafından bilinen tüm hesapları listelemek için bir dizi API sağlar.
 
-ADAL gibi, MSAL, `id_token`talepler listesini tutan hesap bilgilerini döndürür. Bu, `MSALResult` nesnesinin içindeki `MSALAccount` nesnesinin bir parçasıdır.
+ADAL gibi, MSAL da .'dan gelen `id_token`taleplerin listesini tutan hesap bilgilerini döndürür. Nesnenin içindeki nesnenin `MSALAccount` bir `MSALResult` parçası.
 
-MSAL, hesapları kaldırmak için bir dizi API sağlar ve kaldırılan hesapları uygulama için erişilemez hale getirir. Hesap kaldırıldıktan sonra, daha sonra belirteç alma çağrıları kullanıcıdan etkileşimli belirteç alımı yapması için istemde bulunur. Hesap kaldırma yalnızca onu başlatan istemci uygulaması için geçerlidir ve hesabı cihazda veya sistem tarayıcısından çalışan diğer uygulamalardan kaldırmaz. Bu, kullanıcının, tek bir uygulamanın oturumunu kapattıktan sonra bile, cihazda SSO deneyimine sahip olmaya devam etmesini sağlar.
+MSAL, kaldırılan hesapları uygulama için erişilemez hale getirerek hesapları kaldırmak için bir dizi API sağlar. Hesap kaldırıldıktan sonra, daha sonra belirteç edinme çağrıları kullanıcıdan etkileşimli belirteç edinimi yapmasını ister. Hesap kaldırma işlemi yalnızca onu başlatan istemci uygulaması için geçerlidir ve hesabı aygıtta veya sistem tarayıcısından çalıştıran diğer uygulamalardan kaldırmaz. Bu, kullanıcının tek bir uygulamadan çıkış yaptıktan sonra bile cihazda SSO deneyimi yaşamaya devam etmesini sağlar.
 
-Ayrıca, MSAL daha sonra sessizce bir belirteç istemek için kullanılabilecek bir hesap tanımlayıcısı da döndürür. Ancak, hesap tanımlayıcı (`MSALAccount` nesnesindeki `identifier` özelliği aracılığıyla erişilebilir) görüntülenebilir değildir ve hangi biçimi olduğunu veya bunu yorumlamasını veya ayrıştırmayı denemeniz gerektiğini varsayamazsınız.
+Ayrıca, MSAL daha sonra sessizce bir belirteç istemek için kullanılabilecek bir hesap tanımlayıcısı döndürür. Ancak, hesap tanımlayıcısı `identifier` `MSALAccount` (nesnedeki özellik aracılığıyla erişilebilir) görüntülenemez ve ne biçimolduğunu varsayamaz ve yorumlamaya veya ayrıştırmaya çalışamazsınız.
 
 ### <a name="migrating-the-account-cache"></a>Hesap önbelleğini geçirme
 
-ADAL 'dan geçiş yaparken, uygulamalar genellikle MSAL tarafından gerekli `identifier` sahip olmayan ADAL `userId`depolar. Bir kerelik geçiş adımı olarak bir uygulama, aşağıdaki API ile ADAL Kullanıcı kimliğini kullanarak bir MSAL hesabını sorgulayabilir:
+ADAL'dan göç ederken, uygulamalar normalde MSAL tarafından `userId` `identifier` gerekli olmayan ADAL's, depolar. Bir kerelik geçiş adımı olarak, bir uygulama ADAL'ın userId'ini kullanarak bir MSAL hesabını aşağıdaki API ile sorgulayabilir:
 
 `- (nullable MSALAccount *)accountForUsername:(nonnull NSString *)username error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-Bu API, ADAL Kullanıcı kimliği (UPN) tarafından hesabı bulmak için hem MSAL hem de ADAL önbelleğini okur.
+Bu API, Hesabı ADAL userId (UPN) tarafından bulmak için hem MSAL hem de ADAL önbelleğini okur.
 
-Hesap bulunursa, geliştirici sessiz belirteç alımı yapmak için hesabı kullanmalıdır. İlk sessiz belirteç alma, hesabı etkin bir şekilde yükseltir ve geliştirici MSAL Result (`identifier`) MSAL uyumlu bir hesap tanımlayıcısı alır. Bundan sonra, aşağıdaki API kullanılarak hesap aramaları için yalnızca `identifier` kullanılmalıdır:
+Hesap bulunursa, geliştirici sessiz belirteç edinimi yapmak için hesabı kullanmalıdır. İlk sessiz belirteç edinimi hesabı etkili bir şekilde yükseltecek ve geliştirici MSAL sonucu bir`identifier`MSAL uyumlu hesap tanımlayıcısı alacak ( ). Bundan sonra, `identifier` yalnızca aşağıdaki API kullanılarak hesap aramaları için kullanılmalıdır:
 
 `- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-MSAL ' deki tüm işlemler için ADAL `userId` kullanmaya devam etmek mümkün olsa da, `userId` UPN 'yi temel alan, kötü bir kullanıcı deneyimine neden olan birden çok sınırlamalara tabidir. Örneğin, UPN değişirse kullanıcının yeniden oturum açması gerekir. Tüm uygulamaların tüm işlemler için görüntülenebilen olmayan hesap `identifier` kullanmasını öneririz.
+ADAL's'ı `userId` MSAL'daki tüm işlemler için kullanmaya `userId` devam etmek mümkün olsa da, UPN'ye dayandığı için, kötü bir kullanıcı deneyimiyle sonuçlanan birden çok sınırlamaya tabidir. Örneğin, UPN değişirse, kullanıcının yeniden oturum açması gerekir. Tüm uygulamaların tüm işlemler için görüntülenemeyen hesabı `identifier` kullanmasını öneririz.
 
 [Önbellek durumu geçişi](sso-between-adal-msal-apps-macos-ios.md)hakkında daha fazla bilgi edinin.
 
-### <a name="token-acquisition-changes"></a>Belirteç alma değişiklikleri
+### <a name="token-acquisition-changes"></a>Belirteç edinim değişiklikleri
 
-MSAL, bazı belirteç alma çağrısı değişikliklerini tanıtır:
+MSAL bazı belirteç edinme çağrı değişiklikleri sunar:
 
-* ADAL gibi `acquireTokenSilent` her zaman sessiz bir istekle sonuçlanır.
-* ADAL 'un aksine, `acquireToken` her zaman kullanıcının Web görünümü veya Microsoft Authenticator uygulaması aracılığıyla işlem yapılabilir Kullanıcı ARABIRIMINE neden olur. WebView/Microsoft Authenticator içindeki SSO durumuna bağlı olarak, kullanıcıdan kimlik bilgilerini girmesi istenebilir.
-* ADAL içinde, `AD_PROMPT_AUTO` `acquireToken` ilk olarak sessiz belirteci almaya çalışır ve yalnızca sessiz istek başarısız olursa Kullanıcı arabirimini gösterir. MSAL ' de, bu mantık öncelikle `acquireTokenSilent` çağırarak ve yalnızca sessiz Alım başarısız olursa `acquireToken` çağırarak elde edilebilir. Bu, geliştiricilerin etkileşimli belirteç alımı başlatmadan önce Kullanıcı deneyimini özelleştirmesini sağlar.
+* ADAL gibi, `acquireTokenSilent` her zaman sessiz bir istekle sonuçlanır.
+* ADAL'ın `acquireToken` aksine, web görünümü veya Microsoft Authenticator uygulaması aracılığıyla her zaman kullanıcı tarafından işlem işlenebilir kullanıcı kullanıcı arama sistemi yle sonuçlanır. Web view/Microsoft Authenticator içindeki SSO durumuna bağlı olarak, kullanıcıdan kimlik bilgilerini girmeleri istenebilir.
+* `acquireToken` ADAL'da, `AD_PROMPT_AUTO` ilk olarak sessiz belirteç edinimi çalışır ve yalnızca sessiz istek başarısız olursa UI'yi gösterir. MSAL'da bu mantık ilk arama `acquireTokenSilent` ve `acquireToken` yalnızca sessiz satın alma başarısız olduğunda çağrılayarak elde edilebilir. Bu, geliştiricilerin etkileşimli belirteç edinimi başlatmadan önce kullanıcı deneyimini özelleştirmelerine olanak tanır.
 
 ### <a name="error-handling-differences"></a>Hata işleme farklılıkları
 
-MSAL, uygulamanız tarafından işlenebilen ve Kullanıcı tarafından müdahale gerektiren hatalar arasında daha fazla açıklık sağlar. Geliştiricilerin işlemesi gereken sınırlı sayıda hata var:
+MSAL, uygulamanız tarafından işlenebilen hatalarla kullanıcıtarafından müdahale gerektiren hatalar arasında daha fazla netlik sağlar. Geliştiricinin işlemesi gereken sınırlı sayıda hata vardır:
 
-* `MSALErrorInteractionRequired`: kullanıcının etkileşimli bir istek yapması gerekir. Bu, süresi geçen bir kimlik doğrulama oturumu gibi çeşitli nedenlerden kaynaklanabilir, koşullu erişim ilkesi değiştirilmiştir, yenileme belirtecinin süresi dolduğunda veya iptal edildiğinde önbellekte geçerli bir belirteç yoktur ve bu şekilde devam eder.
-* `MSALErrorServerDeclinedScopes`: istek tam olarak tamamlanmadı ve bazı kapsamlara erişim verilmedi. Bu, bir veya daha fazla kapsam için bir kullanıcının izin reddetmesinin nedeni olabilir.
+* `MSALErrorInteractionRequired`: Kullanıcı etkileşimli bir istekte bulunmalıdır. Bunun nedeni, süresi dolmuş kimlik doğrulama oturumu, Koşullu Erişim ilkesinin değişmesi, yenileme belirteci süresi dolmuş veya iptal edilmiş, önbellekte geçerli bir belirteç bulunmadığı gibi çeşitli nedenlerle ortaya çıkabilir.
+* `MSALErrorServerDeclinedScopes`: İstek tam olarak tamamlanmadı ve bazı kapsamlara erişim izni verilmedi. Bunun nedeni, bir veya daha fazla kapsamda izin alan bir kullanıcının neden olabilir.
 
-[`MSALError` listesindeki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) diğer tüm hataları işlemek isteğe bağlıdır. Kullanıcı deneyimini geliştirmek için bu hataların bilgilerini kullanabilirsiniz.
+[ `MSALError` Listedeki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) diğer tüm hataları işlemek isteğe bağlıdır. Kullanıcı deneyimini geliştirmek için bu hatalardaki bilgileri kullanabilirsiniz.
 
-MSAL hata işleme hakkında daha fazla bilgi için bkz. [msal kullanarak özel durumları ve hataları işleme](msal-handling-exceptions.md) .
+Bkz. MSAL hata işleme hakkında daha fazla şey için [MSAL'ı kullanarak özel durumlar ve hatalar](msal-handling-exceptions.md) işleme.
 
-### <a name="broker-support"></a>Aracı desteği
+### <a name="broker-support"></a>Broker desteği
 
-Sürüm 0.3.0 ile başlayarak, Microsoft Authenticator uygulamasını kullanarak aracılı kimlik doğrulaması için destek sağlar. Microsoft Authenticator Ayrıca koşullu erişim senaryoları için desteğe izin verebilir. Koşullu erişim senaryolarına örnek olarak, kullanıcının cihazı Intune 'dan kaydetmesini veya bir belirteç almak için AAD 'ye kaydolmasını gerektiren cihaz uyumluluk ilkeleri bulunur. Ve mobil uygulama yönetimi (MAM) koşullu erişim ilkeleri, uygulamanız belirteç almadan önce uyumluluk kanıtı gerektirir.
+MSAL, sürüm 0.3.0 ile başlayarak, Microsoft Authenticator uygulamasını kullanarak aracılı kimlik doğrulama desteği sağlar. Microsoft Authenticator ayrıca Koşullu Erişim senaryoları için destek sağlar. Koşullu Erişim senaryolarına örnek olarak, kullanıcının cihazı Intune üzerinden kaydetmesini veya bir belirteç almak için AAD'ye kaydolmasını gerektiren aygıt uyumluluk ilkeleri verilebilir. Ve Uygulamanızın bir belirteç alabilmeleri için uyumluluk kanıtı gerektiren Mobil Uygulama Yönetimi (MAM) Koşullu Erişim ilkeleri.
 
-Uygulamanız için aracıyı etkinleştirmek üzere:
+Uygulamanız için aracıyı etkinleştirmek için:
 
-1. Uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. `<app.bundle.id>`, uygulamanızın paket KIMLIĞIYLE değiştirin. ADAL 'dan geçiş yapıyorsanız ve uygulamanız zaten Broker özellikli ise, yapmanız gereken ek bir şey yoktur. Önceki yeniden yönlendirme URI 'SI MSAL ile tamamen uyumludur, bu sayede adım 3 ' e atlayabilirsiniz.
+1. Uygulama için broker uyumlu yeniden yönlendirme URI biçimini kaydedin. Broker uyumlu yeniden yönlendirme `msauth.<app.bundle.id>://auth`URI biçimidir. Başvurunuzun paket kimliğiyle değiştirin. `<app.bundle.id>` ADAL'den göç ediyorsanız ve başvurunuz zaten broker yeteneğine sahipse, yapmanız gereken ekstra bir şey yoktur. Önceki yeniden yönlendirme URI MSAL ile tam uyumludur, böylece adım 3 atlayabilirsiniz.
 
-2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için, biçim `msauth.<app.bundle.id>`. Örneğin:
+2. Uygulamanızın yeniden yönlendirme URI düzenini info.plist dosyanıza ekleyin. Varsayılan MSAL yeniden uri için, `msauth.<app.bundle.id>`biçimi. Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -155,7 +155,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
     </array>
     ```
 
-3. Uygulamanızın Info. plist komutuna Lsapplicationqueriesdüzenlerinin altında aşağıdaki şemaları ekleyin:
+3. LSApplicationQueriesSchemes altında uygulamanızın Info.plist'ine aşağıdaki şemaları ekleyin:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -165,7 +165,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
     </array>
     ```
 
-4. Geri çağırmaları işlemek için AppDelegate. m dosyanıza aşağıdakini ekleyin: hedef-C:
+4. Geri aramaları işlemek için AppDelegate.m dosyanıza aşağıdakileri ekleyin: Objective-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -174,7 +174,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
     }
     ```
     
-    SWIFT
+    Swift:
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -184,63 +184,63 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
 
 ### <a name="business-to-business-b2b"></a>İşletmeden işletmeye (B2B)
 
-ADAL 'da, uygulamanın belirteçleri istediği her kiracı için `ADAuthenticationContext` ayrı örnekleri oluşturursunuz. Bu artık MSAL içinde bir gereklilik değildir. MSAL ' de, tek bir `MSALPublicClientApplication` örneği oluşturabilir ve acquireToken ve acquireTokenSilent çağrıları için farklı bir yetkili belirterek, bunu herhangi bir AAD bulutu ve kuruluş için kullanabilirsiniz.
+ADAL'de, uygulamanın `ADAuthenticationContext` belirteçlerini talep ettiği her kiracı için ayrı örnekler oluşturursunuz. Bu artık MSAL'da bir gereklilik değildir. MSAL'da, Token `MSALPublicClientApplication` ve satın alma TokenSilent aramaları için farklı bir ykurum belirterek, herhangi bir AAD bulutu ve kuruluşu için tek bir örnek oluşturabilir ve kullanabilirsiniz.
 
-## <a name="sso-in-partnership-with-other-sdks"></a>Diğer SDK 'lar ile iş ortaklığında SSO
+## <a name="sso-in-partnership-with-other-sdks"></a>SSO diğer SDK'larla işbirliği içinde
 
-İOS için MSAL, aşağıdaki SDK 'lara sahip birleştirilmiş bir önbellek aracılığıyla SSO elde edebilir:
+iOS için MSAL, Aşağıdaki SDK'larla birleşik bir önbellek aracılığıyla SSO'ya ulaşabilir:
 
-- ADAL hedefi-C 2.7. x +
-- Xamarin 2,4. x + için MSAL.NET
-- Xamarin 4.4. x + için ADAL.NET
+- ADAL Hedefi-C 2.7.x+
+- MSAL.NET için Xamarin 2.4.x+
+- Xamarin 4.4.x+ için ADAL.NET
 
-SSO, iOS Anahtarlık paylaşımı aracılığıyla sağlanır ve yalnızca aynı Apple geliştirici hesabından yayımlanan uygulamalar arasında kullanılabilir.
+SSO, iOS anahtarzinciri paylaşımı yoluyla sağlanır ve yalnızca aynı Apple Developer hesabından yayınlanan uygulamalar arasında kullanılabilir.
 
-İOS anahtar zinciri paylaşımı aracılığıyla SSO yalnızca sessiz SSO türüdür.
+IOS anahtarlık paylaşımı yoluyla SSO sadece sessiz SSO türüdür.
 
-MacOS 'ta MSAL, iOS ve macOS tabanlı uygulamalar ve ADAL hedefi-C tabanlı uygulamalar için diğer MSAL ile SSO elde edebilir.
+macOS'ta MSAL, iOS ve macOS tabanlı uygulamalar ve ADAL Objective-C tabanlı uygulamalar için diğer MSAL ile SSO'ya ulaşabilir.
 
-İOS üzerinde MSAL Ayrıca iki tür SSO türünü de destekler:
+iOS'taki MSAL, diğer iki SSO türünü de destekler:
 
-* Web tarayıcısı aracılığıyla SSO. İOS için MSAL, cihazdaki diğer uygulamalar arasında paylaşılan tanımlama bilgileri aracılığıyla SSO ve özellikle Safari tarayıcısı aracılığıyla `ASWebAuthenticationSession`destekler.
-* Kimlik doğrulama Aracısı aracılığıyla SSO. Bir iOS cihazında Microsoft Authenticator, kimlik doğrulama Aracısı olarak davranır. Uyumlu bir cihaz gerektirme gibi koşullu erişim ilkelerini izleyebilir ve kayıtlı cihazlar için SSO sağlar. Sürüm 0.3.0 ile başlayan MSAL SDK 'Ları varsayılan olarak bir aracıyı destekler.
+* Web tarayıcısı üzerinden SSO. iOS için MSAL, aygıttaki diğer uygulamalar ve özellikle Safari tarayıcısı arasında paylaşılan çerezler aracılığıyla SSO sağlayan destekler. `ASWebAuthenticationSession`
+* Bir Kimlik Doğrulama aracısı aracılığıyla SSO. Bir iOS aygıtında, Microsoft Authenticator Kimlik Doğrulama aracısı olarak görev eder. Uyumlu bir aygıt gerektirmek gibi Koşullu Erişim ilkelerini izleyebilir ve kayıtlı aygıtlar için SSO sağlar. 0.3.0 sürümüyle başlayan MSAL SDK'lar varsayılan olarak bir aracıyı destekler.
 
-## <a name="intune-mam-sdk"></a>Intune MAM SDK 'Sı
+## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
-[INTUNE mam SDK](https://docs.microsoft.com/intune/app-sdk-get-started) , sürüm [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) Ile başlayarak iOS için msal 'i destekler
+[Intune MAM SDK,](https://docs.microsoft.com/intune/app-sdk-get-started) [sürüm 11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) ile başlayan iOS için MSAL'ı destekler
 
 ## <a name="msal-and-adal-in-the-same-app"></a>Aynı uygulamada MSAL ve ADAL
 
-ADAL sürüm 2.7.0 ve üzeri, aynı uygulamada MSAL ile birlikte bulunamaz. Ana neden, paylaşılan alt modül ortak kodunun nedenidir. Amaç-C ad alanlarını desteklemediğinden, uygulamanıza hem ADAL hem de MSAL çerçeveleri eklerseniz, aynı sınıfın iki örneği olacaktır. Çalışma zamanında ne zaman çekilmek için bir garanti yoktur. Her iki SDK aynı sürümle aynı sürümü kullanıyorsa, uygulamanız çalışmaya devam edebilir. Ancak, bu farklı bir sürümse, uygulamanız tanılanması zor olan beklenmedik kilitlenmelere neden olabilir.
+ADAL sürüm 2.7.0 ve üzeri, aynı uygulamada MSAL ile bir arada bulunamaz. Ana nedeni paylaşılan alt modül ortak kodu nedeniyle. Objective-C ad alanlarını desteklemediği için, uygulamanıza hem ADAL hem de MSAL çerçeveleri eklerseniz, aynı sınıfın iki örneği olacaktır. Çalışma zamanında hangisinin seçilen garantisi yok. Her iki SDK çakışan sınıfın aynı sürümünü kullanıyorsa, uygulamanız çalışmaya devam edebilir. Ancak, farklı bir sürümse, uygulamanız tanılaması zor beklenmeyen çökmelerle karşılaşabilir.
 
-Aynı üretim uygulamasında ADAL ve MSAL çalıştırmak desteklenmez. Ancak, kullanıcılarınızı iOS ve macOS için yalnızca ADAL hedefi-C ' den MSAL ' ye geçiriyorsanız, [adal hedefi-c 2.6.10](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases/tag/2.6.10)kullanmaya devam edebilirsiniz. Aynı uygulamada MSAL ile birlikte çalışarak tek sürümdür. Bu ADAL sürümü için yeni bir özellik güncelleştirmesi olmayacak, bu nedenle yalnızca geçiş ve test amacıyla kullanılmalıdır. Uygulamanızın ADAL ve MSAL çok kullanımı uzun süreli olması gerekmez.
+ADAL ve MSAL'ın aynı üretim uygulamasında çalıştırılması desteklenmez. Ancak, kullanıcılarınızı iOS ve macOS için ADAL Objective-C'den MSAL'a sadece test ediyor ve geçiriyorsanız, [ADAL Objective-C 2.6.10'u](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases/tag/2.6.10)kullanmaya devam edebilirsiniz. Aynı uygulamada MSAL ile çalışan tek sürüm. Bu ADAL sürümü için yeni özellik güncelleştirmeleri olmayacaktır, bu nedenle yalnızca geçiş ve sınama amacıyla kullanılmalıdır. Uygulamanız ADAL ve MSAL birlikteliği uzun vadeli güvenmemelidir.
 
-Aynı uygulamadaki ADAL ve MSAL birlikte bulunma desteklenmez.
-Birden çok uygulama arasındaki ADAL ve MSAL bir arada kullanımı tam olarak desteklenmektedir.
+ADAL ve MSAL aynı uygulamada birlikte yaşam desteklenmez.
+Birden fazla uygulama arasında ADAL ve MSAL birlikteliği tam olarak desteklenir.
 
 ## <a name="practical-migration-steps"></a>Pratik geçiş adımları
 
 ### <a name="app-registration-migration"></a>Uygulama kaydı geçişi
 
-MSAL 'e geçmek ve AAD hesaplarını etkinleştirmek için mevcut AAD uygulamanızı değiştirmeniz gerekmez. Ancak, ADAL tabanlı uygulamanız aracılı kimlik doğrulamasını desteklemiyorsa, MSAL 'e geçiş yapabilmeniz için önce uygulama için yeni bir yeniden yönlendirme URI 'SI kaydetmeniz gerekir.
+MSAL'a geçmek ve AAD hesaplarını etkinleştirmek için mevcut AAD uygulamanızı değiştirmeniz gerekmez. Ancak, ADAL tabanlı uygulamanız aracılı kimlik doğrulamasını desteklemiyorsa, MSAL'a geçebilmeniz için uygulama için yeni bir yeniden yönlendirme URI kaydetmeniz gerekir.
 
-Yeniden yönlendirme URI 'SI şu biçimde olmalıdır: `msauth.<app.bundle.id>://auth`. `<app.bundle.id>`, uygulamanızın paket KIMLIĞIYLE değiştirin. [Azure Portal](https://aka.ms/MobileAppReg)YENIDEN yönlendirme URI 'sini belirtin.
+Uri yönlendirme bu biçimde olmalıdır: `msauth.<app.bundle.id>://auth`. Başvurunuzun paket kimliğiyle değiştirin. `<app.bundle.id>` [Azure portalında](https://aka.ms/MobileAppReg)URI'yi yeniden yönlendirmeyi belirtin.
 
-Yalnızca iOS için, sertifika tabanlı kimlik doğrulamasını desteklemek üzere, ek bir yeniden yönlendirme URI 'sinin uygulamanıza kaydedilmesi gerekir ve aşağıdaki biçimde Azure portal: `msauth://code/<broker-redirect-uri-in-url-encoded-form>`. Örneğin, `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+Yalnızca iOS için, sertifika tabanlı kimlik doğrulamasını desteklemek için, uygulamanızda ve Azure portalında aşağıdaki biçimde ek bir yeniden yönlendirme URI'nin kaydedilmesi gerekir: `msauth://code/<broker-redirect-uri-in-url-encoded-form>`. Örneğin, `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
-Tüm uygulamaların her iki yeniden yönlendirme URI 'si kaydetmesini öneririz.
+Tüm uygulamaların hem yeniden yönlendirme URI'leri kaydetmesini öneririz.
 
-Artımlı izin desteği eklemek istiyorsanız, uygulamanızın **API izinleri** sekmesi altında uygulama kaydıza erişim isteyecek şekilde yapılandırıldığı API 'leri ve izinleri seçin.
+Artımlı onay için destek eklemek istiyorsanız, **API izinleri** sekmesi altında uygulama kaydınızda erişim isteğinde bulunmak üzere uygulamanızın yapılandırıldığı API'leri ve izinleri seçin.
 
-ADAL 'dan geçiş yapıyorsanız ve hem AAD hem de MSA hesaplarını desteklemek istiyorsanız, mevcut uygulama kaydınızdan her ikisini desteklemek için güncelleştirilmeleri gerekir. Mevcut üretim uygulamanızı hem AAD hem de MSA 'yi hemen destekleyecek şekilde güncelleştirmenizi önermiyoruz. Bunun yerine, test için hem AAD hem de MSA destekleyen başka bir istemci KIMLIĞI oluşturun ve tüm senaryoların çalıştığını doğruladıktan sonra mevcut uygulamayı güncelleştirin.
+ADAL'den geçiş yapıyorsunuz ve hem AAD hem de MSA hesaplarını desteklemek istiyorsanız, her ikisini de desteklemek için varolan uygulama kaydınızın güncellenmesi gerekir. Hem AAD'yi hem de MSA'yı hemen desteklemek için mevcut üretim uygulamanızı güncellemenizi önermiyoruz. Bunun yerine, hem AAD hem de MSA'yı sınama için destekleyen ve tüm senaryoların çalıştığını doğruladıktan sonra varolan uygulamayı güncelleştiren başka bir istemci kimliği oluşturun.
 
-### <a name="add-msal-to-your-app"></a>Uygulamanıza MSAL ekleme
+### <a name="add-msal-to-your-app"></a>Uygulamanıza MSAL ekleyin
 
-Tercih ettiğiniz paket yönetim aracını kullanarak uygulamanıza MSAL SDK ekleyebilirsiniz. [Ayrıntılı yönergelere buradan](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki/Installation)bakın.
+Tercih ettiğiniz paket yönetim aracını kullanarak uygulamanıza MSAL SDK ekleyebilirsiniz. [Burada ayrıntılı talimatlara](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki/Installation)bakın.
 
-### <a name="update-your-apps-infoplist-file"></a>Uygulamanızın Info. plist dosyasını güncelleştirin
+### <a name="update-your-apps-infoplist-file"></a>Uygulamanızın Info.plist dosyalarını güncelleyin
 
-Yalnızca iOS için, uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. ADAL broker ile uyumlu uygulamalar için zaten olmalıdır. Varsayılan MSAL yeniden yönlendirme URI şeması şu biçimde olacaktır: `msauth.<app.bundle.id>`.  
+Yalnızca iOS için, uygulamanızın yeniden yönlendirme URI düzenini info.plist dosyanıza ekleyin. ADAL broker uyumlu uygulamalar için, zaten orada olmalıdır. Varsayılan MSAL yeniden yönlendirme URI düzeni biçiminde `msauth.<app.bundle.id>`olacaktır: .  
 
 ```xml
 <key>CFBundleURLSchemes</key>
@@ -249,7 +249,7 @@ Yalnızca iOS için, uygulamanızın yeniden yönlendirme URI düzenini Info. pl
 </array>
 ```
 
-`LSApplicationQueriesSchemes`altındaki uygulamanızın Info. plist ' e aşağıdaki şemaları ekleyin.
+Uygulamanızın Info.plist'ine `LSApplicationQueriesSchemes`aşağıdaki şemaları ekleyin.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -259,9 +259,9 @@ Yalnızca iOS için, uygulamanızın yeniden yönlendirme URI düzenini Info. pl
 </array>
 ```
 
-### <a name="update-your-appdelegate-code"></a>AppDelegate kodunuzu güncelleştirme
+### <a name="update-your-appdelegate-code"></a>AppDelegate kodunuzu güncelleştirin
 
-Yalnızca iOS için AppDelegate. d dosyanıza aşağıdakileri ekleyin:
+Yalnızca iOS için AppDelegate.m dosyanıza aşağıdakileri ekleyin:
 
 Amaç-C:
 
@@ -272,7 +272,7 @@ Amaç-C:
 }
 ```
 
-SWIFT
+Swift:
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -280,8 +280,8 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyasına yerleştirmeniz gerekir.
-Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
+**Xcode 11 kullanıyorsanız,** bunun yerine dosyaya `SceneDelegate` MSAL geri arama yerleştirmelisiniz.
+Eski iOS ile uyumluluk için hem UISceneDelegate'ı hem de UIApplicationDelegate'i destekliyorsanız, MSAL geri aramanın her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:
 
@@ -296,7 +296,7 @@ Amaç-C:
  }
 ```
 
-SWIFT
+Swift:
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -312,21 +312,21 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     }
 ```
 
-Bu, MSAL 'in aracı ve Web bileşeninden gelen yanıtları işlemesini sağlar.
-"Swizzled" uygulama temsilcisi yöntemleri otomatik olarak bu yana ADAL içinde gerekli değildi. El ile ekleme daha az hataya açıktır ve uygulamaya daha fazla denetim sağlar.
+Bu, MSAL'ın broker ve web bileşeninden gelen yanıtları işlemesine olanak tanır.
+Bu otomatik olarak "swizzled" uygulama temsilci yöntemleri beri ADAL gerekli değildi. El ile eklemek daha az hata yatkındır ve uygulamaya daha fazla denetim sağlar.
 
-### <a name="enable-token-caching"></a>Belirteç önbelleğe almayı etkinleştir
+### <a name="enable-token-caching"></a>Belirteç önbelleğe alma etkinleştirme
 
-Varsayılan olarak, MSAL, uygulamanızın belirteçlerini iOS veya macOS anahtarlığınızdan önbelleğe alır. 
+Varsayılan olarak, MSAL uygulamanızın belirteçlerini iOS veya macOS anahtar zincirinde önbelleğe alır. 
 
-Belirteç önbelleğe almayı etkinleştirmek için:
-1. Uygulamanızın düzgün şekilde imzalandığından emin olun
-2. **Anahtarlık paylaşımını etkinleştirmek** > Xcode proje ayarları > **özellikleri sekmesine** gidin
-3. **+** ' a tıklayın ve aşağıdaki **Anahtarlık grupları** girişini girin: 3. a IOS Için, MacOS için `com.microsoft.adalcache` 3. b girin `com.microsoft.identity.universalstorage`
+Belirteç önbelleğe alma etkinleştirmek için:
+1. Uygulamanızın düzgün imzalandığından emin olun
+2. Xcode Proje Ayarlarınıza gidin > **Özellikler sekmesi** > **Anahtar Zinciri Paylaşımını Etkinleştir**
+3. Aşağıdaki **+** **Anahtarlık Grupları** girişini tıklatın ve girin: 3.a iOS için, macOS için 3.b girin `com.microsoft.adalcache``com.microsoft.identity.universalstorage`
 
-### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>MSALPublicClientApplication oluşturma ve acquireToken ve acquireTokeSilent çağrılarına geçiş yapma
+### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>MSALPublicClientApplication oluşturun ve onun satın Token geçmek ve TokeSilent aramaları satın
 
-Aşağıdaki kodu kullanarak `MSALPublicClientApplication` oluşturabilirsiniz:
+Aşağıdaki kodu `MSALPublicClientApplication` kullanarak oluşturabilirsiniz:
 
 Amaç-C:
 
@@ -339,7 +339,7 @@ MSALPublicClientApplication *application =
                                                      error:&error];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
@@ -352,7 +352,7 @@ do {
 }
 ```
 
-Ardından, önbellekte herhangi bir hesap olup olmadığını görmek için hesap yönetimi API 'sini çağırın:
+Ardından önbellekte hesap olup olmadığını görmek için hesap yönetimi API'sini arayın:
 
 Amaç-C:
 
@@ -362,7 +362,7 @@ NSError *error = nil;
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:&error];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 // definitions that need to be initialized
@@ -379,7 +379,7 @@ do {
 
 
 
-ya da tüm hesapları okuyun:
+veya tüm hesapları okuyun:
 
 Amaç-C:
 
@@ -388,7 +388,7 @@ NSError *error = nil;
 NSArray<MSALAccount *> *accounts = [application allAccounts:&error];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -402,7 +402,7 @@ do {
 
 
 
-Bir hesap bulunursa, MSAL `acquireTokenSilent` API 'sini çağırın:
+Bir hesap bulunursa, MSAL `acquireTokenSilent` API'yi arayın:
 
 Amaç-C:
 
@@ -430,7 +430,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 }];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -465,4 +465,4 @@ application.acquireTokenSilent(with: silentParameters) {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin
+[Kimlik Doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin

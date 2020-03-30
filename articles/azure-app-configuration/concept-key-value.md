@@ -1,29 +1,29 @@
 ---
-title: Azure uygulama yapılandırma anahtar-değer deposunu anlama
-description: Yapılandırma verilerinin Azure Uygulama yapılandırması 'nda nasıl depolandığını anlayın.
+title: Azure Uygulama Yapılandırması anahtar değer mağazanı anlama
+description: Yapılandırma verilerinin Azure Uygulama Yapılandırması'nda nasıl depolanır olduğunu anlayın.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523613"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
-Azure Uygulama yapılandırması, yapılandırma verilerini anahtar-değer çiftleri olarak depolar. Anahtar-değer çiftleri, geliştiriciler tarafından kullanılan uygulama ayarlarının basit ve esnek bir gösterimidir.
+Azure Uygulama Yapılandırması yapılandırma verilerini anahtar değer çiftleri olarak depolar. Anahtar değer çiftleri, geliştiriciler tarafından kullanılan uygulama ayarlarının basit ve esnek bir gösterimidir.
 
 ## <a name="keys"></a>Anahtarlar
 
-Anahtarlar anahtar-değer çiftleri için tanımlayıcı olarak görev yapar ve karşılık gelen değerleri depolamak ve almak için kullanılır. `/` veya `:`gibi bir karakter sınırlayıcısı kullanarak, anahtarları hiyerarşik bir ad alanında düzenlemek yaygın bir uygulamadır. Uygulamanıza en uygun kuralı kullanın. Uygulama yapılandırması, anahtarları bir bütün olarak ele alır. Adlarının nasıl yapılandırıldığını veya üzerinde herhangi bir kuralın nasıl zorlanacağını anlamak için anahtarları ayrıştırmaz.
+Anahtarlar anahtar değeri çiftleri için tanımlayıcı olarak kullanılır ve karşılık gelen değerleri depolamak ve almak için kullanılır. Gibi `/` bir karakter sınırlayıcı kullanarak hiyerarşik bir ad alanına anahtarları düzenlemek için `:`yaygın bir uygulamadır. Uygulamanız için en uygun kuralı kullanın. App Configuration tuşları bir bütün olarak ele alırım. Adlarının nasıl yapılandırıldığına karar vermek veya onlar üzerinde herhangi bir kural uygulamak için anahtarları ayrıştırmaz.
 
-Aşağıda, bir hiyerarşiye yapılandırılmış anahtar adlarından oluşan iki örnek verilmiştir:
+Aşağıda, hiyerarşi ye dönüştürülen anahtar adlara iki örnek verilmiştir:
 
-* Bileşen hizmetlerine göre
+* Bileşen hizmetlerine dayalı
 
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
@@ -33,68 +33,68 @@ Aşağıda, bir hiyerarşiye yapılandırılmış anahtar adlarından oluşan ik
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
 
-Uygulama çerçeveleri içindeki yapılandırma verilerinin kullanımı, anahtar değerleri için belirli adlandırma düzenlerini dikte edebilir. Örneğin, Java 'nın Spring Cloud Framework, bir Spring uygulamasına ayarları sağlayan `Environment` kaynaklarını tanımlar.  Bunlar, *uygulama adı* ve *profili*içeren değişkenlere göre parametrelenir. Bulutta ilgili yapılandırma verileri için anahtarlar genellikle sınırlayıcıyla ayrılmış bu iki öğe ile başlar.
+Uygulama çerçeveleri içinde yapılandırma verilerinin kullanılması, anahtar değerler için belirli adlandırma düzenlerini dikte edebilir. Örneğin, Java'nın Bahar Bulutu `Environment` çerçevesi, bir Bahar uygulamasına ayar sağlayan kaynakları tanımlar.  Bunlar, *uygulama adı* ve *profilini*içeren değişkenler tarafından parametrelendirilmiştir. Bahar Bulutu ile ilgili yapılandırma verilerinin anahtarları genellikle bir sınır dışılayıcı yla ayrılmış bu iki öğeyle başlar.
 
-Uygulama yapılandırmasında depolanan anahtarlar büyük/küçük harfe duyarlıdır ve Unicode tabanlı dizelerdir. *APP1* ve *APP1* anahtarları bir uygulama yapılandırma deposunda farklıdır. Bir uygulama içinde yapılandırma ayarlarını kullandığınızda bu durumu aklınızda tutun çünkü bazı çerçeveler yapılandırma anahtarlarını işle-insensitively. Anahtarları ayırt etmek için büyük/küçük harf kullanılması önerilmez.
+Uygulama Yapılandırması'nda depolanan anahtarlar büyük/küçük harf duyarlı, unicode tabanlı dizeleri dir. App1 ve *App1* tuşları bir Uygulama Yapılandırma mağazasında farklıdır. *app1* Bazı çerçeveler yapılandırma anahtarlarını duyarsızca işlediğinden, uygulama içindeki yapılandırma ayarlarını kullandığınızda bunu aklınızda bulundurun. Anahtarları ayırt etmek için servis talebi kullanmanızı önermiyoruz.
 
-`*`, `,`ve `\`dışında, anahtar adlarında herhangi bir Unicode karakteri kullanabilirsiniz.  Bu ayrılmış karakterlerden birini eklemeniz gerekiyorsa `\{Reserved Character}`kullanarak bunu kaçış. 
+Anahtar adlarında `*`unicode karakterini , ve `,`. `\`  Bu ayrılmış karakterlerden birini eklemeniz gerekiyorsa, kullanarak `\{Reserved Character}`ondan kurtulun. 
 
-Anahtar-değer çiftinde 10 KB 'lık Birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınırın içinde, anahtarlar için birçok hiyerarşi düzeyine sahip olabilirsiniz.
+Anahtar değeri çiftinde 10 KB'lik birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınır içinde, anahtarlar için birçok hiyerarşik düzeye sahip olabilirsiniz.
 
-### <a name="design-key-namespaces"></a>Anahtar ad alanlarını tasarlama
+### <a name="design-key-namespaces"></a>Anahtar ad alanlarını tasarla
 
-Yapılandırma verileri için kullanılan anahtarları adlandırırken iki genel yaklaşım vardır: düz veya hiyerarşik. Bu yöntemler bir uygulama kullanım açısından benzerdir, ancak hiyerarşik adlandırma çok sayıda avantaj sunar:
+Yapılandırma verileri için kullanılan adlandırma tuşlarına iki genel yaklaşım vardır: düz veya hiyerarşik. Bu yöntemler uygulama kullanımı açısından benzerdir, ancak hiyerarşik adlandırma bir takım avantajlar sunar:
 
-* Daha kolay okunabilir. Hiyerarşik anahtar adındaki sınırlayıcılar bir tümcede boşluk olarak işlev. Ayrıca, sözcükler arasında doğal kesmeler de sağlar.
-* Daha kolay yönetilebilir. Anahtar adı hiyerarşisi, mantıksal yapılandırma verileri gruplarını temsil eder.
-* Kullanımı daha kolay. Hiyerarşik bir yapıda, model ile eşleşen bir sorgu yazmak ve yapılandırma verilerinin yalnızca bir kısmını almak daha basittir. Ayrıca, birçok yeni programlama çerçevesi, uygulamanızın belirli yapılandırma kümelerinden kullanılabilmesini sağlamak üzere hiyerarşik yapılandırma verileri için yerel desteğe sahiptir.
+* Okuması daha kolay. Hiyerarşik anahtar ad işlevini tümcedeki boşluklar olarak sınırlandıranlar. Ayrıca kelimeler arasında doğal molalar sağlar.
+* Yönetilmesi daha kolay. Anahtar ad hiyerarşisi mantıksal yapılandırma veri gruplarını temsil eder.
+* Kullanımı daha kolay. Hiyerarşik bir yapıda tuşları eşleştiren ve yapılandırma verilerinin yalnızca bir bölümünü alan bir sorgu yazmak daha kolaydır. Ayrıca, birçok yeni programlama çerçevesi, uygulamanızın belirli yapılandırma kümelerinden yararlanabileceği hiyerarşik yapılandırma verileri için yerel desteğe sahiptir.
 
-Uygulama yapılandırmasındaki anahtarları birçok yolla hiyerarşik olarak düzenleyebilirsiniz. Bu anahtarları [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)olarak düşünün. Her hiyerarşik anahtar, sınırlayıcılarla birlikte birleştirilmiş bir veya daha fazla bileşenden oluşan bir kaynak *yoludur* . Uygulamanıza, programlama diline veya çerçeve gereksinimlerinize göre sınırlayıcı olarak kullanılacak karakteri seçin. Uygulama yapılandırmasındaki farklı anahtarlar için birden fazla sınırlayıcı kullanın.
+Uygulama Yapılandırması'ndaki anahtarları hiyerarşik olarak birçok şekilde düzenleyebilirsiniz. [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)gibi tuşları düşünün. Her hiyerarşik anahtar, sınır aşanlar tarafından birleştirilmiş bir veya daha fazla bileşenden oluşan bir kaynak *yoludur.* Uygulamanızın, programlama dilinizin veya çerçevenizin neye ihtiyacı olduğunu temel alan sınır layıcı olarak hangi karakteri kullanacağınızı seçin. Uygulama Yapılandırması'nda farklı tuşlar için birden fazla sınırlayıcı kullanın.
 
 ### <a name="label-keys"></a>Etiket anahtarları
 
-Uygulama yapılandırmasındaki anahtar değerler, isteğe bağlı olarak bir Label özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketleri ile bir Key *APP1* , bir uygulama yapılandırma deposundaki iki ayrı anahtarı oluşturur. Varsayılan olarak, bir anahtar değerinin etiketi yoktur. Etiket olmadan bir anahtar değerine açıkça başvurmak için `\0` kullanın (URL `%00`olarak kodlanır).
+App Configuration'daki temel değerler isteğe bağlı olarak bir etiket özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketli anahtar *uygulaması,* bir Uygulama Yapılandırma mağazasında iki ayrı anahtar oluşturur. Varsayılan olarak, anahtar bir değerin etiketi yoktur. Etiket siz bir anahtar değeri açıkça `\0` başvurmak için kullanın `%00`(URL olarak kodlanmış).
 
-Etiket, bir anahtarın türevlerini oluşturmak için kullanışlı bir yol sağlar. Etiketlerin yaygın kullanımı, aynı anahtar için birden çok ortam belirtmektir:
+Etiket, anahtarın türevlerini oluşturmak için kullanışlı bir yol sağlar. Etiketlerin yaygın kullanımı, aynı anahtar için birden çok ortam belirtmektir:
 
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
 
-### <a name="version-key-values"></a>Sürüm anahtarı değerleri
+### <a name="version-key-values"></a>Sürüm anahtar değerleri
 
-Uygulama yapılandırması, anahtar değerlerini otomatik olarak değiştirmez. Anahtar değerinin birden çok sürümünü oluşturmak için Etiketler kullanın. Örneğin, belirli bir yazılım derlemesi ile ilişkili anahtar değerlerini belirlemek için, etiketlerde bir uygulama sürümü numarası veya git COMMIT ID girişi yapabilirsiniz.
+Uygulama Yapılandırması anahtar değerlerini otomatik olarak sürüm yapmaz. Etiketleri, anahtar değerinin birden çok sürümü oluşturmak için bir yol olarak kullanın. Örneğin, belirli bir yazılım yapısıyla ilişkili temel değerleri tanımlamak için etiketlere bir uygulama sürüm numarası veya Git işleme kimliği girişi yapabilirsiniz.
 
-Etiketler içinde `*`, `,`ve `\`dışında herhangi bir Unicode karakteri kullanabilirsiniz. Bu karakterler ayrılmıştır. Ayrılmış bir karakter eklemek için, `\{Reserved Character}`kullanarak bunu atlamanız gerekir.
+Etiketlerde `*`unicode karakterini , ve `,`. `\` Bu karakterler ayrılmıştır. Ayrılmış bir karakter eklemek için, kullanarak `\{Reserved Character}`kaçmak gerekir.
 
-### <a name="query-key-values"></a>Sorgu anahtarı değerleri
+### <a name="query-key-values"></a>Anahtar değerlerini sorgula
 
-Her anahtar değeri, anahtarı ve `null`olabilecek bir etiket tarafından benzersiz şekilde tanımlanır. Bir model belirterek anahtar değerleri için bir uygulama yapılandırma deposu sorgulayın. Uygulama yapılandırma deposu, düzen ve bunlara karşılık gelen değerler ve özniteliklerle eşleşen tüm anahtar değerlerini döndürür. Uygulama yapılandırmasına yönelik REST API çağrılarında aşağıdaki temel desenleri kullanın:
+Her anahtar değeri, anahtarı ve bir etiket le `null`benzersiz olarak tanımlanır. Bir desen belirterek anahtar değerler için bir Uygulama Yapılandırma deposu sorgulayın. Uygulama Yapılandırma deposu, desenle eşleşen tüm temel değerleri ve bunların karşılık gelen değerlerini ve özniteliklerini döndürür. APP Configuration'a REST API aramalarında aşağıdaki anahtar desenleri kullanın:
 
 | Anahtar | |
 |---|---|
-| `key` atlanmış veya `key=*` | Tüm anahtarlarla eşleşir |
-| `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
-| `key=abc*` | **ABC** ile başlayan anahtar adlarını eşleştirir |
-| `key=abc,xyz` | **ABC** veya **xyz**anahtar adlarını eşleştirir. Beş CSV Ile sınırlıdır |
+| `key`atlanır veya`key=*` | Tüm tuşlara uygun |
+| `key=abc` | Eşler anahtar adı **abc** tam olarak |
+| `key=abc*` | **ABC** ile başlayan anahtar adlarla eşleşir |
+| `key=abc,xyz` | Anahtar adları **abc** veya **xyz**eşleşir. Beş CV ile sınırlıdır |
 
-Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
+Ayrıca aşağıdaki etiket desenlerini de ekleyebilirsiniz:
 
 | Etiketle | |
 |---|---|
-| `label` atlanmış veya `label=*` | `null` içeren herhangi bir etiketle eşleşir |
-| `label=%00` | `null` etiketiyle eşleşir |
-| `label=1.0.0` | Label **1.0.0** ile tam olarak eşleşir |
-| `label=1.0.*` | 1,0 ile başlayan etiketlerle eşleşir **.** |
-| `label=%00,1.0.0` | `null` veya **1.0.0**etiketleriyle eşleşir, beş CSV ile sınırlıdır |
+| `label`atlanır veya`label=*` | Herhangi bir etiketle eşleşen`null` |
+| `label=%00` | Etiketlerle eşleşir `null` |
+| `label=1.0.0` | Etiketleri **1.0.0** ile tam olarak eşleşir |
+| `label=1.0.*` | **1.0** ile başlayan etiketlerle eşleşir. |
+| `label=%00,1.0.0` | Etiketlerle `null` veya **1.0.0**ile eşleşir, beş CV ile sınırlıdır |
 
 ## <a name="values"></a>Değerler
 
-Anahtarlara atanan değerler de Unicode dizeleridir. Değerler için tüm Unicode karakterlerini kullanabilirsiniz. Her bir değerle ilişkili, Kullanıcı tanımlı isteğe bağlı bir içerik türü vardır. Uygulamanızın düzgün işlemesini sağlayan bir değer hakkındaki bilgileri depolamak için bu özniteliği kullanın.
+Anahtarlara atanan değerler de unicode dizeleridir. Değerler için tüm unicode karakterleri kullanabilirsiniz. Her değerle ilişkili isteğe bağlı kullanıcı tanımlı bir içerik türü vardır. Uygulamanızın düzgün işlemesine yardımcı olan bir değer le ilgili bilgileri depolamak için bu özniteliği kullanın.
 
-Bir uygulama yapılandırma deposunda depolanan yapılandırma verileri, bekleyen ve aktarım sırasında şifrelenir. Anahtarlar bekleyen olarak şifrelenmez. Uygulama yapılandırması, Azure Key Vault için bir değiştirme çözümü değildir. Uygulama gizli dizileri üzerinde depolamamayın.
+Bir Uygulama Yapılandırma deposunda depolanan yapılandırma verileri istirahatte ve aktarım sırasında şifrelenir. Tuşlar istirahatte şifrelenmez. Uygulama Yapılandırması Azure Key Vault için yedek bir çözüm değildir. Uygulama sırlarını içinde saklama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Noktadan noktaya anlık görüntü](./concept-point-time-snapshot.md)  
-* [Özellik Yönetimi](./concept-feature-management.md)  
+* [Belirli bir noktanın anlık görüntüsü](./concept-point-time-snapshot.md)  
+* [Özellik yönetimi](./concept-feature-management.md)  

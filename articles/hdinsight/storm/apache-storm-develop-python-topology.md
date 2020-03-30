@@ -1,6 +1,6 @@
 ---
-title: Python bileşenleriyle Apache Storm-Azure HDInsight
-description: Azure HDInsight 'ta Python bileşenleri kullanan bir Apache Storm topolojisi oluşturma hakkında bilgi edinin
+title: Python bileşenleriyle Apache Storm - Azure HDInsight
+description: Azure HDInsight'ta Python bileşenlerini kullanan bir Apache Storm topolojisini nasıl oluşturacağınızı öğrenin
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
 ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77460033"
 ---
-# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight 'ta Python kullanarak Apache Storm topolojileri geliştirme
+# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight'ta Python'u kullanarak Apache Storm topolojileri geliştirin
 
-Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topolojisi oluşturmayı öğrenin. Apache Storm birden çok dili destekler, hatta bileşenleri tek bir topolojide çeşitli dillerden birleştirmeniz sağlanır. [Flox](https://storm.apache.org/releases/current/flux.html) çerçevesi (fırtınası 0.10.0 ile sunulan), Python bileşenleri kullanan çözümleri kolayca oluşturmanızı sağlar.
+Python bileşenlerini kullanan bir [Apache Storm](https://storm.apache.org/) topolojisini nasıl oluşturacağınızı öğrenin. Apache Storm birden çok dili destekler, hatta birden fazla dilden bileşenleri tek bir topolojide birleştirmenize olanak sağlar. [Flux](https://storm.apache.org/releases/current/flux.html) çerçevesi (Storm 0.10.0 ile birlikte getirilir) Python bileşenlerini kullanan çözümleri kolayca oluşturmanıza olanak tanır.
 
 > [!IMPORTANT]  
-> Bu belgedeki bilgiler, HDInsight 3,6 ' de fırtınası kullanılarak test edilmiştir.
+> Bu belgedeki bilgiler HDInsight 3.6'da Storm kullanılarak test edilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+* HDInsight'ta bir Apache Storm kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun](../hdinsight-hadoop-create-linux-clusters-portal.md) ve Küme türü için **Fırtına'yı**seçin. **Storm**
 
-* Yerel bir fırtınası geliştirme ortamı (Isteğe bağlı). Yerel bir fırtınası ortamı yalnızca, topolojiyi yerel olarak çalıştırmak istiyorsanız gereklidir. Daha fazla bilgi için bkz. [geliştirme ortamı kurma](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
+* Yerel bir Fırtına geliştirme ortamı (İsteğe bağlı). Yerel bir Fırtına ortamı sadece yerel topoloji çalıştırmak istiyorsanız gereklidir. Daha fazla bilgi için [bkz.](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
-* [Python 2,7 veya üzeri](https://www.python.org/downloads/).
+* [Python 2.7 veya üzeri.](https://www.python.org/downloads/)
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks).
+* [Java Geliştirici Kiti (JDK) sürüm 8](https://aka.ms/azure-jdks).
 
-* Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
+* [Apache Maven](https://maven.apache.org/download.cgi) düzgün Apache göre [yüklü.](https://maven.apache.org/install.html)  Maven Java projeleri için bir proje inşa sistemidir.
 
-## <a name="storm-multi-language-support"></a>Fırtınası çok dil desteği
+## <a name="storm-multi-language-support"></a>Storm çok dilli destek
 
-Apache Storm, herhangi bir programlama dili kullanılarak yazılmış bileşenlerle çalışmak üzere tasarlanmıştır. Bileşenler, fırtınası için Thrift tanımıyla nasıl çalışacağınızı anlamalıdır. Python için, bir modül Apache Storm projenin bir parçası olarak sağlanır ve bu da, fırtınası ile kolayca arabirim oluşturmanızı sağlar. Bu modülü [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)' de bulabilirsiniz.
+Apache Storm, herhangi bir programlama dili kullanılarak yazılmış bileşenlerle çalışmak üzere tasarlanmıştır. Bileşenler Storm için Thrift tanımı ile nasıl çalışacağını anlamak gerekir. Python için, Storm ile kolayca arayüz aranıza olanak tanıyan Apache Storm projesinin bir parçası olarak bir modül sağlanır. Bu modülü [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Fırtınası Java Sanal Makinesi (JVM) üzerinde çalışan bir Java işlemidir. Diğer dillerde yazılan bileşenler alt işlem olarak yürütülür. Fırtınası, stdin/stdout üzerinden gönderilen JSON iletilerini kullanarak bu alt işlemlerle iletişim kurar. Bileşenler arasındaki iletişimle ilgili daha fazla ayrıntı, [Multi-Lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) belgelerinde bulunabilir.
+Storm, Java Virtual Machine (JVM) üzerinde çalışan bir Java işlemidir. Diğer dillerde yazılan bileşenler alt işlemler olarak yürütülür. Fırtına stdin /stdout üzerinden gönderilen JSON iletileri kullanarak bu alt süreçler ile iletişim kurar. Bileşenler arasındaki iletişim hakkında daha fazla ayrıntı [Multi-lang Protokol](https://storm.apache.org/releases/current/Multilang-protocol.html) belgelerinde bulunabilir.
 
-## <a name="python-with-the-flux-framework"></a>Flox çerçevesiyle Python
+## <a name="python-with-the-flux-framework"></a>Flux çerçevesi ile Python
 
-Flox Framework, her bir bileşenden ayrı olarak fırtınası tanımlamanızı sağlar. Flox çerçevesi, fırtınası topolojisini tanımlamak için YAML 'yi kullanır. Aşağıdaki metin, YAML belgesinde bir Python bileşenine nasıl başvurulacağını gösteren bir örnektir:
+Flux çerçevesi, Storm topolojilerini bileşenlerden ayrı olarak tanımlamanızı sağlar. Flux çerçevesi Fırtına topolojisini tanımlamak için YAML kullanır. Aşağıdaki metin, YAML belgesinde python bileşenine nasıl başvurulmaya bir örnektir:
 
 ```yaml
 # Spout definitions
@@ -58,9 +58,9 @@ spouts:
     parallelism: 1
 ```
 
-`FluxShellSpout` sınıfı, Spout 'yi uygulayan `sentencespout.py` betiğini başlatmak için kullanılır.
+Sınıf, `FluxShellSpout` emziyi `sentencespout.py` uygulayan komut dosyasını başlatmak için kullanılır.
 
-Flox, Python betikleri 'nin topolojiyi içeren jar dosyasının içindeki `/resources` dizininde olmasını bekler. Bu nedenle bu örnek Python betiklerini `/multilang/resources` dizininde depolar. `pom.xml`, aşağıdaki XML 'i kullanarak bu dosyayı içerir:
+Flux, Python komut dosyalarının `/resources` topolojiiçeren kavanoz dosyasının içindeki dizinde olmasını bekler. Bu örnek, Python komut dosyalarını dizinde `/multilang/resources` depolar. Aşağıdaki `pom.xml` XML kullanarak bu dosyayı içerir:
 
 ```xml
 <!-- include the Python components -->
@@ -70,53 +70,53 @@ Flox, Python betikleri 'nin topolojiyi içeren jar dosyasının içindeki `/reso
 </resource>
 ```
 
-Daha önce belirtildiği gibi, fırtınası için Thrift tanımını uygulayan bir `storm.py` dosyası vardır. Flox Framework, proje oluşturulduğunda `storm.py` otomatik olarak içerir, böylece dahil olmak üzere endişelenmeniz gerekmez.
+Daha önce de belirtildiği gibi, Fırtına için Thrift tanımını uygulayan bir `storm.py` dosya var. Akı çerçevesi, `storm.py` proje oluşturulurken otomatik olarak içerir, böylece projeyi dahil etme konusunda endişelenmenize gerek kalmaz.
 
 ## <a name="build-the-project"></a>Projeyi derleme
 
-1. [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) adresinden projeyi indirin.
+1. Projeyi ' [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)den indirin.
 
-1. Bir komut istemi açın ve proje köküne gidin: `hdinsight-python-storm-wordcount-master`. Aşağıdaki komutu girin:
+1. Komut istemini açın ve proje `hdinsight-python-storm-wordcount-master`köküne gidin: . Aşağıdaki komutu girin:
 
     ```cmd
     mvn clean compile package
     ```
 
-    Bu komut, derlenmiş topolojiyi içeren bir `target/WordCount-1.0-SNAPSHOT.jar` dosyası oluşturur.
+    Bu komut, `target/WordCount-1.0-SNAPSHOT.jar` derlenmiş topolojiiçeren bir dosya oluşturur.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>HDInsight 'ta fırtınası topolojisini çalıştırma
+## <a name="run-the-storm-topology-on-hdinsight"></a>HDInsight'ta Fırtına topolojisini çalıştırın
 
-1. `WordCount-1.0-SNAPSHOT.jar` dosyasını HDInsight kümenizdeki fırtınası kümenize kopyalamak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+1. DOSYAYI HDInsight kümesinde `WordCount-1.0-SNAPSHOT.jar` Storm'a kopyalamak için [ssh komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME'yi kümenizin adıyla değiştirerek aşağıdaki komutu düzenleme ve ardından komutu girin:
 
     ```cmd
     scp target/WordCount-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Dosya karşıya yüklendikten sonra SSH kullanarak kümeye bağlanın:
+1. Dosya yüklendikten sonra SSH kullanarak kümeye bağlanın:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. SSH oturumunda, kümede topolojiyi başlatmak için aşağıdaki komutu kullanın:
+1. SSH oturumundan kümedeki topolojiyi başlatmak için aşağıdaki komutu kullanın:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-    Başlatıldıktan sonra, bir fırtınası topolojisi durduruluncaya kadar çalışır.
+    Bir kez başladıktan sonra, bir Fırtına topolojisi durdurulana kadar çalışır.
 
-1. Kümedeki topolojiyi görüntülemek için fırtınası Kullanıcı arabirimini kullanın. Fırtınası Kullanıcı arabirimi `https://CLUSTERNAME.azurehdinsight.net/stormui`konumunda bulunur. `CLUSTERNAME`, küme adınızla değiştirin.
+1. Kümedeki topolojiyi görüntülemek için Fırtına UI'sini kullanın. Fırtına UI yer `https://CLUSTERNAME.azurehdinsight.net/stormui`almaktadır. Küme `CLUSTERNAME` adınız ile değiştirin.
 
-1. Fırtınası topolojisini durdurun. Kümedeki topolojiyi durdurmak için aşağıdaki komutu kullanın:
+1. Fırtına topolojisini durdurun. Kümedeki topolojiyi durdurmak için aşağıdaki komutu kullanın:
 
     ```bash
     storm kill wordcount
     ```
 
-    Alternatif olarak, fırtınası Kullanıcı arabirimini de kullanabilirsiniz. Topoloji için **topoloji eylemleri** altında **Sonlandır**' ı seçin.
+    Alternatif olarak, Fırtına UI'ı kullanabilirsiniz. Topoloji için **Topoloji eylemleri** altında, **Kill**seçin.
 
-## <a name="run-the-topology-locally"></a>Topolojiyi yerel olarak çalıştırma
+## <a name="run-the-topology-locally"></a>Topolojiyi yerel olarak çalıştırın
 
 Topolojiyi yerel olarak çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -125,9 +125,9 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]  
-> Bu komut için yerel bir fırtınası geliştirme ortamı gerekir. Daha fazla bilgi için bkz. [geliştirme ortamı kurma](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
+> Bu komut yerel bir Fırtına geliştirme ortamı gerektirir. Daha fazla bilgi için [bkz.](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
-Topoloji başladıktan sonra, yerel konsola aşağıdaki metne benzer bilgiler yayar:
+Topoloji başladıktan sonra, aşağıdaki metne benzer şekilde yerel konsola bilgi yayar:
 
 ```output
 24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
@@ -141,8 +141,8 @@ Topoloji başladıktan sonra, yerel konsola aşağıdaki metne benzer bilgiler y
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-Topolojiyi durdurmak için __CTRL + C__kullanın.
+Topolojiyi durdurmak için __Ctrl + C__'yi kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HDInsight ile Python kullanmanın diğer yolları için aşağıdaki belgelere bakın: [Apache Pig ve Apache Hive Python Kullanıcı tanımlı işlevleri (UDF) kullanma](../hadoop/python-udf-hdinsight.md).
+HDInsight ile Python'u kullanmanın diğer yolları için aşağıdaki belgelere bakın: [Apache Pig ve Apache Hive'da Python Kullanıcı Tanımlı Fonksiyonlar (UDF) nasıl kullanılır?](../hadoop/python-udf-hdinsight.md)

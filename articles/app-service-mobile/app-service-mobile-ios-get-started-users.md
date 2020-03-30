@@ -1,53 +1,53 @@
 ---
-title: İOS üzerinde kimlik doğrulaması ekleme
-description: Azure Mobile Apps kullanarak AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcıları aracılığıyla iOS uygulamanızın kullanıcılarının kimliğini nasıl doğrulayacağınızı öğrenin.
+title: iOS'ta Kimlik Doğrulama Ekleme
+description: AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcıları aracılığıyla iOS uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure Mobil Uygulamalarını nasıl kullanacağınızı öğrenin.
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459032"
 ---
-# <a name="add-authentication-to-your-ios-app"></a>İOS uygulamanıza kimlik doğrulaması ekleme
+# <a name="add-authentication-to-your-ios-app"></a>iOS uygulamanıza kimlik doğrulama ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak [iOS hızlı başlangıç] projesine kimlik doğrulaması eklersiniz. Bu öğretici, önce gerçekleştirmeniz gereken [iOS hızlı başlangıç] öğreticisini temel alır.
+Bu öğreticide, desteklenen bir kimlik sağlayıcısını kullanarak [iOS hızlı başlatma] projesine kimlik doğrulama eklersiniz. Bu öğretici, önce tamamlamanız gereken [iOS hızlı başlangıç] öğreticisini temel alınr.
 
-## <a name="register"></a>Uygulamanızı kimlik doğrulaması için kaydedin ve App Service yapılandırın
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Uygulamanızı kimlik doğrulama için kaydedin ve Uygulama Hizmetini yapılandırın
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uygulamanızı Izin verilen dış yönlendirme URL 'Lerine ekleyin
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Uygulamanızı İzin Verilen Harici Yönlendirme URL'lerine ekleyin
 
-Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir.  Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar.  Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız.  Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz.  Bu, mobil uygulamanız için benzersiz olmalıdır.  Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
+Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL düzeni tanımlamanızı gerektirir.  Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza geri yönlendirmesine olanak tanır.  Bu öğreticide, URL şeması _ekadını_ sonuna kadar kullanırız.  Ancak, seçtiğiniz herhangi bir URL düzenini kullanabilirsiniz.  Mobil uygulamanıza özgü olmalıdır.  Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
-1. [Azure portalında]App Service seçin.
+1. Azure [portalında]Uygulama Hizmetinizi seçin.
 
-2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
+2. Kimlik **Doğrulama / Yetkilendirme** menüsü seçeneğini tıklatın.
 
-3. **Kimlik doğrulama sağlayıcıları** bölümünde **Azure Active Directory** ' ye tıklayın.
+3. **Kimlik Doğrulama Sağlayıcıları** bölümünde Azure Etkin **Dizini'ni** tıklatın.
 
-4. **Yönetim modunu** **Gelişmiş**olarak ayarlayın.
+4. Yönetim **modunu** **Gelişmiş**olarak ayarlayın.
 
-5. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`appname://easyauth.callback`girin.  Bu dizedeki _appname_ , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+5. İzin **Verilen Harici Yönlendirme URL'lerine**girin. `appname://easyauth.callback`  Bu dizedeki _ad,_ mobil uygulamanızın URL Düzeni'dir.  Bir protokol için normal URL belirtimini izlemeli (yalnızca harfleri ve sayıları kullanın ve harfle başlamalıdır).  Mobil uygulama kodunuzu URL Düzeni ile birkaç yerde ayarlamanız gerektiğinden, seçtiğiniz dizeye not alabilirsiniz.
 
-6. **Tamam** düğmesine tıklayın.
+6. **Tamam**'a tıklayın.
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>İzinleri kimlik doğrulaması verilen kullanıcılarla sınırlama
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, kimliği doğrulanmamış bir kullanıcı olarak arka uca erişmeye çalıştığı için bir özel durum oluşur, ancak *TodoItem* tablosu şimdi kimlik doğrulaması gerektiriyor.
+Xcode'da uygulamayı başlatmak için **Çalıştır'a** basın. Uygulama, kimliği doğrulanmamış bir kullanıcı olarak arka uça erişmeye çalıştığından, ancak *TodoItem* tablosu artık kimlik doğrulaması gerektirdiğinden bir özel durum yükseltilir.
 
-## <a name="add-authentication"></a>Uygulamaya kimlik doğrulaması ekle
+## <a name="add-authentication-to-app"></a><a name="add-authentication"></a>Uygulamaya kimlik doğrulama ekleme
 **Amaç-C**:
 
-1. Mac 'inizde, Xcode 'da *QSTodoListViewController. ı* dosyasını açın ve aşağıdaki yöntemi ekleyin:
+1. Mac'inizde *Xcode'da QSTodoListViewController.m'yi* açın ve aşağıdaki yöntemi ekleyin:
 
     ```Objective-C
     - (void)loginAndGetData
@@ -69,11 +69,11 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     }
     ```
 
-    Google 'ı, kimlik sağlayıcınız olarak kullanmıyorsanız Google *taccount*, *Twitter*, *Facebook*veya *windowsazureactivedirectory* *olarak değiştirin.* Facebook kullanıyorsanız, uygulamanızdaki [Facebook etki alanlarını beyaz listeye][1] almanız gerekir.
+    *Google'ı microsoftaccount,* *twitter,* *facebook*veya *windowsazureactivedirectory* olarak *değiştirin.* Facebook kullanıyorsanız, uygulamanızda [Facebook alan adlarını beyaz listeye][1] almalısınız.
 
-    **Urlscheme** öğesini uygulamanız için benzersiz bir adla değiştirin.  UrlScheme, Azure portal **Izin verilen dış yeniden yönlendirme URL 'leri** alanında belirttiğiniz URL düzeni protokolüyle aynı olmalıdır. UrlScheme kimlik doğrulama geri çağırması tarafından, kimlik doğrulama isteği tamamlandıktan sonra uygulamanıza geri dönmek için kullanılır.
+    **urlScheme'i** uygulamanız için benzersiz bir adla değiştirin.  UrlScheme, Azure portalındaki İzin Verilen Harici Yönlendirme **URL'leri** alanında belirttiğiniz URL Düzeni protokolüyle aynı olmalıdır. UrlScheme, kimlik doğrulama isteği tamamlandıktan sonra uygulamanıza geri dönmek için kimlik doğrulama geri araması tarafından kullanılır.
 
-2. *QSTodoListViewController. d* içindeki `viewDidLoad` `[self refresh]` şu kodla değiştirin:
+2. *QSTodoListViewController.m'de* aşağıdaki kodla değiştirin: `[self refresh]` `viewDidLoad`
 
     ```Objective-C
     [self loginAndGetData];
@@ -102,9 +102,9 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     }
     ```
 
-   Bu kodu doğrudan satır okuma `#pragma mark - Core Data stack`önüne ekleyin.  _Appname_ öğesini, 1. adımda kullandığınız urlscheme değeri ile değiştirin.
+   Bu kodu satır okumadan `#pragma mark - Core Data stack`önce doğrudan ekleyin.  _Appname'yi_ adım 1'de kullandığınız urlScheme değeriyle değiştirin.
 
-5. `AppName-Info.plist` dosyasını açın (AppName uygulamanızın adıyla değiştirin) ve aşağıdaki kodu ekleyin:
+5. Dosyayı `AppName-Info.plist` açın (AppName'yi uygulamanızın adıyla değiştirin) ve aşağıdaki kodu ekleyin:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -120,15 +120,15 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     </array>
     ```
 
-    Bu kod `<dict>` öğesinin içine yerleştirilmelidir.  _Appname_ dizesini ( **cfpaketlemeli çatı**için dizi içinde) 1. adımda seçtiğiniz uygulama adıyla değiştirin.  Bu değişiklikleri plist düzenleyicisinde da yapabilirsiniz-plist düzenleyicisini açmak için XCode 'daki `AppName-Info.plist` dosyasına tıklayabilirsiniz.
+    Bu kod öğenin `<dict>` içine yerleştirilmelidir.  _Uygulama_ dizesini **(CFBundleURLSchemes**için dizi içinde) adım 1'de seçtiğiniz uygulama adıile değiştirin.  Ayrıca bu değişiklikleri plist düzenleyicisinde de yapabilirsiniz `AppName-Info.plist` - plist düzenleyicisini açmak için XCode'daki dosyaya tıklayın.
 
-    **Cfpaketkimliği** için `com.microsoft.azure.zumo` dizesini, Apple paket tanımlayıcdan değiştirin.
+    `com.microsoft.azure.zumo` **CFBundleURLName** dizesini Apple paket tanımlayıcınızla değiştirin.
 
-6. Uygulamayı başlatmak için *Çalıştır* ' a basın ve oturum açın. Oturum açtığınızda yapılacaklar listesini görüntüleyebilmeniz ve güncelleştirme yapabilmelisiniz.
+6. Uygulamayı başlatmak için *Çalıştır'a* basın ve ardından oturum açın. Oturum açtığınızda, Todo listesini görüntüleyebilmeli ve güncelleştirmeler yapabilmelisiniz.
 
-**Swift**:
+**Hızlı :**
 
-1. Mac 'inizde, Xcode 'da *ToDoTableViewController. Swift* dosyasını açın ve aşağıdaki yöntemi ekleyin:
+1. Mac'inizde *Xcode'da ToDoTableViewController.swift'i* açın ve aşağıdaki yöntemi ekleyin:
 
     ```swift
     func loginAndGetData() {
@@ -155,17 +155,17 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     }
     ```
 
-    Google 'ı, kimlik sağlayıcınız olarak kullanmıyorsanız Google *taccount*, *Twitter*, *Facebook*veya *windowsazureactivedirectory* *olarak değiştirin.* Facebook kullanıyorsanız, uygulamanızdaki [Facebook etki alanlarını beyaz listeye][1] almanız gerekir.
+    *Google'ı microsoftaccount,* *twitter,* *facebook*veya *windowsazureactivedirectory* olarak *değiştirin.* Facebook kullanıyorsanız, uygulamanızda [Facebook alan adlarını beyaz listeye][1] almalısınız.
 
-    **Urlscheme** öğesini uygulamanız için benzersiz bir adla değiştirin.  UrlScheme, Azure portal **Izin verilen dış yeniden yönlendirme URL 'leri** alanında belirttiğiniz URL düzeni protokolüyle aynı olmalıdır. UrlScheme kimlik doğrulama geri çağırması tarafından, kimlik doğrulama isteği tamamlandıktan sonra uygulamanıza geri dönmek için kullanılır.
+    **urlScheme'i** uygulamanız için benzersiz bir adla değiştirin.  UrlScheme, Azure portalındaki İzin Verilen Harici Yönlendirme **URL'leri** alanında belirttiğiniz URL Düzeni protokolüyle aynı olmalıdır. UrlScheme, kimlik doğrulama isteği tamamlandıktan sonra uygulamanıza geri dönmek için kimlik doğrulama geri araması tarafından kullanılır.
 
-2. *ToDoTableViewController. Swift*içindeki `viewDidLoad()` sonundaki satırları `self.refreshControl?.beginRefreshing()` ve `self.onRefresh(self.refreshControl)` kaldırın. `loginAndGetData()` için bir çağrı ekleyin:
+2. Satırları `self.refreshControl?.beginRefreshing()` kaldırın `self.onRefresh(self.refreshControl)` ve `viewDidLoad()` *ToDoTableViewController.swift*sonunda . Onların yerine `loginAndGetData()` bir çağrı ekleyin:
 
     ```swift
     loginAndGetData()
     ```
 
-3. `AppDelegate.swift` dosyasını açın ve aşağıdaki satırı `AppDelegate` sınıfına ekleyin:
+3. Dosyayı `AppDelegate.swift` açın ve `AppDelegate` sınıfa aşağıdaki satırı ekleyin:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -180,9 +180,9 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     }
     ```
 
-    _Appname_ öğesini, 1. adımda kullandığınız urlscheme değeri ile değiştirin.
+    _Appname'yi_ adım 1'de kullandığınız urlScheme değeriyle değiştirin.
 
-4. `AppName-Info.plist` dosyasını açın (AppName uygulamanızın adıyla değiştirin) ve aşağıdaki kodu ekleyin:
+4. Dosyayı `AppName-Info.plist` açın (AppName'yi uygulamanızın adıyla değiştirin) ve aşağıdaki kodu ekleyin:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -198,13 +198,13 @@ Xcode 'da uygulamayı başlatmak için **Çalıştır** ' a basın. Uygulama, ki
     </array>
     ```
 
-    Bu kod `<dict>` öğesinin içine yerleştirilmelidir.  _Appname_ dizesini ( **cfpaketlemeli çatı**için dizi içinde) 1. adımda seçtiğiniz uygulama adıyla değiştirin.  Bu değişiklikleri plist düzenleyicisinde da yapabilirsiniz-plist düzenleyicisini açmak için XCode 'daki `AppName-Info.plist` dosyasına tıklayabilirsiniz.
+    Bu kod öğenin `<dict>` içine yerleştirilmelidir.  _Uygulama_ dizesini **(CFBundleURLSchemes**için dizi içinde) adım 1'de seçtiğiniz uygulama adıile değiştirin.  Ayrıca bu değişiklikleri plist düzenleyicisinde de yapabilirsiniz `AppName-Info.plist` - plist düzenleyicisini açmak için XCode'daki dosyaya tıklayın.
 
-    **Cfpaketkimliği** için `com.microsoft.azure.zumo` dizesini, Apple paket tanımlayıcdan değiştirin.
+    `com.microsoft.azure.zumo` **CFBundleURLName** dizesini Apple paket tanımlayıcınızla değiştirin.
 
-5. Uygulamayı başlatmak için *Çalıştır* ' a basın ve oturum açın. Oturum açtığınızda yapılacaklar listesini görüntüleyebilmeniz ve güncelleştirme yapabilmelisiniz.
+5. Uygulamayı başlatmak için *Çalıştır'a* basın ve ardından oturum açın. Oturum açtığınızda, Todo listesini görüntüleyebilmeli ve güncelleştirmeler yapabilmelisiniz.
 
-App Service kimlik doğrulaması, uygulamaların uygulamalar arası Iletişimini kullanır.  Bu konuyla ilgili daha fazla bilgi için [Apple belgelerine][2] bakın
+Uygulama Hizmeti Kimlik Doğrulaması, Apple'ların Uygulamalar Arası İletişimini kullanır.  Bu konuda daha fazla bilgi için [Apple Dokümantasyon][2]
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist

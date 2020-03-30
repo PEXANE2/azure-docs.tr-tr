@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
 ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022809"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
@@ -29,7 +29,7 @@ Geliştiriciler, büyük ölçekli yürütmenin gerekli olduğu SaaS uygulamalar
 
 Batch kullanımından ek ücret alınmaz. Yalnızca sanal makineler, depolama ve ağ gibi kullanılan temel kaynaklar için ödeme yaparsınız.
 
-Azure 'da Batch ve diğer HPC çözüm seçenekleri arasında bir karşılaştırma için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Toplu İşlem ve Azure'daki diğer HPC çözüm seçenekleri arasında karşılaştırma için [Azure'da Yüksek Performanslı Bilgi İşlem 'e (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)bakın.
 
 ## <a name="run-parallel-workloads"></a>Paralel iş yükleri çalıştırma
 Batch, doğası gereği paralel ("utandırıcı derecede paralel" olarak da bilinir) iş yükleriyle düzgün çalışır. Doğası gereği paralel iş yükleri, uygulamaların birbirinden bağımsız olarak çalışabildiği ve her örneğin işin bir kısmını tamamladığı iş yükleridir. Uygulamalar yürütülürken bazı ortak verilere erişebilir, ancak uygulamanın diğer örnekleri iletişim kurmazlar. Bu nedenle doğası gereği paralel iş yükleri, uygulamaları eşzamanlı çalıştırmak için kullanılabilen işlem kaynaklarının miktarına göre belirlenen büyük bir ölçekte çalışır.
@@ -63,7 +63,7 @@ Azure Batch için daha yüksek düzeyli, iş yüküne özel özellikler de kulla
 [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) gibi araçlarla yönetilen Batch işlerini, veri dönüştürmeye yönelik daha büyük bir Azure iş akışının parçası olarak da kullanabilirsiniz.
 
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 Batch için yaygın bir senaryo, işlem düğümlerinin havuzunda 3B görüntülerin işlenmesi gibi paralel işi aslında ölçeklendirmeyi kapsar. Bu işlem düğümleri havuzu, işleme işinize onlarca, yüzlerce, hatta binlerce çekirdek sağlayan size ait bir "işleme çiftliği" olabilir.
 
 Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükünü çalıştıracak Batch’i kullanan barındırma hizmetiyle birlikte yaygın bir Batch iş akışının adımları gösterilmektedir.
@@ -73,12 +73,12 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 
 |Adım  |Açıklama  |
 |---------|---------|
-|1. bu dosyaları Azure depolama hesabınıza işlemek için **giriş dosyalarını** ve **uygulamaları** karşıya yükleyin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
-|2. Batch hesabınızda işlem düğümleri için bir Batch **havuzu** , havuzda iş yükünü çalıştırmak için bir **iş** ve işteki **Görevler** oluşturun.     | Havuz düğümleri, görevlerinizi yürüten VM'lerdir. Düğümlerin sayısı ve boyutu gibi özellikleri, bir Windows veya Linux VM görüntüsünü ve sonra düğümler havuza katıldığında yüklenecek uygulamayı belirtin. [Düşük öncelikli VM’ler](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğüm sayısını [otomatik ölçeklendirerek](batch-automatic-scaling.md) havuz maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |
-|3. **giriş dosyalarını** ve **uygulamaları** toplu işe indirin     |Bir görev yürütülmeden önce, atandığı işlem düğümünde işlenmesi için giriş verilerini indirebilir. Uygulama henüz havuz düğümlerine yüklenmediyse, burada da indirilebilir. Azure Depolama’dan indirme işlemleri tamamlandığında, görev atanan düğüm üzerinde yürütülür.|
-|4. **görev yürütmeyi** izleme     |Görevler çalışırken, işin ve ona ait görevlerin ilerleyişini izlemek için Batch’i sorgulayın. İstemci uygulamanız veya hizmetiniz, Batch hizmetiyle HTTPS üzerinden iletişim kurabilir. Binlerce işlem düğümünde çalışan binlerce görevi izliyor olabileceğinizden [Batch hizmetini verimli şekilde sorguladığınızdan](batch-efficient-list-queries.md) emin olun.|
-|5. **görev çıkışını** karşıya yükleyin     |Görevler tamamlanınca sonuç verilerini Azure Storage’a yükleyebilirler. Dosyaları doğrudan bir işlem düğümündeki dosya sisteminden de alabilirsiniz.|
-|6. **çıktı dosyalarını** indirin     |İzleme işleminiz işinizdeki görevlerin tamamlandığını algıladığında, istemci uygulamanız veya hizmetiniz daha fazla işleme için çıktı verilerini indirebilir.|
+|1. **Bu dosyaları** Azure Depolama hesabınıza işlemek için giriş **dosyalarını** ve uygulamaları yükleyin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
+|2. Toplu Iş hesabınızda bir Toplu İşlem düğümü **havuzu,** havuzdaki iş yükünü çalıştırmak için bir **iş** ve işteki **görevler** oluşturun.     | Havuz düğümleri, görevlerinizi yürüten VM'lerdir. Düğümlerin sayısı ve boyutu gibi özellikleri, bir Windows veya Linux VM görüntüsünü ve sonra düğümler havuza katıldığında yüklenecek uygulamayı belirtin. [Düşük öncelikli VM’ler](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğüm sayısını [otomatik ölçeklendirerek](batch-automatic-scaling.md) havuz maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |
+|3. **Giriş dosyalarını** ve **uygulamaları** Toplu Olarak İndirin     |Bir görev yürütülmeden önce, atandığı işlem düğümünde işlenmesi için giriş verilerini indirebilir. Uygulama henüz havuz düğümlerine yüklenmediyse, burada da indirilebilir. Azure Depolama’dan indirme işlemleri tamamlandığında, görev atanan düğüm üzerinde yürütülür.|
+|4. **Görev yürütülmesini** izleyin     |Görevler çalışırken, işin ve ona ait görevlerin ilerleyişini izlemek için Batch’i sorgulayın. İstemci uygulamanız veya hizmetiniz, Batch hizmetiyle HTTPS üzerinden iletişim kurabilir. Binlerce işlem düğümünde çalışan binlerce görevi izliyor olabileceğinizden [Batch hizmetini verimli şekilde sorguladığınızdan](batch-efficient-list-queries.md) emin olun.|
+|5. **Yükleme görev çıktısı**     |Görevler tamamlanınca sonuç verilerini Azure Storage’a yükleyebilirler. Dosyaları doğrudan bir işlem düğümündeki dosya sisteminden de alabilirsiniz.|
+|6. **Çıktı dosyalarını indirin**     |İzleme işleminiz işinizdeki görevlerin tamamlandığını algıladığında, istemci uygulamanız veya hizmetiniz daha fazla işleme için çıktı verilerini indirebilir.|
 
 
 
