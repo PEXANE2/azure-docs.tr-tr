@@ -1,7 +1,7 @@
 ---
-title: GPU ile çıkarım için model dağıtma
+title: GPU ile çıkarım için bir model dağıtma
 titleSuffix: Azure Machine Learning
-description: Bu makalede, GPU özellikli bir TensorFlow derin öğrenme modelini Web hizmeti olarak dağıtmak için Azure Machine Learning kullanma öğretilir. hizmet ve puan çıkarma istekleri.
+description: Bu makalede, GPU özellikli Tensorflow derin öğrenme modelini bir web hizmeti hizmeti ve puan çıkarımı istekleri olarak dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğretir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,48 +11,48 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78398331"
 ---
-# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
+# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin bir öğrenme modeli dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için Azure Machine Learning kullanma öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Service (AKS) üzerinde bir model dağıtmaya dayalıdır. AKS kümesi, çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
+Bu makalede, GPU özellikli bir modeli web hizmeti olarak dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Hizmeti'nde (AKS) bir model dağıtmaya dayanır. AKS kümesi çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
 
-Çıkarım veya model Puanlama, dağıtılan modelin tahminleri yapmak için kullanıldığı aşamadır. CPU yerine GPU 'Ları kullanmak, yüksek bir paralelleştirilebilir hesaplama üzerinde performans avantajları sunar.
+Çıkarım veya model puanlama, dağıtılan modelin öngörülerde bulunmak için kullanıldığı aşamadır. CPU yerine GPU'ları kullanmak, son derece paralellenebilir hesaplamada performans avantajları sunar.
 
 > [!IMPORTANT]
-> Web hizmeti dağıtımları için GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir. __Makine öğrenimi ardışık düzeni__kullanan çıkarım için, GPU 'lar yalnızca Azure Machine Learning işlem sırasında desteklenir. ML işlem hatlarını kullanma hakkında daha fazla bilgi için bkz. [Batch tahminleri çalıştırma](how-to-use-parallel-run-step.md). 
+> Web hizmeti dağıtımları için GPU çıkarımı yalnızca Azure Kubernetes Hizmetinde desteklenir. __Makine öğrenimi ardışık hattını__kullanarak çıkarım için GPU'lar yalnızca Azure Machine Learning Compute'da desteklenir. ML ardışık hatları kullanma hakkında daha fazla bilgi için toplu [iş tahminlerini çalıştır'a](how-to-use-parallel-run-step.md)bakın. 
 
 > [!TIP]
-> Bu makaledeki kod parçacıkları bir TensorFlow modeli kullanmasına karşın, bilgileri GPU 'ları destekleyen herhangi bir Machine Learning çerçevesine uygulayabilirsiniz.
+> Bu makaledeki kod parçacıkları tensorFlow modeli kullansa da, bilgileri GPU'ları destekleyen herhangi bir makine öğrenimi çerçevesine uygulayabilirsiniz.
 
 > [!NOTE]
-> Bu makaledeki bilgiler, [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-service.md) makalesindeki bilgileri oluşturur. Bu makalede genellikle AKS 'e dağıtımı ele alınmaktadır ve bu makalede GPU 'ya özgü dağıtım ele alınmaktadır.
+> Bu makaledeki bilgiler, [Azure Kubernetes Hizmeti](how-to-deploy-azure-kubernetes-service.md) makalesinde nasıl dağıtılır bilgileri temel ayar. Bu makalegenellikle AKS'ye dağıtımı kapsadığı durumlarda, bu makale GPU'ya özgü dağıtımı kapsar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [bkz.](how-to-manage-workspace.md)
 
-* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için Azure [Machine Learning SDK'ya](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)bakın.  
 
 * GPU kullanan kayıtlı bir model.
 
-    * Modellerin nasıl kaydedileceği hakkında bilgi edinmek için bkz. [modelleri dağıtma](how-to-deploy-and-where.md#registermodel).
+    * Modelleri nasıl kaydedebilirsiniz öğrenmek için [Modelleri Dağıt'a](how-to-deploy-and-where.md#registermodel)bakın.
 
-    * Bu belgeyi oluşturmak için kullanılan TensorFlow modelini oluşturmak ve kaydetmek için bkz. [bir TensorFlow modelini eğitme](how-to-train-tensorflow.md).
+    * Bu belgeyi oluşturmak için kullanılan Tensorflow modelini oluşturmak ve kaydetmek için [tensorflow modelini nasıl eğitilir'e](how-to-train-tensorflow.md)bakın.
 
-* [Modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)gösteren genel bir anlama.
+* Modellerin nasıl [ve nerede dağıtılanın acağı](how-to-deploy-and-where.md)hakkında genel bir anlayış.
 
-## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanın
+## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanma
 
-Mevcut bir çalışma alanına bağlanmak için aşağıdaki kodu kullanın:
+Varolan bir çalışma alanına bağlanmak için aşağıdaki kodu kullanın:
 
 > [!IMPORTANT]
-> Bu kod parçacığı, çalışma alanı yapılandırmasının geçerli dizine veya onun üst öğesine kaydedilmesini bekliyor. Çalışma alanı oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanları oluşturma ve yönetme](how-to-manage-workspace.md).   Yapılandırmayı dosyaya kaydetme hakkında daha fazla bilgi için bkz. [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
+> Bu kod snippet çalışma alanı yapılandırmasının geçerli dizine veya üst öğesine kaydolmasını bekler. Çalışma alanı oluşturma hakkında daha fazla bilgi için Azure [Makine Öğrenimi çalışma alanlarını oluştur ve yönet' e](how-to-manage-workspace.md)bakın.   Yapılandırmayı dosyaya kaydetme hakkında daha fazla bilgi için [bkz.](how-to-configure-environment.md#workspace)
 
 ```python
 from azureml.core import Workspace
@@ -61,11 +61,11 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-## <a name="create-a-kubernetes-cluster-with-gpus"></a>GPU 'Lar ile Kubernetes kümesi oluşturma
+## <a name="create-a-kubernetes-cluster-with-gpus"></a>GPU'lar ile bir Kubernetes kümesi oluşturma
 
-Azure Kubernetes hizmeti birçok farklı GPU seçeneği sunar. Model çıkarımı için bunlardan herhangi birini kullanabilirsiniz. Yeteneklerin ve maliyetlerin tam bir dökümü için [N serisi VM 'lerin listesine](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) bakın.
+Azure Kubernetes Hizmeti birçok farklı GPU seçeneği sunar. Bunlardan herhangi birini model çıkarımı için kullanabilirsiniz. Yeteneklerin ve maliyetlerin tam dökümü için [N serisi VM'lerin listesine](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) bakın.
 
-Aşağıdaki kod, çalışma alanınız için nasıl yeni bir AKS kümesi oluşturulacağını göstermektedir:
+Aşağıdaki kod, çalışma alanınız için yeni bir AKS kümesinin nasıl oluşturulturunu gösterir:
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -92,16 +92,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> Azure, AKS kümesi mevcut olduğu sürece sizi faturalandıracaktır. İle işiniz bittiğinde AKS kümenizi sildiğinizden emin olun.
+> Azure, AKS kümesi var olduğu sürece size fatura kesecektir. Bu kümeyle işiniz bittiğinde AKS kümenizi sildiğinizden emin olun.
 
-Azure Machine Learning ile AKS kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetine dağıtım](how-to-deploy-azure-kubernetes-service.md).
+Azure Machine Learning ile AKS kullanma hakkında daha fazla bilgi için [Azure Kubernetes Hizmetine nasıl dağıtılanın.](how-to-deploy-azure-kubernetes-service.md)
 
-## <a name="write-the-entry-script"></a>Giriş betiğini yazın
+## <a name="write-the-entry-script"></a>Giriş komut dosyasını yazma
 
-Giriş betiği Web hizmetine gönderilen verileri alır, modele geçirir ve Puanlama sonuçlarını döndürür. Aşağıdaki betik, başlangıçta TensorFlow modelini yükler ve ardından modeli kullanarak verileri puan alır.
+Giriş komut dosyası web hizmetine gönderilen verileri alır, modele aktarın ve puanlama sonuçlarını döndürür. Aşağıdaki komut dosyası başlangıç tarihinde Tensorflow modelini yükler ve daha sonra veri puan için modeli kullanır.
 
 > [!TIP]
-> Giriş betiği modelinize özeldir. Örneğin, komut dosyası modelinizle, veri biçimlerinizin vb. ile kullanılacak çerçeveyi bilmelidir.
+> Giriş betiği, modelinize göre değişir. Örneğin, komut dosyası modeli, veri biçimleri, vb ile kullanmak için çerçeve bilmeli.
 
 ```python
 import json
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Bu dosya `score.py`olarak adlandırılmıştır. Giriş betikleri hakkında daha fazla bilgi için bkz. [nasıl ve nereye dağıtılacak](how-to-deploy-and-where.md).
+Bu dosyanın `score.py`adı . Giriş komut dosyaları hakkında daha fazla bilgi için [bkz.](how-to-deploy-and-where.md)
 
-## <a name="define-the-conda-environment"></a>Conda ortamını tanımlama
+## <a name="define-the-conda-environment"></a>Conda ortamını tanımlayın
 
-Conda ortamı dosyası hizmetin bağımlılıklarını belirtir. Hem model hem de giriş betiği için gereken bağımlılıkları içerir. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, > = 1.0.45 = ile azureml-varsayılan değeri bir PIP bağımlılığı olarak belirtmeniz gerektiğini unutmayın. Aşağıdaki YAML, bir TensorFlow modeli için ortamı tanımlar. Bu dağıtımda kullanılan GPU 'YU kullanacak olan `tensorflow-gpu`belirtir:
+Conda ortamı dosyası, hizmete yönelik bağımlılıkları belirtir. Hem model hem de giriş komut dosyası tarafından gerekli olan bağımlılıkları içerir. Modeli web hizmeti olarak barındırmak için gereken işlevselliği içerdiğinden, verion >= 1,0,45 pip bağımlılığı olarak azureml varsayılanlarını belirtmeniz gerektiğini lütfen unutmayın. Aşağıdaki YAML, Tensorflow modelinin ortamını tanımlar. Bu dağıtımda `tensorflow-gpu`kullanılan GPU'dan yararlanacağını belirtir:
 
 ```yaml
 name: project_environment
@@ -157,11 +157,11 @@ channels:
 - conda-forge
 ```
 
-Bu örnekte, dosya `myenv.yml`olarak kaydedilir.
+Bu örnekte, dosya . `myenv.yml`
 
 ## <a name="define-the-deployment-configuration"></a>Dağıtım yapılandırmasını tanımlama
 
-Dağıtım yapılandırması, Web hizmetini çalıştırmak için kullanılan Azure Kubernetes hizmet ortamını tanımlar:
+Dağıtım yapılandırması, web hizmetini çalıştırmak için kullanılan Azure Kubernetes Hizmet ortamını tanımlar:
 
 ```python
 from azureml.core.webservice import AksWebservice
@@ -172,11 +172,11 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-Daha fazla bilgi için bkz [. Aksservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)için başvuru belgeleri. deploy_configuration.
+Daha fazla bilgi için [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)için başvuru belgelerine bakın.
 
 ## <a name="define-the-inference-configuration"></a>Çıkarım yapılandırmasını tanımlama
 
-Çıkarım yapılandırması, giriş betiğine ve GPU desteğiyle bir Docker görüntüsü kullanan bir ortam nesnesine işaret eder. Lütfen ortam tanımı için kullanılan YAML dosyasının, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, bir PIP bağımlılığı olarak > = 1.0.45 ile birlikte
+Çıkarım yapılandırması, giriş komut dosyasına ve GPU destekli bir docker görüntüsünü kullanan bir ortam nesnesine işaret eder. Çevre tanımı için kullanılan YAML dosyasının, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerdiğinden, >= 1.0.45 sürümüne sahip azureml varsayılanlarını pip bağımlılığı olarak listelemesi gerektiğini lütfen unutmayın.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -187,12 +187,12 @@ myenv.docker.base_image = DEFAULT_GPU_IMAGE
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
-Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
-Daha fazla bilgi için bkz. [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)için başvuru belgeleri.
+Ortamlar hakkında daha fazla bilgi için [bkz.](how-to-use-environments.md)
+Daha fazla bilgi için [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)için başvuru belgelerine bakın.
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
-Modeli AKS kümenize dağıtın ve hizmetinizi oluşturmak için bekleyin.
+Modeli AKS kümenize dağıtın ve hizmetinizi oluşturmasını bekleyin.
 
 ```python
 from azureml.core.model import Model
@@ -214,13 +214,13 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> `InferenceConfig` nesnesi `enable_gpu=True`varsa `deployment_target` parametresi GPU sağlayan bir kümeye başvurmalıdır. Aksi takdirde, dağıtım başarısız olur.
+> Nesne `InferenceConfig` varsa, `enable_gpu=True` `deployment_target` parametre gpu sağlayan bir küme başvurugerekir. Aksi takdirde, dağıtım başarısız olur.
 
-Daha fazla bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)için başvuru belgeleri.
+Daha fazla bilgi için [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)için başvuru belgelerine bakın.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Hizmetinize örnek bir sorgu verme
 
-Dağıtılan modele bir test sorgusu gönderin. Modele bir JPEG görüntüsü gönderdiğinizde, görüntüde puan alır. Aşağıdaki kod örneği test verilerini indirir ve ardından hizmete göndermek için rastgele bir test görüntüsü seçer.
+Dağıtılan modele bir test sorgusu gönderin. Modele bir jpeg görüntüsü gönderdiğinde, görüntüyü puanlar. Aşağıdaki kod örneği test verilerini karşıdan yükler ve ardından hizmete göndermek için rasgele bir test görüntüsü seçer.
 
 ```python
 # Used to test your webservice
@@ -273,14 +273,14 @@ print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-İstemci uygulaması oluşturma hakkında daha fazla bilgi için bkz. [dağıtılan Web hizmetini kullanmak için Istemci oluşturma](how-to-consume-web-service.md).
+İstemci uygulaması oluşturma hakkında daha fazla bilgi için [bkz.](how-to-consume-web-service.md)
 
-## <a name="clean-up-the-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-the-resources"></a>Kaynakları temizleme
 
-Bu örnek için AKS kümesini özel olarak oluşturduysanız, işiniz bittiğinde kaynakları silin.
+AKS kümesini bu örnek için özel olarak oluşturduysanız, işiniz bittikten sonra kaynaklarınızı silin.
 
 > [!IMPORTANT]
-> Azure, AKS kümesinin ne kadar süreyle dağıtıldığını temel alır. Bu işlemi tamamladıktan sonra temizlediğinizden emin olun.
+> AKS kümesinin ne kadar süreyle dağıtılana bağlı olarak azure faturaları. Onunla bitirdikten sonra temizlemek için emin olun.
 
 ```python
 aks_service.delete()
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [FPGA 'da model dağıtma](how-to-deploy-fpga-web-service.md)
-* [Modeli ONNX ile Dağıt](concept-onnx.md#deploy-onnx-models-in-azure)
-* [TensorFlow DNN modellerini eğitme](how-to-train-tensorflow.md)
+* [FPGA'da modeli dağıt](how-to-deploy-fpga-web-service.md)
+* [ONNX ile modeli dağıtma](concept-onnx.md#deploy-onnx-models-in-azure)
+* [Tren Tensorflow DNN Modelleri](how-to-train-tensorflow.md)

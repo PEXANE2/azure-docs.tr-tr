@@ -1,6 +1,6 @@
 ---
-title: Atlayan pencere tetikleme bağımlılıklarını oluştur
-description: Azure Data Factory içindeki bir atlayan pencere tetikleyicisi üzerinde bağımlılık oluşturmayı öğrenin.
+title: Yuvarlanan pencere tetikleyici bağımlılıkları oluşturma
+description: Azure Veri Fabrikası'nda yuvarlanan bir pencere tetikleyicisine nasıl bağımlılık yaratılabildiğini öğrenin.
 services: data-factory
 ms.author: daperlov
 author: djpmsft
@@ -11,28 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926684"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532579"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleyici bağımlılığı oluşturma
 
-Bu makalede, atlayan pencere tetikleyicisinde bir bağımlılık oluşturma adımları sağlanmaktadır. Atlayan pencere Tetikleyicileri hakkında genel bilgi için bkz. [dönüştürme penceresi oluşturma tetikleyicisi](how-to-create-tumbling-window-trigger.md).
+Bu makalede, yuvarlanan bir pencere tetikleyicibir bağımlılık oluşturmak için adımlar sağlar. Yuvarlanan Pencere tetikleyicileri hakkında genel bilgi [için, yuvarlanan pencere tetikleyicisini nasıl oluşturura](how-to-create-tumbling-window-trigger.md)bakın.
 
-Bir bağımlılık zinciri derlemek ve bir tetikleyicinin yalnızca veri fabrikasında başka bir tetikleyicinin başarıyla yürütülmesinden sonra yürütüldüğü emin olmak için bu gelişmiş özelliği kullanarak bir pencere bağımlılığı oluşturun.
+Bir bağımlılık zinciri oluşturmak ve bir tetikleyicinin yalnızca veri fabrikasında başka bir tetikleyicinin başarılı bir şekilde yürütülmesinden sonra yürütülmesini sağlamak için, bu gelişmiş özelliği yuvarlanan bir pencere bağımlılığı oluşturmak için kullanın.
 
-## <a name="create-a-dependency-in-the-data-factory-ui"></a>Data Factory Kullanıcı arabiriminde bağımlılık oluşturma
+## <a name="create-a-dependency-in-the-data-factory-ui"></a>Veri Fabrikası UI'sinde bağımlılık oluşturma
 
-Bir tetikleyicide bağımlılık oluşturmak için **tetikle > gelişmiş > yeni**' yi seçin ve ardından uygun uzaklığa ve boyuta göre kullanılacak tetikleyiciyi seçin. **Son** ' u seçin ve bağımlılıkların etkili olması için veri fabrikası değişikliklerini yayımlayın.
+Tetikleyiciye bağımlılık oluşturmak **için, Yeni > Gelişmiş > >** Tetikle'yi seçin ve ardından uygun uzaklık ve büyüklüğe bağlı olarak tetikleyiciyi seçin. **Bağımlılıkların** etkili olması için Veri Fabrikası değişikliklerini Bitir'i seçin ve yayımlayın.
 
-![Bağımlılık oluşturma](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Bağımlılık oluşturma")
+![Bağımlılık Oluşturma](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Bağımlılık Oluşturma")
 
-## <a name="tumbling-window-dependency-properties"></a>Atlayan pencere bağımlılığı özellikleri
+## <a name="tumbling-window-dependency-properties"></a>Yuvarlanan pencere bağımlılık özellikleri
 
-Bağımlılık ile atlayan pencere tetikleyicisi aşağıdaki özelliklere sahiptir:
+Bağımlılık içeren yuvarlanan pencere tetikleyicisi aşağıdaki özelliklere sahiptir:
 
 ```json
 {
@@ -72,20 +72,20 @@ Bağımlılık ile atlayan pencere tetikleyicisi aşağıdaki özelliklere sahip
 }
 ```
 
-Aşağıdaki tabloda, bir atlayan pencere bağımlılığı tanımlamak için gereken özniteliklerin listesi verilmiştir.
+Aşağıdaki tablo, Yuvarlanan Pencere bağımlılığını tanımlamak için gereken özniteliklerin listesini sağlar.
 
-| **Özellik adı** | **Açıklama**  | **Tür** | **Gerekli** |
+| **Özellik Adı** | **Açıklama**  | **Tür** | **Gerekli** |
 |---|---|---|---|
-| type  | Varolan tüm pencere Tetikleyicileri bu açılan pencerede görüntülenir. Bağımlılık yapılacak tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Yes |
-| offset | Bağımlılık tetikleyicisinin boşluğu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlı ise ve tüm diğer durumlarda isteğe bağlı ise bu özellik zorunludur. Kendinden bağımlılık her zaman negatif bir konum olmalıdır. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Timespan<br/>(SS: DD: SS) | Kendinden bağımlılık: Evet<br/>Diğer: Hayır |
-| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | Hayır  |
+| type  | Varolan tüm yuvarlanan pencere tetikleyicileri bu açılır pencerede görüntülenir. Bağımlılık yapmak için tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Evet |
+| uzaklık | Bağımlılık tetikleyicisinin mahsup uyruşu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlıysa ve diğer tüm durumlarda isteğe bağlıysa, bu özellik zorunludur. Kendine bağımlılık her zaman olumsuz bir dengeleme olmalıdır. Değer belirtilmemişse, pencere tetikleyicinin kendisiyle aynıdır. | Timespan<br/>(hh:mm:ss) | Kendine Bağımlılık: Evet<br/>Diğer: Hayır |
+| size | Bağımlılık yuvarlanan pencerenin boyutu. Pozitif bir zaman önceliği değeri sağlayın. Bu özellik isteğe bağlıdır. | Timespan<br/>(hh:mm:ss) | Hayır  |
 
 > [!NOTE]
-> Atlayan bir pencere tetikleyicisi, en fazla iki tetikleyicisine bağlı olabilir.
+> Yuvarlanan bir pencere tetikleyicisi en fazla iki diğer tetikleyiciye bağlı olabilir.
 
-## <a name="tumbling-window-self-dependency-properties"></a>Atlayan pencere iç bağımlılık özellikleri
+## <a name="tumbling-window-self-dependency-properties"></a>Yuvarlanan pencere kendine bağımlılık özellikleri
 
-Önceki pencere başarıyla tamamlanana kadar tetikleyicinin bir sonraki pencereye geçebilmesi gereken senaryolarda, kendinden bağımlılık oluşturun. Önceki HR içinde kendisinin önceki çalışmalarının başarısına bağımlı olan bir kendinden bağımlılık tetikleyicisi aşağıdaki özelliklere sahip olacaktır:
+Tetikleyicinin önceki pencere başarıyla tamamlanana kadar sonraki pencereye geçmemesi gereken senaryolarda, kendine bağımlılık oluşturun. Önceki hr içinde kendi önceki çalıştırmalarının başarısına bağlı bir kendine bağımlılık tetikleyicisi aşağıdaki özelliklere sahip olacaktır:
 
 ```json
 {
@@ -119,48 +119,52 @@ Aşağıdaki tabloda, bir atlayan pencere bağımlılığı tanımlamak için ge
     }
 }
 ```
-## <a name="usage-scenarios-and-examples"></a>Kullanım senaryoları ve örnekler
+## <a name="usage-scenarios-and-examples"></a>Kullanım senaryoları ve örnekleri
 
-Aşağıda Senaryo ve pencere bağımlılığı özelliklerinin kullanımı yer verilmiştir.
+Aşağıda senaryoların çizimleri ve yuvarlanan pencere bağımlılığı özelliklerinin kullanımı verilmiştir.
 
-### <a name="dependency-offset"></a>Bağımlılık boşluğu
+### <a name="dependency-offset"></a>Bağımlılık mahsup
 
-![Fark örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Fark örneği")
+![Mahsup Örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Mahsup Örneği")
 
 ### <a name="dependency-size"></a>Bağımlılık boyutu
 
 ![Boyut örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Boyut örneği")
 
-### <a name="self-dependency"></a>Kendi kendine bağımlılık
+### <a name="self-dependency"></a>Kendine bağımlılık
 
-![Kendi kendine bağımlılık](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Kendi kendine bağımlılık")
+![Kendine bağımlılık](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Kendine bağımlılık")
 
-### <a name="dependency-on-another-tumbling-window-trigger"></a>Başka bir atlayan pencere tetikleyicisine bağımlılık
+### <a name="dependency-on-another-tumbling-window-trigger"></a>Başka bir yuvarlanan pencere tetikleyicisine bağımlılık
 
-Son yedi gün çıktısını toplayarak günlük telemetri işleme işi ve yedi günlük bir pencere akışı üretir:
+Son yedi günlük çıktıyı bir araya alan ve yedi günlük haddeleme penceresi akışları oluşturan başka bir günlük işe bağlı olarak günlük bir telemetri işleme işi:
 
 ![Bağımlılık örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Bağımlılık örneği")
 
-### <a name="dependency-on-itself"></a>Üzerinde bağımlılık
+### <a name="dependency-on-itself"></a>Kendine bağımlılık
 
-İşin çıkış akışlarında boşluk olmayan günlük bir iş:
+İşin çıktı akışlarında boşluk olmayan günlük bir iş:
 
-![Kendi kendine bağımlılık örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Kendi kendine bağımlılık örneği")
+![Kendine bağımlılık örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Kendine bağımlılık örneği")
 
-## <a name="monitor-dependencies"></a>Bağımlılıkları izle
+Yuvarlanan pencere tetikleyicisini kullanarak Azure Veri Fabrikanızda bağımlı ardışık hatlar oluşturma hakkında bir gösteri için aşağıdaki videoyu izleyin:
 
-Bağımlılık zincirini ve ilgili pencereleri tetikleyici çalışma izleme sayfasından izleyebilirsiniz. **İzleme > tetikleme çalıştırmaları**' na gidin. Eylemler sütununun altında Tetikleyiciyi yeniden çalıştırabilir veya bağımlılıklarını görüntüleyebilirsiniz.
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
-![Tetikleyici çalıştırmalarını izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Tetikleme çalıştırmalarını izleme")
+## <a name="monitor-dependencies"></a>Bağımlılıkları izleme
 
-' Tetikleyici bağımlılıklarını görüntüle ' seçeneğine tıklarsanız, bağımlılıkların durumunu görebilirsiniz. Bağımlılık tetiklerinin biri başarısız olursa, bağımlı tetikleyicinin çalışması için onu başarıyla yeniden çalıştırmanız gerekir. Bir atlayan pencere tetikleyicisi, zaman aşımından önce yedi gün boyunca bağımlılıklarda bekler.
+Bağımlılık zincirini ve ilgili pencereleri tetikleyici çalıştırma izleme sayfasından izleyebilirsiniz. İzleme **> Tetikleyici Çalışır**gidin. Eylemler sütununaltında, tetikleyiciyi yeniden çalıştırabilir veya bağımlılıklarını görüntüleyebilirsiniz.
 
-![Bağımlılıkları izle](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Bağımlılıkları izle")
+![Tetikleme çalıştırmalarını izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Tetikleme çalıştırmalarını izleme")
 
-Tetikleme bağımlılığı zamanlamasını görüntülemek için daha fazla görselde, Gantt görünümünü seçin.
+'Tetikleyici Bağımlılıkları Görüntüle'yi tıklattığınızda, bağımlılıkların durumunu görebilirsiniz. Bağımlılık tetikleyicilerinden biri başarısız olursa, bağımlı tetikleyicinin çalışması için bunu başarıyla yeniden başlatmanız gerekir. Yuvarlanan bir pencere tetikleyicisi, zamanlamanın dolmadan önce bağımlılıkları yedi gün bekler.
 
-![Bağımlılıkları izle](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Bağımlılıkları izle")
+![Bağımlılıkları izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Bağımlılıkları izleme")
+
+Tetikleyici bağımlılık zamanlamasını görüntülemek için daha görsel bir görünüm için Gantt görünümünü seçin.
+
+![Bağımlılıkları izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Bağımlılıkları izleme")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Atlayan [pencere tetikleyicisi oluşturmayı](how-to-create-tumbling-window-trigger.md) inceleyin
+* [Yuvarlanan pencere tetikleyicisi oluşturma yı](how-to-create-tumbling-window-trigger.md) kalım

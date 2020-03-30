@@ -1,6 +1,6 @@
 ---
-title: Bir Azure AD CONNECT'te eşitleme Kuralı'nı özelleştirme | Microsoft Docs
-description: Bu konuda, Azure AD Connect yükleme sorunlarını gidermek için adımları sağlar.
+title: Azure AD Connect'te eşitleme kuralı nasıl özelleştirilir | Microsoft Dokümanlar'
+description: Bu konu, Azure AD Connect'i yüklerken sorunları nasıl gidereceklerine yönelik adımlar sağlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,41 +16,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60351077"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Eşitleme kuralını özelleştirme
 
 ## <a name="recommended-steps"></a>**Önerilen Adımlar**
 
-Eşitleme kuralı Düzenleyicisi, düzenlemek veya yeni bir eşitleme kuralı oluşturmak için kullanabilirsiniz. Eşitleme kuralları için değişiklik yapmak için Gelişmiş bir kullanıcı olması gerekir. Yanlış değişikliklerin hedef dizin nesneleri silme işlemi neden olabilir. Lütfen okuma [önerilen belgeleri](#recommended-documents) eşitleme kuralları uzmanlığı elde etmek için. Değiştirmek için eşitleme kuralı geçtikleri adımları izleyin:
+Yeni bir eşitleme kuralını yönetmek veya oluşturmak için eşitleme kuralı düzenleyicisini kullanabilirsiniz. Eşitleme kurallarında değişiklik yapmak için gelişmiş bir kullanıcı olmanız gerekir. Herhangi bir yanlış değişiklik, nesnelerin hedef dizininizden silinmesine neden olabilir. Senkronizasyon kurallarında uzmanlık kazanmak için lütfen [Önerilen Belgeler'i](#recommended-documents) okuyun. Eşitleme kuralını değiştirmek için aşağıdaki adımlardan geçin:
 
-* Uygulama menüsünde aşağıda gösterildiği gibi masaüstü eşitleme düzenleyicisinden başlatın:
+* Masaüstündeki uygulama menüsünden senkronizasyon düzenleyicisini aşağıda gösterildiği gibi başlatın:
 
-    ![Eşitleme kuralı Düzenleyicisi menüsü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
+    ![Senkronizasyon Kural Düzenleyicisi Menüsü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
 
-* Varsayılan bir eşitleme kuralı özelleştirmek için standart varsayılan kuralı bir kopyasını oluşturur ve bunu devre dışı eşitleme kuralları Düzenleyicisi, "Düzenle" düğmesine tıklayarak mevcut bir kuralı'nı kopyalayın. 100'den daha az bir önceliğe sahip kopyalanan bir kuralı kaydedin.  Bir öznitelik akışı çakışması varsa hangi kural bir çakışma (düşük sayısal değer) WINS öncelik belirler.
+* Varsayılan eşitleme kuralını özelleştirmek için, standart varsayılan kuralın bir kopyasını oluşturacak ve devre dışı bırakan Eşitleme Kuralları Düzenleyicisi'ndeki "Düzenle" düğmesini tıklatarak varolan kuralı kopyalayın. Klonlanan kuralı 100'den az bir öncelikle kaydedin.  Öncelik, öznitelik akışı çakışması varsa, hangi kuralın (daha düşük sayısal değer) bir çakışma çözümlemesi kazanmasını belirler.
 
-    ![Eşitleme kuralı Düzenleyicisi](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
+    ![Eşitleme Kuralı Düzenleyicisi](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
 
-* İdeal olarak belirli bir öznitelik değiştirirken, kopyalanan kuralda değiştirme özniteliği yalnızca tutmalısınız.  Daha sonra kopyalanan kuralından değiştirilmiş öznitelik gelir ve diğer özniteliklerini varsayılan standart kuralından seçilir varsayılan kuralı etkinleştirin. 
+* Belirli bir özniteliği değiştirirken, ideal olarak yalnızca klonlanmış kuralda değişiklik özniteliği tutmanız gerekir.  Ardından, değiştirilmiş öznitelik klonlanmış kuraldan gelmesi ve diğer özniteliklerin varsayılan standart kuralından seçilmesi için varsayılan kuralı etkinleştirin. 
 
-* Lütfen burada değiştirilen özniteliğin hesaplanan değeri NULL, kopyalanan kuralınızı ve varsayılan standart NULL olmadığından bu durumda daha sonra değil kuralı olduğunu unutmayın. NULL değer kazanır ve NULL değer yerini alır. Bir NULL değer olmasını istemiyorsanız, bir NULL değer daha sonra Ata AuthoritativeNull, kopyalanan bir kuralı değiştirin.
+* Değiştirilen özniteliğin hesaplanan değerinin klonlanmış kuralınızda NULL olması ve varsayılan standart kuralında NULL olmaması durumunda, NULL olmayan değerin kazanacağını ve NULL değerinin yerini alacağı nızı lütfen unutmayın. NULL değerinin NULL olmayan bir değerle değiştirilmesini istemiyorsanız, klonlanmış kuralınıza YetkiliNull'u atayın.
 
-* Değiştirilecek bir **giden** kural, eşitleme kuralı Düzenleyicisi'nden filtresini değiştirin.
+* **Giden** kuralı değiştirmek için, eşitleme kuralı düzenleyicisinden filtreyi değiştirin.
 
 ## <a name="recommended-documents"></a>**Önerilen Belgeler**
-* [Azure AD Connect eşitlemesi: Teknik Kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect eşitlemesi: Mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect eşitlemesi: Bildirim Temelli Sağlamayı Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect eşitlemesi: Bildirim Temelli Sağlama İfadelerini Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect eşitlemesi: Varsayılan yapılandırmayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect eşitlemesi: Kullanıcıları, Grupları ve Kişileri Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect eşitlemesi: Gölge öznitelikler](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect eşitleme: Teknik Kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect eşitlemi: Mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect eşitlemi: Bildirimsel Sağlama'yı Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect eşitlemi: Bildirimsel Sağlama İfadelerini Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Azure AD Connect eşitleme: Varsayılan yapılandırmayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
+* [Azure AD Connect eşitleme: Kullanıcıları, Grupları ve Kişileri Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect eşitleme: Gölge öznitelikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md).
-- [Karma kimlik nedir? ](whatis-hybrid-identity.md).
+- [Azure AD Connect eşitleme.](how-to-connect-sync-whatis.md)
+- [Melez kimlik nedir?](whatis-hybrid-identity.md)

@@ -1,43 +1,42 @@
 ---
-title: Market ölçüm hizmeti API 'Leri | Azure Marketi
-description: Azure Marketi 'nde SaaS teklifleri için kullanım olayı.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Pazar yeri ölçüm hizmeti API'leri | Azure Marketi
+description: Azure Marketi'ndeki SaaS teklifleri için kullanım etkinliği.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933582"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275756"
 ---
 # <a name="marketplace-metering-service-apis"></a>Market ölçüm hizmeti API’leri
 
-Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım olaylarını yayalmanıza olanak sağlar. Kullanım olayı isteği, teklif yayımlanırken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
+Kullanım olayı API belirli bir satın alınan varlık için kullanım olayları yayıltmak için izin verir. Kullanım olayı isteği, teklifi yayımlarken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
 
 ## <a name="usage-event"></a>Kullanım olayı
 
-**Gönderi**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**MESAJ**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. En son API sürümü 2018-08-31 ' dir. |
+| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. Son API sürümü 2018-08-31 olduğunu. |
 
-*İstek üst bilgileri:*
+*İstek üstleri:*
 
 | İçerik türü       | `application/json`    |
 | ------------------ | ---------------------------- |
-| `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapıldığında, önek başvurulan bağlantıdan alınan belirtece `Bearer`. |
+| `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tanesi oluşturulur ve yanıt üstbilgilerinde sağlanır. |
+| `x-ms-correlationid` | İstemci üzerinde işlem için benzersiz dize değeri. Bu parametre, istemci çalışmasından gelen tüm olayları sunucu tarafındaki olaylarla ilişkilendirer. Bu değer sağlanmazsa, bir tanesi oluşturulur ve yanıt üstbilgilerinde sağlanır. |
+| `authorization`   | [JSON web belirteci (JWT) taşıyıcı belirteci alın.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Not: HTTP isteği yaparken, `Bearer` başvurulan bağlantıdan elde edilen belirteç önek. |
 
-*İsteyen*
+*Istek:*
 
 ```json
 {
@@ -51,8 +50,8 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 
 ### <a name="responses"></a>Yanıtlar
 
-Kod: 200<br>
-TAMAM 
+Ürün Kodu: 200<br>
+Tamam 
 
 ```json
 {
@@ -67,8 +66,8 @@ TAMAM
 }
 ```
 
-Kod: 400 <br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
+Ürün Kodu: 400 <br>
+Kötü istek, eksik veya geçersiz veri sağlanan veya süresi dolmuş
 
 ```json
 {
@@ -85,8 +84,8 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 }
 ```
 
-Kod: 403<br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
+Ürün Kodu: 403<br>
+Kötü istek, eksik veya geçersiz veri sağlanan veya süresi dolmuş
 
 ```json
 {
@@ -95,8 +94,8 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 }
 ```
 
-Kod: 409<br>
-Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, kabul edilen ileti hakkında bilgi içeren `additionalInfo` alanı içerecektir.
+Ürün Kodu: 409<br>
+Çakışma, kullanım kaynağı kimliği için kullanım çağrısı aldığımızda ve zaten var olan etkili kullanım. Yanıt, kabul `additionalInfo` edilen ileti hakkında bilgi içeren alan içerir.
 
 ```json
 {
@@ -116,28 +115,28 @@ Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin
 
 ## <a name="batch-usage-event"></a>Toplu kullanım olayı
 
-Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık için kullanım olaylarını yayalmanıza olanak sağlar. Toplu kullanım olay isteği, teklif yayımlanırken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
+Toplu kullanım olayı API'si, aynı anda birden fazla satın alınan varlık için kullanım olayları yayıltmaya olanak tanır. Toplu kullanım olayı isteği, teklifi yayımlarken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
 
 >[!Note]
->Microsoft 'un ticari marketi 'nde birden çok SaaS teklifi kaydedebilirsiniz. Her kayıtlı SaaS teklifinin, kimlik doğrulama ve yetkilendirme amaçları için kayıtlı benzersiz bir Azure AD uygulaması vardır. Toplu iş içinde Yayınlanan olaylar, teklifi kaydetme sırasında aynı Azure AD uygulamasıyla sunulan tekliflere ait olmalıdır.
+>Microsoft'un ticari pazara birden fazla SaaS teklifi kaydedebilirsiniz. Her kayıtlı SaaS teklifi, kimlik doğrulama ve yetkilendirme amacıyla kaydedilmiş benzersiz bir Azure AD uygulamasına sahiptir. Toplu olarak yayılan etkinlikler, teklifi kaydederken aynı Azure AD uygulamasına sahip tekliflere ait olmalıdır.
 
-**Gönderi:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**POSTA:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. En son API sürümü 2018-08-31 ' dir. |
+| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. Son API sürümü 2018-08-31 olduğunu. |
 
-*İstek üst bilgileri:*
+*İstek üstleri:*
 
 | İçerik türü       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |
-| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapıldığında, önek başvurulan bağlantıdan alınan belirtece `Bearer`.  |
+| `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir oluşturulur ve yanıt üstbilgisinde sağlanır. |
+| `x-ms-correlationid` | İstemci üzerinde işlem için benzersiz dize değeri. Bu parametre, istemci çalışmasından gelen tüm olayları sunucu tarafındaki olaylarla ilişkilendirer. Bu değer sağlanmazsa, bir tanesi oluşturulur ve yanıt üstbilgilerinde sağlanır. |
+| `authorization`      | [JSON web belirteci (JWT) taşıyıcı belirteci alın.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Not: HTTP isteği yaparken, `Bearer` başvurulan bağlantıdan elde edilen belirteç önek.  |
 
-*İsteyen*
+*Istek:*
 ```json
 {
   "request": [
@@ -160,8 +159,8 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 ```
 ### <a name="responses"></a>Yanıtlar
 
-Kod: 200<br>
-TAMAM
+Ürün Kodu: 200<br>
+Tamam
 
 ```json
 {
@@ -193,22 +192,22 @@ TAMAM
 }
 ```
 
-`BatchUsageEvent` API yanıtında başvurulan durum kodu açıklaması:
+API yanıtında `BatchUsageEvent` başvurulan durum kodunun açıklaması:
 
 | Durum kodu  | Açıklama |
 | ---------- | -------------------- |
 | `Accepted` | Kabul edilen kod. |
-| `Expired` | Kullanım zaman aşımına uğradı. |
-| `Duplicate` | Yinelenen kullanım belirtildi. |
+| `Expired` | Süresi dolmuş kullanım. |
+| `Duplicate` | Yinelenen kullanım sağlandı. |
 | `Error` | Hata kodu. |
-| `ResourceNotFound` | Belirtilen kullanım kaynağı geçersiz. |
-| `ResourceNotAuthorized` | Bu kaynak için kullanım sağlama yetkiniz yok. |
-| `InvalidDimension` | Bu teklif/plan için kullanım geçirildiği boyut geçersiz. |
-| `InvalidQuantity` | Geçirilen miktar 0 <. |
-| `BadArgument` | Giriş eksik veya hatalı biçimlendirilmiş. |
+| `ResourceNotFound` | Sağlanan kullanım kaynağı geçersizdir. |
+| `ResourceNotAuthorized` | Bu kaynağın kullanımını sağlama yetkiniz yok. |
+| `InvalidDimension` | Bu teklif/plan için kullanım dan geçirilen boyut geçersizdir. |
+| `InvalidQuantity` | Geçirilen miktar 0'<. |
+| `BadArgument` | Giriş eksik veya biçimsiz. |
 
-Kod: 400<br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
+Ürün Kodu: 400<br>
+Kötü istek, eksik veya geçersiz veri sağlanan veya Süresi Doldu
 
 ```json
 {
@@ -224,8 +223,8 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
   "code": "BadArgument"
 }
 ```
-Kod: 403<br>
-Kullanıcının bu çağrıyı yapması yetkilendirilmemiş
+Ürün Kodu: 403<br>
+Kullanıcı bu aramayı yapmak için yetkisiz
 
 ```json
 {
@@ -236,4 +235,4 @@ Kullanıcının bu çağrıyı yapması yetkilendirilmemiş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](./saas-metered-billing.md).
+Daha fazla bilgi için Bkz. [SaaS tarifeli faturalandırma.](./saas-metered-billing.md)

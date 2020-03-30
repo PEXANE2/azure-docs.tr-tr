@@ -1,88 +1,88 @@
 ---
-title: Koşullu erişim-risk tabanlı koşullu erişim-Azure Active Directory
-description: İlkeler için kimlik koruması geliştirmelerini etkinleştirmek üzere koşullu erişim ilkeleri oluşturma
+title: Koşullu Erişim - Risk Tabanlı Koşullu Erişim - Azure Etkin Dizini
+description: İlkelerde Kimlik Koruması geliştirmelerini etkinleştirmek için Koşullu Erişim ilkeleri oluşturma
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295147"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Koşullu erişim: risk tabanlı koşullu erişim
+# <a name="conditional-access-risk-based-conditional-access"></a>Koşullu Erişim: Risk Tabanlı Koşullu Erişim
 
-Azure AD Premium P2 lisanslarına sahip kuruluşlar, Azure AD Kimlik Koruması riskli algılamaları dahil koşullu erişim ilkeleri oluşturabilir. Kutudan çıkan üç varsayılan ilke vardır. 
+Azure AD Premium P2 lisanslarına sahip kuruluşlar, Azure AD Kimlik Koruması risk algılamalarını içeren Koşullu Erişim ilkeleri oluşturabilir. Kutudan etkinleştirilebilen üç varsayılan ilke vardır. 
 
-* Tüm kullanıcıların Azure Multi-Factor Authentication kaydolması gerekir.
-* Yüksek riskli kullanıcılar için parola değişikliği gerektir.
-* Orta veya yüksek oturum açma riski olan kullanıcılar için Multi-Factor Authentication gerektir.
+* Tüm kullanıcıların Azure Çok Faktörlü Kimlik Doğrulaması'na kaydolmasını zorunlu kılmasını zorunlu kınla.
+* Yüksek risk altındaki kullanıcılar için parola değişikliği gerektirir.
+* Orta veya yüksek oturum açma riski olan kullanıcılar için çok faktörlü kimlik doğrulaması gerektirir.
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Tüm kullanıcıların Azure Multi-Factor Authentication kaydolmesini gerektir
+## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Tüm kullanıcıların Azure Çok Faktörlü Kimlik Doğrulamasına kaydolmasını zorunlu kılmasını zorunlu kılmasını
 
-Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authentication için 14 gün içinde kaydolmanızı gerektirir. 
+Bu ilkeyi etkinleştirmek için tüm kullanıcıların 14 gün içinde Azure Çok Faktörlü Kimlik Doğrulama'ya kaydolması gerekir. 
 
-1. **Azure Portal**’ında oturum açın.
+1. **Azure portalında**oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
 1. **MFA kaydı**'na tıklayın.
-1. **Atamalar**altında **Kullanıcılar**' ı seçin.
-   1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-   1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin. 
+1. **Atamalar**altında, **Kullanıcıları**seçin.
+   1. **Altında Ekle**, **Tüm kullanıcıları**seçin.
+   1. **Dışla'nın**altında, **dışlanmış kullanıcıları seçin,** kuruluşunuzun acil durum erişimini veya kesme cam hesaplarını seçin ve **Seç'i**seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. İlkeyi **On'a** **Ayarla.**
+1. **Kaydet**'e tıklayın.
 
-## <a name="require-a-password-change-high-risk-users"></a>Parola değiştirme yüksek riskli kullanıcılar
+## <a name="require-a-password-change-high-risk-users"></a>Parola değişikliği yüksek riskli kullanıcılar gerektirir
 
 Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacılar, kolluk kuvvetleri, Microsoft'taki çeşitli güvenlik ekipleri ve diğer güvenilir kaynaklarla birlikte çalışmalar yapmaktadır. Bu çiftlerden biri ortamınızdaki bir hesapla eşleştiğinde aşağıdaki ilkeyi kullanarak risk tabanlı parola değişikliğinin tetiklenmesini sağlayabilirsiniz.
 
-1. **Azure Portal**’ında oturum açın.
+1. **Azure portalında**oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
-1. **Kullanıcı risk ilkesi**' ne tıklayın.
-1. **Atamalar**altında **Kullanıcılar** ' ı seçin.
-   1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-   1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin.
+1. Kullanıcı **risk ilkesini**tıklatın.
+1. **Atamalar**altında, **Kullanıcıları** seçin
+   1. **Altında Ekle**, **Tüm kullanıcıları**seçin.
+   1. **Dışla'nın**altında, **dışlanmış kullanıcıları seçin,** kuruluşunuzun acil durum erişimini veya kesme cam hesaplarını seçin ve **Seç'i**seçin.
    1. **Done** (Bitti) öğesini seçin.
-1. **Koşullar**' ın altında, **Kullanıcı riski**' nı seçin ve **yüksek**' ı seçin
-   1. **Seç** **' e tıklayın**.
-1.  >  **erişim**' ın altında, erişime **izin ver**' i seçin ve **parola değişikliği gerektir**' i seçin.
-   1. **Seç**'e tıklayın.
-1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Koşullar**altında, **Kullanıcı riskini**seçin, sonra **Yüksek**seçin.
+   1. **Sonra Bitti'yi Seç'i** tıklatın. **Done**
+1. **Denetimler** > **Access**altında, **erişime izin ver'i**seçin ve ardından parola değişikliği ni **gerek'** seçeneğini belirleyin.
+   1. **Seç'i**tıklatın.
+1. İlkeyi **On'a** **Ayarla.**
+1. **Kaydet**'e tıklayın.
 
-## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>MFA orta veya yüksek oturum açma risk kullanıcıları gerektir
+## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>MFA orta veya yüksek oturum açma riski olan kullanıcılara ihtiyaç duyma
 
-Çoğu kullanıcı, takip edilebilen normal bir davranışa sahiptir ve davranışları normalin dışına çıktığında oturum açmalarına izin vermek riskli olabilir. Bu kullanıcıyı engellemek veya belki de gerçekten söylediklerini kanıtlamak üzere çok faktörlü kimlik doğrulaması gerçekleştirmesini istemeniz gerekebilir. Riskli oturum açma algılandığında MFA gerektiren ilkeyi kullanmak için aşağıdaki ilkeyi etkinleştirin.
+Çoğu kullanıcı, takip edilebilen normal bir davranışa sahiptir ve davranışları normalin dışına çıktığında oturum açmalarına izin vermek riskli olabilir. Bu kullanıcıyı engellemek veya belki de sadece onlar gerçekten kim olduklarını kanıtlamak için çok faktörlü kimlik doğrulama gerçekleştirmek için onlardan sormak isteyebilirsiniz. Riskli oturum açma algılandığında MFA gerektiren ilkeyi kullanmak için aşağıdaki ilkeyi etkinleştirin.
 
-1. **Azure Portal**’ında oturum açın.
+1. **Azure portalında**oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
-1. **Oturum açma risk ilkesine** tıklayın
-1. **Atamalar**altında **Kullanıcılar** ' ı seçin.
-   1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-   1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin.
+1. Oturum **Açma risk ilkesine** tıklayın
+1. **Atamalar**altında, **Kullanıcıları** seçin
+   1. **Altında Ekle**, **Tüm kullanıcıları**seçin.
+   1. **Dışla'nın**altında, **dışlanmış kullanıcıları seçin,** kuruluşunuzun acil durum erişimini veya kesme cam hesaplarını seçin ve **Seç'i**seçin.
    1. **Done** (Bitti) öğesini seçin.
-1. **Koşullar**' ın altında, **oturum açma riski**' nı **ve ardından orta ve üst**' i seçin.
-   1. **Seç** **' e tıklayın**.
-1.  >  **erişim**' ın altında, erişime **izin ver**' i seçin ve **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
-   1. **Seç**'e tıklayın.
-1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Koşullar**altında, **Oturum açma riskini**seçin, ardından Orta ve **üzerini**seçin.
+   1. **Sonra Bitti'yi Seç'i** tıklatın. **Done**
+1. **Denetimler** > **Erişimi**altında, **Erişime İzin Ver'i**seçin ve ardından çok **faktörlü kimlik doğrulamayı denetle'yi**seçin.
+   1. **Seç'i**tıklatın.
+1. İlkeyi **On'a** **Ayarla.**
+1. **Kaydet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+[Koşullu Erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
-[Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
+[Koşullu Erişim Ne Varsa aracını kullanarak oturum açma davranışını simüle edin](troubleshoot-conditional-access-what-if.md)
 
 [Nasıl çalışır: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 

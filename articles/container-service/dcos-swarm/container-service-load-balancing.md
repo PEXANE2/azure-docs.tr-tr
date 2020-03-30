@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure DC/OS kümesindeki Yük Dengeleme kapsayıcıları
+title: (AmortismanA Uğradı) Azure DC/İşletim sistemi kümesinde yük bakiyesi kapsayıcıları
 description: Azure Container Service DC/OS kümesindeki birden çok kapsayıcıda yükü dengeleyin.
 author: rgardler
 ms.service: container-service
@@ -8,13 +8,13 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273371"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde Yük Dengeleme kapsayıcıları
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmeti DC/OS kümesinde yük bakiyesi kapsayıcıları
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -43,7 +43,7 @@ Azure Container Service DC/OS kümesinde iki yük dengeleme katmanı vardır:
 
 Marathon Yük Dengeleyici dağıttığınız kapsayıcılara göre kendini dinamik olarak yeniden yapılandırır. Bu ayrıca kapsayıcı ya da aracı kaybına karşı esnektir; bu meydana gelirse, Apache Mesos başka yerde kapsayıcıyı yeniden başlatır ve marathon-lB buna uyarlanır.
 
-Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+Tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Cloud Shell'i açmak için gidin.
 
 Genel aracının kümesine Marathon yük dengeleyiciyi yüklemek için aşağıdaki komutu çalıştırın.
 
@@ -97,7 +97,7 @@ Ardından, *hello-web.json* adlı bir dosya oluşturun ve aşağıdaki içeriğe
 }
 ```
 
-DC/OS CLI'yi kullanarak uygulamayı çalıştırın. Varsayılan olarak Marathon, uygulamayı özel kümeye dağıtır. Bu da yukarıdaki dağıtıma yalnızca yük dengeleyici üzerinden erişilebileceği anlamına gelir ve çoğunlukla istenen davranış budur.
+DC/OS CLI'yi kullanarak uygulamayı çalıştırın. Varsayılan olarak Marathon uygulamayı özel kümeye dağır. Bu da yukarıdaki dağıtıma yalnızca yük dengeleyici üzerinden erişilebileceği anlamına gelir ve çoğunlukla istenen davranış budur.
 
 ```console
 dcos marathon app add hello-web.json

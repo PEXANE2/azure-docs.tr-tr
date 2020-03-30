@@ -1,76 +1,43 @@
 ---
-title: Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
-description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
+title: Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
+description: Azure Kubernetes Hizmeti'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/10/2019
 ms.author: saudas
-ms.openlocfilehash: 6d00fd72c338fc101420bf78b5608516715d44ad
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592977"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369961"
 ---
-# <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Önizleme-Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
 
-Şu anda Azure Kubernetes hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı), Azure 'da yük dengeleyiciler ve yönetilen diskler gibi ek kaynaklar oluşturmak için bir *hizmet sorumlusu* gerektirir. Bir hizmet sorumlusu sağlamanız gerekir ya da AKS sizin adınıza bir tane oluşturuyor. Hizmet sorumluları genellikle sona erme tarihi vardır. Kümeler, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet sorumlularını yönetmek karmaşıklık ekler.
+Şu anda, bir Azure Kubernetes Hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı) Azure'da yük dengeleyicileri ve yönetilen diskler gibi ek kaynaklar oluşturmak için bir *hizmet ilkesi* gerektirir. Ya bir hizmet müdürü sağlamanız gerekir ya da AKS sizin adınıza bir tane oluşturur. Hizmet ilkelerinin genellikle bir son kullanma tarihi vardır. Kümeler sonunda kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet ilkelerini yönetmek karmaşıklık ekler.
 
-*Yönetilen kimlikler* temelde hizmet sorumluları etrafında bir sarmalayıcıdır ve yönetimini daha kolay hale getirir. Daha fazla bilgi edinmek için [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
+*Yönetilen kimlikler* aslında hizmet ilkeleri etrafında bir sarmalayıcı ve yönetim kolaylaştırır. Daha fazla bilgi edinmek [için Azure kaynakları için yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
 
-AKS iki yönetilen kimlik oluşturur:
+AKS yönetilen iki kimlik oluşturur:
 
-- **Sistem tarafından atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü, kümeyle bağlantılıdır. Küme silindiğinde kimlik silinir.
-- **Kullanıcı tarafından atanan yönetilen kimlik**: kümede yetkilendirme için kullanılan kimlik. Örneğin, Kullanıcı tarafından atanan kimlik, erişim denetimi kayıtlarını (ACRs) kullanmak üzere AKS yetkilendirmek veya kubelet 'in Azure 'dan meta verileri almasına yetki vermek için kullanılır.
+- **Sisteme atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü kümeninkine bağlıdır. Küme silindiğinde kimlik silinir.
+- **Kullanıcı tarafından atanan yönetilen kimlik**: Kümede yetkilendirme için kullanılan kimlik. Örneğin, kullanıcı tarafından atanan kimlik, AKS'ye Azure Kapsayıcı Kayıt Şirketlerini (ACRs) kullanmasına veya Azure'dan meta veri almak için kubelet'e yetki vermek için kullanılır.
 
-Bu önizleme döneminde bir hizmet sorumlusu hala gereklidir. İzleme, sanal düğümler, Azure Ilkesi ve HTTP uygulama yönlendirme gibi eklentilerin yetkilendirmesi için kullanılır. İş, hizmet sorumlusu adı 'nda (SPN) eklentilerin bağımlılığını kaldırmak için çalışır. Sonuç olarak, AKS 'teki bir SPN 'nin gereksinimi tamamen kaldırılır.
-
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis, kabul etme esasına göre sunulmaktadır. Önizlemeler "olduğu gibi" ve "kullanılabildiği gibi" verilmiştir ve hizmet düzeyi anlaşmalarından ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğiyle ilgili olarak en iyi çaba kapsamında kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:
->
-> - [AKS destek Ilkeleri](support-policies.md)
-> - [Azure desteği SSS](faq.md)
+Eklentiler de yönetilen bir kimlik kullanarak kimlik doğrulaması. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. Kaynakların MC_* kaynak grubunun dışında olduğu kendi VNet, statik IP adresi veya ekli Azure diskinizi oluşturmak ve kullanmak için bir rol ataması gerçekleştirmek için kümenin PrincipalID'ini kullanın. Rol ataması hakkında daha fazla bilgi için diğer [Azure kaynaklarına Temsilci erişimi](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)ne bakın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Aşağıdaki kaynakların yüklü olması gerekir:
+Aşağıdaki kaynağın yüklü olması gerekir:
 
-- Azure CLı, sürüm 2.0.70 veya üzeri
-- Aks-Preview 0.4.14 uzantısı
+- Azure CLI, sürüm 2.2.0 veya sonrası
 
-Aks-Preview 0.4.14 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
+## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklere sahip bir AKS kümesi oluşturma
 
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
+Artık aşağıdaki CLI komutlarını kullanarak yönetilen kimliklere sahip bir AKS kümesi oluşturabilirsiniz.
 
-> [!CAUTION]
-> Bir aboneliği bir abonelik üzerinde kaydettikten sonra, şu anda bu özelliğin kaydını silemezsiniz. Bazı Önizleme özelliklerini etkinleştirdiğinizde, varsayılanlar daha sonra abonelikte oluşturulan tüm AKS kümeleri için kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Bunun yerine, Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
-
-```azurecli-interactive
-az feature register --name MSIPreview --namespace Microsoft.ContainerService
-```
-
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kayıtlı olarak görünüyorsa, [az Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak `Microsoft.ContainerService` kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklerle bir AKS kümesi oluşturma
-
-Artık aşağıdaki CLı komutlarını kullanarak, yönetilen kimliklerle bir AKS kümesi oluşturabilirsiniz.
-
-İlk olarak, bir Azure Kaynak grubu oluşturun:
+İlk olarak, bir Azure kaynak grubu oluşturun:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -83,15 +50,24 @@ Ardından, bir AKS kümesi oluşturun:
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
+Yönetilen kimlikleri kullanarak başarılı bir küme oluşturma bu hizmet temel profil bilgilerini içerir:
+
+```json
+"servicePrincipalProfile": {
+    "clientId": "msi",
+    "secret": null
+  }
+```
+
 Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 
-Küme birkaç dakika içinde oluşturulacak. Böylece, uygulama iş yüklerinizi yeni kümeye dağıtabilir ve hizmet sorumlusu tabanlı AKS kümelerinde yaptığınız gibi etkileşimde bulunabilirsiniz.
+Küme birkaç dakika içinde oluşturulacak. Daha sonra uygulama iş yüklerinizi yeni kümeye dağıtabilir ve hizmet temel tabanlı AKS kümelerinde yaptığınız gibi onunla etkileşimkurabilirsiniz.
 
 > [!IMPORTANT]
 >
-> - Yönetilen kimlikleri olan AKS kümeleri yalnızca kümenin oluşturulması sırasında etkinleştirilebilir.
-> - Mevcut AKS kümeleri, yönetilen kimlikleri etkinleştirmek için güncelleştirilemez veya yükseltilemez.
+> - Yönetilen kimliklere sahip AKS kümeleri yalnızca kümenin oluşturulması sırasında etkinleştirilebilir.
+> - Varolan AKS kümeleri, yönetilen kimlikleri etkinleştirmek için güncelleştirilemez veya yükseltilemez.

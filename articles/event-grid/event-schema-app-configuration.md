@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Azure uygulama yapılandırması olay şeması
-description: Azure uygulama yapılandırması olayları Azure Event Grid ile sağlanan özellikleri tanımlar
+title: Azure Olay Izgarası Azure Uygulama Yapılandırma olay şeması
+description: Azure Etkinlik Ağıtı ile Azure Uygulama Yapılandırma etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: jimmyca
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735789"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure uygulama yapılandırması için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Uygulama Yapılandırması için Azure Olay Izgara olay şeması
 
-Bu makalede, Azure uygulama yapılandırma olayları için şema ve özellikleri sağlar. Olay şemaları için bir giriş için bkz [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, Azure Uygulama Yapılandırma sı için özellikler ve şema sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Örnek betikler ve öğreticiler listesi için bkz: [Azure uygulama yapılandırması olay kaynağı](event-sources.md#app-configuration).
+Örnek komut dosyaları ve öğreticilerin listesi için [Azure Uygulama Yapılandırması etkinlik kaynağına](event-sources.md#app-configuration)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Azure uygulama yapılandırması aşağıdaki olay türlerini gösterir:
+Azure Uygulama Yapılandırması aşağıdaki olay türlerini yayır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.AppConfiguration.KeyValueModified | Bir anahtar-değer oluşturulduğunda veya değiştirilen oluşturulur. |
-| Microsoft.AppConfiguration.KeyValueDeleted | Bir anahtar-değer silindiğinde oluşturulur. |
+| Microsoft.appconfiguration.keyvaluemodified | Anahtar değeri oluşturulduğunda veya değiştirildiğinde yükseltilir. |
+| Microsoft.AppConfiguration.keyValueDeleted | Anahtar değeri silindiğinde yükseltilir. |
 
 ## <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnek, bir anahtar-değer değiştirilmiş olay şeması gösterir: 
+Aşağıdaki örnek, anahtar değeri değiştirilmiş bir olayın şema gösterir: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Aşağıdaki örnek, bir anahtar-değer değiştirilmiş olay şeması gösterir
 }]
 ```
 
-Bir anahtar-değer silinen olayın şeması benzer: 
+Anahtar değeri silinen bir olayın şeması benzer: 
 
 ```json
 [{
@@ -69,31 +69,31 @@ Bir anahtar-değer silinen olayın şeması benzer:
 }]
 ```
  
-## <a name="event-properties"></a>Olay Özellikleri
+## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey veri vardır:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| topic | string | Olay kaynağı tam kaynak yolu. Bu alan, yazılabilir değil. Event Grid, bu değeri sağlar. |
-| subject | string | Yayımcı tarafından tanımlanan olay konu yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| id | string | Olayın benzersiz tanımlayıcısı. |
-| data | object | Uygulama yapılandırması olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid, şemanın en üst düzey özellikleri tanımlar. Event Grid, bu değeri sağlar. |
-
-Veri nesnesi, aşağıdaki özelliklere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| anahtar | string | Anahtar-değer değiştirilen veya silinen anahtarı. |
-| label | string | Etiketi, anahtar-değer, değiştirilmiş veya silinmiş. |
-| etag | string | İçin `KeyValueModified` yeni anahtar-değer etag'i. İçin `KeyValueDeleted` silindikten sonra anahtar-değer etag'i. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Uygulama Yapılandırma olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+Veri nesnesi aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| anahtar | string | Değiştirilen veya silinen anahtar değerinin anahtarı. |
+| etiket | string | Değiştirilen veya silinen anahtar değerinin etiketi. |
+| Etag | string | Yeni `KeyValueModified` anahtar değerinin eetiketi için. Silinen anahtar değerinin eetiketi için. `KeyValueDeleted` |
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid aboneliği şema](subscription-creation-schema.md).
-* Azure uygulama yapılandırması olaylar ile çalışmayla giriş için bkz: [yol Azure uygulama yapılandırması olayları - Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Azure Uygulama Yapılandırma etkinlikleri ile çalışmaya giriş için Bkz. [Azure Uygulama Yapılandırma etkinlikleri - Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

@@ -1,82 +1,81 @@
 ---
-title: Azure Marketi ve AppSource danışmanlık hizmetleri
-description: Bu makalede, Azure Marketi 'ndeki yeni danışmanlık hizmeti teklifleri için uygunluk ölçütü ve yayımlama gereksinimleri açıklanmaktadır.
+title: Azure Marketi ve AppSource Danışmanlık Hizmetleri
+description: Bu makalede, Azure Marketi'ndeki yeni danışmanlık hizmeti teklifleri için uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: evansma
-ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.author: dsindona
+ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281587"
 ---
-# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
-Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
+# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketi ve AppSource için Danışmanlık Hizmetleri
+Azure Marketi ve AppSource'daki Danışmanlık Hizmetleri, Microsoft iş ortaklarına Azure ve iş hedeflerini kullanmalarını desteklemek ve genişletmek için müşterileri hizmetlerle ilişkilendirme hedefi sağlar. 
 
-Azure Market ve AppSource, Microsoft 'un Sistem Tümleştirici (sı) iş ortaklarından danışmanlık hizmeti tekliflerinin listesini destekler. amaç, müşterilerin ihtiyaç duydukları uzman hizmetlerle bağlantı kurmasını sağlamak için kaliteli danışmanlık hizmetleri sunmaktır. Müşterilerin, iş amaçları ve hedeflerine yardımcı olacak doğru çözümleri ve uygulamaları değerlendirmesine, değerlendirmesine ve dağıtmasına yardımcı olma.  
+Azure Marketi ve AppSource, Microsoft'un Sistem Entegratörü (SI) iş ortaklarından danışmanlık hizmeti tekliflerinin listelendiğini destekler ve amaç, müşterilerin ihtiyaç duydukları uzman hizmetlerle bağlantı kurmasını sağlamak için kaliteli danışmanlık hizmetleri sunmaktır. Müşterilerin iş hedefleri ve hedefleri ile ilgili doğru çözümleri ve uygulamaları değerlendirmelerine, değerlendirmelerine ve dağıtmalarına yardımcı olmak.  
 
-Bu danışmanlık hizmeti teklifleri müşteriye özgü görevlendirmelerdir. Yayımcılar, liste türünü ve sabit kapsam ve süre, sabit fiyatlı veya ücretsiz olarak belirleme seçeneğine sahiptir ve müşterinin teslim edilebiliri olan tanımlı bir gündemi vardır. Müşteri adayları, ortağın CRM sistemindeki bir bildirim aracılığıyla alınır ve müşterilere 48 saat içinde yanıt vermeyi hedeflenir. 
+Bu danışmanlık hizmeti teklifleri müşteriye özel katılımlardır. Yayıncılar, giriş türünü ve sabit kapsam ve süreyle, sabit fiyatlı veya ücretsiz olarak belirleme ve müşteriye teslim edilebilirlerle birlikte tanımlanmış bir gündeme sahip etme seçeneğine sahiptir. Müşteri adayları, iş ortağının CRM sistemindeki bir bildirim yoluyla alınır ve müşterilere 48 saat içinde yanıt sağlamayı amaçlamaktadır. 
 
-## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketi 'nde danışmanlık hizmetleri vs AppSource storefront
-Market storetları, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve Microsoft bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızın en üst düzeye çıkmasına yardımcı olacak özel yayımlama seçenekleri sunar. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketi'ndeki Danışmanlık Hizmetleri vs AppSource Storefront
+Pazar daki vitrinler, müşterilerin ihtiyaç duydukları şeyi bulmasına yardımcı olmak için hedef kitleler ve Microsoft bulut ürünleriyle uyumluhale getirir. Her vitrin, yayıncılık yatırımınızı en üst düzeye çıkarmanıza yardımcı olmak için özel yayımlama seçenekleri sunar. Aşağıdaki tabloda şu seçenekler özetlenebilir:
 
 |         |Azure Market  |Microsoft AppSource |
 |---------|---------|---------|
-|**Grubu**   |**BT uzmanları ve bulut geliştiricileri**|**İş kullanıcıları/iş kolu karar mekanizmaları**|
-|Çözüm Ilgisi     |Azure 'da oluşturulan veya oluşturulan teknik uygulamalar|D365, Power BI, O365, Azure 'dan yararlanan/genişleten iş uygulamaları. (Eklenti veya eklenti tamamlanmış uygulamalar)|
-|Yayımlama seçenekleri     |Azure için benimle, deneme, Transact veya hizmetlerle iletişim kurun|Dynamics 365 ve Power BI için benimle, denemeye veya hizmetlere başvurun|
-|Ürün deneyiminde      |Azure Yönetim Portalı|Dynamics 365, Office 365, Office Istemci uygulamaları| 
-|Diğer      |Azure Stack aracılığıyla şirket Içi yayımlama, Azure için danışmanlık hizmetleri, Azure için yönetilen hizmetler|Dynamics ve Power BI için danışmanlık hizmetleri|
+|**Hedef kitle**   |**BT artıları ve bulut geliştiricileri**|**İş Kullanıcıları / Line-of-business karar vericiler**|
+|Çözüm Alaka Düzeyi     |Azure için oluşturulmuş veya Azure'da yerleşik teknik uygulamalar|D365, Power BI, O365, Azure'dan yararlanan / genişleten iş uygulamaları. (Eklenti veya Eklenti bitmiş uygulamalar)|
+|Yayımlama Seçenekleri     |Azure için bana, Deneme sürümüne, İşleme'ye veya Hizmetlere ulaşın|Dynamics 365 ve Power BI için Bana, Deneme sürümüne veya Hizmetlere Ulaşın|
+|Ürün Deneyiminde      |Azure Yönetim Portalı|Dynamics 365, Office 365, Office İstemci Uygulamaları| 
+|Diğer      |Azure Yığını Üzerinden Şirket İçi Yayıncılık, Azure için Danışmanlık Hizmetleri, Azure için Yönetilen Hizmetler|Dinamikler ve Power BI için Danışmanlık Hizmetleri|
 
-Microsoft Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri Microsoft AppSource üzerinde listelenmeye uygundur. Daha fazla bilgi için bkz. [danışmanlık hizmetleri listeleme yönergeleri Microsoft AppSource](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
+Microsoft Dynamics 365, Power Apps ve Power BI tabanlı Danışmanlık Hizmetleri teklifleri Microsoft AppSource'da listelenebilir. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri listeleme yönergelerine](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)bakın.
 
-Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. [Azure danışmanlık hizmeti yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)makaleleri.
+Microsoft Azure'u temel alan Danışmanlık Hizmetleri ve Yönetilen Hizmetler teklifleri Azure Marketi'nde listelenebilir. Daha fazla bilgi [için, azure danışmanlık hizmeti yayınlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) yla ilgili makalelere bakın ve Azure [Marketi'nde yönetilen bir hizmet teklifi yayımlayın.](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)
 
 > [!Note]
-> Azure Marketi 'ndeki Danışmanlık Hizmetleri, *Azure teknik çözümleri ve Hizmetleri* ile ilgili olarak sunulan bir * * teknik kitleye yönelik tekliflerinden faydalanır. \* * AppSource 'ta Danışmanlık Hizmetleri, Dynamics 365, Power BI veya Power Apps için kalite çözümleri sunma konusunda uzmanlığa yönelik tekliflerinden yararlanarak uygulama danışmanlık hizmetleri tekliflerini AppSource 'ta listeleyebilir
+> Azure Marketi'ndeki danışmanlık hizmetleri, Azure teknik çözümleri ve *hizmetlerine* odaklanan **teknik hedef kitleye yönelik tekliflerden yararlanmalıdır. ** AppSource'daki danışmanlık hizmetleri, AppSource'daki danışmanlık hizmetlerini listelemek için Dynamics 365, Power BI veya Power Apps için kaliteli çözümler sunma konusundaki uzmanlıklarına yönelik tekliflerden yararlanmalıdır
 > 
 > 
 > [!TIP]
-> Azure Marketi 'nde storefront yayımlamak için, Bulut İş Ortağı Portalı "birincil ürün" açılan menüsünden "Azure" seçeneğini belirleyerek bu seçimi yaparsınız. AppSource 'a yayımlamak için, Bulut İş Ortağı Portalı "Dynamics 365," "Power BI," veya "Power Apps" ' i seçerek bu seçimi "birincil ürün" açılan menüsünden "
+> Azure Marketi'nde yayımlamak için, Bulut İş Ortağı Portalı'ndaki "Birincil Ürün" açılır menüsünden "Azure" seçeneğini seçerek bu seçimi yapacaksınız. AppSource'a yayımlamak için, Bulut İş Ortağı Portalı'ndaki "Birincil Ürün" açılır menüsünden "Dynamics 365", "Power BI" veya "Power Apps" seçeneğini seçerek bu seçimi yapacaksınız.
 
-## <a name="eligible-partners-and-supported-countriesregions"></a>Uygun Iş ortakları ve desteklenen ülkeler/bölgeler
+## <a name="eligible-partners-and-supported-countriesregions"></a>Uygun Ortaklar ve Desteklenen Ülkeler/Bölgeler
 
-İş ortaklarının, Hizmetleri için ilgili alanda **gümüş veya altın bir uzmanlık** olması gerekir. 
+İş ortaklarının hizmetleri için ilgili alanda **gümüş veya altın yetkinlik** sahibi olmaları gerekmektedir. 
 
-**Uygun Uzmanlıklar Azure Marketi için aşağıdaki tabloda listelenmiştir:**
+**Azure Marketi için uygun yetkinlikler aşağıdaki tabloda listelenmiştir:**
 
-|Uzmanlığı  |Çözüm alanı  |
+|Yetkinlik  |Çözüm alanı  |
 |---------|---------|
-|Bulut platformu ve altyapısı     |   Bulut platformu, veri merkezi      |
-|Uygulama geliştirme ve ISV     |  Uygulama geliştirme, uygulama tümleştirme, DevOps       |
-|Veri Yönetimi ve analiz    |  Veri analizi, veri platformu       |
+|Bulut Platformu ve Altyapı     |   Bulut Platformu, Veri Merkezi      |
+|Uygulama Geliştirme ve ISV     |  Uygulama Geliştirme, Uygulama Entegrasyonu, Devops       |
+|Veri Yönetimi ve Analitik    |  Veri Analitiği, Veri Platformu       |
 
 
-**Uygun Uzmanlıklar, AppSource için aşağıdaki tabloda listelenmiştir:**
+**Uygun yetkinlikler AppSource için aşağıdaki tabloda listelenir:**
 
-|Birincil ürün |Uygunluk gereksinimi |
+|Birincil Ürün |Uygunluk Gereksinimi |
 |---------|---------|
-| Dynamics 365 satışları <br> Dynamics 365 pazarlama <br> Dynamics 365 müşteri hizmeti <br> Dynamics 365 alan hizmeti <br> Dynamics 365 Insan kaynakları |   Müşteri katılım seçeneği için [bulutta Business Applications uzmanlığa](https://partner.microsoft.com/membership/cloud-business-applications-competency) yönelik altın veya gümüş bir sertifika olmalıdır.    | 
-| Dynamics 365 finans <br> Dynamics 365 tedarik zinciri yönetimi <br> Dynamics 365 ticari <br> Dynamics 365 Insan kaynakları <br> Dynamics 365 proje hizmeti Otomasyonu |  Birleştirilmiş Işlemler seçeneği için [bulut Business Applications uzmanlarda](https://partner.microsoft.com/membership/cloud-business-applications-competency) altın veya gümüş bir sertifika olmalıdır.       |
-| Dynamics 365 Customer Insights | En az 5 ölçüyle ve 5 kesimle [Customer Insights Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) ' in en az 1 başarılı üretim sürümü uygulamasına sahip olması gerekir. |
-| Dynamics 365 Iş Merkezi | [Kurumsal kaynak planlama uzmanlığına](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) altın veya gümüş sertifikalı olmalıdır ve en az 3 iş merkezi müşterisi için bulut çözümü sağlayıcısı olmalıdır. <br> <br> OR <br> <br> [AppSource 'ta bir Iş Merkezi uygulaması](https://appsource.microsoft.com/) yayımlamalıdır |
-| Power BI | [Power BI iş ortağı tanıtımı](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)listede olmalıdır.|
-|Power Apps | , [Power Apps ortaklığı programında](https://aka.ms/PowerAppsPartner)gelişmiş avantajlar için uygun olmalıdır. |
+| Dynamics 365 Sales <br> Dynamics 365 Pazarlama <br> Dynamics 365 Müşteri Hizmetleri <br> Dynamics 365 Saha Servisi <br> Dinamikler 365 İnsan Kaynakları |   Müşteri Katılımı seçeneği için [Cloud Business Applications uzmanlığında](https://partner.microsoft.com/membership/cloud-business-applications-competency) Gold veya Silver sertifikalı olmalıdır.    | 
+| Dinamikler 365 Finans <br> Dynamics 365 Tedarik Zinciri Yönetimi <br> Dynamics 365 Ticaret <br> Dinamikler 365 İnsan Kaynakları <br> Dynamics 365 Proje Servis Otomasyonu |  Birleşik İşlemler seçeneği için [Bulut İş Uygulamaları uzmanlığında](https://partner.microsoft.com/membership/cloud-business-applications-competency) Altın veya Gümüş sertifikalı olmalıdır.       |
+| Dynamics 365 Customer Insights | [Dynamics 365 Customer Insights'ın](https://dynamics.microsoft.com/ai/customer-insights/) en az 5 ölçü ve 5 segmentli üretim içi en az 1 başarılı uygulama uygulamasına sahip olmalıdır. |
+| Dynamics 365 Business Central | [Kurumsal Kaynak Planlama uzmanlığında](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) Gold veya Silver sertifikalı olmalı ve en az 3 Business Central müşterisi için bulut çözümü sağlayıcısı olmalıdır. <br> <br> OR <br> <br> [AppSource'ta](https://appsource.microsoft.com/) Business Central uygulamasını yayınlamış olmalı |
+| Power BI | [Power BI iş ortağı vitrininde](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)listelenmelidir.|
+|Power Apps | [Power Apps Ortaklık Programı'nda](https://aka.ms/PowerAppsPartner)Gelişmiş Avantajlar için uygun olmalıdır. |
 
 Ek kaynaklar ve destek:
 
-1. [Microsoft Bulut Etkinleştirme masası](https://aka.ms/CEDnominate) <br> Bulut etkinleştirme masası destekli deneyim Iş ortağı aday formu, MPN avantajlarını ifade etmek ve uzmanlığa yönelik kılavuz olarak sunmak için bir bulut programı uzmanı sağlamaya yardımcı olur.  
-2. Power BI tanıtımı nasıl listelenmiştir? <br> Listeye ulaşmak için bir istek göndererek başlayın, bkz. [iş ortağı olma](https://powerbi.microsoft.com/become-a-partner/).
+1. [Microsoft Bulut Etkinleştirme Masası](https://aka.ms/CEDnominate) <br> Bulut Etkinleştirme Masası Rehberli Deneyim İş Ortağı Aday Lık Formu, MPN avantajlarını ifade etmek için bir Bulut Programı Uzmanı nın sağlanmasına yardımcı olmak ve yetkinlik düzeyine ulaşma kılavuzu olarak hizmet vermektir.  
+2. Nasıl Power BI vitrin listelenen almak için? <br> Listelenen almak için bir istek göndererek başlayın, [bir ortak olmak](https://powerbi.microsoft.com/become-a-partner/)bakın.
 
-<b>Daha fazla bilgi için [Microsoft iş ortağı ağı aracılığıyla Uzmanlıklar](https://partner.microsoft.com/membership/competencies)konusuna bakın.</b>
+<b>Daha fazla bilgi için [Microsoft İş Ortağı Ağı aracılığıyla yetkinlikleri](https://partner.microsoft.com/membership/competencies)görün.</b>
 
-**Sı iş ortakları, aşağıdaki 21 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir**
+**SI ortakları aşağıdaki 21 ülke/bölge için danışmanlık hizmeti teklifleri sunabilirler**
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -88,103 +87,103 @@ Ek kaynaklar ve destek:
 | Birleşik Krallık  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource 'ta danışmanlık hizmetleri 'Ne kaydolma
-Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) başlayın. Yayımcılar, kayıt gereksinimlerinin tam bir denetim listesi için [Market 'Te yayımcı haline gelebilir](https://docs.microsoft.com/azure/marketplace/become-publisher). 
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Marketi ve AppSource'da Danışmanlık Hizmetleri Için Nasıl Kayıt Olunur?
+Şirket bilgilerinizi pazara [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) başlayın. Yayıncılar, kayıt gereksinimlerinin tam bir kontrol listesi için [Markette Yayıncı Ol'a](https://docs.microsoft.com/azure/marketplace/become-publisher)başvurur. 
 
-**Kayıttan sonra Bekleneceğiniz** Ekleme ekibi, Bulut İş Ortağı Portalı (CPP) oturum açma bilgilerinizi içeren bir hoş geldiniz e-postası ile 1-3 iş günü içinde iletişime geçecek. [Bulut iş ortağı portalı](https://cloudpartner.azure.com) , yayımcıların liste bilgilerini ve gönderimleri gönderme olanağı sunan teklif listesi portalıdır. 
+**Kayıt Tan Sonra Ne Beklenebilir?** Onboarding Ekibi, Bulut İş Ortağı Portalı (CPP) giriş bilgilerinizi içeren hoş geldin e-postası ile 1-3 iş günü içinde iletişime geçecek. [Cloud Partner Portal,](https://cloudpartner.azure.com) yayıncıların listeleme bilgilerini ve gönderimlerini gönderdiği teklif listeleme portalıdır. 
 
 >[!Note]
->İş ortaklarının yayımcı olması için yalnızca bir kez kaydolması gerekir. Hoş geldiniz e-postanızı ve Bulut İş Ortağı Portalı oturum açma bilgilerini aldıktan sonra, yayımcıların farklı listeleme türlerini yayımlaması için yeniden kaydolması gerekmez. 
+>İş ortaklarının yayımcı olmak için yalnızca bir kez kaydolması gerekir. Hoş geldiniz e-postanızı ve Cloud Partner Portal girişinizi aldıktan sonra, yayıncıların farklı giriş türlerini yayınlamak için yeniden kaydolması gerekmez. 
 
-## <a name="prepare-your-publishing-artifacts"></a>Yayımlama yapılarınızı hazırlama
-Kayıt işleminden önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin. 
+## <a name="prepare-your-publishing-artifacts"></a>Yayımlama Yapıtlarınızı Hazırlayın
+Kayıt tan önce, listinansının hizmetin izinve çözümününüzü hedef müşterinize ifade etmesini sağlayacak içeriği toplamaya ve hazırlamaya başlayabilirsiniz. 
 
-|Yeni yayımcılar için ayarlama  |
+|Yeni yayıncılar için ayarlama  |
 |---------|
-|MPN KIMLIĞI     |
-|Şirket logoları ( &#215; 48 48, &#215; 216 216)     |
-|Müşteri adayı hedefi     |
+|MPN Kimliği     |
+|Şirket logoları (48 &#215; 48, 216 &#215; 216)     |
+|Müşteri Adayı Hedef     |
 
 
 |Yeni teklifler için ayarlama  |
 |---------|
 |Teklif adı (200 karakter) ve açıklama (2000 karakter)    |
-|Uzmanlıklar     |
-|Ülke/bölge kullanılabilirliği     |
+|Yetkinlikler     |
+|Ülke/bölge durumu     |
 |Katılım süresi     |
-|İlgili sektörler, Kategoriler ve arama anahtar sözcükleri     |
+|Geçerli sektörler, kategoriler ve arama anahtar kelimeleri     |
 |Ürüne genel bakış videosu    |
-|Ekran görüntüleri (en fazla 5, &#215; 1280 720)     |
+|Ekran görüntüleri (maksimum 5, 1280 &#215; 720)     |
 |Pazarlama belgeleri (en fazla 3)     |
 
 
-## <a name="publishing-process"></a>Yayımlama Işlemi
-Danışmanlık hizmeti teklifinizin Azure Marketi ve AppSource 'ta listelenmesi aşağıdaki aşamaları içerir:
+## <a name="publishing-process"></a>Yayımlama Süreci
+Danışmanlık hizmeti teklifinizi Azure Marketi ve AppSource'da listelemek aşağıdaki aşamaları içerir:
 
-1. **Listeleme**: [bulut iş ortağı portalı](https://cloudpartner.azure.com) hesabınızda oturum açarak yeni bir teklif listesi taslağı oluşturmayı başlatın. Açılan menüden ' yeni teklif ' ve ' Danışmanlık Hizmetleri ' ' ni seçin. Liste yapıtlarınızı girin ve yayımlayın.
-2. **Doğrulama**: isteğiniz, uygunluk ölçütlerini karşıladığınızdan emin olmak için gözden geçirilir. Daha sonra danışmanlık hizmetleri teklifinizi listelemeyi sağlayan yönergeler göndereceğiz. 
-3. **Gönder**: yönergelerde listelenen gerekli bilgileri sağlayın. Tüm içerik ve destekleyici malzemeler Ingilizce olarak bildirilmelidir. 
-4. **İnceleme**: pazarlama ve düzenleme ekibimiz, Gönderiminizi gözden geçirir ve okunabilirlik, dilbilgisi ve verimlilik için en iyi duruma getirir. 
-5. **Hazırlama**: gönderiminiz gözden geçirmeniz için hazırlanır. 
-6. **Yayımlama**: siz ve Microsoft tarafından hazırlanan içerik karşılandıktan sonra, liste Market 'te canlı olmaya hazırlanmaya devam edilir. Listelerinizin Go-Live tarihi, teklifinizdeki belirtilen ülkeye/bölgeye bağlıdır. Seçtiğiniz ülke/bölge için Katalog zaten Azure Market veya AppSource 'ta zaten yaşıyorsanız, listeleriniz birkaç saat içinde görünür. Aksi takdirde, Katalog canlı olduktan sonra liste görüntülenir.
+1. **Listeleme**: [Bulut İş Ortağı Portalı](https://cloudpartner.azure.com) hesabınızda oturum açarak yeni bir teklif listesi hazırlamaya başlayın. Açılan menüden 'Yeni Teklif' ve 'Danışmanlık Hizmetleri'ni seçin. Giriş yapınızı girin ve yayınlayın.
+2. **Doğrulama**: İstek, uygunluk kriterlerini karşıladığınızdan emin olmak için gözden geçirilir. Daha sonra size danışmanlık hizmetleri teklifinizi listeleme yönergeleri göndeririz. 
+3. **Gönder**: Talimatlarda listelenen gerekli bilgileri sağlayın. Tüm içerik ve destekleyici materyaller İngilizce olarak gönderilmelidir. 
+4. **İnceleme**: Pazarlama ve editör ekibimiz gönderinizi inceler ve okunabilirlik, dilbilgisi ve etkinlik için optimize eder. 
+5. **Evreleme**: Gönderiniz incelemeniz için hazırdır. 
+6. **Yayımlama**: Siz ve Microsoft sahnelenen içerikten memnun olduğunuzda, girişiniz pazarda yayınlanmaya hazırdır. Girişinizin canlı yayın tarihi, teklifinizde belirtilen ülkeye/bölgeye bağlıdır. Seçtiğiniz ülke/bölge kataloğu Azure Marketi veya AppSource'da zaten canlıysa, girişiniz birkaç saat içinde görünür. Aksi takdirde, katalog yayınlanır yayınlanmaz giriş görünür.
 
-## <a name="offer-listings-and-content-review-criteria"></a>Teklif listeleri ve Içerik Inceleme ölçütleri
-Teklifler aşağıdaki beş hizmet türünden birinde olmalıdır (birden fazla liste seçebilirsiniz): 
+## <a name="offer-listings-and-content-review-criteria"></a>Teklif Listeleri ve İçerik İnceleme Kriterleri
+Teklifler aşağıdaki beş hizmet türünden biri olmalıdır (birden fazla hizmet türünü listeleyebilirsiniz): 
 
-* **Değerlendirme**: bir çözümün uygulanabilirliğini tespit etmek ve maliyet ve zamanlama tahminini sağlamak için bir müşterinin ortamının değerlendirmesi. 
-* **Briing**: çerçeveler, tanıtımlar ve müşteri örneklerini kullanarak müşteri ilgilenmesini çizmek için bir çözüme veya bir danışmanlık hizmetine giriş. 
-* **Uygulama**: tam olarak çalışan bir çözüme neden olan tam bir yükleme. Bunu iki hafta veya daha az bir şekilde uygulanabilecek çözümlerle sınırlandırmasını öneririz. 
-* **Kavram kanıtı**: bir çözümün müşteri gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama. 
-* **Workshop**: bir müşterinin şirket içinde yürütülen etkileşimli bir katılım. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir. 
+* **Değerlendirme**: Bir çözümün uygulanabilirliğini belirlemek ve maliyet ve zamanlama tahmini sağlamak için müşterinin ortamının değerlendirilmesi. 
+* **Brifing**: Çerçeveler, demolar ve müşteri örneklerini kullanarak müşteri ilgisini çekmek için bir çözüme veya danışmanlık hizmetine giriş. 
+* **Uygulama**: Tam çalışan bir çözümle sonuçlanan tam bir kurulum. İki hafta veya daha kısa sürede uygulanabilecek çözümlerle sınırlandırmanızı öneririz. 
+* **Kavram Kanıtı**: Bir çözümün müşteri gereksinimlerini karşılayıp karşılamadığını belirlemek için sınırlı kapsamlı bir uygulamadır. 
+* **Atölye**: Müşterinin tesislerinde gerçekleştirilen interaktif bir etkileşim. Müşterinin verileri veya ortamı üzerine inşa edilmiş eğitim, brifing, değerlendirme veya demoları içerebilir. 
 
-**Note:** Danışmanlık *hizmeti türü dışında, danışmanlık* Hizmetleri kişi (yani bir müşterinin konumu veya iş ortağının tesisinde yerinde) veya neredeyse (yani teleconferencing, Web konferansı veya uzaktan uygulama aracılığıyla) sunulabilir. Kişiler içinde Brit sunulmalıdır.
+**Not:** *Brifing* hizmet türü dışında, danışmanlık hizmetleri bizzat (yani müşterinin bulunduğu yerde veya bir ortağın tesisinde yerinde) veya neredeyse (telekonferans, web konferansı veya uzaktan uygulama yoluyla) sunulabilir. Brifingler bizzat sunulmalıdır.
 
-Yukarıda listelenen gerekli öğeleri yapılandırdıktan sonra, içerik gözden geçirme ekibi, teklif açıklainizin bilgilendirici olduğunu ve hedef kitleniz için tamamlandığını doğrular. 
+Yukarıda listelenen gerekli öğeleri yapılandırdıktan sonra, içerik inceleme ekibi teklif açıklamanızın bilgilendirici ve hedef kitleniz için eksiksiz olduğunu doğrular. 
 
-#### <a name="listing-title"></a>Liste başlığı
+#### <a name="listing-title"></a>İlan Başlığı
 
-Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirmesini en üst düzeye çıkarmak için teklifin süresini ve hizmet türünü iletmelidir. Gerekli biçim şu şekildedir: ad: süre türü
+Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru optimizasyonunu en üst düzeye çıkarmak için teklifin süresini ve hizmet türünü iletmelidir. Gerekli format aşağıdaki gibidir: ADI: SÜRE Türü
 
 Örnekler:
 
 
-|Örnek başlık  |Doğru biçim  |
+|Örnek Başlık  |Doğru Biçim  |
 |---------|---------|
-|Üretimde Azure IoT ile çalışmaya başlama    |   Üretim IoT: 2 günlük değerlendirme      |
-|Akıllı tuvalet 'ler üzerinde Workshop        |  Akıllı Toaya 'lar: 1-WK Workshop       |
-|  SQL Server geçiş PoC    | SQL geçişi: 3-WK kavram kanıtı        |
+|Üretimde Azure IoT ile Başlarken    |   İmalat IoT: 2 Günlük Değerlendirme      |
+|Akıllı Tost Makineleri Atölyesi        |  Akıllı Tost Makineleri: 1-Wk Atölyesi       |
+|  SQL Server Geçiş PoC    | SQL Geçiş: 3-Wk Kavram Kanıtı        |
 
-#### <a name="listing-summaries-and-descriptions"></a>Özet ve açıklamaları listeleme
+#### <a name="listing-summaries-and-descriptions"></a>Listeleme Özetleri ve Açıklamaları
 
-Teklif açıklamalarını ve teklif özetlerini gözden geçirirken, takım aşağıdaki ölçütleri uygular:
+Teklif Açıklamalarını ve Teklif Özetlerini gözden geçirerken, takım aşağıdaki kriterleri uygular:
 
-|Teklif türü  |Gerekli |Önerilen  |
+|Teklif Türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
-|**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin      |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
-|**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde Brit 'in sunulması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, lütfen farklı bir teklif türü seçin    |  En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin       |
-|**Paylaşır**    |  Çok günlü veya çok haftaya yönelik uygulamalar için ayrıntılı bir gündem ekleyin ve müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edin       |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
-|**Kavram kanıtı**    |    Müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edebilir     | En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin        |
-|**Sev**    |   Önerinizi seçtiğiniz süreye göre günlük, haftalık veya aylık olarak ayrıntılı bir ajanda ekleyin. Eğitim hedeflerinin veya diğer teslim öğelerinin atölyenin ne olduğunu ifade edin     |   En üst arama motoru iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin      |
+|**Değerlendirme**    |   Çok günlük veya çok haftalık değerlendirmeler için ayrıntılı bir gündem ekleyin ve müşterinin neler inanabileceğini ifade edin      |    En iyi Arama Motoru Optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin     |
+|**Brifing**    |   Müşterinin neler bekleyebileceğini ifade edin. Brifingşahsen sunulmalıdır unutmayın. Sanal bir hizmet sunuyorsanız, lütfen farklı bir teklif türü seçin    |  En iyi Arama Motoru Optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin       |
+|**Uygulama**    |  Çok günlük veya çok haftalık uygulamalar için ayrıntılı bir gündem ekleyin ve bir müşterinin etkileşimin sonuçları olarak ne gibi mühendislik değişiklikleri, teknik eserler veya diğer eserleri bekleyebileceğini ifade edin       |    En iyi Arama Motoru Optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin     |
+|**Kavram Kanıtı**    |    Bir müşterinin etkileşimin sonuçları olarak ne gibi mühendislik değişikliklerini, teknik eserleri veya diğer eserleri ifade edin     | En iyi Arama Motoru Optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin        |
+|**Atölye**    |   Teklifinizin seçilen süresine bağlı olarak günlük, haftalık veya aylık ayrıntılı bir gündem ekleyin. Atölyenizin öğrenme hedeflerini veya diğer teslim edilebilirlerini ifade edin     |   En iyi Arama Motoru optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin      |
 
-Bulut İş Ortağı Portalı içinde [Marku](/contribute/markdown-reference)kullanarak listelemenize biçimlendirme ekleyebilirsiniz. Bu, listelemesine Lehçe eklemeye yardımcı olacak basit bir tasarım dilidir. 
+Bulut İş Ortağı Portalı içinde, [Markdown'u](/contribute/markdown-reference)kullanarak girişinize biçimlendirme ekleyebilirsiniz. Bu, girişinize parlatma eklemenize yardımcı olacak hafif bir tasarım dilidir. 
 
-**Örnek Markaşağı notları**
-* Kopya bloğunun başlangıç ve bitişine * ekleyin-italik (örn. *içerik*) oluşturmak için boşluk olmadan
-* Satır sonuna ":" iki nokta üst üste Ekle
-* Madde işaretleri için "*" sonra boşluk (örn: * (boşluk) Içeriği)
-* ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>Başlık (örn: # # # (Space) gündemi/teslim edilebilirler) için boşluk
-* Başlıktan sonra satır sonu
-* \* * = kalın 
-* \* İtalik teklif Özeti
+**Örnek İşaret notları**
+* Kopya bloğunun başında ve sonunda * ekle - italik oluşturmak için yer yok (Ör. *içerik)*
+* ":" kolon sonra satır sonu ekle
+* Madde işaretleri için "*" sonrası boşluk (Ör. *(boşluk)İçerik)
+* ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>başlık alanı (Ör. ###(boşluk)Gündem/Teslim Edilebilirler)
+* Satır kesildikten sonra satır sonu
+* ** = kalın 
+* *Italicize Teklif Özeti
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, 
+Eğer bunu yapmadıysanız, 
 
-- Market 'e [kaydolun](https://azuremarketplace.microsoft.com/sell) .
+- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
 
-Bulut İş Ortağı Portalı ' de kaydolduysanız ve çalışıyorsanız, 
+Cloud Partner Portal'a kaydolduysanız ve çalışıyorsanız, 
 
-- Teklifinizin oluşturulması veya tamamlanabilmesi için [bulut iş ortağı portalı oturum açın](https://cloudpartner.azure.com) .
-- Daha fazla bilgi için bkz. [Azure ve Dynamics 365 danışmanlık hizmeti teklifi](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) .
+- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
+- Daha fazla bilgi için [Azure ve Dynamics 365 danışmanlık hizmeti teklifine](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) bakın.

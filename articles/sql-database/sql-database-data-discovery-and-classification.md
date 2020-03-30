@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409958"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387878"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics için Veri Bulma & Sınıflandırması
 
@@ -89,17 +89,11 @@ Kiracı genelindeki ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kul
 
 4. Excel biçiminde bir rapor indirmek için pencerenin üst menüsündeki **Dışa** Aktarma seçeneğini tıklatın.
 
-   ![Excel'e aktar](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>Verilerinizi sınıflandırmaya başlamak için pencerenin üst kısmındaki **Sınıflandırma sekmesine** tıklayın.
-
-    ![Verilerinizi sınıflandırma](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Sınıflandırma altyapısı veritabanınızı hassas olabilecek verileri içeren sütunlar için tarar ve **önerilen sütun sınıflandırmalarının**bir listesini sağlar. Sınıflandırma önerilerini görüntülemek ve uygulamak için:
 
-   - Önerilen sütun sınıflandırmaları listesini görüntülemek için pencerenin altındaki öneriler paneline tıklayın:
-
-      ![Verilerinizi sınıflandırma](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - Önerilen sütun sınıflandırmalarının listesini görüntülemek için pencerenin altındaki öneriler paneline tıklayın
 
    - Öneriler listesini gözden geçirin – belirli bir sütun için bir öneri kabul etmek için, ilgili satırın sol sütunundaki onay kutusunu işaretleyin. Ayrıca, öneriler tablosu üstbilgisinde onay kutusunu işaretleyerek *tüm önerileri* kabul edilmiş olarak işaretleyebilirsiniz.
 
@@ -107,21 +101,15 @@ Kiracı genelindeki ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kul
 
    - Seçili önerileri uygulamak için mavi **Seçili Önerileri Kabul** et düğmesini tıklatın.
 
-      ![Öneriler uygulayın](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. Ayrıca, sütunları öneri tabanlı sınıflandırmaya alternatif olarak veya ek olarak **el ile sınıflandırabilirsiniz:**
 
    - Pencerenin üst menüsündeki **Ekle sınıflandırmasını** tıklatın.
-
-      ![Sınıflandırmayı el ile ekleme](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - Açılan bağlam penceresinde, sınıflandırmak istediğiniz şema > tablo > sütunu ve bilgi türü ve duyarlılık etiketini seçin. Ardından bağlam penceresinin altındaki mavi **Ekle sınıflandırma** düğmesine tıklayın.
 
       ![Sınıflandırmak için sütunu seçin](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. Sınıflandırmanızı tamamlamak ve veritabanı sütunlarını yeni sınıflandırma meta verileriyle sürekli etiketlemek (etiketlemek) için pencerenin üst menüsünde **Kaydet'i** tıklatın.
-
-   ![Kaydet](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Hassas verilere erişimi denetleme
 
@@ -183,7 +171,7 @@ Azure SQL Veritabanı ve Yönetilen Örnek için sınıflandırmaları ve öneri
 
 ## <a name="next-steps"></a><a id="subheading-6"></a>Sonraki adımlar
 
-- [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
+- [Gelişmiş Veri Güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
 - Sınıflandırılmış hassas verilerinize erişimi izlemek ve denetlemek için [Azure SQL Veritabanı Denetimi'ni](sql-database-auditing.md) yapılandırmayı düşünün.
 - Veri Bulma & Sınıflandırması içeren bir YouTube sunusu için bkz [&. Veri Maruz](https://www.youtube.com/watch?v=itVi9bkJUNc).
 

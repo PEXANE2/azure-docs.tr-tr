@@ -1,6 +1,6 @@
 ---
-title: Python, R ve C# -Azure Data Lake Analytics 'de U-SQL işleri çalıştırma
-description: Azure Data Lake içinde iş göndermek için Python, R ve C# arka plan kodu kullanmayı öğrenin.
+title: Python, R ve C# işlerinde U-SQL işlerini çalıştırma - Azure Veri Gölü Analitiği
+description: Azure Veri Gölü'nde iş göndermek için Python, R ve C# ile kodu niçin kullanacağınızı öğrenin.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jejiang
@@ -9,35 +9,35 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
 ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309702"
 ---
-# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code 'de Azure Data Lake Analytics için Python, R ve C# ile U-SQL geliştirin
-U-SQL ile Python, R ve C# kod yazmak ve Azure Data Lake hizmetine iş göndermek için Visual Studio Code (vscode) kullanmayı öğrenin. VSCode için Azure Data Lake araçları hakkında daha fazla bilgi için bkz. [Visual Studio için Azure Data Lake araçları kodunu kullanma](data-lake-analytics-data-lake-tools-for-vscode.md).
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code'da Azure Veri Gölü Analitiği için Python, R ve C# ile U-SQL geliştirme
+U-SQL ile Python, R ve C# kodunu yazmak ve işleri Azure Veri Gölü hizmetine göndermek için Visual Studio Code'u (VSCode) nasıl kullanacağınızı öğrenin. VSCode için Azure Veri Göl Araçları hakkında daha fazla bilgi için [bkz.](data-lake-analytics-data-lake-tools-for-vscode.md)
 
-Kod arkasındaki özel kodu yazmadan önce, VSCode 'da bir klasörü veya çalışma alanını açmanız gerekir.
+Kod arkası özel kodu yazmadan önce VSCode'da bir klasör veya çalışma alanı açmanız gerekir.
 
 
-## <a name="prerequisites-for-python-and-r"></a>Python ve R için Önkoşullar
-ADL hesabınız için Python ve R uzantıları derlemelerini kaydettirin. 
+## <a name="prerequisites-for-python-and-r"></a>Python ve R için Ön Koşullar
+ADL hesabınız için Python ve R uzantıları derlemelerini kaydedin. 
 1. Hesabınızı portalda açın.
    - **Genel Bakış**’ı seçin. 
-   - **Örnek komut dosyası**' na tıklayın.
-2. **Daha fazla**tıklayın.
-3. **U-SQL uzantılarını Install**seçeneğini belirleyin. 
+   - **Örnek Komut Dosyası'nı**tıklatın.
+2. **Daha fazla**'ya tıklayın.
+3. **U-SQL Uzantılarını Yükle'yi**seçin. 
 4. U-SQL uzantıları yüklendikten sonra onay iletisi görüntülenir. 
 
-   ![Python ve R için ortamı ayarlama](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Python ve R için ortam ayarlama](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
    > [!Note]
-   > Python ve R dil hizmeti ile ilgili en iyi deneyimler için lütfen VSCode Python ve R uzantısını yüklemelisiniz. 
+   > Python ve R dil hizmeti ile ilgili en iyi deneyimler için lütfen VSCode Python ve R uzantısını yükleyin. 
 
-## <a name="develop-python-file"></a>Python dosyası geliştirme
-1. Çalışma alanınızdaki **yeni dosya** ' ya tıklayın.
-2. Kodunuzu U-SQL ' e yazın. Aşağıda bir kod örneği verilmiştir.
+## <a name="develop-python-file"></a>Python dosyasini geliştirme
+1. Çalışma alanınızda **Yeni Dosya'yı** tıklatın.
+2. Kodunuzu U-SQL'e yazın. Aşağıda bir kod örneği verem.
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
     @t  = 
@@ -58,8 +58,8 @@ ADL hesabınız için Python ve R uzantıları derlemelerini kaydettirin.
         USING Outputters.Csv();
     ```
     
-3. Bir betik dosyasına sağ tıklayın ve ardından adl öğesini **seçin: Dosya**arkasında Python kodu oluştur. 
-4. **Xxx.usql.py** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu Python dosyasına yazın. Aşağıda bir kod örneği verilmiştir.
+3. Komut dosyası dosyası dosyasına sağ tıklayın ve ardından **ADL'yi seçin: Dosya Arkasında Python Kodu Oluştur'** seçeneğini belirleyin. 
+4. **xxx.usql.py** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu Python dosyasına yazın. Aşağıda bir kod örneği verem.
 
     ```Python
     def get_mentions(tweet):
@@ -72,11 +72,11 @@ ADL hesabınız için Python ve R uzantıları derlemelerini kaydettirin.
         del df['tweet']
         return df
     ```
-5. **Usql** dosyasına sağ tıklayın, **betiği derle** veya işi çalışan iş **Gönder** ' e tıklayabilirsiniz.
+5. **USQL** dosyasına sağ tıklayın, **Komut Dosyasını Derle'yi** veya **İşi** Çalıştıran Işe Gönder'i tıklatabilirsiniz.
 
-## <a name="develop-r-file"></a>R dosyası geliştirme
-1. Çalışma alanınızdaki **yeni dosya** ' ya tıklayın.
-2. Kodunuzu U-SQL dosyasına yazın. Aşağıda bir kod örneği verilmiştir.
+## <a name="develop-r-file"></a>R dosyasi geliştir
+1. Çalışma alanınızda **Yeni Dosya'yı** tıklatın.
+2. Kodunuzu U-SQL dosyasına yazın. Aşağıda bir kod örneği verem.
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
     DECLARE @IrisData string = @"/usqlext/samples/R/iris.csv";
@@ -115,20 +115,20 @@ ADL hesabınız için Python ve R uzantıları derlemelerini kaydettirin.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. **Usql** dosyasına sağ tıklayın ve ardından adl öğesini seçin **: R kod arkasında dosya**oluştur. 
-4. **Xxx. usql. r** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu R dosyasına yazın. Aşağıda bir kod örneği verilmiştir.
+3. **USQL** dosyasına sağ tıklayın ve ardından **ADL'yi seçin: Dosya Arkasında R Kodu Oluştur'** seçeneğini belirleyin. 
+4. **xxx.usql.r** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu R dosyasına yazın. Aşağıda bir kod örneği verem.
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. **Usql** dosyasına sağ tıklayın, **betiği derle** veya işi çalışan iş **Gönder** ' e tıklayabilirsiniz.
+5. **USQL** dosyasına sağ tıklayın, **Komut Dosyasını Derle'yi** veya **İşi** Çalıştıran Işe Gönder'i tıklatabilirsiniz.
 
-## <a name="develop-c-file"></a>Dosya C# geliştirme
-Arka plan kod dosyası, tek bir C# U-SQL betiği ile ilişkili bir dosyadır. Arka plan kod dosyasında UDO, UDA, UDT ve UDF için adanmış bir komut dosyası tanımlayabilirsiniz. UıDO, UDA, UDT ve UDF, önce derlemeyi kaydetmeden doğrudan betikte kullanılabilir. Arka plan kod dosyası, eşleme U-SQL betik dosyası ile aynı klasöre konur. Betik xxx. usql olarak adlandırılmışsa, arka plan kodu xxx.usql.cs olarak adlandırılır. Arka plan kod dosyasını el ile silerseniz, arka plan kod özelliği, ilişkili U-SQL betiği için devre dışıdır. U-SQL betiği için müşteri kodu yazma hakkında daha fazla bilgi için, [bkz. u-SQL ' de özel kod yazma ve kullanma: Kullanıcı tanımlı Işlevler]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+## <a name="develop-c-file"></a>C# dosyasi geliştir
+Kod arkası dosyası, tek bir U-SQL komut dosyasıyla ilişkili bir C# dosyasıdır. Kod arkası dosyasında UDO, UDA, UDT ve UDF'ye adanmış bir komut dosyası tanımlayabilirsiniz. UDO, UDA, UDT ve UDF, önce derlemekaydedilmeden doğrudan komut dosyasında kullanılabilir. Kod arkası dosyası, bakan U-SQL komut dosyasıyla aynı klasöre konur. Komut dosyası xxx.usql adlı ise, kod arkası xxx.usql.cs olarak adlandırılır. Kod arkası dosyasını el ile silerseniz, kod arkası özelliği ilişkili U-SQL komut dosyası için devre dışı bırakılır. U-SQL komut dosyası için müşteri kodu yazma hakkında daha fazla bilgi için [U-SQL: Kullanıcı Tanımlı Fonksiyonlar'da Özel Kod Yazma ve Kullanma]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)bilgisine bakın.
 
-1. Çalışma alanınızdaki **yeni dosya** ' ya tıklayın.
-2. Kodunuzu U-SQL dosyasına yazın. Aşağıda bir kod örneği verilmiştir.
+1. Çalışma alanınızda **Yeni Dosya'yı** tıklatın.
+2. Kodunuzu U-SQL dosyasına yazın. Aşağıda bir kod örneği verem.
     ```U-SQL
     @a = 
         EXTRACT 
@@ -157,8 +157,8 @@ Arka plan kod dosyası, tek bir C# U-SQL betiği ile ilişkili bir dosyadır. Ar
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. **Usql** dosyasına sağ tıklayın ve ardından adl öğesini seçin **: CS kod arkasında dosya**oluştur. 
-4. **Xxx.usql.cs** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu CS dosyasına yazın. Aşağıda bir kod örneği verilmiştir.
+3. **USQL** dosyasına sağ tıklayın ve ardından **ADL'yi seçin: Dosya Arkasında CS Kodu Oluştur.** 
+4. **xxx.usql.cs** dosyası çalışma klasörünüzde oluşturulur. Kodunuzu CS dosyasına yazın. Aşağıda bir kod örneği verem.
 
     ```CS
     namespace USQLApplication_codebehind
@@ -176,12 +176,12 @@ Arka plan kod dosyası, tek bir C# U-SQL betiği ile ilişkili bir dosyadır. Ar
         }
     }
     ```
-5. **Usql** dosyasına sağ tıklayın, **betiği derle** veya işi çalışan iş **Gönder** ' e tıklayabilirsiniz.
+5. **USQL** dosyasına sağ tıklayın, **Komut Dosyasını Derle'yi** veya **İşi** Çalıştıran Işe Gönder'i tıklatabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Visual Studio Code için Azure Data Lake Araçları’nı kullanma](data-lake-analytics-data-lake-tools-for-vscode.md)
-* [U-SQL yerel çalıştırma ve Visual Studio Code ile yerel hata ayıklama](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [PowerShell kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-powershell.md)
-* [Azure portal kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-portal.md)
-* [Visual Studio için Data Lake araçları 'nı kullanarak U-SQL uygulamaları geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics (U-SQL) kataloğunu kullanma](data-lake-analytics-use-u-sql-catalog.md)
+* [Visual Studio Code ile U-SQL yerel çalıştırma ve yerel hata ayıklama](data-lake-tools-for-vscode-local-run-and-debug.md)
+* [PowerShell'i kullanarak Data Lake Analytics ile başlayın](data-lake-analytics-get-started-powershell.md)
+* [Azure portalını kullanarak Data Lake Analytics ile başlayın](data-lake-analytics-get-started-portal.md)
+* [U-SQL uygulamaları geliştirmek için Visual Studio için Veri Gölü Araçlarını Kullanma](data-lake-analytics-data-lake-tools-get-started.md)
+* [Veri Gölü Analizi(U-SQL) kataloğunu kullanma](data-lake-analytics-use-u-sql-catalog.md)

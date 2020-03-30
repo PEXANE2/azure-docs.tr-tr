@@ -1,7 +1,7 @@
 ---
-title: 'Puan modeli: modül başvurusu'
+title: 'Puan Modeli: Modül Referansı'
 titleSuffix: Azure Machine Learning
-description: Eğitilen bir sınıflandırma veya regresyon modeli kullanarak tahmin oluşturmak için Azure Machine Learning puan modeli modülünü nasıl kullanacağınızı öğrenin.
+description: Eğitimli bir sınıflandırma veya regresyon modeli kullanarak öngörüler oluşturmak için Azure Machine Learning'de Puan Modeli modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,47 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138169"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364178"
 ---
 # <a name="score-model-module"></a>Score Model (Model Puanlama) modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Eğitilen bir sınıflandırma veya regresyon modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
+Eğitimli bir sınıflandırma veya regresyon modeli kullanarak öngörüler oluşturmak için bu modülü kullanın.
 
 ## <a name="how-to-use"></a>Nasıl kullanılır
 
-1. İşlem hattınızda **puan modeli** modülünü ekleyin.
+1. Puan **Modeli** modüllerini boru hattınıza ekleyin.
 
-2. Eğitilen bir model ve yeni giriş verileri içeren bir veri kümesi ekleyin. 
+2. Eğitimli bir model ve yeni giriş verileri içeren bir veri kümesi takın. 
 
-    Verilerin, kullanmakta olduğunuz eğitilen model türüyle uyumlu bir biçimde olması gerekir. Giriş veri kümesinin şeması da genellikle modeli eğitmek için kullanılan verilerin şemasıyla aynı olmalıdır.
+    Veriler, kullanmakta olduğunuz eğitilen model türüyle uyumlu bir biçimde olmalıdır. Giriş veri kümesinin şeması da genellikle modeli eğitmek için kullanılan verilerin şema eşleşmelidir.
 
-3. İşlem hattını çalıştırma.
+3. Boru hattını gönderin.
 
 ## <a name="results"></a>Sonuçlar
 
-[Puan modeli](./score-model.md)kullanarak bir puan kümesi oluşturduktan sonra:
+[Puan Modelini](./score-model.md)kullanarak bir puan kümesi oluşturduktan sonra:
 
-+ Modelin doğruluğunu (performans) değerlendirmek için kullanılan bir dizi ölçüm oluşturmak için.  [modeli değerlendirmek](./evaluate-model.md)için puanlanmış veri kümesini bağlayabilirsiniz, 
-+ Modüle sağ tıklayın ve sonuçların bir örneğini görmek için **Görselleştir** ' i seçin.
-+ Sonuçları bir veri kümesine kaydedin.
++ Modelin doğruluğunu (performansını) değerlendirmek için kullanılan bir ölçüm kümesi oluşturmak için, puanlanan veri kümesini [Model'i değerlendirmek](./evaluate-model.md)için bağlayabilirsiniz, 
++ Modüle sağ tıklayın ve sonuçların bir örneğini görmek için **Visualize'ı** seçin.
+<!-- + To Save the results to a dataset. -->
 
-Puan veya tahmin edilen değer, modele ve giriş verilerinize bağlı olarak birçok farklı biçimde olabilir:
+Puan veya öngörülen değer, modele ve giriş verilerinize bağlı olarak birçok farklı biçimde olabilir:
 
-- Sınıflandırma modelleri için, [puan modeli](./score-model.md) , sınıf için tahmin edilen değerin yanı sıra öngörülen değerin olasılığını verir.
-- Regresyon modelleri için, [puan modeli](./score-model.md) yalnızca öngörülen sayısal değeri oluşturur.
+- Sınıflandırma modelleri [için, Puan Modeli](./score-model.md) sınıf için öngörülen değerin yanı sıra öngörülen değerin olasılığını çıkarır.
+- Regresyon modelleri [için, Score Model](./score-model.md) yalnızca öngörülen sayısal değeri oluşturur.
 
 
-## <a name="publish-scores-as-a-web-service"></a>Puanları Web hizmeti olarak yayımlama
+## <a name="publish-scores-as-a-web-service"></a>Puanları web hizmeti olarak yayımlama
 
-Puanlama kullanımı, bir tahmine dayalı Web hizmetinin parçası olarak çıktıyı döndürmemelidir. Daha fazla bilgi için, Azure Machine Learning bir işlem hattına göre Web hizmeti oluşturma hakkında Bu öğreticiye bakın:
+Puanlamanın yaygın kullanımı, çıktıyı tahmine dayalı bir web hizmetinin parçası olarak döndürmektir. Daha fazla bilgi için, Azure Machine Learning tasarımcısındaki bir ardışık yapıya dayalı gerçek zamanlı bir bitiş noktasının nasıl dağıtılanabildiğini anlatan [bu öğreticiye](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

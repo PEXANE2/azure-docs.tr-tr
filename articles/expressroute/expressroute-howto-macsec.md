@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: MACsec yapılandırma'
-description: Bu makale, kenar yönlendiricileriniz ile Microsoft 'un uç yönlendiricileri arasındaki bağlantıları güvenli hale getirmek için MACsec 'i yapılandırmanıza yardımcı olur.
+title: "Azure ExpressRoute: MACsec'i yapılandırın"
+description: Bu makale, kenar yönlendiricileriniz ve Microsoft'un kenar yönlendiricileri arasındaki bağlantıları güvence altına almak için MACsec'i yapılandırmanıza yardımcı olur.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083541"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute doğrudan bağlantı noktalarında MACsec yapılandırma
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct bağlantı noktalarında MACsec'i yapılandırın
 
-Bu makale, PowerShell kullanarak Edge yönlendiricileriniz ile Microsoft 'un uç yönlendiricileri arasındaki bağlantıları güvenli hale getirmek için MACsec 'i yapılandırmanıza yardımcı olur.
+Bu makale, PowerShell'i kullanarak kenar yönlendiricileriniz ile Microsoft'un kenar yönlendiricileri arasındaki bağlantıları güvence altına alacak şekilde MACsec'i yapılandırmanıza yardımcı olur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Yapılandırmaya başlamadan önce, aşağıdakileri onaylayın:
+Yapılandırmayı başlatmadan önce aşağıdakileri onaylayın:
 
-* [ExpressRoute doğrudan sağlama iş akışlarını](expressroute-erdirect-about.md)anlamış olursunuz.
-* [ExpressRoute doğrudan bağlantı noktası kaynağı](expressroute-howto-erdirect.md)oluşturdunuz.
-* PowerShell 'i yerel olarak çalıştırmak istiyorsanız, Azure PowerShell en son sürümünün bilgisayarınızda yüklü olduğunu doğrulayın.
+* [ExpressRoute Direct sağlama iş akışlarını](expressroute-erdirect-about.md)anlıyorsunuz.
+* Bir [ExpressRoute Direct bağlantı noktası kaynağı](expressroute-howto-erdirect.md)oluşturdunuz.
+* PowerShell'i yerel olarak çalıştırmak istiyorsanız, Azure PowerShell'in en son sürümünün bilgisayarınızda yüklü olduğunu doğrulayın.
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
 
@@ -38,33 +38,33 @@ Yapılandırmayı başlatmak için Azure hesabınızda oturum açın ve kullanma
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Azure Key Vault, MACsec gizli dizileri ve Kullanıcı Kimliği oluşturun
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Azure Key Vault, MACsec sırları ve kullanıcı kimliği oluşturun
 
-1. MACsec gizli dizilerini yeni bir kaynak grubunda depolamak için bir Key Vault örneği oluşturun.
+1. MACsec sırlarını yeni bir kaynak grubunda depolamak için bir Anahtar Kasa örneği oluşturun.
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name "your_resource_group" -Location "resource_location"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Zaten bir Anahtar Kasası veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, var olan anahtar kasanızda [ **geçici silme** özelliğini](../key-vault/key-vault-ovw-soft-delete.md) etkinleştirmeniz önemlidir. Geçici silme etkinleştirilmemişse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
+    Zaten bir anahtar kasanız veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, varolan anahtar kasanızdaki [ **yumuşak silme** özelliğini](../key-vault/key-vault-ovw-soft-delete.md) etkinleştirmeniz çok önemlidir. Yumuşak silme etkin değilse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
-2. Kullanıcı Kimliği oluşturun.
+2. Kullanıcı kimliği oluşturun.
 
     ```azurepowershell-interactive
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    New-Azuseratandıdentity geçerli bir PowerShell cmdlet 'i olarak tanınmazsa, aşağıdaki modülü (Yönetici modunda) yükleyip yukarıdaki komutu yeniden çalıştırın.
+    New-AzUserAssignedIdentity geçerli bir PowerShell cmdlet olarak tanınmıyorsa, aşağıdaki modülü (Yönetici modunda) yükleyin ve yukarıdaki komutu yeniden çalıştırın.
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
     ```
-3. Bir bağlantı ilişki anahtarı (CAK) ve bir bağlantı ilişkisi anahtar adı (CKN) oluşturun ve bunları anahtar kasasında depolayın.
+3. Bir bağlantı ilişkisi anahtarı (CAK) ve bir bağlantı ilişkilendirme anahtar adı (CKN) oluşturun ve bunları anahtar kasasında saklayın.
 
     ```azurepowershell-interactive
     $CAK = ConvertTo-SecureString "your_key" -AsPlainText -Force
@@ -72,26 +72,26 @@ Yapılandırmayı başlatmak için Azure hesabınızda oturum açın ve kullanma
     $MACsecCAKSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CAK_name" -SecretValue $CAK
     $MACsecCKNSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CKN_name" -SecretValue $CKN
     ```
-4. Kullanıcı kimliğine Al iznini atayın.
+4. Kullanıcı kimliğine GET izni atayın.
 
     ```azurepowershell-interactive
     Set-AzKeyVaultAccessPolicy -VaultName "your_key_vault_name" -PermissionsToSecrets get -ObjectId $identity.PrincipalId
     ```
 
-   Artık bu kimlik, anahtar kasasından, örneğin, ve CKN gizli dizilerini alabilir.
-5. Bu Kullanıcı kimliğini ExpressRoute tarafından kullanılacak şekilde ayarlayın.
+   Şimdi bu kimlik, örneğin CAK ve CKN gibi sırları anahtar kasasından alabilir.
+5. Bu kullanıcı kimliğini ExpressRoute tarafından kullanılacak şekilde ayarlayın.
 
     ```azurepowershell-interactive
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. ExpressRoute doğrudan bağlantı noktalarında MACsec yapılandırma
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. ExpressRoute Direct bağlantı noktalarında MACsec'i yapılandırın
 
-### <a name="to-enable-macsec"></a>MACsec 'i etkinleştirmek için
+### <a name="to-enable-macsec"></a>MACsec'i etkinleştirmek için
 
-Her ExpressRoute doğrudan örneğinde iki fiziksel bağlantı noktası bulunur. Her iki bağlantı noktasında aynı anda MACsec 'i etkinleştirmeyi veya aynı anda bir bağlantı noktasında MACsec 'i etkinleştirmeyi seçebilirsiniz. Tek seferde bir bağlantı noktası oluşturma (diğer bağlantı noktasına hizmet verirken trafiği etkin bir bağlantı noktasına geçirerek), ExpressRoute Direct 'niz zaten hizmette olduğunda kesintiye en aza indirmenize yardımcı olabilir.
+Her ExpressRoute Direct örneğinin iki fiziksel bağlantı noktası vardır. MaCsec'i her iki bağlantı noktasında da aynı anda etkinleştirmeyi veya aynı anda bir bağlantı noktasında MACsec'i etkinleştirmeyi seçebilirsiniz. ExpressRoute Direct'iniz zaten hizmet veriyorsa, aynı anda bir bağlantı noktası yapmak (diğer bağlantı noktasına hizmet verirken trafiği etkin bir bağlantı noktasına çevirerek) kesintiyi en aza indirmenize yardımcı olabilir.
 
-1. MACsec gizli dizilerini ve şifre ayarlama ve Kullanıcı kimliğini bağlantı noktasıyla ilişkilendirin ve bu sayede ExpressRoute yönetim kodunun gerekirse MACsec gizli anahtarlara erişebilmesi gerekir.
+1. ExpressRoute yönetim kodunun gerekirse MACsec sırlarına erişebilmesi için MACsec sırlarını ayarlayın ve şifreyi belirleyin ve kullanıcı kimliğini bağlantı noktasıyla ilişkilendirin.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -104,7 +104,7 @@ Her ExpressRoute doğrudan örneğinde iki fiziksel bağlantı noktası bulunur.
     $erDirect.identity = $erIdentity
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
-2. Seçim Bağlantı noktaları yönetimsel bir durumdaysa, bağlantı noktalarını getirmek için aşağıdaki komutları çalıştırabilirsiniz.
+2. (İsteğe bağlı) Bağlantı noktaları Administrative Down durumundaysa, bağlantı noktalarını açmak için aşağıdaki komutları çalıştırabilirsiniz.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -113,11 +113,11 @@ Her ExpressRoute doğrudan örneğinde iki fiziksel bağlantı noktası bulunur.
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
 
-    Bu noktada MACsec, Microsoft tarafında bulunan ExpressRoute doğrudan bağlantı noktalarında etkinleştirilir. Bu uygulamayı Edge cihazlarınızda yapılandırmadıysanız, aynı MACsec gizli dizileri ve şifrelemeniz ile yapılandırmayı da deneyebilirsiniz.
+    Bu noktada, MACsec Microsoft tarafındaki ExpressRoute Direct bağlantı noktalarında etkinleştirilir. Kenar aygıtlarınızda yapılandırmadıysanız, bunları aynı MACsec sırları ve şifrelemeyle yapılandırmaya devam edebilirsiniz.
 
-### <a name="to-disable-macsec"></a>MACsec 'i devre dışı bırakmak için
+### <a name="to-disable-macsec"></a>MACsec'i devre dışı kalmak için
 
-Eğer ExpressRoute doğrudan Örneğinizde MACsec artık istenmiyorsa, devre dışı bırakmak için aşağıdaki komutları çalıştırabilirsiniz.
+ExpressRoute Direct örneğinde MACsec artık istenmiyorsa, devre dışı kalmak için aşağıdaki komutları çalıştırabilirsiniz.
 
 ```azurepowershell-interactive
 $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -129,12 +129,12 @@ $erDirect.identity = $null
 Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
-Bu noktada, MACsec, Microsoft tarafındaki ExpressRoute doğrudan bağlantı noktalarında devre dışıdır.
+Bu noktada, MACsec Microsoft tarafındaki ExpressRoute Direct bağlantı noktalarında devre dışı bırakılır.
 
 ### <a name="test-connectivity"></a>Bağlantıyı test etme
-ExpressRoute doğrudan bağlantı noktalarında MACsec 'i (MACsec anahtar güncelleştirmesi dahil) yapılandırdıktan sonra, devrelerin BGP oturumlarının çalışır duruma olup olmadığını [kontrol edin](expressroute-troubleshooting-expressroute-overview.md) . Henüz bağlantı noktaları üzerinde herhangi bir devreniz yoksa, lütfen önce bir tane oluşturun ve Azure özel eşlemesini veya devresinin Microsoft eşlemesini ayarlayın. MACsec 'in, MACsec anahtar uyumsuzluğu da dahil olmak üzere yanlış yapılandırılmış ise, ağ cihazlarınızla Microsoft 'un ağ cihazları arasında, katman 2 ve BGP kurulumu 'nda, katman 3 ' te ARP çözünürlüğü görmezsiniz. Her şey düzgün şekilde yapılandırıldıysa BGP yollarının her iki yönde de doğru tanıtıldığı ve uygulama veri akışının ExpressRoute üzerinden uygun şekilde olduğunu görmeniz gerekir.
+ExpressRoute Direct bağlantı noktalarınızda MACsec 'i (MACsec anahtar güncelleştirmesi dahil) yapılandırdıktan sonra, devrelerin BGP oturumlarının çalışır durumda olup olmadığını [kontrol edin.](expressroute-troubleshooting-expressroute-overview.md) Bağlantı noktalarında henüz herhangi bir devreniz yoksa, lütfen önce bir tane oluşturun ve devrenin Azure Özel Eşleme sini veya Microsoft Peering'i ayarlayın. MACsec, ağ aygıtlarınız ve Microsoft'un ağ aygıtları arasında MACsec anahtar uyuşmazlığı da dahil olmak üzere yanlış yapılandırılmışsa, Katman 2'de ARP çözünürlüğü ve katman 3'te BGP çözümünde görmezsiniz. Her şey doğru şekilde yapılandırılırsa, BGP yollarının her iki yönde de doğru şekilde duyurulduğu ve uygulama verilerinizin ExpressRoute üzerinden buna göre aktığını görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. [ExpressRoute doğrudan üzerinde bir ExpressRoute devresi oluşturma](expressroute-howto-erdirect.md)
-2. [Azure sanal ağına bir ExpressRoute bağlantı hattı bağlama](expressroute-howto-linkvnet-arm.md)
-3. [ExpressRoute bağlantısını doğrulama](expressroute-troubleshooting-expressroute-overview.md)
+1. [ExpressRoute Direct'te ExpressRoute devresi oluşturma](expressroute-howto-erdirect.md)
+2. [ExpressRoute devresini Azure sanal ağına bağlama](expressroute-howto-linkvnet-arm.md)
+3. [ExpressRoute bağlantısını doğrula](expressroute-troubleshooting-expressroute-overview.md)

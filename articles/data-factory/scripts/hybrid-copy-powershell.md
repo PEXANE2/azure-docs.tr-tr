@@ -1,6 +1,6 @@
 ---
-title: PowerShell kullanarak verileri Şirket içinden Azure 'a kopyalama
-description: Bu PowerShell betiği, verileri şirket içi SQL Server veritabanından başka bir Azure Blob depolama alanına kopyalar.
+title: PowerShell'i kullanarak şirket içi verileri şirket içinde Azure'a kopyalama
+description: Bu PowerShell komut dosyası, şirket içi BIR SQL Server veritabanından verileri başka bir Azure Blob Depolama alanına kopyalar.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,15 +11,15 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974700"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Şirket içinden Azure 'a veri kopyalamak için bir Data Factory işlem hattı oluşturmak üzere PowerShell 'i kullanma
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Şirket içi verileri azure'a kopyalamak için bir veri fabrikası ardışık hattı oluşturmak için PowerShell'i kullanın
 
-Bu örnek PowerShell betiği, verileri şirket içi SQL Server veritabanından bir Azure Blob depolama alanına kopyalayan Azure Data Factory bir işlem hattı oluşturur.
+Bu örnek PowerShell komut dosyası, Azure Veri Fabrikası'nda şirket içi BIR SQL Server veritabanından Azure Blob Depolamasına verileri kopyalayan bir ardışık kaynak oluşturur.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ Bu örnek PowerShell betiği, verileri şirket içi SQL Server veritabanından b
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- **SQL Server**. Bu örnekte, bir şirket içi SQL Server veritabanını **kaynak** veri deposu olarak kullanırsınız.
-- **Azure Depolama hesabı**. Azure Blob depolama alanını bu örnekteki **hedef/havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
-- **Şirket içinde barındırılan tümleştirme çalışma zamanı**. MSI dosyasını [indirme merkezi](https://www.microsoft.com/download/details.aspx?id=39717) 'nden indirin ve makinenize şirket içinde barındırılan tümleştirme çalışma zamanı yüklemek için çalıştırın.  
+- **SQL Server**. Bu örnekte **kaynak** veri deposu olarak şirket içi BIR SQL Server veritabanı kullanırsınız.
+- **Azure Depolama hesabı.** Azure blob depolama alanını bu örnekte **hedef/lavabo** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bir tane oluşturma adımları için [bir depolama hesabı oluştur](../../storage/common/storage-account-create.md) makalesine bakın.
+- **Kendi kendine barındırılan tümleştirme çalışma zamanı.** MsI dosyasını [indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=39717) indirin ve makinenize kendi kendine barındırılan bir tümleştirme çalışma süresi yüklemek için çalıştırın.  
 
-### <a name="create-sample-database-in-sql-server"></a>SQL Server örnek veritabanı oluşturma
-1. Şirket içi SQL Server veritabanında, aşağıdaki SQL komut **dosyasını kullanarak, "adlı bir** tablo oluşturun:
+### <a name="create-sample-database-in-sql-server"></a>SQL Server'da örnek veritabanı oluşturma
+1. Şirket içi SQL Server veritabanında, aşağıdaki SQL komut dosyasını kullanarak **emp** adlı bir tablo oluşturun:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -45,7 +45,7 @@ Bu örnek PowerShell betiği, verileri şirket içi SQL Server veritabanından b
      GO
    ```
 
-2. Tabloya bazı örnek veriler ekleyin:
+2. Tabloya bazı örnek verileri ekleyin:
 
    ```sql
      INSERT INTO emp VALUES ('John', 'Doe')
@@ -55,14 +55,14 @@ Bu örnek PowerShell betiği, verileri şirket içi SQL Server veritabanından b
 ## <a name="sample-script"></a>Örnek betik
 
 > [!IMPORTANT]
-> Bu betik, c:\ ' daki sabit sürücünüzde Data Factory varlıkları (bağlı hizmet, veri kümesi ve işlem hattı) tanımlayan JSON dosyaları oluşturur. klasörde.
+> Bu komut dosyası, c:\ 'daki sabit diskinizde Veri Fabrikası varlıklarını (bağlantılı hizmet, veri kümesi ve ardışık) tanımlayan JSON dosyaları oluşturur: \ Klasör.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
-Örnek betiği çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
+Örnek komut dosyasını çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -81,12 +81,12 @@ Bu betik şu komutları kullanır:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Veri fabrikası oluşturma. |
-| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Bağlı bir hizmette kimlik bilgilerini şifreler ve şifrelenmiş kimlik bilgisiyle yeni bir bağlı hizmet tanımı oluşturur.
-| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Veri fabrikasında bağlı bir hizmet oluşturur. Bağlı hizmet bir veri deposunu veya işlem verilerini bir veri fabrikasına bağlar. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Veri fabrikasında bir veri kümesi oluşturur. Bir veri kümesi, bir işlem hattındaki etkinliğin giriş/çıkışını temsil eder. |
-| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Veri fabrikasında bir işlem hattı oluşturur. İşlem hattı, belirli bir işlemi gerçekleştiren bir veya daha fazla etkinlik içerir. Bu işlem hattında, bir kopyalama etkinliği verileri bir konumdan Azure Blob depolama alanındaki başka bir konuma kopyalar. |
-| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | İşlem hattı için bir çalıştırma oluşturur. Diğer bir deyişle, işlem hattını çalıştırır. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | İşlem hattında etkinliğin (etkinlik çalıştırması) çalıştırılmasıyla ilgili ayrıntıları alır.
+| [Yeni-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Bağlı bir hizmetteki kimlik bilgilerini şifreler ve şifrelenmiş kimlik bilgileriyle yeni bir bağlantılı hizmet tanımı oluşturur.
+| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Veri fabrikasında bağlantılı bir hizmet oluşturur. Bağlantılı bir hizmet, bir veri deposuveya bilgi işlem bağlantısını bir veri fabrikasına bağlar. |
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Veri fabrikasında bir veri kümesi oluşturur. Veri kümesi, bir ardışık ardışık alandaki bir etkinlik için giriş/çıktıyı temsil eder. |
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Veri fabrikasında bir ardışık hat lar oluşturur. Bir ardışık işlem, belirli bir işlemi gerçekleştiren bir veya daha fazla etkinlik içerir. Bu ardışık işlemde, bir kopya etkinliği verileri bir konumdan başka bir konuma bir Azure Blob Depolama'da kopyalar. |
+| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Boru hattı için bir çalışma oluşturur. Başka bir deyişle, boru hattını çalıştırın. |
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Ardışık ardışık ardışık alanda etkinlik (etkinlik çalışması) çalıştırıla ilgili ayrıntıları alır.
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
@@ -94,4 +94,4 @@ Bu betik şu komutları kullanır:
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Data Factory PowerShell betiği örnekleri [Azure Data Factory PowerShell örneklerinde](../samples-powershell.md)bulunabilir.
+Ek Azure Veri Fabrikası PowerShell komut dosyası örnekleri [Azure Veri Fabrikası PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

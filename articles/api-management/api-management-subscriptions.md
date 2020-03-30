@@ -1,6 +1,6 @@
 ---
-title: Azure API Management abonelikler | Microsoft Docs
-description: Azure API Management abonelik kavramı hakkında bilgi edinin.
+title: Azure API Yönetimi'ndeki Abonelikler | Microsoft Dokümanlar
+description: Azure API Yönetimi'nde abonelik kavramı hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,55 +13,55 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073415"
 ---
-# <a name="subscriptions-in-azure-api-management"></a>Azure API Management abonelikler
+# <a name="subscriptions-in-azure-api-management"></a>Azure API Management'ta abonelikler
 
-Abonelikler Azure API Management 'da önemli bir kavramdır. Bu kişiler, API tüketicilerinin bir API Management örneği aracılığıyla yayımlanan API 'lere erişim alması için en yaygın yoldur. Bu makalede, kavrama genel bakış sunulmaktadır.
+Abonelikler Azure API Yönetimi'nde önemli bir kavramdır. Bunlar, API tüketicilerinin API Yönetimi örneği aracılığıyla yayınlanan API'lere erişebilmek için en yaygın yoldur. Bu makalede, kavramın genel bir bakış sağlar.
 
-## <a name="what-are-subscriptions"></a>Abonelikler nelerdir?
+## <a name="what-are-subscriptions"></a>Abonelikler nedir?
 
-API 'Leri API Management aracılığıyla yayımladığınızda, abonelik anahtarları kullanılarak bu API 'lere güvenli bir şekilde erişmek çok kolay ve yaygındır. Yayımlanmış API 'leri kullanması gereken geliştiriciler, bu API 'lere çağrılar yaptıklarında HTTP isteklerinde geçerli bir abonelik anahtarı içermelidir. Aksi takdirde, çağrılar API Management ağ geçidi tarafından hemen reddedilir. Bunlar arka uç hizmetlerine iletilmez.
+API Yönetimi aracılığıyla API'leri yayımladığınızda, abonelik anahtarlarını kullanarak bu API'lere erişimi güvence altına almak kolay ve yaygındır. Yayımlanmış API'leri tüketmesi gereken geliştiriciler, bu API'lere çağrı yaparken HTTP isteklerine geçerli bir abonelik anahtarı eklemelidir. Aksi takdirde, aramalar API Yönetimi ağ geçidi tarafından hemen reddedilir. Arka uç servislerine iletilirler.
 
-API 'Lere erişim için bir abonelik anahtarı almak üzere bir abonelik gerekir. Abonelik temel olarak bir dizi abonelik anahtarı için adlandırılmış bir kapsayıcıdır. Yayımlanmış API 'Leri kullanması gereken geliştiriciler abonelikleri alabilir. Ve API yayımcılarından onay gerekmez. API yayımcıları, doğrudan API tüketicileri için abonelikler de oluşturabilir.
+API'lere erişmek için abonelik anahtarı almak için abonelik gerekir. Abonelik aslında bir çift abonelik anahtarı için adlandırılmış bir kapsayıcıdır. Yayımlanmış API'leri tüketen geliştiriciler abonelik alabilir. Ve API yayıncılarının onayına ihtiyaçları yok. API yayıncıları doğrudan API tüketicileri için abonelikler oluşturabilir.
 
 > [!TIP]
-> API Management, aşağıdaki örnekler de dahil olmak üzere API 'lere erişimin güvenliğini sağlamak için diğer mekanizmaları da destekler:
-> - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
+> API Yönetimi, aşağıdaki örnekler de dahil olmak üzere API'lere erişimi güvence altına almak için diğer mekanizmaları da destekler:
+> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [İstemci sertifikaları](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP beyaz listesi](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP beyaz liste](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Aboneliklerin kapsamı
 
-Abonelikler çeşitli kapsamlarla ilişkilendirilebilir: ürün, tüm API 'Ler veya tek bir API.
+Abonelikler çeşitli kapsamlarla ilişkilendirilebilir: ürün, tüm API'ler veya tek bir API.
 
-### <a name="subscriptions-for-a-product"></a>Bir ürün için abonelikler
+### <a name="subscriptions-for-a-product"></a>Bir ürünün abonelikleri
 
-Geleneksel olarak, API Management içindeki abonelikler her zaman tek bir [API ürün](api-management-terminology.md) kapsamıyla ilişkilendirilir. Geliştiriciler, geliştirici portalındaki ürünlerin listesini buldu. Ardından, kullanmak istedikleri ürünler için abonelik istekleri gönderir. Abonelik isteği onaylandıktan sonra, otomatik olarak veya API yayımcıları tarafından, geliştirici üründeki tüm API 'Lere erişmek için içindeki anahtarları kullanabilir. Geliştirici portalı, mevcut olduğunda yalnızca ürün kapsamı aboneliklerini Kullanıcı profili bölümünde gösterir. 
+Geleneksel olarak, API Yönetimi'ndeki abonelikler her zaman tek bir [API ürün](api-management-terminology.md) kapsamıyla ilişkilendirildi. Geliştiriciler geliştirici portalında ürün listesini buldular. Daha sonra kullanmak istedikleri ürünler için abonelik istekleri gönderirlerdi. Bir abonelik isteği otomatik olarak veya API yayımcısı tarafından onaylandıktan sonra, geliştirici üründeki tüm API'lere erişmek için bu istekteki anahtarları kullanabilir. Şu anda geliştirici portalı yalnızca kullanıcı profili bölümü altında ürün kapsamı aboneliklerini gösterir. 
 
 ![Ürün abonelikleri](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> Bazı senaryolarda, API yayımcıları abonelik gereksinimi olmadan bir API ürününü herkese yayımlamak isteyebilir. Azure portal ürünün **Ayarlar** sayfasında **abonelik gerektir** seçeneğinin işaretini kaldırabilir. Sonuç olarak, ürün kapsamındaki tüm API 'Ler bir API anahtarı olmadan erişilebilir.
+> Belirli senaryolarda, API yayımcıları abonelik gereksinimi olmadan bir API ürününün kamuya yayımlanmasını isteyebilir. Azure portalındaki ürünün **Ayarlar** **sayfasındaabonelik İste** seçeneğini de seçebilirler. Sonuç olarak, ürünün altındaki tüm API'lara API anahtarı olmadan erişilebilir.
 
-### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Tüm API 'Ler veya tek bir API için abonelikler
+### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Tüm API'ler veya tek bir API için abonelikler
 
-API Management [Tüketim](https://aka.ms/apimconsumptionblog) katmanını sunduğumuz zaman, anahtar yönetimini kolaylaştırmak için birkaç değişiklik yaptık:
-- İlk olarak, iki tane daha abonelik kapsamı ekledik: tüm API 'Ler ve tek bir API. Aboneliklerin kapsamı artık bir API ürünüyle sınırlı değildir. Artık bir API 'ye veya bir API Management örneğindeki tüm API 'lere erişim veren anahtarlar oluşturmak ve öncelikle bir ürün oluşturup API 'Leri eklemek mümkün değildir. Ayrıca, her bir API Management örneği artık sabit ve tüm API abonelikleri ile birlikte gelir. Bu abonelik test konsolundaki API 'Lerin test ve hata ayıklama işlemlerini kolaylaştırır ve daha basit hale getirir.
+API Yönetimi'nin [Tüketim](https://aka.ms/apimconsumptionblog) katmanını tanıttığımızda, anahtar yönetimini kolaylaştırmak için birkaç değişiklik yaptık:
+- İlk olarak, iki abonelik kapsamı daha ekledik: tüm API'ler ve tek bir API. Aboneliklerin kapsamı artık bir API ürünüyle sınırlı değildir. Artık bir ÜRÜN oluşturmave api eklemeye gerek kalmadan bir API'ye veya API Yönetimi örneğindeki tüm API'lere erişim sağlayan anahtarlar oluşturmak mümkündür. Ayrıca, her API Yönetimi örneği artık değişmez, tüm API aboneliğiyle birlikte gelir. Bu abonelik, test konsolu içindeki API'leri test etmeyi ve hata ayıklamayı daha kolay ve daha kolay hale getirir.
 
-- İkincisi, API Management artık **tek başına** aboneliklerine izin veriyor. Aboneliklerin bir geliştirici hesabıyla ilişkilendirilmesi artık gerekli değildir. Bu özellik, birkaç geliştirici veya ekibin bir aboneliği paylaştığı durumlarda olduğu gibi senaryolarda faydalıdır.
+- İkinci olarak, API Yönetimi artık **bağımsız** aboneliklere izin veriyor. Aboneliklerin artık bir geliştirici hesabıyla ilişkilendirilmesi gerekmez. Bu özellik, birkaç geliştirici veya takımın aboneliği paylaşması gibi senaryolarda yararlıdır.
 
-- Son olarak, API yayımcıları artık Azure portal doğrudan [abonelik oluşturabilir](api-management-howto-create-subscriptions.md) :
+- Son olarak, API yayıncıları artık doğrudan Azure portalında [abonelikler oluşturabilir:](api-management-howto-create-subscriptions.md)
 
     ![Esnek abonelikler](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-API Management hakkında daha fazla bilgi alın:
+API Yönetimi hakkında daha fazla bilgi alın:
 
-+ API Management diğer [kavramları](api-management-terminology.md) öğrenin.
-+ API Management hakkında [](import-and-publish.md) daha fazla bilgi edinmek için öğreticilerimizi izleyin.
-+ Sık sorulan sorular için [SSS sayfamıza](api-management-faq.md) bakın.
++ API Yönetimi'nde diğer [kavramları](api-management-terminology.md) öğrenin.
++ API Yönetimi hakkında daha fazla bilgi edinmek için [eğitimlerimizi](import-and-publish.md) takip edin.
++ Sık sorulan sorular için [SSS sayfamızı](api-management-faq.md) kontrol edin.

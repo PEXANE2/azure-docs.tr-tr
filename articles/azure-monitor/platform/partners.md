@@ -1,146 +1,146 @@
 ---
-title: Azure Izleyici ile tümleştirilen iş ortakları
-description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
+title: Azure Monitör ile entegre olan iş ortakları
+description: Azure Monitor'un iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 33ab913c64b651db9e75d4791ecb631ed7e081a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298386"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
+# <a name="azure-monitor-partner-integrations"></a>Azure Monitör iş ortağı tümleştirmeleri
 
-Alfabetik sırada listelenmiştir. 
+Alfabetik sıraya göre listelenmiştir. 
 
-## <a name="alertlogic-log-manager"></a>AlertLogic log Manager
+## <a name="alertlogic-log-manager"></a>AlertLogic Günlük Yöneticisi
 
-![AlertLogic logosu](./media/partners/alertlogic.png)
+![AlertLogic Logosu](./media/partners/alertlogic.png)
 
-Uyarı Logic log Manager, güvenlik çözümlemesi ve bekletme için VM, uygulama ve Azure platformu günlüklerini toplar. Ayrıca Azure Izleyici API 'SI aracılığıyla Azure etkinlik günlüğünü toplar. Bu bilgiler, malfeasance 'yi algılamak ve uyumluluk gereksinimlerini karşılamak için kullanılır.
+Alert Logic Log Manager, güvenlik çözümlemesi ve bekletme için VM, uygulama ve Azure platform günlüklerini toplar. Ayrıca Azure Monitörü API'si aracılığıyla Azure Etkinlik Günlüğü'nün toplanmasını da. Bu bilgiler, görevi kötüye kullanma nın algısını algılamak ve uyumluluk gereksinimlerini karşılamak için kullanılır.
 
-[Belgelere gidin.][alertlogic-doc]
+[Belgelere git.][alertlogic-doc]
 
 <br/>
 
 ## <a name="appdynamics"></a>AppDynamics
 
-![AppDynamics logosu](./media/partners/appdynamics.png)
+![AppDynamics Logosu](./media/partners/appdynamics.png)
 
-AppDynamics uygulama performansı yönetimi (APM), uygulama sahiplerinin performans sorunlarını hızla gidermelerini ve Azure ortamında çalışan uygulamalarının performansını en üst düzeye çıkarmalarını sağlar. Azure Cloud Services (PaaS), Web & çalışan rolleri, sanal makineler (IaaS), uzak hizmet algılama (Microsoft Azure Service Bus), Microsoft Azure kuyruğu, Microsoft Azure uzak Hizmetleri (Azure blob), Azure kuyruğu (Microsoft Service Bus), veri Depolama ve Microsoft Azure Blob depolama. AppDynamics APM, Azure Marketi 'nde kullanılabilir.
+AppDynamics Uygulama Performans Yönetimi (APM), uygulama sahiplerinin performans sorunlarını hızla gidermelerine ve Azure ortamında çalışan uygulamalarının performansını optimize etmelerine olanak tanır. Azure Bulut Hizmetleri (PaaS), web & çalışan rolleri, Sanal Makineler (IaaS), Uzak Hizmet Algılama (Microsoft Azure Hizmet Veri Veri Seki), Microsoft Azure Kuyruğu, Microsoft Azure Uzaktan Hizmetleri (Azure Blob), Azure Kuyruğu (Microsoft Hizmet Veri Bösyp), Veri Depolama ve Microsoft Azure Blob Depolama'yı izleyebilir. AppDynamics APM, Azure Marketi'nde kullanılabilir.
 
-[Belgelere gidin.][appdynamics-doc]
+[Belgelere git.][appdynamics-doc]
 
-## <a name="atlassian-jira"></a>Atlasme JIRA
+## <a name="atlassian-jira"></a>Atlassian JIRA
 
-![Atlasme logosu](./media/partners/atlassian.png)
+![Atlassian Logosu](./media/partners/atlassian.png)
 
-Azure Izleyici uyarıları üzerinde JıRA bileti oluşturabilirsiniz.
+Azure Monitor uyarılarında JIRA biletleri oluşturabilirsiniz.
 
-[Belgelere gidin.][atlassian-doc]
+[Belgelere git.][atlassian-doc]
 
-## <a name="botmetric"></a>Botmetric
+## <a name="botmetric"></a>Botmetrik
 
 [Daha fazla bilgi edinin.][botmetric-doc]
 
-## <a name="circonus"></a>Ciru
+## <a name="circonus"></a>Circonus
 
-![Circonus logosu](./media/partners/circonus.png)
+![Circonus Logosu](./media/partners/circonus.png)
 
-Circonus, şirket içi veya SaaS dağıtımı için oluşturulmuş bir mikro hizmet izleme ve analiz platformudur. Tam olarak haritasıdır API merkezli platform, izlediği sistemlerden daha ölçeklenebilir ve güvenilirdir. DevOps 'ın gereksinimleri için geliştirilmiştir, Circonus, iş iyileştirmesini sağlayan yüzdelik tabanlı uyarılar, grafikler, panolar ve makine öğrenimi zekası sunar. Circonus Microsoft Azure bulut kaynaklarınızı ve bunların uygulamalarını gerçek zamanlı olarak izler. Kaynak ve uygulamalarınız için ölçmek istediğiniz değişkenlerin ölçümlerini toplamak ve izlemek üzere Circonus kullanabilirsiniz. Circonus ile Azure 'un kaynak kullanımı, uygulama performansı ve işlemsel sistem durumu hakkında sistem genelinde görünürlük elde edersiniz.
+Circonus, milyarlarca metrik akışı gerçek zamanlı olarak işletebilen tek makine veri istihbarat platformu olan makine veri zekası uzmanıdır. Microsoft Azure kurulumunuzla ilgili önemli ölçümleri toplamak, izlemek ve görselleştirmek için Circonus'u kullanın. Azure'un kaynak kullanımı, uygulama performansı ve işletim sağlığı hakkında sistem genelinde görünürlük elde edin.
 
-[Belgelere gidin.][circonus-doc]
+[Belgelere git.][circonus-doc]
 
 ## <a name="cloudhealth"></a>CloudHealth
 
-![CloudHealth logosu](./media/partners/cloudhealth.png)
+![CloudHealth Logosu](./media/partners/cloudhealth.png)
 
 
-Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
+Zamandan ve paradan tasarruf etmek için oluşturulmuş bir platformla bulutunuzu birleştirin ve otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel optimizasyon ve kaya gibi sağlam yönetim uygulamaları sağlar. CloudHealth platformu, işletmelerin ve MSP'lerin bulut yatırımlarının getirisini en üst düzeye çıkarmalarına olanak tanır. Maliyet, kullanım, performans ve güvenlik ile ilgili kendinden emin kararlar ala.
 
-[Daha fazla bilgi][cloudhealth-doc]
+[Daha fazlasını öğrenin][cloudhealth-doc]
 
-## <a name="cloudmonix"></a>Cloudmonitorx
+## <a name="cloudmonix"></a>CloudMonix
 
-![Cloudmonitorx logosu](./media/partners/cloudmonix.png)
+![CloudMonix Logosu](./media/partners/cloudmonix.png)
 
-Cloudmonitorx, Microsoft Azure platformu için izleme, otomasyon ve kendi kendini onaran hizmetler sunar.
+CloudMonix, Microsoft Azure platformu için izleme, otomasyon ve kendi kendini iyileştirme hizmetleri sunar.
 
-[Belgelere gidin.][cloudmonix-doc]
+[Belgelere git.][cloudmonix-doc]
 
 ## <a name="datadog"></a>Datadog
 
-![Dataköpek logosu](./media/partners/datadog.png)
+![DataDog Logosu](./media/partners/datadog.png)
 
-Dataköpek, dünyanın bulut ölçekli uygulamalar için önde gelen izleme hizmetidir. Tüm yığınınızın birleştirilmiş bir görünümünü sunmak için sunuculardan, veritabanlarından, araçlardan ve hizmetlerden verileri bir araya getirir. Bu yetenekler, SaaS tabanlı bir veri analizi platformunda sunulmaktadır. Bu hizmet, iş kesintilerini önlemek, performans sorunlarını çözmek ve geliştirme ve dağıtım döngülerinin zamanında bitmesini sağlamak için geliştirme ve Ops takımlarının işbirliği yapmasına olanak sağlar. Veri köklerini ve Azure 'u tümleştirerek, altyapınızın genelinde ölçümleri toplayabilir ve görüntüleyebilirsiniz. VM ölçümlerini uygulama düzeyi ölçümleriyle ilişkilendirin. Özelliklerin ve özel etiketlerin birleşimini kullanarak ölçülerinizi dilimleyin ve zar.
+Datadog, bulut ölçekli uygulamalar için dünyanın lider izleme hizmetidir. Tüm yığınınızın birleşik görünümünü sunmak için sunuculardan, veritabanlarından, araçlardan ve hizmetlerden gelen verileri bir araya getirir. Bu özellikler SaaS tabanlı veri analizi platformunda sağlanır. Bu hizmet, Dev ve Ops ekiplerinin kapalı kalma süresini önlemek, performans sorunlarını çözmek ve geliştirme ve dağıtım döngülerinin zamanında bitmesini sağlamak için işbirliği içinde çalışmasını sağlar. Datadog ve Azure'u tümleştirerek, altyapınızın her yerinden ölçümleri toplayabilir ve görüntüleyebilirsiniz. VM ölçümlerini uygulama düzeyi ölçümleri ile ilişkilendirin. Özellikleri ve özel etiketleri herhangi bir arada kullanarak ölçümlerinizi dilimleyin ve zar.
 
-[Belgelere gidin.][datadog-doc]
+[Belgelere git.][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
 
-![DynaTrace logosu](./media/partners/dynatrace.png)
+![DynaTrace Logosu](./media/partners/dynatrace.png)
 
-DynaTrace OneAgent, Azure uzantı mekanizması aracılığıyla Azure VM 'Leri ve App Services ile tümleşir. Bu şekilde, dynaTrace OneAgent Konakları, ağ ve hizmetlerle ilgili performans ölçümleri toplayabilirler. Yalnızca ölçümleri görüntülemenin yanı sıra, dynaTrace ortamları uçtan uca görselleştirir. İstemci tarafındaki işlemleri veritabanı katmanına gösterir. DynaTrace, kod ve veritabanına yönelik Yöntem düzeyi öngörüleri sağlamak için, sorunların AI tabanlı ve tamamen tümleşik kök-neden analizi sağlar. Bu öngörü, sorun giderme ve performans iyileştirmeleri çok daha kolay hale getirir.
+Dynatrace OneAgent, Azure uzantısı mekanizması aracılığıyla Azure VM'leri ve Uygulama Hizmetleri ile tümleşir. Bu şekilde Dynatrace OneAgent ana bilgisayarlar, ağ ve hizmetler hakkında performans ölçümleri toplayabilir. Dynatrace, ölçümleri görüntülemenin yanı sıra ortamları uçtan uca görselleştirir. İstemci tarafından veritabanı katmanına yapılan hareketleri gösterir. Dynatrace, kod ve veritabanına yöntem düzeyi öngörüleri sağlamak için sorunların AI tabanlı korelasyonve tam entegre kök-neden analizisağlar. Bu öngörü, sorun giderme ve performans optimizasyonlarını çok daha kolay hale getirir.
 
-[Belgelere gidin.][dynatrace-doc]
+[Belgelere git.][dynatrace-doc]
 
-## <a name="elastic"></a>Tik
+## <a name="elastic"></a>Elastik
 
-![Elastik logo](./media/partners/elastic.png)
+![Elastik Logo](./media/partners/elastic.png)
 
-Elastik bir arama şirketidir. Elastik yığının oluşturucuları (Elaun Search, kibana, Instalar ve Logstash) olarak elastik, verileri gerçek zamanlı olarak ve arama, günlüğe kaydetme, güvenlik ve analiz kullanım örnekleri için ölçeklendirerek kullanılabilir hale getirmek için kendini yönetilen ve SaaS teklifleri oluşturur.
+Elastic bir arama şirketi. Elastic Stack 'in (Elasticsearch, Kibana, Beats ve Logstash) yaratıcıları olarak Elastic, verileri arama, günlük, güvenlik ve analitik kullanım örnekleri için gerçek zamanlı ve ölçekte kullanılabilir hale getiren kendi kendini yöneten ve SaaS teklifleri oluşturur.
 
-[Belgelere gidin.][elastic-doc]
+[Belgelere git.][elastic-doc]
 
 ## <a name="grafana"></a>Grafana
 
-![Grafana logosu](./media/partners/grafana.png)
+![Grafana Logosu](./media/partners/grafana.png)
 
-Grafana, zaman serisi ölçüm verilerini görselleştirmenizi sağlayan açık kaynaklı bir uygulamadır.
+Grafana, zaman serisi metrik verilerini görselleştirmenizi sağlayan açık kaynak kodlu bir uygulamadır.
 
-[Belgelere gidin.][grafana-doc]
+[Belgelere git.][grafana-doc]
 
-## <a name="influxdata"></a>Etkileyen verileri
+## <a name="influxdata"></a>AkınData
 
-![Etkileyen XData logosu](./media/partners/Influxdata.png)
+![AkınıData Logosu](./media/partners/Influxdata.png)
 
-Etkileyen etkili XData, DevOps ve IoT uygulamalarına yönelik ölçüm ve olayları (zaman serisi verileri) analiz etmek için baştan oluşturulmuş modern açık kaynaklı bir platform sunar. Veriler insanlardan, sensörlerden veya makinelerden geliyorsa, etkileyen, geliştiricilerin yeni nesil izleme, analiz ve IoT uygulamalarını daha hızlı, daha kolay hale getirmeye ve gerçek iş değerini hızlı bir şekilde izlemelerine kadar ölçeklendirmesine olanak sağlar. San Francisco 'a bağlı olarak, etkileyen 420 'den daha fazla müşteri Cisco, eBay, IBM ve Siemens ' i içerir.
+InfluxDB'nin yaratıcısı InfluxData, DevOps ve IoT uygulamaları için ölçümleri ve olayları (zaman serisi verileri) analiz etmek için sıfırdan oluşturulmuş modern bir Açık Kaynak Platformu sunar. Veriler ister insanlardan, ister sensörlerden ister makinelerden gelsin, InfluxData geliştiricilere yeni nesil izleme, analitik ve IoT uygulamalarını daha hızlı, daha kolay ve gerçek iş değerini hızla ölçeklendirme konusunda güçlendiriyor. Merkezi San Francisco'da bulunan InfluxData'nın 420'den fazla müşterisi arasında Cisco, eBay, IBM ve Siemens bulunmaktadır.
 
-[Belgelere gidin.][influxdata-doc]
-
-
-## <a name="logic-monitor"></a>Mantıksal Izleyici
-
-![Mantıksal Izleyici logosu](./media/partners/logicmonitor.png)
-
-LogicMonitor®, karmaşık BT altyapısı için önde gelen SaaS tabanlı, performans izleme platformudur. LogicMonitor, binlerce teknolojinin kapsamı sayesinde altyapı ve uygulama performansına ayrıntılı görünürlük sağlar. LM bulutu 'nın kapsamlı Azure izlemesi, kullanıcıların Azure bulut, şirket içi ve karma bulut kaynakları performansını tek bir platformdan ilişkilendirmesine olanak sağlar. Otomatik kaynak bulma, yerleşik izleme şablonları, önceden yapılandırılmış uyarı eşikleri ve özelleştirilebilir panolar, bu işlemi başarılı olmak için gereken hız, esneklik ve görünürlüğü sağlamak üzere birleştirir.
-
-[Belgelere gidin.][logicmonitor-doc]
-
-## <a name="logrhythm"></a>Logrhythd
-
-![Logrhythd logosu](./media/partners/logrhythm.png)
-
-NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde algılayıp, yanıtlayarak ve kararlayarak riski azaltmak için altı kıtadaki kuruluşları güçlendiriler. Logrhytha 'nın tehdit yaşam döngüsü yönetimi (TLM) iş akışı, güvenlik işlemleri merkezlerinin temelini oluşturacak ve müşterilerin BT ve OT ortamları için bulut, fiziksel ve sanal altyapılarını güvenli hale getirmeye yardımcı olur. Logrhythe müşterisi iseniz ve Azure yolculuğuna başlamaya hazırsanız, Logrhythd açık toplayıcı ve EventHub tümleştirmesini yüklemeniz ve yapılandırmanız gerekir. Azure Izleyicisini ve açık toplayıcıyı yapılandırmanın belgeleri de dahil olmak üzere daha fazla ayrıntı [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+[Belgelere git.][influxdata-doc]
 
 
+## <a name="logic-monitor"></a>Mantık Monitörü
 
-## <a name="microfocus"></a>Mikro odak
+![Mantık Monitörü Logosu](./media/partners/logicmonitor.png)
 
-![Mikro odak logosu](./media/partners/microfocus.png)     
+LogicMonitor,&reg; karmaşık BT altyapısı için SaaS tabanlı, performans izleme platformunun lideridir. LogicMonitor, binlerce teknolojinin kapsama alanıyla altyapı ve uygulama performansında ayrıntılı görünürlük sağlar. LM Cloud'un kapsamlı Azure izlemesi, kullanıcıların Azure bulutunun, şirket içi ve karma bulut kaynaklarının performansını tek bir platformdan ilişkilendirmelerine olanak tanır. İzleme şablonlarında, önceden yapılandırılmış uyarı eşikleri ve özelleştirilebilir panolarda oluşturulmuş otomatik kaynak bulma, BT'ye başarılı olmak için gereken hızı, esnekliği ve görünürlüğü sağlamak için bir araya getirilmiştir.
 
-Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
+[Belgelere git.][logicmonitor-doc]
 
-[Daha fazla bilgi](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+## <a name="logrhythm"></a>LogRhythm
 
-Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
+![LogRhythm Logosu](./media/partners/logrhythm.png)
+
+NextGen SIEM'in lideri LogRhythm, altı kıtadaki kuruluşların siber tehditleri hızla algılayarak, yanıt vererek ve nötralize ederek riski ölçülebilir şekilde azaltmalarını sağlar. LogRhythm'in Tehdit Yaşam Döngüsü Yönetimi (TLM) iş akışı, müşterilerin BT ve OT ortamları için bulut, fiziksel ve sanal altyapılarını güvence altına almalarına yardımcı olan güvenlik operasyon merkezlerinin temelidir. LogRhythm müşterisiyseniz ve Azure yolculuğunuza başlamaya hazırsanız, LogRhythm Open Collector ve EventHub tümleştirmesini yüklemeniz ve yapılandırmanız gerekir. Hem Azure Monitor'u hem de Açık Toplayıcı'yı yapılandırmanın belgeleri de dahil olmak üzere daha fazla ayrıntıya [buradan](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)buradan ulabilirsiniz. 
+
+
+
+## <a name="microfocus"></a>Mikro odaklama
+
+![Microfocus Logosu](./media/partners/microfocus.png)     
+
+Microfocus **ArcSight,** Azure Monitor etkinlik merkezleri için akıllı bir konektöre sahiptir.
+
+[Daha fazlasını öğrenin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight belgeleri.")
+
+Microfocus **Operations Bridge,** tüm Karma BT kaynaklarını (herhangi bir cihaz, işletim sistemi, veritabanı, uygulama veya hizmet) otomatik olarak izler ve aiops'ları tüm veri türlerine (etkinlikler, ölçümler, günlükler ve bağımlılıklar) uygular. Kapsamlı uygulama durumu analiziyle birleştiğinde hizmet izleme kalitesinin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetlerinin kapsamlı performans ve kullanılabilirlik izlemesini içerir. Operations Bridge, müşterilerin hem iş hem de BT hissedarlarının anlayabileceği şekilde tarayıcısı olan herhangi bir cihazda kullanılabilen tek bir cam bölmesağlamalarını sağlar.
 
 Daha fazla bilgi edinin
-- [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [OB Suite'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
-- [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) - SiteScope, Operations Bridge Suite'in bir bileşenidir.
 
 
 
@@ -148,111 +148,129 @@ Daha fazla bilgi edinin
 
 ![Moogsoft](./media/partners/moogsoft.png)
 
-Moogsoft Aıops, çevik iş dönüşümünü hızlandırır.
+Moogsoft AIOps çevik iş dönüşüm hızlandırır.
 
-Microsoft Azure Otomasyon ve denetim araçları, Azure 'da dağıtılan uygulamaların ve mikro hizmetlerin durumuna gerçek zamanlı bir pencere sağlar. Daha hızlı düzeltme için tanılamayı ve Runbook 'ları düzenlemeye yardımcı olurlar. Diğer üçüncü taraf araçları, şirket içi uygulamalara ve altyapı durumuna bir pencere sağlar.
+Microsoft Azure Otomasyon ve Denetim araçları, Azure'da dağıtılan Uygulamalar ve mikro hizmetlerin durumuna gerçek zamanlı bir pencere sağlar. Daha hızlı düzeltme için tanılama ve runbook'ların düzenlenmesine yardımcı olurlar. Diğer üçüncü taraf araçları, şirket içi Uygulamalar ve altyapı durumuna açılan bir pencere sağlar.
 
-Moogsoft Aıops, var olan süreçler ve kuruluş yapısını değiştirmeden olayı düzeltme akışını otomatik hale getirir. 
+Moogsoft AIOps, varolan süreçleri ve organizasyon yapısını değiştirmeden Olay'dan Düzeltme iş akışını otomatikleştirir. 
 
-Azure gerçek BT kuruluşunuzda, karma dokudaki izleme ve otomasyon araçları tümleştirmesiyle birlikte çalışır. Moogsoft 
- - uygulama etkileyen olayları daha önce etkin bir şekilde algılar 
- - durumu uyumlu hale getirmek için uygun kaynakları dinamik olarak düzenleyin 
- - Müşteri deneyiminin düzeltilmesi ve olumsuz etkileri için ortalama süreyi azaltır. 
+Moogsoft, azure gayrimenkulünüzde, hibrit kumaş taki izleme ve otomasyon araçlarına entegrasyonla çalışır. Moogsoft 
+ - uygulamaları etkileyen olayları daha önce etkin bir şekilde algılar 
+ - durumun farkına varmak için uygun kaynakları dinamik olarak yönetir 
+ - müşteri deneyimini düzeltmek için ortalama süreyi azaltır. 
 
-[Belgelere gidin.][moogsoft-doc]
+[Belgelere git.][moogsoft-doc]
 
 ## <a name="newrelic"></a>NewRelic
 
-![Newrelik logosu](./media/partners/newrelic.png)
+![NewRelic Logosu](./media/partners/newrelic.png)
 
 [Daha fazla bilgi edinin.][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 
-![OpsGenie logosu](./media/partners/opsgenie.png)
+![OpsGenie Logosu](./media/partners/opsgenie.png)
 
-OpsGenie, Azure tarafından oluşturulan uyarılar için bir dağıtıcı görevi görür. OpsGenie, çağrı zamanlamalarını ve yürüyen istekleri temel alarak bildirimde bulunan doğru kişileri belirler. E-posta, SMS mesajı (SMS), telefon aramaları veya anında iletme bildirimleri ile bu kişilere bildirim gönderebilir. Azure algılanan sorunlar için uyarılar oluşturur. OpsGenie, sorun üzerinde doğru kişilerin çalışmamasını sağlar.
+OpsGenie, Azure tarafından oluşturulan uyarılar için bir gönderici görevi görür. OpsGenie, çağrı zamanlamalarına ve yükseltmelere göre bildirimde bulunmak için doğru kişileri belirler. E-posta, kısa mesaj (SMS), telefon görüşmeleri veya anında iletme bildirimleri kullanarak bunları bildirebilir. Azure, algılanan sorunlar için uyarılar oluşturur. OpsGenie doğru insanların sorun üzerinde çalışmasını sağlar.
 
-[Belgelere gidin.][opsgenie-doc]
+[Belgelere git.][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
 
-![Pagerharcı logosu](./media/partners/pagerduty.png)
+![PagerDuty Logosu](./media/partners/pagerduty.png)
 
-Önde gelen olay yönetimi çözümü olan Pagerharcı, ölçümler üzerinde Azure uyarıları için birinci sınıf destek sağlamıştır. Pagerharcı Azure Izleyici uyarıları, otomatik ölçeklendirme bildirimleri, etkinlik günlüğü olayları ve Azure hizmetleri için platform düzeyi ölçümlerinde bildirimleri destekler. Bu geliştirmeler, çekirdek Azure platformu için daha fazla görünürlük sağlar. Gerçek zamanlı yanıt için, Pagervergisinin olay yönetimi olanaklarından tam olarak yararlanabilirsiniz. Genişletilmiş Azure tümleştirmesi Web kancaları aracılığıyla mümkün hale getirilir. Web kancaları çözümü hızla ve kolayca ayarlamanıza ve özelleştirmenize olanak tanır.
+Önde gelen olay yönetimi çözümü PagerDuty, Azure Uyarıları için ölçümler de birinci sınıf destek sağlamıştır. PagerDuty, Azure Hizmetleri uyarıları, otomatik ölçeklendirme bildirimleri, etkinlik günlüğü etkinlikleri ve Azure hizmetleri için platform düzeyinde ölçümlerdeki bildirimleri destekler. Bu geliştirmeler, temel Azure Platformu'nda daha fazla görünürlük sunar. Gerçek zamanlı yanıt için PagerDuty'nin olay yönetimi özelliklerinden tam olarak yararlanabilirsiniz. Genişletilmiş Azure tümleştirmesi webhooks aracılığıyla mümkün olur. Webhooks, çözümü hızlı ve kolay bir şekilde kurmanızı ve özelleştirmenizi sağlar.
 
-[Belgelere gidin.][pagerduty-doc]
+[Belgelere git.][pagerduty-doc]
 
 ## <a name="qradar"></a>QRadar
 
-![QRadar logosu](./media/partners/qradar.png)
+![QRadar Logosu](./media/partners/qradar.png)
 
-Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. [Azure ile tümleştirme hakkında daha fazla bilgiye buradan][qradar-doc] ulaşabilirsiniz.
+Microsoft Azure DSM ve Microsoft Azure Etkinlik Hub Protokolü [IBM destek web sitesinden](https://www.ibm.com/support)indirilebilir. [Azure ile tümleştirme hakkında daha fazla bilgiye buradan][qradar-doc] ulaşabilirsiniz.
 
 ## <a name="sciencelogic"></a>ScienceLogic
 
-![ScienceLogic logosu](./media/partners/sciencelogic.png)
+![ScienceLogic Logosu](./media/partners/sciencelogic.png)
 
-ScienceLogic, herhangi bir teknolojiyi yönetmek için bir sonraki nesil BT hizmeti güvencesi platformunu sunar. ScienceLogic, BT kaynaklarını, hizmetleri ve uygulamaları yönetme görevlerini basitleştirmek için gereken ölçek, güvenlik, otomasyon ve dayanıklılığı sağlar. ScienceLogic platformu Microsoft Azure ile arabirim sağlamak için Azure API 'Lerini kullanır. ScienceLogic, Azure hizmetlerinize ve kaynaklarınıza gerçek zamanlı görünürlük sağlar. Bu nedenle, bir şeyin çalışmadığını ve daha hızlı bir şekilde düzelbileceğinizi bilirsiniz. Ayrıca, diğer bulutlarınızın yanı sıra veri merkezi sistemleriniz ve hizmetlerinizle birlikte Azure 'ı da yönetebilirsiniz.
+ScienceLogic, her yerde, her teknolojiyi yönetmek için yeni nesil BT hizmet güvence platformuna sahiptir. ScienceLogic, BT kaynaklarını, hizmetlerini ve uygulamalarını yönetme görevlerini basitleştirmek için gereken ölçek, güvenlik, otomasyon ve esnekliği sağlar. ScienceLogic platformu, Microsoft Azure ile arayüz oluşturmak için Azure API'lerini kullanır. ScienceLogic, Azure hizmetleriniz ve kaynaklarınız için gerçek zamanlı görünürlük sağlar. Yani bir şey işe yaramıyorsa daha hızlı tamir edebilirsin. Azure'u diğer bulutların ve veri merkezi sistemlerinizve hizmetlerinizin yanı sıra yönetebilirsiniz.
 
 [Daha fazla bilgi edinin.][sciencelogic-doc]
 
 ## <a name="serverless360"></a>Serverless360
 
-![Serverless360 logosu](./media/partners/serverless360.png)
+![Serverless360 Logo](./media/partners/serverless360.png)
 
-Serverless360, Azure sunucusuz bileşenleri çalıştırmak, yönetmek ve izlemek için bir platform aracıdır. Yönetilebilirlik, sunucusuz uygulamalarla ilgili önemli güçlüklerden biridir. Yüzlerce küçük, ayrık sunucusuz hizmet çeşitli yerlerde dağınık, bu tür çözümleri yönetme ve çalıştırma karmaşıktır. Serverless360, bu zorlukları zengin kapsamlı araçlar kümesiyle çözer. Azure Işlevleri, Logic Apps, olay kılavuzları, Service Bus kuyrukları, konular, geçişler, Event Hubs, depolama kuyrukları, dosyalar, blob ve tablolar gibi sunucusuz Hizmetleri izleyebilir. Serverless360, Azure Marketi 'nde kullanılabilir. Bu yetenekler hem SaaS hem de özel barındırma üzerinde (kendi ortamınızda barındırılır) kullanılabilir.  
+Serverless360, Azure sunucusuz bileşenlerini çalıştırmak, yönetmek ve izlemek için tek bir platform aracıdır. Yönetilebilirlik, sunucusuz uygulamaların önündeki en önemli zorluklardan biridir. Yüzlerce küçük, ayrık sunucusuz hizmet çeşitli yerlere dağılmış durumdadır – bu tür çözümleri yönetmek ve işletmek karmaşıktır. Serverless360 sofistike araçlar zengin kümesi ile bu zorlukları çözer. Azure İşlevleri, Mantık Uygulamaları, Olay Izgaraları, Servis Veri Merkezi Kuyrukları, Konular, Röleler, Olay Hub'ları, Depolama kuyrukları, dosyalar, blob ve tablolar gibi sunucusuz hizmetleri izleyebilir. Serverless360, Azure Marketi'nde kullanılabilir. Bu özellikler hem SaaS hem de özel barındırma (kendi ortamınızda barındırılan) mevcuttur.  
 
 [Daha fazla bilgi edinin.][serverless360-doc]
 
+## <a name="servicenow"></a>ServiceNow
+
+![ServiceNow Logosu](./media/partners/servicenow.png)
+
+Gürültüyü ortadan kaldırmak, ml kullanarak kök neden algılamayı belirlemek ve ITX iş akışlarını düzeltmek için NOW AIOps platformu yla olayları ve MTTR'yi azaltın.  Azure'daki Iaas/PaaS/FaaS hizmetlerinizin geçerli durumunu anlayın ve iş etki çözümlemesi için uygulama hizmeti bağlamı oluşturmak için etiketlerden hizmet haritaları oluşturun.    
+
+[Daha fazla bilgi edinin.](https://www.servicenow.com/solutions/aiops.html)
+
 ## <a name="signalfx"></a>SignalFx
 
-![SignalFX logosu](./media/partners/signalfx.png)
+![SignalFX Logosu](./media/partners/signalfx.png)
 
-SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lideridir. Hizmet, buluttaki her bileşen genelinde ölçümleri bulur ve toplar. Geleneksel nokta araçlarının yerini alır ve bugünün dinamik ortamlarında gerçek zamanlı görünürlük sağlar. Yüksek düzeyde ölçeklenebilir SignalFx platformundan yararlanarak, SaaS platformu kapsayıcı ve mikro hizmet tabanlı mimariler için iyileştirilmiştir ve kuruluşlar genelinde güçlü görselleştirme, proaktif uyarı ve işbirliğine dayalı önceliklendirme olanakları sağlar. Tüm boyutlar. Signalfx, doğrudan Azure izleyici ile tümleşir ve *telegraf*, *statsd*ve *toplanan* gibi açık kaynaklı bağlayıcılar aracılığıyla Azure için en iyi sınıf panoları, analizlerini ve uyarıları sağlar.
+SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel istihbaratta liderdir. Hizmet, buluttaki her bileşendeki ölçümleri keşfeder ve toplar. Geleneksel nokta araçlarının yerini alır ve günümüzün dinamik ortamlarına gerçek zamanlı görünürlük sağlar. Büyük ölçüde ölçeklenebilir SignalFx platformundan yararlanan SaaS platformu, konteyner ve mikro hizmetlere dayalı mimariler için optimize edilmiştir ve kuruluşlar arasında güçlü görselleştirme, proaktif uyarı ve işbirlikçi önceliklendirme özellikleri sağlar. tüm boyutlarda. SignalFx, doğrudan Azure Monitor'un yanı sıra *Telegraf*, *statsD*gibi açık kaynak bağlantıları aracılığıyla da entegre olur ve Azure için sınıf panolarında, analizlerde ve uyarılarda en iyiyi sağlamak için *toplanır.*
 
-[Belgelere gidin.][signalfx-doc]
+[Belgelere git.][signalfx-doc]
 
-## <a name="signl4"></a>SıGNL4
-![SıGNL4 logosu](./media/partners/signl4.png)
+## <a name="signl4"></a>SIGNL4
 
-SıGNL4-işlem ekipleri için mobil uyarı uygulaması-Azure Izleyici 'den doğru kişilere, gönderim, metin ve sesli çağrılardan herhangi bir yere kadar olan kritik uyarıları yönlendirmenin en hızlı yoludur. SıGNL4, takımlarınıza yönelik arama görevlerini ve vardiyaları yönetir, uyarıların teslimini ve sahipliğini izler ve gerekirse ilerletir. Takımınız genelinde tam saydamlık sağlanır. SıGNL4 'in süper kolay REST Web kancasını kullanmak herhangi bir Azure hizmeti için herhangi bir çaba olmadan bağlanabilir. SıGNL4 ile e-posta bildirimleri ve el ile uyarı üzerinden 10 kat daha hızlı yanıt görürsünüz.
+![SIGNL4 Logosu](./media/partners/signl4.png)
 
-[Belgelere gidin.][signl4-doc]
+İşlem ekipleri için mobil uyarı uygulaması OLAN SIGNL4, kritik uyarıları Azure Monitor'dan doğru kişilere doğru zamanda - her yerde itme, metin ve sesli aramalarla yönlendirmenin en hızlı yoludur. SIGNL4, ekibinizin görev ve vardiyalarını yönetir, uyarıların teslimini ve sahipliğini izler ve gerekirse artar. Ekibiniz genelinde tam saydamlık sağlanır. SIGNL4'ün süper kolay REST web kancasını kullanarak herhangi bir Azure hizmeti hiçbir çaba harcamadan bağlanabilir. SIGNL4 ile, e-posta bildirimleri ve manuel uyarı üzerinden 10 kata kadar daha hızlı yanıt göreceksiniz.
 
-## <a name="solarwinds"></a>SolarWinds
+[Belgelere git.][signl4-doc]
+
+## <a name="solarwinds"></a>Solarwinds
 
 [Daha fazla bilgi edinin.][solarwinds-doc]
 
 ## <a name="splunk"></a>Splunk
 
-![Splunk logosu](./media/partners/splunk.png)
+![Splunk Logo](./media/partners/splunk.png)
 
-Splunk için Azure Izleyici eklentisi [burada Splunkbase 'de bulunabilir](https://splunkbase.splunk.com/app/3534/).
+Splunk için Azure Monitör Eklentisi, [Splunkbase'de mevcuttur.](https://splunkbase.splunk.com/app/3534/)
 
-[Belgelere gidin.][splunk-doc]
+[Belgelere git.][splunk-doc]
+
+## <a name="squaredup"></a>KaredUp 
+
+![SquaredUp Logosu](./media/partners/squaredup.png)
+
+Azure için SquaredUp, Azure uygulamalarınızı görselleştirmeyi çok basit hale getirir. Size gerçek zamanlı, etkileşimli panolar verir. CPU, en çok gelen bağlantılar, Application Insights yanıt süresi, toplam maliyet ve özet sistem durumu durumu gibi ölçümleri görmek için abonelikleri, kaynak gruplarını, etiketleri ve tek tek kaynakları ayrıntılı olarak ele alabilir ve ilgili verileri görmek için delinebilirsiniz uyarılar, Log Analytics olayları, daha ayrıntılı ölçümler veya serviceNow, Dynatrace, PagerDuty veya Pingdom gibi kullandığınız diğer araçlardan ilgili verileri görmek için.  Kendi panolarınızı özelleştirebilir, yayımlayabilir ve bireylerle veya intranet sayfalarında paylaşabilirsiniz. 
+
+[Daha fazla bilgi edinin.](https://squaredup.com/)
 
 ## <a name="sumo-logic"></a>Sumo Logic
 
-![Sumo Logic logosu](./media/partners/SumoLogic.png)
+![Sumo Mantık Logosu](./media/partners/SumoLogic.png)
 
-Sumo Logic, tüm uygulama yaşam döngüsü ve yığını genelinde yapılandırılmış, yarı yapılandırılmış ve yapılandırılmamış verilerden gerçek zamanlı, sürekli zeka sağlayan güvenli, bulut Yerel bir makine veri analizi hizmetidir. Dünyanın dört bir yanındaki 1.000 ' den fazla müşterisi, uygulamalarını ve bulut altyapılarını oluşturma, çalıştırma ve güvenliğini sağlama konusunda analizler ve Öngörüler için Toplao mantığını kullanır. Sumo mantığı sayesinde, müşteriler rekabet avantajı, iş değeri ve büyümeyi artırmaya yardımcı olmak için çok kiracılı, hizmet modeli avantajına sahip olur.
+Sumo Logic, tüm uygulama yaşam döngüsü ve yığını boyunca yapılandırılmış, yarı yapılandırılmış ve yapılandırılmamış verilerden gerçek zamanlı, sürekli zeka sunan güvenli, bulut ait, makine veri analizi hizmetidir. Dünya çapında 1.000'den fazla müşteri, uygulamalarını ve bulut altyapılarını oluşturmak, çalıştırmak ve güvence altına almak için analiz ve öngörüler için Sumo Logic'e güveniyor. Sumo Logic ile müşteriler, rekabet avantajını, iş değerini ve büyümeyi artırmaya yardımcı olmak için çok kiracılı, hizmet modeli avantajı elde edin.
 
 [Daha fazla bilgi edinin.][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
 
-![Turbonomic logosu](./media/partners/Turbonomic.png)
+![Turbonomik Logo](./media/partners/Turbonomic.png)
 
-Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olarak iyileştirerek karma bulutları için iş yükü otomasyonu sağlar. Turbonomic, kuruluşların Azure 'da BT 'yi sürekli olarak iyileştirerek, uygulamaların SLA 'ları, depolama alanı ve ağ genelinde IaaS ve PaaS için daha fazla şey almasını sağlamak için ihtiyaç duydukları kaynakları sürekli aldığından emin olmaya yardımcı olur. katmanı. Kuruluşlar, geçişlerin benzetimini yapabilir, iş yüklerinin düzgün şekilde ölçeklendirilmesine ve veri merkezi kaynaklarını devre dışı bırakabilirler. Bu arada, hem performans hem de uyumluluğun yanı sıra bütçe dahilinde Azure 'a geçiş Turbonomic, API odaklı ve Azure 'da ve şirket içinde aracısız bir VM olarak çalışır.
+Turbonomic, performansı, maliyeti ve uyumluluğu gerçek zamanlı olarak aynı anda optimize ederek karma bulutlar için iş yükü otomasyonu sağlar. Turbonomic, uygulamaların SLA'larını teslim etmek için ihtiyaç duydukları kaynakları sürekli olarak elde etmesini ve IaaS ve PaaS için bilgi işlem, depolama ve ağ üzerinden başka bir şey elde etmesini sağlamak için, kuruluşların Azure mülklerinde esnek olmalarına yardımcı olur Katman. Kuruluşlar geçişleri simüle edebilir, iş yüklerini düzgün bir şekilde ölçeklendirebilir ve veri merkezi kaynaklarını hem performans hem de uyumluluk sağlarken bütçe dahilinde zamanında Azure'a geçiş yapmak için emekli yedirebilir. Turbonomic API odaklıdır ve Azure'da ve şirket içinde aracısız VM olarak çalışır.
 
 [Daha fazla bilgi edinin.][turbonomic-doc]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Izleyici hakkında daha fazla bilgi edinin](../../azure-monitor/overview.md)
-- [REST API kullanarak ölçümlere erişin](rest-api-walkthrough.md)
-- [Etkinlik günlüğünü Microsoft dışı bir hizmete akış](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Kaynak günlüklerini Microsoft dışı bir hizmete akış](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+
+- [Azure Monitör hakkında daha fazla bilgi edinin](../../azure-monitor/overview.md)
+- [REST API'sini kullanarak erişim ölçümleri](rest-api-walkthrough.md)
+- [Etkinlik Günlüğü'nün Microsoft'a ait olmayan bir hizmete akışı](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+- [Kaynak günlüklerini Microsoft'a ait olmayan bir hizmete aktarın](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 
@@ -260,27 +278,27 @@ Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olar
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic belgeleri."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics belgeleri."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
-[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric tanıtımı."
+[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetrik giriş."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
-[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "Cloudmonitorx tanıtımı."
-[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dataköpek belgeleri."
-[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "DynaTrace belgeleri."
-[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastik belgeler."
-[grafana-doc]: ./grafana-plugin.md "Azure Izleyici Grafana tümleştirmesi."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Izleyici etkileyen veri telegraf tümleştirmesi."
-[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Mantıksal Izleyici belgeleri."
+[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix giriş."
+[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog belgeleri."
+[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace belgeleri."
+[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastik dokümantasyon."
+[grafana-doc]: ./grafana-plugin.md "Azure Monitör Grafana tümleştirmesi."
+[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Akını veri Telegraf entegrasyonu."
+[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Mantık Monitörü belgeleri."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft belgeleri."
-[newrelic-doc]: https://newrelic.com/azure "Newrelik belgeleri."
+[newrelic-doc]: https://newrelic.com/azure "NewRelic belgeleri."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie belgeleri."
-[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "Pagerharcı belgeleri."
+[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty belgeleri."
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar belgeleri."
-[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic belgeleri."
+[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic dokümantasyon."
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 belgeleri."
 [signalfx-doc]: https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure "SignalFx belgeleri."
-[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "SıGNL4 belgeleri."
+[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "SIGNL4 belgeleri."
 [solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "SolarWinds belgeleri."
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk belgeleri."
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic belgeleri."
-[turbonomic-doc]: https://turbonomic.com/ "Turbonomic giriş."
+[turbonomic-doc]: https://turbonomic.com/ "Turbonomik giriş."
 

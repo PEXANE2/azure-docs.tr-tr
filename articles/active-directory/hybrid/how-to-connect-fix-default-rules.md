@@ -1,6 +1,6 @@
 ---
-title: Değiştirilen varsayılan kuralları çözme-Azure AD Connect | Microsoft Docs
-description: Azure AD Connect ile birlikte gelen değiştirilmiş varsayılan kuralları nasıl düzelteceğinizi öğrenin.
+title: Değiştirilmiş varsayılan kurallar nasıl düzeltilir - Azure AD Connect | Microsoft Dokümanlar
+description: Azure AD Connect ile birlikte gelen değiştirilmiş varsayılan kuralları nasıl düzelttiğinizi öğrenin.
 services: active-directory
 author: billmath
 manager: daveba
@@ -14,185 +14,185 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79036974"
 ---
-# <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect değiştirilen varsayılan kuralları çözme
+# <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect'te değiştirilmiş varsayılan kuralları düzeltme
 
-Azure Active Directory (Azure AD) Connect, eşitleme için varsayılan kuralları kullanır.  Ne yazık ki bu kurallar tüm kuruluşlara evrensel olarak uygulanmaz. Gereksinimlerinize göre, bunları değiştirmeniz gerekebilir. Bu makalede en yaygın özelleştirmelerin iki örneği ele alınmaktadır ve bu özelleştirmeler elde etmenin doğru yolu açıklanmaktadır.
+Azure Etkin Dizin (Azure AD) Connect eşitleme için varsayılan kuralları kullanır.  Ne yazık ki, bu kurallar tüm kuruluşlar için evrensel olarak geçerli değildir. Gereksinimlerinize bağlı olarak, bunları değiştirmeniz gerekebilir. Bu makalede, en yaygın özelleştirmeler iki örnek açıklanmaktadır ve bu özelleştirmeler elde etmek için doğru yolu açıklar.
 
 >[!NOTE] 
-> Gerekli özelleştirmeyi başarmak için mevcut varsayılan kuralları değiştirme desteklenmez. Bunu yaparsanız, bu kuralların sonraki sürümlerde en son sürüme güncelleştirilmesini engeller. İhtiyaç duyduğunuz hata düzeltmelerini veya yeni özellikleri almazsınız. Bu belgede, varolan varsayılan kuralları değiştirmeden aynı sonuca nasıl ulaşacağı açıklanmaktadır. 
+> Gerekli özelleştirmeyi elde etmek için varolan varsayılan kuralları değiştirme desteklenmez. Bunu yaparsanız, bu kuralları gelecek sürümlerde en son sürüme güncelleştirmeyi engeller. İhtiyacınız olan hata düzeltmelerini veya yeni özellikleri almazsınız. Bu belge, varolan varsayılan kuralları değiştirmeden aynı sonuca nasıl ulaşılabildiğini açıklar. 
 
-## <a name="how-to-identify-modified-default-rules"></a>Değiştirilen varsayılan kuralları belirleme
-Azure AD Connect sürüm 1.3.7.0 başlayarak, değiştirilen varsayılan kuralı kolayca belirlemek kolaydır. **Masaüstündeki uygulamalar**' a gidin ve **eşitleme kuralları Düzenleyicisi**' ni seçin.
+## <a name="how-to-identify-modified-default-rules"></a>Değiştirilmiş varsayılan kuralları belirleme
+Azure AD Connect sürümü 1.3.7.0 ile başlayarak, değiştirilmiş varsayılan kuralı belirlemek kolaydır. **Masaüstündeki Uygulamalar'a**gidin ve **Eşitleme Kuralları Düzenleyicisi'ni**seçin.
 
-![Azure AD Connect, eşitleme kuralları Düzenleyicisi vurgulanmış olarak](media/how-to-connect-fix-default-rules/default1.png)
+![Azure AD Connect, Senkronizasyon Kuralları Düzenleyicisi vurgulanır](media/how-to-connect-fix-default-rules/default1.png)
 
-Düzenleyicide, değiştirilen tüm varsayılan kurallar adının önünde bir uyarı simgesiyle gösterilir.
+Düzenleyici'de, değiştirilen varsayılan kurallar, adın önünde bir uyarı simgesiyle gösterilir.
 
 ![Uyarı simgesi](media/how-to-connect-fix-default-rules/default2.png)
 
- Aynı ada sahip devre dışı bırakılmış bir kural de görünür (Bu, standart varsayılan kuraldır).
+ Yanında aynı ada sahip devre dışı bırakılmış bir kural da görüntülenir (bu standart varsayılan kuraldır).
 
-![Standart varsayılan kuralı ve değiştirilen varsayılan kuralı gösteren eşitleme kuralları Düzenleyicisi](media/how-to-connect-fix-default-rules/default2a.png)
+![Eşitleme Kuralları Düzenleyicisi, standart varsayılan kuralı ve değiştirilmiş varsayılan kuralı nı gösterir](media/how-to-connect-fix-default-rules/default2a.png)
 
-## <a name="common-customizations"></a>Ortak özelleştirmeler
-Varsayılan kurallar için ortak özelleştirmeler aşağıda verilmiştir:
+## <a name="common-customizations"></a>Sık özelleştirmeler
+Varsayılan kurallara göre sık karşılaşılan özelleştirmeler şunlardır:
 
-- Öznitelik akışını Değiştir
-- Kapsam filtresini Değiştir
-- JOIN koşulunu Değiştir
+- Öznitelik akışını değiştirme
+- Kapsam filtresini değiştirme
+- Birleştirme koşulunu değiştirme
 
 Herhangi bir kuralı değiştirmeden önce:
 
-- Eşitleme zamanlayıcısını devre dışı bırakın. Zamanlayıcı, varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızın sorunlarını giderirken başlatılmadığından emin olun. Zamanlayıcı 'yı geçici olarak devre dışı bırakmak için PowerShell 'i başlatın ve `Set-ADSyncScheduler -SyncCycleEnabled $false`çalıştırın.
- Eşitleme zamanlayıcısını devre dışı bırakmak için PowerShell komutlarını ![](media/how-to-connect-fix-default-rules/default3.png)
+- Eşitleme zamanlayıcısını devre dışı kınla. Zamanlayıcı varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızı sorun giderirken başlamadığından emin olun. Zamanlayıcıyı geçici olarak devre dışı kılmış `Set-ADSyncScheduler -SyncCycleEnabled $false`sayılsın, PowerShell'i başlatın ve çalıştırın.
+ ![Eşitleme zamanlayıcısı devre dışı kalmak için PowerShell komutları](media/how-to-connect-fix-default-rules/default3.png)
 
-- Kapsam filtresindeki değişiklik, hedef dizindeki nesnelerin silinmesine neden olabilir. Nesnelerin kapsamı içinde herhangi bir değişiklik yapmadan önce dikkatli olun. Etkin sunucuda değişiklik yapmadan önce bir hazırlama sunucusunda değişiklik yapmanızı öneririz.
-- Yeni kural eklendikten sonra, [eşitleme kuralını doğrula](#validate-sync-rule) bölümünde belirtildiği gibi tek bir nesne üzerinde önizleme çalıştırın.
-- Yeni bir kural ekledikten veya herhangi bir özel eşitleme kuralını değiştirdikten sonra tam eşitleme çalıştırın. Bu eşitleme, tüm nesnelere yeni kurallar uygular.
+- Kapsam filtresindeki değişiklik, hedef dizindeki nesnelerin silinmesine neden olabilir. Nesnelerin kapsamlarında herhangi bir değişiklik yapmadan önce dikkatli olun. Etkin sunucuda değişiklik yapmadan önce bir evreleme sunucusunda değişiklik yapmanızı öneririz.
+- Yeni bir kural ekledikten sonra [Eşitle Kuralını Doğrula](#validate-sync-rule) bölümünde belirtildiği gibi tek bir nesne üzerinde önizleme çalıştırın.
+- Yeni bir kural ekledikten veya herhangi bir özel eşitleme kuralını değiştirdikten sonra tam bir eşitleme çalıştırın. Bu eşitleme tüm nesneleriçin yeni kurallar uygular.
 
-## <a name="change-attribute-flow"></a>Öznitelik akışını Değiştir
+## <a name="change-attribute-flow"></a>Öznitelik akışını değiştirme
 Öznitelik akışını değiştirmek için üç farklı senaryo vardır:
-- Yeni bir öznitelik ekleniyor.
-- Varolan bir özniteliğin değerini geçersiz kılma.
-- Mevcut bir özniteliğin eşitlenmemelidir.
+- Yeni bir öznitelik ekleme.
+- Varolan bir öznitelik değerini geçersiz kılma.
+- Varolan bir özniteliği eşitlememeyi seçme.
 
 Bunları standart varsayılan kuralları değiştirmeden yapabilirsiniz.
 
-### <a name="add-a-new-attribute"></a>Yeni öznitelik Ekle
-Bir özniteliğin kaynak dizininizden hedef dizine akan olmadığını fark ederseniz, bu işlemi onarmak için [Azure AD Connect Sync: Directory Extensions](how-to-connect-sync-feature-directory-extensions.md) kullanın.
+### <a name="add-a-new-attribute"></a>Yeni bir öznitelik ekleme
+Kaynak dizininizden hedef dizine bir öznitelik akmadığını fark ederseniz, bunu düzeltmek için [Azure AD Connect eşitleme: Dizin uzantılarını](how-to-connect-sync-feature-directory-extensions.md) kullanın.
 
-Uzantılar sizin için çalışmazsa, aşağıdaki bölümlerde açıklanan iki yeni eşitleme kuralı eklemeyi deneyin.
+Uzantılar sizin için işe yaramazsa, aşağıdaki bölümlerde açıklanan iki yeni eşitleme kuralı eklemeyi deneyin.
 
 
 #### <a name="add-an-inbound-sync-rule"></a>Gelen eşitleme kuralı ekleme
-Bir gelen eşitleme kuralı, özniteliğin kaynağının bir bağlayıcı alanı olduğu ve hedef metadize olduğu anlamına gelir. Örneğin, şirket içi Active Directory yeni bir öznitelik akışına Azure Active Directory için, yeni bir gelen eşitleme kuralı oluşturun. **Eşitleme kuralları düzenleyicisini**başlatın, yön olarak **gelen** ' ı seçin ve **Yeni kural ekle**' yi seçin. 
+Gelen eşitleme kuralı, öznitelik kaynağının bağlayıcı boşluk, hedefin ise metaverse olduğu anlamına gelir. Örneğin, şirket içi Active Directory'den Azure Etkin Dizin'e yeni bir öznitelik akışı sağlamak için yeni bir gelen eşitleme kuralı oluşturun. **Eşitleme Kuralları**Düzenleyicisi'ni başlatın, yön olarak **Gelen'i** seçin ve **yeni kural ekle'yi**seçin. 
 
  ![Eşitleme Kuralları Düzenleyicisi](media/how-to-connect-fix-default-rules/default3a.png)
 
-Kuralı adlandırmak için kendi adlandırma kuralınızı izleyin. Burada, **ad-User ' dan özel**' i kullanırız. Bu, kuralın özel bir kural olduğu ve Active Directory bağlayıcı alanından metadize 'ye gelen bir gelen kural olduğu anlamına gelir.   
+Kuralı adlandırmak için kendi adlandırma kuralınızı izleyin. Burada, **AD Custom In**kullanın - Kullanıcı . Bu, kuralın özel bir kural olduğu ve Etkin Dizin bağlayıcısı alanından metaverse'e gelen bir kural olduğu anlamına gelir.   
 
- ![Gelen eşitleme kuralı oluştur](media/how-to-connect-fix-default-rules/default3b.png)
+ ![Gelen eşitleme kuralı oluşturma](media/how-to-connect-fix-default-rules/default3b.png)
 
-Kuralın gelecekteki bakımının kolay olması için kuralın kendi açıklamasını sağlayın. Örneğin, açıklama kuralın amacının ne olduğunu ve neden gerekli olduğunu temel alabilir.
+Kuralın gelecekteki bakımının kolay olması için kuralın kendi açıklamasını sağlayın. Örneğin, açıklama kuralın amacının ne olduğuna ve neden gerekli olduğuna bağlı olabilir.
 
-**Bağlı sistem**, **bağlı sistem nesne türü**ve meta veri deposu **nesne türü** alanları için seçimlerinizi yapın.
+**Bağlı Sistem, Bağlı Sistem** **Nesne Türü**ve **Metaverse Object Type** alanları için seçimlerinizi yapın.
 
-0 ile 99 arasında bir öncelik değeri belirtin (sayı ne kadar düşükse, öncelik o kadar yüksektir). **Etiket**Için **parola eşitlemesini etkinleştirin**ve **devre dışı** alanları, varsayılan seçimleri kullanın.
+Öncelik değerini 0'dan 99'a kadar belirtin (sayı ne kadar düşükse, öncelik o kadar yüksektir). **Etiket**, **Parola Eşitlemesini Etkinleştir**ve Devre **Dışı Bırakılan** alanlar için varsayılan seçimleri kullanın.
 
-**Kapsam filtresi** boş tut. Bu, kuralın Active Directory bağlı sistem ile meta veri deposu arasında katılmış tüm nesneler için geçerli olduğu anlamına gelir.
+**Kapsam filtresini** boş tutun. Bu, kuralın Active Directory Connected System ile metaverse arasında birleşen tüm nesneler için geçerli olduğu anlamına gelir.
 
-**JOIN kurallarını** boş tut. Bu, kuralın standart varsayılan kuralda tanımlanan JOIN koşulunu kullandığı anlamına gelir. Bu, standart varsayılan kuralı devre dışı bırakmamalıdır veya silmemelidir. Hiçbir JOIN koşulu yoksa, öznitelik akamaz. 
+**Birleştirme kurallarını** boş tutun. Bu, bu kuralın standart varsayılan kuralda tanımlanan birleştirme koşulunu kullandığı anlamına gelir. Bu, standart varsayılan kuralı devre dışı düşürmemek veya silmemek için başka bir nedendir. Birleştirme koşulu yoksa, öznitelik akmaz. 
 
-Öznitelindeki uygun dönüştürmeleri ekleyin. Hedef özniteliyorsanız sabit bir değer akışı yapmak için bir sabit atayabilirsiniz. Kaynak veya hedef öznitelik arasında doğrudan eşlemeyi kullanabilirsiniz. Ya da özniteliği için bir ifade kullanabilirsiniz. Kullanabileceğiniz çeşitli [ifade işlevleri](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) aşağıda verilmiştir.
+Özniteliğiniz için uygun dönüşümler ekleyin. Hedef özniteliğinize sabit bir değer akışı sağlamak için sabit bir sabit atayabilirsiniz. Kaynak veya hedef özniteliği arasında doğrudan eşleme kullanabilirsiniz. Veya öznitelik için bir ifade kullanabilirsiniz. Burada kullanabileceğiniz çeşitli [ifade işlevleri](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) verebilirsiniz.
 
 #### <a name="add-an-outbound-sync-rule"></a>Giden eşitleme kuralı ekleme
-Özniteliği hedef dizine bağlamak için bir giden kuralı oluşturmanız gerekir. Bu, kaynağın metadize olduğu ve hedefin bağlı sistem olduğu anlamına gelir. Bir giden kuralı oluşturmak için, **eşitleme kuralları düzenleyicisini**başlatın, **yönü** **giden**olarak değiştirin ve **Yeni kural ekle**' yi seçin. 
+Özniteliği hedef dizine bağlamak için giden bir kural oluşturmanız gerekir. Bu, kaynağın metaverse olduğu ve hedefin bağlı sistem olduğu anlamına gelir. Giden bir kural oluşturmak için **Eşitleme Kuralları Düzenleyicisi'ni**başlatın, **Giden Yöne Yönü** değiştirin ve yeni kural **Outbound** **ekle'yi**seçin. 
 
 ![Eşitleme Kuralları Düzenleyicisi](media/how-to-connect-fix-default-rules/default3c.png)
 
-Gelen kuralında olduğu gibi, kuralı adlandırmak için kendi adlandırma kuralınızı de kullanabilirsiniz. **Bağlı sistemi** Azure AD kiracısı olarak seçin ve öznitelik değerini ayarlamak istediğiniz bağlı sistem nesnesini seçin. 0 ile 99 arasında önceliği ayarlayın. 
+Gelen kuralında olduğu gibi, kuralı adlandırmak için kendi adlandırma kuralınızı kullanabilirsiniz. Azure AD kiracı olarak **Bağlı Sistem'i** seçin ve öznitelik değerini ayarlamak istediğiniz bağlı sistem nesnesini seçin. Önceliği 0'dan 99'a ayarlayın. 
 
-![Giden eşitleme kuralı oluştur](media/how-to-connect-fix-default-rules/default3d.png)
+![Giden eşitleme kuralı oluşturma](media/how-to-connect-fix-default-rules/default3d.png)
 
-**Kapsam filtre** ve **ekleme kurallarının** boş kalmasını sağlayın. Dönüştürmeyi sabit, doğrudan veya ifade olarak girin. 
+**Kapsam filtresini** tutun ve **Birleştirme kuralları** boş tutun. Dönüşümü sabit, doğrudan veya ifade olarak doldurun. 
 
-Artık Active Directory bir kullanıcı nesnesi için yeni bir öznitelik oluşturmayı Azure Active Directory. Herhangi bir nesneden kaynak ve hedefe herhangi bir öznitelik eşlemek için bu adımları kullanabilirsiniz. Daha fazla bilgi için bkz. [özel eşitleme kuralları oluşturma](how-to-connect-create-custom-sync-rule.md) ve [kullanıcıları sağlamaya hazırlanma](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Artık Active Directory'den Azure Active Directory'ye bir kullanıcı nesnesi akışı için nasıl yeni bir öznitelik yapacağınızı biliyorsunuz. Herhangi bir nesneden kaynağa ve hedefe herhangi bir öznitelik eşlemek için bu adımları kullanabilirsiniz. Daha fazla bilgi için bkz: [Özel eşitleme kuralları oluşturma](how-to-connect-create-custom-sync-rule.md) ve kullanıcıları sağlamak için [hazırlanın.](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)
 
-### <a name="override-the-value-of-an-existing-attribute"></a>Varolan bir özniteliğin değerini geçersiz kıl
-Zaten eşlenmiş bir özniteliğin değerini geçersiz kılmak isteyebilirsiniz. Örneğin, her zaman Azure AD 'deki bir özniteliğe null değer ayarlamak istiyorsanız yalnızca bir gelen kuralı oluşturmanız yeterlidir. Sabit değeri `AuthoritativeNull`, hedef özniteliğe akış yapın. 
+### <a name="override-the-value-of-an-existing-attribute"></a>Varolan bir özniteliğin değerini geçersiz kılma
+Zaten eşlenmiş bir öznitelik değerini geçersiz kılmak isteyebilirsiniz. Örneğin, Azure AD'deki bir öznitelik için her zaman null bir değer ayarlamak istiyorsanız, yalnızca gelen bir kural oluşturmanız yeterlidir. Sabit değeri, `AuthoritativeNull`hedef özniteliğe akış olun. 
 
 >[!NOTE] 
-> Bu durumda `Null` yerine `AuthoritativeNull` kullanın. Bunun nedeni, null olmayan değerin, daha düşük önceliğe sahip olsa bile null değeri değiştirdiği (kuraldaki daha yüksek bir sayı değeri). diğer yandan `AuthoritativeNull`, diğer kurallara göre null olmayan bir değerle değiştirilmez. 
+> Bu `AuthoritativeNull` `Null` durumda yerine kullanın. Bunun nedeni, null olmayan değerin, daha düşük önceliğe (kuraldaki daha yüksek bir sayı değeri) sahip olsa bile, null değerinin yerini almasıdır. `AuthoritativeNull`, diğer taraftan, diğer kurallar tarafından null olmayan bir değer ile değiştirilmez. 
 
-### <a name="dont-sync-existing-attribute"></a>Var olan özniteliği eşitleme
-Bir özniteliği eşitlemeden dışlamak istiyorsanız, Azure AD Connect içinde belirtilen öznitelik filtreleme özelliğini kullanın. Masaüstü simgesinden **Azure AD Connect** başlatın ve ardından **eşitleme seçeneklerini Özelleştir**' i seçin.
+### <a name="dont-sync-existing-attribute"></a>Varolan özniteliği eşitleme
+Bir özniteliği eşitlemeden dışlamak istiyorsanız, Azure AD Connect'te sağlanan öznitelik filtreleme özelliğini kullanın. **Azure AD Connect'i** masaüstü simgesinden başlatın ve ardından **senkronize ekleme seçeneklerini özelleştir'i**seçin.
 
-![Ek görev seçeneklerini Azure AD Connect](media/how-to-connect-fix-default-rules/default4.png)
+![Azure AD Ek görevler seçeneklerini bağlayın](media/how-to-connect-fix-default-rules/default4.png)
 
- **Azure AD uygulaması ve öznitelik filtrelemesinin** seçili olduğundan emin olun ve **İleri**' yi seçin.
+ Azure **AD uygulaması nın ve öznitelik filtrelemenin** seçildiğinden emin olun ve **İleri'yi**seçin.
 
-![İsteğe bağlı özellikler Azure AD Connect](media/how-to-connect-fix-default-rules/default5.png)
+![Azure AD Bağlama isteğe bağlı özellikler](media/how-to-connect-fix-default-rules/default5.png)
 
-Eşitlemeden dışlamak istediğiniz öznitelikleri temizleyin.
+Eşitleme dışında hariç tutmak istediğiniz öznitelikleri temizleyin.
 
 ![Azure AD Connect öznitelikleri](media/how-to-connect-fix-default-rules/default6a.png)
 
-## <a name="change-scoping-filter"></a>Kapsam filtresini Değiştir
-Azure AD Eşitleme nesnelerden çoğu zaman sürer. Nesnelerin kapsamını azaltabilir ve standart varsayılan eşitleme kurallarını değiştirmeden, aktarılacak nesne sayısını azaltabilirsiniz. 
+## <a name="change-scoping-filter"></a>Kapsam filtresini değiştirme
+Azure AD Eşitlemi nesnelerin çoğuyla ilgilenir. Standart varsayılan eşitleme kurallarını değiştirmeden nesnelerin kapsamını azaltabilir ve dışa aktarılacak nesne sayısını azaltabilirsiniz. 
 
-Eşitmekte olduğunuz nesnelerin kapsamını azaltmak için aşağıdaki yöntemlerden birini kullanın:
+Eşitlediğiniz nesnelerin kapsamını azaltmak için aşağıdaki yöntemlerden birini kullanın:
 
-- Cloudfiltrelenmiş özniteliği
-- Kuruluş birimi filtreleme
+- cloudFiltreed öznitelik
+- Organizasyon birimi filtreleme
 
-Eşitlenen kullanıcıların kapsamını azaldıysanız, Parola karması eşitlemesi de filtrelenmiş kullanıcılar için de duraklar. Nesneler zaten eşitleniyorsa, kapsamı azaltdıktan sonra filtrelenmiş nesneler hedef dizinden silinir. Bu nedenle, çok dikkatli bir şekilde kapsamınız olduğundan emin olun.
+Eşitlenen kullanıcıların kapsamını azaltırsanız, filtreuygulanmış kullanıcılar için parola karma eşitleme de durur. Nesneler zaten eşitlenmişse, kapsamı azalttıktan sonra, filtreden çıkan nesneler hedef dizinden silinir. Bu nedenle, çok dikkatli bir şekilde kapsama emin olun.
 
 >[!IMPORTANT] 
-> Azure AD Connect tarafından yapılandırılan nesnelerin kapsamını artırma önerilmez. Bunun yapılması, Microsoft destek ekibinin özelleştirmeleri anlamasına zorlaştırıyor. Nesnelerin kapsamını artırmanız gerekiyorsa, var olan kuralı düzenleyin, kopyalayın ve özgün kuralı devre dışı bırakın. 
+> Azure AD Connect tarafından yapılandırılan nesnelerin kapsamını artırmanız önerilmez. Bunu yapmak, Microsoft destek ekibinin özelleştirmeleri anlamasını zorlaştırır. Nesnelerin kapsamını artırmanız gerekiyorsa, varolan kuralı edin, kopyalave özgün kuralı devre dışı edin. 
 
-### <a name="cloudfiltered-attribute"></a>Cloudfiltrelenmiş özniteliği
-Bu özniteliği Active Directory ayarlayamazsınız. Bu özniteliğin değerini yeni bir gelen kuralı ekleyerek ayarlayın. Daha sonra bu özniteliği meta veri deposunda ayarlamak için **dönüştürme** ve **ifade** kullanabilirsiniz. Aşağıdaki örnek, Bölüm adı **HRD** (büyük/küçük harf duyarsız) ile başlayan tüm kullanıcıları eşitlemek istemediğinizi gösterir:
+### <a name="cloudfiltered-attribute"></a>cloudFiltreed öznitelik
+Bu özniteliği Active Directory'de ayarlayamadığınız. Yeni bir gelen kuralı ekleyerek bu özniteliğin değerini ayarlayın. Daha sonra bu özniteliği metaverse ayarlamak için **Dönüşüm** ve **İfade** kullanabilirsiniz. Aşağıdaki örnek, departman adı **HRD** (büyük/küçük harf duyarsız) ile başlayan tüm kullanıcıları eşitlemek istemediğinizi gösterir:
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-Önce departmanı kaynaktan (Active Directory) küçük harfe dönüştürüyoruz. Daha sonra, `Left` işlevini kullanarak yalnızca ilk üç karakteri aldık ve bunu `hrd`karşılaştırdık. Eşleşirse, değer `True`olarak ayarlanır, aksi takdirde `NULL`. Değeri null olarak ayarlamak için, daha düşük önceliğe sahip başka bir kural (daha yüksek bir sayı değeri), farklı bir koşula göre yazılabilir. [Eşitleme kuralını doğrula bölümünde belirtildiği](#validate-sync-rule) gibi eşitleme kuralını doğrulamak için bir nesnede önizlemeyi çalıştırın.
+Bölümü ilk olarak kaynaktan (Active Directory) küçük harfe dönüştürdük. Daha sonra, `Left` işlevi kullanarak, biz sadece ilk üç `hrd`karakter aldı ve ile karşılaştırıldığında . Eşleşirse, değer `True`, aksi `NULL`takdirde ayarlanır. Değeri null'a ayarlarken, daha düşük önceliğe (daha yüksek bir sayı değeri) sahip başka bir kural ona farklı bir koşulla yazabilir. [Eşitleme kuralını doğrulamak](#validate-sync-rule) için tek bir nesne üzerinde önizleme çalıştırın.
 
-![Gelen eşitleme kuralı seçeneklerini oluşturma](media/how-to-connect-fix-default-rules/default7a.png)
+![Gelen eşitleme kuralı seçenekleri oluşturma](media/how-to-connect-fix-default-rules/default7a.png)
 
 ### <a name="organizational-unit-filtering"></a>Kuruluş birimi filtreleme
-Bir veya daha fazla kuruluş birimi (OU) oluşturabilir ve bu OU 'Lara eşitlemek istemediğiniz nesneleri taşıyabilirsiniz. Ardından, Azure AD Connect ' de OU filtrelemesini yapılandırın. Masaüstü simgesinden **Azure AD Connect** başlatın ve aşağıdaki seçenekleri belirleyin. Ayrıca, Azure AD Connect yükleme sırasında OU filtresini yapılandırabilirsiniz. 
+Bir veya daha fazla kuruluş birimi (OS) oluşturabilir ve bu OS'lerle eşitlemek istemediğiniz nesneleri taşıyabilirsiniz. Ardından, Azure AD Connect'te OU filtresini yapılandırın. **Azure AD Connect'i** masaüstü simgesinden başlatın ve aşağıdaki seçenekleri seçin. Azure AD Connect'in yüklenmesi sırasında OU filtresini de yapılandırabilirsiniz. 
 
-![Ek görevler Azure AD Connect](media/how-to-connect-fix-default-rules/default8.png)
+![Azure AD Ek görevleri bağlama](media/how-to-connect-fix-default-rules/default8.png)
 
-Sihirbazı izleyin ve eşitlemek istemediğiniz OU 'Ları temizleyin.
+Sihirbazı izleyin ve eşitlemek istemediğiniz OS'leri temizleyin.
 
-![Azure AD Connect etki alanı ve OU filtreleme seçenekleri](media/how-to-connect-fix-default-rules/default9.png)
+![Azure AD Connect Etki Alanı ve OU filtreleme seçenekleri](media/how-to-connect-fix-default-rules/default9.png)
 
-## <a name="change-join-condition"></a>JOIN koşulunu Değiştir
-Azure AD Connect tarafından yapılandırılan varsayılan JOIN koşullarını kullanın. Varsayılan JOIN koşullarını değiştirmek, Microsoft desteğinin özelleştirmeleri anlamasına ve ürünü desteklemeye zorlaştırmasına neden olur.
+## <a name="change-join-condition"></a>Birleştirme koşulunu değiştirme
+Azure AD Connect tarafından yapılandırılan varsayılan birleştirme koşullarını kullanın. Varsayılan birleştirme koşullarını değiştirmek, Microsoft desteğinin özelleştirmeleri anlamasını ve ürünü desteklemesini zorlaştırır.
 
 ## <a name="validate-sync-rule"></a>Eşitleme kuralını doğrula
-Yeni eklenen eşitleme kuralını, tam eşitleme döngüsünü çalıştırmadan önizleme özelliğini kullanarak doğrulayabilirsiniz. Azure AD Connect, **eşitleme hizmeti**' ni seçin.
+Önizleme özelliğini kullanarak, tam eşitleme döngüsünü çalıştırmadan yeni eklenen eşitleme kuralını doğrulayabilirsiniz. Azure AD Connect'te **Eşitleme Hizmeti'ni**seçin.
 
-![Azure AD Connect, eşitleme hizmeti vurgulanmış olarak](media/how-to-connect-fix-default-rules/default10.png)
+![Azure AD Connect, Senkronizasyon Hizmeti vurgulanır](media/how-to-connect-fix-default-rules/default10.png)
 
-**Metadize aramasını**seçin. Kapsam nesnesini **kişi**olarak seçin, **yan tümce Ekle**' yi seçin ve arama ölçütlerinizle bahsetin. Ardından **Ara**' yı seçin ve arama sonuçlarında nesneye çift tıklayın. Bu adımı çalıştırmadan önce, ormanda içeri aktar ve Eşitle ' yi çalıştırarak, bu nesne için Azure AD Connect verilerinizin güncel olduğundan emin olun.
+**Metaverse Arama'yı**seçin. Kapsam nesnesini **kişi**olarak seçin, **Yan Tümce Ekle'yi**seçin ve arama ölçütlerinizi belirtin. Ardından, **Arama'yı**seçin ve arama sonuçlarında nesneyi çift tıklatın. Azure AD Connect'teki verilerinizin, bu adımı çalıştırmadan önce ormanda içe aktarma ve eşitleme çalıştırarak bu nesne için güncel olduğundan emin olun.
 
 ![Eşitleme Hizmeti Yöneticisi](media/how-to-connect-fix-default-rules/default11.png)
 
-Meta veri deposu **nesne özellikleri**üzerinde **Bağlayıcılar**' ı seçin, ilgili bağlayıcıdaki (orman) nesneyi seçin ve Özellikler ' i seçin. **..**
+**Metaverse Nesne**Özellikleri'nde, **Bağlayıcılar'ı**seçin, ilgili bağlayıcıdaki nesneyi (orman) seçin ve **Özellikler'i seçin... seçeneğini belirleyin.**
 
-![Meta Veri Deposu Nesne Özellikleri](media/how-to-connect-fix-default-rules/default12.png)
+![Metaverse Nesne Özellikleri](media/how-to-connect-fix-default-rules/default12.png)
 
-**Önizleme seç...**
+**Önizleme'yi seçin...**
 
-![Bağlayıcı Alanı Nesne Özellikleri](media/how-to-connect-fix-default-rules/default13a.png)
+![Bağlayıcı Alan Nesne Özellikleri](media/how-to-connect-fix-default-rules/default13a.png)
 
-Önizleme penceresinde, sol bölmedeki **Önizleme Oluştur** ve **öznitelik akışını içeri aktar** ' ı seçin.
+Önizleme penceresinde, sol bölmede **Önizleme** oluştur ve **Öznitelik Akışını İçe'yi** seçin.
 
 ![Önizleme](media/how-to-connect-fix-default-rules/default14.png)
  
-Burada, yeni eklenen kuralın nesnede çalıştırıldığına ve `cloudFiltered` özniteliğini true olarak ayarlamış olduğuna dikkat edin.
+Burada, yeni eklenen kuralın nesne üzerinde çalıştırıldığını `cloudFiltered` ve özniteliği doğru olarak ayarladığını unutmayın.
 
 ![Önizleme](media/how-to-connect-fix-default-rules/default15a.png)
  
-Değiştirilen kuralı varsayılan kuralla karşılaştırmak için, her iki kuralı da metin dosyası olarak ayrı dışarı aktarın. Bu kurallar bir PowerShell betik dosyası olarak verilir. Değişiklikleri görmek için herhangi bir dosya karşılaştırma aracını (örneğin, Windiff) kullanarak bunları karşılaştırabilirsiniz. 
+Değiştirilen kuralı varsayılan kuralla karşılaştırmak için, her iki kuralı da metin dosyaları olarak ayrı ayrı dışa aktarın. Bu kurallar PowerShell komut dosyası dosyası olarak dışa aktarılır. Değişiklikleri görmek için herhangi bir dosya karşılaştırma aracını (örneğin, windiff) kullanarak karşılaştırabilirsiniz. 
  
-Değiştirilen kuralda, `msExchMailboxGuid` özniteliğinin **doğrudan**değil **ifade** türüyle değiştirildiğini unutmayın. Ayrıca, değer **null** ve **executeonce** seçeneği olarak değişir. Tanımlanan ve öncelik farklılıklarını yoksayabilirsiniz. 
+Değiştirilen kuralda öznitelik `msExchMailboxGuid` **Doğrudan**yerine **İfade** türüne değiştirilir dikkat edin. Ayrıca, değer **NULL** ve **ExecuteOnce** seçeneği olarak değiştirilir. Tanımlanan ve Öncelik farklılıklarını yoksayabilirsiniz. 
 
-![Windiff aracı çıkışı](media/how-to-connect-fix-default-rules/default17.png)
+![windiff araç çıktısı](media/how-to-connect-fix-default-rules/default17.png)
  
-Kurallarınızı varsayılan ayarlara geri değiştirecek şekilde onarmak için, değiştirilen kuralı silin ve varsayılan kuralı etkinleştirin. Elde edilmeye çalıştığınız özelleştirmeyi kaybetmemeniz gerekir. Hazırsanız **tam eşitleme**' yi çalıştırın.
+Kurallarınızı varsayılan ayarlara geri değiştirmek için düzeltmek için değiştirilen kuralı silin ve varsayılan kuralı etkinleştirin. Ulaşmaya çalıştığınız özelleştirmeyi kaybetmemenizi sağlayın. Hazır olduğunuzda, Tam **Eşitleme'yi çalıştırın.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
-- [Hızlı ayarlar](how-to-connect-install-express.md)
+- [Ekspres ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
 
 

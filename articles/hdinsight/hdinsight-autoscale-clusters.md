@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight kümelerini otomatik ölçeklendirme
-description: Ölçek kümelerini otomatik olarak Apache Hadoop için Azure HDInsight otomatik ölçeklendirme özelliğini kullanın
+title: Azure HDInsight kümelerini otomatik olarak ölçeklendirin
+description: Otomatik olarak Apache Hadoop ölçek kümeleri için Azure HDInsight Otomatik Ölçeklendirme özelliğini kullanın
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,121 +9,121 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/05/2020
 ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399722"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik olarak ölçeklendirin
 
 > [!Important]
-> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur.
+> Azure HDInsight Otomatik Ölçeklendirme özelliği, 7 Kasım 2019'da Spark ve Hadoop kümeleri için genel kullanılabilirlik için yayımlandı ve özelliğin önizleme sürümünde bulunmayan geliştirmeleri içeriyordu. 7 Kasım 2019'dan önce bir Kıvılcım kümesi oluşturduysanız ve kümenizde Otomatik Ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede Otomatik Ölçeklendirme'yi etkinleştirmektir.
 >
-> Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir.
+> Etkileşimli Sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizlemededir. Otomatik ölçek yalnızca Spark, Hadoop, Interactive Query ve HBase kümelerinde kullanılabilir.
 
-Azure HDInsight 'ın küme otomatik ölçeklendirme özelliği, bir kümedeki çalışan düğümlerinin sayısını otomatik olarak ölçeklendirir ve kapatır. Kümedeki diğer düğüm türleri şu anda ölçeklendirilemez.  Yeni bir HDInsight kümesi oluşturulurken, en düşük ve en fazla çalışan düğümü sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, analiz yükünün kaynak gereksinimlerini izler ve çalışan düğümü sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
+Azure HDInsight'ın küme Otomatik Ölçeklendirme özelliği, kümedeki işçi düğümlerinin sayısını otomatik olarak ölçeklendirin. Kümedeki diğer düğüm türleri şu anda ölçeklendirilemiyor.  Yeni bir HDInsight kümesinin oluşturulması sırasında, en az ve en fazla sayıda alt düğüm ayarlanabilir. Otomatik ölçeklendirme daha sonra analitik yükün kaynak gereksinimlerini izler ve alt düğüm sayısını yukarı veya aşağı ölçeklendirin. Bu özellik için ek ücret alınmaz.
 
 ## <a name="cluster-compatibility"></a>Küme uyumluluğu
 
-Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
+Aşağıdaki tabloda, Otomatik Ölçek özelliğiyle uyumlu küme türleri ve sürümleri açıklanmaktadır.
 
 | Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 3.6 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4.0 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP ile HDInsight 3.6 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP ile HDInsight 4.0 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
 
-\* HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
+\*HBase kümeleri yalnızca yük tabanlı değil, zamanlama tabanlı ölçekleme için yapılandırılabilir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-HDInsight kümeniz için yük tabanlı ölçeklendirmeyi veya zamanlama tabanlı ölçeklendirmeyi seçebilirsiniz. Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek amacıyla kümenizdeki düğüm sayısını, ayarladığınız bir Aralık içinde değiştirir.
+HDInsight kümeniz için yük tabanlı ölçekleme veya zamanlama tabanlı ölçekleme seçebilirsiniz. Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için kümenizdeki düğüm sayısını, ayarladığınız bir aralık içinde değiştirir.
 
-Zamanlama tabanlı ölçeklendirme, belirli zamanlarda geçerli olan koşullara göre kümenizdeki düğüm sayısını değiştirir. Bu koşullar, kümeyi istenen sayıda düğüme ölçeklendirebilir.
+Zamanlama tabanlı ölçekleme, belirli zamanlarda etkili olan koşullara bağlı olarak kümenizdeki düğüm sayısını değiştirir. Bu koşullar kümeyi istenilen sayıda düğüme ölçeklendirin.
 
-### <a name="metrics-monitoring"></a>Ölçüm izleme
+### <a name="metrics-monitoring"></a>Ölçümler izleme
 
-Otomatik ölçeklendirme, kümeyi sürekli izler ve aşağıdaki ölçümleri toplar:
+Otomatik ölçeklendirme kümeyi sürekli olarak izler ve aşağıdaki ölçümleri toplar:
 
 |Ölçüm|Açıklama|
 |---|---|
-|Toplam bekleyen CPU|Tüm bekleyen kapsayıcıları yürütmeye başlamak için gereken toplam çekirdek sayısı.|
-|Toplam bekleyen bellek|Tüm bekleyen kapsayıcıların yürütülmesini başlatmak için gereken toplam bellek (MB cinsinden).|
-|Toplam boş CPU|Etkin çalışan düğümlerinde kullanılmayan tüm çekirdekler toplamı.|
-|Toplam boş bellek|Etkin çalışan düğümlerinde kullanılmayan belleğin (MB cinsinden) toplamı.|
-|Düğüm başına kullanılan bellek|Çalışan düğümündeki yük. 10 GB belleğin kullanıldığı bir çalışan düğümü, 2 GB kullanılan bellekle çalışan bir çalışandan daha fazla yük altında kabul edilir.|
-|Düğüm başına uygulama ana sayısı|Çalışan düğümünde çalışan uygulama ana (Har) kapsayıcıları sayısı. İki har kapsayıcıyı barındıran bir çalışan düğümü, sıfır har kapsayıcıları barındıran bir çalışan düğümünden daha önemli kabul edilir.|
+|Bekleyen Toplam İşlemci|Bekleyen tüm kapsayıcıların yürütülmesini başlatmak için gereken toplam çekirdek sayısı.|
+|Toplam Bekleyen Bellek|Bekleyen tüm kapsayıcıların yürütülmesini başlatmak için gereken toplam bellek (MB'de).|
+|Toplam Serbest Cpu|Etkin işçi düğümlerinde kullanılmayan tüm çekirdeklerin toplamı.|
+|Toplam Ücretsiz Bellek|Etkin altdüğümdeki kullanılmayan belleğin toplamı (MB'de).|
+|Düğüm Başına Kullanılan Bellek|İşçi düğümündeki yük. Üzerinde 10 GB bellek kullanılan bir işçi düğümü, 2 GB kullanılmış belleğe sahip bir işçiden daha fazla yük altında kabul edilir.|
+|Düğüm başına Uygulama Üstat Sayısı|Bir işçi düğümüüzerinde çalışan Uygulama Yöneticisi (AM) kapsayıcılarının sayısı. İki kapsayıcısı barındıran bir işçi düğümü, sıfır kapsayıcıları barındıran bir işçi düğümünden daha önemli kabul edilir.|
 
-Yukarıdaki ölçümler her 60 saniyede bir denetlenir. Otomatik ölçeklendirme, ölçek artırma ve ölçeği azaltma kararlarını bu ölçümlere göre yapar.
+Yukarıdaki ölçümler her 60 saniyede bir kontrol edilir. Otomatik ölçeklendirme, bu ölçümlere dayalı olarak ölçeklendirme ve küçültme kararları verir.
 
 ### <a name="load-based-scale-conditions"></a>Yük tabanlı ölçek koşulları
 
-Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek isteği ister:
+Aşağıdaki koşullar algılandığında, Otomatik Ölçek bir ölçek isteği yayımlar:
 
-|Ölçeği büyütme|Ölçeği azalt|
+|Ölçeği büyütme|Küçült|
 |---|---|
-|Toplam bekleyen CPU, 3 dakikadan uzun bir süre boyunca toplam boş CPU 'dan fazla.|Toplam bekleyen CPU, 10 dakikadan uzun bir süre için toplam boş CPU 'dan daha az.|
-|Toplam bekleyen bellek, 3 dakikadan uzun bir süre boyunca toplam boş bellekten fazla.|Toplam bekleyen bellek, 10 dakikadan uzun bir süre boyunca toplam boş bellekten daha düşüktür.|
+|Toplam bekleyen CPU 3 dakikadan fazla toplam ücretsiz CPU daha büyüktür.|Bekleyen toplam CPU, 10 dakikadan uzun bir süre boyunca toplam ücretsiz CPU'dan daha azdır.|
+|Toplam bekleyen bellek, 3 dakikadan fazla toplam boş bellekten daha büyüktür.|Toplam bekleyen bellek, 10 dakikadan fazla toplam boş bellekten daha azdır.|
 
-Ölçek artırma için HDInsight hizmeti, geçerli CPU ve bellek gereksinimlerini karşılamak için kaç yeni çalışan düğümünün gerekli olduğunu hesaplar ve ardından gerekli sayıda düğüm eklemek için bir ölçek isteği yayınlar.
+Ölçeklendirme için HDInsight hizmeti, geçerli CPU ve bellek gereksinimlerini karşılamak için kaç yeni alt düğüm gerektiğini hesaplar ve ardından gerekli sayıda düğüm eklemek için ölçeklendirme isteği verir.
 
-Ölçek azaltma için düğüm başına har kapsayıcısı sayısına ve geçerli CPU ve bellek gereksinimlerine bağlı olarak, otomatik ölçeklendirme belirli sayıda düğümü kaldırma isteği verir. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
+Düğüm başına kapsayıcılarının sayısına ve geçerli CPU ve bellek gereksinimlerine bağlı olarak küçültme için, otomatik ölçeklendirme belirli sayıda düğümü kaldırmak için bir istek yayınlar. Hizmet ayrıca, geçerli iş yürütme dayalı kaldırma için aday hangi düğümleri algılar. Küçültme işlemi önce düğümleri devre dışı bırakıp kümeden kaldırır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-### <a name="create-a-cluster-with-load-based-autoscaling"></a>Yük tabanlı otomatik ölçeklendirme ile küme oluşturma
+### <a name="create-a-cluster-with-load-based-autoscaling"></a>Yük tabanlı Otomatik ölçekleme ile bir küme oluşturma
 
-Otomatik ölçeklendirme özelliğini yük tabanlı ölçeklendirmeyle etkinleştirmek için, normal küme oluşturma sürecinin bir parçası olarak aşağıdaki adımları izleyin:
+Yük tabanlı ölçekleme yle Otomatik Ölçeklendirme özelliğini etkinleştirmek için, normal küme oluşturma işleminin bir parçası olarak aşağıdaki adımları tamamlayın:
 
-1. **Yapılandırma + fiyatlandırma** sekmesinde **Otomatik ölçeklendirmeyi etkinleştir** onay kutusunu seçin.
-1. **Otomatik ölçeklendirme türü**altında **Yük tabanlı** ' i seçin.
+1. Yapılandırma **+ fiyatlandırma** sekmesinde **otomatik ölçeklendir** onay kutusunu etkinleştir'i seçin.
+1. **Otomatik Ölçek türü**altında Yük **tabanlı'yı** seçin.
 1. Aşağıdaki özellikler için istenen değerleri girin:  
 
-    * **Çalışan düğümü**için Ilk **düğüm sayısı** .
-    * **En az** çalışan düğüm sayısı.
-    * Çalışan düğüm sayısı **üst sınırı** .
+    * **İşçi düğümü**için **başdüğüm sayısı.**
+    * İşçi düğümlerinin **Min** sayısı.
+    * **Maksimum** işçi düğüm sayısı.
 
-    ![Çalışan düğümü yük tabanlı otomatik ölçeklendirmeyi etkinleştir](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    ![İşçi düğümü yük tabanlı otomatik ölçeklendirmeyi etkinleştirme](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-Çalışan düğümlerinin ilk sayısı, dahil en düşük ve en yüksek arasında olmalıdır. Bu değer, oluşturulduğu sırada kümenin başlangıç boyutunu tanımlar. Çalışan düğümlerinin minimum sayısı üç veya daha fazla olarak ayarlanmalıdır. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir.  Daha fazla bilgi için bkz. [güvenli modda takılme](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+İlk işçi düğüm sayısı minimum ve maksimum, dahil arasında olmalıdır. Bu değer, oluşturulduğunda kümenin başlangıç boyutunu tanımlar. En az sayıda çalışan düğüm üç veya daha fazla olarak ayarlanmalıdır. Kümenizi üçdüğümden daha az ölçekleme, yetersiz dosya çoğaltma nedeniyle kümenin güvenli modda sıkışıp kalmasına neden olabilir.  Daha fazla bilgi için bkz: [Güvenli modda takılıp kalma.](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)
 
-### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>Zamanlama tabanlı otomatik ölçeklendirme ile küme oluşturma
+### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>Zamanlama tabanlı Otomatik ölçekleme ile bir küme oluşturma
 
-Otomatik ölçeklendirme özelliğini zamanlama tabanlı ölçeklendirmeyle etkinleştirmek için, normal küme oluşturma sürecinin bir parçası olarak aşağıdaki adımları izleyin:
+Zamanlama tabanlı ölçeklemeyle Otomatik Ölçeklendirme özelliğini etkinleştirmek için, normal küme oluşturma işleminin bir parçası olarak aşağıdaki adımları tamamlayın:
 
-1. **Yapılandırma + fiyatlandırma** sekmesinde **Otomatik ölçeklendirmeyi etkinleştir** onay kutusunu işaretleyin.
-1. **Çalışan düğümü**Için **düğüm sayısını** girin ve bu, kümenin ölçeğini ölçekleme sınırını denetler.
-1. **Otomatik ölçeklendirme türü**altında **zamanlama tabanlı** seçeneğini belirleyin.
-1. **Otomatik ölçeklendirme yapılandırma** penceresini açmak için **Yapılandır** ' ı seçin.
-1. Saat diliminizi seçin ve **+ Koşul Ekle** ' ye tıklayın.
-1. Yeni koşulun uygulanacağı haftanın günlerini seçin.
-1. Koşulun etkili olması gereken süreyi ve kümenin ölçeklendirilmesi gereken düğüm sayısını düzenleyin.
+1. Yapılandırma **+ fiyatlandırma** sekmesinde otomatik **ölçeklendir** onay kutusunu etkinleştir'i işaretleyin.
+1. Kümeyi ölçekleme sınırını kontrol eden **İşçi düğümü**için **düğüm sayısını** girin.
+1. **Otomatik Ölçek türü**altında Zamanlama **tabanlı** seçeneği seçin.
+1. **Otomatik Ölçek yapılandırma** penceresini açmak için **Yapıla'yı** seçin.
+1. Saat dilimini seçin ve ardından **+ Ekle koşulunu** tıklatın
+1. Yeni koşulun geçerli olması gereken haftanın günlerini seçin.
+1. Koşulun etkili olması gereken zamanı ve kümenin ölçeklendirilmesi gereken düğüm sayısını değiştirin.
 1. Gerekirse daha fazla koşul ekleyin.
 
-    ![Çalışan düğümü zamanlama tabanlı oluşturmayı etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Alt düğüm çizelgesi tabanlı oluşturmayı etkinleştirme](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-Düğüm sayısı 3 ile koşul eklemeden önce girmiş olduğunuz çalışan düğümü sayısının üst sınırı olmalıdır.
+Düğüm sayısı, koşul eklemeden önce girdiğiniz en fazla işçi düğümü sayısı ile 3 arasında olmalıdır.
 
 ### <a name="final-creation-steps"></a>Son oluşturma adımları
 
-Hem yük tabanlı hem de zamanlama tabanlı ölçeklendirme için, **düğüm boyutu**altındaki açılan LISTEDEN bir VM seçerek çalışan DÜĞÜMLERI için VM türünü seçin. Her düğüm türü için VM türünü seçtikten sonra, tüm küme için tahmini maliyet aralığını görebilirsiniz. VM türlerini bütçenize uyacak şekilde ayarlayın.
+Hem yük tabanlı hem de zamanlama tabanlı ölçekleme için, **Düğüm boyutu**altındaki açılır listeden bir VM seçerek işçi düğümleri için VM türünü seçin. Her düğüm türü için VM türünü seçtikten sonra, tüm küme için tahmini maliyet aralığını görebilirsiniz. VM türlerini bütçenize uyacak şekilde ayarlayın.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme düğümü boyutunu etkinleştir](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+![Alt düğüm çizelgesi tabanlı otomatik ölçek düğüm boyutunu etkinleştirme](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-Aboneliğinizin her bölge için bir kapasite kotası vardır. Baş düğümlerinizin en fazla sayıda çalışan düğümü ile Birleşik Toplam çekirdek sayısı kapasite kotasını aşamaz. Ancak, bu kota bir hafif limit; her zaman kolayca arttırılabilmeniz için bir destek bileti oluşturabilirsiniz.
+Aboneliğinizin her bölge için bir kapasite kotası vardır. Baş düğümlerinizin toplam çekirdek sayısı ve maksimum işçi düğümü sayısı kapasite kotasını aşamaz. Ancak, bu kota yumuşak bir sınırdır; her zaman kolayca artmış almak için bir destek bileti oluşturabilirsiniz.
 
 > [!Note]  
-> Toplam çekirdek kota sınırını aşarsanız, ' en fazla düğüm bu bölgedeki kullanılabilir çekirdekleri aştığından bir hata iletisi alırsınız. lütfen başka bir bölge seçin veya kotayı artırmak için desteğe başvurun. '
+> Toplam çekirdek kota sınırını aşarsanız, 'bu bölgedeki kullanılabilir çekirdekleri aşan maksimum düğüm, lütfen başka bir bölge seçin veya kotayı artırmak için desteğe başvurun' diyen bir hata iletisi alırsınız.
 
-Azure portal kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)konusuna bakın.  
+Azure portalını kullanarak HDInsight küme oluşturma hakkında daha fazla bilgi için, [Azure portalını kullanarak HDInsight'ta Linux tabanlı kümeler oluştur'a](hdinsight-hadoop-create-linux-clusters-portal.md)bakın.  
 
-### <a name="create-a-cluster-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla küme oluşturma
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu yla küme oluşturma
 
-#### <a name="load-based-autoscaling"></a>Yük tabanlı otomatik ölçeklendirme
+#### <a name="load-based-autoscaling"></a>Yük tabanlı otomatik ölçekleme
 
-Aşağıdaki JSON parçacığında gösterildiği gibi özellikler `workernode` ve `minInstanceCount` `computeProfile` > `maxInstanceCount` bölümüne `autoscale` bir düğüm ekleyerek bir Azure Resource Manager şablonu yük tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz.
+Azure Kaynak Yöneticisi şablonuna yük tabanlı Otomatik Ölçekleme `autoscale` ile, özellikleri `computeProfile`  >  `workernode` `minInstanceCount` olan bölüme bir düğüm `maxInstanceCount` ekleyerek ve aşağıdaki json snippet'inde gösterildiği gibi bir HDInsight kümesi oluşturabilirsiniz.
 
 ```json
 {
@@ -149,11 +149,11 @@ Aşağıdaki JSON parçacığında gösterildiği gibi özellikler `workernode` 
 }
 ```
 
-Kaynak Yöneticisi şablonlarıyla kümeler oluşturma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
+Kaynak Yöneticisi şablonları ile kümeoluşturma hakkında daha fazla bilgi için, [Kaynak Yöneticisi şablonlarını kullanarak HDInsight'ta Apache Hadoop kümeleri oluştur'a](hdinsight-hadoop-create-linux-clusters-arm-templates.md)bakın.  
 
-#### <a name="schedule-based-autoscaling"></a>Zamanlama tabanlı otomatik ölçeklendirme
+#### <a name="schedule-based-autoscaling"></a>Zamanlama tabanlı otomatik ölçekleme
 
-`computeProfile` > `workernode` bölümüne `autoscale` bir düğüm ekleyerek bir Azure Resource Manager şablonu zamanlama tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz. `autoscale` düğümü, değişikliğin ne zaman gerçekleştireceğinizi açıklayan bir `timezone` ve `schedule` sahip bir `recurrence` içerir.
+Bölüme `autoscale` bir düğüm `computeProfile`  >  ekleyerek, zamanlama tabanlı Bir Azure Kaynak Yöneticisi şablonu otomatik ölçekleme ile bir HDInsight kümesi oluşturabilirsiniz. `workernode` Düğüm, `autoscale` değişikliğin `recurrence` ne zaman `timezone` `schedule` gerçekleşeceğini açıklayan bir a içerir.
 
 ```json
 {
@@ -183,83 +183,83 @@ Kaynak Yöneticisi şablonlarıyla kümeler oluşturma hakkında daha fazla bilg
 }
 ```
 
-### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Çalışan bir küme için otomatik ölçeklendirmeyi etkinleştirme ve devre dışı bırakma
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Çalışan bir küme için Otomatik Ölçek'i etkinleştirme ve devre dışı
 
 #### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Çalışan bir kümede otomatik ölçeklendirmeyi etkinleştirmek için **Ayarlar**altında **küme boyutu** ' nu seçin. Sonra **Otomatik ölçeklendirmeyi etkinleştir**' i seçin. İstediğiniz otomatik ölçeklendirme türünü seçin ve yük tabanlı veya zamanlama tabanlı ölçeklendirme seçeneklerini girin. Son olarak **Kaydet**' i seçin.
+Çalışan kümede Otomatik Ölçeklendirme'yi etkinleştirmek için **Ayarlar**altında **Küme boyutunu** seçin. Ardından **otomatik ölçeklendir'i etkinleştir'i**seçin. İstediğiniz Otomatik Ölçekleme türünü seçin ve yük tabanlı veya zamanlama tabanlı ölçeklendirme seçeneklerini girin. Son olarak, **Kaydet'i**seçin.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirmeyi etkinleştirme kümesi](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+![Alt düğüm çizelgesi tabanlı otomatik ölçeklendirme kümesini etkinleştirme](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
 #### <a name="using-the-rest-api"></a>REST API’sini kullanma
 
-REST API kullanarak çalışan bir kümede otomatik ölçeklendirmeyi etkinleştirmek veya devre dışı bırakmak için, aşağıdaki kod parçacığında gösterildiği gibi otomatik ölçeklendirme uç noktasına bir POST isteği oluşturun:
+REST API'yi kullanarak çalışan bir kümede Otomatik Ölçeklendirme'yi etkinleştirmek veya devre dışı kakmak için, aşağıdaki kod snippet'inde gösterildiği gibi Otomatik Ölçek uç noktasına bir POST isteğinde bulunun:
 
 ```
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-İstek yükünde uygun parametreleri kullanın. Aşağıdaki JSON yükü otomatik ölçeklendirmeyi etkinleştirmek için kullanılabilir. Otomatik ölçeklendirmeyi devre dışı bırakmak için yük `{autoscale: null}` kullanın.
+İstek yükündeki uygun parametreleri kullanın. Aşağıdaki json yükü Otomatik Ölçeklendirmeyi etkinleştirmek için kullanılabilir. Otomatik Ölçeklendirmeyi devre dışı `{autoscale: null}` kullanabilirsiniz.
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
 ```
 
-Tüm yük parametrelerinin tam açıklaması için [Yük tabanlı otomatik ölçeklendirmeyi etkinleştirme](#load-based-autoscaling) konusundaki önceki bölüme bakın.
+Tüm yük parametrelerinin tam açıklaması için [yük tabanlı otomatik ölçeklendirmeyi etkinleştirme](#load-based-autoscaling) yle ilgili önceki bölüme bakın.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>Yük tabanlı veya zamanlama tabanlı ölçeklendirmeyi seçme
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>Yük tabanlı veya zamanlama tabanlı ölçekleme seçme
 
-Hangi mod üzerinde seçim yapmaya karar vermeden önce aşağıdaki faktörleri göz önünde bulundurun:
+Hangi modu seçeceğiniz konusunda karar vermeden önce aşağıdaki faktörleri göz önünde bulundurun:
 
-* Küme oluşturma sırasında otomatik ölçeklendirmeyi etkinleştirin.
-* Düğüm sayısı alt sınırı en az üç olmalıdır.
-* Yük sapması: küme yükü, belirli saatlerde, belirli günlerde tutarlı bir model izler. Aksi takdirde, yük tabanlı zamanlama daha iyi bir seçenektir.
-* SLA gereksinimleri: otomatik ölçeklendirme ölçeği, tahmine dayalı yerine reaktif. Yükün ne zaman artmaya başladığı ve kümenin hedef boyutunda olması gereken süre arasında yeterli gecikme olur mu? Katı SLA gereksinimleri varsa ve yük sabit bir bilinen örüntü ise, ' zamanlama tabanlı ' daha iyi bir seçenektir.
+* Küme oluşturma sırasında Otomatik Ölçeklendirme'yi etkinleştirin.
+* En az düğüm sayısı en az üç olmalıdır.
+* Yük farkı: kümenin yükü belirli zamanlarda, belirli günlerde tutarlı bir desen izler. Değilse, yük tabanlı zamanlama daha iyi bir seçenektir.
+* SLA gereksinimleri: Otomatik ölçeklendirme tahminyerine reaktiftir. Yükün artmaya başladığı ve kümenin hedef boyutunda olması gerektiği zaman arasında yeterli gecikme olacak mı? Sıkı SLA gereksinimleri varsa ve yük bilinen sabit bir desense, 'zamanlama tabanlı' daha iyi bir seçenektir.
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Ölçek artırma veya azaltma işlemlerinin gecikme süresini göz önünde bulundurun
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Küçültme veya küçültme işlemlerinin gecikmesini göz önünde bulundurun
 
-Ölçeklendirme işleminin tamamlanması 10 ila 20 dakika sürebilir. Özelleştirilmiş bir zamanlama ayarlarken bu gecikmeyi planlayın. Örneğin, küme boyutunun 9:00 ' de 20 olması gerekiyorsa, ölçeklendirme işleminin 9:00 "ile tamamlanmasını sağlamak için zamanlama tetikleyicisini 8:30 olarak daha önceki bir zamana ayarlayın.
+Bir ölçekleme işleminin tamamlanması 10 ila 20 dakika sürebilir. Özelleştirilmiş bir zamanlama ayarlarken, bu gecikmeyi planlayın. Örneğin, küme boyutunun 09:00'da 20 olması gerekiyorsa, ölçekleme işleminin 09:00'da tamamlanması için zamanlama tetikleyicisini sabah 8:30 gibi daha erken bir zamana ayarlayın.
 
-### <a name="preparation-for-scaling-down"></a>Ölçeği azaltma hazırlığı
+### <a name="preparation-for-scaling-down"></a>Ölçekleme için hazırlık
 
-Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, hedef boyutunu karşılamak için düğümlerin yetkisini alınır. Bu düğümlerde çalışan görevler varsa, otomatik ölçeklendirme görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydıralınacaktır. Bu nedenle, tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
+Küme ölçeklendirme işlemi sırasında, Otomatik ölçeklendirme hedef boyutu karşılamak için düğümleri devre dışı bırakmak olacaktır. Bu düğümlerde çalışan görevler varsa, Otomatik Ölçek görevler tamamlanana kadar bekler. Her alt düğüm de HDFS'de bir rol hizmet ettiği için, geçici veriler kalan düğümlere kaydırılır. Bu nedenle, kalan düğümlerde tüm geçici verileri barındıracak yeterli alan olduğundan emin olmalısınız.
 
-Çalışan işler çalışmaya ve sonuna kadar devam edecektir. Bekleyen işler, daha az kullanılabilir çalışan düğümü ile normal olarak zamanlanmayı bekler.
+Çalışan işler çalışmaya ve bitirmeye devam edecektir. Bekleyen işler, daha az kullanılabilir işçi düğümüyle normal olarak zamanlanmayı bekler.
 
-### <a name="minimum-cluster-size"></a>En düşük küme boyutu
+### <a name="minimum-cluster-size"></a>Minimum küme boyutu
 
-Kümenizi üçten az düğüme ölçeklendirmeyin. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir.  Daha fazla bilgi için bkz. [güvenli modda takılme](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+Kümenizi üç düğümden daha az boyutlandırmayın. Kümenizi üçdüğümden daha az ölçekleme, yetersiz dosya çoğaltma nedeniyle kümenin güvenli modda sıkışıp kalmasına neden olabilir.  Daha fazla bilgi için bkz: [Güvenli modda takılıp kalma.](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)
 
 ## <a name="monitoring"></a>İzleme
 
 ### <a name="cluster-status"></a>Küme durumu
 
-Azure portal listelenen küme durumu, otomatik ölçeklendirme etkinliklerini izlemenize yardımcı olabilir.
+Azure portalında listelenen küme durumu, Otomatik Ölçeklendirme etkinliklerini izlemenize yardımcı olabilir.
 
-![Çalışan düğümü yük tabanlı otomatik ölçeklendirme kümesi durumunu etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Alt düğüm yük tabanlı otomatik ölçek küme durumunu etkinleştirme](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
-Görebileceğiniz tüm küme durumu iletileri aşağıdaki listede açıklanmıştır.
+Görebileceğiniz küme durum iletilerinin tümü aşağıdaki listede açıklanmıştır.
 
 | Küme durumu | Açıklama |
 |---|---|
-| Çalışıyor | Küme normal şekilde çalışıyor. Önceki otomatik ölçeklendirme etkinliklerinin tümü başarıyla tamamlandı. |
-| Güncelleştirme  | Küme otomatik ölçeklendirme yapılandırması güncelleştiriliyor.  |
-| HDInsight yapılandırması  | Bir küme ölçeği artırma veya genişletme işlemi devam ediyor.  |
-| Güncelleştirme hatası  | HDInsight, otomatik ölçeklendirme yapılandırma güncelleştirmesi sırasında sorunlarla karşılaştı. Müşteriler güncelleştirmeyi yeniden denemeyi seçebilir veya otomatik ölçeklendirmeyi devre dışı bırakabilir.  |
-| Hata  | Kümede bir sorun var ve kullanılabilir değil. Bu kümeyi silip yeni bir tane oluşturun.  |
+| Çalışıyor | Küme normal çalışıyor. Önceki Otomatik Ölçeklendirme etkinliklerinin tümü başarıyla tamamlandı. |
+| Güncelleştirme  | Küme Otomatik Ölçekyapılandırması güncelleştiriliyor.  |
+| HDInsight yapılandırması  | Bir küme ölçeklendirme veya küçültme işlemi devam ediyor.  |
+| Güncelleştirme Hatası  | HDInsight, Otomatik Ölçek yapılandırma güncelleştirmesi sırasında sorunlarla karşılaştı. Müşteriler güncelleştirmeyi yeniden denemeyi veya otomatik ölçeği devre dışı bırakmayı seçebilir.  |
+| Hata  | Kümede bir sorun var ve kullanılabilir değil. Bu kümeyi silin ve yeni bir küme oluşturun.  |
 
-Kümenizdeki düğümlerin geçerli sayısını görüntülemek için, kümenizin **genel bakış** sayfasında **küme boyutu** grafiğine gidin veya **Ayarlar**altında **küme boyutu** ' nu seçin.
+Kümenizdeki geçerli düğüm sayısını görüntülemek için, kümeniz için Genel **Bakış** sayfasındaki **Küme boyutu** grafiğine gidin veya **Ayarlar**altında **Küme boyutunu** seçin.
 
-### <a name="operation-history"></a>İşlem geçmişi
+### <a name="operation-history"></a>Operasyon geçmişi
 
-Küme ölçümlerinin bir parçası olarak küme ölçeği artırma ve ölçeği azaltma geçmişini görüntüleyebilirsiniz. Ayrıca, geçen gün, hafta veya başka bir süre içinde tüm ölçekleme eylemlerini de listeleyebilirsiniz.
+Küme ölçümlerinin bir parçası olarak küme ölçeklendirme ve küçültme geçmişini görüntüleyebilirsiniz. Ayrıca, son gün, hafta veya diğer zaman dilimindeki tüm ölçekleme eylemlerini de listeleyebilirsiniz.
 
-**İzleme**altında **ölçümler** ' i seçin. Ardından **ölçüm** açılan kutusundan ölçüm ve **etkin çalışan sayısı** **Ekle** ' yi seçin. Zaman aralığını değiştirmek için sağ üstteki düğmeyi seçin.
+İzleme altında **Ölçümler'i**seçin. **Metrics** Ardından **Metrik** açılır kutusundan metrik ve **Etkin Çalışan Sayısı** **ekle'yi** seçin. Zaman aralığını değiştirmek için sağ üstteki düğmeyi seçin.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme ölçümünü etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![İşçi düğümü zamanlama tabanlı otomatik ölçek ölçüm](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ölçek en iyi uygulamalarında](hdinsight-scaling-best-practices.md) kümeleri el ile ölçeklendirmeye yönelik en iyi yöntemler hakkında bilgi edinin
+En iyi [uygulamaları ölçeklemede](hdinsight-scaling-best-practices.md) kümeleri el ile ölçekleme için en iyi uygulamalar hakkında bilgi edinin

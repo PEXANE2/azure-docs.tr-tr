@@ -1,7 +1,7 @@
 ---
-title: Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
+title: Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma
 titleSuffix: Azure Storage
-description: Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları yapılandırmayı destekleyen bir depolama hesabı oluşturmayı öğrenin. Azure depolama şifrelemesi için hesap şifreleme anahtarını temel alan bir depolama hesabı oluşturmak için Azure CLı veya Azure Resource Manager şablonunu kullanın. Daha sonra hesap için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
+description: Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları yapılandırmayı destekleyen bir depolama hesabı oluşturmayı öğrenin. Azure Depolama şifrelemesi için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için Azure CLI veya Azure Kaynak Yöneticisi şablonuna kullanın. Daha sonra hesap için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083559"
 ---
-# <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
+# <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma
 
-Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, kuyruk depolama ve tablo depolama, hizmet kapsamındaki ve Microsoft tarafından yönetilen bir anahtar kullanır. Ayrıca, kuyruk veya tablo verilerini şifrelemek için müşteri tarafından yönetilen anahtarlar kullanmayı da tercih edebilirsiniz. Müşteri tarafından yönetilen anahtarları kuyruklar ve tablolarla birlikte kullanmak için, öncelikle hesap kapsamında olan ve hizmet yerine, bir şifreleme anahtarı kullanan bir depolama hesabı oluşturmanız gerekir. Kuyruk ve tablo verileri için hesap şifreleme anahtarını kullanan bir hesap oluşturduktan sonra, müşteri tarafından yönetilen anahtarları bu depolama hesabı için Azure Key Vault ile yapılandırabilirsiniz.
+Azure Depolama, bir depolama hesabındaki tüm verileri istirahat halinde şifreler. Varsayılan olarak, Sıra depolama ve Tablo depolama hizmeti kapsamına giren ve Microsoft tarafından yönetilen bir anahtar kullanır. Sıra veya tablo verilerini şifrelemek için müşteri tarafından yönetilen anahtarları kullanmayı da tercih edebilirsiniz. Sıraları ve tabloları olan müşteri tarafından yönetilen anahtarları kullanmak için, önce hizmet yerine hesaba kapsamlı bir şifreleme anahtarı kullanan bir depolama hesabı oluşturmanız gerekir. Sıra ve tablo verileri için hesap şifreleme anahtarını kullanan bir hesap oluşturduktan sonra, söz konusu depolama hesabı için Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
 
-Bu makalede, hesap kapsamındaki bir anahtara dayanan bir depolama hesabının nasıl oluşturulacağı açıklanır. Hesap ilk oluşturulduğunda, Microsoft hesap anahtarını hesaptaki verileri şifrelemek için kullanır ve Microsoft bu anahtarı yönetir. Daha sonra, kendi anahtarlarınızı sağlamak, anahtar sürümünü güncelleştirmek, anahtarları döndürmek ve erişim denetimlerini iptal etmek dahil olmak üzere bu avantajlardan yararlanmak için hesap için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
+Bu makalede, hesaba yönelik bir anahtara dayanan bir depolama hesabının nasıl oluşturuluyorum. Hesap ilk oluşturulduğunda, Microsoft hesaptaki verileri şifrelemek için hesap anahtarını kullanır ve Microsoft anahtarı yönetir. Daha sonra, kendi anahtarlarınızı sağlama, anahtar sürümünü güncelleştirme, anahtarları döndürme ve erişim denetimlerini iptal etme olanağı da dahil olmak üzere bu avantajlardan yararlanmak için hesap için müşteri tarafından yönetilen anahtarları yapılandırabilirsiniz.
 
-## <a name="about-the-feature"></a>Özelliği hakkında
+## <a name="about-the-feature"></a>Özellik hakkında
 
-Kuyruk ve tablo depolaması için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için, önce bu özelliği Azure ile kullanmak üzere kaydolmanız gerekir. Sınırlı kapasite nedeniyle, erişim isteklerinin onaylanabilmesi için birkaç ay sürebileceğinden emin olun.
+Sıra ve Tablo depolama için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için, öncelikle bu özelliği Azure ile kullanmak için kaydolmanız gerekir. Sınırlı kapasite nedeniyle, erişim isteklerinin onaylanmasının birkaç ay sürebileceğini unutmayın.
 
-Aşağıdaki bölgelerde kuyruk ve tablo depolaması için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturabilirsiniz:
+Aşağıdaki bölgelerde Sıra ve Tablo depolama için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturabilirsiniz:
 
 - Doğu ABD
 - Orta Güney ABD
@@ -35,11 +35,11 @@ Aşağıdaki bölgelerde kuyruk ve tablo depolaması için hesap şifreleme anah
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Hesap şifreleme anahtarını kullanmak için kaydolun
 
-Hesap şifreleme anahtarını kuyruk veya tablo depolama ile kullanmak üzere kaydolmak için PowerShell veya Azure CLı kullanın.
+Hesap şifreleme anahtarını Sıra veya Tablo depolama alanına kullanmak için kaydolmak için PowerShell veya Azure CLI'yi kullanın.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-PowerShell 'e kaydolmak için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
+PowerShell'e kaydolmak için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu arayın.
 
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -48,9 +48,9 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile kaydolmak için [az Feature Register](/cli/azure/feature#az-feature-register) komutunu çağırın.
+Azure CLI'ye kaydolmak için [az özelliği kayıt](/cli/azure/feature#az-feature-register) komutunu arayın.
 
 ```azurecli
 az feature register --namespace Microsoft.Storage \
@@ -59,19 +59,19 @@ az feature register --namespace Microsoft.Storage \
     --name AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
 Yok
 
 ---
 
-### <a name="check-the-status-of-your-registration"></a>Kaydlarınızın durumunu denetleyin
+### <a name="check-the-status-of-your-registration"></a>Kaydınızın durumunu kontrol edin
 
-Kuyruk veya tablo depolaması için kaydlarınızın durumunu denetlemek için PowerShell veya Azure CLı kullanın.
+Sıra veya Tablo depolama için kaydınızın durumunu kontrol etmek için PowerShell veya Azure CLI'yi kullanın.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Kayıt durumunuzu PowerShell 'e göre denetlemek için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
+PowerShell ile kaydınızın durumunu kontrol etmek için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu arayın.
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -80,9 +80,9 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile kaydlarınızın durumunu denetlemek için [az Feature](/cli/azure/feature#az-feature-show) komutunu çağırın.
+Azure CLI ile kaydınızın durumunu kontrol etmek için [az özelliği](/cli/azure/feature#az-feature-show) komutunu arayın.
 
 ```azurecli
 az feature show --namespace Microsoft.Storage \
@@ -91,57 +91,57 @@ az feature show --namespace Microsoft.Storage \
     --name AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
 Yok
 
 ---
 
-### <a name="re-register-the-azure-storage-resource-provider"></a>Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetme
+### <a name="re-register-the-azure-storage-resource-provider"></a>Azure Depolama kaynak sağlayıcısını yeniden kaydedin
 
-Kaydınız onaylandıktan sonra Azure depolama kaynak sağlayıcısı 'nı yeniden kaydetmeniz gerekir. Kaynak sağlayıcıyı yeniden kaydetmek için PowerShell veya Azure CLı kullanın.
+Kaydınız onaylandıktan sonra Azure Depolama kaynak sağlayıcısını yeniden kaydetmeniz gerekir. Kaynak sağlayıcısını yeniden kaydetmek için PowerShell veya Azure CLI'yi kullanın.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Kaynak sağlayıcıyı PowerShell ile yeniden kaydetmek için [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) komutunu çağırın.
+Kaynak sağlayıcısını PowerShell'e yeniden kaydetmek için [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) komutunu arayın.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Kaynak sağlayıcısını Azure CLı ile yeniden kaydetmek için [az Provider Register](/cli/azure/provider#az-provider-register) komutunu çağırın.
+Kaynak sağlayıcısını Azure CLI'ye yeniden kaydetmek için [az sağlayıcı kayıt](/cli/azure/provider#az-provider-register) komutunu arayın.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
 ```
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
 Yok
 
 ---
 
-## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Hesap şifreleme anahtarını kullanan bir hesap oluşturun
+## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Hesap şifreleme anahtarını kullanan bir hesap oluşturma
 
-Depolama hesabını oluşturduğunuz sırada kuyruklar ve tablolar için hesap şifreleme anahtarını kullanmak üzere yeni bir depolama hesabı yapılandırmanız gerekir. Şifreleme anahtarının kapsamı, hesap oluşturulduktan sonra değiştirilemez.
+Depolama hesabını oluşturduğunuz sırada kuyruklar ve tablolar için hesap şifreleme anahtarını kullanacak şekilde yeni bir depolama hesabı yapılandırmanız gerekir. Hesap oluşturulduktan sonra şifreleme anahtarının kapsamı değiştirilemez.
 
-Depolama hesabının genel amaçlı v2 türünde olması gerekir. Depolama hesabı oluşturabilir ve bunu, Azure CLı veya bir Azure Resource Manager şablonu kullanarak hesap şifreleme anahtarına göre yapılandırabilirsiniz.
+Depolama hesabı genel amaçlı v2 türünde olmalıdır. Azure CLI veya Azure Kaynak Yöneticisi şablonu kullanarak depolama hesabını oluşturabilir ve hesap şifreleme anahtarına güvenecek şekilde yapılandırabilirsiniz.
 
 > [!NOTE]
-> Depolama hesabı oluşturulduğunda, yalnızca kuyruk ve tablo depolaması, hesap şifreleme anahtarıyla verileri şifrelemek için isteğe bağlı olarak yapılandırılabilir. BLOB depolama ve Azure dosyaları her zaman, verileri şifrelemek için hesap şifreleme anahtarını kullanır.
+> Yalnızca Sıra ve Tablo depolama, depolama hesabı oluşturulduğunda hesap şifreleme anahtarıyla verileri şifrelemek için isteğe bağlı olarak yapılandırılabilir. Blob depolama ve Azure Dosyaları verileri şifrelemek için her zaman hesap şifreleme anahtarını kullanır.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-PowerShell kullanarak hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için, Azure PowerShell modülünü, sürüm 3.4.0 veya üstünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps).
+Hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için PowerShell'i kullanmak için Azure PowerShell modüllerini, sürüm 3.4.0 veya sonraki sürümünü yüklediğinizden emin olun. Daha fazla bilgi için Azure [PowerShell modüllerini yükleyin.](/powershell/azure/install-az-ps)
 
-Ardından, [Yeni-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) komutunu çağırarak uygun parametrelerle bir genel amaçlı v2 depolama hesabı oluşturun:
+Ardından, uygun parametrelerle Birlikte Yeni Depolama [Hesabı](/powershell/module/az.storage/new-azstorageaccount) komutunu arayarak genel amaçlı bir v2 depolama hesabı oluşturun:
 
-- Sıra depolamada verileri şifrelemek için hesap şifreleme anahtarını kullanmak üzere `-EncryptionKeyTypeForQueue` seçeneğini ekleyin ve değerini `Account` olarak ayarlayın.
-- `-EncryptionKeyTypeForTable` seçeneğini ekleyin ve değerini tablo depolamadaki verileri şifrelemek üzere hesap şifreleme anahtarını kullanmak için `Account` olarak ayarlayın.
+- `-EncryptionKeyTypeForQueue` Seçenek ekleyin ve Sıra `Account` depolama verileri şifrelemek için hesap şifreleme anahtarı nı kullanmak için değerini ayarlayın.
+- `-EncryptionKeyTypeForTable` Seçeneği ekleyin ve Tablo `Account` depolamasındaverileri şifrelemek için hesap şifreleme anahtarını kullanmak üzere değerini ayarlayın.
 
-Aşağıdaki örnek, Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için yapılandırılmış ve hem sıra hem de tablo depolama için verileri şifrelemek üzere hesap şifreleme anahtarını kullanan genel amaçlı v2 depolama hesabının nasıl oluşturulacağını gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, okuma-erişim coğrafi depolama (RA-GRS) için yapılandırılan ve hem Sıra hem de Tablo depolama için verileri şifrelemek için hesap şifreleme anahtarını kullanan genel amaçlı bir v2 depolama hesabının nasıl oluşturulduğunu gösterir. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -153,16 +153,16 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -EncryptionKeyTypeForQueue Account
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için Azure CLı 'yi kullanmak için Azure CLı sürüm 2.0.80 veya üstünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
+Hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için Azure CLI'yi kullanmak için Azure CLI sürümünü 2.0.80 veya daha sonra yüklediğinizden emin olun. Daha fazla bilgi için azure [cli'yi yükleyin.](/cli/azure/install-azure-cli)
 
-Ardından, [az Storage Account Create](/cli/azure/storage/account#az-storage-account-create) komutunu çağırarak, uygun parametrelerle genel amaçlı v2 depolama hesabı oluşturun:
+Ardından, uygun parametrelerle az depolama hesabı [oluşturma](/cli/azure/storage/account#az-storage-account-create) komutunu arayarak genel amaçlı bir v2 depolama hesabı oluşturun:
 
-- Sıra depolamada verileri şifrelemek için hesap şifreleme anahtarını kullanmak üzere `--encryption-key-type-for-queue` seçeneğini ekleyin ve değerini `Account` olarak ayarlayın.
-- `--encryption-key-type-for-table` seçeneğini ekleyin ve değerini tablo depolamadaki verileri şifrelemek üzere hesap şifreleme anahtarını kullanmak için `Account` olarak ayarlayın.
+- `--encryption-key-type-for-queue` Seçenek ekleyin ve Sıra `Account` depolama verileri şifrelemek için hesap şifreleme anahtarı nı kullanmak için değerini ayarlayın.
+- `--encryption-key-type-for-table` Seçeneği ekleyin ve Tablo `Account` depolamasındaverileri şifrelemek için hesap şifreleme anahtarını kullanmak üzere değerini ayarlayın.
 
-Aşağıdaki örnek, Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için yapılandırılmış ve hem sıra hem de tablo depolama için verileri şifrelemek üzere hesap şifreleme anahtarını kullanan genel amaçlı v2 depolama hesabının nasıl oluşturulacağını gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, okuma-erişim coğrafi depolama (RA-GRS) için yapılandırılan ve hem Sıra hem de Tablo depolama için verileri şifrelemek için hesap şifreleme anahtarını kullanan genel amaçlı bir v2 depolama hesabının nasıl oluşturulduğunu gösterir. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli
 az storage account create \
@@ -175,9 +175,9 @@ az storage account create \
     --encryption-key-type-for-queue Account
 ```
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
-Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için yapılandırılmış ve hem sıra hem de tablo depolama için verileri şifrelemek üzere hesap şifreleme anahtarını kullanan genel amaçlı bir v2 depolama hesabı oluşturur. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki JSON örneği, okuma-erişim coğrafi depolama (RA-GRS) için yapılandırılan ve hem Sıra hem de Tablo depolama için verileri şifrelemek için hesap şifreleme anahtarını kullanan genel amaçlı bir v2 depolama hesabı oluşturur. Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```json
 "resources": [
@@ -214,19 +214,19 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 ---
 
-Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırmak için aşağıdaki makalelerden birine bakın:
+Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırmak için aşağıdaki makalelerden birine bakın:
 
-- [Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](storage-encryption-keys-portal.md)
-- [PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](storage-encryption-keys-powershell.md)
-- [Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](storage-encryption-keys-cli.md)
+- [Azure portalını kullanarak Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırın](storage-encryption-keys-portal.md)
+- [PowerShell'i kullanarak Azure Key Vault ile müşteri tarafından yönetilen tuşları yapılandırın](storage-encryption-keys-powershell.md)
+- [Azure CLI'yi kullanarak müşteri tarafından yönetilen anahtarları Azure Anahtar Kasası ile yapılandırın](storage-encryption-keys-cli.md)
 
 ## <a name="verify-the-account-encryption-key"></a>Hesap şifreleme anahtarını doğrulama
 
-Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için Azure CLı [az Storage Account](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. Şifreleme özelliği içindeki her bir hizmetin `keyType` alanını arayın ve `Account`olarak ayarlandığını doğrulayın.
+Depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için Azure CLI [az depolama hesabı](/cli/azure/storage/account#az-storage-account-show) komutunu arayın. Bu komut, depolama hesabı özellikleri ve değerlerini bir dizi döndürür. Şifreleme özelliğiiçindeki `keyType` her hizmet için alanı arayın ve '' olarak `Account`ayarlı olduğunu doğrulayın.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `Encryption` özelliğindeki her bir hizmetin `KeyType` alanını bulun ve `Account`olarak ayarlandığını doğrulayın.
+Depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu arayın. Bu komut, depolama hesabı özellikleri ve değerlerini bir dizi döndürür. Özellik içindeki `KeyType` her hizmet için alanı arayın ve '' olarak `Account`ayarlı olduğunu doğrulayın. `Encryption`
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -235,9 +235,9 @@ $account.Encryption.Services.Queue
 $account.Encryption.Services.Table
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [az Storage Account](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. Şifreleme özelliği içindeki her bir hizmetin `keyType` alanını arayın ve `Account`olarak ayarlandığını doğrulayın.
+Depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [az depolama hesabı](/cli/azure/storage/account#az-storage-account-show) komutunu arayın. Bu komut, depolama hesabı özellikleri ve değerlerini bir dizi döndürür. Şifreleme özelliğiiçindeki `keyType` her hizmet için alanı arayın ve '' olarak `Account`ayarlı olduğunu doğrulayın.
 
 ```azurecli
 az storage account show /
@@ -245,7 +245,7 @@ az storage account show /
     --resource-group <resource-group>
 ```
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
 Yok
 
@@ -253,5 +253,5 @@ Yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md) 
-- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Veriler için Azure Depolama şifrelemesi](storage-service-encryption.md) 
+- [Azure Anahtar Kasası Nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

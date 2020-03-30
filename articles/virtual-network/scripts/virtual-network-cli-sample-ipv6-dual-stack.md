@@ -1,7 +1,7 @@
 ---
-title: Azure CLı betik örneği-IPv6 ön uç yapılandırma
+title: Azure CLI komut dosyası örneği - IPv6 ön ucunu yapılandır
 titlesuffix: Azure Virtual Network
-description: Azure sanal ağ 'da Azure CLı kullanarak IPv6 uç noktalarını etkinleştirme
+description: Azure Sanal Ağ'da Azure CLI'yi kullanarak IPv6 uç noktalarını etkinleştirme
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,37 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201398"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235019"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Sanal ağ komut dosyası örneğinde IPv6 uç noktalarını yapılandırma (önizleme)
 
-Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. Çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
+Bu makalede, Azure'da çift yığın alt ağına sahip çift yığınlı sanal ağ, çift (IPv4 + IPv6) ön uç yapılandırmalı bir yük dengeleyicisi, çift IP yapılandırmasına sahip NIC'ler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılabildiğini gösterir. çift ağ güvenlik grubu kuralları ve çift kamu IP'leri.
 
-Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
+Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure sanal ağ için IPv6 özelliğini kullanmak üzere aboneliğinizi aşağıdaki şekilde yalnızca bir kez yapılandırmanız gerekir:
+## <a name="prerequisites"></a>Ön koşullar
+Azure sanal ağ için IPv6 özelliğini kullanmak için aboneliğinizi aşağıdaki gibi yalnızca bir kez yapılandırmanız gerekir:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure CLı komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
 
-```azurelci
+Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure CLI komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -261,6 +263,7 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 
 ```
+
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
 Kaynak grubunu, sanal makineyi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın:

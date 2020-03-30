@@ -1,5 +1,5 @@
 ---
-title: Azure VM 'ye bağlanmak için RDP kullandığınızda kimlik doğrulama hatalarını giderme | Microsoft Docs
+title: Azure VM'ye bağlanmak için RDP kullandığınızda kimlik doğrulama hatalarını giderme | Microsoft Dokümanlar
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,82 +15,82 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266981"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure VM’ye RDP kullanarak bağlandığınızda karşılaştığınız kimlik doğrulaması hatalarını giderme
 
-Bu makale, bir Azure sanal makinesine (VM) bağlanmak üzere Uzak Masaüstü Protokolü (RDP) bağlantısı kullandığınızda oluşan kimlik doğrulama hatalarını gidermenize yardımcı olabilir.
+Bu makale, bir Azure sanal makinesine (VM) bağlanmak için Uzak Masaüstü Protokolü (RDP) bağlantısını kullandığınızda ortaya çıkan kimlik doğrulama hatalarını gidermenize yardımcı olabilir.
 
 ## <a name="symptoms"></a>Belirtiler
 
-Hoş Geldiniz ekranını gösteren ve işletim sisteminin çalıştığını gösteren bir Azure VM 'nin ekran görüntüsünü yakalarsınız. Ancak, Uzak Masaüstü Bağlantısı kullanarak VM 'ye bağlanmaya çalıştığınızda, aşağıdaki hata iletilerinden birini alırsınız.
+Hoş Geldiniz ekranını gösteren ve işletim sisteminin çalıştığını gösteren bir Azure VM ekran görüntüsünü yakalarsınız. Ancak, Uzak Masaüstü Bağlantısı'nı kullanarak VM'ye bağlanmaya çalıştığınızda, aşağıdaki hata iletilerinden birini alırsınız.
 
 ### <a name="error-message-1"></a>Hata iletisi 1
 
-**Bir kimlik doğrulama hatası oluştu. Yerel güvenlik yetkilisine ulaşılamıyor.**
+**Kimlik doğrulama hatası oluştu. Yerel Güvenlik Otoritesi ile bağlantı kuramaz.**
 
 ### <a name="error-message-2"></a>Hata iletisi 2
 
-**Bağlanmaya çalıştığınız uzak bilgisayar Ağ Düzeyinde Kimlik Doğrulama (NLA) gerektiriyor, ancak Windows etki alanı denetleyicinize NLA gerçekleştirmek için iletişim kurulamıyor. Uzak bilgisayarda yöneticisiyseniz, sistem özellikleri iletişim kutusunun Uzak sekmesindeki seçenekleri kullanarak NLA 'yı devre dışı bırakabilirsiniz.**
+**Bağlanmaya çalıştığınız uzak bilgisayar ağ düzeyinde kimlik doğrulaması (NLA) gerektirir, ancak Windows etki alanı denetleyicinize NLA gerçekleştirmek için başvurulamaz. Uzak bilgisayarda yöneticiyseniz, Sistem Özellikleri iletişim kutusunun Uzak sekmesindeki seçenekleri kullanarak NLA'yı devre dışı kullanabilirsiniz.**
 
 ### <a name="error-message-3-generic-connection-error"></a>Hata iletisi 3 (genel bağlantı hatası)
 
-**Bu bilgisayar uzak bilgisayara bağlanamıyor. Yeniden bağlanmayı deneyin, sorun devam ederse, uzak bilgisayarın sahibine veya ağ yöneticinize başvurun.**
+**Bu bilgisayar uzak bilgisayara bağlanamıyor. Sorun devam ederse, uzaktan bilgisayarın sahibine veya ağ yöneticinize başvurun.**
 
 ## <a name="cause"></a>Nedeni
 
-NLA 'nın bir VM 'ye RDP erişimini engelleyebileceği birden çok neden vardır.
+NLA'nın RDP'nin Bir VM'ye erişimini engellemesinin birden çok nedeni vardır.
 
 ### <a name="cause-1"></a>Neden 1
 
-VM, etki alanı denetleyicisi (DC) ile iletişim kuramıyor. Bu sorun, RDP oturumunun etki alanı kimlik bilgilerini kullanarak bir VM 'ye erişmesini engelleyebilir. Ancak, yine de yerel yönetici kimlik bilgilerini kullanarak oturum açabiliyor olabilirsiniz. Bu sorun aşağıdaki durumlarda oluşabilir:
+VM etki alanı denetleyicisi (DC) ile iletişim kuramaz. Bu sorun, etki alanı kimlik bilgilerini kullanarak bir RDP oturumunun VM'ye erişmesini engelleyebilir. Ancak, Yerel Yönetici kimlik bilgilerini kullanarak oturum açmaya devam edebilirsiniz. Bu sorun aşağıdaki durumlarda oluşabilir:
 
-1. Bu VM ile DC arasındaki Active Directory güvenlik kanalı kopuk.
+1. Bu VM ve DC arasındaki Active Directory Security Channel bozuldu.
 
-2. VM, hesap parolasının eski bir kopyasına sahiptir ve DC 'nin daha yeni bir kopyası vardır.
+2. VM hesap parolasının eski bir kopyasına ve DC'nin yeni bir kopyasıvardır.
 
-3. Bu VM 'nin bağlandığı DC sağlam değil.
+3. Bu VM'nin bağlandığı DC sağlıksız.
 
 ### <a name="cause-2"></a>Neden 2
 
-VM 'nin şifreleme düzeyi, istemci bilgisayar tarafından kullanılan olandan daha yüksek.
+VM'nin şifreleme düzeyi istemci bilgisayar tarafından kullanılandan daha yüksektir.
 
 ### <a name="cause-3"></a>Neden 3
 
-TLS 1,0, 1,1 veya 1,2 (sunucu) protokolleri VM 'de devre dışı bırakıldı.
+TLS 1.0, 1.1 veya 1.2 (sunucu) protokolleri VM'de devre dışı bırakılır.
 
 ### <a name="cause-4"></a>Neden 4
 
-VM, etki alanı kimlik bilgilerini kullanarak oturum açmayı devre dışı bırakacak şekilde ayarlandı ve yerel güvenlik yetkilisi (LSA) yanlış ayarlanmış.
+VM, etki alanı kimlik bilgilerini kullanarak oturum açmayı devre dışı bırakacak şekilde ayarlandı ve Yerel Güvenlik Otoritesi (LSA) yanlış olarak ayarlandı.
 
 ### <a name="cause-5"></a>Neden 5
 
-VM yalnızca Federal bilgi Işleme standardı (FIPS) ile uyumlu algoritma bağlantılarını kabul edecek şekilde ayarlanmıştır. Bu genellikle Active Directory ilkesi kullanılarak yapılır. Bu nadir bir yapılandırmadır, ancak yalnızca Uzak Masaüstü bağlantıları için FIPS zorlanabilir.
+VM yalnızca Federal Bilgi İşlem Standardı (FIPS) uyumlu algoritma bağlantılarını kabul edecek şekilde ayarlandı. Bu genellikle Active Directory ilkesi kullanılarak yapılır. Bu nadir bir yapılandırmadır, ancak FIPS yalnızca Uzak Masaüstü bağlantıları için zorlanabilir.
 
-## <a name="before-you-troubleshoot"></a>Sorun gidermeye başlamadan önce
+## <a name="before-you-troubleshoot"></a>Sorun gidermeden önce
 
-### <a name="create-a-backup-snapshot"></a>Yedekleme anlık görüntüsü oluşturma
+### <a name="create-a-backup-snapshot"></a>Yedek anlık görüntü oluşturma
 
-Bir yedekleme anlık görüntüsü oluşturmak için, [bir diskte anlık görüntü](../windows/snapshot-copy-managed-disk.md)' daki adımları izleyin.
+Yedek anlık görüntü oluşturmak için, [Anlık Görüntü bir disk](../windows/snapshot-copy-managed-disk.md)teki adımları izleyin.
 
-### <a name="connect-to-the-vm-remotely"></a>VM 'ye uzaktan bağlanma
+### <a name="connect-to-the-vm-remotely"></a>VM'ye uzaktan bağlanma
 
-VM 'ye uzaktan bağlanmak için, [Azure VM sorunlarını gidermek üzere uzak araçları kullanma](remote-tools-troubleshoot-azure-vm-issues.md)bölümündeki yöntemlerden birini kullanın.
+VM'ye uzaktan bağlanmak için, [Azure VM sorunlarını gidermek için uzak araçları kullanma](remote-tools-troubleshoot-azure-vm-issues.md)yöntemlerinden birini kullanın.
 
-### <a name="group-policy-client-service"></a>Grup İlkesi istemci hizmeti
+### <a name="group-policy-client-service"></a>Grup ilkesi istemci hizmeti
 
-Bu etki alanına katılmış bir sanal makine ise, grup ilkesi Istemci hizmetini, Active Directory Ilkesinin değişikliklerin üzerine yazmasını engellemek için durdurun. Bunu yapmak için aşağıdaki komutu çalıştırın:
+Bu etki alanı birleştirilmiş bir VM ise, önce Herhangi bir Etkin Dizin İlkesi değişiklikleri üzerine yazmak önlemek için Grup İlkesi İstemci hizmeti durdurun. Bunu yapmak için aşağıdaki komutu çalıştırın:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
 REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
 ```
 
-Sorun giderildikten sonra, bu VM 'nin etki alanından en son GPO 'YU almak için etki alanına bağlantı kurma yeteneğini geri yükleyin. Bunu yapmak için aşağıdaki komutları çalıştırın:
+Sorun giderildikten sonra, bu VM'nin etki alanından en son GPO'yu almak için etki alanına başvurma yeteneğini geri yükleyin. Bunu yapmak için aşağıdaki komutları çalıştırın:
 
 ```cmd
 sc config gpsvc start= auto
@@ -99,11 +99,11 @@ sc start gpsvc
 gpupdate /force
 ```
 
-Değişiklik geri çevrildiğinden, Active Directory bir ilkenin soruna neden olduğu anlamına gelir. 
+Değişiklik geri döndürüldüyse, soruna Etkin Dizin ilkesi nin neden olduğu anlamına gelir. 
 
 ### <a name="workaround"></a>Geçici çözüm
 
-Bu sorunu geçici olarak çözmek için, NLA 'yı devre dışı bırakmak üzere komut penceresinde aşağıdaki komutları çalıştırın:
+Bu sorunu aşmak için, NLA'yı devre dışı kıçevirmek için komut penceresinde aşağıdaki komutları çalıştırın:
 
 ```cmd
 REM Disable the Network Level Authentication
@@ -112,9 +112,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 0
 ```
 
-Sonra, sanal makineyi yeniden başlatın.
+Ardından VM'yi yeniden başlatın.
 
-NLA 'yı yeniden etkinleştirmek için aşağıdaki komutu çalıştırın ve ardından VM 'yi yeniden başlatın:
+NLA'yı yeniden etkinleştirmek için aşağıdaki komutu çalıştırın ve VM'yi yeniden başlatın:
 
 ```cmd
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds /t REG_DWORD /d 0 /f
@@ -126,101 +126,101 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="for-domain-joined-vms"></a>Etki alanına katılmış VM 'Ler için
+### <a name="for-domain-joined-vms"></a>Etki alanına katılan VM'ler için
 
-Bu sorunu gidermek için öncelikle VM 'nin bir DC 'ye bağlanıp bağlanamamadığını ve DC 'nin "sağlıklı" durumuna sahip olup olmadığını ve VM 'den gelen istekleri işleyebileceğini denetleyin.
+Bu sorunu gidermek için, önce VM'nin DC'ye bağlanıp bağlanamayacağını ve DC'nin "sağlıklı" bir durumu olup olmadığını ve VM'den gelen istekleri işleyip işlemeyeceğini kontrol edin.
 
 >[!Note] 
->DC sistem durumunu test etmek için aynı oturum açma sunucusunu paylaşan aynı VNET ve alt ağ üzerinde başka bir sanal makine kullanabilirsiniz.
+>DC sistem durumunu sınamak için, aynı oturum açma sunucusunu paylaşan aynı VNET ve Subnet'te başka bir VM kullanabilirsiniz.
 
-"VM uzaktan bağlanma" bölümünde yer alan adımlara göre Seri konsol, uzak CMD veya uzak PowerShell kullanarak sorunlu VM 'ye bağlanın.
+"VM'ye uzaktan bağlan" bölümündeki adımlara göre Seri konsol, uzak CMD veya uzak PowerShell kullanarak sorun yaratan VM'ye bağlanın.
 
-VM 'nin hangi DC 'ye bağlanacağınızı öğrenmek için konsolunda aşağıdaki komutu çalıştırın: 
+VM'nin hangi DC'ye bağlandığına karar vermek için konsolda aşağıdaki komutu çalıştırın: 
 
 ```cmd
 set | find /i "LOGONSERVER"
 ```
 
-Ardından, VM ile DC arasındaki güvenli kanalın sistem durumunu kontrol edin. Bunu yapmak için, yükseltilmiş bir PowerShell örneğinde aşağıdaki komutu çalıştırın. Bu komut, güvenli kanalın etkin olup olmadığını belirten bir Boole bayrağı döndürür:
+Ardından, VM ve DC arasındaki güvenli kanalın durumunu kontrol edin. Bunu yapmak için, yükseltilmiş bir PowerShell örneğinde aşağıdaki komutu çalıştırın. Bu komut, güvenli kanalın canlı olup olmadığını belirten bir Boolean bayrağı döndürür:
 
 ```powershell
 Test-ComputerSecureChannel -verbose
 ```
 
-Kanal bozulur, onarmak için aşağıdaki komutu çalıştırın:
+Kanal bozuksa, onarmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Test-ComputerSecureChannel -repair
 ```
 
-Active Directory ' deki bilgisayar hesabı parolasının VM 'de ve DC 'de güncelleştirildiğinden emin olun:
+Active Directory'deki bilgisayar hesabı parolasının VM ve DC'de güncelleştirdiğinden emin olun:
 
 ```powershell
 Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDENTIAL WITH DOMAIN ADMIN LEVEL>
 ```
 
-DC ve VM arasındaki iletişim iyi ise, ancak DC 'nin bir RDP oturumu açmak için yeterince iyi olmaması durumunda DC 'yi yeniden başlatmayı deneyebilirsiniz.
+DC ve VM arasındaki iletişim iyiyse, ancak DC bir RDP oturumunu açacak kadar sağlıklı değilse, DC'yi yeniden başlatmayı deneyebilirsiniz.
 
-Yukarıdaki komutlar etki alanına iletişim sorununu gidermezse, bu VM 'yi etki alanına yeniden ekleyebilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Önceki komutlar etki alanına iletişim sorununu gidermediyse, bu VM'yi etki alanına yeniden katılabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
-1. Aşağıdaki içeriği kullanarak Unjoın. ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın:
+1. Aşağıdaki içeriği kullanarak Unjoin.ps1 adında bir komut dosyası oluşturun ve ardından komut dosyasını Azure portalında Özel Komut Dosyası Uzantısı olarak dağıtın:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
     
-    Bu betik, VM 'yi etki alanından kapatıp 10 saniye sonra yeniden başlatır. Daha sonra, etki alanı tarafında bilgisayar nesnesini temizlemeniz gerekir.
+    Bu komut dosyası VM'yi zorla etki alanından çıkarır ve 10 saniye sonra yeniden başlatır. Ardından, etki alanı tarafındaki Bilgisayar nesnesini temizlemeniz gerekir.
 
-2.  Temizleme yapıldıktan sonra bu VM 'yi etki alanına yeniden katın. Bunu yapmak için, aşağıdaki içeriği kullanarak JoinDomain. ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın: 
+2.  Temizleme bittikten sonra, bu VM'yi etki alanına yeniden katılın. Bunu yapmak için, aşağıdaki içeriği kullanarak JoinDomain.ps1 adında bir komut dosyası oluşturun ve ardından komut dosyasını Azure portalında Özel Komut Dosyası Uzantısı olarak dağıtın: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"
     ```
 
     >[!Note] 
-    >Bu, belirtilen kimlik bilgilerini kullanarak etki alanındaki VM 'yi birleştirir.
+    >Bu, belirtilen kimlik bilgilerini kullanarak etki alanında VM'ye katılır.
 
-Active Directory kanalı sağlıklı ise, bilgisayar parolası güncellenir ve etki alanı denetleyicisi beklendiği gibi çalışıyorsa, aşağıdaki adımları deneyin.
+Etkin Dizin kanalı sağlıklıysa, bilgisayar parolası güncelleştirilir ve etki alanı denetleyicisi beklendiği gibi çalışıyorsa, aşağıdaki adımları deneyin.
 
-Sorun devam ederse, etki alanı kimlik bilgisinin devre dışı olup olmadığını kontrol edin. Bunu yapmak için, yükseltilmiş bir komut Istemi penceresi açın ve ardından VM 'nin VM 'de oturum açmak için etki alanı hesaplarını devre dışı bırakmak üzere ayarlanmış olup olmadığını anlamak için aşağıdaki komutu çalıştırın:
+Sorun devam ederse, etki alanı kimlik bilgisidevre dışı olup olmadığını denetleyin. Bunu yapmak için, yükseltilmiş bir Komut İstem penceresi açın ve vm'de oturum açmak için etki alanı hesaplarını devre dışı bırakabilecek şekilde ayarlanıp ayarlanmadığını belirlemek için aşağıdaki komutu çalıştırın:
 
 ```cmd
 REG query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds
 ```
 
-Anahtar **1**olarak ayarlandıysa, sunucunun etki alanı kimlik bilgilerine izin vermek üzere ayarlandığı anlamına gelir. Bu anahtarı **0**olarak değiştirin.
+Anahtar **1**olarak ayarlanmışsa, bu sunucunun etki alanı kimlik bilgilerine izin vermeyecek şekilde ayarlandığını anlamına gelir. Bu anahtarı **0**olarak değiştirin.
 
-### <a name="for-standalone-vms"></a>Tek başına VM 'Ler için
+### <a name="for-standalone-vms"></a>Bağımsız VM'ler için
 
-#### <a name="check-minencryptionlevel"></a>MinEncryptionLevel öğesini denetle
+#### <a name="check-minencryptionlevel"></a>MinEncryptionLevel'i kontrol et
 
-Bir CMD örneğinde, **Minencryptionlevel** kayıt defteri değerini sorgulamak için aşağıdaki komutu çalıştırın:
+CMD örneğinde, **MinEncryptionLevel** kayıt defteri değerini sorgulamak için aşağıdaki komutu çalıştırın:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Kayıt defteri değerine bağlı olarak, aşağıdaki adımları izleyin:
+Kayıt defteri değerine bağlı olarak aşağıdaki adımları izleyin:
 
-* 4 (FIPS): [FIPS uyumlu algoritmalar bağlantılarını denetleme](#fips-compliant)bölümüne gidin.
+* 4 (FIPS): [FIPs uyumlu algoritmabağlantılarını](#fips-compliant)denetle'ye gidin.
 
-* 3 (128 bit şifreleme): aşağıdaki komutu çalıştırarak önem derecesini **2** olarak ayarlayın:
+* 3 (128-bit şifreleme): Aşağıdaki komutu çalıştırarak önem derecesini **2** olarak ayarlayın:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (istemci tarafından dikte edildiği için en yüksek şifreleme mümkün): aşağıdaki komutu çalıştırarak şifrelemeyi en düşük **1** değerine ayarlamayı deneyebilirsiniz:
+* 2 (İstemci tarafından dikte edilen en yüksek şifreleme): Aşağıdaki komutu çalıştırarak şifrelemeyi en az **1** değerine ayarlamayı deneyebilirsiniz:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
     ```
     
-Kayıt defterindeki değişikliklerin etkili olması için sanal makineyi yeniden başlatın.
+Kayıt defterindeki değişikliklerin etkili olması için VM'yi yeniden başlatın.
 
 #### <a name="tls-version"></a>TLS sürümü
 
-Sisteme bağlı olarak, RDP, TLS 1,0, 1,1 veya 1,2 (sunucu) protokolünü kullanır. Bu protokollerin sanal makinede nasıl ayarlandığını sorgulamak için bir CMD örneği açın ve aşağıdaki komutları çalıştırın:
+Sisteme bağlı olarak RDP TLS 1.0, 1.1 veya 1.2 (sunucu) protokolünü kullanır. Bu protokollerin VM'de nasıl ayarlandırılacağını sorgulamak için bir CMD örneğini açın ve ardından aşağıdaki komutları çalıştırın:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled
@@ -228,7 +228,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled
 ```
 
-Döndürülen değerler **1**değilse, bu protokolün devre dışı bırakıldığı anlamına gelir. Bu protokolleri etkinleştirmek için aşağıdaki komutları çalıştırın:
+Döndürülen değerler **1'in**tümü değilse, bu protokolün devre dışı bırakıldığı anlamına gelir. Bu protokolleri etkinleştirmek için aşağıdaki komutları çalıştırın:
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
@@ -244,40 +244,40 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 </pre>
 
 > [!Note]
-> SCHANNEL hatalarında, Konuk işletim sistemi günlüklerinden SSH/TLS sürüm x. x ' i alın.
+> SCHANNEL hatalarındaki Konuk İşletim Sistemi Günlüklerinden SSH/TLS x.x sürümünü alın.
 
-#### <a name="fips-compliant"></a>FIPS uyumlu algoritma bağlantılarını denetle
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>FIPs uyumlu algoritmabağlantılarını denetleyin
 
-Uzak Masaüstü, yalnızca FIPS uyumlu algoritma bağlantıları kullanmak için zorlanabilir. Bu, bir kayıt defteri anahtarı kullanılarak ayarlanabilir. Bunu yapmak için, yükseltilmiş bir komut Istemi penceresi açın ve ardından aşağıdaki anahtarları sorgulayın:
+Uzak masaüstü yalnızca FIPs uyumlu algoritma bağlantılarını kullanmak için zorlanabilir. Bu bir kayıt defteri anahtarı kullanılarak ayarlanabilir. Bunu yapmak için, yükseltilmiş komut istemi penceresini açın ve ardından aşağıdaki tuşları sorgulayın:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled
 ```
 
-Komut **1**döndürürse, kayıt defteri değerini **0**olarak değiştirin.
+Komut **1'i**döndürürse, kayıt defteri değerini **0**olarak değiştirin.
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled /t REG_DWORD /d 0
 ```
 
-VM üzerinde geçerli MinEncryptionLevel olduğunu denetleyin:
+VM'deki geçerli MinEncryptionLevel'in hangisi olduğunu kontrol edin:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Komut **4**döndürürse, kayıt defteri değerini **2** olarak değiştirin
+Komut **4'u**döndürürse, kayıt defteri değerini **2** olarak değiştirin
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2
 ```
 
-Kayıt defterindeki değişikliklerin etkili olması için sanal makineyi yeniden başlatın.
+Kayıt defterindeki değişikliklerin etkili olması için VM'yi yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Win32_TSGeneralSetting sınıfının SetEncryptionLevel yöntemi](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 
-[Sunucu kimlik doğrulaması ve şifreleme düzeylerini yapılandırma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[Sunucu Kimlik Doğrulama ve Şifreleme Düzeylerini Yapılandırma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
 
 [Win32_TSGeneralSetting sınıfı](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)

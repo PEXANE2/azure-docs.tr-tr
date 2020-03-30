@@ -9,31 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: e289cf7aea6e0ea46ff049f3ea8bf9e1517e8aaf
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673639"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79485943"
 ---
-1. [Azure Machine Learning çalışma alanı oluşturun](../articles/machine-learning/how-to-manage-workspace.md).
+1. [Azure Machine Learning çalışma alanı oluşturun.](../articles/machine-learning/how-to-manage-workspace.md)
 
-1. [GitHub deposunu](https://aka.ms/aml-notebooks) kopyalayın.
+1. [GitHub deposunu](https://aka.ms/aml-notebooks)klonla.
 
-    ```CLI
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Aşağıdaki yöntemlerden birini kullanarak kopyalanmış dizine bir çalışma alanı yapılandırma dosyası ekleyin:
+1. Bu yöntemlerden birini kullanarak klonlanmış dizine bir çalışma alanı yapılandırma dosyası ekleyin:
 
-    * [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin. 
+    * Azure [portalında,](https://ms.portal.azure.com)çalışma alanınızın **Genel Bakış** bölümünden **config.json indir'i** seçin. 
 
-    ![Config. json dosyasını indir](./media/aml-dsvm-server/download-config.png)
+    ![Config.json karşıdan yükleme](./media/aml-dsvm-server/download-config.png)
 
-    * Klonlanan dizindeki [Configuration. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) not defterindeki kodu kullanarak yeni bir çalışma alanı oluşturun.
+    * Klonlanmış dizininizdeki [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) not defterinde kodu kullanarak yeni bir çalışma alanı oluşturun.
 
 1. Kopyaladığınız dizinden notebook sunucusunu başlatın.
 
-    ```shell
+    ```bash
     jupyter notebook
     ```

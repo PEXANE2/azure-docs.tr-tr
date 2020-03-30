@@ -1,6 +1,6 @@
 ---
-title: Dynamics 365 'e bağlanma
-description: Dynamics 365 (çevrimiçi) REST API 'Leri ve Azure Logic Apps kayıt oluşturma ve yönetme
+title: Dynamics 365'e bağlanın
+description: Dynamics 365 (çevrimiçi) REST API'leri ve Azure Mantık Uygulamaları ile kayıt oluşturma ve yönetme
 services: logic-apps
 ms.suite: integration
 author: Mattp123
@@ -10,183 +10,183 @@ ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789878"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Azure Logic Apps ile Dynamics 365 kayıtlarını yönetme
 
-Azure Logic Apps ve Dynamics 365 bağlayıcısı sayesinde, Dynamics 365’teki kayıtlarınızı temel alarak otomatik görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız, Dynamics 365 hesabınızda kayıtlar oluşturabilir, öğeleri güncelleştirebilir, kayıtlar döndürebilir ve daha fazlasını yapabilir. Mantıksal uygulamalarınıza, Dynamics 365 ' den yanıt alan ve çıktıyı diğer eylemler için kullanılabilir hale getirmek için kullanabileceğiniz eylemler ekleyebilirsiniz. Örneğin, Dynamics 365 ' de bir öğe güncelleştirildiği zaman Office 365 kullanarak bir e-posta gönderebilirsiniz.
+Azure Logic Apps ve Dynamics 365 bağlayıcısı sayesinde, Dynamics 365’teki kayıtlarınızı temel alarak otomatik görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız, Dynamics 365 hesabınızda kayıtlar oluşturabilir, öğeleri güncelleştirebilir, kayıtlar döndürebilir ve daha fazlasını yapabilir. Dynamics 365'ten yanıt alan ve çıktıyı diğer eylemler için kullanılabilir hale getiren eylemleri mantık uygulamalarınıza ekleyebilirsiniz. Örneğin, Dynamics 365'te bir öğe güncelleştirildiğinde, Office 365'i kullanarak e-posta gönderebilirsiniz.
 
-Bu makalede, Dynamics 365 ' de yeni bir müşteri adayı kaydı oluşturulduğunda Dynamics 365 ' de bir görev oluşturan mantıksal uygulamayı nasıl oluşturabileceğiniz gösterilmektedir.
-Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin.
+Bu makalede, Dynamics 365'te yeni bir müşteri adayı kaydı oluşturulduğunda Dynamics 365'te görev oluşturan bir mantık uygulaması nasıl oluşturulabileceğiniz gösterilmektedir.
+Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir inceleyin?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* [Dynamics 365 hesabı](https://dynamics.microsoft.com)
+* Dinamik [365 hesabı](https://dynamics.microsoft.com)
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
-* Dynamics 365 hesabınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı Dynamics 365 tetikleyicisi ile başlatmak için [boş bir mantıksal uygulama](../logic-apps/quickstart-create-first-logic-app-workflow.md)gerekir.
+* Dynamics 365 hesabınıza erişmek istediğiniz mantık uygulaması. Dynamics 365 tetikleyicisi ile mantık uygulamanızı başlatmak için boş bir [mantık uygulamasına](../logic-apps/quickstart-create-first-logic-app-workflow.md)ihtiyacınız var.
 
-## <a name="add-dynamics-365-trigger"></a>Dynamics 365 tetikleyicisi Ekle
+## <a name="add-dynamics-365-trigger"></a>Dynamics 365 tetikleyiciekle
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-İlk olarak, Dynamics 365 ' de yeni bir müşteri adayı kaydı göründüğünde harekete çıkan bir Dynamics 365 tetikleyicisi ekleyin.
+İlk olarak, Dynamics 365'te yeni bir müşteri adayı kaydı göründüğünde devreye soal veren bir Dynamics 365 tetikleyicisi ekleyin.
 
-1. [Azure Portal](https://portal.azure.com), henüz açık değilse, mantıksal uygulama Tasarımcısı 'nda boş mantıksal uygulamanızı açın.
+1. Azure [portalında,](https://portal.azure.com)boş mantık uygulamanızı zaten açık değilse, Mantık Uygulama Tasarımcısı'nda açın.
 
-1. Arama kutusuna filtreniz olarak "Dynamics 365" yazın. Bu örnekte, Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir kayıt oluşturulduğunda**
+1. Arama kutusuna filtreniz olarak "Dynamics 365" girin. Bu örnekte, tetikleyiciler listesinin altında şu tetikleyiciyi seçin: **Bir kayıt oluşturulduğunda**
 
    ![Tetikleyiciyi seçin](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
-1. Dynamics 365 ' de oturum açmanız istenirse, şimdi oturum açın.
+1. Dynamics 365'te oturum açmanız istenirse, hemen oturum açın.
 
-1. Bu tetikleyici ayrıntılarını belirtin:
+1. Bu tetikleyici ayrıntıları sağlayın:
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kuruluş adı** | Yes | Kuruluşunuzun Dynamics 365 örneğinin izlenecek adı, örneğin "contoso" |
-   | **Varlık adı** | Yes | İzlenecek varlığın adı, örneğin "müşteri adayları" | 
-   | **Sıklık** | Yes | Tetikleyiciyle ilgili güncelleştirmeler denetlenirken zaman aralıklarıyla kullanılacak zaman birimi |
-   | **Aralık** | Yes | Sonraki denetim öncesinde geçen saniye, dakika, saat, gün, hafta veya ay sayısı |
+   | **Kuruluş Adı** | Evet | Kuruluşunuzun Dinamikler 365 örneğinin adı, örneğin, "Contoso" |
+   | **Varlık Adı** | Evet | İzlenecek varlığın adı, örneğin, "Müşteri Adayları" | 
+   | **Frequency** | Evet | Tetikleyiciyle ilgili güncelleştirmeleri denetlerken aralıklarla kullanılacak zaman birimi |
+   | **Interval** | Evet | Bir sonraki kontrolden önce geçen saniye, dakika, saat, gün, hafta veya ay sayısı |
    ||| 
 
    ![Tetikleyici ayrıntıları](./media/connectors-create-api-crmonline/trigger-details.png)
 
-## <a name="add-dynamics-365-action"></a>Dynamics 365 eylemi ekleme
+## <a name="add-dynamics-365-action"></a>Dynamics 365 eylem ekle
 
-Şimdi yeni müşteri adayı kaydı için bir görev kaydı oluşturan Dynamics 365 eylemini ekleyin.
+Şimdi, yeni müşteri adayı kaydı için bir görev kaydı oluşturan Dynamics 365 eylemini ekleyin.
 
-1. Tetikleyicinizin altında **yeni adım**' ı seçin.
+1. Tetikleyicinizin altında **Yeni adımı**seçin.
 
-1. Arama kutusuna filtreniz olarak "Dynamics 365" yazın. Eylemler listesinden şu eylemi seçin: **Yeni bir kayıt oluştur**
+1. Arama kutusuna filtreniz olarak "Dynamics 365" girin. Eylemler listesinden şu eylemi seçin: **Yeni bir kayıt oluşturma**
 
-   ![Eylem Seç](./media/connectors-create-api-crmonline/select-action.png)
+   ![Eylem seçin](./media/connectors-create-api-crmonline/select-action.png)
 
-1. Bu eylem ayrıntılarını belirtin:
+1. Bu eylem ayrıntılarını sağlayın:
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kuruluş adı** | Yes | Kayıt oluşturmak istediğiniz, tetikleyicinizde aynı örnek olması gerektirmeyen, ancak bu örnekte "contoso" olan Dynamics 365 örneği |
-   | **Varlık adı** | Yes | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
+   | **Kuruluş Adı** | Evet | Tetikleyicinizde aynı örnek olmak zorunda olmayan, ancak bu örnekte "Contoso" olan kaydı oluşturmak istediğiniz Dynamics 365 örneği |
+   | **Varlık Adı** | Evet | Kaydı oluşturmak istediğiniz varlık, örneğin, "Görevler" |
    | | |
 
    ![Eylem ayrıntıları](./media/connectors-create-api-crmonline/action-details.png)
 
-1. Eylemde **Konu** kutusu belirdiğinde, dinamik içerik listesinin görünmesi için **Konu** kutusunun içine tıklayın. Bu listeden, yeni müşteri adayı kaydıyla ilişkili görev kaydına dahil edilecek alan değerlerini seçin:
+1. **Eyleminizde Konu** kutusu göründüğünde, dinamik içerik listesinin görünmesi için **Konu** kutusunun içine tıklayın. Bu listeden, yeni müşteri adayı kaydıyla ilişkili görev kaydına dahil edilecek alan değerlerini seçin:
 
    | Alan | Açıklama |
    |-------|-------------|
-   | **Soyadı** | Kayıttaki birincil kişi olarak müşteri adayının son adı |
-   | **İlerde** | Kayıttaki müşteri adayının açıklayıcı adı |
+   | **Soyadı** | Kayıttaki birincil kişi olarak müşteri adayının soyadı |
+   | **Konu başlığı** | Kayıttaki müşteri adayının açıklayıcı adı |
    | | |
 
-   ![Görev kaydı ayrıntıları](./media/connectors-create-api-crmonline/create-record-details.png)
+   ![Görev kayıt ayrıntıları](./media/connectors-create-api-crmonline/create-record-details.png)
 
-1. Tasarımcı araç çubuğunda mantıksal uygulamanız için **Kaydet** ' i seçin. 
+1. Tasarımcı araç çubuğunda, mantık uygulamanız için **Kaydet'i** seçin. 
 
-1. Mantıksal uygulamayı el ile başlatmak için, Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
+1. Mantık uygulamasını el ile başlatmak için, tasarımcı araç çubuğunda **Çalıştır'ı**seçin.
 
    ![Mantıksal uygulamanızı çalıştırma](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
-1. Şimdi Dynamics 365 ' de bir müşteri adayı kaydı oluşturarak mantıksal uygulamanızın iş akışını tetikleyebilirsiniz.
+1. Şimdi Dynamics 365'te bir müşteri adayı kaydı oluşturun, böylece mantık uygulamanızın iş akışını tetikleyebilirsiniz.
 
-## <a name="add-filter-or-query"></a>Filtre veya sorgu Ekle
+## <a name="add-filter-or-query"></a>Filtre veya sorgu ekleme
 
-Bir Dynamics 365 eyleminde verilerin nasıl filtreleneceğini belirtmek için bu eylemde **Gelişmiş seçenekleri göster** ' i seçin. Ardından sorguya göre bir filtre veya sıralama ekleyebilirsiniz.
-Örneğin, yalnızca etkin hesapları almak ve bu kayıtları hesap adına göre sıralamak için bir filtre sorgusu kullanabilirsiniz. Bu görev için şu adımları izleyin:
+Dynamics 365 eyleminde verileri nasıl filtreleeceğinizi belirtmek için, bu eylemde **gelişmiş seçenekleri göster'i** seçin. Daha sonra sorguya göre bir filtre veya sipariş ekleyebilirsiniz.
+Örneğin, yalnızca etkin hesapları almak ve bu kayıtları hesap adına göre sıralamak için bir filtre sorgusu kullanabilirsiniz. Bu görev için aşağıdaki adımları izleyin:
 
-1. **Filtre sorgusu**altında şu OData filtre sorgusunu girin: `statuscode eq 1`
+1. **Filtre sorgusunun**altında, bu OData filtresi sorgusuna girin:`statuscode eq 1`
 
-2. **Sıralama ölçütü**altında, dinamik içerik listesi göründüğünde **Hesap adı**' nı seçin. 
+2. **Düzen Le,** dinamik içerik listesi göründüğünde **Hesap Adı'nı**seçin. 
 
-   ![Filtre ve siparişi belirtin](./media/connectors-create-api-crmonline/advanced-options.png)
+   ![Filtre ve sipariş belirtin](./media/connectors-create-api-crmonline/advanced-options.png)
 
-Daha fazla bilgi için, bkz. bu Dynamics 365 müşteri katılımı Web API 'SI sistem sorgu seçenekleri:
+Daha fazla bilgi için şu Dynamics 365 Müşteri Etkileşimi Web API sistem sorgu seçeneklerine bakın:
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
 
-### <a name="best-practices-for-advanced-options"></a>Gelişmiş seçenekler için en iyi uygulamalar
+### <a name="best-practices-for-advanced-options"></a>Gelişmiş seçenekleri için en iyi yöntemler
 
-Bir eylem veya tetikleyici içindeki bir alan için bir değer belirttiğinizde, değeri el ile girip girmeyeceğinizi veya dinamik içerik listesinden değeri seçip değerin veri türü alan türüyle aynı olmalıdır.
+Bir eylem veya tetikleyicide bir alan için değer belirttiğiniz zaman, değeri el ile girdiğinizde veya dinamik içerik listesinden değeri seçseniz de değerin veri türüyle eşleşmesi gerekir.
 
-Bu tabloda, değerleri için bazı alan türleri ve gerekli veri türleri açıklanmaktadır.
+Bu tablo, bazı alan türlerini ve değerleri için gerekli veri türlerini açıklar.
 
 | Alan türü | Gerekli veri türü | Açıklama | 
 |------------|--------------------|-------------|
-| Metin alanları | Tek satırlık metin | Bu alanlar, metin türüne sahip tek satırlık bir metin veya dinamik içerik gerektirir. <p><p>*Örnek alanlar*: **Açıklama** ve **Kategori** | 
-| Tamsayı alanları | Tam sayı | Bazı alanlar tamsayı türüne sahip tamsayı veya dinamik içerik gerektirir. <p><p>*Örnek alanlar*: tamamlanma **yüzdesi** ve **süre** | 
-| Tarih alanları | Tarih ve saat | Bazı alanlar aa/gg/yyyy biçiminde bir tarih veya tarih türüne sahip dinamik içerik gerektirir. <p><p>*Örnek alanlar*: **Oluşturulma**tarihi, **Başlangıç tarihi**, **gerçek başlangıç**, **gerçek bitiş**ve **son tarih** | 
-| Kayıt KIMLIĞI ve arama türü gerektiren alanlar | Birincil anahtar | Başka bir varlık kaydına başvuruda bulunan bazı alanlar, hem kayıt KIMLIĞI hem de arama türü gerektirir. | 
+| Metin alanları | Tek satırlı metin | Bu alanlar, metin türüne sahip tek bir metin satırı veya dinamik içerik gerektirir. <p><p>*Örnek alanlar*: **Açıklama** ve **Kategori** | 
+| Tamsayı alanları | Tam sayı | Bazı alanlar, isterteme türüne sahip, istertime veya dinamik içeriğe ihtiyaç duyar. <p><p>*Örnek alanlar*: **Yüzde Tam** ve **Süre** | 
+| Tarih alanları | Tarih ve Saat | Bazı alanlar, tarih türüne sahip mm/dd/yyyy biçimi veya dinamik içeriğe sahip bir tarih gerektirir. <p><p>*Örnek alanlar*: **Oluşturulan**, **Başlangıç Tarihi**, Fiili **Başlangıç**, **Fiili Bitiş**ve **Vade Tarihi** | 
+| Hem kayıt kimliği hem de arama türü gerektiren alanlar | Birincil anahtar | Başka bir varlık kaydına başvuran bazı alanlar hem kayıt kimliği hem de arama türü gerektirir. | 
 ||||
 
-Bu alan türlerini genişleterek, Dynamics 365 tetikleyicilerinde ve hem kayıt KIMLIĞI hem de arama türü gerektiren eylemlerde örnek alanlar aşağıda verilmiştir. Bu gereksinim, dinamik listeden seçtiğiniz değerlerin işe gerekmediği anlamına gelir.
+Bu alan türlerini genişleterek, Dynamics 365 tetikleyicilerinde örnek alanlar ve hem kayıt kimliği hem de arama türü gerektiren eylemler verilmiştir. Bu gereksinim, dinamik listeden seçtiğiniz değerlerin çalışmayamayacağı anlamına gelir.
 
 | Alan | Açıklama |
 |-------|-------------|
-| **Sahip** | Geçerli bir kullanıcı KIMLIĞI ya da takım kayıt KIMLIĞI olmalıdır. |
-| **Sahip türü** | `systemusers` ya da `teams`olmalıdır. |
-| **İnizle** | Hesap KIMLIĞI veya ilgili kişi kaydı KIMLIĞI gibi geçerli bir kayıt KIMLIĞI olmalıdır. |
-| **İlgili tür** | `accounts` veya `contacts`gibi bir arama türü olmalıdır. |
-| **Müşterisi** | Hesap KIMLIĞI veya ilgili kişi kaydı KIMLIĞI gibi geçerli bir kayıt KIMLIĞI olmalıdır. |
-| **Müşteri türü** | `accounts` veya `contacts`gibi arama türü olmalıdır. |
+| **Sahibi** | Geçerli bir kullanıcı kimliği veya takım kayıt kimliği olmalıdır. |
+| **Sahip Tipi** | Ya da `systemusers` `teams`. |
+| **İlgili** | Hesap kimliği veya ilgili kişi kayıt kimliği gibi geçerli bir kayıt kimliği olmalıdır. |
+| **Türüne İlişkin** | Bir arama türü olmalı, `accounts` gibi `contacts`veya . |
+| **Müşteri** | Hesap kimliği veya ilgili kişi kayıt kimliği gibi geçerli bir kayıt kimliği olmalıdır. |
+| **Müşteri Tipi** | Gibi `accounts` veya `contacts`. |
 |||
 
-Bu örnekte, **Yeni bir kayıt oluştur** adlı eylem yeni bir görev kaydı oluşturur:
+Bu örnekte, **yeni bir kayıt oluştur** adlı eylem yeni bir görev kaydı oluşturur:
 
-![Kayıt kimlikleri ve arama türleriyle görev kaydı oluşturma](./media/connectors-create-api-crmonline/create-record-advanced.png)
+![Kayıt titreleri ve arama türleri ile görev kaydı oluşturma](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-Bu eylem, görev kaydını, **sahip** ALANıNDAKI kayıt kimliğine ve **sahip türü** alanındaki arama türüne göre belirli bir Kullanıcı KIMLIĞINE veya takım kayıt kimliğine atar:
+Bu eylem, **Sahip** alanındaki kayıt kimliğine ve **Sahip Türü** alanındaki arama türüne göre görev kaydını belirli bir kullanıcı kimliğine veya takım kayıt kimliğine atar:
 
-![Sahip kayıt KIMLIĞI ve arama türü](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
+![Sahibi kayıt kimliği ve arama türü](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-Bu eylem ayrıca **ilgili alanına eklenen** kayıt kimliğiyle ilişkili hesap kaydını ve **ilgili tür** alanındaki arama türünü de ekler:
+Bu eylem, **Ilgili** alana eklenen kayıt kimliği yle ilişkili bir hesap kaydı ve **Benzer Tür** alanına arama türü de ekler:
 
-![Kayıt KIMLIĞI ve arama türü ile ilgili](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
+![Kayıt kimliği ve arama türü ile ilgili olarak](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
-## <a name="find-record-id"></a>Kayıt KIMLIĞINI bul
+## <a name="find-record-id"></a>Kayıt kimliğini bulma
 
-Bir kayıt KIMLIĞI bulmak için şu adımları izleyin:
+Kayıt kimliğini bulmak için aşağıdaki adımları izleyin:
 
-1. Dynamics 365 ' de, hesap kaydı gibi bir kayıt açın.
+1. Dynamics 365'te, hesap kaydı gibi bir kayıt açın.
 
-2. Eylemler araç çubuğunda şu adımlardan birini seçin:
+2. Eylemler araç çubuğunda aşağıdaki adımlardan birini seçin:
 
-   * **Açılan pencereyi**seçin. öne kaydı ![](./media/connectors-create-api-crmonline/popout-record.png) 
-   * Tam URL 'yi varsayılan e-posta programınıza kopyalayabilmeniz için **BIR bağlantıyı e-posta gönder** ' i seçin.
+   * **Pop Out'u**seçin. ![popout kaydı](./media/connectors-create-api-crmonline/popout-record.png) 
+   * Varsayılan e-posta programınızda tam URL kopyalayabilmeniz için **E-POSTA BAĞLANTISI'nı** seçin.
 
-   `%7b` ve `%7d` kodlama karakterleri arasındaki URL 'de kayıt KIMLIĞI görüntülenir:
+   Kayıt kimliği URL'de ve `%7b` `%7d` kodlama karakterleri arasında görünür:
 
-   ![Kayıt KIMLIĞINI bul](./media/connectors-create-api-crmonline/find-record-ID.png)
+   ![Kayıt kimliğini bulma](./media/connectors-create-api-crmonline/find-record-ID.png)
 
-## <a name="troubleshoot-failed-runs"></a>Başarısız çalıştırmalar sorunlarını giderme
+## <a name="troubleshoot-failed-runs"></a>Başarısız çalıştırma sorunlarını giderme
 
-Mantıksal uygulamanızda başarısız olan adımları bulmak ve gözden geçirmek için mantıksal uygulamanızın çalışma geçmişi, durumu, girişleri, çıkışları vb. görüntüleyebilirsiniz.
+Mantık uygulamanızdaki başarısız adımları bulmak ve incelemek için, mantık uygulamanızın çalışan geçmişini, durumunu, girdilerini, çıktılarını ve benzeri geçmişlerini görüntüleyebilirsiniz.
 
-1. Azure portal, mantıksal uygulamanızın ana menüsünde **genel bakış**' ı seçin. Mantıksal uygulamanıza yönelik tüm çalıştırma durumlarını gösteren çalışma **geçmişi** bölümünde, daha fazla bilgi için başarısız bir çalıştırma seçin.
+1. Azure portalında, mantık uygulamanızın ana menüsünde **Genel Bakış'ı**seçin. Mantık uygulamanızın tüm çalıştırma durumlarını gösteren **Geçmiş Çalıştır** bölümünde, daha fazla bilgi için başarısız bir çalıştırma seçin.
 
-   ![Mantıksal uygulama çalıştırma durumu](./media/connectors-create-api-crmonline/run-history.png)
+   ![Mantık uygulaması çalıştırma durumu](./media/connectors-create-api-crmonline/run-history.png)
 
 1. Daha fazla ayrıntı görüntüleyebilmeniz için başarısız bir adımı genişletin.
 
-   ![Genişletme başarısız adımı](./media/connectors-create-api-crmonline/expand-failed-step.png)
+   ![Başarısız adımı genişletme](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
-1. Hatanın arkasındaki nedeni bulmanıza yardımcı olabilecek giriş ve çıkış gibi adım ayrıntılarını gözden geçirin.
+1. Hatanın arkasındaki nedeni bulmanıza yardımcı olabilecek giriş ler ve çıktılar gibi adımın ayrıntılarını gözden geçirin.
 
-   ![Başarısız adım-girişler ve çıktılar](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
+   ![Başarısız adım - giriş ler ve çıktılar](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
 
-Logic Apps sorunlarını giderme hakkında daha fazla bilgi için bkz. [mantıksal uygulama başarısızlıklarını tanılama](../logic-apps/logic-apps-diagnosing-failures.md).
+Sorun giderme mantığı uygulamaları hakkında daha fazla bilgi [için](../logic-apps/logic-apps-diagnosing-failures.md)bkz.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) dosyasında açıklandığı gibi Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/dynamicscrmonline/)bakın.
+Bağlayıcının OpenAPI (eski adıyla Swagger) dosyasında açıklandığı gibi tetikleyiciler, eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/dynamicscrmonline/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,72 +1,72 @@
 ---
-title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Docs
-description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
+title: ASP.NET Temel uygulamalar için Azure Uygulama Öngörüleri | Microsoft Dokümanlar
+description: Kullanılabilirlik, performans ve kullanım için Core web uygulamalarını ASP.NET izleyin.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284798"
 ---
-# <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
+# <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Çekirdek uygulamaları için Uygulama Öngörüleri
 
-Bu makalede, [ASP.NET Core](https://docs.microsoft.com/aspnet/core) bir uygulama için Application Insights nasıl etkinleştirileceği açıklanır. Bu makaledeki yönergeleri tamamladığınızda Application Insights, ASP.NET Core uygulamanızdan istekleri, bağımlılıkları, özel durumları, performans sayaçlarını, sinyalleri ve günlükleri toplar.
+Bu makalede, [ASP.NET Çekirdek](https://docs.microsoft.com/aspnet/core) uygulaması için Uygulama Öngörüleri nasıl etkinleştirilir açıklanmaktadır. Bu makaledeki yönergeleri tamamladığınızda, Application Insights ASP.NET Core uygulamanızdan istekler, bağımlılıklar, özel durumlar, performans sayaçları, sinyaller ve günlükler toplar.
 
-Burada kullanacağınız örnek, `netcoreapp2.2`hedefleyen bir [MVC uygulamasıdır](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) . Bu yönergeleri tüm ASP.NET Core uygulamalarına uygulayabilirsiniz.
+Burada kullanacağımız örnek, hedefleyen `netcoreapp2.2`bir [MVC uygulamasıdır.](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) Bu talimatları tüm ASP.NET Core uygulamalarına uygulayabilirsiniz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-[ASP.NET Core için APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) , uygulamalarınızı nerede veya nasıl çalıştırdıklarından bağımsız olarak izleyebilir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Destek şunları içerir:
+[ASP.NET Core için Uygulama Öngörüleri SDK,](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) uygulamalarınızı nerede ve nasıl çalıştırdıklarına bakılmaksızın izleyebilir. Uygulamanız çalışıyorsa ve Azure'a ağ bağlantısı varsa, telemetri toplanabilir. Uygulama Öngörüleri izleme her yerde desteklenmektedir .NET Core desteklenmektedir. Destek kapakları:
 * **İşletim sistemi**: Windows, Linux veya Mac.
-* **Barındırma yöntemi**: işlemde veya işlem dışı.
-* **Dağıtım yöntemi**: çerçeveye bağımlı veya kendine dahil.
-* **Web sunucusu**: IIS (Internet Information Server) veya Kestrel.
-* **Barındırma platformu**: Azure App Service, Azure VM, Docker, Azure Kubernetes hizmeti (aks) ve benzeri Web Apps özelliği.
-* **.NET Core çalışma zamanı sürümü**: 1. xx, 2. xx veya 3. xx
-* **IDE**: Visual Studio, vs Code veya komut satırı.
+* **Barındırma yöntemi**: Süreç içinde veya süreç dışında.
+* **Dağıtım yöntemi**: Çerçeveye bağımlı veya bağımsız.
+* **Web sunucusu**: IIS (Internet Information Server) veya Kerkenez.
+* **Barındırma platformu**: Azure Uygulama Hizmeti, Azure VM, Docker, Azure Kubernetes Hizmeti (AKS) vb. Web Apps özelliği.
+* **.NET Çekirdek Çalışma Süresi sürümü**: 1.XX, 2.XX veya 3.XX
+* **IDE**: Visual Studio, VS Kodu veya komut satırı.
 
 > [!NOTE]
-> Application Insights ile birlikte ASP.NET Core 3,0 kullanıyorsanız, lütfen [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) sürümünü veya üstünü kullanın. Bu, ASP.NET Core 3,0 ' i destekleyen tek sürümdür.
+> Application Insights ile birlikte ASP.NET Core 3.X kullanıyorsanız, lütfen [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) sürümünü veya daha yüksek sürümünü kullanın. Bu, Core 3.X ASP.NET destekleyen tek sürümüdür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](https://docs.microsoft.com/aspnet/core/getting-started/)izleyin.
-- Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+- Core uygulaması nın işleyişi ASP.NET. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](https://docs.microsoft.com/aspnet/core/getting-started/)izleyin.
+- Geçerli bir Application Insights enstrümantasyon anahtarı. Bu anahtar, Uygulama Öngörüleri'ne herhangi bir telemetri göndermek için gereklidir. Enstrümantasyon anahtarı almak için yeni bir Application Insights [kaynağı](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)oluşturmanız gerekiyorsa, bkz.
 
-## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Sunucu tarafı telemetrisini Application Insights etkinleştirme (Visual Studio)
+## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Uygulama Öngörülerini etkinleştirserver-side telemetri (Visual Studio)
 
-1. Projenizi Visual Studio 'da açın.
+1. Görsel Stüdyo'da projenizi açın.
 
     > [!TIP]
-    > İsterseniz, Application Insights yapacağı tüm değişiklikleri izleyebilmek için projeniz için kaynak denetimi ayarlayabilirsiniz. Kaynak denetimini etkinleştirmek için **dosya** > **kaynak denetimine Ekle**' yi seçin.
+    > İsterseniz, Uygulama Öngörüleri'nin yaptığı tüm değişiklikleri izleyebilmek için projeniz için kaynak denetimi ayarlayabilirsiniz. Kaynak denetimini **File** > etkinleştirmek için**Kaynak Denetimine Dosya Ekle'yi**seçin.
 
-2.  > **Application Insights telemetri Ekle** **Proje** ' yi seçin.
+2. **Proje** > **Ekle Uygulama Öngörüleri Telemetri'yi seçin.**
 
-3. **Kullanmaya**başlayın ' ı seçin. Bu seçimin metni, Visual Studio sürümünüze bağlı olarak farklılık gösterebilir. Bazı önceki sürümler bunun yerine **ücretsiz Başlat** düğmesini kullanır.
+3. **Başlat'ı**seçin. Bu seçimin metni Visual Studio'nun sürümüne bağlı olarak değişebilir. Bazı önceki sürümler bunun yerine **Ücretsiz Başlat** düğmesi kullanır.
 
-4. Aboneliğinizi seçin. Sonra **kaynak** > **Kaydet**' i seçin.
+4. Aboneliğinizi seçin. Ardından **Kaynak** > **Kaydı'nı**seçin.
 
-5. Projenize Application Insights ekledikten sonra, SDK 'nın en son kararlı sürümünü kullandığınızı onaylamak için denetleyin. **Microsoft. ApplicationInsights. AspNetCore** > , **Proje** > **NuGet Paketlerini Yönet** ' e gidin. Gerekirse **Güncelleştir**' i seçin.
+5. Projenize Uygulama Öngörüleri ekledikten sonra, SDK'nın en son kararlı sürümünden kullandığınızı doğrulamak için kontrol edin. **Proje** > **Yönet NuGet Paketleri** > **Microsoft.ApplicationInsights.AspNetCore**gidin. Gerekirse **Güncelleştir'i**seçin.
 
-     ![Güncelleştirme için Application Insights paketinin nerede seçileceğini gösteren ekran görüntüsü](./media/asp-net-core/update-nuget-package.png)
+     ![Güncelleştirme için Uygulama Öngörüleri paketinin nerede seçilebileceğinizi gösteren ekran görüntüsü](./media/asp-net-core/update-nuget-package.png)
 
-6. İsteğe bağlı ipucunu izlediyseniz ve projenizi kaynak denetimine eklediyseniz **, >  > ** **Takım Gezgini** **görüntüle** ' ye gidin. Sonra Application Insights telemetri tarafından yapılan değişikliklerin fark görünümünü görmek için her bir dosyayı seçin.
+6. İsteğe bağlı ipucunu takip ettiyseniz ve projenizi kaynak denetimine eklediyseniz,**Takım Gezgini** > **Değişikliklerini** **Görüntüle'ye** > gidin. Ardından, Application Insights telemetrisi tarafından yapılan değişikliklerin diff görünümünü görmek için her dosyayı seçin.
 
-## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Sunucu tarafı telemetrisini Application Insights etkinleştirme (Visual Studio yok)
+## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Uygulama Öngörüleri sunucu tarafı telemetrisini etkinleştirme (Visual Studio yok)
 
-1. [ASP.NET Core için APPLICATION INSIGHTS SDK NuGet paketini](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)yükler. Her zaman en son kararlı sürümü kullanmanızı öneririz. [Açık kaynaklı GitHub](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases)deposunda SDK için tam sürüm notları bulun.
+1. ASP.NET [Core için Uygulama Öngörüleri SDK NuGet paketini](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)yükleyin. Her zaman en son kararlı sürümü kullanmanızı öneririz. [Açık kaynak GitHub repo](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases)SDK için tam sürüm notları bulun.
 
-    Aşağıdaki kod örneğinde, projenizin `.csproj` dosyasına eklenecek değişiklikler gösterilmektedir.
+    Aşağıdaki kod örneği, projenizin `.csproj` dosyasına eklenecek değişiklikleri gösterir.
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
         </ItemGroup>
     ```
 
-2. Bu örnekte olduğu gibi `Startup` sınıfınıza `ConfigureServices()` yöntemine `services.AddApplicationInsightsTelemetry();` ekleyin:
+2. Sınıfınızdaki `services.AddApplicationInsightsTelemetry();` `Startup` `ConfigureServices()` yönteme, aşağıdaki örnekte olduğu gibi ekleyin:
 
     ```csharp
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -80,9 +80,9 @@ Burada kullanacağınız örnek, `netcoreapp2.2`hedefleyen bir [MVC uygulamasıd
         }
     ```
 
-3. İzleme anahtarını ayarlayın.
+3. Enstrümantasyon anahtarını ayarlayın.
 
-    İzleme anahtarını `AddApplicationInsightsTelemetry`bir bağımsız değişken olarak sağlayabilseniz de, yapılandırmada izleme anahtarını belirtmenizi öneririz. Aşağıdaki kod örneği, `appsettings.json`' de bir izleme anahtarının nasıl ekleneceğini gösterir. Yayımlama sırasında `appsettings.json` uygulama kök klasörüne kopyalandığından emin olun.
+    Enstrümantasyon anahtarını bağımsız değişken olarak `AddApplicationInsightsTelemetry`sağlayabilseniz de, enstrümantasyon anahtarını yapılandırmada belirtmenizi öneririz. Aşağıdaki kod örneği, ''de `appsettings.json`bir enstrümantasyon anahtarının nasıl belirtilen Yayımlama `appsettings.json` sırasında uygulama kökü klasörüne kopyalandığından emin olun.
 
     ```json
         {
@@ -97,7 +97,7 @@ Burada kullanacağınız örnek, `netcoreapp2.2`hedefleyen bir [MVC uygulamasıd
         }
     ```
 
-    Alternatif olarak, aşağıdaki ortam değişkenlerinden birinde izleme anahtarını belirtin:
+    Alternatif olarak, aşağıdaki ortam değişkenlerinden birinde enstrümantasyon anahtarını belirtin:
 
     * `APPINSIGHTS_INSTRUMENTATIONKEY`
 
@@ -109,58 +109,58 @@ Burada kullanacağınız örnek, `netcoreapp2.2`hedefleyen bir [MVC uygulamasıd
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    Genellikle `APPINSIGHTS_INSTRUMENTATIONKEY` Azure Web Apps dağıtılan uygulamalar için izleme anahtarını belirtir.
+    Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Azure Web Apps'a dağıtılan uygulamalar için enstrümantasyon anahtarını belirtir.
 
     > [!NOTE]
-    > Diğer seçenekler üzerinden WINS `APPINSIGHTS_INSTRUMENTATIONKEY`ortam değişkeni üzerinden WINS kodunda belirtilen bir izleme anahtarı.
+    > Kodda belirtilen bir enstrümantasyon anahtarı, diğer seçeneklerden daha fazla kazanan ortam değişkenini `APPINSIGHTS_INSTRUMENTATIONKEY`kazanır.
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
-Uygulamanızı çalıştırın ve ona istek yapın. Telemetri artık Application Insights akışı sağlamalıdır. Application Insights SDK, hem gelen Web isteklerini hem de aşağıdaki telemetri ile birlikte uygulamanıza otomatik olarak toplar.
+Başvurunuzu çalıştırın ve istekte bulunun. Telemetri artık Application Insights'a akmalıdır. Application Insights SDK, aşağıdaki telemetriile birlikte, başvurunuza gelen web isteklerini otomatik olarak toplar.
 
-### <a name="live-metrics"></a>Canlı ölçümler
+### <a name="live-metrics"></a>Canlı Ölçümler
 
-[Canlı ölçümler](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) , Application Insights izlemenin doğru yapılandırılıp yapılandırılmadığını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetri portalda ve analizler üzerinde görünmesinin birkaç dakika sürebilirken, canlı ölçümler çalışan işlemin neredeyse gerçek zamanlı olarak CPU kullanımını gösterir. Ayrıca Istekler, bağımlılıklar, Izlemeler vb. gibi diğer telemetri de gösterilebilir.
+[Canlı Ölçümler,](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) Uygulama Öngörüleri izlemenin doğru yapılandırıp yapılandırılmadı sını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetrinin portalda ve analitikte görünmeye başlaması birkaç dakika sürebilir, ancak Canlı Ölçümler, çalışan işlemin CPU kullanımını neredeyse gerçek zamanlı olarak gösterir. Ayrıca İstekler, Bağımlılıklar, İzler, vb gibi diğer telemetri gösterebilir.
 
 ### <a name="ilogger-logs"></a>ILogger günlükleri
 
-Önem derecesi `Warning` veya daha büyük `ILogger` ile oluşturulan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
+Önem derecesi `Warning` veya `ILogger` daha büyük bir şekilde yayılan günlükler otomatik olarak yakalanır. Uygulama Öngörüleri tarafından hangi günlük düzeylerinin yakalandığını özelleştirmek için [ILogger dokümanlarını](ilogger.md#control-logging-level) izleyin.
 
 ### <a name="dependencies"></a>Bağımlılıklar
 
-Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencies.md#automatically-tracked-dependencies) makalede otomatik olarak toplanan bağımlılıklar açıklanmakta ve ayrıca el ile izleme yapmak için adımlar yer verilmektedir.
+Bağımlılık toplama varsayılan olarak etkinleştirilir. [Bu](asp-net-dependencies.md#automatically-tracked-dependencies) makalede, otomatik olarak toplanan bağımlılıkları açıklar ve el ile izleme yapmak için adımlar da içerir.
 
 ### <a name="performance-counters"></a>Performans sayaçları
 
-ASP.NET Core [performans sayaçları](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) için destek sınırlıdır:
+ASP.NET Core'daki [performans sayaçları](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) desteği sınırlıdır:
 
-* SDK sürümleri 2.4.1 ve üzeri, uygulama Azure Web Apps (Windows) üzerinde çalışıyorsa performans sayaçlarını toplar.
-* SDK sürümleri 2.7.1 ve üzeri, uygulama Windows 'da çalışıyorsa ve `NETSTANDARD2.0` veya daha sonra hedeflerse performans sayaçlarını toplar.
-* .NET Framework hedefleyen uygulamalar için SDK 'nın tüm sürümleri performans sayaçlarını destekler.
-* SDK sürümleri 2.8.0 ve üzeri, Linux 'ta CPU/bellek sayacını destekler. Linux 'ta başka bir sayaç desteklenmez. Linux 'ta (ve diğer Windows dışı ortamlarda) sistem sayaçlarını almanın önerilen yolu [Eventcounters](#eventcounter) kullanmaktır
+* SDK sürüm2.4.1 ve daha sonra uygulama Azure Web Apps (Windows) üzerinde çalışıyorsa performans sayaçları toplayın.
+* SDK sürümleri 2.7.1 ve daha sonra uygulama Windows ve `NETSTANDARD2.0` hedefleri veya daha sonra çalışıyorsa performans sayaçları toplamak.
+* .NET Framework'ü hedefleyen uygulamalarda, SDK'nın tüm sürümleri performans sayaçlarını destekler.
+* SDK Sürümleri 2.8.0 ve daha sonra Linux cpu / bellek sayacı destekler. Linux'ta başka hiçbir sayaç desteklenmez. Linux'ta (ve Diğer Windows dışındaki ortamlarda) sistem sayaçları almak için önerilen yol [EventCounters](#eventcounter) kullanarak
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`, varsayılan olarak etkindir ve .NET Core 3,0 uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
+`EventCounterCollectionModule`varsayılan olarak etkinleştirilir ve .NET Core 3.X uygulamalarından varsayılan bir sayaç kümesi toplar. [EventCounter](eventcounters.md) öğreticisi toplanan varsayılan sayaç kümesini listeler. Ayrıca liste özelleştirme talimatları vardır.
 
-## <a name="enable-client-side-telemetry-for-web-applications"></a>Web uygulamaları için istemci tarafı telemetrisini etkinleştir
+## <a name="enable-client-side-telemetry-for-web-applications"></a>Web uygulamaları için istemci tarafı telemetrisini etkinleştirme
 
-Yukarıdaki adımlar, sunucu tarafı Telemetriyi toplamaya başlamanıza yardımcı olacak kadar yeterlidir. Uygulamanızda istemci tarafı bileşenleri varsa, [kullanım telemetrisini](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)toplamaya başlamak için sonraki adımları izleyin.
+Önceki adımlar, sunucu tarafındaki telemetrileri toplamaya başlamanıza yardımcı olmak için yeterlidir. Uygulamanızda istemci tarafı bileşenleri varsa, [kullanım telemetrisini](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)toplamaya başlamak için sonraki adımları izleyin.
 
-1. `_ViewImports.cshtml`ekleme:
+1. In `_ViewImports.cshtml`, enjeksiyon ekleyin:
 
     ```cshtml
         @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
     ```
 
-2. `_Layout.cshtml`, `<head>` bölümünün sonuna, diğer herhangi bir betikten önce `HtmlHelper` ekleyin. Sayfadan herhangi bir özel JavaScript telemetrisini raporlamak istiyorsanız, bu kod parçacığına sonra ekleme:
+2. In `_Layout.cshtml`, `HtmlHelper` `<head>` bölümün sonuna ekle ama başka bir komut dosyası önce. Sayfadan herhangi bir özel JavaScript telemetrisini bildirmek istiyorsanız, bu parçacıktan sonra enjekte edin:
 
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
     ```
     
-Alternatif olarak, `ScriptBody` `FullScript` kullanmak için SDK v 2.14 ' den başlayarak kullanılabilir. Bir Içerik Güvenlik Ilkesi ayarlamak için `<script>` etiketini kontrol etmeniz gerekiyorsa bunu kullanın:
+Alternatif olarak `FullScript` `ScriptBody` SDK v2.14'ten başlayarak kullanılabilir. İçerik Güvenlik İlkesi `<script>` ayarlamak için etiketi denetlemeniz gerekiyorsa bunu kullanın:
 
     ```cshtml
         <script> // apply custom changes to this script tag.
@@ -168,20 +168,20 @@ Alternatif olarak, `ScriptBody` `FullScript` kullanmak için SDK v 2.14 ' den ba
         </script>
     ```
 
-Daha önce başvurulan `.cshtml` dosya adları varsayılan bir MVC uygulama şablonundan alınır. Sonuç olarak, uygulamanız için istemci tarafı izlemeyi doğru şekilde etkinleştirmek istiyorsanız, uygulamanızın izlemek istediğiniz her sayfanın `<head>` bölümünde JavaScript kod parçacığı görünmelidir. `_Layout.cshtml`için JavaScript kod parçacığını ekleyerek bu uygulama şablonu için bu hedefi gerçekleştirebilirsiniz. 
+Daha `.cshtml` önce başvurulan dosya adları varsayılan Bir MVC uygulama şablonundan dır. Sonuç olarak, uygulamanız için istemci tarafı izlemeyi düzgün bir şekilde etkinleştirmek istiyorsanız, JavaScript `<head>` snippet'inin izlemek istediğiniz uygulamanızın her sayfasının bölümünde görünmesi gerekir. Bu uygulama şablonu için bu hedefi JavaScript snippet ekleyerek `_Layout.cshtml`gerçekleştirebilirsiniz. 
 
-Projeniz `_Layout.cshtml`içermiyorsa, [istemci tarafı izleme](https://docs.microsoft.com/azure/azure-monitor/app/website-monitoring)eklemeye devam edebilirsiniz. Bu, JavaScript kod parçacığını uygulamanızdaki tüm sayfaların `<head>` denetleyen eşdeğer bir dosyaya ekleyerek yapabilirsiniz. Ya da kod parçacığını birden çok sayfaya ekleyebilirsiniz, ancak bu çözümün korunması zordur ve genellikle bunu önermiyoruz.
+Projenizde dahil `_Layout.cshtml`değilse, istemci tarafı [izleme](https://docs.microsoft.com/azure/azure-monitor/app/website-monitoring)eklemeye devam edebilirsiniz. Bunu, uygulamanızdaki tüm sayfaların `<head>` denetimini sağlayan eşdeğer bir dosyaya JavaScript snippet'i ekleyerek yapabilirsiniz. Veya snippet'i birden çok sayfaya ekleyebilirsiniz, ancak bu çözümü korumak zordur ve genellikle bunu önermiyoruz.
 
-## <a name="configure-the-application-insights-sdk"></a>Application Insights SDK 'sını yapılandırma
+## <a name="configure-the-application-insights-sdk"></a>Uygulama Öngörülerini Yapılandırma SDK
 
-Varsayılan yapılandırmayı değiştirmek için ASP.NET Core Application Insights SDK 'sını özelleştirebilirsiniz. Application Insights ASP.NET SDK kullanıcıları, `ApplicationInsights.config` kullanılarak veya `TelemetryConfiguration.Active`değiştirilerek yapılandırmayı değiştirme konusunda bilgi sahibi olabilir. Yapılandırmayı ASP.NET Core için farklı şekilde değiştirirsiniz. ASP.NET Core SDK 'sını uygulamaya ekleyin ve ASP.NET Core yerleşik [bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)eklentisini kullanarak yapılandırın. Başka türlü yönlendirilmediğiniz takdirde, `Startup.cs` sınıfınızın `ConfigureServices()` yönteminde neredeyse tüm yapılandırma değişikliklerini yapın. Aşağıdaki bölümler daha fazla bilgi sunar.
+Varsayılan yapılandırmayı değiştirmek için ASP.NET Core için Application Insights SDK'yı özelleştirebilirsiniz. SDK'ASP.NET Uygulama Öngörüleri kullanıcıları kullanarak `ApplicationInsights.config` veya değiştirerek yapılandırmayı `TelemetryConfiguration.Active`değiştirmeye aşina olabilirler. ASP.NET Core için yapılandırmayı farklı şekilde değiştirirsiniz. Uygulamaya ASP.NET Core SDK ekleyin ve ASP.NET Core yerleşik [bağımlılık enjeksiyonu](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)kullanarak yapılandırır. Aksi yönde yönlendirilmedikçe, sınıfınızın `ConfigureServices()` `Startup.cs` yönteminde hemen hemen tüm yapılandırma değişiklikleri yapın. Aşağıdaki bölümler daha fazla bilgi sunar.
 
 > [!NOTE]
-> ASP.NET Core uygulamalarda, `TelemetryConfiguration.Active` değiştirilerek yapılandırmayı değiştirmek desteklenmez.
+> ASP.NET Core uygulamalarında, değiştirerek `TelemetryConfiguration.Active` yapılandırmayı değiştirmek desteklenmez.
 
-### <a name="using-applicationinsightsserviceoptions"></a>Applicationınsightsserviceoptions kullanma
+### <a name="using-applicationinsightsserviceoptions"></a>ApplicationInsightsServiceOptions kullanma
 
-Aşağıdaki örnekte olduğu gibi `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetry`geçirerek birkaç ortak ayarı değiştirebilirsiniz:
+Bu örnekte olduğu `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetry`gibi, birkaç ortak ayarı , geçerek değiştirebilirsiniz:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -197,29 +197,35 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`ApplicationInsightsServiceOptions` ayarların tam listesi
+Ayarlar tam listesi`ApplicationInsightsServiceOptions`
 
 |Ayar | Açıklama | Varsayılan
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | true
-|Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | true
-|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
-|Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
-|RequestCollectionOptions. TrackExceptions | Istek koleksiyonu modülü tarafından işlenmeyen özel durum izlemenin raporlamasını etkinleştirin/devre dışı bırakın. | NETSTANDARD 2.0'da false (özel durumlar Applicationınsightsloggerprovider ile izleniyor), aksi takdirde true.
+|Performans Karşıtoplama Modül  | Etkinleştirme/Devre Dışı`PerformanceCounterCollectionModule` | true
+|EnableRequestTrackingTelemetryModülü   | Etkinleştirme/Devre Dışı`RequestTrackingTelemetryModule` | true
+|EventCounterCollectionModule'i Etkinleştirme   | Etkinleştirme/Devre Dışı`EventCounterCollectionModule` | true
+|EnableDependencyTrackingTelemetryModule   | Etkinleştirme/Devre Dışı`DependencyTrackingTelemetryModule` | true
+|EnableAppServicesHeartbeatTelemetryModule  |  Etkinleştirme/Devre Dışı`AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  Etkinleştirme/Devre Dışı`AzureInstanceMetadataTelemetryModule` | true
+|EnableQuickPulseMetricStream | LiveMetrics özelliğini etkinleştirme/devre dışı | true
+|AdaptiveSampling'ı Etkinleştir | Uyarlamalı Örneklemeyi Etkinleştirme/Devre Dışı | true
+|Sinyal Atışını Etkinleştirme | Düzenli aralıklarla (15 dakika varsayılan) .NET Sürümü, Azure Ortamı bilgileri gibi çalışma zamanı hakkında bilgi içeren 'HeartBeatState' adlı özel bir metrik gönderen Kalp Atışlarını Etkinleştir/Devre Dışı Kaltın özelliği, örneğin. | true
+|AddAutoCollectedMetricExtractor | Örnekleme gerçekleşmeden önce İstekler/Bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir Telemetri İşlemcisi olan Otomatik Toplanan Metrikleri etkinleştirme/devre dışı etme. | true
+|İstekCollectionOptions.TrackExceptions | İstek toplama modülü tarafından işlenmemiş Özel Durum izlemeraporlamasını etkinleştirin/devre dışı. | NETSTANDARD2.0 yanlış (Çünkü Özel Durumlar ApplicationInsightsLoggerProvider ile izlenir), aksi doğru.
 
-En güncel liste için [`ApplicationInsightsServiceOptions`yapılandırılabilir ayarları](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) inceleyin.
+En güncel liste için [yapılandırılabilir `ApplicationInsightsServiceOptions` ayarlara](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) bakın.
 
 ### <a name="sampling"></a>Örnekleme
 
-ASP.NET Core için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. 
+ASP.NET Core için Application Insights SDK hem sabit oranlı hem de uyarlanabilir örneklemeyi destekler. Uyarlanabilir örnekleme varsayılan olarak etkinleştirilir. 
 
-Daha fazla bilgi için bkz. [ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Daha fazla bilgi için bkz: [ASP.NET Core uygulamaları için uyarlamauyarlama uyarlama.](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)
 
-### <a name="adding-telemetryinitializers"></a>TelemetryInitializers ekleme
+### <a name="adding-telemetryinitializers"></a>Telemetri EklemeInitializers
 
-Tüm telemetriyle gönderilen genel özellikleri tanımlamak istediğinizde [telemetri başlatıcıları](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) 'nı kullanın.
+Tüm telemetriile gönderilen genel özellikleri tanımlamak istediğinizde [telemetri başharflerini](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanın.
 
-Aşağıdaki kodda gösterildiği gibi, `DependencyInjection` kapsayıcısına yeni `TelemetryInitializer` ekleyin. SDK, `DependencyInjection` kapsayıcısına eklenen `TelemetryInitializer` otomatik olarak seçer.
+Aşağıdaki kodda `DependencyInjection` gösterildiği gibi kapsayıcıya yeni `TelemetryInitializer` lerini ekleyin. SDK, kapsayıcıya eklenen `TelemetryInitializer` leri otomatik olarak alır. `DependencyInjection`
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -228,9 +234,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="removing-telemetryinitializers"></a>TelemetryInitializers kaldırılıyor
+### <a name="removing-telemetryinitializers"></a>TelemetriBaşlangıçlarını Kaldırma
 
-Telemetri başlatıcıları varsayılan olarak mevcuttur. Tüm veya belirli telemetri başlatıcıları 'nı kaldırmak için, `AddApplicationInsightsTelemetry()`*çağırdıktan sonra* aşağıdaki örnek kodu kullanın.
+Telemetri başharfleri varsayılan olarak mevcuttur. Tüm veya belirli telemetri başharflerini kaldırmak için, aşağıdaki `AddApplicationInsightsTelemetry()`örnek *kodu* çağırın.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -251,9 +257,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="adding-telemetry-processors"></a>Telemetri işlemcisi ekleme
+### <a name="adding-telemetry-processors"></a>Telemetri işlemcileri ekleme
 
-`IServiceCollection``AddApplicationInsightsTelemetryProcessor` uzantı yöntemini kullanarak `TelemetryConfiguration` için özel telemetri işlemcileri ekleyebilirsiniz. [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)telemetri işlemcileri kullanıyorsunuz. Aşağıdaki örneği kullanın.
+'deki `IServiceCollection`uzantı yöntemini `AddApplicationInsightsTelemetryProcessor` kullanarak `TelemetryConfiguration` özel telemetri işlemcileri ekleyebilirsiniz. [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)telemetri işlemcileri kullanırsınız. Aşağıdaki örneği kullanın.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -267,21 +273,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="configuring-or-removing-default-telemetrymodules"></a>Varsayılan TelemetryModules yapılandırma veya kaldırma
+### <a name="configuring-or-removing-default-telemetrymodules"></a>Varsayılan Telemetri Modüllerini yapılandırma veya kaldırma
 
-Application Insights, Kullanıcı tarafından el ile izlemeye gerek duymadan belirli iş yükleri hakkında faydalı telemetri otomatik olarak toplamak için telemetri modüllerini kullanır.
+Application Insights, kullanıcı tarafından manuel izleme gerektirmeden belirli iş yükleri hakkında yararlı telemetrileri otomatik olarak toplamak için telemetri modüllerini kullanır.
 
-Aşağıdaki otomatik koleksiyon modülleri varsayılan olarak etkinleştirilmiştir. Bu modüller, otomatik olarak telemetri toplamanın sorumluluğundadır. Varsayılan davranışlarını değiştirecek şekilde devre dışı bırakabilir veya yapılandırabilirsiniz.
+Aşağıdaki otomatik toplama modülleri varsayılan olarak etkinleştirilir. Bu modüller otomatik olarak telemetri toplamakiçin sorumludur. Varsayılan davranışlarını değiştirmek için devre dışı bırakabilirsiniz veya bunları yapılandırabilirsiniz.
 
-* `RequestTrackingTelemetryModule`-gelen web isteklerinden Requesttelemetri toplar.
-* `DependencyTrackingTelemetryModule`-giden http çağrılarından ve SQL çağrılarından Dependencytelemetri toplar.
-* `PerformanceCollectorModule`-Windows PerformanceCounters ' i toplar.
-* `QuickPulseTelemetryModule`-canlı ölçüm portalında göstermek için telemetri toplar.
-* `AppServicesHeartbeatTelemetryModule`-uygulamanın barındırıldığı Azure App Service ortam hakkında kalp sinyal (özel ölçümler olarak gönderilir) toplar.
-* `AzureInstanceMetadataTelemetryModule`-uygulamanın barındırıldığı Azure VM ortamı hakkında (özel ölçümler olarak gönderilen) kalp sinyal toplar.
-* `EventCounterCollectionModule`- [Eventcounters toplar.](eventcounters.md) Bu modül yeni bir özelliktir ve SDK sürümü 2.8.0 ve üzeri sürümlerde kullanılabilir.
+* `RequestTrackingTelemetryModule`- Gelen web isteklerinden RequestTelemetry toplar.
+* `DependencyTrackingTelemetryModule`- Giden http aramalarından ve sql aramalarından DependencyTelemetry'yi toplar.
+* `PerformanceCollectorModule`- Windows PerformanceCounters toplar.
+* `QuickPulseTelemetryModule`- Canlı Ölçümler portalında göstermek için telemetri toplar.
+* `AppServicesHeartbeatTelemetryModule`- Uygulamanın barındırıldığı Azure Uygulama Hizmeti ortamı hakkında kalp atışlarını (özel ölçümler olarak gönderilir) toplar.
+* `AzureInstanceMetadataTelemetryModule`- Uygulamanın barındırıldığı Azure VM ortamı hakkında kalp atışlarını (özel ölçümler olarak gönderilir) toplar.
+* `EventCounterCollectionModule`- [EventCounters toplar.](eventcounters.md) Bu modül yeni bir özelliktir ve SDK Sürüm 2.8.0 ve üzeri sürümlerde mevcuttur.
 
-Varsayılan `TelemetryModule`yapılandırmak için, aşağıdaki örnekte gösterildiği gibi, `ConfigureTelemetryModule<T>` uzantı yöntemini `IServiceCollection`kullanın.
+Herhangi bir varsayılan `TelemetryModule`yapılandırmak için, `IServiceCollection`aşağıdaki örnekte gösterildiği gibi, uzantı yöntemini `ConfigureTelemetryModule<T>` kullanın.
 
 ```csharp
 using Microsoft.ApplicationInsights.DependencyCollector;
@@ -317,9 +323,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="configuring-a-telemetry-channel"></a>Telemetri kanalını yapılandırma
+2.12.2 sürümüyle [`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions) başlayarak, varsayılan modüllerden herhangi birini devre dışı bırakmanın kolay bir seçenek olduğunu içerir.
 
-Varsayılan kanal `ServerTelemetryChannel`. Aşağıdaki örnekte gösterildiği gibi, geçersiz kılabilirsiniz.
+### <a name="configuring-a-telemetry-channel"></a>Bir telemetri kanalının yapılandırılması
+
+Varsayılan `ServerTelemetryChannel`kanal. Aşağıdaki örnekte görüldüğü gibi geçersiz kılabilirsiniz.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -334,9 +342,9 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
-### <a name="disable-telemetry-dynamically"></a>Telemetrisi dinamik olarak devre dışı bırak
+### <a name="disable-telemetry-dynamically"></a>Telemetriyi dinamik olarak devre dışı
 
-Telemetriyi koşullu ve dinamik olarak devre dışı bırakmak istiyorsanız, kodunuzun herhangi bir yerinden ASP.NET Core bağımlılık ekleme kapsayıcısı ile `TelemetryConfiguration` örneğini çözümleyebilir ve üzerinde `DisableTelemetry` bayrağını ayarlayabiliriz.
+Telemetriyi koşullu ve dinamik olarak devre dışı kılmış olmak istiyorsanız, kodunuzun herhangi bir yerinde ASP.NET Çekirdek bağımlılık enjeksiyon konteyneri ile örneği çözebilir `TelemetryConfiguration` ve üzerine bayrak ayarlayabilirsiniz. `DisableTelemetry`
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -351,21 +359,21 @@ Telemetriyi koşullu ve dinamik olarak devre dışı bırakmak istiyorsanız, ko
     }
 ```
 
-Yukarıdaki bir otomatik koleksiyon modüllerinin telemetri toplamasını engellemez. Yalnızca Application Insights telemetri gönderilmesi yukarıdaki yaklaşımla devre dışı bırakılır. Belirli bir otomatik toplama modülü istenmiyorsa, [telemetri modülünü kaldırmak](#configuring-or-removing-default-telemetrymodules) en iyisidir
+Yukarıdaki telemetri toplama herhangi bir otomatik toplama modülleri engellemez. Yukarıdaki yaklaşımla yalnızca Uygulama Öngörüleri'ne telemetri gönderilmesi devre dışı bırakılır. Belirli bir otomatik toplama modülü istenmiyorsa, [telemetri modüllerini çıkarmak](#configuring-or-removing-default-telemetrymodules) en iyisidir
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="does-application-insights-support-aspnet-core-30"></a>Application Insights ASP.NET Core 3,0 destekliyor mu?
+### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights Core 3.X ASP.NET destekliyor mu?
 
-Evet. ASP.NET Core sürüm 2.8.0 veya üzeri [IÇIN SDK Application Insights](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) güncelleştirme. SDK 'nın daha eski sürümleri ASP.NET Core 3,0 ' i desteklemez.
+Evet. ASP.NET Core sürüm 2.8.0 veya üzeri [için Application Insights SDK'ya](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) güncelleştirin. SDK'nın eski sürümleri Core 3.X ASP.NET desteklemez.
 
-Ayrıca, [burada](#enable-application-insights-server-side-telemetry-visual-studio)Visual Studio tabanlı yönergeler kullanıyorsanız, eklemek Için visual Studio 2019 (16.3.0) uygulamasının en son sürümüne güncelleştirin. Visual Studio 'nun önceki sürümleri ASP.NET Core 3,0 uygulamaları için otomatik ekleme 'yi desteklemez.
+Ayrıca, [buradan](#enable-application-insights-server-side-telemetry-visual-studio)Visual Studio tabanlı yönergeleri kullanıyorsanız, Visual Studio 2019 (16.3.0) en son sürümüne onboard güncelleyin. Visual Studio'nun önceki sürümleri, ASP.NET Core 3.X uygulamaları için otomatik onboarding'i desteklemez.
 
-### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Otomatik olarak toplanmayan telemetrileri nasıl izleyebilirim?
+### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Otomatik olarak toplanmayan telemetriyi nasıl izleyebilirim?
 
-Oluşturucu Ekleme kullanarak `TelemetryClient` örneğini alın ve üzerinde gerekli `TrackXXX()` yöntemini çağırın. Bir ASP.NET Core uygulamasında yeni `TelemetryClient` örnekleri oluşturmanız önerilmez. `TelemetryClient` tekil bir örneği zaten telemetri geri kalanı ile `TelemetryConfiguration` paylaşan `DependencyInjection` kapsayıcıda kayıtlı. Yeni bir `TelemetryClient` örneği oluşturmak yalnızca telemetriden ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
+Yapıcı enjeksiyon `TelemetryClient` kullanarak bir örnek alın ve `TrackXXX()` üzerinde gerekli yöntemi arayın. ASP.NET Core uygulamasında yeni `TelemetryClient` örnekler oluşturmanızı önermiyoruz. Tek tonlu `TelemetryClient` bir örnek zaten `DependencyInjection` telemetri `TelemetryConfiguration` geri kalanı ile paylaşan konteyner, kayıtlıdır. Yeni `TelemetryClient` bir örnek oluşturma, yalnızca telemetrinin geri kalanından ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
 
-Aşağıdaki örnek, bir denetleyiciden ek Telemetriyi nasıl izleyeceğinizi gösterir.
+Aşağıdaki örnek, denetleyiciden ek telemetrinin nasıl izlenebildiğini gösterir.
 
 ```csharp
 using Microsoft.ApplicationInsights;
@@ -388,40 +396,40 @@ public class HomeController : Controller
     }
 ```
 
-Application Insights özel veri raporlama hakkında daha fazla bilgi için bkz. [Application Insights özel ölçümler API başvurusu](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/).
+Uygulama Öngörüleri'nde özel veri raporlaması hakkında daha fazla bilgi için [Bkz. Application Insights özel ölçümleri API referansı.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)
 
-### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Bazı Visual Studio şablonları, Application Insights etkinleştirmek için ıwebhostbuilder üzerinde Useapplicationınsights () genişletme yöntemini kullandı. Bu kullanım hala geçerli mi?
+### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Bazı Visual Studio şablonları Uygulama Öngörüleri etkinleştirmek için IWebHostBuilder'da UseApplicationInsights() uzantı yöntemini kullanmaktadır. Bu kullanım hala geçerli mi?
 
-Uzantı metodu `UseApplicationInsights()` hala desteklenirken, Application Insights SDK sürümü 2.8.0 ve sonraki sürümlerinde artık kullanılmıyor olarak işaretlenir. SDK 'nın bir sonraki ana sürümünde kaldırılacaktır. Application Insights telemetrinin etkinleştirilmesi için önerilen yol, bazı yapılandırmayı denetlemek için aşırı yüklemeler sağladığından `AddApplicationInsightsTelemetry()` kullanmaktır. Ayrıca, ASP.NET Core 3,0 uygulamalarda, Application Insights 'ı etkinleştirmenin tek yolu `services.AddApplicationInsightsTelemetry()`.
+Uzantı yöntemi `UseApplicationInsights()` hala desteklenirken, Application Insights SDK sürüm 2.8.0'da eski olarak işaretlenir. SDK'nın bir sonraki ana sürümünde kaldırılacak. Uygulama Öngörüleri telemetrisini etkinleştirmek için `AddApplicationInsightsTelemetry()` önerilen yol, bazı yapılandırmaları denetlemek için aşırı yükleme sağladığından kullanmaktır. Ayrıca, Core 3.X uygulamaları `services.AddApplicationInsightsTelemetry()` ASP.NET uygulama öngörülerini etkinleştirmenin tek yolu.
 
-### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>ASP.NET Core uygulamamı Web Apps 'ye dağıttım. Web Apps Application Insights uzantısını yine de etkinleştirmem gerekir mi?
+### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>ASP.NET Core uygulamamı Web Apps'a dağıtıyorum. Web Apps'tan Uygulama Öngörüleri uzantısını etkinleştirmeli miyim?
 
-SDK, bu makalede gösterildiği gibi derleme zamanında yüklendiyse, App Service portalından [Application Insights uzantısını](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) etkinleştirmeniz gerekmez. Uzantı yüklü olsa bile, SDK 'nın uygulamaya zaten eklendiğini algıladığında, bu geri açılır. Uzantıyı Application Insights etkinleştirirseniz SDK 'yı yükleyip güncelleştirmeniz gerekmez. Ancak bu makaledeki yönergeleri izleyerek Application Insights etkinleştirirseniz şu nedenle daha fazla esneklik elde edersiniz:
+SDK bu makalede gösterildiği gibi inşa zamanında yüklenmişse, Uygulama Hizmeti portalından [Uygulama Öngörüleri uzantısını](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) etkinleştirmeniz gerekmez. Uzantı yüklü olsa bile, SDK'nın uygulamaya zaten eklenmiş olduğunu algıladığında geri çekilecek. Uzantıdan Uygulama Öngörüleri'ni etkinleştiriseniz, SDK'yı yüklemeniz ve güncelleştirmeniz gerekmez. Ancak bu makaledeki yönergeleri izleyerek Uygulama Öngörüleri'ni etkinleştiriseniz, daha fazla esnekliğe sahipsiniz, çünkü:
 
-   * Application Insights telemetri şu şekilde çalışmaya devam edecektir:
-       * Windows, Linux ve Mac gibi tüm işletim sistemleri.
-       * Kendi içinde veya çerçevesine bağımlı olan tüm yayımlama modları.
-       * Tam .NET Framework dahil olmak üzere tüm hedef çerçeveler.
-       * Web Apps, VM 'Ler, Linux, kapsayıcılar, Azure Kubernetes hizmeti ve Azure olmayan barındırma dahil olmak üzere tüm barındırma seçenekleri.
-       * Önizleme sürümleri dahil olmak üzere tüm .NET Core sürümleri.
-   * Visual Studio 'da hata ayıklarken telemetri ' i yerel olarak görebilirsiniz.
-   * `TrackXXX()` API 'sini kullanarak ek özel telemetri izleyebilirsiniz.
-   * Yapılandırma üzerinde tam denetim sahibi olursunuz.
+   * Uygulama Öngörüleri telemetri çalışmaya devam edecektir:
+       * Windows, Linux ve Mac dahil olmak üzere tüm işletim sistemleri.
+       * Bağımsız veya çerçevebağımlısı dahil olmak üzere tüm yayımlama modları.
+       * Tam .NET Framework dahil tüm hedef çerçeveler.
+       * Web Apps, VM'ler, Linux, kapsayıcılar, Azure Kubernetes Hizmeti ve Azure olmayan barındırma dahil olmak üzere tüm barındırma seçenekleri.
+       * Önizleme sürümleri de dahil olmak üzere tüm .NET Core sürümleri.
+   * Visual Studio'dan hata ayıklarken telemetriyi yerel olarak görebilirsiniz.
+   * API'yi kullanarak ek özel `TrackXXX()` telemetriyi izleyebilirsiniz.
+   * Yapılandırma üzerinde tam kontrole sahipsiniz.
 
-### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Durum İzleyicisi gibi araçları kullanarak Application Insights izlemeyi etkinleştirebilir miyim?
+### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Durum Monitörü gibi araçları kullanarak Uygulama Öngörüleri izlemeyi etkinleştirebilir miyim?
 
-Hayır. [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) ve [durum İzleyicisi v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) Şu anda yalnızca ASP.NET 4. x desteğine sahiptir.
+Hayır. [Durum İzle](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) mi ve [Durum İzleyicisi v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) şu anda yalnızca ASP.NET 4.x'i destekliyor.
 
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights ASP.NET Core 2,0 uygulaması için otomatik olarak etkinleştirildi mi?
+### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>ASP.NET Core 2.0 uygulamam için Uygulama Öngörüleri otomatik olarak etkinleştirildi mi?
 
-`Microsoft.AspNetCore.All` 2,0 metapackage, Application Insights SDK 'sını (sürüm 2.1.0) içerir. Uygulamayı Visual Studio hata ayıklayıcısı altında çalıştırırsanız, Visual Studio Application Insights etkinleştirilir ve doğrudan IDE 'de telemetri gösterir. Bir izleme anahtarı belirtilmediği takdirde telemetri Application Insights hizmetine gönderilmedi. 2,0 uygulamaları için bile Application Insights etkinleştirmek üzere bu makaledeki yönergeleri takip etmenizi öneririz.
+`Microsoft.AspNetCore.All` 2.0 metapaketi Uygulama Öngörüleri SDK (sürüm 2.1.0) dahil. Uygulamayı Visual Studio hata ayıklama altında çalıştırıyorsanız, Visual Studio Uygulama Öngörüleri sağlar ve Telemetri'yi IDE'nin kendi içinde yerel olarak gösterir. Bir enstrümantasyon anahtarı belirtilmedikçe Telemetri Uygulama Öngörüleri hizmetine gönderilmedi. 2.0 uygulamaları için bile Uygulama Öngörülerini etkinleştirmek için bu makaledeki yönergeleri izlemenizi öneririz.
 
-### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Uygulamamı Linux 'ta çalıştırdım, tüm özellikler destekleniyor mu?
+### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Uygulamamı Linux'ta çalıştırıyorumsa, tüm özellikler desteklenir mi?
 
-Evet. SDK için özellik desteği, aşağıdaki özel durumlarla birlikte tüm platformlarda aynıdır:
+Evet. SDK için özellik desteği aşağıdaki istisnalar dışında tüm platformlarda aynıdır:
 
-* SDK, [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) yalnızca Windows 'Da desteklendiğinden Linux üzerinde [olay sayaçlarını](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters) toplar. Çoğu ölçüm aynıdır.
-* `ServerTelemetryChannel`, varsayılan olarak etkinleştirilmiş olsa da, uygulama Linux veya MacOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
+* [Performans Sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) yalnızca Windows'da desteklendirilir, çünkü SDK Linux'ta Etkinlik [Sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters) toplar. Çoğu ölçüm aynıdır.
+* Varsayılan `ServerTelemetryChannel` olarak etkin olsa da, uygulama Linux veya MacOS'ta çalışıyorsa, kanal ağ sorunları olduğunda telemetriyi geçici olarak tutmak için otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybolur. Bu sorunu çözmek için kanal için yerel bir klasör yapılandırır:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -439,23 +447,23 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
-### <a name="is-this-sdk-supported-for-the-new-net-core-30-worker-service-template-applications"></a>Bu SDK, yeni .NET Core 3,0 çalışan hizmeti şablonu uygulamaları için destekleniyor mu?
+### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>Bu SDK yeni .NET Core 3.X İşçi Hizmeti şablonu uygulamaları için desteklendi mi?
 
-Bu SDK `HttpContext`gerektirir ve bu nedenle, .NET Core 3,0 çalışan hizmeti uygulamaları dahil olmak üzere HTTP olmayan uygulamalarda çalışmaz. Yeni yayınlanan Microsoft. ApplicationInsights. WorkerService SDK 'sını kullanarak bu uygulamalarda uygulama öngörülerini etkinleştirmek için [Bu](worker-service.md) belgeye başvurun.
+Bu SDK `HttpContext`gerektirir ve bu nedenle .NET Core 3.X İşçi Hizmeti uygulamaları da dahil olmak üzere herhangi bir HTTP dışı uygulamalarda çalışmaz. Yeni yayımlanan Microsoft.ApplicationInsights.WorkerService SDK'yı kullanarak bu tür uygulamalarda uygulama öngörülerini etkinleştirmek için [bu](worker-service.md) belgeye bakın.
 
-## <a name="open-source-sdk"></a>Açık kaynaklı SDK
+## <a name="open-source-sdk"></a>Açık kaynak SDK
 
-[Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+[Kodu okuyun ve katkıda bulunun.](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
 
 ## <a name="video"></a>Video
 
-- [.NET Core ve Visual Studio 'yu sıfırdan Application Insights yapılandırmak](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) için bu dış adım adım videoya göz atın.
-- [.NET Core ve sıfırdan Visual Studio Code Application Insights yapılandırmak](https://youtu.be/ygGt84GDync) için bu dış adım adım videoya göz atın.
+- [Application Insights'ı .NET Core ve Visual Studio ile](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) sıfırdan yapılandırmak için bu harici adım adım videoya göz atın.
+- [Application Insights'ı .NET Core ve Visual Studio Code ile](https://youtu.be/ygGt84GDync) sıfırdan yapılandırmak için bu harici adım adım videoya göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kullanıcıların uygulamanızda nasıl gezintiğini anlamak için [Kullanıcı akışlarını araştırma](../../azure-monitor/app/usage-flows.md) .
-* Bir özel durum oluştuğunda kaynak kodu ve değişkenlerin durumunu görmek için [bir anlık görüntü koleksiyonu yapılandırın](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) .
-* Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md) .
-* Uygulamanızı dünyanın her yerindeki sürekli denetlemek için [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) kullanın.
-* [ASP.NET Core bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)
+* Kullanıcıların uygulamanızda nasıl gezinenleri anlamak için [kullanıcı akışlarını keşfedin.](../../azure-monitor/app/usage-flows.md)
+* Bir özel durum atıldığı anda kaynak kodun ve değişkenlerin durumunu görmek için [anlık görüntü koleksiyonunu yapılandırın.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
+* Uygulamanızın performansı nın ve kullanımının ayrıntılı bir görünümü için kendi etkinliklerinizi ve ölçümlerinizi göndermek için [API'yi kullanın.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Uygulamanızı dünyanın dört bir yanından sürekli olarak kontrol etmek için [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) kullanın.
+* [ASP.NET Çekirdekte Bağımlılık Enjeksiyonu](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)

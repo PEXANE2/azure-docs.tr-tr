@@ -1,6 +1,6 @@
 ---
-title: Site Recovery limitleri tablosu
-description: Site Recovery için sistem sınırlarını açıklar.
+title: Site Kurtarma sınırları tablosu
+description: Site Kurtarma için sistem sınırlarını açıklar.
 services: site recovery
 documentationcenter: NA
 author: csilauraa
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188773"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335128"
 ---
-Azure Site Recovery için aşağıdaki sınırlar geçerlidir.
+Aşağıdaki sınırlar Azure Site Kurtarma için geçerlidir.
 
-| Sınır tanımlayıcı | Varsayılan limit |
+| Sınır tanımlayıcı | Sınır |
 | --- | --- |
 | Abonelik başına kasa sayısı |500 |     
-| Azure kasası başına sunucu sayısı |250 |
-| Azure kasası başına koruma grubu sayısı |Sınır yok |
+| Azure kasasına göre sunucu sayısı |250 |
+| Azure kasasına göre koruma grubu sayısı |Sınır yok |
 | Azure kasası başına kurtarma planı sayısı |Sınır yok |
-| Koruma grubu başına sunucu sayısı |Sınır yok |
+| Koruma grubuna göre sunucu sayısı |Sınır yok |
 | Kurtarma planı başına sunucu sayısı |50 |
 

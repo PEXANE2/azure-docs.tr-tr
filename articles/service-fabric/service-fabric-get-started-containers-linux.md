@@ -1,13 +1,13 @@
 ---
-title: Linux 'ta Azure Service Fabric kapsayıcı uygulaması oluşturma
+title: Linux'ta Azure Service Fabric konteyner uygulaması oluşturma
 description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı oluşturun. Uygulamanızla bir Docker görüntüsü oluşturun, görüntüyü bir kapsayıcı kayıt defterine iletin, bir Service Fabric kapsayıcı uygulaması oluşturup dağıtın.
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457965"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
@@ -18,7 +18,7 @@ ms.locfileid: "75457965"
 Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Bu makalede, Python [Flask](http://flask.pocoo.org/) web uygulaması içeren bir Docker görüntüsü oluşturma ve bunu Service Fabric kümesine dağıtma işlemlerinde size yol gösterilir. Ayrıca, kapsayıcıya alınmış uygulamanızı [Azure Container Registry](/azure/container-registry/) aracılığıyla paylaşırsınız. Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
 
 > [!NOTE]
-> Bu makale, bir Linux geliştirme ortamı için geçerlidir.  Service Fabric kümesi çalışma zamanının ve Docker çalışma zamanının aynı işletim sisteminde çalışıyor olması gerekir.  Linux kapsayıcılarını bir Windows kümesinde çalıştıramazsınız.
+> Bu makale, bir Linux geliştirme ortamı için geçerlidir.  Service Fabric küme çalışma zamanı ve Docker çalışma süresi aynı işletim sistemi üzerinde çalışıyor olmalıdır.  Windows kümesinde Linux kapsayıcılarını çalıştıramazsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 * Şunları çalıştıran bir geliştirme bilgisayarı:
@@ -31,7 +31,7 @@ Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulama
 ## <a name="define-the-docker-container"></a>Docker kapsayıcısını tanımlama
 Docker Hub’ında bulunan [Python görüntüsünü](https://hub.docker.com/_/python/) temel alan bir görüntü oluşturun. 
 
-Docker kapsayıcınızı bir Dockerfile içinde belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir. 
+Bir Dockerfile içinde Docker kapsayıcınızı belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir. 
 
 Boş bir dizin oluşturun ve *Dockerfile* dosyasını oluşturun (dosya uzantısı kullanmayın). Aşağıdakini *Dockerfile* dosyasına ekleyin ve değişikliklerinizi kaydedin:
 
@@ -60,13 +60,13 @@ CMD ["python", "app.py"]
 
 Daha fazla bilgi için [Dockerfile başvurusunu](https://docs.docker.com/engine/reference/builder/) okuyun.
 
-## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması
+## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması oluşturma
 Bağlantı noktası 80 üzerinden dinleyen ve "Merhaba Dünya!" başlığını döndüren bir Flask web uygulaması oluşturun. Aynı dizinde, *requirements.txt* dosyasını oluşturun. Aşağıdakini dosyaya ekleyin ve değişikliklerinizi kaydedin:
 ```
 Flask
 ```
 
-Ayrıca, *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
+Ayrıca *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
 
 ```python
 from flask import Flask
@@ -113,7 +113,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın (örneğin, "http:\//localhost: 4000"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 bağlantı noktasında döndürülen IP adresini gösteren bir web\/tarayıcısı açın, örneğin "http: /localhost:4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 
@@ -132,9 +132,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Görüntüyü kapsayıcı kayıt defterine gönderme
 Uygulamanın Docker'da çalıştığını doğruladıktan sonra, görüntüyü Azure Container Registry'de kayıt defterine gönderin.
 
-[Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için `docker login` çalıştırın.
+Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md)konteyner kayıt defterinizde oturum açmanız için çalıştırın.
 
-Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
+Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Veya, kayıt defteri kullanıcı adınızı ve parolanızı kullanarak oturum açabilirsiniz.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -165,16 +165,16 @@ Bu görüntüde iş yükü giriş noktası tanımlanmış olduğundan, giriş ko
 
 "1" örnek sayısı belirtin.
 
-Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı noktası eşlemesi olarak ```80:4000``` sağlamanız gerekir. Bunu yaparak, ana makinedeki 4000 numaralı bağlantı noktasına gelen tüm gelen isteklerin kapsayıcıda 80 numaralı bağlantı noktasına yönlendirildiğini yapılandırdınız.
+Bağlantı noktası eşleğini uygun biçimde belirtin. Bu makale için, bağlantı ```80:4000``` noktası eşleme olarak sağlamanız gerekir. Bunu yaparak, ana bilgisayar makinesindeki 4000 portuna gelen tüm gelen isteklerin kapsayıcıdaki 80 portuna yönlendirilir.
 
 ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Kapsayıcı deposu kimlik doğrulamasını yapılandırma
 
-Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nasıl yapılandıracağınızı öğrenmek için bkz. [kapsayıcı deposu kimlik doğrulaması](configure-container-repository-credentials.md).
+Kapsayıcı görüntü indirme için farklı kimlik doğrulama türlerini nasıl yapılandırılabildiğini öğrenmek için [Kapsayıcı Deposu Kimlik Doğrulaması'na](configure-container-repository-credentials.md)bakın.
 
 ## <a name="configure-isolation-mode"></a>Yalıtım modunu yapılandırma
-6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesinde Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
+6.3 çalışma zamanı sürümüyle VM yalıtımı Linux kapsayıcıları için desteklenir ve bu şekilde kapsayıcılar için iki izolasyon modu desteklenir: proses ve Hyper-V. Hyper-V yalıtım modu ile çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında izole edilir. Hyper-V [yalıtımı Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğedeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
 
 ```xml
 <ServiceManifestImport>
@@ -208,7 +208,7 @@ Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nas
 
 Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. *health_status* özelliği *healthy* olduğunda [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)’da **OK** şeklinde bir durum raporu görüntülenirken, *health_status* özelliği *unhealthy* olduğunda **WARNING** görünür. 
 
-En son v 6.4 yenileme sürümü ile başlayarak, Docker HEALTHCHECK değerlendirmelerinin hata olarak bildirilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda bir **Tamam** sistem durumu raporu görüntülenir ve *health_status* *sağlıksız*olduğunda **hata** görüntülenir.
+v6.4'ün en son yenileme sürümünden başlayarak, docker HEALTHCHECK değerlendirmelerinin bir hata olarak rapor edilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda **bir Tamam** sağlık raporu görüntülenir ve *health_status* *sağlıksız*olduğunda **HATA** görünür.
 
 Kapsayıcı durumunun izlenmesi için gerçekleştirilen gerçek denetimi gösteren **HEALTHCHECK** yönergesi, kapsayıcı görüntüsü oluşturulurken kullanılan Dockerfile dosyasında mevcut olmalıdır.
 
@@ -232,11 +232,11 @@ ApplicationManifest dosyasındaki **ContainerHostPolicies** kapsamında **Health
     </Policies>
 </ServiceManifestImport>
 ```
-Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* **false**olarak ayarlanır. 
+Varsayılan olarak *IncludeDockerHealthStatusInSystemHealthReport* **doğru**ayarlanır , *RestartContainerOnUnhealthyDockerHealthStatus* **yanlış**olarak ayarlanır , ve *TreatContainerUnhealthyStatusAsError* **yanlış**ayarlanır . 
 
 *RestartContainerOnUnhealthyDockerHealthStatus* özelliği **true** olarak ayarlanırsa, tekrarlanan şekilde durumunun iyi olmadığı bildirilen kapsayıcılar yeniden başlatılır (muhtemelen diğer düğümlerde).
 
-*Treatcontainerunhealthystatusaserror* **değeri true**olarak ayarlanırsa, kapsayıcının *health_status* *sağlıksız*olduğunda **hata** durumu raporları görüntülenir.
+*TreatContainerUnhealthyStatusAsError* **doğru**ayarlanmışsa, **hata** sağlık raporları *konteynerin health_status* *sağlıksız*olduğunda görünür.
 
 Tüm Service Fabric kümesi için **HEALTHCHECK** tümleştirmesini devre dışı bırakmak istiyorsanız [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) özelliğini **false** olarak ayarlamanız gerekir.
 
@@ -249,16 +249,16 @@ Yerel Service Fabric kümesine bağlanın.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü kaydetmek ve uygulamanın bir örneğini oluşturmak için https://github.com/Azure-Samples/service-fabric-containers/ konumundaki şablonlarda sunulan Install betiğini kullanın.
+Uygulama paketini kümenin görüntü https://github.com/Azure-Samples/service-fabric-containers/ deposuna kopyalamak, uygulama türünü kaydetmek ve uygulamanın bir örneğini oluşturmak için şablonlarda sağlanan yükleme komut dosyasını kullanın.
 
 
 ```bash
 ./install.sh
 ```
 
-Bir tarayıcı açın ve http:\//localhost: 19080/Explorer konumundaki Service Fabric Explorer gidin (Mac OS X vagrant kullanılıyorsa, localhost 'u VM 'nin özel IP 'si ile değiştirin). Uygulamalar düğümünü genişletin ve şu anda uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
+Bir tarayıcı açın ve http:\//localhost:19080/Explorer adresindeki Service Fabric Explorer'a gidin (Mac OS X'te kullanıyorsanız localhost'u VM'nin özel IP'siyle değiştirin). Uygulamalar düğümünü genişletin ve şu anda uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın (örneğin, "http:\//localhost: 4000"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 bağlantı noktasında döndürülen IP adresini gösteren bir web\/tarayıcısı açın, örneğin "http: /localhost:4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 

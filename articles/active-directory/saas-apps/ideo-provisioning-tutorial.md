@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için ıDEO 'ı yapılandırma | Microsoft Docs"
-description: Kullanıcı hesaplarını ıDEO 'ya otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için IDEO'yı yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi, kullanıcı hesaplarını IDEO'ya otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,146 +16,146 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
 ms.openlocfilehash: f5f163109d648a4fc021b41325c6d585a5a7a3e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057609"
 ---
-# <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için ıDEO 'ı yapılandırma
+# <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için IDEO'yı yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları ıDEO 'ya otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için ıDEO ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları IDEO'ya otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için IDEO ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [Bir ıDEO kiracısı](https://www.shape.space/product/pricing)
-* IDEO 'da bir kullanıcı hesabı | Yönetici izinleri olan şekil.
+* Azure AD kiracı
+* [Bir IDEO kiracı](https://www.shape.space/product/pricing)
+* IDEO'da bir kullanıcı hesabı | Yönetici izinleri ile şekil.
 
-## <a name="assign-users-to-ideo"></a>Kullanıcıları ıDEO 'a atama
+## <a name="assign-users-to-ideo"></a>Kullanıcıları IDEO'ya atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için atamalar adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların ıDEO 'ya erişmesi gerektiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları ıDEO 'ya atayabilirsiniz:
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların IDEO'ya erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek IDEO'ya atayabilirsiniz:
 
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-ideo"></a>Kullanıcıları ıDEO 'ya atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-ideo"></a>Kullanıcıları IDEO'ya atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının ıSE 'ye atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için IDEO'ya tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı ıDEO 'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı IDEO'ya atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="set-up-ideo-for-provisioning"></a>Sağlama için ıDEO 'ı ayarlama
+## <a name="set-up-ideo-for-provisioning"></a>Tedarik için IDEO'nun ayarlanması
 
-Azure AD ile otomatik Kullanıcı sağlaması için ıDEO 'u yapılandırmadan önce, ıDEO 'dan bazı sağlama bilgileri almanız gerekir.
+Azure AD ile otomatik kullanıcı sağlama için IDEO'yı yapılandırmadan önce, IDEO'dan bazı sağlama bilgileri almanız gerekir.
 
-1. **Gizli belirteç** için productsupport@ideo.comadresinden IDEO destek ekibine başvurun. Bu değer, Azure portal ıDEO uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
+1. **Gizli Jeton** için IDEO productsupport@ideo.comdestek ekibi ile irtibata geçin. Bu değer, Azure portalındaki IDEO uygulamanızın Sağlama sekmesinde **Gizli Belirteç** alanına girilir. 
 
-## <a name="add-ideo-from-the-gallery"></a>Galeriden ıDEO ekleme
+## <a name="add-ideo-from-the-gallery"></a>Galeriden IDEO ekle
 
-ISE 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD uygulama galerisindeki ıDEO 'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+IDEO'yu Azure AD ile otomatik kullanıcı sağlama için yapılandırmak için, Azure AD uygulama galerisinden Yönetilen SaaS uygulamaları listenize IDEO eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **IDEO**girin, sonuçlar panelinde **IDEO** ' ı seçin. 
+4. Arama kutusuna, **IDEO**girin , sonuçlar panelinde **IDEO** seçin. 
 
-    ![Sonuçlar listesinde ıDEO](common/search-new-app.png)
+    ![Sonuç listesinde IDEO](common/search-new-app.png)
 
-5. Sizi ıDEO 'nun oturum açma sayfasına yönlendiren **IDEO** düğmesini seçin. 
+5. Sizi **IDEO'nun** giriş sayfasına yönlendirecek IDEO için kaydolun düğmesini seçin. 
 
-    ![IDEO OıDC Add](media/ideo-provisioning-tutorial/signup.png)
+    ![IDEO OIDC Ekle](media/ideo-provisioning-tutorial/signup.png)
 
-6. IBU bir Openıdconnect uygulaması olduğu için, Microsoft iş hesabınızı kullanarak ıDEO 'da oturum açmayı seçin.
+6. IDEO bir OpenIDConnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak IDEO'ya giriş yapmayı seçin.
 
-    ![IDEO OıDC oturum açma](media/ideo-provisioning-tutorial/login.png)
+    ![IDEO OIDC giriş](media/ideo-provisioning-tutorial/login.png)
 
-7. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve ıBU hesabınıza yönlendirilirsiniz.
+7. Başarılı bir kimlik doğrulamadan sonra, onay sayfası için onay istemini kabul edin. Uygulama daha sonra otomatik olarak kiracınıza eklenir ve IDEO hesabınıza yönlendirilirsiniz.
 
-    ![IDEO OIDC onayı](media/ideo-provisioning-tutorial/consent.png)
+    ![IDEO OIDc Onayı](media/ideo-provisioning-tutorial/consent.png)
 
-## <a name="configure-automatic-user-provisioning-to-ideo"></a>Otomatik Kullanıcı sağlamayı ıDEO 'ya yapılandırma 
+## <a name="configure-automatic-user-provisioning-to-ideo"></a>Otomatik kullanıcı sağlamayı IDEO'ya yapılandırma 
 
-Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak ıDEO 'daki kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak IDEO'daki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
-### <a name="to-configure-automatic-user-provisioning-for-ideo-in-azure-ad"></a>Azure AD 'de ıDEO için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-ideo-in-azure-ad"></a>Azure AD'de IDEO için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **IDEO**' ı seçin.
+2. Uygulamalar listesinde **IDEO'yu**seçin.
 
-    ![Uygulamalar listesindeki ıDEO bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki IDEO bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://profile.ideo.com/api/scim/v2` girin. **Gizli belirteçte**IDEO destek ekibinden aldığınız değeri girin. Azure AD 'nin ıDEO 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, ıDEO hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü `https://profile.ideo.com/api/scim/v2` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**IDEO destek ekibinden aldığınız değeri girdi. Azure AD'nin IDEO'ya bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, IDEO hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları IDEO olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını IDEO'ya Senkronize Et'i**seçin.
 
-    ![IDEO Kullanıcı eşlemeleri](media/ideo-provisioning-tutorial/usermappings.png)
+    ![IDEO Kullanıcı Eşlemeleri](media/ideo-provisioning-tutorial/usermappings.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'den IDEO 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için IDEO 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik Eşleme** bölümünde Azure AD'den IDEO'ya senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için IDEO'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![IDEO Kullanıcı öznitelikleri](media/ideo-provisioning-tutorial/userattributes.png)
+    ![IDEO Kullanıcı Özellikleri](media/ideo-provisioning-tutorial/userattributes.png)
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-11. I, için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. IDEO için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **On** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](media/ideo-provisioning-tutorial/groupmappings.png)
+    ![Geçiş Yapılan Sağlama Durumu](media/ideo-provisioning-tutorial/groupmappings.png)
 
-12. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek IDEO 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek IDEO'ya sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](media/ideo-provisioning-tutorial/groupattributes.png)
+    ![Sağlama Kapsamı](media/ideo-provisioning-tutorial/groupattributes.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından IDEO üzerinde gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. İlerlemeyi izlemek ve IDEO'daki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 

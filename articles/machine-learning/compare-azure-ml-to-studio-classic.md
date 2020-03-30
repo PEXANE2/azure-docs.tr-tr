@@ -1,68 +1,66 @@
 ---
-title: Azure Machine Learning-Machine Learning Studio (klasik)
-description: Azure Machine Learning Machine Learning Studio 'den farklı (klasik)
+title: Azure Machine Learning vs. Machine Learning Studio (klasik)
+description: Azure Machine Learning ve Machine Learning Studio (klasik) arasındaki fark nedir?
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 10/29/2019
-ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.date: 03/25/2020
+ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "76311470"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371832"
 ---
-# <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning Machine Learning Studio 'den farklı (klasik)
+# <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (klasik)
 
-Bu makalede, Azure Machine Learning özellikleri, özellikleri ve arabirimi Machine Learning Studio (klasik) ile karşılaştırılır. 
+Bu makalede, Azure Machine Learning ve Machine Learning Studio (klasik) arasındaki farkı öğrenebilirsiniz. 
 
-## <a name="about-machine-learning-studio-classic"></a>Machine Learning Studio hakkında (klasik)
-[Machine Learning Studio (klasik)](studio/what-is-ml-studio.md) , kod yazmaya gerek kalmadan makine öğrenimi çözümlerini oluşturabileceğiniz, test ettiğiniz ve dağıtabileceğiniz, birlikte çalışan, sürükle ve bırak görsel çalışma alanıdır. Önceden oluşturulmuş ve önceden yapılandırılmış makine öğrenimi algoritmalarını ve veri işleme modüllerini, ayrıca özel bir işlem platformunu kullanır.
+Azure Machine Learning, Python ve R SDK'ları **ve** makine öğrenimi modelleri oluşturmak ve dağıtmak için "sürükle ve bırak" tasarımcısını sağlar. Studio (klasik) sadece bağımsız bir sürükle-ve-bırak deneyimi sunuyor.
 
-## <a name="about-azure-machine-learning"></a>Azure Machine Learning hakkında
+Yeni kullanıcıların en geniş yelpazedeki en ileri makine öğrenimi araçları için Azure Machine Learning'i seçmelerini öneririz.
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) , her ikisi de tasarımcı (Önizleme) **ve** ÇEŞITLI SDK 'lar ve CLI adlı bir Web arabirimi sağlayarak verileri hızlı bir şekilde hazırlayın, eğitim ve dağıtım, makine öğrenimi modellerini dağıtır. Azure Machine Learning, otomatik makine öğrenimi ve işlem hattı desteği gibi ölçek, birden çok Framework desteği, gelişmiş ML özellikleri de alır.
+## <a name="quick-comparison"></a>Hızlı karşılaştırma
 
-Azure Machine Learning tasarımcı, Studio 'ya (klasik) benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun (klasik) aksine, tasarımcı kendi işlem kaynaklarınızı kullanır, ölçeklenebilir ve Azure Machine Learning tamamen tümleşiktir.  
+Aşağıdaki tablo, Azure Machine Learning ve Studio (klasik) arasındaki bazı temel farkları özetleyilmiştir:
 
-> [!TIP]
-> Şu anda Machine Learning Studio (klasik) kullanan veya değerlendiren müşterilerin, sürükle ve bırak __ml modülleri ve__ ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik sağlayan [Azure Machine Learning tasarımcı](https://docs.microsoft.com/azure/machine-learning/concept-designer) 'yı (Önizleme) denemesini sağlamak önerilir.
-
-## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Karşılaştırma: Azure Machine Learning ile Machine Learning Studio (klasik)
-
-Hızlı bir karşılaştırma aşağıda verilmiştir.
-
-||  Azure Machine Learning Tasarımcısı|Studio (klasik) |
+| | Machine Learning Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-||Tasarımcı önizlemededir, Azure Machine Learning GA 'dir|Genel olarak kullanılabilir (GA) | 
-|Sürükle ve bırak arabirimi| Yes | Yes|
-|Deneme| İşlem hedefi ile ölçeklendirme|Ölçek (10 GB eğitim veri limiti) | 
-|Arabirim için modüller| [Birçok popüler modül](algorithm-module-reference/module-reference.md) | Sayısı |
-|Eğitim işlem hedefleri| AML Işlem (GPU/CPU)|Özel işlem hedefi, yalnızca CPU|
-|Inlekrime işlem hedefleri| Gerçek zamanlı çıkarım için Azure Kubernetes hizmeti <br/>Toplu çıkarım için AML Işlem|Özel Web hizmeti biçimi özelleştirilebilir değil | 
-|ML işlem hattı| İşlem hattı yazma <br/> Yayınlanan işlem hattı <br/> Ardışık düzen uç noktası <br/> [ML işlem hattı hakkında daha fazla bilgi](concept-ml-pipelines.md)|Desteklenmiyor | 
-|ML Ops| Yapılandırılabilir dağıtım, model ve işlem hattı sürümü oluşturma|Temel model yönetimi ve dağıtımı | 
-|Model| Standart biçim, çeşitli eğitim işine bağlıdır|Tescilli, taşınabilir olmayan biçim.| 
-|Otomatik model eğitimi|Henüz tasarımcıda değildir, ancak arabirim ve SDK 'lar aracılığıyla mümkün değildir.| Hayır | 
+| Sürükle ve bırak arabirimi | Destekleniyor | Desteklenen - [Azure Machine Learning tasarımcısı (önizleme)](concept-designer.md) | 
+| Deneme | Ölçeklenebilir (10 GB eğitim veri sınırı) | İşlem hedefiyle ölçeklendirin |
+| Eğitim hesaplama hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Özelleştirilebilir eğitim [hesaplama hedefleri](concept-compute-target.md#train)geniş bir yelpazede. GPU ve CPU desteği içerir | 
+| Dağıtım işlem hedefleri | Özel web hizmet biçimi, özelleştirilebilir değil | Çok çeşitli özelleştirilebilir [dağıtım işlem hedefleri.](concept-compute-target.md#deploy) GPU ve CPU desteği içerir |
+| ML Boru Hattı | Desteklenmiyor | İş [akışlarını](concept-ml-pipelines.md) otomatikleştirmek için esnek, modüler boru hatları oluşturun |
+| MISPler | Temel model yönetimi ve dağıtım | Varlık sürümü (model, veri, iş akışları), iş akışı otomasyonu, CICD takımlama ile entegrasyon [ve daha fazlası](concept-model-management-and-deployment.md) |
+| Model biçimi | Tescilli format, Studio (klasik) sadece | Eğitim iş türüne bağlı olarak birden çok desteklenen biçim |
+| Otomatik model eğitimi ve hiperparametre |  Desteklenmiyor | [SDK ve görsel çalışma alanında desteklendi](concept-automated-ml.md) | 
+| Veri kayması algılama | Desteklenmiyor | [SDK ve görsel çalışma alanında desteklendi](how-to-monitor-datasets.md) |
 
-## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning kullanmaya başlayın
 
-Aşağıdaki kaynaklar Azure Machine Learning kullanmaya başlamanıza yardımcı olabilir
+## <a name="migrate-from-machine-learning-studio-classic"></a>Machine Learning Studio'dan göç edin (klasik)
 
-- [Azure Machine Learning genel bakış](tutorial-first-experiment-automated-ml.md) bölümünü okuyun 
+Şu anda, Studio (klasik) varlıklarını Azure Machine Learning tasarımcısına (önizleme) geçirmenin bir yolu yoktur. Geçerli Studio (klasik) kullanıcıları makine öğrenimi varlıklarını kullanmaya devam edebilirler. Ancak, tüm kullanıcıları, geliştirilmiş iş akışı **artı** ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik ile tanıdık bir sürükle ve bırak deneyimi sağlayan tasarımcıyı kullanmayı düşünmeye teşvik ediyoruz.
 
-- Otomatik fiyatları tahmin etmek için [ilk tasarımcı işlem hattınızı oluşturun](tutorial-designer-automobile-price-train-score.md) .
+## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning ile başlayın
+
+Aşağıdaki kaynaklar Azure Machine Learning'e başlamanıza yardımcı olabilir. 
+
+- Azure [Machine Learning genel görünümünü](overview-what-is-azure-ml.md)okuyun.
+
+- Python [SDK ile ilk denemenizi](tutorial-1st-experiment-sdk-setup.md)oluşturun.
+
+- Otomobil fiyatlarını tahmin etmek için [ilk tasarımcı boru hattınızı oluşturun.](tutorial-designer-automobile-price-train-score.md)
 
 ![Azure Machine Learning tasarımcı örneği](media/concept-designer/designer-drag-and-drop.gif)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tasarımcıda Sürükle ve bırak özelliklerine ek olarak, Azure Machine Learning başka araçlar da mevcuttur:  
-  + [ML modellerini eğitmek & dağıtmak için Python not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
-  + [ML modellerini eğitme & dağıtmak için R Markdown kullanma](tutorial-1st-r-experiment.md) 
-  + [ML modellerini eğitmek & dağıtmak için otomatik makine öğrenimi kullanma](tutorial-designer-automobile-price-train-score.md) 
-  + [Makine öğrenimi CLı kullanarak bir modeli eğitme ve dağıtma](tutorial-train-deploy-model-cli.md)
+Azure Machine Learning, tasarımcıdaki sürükle ve bırak özelliklerine ek olarak, kullanılabilen başka araçlarda da vardır:  
+  + [ML modellerini eğitmek & dağıtmak için Python dizüstü bilgisayarları kullanın](tutorial-1st-experiment-sdk-setup.md)
+  + [ML modellerini eğitmek & dağıtmak için R Markdown'ı kullanın](tutorial-1st-r-experiment.md) 
+  + [ML modellerini eğitmek & dağıtmak için otomatik makine öğrenimini kullanın](tutorial-first-experiment-automated-ml.md)  
+  + [Bir modeli eğitmek ve dağıtmak için CLI'yi öğrenen makineyi kullanın](tutorial-train-deploy-model-cli.md)
 

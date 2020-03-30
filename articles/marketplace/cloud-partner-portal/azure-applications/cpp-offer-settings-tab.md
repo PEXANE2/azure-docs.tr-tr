@@ -1,41 +1,40 @@
 ---
-title: Azure Uygulama teklifi ayarları | Azure Marketi
-description: Azure Uygulama teklifi için teklif ayarlarını yapılandırın.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure uygulama teklif ayarları | Azure Marketi
+description: Azure uygulama teklifi için teklif ayarlarını yapılandırın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: c5e00f77ffeec61fb4fee4b4e8eb72b7c7ed1077
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d111471e909a091d8c887f13ad89d1da50cf72b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827534"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280125"
 ---
-# <a name="azure-application-offer-settings-tab"></a>Azure Uygulama teklifi ayarları sekmesi
+# <a name="azure-application-offer-settings-tab"></a>Azure uygulaması Teklif Ayarları sekmesi
 
-Bu makalede, bir Azure uygulaması için teklif ayarlarının nasıl yapılandırılacağı açıklanır.
+Bu makalede, bir Azure uygulaması için teklif ayarlarının nasıl yapılandırılabildiğini açıklanmaktadır.
 
-**Azure uygulamaları >** teklif **ayarları** sekmesi üzerinde odaklanarak yeni teklif sayfası açılır. Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir.
+**Azure Uygulamaları > Yeni Teklif** **sayfası, Teklif Ayarları** sekmesine odaklanarak açılır. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
 
-![Teklif kimliği formu](./media/azureapp-offer-settings-tab.png)
+![Teklif Kimlik formu](./media/azureapp-offer-settings-tab.png)
 
-## <a name="offer-identity-settings"></a>Teklif kimliği ayarları
+## <a name="offer-identity-settings"></a>Kimlik ayarları sunun
 
-**Teklif kimliği**altında, aşağıdaki tabloda açıklanan alanlarla ilgili bilgileri sağlamanız gerekir.  
+**Teklif Kimliği**altında, aşağıdaki tabloda açıklanan alanlar için bilgi sağlamanız gerekir.  
 
 |    Alan         |       Açıklama                                                            |
 |  ---------       |     ---------------                                                          |
-| **Teklif KIMLIĞI\***       | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı, ürün URL 'Leri ve Öngörüler raporlarında görünür olacaktır. En fazla 50 karakter uzunluğunda olabilir ve küçük harfli alfasayısal karakterler ve tireler (-) kullanabilir. (Tanımlayıcı bir tire ile bitemez.) **Note:** Bu alan bir teklif canlı olduktan sonra değiştirilemez. <br> Örneğin, contoso teklif KIMLIĞI **örnek kapsayıcısı**ile bir teklif yayımladığında, Azure Market URL 'si `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`atanır. |
-| **Yayımcı KIMLIĞI\***     | Kuruluşunuzun Azure Marketi 'nde benzersiz tanımlayıcısı. Tüm tekliflerinizin yayımcı KIMLIĞINIZLE ilişkilendirilmesi gerekir. Teklif kaydedildikten sonra bu değer değiştirilemez. |
-| **Ad\***          | Teklifinizin görünen adı. Bu ad, Azure Marketi 'nde ve Bulut İş Ortağı Portalı görüntülenir. En fazla 50 karakter olabilir. Ürününüz için tanınabilir bir marka adı kullanmanızı öneririz. Ürününüzün pazarlanmadığı müddetçe kuruluşunuzun adını eklemeyin. Bu teklifi diğer web siteleri ve yayımlarda pazartadıysanız, adın tüm yayınlarda tam olarak aynı olduğundan emin olun. |
+| **Teklif Kimliği\***       | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı, ürün URL'leri ve öngörü raporlarında görünür olacaktır. Maksimum uzunluğu 50 karakterdir ve küçük alfasayısal karakterler ve tire (-) kullanabilir. (Tanımlayıcı tire ile son olarak bitiremez.) **Not:** Bir teklif yayından çıktıktan sonra bu alan değiştirilemez. <br> Örneğin, Contoso teklif kimliği **örnek kapsayıcılı**bir teklif yayınlarsa, Azure `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`Marketi URL'si atanır. |
+| **Yayıncı Kimliği\***     | Kuruluşunuzun Azure Marketi'ndeki benzersiz tanımlayıcısı. Tüm teklifleri yayıncı kimliğinizle ilişkilendirilmelidir. Teklif kaydedildikten sonra bu değer değiştirilemez. |
+| **Adı\***          | Teklifiniz için görüntü adı. Bu ad Azure Marketi'nde ve Bulut İş Ortağı Portalı'nda görüntülenir. En fazla 50 karakter olabilir. Ürününuz için tanınabilir bir marka adı kullanmanızı öneririz. Ürününuzun pazarlanmadığı sürece kuruluşunuzun adını eklemeyin. Bu teklifi diğer web sitelerinde ve yayınlarda pazarlıyorsanız, adın tüm yayınlarında tamamen aynı olduğundan emin olun. |
 |  |  |
 
-Teklif ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
+Teklif Ayarlarınızı kaydetmek için **Kaydet'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizin SKU 'Larını yapılandırmak için [SKU 'ları](./cpp-skus-tab.md) sekmesini kullanın.
+Teklifiniz için SNU'ları yapılandırmak için [SK'ler](./cpp-skus-tab.md) sekmesini kullanın.

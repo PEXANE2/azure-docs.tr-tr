@@ -1,7 +1,7 @@
 ---
 title: Model eğitimi için işlem hedeflerini kullanma
 titleSuffix: Azure Machine Learning
-description: Machine Learning model eğitimi için eğitim ortamlarını (işlem hedefleri) yapılandırın. Eğitim ortamları arasında kolayca geçiş yapabilirsiniz. Eğitimi yerel olarak başlatın. Ölçeği ölçeklendirmeniz gerekiyorsa, bulut tabanlı bir işlem hedefine geçiş yapın.
+description: Makine öğrenimi modeli eğitimi için eğitim ortamlarını (bilgi işlem hedefleri) yapılandırın. Eğitim ortamları arasında kolayca geçiş yapabilirsiniz. Yerel eğitime başlayın. Ölçeklendirmeniz gerekiyorsa, bulut tabanlı bir işlem hedefine geçin.
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,157 +11,157 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296957"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)olarak adlandırılan çeşitli kaynaklar veya ortamlar üzerinde eğitebilirsiniz. İşlem hedefi bir yerel makine veya Azure Machine Learning Işlem, Azure HDInsight veya uzak bir sanal makine gibi bir bulut kaynağı olabilir.  Model dağıtımı için, ["modellerinizi dağıtma"](how-to-deploy-and-where.md)bölümünde açıklandığı gibi işlem hedefleri de oluşturabilirsiniz.
+Azure Machine Learning ile, modelinizi toplu olarak [__bilgi işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)olarak adlandırılan çeşitli kaynaklar veya ortamlar üzerinde eğitebilirsiniz. İşlem hedefi yerel makine, Azure Machine Learning İşlem veya Azure HDInsight gibi bir bulut kaynağı veya uzaktaki bir sanal makine olabilir.  Ayrıca, ["Modellerinizi nerede ve nasıl dağıtacağınız"](how-to-deploy-and-where.md)adlı model dağıtımı için işlem hedefleri de oluşturabilirsiniz.
 
-Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLı veya Azure Machine Learning VS Code uzantısını kullanarak bir işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmet (örneğin, bir HDInsight kümesi) aracılığıyla oluşturulmuş işlem hedeflerinizin varsa, bunları Azure Machine Learning çalışma alanınıza ekleyerek kullanabilirsiniz.
+Azure Machine Learning SDK, Azure Machine Learning studio, Azure CLI veya Azure Machine Learning VS Code uzantısını kullanarak bir bilgi işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmet (örneğin, bir HDInsight kümesi) aracılığıyla oluşturulan bilgi işlem hedefleriniz varsa, bunları Azure Machine Learning çalışma alanınıza ekleyerek kullanabilirsiniz.
  
-Bu makalede, model eğitimi için çeşitli işlem hedeflerini nasıl kullanacağınızı öğreneceksiniz.  Tüm işlem hedeflerinin adımları aynı iş akışını izler:
-1. Henüz yoksa bir işlem hedefi __oluşturun__ .
-2. İşlem hedefini çalışma alanınıza __ekleyin__ .
-3. İşlem hedefini, betik için gereken Python ortamını ve paket bağımlılıklarını içerecek şekilde __yapılandırın__ .
+Bu makalede, model eğitimi için çeşitli bilgi işlem hedeflerini nasıl kullanacağınızı öğreneceksiniz.  Tüm bilgi işlem hedefleri için adımlar aynı iş akışını izler:
+1. Zaten bir tane yoksa bir işlem hedefi __oluşturun.__
+2. İşlem hedefini çalışma alanınıza __takın.__
+3. İşlem hedefini Python ortamını ve komut dosyanızın gerektirdiği paket bağımlılıklarını içererek __yapılandırın.__
 
 
 >[!NOTE]
-> Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.74 ile test edilmiştir.
+> Bu makaledeki kod Azure Machine Learning SDK sürüm 1.0.74 ile test edilmiştir.
 
-## <a name="compute-targets-for-training"></a>Eğitim için işlem hedefleri
+## <a name="compute-targets-for-training"></a>Eğitim için hesaplama hedefleri
 
-Azure Machine Learning, farklı işlem hedefleri arasında değişen desteğe sahiptir. Az miktarda veriniz üzerinde dev/deneme ile tipik model geliştirme yaşam döngüsü başlatır. Bu aşamada, yerel bir ortamı kullanmanızı öneririz. Örneğin, yerel bilgisayarınıza veya bulut tabanlı bir VM. Büyük veri kümeleri üzerinde eğitim ölçeğini veya dağıtılmış eğitimi yapmak gibi bir Farklı Çalıştır gönderdiğiniz her zaman bu daralttığında tek veya çok node küme oluşturmak için Azure Machine Learning işlem kullanmanızı öneririz. Çeşitli senaryolarda olarak değişiklik gösterebilir destek aşağıda ayrıntılarıyla olsa da, kendi işlem kaynağı ekleyebilirsiniz:
+Azure Machine Learning, farklı bilgi işlem hedefleri arasında farklı desteklere sahiptir. Tipik bir model geliştirme yaşam döngüsü, az miktarda veri üzerinde dev/deneme ile başlar. Bu aşamada, yerel bir ortam kullanmanızı öneririz. Örneğin, yerel bilgisayarınız veya bulut tabanlı bir VM. Eğitiminizi daha büyük veri kümelerinde ölçeklendirirken veya dağıtılmış eğitim ler yaptığınızda, her çalıştırmayı otomatik olarak ölçeklendiren tek veya çok düğümlü bir küme oluşturmak için Azure Machine Learning Compute'u kullanmanızı öneririz. Çeşitli senaryolar için destek aşağıda ayrıntılı olarak değişebilir rağmen, ayrıca kendi bilgi işlem kaynağı ekleyebilirsiniz:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
 
 > [!NOTE]
-> Azure Machine Learning Işlem, kalıcı bir kaynak olarak oluşturulabilir veya bir çalıştırma istediğinizde dinamik olarak oluşturulabilir. Çalışma tabanlı oluşturma, eğitim çalıştırması tamamlandıktan sonra işlem hedefini kaldırır, bu nedenle bu şekilde oluşturulan işlem hedeflerini yeniden kullanamazsınız.
+> Azure Machine Learning Compute kalıcı bir kaynak olarak oluşturulabilir veya bir çalıştırma isteğinde bulunduğunuzda dinamik olarak oluşturulabilir. Çalıştırma tabanlı oluşturma, eğitim çalışması tamamlandıktan sonra işlem hedefini kaldırır, bu nedenle bu şekilde oluşturulan işlem hedeflerini yeniden kullanamazsınız.
 
-## <a name="whats-a-run-configuration"></a>Çalıştırma Yapılandırması nedir?
+## <a name="whats-a-run-configuration"></a>Çalışma yapılandırması nedir?
 
-Eğitim sırasında yerel bilgisayarınızda başlamak yaygındır ve daha sonra bu eğitim betiği farklı bir işlem hedefinde çalıştırılır. Azure Machine Learning, komut dosyanızı değiştirmek zorunda kalmadan komut dosyanızı çeşitli işlem hedeflerinde çalıştırabilirsiniz.
+Eğitim alırken, yerel bilgisayarınızda başlatmak ve daha sonra bu eğitim komut dosyasını farklı bir bilgi işlem hedefinde çalıştırmak yaygındır. Azure Machine Learning ile komut dosyanızı değiştirmenize gerek kalmadan çeşitli bilgi işlem hedeflerinde çalıştırabilirsiniz.
 
-Tüm yapmanız gereken, **çalışma yapılandırmasındaki**her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin. Bir ortamı belirtme ve yapılandırmayı çalıştırmaya bağlama hakkında ayrıntılı bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
+Tek yapmanız **gereken, bir çalıştırma yapılandırması**içindeki her işlem hedefi için ortamı tanımlamaktır.  Daha sonra, eğitim denemenizi farklı bir bilgi işlem hedefiüzerinde çalıştırmak istediğinizde, bu işlem için çalıştır yapılandırmasını belirtin. Bir ortamı belirtme ve yapılandırmayı çalıştırmak için bağlama ayrıntıları [için](how-to-use-environments.md)bkz.
 
-Bu makalenin sonunda [denemeleri gönderme](#submit) hakkında daha fazla bilgi edinin.
+Bu makalenin sonunda [deneme gönderme](#submit) hakkında daha fazla bilgi edinin.
 
-## <a name="whats-an-estimator"></a>Estimator nedir?
+## <a name="whats-an-estimator"></a>Tahminci nedir?
 
-Popüler çerçeveleri kullanarak model eğitimi kolaylaştırmak için Azure Machine Learning Python SDK, daha yüksek düzeyde bir soyutlama ve tahmin aracı sınıfı sağlar.  Bu sınıf, çalışma yapılandırmasını kolayca oluşturmanıza olanak tanır. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren). Bir ortam veya RunConfiguration nesneleri gibi katıştırılmış nesneleri otomatik olarak oluştururken eğitim için bir tahmin aracı kullanmanızı öneririz. Bu nesnelerin nasıl oluşturulduğuna ilişkin daha fazla denetime sahip olmak ve denemenizin çalışması için hangi paketlerin yükleneceğini belirlemek isterseniz, Azure Machine Learning Işlem üzerinde bir RunConfiguration nesnesi kullanarak eğitim denemeleri göndermek için [aşağıdaki adımları](#amlcompute) izleyin.
+Azure Machine Learning Python SDK, popüler çerçeveleri kullanarak model eğitimini kolaylaştırmak için, tahmin sınıfı olan alternatif bir üst düzey soyutlama sağlar.  Bu sınıf, çalıştırma yapılandırmalarını kolayca oluşturmanıza olanak tanır. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-learn gibi) kullanan eğitim komut dosyalarını göndermek için genel bir [Tahminci](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz. Sizin için bir ortam veya RunConfiguration nesneleri gibi katıştak nesneleri otomatik olarak oluşturan bir tahminci kullanmanızı öneririz. Bu nesnelerin nasıl oluşturulduğu üzerinde daha fazla denetime sahip olmak ve deneme çalıştırmanız için hangi paketleri yükleyeceklerini belirtmek istiyorsanız, bir Azure Machine Learning Compute'da bir RunConfiguration nesnesi kullanarak eğitim denemelerinizi göndermek için [aşağıdaki adımları](#amlcompute) izleyin.
 
-Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
+PyTorch, TensorFlow ve Chainer görevleri için Azure Machine Learning, bu çerçeveleri kullanarak basitleştirmek için ilgili [PyTorch,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmincileri de sağlar.
 
-Daha fazla bilgi için bkz. [tahmini ile ml modellerini eğitme](how-to-train-ml-models.md).
+Daha fazla bilgi için [tahminörlü Train ML Modelleri'ne](how-to-train-ml-models.md)bakın.
 
-## <a name="whats-an-ml-pipeline"></a>ML ardışık düzeni nedir?
+## <a name="whats-an-ml-pipeline"></a>ML Boru Hattı nedir?
 
-ML işlem hatları sayesinde, basitlik, hız, taşınabilirlik ve yeniden kullanım sayesinde iş akışınızı iyileştirebilmenizi sağlayabilirsiniz. Azure Machine Learning ile işlem hatları oluştururken, altyapı ve otomasyon yerine uzmanınıza ve makine öğrenmenize odaklanırsınız.
+ML boru hatları ile iş akışınızı basitlik, hız, taşınabilirlik ve yeniden kullanımla optimize edebilirsiniz. Azure Machine Learning ile boru hatları inşa ederken, altyapı ve otomasyon yerine uzmanlığınıza, makine öğreniminize odaklanabilirsiniz.
 
-ML işlem hatları, işlem hattının farklı hesaplama birimleri olan birden çok **adımdan**oluşturulur. Her adım bağımsız olarak çalıştırılabilir ve yalıtılmış işlem kaynakları kullanabilir. Bu, birden çok veri bilimcilerinin aynı işlem hattı üzerinde, yoğun bilgi işlem kaynakları olmadan aynı anda çalışmasına olanak tanır ve ayrıca her adım için farklı işlem türleri/boyutları kullanmayı kolaylaştırır.
+ML boru hatları, boru hattında farklı hesaplama birimleri olan birden çok **adımdan**inşa edilir. Her adım bağımsız olarak çalıştırılabilir ve yalıtılmış işlem kaynaklarını kullanabilir. Bu, birden çok veri bilim adamının aynı anda, aşırı vergilendirici bilgi işlem kaynakları olmadan aynı anda çalışmasına olanak tanır ve ayrıca her adım için farklı işlem türleri/boyutlarının kullanılmasını kolaylaştırır.
 
 > [!TIP]
-> ML işlem hatları, eğitim modelleri sırasında yapılandırmayı veya tahminleri Çalıştır 'ı kullanabilir.
+> ML Pipelines, modelleri çalıştırırken çalıştır yapılandırması veya tahmincileri kullanabilir.
 
-ML işlem hatları modelleri eğitebilir, ancak eğitim vermeden önce verileri hazırlayabilir ve eğitiminden sonra modeller dağıtabilirler. İşlem hatları için birincil kullanım çalışmalarından biri Batch Puanlama. Daha fazla bilgi için bkz. işlem [hatları: makine öğrenimi iş akışlarını iyileştirme](concept-ml-pipelines.md).
+ML boru hatları modelleri eğitebilirken, eğitimden önce veri hazırlayabilir ve eğitimden sonra modelleri dağıtabilir. Ardışık hatlar için birincil kullanım durumlardan biri toplu puanlamadır. Daha fazla bilgi için [bkz: Boru Hatları: Makine öğrenimi iş akışlarını optimize edin.](concept-ml-pipelines.md)
 
-## <a name="set-up-in-python"></a>Python 'da ayarlama
+## <a name="set-up-in-python"></a>Python'da ayarlama
 
-Bu işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
+Bu bilgi işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
 
 * [Yerel bilgisayar](#local)
-* [Azure Machine Learning Işlem](#amlcompute)
+* [Azure Machine Learning İşlemi](#amlcompute)
 * [Uzak sanal makineler](#vm)
 * [Azure HDInsight](#hdinsight)
 
 
-### <a id="local"></a>Yerel bilgisayar
+### <a name="local-computer"></a><a id="local"></a>Yerel bilgisayar
 
-1. **Oluşturma ve iliştirme**: eğitim ortamı olarak yerel bilgisayarınızı kullanmak için bir işlem hedefi oluşturmanız veya eklemeniz gerekmez.  
+1. **Oluştur ve ekle**: Yerel bilgisayarınızı eğitim ortamı olarak kullanmak için bir bilgi işlem hedefi oluşturmaya veya eklemeye gerek yoktur.  
 
-1. **Yapılandırma**: yerel bilgisayarınızı bir işlem hedefi olarak kullandığınızda, eğitim kodu [geliştirme ortamınızda](how-to-configure-environment.md)çalıştırılır.  Bu ortamda zaten ihtiyacınız olan Python paketleri varsa, Kullanıcı tarafından yönetilen ortamı kullanın.
+1. **Yapılandırma**: Yerel bilgisayarınızı bilgi işlem hedefi olarak kullandığınızda, eğitim kodu [geliştirme ortamınızda](how-to-configure-environment.md)çalıştırılır.  Bu ortamda zaten ihtiyacınız olan Python paketleri varsa, kullanıcı tarafından yönetilen ortamı kullanın.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+Artık bilgi işleminizi iliştirdiğinize ve çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalışmasını göndermektir.](#submit)
 
-### <a id="amlcompute"></a>Azure Machine Learning Işlem
+### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning İşlemi
 
-Azure Machine Learning Işlem, kullanıcının kolayca tek veya çok düğümlü bir işlem oluşturmasına olanak tanıyan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilecek bir kaynak olarak çalışma alanı bölgeniz içinde oluşturulur. İşlem, bir iş gönderildiğinde otomatik olarak ölçeklendirilir ve bir Azure sanal ağına yerleştirilebilir. İşlem kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir [Docker kapsayıcısında](https://www.docker.com/why-docker)paketleyebilir.
+Azure Machine Learning Compute, kullanıcının tek veya çok düğümlü bir işlem oluşturmasını sağlayan yönetilen bir bilgi işlem altyapısıdır. Bilgi işlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilen bir kaynak olarak çalışma alanı bölgenizde oluşturulur. Bir iş gönderildiğinde işlem otomatik olarak ölçeklenir ve bir Azure Sanal Ağına konulabilir. Bilgi işlem kapsayıcı bir ortamda yürütür ve model bağımlılıklarınızı [Docker kapsayıcısında](https://www.docker.com/why-docker)paketler.
 
-Azure Machine Learning işlem eğitim işlemin CPU veya GPU işlem düğümü bulutta bir küme dağıtmak için kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+Eğitim işlemini buluttaki CPU veya GPU bilgi işlem düğümleri kümesine dağıtmak için Azure Machine Learning Compute'u kullanabilirsiniz. GPU'lar içeren VM boyutları hakkında daha fazla bilgi için [GPU için optimize edilmiş sanal makine boyutlarına](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)bakın.
 
-Azure Machine Learning Işlem, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
+Azure Machine Learning Compute, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için Azure [kaynakları için yönet ve kota isteğine](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)bakın.
 
 
-Bir çalıştırmayı zamanladığınızda veya kalıcı bir kaynak olarak, isteğe bağlı olarak Azure Machine Learning işlem ortamı oluşturabilirsiniz.
+Bir çalışma zamanlarken veya kalıcı bir kaynak olarak isteğe bağlı olarak bir Azure Machine Learning bilgi işlem ortamı oluşturabilirsiniz.
 
 #### <a name="run-based-creation"></a>Çalıştırma tabanlı oluşturma
 
-Çalışma zamanında işlem hedefi olarak Azure Machine Learning Işlem oluşturabilirsiniz. İşlem, çalıştırmanız için otomatik olarak oluşturulur. İşlem, çalıştırma tamamlandıktan sonra otomatik olarak silinir. 
+Çalışma zamanında bir bilgi işlem hedefi olarak Azure Machine Learning Compute'u oluşturabilirsiniz. İşlem, çalışmanız için otomatik olarak oluşturulur. İşlem tamamlandıktan sonra otomatik olarak silinir. 
 
 > [!IMPORTANT]
-> Azure Machine Learning işlem tabanlı oluşturma işlemi şu anda önizleme aşamasındadır. Otomatik hiper parametre ayarlama veya otomatik makine öğrenimi kullanıyorsanız, çalıştırma tabanlı oluşturma kullanmayın. Hiper parametre ayarlamayı veya otomatik makine öğrenimini kullanmak için, bunun yerine [kalıcı bir işlem](#persistent) hedefi oluşturun.
+> Azure Machine Learning bilgiişleminin çalıştırım tabanlı oluşturulması şu anda Önizleme'de. Otomatik hiperparametre ayarı veya otomatik makine öğrenimi kullanıyorsanız, çalıştırma tabanlı oluşturma yı kullanmayın. Hiperparametre atonlama veya otomatik makine öğrenimi kullanmak için, bunun yerine kalıcı bir [bilgi işlem](#persistent) hedefi oluşturun.
 
-1.  **Oluşturma, iliştirme ve yapılandırma**: çalıştırma tabanlı oluşturma, işlem hedefini çalıştırma yapılandırması ile oluşturmak, eklemek ve yapılandırmak için gerekli tüm adımları gerçekleştirir.  
+1.  **Oluşturma, iliştirme ve yapılandırma**: Çalıştırma tabanlı oluşturma, çalışma yapılandırması ile işlem hedefini oluşturmak, eklemek ve yapılandırmak için gerekli tüm adımları gerçekleştirir.  
 
   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
 
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+Artık bilgi işleminizi iliştirdiğinize ve çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalışmasını göndermektir.](#submit)
 
-#### <a id="persistent"></a>Kalıcı işlem
+#### <a name="persistent-compute"></a><a id="persistent"></a>Kalıcı hesaplama
 
-Kalıcı bir Azure Machine Learning Işlem, işler arasında yeniden kullanılabilir. İşlem, çalışma alanındaki diğer kullanıcılarla paylaşılabilir ve işler arasında tutulur.
+Kalıcı bir Azure Machine Learning Compute işler arasında yeniden kullanılabilir. İşlem, çalışma alanındaki diğer kullanıcılarla paylaşılabilir ve işler arasında tutulur.
 
-1. **Oluşturma ve iliştirme**: Python 'da kalıcı bir Azure Machine Learning işlem kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı Varsayılanları kullanır. İşlem, kullanılmazsa otomatik olarak sıfır düğümlere ölçeklenir.   İşlerinizi gerektiğinde çalıştırmak için adanmış VM 'Ler oluşturulur.
+1. **Oluşturma ve ekleme**: Python'da kalıcı bir Azure Machine Learning Compute kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı varsayılanlar kullanır. İşlem otomatik olarak kullanılmadığında sıfır düğüme küçülür.   Gerektiğinde işinizi çalıştırmak için özel VM'ler oluşturulur.
     
-    * **vm_size**: Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
-    * **max_nodes**: Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
+    * **vm_size**: Azure Machine Learning Compute tarafından oluşturulan düğümlerin VM ailesi.
+    * **max_nodes**: Azure Machine Learning Compute'da bir işi çalıştırdığınızda otomatik olarak ölçeklendirilebilen maksimum düğüm sayısı.
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   Azure Machine Learning Compute'u oluştururken birkaç gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, kalıcı bir sabit boyutta küme oluşturmanıza veya aboneliğinizde varolan bir Azure Sanal Ağı içinde oluşturmanıza olanak tanır.  Ayrıntılar için [AmlCompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) bakın.
     
-   Ya da [Azure Machine Learning Studio](#portal-create)'da kalıcı bir Azure Machine Learning işlem kaynağı oluşturup ekleyebilirsiniz.
+   Veya [Azure Machine Learning stüdyosunda](#portal-create)kalıcı bir Azure Machine Learning Compute kaynağı oluşturabilir ve ekleyebilirsiniz.
 
-1. **Yapılandır**: kalıcı işlem hedefi için bir çalıştırma yapılandırması oluşturun.
+1. **Configure**: Kalıcı bilgi işlem hedefi için bir çalıştırma yapılandırması oluşturun.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+Artık bilgi işleminizi iliştirdiğinize ve çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalışmasını göndermektir.](#submit)
 
 
-### <a id="vm"></a>Uzak sanal makineler
+### <a name="remote-virtual-machines"></a><a id="vm"></a>Uzak sanal makineler
 
-Azure Machine Learning, ayrıca kendi işlem kaynağı getiren ve çalışma alanınıza eklenmesini destekler. Bu tür bir kaynak türü, Azure Machine Learning 'ten erişilebilen sürece rastgele bir uzak VM 'dir. Kaynak bir Azure VM 'si, kuruluşunuzdaki uzak sunucu veya şirket içi olabilir. Özellikle, IP adresi ve kimlik bilgileri (Kullanıcı adı ve parola veya SSH anahtarı) verildiğinde, uzak çalıştırmalar için erişilebilir VM 'leri kullanabilirsiniz.
+Azure Machine Learning, kendi bilgi işlem kaynağınızı getirmeyi ve çalışma alanınıza eklemeyi de destekler. Azure Machine Learning'den erişilebildiği sürece, bu tür bir kaynak türü rasgele uzak VM'dir. Kaynak bir Azure VM, kuruluşunuzdaki uzak bir sunucu veya şirket içi olabilir. Özellikle, IP adresi ve kimlik bilgileri (kullanıcı adı ve parola veya SSH anahtarı) göz önüne alındığında, uzaktan çalıştırmalar için erişilebilir herhangi bir VM kullanabilirsiniz.
 
-Bir Docker kapsayıcısı, zaten var olan bir Python ortamını veya sistem tarafından oluşturulan conda ortamda kullanabilirsiniz. Bir Docker kapsayıcısında yürütmek için, VM 'de çalışan bir Docker altyapısına sahip olmanız gerekir. Yerel makinenize daha esnek, bulut tabanlı geliştirme/deneme ortamı istediğinizde, bu işlev özellikle yararlıdır.
+Sistem tarafından oluşturulmuş bir conda ortamı, zaten varolan bir Python ortamı veya Docker kapsayıcısı kullanabilirsiniz. Docker konteynerini çalıştırmak için VM üzerinde çalışan bir Docker Engine'inolması gerekir. Bu işlevsellik, yerel makinenizden daha esnek, bulut tabanlı bir geliştirme/deneme ortamı istediğinizde özellikle kullanışlıdır.
 
-Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi Sanal Makinesi (DSVM) kullanın. Bu VM, Azure 'da önceden yapılandırılmış bir veri bilimi ve AI geliştirme ortamıdır. VM, tam yaşam döngüsü makine öğrenimi geliştirmesi için seçkin bir araç ve çerçeve seçeneği sunar. DSVM 'nin Azure Machine Learning ile nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [bir geliştirme ortamı yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm).
+Bu senaryo için Azure Veri Bilimi Sanal Makinesi'ni (DSVM) Azure VM olarak kullanın. Bu VM, Azure'da önceden yapılandırılmış bir veri bilimi ve AI geliştirme ortamıdır. VM, tam yaşam döngüsü makine öğrenimi gelişimi için çeşitli araçlar ve çerçeveler sunar. Azure Machine Learning ile DSVM'nin nasıl kullanılacağı hakkında daha fazla bilgi [için](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)bkz.
 
-1. **Oluştur**: modelinize eğitebilmeniz için kullanmadan önce dsvm oluşturun. Bu kaynağı oluşturmak için bkz. [Linux için veri bilimi sanal makinesi sağlama (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Create**: Modelinizi eğitmek için kullanmadan önce bir DSVM oluşturun. Bu kaynağı oluşturmak [için, Linux için Veri Bilimi Sanal Makine (Ubuntu) hükmüne](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)bakın.
 
     > [!WARNING]
-    > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya var olan bir VM 'yi seçtiğinizde Ubuntu kullanan bir VM seçmeniz gerekir.
+    > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya varolan bir VM seçtiğinizde, Ubuntu kullanan bir VM seçmeniz gerekir.
 
-1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<FQDN > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. \<Kullanıcı adı > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **Ekle**: Varolan bir sanal makineyi bilgi işlem hedefi olarak eklemek için, sanal makine için tam nitelikli alan adı (FQDN), kullanıcı adı ve parola sağlamanız gerekir. Örnekte, fqdn>'ı VM'nin ortak FQDN'si veya genel IP adresiyle değiştirin. \< Kullanıcı \<adı> \<ve parola> VM için SSH kullanıcı adı ve parolaile değiştirin.
 
     > [!IMPORTANT]
-    > Aşağıdaki Azure bölgeleri VM 'nin genel IP adresini kullanarak bir sanal makine eklemeyi desteklemez. Bunun yerine, `resource_id` parametresiyle sanal makinenin Azure Resource Manager KIMLIĞINI kullanın:
+    > Aşağıdaki Azure bölgeleri, VM'nin genel IP adresini kullanarak sanal bir makine nin eklenmesini desteklemez. Bunun yerine, `resource_id` VM'nin Azure Kaynak Yöneticisi Kimliğini parametreyle kullanın:
     >
     > * ABD Doğu
     > * ABD Batı 2
     > * ABD Orta Güney
     >
-    > VM 'nin kaynak KIMLIĞI, şu dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve VM adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+    > VM'nin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grubu adı `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`ve VM adı kullanılarak oluşturulabilir: .
 
 
    ```python
@@ -192,35 +192,35 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
    compute.wait_for_completion(show_output=True)
    ```
 
-   Veya [Azure Machine Learning Studio 'yu kullanarak](#portal-reuse)dsvm 'yi çalışma alanınıza ekleyebilirsiniz.
+   Veya [Azure Machine Learning stüdyosunu kullanarak](#portal-reuse)DSVM'yi çalışma alanınıza ekleyebilirsiniz.
 
-1. **Yapılandır**: dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
+1. **Configure**: DSVM bilgi işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve conda, DSVM'deki eğitim ortamını oluşturmak ve yapılandırmak için kullanılır.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+Artık bilgi işleminizi iliştirdiğinize ve çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalışmasını göndermektir.](#submit)
 
-### <a id="hdinsight"></a>Azure HDInsight 
+### <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
-Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, modelinizi eğitebilmeniz için kullanılabilecek Apache Spark sağlar.
+Azure HDInsight, büyük veri analitiği için popüler bir platformdur. Platform, modelinizi eğitmek için kullanılabilecek Apache Spark sağlar.
 
-1. **Oluştur**: modelinize eğitebilmeniz Için önce HDInsight kümesini oluşturun. HDInsight kümesinde Spark oluşturmak için bkz. [HDInsight 'Ta Spark kümesi oluşturma](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
+1. **Oluştur**: Modelinizi eğitmek için kullanmadan önce HDInsight kümesini oluşturun. HDInsight kümesinde Bir Kıvılcım oluşturmak için [hdinsight'ta Kıvılcım Kümesi Oluştur'a](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)bakın. 
 
-    Kümeyi oluşturduğunuzda bir SSH Kullanıcı adı ve parolası belirtmeniz gerekir. HDInsight 'ı bir işlem hedefi olarak kullanmak için ihtiyacınız olduğu için bu değerleri de göz önünde ayırın.
+    Küme oluştururken, bir SSH kullanıcı adı ve parola belirtmeniz gerekir. HDInsight'ı bilgi işlem hedefi olarak kullanmaları gerektiğinden, bu değerlere dikkat edin.
     
-    Küme oluşturulduktan sonra, \<clustername >-ssh.azurehdinsight.net adlı ana bilgisayar adı ile bağlanın; burada \<clustername >, küme için verdiğiniz addır. 
+    Küme oluşturulduktan sonra, küme adı \<> küme için sağladığınız \<ad olan ana bilgisayar adı küme adı>-ssh.azurehdinsight.net ile bağlanın. 
 
-1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, bir küme çalışma alanınıza eklemek için SDK'sını kullanır. Örnekte, \<clustername > değerini kümenizin adıyla değiştirin. \<Kullanıcı adı > ve \<Password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **Ekle**: Bir HDInsight kümesini bilgi işlem hedefi olarak eklemek için, HDInsight kümesinin ana bilgisayar adını, kullanıcı adını ve parolasını sağlamanız gerekir. Aşağıdaki örnekte, çalışma alanınıza bir küme eklemek için SDK kullanır. Örnekte, küme \<adı> kümenizin adı ile değiştirin. Kullanıcı \<adı> \<ve parola> kümeiçin SSH kullanıcı adı ve parolasıyla değiştirin.
 
     > [!IMPORTANT]
-    > Aşağıdaki Azure bölgeleri, kümenin genel IP adresini kullanarak bir HDInsight kümesi eklemeyi desteklemez. Bunun yerine, `resource_id` parametresiyle kümenin Azure Resource Manager KIMLIĞINI kullanın:
+    > Aşağıdaki Azure bölgeleri, kümenin genel IP adresini kullanarak bir HDInsight kümesinin eklenmesini desteklemez. Bunun yerine, `resource_id` parametre ile kümenin Azure Kaynak Yöneticisi Kimliğini kullanın:
     >
     > * ABD Doğu
     > * ABD Batı 2
     > * ABD Orta Güney
     >
-    > Kümenin kaynak KIMLIĞI, şu dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve küme adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+    > Kümenin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grubu adı `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`ve küme adı kullanılarak oluşturulabilir: .
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -247,27 +247,27 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   İsterseniz de [Azure Machine Learning Studio kullanarak](#portal-reuse)HDInsight kümesini çalışma alanınıza ekleyebilirsiniz.
+   Veya [Azure Machine Learning stüdyosunu kullanarak](#portal-reuse)HDInsight kümesini çalışma alanınıza ekleyebilirsiniz.
 
-1. **Yapılandır**: HDI işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
+1. **Configure**: HDI bilgi işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+Artık bilgi işleminizi iliştirdiğinize ve çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalışmasını göndermektir.](#submit)
 
 
-### <a id="azbatch"></a>Azure Batch 
+### <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
-Azure Batch, büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) uygulamalarını bulutta verimli bir şekilde çalıştırmak için kullanılır. AzureBatchStep bir makine havuzuna Azure Batch iş göndermek için bir Azure Machine Learning işlem hattında kullanılabilir.
+Azure Toplu İşlem, büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) uygulamalarını bulutta verimli bir şekilde çalıştırmak için kullanılır. AzureBatchStep, işleri Bir Azure Toplu İşlem makinesi havuzuna göndermek için Bir Azure Machine Learning Pipeline'da kullanılabilir.
 
-İşlem hedefi olarak Azure Batch iliştirmek için Azure Machine Learning SDK 'sını kullanmanız ve aşağıdaki bilgileri sağlamanız gerekir:
+Azure Toplu İşlem'i bir bilgi işlem hedefine eklemek için Azure Machine Learning SDK'yı kullanmanız ve aşağıdaki bilgileri sağlamanız gerekir:
 
--    **Azure Batch işlem adı**: çalışma alanı içinde işlem için kullanılacak kolay bir ad
--    **Azure Batch hesap adı**: Azure Batch hesabının adı
--    **Kaynak grubu**: Azure Batch hesabını içeren kaynak grubu.
+-    **Azure Toplu İşlem adı**: Çalışma alanı içindeki işlem için kullanılacak kolay bir ad
+-    **Azure Toplu Hesap Adı**: Azure Toplu İş hesabının adı
+-    **Kaynak Grubu**: Azure Toplu İş hesabını içeren kaynak grubudur.
 
-Aşağıdaki kod, Azure Batch işlem hedefi olarak nasıl ekleneceğini göstermektedir:
+Aşağıdaki kod, Azure Toplu İşlem'in bir işlem hedefi olarak nasıl eklenebildiğini gösterir:
 
 ```python
 from azureml.core.compute import ComputeTarget, BatchCompute
@@ -297,118 +297,118 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da ayarlama
+## <a name="set-up-in-azure-machine-learning-studio"></a>Azure Machine Learning stüdyosunda ayarlama
 
-Azure Machine Learning Studio 'daki çalışma alanınız ile ilişkili işlem hedeflerine erişebilirsiniz.  Studio 'yu kullanarak şunları yapabilirsiniz:
+Azure Machine Learning stüdyosunda çalışma alanınızla ilişkili bilgi işlem hedeflerine erişebilirsiniz.  Stüdyoyu şu şekilde kullanabilirsiniz:
 
 * Çalışma alanınıza bağlı [işlem hedeflerini görüntüleme](#portal-view)
 * Çalışma alanınızda [bir işlem hedefi oluşturma](#portal-create)
-* Çalışma alanının dışında oluşturulmuş [bir işlem hedefi iliştirme](#portal-reuse)
+* Çalışma alanının dışında oluşturulan [bir işlem hedefi ekleme](#portal-reuse)
 
 
-Bir hedef oluşturulduktan ve çalışma alanınıza eklendikten sonra, çalışma yapılandırmanızda bunu bir `ComputeTarget` nesnesiyle kullanacaksınız: 
+Bir hedef oluşturulduktan ve çalışma alanınıza iliştirildikten sonra, `ComputeTarget` bunu çalışma yapılandırmanızda bir nesneyle kullanırsınız: 
 
 ```python
 from azureml.core.compute import ComputeTarget
 myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 ```
 
-### <a id="portal-view"></a>İşlem hedeflerini görüntüleme
+### <a name="view-compute-targets"></a><a id="portal-view"></a>İşlem hedeflerini görüntüleme
 
 
-Çalışma alanınızın işlem hedeflerini görmek için aşağıdaki adımları kullanın:
+Çalışma alanınız için hesaplama hedeflerini görmek için aşağıdaki adımları kullanın:
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'ya gidin.
+1. Azure [Machine Learning stüdyosuna](https://ml.azure.com)gidin.
  
-1. __Uygulamalar__' ın altında, __işlem__' ı seçin.
+1. __Uygulamalar__altında, __Bilgi İşlem'i__seçin.
 
-    [işlem sekmesini ![görüntüleme](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [![İşlem sekmesini görüntüleme](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
-### <a id="portal-create"></a>İşlem hedefi oluştur
+### <a name="create-a-compute-target"></a><a id="portal-create"></a>İşlem hedefi oluşturma
 
-İşlem hedeflerinin listesini görüntülemek için önceki adımları izleyin. Daha sonra bir işlem hedefi oluşturmak için bu adımları kullanın: 
+İşlem hedefleri listesini görüntülemek için önceki adımları izleyin. Ardından, bir işlem hedefi oluşturmak için şu adımları kullanın: 
 
-1. Bir işlem hedefi eklemek için artı işaretini (+) seçin.
+1. Bir hesaplama hedefi eklemek için artı işaretini (+) seçin.
 
     ![İşlem hedefi ekleme](./media/how-to-set-up-training-targets/add-compute-target.png) 
 
 1. İşlem hedefi için bir ad girin. 
 
-1. __Eğitim__için kullanılacak işlem türü olarak **Machine Learning işlem** seçin. 
+1. Eğitim için kullanılacak bilgi işlem türü olarak **Makine Öğrenimi İşlemi'ni** seçin. __Training__ 
 
     >[!NOTE]
-    >Azure Machine Learning Işlem, Azure Machine Learning Studio 'da oluşturabileceğiniz tek yönetilen işlem kaynağıdır.  Diğer tüm işlem kaynakları, oluşturulduktan sonra eklenebilir.
+    >Azure Machine Learning Compute, Azure Machine Learning stüdyosunda oluşturabileceğiniz tek yönetilen işlem kaynağıdır.  Diğer tüm hesaplama kaynakları oluşturulduktan sonra eklenebilir.
 
-1. Formu doldurun. Gerekli özellikler, özellikle **VM ailesi**ve işlem için kullanılacak **en fazla düğüm** değerlerini sağlayın.  
+1. Formu doldurun. Gerekli özellikleri, özellikle **VM Ailesi**ve bilgi işlem kadar döndürmek için kullanılacak **maksimum düğümdeğerleri** sağlayın.  
 
-1. __Oluştur__’u seçin.
+1. __Oluştur'u__seçin.
 
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
 
     ![Oluşturma işlemi durumunu görüntülemek için bir işlem hedefi seçin](./media/how-to-set-up-training-targets/View_list.png)
 
-1. Daha sonra işlem hedefinin ayrıntılarını görürsünüz: 
+1. Daha sonra bilgi işlem hedefiiçin ayrıntıları görürsünüz: 
 
-    ![Bilgisayar hedefi ayrıntılarını görüntüleme](./media/how-to-set-up-training-targets/compute-target-details.png) 
+    ![Bilgisayar hedef ayrıntılarını görüntüleme](./media/how-to-set-up-training-targets/compute-target-details.png) 
 
-### <a id="portal-reuse"></a>İşlem hedeflerini iliştirme
+### <a name="attach-compute-targets"></a><a id="portal-reuse"></a>İşlem hedeflerini ekleme
 
-Azure Machine Learning çalışma alanı dışında oluşturulan işlem hedeflerini kullanmak için, onları iliştirmeli. İşlem hedefini iliştirmek, çalışma alanınız için kullanılabilir hale getirir.
+Azure Machine Learning çalışma alanı dışında oluşturulan bilgi işlem hedeflerini kullanmak için bunları eklemeniz gerekir. Bir işlem hedefi eklemek, onu çalışma alanınız için kullanılabilir hale getirir.
 
-Daha önce açıklanan adımları izleyerek işlem hedeflerinin listesini görüntüleyin. Daha sonra bir işlem hedefi eklemek için aşağıdaki adımları kullanın: 
+İşlem hedefleri listesini görüntülemek için daha önce açıklanan adımları izleyin. Ardından, bir işlem hedefi eklemek için aşağıdaki adımları kullanın: 
 
-1. Bir işlem hedefi eklemek için artı işaretini (+) seçin. 
+1. Bir hesaplama hedefi eklemek için artı işaretini (+) seçin. 
 1. İşlem hedefi için bir ad girin. 
-1. __Eğitim__için iliştirilecek işlem türünü seçin:
+1. __Eğitim__için eklenecek işlem türünü seçin:
 
     > [!IMPORTANT]
-    > Tüm bilgi işlem türleri Azure Machine Learning Studio 'dan iliştirilemez. Şu anda eğitim için iliştirilebilecek işlem türleri şunlardır:
+    > Azure Machine Learning stüdyosundan tüm bilgi işlem türleri eklenebilir. Şu anda eğitim için eklenebilir bilgi işlem türleri şunlardır:
     >
-    > * Uzak VM
-    > * Azure Databricks (makine öğrenimi ardışık düzenleri kullanımı için)
-    > * Azure Data Lake Analytics (makine öğrenimi ardışık düzenleri kullanımı için)
+    > * Uzak bir VM
+    > * Azure Databricks (makine öğrenimi boru hatlarında kullanım için)
+    > * Azure Veri Gölü Analizi (makine öğrenimi boru hatlarında kullanım için)
     > * Azure HDInsight
 
 1. Formu doldurun ve gerekli özellikler için değerler sağlayın.
 
     > [!NOTE]
-    > Microsoft, parolalardan daha güvenli olan SSH anahtarlarını kullanmanızı önerir. Parolalar, deneme yanılma saldırılarına karşı savunmasızdır. SSH anahtarları şifreleme imzaları kullanır. Azure sanal makineler ile kullanmak üzere SSH anahtarları oluşturma hakkında bilgi için aşağıdaki belgelere bakın:
+    > Microsoft, parolalardan daha güvenli olan SSH anahtarlarını kullanmanızı önerir. Parolalar kaba kuvvet saldırılarına karşı savunmasızdır. SSH anahtarları şifreleme imzalarına dayanır. Azure Sanal Makineleri ile kullanılmak üzere SSH anahtarlarının nasıl oluşturulabildiğini öğrenmek için aşağıdaki belgelere bakın:
     >
-    > * [Linux veya macOS 'ta SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Windows 'da SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Linux veya macOS'ta SSH tuşları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Windows'da SSH tuşları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-1. __Ekle__' yi seçin. 
-1. Listeden işlem hedefini seçerek iliştirme işleminin durumunu görüntüleyin.
+1. __Ekle'yi__seçin. 
+1. Listeden işlem hedefini seçerek ekleme işleminin durumunu görüntüleyin.
 
-## <a name="set-up-with-cli"></a>CLı ile ayarlama
+## <a name="set-up-with-cli"></a>CLI ile ayarlama
 
-Azure Machine Learning için [CLI uzantısını](reference-azure-machine-learning-cli.md) kullanarak çalışma alanınız ile ilişkili işlem hedeflerine erişebilirsiniz.  CLı 'yi kullanarak şunları yapabilirsiniz:
+Azure Machine Learning için [CLI uzantısını](reference-azure-machine-learning-cli.md) kullanarak çalışma alanınızla ilişkili bilgi işlem hedeflerine erişebilirsiniz.  CLI'yi şu şekilde kullanabilirsiniz:
 
-* Yönetilen işlem hedefi oluşturma
-* Yönetilen bir işlem hedefini güncelleştirme
-* Yönetilmeyen bir işlem hedefi iliştirme
+* Yönetilen bir işlem hedefi oluşturma
+* Yönetilen bir bilgi işlem hedefini güncelleştirme
+* Yönetilmeyen bir işlem hedefi ekleme
 
-Daha fazla bilgi için bkz. [kaynak yönetimi](reference-azure-machine-learning-cli.md#resource-management).
+Daha fazla bilgi için [Kaynak yönetimine](reference-azure-machine-learning-cli.md#resource-management)bakın.
 
-## <a name="set-up-with-vs-code"></a>VS Code ayarla
+## <a name="set-up-with-vs-code"></a>VS Kodu ile ayarlama
 
-Azure Machine Learning için [vs Code uzantısını](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) kullanarak çalışma alanınız ile ilişkili işlem hedeflerini erişebilir, oluşturabilir ve yönetebilirsiniz.
+Azure Machine Learning için [VS Kodu uzantısını](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) kullanarak çalışma alanınızla ilişkili bilgi işlem hedeflerine erişebilir, bunları oluşturabilir ve yönetebilirsiniz.
 
-## <a id="submit"></a>Azure Machine Learning SDK kullanarak eğitim çalışması gönder
+## <a name="submit-training-run-using-azure-machine-learning-sdk"></a><a id="submit"></a>Azure Machine Learning SDK kullanarak eğitim çalıştırma gönder
 
-Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı çalıştırmak için onu kullanırsınız.  Eğitim çalışması göndermek için kod deseninin her türlü bilgi işlem hedefi vardır:
+Çalıştır yapılandırması oluşturduktan sonra, denemenizi çalıştırmak için kullanırsınız.  Bir eğitim çalışması göndermek için kod deseni tüm bilgi işlem hedefleri türleri için aynıdır:
 
-1. Çalıştırmak için bir deneme oluşturun
-1. Çalıştırma gönderin.
-1. Çalıştırmak için bekleyin.
+1. Çalıştırmak için bir deneme oluşturma
+1. Çalıştırmayı gönderin.
+1. Koşunun tamamlanmasını bekleyin.
 
 > [!IMPORTANT]
-> Eğitim çalıştırmasını gönderdiğinizde, eğitim betiklerinizi içeren dizinin bir anlık görüntüsü oluşturulur ve işlem hedefine gönderilir. Ayrıca çalışma alanınızdaki denemenin bir parçası olarak da depolanır. Dosyaları değiştirir ve çalışmayı yeniden gönderirseniz yalnızca değiştirilen dosyalar karşıya yüklenir.
+> Eğitim çalışmasını gönderdiğinizde, eğitim komut dosyalarınızı içeren dizinin anlık görüntüsü oluşturulur ve bilgi işlem hedefine gönderilir. Ayrıca, çalışma alanınızda denemenin bir parçası olarak da depolanır. Dosyaları değiştirir ve çalıştırmayı yeniden gönderirseniz, yalnızca değiştirilen dosyalar yüklenir.
 >
-> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. `.amlignore` dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
+> Dosyaların anlık görüntüye eklenmesini önlemek için, dizinde `.amlignore` bir [.gitignore](https://git-scm.com/docs/gitignore) veya dosya oluşturun ve dosyaları bu dosyaya ekleyin. Dosya `.amlignore` [,gitignore](https://git-scm.com/docs/gitignore) dosyasıyla aynı sözdizimini ve desenleri kullanır. Her iki dosya `.amlignore` varsa, dosya önceliklidir.
 > 
-> Daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
+> Daha fazla bilgi için [Anlık Görüntüler'e](concept-azure-machine-learning-architecture.md#snapshots)bakın.
 
 ### <a name="create-an-experiment"></a>Deneme oluşturma
 
@@ -418,83 +418,85 @@ Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı 
 
 ### <a name="submit-the-experiment"></a>Denemeyi gönderme
 
-Denemeyi bir `ScriptRunConfig` nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
+Denemeyi bir `ScriptRunConfig` nesneyle gönderin.  Bu nesne şunları içerir:
 
-* **source_directory**: eğitim betiğinizi içeren kaynak dizin
-* **betik**: eğitim betiğini tanımla
-* **run_config**: çalıştırma yapılandırması, daha sonra eğitimin nerede olacağını tanımlar.
+* **source_directory**: Eğitim komut dosyanızı içeren kaynak dizini
+* **komut dosyası**: Eğitim komut dosyasını tanımlayın
+* **run_config**: Eğitimin nerede gerçekleşeceğini tanımlayan çalıştırma yapılandırması.
 
-Örneğin, [yerel hedef](#local) yapılandırmasını kullanmak için:
+Örneğin, yerel [hedef yapılandırmasını](#local) kullanmak için:
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=local_submit)]
 
-Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma yapılandırması kullanarak farklı bir işlem hedefinde çalışacak şekilde değiştirin:
+[Amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma yapılandırması kullanarak farklı bir işlem hedefinde çalıştırmak için aynı denemeyi geçiş:
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, çalıştırma yapılandırmasının `node_count` istenen düğüm sayısına ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
+> Bu örnek, yalnızca eğitim için işlem hedefinin tek bir düğüm kullanarak varsayılan. Birden fazla düğüm kullanmak için, `node_count` çalıştır yapılandırmasını istenilen düğüm sayısına ayarlayın. Örneğin, aşağıdaki kod, eğitim için kullanılan düğüm sayısını dörde ayarlar:
 >
 > ```python
 > src.run_config.node_count = 4
 > ```
 
-İsterseniz şunları yapabilirsiniz:
+Veya şunları yapabilirsiniz:
 
-* Girişimi, [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi bir `Estimator` nesnesiyle birlikte gönderebilirsiniz.
-* [Hiper parametre ayarlama](how-to-tune-hyperparameters.md)Için bir Hyperdrive çalıştırması gönderebilirsiniz.
-* [Vs Code uzantısı](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)aracılığıyla bir deneme gönderir.
+* `Estimator` [Tahmincileri olan Train ML modellerinde](how-to-train-ml-models.md)gösterildiği gibi denemeyi bir nesneyle gönderin.
+* [Hiperparametre atoması](how-to-tune-hyperparameters.md)için bir HyperDrive çalıştırın.
+* [VS Kodu uzantısı](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)üzerinden deneme gönderin.
 
 Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) ve [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) belgelerine bakın.
 
-## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLı kullanarak çalıştırma yapılandırması oluşturma ve çalıştırma
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLI'yi kullanarak çalıştır yapılandırması oluşturma ve çalıştırma gönderme
 
-Çalışan yapılandırma oluşturmak ve farklı işlem hedeflerinde çalıştırmaları göndermek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md) kullanabilirsiniz. Aşağıdaki örneklerde, mevcut bir Azure Machine Learning Çalışma Alanı olduğunu ve Azure 'da `az login` CLı komutunu kullanarak oturum açtığınızı varsayalım. 
+Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısını](reference-azure-machine-learning-cli.md) kullanarak çalıştırma yapılandırmaları oluşturabilir ve farklı bilgi işlem hedeflerinde çalıştırmalar gönderebilirsiniz. Aşağıdaki örnekler, varolan bir Azure Machine Learning Çalışma Alanı'na sahip `az login` olduğunuzu ve CLI komutunu kullanarak Azure'da oturum açtığınızı varsayar. 
 
-### <a name="create-run-configuration"></a>Çalıştırma yapılandırması oluştur
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-Çalıştırma yapılandırması oluşturmanın en kolay yolu, Machine Learning Python betiklerini içeren klasörde gezinmeniz ve CLı komutunu kullanmaktır
+### <a name="create-run-configuration"></a>Çalıştır yapılandırması oluşturma
+
+Çalıştır yapılandırmasını oluşturmanın en basit yolu, makinenizin Python komut dosyalarını öğrenen klasöründe gezinmek ve CLI komutunu kullanmaktır
 
 ```azurecli
 az ml folder attach
 ```
 
-Bu komut, farklı işlem hedefleri için şablon çalıştırma yapılandırma dosyalarını içeren bir alt klasör `.azureml` oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
+Bu komut, farklı `.azureml` işlem hedefleri için şablon çalıştırış yapılandırma dosyaları içeren bir alt klasör oluşturur. Bu dosyaları, örneğin Python paketleri eklemek veya Docker ayarlarını değiştirmek gibi yapılandırmanızı özelleştirmek için kopyalayabilir ve düzenlemeyapabilirsiniz.  
 
-### <a name="structure-of-run-configuration-file"></a>Çalışma yapılandırma dosyasının yapısı
+### <a name="structure-of-run-configuration-file"></a>Çalıştır yapılandırma dosyasının yapısı
 
-Çalışma yapılandırma dosyası, aşağıdaki bölümlerle, YAML olarak biçimlendirilir
- * Çalıştırılacak betiği ve bağımsız değişkenlerini
- * İşlem hedefi adı, "yerel" veya çalışma alanı altında bir işlem adı.
- * Çalıştırmayı yürütmek için Parametreler: Framework, dağıtılmış çalıştırmalar için Communicator, maksimum süre ve işlem düğümleri sayısı.
- * Ortam bölümü. Bu bölümdeki alanların ayrıntıları için [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md) bölümüne bakın.
-   * Çalıştırma için yüklenecek Python paketlerini belirtmek için [Conda ortam dosyası](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)oluşturun ve __Condadbağımlıcıesfile__ alanını ayarlayın.
- * Günlük dosyası klasörünü belirtmek ve çıkış toplamayı etkinleştirmek veya devre dışı bırakmak ve geçmiş anlık görüntülerini çalıştırmak için geçmiş ayrıntılarını çalıştırın.
- * Seçili çerçeveye özgü yapılandırma ayrıntıları.
+Çalıştır yapılandırma dosyası YAML biçimlendirilmiştir ve aşağıdaki bölümler
+ * Çalışacak komut dosyası ve bağımsız değişkenleri
+ * Çalışma alanı altında "yerel" veya bir işlemin adını hesapla hedef adı.
+ * Çalıştırmayı yürütmek için parametreler: çerçeve, dağıtılmış çalıştırmalar için iletişim, maksimum süre ve işlem düğümlerinin sayısı.
+ * Çevre bölümü. Bu bölümdeki alanların ayrıntıları [için eğitim ve dağıtım ortamları oluşturma ve yönetme](how-to-use-environments.md) bölümüne bakın.
+   * Çalıştırmak için yüklenmesi için Python paketlerini belirtmek için [conda ortamı dosyası](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)oluşturun ve __condaDependenciesFile__ alanını ayarlayın.
+ * Günlük dosya klasörünü belirtmek ve çıktı toplamayı etkinleştirmek veya devre dışı kakmak ve geçmiş anlık görüntülerini çalıştırmak için geçmiş ayrıntılarını çalıştırın.
+ * Seçilen çerçeveye özgü yapılandırma ayrıntıları.
  * Veri başvurusu ve veri deposu ayrıntıları.
- * Yeni bir küme oluşturmak için Machine Learning İşlem özgü yapılandırma ayrıntıları.
+ * Yeni bir küme oluşturmak için Machine Learning Compute'a özgü yapılandırma ayrıntıları.
 
-Tam runconfig şeması için örnek [JSON dosyasına](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) bakın.
+Tam bir runconfig şeması için örnek [JSON dosyasına](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) bakın.
 
 ### <a name="create-an-experiment"></a>Deneme oluşturma
 
-İlk olarak, çalışmalarınız için bir deneme oluşturun
+İlk olarak, çalıştırmalarınız için bir deneme oluşturun
 
 ```azurecli
 az ml experiment create -n <experiment>
 ```
 
-### <a name="script-run"></a>Betik çalıştırma
+### <a name="script-run"></a>Komut dosyası çalıştırma
 
-Bir betik çalıştırması göndermek için bir komut yürütün
+Komut dosyası çalıştırma göndermek için bir komut uygulama
 
 ```azurecli
 az ml run submit-script -e <experiment> -c <runconfig> my_train.py
 ```
 
-### <a name="hyperdrive-run"></a>Hiper sürücü çalıştırma
+### <a name="hyperdrive-run"></a>HyperDrive çalıştır
 
-Parametre ayarlama çalıştırmalarını gerçekleştirmek için HyperDrive ile Azure CLı kullanabilirsiniz. İlk olarak, aşağıdaki biçimde bir hiper sürücü yapılandırma dosyası oluşturun. Hyperparameter ayarlama parametreleriyle ilgili ayrıntılar için bkz. [modelinize yönelik hiper parametreleri ayarlama](how-to-tune-hyperparameters.md) makalesi.
+Parametre aetme çalıştırmaları gerçekleştirmek için Azure CLI ile HyperDrive'ı kullanabilirsiniz. İlk olarak, aşağıdaki biçimde bir HyperDrive yapılandırma dosyası oluşturun. Hiperparametre ayarlama parametreleri hakkında ayrıntılar için [model makaleniz için Tune hiperparametrelerine](how-to-tune-hyperparameters.md) bakın.
 
 ```yml
 # hdconfig.yml
@@ -515,33 +517,33 @@ max_concurrent_runs: 2 # The number of runs that can run concurrently.
 max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
 ```
 
-Bu dosyayı çalıştırma yapılandırma dosyalarının yanına ekleyin. Ardından, kullanarak bir HyperDrive çalıştırması gönderebilirsiniz:
+Çalıştırılanın yapılandırma dosyalarının yanına bu dosyayı ekleyin. Ardından şunları kullanarak bir HyperDrive çalışması gönderin:
 ```azurecli
 az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
 ```
 
-Hiperdrive yapılandırmasında runconfig ve *Parameter Space* içindeki *arguments* bölümüne göz önünde bırakın. Eğitim betiğine geçirilecek komut satırı bağımsız değişkenlerini içerirler. Runconfig içindeki değer her yineleme için aynı kalır, hiper sürücü yapılandırma aralığı üzerinden yinelenir. Her iki dosyada de aynı bağımsız değişkeni belirtmeyin.
+HyperDrive config'deki runconfig ve *parametre alanındaki* *bağımsız değişkenler* bölümüne dikkat edin. Bunlar, eğitim komut dosyasına geçirilecek komut satırı bağımsız değişkenlerini içerir. Runconfig'deki değer her yineleme için aynı kalırken, HyperDrive config'deki aralık üzerinde yinelenir. Her iki dosyada da aynı bağımsız değişkeni belirtmeyin.
 
-Bu ```az ml``` CLı komutları ve tam bağımsız değişkenler kümesiyle ilgili daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
+Bu ```az ml``` CLI komutları ve tam bağımsız değişken ler kümesi hakkında daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
 
 <a id="gitintegration"></a>
 
-## <a name="git-tracking-and-integration"></a>Git izleme ve Tümleştirme
+## <a name="git-tracking-and-integration"></a>Git izleme ve entegrasyon
 
-Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
+Kaynak dizininin yerel bir Git deposu olduğu bir eğitim çalışması başlattığınızda, depo hakkındaki bilgiler çalışma geçmişinde depolanır. Daha fazla bilgi [için Azure Machine Learning için Git tümleştirmesi'ne](concept-train-model-git-integration.md)bakın.
 
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 
-Çeşitli işlem hedeflerine yönelik eğitim örnekleri için bu not defterlerine bakın:
-* [Nasıl yapılır kullanımı-azureml/eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [Öğreticiler/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+Çeşitli hesaplama hedefleri ne kadar çok eğitim veren eğitim örnekleri için bu not defterlerine bakın:
+* [nasıl kullanılır-azureml/eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [öğreticiler/img-sınıflandırma-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: bir modeli eğitme](tutorial-train-models-with-aml.md) bir modeli eğmek için yönetilen bir işlem hedefi kullanır.
-* Daha iyi modeller oluşturmak için [hiper parametreleri verimli](how-to-tune-hyperparameters.md) bir şekilde ayarlamayı öğrenin.
-* Eğitilen bir modelden sonra [modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)öğrenin.
-* [RunConfiguration sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK başvurusunu görüntüleyin.
-* [Azure sanal ağları ile Azure Machine Learning kullanma](how-to-enable-virtual-network.md)
+* [Öğretici: Bir modeli eğitin,](tutorial-train-models-with-aml.md) bir modeli eğitmek için yönetilen bir bilgi işlem hedefi kullanır.
+* Daha iyi modeller oluşturmak için [hiperparametreleri verimli bir şekilde](how-to-tune-hyperparameters.md) nasıl ayarlayabilirsiniz öğrenin.
+* Eğitimli bir modele sahip olduktan sonra, [modelleri nasıl ve nerede dağıtacağınızı](how-to-deploy-and-where.md)öğrenin.
+* [RunConfiguration sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK başvurularını görüntüleyin.
+* [Azure Sanal Ağlarla Azure Makine Öğrenimini Kullanma](how-to-enable-virtual-network.md)

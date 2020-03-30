@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: VM ağ trafiği Filtreleme sorununu tanılama-Azure CLı'
+title: 'Hızlı başlatma: VM ağ trafiği filtresi sorununu tanıla - Azure CLI'
 titleSuffix: Azure Network Watcher
-description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi’nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
+description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi'nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -18,32 +18,32 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276084"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382860"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Hızlı Başlangıç: Sanal makine ağ trafiği filtreleme sorununu tanılama - Azure CLI
 
 Bu hızlı başlangıçta, bir sanal makine (VM) dağıtır ve sonra bir IP adresi ve URL ile iletişimleri ve bir IP adresinden gelen iletişimleri denetlersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `az login` komutunu çalıştırın. Bu hızlı başlangıçtaki CLI komutları, bir Bash kabuğunda çalıştırılacak şekilde biçimlendirilir.
+Azure CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu hızlı başlatma, Azure CLI sürümünü 2.0.28 veya daha yeni bir sürüm olarak çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLI sürümünü doğruladıktan `az login` sonra, Azure ile bağlantı oluşturmak için çalıştırın. Bu hızlı başlatmadaki Azure CLI komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Bir sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Bir sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın. Aşağıdaki örnek, *myVm* adlı bir sanal makine oluşturur:
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın. Aşağıdaki örnek *myVm*adlı bir VM oluşturur:
 
 ```azurecli-interactive
 az vm create \
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Sanal makinenin oluşturulması birkaç dakika sürer. Sanal makine oluşturulup CLI çıktı döndürünceye kadar kalan adımlara devam etmeyin.
+Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulana ve Azure CLI çıktıyı döndürene kadar kalan adımlarla devam etmeyin.
 
 ## <a name="test-network-communication"></a>Ağ iletişimini test etme
 
@@ -132,9 +132,9 @@ az network nic list-effective-nsg \
   --name myVmVMNic
 ```
 
-Döndürülen çıktı, **IP akışı doğrulamayı kullanma** bölümünde yer alan bir önceki adımda www.bing.com adresine giden erişime izin veren [AllowInternetOutbound](#use-ip-flow-verify) kuralı için aşağıdaki metni içerir:
+Döndürülen çıktı, [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde yer alan bir önceki adımda www.bing.com adresine giden erişime izin veren **AllowInternetOutbound** kuralı için aşağıdaki metni içerir:
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -171,11 +171,11 @@ Döndürülen çıktı, **IP akışı doğrulamayı kullanma** bölümünde yer 
 },
 ```
 
-Önceki çıktıda **destinationAddressPrefix** öğesinin **İnternet** olduğunu görebilirsiniz. Ancak 13.107.21.200 adresinin **İnternet** ile arasındaki ilişkinin ne olduğu net değildir. **expandedDestinationAddressPrefix** bölümünde birçok adres önekinin listelendiğini görürsünüz. Listedeki öneklerden biri **12.0.0.0/6** olup bu, IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, önceki çıktıda bu kuralı geçersiz kılan daha yüksek öncelikli (daha küçük numaralı) bir kural da gösterilmemektedir. Bir IP adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
+Önceki çıktıda **destinationAddressPrefix** öğesinin **İnternet** olduğunu görebilirsiniz. Ancak 13.107.21.200 adresinin **İnternet** ile arasındaki ilişkinin ne olduğu net değildir. **expandedDestinationAddressPrefix** bölümünde birçok adres önekinin listelendiğini görürsünüz. Listedeki ön eklerden biri **12.0.0.0/6**'dır ve IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, önceki çıktıda bu kuralı geçersiz kılan daha yüksek öncelikli (daha küçük numaralı) bir kural da gösterilmemektedir. Bir IP adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
 
-`az network watcher test-ip-flow`IP akışı doğrulamayı kullanma[ bölümünde 172.131.0.100 adresine giden iletişimi test etmek için ](#use-ip-flow-verify) komutunu çalıştırdığınızda elde edilen çıktı size **DefaultOutboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultOutboundDenyAll** kuralı, **komutundan elde edilen aşağıdaki çıktıda listelenen**DenyAllOutBound`az network nic list-effective-nsg` kuralına karşılık gelir:
+[IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde 172.131.0.100 adresine giden iletişimi test etmek için `az network watcher test-ip-flow` komutunu çalıştırdığınızda elde edilen çıktı size **DefaultOutboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultOutboundDenyAll** kuralı, `az network nic list-effective-nsg` komutundan elde edilen aşağıdaki çıktıda listelenen **DenyAllOutBound** kuralına karşılık gelir:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -204,11 +204,11 @@ Döndürülen çıktı, **IP akışı doğrulamayı kullanma** bölümünde yer 
 }
 ```
 
-Kural, **destinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adres, **komutundan elde edilen çıktıdaki diğer giden kurallarının herhangi birinin**destinationAddressPrefix`az network nic list-effective-nsg` değeri içinde olmadığından kural, 172.131.0.100 adresine giden iletişimi reddeder. Giden iletişime izin vermek için, 172.131.0.100 adresinde 80 numaralı bağlantı noktasına giden trafiğe izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+Kural, **destinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adres, `az network nic list-effective-nsg` komutundan elde edilen çıktıdaki diğer giden kurallarının herhangi birinin **destinationAddressPrefix** değeri içinde olmadığından kural, 172.131.0.100 adresine giden iletişimi reddeder. Giden iletişime izin vermek için, 172.131.0.100 adresinde 80 numaralı bağlantı noktasına giden trafiğe izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
-172.131.0.100 adresinden gelen iletişimi test etmek için `az network watcher test-ip-flow`IP akışı doğrulamayı kullanma[ bölümünde ](#use-ip-flow-verify) komutunu çalıştırdığınızda elde edilen çıktı size **DefaultInboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultInboundDenyAll** kuralı, **komutundan elde edilen aşağıdaki çıktıda listelenen**DenyAllInBound`az network nic list-effective-nsg` kuralına karşılık gelir:
+172.131.0.100 adresinden gelen iletişimi test etmek için [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde `az network watcher test-ip-flow` komutunu çalıştırdığınızda elde edilen çıktı size **DefaultInboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultInboundDenyAll** kuralı, `az network nic list-effective-nsg` komutundan elde edilen aşağıdaki çıktıda listelenen **DenyAllInBound** kuralına karşılık gelir:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -237,7 +237,7 @@ Kural, **destinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adr
 },
 ```
 
-Çıktıda gösterildiği gibi, **komutundan elde edilen çıktıda, 172.131.0.100 adresinden sanal makineye gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli başka bir kural olmadığından**DenyAllInBound`az network nic list-effective-nsg` kuralı uygulanır. Gelen iletişime izin vermek için, 172.131.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+Çıktıda gösterildiği gibi, `az network nic list-effective-nsg` komutundan elde edilen çıktıda, 172.131.0.100 adresinden sanal makineye gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli başka bir kural olmadığından **DenyAllInBound** kuralı uygulanır. Gelen iletişime izin vermek için, 172.131.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
 Bu hızlı başlangıçtaki denetimlerinde Azure yapılandırması test edilmiştir. Denetimler beklenen sonuçları döndürdüğü halde ağ sorunları yaşamaya devam ediyorsanız, sanal makineniz ve iletişim kurduğunuz uç nokta arasında bir güvenlik duvarı olmadığından ve sanal makinenizdeki işletim sisteminin, iletişime izin veren veya iletişimi reddeden bir güvenlik duvarının olmadığından emin olun.
 

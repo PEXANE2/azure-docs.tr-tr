@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak v2 özel kurallarını yapılandırma
+title: PowerShell'i kullanarak v2 özel kurallarını yapılandırma
 titleSuffix: Azure Web Application Firewall
-description: Azure PowerShell kullanarak WAF v2 özel kurallarını yapılandırmayı öğrenin. Güvenlik duvarından geçen her istek için değerlendirilen kendi kurallarınızı oluşturabilirsiniz.
+description: Azure PowerShell'i kullanarak WAF v2 özel kurallarını nasıl yapılandırıştırmayı öğrenin. Güvenlik duvarından geçen her istek için değerlendirilen kendi kurallarınızı oluşturabilirsiniz.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471644"
 ---
-# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir kuralla Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 'yi yapılandırma
+# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell'i kullanarak Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı v2'yi özel bir kuralla yapılandırma
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Özel kurallar, Web uygulaması güvenlik duvarı (WAF) v2 aracılığıyla geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanızı sağlar. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Özel kurallar için bir eylem (izin verme veya engelleme), eşleşme koşulu ve tam özelleştirmeye izin veren bir operatör vardır.
+Özel kurallar, Web Uygulama Güvenlik Duvarı (WAF) v2'den geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanıza olanak sağlar. Bu kurallar, yönetilen kural kümelerinde yer alan diğer kurallardan daha yüksek bir önceliğe sahip. Özel kurallar, tam özelleştirmeye izin vermek için bir eylem (izin vermek veya engellemek için), bir eşleşme koşuluna ve bir işleçe sahiptir.
 
-Bu makale, özel bir kural kullanan Application Gateway WAF v2 oluşturur. İstek üst bilgisi Kullanıcı Aracısı *evbot*içeriyorsa, özel kural trafiği engeller.
+Bu makalede, özel bir kural kullanan bir Uygulama Ağ Geçidi WAF v2 oluşturur. İstek üstbilgisi Kullanıcı Temsilcisi *evilbot*içeriyorsa özel kural trafiği engeller.
 
-Daha fazla özel kural örneği görmek için bkz. [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md)
+Daha fazla özel kural örneği görmek için [bkz.](create-custom-waf-rules.md)
 
-Bu makaledeki Azure PowerShell, kopyalayabilir, yapıştırabileceğiniz ve çalıştırabileceğiniz bir sürekli komut dosyasında çalıştırmak istiyorsanız, bkz. [Azure Application Gateway PowerShell örnekleri](powershell-samples.md).
+Azure PowerShell'i bu makalede kopyalayıp yapıştırabileceğiniz ve çalıştırabileceğiniz tek bir sürekli komut dosyasında çalıştırmak istiyorsanız, [Bkz. Azure Application Gateway PowerShell örnekleri.](powershell-samples.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 
-Azure PowerShell yerel olarak yükleyip kullanmayı tercih ederseniz, bu betik Azure PowerShell modülü sürüm 2.1.0 veya üstünü gerektirir.
+Azure PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu komut dosyası azure PowerShell modülü sürümü 2.1.0 veya daha sonra gerektirir.
 
 1. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
-2. Azure ile bağlantı oluşturmak için `Connect-AzAccount`çalıştırın.
+2. Azure ile bağlantı oluşturmak `Connect-AzAccount`için çalıştırın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -67,7 +67,7 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-vip"></a>Statik ortak VIP oluşturma
+### <a name="create-a-static-public-vip"></a>Statik Genel VIP Oluşturma
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
@@ -89,7 +89,7 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Dinleyici, http ayarı, kural ve otomatik ölçeklendirme oluşturma
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Dinleyici oluşturma, http ayarı, kuralı ve otomatik ölçeklendirme
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -106,7 +106,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>İki özel kural oluşturun ve bunu WAF ilkesine uygulayın
+### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>İki özel kural oluşturun ve WAF ilkesine uygulayın
 
 ```azurepowershell
 # Create WAF config
@@ -125,7 +125,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule -Name allowUS -Priority 14 -
 $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafpolicyNew -ResourceGroup $rgname -Location $location -CustomRule $rule,$rule2
 ```
 
-### <a name="create-the-application-gateway"></a>Application Gateway oluşturun
+### <a name="create-the-application-gateway"></a>Uygulama Ağ Geçidi oluşturma
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Application Gateway Web uygulaması güvenlik duvarı hakkında daha fazla bilgi edinin](ag-overview.md)
+[Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı hakkında daha fazla bilgi edinin](ag-overview.md)

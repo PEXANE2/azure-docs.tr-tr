@@ -1,30 +1,30 @@
 ---
-title: 'Hızlı başlangıç: ilk PowerShell sorgunuz'
-description: Bu hızlı başlangıçta, Azure PowerShell için kaynak Graph modülünü etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
+title: 'Quickstart: İlk PowerShell sorgunuz'
+description: Bu hızlı başlangıçta, Azure PowerShell için Kaynak Grafiği modüllerini etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240663"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlatma: Azure PowerShell'i kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırın
 
 Azure Kaynak Grafiği’ni kullanmada ilk adım, Azure PowerShell modülünün yüklenip yüklenmediğini denetlemektir. Bu hızlı başlangıç, Azure PowerShell yüklemenize modül ekleme işlemini incelemenizi sağlar.
 
 Bu işlemin sonunda, modülü seçtiğiniz Azure PowerShell yüklemesine eklemiş ve ilk Kaynak Grafiği sorgunuzu çalıştırmış olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Kaynak Grafiği modülü ekleme
 
-Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)Ile veya [PowerShell Docker görüntüsü](https://hub.docker.com/_/microsoft-powershell)Ile yerel olarak yüklü PowerShell ile kullanılabilir.
+Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül yerel olarak yüklenen PowerShell ile, [Azure Cloud Shell](https://shell.azure.com)ile veya [PowerShell Docker görüntüsüyle](https://hub.docker.com/_/microsoft-powershell)kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
@@ -34,18 +34,18 @@ Azure Kaynak Grafiği modülü aşağıdaki yazılımı gerektirir:
 
 - PowerShellGet 2.0.1 veya üzeri. Henüz yüklenmiş ve güncellenmiş değilse, [bu yönergeleri](/powershell/scripting/gallery/installing-psget) izleyin.
 
-### <a name="install-the-module"></a>Modülü yükler
+### <a name="install-the-module"></a>Modülü yükleyin
 
-PowerShell için kaynak Graph modülü **az. ResourceGraph**' dir.
+PowerShell için Kaynak Grafiği modülü **Az.ResourceGraph'tır.**
 
-1. Bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
+1. **İdari** powershell isteminden aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Modülün içeri aktarıldığını ve en son sürümü (0.7.5) olduğunu doğrulayın:
+1. Modülün içe aktarıldığını ve en son sürüm olduğunu doğrulayın (0.7.5):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -88,7 +88,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan `(Get-AzContext).Account.ExtendedProperties.Subscriptions` bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için, erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, bir tane, `Search-AzGraph` cmdlet 'i çalıştırarak PSDefaultParameterValues değerlerini ayarlayabilir `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Sorgu, zaten erişiminiz olan bir abonelikten sonuç döndürmüyorsa, `Search-AzGraph` cmdlet'in varsayılan bağlamdaki aboneliklere varsayılan olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik adlarının listesini `(Get-AzContext).Account.ExtendedProperties.Subscriptions` görmek için bu çalıştırın Erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, `Search-AzGraph` psdefaultParameterValues'ı çalıştırarak cmdlet için ayarlayabilirsiniz`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -107,7 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, kaynak Graph modülünü Azure PowerShell ortamınıza eklediniz ve ilk sorgunuzu çalıştırdık. Kaynak grafik dili hakkında daha fazla bilgi edinmek için sorgu dili ayrıntıları sayfasına ilerleyin.
+Bu hızlı başlangıçta, Azure PowerShell ortamınıza Kaynak Grafiği modüllerini eklediniz ve ilk sorgunuzu çalıştırın. Kaynak grafik dili hakkında daha fazla bilgi edinmek için, sorgu dili ayrıntıları sayfasına devam edin.
 
 > [!div class="nextstepaction"]
 > [Sorgu dili hakkında daha fazla bilgi alın](./concepts/query-language.md)

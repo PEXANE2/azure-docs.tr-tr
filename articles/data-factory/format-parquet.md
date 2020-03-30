@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory içinde Parquet biçimi
-description: Bu konu, Azure Data Factory içinde Parquet biçimiyle nasıl başa çıkılacağını açıklamaktadır.
+title: Azure Veri Fabrikası'nda parke formatı
+description: Bu konu, Azure Veri Fabrikası'nda Parke formatıyla nasıl başa çıkılabildiğini açıklar.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 81bbd476cea0472647ca183fb188fc13725d1469
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597635"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory içinde Parquet biçimi
+# <a name="parquet-format-in-azure-data-factory"></a>Azure Veri Fabrikası'nda parke formatı
 
-**Parquet dosyalarını ayrıştırmak veya verileri Parquet biçimine yazmak**istediğinizde bu makaleyi izleyin. 
+**Parke dosyalarını ayrışdırmak veya verileri Parke formatına yazmak**istediğinizde bu makaleyi takip edin. 
 
-Parquet biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).
+Parke formatı aşağıdaki bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md), [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md), [Azure Dosya Depolama](connector-azure-file-storage.md), Dosya [Sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Bulut Depolama](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), ve [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Parquet veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde Parke veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Veri kümesinin Type özelliği **Parquet**olarak ayarlanmalıdır. | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
-| compressionCodec | Parquet dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Parquet dosyalarından okurken, veri fabrikaları dosya meta verilerine göre otomatik olarak sıkıştırma codec bileşenini otomatik olarak belirlenir.<br>Desteklenen türler şunlardır "**none**", "**gzip**", "**Snappy**" (varsayılan) ve "**LZO**". Şu anda kopyalama etkinliği, okuma/yazma Parquet dosyalarını okurken LZO 'yi desteklemez. | Hayır       |
+| type             | Veri kümesinin tür özelliği **Parke**olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya(lar) konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`desteklenen özellikleri vardır. **Bağlayıcı makalesindeki ayrıntılara bakın -> Dataset özellikleri bölümünde.** | Evet      |
+| sıkıştırmaCodec | Parke dosyalarına yazarken kullanılacak sıkıştırma codec'i. Parke dosyalarından okurken, Veri Fabrikaları dosya meta verilerini temel alan sıkıştırma kodlarını otomatik olarak belirler.<br>Desteklenen türleri "**yok**", "**gzip**", "**snappy**" (varsayılan) ve "**lzo**". Not şu anda Parke dosyalarını okurken/yazarken Kopyalama etkinliği LZO'u desteklemez. | Hayır       |
 
 > [!NOTE]
-> Parquet dosyaları için sütun adında boşluk desteklenmez.
+> Parke dosyaları için sütun adındaki beyaz boşluk desteklenmez.
 
-Azure Blob depolamada bir Parquet veri kümesinin örneği aşağıda verilmiştir:
+Aşağıda Azure Blob Depolama Parke veri kümesi bir örnektir:
 
 ```json
 {
@@ -61,55 +61,55 @@ Azure Blob depolamada bir Parquet veri kümesinin örneği aşağıda verilmişt
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Parquet kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde Parke kaynağı ve lavabo tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="parquet-as-source"></a>Kaynak olarak Parquet
+### <a name="parquet-as-source"></a>Kaynak olarak parke
 
-Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde desteklenir.
-
-| Özellik      | Açıklama                                                  | Gerekli |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsource**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, `storeSettings`altında kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
-
-### <a name="parquet-as-sink"></a>Havuz olarak Parquet
-
-Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde desteklenir.
+Aşağıdaki özellikler kopyalama etkinliği *** \*kaynak\* *** bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsink**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının `storeSettings`altında kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| type          | Kopyalama etkinlik kaynağının türü özelliği **ParkquetSource**olarak ayarlanmalıdır. | Evet      |
+| mağazaAyarları | Veri deposundan verilerin nasıl okunacaklarına ilişkin özellikler grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
+
+### <a name="parquet-as-sink"></a>Lavabo olarak parke
+
+Aşağıdaki özellikler kopyalama etkinliği *** \*lavabo\* *** bölümünde desteklenir.
+
+| Özellik      | Açıklama                                                  | Gerekli |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | Kopyalama etkinlik kaynağının türü özelliği **ParkquetSink**olarak ayarlanmalıdır. | Evet      |
+| mağazaAyarları | Veri deposuna nasıl veri yazılailgili bir grup özellik. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
-Eşleme veri akışındaki [kaynak dönüşümden](data-flow-source.md) ve [Havuz dönüşümünde](data-flow-sink.md) ayrıntıları öğrenin.
+Veri akışını eşlemede [kaynak dönüşümü](data-flow-source.md) ve [lavabo dönüşümünden](data-flow-sink.md) ayrıntıları öğrenin.
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Parquet karmaşık veri türleri şu anda desteklenmiyor (örn. MAP, LIST, STRUCT).
+Parke kompleksi veri türleri şu anda desteklenmez (örn. MAP, LIST, STRUCT).
 
-## <a name="using-self-hosted-integration-runtime"></a>Şirket içinde barındırılan Integration Runtime kullanma
+## <a name="using-self-hosted-integration-runtime"></a>Kendi barındırılan Tümleştirme Çalışma Süresini Kullanma
 
 > [!IMPORTANT]
-> Şirket içinde barındırılan Integration Runtime, örneğin şirket içi ve bulut veri depoları arasında geçiş yapmak için, bir **olduğu gibi**Parquet dosyalarını KOPYALAMADıYSANıZ, ır makinenize **64 bit JRE 8 (Java Runtime Environment) veya OpenJDK** ve **Microsoft Visual C++ 2010 yeniden dağıtılabilir paketini** yüklemeniz gerekir. Daha ayrıntılı bilgi edinmek için aşağıdaki paragrafı inceleyin.
+> Kendi kendine barındırılan Tümleştirme Runtime tarafından yetkilendirilmiş kopya için, örneğin şirket içi ve bulut veri depoları arasında, Parke dosyalarını **olduğu gibi**kopyalamazsanız, **64 bit JRE 8 (Java Runtime Environment) veya OpenJDK** ve **Microsoft Visual C++ 2010 Yeniden Dağıtılabilir Paketi** IR makinenize yüklemeniz gerekir. Aşağıdaki paragrafı daha fazla ayrıntıyla birlikte kontrol edin.
 
-Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR üzerinde çalışan kopyalama için, ADF, bir JRE için kayıt defteri *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* denetleyerek, OpenJDK için sistem değişkeni *`JAVA_HOME`* kontrol ederek Java çalışma zamanını bulur.
+Parke dosyası serileştirme/deserialization ile Self barındırılan IR üzerinde çalışan kopya için, ADF *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* ilk olarak JRE için kayıt defterikontrol *`JAVA_HOME`* ederek Java çalışma süresini bulur, eğer bulunmazsa, ikinci olarak OpenJDK için sistem değişkenini denetler.
 
-- **JRE 'yi kullanmak için**: 64 bit ır, 64 BIT JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsiniz.
-- **OpenJDK 'yi kullanmak için**: ır sürüm 3,13 ' den itibaren desteklenmektedir. JVM. dll dosyasını, OpenJDK 'nin diğer tüm gerekli Derlemeleriyle şirket içinde barındırılan IR makinesine paketleyin ve sistem ortam değişkeni JAVA_HOME uygun şekilde ayarlayın.
-- **Visual C++ 2010 Redistributable paketini yüklemek için**: Visual C++ 2010 yeniden dağıtılabilir PAKETI, şirket içinde barındırılan IR yüklemeleri ile yüklenmez. [Buradan](https://www.microsoft.com/download/details.aspx?id=14632)bulabilirsiniz.
+- **JRE kullanmak için**: 64-bit IR 64-bit JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsin.
+- **OpenJDK kullanmak için**: IR sürüm 3.13'ten beri desteklenir. OpenJDK'nın diğer tüm gerekli montajlarını kendi kendine barındırılan IR makinesine paketleyip, sistem ortamını buna göre JAVA_HOME ayarlayın.
+- **Visual C++ 2010 Yeniden Dağıtılabilir Paket yüklemek için**: Visual C++ 2010 Yeniden Dağıtılabilir Paket, kendi kendine barındırılan IR kurulumları ile yüklenmez. [Buradan](https://www.microsoft.com/download/details.aspx?id=14632)bulabilirsin.
 
 > [!TIP]
-> Şirket içinde barındırılan Integration Runtime kullanarak Parquet biçimine/kaynağından veri kopyalarsanız ve "Java çağrılırken bir hata oluştu" hatası ile karşılaşırsanız, ileti: **Java. lang. OutOfMemoryError: Java yığın alanı**", bu kopyayı GÜÇLENDIREN JVM için Min/Max yığın boyutunu ayarlamak üzere Şirket IÇINDE barındırılan IR 'yi barındıran makineye `_JAVA_OPTIONS` bir ortam değişkeni ekleyebilirsiniz, sonra işlem hattını yeniden çalıştırın.
+> Kendi kendine barındırılan Tümleştirme Runtime kullanarak Parke formatına/parke formatından verileri kopyalarsanız ve "Java, mesaj: **java.lang.OutOfMemoryError:Java yığın alanı"** çağırıldığında bir hata oluştu" diyerek hatayı vurursanız, JVM'nin bu tür kopyalamayı güçlendirmek için min/max heap boyutunu ayarlamak için kendi kendine barındırılan IR'yi barındıran makineye bir ortam değişkeni `_JAVA_OPTIONS` ekleyebilirsiniz ve ardından ardışık ardışık hattı yeniden çalıştırabilirsiniz.
 
-![Şirket içinde barındırılan IR 'de JVM yığın boyutunu ayarlama](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Kendi kendine barındırılan IR'de JVM yığın boyutunu ayarlama](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Örnek: değişken `_JAVA_OPTIONS` `-Xms256m -Xmx16g`değer olarak ayarlayın. Bayrak `Xms`, bir Java Sanal Makinesi (JVM) için ilk bellek ayırma havuzunu belirtir, ancak `Xmx` en yüksek bellek ayırma havuzunu belirtir. Bu, JVM 'nin `Xms` bellek miktarıyla başlatıldığı ve en fazla `Xmx` bellek miktarını kullanabileceği anlamına gelir. ADF, varsayılan olarak en az 64 MB ve en fazla 1G kullanır.
+Örnek: değer `_JAVA_OPTIONS` `-Xms256m -Xmx16g`ile değişken ayarlayın. Bayrak, `Xms` java sanal makinesi (JVM) için ilk bellek `Xmx` ayırma havuzunu belirtirken, en yüksek bellek ayırma havuzunu belirtir. Bu, JVM'nin bellek `Xms` miktarıyla başlatılacağı ve maksimum `Xmx` bellek miktarı kullanabileceği anlamına gelir. Varsayılan olarak, ADF min 64 MB ve max 1G kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 - [Veri akışını eşleme](concepts-data-flow-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
+- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)

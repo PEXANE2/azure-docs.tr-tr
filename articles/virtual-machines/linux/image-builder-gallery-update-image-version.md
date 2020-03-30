@@ -1,6 +1,6 @@
 ---
-title: Azure görüntü Oluşturucu (Önizleme) kullanarak var olan bir görüntü sürümünden yeni bir VM görüntü sürümü oluşturma
-description: Azure görüntü Oluşturucu kullanarak var olan bir görüntü sürümünden yeni bir VM görüntüsü sürümü oluşturun.
+title: Azure Image Builder 'ı kullanarak varolan bir resim sürümünden yeni bir VM resim sürümü oluşturma (önizleme)
+description: Azure Image Builder'ı kullanarak varolan bir resim sürümünden yeni bir VM resim sürümü oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: 4a3a9bd518b9bc695855ad2b0b659d3cf1834c05
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 5766e91dc6a17d50c46d396dd8a68d17081e0926
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246815"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Önizleme: Azure görüntü Oluşturucu kullanarak var olan bir görüntü sürümünden yeni bir VM görüntüsü sürümü oluşturma
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Önizleme: Azure Image Builder'ı kullanarak varolan bir resim sürümünden yeni bir VM resim sürümü oluşturun
 
-Bu makalede, [paylaşılan görüntü galerisinde](shared-image-galleries.md)var olan bir görüntü sürümü alma, güncelleştirme ve Galeri için yeni bir görüntü sürümü olarak yayımlama işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, [Paylaşılan Resim Galerisi'nde](shared-image-galleries.md)varolan bir resim sürümünü nasıl alacağınızı, nasıl güncelleştirdiğinizi ve galeriye yeni bir resim sürümü olarak nasıl yayımlayacağınızı gösterir.
 
-Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Helloımagetemplateforsigfromsig. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
+Görüntüyü yapılandırmak için bir örnek .json şablonu kullanıyor olacağız. Kullandığımız .json dosyası burada: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
-## <a name="register-the-features"></a>Özellikleri kaydetme
-Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
+## <a name="register-the-features"></a>Özellikleri kaydedin
+Önizleme sırasında Azure Image Builder'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -35,7 +35,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Kaydınızı denetleyin.
+Kaydınızı kontrol edin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -43,7 +43,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Kayıtlı değilse, aşağıdakileri çalıştırın:
+Kayıtlı demiyorlarsa, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -52,14 +52,14 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarla
+## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarlama
 
-Paylaşılan görüntü galerinizi oluşturmak için [görüntü oluştur ve paylaşılan görüntü galerisine dağıt](image-builder-gallery.md) ' ı kullandıysanız, ihtiyacımız olan değişkenlerden bazılarını zaten oluşturdunuz. Aksi takdirde, lütfen bu örnek için kullanılacak bazı değişkenleri ayarlayın.
+Paylaşılan Resim Galerisi'nizi oluşturmak için [bir resim oluştur ve Paylaşılan Resim Galerisi'ne dağıtım](image-builder-gallery.md) kullandıysanız, zaten ihtiyacımız olan değişkenlerden bazılarını oluşturdunuz. Değilse, lütfen bu örnek için kullanılacak bazı değişkenleri kurulum.
 
-Önizleme için, görüntü Oluşturucu yalnızca kaynak yönetilen görüntüyle aynı kaynak grubunda özel görüntüler oluşturmayı destekleyecektir. Bu örnekteki kaynak grubu adını kaynak yönetilen yansımanız ile aynı kaynak grubu olacak şekilde güncelleştirin.
+Önizleme için, görüntü oluşturucu yalnızca kaynak yönetilen görüntüyle aynı Kaynak Grubunda özel görüntüler oluşturmayı destekler. Kaynak yönetilen görüntünüzle aynı kaynak grubu olacak şekilde bu örnekteki kaynak grubu adını güncelleştirin.
 
 
-```azurecli-interactive
+```console
 # Resource group name 
 sigResourceGroup=ibLinuxGalleryRG
 # Gallery location 
@@ -74,15 +74,15 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
+Abonelik kimliğiniz için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`elde edebilirsiniz.
 
-```azurecli-interactive
+```console
 subscriptionID=<Subscription ID>
 ```
 
-Güncelleştirmek istediğiniz görüntü sürümünü alın.
+Güncellemek istediğiniz resim sürümünü alın.
 
-```
+```azurecli
 sigDefImgVersionId=$(az sig image-version list \
    -g $sigResourceGroup \
    --gallery-name $sigName \
@@ -91,7 +91,7 @@ sigDefImgVersionId=$(az sig image-version list \
 ```
 
 
-Zaten kendi paylaşılan görüntü galeriniz varsa ve önceki örneği izmediyseniz, kaynak grubuna erişmek için görüntü Oluşturucu için izinler atamanız gerekir, bu nedenle galeriye erişebilir.
+Zaten kendi Paylaşılan Resim Galerisi'niz varsa ve önceki örneği izlemediyseniz, Galeri'ye erişebilmek için Resim Oluşturucu'nun Kaynak Grubuna erişmesi için izinler atamanız gerekir.
 
 
 ```azurecli-interactive
@@ -102,13 +102,13 @@ az role assignment create \
 ```
 
 
-## <a name="modify-helloimage-example"></a>Merhaba görüntü örneğini değiştirme
-Burada. json dosyasını açarak kullanmak üzere olduğumuz örneği gözden geçirebilirsiniz: [Helloımagetemplateforsigfromsig. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) Ile birlikte [Görüntü Oluşturucu şablon başvurusu](image-builder-json.md). 
+## <a name="modify-helloimage-example"></a>helloImage örneğini değiştirin
+Kullanmak üzere olduğumuz örneği burada .json dosyasını açarak inceleyebilirsiniz: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) ile birlikte [Image Builder şablonu başvurusu.](image-builder-json.md) 
 
 
-. JSON örneğini indirin ve değişkenlerinizi yapılandırın. 
+.json örneğini indirin ve değişkenlerinizle yapılandırın. 
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json -o helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromSIG.json
@@ -122,7 +122,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromSIG.j
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Görüntü yapılandırmasını VM görüntü Oluşturucu hizmetine gönderme.
+Görüntü yapılandırmasını VM Image Builder Service'e gönderin.
 
 ```azurecli-interactive
 az resource create \
@@ -133,7 +133,7 @@ az resource create \
     -n helloImageTemplateforSIGfromSIG01
 ```
 
-Görüntü derlemesini başlatın.
+Görüntü oluşturmayı başlatın.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -143,7 +143,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Sonraki adıma geçmeden önce görüntünün oluşturulup çoğaltılıncaya kadar bekleyin.
+Bir sonraki adıma geçmeden önce görüntü nün oluşturulmasını ve çoğaltılmasını bekleyin.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
@@ -158,15 +158,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM 'nin genel IP adresini kullanarak VM 'ye bir SSH bağlantısı oluşturun.
+VM'nin genel IP adresini kullanarak VM'ye Bir SSH bağlantısı oluşturun.
 
-```azurecli-interactive
+```console
 ssh azureuser@<pubIp>
 ```
 
-SSH bağlantınız kurulduunda görüntünün "günün Iletisi" ile özelleştirildiğini görmeniz gerekir.
+SSH bağlantınız kurulur kurulmaz görüntünün "Günün Mesajı" ile özelleştirilmenizi görmeniz gerekir.
 
-```console
+```output
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **
@@ -174,9 +174,9 @@ SSH bağlantınız kurulduunda görüntünün "günün Iletisi" ile özelleştir
 *******************************************************
 ```
 
-SSH bağlantısını kapatmak için `exit` yazın.
+SSH bağlantısını kapatmak için yazın. `exit`
 
-Ayrıca, galerinizin artık kullanabildiği görüntü sürümlerini de listeleyebilirsiniz.
+Galerinizde bulunan resim sürümlerini de listeleyebilirsiniz.
 
 ```azurecli-interactive
 az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o table
@@ -185,4 +185,4 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan. json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için bkz. [Görüntü Oluşturucu şablonu başvurusu](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Bu makalede kullanılan .json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için [Bkz. Resim oluşturucu şablonu başvurusu.](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

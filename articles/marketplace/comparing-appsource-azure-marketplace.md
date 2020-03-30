@@ -1,18 +1,18 @@
 ---
 title: AppSource ve Azure Marketini Karşılaştırma | Azure
 description: Bu makalede, Microsoft AppSource ve Azure Marketi'ndeki vitrinler açıklanmaktadır.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281621"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387793"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource ile Azure Market'i karşılaştırma
 [Azure Marketi](https://azuremarketplace.microsoft.com) ve [Microsoft AppSource'daki](https://appsource.microsoft.com) storefront'lar benzersiz müşteri gereksinimleri sunar. Müşterileri role göre hedeflemek için vitrinleri kullanın. Müşterinize göre doğru çözümü veya hizmeti sunabilirsiniz.

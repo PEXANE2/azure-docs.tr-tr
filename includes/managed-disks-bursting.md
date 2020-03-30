@@ -5,38 +5,38 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/28/2020
+ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 871a3edf70690a09d3747703e8bc999dfcce967c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202490"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385189"
 ---
-Disk patlaması Şu anda Premium SSD 'Ler için bir önizleme özelliğidir. Patlama, tüm Premium SSD disk boyutlarında desteklenir < = 512 GiB (P20 veya below). Bu disk boyutları, en iyi çaba temelinde patlaması destekler ve burdıya yönetimi için bir kredi sistemi kullanır. Krediler disk boyutu için sağlanan performans hedefinin altında olduğunda, bir patlama demetini birikir ve trafik hedeften fazla olduğunda krediler tüketir. Disk trafiği, sağlanan hedefteki ıOPS ve bant genişliğine göre izlenir. Disk patlaması, ıOPS veya aktarım hızı üzerinde sanal makine (VM) boyut kısıtlamalarını atlamaz.
+Disk patlaması premium SSD'ler için desteklenir. Bursting herhangi bir prim SSD disk boyutları <= 512 GiB (P20 veya altında) desteklenir. Bu disk boyutları en iyi çaba temelinde patlama desteği ve patlama yönetmek için bir kredi sistemi kullanmak. Disk trafiği, disk boyutları için sağlanan performans hedefinin altında olduğunda, krediler bir patlama kovasında birikir ve trafik hedefin ötesinde patladığında kredi tüketir. Disk trafiği, sağlanan hedefte hem IOPS hem de bant genişliğine göre izlenir. Disk patlaması, IOPS veya iş çıkışındaki sanal makine (VM) boyut sınırlamalarını atlamaz.
 
-Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir:
+Disk patlaması varsayılan olarak onu destekleyen disk boyutlarının yeni dağıtımlarında etkinleştirilir. Varolan disk boyutları, disk patlamasını destekliyorsa, aşağıdaki yöntemlerden herhangi biri aracılığıyla patlamayı etkinleştirebilir:
 
-- Diski kullanımdan çıkarın ve yeniden bağlayın.
-- VM 'yi durdurup başlatın.
+- Diski ayırın ve yeniden takın.
+- Dur ve VM'yi başlat.
 
-## <a name="burst-states"></a>Veri bloğu durumları
+## <a name="burst-states"></a>Patlama durumları
 
-Disk sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. En uzun patlama süresi, patlama kredisi demeti boyutuna göre belirlenir. Kullanılmayan kredilerin yalnızca kredi demeti boyutuna kadar birikmesini sağlayabilirsiniz. Herhangi bir zamanda, disk patlama kredi demeti aşağıdaki üç durumdan birinde olabilir: 
+Tüm patlama uygulanabilir disk boyutları, disk Sanal Makine'ye bağlandığında tam bir seri çekim kredi kovasıyla başlar. Patlamanın maksimum süresi, patlama kredi kovasının boyutuna göre belirlenir. Yalnızca kredi kovası boyutuna kadar kullanılmayan kredileri biriktirebilirsiniz. Herhangi bir zamanda, disk patlaması kredi kovanız aşağıdaki üç durumdan birinde olabilir: 
 
-- Disk trafiği sağlanan performans hedefinden daha az kullanıldığında tahakkuk etme. Disk trafiği ıOPS veya bant genişliği hedefi veya her ikisi de olursa kredisi birikitebilmeniz gerekir. Tam disk bant genişliği kullanırken bunun tersi de GÇ kredileri birikmesini sağlayabilirsiniz.  
+- Disk trafiği, sağlanan performans hedefinden daha az ını kullanıyorsa tahakkuk etme. Disk trafiği IOPS veya bant genişliği hedefleri veya her ikisinin ötesindeyse kredi biriktirebilirsiniz. Tam disk bant genişliği tüketirken hala IO kredisi biriktirebilirsiniz, tam tersi.  
 
-- Disk trafiği sağlanan performans hedefinden daha fazla kullanıldığında reddediliyor. Veri bloğu trafiği ıOPS 'den veya bant genişliğinden bağımsız olarak kredileri kullanacaktır. 
+- Disk trafiği, sağlanan performans hedefinden daha fazlasını kullanıyorsa azalan. Patlama trafiği, IOPS veya bant genişliğinden bağımsız olarak kredi tüketir. 
 
-- Disk trafiği tam olarak sağlanan performans hedefinde olduğunda kalan sabit. 
+- Disk trafiği tam olarak sağlanan performans hedefinde olduğunda sabit kalır. 
 
-Veri bloğu belirtimleriyle birlikte burte desteği sağlayan disk boyutları aşağıdaki tabloda özetlenmiştir.
+Patlama belirtimleriyle birlikte patlama desteği sağlayan disk boyutları aşağıdaki tabloda özetlenmiştir.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Şu anda, disk patlaması yalnızca Orta Batı ABD bölgede kullanılabilir.
+Disk patlaması, Genel Bulut'taki tüm bölgelerde kullanılabilir.
 
 ## <a name="disk-sizes"></a>Disk boyutları
 
@@ -44,10 +44,10 @@ Veri bloğu belirtimleriyle birlikte burte desteği sağlayan disk boyutları a�
 
 ## <a name="example-scenarios"></a>Örnek senaryolar
 
-Bunun nasıl çalıştığını daha iyi bir fikir vermek için birkaç örnek senaryo aşağıda verilmiştir:
+Bunun nasıl çalıştığı hakkında size daha iyi bir fikir vermek için birkaç örnek senaryo aşağıda verilmiştir:
 
-- Disk bulmasının avantajlarından faydalanabilecek bir yaygın senaryo, işletim sistemi disklerinde daha hızlı VM önyüklemesi ve uygulama başlatma aşamadır. Örnek olarak 8 GiB OS görüntüsüne sahip bir Linux VM alın. İşletim sistemi diski olarak bir P2 diski kullandığımızda, sağlanan hedef 120 ıOPS ve 25 MB/sn 'dir. VM başlatıldığında önyükleme dosyalarını yükleyen işletim sistemi diskine yönelik bir okuma ani artış olur. Burdıya 'nın tanıtılmasıyla birlikte, 3500 ıOPS ve 170 MBps maksimum patlama hızına giderek, yükleme süresini en az 6x ile hızlandırmaya devam edebilirsiniz. VM önyüklemesi sonrasında, uygulama tarafından çoğu veri işlemi bağlı veri disklerine karşı işlem yaptığından, işletim sistemi diskindeki trafik düzeyi genellikle düşüktür. Trafik sağlanan hedefin altındaysa kredileri biriktirilecektir.
+- Disk patlamasından yararlanabilecek yaygın bir senaryo, işletim sistemi disklerinde daha hızlı VM önyükleme ve uygulama başlatmadır. Örnek olarak 8 GiB işletim sistemi görüntüsüne sahip bir Linux VM alın. İşletim sistemi diski olarak P2 disk kullanırsak, hedeflenen hedef 120 IOPS ve 25 MBps'dir. VM başladığında, önyükleme dosyalarını yükleyen işletim sistemi diskinde bir okuma sıçraması olacaktır. Patlamanın piyasaya sürülmesiyle, maksimum 3500 IOPS ve 170 MBps patlama hızında okuyarak yükleme süresini en az 6 kat hızlandırabilirsiniz. VM önyüklemeden sonra, uygulama tarafından gerçekleştirilen çoğu veri işlemi ekli veri disklerine karşı olacağından, işletim sistemi diskindeki trafik düzeyi genellikle düşüktür. Trafik sağlanan hedefin altındaysa, kredi biriktirirsiniz.
 
-- Uzak bir sanal masaüstü ortamı barındırıyorsanız, etkin bir Kullanıcı AutoCAD gibi bir uygulamayı başlattığında, işletim sistemi diskine giden trafiği önemli ölçüde artırır. Bu durumda, patlama trafiği birikmiş krediler tüketir ve sağlanan hedefin ötesine gidip uygulamayı çok daha hızlı bir şekilde başlatmayı sağlar.
+- Uzaktan Sanal Masaüstü ortamıbarındırıyorsanız, etkin bir kullanıcı AutoCAD gibi bir uygulama başlattığında, işletim sistemi diskine olan okuma trafiği önemli ölçüde artar. Bu durumda, patlama trafiği birikmiş kredileri tüketir, böylece sağlanan hedefin ötesine geçmenizi sağlar ve uygulamayı çok daha hızlı başlatabilirsiniz.
 
-- P1 diskinde, sağlanan 120 ıOPS ve 25 MBps bir hedef vardır. Diskteki gerçek trafik 100 ıOPS ise ve son 1 ikinci aralıkta 20 MBps ise, kullanılmayan 20 IOs ve 5 MB, diskin patlama demetine alacaklandırılır. Patlama demetini içindeki krediler, daha sonra trafik sağlanan hedefi aştığında, en fazla patlama sınırına kadar kullanılabilir. En fazla patlama sınırı, tüketmek üzere veri bloğu kredisi olsa bile disk trafiğinin tavan sayısını tanımlar. Bu durumda, kredi demetine 10.000 IOs sahip olsanız bile, bir P1 diski saniyede en fazla 3.500 GÇ olan maksimum veri bloğu sayısından daha fazla veremez.  
+- Bir P1 diskinin 120 IOPS ve 25 MBps'lik bir hedefi vardır. Diskteki gerçek trafik son 1 saniye aralığında 100 IOPS ve 20 MBps ise, kullanılmayan 20 IOs ve 5 MB diskin seri kovasına yatırılır. Patlama kovasındaki krediler daha sonra trafik hedeflenen hedefi aştığında, maksimum patlama sınırına kadar kullanılabilir. Maksimum seri patlama sınırı, tüketecek patlama kredilerine sahip olsanız bile disk trafiğinin tavanını tanımlar. Bu durumda, kredi kovasında 10.000 IO olsa bile, bir P1 diski saniyede 3.500 IO'luk maksimum patlamadan fazlasını veremez.  

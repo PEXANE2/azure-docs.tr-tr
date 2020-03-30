@@ -1,16 +1,16 @@
 ---
 title: Yönetilen uygulamalara genel bakış
-description: Müşterilerin dağıtımı ve çalışması için kolay olan bulut çözümleri sağlayan Azure yönetilen uygulamalar için kavramları açıklar.
+description: Tüketicilerin dağıtması ve çalışması kolay bulut çözümleri sağlayan Azure Yönetilen Uygulamalar için kavramları açıklar.
 author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4508b69261cd7b1fb5e400eaf7ffaae67d5cb476
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650362"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473039"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure yönetilen uygulamalarına genel bakış
 
@@ -19,7 +19,7 @@ Azure yönetilen uygulamaları, tüketicilerin kolayca dağıtıp çalıştırab
 Yönetilen bir uygulama, tek bir önemli farkla, Market’teki bir çözüm şablonuna benzer. Yönetilen bir uygulamada kaynaklar, uygulamanın yayımcısı tarafından yönetilen bir kaynak grubuna dağıtılır. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir. Yayımcı olarak, çözümün sürekli desteği için maliyeti belirtirsiniz.
 
 > [!NOTE]
-> Daha önce, Azure müşteri sağlayıcıları için belgeler, yönetilen uygulamaların belgelerine eklenmiştir. Bu belgeler taşınmıştır. Şimdi bkz. [Azure özel sağlayıcıları](../custom-providers/overview.md).
+> Eskiden, Azure Özel Sağlayıcıları için belgeler Yönetilen Uygulamalar için belgelere eklenmiştir. Bu belgeler taşındı. Şimdi bkz. [Azure Özel Sağlayıcıları.](../custom-providers/overview.md)
 
 ## <a name="advantages-of-managed-applications"></a>Yönetilen uygulamaların avantajları
 
@@ -31,7 +31,7 @@ Müşteriler bu yönetilen uygulamaları aboneliklerinde dağıtsa da, uygulamal
 
 BT ekipleri için yönetilen uygulamalar, kuruluştaki kullanıcılara önceden onaylanmış çözümler sunmanızı sağlar. Bu çözümlerin kuruluş standartlarıyla uyumlu olduğunu bilirsiniz.
 
-Yönetilen uygulamalar, [Azure kaynakları için yönetilen kimlikleri](./publish-managed-identity.md)destekler.
+Yönetilen [Uygulamalar, Azure kaynakları için yönetilen kimlikleri](./publish-managed-identity.md)destekler.
 
 ## <a name="types-of-managed-applications"></a>Yönetilen uygulamaların türleri
 
@@ -53,7 +53,7 @@ Market'te yönetilen uygulama yayımlama hakkında daha fazla bilgi için [Marke
 
 ## <a name="resource-groups-for-managed-applications"></a>Yönetilen uygulamalar için kaynak grupları
 
-Genellikle, yönetilen bir uygulamanın kaynakları iki kaynak grubunda bulunur. Tüketici, bir kaynak grubunu yönetirken yayımcı diğer kaynak grubunu yönetir. Yayımcı, yönetilen uygulamayı tanımlarken erişim düzeylerini belirtir. Yayımcı, bir zaman aralığı ile kısıtlanan bir atama için kalıcı bir rol ataması ya da [tam zamanında erişim](request-just-in-time-access.md) isteğinde bulunabilir.
+Genellikle, yönetilen bir uygulama için kaynaklar iki kaynak grubunda dır. Tüketici, bir kaynak grubunu yönetirken yayımcı diğer kaynak grubunu yönetir. Yayımcı, yönetilen uygulamayı tanımlarken erişim düzeylerini belirtir. Yayımcı, bir dönemle sınırlandırılmış bir atama için kalıcı bir rol ataması veya [tam zamanında erişim](request-just-in-time-access.md) isteyebilir.
 
 [Veri işlemlerine](../../role-based-access-control/role-definitions.md) yönelik erişim kısıtlama şu anda Azure’daki tüm veri sağlayıcıları için desteklenmiyor.
 
@@ -69,9 +69,9 @@ Tüketici, kaynak grubuna tam erişime sahiptir ve yönetilen uygulamanın yaşa
 
 ### <a name="managed-resource-group"></a>Yönetilen kaynak grubu
 
-Bu kaynak grubu, yönetilen uygulamanın gerektirdiği tüm kaynakları tutar. Örneğin, bu kaynak grubu, çözümün sanal makinelerini, depolama hesaplarını ve sanal ağlarını içerir. Tüketici, yönetilen uygulamanın kaynaklarını tek tek yönetmediği için bu kaynak grubuna sınırlı erişime sahiptir. Yayımcının bu kaynak grubuna erişimi, yönetilen uygulama tanımında belirtilen role karşılık gelir. Örneğin, yayımcı bu kaynak grubu için Sahip veya Katkıda Bulunan rolünü isteyebilir. Erişim kalıcı veya belirli bir zaman ile sınırlıdır.
+Bu kaynak grubu, yönetilen uygulamanın gerektirdiği tüm kaynakları tutar. Örneğin, bu kaynak grubu, çözümün sanal makinelerini, depolama hesaplarını ve sanal ağlarını içerir. Tüketici, yönetilen uygulamanın kaynaklarını tek tek yönetmediği için bu kaynak grubuna sınırlı erişime sahiptir. Yayımcının bu kaynak grubuna erişimi, yönetilen uygulama tanımında belirtilen role karşılık gelir. Örneğin, yayımcı bu kaynak grubu için Sahip veya Katkıda Bulunan rolünü isteyebilir. Erişim kalıcı dır veya belirli bir zamanile sınırlıdır.
 
-[Yönetilen uygulamayı Market](publish-marketplace-app.md)'te yayımlarken, yayımcı tüketicilere yönetilen kaynak grubundaki kaynaklar üzerinde belirli eylemleri gerçekleştirme yeteneği verebilir. Örneğin, Yayımcı, tüketicilerin sanal makineleri yeniden başlatabileceği belirtebilir. Okuma eylemlerinin ötesinde diğer tüm eylemler yine de reddedilir.
+[Yönetilen uygulamayı pazara](publish-marketplace-app.md)yayınlarken, yayımcı tüketicilere yönetilen kaynak grubundaki kaynaklar üzerinde belirli eylemleri gerçekleştirme olanağı verebilir. Örneğin, yayımcı tüketicilerin sanal makineleri yeniden başlatabileceğini belirtebilir. Okuma eylemlerinin ötesindeki diğer tüm eylemler hala reddedilir.
 
 Tüketici yönetilen uygulamayı sildiğinde, yönetilen kaynak grubu da silinir.
 
