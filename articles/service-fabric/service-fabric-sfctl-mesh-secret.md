@@ -1,19 +1,19 @@
 ---
-title: Azure Service Fabric CLı-sfctl kafesi gizli anahtarı
-description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric kafesi gizli kaynakları alma ve silme komutlarının bir listesini içerir.
+title: Azure Servis Kumaş CLI- sfctl örgü gizli
+description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Hizmet Fabric Mesh gizli kaynaklarını almak ve silen komutların listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905974"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
-Ağ gizli anahtarı kaynaklarını alın ve silin.
+Mesh gizli kaynaklarını alın ve silin.
 
 ## <a name="commands"></a>Komutlar
 
@@ -21,66 +21,66 @@ Ağ gizli anahtarı kaynaklarını alın ve silin.
 | --- | --- |
 | delete | Gizli kaynağı siler. |
 | list | Tüm gizli kaynakları listeler. |
-| göster | Verilen ada sahip gizli kaynağı alır. |
+| göster | Verilen adla Gizli kaynağı alır. |
 
-## <a name="sfctl-mesh-secret-delete"></a>sfctl kafesi gizli silme
+## <a name="sfctl-mesh-secret-delete"></a>sfctl örgü gizli silme
 Gizli kaynağı siler.
 
-Belirtilen gizli kaynağı ve tüm adlandırılmış değerlerini siler.
+Belirtilen Gizli kaynağı ve adlandırılmış değerlerin tümünü siler.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Name-n [gerekli] | Gizli kaynağın adı. |
+| --isim -n [Gerekli] | Gizli kaynağın adı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-mesh-secret-list"></a>sfctl kafesi gizli listesi
+## <a name="sfctl-mesh-secret-list"></a>sfctl örgü gizli listesi
 Tüm gizli kaynakları listeler.
 
-Belirli bir kaynak grubundaki tüm gizli kaynaklarla ilgili bilgileri alır. Bilgiler, gizli dizinin açıklamasını ve diğer özelliklerini içerir.
+Belirli bir kaynak grubundaki tüm gizli kaynaklar hakkındaki bilgileri alır. Bilgiler, Gizli'nin açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-mesh-secret-show"></a>sfctl kafesi gizli gösterme
-Verilen ada sahip gizli kaynağı alır.
+## <a name="sfctl-mesh-secret-show"></a>sfctl örgü gizli gösteri
+Verilen adla Gizli kaynağı alır.
 
-Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin açıklamasını ve diğer özelliklerini içerir.
+Verilen adla Gizli kaynak hakkındaki bilgileri alır. Bilgiler, Gizli'nin açıklamasını ve diğer özelliklerini içerir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Name-n [gerekli] | Gizli kaynağın adı. |
+| --isim -n [Gerekli] | Gizli kaynağın adı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- Servis Kumaş ı CLI'yi [ayarlayın.](service-fabric-cli.md)
+- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.

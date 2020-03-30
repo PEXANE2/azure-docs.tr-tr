@@ -1,6 +1,6 @@
 ---
-title: Data Factory-.NET API değişiklik günlüğü
-description: Azure Data Factory için belirli bir .NET API sürümünde değişiklik, özellik eklemeleri, hata düzeltmeleri ve benzeri işlemleri açıklar.
+title: Veri Fabrikası - .NET API Değişim Günlüğü
+description: Azure Veri Fabrikası için .NET API'nin belirli bir sürümünde çığır açan değişiklikleri, özellik eklemelerini, hata düzeltmelerini ve benzeri açıkları açıklar.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,138 +13,138 @@ ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
 ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74979011"
 ---
-# <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API değişiklik günlüğü
+# <a name="azure-data-factory---net-api-change-log"></a>Azure Veri Fabrikası - .NET API değişiklik günlüğü
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. 
 
-Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişiklikler hakkında bilgi sağlanır. Azure Data Factory için en son NuGet paketini [buradan](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) bulabilirsiniz
+Bu makalede, belirli bir sürümde Azure Veri Fabrikası SDK değişiklikler hakkında bilgi sağlar. Azure Veri Fabrikası için en son NuGet paketini [burada](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) bulabilirsiniz
 
 ## <a name="version-4110"></a>Sürüm 4.11.0
-Özellik eklemeleri:
+Özellik Eklemeler:
 
-* Aşağıdaki bağlı hizmet türleri eklendi:
+* Aşağıdaki bağlantılı hizmet türleri eklendi:
   * [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
   * [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
   * [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
   * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
   * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
-* Aşağıdaki kopyalama kaynağı türleri eklendi:
-  * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
+* Aşağıdaki kopya kaynak türleri eklendi:
+  * [MongoDbKaynak](https://msdn.microsoft.com/library/mt765123.aspx)
 
 ## <a name="version-4100"></a>Sürüm 4.10.0
-* Aşağıdaki isteğe bağlı özellikler TextFormat öğesine eklenmiştir:
-  * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
+* TextFormat'a aşağıdaki isteğe bağlı özellikler eklendi:
+  * [Atlama Hattı Sayısı](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
   * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-  * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
-* Aşağıdaki bağlı hizmet türleri eklendi:
+  * [tedaviemptyasnull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+* Aşağıdaki bağlantılı hizmet türleri eklendi:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
   * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
   * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
-* Aşağıdaki kopyalama kaynağı türleri eklendi:
-  * [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-* AzureMLBatchExecutionActivity 'e [webservicegirdilerle](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) özelliği ekleyin
-  * Azure Machine Learning denemenize birden çok Web hizmeti girişi geçirmeyi etkinleştir
+* Aşağıdaki kopya kaynak türleri eklendi:
+  * [CassandraKaynak](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
+* AzureMLBatchExecutionActivity'e [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) özelliği ekleme
+  * Azure Machine Learning denemesine birden çok web hizmeti girişi nin geçmesini etkinleştirme
 
 ## <a name="version-491"></a>Sürüm 4.9.1
-### <a name="bug-fix"></a>Hata onarımı
-* [Weblinkedservice](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)için WebApi tabanlı kimlik doğrulaması kullanımdan kaldırıldı.
+### <a name="bug-fix"></a>Hata düzeltmesi
+* [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)için WebApi tabanlı kimlik doğrulamayı amortismana alın.
 
 ## <a name="version-490"></a>Sürüm 4.9.0
-### <a name="feature-additions"></a>Özellik eklemeleri
-* CopyActivity 'ye [enablehazırlama](https://msdn.microsoft.com/library/mt767916.aspx) ve [stagingsettings](https://msdn.microsoft.com/library/mt767918.aspx) özellikleri ekleyin. Özelliği hakkında ayrıntılı bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) .
+### <a name="feature-additions"></a>Özellik Eklemeler
+* CopyActivity'e [Etkinleştirme](https://msdn.microsoft.com/library/mt767916.aspx) ve [Hazırlama Ayarları](https://msdn.microsoft.com/library/mt767918.aspx) özelliklerini ekleyin. Özellik hakkındaki ayrıntılar için [Aşamalı kopyaya](data-factory-copy-activity-performance.md#staged-copy) bakın.
 
-### <a name="bug-fix"></a>Hata onarımı
-* [Activitywindowsbyactivitylistparameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) örneğini alan [Activitywindowoperationextensions. List](https://msdn.microsoft.com/library/mt767915.aspx) metodunun aşırı yüklemesini ortaya çıkarabilir.
-* [Writebatchsize](https://msdn.microsoft.com/library/dn884293.aspx) ve [Writebatchtimeout](https://msdn.microsoft.com/library/dn884245.aspx) öğesini copysink içinde isteğe bağlı olarak işaretleyin.
+### <a name="bug-fix"></a>Hata düzeltmesi
+* [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) yöntemi, bir [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) örnek alır aşırı tanıtın.
+* CopySink'te isteğe bağlı olarak [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) ve [WriteBatchTimeout'u](https://msdn.microsoft.com/library/dn884245.aspx) işaretleyin.
 
 ## <a name="version-480"></a>Sürüm 4.8.0
-### <a name="feature-additions"></a>Özellik eklemeleri
-* Kopyalama performansını ayarlamayı etkinleştirmek için, kopyalama etkinliği türüne aşağıdaki isteğe bağlı özellikler eklenmiştir:
-  * [Paralellkopyalar](https://msdn.microsoft.com/library/mt767910.aspx)
+### <a name="feature-additions"></a>Özellik Eklemeler
+* Kopyalama performansının aparatını etkinleştirmek için Kopyalama etkinlik türüne aşağıdaki isteğe bağlı özellikler eklendi:
+  * [ParallelCopy](https://msdn.microsoft.com/library/mt767910.aspx)
   * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
 ## <a name="version-470"></a>Sürüm 4.7.0
-### <a name="feature-additions"></a>Özellik eklemeleri
-* Dosyaları iyileştirilmiş satır sütunlu (ORC) biçimde kopyalamak için yeni StorageFormat türü [Orcformat](https://msdn.microsoft.com/library/mt723391.aspx) türü eklendi.
-* [Allowpolybase](https://msdn.microsoft.com/library/mt723396.aspx) ve PolyBaseSettings özelliklerini SqlDWSink öğesine ekleyin.
-  * Verileri SQL veri ambarı 'na kopyalamak için PolyBase kullanımını sağlar.
+### <a name="feature-additions"></a>Özellik Eklemeler
+* Dosyaları en iyi duruma getirilmiş satır sütun (ORC) biçiminde kopyalamak için yeni StorageFormat türü [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) türü eklendi.
+* SqlDWSink'e [İzin VerPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) ve PolyBaseSettings özelliklerini ekleyin.
+  * Verileri SQL Veri Ambarı'na kopyalamak için PolyBase kullanımını sağlar.
 
 ## <a name="version-461"></a>Sürüm 4.6.1
 ### <a name="bug-fixes"></a>Hata Düzeltmeleri
 * Etkinlik pencerelerini listelemek için HTTP isteğini düzeltir.
-  * Kaynak grubu adını ve Veri Fabrikası adını istek yükünden kaldırır.
+  * Kaynak grubu adını ve veri fabrikası adını istek yükünden kaldırır.
 
 ## <a name="version-460"></a>Sürüm 4.6.0
-### <a name="feature-additions"></a>Özellik eklemeleri
-* Şu özellikler, [pipelineproperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)'e eklenmiştir:
+### <a name="feature-additions"></a>Özellik Eklemeler
+* [PipelineProperties'e](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)aşağıdaki özellikler eklenmiştir:
   * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
   * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
   * [Veri kümeleri](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-* [Ardışık düzen eylemsizlik geri bilgisine](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)şu özellikler eklendi:
-  * [Ardışık düzen Inestate](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-* Verileri JSON biçiminde olan veri kümelerini tanımlamak için yeni [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) türü [jsonformat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) türü eklendi.
+* [PipelineRuntimeInfo'ya](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)aşağıdaki özellikler eklenmiştir:
+  * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
+* Verileri JSON formatında olan veri kümelerini tanımlamak için yeni [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) türü [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) türü eklendi.
 
 ## <a name="version-450"></a>Sürüm 4.5.0
-### <a name="feature-additions"></a>Özellik eklemeleri
+### <a name="feature-additions"></a>Özellik Eklemeler
 * [Etkinlik penceresi için liste işlemleri](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx)eklendi.
-  * Varlık türlerine (veri fabrikaları, veri kümeleri, işlem hatları ve Etkinlikler) göre filtrelerle etkinlik pencerelerini almak için yöntemler eklenmiştir.
-* Aşağıdaki bağlı hizmet türleri eklendi:
-  * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [weblinkedservice](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
+  * Varlık türlerine (diğer bir şekilde veri fabrikaları, veri kümeleri, ardışık işlemler) göre filtrelerle etkinlik pencerelerini almak için yöntemler eklendi.
+* Aşağıdaki bağlantılı hizmet türleri eklendi:
+  * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
-  * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [webtabledataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
-* Aşağıdaki kopyalama kaynağı türleri eklendi:     
-  * [Web kaynağı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
+* Aşağıdaki kopya kaynak türleri eklendi:     
+  * [Web Kaynak](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## <a name="version-440"></a>Sürüm 4.4.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* Aşağıdaki bağlı hizmet türü, kopyalama etkinlikleri için veri kaynakları ve havuzlar olarak eklenmiştir:
-  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Azure Storage SAS bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) .
+* Aşağıdaki bağlantılı hizmet türü, kopyalama etkinlikleri için veri kaynağı ve lavabo olarak eklenmiştir:
+  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Kavramsal bilgiler ve örnekler için [Azure Depolama SAS Bağlantılı Hizmeti'ne](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bakın.
 
 ## <a name="version-430"></a>Sürüm 4.3.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* Aşağıdaki bağlı hizmet türleri, kopyalama etkinlikleri için veri kaynakları olarak eklenmiştir:
-  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Data Factory kullanarak verileri](data-factory-hdfs-connector.md) .
-  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Kavramsal bilgi ve örnekler için [Azure Data Factory kullanarak ODBC veri mağazalarından verileri taşıma](data-factory-odbc-connector.md) bölümüne bakın.
+* Aşağıdaki bağlantılı hizmet türleri, kopyalama etkinlikleri için veri kaynağı olarak eklendi:
+  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Bkz. Kavramsal bilgi ve örnekler için [Veri Fabrikası'nı kullanarak HDFS'den veri taşı.](data-factory-hdfs-connector.md)
+  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Kavramsal bilgi ve örnekler için [Azure Veri Fabrikası'nı kullanarak ODBC veri depolarından veri taşıma](data-factory-odbc-connector.md) yada bakın.
 
 ## <a name="version-420"></a>Sürüm 4.2.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* Şu yeni etkinlik türü eklendi: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Etkinlik hakkındaki ayrıntılar için bkz. [kaynak güncelleştirme etkinliğini kullanarak Azure ML modellerini güncelleştirme](data-factory-azure-ml-batch-execution-activity.md).
-* [AzureMLLinkedService sınıfına](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)yeni bir Isteğe bağlı [Updateresourceendpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) özelliği eklenmiştir.
-* [Datafactorymanagementclient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) sınıfına [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) ve [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) özellikleri eklendi.
-* Data Factory hizmetine istemci çağrıları için zaman aşımları yapılandırmasına izin verin.
+* Aşağıdaki yeni etkinlik türü eklendi: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Etkinlikle ilgili ayrıntılar için, [Kaynak Etkinliğini Güncelleştir'i kullanarak Azure ML modellerini güncelleştirme ye](data-factory-azure-ml-batch-execution-activity.md)bakın.
+* [AzureMLLinkedService sınıfına](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)yeni isteğe bağlı özellik [güncelleştirmesiResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) eklendi.
+* [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) ve [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) özellikleri [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) sınıfına eklendi.
+* Veri Fabrikası hizmetine istemci çağrıları için zaman eklerinin yapılandırmasına izin verin.
 
 ## <a name="version-410"></a>Sürüm 4.1.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* Aşağıdaki bağlı hizmet türleri eklendi:
-  * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
+* Aşağıdaki bağlantılı hizmet türleri eklendi:
+  * [AzureDataLakeStoreBağlantılı Hizmeti](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
   * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * Aşağıdaki etkinlik türleri eklendi:
-  * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
+  * [DataLakeAnalyticsUSQLAktivite](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
-  * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
-* Kopyalama etkinliği için aşağıdaki kaynak ve havuz türleri eklendi:
-  * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
+  * [AzureDataLakeStoreVeriseti](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
+* Kopyalama Etkinliği için aşağıdaki kaynak ve lavabo türleri eklenmiştir:
+  * [AzureDataLakeStoreKaynak](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>Sürüm 4.0.1
 ### <a name="breaking-changes"></a>Yeni değişiklikler
-Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden önceki özgün sınıfların adlarıdır.
+Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden önce sınıfların orijinal adları vardı.
 
-| 4\.0.0 içindeki ad | 4\.0.1 içindeki ad |
+| 4.0.0'daki ad | 4.0.1'deki ad |
 |:--- |:--- |
-| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
-| AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
+| AzureSqlDataWarehouseVeriseti |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
+| AzureSqlDataset |[AzureSqlTableVeri Seti](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
 | AzureDataset |[AzureTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuretabledataset.aspx) |
 | OracleDataset |[OracleTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.oracletabledataset.aspx) |
-| RelationalDataset |[RelationalTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
+| İlişkiselDataset |[İlişkiselTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>Sürüm 4.0.0
@@ -153,17 +153,17 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
 
 | Eski ad | Yeni ad |
 |:--- |:--- |
-| Itableoperations |[Idatasetoperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
+| ITable İşlemleri |[IDatasetİşlemleri](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
 | Tablo |[Veri kümesi](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
-| TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
-| TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
-| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
-| Tablecreateorupdateresbir |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
+| Tablo Özellikleri |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
+| TabloTipiProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
+| TabloOluşturmaVeya Güncelleme Parametreleri |[DatasetCreateOrUpdateParametreleri](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
+| Tablo OluşturmaYanıt |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
 | TableGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
-| TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
+| Tablo Listesi Yanıtı |[DatasetListYanıt](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **Liste** yöntemleri artık disk belleğine alınmış sonuçları geri döndürüyor. Yanıt boş olmayan bir **NextLink** özelliği içeriyorsa, tüm sayfalar döndürülünceye kadar istemci uygulamanın sonraki sayfayı getirmeye devam etmesi gerekir.  Örnek aşağıda verilmiştir:
+* **Liste** yöntemleri sayfalı sonuçları şimdi döndürer. Yanıt boş olmayan bir **NextLink** özelliği içeriyorsa, istemci uygulamasının tüm sayfalar döndürülene kadar bir sonraki sayfayı almaya devam etmesi gerekir.  Örnek aşağıda verilmiştir:
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -178,8 +178,8 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
         nextLink = nextResponse.NextLink;
     }
     ```
-* **Liste** işlem hattı API 'si, tam ayrıntılar yerine yalnızca bir işlem hattının özetini döndürür. Örneğin, bir işlem hattı özetindeki etkinlikler yalnızca ad ve tür içerir.
+* **Liste** ardışık ardışık alan API'si, tam ayrıntılar yerine yalnızca bir ardışık ardışık ardışık ardışık ardışık alan özetini döndürür. Örneğin, bir ardışık hat lar özetindeki etkinlikler yalnızca ad ve tür içerir.
 
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* [Sqldwsink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) **sınıfı, Azure** SQL veri ambarı 'na ıdempotent kopyalamayı desteklemek için, iki yeni özelliği de kanal ve **sqlwritercleanupscript**' i destekler. Bu özellikler hakkındaki ayrıntılar için bkz. [Azure SQL veri ambarı](data-factory-azure-sql-data-warehouse-connector.md) makalesi.
-* Artık kopyalama etkinliğinin bir parçası olarak Azure SQL veritabanı ve Azure SQL veri ambarı kaynakları için saklı yordam çalıştırmayı destekliyoruz. [SQLSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) ve [sqldwsource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) sınıfları şu özelliklere sahiptir: **SqlReaderStoredProcedureName** ve **StoredProcedureParameters**. Bu özellikler hakkında daha fazla bilgi için bkz. Azure.com üzerinde [Azure SQL veritabanı](data-factory-azure-sql-connector.md#sqlsource) ve [Azure SQL veri ambarı](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) makaleleri.  
+* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) sınıfı, Azure SQL Veri Ambarı'nın idempotent kopyasını desteklemek için **sliceIdentifierColumnName** ve **SqlWriterCleanupScript**olmak üzere iki yeni özelliği destekler. Bu özelliklerle ilgili ayrıntılar için [Azure SQL Veri Ambarı](data-factory-azure-sql-data-warehouse-connector.md) makalesine bakın.
+* Artık Kopyalama Etkinliği'nin bir parçası olarak Azure SQL Veritabanı ve Azure SQL Veri Ambarı kaynaklarına karşı depolanan yordamı desteklemeyi destekliyoruz. [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) ve [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) sınıfları aşağıdaki özelliklere sahiptir: **SqlReaderStoredProcedureName** ve **StoredProcedureParameters**. Bu özelliklerle ilgili ayrıntılar için Azure.com Azure [SQL Veritabanı](data-factory-azure-sql-connector.md#sqlsource) ve Azure SQL [Veri Ambarı](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) makalelerini inceleyin.  

@@ -1,6 +1,6 @@
 ---
-title: Disk şifrelemesi ile Azure HDInsight kümeleri Key Vault erişimi kaybeder
-description: Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri.
+title: Disk şifrelemeli Azure HDInsight kümeleri Key Vault erişimini kaybeder
+description: Azure HDInsight kümeleriyle etkileşimde olurken sorunlar için sorun giderme adımları ve olası çözümler.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,84 +8,84 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: 2ae389be25cd8633a53a49cf000796c1510733a1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965170"
 ---
-# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Senaryo: disk şifrelemesi ile Azure HDInsight kümeleri Key Vault erişimi kaybeder
+# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Senaryo: Disk şifrelemeli Azure HDInsight kümeleri Key Vault erişimini kaybeder
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Kaynak Durumu Center (RHC) uyarısı, `The HDInsight cluster is unable to access the key for BYOK encryption at rest`, küme düğümlerinin müşterilere erişimi kesilen Kendi Anahtarını Getir (BYOK) kümeleri için gösterilir Key Vault (KV). Benzer uyarılar da Apache ambarı Kullanıcı arabiriminde görülebilir.
+Kaynak Sağlık Merkezi (RHC) `The HDInsight cluster is unable to access the key for BYOK encryption at rest`uyarısı, küme düğümlerinin müşterilere erişimini kaybettiği Kendi Anahtarını Getir (BYOK) kümeleri için gösterilir Anahtar Kasası (KV). Benzer uyarılar Apache Ambari UI'de de görülebilir.
 
 ## <a name="cause"></a>Nedeni
 
-Uyarı, KV 'nin küme düğümlerinden erişilebilir olmasını sağlar, böylece ağ bağlantısı, KV sistem durumu ve Kullanıcı tarafından atanan yönetilen kimlik için erişim ilkesini sağlar. Bu uyarı yalnızca sonraki düğüm yeniden başlatıldığında aracı kapatmasından önce gelen bir uyarıdır. düğümler yeniden başlatılıncaya kadar küme çalışmaya devam eder.
+Uyarı, KV'ye küme düğümlerinden erişilebilmesini sağlayarak yönetilen kimlik atanan kullanıcıiçin ağ bağlantısı, KV durumu ve erişim ilkesini sağlar. Bu uyarı, yalnızca sonraki düğüm yeniden başlatmalarında yaklaşan aracı kapatma uyarısıdır, küme düğümleri yeniden başlatılana kadar çalışmaya devam eder.
 
-**Disk şifreleme Key Vault durumu**uyarısı hakkında daha fazla bilgi edinmek Için Apache ambarı Kullanıcı arabirimine gidin. Bu uyarı, doğrulama hatasının nedeni hakkında ayrıntılara sahip olacaktır.
+**Disk Şifreleme Anahtarı Vault Durumu**uyarı hakkında daha fazla bilgi edinmek için Apache Ambari UI gidin. Bu uyarı, doğrulama hatasının nedeni hakkında ayrıntılara sahip olacaktır.
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
 ### <a name="kvaad-outage"></a>KV/AAD kesintisi
 
-Daha fazla ayrıntı için [Azure Key Vault kullanılabilirlik ve artıklık](../../key-vault/key-vault-disaster-recovery-guidance.md) ve Azure durum sayfasına bakın https://status.azure.com/
+Daha fazla ayrıntı [için Azure Key Vault kullanılabilirliği ve artıklık](../../key-vault/key-vault-disaster-recovery-guidance.md) ve Azure durum sayfasına bakınhttps://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV yanlışlıkla silme
 
-* KV içindeki silinen anahtarı otomatik olarak kurtar ' a geri yükleyin. Daha fazla bilgi için bkz. [silinen anahtarı kurtarma](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
-* Yanlışlıkla silinmelerden kurtulmak için KV ekibine ulaşın.
+* Otomatik kurtarma için KV üzerinde silinen anahtarı geri yükleyin. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)
+* Yanlışlıkla silmelerden kurtulmak için KV ekibine ulaşın.
 
-### <a name="kv-access-policy-changed"></a>KV erişim ilkesi değişti
+### <a name="kv-access-policy-changed"></a>KV erişim ilkesi değiştirildi
 
-KV öğesine erişmek için HDI kümesine atanan kullanıcı tarafından atanan yönetilen kimliğin erişim ilkelerini geri yükleyin.
+KV'ye erişmek için HDI kümesine atanan Yönetilen Kimlik atanan kullanıcının erişim ilkelerini geri yükleyin.
 
-### <a name="key-permitted-operations"></a>Anahtara izin verilen işlemler
+### <a name="key-permitted-operations"></a>İzin verilen anahtar işlemler
 
-KV içindeki her anahtar için izin verilen işlemler kümesini seçebilirsiniz. BYOK anahtarı için sarmalama ve sarmalama işlemlerini etkin duruma aldığınızdan emin olun
+KV'deki her anahtar için, izin verilen işlem kümesini seçebilirsiniz. BYOK tuşu için kaydırma ve açma işlemleri etkinleştirildiğinden emin olun
 
-### <a name="expired-key"></a>Süre dolma anahtarı
+### <a name="expired-key"></a>Süresi dolmuş anahtar
 
-Süre geçtikten sonra anahtar döndürülmemişse, yedekleme HSM 'sinden anahtarı geri yükleyin veya süre sonu tarihini temizlemek için KV ekibine başvurun.
+Son kullanma tarihi geçtiyse ve anahtar döndürülmüyorsa, son kullanma tarihini temizlemek için yedekleme HSM'den anahtarı geri yükleyin veya KV ekibine başvurun.
 
-### <a name="kv-firewall-blocking-access"></a>KV güvenlik duvarı engelleme erişimi
+### <a name="kv-firewall-blocking-access"></a>KV güvenlik duvarı erişimi engelliyor
 
-KV güvenlik duvarı ayarlarını, BYOK kümesi düğümlerinin KV öğesine erişmesine izin verecek şekilde düzeltir.
+BYOK küme düğümlerinin KV'ye erişmesine izin vermek için KV güvenlik duvarı ayarlarını düzeltin.
 
-### <a name="nsg-rules-on-virtual-network-blocking-access"></a>Sanal ağ engelleme erişimi için NSG kuralları
+### <a name="nsg-rules-on-virtual-network-blocking-access"></a>Sanal ağ engelleme erişimi nsg kuralları
 
 Kümeye bağlı sanal ağla ilişkili NSG kurallarını denetleyin.
 
-## <a name="mitigation-and-prevention-steps"></a>Risk azaltma ve önleme adımları
+## <a name="mitigation-and-prevention-steps"></a>Azaltma ve önleme adımları
 
 ### <a name="kv-accidental-deletion"></a>KV yanlışlıkla silme
 
-* [Kaynak kilidi kümesiyle](../../azure-resource-manager/management/lock-resources.md)Key Vault yapılandırın.
-* Anahtarları donanım güvenlik modülüne yedekleyin.
+* [Kaynak Kilidi kümesi](../../azure-resource-manager/management/lock-resources.md)ile Anahtar Kasası yapılandırın.
+* Donanım Güvenlik Modülü anahtarları yedek.
 
 ### <a name="key-deletion"></a>Anahtar silme
 
-Anahtar silinmeden önce küme silinmelidir.
+Küme, anahtar silmeden önce silinmelidir.
 
-### <a name="kv-access-policy-changed"></a>KV erişim ilkesi değişti
+### <a name="kv-access-policy-changed"></a>KV erişim ilkesi değiştirildi
 
-Erişim ilkelerini düzenli olarak denetleme ve test etme.
+Erişim ilkelerini düzenli olarak denetle ve test edin.
 
-### <a name="expired-key"></a>Süre dolma anahtarı
+### <a name="expired-key"></a>Süresi dolmuş anahtar
 
-* Anahtarları HSM 'nize yedekleyin.
-* Süre sonu kümesi olmayan bir anahtar kullanın.
-* Süre sonu ayarlanması gerekiyorsa, bitiş tarihinden önce anahtarları döndürün.
+* HSM tuşlarınızı yedekle.
+* Herhangi bir son kullanma kümesi olmadan bir anahtar kullanın.
+* Son kullanma tarihi ayarlanması gerekiyorsa, son kullanma tarihinden önce tuşları döndürün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

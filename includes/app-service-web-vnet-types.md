@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: da43e639779dd4946cb014be777e3a6db0366e24
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671486"
 ---
-* Yalıtılmış haricinde fiyatlandırma planlarının tam aralığını destekleyen çok kiracılı sistemler
-* Sanal ağınıza dağıtan ve yalıtılmış fiyatlandırma planı uygulamalarını destekleyen App Service Ortamı (ASE)
+* İzole dışında tüm fiyatlandırma planlarını destekleyen çok kiracılı sistemler
+* VNet'inize dağıtan ve Yalıtılmış fiyatlandırma planı uygulamalarını destekleyen Uygulama Hizmet Ortamı (ASE)
 
-Bu belge, çok kiracılı uygulamalarda kullanılmak üzere VNet tümleştirme özelliği aracılığıyla gider. Uygulamanız [App Service ortamı][ASEintro]yer alıyorsa, zaten VNET 'te bulunur ve aynı VNET 'teki kaynaklara ulaşmak Için VNET tümleştirme özelliğinin kullanılmasını gerektirmez. Tüm ağ özellikleriyle ilgili ayrıntılar için [App Service ağ özelliklerini][Networkingfeatures] okuyun
+Bu belge, çok kiracılı uygulamalarda kullanılmak üzere olan VNet Tümleştirme özelliğinden geçer. Uygulamanız App [Service][ASEintro]Environment'daysa, zaten bir VNet'teyse ve aynı VNet'teki kaynaklara ulaşmak için VNet Tümleştirme özelliğinin kullanılması gerekmez. Tüm ağ özellikleri hakkında ayrıntılı bilgi için [App Service ağ özelliklerini][Networkingfeatures] okuyun
 
-VNet tümleştirmesi, uygulamanızın sanal ağınızdaki kaynaklara erişmesini sağlar, ancak sanal ağdan uygulamanıza gelen özel erişim vermez. Özel site erişimi, uygulamayı yalnızca bir Azure sanal ağı içindeki gibi özel bir ağdan erişilebilir hale getirme anlamına gelir. VNet tümleştirmesi yalnızca uygulamanızdan VNet 'e giden çağrılar yapmak içindir. VNet tümleştirme özelliği, aynı bölgedeki sanal ağlar ve diğer bölgelerde VNET 'ler ile kullanıldığında farklı davranır. VNet tümleştirme özelliğinin iki çeşidi vardır.
+VNet Tümleştirme, uygulamanızın sanal ağınızdaki kaynaklara erişmesini sağlar, ancak VNet'ten uygulamanız için gelen özel erişim izni vermez. Özel site erişimi, uygulamayı yalnızca Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirmek anlamına gelir. VNet Tümleştirme, yalnızca uygulamanızdan VNet'inize giden aramaları yapmak içindir. VNet Tümleştirme özelliği, aynı bölgede VNet'lerle ve diğer bölgelerdeki VNet'lerle kullanıldığında farklı şekilde kullanılır. VNet Tümleştirme özelliğiiki varyasyona sahiptir.
 
-* Bölgesel VNet tümleştirmesi-aynı bölgedeki Kaynak Yöneticisi sanal ağlara bağlanırken, Tümleştirdiğiniz VNet 'te ayrılmış bir alt ağa sahip olmanız gerekir. 
-* Ağ Geçidi gerekli VNet tümleştirmesi-diğer bölgelerde sanal ağlara veya aynı bölgedeki bir klasik VNet 'e bağlanılırken hedef VNet 'te sağlanmış bir sanal ağ geçidi gerekir.
+* Bölgesel VNet Tümleştirmesi - Aynı bölgedeki Kaynak Yöneticisi VNet'e bağlanırken, entegre olduğunuz VNet'te özel bir alt ağınız olmalıdır. 
+* Ağ Geçidi gerekli VNet Tümleştirmesi - Diğer bölgelerdeki VNet'lere veya aynı bölgedeki klasik VNet'e bağlanırken hedef VNet'te bir Sanal Ağ ağ geçidine ihtiyacınız vardır.
 
-VNet tümleştirme özellikleri:
+VNet Tümleştirme özellikleri:
 
-* Standart, Premium, PremiumV2 veya elastik Premium fiyatlandırma planı gerektir 
-* TCP ve UDP desteği
-* App Service uygulamalarla ve Işlev uygulamalarıyla çalışma
+* Standart, Premium, PremiumV2 veya Elastik Premium fiyatlandırma planı gerektirir 
+* Destek TCP ve UDP
+* Uygulama Hizmeti uygulamaları yla ve İşlev uygulamalarıyla çalışma
 
-VNet tümleştirmesinin şunları dahil desteklemediği bazı şeyler vardır:
+VNet Tümleştirmesi'nin desteklemediği bazı şeyler vardır:
 
-* sürücü bağlama
+* bir sürücü montaj
 * AD tümleştirmesi 
 * NetBios
 
-Ağ Geçidi gerekli VNet tümleştirmesi yalnızca hedef VNet 'te veya eşleme ya da VPN 'Ler ile hedef VNet 'e bağlı ağlarda bulunan kaynaklara erişim sağlar. Ağ Geçidi gerekli VNet tümleştirmesi, ExpressRoute bağlantılarında kullanılabilir olan kaynaklara erişimi etkinleştirmez veya hizmet uç noktaları ile birlikte kullanılabilir. 
+Ağ Geçidi gerekli VNet Tümleştirmesi yalnızca hedef VNet'teki veya hedef VNet'e bağlı ağlardaki kaynaklara bakma veya VPN'lerle erişim sağlar. Ağ Geçidi gerekli VNet Tümleştirme expressroute bağlantıları arasında kullanılabilir kaynaklara erişim sağlamaz veya hizmet bitiş noktaları ile çalışır. 
 
-VNet tümleştirmesi, kullanılan sürümden bağımsız olarak, uygulamanıza sanal ağınızdaki kaynaklara erişmenizi sağlar, ancak sanal ağdan uygulamanıza gelen özel erişim vermez. Özel site erişimi, uygulamanızı yalnızca bir Azure sanal ağı içindeki gibi özel bir ağdan erişilebilir hale getirme anlamına gelir. VNet tümleştirmesi yalnızca uygulamanızdan VNet 'e giden çağrılar yapmak içindir. 
+Kullanılan sürümden bağımsız olarak, VNet Tümleştirme uygulamanızın sanal ağınızdaki kaynaklara erişmesini sağlar, ancak uygulamanız için sanal ağdan gelen özel erişim izni vermez. Özel site erişimi, uygulamanızı yalnızca Azure sanal ağındaki gibi özel bir ağdan erişilebilir hale getirmek anlamına gelir. VNet Tümleştirme, yalnızca uygulamanızdan VNet'inize giden aramaları yapmak içindir. 
 
 <!--Links-->
 [ASEintro]: https://docs.microsoft.com/azure/app-service/environment/intro

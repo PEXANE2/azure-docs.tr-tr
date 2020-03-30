@@ -1,162 +1,162 @@
 ---
-title: Çoğaltmaları oku-MySQL için Azure veritabanı.
-description: "MySQL için Azure veritabanı 'nda çoğaltmaları okuma hakkında bilgi edinin: bölge seçme, çoğaltmalar oluşturma, çoğaltmalara bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
+title: Yinelemeleri okuyun - MySQL için Azure Veritabanı.
+description: "MySQL için Azure Veritabanı'nda okuma yinelemeleri hakkında bilgi edinin: bölgeleri seçme, yineleme oluşturma, yinelemelere bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167341"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
-Okuma amaçlı çoğaltma özelliği, MySQL için Azure Veritabanı’ndan salt okunur bir sunucuya verileri çoğaltmanıza olanak sağlar. Ana sunucudan en fazla beş çoğaltmaya çoğaltabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisini kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın.
+Okuma amaçlı çoğaltma özelliği, MySQL için Azure Veritabanı’ndan salt okunur bir sunucuya verileri çoğaltmanıza olanak sağlar. Ana sunucudan en fazla beş çoğaltmaya çoğaltabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisini kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltma genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bakın.
 
-Çoğaltmalar, yönettiğiniz yeni sunuculardan MySQL için normal Azure veritabanı sunucularına benzer. Her okuma çoğaltması için, sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem için faturalandırılırsınız.
+Yinelemeler, MySQL sunucuları için normal Azure Veritabanı'na benzer şekilde yönettiğiniz yeni sunuculardır. Her okuma yinelemesi için, vCores ve GB / ay depolama sağlanan hesaplama için fatura konum.
 
-MySQL çoğaltma özellikleri ve sorunları hakkında daha fazla bilgi edinmek için [MySQL Çoğaltma belgelerine](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)bakın.
+MySQL çoğaltma özellikleri ve sorunları hakkında daha fazla bilgi edinmek için [MySQL çoğaltma belgelerine](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)bakın.
 
-## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
+## <a name="when-to-use-a-read-replica"></a>Okuma yinelemesi ne zaman kullanılır?
 
-Okuma çoğaltması özelliği, okuma yoğunluklu iş yüklerinin performansını ve ölçeğini artırmaya yardımcı olur. Okuma iş yükleri çoğaltmalar için yalıtılabilir, yazma iş yükleri ana ağa yönlendirilebilir.
+Okuma yineleme özelliği, okuma yoğun iş yüklerinin performansını ve ölçeğini geliştirmeye yardımcı olur. Okuma iş yükleri yinelemelere yalıtılabilirken, yazma iş yükleri ana yönelik olabilir.
 
-Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kaynağı olarak okuma çoğaltmasını kullanmasını sağlar.
+Yaygın bir senaryo, BI ve analitik iş yüklerinin raporlama için veri kaynağı olarak okundu yinelemesini kullanmasını sağlamaktır.
 
-Çoğaltmalar salt okunurdur, ana bilgisayardaki yazma kapasitesini doğrudan azaltmazlar. Bu özellik, yazma yoğunluklu iş yükleri için hedeflenmez.
+Yinelemeler salt okunur olduğundan, ana kurumüzerindeki yazma kapasitesi yüklerini doğrudan azaltmaz. Bu özellik yazma yoğun iş yüklerini hedeflemez.
 
-Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Ana ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
+Okuma çoğaltma özelliği MySQL asynchronous çoğaltma kullanır. Özellik eşzamanlı çoğaltma senaryoları için değildir. Ana ve çoğaltma arasında ölçülebilir bir gecikme olacak. Yinelemedeki veriler sonunda ana daki verilerle tutarlı hale gelir. Bu gecikmeyi karşılayabilecek iş yükleri için bu özelliği kullanın.
 
-## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
-Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
+## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
+Ana sunucunuzdan farklı bir bölgede okuma yinelemesi oluşturabilirsiniz. Bölgeler arası çoğaltma, olağanüstü durum kurtarma planlaması veya verileri kullanıcılarınıza yakınlaştırma gibi senaryolar için yararlı olabilir.
 
-[MySQL Için Azure veritabanı bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)bir ana sunucunuz olabilir.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
+[MySQL bölgesi için](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)herhangi bir Azure Veritabanında ana sunucunuz olabilir.  Ana sunucu, eşleştirilmiş bölgesinde veya evrensel yineleme bölgelerinde bir yinelemeye sahip olabilir. Aşağıdaki resimde, ana bölgenize bağlı olarak hangi yineleme bölgelerinin kullanılabilir olduğu gösterilmektedir.
 
-[![okuma çoğaltması bölgeleri](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Yineleme bölgelerini okuma](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
-Ana sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
+Ana sunucunuzun nerede bulunduğuna bakılmaksızın, aşağıdaki bölgelerden herhangi birinde okuma yinelemesi oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunlardır:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD.
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Merkez, Kore Güney, Kuzey Orta ABD, Kuzey Avrupa, Güney Orta ABD, Güneydoğu Asya, İngiltere Güney, İngiltere Batı, Batı Avrupa, Batı ABD.
 
-\* Batı ABD 2 bir çapraz bölge çoğaltma konumu olarak geçici olarak kullanılamıyor.
+*West US 2 geçici olarak bölgeler arası yineleme konumu olarak kullanılamaz.
 
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
-Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
+Evrensel yineleme bölgelerine ek olarak, ana sunucunuzun Azure eşleştirilmiş bölgesinde bir okuma yinelemesi oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız, [Azure Eşli Bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
 
-Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları kullanıyorsanız, çoğaltmayı diğer bölgelerden biri yerine eşleştirilmiş bölgede oluşturmanızı öneririz. Eşleştirilmiş bölgeler eşzamanlı güncelleştirmeleri önleyin ve fiziksel yalıtımın ve veri fazlalığını önceliklendirir.  
+Olağanüstü durum kurtarma planlaması için bölgeler arası yinelemeler kullanıyorsanız, yinelemeyi diğer bölgelerden biri yerine eşleştirilmiş bölgede oluşturmanızı öneririz. Eşli bölgeler eşzamanlı güncelleştirmeleri önler ve fiziksel yalıtım ve veri ihtisasını önceliklendirir.  
 
-Ancak göz önünde bulundurulması gereken sınırlamalar vardır: 
+Ancak, göz önünde bulundurulması gereken sınırlamalar vardır: 
 
-* Bölgesel kullanılabilirlik: MySQL için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta kullanılabilir. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
+* Bölgesel kullanılabilirlik: MySQL için Azure Veritabanı Batı ABD 2, France Central, BAE North ve Germany Central'da kullanılabilir. Ancak, eşleştirilmiş bölgeleri kullanılamıyor.
     
-* Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
-   Bu, Batı Hindistan 'deki bir ana sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir ana sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.
+* Tek yönlü çiftler: Bazı Azure bölgeleri yalnızca tek yönde eşlenir. Bu bölgeler Batı Hindistan, Brezilya Güney ve ABD Gov Virginia içerir. 
+   Bu, Batı Hindistan'daki bir ana sunucunun Güney Hindistan'da bir kopyasını oluşturabileceği anlamına gelir. Ancak, Güney Hindistan'da bir ana sunucu Batı Hindistan'da bir kopyasını oluşturamazsınız. Bunun nedeni Batı Hindistan'ın ikincil bölgesinin Güney Hindistan olması, ancak Güney Hindistan'ın ikincil bölgesinin Batı Hindistan olmamasıdır.
 
 
 ## <a name="create-a-replica"></a>Çoğaltma oluşturma
 
-Ana sunucuda var olan bir çoğaltma sunucusu yoksa, önce yönetici kendisini çoğaltma için hazırlamak üzere ilk olarak yeniden başlatılır.
+Ana sunucuda varolan çoğaltma sunucuları yoksa, ana sunucu önce kendisini çoğaltma için hazırlamak için yeniden başlatılacaktır.
 
-Çoğaltma oluşturma iş akışı 'nı başlattığınızda, MySQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, ana sunucuda bulunan verilerle doldurulur. Oluşturma süresi, ana bilgisayardaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir.
+Çoğaltma oluşturma iş akışını başlattığınızda, MySQL sunucusu için boş bir Azure Veritabanı oluşturulur. Yeni sunucu ana sunucudaki verilerle doldurulur. Oluşturma süresi, ana daki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen süreye bağlıdır. Zaman birkaç dakika ile birkaç saat arasında değişebilir.
 
-Her çoğaltma, depolama [otomatik büyüme](concepts-pricing-tiers.md#storage-auto-grow)için etkinleştirilir. Otomatik büyüme özelliği, çoğaltmanın kendisine çoğaltılan verilerle kalmasına izin verir ve çoğaltma dışı hatalardan kaynaklanan bir kesintiye uğramasını önler.
+Depolama [otomatik büyümek](concepts-pricing-tiers.md#storage-auto-grow)için her yineleme etkinleştirilir. Otomatik büyütme özelliği, yinelemenin çoğaltılan verileri takip etmesini ve depolama dışı hatalardan kaynaklanan çoğaltma kesintisini önlemesini sağlar.
 
-[Azure Portal bir okuma çoğaltması oluşturmayı](howto-read-replicas-portal.md)öğrenin.
+[Azure portalında okuma yinelemesini](howto-read-replicas-portal.md)nasıl oluşturabilirsiniz öğrenin.
 
-## <a name="connect-to-a-replica"></a>Bir çoğaltmaya bağlanma
+## <a name="connect-to-a-replica"></a>Yinelemeye bağlanma
 
-Oluşturma sırasında bir çoğaltma, ana sunucunun güvenlik duvarı kurallarını veya VNet hizmet uç noktasını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
+Oluşturmada, yineleme ana sunucunun güvenlik duvarı kurallarını veya VNet hizmet bitiş noktasını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
 
-Çoğaltma, yönetici hesabını ana sunucudan devralır. Ana sunucudaki tüm Kullanıcı hesapları, okuma çoğaltmalarına çoğaltılır. Bir okuma çoğaltmasına yalnızca ana sunucuda bulunan Kullanıcı hesaplarını kullanarak bağlanabilirsiniz.
+Yineleme, yönetici hesabını ana sunucudan devralır. Ana sunucudaki tüm kullanıcı hesapları okundu yinelemelere kopyalanır. Yalnızca ana sunucuda bulunan kullanıcı hesaplarını kullanarak okuma yinelemesine bağlanabilirsiniz.
 
-Bir MySQL için Azure veritabanı sunucusunda yaptığınız gibi, ana bilgisayar adını ve geçerli bir kullanıcı hesabını kullanarak çoğaltmaya bağlanabilirsiniz. Yönetici Kullanıcı adı **myadmin**olan **myreplica** adlı BIR sunucu için MySQL CLI kullanarak çoğaltmaya bağlanabilirsiniz:
+MySQL sunucusu için normal bir Azure Veritabanında olduğu gibi, ana bilgisayar adını ve geçerli bir kullanıcı hesabını kullanarak yinelemeye bağlanabilirsiniz. Admin kullanıcı adı **myadmin**ile **myreplica** adlı bir sunucu için, mysql CLI kullanarak çoğaltma bağlayabilirsiniz:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 ```
 
-İstemde, Kullanıcı hesabının parolasını girin.
+İsteyerek, kullanıcı hesabının parolasını girin.
 
 ## <a name="monitor-replication"></a>Çoğaltmayı izleme
 
-MySQL için Azure veritabanı, Azure Izleyici 'de **saniye cinsinden yineleme gecikmesi** sağlar. Bu ölçüm yalnızca çoğaltmalar için kullanılabilir.
+MySQL için Azure Veritabanı, Azure **Monitor'da saniye cinsinden çoğaltma gecikmesi** sağlar. Bu metrik yalnızca yinelemeler için kullanılabilir.
 
-Bu ölçüm, MySQL 'in `SHOW SLAVE STATUS` komutunda bulunan `seconds_behind_master` ölçümü kullanılarak hesaplanır.
+Bu metrik, MySQL'in `seconds_behind_master` `SHOW SLAVE STATUS` komutundaki metrik kullanılarak hesaplanır.
 
-Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
+Çoğaltma gecikmesi iş yükünüz için kabul edilemez bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
 ## <a name="stop-replication"></a>Çoğaltmayı durdurma
 
-Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltma durdurulduktan sonra çoğaltma tek başına bir sunucu haline gelir. Tek başına sunucusundaki veriler, çoğaltma durdurma komutunun başlatıldığı zamanda çoğaltma üzerinde kullanılabilir olan veri. Tek başına sunucu, ana sunucu ile birlikte yakalamaz.
+Bir ana ve bir yineleme arasındaki çoğaltmayı durdurabilirsiniz. Çoğaltma ana sunucu ve okuma yinelemesi arasında durdurulduktan sonra, çoğaltma bağımsız bir sunucu olur. Bağımsız sunucudaki veriler, çoğaltmayı durdurma komutu başlatıldığında yinelemede bulunan verilerdir. Bağımsız sunucu ana sunucuya yetişmiyor.
 
-Çoğaltma çoğaltmasını durdurmayı seçtiğinizde, önceki ana ve diğer çoğaltmalara ait tüm bağlantıları kaybeder. Ana ve onun çoğaltması arasında otomatik yük devretme yoktur.
+Bir yinelemeye çoğaltmayı durdurmayı seçtiğinizde, önceki ana ve diğer yinelemelere olan tüm bağlantıları kaybeder. Bir ana ve onun çoğaltma arasında otomatik bir hata yoktur.
 
 > [!IMPORTANT]
-> Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
-> Bir okuma çoğaltmasında çoğaltmayı durdurmadan önce, çoğaltmanın gerekli tüm verilere sahip olduğundan emin olun.
+> Bağımsız sunucu yeniden çoğaltma yapılamaz.
+> Okuma yinelemesi üzerinde çoğaltmayı durdurmadan önce, yinelemenin gereksinim duyduğunuz tüm verilere sahip olduğundan emin olun.
 
-[Bir çoğaltmaya çoğaltmayı durdurmayı](howto-read-replicas-portal.md)öğrenin.
+Çoğaltmayı nasıl [durdurup durdurabildiğini](howto-read-replicas-portal.md)öğrenin.
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 
 ### <a name="pricing-tiers"></a>Fiyatlandırma katmanları
 
-Okuma çoğaltmaları Şu anda yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında kullanılabilir.
+Okuma yinelemeleri şu anda yalnızca Genel Amaç ve Bellek Optimize Edilmiş fiyatlandırma katmanlarında kullanılabilir.
 
-### <a name="master-server-restart"></a>Ana sunucu yeniden başlatması
+### <a name="master-server-restart"></a>Ana sunucu yeniden başlatma
 
-Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
+Varolan yinelemeleri olmayan bir ana için bir yineleme oluşturduğunuzda, asıl önce kendisini çoğaltma için hazırlamak için yeniden başlatılacaktır. Bunu göz önünde bulundurun ve yoğun olmayan bir dönemde bu işlemleri gerçekleştirin.
 
-### <a name="new-replicas"></a>Yeni çoğaltmalar
+### <a name="new-replicas"></a>Yeni yinelemeler
 
-Bir okuma çoğaltması, MySQL için yeni bir Azure veritabanı sunucusu olarak oluşturulur. Var olan bir sunucu bir çoğaltmaya yapılamaz. Başka bir okuma çoğaltmasının çoğaltmasını oluşturamazsınız.
+Okuma yinelemesi MySQL sunucusu için yeni bir Azure Veritabanı olarak oluşturulur. Varolan bir sunucu çoğaltma haline getirilebilir. Başka bir okuma yinelemesinin kopyasını oluşturamazsınız.
 
-### <a name="replica-configuration"></a>Çoğaltma yapılandırması
+### <a name="replica-configuration"></a>Yineleme yapılandırması
 
-Bir çoğaltma, ana öğe ile aynı sunucu yapılandırması kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+Yineleme, ana bilgisayarla aynı sunucu yapılandırması kullanılarak oluşturulur. Yineleme oluşturulduktan sonra, ana sunucudan bağımsız olarak birkaç ayar değiştirilebilir: bilgi işlem oluşturma, vCores, depolama ve yedekleme bekletme süresi. Fiyatlandırma katmanı, Temel katman alabilen veya temel katmandan bağımsız olarak değiştirilebilir.
 
 > [!IMPORTANT]
 > Ana sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
 
-Çoğaltma oluşturulduğunda güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları ana sunucudan çoğaltmaya devralınır. Daha sonra, çoğaltmanın kuralları bağımsızdır.
+Güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları, yineleme oluşturulduğunda ana sunucudan yinelemeye devralınır. Daha sonra, yinelemenin kuralları bağımsızdır.
 
-### <a name="stopped-replicas"></a>Durdurulan çoğaltmalar
+### <a name="stopped-replicas"></a>Durdurulan yinelemeler
 
-Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltmayı durdurursanız, durdurulan çoğaltma hem okuma hem de yazma işlemlerini kabul eden tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
+Ana sunucu ile okuma yinelemesi arasındaki çoğaltmayı durdurursanız, durdurulan yineleme hem okumaları hem de yazmaları kabul eden bağımsız bir sunucu olur. Bağımsız sunucu yeniden çoğaltma yapılamaz.
 
-### <a name="deleted-master-and-standalone-servers"></a>Ana ve tek başına sunucular silindi
+### <a name="deleted-master-and-standalone-servers"></a>Silinmiş ana ve bağımsız sunucular
 
-Bir ana sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar otomatik olarak tek başına sunucular olur ve hem okuma hem de yazma işlemlerini kabul edebilir. Ana sunucunun kendisi silinir.
+Ana sunucu silindiğinde, çoğaltma tüm okunan yinelemeler için durdurulur. Bu yinelemeler otomatik olarak bağımsız sunucular haline gelir ve hem okumaları hem de yazmaları kabul edebilir. Ana sunucunun kendisi silinir.
 
 ### <a name="user-accounts"></a>Kullanıcı hesapları
 
-Ana sunucudaki kullanıcılar okuma çoğaltmalarına çoğaltılır. Bir okuma çoğaltmasına yalnızca ana sunucuda bulunan Kullanıcı hesaplarını kullanarak bağlanabilirsiniz.
+Ana sunucudaki kullanıcılar, okunan yinelemelere kopyalanır. Yalnızca ana sunucuda bulunan kullanıcı hesaplarını kullanarak okuma yinelemesine bağlanabilirsiniz.
 
 ### <a name="server-parameters"></a>Sunucu parametreleri
 
 Verilerin eşitlenmemiş duruma gelmesini ve olası veri kaybını önlemek için, okuma amaçlı çoğaltmaları kullanırken bazı sunucu parametreleri güncelleştirmeye karşı kilitlenir.
 
-Aşağıdaki sunucu parametreleri hem ana hem de çoğaltma sunucularında kilitlidir:
+Aşağıdaki sunucu parametreleri hem ana hem de yineleme sunucularında kilitlenir:
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) parametresi, çoğaltma sunucularında kilitlidir. 
+Parametre [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) çoğaltma sunucularında kilitli. 
 
 ### <a name="other"></a>Diğer
 
-- Genel işlem tanımlayıcıları (GTıD) desteklenmez.
-- Bir çoğaltmanın çoğaltmasını oluşturma desteklenmiyor.
-- Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
-- Ana sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, ana ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.
-- [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) MySQL Çoğaltma sınırlamalarının tam listesini gözden geçirin
+- Genel işlem tanımlayıcıları (GTID) desteklenmez.
+- Yinelemenin bir kopyasını oluşturma desteklenmez.
+- Bellek içi tablolar yinelemelerin eşitlenmemiş olmasına neden olabilir. Bu MySQL çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL başvuru belgelerinde](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
+- Ana sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların eksikliği, ana ve yinelemeler arasında çoğaltma gecikmesi ile sonuçlanabilir.
+- [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) MySQL çoğaltma sınırlamalarının tam listesini gözden geçirin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal kullanarak okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-portal.md) öğrenin
-- [Azure CLI ve REST API kullanarak okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md) hakkında bilgi edinin
+- [Azure portalını kullanarak okuma yinelemelerini](howto-read-replicas-portal.md) nasıl oluşturup yöneteceklerini öğrenin
+- [Azure CLI ve REST API'sini kullanarak okuma yinelemelerini nasıl oluşturup yöneteceğimiz](howto-read-replicas-cli.md) öğrenin

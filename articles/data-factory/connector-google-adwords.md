@@ -1,6 +1,6 @@
 ---
-title: Google AdWords 'tan veri kopyalama
-description: Desteklenen bir havuz veri depolarına Google AdWords bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Google AdWords'ten veri kopyalama
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına Google AdWords'teki verileri nasıl kopyalaylayamamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929448"
 ---
-# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Azure Data Factory kullanarak Google AdWords 'tan veri kopyalama
+# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Google AdWords'ten veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de Google AdWords verileri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, Google AdWords'teki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı özetlanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Google AdWords Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Google AdWords bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 
-Google AdWords tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Google AdWords'ten gelen verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
+Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler belirli Data Factory varlıkları Google AdWords bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Google AdWords bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Google AdWords bağlı hizmeti için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler Google AdWords bağlantılı hizmet için desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **GoogleAdWords** | Yes |
-| clientCustomerID | Rapor verileri getirmek istediğiniz AdWords hesabını istemci müşteri kimliği.  | Yes |
-| developerToken | Geliştirici belirteç AdWords API'ye erişim için kullandığınız yönetici hesabı ile ilişkili.  Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Yes |
-| authenticationType | Kimlik doğrulaması için kullanılan OAuth 2.0 kimlik doğrulama mekanizması. ServiceAuthentication yalnızca şirket içinde barındırılan IR üzerinde kullanılabilir <br/>İzin verilen değerler: **ServiceAuthentication**, **UserAuthentication** | Yes |
-| refreshToken | İçin UserAuthentication AdWords erişim yetkisi vermek için Google'dan alınan yenileme belirteci. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
-| clientID | Yenileme belirtecini almak için kullanılan Google uygulamasının istemci KIMLIĞI. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
-| clientSecret | Yenileme belirteci almak için kullanılan google uygulama istemci gizli bilgisi. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
-| e-posta | ServiceAuthentication için kullanılır ve yalnızca şirket içinde barındırılan IR üzerinde kullanılabilir hizmet hesabı e-posta kimliği  | Hayır |
-| keyFilePath | Hizmet hesabı e-posta adresi kimliğini doğrulamak için kullanılır ve yalnızca şirket içinde barındırılan IR üzerinde kullanılabilir .p12 anahtar dosyasının tam yolu  | Hayır |
-| trustedCertPath | SSL üzerinden bağlanırken sunucu doğrulamak için güvenilen CA sertifikalarını içeren .pem dosyasının tam yolu. Bu özellik yalnızca şirket içinde barındırılan IR üzerinde SSL kullanılarak, ayarlanabilir Varsayılan değer IR ile yüklü cacerts.pem dosyasıdır  | Hayır |
-| useSystemTrustStore | Bir CA sertifikası sistem güven deposu veya belirtilen bir PEM dosyası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
+| type | Tür özelliği şu şekilde ayarlanmalıdır: **GoogleAdWords** | Evet |
+| müşteriMüşteri Kimliği | Rapor verilerini almak istediğiniz AdWords hesabının Müşteri müşteri kimliği.  | Evet |
+| geliştiriciToken | AdWords API'sine erişim izni vermek için kullandığınız yönetici hesabıyla ilişkili geliştirici belirteci.  Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
+| authenticationType | Kimlik doğrulama için kullanılan OAuth 2.0 kimlik doğrulama mekanizması. ServiceAuthentication yalnızca kendi barındırılan IR'de kullanılabilir. <br/>İzin verilen değerler şunlardır: **ServiceAuthentication**, **UserAuthentication** | Evet |
+| yenilemeToken | Kullanıcı Kimliği Için AdWords'e erişim yetkisi vermek için Google'dan alınan yenileme belirteci. Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
+| clientId | Yenileme belirteci elde etmek için kullanılan Google uygulamasının istemci kimliği. Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
+| clientSecret | Yenileme belirteci elde etmek için kullanılan google uygulamasının istemci sırrı. Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
+| e-posta | ServiceAuthentication için kullanılan ve yalnızca kendi barındırılan IR'de kullanılabilen servis hesabı e-posta kimliği.  | Hayır |
+| keyFilePath | Hizmet hesabı e-posta adresini doğrulamak için kullanılan ve yalnızca kendi barındırılan IR'de kullanılabilen .p12 anahtar dosyasına giden tam yol.  | Hayır |
+| güvenilirCertPath | SSL üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de SSL kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
+| useSystemTrustStore | Sistem güven deposundan veya belirli bir PEM dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
 
 **Örnek:**
 
@@ -96,14 +96,14 @@ Google AdWords bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, Google AdWords veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Google AdWords veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
-Google AdWords verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **GoogleAdWordsObject**. Aşağıdaki özellikler desteklenir:
+Google AdWords'teki verileri kopyalamak için, veri kümesinin tür özelliğini **GoogleAdWordsObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **GoogleAdWordsObject** | Yes |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **GoogleAdWordsObject** | Evet |
+| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
 
 **Örnek**
 
@@ -125,16 +125,16 @@ Google AdWords verileri kopyalamak için dataset öğesinin type özelliği ayar
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Google AdWords kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Google AdWords kaynağı tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
 ### <a name="google-adwords-as-source"></a>Kaynak olarak Google AdWords
 
-Google AdWords verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **GoogleAdWordsSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+Google AdWords'teki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **GoogleAdWordsSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **GoogleAdWordsSource** | Yes |
-| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının tür özelliği şu şekilde ayarlanmalıdır: **GoogleAdWordsSource** | Evet |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
 **Örnek:**
 
@@ -168,10 +168,10 @@ Google AdWords verileri kopyalamak için kopyalama etkinliği için kaynak tür�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

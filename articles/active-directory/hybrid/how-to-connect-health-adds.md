@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897328"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Azure AD Connect Health'i AD DS ile Kullanma
@@ -58,7 +58,7 @@ Varsayılan olarak, dört performans sayacı önceden seçilmiştir; ancak, filt
 
 ## <a name="related-links"></a>İlgili bağlantılar
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD Connect Health Aracısı Yüklemesi](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Sağlık Aracısı Yükleme](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health İşlemleri](how-to-connect-health-operations.md)
 * [Azure AD Connect Health'i AD FS ile Kullanma](how-to-connect-health-adfs.md)
 * [Eşitleme için Azure AD Connect Health'i kullanma](how-to-connect-health-sync.md)
