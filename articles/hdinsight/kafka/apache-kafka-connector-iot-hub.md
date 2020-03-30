@@ -1,6 +1,6 @@
 ---
-title: Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
-description: Azure IoT Hub ile HDInsight üzerinde Apache Kafka nasıl kullanacağınızı öğrenin. Kafka Connect Azure IoT Hub projesi, Kafka için bir kaynak ve havuz Bağlayıcısı sağlar. Kaynak bağlayıcı IoT Hub verileri okuyabilir ve havuz Bağlayıcısı IoT Hub yazar.
+title: Azure IoT Hub ile HDInsight'ta Apache Kafka'yı kullanma
+description: Azure IoT Hub ile HDInsight'ta Apache Kafka'yı nasıl kullanacağınızı öğrenin. Kafka Connect Azure IoT Hub projesi Kafka için bir kaynak ve lavabo konektörü sağlar. Kaynak bağlayıcısı IoT Hub'dan gelen verileri okuyabilir ve lavabo konektörü IoT Hub'a yazar.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,90 +8,90 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 884d10ce1bc5e6b710c849d0be1cb9165caac4c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 48a72b5ba3819712b9e1d2536ae2dd3a06eaf3f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706086"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238812"
 ---
-# <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
+# <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Azure IoT Hub ile HDInsight'ta Apache Kafka'yı kullanma
 
-HDInsight ve Azure IoT Hub Apache Kafka arasında veri taşımak için [Azure IoT Hub bağlayıcısını bağlama Apache Kafka](https://github.com/Azure/toketi-kafka-connect-iothub) nasıl kullanacağınızı öğrenin. Bu belgede, IoT Hub bağlayıcısını kümedeki bir kenar düğümünden çalıştırmayı öğreneceksiniz.
+HDInsight'ta Apache Kafka ile Azure IoT Hub arasında veri taşımak için [Apache Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) bağlayıcısını nasıl kullanacağınızı öğrenin. Bu belgede, IoT Hub bağlayıcısını kümedeki bir kenar düğümünden çalıştırmayı öğrenirsiniz.
 
-Kafka Connect API 'SI, verileri sürekli olarak Kafka 'e çekmek veya Kafka 'den başka bir sisteme veri göndermek için bağlayıcı uygulamanıza olanak tanır. [Azure IoT Hub Connect Apache Kafka](https://github.com/Azure/toketi-kafka-connect-iothub) , Azure IoT Hub 'tan veri çeken bir bağlayıcıdır. Ayrıca, Kafka 'den IoT Hub veri gönderebilir.
+Kafka Connect API, Kafka'ya sürekli veri çeken veya Kafka'dan gelen verileri başka bir sisteme iten konektörler uygulamanızı sağlar. [Apache Kafka Connect Azure IoT Hub,](https://github.com/Azure/toketi-kafka-connect-iothub) Azure IoT Hub'ından Kafka'ya veri çeken bir bağlayıcıdır. Ayrıca Kafka'dan IoT Hub'ına veri itebilir.
 
-IoT Hub çekiliyor bir __kaynak__ Bağlayıcısı kullanırsınız. IoT Hub gönderilirken bir __Havuz__ Bağlayıcısı kullanırsınız. IoT Hub Bağlayıcısı hem kaynak hem de havuz bağlayıcıları sağlar.
+IoT Hub'ından çekerken bir __kaynak__ bağlayıcısı kullanırsınız. IoT Hub'a iterken __lavabo__ konektörü kullanırsınız. IoT Hub konektörü hem kaynak hem de lavabo konektörlerini sağlar.
 
-Aşağıdaki diyagramda, bağlayıcıyı kullanırken HDInsight üzerinde Azure IoT Hub ve Kafka arasındaki veri akışı gösterilmektedir.
+Aşağıdaki diyagram, bağlayıcıyı kullanırken HDInsight'ta Azure IoT Hub ile Kafka arasındaki veri akışını gösterir.
 
-![Bağlayıcı aracılığıyla IoT Hub 'den Kafka 'e akan verileri gösteren resim](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+![Bağlayıcı aracılığıyla IoT Hub'dan Kafka'ya akan verileri gösteren görüntü](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
 
-Connect API 'SI hakkında daha fazla bilgi için bkz. [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect).
+Connect API hakkında daha fazla [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect)bilgi için bkz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde bir Apache Kafka kümesi. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](apache-kafka-get-started.md) belgesine bakın.
+* HDInsight'ta bir Apache Kafka kümesi. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](apache-kafka-get-started.md) belgesine bakın.
 
-* Kafka kümesindeki bir kenar düğümü. Daha fazla bilgi için bkz. [HDInsight ile Edge düğümlerini kullanma](../hdinsight-apps-use-edge-node.md) belgesi.
+* Kafka kümesinde bir kenar düğümü. Daha fazla bilgi için [HDInsight belgesiyle Kullanım kenarı düğümlerine](../hdinsight-apps-use-edge-node.md) bakın.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
 
-* Azure IoT Hub ve cihaz. Bu makalede, [Connect Raspberry PI online simülatörü IoT Hub Azure 'a](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)kullanmayı düşünün.
+* Azure IoT Hub'ı ve aygıtı. Bu makale için, [Azure IoT Hub'a Connect Raspberry Pi çevrimiçi simülatörünü](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)kullanmayı düşünün.
 
-* [Scala derleme aracı](https://www.scala-sbt.org/).
+* [Scala inşa aracı](https://www.scala-sbt.org/).
 
-## <a name="build-the-connector"></a>Bağlayıcıyı oluşturma
+## <a name="build-the-connector"></a>Konektörü oluşturun
 
-1. Bağlayıcının kaynağını [https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/) bilgisayardan yerel ortamınıza indirin.
+1. Bağlayıcının [https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/) kaynağını yerel ortamınıza indirin.
 
-2. Bir komut isteminden `toketi-kafka-connect-iothub-master` dizinine gidin. Ardından projeyi derlemek ve paketlemek için şu komutu kullanın:
+2. Komut isteminden dizine `toketi-kafka-connect-iothub-master` gidin. Ardından projeyi oluşturmak ve paketlemek için aşağıdaki komutu kullanın:
 
     ```cmd
     sbt assembly
     ```
 
-    Oluşturma işleminin tamamlanması birkaç dakika sürer. Komut, proje için `toketi-kafka-connect-iothub-master\target\scala-2.11` dizininde `kafka-connect-iothub-assembly_2.11-0.7.0.jar` adlı bir dosya oluşturur.
+    Yapının tamamlanması birkaç dakika sürer. Komut, proje dizininde `kafka-connect-iothub-assembly_2.11-0.7.0.jar` `toketi-kafka-connect-iothub-master\target\scala-2.11` adı geçen bir dosya oluşturur.
 
-## <a name="install-the-connector"></a>Bağlayıcıyı yükler
+## <a name="install-the-connector"></a>Konektörü yükleme
 
-1. . Jar dosyasını Kafka on HDInsight kümenizin Edge düğümüne yükleyin. `CLUSTERNAME`, kümenizin gerçek adıyla değiştirerek aşağıdaki komutu düzenleyin. SSH kullanıcı hesabı ve [kenar düğümünün](../hdinsight-apps-use-edge-node.md#access-an-edge-node) adı için varsayılan değerler aşağıda kullanılır, gerektiğinde değiştirin.
+1. .jar dosyasını HDInsight kümesinde Kafka'nızın kenar düğümüne yükleyin. Kümenizin gerçek adını `CLUSTERNAME` değiştirerek aşağıdaki komutu düzenleme. SSH kullanıcı hesabı ve [kenar düğümü](../hdinsight-apps-use-edge-node.md#access-an-edge-node) adı için varsayılan değerler aşağıda kullanılır, gerektiği gibi değiştirin.
 
     ```cmd
     scp kafka-connect-iothub-assembly*.jar sshuser@new-edgenode.CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Dosya kopyalama işlemi tamamlandıktan sonra, SSH kullanarak kenar düğümüne bağlanın:
+1. Dosya kopyası tamamlandıktan sonra, SSH kullanarak kenar düğümüne bağlanın:
 
     ```bash
     ssh sshuser@new-edgenode.CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Bağlayıcıyı Kafka `libs` dizinine yüklemek için şu komutu kullanın:
+1. Konektörü Kafka `libs` dizinine yüklemek için aşağıdaki komutu kullanın:
 
     ```bash
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-Diğer adımlar için SSH bağlantınızı etkin tutun.
+Kalan adımlar için SSH bağlantınızı etkin tutun.
 
-## <a name="configure-apache-kafka"></a>Apache Kafka Yapılandır
+## <a name="configure-apache-kafka"></a>Apache Kafka'yı yapılandır
 
-SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda çalıştırmak üzere Kafka yapılandırmak için aşağıdaki adımları kullanın:
+SSH bağlantınızdan kenar düğümüne kadar, kafka'yı konektörü bağımsız modda çalıştırmak üzere yapılandırmak için aşağıdaki adımları kullanın:
 
-1. Parola değişkenini ayarlayın. PAROLAYı küme oturum açma parolasıyla değiştirin, ardından şu komutu girin:
+1. Parola değişkenini ayarlayın. Parola'yı küme giriş parolasıyla değiştirin ve ardından komutu girin:
 
     ```bash
     export password='PASSWORD'
     ```
 
-1. [JQ](https://stedolan.github.io/jq/) yardımcı programını yükler. JQ, ambarı sorgularından döndürülen JSON belgelerinin işlemesini kolaylaştırır. Aşağıdaki komutu girin:
+1. [jq](https://stedolan.github.io/jq/) yardımcı programını yükleyin. jq, Ambari sorgularından döndürülen JSON belgelerinin işlenmesini kolaylaştırır. Aşağıdaki komutu girin:
 
     ```bash
     sudo apt -y install jq
     ```
 
-1. Kafka aracıları adresini alın. Kümenizde birçok aracıda bulunabilir, ancak yalnızca bir veya iki başvuru yapmanız yeterlidir. İki aracı konağın adresini almak için aşağıdaki komutu kullanın:
+1. Kafka komisyoncularının adresini al. Kümenizde birçok aracı olabilir, ancak yalnızca bir veya iki başvuru yapmanız gerekir. İki broker ana bilgisayarının adresini almak için aşağıdaki komutu kullanın:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -100,32 +100,32 @@ SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda ça
     echo $KAFKABROKERS
     ```
 
-    Daha sonra kullanmak üzere değerleri kopyalayın. Döndürülen değer aşağıdaki metne benzer:
+    Daha sonra kullanmak için değerleri kopyalayın. Döndürülen değer aşağıdaki metne benzer:
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-1. Apache Zookeeper düğümlerinin adresini alın. Kümede birkaç Zookeeper düğümü vardır, ancak yalnızca bir veya iki başvuru yapmanız yeterlidir. `KAFKAZKHOSTS`değişkende adresleri depolamak için aşağıdaki komutu kullanın:
+1. Apache Zookeeper düğümlerinin adresini alın. Kümede birkaç Zookeeper düğümü vardır, ancak yalnızca bir veya iki başvuru yapmanız gerekir. Değişkendeki `KAFKAZKHOSTS`adresleri depolamak için aşağıdaki komutu kullanın:
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-1. Bağlayıcıyı tek başına modunda çalıştırırken, Kafka aracıları ile iletişim kurmak için `/usr/hdp/current/kafka-broker/config/connect-standalone.properties` dosyası kullanılır. `connect-standalone.properties` dosyasını düzenlemek için aşağıdaki komutu kullanın:
+1. Konektörü bağımsız modda çalıştırırken, `/usr/hdp/current/kafka-broker/config/connect-standalone.properties` dosya Kafka brokerları ile iletişim kurmak için kullanılır. Dosyayı `connect-standalone.properties` yeniden kullanmak için aşağıdaki komutu kullanın:
 
     ```bash
     sudo nano /usr/hdp/current/kafka-broker/config/connect-standalone.properties
     ```
 
-1. Aşağıdaki düzenlemeleri yapın:
+1. Aşağıdaki leri yapın:
 
     |Geçerli değer |Yeni değer | Açıklama |
     |---|---|---|
-    |`bootstrap.servers=localhost:9092`|`localhost:9092` değerini, önceki adımdaki aracı konaklarıyla değiştirin|Kafka aracılarını bulmak için kenar düğümü için tek başına yapılandırmayı yapılandırır.|
-    |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Bu değişiklik, Kafka ile birlikte sunulan konsol üreticisi 'ni kullanarak test etmenizi sağlar. Diğer üreticileri ve tüketiciler için farklı dönüştürücülerin olması gerekebilir. Diğer dönüştürücü değerlerini kullanma hakkında daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
-    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdaki gibi.|
-    |Yok|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
+    |`bootstrap.servers=localhost:9092`|`localhost:9092` Değeri önceki adımdaki broker ana bilgisayarlarıyla değiştirme|Kafka brokerlarını bulmak için kenar düğümüiçin bağımsız yapılandırmayı yapılandırır.|
+    |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Bu değişiklik, Kafka ile birlikte verilen konsol üreticisini kullanarak test etmenizi sağlar. Diğer üreticiler ve tüketiciler için farklı dönüştürücüler gerekebilir. Diğer dönüştürücü değerlerini kullanma hakkında [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)bilgi için bkz.|
+    |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdakiyle aynı.|
+    |Yok|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, lavabo konektöründeki zaman aşamalarını bir seferde 10 kayıtla sınırlandırarak önlemek tir. Daha fazla bilgi [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)için bkz.|
 
-1. Dosyayı kaydetmek için __CTRL + X__, __Y__kullanın ve ardından __girin__.
+1. Dosyayı kaydetmek için __Ctrl + X__, __Y__ve ardından __Enter__'u kullanın.
 
 1. Bağlayıcı tarafından kullanılan konuları oluşturmak için aşağıdaki komutları kullanın:
 
@@ -135,40 +135,40 @@ SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda ça
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic iotout --zookeeper $KAFKAZKHOSTS
     ```
 
-    `iotin` ve `iotout` konuların mevcut olduğunu doğrulamak için şu komutu kullanın:
+    Konuların `iotin` ve `iotout` konuların var olduğunu doğrulamak için aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
     ```
 
-    `iotin` konusu IoT Hub iletileri almak için kullanılır. `iotout` konusu IoT Hub ileti göndermek için kullanılır.
+    Konu, `iotin` IoT Hub'dan ileti almak için kullanılır. Konu, IoT Hub'a `iotout` ileti göndermek için kullanılır.
 
-## <a name="get-iot-hub-connection-information"></a>IoT Hub bağlantı bilgilerini al
+## <a name="get-iot-hub-connection-information"></a>IoT Hub bağlantı bilgilerini alın
 
-Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdaki adımları kullanın:
+Bağlayıcı tarafından kullanılan IoT hub bilgilerini almak için aşağıdaki adımları kullanın:
 
-1. IoT Hub 'ınız için Event hub ile uyumlu uç nokta ve Olay Hub 'ı ile uyumlu uç nokta adını alın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
+1. IoT hub'ınız için Event Hub uyumlu uç nokta ve Event Hub uyumlu uç nokta adını alın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
 
-   * __[Azure Portal](https://portal.azure.com/)__ , aşağıdaki adımları kullanın:
+   * __Azure [portalından](https://portal.azure.com/)__ aşağıdaki adımları kullanın:
 
-     1. IoT Hub gidin ve __uç noktalar__' ı seçin.
-     2. __Yerleşik uç noktalarda__ __Olaylar__' ı seçin.
-     3. __Özelliklerden__aşağıdaki alanların değerini kopyalayın:
+     1. IoT Hub'ınıza gidin ve __Uç Noktaları__seçin.
+     2. __Yerleşik uç noktalardan,__ __Etkinlikler'i__seçin.
+     3. __Özellikler'den,__ aşağıdaki alanların değerini kopyalayın:
 
-         * __Olay Hub 'ı ile uyumlu ad__
-         * __Olay Hub 'ı ile uyumlu uç nokta__
-         * __Bölümler__
+         * __Olay Hub uyumlu ad__
+         * __Olay Hub uyumlu bitiş noktası__
+         * __Bölüm__
 
         > [!IMPORTANT]  
-        > Portaldaki uç nokta değeri, bu örnekte gerekli olmayan ek metin içerebilir. Bu düzenle eşleşen metni ayıklayın `sb://<randomnamespace>.servicebus.windows.net/`.
+        > Portaldan gelen uç nokta değeri, bu örnekte gerekli olmayan ek metin içerebilir. Bu desenle `sb://<randomnamespace>.servicebus.windows.net/`eşleşen metni ayıklayın.
 
-   * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)'dan__aşağıdaki komutu kullanın:
+   * __Azure [CLI'den](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ aşağıdaki komutu kullanın:
 
-       ```azure-cli
+       ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
        ```
 
-       `myhubname`, IoT Hub 'ınızın adıyla değiştirin. Yanıt aşağıdaki metne benzer:
+       IoT hub'ınızın adıyla değiştirin. `myhubname` Yanıt aşağıdaki metne benzer:
 
        ```json
        "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
@@ -176,146 +176,146 @@ Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdak
        "Partitions": 2
        ```
 
-2. __Paylaşılan erişim ilkesini__ ve __anahtarı__alın. Bu örnekte, __hizmet__ anahtarını kullanın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
+2. Paylaşılan __erişim ilkesini__ ve __anahtarı__alın. Bu örnekte, __hizmet__ anahtarını kullanın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
 
-    * __[Azure Portal](https://portal.azure.com/)__ , aşağıdaki adımları kullanın:
+    * __Azure [portalından](https://portal.azure.com/)__ aşağıdaki adımları kullanın:
 
-        1. __Paylaşılan erişim ilkeleri__' ni seçin ve ardından __hizmet__' i seçin.
-        2. __Birincil anahtar__ değerini kopyalayın.
-        3. __Bağlantı dizesini kopyalayın--birincil anahtar__ değeri.
+        1. __Paylaşılan erişim ilkelerini__seçin ve ardından __hizmet__seçin.
+        2. Birincil __anahtar__ değerini kopyalayın.
+        3. Bağlantı __dizesini kopyalayın-- birincil anahtar__ değeri.
 
-    * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)'dan__aşağıdaki komutu kullanın:
+    * __Azure [CLI'den](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ aşağıdaki komutu kullanın:
 
         1. Birincil anahtar değerini almak için aşağıdaki komutu kullanın:
 
-            ```azure-cli
+            ```azurecli
             az iot hub policy show --hub-name myhubname --name service --query "primaryKey"
             ```
 
-            `myhubname`, IoT Hub 'ınızın adıyla değiştirin. Yanıt, bu hub için `service` ilkesinin birincil anahtarıdır.
+            IoT hub'ınızın adıyla değiştirin. `myhubname` Yanıt, bu hub için `service` ilke için birincil anahtardır.
 
-        2. `service` ilkesinin bağlantı dizesini almak için aşağıdaki komutu kullanın:
+        2. İlkenin bağlantı dizesini `service` almak için aşağıdaki komutu kullanın:
 
-            ```azure-cli
+            ```azurecli
             az iot hub show-connection-string --name myhubname --policy-name service --query "connectionString"
             ```
 
-            `myhubname`, IoT Hub 'ınızın adıyla değiştirin. Yanıt, `service` ilkesinin bağlantı dizesidir.
+            IoT hub'ınızın adıyla değiştirin. `myhubname` Yanıt, ilkenin bağlantı `service` dizesidir.
 
-## <a name="configure-the-source-connection"></a>Kaynak bağlantıyı yapılandırma
+## <a name="configure-the-source-connection"></a>Kaynak bağlantısını yapılandırma
 
-Kaynağı IoT Hub çalışacak şekilde yapılandırmak için, Edge düğümüne bir SSH bağlantısından aşağıdaki eylemleri gerçekleştirin:
+Kaynağı IoT Hub'ınızla çalışacak şekilde yapılandırmak için, ssh bağlantısından kenar düğümüne aşağıdaki eylemleri gerçekleştirin:
 
-1. `/usr/hdp/current/kafka-broker/config/` dizininde `connect-iot-source.properties` dosyanın bir kopyasını oluşturun. Dosyayı toketi-Kafka-Connect-ıothub projesinden indirmek için aşağıdaki komutu kullanın:
+1. `/usr/hdp/current/kafka-broker/config/` Dizinde dosyanın `connect-iot-source.properties` bir kopyasını oluşturun. Dosyayı toketi-kafka-connect-iothub projesinden indirmek için aşağıdaki komutu kullanın:
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
     ```
 
-1. `connect-iot-source.properties` dosyasını düzenlemek ve IoT Hub bilgilerini eklemek için aşağıdaki komutu kullanın:
+1. Dosyayı `connect-iot-source.properties` ve IoT hub bilgilerini eklemek için aşağıdaki komutu kullanın:
 
     ```bash
     sudo nano /usr/hdp/current/kafka-broker/config/connect-iothub-source.properties
     ```
 
-1. Düzenleyicide aşağıdaki girişleri bulun ve değiştirin:
+1. Düzenleyicide, aşağıdaki girişleri bulun ve değiştirin:
 
     |Geçerli değer |Düzenle|
     |---|---|
-    |`Kafka.Topic=PLACEHOLDER`|`PLACEHOLDER` yerine `iotin` yazın. IoT Hub 'ından alınan iletiler `iotin` konusuna yerleştirilir.|
-    |`IotHub.EventHubCompatibleName=PLACEHOLDER`|`PLACEHOLDER`, Olay Hub 'ı ile uyumlu adıyla değiştirin.|
-    |`IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`|`PLACEHOLDER`, Event hub ile uyumlu uç nokta ile değiştirin.|
+    |`Kafka.Topic=PLACEHOLDER`|`PLACEHOLDER` yerine `iotin` yazın. IoT hub'ından alınan iletiler `iotin` konuya yerleştirilir.|
+    |`IotHub.EventHubCompatibleName=PLACEHOLDER`|Olay `PLACEHOLDER` Hub uyumlu adla değiştirin.|
+    |`IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`|Olay `PLACEHOLDER` Hub uyumlu bitiş noktası ile değiştirin.|
     |`IotHub.AccessKeyName=PLACEHOLDER`|`PLACEHOLDER` yerine `service` yazın.|
-    |`IotHub.AccessKeyValue=PLACEHOLDER`|`PLACEHOLDER`, `service` ilkesinin birincil anahtarıyla değiştirin.|
-    |`IotHub.Partitions=PLACEHOLDER`|`PLACEHOLDER`, önceki adımlardan bölüm sayısıyla değiştirin.|
-    |`IotHub.StartTime=PLACEHOLDER`|`PLACEHOLDER` UTC tarihi ile değiştirin. Bu tarih, bağlayıcının iletileri denetlemeye başladığı tarihtir. Tarih biçimi `yyyy-mm-ddThh:mm:ssZ`.|
-    |`BatchSize=100`|`100` yerine `5` yazın. Bu değişiklik, IoT Hub 'da beş yeni ileti olduğunda bağlayıcının iletileri Kafka 'e okumasına neden olur.|
+    |`IotHub.AccessKeyValue=PLACEHOLDER`|İlkenin birincil anahtarıyla değiştirin. `PLACEHOLDER` `service`|
+    |`IotHub.Partitions=PLACEHOLDER`|Önceki `PLACEHOLDER` adımlardaki bölüm sayısıyla değiştirin.|
+    |`IotHub.StartTime=PLACEHOLDER`|UTC tarihiyle değiştirin. `PLACEHOLDER` Bu tarih, bağlayıcının iletileri denetlemeye başladığı tarihtir. Tarih `yyyy-mm-ddThh:mm:ssZ`biçimi.|
+    |`BatchSize=100`|`100` yerine `5` yazın. Bu değişiklik, IoT hub'ında beş yeni ileti olduğunda bağlayıcının Kafka'ya ileti okumasına neden olur.|
 
-    Örnek bir yapılandırma için bkz. [Azure Için Kafka Connect Source Connector IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
+    Örnek bir yapılandırma için Azure [IoT Hub için Kafka Connect Kaynak Bağlayıcı](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)Bağlayıcısı'na bakın.
 
-1. Değişiklikleri kaydetmek için __CTRL + X__, __Y__ve __ENTER__tuşlarını kullanın.
+1. Değişiklikleri kaydetmek için __Ctrl + X__, __Y__ve ardından __Enter__' ı kullanın.
 
-Bağlayıcı kaynağını yapılandırma hakkında daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
+Bağlayıcı kaynağını yapılandırma hakkında daha fazla [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)bilgi için bkz.
 
-## <a name="configure-the-sink-connection"></a>Havuz bağlantısını yapılandırma
+## <a name="configure-the-sink-connection"></a>Lavabo bağlantısını yapılandırma
 
-Havuz bağlantısını IoT Hub ile çalışacak şekilde yapılandırmak için, Edge düğümüne bir SSH bağlantısından aşağıdaki eylemleri gerçekleştirin:
+Lavabo bağlantısını IoT Hub'ınızla çalışacak şekilde yapılandırmak için, ssh bağlantısından kenar düğümüne aşağıdaki eylemleri gerçekleştirin:
 
-1. `/usr/hdp/current/kafka-broker/config/` dizininde `connect-iothub-sink.properties` dosyanın bir kopyasını oluşturun. Dosyayı toketi-Kafka-Connect-ıothub projesinden indirmek için aşağıdaki komutu kullanın:
+1. `/usr/hdp/current/kafka-broker/config/` Dizinde dosyanın `connect-iothub-sink.properties` bir kopyasını oluşturun. Dosyayı toketi-kafka-connect-iothub projesinden indirmek için aşağıdaki komutu kullanın:
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties
     ```
 
-1. `connect-iothub-sink.properties` dosyasını düzenlemek ve IoT Hub bilgilerini eklemek için aşağıdaki komutu kullanın:
+1. Dosyayı `connect-iothub-sink.properties` ve IoT hub bilgilerini eklemek için aşağıdaki komutu kullanın:
 
     ```bash
     sudo nano /usr/hdp/current/kafka-broker/config/connect-iothub-sink.properties
     ```
 
-1. Düzenleyicide aşağıdaki girişleri bulun ve değiştirin:
+1. Düzenleyicide, aşağıdaki girişleri bulun ve değiştirin:
 
     |Geçerli değer |Düzenle|
     |---|---|
-    |`topics=PLACEHOLDER`|`PLACEHOLDER` yerine `iotout` yazın. `iotout` konuya yazılan iletiler IoT Hub 'ına iletilir.|
-    |`IotHub.ConnectionString=PLACEHOLDER`|`PLACEHOLDER`, `service` ilkesinin bağlantı dizesiyle değiştirin.|
+    |`topics=PLACEHOLDER`|`PLACEHOLDER` yerine `iotout` yazın. `iotout` Konuya yazılan iletiler IoT hub'ına iletilir.|
+    |`IotHub.ConnectionString=PLACEHOLDER`|İlke için bağlantı `service` dizesiyle değiştirin. `PLACEHOLDER`|
 
-    Örnek bir yapılandırma için bkz. [Azure IoT Hub Için Kafka Connect Sink Connector](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+    Örnek bir yapılandırma için Azure [IoT Hub için Kafka Connect Büzerek Bağlayıcısı'na](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)bakın.
 
-1. Değişiklikleri kaydetmek için __CTRL + X__, __Y__ve __ENTER__tuşlarını kullanın.
+1. Değişiklikleri kaydetmek için __Ctrl + X__, __Y__ve ardından __Enter__' ı kullanın.
 
-Bağlayıcı havuzunu yapılandırma hakkında daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+Konektör lavabosu yapılandırma hakkında daha [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)fazla bilgi için bkz.
 
-## <a name="start-the-source-connector"></a>Kaynak bağlayıcısını başlatma
+## <a name="start-the-source-connector"></a>Kaynak bağlayıcısını başlatın
 
-1. Kaynak bağlayıcısını başlatmak için Edge düğümüne bir SSH bağlantısından aşağıdaki komutu kullanın:
+1. Kaynak bağlayıcıyı başlatmak için, ssh bağlantısından kenar düğümüne aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/connect-standalone.sh /usr/hdp/current/kafka-broker/config/connect-standalone.properties /usr/hdp/current/kafka-broker/config/connect-iothub-source.properties
     ```
 
-    Bağlayıcı başladıktan sonra cihazınızdan IoT Hub 'ına ileti gönderin. Bağlayıcı IoT Hub 'ından iletileri okur ve Kafka konusunda bunları depoladığında, bilgileri konsola kaydeder:
+    Konektör başladıktan sonra, cihazınızdan IoT hub'ına ileti gönderin. Bağlayıcı IoT hub'ından gelen iletileri okur ve Kafka konusuna saklarken, bilgileri konsola kaydeder:
 
-    ```text
+    ```output
     [2017-08-29 20:15:46,112] INFO Polling for data - Obtained 5 SourceRecords from IotHub (com.microsoft.azure.iot.kafka.connect.IotHubSourceTask:39)
     [2017-08-29 20:15:54,106] INFO Finished WorkerSourceTask{id=AzureIotHubConnector-0} commitOffsets successfully in 4 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:356)
     ```
 
     > [!NOTE]  
-    > Bağlayıcı başladığında birkaç uyarı görebilirsiniz. Bu uyarılar IoT Hub 'ından ileti alma ile ilgili sorunlara neden olmaz.
+    > Bağlayıcı çalışırken çeşitli uyarılar görebilirsiniz. Bu uyarılar, IoT hub'ından ileti alma da sorunlara neden olmaz.
 
-1. Birkaç dakika sonra **CTRL + C** tuşlarına iki kez kullanarak bağlayıcıyı durdurun. Bağlayıcının durdurulması birkaç dakika sürer.
+1. **Ctrl + C** kullanarak birkaç dakika sonra konektörü iki kez durdurun. Konektörün durması birkaç dakika sürer.
 
-## <a name="start-the-sink-connector"></a>Havuz bağlayıcısını başlatma
+## <a name="start-the-sink-connector"></a>Lavabo konektörünü başlatın
 
-Bir SSH bağlantısından kenar düğümüne, havuz bağlayıcısını tek başına modunda başlatmak için aşağıdaki komutu kullanın:
+SSH bağlantısından kenar düğümüne kadar, lavabo konektörünü bağımsız modda başlatmak için aşağıdaki komutu kullanın:
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/connect-standalone.sh /usr/hdp/current/kafka-broker/config/connect-standalone.properties /usr/hdp/current/kafka-broker/config/connect-iothub-sink.properties
 ```
 
-Bağlayıcı çalışırken, aşağıdaki metinle benzer bilgiler görüntülenir:
+Bağlayıcı çalışırken, aşağıdaki metne benzer bilgiler görüntülenir:
 
-```text
+```output
 [2017-08-30 17:49:16,150] INFO Started tasks to send 1 messages to devices. (com.microsoft.azure.iot.kafka.connect.sink.
 IotHubSinkTask:47)
 [2017-08-30 17:49:16,150] INFO WorkerSinkTask{id=AzureIotHubSinkConnector-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSinkTask:262)
 ```
 
 > [!NOTE]  
-> Bağlayıcı başladığında birkaç uyarı fark edebilirsiniz. Bunları güvenle yok sayabilirsiniz.
+> Konektör çalışırken çeşitli uyarılar fark edebilirsiniz. Bunları güvenle yok sayabilirsiniz.
 
 ## <a name="send-messages"></a>İleti gönderme
 
-Bağlayıcı aracılığıyla ileti göndermek için aşağıdaki adımları kullanın:
+Bağlayıcı üzerinden ileti göndermek için aşağıdaki adımları kullanın:
 
-1. Kafka kümesinde *ikinci bir* SSH oturumu açın:
+1. Kafka kümesine *ikinci bir* SSH oturumu açın:
 
     ```bash
     ssh sshuser@new-edgenode.CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Yeni SSH oturumu için Kafka aracıların adresini alın. PAROLAYı küme oturum açma parolasıyla değiştirin, ardından şu komutu girin:
+1. Yeni ssh oturumu için Kafka brokerlarının adresini alın. Parola'yı küme giriş parolasıyla değiştirin ve ardından komutu girin:
 
     ```bash
     export password='PASSWORD'
@@ -325,38 +325,38 @@ Bağlayıcı aracılığıyla ileti göndermek için aşağıdaki adımları kul
     export KAFKABROKERS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     ```
 
-1. `iotout` konuya ileti göndermek için aşağıdaki komutu kullanın:
+1. `iotout` Konuya ileti göndermek için aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic iotout
     ```
 
-    Bu komut sizi normal Bash istemine döndürmez. Bunun yerine, `iotout` konusuna klavye girişi gönderir.
+    Bu komut sizi normal Bash istemine döndürmez. Bunun yerine, `iotout` konuya klavye girişi gönderir.
 
-1. Cihazınıza bir ileti göndermek için, `kafka-console-producer`için SSH oturumuna bir JSON belgesi yapıştırın.
+1. Cihazınıza ileti göndermek için, bir JSON belgesini SSH `kafka-console-producer`oturumuna yapıştırın.
 
     > [!IMPORTANT]  
-    > `"deviceId"` girdinin değerini cihazınızın KIMLIĞINE ayarlamanız gerekir. Aşağıdaki örnekte, cihaz `myDeviceId`olarak adlandırılmıştır:
+    > Cihazınızın `"deviceId"` kimliğine giriş değerini ayarlamanız gerekir. Aşağıdaki örnekte, aygıt adlandırılmış: `myDeviceId`
 
     ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"myDeviceId"}
     ```
 
-    Bu JSON belgesi için şema [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)daha ayrıntılı olarak açıklanmıştır.
+    Bu JSON belge için şema daha ayrıntılı [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)olarak açıklanmıştır .
 
-    Benzetimli Raspberry PI cihazını kullanıyorsanız ve çalışıyorsa, cihaz tarafından aşağıdaki ileti günlüğe kaydedilir:
+    Simüle edilmiş Raspberry Pi aygıtını kullanıyorsanız ve çalışıyorsa, aşağıdaki ileti aygıt tarafından günlüğe kaydedilir:
 
-    ```text
+    ```output
     Receive message: Turn On
     ```
 
-    JSON belgesini yeniden gönderin, ancak `"message"` girdinin değerini değiştirin. Yeni değer cihaz tarafından günlüğe kaydedilir.
+    JSON belgesini yeniden gönderin, ancak `"message"` girişin değerini değiştirin. Yeni değer aygıt tarafından günlüğe kaydedilir.
 
-Havuz bağlayıcısını kullanma hakkında daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+Lavabo konektörünü kullanma hakkında [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)daha fazla bilgi için bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, HDInsight üzerinde IoT Kafka bağlayıcısını başlatmak için Apache Kafka Connect API 'sini nasıl kullanacağınızı öğrendiniz. Kafka ile çalışmanın diğer yollarını saptamak için aşağıdaki bağlantıları kullanın:
+Bu belgede, HDInsight'ta IoT Kafka Konektörü'ni başlatmak için Apache Kafka Connect API'yi nasıl kullanacağınızı öğrendiniz. Kafka ile çalışmanın diğer yollarını keşfetmek için aşağıdaki bağlantıları kullanın:
 
-* [HDInsight üzerinde Apache Kafka ile Apache Spark kullanma](../hdinsight-apache-spark-with-kafka.md)
-* [HDInsight üzerinde Apache Kafka ile Apache Storm kullanma](../hdinsight-apache-storm-with-kafka.md)
+* [Apache Spark'ı Apache Kafka ile HDInsight'ta kullanın](../hdinsight-apache-spark-with-kafka.md)
+* [Apache Storm'u HdInsight'ta Apache Kafka ile kullanın](../hdinsight-apache-storm-with-kafka.md)

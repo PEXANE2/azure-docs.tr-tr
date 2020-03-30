@@ -1,6 +1,6 @@
 ---
-title: Bir giriş uç noktası için iç yönlendirme için özel IP adresi kullan
-description: Bu makalede, iç yönlendirme için özel IP 'Lerin nasıl kullanılacağı ve bu nedenle bir küme içindeki giriş uç noktasının, VNet 'in geri kalanına nasıl yapılacağı hakkında bilgi sağlanır.
+title: Giriş bitiş noktası için dahili yönlendirme için özel IP adresini kullanma
+description: Bu makalede, iç yönlendirme için özel IP'lerin nasıl kullanılacağı ve böylece bir küme içindeki Giriş bitiş noktasının VNet'in geri kalanına nasıl teşhir edileceklerine ilişkin bilgiler verilmektedir.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795484"
 ---
-# <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Bir giriş uç noktası için iç yönlendirme için özel IP kullan 
+# <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Giriş bitiş noktası için dahili yönlendirme için özel IP'yi kullanın 
 
-Bu özellik, özel bir IP kullanarak `Virtual Network` içindeki giriş uç noktasını açığa çıkarmak için izin verir.
+Bu özellik, özel bir IP `Virtual Network` kullanarak içindeki giriş bitiş noktasını ortaya çıkarmanızı sağlar.
 
 ## <a name="pre-requisites"></a>Ön koşullar  
-[Özel BIR IP yapılandırmasıyla](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip) Application Gateway
+Özel IP [yapılandırması](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip) olan Uygulama Ağ Geçidi
 
-Denetleyiciyi, giriş için özel IP kullanmak üzere yapılandırmanın iki yolu vardır,
+Giriş için Özel IP kullanmak için denetleyiciyi yapılandırmanın iki yolu vardır,
 
-## <a name="assign-to-a-particular-ingress"></a>Belirli bir giriş için ata
-Özel IP üzerinden belirli bir girişi göstermek için, giriş bölümünde ek açıklama [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) kullanın.
+## <a name="assign-to-a-particular-ingress"></a>Belirli bir girişe atama
+Özel IP üzerinde belirli bir giriş ortaya [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) çıkarmak için Giriş ek açıklama kullanın.
 
 ### <a name="usage"></a>Kullanım
 ```yaml
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
 
-Özel IP olmayan uygulama ağ geçitleri için `appgw.ingress.kubernetes.io/use-private-ip: "true"` ile ek açıklama eklenmiş olarak yoksayılır. Bu, giriş olayında ve AGIC Pod günlüğünde gösterilir.
+Özel IP'si olmayan Uygulama Ağ Geçitleri `appgw.ingress.kubernetes.io/use-private-ip: "true"` için açıklamalı Ingresses göz ardı edilecektir. Bu giriş olay ve AGIC pod günlüğü belirtilecektir.
 
-* Giriş olayında gösterildiği gibi hata
+* Giriş Olayında belirtildiği gibi hata
 
     ```bash
     Events:
@@ -43,15 +43,15 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
     applicationgateway3026 has a private IP address
     ```
 
-* AGIC günlüklerinde gösterildiği gibi hata
+* AGIC Günlüklerinde belirtildiği gibi hata
 
     ```bash
     E0730 18:57:37.914749       1 prune.go:65] Ingress default/hello-world-ingress requires Application Gateway applicationgateway3026 has a private IP address
     ```
 
 
-## <a name="assign-globally"></a>Küresel olarak ata
-Bunun için gereksinim, tüm gelen ve özel IP üzerinden gösterilmesini kısıtlamak için `helm` config içinde `appgw.usePrivateIP: true` kullanır.
+## <a name="assign-globally"></a>Genel Olarak Atama
+Durumda, gereksinim, config kullanmak, `appgw.usePrivateIP: true` `helm` Özel IP üzerinde maruz kalmak için tüm Ingresses kısıtlamaktır.
 
 ### <a name="usage"></a>Kullanım
 ```yaml
@@ -62,8 +62,8 @@ appgw:
     usePrivateIP: true
 ```
 
-Bu, giriş denetleyicisini, Application Gateway ön uç dinleyicilerini yapılandırırken özel bir IP için IP adresi yapılandırmalarını filtreleyecek hale getirir.
-`usePrivateIP: true` ve özel IP atanmadığı takdirde AGIC, ŞA ve kilitlenme olur.
+Bu, Giriş Denetleyicisi' nin Uygulama Ağ Geçidi'ndeki ön uç dinleyicilerini yapılandırırken Özel IP'nin IP adresi yapılandırmalarını filtrelemesini sağlar.
+AGIC paniğe kapılacak ve özel IP atanmazsa çökecek. `usePrivateIP: true`
 
 > [!NOTE]
-> Application Gateway v2 SKU 'SU için genel bir IP gerekir. Application Gateway özel olması gerekir, trafiği kısıtlamak için Application Gateway alt ağına bir [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) ekleyin.
+> Uygulama Ağ Geçidi v2 SKU bir Kamu IP gerektirir. Uygulama Ağ Geçidi'nin özel olmasını [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) istiyorsanız, trafiği kısıtlamak için Uygulama Ağ Geçidi'nin alt ağına bir ekleme.

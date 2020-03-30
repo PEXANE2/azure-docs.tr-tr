@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77210388"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: node. js SDK ve Azure Cosmos DB Cassandra uygulaması derleme
+# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Quickstart: Node.js SDK ve Azure Cosmos DB ile bir Cassandra uygulaması oluşturun
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,14 +24,14 @@ ms.locfileid: "77210388"
 > * [Python](create-cassandra-python.md)
 >  
 
-Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur ve GitHub 'dan kopyalanmış bir Cassandra Node. js uygulaması kullanarak Cassandra veritabanı ve kapsayıcısı oluşturursunuz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
+Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturursunuz ve Bir Cassandra veritabanı ve kapsayıcı oluşturmak için GitHub'dan klonlanmış bir Cassandra Node.js uygulaması kullanırsınız. Azure Cosmos DB, belge, tablo, anahtar değeri ve grafik veritabanlarını küresel dağıtım ve yatay ölçek özelliklerine sahip hızlı bir şekilde oluşturmanıza ve sorgulamanıza olanak tanıyan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
 Ayrıca, şunlar gerekir:
-* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) sürüm v0.10.29 veya üzeri
+* [Düğüm.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) sürüm v0.10.29 veya üstü
 * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
@@ -42,7 +42,7 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub 'dan bir Cassandra API uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu görüyorsunuz. 
+Şimdi GitHub'dan bir Cassandra API uygulamasını klonlayalım, bağlantı dizesini ayarlayalım ve çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu görüyorsunuz. 
 
 1. Bir komut istemi açın. `git-samples` adlı yeni bir klasör oluşturun. Ardından, komut istemini kapatın.
 
@@ -64,7 +64,7 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıklarının tamamı `uprofile.js` klasöründeki `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` dosyasından alınmıştır. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıklarının tamamı `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` klasöründeki `uprofile.js` dosyasından alınmıştır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
 * Kullanıcı adı ve parola değerleri, Azure portalındaki bağlantı dizesi sayfası kullanılarak ayarlanmıştır. `path\to\cert` bir X509 sertifikasının yolunu sağlar. 
 
@@ -77,7 +77,7 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
    const authProviderLocalCassandra = new cassandra.auth.PlainTextAuthProvider(config.username, config.password);
    ```
 
-* `client` contactPoint bilgileriyle başlatılır. ContactPoint, Azure portalından alınır.
+* `client`, contactPoint bilgileriyle başlatılır. ContactPoint, Azure portalından alınır.
 
     ```javascript
     const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
@@ -166,9 +166,9 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bağlantı dizesi, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
+1. [Azure portalındaki](https://portal.azure.com/)Azure Cosmos DB hesabınızda **Bağlantı Dizesini**seçin. 
 
-    CONTACT POINT değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-nodejs/copy.png) kullanın.
+    En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-nodejs/copy.png) düğmesini kullanın.
 
     ![Azure portalında bağlantı dizesi sayfasından CONTACT POINT, USERNAME ve PASSWORD değerlerini görüntüleme ve kopyalama](./media/create-cassandra-nodejs/keys.png)
 
@@ -196,7 +196,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
     
 ## <a name="use-the-x509-certificate"></a>X509 sertifikası kullanma
 
-1. Baltimore CyberTrust Kök sertifikasını [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) konumundan yerel olarak indirin. `.cer` dosya uzantısını kullanarak dosyayı yeniden adlandırın.
+1. Baltimore CyberTrust Root sertifikasını [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt)yerel olarak indirin. `.cer` dosya uzantısını kullanarak dosyayı yeniden adlandırın.
 
    Sertifika `02:00:00:b9` seri numarasına ve `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74` SHA1 parmak izine sahiptir.
 
@@ -205,30 +205,30 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 3. `uprofile.js` dosyasını kaydedin.
 
 > [!NOTE]
-> Sonraki adımlarda sertifikayla ilgili bir hatayla karşılaşırsanız ve bir Windows makinesinde çalışıyorsanız, bir. CRT dosyasını düzgün şekilde Microsoft. cer biçimine dönüştürme sürecini izlemediğinizden emin olun.
+> Sonraki adımlarda sertifikayla ilgili bir hatayla karşılaşırsanız ve bir Windows makinesinde çalışıyorsanız, .crt dosyasını aşağıdaki Microsoft .cer biçimine düzgün bir şekilde dönüştürmek için işlemi izlediğinizi emin olun.
 > 
-> . CRT dosyasına çift tıklayarak sertifika görüntüsüne açın. 
+> Sertifika ekranına açmak için .crt dosyasına çift tıklayın. 
 >
 > ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/crtcer1.gif)
 >
-> Sertifika sihirbazında Ileri ' ye basın. Base-64 kodlamalı X. 509.440 (. CER) ve ardından Ileri.
+> Sertifika Sihirbazı'nda İleri tuşuna basın. Kodlanmış X.509 (. CER), sonra Sonraki.
 >
 > ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/crtcer2.gif)
 >
-> Araştır ' ı seçin (bir hedef bulmak için) ve bir dosya adı yazın.
-> Ileri ' yi ve ardından tamamlandı seçeneğini belirleyin.
+> Gözat'ı (hedefi bulmak için) ve dosya adını yazın'ı seçin.
+> Sonraki'ni seçin ve Bitti'yi seçin.
 >
-> Artık düzgün şekilde biçimlendirilen bir. cer dosyanız olmalıdır. `uprofile.js` içindeki yolun bu dosyaya işaret ettiğini doğrulayın.
+> Şimdi düzgün biçimlendirilmiş bir .cer dosyası olmalıdır. Bu dosyaya `uprofile.js` işaret eden yol olduğundan emin olun.
 
 ## <a name="run-the-nodejs-app"></a>Node.js uygulamasını çalıştırma
 
-1. Git Terminal penceresinde, daha önce Klonladığınız örnek dizinde olduğunuzdan emin olun:
+1. Git terminali penceresinde, daha önce klonladığınız örnek dizinde olduğunuzdan emin olun:
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. Gerekli NPM modüllerini yüklemek için `npm install` çalıştırın.
+2. Gerekli `npm install` npm modüllerini yüklemek için çalıştırın.
 
 3. Node.js uygulamanızı başlatmak için `node uprofile.js` komutunu çalıştırın.
 
@@ -236,7 +236,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/output.png)
 
-    Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın. 
+    Programın yürütülmesini durdurmak ve konsol penceresini kapatmak için CTRL+C tuşuna basın. 
 
 5. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
@@ -252,7 +252,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Cassandra API sahip bir Azure Cosmos DB hesabı oluşturmayı ve Cassandra veritabanı ve kapsayıcısı oluşturan Cassandra Node. js uygulamasını çalıştırmayı öğrendiniz. Artık Azure Cosmos DB hesabınıza daha fazla veri aktarabilirsiniz. 
+Bu hızlı başlangıçta, Cassandra API ile azure cosmos DB hesabı oluşturmayı ve Cassandra veritabanı ve kapsayıcı oluşturan bir Cassandra Node.js uygulamasını çalıştırmayı öğrendiniz. Artık Azure Cosmos DB hesabınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Cassandra verilerini Azure Cosmos DB’ye aktarma](cassandra-import-data.md)

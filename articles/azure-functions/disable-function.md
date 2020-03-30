@@ -1,27 +1,27 @@
 ---
-title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
-description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
+title: Azure İşlevlerinde işlevleri devre dışı etme
+description: Azure İşlevlerinde işlevleri nasıl devre dışı bırakıp etkinleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116151"
 ---
-# <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
+# <a name="how-to-disable-functions-in-azure-functions"></a>Azure İşlevlerinde işlevleri devre dışı etme
 
-Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bu, belirli bir işlevin işlev uygulamasının tamamını durdurmadan çalışmasını engellemenizi sağlar.
+Bu makalede, Azure İşlevlerinde bir işlevin nasıl devre dışı atılabildiği açıklanmaktadır. Bir işlevi *devre dışı kılabilir,* çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yok saymasını sağlamak anlamına gelir. Bu, belirli bir işlevin tüm işlev uygulamasını durdurmadan çalışmasını engellemenize olanak tanır.
 
-Bir işlevi devre dışı bırakmak için önerilen yol `AzureWebJobs.<FUNCTION_NAME>.Disabled`biçimindeki bir uygulama ayarı kullanmaktır. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
+Bir işlevi devre dışı bıyıklık yolu, biçimdeki `AzureWebJobs.<FUNCTION_NAME>.Disabled`bir uygulama ayarını kullanmaktır. Bu uygulama ayarını [Azure CLI'yi](/cli/azure/) kullanarak ve işlevinizin [Azure portalındaki](https://portal.azure.com) **Yönet** sekmesinden de dahil olmak üzere çeşitli şekillerde oluşturabilir ve değiştirebilirsiniz. 
 
 > [!NOTE]  
-> HTTP ile tetiklenen bir işlevi bu makalede açıklanan yöntemleri kullanarak devre dışı bıraktığınızda, yerel bilgisayarınızda çalışırken uç nokta hala erişilebilir olabilir.  
+> Bu makalede açıklanan yöntemleri kullanarak bir HTTP tetiklenen işlevi devre dışı kaldığınızzaman, yerel bilgisayarınızda çalışırken bitiş noktası yine de erişilebilir olabilir.  
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLı 'da, uygulama ayarını oluşturmak ve değiştirmek için [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutunu kullanın. Aşağıdaki komut `QueueTrigger` adlı bir işlevi devre dışı bırakır `AzureWebJobs.QueueTrigger.Disabled` adlı bir uygulama ayarı oluşturarak `true`olarak ayarlayın. 
+Azure CLI'de, uygulama [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) ayarını oluşturmak ve değiştirmek için komutu kullanırsınız. Aşağıdaki komut, `QueueTrigger` `AzureWebJobs.QueueTrigger.Disabled` `true`"' kümesi" adlı bir uygulama ayarı oluşturarak adlı bir işlevi devre dışı bıraktır. 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -29,7 +29,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
-İşlevi yeniden etkinleştirmek için aynı komutu bir `false`değeriyle yeniden çalıştırın.
+İşlevi yeniden etkinleştirmek için aynı komutu `false`.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -37,19 +37,19 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>Portalı kullanma
+## <a name="use-the-portal"></a>Portalı Kullan
 
-İşlevin **Yönet** sekmesinde **işlev durumu** anahtarını da kullanabilirsiniz. Anahtar, `AzureWebJobs.<FUNCTION_NAME>.Disabled` uygulama ayarı oluşturup silerek işe yarar.
+İşlevin **Yönet** sekmesinde **İşlev Durumu** anahtarını da kullanabilirsiniz. Anahtar, uygulama ayarını `AzureWebJobs.<FUNCTION_NAME>.Disabled` oluşturup silerek çalışır.
 
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+![Fonksiyon durumu anahtarı](media/disable-function/function-state-switch.png)
 
-## <a name="other-methods"></a>Diğer Yöntemler
+## <a name="other-methods"></a>Diğer yöntemler
 
-Uygulama ayarı yöntemi tüm diller ve tüm çalışma zamanı sürümleri için önerilse de, işlevleri devre dışı bırakmak için birkaç farklı yol vardır. Dil ve çalışma zamanı sürümüne göre farklılık gösteren bu yöntemler geriye dönük uyumluluk için korunur. 
+Uygulama ayar yöntemi tüm diller ve tüm çalışma zamanı sürümleri için önerilir, ancak devre dışı kalmanın birkaç yolu vardır. Dil ve çalışma zamanı sürümüne göre değişen bu yöntemler, geriye dönük uyumluluk için korunur. 
 
-### <a name="c-class-libraries"></a>C#sınıf kitaplıkları
+### <a name="c-class-libraries"></a>C# sınıfı kitaplıklar
 
-Bir sınıf kitaplığı işlevinde, işlevin tetiklenmasını engellemek için `Disable` özniteliğini de kullanabilirsiniz. Aşağıdaki örnekte gösterildiği gibi, özniteliğini bir oluşturucu parametresi olmadan kullanabilirsiniz:
+Sınıf kitaplığı işlevinde, işlevin `Disable` tetiklemesini önlemek için özniteliği de kullanabilirsiniz. Aşağıdaki örnekte gösterildiği gibi, bir oluşturucu parametresi olmadan özniteliği kullanabilirsiniz:
 
 ```csharp
 public static class QueueFunctions
@@ -65,7 +65,7 @@ public static class QueueFunctions
 }
 ```
 
-Oluşturucu parametresi olmayan özniteliği, işlevin devre dışı durumunu değiştirmek için projeyi yeniden derlemenize ve yeniden dağıtmanıza gerek duyar. Bu özniteliği kullanmanın daha esnek bir yolu, aşağıdaki örnekte gösterildiği gibi bir Boole uygulama ayarına başvuran bir oluşturucu parametresi dahil maktır:
+Oluşturucu parametresi olmayan öznitelik, işlevin devre dışı bırakılmış durumunu değiştirmek için projeyi yeniden derlemenizi ve yeniden dağıtmanızı gerektirir. Özniteliği kullanmanın daha esnek bir yolu, aşağıdaki örnekte gösterildiği gibi Boolean uygulama ayarına atıfta bulunan bir oluşturucu parametre eklemektir:
 
 ```csharp
 public static class QueueFunctions
@@ -81,18 +81,18 @@ public static class QueueFunctions
 }
 ```
 
-Bu yöntem, uygulamayı yeniden derlemeden veya yeniden dağıtmaya gerek kalmadan, uygulama ayarını değiştirerek işlevini etkinleştirmenizi ve devre dışı bırakmanızı sağlar. Bir uygulama ayarının değiştirilmesi, işlev uygulamasının yeniden başlatılmasına neden olur, bu nedenle devre dışı durum değişikliği hemen tanınır.
+Bu yöntem, uygulama ayarını değiştirerek, yeniden derlemeden veya yeniden dağıtmadan işlevi etkinleştirmenizi ve devre dışı kaldırmanızı sağlar. Uygulama ayarını değiştirmek işlev uygulamasının yeniden başlatılmasına neden olur, böylece devre dışı bırakılan durum değişikliği hemen fark edilir.
 
 > [!IMPORTANT]
-> `Disabled` özniteliği, bir sınıf kitaplığı işlevini devre dışı bırakmak için tek yoldur. Bir sınıf kitaplığı işlevi için oluşturulan *function. JSON* dosyası doğrudan düzenlenmemelidir. Bu dosyayı düzenlerseniz, `disabled` özelliğinde yaptığınız her şey hiçbir etkiye sahip olmaz.
+> Öznitelik, `Disabled` sınıf kitaplığı işlevini devre dışı betmenin tek yoludur. Sınıf kitaplığı işlevi için oluşturulan *function.json* dosyasının doğrudan düzenlenmesi amaçlanmaz. Bu dosyayı edinirseniz, `disabled` tesise ne yaparsanız yapın hiçbir etkisi olmaz.
 >
-> , *Function. JSON* dosyasını değiştirerek çalıştığından, **Yönetim** sekmesindeki **işlev durumu** anahtarı için de aynı olur.
+> Aynı *durum, function.json* dosyasını değiştirerek çalıştığından, **Yönet** sekmesindeki **İşlev durumu** anahtarı için de geçerlidir.
 >
-> Ayrıca, portalda işlevin devre dışı bırakıldığını belirtebileceğini unutmayın.
+> Ayrıca, portalın işlevin devre dışı bırakıldığını gösterebileceğini unutmayın.
 
-### <a name="functions-1x---scripting-languages"></a>İşlevler 1. x-betik dilleri
+### <a name="functions-1x---scripting-languages"></a>Fonksiyonlar 1.x - komut dosyası dilleri
 
-Sürüm 1. x ' de, çalışma zamanına bir işlev tetikleyemediğinden bilgi almak için *function. JSON* dosyasının `disabled` özelliğini de kullanabilirsiniz. Bu yöntem yalnızca C# betik ve JavaScript gibi komut dosyası dilleri için geçerlidir. `disabled` özelliği `true` veya bir uygulama ayarının adına ayarlanabilir:
+Sürüm 1.x'te, çalışma `disabled` zamanının bir işlevi tetiklememesi gerektiğini söylemek için *function.json* dosyasının özelliğini de kullanabilirsiniz. Bu yöntem yalnızca C# komut dosyası ve JavaScript gibi komut dosyası dilleri için çalışır. Özellik `disabled` bir uygulama `true` ayarına veya adlarına ayarlanabilir:
 
 ```json
 {
@@ -108,7 +108,7 @@ Sürüm 1. x ' de, çalışma zamanına bir işlev tetikleyemediğinden bilgi al
     "disabled": true
 }
 ```
-veya 
+or 
 
 ```json
     "bindings": [
@@ -117,12 +117,12 @@ veya
     "disabled": "IS_DISABLED"
 ```
 
-İkinci örnekte, IS_DISABLED adlı bir uygulama ayarı olduğunda ve `true` veya 1 olarak ayarlandığında işlev devre dışıdır.
+İkinci örnekte, IS_DISABLED adlı ve 1 olarak ayarlanmış `true` bir uygulama ayarı olduğunda işlev devre dışı bırakılır.
 
-Dosyayı Azure portal düzenleyebilir veya işlevin **Yönet** sekmesindeki **işlev durumu** anahtarını kullanabilirsiniz. Portal anahtarı, *function. JSON* dosyası değiştirilerek çalışır.
+Dosyayı Azure portalında değiştirebilir veya işlevin **Yönet** sekmesinde **İşlev Durumu** anahtarını kullanabilirsiniz. Portal anahtarı *function.json* dosyasını değiştirerek çalışır.
 
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+![Fonksiyon durumu anahtarı](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, otomatik Tetikleyicileri devre dışı bırakmaya yönelik bir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md).
+Bu makale, otomatik tetikleyicileri devre dışı bırakmak la ilgilidir. Tetikleyiciler hakkında daha fazla bilgi için [Tetikleyiciler ve bağlamalar'a](functions-triggers-bindings.md)bakın.

@@ -1,6 +1,6 @@
 ---
-title: Azure AD uygulamaları için gelişmiş SAML belirteci sertifika imzalama seçenekleri
-description: Azure Active Directory 'de önceden tümleştirilmiş uygulamalar için SAML belirtecinde gelişmiş sertifika imzalama seçeneklerini nasıl kullanacağınızı öğrenin
+title: Azure AD uygulamaları için gelişmiş SAML belirteç sertifikası imzalama seçenekleri
+description: Azure Active Directory'deki önceden tümleşik uygulamalar için SAML belirtecinde gelişmiş sertifika imzalama seçeneklerini nasıl kullanacağınızı öğrenin
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,63 +17,63 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159208"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 'daki Galeri uygulamaları için SAML belirtecinde gelişmiş sertifika imzalama seçenekleri
+# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory'deki galeri uygulamaları için SAML belirtecinde gelişmiş sertifika imzalama seçenekleri
 
-Bugün Azure Active Directory (Azure AD), Azure Active Directory Uygulama galerisinde binlerce önceden tümleştirilmiş uygulamayı destekler. 500 ' den fazla uygulama, [Netsuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) uygulaması gibi [Security assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0 protokolünü kullanarak çoklu oturum açmayı destekler. Bir müşteri, SAML kullanarak Azure AD aracılığıyla bir uygulamanın kimliğini doğruladığında, Azure AD uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Daha sonra uygulama, Kullanıcı adı ve parola istemek yerine müşterinin oturum açması için belirteci doğrular ve kullanır. Bu SAML belirteçleri, Azure AD 'de ve belirli standart algoritmalarda oluşturulan benzersiz sertifikayla imzalanır.
+Bugün Azure Active Directory (Azure AD), Azure Active Directory App Gallery'de binlerce önceden tümleşik uygulamayı destekler. Uygulamaların 500'den [fazlası, NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) uygulaması gibi [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0 protokolünü kullanarak tek oturum açma özelliğini destekler. Bir müşteri SAML kullanarak Azure AD aracılığıyla bir uygulamaya kimlik doğruladığında, Azure AD uygulamaya bir belirteç gönderir (http post aracılığıyla). Uygulama daha sonra bir kullanıcı adı ve parola için istek yerine müşteri oturum vermek için belirteci doğrular ve kullanır. Bu SAML belirteçleri, Azure AD'de ve belirli standart algoritmalarda oluşturulan benzersiz sertifikayla imzalanır.
 
-Azure AD, Galeri uygulamaları için varsayılan ayarların bazılarını kullanır. Varsayılan değerler, uygulamanın gereksinimlerine göre ayarlanır.
+Azure AD, galeri uygulamaları için varsayılan ayarlardan bazılarını kullanır. Varsayılan değerler, uygulamanın gereksinimlerine göre ayarlanır.
 
-Azure AD 'de sertifika imzalama seçeneklerini ve sertifika imzalama algoritmasını ayarlayabilirsiniz.
+Azure AD'de sertifika imzalama seçeneklerini ve sertifika imzalama algoritmasını ayarlayabilirsiniz.
 
 ## <a name="certificate-signing-options"></a>Sertifika imzalama seçenekleri
 
 Azure AD üç sertifika imzalama seçeneğini destekler:
 
-* **SAML onaylama Işlemi imzalayın**. Bu varsayılan seçenek, Galeri uygulamalarının çoğu için ayarlanır. Bu seçeneği belirlerseniz, kimlik sağlayıcısı (IDP) olarak Azure AD, SAML onaylama ve sertifikayı uygulamanın [X. 509.440](https://wikipedia.org/wiki/X.509) sertifikasıyla imzalar.
+* **Sign SAML iddiası**. Bu varsayılan seçenek galeri uygulamalarının çoğu için ayarlanır. Bu seçeneği belirlerseniz, Kimlik Sağlayıcısı olarak Azure AD (IdP), UYGULAMANIN [X.509](https://wikipedia.org/wiki/X.509) sertifikasıyla SAML iddiasını ve sertifikasını imzalar.
 
-* **SAML yanıtını imzala**. Bu seçeneği belirlerseniz, IDP olarak Azure AD, SAML yanıtını uygulamanın X. 509.440 sertifikasıyla imzalar.
+* **Oturum SAML yanıtı**. Bu seçeneği seçerseniz, IdP olarak Azure AD, uygulamanın X.509 sertifikasıyla SAML yanıtını imzalar.
 
-* **SAML yanıtı ve onaylama imzası**. Bu seçeneği belirlerseniz, IDP olarak Azure AD, tüm SAML belirtecini uygulamanın X. 509.440 sertifikasıyla imzalar.
+* **Sign SAML yanıtı ve iddiası**. Bu seçeneği belirlerseniz, IdP olarak Azure AD, uygulamanın X.509 sertifikasıyla tüm SAML belirteciyle imzalar.
 
 ## <a name="certificate-signing-algorithms"></a>Sertifika imzalama algoritmaları
 
-Azure AD, SAML Yanıtını imzalamak için iki imzalama algoritmasını veya güvenli karma algoritmaları (Swith) destekler:
+Azure AD, SAML yanıtını imzalamak için iki imzalama algoritmasını veya güvenli karma algoritmaları (SHA) destekler:
 
-* **SHA-256**. Azure AD, SAML Yanıtını imzalamak için bu varsayılan algoritmayı kullanır. Bu en yeni algoritmadır ve SHA-1 ' den daha güvenlidir. Uygulamaların çoğu SHA-256 algoritmasını destekler. Bir uygulama imzalama algoritması olarak yalnızca SHA-1 ' i destekliyorsa, bunu değiştirebilirsiniz. Aksi takdirde, SAML Yanıtını imzalamak için SHA-256 algoritmasını kullanmanızı öneririz.
+* **SHA-256**. Azure AD, SAML yanıtını imzalamak için bu varsayılan algoritmayı kullanır. Bu en yeni algoritma ve SHA-1 daha güvenlidir. Uygulamaların çoğu SHA-256 algoritmasını destekler. Bir uygulama imzalama algoritması olarak yalnızca SHA-1'i destekliyorsa, bunu değiştirebilirsiniz. Aksi takdirde, SAML yanıtını imzalamak için SHA-256 algoritmasını kullanmanızı öneririz.
 
-* **SHA-1**. Bu algoritma daha eski ve SHA-256 ' den daha az güvenli olarak değerlendirilir. Bir uygulama yalnızca bu imzalama algoritmasını destekliyorsa, **Imzalama algoritması** açılan listesinden bu seçeneği belirleyebilirsiniz. Ardından Azure AD, SAML yanıtını SHA-1 algoritmasıyla imzalar.
+* **SHA-1**. Bu algoritma daha eski ve SHA-256'dan daha az güvenli olarak kabul edilir. Bir uygulama yalnızca bu imzalama algoritmasını destekliyorsa, Bu seçeneği **İmzalama Algoritması** açılır listesinde seçebilirsiniz. Azure AD daha sonra SHA-1 algoritmasıyla SAML yanıtını imzalar.
 
-## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Sertifika imzalama seçeneklerini ve imzalama algoritmasını Değiştir
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Sertifika imzalama seçeneklerini ve imzalama algoritması değiştirme
 
 Bir uygulamanın SAML sertifika imzalama seçeneklerini ve sertifika imzalama algoritmasını değiştirmek için, söz konusu uygulamayı seçin:
 
-1. [Azure Active Directory portalında](https://aad.portal.azure.com/)hesabınızda oturum açın. **Azure Active Directory Yönetim Merkezi** sayfası görüntülenir.
-1. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Hesabınızdaki kurumsal uygulamaların bir listesi görüntülenir.
-1. Bir uygulama seçin. Uygulama için bir genel bakış sayfası görüntülenir.
+1. Azure [Active Directory portalında](https://aad.portal.azure.com/)hesabınızda oturum açın. **Azure Etkin Dizin yöneticisi merkezi** sayfası görüntülenir.
+1. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Hesabınızdaki kurumsal uygulamaların listesi görüntülenir.
+1. Bir uygulama seçin. Uygulama için genel bir sayfa görüntülenir.
 
-   ![Örnek: uygulamaya genel bakış sayfası](./media/certificate-signing-options/application-overview-page.png)
+   ![Örnek: Uygulamaya genel bakış sayfası](./media/certificate-signing-options/application-overview-page.png)
 
-Ardından, bu uygulama için SAML belirtecindeki sertifika imzalama seçeneklerini değiştirin:
+Ardından, bu uygulama için SAML belirtecisertifika imzalama seçeneklerini değiştirin:
 
-1. Uygulamaya Genel Bakış sayfasının sol bölmesinde, **Çoklu oturum açma**' yı seçin.
-1. **SAML-Preview Ile çoklu oturum açmayı ayarla** sayfası görünürse, 5. adıma gidin.
-1. **Çoklu oturum açma yöntemi seç** sayfası görünmezse, bu sayfayı göstermek için **Çoklu oturum açma modlarını Değiştir** ' i seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında, varsa **SAML** ' yi seçin. ( **SAML** kullanılamıyorsa, uygulama SAML 'yi desteklemez ve bu yordamın ve makalenin geri kalanını yoksayabilirsiniz.)
-1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. **SAML Imzalama sertifikası** sayfası görüntülenir.
+1. Uygulamaya genel bakış sayfasının sol bölmesinde **Tek oturum açma'yı**seçin.
+1. **SAML ile Tek Oturum Açma - Önizleme** sayfası görünüyorsa, adım 5'e gidin.
+1. Tek **bir oturum açma yöntemi** sayfası seç seçeneği görünmüyorsa, bu sayfayı görüntülemek için tek oturum **açma modlarını değiştir'i** seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında, varsa **SAML'yi** seçin. **(SAML** kullanılamıyorsa, uygulama SAML'yi desteklemez ve bu yordamın ve makalenin geri kalanını göz ardı edebilirsiniz.)
+1. **SAML ile Tek Oturum Açma - Önizleme** sayfasında **SAML İmza Sertifikası** başlığını bulun ve **Edit** simgesini (kalem) seçin. **SAML İmzaSertifikası** sayfası görüntülenir.
 
    ![Örnek: SAML imzalama sertifikası sayfası](./media/certificate-signing-options/saml-signing-page.png)
 
-1. **Imzalama seçeneği** açılan LISTESINDE, **SAML yanıtı imzala**, **SAML onayını imzala**veya **SAML yanıtı ve onaylama**imzası ' nı seçin. Bu seçeneklerin açıklamaları [sertifika imzalama seçeneklerinde](#certificate-signing-options)Bu makalede daha önce görüntülenir.
-1. **Imzalama algoritması** açılan listesinde, **SHA-1** veya **SHA-256**' ı seçin. Bu seçeneklerin açıklamaları, bu makalede daha önce [sertifika imzalama algoritmaları](#certificate-signing-algorithms) bölümünde görüntülenir.
-1. Seçimlerinizden memnun kaldıysanız, yeni SAML imzalama sertifikası ayarlarını uygulamak için **Kaydet** ' i seçin. Aksi takdirde, değişiklikleri atmak için **X** ' i seçin.
+1. **İmzalama Seçeneği** açılır listesinde, **Sign SAML yanıtını,** **Sign SAML iddiasını**veya Sign **SAML yanıtını ve iddiasını**seçin. Bu seçeneklerin açıklamaları, sertifika imzalama [seçeneklerinde](#certificate-signing-options)bu makalede daha önce görünür.
+1. İmza **Algoritması** açılır listesinde **SHA-1** veya **SHA-256'yı**seçin. Bu seçeneklerin açıklamaları, sertifika imzalama [algoritmaları](#certificate-signing-algorithms) bölümünde bu makalede daha önce görünür.
+1. Seçeneklerinizden memnunsanız, yeni SAML imzalama sertifikası ayarlarını uygulamak için **Kaydet'i** seçin. Aksi takdirde, değişiklikleri atmak için **X'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML tabanlı çoklu oturum açma sorunlarını giderme](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Azure Active Directory App Gallery'de olmayan uygulamalarda tek oturum açma yapılandırma](configure-federated-single-sign-on-non-gallery-applications.md)
+* [Sorun giderme SAML tabanlı tek oturum açma](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

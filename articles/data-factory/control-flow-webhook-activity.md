@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory Web kancası etkinliği
-description: Web kancası etkinliği, eklenen veri kümesini kullanıcının belirttiği ölçütlere göre doğrulayıp işlem hattının yürütülmesine devam etmez.
+title: Azure Veri Fabrikası'nda Webhook etkinliği
+description: Webhook etkinliği, kullanıcının belirlediği belirli ölçütlerle eklenen veri kümesini doğrulayana kadar ardışık hatlar yürütmeye devam etmez.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213012"
 ---
-# <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory Web kancası etkinliği
+# <a name="webhook-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Webhook etkinliği
 
-Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetleyebilir. Web kancası etkinliğiyle, müşterilerin kodu bir uç nokta çağırabilir ve geri çağırma URL 'SI geçirebilir. İşlem hattı çalıştırması, bir sonraki etkinliğe geçmeden önce geri çağırma çağrısını bekler.
+Bir webhook etkinliği, özel kodunuz aracılığıyla boru hatlarının yürütülmesini denetleyebilir. Webhook etkinliği ile, müşterilerin kodu bir bitiş noktası arayabilir ve bir geri arama URL'si geçirebilirsiniz. Ardışık hat lar, bir sonraki faaliyete geçmeden önce geri arama çağrısını bekler.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -53,27 +53,27 @@ Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetley
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-**ada** | Web kancası etkinliğinin adı. | Dize | Yes |
-**type** | "Web kancası" olarak ayarlanmalıdır. | Dize | Yes |
-**yöntemidir** | Hedef uç nokta için REST API yöntemi. | Dizisinde. Desteklenen tür "POST" dır. | Yes |
-**'deki** | Hedef uç nokta ve yol. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Yes |
-**bilgisinde** | İsteğe gönderilen üst bilgiler. İşte bir istek üzerinde dili ve türü ayarlayan bir örnek: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet. `"headers":{ "Content-Type":"application/json"}` gibi bir `Content-Type` üst bilgisi gereklidir. |
-**bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Yes |
-**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Hayır |
-**aş** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d*TimeSpan biçimine sahiptir. *SS*:*dd*:*SS*. | Dize | Hayır |
-**Geri aramada durum bildir** | Bir kullanıcının Web kancası etkinliğinin başarısız durumunu rapormasına olanak sağlar. | Boole | Hayır |
+**Adı** | Webhook etkinliğinin adı. | Dize | Evet |
+**Türü** | "WebHook" olarak ayarlanmalıdır. | Dize | Evet |
+**Yöntem** | Hedef bitiş noktası için REST API yöntemi. | Dize. Desteklenen tür "POST"dur. | Evet |
+**Url** | Hedef bitiş noktası ve yol. | Bir dize veya bir dize **sonucuTürü** değeri ile bir ifade. | Evet |
+**Üstbilgi** | İsteğe gönderilen üstbilgi. Aşağıda, bir istekte dili ve türü belirleyen `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`bir örnek verilmiştir: . | Bir dize veya bir dize **sonucuTürü** değeri ile bir ifade. | Evet. Gibi `Content-Type` `"headers":{ "Content-Type":"application/json"}` bir üstbilgi gereklidir. |
+**Vücut** | Bitiş noktasına gönderilen yükü temsil eder. | Geçerli JSON veya **Sonuç Türü** Değeri JSON olan bir ifade. Bkz. İstek yükünün şeması için yük [skeci isteyin.](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) | Evet |
+**Kimlik doğrulama** | Bitiş noktasını aramak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Temel" ve "Müşteri Sertifikası"dır. Daha fazla bilgi için bkz. [Kimlik doğrulaması](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Kimlik doğrulaması gerekli değilse, bu özelliği hariç tolun. | Bir dize veya bir dize **sonucuTürü** değeri ile bir ifade. | Hayır |
+**timeout** | Etkinliğin **callBackUri** tarafından çağrılan geri aramaiçin ne kadar beklemesi. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler TimeSpan biçimi *d*var. *hh*:*mm*:*ss*. | Dize | Hayır |
+**Geri arama da rapor durumu** | Kullanıcının webhook etkinliğinin başarısız durumunu bildirmesini sağlar. | Boole | Hayır |
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-Web kancası etkinliği aşağıdaki kimlik doğrulama türlerini destekler.
+Webhook etkinliği aşağıdaki kimlik doğrulama türlerini destekler.
 
-### <a name="none"></a>Yok
+### <a name="none"></a>None
 
-Kimlik doğrulaması gerekmiyorsa, **kimlik doğrulama** özelliğini eklemeyin.
+Kimlik doğrulama gerekli değilse, kimlik doğrulama özelliğini **eklemeyin.**
 
 ### <a name="basic"></a>Temel
 
-Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı belirtin.
+Temel kimlik doğrulamayla kullanılacak kullanıcı adını ve parolayı belirtin.
 
 ```json
 "authentication":{
@@ -85,7 +85,7 @@ Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı bel
 
 ### <a name="client-certificate"></a>İstemci sertifikası
 
-PFX dosyası ve parola için Base64 olarak kodlanmış içeriği belirtin.
+PFX dosyasının ve parolanın Base64 kodlanmış içeriğini belirtin.
 
 ```json
 "authentication":{
@@ -97,7 +97,7 @@ PFX dosyası ve parola için Base64 olarak kodlanmış içeriği belirtin.
 
 ### <a name="managed-identity"></a>Yönetilen kimlik
 
-Erişim belirtecinin istendiği Kaynak URI 'sini belirtmek için Data Factory 'nin yönetilen kimliğini kullanın. Azure Kaynak yönetimi API 'sini çağırmak için `https://management.azure.com/`kullanın. Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına yönelik yönetilen kimlikler genel bakış](/azure/active-directory/managed-identities-azure-resources/overview).
+Erişim belirteci istenen kaynak URI belirtmek için veri fabrikasının yönetilen kimliğini kullanın. Azure Kaynak Yönetimi API'sini `https://management.azure.com/`aramak için . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi [için Azure kaynaklarına genel bakış için yönetilen kimliklere](/azure/active-directory/managed-identities-azure-resources/overview)bakın.
 
 ```json
 "authentication": {
@@ -107,21 +107,21 @@ Erişim belirtecinin istendiği Kaynak URI 'sini belirtmek için Data Factory 'n
 ```
 
 > [!NOTE]
-> Data Factory 'niz bir git deposu ile yapılandırıldıysa, temel veya istemci sertifikası kimlik doğrulamasını kullanmak için kimlik bilgilerinizi Azure Key Vault depolamanız gerekir. Azure Data Factory, parolaları git 'te depolamaz.
+> Veri fabrikanız bir Git deposuyla yapılandırıldıysa, temel veya istemci sertifikası kimlik doğrulamasını kullanmak için kimlik bilgilerinizi Azure Anahtar Kasası'nda depolamanız gerekir. Azure Veri Fabrikası parolaları Git'de depolamaz.
 
 ## <a name="additional-notes"></a>Ek notlar
 
-Data Factory, URL uç noktasına gönderilen gövdede **Callbackuri** ek özelliğini geçirir. Data Factory, belirtilen zaman aşımı değerinden önce bu URI 'nin çağrılmasını bekliyor. URI çağrılmazsa, etkinlik "zaman aşımına uğradı" durumuyla başarısız olur.
+Veri Fabrikası, URL bitiş noktasına gönderilen gövdedeki ek özellik **callBackUri'yi** geçer. Veri Fabrikası, bu URI'nin belirtilen zaman ödeme değerinden önce çağrılmasını bekler. URI çağrılmazsa, etkinlik "TimedOut" durumuyla başarısız olur.
 
-Özel uç noktaya yapılan çağrı başarısız olursa Web kancası etkinliği başarısız olur. Herhangi bir hata iletisi geri çağırma gövdesine eklenebilir ve sonraki bir etkinlikte kullanılabilir.
+Özel bitiş noktasına çağrı başarısız olduğunda webhook etkinliği başarısız olur. Herhangi bir hata iletisi geri arama gövdesine eklenebilir ve daha sonraki bir etkinlikte kullanılabilir.
 
-Her REST API çağrısı için, uç nokta bir dakika içinde yanıt vermezse istemci zaman aşımına uğrar. Bu davranış, standart HTTP en iyi uygulamadır. Bu sorunu gidermek için 202 bir model uygulayın. Geçerli durumda, uç nokta 202 (kabul edildi) döndürür ve istemci yoklar.
+Her REST API çağrısı için, bitiş noktası bir dakika içinde yanıt vermezse istemci zaman ları dışarı. Bu davranış standart HTTP en iyi uygulamadır. Bu sorunu gidermek için 202 deseni uygulayın. Geçerli durumda, bitiş noktası 202 (Kabul) ve istemci anketleri döndürür.
 
-İstekteki bir dakikalık zaman aşımı, etkinlik zaman aşımı ile hiçbir şey yapmaz. İkincisi, **Callbackuri**tarafından belirtilen geri çağırma işlemini beklemek için kullanılır.
+İstekteki bir dakikalık zaman ayarı, etkinlik zaman ayarı ile ilgili değildir. İkincisi **callbackUri**tarafından belirtilen geri arama beklemek için kullanılır.
 
-Geri çağırma URI 'sine geri geçirilen gövde geçerli bir JSON olmalıdır. `Content-Type` üst bilgisini `application/json`olarak ayarlayın.
+Geri arama URI'ye geri geçen ceset geçerli Bir JSON olmalıdır. Üstbilgiyi `Content-Type` `application/json`.
 
-Geri çağırma özelliğinde **rapor durumunu** kullandığınızda, geri çağırma yaptığınızda gövdeye aşağıdaki kodu eklemeniz gerekir:
+Geri arama **özelliğinde Rapor durumunu** kullandığınızda, geri aramayı yaparken gövdeye aşağıdaki kodu eklemeniz gerekir:
 
 ```json
 {
@@ -140,12 +140,12 @@ Geri çağırma özelliğinde **rapor durumunu** kullandığınızda, geri çağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Factory tarafından desteklenen aşağıdaki denetim akışı etkinliklerine bakın:
+Veri Fabrikası tarafından desteklenen aşağıdaki kontrol akışı etkinliklerine bakın:
 
 - [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
-- [İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md)
-- [Her etkinlik için](control-flow-for-each-activity.md)
+- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)
-- [Web etkinliği](control-flow-web-activity.md)
-- [Bitiş Etkinliği](control-flow-until-activity.md)
+- [Web Etkinliği](control-flow-web-activity.md)
+- [Until Etkinliği](control-flow-until-activity.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Örnek: çok düzeyli modeller'
+title: 'Örnek: Çok düzeyli falar'
 titleSuffix: Azure Cognitive Search
-description: Birden çok düzeyli Taksonomiler için, uygulama sayfalarına dahil ettiğiniz iç içe geçmiş bir gezinti yapısı oluşturma hakkında bilgi edinin.
+description: Uygulama sayfalarına ekebileceğiniz iç içe dönük bir gezinti yapısı oluşturarak çok düzeyli taksonomlar için nasıl yönlü yapılar oluşturabileceğinizi öğrenin.
 author: HeidiSteen
 manager: nitinme
 ms.service: cognitive-search
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792953"
 ---
-# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Örnek: Azure Bilişsel Arama 'de çok düzeyli modeller
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Örnek: Azure Bilişsel Arama'da çok düzeyli yüzler
 
-Azure Bilişsel Arama şemaları, çok düzeyli taksonomi kategorilerini açık bir şekilde desteklemez, ancak dizin oluşturma işleminden önce içeriği düzenleyerek ve sonra sonuçlara özel bir işleme uygulayarak bunları yaklaşık olarak yapabilirsiniz. 
+Azure Bilişsel Arama şemaları çok düzeyli taksonomi kategorilerini açıkça desteklemez, ancak bunları dizine ekin oluşturmadan önce içeriği manipüle ederek ve ardından sonuçlara bazı özel işleme uygulayarak yaklaşık olarak tahmin edebilirsiniz. 
 
 ## <a name="start-with-the-data"></a>Verilerle başlayın
 
-Bu makaledeki örnek, Azure Bilişsel Arama 'de çok düzeyli bir şekilde tam olarak göstermek için [AdventureWorks envanter veritabanını modelleyen](search-example-adventureworks-modeling.md)önceki bir örneği oluşturur.
+Bu makaledeki örnek, Azure Bilişsel Arama'da çok düzeyli yüz lekarşılaşmayı göstermek için [AdventureWorks Inventory veritabanını modelle](search-example-adventureworks-modeling.md)önceki bir örnekte yer almaktadır.
 
-AdventureWorks 'in üst-alt ilişkisi olan basit bir iki düzeyli bir sınıflandırması vardır. Bu yapının sabit uzunluklu taksonomi derinlikleri için, bir basit SQL JOIN sorgusu, taksonomiyi gruplamak için kullanılabilir:
+AdventureWorks bir ebeveyn-çocuk ilişkisi ile basit bir iki düzey taksonomi vardır. Bu yapının sabit uzunluktaki taksonomi derinliklerinde taksonomiyi gruplandırmak için basit bir SQL birleştirme sorgusu kullanılabilir:
 
 ```T-SQL
 SELECT 
@@ -39,23 +39,23 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Koleksiyon alanına dizin oluşturma
 
-Bu yapıyı içeren dizinde, bu verileri depolamak için Azure Bilişsel Arama şemasında bir **koleksiyon (EDM. String)** alanı oluşturun ve alan özniteliklerinin aranabilir, filtrelenebilir, çok yönlü tablo ve alınabilir olduğundan emin olun.
+Bu yapıyı içeren dizinde, bu verileri depolamak için Azure Bilişsel Arama şemasında bir **Koleksiyon (Edm.String)** alanı oluşturun ve alan özniteliklerinin aranabilir, filtrelenebilir, değiştirilebilir ve geri alınabilir olmasını sağlar.
 
-Artık, belirli bir taksonomi kategorisine başvuran içeriği dizinlerken, taksonomiyi taksonomi düzeyinden metin içeren bir dizi olarak gönderir. Örneğin, `ProductCategoryId = 5 (Mountain Bikes)`bir varlık için, alanı `[ "Bikes", "Bikes|Mountain Bikes"]` olarak gönder
+Şimdi, belirli bir taksonomi kategorisine atıfta bulunan içeriği dizilerken, taksonominin her düzeyinden metin içeren bir dizi olarak taksonomi gönderin. Örneğin, bir varlık `ProductCategoryId = 5 (Mountain Bikes)`için , alanı`[ "Bikes", "Bikes|Mountain Bikes"]`
 
-"Sıradağlar bisikletleri" alt kategori değerindeki "Bisiklet" ana kategorisinin eklenmesine dikkat edin. Her alt kategori, tüm yolunu kök öğesine göre katıştırmalıdır. Kanal karakter ayırıcısı rastgele, ancak tutarlı olmalıdır ve kaynak metinde görünmemelidir. Ayırıcı karakter, uygulama kodunda, model sonuçlarından taksonomi ağacını yeniden oluşturmak için kullanılır.
+Alt kategori değeri "Dağ Bisikletleri" üst kategori "Bisikletler" eklenmesine dikkat edin. Her alt kategori, tüm yolunu kök öğeye göre katıştırmalıdır. Boru karakter ayırıcısı rasgeledir, ancak tutarlı olmalıdır ve kaynak metinde görünmemelidir. Ayırıcı karakter, taksonomi ağacını fason sonuçlardan yeniden oluşturmak için uygulama kodunda kullanılacaktır.
 
-## <a name="construct-the-query"></a>Sorguyu oluşturun
+## <a name="construct-the-query"></a>Sorguyu oluşturma
 
-Sorgu verirken, aşağıdaki model belirtimini (Taksonomi, çok yönlü tablo taksonomi alanınız) dahil edin: `facet = taxonomy,count:50,sort:value`
+Sorguları verirken, aşağıdaki fason belirtimi (taksonomi nin yüz yüze taksonomi alanınız olduğu durumlarda) ekleyin:`facet = taxonomy,count:50,sort:value`
 
-Count değeri, tüm olası taksonomi değerlerini döndürecek kadar yüksek olmalıdır. AdventureWorks verileri 41 farklı taksonomi değerleri içerir, bu nedenle `count:50` yeterlidir.
+Sayım değeri, olası tüm taksonomi değerlerini döndürecek kadar yüksek olmalıdır. AdventureWorks verileri 41 farklı taksonomi `count:50` değeri içerir, bu nedenle yeterlidir.
 
-  ![Çok yönlü filtre](./media/search-example-adventureworks/facet-filter.png "Çok yönlü filtre")
+  ![Yönlü filtre](./media/search-example-adventureworks/facet-filter.png "Yönlü filtre")
 
-## <a name="build-the-structure-in-client-code"></a>Yapıyı istemci kodunda oluştur
+## <a name="build-the-structure-in-client-code"></a>İstemci kodunda yapı oluşturma
 
-İstemci uygulama kodunuzda, kanal karakteri üzerindeki her bir model değerini bölerek taksonomi ağacını yeniden yapılandırma.
+İstemci uygulama kodunuzda, aktüomi ağacını, boru karakterindeki her bir yönlü değeri bölerek yeniden oluştur.
 
 ```javascript
 var sum = 0
@@ -82,21 +82,21 @@ results['@search.facets'][field].forEach(function(d) {
 categories.count = sum;
 ```
 
-**Kategoriler** nesnesi artık, doğru sayımlar içeren daraltılabilir bir taksonomi ağacını işlemek için kullanılabilir:
+**Kategoriler** nesne şimdi doğru sayıları ile katlanabilir taksonomi ağacı işlemek için kullanılabilir:
 
-  ![çok yönlü çok yönlü filtre](./media/search-example-adventureworks/multi-level-facet.png "çok yönlü çok yönlü filtre")
+  ![çok düzeyli yönlü filtre](./media/search-example-adventureworks/multi-level-facet.png "çok düzeyli yönlü filtre")
 
  
 Ağaçtaki her bağlantı ilgili filtreyi uygulamalıdır. Örnek:
 
-+ **taksonomi/any** `(x:x eq 'Accessories')`, aksesuarlar dalındaki tüm belgeleri döndürür
-+ **taksonomi/any** `(x:x eq 'Accessories|Bike Racks')`, yalnızca aksesuar dalında Bisiklet raflarının alt kategorisini içeren belgeleri döndürür.
++ **taksonomi/herhangi bir** `(x:x eq 'Accessories')` aksesuar şubesindeki tüm belgeleri iade eder
++ **taksonomi/herhangi bir** `(x:x eq 'Accessories|Bike Racks')` döner sadece Aksesuarları şube altında Bisiklet Rafları bir alt kategori ile belgeleri.
 
-Bu teknik, daha derin taksonomi ağaçları ve farklı üst kategorilerde gerçekleşen yinelenen alt kategoriler gibi daha karmaşık senaryoları kapsayacak şekilde ölçeklendirecektir (örneğin, `Bike Components|Forks` ve `Camping Equipment|Forks`).
+Bu teknik, daha derin taksonomi ağaçları ve farklı ana kategoriler altında oluşan yinelenen alt `Bike Components|Forks` kategoriler `Camping Equipment|Forks`(örneğin, ve) gibi daha karmaşık senaryoları kapsayacak şekilde ölçeklendirir.
 
 > [!TIP]
-> Sorgu hızı döndürülen model sayısından etkilenir. Çok büyük taksonomi kümelerini desteklemek için, her belge için en üst düzey taksonomi değerini tutacak bir çok yönlü **Edm. String** alanı eklemeyi göz önünde bulundurun. Daha sonra aynı tekniği uygulayın, ancak kullanıcı üst düzey bir düğümü genişlediğinde koleksiyon modeli sorgusunu (kök taksonomi alanında filtrelenmiş) gerçekleştirin. Ya da %100 geri çekme gerekli değilse, model sayısını makul bir sayıya küçültün ve model girişlerinin sayıma göre sıralandığına emin olun.
+> Sorgu hızı döndürülen yönlü lerin sayısından etkilenir. Çok büyük taksonomi kümelerini desteklemek için, her belge için üst düzey taksonomi değerini tutmak için bir facetable **Edm.String** alanı eklemeyi düşünün. Daha sonra yukarıdaki aynı tekniği uygulayın, ancak kullanıcı üst düzey bir düğüm genişletildiğinde yalnızca toplama-facet sorgusu (kök taksonomi alanında filtre) gerçekleştirin. Veya % 100 geri çağırma gerekli değilse, sadece makul bir sayıya fason sayısını azaltmak ve fason girişleri sayısına göre sıralanır emin olun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Örnek: AdventureWorks Inventory Database for Azure Bilişsel Arama modelleme](search-example-adventureworks-modeling.md)
+[Örnek: Azure Bilişsel Arama için AdventureWorks Envanter veritabanını modelleme](search-example-adventureworks-modeling.md)
