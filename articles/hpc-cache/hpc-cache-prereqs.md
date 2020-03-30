@@ -1,147 +1,147 @@
 ---
-title: Azure HPC önbellek önkoşulları
-description: Azure HPC önbelleğini kullanma önkoşulları
+title: Azure HPC Önbelleği ön koşulları
+description: Azure HPC Önbelleğini kullanmak için ön koşullar
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271856"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
+# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Önbelleği için Ön Koşullar
 
-Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce ortamınızın bu gereksinimleri karşıladığından emin olun.
+Yeni bir Azure HPC Önbelleği oluşturmak için Azure portalını kullanmadan önce, ortamınızın bu gereksinimleri karşıladığından emin olun.
 
 ## <a name="azure-subscription"></a>Azure aboneliği
 
-Ücretli bir abonelik önerilir.
+Ücretli abonelik önerilir.
 
 > [!NOTE]
-> GA sürümünün ilk birkaç ayı sırasında, Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin Önbelleklerinden yüksek kaliteli yanıt verdiğini aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
+> GA sürümün ilk birkaç ayında, önbellek örneği oluşturmak için kullanılabilmesi için Azure HPC Önbellek ekibinin aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin önbelleklerinden yüksek kaliteli yanıt almasını sağlamaya yardımcı olur. Erişim istemek için [bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
-Önbelleğinizi kullanabilmeniz için ağ ile ilgili iki önkoşul ayarlanmalıdır:
+Önbelleğinizi kullanamadan önce ağla ilgili iki ön koşul ayarlanmalıdır:
 
-* Azure HPC önbellek örneği için ayrılmış alt ağ
-* Önbelleğin depolamaya ve diğer kaynaklara erişebilmesi için DNS desteği
+* Azure HPC Önbellek örneği için özel bir alt ağ
+* Önbelleğin depolamaya ve diğer kaynaklara erişebilmeleri için DNS desteği
 
 ### <a name="cache-subnet"></a>Önbellek alt ağı
 
-Azure HPC önbelleği, bu kaliteleri olan ayrılmış bir alt ağa ihtiyaç duyuyor:
+Azure HPC Önbelleği'nin bu niteliklere sahip özel bir alt ağa ihtiyacı vardır:
 
-* Alt ağda en az 64 IP adresi kullanılabilir olmalıdır.
-* Alt ağ, istemci makineler gibi ilgili hizmetler için bile diğer VM 'Leri barındıramaz.
-* Birden çok Azure HPC önbellek örneği kullanıyorsanız, her birinin kendi alt ağına ihtiyacı vardır.
+* Alt ağda en az 64 IP adresi olmalıdır.
+* Alt ağ, istemci makineleri gibi ilgili hizmetler için bile başka hiçbir VM barındıramaz.
+* Birden çok Azure HPC Önbellek örneği kullanıyorsanız, her birinin kendi alt ağına ihtiyacı vardır.
 
-En iyi yöntem, her önbellek için yeni bir alt ağ oluşturmaktır. Önbellek oluşturmanın bir parçası olarak yeni bir sanal ağ ve alt ağ oluşturabilirsiniz.
+En iyi yöntem, her önbellek için yeni bir alt ağ oluşturmaktır. Önbelleği oluşturmanın bir parçası olarak yeni bir sanal ağ ve alt ağ oluşturabilirsiniz.
 
 ### <a name="dns-access"></a>DNS erişimi
 
-Önbelleğin, sanal ağının dışındaki kaynaklara erişmesi için DNS ihtiyacı vardır. Kullandığınız kaynaklara bağlı olarak, özelleştirilmiş bir DNS sunucusu ayarlamanız ve bu sunucu ile Azure DNS sunucuları arasında iletmeyi yapılandırmanız gerekebilir:
+Önbelleğin sanal ağının dışındaki kaynaklara erişebilmesi için DNS gerekir. Kullandığınız kaynaklara bağlı olarak, özelleştirilmiş bir DNS sunucusu ayarlamanız ve bu sunucu ile Azure DNS sunucuları arasında iletme yapılandırmanız gerekebilir:
 
-* Azure Blob depolama uç noktalarına ve diğer iç kaynaklara erişmek için, Azure tabanlı DNS sunucusuna ihtiyacınız vardır.
-* Şirket içi depolamaya erişmek için, depolama ana bilgisayar adlarını çözümleyebilecek özel bir DNS sunucusu yapılandırmanız gerekir.
+* Azure Blob depolama bitiş noktalarına ve diğer dahili kaynaklara erişmek için Azure tabanlı DNS sunucusuna ihtiyacınız vardır.
+* Şirket içi depolama alanına erişmek için, depolama ana bilgisayar adlarınızı çözebilecek özel bir DNS sunucusu yapılandırmanız gerekir.
 
-Yalnızca blob depolamaya erişmeniz gerekiyorsa önbelleğiniz için Azure tarafından sağlanmış varsayılan DNS sunucusunu kullanabilirsiniz. Ancak, diğer kaynaklara erişmeniz gerekiyorsa, özel bir DNS sunucusu oluşturmanız ve Azure 'a özgü tüm çözümleme isteklerini Azure DNS sunucusuna iletecek şekilde yapılandırmanız gerekir.
+Yalnızca Blob depolama alanına erişmeniz gerekiyorsa, önbelleğiniz için varsayılan Azure tarafından sağlanan DNS sunucusunu kullanabilirsiniz. Ancak, diğer kaynaklara erişmeniz gerekiyorsa, özel bir DNS sunucusu oluşturmalı ve Azure'a özgü çözüm isteklerini Azure DNS sunucusuna iletecek şekilde yapılandırmanız gerekir.
 
-Basit bir DNS sunucusu, istemci bağlantılarının tüm kullanılabilir önbellek bağlama noktaları arasında yükünü dengelemek için de kullanılabilir.
+Basit bir DNS sunucusu, kullanılabilir önbellek montaj noktaları arasında bakiye istemci bağlantılarını yüklemek için de kullanılabilir.
 
-Azure sanal ağları ve DNS sunucusu konfigürasyonları hakkında daha fazla bilgi [için bkz. Azure sanal ağlardaki kaynaklar Için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+Azure sanal [ağlarındaki kaynaklar için Ad çözümünde](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)Azure sanal ağları ve DNS sunucu yapılandırmaları hakkında daha fazla bilgi edinin.
 
 ## <a name="permissions"></a>İzinler
 
-Önbelleğinizi oluşturmaya başlamadan önce Bu izinle ilgili önkoşulları denetleyin.
+Önbelleğinizi oluşturmaya başlamadan önce bu izinle ilgili ön koşulları denetleyin.
 
-* Önbellek örneğinin sanal ağ arabirimlerini (NIC 'ler) oluşturabiliyor olması gerekir. Önbelleği oluşturan kullanıcının, NIC 'ler oluşturmak için abonelikte yeterli ayrıcalıklara sahip olması gerekir.
+* Önbellek örneğinin sanal ağ arabirimleri (NIC' ler) oluşturabilmesi gerekir. Önbelleği oluşturan kullanıcının NIC'ler oluşturmak için abonelikte yeterli ayrıcalıklara sahip olması gerekir.
 
-* BLOB depolama kullanılıyorsa, Azure HPC önbelleğinin depolama hesabınıza erişmesi için yetkilendirmeye ihtiyacı vardır. Blob depolamaya önbellek erişimi sağlamak için rol tabanlı erişim denetimi (RBAC) kullanın. İki rol gereklidir: depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı.
+* Azure HPC Önbelleği, Blob depolama alanını kullanıyorsa, depolama hesabınıza erişmek için yetkilendirmeye ihtiyaç duyar. Önbelleğe Blob depolama alanınıza erişim sağlamak için rol tabanlı erişim denetimini (RBAC) kullanın. İki rol gereklidir: Depolama Hesabı Katılımcısı ve Depolama Blob Veri Katılımcısı.
 
-  Rolleri eklemek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yönergeleri izleyin.
+  Rolleri eklemek için [depolama hedefleri ekle](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) yönergelerini izleyin.
 
 ## <a name="storage-infrastructure"></a>Depolama altyapısı
 
-Önbellek, Azure Blob kapsayıcılarını veya NFS donanım depolama dışarı aktarmaları destekler. Önbelleği oluşturduktan sonra depolama hedefleri ekleyin.
+Önbellek, Azure Blob kapsayıcılarını veya NFS donanım depolama dışaaklarını destekler. Önbelleği oluşturduktan sonra depolama hedefleri ekleyin.
 
-Her depolama türünün belirli önkoşulları vardır.
+Her depolama türü belirli ön koşullara sahiptir.
 
-### <a name="blob-storage-requirements"></a>BLOB depolama gereksinimleri
+### <a name="blob-storage-requirements"></a>Blob depolama gereksinimleri
 
-Önbelleğiniz ile Azure Blob depolama 'yı kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbellek biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
+Önbelleğinizle Azure Blob depolama sını kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir Blob kapsayıcısı veya [Verileri Azure Blob depolamasına taşı'nda](hpc-cache-ingest.md)açıklandığı gibi Azure HPC Önbellek biçimlendirilmiş verilerle doldurulan bir kapsayıcıgerekir.
 
-Depolama hedefi eklemeyi denemeden önce hesabı oluşturun. Hedefi eklediğinizde yeni bir kapsayıcı oluşturabilirsiniz.
+Depolama hedefi eklemeye çalışmadan önce hesabı oluşturun. Hedefi eklediğinizde yeni bir kapsayıcı oluşturabilirsiniz.
 
 Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 
 * Performans: **Standart**
 * Hesap türü: **StorageV2 (genel amaçlı v2)**
-* Çoğaltma: **yerel olarak yedekli depolama (LRS)**
-* Erişim katmanı (varsayılan): **sık** erişimli
+* Çoğaltma: **Yerel olarak yedekli depolama (LRS)**
+* Erişim katmanı (varsayılan): **Sıcak**
 
-Önbelleğiniz ile aynı konumda bir depolama hesabı kullanmak iyi bir uygulamadır.
+Önbelleğinizle aynı konumda bir depolama hesabı kullanmak iyi bir uygulamadır.
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
-Ayrıca, yukarıdaki [izinlerle](#permissions)belirtilen şekilde, önbellek uygulamasına Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe gerekli erişim rollerini sağlamak için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yordamı izleyin. Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
+Ayrıca, önbellek uygulamasına Yukarıda [İzinler'de](#permissions)belirtildiği gibi Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe gerekli erişim rollerini vermek için [depolama hedefleri ekle](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) yordamını izleyin. Depolama hesabı sahibi değilseniz, sahibinin bu adımı yapmasını sorun.
 
 ### <a name="nfs-storage-requirements"></a>NFS depolama gereksinimleri
 
-Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanıyorsanız, bu gereksinimleri karşıladığından emin olun. Bu ayarları doğrulamak için depolama sisteminizin (veya veri merkezinizdeki) ağ yöneticileri veya güvenlik duvarı yöneticileri ile çalışmanız gerekebilir.
+Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanıyorsanız, bu gereksinimleri karşıladığından emin olun. Bu ayarları doğrulamak için depolama sisteminiz (veya veri merkeziniz) için ağ yöneticileri veya güvenlik duvarı yöneticileriyle birlikte çalışmanız gerekebilir.
 
 > [!NOTE]
-> Önbellekte NFS depolama sistemine yeterli erişim yoksa depolama hedefi oluşturma işlemi başarısız olur.
+> Önbellek NFS depolama sistemine yetersiz erişime sahipse depolama hedef oluşturma başarısız olur.
 
-Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunları sorunlarını giderme](troubleshoot-nas.md).
+[Sorun giderme NAS yapılandırmasına ve NFS depolama hedef sorunlarına](troubleshoot-nas.md)daha fazla bilgi dahildir.
 
-* **Ağ bağlantısı:** Azure HPC önbelleğinin önbellek alt ağı ile NFS sisteminin veri merkezi arasında yüksek bant genişliğine sahip ağ erişimi olması gerekir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzer erişim önerilir. VPN kullanıyorsanız, büyük paketlerin engellenmediğinden emin olmak için bunu 1350 adresindeki Clamp TCP yönetim paketleri için yapılandırmanız gerekebilir. VPN ayarları sorunlarını gidermeye yönelik ek yardım için [VPN paket boyutu kısıtlamalarını](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) okuyun.
+* **Ağ bağlantısı:** Azure HPC Önbelleği, önbellek alt ağı ile NFS sisteminin veri merkezi arasında yüksek bant genişliğine sahiptir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzeri erişim önerilir. VPN kullanıyorsanız, büyük paketlerin engellenmediğinden emin olmak için 1350'de TCP MSS'yi kıskaca edecek şekilde yapılandırmanız gerekebilir. EK yardım sorun giderme VPN ayarları için [VPN paket boyutu kısıtlamalarını](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) okuyun.
 
-* **Bağlantı noktası erişimi:** Önbelleğin depolama sisteminizdeki belirli TCP/UDP bağlantı noktalarına erişmesi gerekir. Farklı depolama türlerinin farklı bağlantı noktası gereksinimleri vardır.
+* **Bağlantı noktası erişimi:** Önbelleğin depolama sisteminizdeki belirli TCP/UDP bağlantı noktalarına erişmesi gerekir. Farklı depolama türleri farklı bağlantı noktası gereksinimlerine sahiptir.
 
-  Depolama sisteminizin ayarlarını denetlemek için bu yordamı izleyin.
+  Depolama sisteminizin ayarlarını kontrol etmek için bu yordamı izleyin.
 
-  * Gerekli bağlantı noktalarını denetlemek için depolama sisteminize bir `rpcinfo` komutu verin. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloyla biçimlendirir. ( *< Storage_IP >* terimi yerıne sisteminizin IP adresini kullanın.)
+  * Gerekli `rpcinfo` bağlantı noktalarını denetlemek için depolama sisteminize bir komut düzenleyin. Aşağıdaki komut bağlantı noktalarını listeler ve ilgili sonuçları bir tabloda biçimlendirir. (storage_IP>terimi yerine sisteminiz *<in* IP adresini kullanın.)
 
-    Bu komutu, NFS altyapısının yüklü olduğu herhangi bir Linux istemcisinden verebilirsiniz. Küme alt ağı içinde bir istemci kullanırsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
+    Bu komutu, NFS altyapısı yüklü olan herhangi bir Linux istemcisinden çıkarabilirsiniz. Küme alt ağı içinde bir istemci kullanıyorsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
 
     ```bash
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  ``rpcinfo`` sorgusunun döndürdüğü tüm bağlantı noktalarının Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiği şekilde emin olun.
+  ``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı noktalarının Azure HPC Önbelleği'nin alt netinden sınırsız trafiğe izin verdiğinden emin olun.
 
-  * `rpcinfo` komutu tarafından döndürülen bağlantı noktalarına ek olarak, bu yaygın olarak kullanılan bağlantı noktalarının gelen ve giden trafiğe izin verdiği şekilde emin olun:
+  * Komut tarafından döndürülen bağlantı `rpcinfo` noktalarına ek olarak, bu yaygın olarak kullanılan bağlantı noktalarının gelen ve giden trafiğe izin verdiğinden emin olun:
 
     | Protokol | Bağlantı noktası  | Hizmet  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
-    | TCP/UDP  | 4046  | dağtd   |
-    | TCP/UDP  | 4047  | status   |
+    | TCP/UDP  | 4046  | monte   |
+    | TCP/UDP  | 4047  | durum   |
 
-  * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
+  * Gerekli tüm bağlantı noktalarında trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını denetleyin. Azure'da kullanılan güvenlik duvarlarını ve veri merkezinizdeki şirket içi güvenlik duvarlarını kontrol ettiğinizden emin olun.
 
-* **Dizin erişimi:** Depolama sisteminde `showmount` komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
+* **Dizin erişimi:** Depolama `showmount` sistemindeki komutu etkinleştirin. Azure HPC Önbelleği, depolama hedef yapılandırmanızın geçerli bir dış asayı işaret edip etmediğini denetlemek ve ayrıca birden çok bineğin aynı alt dizine (dosya çakışması riski) erişmediğinden emin olmak için bu komutu kullanır.
 
   > [!NOTE]
-  > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, **`showmount`etkinleştirmeyin** . Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
+  > NFS depolama sisteminiz NetApp'in ONTAP 9.2 işletim sistemini **kullanıyorsa, etkinleştirme. `showmount` ** Yardım için [Microsoft Service ve Support'a başvurun.](hpc-cache-support-ticket.md)
 
-  NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)Dizin listeleme erişimi hakkında daha fazla bilgi edinin.
+  NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)dizin listesi erişimi hakkında daha fazla bilgi edinin.
 
-* **Kök erişimi:** Önbellek, Kullanıcı KIMLIĞI 0 olarak arka uç sistemine bağlanır. Depolama sisteminizde bu ayarları kontrol edin:
+* **Kök erişimi:** Önbellek, kullanıcı kimliği 0 olarak arka uç sistemine bağlanır. Depolama sisteminizdeki bu ayarları kontrol edin:
   
-  * `no_root_squash`etkinleştirin. Bu seçenek, uzak kök kullanıcının köke ait dosyalara erişebilmesini sağlar.
+  * Etkinleştirin. `no_root_squash` Bu seçenek, uzak kök kullanıcıkök ait dosyalara erişebilmesini sağlar.
 
-  * Önbelleğin alt ağından kök erişim kısıtlamalarını dahil olmadıklarından emin olmak için dışarı aktarma ilkelerini denetleyin.
+  * Önbelleğin alt ağından kök erişime ilişkin kısıtlamalar içermediğinden emin olmak için dışa aktarma ilkelerini denetleyin.
 
-  * Depolama ortamınızda başka bir dışarı aktarmanın alt dizinleri olan dışarı aktarımlar varsa, önbelleğin yolun en düşük kesimine kök erişimi olduğundan emin olun. Ayrıntılar için NFS depolama hedefi sorun giderme makalesindeki [Dizin yollarında kök erişimi](troubleshoot-nas.md#allow-root-access-on-directory-paths) okuyun.
+  * Depolamanızda başka bir dışa aktarmanın alt dizinleri olan dışa aktarımlar varsa, önbelleğin yolun en düşük kesimine kök erişimi olduğundan emin olun. Ayrıntılar için NFS depolama hedef sorun giderme makalesinde [dizin yollarında Root erişimini](troubleshoot-nas.md#allow-root-access-on-directory-paths) okuyun.
 
-* NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
+* NFS arka uç depolama uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC Önbellek ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure portal [Azure HPC önbellek örneği oluşturma](hpc-cache-create.md)
+* Azure portalından [Bir Azure HPC Önbelleği örneği oluşturma](hpc-cache-create.md)

@@ -1,7 +1,7 @@
 ---
-title: MSAL.NET istemci uygulamalarını Başlat | Mavisi
+title: İstemci uygulamalarını MSAL.NET başlatma | Azure
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak genel istemci ve gizli istemci uygulamalarını başlatma hakkında bilgi edinin.
+description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak ortak istemci ve gizli istemci uygulamalarını başlatma hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,41 +14,41 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084001"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET kullanarak istemci uygulamalarını başlatma
-Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanılarak ortak istemci ve gizli istemci uygulamalarının başlatılması açıklanmaktadır.  İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
+Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı kullanarak ortak istemci ve gizli istemci uygulamaları nın başlatılması açıklanmaktadır.  İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakışı](msal-client-applications.md)okuyun.
 
-MSAL.NET 3. x ile, bir uygulamayı başlatmak için önerilen yol, uygulama oluşturucularını kullanmaktır: `PublicClientApplicationBuilder` ve `ConfidentialClientApplicationBuilder`. Bu kişiler, uygulamayı koddan veya bir yapılandırma dosyasından yapılandırmak için güçlü bir mekanizma sunar ve hatta her iki yaklaşımı de karıştırarak sağlar.
+MSAL.NET 3.x ile, bir uygulamayı anında kullanmanın önerilen yolu uygulama `PublicClientApplicationBuilder` oluşturucularını kullanmaktır: ve `ConfidentialClientApplicationBuilder`. Uygulamayı koddan veya yapılandırma dosyasından veya hatta her iki yaklaşımı da karıştırarak yapılandırmak için güçlü bir mekanizma sunarlar.
 
-## <a name="prerequisites"></a>Önkoşullar
-Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [kaydetmeniz](quickstart-register-app.md) gerekir.  Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
+## <a name="prerequisites"></a>Ön koşullar
+Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft kimlik platformuyla tümleştirilebilmeleri için [uygulamanızı kaydetmeniz](quickstart-register-app.md) gerekir.  Kayıt olduktan sonra aşağıdaki bilgilere ihtiyacınız olabilir (Azure portalında bulunabilir):
 
-- İstemci KIMLIĞI (bir GUID 'YI temsil eden dize)
-- Kimlik sağlayıcısı URL 'SI (örnek olarak adlandırılır) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre, her topluca yetkili olarak bilinir.
-- Yalnızca kuruluşunuz için bir iş kolu uygulaması yazıyorsanız (tek kiracılı uygulama olarak da adlandırılır) kiracı KIMLIĞI.
-- Gizli bir istemci uygulaması ise, uygulama gizli anahtarı (istemci gizli dizisi) veya sertifika (X509Certificate2 türünde).
-- Web uygulamaları için ve bazen genel istemci uygulamaları için (uygulamanızın bir aracı kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleriyle uygulamanızı geri yükleyeceğim yeniden yönlendirilebilir.
+- İstemci kimliği (GUID'i temsil eden bir dize)
+- Kimlik sağlayıcı URL (örneğin adı) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre topluca otorite olarak bilinir.
+- Yalnızca kuruluşunuz için bir iş başvurusu satırı yazıyorsanız kiracı kimliği (tek kiracılı uygulama olarak da adlandırılır).
+- Uygulama gizli (istemci gizli dize) veya sertifika (tip X509Certificate2) gizli bir istemci uygulaması ise.
+- Web uygulamaları ve bazen kamu istemcisi uygulamaları için (özellikle uygulamanızın bir broker kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleri ile uygulamanıza geri döneceği redirectUri'yi de ayarlamış olacaksınız.
 
 ## <a name="ways-to-initialize-applications"></a>Uygulamaları başlatma yolları
-İstemci uygulamaları oluşturmak için birçok farklı yol vardır.
+İstemci uygulamalarını anında almanın birçok farklı yolu vardır.
 
-### <a name="initializing-a-public-client-application-from-code"></a>Koddan ortak bir istemci uygulaması başlatma
+### <a name="initializing-a-public-client-application-from-code"></a>Bir kamu istemcisi uygulamasını koddan başlatma
 
-Aşağıdaki kod, iş ve okul hesaplarıyla veya kendi kişisel Microsoft hesaplarıyla Microsoft Azure genel bulutta oturum açan kullanıcıları ortak bir istemci uygulaması başlatır.
+Aşağıdaki kod, iş ve okul hesapları veya kişisel Microsoft hesaplarıyla birlikte Microsoft Azure genel bulutundaki oturum açma kullanıcıları, ortak istemci uygulaması anında gerçekleşir.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-code"></a>Koddan gizli bir istemci uygulaması başlatma
+### <a name="initializing-a-confidential-client-application-from-code"></a>Koddan gizli bir istemci uygulamasını başlatma
 
-Aynı şekilde, aşağıdaki kod, Microsoft Azure genel buluttaki kullanıcılardan, iş ve okul hesaplarıyla ya da kendi kişisel Microsoft hesaplarıyla bir gizli uygulama (`https://myapp.azurewebsites.net`bulunan bir Web uygulaması) oluşturur. Uygulama, bir istemci gizli anahtarını paylaşarak kimlik sağlayıcısı ile tanımlanır:
+Aynı şekilde, aşağıdaki kod, Microsoft Azure genel bulutundaki kullanıcıların `https://myapp.azurewebsites.net`iş ve okul hesapları veya kişisel Microsoft hesaplarıyla birlikte gelen belirteçleri işleyen gizli bir uygulamayı (bir Web uygulamasında bulunan bir Web uygulaması) anında kullanır. Uygulama, bir istemci sırrıpaylaşılarak kimlik sağlayıcısı ile tanımlanır:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -58,7 +58,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-Bildiğiniz gibi, bir istemci gizli anahtarı kullanmak yerine, Azure AD bir sertifika ile paylaşmak isteyebilirsiniz. Kod daha sonra şunlar olur:
+Bildiğiniz gibi, üretimde istemci sırrı nı kullanmak yerine Azure AD sertifikasıile paylaşmak isteyebilirsiniz. Kod daha sonra aşağıdaki olacaktır:
 
 ```csharp
 IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(clientId)
@@ -67,9 +67,9 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-### <a name="initializing-a-public-client-application-from-configuration-options"></a>Yapılandırma seçeneklerinden ortak bir istemci uygulaması başlatma
+### <a name="initializing-a-public-client-application-from-configuration-options"></a>Yapılandırma seçeneklerinden ortak istemci uygulamasını başlatma
 
-Aşağıdaki kod, program aracılığıyla veya bir yapılandırma dosyasından okunan bir yapılandırma nesnesinden ortak bir istemci uygulaması başlatır:
+Aşağıdaki kod, programlı olarak doldurulabilen veya yapılandırma dosyasından okunabilen bir yapılandırma nesnesinden ortak istemci uygulamasını anında başlatır:
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -77,9 +77,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Yapılandırma seçeneklerinden bir gizli istemci uygulaması başlatma
+### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Yapılandırma seçeneklerinden gizli bir istemci uygulamasını başlatma
 
-Aynı tür bir model gizli istemci uygulamaları için geçerlidir. `.WithXXX` değiştiriciler (burada bir sertifika) kullanarak da başka parametreler ekleyebilirsiniz.
+Aynı tür desen gizli istemci uygulamaları için de geçerlidir. Değiştiriciler (burada `.WithXXX` bir sertifika) kullanarak diğer parametreleri de ekleyebilirsiniz.
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -88,51 +88,51 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-## <a name="builder-modifiers"></a>Oluşturucu değiştiricileri
+## <a name="builder-modifiers"></a>Oluşturucu değiştiriciler
 
-Uygulama oluşturucularını kullanan kod parçacıkları içinde, bir dizi `.With` yöntemi değiştirici olarak uygulanabilir (örneğin, `.WithCertificate` ve `.WithRedirectUri`). 
+Uygulama oluşturucularını kullanan kod parçacıklarında, bir `.With` dizi yöntem değiştirici olarak uygulanabilir `.WithCertificate` (örneğin, ve). `.WithRedirectUri` 
 
-### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Ortak ve gizli istemci uygulamalarında ortak olan değiştiriciler
+### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Genel ve gizli istemci uygulamalarında ortak olan değiştiriciler
 
-Ortak bir istemcide veya gizli istemci uygulama tasarımcısında ayarlayabileceğiniz değiştiriciler şunlardır:
+Ortak istemci veya gizli istemci uygulama oluşturucu üzerinde ayarlayabilirsiniz değiştiriciler şunlardır:
 
-|İcisi | Açıklama|
+|Değiştirici | Açıklama|
 |--------- | --------- |
-|`.WithAuthority()` 7 geçersiz kılmalar | Azure bulutu, hedef kitlesi, kiracı (kiracı KIMLIĞI veya etki alanı adı) veya doğrudan yetkili URI sağlama olasılığa sahip olan uygulama varsayılan yetkilisini bir Azure AD yetkilisine ayarlar.|
-|`.WithAdfsAuthority(string)` | Uygulamanın varsayılan yetkilisini bir ADFS yetkilisi olacak şekilde ayarlar.|
-|`.WithB2CAuthority(string)` | Uygulama varsayılan yetkilisini bir Azure AD B2C yetkilisi olacak şekilde ayarlar.|
-|`.WithClientId(string)` | İstemci KIMLIĞINI geçersiz kılar.|
-|`.WithComponent(string)` | MSAL.NET kullanarak kitaplığın adını ayarlar (telemetri nedenleri için). |
-|`.WithDebugLoggingCallback()` | Çağrılırsa, uygulama hata ayıklama izlemelerini etkinleştirmek `Debug.Write` çağırır. Daha fazla bilgi için [günlüğe](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) bakın.|
-|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Tüm kimlik doğrulama isteğinde gönderilecek olan uygulama düzeyi ek sorgu parametrelerini ayarlayın. Bu, her bir belirteç alma yöntemi düzeyinde (aynı `.WithExtraQueryParameters pattern`) geçersiz kılınabilir.|
-|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Bir HTTP proxy 'si için yapılandırma gibi gelişmiş senaryolar sağlar veya MSAL belirli bir HttpClient (örneğin ASP.NET Core Web Apps/API 'Lerinde) kullanmasına zorlanır.|
-|`.WithLogging()` | Çağrılırsa, uygulama hata ayıklama izlemelerinde bir geri çağırma çağırır. Daha fazla bilgi için [günlüğe](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) bakın.|
-|`.WithRedirectUri(string redirectUri)` | Varsayılan yeniden yönlendirme URI 'sini geçersiz kılar. Ortak istemci uygulamaları söz konusu olduğunda, bu, aracı ile ilgili senaryolar için yararlı olacaktır.|
+|`.WithAuthority()`7 geçersiz kılma | Azure Bulutu, hedef kitle, kiracı (kiracı kimliği veya etki alanı adı) seçme veya doğrudan yetkili URI'yi sağlama olanağıyla uygulama varsayılan yetkisini bir Azure REKLAM yetkilisiolarak ayarlar.|
+|`.WithAdfsAuthority(string)` | Uygulama varsayılan yetkisini ADFS yetkilisi olarak ayarlar.|
+|`.WithB2CAuthority(string)` | Uygulama varsayılan yetkisini Azure AD B2C yetkilisi olarak ayarlar.|
+|`.WithClientId(string)` | İstemci kimliğini geçersiz kılar.|
+|`.WithComponent(string)` | MSAL.NET kullanarak kitaplığın adını ayarlar (telemetri nedenleriyle). |
+|`.WithDebugLoggingCallback()` | Çağrıldığı takdirde, `Debug.Write` uygulama yalnızca hata ayıklama izlemelerini etkinleştirmeyi çağırır. Daha fazla bilgi için [Günlük'e](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) bakın.|
+|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Tüm kimlik doğrulama isteğinde gönderilecek uygulama düzeyi ek sorgu parametrelerini ayarlayın. Bu, her belirteç edinme yöntemi düzeyinde (aynı) `.WithExtraQueryParameters pattern`geçersiz kılınabilir.|
+|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | BIR HTTP proxy için yapılandırma veya MSAL'ı belirli bir HttpClient kullanmaya zorlamak gibi gelişmiş senaryoları etkinleştiri (örneğin ASP.NET Core web uygulamaları/API'lerinde).|
+|`.WithLogging()` | Çağrılsa, uygulama hata ayıklama izleri olan bir geri arama çağırır. Daha fazla bilgi için [Günlük'e](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) bakın.|
+|`.WithRedirectUri(string redirectUri)` | Varsayılan yeniden yönlendirme URI geçersiz kılar. Kamu istemcisi uygulamaları söz konusu olduğunda, bu broker içeren senaryolar için yararlı olacaktır.|
 |`.WithTelemetry(TelemetryCallback telemetryCallback)` | Telemetri göndermek için kullanılan temsilciyi ayarlar.|
-|`.WithTenantId(string tenantId)` | Kiracı KIMLIĞINI veya kiracı açıklamasını geçersiz kılar.|
+|`.WithTenantId(string tenantId)` | Kiracı kimliğini veya kiracı açıklamasını geçersiz kılar.|
 
-### <a name="modifiers-specific-to-xamarinios-applications"></a>Xamarin. iOS uygulamalarına özgü değiştiriciler
+### <a name="modifiers-specific-to-xamarinios-applications"></a>Xamarin.iOS uygulamalarına özel değiştiriciler
 
-Xamarin. iOS üzerinde ortak bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
+Xamarin.iOS'ta bir ortak istemci uygulama oluşturucuüzerinde ayarlayabilirsiniz değiştiriciler şunlardır:
 
-|İcisi | Açıklama|
+|Değiştirici | Açıklama|
 |--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **Yalnızca Xamarin. iOS**: iOS anahtar zinciri güvenlik grubunu ayarlar (önbellek kalıcılığı için).|
+|`.WithIosKeychainSecurityGroup()` | **Yalnızca Xamarin.iOS**: iOS anahtar zinciri güvenlik grubunu ayarlar (önbellek kalıcılığı için).|
 
-### <a name="modifiers-specific-to-confidential-client-applications"></a>Gizli istemci uygulamalarına özgü değiştiriciler
+### <a name="modifiers-specific-to-confidential-client-applications"></a>Gizli istemci uygulamalarına özel değiştiriciler
 
-Gizli bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
+Gizli bir istemci uygulama oluşturucu üzerinde ayarlayabilirsiniz değiştiriciler şunlardır:
 
-|İcisi | Açıklama|
+|Değiştirici | Açıklama|
 |--------- | --------- |
-|`.WithCertificate(X509Certificate2 certificate)` | Azure AD ile uygulamayı tanımlayan sertifikayı ayarlar.|
-|`.WithClientSecret(string clientSecret)` | Uygulamayı Azure AD ile tanımlayan istemci gizli anahtarını (uygulama parolası) ayarlar.|
+|`.WithCertificate(X509Certificate2 certificate)` | Uygulamayı tanımlayan sertifikayı Azure AD ile ayarlar.|
+|`.WithClientSecret(string clientSecret)` | Uygulamayı Azure AD ile tanımlayan istemci sırrını (uygulama parolası) ayarlar.|
 
-Bu değiştiriciler birbirini dışlıyor. Her ikisini de sağlarsanız, MSAL anlamlı bir özel durum oluşturur.
+Bu değiştiriciler birbirini dışlar. Her ikisini de sağlarsanız, MSAL anlamlı bir özel durum oluşturur.
 
 ### <a name="example-of-usage-of-modifiers"></a>Değiştiriciler kullanım örneği
 
-Uygulamanızın yalnızca kuruluşunuz için olan iş kolu uygulaması olduğunu varsayalım.  Daha sonra şunu yazabilirsiniz:
+Uygulamanızın yalnızca kuruluşunuz için olan bir iş hattı uygulaması olduğunu varsayalım.  O zaman şöyle yazabilirsin:
 
 ```csharp
 IPublicClientApplication app;
@@ -141,7 +141,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-İlginç hale geldiği durumlarda, Ulusal bulutlar için programlama artık basitleştirilmiştir. Uygulamanızın ulusal bir bulutta çok kiracılı bir uygulama olmasını istiyorsanız, örneğin şunu yazabilirsiniz:
+Burada ilginç hale gelir ulusal bulutlar için programlama şimdi basitleştirilmiş olmasıdır. Uygulamanızın ulusal bir bulutta çok kiracılı bir uygulama olmasını istiyorsanız, örneğin şunları yazabilirsiniz:
 
 ```csharp
 IPublicClientApplication app;
@@ -150,7 +150,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-ADFS için bir geçersiz kılma da vardır (ADFS 2019 Şu anda desteklenmiyor):
+ADFS için bir geçersiz kılma da vardır (ADFS 2019 şu anda desteklenmiyor):
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
@@ -158,7 +158,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Son olarak, Azure AD B2C geliştiriciyseniz, kiracınızı şu şekilde belirtebilirsiniz:
+Son olarak, bir Azure AD B2C geliştiricisiyseniz, kiracınızı şu şekilde belirtebilirsiniz:
 
 ```csharp
 IPublicClientApplication app;

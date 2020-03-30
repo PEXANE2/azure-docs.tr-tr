@@ -1,6 +1,6 @@
 ---
-title: Azure portal Azure IoT Edge 'dan modül dağıtma
-description: Bir IoT Edge modülünü IoT Hub bir dağıtım bildirimiyle yapılandırıldığı şekilde IoT Edge cihazınıza iletmek için Azure portal IoT Hub kullanın.
+title: Azure portalından modüldağıtma - Azure IoT Edge
+description: IoT Edge modülünüzü IoT Hub'ınızdan ioT Edge cihazınıza bir dağıtım bildirimi yle yapılandırılan IoT Edge cihazınıza itmek için Azure portalındaki IoT Hub'ınızı kullanın.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,100 +10,100 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271453"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure portalından Azure IOT Edge modüllerini dağıtmak
+# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure portalından Azure IoT Edge modüllerini dağıtma
 
-IOT Edge modülleri, iş mantığı ile oluşturduktan sonra bunları ucuna çalışılacak cihazlarınıza dağıtmak istiyorsanız. Toplamak ve veri işlemek için birlikte çalışan birden çok modül varsa, bunları tamamını aynı anda dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirin.
+İş mantığınızla IoT Edge modülleri oluşturduktan sonra, bunları kenarda çalışması için aygıtlarınıza dağıtmak istersiniz. Verileri toplamak ve işlemek için birlikte çalışan birden çok modülüz varsa, bunları aynı anda dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirebilirsiniz.
 
-Bu makalede, nasıl Azure portalında bir dağıtım bildirimi oluşturmak ve IOT Edge cihazına dağıtım gönderme sırasında size kılavuzluk eder gösterilmektedir. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi için, bkz. [IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme](how-to-deploy-monitor.md).
+Bu makalede, Azure portalının bir dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge aygıtına itme konusunda size nasıl rehberlik edemediği gösterilmektedir. Paylaşılan etiketlerine göre birden çok aygıtı hedefleyen bir dağıtım oluşturma hakkında bilgi [için](how-to-deploy-monitor.md)bkz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
-* IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md#register-in-the-azure-portal) .
+* Azure aboneliğinizde bir [IoT hub'ı.](../iot-hub/iot-hub-create-through-portal.md)
+* IoT Edge çalışma zamanı yüklü bir [IoT Edge aygıtı.](how-to-register-device.md#register-in-the-azure-portal)
 
-## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
+## <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimini yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [IoT Edge modüllerinin nasıl kullanılabileceğini, yapılandırılacağını ve yeniden kullanıldığını anlayın](module-composition.md).
+Dağıtım bildirimi, hangi modüllerin dağıtılabildiğini, modüller arasında verilerin nasıl aktığını ve modülün istenilen özelliklerini açıklayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve bunların nasıl oluşturulabileceği hakkında daha fazla bilgi için [bkz.](module-composition.md)
 
-Azure portalı, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturmada size yol gösterir. bir sihirbaz vardır. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Azure portalında, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturmada size yol gösteren bir sihirbaz vardır. Üç adımı vardır: **Modülekleme,** **Rotalar belirt**ve **dağıtımı gözden geçirin.**
 
-### <a name="select-device-and-add-modules"></a>Cihaz seçin ve modül ekleyin
+### <a name="select-device-and-add-modules"></a>Cihazı seçin ve modül ekleyin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
-1. Sol bölmede, menüden **IoT Edge** ' yi seçin.
-1. Hedef cihazın cihazlar listesinden numarasını tıklayın.
-1. Üstteki çubukta **modülleri ayarla**' yı seçin.
-1. Sayfanın **Container Registry ayarları** bölümünde, modül görüntülerinizi içeren özel kapsayıcı kayıt defterlerine erişim için kimlik bilgilerini sağlayın.
-1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve IoT hub'ınıza gidin.
+1. Sol bölmede menüden **IoT Edge'i** seçin.
+1. Aygıtlar listesinden hedef aygıtın kimliğine tıklayın.
+1. Üst çubuğunda **Modülleri Ayarla'yı**seçin.
+1. Sayfanın **Konteyner Kayıt Defteri Ayarları** bölümünde, modül resimlerinizi içeren özel konteyner kayıtlarına erişmek için kimlik bilgilerini sağlayın.
+1. Sayfanın **IoT Edge Modülleri** bölümünde **Ekle'yi**seçin.
 1. Açılan menüden modül türlerine bakın:
 
-   * **IoT Edge modülü** -modül adı ve KAPSAYıCı görüntüsü URI 'sini sağlarsınız. Örneğin, örnek SimulatedTemperatureSensor modülünün görüntü URI 'SI `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Modül görüntüsü bir özel kapsayıcı kayıt defterinde depolanıyorsa, görüntüye erişmek için bu sayfadaki kimlik bilgilerini ekleyin.
-   * **Market modülü** -Azure Marketi 'nde barındırılan modüller. Bazı Market modülleri ek yapılandırma gerektirir, bu nedenle [Azure marketi IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listesindeki modül ayrıntılarını gözden geçirin.
-   * **Azure Stream Analytics modülü** -bir Azure Stream Analytics iş yüküyle oluşturulan modüller.
+   * **IoT Edge Modülü** - Modül adını ve konteyner görüntüsünü URI sağlarsınız. Örneğin, örnek Için görüntü URI SimüleTemperatureSensor `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`modülü . Modül görüntüsü özel bir kapsayıcı kayıt defterinde depolanmışsa, resme erişmek için bu sayfadaki kimlik bilgilerini ekleyin.
+   * **Market Modülü** - Azure Marketi'nde barındırılan modüller. Bazı pazar yeri modülleri ek yapılandırma gerektirir, bu nedenle [Azure Marketi IoT Edge Modülleri](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listesindeki modül ayrıntılarını gözden geçirin.
+   * **Azure Akış Analizi Modülü** - Bir Azure Akış Analizi iş yükünden oluşturulan modüller.
 
-1. Modül eklendikten sonra, modül ayarlarını açmak için listeden modül adını seçin. Gerekirse, isteğe bağlı alanları doldurun. Kapsayıcı oluşturma seçenekleri hakkında daha fazla bilgi için, ilkeyi yeniden başlatın ve istenen durum bkz. [Edgeagent istenen özellikler](module-edgeagent-edgehub.md#edgeagent-desired-properties). Modül ikizi hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](module-composition.md#define-or-update-desired-properties).
-1. Gerekirse, dağıtımınıza ek modüller eklemek için 5 ' ten 8 ' e kadar olan adımları yineleyin.
-1. **İleri ' yi seçin:** rotalar bölümüne devam etmek için yollar.
+1. Modül ekledikten sonra, modül ayarlarını açmak için listeden modül adını seçin. Gerekirse isteğe bağlı alanları doldurun. Kapsayıcı oluşturma seçenekleri hakkında daha fazla bilgi için, ilkeyi yeniden başlatın ve istenen durum [edgeagent istenen özelliklere](module-edgeagent-edgehub.md#edgeagent-desired-properties)bakın. Modül ikizi hakkında daha fazla bilgi [için](module-composition.md#define-or-update-desired-properties)bkz.
+1. Gerekirse, dağıtımınıza ek modüller eklemek için 5 ile 8 adımlarını yineleyin.
+1. **Sonraki'ni seçin: Rotalar** bölümüne devam edecek rotalar.
 
-### <a name="specify-routes"></a>Rota belirtme
+### <a name="specify-routes"></a>Rotaları belirtin
 
-**Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Varsayılan olarak, rota adı olarak **tanımlanır ve** **/ileti/\* ' den $upstream**olarak tanımlanmıştır. Bu, herhangi bir modülle çıkış iletilerinin IoT Hub 'ınıza gönderildiği anlamına gelir.  
+**Rotalar** sekmesinde, iletilerin modüller ve IoT Hub'ı arasında nasıl geçirildiğini tanımlarsınız. İletiler ad/değer çiftleri kullanılarak oluşturulur. Varsayılan olarak bir rota **rota** olarak adlandırılır ve **FROM\* /iletiler/ INTO $upstream**olarak tanımlanır, bu da herhangi bir modül tarafından herhangi bir ileti çıkışının IoT hub'ınıza gönderildiği anlamına gelir.  
 
-Bilgileri [bildirme rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından İleri ' yi seçin. sihirbazın sonraki adımına devam etmek için ileri ' ye tıklayın ve **Oluştur** ' a tıklayın.
+[Rotaları Bildir rotalarından](module-composition.md#declare-routes)gelen bilgilerle ekleyin veya güncelleştirin, ardından **Sonraki: Gözden Geçir +** sihirbazın bir sonraki adımına devam etmek için oluşturun'u seçin.
 
-### <a name="review-deployment"></a>Dağıtım gözden geçirin
+### <a name="review-deployment"></a>Dağıtımı gözden geçirme
 
-Oluşturulan gözden geçirme bölümü gösterir, JSON dağıtım bildirimi önceki iki bölümlerde seçimlerinize göre. **$EdgeAgent** ve **$edgeHub**eklemediğiniz iki modül olduğunu unutmayın. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
+İnceleme bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Eklemediğinizi beyan eden iki modül olduğunu unutmayın: **$edgeAgent** ve **$edgeHub.** Bu iki modül [IoT Edge çalışma süresini](iot-edge-runtime.md) oluşturan ve her dağıtımda varsayılan olarak gereklidir.
 
-Dağıtım bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin.
+Dağıtım bilgilerinizi gözden geçirin ve ardından **Oluştur'u**seçin.
 
-## <a name="view-modules-on-your-device"></a>Cihazınızda modülleri görüntüleme
+## <a name="view-modules-on-your-device"></a>Cihazınızdaki modülleri görüntüleme
 
-Modülleri cihazınıza dağıttıktan sonra, bunların tümünü IoT Hub cihaz ayrıntıları sayfasında görüntüleyebilirsiniz. Bu sayfa, her dağıtılan modülü yanı sıra dağıtım durumu ve çıkış kodu gibi yararlı bilgiler adını görüntüler.
+Modülleri cihazınıza dağıttıktan sonra, bunların tümlerini IoT Hub'ınızın aygıt ayrıntıları sayfasında görüntüleyebilirsiniz. Bu sayfa, dağıtılan her modülün adının yanı sıra dağıtım durumu ve çıkış kodu gibi yararlı bilgileri görüntüler.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketi 'nden modüller dağıtma
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketi'nden modüldağıtma
 
-[Azure Marketi](https://azuremarketplace.microsoft.com/) , [IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)dahil olmak üzere Azure 'da çalışmak üzere sertifikalı ve iyileştirilmiş çok sayıda kurumsal uygulama ve çözüm arasında dolaşabileceğiniz çevrimiçi bir uygulamalar ve hizmetler marketi.
+[Azure Marketi,](https://azuremarketplace.microsoft.com/) [IoT Edge modülleri](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)de dahil olmak üzere Azure'da çalışacak şekilde onaylı ve optimize edilmiş çok çeşitli kurumsal uygulamalara ve çözümlere göz atabileceğiniz çevrimiçi bir uygulama ve hizmet pazarıdır.
 
-Azure Marketi 'nden ve IoT Hub bir IoT Edge modülünü dağıtabilirsiniz.
+Azure Marketi'nden ve IoT Hub'ınızdan bir IoT Edge modülü dağıtabilirsiniz.
 
-### <a name="deploy-from-azure-marketplace"></a>Azure Marketi 'nden dağıtma
+### <a name="deploy-from-azure-marketplace"></a>Azure Marketinden Dağıtma
 
-Market 'teki IoT Edge modüllerini kullanın ve istediğiniz bir dosyayı bularak **Oluştur** veya **hemen al**seçeneğini belirleyerek dağıtabilirsiniz. Seçtiğiniz IoT Edge modüle göre değişebilen Dağıtım Sihirbazı adımlarına devam edin:
+IoT Edge modüllerini pazaryerinde incele ve istediğinizi bulduğunuzda **şimdi Oluştur** veya **Al'ı**seçerek dağıtabilirsiniz. Seçtiğiniz IoT Edge modülüne bağlı olarak değişebilen dağıtım sihirbazı adımlarını devam edin:
 
-1. Devam ' i seçerek sağlayıcının kullanım koşullarını ve gizlilik ilkesini kabul **edin**. Önce iletişim bilgilerini sağlamanız gerekebilir.
-1. Aboneliğinizi ve hedef cihazın eklendiği IoT Hub seçin.
-1. **Cihaza dağıt**' ı seçin.
-1. Cihazın adını girin veya hub 'a kayıtlı cihazlar arasında gezinmek için **Cihazı bul** ' u seçin.
-1. İsterseniz başka modüller ekleme dahil olmak üzere, bir dağıtım bildirimini yapılandırma işlemi için standart işleme devam etmek için **Oluştur** ' u seçin. Görüntü URI 'SI, oluşturma seçenekleri ve istenen özellikler gibi yeni modülün ayrıntıları önceden tanımlanmıştır ancak değiştirilebilir.
+1. **Devam'ı**seçerek sağlayıcının kullanım koşullarını ve gizlilik politikasını kabul edin. Öncelikle iletişim bilgilerini vermeniz gerekebilir.
+1. Aboneliğinizi ve hedef aygıtın bağlı olduğu IoT Hub'ını seçin.
+1. **Aygıta Dağıt'ı**seçin.
+1. Aygıtın adını girin veya hub'a kayıtlı aygıtlar arasında gezinmek için **Cihazı Bul'u** seçin.
+1. İstenirse diğer modülleri ekleme de dahil olmak üzere, dağıtım bildirimini yapılandırmanın standart işlemini devam etmek için **Oluştur'u** seçin. Görüntü URI, oluşturma seçenekleri ve istenen özellikler gibi yeni modülün ayrıntıları önceden tanımlanır, ancak değiştirilebilir.
 
-Modülün Azure portal IoT Hub dağıtıldığını doğrulayın. Cihazınızı seçin, **modülleri ayarla** ' yı seçin ve modülün **IoT Edge modüller** bölümünde listelenmesi gerekir.
+Modülün Azure portalındaki IoT Hub'ınızda dağıtılmış olduğundan doğrulayın. Cihazınızı seçin, **Modülleri Ayarla'yı** seçin ve modül **IoT Edge Modülleri** bölümünde listelenmelidir.
 
-### <a name="deploy-from-azure-iot-hub"></a>Azure IoT Hub dağıtma
+### <a name="deploy-from-azure-iot-hub"></a>Azure IoT Hub'ından dağıtma
 
-Azure portal IoT Hub Azure Marketi 'nden cihazınıza hızlı bir şekilde bir modül dağıtabilirsiniz.
+Azure portalındaki IoT Hub'ınızdaki Azure Marketi'nden bir modülü cihazınıza hızla dağıtabilirsiniz.
 
-1. Azure portal IoT Hub gidin.
-1. Sol bölmedeki **otomatik cihaz yönetimi**altında **IoT Edge**' yi seçin.
-1. Dağıtımı alacak IoT Edge cihazını seçin.
-1. Üstteki çubukta **modülleri ayarla**' yı seçin.
-1. **IoT Edge modüller** bölümünde, **Ekle**' ye tıklayın ve açılan menüden **Market modülü** ' nü seçin.
+1. Azure portalında IoT Hub'ınıza gidin.
+1. Sol bölmede, **Otomatik Aygıt Yönetimi** **altında, IoT Edge'i**seçin.
+1. Dağıtımı alacak olan IoT Edge aygıtını seçin.
+1. Üst çubuğunda **Modülleri Ayarla'yı**seçin.
+1. **IoT Edge Modülleri** bölümünde, **Ekle'yi**tıklatın ve açılan menüden **Market Modülü'nü** seçin.
 
-![IoT Hub Modül Ekle](./media/how-to-deploy-modules-portal/iothub-add-module.png)
+![IoT Hub'ına modül ekleme](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 
-**IoT Edge Module marketi** sayfasından bir modül seçin. Seçtiğiniz modül, aboneliğiniz, kaynak grubunuz ve cihazınız için otomatik olarak yapılandırılır. Daha sonra IoT Edge modüller listenizde görünür. Bazı modüller için ek yapılandırma gerekebilir.
+**IoT Edge Modül Pazarı** sayfasından bir modül seçin. Seçtiğiniz modül aboneliğiniz, kaynak grubunuz ve aygıtınız için otomatik olarak yapılandırılır. Daha sonra IoT Edge modülleri listenizde görünür. Bazı modüller ek yapılandırma gerektirebilir.
 
 > [!TIP]
-> Azure IoT Hub IoT Edge modülleriyle ilgili bilgiler sınırlıdır. Önce Azure Marketi 'nde [IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) hakkında daha fazla bilgi edinebilirsiniz.
+> Azure IoT Hub'Daki IoT Edge modülleri hakkındaki bilgiler sınırlıdır. Azure Marketi'ndeki [IoT Edge modülleri](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) hakkında daha fazla bilgi edinebilirsiniz.
 
-**İleri ' yi seçin:** rotalar ve bu makalenin önceki kısımlarında yer alarak dağıtımları [belirtin](#specify-routes) ve [dağıtımı gözden geçir](#review-deployment) bölümünde açıklandığı gibi dağıtıma devam edin.
+**Sonraki'ni seçin: Rotaları** seçin ve bu makalenin başlarında [rotaları belirt](#specify-routes) ve [Dağıtımı Gözden Geçir'de](#review-deployment) açıklandığı şekilde dağıtıma devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Edge modüllerini ölçekli olarak dağıtmayı ve izlemeyi](how-to-deploy-monitor.md) öğrenin
+[IoT Edge modüllerini ölçekte nasıl dağıtılayacağım ve izleyeceğiz](how-to-deploy-monitor.md)

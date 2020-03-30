@@ -1,41 +1,41 @@
 ---
-title: Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme
-description: Azure uygulama yapılandırma örneğinize erişim yetkisi vermek için RBAC 'yi etkinleştirin
+title: Azure Etkin Dizini'ni kullanarak Azure Uygulama Yapılandırmasına erişimi yetkilendirme
+description: Azure Uygulama Yapılandırma örneğinize erişimi yetkilendirmek için RBAC'ı etkinleştirin
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 18fa1b60b15b7eef96efa8dcc4fbf9cd7c4dc7f7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77472628"
 ---
-# <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme
-Azure Uygulama yapılandırması, istekleri uygulama yapılandırma örneklerine yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler.  Azure AD, bir güvenlik sorumlusu için izin vermek üzere rol tabanlı erişim denetimi (RBAC) kullanmanıza olanak tanır.  Bir güvenlik sorumlusu, bir kullanıcı veya bir [uygulama hizmeti sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)olabilir.  Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
+# <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Etkin Dizini'ni kullanarak Azure Uygulama Yapılandırmasına erişimi yetkilendirme
+Azure Uygulama Yapılandırması, istekleri Uygulama Yapılandırma örneklerine yetkilendirmek için Azure Active Directory 'i (Azure AD) kullanmayı destekler.  Azure AD, bir güvenlik ilkesine izin vermek için rol tabanlı erişim denetimini (RBAC) kullanmanıza olanak tanır.  Bir güvenlik ilkesi bir kullanıcı veya bir [uygulama hizmeti ilkesi](../active-directory/develop/app-objects-and-service-principals.md)olabilir.  Roller ve rol atamaları hakkında daha fazla bilgi edinmek için [farklı rolleri anlama](../role-based-access-control/overview.md)'ya bakın.
 
 ## <a name="overview"></a>Genel Bakış
-Güvenlik sorumlusu (bir kullanıcı veya uygulama) tarafından bir uygulama yapılandırma kaynağına erişmek için yapılan isteklerin yetkilendirilmiş olması gerekir.  Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir.
-1. Güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür.  Belirteç istemek için kaynak adı, `{tenantID}`, hizmet sorumlusunun ait olduğu Azure Active Directory kiracı KIMLIĞIYLE eşleşen `https://login.microsoftonline.com/{tenantID}`.
-2. Belirteç, belirtilen kaynağa erişim yetkisi vermek için uygulama yapılandırma hizmetine yapılan bir isteğin bir parçası olarak geçirilir.
+Bir Uygulama Yapılandırması kaynağına erişmek için güvenlik sorumlusu (kullanıcı veya uygulama) tarafından yapılan isteklere izin verilmelidir.  Azure AD ile kaynağa erişim iki adımlı bir işlemdir.
+1. Güvenlik sorumlusunun kimliği doğrulandı ve bir OAuth 2.0 belirteci döndürüldü.  Belirteç istemek için kaynak `https://login.microsoftonline.com/{tenantID}` `{tenantID}` adı, hizmet yöneticisinin ait olduğu Azure Etkin Dizin kiracı kimliğiyle eşleştiği yerdir.
+2. Belirteç, belirtilen kaynağa erişim yetkisi vermek için Uygulama Yapılandırma hizmetine yapılan isteğin bir parçası olarak geçirilir.
 
-Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesi gerekir.  Bir uygulama Azure Işlevleri uygulaması, bir Azure Web uygulaması veya bir Azure VM gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimlik kullanabilir.  Azure Uygulama yapılandırmasına yönetilen bir kimlik tarafından yapılan isteklerin nasıl doğrulanalınacağını öğrenmek için bkz. Azure [kaynakları için Azure Active Directory ve yönetilen kimlikler Ile Azure uygulama yapılandırma kaynaklarına erişim kimlik doğrulaması](howto-integrate-azure-managed-service-identity.md).
+Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2.0 erişim belirteci içermesini gerektirir.  Bir uygulama Azure İşlevler uygulaması, Azure Web Uygulaması veya Azure VM gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimliği kullanabilir.  Azure Uygulama Yapılandırması'nda yönetilen bir kimlik tarafından yapılan istekleri niçin doğrulayacağını öğrenmek için, [Azure Etkin Dizini ve Azure Kaynakları için yönetilen kimliklerle Azure Uygulama Konfigürasyon kaynaklarına kimlik doÄ](howto-integrate-azure-managed-service-identity.md)rama süre
 
-Yetkilendirme adımı, güvenlik sorumlusuna bir veya daha fazla RBAC rolünün atanmasını gerektirir. Azure Uygulama yapılandırması, uygulama yapılandırma kaynakları için izin kümelerini çevreleyen RBAC rolleri sağlar. Bir güvenlik sorumlusu 'na atanan roller, sorumlu için belirtilen izinleri tespit edilir. RBAC rolleri hakkında daha fazla bilgi için bkz. [Azure Uygulama yapılandırması Için YERLEŞIK RBAC rolleri](#built-in-rbac-roles-for-azure-app-configuration). 
+Yetkilendirme adımı, bir veya daha fazla RBAC rolünün güvenlik ilkesine atanmasını gerektirir. Azure Uygulama Yapılandırması, Uygulama Yapılandırmakaynakları için izin kümelerini kapsayan RBAC rolleri sağlar. Bir güvenlik ilkesine atanan roller, müdüre verilen izinleri belirler. RBAC rolleri hakkında daha fazla bilgi için [Azure Uygulama Yapılandırması için Yerleşik RBAC rolleri'ne](#built-in-rbac-roles-for-azure-app-configuration)bakın. 
 
-## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rolleri atama
-Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir.
+## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rollerini atama
+Azure Etkin Dizin (Azure AD), rol tabanlı [erişim denetimi (RBAC)](../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarına izin vermektedir.
 
-Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, uygulama yapılandırma kaynağına göre kapsamlandırılır. Azure AD güvenlik sorumlusu, bir kullanıcı veya bir uygulama hizmeti sorumlusu ya da [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md)olabilir.
+Bir Azure REKLAM güvenlik ilkesine bir RBAC rolü atandığında, Azure bu güvenlik ilkesi için bu kaynaklara erişim sağlar. Erişim, Uygulama Yapılandırması kaynağına göre dir. Azure AD güvenlik ilkesi bir kullanıcı veya uygulama hizmeti ilkesi veya [Azure kaynakları için yönetilen](../active-directory/managed-identities-azure-resources/overview.md)bir kimlik olabilir.
 
-## <a name="built-in-rbac-roles-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için yerleşik RBAC rolleri
-Azure, Azure AD ve OAuth kullanarak uygulama yapılandırma verilerine erişim yetkisi vermek için aşağıdaki yerleşik RBAC rollerini sağlar:
+## <a name="built-in-rbac-roles-for-azure-app-configuration"></a>Azure Uygulama Yapılandırması için yerleşik RBAC rolleri
+Azure, Azure AD ve OAuth kullanarak Uygulama Yapılandırma verilerine erişim yetkisi vermek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
-- Azure Uygulama yapılandırması veri sahibi: uygulama yapılandırma kaynaklarına okuma/yazma erişimi sağlamak için bu rolü kullanın.
-- Azure uygulama yapılandırma veri okuyucusu: uygulama yapılandırma kaynaklarına okuma erişimi sağlamak için bu rolü kullanın.
-- Katkıda bulunan: uygulama yapılandırma örneğinde depolanan verilere erişim izni vermeden hizmete yönetici erişimi vermek için bu rolü kullanın.
+- Azure Uygulama Yapılandırma Veri Sahibi: Uygulama Yapılandırma kaynaklarına okuma/yazma erişimi sağlamak için bu rolü kullanın.
+- Azure Uygulama Yapılandırma Veri Okuyucusu: Uygulama Yapılandırma kaynaklarına okuma erişimi sağlamak için bu rolü kullanın.
+- Katılımcı: Yöneticiye Uygulama Yapılandırması örneğinde depolanan verilere erişim izni vermeden hizmete erişim sağlamak için bu rolü kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uygulama yapılandırma hizmetinizi yönetmek için [Yönetilen kimlikler](howto-integrate-azure-managed-service-identity.md) kullanma hakkında daha fazla bilgi edinin.
+Uygulama Yapılandırma hizmetinizi yönetmek için [yönetilen kimlikleri](howto-integrate-azure-managed-service-identity.md) kullanma hakkında daha fazla bilgi edinin.

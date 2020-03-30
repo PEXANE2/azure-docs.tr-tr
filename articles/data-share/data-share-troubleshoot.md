@@ -1,6 +1,6 @@
 ---
 title: Azure Veri Paylaşımı sorunlarını giderme
-description: Azure veri paylaşımı ile veri paylaşımları oluştururken veya alırken davetiye ve hatalarla ilgili sorunları nasıl giderebileceğinizi öğrenin.
+description: Azure Veri Paylaşımı ile veri paylaşımı oluştururken veya alırken davetlerle ve hatalarla ilgili sorunları nasıl gidereceklerini öğrenin.
 services: data-share
 author: joannapea
 ms.author: joanpo
@@ -8,69 +8,69 @@ ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964235"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure veri paylaşımında sık karşılaşılan sorunları giderme 
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Veri Paylaşımı'nda sık karşılaşılan sorunları giderme 
 
-Bu makalede, Azure veri paylaşımında yaygın sorunların nasıl giderileceği gösterilmektedir. 
+Bu makalede, Azure Veri Paylaşımı için sık karşılaşılan sorunları nasıl gideriylen giderilen gösterilmektedir. 
 
-## <a name="azure-data-share-invitations"></a>Azure Data Share davetleri 
+## <a name="azure-data-share-invitations"></a>Azure Veri Paylaşımı davetiyeleri 
 
-Bazı durumlarda, yeni bir kullanıcı gönderilen e-posta **davetinde daveti kabul et** ' i tıklattığında, bu kişiler boş bir davetiye listesi ile sunulabilir. 
+Bazı durumlarda, yeni bir kullanıcı gönderilen e-posta davetinden **Daveti Kabul** Et'i tıklattığında, bunlara boş bir davet listesi sunulabilir. 
 
-![Davetiye yok](media/no-invites.png)
+![Davet yok](media/no-invites.png)
 
-Bunun nedeni aşağıdakilerden biri olabilir:
+Bunun nedeni aşağıdaki nedenlerden olabilir:
 
-* **Azure veri paylaşma hizmeti, Azure kiracısında herhangi bir Azure aboneliğinin kaynak sağlayıcısı olarak kayıtlı değil.** Azure kiracınızda veri paylaşma kaynağı yoksa bu sorunla karşılaşırsınız. Bir Azure veri paylaşma kaynağı oluşturduğunuzda, kaynak sağlayıcıyı otomatik olarak Azure aboneliğinize kaydeder. Ayrıca, bu adımları izleyerek veri paylaşma hizmetini el ile de kaydedebilirsiniz. Bu adımları tamamlayabilmeniz için Azure katkıda bulunan rolüne sahip olmanız gerekir.
+* **Azure Veri Paylaşımı hizmeti, Azure kiracısında herhangi bir Azure aboneliğinin kaynak sağlayıcısı olarak kayıtlı değildir.** Azure kiracınızda Veri Paylaşımı kaynağı yoksa bu sorunla karşılaşırsınız. Bir Azure Veri Paylaşımı kaynağı oluşturduğunuzda, kaynak sağlayıcısını Azure aboneliğinize otomatik olarak kaydeder. Aşağıdaki adımları izleyerek Veri Paylaşımı hizmetini el ile de kaydedebilirsiniz. Bu adımları tamamlamak için Azure Katılımcısı rolüne sahip olmanız gerekir.
 
-    1. Azure portal **abonelikler** ' e gidin
-    1. Azure veri paylaşımında kaynak oluşturmak için kullanmak istediğiniz aboneliği seçin
-    1. **Kaynak sağlayıcıları** ' na tıklayın
-    1. **Microsoft. DataShare** araması yapın
-    1. **Kaydet** 'e tıklayın 
+    1. Azure portalında **Abonelikler'e** gidin
+    1. Azure Veri Paylaşımı kaynağı oluşturmak için kullanmak istediğiniz aboneliği seçin
+    1. Kaynak **Sağlayıcılar'a** tıklayın
+    1. **Microsoft.DataShare** ara
+    1. **Kayıt'yı** tıklatın 
 
-    Bu adımları tamamlayabilmeniz için [Azure KATıLıMCıSı RBAC rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olmanız gerekir. 
+    Bu adımları tamamlamak için [Azure Katılımcır RBAC rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olmanız gerekir. 
 
-* **Davet, Azure oturum açma e-postanız yerine e-posta diğer adınızla gönderilir.** Azure Data Share hizmetini kaydettiniz veya Azure kiracısında zaten bir veri paylaşma kaynağı oluşturduysanız, ancak yine de daveti göremiyorsanız, bu, sağlayıcının Azure oturum açma e-posta adresiniz yerine e-posta diğer adınızı alıcı olarak girdiğinden olabilir. Veri sağlayıcınızla iletişim kurun ve daveti, e-posta diğer adınızla değil, Azure oturum açma e-posta adresinize gönderdiklerinden emin olun.
+* **Davet, Azure giriş e-postanız yerine e-posta takma adınıza gönderilir.** Azure Veri Paylaşımı hizmetini kaydettiyseniz veya Azure kiracısında zaten bir Veri Paylaşımı kaynağı oluşturduysanız, ancak yine de daveti göremiyorsanız, bunun nedeni sağlayıcının e-posta takma adınıAzure giriş e-posta adresiniz yerine alıcı olarak girmiş olmasıolabilir. Veri sağlayıcınıza başvurun ve daveti e-posta takma adınıza değil, Azure giriş e-posta adresinize gönderdiklerini emin olun.
 
-* **Davet zaten kabul edildi.** E-postadaki bağlantı, sizi yalnızca bekleyen davetleri listeleyen Azure portal veri paylaşma daveti sayfasına götürür. Daveti zaten kabul ettiyseniz, veri paylaşma daveti sayfasında artık görünmez. Alınan paylaşımları görüntülemek ve hedef Azure Veri Gezgini kümesi ayarınızı yapılandırmak için ' i daveti kabul etmek üzere kullandığınız veri paylaşım kaynağınız ile devam edin.
+* **Davet zaten kabul edildi.** E-postadaki bağlantı sizi Azure portalındaki Veri Paylaşımı Daveti sayfasına götürür ve yalnızca bekleyen davetleri listeler. Daveti zaten kabul ettiyseniz, artık Veri Paylaşımı Daveti sayfasında gösterilmez. Alınan paylaşımları görüntülemek ve hedef Azure Veri Gezgini küme ayarınızı yapılandırmak için daveti kabul etmek için kullandığınız Veri Paylaşımı kaynağınıza devam edin.
 
-## <a name="error-when-creating-or-receiving-a-new-share"></a>Yeni bir paylaşma oluştururken veya alınırken hata oluştu
+## <a name="error-when-creating-or-receiving-a-new-share"></a>Yeni bir pay oluştururken veya alırken hata
 
 "Veri kümeleri eklenemedi"
 
-"Veri kümeleri eşleştirilemedi"
+"Veri kümelerini eşlemekte başarısız olundu"
 
-"Veri paylaşma kaynağı x erişimi y 'ye verilemedi"
+"Veri Paylaşımı kaynağına x erişimi verilemeyen y"
 
-"X için uygun izinleriniz yok"
+"X için uygun izinleri yok"
 
-"Azure veri paylaşma hesabı için bir veya daha fazla seçili kaynaklarınızdan yazma izinleri eklenemedi"
+"Seçtiğiniz kaynaklardan birine veya daha fazlasına Azure Veri Paylaşımı hesabı için yazma izinleri ekleyemedik"
 
-Yeni bir paylaşma veya veri kümeleri eşleme oluştururken yukarıdaki hatalardan birini alırsanız, bu, Azure veri deposuna yetersiz izinler nedeniyle olabilir. Gerekli izinler için [rol ve gereksinimlere](concepts-roles-permissions.md) bakın. 
+Yeni bir paylaşım oluştururken veya veri kümelerini eşlerken yukarıdaki hatalardan herhangi birini alırsanız, bunun nedeni Azure veri deposuna yapılan yetersiz izinlerden kaynaklanıyor olabilir. Bkz. Gerekli izinler için [Roller ve gereksinimler.](concepts-roles-permissions.md) 
 
-Genellikle katkıda bulunan rolünde bulunan bir Azure veri deposundaki verileri paylaştırmak veya almak için yazma izninizin olması gerekir. 
+Genellikle Katılımcı rolünde bulunan bir Azure veri deposundan veri paylaşmak veya almak için yazma iznine ihtiyacınız vardır. 
 
-Azure veri deposundan ilk kez veri paylaşıyorsanız veya alıyorsanız, genellikle sahip rolünde bulunan *Microsoft. Authorization/role atama/yazma* iznine de ihtiyacınız vardır. Azure veri deposu kaynağını oluşturmuş olsanız bile, kaynak sahibini otomatik olarak yapmaz. Uygun izne sahip olan Azure veri paylaşma hizmeti, veri deposu kaynağının yönetilen kimlik erişimini otomatik olarak verir. Bu işlemin etkili olması birkaç dakika sürebilir. Bu gecikme nedeniyle hata yaşarsanız birkaç dakika sonra yeniden deneyin.
+Azure veri deposundan ilk kez veri paylaşıyor veya alıyorsanız, genellikle Sahibi rolünde bulunan *Microsoft.Authorization/rol atamaları/yazma* iznine de ihtiyacınız vardır. Azure veri deposu kaynağını oluşturmuş olsanız bile, otomatik olarak sizi kaynağın sahibi yapmaz. Azure Veri Paylaşımı hizmeti, uygun izinle veri paylaşımı kaynağının veri deposuna yönetilen kimlik erişimini otomatik olarak verir. Bu işlemin etkili olması birkaç dakika sürebilir. Bu gecikme nedeniyle başarısızlıkla karşılaşırsanız, birkaç dakika içinde yeniden deneyin.
 
-SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılar için bkz. SQL tabanlı Paylaşım sorunlarını giderme.
+SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılar için Sorun Giderme SQL tabanlı paylaşıma bakın.
 
-## <a name="troubleshooting-sql-based-sharing"></a>SQL tabanlı Paylaşım sorunlarını giderme
+## <a name="troubleshooting-sql-based-sharing"></a>SQL tabanlı paylaşım sorunlarını giderme
 
-"Kullanıcı x, SQL veritabanında yok"
+"Kullanıcı x SQL veritabanında yok"
 
-SQL tabanlı bir kaynaktan veri kümesi eklerken bu hatayı alırsanız, bunun nedeni SQL Server Azure veri paylaşımında yönetilen kimliği için bir kullanıcı oluşturmanız olabilir.  Bu sorunu çözmek için aşağıdaki betiği çalıştırın:
+Bu hatayı, SQL tabanlı bir kaynaktan veri kümesi eklerken alırsanız, bunun nedeni SQL Server'ınızda Azure Veri Paylaşımı yönetilen kimliği için bir kullanıcı oluşturmamış olabilirsiniz.  Bu sorunu gidermek için aşağıdaki komut dosyasını çalıştırın:
 
 ```sql
     create user "<share_acct_name>" from external provider; 
     exec sp_addrolemember db_datareader, "<share_acct_name>";
 ```      
-Veri kümesini SQL tabanlı bir hedefe eşlerken bu hatayı alırsanız, bunun nedeni SQL Server Azure veri paylaşımında yönetilen kimliği için bir kullanıcı oluşturmanız olabilir.  Bu sorunu çözmek için aşağıdaki betiği çalıştırın:
+Bu hatayı, veri kümesini SQL tabanlı bir hedefe eşleme yaparken alırsanız, bunun nedeni SQL Server'ınızda Azure Veri Paylaşımı yönetilen kimliği için bir kullanıcı oluşturmamış olabilirsiniz.  Bu sorunu gidermek için aşağıdaki komut dosyasını çalıştırın:
 
 ```sql
     create user "<share_acc_name>" from external provider; 
@@ -78,18 +78,18 @@ Veri kümesini SQL tabanlı bir hedefe eşlerken bu hatayı alırsanız, bunun n
     exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
     exec sp_addrolemember db_ddladmin, "<share_acc_name>";
 ```
-*< Share_acc_name >* veri paylaşma kaynağınızın adı olduğunu unutmayın.      
+*<share_acc_name>* Veri Paylaşımı kaynağınızın adı olduğunu unutmayın.      
 
-[Verilerinizi paylaşma](share-your-data.md) bölümünde listelenen tüm önkoşulları izlediğinizden emin olun ve [veri al öğreticisini kabul edin](subscribe-to-data-share.md) .
+Verilerinizi Paylaşın'da listelenen tüm ön koşulları takip ettiğinizden ve veri [eğitimini](share-your-data.md) [kabul edip aldığınızdan](subscribe-to-data-share.md) emin olun.
 
 ## <a name="snapshot-failed"></a>Anlık görüntü başarısız oldu
-Çeşitli nedenlerden dolayı anlık görüntü başarısız olabilir. Anlık görüntünün başlangıç saatine ve sonra her bir veri kümesinin durumuna tıklayarak ayrıntılı hata iletisi bulabilirsiniz. 
+Anlık görüntü çeşitli nedenlerden dolayı başarısız olabilir. Anlık görüntünün başlangıç saatini ve ardından her veri kümesinin durumunu tıklatarak ayrıntılı hata iletisi bulabilirsiniz. 
 
-Hata iletisi izinle ilişkiliyse, veri paylaşma hizmeti 'nin gerekli izne sahip olduğunu doğrulayın. Ayrıntılar için [Roller ve gereksinimlere](concepts-roles-permissions.md) bakın. İlk kez bir anlık görüntü çekiyorsunuz, veri paylaşımının kaynağı için Azure veri deposuna erişim verilmesi birkaç dakika sürebilir. Birkaç dakika bekleyip yeniden deneyin.
+Hata iletisi izinle ilgiliyse, Veri Paylaşımı hizmetinin gerekli izine sahip olduğunu doğrulayın. Ayrıntılar için [Roller ve gereksinimlere](concepts-roles-permissions.md) bakın. İlk anlık görüntü alıyorsanız, Veri Paylaşımı kaynağının Azure veri deposuna erişim hakkı verilmesi birkaç dakika sürebilir. Birkaç dakika bekleyin ve tekrar deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin. 
+Veri paylaşmaya nasıl başlayacağınızı öğrenmek [için, veri öğreticinizi paylaşmaya devam edin.](share-your-data.md) 
 
-Veri alma hakkında bilgi edinmek için, [verileri kabul etme ve alma](subscribe-to-data-share.md) öğreticisine geçin.
+Veri almayı öğrenmek için, veri eğitimi [almaya ve kabul](subscribe-to-data-share.md) etmeye devam edin.
 

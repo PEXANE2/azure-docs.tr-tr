@@ -1,7 +1,7 @@
 ---
-title: Bağlantı sorunlarını giderme-Azure PowerShell
+title: Sorun giderme bağlantıları - Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: PowerShell kullanarak Azure ağ Izleyicisi 'nde bağlantı sorunlarını giderme özelliğini nasıl kullanacağınızı öğrenin.
+description: PowerShell'i kullanarak Azure Ağ İzleyicisi'nin bağlantı sorun giderme özelliğini nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,36 +14,36 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842844"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell'i kullanarak Azure Ağ İzleyicisi ile bağlantıları giderme
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
-> - [PowerShell](network-watcher-connectivity-powershell.md)
+> - [Powershell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Bir sanal makineden belirli bir uç noktaya doğrudan TCP bağlantısının kurulabildiğini doğrulamak için bağlantı sorunlarını giderme hakkında bilgi edinin.
+Sanal bir makineden belirli bir bitiş noktasına doğrudan TCP bağlantısının kurulup kurulamayacağını doğrulamak için bağlantı sorun giderini nasıl kullanacağınızı öğrenin.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bir bağlantı sorunlarını gidermek istediğiniz bölgedeki ağ Izleyicisi örneği.
-* İle bağlantı sorunlarını gidermek için sanal makineler.
+* Bağlantıyla sorun gidermek istediğiniz bölgedeki Ağ İzleyicisi örneği.
+* Bağlantıları gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız sanal makinenin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
+> Bağlantı sorun giderme, sorun giderdiğiniz VM'nin `AzureNetworkWatcherExtension` VM uzantısıyüklü olması gerekir. Uzantıyı Windows VM'de yüklemek [için Windows için Azure Network Watcher Agent sanal makine uzantısını](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ziyaret edin ve Linux VM için Linux için Azure Network [Watcher Agent sanal makine uzantısını](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)ziyaret edin. Uzantı, hedef bitiş noktasında gerekli değildir.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makineye bağlantıyı denetle
+## <a name="check-connectivity-to-a-virtual-machine"></a>Sanal makineye bağlantıyı kontrol edin
 
-Bu örnek, 80 bağlantı noktası üzerinden bir hedef sanal makineye bağlantıyı denetler. Bu örnekte, kaynak VM 'yi içeren bölgede ağ Izleyicisi etkinleştirilmiş olması gerekir.  
+Bu örnek, bağlantı noktası 80 üzerinden bir hedef sanal makineye bağlantı denetler. Bu örnek, kaynak VM içeren bölgede Ağ İzleyicisi etkin olmasını gerektirir.  
 
 ### <a name="example"></a>Örnek
 
@@ -64,7 +64,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış **UserRule_Port80**adlı Kullanıcı tarafından yapılandırılmış bir `NetworkSecurityRule` nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt önceki örnektendir.  Bu yanıtta, `ConnectionStatus` **Erişilemez.** Gönderilen tüm sondaların başarısız olduğunu görebilirsiniz. `NetworkSecurityRule` **UserRule_Port80**Bağlantı, 80. Bu bilgiler bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```
 ConnectionStatus : Unreachable
@@ -137,7 +137,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>Yönlendirme sorunlarını doğrulama
 
-Bu örnek, bir sanal makine ile uzak uç nokta arasındaki bağlantıyı denetler. Bu örnekte, kaynak VM 'yi içeren bölgede ağ Izleyicisi etkinleştirilmiş olması gerekir.  
+Bu örnek, sanal makine ile uzak bir bitiş noktası arasındaki bağlantıyı denetler. Bu örnek, kaynak VM içeren bölgede Ağ İzleyicisi etkin olmasını gerektirir.  
 
 ### <a name="example"></a>Örnek
 
@@ -155,7 +155,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte `ConnectionStatus` **ulaşılamaz**olarak gösterilir. `Hops` ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellendiğini `Issues` altında bakabilirsiniz. 
+Aşağıdaki örnekte, `ConnectionStatus` **Erişilemez**olarak gösterilir. Ayrıntılarda, `Hops` `Issues` trafiğin bir `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -198,9 +198,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a>Web sitesi gecikmesini denetle
+## <a name="check-website-latency"></a>Web sitesi gecikmesi kontrol edin
 
-Aşağıdaki örnek bir Web sitesinin bağlantısını denetler. Bu örnekte, kaynak VM 'yi içeren bölgede ağ Izleyicisi etkinleştirilmiş olması gerekir.  
+Aşağıdaki örnek, bir web sitesine bağlantı denetler. Bu örnek, kaynak VM içeren bölgede Ağ İzleyicisi etkin olmasını gerektirir.  
 
 ### <a name="example"></a>Örnek
 
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta `ConnectionStatus` **erişilebilir**olduğunu görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta, gösteriyi `ConnectionStatus` **Erişilebilir**olarak görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme değerleri sağlanır.
 
 ```
 ConnectionStatus : Reachable
@@ -250,9 +250,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Depolama uç noktası bağlantısını denetle
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Depolama bitiş noktasına bağlantı denetimi
 
-Aşağıdaki örnek, bir sanal makineden bir blog depolama hesabına olan bağlantıyı denetler. Bu örnekte, kaynak VM 'yi içeren bölgede ağ Izleyicisi etkinleştirilmiş olması gerekir.  
+Aşağıdaki örnek, sanal bir makineden bir blog depolama hesabına bağlantı yı denetler. Bu örnek, kaynak VM içeren bölgede Ağ İzleyicisi etkin olmasını gerektirir.  
 
 ### <a name="example"></a>Örnek
 
@@ -271,7 +271,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki JSON, önceki cmdlet 'i çalıştırmanın örnek yanıtı örneğidir. Hedefe ulaşılabildiğinden `ConnectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
+Aşağıdaki json önceki cmdlet çalışan örnek yanıttır. Hedefe ulaşılabildiği için, `ConnectionStatus` özellik **Erişilebilir olarak gösterilmektedir.**  Depolama blob ve gecikme ulaşmak için gerekli atlama sayısı ile ilgili ayrıntıları sağlanır.
 
 ```json
 ConnectionStatus : Reachable
@@ -304,6 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IP akışında belirli trafiğe izin verilip verilmeyeceğini belirleme [onay IP akışı doğrulama](diagnose-vm-network-traffic-filtering-problem.md)' yı ziyaret edin.
+KONTROL IP akışını doğrulayarak VM'nize belirli bir trafiğe giriş veya çıkışa izin verilip verilmediğini [belirleyin.](diagnose-vm-network-traffic-filtering-problem.md)
 
-Trafik engelleniyorsa ve olmaması gerekiyorsa, ağ güvenlik grubunu ve tanımlı güvenlik kurallarını izlemek için bkz. [ağ güvenlik gruplarını yönetme](../virtual-network/manage-network-security-group.md) .
+Trafik engelleniyorsa ve engellenmiyorsa, ağ güvenlik grubunu ve tanımlanan güvenlik kurallarını izlemek için [Ağ Güvenlik Gruplarını Yönet'e](../virtual-network/manage-network-security-group.md) bakın.

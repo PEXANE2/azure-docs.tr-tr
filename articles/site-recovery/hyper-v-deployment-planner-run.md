@@ -1,6 +1,6 @@
 ---
-title: Hyper-V Dağıtım Planlayıcısı Azure Site Recovery içinde çalıştırma
-description: Bu makalede, Azure 'da Hyper-V olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı nasıl çalıştırılacağı açıklanır.
+title: Azure Site Kurtarma'da Hyper-V Dağıtım Planlayıcısını Çalıştırma
+description: Bu makalede, Hyper-V olağanüstü durum kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı'nın Azure'da nasıl çalıştırılacak yapılacağı açıklanmaktadır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082616"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure 'da Hyper-V olağanüstü durum kurtarma için Azure Site Recovery dağıtım planlayıcısı 'nı çalıştırın
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V olağanüstü durum kurtarma için Azure Site Kurtarma dağıtım planlayıcısını Azure'da çalıştırın
 
-Aşağıdaki dört moddan birinde Site Recovery dağıtım planlayıcısı komut satırı aracını (ASRDeploymentPlanner. exe) çalıştırabilirsiniz: 
--   Sanal makine (VM) listesini al
+Site Kurtarma dağıtım planlayıcısı komut satırı aracını (ASRDeploymentPlanner.exe) aşağıdaki dört moddan herhangi birinde çalıştırabilirsiniz: 
+-   Sanal makine (VM) listesini alma
 -   [Profil](#profile-hyper-v-vms)
 -   Rapor oluşturma
 -   [Aktarım hızı alma](#get-throughput)
@@ -41,7 +41,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 | -User | Hyper-V konağı veya Hyper-V kümesine bağlanmak için gereken kullanıcı adı. Kullanıcının yönetici erişimi olmalıdır.|
 | -ServerListFile | Profili oluşturulacak VM’leri içeren sunucuların listesinin bulunduğu dosya. Dosya yolu mutlak veya göreli olabilir. Bu dosya her satırda aşağıdakilerden birini içermelidir:<ul><li>Hyper-V konak adı veya IP adresi</li><li>Hyper-V küme adı veya IP adresi</li></ul><br>**Örnek:** ServerList.txt dosyası aşağıdaki sunucuları içerir:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(İsteğe bağlı) Bu işlem sırasında oluşturulan verileri depolamak için evrensel adlandırma kuralı (UNC) veya yerel dizin yolu. Bir ad belirtilmemişse, varsayılan dizin olarak geçerli yolun altındaki “ProfiledData” adlı dizin kullanılır.|
-|-OutputFile| Seçim Hyper-V sunucularından alınan VM 'lerin listesini içeren dosya kaydedilir. Bir ad belirtilmezse, ayrıntılar VMList.txt dosyasında depolanır.  Profili gerekmeyen VM'ler kaldırdıktan sonra profil oluşturmayı başlatmak için bu dosyayı kullanın.|
+|-OutputFile| (İsteğe bağlı) Hyper-V sunucularından getirilen VM listesinin yer aldığı dosya kaydedilir. Bir ad belirtilmezse, ayrıntılar VMList.txt dosyasında depolanır.  Profili gerekmeyen VM'ler kaldırdıktan sonra profil oluşturmayı başlatmak için bu dosyayı kullanın.|
 |-Password|(İsteğe bağlı) Hyper-V konağına bağlanmak için gereken parola. Bunu bir parametre olarak belirtmezseniz komutu çalıştırdığında belirtmeniz istenir.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList bulma
@@ -75,7 +75,7 @@ Araç, oluşturulan profilin doğru olmasını sağlamak için Hyper-V konağın
 Araç, kümedeki bir düğümden başka bir düğüme VM geçişini ve bir konak içindeki depolama geçişini sorunsuz bir şekilde işler.
 
 ### <a name="getting-the-vm-list-to-profile"></a>Profili oluşturulacak VM listesini alma
-Profili oluşturulacak VM 'lerin listesini oluşturmak için GetVMList işlemine bakın.
+Profili oluşturulacak VM’lerin listesini oluşturmak için GetVMList işlemine başvurun.
 
 Profili oluşturulacak sanal makinelerin listesini oluşturduktan sonra, aracı profil oluşturma modunda çalıştırabilirsiniz. 
 
@@ -97,8 +97,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Directory|(İsteğe Bağlı) Profil oluşturma sırasında oluşturulan profil oluşturma verilerini depolamak için UNC veya yerel dizin yolu. Bir ad belirtilmemişse, geçerli yol altındaki ProfiledData adlı dizin varsayılan dizin olarak kullanılır.|
 |-Password|(İsteğe bağlı) Hyper-V konağına bağlanmak için gereken parola. Bunu bir parametre olarak belirtmezseniz komutu çalıştırdığında belirtmeniz istenir.|
 |-StorageAccountName|(İsteğe bağlı) Şirket içinden Azure’a veri çoğaltma için ulaşılabilir aktarım hızını bulmak için depolama hesabı adı. Araç, aktarım hızını hesaplamak için test verilerini bu depolama hesabına yükler. Depolama hesabı Genel amaçlı v1 (GPv1) türünde olmalıdır.|
-|-StorageAccountKey|(İsteğe bağlı) Depolama hesabına erişmek için kullanılan anahtar. Azure portalı > **Depolama hesapları** > *Depolama hesabı adı* > **Ayarlar** > **Erişim Anahtarları** > **Anahtar1** (veya klasik depolama hesabı için birincil erişim anahtarı) seçeneğine gidin.|
-|-Ortam|(İsteğe bağlı) Azure depolama hesabı için hedef ortamınız. Şu üç değerden herhangi birini alabilir: AzureCloud, AzureUSGovernment veya AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef bölgeniz Azure ABD kamu veya Azure Çin 21Vianet olduğunda bu parametreyi kullanın.|
+|-StorageAccountKey|(İsteğe bağlı) Depolama hesabına erişmek için kullanılan anahtar. **Depolama hesapları** > > Azure portalına gidin*depolama hesabı adı* > **Ayarlar** > **Erişim Anahtarları** > **Anahtarı1** (veya klasik bir depolama hesabının birincil erişim anahtarı).|
+|-Ortam|(İsteğe bağlı) Azure depolama hesabı için hedef ortamınız. Şu üç değerden herhangi birini alabilir: AzureCloud, AzureUSGovernment veya AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef bölgeniz Azure ABD Hükümeti veya Azure China 21Vianet olduğunda parametreyi kullanın.|
 
 VM’lerinizin en az 7 günlük profilinin oluşturulması önerilir. Değişim sıklığı bir ay içinde değişiklik gösteriyorsa, bu sıklığın en yüksek seviyeye ulaştığı hafta sırasında profil oluşturmanız önerilir. En iyi yöntem, daha iyi bir öneri almak için 31 günlük profil oluşturmaktır. 
 
@@ -154,10 +154,10 @@ Aracın çalıştığı sunucu yeniden başlatılırsa veya kilitlenmişse ya da
 
 Depolama hesabı adı ve anahtarı geçirildiğinde, araç profil oluşturma işleminin son adımında aktarım hızını ölçer. Profil oluşturma tamamlanmadan önce araç kapatılırsa, aktarım hızı hesaplanmaz. Raporu oluşturmadan önce aktarım hızını bulmak için, komut satırı konsolundan GetThroughput işlemini çalıştırabilirsiniz. Aksi takdirde, oluşturulan rapor aktarım hızı bilgilerini içermez.
 
-Azure Site Recovery, Iscsı ve geçiş diskleri olan VM 'Leri desteklemez. Araç, VM 'lere eklenmiş Iscsı ve geçiş disklerini algılayamaz ve profil ekleyemez.
+Azure Site Kurtarma, iSCSI ve geçiş diskleri olan VM'leri desteklemez. Araç, ISCSI'yi ve VM'lere bağlı geçiş disklerini algılayıp profillendiremez.
 
 ## <a name="generate-a-report"></a>Rapor oluşturma
-Araç, rapor çıktısı olarak makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Bu dosya tüm dağıtım önerilerini özetler. Rapor, DeploymentPlannerReport_*benzersiz sayısal tanımlayıcı*.xlsm olarak adlandırılıp belirtilen dizine yerleştirilir.
+Araç, rapor çıktısı olarak makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Bu dosya tüm dağıtım önerilerini özetler. Rapor, benzersiz*sayısal tanımlayıcı*.xlsm DeploymentPlannerReport_ adlandırılır ve belirtilen dizine yerleştirilir.
 
 Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalıştırabilirsiniz. 
 
@@ -254,13 +254,13 @@ Büyümeyi dağıtım planlaması sırasında planlamanız önerilir. Varsayıla
 
 Oluşturulan Microsoft Excel raporu aşağıdaki bilgileri içerir:
 
-* [Şirket içi özet](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
+* [Şirket içi özeti](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Öneriler](hyper-v-deployment-planner-analyze-report.md#recommendations)
 * [VM depolama yerleşimi](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
 * [Uyumlu VM’ler](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
 * [Uyumsuz VM’ler](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
 * [Şirket içi depolama gereksinimi](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
-* [IR toplu işlemesi](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
+* [IR toplu iş](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
 * [Maliyet tahmini](hyper-v-deployment-planner-cost-estimation.md)
 
 ![Dağıtım planlayıcısı raporu](media/hyper-v-deployment-planner-run/deployment-planner-report-h2a.png)
@@ -281,9 +281,9 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 |-Sanallaştırma|Sanallaştırma türü (VMware veya Hyper-V).|
 |-Directory|(İsteğe bağlı) Profili oluşturulan verilerin (profil oluşturma sırasında oluşturulan dosyalar) depolandığı UNC veya yerel dizin yolu. Bu veriler, rapor oluşturmak için gereklidir. Bir ad belirtilmemişse, geçerli yol altındaki ProfiledData adlı dizin varsayılan dizin olarak kullanılır.|
 | -StorageAccountName | Şirket içinden Azure’a veri çoğaltma için kullanılan bant genişliğini bulmak için depolama hesabı adı. Araç, kullanılan bant genişliğini bulmak için test verilerini bu depolama hesabına yükler. Depolama hesabı Genel amaçlı v1 (GPv1) türünde olmalıdır.|
-| -StorageAccountKey | Depolama hesabına erişmek için kullanılan depolama hesabı anahtarı. Azure portalı > **Depolama hesapları** > *depolama hesabı adı* > **Ayarlar** > **Erişim Anahtarları** > **Anahtar1** seçeneğine gidin.|
+| -StorageAccountKey | Depolama hesabına erişmek için kullanılan depolama hesabı anahtarı. Azure portalına gidin > **Depolama hesapları** > *depolama hesabı adı* > **Ayarlar** > **Erişim Anahtarları** > **Anahtarı1**.|
 | -VMListFile | Kullanılan bant genişliğini hesaplamak için profili oluşturulacak sanal makinelerin listesini içeren dosya. Dosya yolu mutlak veya göreli olabilir. Hyper-V için, GetVMList işleminin çıkış dosyası bu dosyadır. El ile hazırlıyorsanız, dosyada bir sunucu adı ya da IP adresi ve sonra VM adı (her satırı \ ile ayrılan) bulunmalıdır. Dosyada belirtilen VM adı, Hyper-V konağındaki VM adıyla aynı olmalıdır.<br><br>**Örnek:** VMList.txt dosyası aşağıdaki sanal makineleri içerir:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Ortam|(İsteğe bağlı) Azure depolama hesabı için hedef ortamınız. Şu üç değerden herhangi birini alabilir: AzureCloud, AzureUSGovernment veya AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD kamu veya Azure Çin 21Vianet olduğunda bu parametreyi kullanın.|
+|-Ortam|(İsteğe bağlı) Azure depolama hesabı için hedef ortamınız. Şu üç değerden herhangi birini alabilir: AzureCloud, AzureUSGovernment veya AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD Hükümeti veya Azure China 21Vianet olduğunda parametreyi kullanın.|
 
 ### <a name="example"></a>Örnek
 ```
@@ -309,4 +309,4 @@ Aktarım hızı zaman içinde belirli bir noktada çözülür. Diğer tüm fakt�
 
     
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Oluşturulan raporu analiz etme](hyper-v-deployment-planner-analyze-report.md)
+* [Oluşturulan raporu çözümleme](hyper-v-deployment-planner-analyze-report.md)

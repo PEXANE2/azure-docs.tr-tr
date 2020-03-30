@@ -1,5 +1,5 @@
 ---
-title: Azure Blob depolama olaylarına yeniden davranıma | Microsoft Docs
+title: Azure Blob depolama etkinliklerine tepki verme | Microsoft Dokümanlar
 description: Blob depolama olaylarına abone olmak için Azure Event Grid’i kullanın.
 author: normesta
 ms.author: normesta
@@ -9,104 +9,104 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
 ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268502"
 ---
-# <a name="reacting-to-blob-storage-events"></a>BLOB depolama olaylarına yeniden davranıyor
+# <a name="reacting-to-blob-storage-events"></a>Blob depolama olaylarına yanıt verme
 
-Azure depolama olayları, uygulamaların blob oluşturma ve silme gibi olaylara tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz.
+Azure Depolama olayları, uygulamaların blob oluşturma ve silme gibi olaylara tepki göstermesine olanak tanır. Bunu karmaşık kod veya pahalı ve verimsiz yoklama hizmetlerine gerek kalmadan yapar.
 
-Olaylar, Azure Işlevleri, Azure Logic Apps gibi abonelere veya kendi http dinleyicinize [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) kullanılarak gönderilir. En iyi bölüm yalnızca kullandığınız kadar ödersiniz.
+Etkinlikler, Azure İşlevleri, Azure Mantıksal Uygulamaları ve hatta kendi http dinleyiciniz gibi abonelere [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) kullanılarak itilir. En iyi kısmı sadece kullandığınız için ödeme.
 
-BLOB depolama, zengin yeniden deneme ilkeleri ve atılacak dağıtım aracılığıyla uygulamalarınıza güvenilir olay teslimi sağlayan Event Grid olayları gönderir.
+Blob depolama, zengin yeniden deneme ilkeleri ve ölü harflerle uygulamalarınıza güvenilir olay teslimi sağlayan Event Grid'e olayları gönderir.
 
-Ortak BLOB depolama olay senaryolarında görüntü veya video işleme, arama dizini oluşturma veya herhangi bir dosya odaklı iş akışı bulunur. Zaman uyumsuz dosya yüklemeleri, olaylara yönelik harika bir uyum. Değişiklikler seyrek olduğunda, ancak senaryonuz anında yanıt vermeyi gerektirdiğinde, olay tabanlı mimari özellikle etkili olabilir.
+Sık karşılaşılan Blob depolama olayı senaryoları görüntü veya video işleme, arama dizini oluşturma veya dosya yönelimli iş akışını içerir. Asynchronous dosya yüklemeleri olaylar için harika bir uyum vardır. Değişiklikler seyrek olduğunda, ancak senaryonuz anında yanıt verme gerektiriyorsa, olay tabanlı mimari özellikle verimli olabilir.
 
-Bunu şimdi denemek istiyorsanız, bu hızlı başlangıç makalelerinden herhangi birine bakın:
+Şimdi bunu denemek istiyorsanız, şu hızlı başlangıç makalelerinden herhangi birini görün:
 
-|Bu aracı kullanmak istiyorsanız:    |Şu makaleye bakın: |
+|Bu aracı kullanmak istiyorsanız:    |Bu makaleye bakın: |
 |--|-|
-|Azure portalı    |[Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|PowerShell    |[Hızlı başlangıç: PowerShell ile Depolama olaylarını Web uç noktasına yönlendirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure CLI    |[Hızlı başlangıç: Azure CLı ile Depolama olaylarını Web uç noktasına yönlendirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure portalında    |[Quickstart: Azure portalı ile Blob depolama olaylarını web bitiş noktasına yönlendirin](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Quickstart: PowerShell ile depolama olaylarını web bitiş noktasına yönlendirin](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Hızlı başlangıç: Azure CLI ile depolama etkinliklerini web bitiş noktasına yönlendirin](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-Azure işlevleri 'ni kullanarak BLOB depolama olaylarına yeniden işlem hakkında ayrıntılı örnekler görüntülemek için şu makalelere bakın:
+Azure işlevlerini kullanarak Blob depolama olaylarına tepki vermenin ayrıntılı örneklerini görüntülemek için aşağıdaki makalelere bakın:
 
-- [Öğretici: Databricks Delta tablosunu güncelleştirmek için Azure Data Lake Storage 2. olaylarını kullanın](data-lake-storage-events.md).
-- [Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
+- [Öğretici: Databricks Delta tablosunu güncelleştirmek için Azure Veri Gölü Depolama Gen2 olaylarını kullanın.](data-lake-storage-events.md)
+- [Öğretici: Olay Izgara'yı kullanarak yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirin](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Yalnızca **StorageV2 (genel amaçlı v2)** ve **blobstorage** türünde depolama hesapları olay tümleştirmesini destekler. **Depolama (genral amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
+> Yalnızca depolama türü **StorageV2 (genel amaçlı v2)** ve **BlobStorage** destek olay tümleştirmedepolama hesapları. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
 
 ## <a name="the-event-model"></a>Olay modeli
 
-Event Grid, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. Bu görüntüde olay yayımcıları, olay abonelikleri ve olay işleyicileri arasındaki ilişki gösterilmektedir.
+Olay Grid, olay iletilerini abonelere yönlendirmek için [olay aboneliklerini](../../event-grid/concepts.md#event-subscriptions) kullanır. Bu resim, olay yayımcılar, olay abonelikleri ve olay işleyicileri arasındaki ilişkiyi göstermektedir.
 
-![Event Grid modeli](./media/storage-blob-event-overview/event-grid-functional-model.png)
+![Olay Izgara Modeli](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-İlk olarak, bir uç noktayı olaya abone olun. Ardından, bir olay tetiklendiğinde Event Grid hizmeti bu olayla ilgili verileri uç noktaya gönderir.
+İlk olarak, bir olayın bitiş noktasına abone olun. Daha sonra, bir olay tetiklendiğinde, Olay Izgara hizmeti bu olayla ilgili verileri bitiş noktasına gönderir.
 
-Görüntülemek için [BLOB depolama olayları şeması](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) makalesine bakın:
+Görüntülemek için [Blob depolama olayları şema](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) makalesine bakın:
 
 > [!div class="checklist"]
-> * BLOB depolama olaylarının ve her olayın nasıl tetiklendiğine ilişkin kapsamlı bir liste.
-> * Event Grid bu olayların her biri için gönderebilecek verilere bir örnek.
-> * Verilerde görüntülenen her anahtar değer çiftinin amacı.
+> * Blob depolama olaylarının tam listesi ve her olayın nasıl tetiklendirildi
+> * Olay Izgarası'nın bu olayların her biri için göndereceği verilerin bir örneği.
+> * Verilerde görünen her anahtar değer çiftinin amacı.
 
 ## <a name="filtering-events"></a>Olayları filtreleme
 
-Blob olayları olay türüne, kapsayıcı adına veya oluşturulan/Silinen nesnenin adına göre [filtrelenebilir](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) . Event Grid filtreler, konunun başından veya sonuna göre eşleşir, böylece eşleşen bir konu olan olaylar aboneye gider.
+Blob olayları, oluşturulan/silinen nesnenin olay türüne, kapsayıcı adına veya adına [göre filtrelenebilir.](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) Olay Izgara'daki filtreler, eşleşen bir özneyle ilgili olayların aboneye gitmesi için konunun başlangıcıveya sonuyla eşleşir.
 
-Filtrelerin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+Filtrelerin nasıl uygulanacağı hakkında daha fazla bilgi edinmek [için Olay Izgarası için Filtre olayları'na](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)bakın.
 
-Blob Storage olaylarının konusu şu biçimi kullanır:
+Blob depolama olaylarının konusu biçimi kullanır:
 
 ```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
-Bir depolama hesabının tüm olaylarını eşleştirmek için, konu filtrelerini boş bırakabilirsiniz.
+Bir depolama hesabının tüm olaylarını eşleştirmek için konu filtrelerini boş bırakabilirsiniz.
 
-Ön ek paylaşan bir kapsayıcı kümesi içinde oluşturulan Blobların olaylarını eşleştirmek için, şöyle bir `subjectBeginsWith` filtresi kullanın:
+Önek paylaşan bir kapsayıcı kümesinde oluşturulan blobs olayları `subjectBeginsWith` eşleştirmek için aşağıdaki gibi bir filtre kullanın:
 
 ```
 /blobServices/default/containers/containerprefix
 ```
 
-Belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için, şöyle bir `subjectBeginsWith` filtresi kullanın:
+Belirli bir kapta oluşturulan lekelerdeki olayları `subjectBeginsWith` eşleştirmek için aşağıdaki gibi bir filtre kullanın:
 
 ```
 /blobServices/default/containers/containername/
 ```
 
-Blob adı önekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için, şöyle bir `subjectBeginsWith` filtresi kullanın:
+Blob ad önekini paylaşan belirli bir kapsayıcıda oluşturulan lekelerdeki olayları eşleştirmek için aşağıdaki gibi bir `subjectBeginsWith` filtre kullanın:
 
 ```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 
-Blob sonekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için, ". log" veya ". jpg" gibi `subjectEndsWith` bir filtre kullanın. Daha fazla bilgi için bkz. [Event Grid kavramları](../../event-grid/concepts.md#event-subscriptions).
+Blob soneki paylaşan belirli bir kapsayıcıda oluşturulan lekelerdeki `subjectEndsWith` olayları eşleştirmek için ".log" veya ".jpg" gibi bir filtre kullanın. Daha fazla bilgi için [Olay Izgara Kavramları'na](../../event-grid/concepts.md#event-subscriptions)bakın.
 
-## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
+## <a name="practices-for-consuming-events"></a>Etkinlikleri tüketme uygulamaları
 
-Blob Depolama olaylarını işleyen uygulamalar birkaç önerilen uygulamayı izlemelidir:
+Blob depolama olaylarını işleyen uygulamalar önerilen birkaç uygulamayı izlemelidir:
 > [!div class="checklist"]
-> * Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabildiğiniz için, olayların belirli bir kaynaktan olduğunu varsaymamak, ancak beklediğiniz depolama hesabından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
-> * Benzer şekilde, eventType için hazırlanmakta olan bir olay olduğunu ve aldığınız tüm olayların istediğiniz tür olacağını kabul edin.
-> * İletiler bir gecikmeden sonra gelebileceğinden, nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için ETag alanlarını kullanın. ETag alanını nasıl kullanacağınızı öğrenmek için bkz. [BLOB depolamada eşzamanlılık yönetimi](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
-> * İletiler sıra dışına gelebileceğinden, belirli bir nesne üzerindeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın. Sıralayıcı alanı, belirli bir blob adı için olayların mantıksal dizisini temsil eden bir dize değeridir. Aynı blob adı üzerinde iki olayın göreli sırasını anlamak için standart dize karşılaştırmayı kullanabilirsiniz.
-> * Blob üzerinde ne tür işlemlere izin verileceğini ve Blobun erişmek için hangi istemci kitaplığı türlerini kullanacağınızı anlamak için blobType alanını kullanın. Geçerli değerler `BlockBlob` ya da `PageBlob`. 
-> * Blob 'a erişmek için `CloudBlockBlob` ve `CloudAppendBlob` oluşturucularla URL alanını kullanın.
-> * Anladığınızı alanları yoksayın. Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
-> * **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız, `CopyBlob`, `PutBlob`, `PutBlockList` veya `FlushWithClose` REST API çağrıları için olayı filtreleyin. Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> * Birden çok abonelik olayları aynı olay işleyicisine yönlendirecek şekilde yapılandırılabildiği için, olayların belirli bir kaynaktan geldiğini varsaymak değil, beklediğiniz depolama hesabından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
+> * Benzer şekilde, eventType'ın işlemeye hazır olup olmadığını denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını varsaymayın.
+> * İletiler biraz gecikmeden sonra gelebileceğinden, nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için etag alanlarını kullanın. Etag alanını nasıl kullanacağınızı öğrenmek için [Blob depolamabiriminde eşzamanlılık yönetme'ye](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)bakın. 
+> * İletiler sıradışı gelebildiği için, belirli bir nesnedeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın. Sıralayıcı alanı, belirli bir blob adı için olayların mantıksal dizisini temsil eden bir dize değeridir. Aynı blob adı üzerinde iki olayın göreli dizisini anlamak için standart dize karşılaştırması kullanabilirsiniz.
+> * Blob'da ne tür işlemlere izin verildiğini ve blob'a erişmek için hangi istemci kitaplık türlerini kullanmanız gerektiğini anlamak için blobType alanını kullanın. Geçerli değerler `BlockBlob` ya `PageBlob`da . 
+> * Blob erişmek için `CloudBlockBlob` `CloudAppendBlob` url alanı ve yapıcılar ile kullanın.
+> * Anlamadığınız alanları yoksay. Bu uygulama, gelecekte eklenebilir yeni özelliklere karşı esnek tutmanıza yardımcı olacaktır.
+> * **Microsoft.Storage.BlobCreated** olayının yalnızca Bir Blok Blob tamamen işlendiğinde tetiklendiğinden emin olmak `CopyBlob`istiyorsanız, olayı , yani `PutBlob`, `PutBlockList` veya `FlushWithClose` REST API çağrıları için filtreleyin. Bu API **çağrıları, Microsoft.Storage.BlobCreated** olayını yalnızca veriler Bir Blok Blob'a tam olarak bağlandıktan sonra tetikler. Filtre oluşturmayı öğrenmek için [Olay Izgarası için Filtre olayları'na](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Event Grid hakkında daha fazla bilgi edinin ve BLOB depolama olaylarına bir deneme verin:
+Olay Izgarası hakkında daha fazla bilgi edinin ve Blob depolama etkinliklerini deneyin:
 
 - [Event Grid Hakkında](../../event-grid/overview.md)
-- [Blob Depolama olaylarını özel bir Web uç noktasına yönlendirme](storage-blob-event-quickstart.md)
+- [Blob depolama Olaylarını özel bir web bitiş noktasına yönlendirin](storage-blob-event-quickstart.md)

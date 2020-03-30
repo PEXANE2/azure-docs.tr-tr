@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid olay hub'ları olay şeması
-description: Azure Event Grid ile olay hub'ları olaylar için sağlanan özellikleri tanımlar
+title: Azure Olay Izgara olay hub'ları olay şeması
+description: Azure Olay Ağıtı ile olay hub'ları etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561837"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Event hubs için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Etkinlik hub'ları için Azure Olay Izgara olay şeması
 
-Bu makale, olay hub'ları olaylar için şema ve özellikleri sağlar. Olay şemaları için bir giriş için bkz [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, olay hub'ları olaylar için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Örnek betikler ve öğreticiler listesi için bkz: [Event Hubs olay kaynağı](event-sources.md#event-hubs).
+Örnek komut dosyaları ve öğreticilerin listesi için [Olay Hub'ları etkinlik kaynağına](event-sources.md#event-hubs)bakın.
 
-### <a name="available-event-types"></a>Kullanılabilir olay türleri
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Olay hub'ları yayan **Microsoft.EventHub.CaptureFileCreated** yakalama dosyası oluşturulduğunda olay türü.
+Bir yakalama dosyası oluşturulduğunda Olay Hub'ları **Microsoft.EventHub.CaptureFileCreated** olay türünü yayar.
 
 ## <a name="example-event"></a>Örnek olay
 
-Bu örnek olay yakalama özelliği, bir dosyayı depolarıyla çalışırken gerçekleşen bir olay hub'ları olay şeması gösterir: 
+Bu örnek olay, yakalama özelliği bir dosyayı depoladığında ortaya çıkan bir olay hub'larının şemasını gösterir: 
 
 ```json
 [
@@ -53,37 +53,37 @@ Bu örnek olay yakalama özelliği, bir dosyayı depolarıyla çalışırken ger
 ]
 ```
 
-## <a name="event-properties"></a>Olay Özellikleri
+## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey veri vardır:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| topic | string | Olay kaynağı tam kaynak yolu. Bu alan, yazılabilir değil. Event Grid, bu değeri sağlar. |
-| subject | string | Yayımcı tarafından tanımlanan olay konu yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın oluşturulduğu zamandan, sağlayıcının UTC saatini temel alan. |
-| id | string | Olayın benzersiz tanımlayıcısı. |
-| data | object | Olay hub'ı olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid, şemanın en üst düzey özellikleri tanımlar. Event Grid, bu değeri sağlar. |
-
-Veri nesnesi, aşağıdaki özelliklere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| fileUrl | string | Yakalama dosyası yolu. |
-| fileType | string | Yakalama dosyası dosya türü. |
-| partitionId | string | Parça kimliği. |
-| sizeInBytes | integer | Dosya boyutu. |
-| eventCount | integer | Bu dosyadaki olaylar sayısı. |
-| firstSequenceNumber | integer | Kuyruğu'ndan küçük sıra numarası. |
-| lastSequenceNumber | integer | Kuyruğu'ndan son sıra numarası. |
-| firstEnqueueTime | string | Kuyruğu'ndan ilk kez. |
-| lastEnqueueTime | string | Kuyruğu'ndan son zaman. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Olay merkezi olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+
+Veri nesnesi aşağıdaki özelliklere sahiptir:
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| fileUrl | string | Yakalama dosyasına giden yol. |
+| Filetype | string | Yakalama dosyasının dosya türü. |
+| Partitionıd | string | Kırık kimlik. |
+| sizeBytes | integer | Dosya boyutu. |
+| olaySay | integer | Dosyadaki olayların sayısı. |
+| ilkSequenceNumber | integer | Kuyruktaki en küçük sıra numarası. |
+| lastSequenceNumber | integer | Kuyruktaki son sıra numarası. |
+| ilkEnqueueTime | string | Kuyruktan ilk kez. |
+| lastEnqueueTime | string | Kuyruktan son kez. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid aboneliği şema](subscription-creation-schema.md).
-* Olay hub'ları olayları işleme hakkında daha fazla bilgi için bkz: [bir veri ambarına büyük veri Stream](event-grid-event-hubs-integration.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Olay hub'ları olaylarını işleme hakkında bilgi için [bkz.](event-grid-event-hubs-integration.md)

@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi birimlerde yönetme | Microsoft Docs
-description: StorSimple cihaz Yöneticisi'ni ve StorSimple Virtual Array'iniz birimlerde yönetmek için kullanma işlemini açıklar.
+title: StorSimple Virtual Array'de birimleri yönetme | Microsoft Dokümanlar
+description: StorSimple Aygıt Yöneticisi'ni açıklar ve StorSimple Virtual Array'inizdeki birimleri yönetmek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,114 +15,114 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62125806"
 ---
-# <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple sanal dizisi birimlerde yönetmek için StorSimple cihaz Yöneticisi'ni kullanın hizmeti
+# <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisinde birimleri yönetmek için StorSimple Device Manager hizmetini kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, oluşturmak ve StorSimple Virtual Array'iniz birimlerde yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanmayı açıklar.
+Bu öğretici, StorSimple Virtual Array'unuzda hacim oluşturmak ve yönetmek için StorSimple Device Manager hizmetini nasıl kullanacağınızı açıklar.
 
-StorSimple cihaz Yöneticisi hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portalında bir uzantısıdır. Paylaşımları ve birimler yönetmenin yanı sıra görüntülemek ve cihazları yönetmek, uyarıları görüntüleyin ve görüntülemek ve yedekleme ilkelerini ve yedekleme kataloğunu yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanabilirsiniz.
+StorSimple Device Manager hizmeti, Azure portalında, StorSimple çözümünüzü tek bir web arabiriminden yönetmenize olanak tanıyan bir uzantıdır. Paylaşımları ve birimleri yönetmeye ek olarak, aygıtları görüntülemek ve yönetmek, uyarıları görüntülemek ve yedekleme ilkelerini ve yedekleme kataloğunu görüntülemek ve yönetmek için StorSimple Device Manager hizmetini kullanabilirsiniz.
 
-## <a name="volume-types"></a>Birim türü
+## <a name="volume-types"></a>Ses Türleri
 
-StorSimple birimlerini olabilir:
+StorBasit hacimler:
 
-* **Yerel olarak sabitlenmiş**: Bu birimlerdeki veriler dizide her zaman kalır ve buluta dağıtılmamasını.
-* **Katmanlı**: Bu birimlerdeki verileri buluta sığdırmaya. Katmanlı birim oluşturduğunuzda, yerel katmanında yaklaşık % 10 alanı sağlandığında ve bulutta % 90 ' alanı sağlandığında. Örneğin, 1 TB'lik bir birimi sağladıysanız, 100 GB yerel alanı bulunması ve 900 GB bulutta kullanılabilir olduğunda veri katmanları. Bu sırayla cihazda yerel alanın tümünü dışında çalıştırırsanız, (% 10 yerel katmanına gerekli kullanılamaz çünkü), bir katmanlı birim sağlayamayacağınızı anlamına gelir.
+* **Yerel olarak sabitlenmiş**: Bu birimlerdeki veriler her zaman dizide kalır ve buluta dökülmez.
+* **Katmanlı**: Bu birimlerdeki veriler buluta dökülebilir. Katmanlı bir hacim oluşturduğunuzda, alanın yaklaşık %10'u yerel katmanda ve alanın %90'ı bulutta karşılanır. Örneğin, 1 TB birim sağlarsanız, 100 GB yerel alanda kalır ve veri katmanları bulutta 900 GB kullanılır. Bu da, aygıttaki tüm yerel alanın biterse, katmanlı bir hacim sağlayamadığınızanlamına gelir (çünkü yerel katmanda gereken %10'u kullanılamayacaktır).
 
 ### <a name="provisioned-capacity"></a>Sağlanan kapasite
-Her birim türü için sağlanan kapasite üst sınırı için aşağıdaki tabloya bakın.
+Her birim türü için maksimum sağlanan kapasite için aşağıdaki tabloya bakın.
 
 | **Sınır tanımlayıcı**                                       | **Sınırı**     |
 |------------------------------------------------------------|---------------|
-| En düşük katmanlı birim boyutu                            | 500 GB        |
-| Katmanlı birim en büyük boyutu                            | 5 TB          |
-| Yerel olarak sabitlenmiş bir birim, en küçük boyut                    | 50 GB         |
-| Yerel olarak sabitlenmiş bir birim, en büyük boyutu                    | 500 GB        |
+| Katmanlı bir birimin minimum boyutu                            | 500 GB        |
+| Katmanlı bir birimin maksimum boyutu                            | 5 TB          |
+| Yerel olarak sabitlenmiş bir birimin minimum boyutu                    | 50 GB         |
+| Yerel olarak sabitlenmiş bir birimin maksimum boyutu                    | 500 GB        |
 
-## <a name="the-volumes-blade"></a>Birimleri dikey penceresi
-**Birimleri** StorSimple hizmeti Özet dikey menüsünde verilen bir StorSimple dizi üzerinde depolama birimleri listesini görüntüler ve bunları yönetmenize olanak sağlar.
+## <a name="the-volumes-blade"></a>Hacimler bıçak
+StorSimple hizmet özet bıçaknızdaki **Birimler** menüsü, belirli bir StorSimple dizisindeki depolama birimlerinin listesini görüntüler ve bunları yönetmenize olanak tanır.
 
-![Birimleri dikey penceresi](./media/storsimple-virtual-array-manage-volumes/volumes-blade.png)
+![Hacimler bıçak](./media/storsimple-virtual-array-manage-volumes/volumes-blade.png)
 
-Birim öznitelikleri bir dizi oluşur:
+Bir birim bir dizi özniteliklerden oluşur:
 
-* **Birim adı** – benzersiz olmalıdır ve birim belirlemeye yardımcı olur ve açıklayıcı bir ad.
-* **Durum** – çevrimiçi veya çevrimdışı olabilir. Bir birimi çevrimdışı ise, birim kullanmak erişim izni verilen başlatıcılara (Sunucuları) görünür değil.
-* **Tür** – birimin olup olmadığını belirten **katmanlı** (varsayılan) veya **yerel olarak sabitlenmiş**.
-* **Kapasite** – (sunucu) başlatıcı tarafından depolanan verilerin toplam miktarı karşılaştırıldığında kullanılan veri miktarını belirtir.
-* **Yedekleme** – StorSimple sanal dizisi, tüm birimler için Yedekleme otomatik olarak etkin durumda.
-* **Bağlı Konaklar** – bu birimi erişim izni verilen başlatıcıları (Sunucuları) belirtir.
+* **Birim Adı** – Benzersiz olması gereken ve birimin tanımlanmasına yardımcı olan açıklayıcı bir ad.
+* **Durum** – Çevrimiçi veya çevrimdışı olabilir. Bir birim çevrimdışıysa, birimde erişime izin verilen başlatıcılar (sunucular) tarafından görülemez.
+* **Tür** – Birimin **Katmanlı** (varsayılan) veya **Yerel olarak sabitlenip sabitlenmediğini**gösterir.
+* **Kapasite** – başlatıcı (sunucu) tarafından depolanabilecek toplam veri miktarıyla karşılaştırıldığında kullanılan veri miktarını belirtir.
+* **Yedekleme** – StorSimple Virtual Array durumunda, tüm birimler yedekleme için otomatik olarak etkinleştirilir.
+* **Bağlı ana bilgisayarlar** – Bu birimde erişime izin verilen başlatıcıları (sunucuları) belirtir.
 
-![Hacimleri ayrıntıları](./media/storsimple-virtual-array-manage-volumes/volume-details.png)
+![Birim ayrıntıları](./media/storsimple-virtual-array-manage-volumes/volume-details.png)
 
-Yönergeleri Bu öğreticide aşağıdaki görevleri gerçekleştirmek için kullanın:
+Aşağıdaki görevleri gerçekleştirmek için bu öğreticideki yönergeleri kullanın:
 
-* Birim Ekle
-* Bir birimi Değiştir
-* Bir birimi çevrimdışı duruma getirin
-* Birim Sil
+* Ses düzeyi ekleme
+* Birim değiştirme
+* Bir birimi çevrimdışı alma
+* Bir birim silme
 
-## <a name="add-a-volume"></a>Birim Ekle
+## <a name="add-a-volume"></a>Ses düzeyi ekleme
 
-1. StorSimple hizmet özeti dikey penceresinden tıklayın **+ birim Ekle** komut çubuğundan. Bu açılır **birim ekleme** dikey penceresi.
+1. StorSimple hizmet özet bıçağından komut çubuğundan **+ Ses ekle'yi** tıklatın. Bu, **Ses Ekle** bıçağını açar.
    
     ![Birim ekle](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
-2. İçinde **birim ekleme** dikey penceresinde aşağıdakileri yapın:
+2. Ses **ekle** bıçağında aşağıdakileri yapın:
    
-   * İçinde **birim adı** biriminiz için benzersiz bir ad girin. Ad 3 ile 127 karakter içeren bir dize olmalıdır.
-   * İçinde **türü** açılan listesinde, oluşturulup oluşturulmayacağını belirtin bir **katmanlı** veya **yerel olarak sabitlenmiş** birim. Yerel GARANTİLERİN, düşük gecikme süreleri ve daha yüksek performans gerektiren iş yükleri için seçin **birim'yerel olarak sabitlenmiş**. Diğer tüm veriler için seçin **katmanlı** birim.
-   * İçinde **kapasite** alanında, birimin boyutunu belirtin. Katmanlı birim 5 TB ve 500 GB arasında olmalıdır ve yerel olarak sabitlenmiş bir birim, 50 GB ile 500 GB arasında olmalıdır.
-   * * Tıklayın **bağlı Konaklar**, bu birime bağlanmak ve ardından istediğiniz iSCSI başlatıcısı için karşılık gelen bir erişim denetimi kaydı (ACR) seçin **seçin**.
-3. Yeni bağlı bir konak eklemek için tıklatın **yeni Ekle**, konak ve kendi iSCSI için bir ad girin tam adı (IQN) ve ardından **Ekle**.
+   * Birim **adı** alanına, biriminiz için benzersiz bir ad girin. Ad, 3 ila 127 karakter içeren bir dize olmalıdır.
+   * **Tür** açılır listesinde, **Katmanlı** veya Yerel olarak **sabitlenmiş** bir birim oluşturup oluşturmayacağımı belirtin. Yerel garantiler, düşük gecikme süreleri ve daha yüksek performans gerektiren iş yükleri için **Yerel olarak sabitlenmiş birimi**seçin. Diğer tüm veriler için **Katmanlı** birim'i seçin.
+   * **Kapasite** alanında, birimin boyutunu belirtin. Katmanlı bir hacim 500 GB ile 5 TB arasında, yerel olarak sabitlenmiş bir hacim ise 50 GB ile 500 GB arasında olmalıdır.
+   * * **Bağlı ana bilgisayarlara**tıklayın, bu birimde bağlanmak istediğiniz iSCSI başlatıcısına karşılık gelen bir erişim denetim kaydı (ACR) seçin ve sonra **Seç'i**tıklatın.
+3. Yeni bir bağlı ana bilgisayar eklemek için **yeni ekle'yi**tıklatın, ana bilgisayar için bir ad girin ve iSCSI Kalifiye Adı (IQN) girin ve sonra **Ekle'yi**tıklatın.
    
     ![Birim ekle](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
-4. Toplu yapılandırma işlemini tamamladığınızda tıklayın **Oluştur**. Belirtilen ayarlarla bir birim oluşturulur ve oluşturma başarılı aynı bir bildirim görürsünüz. Varsayılan olarak, yedekleme birimi için etkinleştirilecek.
-5. Birimi başarıyla oluşturulduğunu doğrulamak için şu adrese gidin **birimleri** dikey penceresi. Listelenen birimleri görmeniz gerekir.
+4. Ses inizi yapılandırmayı tamamladığınızda **Oluştur'u**tıklatın. Belirtilen ayarlarla birlikte bir birim oluşturulur ve aynı ayarların başarılı bir şekilde oluşturulmasıyla ilgili bir bildirim görürsünüz. Varsayılan yedekleme ses düzeyi için etkinleştirilir.
+5. Birimin başarıyla oluşturulduğunu doğrulamak için **Volumes** bıçağına gidin. Listelenen birim görmelisiniz.
    
-    ![Birim oluşturma başarılı](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
+    ![Hacim başarı yık](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
 
-## <a name="modify-a-volume"></a>Bir birimi Değiştir
+## <a name="modify-a-volume"></a>Birim değiştirme
 
-Bir birim birime konakların değiştirmeniz gerektiğinde değiştirin. Diğer öznitelikleri biriminin birim oluşturulduktan sonra değiştirilemez.
+Ses birimine erişen ana bilgisayarları değiştirmeniz gerektiğinde bir birimi değiştirin. Birim oluşturulduktan sonra birimin diğer öznitelikleri değiştirilemez.
 
-#### <a name="to-modify-a-volume"></a>Bir birimi değiştirme
+#### <a name="to-modify-a-volume"></a>Bir birimi değiştirmek için
 
-1. Gelen **birimleri** , değiştirmek istediğiniz birim bulunduğu sanal diziyi StorSimple hizmeti Özet dikey penceresinde ayarını seçin.
-2. **Seçin** tıklatın ve birim **bağlı Konaklar** şu anda bağlı konak görüntülemek ve farklı bir sunucuya değiştirmek için.
+1. StorSimple hizmet özet bıçağındaki **Birimler** ayarlarından, değiştirmek istediğiniz birimin bulunduğu sanal diziyi seçin.
+2. Bağlı ana bilgisayarı görüntülemek ve farklı bir sunucuyla değiştirmek için ses düzeyini **seçin** ve **Bağlı ana** bilgisayarlarını tıklatın.
    
-    ![Toplu düzenleme](./media/storsimple-virtual-array-manage-volumes/volume-edit-acr.png)
-3. Değişiklikleri Kaydet'e tıklayarak **Kaydet** komut çubuğu. Belirtilen ayarlar uygulanmaz ve bir bildirim görürsünüz.
+    ![Ses düzeyini edin](./media/storsimple-virtual-array-manage-volumes/volume-edit-acr.png)
+3. Kaydet komut çubuğunu tıklatarak değişikliklerinizi **kaydedin.** Belirtilen ayarlarınız uygulanır ve bir bildirim görürsünüz.
 
-## <a name="take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirin
+## <a name="take-a-volume-offline"></a>Bir birimi çevrimdışı alma
 
-Değiştirmek veya silmek planlama yaparken bir birimi çevrimdışı duruma gerekebilir. Bir birimi çevrimdışı olduğunda, okuma-yazma erişimi için kullanılabilir değil. Cihaz yanı sıra konak birimi çevrimdışı duruma gerekecektir.
+Bir birimi değiştirmeyi veya silmeyi planlarken bir birimi çevrimdışı na mı götürmeniz gerekebilir. Bir birim çevrimdışı olduğunda, okuma yazma erişimi için kullanılamaz. Aygıtın yanı sıra ana bilgisayardaki ses düzeyini çevrimdışına almanız gerekir.
 
-#### <a name="to-take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirmek için
+#### <a name="to-take-a-volume-offline"></a>Bir birimi çevrimdışı almak için
 
-1. Söz konusu birimi çevrimdışı duruma getirmeden önce kullanımda olmadığından emin olun.
-2. Birimi çevrimdışı konakta ilk yararlanın. Bu, olası tüm birim üzerindeki veri bozulması riskini ortadan kaldırır. Belirli adımlar için ana bilgisayar işletim sisteminiz için yönergelerine bakın.
-3. Konaktaki birimi çevrimdışı duruma geldikten sonra birimi aşağıdaki adımları uygulayarak dizide çevrimdışı duruma:
+1. Çevrimdışı olmadan önce söz konusu birimin kullanılmadığından emin olun.
+2. Önce ana bilgisayardaki ses düzeyini çevrimdışına alın. Bu, birimdeki veri bozulması riskini ortadan kaldırır. Belirli adımlar için, ana bilgisayar işletim sisteminizin yönergelerine bakın.
+3. Ana bilgisayardaki birim çevrimdışı olduktan sonra, aşağıdaki adımları gerçekleştirerek dizideki birimi çevrimdışı olarak alın:
    
-   * Gelen **birimleri** çevrimdışına size istediğiniz birim bulunduğu sanal diziyi StorSimple hizmeti Özet dikey penceresinde ayarını seçin.
-   * **Seçin** tıklatın ve birim **...**  (Alternatif olarak bu satıra sağ tıklayın) ve bağlam menüsünden **çevrimdışına**.
+   * StorSimple hizmet özet bıçağındaki **Birimler** ayarlarından, çevrimdışı almak istediğiniz birimin bulunduğu sanal diziyi seçin.
+   * Ses düzeyini **seçin** ve **...** 'ı (dönüşümlü olarak bu satırda sağ tıklatın) ve bağlam menüsünden **çevrimdışı nı seç'i**seçin.
      
         ![Çevrimdışı birim](./media/storsimple-virtual-array-manage-volumes/volume-offline.png)
-   * Bilgileri gözden **çevrimdışına** dikey penceresinde ve işlemin onaylamış olursunuz. Tıklayın **çevrimdışına** birimi çevrimdışı duruma getirmek için. Devam eden işlemin bir bildirim görürsünüz.
-   * Birimi başarıyla çevrimdışı bırakıldığını olduğunu onaylamak için Git **birimleri** dikey penceresi. Birim durumu çevrimdışı olarak görmeniz gerekir.
+   * **Çevrimdışı al** bıçaktaki bilgileri gözden geçirin ve işlemi kabul edin. Birimi çevrimdışı na getirmek için **çevrimdışı kaldır'ı** tıklatın. Devam eden işlem bildirimini görürsünüz.
+   * Birimin başarılı bir şekilde çevrimdışı namına alındığını doğrulamak için **Volumes** bıçağına gidin. Birimin durumunu çevrimdışı olarak görmeniz gerekir.
      
-       ![Çevrimdışı toplu onaylama](./media/storsimple-virtual-array-manage-volumes/volume-offline-confirm.png)
+       ![Çevrimdışı ses onayı](./media/storsimple-virtual-array-manage-volumes/volume-offline-confirm.png)
 
-## <a name="delete-a-volume"></a>Birim Sil
+## <a name="delete-a-volume"></a>Bir birim silme
 
 > [!IMPORTANT]
-> Yalnızca çevrimdışı olduğunda, bir birim silebilirsiniz.
+> Bir birimi yalnızca çevrimdışıysa silebilirsiniz.
 > 
 > 
 
@@ -130,14 +130,14 @@ Bir birimi silmek için aşağıdaki adımları tamamlayın.
 
 #### <a name="to-delete-a-volume"></a>Bir birimi silmek için
 
-1. Gelen **birimleri** , silmek istediğiniz birim bulunduğu sanal diziyi StorSimple hizmeti Özet dikey penceresinde ayarını seçin.
-2. **Seçin** tıklatın ve birim **...**  (Alternatif olarak bu satıra sağ tıklayın) ve bağlam menüsünden **Sil**.
+1. StorSimple hizmet özet bıçağındaki **Birimler** ayarlarından, silmenizi istediğiniz birimin bulunduğu sanal diziyi seçin.
+2. Ses düzeyini **seçin** ve **...** 'ı (dönüşümlü olarak bu satırda sağ tıklatın) ve bağlam menüsünden **Sil'i**seçin.
    
-    ![Birim Sil](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
-3. Silmek istediğiniz birim durumunu denetleyin. Silmek istediğiniz birim çevrimdışı değilse, ilk olarak yer alan adımları uygulayarak çevrimdışına [bir birimi çevrimdışı duruma](#take-a-volume-offline).
-4. İçinde onaylamanız istendiğinde **Sil** dikey penceresinde, onayı kabul edin ve tıklayın **Sil**. Birim artık silinir ve **birimleri** dikey güncelleştirilmiş sanal dizi içinde birimlerin listesini gösterir.
+    ![Ses düzeyini silme](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
+3. Silmek istediğiniz birimin durumunu denetleyin. Silmek istediğiniz birim çevrimdışı değilse, [bir birim çevrimdışı al'daki](#take-a-volume-offline)adımları izleyerek önce çevrimdışı olarak alın.
+4. **Sil** çubuğunda onay istendiğinde, onayı kabul edin ve **Sil'i**tıklatın. Birim şimdi silinir ve **Birimler** bıçak sanal dizi içinde birimlerin güncelleştirilmiş listesini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [bir StorSimple biriminin kopyalama](storsimple-virtual-array-clone.md).
+[StorSimple birimini nasıl klonlamayı](storsimple-virtual-array-clone.md)öğrenin.
 

@@ -1,6 +1,6 @@
 ---
-title: Tanılama günlüklerini kullanarak Azure Veri Gezgini alma işlemlerini izleme
-description: Alma işlemlerini izlemek için Azure Veri Gezgini tanılama günlüklerini ayarlamayı öğrenin.
+title: Tanılama günlüklerini kullanarak Azure Veri Gezgini işlemlerine izleme
+description: Azure Veri Gezgini için oluşturma işlemlerini izlemek için tanı lama günlüklerini nasıl ayarlayabilirsiniz öğrenin.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,74 +8,74 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277419"
 ---
-# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Tanılama günlüklerini kullanarak Azure Veri Gezgini alma işlemlerini izleme (Önizleme)
+# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Tanılama günlüklerini kullanarak Azure Veri Gezgini işlemlerini izleme (Önizleme)
 
-Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanındaki tabloya (yükleme) sahip olursunuz. [Azure izleyici tanılama günlükleri](/azure/azure-monitor/platform/diagnostic-logs-overview) , Azure kaynakları 'nın çalışması hakkında veri sağlar. Azure Veri Gezgini, alma başarıları ve hatalarıyla ilgili Öngörüler için tanılama günlüklerini kullanır. Alma durumunu izlemek için işlem günlüklerini Azure depolama, Olay Hub 'ı veya Log Analytics dışarı aktarabilirsiniz. Azure depolama ve Azure Olay Hub 'ından Günlükler, daha fazla analiz için Azure Veri Gezgini kümenizdeki bir tabloya yönlendirilebilir.
+Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini'ni kullanmak için öncelikle bir küme ve bu kümenin içinde bir veya daha fazla veritabanı oluşturmanız gerekir. Ardından, sorguları veritabanında bir tabloya veri yükler (yüklersiniz) böylece buna karşı sorguları çalıştırabilirsiniz. [Azure Monitor tanı günlükleri,](/azure/azure-monitor/platform/diagnostic-logs-overview) Azure kaynaklarının çalışması hakkında veri sağlar. Azure Veri Gezgini, yutma başarıları ve hataları hakkında öngörüler için tanılama günlüklerini kullanır. İşlem durumunu izlemek için işlem günlüklerini Azure Depolama, Etkinlik Hub'ı veya Log Analytics'e dışa aktarabilirsiniz. Azure Depolama ve Azure Etkinlik Hub'ından günlükler, daha fazla analiz için Azure Veri Gezgini kümenizdeki bir tabloya yönlendirilebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/)oluşturun.
 * Bir [küme ve veritabanı](create-cluster-database-portal.md)oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/)oturum açın.
 
-## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi için tanılama günlüklerini ayarlama
+## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi için tanıgünlükleri ayarlama
 
-Tanılama günlükleri, aşağıdaki günlük verilerinin toplanmasını yapılandırmak için kullanılabilir:
-* Başarılı alma işlemleri: Bu günlüklerde başarıyla tamamlanan alma işlemleri hakkında bilgiler vardır.
-* Başarısız alma işlemleri: Bu günlüklerde hata ayrıntıları da dahil olmak üzere başarısız alma işlemleriyle ilgili ayrıntılı bilgiler vardır. 
+Tanılama günlükleri aşağıdaki günlük verilerinin toplanmasını yapılandırmak için kullanılabilir:
+* Başarılı yutma işlemleri: Bu günlükler başarıyla tamamlanan yutma işlemleri hakkında bilgi sahibidir.
+* Başarısız yutma işlemleri: Bu günlüklerde hata ayrıntıları da dahil olmak üzere başarısız yutma işlemleri hakkında ayrıntılı bilgiler vardır. 
 
-Veriler daha sonra bir depolama hesabında arşivlenir, bir olay hub 'ına kaydedilir ya da belirtimlerinize göre Log Analytics gönderilir.
+Veriler daha sonra bir Depolama hesabına arşivlenir, bir Etkinlik Hub'ına aktarılır veya belirtimlerinize göre Log Analytics'e gönderilir.
 
 ### <a name="enable-diagnostic-logs"></a>Tanılama günlüklerini etkinleştirme
 
-Tanılama günlükleri, varsayılan olarak devre dışıdır. Tanılama günlüklerini etkinleştirmek için aşağıdaki adımları uygulayın:
+Tanılama günlükleri varsayılan olarak devre dışı bırakılır. Tanılama günlüklerini etkinleştirmek için aşağıdaki adımları yapın:
 
-1. [Azure Portal](https://portal.azure.com), Izlemek istediğiniz Azure Veri Gezgini kümesi kaynağını seçin.
-1. Altında **izleme**seçin **tanılama ayarları**.
+1. Azure [portalında,](https://portal.azure.com)izlemek istediğiniz Azure Veri Gezgini küme kaynağını seçin.
+1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
   
     ![Tanılama günlükleri ekleme](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
-1. **Tanılama ayarı Ekle**' yi seçin.
+1. **Tanıayar ayarı ekle'yi**seçin.
 1. **Tanılama ayarları** penceresinde:
  
-    ![Tanılama Ayarları Yapılandırması](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
+    ![Tanılama ayarları yapılandırması](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
-    1. Tanılama ayarınız için **ad** seçin.
-    1. Bir veya daha fazla hedef seçin: depolama hesabı, Olay Hub 'ı veya Log Analytics.
-    1. Toplanacak günlükleri seçin: `SucceededIngestion` veya `FailedIngestion`.
+    1. Tanılama ayarınız için **Ad'ı** seçin.
+    1. Bir veya daha fazla hedef seçin: Bir Depolama hesabı, Olay Merkezi veya Günlük Analizi.
+    1. Toplanacak günlükleri seçin: `SucceededIngestion` `FailedIngestion`veya .
     1. Toplanacak [ölçümleri](using-metrics.md#supported-azure-data-explorer-metrics) seçin (isteğe bağlı).  
-    1. Yeni tanılama günlükleri ayarlarını ve ölçümlerini kaydetmek için **Kaydet** ' i seçin.
-    1. Tanılama günlüklerini etkinleştirmeyi istemek için Azure portal **Yeni bir destek isteği** oluşturun.
+    1. Yeni tanılama günlükleri ayarlarını ve ölçümlerini kaydetmek için **Kaydet'i** seçin.
+    1. Tanılama günlüklerinin etkinleştirmesini istemek için Azure portalında yeni bir **destek isteği** oluşturun.
 
-Yeni ayarlar birkaç dakika içinde ayarlanacak. Günlükler daha sonra yapılandırılan arşiv hedefi (depolama hesabı, Olay Hub 'ı veya Log Analytics) içinde görüntülenir. 
+Yeni ayarlar birkaç dakika içinde ayarlanır. Günlükler daha sonra yapılandırılan arşiv hedefinde (Depolama hesabı, Olay Hub'ı veya Log Analytics) görünür. 
 
-## <a name="diagnostic-logs-schema"></a>Tanılama günlükleri şeması
+## <a name="diagnostic-logs-schema"></a>Tanılama günlükleri şema
 
-Tüm [Azure izleyici tanılama günlükleri, ortak bir en üst düzey şemayı paylaşır](/azure/azure-monitor/platform/diagnostic-logs-schema). Azure Veri Gezgini kendi olayları için benzersiz özelliklere sahiptir. Tüm Günlükler JSON biçiminde depolanır.
+Tüm [Azure Monitor tanılama günlükleri ortak bir üst düzey şema paylaşır.](/azure/azure-monitor/platform/diagnostic-logs-schema) Azure Veri Gezgini kendi etkinlikleri için benzersiz özelliklere sahiptir. Tüm günlükler JSON biçiminde depolanır.
 
-### <a name="ingestion-logs-schema"></a>Alım günlükleri şeması
+### <a name="ingestion-logs-schema"></a>Yutma şema günlükleri
 
-Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
+Log JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-|Ad               |Açıklama
+|Adı               |Açıklama
 |---                |---
-|time               |Raporun saati
-|resourceId         |Azure Resource Manager kaynak KIMLIĞI
-|operationName      |İşlemin adı: ' MICROSOFT. KUSTO/KÜMELER/ALMA/EYLEM '
-|operationVersion   |Şema sürümü: ' 1,0 ' 
-|category           |İşlemin kategorisi. `SucceededIngestion` veya `FailedIngestion`. [Başarılı işlem](#successful-ingestion-operation-log) veya [başarısız işlem](#failed-ingestion-operation-log)için özellikler farklılık gösterir.
-|properties         |İşlemin ayrıntılı bilgileri.
+|time               |Raporun zamanı
+|resourceId         |Azure Kaynak Yöneticisi kaynak kimliği
+|operationName      |İşlemin adı: 'MICROSOFT. KUSTO/KÜMELER/YUTMA/EYLEM'
+|operationVersion   |Şema versiyonu: '1.0' 
+|category           |İşlemin kategorisi. `SucceededIngestion` veya `FailedIngestion`. Özellikler [başarılı çalışma](#successful-ingestion-operation-log) veya [başarısız işlem](#failed-ingestion-operation-log)için farklılık gösterir.
+|properties         |Operasyonun ayrıntılı bilgi.
 
-#### <a name="successful-ingestion-operation-log"></a>Başarılı alma işlemi günlüğü
+#### <a name="successful-ingestion-operation-log"></a>Başarılı yutma işlemi günlüğü
 
 **Örnek:**
 
@@ -98,17 +98,17 @@ Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
     }
 }
 ```
-**Başarılı bir işlem tanılama günlüğü özellikleri**
+**Başarılı bir işlem tanı lama günlüğünün özellikleri**
 
-|Ad               |Açıklama
+|Adı               |Açıklama
 |---                |---
-|succeededOn        |Alma işleminin tamamlanma süresi
-|operationId        |Azure Veri Gezgini alma işlemi KIMLIĞI
-|veritabanı           |Hedef veritabanının adı
-|table              |Hedef tablonun adı
-|ınestionsourceıd  |Alım veri kaynağının KIMLIĞI
-|ınestionsourcepath|Alma veri kaynağının veya blob URI 'sinin yolu
-|Rootactivityıd     |Etkinlik Kimliği
+|başarılıOn        |Yutma süresi nin tamamlanması
+|operationId        |Azure Veri Gezgini alma işlemi kimliği
+|database           |Hedef veritabanının adı
+|tablo              |Hedef tablonun adı
+|ingestionSourceId  |Yutma veri kaynağının kimliği
+|yutmaKaynak Yolu|Yutma veri kaynağı veya blob URI yolu
+|rootActivityId     |Etkinlik Kimliği
 
 #### <a name="failed-ingestion-operation-log"></a>Başarısız alma işlemi günlüğü
 
@@ -141,23 +141,23 @@ Günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
 **Başarısız bir işlem tanılama günlüğünün özellikleri**
 
-|Ad               |Açıklama
+|Adı               |Açıklama
 |---                |---
-|failedOn           |Alma işleminin tamamlanma süresi
-|operationId        |Azure Veri Gezgini alma işlemi KIMLIĞI
-|veritabanı           |Hedef veritabanının adı
-|table              |Hedef tablonun adı
-|ınestionsourceıd  |Alım veri kaynağının KIMLIĞI
-|ınestionsourcepath|Alma veri kaynağının veya blob URI 'sinin yolu
-|Rootactivityıd     |Etkinlik Kimliği
-|details            |Hatanın ve hata iletisinin ayrıntılı açıklaması
-|errorCode          |Hata kodu 
-|failureStatus      |`Permanent` veya `Transient`. Geçici bir hata yeniden deneniyorsa başarılı olabilir.
-|originatesFromUpdatePolicy|Hata bir güncelleştirme ilkesinden kaynaklanıyorsa doğru
-|shouldRetry        |Yeniden deneme başarılı olursa doğru
+|failedOn           |Yutma süresi nin tamamlanması
+|operationId        |Azure Veri Gezgini alma işlemi kimliği
+|database           |Hedef veritabanının adı
+|tablo              |Hedef tablonun adı
+|ingestionSourceId  |Yutma veri kaynağının kimliği
+|yutmaKaynak Yolu|Yutma veri kaynağı veya blob URI yolu
+|rootActivityId     |Etkinlik Kimliği
+|Şey            |Hata ve hata iletisinin ayrıntılı açıklaması
+|hataKodu          |Hata kodu 
+|failureDurum      |`Permanent` veya `Transient`. Geçici bir hatanın yeniden denemesi başarılı olabilir.
+|originatesFromUpdatePolicy|Hata bir güncelleştirme ilkesinden kaynaklanıyorsa true
+|shouldRetry        |Retry başarılı olabilir eğer doğru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme](ingest-data-no-code.md)
-* [Küme durumunu izlemek için ölçümleri kullanma](using-metrics.md)
+* [Öğretici: Azure Veri Gezgini'nde izleme verilerini alma ve sorgulama](ingest-data-no-code.md)
+* [Kümelerin sistem durumunu izlemek için ölçümleri kullanma](using-metrics.md)
 

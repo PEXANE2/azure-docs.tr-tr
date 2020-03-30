@@ -1,6 +1,6 @@
 ---
-title: API protokollerini Yapılandırma-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid tarafından açığa çıkarılan API protokollerini yapılandırın.
+title: API protokollerini yapılandırma - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'de Event Grid tarafından maruz kalan API protokollerini yapılandırın.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841819"
 ---
-# <a name="configure-event-grid-api-protocols"></a>Event Grid API protokollerini yapılandırma
+# <a name="configure-event-grid-api-protocols"></a>Olay Izgara API protokollerini yapılandırma
 
-Bu kılavuzda, bir Event Grid modülünün olası protokol yapılandırmalarının örnekleri verilmiştir. Event Grid modülü, yönetim ve çalışma zamanı işlemleri için API 'YI kullanıma sunar. Aşağıdaki tablo, protokolleri ve bağlantı noktalarını yakalar.
+Bu kılavuz, bir Olay Izgara modülünün olası protokol yapılandırmalarına örnekler verir. Olay Izgara modülü, yönetimi ve çalışma zamanı işlemleri için API'yi ortaya çıkarır. Aşağıdaki tablo protokolleri ve bağlantı noktalarını yakalar.
 
 | Protokol | Bağlantı noktası | Açıklama |
 | ---------------- | ------------ | ------------ |
-| HTTP | 5888 | Varsayılan olarak kapalıdır. Yalnızca sınama sırasında yararlı olur. Üretim iş yükleri için uygun değildir.
+| HTTP | 5888 | Varsayılan olarak kapatıldı. Yalnızca sınama sırasında yararlıdır. Üretim iş yükleri için uygun değildir.
 | HTTPS | 4438 | Varsayılan
 
-Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuzu '](security-authentication.md) na bakın.
+Tüm olası yapılandırmalar için [Güvenlik ve kimlik doğrulama](security-authentication.md) kılavuzuna bakın.
 
-## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>Aynı kenar ağında HTTPS 'yi IoT modüllerine kullanıma sunma
+## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>HTTPS'yi aynı kenar ağındaki IoT Modüllerine maruz bırak
 
 ```json
  {
@@ -38,7 +38,7 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
 }
  ```
 
-## <a name="enable-https-to-other-iot-modules-and-non-iot-workloads"></a>Diğer IoT modüllerine ve IoT olmayan iş yüklerine HTTPS 'yi etkinleştirme
+## <a name="enable-https-to-other-iot-modules-and-non-iot-workloads"></a>HTTPS'yi diğer IoT modüllerine ve IoT dışındaki iş yüklerine etkinleştirin
 
 ```json
  {
@@ -59,9 +59,9 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
  ```
 
 >[!NOTE]
-> **Portbindings** bölümü, iç bağlantı noktalarını kapsayıcı konağın bağlantı noktalarıyla eşlemenizi sağlar. Bu özellik, IoT Edge cihazının herkese açık olması halinde IoT Edge kapsayıcı ağı dışından Event Grid modülüne ulaşmak mümkün hale gelir.
+> **PortBindings** bölümü, dahili bağlantı noktalarını konteyner ana bilgisayarının bağlantı noktalarıyla eşlemenize olanak tanır. Bu özellik, IoT edge aygıtına genel olarak erişilebiliyorsa, Olay Izgara modülüne IoT Edge konteyner ağının dışından erişmemi mümkün kılar.
 
-## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>Aynı uç ağdaki IoT modüllerine HTTP ve HTTPS 'yi kullanıma sunma
+## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>HTTP ve HTTPS'yi aynı kenar ağındaki IoT modüllerine maruz bırak
 
 ```json
  {
@@ -72,7 +72,7 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
 }
  ```
 
-## <a name="enable-http-and-https-to-other-iot-modules-and-non-iot-workloads"></a>Diğer IoT modüllerine ve IoT olmayan iş yüklerine HTTP ve HTTPS 'yi etkinleştirme
+## <a name="enable-http-and-https-to-other-iot-modules-and-non-iot-workloads"></a>HTTP ve HTTPS'yi diğer IoT modüllerine ve IoT dışındaki iş yüklerine etkinleştirme
 
 ```json
  {
@@ -98,7 +98,7 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
  ```
 
 >[!NOTE]
-> Varsayılan olarak, her IoT modülü köprü ağı tarafından oluşturulan IoT Edge çalışma zamanının bir parçasıdır. Aynı ağ üzerinde bulunan farklı IoT modüllerinin birbirleriyle iletişim kurmasını sağlar. **Portbindings** , bir kapsayıcı iç bağlantı noktasını ana makine üzerinde eşleştirmenize olanak tanıyarak, herkesin Event Grid modülünün bağlantı noktasına dışarıdan erişebilmesini sağlar.
+> Varsayılan olarak, her IoT Modülü köprü ağı tarafından oluşturulan IoT Edge çalışma zamanının bir parçasıdır. Aynı ağdaki farklı IoT modüllerinin birbirleriyle iletişim kurmasını sağlar. **PortBindings,** bir konteyner iç bağlantı noktasını ana makineye haritalamanızı sağlar ve böylece herkesin Olay Izgara modülünün bağlantı noktasına dışarıdan erişebilmesini sağlar.
 
 >[!IMPORTANT]
-> Bağlantı noktaları IoT Edge ağı dışında erişilebilir hale getirilmese de, istemci kimlik doğrulaması, gerçekte modüle çağrı yapmasına izin verilen kişileri zorlar.
+> Bağlantı noktaları IoT Edge ağı dışında erişilebilir hale getirilebilirken, istemci kimlik doğrulaması modüle arama yapmasına gerçekten izin verilen leri zorlar.
