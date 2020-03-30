@@ -1,79 +1,78 @@
 ---
-title: Marketo 'da lider yönetimini yapılandırma | Azure Marketi
-description: Azure Market müşterileri için Marketo için lider yönetimini yapılandırın.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Marketo'da müşteri adayı yönetimini yapılandırma | Azure Marketi
+description: Azure pazar yeri müşterileri için Marketo için müşteri adayı yönetimini yapılandırın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812130"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281519"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Marketo 'da lider yönetimini yapılandırma
+# <a name="configure-lead-management-in-marketo"></a>Marketo'da müşteri adayı yönetimini yapılandırma
 
-Bu makalede, satış fırsatlarını Market teklifinizden işlemek üzere Marketo CRM sisteminizin nasıl ayarlanacağı açıklanır.
+Bu makalede, market teklifinizden satış müşteri adaylarını işlemek için Marketo CRM sisteminizin nasıl ayarlanır.
 
-## <a name="set-up-your-marketo-crm-system"></a>Marketo CRM sisteminizi ayarlama
+## <a name="set-up-your-marketo-crm-system"></a>Marketo CRM sisteminizi ayarlayın
 
-1. Marketo 'da oturum açın.
-2. **Design Studio**' yı seçin.
-    ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+1. Marketo'da oturum açın.
+2. **Tasarım Stüdyosu'ni**seçin.
+    ![Marketo Tasarım Stüdyosu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  **Yeni form**' u seçin.
-    ![Marketo yeni form](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+3.  **Yeni Formu**Seçin.
+    ![Marketo yeni formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
-4.  Yeni formdaki gerekli alanları doldurup **Oluştur**' u seçin.
-    ![Marketo yeni form oluştur](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+4.  Yeni Form'da gerekli alanları doldurun ve sonra **Oluştur'u**seçin.
+    ![Marketo yeni form oluşturmak](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  Alan ayrıntıları sayfasında **son**' u seçin.
-    ![Marketo son form](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+5.  Alan Ayrıntıları'nda **Finish'i**seçin.
+    ![Marketo bitiş formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  Onaylayın ve kapatın.
+6.  Onayla ve Kapat.
 
-7. *Marketplaceleaddesteklenen* sekmesinde **kodu ekle**' yi seçin. 
+7. *MarketplaceLeadBacked* sekmesinde, **Kodu Girin'i**seçin. 
 
-    ![Kod ekleme](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Ekleme kodu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Marketo ekleme kodu, aşağıdaki örneğe benzer bir kod görüntüler.
+8. Marketo Embed Code aşağıdaki örneğe benzer kod görüntüler.
 
     ```
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. Ekleme kodu formunda gösterilen aşağıdaki alanların değerlerini kopyalayın. Bu değerleri, bir sonraki adımda müşteri adaylarını almak üzere teklifinizi yapılandırmak için kullanacaksınız. Bir sonraki örneği, Marketo ekleme kodu örneğinde ihtiyacınız olan kimlikleri alma kılavuzu olarak kullanın.
+9. Katıştırılmış Kod formunda gösterilen aşağıdaki alanların değerlerini kopyalayın. Bu değerleri, teklifinizi bir sonraki adımda müşteri adaylarını almak üzere yapılandırmak için kullanırsınız. Marketo Gömme Kodu örneğinden ihtiyacınız olan kimlikleri almak için bir sonraki örneği kılavuz olarak kullanın.
 
-    - Sunucu KIMLIĞI = **ys12**
-    - Munchkabağı No = **123-PQR-789**
-    - Form KIMLIĞI = **1179**
+    - Sunucu Kimliği = **ys12**
+    - Munchkin ID = **123-PQR-789**
+    - Form Kimliği = **1179**
 
-    **Bu değerleri anlamak için başka bir yol**
+    **Bu değerleri çözmenin başka bir yolu**
 
-    - Sunucu KIMLIĞI, Marketo örneğinizin URL 'sinde bulunur (örneğin, "`serverID.marketo.com`").
-    - "Munchbal hesap KIMLIĞI" alanında yönetici > bir menü veya Marketo REST API ana bilgisayar alt etki alanının ilk kısmından, aboneliğinizin yeniden oluşturma KIMLIĞINI alın: `https://{Munchkin ID}.mktorest.com`.
-    - Form KIMLIĞI, Market 'ten gelen müşteri adaylarını yönlendirmek için adım 7 ' de oluşturduğunuz ekleme kodu formunun KIMLIĞIDIR.
+    - Sunucu kimliği, Marketo örneğinizin URL'sinde bulunur,`serverID.marketo.com`örneğin , " ".
+    - "Munchkin Hesap Kimliği" alanında admin>Munchkin menüsüne giderek veya Marketo REST API ana etki alanının ilk bölümünden aboneliğinizin Munching kimliğini alın: `https://{Munchkin ID}.mktorest.com`.
+    - Form Kimliği, müşteri adaylarını pazardan yönlendirmek için adım 7'de oluşturduğunuz Gömme Kodu formunun kimliğidir.
 
-## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Teklifinizi müşteri adaylarını Marketo 'ya gönderecek şekilde yapılandırma
+## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Teklifinizi Marketo'ya müşteri adayları göndermek için yapılandırın
 
-Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin: 
+Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırmaya hazır olduğunuzda aşağıdaki adımları izleyin: 
 
-1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-1. Müşteri adayı Yönetimi bölümünde **Bağlan** ' ı seçin. 
+1. **Teklifiniz** için Teklif kurulum sayfasına gidin.
+1. Müşteri Adayı Yönetimi bölümü altında **Bağlan'ı** seçin. 
 
-    ![Lider yönetimi-Bağlan](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    ![Müşteri adayı yönetimi - Bağlan](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
-1. Bağlantı ayrıntıları açılır penceresinde, müşteri adayı hedefi için **Marketo** ' yı seçin.
+1. Bağlantı ayrıntıları açılır penceresinde, Müşteri Adayı Hedef için **Marketo'yu** seçin.
 
-    ![Bir müşteri adayı hedefi seçin](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
+    ![Müşteri adayı hedefi seçin](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. **Sunucu kimliği**, **Hesap KIMLIĞI**ve **form kimliği**sağlayın.
+4. Sunucu **Kimliği,** **Munching hesap kimliği**ve **Form Kimliği**sağlayın.
 
     >[!Note]
-    >Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir. 
+    >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir. 
 

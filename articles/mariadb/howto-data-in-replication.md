@@ -1,80 +1,80 @@
 ---
-title: Veri çoğaltma yapılandırma-MariaDB için Azure veritabanı
-description: Bu makalede, MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma ayarlama açıklanır.
+title: Veri çoğaltma yapılandırma - MariaDB için Azure Veritabanı
+description: Bu makalede, MariaDB için Azure Veritabanı'nda Veri Çoğaltma'nın nasıl ayarlanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 0dbbc9b09d5d4770296223db9dc909c17f574fe8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530164"
 ---
-# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma yapılandırma
+# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanında Veri Çoğaltma'yı Yapılandırma
 
-Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma nasıl ayarlanacağı açıklanır. Bu makalede, MariaDB sunucuları ve veritabanları ile ilgili bir önceki deneyim olduğunu varsaymaktadır.
+Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MariaDB için Azure Veritabanı'nda Veri Çoğaltma'nın nasıl ayarlanır. Bu makalede, MariaDB sunucuları ve veritabanları ile bazı önceki deneyime sahip olduğunu varsayar.
 
-MariaDB hizmeti için Azure veritabanı hizmetinde bir çoğaltma oluşturmak için, Gelen Verileri Çoğaltma verileri şirket içinde, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde bulunan ana MariaDB sunucusundan eşitler.
+MariaDB hizmeti için Azure Veritabanı'nda bir yineleme oluşturmak için, Veri Çoğaltma, ana MariaDB sunucusundan, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde verileri eşitler.
 
 > [!NOTE]
-> Ana sunucunuz sürüm 10,2 veya daha yeniyse, [genel Işlem kimliği](https://mariadb.com/kb/en/library/gtid/)kullanarak gelen verileri çoğaltma ayarlamanızı öneririz.
+> Ana sunucunuz sürüm 10.2 veya daha yeniyse, [Global İşlem Kimliği'ni](https://mariadb.com/kb/en/library/gtid/)kullanarak Veri Çoğaltma'yı ayarlamanızı öneririz.
 
 
-## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Çoğaltma olarak kullanmak için bir MariaDB sunucusu oluşturma
+## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Yineleme olarak kullanmak üzere bir MariaDB sunucusu oluşturma
 
-1. MariaDB sunucusu için yeni bir Azure veritabanı oluşturun (örneğin, replica.mariadb.database.azure.com). Sunucu, Gelen Verileri Çoğaltma içindeki çoğaltma sunucusudur.
+1. MariaDB sunucusu için yeni bir Azure Veritabanı oluşturun (örneğin, replica.mariadb.database.azure.com). Sunucu, Data-in Replication'daki çoğaltma sunucusudur.
 
-    Sunucu oluşturma hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak MariaDB Için Azure veritabanı sunucusu oluşturma](quickstart-create-mariadb-server-database-using-azure-portal.md).
+    Sunucu oluşturma hakkında bilgi edinmek için Azure [portalını kullanarak MariaDB sunucusu için Azure Veritabanı Oluştur'a](quickstart-create-mariadb-server-database-using-azure-portal.md)bakın.
 
    > [!IMPORTANT]
-   > MariaDB sunucusu için Azure veritabanı 'nı Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında oluşturmanız gerekir.
+   > Genel Amaç veya Bellek Optimize edilmiş fiyatlandırma katmanlarında MariaDB sunucusu için Azure Veritabanı oluşturmanız gerekir.
 
-2. Özdeş Kullanıcı hesapları ve ilgili ayrıcalıklar oluşturun.
+2. Aynı kullanıcı hesapları ve ilgili ayrıcalıklar oluşturun.
     
-    Kullanıcı hesapları ana sunucudan Çoğaltma sunucusuna çoğaltılmaz. Çoğaltma sunucusuna Kullanıcı erişimi sağlamak için, yeni oluşturulan MariaDB sunucusu için Azure veritabanı 'nda tüm hesapları ve ilgili ayrıcalıkları el ile oluşturmanız gerekir.
+    Kullanıcı hesapları ana sunucudan çoğaltma sunucusuna çoğaltılamaz. Yineleme sunucusuna kullanıcı erişimi sağlamak için, MariaDB sunucusu için yeni oluşturulan Azure Veritabanı'nda tüm hesapları ve ilgili ayrıcalıkları el ile oluşturmanız gerekir.
 
 ## <a name="configure-the-master-server"></a>Ana sunucuyu yapılandırma
 
-Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir VM 'de veya Gelen Verileri Çoğaltma için bir bulut veritabanı hizmetinde hazırlar ve yapılandırır. MariaDB sunucusu Gelen Verileri Çoğaltma ana yöneticisidir.
+Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, VM'de veya Veri Çoğaltma için bir bulut veritabanı hizmetinde hazırlar ve yapılandırır. MariaDB sunucusu, Veri Çoğaltma'nın yöneticisidir.
 
-1. İkili günlüğü açın.
+1. İkili günlüğe kaydetmeyi açın.
     
-    Ana sunucuda ikili günlüğün etkin olup olmadığını görmek için aşağıdaki komutu girin:
+    Ana sitede ikili günlüğe kaydetmenin etkin olup olmadığını görmek için aşağıdaki komutu girin:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) değişkeni `ON`değerini döndürürse, sunucunuzda ikili günlük etkin olur.
+   Değişken [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) değeri `ON`döndürürse, ikili günlük sunucunuzda etkindir.
 
-   `log_bin` `OFF`değerini döndürürse, `log_bin=ON` ikili günlüğü açmasını sağlamak için **My. cnf** dosyasını düzenleyin. Değişikliğin etkili olması için sunucuyu yeniden başlatın.
+   Değeri `log_bin` `OFF`döndürürse, **my.cnf** dosyasını ikili günlüğe kaydetmeyi `log_bin=ON` sağlayacak şekilde edin. Değişikliğin etkili olması için sunucuyu yeniden başlatın.
 
 2. Ana sunucu ayarlarını yapılandırın.
 
-    Gelen Verileri Çoğaltma, `lower_case_table_names` parametresinin ana ve çoğaltma sunucuları arasında tutarlı olmasını gerektirir. `lower_case_table_names` parametresi, MariaDB için Azure veritabanı 'nda varsayılan olarak `1` olarak ayarlanır.
+    Veri Çoğaltma, parametrenin `lower_case_table_names` ana ve çoğaltma sunucuları arasında tutarlı olmasını gerektirir. `lower_case_table_names` Parametre, MariaDB için Azure Veritabanı'nda varsayılan olarak ayarlanır. `1`
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Yeni bir çoğaltma rolü oluşturun ve izinleri ayarlayın.
+3. Yeni bir çoğaltma rolü oluşturun ve izinler ayarlayın.
 
-   Ana sunucuda, çoğaltma ayrıcalıklarıyla yapılandırılmış bir kullanıcı hesabı oluşturun. SQL komutları veya MySQL çalışma ekranı kullanarak bir hesap oluşturabilirsiniz. SSL ile çoğaltmayı planlıyorsanız, Kullanıcı hesabını oluştururken bunu belirtmeniz gerekir.
+   Çoğaltma ayrıcalıklarıyla yapılandırılan ana sunucuda bir kullanıcı hesabı oluşturun. SQL komutlarını veya MySQL Workbench'i kullanarak hesap oluşturabilirsiniz. SSL ile çoğaltmayı planlıyorsanız, kullanıcı hesabını oluştururken bunu belirtmeniz gerekir.
    
-   Ana sunucunuza Kullanıcı hesaplarının nasıl ekleneceğini öğrenmek için, [MariaDB belgelerine](https://mariadb.com/kb/en/library/create-user/)bakın.
+   Ana sunucunuza kullanıcı hesapları eklemeyi öğrenmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/create-user/)bakın.
 
-   Aşağıdaki komutları kullanarak, yeni çoğaltma rolü yalnızca ana bilgisayarın kendisini barındıran makineden değil, herhangi bir makineden ana bilgisayara erişebilir. Bu erişim için, bir kullanıcı oluşturmak üzere komutta **syncuser\@'% '** belirtin.
+   Aşağıdaki komutları kullanarak, yeni çoğaltma rolü ana makineden erişebilir, sadece anayı barındıran makineye değil. Bu erişim için, bir kullanıcı oluşturmak için komutta **senkronize kullanıcı\@'%'** belirtin.
    
-   MariaDB belgeleri hakkında daha fazla bilgi edinmek için bkz. [hesap adlarını belirtme](https://mariadb.com/kb/en/library/create-user/#account-names).
+   MariaDB belgeleri hakkında daha fazla bilgi edinmek için [hesap adlarını belirtmeye](https://mariadb.com/kb/en/library/create-user/#account-names)bakın.
 
    **SQL komutu**
 
    - SSL ile çoğaltma
 
-       Tüm kullanıcı bağlantıları için SSL gerektirmek için, bir kullanıcı oluşturmak üzere aşağıdaki komutu girin:
+       Tüm kullanıcı bağlantıları için SSL'yi gerektirmek için, bir kullanıcı oluşturmak için aşağıdaki komutu girin:
 
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -83,70 +83,70 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
    - SSL olmadan çoğaltma
 
-       Tüm bağlantılar için SSL gerekmiyorsa, bir kullanıcı oluşturmak için aşağıdaki komutu girin:
+       Tüm bağlantılar için SSL gerekli değilse, bir kullanıcı oluşturmak için aşağıdaki komutu girin:
     
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
        GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
        ```
 
-   **MySQL çalışma ekranı**
+   **MySQL Workbench**
 
-   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** bölmesinde, **Kullanıcılar ve ayrıcalıklar**' ı seçin. Ardından **Hesap Ekle**' yi seçin.
+   MySQL Workbench'te, **Yönetim** bölmesinde çoğaltma rolünü oluşturmak için **Kullanıcılar ve Ayrıcalıklar'ı**seçin. Ardından **Hesap Ekle'yi**seçin.
  
-   ![Kullanıcılar ve ayrıcalıklar](./media/howto-data-in-replication/users_privileges.png)
+   ![Kullanıcılar ve Ayrıcalıklar](./media/howto-data-in-replication/users_privileges.png)
 
-   **Oturum açma adı** alanına bir Kullanıcı adı girin.
+   **Giriş Adı** alanına bir kullanıcı adı girin.
 
-   ![Kullanıcıyı Eşitle](./media/howto-data-in-replication/syncuser.png)
+   ![Kullanıcıyı senkronize edin](./media/howto-data-in-replication/syncuser.png)
  
-   **Yönetim rolleri** panelini seçin ve ardından **genel ayrıcalıklar**listesinden **çoğaltma bağımlı**öğesini seçin. Çoğaltma rolünü oluşturmak için **Uygula** ' yı seçin.
+   İdari **Görevler** panelini seçin ve ardından **Genel Ayrıcalıklar**listesinde **Çoğaltma Kölesi'ni**seçin. Çoğaltma rolünü oluşturmak için **Uygula'yı** seçin.
 
-   ![Çoğaltma bağımlı](./media/howto-data-in-replication/replicationslave.png)
+   ![Çoğaltma Kölesi](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Ana sunucuyu salt okunurdur moduna ayarlayın.
+4. Ana sunucuyu salt okunur moduna ayarlayın.
 
-   Bir veritabanının dökümünü yapmadan önce, sunucunun salt okunurdur modunda yerleştirilmesi gerekir. Salt okuma modundayken, ana işlem herhangi bir yazma işlemini işleyemez. İş etkisini önlemeye yardımcı olmak için, salt okuma penceresini yoğun olmayan bir süre boyunca zamanlayın.
+   Veritabanını dökümüyapmadan önce, sunucunun salt okunur moduna alınması gerekir. Salt okunur modundayken, asıl kişi yazma hareketlerini işleyebilir. İş üzerindeki etkiyi önlemeye yardımcı olmak için, yalnızca okunur pencereyi yoğun olmayan bir zamanda zamanlayın.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-5. Geçerli ikili günlük dosyası adını ve sapmasını alın.
+5. Geçerli ikili günlük dosya adını ve ofset'i alın.
 
-   Geçerli ikili günlük dosyası adını ve sapmasını öğrenmek için [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)komutunu çalıştırın.
+   Geçerli ikili günlük dosya adını ve ofset [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)belirlemek için komutu çalıştırın.
     
    ```sql
    show master status;
    ```
    Sonuçlar aşağıdaki tabloya benzer olmalıdır:
    
-   ![Ana durum sonuçları](./media/howto-data-in-replication/masterstatus.png)
+   ![Yüksek Lisans Durum Sonuçları](./media/howto-data-in-replication/masterstatus.png)
 
-   Sonraki adımlarda kullanılacak olduğundan, ikili dosya adını aklınızda olun.
+   İkili dosya adını not edin, çünkü daha sonraki adımlarda kullanılacaktır.
    
-6. GTıD konumunu (isteğe bağlı, GTıD ile çoğaltma için gereklidir) alın.
+6. GTID konumunu alın (isteğe bağlı, GTID ile çoğaltma için gerekli).
 
-   Karşılık gelen binlog dosya adı ve sapmasını için GTıD konumunu almak üzere [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) işlevini çalıştırın.
+   İlgili binlog dosya adı ve ofset için GTID konumunu almak için işlevi [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) çalıştırın.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
     ```
  
 
-## <a name="dump-and-restore-the-master-server"></a>Ana sunucuyu dökümünü al ve geri yükle
+## <a name="dump-and-restore-the-master-server"></a>Ana sunucuyu boşaltın ve geri yükleyin
 
-1. Ana sunucudan tüm veritabanlarının dökümünü alın.
+1. Ana sunucudaki tüm veritabanlarını boşaltın.
 
-   Ana sunucudan tüm veritabanlarının dökümünü yapmak için mysqldump kullanın. MySQL kitaplığı ve test kitaplığının dökümünü almak gerekli değildir.
+   Ana sunucudaki tüm veritabanlarını boşaltmak için mysqldump'u kullanın. MySQL kitaplığını ve test kitaplığını dökümüne gerek yoktur.
 
-    Daha fazla bilgi için bkz. [döküm ve geri yükleme](howto-migrate-dump-restore.md).
+    Daha fazla bilgi için [Dump ve geri yükleme'ye](howto-migrate-dump-restore.md)bakın.
 
 2. Ana sunucuyu okuma/yazma moduna ayarlayın.
 
-   Veritabanı kaydedildikten sonra, Master MariaDB sunucusunu okuma/yazma moduna geri çevirin.
+   Veritabanı atıldıktan sonra, ana MariaDB sunucusunu okuma/yazma moduna geri değiştirin.
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -155,17 +155,17 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
 3. Döküm dosyasını yeni sunucuya geri yükleyin.
 
-   Döküm dosyasını MariaDB hizmeti için Azure veritabanı 'nda oluşturulan sunucuya geri yükleyin. Döküm dosyasını MariaDB sunucusuna geri yüklemek için bkz. [dump & restore](howto-migrate-dump-restore.md) .
+   Döküm dosyasını MariaDB hizmeti için Azure Veritabanı'nda oluşturulan sunucuya geri yükleyin. Bir döküm dosyasını MariaDB sunucusuna geri yüklemek için [Dökümü & Geri Yükleme'ye](howto-migrate-dump-restore.md) bakın.
 
-   Döküm dosyası büyükse, Çoğaltma sunucunuz ile aynı bölgede yer alan Azure 'daki bir VM 'ye yükleyin. VM 'den MariaDB sunucusu için Azure veritabanı 'na geri yükleyin.
+   Döküm dosyası büyükse, çoğaltma sunucunuzla aynı bölgede Azure'daki bir VM'ye yükleyin. VM'den MariaDB sunucusu için Azure Veritabanına geri yükleyin.
 
-## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>Ana ve çoğaltma sunucularını başlayacak şekilde bağlama Gelen Verileri Çoğaltma
+## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>Veri çoğaltma başlatmak için ana ve çoğaltma sunucuları bağlantı
 
 1. Ana sunucuyu ayarlayın.
 
-   Tüm Gelen Verileri Çoğaltma işlevleri saklı yordamlar tarafından yapılır. Tüm yordamları [gelen verileri çoğaltma saklı yordamlar](reference-data-in-stored-procedures.md)' da bulabilirsiniz. Saklı yordamlar MySQL kabuğu veya MySQL çalışma ekranı 'nda çalıştırılabilir.
+   Tüm Data-in Çoğaltma işlevleri depolanan yordamlar tarafından yapılır. Tüm yordamları Veri [Çoğaltma Saklı Yordamları'nda](reference-data-in-stored-procedures.md)bulabilirsiniz. Depolanan yordamlar MySQL kabuğunda veya MySQL Workbench'te çalıştırılabilir.
 
-   İki sunucuyu bağlamak ve çoğaltmaya başlamak için, MariaDB hizmeti için Azure DB 'de hedef çoğaltma sunucusunda oturum açın. Ardından, ana sunucu olarak dış örneği, MariaDB sunucusu için Azure DB 'de `mysql.az_replication_change_master` veya `mysql.az_replication_change_master_with_gtid` saklı yordamını kullanarak ayarlayın.
+   İki sunucuya bağlanmak ve çoğaltmayı başlatmak için, MariaDB hizmeti için Azure DB'deki hedef çoğaltma sunucusunda oturum açın. Ardından, MariaDB sunucusu için Azure `mysql.az_replication_change_master` DB'de `mysql.az_replication_change_master_with_gtid` depolanan yordamı kullanarak dış örneği ana sunucu olarak ayarlayın.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -177,16 +177,16 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
-   - master_host: ana sunucunun ana bilgisayar adı
-   - master_user: Ana sunucu için Kullanıcı adı
-   - master_password: Ana sunucu için parola
-   - master_log_file: çalışan `show master status` ikili günlük dosyası adı
-   - master_log_pos: çalışan `show master status` ikili günlük konumu
-   - master_gtid_pos: `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);` çalıştırmadan GTıD konumu
-   - master_ssl_ca: CA sertifikasının bağlamı. SSL kullanmıyorsanız boş bir dize geçirin. *
+   - master_host: ana sunucunun hostname
+   - master_user: ana sunucu için kullanıcı adı
+   - master_password: ana sunucu için parola
+   - master_log_file: çalışan ikili günlük dosya adı`show master status`
+   - master_log_pos: çalışan ikili günlük konumu`show master status`
+   - master_gtid_pos: Çalışan GTID pozisyonu`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
+   - master_ssl_ca: CA sertifikasının bağlamı. SSL kullanmıyorsanız, boş bir dize geçirin.*
     
     
-    \* Master_ssl_ca parametresinde bir değişken olarak geçirilmesi önerilir. Daha fazla bilgi için aşağıdaki örneklere bakın.
+    *master_ssl_ca parametresini değişken olarak geçirmenizi öneririz. Daha fazla bilgi için aşağıdaki örneklere bakın.
 
    **Örnekler**
 
@@ -196,18 +196,18 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 
-       SSL ile çoğaltma, companya.com etki alanı üzerinde barındırılan bir ana sunucu ve MariaDB için Azure veritabanı 'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu saklı yordam, çoğaltma üzerinde çalıştırılır.
+       SSL ile çoğaltma, companya.com etki alanında barındırılan bir ana sunucu ile MariaDB için Azure Veritabanı'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu depolanan yordam çoğaltma üzerinde çalıştırılır.
     
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
    - SSL olmadan çoğaltma
 
-       SSL olmadan çoğaltma, companya.com etki alanı üzerinde barındırılan bir ana sunucu ve MariaDB için Azure veritabanı 'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu saklı yordam, çoğaltma üzerinde çalıştırılır.
+       SSL olmadan çoğaltma, companya.com etki alanında barındırılan bir ana sunucu ile MariaDB için Azure Veritabanı'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu depolanan yordam çoğaltma üzerinde çalıştırılır.
 
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, '');
@@ -215,7 +215,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
 2. Çoğaltmayı başlatın.
 
-   Çoğaltmaya başlamak için `mysql.az_replication_start` saklı yordamını çağırın.
+   Çoğaltmayı `mysql.az_replication_start` başlatmak için depolanan yordamı arayın.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -223,33 +223,33 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
 3. Çoğaltma durumunu denetleyin.
 
-   Çoğaltma durumunu görüntülemek için Çoğaltma sunucusundaki [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) komutunu çağırın.
+   Çoğaltma [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) durumunu görüntülemek için çoğaltma sunucusundaki komutu arayın.
     
    ```sql
    show slave status;
    ```
 
-   `Slave_IO_Running` ve `Slave_SQL_Running` durum `yes`ve `Seconds_Behind_Master` değeri `0`ise çoğaltma çalışır. `Seconds_Behind_Master` çoğaltmanın ne kadar geç olduğunu gösterir. Değer `0`değilse, çoğaltma güncelleştirmeleri işliyor demektir.
+   Durumda `Slave_IO_Running` `Slave_SQL_Running` ysa ve `yes`varsa ve değeri `Seconds_Behind_Master` `0`, çoğaltma çalışıyor. `Seconds_Behind_Master`yinelemenin ne kadar geç olduğunu gösterir. Değer `0`değilse, yineleme güncelleştirmeleri işliyor demektir.
 
-4. Verilerin çoğaltılmasını güvenli hale getirmek için ilgili sunucu değişkenlerini güncelleştirin (yalnızca GTıD olmadan çoğaltma için gereklidir).
+4. Veri çoğaltmayı daha güvenli hale getirmek için ilgili sunucu değişkenlerini güncelleştirin (yalnızca GTID olmadan çoğaltma için gereklidir).
     
-    MariaDB içindeki yerel bir çoğaltma sınırlaması nedeniyle, GTıD senaryosu olmadan çoğaltmada [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) ve [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) değişkenleri ayarlamanız gerekir.
+    MariaDB'deki yerel çoğaltma sınırlaması nedeniyle, [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) GTID senaryosu olmadan çoğaltma üzerinde değişkenler ayarlamanız gerekir.
 
-    Veri çoğaltma çoğaltmasının kararlı olduğundan emin olmak için, bağımlı sunucunuzun `sync_master_info` ve `sync_relay_log_info` değişkenlerini denetleyin ve değişkenleri `1`olarak ayarlayın.
+    Veri çoğaltmanın kararlı `sync_master_info` `sync_relay_log_info` olduğundan emin olmak için köle sunucunuzun ve değişkenlerinizi kontrol `1`edin ve değişkenleri ' ye ayarlayın.
     
-## <a name="other-stored-procedures"></a>Diğer saklı yordamlar
+## <a name="other-stored-procedures"></a>Diğer depolanan yordamlar
 
 ### <a name="stop-replication"></a>Çoğaltmayı durdurma
 
-Ana sunucu ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için aşağıdaki saklı yordamı kullanın:
+Ana ve çoğaltma sunucusu arasındaki çoğaltmayı durdurmak için aşağıdaki depolanan yordamı kullanın:
 
 ```sql
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-the-replication-relationship"></a>Çoğaltma ilişkisini kaldır
+### <a name="remove-the-replication-relationship"></a>Çoğaltma ilişkisini kaldırma
 
-Ana sunucu ve çoğaltma sunucusu arasındaki ilişkiyi kaldırmak için aşağıdaki saklı yordamı kullanın:
+Ana ve yineleme sunucusu arasındaki ilişkiyi kaldırmak için aşağıdaki saklı yordamı kullanın:
 
 ```sql
 CALL mysql.az_replication_remove_master;
@@ -257,11 +257,11 @@ CALL mysql.az_replication_remove_master;
 
 ### <a name="skip-the-replication-error"></a>Çoğaltma hatasını atla
 
-Çoğaltma hatasını atlamak ve çoğaltmaya izin vermek için aşağıdaki saklı yordamı kullanın:
+Çoğaltma hatasını atlamak ve çoğaltmaya izin vermek için aşağıdaki depolanan yordamı kullanın:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-MariaDB için Azure veritabanı [gelen verileri çoğaltma](concepts-data-in-replication.md) hakkında daha fazla bilgi edinin.
+MariaDB için Azure Veritabanı için [Veri Çoğaltma](concepts-data-in-replication.md) hakkında daha fazla bilgi edinin.

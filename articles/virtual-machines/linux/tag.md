@@ -1,6 +1,6 @@
 ---
-title: Azure Linux sanal makinesini etiketleme
-description: Kaynak Yöneticisi dağıtım modelini kullanarak Azure 'da oluşturulan bir Azure Linux sanal makinesini etiketleme hakkında bilgi edinin.
+title: Azure Linux sanal makine nasıl etiketilir?
+description: Kaynak Yöneticisi dağıtım modelini kullanarak Azure'da oluşturulan bir Azure Linux sanal makinesini etiketleme hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
@@ -15,28 +15,28 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: 3dd46f0c1c1e36e0373311ce6dcbf5d2f155dacc
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616267"
 ---
-# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure 'da Linux sanal makinesini etiketleme
-Bu makalede, Azure 'daki bir Linux sanal makinesini Kaynak Yöneticisi dağıtım modeliyle etiketlemek için farklı yollar açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya bir kaynak grubuna yerleştirilebilecek Kullanıcı tanımlı anahtar/değer çiftleridir. Azure Şu anda kaynak ve kaynak grubu başına en fazla 50 etiketi desteklemektedir. Etiketler, oluşturma sırasında veya var olan bir kaynağa eklenen bir kaynağa yerleştirilebilir. Lütfen, Etiketler yalnızca Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan kaynaklar için desteklenir.
+# <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure'da Bir Linux sanal makine nasıl etiketilir?
+Bu makalede, Kaynak Yöneticisi dağıtım modeli aracılığıyla Azure'daki bir Linux sanal makinesini etiketlemenin farklı yolları açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya kaynak grubuna yerleştirilebilen kullanıcı tanımlı anahtar/değer çiftleridir. Azure şu anda kaynak ve kaynak grubu başına en fazla 50 etiketi destekler. Etiketler, oluşturulduğu sırada bir kaynağa yerleştirilebilir veya varolan bir kaynağa eklenebilir. Etiketlerin yalnızca Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan kaynaklar için desteklenir.
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
-## <a name="tagging-with-azure-cli"></a>Azure CLı ile etiketleme
+## <a name="tagging-with-azure-cli"></a>Azure CLI ile etiketleme
 
-Başlamak için en son [Azure CLI](/cli/azure/install-azure-cli) 'nın yüklü olması ve [az oturum açma](/cli/azure/reference-index#az-login)kullanarak bir Azure hesabında oturum açmış olması gerekir.
+Başlamak için, en son [Azure CLI'nin](/cli/azure/install-azure-cli) [az girişi](/cli/azure/reference-index#az-login)kullanarak bir Azure hesabına yüklenmesi ve oturum açması gerekir.
 
-Bu komutu kullanarak belirli bir sanal makine için Etiketler dahil olmak üzere tüm özellikleri görüntüleyebilirsiniz:
+Bu komutu kullanarak etiketler de dahil olmak üzere belirli bir Sanal Makinenin tüm özelliklerini görüntüleyebilirsiniz:
 
 ```azurecli
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Azure CLı aracılığıyla yeni bir VM etiketi eklemek için, **--set**etiketi parametresiyle birlikte `azure vm update` komutunu kullanabilirsiniz:
+Azure CLI üzerinden yeni bir VM etiketi eklemek `azure vm update` için, komutu etiket parametresi **-set:**
 
 ```azurecli
 az vm update \
@@ -45,19 +45,19 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Etiketleri kaldırmak için `azure vm update` komutunda **--Remove** parametresini kullanabilirsiniz.
+Etiketleri kaldırmak için, komuttaki **--kaldır** `azure vm update` parametresini kullanabilirsiniz.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1
 ```
 
-Kaynaklarımıza Azure CLı ve Portal için Etiketler uyguladığımıza göre, şimdi de fatura portalındaki etiketleri görmek için kullanım ayrıntılarına göz atalım.
+Artık kaynaklarımıza etiketler uyguladığımıza göre Azure CLI ve Portal, fatura portalındaki etiketleri görmek için kullanım ayrıntılarına bir göz atalım.
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure kaynaklarınızın etiketlenmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager genel bakış][Azure Resource Manager Overview] ve [etiketleri kullanarak Azure kaynaklarınızı düzenleme][Using Tags to organize your Azure Resources].
-* Etiketlerin Azure kaynaklarını kullanımınızı yönetmenize nasıl yardımcı olduğunu görmek için bkz. [Azure Faturanızı Anlama][Understanding your Azure Bill] ve [Microsoft Azure Kaynak tüketiminiz hakkında öngörüler elde][Gain insights into your Microsoft Azure resource consumption]etme.
+* Azure kaynaklarınızı etiketleme hakkında daha fazla bilgi edinmek için Azure Kaynakları Yöneticinize [Genel Bakış][Azure Resource Manager Overview] ve [Azure Kaynaklarınızı düzenlemek için Etiketleri Kullanma'ya][Using Tags to organize your Azure Resources]bakın.
+* Etiketlerin Azure kaynaklarını kullanımınızı yönetmenize nasıl yardımcı olabileceğini görmek için Azure [Faturanızı Anlama][Understanding your Azure Bill] ve [Microsoft Azure kaynak tüketiminize ilişkin öngörüler elde][Gain insights into your Microsoft Azure resource consumption]etme bölümüne bakın.
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/management/overview.md

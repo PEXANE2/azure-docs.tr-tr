@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77179128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335064"
 ---
-| Kaynak | Varsayılan limit |
+| Kaynak | Sınır |
 | --- | :--- |
-| Abonelik başına en fazla küme | 100 |
-| Sanal makine kullanılabilirlik kümeleri ve temel Load Balancer SKU 'SU ile küme başına en fazla düğüm  | 100 |
-| Sanal Makine Ölçek Kümeleri ve [Standart Load Balancer SKU 'su][standard-load-balancer] olan küme başına en fazla düğüm | 1000 ( [düğüm havuzu][node-pool]başına 100 düğüm) |
-| Düğüm başına maksimum Pod: kubenet ile [temel ağ][basic-networking] | 110 |
-| Düğüm başına en fazla düğüm sayısı: Azure Container ağ arabirimi ile [Gelişmiş ağ][advanced-networking] | Azure CLI dağıtımı: 30<sup>1</sup><br />Azure Resource Manager şablonu: 30<sup>1</sup><br />Portal dağıtımı: 30 |
+| Abonelik başına maksimum kümeler | 100 |
+| Sanal Makine Kullanılabilirlik Setleri ve Temel Yük Dengeleyici SKU ile küme başına maksimum düğüm  | 100 |
+| Sanal Makine Ölçek Setleri ve Standart [Yük Dengeleyici SKU][standard-load-balancer] ile küme başına maksimum düğüm | 1000 [(Düğüm havuzu][node-pool]başına 100 düğüm) |
+| Düğüm başına maksimum bölme: Kubenet ile [temel ağ][basic-networking] | 110 |
+| Düğüm başına maksimum bölme: Azure Kapsayıcı Ağ Arabirimi ile [gelişmiş ağ][advanced-networking] | Azure CLI dağıtımı: 30<sup>1</sup><br />Azure Kaynak Yöneticisi şablonu: 30<sup>1</sup><br />Portal dağıtımı: 30 |
 
-<sup>1</sup> Azure CLI veya Kaynak Yöneticisi şablonuyla bir Azure Kubernetes hizmeti (aks) kümesi dağıttığınızda, bu değer düğüm başına 250 Pod 'ye yapılandırılabilir. Zaten bir aks kümesi dağıttıktan sonra veya Azure Portal kullanarak bir küme dağıtırsanız, düğüm başına maksimum Pod yapılandıramazsınız.<br />
+<sup>1.1.2</sup> Azure CLI veya Kaynak Yöneticisi şablonuyla bir Azure Kubernetes Hizmeti (AKS) kümesi dağıttığınızda, bu değer düğüm başına 250 bölmeye kadar yapılandırılabilir. Bir AKS kümesini zaten dağıttıktan veya Azure portalını kullanarak bir küme dağıttıktan sonra düğüm başına maksimum bölmeleri yapılandıramazsınız.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

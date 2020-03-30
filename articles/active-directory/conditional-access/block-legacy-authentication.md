@@ -1,132 +1,147 @@
 ---
-title: Eski kimlik doğrulamasını engelle-Azure Active Directory
-description: Azure AD koşullu erişim kullanarak eski kimlik doğrulamasını engelleyerek güvenlik durunuzu geliştirmeyi öğrenin.
+title: Eski kimlik doğrulamasını engelleme - Azure Etkin Dizin
+description: Azure AD Koşullu Erişimi kullanarak eski kimlik doğrulamasını engelleyerek güvenlik duruşunuzu nasıl geliştireceğinizi öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158b3b34bf433c1da0d1c4bdc851fd99e5bd54d2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331919"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapilir: Koşullu Erişim ile Azure AD'ye eski kimlik doğrulamasını engelleme   
 
-Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure Active Directory (Azure AD) eski kimlik doğrulaması dahil olmak üzere çok çeşitli kimlik doğrulama protokollerini destekler. Ancak, eski protokoller Multi-Factor Authentication 'ı (MFA) desteklemez. MFA birçok ortamda, kimlik hırsızlığına yönelik ortak bir gereksinimdir. 
+Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure Active Directory (Azure AD), eski kimlik doğrulama dahil olmak üzere çok çeşitli kimlik doğrulama protokollerini destekler. Ancak, eski protokoller çok faktörlü kimlik doğrulamasını (MFA) desteklemez. MFA birçok ortamda kimlik hırsızlığı nı ele almak için ortak bir gerekliliktir. 
 
-Ortamınız, kiracınızın korumasını geliştirmek için eski kimlik doğrulamasını engellemeye hazırsanız, bu hedefi koşullu erişimle gerçekleştirebilirsiniz. Bu makalede, kiracınız için eski kimlik doğrulamasını engelleyen koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır.
+Microsoft Kimlik Güvenliği Direktörü Alex Weinert, 12 Mart 2020'deki blog gönderisinde [kuruluşunuzdaki eski kimlik doğrulamasını engellemek için yeni araçlar,](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) kuruluşların neden eski kimlik doğrulamasını engellemesi gerektiğini ve Microsoft'un bu görevi gerçekleştirmek için hangi ek araçları sağladığını vurgular:
 
-## <a name="prerequisites"></a>Önkoşullar
+> MFA'nın etkili olabilmek için eski kimlik doğrulamasını da engellemeniz gerekir. Bunun nedeni, POP, SMTP, IMAP ve MAPI gibi eski kimlik doğrulama protokollerinin MFA'yı uygulayaması ve bunları kuruluşunuza saldıran düşmanlar için tercih edilen giriş noktaları haline getiremememeğidir...
+> 
+>... Azure Active Directory (Azure AD) trafiğinin analizinden eski kimlik doğrulaması ile ilgili sayılar yalın:
+> 
+> - Parola püskürtme saldırılarının yüzde 99'dan fazlası eski kimlik doğrulama protokollerini kullanır
+> - Kimlik bilgileri doldurma saldırılarının yüzde 97'den fazlası eski kimlik doğrulaması kullanır
+> - Eski kimlik doğrulama deneyimini devre dışı eden kuruluşlardaki Azure AD hesapları, eski kimlik doğrulamanın etkinleştirildiği kuruluşlara göre yüzde 67 daha az uzlaşma
+>
 
-Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır: 
+Ortamınız kiracınızın korumasını iyileştirmek için eski kimlik doğrulamasını engellemeye hazırsa, bu hedefi Koşullu Erişim ile gerçekleştirebilirsiniz. Bu makalede, kiracınız için eski kimlik doğrulamasını engelleyen Koşullu Erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-- Azure AD koşullu erişim 'in [temel kavramları](overview.md) 
-- Azure portal koşullu erişim ilkelerini yapılandırmaya yönelik [en iyi yöntemler](best-practices.md)
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu makalede, aşina olduğunuzu varsayar: 
+
+- Azure AD Koşullu Erişim'in [temel kavramları](overview.md) 
+- Azure portalında Koşullu Erişim ilkelerini yapılandırmak için [en iyi uygulamalar](best-practices.md)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Azure AD, eski kimlik doğrulama dahil olmak üzere en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerini destekler. Eski kimlik doğrulaması, temel kimlik doğrulaması kullanan protokollerin anlamına gelir. Genellikle, bu protokoller herhangi bir tür ikinci faktör kimlik doğrulamasını zorunlu kılamaz. Eski kimlik doğrulamasına dayalı uygulamalar için örnekler şunlardır:
+Azure AD, eski kimlik doğrulama dahil olmak üzere en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerinden birkaçını destekler. Eski kimlik doğrulaması, temel kimlik doğrulaması kullanan protokolleri ifade eder. Genellikle, bu protokoller ikinci faktör kimlik doğrulaması herhangi bir tür uygulayamaz. Eski kimlik doğrulamaya dayalı uygulamalara örnek olarak şunlar verilebilir:
 
-- Daha eski Microsoft Office uygulamalar
+- Eski Microsoft Office uygulamaları
 - POP, IMAP ve SMTP gibi posta protokollerini kullanan uygulamalar
 
-Tek faktörlü kimlik doğrulaması (örneğin, Kullanıcı adı ve parola) bu günlerde yeterli değil. Parolaların tahmin edilmesi kolay olduğu ve bizim (insanların) iyi parola seçerken kötü olduğu için parolalar hatalı. Parolalar ayrıca kimlik avı ve parola spreyi gibi çeşitli saldırılara karşı savunmasız kalır. Parola tehditlerine karşı korumak için yapabileceğiniz en kolay şeylerden biri MFA uygulamasıdır. MFA ile, bir saldırgan kullanıcının parolasını elinde bıraksa bile, parola kimlik doğrulaması ve verilere erişmek için tek başına yeterli değildir.
+Tek faktörlü kimlik doğrulama (örneğin, kullanıcı adı ve parola) bu gün yeterli değildir. Onlar tahmin etmek kolay ve biz (insanlar) iyi şifreleri seçiminde kötü olduğu gibi parolalar kötüdür. Parolalar, kimlik avı ve parola püskürtme gibi çeşitli saldırılara karşı da savunmasızdır. Parola tehditlerine karşı korumak için yapabileceğiniz en kolay şeylerden biri MFA uygulamaktır. MFA ile, bir saldırgan bir kullanıcının parolasını ele geçirse bile, parola tek başına verileri başarıyla doğrulamak ve erişmek için yeterli değildir.
 
-Eski kimlik doğrulaması kullanan uygulamaların kiracının kaynaklarına erişmesini nasıl önleyebilirim? Öneri yalnızca bir koşullu erişim ilkesiyle engellenmeniz önerilir. Gerekirse, yalnızca belirli kullanıcıların ve belirli ağ konumlarının eski kimlik doğrulamasına dayalı uygulamalar kullanmasına izin verebilirsiniz.
+Eski kimlik doğrulamasını kullanan uygulamaların kiracınızın kaynaklarına erişmesini nasıl önleyebilirsiniz? Öneri, koşullu erişim ilkesiyle bunları engellemektir. Gerekirse, yalnızca belirli kullanıcıların ve belirli ağ konumlarının eski kimlik doğrulamasına dayalı uygulamaları kullanmasına izin verirsiniz.
 
-Koşullu erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra zorlanır. Bu nedenle, koşullu erişim hizmet reddi (DoS) saldırıları gibi senaryolar için birinci hat savunma olarak tasarlanmamıştır, ancak erişimi anlamak için bu olaylardaki sinyalleri (örneğin, oturum açma risk düzeyi, isteğin konumu vb.) kullanabilir.
+Koşullu Erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra uygulanır. Bu nedenle, Koşullu Erişim, hizmet reddi (DoS) saldırıları gibi senaryolar için ilk satır savunması olarak tasarlanmamıştır, ancak erişimi belirlemek için bu olaylardan gelen sinyalleri (örneğin, oturum açma risk düzeyi, isteğin konumu vb.) kullanabilir.
 
 ## <a name="implementation"></a>Uygulama
 
-Bu bölümde, eski kimlik doğrulamasını engellemek için bir koşullu erişim ilkesinin nasıl yapılandırılacağı açıklanmaktadır. 
+Bu bölümde, eski kimlik doğrulamasını engellemek için Koşullu Erişim ilkesinin nasıl yapılandırılabildiğini açıklanmaktadır. 
 
 ### <a name="legacy-authentication-protocols"></a>Eski kimlik doğrulama protokolleri
 
 Aşağıdaki seçenekler eski kimlik doğrulama protokolleri olarak kabul edilir
 
-- Kimliği doğrulanmış SMTP-e-posta iletileri göndermek için POP ve IMAP istemci tarafından kullanılır.
-- Otomatik bulma-Exchange Online 'da posta kutularını bulmak ve bağlamak için Outlook ve EAS istemcileri tarafından kullanılır.
-- Exchange Online PowerShell-uzak PowerShell ile Exchange Online 'a bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
-- Exchange Web Hizmetleri (EWS)-Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimidir.
-- IMAP4-IMAP e-posta istemcileri tarafından kullanılır.
-- HTTP üzerinden MAPI (MAPI/HTTP)-Outlook 2010 ve üzeri tarafından kullanılır.
-- Çevrimdışı adres defteri (OAB)-Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.
-- Outlook her yerde (HTTP üzerinden RPC)-Outlook 2016 ve öncesi tarafından kullanılır.
-- Outlook hizmeti-Windows 10 için posta ve takvim uygulaması tarafından kullanılır.
-- POP3-POP e-posta istemcileri tarafından kullanılır.
-- Raporlama Web Hizmetleri-Exchange Online 'daki rapor verilerini almak için kullanılır.
-- Diğer istemciler-eski kimlik doğrulamasından yararlanarak tanımlanan diğer protokoller.
+- Kimlik doğrulaması SMTP - POP ve IMAP istemcileri tarafından e-posta iletileri göndermek için kullanılır.
+- Autodiscover - Exchange Online'daki posta kutularını bulmak ve bağlanmak için Outlook ve EAS istemcileri tarafından kullanılır.
+- Exchange Online PowerShell - Uzaktan PowerShell ile Exchange Online'a bağlanmak için kullanılır. Exchange Online PowerShell için Temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell Modülünü kullanmanız gerekir. Talimatlar için, [çok faktörlü kimlik doğrulaması kullanarak Exchange Online PowerShell'e Bağlan'a](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)bakın.
+- Exchange Web Services (EWS) - Outlook, Outlook for Mac ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.
+- IMAP4 - IMAP e-posta istemcileri tarafından kullanılır.
+- MAPI üzerinde HTTP (MAPI/HTTP) - Outlook 2010 ve sonrası tarafından kullanılır.
+- Çevrimdışı Adres Defteri (OAB) - Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.
+- Outlook Anywhere (Http üzerinden RPC) - Outlook 2016 ve daha önce tarafından kullanılır.
+- Outlook Hizmeti - Windows 10 için Posta ve Takvim uygulaması tarafından kullanılır.
+- POP3 - POP e-posta istemcileri tarafından kullanılır.
+- Web Hizmetlerini Raporlama - Exchange Online'da rapor verilerini almak için kullanılır.
+- Diğer istemciler - Eski kimlik doğrulaması kullandığı belirlenen diğer protokoller.
 
-### <a name="identify-legacy-authentication-use"></a>Eski kimlik doğrulama kullanımını tanımla
+Bu kimlik doğrulama protokolleri ve hizmetleri hakkında daha fazla bilgi için [Azure Etkin Dizin portalında oturum açma etkinlik raporlarına](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities)bakın.
 
-Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
+### <a name="identify-legacy-authentication-use"></a>Eski kimlik doğrulama kullanımını belirleme
 
-1. **Azure portal** > **Azure Active Directory** **oturum açma**işlemlerini > gidin.
-1. **İstemci uygulaması > ** **sütunlara** tıklandıktan sonra istemci uygulama sütununu ekleyin.
-1. **Istemci uygulaması** > **filtreler ekleyin** > eski tüm kimlik doğrulama protokollerini seçin ve **Uygula**' ya tıklayın.
+Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamaları olup olmadığını ve bunun genel dizininizi nasıl etkilediğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullanmadığınızı anlamak için kullanılabilir.
 
-Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
+1. **Azure portalı** > **Azure Active Directory** > **Oturum Açma'ya**gidin.
+1. **Sütunlar** > **İstemci Uygulaması'na**tıklayarak gösterilmezse İstemci Uygulaması sütununa ekleyin.
+1. **Filtreler** > **Ekle Istemci Uygulaması** > tüm eski kimlik doğrulama protokollerini seçin ve **Uygula'yı**tıklatın.
 
-Bu Günlükler, hangi kullanıcıların eski kimlik doğrulamasına bağlı olduğunu ve hangi uygulamaların kimlik doğrulama isteklerini yapmak için eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmayan kullanıcılar için, yalnızca bu kullanıcılar için bir koşullu erişim ilkesi uygulayın.
+Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir oturum açma girişimine tıkladığınızda ek ayrıntılar gösterecektir. **Temel Bilgiler** sekmesi altındaki **İstemci Uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
+
+Bu günlükler, hangi kullanıcıların hala eski kimlik doğrulamasına bağlı olduğunu ve kimlik doğrulama isteklerini gerçekleştirmek için hangi uygulamaların eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmadığı doğrulanan kullanıcılar için yalnızca bu kullanıcılar için koşullu erişim ilkesi uygulayın.
 
 ### <a name="block-legacy-authentication"></a>Eski kimlik doğrulamasını engelleme 
 
-Koşullu erişim ilkesinde, kaynaklarınıza erişmek için kullanılan istemci uygulamalarına bağlı bir koşul belirleyebilirsiniz. İstemci uygulamaları koşulu, **mobil uygulamalar ve Masaüstü istemcileri**için **diğer istemcileri** seçerek eski kimlik doğrulamasını kullanan uygulamalar için kapsamı daraltmanızı sağlar.
+Koşullu Erişim ilkesinde, kaynaklarınıza erişmek için kullanılan istemci uygulamalarına bağlı bir koşul ayarlayabilirsiniz. İstemci uygulamaları koşulu, **Mobil uygulamalar ve masaüstü istemcileri**için Diğer **istemcileri** seçerek eski kimlik doğrulaması kullanarak kapsamı uygulamalara daraltmanızı sağlar.
 
 ![Diğer istemciler](./media/block-legacy-authentication/01.png)
 
-Bu uygulamalara erişimi engellemek için **erişimi engelle**' yi seçmeniz gerekir.
+Bu uygulamalara erişimi engellemek için **Erişimi Engelle'yi**seçmeniz gerekir.
 
-![Erişimi engelle](./media/block-legacy-authentication/02.png)
+![Hizmete erişimi](./media/block-legacy-authentication/02.png)
 
-### <a name="select-users-and-cloud-apps"></a>Kullanıcıları ve bulut uygulamalarını seçin
+### <a name="select-users-and-cloud-apps"></a>Belirli kullanıcılar ve bulut uygulamaları
 
-Kuruluşunuz için eski kimlik doğrulamasını engellemek istiyorsanız, şunu seçerek bunu deneyebilirsiniz:
+Kuruluşunuz için eski kimlik doğrulamasını engellemek istiyorsanız, büyük olasılıkla bunu şu seçerek başarabileceğinizi düşünüyorsunuzdur:
 
 - Tüm kullanıcılar
 - Tüm bulut uygulamaları
-- Erişimi engelle
+- Hizmete erişimi
 
 ![Atamalar](./media/block-legacy-authentication/03.png)
 
-Bu yapılandırma koşullu erişim ilkelerine yönelik [en iyi uygulamaları](best-practices.md) ihlal ettiğinden, Azure bu şekilde bir ilke oluşturmanızı önleyen bir güvenlik özelliğine sahiptir.
+Azure, bu yapılandırma Koşullu Erişim ilkeleri için [en iyi uygulamaları](best-practices.md) ihlal ettiği için böyle bir ilke oluşturmanızı engelleyen bir güvenlik özelliğine sahiptir.
  
 ![İlke yapılandırması desteklenmiyor](./media/block-legacy-authentication/04.png)
 
-*Tüm kullanıcıların ve tüm bulut uygulamalarının* kiracınızda oturum açmasını engellemek mümkün olduğundan, güvenlik özelliği gereklidir. En düşük uygulama gereksinimini karşılamak için en az bir kullanıcıyı dışarıda bırakmanız gerekir. Ayrıca bir dizin rolü de dışlayabilirsiniz.
+Güvenlik özelliği gereklidir, çünkü *tüm kullanıcıları engelleyin ve tüm bulut uygulamaları* tüm kuruluşunuzun kiracınıza oturum etmesini engelleme potansiyeline sahiptir. En az en iyi uygulama gereksinimini karşılamak için en az bir kullanıcıyı hariç tutmanız gerekir. Dizin rolünü de dışlayabilirsin.
 
 ![İlke yapılandırması desteklenmiyor](./media/block-legacy-authentication/05.png)
 
-İlkenize bir Kullanıcı dışlayarak bu güvenlik özelliğini karşılamanız gerekir. İdeal olarak, [Azure AD 'de birkaç acil erişim yönetim hesabı](../users-groups-roles/directory-emergency-access.md) tanımlamanız ve bunları ilkenize dışlayamazsınız.
+Bu güvenlik özelliğini, bir kullanıcıyı politikanızdan hariç tutarak karşılayabilirsiniz. İdeal olarak, [Azure AD'de](../users-groups-roles/directory-emergency-access.md) birkaç acil erişimli yönetim hesabı tanımlamalı ve bunları ilkenizden hariç tutmalısınız.
+
+Eski kimlik doğrulamasını engellemek için ilkenizin etkinleştirilmesini etkinleştirirken [yalnızca rapor modunu](concept-conditional-access-report-only.md) kullanmak, kuruluşunuz için iipolitikasının etkisinin ne olacağını izleme fırsatı sağlar.
 
 ## <a name="policy-deployment"></a>İlke dağıtımı
 
-İlkenizi üretime eklemeden önce şunları yapın:
+Politikanızı üretime koymadan önce şunları göz altına alın:
  
-- **Hizmet hesapları** -konferans odası telefonları gibi hizmet hesapları veya cihazlar tarafından kullanılan Kullanıcı hesaplarını belirler. Bu hesapların güçlü parolalara sahip olduğundan emin olun ve bunları dışlanan bir gruba ekleyin.
-- **Oturum açma raporları** -oturum açma raporunu gözden geçirin ve **diğer istemci** trafiğini arayın. En iyi kullanımı belirler ve neden kullanımda olduğunu araştırın. Genellikle trafik, modern kimlik doğrulaması kullanmayan eski Ofis istemcileri veya bazı üçüncü taraf posta uygulamaları tarafından oluşturulur. Kullanım kullanımını Bu uygulamalardan uzağa taşımaya yönelik bir plan yapın veya etki düşükse, kullanıcılarınıza bu uygulamaları artık kullanamazlar.
+- **Hizmet hesapları** - Servis hesabı olarak veya konferans odası telefonları gibi aygıtlar tarafından kullanılan kullanıcı hesaplarını belirleyin. Bu hesapların güçlü parolalara sahip olduğundan emin olun ve bunları dışlanmış bir gruba ekleyin.
+- **Oturum açma raporları** - Oturum açma raporunu gözden geçirin ve **diğer istemci** trafiğini arayın. En iyi kullanımı belirleyin ve neden kullanıldığını araştırın. Trafik genellikle, modern kimlik doğrulaması kullanmayan eski Office istemcileri veya bazı üçüncü taraf posta uygulamaları tarafından oluşturulur. Kullanımı bu uygulamalardan uzaklaştırmak için bir plan yapın veya etkisi düşükse, kullanıcılarınıza bu uygulamaları artık kullanamayacaklarını bildirin.
  
-Daha fazla bilgi için bkz. [Yeni bir Ilkeyi nasıl dağıtmanız gerekir?](best-practices.md#how-should-you-deploy-a-new-policy).
+Daha fazla bilgi için [bkz.](best-practices.md#how-should-you-deploy-a-new-policy)
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-**Diğer istemcileri** kullanarak erişimin engellenmesi, Exchange Online PowerShell ve Dynamics 365 ' i temel kimlik doğrulaması kullanarak engeller.
+**Diğer istemcileri** kullanarak erişimi engelleme de temel auth kullanarak Exchange Online PowerShell ve Dynamics 365 engeller.
 
-**Diğer istemciler** için bir ilkeyi yapılandırmak, kuruluşun tamamını spconnect gibi belirli istemcilerden engeller. Eski istemciler beklenmeyen yollarla kimlik doğrulaması yaptığından bu blok oluşur. Sorun, eski Office istemcileri gibi başlıca Office uygulamalarına uygulanmaz.
+**Diğer istemciler** için bir ilke yapılandırma SPConnect gibi belirli istemcilerden tüm organizasyonu engeller. Eski istemcilerin beklenmeyen şekillerde kimlik doğrulaması olduğundan bu engelleme olur. Sorun, eski Office istemcileri gibi büyük Office uygulamaları için geçerli değildir.
 
-İlkenin etkili olması 24 saate kadar sürebilir.
+Poliçenin yürürlüğe girmesi 24 saat kadar sürebilir.
 
-**Diğer istemciler** koşulu için kullanılabilir tüm izin denetimlerini seçebilirsiniz; Ancak, son kullanıcı deneyimi her zaman aynı engellenen erişimdir.
+**Diğer istemciler** durumu için kullanılabilir tüm hibe denetimlerini seçebilirsiniz; ancak, son kullanıcı deneyimi her zaman aynıdır - engellenen erişim.
 
-**Diğer istemciler** koşulunu kullanarak eski kimlik doğrulamasını engellerseniz, cihaz platformunu ve konum koşulunu da ayarlayabilirsiniz. Örneğin, mobil cihazlar için yalnızca eski kimlik doğrulamasını engellemek istiyorsanız, şu seçeneği belirleyerek **cihaz platformları** koşulunu ayarlayın:
+**Diğer istemciler** koşulunu kullanarak eski kimlik doğrulamasını engellerseniz, aygıt platformunu ve konum koşulunu da ayarlayabilirsiniz. Örneğin, yalnızca mobil aygıtlar için eski kimlik doğrulamasını engellemek istiyorsanız, aşağıdakileri seçerek **aygıt platformları** koşulunu ayarlayın:
 
 - Android
 - iOS
@@ -136,5 +151,6 @@ Daha fazla bilgi için bkz. [Yeni bir Ilkeyi nasıl dağıtmanız gerekir?](best
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Koşullu erişim ilkelerini henüz yapılandırmaya alışmıyorsanız, bir örnek için [Azure Active Directory Koşullu erişimi olan belirli uygulamalar IÇIN MFA isteme](app-based-mfa.md) konusuna bakın.
-- Modern kimlik doğrulama desteği hakkında daha fazla bilgi için bkz. [modern kimlik doğrulama office 2013 ve office 2016 istemci uygulamaları Için nasıl kullanılır](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- [Koşullu Erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+- Koşullu Erişim ilkelerini yapılandırmayı henüz bilmiyorsanız, örneğin [Azure Active Directory Koşullu Erişim'e sahip belirli uygulamalar için MFA gereksinimi bkz.](app-based-mfa.md)
+- Modern kimlik doğrulama desteği hakkında daha fazla bilgi için Bkz. [Office 2013 ve Office 2016 istemci uygulamaları için modern kimlik doğrulama nasıl çalışır?](/office365/enterprise/modern-auth-for-office-2013-and-2016) 

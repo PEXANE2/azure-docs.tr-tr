@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell hızlı başlangıç-Bash
-description: Azure Cloud Shell tarayıcınızda Bash komut satırını nasıl kullanacağınızı öğrenin.
+title: Azure Bulut Kabuğu Quickstart - Bash
+description: Azure Cloud Shell ile tarayıcınızda Bash komut satırını nasıl kullanacağınızı öğrenin.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
@@ -10,36 +10,36 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458078"
 ---
-# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Bash için hızlı başlangıç Azure Cloud Shell
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell'de Bash için hızlı başlangıç
 
-Bu belge [Azure portal](https://ms.portal.azure.com/)Azure Cloud Shell Bash 'in nasıl kullanılacağını açıklamaktadır.
+Bu belge, [Azure portalında](https://ms.portal.azure.com/)Azure Bulut Shell'de Bash'in nasıl kullanılacağını ayrıntılarıyla anlatır.
 
 > [!NOTE]
-> Azure Cloud Shell hızlı başlangıçta bir [PowerShell](quickstart-powershell.md) de mevcuttur.
+> [Azure Cloud Cloud Cloud Quickstart'ta](quickstart-powershell.md) bir PowerShell de mevcuttur.
 
-## <a name="start-cloud-shell"></a>Cloud Shell Başlat
-1. Azure portal üst gezintiden **Cloud Shell** başlatın. <br>
+## <a name="start-cloud-shell"></a>Cloud Shell'i Başlatma
+1. Azure portalının en üst gezintisinden **Cloud Shell'i** başlatın. <br>
 ![](media/quickstart/shell-icon.png)
 
-2. Depolama hesabı ve Microsoft Azure dosyaları paylaşma oluşturmak için bir abonelik seçin.
-3. "Depolama oluştur" u seçin
+2. Depolama hesabı oluşturmak ve Microsoft Azure Dosyaları paylaşmak için bir abonelik seçin.
+3. "Depolama Alanı Oluştur" seçeneğini belirleyin
 
 > [!TIP]
-> Azure CLı için her oturumda otomatik olarak kimliğiniz doğrulanır.
+> Her oturumda Azure CLI için otomatik olarak kimlik doğrulanırsınız.
 
 ### <a name="select-the-bash-environment"></a>Bash ortamını seçin
-Kabuğun sol tarafındaki ortam açılan penceresinin `Bash`olduğunu kontrol edin. <br>
+Kabuk penceresinin sol tarafından açılan ortamın . `Bash` <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Aboneliğinizi ayarlama
-1. Erişiminiz olan abonelikleri listeleyin.
+1. Erişiminiz olan abonelikleri listele.
    ```azurecli-interactive
    az account list
    ```
@@ -50,42 +50,42 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Aboneliğiniz, `/home/<user>/.azure/azureProfile.json`kullanarak gelecekteki oturumlarınız için hatırlanır.
+> Aboneliğiniz gelecekteki oturumlar için `/home/<user>/.azure/azureProfile.json`hatırlanacaktır.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-WestUS içinde "MyRG" adlı yeni bir kaynak grubu oluşturun.
+WestUS'ta "MyRG" adında yeni bir kaynak grubu oluşturun.
 ```azurecli-interactive
 az group create --location westus --name MyRG
 ```
 
 ### <a name="create-a-linux-vm"></a>Linux VM oluşturma
-Yeni kaynak grubunuzda bir Ubuntu sanal makinesi oluşturun. Azure CLı, SSH anahtarları oluşturacak ve VM 'leri bu dosyalarla ayarlamaya çalışacak. <br>
+Yeni kaynak grubunuzda bir Ubuntu VM oluşturun. Azure CLI, SSH anahtarlarını oluşturur ve VM'yi onlarla birlikte ayarlar. <br>
 
 ```azurecli-interactive
 az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> `--generate-ssh-keys` kullanmak, Azure CLı 'yı sanal makinenizde ve `$Home` dizininizde ortak ve özel anahtarlar oluşturup ayarlamanıza olanak sağlar. Varsayılan olarak anahtarlar `/home/<user>/.ssh/id_rsa` ve `/home/<user>/.ssh/id_rsa.pub`Cloud Shell yerleştirilir. `.ssh` klasörünüz, `$Home`kalıcı hale getirmek için kullanılan, eklenen dosya paylaşımınızda 5 GB resimde kalıcıdır.
+> Azure `--generate-ssh-keys` CLI'nin VM ve dizininizde genel ve `$Home` özel anahtarlar oluşturması ve ayarlaması talimatını kullanmak. Varsayılan olarak tuşlar Cloud `/home/<user>/.ssh/id_rsa` Shell'e yerleştirilir ve `/home/<user>/.ssh/id_rsa.pub`. Klasörünüz, `.ssh` devam etmek için kullanılan ekli dosya paylaşımınızın `$Home`5 GB görüntüsünde kalıcıdır.
 
-Bu VM 'deki Kullanıcı adınız Cloud Shell ($User@Azure:) ' de kullanılan Kullanıcı adınız olacaktır.
+Bu VM'deki kullanıcı adınız Cloud Shell'deUser@Azure:kullanılan kullanıcı adınız olacaktır ($).
 
-### <a name="ssh-into-your-linux-vm"></a>Linux sanal makinenize SSH
-1. Azure portal arama çubuğunda VM adınızı arayın.
-2. VM adınızı ve genel IP adresini almak için "Bağlan" a tıklayın. <br>
+### <a name="ssh-into-your-linux-vm"></a>Linux VM'nize SSH
+1. Azure portalı arama çubuğunda VM adınızı arayın.
+2. VM adınızı ve genel IP adresinizi almak için "Bağlan"ı tıklayın. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. `ssh` cmd ile sanal makinenize SSH.
+3. `ssh` Cmd ile VM içine SSH.
    ```
    ssh username@ipaddress
    ```
 
-SSH bağlantısı kurulduktan sonra Ubuntu karşılama istemi ' ni görmeniz gerekir. <br>
+SSH bağlantısını kurduktan sonra, Ubuntu karşılama istemini görmeniz gerekir. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Temizleme 
-1. SSH oturumunuzla çıkış yapın.
-   ```azurecli-interactive
+1. Ssh oturumunuzdan çıkın.
+   ```
    exit
    ```
 
@@ -95,6 +95,6 @@ SSH bağlantısı kurulduktan sonra Ubuntu karşılama istemi ' ni görmeniz ger
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bash için kalıcı dosyalar hakkında bilgi edinin Cloud Shell](persisting-shell-storage.md) <br>
-[Azure CLı hakkında bilgi edinin](https://docs.microsoft.com/cli/azure/) <br>
-[Azure dosyaları depolama hakkında bilgi edinin](../storage/files/storage-files-introduction.md) <br>
+[Cloud Shell'de Bash için kalıcı dosyalar hakkında bilgi edinin](persisting-shell-storage.md) <br>
+[Azure CLI hakkında bilgi edinin](https://docs.microsoft.com/cli/azure/) <br>
+[Azure Dosyaları depolama hakkında bilgi edinin](../storage/files/storage-files-introduction.md) <br>

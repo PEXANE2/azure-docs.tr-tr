@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway SSS
+title: Azure VPN Ağ Geçidi SSS
 description: VPN Ağ Geçidi SSS. Microsoft Azure Sanal Ağ şirket içi ve dışı bağlantılar, karma yapılandırma bağlantıları ve VPN Ağ Geçitleri hakkında SSS.
 services: vpn-gateway
 author: yushwang
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279890"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 
-## <a name="connecting"></a>Sanal ağlara bağlanma
+## <a name="connecting-to-virtual-networks"></a><a name="connecting"></a>Sanal ağlara bağlanma
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Farklı Azure bölgelerinde sanal ağlara bağlanabilir miyim?
 
@@ -30,11 +30,11 @@ Evet.
 
 Windows PowerShell ve Azure REST API'lerini kullanarak birden çok siteye bağlanabilirsiniz. [Çok siteli ve VNet - VNet Bağlantı](#V2VMulti) SSS bölümüne bakın.
 
-### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>VPN ağ geçidini etkin-etkin olarak ayarlamak için ek bir maliyet var mı?
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Aktif olarak vpn ağ geçidi kurmak için ek bir maliyet var mı?
 
 Hayır. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Şirket içi ve dışı karışık bağlantı seçeneklerim nelerdir?
+### <a name="what-are-my-cross-premises-connection-options"></a>Şirket içi ve dışı bağlantı seçeneklerim nelerdir?
 
 Aşağıdaki şirket içi ve dışı bağlantılar desteklenmektedir:
 
@@ -42,19 +42,19 @@ Aşağıdaki şirket içi ve dışı bağlantılar desteklenmektedir:
 * Noktadan Siteye – SSTP (Güvenli Yuva Tünel Protokolü) veya IKE v2 üzerinden VPN bağlantısı. Bu bağlantıya VPN cihazı gerekmez. Daha fazla bilgi için bkz. [Noktadan Siteye](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Sanal Ağdan Sanal Ağa – Bu bağlantı türü, Siteden Siteye yapılandırmasıyla aynıdır. VNet - VNet, IPsec üzerinden (IKE v1 ve IKE v2) bir VPN bağlantısıdır. VPN cihazı gerekmez. Daha fazla bilgi için bkz. [Sanal Ağdan Sanal Ağa](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Çok Siteli – Birden çok şirket içi sitenin bir sanal ağa bağlanmasına olanak sağlayan Siteden Siteye yapılandırmanın bir çeşididir. Daha fazla bilgi için bkz. [Çok Siteli](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
-* ExpressRoute – ExpressRoute, genel Internet üzerinden VPN bağlantısıyla değil, WAN 'ınızdan Azure 'a özel bir bağlantıdır. Daha fazla bilgi için bkz. [ExpressRoute’a Teknik Genel Bakış](../expressroute/expressroute-introduction.md) ve [ExpressRoute SSS](../expressroute/expressroute-faqs.md).
+* ExpressRoute – ExpressRoute, genel Internet üzerinden VPN bağlantısı değil, WAN'ınızdan Azure'a özel bir bağlantıdır. Daha fazla bilgi için bkz. [ExpressRoute’a Teknik Genel Bakış](../expressroute/expressroute-introduction.md) ve [ExpressRoute SSS](../expressroute/expressroute-faqs.md).
 
 VPN ağ geçidi bağlantıları hakkında daha fazla bilgi için bkz. [VPN Gateway Hakkında](vpn-gateway-about-vpngateways.md).
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Siteden Siteye bağlantı ve Noktadan Siteye bağlantı arasındaki fark nelerdir?
 
-**Siteden Siteye** (IPsec/IKE VPN tüneli) yapılandırmalar, şirket içi konumunuz ile Azure arasında yapılır. Diğer bir deyişle, şirket içinde yer alan bilgisayarlarla sanal makineler arasında ya da yönlendirme ve izin yapılandırmayı nasıl seçtiğinize bağlı olarak sanal ağınızdaki rol örneği ile bağlantı kurabilirsiniz. Her zaman kullanıma uygun şirket içi ve dışı bağlantı için müthiş bir seçenek; karma yapılandırmalar için de çok uygundur. Bu tür bir bağlantı; ağınıza ucuna dağıtılmış olması gereken IPsec VPN uygulamasına bağlıdır (donanım cihazı veya yazılım aracı). Bu tür bir bağlantı oluşturmak için, dışarıdan yönelik bir IPv4 adresine sahip olmanız gerekir.
+**Siteden Siteye** (IPsec/IKE VPN tüneli) yapılandırmalar, şirket içi konumunuz ile Azure arasında yapılır. Diğer bir deyişle, şirket içinde yer alan bilgisayarlarla sanal makineler arasında ya da yönlendirme ve izin yapılandırmayı nasıl seçtiğinize bağlı olarak sanal ağınızdaki rol örneği ile bağlantı kurabilirsiniz. Her zaman kullanıma uygun şirket içi ve dışı bağlantı için müthiş bir seçenek; karma yapılandırmalar için de çok uygundur. Bu tür bir bağlantı; ağınıza ucuna dağıtılmış olması gereken IPsec VPN uygulamasına bağlıdır (donanım cihazı veya yazılım aracı). Bu tür bir bağlantı oluşturmak için harici olarak bakan bir IPv4 adresiniz olmalıdır.
 
 **Noktadan Siteye** (SSTP üzerinden VPN) yapılandırmalar, sanal ağınızda bulunan her yerden her şeye tek bir bilgisayardan bağlanmanızı sağlar. Windows yerleşik VPN istemcisi kullanır. Noktadan Siteye yapılandırmasının bir parçası olarak, bir sertifika ve bir VPN istemci yapılandırma paketi yüklerseniz; bu pakette, bilgisayarınızın sanal ağda herhangi bir sanal makineye veya rol örneğine bağlanmasını sağlayan ayarlar bulunur. Şirket içi olmayan sanal ağa bağlanmak istediğinizde çok yararlıdır. Her ikisi de Siteden Siteye bağlantısına gereken VPN donanımına veya dışarıya dönük IPv4 adresine erişiminiz yoksa bu da iyi bir seçenektir.
 
 Siteden Siteye bağlantınızı ağ geçidinizi için rota tabanlı VPN türü kullanarak oluşturmanız kaydıyla, sanal ağınızı aynı anda hem Siteden Siteye, hem de Noktadan Siteye bağlanacak şekilde yapılandırabilirsiniz. Rota tabanlı VPN türlerine klasik dağıtım modelinde dinamik ağ geçitleri adı verilir.
 
-## <a name="gateways"></a>Sanal ağ geçitleri
+## <a name="virtual-network-gateways"></a><a name="gateways"></a>Sanal ağ geçitleri
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN ağ geçidi bir sanal ağ geçidi midir?
 
@@ -68,15 +68,15 @@ VPN ağ geçidi bir sanal ağ geçidi türüdür. VPN ağ geçidi, şifrelenmiş
 
 Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler, paketleri kendi ilgili arabirimlerine yönlendirmek için IP iletme veya yönlendirme tablosunda "yolları" seçeneğini kullanır. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. Rota temelli VPN’lerle ilgili ilke veya trafik seçici herhangi birinden herhangi birine (veya joker karakterler) olarak yapılandırılır.
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke tabanlı VPN ağ Geçidimi rota temelinde güncelleştirebilir miyim?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke tabanlı VPN ağ geçidimi rota tabanlı olarak güncelleyebilir miyim?
 
-Hayır. Azure VNET ağ geçidi türü, ilke tabanlı olarak yol tabanlı veya başka bir şekilde değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
+Hayır.Bir Azure sanal ağ geçidi türü ilke temelli veya rota temelli olarak değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
 1. Silinecek ağ geçidiyle ilişkilendirilmiş bağlantıları silin.
 1. Ağ geçidini silin:
    - [Azure portalında](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
+   - [Azure PowerShell - klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [İstediğindiğiniz türde yeni bir ağ geçidi oluşturun ve VPN kurulumuna tamamlayın.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' gerekli mi?
 
@@ -90,15 +90,15 @@ Hayır.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Oluşturmadan önce VPN ağ geçidi IP adresimi alabilir miyim?
 
-Bölgesel olarak yedekli ve zikzak ağ geçitleri (adı _az_ olan ağ geçidi SKU 'ları), her Ikisi de _Standart SKU_ Azure genel IP kaynağını kullanır. Azure Standart SKU genel IP kaynakları bir statik ayırma yöntemi kullanmalıdır. Bu nedenle, sizin için kullanmayı düşündüğünüz standart SKU genel IP kaynağını oluşturduktan hemen sonra VPN ağ geçidinizin genel IP adresine sahip olursunuz.
+Bölge gereksiz ve bölge ağ geçitleri (adda _AZ_ olan ağ geçidi SKU'lar) her ikisi de _standart SKU_ Azure genel IP kaynağına güvenir. Azure Standart SKU genel IP kaynakları statik bir ayırma yöntemi kullanmalıdır. Bu nedenle, vpn ağ geçidiniz için kullanmak istediğiniz Standart SKU genel IP kaynağını oluşturur oluşturmaz genel IP adresine sahip olursunuz.
 
-Bölgesel olmayan ve olmayan ağ geçitleri (adında _az_ _olmayan ağ_ geçidi SKU 'ları) IÇIN, OLUŞTURULMADAN önce VPN Gateway IP adresini alamaz. IP adresi yalnızca VPN ağ geçidinizi silip yeniden oluşturursanız değişir.
+Bölge gereksiz olmayan ve zonal olmayan ağ geçitleri (adda _AZ_ _olmayan_ ağ geçidi SUS'ları) için, oluşturulmadan önce VPN ağ geçidi IP adresini alamazsınız. IP adresi yalnızca VPN ağ geçidinizi siler ve yeniden oluşturursanız değişir.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>VPN ağ geçidim için bir Statik Genel IP adresi isteğinde bulunabilir miyim?
 
-Yukarıda belirtildiği gibi, bölgesel olarak yedekli ve zikzak ağ geçitleri (adında _az_ olan ağ geçidi SKU 'ları), her Ikisi de _Standart SKU_ Azure genel IP kaynağını kullanır. Azure Standart SKU genel IP kaynakları bir statik ayırma yöntemi kullanmalıdır.
+Yukarıda belirtildiği gibi, bölge gereksiz ve bölge ağ geçitleri (adda _AZ_ olan ağ geçidi SKU'ları) her ikisi de standart _sku_ Azure genel IP kaynağına güvenir. Azure Standart SKU genel IP kaynakları statik bir ayırma yöntemi kullanmalıdır.
 
-Bölgesel olmayan ve olmayan ağ geçitleri (adında _az_ _olmayan ağ_ geçidi SKU 'ları) için yalnızca dinamik IP adresi ataması desteklenir. Ancak bu, IP adresinin VPN ağ geçidinize atandıktan sonra değiştiği anlamına gelmez. VPN ağ geçidi IP adresi, ağ geçidinin silindiği ve yeniden oluşturulduğu zamana göre değişir. VPN Gateway 'in diğer iç bakımını ve yükseltmelerini yeniden boyutlandırdığınızda, sıfırladığınızda veya tamamladıktan sonra VPN Gateway genel IP adresi değişmez.
+Bölge gereksiz olmayan ve zonal olmayan ağ geçitleri (adda _AZ_ _olmayan_ ağ geçidi SUS'ları) için yalnızca dinamik IP adresi ataması desteklenir. Ancak bu, IP adresinin VPN ağ geçidinize atandıktan sonra değiştiği anlamına gelmez. VPN ağ geçidi IP adresiyalnızca ağ geçidi silindiğinde ve sonra yeniden oluşturulduğunda değişir. VPN ağ geçidinin genel IP adresi, VPN ağ geçidinizin diğer dahili bakımlarını ve yükseltmelerini yeniden boyutlandırdığınızda, sıyrıkla veya tamamladığınızda değişmez.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN tünelimin kimliği nasıl doğrulanır?
 
@@ -131,17 +131,17 @@ Evet. Bkz. [Zorlamalı tüneli yapılandırma](vpn-gateway-about-forced-tunnelin
 
 Evet, Azure’de kendi VPN ağ geçitlerinizi veya sunucularınızı ister Azure Market’ten, ister kendi VPN yönlendiricilerinizi oluşturarak dağıtabilirsiniz. Şirket içi ağlarınız ve sanal ağ alt ağları arasında trafiğin düzgün yönlendirilmesini sağlamak amacıyla sanal ağınızda kullanıcı tanımlı yolları yapılandırmanız gerekir.
 
-### <a name="gatewayports"></a>Sanal ağ geçidimde neden belirli bağlantı noktaları açıldı?
+### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Sanal ağ ağ geçidimde neden belirli bağlantı noktaları açılıyor?
 
 Azure altyapı iletişimi için gereklidirler. Bunlar Azure sertifikaları tarafından korunur (kilitlenir). Uygun sertifikaları olmadan, bu ağ geçitlerinin müşterileri de dahil dış varlıklar, bu uç noktalarında etkiye neden olamazlar.
 
-Bir sanal ağ geçidi, bir NIC 'nin müşterinin özel ağına dokunduktan ve bir NIC ortak ağa bakan bir NIC 'e sahip olan çok bağlantılı bir cihaza sahiptir. Azure altyapı varlıkları uyum nedenleriyle müşterinin özel ağlarına dokunamazlar; bu nedenle altyapı iletişimi için ortak uç noktaları kullanmaları gerekir. Ortak uç noktalar düzenli aralıklarla Azure güvenlik denetimi tarafından taranır.
+Sanal ağ ağ geçidi temelde bir NIC müşteri özel ağına dokunarak ve bir NIC ortak ağ bakan çok evli bir cihazdır. Azure altyapı varlıkları uyum nedenleriyle müşterinin özel ağlarına dokunamazlar; bu nedenle altyapı iletişimi için ortak uç noktaları kullanmaları gerekir. Ortak uç noktalar düzenli aralıklarla Azure güvenlik denetimi tarafından taranır.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>Ağ geçidi türleri, gereksinimleri ve verimliliği hakkında daha fazla bilgi
 
 Daha fazla bilgi için bkz. [VPN Gateway yapılandırma ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md).
 
-## <a name="s2s"></a>Siteden Siteye bağlantılar ve VPN cihazları
+## <a name="site-to-site-connections-and-vpn-devices"></a><a name="s2s"></a>Siteden Siteye bağlantılar ve VPN cihazları
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>VPN cihazını seçerken nelere dikkat etmeliyim?
 
@@ -169,23 +169,23 @@ Siteden Siteyi şirket içi ve dışı yapılandırması için Windows Server 20
 
 Endüstri standardı IPsec uygulamalarıyla uyumlu olana kadar diğer yazılım VPN çözümleri bizim ağ geçidimizle çalışmalıdır. Yapılandırma ve destek hakkında yönergeler için yazılım satıcısına başvurun.
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Nasıl yaparım? Noktadan siteye bağlantılarım için kimlik doğrulaması türünü değiştirmek mi istiyorsunuz?
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Noktaya bağlantılarımın kimlik doğrulama türünü nasıl değiştiririm?
 
-Noktadan siteye bağlantılarınızın kimlik doğrulama yöntemini, VPN Gateway altındaki **Noktadan siteye yapılandırma** bölümüne giderek ve istenen radyo düğmesini denetleyerek değiştirebilirsiniz. Geçerli seçenekler **Azure sertifikası, RADIUS kimlik doğrulaması ve Azure Active Directory**. Yeni profil indirildikten ve istemciye yapılandırılana kadar, geçerli istemcilerin değişiklikten sonra **bağlanamayacağını** lütfen unutmayın.
+VPN Ağ Geçidi altındaki **Noktadan siteye yapılandırma** bölümüne giderek ve istediğiniz radyo düğmesini kontrol ederek, noktaya bağlantılarınızın kimlik doğrulama yöntemini değiştirebilirsiniz. Geçerli seçenekler **Azure sertifikası, RADIUS kimlik doğrulaması ve Azure Etkin Dizini'dir.** Yeni profil indirilip istemci üzerinde yapılandırılınceye kadar geçerli istemcilerin değişiklikten sonra **bağlanamayabileceğini** lütfen unutmayın.
 
-## <a name="P2S"></a>Yerel Azure sertifika doğrulamasını kullanarak Noktadan Siteye
+## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>Yerel Azure sertifika doğrulamasını kullanarak Noktadan Siteye
 
 Bu bölüm Resource Manager dağıtım modeli için geçerlidir.
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>RADIUS kimlik doğrulamasını kullanarak Noktadan Siteye
+## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>RADIUS kimlik doğrulamasını kullanarak Noktadan Siteye
 
 Bu bölüm Resource Manager dağıtım modeli için geçerlidir.
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="V2VMulti"></a>Sanal Ağdan Sanal Ağa ve Çok Siteli bağlantılar
+## <a name="vnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>Sanal Ağdan Sanal Ağa ve Çok Siteli bağlantılar
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
@@ -195,11 +195,11 @@ Bu bölüm Resource Manager dağıtım modeli için geçerlidir.
 Evet. Daha fazla bilgi için [BGP](#bgp) bölümüne bakın.
 
 **Klasik dağıtım modeli**<br>
-Klasik dağıtım modeli kullanılarak Azure VPN ağ geçidi üzerinden trafik geçirilebilse de, ağ yapılandırma dosyasında istatistiksel olarak tanımlanan adres alanlarına bağlıdır. Klasik dağıtım modeli kullanan Azure Sanal Ağlar ve VPN ağ geçitleri ile BGP henüz desteklenmemektedir. BGP olmadan, geçiş adres alanlarının el ile tanımlanması çok hata eğilimindedir ve önerilmez.
+Klasik dağıtım modeli kullanılarak Azure VPN ağ geçidi üzerinden trafik geçirilebilse de, bu geçiş, ağ yapılandırma dosyasında statik olarak tanımlanan adres alanlarına bağlıdır. Klasik dağıtım modeli kullanan Azure Sanal Ağlar ve VPN ağ geçitleri ile BGP henüz desteklenmemektedir. BGP olmadan, geçiş adres alanlarının el ile tanımlanması çok hata eğilimindedir ve önerilmez.
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure, IPsec/IKE önceden paylaşılan anahtarı tüm VPN bağlantılarımla aynı sanal ağ için mi üretiyor?
 
-Hayır, varsayılan olarak Azure farklı VPN bağlantıları için farklı önceden paylaşılan anahtarlar oluşturur. Ancak, isterseniz anahtar değeri ayarlamak için VPN Ağ Geçidi Anahtarı REST API veya PowerShell cmdlet'ini kullanabilirsiniz. Anahtar yazdırılabilir ASCII karakterleri OLMALıDıR.
+Hayır, varsayılan olarak Azure farklı VPN bağlantıları için farklı önceden paylaşılan anahtarlar oluşturur. Ancak, isterseniz anahtar değeri ayarlamak için VPN Ağ Geçidi Anahtarı REST API veya PowerShell cmdlet'ini kullanabilirsiniz. Anahtar YAZDıRılabilir ASCII karakterleri olmalıdır.
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>Daha fazla Siteden Siteye VPN ile tek bir sanal ağa göre daha fazla bant genişliği elde edebilir miyim?
 
@@ -217,16 +217,16 @@ Evet, Noktadan Siteye (P2S) VPN’ler şirket içi sitelere ve başka sanal ağl
 
 Evet, bu desteklenir. Daha fazla bilgi için bkz. [Bir arada var olan ExpressRoute ve Siteden Siteye VPN bağlantıları yapılandırma](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="ipsecike"></a>IPsec/IKE ilkesi
+## <a name="ipsecike-policy"></a><a name="ipsecike"></a>IPsec/IKE ilkesi
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="bgp"></a>BGP
+## <a name="bgp"></a><a name="bgp"></a>BGP
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="vms"></a>Şirket içi ve dışı bağlantısı ve VM'ler
+## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>Şirket içi ve dışı bağlantısı ve VM'ler
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>Sanal makinem sanal bir ağdaysa, şirket içi ve dışı bağlantım varsa VM’ye nasıl bağlanmalıyım?
 
@@ -243,7 +243,7 @@ Hayır. Bir tek, belirttiğiniz sanal ağ Yerel Ağ Ip adresi aralıklarında bu
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="faq"></a>Sanal Ağ SSS
+## <a name="virtual-network-faq"></a><a name="faq"></a>Sanal Ağ SSS
 
 Ek sanal ağ ek bilgilerini [Virtual Network SSS](../virtual-network/virtual-networks-faq.md) bölümünde görürsünüz.
 
@@ -252,4 +252,4 @@ Ek sanal ağ ek bilgilerini [Virtual Network SSS](../virtual-network/virtual-net
 * VPN Gateway hakkında daha fazla bilgi için bkz. [VPN Gateway Hakkında](vpn-gateway-about-vpngateways.md).
 * VPN Gateway yapılandırma ayarları hakkında daha fazla bilgi için bkz. [VPN Gateway yapılandırma ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md).
 
-**"OpenVPN", OpenVPN Inc 'nin ticari markasıdır.**
+**"OpenVPN", OpenVPN Inc. şirketinin ticari markasıdır.**

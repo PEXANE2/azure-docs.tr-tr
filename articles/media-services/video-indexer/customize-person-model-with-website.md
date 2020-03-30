@@ -1,7 +1,7 @@
 ---
-title: Bir kişi modelini özelleştirmek için Video Indexer Web sitesini kullanma-Azure
+title: Video Indexer web sitesi ile Kişi modelini özelleştirme
 titleSuffix: Azure Media Services
-description: Bu makalede, bir kişi modelinin Video Indexer Web sitesiyle nasıl özelleştirileceği gösterilmektedir.
+description: Video Indexer web sitesiyle Bir Kişi modelini nasıl özelleştireceklerini öğrenin.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,196 +10,206 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f29e651f5c8542722f0dc2c9878184ac0d2a6a1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499965"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir kişi modelini özelleştirme
+# <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer web sitesi ile Kişi modelini özelleştirme
 
-Video Indexer video içeriği için ünlüme tanımayı destekler. Ünlüçilerin tanınma özelliği, ıMDB, Viveze ve en popüler LinkedIn etkileyen, sık istenen veri kaynağına göre yaklaşık 1.000.000 yüz içerir. Ayrıntılı bir genel bakış için bkz. [video Indexer kişi modelini özelleştirme](customize-person-model-overview.md).
+Video Indexer video içeriği için ünlü tanıma destekler. Ünlü tanıma özelliği, IMDB, Wikipedia ve en çok LinkedIn etkileyenler gibi yaygın olarak istenen veri kaynağına dayalı yaklaşık bir milyon yüzü kapsar. Ayrıntılı bir genel bakış için, [Bkz. Video Dizinleyici'de Bir Kişi modelini Özelleştir.](customize-person-model-overview.md)
 
-Bu konuda açıklandığı gibi videoda algılanan yüzeyleri düzenlemek için Video Indexer Web sitesini kullanabilirsiniz. API 'yi, API ['leri kullanarak bir kişi modelini özelleştirme](customize-person-model-with-api.md)bölümünde açıklandığı gibi de kullanabilirsiniz.
+Video Indexer web sitesini, bu konuda açıklandığı gibi, bir videoda algılanan yüzleri yeniden dinleyebilirsiniz. API'leri [kullanarak Kişi modelini özelleştir'de](customize-person-model-with-api.md)açıklandığı gibi API'yi de kullanabilirsiniz.
 
-## <a name="central-management-of-person-models-in-your-account"></a>Hesabınızdaki kişi modellerinin Merkezi Yönetimi
+## <a name="central-management-of-person-models-in-your-account"></a>Hesabınızdaki Kişi modellerinin merkezi yönetimi
 
-1. Hesabınızdaki kişi modellerini görüntülemek, düzenlemek ve silmek için Video Indexer Web sitesine gidin ve oturum açın.
-2. Sayfanın sağ üst köşesindeki içerik modeli özelleştirmesi düğmesine tıklayın.
+1. Hesabınızdaki Kişi modellerini görüntülemek, düzenlemek ve silmek için Video Dizinleyici web sitesine göz atın ve oturum açın.
 
-    ![İçerik modeli özelleştirmesi](./media/customize-face-model/content-model-customization.png)
+2. Sayfanın sağ üst köşesindeki içerik modeli özelleştirme düğmesini seçin.
+
+    ![İçerik modeli özelleştirme](./media/customize-face-model/content-model-customization.png)
+
 3. Kişiler sekmesini seçin.
 
-    Hesabınızda varsayılan kişi modelini görürsünüz. Varsayılan kişi modeli, videolarınızın öngörülerine göre düzenlediğiniz veya değiştirdiğiniz yüzeyleri, dizin oluşturma sırasında özel bir kişi modeli belirtmediniz. 
+    Hesabınızda Varsayılan Kişi modelini görürsünüz. Varsayılan Kişi modeli, dizin oluşturma sırasında özel bir Kişi modeli belirtmediğiniz videolarınızın öngörülerinde düzenlenmiş veya değiştirmiş olabileceğiniz yüzleri tutar.
 
-    Başka kişi modelleri oluşturduysanız, bunlar da bu sayfada listelenir. 
+    Diğer Kişi modelleri oluşturduysanız, bu modeller de bu sayfada listelenir.
 
-    ![İçerik modeli özelleştirmesi](./media/customize-face-model/content-model-customization-people-tab.png)
+    ![İçerik modeli özelleştirme](./media/customize-face-model/content-model-customization-people-tab.png)
 
-## <a name="create-a-new-person-model"></a>Yeni bir kişi modeli oluşturun
+## <a name="create-a-new-person-model"></a>Yeni bir Kişi modeli oluşturma
 
-1. **+ Model Ekle** düğmesine tıklayın.
+1. + **Model ekle** düğmesini seçin.
 
-    ![Yeni bir kişi ekleyin](./media/customize-face-model/add-new-person.png)
-2. Modelin adını girin ve adın yanındaki onay düğmesine tıklayın.
+    ![Yeni bir kişi modeli ekleme](./media/customize-face-model/add-new-person.png)
 
-    ![Yeni bir kişi ekleyin](./media/customize-face-model/add-new-person2.png)
+2. Modelin adını girin ve adın yanındaki onay düğmesini seçin.
 
-    Yeni bir kişi modeli oluşturdunuz. Artık yeni kişi modeline yüz ekleyebilirsiniz.
-3. Liste menü düğmesine tıklayın ve **+ kişi ekle**' yi seçin.
+    ![Yeni bir kişi modeli ekleme](./media/customize-face-model/add-new-person2.png)
 
-    ![Yeni bir kişi ekleyin](./media/customize-face-model/add-new-person3.png)
-    
-## <a name="add-a-new-person-to-a-person-model"></a>Kişi modeline yeni bir kişi ekleyin
+    Yeni bir Kişi modeli yarattınız. Artık yeni Kişi modeline yüz ekleyebilirsiniz.
+
+3. Liste menüsü düğmesini seçin ve **kişi ekle '** yi seçin.
+
+    ![Yeni bir kişi modeli ekleme](./media/customize-face-model/add-new-person3.png)
+
+## <a name="add-a-new-person-to-a-person-model"></a>Kişi modeline yeni bir kişi ekleme
 
 > [!NOTE]
-> Video Indexer, kişi modelinde aynı ada sahip birden fazla kişi eklemenize olanak tanır. Ancak, kullanılabilirlik ve açıklık için modelinizdeki her kişiye que ad vermeniz önerilir.
+> Video Indexer, Bir Kişi modelinde aynı ada sahip birden çok kişi eklemenize olanak tanır. Ancak, kullanılabilirlik ve netlik için modelinizdeki her kişiye benzersiz adlar vermeniz önerilir.
 
-1. Bir kişi modeline yeni bir yüz eklemek için, yüzü eklemek istediğiniz kişi modelinin yanındaki liste menüsü düğmesine tıklayın.
-1. Menüden **+ kişi ekle** ' ye tıklayın.
+1. Kişi modeline yeni bir yüz eklemek için, yüzü eklemek istediğiniz Kişi modelinin yanındaki liste menüsü düğmesini seçin.
 
-    ![Kişiye yeni bir yüz ekleyin](./media/customize-face-model/add-new-face.png)
- 
-    Açılır pencere, kişinin ayrıntılarını doldurmanızı ister. Kişinin adını yazın ve onay düğmesine tıklayın.
+1. Menüden **+ Kişi Ekle'yi** seçin.
 
-    ![Kişiye yeni bir yüz ekleyin](./media/customize-face-model/add-new-face2.png)
- 
-Daha sonra dosya gezgininizden seçim yapabilir veya yüzün yüz görüntülerini sürükleyip bırakabilirsiniz. Video Indexer tüm standart görüntü dosya türlerini alır (örn: JPG, PNG ve daha fazlası).
+    ![Kişiye yeni bir yüz ekleme](./media/customize-face-model/add-new-face.png)
 
-Video Indexer, bu kişinin, Dizin oluşturduğunuz ve bu yeni yüzeyi eklediğiniz kişi modelini kullanarak, daha önce dizinlenmiş olduğunuz videoların ve mevcut videolarınızın örneklerini algılayabilmelidir. Geçerli videolarınızdaki kişinin tanınabilmesi, bu bir toplu işlem olduğu için biraz zaman alabilir.
+    Açılır pencere, Kişinin ayrıntılarını doldurmanızı ister. Kişinin adını yazın ve onay düğmesini seçin.
 
+    ![Kişiye yeni bir yüz ekleme](./media/customize-face-model/add-new-face2.png)
 
-## <a name="rename-a-person-model"></a>Kişi modelini yeniden adlandırma
+    Daha sonra dosya gezgininizden seçim yapabilir veya yüzün yüz görüntülerini sürükleyip bırakabilirsiniz. Video Indexer tüm standart görüntü dosya türlerini (ör. JPG, PNG ve daha fazlasını) alacaktır.
 
-Hesabınızda varsayılan kişi modeli dahil olmak üzere herhangi bir kişi modelini yeniden adlandırabilirsiniz. Varsayılan kişi modelinizi yeniden adlandırsanız bile, hesabınız için varsayılan kişi modeli olarak görev görmeye devam eder.
+    Video Dizinleyici, bu yeni yüzü eklediğiniz Kişi modelini kullanarak, dizine eklediğiniz gelecekteki videolarda ve dizine eklediğiniz geçerli videolarda bu kişinin oluşumlarını algılayabilir. Bu bir toplu işlem olduğundan, geçerli videolarınızdaki kişinin tanınması nın etkili olması biraz zaman alabilir.
 
-1. Yeniden adlandırmak istediğiniz kişi modelinin yanındaki liste menüsü düğmesine tıklayın.
-2. Menüden **Yeniden Adlandır** ' a tıklayın.
+## <a name="rename-a-person-model"></a>Kişi modelini yeniden adlandır
 
-    ![Kişiyi yeniden adlandırma](./media/customize-face-model/rename-person.png)
-3. Modelin geçerli adına tıklayın ve yeni adınızı yazın.
+Varsayılan Kişi modeli de dahil olmak üzere hesabınızdaki herhangi bir Kişi modelini yeniden adlandırabilirsiniz. Varsayılan Kişi modelinizi yeniden adlandırsanız bile, hesabınızda Varsayılan Kişi modeli olarak hizmet verecektir.
 
-    ![Kişiyi yeniden adlandırma](./media/customize-face-model/rename-person2.png)
-4. Modelinizin yeniden adlandırılacak onay düğmesine tıklayın.
+1. Yeniden adlandırmak istediğiniz Kişi modelinin yanındaki liste menüsü düğmesini seçin.
+2. Menüden **Yeniden Adlandır'ı** seçin.
+
+    ![Kişi modelini yeniden adlandırma](./media/customize-face-model/rename-person.png)
+
+3. Modelin geçerli adını seçin ve yeni adınızı yazın.
+
+    ![Kişi modelini yeniden adlandırma](./media/customize-face-model/rename-person2.png)
+
+4. Modelinizin yeniden adlandırılması için onay düğmesini seçin.
 
 ## <a name="delete-a-person-model"></a>Kişi modelini silme
 
-Hesabınızda oluşturduğunuz herhangi bir kişi modelini silebilirsiniz. Ancak, varsayılan kişi modelinizi silemezsiniz.
+Hesabınızda oluşturduğunuz herhangi bir Kişi modelini silebilirsiniz. Ancak, Varsayılan kişi modelinizi silemezsiniz.
 
-1. Menüden **Sil** ' e tıklayın.
+1. Menüden **Sil'i** seçin.
 
-    ![Kişiyi silme](./media/customize-face-model/delete-person.png)
-    
-    Bir açılır pencere görünür ve bu eylemin kişi modelini ve içerdiği tüm kişi ve dosyaları silecektir. Bu eylem geri alınamaz. 
+    ![Kişi modelini silme](./media/customize-face-model/delete-person.png)
 
-    ![Kişiyi silme](./media/customize-face-model/delete-person2.png)
-1. Emin değilseniz, yeniden Sil ' e tıklayın.
+    Bir açılır pencere açılır ve bu eylemin Kişi modelini ve içerdiği tüm kişi ve dosyaları siler siniz. Bu eylem geri alınamaz.
+
+    ![Kişi modelini silme](./media/customize-face-model/delete-person2.png)
+
+1. Eminseniz, yeniden sil'i seçin.
 
 > [!NOTE]
-> Bu (şimdi silinen) kişi modeli kullanılarak dizin oluşturulan mevcut videolar, videoda görünen yüzlerin adlarını güncelleştirme yeteneğini desteklemezler. Bu videolardaki yüzlerin adlarını, yalnızca başka bir kişi modeli kullanarak yeniden Takduktan sonra düzenleyebileceksiniz. Bir kişi modeli belirtmeden yeniden dizinle, varsayılan model kullanılacaktır. 
+> Bu (şimdi silinmiş) Kişi modeli kullanılarak dizine eklenmiş olan varolan videolar, videoda görünen yüzlerin adlarını güncelleştirme nizi desteklemez. Bu videolardaki yüzlerin adlarını, başka bir Kişi modelini kullanarak yeniden dizine tabi olduktan sonra düzenlemeniz gerekir. Bir Kişi modeli belirtmeden yeniden dizine eklerseniz, varsayılan model kullanılır.
 
 ## <a name="manage-existing-people-in-a-person-model"></a>Kişi modelindeki mevcut kişileri yönetme
 
-Kişi modellerinizin içeriğini görmek için kişi modelinin adının yanındaki oka tıklayın.
-Açılan liste, söz konusu kişi modelindeki tüm kişileri gösterir. Kişilerin yanındaki liste menü düğmesine tıklarsanız, Yönet, yeniden adlandır ve Sil seçeneklerini görürsünüz.  
+Kişi modellerinizden herhangi birinin içeriğine bakmak için, Kişi modelinin adının yanındaki oku seçin. Açılan açılır, o Kişi modelindeki tüm kişileri gösterir. Her bir kişinin yanındaki liste menüsü düğmesini seçerseniz, yönetme, yeniden adlandırma ve silme seçeneklerini görürsünüz.  
 
-![Kişiye yeni bir yüz ekleyin](./media/customize-face-model/manage-people.png)
+![Kişiye yeni bir yüz ekleme](./media/customize-face-model/manage-people.png)
 
-### <a name="rename-a-person"></a>Kişiyi yeniden adlandırma
+### <a name="rename-a-person"></a>Bir kişiyi yeniden adlandırma
 
-1. Kişi modelinizdeki bir kişiyi yeniden adlandırmak için liste menü düğmesine tıklayın ve liste menüsünden **Yeniden Adlandır** ' ı seçin.
-1. Kişinin geçerli adına tıklayın ve yeni adınızı yazın.
-1. Onay düğmesine tıklayın ve kişi yeniden adlandırılacaktır.
+1. Kişi modelinizdeki bir kişiyi yeniden adlandırmak için liste menüsü düğmesini seçin ve liste menüsünden **Yeniden Adlandır'ı** seçin.
+1. Kişinin geçerli adını seçin ve yeni adınızı yazın.
+1. Onay düğmesini seçin ve kişinin adı yeniden değiştirilecektir.
 
-### <a name="delete-a-person"></a>Kişiyi silme
+### <a name="delete-a-person"></a>Bir kişiyi silme
 
-1. Kişi modelinizdeki bir kişiyi silmek için liste menü düğmesine tıklayın ve liste menüsünden **Sil** ' i seçin.
-1. Bir açılır pencere, bu eylemin kişiyi silecektir ve bu eylemin geri alınamayacağı konusunda size bildirir.
-1. Yeniden Sil ' e tıklayın, bu, kişiyi kişi modelinden kaldırır.
+1. Kişi modelinizden bir kişiyi silmek için liste menüsü düğmesini seçin ve liste menüsünden **Sil'i** seçin.
+1. Açılır pencere, bu eylemin kişiyi siler ve bu eylemin geri alınameyeceğini söyler.
+1. Yeniden **Sil'i** seçin ve bu kişi Kişi modelinden kaldırır.
 
 ### <a name="manage-a-person"></a>Bir kişiyi yönetme
 
-**Yönet**' e tıklarsanız, bu kişi modelinin eğitilmekte olduğu tüm yüzeyleri görürsünüz. Bu yüzler, bu kişi modelini kullanan videolardan veya el ile karşıya yüklediğiniz görüntülerden gelir. 
+**Yönet'i**seçerseniz, bu Kişi modelinin eğitildiği tüm yüzleri görürsünüz. Bu yüzler, bu Kişi modelini kullanan videolardaki veya el ile yüklediğiniz resimlerdeki o kişinin oluşumlarından gelir.
 
-Görüntü Ekle ' ye tıklayarak kişiye daha fazla yüzey ekleyebilirsiniz.
+**Resim Ekle'yi**seçerek kişiye daha fazla yüz ekleyebilirsiniz.
 
-Kişiyi yeniden adlandırmak ve kişi modelinden kişiyi silmek için Yönet bölmesini kullanabilirsiniz.
+Kişiyi yeniden adlandırmak ve kişiyi Kişi modelinden silmek için yönet bölmesini kullanabilirsiniz.
 
-## <a name="use-a-person-model-to-index-a-video"></a>Bir videoyu dizine eklemek için bir kişi modeli kullanma
+## <a name="use-a-person-model-to-index-a-video"></a>Videoyu dizine dizine dizinlemek için Kişi modelini kullanma
 
-Videoyu karşıya yükleme sırasında kişi modelini atayarak yeni videonuzu indekslemek için bir kişi modeli kullanabilirsiniz.
+Videonun yüklenmesi sırasında Kişi modelini atayarak yeni videonuzu dizine eklemek için Bir Kişi modelini kullanabilirsiniz.
 
-Kişi modelinizi yeni bir videoda kullanmak için aşağıdakileri yapın:
+Kişi modelinizi yeni bir videoda kullanmak için aşağıdaki adımları yapın:
 
-1. Sayfanın üst kısmındaki **karşıya yükle** düğmesine tıklayın.
+1. Sayfanın üst kısmındaki **Yükle** düğmesini seçin.
 
-    ![Karşıya Yükleme](./media/customize-face-model/upload.png)
-1. Video dosyanızı daire içine bırakın veya dosyanıza gözatamazsınız.
-1. Gelişmiş Seçenekler okuna tıklayın.
+    ![Kişi modeli yükleme](./media/customize-face-model/upload.png)
 
-    ![Karşıya Yükleme](./media/customize-face-model/upload2.png)
-1. Açılan kişiye tıklayın ve oluşturduğunuz kişi modelini seçin.
+1. Video dosyanızı daireye bırakın veya dosyanıza göz atın.
+1. Gelişmiş **seçenekler** oku'nu seçin.
 
-    ![Karşıya Yükleme](./media/customize-face-model/upload3.png)
-1. Sayfanın alt kısmındaki karşıya yükle seçeneğine tıklayın ve Yeni videonuzun kişi modeliniz kullanılarak dizini oluşturulur.
+    ![Kişi modeli yükleme](./media/customize-face-model/upload2.png)
 
-Karşıya yükleme sırasında bir kişi modeli belirtmezseniz, Video Indexer hesabınızdaki varsayılan kişi modelini kullanarak videoyu dizinleyecek.
+1. Açılır açılır modeli seçin ve oluşturduğunuz Kişi modelini seçin.
 
-## <a name="use-a-person-model-to-reindex-a-video"></a>Bir videoyu yeniden eklemek için bir kişi modeli kullanma 
+    ![Kişi modeli yükleme](./media/customize-face-model/upload3.png)
 
-Koleksiyonunuzdaki bir videoyu yeniden eklemek üzere bir kişi modeli kullanmak için, Video Indexer giriş sayfasında hesap videolarınıza gidin ve yeniden adlandırmak istediğiniz videonun adının üzerine gelin.
+1. Sayfanın altındaki **Yükle** seçeneğini seçin ve yeni videonuz Kişi modelinizi kullanarak dizine eklenebilir.
 
-Videonuzu düzenleme, silme ve yeniden dizin seçeneklerini görürsünüz. 
+Yükleme sırasında bir Kişi modeli belirtmezseniz, Video Indexer hesabınızdaki Varsayılan Kişi modelini kullanarak videoyu dizine ekler.
 
-1. Videonuzu yeniden eklemek için seçeneğe tıklayın.
+## <a name="use-a-person-model-to-reindex-a-video"></a>Videoyu yeniden dizine almak için Kişi modelini kullanma
 
-    ![Yeniden dizin oluşturma](./media/customize-face-model/reindex.png)
+Koleksiyonunuzdaki bir videoyu yeniden dizine almak için Kişi modelini kullanmak için Video Dizinleyici ana sayfasındaki hesap videolarınıza gidin ve yeniden dizine girmek istediğiniz videonun adının üzerinde gezinin.
 
-    Artık videonuzu yeniden eklemek için kişi modelini seçebilirsiniz.
-1. Açılan kişiye tıklayın ve kullanmak istediğiniz kişi modelini seçin. 
+Videonuzu düzenlemek, silmek ve yeniden dizine ekleme seçenekleri görürsünüz.
 
-    ![Yeniden dizin oluşturma](./media/customize-face-model/reindex2.png)
+1. Videonuzu yeniden dizine eketme seçeneğini seçin.
 
-1. Yeniden oluşturma **düğmesine tıklayın** ve videonuzu, kişi modeliniz kullanılarak yeniden dizinlenir.
+    ![Bir videoyu yeniden dizine almak için Kişi modelini kullanma](./media/customize-face-model/reindex.png)
 
-Az önce oluşturduğunuz yüzlere yaptığınız her türlü yeni düzenleme, videoyu yeniden eklemek için kullandığınız kişi modeline kaydedilir.
+    Artık videonuzu yeniden dizine eklemek için Kişi modelini seçebilirsiniz.
+1. Açılır açılır kişiyi seçin ve kullanmak istediğiniz Kişi modelini seçin.
+
+    ![Bir videoyu yeniden dizine almak için Kişi modelini kullanma](./media/customize-face-model/reindex2.png)
+
+1. **Reindex** düğmesini seçin ve videonuz Kişi modelinizi kullanarak yeniden dizine alınacaktır.
+
+Videoda yeni dizine ekdiğiniz ve algılanan yüzlerde yaptığınız yeni yapılan tüm yeni düzenleme, videoyu yeniden dizine ekolarak kullandığınız Kişi modeline kaydedilir.
 
 ## <a name="managing-people-in-your-videos"></a>Videolarınızdaki kişileri yönetme
 
-Algılanan yüzeyleri ve yüzeyleri düzenleyerek ve silerek dizinettiğiniz videolar üzerinde tanınan kişileri yönetebilirsiniz.
+Algılanan yüzleri ve yüzleri düzenleyerek ve silerek dizine dizine dahil ettiğiniz videolarda tanınan kişileri yönetebilirsiniz.
 
-Yüzü silme, videonun öngörülerine ait belirli bir yüzü kaldırır.
+Bir yüzü siler, belirli bir yüzü videonun öngörülerinden kaldırır.
 
-Bir yüzü düzenlediğinizde, algılanan ve büyük olasılıkla videonuzda tanınan bir yüzü yeniden adlandırır. Videonuzdaki bir yüzü düzenlediğinizde, bu ad, karşıya yükleme ve dizinleme sırasında videoya atanan kişi modelinde bir kişi girişi olarak kaydedilir.
+Bir yüzü düzenlemek, videonuzda algılanan ve muhtemelen tanınan bir yüzün adını yeniden adlandırır. Videonuzdaki bir yüzü düzenlediğinizde, bu ad yükleme ve dizin oluşturma sırasında videoya atanan Kişi modelinde kişi girişi olarak kaydedilir.
 
-Karşıya yükleme sırasında videoya bir kişi modeli atamadıysanız, düzenlemeniz hesabınızın varsayılan kişi modeline kaydedilir.
+Yükleme sırasında videoya bir Kişi modeli atamıyorsanız, düzenlemeniz hesabınızın Varsayılan kişi modeline kaydedilir.
 
-### <a name="edit-a-face"></a>Yüz düzenleme
-
+### <a name="edit-a-face"></a>Bir yüzü edin
 
 > [!NOTE]
-> Bir kişi modelinde aynı ada sahip iki veya daha fazla farklı kişi varsa, bu adı o kişi modelini kullanan videolar dahilinde etiketleyemezsiniz. Yalnızca Video Indexer içerik modeli özelleştirme sayfasının kişiler sekmesinde Bu adı paylaşan kişilere değişiklik yapabilirsiniz. Bu nedenle, kişi modelinizdeki her kişiye benzersiz adlar vermeniz önerilir.
+> Bir Kişi modelinde aynı ada sahip iki veya daha fazla farklı kişi varsa, bu adı o Kişi modelini kullanan videolar da etiketleyemezsin. Video Dizinleyici'deki içerik modeli özelleştirme sayfasının Kişiler sekmesinde bu adı paylaşan kişilerde değişiklik yapabilirsiniz. Bu nedenle, Kişi modelinizdeki her kişiye benzersiz adlar vermeniz önerilir.
 
-1. Video Indexer Web sitesine gidin ve oturum açın.
-1. Hesabınızda görüntülemek ve düzenlemek istediğiniz videoyu arayın.
-1. Videonuzdaki bir yüzü düzenlemek için Öngörüler sekmesine gidin ve pencerenin sağ üst köşesindeki kurşun kalem simgesine tıklayın.
+1. Video Indexer web sitesine gidip oturum açın.
+1. Hesabınızda görüntülemek ve görüntülemek istediğiniz bir videoyu arayın.
+1. Videonuzdaki bir yüzü düzeltmek için Öngörüler sekmesine gidin ve pencerenin sağ üst köşesindeki kalem simgesini seçin.
 
-    ![Videonuzdaki bir yüzü düzenleme](./media/customize-face-model/edit-face.png)
-1. Algılanan yüzlerden birine tıklayın ve adlarını "bilinmeyen #X" (veya daha önce yüze atanmış olan adı) olarak değiştirin. 
-1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı kaydeder ve diğer geçerli videolarınıza ve karşıya yüklediğiniz gelecek videolarda bu yüzün tüm oluşumlarını tanır ve adlandırır. Diğer geçerli videolarınızdaki yüzün tanınabilmesi, bu bir toplu işlem olduğu için biraz zaman alabilir.
+    ![Videonuzdaki bir yüzü edin](./media/customize-face-model/edit-face.png)
 
-Kişinin kullandığı kişi modelinde var olan bir kişinin adı ile bir yüz adı verirseniz, bu, söz konusu kişinin bu videosunda algılanan yüz görüntülerini modelde zaten var olan bir kişiyle birleştirir. Tamamen yeni bir ada sahip bir yüz adı verirseniz, bu işlem, videonun kullandığı kişi modelinde yeni bir kişi girişi oluşturur. 
+1. Algılanan yüzlerden herhangi birini seçin ve adlarını "Bilinmeyen #X" (veya daha önce yüze atanmış olan ad) değiştirin.
+1. Yeni adı yazdıktan sonra, yeni adın yanındaki denetim simgesini seçin. Bu eylem yeni adı kaydeder ve diğer geçerli videolarınızda ve yüklediğiniz gelecekteki videolarda bu yüzün tüm oluşumlarını tanır ve adlandırır. Bu bir toplu işlem olduğundan, diğer geçerli videolarınızdaki yüzün tanınması nın etkili olması biraz zaman alabilir.
 
-    ![Edit a face in your video](./media/customize-face-model/edit-face2.png)
+Videonun kullandığı Kişi modelinde varolan bir kişinin adını içeren bir yüze isim vereceksiniz, bu kişinin bu videosundan algılanan yüz görüntüleri modelde zaten var olanlarla birleşir. Yeni bir ada sahip bir yüze ad vereseniz, videonun kullandığı Kişi modelinde yeni bir Kişi girişi oluşturulur.
 
-### <a name="delete-a-face"></a>Yüz silme
+![Videonuzdaki bir yüzü edin](./media/customize-face-model/edit-face2.png)
 
-Videonuzdaki algılanan bir yüzü silmek için Öngörüler bölmesine gidin ve bölmenin sağ üst köşesindeki kurşun kalem simgesine tıklayın. Yüz adının altındaki Sil seçeneğine tıklayın. Bu, algılanan Bu yüzü videodan kaldırır. Kişinin yüzü göründüğü diğer videolarda algılanacaktır, ancak dizin oluşturulduktan sonra da bu videolardan de yüz silebilirsiniz. Adı adlandırılmışsa, kişiyi kişi modelinden özel olarak silmediğiniz takdirde, yüzü sildiğiniz videoyu dizinlemek için kullanılan kişi modelinde da olmaya devam edecektir.
+### <a name="delete-a-face"></a>Bir yüzü silme
+
+Videonuzda algılanan bir yüzü silmek için, Öngörüler bölmesine gidin ve bölmenin sağ üst köşesindeki kalem simgesini seçin. Yüzün adının altındaki **Sil** seçeneğini seçin. Bu eylem algılanan yüzü videodan kaldırır. Kişinin yüzü, görüntülendiği diğer videolarda yine de algılanır, ancak bu videolara endeksedildikten sonra da bu videolardan yüz silebilirsiniz.
+
+Kişi, adlandırılmışsa, kişiyi kişi modelden özellikle silmediğiniz sürece, yüzü sildiğiniz videoyu dizine dizine dizine almak için kullanılan Kişi modelinde de var olmaya devam edecektir.
 
 ![Videonuzdaki bir yüzü silme](./media/customize-face-model/delete-face.png)
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[API 'Leri kullanarak kişi modelini özelleştirme](customize-person-model-with-api.md)
+[API'leri kullanarak Kişi modelini özelleştir](customize-person-model-with-api.md)

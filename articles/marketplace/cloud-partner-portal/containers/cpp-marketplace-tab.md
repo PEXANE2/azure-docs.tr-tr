@@ -1,43 +1,42 @@
 ---
-title: Azure kapsayıcıları görüntüsü için Market ayarları | Azure Marketi
-description: Azure kapsayıcısı için Market ayarlarını yapılandırın.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure Kapsayıcıları resmi için pazar yeri ayarları | Azure Marketi
+description: Azure kapsayıcısı için pazar yeri ayarlarını yapılandırın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 8d7c930f3adcfb4b4d092cc909bf4468ced3271f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823200"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280057"
 ---
-# <a name="container-marketplace-tab"></a>Kapsayıcı marketi sekmesi
+# <a name="container-marketplace-tab"></a>Konteyner Pazarı sekmesi
 
-**Yeni teklif** sayfasının **Market** sekmesi, olası müşterilerinize pazarlama, satış ve yasal bilgiler ve anlaşmalar sağlamanıza ve Market 'ten oluşturulan müşteri adaylarını yönetmenize olanak sağlar. Pazarlama 'ya özgü içeriğinizi **genel bakış** bölümüne ekleyin.
+**Yeni Teklif** sayfasının **Pazar sekmesi,** potansiyel müşterilerinize pazarlama, satış ve yasal bilgi ve anlaşmaları sağlamanızı ve pazardan oluşturulan müşteri adaylarını yönetmenize olanak tanır. Pazarlamaya özel içeriğinizi **Genel Bakış** bölümüne ekleyin.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu bölümde, Azure Market teklifiniz hakkında genel bilgileri girersiniz.  Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir.
+Bu bölümde, Azure Market I' nizle ilgili genel bilgileri girersiniz.  Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
 
-![Market bilgileri](./media/containers-marketplace-tab.png)
+![Pazar yeri bilgileri](./media/containers-marketplace-tab.png)
 
-Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
+Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
 
 |    Alan                  |       Açıklama                                                            |
 |  ---------                |     ---------------                                                          |
-| **Başlık\***                 | Teklifin başlığı. Market 'te göze çarpacak olarak görüntülenecektir.  Maksimum uzunluk 50 karakterdir. |
-| **Özet\***               | Teklifin kısa özeti. Maksimum Uzunluk 100 karakterdir. |
-| **Uzun Özet\***          | Teklifin daha uzun Özeti (ancak **Özet**ile aynı olabilir).  Maksimum uzunluk 256 karakterdir. |
-| **Açıklama\***           | Teklifin açıklaması.  Maksimum uzunluk 3000 karakterdir, basit HTML biçimlendirmesini destekler.
-| **Pazarlama tanımlayıcısı**  | Genellikle kuruluşunuzu ve çözüm adınızı içeren bu teklifle ilişkilendirilecek benzersiz bir URL. Maksimum uzunluk 50 karakterdir.   |
-| **Abonelik kimliklerini önizleme\*** | Ön görüntüleyicilerin 100 abonelik tanımlayıcılarına bir tane ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, yayımlanmaya başladıktan sonra teklif erişimine sahip olur. |
+| **Başlık\***                 | Teklifin başlığı. Bu pazarda belirgin görüntülenir.  Maksimum uzunluk 50 karakterdir. |
+| **Özet\***               | Teklifin kısa özeti. Maksimum uzunluk 100 karakterdir. |
+| **Uzun Özet\***          | Teklifin daha uzun özeti **(özetle**aynı olsa da).  Maksimum uzunluk 256 karakterdir. |
+| **Açıklama\***           | Teklifin açıklaması.  Maksimum uzunluk 3000 karakterdir, basit HTML biçimlendirmeyi destekler.
+| **Pazarlama Tanımlayıcısı**  | Genellikle kuruluş ve çözüm adınızı içeren bu teklifle ilişkilendirilen benzersiz bir URL. Maksimum uzunluk 50 karakterdir.   |
+| **Abonelik Kimliklerini Önizleme\*** | Bir ila 100 abonelik tanımlayıcıları previewers ekleyin. Bu beyaz listedeki abonelikler, yayınlanmadan önce, yayınlanmadan önce teklife erişebilir. |
 |  |  |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifiniz için teknik ve Kullanıcı Destek kaynakları sağlamak üzere [destek](./cpp-support-tab.md) sekmesini kullanın.
+Teklifiniz için teknik ve kullanıcı destek kaynaklarını sağlamak için [Destek](./cpp-support-tab.md) sekmesini kullanın.

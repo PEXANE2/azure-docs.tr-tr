@@ -1,51 +1,50 @@
 ---
-title: Azure Marketi 'nde sanal makine teklifi oluşturma
+title: Azure Marketi'nde Sanal Makine teklifi oluşturun
 description: Azure Marketi için yeni bir sanal makine (VM) teklifi oluşturmak için gereken adımları listeler.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bc1cf7a839307e65bd91eb29531663141e521472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278050"
 ---
-# <a name="create-virtual-machine-offer"></a>Sanal Makine teklifi oluştur
+# <a name="create-virtual-machine-offer"></a>Sanal Makine teklifi oluşturun
 
-Bu bölümde, Azure Marketi için yeni bir sanal makine (VM) teklif isteği oluşturmak için gereken adımlar listelenmektedir.  Her teklif Azure Marketi 'nde kendi varlığı olarak görünür ve bir veya daha fazla SKU ile ilişkilendirilir.  Bir VM teklifi, aşağıdaki varlık ve destekleyici hizmetler gruplarından oluşur: 
+Bu bölümde, Azure Marketi için yeni bir sanal makine (VM) teklif isteği oluşturmak için gereken adımlar listelanmaktadır.  Her teklif Azure Marketi'nde kendi varlığı olarak görünür ve bir veya daha fazla SUK ile ilişkilidir.  VM teklifi, varlıkların ve destekleyici hizmetlerin aşağıdaki gruplandırmalarından oluşur: 
 
-![Bir VM teklifi için varlıklar](./media/publishvm_002.png)
+![VM teklifi için varlıklar](./media/publishvm_002.png)
 
-Olmadığı
+burada:
 
 |  **Varlık grubu**   |  **Açıklama**  |
 |  ---------------   |  ---------------  |
-|    SKU            |  Bir teklifin en küçük satın alınabilir alınırken birimi. Tek bir teklif (ürün sınıfı) ile ilişkili birden fazla SKU, desteklenen özellikler, VM görüntü türleri ve faturalandırma modelleri arasında ayrım yapmak için kullanılabilir. |
-|  Market       | Pazarlama, yasal ve lider yönetimi varlıkları ve belirtimleri içerir.  <ul><li> Pazarlama varlıkları, teklif adı, açıklama ve logo içerir</li> <li> Yasal varlıklar, bir gizlilik ilkesi, kullanım koşulları ve diğer yasal belgeleri içerir</li>  <li> Lider yönetimi ilkesi, Azure Marketi Son Kullanıcı portalından müşteri adaylarını nasıl işleyeceğinizi belirtmenizi sağlar.</li> </ul> |
-| Destek            | Destek iletişim ve ilke bilgilerini içerir |
-| Test Sürüşü         | Son kullanıcıların satın almadan önce teklifinizi test edebilmesi için varlık tanımlar |
+|    SKU'lar            |  Bir teklifin satın alınabilir en küçük birimidir. Desteklenen özellikler, VM görüntü türleri ve faturalandırma modelleri arasında ayrım yapmak için tek bir teklifin (ürün sınıfı) ilişkili birden çok SBI'si olabilir. |
+|  Market       | Pazarlama, yasal ve müşteri adayı yönetim varlıkları ve teknik özellikleri içerir.  <ul><li> Pazarlama varlıkları teklif adı, açıklama ve logolar içerir</li> <li> Yasal varlıklar arasında gizlilik politikası, kullanım koşulları ve diğer yasal belgeler yer almaktadır.</li>  <li> Müşteri adayı yönetimi ilkesi, Azure Marketi Son kullanıcı portalından müşteri adaylarını nasıl işleyeceğinibelirtmenize olanak tanır.</li> </ul> |
+| Destek            | Destek iletişimi ve ilke bilgilerini içerir |
+| Test Sürüşü         | Son kullanıcıların teklifinizi satın almadan önce test etmesini sağlayan varlıkları tanımlar |
 |  |  |
 
 
-## <a name="new-offer-form"></a>Yeni teklif formu
+## <a name="new-offer-form"></a>Yeni Teklif formu
 
-[Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açtıktan sonra sol menü çubuğunda **+ yeni teklif** öğesine tıklayın. Elde edilen menüde, **sanal makineler** ' e tıklayarak **yeni teklif** formunu GÖRÜNTÜLEYIN ve yeni bir VM teklifi için varlık tanımlama sürecini başlatın. 
+[Bulut Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açtıktan sonra sol menü çubuğundaki **+ Yeni Teklif** öğesini tıklatın. Ortaya çıkan menüde, **Yeni Teklif** formunu görüntülemek ve yeni bir VM teklifi için varlıkları tanımlama işlemini başlatmak için **Sanal Makineler'e** tıklayın. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
-![Yeni sanal makine teklifi Kullanıcı arabirimi seçimi](./media/publishvm_003.png)
+![Yeni sanal makine kullanıcı arayüzü seçimi teklif](./media/publishvm_003.png)
 
 > [!WARNING]
-> **Sanal makineler** seçeneği gösterilmezse veya etkinleştirilmemişse, hesabınız bu teklif türünü oluşturmak için izne sahip olmaz.  Lütfen bir Geliştirici hesabına kaydolma dahil olmak üzere bu teklif türü için tüm [önkoşulları](./cpp-prerequisites.md) karşıladığınızı kontrol edin.
+> Sanal **Makineler** seçeneği gösterilmez veya etkinleştirilemiyorsa, hesabınızda bu teklif türünü oluşturma izni yoktur.  Lütfen bu teklif türü için geliştirici hesabına kaydolmak da dahil olmak üzere tüm [ön koşulları](./cpp-prerequisites.md) karşıladığınızdan kontrol edin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu bölümdeki sonraki konular, **yeni teklif** sayfasındaki (bir VM teklif türü için) sekmeleri yansıtır.  Her makalede, yeni VM teklifiniz için varlık gruplarını ve destekleyici hizmetleri tanımlamak üzere ilişkili sekmenin nasıl kullanılacağı açıklanmaktadır.
+Bu bölümdeki sonraki konular **Yeni Teklif** sayfasındaki sekmeleri (VM teklif türü için) yansıtMıştır.  Her makalede, yeni VM teklifiniz için varlık gruplarını ve destekleyici hizmetleri tanımlamak için ilişkili sekmeyi nasıl kullanacağınızı açıklar.
 
 - [Teklif Ayarları sekmesi](./cpp-offer-settings-tab.md)
 - [SKU'lar sekmesi](./cpp-skus-tab.md)

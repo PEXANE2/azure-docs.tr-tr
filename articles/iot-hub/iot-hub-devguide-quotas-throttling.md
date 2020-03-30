@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub kotalarını ve azaltmayı anlayın | Microsoft Docs
-description: Geliştirici Kılavuzu-IoT Hub için uygulanan kotaların açıklaması ve beklenen daraltma davranışı.
+title: Azure IoT Hub kotalarını ve azaltmayı anlama | Microsoft Dokümanlar
+description: Geliştirici kılavuzu - IoT Hub'a uygulanan kotaların açıklaması ve beklenen azaltma davranışı.
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
@@ -8,129 +8,129 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284700"
 ---
-# <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
+# <a name="reference---iot-hub-quotas-and-throttling"></a>Referans - IoT Hub kotaları ve azaltma
 
-Bu makalede bir IoT Hub kotaları açıklanmakta ve azaltmasının nasıl çalıştığını anlamanıza yardımcı olacak bilgiler sağlanmaktadır.
+Bu makalede, bir IoT Hub için kotalar açıklanmaktadır ve azaltmanın nasıl çalıştığını anlamanıza yardımcı olacak bilgiler sağlar.
 
 ## <a name="quotas-and-throttling"></a>Kotalar ve azaltma
 
-Her Azure aboneliği en fazla 50 IoT Hub 'ına ve 1 ücretsiz hub 'a sahip olabilir.
+Her Azure aboneliğinde en fazla 50 IoT hub'ı ve en fazla 1 Ücretsiz hub bulunabilir.
 
-Her IoT hub'ı belirli bir katmanda belirli bir birim sayısıyla sağlanır. Katman ve birim sayısı, gönderebilmeniz gereken en fazla günlük ileti kotasını tespit edebilir. Günlük kotayı hesaplamak için kullanılan ileti boyutu, ücretsiz bir katman hub 'ı için 0,5 KB ve diğer tüm katmanlar için 4KB 'dir. Daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
+Her IoT hub'ı belirli bir katmanda belirli bir birim sayısıyla sağlanır. Birimlerin katmanı ve sayısı, gönderebileceğiniz en yüksek günlük ileti kotasını belirler. Günlük kotayı hesaplamak için kullanılan ileti boyutu, ücretsiz bir katman hub'ı için 0,5 KB ve diğer tüm katmanlar için 4KB'dir. Daha fazla bilgi için [Azure IoT Hub Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/iot-hub/)bakın.
 
-Katman Ayrıca IoT Hub tüm işlemlerde zorladığı azaltma sınırlarını belirler.
+Katman, IoT Hub'ın tüm işlemlerde uyguladığı azaltma sınırlarını da belirler.
 
 ### <a name="iot-plug-and-play"></a>IoT Tak Çalıştır
 
-Genel Önizleme sırasında IoT Tak ve Kullan cihazları Arabirim başına ayrı mesajlar gönderir ve bu da ileti kotasından doğru olarak sayılan ileti sayısını artırabilir.
+Genel önizleme sırasında, IoT Tak ve Çalıştır aygıtları arabirim başına ayrı iletiler gönderir ve bu da ileti kotanıza doğru sayılan ileti sayısını artırabilir.
 
-## <a name="operation-throttles"></a>İşlem kısıtları
+## <a name="operation-throttles"></a>Operasyon gazları
 
-İşlem kısıtlar, dakika aralıklarında uygulanan ve kötüye kullanımı engellemek için tasarlanan hız sınırlamalarıdır. Ayrıca [trafik şekillendirmeye](#traffic-shaping)tabidir.
+Operasyon azaltmadakika aralıklarında uygulanan ve kötüye kullanımı önlemek için tasarlanmıştır hız sınırlamaları vardır. Ayrıca [trafik şekillendirmetabidir.](#traffic-shaping)
 
-Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hub 'a başvurur.
+Aşağıdaki tabloda zorlanan azaltmalar gösterilmektedir. Değerler tek bir hub'a başvurur.
 
 | Kısıtlama | Ücretsiz, B1 ve S1 | B2 ve S2 | B3 ve S3 | 
 | -------- | ------- | ------- | ------- |
-| [Kimlik kayıt defteri işlemleri](#identity-registry-operations-throttle) (oluşturma, alma, listeleme, güncelleştirme, silme) | 1.67/sn/birim (100/dak/Unit) | 1.67/sn/birim (100/dak/Unit) | 83.33/sn/birim (5000/dk/birim) |
-| [Yeni cihaz bağlantıları](#device-connections-throttle) (Bu sınır, toplam bağlantı sayısı değil, _Yeni bağlantı_oranı için geçerlidir) | 100/sn veya 12/sn/birim üzerinde daha yüksek <br/> Örneğin, iki S1 birimi 2\*12 = 24 yeni bağlantı/sn olmakla kalmaz, birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni bağlantı/sn (9\*12) vardır. | 120 yeni bağlantı/sn/birim | 6\.000 yeni bağlantı/sn/birim |
-| Cihazdan buluta gönderim | 100 gönderme işlemi/sn veya 12 gönderme işlemi/sn/birim daha yüksek <br/> Örneğin, iki adet S1 birimi 2\*12 = 24/sn olmakla kalmaz, birimlerinizde en az 100 gönderme işlemi/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 gönderme işlemi/sn (9\*12) vardır. | 120 gönderme işlemi/sn/birim | 6\.000 gönderme işlemi/sn/birim |
-| Buluttan cihaza cihaz gönderme<sup>1</sup> | 1,67 gönderme işlemi/sn/birim (100 ileti/dk/birim) | 1,67 gönderme işlemi/sn/birim (100 gönderme işlemi/dk/birim) | 83,33 gönderme işlemi/sn/birim (5.000 gönderme işlemi/dk/birim) |
-| Buluttan cihaza<sup>1</sup> alır <br/> (yalnızca cihaz HTTPS kullandığında)| 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 833,33 alma işlemi/sn/birim (50.000 alma işlemi/dk/birim) |
-| Karşıya dosya yükleme | 1,67 dosya yükleme başlatma/sn/birim (100/dak/Unit) | 1,67 dosya yükleme başlatma/sn/birim (100/dak/Unit) | 83,33 dosya yükleme başlatma/sn/birim (5000/dk/birim) |
-| Doğrudan Yöntemler<sup>1</sup> | 160KB/sn/birim<sup>2</sup> | 480KB/sn/birim<sup>2</sup> | 24 MB/sn/birim<sup>2</sup> | 
-| Sorgular | 20/dak/birim | 20/dak/birim | 1000/dak/Unit |
-| İkizi (cihaz ve modül) okur<sup>1</sup> | 100/sn | 100/sn veya 10/sn/birim üzerinde daha yüksek | 500/sn/birim |
-| İkizi güncelleştirmeleri (cihaz ve modül)<sup>1</sup> | 50/sn | 50/sn veya 5/sn/birim üzerinde daha yüksek | 250/sn/birim |
-| İş işlemleri<sup>1</sup> <br/> (oluşturma, güncelleştirme, listeleme, silme) | 1.67/sn/birim (100/dak/Unit) | 1.67/sn/birim (100/dak/Unit) | 83.33/sn/birim (5000/dk/birim) |
-| İşler cihaz işlemi<sup>1</sup> <br/> (Update ikizi, doğrudan yöntemi çağır) | 10/sn | 10/sn veya 1/sn/birim üzerinde daha yüksek | 50/sn/birim |
-| Yapılandırma ve kenar dağıtımları<sup>1</sup> <br/> (oluşturma, güncelleştirme, listeleme, silme) | 0.33/sn/birim (20/dak/Unit) | 0.33/sn/birim (20/dak/Unit) | 0.33/sn/birim (20/dak/Unit) |
+| [Kimlik kayıt işlemleri](#identity-registry-operations-throttle) (oluşturma, alma, listeletmek, güncellemek, silme) | 1.67/sn/ünite (100/dk/birim) | 1.67/sn/ünite (100/dk/birim) | 83.33/sn/ünite (5.000/dk/birim) |
+| [Yeni aygıt bağlantıları](#device-connections-throttle) (bu sınır toplam _bağlantı_sayısı için değil, yeni bağlantı hızı için geçerlidir) | 100/sn veya 12/sn/birimden daha yüksek <br/> Örneğin, iki S1 birimi\*2 12 = 24 yeni bağlantı/sn'dir, ancak birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni\*bağlantı/sn (9 12) vardır. | 120 yeni bağlantı/sn/birim | 6.000 yeni bağlantı/sn/birim |
+| Cihazdan buluta gönderim | 100'den fazla gönderme işlemi/sn veya 12 gönderme işlemi/sn/birim <br/> Örneğin, iki S1 birimi\*2 12 = 24/sn'dir, ancak birimlerinizde en az 100 gönderme işlemi/sn'dir. Dokuz S1 birimiyle, birimlerinizde 108 gönderme\*işlemi/sn (9 12) vardır. | 120 gönderme işlemleri/sn/birim | 6.000 gönderme işlemleri/sn/birim |
+| Bulut-aygıta<sup>1</sup> gönderir | 1.67 gönderme işlemleri/sn/birim (100 mesaj/dk/birim) | 1.67 gönderme işlemleri/sn/birim (100 gönderme işlemleri/dk/birim) | 83.33 operasyon/sn/birim gönderme (5.000 gönderme işlemleri/dk/birim) |
+| Bulut-aygıt1 alır<sup>1</sup> <br/> (yalnızca aygıt HTTPS kullandığında)| 16.67 operasyon alma/sn/birim (1.000 alma işlemleri/min/birim) | 16.67 operasyon alma/sn/birim (1.000 alma işlemleri/min/birim) | 833.33 operations/sn/unit (50.000 alma işlemleri/min/birim) |
+| Dosya yükleme | 1.67 dosya yükleme başlatmaları/sn/birim (100/dk/birim) | 1.67 dosya yükleme başlatmaları/sn/birim (100/dk/birim) | 83.33 dosya yükleme başlatmaları/sn/birim (5.000/dk/birim) |
+| Doğrudan yöntemler<sup>1</sup> | 160KB/sn/ünite<sup>2</sup> | 480KB/sn/ünite<sup>2</sup> | 24MB/sn/ünite<sup>2</sup> | 
+| Sorgular | 20/dk/ünite | 20/dk/ünite | 1.000/dk/birim |
+| İkiz (cihaz ve modül)<sup>1</sup> okur | 100/sn | 100/sn veya 10/sn/birimden daha yüksek | 500/sn/birim |
+| İkiz güncellemeler (cihaz ve modül)<sup>1</sup> | 50/sn | 50/sn veya 5/sn/birimden daha yüksek | 250/sn/ünite |
+| İş işleri işlemleri<sup>1</sup> <br/> (oluşturma, güncelleştirme, listeleme, silme) | 1.67/sn/ünite (100/dk/birim) | 1.67/sn/ünite (100/dk/birim) | 83.33/sn/ünite (5.000/dk/birim) |
+| İşler cihazı işlemleri<sup>1</sup> <br/> (ikiz güncelleme, doğrudan yöntem çağırmak) | 10/sn | 10/sn veya 1/sn/birimden daha yüksek | 50/sn/ünite |
+| Yapılandırmalar ve kenar dağıtımları<sup>1</sup> <br/> (oluşturma, güncelleştirme, listeleme, silme) | 0.33/sn/ünite (20/dk/birim) | 0.33/sn/ünite (20/dk/birim) | 0.33/sn/ünite (20/dk/birim) |
 | Cihaz akışı başlatma oranı<sup>1</sup> | 5 yeni akış/sn | 5 yeni akış/sn | 5 yeni akış/sn |
-| Eşzamanlı olarak bağlanılan cihaz akışlarının maksimum sayısı<sup>1</sup> | 50 | 50 | 50 |
-| Maksimum cihaz akışı veri aktarımı<sup>1</sup> (Toplam birim/gün) | 300 MB | 300 MB | 300 MB |
+| Aynı anda bağlanan aygıt akışlarının maksimum sayısı<sup>1</sup> | 50 | 50 | 50 |
+| Maksimum cihaz akışı veri aktarımı<sup>1</sup> (günlük toplam hacim) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup> Bu özellik IoT Hub temel katmanında kullanılamaz. Daha fazla bilgi için bkz. [doğru IoT Hub seçme](iot-hub-scaling.md). <br/><sup>2</sup> Azaltma ölçer boyutu 4 KB 'tır.
+<sup>1.1.2</sup> Bu özellik, IoT Hub'ın temel katmanında kullanılamaz. Daha fazla bilgi [için, doğru IoT Hub'ını nasıl seçeceğinizi](iot-hub-scaling.md)öğrenin. <br/><sup>2.000</sup> Daraltma metre boyutu 4 KB'dir.
 
-### <a name="throttling-details"></a>Kısıtlama ayrıntıları
+### <a name="throttling-details"></a>Azaltma Ayrıntıları
 
-* Ölçüm boyutu, azaltma limitinin hangi artışlara harcandığını belirler. Doğrudan çağrınızın yükü 0 ile 4 KB arasında ise, 4 KB olarak sayılır. 160 KB/sn/birim sınırına geçmeden önce birim başına saniye başına en fazla 40 çağrı yapabilirsiniz.
+* Sayaç boyutu, azaltma limitinizin ne kadar artarak tüketilmesini belirler. Doğrudan aramanızın yükü 0 ile 4 KB arasındaysa, 4 KB olarak sayılır. 160 KB/sn/birim sınırına basmadan önce birim başına saniyede 40 arama yapabilirsiniz.
 
-   Benzer şekilde, yükünüzü 4 KB ile 8 KB arasında olursa, her 8 KB 'lik çağrı hesabı ve maksimum sınıra geçmeden önce birim başına saniyede 20 çağrı yapabilirsiniz.
+   Benzer şekilde, yükünüz 4 KB ile 8 KB arasındaysa, her arama 8 KB'dir ve maksimum limite basmadan önce birim başına saniyede 20 arama yapabilirsiniz.
 
-   Son olarak, yük boyutunuz 156KB ve 160 KB arasındaysa, 160 KB/sn/birim sınırına geçmeden önce hub 'ınızdaki birim başına yalnızca bir saniyede 1 çağrı yapabilirsiniz.
+   Son olarak, taşıma yükünüz 156KB ile 160 KB arasındaysa, 160 KB/sn/birim sınırına basmadan önce hub'ınızdaki birim başına saniyede yalnızca 1 arama yapabilirsiniz.
 
-*  S2 için *iş cihazı işlemleri (güncelleştirme ikizi, doğrudan yöntemini çağır)* , yalnızca işleri kullanarak yöntemleri çağırdığınızda 50/sn/birim için geçerlidir. Doğrudan metotları doğrudan çağırdığınızda, 24 MB/sn/birim (S2 için) için özgün azaltma sınırı uygulanır.
+*  S2 katmanı için *Jobs aygıt işlemleri (ikizi güncelleştir, doğrudan çağır)* için, 50/sn/birim yalnızca işleri kullanarak yöntemleri çağırdığınızda geçerlidir. Doğrudan yöntemleri doğrudan çağırırsanız, 24 MB/sn/birim (S2 için) orijinal azaltma sınırı uygulanır.
 
-*  **Kota** , *her gün*hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
+*  **Kota,** hub'ınızda *günlük*gönderebileceğiniz toplam ileti sayısıdır. Hub'ınızın kota [sınırını, IoT Hub fiyatlandırma sayfasındatoplam](https://azure.microsoft.com/pricing/details/iot-hub/) **ileti sayısı /gün** sütununun altında bulabilirsiniz.
 
-*  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  Buluttan cihaza ve aygıttan buluta azaltmalarınız, ileti gönderme nizin maksimum *hızını* belirler -- 4 KB'den bağımsız olarak ileti sayısı. Her ileti [maksimum ileti boyutu](iot-hub-devguide-quotas-throttling.md#other-limits)256 KB'ye kadar olabilir.
 
-*  Azaltma sınırlarını vurmadan/aşmamak için aramalarınızı kısıtlamak iyi bir uygulamadır. Sınıra ulaşırsanız, IoT Hub 429 hata koduyla yanıt verir ve istemci yeniden denenmelidir. Bu sınırlar hub başına (veya hub/birim başına bazı durumlarda). Daha fazla bilgi için bkz. [bağlantı ve güvenilir mesajlaşma/yeniden deneme düzenlerini yönetme](iot-hub-reliability-features-in-sdks.md#retry-patterns).
+*  Aramalarınızı daraltma limitlerine çarpmamak/aşmamak için daraltmak iyi bir uygulamadır. Sınıra uğrarsa, IoT Hub hata kodu 429 ile yanıt verir ve istemci geri çekilip yeniden denemelidir. Bu sınırlar hub başına (veya bazı durumlarda hub/birim başına) Daha fazla bilgi için bağlantı [ve güvenilir ileti/yeniden deneme desenleri yönet'e](iot-hub-reliability-features-in-sdks.md#retry-patterns)bakın.
 
 ### <a name="traffic-shaping"></a>Trafik şekillendirme
 
-IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için azaltma üzerindeki istekleri kabul eder. Bu isteklerin ilk azı hemen işlenir. Ancak, istek sayısı azaltma oranını ihlal ederse IoT Hub, istekleri bir sıraya yerleştirmeyi ve sınır hızında işlenmesini başlatır. Bu etkiye *trafik şekillendirme*adı verilir. Ayrıca, bu sıranın boyutu sınırlı olur. Kısıtlama ihlali devam ederse, sonunda sıra doldurulur ve `429 ThrottlingException`istekleri reddetme IoT Hub başlatılır.
+Yoğun trafiği karşılamak için, IoT Hub gazın üzerindeki istekleri sınırlı bir süre için kabul eder. Bu isteklerin ilk birkaçı hemen işlenir. Ancak, istek sayısı azaltmayı ihlal etmeye devam ederse, IoT Hub istekleri sıraya yerleştirmeye başlar ve sınır oranında işlenir. Bu etkinin trafik *şekillendirme*denir. Ayrıca, bu sıranın boyutu sınırlıdır. Gaz ihlali devam ederse, sonunda sıra dolur ve IoT Hub istekleri ni `429 ThrottlingException`'ile reddetmeye başlar.
 
-Örneğin, bir saniyede 200 cihazdan buluta ileti göndermek için bir sanal cihaz kullanın. S1 IoT Hub (bir sınırı 100/sn D2C gönderir). İlk dakika veya ikisi için iletiler hemen işlenir. Ancak, cihaz kısıtlama sınırından daha fazla ileti gönderilmeye devam ettiğinden, IoT Hub saniyede yalnızca 100 ileti işleme başlar ve geri kalanı bir sıraya koyar. Yaşıyorsanız artırılan gecikme süresi başlar. Sonuç olarak, sıranın doldurulmasından `429 ThrottlingException` almaya başlar ve [IoT Hub ölçümlerinde](iot-hub-metrics.md) "kısıtlama hatası sayısı" artmaya başlar.
+Örneğin, S1 IoT Hub'ınıza saniyede 200 aygıttan buluta ileti göndermek için simüle edilmiş bir aygıt kullanırsınız (100/sn D2C gönderme sınırı vardır). İlk veya iki dakika için iletiler hemen işlenir. Ancak, aygıt gaz sınırından daha fazla ileti göndermeye devam ettiği için, IoT Hub saniyede yalnızca 100 ileti işlemeye başlar ve geri kalanını sıraya koyar. Gecikme gecikmesi arttığını fark etmeye başlarsınız. Sonunda, sıra doldukça almaya `429 ThrottlingException` başlarsınız ve [IoT Hub'ın ölçümlerinde](iot-hub-metrics.md) "gaz hatalarının sayısı" artmaya başlar.
 
-### <a name="identity-registry-operations-throttle"></a>Kimlik kayıt defteri işlemleri kısıtlama
+### <a name="identity-registry-operations-throttle"></a>Kimlik kayıt işlemleri azaltma
 
-Cihaz kimliği kayıt defteri işlemleri, cihaz yönetimi ve sağlama senaryolarında çalışma zamanı kullanımı için tasarlanmıştır. Çok sayıda cihaz kimliği okumak veya güncelleştirmek, [içeri ve dışarı aktarma işleri](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)aracılığıyla desteklenir.
+Aygıt kimlik kayıt işlemleri, aygıt yönetimi ve sağlama senaryolarında çalışma zamanı kullanımı için tasarlanmıştır. Çok sayıda aygıt kimliklerinin okunması veya [güncellenmesi, alma ve dışa aktarma işleri](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)yoluyla desteklenir.
 
-### <a name="device-connections-throttle"></a>Cihaz bağlantıları kısıtlaması
+### <a name="device-connections-throttle"></a>Cihaz bağlantıları nın kesilmesi
 
-*Cihaz bağlantıları* kısıtlama, yeni cihaz bağlantılarının bir IoT Hub 'ı ile nasıl kurulabileceği oranını yönetir. *Cihaz bağlantıları* kısıtlaması, eşzamanlı olarak bağlanan en fazla cihaz sayısını yönetmez. *Cihaz bağlantısı* hız kısıtlaması, IoT Hub için sağlanan birim sayısına bağlıdır.
+*Aygıt bağlantıları* azaltma, bir IoT hub'ı ile yeni aygıt bağlantılarının kurulma hızını yönetir. *Aygıt bağlantıları* nın azaltması, aynı anda bağlanan maksimum aygıt sayısını yönetmez. *Aygıt bağlantılarının* hız azaltma oranı, IoT hub'ı için sağlanan birim sayısına bağlıdır.
 
-Örneğin, tek bir S1 birimi satın aldıysanız, saniyede 100 bağlantı kısıtlaması alırsınız. Bu nedenle, 100.000 cihazlarını bağlamak için en az 1.000 saniye sürer (yaklaşık 16 dakika). Ancak, kimlik kayıt defterinizde kayıtlı cihazlarınızla aynı anda bağlı olan çok sayıda cihaza sahip olabilirsiniz.
+Örneğin, tek bir S1 birimi satın alırsanız, saniyede 100 bağlantı nın bir gaz ını alırsınız. Bu nedenle, 100.000 aygıtı bağlamak için en az 1.000 saniye (yaklaşık 16 dakika) sürer. Ancak, kimlik kaydınızda kayıtlı aygıtlar kadar aynı anda bağlı aygıta sahip olabilirsiniz.
 
 ## <a name="other-limits"></a>Diğer sınırlar
 
-IoT Hub diğer işlem sınırlarını zorlar:
+IoT Hub diğer operasyonel sınırları uygular:
 
 | İşlem | Sınır |
 | --------- | ----- |
-| Cihazlar | Tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınır. Bu sınırı artırmanın tek yolu [Microsoft desteği](https://azure.microsoft.com/support/options/)ile iletişim kurmaya yönelik bir yoldur.|
-| Dosya yüklemeleri | cihaz başına 10 eşzamanlı dosya karşıya yüklemesi. |
-| İşler<sup>1</sup> | Maksimum eşzamanlı iş 1 (ücretsiz ve S1 için), 5 (S2 için) ve 10 (S3 için). Ancak, tüm katmanlar için maksimum eşzamanlı [cihaz içeri/dışarı aktarma işi](iot-hub-bulk-identity-mgmt.md) 1 ' dir. <br/>İş geçmişi 30 güne kadar tutulur. |
-| Ek uç noktalar | Ücretli SKU hub 'ları 10 ek uç nokta içerebilir. Ücretsiz SKU hub 'ları, ek bir uç noktaya sahip olabilir. |
-| İleti yönlendirme sorguları | Ücretli SKU hub 'ları 100 yönlendirme sorgusuna sahip olabilir. Ücretsiz SKU hub 'ları beş yönlendirme sorgusuna sahip olabilir. |
-| İleti zenginleştirmeleri | Ücretli SKU hub 'ları en fazla 10 ileti zenginleştirme olabilir. Ücretsiz SKU hub 'ları en fazla 2 ileti zenginleştirme olabilir.|
-| Cihazdan buluta mesajlaşma | En büyük ileti boyutu 256 KB |
-| Buluttan cihaza mesajlaşma<sup>1</sup> | En büyük ileti boyutu 64 KB. Dağıtım için maksimum bekleyen ileti sayısı, cihaz başına 50 ' dir. |
-| Doğrudan yöntem<sup>1</sup> | En yüksek doğrudan Yöntem yük boyutu 128 KB 'tır. |
-| Otomatik cihaz ve modül yapılandırması<sup>1</sup> | ücretli SKU hub 'ı başına 100 yapılandırma. Ücretsiz SKU hub 'ı başına 20 yapılandırma. |
-| IoT Edge otomatik dağıtımlar<sup>1</sup> | Dağıtım başına 50 modül. ücretli SKU hub 'ı başına 100 dağıtım (katmanlı dağıtımlar dahil). Ücretsiz SKU hub 'ı başına 10 dağıtım. |
-| TWINS<sup>1</sup> | İstenen özelliklerin ve bildirilen özellikler bölümlerinin en büyük boyutu 32 KB 'dir. En büyük etiket boyutu 8 KB 'tır. |
-| Paylaşılan erişim ilkeleri | En fazla paylaşılan erişim ilkesi sayısı 16 ' dır |
+| Cihazlar | Tek bir IoT hub'ına kaydedilebilen toplam aygıt sayısı ve modül sayısı 1.000.000'dir. Bu sınırı artırmanın tek yolu [Microsoft Destek'e](https://azure.microsoft.com/support/options/)başvurmaktır.|
+| Dosya karşıya yüklemeleri | Cihaz başına 10 eşzamanlı dosya yüklemesi. |
+| İş İlanları<sup>1</sup> | Maksimum eşzamanlı işler 1 (Ücretsiz ve S1 için), 5 (S2 için) ve 10 (S3 için). Ancak, en iyi eşzamanlı [aygıt alma/dışa aktarma işleri](iot-hub-bulk-identity-mgmt.md) tüm katmanlar için 1'dir. <br/>İş geçmişi 30 güne kadar saklanır. |
+| Ek uç noktalar | Ücretli SKU hub'larının 10 ek uç noktası olabilir. Ücretsiz SKU hub'larının bir ek bitiş noktası olabilir. |
+| İleti yönlendirme sorguları | Ücretli SKU hub'larının 100 yönlendirme sorgusu olabilir. Ücretsiz SKU hub'larının beş yönlendirme sorgusu olabilir. |
+| İleti zenginleştirmeleri | Ücretli SKU hub'ları en fazla 10 ileti zenginleştirme sahip olabilir. Ücretsiz SKU hub'ları en fazla 2 mesaj zenginleştirme sahip olabilir.|
+| Aygıt-bulut mesajlaşma | Maksimum ileti boyutu 256 KB |
+| Bulut-aygıt<sup>mesajlaşma1</sup> | Maksimum ileti boyutu 64 KB. Teslim için bekleyen maksimum ileti, aygıt başına 50'dir. |
+| Doğrudan yöntem<sup>1</sup> | Maksimum doğrudan yöntem yük boyutu 128 KB'dir. |
+| Otomatik cihaz ve modül konfigürasyonları<sup>1</sup> | Ücretli SKU hub başına 100 yapılandırma. Ücretsiz SKU hub başına 20 yapılandırma. |
+| IoT Edge otomatik dağıtımlar<sup>1</sup> | Dağıtım başına 50 modül. Ücretli SKU hub başına 100 dağıtım (katmanlı dağıtımlar dahil). Ücretsiz SKU hub başına 10 dağıtım. |
+| İkizler<sup>1</sup> | İstenilen özelliklerin ve bildirilen özelliklerin maksimum boyutu her biri 32 KB'dir. Etiketler bölümünün maksimum boyutu 8 KB'dir. |
+| Paylaşılan erişim ilkeleri | Maksimum paylaşılan erişim ilkesi sayısı 16'dır |
 
-<sup>1</sup> Bu özellik IoT Hub temel katmanında kullanılamaz. Daha fazla bilgi için bkz. [doğru IoT Hub seçme](iot-hub-scaling.md).
+<sup>1.1.2</sup> Bu özellik, IoT Hub'ın temel katmanında kullanılamaz. Daha fazla bilgi [için, doğru IoT Hub'ını nasıl seçeceğinizi](iot-hub-scaling.md)öğrenin.
 
-## <a name="increasing-the-quota-or-throttle-limit"></a>Kota veya kısıtlama sınırını artırma
+## <a name="increasing-the-quota-or-throttle-limit"></a>Kota veya azaltma limitinin artırılması
 
-Belirli bir zamanda, [bir IoT Hub 'ında sağlanan birim sayısını artırarak](iot-hub-upgrade.md)kotaları veya kısıtlama sınırlarını artırabilirsiniz.
+Herhangi bir zamanda, [bir IoT hub'ında sağlanan birimlerin sayısını artırarak](iot-hub-upgrade.md)kotaları artırabilir veya azaltma limitlerini artırabilirsiniz.
 
 ## <a name="latency"></a>Gecikme süresi
 
-IoT Hub tüm işlemler için düşük gecikme süresine sahiptir. Ancak, ağ koşulları ve diğer öngörülemeyen faktörlere bağlı olarak belirli bir gecikmeyi garanti edemez. Çözümünüzü tasarlarken şunları yapmalısınız:
+IoT Hub tüm işlemler için düşük gecikme alanı sağlamaya çalışır. Ancak, ağ koşulları ve diğer öngörülemeyen faktörler nedeniyle belirli bir gecikme yi garanti edemez. Çözümünüzü tasarlarken şunları
 
-* Herhangi bir IoT Hub işlemi için en fazla gecikme süresi hakkında varsayımlar yapmaktan kaçının.
-* IoT Hub 'ınızı cihazlarınıza en yakın Azure bölgesinde sağlayın.
-* Cihazda veya cihaza yakın bir ağ geçidinde gecikme süresine duyarlı işlemler gerçekleştirmek için Azure IoT Edge kullanmayı düşünün.
+* Herhangi bir IoT Hub işleminin maksimum gecikme sonu hakkında herhangi bir varsayımda bulunmaktan kaçının.
+* IoT hub'ınızı aygıtlarınıza en yakın Azure bölgesinde sağlayın.
+* Aygıtta veya aygıta yakın bir ağ geçidinde gecikmeye duyarlı işlemleri gerçekleştirmek için Azure IoT Edge'i kullanmayı düşünün.
 
-Birden çok IoT Hub birimi, daha önce açıklandığı gibi azaltmayı etkiler, ancak ek gecikme veya garanti vermez.
+Birden çok IoT Hub birimi, daha önce açıklandığı gibi azaltmayı etkiler, ancak ek gecikme avantajları veya garantileri sağlamaz.
 
-İşlem gecikmesi sırasında beklenmeyen artışlar görürseniz [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
+Çalışma gecikmesinde beklenmeyen artışlar görürseniz, [Microsoft Destek'e](https://azure.microsoft.com/support/options/)başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub azaltma davranışının derinlemesine bir tartışması için bkz. blog gönderisi [IoT Hub azaltma ve siz](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
+IoT Hub azaltma davranışı derinlemesine bir tartışma için, blog yazısı [IoT Hub azaltma bakın ve .](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
+Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunlardır:
 
 * [IoT Hub uç noktaları](iot-hub-devguide-endpoints.md)

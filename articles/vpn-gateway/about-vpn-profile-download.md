@@ -1,71 +1,27 @@
 ---
-title: 'Azure VPN Gateway: P2S VPN istemci profilleri hakkında'
-description: Bu, istemci profili dosyasıyla çalışmanıza yardımcı olur
+title: 'Azure VPN Ağ Geçidi: P2S VPN istemci profilleri hakkında'
+description: Bu, istemci profil dosyasıyla çalışmanıza yardımcı olur
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 03/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b78d32dbb7b4e0d9a3b13ff741e6e38c12be0e62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528515"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>P2S VPN istemci profilleri hakkında
 
-İndirilen profil dosyası, bir VPN bağlantısını yapılandırmak için gereken bilgileri içerir. Bu makale, bir VPN istemci profili için gereken bilgileri elde etmenize ve anlamanıza yardımcı olur.
+İndirilen profil dosyası, VPN bağlantısını yapılandırmak için gerekli bilgileri içerir. Bu makale, VPN istemci profili için gerekli bilgileri edinmenize ve anlamanıza yardımcı olacaktır.
 
-## <a name="1-download-the-file"></a>1. dosyayı indirin
+[!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 
-Aşağıdaki komutları çalıştırın. Profil ZIP dosyasını indirmek için sonuç URL 'sini tarayıcınıza kopyalayın.
-
-```azurepowershell-interactive
-$profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
-   
-$PROFILE.VpnProfileSASUrl
-```
-
-## <a name="2-extract-the-zip-file"></a>2. zip dosyasını Ayıkla
-
-Zip dosyasını ayıklayın. Dosya aşağıdaki klasörleri içerir:
-
-* AzureVPN
-* Genel
-* OpenVPN (ağ geçidinde OpenVPN ve Azure AD kimlik doğrulaması ayarlarını etkinleştirdiyseniz). Bkz. [kiracı oluşturma](openvpn-azure-ad-tenant.md).)
-
-## <a name="3-retrieve-information"></a>3. bilgileri alma
-
-**AzureVPN** klasöründe, ***azurevpnconfig. xml*** dosyasına gidin ve Not defteri ile açın. Aşağıdaki Etiketler arasındaki metni bir yere unutmayın.
-
-```
-<audience>          </audience>
-<issuer>            </issuer>
-<tennant>           </tennant>
-<fqdn>              </fqdn>
-<serversecret>      </serversecret>
-```
-
-## <a name="profile-details"></a>Profil ayrıntıları
-
-Bir bağlantı eklediğinizde, profil ayrıntıları sayfası için önceki adımda topladığınız bilgileri kullanın. Alanlar aşağıdaki bilgilere karşılık gelir:
-
-   * **Hedef kitle:** Belirtecin hedeflenen alıcı kaynağını tanımlar
-   * **Veren:** Belirteci oluşturan güvenlik belirteci hizmetini (STS) ve Azure AD kiracısını tanımlar
-   * **Kiracı:** Belirteci veren dizin kiracının sabit, benzersiz bir tanımlayıcısını içerir
-   * **FQDN:** Azure VPN Gateway 'de tam etki alanı adı (FQDN)
-   * **Sunucusecret:** VPN Gateway önceden paylaşılan anahtarı
-
-## <a name="folder-contents"></a>Klasör içeriği
-
-* **OpenVPN klasörü** , anahtarı ve sertifikayı içerecek şekilde değiştirilmesi gereken *ovpn* profilini içerir. Daha fazla bilgi için bkz. [Azure Için OpenVPN Istemcilerini yapılandırma VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). VPN ağ geçidinde Azure AD kimlik doğrulaması seçilirse, bu klasör ZIP dosyasında mevcut olmayacaktır. Bunun yerine, azurevpnconfig. xml AzureVPN klasöründe olacaktır.
-
-* **Genel klasör** , ortak sunucu sertifikasını ve vpnsettings. xml dosyasını içerir. VpnSettings. xml dosyası, genel bir istemciyi yapılandırmak için gereken bilgileri içerir.
-
-* İndirilen ZIP dosyası, **WindowsAmd64** ve **WindowsX86** klasörlerini de içerebilir. Bu klasörler, Windows istemcileri için SSTP ve Ikev2 için yükleyiciyi içerir. İstemci üzerinde yönetici haklarına sahip olmanız gerekir.
+* **OpenVPN klasörü,** anahtarı ve sertifikayı içerecek şekilde değiştirilmesi gereken *ovpn* profilini içerir. Daha fazla bilgi için Azure [VPN Ağ Geçidi için OpenVPN istemcilerini yapılandırın'](vpn-gateway-howto-openvpn-clients.md#windows)a bakın. VPN ağ geçidinde Azure AD kimlik doğrulaması seçilirse, bu klasör zip dosyasında bulunmaz. Bunun yerine, azurevpnconfig.xml AzureVPN klasöründe olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Noktadan siteye hakkında daha fazla bilgi için bkz. [Noktadan siteye hakkında](point-to-site-about.md).
+Noktadan siteye hakkında daha fazla bilgi için [bkz.](point-to-site-about.md)

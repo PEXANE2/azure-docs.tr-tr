@@ -1,6 +1,6 @@
 ---
-title: SaaS uygulamalarına otomatik Kullanıcı hesabı sağlamayı bildir
-description: Otomatik Kullanıcı hesabı sağlama işlerinin durumunu denetlemeyi ve bireysel kullanıcıların sağlanması hakkında nasıl sorun gidermeyi öğrenin.
+title: Otomatik kullanıcı hesabı sağlamayı SaaS uygulamalarına bildirme
+description: Otomatik kullanıcı hesabı sağlama işlerinin durumunu nasıl denetleştirip tek tek kullanıcıların sağlanmasında nasıl sorun giderilenöğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,65 +15,65 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 289347474189d1fb57d95a2f424cf381e1e37875
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 19d76f69669ffa13d1d55ffa807e6c4818b8840c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282197"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: otomatik Kullanıcı hesabı sağlama üzerinde raporlama
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: Otomatik kullanıcı hesabı sağlama hakkında raporlama
 
-Azure Active Directory (Azure AD), uçtan uca kimlik yaşam döngüsü yönetimi amacıyla SaaS uygulamalarındaki ve diğer sistemlerdeki Kullanıcı hesaplarının sağlamasını otomatik hale getirmeye yardımcı olan bir [Kullanıcı hesabı sağlama hizmeti](user-provisioning.md) içerir. Azure AD, [Azure AD uygulama galerisinin](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)"öne çıkan" bölümündeki tüm uygulamalar ve sistemler için önceden tümleştirilmiş Kullanıcı sağlama bağlayıcılarını destekler.
+Azure Etkin Dizin (Azure AD), uçtan uca kimlik yaşam döngüsü yönetimi amacıyla SaaS uygulamalarında ve diğer sistemlerde kullanıcı hesaplarının sağlanmasının otomatikleştirilmesine yardımcı olan bir [kullanıcı hesabı sağlama hizmeti](user-provisioning.md) içerir. Azure AD, tüm uygulamalar ve sistemler için önceden tümleşik kullanıcı sağlama bağlayıcılarını [burada](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)kullanıcı sağlama öğreticileri ile destekler.
 
-Bu makalede, kurulumu yapıldıktan sonra sağlama işlerinin durumunun nasıl denetleneceği ve bireysel kullanıcıların ve grupların sağlanmasından nasıl giderileceği açıklanmaktadır.
+Bu makalede, iş verme durumu ayarlandıktan sonra nasıl denetlendirilebilen ve tek tek kullanıcıların ve grupların sağlanmasında nasıl sorun giderilen açıklanmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Sağlama bağlayıcıları, desteklenen uygulama için [belirtilen belgeleri](../saas-apps/tutorial-list.md) izleyerek [Azure Portal](https://portal.azure.com)kullanılarak ayarlanır ve yapılandırılır. Yapılandırılıp çalıştırıldığında, sağlama işleri iki yöntemden birini kullanarak bildirilebilir:
+Sağlama bağlayıcıları, desteklenen uygulama için [sağlanan belgeleri](../saas-apps/tutorial-list.md) izleyerek [Azure portalı](https://portal.azure.com)kullanılarak ayarlanır ve yapılandırılır. Yapılandırıldıktan ve çalıştırıldıktan sonra, sağlama işleri iki yöntemden biri kullanılarak raporlanabilir:
 
-* **Azure Portal** -Bu makalede öncelikle, bir sağlama Özeti raporu ve belirli bir uygulama için ayrıntılı sağlama denetim günlükleri sağlayan [Azure Portal](https://portal.azure.com)rapor bilgilerinin alınması açıklanmaktadır.
-* **Denetim API 'si** -Azure Active Directory ayrıntılı sağlama denetim günlüklerinin programlı bir şekilde alınmasına izin veren bir denetim API 'si de sağlar. Bu API 'yi kullanmaya özgü belgeler için bkz. [Azure Active Directory Denetim API 'si başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Bu makale, API 'yi nasıl kullanacağınızı özellikle kapsamadığından, denetim günlüğüne kaydedilen sağlama olaylarının türlerini ayrıntılandırır.
+* **Azure portalı** - Bu makalede, öncelikle, hem bir sağlama özeti raporu hem de belirli bir uygulama için ayrıntılı sağlama denetim günlükleri sağlayan [Azure portalından](https://portal.azure.com)rapor bilgilerinin alınması açıklanmaktadır.
+* **Denetim API' si** - Azure Active Directory, ayrıntılı sağlama denetim günlüklerinin programlı olarak alınmasını sağlayan bir Denetim API'si de sağlar. Bu API'yi kullanmaya özgü belgeler için [Azure Etkin Dizin denetimi API başvurusuna](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) bakın. Bu makalede API'nin nasıl kullanılacağı özel olarak kapsamaktadır, ancak denetim günlüğüne kaydedilen sağlama olaylarının türlerini ayrıntılandırmaz.
 
 ### <a name="definitions"></a>Tanımlar
 
-Bu makale aşağıda tanımlanan aşağıdaki terimleri kullanır:
+Bu makalede, aşağıda tanımlanan aşağıdaki terimler kullanınız:
 
-* **Kaynak sistem** -Azure AD sağlama hizmeti 'nin eşitlendiği kullanıcı deposu. Azure Active Directory, önceden tümleştirilmiş sağlama bağlayıcılarının çoğunluğunun kaynak sistemidir, ancak bazı özel durumlar vardır (örnek: Workday gelen eşitlemesi).
-* **Hedef sistem** -Azure AD sağlama hizmeti 'nin eşitlendiği kullanıcı deposu. Bu genellikle bir SaaS uygulamasıdır (örnekler: Salesforce, ServiceNow, G Suite, Iş için Dropbox), ancak bazı durumlarda Active Directory gibi bir şirket içi sistem olabilir (örnek: Active Directory için Workday gelen eşitlemesi).
+* **Kaynak Sistem** - Azure AD sağlama hizmetinin senkronize ettiği kullanıcı deposu. Azure Etkin Dizin, önceden tümleşik sağlama bağlayıcılarının çoğunun kaynak sistemidir, ancak bazı özel durumlar vardır (örnek: İş günü Gelen Eşitleme).
+* **Hedef Sistem** - Azure AD sağlama hizmetinin eşitletirolduğu kullanıcı deposu. Bu genellikle bir SaaS uygulamasıdır (örnekler: Salesforce, ServiceNow, G Suite, Dropbox for Business), ancak bazı durumlarda Active Directory (örnek: İş Günü Gelen Eşzamanlılık Active Directory) gibi bir şirket içi sistem olabilir.
 
-## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Azure portal sağlama raporlarının alınması
+## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Azure portalından sağlama raporları alma
 
-Belirli bir uygulama için sağlama raporu bilgilerini almak için, **etkinlik** bölümündeki [Azure Portal](https://portal.azure.com) ve &gt; **Enterprise Apps** &gt; **sağlama günlükleri (Önizleme)** **Azure Active Directory** başlatarak başlayın. Ayrıca, sağlama yapılandırılan kurumsal uygulamaya de gidebilirsiniz. Örneğin, kullanıcıları LinkedIn 'e sağlıyorsanız, uygulama ayrıntılarının gezinti yolu şu şekilde olur:
+Belirli bir uygulama için sağlama raporu bilgilerini almak için, **Etkinlik** bölümünde [Azure portalı](https://portal.azure.com) ve Azure **Active Directory** &gt; **Enterprise Apps** &gt; **Sağlama günlüklerini (önizleme)** başlatarak başlayın. Ayrıca, sağlamanın yapılandırıldığı Kurumsal Uygulama'ya da göz atabilirsiniz. Örneğin, kullanıcıları LinkedIn Yükseltme'ye uygun olarak salarsanız, uygulama ayrıntılarına giden gezinti yolu şudur:
 
-**Azure Active Directory tüm uygulamalar > > Kurumsal uygulamalar > LinkedIn yükselt**
+**Azure Active Directory > Kurumsal Uygulamalar > Tüm uygulamalar LinkedIn Yükseltme >**
 
-Buradan, sağlama ilerleme çubuğuna ve sağlama günlüklerine, aşağıda açıklanan şekilde erişebilirsiniz.
+Buradan, hem sağlama ilerleme çubuğuna hem de aşağıda açıklanan sağlama günlüklerine erişebilirsiniz.
 
-## <a name="provisioning-progress-bar"></a>Sağlama ilerleme çubuğu
+## <a name="provisioning-progress-bar"></a>İlerleme çubuğu sağlama
 
-[Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , verilen uygulamanın **sağlama** sekmesinde görünür. **Ayarlar**altındaki **geçerli durum** bölümünde bulunur ve geçerli başlangıç veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
+[Sağlama ilerleme çubuğu,](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) verilen uygulama için **Sağlama** sekmesinde görünür. **Ayarlar'ın**altındaki **Geçerli Durum** bölümünde yer alır ve geçerli başlangıç veya artımlı çevrimin durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
 
-* Eşitlenmiş ve kaynak sistem ile hedef sistem arasında sağlama için kapsamda bulunan ve şu anda kapsamdaki Toplam Kullanıcı ve/grup sayısı.
-* Eşitlemenin son çalıştırıldığı zaman. Eşitlemeler genellikle [ilk bir döngüden](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) sonra her 20-40 dakikada bir gerçekleşir.
-* Bir [Başlangıç döngüsünün](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) tamamlanıp tamamlanmadığını belirtir.
-* Sağlama işleminin karantinaya alınmış olup olmadığı ve karantina durumunun nedenleri (örneğin, geçersiz yönetici kimlik bilgileri nedeniyle hedef sistemle iletişim kurma hatası).
+* Senkronize edilmiş ve şu anda kaynak sistem ile hedef sistem arasında sağlama kapsamında olan toplam kullanıcı ve/grup sayısı.
+* Eşitleme en son çalıştırıldı. Eşitlemeler genellikle her 20-40 dakikada bir, bir [ilk döngü](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) tamamlandıktan sonra gerçekleşir.
+* [İlk döngütamamlanıp](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) tamamlanmadığı.
+* Sağlama işleminin karantinaya alınıp alınmadığı ve karantina durumunun nedeninin ne olduğu (örneğin, geçersiz yönetici kimlik bilgileri nedeniyle hedef sistemle iletişim kurmama).
 
-**Geçerli durum** , yöneticinin sağlama işinin işletimsel sistem durumunu kontrol etmek için arayacağı ilk alan olmalıdır.
+**Mevcut Durum,** yöneticilerin, tedarik işinin operasyonel durumunu kontrol etmek için baktıkları ilk yer olmalıdır.
 
- ![Özet raporu](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Özet rapor](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
-## <a name="provisioning-logs-preview"></a>Sağlama günlükleri (Önizleme)
+## <a name="provisioning-logs-preview"></a>Günlükleri sağlama (önizleme)
 
-Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD [sağlama günlüklerine](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. **Etkinlik** bölümünde &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Azure Active Directory** ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz. Sağlama verilerini kullanıcı adına veya kaynak sistemde ya da hedef sistemde tanımlayıcı temelinde arayabilirsiniz. Ayrıntılar için bkz. [sağlama günlükleri (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Günlüğe kaydedilen etkinlik olay türleri şunları içerir:
+Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD [sağlama günlüklerine](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. **Etkinlik** bölümünde **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Sağlama günlüklerini (önizleme)** seçerek Azure portalındaki sağlama günlüklerine erişebilirsiniz. Sağlama verilerini, kaynak sistemde veya hedef sistemde kullanıcının adına veya tanımlayıcıya göre arayabilirsiniz. Ayrıntılar için, [Sağlama günlükleri (önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)bakın. Günlüğe kaydedilmiş etkinlik olay türleri şunlardır:
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Sağlama Özeti raporu ve sağlama günlükleri, yöneticilerin çeşitli kullanıcı hesabı sağlama sorunlarını gidermesine yardımcı olan bir anahtar rol oynar.
+Özet raporu ve sağlama günlükleri, yöneticilerin çeşitli kullanıcı hesabı sağlama sorunlarını gidermelerine yardımcı olmak için önemli bir rol oynar.
 
-Otomatik Kullanıcı sağlama sorunlarını gidermeye yönelik senaryo tabanlı yönergeler için bkz. [kullanıcıları yapılandırma ve uygulama sağlama sorunları](../app-provisioning/application-provisioning-config-problem.md).
+Otomatik kullanıcı sağlama sorunlarının nasıl giderilene ilişkin senaryo tabanlı kılavuz için, [kullanıcıları bir uygulamaya yapılandırma ve sağlama sorunları](../app-provisioning/application-provisioning-config-problem.md)konusuna bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

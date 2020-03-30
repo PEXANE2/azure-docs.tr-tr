@@ -1,35 +1,35 @@
 ---
-title: Service Fabric Hizmetleri ölçeklenebilirliği
-description: Azure Service Fabric ölçeklendirme ve uygulamaları ölçeklendirmek için kullanılan çeşitli teknikler hakkında bilgi edinin.
+title: Hizmet Kumaş ı hizmetlerinin ölçeklenebilirliği
+description: Azure Hizmet Kumaşı'nda ölçekleme ve uygulamaları ölçeklendirmek için kullanılan çeşitli teknikler hakkında bilgi edinin.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282568"
 ---
-# <a name="scaling-in-service-fabric"></a>Service Fabric ölçeklendirme
-Azure Service Fabric, bir kümenin düğümlerinde Hizmetleri, bölümleri ve çoğaltmaları yöneterek ölçeklenebilir uygulamalar oluşturmayı kolaylaştırır. Aynı donanımda birçok iş yükünün çalıştırılması maksimum kaynak kullanımını sağlar, ancak aynı zamanda iş yüklerinizi ölçeklendirmeye nasıl seçeceğiniz konusunda esneklik sağlar. Bu Channel 9 videosu, ölçeklenebilir mikro hizmet uygulamaları oluşturmayı açıklar:
+# <a name="scaling-in-service-fabric"></a>Hizmet Kumaşında Ölçekleme
+Azure Hizmet Kumaşı, bir kümenin düğümlerinde hizmetleri, bölümleri ve yinelemeleri yöneterek ölçeklenebilir uygulamalar oluşturmayı kolaylaştırır. Aynı donanımda birçok iş yükü çalıştırmak maksimum kaynak kullanımını sağlar, ancak iş yüklerinizi nasıl ölçeklendirmeyi seçtiğiniz açısından da esneklik sağlar. Bu Kanal 9 videosu ölçeklenebilir mikrohizmetler uygulamalarını nasıl oluşturabileceğinizi açıklar:
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T116/player]
 
-Service Fabric ölçeklendirme birkaç farklı şekilde gerçekleştirilir:
+Hizmet KumaşÖlçekleme birkaç farklı şekilde gerçekleştirilir:
 
-1. Durum bilgisi olmayan hizmet örnekleri oluşturarak veya kaldırarak ölçekleme
+1. Durum suz hizmet örnekleri oluşturarak veya kaldırarak ölçekleme
 2. Yeni adlandırılmış hizmetler oluşturarak veya kaldırarak ölçekleme
 3. Yeni adlandırılmış uygulama örnekleri oluşturarak veya kaldırarak ölçekleme
-4. Bölümlenmiş Hizmetleri kullanarak ölçeklendirme
-5. Kümeden düğüm ekleyerek ve kaldırarak ölçekleme 
-6. Küme Kaynak Yöneticisi ölçümlerini kullanarak ölçeklendirme
+4. Bölümlenmiş hizmetleri kullanarak ölçekleme
+5. Kümeden düğümler ekleyerek ve kaldırarak ölçekleme 
+6. Küme Kaynak Yöneticisi ölçümlerini kullanarak ölçekleme
 
-## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Durum bilgisi olmayan hizmet örnekleri oluşturarak veya kaldırarak ölçekleme
-Service Fabric içinde ölçeklendirmenin en basit yöntemlerinden biri, durum bilgisi olmayan hizmetlerle birlikte çalışmaktadır. Durum bilgisi olmayan bir hizmet oluşturduğunuzda, `InstanceCount`tanımlama şansı elde edersiniz. `InstanceCount`, hizmet başlatıldığında hizmetin kodunun kaç tane çalışan kopyasının oluşturulduğunu tanımlar. Örneğin, kümede 100 düğüm olduğunu varsayalım. Ayrıca, 10 `InstanceCount` bir hizmetin oluşturulduğunu da varsayalım. Çalışma zamanı sırasında kodun çalışan 10 kopyası hepsi çok meşgul hale gelebilir (veya yeterince meşgul olmayabilir). Bu iş yükünü ölçeklendirmenin bir yolu, örnek sayısını değiştirmektir. Örneğin, bazı izleme veya yönetim kodu parçaları, iş yükünün yük temelinde ölçeklendirilmesine veya kullanıma hazır olmasına bağlı olarak, mevcut örnek sayısını 50 veya 5 olarak değiştirebilir. 
+## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Durum suz hizmet örnekleri oluşturarak veya kaldırarak ölçekleme
+Service Fabric içinde ölçeklendirmenin en basit yollarından biri, devletsiz hizmetlerle çalışır. Bir devletsiz hizmet oluşturduğunuzda, bir `InstanceCount`. `InstanceCount`hizmet başlatıldığında, bu hizmetin kodunun kaç çalışan kopyasının oluşturulduğunu tanımlar. Örneğin, kümede 100 düğüm olduğunu varsayalım. Ayrıca bir hizmetin `InstanceCount` 10'un üzerinde bir hizmetle oluşturulduğunu da söyleyebilir. Çalışma süresi boyunca, kodun çalışan 10 kopyası çok meşgul olabilir (veya yeterince meşgul olmayabilir). Bu iş yükünü ölçeklendirmenin bir yolu, örnek sayısını değiştirmektir. Örneğin, bazı izleme veya yönetim kodu, iş yükünün yüke bağlı olarak ölçeklenmesi gerekip gerekmediğine bağlı olarak varolan örnek sayısını 50 veya 5 olarak değiştirebilir. 
 
-C# İÇİN:
+C#:
 
 ```csharp
 StatelessServiceUpdateDescription updateDescription = new StatelessServiceUpdateDescription(); 
@@ -37,15 +37,15 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-PowerShell
+Powershell:
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
 ```
-### <a name="using-dynamic-instance-count"></a>Dinamik örnek sayısı kullanma
-Özel durum bilgisi olmayan hizmetler için, Service Fabric örnek sayısını değiştirmek için otomatik bir yol sunar. Bu, hizmetin kullanılabilir düğüm sayısıyla dinamik olarak ölçeklendirilmesine olanak tanır. Bu davranışı kabul etmenin yolu, örnek sayısı =-1 ' i ayarlamanıza olanak sağlar. InstanceCount =-1, "Bu durum bilgisiz hizmeti her düğümde Çalıştır" diyen Service Fabric bir yönergedir. Düğüm sayısı değişirse Service Fabric, hizmetin tüm geçerli düğümlerde çalıştığından emin olmak için örnek sayısını eşleşecek şekilde otomatik olarak değiştirir. 
+### <a name="using-dynamic-instance-count"></a>Dinamik Örnek Sayısını Kullanma
+Özellikle devletsiz hizmetler için Service Fabric, örnek sayısını değiştirmenin otomatik bir yolunu sunar. Bu, hizmetin kullanılabilir düğüm sayısıyla dinamik olarak ölçeklendirmesine olanak tanır. Bu davranışı seçmenin yolu örnek sayısını = -1 olarak ayarlamaktır. InstanceCount = -1, Service Fabric'e "Bu devletsiz hizmeti her düğümde çalıştırın" diyen bir yönergedir. Düğüm sayısı değişirse, Hizmet Kumaşı örnek sayısını otomatik olarak eşleşecek şekilde değiştirerek hizmetin tüm geçerli düğümlerde çalışmasını sağlar. 
 
-C# İÇİN:
+C#:
 
 ```csharp
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -54,94 +54,94 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-PowerShell
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
 ```
 
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Yeni adlandırılmış hizmetler oluşturarak veya kaldırarak ölçekleme
-Adlandırılmış bir hizmet örneği, kümedeki bazı adlandırılmış uygulama örnekleri içinde hizmet türünün belirli bir örneğidir (bkz. [uygulama yaşam döngüsü Service Fabric](service-fabric-application-lifecycle.md)). 
+Adlandırılmış hizmet örneği, kümedeki bazı adlandırılmış uygulama örneği içinde bir hizmet türünün belirli bir örneğidir [(bkz. Hizmet Kumaşı uygulama yaşam döngüsü).](service-fabric-application-lifecycle.md) 
 
-Hizmetler daha fazla veya daha az hale geldiği için yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlar, genellikle mevcut hizmetlerde yükün azaltılmasına izin verir. Hizmet oluştururken, Service Fabric kümesi Kaynak Yöneticisi Hizmetleri dağıtılmış bir biçimde kümeye koyar. Tam kararlar, kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleştirme kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın olarak, [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)arayan birisi gibi yönetim eylemleri veya [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)kodla çağrı yapılabilir. `CreateServiceAsync`, kümede çalışan diğer hizmetlerden da çağrılabilir.
+Hizmetler az çok meşgul hale geldikçe yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlayarak genellikle varolan hizmetlerdeki yükün azaltılmasına olanak tanır. Hizmet oluştururken, Hizmet Kumaş Kümesi Kaynak Yöneticisi hizmetleri kümedeki dağıtılmış bir şekilde yerleştirir. Kesin kararlar kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleşim kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın ları [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)ya arayan biri [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)gibi yönetim eylemleri yoluyla ya da kod arama yoluyla. `CreateServiceAsync`kümede çalışan diğer hizmetler içinden de çağrılabilir.
 
-Hizmetlerin dinamik olarak oluşturulması, her tür senaryoda kullanılabilir ve ortak bir modeldir. Örneğin, belirli bir iş akışını temsil eden bir durum bilgisi olan hizmeti düşünün. İşi temsil eden çağrılar bu hizmete kadar görünür ve bu hizmet bu iş akışına yönelik adımları yürütecek ve ilerlemeyi kaydetmeye devam etmektedir. 
+Hizmetleri dinamik olarak oluşturmak her türlü senaryoda kullanılabilir ve yaygın bir desendir. Örneğin, belirli bir iş akışını temsil eden durumlu bir hizmet düşünün. İşi temsil eden çağrılar bu hizmete gelecek ve bu hizmet bu iş akışına giden adımları yürütecek ve ilerleme kaydedecek. 
 
-Bu belirli hizmet ölçeğini nasıl yaparsınız? Hizmet, bazı bir biçimde birden çok kiracı olabilir ve aynı iş akışının birçok farklı örneği için aynı anda birden çok farklı örnek için çağrıları kabul edebilir ve adımları başlatabilir. Ancak, artık aynı iş akışının birçok farklı örneğine, farklı aşamalara ve farklı müşterilere kadar endişelenmek zorunda olduğundan, bu kodu daha karmaşık hale getirebilirsiniz. Aynı zamanda birden çok iş akışını aynı anda işlemek, ölçek sorununu çözmez. Bunun nedeni, bazı bir noktada bu hizmetin belirli bir makineye sığması için çok fazla kaynak tüketmesi olacaktır. İlk yerde bu model için derlenmedi birçok hizmet, kendi kodlarında bazı ilgili performans veya yavaşlama nedeniyle zorluk gösterebilir. Bu tür sorunlar, bir hizmetin, izlenen eşzamanlı iş akışı sayısı daha büyük olduğunda da çalışmamasına neden olur.  
+Bu özel hizmet ölçeğini nasıl yaparsınız? Hizmet, bir şekilde çok kiracılı olabilir ve aramaları kabul edebilir ve aynı iş akışının birçok farklı örneği için aynı anda adımları başlatabilir. Ancak, şimdi aynı iş akışının birçok farklı örnekleri hakkında endişelenmenize gerek olduğundan, kodu daha karmaşık hale getirebilir, tüm farklı aşamalarında ve farklı müşterilerden. Ayrıca, birden çok iş akışını aynı anda işlemek ölçek sorununu çözmez. Bunun nedeni, bir noktada bu hizmetin belirli bir makineye sığmayacak kadar çok kaynak tüketir olmasıdır. İlk etapta bu desen için inşa edilmedi birçok hizmet de kendi kodbazı doğal darboğaz veya yavaşlama nedeniyle zorluk la karşılaşır. Bu tür sorunlar, izlediği eşzamanlı iş akışları sayısı büyüyünce hizmetin de çalışmamasını neden olur.  
 
-Bir çözüm, izlemek istediğiniz iş akışının her farklı örneği için bu hizmetin bir örneğini oluşturmaktır. Bu harika bir modeldir ve hizmetin durum bilgisiz veya durum bilgisi olup olmadığı konusunda çalışmaktadır. Bu düzenin çalışması için genellikle "Iş yükü Yöneticisi hizmeti" olarak davranan başka bir hizmet vardır. Bu hizmetin işi istekleri almak ve bu istekleri diğer hizmetlere yönlendirmekte. Yönetici iletiyi aldığında iş yükü hizmetinin bir örneğini dinamik olarak oluşturabilir ve istekleri bu hizmetlere geçirebilir. Belirli bir iş akışı hizmeti işini tamamladığında, yönetici hizmeti de geri çağrılar alabilir. Yönetici bu geri çağırmaları aldığında, iş akışı hizmetinin bu örneğini silebilir veya daha fazla çağrı bekleniyorsa onu bırakabilirsiniz. 
+Çözüm, izlemek istediğiniz iş akışının her farklı örneği için bu hizmetin bir örneğini oluşturmaktır. Bu büyük bir desen ve hizmet stateless veya stateful olup olmadığını çalışır. Bu kalıbın çalışması için genellikle "İş Yükü Yöneticisi Hizmeti" olarak davranan başka bir hizmet vardır. Bu hizmetin görevi istek almak ve bu istekleri diğer hizmetlere yönlendirmektir. Yönetici, iletiyi aldığında iş yükü hizmetinin bir örneğini dinamik olarak oluşturabilir ve ardından istekleri bu hizmetlere aktarabilir. Yönetici hizmeti, belirli bir iş akışı hizmeti işini tamamladığında geri çağrı alabilir. Yönetici bu geri aramaları aldığında, iş akışı hizmetinin bu örneğini silebilir veya daha fazla arama bekleniyorsa bırakabilir. 
 
-Bu tür bir yöneticinin gelişmiş sürümleri, yönettiği hizmetlerin havuzlarını bile oluşturabilir. Havuz, yeni bir istek geldiğinde hizmetin dönmesini beklemek zorunda olmadığından emin olmanıza yardımcı olur. Bunun yerine, yönetici yalnızca havuzdan meşgul olmayan bir iş akışı hizmeti seçebilir ya da rastgele yol açabilir. Bir hizmet havuzunun kullanılabilir tutulması, isteğin yeni bir hizmetin sonlanmasını beklemek gerektiğinden, yeni istekleri daha hızlı işlemesini sağlar. Yeni hizmetler oluşturmak hızlı, ancak ücretsiz veya anlık değildir. Havuz, isteğin hizmet vermeden önce beklemesi gereken süreyi en aza indirmenize yardımcı olur. En çok yanıt süresi en fazla olduğunda bu yöneticiyi ve havuz modelini görürsünüz. İsteği kuyruğa alma ve hizmeti arka planda oluşturma ve _daha sonra_ , hizmetin Şu anda bekleyen iş miktarının bir izlemeye göre hizmetleri oluşturup silen gibi popüler bir yönetici de vardır. 
+Bu tür yöneticinin gelişmiş sürümleri, yönettiği hizmetlerin havuzlarını bile oluşturabilir. Havuz, yeni bir istek geldiğinde hizmetin dönmesini beklememelerini sağlamaya yardımcı olur. Bunun yerine, yönetici havuzdan şu anda meşgul olmayan bir iş akışı hizmeti seçebilir veya rasgele rota. Hizmet havuzunu kullanılabilir tutmak, isteğin yeni bir hizmetin döndürülmesini beklemeolasılığı daha düşük olduğundan, yeni istekleri işlemeyi hızlandırır. Yeni hizmetler oluşturmak hızlıdır, ancak ücretsiz veya anlık değildir. Havuz, isteğin hizmete girmeden önce beklemesi gereken süreyi en aza indirmeye yardımcı olur. Yanıt süreleri en önemli olduğunda bu yöneticiyi ve havuz deseni sık sık görürsünüz. İsteği sıralamak ve hizmeti arka planda oluşturmak ve _sonra_ aktarmak da popüler bir yönetici desenidir, çünkü hizmetin şu anda bekleyen iş miktarının bazı izlemelerine dayalı olarak hizmetler oluşturmak ve siler. 
 
 ## <a name="scaling-by-creating-or-removing-new-named-application-instances"></a>Yeni adlandırılmış uygulama örnekleri oluşturarak veya kaldırarak ölçekleme
-Tüm uygulama örneklerinin oluşturulması ve silinmesi, hizmet oluşturma ve silme düzenine benzer. Bu model için, görmekte olan isteklere ve küme içindeki diğer hizmetlerden aldığı bilgilere göre karar veren bir yönetici hizmeti vardır. 
+Tüm uygulama örnekleri oluşturma ve silme, hizmet oluşturma ve silme desenine benzer. Bu desen için, küme içindeki diğer hizmetlerden aldığı isteklere ve bilgilere dayanarak karar veren bazı yönetici hizmeti vardır. 
 
-Ne zaman var olan bir uygulamada yeni bir adlandırılmış hizmet örnekleri oluşturmak yerine yeni bir adlandırılmış uygulama örneği oluşturulması gerekir? Birkaç durum vardır:
+Varolan bazı uygulamalarda yeni adlandırılmış hizmet örnekleri oluşturmak yerine yeni bir adlandırılmış uygulama örneği oluşturma ne zaman kullanılmalıdır? Birkaç dava var:
 
   * Yeni uygulama örneği, kodu belirli bir kimlik veya güvenlik ayarları altında çalışması gereken bir müşteri içindir.
-    * Service Fabric, farklı kod paketlerinin belirli kimlikler altında çalışacak şekilde tanımlanmasını sağlar. Farklı kimlikler altında aynı kod paketini başlatmak için, etkinleştirmelerin farklı uygulama örneklerinde gerçekleşmesi gerekir. Mevcut bir müşterinin iş yüklerinin dağıtıldığı bir durumu göz önünde bulundurun. Bunlar, uzak veritabanları veya diğer sistemler gibi diğer kaynaklara erişimi izleyip denetleyebilmeniz için belirli bir kimlik altında çalışıyor olabilir. Bu durumda, yeni bir müşteri kaydolduğunda, büyük olasılıkla kodlarını aynı bağlamda (işlem alanı) etkinleştirmek istemezsiniz. Mümkün olsa da, bu, servis kodunuzun belirli bir kimlik bağlamı dahilinde çalışmasını zorlaştırır. Genellikle daha fazla güvenlik, yalıtım ve kimlik yönetim kodu olmalıdır. Aynı uygulama örneği içinde farklı adlandırılmış hizmet örnekleri kullanmak ve bu nedenle aynı işlem alanına sahip olmak yerine farklı adlandırılmış Service Fabric uygulama örnekleri kullanabilirsiniz. Bu, farklı kimlik bağlamlarının tanımlanması kolaylaşır.
-  * Yeni uygulama örneği aynı zamanda bir yapılandırma yolu görevi görür
-    * Varsayılan olarak, bir uygulama örneği içindeki belirli bir hizmet türünün tüm adlandırılmış hizmet örnekleri, belirli bir düğümdeki aynı işlemde çalışır. Bunun anlamı, her bir hizmet örneğini farklı şekilde yapılandırabilirken, bu durum karmaşıktır. Hizmetlerin bir yapılandırma paketi içinde yapılandırmalarını aramak için kullandıkları bazı belirteçleri olmalıdır. Genellikle bu yalnızca hizmetin adıdır. Bu sorunsuz bir şekilde çalışıyor, ancak yapılandırmayı bu uygulama örneği içindeki bireysel adlandırılmış hizmet örneklerinin adlarına bağar. Yapılandırma normalde uygulama örneğine özgü değerlerle tasarım zamanı yapıtı olduğundan, bu kafa karıştırıcı ve yönetimi zor olabilir. Her zaman daha fazla hizmet oluşturmak, yapılandırma paketlerindeki bilgileri değiştirmek veya yeni hizmetlerin belirli bilgilerini aramak üzere yenilerini dağıtmak için daha fazla uygulama yükseltmesi anlamına gelir. Yeni bir adlandırılmış uygulama örneğinin tümüyle oluşturulması genellikle daha kolay. Ardından, hizmetler için hangi yapılandırmanın gerekli olduğunu ayarlamak üzere uygulama parametrelerini kullanabilirsiniz. Bu şekilde, bu adlandırılmış uygulama örneği içinde oluşturulan tüm hizmetler belirli yapılandırma ayarlarını alabilir. Örneğin, her müşterinin gizli dizi ayarları ve özelleştirmeleri gibi tek bir yapılandırma dosyasına sahip olmak yerine, bu ayarlara sahip her müşteri için farklı bir uygulama örneği olması gerekir. geçersiz kılınan. 
-  * Yeni uygulama bir yükseltme sınırı görevi görür
-    * Service Fabric içinde farklı adlandırılmış uygulama örnekleri yükseltme için sınır olarak görev yapar. Adlandırılmış bir uygulama örneğinin bir yükseltmesi, başka bir adlandırılmış uygulama örneğinin çalıştırıldığı kodu etkilemez. Farklı uygulamalar aynı düğümlerin farklı sürümlerini aynı düğümlerde çalıştırmaya sona acaktır. Yeni kodun başka bir hizmet ile aynı yükseltmelere göre izlenmesi gerekip gerekmediğini seçebilmeniz için bir ölçeklendirme kararı oluşturmanız gerektiğinde bu bir etken olabilir. Örneğin, bir çağrının, belirli bir müşterinin iş yüklerini ölçeklendirmekten sorumlu Yönetim hizmetine, Hizmetleri dinamik olarak oluşturup silerek sorumlu olduğunu varsayalım. Ancak bu durumda, çağrı _Yeni_ bir müşteriyle ilişkili bir iş yüküne yöneliktir. Çoğu müşteri, yalnızca daha önce listelenen güvenlik ve yapılandırma nedenleriyle değil, ancak yazılımın belirli sürümlerini çalıştırmanın ve ne zaman yükseltildikleri gibi daha fazla esneklik sağladığından daha fazla esneklik sağladığından daha fazla esneklik sağlar. Ayrıca, bir yükseltmenin dokunmasına yönelik hizmetlerinizin miktarını daha fazla bölümlemek için yeni bir uygulama örneği oluşturabilir ve bu hizmeti oluşturabilirsiniz. Ayrı uygulama örnekleri, uygulama yükseltmeleri yaparken daha fazla ayrıntı düzeyi sağlar ve ayrıca bir/B testini ve mavi/yeşil dağıtımları etkinleştirir. 
-  * Mevcut uygulama örneği dolu
-    * Service Fabric, [uygulama kapasitesi](service-fabric-cluster-resource-manager-application-groups.md) , belirli uygulama örnekleri için kullanılabilir kaynak miktarını denetlemek için kullanabileceğiniz bir kavramdır. Örneğin, belirli bir hizmetin ölçeklendirmek için başka bir örneğin oluşturulmasını gerektiren bir hizmet olduğuna karar verebilirsiniz. Ancak, bu uygulama örneği belirli bir ölçüm için kapasite dışında. Bu müşteriye veya iş yüküne hala daha fazla kaynak verilmesi gerekiyorsa, bu uygulama için mevcut kapasiteyi artırabilir ya da yeni bir uygulama oluşturabilirsiniz. 
+    * Service Fabric, belirli kimlikler altında çalışacak farklı kod paketlerinin tanımlanmasına olanak tanır. Aynı kod paketini farklı kimlikler altında başlatmak için etkinleştirmelerin farklı uygulama örneklerinde gerçekleşmesi gerekir. Varolan bir müşterinin iş yüklerinin dağıtıldığı bir servis talebi düşünün. Bunlar, uzak veritabanları veya diğer sistemler gibi diğer kaynaklara erişimlerini izleyebilmeniz ve denetleyebilmeniz için belirli bir kimlik altında çalışıyor olabilir. Bu durumda, yeni bir müşteri kaydolduğunda, büyük olasılıkla kodlarını aynı bağlamda (işlem alanı) etkinleştirmek istemezsiniz. Bunu yaparken, bu durum hizmet kodunuzu belirli bir kimlik bağlamında hareket etmesini zorlaştırır. Genellikle daha fazla güvenlik, yalıtım ve kimlik yönetimi kodunuz olmalıdır. Aynı uygulama örneği içinde ve dolayısıyla aynı işlem alanı içinde farklı adlandırılmış hizmet örnekleri kullanmak yerine, farklı adlandırılmış Hizmet Kumaş Uygulaması örneklerini kullanabilirsiniz. Bu, farklı kimlik bağlamlarının tanımlanmasını kolaylaştırır.
+  * Yeni uygulama örneği de bir yapılandırma aracı olarak hizmet vermektedir
+    * Varsayılan olarak, bir uygulama örneği içinde belirli bir hizmet türü adlandırılmış hizmet örneklerinin tümü belirli bir düğüm üzerinde aynı işlemde çalışacaktır. Bunun anlamı, her hizmet örneğini farklı şekilde yapılandırabilmenize veya bunu yapmanın karmaşık olduğudur. Hizmetler, yapılandırma paketi içinde config'lerini aramak için kullandıkları bazı belirteçlere sahip olmalıdır. Genellikle bu sadece servisin adıdır. Bu iyi çalışır, ancak bu uygulama örneği içinde bireysel adlı hizmet örneklerinin adlarını yapılandırma çiftler. Yapılandırma normalde uygulama örneğine özgü değerlere sahip bir tasarım zamanı yapı olduğundan, bu kafa karıştırıcı ve yönetilmesi zor olabilir. Daha fazla hizmet oluşturmak, config paketlerindeki bilgileri değiştirmek veya yeni hizmetlerin kendi özel bilgilerini arayabilmeleri için yenilerini dağıtmak için her zaman daha fazla uygulama yükseltmesi anlamına gelir. Yepyeni bir uygulama örneği oluşturmak genellikle daha kolaydır. Ardından, hizmetler için gerekli olan yapılandırmayı ayarlamak için uygulama parametrelerini kullanabilirsiniz. Bu şekilde, adlandırılmış uygulama örneğinde oluşturulan tüm hizmetler belirli yapılandırma ayarlarını devralabilir. Örneğin, sırlar veya müşteri başına kaynak sınırları gibi her müşteri için ayarlar ve özelleştirmeler içeren tek bir yapılandırma dosyasına sahip olmak yerine, bu ayarlara sahip her müşteri için farklı bir uygulama örneğine sahip olursunuz Geçersiz kılın -mış. 
+  * Yeni uygulama bir yükseltme sınırı olarak hizmet vermektedir
+    * Service Fabric içinde, farklı adlandırılmış uygulama örnekleri yükseltme için sınır olarak hizmet vermektedir. Adlandırılmış bir uygulama örneğinin yükseltimi, başka bir adlandırılmış uygulama örneğinin çalıştırdığı kodu etkilemez. Farklı uygulamalar aynı düğümlerde aynı kodun farklı sürümlerini çalıştırarak sona erer. Yeni kodun başka bir hizmetle aynı yükseltmeleri izleyip izlememesi gerektiğini seçebileceğinizden, ölçekleme kararı almanız gerektiğinde bu bir etken olabilir. Örneğin, hizmetleri dinamik olarak oluşturarak ve silerek belirli bir müşterinin iş yüklerini ölçeklemekten sorumlu yönetici hizmetine bir çağrı geldiğini varsay. Ancak bu durumda, arama _yeni_ bir müşteriyle ilişkili bir iş yükü içindir. Çoğu müşteri yalnızca daha önce listelenen güvenlik ve yapılandırma nedenleriyle değil, yazılımın belirli sürümlerini çalıştırma ve ne zaman yükseltildiklerini seçme açısından daha fazla esneklik sağladığı için birbirlerinden izole edilmeyi sever. Ayrıca yeni bir uygulama örneği oluşturabilir ve herhangi bir yükseltmenin dokunacağı hizmetlerinizin miktarını daha fazla bölmek için hizmeti orada oluşturabilirsiniz. Ayrı uygulama örnekleri, uygulama yükseltmeleri yaparken daha fazla parçalılık sağlar ve Ayrıca A/B sınamasını ve Mavi/Yeşil dağıtımlarını etkinleştirin. 
+  * Varolan uygulama örneği tam
+    * Hizmet Kumaşı'nda [uygulama kapasitesi,](service-fabric-cluster-resource-manager-application-groups.md) belirli uygulama örnekleri için kullanılabilir kaynak miktarını denetlemek için kullanabileceğiniz bir kavramdır. Örneğin, belirli bir hizmetin ölçeklendirmek için başka bir örneğin oluşturulması gerektiğine karar verebilirsiniz. Ancak, bu uygulama örneği belirli bir metrik için kapasite dışındadır. Bu özel müşteriye veya iş yüküne hala daha fazla kaynak verilmesi gerekiyorsa, bu uygulama için varolan kapasiteyi artırabilir veya yeni bir uygulama oluşturabilirsiniz. 
 
 ## <a name="scaling-at-the-partition-level"></a>Bölüm düzeyinde ölçekleme
-Service Fabric bölümlemeyi destekler. Bölümlendirme bir hizmeti, her biri bağımsız olarak çalışan birkaç mantıksal ve fiziksel bölüme ayırır. Tek bir çoğaltma kümesinin tüm çağrıları işlemesi ve tüm durumu tek seferde işlemesi gerektiğinden, bu durum bilgisi olmayan hizmetlerle yararlıdır. [Bölümlendirme genel bakışı](service-fabric-concepts-partitioning.md) , desteklenen bölümleme şemaları türleri hakkında bilgi sağlar. Her bölümün çoğaltmaları bir kümedeki düğümlere yayılır, bu hizmetin yükü dağıtılır ve hizmetin tamamı ya da herhangi bir bölüm için tek bir hata noktası olmadığı doğrulanıyor. 
+Service Fabric bölümleme desteklemektedir. Bölümleme, bir hizmeti her biri bağımsız olarak çalışan birkaç mantıksal ve fiziksel bölüme böler. Bu, hiç bir yineleme kümesinin tüm aramaları işlemek ve tüm durumu aynı anda işlemek zorunda olmadığından, durum hizmetleri için yararlıdır. [Bölümleme genel bakış](service-fabric-concepts-partitioning.md) desteklenen bölümleme düzenleri türleri hakkında bilgi sağlar. Her bölümün yinelemeleri bir kümedeki düğümlere yayılır, bu hizmetin yükünü dağıtır ve bir bütün olarak hizmetin veya herhangi bir bölümün tek bir hata noktası olmamasını sağlar. 
 
-Düşük anahtar 0, yüksek bir 99 ve bölüm sayısı 4 olan bir ranşlı bölümlendirme şeması kullanan bir hizmet düşünün. Üç düğümlü bir kümede, hizmet burada gösterildiği gibi her bir düğümdeki kaynakları paylaşan dört çoğaltmalarla Genişletilebilir:
+0'ın düşük anahtarı, 99'luk yüksek anahtarı ve 4 bölüm sayısıyla aralıklı bölümleme düzeni kullanan bir hizmet düşünün. Üç düğümlü bir kümede, hizmet, burada gösterildiği gibi her düğümdeki kaynakları paylaşan dört yinelemeyle birlikte dizilebilir:
 
 <center>
 
-![üç düğüm ile bölüm düzeni](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![Üç düğümlü bölüm düzeni](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
-Düğüm sayısını artırdıysanız, Service Fabric var olan çoğaltmalardan bazılarını buraya taşıyacaktır. Örneğin, düğüm sayısının dört olarak arttığını ve çoğaltmaların yeniden dağıtılması gerektiğini varsayalım. Artık hizmette, her biri farklı bölüme ait olan her düğüm üzerinde çalışan üç çoğaltma vardır. Bu, yeni düğüm soğuk olmadığından daha iyi kaynak kullanımına olanak tanır. Genellikle, her bir hizmetin kullanılabilir kaynakları daha fazla kaynağa sahip olduğu için performansı de artırır.
+Düğüm sayısını artırırsanız, Hizmet Kumaşı varolan yinelemelerin bazılarını oraya taşır. Örneğin, düğüm sayısının dörde çıkarıldığını ve yinelemelerin yeniden dağıtıldığını varsayalım. Şimdi hizmet şimdi her düğüm üzerinde çalışan üç yineleme, her biri farklı bölümlere ait vardır. Bu, yeni düğüm soğuk olmadığından daha iyi kaynak kullanımına olanak tanır. Genellikle, her hizmetin kullanabileceği daha fazla kaynağa sahip olduğundan performansı da artırır.
 
 <center>
 
-![](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
-dört düğüm ile bölüm düzeni </center>
+![Dört düğümlü bölüm düzeni](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+</center>
 
-## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Service Fabric kümesi Kaynak Yöneticisi ve ölçümleri kullanarak ölçeklendirme
-[Ölçümler](service-fabric-cluster-resource-manager-metrics.md) , hizmetlerin kaynak tüketimini Service Fabric için nasıl ifade edin. Ölçüm kullanımı, kümenin yerleşimini yeniden düzenlemek ve iyileştirmek için bir fırsat Kaynak Yöneticisi sağlar. Örneğin, kümede çok fazla kaynak olabilir, ancak şu anda iş yapmakta olan hizmetlere ayrılmayabilir. Ölçüm kullanımı, hizmetlerin kullanılabilir kaynaklara erişiminin olduğundan emin olmak için kümeyi yeniden düzenleyecek Kaynak Yöneticisi sağlar. 
+## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Service Fabric Cluster Resource Manager ve ölçümleri kullanarak ölçekleme
+[Ölçümler,](service-fabric-cluster-resource-manager-metrics.md) hizmetlerin kaynak tüketimini Service Fabric'e nasıl ifade ettikleridir. Ölçümleri kullanmak, Küme Kaynak Yöneticisi'ne kümenin düzenini yeniden düzenleme ve en iyi duruma getirme fırsatı verir. Örneğin, kümede çok sayıda kaynak olabilir, ancak bunlar şu anda çalışmakta olan hizmetlere tahsis edilmemiş olabilir. Ölçümlerin kullanılması, hizmetlerin kullanılabilir kaynaklara erişmesini sağlamak için kümeyi yeniden düzenlemesine olanak tanır. 
 
 
-## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Kümeden düğüm ekleyerek ve kaldırarak ölçekleme 
-Service Fabric ile ölçeklendirmeye yönelik başka bir seçenek de kümenin boyutunu değiştirir. Küme boyutunun değiştirilmesi, kümedeki düğüm türlerinin bir veya daha fazlası için düğüm ekleme veya kaldırma anlamına gelir. Örneğin, kümedeki tüm düğümlerin etkin olduğu bir durumu göz önünde bulundurun. Bu, kümenin kaynaklarının neredeyse hepsi tüketildiği anlamına gelir. Bu durumda, ölçeklendirmek için en iyi yol, kümeye daha fazla düğüm eklemektir. Yeni düğümler kümeye katılırsanız Service Fabric kümesi Kaynak Yöneticisi Hizmetleri bunlara taşıdıkça, mevcut düğümlerde daha az toplam yük elde edilir. Örnek sayısı =-1 olan durum bilgisi olmayan hizmetler için, daha fazla hizmet örneği otomatik olarak oluşturulur. Bu, bazı çağrıların varolan düğümlerden yeni düğümlere taşınmasını sağlar. 
+## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Kümeden düğümler ekleyerek ve kaldırarak ölçekleme 
+Service Fabric ile ölçekleme için başka bir seçenek kümenin boyutunu değiştirmektir. Kümenin boyutunu değiştirmek, kümedeki düğüm türlerinden biri veya daha fazlası için düğüm eklemek veya kaldırmak anlamına gelir. Örneğin, kümedeki tüm düğümlerin sıcak olduğu bir durum düşünün. Bu, kümenin kaynaklarının hemen hemen tamamının tüketilmeanlamına gelir. Bu durumda, kümeye daha fazla düğüm eklemek ölçeklendirmenin en iyi yoludur. Yeni düğümler kümeye katıldıktan sonra Hizmet Kumaş Küme Kaynak Yöneticisi hizmetleri onlara taşır ve varolan düğümler üzerinde daha az toplam yük sağlar. Örnek sayısı = -1 olan devletsiz hizmetler için otomatik olarak daha fazla hizmet örneği oluşturulur. Bu, bazı çağrıların varolan düğümlerden yeni düğümlere taşınmasına olanak tanır. 
 
-Daha fazla bilgi için bkz. [küme ölçeklendirme](service-fabric-cluster-scaling.md).
+Daha fazla bilgi için [küme ölçekleme](service-fabric-cluster-scaling.md)bakın.
 
 ## <a name="choosing-a-platform"></a>Platform seçme
 
-İşletim sistemleri arasındaki uygulama farklılıkları nedeniyle, Windows veya Linux ile Service Fabric kullanmayı seçme, uygulamanızı ölçeklendirmenin önemli bir parçası olabilir. Olası bir engel, aşamalı günlüğün gerçekleştirilme şekli olur. Windows üzerinde Service Fabric, durum bilgisi olan hizmet çoğaltmaları arasında paylaşılan bir makine başına günlük için çekirdek sürücü kullanır. Bu günlük, yaklaşık 8 GB ile ücretlendirilir. Linux, diğer yandan her bir çoğaltma için 256 MB 'lik bir hazırlama günlüğü kullanır ve bu, belirli bir düğümde çalışan hafif hizmet çoğaltmaları sayısını en üst düzeye çıkarmak isteyen uygulamalar için daha az ideal hale getirir. Geçici depolama gereksinimlerindeki bu farklılıklar, Service Fabric küme dağıtımı için istenen platformu bilgilendirebilecek.
+İşletim sistemleri arasındaki uygulama farklılıkları nedeniyle, Service Fabric'i Windows veya Linux ile kullanmayı seçmek, uygulamanızı ölçeklemenin önemli bir parçası olabilir. Olası engellerden biri, aşamalı günlüğe kaydetmenin nasıl gerçekleştirildiğidir. Windows'daki Service Fabric, tek başına bir makine günlüğü için bir çekirdek sürücüsü kullanır ve bu durum durumlu hizmet yinelemeleri arasında paylaşılır. Bu günlük yaklaşık 8 GB ağırlığındadır. Linux, diğer taraftan, her yineleme için 256 MB evreleme günlüğü kullanır, belirli bir düğüm üzerinde çalışan hafif hizmet çoğaltmaları sayısını en üst düzeye çıkarmak isteyen uygulamalar için daha az ideal hale. Geçici depolama gereksinimlerindeki bu farklılıklar, Service Fabric küme dağıtımı için istenen platformu bilgilendirebilir.
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
-Burada tartışıldığı ve bir örnek ile konuşduğumuz tüm fikirleri inceleyelim. Aşağıdaki hizmeti göz önünde bulundurun: adres defteri olarak davranan, adlara ve iletişim bilgilerine sahip bir hizmet oluşturmaya çalışıyorsunuz. 
+Burada tartıştığımız tüm fikirleri ele alalım ve bir örnek üzerinden konuşalım. Aşağıdaki hizmeti göz önünde bulundurun: Adlara ve iletişim bilgilerine tutunarak adres defteri gibi davranan bir hizmet oluşturmaya çalışıyorsunuz. 
 
-Sağ tarafta, ölçeklendirmeye ilişkin bir dizi sorunuz var: kaç Kullanıcı var? Her Kullanıcı için kaç kişi depolanacak? Hizmetinizi ilk kez doldururken bu tümünü belirlemeye çalışmak zordur. Belirli bir bölüm sayısı ile tek bir statik hizmetle gideceğim diyelim. Yanlış bölüm sayısını kaldırmanın sonuçları, daha sonra ölçek sorunları oluşmasına neden olabilir. Benzer şekilde, doğru sayıyı seçmiş olsanız bile, ihtiyacınız olan tüm bilgilere sahip olmayabilirsiniz. Örneğin, küme boyutunun önüne, hem düğüm sayısı hem de boyutlarına göre karar vermeniz gerekir. Genellikle bir hizmetin yaşam süresi boyunca tüketmesi için kaç kaynak olduğunu tahmin etmek zordur. Ayrıca, hizmetin gerçekten gördüğü trafik deseninin önünde haberdar olmak zor olabilir. Örneğin, insanlar kişileri yalnızca sabah ilk bir kez ekleyebilir ve kaldırabilir ya da gün boyunca eşit olarak dağıtılır. Bunu temel alarak, dinamik olarak ve dinamik olarak ölçeklendirmeniz gerekebilir. Büyük olasılıkla, ne zaman ölçeği, ne kadar ölçeklendirmeniz gerektiğini, ancak hizmetinize göre kaynak tüketimini değiştirmeye yanıt vermek için ne kadar iyi bir şekilde bilgi edinebilirsiniz. Bu, mevcut kaynakların kullanımını yeniden düzenleme yeterli olmadığında daha fazla kaynak sağlamak için kümenin boyutunun değiştirilmesini içerebilir. 
+Ön tarafta ölçekle ilgili bir sürü sorunuz var: Kaç kullanıcınız olacak? Her kullanıcı kaç kişi saklayacak? Eğer ilk kez hizmet ayakta zaman tüm bu anlamaya çalışıyorum zordur. Belirli bir bölüm sayısıile tek bir statik hizmet ile gitmek için gittiğini varsayalım. Yanlış bölüm sayısını seçmenin sonuçları daha sonra ölçek sorunlarına neden olabilir. Benzer şekilde, doğru sayıyı seçseniz bile ihtiyacınız olan tüm bilgilere sahip olmayabilirsiniz. Örneğin, hem düğüm sayısı hem de boyutları açısından, kümenin boyutunu önden belirlemeniz gerekir. Bir hizmetin ömrü boyunca kaç kaynak tüketeceğini tahmin etmek genellikle zordur. Ayrıca, hizmetin gerçekte gördüğü trafik modelini önceden bilmek de zor olabilir. Örneğin, belki insanlar kişilerini yalnızca sabah ilk iş olarak ekleyip kaldırırlar veya belki de gün boyunca eşit olarak dağıtılır. Buna dayanarak ölçeklendirmeniz gerekebilir ve dinamik olarak. Belki ne zaman ölçeklendirmeniz ve içinde yapmanız gerektiğini tahmin etmeyi öğrenebilirsiniz, ancak her iki şekilde de muhtemelen hizmetinizin kaynak tüketimini değiştirmesine tepki vermeniz gerekecektir. Bu, varolan kaynakların kullanımını yeniden düzenleme yeterli olmadığında daha fazla kaynak sağlamak için kümenin boyutunu değiştirmeyi içerebilir. 
 
-Ancak neden tüm kullanıcılar için tek bir bölüm düzeni seçmeyi denemenize de çalışıyor? Neden tek bir hizmetle ve tek bir statik kümeyle sınırlandırım? Gerçek durum genellikle daha dinamik bir durumdur. 
+Ama neden bile tüm kullanıcılar için tek bir bölüm düzeni dışarı almaya çalışın? Neden kendinizi bir hizmet ve bir statik kümeyle sınırlandırın? Gerçek durum genellikle daha dinamiktir. 
 
-Ölçek için derleme yaparken, aşağıdaki dinamik kalıbı göz önünde bulundurun. Durumunuza uyarlamanız gerekebilir:
+Ölçek için oluştururken, aşağıdaki dinamik deseni göz önünde bulundurun. Durumunuza uyarlamanız gerekebilir:
 
-1. Herkes için bir bölümleme şeması seçmeyi denemek yerine "Yönetici hizmeti" oluşturun.
-2. Yönetici hizmeti 'nin işi, hizmetinize kaydolduklarında müşteri bilgilerine bakabilmenizdir. Daha _sonra bu bilgilere_bağlı olarak, yönetici hizmeti _gerçek_ iletişim depolama hizmetinizin bir örneğini oluşturur. Belirli yapılandırma, yalıtım veya yükseltmeler gerektiriyorsa, bu müşteri için bir uygulama örneği çalıştırmaya da karar verebilirsiniz. 
+1. Öndeki herkes için bir bölümleme şeması seçmeye çalışmak yerine, bir "yönetici hizmeti" oluşturun.
+2. Yönetici hizmetinin görevi, hizmetinize kaydolurken müşteri bilgilerine bakmaktır. Daha sonra bu bilgilere bağlı olarak yönetici _hizmeti, yalnızca o müşteri için_ _gerçek_ kişi depolama hizmetinizin bir örneğini oluşturur. Belirli yapılandırma, yalıtım veya yükseltme gerektiriyorsa, bu müşteri için bir Uygulama örneğini döndürmeye de karar verebilirsiniz. 
 
-Bu dinamik oluşturma deseninin birçok avantajı:
+Bu dinamik oluşturma deseni birçok yararları:
 
-  - Tüm kullanıcılar için doğru bölüm sayısını tahmin etmeye veya kendi kendine sınırsız bir şekilde ölçeklenebilir tek bir hizmet oluşturmaya çalışmayız. 
-  - Farklı kullanıcıların aynı bölüm sayısı, çoğaltma sayısı, yerleştirme kısıtlamaları, ölçümler, varsayılan Yüklemeler, hizmet adları, DNS ayarları veya hizmet veya uygulama düzeyinde belirtilen diğer özelliklerden herhangi biri olması gerekmez. 
-  - Ek veri segmentlemesini elde edersiniz. Her müşterinin hizmetin bir kopyası vardır
-    - Her müşteri hizmeti farklı şekilde yapılandırılabilir ve beklenen ölçeğe bağlı olarak daha fazla veya daha az bölüm ya da çoğaltmalarla daha fazla veya daha az kaynak vermiş olabilir.
-      - Örneğin, müşterinin "altın" katman için ödendiğini varsayalım. daha fazla çoğaltma veya daha fazla bölüm sayısı ve potansiyel kaynaklar ölçüm ve uygulama kapasiteleri aracılığıyla hizmetlerine ayrılmıştır.
-      - Ya da gerek duydukları kişilerin sayısını belirten bilgileri "küçük" olarak belirttiğinizi varsayalım. yalnızca birkaç bölüm alırlar veya diğer müşterilerle paylaşılan bir hizmet havuzuna de yerleştirilebilir.
-  - Müşterilerin gösterilmesini beklerken bir veya daha fazla hizmet örneği veya çoğaltması çalıştırılıyorsunuz
-  - Bir müşteri ayrıldıktan sonra, kendi bilgilerini hizmetinizden kaldırmak, yöneticinin oluşturduğu hizmeti veya uygulamayı silmesini sağlayan basit bir işlemdir.
+  - Öndeki tüm kullanıcılar için doğru bölüm sayısını tahmin etmeye veya kendi başına sonsuz ölçeklenebilir tek bir hizmet oluşturmaya çalışmıyorsunuz. 
+  - Farklı kullanıcıların aynı bölüm sayısına, yineleme sayısına, yerleşim kısıtlamalarına, ölçümlere, varsayılan yüklere, hizmet adlarına, dns ayarlarına veya hizmet veya uygulama düzeyinde belirtilen diğer özelliklere sahip olması gerekmez. 
+  - Ek veri segmentasyonu kazanırsınız. Her müşterinin hizmetin kendi kopyası vardır
+    - Her müşteri hizmeti farklı şekilde yapılandırılabilir ve beklenen ölçeklere göre gerektiğinde daha fazla veya daha az bölüm veya yinelemeyle daha fazla veya daha az kaynak verilebilir.
+      - Örneğin, müşterinin "Gold" katmanı için ödeme aldığını varsayılabilir - daha fazla yineleme veya daha fazla bölüm sayısı ve ölçümler ve uygulama kapasiteleri aracılığıyla hizmetlerine ayrılmış potansiyel kaynaklar alabilir.
+      - Ya da ihtiyaç duydukları kişi sayısını gösteren bilgi sağladığını söylüyorlar "Küçük" oldu - onlar sadece birkaç bölüm alacak, hatta diğer müşterilerle paylaşılan bir hizmet havuzuna konabilir.
+  - Müşterilerin gelmesini beklerken bir sürü hizmet örneği veya yineleme çalıştırmatmamanız
+  - Bir müşteri ayrılırsa, bilgilerini hizmetinizden kaldırmak, yöneticinin oluşturduğu hizmeti veya uygulamayı silmesi kadar kolaydır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Fabric kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Service Fabric hizmetlerinin kullanılabilirliği](service-fabric-availability-services.md)
-* [Service Fabric Hizmetleri bölümlendirme](service-fabric-concepts-partitioning.md)
+* [Hizmet Kumaş ı hizmetlerinin kullanılabilirliği](service-fabric-availability-services.md)
+* [Bölümleme Servisi Kumaş hizmetleri](service-fabric-concepts-partitioning.md)

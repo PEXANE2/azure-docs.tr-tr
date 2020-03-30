@@ -1,50 +1,49 @@
 ---
-title: Azure Marketi 'nden bir VM dağıtma
-description: Azure Marketi önceden yapılandırılmış bir sanal makineden bir sanal makinenin nasıl dağıtılacağını açıklar.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure Marketinden Bir VM dağıtma
+description: Azure Marketi önceden yapılandırılmış bir sanal makineden sanal makinenin nasıl dağıtılanbildiğini açıklar.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 2888d7643fd4f624634dc2ec520bec6e753382f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816819"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277982"
 ---
-# <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketi 'nden bir sanal makine dağıtma
+# <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketi'nden sanal bir makine dağıtma
 
-Bu makalede, belirtilen Azure PowerShell betiği kullanılarak Azure Marketi 'nden önceden yapılandırılmış bir sanal makinenin (VM) nasıl dağıtılacağı açıklanmaktadır.  Bu betik Ayrıca sanal makinede WinRM HTTP ve HTTPS uç noktalarını da kullanıma sunar.  Betik, [Azure Key Vault için sertifika oluşturma](./cpp-create-key-vault-cert.md)bölümünde açıklandığı gibi Azure Key Vault için karşıya yüklenmiş bir sertifikanız olmasını gerektirir. 
+Bu makalede, sağlanan Azure PowerShell komut dosyasını kullanarak azure marketinden önceden yapılandırılmış bir sanal makinenin (VM) nasıl dağıtılancayakadar dağıtılanınca açıklanmıştır.  Bu komut dosyası aynı zamanda VM'deki WinRM HTTP ve HTTPS uç noktalarını da ortaya çıkarır.  Komut dosyası, [Azure Anahtar Kasası için Oluşturma sertifikalarında](./cpp-create-key-vault-cert.md)açıklandığı gibi Azure Key Vault'a zaten yüklenen bir sertifikanız olmasını gerektirir. 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vm-deployment-template"></a>VM dağıtım şablonu
 
-Hızlı başlangıç Azure VM dağıtım şablonu, [azuredeploy. JSON](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json)çevrimiçi dosyası olarak kullanılabilir.  Aşağıdaki parametreleri içerir:
+Hızlı başlatma Azure VM dağıtım şablonu, çevrimiçi dosya [azuredeployment.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json)olarak kullanılabilir.  Aşağıdaki parametreleri içerir:
 
-|  **Parametresinin**        |   **Açıklama**                                 |
+|  **Parametre**        |   **Açıklama**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName | Depolama hesabının adı                       |
-| Dnsnameforpublicıp    | Genel IP için DNS adı. Küçük harfle yazılmalıdır.    |
-| adminUserName         | Yöneticinin Kullanıcı adı                          |
-| adminPassword         | Yönetici parolası                          |
-| ımagepublisher        | Görüntü yayımcısı                                   |
-| ımageteklif            | Görüntü teklifi                                       |
-| Imate ku              | Görüntü SKU 'SU                                         |
+| dnsNameForPublicIP    | Kamu IP için DNS Adı. Küçük olmalı.    |
+| adminUserName         | Yöneticinin kullanıcı adı                          |
+| adminPassword         | Yöneticinin şifresi                          |
+| imagePublisher        | Görüntü yayıncısı                                   |
+| imageTeklif            | Resim teklifi                                       |
+| görüntüSKU              | Görüntü SKU                                         |
 | vmSize                | VM boyutu                                    |
-| vmName                | VM adı                                    |
+| vmName                | VM'nin adı                                    |
 | vaultName             | Anahtar kasasının adı                             |
 | vaultResourceGroup    | Anahtar kasasının kaynak grubu                   |
-| Sertifika URL 'si        | Anahtar Kasası sürümü de dahil olmak üzere sertifika URL 'SI örneğin `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| sertifikaUrl        | Örneğin KeyVault sürümü de dahil olmak üzere sertifikanın URL'si`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 
 ## <a name="deployment-script"></a>Dağıtım betiği
 
-Aşağıdaki Azure PowerShell betiğini düzenleyin ve belirtilen Azure Marketi VM 'sini dağıtmak için yürütün.
+Aşağıdaki Azure PowerShell komut dosyasını edin ve belirtilen Azure Marketi VM'sini dağıtmak için çalıştırın.
 
 ```powershell
 
@@ -55,4 +54,4 @@ New-AzResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önceden yapılandırılmış bir VM 'yi dağıttıktan sonra, içerdiği çözümleri ve Hizmetleri yapılandırıp buna erişebilir veya daha fazla geliştirme için kullanabilirsiniz. 
+Önceden yapılandırılmış bir VM dağıttıktan sonra, içerdiği çözümleri ve hizmetleri yapılandırabilir ve erişebilir veya daha fazla geliştirme için kullanabilirsiniz. 

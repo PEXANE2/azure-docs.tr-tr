@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Kafka protokolünü kullanarak Azure Event Hubs ile veri akışı'
-description: "Hızlı başlangıç: Bu makalede, Kafka Protokolü ve API 'Leri kullanılarak Azure Event Hubs 'da nasıl akış yapılacağı hakkında bilgiler sağlanmaktadır."
+title: "Quickstart: Kafka protokolünü kullanarak Azure Etkinlik Hub'ları ile veri akışı"
+description: "Hızlı başlangıç: Bu makalede, Kafka protokolü ve API'leri kullanarak Azure Etkinlik Hub'larına nasıl akış sağlanır hakkında bilgi verilmektedir."
 services: event-hubs
 author: ShubhaVijayasarathy
 ms.author: shvija
@@ -8,35 +8,35 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 18976a29a716a0e5a627747d98edc0d3e1bf71e9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4a0d7d30ea02af222ab4a758c18b46d7488e1a8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280720"
 ---
-# <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Hızlı başlangıç: Kafka protokolünü kullanarak Event Hubs veri akışı
-Bu hızlı başlangıçta, protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturulacağı gösterilir. Yalnızca uygulamalarınızdaki bir yapılandırma değişikliğiyle Kafka etkin Event Hubs ile konuşmak için üreticilerinizi ve tüketicilerinizi nasıl kullanacağınızı öğrenirsiniz. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler.
+# <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Kafka protokolünü kullanarak Olay Hub'ları ile veri akışı
+Bu hızlı başlangıç, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını gösterir. Uygulamalarınızda sadece bir yapılandırma değişikliğiyle Etkinlik Hub'larıyla konuşmak için üreticilerinizi ve tüketicilerinizi nasıl kullanacağınızı öğrenirsiniz. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler.
 
 > [!NOTE]
-> Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)'da sağlanır
+> Bu örnek [GitHub'da](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) mevcuttur
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 * [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) makalesini okuyun.
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Geliştirme Kiti (JDK) 1.7+](https://aka.ms/azure-jdks).
 * Bir Maven ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html).
 * [Git](https://www.git-scm.com/)
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka etkin Event Hubs ad alanı oluşturma
-Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için Kafka uç noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları Standart katman Event Hubs akışı yapabilirsiniz. **Standart** katman Event Hubs ad alanı oluşturmak için [Azure Portal kullanarak Olay Hub 'ı oluşturma](event-hubs-create.md) bölümünde adım adım yönergeleri izleyin. 
+**Standart** bir katman Olay Hub'ları ad alanı oluşturduğunuzda, ad alanı için Kafka bitiş noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları standart katman Etkinlik Hub'larına aktarabilirsiniz. **Standart** bir katman Olay Hub'ları ad alanı oluşturmak için [Azure portalını kullanarak etkinlik hub'ı oluştur'da](event-hubs-create.md) adım adım yönergeleri izleyin. 
 
 > [!NOTE]
-> Kafka için Event Hubs yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir. **Temel** katman Event Hubs Kafka desteklemez.
+> Kafka için Etkinlik Hub'ları yalnızca **standart** ve **özel** katmanlarda kullanılabilir. **Temel** katman Etkinlik Hub'larında Kafka'yı desteklemez.
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Event Hubs’da Kafka ile ileti gönderme ve alma
 
@@ -46,7 +46,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
 
 3. `src/main/resources/producer.config` konumundaki üreticinin yapılandırma ayrıntılarını aşağıdaki şekilde güncelleştirin:
 
-    **SSL**
+    **Ssl:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -54,7 +54,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
-    **OAuth**
+    **Oauth:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -64,8 +64,8 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
     ```    
 
-    GitHub üzerinde bir örnek işleyici sınıfı Customabuliscallbackhandler kaynak kodunu [buradan](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)bulabilirsiniz.
-4. Üretici kodu ve akış olaylarını Kafka etkin Event Hubs olarak çalıştırın:
+    Burada [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)örnek işleyici sınıf CustomAuthenticateCallbackHandler için kaynak kodunu bulabilirsiniz.
+4. Üretici kodunu çalıştırın ve olayları Olay Hub'larına aktarın:
    
     ```shell
     mvn clean package
@@ -76,7 +76,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
 
 6. `src/main/resources/consumer.config` konumundaki tüketicinin yapılandırma ayrıntılarını aşağıdaki şekilde güncelleştirin:
    
-    **SSL**
+    **Ssl:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -85,7 +85,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
 
-    **OAuth**
+    **Oauth:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -95,9 +95,9 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
     ``` 
 
-    GitHub üzerinde bir örnek işleyici sınıfı Customabuliscallbackhandler kaynak kodunu [buradan](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)bulabilirsiniz.
+    Burada [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)örnek işleyici sınıf CustomAuthenticateCallbackHandler için kaynak kodunu bulabilirsiniz.
 
-    Kafka for Event Hubs için tüm OAuth örneklerini [buradan](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)bulabilirsiniz.
+    Kafka için Etkinlik Merkezleri için tüm OAuth örneklerini [burada](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)bulabilirsiniz.
 7. Tüketici kodunu çalıştırın ve Kafka istemcilerinizi kullanarak Kafka etkin Event Hubs’tan işleyin:
 
     ```java
@@ -108,10 +108,10 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
 Event Hubs Kafka kümenizin olayları varsa, bu olayları artık tüketiciden almaya başlarsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturacağınızı öğrendiniz. Daha fazla bilgi edinmek için aşağıdaki makalelere ve örneklere bakın:
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makale ve örneklere bakın:
 
 - [Kafka için Event Hubs hakkında bilgi edinin](event-hubs-for-kafka-ecosystem-overview.md)
-- [GitHub üzerinde Kafka için hızlı başlangıç Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
-- [GitHub üzerinde Kafka için Event Hubs öğreticileri](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- [Kafka 'ten Şirket içindeki olayları, bulutta Kafka etkin Event Hubs akışa](event-hubs-kafka-mirror-maker-tutorial.md) almak Için [mirrormaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 'ı kullanın.
-- [Apache Flink](event-hubs-kafka-flink-tutorial.md) ya da [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) kullanarak Kafka etkin Event Hubs’a nasıl akış oluşturacağınızı öğrenin.
+- [GitHub'da Kafka için Etkinlik Hub'ları için hızlı başlangıçlar](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
+- [GitHub'da Kafka için Etkinlik Hub'ları için Eğitimler](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
+- [Olayları Kafka'dan Kafka'ya aktarmak için MirrorMaker'ı kullanarak Bulut'taki Etkinlik Hub'larını etkinleştirin.](event-hubs-kafka-mirror-maker-tutorial.md) [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)
+- [Apache Flink](event-hubs-kafka-flink-tutorial.md) veya [Akka Streams'i](event-hubs-kafka-akka-streams-tutorial.md) kullanarak Kafka özellikli Etkinlik Hub'larına nasıl akış yapılacağını öğrenin

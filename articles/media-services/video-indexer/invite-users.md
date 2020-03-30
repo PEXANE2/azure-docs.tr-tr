@@ -1,62 +1,62 @@
 ---
-title: Kullanıcıları Video Indexer davet etme-Azure
+title: Kullanıcıları Video Dizinleyici'ye davet etme - Azure
 titleSuffix: Azure Media Services
-description: Bu makalede, kullanıcıların Video Indexer için nasıl davet yapılacağı gösterilir.
+description: Bu makalede, kullanıcıları Video Dizinleyici'ye nasıl davet edilebilmektedir.
 services: media-services
 author: ReutAmior
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
-ms.topic: article
+ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: c1395bc3b329630a1ecbd479d275c30c9c787bb1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839007"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499751"
 ---
-# <a name="quickstart-invite-users-to-video-indexer"></a>Hızlı başlangıç: kullanıcıları Video Indexer davet etme
+# <a name="quickstart-invite-users-to-video-indexer"></a>Hızlı başlatma: Kullanıcıları Video Indexer'a davet etme
 
-İş arkadaşlarınızla işbirliği yapmak için bunları Video Indexer hesabınıza davet edebilirsiniz. 
+İş arkadaşlarınızla işbirliği yapmak için, onları Video Dizinleyici hesabınıza davet edebilirsiniz. 
 
 > [!NOTE]
-> Yalnızca hesabın Yöneticisi kullanıcı ekleyebilir veya kaldırabilir.
+> Kullanıcıları yalnızca hesabın yöneticisi ekleyebilir veya kaldırabilir.
 
-## <a name="invite-new-users"></a>Yeni Kullanıcı davet et
+## <a name="invite-new-users"></a>Yeni kullanıcıları davet et
 
-1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın. Yönetici hesabıyla bağlı olduğunuzdan emin olun.
-1. Üstteki menüdeki **başkalarını davet et** düğmesine tıklayın:
+1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın. Bir yönetici hesabına bağlı olduğundan emin olun.
+1. Üst menüdeki **Başkalarını Davet** et düğmesini tıklatın:
 
-   ![Yeni Kullanıcı davet et](./media/invite-users/invite-users.png)
+   ![Yeni kullanıcıları davet et](./media/invite-users/invite-users.png)
 
-1. Video Indexer hesabınıza eklemek istediğiniz kişilerin e-posta adreslerini ekleyin:
+1. Video Dizinleyici hesabınıza eklemek istediğiniz kişilerin e-posta adreslerini ekleyin:
 
-    ![Kullanıcıları bu hesaba davet et](./media/invite-users/invite-to-account.png)
+    ![Kullanıcıları bu hesaba davet etme](./media/invite-users/invite-to-account.png)
         
     >[!NOTE]
-    > Davet ettiğiniz tüm kullanıcılar hesabınızdaki tüm videolar için okuma ve yazma iznine sahip olacaktır.
-1. Davet ettiğiniz kullanıcılar bağlantı içeren bir e-posta alır ve **katılmayı video Indexer** bağlantısına tıkladıktan sonra hesaba erişebilecektir:
+    > Davet ettiğiniz tüm kullanıcılar hesabınızdaki tüm videoları okuma ve yazma izni ne olacaksa.
+1. Davet ettiğiniz kullanıcılar bir bağlantı içeren bir e-posta alır ve Video **Dizinleyiciye Katıl** bağlantısını tıkladıklarında hesaba erişebilecekler:
 
     ![Onay](./media/invite-users/invite-msg.png)
 
-    Hesaba erişim kazanmak için kullanıcının katılması için bağlantıyı tıklamalıdır. 
+    Kullanıcının hesaba erişmek için katılmak için bağlantıyı tıklatması gerekir. 
 
-## <a name="removing-existing-users"></a>Mevcut kullanıcılar kaldırılıyor
+## <a name="removing-existing-users"></a>Varolan kullanıcıları kaldırma
 
-Hesabınıza erişimi olan kullanıcıları kaldırmak istiyorsanız, adının yanında bulunan **X** işaretine tıklayabilirsiniz:
+Hesabınıza erişimi olan kullanıcıları kaldırmak istiyorsanız, adlarının yanındaki **X** işaretini tıklatabilirsiniz:
 
 ![Kullanıcıları kaldır](./media/invite-users/remove-users.png)
 
-Kullanıcılar, kaldırma işlemi sırasında bildirim almaz. Kullanıcılar kaldırıldıktan sonra oturum açma yetkisine sahip olmaz.
+Kullanıcılar kaldırıldıktan sonra bir bildirim almazlar. Kaldırıldıktan sonra, kullanıcıların oturum açma yetkisi olmayacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık videonun öngörülerini görmek için [video Indexer Web sitesini](video-indexer-view-edit.md) veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanabilirsiniz.
+Videonun istatistiklerini görmek için [artık Video Indexer web sitesini](video-indexer-view-edit.md) veya Video [Indexer Geliştirici Portalını](video-indexer-use-apis.md) kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Video Indexer’a genel bakış](video-indexer-overview.md)
-- [Nasıl kaydolun ve ilk videonuzu karşıya yükleyin](video-indexer-get-started.md)
-- [API 'Leri kullanmaya başlama](video-indexer-use-apis.md)
+- [İlk videonuza kaydolma ve yükleme](video-indexer-get-started.md)
+- [API'leri kullanmaya başlayın](video-indexer-use-apis.md)
