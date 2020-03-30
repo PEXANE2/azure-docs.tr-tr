@@ -1,6 +1,6 @@
 ---
-title: Media Services varlıklar - Azure bilgisayarınıza | Microsoft Docs
-description: İlgili varlıklar bilgisayarınıza indirmek öğrenin. İçinde yazılan kod örneklerini C# ve .NET için Media Services SDK'sını kullanın.
+title: Medya Hizmetleri varlıklarını bilgisayarınıza indirin - Azure | Microsoft Dokümanlar
+description: Varlıkları bilgisayarınıza indirme hakkında bilgi edinin. Kod örnekleri C# olarak yazılır ve .NET için Medya Hizmetleri SDK'sını kullanın.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61465669"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılır: Bir varlık indirme ile teslim etme  
-Bu makalede, medya varlıklar Media Services'e sunmaya yönelik seçenekler açıklanmaktadır. Çok sayıda uygulama senaryolarında Media Services içerik teslim edebilirsiniz. Kodlama sonra oluşturulan medya varlıkları veya akış Bulucusu kullanarak erişebilir. Bir içerik teslim ağı (CDN) kullanarak, Gelişmiş performans ve ölçeklenebilirlik için içerik sunabilirsiniz.
+# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılsın: Bir varlığı indirerek teslim etme  
+Bu makalede, Medya Hizmetleri'ne yüklenen medya varlıklarını teslim etme seçenekleri açıklanır. Çok sayıda uygulama senaryosunda Medya Hizmetleri içeriği sunabilirsiniz. Kodladıktan sonra, oluşturulan ortam varlıklarını indirin veya bir akış bulucu kullanarak bunlara erişin. Daha iyi performans ve ölçeklenebilirlik için, İçerik Dağıtım Ağı (CDN) kullanarak içerik de sağlayabilirsiniz.
 
-Bu örnekte, medya varlıkları Media Services'den yerel bilgisayarınıza indirmek gösterilmektedir. İş kimliği ve erişim ile Media Services hesabıyla ilişkili işleri kod sorgular, **OutputMediaAssets** (olan bir işin çalıştırılmasının sonuçlarını kümesi bir veya daha fazla çıkış medya varlıklarının) koleksiyonu. Bu örnek, bir işten Çıkış medya varlıklarının indirmek gösterilmektedir, ancak diğer varlıklar indirmek için aynı yaklaşımı uygulayabilirsiniz.
+Bu örnek, medya varlıklarınıN Medya Hizmetlerinden yerel bilgisayarınıza nasıl indirilebildiğini gösterir. Kod, Medya Hizmetleri hesabıyla ilişkili işleri iş kimliğiyle sorgular ve **ÇıktıMediaAssets** koleksiyonuna erişir (bir işi çalıştırmadan kaynaklanan bir veya daha fazla çıktı ortamı varlığı kümesidir). Bu örnek, çıktı medya varlıklarının bir işten nasıl indirilebildiğini gösterir, ancak diğer varlıkları indirmek için aynı yaklaşımı uygulayabilirsiniz.
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı günleri / erişim izinlerini, örneğin, ilkeleri kalmasına yerinde uzun bir süredir (karşıya yükleme olmayan ilkeler) yöneliktir bulucular için her zaman aynı ilke Kimliğini kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Her zaman aynı gün / erişim izinleri kullanıyorsanız, örneğin, uzun bir süre (yükleme olmayan ilkeler) yerinde kalması amaçlanan bulucular için ilkeler kullanıyorsanız aynı ilke kimliği kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -88,5 +88,5 @@ Bu örnekte, medya varlıkları Media Services'den yerel bilgisayarınıza indir
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[İçerik akışı sağlama](media-services-deliver-streaming-content.md)
+[Akış içeriği sunma](media-services-deliver-streaming-content.md)
 

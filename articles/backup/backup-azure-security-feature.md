@@ -1,124 +1,124 @@
 ---
 title: Karma yedeklemeleri koruyan güvenlik özellikleri
-description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin
+description: Yedeklemeleri daha güvenli hale getirmek için Azure Yedekleme'de güvenlik özelliklerini nasıl kullanacağınızı öğrenin
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586402"
 ---
-# <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup kullanan karma yedeklemeleri korumanıza yardımcı olacak güvenlik özellikleri
+# <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Yedekleme kullanan karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri
 
-Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları hakkında sorunlar artıyor. Bu güvenlik sorunları hem para hem de veri bakımından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu makalede, Azure kurtarma hizmetleri Aracısı ve Azure Backup Sunucusu kullanarak bu özelliklerin nasıl etkinleştirileceği ve kullanılacağı ele alınmaktadır. Bu özellikler şunlardır:
+Kötü amaçlı yazılımlar, fidye yazılımları ve izinsiz giriş gibi güvenlik sorunlarıyla ilgili endişeler artmaktadır. Bu güvenlik sorunları hem para hem de veri açısından pahalıya mal olabilir. Azure Yedekleme, bu tür saldırılara karşı korunmak için artık karma yedeklemelerin korunmasına yardımcı olacak güvenlik özellikleri sağlar. Bu makalede, bir Azure Kurtarma Hizmetleri aracısı ve Azure Yedekleme Sunucusu kullanılarak bu özelliklerin nasıl etkinleştirilip kullanılacağı ele alınır. Bu özellikler şunlardır:
 
-- **Önleme**. Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır.
-- **Uyarı**verme. Yedekleme verilerini silme gibi kritik bir işlem gerçekleştirildiğinde abonelik yöneticisine bir e-posta bildirimi gönderilir. Bu e-posta, kullanıcının bu eylemler hakkında hızlı bir şekilde bildirilmesini sağlar.
-- **Kurtarma**. Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar, bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur.
-
-> [!NOTE]
-> Hizmet olarak altyapı (IaaS) VM yedeklemesi kullanıyorsanız güvenlik özellikleri etkinleştirilmemelidir. Bu özellikler IaaS VM yedeklemesi için henüz kullanılamaz, bu yüzden etkinleştirmenin etkinleştirilmesi herhangi bir etkiye sahip olmayacaktır. Güvenlik özellikleri yalnızca kullanıyorsanız etkinleştirilmelidir: <br/>
->  * **Azure Backup Aracısı**. En düşük aracı sürümü 2.0.9052. Bu özellikleri etkinleştirdikten sonra kritik işlemleri gerçekleştirmek için bu aracı sürümüne yükseltmeniz gerekir. <br/>
->  * **Azure Backup sunucusu**. Azure Backup Sunucusu güncelleştirme 1 ile en düşük Azure Backup aracı sürümü 2.0.9052. <br/>
->  * **System Center Data Protection Manager**. Data Protection Manager 2012 R2 UR12 veya Data Protection Manager 2016 UR2 ile en düşük Azure Backup Agent sürümü 2.0.9052. <br/>
-
+- **Önleme**. Parolayı değiştirmek gibi kritik bir işlem yapıldığında ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilebilmesini sağlamak içindir.
+- **Uyarı .** Yedekleme verilerini silme gibi kritik bir işlem yapıldığında abonelik yöneticisine bir e-posta bildirimi gönderilir. Bu e-posta, kullanıcının bu tür eylemler hakkında hızlı bir şekilde bilgilendirilmesini sağlar.
+- **Kurtarma**. Silinen yedekleme verileri silinme tarihinden itibaren 14 gün daha saklanır. Bu, belirli bir süre içinde verilerin kurtarılabilirliğini sağlar, bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı korumak için daha fazla sayıda minimum kurtarma noktası korunur.
 
 > [!NOTE]
-> Bu özellikler yalnızca kurtarma hizmetleri Kasası için kullanılabilir. Yeni oluşturulan tüm kurtarma hizmetleri kasaları, varsayılan olarak etkinleştirilen bu özelliklere sahiptir. Mevcut kurtarma hizmetleri kasaları için, kullanıcılar aşağıdaki bölümde bahsedilen adımları kullanarak bu özellikleri etkinleştirir. Özellikler etkinleştirildikten sonra, tüm kurtarma hizmetleri aracı bilgisayarları, Azure Backup Sunucusu örnekleri ve kasaya kayıtlı Data Protection Manager sunucuları için geçerlidir. Bu ayarın etkinleştirilmesi tek seferlik bir işlemdir ve bu özellikleri etkinleştirdikten sonra devre dışı bırakılamaz.
+> Altyapıyı hizmet (IaaS) VM yedeklemesi olarak kullanıyorsanız güvenlik özellikleri etkinleştirilmemelidir. Bu özellikler henüz IaaS VM yedeklemesi için mevcut değildir, bu nedenle etkinleştirme herhangi bir etkiye sahip olmayacaktır. Güvenlik özellikleri yalnızca kullanıyorsanız etkinleştirilmelidir: <br/>
+>  * **Azure Yedekleme aracısı.** Minimum aracı sürümü 2.0.9052. Bu özellikleri etkinleştirdikten sonra, kritik işlemleri gerçekleştirmek için bu aracı sürümüne yükseltmeniz gerekir. <br/>
+>  * **Azure Yedekleme Sunucusu**. Azure Yedekleme Sunucusu güncelleştirmesi ile Minimum Azure Yedekleme aracısı sürümü 2.0.9052 güncelleştirme1. <br/>
+>  * **Sistem Merkezi Veri Koruma Yöneticisi**. Veri Koruma Yöneticisi 2012 R2 UR12 veya Veri Koruma Yöneticisi 2016 UR2 ile minimum Azure Yedekleme aracısı sürümü 2.0.9052. <br/>
+
+
+> [!NOTE]
+> Bu özellikler yalnızca Kurtarma Hizmetleri kasası için kullanılabilir. Yeni oluşturulan tüm Kurtarma Hizmetleri kasaları varsayılan olarak bu özelliklere sahiptir. Varolan Kurtarma Hizmetleri kasaları için, kullanıcılar aşağıdaki bölümde belirtilen adımları kullanarak bu özellikleri etkinleştirin. Özellikler etkinleştirildikten sonra, kasaya kayıtlı tüm Kurtarma Hizmetleri aracısı bilgisayarlar, Azure Yedekleme Sunucusu örnekleri ve Veri Koruma Yöneticisi sunucuları için geçerlidir. Bu ayarı etkinleştirmek tek seferlik bir eylemdir ve bu özellikleri etkinleştirdikten sonra devre dışı bırakamazsınız.
 >
 
-## <a name="enable-security-features"></a>Güvenlik özelliklerini etkinleştir
+## <a name="enable-security-features"></a>Güvenlik özelliklerini etkinleştirme
 
-Bir kurtarma hizmetleri Kasası oluşturuyorsanız, tüm güvenlik özelliklerini kullanabilirsiniz. Mevcut bir kasasıyla çalışıyorsanız, aşağıdaki adımları izleyerek güvenlik özelliklerini etkinleştirin:
+Kurtarma Hizmetleri kasası oluşturuyorsanız, tüm güvenlik özelliklerini kullanabilirsiniz. Varolan bir kasayla çalışıyorsanız, aşağıdaki adımları izleyerek güvenlik özelliklerini etkinleştirin:
 
-1. Azure kimlik bilgilerinizi kullanarak Azure portal oturum açın.
-2. **Araştır**' ı seçin ve **Kurtarma Hizmetleri**yazın.
+1. Azure kimlik bilgilerinizi kullanarak Azure portalında oturum açın.
+2. **Gözat'ı**seçin ve **Kurtarma Hizmetleri**yazın.
 
-    ![Azure portal tarayıcı seçeneğinin ekran görüntüsü](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
+    ![Azure portalı Gözat seçeneğinin ekran görüntüsü](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
     Kurtarma hizmetleri kasalarının listesi görünür. Bu listeden bir kasa seçin. Seçilen kasa panosu açılır.
-3. Kasanın **altında görünen**öğelerin listesinden **Özellikler**' e tıklayın.
+3. Kasanın altında görünen öğeler listesinden **Ayarlar'ın**altında **Özellikler'i**tıklatın.
 
-    ![Kurtarma Hizmetleri Kasası seçeneklerinin ekran görüntüsü](./media/backup-azure-security-feature/vault-list-properties.png)
-4. **Güvenlik ayarları**altında **Güncelleştir**' e tıklayın.
+    ![Kurtarma Hizmetleri kasa seçeneklerinin ekran görüntüsü](./media/backup-azure-security-feature/vault-list-properties.png)
+4. **Güvenlik Ayarları**altında, **Güncelleştir'i**tıklatın.
 
-    ![Kurtarma Hizmetleri Kasası özelliklerinin ekran görüntüsü](./media/backup-azure-security-feature/security-settings-update.png)
+    ![Kurtarma Hizmetleri kasa özelliklerinin ekran görüntüsü](./media/backup-azure-security-feature/security-settings-update.png)
 
-    Güncelleştirme bağlantısı, özelliklerin bir özetini sunan ve bunları etkinleştirmenizi sağlayan **güvenlik ayarları** dikey penceresini açar.
-5. Aşağı açılan listeden **azure Multi-Factor Authentication mı yapılandırdığınıza**göre, [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)etkinleştirilip etkinleştirilmediğini onaylamak için bir değer seçin. Etkinleştirilirse, Azure portal oturum açarken başka bir cihazdan (örneğin, cep telefonu) kimlik doğrulaması yapmanız istenir.
+    Güncelleştirme bağlantısı, özelliklerin bir özetini sağlayan ve bunları etkinleştirmenizi sağlayan **Güvenlik Ayarları** bıçaklarını açar.
+5. Açılan listeden **Azure Çok Faktörlü Kimlik Doğrulaması'nı yapılandırıldınız mı?** [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) Etkinleştirilirse, Azure portalında oturum açarken başka bir aygıttan (örneğin, bir cep telefonu) kimlik doğrulamanız istenir.
 
-   Yedekleme sırasında kritik işlemler gerçekleştirdiğinizde, Azure portal kullanılabilir bir güvenlik PIN 'i girmeniz gerekir. Azure Multi-Factor Authentication etkinleştirilmesi bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip yetkili kullanıcılar ve ikinci bir cihazdan kimlik doğrulaması yapılabilir Azure portal.
-6. Güvenlik ayarlarını kaydetmek için **Etkinleştir** ' i seçin ve **Kaydet**' e tıklayın. Yalnızca önceki adımda **Azure Multi-Factor Authentication mı yapılandırdığınız** bir değeri seçtikten sonra **Etkinleştir** ' i seçebilirsiniz.
+   Yedekleme'de kritik işlemleri gerçekleştirdiğiniz zaman, Azure portalında kullanılabilen bir güvenlik PIN'i girmeniz gerekir. Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmek bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip ve ikinci bir aygıttan kimlik doğrulaması yapılan yetkili kullanıcılar Azure portalına erişebilir.
+6. Güvenlik ayarlarını kaydetmek için **Etkinleştir'i** seçin ve **Kaydet'i**tıklatın. Önceki adımda **Azure Çok Faktörlü Kimlik Doğrulaması'nı yapılandırdığınız değerden** bir değer seçtikten sonra **Etkinleştir'i** seçebilirsiniz.
 
     ![Güvenlik ayarlarının ekran görüntüsü](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
-## <a name="recover-deleted-backup-data"></a>Silinen yedekleme verilerini kurtar
+## <a name="recover-deleted-backup-data"></a>Silinen yedekleme verilerini kurtarma
 
-Yedekleme, silinen yedekleme verilerini ek 14 gün boyunca tutar ve yedekleme **verilerini sil ile Yedeklemeyi Durdur** işlemi gerçekleştirildiğinde hemen silinmez. Bu verileri 14 günlük sürede geri yüklemek için, kullanmakta olduğunuz seçeneğe bağlı olarak aşağıdaki adımları uygulayın:
+Yedekleme, silinen yedekleme verilerini 14 gün daha saklar ve **yedekleme yi silmek için yedekleme** işlemini durdurun işlemi gerçekleştirilirse hemen silmez. Bu verileri 14 günlük süre içinde geri yüklemek için, ne kullandığınıza bağlı olarak aşağıdaki adımları izleyin:
 
-**Azure kurtarma hizmetleri Aracısı** kullanıcıları için:
+**Azure Kurtarma Hizmetleri aracısı** kullanıcıları için:
 
-1. Yedeklemelerin gerçekleştiği bilgisayar hala kullanılabiliyorsa, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için verileri Azure kurtarma hizmetleri 'nde [aynı makineye kurtar](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) ' ı kullanın.
-2. Bu bilgisayar kullanılamıyorsa, bu verileri almak için başka bir Azure kurtarma hizmetleri bilgisayarı kullanmak üzere [alternatif bir makineye kurtar](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) ' ı kullanın.
+1. Yedeklemelerin gerçekleştiği bilgisayar hala kullanılabilirdurumdaysa, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için Azure Kurtarma Hizmetleri'ndeki [aynı makinede Kurtarma verilerini](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) kullanın.
+2. Bu bilgisayar kullanılamıyorsa, bu verileri almak için başka bir Azure Kurtarma Hizmetleri bilgisayarKullanmak için [alternatif bir makinede Kurtar'ı](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) kullanın.
 
-**Azure Backup sunucusu** kullanıcılar için:
+**Azure Yedekleme Sunucusu** kullanıcıları için:
 
-1. Yedeklemelerin gerçekleştiği sunucu hala kullanılabiliyorsa, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için **verileri kurtar** özelliğini kullanın.
-2. Bu sunucu kullanılamıyorsa, bu verileri almak için başka bir Azure Backup Sunucusu örneğini kullanmak üzere [başka bir Azure Backup sunucusu verileri kurtar](backup-azure-alternate-dpm-server.md) seçeneğini kullanın.
+1. Yedeklemelerin gerçekleştiği sunucu hala kullanılabilirse, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için **Verileri Kurtar Özelliği'ni** kullanın.
+2. Bu sunucu kullanılamıyorsa, bu verileri almak için başka bir Azure Yedekleme Sunucusu örneğini kullanmak için [başka bir Azure Yedekleme Sunucusu'ndan verileri kurtar'ı](backup-azure-alternate-dpm-server.md) kullanın.
 
-**Data Protection Manager** kullanıcılar için:
+**Veri Koruma Yöneticisi** kullanıcıları için:
 
-1. Yedeklemelerin gerçekleştiği sunucu hala kullanılabiliyorsa, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için **verileri kurtar** özelliğini kullanın.
-2. Bu sunucu kullanılamıyorsa, bu verileri almak için başka bir Data Protection Manager sunucusu kullanmak üzere [dış DPM Ekle](backup-azure-alternate-dpm-server.md) seçeneğini kullanın.
+1. Yedeklemelerin gerçekleştiği sunucu hala kullanılabilirse, silinen veri kaynaklarını yeniden koruyun ve tüm eski kurtarma noktalarından kurtarmak için **Verileri Kurtar Özelliği'ni** kullanın.
+2. Bu sunucu kullanılamıyorsa, bu verileri almak için başka bir Veri Koruma Yöneticisi sunucusu kullanmak için [Dış DPM Ekle'yi](backup-azure-alternate-dpm-server.md) kullanın.
 
 ## <a name="prevent-attacks"></a>Saldırıları önleme
 
-Yalnızca geçerli kullanıcıların çeşitli işlemler gerçekleştirebildiğine emin olmak için denetimler eklenmiştir. Bunlar, ek bir kimlik doğrulama katmanı eklemeyi ve kurtarma amacıyla en düşük saklama aralığını tutmayı içerir.
+Yalnızca geçerli kullanıcıların çeşitli işlemleri gerçekleştirebilmesini sağlamak için denetimler eklendi. Bunlar arasında fazladan bir kimlik doğrulama katmanı eklemek ve kurtarma amacıyla minimum bekletme aralığını korumak yer alıyor.
 
 ### <a name="authentication-to-perform-critical-operations"></a>Kritik işlemleri gerçekleştirmek için kimlik doğrulaması
 
-Kritik işlemler için ek bir kimlik doğrulama katmanı eklemenin bir parçası olarak, verileri silme ve **parola değiştirme** Işlemleri **ile korumayı durdur** işlemini gerçekleştirdiğinizde bir güvenlik PIN kodu girmeniz istenir.
+Kritik işlemler için fazladan bir kimlik doğrulama katmanı eklemenin bir parçası olarak, Verileri Sil ve **Geçiş Cümlesi** işlemlerini değiştir **ile Korumayı Durdur'u** gerçekleştirirken bir güvenlik PIN'i girmeniz istenir.
 
 > [!NOTE]
 >
-> Şu anda, DPM ve MABS için **silme verileriyle** güvenlik PIN 'i durdurma desteklenmez.
+> Şu anda, DPM ve MABS için **Delete verileriyle Korumayı Durdur** una yönelik güvenlik pini desteklenmez.
 
-Bu PIN 'ı almak için:
+Bu PIN'i almak için:
 
 1. Azure Portal’da oturum açın.
-2. **Kurtarma Hizmetleri kasası** > **ayarları** > **Özellikler**' e gidin.
-3. **GÜVENLIK PIN**'ı altında **Oluştur**' a tıklayın. Bu, Azure kurtarma hizmetleri Aracısı kullanıcı arabirimine girilecek PIN 'ı içeren bir dikey pencere açar.
-    Bu PIN yalnızca beş dakika için geçerlidir ve bu dönemden sonra otomatik olarak oluşturulur.
+2. **Kurtarma Hizmetleri kasa** > **Ayarları** > **Özellikleri**göz atın.
+3. **Güvenlik PIN'inin**altında **Oluştur'u**tıklatın. Bu, Azure Kurtarma Hizmetleri aracısı kullanıcı arabirimine girilecek PIN'i içeren bir bıçak açar.
+    Bu PIN yalnızca beş dakika için geçerlidir ve bu süre den sonra otomatik olarak oluşturulur.
 
-### <a name="maintain-a-minimum-retention-range"></a>En düşük saklama aralığını koruyun
+### <a name="maintain-a-minimum-retention-range"></a>Minimum bekletme aralığını koruyun
 
 Her zaman geçerli sayıda kurtarma noktası olduğundan emin olmak için aşağıdaki denetimler eklenmiştir:
 
 - Günlük bekletme için en az **yedi** günlük bekletme yapılmalıdır.
 - Haftalık bekletme için en az **dört** haftalık bekletme yapılmalıdır.
-- Aylık bekletme için en az **üç** aylık bekletme yapılmalıdır.
-- Yıllık bekletme için en az **bir** yıllık bekletme yapılmalıdır.
+- Aylık saklama için, en az **üç** aylık bekletme yapılmalıdır.
+- Yıllık bekletme için, en az **bir** yıllık bekletme yapılmalıdır.
 
 ## <a name="notifications-for-critical-operations"></a>Kritik işlemler için bildirimler
 
-Genellikle, kritik bir işlem gerçekleştirildiğinde abonelik yöneticisine, işlem hakkındaki ayrıntıları içeren bir e-posta bildirimi gönderilir. Azure portal kullanarak, bu bildirimler için ek e-posta alıcıları yapılandırabilirsiniz.
+Genellikle, kritik bir işlem gerçekleştirildiğinde, abonelik yöneticisine işlemle ilgili ayrıntıları içeren bir e-posta bildirimi gönderilir. Azure portalını kullanarak bu bildirimler için ek e-posta alıcıları yapılandırabilirsiniz.
 
-Bu makalede bahsedilen güvenlik özellikleri, hedeflenen saldırılara karşı savunma mekanizmaları sunmaktadır. Daha da önemlisi, bir saldırı olursa bu özellikler verilerinizi kurtarmanıza olanak sağlar.
+Bu makalede belirtilen güvenlik özellikleri, hedeflenen saldırılara karşı savunma mekanizmaları sağlar. Daha da önemlisi, bir saldırı gerçekleşirse, bu özellikler verilerinizi kurtarma olanağı sağlar.
 
 ## <a name="troubleshooting-errors"></a>Hatalarda sorun giderme
 
-| İşlem | Hata Ayrıntıları | Çözüm |
+| İşlem | Hata ayrıntıları | Çözüm |
 | --- | --- | --- |
-| İlke değişikliği |Yedekleme ilkesi değiştirilemedi. Hata: geçerli işlem, [0x29834] iç hizmet hatası nedeniyle başarısız oldu. Lütfen bir süre sonra işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft desteğine başvurun. |**Neden:**<br/>Bu hata, güvenlik ayarları etkinleştirildiğinde, yukarıda belirtilen en düşük değerlerin altındaki bekletme aralığını azaltmaya ve desteklenmeyen bir sürümdeyse (Bu makalenin ilk bölümünde desteklenen sürümler belirtilir). <br/>**Önerilen eylem:**<br/> Bu durumda, ilkeyle ilgili güncelleştirmeler ile devam etmek için belirtilen en düşük saklama süresi (günlük için yedi gün, haftalık dört hafta, aylık veya yıllık bir yıl için üç hafta) üzerinde saklama süresi ayarlamanız gerekir. İsteğe bağlı olarak, tercih edilen yaklaşım, tüm güvenlik güncelleştirmelerinden yararlanmak için Azure Backup Sunucusu ve/veya DPM UR yedekleme aracısını güncelleştirmek olacaktır. |
-| Parolayı Değiştir |Girilen güvenlik PIN 'ı hatalı. (KIMLIK: 100130) Bu işlemi gerçekleştirmek için doğru güvenlik PIN 'ini girin. |**Neden:**<br/> Bu hata, kritik işlem gerçekleştirirken (değiştirme parolası gibi) geçersiz veya süre dolma güvenlik PIN 'ı girdiğinizde gelir. <br/>**Önerilen eylem:**<br/> İşlemi gerçekleştirmek için geçerli bir güvenlik PIN 'ı girmeniz gerekir. PIN 'i almak için Azure portal oturum açın ve kurtarma hizmetleri Kasası > Ayarlar > Özellikler > güvenlik PIN 'ı oluştur ' a gidin. Parolayı değiştirmek için bu PIN 'ı kullanın. |
-| Parolayı Değiştir |İşlem başarısız oldu. KIMLIK: 120002 |**Neden:**<br/>Bu hata, güvenlik ayarları etkinleştirildiğinde, parolayı değiştirmeye çalışırsınız ve desteklenmeyen bir sürümdür (Bu makalenin ilk notta belirtilen geçerli sürümler).<br/>**Önerilen eylem:**<br/> Parolayı değiştirmek için, önce yedekleme aracısını minimum en düşük sürüm olan 2.0.9052, Azure Backup sunucusu en düşük güncelleştirme 1 ve/veya DPM 2012 R2 UR12 veya DPM 2016 UR2 (aşağıdaki bağlantıları indir) olarak güncelleştirmeniz gerekir, ardından geçerli güvenlik PIN 'ini girin. PIN 'i almak için Azure portal oturum açın ve kurtarma hizmetleri Kasası > Ayarlar > Özellikler > güvenlik PIN 'ı oluştur ' a gidin. Parolayı değiştirmek için bu PIN 'ı kullanın. |
+| İlke değişikliği |Yedekleme ilkesi değiştirilemedi. Hata: Geçerli işlem bir iç hizmet hatası nedeniyle başarısız oldu [0x29834]. Lütfen bir süre sonra işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun. |**Neden:**<br/>Bu hata, güvenlik ayarları etkinleştirildiğinde, bekletme aralığını yukarıda belirtilen minimum değerlerin altında azaltmaya çalıştığınızda ve desteklenmeyen sürümde olduğunuzda (desteklenen sürümler bu makalenin ilk notunda belirtilir) gelir. <br/>**Önerilen Eylem:**<br/> Bu durumda, ilkeyle ilgili güncelleştirmelere devam etmek için bekletme süresini belirtilen minimum bekletme süresinin (günlük için yedi gün, haftalık hafta için dört hafta, aylık için üç hafta veya yıllık bir yıl için) ayarlamanız gerekir. İsteğe bağlı olarak, tercih edilen yaklaşım, tüm güvenlik güncelleştirmelerini sağlamak için yedekleme aracısını, Azure Yedekleme Sunucusunu ve/veya DPM UR'yi güncelleştirmek tir. |
+| Parolasözcülerini Değiştir |Girilen güvenlik PINi yanlıştır. (Kimlik numarası: 100130) Bu işlemi tamamlamak için doğru Güvenlik PIN'ini sağlayın. |**Neden:**<br/> Bu hata, kritik işlemi gerçekleştirirken geçersiz veya süresi dolmuş Güvenlik PIN'ini girdiğinizde (değişiklik parolası gibi) ortaya çıkar. <br/>**Önerilen Eylem:**<br/> İşlemi tamamlamak için geçerli Güvenlik PIN'ini girmeniz gerekir. PIN'i almak için Azure portalında oturum açın ve Güvenlik PINi Oluşturma özellikleri > > Özellikler > Kurtarma Hizmetleri kasasına gidin. Parolayı değiştirmek için bu PIN'i kullanın. |
+| Parolasözcülerini Değiştir |İşlem başarısız oldu. Kimlik Numarası: 120002 |**Neden:**<br/>Bu hata, güvenlik ayarları etkinleştirildiğinde, parolayı değiştirmeye çalıştığınızda ve desteklenmeyen sürümde olduğunuzda (bu makalenin ilk notunda belirtilen geçerli sürümler) gelir.<br/>**Önerilen Eylem:**<br/> Parolayı değiştirmek için önce yedekleme aracısını en az 2.0.9052 sürümüne, Azure Yedekleme sunucusuna en az güncelleme 1'e ve/veya DPM'yi en az DPM 2012 R2 UR12 veya DPM 2016 UR2'ye (aşağıdaki indirme bağlantıları) güncelleştirmeniz ve ardından geçerli Güvenlik PIN'ini girmeniz gerekir. PIN'i almak için Azure portalında oturum açın ve Güvenlik PINi Oluşturma özellikleri > > Özellikler > Kurtarma Hizmetleri kasasına gidin. Parolayı değiştirmek için bu PIN'i kullanın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bu özellikleri etkinleştirmek için [Azure kurtarma hizmetleri kasası ile çalışmaya](backup-azure-vms-first-look-arm.md) başlayın.
-- Windows bilgisayarlarını korumaya yardımcı olmak ve yedekleme verilerinizi saldırılara karşı korumak için [en son Azure kurtarma hizmetleri aracısını indirin](https://aka.ms/azurebackup_agent) .
-- İş yüklerini korumaya yardımcı olmak ve yedekleme verilerinizi saldırılara karşı korumak için [en son Azure Backup sunucusu indirin](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3) .
-- [System center 2012 R2 Data Protection Manager IÇIN UR12 indirin](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) veya [System Center 2016 için UR2 indirin Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) iş yüklerini korumanıza ve yedekleme verilerinizi saldırılara karşı korumalarına yardımcı olur.
+- Bu özellikleri etkinleştirmek için [Azure Kurtarma Hizmetleri kasası ile başlayın.](backup-azure-vms-first-look-arm.md)
+- Windows bilgisayarlarını korumaya ve yedekleme verilerinizi saldırılara karşı korumaya yardımcı olmak için [en son Azure Kurtarma Hizmetleri aracısını indirin.](https://aka.ms/azurebackup_agent)
+- İş yüklerini korumaya ve yedekleme verilerinizi saldırılara karşı korumaya yardımcı olmak için [en son Azure Yedekleme Sunucusu'nu indirin.](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)
+- İş yüklerini korumaya ve yedekleme verilerinizi saldırılara karşı korumaya yardımcı olmak için [System Center 2012 R2 Veri Koruma Yöneticisi için UR12'yi indirin](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) veya [System Center 2016 Veri Koruma Yöneticisi için UR2'yi indirin.](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)

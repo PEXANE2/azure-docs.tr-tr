@@ -1,95 +1,128 @@
 ---
-title: Azure Güncelleştirme Yönetimi hatalarda sorun giderme
-description: Azure 'da Güncelleştirme Yönetimi çözümle ilgili sorunları gidermeye ve gidermeye nasıl çözüm alabileceğinizi öğrenin.
+title: Azure Güncelleştirme Yönetimi ile hataları giderme
+description: Azure'daki Update Management çözümüyle ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/02/2020
+ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 91bcdc65a7ff3bcaf09f12d69ba4c7aaeb84ffa7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132864"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
+# <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi ile sorun giderme sorunları
 
-Bu makalede, Güncelleştirme Yönetimi kullandığınızda karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır.
+Bu makalede, Güncelleştirme Yönetimi'ni kullandığınızda karşılaşabileceğiniz sorunların çözümleri tartışılmaktadır.
 
-Temeldeki sorunu belirlemede karma çalışan Aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md). Diğer tüm sorunlar için aşağıdaki sorun giderme kılavuzunu kullanın.
+Altta yatan sorunu belirlemek için Karma İşçi aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın. Diğer tüm sorunlar için aşağıdaki sorun giderme kılavuzunu kullanın.
 
-Çözümü bir sanal makineye (VM) ekleme çalışırken sorunlarla karşılaşırsanız, olay KIMLIĞI 4502 olan olaylar ve **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. Hybridavgent**içeren olay ayrıntıları için yerel makinedeki **uygulama ve hizmet günlükleri** altındaki **Operations Manager** günlüğünü kontrol edin.
+Sanal bir makinede (VM) çözüme binmeye çalışırken sorunlarla karşılaşırsanız, olay kimliği 4502 ve olay ayrıntıları içeren `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`olaylar için yerel makinedeki Uygulama ve Hizmetler **Günlükleri** altındaki Operasyon **Yöneticisi** günlüğünü kontrol edin.
 
-Aşağıdaki bölümde, belirli hata iletileri ve her biri için olası çözümler vurgulanmaktadır. Diğer ekleme sorunları için bkz. [çözüm ekleme sorunlarını giderme](onboarding.md).
+Aşağıdaki bölümde, her biri için belirli hata iletileri ve olası çözümler vurgulanır. Diğer onboarding sorunları için [onboarding Sorun Giderme çözümüne](onboarding.md)bakın.
 
-## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Senaryo: yenisiyle değiştirilen güncelleştirme Güncelleştirme Yönetimi eksik olarak belirtildi
-
-### <a name="issue"></a>Sorun
-
-Eski güncelleştirmeler, yenisiyle değiştirilseler bile, Azure hesabındaki Güncelleştirme Yönetimi eksik olarak görünüyor. Yenisiyle değiştirilen bir güncelleştirme, aynı güvenlik açığını düzelten sonraki bir güncelleştirme kullanılabilir olduğundan, yüklenmesi gereken bir güncelleştirmedir. Güncelleştirme Yönetimi, yenisiyle değiştirilen güncelleştirmeyi yoksayar ve yerine geçen güncelleştirmenin yerine uygulanabilir değildir. İlgili bir sorun hakkında daha fazla bilgi için bkz. [Update 'in yerini almıştır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
-
-### <a name="cause"></a>Nedeni
-
-Yenisiyle değiştirilen güncelleştirmeler uygun olmayan kabul edilebilmesi için reddedildi olarak doğru gösterilmezler.
-
-### <a name="resolution"></a>Çözüm
-
-Yenisiyle değiştirilen bir güncelleştirme %100 ' a uygulanamıyorsa, bu güncelleştirmenin onay durumunu **reddedildi**olarak değiştirmelisiniz. Bunu tüm güncelleştirmelerinizi yapmak için:
-
-1. Otomasyon hesabında, makine durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin. Bkz. [güncelleştirme değerlendirmelerini görüntüleme](../manage-update-multi.md#view-an-update-assessment).
-
-2. %100 uygulanabilir olmadığından emin olmak için yenisiyle değiştirilen güncelleştirmeyi denetleyin. 
-
-3. Güncelleştirme hakkında sorularınız yoksa güncelleştirme reddedildi olarak işaretleyin. 
-
-4. Bilgisayarlar ' ı seçin ve uyumluluk sütununda uyumluluk için yeniden taramaya zorlayın. Bkz. [birden çok makine için güncelleştirmeleri yönetme](../manage-update-multi.md).
-
-5. Yenisiyle değiştirilen diğer güncelleştirmeler için yukarıdaki adımları tekrarlayın.
-
-6. Reddedilen güncelleştirmelerden dosyaları silmek için Temizleme Sihirbazı 'nı çalıştırın. 
-
-7. WSUS için, tüm yenisiyle değiştirilen güncelleştirmeleri altyapıyı yenilemek için el ile temizleyin.
-
-8. Görüntüleme sorununu düzeltmek ve güncelleştirme yönetimi için kullanılan disk alanı miktarını en aza indirmek için bu yordamı düzenli olarak tekrarlayın.
-
-## <a name="nologs"></a>Senaryo: makineler altında portalda gösterilmez Güncelleştirme Yönetimi
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Senaryo: "Güncelleştirme çözümlerini etkinleştirmek için başarısız oldu" hatasını alırsınız
 
 ### <a name="issue"></a>Sorun
 
-Aşağıdaki belirtilerle karşılaşırsınız:
+Otomasyon hesabınızda Güncelleştirme Yönetimi çözümünüzü etkinleştirmeye çalıştığınızda aşağıdaki hatayla karşılaşırsınız:
 
-* Makineniz, bir sanal makinenin Güncelleştirme Yönetimi görünümünden **yapılandırılmamış** .
-
-* Azure Otomasyonu hesabınızın Güncelleştirme Yönetimi görünümünde makineleriniz eksik.
-
-* **Uyumluluk**altında **değerlendirilmeyen** olarak gösteren makineleriniz var. Ancak, karma Runbook Worker için Azure Izleyici günlüklerinde sinyal verilerini görürsünüz, ancak Güncelleştirme Yönetimi için değildir.
+```error
+Error details: Failed to enable the Update solution
+```
 
 ### <a name="cause"></a>Nedeni
 
-Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kapsam yapılandırması neden olabilir.
+Bu hata aşağıdaki nedenlerle oluşabilir:
 
-Karma runbook çalışanını yeniden kaydetmeniz ve yeniden yüklemeniz gerekebilir.
+* Log Analytics aracısı için ağ güvenlik duvarı gereksinimleri doğru yapılandırılamayabilir ve bu da aracının DNS URL'lerini çözerken başarısız olmasını sağlar.
 
-Çalışma alanınızda ulaşılan ve daha fazla veri depolamayı engelleyen bir kota tanımlamış olabilirsiniz.
+* Çözüm hedeflemesi yanlış yapılandırılmıştır ve makine beklendiği gibi güncelleştirmeler almıyor.
+
+* Ayrıca makinenin `Non-compliant` **Uyumluluk**altında bir durum gösterdiğini de fark edebilirsiniz. Aynı zamanda, **Aracı güncelleştirme hazır aracıyı** `Disconnected`.
 
 ### <a name="resolution"></a>Çözüm
 
-* İşletim sistemine bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun gidericiyi çalıştırın.
+* İşletim sistemi bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun giderici çalıştırın.
 
-* Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bu yönü doğrulamaya ilişkin yönergeler için bkz. [Log Analytics için aracı bağlantısını doğrulayın](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+* Güncelleştirme Yönetimi'nin çalışması için hangi adreslerin ve bağlantı noktalarının izin verilmesi gerektiğini öğrenmek için [Ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) gidin.  
 
-* Makinelerin Log Analytics çalışma alanınızda göründüğünden emin olun. Aşağıdaki sorguyu Otomasyon hesabınıza bağlı Log Analytics çalışma alanında çalıştırın:
+* Log Analytics aracısının çalışması için hangi adreslerin ve bağlantı noktalarının izin verilmesi gerektiğini öğrenmek için [Ağ planlamasına](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) gidin.
+
+* Kapsam yapılandırma sorunları olup yok. [Kapsam yapılandırması,](../automation-onboard-solutions-from-automation-account.md#scope-configuration) çözüm için hangi makinelerin yapılandırılmalarını belirler. Makineniz çalışma alanınızda görünüyorsa ancak **Güncelleştirme Yönetimi** portalında görünmüyorsa, kapsamı yapılandırmasını makineleri hedefedecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için [çalışma alanında Yerleşik makinelere](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)bakın.
+
+* [Karma runbook çalışmasını silme](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)adımlarını izleyerek alt yapılandırmayı kaldırın. 
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Senaryo: Güncelleştirme Yönetimi'nde eksik olarak gösterilen yeni güncelleştirme
+
+### <a name="issue"></a>Sorun
+
+Eski güncelleştirmeler, otomasyon hesabında ki Güncelleştirme Yönetimi'nde, geçersiz hale getirilmiş olsalar bile eksik olarak görünür. Aynı güvenlik açığını düzelten daha sonraki bir güncelleştirme kullanılabilir olduğundan, yeni bir güncelleştirme nin yüklenmesi gerekmeyen bir güncelleştirmedir. Update Management, geçersiz kılan güncelleştirmeyi yok sayar ve yerini alan güncelleştirme lehine geçerli değildir. İlgili bir sorun hakkında bilgi için [bkz.](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)
+
+### <a name="cause"></a>Nedeni
+
+Değiştirilen güncelleştirmeler, geçerli olmadığı düşünülebilmeleri için reddedildiği doğru şekilde belirtilmez.
+
+### <a name="resolution"></a>Çözüm
+
+Yerine verilen bir güncelleştirme yüzde 100 geçerli değilse, bu güncelleştirmenin onay `Declined`durumunu ' da değiştirmeniz gerekir. Tüm güncellemeleriniz için bunu yapmak için:
+
+1. Otomasyon hesabında, makine durumunu görüntülemek için **Yönetim Güncelleştir'i** seçin. Bkz. [Güncelleştirme değerlendirmelerini görüntüleyin.](../manage-update-multi.md#view-an-update-assessment)
+
+2. Yüzde 100 geçerli olmadığından emin olmak için geçersiz olan güncelleştirmeyi denetleyin. 
+
+3. Güncelleştirme yle ilgili bir sorunuz yoksa güncelleştirmeyi reddedildi olarak işaretleyin. 
+
+4. **Bilgisayarlar'ı** seçin ve **Uyumluluk** sütununda uyumluluk için bir rescan zorlayın. Bkz. [Birden çok makine için güncelleştirmeleri yönet.](../manage-update-multi.md)
+
+5. Değiştirilen diğer güncelleştirmeler için yukarıdaki adımları yineleyin.
+
+6. Reddedilen güncelleştirmelerden dosyaları silmek için temizleme sihirbazını çalıştırın. 
+
+7. WSUS için, altyapıyı yenilemek için değiştirilen tüm güncelleştirmeleri el ile temizleyin.
+
+8. Görüntü sorununu düzeltmek ve güncelleştirme yönetimi için kullanılan disk alanı miktarını en aza indirmek için bu yordamı düzenli olarak yineleyin.
+
+## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Senaryo: Makineler Güncelleme Yönetimi altında portalda görünmüyor
+
+### <a name="issue"></a>Sorun
+
+Makineleriniz aşağıdaki belirtilere sahiptir:
+
+* Makineniz `Not configured` bir VM'nin Güncelleştirme Yönetimi görünümünden gösterir.
+
+* Azure Otomasyon hesabınızın Güncelleme Yönetimi görünümünde makineleriniz eksiktir.
+
+* `Not assessed` **Uyumluluk**altında olduğunu gösteren makineleriniz var. Ancak, Azure Monitor günlüklerinde Karma Runbook Worker için sinyal verilerini görürsünüz, ancak Güncelleştirme Yönetimi için görmezsiniz.
+
+### <a name="cause"></a>Nedeni
+
+Bu sorun, yerel yapılandırma sorunları ndan veya yanlış yapılandırılmış kapsam yapılandırmasından kaynaklanabilir.
+
+Karma Runbook Worker'ı yeniden kaydetmeniz ve yeniden yüklemeniz gerekebilir.
+
+Çalışma alanınızda ulaşılan ve daha fazla veri depolamasını engelleyen bir kota tanımlamış olabilirsiniz.
+
+### <a name="resolution"></a>Çözüm
+
+* İşletim sistemi bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun giderici çalıştırın.
+
+* Makinenizin doğru çalışma alanına rapor verdiğinden emin olun. Bu yönü nasıl doğrulayabilirsiniz hakkında kılavuz için [bkz.](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics) Ayrıca, bu çalışma alanının Azure Otomasyon hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **İlgili Kaynaklar**altında Bağlantılı **çalışma alanını** seçin.
+
+* Günlük Analizi çalışma alanınızda makinelerin ortaya çıktıklarından emin olun. Otomasyon hesabınıza bağlı Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın:
 
   ```loganalytics
   Heartbeat
   | summarize by Computer, Solutions
   ```
-  Makinenizi sorgu sonuçlarında görmüyorsanız, kısa bir süre önce bir yerel yapılandırma sorunu olduğu anlamına gelir ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir. Makineniz sorgu sonuçlarında görünüyorsa, bu listedeki bir sonraki madde işaretli öğede belirtilen kapsam yapılandırmasını doğrulamanız gerekir.
+ 
+  Makinenizi sorgu sonuçlarında görmüyorsanız, yakın zamanda iade edilmedi, bu da büyük olasılıkla yerel bir yapılandırma sorunu olduğu ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerektiği anlamına geliyor. Makineniz sorgu sonuçlarında ortaya çıkarsa, bu listedeki bir sonraki madde işaretli maddede belirtilen kapsam yapılandırmasını doğrulamanız gerekir.
 
-* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin çözüm için yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak **güncelleştirme yönetimi** portalında yoksa, makineleri hedeflemek için kapsam yapılandırmasını yapılandırmanız gerekecektir. Bunun nasıl yapılacağını öğrenmek için bkz. [çalışma alanındaki makineler](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)ekleme.
+* Kapsam yapılandırma sorunları olup yok. [Kapsam yapılandırması,](../automation-onboard-solutions-from-automation-account.md#scope-configuration) çözüm için hangi makinelerin yapılandırılmalarını belirler. Makineniz çalışma alanınızda görünüyorsa ancak **Güncelleştirme Yönetimi** portalında görünmüyorsa, kapsam yapılandırmasını makineleri hedefedecek şekilde yapılandırmanız gerekir. Bunu nasıl yapacağınızı öğrenmek için [çalışma alanında yerleşik makinelere](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)bakın.
 
 * Çalışma alanınızda aşağıdaki sorguyu çalıştırın:
 
@@ -98,15 +131,16 @@ Karma runbook çalışanını yeniden kaydetmeniz ve yeniden yüklemeniz gerekeb
   | where OperationCategory == 'Data Collection Status'
   | sort by TimeGenerated desc
   ```
-  Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonucu alırsanız, çalışma alanınızda erişilen ve verilerin kaydedilmesini durduran bir kota vardır. Çalışma alanınızda, **kullanım ve tahmini maliyetler** > **veri hacmi yönetimi** ' ne gidin ve kotayı denetleyin veya kaldırın.
 
-* Bu adımlar sorununuzu gidermezse Windows karma [Runbook Worker 'ı dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyerek Windows Için karma çalışanı yeniden yükleyin. Veya Linux için [bir Linux karma runbook çalışanı dağıtın](../automation-linux-hrw-install.md).
+  Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanmış ve verilerin kaydedilmesine engel olan bir kota vardır. Çalışma **alanınızda, Kullanım ve tahmini maliyet** > **veri hacmi yönetimine** gidin ve kotanızı kontrol edin veya kaldırın.
 
-## <a name="rp-register"></a>Senaryo: abonelikler için Otomasyon kaynak sağlayıcısı kaydedilemiyor
+* Bu adımlar sorununuzu çözmezse, Windows için Karma Çalışan'ı yeniden yüklemek için [Windows Karma Runbook Worker'ı dağıt'taki](../automation-windows-hrw-install.md) adımları izleyin. Linux için, bir [Linux Hybrid Runbook Worker dağıt'taki](../automation-linux-hrw-install.md)adımları izleyin.
+
+## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Senaryo: Abonelikler için Otomasyon Kaynak Sağlayıcısı'nı kaydedemiyoruz
 
 ### <a name="issue"></a>Sorun
 
-Otomasyon hesabınızdaki çözümlerle çalışırken aşağıdaki hatayla karşılaşırsınız:
+Otomasyon hesabınızda çözümlerle çalışırken aşağıdaki hatalarla karşılaşırsınız:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions:
@@ -114,23 +148,23 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 ### <a name="cause"></a>Nedeni
 
-Otomasyon kaynak sağlayıcısı abonelikte kayıtlı değil.
+Otomasyon Kaynak Sağlayıcısı aboneye kayıtlı değildir.
 
 ### <a name="resolution"></a>Çözüm
 
-Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki adımları izleyin:
+Otomasyon Kaynak Sağlayıcısı'nı kaydetmek için Azure portalında aşağıdaki adımları izleyin:
 
-1. Portalın altındaki Azure hizmeti listesinde, **tüm hizmetler**' i seçin ve ardından Genel hizmet grubundaki **abonelikler** ' i seçin.
+1. Portalın altındaki Azure hizmet listesinde Tüm **hizmetler'i**seçin ve ardından Genel hizmet grubunda **Abonelikleri** seçin.
 2. Aboneliğinizi seçin.
-3. **Ayarlar**altında **kaynak sağlayıcıları**' nı seçin.
-4. Kaynak sağlayıcıları listesinden, **Microsoft. Automation** kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
-5. Listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](/azure/azure-resource-manager/resource-manager-register-provider-errors)adımlarını izleyerek **Microsoft. Automation** sağlayıcısını kaydedin.
+3. **Ayarlar** **altında, Kaynak Sağlayıcıları**seçin.
+4. Kaynak sağlayıcıları listesinden kaynak sağlayıcısının `Microsoft.Automation` kayıtlı olduğunu doğrulayın.
+5. Listelenmemişse, kaynak sağlayıcı `Microsoft.Automation` kaydı için hataları çöz'teki adımları izleyerek sağlayıcıyı kaydedin. [Resolve errors for resource provider registration](/azure/azure-resource-manager/resource-manager-register-provider-errors)
 
-## <a name="components-enabled-not-working"></a>Senaryo: Güncelleştirme Yönetimi çözümünün bileşenleri etkinleştirildi ve şimdi bu sanal makine yapılandırılıyor
+## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Senaryo: Güncelleştirme Yönetimi çözümü için bileşenler etkinken, VM yapılandırıldığını göstermeye devam ediyor
 
 ### <a name="issue"></a>Sorun
 
-Daha sonra bir sanal makinede 15 dakika sonra şu iletiyi görmeye devam edersiniz:
+Uçağa bindikten 15 dakika sonra sanal bir makinede aşağıdaki iletiyi görmeye devam emzebilirsiniz:
 
 ```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
@@ -138,25 +172,53 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
+Bu hata aşağıdaki nedenlerle oluşabilir:
 
-- Otomasyon hesabıyla iletişim engelleniyor.
-- Eklendi olan VM, yüklü Microsoft Monitoring Agent (MMA) ile Sysprep uygulanmamış bir kopyalanmış makineden gelmiş olabilir.
+* Otomasyon hesabı ile iletişim engelleniyor.
+
+* Farklı kaynak bilgisayar tanıları olan yinelenen bir bilgisayar adı vardır. Bu senaryo, belirli bir bilgisayar ada sahip bir VM farklı kaynak gruplarında oluşturulduğunda ve abonelikte aynı Lojistik Aracısı çalışma alanına raporlandığında oluşur.
+
+* Gemiye binen VM görüntüsü, Microsoft Monitoring Agent (MMA) yüklü sistem hazırlama (sysprep) ile hazırlanmamış klonlanmış bir makineden gelebilir.
 
 ### <a name="resolution"></a>Çözüm
 
-1. Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) gidin.
-2. Kopyalanmış bir görüntü kullanıyorsanız:
-   1. Log Analytics çalışma alanınızda, sanal makineyi, `MicrosoftDefaultScopeConfig-Updates` kapsam yapılandırması için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
-   2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` öğesini çalıştırın.
-   3. `HealthService`yeniden başlatmak için `Restart-Service HealthService` çalıştırın. Bu, anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
-   4. Bu yaklaşım işe yaramazsa, önce görüntüde Sysprep 'i çalıştırın ve ardından MMA 'yı yüklemeniz gerekir.
+VM ile ilgili sorunun tam olarak belirlenmesine yardımcı olmak için, Otomasyon hesabınıza bağlı Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın:
 
-## <a name="multi-tenant"></a>Senaryo: başka bir Azure kiracısındaki makineler için bir güncelleştirme dağıtımı oluştururken bağlantılı bir abonelik hatası alıyorsunuz
+```
+Update
+| where Computer contains "fillInMachineName"
+| project TimeGenerated, Computer, SourceComputerId, Title, UpdateState 
+```
+
+#### <a name="communication-with-automation-account-blocked"></a>Otomasyon hesabı ile iletişim engellendi
+
+Güncelleştirme Yönetimi'nin çalışması için hangi adreslerin ve bağlantı noktalarının izin verilmesi gerektiğini öğrenmek için [Ağ planlamasına](../automation-update-management.md#ports) gidin.
+
+#### <a name="duplicate-computer-name"></a>Yinelenen bilgisayar adı
+
+Çevrelerinde benzersiz adlar sağlamak için VM'lerinizi yeniden adlandırın.
+
+#### <a name="onboarded-image-from-cloned-machine"></a>Klonlanmış makineden yerleşik görüntü
+
+Klonlanmış bir resim kullanıyorsanız, farklı bilgisayar adları aynı kaynak bilgisayar kimliğine sahiptir. Bu durumda:
+
+1. Log Analytics çalışma alanınızda, gösterilirse kapsam yapılandırması için kaydedilen aramadan `MicrosoftDefaultScopeConfig-Updates` VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
+
+2. Aşağıdaki cmdlet'i çalıştırın:
+
+    ```azurepowershell-interactive
+    Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
+    ```
+
+3. Sağlık `Restart-Service HealthService` hizmetini yeniden başlatmak için çalıştırın. Bu işlem anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
+
+4. Bu yaklaşım işe yaramazsa, önce görüntüüzerinde sysprep çalıştırın ve sonra MMA yükleyin.
+
+## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Senaryo: Başka bir Azure kiracısında makineler için güncelleştirme dağıtımı oluşturduğunuzda bağlantılı bir abonelik hatası alırsınız
 
 ### <a name="issue"></a>Sorun
 
-Başka bir Azure kiracısındaki makineler için bir güncelleştirme dağıtımı oluşturmaya çalıştığınızda aşağıdaki hatayla karşılaşırsınız:
+Başka bir Azure kiracısında ki makineler için güncelleştirme dağıtımı oluşturmaya çalıştığınızda aşağıdaki hatayla karşılaşırsınız:
 
 ```error
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
@@ -164,12 +226,12 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, bir güncelleştirme dağıtımında yer alan başka bir kiracıda Azure VM 'Leri olan bir güncelleştirme dağıtımı oluşturduğunuzda oluşur.
+Bu hata, güncelleştirme dağıtımına dahil olan başka bir kiracıda Azure VM'leri bulunan bir güncelleştirme dağıtımı oluşturduğunuzda oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
-Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini `-ForUpdate` anahtarıyla birlikte kullanabilirsiniz. Ardından [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `-NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+Bu öğeleri zamanlanmış almak için aşağıdaki geçici çözüm kullanın. Bir zamanlama oluşturmak için `ForUpdate` parametre ile Yeni [AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet kullanabilirsiniz. Ardından, [Yeni AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) cmdlet kullanın ve diğer kiracıdaki makineleri `NonAzureComputer` parametreye geçirin. Aşağıdaki örnekte, bunun nasıl yapılacağını gösterilmektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -181,25 +243,25 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-## <a name="node-reboots"></a>Senaryo: açıklanamayan yeniden başlatmalar
+## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Senaryo: Açıklanamayan yeniden başlatmalar
 
 ### <a name="issue"></a>Sorun
 
-**Yeniden başlatma denetimi** seçeneğini **hiçbir şekilde yeniden başlatmaya**ayarlamış olsanız bile, güncelleştirmeler yüklendikten sonra makineler yeniden başlatılıyor.
+**Yeniden Başlatma Denetim** seçeneğini Never **Reboot**olarak ayarlasanız bile, güncelleştirmeler yüklendikten sonra makineler yeniden başlatılır.
 
 ### <a name="cause"></a>Nedeni
 
-Windows Update, herhangi biri yeniden başlatma davranışını değiştirebilecek çeşitli kayıt defteri anahtarları tarafından değiştirilebilir.
+Windows Update, yeniden başlatma davranışını değiştirebilen birkaç kayıt defteri anahtarı yla değiştirilebilir.
 
 ### <a name="resolution"></a>Çözüm
 
-Makinelerinizin düzgün yapılandırıldığından emin olmak için [yeniden başlatmayı yönetmek üzere kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) altında listelenen kayıt defteri anahtarlarını gözden geçirin.
+Makinelerinizin düzgün şekilde yapılandırıldığından emin olmak [için yeniden başlatmayı yönetmek için kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve Kayıt Defteri anahtarlarını [düzenleyerek Otomatik Güncelleştirmeleri Yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) altında listelenen kayıt defteri anahtarlarını gözden geçirin.
 
-## <a name="failed-to-start"></a>Senaryo: bir güncelleştirme dağıtımında makine "başlatılamadı" olarak gösteriliyor
+## <a name="scenario-machine-shows-failed-to-start-in-an-update-deployment"></a><a name="failed-to-start"></a>Senaryo: Makine, güncelleştirme dağıtımında "Başlatılamayan"
 
 ### <a name="issue"></a>Sorun
 
-**Bir makine başlatılamadı durumunu gösterir** . Makinenin belirli ayrıntılarını görüntülediğinizde, aşağıdaki hatayı görürsünüz:
+Bir makine `Failed to start` durumu gösterir. Makinenin belirli ayrıntılarını görüntülediğinizde, aşağıdaki hatayı görürsünüz:
 
 ```error
 Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
@@ -210,50 +272,50 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 * Makine artık yok.
-* Makine kapalı ve ulaşılamaz durumda.
-* Makine bir ağ bağlantısı sorununa sahiptir ve bu nedenle makinedeki karma çalışana ulaşılamıyor.
-* MMA 'nın Sourcecomputerıd 'sini değiştiren bir güncelleştirmesi vardı.
-* Bir Otomasyon hesabında 2.000 eşzamanlı iş sınırına ulaşırsanız güncelleştirme çalışması kısıtlanıyor. Her dağıtım bir iş olarak değerlendirilir ve bir güncelleştirme dağıtımındaki her makine iş olarak sayılır. Otomasyon hesabınızda çalışmakta olan diğer herhangi bir Otomasyon işi veya güncelleştirme dağıtımı, eşzamanlı iş sınırına doğru sayılır.
+* Makine kapalı ve ulaşılamıyor.
+* Makinenin bir ağ bağlantısı sorunu vardır ve bu nedenle makinedeki hibrit işçiye erişilemez.
+* MMA'da kaynak bilgisayar kimliğini değiştiren bir güncelleştirme vardı.
+* Bir Otomasyon hesabında 2000 eşzamanlı iş sınırına ulaştığınızda güncelleştirme çalıştırmanız kısıtlandı. Her dağıtım bir iş olarak kabul edilir ve güncelleştirme dağıtımındaki her makine bir iş olarak sayılır. Şu anda Otomasyon hesabınızda çalışan diğer otomasyon işi veya güncelleştirme dağıtımı eşzamanlı iş sınırına doğru sayılır.
 
 ### <a name="resolution"></a>Çözüm
 
-Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ek olarak:
+Mümkün olduğunda, güncelleştirme dağıtımlarınız için [dinamik gruplar](../automation-update-management-groups.md) kullanın. Ek olarak:
 
-* Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. 
-* Makine yoksa, dağıtımınızı düzenleyin ve makineyi kaldırın.
-* Güncelleştirme Yönetimi için gereken bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve sonra makinenizin bu gereksinimleri karşıladığını doğrulayın.
-* Karma Runbook Worker Aracısı sorun gidericisini kullanarak karma Runbook Worker bağlantısını doğrulayın. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md).
-* Ortamınızdaki `SourceComputerId` değiştiği makineleri bulmak için Log Analytics aşağıdaki sorguyu çalıştırın. Aynı `Computer` değerine sahip bilgisayarları, ancak farklı bir `SourceComputerId` değeri olup olmadığına bakın.
+* Makinenin hala var olduğunu ve erişilebildiğini doğrulayın. 
+* Makine yoksa, dağıtımınızı edin ve makineyi kaldırın.
+* Güncelleştirme Yönetimi için gerekli olan bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve ardından makinenizin bu gereksinimleri karşıladığını doğrulayın.
+* Karma Runbook İşçisi aracısı sorun gidericisini kullanarak Karma Runbook İşçisi ile bağlantıyı doğrulayın. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın.
+* Kaynak bilgisayar kimliğinin değiştiği ortamınızda makineleri bulmak için Log Analytics'te aşağıdaki sorguyu çalıştırın. Aynı değere, ancak `Computer` farklı `SourceComputerId` bir değere sahip bilgisayarları arayın.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-* Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzenleyin ve ardından `SourceComputerId` doğru değeri yansıtması için bunları kaldırın ve yeniden ekleyin.
+* Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzeltin ve ardından bunları `SourceComputerId` doğru değeri yansıtacak şekilde kaldırın ve yeniden ekleyin.
 
-## <a name="updates-nodeployment"></a>Senaryo: güncelleştirmeler dağıtım olmadan yüklenir
+## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Senaryo: Güncelleştirmeler dağıtım yapılmadan yüklenir
 
 ### <a name="issue"></a>Sorun
 
-Bir Windows makinesini Güncelleştirme Yönetimi kaydettiğinizde, bir dağıtım olmadan yüklenen güncelleştirmeleri görürsünüz.
+Güncelleştirme Yönetimi'ne bir Windows makinesi kaydettiğinizde, güncelleştirmeler dağıtım olmadan yüklenmiş görürsünüz.
 
 ### <a name="cause"></a>Nedeni
 
-Windows 'da, güncelleştirmeler kullanılabilir duruma geldiğinde otomatik olarak yüklenir. Bu davranış, makineye dağıtılacak bir güncelleştirme zamanalmadıysanız karışıklığına neden olabilir.
+Windows'da güncelleştirmeler kullanılabilir olur olmaz otomatik olarak yüklenir. Makineye dağıtılmak üzere bir güncelleştirme zamanlamadıysanız, bu davranış karışıklığa neden olabilir.
 
 ### <a name="resolution"></a>Çözüm
 
-`HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` kayıt defteri anahtarı varsayılan olarak 4: **otomatik indir ve yükle**ayarlarına sahiptir.
+Kayıt `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` defteri anahtarı varsayılan olarak 4 `auto download and install`ayarına ayarlanır: .
 
-Güncelleştirme Yönetimi istemciler için, bu anahtarı 3: **Otomatik İndir ancak otomatik olarak yükle**' ye ayarlamayı öneririz.
+Güncelleştirme Yönetimi istemcileri için bu anahtarı `auto download but do not auto install`3 olarak ayarlamanızı öneririz: .
 
-Daha fazla bilgi için bkz. [otomatik güncelleştirmeleri yapılandırma](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
+Daha fazla bilgi için [bkz.](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)
 
-## <a name="machine-already-registered"></a>Senaryo: makine farklı bir hesaba zaten kayıtlı
+## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Senaryo: Makine zaten farklı bir hesaba kayıtlı
 
 ### <a name="issue"></a>Sorun
 
-Aşağıdaki hata iletisini alıyorsunuz:
+Aşağıdaki hata iletisini alırsınız:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
@@ -261,14 +323,14 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Nedeni
 
-Makine, Güncelleştirme Yönetimi için başka bir çalışma alanına zaten eklendi.
+Makine güncelleştirme yönetimi için başka bir çalışma alanına zaten binilmiştir.
 
 ### <a name="resolution"></a>Çözüm
 
-1. Makinenin doğru çalışma alanına rapor olduğundan emin olmak için, makineler bölümündeki adımları izleyin [güncelleştirme yönetimi altında portalda görünmez](#nologs) .
-2. [Karma runbook grubunu silerek](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)makinedeki eski yapıtları temizleyin ve sonra yeniden deneyin.
+1. Makinelerin doğru çalışma alanına rapor bildirdiğinden emin olmak için [Güncelleştirme Yönetimi altındaki portalda](#nologs) Makineler altındaki adımları izleyin.
+2. [Karma runbook grubunu silerek](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)makinedeki yapıları temizleyin ve sonra yeniden deneyin.
 
-## <a name="machine-unable-to-communicate"></a>Senaryo: makine hizmetle iletişim kuramıyor
+## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Senaryo: Makine hizmetle iletişim kuramıyor
 
 ### <a name="issue"></a>Sorun
 
@@ -292,13 +354,13 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Nedeni
 
-Bir proxy, ağ geçidi veya güvenlik duvarı ağ iletişimini engelliyor olabilir. 
+Proxy, ağ geçidi veya güvenlik duvarı ağ iletişimini engelliyor olabilir. 
 
 ### <a name="resolution"></a>Çözüm
 
-Ağınızı gözden geçirin ve uygun bağlantı noktalarına ve adreslere izin verildiğinden emin olun. Güncelleştirme Yönetimi ve karma runbook çalışanları için gereken bağlantı noktalarının ve adreslerin listesi için bkz. [ağ gereksinimleri](../automation-hybrid-runbook-worker.md#network-planning) .
+Ağınızı gözden geçirin ve uygun bağlantı noktalarına ve adreslerine izin verildiğinden emin olun. Güncelleştirme Yönetimi ve Karma Runbook Çalışanları tarafından gerekli olan bağlantı noktaları ve adreslerin listesi için [ağ gereksinimlerine](../automation-hybrid-runbook-worker.md#network-planning) bakın.
 
-## <a name="unable-to-create-selfsigned-cert"></a>Senaryo: otomatik olarak imzalanan sertifika oluşturulamıyor
+## <a name="scenario-unable-to-create-self-signed-certificate"></a><a name="unable-to-create-selfsigned-cert"></a>Senaryo: Kendi imzalı sertifika oluşturulamıyor
 
 ### <a name="issue"></a>Sorun
 
@@ -310,129 +372,131 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Nedeni
 
-Karma Runbook Worker otomatik olarak imzalanan bir sertifika oluşturamadı.
+Karma Runbook Worker kendi imzalı bir sertifika oluşturamadı.
 
 ### <a name="resolution"></a>Çözüm
 
-Sistem hesabının **C:\programdata\microsoft\crypto\rsa** klasörüne okuma erişimi olduğunu doğrulayın ve yeniden deneyin.
+Sistem hesabının **C:\ProgramData\Microsoft\Crypto\RSA** klasörüne erişimi okuduğunu doğrulayın ve yeniden deneyin.
 
-## <a name="mw-exceeded"></a>Senaryo: zamanlanan güncelleştirme bir MaintenanceWindowExceeded hatasıyla başarısız oldu
+## <a name="scenario-the-scheduled-update-failed-with-a-maintenancewindowexceeded-error"></a><a name="mw-exceeded"></a>Senaryo: Zamanlanan güncelleştirme MaintenanceWindowExceeded hatası ile başarısız oldu
 
 ### <a name="issue"></a>Sorun
 
-Güncelleştirmeler için varsayılan bakım penceresi 120 dakikadır. Bakım penceresini en fazla 6 saat veya 360 dakika olarak artırabilirsiniz.
+Güncelleştirmeler için varsayılan bakım penceresi 120 dakikadır. Bakım penceresini en fazla 6 saat veya 360 dakikaya yükseltebilirsiniz.
 
 ### <a name="resolution"></a>Çözüm
 
-Başarısız olan zamanlanmış güncelleştirme dağıtımlarını düzenleyin ve bakım penceresini arttırın.
+Başarısız zamanlanmış güncelleştirme dağıtımlarını edin ve bakım penceresini artırın.
 
-Bakım pencereleri hakkında daha fazla bilgi için bkz. [Install Updates](../automation-tutorial-update-management.md#schedule-an-update-deployment).
+Bakım pencereleri hakkında daha fazla bilgi için [güncelleştirmeleri yükle'ye](../automation-tutorial-update-management.md#schedule-an-update-deployment)bakın.
 
-## <a name="hresult"></a>Senaryo: makine "değerlendirilmedi" olarak gösterilir ve bir HResult özel durumu gösterir
+## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>Senaryo: Makine "Değerlendirilmemiştir" olarak gösterir ve bir HRESULT özel durumu gösterir
 
 ### <a name="issue"></a>Sorun
 
-* **Uyumluluk**altında **değerlendirilmeyen** olarak görünen makineleriniz vardır ve bunun altında bir özel durum iletisi görürsünüz.
-* Değerlendirilmeyen olarak gösteren makineleriniz vardır.
+* `Not assessed` **Uyumluluk**altında olarak gösteren makineleriniz vardır ve bunların altında bir özel durum iletisi görürsünüz.
 * Portalda bir HRESULT hata kodu görürsünüz.
 
 ### <a name="cause"></a>Nedeni
 
-Güncelleştirme Aracısı (Windows üzerindeki Windows Update Aracısı; bir Linux dağıtımı için Paket Yöneticisi) doğru yapılandırılmamış. Güncelleştirme Yönetimi, gereken güncelleştirmeleri, düzeltme ekinin durumunu ve dağıtılan düzeltme eklerinin sonuçlarını sağlamak için makinenin güncelleştirme aracısına bağımlıdır. Bu bilgiler olmadan, Güncelleştirme Yönetimi gereken veya yüklenen düzeltme eklerine düzgün şekilde bildiremiyor.
+Güncelleştirme Aracısı (Windows'da Windows Update Agent; Linux dağıtımı için paket yöneticisi) doğru şekilde yapılandırılmamıştır. Güncelleştirme Yönetimi, gerekli güncelleştirmeleri, düzeltme ekinin durumunu ve dağıtılan düzeltme emültlerinin sonuçlarını sağlamak için makinenin Güncelleştirme Aracısına güvenir. Bu bilgiler olmadan, Güncelleştirme Yönetimi gereken veya yüklenen düzeltme etekleri düzgün bir şekilde bildiremez.
 
 ### <a name="resolution"></a>Çözüm
 
-Güncelleştirmeleri makinede yerel olarak gerçekleştirmeyi deneyin. Bu başarısız olursa, genellikle güncelleştirme aracısında bir yapılandırma hatası olduğu anlamına gelir.
+Güncelleştirmeleri makinede yerel olarak gerçekleştirmeye çalışın. Bu başarısız olursa, genellikle güncelleştirme aracısı ile bir yapılandırma hatası olduğu anlamına gelir.
 
-Bu sorun genellikle ağ yapılandırması ve güvenlik duvarı sorunlarından kaynaklanır. Aşağıdaki işlemi deneyin:
+Bu sorun genellikle ağ yapılandırması ve güvenlik duvarı sorunları neden olur. Aşağıdaki işlemi deneyin:
 
-* Linux için, paket deponuzdaki ağ uç noktasına ulaşabildiğinizden emin olmak için uygun belgeleri denetleyin.
-* Windows için, [güncelleştirmeler intranet uç noktasından (WSUS/SCCM) indirmeyen güncelleştirmeler](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)bölümünde listelenen aracı yapılandırmanızı denetleyin.
-  * Makineler Windows Update için yapılandırılmışsa, [http/proxy ile Ilgili sorunlar](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)bölümünde açıklanan uç noktalara ulaşabildiğinizden emin olun.
-  * Makineler Windows Server Update Services (WSUS) için yapılandırılmışsa, [WUServer kayıt defteri anahtarı](/windows/deployment/update/waas-wu-settings)tarafından yapılandırılan WSUS sunucusuna erişebildiğinizden emin olun.
+* Linux için, paket deponuzun ağ bitiş noktasına ulaşabildiğinizden emin olmak için uygun belgeleri kontrol edin.
+* Windows için, güncelleştirmelerde listelenen aracı yapılandırmanızı [intranet bitiş noktasından (WSUS/SCCM) indirilmeyerek](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)kontrol edin.
+  * Makineler Windows Update için yapılandırıldıysa, [HTTP/proxy ile ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)açıklanan uç noktalara ulaşabileceğinizden emin olun.
+  * Makineler Windows Server Update Services (WSUS) için yapılandırıldıysa, [WUServer kayıt defteri anahtarı](/windows/deployment/update/waas-wu-settings)tarafından yapılandırılan WSUS sunucusuna erişebildiğinizden emin olun.
 
-Bir HRESULT görürseniz, tüm özel durum iletisini görmek için kırmızı renkte görüntülenecek özel duruma çift tıklayın. Olası çözümler veya önerilen eylemler için aşağıdaki tabloyu gözden geçirin:
+Bir HRESULT görürseniz, özel durum iletisinin tamamını görmek için kırmızı renkte görüntülenen özel durumu çift tıklatın. Olası çözümler veya önerilen eylemler için aşağıdaki tabloyu gözden geçirin:
 
 |Özel durum  |Çözüm veya eylem  |
 |---------|---------|
-|`Exception from HRESULT: 0x……C`     | Özel durumun nedeni hakkında ek ayrıntılar bulmak için [Windows Update hata kodu listesinde](https://support.microsoft.com/help/938205/windows-update-error-code-list) ilgili hata kodunu arayın.        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Bunlar ağ bağlantısı sorunlarını gösterir. Makinenizin Güncelleştirme Yönetimi için ağ bağlantısı olduğundan emin olun. Gerekli bağlantı noktalarının ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın.        |
-|`0x8024001E`| Hizmet veya sistem kapatıldığından güncelleştirme işlemi tamamlanmadı.|
+|`Exception from HRESULT: 0x……C`     | Özel durum nedeni hakkında ek ayrıntılar bulmak için [Windows güncelleştirme hata kodu listesinde](https://support.microsoft.com/help/938205/windows-update-error-code-list) ilgili hata kodu arama.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Bunlar ağ bağlantısı sorunlarını gösterir. Makinenizin Güncelleştirme Yönetimi'ne ağ bağlantısı olduğundan emin olun. Gerekli bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın.        |
+|`0x8024001E`| Hizmet veya sistem kapandığı için güncelleştirme işlemi tamamlanmadı.|
 |`0x8024002E`| Windows Update hizmeti devre dışı bırakıldı.|
-|`0x8024402C`     | Bir WSUS sunucusu kullanıyorsanız, `WUServer` ve `WUStatusServer` kayıt defteri değerlerinin `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` kayıt defteri anahtarı altında doğru WSUS sunucusunu belirtdiğinizden emin olun.        |
-|`0x80072EE2`|Bir ağ bağlantısı sorunu veya yapılandırılmış bir WSUS sunucusuyla iletişim kurulurken bir sorun var. WSUS ayarlarını denetleyin ve hizmetin istemciden erişilebilir olduğundan emin olun.|
-|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update hizmeti 'nin (wuauserv) çalıştığından ve devre dışı bırakılmadığından emin olun.        |
-|`0x80070005`| Bir erişim reddedildi hatası, aşağıdakilerden biri nedeniyle oluşabilir:<br> Virüslü bilgisayar<br> Windows Update ayarları doğru yapılandırılmadı<br> %WinDir%\SoftwareDistribution klasörüyle dosya izni hatası<br> Sistem sürücüsünde yetersiz disk alanı (C:).
-|Diğer tüm genel durumlar     | Olası çözümler için internet 'te bir arama çalıştırın ve yerel BT desteğiniz ile çalışın.         |
+|`0x8024402C`     | Bir WSUS sunucusu kullanıyorsanız, `WUServer` `WUStatusServer` `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` kayıt defteri değerlerinin kayıt defteri için ve altında doğru WSUS sunucusunu belirttiğinden emin olun.        |
+|`0x80072EE2`|Yapılandırılmış bir WSUS sunucusuyla konuşurken bir ağ bağlantısı sorunu veya bir sorun var. WSUS ayarlarını kontrol edin ve hizmete istemciden erişilebildiğinden emin olun.|
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update hizmetinin (wuauserv) çalışıyor ve devre dışı bırakılmadığından emin olun.        |
+|`0x80070005`| Erişim reddedilen bir hata aşağıdakilerden herhangi biri tarafından neden olabilir:<br> Virüslü bilgisayar<br> Windows Update ayarları doğru yapılandırılmamıştır<br> %WinDir%\SoftwareDistribution klasörü ile dosya izni hatası<br> Sistem sürücüsünde yetersiz disk alanı (C:).
+|Diğer genel özel durum     | Olası çözümler için internette bir arama yapın ve yerel BT desteğinizle çalışın.         |
 
-%Windir%\Windowsupdate.log dosyasını gözden geçirmek olası nedenleri belirlemenize de yardımcı olabilir. Günlüğü okuma hakkında daha fazla bilgi için bkz. [windowsupdate. log dosyasını okuma](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
+%Windir%\Windowsupdate.log dosyasını gözden geçirmek de olası nedenleri belirlemenize yardımcı olabilir. Günlüğü nasıl okuyabilirsiniz hakkında daha fazla bilgi için [Windowsupdate.log dosyasının nasıl okunduğuna](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)bakın.
 
-Ayrıca, makinede Windows Update sorunları denetlemek için [Windows Update sorun gidericiyi](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) indirebilir ve çalıştırabilirsiniz.
+Ayrıca, makinedeki Windows Update ile ilgili sorunları kontrol etmek için [Windows Update sorun gidericisini](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) indirip çalıştırabilirsiniz.
 
 > [!NOTE]
-> [Windows Update sorun giderici](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) belgeleri Windows istemcilerinde kullanılması gerektiğini gösterir, ancak Windows Server 'da da kullanılabilir.
+> [Windows Update sorun giderici](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) belgeleri, windows istemcilerinde kullanım için olduğunu gösterir, ancak Windows Server'da da çalışır.
 
-## <a name="scenario-update-run-returns-failed-status-linux"></a>Senaryo: güncelleştirme çalıştırması "başarısız" durumu (Linux) döndürüyor
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Senaryo: Güncelleştirme çalıştır "Başarısız" durumunu döndürür (Linux)
 
 ### <a name="issue"></a>Sorun
 
-Bir güncelleştirme çalıştırması başlatılır, ancak çalıştırma sırasında hatalarla karşılaşır.
+Güncelleştirme çalışması başlar, ancak çalışma sırasında hatalarla karşılaşır.
 
 ### <a name="cause"></a>Nedeni
 
 Olası nedenler:
 
-* Paket Yöneticisi sağlam değil.
-* Güncelleştirme Aracısı (Windows için WUA, Linux için özel paket yöneticisi) yanlış yapılandırılmış.
-* Belirli paketler, bulut tabanlı düzeltme eki uygulama ile müdahale ediyor.
+* Paket yöneticisi sağlıksız.
+* Update Agent (Windows için WUA, Linux için dağıtıma özel paket yöneticisi) yanlış yapılandırılmıştır.
+* Belirli paketler bulut tabanlı yama ile müdahale ediyor.
 * Makineye ulaşılamıyor.
-* Güncelleştirmeler çözümlenmeyen bağımlılıklara sahipti.
+* Güncelleştirmelerin çözülmemiş bağımlılıkları vardı.
 
 ### <a name="resolution"></a>Çözüm
 
-Bir güncelleştirme çalıştırması sırasında başarılı olduktan sonra bir başarısızlık oluşursa, çalıştırmada etkilenen makinenin [iş çıktısını kontrol](../manage-update-multi.md#view-results-of-an-update-deployment) edin. Çözebileceğinizi ve üzerinde işlem yapmanız gereken makinelerinizden belirli hata iletileri bulabilirsiniz. Güncelleştirme Yönetimi, paket yöneticisinin başarılı güncelleştirme dağıtımları için sağlıklı olmasını gerektirir.
+Başarılı bir şekilde başladıktan sonra bir güncelleştirme çalışması sırasında hatalar oluşursa, çalışan daki etkilenen makineden [iş çıktısını denetleyin.](../manage-update-multi.md#view-results-of-an-update-deployment) Makinelerinizden araştırma yapabileceğiniz ve harekete geçebileceğiniz belirli hata iletileri bulabilirsiniz. Güncelleştirme Yönetimi, başarılı güncelleştirme dağıtımları için paket yöneticisinin sağlıklı olmasını gerektirir.
 
-İş başarısız olmadan hemen önce belirli düzeltme ekleri, paketler veya güncelleştirmeler görülemezse, bunları bir sonraki güncelleştirme dağıtımından [dışlanmasını](../automation-tutorial-update-management.md#schedule-an-update-deployment) deneyebilirsiniz. Windows Update günlük bilgilerini toplamak için bkz. [Windows Update günlük dosyaları](/windows/deployment/update/windows-update-logs).
+Belirli düzeltme eki, paket veya güncelleştirme, iş başarısız olmadan hemen önce görülürse, bunları bir sonraki güncelleştirme dağıtımından [hariç taslamayı](../automation-tutorial-update-management.md#schedule-an-update-deployment) deneyebilirsiniz. Windows Update'ten günlük bilgilerini toplamak için [Windows Update günlük dosyalarına](/windows/deployment/update/windows-update-logs)bakın.
 
-Düzeltme eki uygulama sorununu çözemezseniz, sonraki güncelleştirme dağıtımı başlamadan *önce* aşağıdaki günlük dosyasının bir kopyasını oluşturun ve sorun giderme amacıyla koruyun:
+Bir düzeltme sorununu çözemezseniz, aşağıdaki günlük dosyasının bir kopyasını yapın ve bir sonraki güncelleştirme dağıtımı başlamadan önce sorun giderme amacıyla saklayın:
 
 ```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-## <a name="patches-arent-installed"></a>Düzeltme ekleri yüklenmedi
+## <a name="patches-arent-installed"></a>Düzeltme emaları yüklü değil
 
-### <a name="machines-dont-install-updates"></a>Makineler güncelleştirmeleri yüklemez
+### <a name="machines-dont-install-updates"></a>Makineler güncelleştirmeleri yüklemiyor
 
-* Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirmeleri uygulayamıyorum, [sorun giderme kılavuzunda olası hataların listesine](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)bakın.
-* Güncelleştirmeler yerel olarak çalışıyorsa, [GÜNCELLEŞTIRME YÖNETIMI VM 'Yi kaldırma](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)konusunda yer alan kılavuzu izleyerek aracıyı kaldırıp yeniden yüklemeyi deneyin.
+Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirmeleri uygulayamazsa, sorun [giderme kılavuzundaki olası hatalar listesine başvurun.](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)
 
-### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde kullanılabilir olarak gösterilmiyorum
+Güncelleştirmeler yerel olarak çalışıyorsa, [Güncelleştirme Yönetimi'nden Bir VM Kaldır'daki](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)kılavuzu izleyerek aracıyı kaldırmayı ve makineye yeniden yüklemeyi deneyin.
 
-* Bu durum genellikle makineler WSUS veya Microsoft uç nokta Configuration Manager güncelleştirmeleri almak üzere yapılandırılmışsa, ancak WSUS ve Configuration Manager güncelleştirmeleri onaylanmamış olur.
-* [Bu makalenin "kayıt defterini düzenleyerek otomatik güncelleştirmeleri yapılandırma" bölümündeki kayıt defteri anahtarlarına UseWUServer kayıt defteri anahtarını çapraz](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)olarak bağlayarak, makinelerin WSUS ve SCCM için yapılandırılıp yapılandırılmadığını kontrol edebilirsiniz.
-* Güncelleştirmeler WSUS 'de onaylanmamışsa, bunlar yüklenmez. Aşağıdaki sorguyu çalıştırarak, Log Analytics ' de onaylanmamış güncelleştirmeleri denetleyebilirsiniz:
+### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Güncellemelerin mevcut olduğunu biliyorum, ancak makinelerimde mevcut olarak görünmüyorlar
+
+Bu genellikle, makineler WSUS veya Microsoft Endpoint Configuration Manager'dan güncelleştirmeler alacak şekilde yapılandırılırsa, ancak WSUS ve Configuration Manager güncelleştirmeleri onaylamadıysa sık sık gerçekleşir.
+
+[Bu makalenin Kayıt Defteri bölümünü düzenleyerek](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)Otomatik Güncelleştirmeleri Yapılandırma'daki `UseWUServer` kayıt defteri anahtarına kayıt defteri anahtarını çapraz yönlendirerek makinelerin WSUS ve SCCM için yapılandırılıp yapılıp yapılamayacağınızı kontrol edebilirsiniz.
+
+Güncelleştirmeler WSUS'ta onaylanmadıysa, bunlar yüklenmez. Log Analytics'te onaylanmamış güncelleştirmeleri aşağıdaki sorguyu çalıştırarak denetleyebilirsiniz.
 
   ```loganalytics
   Update | where UpdateState == "Needed" and ApprovalSource == "WSUS" and Approved == "False" | summarize max(TimeGenerated) by Computer, KBID, Title
   ```
 
-### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Güncelleştirmeler yüklendi olarak gösteriliyor, ancak makinamda bulamıyorum
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Güncelleştirmeler yüklenmiş görünüyor ancak makinemde bulamıyorum
 
-* Güncelleştirmeler genellikle başka güncelleştirmelerle değiştirilir. Daha fazla bilgi için, Windows Update sorun giderme kılavuzunda [güncelleştirme 'nin yerini almıştır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) .
+Güncelleştirmeler genellikle başka güncelleştirmelerle değiştirilir. Daha fazla bilgi için bkz. Windows Update Sorun Giderme kılavuzunda [Güncelleştirme'nin yerini alır.](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Linux'da güncelleştirmeleri sınıflandırmaya göre yükleme
 
-* Güncelleştirmeleri Linux'a sınıflandırmaya göre ("Kritik ve güvenlik güncelleştirmeleri") yüklemek, özellikle CentOS için önemli uyarılara tabidir. Bu sınırlamalar [güncelleştirme yönetimi genel bakış sayfasında](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)belgelenmiştir.
+Güncelleştirmeleri Linux'a sınıflandırmaya göre ("Kritik ve güvenlik güncelleştirmeleri") yüklemek, özellikle CentOS için önemli uyarılara tabidir. Bu [sınırlamalar, Güncelleştirme Yönetimi genel bakış sayfasında](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)belgelenmiştir.
 
-### <a name="kb2267602-is-consistently-missing"></a>KB2267602, sürekli olarak eksik
+### <a name="kb2267602-is-consistently-missing"></a>KB2267602 sürekli eksik
 
-* KB2267602, [Windows Defender tanım güncelleştirmesidir](https://www.microsoft.com/wdsi/definitions). Günlük olarak güncelleştirilir.
+KB2267602, [Windows Defender tanım güncelleştirmesidir](https://www.microsoft.com/wdsi/definitions). Her gün güncellenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu görmediyseniz veya sorununuzu çözemediyseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
-* Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik [@AzureSupport](https://twitter.com/azuresupport), resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+* [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.

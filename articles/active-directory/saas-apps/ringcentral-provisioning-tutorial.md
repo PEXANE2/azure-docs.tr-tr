@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için RingCentral 'ı yapılandırma | Microsoft Docs"
-description: Azure AD 'den RingCentral 'a Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için RingCentral'ı yapılandırın | Microsoft Dokümanlar"
+description: Azure AD'den RingCentral'a kullanıcı hesaplarını otomatik olarak nasıl sağlayıp geçici olarak sağdan çıkarılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087048"
 ---
-# <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için RingCentral 'ı yapılandırma
+# <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için RingCentral'ı yapılandırın
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem zil merkezi hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları otomatik olarak, [halka merkezi](https://www.ringcentral.com/office/plansandpricing.html) ' ne hazırlar ve devre dışı bırakmayı sağlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
+Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem RingCentral hem de Azure Active Directory (Azure AD) gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure REKLAM Sağlama hizmetini kullanarak kullanıcıları ve grupları Otomatik olarak [RingCentral'a](https://www.ringcentral.com/office/plansandpricing.html) karşı hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Halka merkezi 'nde Kullanıcı oluşturma
-> * Artık erişim gerektirmeyen kullanıcıları halka merkezi 'nde kaldır
-> * Azure AD ile halka merkezi arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
-> * RingCentral ['Da çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) (önerilir)
+> * RingCentral'da kullanıcı oluşturma
+> * Artık erişim gerektirmediklerinde RingCentral'daki kullanıcıları kaldırın
+> * Kullanıcı özniteliklerini Azure AD ve RingCentral arasında eşitlenmiş tutun
+> * RingCentral için [tek oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-* [Halka merkezi kiracı](https://www.ringcentral.com/office/plansandpricing.html)
-* Yönetim izinlerine sahip halka merkezi 'nde bir kullanıcı hesabı.
+* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* [Bir RingCentral kiracı](https://www.ringcentral.com/office/plansandpricing.html)
+* Yönetici izinleri olan RingCentral'daki bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım. Sağlama dağıtımınızı planlayın
-1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
-3. [Azure AD Ile RingCentral arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
+3. Azure AD [ve RingCentral arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlenemeye devam edin. 
 
-## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>2\. Adım Azure AD ile sağlamayı desteklemek için RingCentral 'ı yapılandırma
+## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı destekleyecek Şekilde RingCentral'ı yapılandırın
 
-1. [Halka yönetim konsolunda](https://login.ringcentral.com/sw.html)oturum açın. **Araçlar > Dizin tümleştirmesi**' ne gidin.
+1. [RingCentral Yönetici Konsolunuzda](https://login.ringcentral.com/sw.html)oturum açın. Araçlar **> Dizin Tümleştirmesine**gidin.
 
     ![RingCentral Yönetici Konsolu](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  **Dizin Sağlayıcısı seç**altında **SCIM** öğesini seçin. (Gelecekte Azure Active Directory) olarak adlandırılan bir seçenek olacaktır. **SCıM hizmetini etkinleştir**' e tıklayın.
+2.  **Select Directory Provider**altında **SCIM'i** seçin. (Gelecekte Azure Etkin Dizini adında bir seçenek olacaktır). **SCIM hizmetini etkinleştir'i**tıklatın.
 
-    ![Halka merkezi Add SCıM](media/ringcentral-provisioning-tutorial/scim.png)
+    ![RingCentral SCIM ekle](media/ringcentral-provisioning-tutorial/scim.png)
 
-3.  Bir **SCIM kimlik doğrulama belirteci**için matthew.hunt@ringcentral.com adresindeki halka Merkezi Destek ekibine başvurun. Bu değer, Azure portal halka merkezi uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+3.  matthew.hunt@ringcentral.com **SCIM Kimlik Doğrulama Belirteci**için RingCentral destek ekibiyle iletişime geçin. Bu değer, Azure portalındaki RingCentral uygulamanızın Sağlama sekmesindeki Gizli Belirteç alanına girilir.
 
 > [!NOTE]
 > Kullanıcılara lisans atamak için [buradaki](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)video bağlantısına bakın.
 
-## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>3\. Adım Azure AD uygulama galerisinden halka merkezi ekleme
+## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden RingCentral ekleme
 
-Azure AD uygulama galerisindeki RingCentral 'ı ekleyerek RingCentral 'a sağlamayı yönetmeye başlayın. Daha önce SSO için halka merkezi 'ni ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
+RingCentral'a sağlama yı yönetmeye başlamak için Azure AD uygulama galerisinden RingCentral'ı ekleyin. Daha önce SSO için RingCentral kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. Adım. Sağlama kapsamında kim olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları RingCentral 'a atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+* Kullanıcıları ve grupları RingCentral'a atarken Varsayılan **Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
 
-* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>5\. Adım. Otomatik Kullanıcı sağlamayı halka merkezine yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>5. Adım. Otomatik kullanıcı sağlamayı RingCentral'a yapılandırın 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
-### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Azure AD 'de RingCentral için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Azure AD'de RingCentral için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **RingCentral**' ı seçin.
+2. Uygulamalar listesinde **RingCentral'ı**seçin.
 
-    ![Uygulamalar listesindeki halka Merkezi bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki RingCentral bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://platform.ringcentral.com/scim/v2` girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin RingCentral 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, halka merkezi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü `https://platform.ringcentral.com/scim/v2` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin RingCentral'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, RingCentral hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Sağlama sekmesi](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet'i**seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları RingCentral ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını RingCentral'a Senkronize Et'i**seçin.
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den RingCentral 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için RingCentral 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, bu özniteliğe bağlı olarak, halka merkezi API 'sinin kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. Azure AD'den RingCentral'a eşitlenen kullanıcı özniteliklerini **Öznitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için RingCentral'daki kullanıcı hesaplarıyla eşleşmek için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, RingCentral API'sinin bu özniteliğe göre kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|
    |---|---|
-   |userName adı|Dize|
+   |userName|Dize|
    |externalId|Dize|
-   |etkin|Boole|
+   |Etkin|Boole|
    |displayName|Dize|
-   |title|Dize|
-   |e-postaları [türü eq "İş"] .value|Dize|
-   |adresler [tür EQ "iş"]. ülke|Dize|
-   |adresler [tür EQ "iş"]. bölge|Dize|
-   |adresler [tür EQ "iş"]. konum|Dize|
-   |adresler [türü eq "İş"] .postalCode|Dize|
-   |adresler [türü eq "İş"] .streetAddress|Dize|
+   |başlık|Dize|
+   |e-postalar[yazın eq "iş"].value|Dize|
+   |adresleri[yazın eq "iş"].ülke|Dize|
+   |adresleri[yazın eq "iş"].region|Dize|
+   |adresleri[yazın eq "iş"].yerellik|Dize|
+   |adresleri[yazın eq "iş"].postalCode|Dize|
+   |adresleri[yazın eq "iş"].streetAddress|Dize|
    |name.givenName|Dize|
    |name.familyName|Dize|
-   |PhoneNumber [türü eq "mobile"] .value|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
+   |phoneNumbers[eq yazın "mobil"].value|Dize|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Dize|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Başvuru|
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-11. Halka Merkezi için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. RingCentral için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek halka merkezine sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek RingCentral'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
 
-## <a name="step-6-monitor-your-deployment"></a>6\. Adım. Dağıtımınızı izleme
+## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
-3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
+1. Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
+2. Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
+3. Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)

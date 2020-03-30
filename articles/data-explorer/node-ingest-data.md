@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini düğümü kitaplığını kullanarak veri alma
-description: Bu makalede, Node.js kullanarak Azure Veri Gezgini içinde (yükle) alabilen öğrenin.
+title: Azure Veri Gezgini Düğümü kitaplığını kullanarak veri alma
+description: Bu makalede, Node.js kullanarak Azure Veri Gezgini'ne nasıl veri öttürecek (yüklenir) öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,21 +8,21 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494492"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Azure Veri Gezgini düğümü kitaplığını kullanarak veri alma
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Azure Veri Gezgini Düğümü kitaplığını kullanarak veri alma
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini Node için iki istemci kitaplığı sağlar: [alma kitaplığı](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) ve [veri kitaplığı](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Bu kitaplıklar verileri bir kümeye almanıza (yüklemenize ve kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, ilk tablo ve test kümesi eşlemesindeki veri oluşturun. Ardından veri alımını kümenin kuyruğuna ekler ve sonuçları doğrularsınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini Node için iki istemci kitaplığı sağlar: [alma kitaplığı](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) ve [veri kitaplığı](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Bu kitaplıklar verileri bir kümeye almanıza (yüklemenize ve kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, önce bir test kümesinde bir tablo ve veri eşleme oluşturursunuz. Ardından veri alımını kümenin kuyruğuna ekler ve sonuçları doğrularsınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bir Azure aboneliğine ek olarak, bu makaleyi tamamlamak için aşağıdakiler gerekir:
+Azure aboneliğine ek olarak, bu makaleyi tamamlamak için aşağıdakilere ihtiyacınız var:
 
 * [Test kümesi ve veritabanı](create-cluster-database-portal.md)
 
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Test kümenizde tablo oluşturma
 
-`StormEvents.csv` dosyasındaki verilerin şemasıyla eşleşen bir tablo oluşturun. Bu kod çalıştığında, aşağıdaki gibi bir ileti döndürür: *Oturum açmak için bir web tarayıcısı kullanarak https://microsoft.com/devicelogin ve XXXXXXXXX kimliğini doğrulamak için kodu girin*. Adımları izleyerek oturum açın, sonra da dönüp bir sonraki kod bloğunu çalıştırın. Bağlantı kuran sonraki kod blokları için yeniden oturum açmak gerekir.
+`StormEvents.csv` dosyasındaki verilerin şemasıyla eşleşen bir tablo oluşturun. Bu kod çalıştırıldığında, şuna benzer bir ileti döndürür: *Oturum açmak için web tarayıcısını kullanarak https://microsoft.com/devicelogin sayfasını açın ve kimliği doğrulamak için XXXXXXXXX kodunu girin*. Adımları izleyerek oturum açın, sonra da dönüp bir sonraki kod bloğunu çalıştırın. Bağlantı kuran sonraki kod blokları için yeniden oturum açmak gerekir.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
@@ -141,7 +141,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="run-troubleshooting-queries"></a>Sorun giderme sorguları çalıştırma
 
-[https://dataexplorer.azure.com](https://dataexplorer.azure.com) adresinde oturum açın ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
+Oturum açın [https://dataexplorer.azure.com](https://dataexplorer.azure.com) ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
     
 ```Kusto
 .show ingestion failures
@@ -158,7 +158,7 @@ Son dört saatteki tüm veri alım işlemlerinin durumunu görüntülemek için 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer makalelerimize takip etmeyi planlıyorsanız, oluşturduğunuz kaynakları tutun. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak `StormEvents` tablosunu temizleyin.
+Diğer makalelerimizi izlemeyi planlıyorsanız, oluşturduğunuz kaynakları koruyun. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak `StormEvents` tablosunu temizleyin.
 
 ```Kusto
 .drop table StormEvents

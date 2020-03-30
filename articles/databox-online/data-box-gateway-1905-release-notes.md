@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu ağ geçidi 1905 sürüm notları | Microsoft Docs
-description: Azure veri kutusu genel kullanım sürümünde çalışan ağ geçidi için açık kritik sorunlar ve çözümleri açıklanmaktadır.
+title: Azure Veri Kutusu Ağ Geçidi 1905 sürüm notları| Microsoft Dokümanlar
+description: Genel kullanılabilirlik sürümü çalıştıran Azure Veri Kutusu Ağ Geçidi için kritik açık sorunları ve çözümleri açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67078618"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure veri kutusu Edge ve Azure veri kutusu ağ geçidi 1905 sürüm notları
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi 1905 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları, kritik açık sorunlar ve çözümlenen sorunlar 1905 yayımı için Azure veri kutusu Edge ve Azure veri kutusu ağ geçidi belirleyin.
+Aşağıdaki sürüm notları, Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi için 1905 sürümü için kritik açık sorunları ve çözülmüş sorunları tanımlar.
 
-Sürüm Notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar bulundukça eklenir. Veri kutusu Edge/veri kutusu ağ geçidi dağıtmadan önce bu sürüm notlarında yer alan bilgileri dikkatle gözden geçirin.
+Sürüm notları sürekli olarak güncelleştirilir ve geçici çözüm gerektiren kritik sorunlar keşfedildikçe eklenir. Veri Kutusu Kenarı/Veri Kutusu Ağ Geçidi'ni dağıtmadan önce, sürüm notlarında yer alan bilgileri dikkatle inceleyin.
 
-Bu sürüm yazılım sürümleriyle karşılık gelmektedir:
+Bu sürüm yazılım sürümlerine karşılık gelir:
 
-- **Data Box Gateway 1905 (1.6.887.626)**
-- **Data Box Edge 1905 (1.6.887.626)**
+- **Veri Kutusu Ağ Geçidi 1905 (1.6.887.626)**
+- **Veri Kutusu Kenar 1905 (1.6.887.626)**
 
 > [!NOTE]
-> Güncelleştirme 1905 yalnızca yazılımın GA sürümünü çalıştırıyorsanız veri kutusu uç cihazlara uygulanabilir.
+> Güncelleştirme 1905 yalnızca yazılımın GA sürümünü çalıştıran Data Box Edge aygıtlarına uygulanabilir.
 
 ## <a name="whats-new"></a>Yenilikler
 
-- **Alanda programlanabilir kapı dizi (FPGA) günlüğe kaydetme geliştirmeleri** - bu sürümde, günlüğe kaydetme gerçekleştirdik ve ilgili uyarı geliştirmeleri FPGA. Edge işlem özelliği ile FPGA kullanılıyorsa veri kutusu Edge için gereken bir güncelleştirme budur. Daha fazla bilgi için bkz. nasıl [uç bilgi işlem, veri kutusu edge'de ile veri dönüştürme](data-box-edge-deploy-configure-compute-advanced.md).
+- **Alan Programlanabilir Kapı Dizisi (FPGA) günlük iyileştirmeleri** - Bu sürümde, FPGA ile ilgili günlük ve uyarı geliştirmeleri yaptık. FPGA ile Edge bilgi işlem özelliğini kullanıyorsanız, bu Veri Kutusu Kenarı için gerekli bir güncelleştirmedir. Daha fazla bilgi için, [Veri Kutusu Kenarı'ndaki Edge bilgi işlemle verileri nasıl dönüştürdüğünüze](data-box-edge-deploy-configure-compute-advanced.md)bakın.
 
-## <a name="known-issues-in-ga-release"></a>GA sürümündeki bilinen sorunlar
+## <a name="known-issues-in-ga-release"></a>GA sürümünde bilinen sorunlar
 
-Bu sürüm için belirtilen sürüm yok yeni sorunlardır. Tüm yayın sorunları önceki sürümlerden devreden Not. Bilinen sorunların bir listesini görmek için Git [GA sürümü bilinen](data-box-gateway-release-notes.md#known-issues-in-ga-release).
+Bu sürüm için yeni bir sorun yayınlanmaz. Tüm sürüm sorunları önceki sürümlerden taşınmıştır kaydetti. Bilinen sorunların listesini görmek [için, GA sürümünde bilinen sorunlara](data-box-gateway-release-notes.md#known-issues-in-ga-release)gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

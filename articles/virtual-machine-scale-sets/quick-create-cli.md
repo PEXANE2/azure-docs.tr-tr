@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure CLı ile sanal makine ölçek kümesi oluşturma
-description: Azure CLı ile hızlı bir şekilde sanal makine ölçek kümesi oluşturmayı öğrenerek dağıtımlarınızla çalışmaya başlayın.
+title: Quickstart - Azure CLI ile sanal makine ölçeği seti oluşturma
+description: Azure CLI ile sanal makine ölçeği kümesini hızlı bir şekilde nasıl oluşturabilirsiniz'u öğrenerek dağıtımlarınıza başlayın.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -10,24 +10,24 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 172a498b6b92a059c50cac4ad45fee322e12fdd0
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76278047"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile sanal makine ölçek kümesi oluşturma
 Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendirilen sanal makine kümesi dağıtmanızı ve yönetmenizi sağlar. Ölçek kümesi içindeki sanal makine sayısını el ile ölçeklendirebilir veya CPU, bellek talebi ya da ağ trafiği gibi kaynak kullanımını temel alan otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Azure Load Balancer daha sonra ölçek kümesindeki sanal makine örneklerine trafiği dağıtır. Bu hızlı başlangıçta, Azure CLI ile bir sanal makine ölçek kümesi oluşturur ve örnek uygulama dağıtırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-Ölçek kümesi oluşturabilmek için [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Ölçek kümesi oluşturabilmek için [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

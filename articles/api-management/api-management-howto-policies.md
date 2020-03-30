@@ -1,6 +1,6 @@
 ---
-title: Azure API Management ilkeler | Microsoft Docs
-description: API Management ilke oluşturmayı, düzenlemeyi ve yapılandırmayı öğrenin.
+title: Azure API Yönetiminde İlkeler | Microsoft Dokümanlar
+description: API Yönetimi'nde ilkeleri nasıl oluşturup, nasıl döşeyecek ve yapılandırılamayı öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,32 +13,32 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072316"
 ---
-# <a name="policies-in-azure-api-management"></a>Azure API Management ilkeler
+# <a name="policies-in-azure-api-management"></a>Azure API Management ilkeleri
 
-Azure API Management (APıM) ' de, ilkeler, yayımcının yapılandırma aracılığıyla API 'nin davranışını değiştirmesine olanak tanıyan güçlü bir yetenektir. İlkeler, bir API 'nin isteği veya yanıtı üzerinde sırayla yürütülen deyimler koleksiyonudur. Popüler deyimler, XML 'den JSON 'a biçim dönüştürmeyi ve bir geliştiriciden gelen çağrıların miktarını kısıtlamak için çağrı hızı sınırını içerir. Birçok daha fazla ilke, kutudan daha fazla kullanılabilir.
+Azure API Yönetimi'nde (APIM) ilkeler, yayımcının yapılandırma yoluyla API'nin davranışını değiştirmesine olanak tanıyan güçlü bir sistem yeteneğidir. İlkeler, bir API'nin isteği veya yanıtı üzerine sırayla yürütülen deyimler topluluğu. Popüler Deyimler, XML'den JSON'a biçim dönüştürme ve geliştiriciden gelen arama miktarını kısıtlamak için sınırlayıcı arama oranını içerir. Kutunun dışında çok daha fazla ilke kullanılabilir.
 
-İlkeler, API tüketicisi ile yönetilen API arasında yer alan ağ geçidi içinde uygulanır. Ağ Geçidi tüm istekleri alır ve genellikle bunları temel API 'ye değiştirilmemiş şekilde iletir. Ancak bir ilke hem gelen istek hem de giden yanıtta değişiklik uygulayabilir.
+İlkeler, API tüketicisi ile yönetilen API arasında bulunan ağ geçidiiçinde uygulanır. Ağ geçidi tüm istekleri alır ve genellikle bunları temel API'ye değiştirilmeden iletir. Ancak bir ilke hem gelen istek hem de giden yanıt değişiklikleri uygulayabilir.
 
 İlke ifadeleri herhangi bir API Management ilkesinde, ilke aksini belirtmedikçe, öznitelik değerleri ya da metin değerleri olarak kullanılabilir. [Akışı denetle][Control flow] ve [Değişken ayarla][Set variable] gibi bazı ilkeler ilke ifadelerini temel alır. Daha fazla bilgi için bkz. [Gelişmiş ilkeler][Advanced policies] ve [İlke ifadeleri][Policy expressions].
 
-## <a name="sections"> </a>İlke yapılandırmasını anlama
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>İlke yapılandırması anlama
 
-İlke tanımı, bir dizi gelen ve giden deyimleri açıklayan basit bir XML belgesidir. XML doğrudan tanım penceresinde düzenlenebilir. Sağ tarafta bir deyim listesi sağlanır ve geçerli kapsam için geçerli olan deyimler etkinleştirilir ve vurgulanır.
+İlke tanımı, gelen ve giden deyimler dizisi açıklayan basit bir XML belgesidir. XML doğrudan tanım penceresinde düzenlenebilir. İfadelerin listesi sağa sağlanır ve geçerli kapsam için geçerli ifadeler etkinleştirilir ve vurgulanır.
 
-Etkin bir ifadeye tıkladığınızda, açıklama görünümündeki imlecin bulunduğu konuma uygun XML eklenir. 
+Etkin bir ifadeyi tıklatmak, tanım görünümündeki imlecin yerine uygun XML'yi ekler. 
 
 > [!NOTE]
-> Eklemek istediğiniz ilke etkinleştirilmemişse, bu ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması belirli kapsamlar ve ilke bölümlerinde kullanılmak üzere tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için [Ilke başvurusunda][Policy Reference]bu ilkenin **kullanım** bölümünü denetleyin.
+> Eklemek istediğiniz ilke etkin değilse, bu ilke için doğru kapsamda olduğunuzu emin olun. Her ilke bildirimi belirli kapsamlarda ve ilke bölümlerinde kullanılmak üzere tasarlanmıştır. İlkenin ilke bölümlerini ve kapsamlarını gözden geçirmek için, [İlke Başvurusu'ndaki][Policy Reference]bu ilkenin **Kullanım** bölümünü denetleyin.
 > 
 > 
 
-Yapılandırma `inbound` ,`backend`, ve`on-error`olarak bölünür. `outbound` Belirtilen ilke deyimlerinin serisi bir istek ve yanıt için sırayla yürütülür.
+Yapılandırma `inbound`, , `backend` `outbound`, ve `on-error`. Belirtilen ilke deyimleri serisi, istek ve yanıt için yürütülür.
 
 ```xml
 <policies>
@@ -58,25 +58,25 @@ Yapılandırma `inbound` ,`backend`, ve`on-error`olarak bölünür. `outbound` B
 </policies> 
 ```
 
-Bir isteğin işlenmesi sırasında bir `inbound`hata oluşursa,, `backend`, veya `outbound` bölümlerindeki kalan adımlar atlanır `on-error` ve yürütme bölümündeki deyimlere atlar. `on-error` Bölümüne ilke deyimleri yerleştirerek, `context.LastError` özelliğini kullanarak hatayı gözden geçirebilir, `set-body` ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke deyimlerinin işlenmesi sırasında ortaya çıkabilecek hatalar için hata kodları vardır. Daha fazla bilgi için bkz. [API Management Ilkelerinde hata işleme](/azure/api-management/api-management-error-handling-policies).
+Bir isteğin işlenmesi sırasında bir hata varsa, `inbound`, `backend`, `outbound` veya bölümlerde kalan adımlar atlanır ve `on-error` yürütme bölümündeki ifadeleratlar. Bölüme `on-error` ilke ekstreleri yerleştirerek `context.LastError` özelliği kullanarak hatayı gözden geçirebilir, `set-body` ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke bildirimlerinin işlenmesi sırasında oluşabilecek hatalar için hata kodları vardır. Daha fazla bilgi [için, API Yönetimi ilkelerinde Hata işleme'ye](/azure/api-management/api-management-error-handling-policies)bakın.
 
-## <a name="scopes"> </a>İlkeleri yapılandırma
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>İlkeler nasıl yapılandırılır?
 
-İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [Ilkeleri ayarlama veya düzenleme](set-edit-policies.md).
+İlkeleri yapılandırma hakkında bilgi için ilkeleri [Ayarla veya edin.](set-edit-policies.md)
 
-## <a name="policy-reference"></a>İlke başvurusu
+## <a name="policy-reference"></a>İlke Başvurusu
 
-İlke deyimlerinin ve ayarlarının tam listesi için [ilke başvurusuna](api-management-policy-reference.md) bakın.
+İlke bildirimlerinin ve ayarlarının tam listesi için [İlke başvurusuna](api-management-policy-reference.md) bakın.
 
 ## <a name="policy-samples"></a>İlke örnekleri
 
-Daha fazla kod örneği için bkz. [ilke örnekleri](policy-samples.md) .
+Daha fazla kod örneği için [İlke örneklerine](policy-samples.md) bakın.
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="apply-policies-specified-at-different-scopes"></a>Farklı kapsamlarda belirtilen ilkeleri uygulama
 
-Genel düzeyde bir ilke ve API için yapılandırılmış bir ilke varsa, her iki bu API her kullanıldığında her iki ilke de uygulanır. API Management, temel öğe aracılığıyla birleştirilmiş ilke deyimlerinin belirleyici sıralamasına izin verir. 
+Genel düzeyde bir politikanız ve bir API için yapılandırılan bir ilkeniz varsa, belirli bir API kullanıldığında her iki ilke de uygulanır. API Yönetimi, temel öğe üzerinden birleştirilmiş ilke deyimlerinin deterministik sıralanmasına olanak tanır. 
 
 ```xml
 <policies>
@@ -88,15 +88,15 @@ Genel düzeyde bir ilke ve API için yapılandırılmış bir ilke varsa, her ik
 </policies>
 ```
 
-Yukarıdaki örnek ilke tanımında, `cross-domain` daha yüksek ilkelerden önce deyimin ardından `find-and-replace` ilke gelmelidir. 
+Yukarıdaki örnek ilke tanımında, `cross-domain` deyim, `find-and-replace` eiðen izlenecek daha yüksek ilkelerden önce yürütür. 
 
-### <a name="restrict-incoming-requests"></a>Gelen istekleri kısıtla
+### <a name="restrict-incoming-requests"></a>Gelen istekleri kısıtlama
 
-Gelen istekleri belirtilen IP adreslerine kısıtlamak üzere yeni bir ifade eklemek için imleci `inbound` XML öğesinin içeriğinin içine yerleştirin ve **arayanın IP 'lerini kısıtla** bildirimine tıklayın.
+Gelen istekleri belirtilen IP adresleriyle sınırlamak için yeni bir deyim eklemek için imleci `inbound` XML öğesinin içeriğinin içine yerleştirin ve **arayan IP'leri kısıtla** ifadesini tıklatın.
 
 ![Kısıtlama ilkeleri][policies-restrict]
 
-Bu, deyimin nasıl yapılandırılacağı hakkında rehberlik sağlayan `inbound` öğesine bir XML kod parçacığı ekler.
+Bu, deyimin `inbound` nasıl yapılandırılacağına ilişkin kılavuz sağlayan öğeye bir XML parçacığı ekler.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -105,7 +105,7 @@ Bu, deyimin nasıl yapılandırılacağı hakkında rehberlik sağlayan `inbound
 </ip-filter>
 ```
 
-Gelen istekleri sınırlandırmak ve yalnızca 1.2.3.4 IP adresinden yalnızca birini kabul etmek için XML 'yi şöyle değiştirin:
+Gelen istekleri sınırlamak ve yalnızca 1.2.3.4 IP adresinden gelenleri kabul etmek için XML'i aşağıdaki gibi değiştirin:
 
 ```xml
 <ip-filter action="allow">
@@ -115,10 +115,10 @@ Gelen istekleri sınırlandırmak ve yalnızca 1.2.3.4 IP adresinden yalnızca b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlkelerle çalışma hakkında daha fazla bilgi için bkz.
+İlkelerle çalışan daha fazla bilgi için bkz:
 
-+ [API dönüştürme](transform-api.md)
-+ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
++ [API'leri Dönüştür](transform-api.md)
++ [İlke](api-management-policy-reference.md) deyimlerinin ve ayarlarının tam listesi için İlke Başvurusu
 + [İlke örnekleri](policy-samples.md)   
 
 [Policy Reference]: api-management-policy-reference.md

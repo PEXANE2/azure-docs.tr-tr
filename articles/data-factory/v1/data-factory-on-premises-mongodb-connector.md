@@ -1,6 +1,6 @@
 ---
-title: MongoDB 'den veri taşıma
-description: Azure Data Factory kullanarak MongoDB veritabanından veri taşıma hakkında bilgi edinin.
+title: Verileri MongoDB'den taşıma
+description: Azure Veri Fabrikası'nı kullanarak MongoDB veritabanındaki verileri nasıl taşıyacağım hakkında bilgi edinin.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -10,108 +10,108 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281346"
 ---
-# <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'Den veri taşıma
+# <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri MongoDB'den taşıma
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-on-premises-mongodb-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-mongodb.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de MongoDB Bağlayıcısı](../connector-mongodb.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki MongoDB konektörüne](../connector-mongodb.md)bakın.
 
 
-Bu makalede, verileri şirket içi MongoDB veritabanından taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, verileri şirket içi MongoDB veritabanından taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
 
-Şirket içi bir MongoDB veri deposundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MongoDB veri deposundaki verileri diğer veri depolarına taşımayı destekler, ancak verileri diğer veri depolarından MongoDB veri deposuna taşımak için kullanmaz.
+Şirket içi MongoDB veri deposundaki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca MongoDB veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MongoDB veri deposuna taşımak için değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure Data Factory hizmetinin şirket içi MongoDB veritabanınıza bağlanabilmesi için aşağıdaki bileşenleri yüklemelisiniz:
+## <a name="prerequisites"></a>Ön koşullar
+Azure Veri Fabrikası hizmetinin şirket içi MongoDB veritabanınıza bağlanabilmesi için aşağıdaki bileşenleri yüklemeniz gerekir:
 
-- Desteklenen MongoDB sürümleri şunlardır: 2,4, 2,6, 3,0, 3,2, 3,4 ve 3,6.
-- Veritabanını barındıran aynı makinede veya veritabanına sahip kaynakların rekabeti önlemek için ayrı bir makinede Veri Yönetimi ağ geçidi. Veri Yönetimi ağ geçidi, şirket içi veri kaynaklarını güvenli ve yönetilen bir şekilde bulut hizmetlerine bağlayan bir yazılımdır. Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesi. Verileri taşımak için bir veri işlem hattı ayarlama hakkında adım adım yönergeler için bkz. [Şirket içinden buluta veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi.
+- Desteklenen MongoDB sürümleri şunlardır: 2.4, 2.6, 3.0, 3.2, 3.4 ve 3.6.
+- Veri yönetimi ağ geçidi, veritabanıyla kaynak rekabetini önlemek için veritabanını barındıran aynı makinede veya ayrı bir makinede. Veri Yönetimi Ağ Geçidi, şirket içi veri kaynaklarını bulut hizmetlerine güvenli ve yönetilen bir şekilde bağlayan bir yazılımdır. Veri Yönetimi Ağ Geçidi hakkında ayrıntılar için [Veri Yönetimi Ağ Geçidi](data-factory-data-management-gateway.md) makalesine bakın. Bkz. Verileri taşımak için ağ geçidini ayarlamayla ilgili adım adım talimatlar için [verileri şirket içinde bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesine taşıyın.
 
-    Ağ geçidini yüklediğinizde, MongoDB 'ye bağlanmak için kullanılan bir Microsoft MongoDB ODBC sürücüsünü otomatik olarak yükler.
+    Ağ geçidini yüklediğinizde, MongoDB'ye bağlanmak için kullanılan bir Microsoft MongoDB ODBC sürücüsünü otomatik olarak yükler.
 
     > [!NOTE]
-    > Azure IaaS VM 'lerinde barındırıldığından bile MongoDB 'ye bağlanmak için ağ geçidini kullanmanız gerekir. Bulutta barındırılan bir MongoDB örneğine bağlanmaya çalışıyorsanız, ağ geçidi örneğini IaaS VM 'sine de yükleyebilirsiniz.
+    > Azure IaaS VM'lerde barındırılan olsa bile MongoDB'ye bağlanmak için ağ geçidini kullanmanız gerekir. Bulutta barındırılan MongoDB örneğine bağlanmaya çalışıyorsanız, ağ geçidi örneğini IaaS VM'ye de yükleyebilirsiniz.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API 'Ler kullanarak şirket içi MongoDB veri deposundaki verileri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
+Farklı araçlar/API'ler kullanarak şirket içi MongoDB veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Şirket içi MongoDB veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bu makalenin [JSON örnek: verileri MongoDB 'Den Azure Blob 'A kopyalama](#json-example-copy-data-from-mongodb-to-azure-blob) bölümüne bakın.
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Şirket içi MongoDB veri deposundan veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Verileri MongoDB'den Azure Blob bölümüne](#json-example-copy-data-from-mongodb-to-azure-blob) kopyalayın.
 
-Aşağıdaki bölümler, MongoDB kaynağına özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, MongoDB kaynağına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Aşağıdaki tabloda, **OnPremisesMongoDB** bağlı HIZMETINE özgü JSON öğeleri için açıklama verilmiştir.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Aşağıdaki tablo, **OnPremisesMongoDB** bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesMongoDb** olarak ayarlanmalıdır |Yes |
-| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| type |Tür özelliği ayarlanmalıdır: **OnPremisesMongoDb** |Evet |
+| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |İsteğe bağlı, varsayılan değer: 27017 |
-| authenticationType |Temel veya anonim. |Yes |
-| kullanıcı adı |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
-| password |Kullanıcının parolası. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
-| authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |İsteğe bağlı (temel kimlik doğrulaması kullanılıyorsa). Varsayılan: yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanır. |
-| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
-| gatewayName |Veri deposuna erişen ağ geçidinin adı. |Yes |
-| encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |İsteğe bağlı |
+| authenticationType |Temel veya Anonim. |Evet |
+| kullanıcı adı |MongoDB'ye erişmek için kullanıcı hesabı. |Evet (temel kimlik doğrulama kullanılıyorsa). |
+| password |Kullanıcının parolası. |Evet (temel kimlik doğrulama kullanılıyorsa). |
+| authSource |Kimlik doğrulama için kimlik bilgilerinizi denetlemek için kullanmak istediğiniz MongoDB veritabanının adı. |İsteğe bağlı (temel kimlik doğrulama kullanılıyorsa). varsayılan: yönetici hesabını ve databaseName özelliğini kullanarak belirtilen veritabanını kullanır. |
+| Databasename |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
+| ağ geçidiAdı |Veri deposuna erişen ağ geçidinin adı. |Evet |
+| şifreli Credential |Kimlik bilgileri ağ geçidi tarafından şifrelenir. |İsteğe bağlı |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Mongodbcollection** türündeki veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
+**typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **MongoDbCollection** türü veri kümesi için typeProperties bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| collectionName |MongoDB veritabanındaki koleksiyonun adı. |Yes |
+| Toplamaadı |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları ve ilke gibi özellikler tüm etkinlik türleri için kullanılabilir.
 
-Diğer yandan etkinliğin **Typeproperties** bölümünde bulunan özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Diğer taraftan etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Kaynak **Mongodbsource** türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
+Kaynak **MongoDbSource** türünde olduğunda, typeProperties bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL-92 sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **KoleksiyonAdı** belirtilmişse) |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL-92 sorgu dizesi. Örneğin: MyTable'dan * seçin. |Hayır **(koleksiyonVeri** **kümesinin** adı belirtilirse) |
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON örneği: MongoDB 'den Azure Blob 'a veri kopyalama
-Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Şirket içi MongoDB 'den bir Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON örneği: MongoDB'den Azure Blob'a veri kopyalama
+Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Şirket içi Bir MongoDB'den Azure Blob Depolama alanına verilerin nasıl kopyalanır şekilde kopyalanırolduğunu gösterir. Ancak, veriler Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için kopyalanabilir.
 
-Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
+Örnekte aşağıdaki veri fabrikası varlıkları vardır:
 
-1. [OnPremisesMongoDb](#linked-service-properties)türünde bağlı bir hizmet.
-2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-3. [Mongodbcollection](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-5. [Mongodbsource](#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+1. [OnPremisesMongoDb](#linked-service-properties)türüne bağlı bir hizmet.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+3. [MongoDbCollection](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+5. [MongoDbSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity ile bir [boru hattı.](data-factory-create-pipelines.md)
 
-Örnek, bir sorgudaki verileri MongoDB veritabanında her saat bir bloba bir blob 'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, MongoDB veritabanındaki bir sorgu sonucundaki verileri her saat başı bir blob'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesindeki yönergelere göre ayarlayın.
+İlk adım olarak, [Veri Yönetimi Ağ Geçidi](data-factory-data-management-gateway.md) makalesindeki talimatlara göre veri yönetimi ağ geçidini kurun.
 
-**MongoDB bağlı hizmeti:**
+**MongoDB bağlantılı hizmet:**
 
 ```json
 {
@@ -134,7 +134,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
 }
 ```
 
-**Azure depolama bağlı hizmeti:**
+**Azure Depolama bağlantılı hizmet:**
 
 ```json
 {
@@ -148,7 +148,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
 }
 ```
 
-**MongoDB giriş veri kümesi:** "External": "true" ayarı, Data Factory hizmetine tablonun veri fabrikasında dış olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
+**MongoDB giriş veri seti:** "Dış"ı ayarlamak: "true" tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Veri Fabrikası hizmetine bildirir.
 
 ```json
 {
@@ -168,9 +168,9 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
 }
 ```
 
-**Azure Blob çıktı veri kümesi:**
+**Azure Blob çıktı veri seti:**
 
-Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```json
 {
@@ -228,9 +228,9 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 }
 ```
 
-**MongoDB kaynağına ve BLOB havuzuna sahip bir işlem hattındaki etkinliği kopyalama:**
+**MongoDB kaynağı ve Blob lavabosu olan bir boru hattındaki etkinliği kopyalayın:**
 
-İşlem hattı, yukarıdaki giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında, **kaynak** türü **Mongodbsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+Ardışık iş, yukarıdaki giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **MongoDbSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, kopyalanacak son saatteki verileri seçer.
 
 ```json
 {
@@ -279,75 +279,75 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 ```
 
 
-## <a name="schema-by-data-factory"></a>Veri fabrikası tarafından şeması
-Azure Data Factory hizmet, koleksiyondaki en son 100 belgeyi kullanarak bir MongoDB koleksiyonundan şemayı hallederler. Bu 100 belgeler tam şema içermiyorsa, kopyalama işlemi sırasında bazı sütunlar yoksayılabilir.
+## <a name="schema-by-data-factory"></a>Veri Fabrikası'na Göre Şema
+Azure Veri Fabrikası hizmeti, koleksiyondaki en son 100 belgeyi kullanarak bir MongoDB koleksiyonundan şema çıkar. Bu 100 belge tam şema içermiyorsa, kopyalama işlemi sırasında bazı sütunlar yoksayılabilir.
 
 ## <a name="type-mapping-for-mongodb"></a>MongoDB için tür eşleme
-[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi kopyalama etkinliği, aşağıdaki 2 adımlı yaklaşımla kaynak türlerindeki otomatik tür dönüştürmeleri, havuz türlerine uygular:
+[Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama etkinliği aşağıdaki 2 adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüştürmeleri gerçekleştirir:
 
-1. Yerel kaynak türlerinden .NET türüne Dönüştür
-2. .NET türünden yerel havuz türüne Dönüştür
+1. Yerel kaynak türlerinden .NET türüne dönüştürme
+2. .NET türünden yerel lavabo türüne dönüştürme
 
-Verileri MongoDB 'ye taşırken, MongoDB türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
+Verileri MongoDB'ye aktarırken MongoDB türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
 
-| MongoDB türü | .NET Framework türü |
+| MongoDB tipi | .NET Framework türü |
 | --- | --- |
-| İkili |Byte[] |
+| İkili |Bayt[] |
 | Boole |Boole |
 | Tarih |DateTime |
-| NumberDouble |çift |
-| Numberınt |Int32 |
-| NumberLong |Int64 |
-| Uzantının |Dize |
+| SayıÇift |Çift |
+| NumberInt |Int32 |
+| Sayı Uzun |Int64 |
+| ObjectID |Dize |
 | Dize |Dize |
-| EDIN |Guid |
-| Nesne |İç içe ayırıcı olarak "_" ile sütunları düzleştirmek için yeniden Renklendir |
+| Uuıd |Guid |
+| Nesne |İç içe ayırıcı olarak "_" ile düzleştirilmiş sütunlar halinde yeniden normalleştirildi |
 
 > [!NOTE]
-> Sanal tabloları kullanarak diziler için destek hakkında bilgi edinmek için aşağıdaki [sanal tabloları kullanarak karmaşık türler Için destek](#support-for-complex-types-using-virtual-tables) bölümüne bakın.
+> Sanal tabloları kullanarak dizidesteği hakkında bilgi edinmek [için,](#support-for-complex-types-using-virtual-tables) aşağıdaki sanal tablolar bölümünü kullanarak karmaşık türler için Destek bölümüne bakın.
 
-Şu anda şu MongoDB veri türleri desteklenmez: DBPointer, JavaScript, Max/Min anahtarı, normal Ifade, simge, zaman damgası, tanımsız
+Şu anda, aşağıdaki MongoDB veri türleri desteklenmez: DBPointer, JavaScript, Max/Min tuşu, Düzenli İfade, Sembol, Zaman Damgası, Tanımlanmamış
 
-## <a name="support-for-complex-types-using-virtual-tables"></a>Sanal tabloları kullanarak karmaşık türler için destek
-Azure Data Factory, MongoDB veritabanınıza bağlanmak ve veri kopyalamak için yerleşik bir ODBC sürücüsü kullanır. Belge genelinde farklı türlere sahip diziler veya nesneler gibi karmaşık türler için, sürücü verileri ilgili sanal tablolara yeniden normalleştirir. Özellikle, bir tablo bu tür sütunlar içeriyorsa, sürücü aşağıdaki sanal tabloları oluşturur:
+## <a name="support-for-complex-types-using-virtual-tables"></a>Sanal tabloları kullanarak karmaşık türleri için destek
+Azure Veri Fabrikası, MongoDB veritabanınızdaki verilere bağlanmak ve kopyalamak için yerleşik bir ODBC sürücüsü kullanır. Belgeler arasında farklı türlerde diziler veya nesneler gibi karmaşık türler için sürücü verileri karşılık gelen sanal tablolara yeniden normalleştirir. Özellikle, bir tablo bu tür sütunlar içeriyorsa, sürücü aşağıdaki sanal tabloları oluşturur:
 
-* Karmaşık tür sütunları hariç gerçek tabloyla aynı verileri içeren bir **temel tablo**. Temel tablo, temsil ettiği gerçek tabloyla aynı adı kullanır.
-* İç içe geçmiş verileri genişleten her karmaşık tür sütunu için bir **sanal tablo** . Sanal tablolar, gerçek tablonun adı, bir ayırıcı "_" ve dizi ya da nesnenin adı kullanılarak adlandırılır.
+* Karmaşık tür sütunları dışında gerçek tabloyla aynı verileri içeren **bir taban tablosu.** Taban tablo, temsil ettiği gerçek tabloyla aynı adı kullanır.
+* İç içe geçen verileri genişleten her karmaşık tür sütunu için sanal bir **tablo.** Sanal tablolar gerçek tablo, bir ayırıcı "_" ve dizi veya nesnenin adı kullanılarak adlandırılır.
 
-Sanal tablolar, gerçek tablodaki verilere başvurur ve bu da sürücünün, verilerin yoğun verilere erişmesine olanak tanır. Ayrıntılar bölümündeki örnek bölümüne bakın. Sanal tabloları sorgulama ve birleştirme yoluyla MongoDB dizilerinin içeriğine erişebilirsiniz.
+Sanal tablolar, sürücünün normalden arındırılmış verilere erişmesini sağlayarak gerçek tablodaki verilere başvurur. Aşağıdaki örnek bölümüne bakın. Sanal tabloları sorgulayarak ve birleştirerek MongoDB dizilerinin içeriğine erişebilirsiniz.
 
-[Kopyalama Sihirbazı](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) 'Nı kullanarak MongoDB veritabanında sanal tablolar dahil olmak üzere Tablo listesini görüntüleyebilir ve içindeki verilerin önizlemesini görebilirsiniz. Ayrıca kopyalama sihirbazında bir sorgu oluşturabilir ve sonucu görmek için doğrulayabilirsiniz.
+Sanal tablolar da dahil olmak üzere MongoDB veritabanındaki tabloların listesini sezgisel olarak görüntülemek ve içindeki verileri önizlemek için [Kopya Sihirbazı'nı](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) kullanabilirsiniz. Ayrıca Kopya Sihirbazı'nda bir sorgu oluşturup sonucu görmek için doğrulayabilirsiniz.
 
 ### <a name="example"></a>Örnek
-Örneğin, aşağıdaki "ExampleTable" tablosu, her hücrede bir nesne dizisi olan tek bir sütun içeren bir MongoDB tablosu ve bir sütun skaler türlerden oluşan bir dizi içeren bir sütun içerir.
+Örneğin, aşağıdaki "ExampleTable" her hücrede bir dizi Nesne içeren bir sütuna sahip bir MongoDB tablosu – Faturalar ve bir dizi Skaler türü olan bir sütun – Derecelendirmeler.
 
-| _id | Müşteri adı | Faturalar | Hizmet Düzeyi | Lendir |
+| _id | Müşteri Adı | Faturalar | Hizmet Düzeyi | Derecelendirmeler |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", öğe: "Toaster", Price: "456", indirim: "0.2"}, {invoice_id: "124", öğe: "oven", Fiyat: "1235", indirim: "0,2"}] |Silver |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", öğe: "Fridge", Price: "12543", indirim: "0,0"}] |Gold |[1,2] |
+| 1111 |ABC |[{invoice_id:"123", item:"tost makinesi", fiyat:"456", indirimli:"0.2"}, {invoice_id:"124", öğe:"fırın", fiyat: "1235", indirim: "0.2"}] |Silver |[5,6] |
+| 2222 |XYZ |[{invoice_id:"135", item:"buzdolabı", fiyat: "12543", indirim: "0.0"}] |Gold |[1,2] |
 
-Bu tek tabloyu temsil eden sürücü birden çok sanal tablo oluşturur. İlk sanal tablo, aşağıda gösterildiği gibi "ExampleTable" adlı temel tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerdeki veriler atlanmıştır ve sanal tablolarda genişletilir.
+Sürücü, bu tek tabloyu temsil edecek birden çok sanal tablo oluşturur. İlk sanal tablo aşağıda gösterilen "ExampleTable" adlı temel tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerden gelen veriler atlanmıştır ve sanal tablolarda genişletilir.
 
-| _id | Müşteri adı | Hizmet Düzeyi |
+| _id | Müşteri Adı | Hizmet Düzeyi |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |
 
-Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar gösterilmektedir. Bu tablolar şunları içerir:
+Aşağıdaki tablolar, örnekteki özgün dizileri temsil eden sanal tabloları gösterir. Bu tablolar aşağıdakileri içerir:
 
-* Özgün dizinin satırına karşılık gelen özgün birincil anahtar sütununa geri başvuru (_id sütunu aracılığıyla)
-* Verilerin orijinal dizi içinde konumunun bir göstergesi
-* Dizi içindeki her öğe için genişletilmiş veriler
+* Özgün dizinin satırına karşılık gelen özgün birincil anahtar sütununa (_id sütun üzerinden) geri gönderme
+* Orijinal dizi içindeki verilerin konumunun bir göstergesi
+* Dizi içindeki her öğe için genişletilmiş veri
 
-"ExampleTable_Invoices" tablosu:
+Tablo "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | maddesinin | price | İndirimin |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
-| 2222 |0 |135 |buzdolabı |12543 |0,0 |
+| 1111 |0 |123 |Tost makinesi |456 |0.2 |
+| 1111 |1 |124 |Fırın |1235 |0.2 |
+| 2222 |0 |135 |Buzdolabı |12543 |0,0 |
 
-"ExampleTable_Ratings" tablosu:
+Tablo "ExampleTable_Ratings":
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
@@ -356,14 +356,14 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 | 2222 |0 |1 |
 | 2222 |1 |2 |
 
-## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
-Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
+Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma.](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Performans ve ayarlama
-Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .
+## <a name="performance-and-tuning"></a>Performans ve Tuning
+Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Şirket içi bir veri deposundan Azure veri deposuna veri taşınan bir veri işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. Şirket [içi ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi.
+Bkz. Verileri şirket içi veri deposundan Azure veri deposuna taşıyacak bir veri ardışık alanı oluşturmak için adım adım yönergeler için şirket içi ve bulut makalesi [arasında veri taşıma.](data-factory-move-data-between-onprem-and-cloud.md)

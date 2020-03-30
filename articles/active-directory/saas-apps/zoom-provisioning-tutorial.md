@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için yakınlaştırmayı yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını yakınlaştırmak üzere otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Yakınlaştırmayı yapılandırın | Microsoft Dokümanlar'
+description: Azure AD'den Yakınlaştırma'ya kullanıcı hesaplarını otomatik olarak nasıl sağlayıp geçici olarak sağdatmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,159 +14,151 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: cd832a9dfec4680222d2c985f49aba499a56aaac
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062795"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384084"
 ---
-# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için yakınlaştırmayı yapılandırma
+# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Yakınlaştırmayı yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları yakınlaştırmak üzere otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, yakınlaştırma ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
+Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem Yakınlaştırma hem de Azure Etkin Dizin (Azure AD) işlemlerigerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, kullanıcıları ve grupları Azure REKLAM Sağlama hizmetini kullanarak [Yakınlaştırma'ya](https://zoom.us/pricing/) otomatik olarak hükümler ve hükümler denkiştir. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
 
-> [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
->
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="capabilities-supported"></a>Desteklenen yetenekler
+> [!div class="checklist"]
+> * Yakınlaştırma'da kullanıcı oluşturma
+> * Artık erişim gerektirmediklerinde kullanıcıları Yakınlaştırma'da kaldırma
+> * Azure AD ve Yakınlaştırma arasında kullanıcı özniteliklerini eşitlenmiş tutma
+> * Zoom için [tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) açma (önerilir)
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure AD kiracısı
-* [Bir yakınlaştırma kiracısı](https://zoom.us/pricing)
-* Yönetici izinleriyle yakınlaştırılmış bir kullanıcı hesabı
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-## <a name="add-zoom-from-the-gallery"></a>Galeriden yakınlaştırma ekleme
+* [Azure AD kiracı.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
+* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* [Bir Zoom kiracı](https://zoom.us/pricing).
+* Yönetici izinleriyle Yakınlaştırma'da bir kullanıcı hesabı.
 
-Azure AD ile otomatik Kullanıcı sağlamaya yönelik yakınlaştırmayı yapılandırmadan önce Azure AD Uygulama Galerisi 'nden yönetilen SaaS uygulamaları listenize yakınlaştırma eklemeniz gerekir.
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
+3. Azure AD ve Yakınlaştırma arasında hangi verilerin [eşlenere](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verilen leri belirleyin. 
 
-**Azure AD Uygulama Galerisi 'nden yakınlaştırma eklemek için aşağıdaki adımları uygulayın:**
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı destekleyecek Yakınlaştırma'yı yapılandırın
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Zoom Admin [Konsolunuzda](https://zoom.us/signin)oturum açın. Sol gezinti bölmesinde **Geliştiriciler için Gelişmiş > Yakınlaştırma'ya** gidin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Yakınlaştırma Tümleştirmeleri](media/zoom-provisioning-tutorial/zoom01.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Sayfanın sağ üst köşesinde **Yönet'e** gidin. 
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Yakınlaştırma Yükle](media/zoom-provisioning-tutorial/zoom02.png)
 
-3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
+3. Oluşturduğunuz Azure AD uygulamasına gidin. 
+    
+    ![Yakınlaştırma Uygulaması](media/zoom-provisioning-tutorial/zoom03.png)
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+4. Sol gezinti bölmesinde **Uygulama Kimlik Bilgileri'ni** seçin.
 
-4. Arama kutusuna **Yakınlaştır**' ı girin, sonuçlar panelinde **Yakınlaştır** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+    ![Yakınlaştırma Uygulaması](media/zoom-provisioning-tutorial/zoom04.png)
 
-    ![Sonuçlar listesini Yakınlaştır](common/search-new-app.png)
+5. Kopyalayın ve **JWT Belirteci**kaydedin. Bu değer, Azure portalındaki Yakınlaştırma uygulamanızın Sağlama sekmesindeki **Gizli Belirteç** alanına girilir. Süresi dolmayan yeni bir belirteç gerekiyorsa, otomatik olarak yeni bir belirteç oluşturacak son kullanma süresini yeniden yapılandırmanız gerekir. 
 
-## <a name="assign-users-to-zoom"></a>Kullanıcıları yakınlaşmak üzere atama
+    ![Yakınlaştırma Yükle](media/zoom-provisioning-tutorial/zoom05.png)
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Yakınlaştırma ekleme
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların yakınlaştırmaya erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek yakınlaştırmak için bu kullanıcıları ve/veya grupları atayabilirsiniz:
+Yakınlaştırma'ya sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Yakınlaştırma'yı ekleyin. Daha önce SSO için Zoom kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
 
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
 
-### <a name="important-tips-for-assigning-users-to-zoom"></a>Kullanıcıları yakınlaşmak üzere atamaya yönelik önemli ipuçları
+Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere yakınlaştırmak için tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Kullanıcıları ve grupları Yakınlaştırma'ya atarken, Varsayılan **Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
 
-* Bir kullanıcıyı yakınlaşmak üzere atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
-## <a name="configure-automatic-user-provisioning-to-zoom"></a>Otomatik Kullanıcı sağlamayı yakınlaştırmak için yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni, Kullanıcı veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak yakınlaştırma, güncelleştirme ve devre dışı bırakma amacıyla yapılandırma adımlarında size kılavuzluk eder.
+## <a name="step-5-configure-automatic-user-provisioning-to-zoom"></a>5. Adım. Otomatik kullanıcı sağlamayı Yakınlaştırma olarak yapılandırın 
 
-> [!TIP]
-> Yakınlaştır [Çoklu oturum açma öğreticisinde](zoom-tutorial.md)belirtilen yönergeleri Izleyerek, yakınlaştırma için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
-### <a name="configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Azure AD 'de yakınlaştırma için otomatik Kullanıcı sağlamayı yapılandırma
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Azure AD'de Yakınlaştırma için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Yakınlaştır**' ı seçin.
+2. Uygulamalar listesinde **Yakınlaştırma'yı**seçin.
 
-    ![Uygulamalar listesindeki yakınlaştırma bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Yakınlaştırma bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL 'sine**`https://api.zoom.us/scim` girin. Yakınlaştırma hesabınızın **gizli belirtecini** almak için adım 6 ' da anlatıldığı şekilde izlenecek yolu izleyin.
+5. Yönetici **Kimlik Bilgileri** bölümüne Kiracı `https://api.zoom.us/scim` **URL'sini**girin. **Gizli Belirteç'te**daha önce alınan **JWT Belirteci** değerini girdi. Azure AD'nin Yakınlaştırma'ya bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Yakınlaştırma hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
 
-6. [Yakınlaştırma yönetici konsolunda](https://zoom.us/signin)oturum açın. Sol gezinti bölmesindeki **geliştiriciler Için gelişmiş > önizlemesi** ' ne gidin.
+    ![Yakınlaştırma sağlama](./media/zoom-provisioning-tutorial/provisioning.png)
 
-    ![Tümleştirmeleri Yakınlaştır](media/zoom-provisioning-tutorial/zoom01.png)
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
 
-    Sayfanın sağ üst köşesindeki **Yönet** ' e gidin. 
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-    ![Yakınlaştırma yüklemesi](media/zoom-provisioning-tutorial/zoom02.png)
+7. **Kaydet'i**seçin.
 
-    Oluşturulan Azure AD uygulamanıza gidin. 
-    
-    ![Uygulamayı Yakınlaştır](media/zoom-provisioning-tutorial/zoom03.png)
+8. **Eşlemeler** bölümünde, **Yakınlaştırmak için Azure Etkin Dizin Kullanıcılarını Senkronize Et'i**seçin.
 
-    Sol gezinti bölmesindeki **uygulama kimlik bilgilerini** seçin.
+9. Azure AD'den **Öznitelik-Eşleme** bölümünde Yakınlaştırma'ya eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Yakınlaştırma'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Yakınlaştırma API'sinin bu özniteliğe bağlı olarak kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![Uygulamayı Yakınlaştır](media/zoom-provisioning-tutorial/zoom04.png)
+   |Öznitelik|Tür|
+   |---|---|
+   |userName|Dize|
+   |Etkin|Boole|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
+   |e-postalar[eq "iş yazın"]|Dize|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Dize|
 
-    Aşağıda gösterilen JWT belirteci değerini alın ve bunu Azure AD 'deki **gizli belirteç** alanına girin. Süresi dolmayan yeni bir belirtece ihtiyacınız varsa, otomatik olarak yeni bir belirteç oluşturacak olan sona erme süresini yeniden yapılandırmanız gerekecektir. 
+10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-    ![Yakınlaştırma yüklemesi](media/zoom-provisioning-tutorial/zoom05.png)
+11. Yakınlaştırma için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Kisama Durumunu** **Ayarı** olarak değiştirin.
 
-7. 5\. adımda gösterilen alanları doldurarak Azure AD 'nin yakınlaştırmaya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, yakınlaştırma hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-    ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Yakınlaştırma'ya sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-9. **Kaydet** düğmesine tıklayın.
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-10. **Eşlemeler** bölümünde, **Kullanıcılar Azure Active Directory Yakınlaştır**' ı seçin.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
 
-    ![Kullanıcı eşlemelerini Yakınlaştır](media/zoom-provisioning-tutorial/zoom-user-mapping.png)
+## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
+Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-11. **Öznitelik eşleme** bölümünü yakınlaştırmak IÇIN Azure AD 'den eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemlerinde yakınlaştırma aşamasında Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
-    
-     ![Kullanıcı eşlemelerini Yakınlaştır](media/zoom-provisioning-tutorial/zoom-user-attributes.png)
+1. Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
+2. Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
+3. Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)  
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
-
-13. Azure AD sağlama hizmeti 'ni yakınlaştırma için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
-    
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
-
-14. **Ayarlar** bölümünde **kapsamda** istenen değerleri seçerek yakınlaştırmak için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
-
-    ![Sağlama kapsamı](common/provisioning-scope.png)
-
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
-
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
-
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve devam etmek için Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna ilişkin bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
-
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
-
-## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
-
-* Yakınlaştırma, gruplar için sağlamayı desteklemez.
+## <a name="connector-limitations"></a>Konektör sınırlamaları
+* Zoom sadece 9.999 temel kullanıcı bugün maksimum sağlar.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)

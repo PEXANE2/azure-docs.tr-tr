@@ -1,6 +1,6 @@
 ---
-title: Site Recovery ile Hyper-V (VMM ile) ağ eşlemesi hakkında
-description: Hyper-V VM 'lerinin (VMM bulutlarında yönetilen) olağanüstü durum kurtarma için ağ eşlemesinin, Azure Site Recovery ile Azure 'a nasıl ayarlanacağını açıklar.
+title: Site Kurtarma ile Hyper-V (VMM ile) ağ eşleme hakkında
+description: Hyper-V V VM'lerin (VMM bulutlarında yönetilen) Azure'a olağanüstü durum kurtarma için ağ eşlemesinin Azure'a nasıl ayarlandığını açıklar.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082570"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Azure 'da Hyper-V VM olağanüstü durum kurtarma için ağ eşlemeyi hazırlama
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM olağanüstü durum kurtarma için Azure'a ağ eşlemesini hazırlama
 
 
-Bu makale, System Center Virtual Machine Manager (VMM) bulutlarındaki Hyper-V VM 'lerini Azure 'a veya [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak ikincil bir siteye çoğalttığınızda Ağ eşlemesini anlamanıza ve hazırlamanızı sağlar.
+Bu makale, System Center Virtual Machine Manager (VMM) bulutlarını Azure'da veya [Azure Site Kurtarma](site-recovery-overview.md) hizmetini kullanarak ikincil bir siteye çoğalttığınızda ağ eşlemesini anlamanıza ve hazırlanmanıza yardımcı olur.
 
 
-## <a name="prepare-network-mapping-for-replication-to-azure"></a>Azure 'a çoğaltma için ağ eşlemeyi hazırlama
+## <a name="prepare-network-mapping-for-replication-to-azure"></a>Azure'a çoğaltma için ağ eşlemesini hazırlama
 
-Azure 'a çoğaltma yaparken, bir kaynak VMM sunucusundaki VM ağları arasında ağ eşlemesi eşlenir ve Azure sanal ağlarını hedefleyin. Eşleme sürecinde şu işlemler gerçekleştirilir:
--  **Ağ bağlantısı**— çoğaltılan Azure VM 'lerinin eşlenen ağa bağlı olmasını sağlar. Aynı ağda yük devredilen tüm makineler, farklı kurtarma planlarında yük devretseler bile birbirlerine bağlanabilir.
-- **Ağ geçidi**— hedef Azure ağında bir ağ geçidi ayarlandıysa, VM 'ler diğer şirket içi sanal makinelere bağlanabilir.
+Azure'a çoğalırken, kaynak VMM sunucusundaki VM ağları arasındaki ağ eşleme haritaları ve Azure sanal ağlarını hedefleyin. Eşleme sürecinde şu işlemler gerçekleştirilir:
+-  **Ağ bağlantısı**—Çoğaltılan Azure VM'lerinin eşlenen ağa bağlanmasını sağlar. Aynı ağüzerinde başarısız olan tüm makineler, farklı kurtarma planlarında başarısız olsalar bile birbirlerine bağlanabilir.
+- **Ağ ağ geçidi**—Hedef Azure ağında bir ağ ağ geçidi ayarlanmışsa, VM'ler diğer şirket içi sanal makinelere bağlanabilir.
 
-Ağ eşleme aşağıdaki gibi çalışmaktadır:
+Ağ eşleme aşağıdaki gibi çalışır:
 
-- Bir kaynak VMM VM ağını bir Azure sanal ağıyla eşleyebilirsiniz.
-- Yük devretmeden sonra kaynak ağdaki Azure VM 'Leri eşlenen hedef sanal ağa bağlanır.
-- Kaynak VM ağına eklenen yeni VM 'Ler, Çoğaltma gerçekleştiğinde eşlenen Azure ağına bağlanır.
+- Bir kaynak VMM VM ağını azure sanal ağıyla eşlersiniz.
+- Kaynak ağdaki Azure VM'ler başarısız olduktan sonra eşlenen hedef sanal ağa bağlanır.
+- Kaynak VM ağına eklenen yeni VM'ler, çoğaltma gerçekleştiğinde eşlenen Azure ağına bağlanır.
 - Hedef ağın birden çok alt ağı varsa ve bu alt ağlardan biri kaynak sanal makinenin bulunduğu alt ağ ile aynı adı taşıyorsa, çoğaltılan sanal makine yük devretme işleminin ardından hedef alt ağa bağlanır.
 - Eşleşen ada sahip bir hedef alt ağ yoksa sanal makine ağdaki ilk alt ağa bağlanır.
 
-## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>İkincil bir siteye çoğaltma için ağ eşlemeyi hazırlama
+## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>İkincil bir siteye çoğaltma için ağ eşlemesini hazırlama
 
-İkincil bir siteye çoğaltma yaparken, bir kaynak VMM sunucusundaki VM ağları ve hedef VMM sunucusundaki VM ağları arasında ağ eşlemesi eşlenir. Eşleme sürecinde şu işlemler gerçekleştirilir:
+İkincil bir siteye çoğalırken, kaynak VMM sunucusundaki VM ağları arasındaki ağ eşleme haritaları ve hedef VMM sunucusundaki VM ağları. Eşleme sürecinde şu işlemler gerçekleştirilir:
 
-- **Ağ bağlantısı**— yük devretmeden sonra VM 'leri uygun ağlara bağlar. Çoğaltma VM 'si, kaynak ağla eşlenmiş hedef ağa bağlanır.
-- **En ıyı VM yerleşimi**— çoğaltma sanal makinelerini Hyper-V ana bilgisayar sunucularına en iyi şekilde koyar. Çoğaltma VM 'Leri, eşlenmiş VM ağlarına erişebilen konaklara yerleştirilir.
-- **Ağ eşlemesi yok**— Ağ eşlemesini yapılandırmazsanız, çoğaltma VM 'leri yük devretme sonrasında HERHANGI bir VM ağına bağlanmaz.
+- **Ağ bağlantısı**—Başarısız olduktan sonra VM'leri uygun ağlara bağlar. Çoğaltma VM, kaynak ağa eşlenen hedef ağa bağlanır.
+- **Optimal VM yerleşimi**—Çoğaltma VM'lerini Hyper-V ana bilgisayar sunucularında en iyi şekilde yerleştirir. Çoğaltma VM'leri, eşlenen VM ağlarına erişebilen ana bilgisayarlara yerleştirilir.
+- **Ağ eşlemesi yok**—Ağ eşlemesi yapılandırmazsanız, çoğaltma VM'leri başarısız olduktan sonra hiçbir VM ağına bağlanmaz.
 
-Ağ eşleme aşağıdaki gibi çalışmaktadır:
+Ağ eşleme aşağıdaki gibi çalışır:
 
-- Ağ eşlemesi iki VMM sunucusundaki VM ağları arasında veya iki site aynı sunucu tarafından yönetiliyorsa tek bir VMM sunucusunda yapılandırılabilir.
-- Eşleme doğru şekilde yapılandırıldığında ve çoğaltma etkin olduğunda, birincil konumdaki bir VM bir ağa bağlanır ve hedef konumdaki çoğaltma, eşlenmiş ağına bağlanır.
-- Site Recovery ağ eşleme sırasında bir hedef VM ağını seçtiğinizde, kaynak VM ağını kullanan VMM kaynak bulutları, koruma için kullanılan hedef bulutlarda kullanılabilir hedef VM ağları ile birlikte görüntülenir.
-- Hedef ağın birden çok alt ağı varsa ve bu alt ağlardan biri kaynak sanal makinenin bulunduğu alt ağ ile aynı ada sahipse, çoğaltma VM 'si yük devretmeden sonra bu hedef alt ağa bağlanır. Eşleşen ada sahip bir hedef alt ağ yoksa, sanal makine ağdaki ilk alt ağa bağlanır.
+- Ağ eşleme, iki VMM sunucusunda VM ağları arasında veya iki site aynı sunucu tarafından yönetiliyorsa tek bir VMM sunucusunda yapılandırılabilir.
+- Eşleme doğru yapılandırıldığında ve çoğaltma etkinleştirildiğinde, birincil konumdaki bir VM ağa bağlanır ve hedef konumdaki yinelemesi eşlenen ağına bağlanır.
+- Site Kurtarma'da ağ eşleme sırasında hedef bir VM ağı seçtiğinizde, kaynak VM ağını kullanan VMM kaynak bulutları ve koruma için kullanılan hedef bulutlardaki kullanılabilir hedef VM ağları görüntülenir.
+- Hedef ağda birden çok alt ağ varsa ve bu alt ağlardan biri kaynak sanal makinenin bulunduğu alt ağla aynı ada sahipse, çoğaltma VM başarısız olduktan sonra bu hedef alt ağa bağlanır. Eşleşen bir ada sahip hedef alt ağ yoksa, VM ağdaki ilk alt ağa bağlanır.
 
 ## <a name="example"></a>Örnek
 
-Bu mekanizmayı gösteren bir örnek aşağıda verilmiştir. Yeni York ve Chicago 'da iki konum içeren bir kuruluş alalım.
+Bu mekanizmayı göstermek için bir örnek aşağıda verilmiştir. New York ve Chicago'da iki yeri olan bir organizasyon alalım.
 
-**Konum** | **VMM sunucusu** | **VM ağları** | **Eşlendi**
+**Konum** | **VMM sunucusu** | **VM ağları** | **Eşlenen**
 ---|---|---|---
-New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago ile eşlendi
+New York | VMM-New York| VMNetwork1-NewYork | VMNetwork1-Chicago eşlendi
  |  | VMNetwork2-NewYork | Eşlenmedi
-Chicago | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1 ile eşlendi-NewYork
+Chicago | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork eşlendi
  | | VMNetwork2-Chicago | Eşlenmedi
 
 Bu örnekte:
 
-- VMNetwork1-NewYork 'a bağlı herhangi bir VM için bir çoğaltma VM 'si oluşturulduğunda, VMNetwork1-Chicago öğesine bağlanır.
-- VMNetwork2-NewYork veya VMNetwork2-Chicago için bir çoğaltma sanal makinesi oluşturulduğunda, herhangi bir ağa bağlanmaz.
+- VMNetwork1-NewYork'a bağlı herhangi bir VM için bir yineleme VM oluşturulduğunda, VMNetwork1-Chicago'ya bağlanır.
+- VMNetwork2-NewYork veya VMNetwork2-Chicago için bir yineleme VM oluşturulduğunda, herhangi bir ağa bağlı olmayacaktır.
 
-VMM bulutlarının örnek kuruluşumuzda ve bulutlarla ilişkili mantıksal ağların nasıl ayarlandığı aşağıda verilmiştir.
+Örnek kuruluşumuzda VMM bulutlarının nasıl ayarlanır ve bulutlarla ilişkili mantıksal ağlar aşağıda açıklanmıştır.
 
 ### <a name="cloud-protection-settings"></a>Bulut koruması ayarları
 
 **Korumalı bulut** | **Bulutu koruma** | **Mantıksal ağ (New York)**  
 ---|---|---
-GoldCloud1 | GoldCloud2 |
+Altın Bulut1 | Altın Bulut2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+Altın Bulut2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Mantıksal ve VM ağ ayarları
@@ -82,45 +82,45 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
- | LogicalNetwork2Chicago | VMNetwork2-Chicago
+ | MantıksalAğ2Chicago | VMNetwork2-Chicago
 
 ### <a name="target-network-settings"></a>Hedef ağ ayarları
 
-Bu ayarlara bağlı olarak, hedef VM ağını seçtiğinizde, aşağıdaki tabloda kullanılabilen seçimler gösterilmektedir.
+Bu ayarlara göre, hedef VM ağını seçtiğinizde, aşağıdaki tabloda kullanılabilecek seçenekleri gösterilmektedir.
 
 **Seç** | **Korumalı bulut** | **Bulutu koruma** | **Hedef ağ kullanılabilir**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Kullanılabilir
- | GoldCloud1 | GoldCloud2 | Kullanılabilir
+ | Altın Bulut1 | Altın Bulut2 | Kullanılabilir
 VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Kullanılamaz
- | GoldCloud1 | GoldCloud2 | Kullanılabilir
+ | Altın Bulut1 | Altın Bulut2 | Kullanılabilir
 
 
-Hedef ağın birden çok alt ağı varsa ve bu alt ağlardan biri kaynak sanal makinenin bulunduğu alt ağ ile aynı ada sahipse, çoğaltma sanal makinesi yük devretmeden sonra bu hedef alt ağa bağlanır. Eşleşen ada sahip bir hedef alt ağ yoksa sanal makine ağdaki ilk alt ağa bağlanır.
+Hedef ağda birden çok alt ağ varsa ve bu alt ağlardan biri kaynak sanal makinenin bulunduğu alt ağla aynı ada sahipse, çoğaltma sanal makinesi başarısız olduktan sonra bu hedef alt ağa bağlanır. Eşleşen ada sahip bir hedef alt ağ yoksa sanal makine ağdaki ilk alt ağa bağlanır.
 
 
-### <a name="failback-behavior"></a>Yeniden çalışma davranışı
+### <a name="failback-behavior"></a>Failback davranışı
 
-Yeniden çalışma durumunda neler olduğunu görmek için (tersine çoğaltma), VMNetwork1-NewYork 'un aşağıdaki ayarlarla VMNetwork1-Chicago ile eşlendiğini varsayın.
+Geri dönüş (ters çoğaltma) durumunda neler olduğunu görmek için, VMNetwork1-NewYork'un vmnetwork1-Chicago'ya aşağıdaki ayarlarla eşlenmiş olduğunu varsayalım.
 
 
-**'Nın** | **VM ağına bağlanıldı**
+**Vm** | **VM ağına bağlı**
 ---|---
-VM1 | VMNetwork1-ağ
-VM2 (VM1 çoğaltması) | VMNetwork1-Chicago
+VM1 | VMNetwork1-Ağ
+VM2 (VM1'in kopyası) | VMNetwork1-Chicago
 
 Bu ayarlarla, birkaç olası senaryoda neler olduğunu gözden geçirelim.
 
-**Senaryo** | **Sonucu**
+**Senaryo** | **Sonuç**
 ---|---
-Yük devretmeden sonra VM-2 Ağ özelliklerinde değişiklik yapılmaz. | VM-1 kaynak ağa bağlı kalır.
-VM-2 ' nin ağ özellikleri, yük devretmeden sonra değiştirilir ve bağlantısı kesilir. | VM-1 bağlantısı kesildi.
-VM-2 ' nin ağ özellikleri, yük devretmeden sonra değiştirilir ve VMNetwork2-Chicago öğesine bağlanır. | VMNetwork2-Chicago eşlenmemişse, VM-1 ' in bağlantısı kesilir.
-VMNetwork1-Chicago 'nin ağ eşlemesi değiştirildi. | VM-1, artık VMNetwork1-Chicago ile eşlenmiş ağa bağlanır.
+Başarısız olduktan sonra VM-2'nin ağ özelliklerinde değişiklik yok. | VM-1 kaynak ağa bağlı kalır.
+VM-2'nin ağ özellikleri arıza dan sonra değiştirilir ve bağlantısı kesilir. | VM-1'in bağlantısı kesildi.
+VM-2'nin ağ özellikleri arıza dan sonra değiştirilir ve VMNetwork2-Chicago'ya bağlanır. | VMNetwork2-Chicago eşlenmezse, VM-1'in bağlantısı kesilir.
+VMNetwork1-Chicago ağ eşleme değiştirildi. | VM-1 şimdi VMNetwork1-Chicago eşlenen ağa bağlı olacaktır.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hakkında bilgi edinin](hyper-v-vmm-networking.md) İkincil bir VMM sitesine yük devretmeden sonra IP adresleme.
-- [Hakkında bilgi edinin](concepts-on-premises-to-azure-networking.md) Azure 'a yük devretmeden sonra IP adresleme.
+- [Hakkında bilgi edinin](hyper-v-vmm-networking.md) İkincil bir VMM sitesine başarısız olduktan sonra IP adresi.
+- [Hakkında bilgi edinin](concepts-on-premises-to-azure-networking.md) Azure'a geçemeden IP adresi.

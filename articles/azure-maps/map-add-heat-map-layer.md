@@ -1,6 +1,6 @@
 ---
-title: Haritaya bir ısı haritası katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya ısı haritası katmanının nasıl ekleneceğini öğreneceksiniz.
+title: Haritaya ısı haritası katmanı ekleme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak haritaya ısı haritası katmanı ekleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,26 +10,26 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208548"
 ---
 # <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
-Nokta yoğunluğu haritaları olarak da bilinen ısı haritaları, veri görselleştirmesinin bir türüdür. Bunlar, bir aralıktaki renkler kullanılarak verilerin yoğunluğunu göstermek ve bir haritada "etkin noktalar" verilerini göstermek için kullanılırlar. Isı haritaları çok sayıda noktayla veri kümelerini işlemek için harika bir yoldur. 
+Nokta yoğunluğu haritaları olarak da bilinen ısı haritaları, bir veri görselleştirme türüdür. Bir renk aralığı kullanarak verilerin yoğunluğunu temsil etmek ve haritadaki verileri "etkin noktalar" göstermek için kullanılırlar. Isı haritaları, çok sayıda noktaya sahip veri kümelerini işlemek için harika bir yoldur. 
 
-Sembol, harita alanının çoğunu kapsayabilen on binlerce noktayı işleme. Bu durum büyük olasılıkla çakışan birçok sembol ile sonuçlanır. Verileri daha iyi anlamak daha zor hale gelir. Bununla birlikte, bir ısı haritası olarak aynı veri kümesini görselleştirmede, her bir veri noktasının yoğunluğunu ve göreli yoğunluğunu görmeyi kolaylaştırır.
+On binlerce noktayı sembol olarak işlemek harita alanının çoğunu kapsayabilir. Bu durumda büyük olasılıkla birçok sembol örtüşen sonuçlanır. Verilerin daha iyi anlaşılmasını zorlaştırıyor. Ancak, bu aynı veri kümesini Bir ısı haritası olarak görselleştirmek, her veri noktasının yoğunluğunu ve göreli yoğunluğunu görmenizi kolaylaştırır.
 
-Isı haritalarını birçok farklı senaryoda kullanabilirsiniz; örneğin:
+Isı haritalarını, şunları dahil olmak üzere birçok farklı senaryoda kullanabilirsiniz:
 
-- **Sıcaklık verileri**: sıcaklığın iki veri noktası arasında olduğu yaklaşık bir değer sağlar.
-- **Gürültü sensörlerine yönelik veriler**: yalnızca sensörün olduğu gürültü şiddetini göstermez, ancak aynı zamanda bir mesafeden fazla bakış elde etmek için de bilgi sağlayabilir. Herhangi bir sitedeki gürültü düzeyi yüksek olmayabilir. Birden çok sensörden gürültü kapsam alanı çakışırsa, bu örtüşen alanın daha fazla gürültü düzeyiyle karşılaşması mümkündür. Bu nedenle örtüşen alan, ısı haritasında görünür olur.
-- **GPS izleme**: her bir veri noktasının yoğunluğu hızlı temel alınarak ağırlıklı bir yükseklik eşlemesi olarak hızı içerir. Örneğin, bu işlev bir aracın hızlandırmakta olduğunu görmek için bir yol sağlar.
+- **Sıcaklık verileri**: İki veri noktası arasındaki sıcaklığın ne olduğu hakkında yaklaşımlar sağlar.
+- **Gürültü sensörleri için veriler**: Sadece sensörün bulunduğu gürültünün yoğunluğunu göstermez, aynı zamanda bir mesafeden dağılma hakkında bilgi de verebilir. Herhangi bir sitedeki gürültü seviyesi yüksek olmayabilir. Birden çok sensörden gelen gürültü kapsama alanı çakışıyorsa, bu çakışan alanın daha yüksek gürültü seviyeleriyle karşılaşabileceği mümkündür. Bu nedenle, örtüşen alan ısı haritasında görünür olacaktır.
+- **GPS izleme**: Her veri noktasının yoğunluğunun hızıtemel aldığı ağırlıklı yükseklik haritası olarak hızı içerir. Örneğin, bu işlev, bir aracın nerede hız landığını görmenin bir yolunu sağlar.
 
 > [!TIP]
-> Isı haritası katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerini gösterecek şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']`olarak ayarlayın. MultiPoint özelliklerini de dahil etmek istiyorsanız, katmanın `filter` özelliğini `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`olarak ayarlayın.
+> Isı haritası katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerini işletmesi `filter` için sınırlamak için, `['==', ['geometry-type'], 'Point']`katmanın özelliğini . MultiPoint özelliklerini de eklemek istiyorsanız, katmanın özelliğini `filter` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`.
 
 <br/>
 
@@ -37,9 +37,9 @@ Isı haritalarını birçok farklı senaryoda kullanabilirsiniz; örneğin:
 
 ## <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
-Bir veri kaynağını bir ısı haritası olarak işlemek için, veri kaynağınızı `HeatMapLayer` sınıfının bir örneğine geçirin ve Haritayı haritaya ekleyin.
+Bir veri kaynağını bir ısı haritası olarak işlemek için, veri `HeatMapLayer` kaynağınızı sınıfın bir örneğine aktarın ve haritaya ekleyin.
 
-Aşağıdaki kodda, her ısı noktasının tüm yakınlaştırma düzeylerinde 10 piksellik bir yarıçapı vardır. Daha iyi bir kullanıcı deneyimi sağlamak için, ısı Haritası etiket katmanının altında. Etiketler net bir şekilde görünür durumda kalır. Bu örnekteki veriler, [USGS deprem Hazarlar programından](https://earthquake.usgs.gov/)yapılır. Son 30 gün içinde oluşan önemli deprem içindir.
+Aşağıdaki kodda, her ısı noktasının tüm yakınlaştırma düzeylerinde 10 piksel yarıçapı vardır. Daha iyi bir kullanıcı deneyimi sağlamak için, ısı haritası etiket katmanının altındadır. Etiketler açıkça görülebilir kalır. Bu örnekteki veriler [USGS Deprem Tehlikeleri Programı'ndan](https://earthquake.usgs.gov/)dır. Bu son 30 gün içinde meydana gelen önemli depremler içindir.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -56,79 +56,79 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 }), 'labels');
 ```
 
-Önceki kodun çalışan kod örneğinin tamamı aşağıda verilmiştir.
+Burada, önceki kodun tam çalışan kod örneği vereyim.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Basit ısı haritası katmanı' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile Ilgili kalem <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>basit ısı haritası katmanını</a> inceleyin.
+<iframe height='500' scrolling='no' title='Basit Isı Haritası Katmanı' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Basit Isı Haritası Katmanına</a> bakın .
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>Isı haritası katmanını özelleştirme
 
-Önceki örnek, yarıçap ve opaklık seçeneklerini ayarlayarak ısı haritasını özelleştirdi. Isı haritası katmanı, aşağıdakiler dahil olmak üzere çeşitli özelleştirme seçenekleri sunar:
+Önceki örnek, yarıçap ve donukluk seçeneklerini ayarlayarak ısı haritasını özelleştirilmiştir. Isı haritası katmanı özelleştirme için çeşitli seçenekler sunar:
 
-* `radius`: her bir veri noktasının işlenmesi için bir piksel yarıçapı tanımlar. Yarıçapı sabit bir sayı veya bir ifade olarak ayarlayabilirsiniz. Bir ifade kullanarak, önizleme düzeyine göre yarıçapı ölçeklendirebilir ve haritadaki tutarlı bir uzamsal alanı (örneğin, 5-mil yarıçap) temsil edebilirsiniz.
-* `color`: ısı haritasının renk oluşturma şeklini belirtir. Renk gradyanı, ısı haritaları 'nın ortak bir özelliğidir. `interpolate` ifadesiyle etkiyi elde edebilirsiniz. Ayrıca, ısı haritasını renklendirime için bir `step` ifadesi kullanabilirsiniz, yoğunluğu bir dağılım veya radar stil eşlemesine benzer aralıklarda görsel olarak ortadan kaldırabilirsiniz. Bu renk paletleri, minimum değeri en yüksek yoğunluk değerine göre tanımlar. 
+* `radius`: Her veri noktasını işlemek için bir piksel yarıçapı tanımlar. Yarıçapı sabit bir sayı veya ifade olarak ayarlayabilirsiniz. Bir ifade kullanarak, yarıçapı yakınlaştırma düzeyine göre ölçeklendirebilir ve haritada tutarlı bir uzamsal alanı (örneğin, 5 mil yarıçapı) temsil edebilirsiniz.
+* `color`: Isı haritasının nasıl renklendirilir olduğunu belirtir. Renk degradesi ısı haritalarının yaygın bir özelliğidir. Bir `interpolate` ifade ile etkisi elde edebilirsiniz. Ayrıca, ısı `step` haritasını renklendirmek, yoğunluğu görsel olarak bir kontur veya radar stili haritasına benzeyen aralıklara ayırmak için bir ifade kullanabilirsiniz. Bu renk paletleri renkleri en düşük yoğunluk değerinden maksimum yoğunluk değerine tanımlar. 
 
-  Isı haritaları için renk değerlerini `heatmap-density` değerinde bir ifade olarak belirtirsiniz. "Ilişkilendirme" ifadesinin 0 dizini veya "sözcük üzerinde" ifadesinin varsayılan rengi üzerinde hiçbir verilerin tanımlanmadığı alanın rengi. Bu değeri, bir arka plan rengi tanımlamak için kullanabilirsiniz. Genellikle, bu değer saydam veya yarı saydam bir siyah olarak ayarlanır. 
+  Isı haritaları için renk değerlerini değer `heatmap-density` üzerinde bir ifade olarak belirtirsiniz. Veri olmayan alanın rengi, "Enterpolasyon" ifadesinin dizin 0'ında veya "Adımadım" ifadesinin varsayılan renginde tanımlanır. Bir arka plan rengi tanımlamak için bu değeri kullanabilirsiniz. Genellikle, bu değer saydam veya yarı saydam siyah olarak ayarlanır. 
    
-  Renk ifadelerinin örnekleri aşağıda verilmiştir:
+  Renk ifadelerine örnekler aşağıda verilmiştir:
 
-  | Enterpolasyon rengi ifadesi | Basamaklı renk ifadesi | 
+  | Enterpolasyon renk ifadesi | Basamaklı renk ifadesi | 
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' enterpolageç ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' doğrusal '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-yoğunluklu '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, ' Transparent ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' mor ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Step ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-yoğunluklu '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Transparent '<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' Navy ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, ' yeşil ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, ' sarı ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, ' Red '<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['doğrusal'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['ısı haritası yoğunluğu'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'saydam',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'mor',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'adım',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['ısı haritası yoğunluğu'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'şeffaf',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'donanma',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'yeşil',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'sarı',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'kırmızı'<br/>\] |   
 
-- `opacity`: ısı haritası katmanının donuk veya saydam olduğunu belirtir.
-- `intensity`: heatmap 'in genel yoğunluğunu artırmak için her bir veri noktasının ağırlığına bir çarpan uygular. Veri noktalarının ağırlığına bir farklılık oluşmasına neden olur, bu da görselleştirmeyi kolaylaştırır.
-- `weight`: varsayılan olarak, tüm veri noktalarında 1 ağırlığı vardır ve eşit olarak ağırlıklı şekilde tanımlanır. Ağırlık seçeneği bir çarpan olarak davranır ve bunu sayı veya bir ifade olarak ayarlayabilirsiniz. Bir sayı ağırlık olarak ayarlandıysa, her bir veri noktasının haritaya iki kez yerleştirilmesi denklik olur. Örneğin, ağırlık 2 ise, yoğunluk iki katına çıkar. Weight seçeneğini bir sayı olarak ayarlamak, ısı haritasını, yoğunluk seçeneğini kullanmak için benzer bir şekilde işler. 
+- `opacity`: Isı haritası tabakasının ne kadar opak veya saydam olduğunu belirtir.
+- `intensity`: Isı haritasının genel yoğunluğunu artırmak için her veri noktasının ağırlığına bir çarpan uygular. Veri noktalarının ağırlığında bir farka neden olur ve görselleştirmeyi kolaylaştırır.
+- `weight`: Varsayılan olarak, tüm veri noktalarının ağırlığı 1'dir ve eşit olarak ağırlıklanır. Ağırlık seçeneği çarpan gibi davranır ve bunu bir sayı veya ifade olarak ayarlayabilirsiniz. Bir sayı ağırlık olarak ayarlanırsa, bu, her veri noktasını haritaya iki kez yerleştirmenin eşdeğerliğidir. Örneğin, ağırlık 2 ise, yoğunluk iki katına çıkar. Ağırlık seçeneğini bir sayıya ayarlamak, ısı eşlesini yoğunluk seçeneğini kullanmaya benzer bir şekilde işler. 
 
-  Ancak, bir ifade kullanırsanız her bir veri noktasının ağırlığı her bir veri noktasının özelliklerine bağlı olabilir. Örneğin, her bir veri noktasının bir deprem temsil ettiğini varsayın. Büyüklük değeri her bir deprem veri noktası için önemli bir ölçümdür. Deprem her zaman gerçekleşir, ancak en az büyüklüğü düşüktür ve fark edilmez. Her bir veri noktasına ağırlığı atamak için bir ifadede büyüklük değerini kullanın. Ağırlığı atamak için büyüklük değerini kullanarak, ısı haritası içinde deprem 'in önemini daha iyi bir şekilde temsil edersiniz.
-- `source` ve `source-layer`: veri kaynağını güncelleştirmenizi sağlar.
+  Ancak, bir ifade kullanırsanız, her veri noktasının ağırlığı her veri noktasının özelliklerine dayalı olabilir. Örneğin, her veri noktasının bir depremi temsil diğini varsayalım. Büyüklük değeri her deprem veri noktası için önemli bir metrik olmuştur. Depremler her zaman olur, ama çoğu düşük bir büyüklüğü var, ve fark edilmez. Ağırlığı her veri noktasına atamak için bir ifadedeki büyüklük değerini kullanın. Ağırlığı atamak için büyüklük değerini kullanarak, ısı haritası içinde depremlerin önemini daha iyi bir temsil olsun.
+- `source`ve `source-layer`: Veri kaynağını güncelleştirmenizi sağlar.
 
-Farklı ısı haritası katman seçeneklerini test etmek için bir araç aşağıda verilmiştir.
+Burada farklı ısı haritası katmanı seçenekleri test etmek için bir araç.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Isı haritası katman seçenekleri' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile Ilgili kalem <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>ısı haritası katman seçeneklerine</a> bakın.
+<iframe height='700' scrolling='no' title='Isı Haritası Katman Seçenekleri' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>CodePen'de Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Isı Haritası Katman Seçenekleri</a> <a href='https://codepen.io'>'ne</a>bakın .
 </iframe>
 
-## <a name="consistent-zoomable-heat-map"></a>Tutarlı Zoomable ısı haritası
+## <a name="consistent-zoomable-heat-map"></a>Tutarlı yakınlaştırılabilir ısı haritası
 
-Varsayılan olarak, ısı haritası katmanında işlenen veri noktalarının yarıçapının tüm yakınlaştırma düzeyleri için sabit bir piksel yarıçapı vardır. Haritayı yakınlaştırdığınızda, veriler birlikte toplar ve ısı haritası katmanı farklı görünür. 
+Varsayılan olarak, ısı haritası katmanında işlenen veri noktalarının yarıçapı, tüm yakınlaştırma düzeyleri için sabit bir piksel yarıçapına sahiptir. Haritayı yakınlaştırdıkça, veriler bir araya toplanır ve ısı haritası katmanı farklı görünür. 
 
-Her bir yakınlaştırma düzeyi için yarıçapı ölçeklendirmek üzere bir `zoom` ifadesi kullanın, örneğin her bir veri noktası haritanın aynı fiziksel alanını içerir. Bu ifade, ısı haritası katmanının daha statik ve tutarlı görünmesini sağlar. Haritanın her yakınlaştırma düzeyinin, önceki yakınlaştırma düzeyiyle dikey ve yatay olarak iki piksel daha vardır. 
+Her `zoom` zum düzeyi için yarıçapı ölçeklendirmek için bir ifade kullanın, böylece her veri noktası haritanın aynı fiziksel alanını kaplar. Bu ifade, ısı haritası katmanının daha statik ve tutarlı görünmesini sağlar. Haritanın her yakınlaştırma düzeyi, önceki yakınlaştırma düzeyinin iki katı dikey ve yatay piksele sahiptir. 
 
-Her yakınlaştırma düzeyiyle çift olacak şekilde yarıçap ölçekleme, tüm yakınlaştırma düzeylerinde tutarlı görünen bir ısı haritası oluşturur. Bu ölçeklendirmeyi uygulamak için aşağıdaki örnekte gösterildiği gibi temel 2 `exponential interpolation` ifadesiyle `zoom` kullanın. Isı haritasının yakınlaştırma düzeyiyle nasıl ölçeklendirçalıştığını görmek için haritayı yakınlaştırın.
+Yarıçapı, her yakınlaştırma düzeyiyle iki katına çıkaracak şekilde ölçekleme, tüm yakınlaştırma düzeylerinde tutarlı görünen bir ısı haritası oluşturur. Bu ölçekleme uygulamak için, aşağıdaki `exponential interpolation` örnekte gösterildiği gibi bir taban 2 ifadesi ile kullanın. `zoom` Isı haritasının yakınlaştırma düzeyiyle nasıl ölçeklendirildirini görmek için haritayı yakınlaştırın.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Tutarlı Zoomable ısı haritası" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalemle <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>tutarlı Zoomable ısı haritasını</a> inceleyin.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Tutarlı yakınlaştırılabilir ısı haritası" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>Tutarlı yakınlaştırılabilir ısı haritasına</a> bakın .
 </iframe>
 
 > [!TIP]
-> Veri kaynağında kümelendirmeyi etkinleştirdiğinizde, birbirine yakın olan noktaları kümelenmiş bir nokta olarak birlikte gruplandırılır. Her kümenin nokta sayısını, ısı haritası için ağırlık ifadesi olarak kullanabilirsiniz. Bu, işlenecek noktaların sayısını önemli ölçüde azaltabilir. Bir kümenin nokta sayısı, nokta özelliğinin `point_count` özelliğinde depolanır: 
+> Veri kaynağında kümelenmeyi etkinleştirdiğinizde, birbirine yakın noktalar kümelenmiş nokta olarak gruplandırılır. Isı haritasının ağırlık ifadesi olarak her kümenin nokta sayısını kullanabilirsiniz. Bu, oluşturulacak puan sayısını önemli ölçüde azaltabilir. Bir kümenin nokta sayısı nokta `point_count` özelliğinin bir özelliğinde depolanır: 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-> Kümeleme yarıçapı yalnızca birkaç pikselden azsa, işlemede küçük bir görsel fark olur. Daha büyük bir yarıçap, her kümeye daha fazla işaret sağlar ve heatmap 'in performansını geliştirir.
+> Kümeleme yarıçapı yalnızca birkaç pikselise, işlemede küçük bir görsel fark olacaktır. Daha büyük bir yarıçap her kümeye daha fazla nokta ayırır ve ısı haritasının performansını artırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Heatmaoyuncu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
+> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
-Haritalarınıza eklenecek daha fazla kod örneği için aşağıdaki makalelere bakın:
+Haritalarınıza ekleyeceğiniz daha fazla kod örneği için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
 > [Veri kaynağı oluşturma](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+> [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)

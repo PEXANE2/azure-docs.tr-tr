@@ -13,62 +13,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 02/26/2020
+ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246526"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
-Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bileşenlerden oluşur:
+Azure Etkin Dizin (Azure AD) raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
 - **Etkinlik** 
-    - **Oturum açma** bilgileri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgiler.
-    - **Denetim günlükleri - denetim** [günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
+    - **Oturum açma lar** – Yönetilen uygulamaların kullanımı ve kullanıcı oturum açma etkinlikleri hakkında bilgi.
+    - **Denetim günlükleri** - [Denetim günlükleri,](concept-audit-logs.md) kullanıcılar ve grup yönetimi, yönetilen uygulamalar ve dizin etkinlikleri hakkında sistem etkinlik bilgileri sağlar.
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum açmalar** - [Riskli oturum](concept-risky-sign-ins.md) açma, kullanıcı hesabının yasal sahibi olmayan birinin oturum açma girişiminin göstergesidir.
+    - **Risk için işaretlenmiş kullanıcılar** - Riskli bir [kullanıcı,](concept-user-at-risk.md) gizliliği ihlal edilmiş olabilecek bir kullanıcı hesabı için bir göstergedir.
 
-Bu makale, oturum açma raporuna genel bir bakış sunar.
+Bu makalede, oturum açma raporuna genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
-* Güvenlik Yöneticisi, güvenlik okuyucu, genel okuyucu ve rapor okuyucu rolleri içindeki kullanıcılar
-* Genel Yöneticiler
+* Güvenlik Yöneticisi, Güvenlik Okuyucusu, Global Reader ve Rapor Okuyucu rollerindeki kullanıcılar
+* Global Yöneticiler
 * Tüm kullanıcılar (yönetici olmayan) kendi oturum açma etkinliklerine erişebilirler 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Oturum açma etkinliğine erişebilmek için hangi Azure AD lisansınızın olması gerekir?
 
-* Tüm oturum açma etkinliği raporunu görmek için kiracınızın kendisiyle ilişkili bir Azure AD Premium lisansı olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce veri etkinliği olmayan bir Premium lisansa yükselttikten sonra, verilerin raporlarda gösterilmesi birkaç gün sürer.
+- Oturum açma etkinlik raporu [Azure AD'nin tüm sürümlerinde](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)kullanılabilir.
 
-## <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
+- Oturum açma verilerine bir API kullanarak erişmek istiyorsanız, kiracınızın bu verilerle ilişkili bir [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) lisansına sahip olması gerekir.
 
-Kullanıcı oturum açma işlemleri raporu, aşağıdaki soruların yanıtlarını sağlar:
+
+
+## <a name="sign-ins-report"></a>Oturum açma raporu
+
+Kullanıcı oturum açma raporu aşağıdaki soruların yanıtlarını sağlar:
 
 * Belirli bir kullanıcının oturum açma düzeni nedir?
 * Bir hafta içerisinde kaç kullanıcı oturum açtı?
 * Bu açılan oturumların durumu nedir?
 
-[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
+Azure [portalı](https://portal.azure.com) menüsünde **Azure Active Directory'yi**seçin veya herhangi bir sayfadan **Azure Active Directory'yi** arayın ve seçin.
 
-![Azure Active Directory seçin](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+![Azure Active Directory'yi seçin](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-**İzleme**bölümünde oturum **açma** işlemlerini seçerek [oturum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)açma işlemlerini açın.
+**İzleme**altında, Oturum Açma raporunu açmak için **Oturum** [Açma'yı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)seçin.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Oturum açma etkinliği")
 
-Bazı oturum açma kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
+Bazı oturum açma kayıtlarının portalda gösterilmesi iki saat kadar sürebilir.
 
 > [!IMPORTANT]
-> Oturum açma raporu yalnızca **etkileşimli** oturum açma işlemlerini, diğer bir deyişle kullanıcının Kullanıcı adı ve parolasını kullanarak el ile oturum açtığı oturum açma işlemlerini görüntüler. Hizmetten hizmete kimlik doğrulaması gibi etkileşimli olmayan oturum açma işlemleri raporda gösterilmez. 
+> Oturum açma raporu yalnızca, kullanıcının kullanıcı adını ve parolasını kullanarak el ile oturum açtığını **niçin oturum** açma ları, yani etkileşimli oturum açmaları görüntüler. Hizmetten hizmete kimlik doğrulaması gibi etkileşimli olmayan oturum açmalar oturum açma raporunda görüntülenmez. 
 
 Oturum açma günlüklerinin aşağıdakileri gösteren bir varsayılan liste görünümü vardır:
 
@@ -85,100 +89,104 @@ Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleşt
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
 
-**Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Bir oturum açma raporunda, belirli bir oturum açma isteği için sütun olarak birden fazla değere sahip olan alanlar olamaz. Bu, örneğin, kimlik doğrulama ayrıntıları, koşullu erişim verileri ve ağ konumu için geçerlidir.   
+**Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Oturum açma raporunda, sütun olarak belirli bir oturum açma isteği için birden fazla değeri olan alanlar olamaz. Bu, örneğin, kimlik doğrulama ayrıntıları, koşullu erişim verileri ve ağ konumu için geçerlidir.   
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
 
-Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
+Daha ayrıntılı bilgi almak için liste görünümünde bir öğe seçin.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/basic-sign-in.png "Oturum açma etkinliği")
 
 > [!NOTE]
-> Müşteriler artık tüm oturum açma raporları aracılığıyla koşullu erişim ilkelerini giderebilirler. Bir oturum açma kaydı için **koşullu erişim** sekmesine tıkladığınızda müşteriler koşullu erişim durumunu gözden geçirebilir ve oturum açma için uygulanan ilkelerin ayrıntılarını ve her bir ilkenin sonucunu görebilir.
-> Daha fazla bilgi için, [tüm oturum açma IŞLEMLERININ CA bilgileri hakkında sık sorulan sorular](reports-faq.md#conditional-access)bölümüne bakın.
+> Müşteriler artık tüm oturum açma raporları aracılığıyla Koşullu Erişim ilkelerini sorun giderebilir. Oturum açma kaydı için **Koşullu Erişim** sekmesini tıklatarak, müşteriler Koşullu Erişim durumunu gözden geçirebilir ve oturum açma ve her ilke için uygulanan ilkelerin ayrıntılarına dalabilir.
+> Daha fazla bilgi için, [tüm oturum açma oturum açmalarda CA bilgileri hakkında sık sorulan sorulara](reports-faq.md#conditional-access)bakın.
 
 
 
 ## <a name="filter-sign-in-activities"></a>Oturum açma etkinliklerini filtreleme
 
-İlk olarak, bildirilen verileri sizin için uygun bir düzeye daraltın. İkinci olarak, tarih alanını kullanarak oturum açma verilerini varsayılan filtre olarak filtreleyin. Azure AD size ayarlayabileceğiniz çok çeşitli ek filtreler sağlar:
+İlk olarak, bildirilen verileri sizin için çalışan bir düzeye daraltma. İkinci olarak, varsayılan filtre olarak tarih alanını kullanarak oturum açma verilerini filtreleyin. Azure AD, ayarlayabileceğiniz çok çeşitli ek filtreler sağlar:
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/04.png "Oturum açma etkinliği")
 
-**Istek kimliği** -ILGILENDIĞINIZ isteğin kimliği.
+**İstek Kimliği** - Önemsediğiniz isteğin kimliği.
 
-**Kullanıcı** -ilgilendiğiniz kullanıcının adı veya Kullanıcı asıl adı (UPN).
+**Kullanıcı** - Önemsediğiniz kullanıcının adı veya kullanıcı ana adı (UPN).
 
-**Uygulama** -hedef uygulamanın adı.
+**Uygulama** - Hedef uygulamanın adı.
  
-**Durum** -ilgilendiğiniz oturum açma durumu:
+**Durum** - Önemsediğiniz oturum açma durumu:
 
 - Başarılı
 
 - Hata
 
-- Mazsınız
+- Kesintiye
 
 
-**IP adresi** -kiracınıza bağlanmak için kullanılan cihazın IP adresi.
+**IP adresi** - Kiracınıza bağlanmak için kullanılan cihazın IP adresi.
 
-**Konum** -bağlantının başlatıldığı konum:
+**Konum** - Bağlantının başlatıldığı konum:
 
 - Şehir
 
-- Eyalet/Il
+- Eyalet / İl
 
 - Ülke/Bölge
 
 
-**Kaynak** -oturum açma için kullanılan hizmetin adı.
+**Kaynak** - Oturum açma için kullanılan hizmetin adı.
 
 
-**Kaynak kimliği** -oturum açma için kullanılan hizmetin kimliği.
+**Kaynak Kimliği** - Oturum açma için kullanılan hizmetin kimliği.
 
 
-**İstemci uygulaması** -kiracınıza bağlanmak için kullanılan istemci uygulamanın türü:
+**İstemci uygulaması** - Kiracınıza bağlanmak için kullanılan istemci uygulamasının türü:
 
-![İstemci uygulama filtresi](./media/concept-sign-ins/client-app-filter.png)
+![İstemci uygulaması filtresi](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Adı|Modern kimlik doğrulaması|Açıklama|
+|Adı|Modern kimlik doğrulama|Açıklama|
 |---|:-:|---|
-|Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
-|Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
+|Kimlik doğrulaması SMTP| |POP ve IMAP istemcileri tarafından e-posta iletileri göndermek için kullanılır.|
+|Autodiscover| |Exchange Online'daki posta kutularını bulmak ve bağlanmak için Outlook ve EAS istemcileri tarafından kullanılır.|
 |Exchange ActiveSync| |Bu filtre, EAS protokolünün denendiği tüm oturum açma girişimlerini gösterir.|
-|Tarayıcı|![İşaretli](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
-|Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange Acticessync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
-|Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
-|Exchange Web Hizmetleri| |Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
+|Tarayıcı|![İşaretli](./media/concept-sign-ins/check.png)|Web tarayıcılarını kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
+|Exchange ActiveSync| | Exchange Online'a bağlanmak için Exchange ActiceSync'i kullanan istemci uygulamaları olan kullanıcıların tüm oturum açma girişimlerini gösterir|
+|Exchange Online PowerShell| |Uzaktan PowerShell ile Exchange Online'a bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Talimatlar için, [çok faktörlü kimlik doğrulaması kullanarak Exchange Online PowerShell'e Bağlan'a](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)bakın.|
+|Exchange Web Hizmetleri| |Outlook, Outlook for Mac ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
 |IMAP4| |E-posta almak için IMAP kullanan eski bir posta istemcisi.|
-|HTTP üzerinden MAPI| |Outlook 2010 ve üzeri tarafından kullanılır.|
-|Mobil uygulamalar ve masaüstü istemcileri|![İşaretli](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
-|Çevrimdışı adres defteri| |Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.|
-|Her yerde Outlook (HTTP üzerinden RPC)| |Outlook 2016 ve öncesi tarafından kullanılır.|
-|Outlook hizmeti| |Windows 10 için posta ve takvim uygulaması tarafından kullanılır.|
-|POP3| |POP3 kullanarak e-posta almak için eski bir posta istemcisi.|
-|Raporlama Web Hizmetleri| |Exchange Online 'daki rapor verilerini almak için kullanılır.|
-|Diğer istemciler| |İstemci uygulamasının dahil edildiği veya bilinmediği kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
+|MAPI üzerinde HTTP| |Outlook 2010 ve sonrası tarafından kullanılır.|
+|Mobil uygulamalar ve masaüstü istemcileri|![İşaretli](./media/concept-sign-ins/check.png)|Mobil uygulamaları ve masaüstü istemcilerini kullanan kullanıcıların tüm oturum açma girişimlerini gösterir.|
+|Çevrimdışı Adres Defteri| |Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.|
+|Outlook Anywhere (RPC http üzerinden)| |Outlook 2016 ve daha önceki ler tarafından kullanılır.|
+|Outlook Hizmeti| |Windows 10 için Posta ve Takvim uygulaması tarafından kullanılır.|
+|POP3| |E-posta almak için POP3 kullanan eski bir posta istemcisi.|
+|Web Hizmetlerini Raporlama| |Exchange Online'da rapor verilerini almak için kullanılır.|
+|Diğer istemciler| |İstemci uygulamasının dahil olmadığı veya bilinmeyen tüm oturum açma girişimlerini kullanıcılardan gösterir.|
 
 
 
-**İşletim sistemi** -cihazda çalışan ve kiracınızda oturum açmayı kullanmış olan işletim sistemi. 
+**İşletim sistemi** - Cihazüzerinde çalışan işletim sistemi kiracınıza oturum açma yı kullanır. 
 
 
-**Cihaz tarayıcısı** -bağlantı bir tarayıcıdan başlatılmışsa, bu alan tarayıcı adına göre filtrelemenize olanak sağlar.
+**Aygıt tarayıcısı** - Bağlantı bir tarayıcıdan başlatıldıysa, bu alan tarayıcı adına göre filtre lemenizi sağlar.
 
 
-**BAĞıNTı kimliği** -ETKINLIĞIN bağıntı kimliği.
+**Korelasyon Kimliği** - Etkinliğin korelasyon kimliği.
 
 
-**Koşullu erişim** -uygulanan koşullu erişim kurallarının durumu
 
-- Uygulanmadı 
 
-- Başarılı
+**Koşullu erişim** - Uygulanan koşullu erişim kurallarının durumu
 
-- Hata
+- **Uygulanmaz**: Oturum açma sırasında kullanıcıya ve uygulamaya uygulanan bir ilke yoktur.
+
+- **Başarı**: Oturum açma sırasında kullanıcıya ve uygulamaya (ancak diğer koşullara bağlı değildir) uygulanan bir veya daha fazla koşullu erişim ilkeleri. 
+
+- **Hata**: Bir veya daha fazla koşullu erişim ilkeleri uygulandı ve oturum açma sırasında tatmin edilmedi.
+
+
 
 
 
@@ -188,26 +196,26 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 ## <a name="download-sign-in-activities"></a>Oturum açma etkinliklerini indirme
 
-En son 250.000 kayıtlarının CSV veya JSON dosyasını oluşturmak için **İndir** seçeneğine tıklayın. Azure portal dışında çalışmak istiyorsanız [, oturum açma verilerini indirme](quickstart-download-sign-in-report.md) ile başlayın.  
+En son 250.000 kaydın csv veya JSON dosyasını oluşturmak için **İndir** seçeneğini tıklatın. Azure portalı dışında çalışmak istiyorsanız [oturum açma verilerini indirin.](quickstart-download-sign-in-report.md)  
 
 ![İndir](./media/concept-sign-ins/71.png "İndirme")
 
 > [!IMPORTANT]
-> İndirebileceğiniz kayıt sayısı [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md)tarafından sınırlandırılır.  
+> İndirebileceğiniz kayıt sayısı [Azure Etkin Dizin raporu bekletme ilkeleriyle](reference-reports-data-retention.md)sınırlandırılmıştır.  
 
 
-## <a name="sign-ins-data-shortcuts"></a>Oturum açma verileri kısayolları
+## <a name="sign-ins-data-shortcuts"></a>Oturum açma veri kısayolları
 
-Azure AD ve Azure portal, oturum açma verilerine yönelik ek giriş noktaları sağlar:
+Azure AD ve Azure portalı, oturum açma verileri için ek giriş noktaları sağlar:
 
-- Kimlik güvenliği korumasına genel bakış
+- Kimlik güvenliği koruma genel bakış
 - Kullanıcılar
 - Gruplar
 - Kurumsal uygulamalar
 
-### <a name="users-sign-ins-data-in-identity-security-protection"></a>Kimlik güvenliği koruması 'nda Kullanıcı oturum açma verileri
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Kimlik güvenliği korumasında kullanıcılar verileri oturum alar
 
-**Kimlik güvenlik koruması** Genel Bakış sayfasındaki Kullanıcı oturum açma grafiğinde, oturum açma işlemlerinin haftalık toplamaları gösterilmektedir. Zaman aralığı için varsayılan değer 30 gündür.
+**Kimlik güvenliği koruma** sayfasına göre kullanıcı oturum açma grafiği, haftalık oturum açma toplamalarını gösterir. Zaman dilimi için varsayılan değer 30 gündür.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/06.png "Oturum açma etkinliği")
 
@@ -235,7 +243,7 @@ Bir öğeye tıklayarak oturum açma işlemi hakkında daha fazla bilgi alabilir
 - Oturum açma durumu
 
 > [!NOTE]
-> IP adresleri, bir IP adresi arasında kesin bir bağlantı olmaması ve bu adrese sahip bilgisayarın fiziksel olarak bulunduğu bir şekilde verilir. IP adreslerini eşleme, Mobil sağlayıcıların ve VPN 'lerin, istemci cihazının gerçekten kullanıldığı yerden çok büyük olan merkezi havuzlardan IP adresleri yayınlabildiği gerçeyle karmaşıktır. Şu anda Azure AD raporlarında, IP adresi fiziksel bir konuma dönüştürülürken izlemeler, kayıt defteri verileri, ters aramalar ve diğer bilgiler temel alınarak en iyi çaba vardır.
+> IP adresleri, IP adresi ile bu adrese sahip bilgisayarın fiziksel olarak bulunduğu yer arasında kesin bir bağlantı olmayacak şekilde verilir. IP adreslerinin eşleme, mobil sağlayıcıların ve VPN'lerin genellikle istemci aygıtının gerçekte kullanıldığı yerden çok uzak olan merkezi havuzlardan IP adresleri yayınlaması yla karmaşıktır. Şu anda Azure AD raporlarında, IP adresini fiziksel bir konuma dönüştürmek, izlemelere, kayıt defteri verilerine, ters görünümlere ve diğer bilgilere dayalı en iyi çabadır.
 
 **Kullanıcılar** sayfasında, **Etkinlik** bölümündeki **Oturum açma** öğesine tıklayarak tüm kullanıcı oturum açma işlemlerine eksiksiz bir genel bakış elde edebilirsiniz.
 
@@ -246,14 +254,14 @@ Bir öğeye tıklayarak oturum açma işlemi hakkında daha fazla bilgi alabilir
 Oturum açma bilgilerinizin uygulama odaklı bir görünümüyle aşağıdakiler gibi sorular yanıtlanabilir:
 
 * Uygulamalarımı kimler kullanıyor?
-* Kuruluşunuzdaki en iyi üç uygulama nelerdir?
-* En yeni Uygulamam nasıl yapıyor?
+* Kuruluşunuzdaki ilk üç uygulama nelerdir?
+* En yeni uygulamam nasıl gidiyor?
 
-Bu verilere yönelik giriş noktası, kuruluşunuzdaki en üst üç uygulama olur. Veriler, **Kurumsal uygulamalar**altındaki **genel bakış** bölümünde yer alan son 30 gün içinde bulunur.
+Bu verilerin giriş noktası, kuruluşunuzdaki en iyi üç uygulamadır. Veriler, **Kurumsal uygulamalar**altında **Genel Bakış** bölümünde son 30 gün raporu içinde yer almaktadır.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/10.png "Oturum açma etkinliği")
 
-Uygulama kullanımı grafikleri, belirli bir dönemde en iyi üç uygulama için oturum açma işlemlerinin haftalık toplamalarını toplamalar. Zaman dönemi için varsayılan süre 30 gündür.
+Uygulama kullanımı, belirli bir zaman diliminde ilk üç uygulamanız için haftalık oturum açma toplamalarını grafikle gösterir. Zaman dönemi için varsayılan süre 30 gündür.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/graph-chart.png "Oturum açma etkinliği")
 
@@ -267,13 +275,13 @@ Uygulama kullanımı grafiğinde bir güne tıkladığınızda, oturum açma etk
 
 ## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
 
-[Microsoft 365 Yönetim merkezinden](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlüklerinin, dizin kaynaklarının önemli bir sayısını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 yönetici merkezinden Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure REKLAM etkinlik günlüklerinin önemli sayıda dizin kaynaklarını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 yönetici merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Ayrıca, [Office 365 Yönetim API'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak Office 365 etkinlik günlüklerine programlı olarak erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Oturum açma Etkinliği raporu hata kodları](reference-sign-ins-error-codes.md)
+* [Oturum açma faaliyet raporu hata kodları](reference-sign-ins-error-codes.md)
 * [Azure AD veri saklama ilkeleri](reference-reports-data-retention.md)
-* [Azure AD rapor gecikmeleri](reference-reports-latencies.md)
+* [Azure AD raporu gecikmeleri](reference-reports-latencies.md)
 

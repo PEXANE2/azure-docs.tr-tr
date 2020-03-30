@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple ve bulut çözümleri Program genel bakış | Microsoft Docs
-description: StorSimple iş ortakları için bir genel bakış StorSimple ve CSP hakkında.
+title: Microsoft Azure StorBasit ve Bulut Çözümleri Programına Genel Bakış | Microsoft Dokümanlar
+description: StorSimple iş ortakları için StorSimple ve CSP hakkında genel bir bakış.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,32 +15,32 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60628668"
 ---
-# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>StorSimple için bulut çözüm sağlayıcıları programı nedir?
+# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Bulut Çözümleri Sağlayıcıları Için StorSimple Programı Nedir?
 
 
 ## <a name="overview"></a>Genel Bakış
 
-Microsoft Azure StorSimple, Kurumsal Depolama gerçek hibrit bulut depolama özelliklerine sahip benzersiz bir yaklaşımdır. Etkin olmayan veriler için ekonomik bulut depolama, görev açısından kritik verilerinizi şirket içinde en yüksek düzey performans sağlarken yararlanmak için müşterileri de düşürüyor. 
+Microsoft Azure StorSimple, gerçek karma bulut depolama özellikleriyle kurumsal depolamaya benzersiz bir yaklaşımdır. Müşterilerin etkin olmayan veriler için ekonomik bulut depolamadan yararlanmalarını sağlarken, görev açısından kritik verilerini en yüksek performans düzeyleri için şirket içinde tutar. 
 
-StorSimple Virtual Array için bulut çözümleri sağlayıcısı (CSP) iş ortakları bu fırsattan üzerinde yapılacak sağlar. İş ortakları, doğrudan sağlama, faturalama ve Destek Microsoft'un bulut Hizmetleri ile uçtan uca müşteri yaşam döngüsüne. Kısacası, iş ortakları, StorSimple müşterilerin hizmetlerine yanı sıra artık gerçekleştirebilir.
+Bulut Çözümleri Sağlayıcısı (CSP) için StorSimple Virtual Array, iş ortaklarının bu fırsattan yararlanmasını sağlar. İş ortakları, Microsoft'un bulut hizmetlerinin doğrudan sağlanması, faturalanması ve desteklenmesiyle uçtan uca müşteri yaşam döngüsünün sahibidir. Kısacası, ortaklar artık müşterilerine kendi hizmetleri ile birlikte StorSimple işlem yapabilirsiniz.
 
-CSP için StorSimple hakkında daha fazla bilgi için ziyaret [Azure CSP genel bakış](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) sayfası.
+CSP için StorSimple hakkında daha fazla bilgi için [Azure CSP genel bakış](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) sayfasını ziyaret edin.
 
-Faturalama hakkında daha fazla bilgi için teşvikleri, fiyatlandırma ve CSP, destek almak Git [CSP'de StorSimple: SSS](storsimple-partner-csp-faq.md). 
+Faturalandırma, fiyatlandırma, teşvikler ve CSP'de destek alma hakkında daha fazla bilgi için [CSP'deki StorSimple'a gidin: SSS.](storsimple-partner-csp-faq.md) 
 
-## <a name="deploy-and-manage-storsimple-for-csp"></a>Dağıtma ve CSP için StorSimple'ı yönetme
+## <a name="deploy-and-manage-storsimple-for-csp"></a>CSP için StorSimple'ı dağıtın ve yönetin
 
-CSP için StorSimple, StorSimple bugün kullanılabilir olduğu tüm pazarda kullanım tabanlı bir hizmet olarak kullanılabilir. CSP için StorSimple, Azure portalı ve StorSimple cihaz Yöneticisi hizmetini kullanır. CSP iş ortağı, StorSimple sanal dizilerine, paylaşımları, birimleri ve yedekleri yönetmek için StorSimple cihaz Yöneticisi oluşturabilirsiniz. Azure portalında StorSimple cihaz Yöneticisi hizmetine kayıtlı tüm sanal diziler yönetebilirsiniz.
+CSP için StorSimple, StorSimple'ın bugün kullanıma sunulduğu tüm pazarlarda kullanım tabanlı bir hizmet olarak kullanılabilir. CSP için StorSimple, Azure portalını ve StorSimple Device Manager hizmetini kullanır. CSP iş ortağı, StorSimple Virtual Dizileri, paylaşımları, birimleri ve yedeklemeleri yönetmek için bir StorSimple Aygıt Yöneticisi oluşturabilir. Azure portalı üzerinden StorSimple Device Manager hizmetinize kayıtlı tüm sanal dizileri yönetebilirsiniz.
 
-Daha fazla bilgi için Git [Dağıt ve CSP için StorSimple Virtual Array'iniz yönetme](storsimple-partner-csp-deploy.md).
+Daha fazla bilgi için, [CSP için StorSimple Sanal Dizinizi Dağıt'a gidin ve yönetin.](storsimple-partner-csp-deploy.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- CSP, StorSimple ile ilgili başka sorularım varsa, Git [CSP için StorSimple: Sık sorulan sorular](storsimple-partner-csp-faq.md).
-- StorSimple'ınızı dağıtmak hazırsanız, Git [CSP için StorSimple'ınızı dağıtın](storsimple-partner-csp-deploy.md).
+- CSP'deki StorSimple ile ilgili daha fazla sorunuz varsa, [CSP için StorSimple'a gidin: Sık sorulan sorular.](storsimple-partner-csp-faq.md)
+- StorSimple'ınızı dağıtmaya hazırsanız, [CSP için StorSimple'ınızı dağıtın.](storsimple-partner-csp-deploy.md)

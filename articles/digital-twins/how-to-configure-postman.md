@@ -1,6 +1,6 @@
 ---
-title: Postman Yapılandırma-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS API 'Lerini test etmek için Postman yapılandırma ve kullanma hakkında bilgi edinin.
+title: Postacı nasıl yapılandırılatır - Azure Digital Twins | Microsoft Dokümanlar
+description: Azure Digital Twins API'lerini test etmek için Postacı'yı nasıl yapılandırıp kullanacağınızı öğrenin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,102 +8,102 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ffcfb4f6ec5f6c654d0b243af85034ab575e0d88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297166"
 ---
-# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
+# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Dijital İkizler için Postacı nasıl yapılandırılabilen
 
-Bu makalede, Azure Digital TWINS yönetim API 'Lerini ile etkileşime geçmek ve test etmek üzere Postman REST istemcisinin nasıl yapılandırılacağı açıklanır. Özellikle şunları açıklar:
+Bu makalede, Postacı REST istemcisiyle etkileşimde kalacak ve Azure Dijital İkizler Yönetimi API'lerini test etmek üzere nasıl yapılandırılabilen ler açıklanmaktadır. Özellikle, açıklar:
 
-* Azure Active Directory uygulamasını OAuth 2,0 örtük izin akışını kullanacak şekilde yapılandırma.
-* Yönetim API 'lerinize belirteç oluşturma HTTP istekleri yapmak için Postman REST istemcisini kullanma.
-* Yönetim API 'lerinize çok parçalı GÖNDERI istekleri yapmak için Postman 'ı kullanma.
+* OAuth 2.0 örtülü hibe akışını kullanmak için bir Azure Active Directory uygulamasını yapılandırma.
+* Yönetici API'lerinize jeton taşıyan HTTP isteklerini yapmak için Postacı REST istemcisini nasıl kullanırsınız?
+* Yönetici API'lerinize çok parçalı POST isteklerinde bulunmak için Postacı'yı nasıl kullanırsınız?
 
-## <a name="postman-summary"></a>Postman Özeti
+## <a name="postman-summary"></a>Postacı özeti
 
-Yerel test ortamınızı hazırlamak için [Postman](https://www.getpostman.com/) gıbı bir rest istemci aracı kullanarak Azure dijital TWINS 'i kullanmaya başlayın. Postman istemcisi, karmaşık HTTP isteklerinin hızla oluşturulmasına yardımcı olur. [Www.getpostman.com/apps](https://www.getpostman.com/apps)'e giderek Postman istemcisinin Masaüstü sürümünü indirin.
+Yerel test ortamınızı hazırlamak için [Postacı](https://www.getpostman.com/) gibi bir REST istemci aracı nı kullanarak Azure Digital Twins'e başlayın. Postacı istemcisi hızlı bir şekilde karmaşık HTTP istekleri ni oluşturmaya yardımcı olur. [www.getpostman.com/apps'a](https://www.getpostman.com/apps)giderek Postacı istemcisinin masaüstü sürümünü indirin.
 
-[Postman](https://www.getpostman.com/) , önemli http istek işlevlerini yararlı bir masaüstü ve EKLENTI tabanlı GUI 'ye bulan bir rest test aracıdır.
+[Postacı](https://www.getpostman.com/) yararlı bir masaüstü ve eklenti tabanlı GUI içine anahtar HTTP istek işlevleri bulur bir REST test aracıdır.
 
-Çözüm geliştiricileri Postman istemcisi aracılığıyla HTTP isteği türünü (*gönderi*, *Al*, *Güncelleştir*, *Düzeltme Eki*uygulama ve *silme*), API 'yi çağırmak için API uç noktası ve SSL kullanımını belirtebilir. Postman ayrıca HTTP istek üstbilgileri, parametreleri, form verileri ve gövdeleri eklemeyi destekler.
+Postman istemcisi aracılığıyla, çözüm geliştiricilerhttp isteği türünü belirtebilir *(POST*, *GET*, *UPDATE*, *PATCH*, ve *DELETE*), API bitiş noktası aramak için, ve TLS kullanımı. Postacı ayrıca HTTP istek üstbilgileri, parametreler, form verileri ve gövdeler eklemeyi de destekler.
 
-## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>OAuth 2,0 örtük izin akışını kullanmak için Azure Active Directory yapılandırma
+## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Azure Active Directory'sini OAuth 2.0 örtülü hibe akışını kullanacak şekilde yapılandırın
 
-1. Azure Active Directory uygulaması oluşturmak ve yapılandırmak için [hızlı](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) başlangıçtaki adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
+1. Azure Active Directory uygulaması oluşturmak ve yapılandırmak için [Quickstart'taki](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) adımları izleyin. Alternatif olarak, varolan bir uygulama kaydını yeniden kullanabilirsiniz.
 
-    [Yeni Postman yeniden yönlendirme URI 'sini ![yapılandırma](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+    [![Yeni bir Postacı Redirect URI yapıl](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Şimdi `https://www.getpostman.com/oauth2/callback`için bir **yeniden yönlendirme URI 'si** ekleyin.
+1. Şimdi, bir Yeniden Yönlendirme `https://www.getpostman.com/oauth2/callback` **URI** ekleyin.
 
-1. OAuth 2,0 örtük verme akışının kullanılmasına izin vermek için **örtük** > **erişim belirteçleri** ver onay kutusunu seçin. **Yapılandır**' ı ve ardından **Kaydet**' i seçin.
+1. OAuth 2.0 örtülü hibe akışının kullanılmasına izin vermek için **Örtülü hibe** > **Erişim belirteçleri** onay kutusunu seçin. **Yapılaşı'yı**seçin, ardından **Kaydet'i**.
 
-1. Azure Active Directory uygulamanızın **ISTEMCI kimliğini** kopyalayın.
+1. Azure Active Directory uygulamanızın **İstemci Kimliğini** kopyalayın.
 
-## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 belirteci edinme
+## <a name="obtain-an-oauth-20-token"></a>OAuth 2.0 jetonu edinin
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
-Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandırın. Daha sonra, alınan belirteci kullanarak Azure dijital TWINS 'e kimliği doğrulanmış bir HTTP isteği oluşturun:
+Bir Azure Etkin Dizin belirteci elde etmek için Postacı'yı ayarlayın ve yapılandırır. Daha sonra, edinilmiş belirteci kullanarak Azure Digital Twins için kimlik doğrulaması yapılan bir HTTP isteği yapın:
 
-1. **YETKILENDIRME URL** 'nizin doğru olduğundan emin olun. Şu biçimde olmalıdır:
+1. **Yetkilendirme** URL'nizin doğru olduğundan doğrulayın. Bu biçimi almalıdır:
 
     ```plaintext
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Ad  | Şununla değiştir | Örnek |
+    | Adı  | Şununla değiştir | Örnek |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | Kiracınızın veya kuruluşunuzun adı. Azure Active Directory Uygulama kaydınızın alfasayısal **KIRACı kimliği** yerine insandaki kolay adı kullanın. | `microsoft` |
+    | YOUR_AZURE_TENANT | Kiracınızın veya kuruluşunuzun adı. Azure Active Directory uygulama kaydınızın alfasayısal **Kiracı Kimliği** yerine insan dostu adı kullanın. | `microsoft` |
 
-1. Uygulamayı indirmek için [www.getpostman.com](https://www.getpostman.com/) adresine gidin.
+1. Uygulamayı indirmek için [www.getpostman.com](https://www.getpostman.com/) gidin.
 
-1. İstek almak istiyoruz. **Yetkilendirme** sekmesini seçin, OAuth 2,0 ' i seçin ve ardından **Yeni erişim belirteci al**' ı seçin.
+1. GET talebinde bulunmak istiyoruz. **Yetkilendirme** sekmesini seçin, OAuth 2.0'ı seçin ve ardından **Yeni Erişim Jetonu Al'ı**seçin.
 
     | Alan  | Değer |
     |---------|---------|
-    | Verme türü | `Implicit` |
-    | Geri çağırma URL 'SI | `https://www.getpostman.com/oauth2/callback` |
-    | Kimlik doğrulama URL 'SI | **1. adımdaki** **yetkilendirme URL 'sini** kullanın |
-    | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
+    | Veriliş Türü | `Implicit` |
+    | Geri Çağırma URL’si | `https://www.getpostman.com/oauth2/callback` |
+    | Kimlik Doğrulama URL’si | **Adım 1'deki** **Yetkilendirme URL'sini** kullanma |
+    | İstemci Kimliği | Önceki bölümde oluşturulan veya yeniden kullanılan Azure Etkin Dizin uygulaması için **Uygulama Kimliği'ni** kullanma |
     | Kapsam | Boş bırakın |
-    | Eyalet | Boş bırakın |
-    | İstemci kimlik doğrulaması | `Send as Basic Auth header` |
+    | Durum | Boş bırakın |
+    | İstemci Kimlik Doğrulaması | `Send as Basic Auth header` |
 
-1. İstemci şu şekilde görünmelidir:
+1. İstemci şimdi şu şekilde görünmelidir:
 
-    [![Postman istemci belirteci örneği](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
+    [![Postacı istemci belirteç örneği](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. **Istek belirtecini**seçin.
+1. **Belirteç İste**’ye tıklayın.
   
-1. Aşağı kaydırın ve **belirteci kullan**' ı seçin.
+1. Aşağı kaydırın ve **Token'i Kullan'ı**seçin.
 
-## <a name="make-a-multipart-post-request"></a>Çok parçalı bir POST isteği oluşturun
+## <a name="make-a-multipart-post-request"></a>Çok parçalı POST isteğinde bulunun
 
-Önceki adımları tamamladıktan sonra, kimliği doğrulanmış bir HTTP çok parçalı GÖNDERI isteği oluşturmak için Postman 'ı yapılandırın:
+Önceki adımları tamamladıktan sonra, Postman'ı doğrulanmış bir HTTP çok parçalı POST isteği yapmak üzere yapılandırın:
 
-1. **Üst bilgiler** sekmesi ALTıNA bir http istek üst bilgisi anahtarı **Content-Type** değeri `multipart/mixed`ekleyin.
+1. **Üstbilgi** sekmesinin altına, değeri `multipart/mixed`olan bir HTTP istek üstbilgi anahtarı **Içerik Türü** ekleyin.
 
-   [![çok parçalı/karma içerik türünü belirtin](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
+   [![İçerik türünü çok parçalı/karışık belirtin](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
-1. Metin olmayan verileri dosyalara serileştirme. JSON verileri bir JSON dosyası olarak kaydedilir.
-1. **Gövde** sekmesinde `form-data`' yi seçin. 
-1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `File`öğesini seçin.
-1. Sonra, **Dosya Seç** düğmesini kullanarak her bir dosyayı seçin.
+1. Metin dışı verileri dosyalara serileştirin. JSON verileri JSON dosyası olarak kaydedilir.
+1. **Gövde** sekmesinin `form-data`altında. 
+1. Bir **anahtar** adı atayarak, seçerek `File`her dosyayı ekleyin.
+1. Ardından, **Dosya Seç** düğmesini kullanarak her dosyayı seçin.
 
-   [![Postman istemci formu gövdesi örneği](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
+   [![Postacı istemci formu vücut örneği](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
    >[!NOTE]
-   > * Postman istemcisi, çok parçalı öbeklerin el ile atanmış bir **Içerik türü** veya **Content-Disposition**olmasını gerektirmez.
-   > * Her bölüm için bu üst bilgileri belirtmeniz gerekmez.
-   > * Tüm istek için `multipart/mixed` veya başka bir uygun **Içerik türü** seçmelisiniz.
+   > * Postacı istemcisi, çok parçalı parçaların el ile atanmış bir **İçerik Türü** veya **İçerik-Disposition'a**sahip olduğunu gerektirmez.
+   > * Her bölüm için bu başlıkları belirtmeniz gerekmez.
+   > * İsteğin `multipart/mixed` tamamı için uygun bir **İçerik Türü** seçmeniz gerekir.
 
-1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin. `200` veya `201` durum kodu başarılı bir isteği gösterir. Uygun yanıt iletisi, istemci arabiriminde görüntülenir.
+1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder'i** seçin. Bir durum `200` kodu `201` veya başarılı bir istek gösterir. Uygun yanıt iletisi istemci arabiriminde görünür.
 
-1. API uç noktasını çağırarak HTTP POST isteği verilerinizi doğrulayın: 
+1. API bitiş noktasını arayarak HTTP POST istek verilerinizi doğrulayın: 
 
    ```URL
    YOUR_MANAGEMENT_API_URL/spaces/blobs?includes=description
@@ -111,8 +111,8 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dijital TWINS yönetim API 'Leri ve bunların nasıl kullanılacağı hakkında bilgi edinmek için [Azure Digital TWINS yönetim API 'Lerini nasıl kullanacağınızı](how-to-navigate-apis.md)okuyun.
+- Digital Twins yönetim API'leri ve bunları nasıl kullanacağıhakkında bilgi edinmek için [Azure Digital Twins yönetim API'lerini nasıl kullanacağınızı](how-to-navigate-apis.md)okuyun.
 
-- [Azure dijital TWINS 'in varlıklarına blob eklemek](./how-to-add-blobs.md)için çok parçalı istekleri kullanın.
+- [Azure Digital Twins'in varlıklarına blob eklemek için](./how-to-add-blobs.md)çok parçalı istekleri kullanın.
 
-- Yönetim API 'Lerinde kimlik doğrulama hakkında bilgi edinmek için, [API 'Lerle kimlik doğrulaması](./security-authenticating-apis.md)' nı okuyun.
+- Yönetim API'leri ile kimlik doğrulama hakkında bilgi edinmek için [API'lerle Kimlik Doğrula'yı](./security-authenticating-apis.md)okuyun.

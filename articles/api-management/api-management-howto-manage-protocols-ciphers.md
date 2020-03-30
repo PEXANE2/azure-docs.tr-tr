@@ -1,6 +1,6 @@
 ---
-title: Azure API Management protokolleri ve şifrelemeleri yönetme | Microsoft Docs
-description: Azure API Management protokolleri (TLS, SSL) ve şifrelemeleri (DES) yönetmeyi öğrenin.
+title: Azure API Yönetimi'nde protokolleri ve şifreleri yönetme | Microsoft Dokümanlar
+description: Azure API Yönetimi'nde protokolleri (TLS) ve şifreleri (DES) nasıl yöneteceğimiz öğrenin.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: f7c7fdd06480ce3da70c86d38ab0685b9b3aaaf2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7f87389016286c9f1b91abc77155be9e94005371
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072398"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335877"
 ---
-# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management protokolleri ve şifrelemeleri yönetme
+# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management'taki protokolleri ve şifrelemeleri yönetme
 
-Azure API Management, hem istemci hem de arka uç tarafı ve 3DES şifresi için TLS protokolünün birden çok sürümünü destekler.
+Azure API Yönetimi, hem istemci hem de arka uç tarafları için TLS protokolünün birden çok versiyonunu ve 3DES şifresini destekler.
 
-Bu kılavuzda, Azure API Management örneği için protokollerin ve şifre yapılandırmasının nasıl yönetileceği gösterilmektedir.
+Bu kılavuz, bir Azure API Yönetimi örneği için protokolleri ve şifreleme yapılandırmasını nasıl yöneteceğimiz gösterilmektedir.
 
-![APıM 'de protokolleri ve şifrelemeleri yönetme](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
+![APIM'de protokolleri ve şifreleri yönetme](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
+Bu makaledeki adımları izlemek için şunları yapmış olmalısınız:
 
-* Bir API Management örneği
+* API Yönetimi örneği
 
-## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS protokollerini ve 3DES şifre yönetimini yönetme
+## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS protokolleri ve 3DES şifresi nasıl yönetilir?
 
-1. Azure portal **API Management örneğine** gidin.
-2. Menüden **protokol ayarları** ' nı seçin.  
-3. İstenen protokolleri veya şifrelemeleri etkinleştirin veya devre dışı bırakın.
-4. **Kaydet**’e tıklayın. Değişiklikler bir saat içinde uygulanır.  
+1. Azure portalındaki **API Yönetimi örneğinize** gidin.
+2. Menüden **Protokol ayarlarını** seçin.  
+3. İstenilen protokolleri veya şifreleri etkinleştirin veya devre dışı.
+4. **Kaydet**'e tıklayın. Değişiklikler bir saat içinde uygulanacaktır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [TLS (Aktarım Katmanı Güvenliği)](https://docs.microsoft.com/dotnet/framework/network-programming/tls)hakkında daha fazla bilgi edinin.
-* API Management hakkında daha fazla [videoya](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
+* [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls)hakkında daha fazla bilgi edinin.
+* API Yönetimi hakkında daha fazla [video](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid ile Key Vault izleme
-description: Key Vault olaylarına abone olmak için Azure Event Grid kullanma
+title: Azure Olay Izgarası ile Anahtar Kasası İzleme
+description: Key Vault etkinliklerine abone olmak için Azure Olay Kılavuz'u'nun kullanımını
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,43 +10,43 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 039b7e57c1f98368ab33f9f17e19a741dc9eb5f4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78184919"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid ile Key Vault izleme (Önizleme)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)
 
-Event Grid ile tümleştirme Key Vault Şu anda önizleme aşamasındadır. Anahtar Kasası 'nda depolanan bir gizli dizi durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Bir durum değişikliği, süresi dolacak (30 gün sonra), süresi dolan bir gizli dizi veya yeni sürümü bulunan gizli anahtar olarak tanımlanır. Üç gizli dizi türü (anahtar, sertifika ve gizli) için bildirimler desteklenir.
+Olay Grid ile Key Vault tümleştirmesi şu anda önizlemede. Anahtar kasasında saklanan bir sırrın durumu değiştiğinde kullanıcılara bilgi verilmesine olanak tanır. Durum değişikliği, süresi dolmak üzere olan bir sır (son kullanma tarihinden itibaren 30 gün içinde), süresi dolmuş bir sır veya yeni sürümü bulunan bir sır olarak tanımlanır. Her üç gizli tür (anahtar, sertifika ve gizli) için bildirimler desteklenir.
 
-Uygulamalar, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gerekmeden modern sunucusuz mimariler kullanarak bu olaylara tepki verebilir. Olaylar, [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), hatta kendi web kancasına dahil olmak üzere olay işleyicisine [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir ve yalnızca kullandığınız kadar ödersiniz. Fiyatlandırma hakkında bilgi için bkz. [Event Grid fiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/).
+Uygulamalar karmaşık kod veya pahalı ve verimsiz yoklama hizmetleri gerek kalmadan, modern sunucusuz mimarileri kullanarak bu olaylara tepki verebilir. Etkinlikler Azure [Etkinlik Izgarası](https://azure.microsoft.com/services/event-grid/) aracılığıyla [Azure İşlevleri,](https://azure.microsoft.com/services/functions/) [Azure Mantık Uygulamaları](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi Webhook'unuz gibi etkinlik işleyicilerine itilir ve yalnızca kullandığınız kadar ını ödler. Fiyatlandırma hakkında daha fazla bilgi için [Olay Ağı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/event-grid/)bakın.
 
-## <a name="key-vault-events-and-schemas"></a>Key Vault olayları ve şemaları
+## <a name="key-vault-events-and-schemas"></a>Anahtar Vault olaylar ve şemalar
 
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../event-grid/concepts.md#event-subscriptions) kullanır. Key Vault olaylar, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. Keykasası" ile başladığı için bir Key Vault olayını tanımlayabilirsiniz.
+Olay [ızgarası,](../event-grid/concepts.md#event-subscriptions) olay iletilerini abonelere yönlendirmek için olay aboneliklerini kullanır. Anahtar Vault olayları, verilerinizdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft.KeyVault" ile başladığı için bir Key Vault olayını tanımlayabilirsiniz.
 
-Daha fazla bilgi için bkz. [Key Vault olay şeması](../event-grid/event-schema-key-vault.md).
+Daha fazla bilgi için [Key Vault olay şemasına](../event-grid/event-schema-key-vault.md)bakın.
 
 > [!WARNING]
-> Bildirim olayları yalnızca yeni parolalar, anahtarlar ve sertifikalar sürümlerinde tetiklenir ve bu bildirimleri almak için öncelikle anahtar kasasındaki olaya abone olmanız gerekir.
+> Bildirim olayları yalnızca sırların, anahtarların ve sertifikaların yeni sürümlerinde tetiklenir ve bu bildirimleri almak için önce anahtar kasanızdaki etkinliğe abone olmalısınız.
 > 
-> Yalnızca sertifika, sertifika için belirttiğiniz ilkeye göre otomatik olarak yenilendiğinde, sertifikalarla ilgili bildirim olayları alırsınız.
+> Sertifikalar üzerinde bildirim olayları yalnızca sertifikanız için belirlediğiniz ilkeye göre otomatik olarak yenilendiğinde alırsınız.
 
-## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
+## <a name="practices-for-consuming-events"></a>Etkinlikleri tüketme uygulamaları
 
-Key Vault olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
+Anahtar Kasa olaylarını işleyen uygulamalar önerilen birkaç uygulamayı izlemelidir:
 
-* Aynı olay işleyicisine olayları yönlendirmek için birden çok abonelik yapılandırılabilir. Olayların belirli bir kaynaktan olduğunu varsaymamak, ancak beklediğiniz anahtar kasasından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
-* Benzer şekilde, eventType için hazırlanmakta olan bir olay olduğunu ve aldığınız tüm olayların istediğiniz tür olacağını kabul edin.
-* Anladığınızı alanları yoksayın.  Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
-* Olayları belirli bir olayla sınırlamak için "konu" önekini ve sonek eşleşmelerini kullanın.
+* Olayları aynı olay işleyicisine yönlendirmek için birden çok abonelik yapılandırılabilir. Olayların belirli bir kaynaktan geldiğini varsaymamak, ancak beklediğiniz anahtar kasasından geldiğinden emin olmak için iletinin konusunu kontrol etmek önemlidir.
+* Benzer şekilde, eventType'ın işlemeye hazır olup olmadığını denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını varsaymayın.
+* Anlamadığınız alanları yoksay.  Bu uygulama, gelecekte eklenebilir yeni özelliklere karşı esnek tutmanıza yardımcı olacaktır.
+* Olayları belirli bir olayla sınırlamak için "özne" öneki ve sonek eşleşmelerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault genel bakış](key-vault-overview.md)
-- [Azure Event Grid genel bakış](../event-grid/overview.md)
-- Nasıl yapılır: [Key Vault olaylarını Automation runbook 'A yönlendirme (Önizleme)](event-grid-tutorial.md).
-- Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](event-grid-logicapps.md)
-- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault'a genel bakış](key-vault-overview.md)
+- [Azure Event Grid’e genel bakış](../event-grid/overview.md)
+- Nasıl yapılır: [Route Key Vault Events to Automation Runbook (önizleme)](event-grid-tutorial.md).
+- Nasıl yapılsın: [Önemli bir kasa gizli değiştiğinde e-posta alın](event-grid-logicapps.md)
+- [Azure Anahtar Kasası için Azure Olay Izgara olay şeması (önizleme)](../event-grid/event-schema-key-vault.md)
 - [Azure Otomasyonu’na genel bakış](../automation/index.yml)

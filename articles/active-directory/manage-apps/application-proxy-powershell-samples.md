@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu için PowerShell örnekleri
-description: Dizininizde uygulama proxy 'Si uygulamaları ve bağlayıcılar hakkında bilgi almak, uygulamalara Kullanıcı ve grupları atamak ve sertifika bilgilerini almak için Azure AD Uygulama Ara Sunucusu için bu PowerShell örneklerini kullanın.
+title: Azure AD Application Proxy için PowerShell örnekleri
+description: Dizininizdeki Uygulama Proxy uygulamaları ve bağlayıcıları hakkında bilgi almak, kullanıcıları ve grupları uygulamalara atamak ve sertifika bilgilerini almak için Azure AD Application Proxy için bu PowerShell örneklerini kullanın.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,39 +12,39 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25097f8b72c7c8dde742701ce576c1b0e2fbabd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481271"
 ---
-# <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu için Azure AD PowerShell örnekleri
+# <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD Uygulama Proxy için Azure AD PowerShell örnekleri
 
-Aşağıdaki tablo Azure AD Uygulama Ara Sunucusu için PowerShell betiği örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, Graph modülü [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) veya [Graf modülü önizleme sürümü Için azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)gerektirir.
+Aşağıdaki tablo, Azure AD Application Proxy için PowerShell komut dosyası örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, [Grafik modülü için AzureAD V2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) veya [Graph modülü önizleme sürümü gerektirir.](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)
 
 
-Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulama proxy 'Si uygulama yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) ve [uygulama proxy Bağlayıcısı yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
+Bu örneklerde kullanılan cmdlets hakkında daha fazla bilgi için, [Uygulama Proxy Uygulama Yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) ve Uygulama Proxy Bağlayıcı [Yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)bakın.
 
 | | |
 |---|---|
-|**Uygulama proxy 'Si uygulamaları**||
-| [Tüm uygulama proxy uygulamaları için temel bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-basic.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında temel bilgileri (AppID, DisplayName, ObjId) listeler. |
-| [Tüm uygulama proxy uygulamaları için genişletilmiş bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-extended.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında genişletilmiş bilgileri (AppID, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) listeler.  |
-| [Tüm uygulama proxy uygulamalarını bağlayıcı grubuna göre Listele](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Dizininizdeki tüm uygulama proxy uygulamalarıyla ilgili bilgileri ve uygulamaların hangi bağlayıcı gruplarına atandığını listeler. |
-| [Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür ilkesi ve ayrıntıları ile dizininizdeki tüm uygulama proxy uygulamalarını listeler. Bu örnek, [Graf modülü önizleme sürümü Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)'i gerektirir. |
+|**Uygulama Proxy uygulamaları**||
+| [Tüm Uygulama Proxy uygulamaları için temel bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-basic.md) | Dizininizdeki tüm Uygulama Proxy uygulamaları hakkında temel bilgileri (AppId, DisplayName, ObjId) listeler. |
+| [Tüm Uygulama Proxy uygulamaları için genişletilmiş bilgileri listele](scripts/powershell-get-all-app-proxy-apps-extended.md) | Dizininizdeki tüm Uygulama Proxy uygulamaları hakkında genişletilmiş bilgileri (AppId, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) listeler.  |
+| [Bağlayıcı grubuna göre tüm Uygulama Proxy uygulamalarını listele](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Dizininizdeki tüm Uygulama Proxy uygulamaları ve uygulamaların atandığı bağlayıcı grupları hakkındaki bilgileri listeler. |
+| [Bir belirteç ömür boyu ilkesi ile tüm Uygulama Proxy uygulamaları alın](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür boyu ilkesi ve ayrıntıları ile dizininizdeki tüm Uygulama Proxy uygulamaları listeler. Bu [örnek, Grafik modülü önizleme sürümü için AzureAD V2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)gerektirir. |
 |**Bağlayıcı grupları**||
-| [Dizindeki tüm bağlayıcı gruplarını ve bağlayıcıları al](scripts/powershell-get-all-connectors.md) | Dizininizdeki tüm bağlayıcı gruplarını ve bağlayıcıları listeler. |
-| [Bir bağlayıcı grubuna atanan tüm uygulamaları başka bir bağlayıcı grubuna Taşı](scripts/powershell-move-all-apps-to-connector-group.md) | Bir bağlayıcı grubuna şu anda atanmış olan tüm uygulamaları farklı bir bağlayıcı grubuna taşırlar. |
-|**Atanan kullanıcılar ve Grup**||
-| [Uygulama proxy 'Si uygulamasına atanan kullanıcıları ve grupları görüntüleme](scripts/powershell-display-users-group-of-app.md) | Belirli bir uygulama proxy 'Si uygulamasına atanan kullanıcıları ve grupları listeler. |
-| [Bir uygulamaya Kullanıcı atama](scripts/powershell-assign-user-to-app.md) | Uygulamaya belirli bir Kullanıcı atar. |
-| [Bir uygulamaya Grup atama](scripts/powershell-assign-group-to-app.md) | Uygulamaya belirli bir grup atar. |
-|**Dış URL yapılandırması**||
-| [Varsayılan etki alanlarını (. msappproxy.net) kullanarak tüm uygulama proxy uygulamalarını al](scripts/powershell-get-all-default-domain-apps.md)  | Varsayılan etki alanlarını (. msappproxy.net) kullanan tüm uygulama proxy uygulamalarını listeler. |
-| [Joker bir yayımlama kullanarak tüm uygulama proxy uygulamalarını al](scripts/powershell-get-all-wildcard-apps.md) | Joker bir yayımlama kullanan tüm uygulama proxy uygulamalarını listeler. |
-|**Özel etki alanı yapılandırması**||
-| [Özel etki alanları ve sertifika bilgilerini kullanarak tüm uygulama proxy uygulamalarını alın](scripts/powershell-get-all-custom-domains-and-certs.md) | Özel etki alanları kullanan tüm uygulama proxy uygulamalarını ve özel etki alanlarıyla ilişkili sertifika bilgilerini listeler. |
-| [Hiçbir sertifika karşıya yüklemeden yayınlanan tüm Azure AD proxy uygulama uygulamalarını alın](scripts/powershell-get-all-custom-domain-no-cert.md) | Özel etki alanları kullanan ancak karşıya yüklenen geçerli bir SSL sertifikasına sahip olmayan tüm uygulama proxy uygulamalarını listeler. |
-| [Aynı sertifikayla yayınlanan tüm Azure AD proxy uygulama uygulamalarını alın](scripts/powershell-get-custom-domain-identical-cert.md) | Aynı sertifikayla yayınlanan tüm Azure AD proxy uygulama uygulamalarını listeler. |
-| [Aynı sertifikayla yayınlanan tüm Azure AD proxy uygulama uygulamalarını alın ve değiştirin](scripts/powershell-get-custom-domain-replace-cert.md) | Aynı sertifikayla yayınlanan Azure AD proxy uygulama uygulamaları için, sertifikayı toplu olarak değiştirmenize izin verir. |
+| [Tüm bağlayıcı gruplarını ve bağlayıcıları dizine alma](scripts/powershell-get-all-connectors.md) | Dizininizdeki tüm bağlayıcı gruplarını ve bağlayıcıları listeler. |
+| [Bağlayıcı grubuna atanan tüm uygulamaları başka bir bağlayıcı grubuna taşıma](scripts/powershell-move-all-apps-to-connector-group.md) | Şu anda bir bağlayıcı grubuna atanan tüm uygulamaları farklı bir bağlayıcı grubuna taşır. |
+|**Kullanıcılar ve atanan grup**||
+| [Uygulama Proxy uygulamasına atanan kullanıcıları ve grupları görüntüleme](scripts/powershell-display-users-group-of-app.md) | Belirli bir Uygulama Proxy uygulamasına atanan kullanıcıları ve grupları listeler. |
+| [Bir uygulamaya kullanıcı atama](scripts/powershell-assign-user-to-app.md) | Bir uygulamaya belirli bir kullanıcı atar. |
+| [Bir uygulamaya grup atama](scripts/powershell-assign-group-to-app.md) | Bir uygulamaya belirli bir grup atar. |
+|**Harici URL yapılandırması**||
+| [Varsayılan etki alanlarını kullanarak tüm Uygulama Proxy uygulamalarını edinin (.msappproxy.net)](scripts/powershell-get-all-default-domain-apps.md)  | Varsayılan etki alanlarını (.msappproxy.net) kullanarak tüm Uygulama Proxy uygulamalarını listeler. |
+| [Joker karakter yayımlamayı kullanarak tüm Application Proxy uygulamalarını edinin](scripts/powershell-get-all-wildcard-apps.md) | Joker karakter yayımlamayı kullanarak tüm Uygulama Proxy uygulamalarını listeler. |
+|**Özel Etki Alanı yapılandırması**||
+| [Özel etki alanlarını ve sertifika bilgilerini kullanarak tüm Uygulama Proxy uygulamalarını edinin](scripts/powershell-get-all-custom-domains-and-certs.md) | Özel etki alanlarını kullanan tüm Uygulama Proxy uygulamalarını ve özel etki alanlarıyla ilişkili sertifika bilgilerini listeler. |
+| [Sertifika yüklenmeden tüm Azure AD Proxy uygulama uygulamalarını yayından edinin](scripts/powershell-get-all-custom-domain-no-cert.md) | Özel etki alanları kullanan ancak geçerli bir TLS/SSL sertifikası yüklenen olmayan tüm Uygulama Proxy uygulamalarını listeler. |
+| [Tüm Azure AD Proxy uygulama uygulamalarını aynı sertifikayla yayımlanın](scripts/powershell-get-custom-domain-identical-cert.md) | Aynı sertifikayla yayınlanan tüm Azure AD Proxy uygulama uygulamalarını listeler. |
+| [Tüm Azure AD Proxy uygulama uygulamalarını aynı sertifikayla yayınlatın ve değiştirin](scripts/powershell-get-custom-domain-replace-cert.md) | Aynı sertifikayla yayınlanan Azure AD Proxy uygulamaları için, sertifikayı toplu olarak değiştirmenize olanak tanır. |

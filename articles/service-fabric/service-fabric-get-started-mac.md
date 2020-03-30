@@ -1,15 +1,15 @@
 ---
-title: MacOS 'ta geliştirme ortamınızı ayarlama
-description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra, macOS 'ta uygulama oluşturmaya hazırlanın.
+title: macOS'ta geliştirme ortamınızı ayarlama
+description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra macOS'ta uygulama oluşturmaya hazır olacaksınız.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722586"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X’te geliştirme ortamınızı ayarlama
@@ -22,7 +22,7 @@ ms.locfileid: "76722586"
 
 Mac OS X kullanarak Linux kümelerinde çalışacak Service Fabric uygulamaları derleyebilirsiniz. Bu belgede Mac’inizi geliştirme için nasıl ayarlayacağınız ele alınmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Service Fabric, OS X üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM.
@@ -44,11 +44,11 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Bu ayarları doğrudan Docker yükleme yolunuzdaki daemon.json dosyasında güncelleştirebilirsiniz. Docker 'da Daemon yapılandırma ayarlarını doğrudan değiştirebilirsiniz. **Docker simgesi**’ni ve ardından **Tercihler** > **Daemon** > **Gelişmiş**’i seçin.
+    Bu ayarları doğrudan Docker yükleme yolunuzdaki daemon.json dosyasında güncelleştirebilirsiniz. Docker'daki daemon yapılandırma ayarlarını doğrudan değiştirebilirsiniz. **Docker simgesi**’ni ve ardından **Tercihler** > **Daemon** > **Gelişmiş**’i seçin.
     
     >[!NOTE]
     >
-    >Daemon. json dosyasının konumu makineden makineye değişebildiğinden, arka plan programının doğrudan Docker 'da değiştirilmesi önerilir. Örneğin, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Daemon.json dosyasının konumu makineden makineye değişebildiği için daemon'un doğrudan Docker'da değiştirilmesi önerilir. Örneğin, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -78,7 +78,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >[!TIP]
     > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin
 
-3. `Dockerfile` içinden yeniden kullanılabilir görüntünüzü derlemek için bir terminal açın ve doğrudan `cd` öğesini tutarak `Dockerfile` uygulayıp sonra şunu çalıştırın:
+3. `Dockerfile` içinden yeniden kullanılabilir görüntünüzü derlemek için bir terminal açın ve doğrudan `Dockerfile` öğesini tutarak `cd` uygulayıp sonra şunu çalıştırın:
 
     ```bash 
     docker build -t mysfcluster .
@@ -101,7 +101,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Kümenin başlaması biraz zaman alır. Çalışırken, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya kümelerin sistem [http://localhost:19080](http://localhost:19080)durumunu görüntülemek için panoya atlayabilirsiniz:
+5. Kümenin başlaması biraz zaman alacaktır. Çalışırken, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya kümeler durumunu [http://localhost:19080](http://localhost:19080)görüntülemek için panoya atlayabilirsiniz:
 
     ```bash 
     docker logs sftestcluster
@@ -109,7 +109,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
 
 
 
-6. Kapsayıcıyı durdurmak ve temizlemek için aşağıdaki komutu kullanın. Ancak, bu kapsayıcıyı bir sonraki adımda kullanacağız.
+6. Kapsayıcıyı durdurmak ve temizlemek için aşağıdaki komutu kullanın. Ancak, bir sonraki adımda bu kapsayıcıyı kullanarak olacaktır.
 
     ```bash 
     docker rm -f sftestcluster
@@ -123,7 +123,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac'inizde Service Fabric CLI'sını (sfctl) ayarlama
 
-Service Fabric CLI'sını ([) Mac'inize yüklemek için ](service-fabric-cli.md#cli-mac)Service Fabric CLI'sı`sfctl` talimatlarını izleyin.
+Service Fabric CLI'sını (`sfctl`) Mac'inize yüklemek için [Service Fabric CLI'sı](service-fabric-cli.md#cli-mac) talimatlarını izleyin.
 CLI kümeler, uygulamalar ve hizmetler de dahil olmak üzere Service Fabric varlıklarıyla etkileşimi destekleyen komutlar içerir.
 
 1. Uygulamaları dağıtmadan önce kümeye bağlanmak için aşağıdaki komutu çalıştırın. 
@@ -166,8 +166,8 @@ Service Fabric, Yeoman şablon oluşturucu kullanarak terminalden Service Fabric
     ```
 
     > [!IMPORTANT]
-    > Geçerli `brew cask install java` sürümleri JDK 'nin daha yeni bir sürümünü kurabilir.
-    > JDK 8 ' i yüklediğinizden emin olun.
+    > Geçerli sürümleri `brew cask install java` JDK daha yeni bir sürümünü yükleyebilirsiniz.
+    > JDK 8'i yüklediğinizden emin olun.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Uygulamanızı terminalden Mac’inize dağıtma
 
@@ -188,7 +188,7 @@ Service Fabric uygulamanızı oluşturup derledikten sonra [Service Fabric CLI](
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 ile geliştirmeyi ayarlama
 
-[C# Service Fabric uygulamaları oluşturmaya](https://www.microsoft.com/net/core#macos) başlamak amacıyla [Mac için .NET Core 2.0 SDK'sını](service-fabric-create-your-first-linux-application-with-csharp.md) yükleyin. .NET Core 2.0 Service Fabric uygulamaları paketleri NuGet.org üzerinde barındırılmaktadır ve şu anda önizleme sürümündedir.
+[C# Service Fabric uygulamaları oluşturmaya](service-fabric-create-your-first-linux-application-with-csharp.md) başlamak amacıyla [Mac için .NET Core 2.0 SDK'sını](https://www.microsoft.com/net/core#macos) yükleyin. .NET Core 2.0 Service Fabric uygulamaları paketleri NuGet.org üzerinde barındırılmaktadır ve şu anda önizleme sürümündedir.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Mac’inizde Eclipse için Service Fabric eklentisini yükleme
 
@@ -214,7 +214,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 ## <a name="next-steps"></a>Sonraki adımlar
 <!-- Links -->
 * [Linux üzerinde Yeoman kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-create-your-first-linux-application-with-java.md)
-* [Linux üzerinde Eclipse için Service Fabric eklentisi kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-get-started-eclipse.md)
+* [Eclipse için Service Fabric eklentisi kullanarak Linux'ta ilk Service Fabric Java uygulamanızı oluşturun ve dağıtın](service-fabric-get-started-eclipse.md)
 * [Azure portalında bir Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
 * [Azure Resource Manager’ı kullanarak bir Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-arm.md)
 * [Service Fabric uygulama modelini anlama](service-fabric-application-model.md)

@@ -1,72 +1,72 @@
 ---
-title: Yeni öneriler için Azure Advisor uyarıları oluşturun
-description: Yeni öneri için Azure Advisor uyarıları oluşturma
+title: Yeni öneriler için Azure Danışmanı uyarıları oluşturun
+description: Yeni öneri için Azure Danışmanı uyarıları oluşturun
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443165"
 ---
-# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Yeni önerilerle Azure Advisor uyarıları oluşturma 
+# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Yeni önerilerde Azure Danışmanı uyarıları oluşturma 
 
-Bu makalede, Azure Advisor 'ın Azure portal ve Azure Resource Manager şablonlarını kullanarak yeni önerilere yönelik bir uyarının nasıl ayarlanacağı gösterilmektedir. 
+Bu makalede, Azure portalı ve Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Danışmanı'nın yeni önerileri için nasıl bir uyarı oluşturabileceğiniz gösterilmektedir. 
 
-Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
+Azure Danışmanı kaynaklarınızdan biri için yeni bir öneri algıladığında, bir olay [Azure Etkinliği günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)depolanır. Öneriye özel uyarılar oluşturma deneyimini kullanarak Azure Danışmanı'ndan bu etkinlikler için uyarılar ayarlayabilirsiniz. Uyarı almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
 
-Aşağıdaki özellikleri kullanarak öneri türlerini de belirleyebilirsiniz:
+Bu özellikleri kullanarak da öneri türlerini belirleyebilirsiniz:
 
 * Kategori
 * Etki düzeyi
 * Öneri türü
 
-Ayrıca, bir uyarının tetiklendiği zaman gerçekleşecek eylemi de yapılandırabilirsiniz:  
+Ayrıca, bir uyarı tarafından tetiklendiğinde gerçekleşecek eylemi de yapılandırabilirsiniz:  
 
-* Mevcut bir eylem grubu seçiliyor
-* Yeni bir eylem grubu oluşturuluyor
+* Varolan bir eylem grubunu seçme
+* Yeni bir eylem grubu oluşturma
 
 Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
 
 > [!NOTE] 
-> Danışman uyarıları Şu anda yalnızca yüksek kullanılabilirlik, performans ve maliyet önerileri için kullanılabilir. Güvenlik önerileri desteklenmez. 
+> Danışman uyarıları şu anda yalnızca Yüksek Kullanılabilirlik, Performans ve Maliyet önerileri için kullanılabilir. Güvenlik önerileri desteklenmez. 
 
 ## <a name="in-the-azure-portal"></a>Azure portalında
-1. **Portalda** **Azure Danışmanı**' nı seçin.
+1. **Portalda**Azure **Danışmanı'nı**seçin.
 
     ![Portalda Azure Danışmanı](./media/advisor-alerts/create1.png)
 
-2. Sol menünün **izleme** bölümünde **Uyarılar**' ı seçin. 
+2. Sol menünün **İzleme** bölümünde **Uyarılar'ı**seçin. 
 
-    ![Advisor 'daki uyarılar](./media/advisor-alerts/create2.png)
+    ![Danışman'daki Uyarılar](./media/advisor-alerts/create2.png)
 
-3. **Yeni danışman uyarısı**' nı seçin.
+3. **Yeni Danışman Uyarısı'nı**seçin.
 
-    ![Yeni danışman uyarısı](./media/advisor-alerts/create3.png)
+    ![Yeni Danışman uyarısı](./media/advisor-alerts/create3.png)
 
-4. **Kapsam** bölümünde, bir abonelik ve isteğe bağlı olarak uyarılmak istediğiniz kaynak grubunu seçin. 
+4. **Kapsam** bölümünde, aboneliği ve isteğe bağlı olarak uyarı almak istediğiniz kaynak grubunu seçin. 
 
-    ![Advisor uyarı kapsamı](./media/advisor-alerts/create4.png)
+    ![Danışman uyarı kapsamı](./media/advisor-alerts/create4.png)
 
-5. **Koşul** bölümünde, uyarınızı yapılandırmak için kullanmak istediğiniz yöntemi seçin. Belirli bir kategori ve/veya etki düzeyi için tüm önerilere uyarı vermek istiyorsanız **Kategori ve etki düzeyi**' ni seçin. Belirli bir türün tüm önerilerini uyarmak istiyorsanız **öneri türü**' nü seçin.
+5. **Durum** bölümünde, uyarınızı yapılandırmak için kullanmak istediğiniz yöntemi seçin. Belirli bir kategori ve/veya etki düzeyi için tüm öneriler için uyarı yapmak istiyorsanız, **Kategori ve etki düzeyini**seçin. Belirli bir türdeki tüm öneriler için uyarı yapmak istiyorsanız, **Öneri türünü**seçin.
 
-    ![Azure Advisor uyarı koşulu](./media/advisor-alerts/create5.png)
+    ![Azure Danışmanı uyarı durumu](./media/advisor-alerts/create5.png)
 
-6. Seçtiğiniz yapılandırma ölçütü seçeneğine bağlı olarak, ölçütleri belirtebilirsiniz. Tüm önerileri istiyorsanız, kalan alanları boş bırakmanız yeterlidir. 
+6. Seçtiğiniz seçenegöre Yapılandır'a bağlı olarak, ölçütleri belirtebilirsiniz. Tüm önerileri istiyorsanız, kalan alanları boş bırakmanız gerekir. 
 
     ![Danışman uyarı eylem grubu](./media/advisor-alerts/create6.png)
 
-7. **Eylem grupları** bölümünde, önceden oluşturduğunuz bir eylem grubunu kullanmak Için **Varolanı Ekle** ' yi seçin veya yeni bir [eylem grubu](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)ayarlamak için **Yeni oluştur** ' u seçin. 
+7. Eylem **grupları** bölümünde, zaten oluşturduğunuz bir eylem grubunu kullanmak için **varolan ekle'yi** veya yeni bir [eylem grubu](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)kurmak için **yeni oluştur'u** seçin. 
 
-    ![Danışman uyarısı varolanı Ekle](./media/advisor-alerts/create7.png)
+    ![Danışman uyarısı varolan ekle](./media/advisor-alerts/create7.png)
 
-8. Uyarı ayrıntıları bölümünde, uyarıya bir ad ve kısa açıklama verin. Uyarınızın etkinleştirilmesini istiyorsanız, **oluşturma seçimi sonrasında kuralı etkinleştir** ' i **Evet**olarak ayarlayın. Ardından, uyarılarınızın kaydedileceği kaynak grubunu seçin. Bu işlem, önerinin hedefleme kapsamını etkilemez. 
+8. Uyarı ayrıntıları bölümünde, uyarınıza bir ad ve kısa açıklama verin. Uyarınızın etkinleştirilmesini istiyorsanız, **oluşturma seçiminde** **Evet**olarak ayarlanan kuralı etkinleştir'i bırakın. Ardından uyarınızı kaydetmek için kaynak grubunu seçin. Bu, önerinin hedefleme kapsamını etkilemez. 
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create8.png)
+    ![Azure Danışman Banner](./media/advisor-alerts/create8.png)
 
 
-## <a name="with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla
+## <a name="with-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonuyla
 
 Bu Kaynak Yöneticisi şablonu bir öneri uyarısı ve yeni bir eylem grubu oluşturur.
 
@@ -165,16 +165,16 @@ Bu Kaynak Yöneticisi şablonu bir öneri uyarısı ve yeni bir eylem grubu olu�
 }
   ```
 
-## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Web kancası kullanmak için öneri uyarılarını yapılandırma
-Bu bölümde, mevcut sistemlerinize Web kancaları aracılığıyla öneri verileri göndermek için Azure Advisor uyarılarını nasıl yapılandıracağınız gösterilmektedir. 
+## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Webhook kullanmak için öneri uyarılarını yapılandırma
+Bu bölümde, öneri verilerini webhook'lar aracılığıyla mevcut sistemlerinize göndermek için Azure Danışmanı uyarılarını nasıl yapılandırabileceğiniz gösterilmektedir. 
 
-Kaynaklarınızdan birinde yeni bir danışman önerisine sahip olduğunuzda, uyarıları bildirilecek şekilde ayarlayabilirsiniz. Bu uyarılar size e-posta veya kısa mesaj aracılığıyla bildirimde bulunabilir, ancak aynı zamanda bir Web Kancası aracılığıyla mevcut sistemlerinizle tümleştirme için de kullanılabilir. 
+Kaynaklarınızdan birinde yeni bir Danışman önerisi olduğunda, bildirimde bildirilecek uyarılar ayarlayabilirsiniz. Bu uyarılar sizi e-posta veya kısa mesaj yoluyla bilgilendirebilir, ancak bir webhook aracılığıyla mevcut sistemlerinizle tümleştirmek için de kullanılabilir. 
 
 
 ### <a name="using-the-advisor-recommendation-alert-payload"></a>Danışman önerisi uyarı yükünü kullanma
-Advisor uyarılarını bir Web kancası kullanarak kendi sistemlerinizle tümleştirebilmek istiyorsanız, bildirimden gönderilen JSON yükünü ayrıştırmanıza gerek duyarsınız. 
+Bir webhook kullanarak Danışman uyarılarını kendi sistemlerinize entegre etmek istiyorsanız, bildirimden gönderilen JSON yükünü ayrıştırman gerekir. 
 
-Bu uyarı için eylem grubunuzu ayarlarken, ortak uyarı şemasını kullanmak istiyorsanız bu seçeneği belirleyin. Ortak uyarı şemasını seçerseniz, yükünüzü şöyle görünecektir: 
+Eylem grubunuzu bu uyarı için ayarladığınızda, ortak uyarı şemasını kullanmak ister misiniz' seçeneğini belirlersiniz. Ortak uyarı şemasını seçerseniz, yükünüz aşağıdaki gibi görünür: 
 
 ```json
 {  
@@ -223,7 +223,7 @@ Bu uyarı için eylem grubunuzu ayarlarken, ortak uyarı şemasını kullanmak i
 }
   ```
 
-Ortak şemayı kullanmıyorsanız, yükünüze aşağıdakiler gibi görünür: 
+Ortak şemayı kullanmıyorsanız, yükünüz aşağıdaki gibi görünür: 
 
 ```json
 {  
@@ -268,32 +268,32 @@ Ortak şemayı kullanmıyorsanız, yükünüze aşağıdakiler gibi görünür:
 }
 ```
 
-Her iki şemada da **eventSource** `Recommendation` ve **OperationName** `Microsoft.Advisor/recommendations/available/action`' i arayarak Advisor öneri olaylarını belirleyebilirsiniz.
+Her iki şemada, **eventSource** ve `Recommendation` **operationName'i** arayarak `Microsoft.Advisor/recommendations/available/action`Danışman tavsiye olaylarını tanımlayabilirsiniz.
 
 Kullanmak isteyebileceğiniz diğer önemli alanlardan bazıları şunlardır: 
 
-* *Alerttargetıds* (ortak şemada) veya *RESOURCEID* (eski şema)
+* *alertTargetIDs* (ortak şemada) veya *resourceId* (eski şema)
 * *recommendationType*
 * *recommendationName*
-* *recommendationCategory*
-* *recommendationImpact*
-* *recommendationResourceLink*
+* *tavsiyeKategori*
+* *tavsiyeEtki*
+* *tavsiyeResourceLink*
 
 
 ## <a name="manage-your-alerts"></a>Uyarılarınızı yönetme 
 
-Azure Advisor 'da, öneriler uyarılarınızı düzenleyebilir, silebilir veya devre dışı bırakabilir ve etkinleştirebilirsiniz. 
+Azure Advisor'dan, önerilerinizi düzenleyebilir, silebilir veya devre dışı edebilir ve önerilerinizi etkinleştirebilirsiniz. 
 
-1. **Portalda** **Azure Danışmanı**' nı seçin.
+1. **Portalda**Azure **Danışmanı'nı**seçin.
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create1.png)
+    ![Azure Danışman Banner](./media/advisor-alerts/create1.png)
 
-2. Sol menünün **izleme** bölümünde **Uyarılar**' ı seçin.
+2. Sol menünün **İzleme** bölümünde **Uyarılar'ı**seçin.
 
-    ![Azure Danışmanı başlığı](./media/advisor-alerts/create2.png)
+    ![Azure Danışman Banner](./media/advisor-alerts/create2.png)
 
-3. Bir uyarıyı düzenlemek için uyarı adına tıklayarak uyarıyı açın ve düzenlemek istediğiniz alanları düzenleyin.
+3. Bir uyarıyı yeniden yapmak için, uyarıyı açmak ve yeniden yapmak istediğiniz alanları yeniden yapmak için Uyarı adını tıklatın.
 
-4. Bir uyarıyı silmek, etkinleştirmek veya devre dışı bırakmak için, satırın sonundaki elipsi tıklatın ve ardından istediğiniz eylemi seçin.
+4. Bir uyarıyı silmek, etkinleştirmek veya devre dışı katmak için satırın sonundaki elipsi tıklatın ve ardından yapmak istediğiniz eylemi seçin.
  
 

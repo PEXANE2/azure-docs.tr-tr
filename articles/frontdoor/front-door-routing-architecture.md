@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı hizmeti - Yönlendirme mimarisi | Microsoft Docs
-description: Bu makale ön kapısı'nın mimari genel görünüm yönünü anlamanıza yardımcı olur.
+title: Azure Ön Kapı - yönlendirme mimarisi | Microsoft Dokümanlar
+description: Bu makale, Front Door mimarisinin küresel görünüm yönünü anlamanıza yardımcı olur.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,37 +11,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 6af5e7c7d8788dffa8f144b2ee77c291ceda86c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1f06bcb92ea97e0e9e9a6eefeac957031575a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471566"
 ---
 # <a name="routing-architecture-overview"></a>Yönlendirme mimarisine genel bakış
 
-Azure ön kapısı istemcinizi aldığında hizmet ardından, ya da yanıtlar (önbelleğe alma etkinse) uygulamaları veya ileten bunları uygun uygulama arka uca (ters Ara sunucu) ister.
+Azure Ön Kapı, istemci isteklerinizi aldığında bunlara yanıt verir (önbelleğe alma etkinse) veya uygun uygulama arka ucuna (ters proxy olarak) iletir.
 
-</br>Trafik yönlendirme Azure ön kapısı yanı sıra arka uçları için yönlendirme en iyi duruma getirme fırsatları vardır.
+</br>Azure Ön Kapı'ya yönlendirmenin yanı sıra arka uçlara yönlendirme yaparken trafiği en iyi duruma getirmek için fırsatlar vardır.
 
-## <a name = "anycast"></a>(Anycast) yönlendirme trafiği için ön kapı ortam seçme
+## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>Trafik yönlendirmesi için Ön Kapı ortamının seçilmesi (Anycast)
 
-Azure ön kapısı yönlendirme ortamları yararlanır [Anycast](https://en.wikipedia.org/wiki/Anycast) DNS (etki alanı adı sistemi) ve HTTP (Köprü Metni Aktarım Protokolü) trafiği için bu nedenle kullanıcı trafiğinin gider ağ topolojisi (en az açısından en yakın ortamına atlama). Bu mimari, daha iyi gidiş dönüş süreleri (bölme TCP avantajlarını en üst düzeye), son kullanıcılar için genellikle sunar. Ön kapı "kademesini" birincil ve geri dönüş, ortamlarına düzenler.  Dış halkası, düşük gecikme sunan kullanıcılara yakın olan ortamlar sahiptir.  Bir sorun ortaya çıkar, dış halkası ortam için bir yük devretme işleyebilir ortamları iç halkanın sahiptir. Dış halkası tüm trafiği tercih edilen hedef olan, ancak iç halkanın dış halkası taşmasından trafiği işlemek gerekli değildir. VIP (sanal Internet Protokolü adresleri) açısından her ön uç ana bilgisayar veya etki alanı ön kapısı tarafından sunulan ortamlarının duyurulur yalnızca bir geri dönüş VIP yanı sıra, iç ve dış halkası ortamlarda tarafından bildirilen bir birincil VIP atanır İç halka. 
+Azure Ön Kapı ortamlarına yönlendirme, [Anycast'ı](https://en.wikipedia.org/wiki/Anycast) hem DNS (Etki Alanı Adı Sistemi) hem de HTTP (Hypertext Transfer Protocol) trafiği için kullandığından, kullanıcı trafiği ağ topolojisi (en az atlama) açısından en yakın ortama gider. Bu mimari genellikle son kullanıcılar için daha iyi gidiş-dönüş süreleri sunar (Split TCP'nin avantajlarını en üst düzeye çıkarır). Ön Kapı birincil ve geri dönüş "halkalar" içine ortamlarını düzenler.  Dış halka, kullanıcılara daha yakın ortamlara sahiptir ve daha düşük gecikmeler sunar.  İç halka, bir sorun olması durumunda dış halka ortamının arızasını kaldırabilecek ortamlara sahiptir. Dış halka tüm trafik için tercih edilen hedeftir, ancak iç halka dış halkadan trafik taşma işlemek için gereklidir. VIP'ler (Sanal İnternet Protokolü adresleri) açısından, frontend ana bilgisayar veya Front Door tarafından sunulan etki alanı, hem iç hem de dış halkadaki ortamlar tarafından duyurulan birincil VIP'nin yanı sıra yalnızca ortamlar tarafından duyurulan bir geri dönüş VIP'si olarak atanır. iç halka. 
 
-</br>Bu genel bir strateji, son kullanıcılarınızın gelen istekleri her zaman en yakın ön kapısı ortam ulaşmak ve tercih edilen ön kapısı ortamı sağlıksız olsa bile, ardından trafiği otomatik olarak sonraki en yakın ortama hareket etmesini sağlar.
+</br>Bu genel strateji, son kullanıcılarınızdan gelen isteklerin her zaman en yakın Ön Kapı ortamına ulaşmasını ve tercih edilen Ön Kapı ortamı sağlıksız olsa bile trafiğin otomatik olarak bir sonraki en yakın ortama taşınmasını sağlar.
 
-## <a name = "splittcp"></a>(Bölme TCP) ön kapısı ortamla bağlantı kuruluyor
+## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>Ön Kapı ortamına bağlanma (Split TCP)
 
-[Bölünmüş TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) yüksek bir gidiş dönüş süresi daha küçük parçalara ödemesi gerekir bir bağlantı bölerek gecikme süreleri ve TCP sorunları azaltmak için bir tekniktir.  Son kullanıcılara yaklaştırarak ön kapısı ortamları yerleştirme ve ön kapısı ortam içindeki TCP bağlantılarını sonlandıran bir TCP bağlantı uygulama arka ucuna büyük gidiş dönüş süresini (RTT) ile iki TCP bağlantıları ayrılır. Son kullanıcı ve ön kapısı ortamlar arasında kısa bağlantı üzerinde üç kısa gidiş dönüş yerine üç uzun gecikme süresi kaydetme başvurular, bağlantı kuran anlamına gelir.  Ön kapısı ortamı ve arka uç arasındaki uzun bağlantı, önceden oluşturulmuş ve TCP bağlantı süresi tekrar kaydetmeyi birden çok son kullanıcı çağrıları arasında yeniden kullanılabilir.  Geçerli bağlantının güvenliğini sağlamak için daha fazla gidiş dönüş olarak SSL/TLS (Aktarım Katmanı Güvenliği) bağlantı kurarken çarpılır.
+[Split TCP,](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) yüksek gidiş-dönüş süresine daha küçük parçalara ayrılacak bir bağlantıyı kırarak gecikme sürelerini ve TCP sorunlarını azaltan bir tekniktir.  Ön Kapı ortamlarını son kullanıcılara yaklaştırarak ve TCP bağlantılarını Ön Kapı ortamı içinde sonlandırmak, uygulama arka ucuna büyük bir gidiş-dönüş süresine (RTT) sahip bir TCP bağlantısı iki TCP bağlantısına bölünür. Son kullanıcı ile Ön Kapı ortamı arasındaki kısa bağlantı, bağlantının üç uzun gidiş-dönüş yerine üç kısa gidiş dönüş üzerinden kurulduğu ve gecikmeden tasarruf ettiği anlamına gelir.  Ön Kapı ortamı ile arka uç arasındaki uzun bağlantı önceden kurulabilir ve birden çok son kullanıcı araması arasında yeniden kullanılabilir ve yine TCP bağlantı süresini kurtarır.  Bağlantıyı güvenli hale getirmek için daha fazla gidiş-dönüş yolculuk olduğu için, bir SSL/TLS (Transport Layer Security) bağlantısı kurarken etki çarpılır.
 
-## <a name="processing-request-to-match-a-routing-rule"></a>Yönlendirme kural ile eşleştirilecek istek işleme
-Bir SSL yapılması ve bağlantı kurduktan sonra bir istek yönlendirme kuralı eşleşen bir ön kapısı ortamda gölünüzdeki olduğunda el sıkışması, ilk adımdır. Bu eşleşme, hangi belirli yönlendirme kuralı isteği eşleştirilecek kapı, tüm yapılandırmalardan önde temelde belirliyor. Ön kapısı nasıl yaptığını okuma [yol ile eşleşen](front-door-route-matching.md) daha fazla bilgi için.
+## <a name="processing-request-to-match-a-routing-rule"></a>Yönlendirme kuralını eşleştirmek için işleme isteği
+Bir bağlantı kurduktan ve SSL el sıkışması yaptıktan sonra, bir istek Ön Kapı ortamına düştüğünde, yönlendirme kuralını eşleştirmek ilk adımdır. Bu maç temelde Ön Kapı, hangi özel yönlendirme kuralı isteği maç için tüm yapılandırmaları belirlemedir. Front Door'un daha fazla bilgi edinmek için [rota eşleştirmesini](front-door-route-matching.md) nasıl yaptığı hakkında bilgi edinin.
 
-## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Mevcut arka uçları yönlendirme kuralı için arka uç havuzundaki tanımlama
-Ön kapısı gelen isteğe göre yönlendirme kuralı için bir eşleşme olduğunda ve önbelleğe alma varsa, ardından sonraki adıma eşleşen bir rota ile ilişkili arka uç havuzu araştırma durumu almaktır. Arka uç sistem durumu kullanarak ön kapısı nasıl izlediğini hakkında okuyun [sistem durumu Araştırmalarının](front-door-health-probes.md) daha fazla bilgi için.
+## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Yönlendirme kuralı için arka uç havuzunda kullanılabilir arka uçları tanımlama
+Ön Kapı gelen isteği temel alan bir yönlendirme kuralı için bir eşleşme olduğunda ve önbelleğe alma yoksa, bir sonraki adım eşleşen rota ile ilişkili arka uç havuzu için sağlık sondası durumunu çekmektir. Daha fazla bilgi edinmek için [Sağlık Sondaları](front-door-health-probes.md) kullanarak Front Door'un arka uç durumunu nasıl izlediğini okuyun.
 
-## <a name="forwarding-the-request-to-your-application-backend"></a>Uygulama arka ucunuzu iletilmeden
-Son olarak, önbellek yok yapılandırılmış olduğu varsayılırsa, kullanıcı isteği göre "iyi" arka uç iletilir, [ön kapısı yönlendirme yöntemini](front-door-routing-methods.md) yapılandırma.
+## <a name="forwarding-the-request-to-your-application-backend"></a>İsteğini uygulama arka uçunuza iletme
+Son olarak, yapılandırılmış önbelleğe alma olmadığını varsayarsak, kullanıcı isteği Ön [Kapı yönlendirme yöntemi](front-door-routing-methods.md) yapılandırmanıza göre "en iyi" arka uca iletilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

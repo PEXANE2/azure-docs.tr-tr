@@ -1,42 +1,42 @@
 ---
-title: Bildirimleri olan yönetilen uygulamalar
-description: Yönetilen uygulama örneklerinde oluşturulan, güncelleştirme, silme ve hatalar hakkında bildirim almak için Web kancası uç noktaları ile yönetilen uygulamaları yapılandırın.
+title: Bildirimlerle yönetilen uygulamalar
+description: Yönetilen uygulama örneklerinde oluşturmalar, güncelleştirmeler, silmeler ve hatalar hakkında bildirimler almak için yönetilen uygulamaları webhook uç noktalarıyla yapılandırın.
 ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
 ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715678"
 ---
-# <a name="azure-managed-applications-with-notifications"></a>Bildirimleri olan Azure yönetilen uygulamalar
+# <a name="azure-managed-applications-with-notifications"></a>Bildirimlerle Azure yönetilen uygulamalar
 
-Azure yönetilen uygulama bildirimleri, yayımcıların yönetilen uygulama örneklerinin yaşam döngüsü olaylarına göre eylemleri otomatikleştirmesine olanak tanır. Yayımcılar, yeni ve mevcut yönetilen uygulama örnekleri hakkında olay bildirimleri almak için özel bildirim Web kancası uç noktaları belirtebilir. Yayımcılar, uygulama sağlama, güncelleştirme ve silme sırasında özel iş akışlarını ayarlayabilir.
+Azure yönetilen uygulama bildirimleri, yayıncıların yönetilen uygulama örneklerinin yaşam döngüsü olaylarını temel alan eylemleri otomatikleştirmesine olanak tanır. Yayıncılar, yeni ve varolan yönetilen uygulama örnekleri hakkında olay bildirimleri almak için özel bildirim webhook uç noktaları belirtebilir. Yayımcılar, uygulama sağlama, güncelleştirme ler ve silme sırasında özel iş akışları ayarlayabilir.
 
 ## <a name="getting-started"></a>Başlarken
-Yönetilen uygulamaları almaya başlamak için genel bir HTTPS uç noktası başlatın ve hizmet kataloğu uygulama tanımı veya Azure Market Teklifini yayımladığınızda bunu belirtin.
+Yönetilen uygulamaları almaya başlamak için, genel bir HTTPS bitiş noktası nı döndürün ve hizmet kataloğu uygulama tanımını veya Azure Marketi teklifini yayımladığınızda belirtin.
 
-Hızlıca kullanmaya başlamak için önerilen adımlar aşağıda verilmiştir:
-1. Gelen POST isteklerini günlüğe kaydeden ve `200 OK`döndüren bir genel HTTPS uç noktası çalıştırın.
-2. Bu makalenin ilerleyen kısımlarında açıklandığı gibi, uç noktayı Service Catalog uygulama tanımına veya Azure Marketi teklifine ekleyin.
-3. Uygulama tanımına veya Azure Market teklifine başvuran bir yönetilen uygulama örneği oluşturun.
+Hızlı bir şekilde başlamak için önerilen adımlar şunlardır:
+1. Gelen POST isteklerini ve döndürüğü `200 OK`ortak bir HTTPS bitiş noktasını döndürün.
+2. Bu makalede daha sonra açıklandığı gibi hizmet kataloğu uygulama tanımına veya Azure Marketi teklifine bitiş noktasını ekleyin.
+3. Uygulama tanımına veya Azure Marketi teklifine başvuran yönetilen bir uygulama örneği oluşturun.
 4. Bildirimlerin alındığını doğrulayın.
-5. Bu makalenin **uç nokta kimlik doğrulaması** bölümünde açıklandığı gibi yetkilendirmeyi etkinleştirin.
-6. Bildirim isteklerini ayrıştırmak ve bildirime göre iş mantığınızı uygulamak için bu makalenin **bildirim şeması** bölümündeki yönergeleri izleyin.
+5. Bu makalenin **Bitiş Noktası kimlik doğrulama** bölümünde açıklandığı gibi yetkilendirmeyi etkinleştirin.
+6. Bildirim isteklerini ayrıştırmak ve bildirime dayalı olarak iş mantığınızı uygulamak için bu makalenin **Bildirim şeması** bölümündeki yönergeleri izleyin.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Hizmet kataloğu uygulama tanımı bildirimleri ekleme
-#### <a name="azure-portal"></a>Azure portalı
-Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](./publish-portal.md).
+#### <a name="azure-portal"></a>Azure portalında
+Başlamak için bkz. [Azure portalı üzerinden hizmet kataloğu uygulaması yayımla.](./publish-portal.md)
 
-![Azure portal Hizmet kataloğu uygulama tanımı bildirimleri](./media/publish-notifications/service-catalog-notifications.png)
+![Azure portalında hizmet kataloğu uygulama tanımı bildirimleri](./media/publish-notifications/service-catalog-notifications.png)
 
 #### <a name="rest-api"></a>REST API
 
 > [!NOTE]
-> Şu anda, uygulama tanımı özelliklerindeki `notificationEndpoints` yalnızca bir uç nokta sağlayabilirsiniz.
+> Şu anda, uygulama tanımı özelliklerinde `notificationEndpoints` yalnızca bir bitiş noktası sağlayabilirsiniz.
 
 ``` JSON
     {
@@ -61,26 +61,26 @@ Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketi yönetilen uygulama bildirimleri ekleme
-Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
+Daha fazla bilgi için [bkz.](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md)
 
-![Azure portal Azure Marketi yönetilen uygulama bildirimleri](./media/publish-notifications/marketplace-notifications.png)
+![Azure Marketi, Azure portalında uygulama bildirimlerini yönetti](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Olay tetikleyicileri
-Aşağıdaki tabloda, EventType ve ProvisioningState 'in tüm olası birleşimleri ve Tetikleyicileri açıklanmaktadır:
+Aşağıdaki tabloda EventType ve ProvisioningState'in tüm olası birleşimleri ve tetikleyicileri açıklanmaktadır:
 
-Türü | ProvisioningState | Bildirim için Tetikle
+Olay türü | ProvisioningState | Bildirim için tetikleyici
 ---|---|---
-PUT | Eden | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
-PUT | Başarılı oldu | Yönetilen uygulamanın tam olarak sağlanması, bir KONDUKTAN sonra başarılı oldu.
-PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlamayı YERLEŞTIRME hatası.
-DÜZELTMESI | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
-DELETE | Siliniyor | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
-DELETE | Silme | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
-DELETE | Başarısız | Silme işlemini engelleyen kaldırma işlemi sırasında herhangi bir hatadan sonra.
+PUT | Accepted | Yönetilen kaynak grubu oluşturuldu ve uygulama PUT sonra başarıyla yansıtılan (yönetilen kaynak grubu içinde dağıtım başladı önce).
+PUT | Başarılı oldu | Yönetilen uygulamanın tam sağlanması bir PUT sonra başarılı oldu.
+PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlama PUT başarısızlığı.
+Yama | Başarılı oldu | Etiketleri, JIT erişim ilkesini veya yönetilen kimliği güncelleştirmek için yönetilen uygulama örneğinde başarılı bir YAMA'dan sonra.
+DELETE | Silme | Kullanıcı yönetilen bir uygulama örneğinin DELETE'sini başlattığı anda.
+DELETE | Silme | Yönetilen uygulamanın tam ve başarılı silinmesi sonra.
+DELETE | Başarısız | Silme işlemini engelleyen deprovisioning işlemi sırasında herhangi bir hata dan sonra.
 ## <a name="notification-schema"></a>Bildirim şeması
-Bildirimleri işlemek için Web kancası uç noktanızı başlattığınızda, daha sonra bildirim üzerine işlem yapmak için önemli özellikleri almak üzere yükü ayrıştırmalıdır. Hizmet kataloğu ve Azure Marketi yönetilen uygulama bildirimleri, aynı özelliklerin çoğunu sağlar. İki küçük fark, örnekleri takip eden tabloda özetlenmiştir.
+Bildirimleri işlemek için webhook bitiş noktanızı döndürdükten sonra, bildirimüzerine hareket etmek için önemli özellikleri elde etmek için yükü ayrışdırman gerekir. Hizmet kataloğu ve Azure Marketi tarafından yönetilen uygulama bildirimleri aynı özelliklerin çoğunu sağlar. Örnekleri izleyen tabloda iki küçük fark özetlenmiştir.
 
-#### <a name="service-catalog-application-notification-schema"></a>Hizmet kataloğu uygulaması bildirim şeması
-Yönetilen bir uygulama örneğinin başarıyla sağlanmasından sonra örnek bir hizmet kataloğu bildirimi aşağıda verilmiştir:
+#### <a name="service-catalog-application-notification-schema"></a>Hizmet kataloğu uygulama bildirim şeması
+Yönetilen bir uygulama örneğinin başarılı bir şekilde sağlanmasından sonra örnek bir hizmet kataloğu bildirimi aşağıda verilmiştir:
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
 
@@ -94,7 +94,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-Sağlama başarısız olursa, belirtilen uç noktaya hata ayrıntılarına sahip bir bildirim gönderilir.
+Sağlama başarısız olursa, hata ayrıntılarını içeren bir bildirim belirtilen bitiş noktasına gönderilir.
 
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
@@ -119,9 +119,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-#### <a name="azure-marketplace-application-notification-schema"></a>Azure Market uygulaması bildirim şeması
+#### <a name="azure-marketplace-application-notification-schema"></a>Azure Marketi uygulama bildirimi şeması
 
-Yönetilen bir uygulama örneğinin başarıyla sağlanmasından sonra örnek bir hizmet kataloğu bildirimi aşağıda verilmiştir:
+Yönetilen bir uygulama örneğinin başarılı bir şekilde sağlanmasından sonra örnek bir hizmet kataloğu bildirimi aşağıda verilmiştir:
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
 
@@ -143,7 +143,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-Sağlama başarısız olursa, belirtilen uç noktaya hata ayrıntılarına sahip bir bildirim gönderilir.
+Sağlama başarısız olursa, hata ayrıntılarını içeren bir bildirim belirtilen bitiş noktasına gönderilir.
 
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
@@ -178,20 +178,20 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 Parametre | Açıklama
 ---|---
-eventType | Bildirimi tetikleyen olay türü. (Örneğin, PUT, PATCH, DELETE.)
-Uygulama | Bildirimin tetiklendiği yönetilen uygulamanın tam kaynak tanımlayıcısı.
-eventTime | Bildirimi tetikleyen olayın zaman damgası. (UTC ISO 8601 biçiminde tarih ve saat.)
-ProvisioningState | Yönetilen uygulama örneğinin sağlama durumu. (Örneğin, başarılı, başarısız, silme, silindi.)
-error | *Yalnızca provisioningState başarısız olduğunda belirtilir*. Hata kodunu, iletisini ve hataya neden olan sorunun ayrıntılarını içerir.
-Applicationdefinitionıd | *Yalnızca hizmet kataloğu yönetilen uygulamaları Için belirtilir*. Yönetilen uygulama örneğinin sağlandığı uygulama tanımının tam kaynak tanımlayıcısını temsil eder.
-plan | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar Için belirtilir*. Yönetilen uygulama örneğinin yayımcısını, teklifini, SKU 'sunu ve sürümünü temsil eder.
-billingDetails | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar için belirtilir.* Yönetilen uygulama örneğinin fatura ayrıntıları. Kullanım ayrıntıları için Azure Marketi 'ni sorgulamak üzere kullanabileceğiniz Resourceusageıd 'yi içerir.
+Eventtype | Bildirimi tetikleyen olay türü. (Örneğin, PUT, PATCH, DELETE.)
+applicationId | Bildirimin tetiklendiği yönetilen uygulamanın tam nitelikli kaynak tanımlayıcısı.
+eventTime | Bildirimi tetikleyen olayın zaman damgası. (UTC ISO 8601 formatında tarih ve saat.)
+provisioningDevlet | Yönetilen uygulama örneğinin sağlama durumu. (Örneğin, Başarılı, Başarısız, Silme, Silinmiş.)
+error | *Yalnızca provisioningState Başarısız olduğunda belirtilir.* Hataya neden olan hata kodunu, iletiyi ve sorunun ayrıntılarını içerir.
+uygulamaDefinitionId | *Yalnızca hizmet kataloğu yönetilen uygulamalar için belirtilir.* Yönetilen uygulama örneğinin sağlandığı uygulama tanımının tam nitelikli kaynak tanımlayıcısını temsil eder.
+plan | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar için belirtilir.* Yönetilen uygulama örneğinin yayımcısını, teklifini, SKU'sunu ve sürümünü temsil eder.
+faturalandırmaAyrıntılar | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar için belirtilir.* Yönetilen uygulama örneğinin fatura ayrıntıları. Kullanım ayrıntıları için Azure Marketi'ni sorgulamak için kullanabileceğiniz kaynakUsageId'i içerir.
 
 ## <a name="endpoint-authentication"></a>Uç nokta kimlik doğrulaması
-Web kancası uç noktasını güvenli hale getirmek ve bildirimin orijinalliğini sağlamak için:
-1. Web kancası URI 'sinin üstünde şu şekilde bir sorgu parametresi sağlayın: https\://Your-Endpoint.com? SIG = GUID. Her bildirimle, `sig` sorgu parametresinin beklenen değer `Guid`sahip olup olmadığını denetleyin.
-2. ApplicationId kullanarak yönetilen uygulama örneğinde bir GET verme. Tutarlılık sağlamak için provisioningState 'in bildirimin provisioningState ile eşleştiğini doğrulayın.
+Webhook bitiş noktasını güvenli hale getirmek ve bildirimin gerçekliğini sağlamak için:
+1. Webhook URI'nin üstüne şöyle bir sorgu parametresi sağlayın: https\://your-endpoint.com?sig=Guid. Her bildirimde, sorgu parametresinin `sig` beklenen `Guid`değere sahip olup olmadığını denetleyin.
+2. applicationId'i kullanarak yönetilen uygulama örneğinde GET sorunu. Tutarlılık sağlamak için provisioningState'in bildirimin hükmüDurumuyla eşleştiğini doğrulayın.
 
 ## <a name="notification-retries"></a>Bildirim yeniden denemeleri
 
-Yönetilen uygulama bildirimi hizmeti, Web kancası uç noktasından bildirime `200 OK` bir yanıt bekler. Web kancası uç 500 noktası, 429 hata kodu döndürürse veya uç nokta geçici olarak ulaşılamaz durumdaysa, bildirim hizmeti yeniden dener. Web kancası uç noktası 10 saat içinde kullanılabilir olmaz, bildirim iletisi bırakılır ve yeniden denemeler durdurulur.
+Yönetilen Uygulama Bildirimi hizmeti, webhook bitiş noktasından bildirime yanıt `200 OK` bekler. Webhook bitiş noktası 500'den büyük veya eşit bir HTTP hata kodu döndürürse, 429 hata kodu döndürürse veya bitiş noktası geçici olarak erişilemezse bildirim hizmeti yeniden çalışır. Webhook bitiş noktası 10 saat içinde kullanıma sunulmazsa, bildirim iletisi bırakılır ve yeniden denemeler durdurulır.

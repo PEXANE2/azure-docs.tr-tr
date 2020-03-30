@@ -1,161 +1,158 @@
 ---
-title: Azure Içeri/dışarı aktarma hizmeti hakkında SSS | Microsoft Docs
-description: Azure Içeri aktarma hizmeti hakkında sık sorulan soruların yanıtlarını okuyun.
+title: Azure İçe Alma/Dışa Aktarma hizmeti için SSS | Microsoft Dokümanlar
+description: Azure İçe Aktarma Hizmeti hakkında sık sorulan soruların yanıtlarını okuyun.
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282435"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Içeri/dışarı aktarma hizmeti: sık sorulan sorular 
-Azure depolama 'ya veri aktarmak için Azure Içeri/dışarı aktarma hizmetinizi kullandığınızda kullanabileceğiniz sorular ve yanıtlar aşağıda verilmiştir. Sorular ve yanıtlar aşağıdaki kategorilere ayrılmıştır:
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure İçe Alma/Dışa Aktarma hizmeti: sık sorulan sorular
 
-- Içeri/dışarı aktarma hizmeti hakkında
-- Diskler içeri/dışarı aktarma için hazırlanıyor
-- İşleri içeri/dışarı aktarma
-- Diskler teslim etme
-- Çeşitli 
+Verileri Azure depolama alanına aktarmak için Azure İçe Alma/Dışak hizmetinizi kullandığınızda sahip olabileceğiniz sorular ve yanıtlar aşağıda ve da açıklanmaktadır. Sorular ve yanıtlar aşağıdaki kategorilere ayrılmıştır:
 
-## <a name="about-importexport-service"></a>Içeri/dışarı aktarma hizmeti hakkında
+- İthalat/İhracat hizmeti hakkında
+- Diskleri alma/dışa aktarma için hazırlama
+- İthalat/Dışa Aktarma işleri
+- Gönderi diskleri
+- Çeşitli
 
-### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak Azure dosya depolamayı kopyalayabilir miyim?
+## <a name="about-importexport-service"></a>İthalat/İhracat hizmeti hakkında
 
-Evet. Azure Içeri/dışarı aktarma hizmeti, Azure dosya depolama alanına aktarmayı destekler. Şu anda Azure dosyalarının dışarı aktarılmasını desteklemez.
+### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Azure İçe Alma/Dışa Aktarma hizmetini kullanarak Azure Dosyası depolama alanını kopyalayabilir miyim?
 
-### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure Içeri/dışarı aktarma hizmeti CSP abonelikleri için kullanılabilir mi?
+Evet. Azure İçe Alma/Dışa Aktarma hizmeti, Azure Dosya Depolama'ya aktar'ı destekler. Şu anda Azure Dosyalarının dışa aktarını desteklemez.
 
-Evet. Azure Içeri/dışarı aktarma hizmeti, bulut çözümü sağlayıcıları (CSP) aboneliklerini destekler.
+### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure İçe Alma/Dışa Aktarma hizmeti CSP abonelikleri için kullanılabilir mi?
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak PST posta kutularını ve SharePoint verilerini O365 'e kopyalayabilir miyim?
+Evet. Azure İçe Alma/Verme hizmeti Bulut Çözüm Sağlayıcıları (CSP) aboneliklerini destekler.
 
-Evet. Daha fazla bilgi için bkz. [PST dosyalarını veya SharePoint verilerini Office 365 'ye aktarma](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>PST posta kutularını ve SharePoint verilerini O365'e kopyalamak için Azure İçe Alma/Dışa Aktarma hizmetini kullanabilir miyim?
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Yedeklemelerimi Azure Backup hizmetine çevrimdışı kopyalamak için Azure Içeri/dışarı aktarma hizmetini kullanabilir miyim?
+Evet. Daha fazla bilgi [için, OFFICE 365'e PST dosyalarını veya SharePoint verilerini içe](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)aktarın.
 
-Evet. Daha fazla bilgi için [Azure Backup çevrimdışı yedekleme iş akışına](../../backup/backup-azure-backup-import-export.md)gidin.
+### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Yedeklemelerimi çevrimdışı olarak Azure Yedekleme Hizmeti'ne kopyalamak için Azure İçe Alma/Dışa Aktarma hizmetini kullanabilir miyim?
 
-### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Microsoft 'tan içeri/dışarı aktarma işleri için sürücü satın alabilir miyim?
+Evet. Daha fazla bilgi için [Azure Yedekleme'de Çevrimdışı Yedekleme iş akışına](../../backup/backup-azure-backup-import-export.md)gidin.
 
-Hayır. İçeri ve dışarı aktarma işleri için kendi sürücülerinizi teslim etmeniz gerekir.
+### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Microsoft'tan alma/dışa aktarma işleri için sürücüler satın alabilir miyim?
 
+Hayır. İthalat ve ihracat işleri için kendi sürücüleri gemi gerekir.
 
-## <a name="preparing-disks-for-importexport"></a>Diskler içeri/dışarı aktarma için hazırlanıyor
+## <a name="preparing-disks-for-importexport"></a>Disklerin içe aktarıla/dışa aktarıniçin hazırlanması
 
-### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Bir içeri aktarma işi için sürücü hazırlama adımını atlayabilir miyim? Bir sürücüyü kopyalamadan hazırlayabilir miyim?
+### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Bir alma işi için sürücü hazırlama adımını atlayabilir miyim? Kopyalamadan bir sürücü hazırlayabilir miyim?
 
-Hayır. Verileri içeri aktarmak için kullanılan tüm sürücüler Azure Waımportexport Aracı kullanılarak hazırlanmalıdır. Ayrıca, verileri sürücüye kopyalamak için aracını kullanın.
+Hayır. Veri almak için kullanılan tüm sürücü, Azure WAImportExport aracı kullanılarak hazırlanmalıdır. Verileri sürücüye kopyalamak için aracı kullanın.
 
-### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Dışarı aktarma işi oluştururken disk hazırlığı gerçekleştirmem gerekir mi?
+### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Bir dışa aktarma işi oluştururken herhangi bir disk hazırlığı gerçekleştirmem gerekiyor mu?
 
-Hayır. Bazı ön denetimler önerilir. Gereken disk sayısını denetlemek için Waımportexport aracının önizleme dışarı aktar komutunu kullanın. Daha fazla bilgi için bkz. [bir dışarı aktarma işi Için sürücü kullanımının önizlemesi](https://msdn.microsoft.com/library/azure/dn722414.aspx). Bu komut, kullanacağınız sürücülerin boyutuna bağlı olarak seçili Blobların sürücü kullanımının önizlemesini yapmanıza yardımcı olur. Ayrıca, dışa aktarma işi için gönderilen sabit sürücüden okuyup okuyup yazverecağınızı kontrol edin.
+Hayır. Bazı ön kontroller önerilir. Gerekli disk sayısını kontrol etmek için WAImportExport aracının PreviewExport komutunu kullanın. Daha fazla bilgi için, [Dışa Aktarma İşi için Sürücü Kullanımını Önizleme'ye](https://msdn.microsoft.com/library/azure/dn722414.aspx)bakın. Komut, kullanacağınız sürücülerin boyutuna bağlı olarak seçili lekeler için sürücü kullanımını önizlemenize yardımcı olur. Ayrıca, ihracat işi için gönderilen sabit diskten okuyup yazabileceğinizi ve yazabileceğinizi kontrol edin.
 
-## <a name="importexport-jobs"></a>İşleri içeri/dışarı aktarma
+## <a name="importexport-jobs"></a>İthalat/Dışa Aktarma işleri
 
 ### <a name="can-i-cancel-my-job"></a>İşimi iptal edebilir miyim?
-Evet. Durumu **oluştururken** veya **teslim**edildiğinde bir işi iptal edebilirsiniz. Bu aşamaların ötesinde iş iptal edilemez ve son aşamaya kadar devam eder.
 
-### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Azure portal tamamlanan işlerin durumunu ne kadar görüntüleyebilirim?
-Tamamlanan işlerin durumunu 90 güne kadar görüntüleyebilirsiniz. Tamamlanan İşler 90 gün sonra silinir.
+Evet. Bir işi, durumu **Oluşturma** veya **Gönderim**olduğunda iptal edebilirsiniz. Bu aşamaların ötesinde, iş iptal edilemez ve son aşamaya kadar devam eder.
 
-### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>10 ' dan fazla sürücü içeri veya dışarı aktarmak istersem ne yapmam gerekir?
-Bir içeri veya dışarı aktarma işi tek bir işte yalnızca 10 sürücüye başvurabilir. 10 ' dan fazla sürücü teslim etmek için birden çok iş oluşturmanız gerekir. Aynı işle ilişkili Sürücüler aynı pakette birlikte sevk edilmelidir. Veri kapasitesi birden çok disk içeri aktarma işine yayıldığında daha fazla bilgi ve rehberlik için Microsoft Desteği başvurun. 
+### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Azure portalında tamamlanan işlerin durumunu ne kadar süreyle görüntüleyebilirim?
 
-### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Karşıya yüklenen blob, durumu "kira süresinin dolması" olarak gösterir. Ne yapmalıyım?
-"Kira süresinin dolması" alanını yoksayabilirsiniz. İçeri/dışarı aktarma, blob 'u karşıya yükleme sırasında, başka hiçbir işlemin paralel olarak güncelleştiremezse emin olmak için kira alır. Kira süresinin dolması, Içeri/dışarı aktarmanın artık bu dosyaya yükleme olmadığını ve BLOB 'u kullanım için kullanılabilir hale geçtiğini gösterir. 
+Tamamlanan işlerin durumunu 90 güne kadar görüntüleyebilirsiniz. Tamamlanan işler 90 gün sonra silinir.
 
-## <a name="shipping-disks"></a>Diskler teslim etme
+### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>10'dan fazla sürücü almak veya dışa aktarmak istersem, ne yapmalıyım?
 
-### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Tek bir sevkiyatta en fazla HDD sayısı nedir?
-Bir sevkiyatta HDD sayısı için bir sınır yoktur. Diskler birden çok iş öğesine aitse şunları yapmanızı öneririz: 
-- diskleri ilgili iş adlarıyla etiketleyin.
-- -1,-2 vb. ile düzeltilen bir izleme numarası olan işleri güncelleştirin.
+Bir alma veya dışa aktarma işi, tek bir işte yalnızca 10 sürücüye başvuruyapabilir. 10'dan fazla sürücü sevk etmek için birden çok iş oluşturmanız gerekir. Aynı işle ilişkili sürücüler aynı pakette birlikte sevk edilmelidir.
+Veri kapasitesi birden çok disk alma işini kapsadığında daha fazla bilgi ve kılavuz için Microsoft Destek'e başvurun.
 
-### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Paketimde HDD dışında bir şey mi içersin?
-Yalnızca sabit sürücülerinizi sevkiyat paketine gönderin. Güç kaynağı kabloları veya USB kabloları gibi öğeleri eklemeyin.
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Yüklenen blob "Kira süresi doldu" olarak durumu gösterir. Ne yapmalıyım?
 
-### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>FedEx veya DHL kullanarak Sürücülerimi göndermem gerekir mi?
-FedEx, DHL, UPS veya US posta hizmeti gibi bilinen bir taşıyıcısı kullanarak Azure veri merkezine sürücü gönderebilirsiniz. Ancak, veri merkezinizden size sürücülerin iade sevk irsaliyesi için şunu sağlamanız gerekir:
+"Süresi Dolan Kiralama" alanını yoksayabilirsiniz. Alma/Dışa Aktarma, başka hiçbir işlemin blob'u paralel olarak güncelleştirilemediğinden emin olmak için yükleme sırasında blob'u kiralar. Süresi Dolan Kiralama, Alma/Dışa Aktarma'nın artık bu kullanıma yüklenmediğini ve blob'un kullanımınız için kullanılabildiğini gösterir.
 
-- ABD ve AB 'de FedEx hesap numarası veya
-- Asya ve Avustralya bölgelerindeki bir DHL hesap numarası.
+## <a name="shipping-disks"></a>Gönderi diskleri
+
+### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Bir gönderide en fazla HDD sayısı nedir?
+
+Bir sevkiyattaki HDD sayısı nın sınırı yoktur. Diskler birden çok işe aitse, aşağıdakileri yapmanızı öneririz:
+
+- ilgili iş adlarıyla diskleri etiketle.
+- -1, -2 vb. ile sabitlenmiş bir izleme numarası ile işleri güncelleyin.
+
+### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Paketime HDD'den başka bir şey eklemeli miyim?
+
+Sadece sabit disklerinizi nakliye paketine gönderin. Güç kaynağı kabloları veya USB kabloları gibi öğeleri eklemeyin.
+
+### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Sürücülerimi FedEx veya DHL kullanarak göndermem gerekiyor mu?
+
+FedEx, DHL, UPS veya ABD Posta Hizmeti gibi bilinen herhangi bir taşıyıcıyı kullanarak sürücüleri Azure veri merkezine gönderebilirsiniz. Ancak, sürücülerin veri merkezinden size geri sevkiyatı için şunları sağlamanız gerekir:
+
+- ABD ve AB'de bir FedEx hesap numarası veya
+- Asya ve Avustralya bölgelerinde bir DHL hesap numarası.
 
 > [!NOTE]
-> Hindistan 'daki veri merkezleri, sürücüleri döndürmek için antetin (teslim Challan) üzerinde bir bildirim harfi gerektirir. Gerekli giriş geçişini düzenlemek için, seçtiğiniz taşıyıcınızla birlikte çekmeyi de ve ayrıntıları veri merkezi ile paylaşmanız gerekir.
+> Hindistan'daki veri merkezleri, sürücüleri döndürmek için antetli kayınızda (teslimat challan) bir beyan mektubu gerektirir. Gerekli giriş kartını ayarlamak için, pick up'ı seçtiğiniz operatörle rezerve etmeli ve ayrıntıları veri merkeziyle paylaşmalısınız.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Sürücüne uluslararası gönderi ile ilgili herhangi bir kısıtlama var mı?
-Lütfen sevk ettiğiniz fiziksel medyanın Uluslararası kenarlıkların çapraz olması gerekebileceğini unutmayın. Fiziksel medyanızın ve verilerinizin, ilgili yasalar doğrultusunda içeri aktarıldığından ve/veya aktarıldığından emin olmanız sizin sorumluluğunuzdadır. Fiziksel medyayı teslim etmeden önce, medya ve verilerinizin tanımlanan veri merkezine yasal bir şekilde gönderilbildiğini doğrulamak için danışmanlarınız ile görüşün. Bu, Microsoft 'un zamanında ulaşmasını sağlamaya yardımcı olur.
+### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Sürücümü uluslararası olarak gönderimde herhangi bir kısıtlama var mı?
+
+Sevk ettiğiniz fiziksel ortamın uluslararası sınırları geçmesi gerekebileceğini lütfen unutmayın. Fiziksel medyanızın ve verilerinizin yürürlükteki yasalara uygun olarak içe aktarılmasını ve/veya dışlanmasını sağlamaksizin sorumlusunuz. Fiziksel ortamı göndermeden önce, medyanızın ve verilerinizin yasal olarak tanımlanan veri merkezine gönderilebebileceğini doğrulamak için danışmanlarınıza danışın. Bu, microsoft'a zamanında ulaştığından emin olmaya yardımcı olur.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Disklerimi bir veri merkezine teslim etmek için özel gereksinimler var mı?
 
-Gereksinimler, belirli Azure veri merkezi kısıtlamalarına bağlıdır.
-- Güvenlik nedenleriyle, paket üzerinde bir Microsoft veri merkezi gelen KIMLIK numarası yazılmasını gerektiren birkaç site vardır. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, bu sayıyı almak için Azure Data Box işlemlerine (adbops@microsoft.com) başvurun. Bu sayı olmadan paket reddedilir.
-- Hindistan 'daki veri merkezleri, sürücünün kamu KIMLIK kartı veya kanıt No gibi kişisel ayrıntılarını gerektirir. (örneğin, PAN, AADHAR, DL), ad, kişi ve bir kapı girişi geçişi almak için otomobil levha numarası. Teslim gecikmelerinden kaçınmak için, bu gereksinimlere ilişkin taşıyıcınızın bilgilerini bildirin.
+Gereksinimler belirli Azure veri merkezi kısıtlamalarına bağlıdır.
 
+- Güvenlik nedenleriyle pakete Microsoft veri merkezi Gelen Kimlik numarasının yazılmasını gerektiren birkaç site vardır. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, buadbops@microsoft.comnumarayı almak için Azure DataBox İşlemleri () ile iletişime geçin. Bu numara olmadan paket reddedilir.
+- Hindistan'daki veri merkezleri, sürücünün Kişisel Bilgilerini gerektirir, örneğin Devlet Kimlik Kartı veya Kanıt No. (örneğin, PAN, AADHAR, DL), adı, temas ve bir kapı giriş kartı almak için araç plaka numarası. Teslimat gecikmelerini önlemek için, taşıyıcınızı bu gereksinimler hakkında bilgilendirin.
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bir iş oluştururken, sevkiyat adresi depolama hesabı konumumdaki farklı bir konum olur. Ne yapmalıyım?
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bir iş oluştururken, sevkiyat adresi depolama hesabı konumumdan farklı bir konumdur. Ne yapmalıyım?
 
-Bazı depolama hesabı konumları alternatif sevkiyat konumlarına eşlenir. Daha önce kullanılabilir kargo konumları, alternatif konumlara geçici olarak eşleştirilebilir. Sürücülerinizi teslim etmeden önce iş oluşturma sırasında verilen sevkiyat adresini her zaman denetleyin.
+Bazı depolama hesabı konumları alternatif sevkiyat konumlarına eşlenir. Daha önce kullanılabilen sevkiyat konumları da geçici olarak alternatif konumlara eşlenebilir. Sürücülerinizi göndermeden önce her zaman iş oluşturma sırasında sağlanan sevkiyat adresini kontrol edin.
 
-### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Sürücüne gönderim yaparken, taşıyıcı veri merkezi iletişim adresini ve telefon numarasını ister. Neleri sağlamam gerekir?
+### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Sürücümü sevk ederken, operatör veri merkezi iletişim adresini ve telefon numarasını sorar. Ne sağlamalıyım?
 
-Telefon numarası ve DC adresi iş oluşturma işleminin parçası olarak sağlanır.
-
+Telefon numarası ve DC adresi iş oluşturmanın bir parçası olarak sağlanır.
 
 ## <a name="miscellaneous"></a>Çeşitli
 
-### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Yanlışlıkla desteklenen gereksinimlere uymayan bir HDD gönderiyorsanız ne olur?
+### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Yanlışlıkla desteklenen gereksinimlere uymayan bir HDD gönderirsem ne olur?
 
-Azure veri merkezi, desteklenen gereksinimlere uymayan sürücüyü döndürür. Paketteki sürücülerin yalnızca bir kısmı destek gereksinimlerini karşılıyorsa, bu sürücüler işlenir ve gereksinimleri karşılamayan sürücüler size döndürülür.
+Azure veri merkezi, desteklenen gereksinimlere uymayan sürücüyü size döndürecektir. Paketteki sürücülerden yalnızca bazıları destek gereksinimlerini karşılıyorsa, bu sürücüler işlenir ve gereksinimleri karşılamayan sürücüler size iade edilir.
 
-### <a name="does-the-service-format-the-drives-before-returning-them"></a>Hizmet, sürücüleri döndürmeden önce biçimlendirir mi?
+### <a name="does-the-service-format-the-drives-before-returning-them"></a>Hizmet, sürücüleri iade etmeden önce biçimlendiriyor mu?
 
 Hayır. Tüm sürücüler BitLocker ile şifrelenir.
 
-### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Bu hizmet tarafından içeri aktarılan verilere nasıl erişebilirim?
+### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Bu hizmet tarafından alınan verilere nasıl erişebilirim?
 
-Azure depolama hesabınızın altındaki verilere erişmek için Azure portalını veya [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.  
+Azure depolama hesabınız altındaki verilere erişmek için Azure portalını veya [Depolama Gezgini'ni](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.  
 
-### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>İçeri aktarma işlemi tamamlandıktan sonra, verileri depolama hesabında nasıl görünür? Dizin hiyerarşim korunuyor mu?
+### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Alma işlemi tamamlandıktan sonra, verilerim depolama hesabında nasıl görünür? Dizin hiyerarşim korunuyor mu?
 
-Bir sabit sürücüyü içeri aktarma işi için hazırlarken, hedef veri kümesi CSV içindeki DstBlobPathOrPrefix alanı tarafından belirtilir. Bu, depolama hesabındaki, sabit sürücüdeki verilerin kopyalandığı hedef kapsayıcıdır. Bu hedef kapsayıcıda, sanal dizinler sabit sürücüden klasörler için oluşturulur ve dosyalar için Bloblar oluşturulur. 
+Bir alma işi için bir sabit disk hazırlarken, hedef veri kümesi CSV'deki DstBlobPathOrPrefix alanı tarafından belirtilir. Bu, sabit diskteki verilerin kopyalandığı depolama hesabındaki hedef kapsayıcıdır. Bu hedef kapsayıcıiçinde, sabit diskten klasörler için sanal dizinler oluşturulur ve dosyalar için blobs oluşturulur.
 
-### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Bir sürücüde depolama hesabmda zaten bulunan dosyalar varsa, hizmet mevcut Blobların veya dosyaların üzerine yazar mı?
+### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Bir sürücünün depolama hesabımda zaten var olan dosyaları varsa, hizmet varolan blob'ların veya dosyaların üzerine yazar mı?
 
-Şekline. Sürücüyü hazırlarken, veri kümesi CSV dosyasında disposition adı verilen alan kullanılarak hedef dosyaların üzerine yazılıp yazılmayacağını veya yoksayılmayacağını belirtebilirsiniz: < yeniden adlandır | Hayır-üzerine yaz | üzerine yaz >. Varsayılan olarak hizmet, mevcut Blobların veya dosyaların üzerine yazmak yerine yeni dosyaları yeniden adlandırır.
+-sına bağ -lıdır. Sürücüyü hazırlarken, hedef dosyaların üzerinde yazımı mı yoksa veriş:<yeniden adlandırma|over-overwrite|overwrite> adlı veri kümesi CSV dosyasındaki alanı kullanarak üzerine mi yazılması gerektiğini belirtebilirsiniz. Varsayılan olarak, hizmet varolan lekelerin veya dosyaların üzerine yazmak yerine yeni dosyaları yeniden adlandırır.
 
-### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Waımportexport Aracı, 32 bitlik işletim sistemleriyle uyumludur mi?
-Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyle uyumludur. Desteklenen işletim SISTEMININ tüm listesi için [desteklenen Işletim sistemlerine](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)gidin. 
+### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport aracı 32 bit işletim sistemleriyle uyumlu mu?
 
+Hayır. WAImportExport aracı yalnızca 64 bit Windows işletim sistemleriyle uyumludur. Desteklenen işletim sisteminin tam listesi için [Desteklenen İşletim Sistemleri'ne](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)gidin.
 
-### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure Içeri/dışarı aktarma tarafından desteklenen maksimum Blok Blobu ve Sayfa Blobu boyutu nedir?
+### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure İçe Aktarma/Dışa Aktarma tarafından desteklenen maksimum Blok Blob ve Sayfa Blob Boyutu nedir?
 
-Maksimum Blok Blobu boyutu yaklaşık 4.768 TB veya 5.000.000 MB 'dir.
-En fazla sayfa blobu boyutu 8TB 'tır.
+- Max Blok Blob boyutu yaklaşık 4.768 TB veya 5.000.000 MB'dır.
+- Max Page Blob boyutu 8 TB'dir.
 
+### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure İçe Aktarma/Dışa Aktarma AES-256 şifrelemeyi destekliyor mu?
 
-### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Içeri/dışarı aktarma, AES-256 şifrelemesini destekliyor mu?
-Azure Içeri/dışarı aktarma hizmeti varsayılan olarak AES-128 BitLocker şifrelemesini kullanır. Veri kopyalanmadan önce BitLocker ile el ile şifreleme yaparak bunu AES-256 olarak değiştirebilirsiniz. 
-
-- [Waımportexport v1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)kullanılıyorsa, aşağıdaki örnek bir komuttur
-    ```
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
-    ```
-- [Waımportexport v2](https://www.microsoft.com/download/details.aspx?id=55280) kullanılıyorsa "AlreadyEncrypted" belirtin ve anahtarı DRIVESET CSV ' de girin.
-    ```
-    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
-    ```
+Hayır. Azure Alma/Dışa Aktarma hizmeti, AES-128 BitLocker şifrelemesi kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Içeri/dışarı aktarma nedir?](storage-import-export-service.md)
-
-
+* [Azure İçeri/Dışarı Aktarma nedir?](storage-import-export-service.md)

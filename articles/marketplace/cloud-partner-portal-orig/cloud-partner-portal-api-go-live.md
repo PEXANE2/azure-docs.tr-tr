@@ -1,44 +1,43 @@
 ---
-title: Canlı git | Azure Marketi
-description: Go Live API 'SI teklifi canlı Listeleme işlemini başlatır.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Canlı Yayına Geç | Azure Marketi
+description: Go Live API teklif canlı listeleme işlemini başlatır.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288589"
 ---
-<a name="go-live"></a>Canlı git
+<a name="go-live"></a>Canlı Yayına Git
 =======
 
-Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellikle uzun süredir çalışır. Bu çağrı, API 'yi [Yayımla](./cloud-partner-portal-api-publish-offer.md) işlemindeki bildirim e-posta listesini kullanır.
+Bu API, bir uygulamayı üretime itme işlemini başlatır. Bu işlem genellikle uzun sürelidir. Bu arama, [Yayımlama](./cloud-partner-portal-api-publish-offer.md) API işlemindeki bildirim e-posta listesini kullanır.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
 <a name="uri-parameters"></a>URI parametreleri
 --------------
 
-|  **Ad**      |   **Açıklama**                                                           | **Veri türü** |
+|  **Adı**      |   **Açıklama**                                                           | **Veri türü** |
 |  --------      |   ---------------                                                           | ------------- |
-| PublisherId    | Örneğin `contoso` alma teklifinin yayımcı tanımlayıcısı       |  Dize       |
-| OfferId        | Alma teklifinin teklif tanımlayıcısı                                   |  Dize       |
-| api sürümü    | API 'nin en son sürümü                                                   |  Tarih         |
+| publisherId    | Örneğin, teklifin alınması için yayımcı tanımlayıcısı`contoso`       |  Dize       |
+| offerId        | Teklif tanımlayıcısı almak için teklif                                   |  Dize       |
+| api-sürümü    | API'nin en son sürümü                                                   |  Tarih         |
 |  |  |  |
 
 
 <a name="header"></a>Üst bilgi
 ------
 
-|  **Ad**       |     **Değer**       |
+|  **Adı**       |     **Değer**       |
 |  ---------      |     ----------      |
-| İçerik türü    | `application/json`  |
+| İçerik Türü    | `application/json`  |
 | Yetkilendirme   | `Bearer YOUR_TOKEN` |
 |  |  |
 
@@ -53,17 +52,17 @@ Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellik
 
 ### <a name="response-header"></a>Yanıt Üst Bilgisi
 
-|  **Ad**             |      **Değer**                                                            |
+|  **Adı**             |      **Değer**                                                            |
 |  --------             |      ----------                                                           |
-| İşlem-konum    |  İşlemin geçerli durumunu öğrenmek için Sorgulanacak URL            |
+| Operasyon-Konum    |  İşlemin geçerli durumunu belirlemek için sorgulanacak URL            |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
-| **Kodudur** |  **Açıklama**                                                                        |
+| **Kod** |  **Açıklama**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted`-istek başarıyla kabul edildi. Yanıt, işlem durumunu izlemek için bir konum içerir. |
-|  400     | `Bad/Malformed request`-yanıt gövdesi içinde ek hata bilgileri bulunur. |
-|  404     |  `Not found`-belirtilen varlık yok.                                       |
+|  202     | `Accepted`- İstek başarıyla kabul edildi. Yanıt, işlem durumunu izlemek için bir konum içerir. |
+|  400     | `Bad/Malformed request`- Yanıt gövdesiiçinde ek hata bilgileri bulunur. |
+|  404     |  `Not found`- Belirtilen varlık yok.                                       |
 |  |  |

@@ -1,6 +1,6 @@
 ---
 title: Depolama Analizi günlüklerini kullanarak gecikme sorunlarını giderme
-description: Azure depolama analitik günlüklerini kullanarak gecikme sorunlarını tanımlayıp sorun giderin ve istemci uygulamasını iyileştirin.
+description: Azure Depolama Analizi günlüklerini kullanarak gecikme sorunlarını belirleyin ve sorun giderin ve istemci uygulamasını optimize edin.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,25 +11,25 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196516"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Depolama Analizi günlüklerini kullanarak gecikme sorunlarını giderme
 
-Tanılama ve sorun giderme, Azure depolama ile istemci uygulamaları oluşturmaya ve desteklemeye yönelik bir temel yetenbedir.
+Azure Depolama ile istemci uygulamalarını oluşturmak ve desteklemek için tanılama ve sorun giderme önemli bir beceridir.
 
-Bir Azure uygulamasının dağıtılmış doğası nedeniyle, hataları ve performans sorunlarını tanılamak ve sorunlarını gidermek geleneksel ortamlarından daha karmaşık olabilir.
+Azure uygulamasının dağıtılmış yapısı nedeniyle, hem hataları hem de performans sorunlarını tanılama ve sorun giderme geleneksel ortamlardan daha karmaşık olabilir.
 
-Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikme sorunlarının nasıl tanımlanacağına ve giderileceğini ve istemci uygulamasının en iyileştirilmesi gösterilmektedir.
+Aşağıdaki adımlar, Azure Depolama Analizi günlüklerini kullanarak gecikme sorunlarını nasıl tanımlayıp sorun gidereceklerini ve istemci uygulamasını optimize edin.
 
 ## <a name="recommended-steps"></a>Önerilen adımlar
 
-1. [Depolama Analizi günlüklerini](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)indirin.
+1. Depolama [Analizi günlüklerini indirin.](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)
 
-2. Ham biçim günlüklerini tablo biçimine dönüştürmek için aşağıdaki PowerShell betiğini kullanın:
+2. Ham biçim günlüklerini tabular biçime dönüştürmek için aşağıdaki PowerShell komut dosyasını kullanın:
 
    ```Powershell
    $Columns = 
@@ -70,99 +70,99 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
 
-3. Betik, aşağıda gösterildiği gibi, bilgileri sütunlara göre filtreleyebileceğiniz bir GUI penceresi başlatır.
+3. Komut dosyası, aşağıda gösterildiği gibi bilgileri sütunlara göre filtreleyebileceğiniz bir GUI penceresi başlatacaktır.
 
-   ![Depolama analitik günlüğü ayrıştırıcı penceresi](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
+   ![Depolama Analitik Günlük Parser Penceresi](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
  
-4. "İşlem-türü" temelinde günlük girdilerini daraltın ve sorunun zaman çerçevesinde oluşturulan günlük girişini arayın.
+4. Günlük girişlerini "işlem türüne" göre daraltın ve sorunun zaman dilimi sırasında oluşturulan günlük girişini arayın.
 
    ![İşlem türü günlük girişleri](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
-5. Sorunun oluştuğu zaman sırasında aşağıdaki değerler önemlidir:
+5. Sorunun oluştuğu süre boyunca aşağıdaki değerler önemlidir:
 
-   * İşlem-tür = GetBlob
-   * istek-durum = SASNetworkError
-   * Uçtan uca gecikme-MS = 8453
-   * Sunucu-yanıt-MS = 391
+   * İşlem Tipi = GetBlob
+   * istek durumu = SASNetworkError
+   * Uç-Uç-Gecikme-In-Ms = 8453
+   * Sunucu-Gecikme-In-Ms = 391
 
-   Uçtan uca gecikme aşağıdaki denklem kullanılarak hesaplanır:
+   Uç-Uç Gecikme si aşağıdaki denklem kullanılarak hesaplanır:
 
-   * Uçtan uca gecikme = sunucu gecikme süresi + Istemci gecikmesi
+   * Uçuca Gecikme = Sunucu Gecikmesi + İstemci Gecikmesi
 
-   Günlük girişini kullanarak Istemci gecikmesini hesaplayın:
+   Günlük girişini kullanarak İstemci Gecikmesini hesaplayın:
 
-   * İstemci gecikmesi = uçtan uca gecikme süresi – sunucu gecikme süresi
+   * İstemci Gecikmesi = Uç-Uç Gecikme - Sunucu Gecikmesi
 
           * Example: 8453 – 391 = 8062ms
 
-   Aşağıdaki tabloda, yüksek gecikmeli OperationType ve RequestStatus sonuçları hakkında bilgi verilmektedir:
+   Aşağıdaki tablo, yüksek gecikme gecikmesi OperationType ve RequestStatus sonuçları hakkında bilgi sağlar:
 
-   |   |RequestStatus =<br>Başarılı|RequestStatus =<br>'LARıNıN NetworkError|Öneri|
+   |   |İstek Durumu=<br>Başarılı|İstek Durumu=<br>(SAS) Ağ Hatası|Öneri|
    |---|---|---|---|
-   |GetBlob|Evet|Hayır|[**GetBlob işlemi:** RequestStatus = başarılı](#getblob-operation-requeststatus--success)|
-   |GetBlob|Hayır|Evet|[**GetBlob işlemi:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Evet|Hayır|[**PUT işlemi:** RequestStatus = başarılı](#put-operation-requeststatus--success)|
-   |PutBlob|Hayır|Evet|[**PUT işlemi:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Evet|Hayır|[**GetBlob Operasyonu:** İstek Durumu = Başarı](#getblob-operation-requeststatus--success)|
+   |GetBlob|Hayır|Evet|[**GetBlob Operasyonu:** İstek Durumu = (SAS)Ağ Hatası](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Evet|Hayır|[**Devreye Sok:** İstek Durumu = Başarı](#put-operation-requeststatus--success)|
+   |PutBlob|Hayır|Evet|[**Devreye Sok:** İstek Durumu = (SAS)Ağ Hatası](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Durum sonuçları
 
-### <a name="getblob-operation-requeststatus--success"></a>GetBlob Işlemi: RequestStatus = başarılı
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob Operasyonu: RequestStatus = Başarı
 
-"Önerilen adımlar" bölümünün 5. adımında bahsedilen şekilde aşağıdaki değerleri kontrol edin:
+"Önerilen adımlar" bölümünün 5.
 
-* Uçtan uca gecikme
-* Sunucu gecikme süresi
-* İstemci gecikme süresi
+* Uçuca Gecikme
+* Sunucu Gecikmesi
+* İstemci Gecikmesi
 
-**RequestStatus = Success**Ile bir **GetBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcanması durumunda bu, Azure depolama 'nın istemciye veri yazma sırasında büyük bir süre harcadığını gösterir. Bu gecikme, Istemci tarafı bir sorunu gösterir.
+**İstek Durumu = Başarı**ile **GetBlob Işleminde,** Max **Time** **İstemci-Gecikme**içinde harcanıyorsa, bu, Azure Depolama'nın istemciye veri yazmak için büyük miktarda zaman harcadığını gösterir. Bu gecikme, Istemci Tarafı Sorununu gösterir.
 
-**Önerilen**
+**Öneri:**
 
-* İstemcinizdeki kodu araştırın.
-* İstemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping kullanın. 
+* Müvekkilinizin kodunu araştırın.
+* İstemcinin ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft İleti Çözümleyicisi veya Tcping'i kullanın. 
 
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob Işlemi: RequestStatus = (SAS) NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob İşlemi: İstek Durumu = (SAS)NetworkError
 
-"Önerilen adımlar" bölümünün 5. adımında bahsedilen şekilde aşağıdaki değerleri kontrol edin:
+"Önerilen adımlar" bölümünün 5.
 
-* Uçtan uca gecikme
-* Sunucu gecikme süresi
-* İstemci gecikme süresi
+* Uçuca Gecikme
+* Sunucu Gecikmesi
+* İstemci Gecikmesi
 
-**RequestStatus = (SAS) NetworkError**Ile bir **GetBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcaniyorsa en yaygın sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
+**RequestStatus = (SAS)NetworkError**ile **getblob işleminde,** **Max Time** **Client-Latency'de**harcanıyorsa, en yaygın sorun istemcinin depolama hizmetinde bir zaman aşımı süresi dolmadan önce bağlantısını kesmesidir.
 
-**Önerilen**
+**Öneri:**
 
-* İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın.
-* İstemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping kullanın. 
+* İstemcinin depolama hizmetiyle bağlantısını neden ve ne zaman kestiğini anlamak için istemcinizdeki kodu araştırın.
+* İstemcinin ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft İleti Çözümleyicisi veya Tcping'i kullanın. 
 
-### <a name="put-operation-requeststatus--success"></a>Put Işlemi: RequestStatus = başarılı
+### <a name="put-operation-requeststatus--success"></a>İşleme Koyula: RequestStatus = Başarı
 
-"Önerilen adımlar" bölümünün 5. adımında bahsedilen şekilde aşağıdaki değerleri kontrol edin:
+"Önerilen adımlar" bölümünün 5.
 
-* Uçtan uca gecikme
-* Sunucu gecikme süresi
-* İstemci gecikme süresi
+* Uçuca Gecikme
+* Sunucu Gecikmesi
+* İstemci Gecikmesi
 
-**RequestStatus = Success**Ile bir **PUT Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcanması durumunda bu, istemcinin Azure depolama 'ya veri göndermek için daha fazla zaman aldığını gösterir. Bu gecikme, Istemci tarafı bir sorunu gösterir.
+İstek Durumu ile **Bir Put İşleminde** **= Başarı**, Max **Time** **İstemci-Gecikme**süresi içinde harcanmışsa, bu, Istemcinin Azure Depolama'ya veri göndermesinin daha fazla zaman aldığını gösterir. Bu gecikme, Istemci Tarafı Sorununu gösterir.
 
-**Önerilen**
+**Öneri:**
 
-* İstemcinizdeki kodu araştırın.
-* İstemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping kullanın. 
+* Müvekkilinizin kodunu araştırın.
+* İstemcinin ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft İleti Çözümleyicisi veya Tcping'i kullanın. 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put Işlemi: RequestStatus = (SAS) NetworkError
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>İşlemE Koy: RequestStatus = (SAS)NetworkError
 
-"Önerilen adımlar" bölümünün 5. adımında bahsedilen şekilde aşağıdaki değerleri kontrol edin:
+"Önerilen adımlar" bölümünün 5.
 
-* Uçtan uca gecikme
-* Sunucu gecikme süresi
-* İstemci gecikme süresi
+* Uçuca Gecikme
+* Sunucu Gecikmesi
+* İstemci Gecikmesi
 
-**Istek durumu = (SAS) NetworkError**Ile bir **PutBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcaniyorsa, en sık karşılaşılan sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
+**RequestStatus = (SAS)NetworkError**ile bir **PutBlob Işleminde,** **Max Time** **Client-Latency'de**harcanıyorsa, en yaygın sorun istemcinin depolama hizmetinde bir zaman aşımı süresi dolmadan önce bağlantısını kesmesidir.
 
-**Önerilen**
+**Öneri:**
 
-* İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın.
-* İstemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping kullanın.
+* İstemcinin depolama hizmetiyle bağlantısını neden ve ne zaman kestiğini anlamak için istemcinizdeki kodu araştırın.
+* İstemcinin ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft İleti Çözümleyicisi veya Tcping'i kullanın.
 

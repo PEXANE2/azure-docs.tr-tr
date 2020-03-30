@@ -1,24 +1,24 @@
 ---
 title: Şablonlarda değişkenler
-description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar.
+description: Azure Kaynak Yöneticisi şablonundaki değişkenlerin nasıl tanımlandığını açıklar.
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483823"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki değişkenler
+# <a name="variables-in-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonundaki değişkenler
 
-Bu makalede Azure Resource Manager şablonunuzda değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
+Bu makalede, Azure Kaynak Yöneticisi şablonunuzda değişkenlerin nasıl tanımlanış ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuzun her yerine karmaşık ifadeleri yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Ardından, bu değişkene şablonunuzun her içinde gerektiği gibi başvurursunuz.
 
-Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişkenin şablonda kullanıldığı her yerde, Kaynak Yöneticisi çözümlenme değeriyle değiştirilir.
+Kaynak Yöneticisi dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişken şablonda nerede kullanılırsa kullanılsın, Kaynak Yöneticisi bu değişkeni çözümlenen değerle değiştirir.
 
-## <a name="define-variable"></a>Değişken tanımla
+## <a name="define-variable"></a>Değişkeni tanımla
 
-Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesabı adı için bir dize değeri oluşturur. Bir parametre değeri almak için çeşitli şablon işlevleri kullanır ve onu benzersiz bir dizeye birleştirir.
+Aşağıdaki örnekte değişken tanımı gösterilmektedir. Depolama hesabı adı için bir dize değeri oluşturur. Parametre değeri almak için çeşitli şablon işlevleri kullanır ve onu benzersiz bir dizeyle birleştirir.
 
 ```json
 "variables": {
@@ -26,11 +26,11 @@ Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesab�
 },
 ```
 
-Değişkenler bölümünde [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
+[Değişkenler bölümündeki başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamazsınız. Bu işlevler kaynağın çalışma zamanı durumunu alır ve değişkenler çözüldüğünde dağıtımdan önce yürütülemez.
 
-## <a name="use-variable"></a>Değişken kullan
+## <a name="use-variable"></a>Değişkeni kullan
 
-Şablonda, [değişkenler](template-functions-deployment.md#variables) işlevini kullanarak parametrenin değerine başvurarak. Aşağıdaki örnek, bir kaynak özelliği için değişkeninin nasıl kullanılacağını gösterir.
+Şablonda, [değişkenler](template-functions-deployment.md#variables) işlevini kullanarak parametrenin değerine başvurursunuz. Aşağıdaki örnekte, bir kaynak özelliği için değişkenin nasıl kullanılacağı gösterilmektedir.
 
 ```json
 "resources": [
@@ -44,7 +44,7 @@ Değişkenler bölümünde [başvuru](template-functions-resource.md#reference) 
 
 ## <a name="configuration-variables"></a>Yapılandırma değişkenleri
 
-Bir ortamı yapılandırmak için ilgili değerleri tutan değişkenler tanımlayabilirsiniz. Değişkeni değerleriyle bir nesne olarak tanımlarsınız. Aşağıdaki örnek, iki ortam için değerleri tutan bir nesne gösterir- **Test** ve **Üretim**.
+Bir ortamı yapılandırmak için ilgili değerleri tutan değişkenleri tanımlayabilirsiniz. Değişkeni değerlere sahip bir nesne olarak tanımlarsınız. Aşağıdaki örnekte, iki ortam için değer tutan bir nesne gösterilmektedir - **test** ve **prod**.
 
 ```json
 "variables": {
@@ -61,7 +61,7 @@ Bir ortamı yapılandırmak için ilgili değerleri tutan değişkenler tanımla
 },
 ```
 
-Parametreler ' de, hangi yapılandırma değerlerinin kullanılacağını belirten bir değer oluşturursunuz.
+Parametrelerde, hangi yapılandırma değerlerinin kullanılacağını gösteren bir değer oluşturursunuz.
 
 ```json
 "parameters": {
@@ -75,23 +75,23 @@ Parametreler ' de, hangi yapılandırma değerlerinin kullanılacağını belirt
 },
 ```
 
-Belirtilen ortamın ayarlarını almak için değişkeni ve parametresini birlikte kullanın.
+Belirtilen ortamın ayarlarını almak için değişken ve parametreyi birlikte kullanın.
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="example-templates"></a>Örnek şablonları
+## <a name="example-templates"></a>Örnek şablonlar
 
-Aşağıdaki örneklerde, değişkenlerini kullanma senaryoları gösterilmektedir.
+Aşağıdaki örneklerde değişkenleri kullanma senaryoları gösterilmektedir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-| [değişken tanımları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Farklı değişken türlerini gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
-| [Yapılandırma değişkeni](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Yapılandırma değerlerini tanımlayan bir değişkenin kullanımını gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
-| [ağ güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) ve [parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Bir ağ güvenlik grubuna güvenlik kuralları atamak için doğru biçimde bir dizi oluşturur. |
+| [değişken tanımları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Farklı değişken türlerini gösterir. Şablon herhangi bir kaynak dağıtmaz. Değişken değerleri inşa eder ve bu değerleri döndürür. |
+| [yapılandırma değişkeni](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Yapılandırma değerlerini tanımlayan bir değişkenin kullanımını gösterir. Şablon herhangi bir kaynak dağıtmaz. Değişken değerleri inşa eder ve bu değerleri döndürür. |
+| [ağ güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) ve [parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Bir ağ güvenlik grubuna güvenlik kuralları atamak için doğru biçimde bir dizi oluşturuyor. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Değişkenlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Değişken oluşturma hakkında öneriler için bkz. [en iyi yöntemler-değişkenler](template-best-practices.md#variables).
+* Değişkenlerin kullanılabilir özellikleri hakkında bilgi edinmek için [bkz.](template-syntax.md)
+* Değişken oluşturma yla ilgili öneriler için en [iyi uygulamalar - değişkenler](template-best-practices.md#variables)' e bakın.

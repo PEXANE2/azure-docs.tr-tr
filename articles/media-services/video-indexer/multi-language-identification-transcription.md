@@ -1,7 +1,7 @@
 ---
-title: Video Indexer ile çoklu dil içeriğini otomatik olarak belirleyip yeniden yapın
+title: Video Indexer ile çok dilli içeriği otomatik olarak tanımlayın ve yazıya döktü
 titleSuffix: Azure Media Services
-description: Bu konuda, Video Indexer ile çoklu dil içeriğini otomatik olarak belirleme ve yeniden oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.
+description: Bu konu, Video Indexer ile çok dilli içeriğin otomatik olarak nasıl tanımlanabildiğini ve aktarılabildiğini gösterir.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72968734"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla (Önizleme)
+# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Çok dilli içeriği otomatik olarak tanımlar ve yazıya çevirir (önizleme)
 
-Video Indexer, çok dilli içerikte otomatik dil tanımlamayı ve dökümünü destekler. Bu işlem, bir araya getirilebilmesi için bir medya dosyasının her segmentini göndermek ve geri yüklemek üzere bir birleştirilmiş döküm ile birleştirmek için, ses durumundan farklı kesimlerde konuşulan dili otomatik olarak tanımlamayı içerir. 
+Video Indexer, çok dilli içerikte otomatik dil tanımlama ve transkripsiyon destekler. Bu işlem, sesten farklı segmentlerde konuşulan dili otomatik olarak tanımlamayı, medya dosyasının her bir bölümünün yazıya dönüştürülmesini ve transkripsiyonun tek bir birleşik transkripsiyonla birleştirilmesini içerir. 
 
-## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Portal ile dizin oluşturma sırasında çok dilli kimlik seçme
+## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Portal ile indeksleme de çok dilli tanımlama seçimi
 
-Videonuzu karşıya yüklerken ve dizin oluştururken **Çoklu dil algılama** seçeneğini belirleyebilirsiniz. Alternatif olarak, videonuzu yeniden dizinlerken **Çoklu dil algılamayı** seçebilirsiniz. Aşağıdaki adımlar, yeniden dizin oluşturmayı açıklamaktadır:
+Videonuzu yüklerken ve dizine ekrirken **çok dilli algılamayı** seçebilirsiniz. Alternatif olarak, videonuzu yeniden dizine alırken **çok dilli algılamayı** seçebilirsiniz. Aşağıdaki adımlar nasıl yeniden dizine ekin ekinle yapılacağını açıklar:
 
 1. [Video Indexer](https://vi.microsoft.com/) web sitesine gidip oturum açın.
-1. **Kitaplık** sayfasına gidin ve yeniden adlandırmak istediğiniz videonun adının üzerine gelin. 
-1. Sağ alt köşede, **videoyu yeniden indeksle** düğmesine tıklayın. 
-1. **Yeniden dizin videosu** iletişim kutusunda, **video kaynağı dili** açılan kutusundan **çok dilli algılama** ' yı seçin.
+1. **Kitaplık** sayfasına gidin ve yeniden dizine almak istediğiniz videonun adının üzerinde gezinin. 
+1. Sağ alt köşede, Yeniden **dizin video** düğmesini tıklatın. 
+1. Yeniden **dizine video** iletişim kutusunda, Video kaynak **dili** açılır kutusundan **çok dilli algılamayı** seçin.
 
-    * Bir videonun çoklu dil olarak dizini oluşturulduğunda, Öngörüler sayfasında bu seçenek bulunur ve Kullanıcı, hangi segmentin "konuşulan dilde" hangi kesime dahil edileceğini görüntülemesine olanak tanır.
-    * Tüm dillere çeviri, çok dilli döküm betiğinden tamamen kullanılabilir.
-    * Diğer tüm Öngörüler algılanan ana dilde görünür. bu dil, ses içinde en çok görülen dildir.
-    * Player 'da kapalı açıklamalı altyazı, çok dilde de mevcuttur.
+    * Bir video çok dilli olarak dizine alındığında, içgörü sayfası bu seçeneği içerir ve kullanıcının hangi kesimin hangi dilde "Konuşulan dil" olarak transkripsiyonedildiğini görüntülemesini sağlayan ek bir içgörü türü görüntülenir.
+    * Tüm dillere çeviri çok dilli transkript ten tam olarak elde edilebilir.
+    * Diğer tüm kavrayışlar algılanan ana dilde görünür – bu seste en çok görünen dildir.
+    * Oyuncu üzerinde kapalı altyazı çok dilli olarak da mevcuttur.
 
 ![Portal deneyimi](./media/multi-language-identification-transcription/portal-experience.png)
 
-## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>API ile dizin oluşturma sırasında çok dilli kimlik seçme
+## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>API ile dizin oluşturmada çok dilli tanımlama seçimi
 
-API kullanarak bir videoyu dizinleme veya [yeniden dizinleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) yaparken, `sourceLanguage` parametresindeki `multi-language detection` seçeneğini belirleyin.
+API'yi kullanarak bir videoyu dizine ekin `multi-language detection` lerken `sourceLanguage` veya [yeniden dizine alırken,](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) parametredeki seçeneği seçin.
 
 ### <a name="model-output"></a>Model çıkışı
 
-Model, videoda algılanan dillerin tümünü tek bir listede alacaktır
+Model, videoda algılanan tüm dilleri tek bir listede alır
 
 ```json
 "sourceLanguage": null,
@@ -53,7 +53,7 @@ Model, videoda algılanan dillerin tümünü tek bir listede alacaktır
 ],
 ```
 
-Ayrıca, döküm bölümündeki her bir örnek, oluşturulduğu dili içerir
+Ayrıca, transkripsiyon bölümündeki her örnek, transkripsiyon yapılan dili
 
 ```json
 {
@@ -73,21 +73,21 @@ Ayrıca, döküm bölümündeki her bir örnek, oluşturulduğu dili içerir
 },
 ```
 
-## <a name="guidelines-and-limitations"></a>Kılavuzlar ve sınırlamalar
+## <a name="guidelines-and-limitations"></a>Yönergeler ve sınırlamalar
 
-* Desteklenen dillerin kümesi: Ingilizce, Fransızca, Almanca, Ispanyolca.
-* Desteklenen üç dile kadar çok dilli içerik desteği.
-* Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
-* Her dil için 15 saniyelik en az kesim uzunluğu.
-* Dil algılama boşluğu, ortalama olarak 3 saniyedir.
-* Konuşmanın sürekli olması beklenmektedir. Diller arasındaki sık yapılan değişimler modeller performansını etkileyebilir.
-* Yerel olmayan konuşmacılara yönelik konuşma, model performansını etkileyebilir (örneğin, hoparlörler yerel dil düzeyini kullanırken ve başka bir dile geçiş yaparken).
-* Model, Spontaneous ses Acoustics (ses komutları, Malama, vb.) ile bir konuşma konuşmayı tanımak için tasarlanmıştır.
-* Proje oluşturma ve düzenlemesi Şu anda çok dilli videolar için kullanılamaz.
-* Özel dil modelleri, çoklu dil algılama kullanılırken kullanılamaz.
-* Anahtar sözcük ekleme desteklenmiyor.
-* Kapalı açıklamalı altyazı dosyalarını dışa aktarırken dil göstergesi görünmez.
-* Güncelleştirme dökümü API 'SI birden çok dil dosyasını desteklemiyor.
+* Desteklenen diller kümesi: İngilizce, Fransızca, Almanca, İspanyolca.
+* Desteklenen en fazla üç dilde çok dilli içerik desteği.
+* Ses yukarıda desteklenen liste dışında diller içeriyorsa, sonuç beklenmeyen.
+* Her dil için algılamak için en az segment uzunluğu – 15 saniye.
+* Dil algılama ofset ortalama 3 saniyedir.
+* Konuşmanın sürekli olması beklenmektedir. Diller arasında sık sık yapılan değişiklikler modellerin performansını etkileyebilir.
+* Ana dili İngilizce olmayanların konuşması model performansını etkileyebilir (örneğin, konuşmacılar ana dillerini kullanıp başka bir dile geçtiklerinde).
+* Model makul ses akustiği ile spontan bir konuşma konuşma tanımak için tasarlanmıştır (değil sesli komutları, şarkı, vb).
+* Proje oluşturma ve düzenleme şu anda çok dilli videolar için kullanılamıyor.
+* Çok dilli algılama kullanırken özel dil modelleri kullanılamaz.
+* Anahtar kelimeler eklemek desteklenmez.
+* Kapalı resim yazısı dosyaları dışa aktarırken dil göstergesi görünmez.
+* Güncelleştirme transkript API birden çok dil dosyasını desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

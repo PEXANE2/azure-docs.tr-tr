@@ -1,7 +1,7 @@
 ---
-title: Hizmetinizin ölçeğini ölçeklendirmek ve sağlamak için sistem durumu araştırmaları
+title: Hizmetiniz için HA'yı ölçeklendirmek ve sağlamak için sağlık sondaları
 titleSuffix: Azure Load Balancer
-description: Bu makalede, arka plandaki örnekleri izlemek için sistem durumu araştırmalarını nasıl kullanacağınızı öğrenin Azure Load Balancer
+description: Bu makalede, Azure Yük Bakiyesi arkasındaki örnekleri izlemek için sistem sondalarını nasıl kullanacağınızı öğrenin
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,92 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79285142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159447"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
-Azure Load Balancer ile yük dengeleme kuralları kullanırken, arka uç uç noktası durumunu algılamaya Load Balancer izin vermek için sistem durumu araştırmalarını belirtmeniz gerekir.  Durum araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını tespit eder. Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. Ayrıca, bir sistem durumu araştırmasına özel bir yanıt oluşturabilir ve yük veya planlanan kapalı kalma süresini yönetmek için akış denetimi için sistem durumu araştırması ' ni kullanabilirsiniz. Bir sistem durumu araştırması başarısız olduğunda, Load Balancer ilgili sağlıksız örneğe yeni akış göndermeyi durdurur. Giden bağlantı etkilenmez, yalnızca gelen bağlantı etkilendi.
+Azure Yük Dengeleyicisi ile yük dengeleme kurallarını kullanırken, Yük Bakiyesi'nin arka uç uç noktası durumunu algılamasına izin vermek için sistem durumu sondalarını belirtmeniz gerekir.  Sistem durumu sondası ve sonda yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını belirler. Bir uygulamanın hatasını arka uç uç noktasında algılamak için sistem durumu sondalarını kullanabilirsiniz. Ayrıca, bir sistem durumu sondasına özel bir yanıt oluşturabilir ve yük veya planlanan kapalı kalma süresini yönetmek için akış denetimi için sistem sondasını kullanabilirsiniz. Bir sistem durumu sondası başarısız olduğunda, Yük Dengeleyicisi ilgili sağlıksız örneğe yeni akışlar göndermeyi durdurur. Giden bağlantı etkilenmez, yalnızca gelen bağlantı etkilenir.
 
-Durum araştırmaları birden çok protokolü destekler. Belirli bir sistem durumu araştırma protokolünün kullanılabilirliği Load Balancer SKU 'ya göre değişir.  Ayrıca, hizmetin davranışı, bu tabloda gösterildiği gibi Load Balancer SKU 'ya göre farklılık gösterir:
+Sağlık sondaları birden çok protokolü destekler. Belirli bir sağlık sondası protokolünün kullanılabilirliği Yük Dengeleyici SKU'ya göre değişir.  Ayrıca, hizmetin davranışı bu tabloda gösterildiği gibi Yük Dengeleyici SKU göre değişir:
 
 | | Standart SKU | Temel SKU |
 | --- | --- | --- |
-| [Araştırma türleri](#types) | TCP VE HTTP, HTTPS | TCP VE HTTP |
-| [Araştırma davranışı](#probedown) | Tüm araştırmaları, tüm TCP akışları devam edin. | Tüm yoklamalar, tüm TCP akışları sona erer. | 
+| [Sonda türleri](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Sonda aşağı davranış](#probedown) | Tüm sondalar aşağı, tüm TCP akışları devam eder. | Tüm sondalar aşağı, tüm TCP akışları nın süresi doluyor. | 
 
 
 >[!IMPORTANT]
->Güvenilir bir hizmet oluşturmak için aşağıdaki önemli [Tasarım Kılavuzu](#design) dahil olmak üzere bu belgeyi tamamen gözden geçirin.
+>Güvenilir bir hizmet oluşturmak için aşağıdaki önemli [tasarım kılavuzu](#design) da dahil olmak üzere bu belgeyi bütünüyle gözden geçirin.
 
 >[!IMPORTANT]
->Load Balancer sistem durumu araştırmaları, 168.63.129.16 IP adresinden kaynaklanacak ve örneğinizi işaretlemek için araştırmaların engellenmemelidir.  Ayrıntılar için [araştırma kaynağı IP adresini](#probesource) gözden geçirin.
+>Yük Dengeleyici sağlık probları IP adresinden kaynaklanır 168.63.129.16 ve örnek işaretlemek için problar için engellenmemelidir.  Ayrıntılar için [sonda kaynağı IP adresini](#probesource) gözden geçirin.
 
-## <a name="probes"></a>Araştırma yapılandırması
+>[!IMPORTANT]
+>Yapılandırılmış zaman çıkış eşiğine bakılmaksızın, SUNUCU HTTP 200 Ok olmayan herhangi bir durum kodunu döndürürse veya bağlantı TCP sıfırlama yoluyla sonlandırılırsa, HTTP(S) Load Balancer sistem sondaları bir örneği otomatik olarak inceler.
 
-Durum araştırma yapılandırması aşağıdaki öğelerden oluşur:
+## <a name="probe-configuration"></a><a name="probes"></a>Sonda yapılandırması
 
-- Tek yoklamalar arasındaki Aralık süresi
-- Araştırmanın farklı bir duruma geçmeden önce gözlenecek araştırma yanıtlarının sayısı
-- Araştırmanın Protokolü
-- Araştırmanın bağlantı noktası
-- Http (S) yoklamaları kullanılırken HTTP GET için kullanılacak HTTP yolu
+Sistem durumu sondası yapılandırması aşağıdaki öğelerden oluşur:
+
+- Tek tek problar arasındaki aralığın süresi
+- Sonda farklı bir duruma geçmeden önce gözlemlenmeleri gereken sonda yanıtlarının sayısı
+- Sondanın protokolü
+- Sondanın bağlantı noktası
+- HTTP(S) sondalarını kullanırken HTTP GET için kullanılacak HTTP yolu
 
 >[!NOTE]
->Azure PowerShell, Azure CLı, şablonlar veya API kullanılırken bir araştırma tanımı zorunlu değildir veya denetlenir. Araştırma doğrulama testleri yalnızca Azure portalı kullanılırken yapılır.
+>Sonda tanımı, Azure PowerShell, Azure CLI, Şablonlar veya API kullanırken zorunlu değildir veya denetlenmez. Sonda doğrulama testleri yalnızca Azure Portalı kullanılarak yapılır.
 
-## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Uygulama sinyalini anlama, sinyalin algılanması ve platformun yeniden eylemi
+## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Uygulama sinyalinin anlaşılması, sinyalin algılanması ve platformun reaksiyonu
 
-Her ikisine de uygulanan araştırma yanıtlarının sayısı
+Sonda yanıtlarının sayısı her ikisi için de geçerlidir
 
-- bir örneğin yukarı olarak işaretlenmesini sağlayan başarılı araştırmaların sayısı ve
-- bir örneğin aşağı olarak işaretlenmesine neden olan başarısız araştırmaların sayısı.
+- bir örneğin yukarı olarak işaretlemesine izin veren başarılı sondaların sayısı ve
+- bir örneğin aşağı olarak işaretlenebilmelidir neden zamanlanmış sondaların sayısı.
 
-Belirtilen zaman aşımı ve Aralık değerleri, bir örneğin yukarı veya aşağı olarak işaretlenip işaretlenmediğini belirtir.  Zaman aralığının yoklama yanıtlarının sayısıyla çarpıldığı süre, araştırma yanıtlarının algılanabilmesi için gereken süreyi belirler.  Ve gerekli yoklamaların elde edilmesi durumunda hizmet tepki verir.
+Belirtilen zaman aralığı ve aralık değerleri, bir örneğin yukarı mı yoksa aşağı mı olarak işaretleneceğini belirler.  Sonda yanıtlarının sayısıyla çarpılır aralığın süresi, sonda yanıtlarının algılanılması gereken süreyi belirler.  Ve gerekli sondalar sağlandıktan sonra hizmet tepki verecektir.
 
-Davranışı bir örnekle daha fazla gösteririz. Araştırma yanıtlarının sayısını 2 ' ye ve Interval değerini 5 saniyeye ayarladıysanız, bu 2 araştırma hatalarının 10 saniyelik bir aralıkta gözlenecek olması anlamına gelir.  Bir araştırmanın gönderildiği zaman, uygulamanız durumu değiştirebiliyorsa, iki senaryoya göre tespit etmek için gereken süreyi de eşliyoruz:
+Davranışı bir örnekle daha da gösteredebiliriz. Sonda yanıtlarının sayısını 2'ye ve aralığı 5 saniyeye ayarladıysanız, bu 10 saniyelik bir aralık içinde 2 sonda zaman aralığı hatalarının gözlenmeleri gerektiği anlamına gelir.  Sondanın gönderildiği saat, uygulamanız durumu değiştirebildiği zaman eşitlenmedığından, algılama süresini iki senaryoya göre bağlayabiliriz:
 
-1. Uygulamanız ilk araştırma ulaşmadan hemen önce başarısız olan bir araştırma yanıtı oluşturmaya başlarsa, bu olayların algılanması 10 saniye (2 x 5 saniye aralığı) ve uygulamanın ilk araştırma ulaştı.  Bu algılamanın 10 saniyeden biraz uzun sürmek üzere olduğunu varsayabilirsiniz.
-2. Uygulamanız ilk araştırma alındıktan hemen sonra başarısız bir araştırma yanıtı oluşturmaya başlarsa, bu olayların algılanması sonraki araştırma gelene kadar (ve başarısız olana) ve 10 saniye (2 x 5 saniyelik aralıklar) kadar başlamaz.  Bu algılamanın yalnızca 15 saniye içinde geçmesi gerektiğini varsayabilirsiniz.
+1. Uygulamanız ilk sonda gelmeden hemen önce bir zaman çıkış sondası yanıtı üretmeye başlarsa, bu olayların algılanması 10 saniye (2 x 5 saniye aralık) artı uygulamanın süresi nin ilk zaman aralığına sinyal vermeye başlaması sonda geldi.  Bu algılamanın 10 saniyeden biraz daha uzun süreceğini varsayabilirsiniz.
+2. Uygulamanız ilk sonda geldikten hemen sonra bir zaman zaman sondası yanıtı üretmeye başlarsa, bu olayların algılanması bir sonraki sonda gelene (ve saatler çıkana kadar) artı başka bir 10 saniye (2 x 5 saniyelik aralıklar) gelene kadar başlamaz.  Bu algılamanın 15 saniyeden az süreceğini varsayabilirsiniz.
 
-Bu örnekte, algılama gerçekleştiyse, platform bu değişikliğe tepki vermek için kısa bir süre sürer.  Bu, buna bağlı olarak 
+Bu örnekte, algılama oluştuktan sonra, platformun bu değişikliğe tepki göstermesi çok az zaman alır.  Bu bir bağlı olarak anlamına gelir 
 
-1. uygulama durumu değiştirme başladığında ve
-2. Bu değişiklik algılandığında ve gerekli ölçütlere (belirtilen aralıkta gönderilen yoklamaların sayısı) karşılandığında ve
-3. algılama, platform genelinde iletildiğinde 
+1. uygulama durumu değiştirmeye başladığında ve
+2. bu değişiklik algılandığında ve gerekli ölçütleri (belirtilen aralıkta gönderilen sonda sayısı) karşılandığında ve
+3. algılama platformu üzerinden iletildiğinde 
 
-Hatalı bir araştırmanın yeniden eyleminin, uygulamadan gelen bir değişikliğe yanıt vermek için en az 10 saniyelik ve en fazla 15 saniye arasında geçmesi gerektiğini varsayabilirsiniz.  Bu örnek, ne olduğunu göstermek için verilmiştir, ancak bu örnekte gösterilen yukarıdaki kaba kılavuzun ötesinde tam bir süre tahmin etmek mümkün değildir.
+bir zaman-out sonda tepkisi ne kadar az 10 saniye ve biraz üzerinde biraz 15 saniye arasında uygulamadan sinyal bir değişiklik tepki alacağını varsayabiliriz.  Bu örnek, neler olduğunu göstermek için sağlanır, ancak, bu örnekte gösterilen yukarıdaki kaba kılavuz ötesinde tam bir süre tahmin etmek mümkün değildir.
  
-## <a name="types"></a>Araştırma türleri
+## <a name="probe-types"></a><a name="types"></a>Sonda türleri
 
-Sistem durumu araştırması tarafından kullanılan protokol aşağıdakilerden birine yapılandırılabilir:
+Sistem durumu sondası tarafından kullanılan protokol aşağıdakilerden birine yapılandırılabilir:
 
 - [TCP dinleyicileri](#tcpprobe)
 - [HTTP uç noktaları](#httpprobe)
 - [HTTPS uç noktaları](#httpsprobe)
 
-Kullanılabilir protokoller, kullanılan Load Balancer SKU 'suna bağımlıdır:
+Kullanılabilir protokoller kullanılan Yük Dengeleyici SKU bağlıdır:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
 | Standart SKU |    &#9989; |   &#9989; |   &#9989; |
 | Temel SKU |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcpprobe"></a>TCP araştırması
+### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP sondası
 
-TCP araştırmaları, bir üç yönlü açık TCP el sıkışması tanımlı bir bağlantı ile gerçekleştirerek bir bağlantıyı başlatırsınız.  TCP araştırmaları bir bağlantıyı dört yönlü bir kapalı TCP el sıkışması ile sonlandırır.
+TCP sondaları, tanımlanan bağlantı noktasıyla üç yönlü açık TCP el sıkışması gerçekleştirerek bir bağlantı başlatır.  TCP sondaları dört yönlü kapalı TCP el sıkışması ile bağlantıyı sonlandırır.
 
-En düşük araştırma aralığı 5 saniyedir ve iyi durumda olmayan yanıtlar en az sayıda 2'dir.  Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
+Minimum sonda aralığı 5 saniye, en az sağlıksız yanıt sayısı 2'dir.  Tüm aralıkların toplam süresi 120 saniyeyi geçemez.
 
-Bir TCP araştırması başarısız olur:
-* Örnek noktasındaki TCP dinleyiciyi sırasında zaman aşımı süresi hiç yanıt vermiyor.  Araştırma, araştırmayı işaretlemeden önce yanıtlanmak üzere yapılandırılan başarısız araştırma isteği sayısına göre aşağı işaretlenir.
-* Örneğinden sıfırlama bir TCP araştırması alır.
+Bir TCP sondası şu anda başarısız olur:
+* Örnekteki TCP dinleyicisi zaman acısı döneminde hiç yanıt vermez.  Sonda, sondayı işaretlemeden önce yanıtsız kalmak üzere yapılandırılan zamanlanmış sonda isteklerinin sayısına göre işaretlenir.
+* Sonda, örnekten bir TCP sıfırlaması alır.
 
-Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırmasını nasıl ifade ettiğiniz gösterilmektedir:
+Aşağıda, bu tür bir sonda yapılandırmasını Kaynak Yöneticisi şablonunda nasıl ifade edebilirsiniz:
 
 ```json
     {
@@ -112,26 +115,26 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
       },
 ```
 
-### <a name="httpprobe"></a><a name="httpsprobe"></a> Http/https araştırması
+### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a> HTTP / HTTPS sondası
 
 >[!NOTE]
->HTTPS araştırması yalnızca [Standart Load Balancer](load-balancer-standard-overview.md)için kullanılabilir.
+>HTTPS prob sadece [Standart Yük Dengeleyicisi](load-balancer-standard-overview.md)için kullanılabilir.
 
-HTTP ve HTTPS araştırmaları TCP araştırmasına dayanır ve belirtilen yola sahip bir HTTP GET oluşturur. Bu araştırmaların her ikisi de göreli yollar için HTTP GET destekler. HTTPS araştırmaları, aynı Aktarım Katmanı Güvenliği (TLS, SSL adıyla) birlikte HTTP araştırmaları gibi sarmalayıcı. Örnek bir HTTP 200 durum zaman aşımı süresi içinde yanıt verdiğinde durum yoklaması işaretlenir.  Sistem durumu araştırması, varsayılan olarak her 15 saniyede bir yapılandırılan durum araştırma bağlantı noktasını denetlemeye çalışır. En düşük araştırma aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
+HTTP ve HTTPS sondaları TCP sondası üzerine inşa ve belirtilen yol ile bir HTTP GET sorunu. Bu sondaların her ikisi de HTTP GET için göreli yolları destekler. HTTPS sondaları, bir Taşıma Katmanı Güvenliği (TLS, eski adıyla SSL) sarıcı nın eklenmesiyle HTTP sondalarıyla aynıdır. Sistem durumu sondası, zaman anına giren bir HTTP durumu 200 ile yanıt verdiğinde işaretlenir.  Sistem durumu sondası, yapılandırılan sistem durumu sondası bağlantı noktasını varsayılan olarak her 15 saniyede bir denetlemeye çalışır. Minimum sonda aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi geçemez.
 
-Araştırma bağlantı noktası Ayrıca hizmetin kendisi için de dinleyici olan yük dengeleyici rotasyondan örnekleri kaldırmak için kendi mantığınızı uygulamak üzere, HTTP/HTTPS araştırmaları da yararlı olabilir. Örneğin, % 90 CPU ise örneğini kaldırmaya karar ve 200 HTTP durum döndürür. 
+HTTP / HTTPS probları da sonda bağlantı noktası da hizmet kendisi için dinleyici ise yük dengeleyici rotasyon örnekleri kaldırmak için kendi mantık uygulamak için yararlı olabilir. Örneğin, %90 CPU'nun üzerindeyse bir örneği kaldırmaya ve 200'e ait olmayan bir HTTP durumunu döndürmeye karar verebilirsiniz. 
 
 > [!NOTE] 
-> HTTPS araştırması, tüm zincirde en az bir SHA256 imza karması olan sertifikaların kullanılmasını gerektirir.
+> HTTPS Probe tüm zincir sha256 minimum imza karma olan tabanlı sertifikaların kullanımını gerektirir.
 
-Artık Cloud Services'ı kullanın ve w3wp.exe kullanan web rolleri, ayrıca otomatik izleme, Web sitesini ulaşın. Web sitesi kodunuzdaki hataları, yük dengeleyici araştırması için 200 durumu döndürür.
+Bulut Hizmetlerini kullanıyorsanız ve w3wp.exe kullanan web rollerine sahipseniz, web sitenizin otomatik olarak izlenmesini de elde edersiniz. Web sitenizdeki hatalar, 200 olmayan bir durumu yük dengeleyici sondasına döndürer.
 
-Bir HTTP / HTTPS araştırma başarısız:
-* Araştırma uç noktasına bir HTTP yanıt kodu 200 (örneğin, 403, 404 veya 500) dışında döndürür. Bu, sistem durumu araştırmasını hemen işaretleyecek. 
-* Araştırma bitiş noktası, en az yoklama aralığı ve 30 saniyelik zaman aşımı süresi boyunca yanıt vermez. Araştırma çalışmıyor olarak işaretlenmeden ve tüm zaman aşımı aralıklarının toplamına ulaşılıncaya kadar birden çok araştırma isteği yanıtlanmayabilir.
-* Araştırma uç noktası, TCP sıfırlama yoluyla bağlantıyı kapatır.
+Bir HTTP / HTTPS sondası başarısız olduğunda:
+* Sonda bitiş noktası 200 (örneğin, 403, 404 veya 500) dışında bir HTTP yanıt kodu döndürür. Bu, sağlık sondasını hemen işaretleyecek. 
+* Sonda bitiş noktası, sonda aralığı nın ve 30 saniyelik zaman aralığının en az sırasında hiç yanıt vermez. Sonda çalışmamış olarak işaretleninceye ve tüm zaman aralığının toplamına ulaşılıncaya kadar birden çok sonda isteği yanıtsız kalabilir.
+* Sonda uç noktası, TCP sıfırlama yoluyla bağlantıyı kapatır.
 
-Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırmasını nasıl ifade ettiğiniz gösterilmektedir:
+Aşağıda, bu tür bir sonda yapılandırmasını Kaynak Yöneticisi şablonunda nasıl ifade edebilirsiniz:
 
 ```json
     {
@@ -157,106 +160,106 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
       },
 ```
 
-### <a name="guestagent"></a>Konuk Aracısı Araştırması (yalnızca klasik)
+### <a name="guest-agent-probe-classic-only"></a><a name="guestagent"></a>Konuk ajan sondası (Yalnızca Klasik)
 
-Bulut hizmeti rolleri (çalışan rolleri ve web rolleri), varsayılan olarak araştırma izlemesi için konuk Aracısı kullanın.  Konuk aracı araştırması, son çare bir yapılandırmadır.  Her zaman bir TCP veya HTTP araştırmasıyla bir sistem durumu araştırması kullanın. Konuk aracı araştırması, çoğu uygulama senaryoları için açıkça tanımlanmış araştırmaları olabildiğince verimli değildir.
+Bulut hizmeti rolleri (çalışan rolleri ve web rolleri) varsayılan olarak sonda izleme için bir konuk aracı kullanır.  Konuk ajan sondası son çare yapılandırmasıdır.  Her zaman açıkça bir TCP veya HTTP sondası ile bir sağlık sondası kullanın. Konuk ajan sondası, çoğu uygulama senaryosu için açıkça tanımlanmış sondalar kadar etkili değildir.
 
-Konuk aracı araştırması, Konuk aracısının VM içindeki bir denetimdir. Dinler ve hazır durumda yalnızca örnektir ile bir HTTP 200 OK yanıtı yanıt verdiği. (Geri dönüştürme veya durduruluyor meşgul diğer durumlar vardır.)
+Konuk ajan sondası VM'deki konuk ajanın kontrolüdür. Daha sonra dinler ve yalnızca örnek Hazır durumda olduğunda bir HTTP 200 Ok yanıtı ile yanıt verir. (Diğer durumlar Meşgul, Geri Dönüşüm veya Durdurmadır.)
 
-Daha fazla bilgi için bkz. [sistem durumu araştırmaları için hizmet tanım dosyasını (csdef) yapılandırma](https://msdn.microsoft.com/library/azure/ee758710.aspx) veya [bulut hizmetleri için bir genel yük dengeleyici oluşturma ile çalışmaya başlama](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+Daha fazla bilgi için, [sistem durumu sondaları için hizmet tanımı dosyasını (csdef) yapılandırın](https://msdn.microsoft.com/library/azure/ee758710.aspx) veya [bulut hizmetleri için genel bir yük dengeleyicisi oluşturarak başlayın.](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)
 
-Konuk Aracısı HTTP 200 OK ile yanıt vermezse, yük dengeleyici örnek yanıt vermiyor olarak işaretler. Ardından, bu örneğe akışlar gönderme durdurur. Yük Dengeleyici örneği denetlemek devam eder. 
+Konuk aracı HTTP 200 Ok ile yanıt vermezse, yük dengeleyicisi örneği yanıt vermiyor olarak işaretler. Daha sonra bu örne akış göndermeyi durdurur. Yük dengeleyici örneği denetlemeye devam ediyor. 
 
-Yük Dengeleyici yeni akışlar bu örneğe Konuk Aracısı bir HTTP 200 yanıt verirse, yeniden gönderir.
+Konuk aracı http 200 ile yanıt verirse, yük dengeleyicisi bu örne yeniden yeni akışlar gönderir.
 
-Bir web rolü kullandığınızda, Web sitesi kodu genellikle Azure tarafından izlenen değil w3wp.exe çalışan yapı veya konuk Aracısı. W3wp.exe (örneğin, HTTP 500 yanıt) hataları Konuk Aracısı ile bildirilen değildir. Sonuç olarak, yük dengeleyici rotasyon dışında bu örneğe almaz.
+Bir web rolü kullandığınızda, web sitesi kodu genellikle Azure kumaşı veya konuk aracı tarafından izlenilmeyen w3wp.exe'de çalışır. w3wp.exe'deki hatalar (örneğin, HTTP 500 yanıtları) konuk temsilciye bildirilmemiştir. Sonuç olarak, yük dengeleyicisi bu örneği döndürme nin dışına çıkarmaz.
 
 <a name="health"></a>
-## <a name="probehealth"></a>Araştırma davranışı
+## <a name="probe-up-behavior"></a><a name="probehealth"></a>Davranışı araştırma
 
-TCP, HTTP ve HTTPS sistem durumu araştırmaları sağlıklı olarak değerlendirilir ve arka uç uç noktasını şu durumlarda sağlıklı olarak işaretler:
+TCP, HTTP ve HTTPS sistem sondaları sağlıklı kabul edilir ve aşağıdaki hallerde arka uç bitiş noktasını sağlıklı olarak işaretler:
 
-* VM önyüklendikten sonra sistem durumu araştırması başarılı olur.
-* Arka uç uç noktasını sağlıklı olarak işaretlemek için gereken yoklamaların belirtilen sayısı.
+* Sağlık sondası VM botlar sonra bir kez başarılı olur.
+* Sağlıklı olarak arka uç bitiş noktasını işaretlemek için gereken sonda sayısı elde edilmiştir.
 
-Sağlıklı bir durumu elde eden tüm arka uç uç noktaları, yeni akış almaya uygundur.  
+Sağlıklı bir duruma ulaşmış herhangi bir arka uç uç noktası yeni akışlar almaya uygundur.  
 
 > [!NOTE]
-> Sistem durumu araştırması dalgalandıktan sonra, yük dengeleyici arka uç uç noktasını sağlıklı duruma getirmeden önce daha uzun süre bekler. Bu ek bekleme süresi, kullanıcı ve altyapı korur ve kasıtlı bir ilkedir.
+> Sağlık sondası dalgalanırsa, yük dengeleyiciarka uç noktasını sağlıklı duruma geri koyması için daha uzun süre bekler. Bu ekstra bekleme süresi kullanıcıyı ve altyapıyı korur ve kasıtlı bir ilkedir.
 
-## <a name="probedown"></a>Araştırma davranışı
+## <a name="probe-down-behavior"></a><a name="probedown"></a>Sonda aşağı davranış
 
 ### <a name="tcp-connections"></a>TCP bağlantıları
 
-Yeni TCP bağlantıları kalan sağlıklı arka uç uç noktası için başarılı olur.
+Yeni TCP bağlantıları, sağlıklı arka uç bitiş noktası nı kalmayı başarır.
 
-Arka uç uç noktasının sistem durumu araştırması başarısız olursa, bu arka uç uç noktasına kurulan TCP bağlantıları devam eder.
+Bir arka uç uç noktasının sistem durumu sondası başarısız olursa, bu arka uç bitiş noktasına kurulan TCP bağlantıları devam eder.
 
-Yeni akış, bir arka uç havuzundaki tüm örnekleri için tüm araştırmaları başarısız olursa, arka uç havuzuna gönderilir. Standart Load Balancer, devam etmek için yerleşik TCP akışları izin verir.  Temel yük dengeleyici arka uç havuzu için tüm mevcut TCP akışları sona erer.
+Arka uç havuzundaki tüm örneklerin tüm sondaları başarısız olursa, arka uç havuzuna yeni akışlar gönderilmez. Standart Yük Dengeleyicisi, yerleşik TCP akışlarının devam etmesine izin verecektir.  Temel Yük Dengeleyicisi, varolan tüm TCP akışlarını arka uç havuzuna sonlandırır.
  
-Load Balancer bir geçiş hizmetidir (TCP bağlantılarını sonlandıramaz) ve akış her zaman istemci ile sanal makinenin Konuk işletim sistemi ve uygulaması arasındadır. Tüm yoklamalar içeren bir havuz, akışı alacak ve bir SYN-ACK ile yanıt veren bir uç nokta olmadığından, ön uç, TCP bağlantı açma girişimlerini (SYN) yanıt vermemesine neden olur.
+Yük Dengeleyici hizmet yoluyla bir geçiş (TCP bağlantıları sona erdirmez) ve akış her zaman istemci ve VM konuk işletim sistemi ve uygulama arasındadır. Tüm sondaları aşağı olan bir havuz, akışı almak ve SYN-ACK ile yanıt vermek için sağlıklı bir arka uç bitiş noktası olmadığından, ön uç TCP bağlantısı açık girişimlerine (SYN) yanıt vermemeye neden olur.
 
-### <a name="udp-datagrams"></a>UDP veri birimi
+### <a name="udp-datagrams"></a>UDP veri gramları
 
-UDP veri birimleri sağlıklı arka uç uç noktalarına teslim edilecek.
+UDP verigramları sağlıklı arka uç uç noktalarına teslim edilecektir.
 
-UDP bağlantısız ve izlenen UDP için hiçbir akış durumu yoktur. Arka uç uç noktasının sistem durumu araştırması başarısız olursa, mevcut UDP akışları arka uç havuzundaki başka bir sağlıklı örneğe taşınır.
+UDP bağlantısızve UDP için izlenen akış durumu yoktur. Herhangi bir arka uç uç noktasının sistem durumu sondası başarısız olursa, varolan UDP akışları arka uç havuzunda başka bir sağlıklı örneğe taşınır.
 
-Bir arka uç havuzundaki tüm örnekleri için tüm araştırmaları başarısız olursa, temel ve standart Load balancer'ları için mevcut UDP akışları sonlanacaktır.
+Arka uç havuzundaki tüm örneklerin tüm probları başarısız olursa, Temel ve Standart Yük Dengeleyicileri için varolan UDP akışları sonlandırır.
 
 <a name="source"></a>
-## <a name="probesource"></a>Araştırma kaynağı IP adresi
+## <a name="probe-source-ip-address"></a><a name="probesource"></a>Sonda kaynak IP adresi
 
-Yük Dengeleyici, dağıtılmış bir yoklama hizmeti için kendi iç sistem durumu modeli kullanır. Yoklama hizmeti, sanal makinelerin bulunduğu her bir konakta bulunur ve müşterinin yapılandırmasına göre sistem durumu araştırmaları oluşturmak için isteğe bağlı olarak programlanabilir. Durum araştırma trafiği, sistem durumu araştırması ve müşteri VM 'si üreten araştırma hizmeti arasında doğrudan yapılır. Tüm yük dengeleyici sistem durumu araştırmaları, kaynak 168.63.129.16 IP adresinden kaynaklanan.  RFC1918 alanı olmayan bir VNet 'in içindeki IP adres alanını kullanabilirsiniz.  Küresel olarak ayrılmış, Microsoft 'un sahip olduğu IP adresi, VNet içinde kullandığınız IP adresi alanıyla bir IP adresi çakışması olasılığını azaltır.  Bu IP adresi tüm bölgelerde aynıdır ve değişmez ve yalnızca iç Azure platformu bileşeni bu IP adresinden bir paket kaynak sağladığından bir güvenlik riski değildir. 
+Load Balancer, dahili sistem durumu modeli için dağıtılmış bir sondalama hizmeti kullanır. Sonlama hizmeti, VM'lerin bulunduğu her ana bilgisayarda bulunur ve müşterinin yapılandırmasına göre sistem durumu sondaları oluşturmak üzere isteğe bağlı olarak programlanabilir. Sistem durumu sondası trafiği doğrudan sağlık sondasını oluşturan sondalama hizmeti ile müşteri VM'si arasındadır. Tüm Yük Dengeleyici sağlık probları ip adresi 168.63.129.16 kaynak olarak kaynaklanır.  RFC1918 alanı olmayan bir VNet'in içindeki IP adres alanını kullanabilirsiniz.  Microsoft'un sahip olduğu genel olarak ayrılmış bir IP adresi kullanarak, VNet içinde kullandığınız IP adresi alanıyla ip adresi çakışma olasılığını azaltır.  Bu IP adresi tüm bölgelerde aynıdır ve değişmez ve yalnızca dahili Azure platformu bileşeni bu IP adresinden paket kaynak olabileceğinden bir güvenlik riski değildir. 
 
-AzureLoadBalancer Service etiketi, [ağ güvenlik gruplarınızı](../virtual-network/security-overview.md) bu kaynak IP adresini tanımlar ve varsayılan olarak sistem durumu araştırma trafiğine izin verir.
+AzureLoadBalancer hizmet [etiketi, ağ güvenlik gruplarınızdaki](../virtual-network/security-overview.md) bu kaynak IP adresini tanımlar ve varsayılan olarak sistem durumu sonda trafiğine izin verir.
 
-Load Balancer sistem durumu araştırmalarının yanı sıra [aşağıdaki işlemler bu IP adresini kullanır](../virtual-network/what-is-ip-address-168-63-129-16.md):
+Load Balancer sistem sondalarına ek olarak, [aşağıdaki işlemler bu IP adresini kullanır:](../virtual-network/what-is-ip-address-168-63-129-16.md)
 
-- VM platformu ile iletişim kurmak için bir "Hazır" durumunda olduğu sinyal aracısı sağlar
-- Özel DNS sunucuları tanımlamaz müşterilere filtrelenmiş ad çözümlemesi sağlamak için DNS sanal sunucu ile iletişimi sağlar.  Bu filtreleme müşteriler bunların dağıtım ana bilgisayar adları yalnızca çözümleyebilmesini sağlar.
-- VM 'nin Azure 'daki DHCP hizmetinden dinamik bir IP adresi almasını sağlar.
+- VM Aracısının platformla iletişim kurarak "Hazır" durumda olduğunu bildirmesini sağlar
+- Özel DNS sunucularını tanımlamayan müşterilere filtrelenmiş ad çözünürlüğü sağlamak için DNS sanal sunucusuyla iletişimi sağlar.  Bu filtreleme, müşterilerin yalnızca dağıtımlarının ana bilgisayar adlarını çözümlemesini sağlar.
+- VM'nin Azure'daki DHCP hizmetinden dinamik bir IP adresi almasını sağlar.
 
-## <a name="design"></a>Tasarım Kılavuzu
+## <a name="design-guidance"></a><a name="design"></a>Tasarım kılavuzu
 
-Sistem durumu araştırmaları, hizmetinizi dayanıklı hale getirmek ve ölçeklendirilmesine izin vermek için kullanılır. Yanlış yapılandırma veya hatalı tasarım deseninin kullanılabilmesi, hizmetinizin kullanılabilirliğini ve ölçeklenebilirliğini etkileyebilir. Tüm belgeyi gözden geçirin ve bu araştırma yanıtının ne kadar etkilendiğine veya ne zaman işaretleneceğini ve uygulama senaryonuzun kullanılabilirliğini nasıl etkilediğini düşünün.
+Sağlık sondaları, hizmetinizi esnek hale getirmek ve ölçeklendirmek için kullanılır. Hatalı yapılandırma veya kötü tasarım deseni, hizmetin kullanılabilirliğini ve ölçeklenebilirliğini etkileyebilir. Bu belgenin tamamını gözden geçirin ve bu sonda yanıtı işaretlendiğinde veya işaretlendiğinde senaryonuzüzerindeki etkisinin ne olduğunu ve uygulama senaryonuzun kullanılabilirliğini nasıl etkilediğini düşünün.
 
-Uygulamanız için sistem durumu modelini tasarlarken, bir arka uç uç noktasındaki bir bağlantı noktasını yoklamanız gerekir ve bu örnek sistem durumunu __ve__ sağladığınızda uygulama hizmetini yansıtır.  Uygulama bağlantı noktası ve yoklama bağlantı noktasının aynı olması gerekmez.  Bazı senaryolarda, araştırma bağlantı noktasının uygulamanızın hizmeti sağladığı bağlantı noktasından farklı olması istenebilir.  
+Uygulamanız için sistem durumu modelini tasarlarken, o örneğin durumunu __ve__ sağladığınız uygulama hizmetini yansıtan bir arka uç bitiş noktası üzerinde bir bağlantı noktasını araştırmanız gerekir.  Uygulama bağlantı noktası ve sonda bağlantı noktasının aynı olması gerekmez.  Bazı senaryolarda, sonda bağlantı noktasının uygulamanızın hizmet verdiği bağlantı noktasından farklı olması istenebilir.  
 
-Bazen uygulamanızın sistem durumunu algılamaması için bir sistem durumu araştırma yanıtı oluşturması faydalı olabilir, ancak aynı zamanda örneğinizin yeni akışlar alıp almamasının gerekip gerekmediğini Load Balancer doğrudan işaret edin.  Uygulamanızın, sistem durumu araştırmasını veya uygulamanızın bakımını hazırlamaya ve senaryonuzu boşaltmaya hazırlanarak, yeni akışların bir örneğe basıncını ve daha fazla teslimini oluşturmasına izin vermek için araştırma yanıtını değiştirebilirsiniz.  Standart Load Balancer kullanırken, [araştırma](#probedown) sinyali, boşta kalma zaman aşımı veya bağlantı kapanışına kadar her zaman TCP akışlarının devam etmesine izin verir. 
+Bazen uygulamanızın yalnızca uygulama nızın durumunu algılamak için bir sistem durumu sondası yanıtı oluşturması yararlı olabilir, aynı zamanda örneğinizin yeni akışlar alıp almaması gerektiğini doğrudan Load Balancer'a sinyal verebilir.  Sonda yanıtını, uygulamanızın sistem durumu sondasını geçerek bir örne geri basınç ve gaz iletimi oluşturmasına izin vermek için işleyebilir veya uygulamanızın bakımına hazırlanabilir ve senaryonuzu boşaltmaya başlayabilirsiniz.  Standart Yük Dengeleyicisi kullanırken, [bir sonda aşağı](#probedown) sinyali her zaman TCP akışlarının boşta zaman anına veya bağlantı kapatmaya kadar devam etmesine izin verir. 
 
-UDP yük dengelemesi için, arka uç uç noktasından özel bir sistem durumu araştırma sinyali oluşturmanız ve UDP uygulamanızın sistem durumunu yansıtmak için karşılık gelen dinleyiciyi hedefleyen bir TCP, HTTP veya HTTPS sistem durumu araştırması kullanmanız gerekir.
+UDP yük dengelemesi için, arka uç uç noktasından özel bir sistem durumu sondası sinyali oluşturmalı ve UDP uygulamanızın durumunu yansıtacak şekilde ilgili dinleyiciyi hedefleyen bir TCP, HTTP veya HTTPS sistem durumu sondası kullanmalısınız.
 
-[Standart Load Balancer](load-balancer-standard-overview.md)Ile [ha bağlantı noktaları Yük Dengeleme kuralları](load-balancer-ha-ports-overview.md) kullanırken, tüm bağlantı noktaları yük dengedir ve tek bir sistem durumu araştırma yanıtı, tüm örneğin durumunu yansıtmalıdır.
+[Standart Yük Dengeleyici](load-balancer-standard-overview.md)ile [HA Bağlantı Noktaları yük dengeleme kuralları](load-balancer-ha-ports-overview.md) kullanılırken, tüm bağlantı noktaları yük dengeli ve tek bir sistem sondası yanıtı tüm örneğin durumunu yansıtmalıdır.
 
-Bu yapılandırma, senaryomunuzdan oluşan basamaklı hatalara yol açacağından, sistem durumu araştırmasını VNet 'teki başka bir örneğe alan örnek aracılığıyla bir sistem durumu araştırmasını veya proxy 'yi çevirmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: bir dizi üçüncü taraf aracı, gereçlere yönelik ölçek ve artıklık sağlamak üzere bir Load Balancer kaynağın arka uç havuzunda dağıtılır ve sistem durumu araştırması, üçüncü taraf gereç proxy 'lerinin bulunduğu bir bağlantı noktasını yoklamak üzere yapılandırılmıştır veya Gereç arkasındaki diğer sanal makinelere çevirir.  Gerecin arkasındaki diğer sanal makinelere veya ara sunucu isteklerini çevirmek için kullandığınız bağlantı noktasını araştırdıysanız, gerecin arkasındaki tek bir sanal makineden gelen yoklama yanıtları, gerecin kendisini ölü olarak işaretler. Bu yapılandırma, gerecin arkasındaki tek bir arka uç uç noktasının sonucu olarak tüm uygulama senaryosunun basamaklı bir hatasına neden olabilir.  Tetikleyici, Load Balancer özgün hedefi (gereç örneği) işaretlemesine neden olacak ve sonra tüm uygulama senaryonuzu devre dışı bırakabilmesi için aralıklı bir araştırma hatası olabilir. Bunun yerine gereç durumunu araştırma. Sistem durumu sinyalinin belirlenmesi için araştırmanın seçimi, ağ sanal gereçleri (NVA) senaryolarında önemli bir noktadır ve bu senaryolar için uygun sistem durumu sinyalinin ne olduğunu öğrenmek için uygulama satıcınıza başvurmanız gerekir.
+Bu yapılandırma senaryonuzda basamaklı hatalara yol açabileceğinden, vnet'inizdeki başka bir örneğe sistem durumu sondasını alan örnek üzerinden bir sistem durumu sondasını çevirmeyin veya proxy etmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: Bir Yük Dengeleyici kaynağının arka uç havuzunda, aygıtlar için ölçek ve artıklık sağlamak üzere bir üçüncü taraf cihaz kümesi dağıtılır ve sistem durumu sondası, üçüncü taraf cihaz eklerinin veya cihazın arkasındaki diğer sanal makinelere çevirir.  Cihazın arkasındaki diğer sanal makinelere istekler çevirmek veya proxy etmek için kullandığınız aynı bağlantı noktasını araştırrsanız, cihazın arkasındaki tek bir sanal makineden gelen herhangi bir sonda yanıtı cihazın kendisini ölü olarak işaretleyecektir. Bu yapılandırma, cihazın arkasındaki tek bir arka uç bitiş noktası sonucunda tüm uygulama senaryosunun basamaklı bir arızaya yol açabilir.  Tetikleyici, Yük Dengeleyicisinin orijinal hedefi (cihaz örneğini) işaretlemesine ve bunun karşılığında tüm uygulama senaryonuzu devre dışı düşürebilmesine neden olacak aralıklı bir sonda hatası olabilir. Bunun yerine cihazın kendi sağlığını araştırın. Sistem durumu sinyalini belirlemek için sonda seçimi, ağ sanal cihazları (NVA) senaryoları için önemli bir husustur ve bu tür senaryolar için uygun sistem durumu sinyalinin ne olduğu konusunda uygulama satıcınıza danışmalısınız.
 
-Güvenlik Duvarı ilkeleriniz için araştırmanın [kaynak IP 'si](#probesource) izin vermezseniz, örneğinize ulaşamadığından sistem durumu araştırması başarısız olur.  Buna karşılık, yük dengeleyici örneğinizin sistem durumu araştırma hatası nedeniyle aşağı işaretler.  Bu yanlış yapılandırma, yük dengeli uygulama senaryonuzun başarısız olmasına neden olabilir.
+Güvenlik duvarı ilkelerinizde sondanın [kaynak IP'sine](#probesource) izin vermezseniz, örneğinize ulaşamadığı için sistem durumu sondası başarısız olur.  Buna karşılık, Yük Dengeleyici sağlık sondası arızası nedeniyle örneğinizi aşağı işaretleecektir.  Bu yanlış yapılandırma, yük dengeli uygulama senaryobaşarısız neden olabilir.
 
-Örneğinizi işaretlemek için Load Balancer sistem durumu araştırması için, tüm Azure [ağ güvenlik gruplarında](../virtual-network/security-overview.md) ve yerel güvenlik duvarı ILKELERINDE bu IP adresine izin vermeniz **gerekir** .  Varsayılan olarak, her ağ güvenlik grubu, durum araştırma trafiğine izin vermek için AzureLoadBalancer [hizmet etiketini](../virtual-network/security-overview.md#service-tags) içerir.
+Load Balancer'ın sistem durumu sondasının örneğinizi işaretlemesi için, bu IP adresine azure [ağ güvenlik gruplarında](../virtual-network/security-overview.md) ve yerel güvenlik duvarı ilkelerinde izin **vermelisiniz.**  Varsayılan olarak, her ağ güvenlik grubu, sistem durumu sondatrafiğine izin vermek için AzureLoadBalancer [hizmet etiketini](../virtual-network/security-overview.md#service-tags) içerir.
 
-Bir sistem durumu araştırma hatasını test etmek veya tek bir örneği işaretlemek isterseniz, sistem durumu araştırmasını (hedef bağlantı noktası veya [kaynak IP](#probesource)) açıkça engellemek ve bir araştırmanın başarısızlığının benzetimini yapmak için bir [ağ güvenlik grubu](../virtual-network/security-overview.md) kullanabilirsiniz.
+Bir sistem durumu sondası hatasını sınamak veya tek bir örneği işaretlemek istiyorsanız, sistem durumu sondasını (hedef bağlantı noktası veya [kaynak IP)](#probesource)açıkça engellemek ve bir sondanın başarısızlığını simüle etmek için ağ [güvenlik gruplarını](../virtual-network/security-overview.md) kullanabilirsiniz.
 
-VNet 'i 168.63.129.16 içeren, Microsoft 'un sahip olduğu IP adresi aralığıyla yapılandırmayın.  Bu tür yapılandırmalarda sistem durumu araştırmasının IP adresi ile çakışacaktır ve senaryonuzun sürmesine neden olabilir.
+VNet'inizi 168.63.129.16 içeren Microsoft'a ait IP adresi aralığıyla yapılandırmayın.  Bu tür yapılandırmalar sistem durumu sondasının IP adresiyle çarpışacak ve senaryonuzun başarısız lığa neden olabilir.
 
-Sanal makinenizde birden fazla arabirimi varsa, temel alınan arabirimde araştırma yanıt Sigortası gerekir.  Bu adresi VM 'de her arabirim için kaynak ağ adresi çevirisi yapmanız gerekebilir.
+VM'nizde birden çok arabirim varsa, aldığınız arabirimdeki sondaya yanıt vermenizi sağlamanız gerekir.  Kaynak ağ adresi nin bu adresi VM'de arabirim bazında çevirmesi gerekebilir.
 
-[TCP zaman damgalarını](https://tools.ietf.org/html/rfc1323)etkinleştirmeyin.  TCP zaman damgalarının etkinleştirilmesi, sanal makinenin Konuk işletim sistemi TCP yığını tarafından bırakılan TCP paketlerinin, ilgili uç nokta ile Load Balancer sonuçlanmasına neden olacak şekilde sistem durumu araştırmalarının başarısız olmasına neden olabilir.  Güvenlik sağlamlaştırılmış VM görüntülerinde varsayılan olarak TCP zaman damgaları etkinleştirilir ve devre dışı bırakılmalıdır.
+[TCP zaman damgalarını](https://tools.ietf.org/html/rfc1323)etkinleştirme.  TCP zaman damgalarını etkinleştirmek, TCP paketlerinin VM'nin konuk OS TCP yığını tarafından düşürülmesi nedeniyle sistem sondalarının başarısız olmasına neden olabilir ve bu da Yük Dengeleyicisinin ilgili bitiş noktasını işaretlemesine neden olur.  TCP zaman damgaları, güvenlik sertleştirilmiş VM görüntülerinde varsayılan olarak düzenli olarak etkinleştirilir ve devre dışı bırakılmalı.
 
 ## <a name="monitoring"></a>İzleme
 
-Hem genel hem de dahili [Standart Load Balancer](load-balancer-standard-overview.md) , Azure izleyici aracılığıyla çok boyutlu ölçümler olarak uç nokta ve arka uç uç nokta durumu araştırma durumunu kullanıma sunar. Bu ölçümler diğer Azure hizmetleri veya iş ortağı uygulamaları tarafından tüketilebilir. 
+Hem genel hem de dahili [Standart Yük Dengeleyici,](load-balancer-standard-overview.md) Azure Monitor aracılığıyla uç nokta başına ve arka uç nokta durumu sonda durumunu çok boyutlu ölçümler olarak ortaya çıkarır. Bu ölçümler diğer Azure hizmetleri veya iş ortağı uygulamaları tarafından tüketilebilir. 
 
-Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç havuzu başına özetlenen durum araştırma durumunu gösterir.  Azure Izleyici günlükleri, iç temel yük dengeleyiciler için kullanılamaz.  [Azure izleyici günlüklerini](load-balancer-monitor-log.md) kullanarak genel yük dengeleyici araştırma sistem durumunu ve araştırma sayısını denetleyebilirsiniz. Günlüğe kaydetme, Power BI veya Azure operasyonel İçgörüler ile yük dengeleyici sistem durumu hakkındaki istatistiklerdir sağlamak için kullanılabilir.
+Temel genel Yük Dengeleyicisi, Azure Monitor günlükleri aracılığıyla arka uç başına havuz başına özetlenen sistem sondası durumunu ortaya çıkarır.  Azure Monitor günlükleri dahili Temel Yük Dengeleyicileri için kullanılamaz.  Ortak yük dengeleyici sondası sağlık durumunu ve sonda sayısını denetlemek için [Azure Monitor günlüklerini](load-balancer-monitor-log.md) kullanabilirsiniz. Günlüğe kaydetme, yük dengeleyici durumu durumu yla ilgili istatistikler sağlamak için Power BI veya Azure Operasyonel Öngörüleri ile kullanılabilir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- HTTPS araştırmaları, bir istemci sertifikası ile karşılıklı kimlik doğrulamasını desteklemez.
-- TCP zaman damgaları etkinleştirildiğinde sistem durumu araştırmalarının başarısız olacağını varsayın.
+- HTTPS sondaları, istemci sertifikasıyla karşılıklı kimlik doğrulamasını desteklemez.
+- TCP zaman damgaları etkinleştirildiğinde Sistem Durumu sondalarının başarısız olacağını varsaymalısınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Standart Yük Dengeleyici](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
-- [PowerShell kullanarak Kaynak Yöneticisi bir genel yük dengeleyici oluşturmaya başlama](quickstart-create-standard-load-balancer-powershell.md)
-- [Sistem durumu araştırmaları için REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
-- [Load Balancer UserVoice](https://aka.ms/lbuservoice) ile yeni durum araştırma becerileri isteyin
+- [Standart Yük Dengeleyicisi](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
+- [PowerShell'i kullanarak Kaynak Yöneticisi'nde genel yük dengeleyicioluşturmaya başlayın](quickstart-create-standard-load-balancer-powershell.md)
+- [Sağlık sondaları için REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [Load Balancer'ın Uservoice'u](https://aka.ms/lbuservoice) ile yeni sağlık sondası yetenekleri isteyin

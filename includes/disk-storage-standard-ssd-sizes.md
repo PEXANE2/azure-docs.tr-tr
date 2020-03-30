@@ -5,20 +5,18 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 03/28/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dc3fcc0ca22581f70299e8edf9fd5ecf41e20721
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ec47da86ad32e1cbfc582db21d72908f420860
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "74003933"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80386123"
 ---
-| Standart SSD Boyutlar | E1 | E2 | E3 | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |
+| Standart SSD boyutları | E1 | E2 | E3 | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |
 |--------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| GiB 'de disk boyutu | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1,024 | 2\.048 | 4\.096 | 8,192 | 16.384 | 32,767 |
-| Disk başına IOPS | 120 kadar | 120 kadar | 120 kadar | 120 kadar | 240 kadar | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | 2\.000 kadar | 4\.000 kadar | 6\.000 kadar |
-| Disk başına çıkış |  En fazla 25 MIB/sn | En fazla 25 MIB/sn | En fazla 25 MIB/sn | En fazla 25 MIB/sn |  En fazla 50 MIB/sn  |  En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn| En fazla 400 MIB/sn |  En fazla 600 MIB/sn | En fazla 750 MIB/sn |
-
-\*, şu anda önizleme aşamasında olan bir disk boyutunu gösterir, bölgesel kullanılabilirlik bilgileri için bkz. [yeni disk boyutları: yönetilen ve yönetilmeyen](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged).
+| GiB'de disk boyutu | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1,024 | 2.048 | 4,096 | 8,192 | 16.384 | 32.767 |
+| Disk başına IOPS | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | 2.000'e kadar | 4.000'e kadar | 6.000'e kadar |
+| Disk başına aktarım hızı |  25 MiB/sn'ye kadar | 25 MiB/sn'ye kadar | 25 MiB/sn'ye kadar | 25 MiB/sn'ye kadar |  50 MiB/sn'ye kadar  |  60 MiB/sn'ye kadar | 60 MiB/sn'ye kadar | 60 MiB/sn'ye kadar | 60 MiB/sn'ye kadar | 60 MiB/sn'ye kadar | 60 MiB/sn'ye kadar| 400 MiB/sn'ye kadar |  600 MiB/sn'ye kadar | 750 MiB/sn'ye kadar |

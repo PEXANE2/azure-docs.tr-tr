@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme - Azure IOT Edge | Microsoft Docs
-description: Bu makalede standart tanılama yetenekleri için Azure IOT Edge, bileşen durumu ve günlükleri alma gibi öğrenin ve yaygın sorunları çözme
+title: Sorun Giderme - Azure IoT Edge | Microsoft Dokümanlar
+description: Azure IoT Edge için bileşen durumu ve günlükleri alma ve sık karşılaşılan sorunları çözme gibi standart tanılama becerilerini öğrenmek için bu makaleyi kullanın
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,22 +8,22 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 13eab175356ed1ec20caa3263ba00d0563384f0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284830"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064385"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
 Ortamınızda Azure IoT Edge’i kullanma konusunda sorun yaşarsanız, sorun giderme ve çözümleme için kılavuz olarak bu makaleden yararlanın.
 
-## <a name="run-the-iotedge-check-command"></a>İotedge ' Check ' komutunu çalıştırın
+## <a name="run-the-iotedge-check-command"></a>iotedge 'check' komutunu çalıştırın
 
-Sorun giderme IoT Edge ilk adımlarınız, yaygın sorunlar için yapılandırma ve bağlantı testlerinin bir koleksiyonunu çalıştıran `check` komutunu kullanmaktır. `check` komutu [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve üzeri sürümlerde kullanılabilir.
+IoT Edge sorun giderme ilk adım, `check` yapılandırma ve sık karşılaşılan sorunlar için bağlantı testleri bir koleksiyon çalıştıran komutu kullanmak olmalıdır. Komut `check` [sürüm 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve sonrası kullanılabilir.
 
-`check` komutunu aşağıdaki gibi çalıştırabilir veya seçeneklerin tamamı listesini görmek için `--help` bayrağını ekleyebilirsiniz:
+Komutu `check` aşağıdaki gibi çalıştırabilir veya `--help` seçeneklerin tam listesini görmek için bayrağı ekleyebilirsiniz:
 
 * Linux üzerinde:
 
@@ -37,50 +37,72 @@ Sorun giderme IoT Edge ilk adımlarınız, yaygın sorunlar için yapılandırma
   iotedge check
   ```
 
-Araç tarafından çalıştırılan denetim türleri şöyle sınıflandırılabilirler:
+Araç tarafından çalıştırılan denetim türleri aşağıdaki gibi sınıflandırılabilir:
 
-* Yapılandırma denetimleri: *config. YAML* ve kapsayıcı altyapısı ile ilgili sorunlar da dahil olmak üzere uç cihazların buluta bağlanmasını engelleyebilecek ayrıntıları inceler.
-* Bağlantı denetimleri: IoT Edge çalışma zamanının konak cihazdaki bağlantı noktalarına erişebileceğini ve tüm IoT Edge bileşenlerinin IoT Hub bağlanabildiğini doğrular.
-* Üretime hazırlık denetimleri: cihaz sertifika yetkilisi (CA) sertifikaları ve modül günlük dosyası yapılandırması gibi önerilen üretim en iyi uygulamalarına bakar.
+* Yapılandırma denetimleri: *Config.yaml* ve konteyner motoruyla ilgili sorunlar da dahil olmak üzere Edge aygıtlarının buluta bağlanmasını engelleyebilecek ayrıntıları inceler.
+* Bağlantı denetimleri: IoT Edge çalışma zamanı nın ana bilgisayar aygıtındaki bağlantı noktalarına erişebileceğini ve tüm IoT Edge bileşenlerinin IoT Hub'ına bağlanabileceğini doğrular.
+* Üretime hazırlık denetimleri: Aygıt sertifikası yetkilisi (CA) sertifikalarıve modül günlüğü dosyası yapılandırması durumu gibi önerilen üretim en iyi uygulamalarını arar.
 
-Tanılama denetimlerinin tam listesi için bkz. [yerleşik sorun giderme işlevselliği](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+Tanılama denetimlerinin tam listesi için, [Yerleşik sorun giderme işlevine](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)bakın.
+
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>iotedge 'destek paketi' komutuyla hata ayıklama bilgilerini toplama
+
+Bir IoT Edge aygıtından günlükleri toplamanız gerektiğinde, en uygun `support-bundle` yol komutu kullanmaktır. Varsayılan olarak, bu komut modülü, IoT Edge Security Manager ve konteyner motoru günlükleri, 'iotedge denetimi' JSON çıkışı ve diğer yararlı hata ayıklama bilgilerini toplar. Kolay paylaşım için bunları tek bir dosyaya sıkıştırır. Komut `support-bundle` [sürüm 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) ve sonrası kullanılabilir.
+
+Günlükleri `support-bundle` almak `--since` istediğinizi geçmişten ne kadar süre önce belirtmek için bayrağı ni ile komutu çalıştırın. Örneğin `6h` son 6 saatten beri, son `6d` 6 günden beri, `6m` son 6 dakikadan beri günlükleri alırsınız ve benzeri. Seçeneklerin `--help` tam listesini görmek için bayrağı ekleyin.
+
+
+* Linux üzerinde:
+
+  ```bash
+  sudo iotedge support-bundle --since 6h
+  ```
+
+* Windows'da:
+
+  ```powershell
+  iotedge support-bundle --since 6h
+  ```
+
+> [!WARNING]
+> `support-bundle` Komuttan çıkan çıktılar ana bilgisayar, cihaz ve modül adları, modülleriniz tarafından günlüğe kaydedilen bilgiler vb. içerebilir. Çıktıyı herkese açık bir forumda paylaşıyorsanız lütfen bunun farkında olun.
 
 ## <a name="standard-diagnostic-steps"></a>Standart tanılama adımları
 
-Bir sorunla karşılaşırsanız, kapsayıcı günlüklerini ve cihazdan geçen iletileri inceleyerek IoT Edge cihazınızın durumu hakkında daha fazla bilgi edinebilirsiniz. Bilgi toplamak için bu bölümdeki komutları ve araçları kullanın.
+Bir sorunla karşılaşırsanız, kapsayıcı günlüklerini ve aygıta ve cihazdan geçen iletileri inceleyerek IoT Edge cihazınızın durumu hakkında daha fazla bilgi edinebilirsiniz. Bilgi toplamak için bu bölümdeki komutları ve araçları kullanın.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Güvenlik Yöneticisi ve günlüklerinin durumunu kontrol edin
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Güvenlik Yöneticisi'nin durumunu ve günlüklerini kontrol edin
 
 Linux üzerinde:
 
-* IOT Edge Güvenlik Yöneticisi'nin durumunu görüntülemek için:
+* IoT Edge Güvenlik Yöneticisi'nin durumunu görüntülemek için:
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-* IOT Edge Güvenlik Yöneticisi'nin günlükleri görüntülemek için:
+* IoT Edge Güvenlik Yöneticisi'nin günlüklerini görüntülemek için:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-* Ayrıntılı günlükleri, IOT Edge Güvenlik Yöneticisi'ni daha fazla bilgi görüntülemek için:
+* IoT Edge Güvenlik Yöneticisi'nin daha ayrıntılı günlüklerini görüntülemek için:
 
-  * İotedge arka plan programı ayarları düzenleyin:
+  * Iotedge daemon ayarlarını edin:
 
       ```bash
       sudo systemctl edit iotedge.service
       ```
 
-  * Aşağıdaki satırları güncelleştirin:
+  * Aşağıdaki satırları güncelleyin:
 
       ```bash
       [Service]
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
 
-  * IOT Edge güvenlik Daemon'unu yeniden başlatın:
+  * IoT Edge Güvenlik Daemon yeniden başlatın:
 
       ```bash
       sudo systemctl cat iotedge.service
@@ -90,22 +112,22 @@ Linux üzerinde:
 
 Windows'da:
 
-* IOT Edge Güvenlik Yöneticisi'nin durumunu görüntülemek için:
+* IoT Edge Güvenlik Yöneticisi'nin durumunu görüntülemek için:
 
    ```powershell
    Get-Service iotedge
    ```
 
-* IOT Edge Güvenlik Yöneticisi'nin günlükleri görüntülemek için:
+* IoT Edge Güvenlik Yöneticisi'nin günlüklerini görüntülemek için:
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IOT Edge Güvenlik Yöneticisi çalışmıyor, yaml yapılandırma dosyanızı doğrulayın.
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Güvenlik Yöneticisi çalışmıyorsa, yaml yapılandırma dosyanızı doğrulayın
 
 > [!WARNING]
-> YAML dosyaları girintileme olarak sekme içeremez. Bunun yerine 2 alanları kullanın. Üst düzey öğelerin başında boşluk olmaması gerekir.
+> YAML dosyaları girintisi olarak sekmeleri içeremez. Bunun yerine 2 boşluk kullanın. Üst düzey öğelerin satır aralığı olmamalıdır.
 
 Linux üzerinde:
 
@@ -119,17 +141,17 @@ Windows'da:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>Kapsayıcı günlüklerini sorunlar için denetleyin
+### <a name="check-container-logs-for-issues"></a>Sorunlar için kapsayıcı günlüklerini denetleme
 
-IOT Edge güvenlik arka plan programı çalışır duruma geçtikten sonra sorunları algılamak için kapsayıcılarının günlüklerine bakın. Dağıtılan kapsayıcılarınız ile başlayın ve ardından IoT Edge çalışma zamanını oluşturan kapsayıcılara bakın: edgeAgent ve edgeHub. IoT Edge Aracısı günlükleri genellikle her kapsayıcının yaşam döngüsü hakkında bilgi sağlar. IoT Edge hub günlükleri mesajlaşma ve yönlendirme hakkında bilgi sağlar.
+IoT Edge Security Daemon çalışmaya başladığında, sorunları algılamak için kapsayıcıların günlüklerine bakın. Dağıtılan kapsayıcılarınızla başlayın, ardından IoT Edge çalışma süresini oluşturan kapsayıcılara bakın: edgeAgent ve edgeHub. IoT Edge aracısı günlükleri genellikle her kapsayıcının yaşam döngüsü hakkında bilgi sağlar. IoT Edge hub günlükleri mesajlaşma ve yönlendirme hakkında bilgi sağlar.
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge hub 'ından giden iletileri görüntüleme
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge hub'ından geçen iletileri görüntüleme
 
-IoT Edge hub 'ından gelen iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden Öngörüler toplayabilirsiniz. Bu kapsayıcılarda ayrıntılı günlükleri açmak için, YAML yapılandırma dosyanızda `RuntimeLogLevel` ayarlayın. Dosyayı açmak için:
+IoT Edge hub'ından geçen iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden öngörüler toplayabilirsiniz. Bu kapsayıcılar üzerinde ayrıntılı günlükleri açmak `RuntimeLogLevel` için, yaml yapılandırma dosyanızda ayarlayın. Dosyayı açmak için:
 
 Linux üzerinde:
 
@@ -143,7 +165,7 @@ Windows'da:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Varsayılan olarak, `agent` öğesi aşağıdaki örneğe benzer şekilde görünür:
+Varsayılan olarak, `agent` öğe aşağıdaki örnek gibi görünecektir:
 
    ```yaml
    agent:
@@ -155,7 +177,7 @@ Varsayılan olarak, `agent` öğesi aşağıdaki örneğe benzer şekilde görü
        auth: {}
    ```
 
-`env: {}` şu ile değiştirin:
+Şuyla değiştirin: `env: {}`
 
    ```yaml
    env:
@@ -163,29 +185,29 @@ Varsayılan olarak, `agent` öğesi aşağıdaki örneğe benzer şekilde görü
    ```
 
    > [!WARNING]
-   > YAML dosyaları sekmeler identation içeremez. Bunun yerine 2 alanları kullanın. Üst düzey öğelerin başında boşluk bulunamaz.
+   > YAML dosyaları identasyon olarak sekmeleri içeremez. Bunun yerine 2 boşluk kullanın. Üst düzey öğelerin önde gelen beyaz ayarı olamaz.
 
-Dosyayı kaydedin ve IOT Edge Güvenlik Yöneticisi'ni yeniden başlatın.
+Dosyayı kaydedin ve IoT Edge güvenlik yöneticisini yeniden başlatın.
 
-IoT Hub ile IoT Edge cihazları arasında gönderilmekte olan iletileri de denetleyebilirsiniz. [Visual Studio Code Için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak bu iletileri görüntüleyin. Daha fazla bilgi için bkz. [Azure IoT ile geliştirme yaparken kullanışlı araç](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+IoT Hub ile IoT Edge cihazları arasında gönderilmekte olan iletileri de denetleyebilirsiniz. [Visual Studio Code için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak bu iletileri görüntüleyin. Daha fazla bilgi için [Azure IoT ile geliştirdiğinizde Kullanışlı araca](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)bakın.
 
-### <a name="restart-containers"></a>Kapsayıcılar'ı yeniden başlatın
+### <a name="restart-containers"></a>Kapsayıcıları yeniden başlatın
 
-Bilgi iletilerini ve günlükleri araştırdıktan sonra kapsayıcıları yeniden başlatmayı deneyebilirsiniz:
+Bilgi için günlükleri ve mesajları araştırdıktan sonra, kapsayıcıları yeniden başlatmayı deneyebilirsiniz:
 
 ```cmd
 iotedge restart <container name>
 ```
 
-IOT Edge çalışma zamanı kapsayıcılarındaki yeniden başlatın:
+IoT Edge çalışma zamanı kaplarını yeniden başlatın:
 
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>IOT Edge Güvenlik Yöneticisi'ni yeniden başlatın
+### <a name="restart-the-iot-edge-security-manager"></a>IoT Edge güvenlik yöneticisini yeniden başlatın
 
-Sorunu hala kalıcı yapma, IOT Edge Güvenlik Yöneticisi'ni yeniden başlatmayı deneyebilirsiniz.
+Sorun devam ediyorsa, IoT Edge güvenlik yöneticisini yeniden başlatmayı deneyebilirsiniz.
 
 Linux üzerinde:
 
@@ -201,9 +223,9 @@ Windows'da:
    Start-Service iotedge
    ```
 
-## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge aracı bir dakika sonra durdu
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge aracısı yaklaşık bir dakika sonra durur
 
-EdgeAgent modülü yaklaşık bir dakika boyunca başarıyla başlatılır ve çalışır ve sonra duraklar. Günlükler IoT Edge aracısının AMQP üzerinden IoT Hub bağlanmaya çalıştığı ve sonra da WebSocket üzerinden AMQP kullanarak bağlanmaya çalıştığı anlamına gelebilir. Bu başarısız olduğunda IoT Edge Aracısı çıkar.
+edgeAgent modülü başlar ve yaklaşık bir dakika boyunca başarılı bir şekilde çalışır, sonra durur. Günlükler, IoT Edge aracısının AMQP üzerinden IoT Hub'ına bağlanmaya ve ardından WebSocket üzerinden AMQP kullanarak bağlanmaya çalıştığına işaret eder. Bu başarısız olduğunda, IoT Edge aracısı çıkar.
 
 Örnek edgeAgent günlükleri:
 
@@ -214,9 +236,9 @@ EdgeAgent modülü yaklaşık bir dakika boyunca başarıyla başlatılır ve ç
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket...
 ```
 
-**Kök nedeni**
+**Kök neden**
 
-Konak ağındaki bir ağ yapılandırması, IoT Edge aracısının ağa ulaşmasını engellemektedir. Aracı ilk olarak AMQP (5671 numaralı bağlantı noktası) üzerinden bağlanma girişiminde bulunur. Bağlantı başarısız olursa Websockets'i (443 numaralı bağlantı noktası) dener.
+Ana bilgisayar ağındaki ağ yapılandırması, IoT Edge aracısının ağa ulaşmasını engelliyor. Aracı ilk olarak AMQP (5671 numaralı bağlantı noktası) üzerinden bağlanma girişiminde bulunur. Bağlantı başarısız olursa, WebSockets (port 443) çalışır.
 
 IoT Edge çalışma zamanı, her bir modül için iletişim kurulacak bir ağ ayarlar. Linux’ta bu ağ bir köprü ağıdır. Windows’da NAT kullanır. Bu sorun, NAT ağını kullanan Windows kapsayıcılarının kullanıldığı Windows cihazlarında daha yaygın olarak görülür.
 
@@ -224,9 +246,9 @@ IoT Edge çalışma zamanı, her bir modül için iletişim kurulacak bir ağ ay
 
 Bu köprüye/NAT ağına atanan IP adresleri için bir İnternet rotası olduğundan emin olun. Bazen konaktaki VPN yapılandırması, IoT Edge ağını geçersiz kılar.
 
-## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge hub 'ı başlatılamıyor
+## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge hub'ı başlatılmaz
 
-EdgeHub modülü başlatılamıyor ve günlüklere şu iletiyi yazdırır:
+edgeHub modülü başlatılamadı ve aşağıdaki iletiyi günlüklere yazdırır:
 
 ```output
 One or more errors occurred. 
@@ -235,27 +257,27 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n)
 ```
 
-**Kök nedeni**
+**Kök neden**
 
-Konak makinedeki başka bir işlem, 443 numaralı bağlantı noktasına bağlıdır. IoT Edge hub, 5671 ve 443 bağlantı noktalarını ağ geçidi senaryolarında kullanılmak üzere eşleştirir. Başka bir işlem zaten bu bağlantı noktasına bağlıysa bu bağlantı noktası eşlemesi başarısız olur.
+Konak makinedeki başka bir işlem, 443 numaralı bağlantı noktasına bağlıdır. IoT Edge hub'ı ağ geçidi senaryolarında kullanılmak üzere 5671 ve 443 bağlantı noktalarını eşler. Başka bir işlem zaten bu bağlantı noktasına bağlıysa bu bağlantı noktası eşlemesi başarısız olur.
 
 **Çözünürlük**
 
 443 numaralı bağlantı noktasını kullanan işlemi bulup durdurun. Bu işlem genellikle bir web sunucusudur.
 
-## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge Aracısı bir modülün görüntüsüne erişemiyor (403)
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge aracısı bir modülün görüntüsüne erişemez (403)
 
-Bir kapsayıcı çalıştırılamaz ve edgeAgent günlükleri bir 403 hatası gösterir.
+Bir kapsayıcı çalışmaz ve edgeAgent günlükleri 403 hata gösterir.
 
-**Kök nedeni**
+**Kök neden**
 
-IoT Edge aracısının bir modülün görüntüsüne erişme izni yok.
+IoT Edge aracısının bir modülün görüntüsüne erişmek için izinleri yoktur.
 
 **Çözünürlük**
 
-Kayıt defteri kimlik bilgileriniz, dağıtım bildiriminde doğru belirtildiğinden emin olun
+Kayıt defteri kimlik bilgilerinizin dağıtım bildiriminizde doğru şekilde belirtildiğinden emin olun
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IOT Edge güvenlik arka plan programı, geçersiz bir ana bilgisayar adı ile başarısız oluyor
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge güvenlik daemon geçersiz bir ana bilgisayar adı ile başarısız olur
 
 Komut `sudo journalctl -u iotedge` başarısız olur ve aşağıdaki iletiyi yazdırır:
 
@@ -263,22 +285,22 @@ Komut `sudo journalctl -u iotedge` başarısız olur ve aşağıdaki iletiyi yaz
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-**Kök nedeni**
+**Kök neden**
 
-IOT Edge çalışma zamanı yalnızca ana bilgisayar adları 64 karakterden kısa destekleyebilir. Fiziksel makineler genellikle uzun konak adı yok, ancak bir sanal makineye daha yaygın bir sorundur. Ana bilgisayar adları, Azure'da barındırılan Windows sanal makineleri için otomatik olarak oluşturulan, özellikle uzun olma eğilimindedir.
+IoT Edge çalışma süresi yalnızca 64 karakterden kısa olan ana bilgisayar adlarını destekleyebilir. Fiziksel makineler genellikle uzun ana bilgisayar adları yoktur, ancak sorun sanal bir makinede daha yaygındır. Özellikle Azure'da barındırılan Windows sanal makineleri için otomatik olarak oluşturulan ana bilgisayar adları uzun olma eğilimindedir.
 
 **Çözünürlük**
 
-Bu hatayı gördüğünüzde, sanal makinenin DNS adını yapılandırarak ve ardından Kurulum komutu, konak adı olarak DNS adını ayarlar çözebilirsiniz.
+Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve ardından kurulum komutundaki ana bilgisayar adı olarak DNS adını ayarlayarak bunu çözebilirsiniz.
 
-1. Azure portalında, sanal makinenizin Genel Bakış sayfasına gidin.
-2. DNS adı altında **Yapılandır** ' ı seçin. Sanal makineniz yapılandırılan DNS adı zaten varsa, yeni bir yapılandırma gerekmez.
+1. Azure portalında, sanal makinenizin genel bakış sayfasına gidin.
+2. DNS adı altında **yapılandırma'yı** seçin. Sanal makinenizde zaten yapılandırılmış bir DNS adı varsa, yeni bir makine yapılandırmanız gerekmez.
 
    ![Sanal makinenin DNS adını yapılandırma](./media/troubleshoot/configure-dns.png)
 
-3. **DNS ad etiketi** için bir değer girin ve **Kaydet**' i seçin.
-4. **\<DNSnamelabel\>.\<vmlocation\>. cloudapp.Azure.com**biçiminde olması gereken yeni DNS adını kopyalayın.
-5. Sanal makinenin içinde IOT Edge çalışma zamanı, DNS adı ile ayarlamak için aşağıdaki komutu kullanın:
+3. **DNS ad etiketi** için bir değer sağlayın ve **Kaydet'i**seçin.
+4. ** \<DNSnamelabel\>biçiminde olması gereken yeni DNS adını\< kopyalayın. vmlocation\>.cloudapp.azure.com**.
+5. Sanal makinenin içinde, DNS adınız ile IoT Edge çalışma süresini ayarlamak için aşağıdaki komutu kullanın:
 
    * Linux üzerinde:
 
@@ -292,27 +314,27 @@ Bu hatayı gördüğünüzde, sanal makinenin DNS adını yapılandırarak ve ar
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
-## <a name="stability-issues-on-resource-constrained-devices"></a>Kaynaktaki kararlılık sorunlarını cihazları kısıtlı
+## <a name="stability-issues-on-resource-constrained-devices"></a>Kaynak kısıtlı aygıtlarında kararlılık sorunları
 
-Özellikle, ağ geçidi olarak kullanıldığında Raspberry Pi gibi kısıtlı cihazlarda kararlılık sorunlarla karşılaşabilirsiniz. Edge hub'ı modülü bellek durumlar dışında belirtileri içerir, aşağı akış cihazları bağlanılamıyor veya cihazın telemetri gönderme birkaç saat sonra durdurur.
+Raspberry Pi gibi kısıtlı cihazlarda, özellikle ağ geçidi olarak kullanıldığında stabilite sorunlarıyla karşılaşabilirsiniz. Belirtiler, kenar hub modülünde bellek dışında özel durumlar içerir, alt akış aygıtları bağlanamaz veya aygıt birkaç saat sonra telemetri iletileri göndermeyi durdurur.
 
-**Kök nedeni**
+**Kök neden**
 
-IoT Edge çalışma zamanının parçası olan IoT Edge hub, varsayılan olarak performans için en iyi duruma getirilmiştir ve büyük bellek öbeklerini ayırmaya çalışır. Bu iyileştirme kısıtlanmış edge cihazlar için ideal değildir ve kararlılık sorunlara neden olabilir.
+IoT Edge çalışma zamanının bir parçası olan IoT Edge hub'ı varsayılan olarak performans için optimize edilir ve büyük bellek parçalarını ayırmaya çalışır. Bu optimizasyon kısıtlı kenar aygıtları için ideal değildir ve kararlılık sorunlarına neden olabilir.
 
 **Çözünürlük**
 
-IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false**olarak ayarlayın. Ortam değişkenlerini ayarlamak için iki yol vardır:
+IoT Edge hub'ı için, bir ortam değişkeni **optimizeforperformance'ı** **false**olarak ayarlayın. Ortam değişkenlerini ayarlamanın iki yolu vardır:
 
 Azure portalında:
 
-IoT Hub, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasında, **modülleri ayarla** > **çalışma zamanı ayarları**' nı seçin. Edge hub modülü için, *false*olarak ayarlanan *Optimizeforperformance* adlı bir ortam değişkeni oluşturun.
+IoT Hub'ınızda, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasından seçin ve **Modülleri** > Çalıştırma Zamanı Ayarlarını**Ayarla'yı**seçin. Edge Hub modülü için *False*olarak ayarlanmış *OptimizeForPerformance* adlı bir ortam değişkeni oluşturun.
 
-![OptimizeForPerformance false olarak ayarlayın.](./media/troubleshoot/optimizeforperformance-false.png)
+![OptimizeForPerformance yanlış olarak ayarlanmış](./media/troubleshoot/optimizeforperformance-false.png)
 
-**VEYA**
+**Veya**
 
-Dağıtım bildirimi içinde:
+Dağıtım bildiriminde:
 
 ```json
   "edgeHub": {
@@ -328,17 +350,17 @@ Dağıtım bildirimi içinde:
     },
 ```
 
-## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>IOT Edge üzerinde Windows arka plan programının günlüklerini alınamıyor
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Windows'daki IoT Edge daemon günlüklerini alamıyorum
 
-Windows üzerinde `Get-WinEvent` kullanırken bir EventLogException alırsanız, kayıt defteri girdilerinizi kontrol edin.
+Windows'da kullanırken `Get-WinEvent` bir EventLogException alırsanız, kayıt defteri girişlerinizi kontrol edin.
 
-**Kök nedeni**
+**Kök neden**
 
-`Get-WinEvent` PowerShell komutu, belirli bir `ProviderName`günlük bulmak için mevcut bir kayıt defteri girişini kullanır.
+`Get-WinEvent` PowerShell komutu, belirli `ProviderName`bir .
 
 **Çözünürlük**
 
-IOT Edge arka plan programı bir kayıt defteri anahtarını ayarlayın. Aşağıdaki içerikle bir **ıotedge. reg** dosyası oluşturun ve çift tıklayarak veya `reg import iotedge.reg` komutunu kullanarak Windows kayıt defterine aktarın:
+IoT Edge daemon için bir kayıt defteri girişi ayarlayın. Aşağıdaki içeriğe sahip bir **iotedge.reg** dosyası oluşturun ve çift tıklatarak veya komutu `reg import iotedge.reg` kullanarak Windows Kayıt Defteri'ne aktarın:
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -349,49 +371,49 @@ Windows Registry Editor Version 5.00
 "TypesSupported"=dword:00000007
 ```
 
-## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IOT Edge modülü ileti göndermek için edgeHub 404 hatası ile başarısız olur.
+## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge modülü edgeHub'a 404 hatasıyla mesaj göndermiyor
 
-Özel bir IoT Edge modülü, edgeHub 'a bir 404 `Module not found` hatası ile ileti gönderemediğinde. IOT Edge arka plan programı günlüklere şu iletiyi yazdırmaz:
+Özel bir IoT Edge modülü edgeHub'a 404 `Module not found` hatasıyla ileti göndermeyi başaramaz. IoT Edge daemon günlüklere aşağıdaki iletiyi yazdırır:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
-**Kök nedeni**
+**Kök neden**
 
-IOT Edge arka plan programı, güvenlik nedenleriyle edgeHub bağlanan tüm modüller için işlem kimliği zorlar. Bir modül tarafından gönderilen tüm iletiler modülü ana işlem Kimliğinden geldiğini doğrular. Başlangıçta kurulan olandan farklı bir işlem Kimliğinden modülü tarafından ileti gönderiliyor ise bir 404 hatası ileti iletinin reddeder.
+IoT Edge daemon, güvenlik nedenleriyle edgeHub'a bağlanan tüm modüller için işlem tanımlamasını zorlar. Bir modül tarafından gönderilen tüm iletilerin modülün ana işlem kimliğinden geldiğini doğrular. Bir ileti, bir modül tarafından başlangıçta kurulandan farklı bir işlem kimliğinden gönderiliyorsa, iletiyi 404 hata iletisi ile reddeder.
 
 **Çözünürlük**
 
-Sürüm 1.0.7 itibariyle, tüm modül işlemlerinin bağlanmasına izin verilir. 1\.0.7 sürümüne yükseltme yapılamıyorsa, aşağıdaki adımları izleyin. Daha fazla bilgi için bkz. [1.0.7 Release changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
+Sürüm 1.0.7 itibariyle, tüm modül işlemleri bağlanmaya yetkilidir. 1.0.7'ye yükseltme mümkün değilse, aşağıdaki adımları tamamlayın. Daha fazla bilgi için [1.0.7 sürüm değiştirbiyi](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)ne bürünme tarihine bakın.
 
-Aynı işlem kimliği her zaman özel bir IOT Edge modülü tarafından ileti göndermek için edgeHub için kullanılmadığından emin olun. Örneğin, `CMD` tek bir işlem kimliğine yol açacağından, bir modül için bir işlem KIMLIĞINE ve ana `ENTRYPOINT` programı çalıştıran Bash komutuna ait başka bir işlem KIMLIĞINE yol açacağından, Docker dosyanızda `CMD` komutu yerine `ENTRYPOINT` emin olun.
+EdgeHub'a ileti göndermek için aynı işlem kimliğinin her zaman özel IoT Edge modülü tarafından kullanıldığından emin olun. Örneğin, Docker `ENTRYPOINT` dosyanızda `CMD` komut yerine emin olun, çünkü `CMD` modül için bir işlem kimliğine ve ana programı çalıştıran `ENTRYPOINT` bash komutu için başka bir işlem kimliğine yol açarken, tek bir işlem kimliğine yol açacaktır.
 
-## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IOT Edge dağıtımı için güvenlik duvarı ve bağlantı noktası yapılandırma kuralları
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge dağıtımı için Güvenlik Duvarı ve Bağlantı Noktası yapılandırma kuralları
 
-Azure IoT Edge, desteklenen IoT Hub protokolleri kullanılarak şirket içi bir sunucudan Azure bulutuna iletişimin iletişimine izin veriyor, bkz. [iletişim protokolü seçme](../iot-hub/iot-hub-devguide-protocols.md). Gelişmiş güvenlik için Azure IOT Edge ile Azure IOT Hub arasındaki iletişim kanallarını her zaman giden olacak şekilde yapılandırılır. Bu yapılandırma, kötü amaçlı bir varlığın araştırılacak saldırı yüzeyini en aza indiren [hizmet yardımlı iletişim düzenine](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)dayanır. Gelen iletişim istekleri, yalnızca Azure IOT Edge cihazına iletileri göndermek için Azure IOT hub'ı gereken yere belirli senaryolar için gereklidir. Bulut-cihaz iletilerini TLS güvenli kanalı kullanılarak korunur ve daha fazla X.509 sertifikaları ve TPM cihaz modülleri kullanılarak güvenli hale getirilebilir. Azure IoT Edge Güvenlik Yöneticisi bu iletişimin nasıl kurulamadığını yönetir, bkz. [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Azure IoT Edge, desteklenen IoT Hub protokollerini kullanarak şirket içi sunucudan Azure bulutuna [iletişim](../iot-hub/iot-hub-devguide-protocols.md)sağlar ve bkz. Gelişmiş güvenlik için, Azure IoT Edge ve Azure IoT Hub arasındaki iletişim kanalları her zaman Giden olacak şekilde yapılandırılır. Bu yapılandırma, kötü amaçlı bir varlığın keşfetmesi için saldırı yüzeyini en aza indiren [Hizmetler Destekli İletişim desenine](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)dayanır. Gelen iletişim yalnızca Azure IoT Hub'ın iletileri Azure IoT Edge aygıtına iletmesi gereken belirli senaryolar için gereklidir. Buluttan cihaza iletiler güvenli TLS kanalları kullanılarak korunur ve X.509 sertifikaları ve TPM cihaz modülleri kullanılarak daha da güvenli hale getirilebilir. Azure IoT Edge Güvenlik Yöneticisi, bu iletişimin nasıl kurulabileceğini yönetir, [bkz.](../iot-edge/iot-edge-security-manager.md)
 
-IOT Edge modülleri dağıtılır ve Azure IOT Edge çalışma zamanı güvenliğini sağlamak için Gelişmiş yapılandırma sağlar, ancak temel alınan makine ve ağ yapılandırmasına yine de bağlıdır. Bu nedenle, güvenli uç için bulut iletişimine doğru ağ ve Güvenlik Duvarı kurallarının ayarlandığından emin olmanız zorunludur. Aşağıdaki tablo, Azure IoT Edge çalışma zamanının barındırıldığı temel sunucular için yapılandırma güvenlik duvarı kuralları olduğunda bir kılavuz olarak kullanılabilir:
+IoT Edge, Azure IoT Edge çalışma zamanı ve dağıtılmış modülleri güvence altına almak için gelişmiş yapılandırma sağlarken, yine de temel makine ve ağ yapılandırmasına bağlıdır. Bu nedenle, bulut iletişiminin güvenli kenarı için uygun ağ ve güvenlik duvarı kurallarının ayarlı olduğundan emin olmak zorunludur. Aşağıdaki tablo, Azure IoT Edge çalışma zamanının barındırıldığı temel sunucular için yapılandırma güvenlik duvarı kuralları olduğunda kılavuz olarak kullanılabilir:
 
-|Protokol|Bağlantı noktası|gelen|Giden|Rehber|
+|Protokol|Bağlantı noktası|Gelen|Giden|Rehber|
 |--|--|--|--|--|
-|MQTT|8883|ENGELLENEN (varsayılan)|ENGELLENEN (varsayılan)|<ul> <li>Giden (giden) MQTT iletişim protokolü olarak kullanılırken açık olacak şekilde yapılandırın.<li>MQTT için 1883 IOT Edge tarafından desteklenmiyor. <li>Gelen (gelen) bağlantıları engellenmesi gerekir.</ul>|
-|AMQP|5671|ENGELLENEN (varsayılan)|Açık (varsayılan)|<ul> <li>IOT Edge için varsayılan iletişim protokolü. <li> Azure IOT Edge, diğer Desteklenen protokoller için yapılandırılmadı veya AMQP istenen iletişim protokolü açık olarak yapılandırılmış olmalıdır.<li>AMQP için 5672, IOT Edge tarafından desteklenmiyor.<li>Azure IOT Edge kullanan farklı bir IOT Hub protokol desteklendiğinde, bu bağlantı noktası engelleyin.<li>Gelen (gelen) bağlantıları engellenmesi gerekir.</ul></ul>|
-|HTTPS|443|ENGELLENEN (varsayılan)|Açık (varsayılan)|<ul> <li>Giden (giden) açık olmasını sağlama IOT Edge için 443 numaralı yapılandırın. Bu yapılandırma, el ile komut dosyaları veya Azure IOT cihaz sağlama hizmeti (DPS) kullanılırken gereklidir. <li>Gelen (gelen) bağlantının açık olmalıdır yalnızca belirli senaryoları için: <ul> <li>  Yöntem isteği gönderebilir yaprak cihazlar ile saydam bir ağ geçidi varsa. Bu durumda, bağlantı noktası 443'ü dış ağlara bağlanmak için IoTHub ya da Azure IOT Edge üzerinden IoTHub hizmetleri sağlamak için açık olması gerekmez. Bu nedenle gelen kuralı yalnızca iç ağdan gelen (gelen) açmak için kısıtlı olabilir. <li> Cihaz (C2D) senaryoları için daha fazla istemci için.</ul><li>HTTP için 80, IOT Edge tarafından desteklenmiyor.<li>HTTP olmayan protokolleri (örneğin, AMQP veya MQTT), Kurumsal yapılandırılamıyorsa; iletileri WebSockets üzerinden gönderilebilir. 443 numaralı bağlantı noktası için iletişim WebSocket durumlarda kullanılır.</ul>|
+|MQTT|8883|ENGELLENMIS (Varsayılan)|ENGELLENMIS (Varsayılan)|<ul> <li>İletişim protokolü olarak MQTT kullanırken Giden (Giden) Açık olacak şekilde yapılandırın.<li>MQTT için 1883 IoT Edge tarafından desteklenmez. <li>Gelen (Gelen) bağlantılar engellenmelidir.</ul>|
+|AMQP|5671|ENGELLENMIS (Varsayılan)|OPEN (Varsayılan)|<ul> <li>IoT Edge için varsayılan iletişim protokolü. <li> Azure IoT Edge diğer desteklenen protokoller için yapılandırılmamışsa veya AMQP istenen iletişim protokolüyse, Açık olarak yapılandırılacak şekilde yapılandırılmalıdır.<li>AMQP için 5672 IoT Edge tarafından desteklenmez.<li>Azure IoT Edge farklı bir IoT Hub desteklenen protokol kullandığında bu bağlantı noktasını engelleyin.<li>Gelen (Gelen) bağlantılar engellenmelidir.</ul></ul>|
+|HTTPS|443|ENGELLENMIS (Varsayılan)|OPEN (Varsayılan)|<ul> <li>Giden (Giden) IoT Edge sağlama için 443'te açık olacak şekilde yapılandırın. Bu yapılandırma, el ile komut dosyaları veya Azure IoT Aygıt Sağlama Hizmeti (DPS) kullanırken gereklidir. <li>Gelen (Gelen) bağlantı yalnızca belirli senaryolar için Açık olmalıdır: <ul> <li>  Yöntem istekleri gönderebilecek yaprak aygıtları olan saydam bir ağ geçidiniz varsa. Bu durumda, IoTHub'a bağlanmak veya Azure IoT Edge üzerinden IoTHub hizmetleri sağlamak için Port 443'ün harici ağlara açık olması gerekmez. Böylece gelen kural, iç ağdan yalnızca gelen (Gelen) açık olmasıyla sınırlandırılabilir. <li> İstemciden Aygıta (C2D) senaryolar için.</ul><li>HTTP için 80, IoT Edge tarafından desteklenmez.<li>Kuruluşta HTTP dışı protokoller (örneğin, AMQP veya MQTT) yapılandırılemiyorsa; iletiler WebSockets üzerinden gönderilebilir. Bu durumda Port 443 WebSocket iletişimi için kullanılacaktır.</ul>|
 
-## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge Aracısı modülü sürekli olarak ' boş yapılandırma dosyası ' bildiriyor ve cihazda hiçbir modül başlamıyor
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge Agent modülü sürekli olarak 'boş config dosyası' bildirir ve cihazda modül başlamaz
 
-Cihazda dağıtımda tanımlanan modüller başlatılırken sorun yaşanıyor. Yalnızca edgeAgent çalışıyor ancak sürekli olarak ' boş yapılandırma dosyası... ' bildiriyor.
+Aygıt, dağıtımda tanımlanan modülleri başlatmakta sorun yaşıyor. Yalnızca edgeAgent çalışıyor ama sürekli 'boş config dosyası...' bildiriyor.
 
-**Kök nedeni**
+**Kök neden**
 
-Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller başlatır. Bu özel ağ içinde, bu cihaz DNS ad çözümlemesi ile ilgili sorun yaşıyor olabilir.
+Varsayılan olarak, IoT Edge modülleri kendi yalıtılmış kapsayıcı ağında başlatır. Aygıt bu özel ağ içinde DNS ad çözünürlüğü ile ilgili sorun yaşıyor olabilir.
 
 **Çözünürlük**
 
-**Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
+**Seçenek 1: DNS sunucusunun konteyner motoru ayarlarını ayarlaması**
 
-Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. Kullanılacak DNS sunucusunu belirten `daemon.json` adlı bir dosya oluşturun. Örnek:
+Motor tarafından başlatılan tüm konteyner modülleri için geçerli olacak kapsayıcı motoru ayarlarında ortamınız için DNS sunucusunu belirtin. Kullanılacak DNS sunucusunu belirten adlandırılmış `daemon.json` bir dosya oluşturun. Örnek:
 
 ```json
 {
@@ -399,27 +421,27 @@ Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; 
 }
 ```
 
-Yukarıdaki örnek, DNS sunucusunu genel olarak erişilebilen bir DNS hizmetine ayarlar. Sınır cihazı bu IP ortamından erişemezse, erişilebilir olan DNS sunucusu adresi ile değiştirin.
+Yukarıdaki örnekte, DNS sunucusu nu herkese açık bir DNS hizmeti olarak ayarlar. Kenar aygıtı bu IP'ye ortamından erişemiyorsa, erişilebilir DNS sunucu adresiyle değiştirin.
 
-`daemon.json` platformunuzun doğru konumuna yerleştirin:
+Platformunuz için doğru konuma yerleştirin: `daemon.json`
 
 | Platform | Konum |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Windows kapsayıcıları ile Windows ana bilgisayarı | `C:\ProgramData\iotedge-moby\config` |
+| Windows kapsayıcıları ile Windows ana bilgisayar | `C:\ProgramData\iotedge-moby\config` |
 
-Konum zaten `daemon.json` dosyası içeriyorsa, **DNS** anahtarını buna ekleyin ve dosyayı kaydedin.
+Konum zaten dosya `daemon.json` içeriyorsa, **dns** tuşunu ekleyin ve dosyayı kaydedin.
 
-Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden başlatın.
+Güncelleştirmelerin etkili olması için kapsayıcı altyapısını yeniden başlatın.
 
 | Platform | Komut |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
-| Windows (yönetici PowerShell) | `Restart-Service iotedge-moby -Force` |
+| Windows (Yönetici Powershell) | `Restart-Service iotedge-moby -Force` |
 
-**Seçenek 2: modül başına IoT Edge dağıtımında DNS sunucusunu ayarlama**
+**Seçenek 2: Modül başına IoT Edge dağıtımında DNS sunucusu ayarlama**
 
-Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örnek:
+IoT Edge dağıtımında her modülün *oluşturma Seçenekleri* için DNS sunucusu ayarlayabilirsiniz. Örnek:
 
 ```json
 "createOptions": {
@@ -431,10 +453,10 @@ Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayar
 }
 ```
 
-Bu yapılandırmayı *Edgeagent* ve *edgehub* modülleri de ayarladığınızdan emin olun.
+EdgeAgent ve *edgeHub* modülleri *edgeHub* için de bu yapılandırmayı ayarladıklarından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Edge platformunda bir hata bulduğunuzu düşünüyor musunuz? İyileşmeye devam edebilmemiz için [bir sorun gönderin](https://github.com/Azure/iotedge/issues) .
+IoT Edge platformunda bir hata bulduğunuzu düşünüyor musunuz? Geliştirmeye devam edebilmemiz için [bir sorun gönderin.](https://github.com/Azure/iotedge/issues)
 
-Daha fazla sorunuz varsa yardım için bir [destek isteği](https://portal.azure.com/#create/Microsoft.Support) oluşturun.
+Daha fazla sorunuz varsa, yardım için bir [Destek isteği](https://portal.azure.com/#create/Microsoft.Support) oluşturun.

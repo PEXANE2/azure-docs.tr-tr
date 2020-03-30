@@ -1,6 +1,6 @@
 ---
-title: Ait sanal ağlar için Azure Data Lake depolama Gen1 bağlayın | Microsoft Docs
-description: Azure Data Lake depolama Gen1 için Azure sanal ağları birbirine bağlama
+title: VNET'lerden Azure Veri Gölü Depolama Gen1'e bağlanın | Microsoft Dokümanlar
+description: Azure VNET'lerden Azure Veri Gölü Depolama Gen1'e bağlanın
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -13,27 +13,27 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878877"
 ---
-# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Bir Azure sanal ağ içindeki vm'lerden erişim Azure Data Lake depolama Gen1
-Azure Data Lake depolama Gen1 genel Internet IP adreslerinde çalıştırılan bir PaaS hizmetidir. Genel Internet'e bağlanabilen herhangi bir sunucu genellikle de Azure Data Lake depolama Gen1 Uç noktalara bağlanabilirsiniz. Varsayılan olarak, Azure sanal ağ tüm VM'lerin İnternet'e erişebilir ve bu nedenle Azure Data Lake depolama Gen1 erişebilir. Ancak, internet erişimi olmaması için bir vnet'teki VM'ler yapılandırmak mümkündür. Bu tür VM'ler için Azure Data Lake depolama Gen1 erişimi de sınırlıdır. Azure sanal ağlardaki sanal makineler için genel Internet erişimini engelleyen yapılabilir aşağıdaki yaklaşımlardan birini kullanarak:
+# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Azure VNET içindeki VM'lerden Azure Veri Gölü Depolama Gen1'e erişin
+Azure Veri Gölü Depolama Gen1, genel Internet IP adreslerinde çalışan bir PaaS hizmetidir. Genel Internet'e bağlanabilen herhangi bir sunucu genellikle Azure Veri Gölü Depolama Gen1 uç noktalarına da bağlanabilir. Varsayılan olarak, Azure VNET'lerde bulunan tüm Sanal Taşıtlar Internet'e erişebilir ve bu nedenle Azure Veri Gölü Depolama Gen1'e erişebilir. Ancak, VNET'teki VM'leri Internet erişimi olmayacak şekilde yapılandırmak mümkündür. Bu tür Sanal Taşıtlar için Azure Veri Gölü Depolama Gen1'e erişim de kısıtlanmıştır. Azure VNET'lerde VMS'ler için genel Internet erişiminin engellenmesi aşağıdaki yaklaşımlardan herhangi biri kullanılarak yapılabilir:
 
-* Ağ güvenlik grupları (NSG) yapılandırarak
-* Kullanıcı tanımlı yollar (UDR) yapılandırarak
-* Yollar BGP (endüstri standardı dinamik yönlendirme protokolü) üzerinden değiştirerek ExpressRoute kullanıldığında, bu erişimi engelleme Internet'e
+* Ağ Güvenlik Gruplarını (NSG) yapılandırarak
+* Kullanıcı Tanımlı Rotaları (UDR) yapılandırarak
+* ExpressRoute kullanıldığında BGP (endüstri standardı dinamik yönlendirme protokolü) üzerinden rota alışverişi yaparak, Internet'e erişimi engelleyen
 
-Bu makalede, Azure Data Lake depolama Gen1 için daha önce listelenen üç yöntemden birini kullanarak kaynaklara erişim için sınırlandı Azure sanal erişmesini öğreneceksiniz.
+Bu makalede, daha önce listelenen üç yöntemden birini kullanarak kaynaklara erişmekle sınırlandırılmış olan Azure VM'lerden Azure Veri Gölü Depolama Gen1'e erişimi nasıl etkinleştireceğinizi öğreneceksiniz.
 
-## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Bağlantı için Azure Data Lake depolama Gen1 sanal makinelerinden kısıtlı bağlantısı ile etkinleştirme
-Azure Data Lake depolama Gen1 gibi Vm'lerden erişmek için Azure Data Lake depolama Gen1 hesabı kullanılabilir olduğu bölge için IP adresi erişmek için bunları yapılandırmanız gerekir. Hesaplarınızı DNS adlarını çözerek, Data Lake depolama Gen1 hesabı bölgeler için IP adreslerini tanımlayabilirsiniz (`<account>.azuredatalakestore.net`). Hesaplarınızı DNS adlarını çözümlemek için Araçlar gibi kullanabilirsiniz **nslookup**. Bilgisayarınızda bir komut istemi açın ve aşağıdaki komutu çalıştırın:
+## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Sınırlı bağlantı yla VM'lerden Azure Veri Gölü Depolama Gen1'e bağlantı sağlama
+Bu tür VM'lerden Azure Veri Gölü Depolama Gen1'e erişmek için, bunları Azure Veri Gölü Depolama Gen1 hesabının bulunduğu bölgenin IP adresine erişmek üzere yapılandırmanız gerekir. Hesaplarınızın DNS adlarını çözerek Veri Gölü Depolama Gen1 hesap bölgelerinizin IP`<account>.azuredatalakestore.net`adreslerini belirleyebilirsiniz . Hesaplarınızın DNS adlarını çözmek için **nslookup**gibi araçları kullanabilirsiniz. Bilgisayarınızda bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
     nslookup mydatastore.azuredatalakestore.net
 
-Çıktı aşağıdakine benzer. Değeri ile karşılaştırarak **adresi** özelliği, Data Lake depolama Gen1 hesabınızla ilişkili IP adresidir.
+Çıktı aşağıdakilere benzer. **Adres** özelliğine karşı değer, Veri Gölü Depolama Gen1 hesabınızla ilişkili IP adresidir.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -41,16 +41,16 @@ Azure Data Lake depolama Gen1 gibi Vm'lerden erişmek için Azure Data Lake depo
     Aliases:  mydatastore.azuredatalakestore.net
 
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG kullanarak kısıtlı vm'lerden bağlantıyı etkinleştirme
-Bir NSG kuralı, Internet erişimi engellemek için kullanıldığında, Data Lake depolama Gen1 IP adresine erişime izin veren başka bir NSG oluşturabilirsiniz. NSG kuralları hakkında daha fazla bilgi için bkz: [ağ güvenlik gruplarına genel bakış](../virtual-network/security-overview.md). Nsg'leri oluşturma hakkında yönergeler için bkz: [bir ağ güvenlik grubu oluşturma](../virtual-network/tutorial-filter-network-traffic.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG kullanılarak kısıtlanan VM'lerden bağlantı sağlama
+Internet'e erişimi engellemek için bir NSG kuralı kullanıldığında, Veri Gölü Depolama Gen1 IP Adresine erişime izin veren başka bir NSG oluşturabilirsiniz. NSG kuralları hakkında daha fazla bilgi için [Ağ güvenlik gruplarına genel bakış](../virtual-network/security-overview.md)alabakın. NSG'lerin nasıl oluşturulacağına ilişkin yönergeler için ağ güvenlik grubu oluşturma ya [da nasıl oluşturacağınız](../virtual-network/tutorial-filter-network-traffic.md)hakkında bilgi alabiliyorum.
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR ya da ExpressRoute kullanarak kısıtlı vm'lerden bağlantıyı etkinleştirme
-Yollar, Udr veya yollar BGP değişimi, Internet erişimi engellemek için kullanıldığında, bir özel yol VM'ler gibi alt ağlarda Data Lake depolama Gen1 uç noktaları erişebilmesi için yapılandırılması gerekir. Daha fazla bilgi için [kullanıcı tanımlı yollara genel bakış](../virtual-network/virtual-networks-udr-overview.md). Udr'ler oluşturma ile ilgili yönergeler için bkz: [Udr oluşturun Kaynak Yöneticisi'nde](../virtual-network/tutorial-create-route-table-powershell.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR veya ExpressRoute kullanılarak kısıtlanan VM'lerden bağlantı sağlama
+ÜD'ler veya BGP değiştirilen rotalar Internet'e erişimi engellemek için kullanıldığında, bu tür alt ağlardaki VM'lerin Veri Gölü Depolama Gen1 uç noktalarına erişebilmesi için özel bir rotanın yapılandırılması gerekir. Daha fazla bilgi için [Kullanıcı tanımlı rotalara genel bakış](../virtual-network/virtual-networks-udr-overview.md)alabakın. ÜD'ler oluşturma yönergeleri için Kaynak [Yöneticisi'nde UD'ler oluştur'a](../virtual-network/tutorial-create-route-table-powershell.md)bakın.
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>ExpressRoute kullanarak kısıtlı vm'lerden bağlantıyı etkinleştirme
-Bir ExpressRoute bağlantı hattı yapılandırıldığında, şirket içi sunucular genel eşdüzey hizmet sağlama ile Data Lake depolama Gen1 erişebilirsiniz. Kullanılabilir genel eşdüzey hizmet sağlama için Expressroute'u yapılandırma hakkında daha fazla ayrıntı [ExpressRoute SSS](../expressroute/expressroute-faqs.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>ExpressRoute kullanılarak kısıtlanan VM'lerden bağlantı sağlama
+Bir ExpressRoute devresi yapılandırıldığında, şirket içi sunucular genel bakış yoluyla Veri Gölü Depolama Gen1'e erişebilir. Public-resiyasyon için ExpressRoute'un yapılandırılması hakkında daha fazla bilgi [ExpressRoute SSS'de](../expressroute/expressroute-faqs.md)mevcuttur.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Data Lake depolama Gen1 genel bakış](data-lake-store-overview.md)
-* [Azure Data Lake depolama Gen1 depolanan verilerin güvenliğini sağlama](data-lake-store-security-overview.md)
+* [Azure Veri Gölü Depolama Gen1'e Genel Bakış](data-lake-store-overview.md)
+* [Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama](data-lake-store-security-overview.md)
 

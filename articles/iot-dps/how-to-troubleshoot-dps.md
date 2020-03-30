@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub DPS ile bağlantıyı Tanıla ve sorunlarını giderme
-description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için cihaz bağlantısıyla sık karşılaşılan hataları tanılamayı ve sorun gidermeyi öğrenin
+title: Azure IoT Hub DPS ile bağlantı bağlantı larını tanılama ve sorun giderme
+description: Azure IoT Hub Aygıt Sağlama Hizmeti (DPS) için aygıt bağlantısıyla sık karşılaşılan hataları tanılamayı ve sorun gidermeyi öğrenin
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646481"
 ---
-# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
+# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Aygıt Sağlama Hizmeti ile Sorun Giderme
 
-Kanıtlama hataları, kayıt hataları vb. gibi birçok olası başarısızlık noktası olduğundan, IoT cihazlarına yönelik bağlantı sorunlarının giderilmesi zor olabilir. Bu makalede, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)aracılığıyla cihaz bağlantısı sorunlarını algılamaya ve gidermeye yönelik yönergeler sunulmaktadır.
+IoT aygıtları için bağlantı sorunlarını gidermek zor olabilir, çünkü attestation hataları, kayıt hataları gibi birçok olası hata noktası vardır. Bu makalede, [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)üzerinden aygıt bağlantısı sorunlarının nasıl algılandığı ve sorun giderilen yol hakkında kılavuz verilmektedir.
 
-## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Ölçümleri görüntülemek ve uyarıları ayarlamak için Azure Izleyici 'yi kullanma
+## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Ölçümleri görüntülemek ve uyarıları ayarlamak için Azure Monitörünü kullanma
 
-Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının nasıl görüntüleneceği ve ayarlanacağı açıklanır. 
+Aşağıdaki yordam, IoT Hub Aygıt Sağlama Hizmeti ölçümünde nasıl görüntülenir ve uyarı ayarlanır. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-2. IoT Hub cihaz sağlama hizmetinize gidin.
+2. IoT Hub Cihaz Sağlama Hizmetinize göz atın.
 
 3. **Ölçümler**’i seçin.
 
-4. İstediğiniz ölçümü seçin. 
+4. İstenilen ölçütünü seçin. 
    <br />Şu anda DPS için üç ölçüm vardır:
 
-    | Ölçüm Adı | Açıklama |
+    | Metrik Adı | Açıklama |
     |-------|------------|
-    | Kanıtlama denemeleri | Cihaz sağlama hizmeti ile kimlik doğrulamaya çalıştı cihaz sayısı|
-    | Kayıt denemeleri | Başarılı kimlik doğrulamasından sonra IoT Hub kaydolmaya çalışılan cihazların sayısı|
-    | Cihaz atandı | IoT Hub başarıyla atanan cihazların sayısı|
+    | Attestation girişimleri | Aygıt Sağlama Hizmeti ile kimlik doğrulamaya çalışan aygıt sayısı|
+    | Kayıt denemeleri | Başarılı kimlik doğrulamadan sonra IoT Hub'a kaydolmaya çalışan aygıt sayısı|
+    | Atanan aygıt | IoT Hub'ına başarıyla atanan aygıt sayısı|
 
 5. Ölçümün görsel görünümünü oluşturmak için istenen toplama yöntemini seçin. 
 
-6. Ölçüm uyarısı ayarlamak için, ölçüm dikey penceresinin sağ üst köşesindeki **Yeni uyarı kuralları** ' nı seçin, benzer şekilde **Uyarı** dikey penceresine gidebilir ve **Yeni uyarı kuralları**' nı seçebilirsiniz.
+6. Bir metrik uyarısı ayarlamak için, metrik bıçağın sağ üst kısmından **Yeni uyarı kuralları** nı seçin, benzer şekilde **Alert** blade'e gidebilir ve Yeni **uyarı kurallarını**seçebilirsiniz.
 
-7. **Koşul Ekle**' yi seçin, ardından komut istemlerini izleyerek istediğiniz ölçüm ve eşiği seçin.
+7. **Koşul Ekle'yi**seçin, ardından istemleri izleyerek istediğiniz metrik ve eşiği seçin.
 
-Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?](../azure-monitor/platform/alerts-overview.md)
+Daha fazla bilgi edinmek için Microsoft [Azure'daki klasik uyarılar nelerdir?](../azure-monitor/platform/alerts-overview.md)
 
-## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için log analitik kullanma
+## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için Log Analytic'i kullanma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-2. IoT Hub 'ınıza gidin.
+2. IoT hub'ınıza göz atın.
 
-3. **Tanılama ayarları**' nı seçin.
+3. **Tanılama ayarlarını**seçin.
 
-4. Seçin **tanılamayı Aç**.
+4. **Tanılamayı Aç'ı**seçin.
 
-5. İstenen günlüklerin toplanmasını sağlar.
+5. İstenilen günlüklerin toplanmasını etkinleştirin.
 
     | Günlük Adı | Açıklama |
     |-------|------------|
-    | DeviceOperations Işlemleri | Cihaz bağlantı olaylarıyla ilgili Günlükler |
-    | ServiceOperations | Service SDK kullanımıyla ilgili olay günlükleri (ör. kayıt grupları oluşturma veya güncelleştirme)|
+    | Cihaz İşlemleri | Aygıt bağlantısı olaylarıile ilgili günlükler |
+    | Hizmet İşlemleri | Hizmet SDK'nın kullanımıyla ilgili olay günlükleri (örn. kayıt grupları oluşturma veya güncelleme)|
 
-6. **Log Analytics gönder** ' i açın ([bkz. fiyatlandırma](https://azure.microsoft.com/pricing/details/log-analytics/)). 
+6. Günlük **Analitiğine Gönder'i** açın ([fiyatlandırmaya bakın).](https://azure.microsoft.com/pricing/details/log-analytics/) 
 
-7. Cihaz sağlama hizmeti kaynağı altındaki Azure portal **Günlükler** sekmesine gidin.
+7. Aygıt Sağlama Hizmeti kaynağı altında Azure portalında **Günlükler** sekmesine gidin.
 
-8. Son olayları görüntülemek için **Çalıştır** ' a tıklayın.
+8. Son olayları görüntülemek için **Çalıştır'ı** tıklatın.
 
-9. Sonuçlar varsa, hata hakkında daha fazla ayrıntı almak için `OperationName`, `ResultType`, `ResultSignature`ve `ResultDescription` (hata iletisi) arayın.
+9. Sonuç varsa, hata `OperationName`hakkında `ResultType` `ResultSignature`daha `ResultDescription` fazla ayrıntı almak için , , , ve (hata iletisi) arayın.
 
 
-## <a name="common-error-codes"></a>Sık kullanılan hata kodları
-Sık karşılaşılan hataları anlamak ve çözmek için bu tabloyu kullanın.
+## <a name="common-error-codes"></a>Genel hata kodları
+Sık karşılaşılan hataları anlamak ve gidermek için bu tabloyu kullanın.
 
 | Hata Kodu| Açıklama | HTTP Durum Kodu |
 |-------|------------|------------|
-| 400 | İsteğin gövdesi geçerli değil; Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor.| 400 Hatalı biçim |
-| 401 | Yetkilendirme belirteci doğrulanamıyor; Örneğin, zaman aşımına uğradı veya isteğin URI 'SI için uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | 401 Yetkisiz|
-| 404 | Cihaz sağlama hizmeti örneği veya bir kaynak (örn. bir kayıt) yok. |404 Bulunamadı |
-| 412 | İstekteki ETag, RFC7232 başına mevcut kaynağın ETag 'i ile eşleşmiyor. | 412 Önkoşul başarısız oldu |
-| 429 | İşlemler, hizmet tarafından kısıtlanıyor. Belirli hizmet limitleri için bkz. [cihaz sağlama hizmeti sınırlarını IoT Hub](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 çok fazla istek |
+| 400 | İsteğin gövdesi geçerli değildir; örneğin, ayrıştıolamaz veya nesne doğrulanamaz.| 400 Kötü biçim |
+| 401 | Yetkilendirme belirteci doğrulanamaz; örneğin, süresi dolmuş veya isteğin URI için geçerli değildir. Bu hata kodu, TPM attestation akışının bir parçası olarak aygıtlara da döndürülür. | 401 Yetkisiz|
+| 404 | Aygıt Sağlama Hizmeti örneği veya bir kaynak (örn. bir kayıt) yok. |404 Bulunamadı |
+| 412 | İstekteki ETag, RFC7232'ye göre varolan kaynağın ETag'ı ile eşleşmez. | 412 Ön koşul başarısız oldu |
+| 429 | Operasyonlar hizmet tarafından azaltılıyor. Belirli hizmet sınırları [için, IoT Hub Aygıt Sağlama Hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)bakın. | 429 Çok fazla istek |
 | 500 | Bir iç hata oluştu. | 500 İç Sunucu Hatası|

@@ -1,18 +1,18 @@
 ---
-title: Yönetilen uygulama tanımı oluştur
+title: Yönetilen uygulama tanımı oluşturma
 description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulaması oluşturmayı gösterir.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650348"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473056"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Azure yönetilen uygulaması tanımı yayımlama
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Hızlı başlangıç: Azure yönetilen uygulaması tanımı yayımlama
 
 Bu hızlı başlangıçta yönetilen uygulamalarla çalışmaya giriş bilgileri verilmektedir. Kuruluşunuzdaki kullanıcılar için bir iç kataloğa yönetilen uygulama tanımı eklersiniz. Girişi basitleştirmek amacıyla, yönetilen uygulamanız için dosyaları daha önce derledik. Bu dosyalar GitHub’da bulunabilir. [Hizmet kataloğu uygulaması oluşturma](publish-service-catalog-app.md) öğreticisinde bu dosyaların nasıl derlendiğini öğrenebilirsiniz.
 

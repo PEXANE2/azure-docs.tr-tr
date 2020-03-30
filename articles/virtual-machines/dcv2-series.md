@@ -1,55 +1,55 @@
 ---
-title: DC-Series-Azure sanal makineleri
-description: DC Serisi VM 'Ler için Özellikler.
+title: DC serisi - Azure Sanal Makineler
+description: DC serisi VM'ler için teknik özellikler.
 services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256938"
 ---
-# <a name="preview-dcv2-series"></a>Önizleme: DCv2-Series
+# <a name="preview-dcsv2-series"></a>Önizleme: DCsv2 serisi
 
 
-DCv2 serisi, genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisini içeren en son Intel XEON E-2288G Işlemcisi tarafından desteklenir. Intel Turbo Boost teknolojisiyle bu makineler, 5.0 GHz 'ye kadar sürebilir. DCv2 serisi örnekler, müşterilerin, kullanıldığı sırada kod ve verilerini korumak için güvenli şifreleme tabanlı uygulamalar oluşturmasına imkan tanır.
+DCsv2 serisi, genel bulutta işlenirken verilerinizin ve kodlarınızın gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisine sahip en son nesil Intel XEON E-2288G İşlemci tarafından desteklenen bir cihazdır. Intel Turbo Boost Teknolojisi ile bu makineler 5.0GHz'e kadar çıkabiliyor. DCsv2 serisi örnekleri, müşterilerin kullanımdayken kodlarını ve verilerini korumak için güvenli enklav tabanlı uygulamalar oluşturmasına olanak tanır.
 
-Örnek kullanım örnekleri arasında gizli çok taraflı veri paylaşımı, sahtekarlık algılama, para olumsuz korunma, blok zinciri, gizli kullanım analizi, zekası Analizi ve gizli makine öğrenimi bulunur.
+Örnek kullanım durumları arasında gizli çok taraflı veri paylaşımı, dolandırıcılık algılama, kara para aklamayla mücadele, blockchain, gizli kullanım analitiği, istihbarat analizi ve gizli makine öğrenimi sayılabilir.
 
-Premium Depolama: desteklenen *
+Premium Depolama: Desteklenen*
 
-Premium depolama önbelleği: desteklenir *
+Premium Depolama önbelleğe alma: Desteklenen*
 
-Dinamik Geçiş: desteklenmiyor
+Canlı Geçiş: Desteklenmiyor
 
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
 
-Standard_DC8_v2 hariç *
+*Standard_DC8_v2 hariç
 
 
 
-| Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (MBps) |
+| Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NIC ' ler / Beklenen ağ bant genişliği (MBps) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
-- DCv2 serisi VM 'Ler [2. nesil sanal makineler](./linux/generation-2.md#creating-a-generation-2-vm) ve yalnızca `Gen2` görüntülerini destekler.
-- Şu anda yalnızca UK Güney ' de kullanılabilir.
-- Önceki nesil gizli Işlem VM 'Leri: [DC Serisi](sizes-previous-gen.md)
-- Azure portalını kullanarak DCv2 VM oluşturma [VM oluşturma-Portal](./linux/quick-create-portal.md)
+- DCsv2 serisi VM'ler nesil 2 `Gen2` [VM'lerdir](./linux/generation-2.md#creating-a-generation-2-vm) ve yalnızca görüntüleri destekler.
+- Şu anda sadece İngiltere Güney ve Kanada Merkez mevcuttur.
+- Önceki nesil Gizli İşlem VM'leri: [DC Serisi](sizes-previous-gen.md)
+- Azure Portal Oluşturma VM kullanarak DCsv2 [VM'ler oluşturun - Portal](./linux/quick-create-portal.md)
 
 
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaçlı](sizes-general.md)
+- [Genel amaç](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -58,4 +58,4 @@ Standard_DC8_v2 hariç *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-iş yükü sanal makinelerini AVS 'nin özel bulutunda Veead kullanarak yedekleme
-description: Veeam B & R 9,5 kullanarak Azure tabanlı bir AVS özel bulutu 'nda çalışan sanal makinelerinizi nasıl yedekleyebileceğinizi açıklar.
+title: CloudSimple tarafından Azure VMware Çözümü - Veeam kullanarak Özel Bulut'ta iş yükü sanal makineleri yedekleme
+description: Veeam B&R 9.5 kullanarak Azure tabanlı CloudSimple Private Cloud'da çalışan sanal makinelerinizi nasıl yedeklediğinizi açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,170 +8,171 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d8dc822ec07bdf061121b97384d0e2f9f239d6e2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025138"
 ---
-# <a name="back-up-workload-vms-on-avs-private-cloud-using-veeam-br"></a>Veeam B & R kullanarak AVS özel bulutunda iş yükü VM 'lerini yedekleme
+# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R kullanarak CloudSimple Private Cloud'da iş yükü VM'lerini yedekleme
 
-Bu kılavuzda, Veeam B & R 9,5 kullanarak Azure tabanlı bir AVS özel bulutu 'nda çalışan sanal makinelerinizi nasıl yedekleyebileceğiniz açıklanmaktadır.
+Bu kılavuzda, Veeam B&R 9.5 kullanarak Azure tabanlı CloudSimple Private Cloud'da çalışan sanal makinelerinizi nasıl yedekleyebilirsiniz.
 
-## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Veead yedekleme ve kurtarma çözümü hakkında
+## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Veeam yedekleme ve kurtarma çözümü hakkında
 
-Veeab çözümü aşağıdaki bileşenleri içerir.
+Veeam çözümü aşağıdaki bileşenleri içerir.
 
-**Yedekleme sunucusu**
+**Yedek Sunucu**
 
-Yedekleme sunucusu, Veead için Denetim Merkezi görevi gören bir Windows Server (VM) ve şu işlevleri gerçekleştirir: 
+Yedekleme sunucusu, Veeam için denetim merkezi olarak hizmet veren ve bu işlevleri gerçekleştiren bir Windows sunucusudur (VM) 
 
-* Yedekleme, çoğaltma, kurtarma doğrulama ve geri yükleme görevlerini düzenler
-* İş zamanlama ve kaynak ayırmayı denetler
-* Yedekleme altyapısı bileşenlerini ayarlamanıza ve yönetmenize ve yedekleme altyapısının genel ayarlarını belirtmenize olanak tanır
+* Yedekleme, çoğaltma, kurtarma doğrulama ve görevleri geri yükleme yi koordine eder
+* İş zamanlamasını ve kaynak ayırmayı denetler
+* Yedekleme altyapısı bileşenlerini ayarlamanızı ve yönetmeniz ve yedekleme altyapısı için genel ayarları belirtmenizi sağlar
 
-**Proxy sunucular**
+**Proxy Sunucuları**
 
-Yedekleme sunucusu ve yedekleme altyapısının diğer bileşenleri arasında proxy sunucular yüklenir. Aşağıdaki işlevleri yönetir:
+Proxy sunucuları yedek sunucu ve yedekleme altyapısının diğer bileşenleri arasında yüklenir. Aşağıdaki işlevleri yönetirler:
 
-* Üretim depolamadan VM verilerini alma
+* VM verilerinin üretim depolamasından alınması
 * Sıkıştırma
 * Yinelenenleri kaldırma
 * Şifreleme
-* Yedekleme deposuna veri iletimi
+* Verilerin yedekleme deposuna aktarılması
 
-**Yedekleme deposu**
+**Yedek depo**
 
-Yedekleme deposu, Veead 'nin çoğaltılan VM 'Ler için yedekleme dosyalarını, VM kopyalarını ve meta verileri sakladığı depolama konumudur. Depo, yerel diskler (veya bağlı NFS/SMB) veya bir donanım depolama yinelenenleri kaldırma gereci olan bir Windows veya Linux sunucusu olabilir.
+Yedekleme deposu, Veeam'in çoğaltılan VM'ler için yedekleme dosyalarını, VM kopyalarını ve meta verileri sakladığı depolama konumudur.  Depo, yerel disklere (veya nfs/SMB'ye monte edilmiş) bir Windows veya Linux sunucusu veya donanım depolama çoğaltma cihazı olabilir.
 
-### <a name="veeam-deployment-scenarios"></a>Veead dağıtım senaryoları
-Bir yedekleme deposu ve uzun süreli yedekleme ve arşivleme için bir depolama hedefi sağlamak üzere Azure 'dan yararlanabilirsiniz. AVS özel bulutundaki ve Azure 'daki yedekleme deposundaki VM 'Ler arasındaki tüm yedek ağ trafiği, yüksek bant genişliğine sahip düşük gecikme süreli bir bağlantı üzerinden hareket eder. Bölgeler arasında çoğaltma trafiği, kullanıcılar için bant genişliği maliyetlerini düşürür.
+### <a name="veeam-deployment-scenarios"></a>Veeam dağıtım senaryoları
+Uzun süreli yedekleme ve arşivleme için bir yedekleme deposu ve depolama hedefi sağlamak için Azure'dan yararlanabilirsiniz. Özel Bulut'taki VM'ler ile Azure'daki yedekleme deposu arasındaki tüm yedekleme ağı trafiği, yüksek bant genişliği, düşük gecikme sonu bağlantısı üzerinden hareket eder. Bölgeler arasındaki çoğaltma trafiği, kullanıcılar için bant genişliği maliyetlerini düşüren dahili Azure arka düzlem ağı üzerinden gider.
 
 **Temel dağıtım**
 
-Yedeklenme 30 TB 'tan az olan ortamlarda, AVS aşağıdaki yapılandırmayı önerir:
+Yedeklemek için 30 TB'den az olan ortamlar için CloudSimple aşağıdaki yapılandırmayı önerir:
 
-* Veeambackup sunucusu ve proxy sunucusu, AVS özel bulutundaki aynı VM 'ye yüklendi.
-* Azure 'da yedekleme işleri için hedef olarak yapılandırılmış Linux tabanlı birincil yedekleme deposu.
-* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
+* Veeam yedekleme sunucusu ve proxy sunucusu Özel Bulut'ta aynı VM'de yüklü.
+* Azure'da linux tabanlı birincil yedekleme deposu yedekleme işleri için hedef olarak yapılandırıldı.
+* `azcopy`birincil yedekleme deposundaki verileri başka bir bölgeye çoğaltılan bir Azure blob kapsayıcısına kopyalamak için kullanılır.
 
 ![Temel dağıtım senaryoları](media/veeam-basicdeployment.png)
 
 **Gelişmiş dağıtım**
 
-Yedeklenme 30 TB 'ın üzerinde olan ortamlarda, AVS aşağıdaki yapılandırmayı önerir:
+Yedeklemek için 30'dan fazla TB'si olan ortamlar için CloudSimple aşağıdaki yapılandırmayı önerir:
 
-* Veead tarafından önerildiği şekilde, vSAN kümesindeki düğüm başına bir ara sunucu.
-* Hızlı geri yüklemeler için beş günlük veriyi önbelleğe almak üzere AVS özel bulutundaki Windows tabanlı birincil yedekleme deposu.
-* Azure 'daki Linux yedekleme deposu, daha uzun süreli saklama için yedekleme kopyalama işlerinin hedefi olarak. Bu depo, genişleme yedekleme deposu olarak yapılandırılmalıdır.
-* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
+* Veeam tarafından önerilen vSAN kümesinde düğüm başına bir proxy sunucusu.
+* Hızlı geri yüklemeler için beş günlük verileri önbelleğe almak için Özel Bulut'ta Windows tabanlı birincil yedekleme deposu.
+* Daha uzun süre bekletme için yedekleme kopyalama işleri için hedef olarak Azure'daki Linux yedekleme deposu. Bu depo, ölçeklendirme yedek deposu olarak yapılandırılmalıdır.
+* `azcopy`birincil yedekleme deposundaki verileri başka bir bölgeye çoğaltılan bir Azure blob kapsayıcısına kopyalamak için kullanılır.
 
 ![Temel dağıtım senaryoları](media/veeam-advanceddeployment.png)
 
-Önceki şekilde, yedekleme proxy 'sinin, vSAN veri deposundaki iş yükü VM disklerine sık erişimli ekleme erişimi olan bir VM olduğuna dikkat edin. Veead, vSAN için Sanal Gereç yedekleme proxy 'si aktarım modunu kullanır.
+Önceki şekilde, yedekleme proxy vSAN veri deposunda iş yükü VM diskleri Hot Add erişimi ile bir VM olduğunu unutmayın. Veeam vSAN için Sanal Cihaz yedek proxy taşıma modunu kullanır.
 
-## <a name="requirements-for-veeam-solution-on-avs"></a>AVS 'deki Veead çözümü için gereksinimler
+## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>CloudSimple'da Veeam çözümü için gereksinimler
 
-Veeab çözümü şunları yapmanızı gerektirir:
+Veeam çözümü aşağıdakileri yapmanızgerektiğini gerektirir:
 
-* Kendi Veead lisanslarınızı sağlayın.
-* AVS özel bulutu 'nda çalışan iş yüklerini yedeklemek için Veead 'yi dağıtın ve yönetin.
+* Kendi Veeam lisanslarınızı sağlayın.
+* CloudSimple Private Cloud'da çalışan iş yüklerini yedeklemek için Veeam'ı dağıtın ve yönetin.
 
-Bu çözüm, Veead yedekleme aracı üzerinde tam denetim sağlar ve VM yedekleme işlerini yönetmek için yerel Veead arabirimini veya Veead vCenter eklentisini kullanma seçeneği sunar.
+Bu çözüm, Veeam yedekleme aracı üzerinde tam kontrol sağlar ve VM yedekleme işlerini yönetmek için yerel Veeam arabirimini veya Veeam vCenter eklentisini kullanma seçeneği sunar.
 
-Var olan bir Veeab kullanıcısı varsa, Veead Çözüm bileşenlerinde bulunan bölümü atlayabilir ve doğrudan [Veead dağıtım senaryolarına](#veeam-deployment-scenarios)devam edebilirsiniz.
+Varolan bir Veeam kullanıcısıysanız, Veeam Çözüm Bileşenleri'ndeki bölümü atlayabilir ve doğrudan [Veeam Dağıtım Senaryolarına](#veeam-deployment-scenarios)geçebilirsiniz.
 
-## <a name="install-and-configure-veeam-backups-in-your-avs-private-cloud"></a>AVS özel bulutunuzda Veead yedeklemelerini yükleyip yapılandırın
+## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>CloudSimple Private Cloud'unuzda Veeam yedeklemelerini yükleyin ve yapılandırır
 
-Aşağıdaki bölümlerde, AVS özel bulutunuz için bir Veeae yedekleme çözümünün nasıl yükleneceği ve yapılandırılacağı açıklanır.
+Aşağıdaki bölümler, CloudSimple Private Cloud'unuz için bir Veeam yedekleme çözümünüzü nasıl yükleyip yapılandırılabildiğini açıklar.
 
 Dağıtım işlemi aşağıdaki adımlardan oluşur:
 
-1. [vCenter Kullanıcı arabirimi: AVS özel bulutunuzda altyapı hizmetleri ayarlama](#vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud)
-2. [AVS Portalı: Veead için AVS özel bulut ağını ayarlama](#avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam)
-3. [AVS Portalı: Ilerleme ayrıcalıkları](#avs-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure portal: Sanal ağınızı AVS özel bulutuna bağlama](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
-5. [Azure portal: Azure 'da bir yedekleme deposu oluşturun](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
-6. [Azure portal: uzun süreli veri saklama için Azure Blob depolamayı yapılandırma](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [AVS özel bulutunun vCenter Kullanıcı arabirimi: Install Veeam B & R](#vcenter-console-of-avs-private-cloud-install-veeam-br)
-8. [Veeamconsole: Veead Backup & kurtarma yazılımını yapılandırma](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [AVS Portalı: Veead erişimi ayarlama ve bu ayrıcalıkları serbest bırakma](#avs-portal-set-up-veeam-access-and-de-escalate-privileges)
+1. [vCenter UI: Özel Bulut'unuzda altyapı hizmetleri ayarlama](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [CloudSimple portalı: Veeam için Özel Bulut ağı kurma](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [CloudSimple portalı: Ayrıcalıkları Artırın](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure portalı: Sanal ağınızı Özel Bulut'a bağlayın](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure portalı: Azure'da yedekleme deposu oluşturma](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+6. [Azure portalı: Uzun vadeli veri saklama için Azure blob depolamayı yapılandırın](#configure-azure-blob-storage-for-long-term-data-retention)
+7. [özel bulut vCenter UI: Veeam B&R yükleyin](#vcenter-console-of-private-cloud-install-veeam-br)
+8. [Veeam Console: Veeam Yedekleme & Kurtarma yazılımı yapılandırın](#veeam-console-install-veeam-backup-and-recovery-software)
+9. [CloudSimple portalı: Veeam erişimi ayarlayın ve ayrıcalıkları artırın](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-Veead dağıtımına başlamadan önce aşağıdakiler gereklidir:
+Veeam dağıtımına başlamadan önce aşağıdakiler gereklidir:
 
 * Size ait bir Azure aboneliği
-* Önceden oluşturulmuş bir Azure Kaynak grubu
-* Aboneliğinizdeki bir Azure sanal ağı
-* Bir Azure depolama hesabı
-* AVS Portalı kullanılarak oluşturulan bir [AVS özel bulutu](create-private-cloud.md) .  
+* Önceden oluşturulmuş bir Azure kaynak grubu
+* Aboneliğinizde bir Azure sanal ağı
+* Azure depolama hesabı
+* CloudSimple portalı kullanılarak oluşturulan [Özel Bulut.](create-private-cloud.md)  
 
 Uygulama aşamasında aşağıdaki öğeler gereklidir:
 
-* Windows için VMware şablonları Veead (Windows Server 2012 R2-64 bit görüntü gibi)
-* Yedekleme ağı için tanımlanan bir kullanılabilir VLAN
-* Yedekleme ağına atanacak alt ağın CıDR 'i
-* Veeaz 9,5 U3 yüklenebilen medya (ISO), AVS özel bulutunun vSAN veri deposuna yüklendi
+* Veeam'i yüklemek için Windows için VMware şablonları (Windows Server 2012 R2 - 64 bit görüntü gibi)
+* Yedekleme ağı için tanımlanmış kullanılabilir bir VLAN
+* Yedekleme ağına atanacak alt ağın CIDR'si
+* Veeam 9.5 u3 yüklenebilir medya (ISO) Özel Bulut vSAN veri deposuna yüklendi
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud"></a>vCenter Kullanıcı arabirimi: AVS özel bulutunuzda altyapı hizmetleri ayarlama
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter UI: Özel Bulut'unuzda altyapı hizmetleri ayarlama
 
-İş yüklerinizi ve araçlarınızı yönetmeyi kolaylaştırmak için AVS özel bulutundaki altyapı hizmetlerini yapılandırın.
+İş yüklerinizi ve araçlarınızı yönetmeyi kolaylaştırmak için Özel Bulut'taki altyapı hizmetlerini yapılandırın.
 
-* Aşağıdakilerden biri varsa [Active Directory kullanmak Için vCenter Identity kaynaklarını ayarlama](set-vcenter-identity.md) bölümünde açıklandığı gibi bir dış kimlik sağlayıcısı ekleyebilirsiniz:
-  * Şirket içi Active Directory (AD) kullanıcılarınızı AVS özel bulutunuzda tanımlamak istiyorsunuz.
-  * Tüm kullanıcılar için AVS özel bulutunuzda bir AD ayarlamak istiyorsunuz.
-  * Azure AD 'yi kullanmak istiyorsunuz.
-* AVS özel bulutundaki iş yükleriniz için IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak istiyorsanız, [AVS özel BULUTUNUZDA DNS ve DHCP uygulamaları ve iş yüklerini ayarlama](dns-dhcp-setup.md)bölümünde açıklandığı gıbı bir DHCP ve DNS sunucusu ayarlayın.
+* Aşağıdakilerden herhangi biri geçerliyse [Active Directory'yi kullanmak için vCenter kimlik kaynaklarını](set-vcenter-identity.md) ayarla'da açıklandığı gibi harici bir kimlik sağlayıcısı ekleyebilirsiniz:
 
-### <a name="avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam"></a>AVS özel bulutu: Veead için AVS özel bulut ağını ayarlama
+  * Özel Bulut'unuzda şirket içi Active Directory (AD) kullanıcıları tanımlamak istiyorsunuz.
+  * Tüm kullanıcılar için Özel Bulut'unuzda bir REKLAM kurmak istiyorsunuz.
+  * Azure AD'yi kullanmak istiyorsunuz.
+* Özel Bulut'taki iş yüklerinizle IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak için, [CloudSimple Private Cloud'unuzda DNS ve DHCP uygulamalarını ve iş yüklerini](dns-dhcp-setup.md)ayarla'da açıklandığı şekilde bir DHCP ve DNS sunucusu ayarlayın.
 
-Veead çözümü için AVS özel bulut ağını ayarlamak üzere AVS portalına erişin.
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple Private Cloud: Veeam için Özel Bulut ağı kurma
 
-Yedekleme ağı için bir VLAN oluşturun ve bir alt ağ CıDR atayın. Yönergeler için bkz. [VLAN/alt ağlar oluşturma ve yönetme](create-vlan-subnet.md).
+Veeam çözümü için Özel Bulut ağı kurmak için CloudSimple portalına erişin.
 
-Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin vermek için yönetim alt ağı ve yedekleme ağı arasında güvenlik duvarı kuralları oluşturun. Bkz. Veeab konusunda [kullanılan bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95). Güvenlik duvarı kuralı oluşturma yönergeleri için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
+Yedekleme ağı için bir VLAN oluşturun ve bir alt ağ CIDR atayın. Talimatlar için [VLANs/Subnets oluştur ve yönetme'ye](create-vlan-subnet.md)bakın.
 
-Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
+Veeam tarafından kullanılan bağlantı noktalarında ağ trafiğine izin vermek için yönetim alt ağı ile yedekleme ağı arasında güvenlik duvarı kuralları oluşturun. [Veeam konusuna](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)bakın Kullanılan Bağlantı Noktaları . Güvenlik duvarı kuralı oluşturma yla ilgili yönergeler [için](firewall.md)bkz.
+
+Aşağıdaki tablo bir bağlantı noktası listesi sağlar.
 
 | Simge | Açıklama | Simge | Açıklama |
 | ------------ | ------------- | ------------ | ------------- |
-| Backup Sunucusu  | vCenter  | HTTPS/TCP  | 443 |
-| Backup Sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |
-    | Backup Sunucusu   | DNS  | UDP  | 53  | 
-    | Backup Sunucusu   | Veeab güncelleştirme bildirimi sunucusu  | TCP  | 80  | 
-    | Backup Sunucusu   | Veeab lisans güncelleştirme sunucusu  | TCP  | 443  | 
-    | Yedekleme proxy 'Si   | vCenter |   |   | 
-    | Yedekleme proxy 'Si  | Linux yedekleme deposu   | TCP  | 22  | 
-    | Yedekleme proxy 'Si  | Windows yedekleme deposu  | TCP  | 49152-65535   | 
-    | Yedekleme deposu  | Yedekleme proxy 'Si  | TCP  | 2500-5000  | 
-    | Kaynak yedekleme deposu<br> *Yedekleme Kopyalama işleri için kullanılır*  | Hedef yedekleme deposu  | TCP  | 2500-5000  | 
+| Yedek Sunucu  | vCenter  | HTTPS / TCP  | 443 |
+| Yedek Sunucu <br> *Veeam Yedekleme & Çoğaltma bileşenlerini dağıtmak için gereklidir* | Yedek Proxy  | TCP/UDP  | 135, 137 ila 139 ve 445 |
+    | Yedek Sunucu   | DNS  | UDP  | 53  | 
+    | Yedek Sunucu   | Veeam Güncelleme Bildirim Sunucusu  | TCP  | 80  | 
+    | Yedek Sunucu   | Veeam Lisans Güncelleme Server  | TCP  | 443  | 
+    | Yedek Proxy   | vCenter |   |   | 
+    | Yedek Proxy  | Linux Yedekleme Deposu   | TCP  | 22  | 
+    | Yedek Proxy  | Windows Yedekleme Deposu  | TCP  | 49152 - 65535   | 
+    | Yedek Depo  | Yedek Proxy  | TCP  | 2500 -5000  | 
+    | Kaynak Yedekleme Deposu<br> *Yedekleme kopyalama işleri için kullanılır*  | Hedef Yedekleme Deposu  | TCP  | 2500 - 5000  | 
 
-[Güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md)bölümünde açıklandığı gibi iş yükü alt ağı ve yedekleme ağı arasında güvenlik duvarı kuralları oluşturun. Uygulamayla uyumlu yedekleme ve geri yükleme için, belirli uygulamaları barındıran iş yükü VM 'lerinde [ek bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) açılmalıdır.
+[Güvenlik duvarı tablolarını ve kurallarını ayarla'da](firewall.md)açıklandığı gibi iş yükü alt ağı ile yedekleme ağı arasında güvenlik duvarı kuralları oluşturun.  Uygulama farkında yedekleme ve geri yükleme için, belirli uygulamaları barındıran iş yükü VM'lerinde [ek bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) nın açılması gerekir.
 
-Varsayılan olarak, AVS, 1Gbps ExpressRoute bağlantısı sağlar. Daha büyük ortam boyutları için daha yüksek bir bant genişliği bağlantısı gerekebilir. Daha yüksek bant genişliği bağlantıları hakkında daha fazla bilgi için Azure desteğine başvurun.
+Varsayılan olarak, CloudSimple 1Gbps ExpressRoute bağlantısı sağlar. Daha büyük ortam boyutları için daha yüksek bir bant genişliği bağlantısı gerekebilir. Daha yüksek bant genişliği bağlantıları hakkında daha fazla bilgi için Azure desteğine başvurun.
 
-Kuruluma devam etmek için yetkilendirme anahtarı ve eş devre URI 'sine ve Azure aboneliğinize erişmeniz gerekir. Bu bilgiler, AVS portalındaki sanal ağ bağlantısı sayfasında bulunur. Yönergeler için bkz. [Azure sanal ağı IÇIN AVS bağlantısı için eşleme bilgileri alma](virtual-network-connection.md). Bilgileri alırken sorun yaşarsanız [desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Kuruluma devam etmek için yetkilendirme anahtarı ve eş devresi URI'ye ve Azure Aboneliğinize erişmeniz gerekir.  Bu bilgiler CloudSimple portalındaki Sanal Ağ Bağlantısı sayfasında mevcuttur. Talimatlar için bkz. Azure [sanal ağı için CloudSimple bağlantısıiçin eşleme bilgileri edinin.](virtual-network-connection.md) Bilgileri almakta sorun yaşıyorsanız, [desteğe başvurun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-### <a name="avs-private-cloud-escalate-privileges-for-cloudowner"></a>AVS özel bulutu: **cloudowner** için ilerletin ayrıcalıkları
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple Private Cloud: Bulut sahibi için ayrıcalıkları artırın
 
-Varsayılan ' cloudowner ' kullanıcısının, VEEAD 'yi yüklemek için AVS özel bulutu vCenter 'da yeterli ayrıcalıkları yoktur, bu nedenle kullanıcının vCenter ayrıcalıkları ilerletilmiş olmalıdır. Daha fazla bilgi için bkz. [ayrıcalıkları Yükselt](escalate-private-cloud-privileges.md).
+Varsayılan 'bulut sahibi' kullanıcısı, VEEAM'ı yüklemek için Özel Bulut vCenter'da yeterli ayrıcalıka sahip değildir, bu nedenle kullanıcının vCenter ayrıcalıklarının yükseltilmesi gerekir. Daha fazla bilgi için [bkz.](escalate-private-cloud-privileges.md)
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure portal: Sanal ağınızı AVS özel bulutuna bağlama
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure portalı: Sanal ağınızı Özel Bulut'a bağlayın
 
-[ExpressRoute kullanarak Azure sanal ağ bağlantısı](azure-expressroute-connection.md)'ndaki yönergeleri izleyerek sanal ağınızı AVS özel bulutuna bağlayın.
+[ExpressRoute'u kullanarak Azure Sanal Ağ Bağlantısı'ndaki](azure-expressroute-connection.md)yönergeleri izleyerek sanal ağınızı Özel Bulut'a bağlayın.
 
-### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portal: yedekleme deposu VM 'si oluşturma
+### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portalı: Yedek depo VM oluşturma
 
-1. (2 vCPU ve 8 GB bellek) ile standart bir D2 v3 VM oluşturun.
-2. CentOS 7,4 tabanlı görüntüsünü seçin.
-3. VM için bir ağ güvenlik grubu (NSG) yapılandırın. VM 'nin genel IP adresi olmadığından ve genel İnternet 'ten ulaşılamadiğini doğrulayın.
-4. Yeni VM için bir Kullanıcı adı ve parola tabanlı kullanıcı hesabı oluşturun. Yönergeler için, bkz. [Azure Portal Linux sanal makinesi oluşturma](../virtual-machines/linux/quick-create-portal.md).
-5. 1x512 GiB standart HDD oluşturun ve depo VM 'sine bağlayın. Yönergeler için bkz. [Azure Portal bir WINDOWS sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Yönetilen diskte BIR XFS birimi oluşturun](https://www.digitalocean.com/docs/volumes/how-to/). Daha önce belirtilen kimlik bilgilerini kullanarak VM 'de oturum açın. Bir mantıksal birim oluşturmak için aşağıdaki betiği yürütün, diski buna ekleyin, bir XFS FileSystem [bölümü](https://www.digitalocean.com/docs/volumes/how-to/partition/) oluşturun ve bölümü/backup1 yolu altına [bağlayın](https://www.digitalocean.com/docs/volumes/how-to/mount/) .
+1. (2 vCPUs ve 8 GB bellek) ile standart bir D2 v3 VM oluşturun.
+2. CentOS 7.4 tabanlı görüntüyü seçin.
+3. VM için bir ağ güvenlik grubu (NSG) yapılandırın. VM'nin genel bir IP adresi olmadığını ve herkese açık internetten erişilemediğini doğrulayın.
+4. Yeni VM için kullanıcı adı ve parola tabanlı kullanıcı hesabı oluşturun. Talimatlar için bkz. [Azure portalında bir Linux sanal makinesi oluşturun.](../virtual-machines/linux/quick-create-portal.md)
+5. 1x512 GiB standart HDD oluşturun ve depo VM'ye takın.  Yönergeler için, [Azure portalındaki bir Windows VM'ye yönetilen bir veri diskinin nasıl ekildiğini](../virtual-machines/windows/attach-managed-disk-portal.md)görün.
+6. [Yönetilen diskte bir XFS birimi oluşturun.](https://www.digitalocean.com/docs/volumes/how-to/) Daha önce belirtilen kimlik bilgilerini kullanarak VM'de oturum açın. Mantıksal bir birim oluşturmak, diski ona eklemek, Bir XFS dosya sistemi [bölümü](https://www.digitalocean.com/docs/volumes/how-to/partition/) oluşturmak ve /backup1 yolunun altındaki bölümü [monte](https://www.digitalocean.com/docs/volumes/how-to/mount/) etmek için aşağıdaki komut dosyasını çalıştırın.
 
-    Örnek komut dosyası:
+    Örnek betik:
 
     ```
     sudo pvcreate /dev/sdc
@@ -184,18 +185,18 @@ Varsayılan ' cloudowner ' kullanıcısının, VEEAD 'yi yüklemek için AVS öz
     sudo mount -t xfs /dev/mapper/backup1-backup1 /backup1
     ```
 
-7. /Backup1 ' i bir NFS bağlama noktası olarak, AVS özel bulutu 'nda çalışan Veead yedekleme sunucusuna sunun. Yönergeler için, [CentOS 6 ' da NFS bağlama ayarlama](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6)başlıklı dijital okyanus makalesine bakın. Bu NFS paylaşımının adını, Veead yedekleme sunucusunda Yedekleme deposunu yapılandırırken kullanın.
+7. /backup1'i Özel Bulut'ta çalışan Veeam yedekleme sunucusuna NFS montaj noktası olarak gösterin. Talimatlar için, Digital Ocean makalesine bakın [CentOS 6'da NFS Mount Nasıl Kurululur?](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6) Veeam yedekleme sunucusundaki yedekleme deposunu yapılandırırken bu NFS paylaşım adını kullanın.
 
-8. Yedekleme deposu sanal makinesi için NSG 'de filtreleme kurallarını, VM 'ye ve VM 'ye giden tüm ağ trafiğine açıkça izin verecek şekilde yapılandırın.
+8. Yedekleme deposu VM için NSG'deki filtreleme kurallarını, VM'ye gelen ve VM'den gelen tüm ağ trafiğine açıkça izin verecek şekilde yapılandırın.
 
 > [!NOTE]
-> Veeab Backup & çoğaltma, Linux yedekleme depolarıyla iletişim kurmak için SSH protokolünü kullanır ve Linux depolarında SCP yardımcı programını gerektirir. SSH arka plan programının düzgün yapılandırıldığını ve bu SCP 'nin Linux ana bilgisayarında kullanılabilir olduğunu doğrulayın.
+> Veeam Backup & Replication, Linux yedekleme depolarıyla iletişim kurmak için SSH protokolünü kullanır ve Linux depolarında SCP yardımcı programını gerektirir. SSH daemon'un düzgün şekilde yapılandırıldığından ve SCP'nin Linux ana bilgisayarda kullanılabildiğini doğrulayın.
 
-### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Uzun süreli veri saklama için Azure Blob depolamayı yapılandırma
+### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Uzun vadeli veri saklama için Azure blob depolamayı yapılandırma
 
-1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
-2. [Kapsayıcı oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
-2. Microsoft 'tan Linux için `azcopy` komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
+1. Microsoft video [Azure Depolama ile Başlarken](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)açıklandığı gibi standart türünde genel amaçlı depolama hesabı (GPv2) ve bir blob kapsayıcı oluşturun.
+2. Kapsayıcı Oluştur başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı [oluşturun.](https://docs.microsoft.com/rest/api/storageservices/create-container)
+2. Microsoft'tan `azcopy` Linux için komut satırı yardımcı programını indirin. CentOS 7.5'teki bash kabuğunda aşağıdaki komutları kullanabilirsiniz.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -205,100 +206,100 @@ Varsayılan ' cloudowner ' kullanıcısının, VEEAD 'yi yüklemek için AVS öz
     sudo yum -y install icu
     ```
 
-3. Yedekleme dosyalarını blob kapsayıcısından ve öğesinden kopyalamak için `azcopy` komutunu kullanın. Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md) .
+3. Yedek `azcopy` dosyaları blob kapsayıcısına kopyalamak için komutu kullanın.  Ayrıntılı komutlar için [Linux'ta AzCopy ile veri](../storage/common/storage-use-azcopy-linux.md) aktarımı'na bakın.
 
-### <a name="vcenter-console-of-avs-private-cloud-install-veeam-br"></a>AVS özel bulutunun vCenter konsolu: Install Veeam B & R
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>özel bulut vCenter konsolu: Veeam B&R yükleyin
 
-Bir Veeam hizmeti hesabı oluşturmak için, AVS özel bulutunuzda vCenter 'a erişin, Veeam B & R 9,5 sürümünü yükleyip hizmet hesabını kullanarak Veeam 'yi yapılandırın.
+Bir Veeam hizmet hesabı oluşturmak, Veeam B&R 9.5'i yüklemek ve hizmet hesabını kullanarak Veeam'i yapılandırmak için Özel Bulut'unuzdan vCenter'a erişin.
 
-1. ' Veeam Backup role ' adlı yeni bir rol oluşturun ve gerekli izinleri Veeam tarafından önerilen şekilde atayın. Ayrıntılar için bkz. Veeab konusu [gerekli izinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
-2. VCenter 'da yeni bir ' Veeam Kullanıcı grubu ' grubu oluşturun ve bunu ' Veeam yedekleme rolü ' olarak atayın.
-3. Yeni bir ' Veeamservice hesabı ' kullanıcısı oluşturun ve ' Veeae kullanıcı grubuna ekleyin.
+1. 'Veeam Yedekleme Rolü' adlı yeni bir rol oluşturun ve Veeam tarafından önerilen gerekli izinleri atayın. Ayrıntılar için Veeam konusu [Gerekli İzinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)bakın.
+2. vCenter'da yeni bir 'Veeam Kullanıcı Grubu' grubu oluşturun ve ona 'Veeam Yedekleme Rolü' atayın.
+3. Yeni bir 'Veeam Hizmet Hesabı' kullanıcısı oluşturun ve 'Veeam Kullanıcı Grubu'na ekleyin.
 
-    ![Veead hizmet hesabı oluşturma](media/veeam-vcenter01.png)
+    ![Veeam hizmet hesabı oluşturma](media/veeam-vcenter01.png)
 
-4. VCenter 'da yedek ağ VLAN 'ıNı kullanarak dağıtılmış bir bağlantı noktası grubu oluşturun. Ayrıntılar için, [vSphere Web Istemcisinde dağıtılmış bir bağlantı noktası grubu oluşturan](https://www.youtube.com/watch?v=wpCd5ZbPOpA)VMware videosunu görüntüleyin.
-5. Veead yedekleme ve proxy sunucuları için VM 'Leri, [veead sistem gereksinimlerine](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)göre vCenter 'da oluşturun. Windows 2012 R2 veya Linux 'u kullanabilirsiniz. Daha fazla bilgi için bkz. [Linux yedek depoları kullanma gereksinimleri](https://www.veeam.com/kb2216).
-6. Veead yedekleme sunucusu VM 'sinde bir CDROM cihazı olarak yüklenebilir Veead ISO takın.
-7. Windows 2012 R2 makinesinde bir RDP oturumu kullanarak (Veeam yüklemesi için hedef), bir Windows 2012 R2 sanal makinesine [Veeam B & R 9.5 U3 'yi yükleme](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) .
-8. Veeab yedekleme sunucusu VM 'sinin iç IP adresini bulun ve IP adresini DHCP sunucusunda statik olacak şekilde yapılandırın. Bunu yapmak için gereken tam adımlar DHCP sunucusuna bağlıdır. Örnek olarak, <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">STATIK DHCP eşlemeleri</a> NETGATE MAKALESINDE bir DHCP sunucusunun bir PFSense yönlendiricisi kullanılarak nasıl yapılandırılacağı açıklanmaktadır.
+4. Yedekleme ağı VLAN'ı kullanarak vCenter'da dağıtılmış bir bağlantı noktası grubu oluşturun. Ayrıntılar için [vSphere Web İstemci'sinde Dağıtılmış Bağlantı Noktası Grubu Oluşturma](https://www.youtube.com/watch?v=wpCd5ZbPOpA)VMware videosunu görüntüleyin.
+5. [Veeam sistem gereksinimlerine](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)göre vCenter'da Veeam yedekleme ve proxy sunucuları için VM'ler oluşturun. Windows 2012 R2 veya Linux kullanabilirsiniz. Daha fazla bilgi [için Linux yedekleme depolarını kullanma gereksinimlerine](https://www.veeam.com/kb2216)bakın.
+6. Yüklenebilir Veeam ISO'yu Veeam yedekleme sunucusu VM'de CDROM aygıtı olarak monte edin.
+7. Windows 2012 R2 makinesine (Veeam yüklemesinin hedefi) bir RDP oturumu kullanarak, Windows 2012 R2 VM'de [Veeam B&R 9.5u3'ü yükleyin.](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
+8. Veeam yedekleme sunucusu VM'nin dahili IP adresini bulun ve IP adresini DHCP sunucusunda statik olacak şekilde yapılandırın. Bunu yapmak için gereken tam adımlar DHCP sunucusuna bağlıdır. Örnek olarak, Netgate makalesi <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">statik DHCP eşlemeleri,</a> bir DHCP sunucusunun bir pfSense yönlendiricisi kullanarak nasıl yapılandırılabildiğini açıklar.
 
-### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veead konsolu: Veead yedekleme ve kurtarma yazılımlarını yükler
+### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam konsolu: Veeam yedekleme ve kurtarma yazılımı yükleyin
 
-Veead konsolunu kullanarak Veead yedekleme ve kurtarma yazılımlarını yapılandırın. Ayrıntılar için bkz. [Veead Backup & çoğaltma v9-yükleme ve dağıtım](https://www.youtube.com/watch?v=b4BqC_WXARk).
+Veeam konsolu kullanarak Veeam yedekleme ve kurtarma yazılımını yapılandırın. Ayrıntılar için, [Veeam Yedekleme & Çoğaltma v9 - Yükleme ve Dağıtım'a](https://www.youtube.com/watch?v=b4BqC_WXARk)bakın.
 
-1. VMware vSphere yönetilen sunucu ortamı olarak ekleyin. İstendiğinde, AVS özel bulutun vCenter konsolunun başlangıcında oluşturduğunuz Veeam hizmet hesabının kimlik bilgilerini sağlayın [: Veeam B & R 'Yi yükler](#vcenter-console-of-avs-private-cloud-install-veeam-br).
+1. VMware vSphere'i yönetilen bir sunucu ortamı olarak ekleyin. İstendiğinde, özel bulutvCenter Console başında oluşturduğunuz Veeam Hizmet Hesabı'nın kimlik bilgilerini [sağlayın: Veeam B&R'yi yükleyin.](#vcenter-console-of-private-cloud-install-veeam-br)
 
-    * Yükleme denetimi ve varsayılan Gelişmiş ayarlar için varsayılan ayarları kullanın.
-    * Bağlama sunucusunun konumunu yedekleme sunucusu olacak şekilde ayarlayın.
-    * Veead sunucusu için yapılandırma yedekleme konumunu uzak depoya değiştirin.
+    * Yük denetimi ve varsayılan gelişmiş ayarlar için varsayılan ayarları kullanın.
+    * Montaj sunucusu konumunu yedek sunucu olarak ayarlayın.
+    * Veeam sunucusunun yapılandırma yedekleme konumunu uzak depoyla değiştirin.
 
-2. Azure 'da Linux sunucusunu yedekleme deposu olarak ekleyin.
+2. Yedekleme deposu olarak Azure'daki Linux sunucusunu ekleyin.
 
-    * Yükleme denetimi ve Gelişmiş ayarlar için varsayılan ayarları kullanın. 
-    * Bağlama sunucusunun konumunu yedekleme sunucusu olacak şekilde ayarlayın.
-    * Veead sunucusu için yapılandırma yedekleme konumunu uzak depoya değiştirin.
+    * Yük denetimi ve gelişmiş ayarlar için varsayılan ayarları kullanın. 
+    * Montaj sunucusu konumunu yedek sunucu olarak ayarlayın.
+    * Veeam sunucusunun yapılandırma yedekleme konumunu uzak depoyla değiştirin.
 
-3. **Ana > yapılandırma yedekleme ayarlarını**kullanarak yapılandırma yedeklemesi şifrelemesini etkinleştirin.
+3. Ana Sayfa> **Yapılandırma Yedekleme Ayarlarını**kullanarak yapılandırma yedeklemesinin şifrelemesini etkinleştirin.
 
-4. VMware ortamı için proxy sunucusu olarak bir Windows Server VM 'si ekleyin. Bir ara sunucu için ' trafik kuralları ' ' nı kullanarak, yedekleme verilerini kablo üzerinden şifreleyin.
+4. VMware ortamı için proxy sunucusu olarak bir Windows sunucusu VM ekleyin. Proxy için 'Trafik Kuralları'nı kullanarak, yedek verileri kablo üzerinden şifreleyin.
 
 5. Yedekleme işlerini yapılandırın.
-    * Yedekleme işlerini yapılandırmak için, [yedekleme Işi oluşturma](https://www.youtube.com/watch?v=YHxcUFEss4M)bölümündeki yönergeleri izleyin.
-    * **Gelişmiş ayarlar altında depolama >** yedekleme dosyalarının şifrelenmesini etkinleştirin.
+    * Yedekleme işlerini yapılandırmak için [Yedek İş Oluşturma](https://www.youtube.com/watch?v=YHxcUFEss4M)yönergelerini izleyin.
+    * Gelişmiş Ayarlar > **Depolama**altında yedekleme dosyalarının şifrelemesini etkinleştirin.
 
-6. Yedekleme Kopyalama işlerini yapılandırın.
+6. Yedekleme kopyalama işlerini yapılandırın.
 
-    * Yedek kopya işlerini yapılandırmak için, video [Yedekleme Kopyalama oluşturma Işi oluşturma](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)içindeki yönergeleri izleyin.
-    * **Gelişmiş ayarlar altında depolama >** yedekleme dosyalarının şifrelenmesini etkinleştirin.
+    * Yedekleme kopyalama işlerini yapılandırmak için, [Yedek Kopya İşoluşturma](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)videosundaki yönergeleri izleyin.
+    * Gelişmiş Ayarlar > **Depolama**altında yedekleme dosyalarının şifrelemesini etkinleştirin.
 
-### <a name="avs-portal-set-up-veeam-access-and-de-escalate-privileges"></a>AVS Portalı: Veead erişimi ayarlama ve bu ayrıcalıkları serbest bırakma
-Veead yedekleme ve kurtarma sunucusu için genel bir IP adresi oluşturun. Yönergeler için bkz. [genel IP adresleri ayırma](public-ips.md).
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple portalı: Veeam erişimi ayarlayın ve ayrıcalıkları artırın
+Veeam yedekleme ve kurtarma sunucusu için genel bir IP adresi oluşturun. Yönergeler için [bkz.](public-ips.md)
 
-Veeab yedekleme sunucusunun, TCP bağlantı noktası 80 ' de güncelleştirmeleri/düzeltme eklerini indirmek üzere bir giden bağlantı oluşturmasına izin vermek için kullanarak bir güvenlik duvarı kuralı oluşturun. Yönergeler için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
+Veeam yedekleme sunucusunun TCP bağlantı noktası 80'de güncelleştirmeleri/düzeltme ekileri indirmek için Veeam web sitesine giden bir bağlantı oluşturmasına izin vermek için bir güvenlik duvarı kuralı oluşturun. Yönergeler için [bkz.](firewall.md)
 
-Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları](escalate-private-cloud-privileges.md#de-escalate-privileges).
+Ayrıcalıkları daha da arttırmak için, [ayrıcalıkları yükseltmebölümüne](escalate-private-cloud-privileges.md#de-escalate-privileges)bakın.
 
 ## <a name="references"></a>Başvurular
 
-### <a name="avs-references"></a>AVS başvuruları
+### <a name="cloudsimple-references"></a>CloudBasit referanslar
 
-* [AVS özel bulutu oluşturma](create-private-cloud.md)
-* [VLAN/alt ağlar oluşturma ve yönetme](create-vlan-subnet.md)
-* [vCenter Identity kaynakları](set-vcenter-identity.md)
-* [İş yükü DNS ve DHCP kurulumu](dns-dhcp-setup.md)
-* [Ayrıcalıkları ilerlet](escalate-privileges.md)
-* [Güvenlik Duvarı tablolarını ve kurallarını ayarlama](firewall.md)
-* [AVS özel bulut izinleri](learn-private-cloud-permissions.md)
-* [Genel IP adreslerini ayır](public-ips.md)
+* [Özel Bulut Oluşturma](create-private-cloud.md)
+* [V'ler/Alt Ağlar oluşturma ve yönetme](create-vlan-subnet.md)
+* [vCenter Kimlik Kaynakları](set-vcenter-identity.md)
+* [İş Yükü DNS ve DHCP Kurulumu](dns-dhcp-setup.md)
+* [Ayrıcalıkları yükseltme](escalate-privileges.md)
+* [Güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md)
+* [Özel Bulut izinleri](learn-private-cloud-permissions.md)
+* [Ortak IP Adreslerini Ayırma](public-ips.md)
 
-### <a name="veeam-references"></a>Veeay başvuruları
+### <a name="veeam-references"></a>Veeam Referanslar
 
-* [Kullanılan bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
-* [Gerekli Izinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
-* [Sistem gereksinimleri](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
-* [Veead yedekleme & çoğaltma yükleniyor](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
-* [Linux için birden çok işletim sistemi FLR ve depo desteği için gerekli modüller ve izinler](https://www.veeam.com/kb2216)
-* [Veead Backup & çoğaltma v9-yükleme ve dağıtım-video](https://www.youtube.com/watch?v=b4BqC_WXARk)
-* [Veeab v9 yedekleme Işi oluşturma-video](https://www.youtube.com/watch?v=YHxcUFEss4M)
-* [Veead v9 bir yedekleme kopyalama Işi oluşturma-video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
+* [İkinci El Bağlantı Noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
+* [Gerekli İzinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
+* [Sistem Gereksinimleri](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
+* [Veeam Yedekleme & Çoğaltma Yükleme](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
+* [Linux için Multi-OS FLR ve Depo desteği için gerekli modüller ve izinler](https://www.veeam.com/kb2216)
+* [Veeam Yedekleme & Çoğaltma v9 - Kurulum ve Dağıtım - Video](https://www.youtube.com/watch?v=b4BqC_WXARk)
+* [Veeam v9 Yedek İş Oluşturma - Video](https://www.youtube.com/watch?v=YHxcUFEss4M)
+* [Veeam v9 Yedekleme Kopyalama İş oluşturma - Video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
 
 ### <a name="azure-references"></a>Azure başvuruları
 
-* [Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
-* [VNet 'i devre dışı bir aboneliğe bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
-* [Azure portal bir Linux sanal makinesi oluşturun](../virtual-machines/linux/quick-create-portal.md)
-* [Azure portal bir Windows sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Azure depolama ile çalışmaya başlama-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Kapsayıcı oluştur](https://docs.microsoft.com/rest/api/storageservices/create-container)
+* [Azure portalını kullanarak ExpressRoute için sanal ağ ağ geçidini yapılandırma](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+* [Bir Devre için bir VNet bağlayın - farklı abonelik](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+* [Azure portalında bir Linux sanal makinesi oluşturma](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalındaki bir Windows VM'ye yönetilen bir veri diski ekleme](../virtual-machines/windows/attach-managed-disk-portal.md)
+* [Azure Depolama ile Başlarken - Video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
+* [Kapsayıcı Oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md)
 
-### <a name="vmware-references"></a>VMware başvuruları
+### <a name="vmware-references"></a>VMware referansları
 
-* [VSphere Web Istemcisinde dağıtılmış bir bağlantı noktası grubu oluşturma-video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
+* [vSphere Web İstemcisinde Dağıtılmış Bağlantı Noktası Grubu Oluşturma - Video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
 
-### <a name="other-references"></a>Diğer başvurular
+### <a name="other-references"></a>Diğer referanslar
 
-* [Yönetilen disk-RedHat üzerinde bir XFS birimi oluşturun](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
-* [CentOS 7 ' de bir NFS bağlama ayarlama-HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [DHCP sunucusu-NETGATE yapılandırma](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [Yönetilen diskte Bir XFS hacmi oluşturma - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
+* [CentOS 7'de NFS Dağı Nasıl Kurululur - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
+* [DHCP Sunucusunun Yapılandırılması - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)

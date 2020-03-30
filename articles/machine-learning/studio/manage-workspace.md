@@ -1,7 +1,7 @@
 ---
 title: Çalışma alanlarını yönetme
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) çalışma alanlarına erişimi yönetin ve Machine Learning API Web hizmetlerini dağıtın ve yönetin
+description: Azure Machine Learning Studio (klasik) çalışma alanlarına erişimi yönetin ve Machine Learning API web hizmetlerini dağıtın ve yönetin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
 ms.openlocfilehash: 68c9ca4c7b5f30d6f62d333014f4098fe7826c99
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217958"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasik) çalışma alanını yönetme
@@ -22,33 +22,33 @@ ms.locfileid: "79217958"
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
-> Web hizmetlerini Machine Learning Web Hizmetleri portalında yönetme hakkında bilgi için, bkz. [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md).
+> Machine Learning Web Services portalında Web hizmetlerini yönetme hakkında daha fazla bilgi için [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönet'e](manage-new-webservice.md)bakın.
 > 
 > 
 
-Azure portal Machine Learning Studio (klasik) çalışma alanlarını yönetebilirsiniz.
+Azure portalında Machine Learning Studio (klasik) çalışma alanlarını yönetebilirsiniz.
 
 
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-Azure portal bir Studio (klasik) çalışma alanını yönetmek için:
+Azure portalında bir Studio (klasik) çalışma alanını yönetmek için:
 
-1. Azure abonelik Yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Sayfanın üst kısmındaki arama kutusuna "Machine Learning Studio (klasik) çalışma alanları" yazın ve ardından **Machine Learning Studio (klasik) çalışma alanları**' nı seçin.
-3. Yönetmek istediğiniz çalışma alanına tıklayın.
+1. Azure abonelik yöneticisi hesabını kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+2. Sayfanın üst kısmındaki arama kutusuna "machine learning Studio (klasik) çalışma alanlarını" girin ve ardından **Machine Learning Studio (klasik) çalışma alanlarını**seçin.
+3. Yönetmek istediğiniz çalışma alanını tıklatın.
 
-Standart kaynak yönetimi bilgilerine ve kullanılabilir seçeneklere ek olarak şunları yapabilirsiniz:
+Mevcut standart kaynak yönetimi bilgilerine ve seçeneklerine ek olarak şunları yapabilirsiniz:
 
-- **Özellikleri** görüntüle-Bu sayfada çalışma alanı ve kaynak bilgileri görüntülenir ve bu çalışma alanının bağlı olduğu aboneliği ve kaynak grubunu değiştirebilirsiniz.
-- **Depolama anahtarlarını yeniden eşitleme** -çalışma alanı anahtarları depolama hesabına tutar. Depolama hesabı anahtarları değiştirirse, anahtarları çalışma alanıyla senkronize etmek için yeniden Eşitle **tuşlarına** tıklayabilirsiniz.
+- Özellikleri **Properties** Görüntüle - Bu sayfa çalışma alanı ve kaynak bilgilerini görüntüler ve bu çalışma alanının bağlı olduğu abonelik ve kaynak grubunu değiştirebilirsiniz.
+- **Depolama Anahtarlarını Yeniden Eşitleme** - Çalışma alanı depolama hesabının anahtarlarını korur. Depolama hesabı anahtarları değiştirirse, anahtarları çalışma alanıyla eşitlemek için **Yeniden Eşitle tuşlarını** tıklatabilirsiniz.
 
-Bu Studio (klasik) çalışma alanıyla ilişkili Web hizmetlerini yönetmek için Machine Learning Web Hizmetleri portalını kullanın. Tüm bilgiler için [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md) makalesine bakın.
+Bu Studio (klasik) çalışma alanıyla ilişkili web hizmetlerini yönetmek için Machine Learning Web Services portalını kullanın. Bkz. Tam bilgi için [Azure Machine Learning Web Services portalını kullanarak bir Web hizmetini yönetin.](manage-new-webservice.md)
 
 > [!NOTE]
-> Yeni Web hizmetlerini dağıtmak veya yönetmek için, Web hizmetinin dağıtıldığı abonelikte bir katkıda bulunan veya yönetici rolü atanması gerekir. Bir Machine Learning Studio (klasik) çalışma alanına başka bir kullanıcı davet ederseniz, Web hizmetlerini dağıtabilmeleri veya yönetebilmeleri için bunları abonelikte bir katkıda bulunan veya yönetici rolüne atamanız gerekir. 
+> Yeni web hizmetlerini dağıtmak veya yönetmek için, web hizmetinin dağıtıldığı abonelikte bir katılımcı veya yönetici rolü atanması gerekir. Başka bir kullanıcıyı makine öğrenme Stüdyosu (klasik) çalışma alanına davet ederseniz, web hizmetlerini dağıtmadan veya yönetebilmeleri için onları abonelikteki bir katılımcı veya yönetici rolüne atamanız gerekir. 
 > 
->Erişim izinlerini ayarlama hakkında daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+>Erişim izinleri ayarlama hakkında daha fazla bilgi için Bkz. [RBAC ve Azure portalını kullanarak erişimi yönet.](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Resource Manager şablonlarıyla Machine Learning dağıtma](deploy-with-resource-manager-template.md)hakkında daha fazla bilgi edinin. 
+* [Azure Kaynak Yöneticisi Şablonları ile Makine Öğrenimini dağıtma](deploy-with-resource-manager-template.md)hakkında daha fazla bilgi edinin. 

@@ -1,6 +1,6 @@
 ---
-title: Azure sanal ağ 'ya genel bakış | Microsoft Docs
-description: Sanal ağ dokunma hakkında bilgi edinin. Sanal ağ dokunma, sanal makine ağ trafiğinin bir paket toplayıcısına akışı olabilecek ayrıntılı bir kopyasını sağlar.
+title: Azure sanal ağ TAP'a genel bakış | Microsoft Dokümanlar
+description: Sanal ağ TAP hakkında bilgi edinin. Sanal ağ TAP, bir paket toplayıcısına aktarılabilen sanal makine ağı trafiğinin derin bir kopyasını sağlar.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -16,60 +16,60 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279617"
 ---
 # <a name="virtual-network-tap"></a>Sanal ağ TAP
 
-Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi bir ağ paketi toplayıcısına veya analiz aracına sürekli olarak akışla kullanmanıza olanak sağlar. Toplayıcı veya Analiz Aracı bir [ağ sanal gereç](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. Sanal ağ dokunarak çalışmak üzere doğrulanan iş ortağı çözümlerinin listesi için bkz. [iş ortağı çözümleri](#virtual-network-tap-partner-solutions).
+Azure sanal ağ TAP (Terminal Erişim Noktası), sanal makine ağ trafiğinizi sürekli olarak bir ağ paketi toplayıcısına veya analiz aracına aktarmanızı sağlar. Toplayıcı veya analiz aracı bir [ağ sanal cihaz](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. Sanal ağ TAP ile çalışmak üzere doğrulanmış iş ortağı çözümlerinin listesi için [iş ortağı çözümlerine](#virtual-network-tap-partner-solutions)bakın.
 
 > [!IMPORTANT]
-> Sanal ağ dokunma Şu anda tüm Azure bölgelerinde önizleme aşamasındadır. Sanal ağ TAP 'ı kullanmak için, abonelik KIMLIĞINIZLE <azurevnettap@microsoft.com> bir e-posta göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ' na bakın.
+> Sanal ağ TAP şu anda tüm Azure bölgelerinde önizlemededir. Sanal ağ TAP'ı kullanmak için, abonelik kimliğinizle <azurevnettap@microsoft.com> birlikte bir e-posta göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Bir onay e-postası alana kadar bu özelliği kullanamazsınız. Bu önizleme, hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar [için Microsoft Azure Önizlemeleri](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) için Ek Kullanım Koşulları'na bakın.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Sanal ağ TAP iş ortağı çözümleri
 
-### <a name="network-packet-brokers"></a>Ağ paketi aracıları
+### <a name="network-packet-brokers"></a>Ağ paketi brokerları
 
-- [Büyük anahtar büyük Izleme yapısı](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
-- [Gigaon, GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
+- [Büyük Anahtar Büyük İzleme Kumaşı](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
-- [Nubeva PRMS](https://www.nubeva.com/azurevtap)
+- [Nubeva Prizmaları](https://www.nubeva.com/azurevtap)
 
-### <a name="security-analytics-networkapplication-performance-management"></a>Güvenlik analizi, ağ/uygulama performansı yönetimi
+### <a name="security-analytics-networkapplication-performance-management"></a>Güvenlik analitiği, ağ/uygulama performans yönetimi
 
-- [Uyanık güvenlik](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch bulutu](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
-- [Koyu izleme](https://www.darktrace.com/en/azure/)
-- [ExtraHop açığa çıkar (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
-- [Fidelis siber güvenliği](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [Uyanık Güvenlik](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch Bulut](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Karanlık eser](https://www.darktrace.com/en/azure/)
+- [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
+- [Fidelis Siber Güvenlik](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Riveryatak Steelmerkezi AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [RSA Nettanık® platformu](https://www.rsa.com/azure)
-- [Vectra Bilito](https://vectra.ai/microsoftazure)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
+- [RSA NetWitness® Platformu](https://www.rsa.com/azure)
+- [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-Aşağıdaki resimde, sanal ağ TAP 'ın nasıl çalıştığı gösterilmektedir. Sanal ağınızda dağıtılan bir sanal makineye bağlı bir [ağ arabirimine](virtual-network-network-interface.md) bir dokunma yapılandırması ekleyebilirsiniz. Hedef, izlenen ağ arabirimiyle veya eşlenmiş bir [sanal](virtual-network-peering-overview.md) ağla aynı sanal ağdaki bir sanal ağ IP adresidir. Sanal ağ TAP 'ın toplayıcı çözümü, yüksek kullanılabilirlik için bir Azure Iç yük dengeleyicinin arkasına dağıtılabilir. Tek bir çözüme yönelik dağıtım seçeneklerini değerlendirmek için bkz. [iş ortağı çözümleri](#virtual-network-tap-partner-solutions).
+Aşağıdaki resim, sanal ağ TAP'ın nasıl çalıştığını gösterir. Sanal ağınızda dağıtılan sanal bir makineye bağlı bir [ağ arabirimine](virtual-network-network-interface.md) TAP yapılandırması ekleyebilirsiniz. Hedef, izlenen ağ arabirimi veya [eşlenen sanal](virtual-network-peering-overview.md) ağ ile aynı sanal ağdaki sanal ağ IP adresidir. Sanal ağ TAP için toplayıcı çözümü, yüksek kullanılabilirlik için bir Azure Dahili Yük dengeleyicisinin arkasına dağıtılabilir. Tek tek çözüm için dağıtım seçeneklerini değerlendirmek için [iş ortağı çözümlerine](#virtual-network-tap-partner-solutions)bakın.
 
-![Sanal ağ dokunma çalışma şekli](./media/virtual-network-tap/architecture.png)
+![Sanal ağ TAP nasıl çalışır?](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bir sanal ağ TAP 'ı oluşturmadan önce, önizlemeye kaydettiğiniz bir onay e-postası almış ve [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dağıtım modeli kullanılarak oluşturulmuş bir veya daha fazla sanal makineniz ve aynı Azure bölgesindeki dokunma trafiğini toplamak için bir iş ortağı çözümünün olması gerekir. Sanal ağınızda bir iş ortağı çözümünüz yoksa, bir tane dağıtmak için [iş ortağı çözümlerine](#virtual-network-tap-partner-solutions) bakın. Aynı veya farklı aboneliklerdeki birden çok ağ arabiriminden gelen trafiği toplamak için aynı sanal ağ TAP kaynağını kullanabilirsiniz. İzlenen ağ arabirimleri farklı aboneliklerdeyse, aboneliklerin aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir. Ayrıca, dokunma trafiğini toplamak için izlenen ağ arabirimleri ve hedef uç noktası aynı bölgedeki eşlenmiş sanal ağlarda bulunabilir. Bu dağıtım modelini kullanıyorsanız, sanal ağ [dokuyla yapılandırmadan önce sanal ağ](virtual-network-peering-overview.md) eşlemesinin etkinleştirildiğinden emin olun.
+Sanal ağ TAP oluşturmadan önce, önizlemeye kaydolduğunuza dair bir onay postası almış ve Azure [Kaynak Yöneticisi](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dağıtım modeli ve aynı azure bölgesinde TAP trafiğini bir araya getiren bir iş ortağı çözümü kullanılarak oluşturulmuş bir veya daha fazla sanal makineye sahip olmalısınız. Sanal ağınızda bir iş ortağı çözümünüz yoksa, dağıtmak için [iş ortağı çözümlerine](#virtual-network-tap-partner-solutions) bakın. Aynı veya farklı aboneliklerde birden çok ağ arabiriminden gelen trafiği toplamak için aynı sanal ağ TAP kaynağını kullanabilirsiniz. İzlenen ağ arabirimleri farklı aboneliklerdeyse, aboneliklerin aynı Azure Etkin Dizin kiracıyla ilişkilendirilmesi gerekir. Ayrıca, izlenen ağ arabirimleri ve TAP trafiğini toplama hedef bitiş noktası aynı bölgedeki eşlenmiş sanal ağlarda bulunabilir. Bu dağıtım modelini kullanıyorsanız, sanal ağ TAP'ı yapılandırmadan önce [sanal ağ eşlemesinin](virtual-network-peering-overview.md) etkin olduğundan emin olun.
 
 ## <a name="permissions"></a>İzinler
 
-Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
+Ağ arabirimlerinde TAP yapılandırmasını uygulamak için kullandığınız hesapların [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tablodan gerekli eylemleri atanan özel bir [role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
 | Eylem | Adı |
 |---|---|
-| Microsoft. Network/virtualNetworkTaps/* | Bir sanal ağ dokunma kaynağı oluşturmak, güncelleştirmek, okumak ve silmek için gereklidir |
-| Microsoft. Network/NetworkInterfaces/Read | TAP 'ın yapılandırıldığı ağ arabirimi kaynağını okumak için gereklidir |
-| Microsoft. Network/tapConfigurations/* | Bir ağ arabiriminde dokunma yapılandırması oluşturmak, güncelleştirmek, okumak ve silmek için gereklidir |
+| Microsoft.Network/virtualNetworkTaps/* | Sanal ağ TAP kaynağı oluşturmak, güncellemek, okumak ve silmek için gereklidir |
+| Microsoft.Network/networkInterfaces/read | TAP'ın yapılandırılacak ağ arabirimi kaynağını okumak için gerekli |
+| Microsoft.Network/tapConfigurations/* | Ağ arabiriminde TAP yapılandırmasını oluşturmak, güncellemek, okumak ve silmek için gereklidir |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir sanal ağa dokunma oluşturmayı](tutorial-tap-virtual-network-cli.md)öğrenin.
+- [Sanal ağ TAP'ı nasıl oluşturup oluşturabilirsiniz](tutorial-tap-virtual-network-cli.md)öğrenin.

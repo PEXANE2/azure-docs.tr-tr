@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub ile buluttan cihaza iletiler (Python) | Microsoft Docs
-description: Python için Azure IoT SDK 'larını kullanarak Azure IoT Hub 'ından bir cihaza buluttan cihaza ileti gönderme. Bir sanal cihaz uygulamasını buluttan cihaza iletiler alacak şekilde değiştirirsiniz ve bir arka uç uygulamasını, buluttan cihaza iletileri gönderecek şekilde değiştirirsiniz.
+title: Azure IoT Hub (Python) ile buluttan cihaza iletiler | Microsoft Dokümanlar
+description: Python için Azure IoT SDK'larını kullanarak bir Azure IoT hub'ından bir aygıta buluttan aygıta ileti gönderme. Simüle edilmiş bir aygıt uygulamasını, buluttan cihaza iletiler almak için ve buluttan cihaza iletigöndermek için bir arka uç uygulamasını değiştirmek için değiştirirsiniz.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110425"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan aygıta iletiler gönderme
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve güvenli çift yönlü iletişimin sağlanmasına yardımcı olan, tam olarak yönetilen bir hizmettir. [Bir cihazdan IoT Hub 'ına yönelik Telemetriyi, bir](quickstart-send-telemetry-python.md) IoT Hub 'ı oluşturmayı, bu kodda bir cihaz kimliği sağlamayı ve cihazdan buluta iletiler gönderen bir sanal cihaz uygulamasını nasıl kodlayacağınızı gösterir.
+Azure IoT Hub, milyonlarca aygıt ve bir çözüm arka uç arasında güvenilir ve güvenli çift yönlü iletişim sağlamaya yardımcı olan tam olarak yönetilen bir hizmettir. Bir [aygıttan IoT hub'ına hızlı başlat'a gönder telemetrisi,](quickstart-send-telemetry-python.md) bir IoT hub'ı oluşturmanın, içinde aygıt kimliğini nasıl sağlayabilirsiniz ve aygıttan buluta iletigönderen simüle edilmiş bir aygıt uygulamasını kodlamayı gösterir.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](quickstart-send-telemetry-python.md)yapı oluşturur. Şunu gösterir:
+Bu öğretici, [bir aygıttan IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-python.md)biryapılsa. Nasıl yapılacağını gösterir:
 
-* Çözüm arka ucundan, IoT Hub aracılığıyla buluttan cihaza iletileri tek bir cihaza gönderin.
+* Çözümünüzden arka uçtan, IoT Hub üzerinden tek bir cihaza buluttan cihaza iletigönderin.
 
-* Bir cihazda buluttan cihaza iletiler alın.
+* Bir aygıttan buluttan aygıta iletiler alın.
 
-* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi (*geri bildirim*) isteyin.
+* Çözümünüzden arka uçtan, IoT Hub'dan bir cihaza gönderilen iletiler için teslimat bildirimi *(geri bildirim)* isteyin.
 
-[IoT Hub geliştirici kılavuzunda](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi edinebilirsiniz.
+[IoT Hub geliştirici kılavuzunda](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi bulabilirsiniz.
 
-Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
+Bu eğitimin sonunda, iki Python konsol uyrama uygulaması çalıştırın:
 
-* **SimulatedDevice.py**, bir cihazdan Telemetriyi, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletileri alan bir [IoT Hub 'ına bir cihaz aracılığıyla göndererek](quickstart-send-telemetry-python.md)oluşturulan bir uygulama sürümüdür.
+* **SimulatedDevice.py,** bir [cihazdan IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-python.md)oluşturulan uygulamanın değiştirilmiş bir sürümü , IoT hub'ınıza bağlanır ve buluttan cihaza iletiler alır.
 
-* **SendCloudToDeviceMessage.py**, sanal cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderir ve ardından teslim onayını alır.
+* **SendCloudToDeviceMessage.py,** IoT Hub üzerinden simüle edilen aygıt uygulamasına buluttan cihaza ileti gönderir ve ardından teslim bildirimini alır.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Sanal cihaz uygulamasında ileti alma
+## <a name="receive-messages-in-the-simulated-device-app"></a>Benzetimli cihaz uygulamasından ileti alma
 
-Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza iletileri almak için bir Python konsol uygulaması oluşturacaksınız.
+Bu bölümde, aygıtı simüle etmek ve IoT hub'ından buluttan cihaza iletiler almak için bir Python konsol uygulaması oluşturursunuz.
 
-1. Bir metin düzenleyicisi kullanarak bir **SimulatedDevice.py** dosyası oluşturun.
+1. Metin düzenleyicisi **kullanarak, SimulatedDevice.py** bir dosya oluşturun.
 
-2. **SimulatedDevice.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenleri ekleyin:
+2. `import` **SimulatedDevice.py** dosyasının başında aşağıdaki ifadeleri ve değişkenleri ekleyin:
 
    ```python
     import threading
@@ -62,7 +62,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
     RECEIVED_MESSAGES = 0
     ```
 
-3. Aşağıdaki kodu **SimulatedDevice.py** dosyasına ekleyin. "{DeviceConnectionString}" yer tutucu değerini, [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde oluşturduğunuz cihazın cihaz bağlantı dizesiyle değiştirin:
+3. **SimulatedDevice.py** dosyaya aşağıdaki kodu ekleyin. "{deviceConnectionString}" yer tutucu değerini, [bir aygıttan IoT hub'ına](quickstart-send-telemetry-python.md) hızlı başlatarak telemetri gönder'de oluşturduğunuz aygıt bağlantısı dizesiyle değiştirin:
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -82,7 +82,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
             print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
-5. İstemcisini başlatmak için aşağıdaki kodu ekleyin ve buluttan cihaza iletisini almaya bekleyin:
+5. İstemciyi başlatmave buluttan aygıta iletiyi almayı beklemek için aşağıdaki kodu ekleyin:
 
     ```python
     def iothub_client_sample_run():
@@ -110,21 +110,21 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
         iothub_client_sample_run()
     ```
 
-7. **SimulatedDevice.py** dosyasını kaydedin ve kapatın.
+7. Dosyayı kaydedin ve **kapatınSimulatedDevice.py.**
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
+## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
 
-Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-python.md)bölümünde oluşturduğunuz IoT Hub 'ı aracılığıyla buluttan cihaza iletileri göndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza iletiler göndermek için hizmetinize **hizmet bağlantısı** izni verilmesi gerekir. Varsayılan olarak, her IoT Hub, bu izni veren **hizmet** adlı paylaşılan bir erişim ilkesiyle oluşturulur.
+Bu makalede, bir aygıttan bir [IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-python.md)oluşturduğunuz IoT hub'ı üzerinden buluttan aygıta iletigöndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza ileti göndermek için hizmetinizin **hizmet bağlantısı** namına ihtiyacı vardır. Varsayılan olarak, her IoT Hub'ı bu izni veren paylaşılan erişim ilkesi adlı **hizmetle** oluşturulur.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Buluttan cihaza ileti gönderme
+## <a name="send-a-cloud-to-device-message"></a>Buluttan aygıta ileti gönderme
 
-Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Python konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine da ihtiyacınız vardır.
+Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen bir Python konsol uygulaması oluşturursunuz. Bir [aygıttan IoT](quickstart-send-telemetry-python.md) hub'ına hızlı başlat'a telemetri gönder'e eklediğiniz aygıtın aygıt kimliğine ihtiyacınız vardır. Ayrıca, IoT hub bağlantı dizesini al'da daha önce kopyaladığınız [IoT hub bağlantı dizesini](#get-the-iot-hub-connection-string)de almanız gerekir.
 
-1. Bir metin düzenleyicisi kullanarak bir **SendCloudToDeviceMessage.py** dosyası oluşturun.
+1. Metin düzenleyicisi **kullanarak, SendCloudToDeviceMessage.py** dosyası oluşturun.
 
-2. **SendCloudToDeviceMessage.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenleri ekleyin:
+2. `import` **SendCloudToDeviceMessage.py** dosyasının başında aşağıdaki ifadeleri ve değişkenleri ekleyin:
 
     ```python
     import random
@@ -139,14 +139,14 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Aşağıdaki kodu **SendCloudToDeviceMessage.py** dosyasına ekleyin. "{IoT Hub bağlantı dizesi}" ve "{Device ID}" yer tutucu değerlerini daha önce not ettiğiniz IoT Hub bağlantı dizesi ve cihaz KIMLIĞI ile değiştirin:
+3. **SendCloudToDeviceMessage.py** dosyaya aşağıdaki kodu ekleyin. "{iot hub bağlantı string}" ve "{device id}" yer tutucu değerlerini daha önce belirttiğiniz IoT hub bağlantı dizesi ve aygıt kimliğiyle değiştirin:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-4. Konsola geri bildirim iletilerini yazdırmak için aşağıdaki işlevi ekleyin:
+4. Geri bildirim iletilerini konsola yazdırmak için aşağıdaki işlevi ekleyin:
 
     ```python
     def open_complete_callback(context):
@@ -158,7 +158,7 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-5. Cihazınıza bir ileti göndermek ve cihaz buluttan cihaza iletisini geldiğinde geri bildirim iletisini işlemek için aşağıdaki kodu ekleyin:
+5. Cihazınıza ileti göndermek ve aygıt buluttan aygıta iletiyi kabul ettiğinde geri bildirim iletisini işlemek için aşağıdaki kodu ekleyin:
 
     ```python
     def iothub_messaging_sample_run():
@@ -210,48 +210,48 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
         iothub_messaging_sample_run()
     ```
 
-7. **SendCloudToDeviceMessage.py** dosyasını kaydedin ve kapatın.
+7. Dosyayı kaydedin ve kapatın **SendCloudToDeviceMessage.py.**
 
 ## <a name="run-the-applications"></a>Uygulamaları çalıştırma
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. Bir komut istemi açın ve **Python Için Azure IoT Hub cihaz SDK 'sını**yükledikten sonra.
+1. Bir komut istemi açın ve **Python için Azure IoT Hub Aygıt SDK'sını**yükleyin.
 
     ```shell
     pip install azure-iothub-device-client
     ```
 
-2. Komut isteminde, buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
+2. Komut isteminde, buluttan aygıta iletileri dinlemek için aşağıdaki komutu çalıştırın:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![Sanal cihaz uygulamasını çalıştırma](./media/iot-hub-python-python-c2d/simulated-device.png)
+    ![Benzetimli cihaz uygulamasını çalıştırma](./media/iot-hub-python-python-c2d/simulated-device.png)
 
-3. Yeni bir komut istemi açın ve **Python Için Azure IoT Hub Service SDK 'sını**yükledikten sonra.
+3. Yeni bir komut istemi açın ve **Python için Azure IoT Hub Hizmeti SDK'sını**yükleyin.
 
     ```shell
     pip install azure-iothub-service-client
     ```
 
-4. Bir komut isteminde, buluttan cihaza ileti göndermek ve ileti geri bildirimi için beklemek üzere aşağıdaki komutu çalıştırın:
+4. Komut isteminde, buluttan aygıta ileti göndermek ve ileti geri bildirimini beklemek için aşağıdaki komutu çalıştırın:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Buluttan cihaza komutunu göndermek için uygulamayı çalıştırın](./media/iot-hub-python-python-c2d/send-command.png)
+    ![Bulut-aygıt komutunu göndermek için uygulamayı çalıştırın](./media/iot-hub-python-python-c2d/send-command.png)
 
-5. Cihaz tarafından alınan iletiyi aklınızda edin.
+5. Aygıt tarafından alınan iletiyi not edin.
 
-    ![İleti alındı](./media/iot-hub-python-python-c2d/message-received.png)
+    ![Alınan ileti](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, buluttan cihaza iletileri gönderme ve alma hakkında daha fazla öğrendiniz.
+Bu eğitimde, buluttan cihaza ileti göndermeyi ve almayı öğrendiniz.
 
-IoT Hub kullanan uçtan uca çözümlerin tam örneklerini görmek için bkz. [Azure IoT uzaktan izleme Çözüm Hızlandırıcısı](https://azure.microsoft.com/documentation/suites/iot-suite/).
+IoT Hub'ı kullanan eksiksiz uçtan uca çözümlerin örneklerini görmek için [Azure IoT Uzaktan İzleme çözüm hızlandırıcısına](https://azure.microsoft.com/documentation/suites/iot-suite/)bakın.
 
-IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
+IoT Hub ile çözüm geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub geliştirici kılavuzuna](iot-hub-devguide.md)bakın.

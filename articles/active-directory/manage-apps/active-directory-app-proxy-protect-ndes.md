@@ -1,7 +1,7 @@
 ---
-title: NDES sunucusu üzerinde AD Uygulama Ara Sunucusu tümleştirme
+title: BIR NDES sunucusunda AD Application Proxy ile tümleştirme
 titleSuffix: Azure Active Directory
-description: NDES sunucunuzu korumak için bir Azure Active Directory Uygulama Ara Sunucusu Dağıtma Kılavuzu.
+description: NDES sunucunuzu korumak için Bir Azure Active Directory Application Proxy dağıtma kılavuzu.
 services: active-directory
 author: CelesteDG
 manager: CelesteDG
@@ -14,86 +14,86 @@ ms.date: 01/17/2020
 ms.author: baselden
 ms.reviewer: mimart
 ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77032263"
 ---
-# <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Bir ağ cihazı kayıt hizmeti (NDES) sunucusu üzerinde Azure AD Uygulama Ara Sunucusu ile tümleştirme
+# <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Ağ Aygıtı Kayıt Hizmeti (NDES) sunucusunda Azure AD Application Proxy ile tümleştirme
 
-Azure Active Directory (AD) uygulama proxy 'Si, ağınızdaki uygulamaları yayımlamanıza olanak sağlar. Bu uygulamalar SharePoint siteleri, Microsoft Outlook Web App ve diğer Web uygulamaları gibi uygulamalardır. Ayrıca, Azure aracılığıyla ağınızın dışındaki kullanıcılara güvenli erişim sağlar.
+Azure Active Directory (AD) Application Proxy, ağınızdaki uygulamaları yayımlamanızı sağlar. Bu uygulamalar SharePoint siteleri, Microsoft Outlook Web Uygulaması ve diğer web uygulamaları gibi uygulamalardır. Ayrıca Azure üzerinden ağınızın dışındaki kullanıcılara güvenli erişim sağlar.
 
-Azure AD Uygulama Ara Sunucusu yeni başladıysanız ve daha fazla bilgi edinmek istiyorsanız bkz. [azure ad uygulama ara sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md).
+Azure AD Application Proxy'de yeniyseniz ve daha fazla bilgi edinmek istiyorsanız, [Azure AD Application Proxy aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)e bakın.
 
-Azure AD Uygulama Ara Sunucusu, Azure üzerinde oluşturulmuştur. Bu, dağıtılmış hizmet reddi (DDOS) saldırılarına ve mükemmel kullanılabilirliğe karşı daha iyi koruma sağlayan büyük miktarda ağ bant genişliği ve sunucu altyapısı sağlar. Ayrıca, şirket içi ağınıza dışarıdan güvenlik duvarı bağlantı noktaları açmanıza gerek yoktur ve DMZ sunucusu gerekli değildir. Tüm trafiğin kaynağı gelen. Giden bağlantı noktalarının tam listesi için bkz. [öğretici: Azure Active Directory Içindeki uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment).
+Azure AD Application Proxy, Azure'da yerleşiktir. Dağıtılmış hizmet reddi (DDOS) saldırılarına ve mükemmel kullanılabilirliğe karşı daha iyi koruma için büyük miktarda ağ bant genişliği ve sunucu altyapısı sağlar. Ayrıca, şirket içi ağınıza harici güvenlik duvarı bağlantı noktaları açmaya gerek yoktur ve DMZ sunucusu gerekmez. Tüm trafik gelen kaynaklanır. Giden bağlantı noktalarının tam listesi için [Bkz. Öğretici: Azure Etkin Dizini'nde Application Proxy aracılığıyla uzaktan erişim için şirket içi uygulama ekleyin.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)
 
-> Azure AD Uygulama Ara Sunucusu, yalnızca Azure Active Directory Premium veya Basic sürümlerini kullanıyorsanız kullanılabilir bir özelliktir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/). 
-> Enterprise Mobility Suite (EMS) lisanslarınız varsa, bu çözümü kullanmaya uygun olursunuz.
-> Azure AD Uygulama Ara Sunucusu Bağlayıcısı yalnızca Windows Server 2012 R2 veya sonraki sürümlere yüklenir. Bu ayrıca NDES sunucusunun bir gereksinimidir.
+> Azure AD Application Proxy, yalnızca Azure Active Directory'nin Premium veya Temel sürümlerini kullanıyorsanız kullanılabilen bir özelliktir. Daha fazla bilgi için [Azure Etkin Dizin fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)'na bakın. 
+> Enterprise Mobility Suite (EMS) lisanslarınız varsa, bu çözümü kullanabilirsiniz.
+> Azure AD Application Proxy bağlayıcısı yalnızca Windows Server 2012 R2 veya sonraki bir tarihte yüklenir. Bu da NDES sunucusunun bir gereksinimidir.
 
-## <a name="install-and-register-the-connector-on-the-ndes-server"></a>Bağlayıcıyı NDES sunucusuna yükleyip kaydetme
+## <a name="install-and-register-the-connector-on-the-ndes-server"></a>Bağlayıcıyı NDES sunucusuna yükleyin ve kaydettirin
 
-1. Uygulama proxy 'Si kullanan dizinin uygulama Yöneticisi olarak [Azure Portal](https://portal.azure.com/) oturum açın. Örneğin, kiracı etki alanı contoso.com ise yönetici bu etki alanında admin@contoso.com veya başka bir yönetici diğer adı olmalıdır.
-1. Sağ üst köşedeki Kullanıcı adınızı seçin. Uygulama proxy 'Si kullanan bir dizine oturum açtığınızdan emin olun. Dizinleri değiştirmeniz gerekiyorsa, **dizini** Değiştir ' i seçin ve uygulama proxy 'si kullanan bir dizin seçin.
-1. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
-1. **Yönet**altında **uygulama proxy 'si**' ni seçin.
-1. **Bağlayıcı hizmetini indir**' i seçin.
+1. Uygulama Proxy'sini kullanan dizinin uygulama yöneticisi olarak [Azure portalında](https://portal.azure.com/) oturum açın. Örneğin, kiracı etki alanı contoso.com, yönetici admin@contoso.com veya bu etki alanında başka bir yönetici takma olmalıdır.
+1. Sağ üst köşede kullanıcı adınızı seçin. Uygulama Proxy'sini kullanan bir dizinde oturum unuzu imzaladığınızı doğrulayın. Dizin değiştirmeniz gerekiyorsa, **Dizin Değiştir'i** seçin ve Uygulama Proxy'sini kullanan bir dizin seçin.
+1. Sol gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **Yönet**altında, **Uygulama proxy'si**seçin.
+1. **İndir bağlayıcı hizmetini**seçin.
 
-    ![Hizmet koşullarını görmek için bağlayıcı hizmetini indirin](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
+    ![Hizmet Koşullarını görmek için konektör hizmetini indirin](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
 
-1. Hizmet koşullarını okuyun. Hazırsanız **& koşulları kabul et**' i seçin.
-1. Azure AD Uygulama Ara Sunucusu Bağlayıcısı kurulum dosyasını NDES sunucunuza kopyalayın. 
-   > Bağlayıcıyı, şirket ağınız içindeki herhangi bir sunucuya NDES erişimi ile yükleyebilirsiniz. Bunu NDES sunucusunun kendisine yüklemenize gerek yoktur.
-1. *Aadapplicationproxyconnectorınstaller. exe*gibi kurulum dosyasını çalıştırın. Yazılım lisans koşulları 'nı kabul edin.
-1. Yüklemesi sırasında, bağlayıcıyı Azure AD dizininize uygulama proxy 'Si ile kaydetmeniz istenir.
-   * Azure AD dizininizde küresel veya uygulama yöneticisinin kimlik bilgilerini sağlayın. Azure AD küresel veya uygulama Yöneticisi kimlik bilgileri, portalda Azure kimlik bilgilerinizle farklı olabilir.
+1. Hizmet Koşullarını okuyun. Hazır olduğunuzda, Kabul **koşullarını seçin & İndir.**
+1. Azure AD Application Proxy bağlayıcısı kurulum dosyasını NDES sunucunuza kopyalayın. 
+   > Des erişimi olan şirket ağınızdaki herhangi bir sunucuya bağlayıcıyı yükleyebilirsiniz. NDES sunucusuna yüklemeniz gerekmez.
+1. *AADApplicationProxyConnectorInstaller.exe*gibi kurulum dosyasını çalıştırın. Yazılım lisans koşullarını kabul edin.
+1. Yükleme sırasında, bağlayıcıyı Azure AD dizininizde Uygulama Proxy'sine kaydetmeniz istenir.
+   * Azure AD dizininizde bir genel veya uygulama yöneticisinin kimlik bilgilerini sağlayın. Azure AD genel veya uygulama yöneticisi kimlik bilgileri, portaldaki Azure kimlik bilgilerinizden farklı olabilir.
 
         > [!NOTE]
-        > Bağlayıcıyı kaydetmek için kullanılan genel veya uygulama yöneticisi hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır.
+        > Bağlayıcıyı kaydetmek için kullanılan genel veya uygulama yöneticisi hesabı, Uygulama Proxy hizmetini etkinleştirdiğiniz aynı dizine ait olmalıdır.
         >
-        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel/uygulama Yöneticisi bu etki alanında `admin@contoso.com` veya geçerli bir diğer ad olmalıdır.
+        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel/uygulama yöneticisi nin bu etki alanında geçerli bir diğer ad `admin@contoso.com` veya olması gerekir.
 
-   * Bağlayıcıyı yüklediğiniz sunucu için Internet Explorer Artırılmış Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri uygulayın veya yüklemenin işlemi sırasında Internet Explorer gelişmiş güvenliği ' ni kapatın.
-   * Bağlayıcı kaydı başarısız olursa bkz. [uygulama proxy 'Si sorunlarını giderme](application-proxy-troubleshoot.md).
-1. Kurulumun sonunda, giden ara sunucuya sahip ortamlar için bir Note gösterilir. Azure AD Uygulama Ara Sunucusu bağlayıcısını giden proxy üzerinden çalışacak şekilde yapılandırmak için, `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`gibi, belirtilen betiği çalıştırın.
-1. Azure portal uygulama proxy 'si sayfasında, yeni bağlayıcı aşağıdaki örnekte gösterildiği gibi *etkin*durumuyla listelenir:
+   * Bağlayıcıyı yüklediğiniz sunucu için Internet Explorer Gelişmiş Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri izleyin veya yükleme işlemi sırasında Internet Explorer Gelişmiş Güvenliği kapatın.
+   * Bağlayıcı kaydı başarısız olursa, [Sorun Giderme Uygulama](application-proxy-troubleshoot.md)Proxy'si'ne bakın.
+1. Kurulumun sonunda, giden proxy'si olan ortamlar için bir not gösterilir. Azure AD Application Proxy bağlayıcısını giden proxy üzerinden çalışacak şekilde yapılandırmak için `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`sağlanan komut dosyasını çalıştırın.
+1. Azure portalındaki Uygulama proxy sayfasında, yeni bağlayıcı aşağıdaki örnekte gösterildiği gibi *Etkin*durumuyla listelenir:
 
-    ![Azure portal etkin olarak gösterilen yeni Azure AD Uygulama Ara Sunucusu Bağlayıcısı](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
+    ![Azure portalında etkin olarak gösterilen yeni Azure AD Uygulama Proxy bağlayıcısı](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
 
     > [!NOTE]
-    > Azure AD Uygulama Ara Sunucusu kimlik doğrulaması yapan uygulamalar için yüksek kullanılabilirlik sağlamak üzere, bağlayıcıları birden çok VM 'ye yükleyebilirsiniz. Bağlayıcıyı Azure AD DS yönetilen etki alanına katılmış diğer sunuculara yüklemek için önceki bölümde listelenen adımları yineleyin.
+    > Azure AD Application Proxy üzerinden kimlik doğrulaması yapılan uygulamalar için yüksek kullanılabilirlik sağlamak için, birden çok VM'ye bağlayıcı yükleyebilirsiniz. Azure AD DS yönetilen etki alanına katılan diğer sunuculara konektör yüklemek için önceki bölümde listelenen aynı adımları yineleyin.
 
-1. Yükleme başarılı olduktan sonra Azure portal geri dönün.
+1. Başarılı yüklemeden sonra Azure portalına geri dön.
 
-1. **Kurumsal uygulamalar**' ı seçin.
+1. **Kurumsal uygulamaları**seçin.
 
-   ![doğru paydaşları ilgi çekici olduğunuzdan emin olun](./media/active-directory-app-proxy-protect-ndes/azure-active-directory-enterprise-applications.png)
+   ![doğru paydaşlarla etkileşimde bulunduğunuzdan emin olun](./media/active-directory-app-proxy-protect-ndes/azure-active-directory-enterprise-applications.png)
 
-1. **+ Yeni uygulama**' yı seçin ve ardından Şirket **içi uygulama**' yı seçin. 
+1. **+Yeni Uygulama'yı**seçin ve ardından **şirket içi uygulamayı**seçin. 
 
-1. **Kendi şirket içi uygulamanızı ekleyin**, aşağıdaki alanları yapılandırın:
+1. Kendi **şirket içi uygulamanızı**ekle'de, aşağıdaki alanları yapılandırın:
 
-   * **Ad**: uygulama için bir ad girin.
-   * **Iç URL**: BAĞLAYıCıYı yüklediğiniz NDES SUNUCUNUZUN iç URL 'SINI/FQDN 'sini girin.
-   * **Ön kimlik doğrulaması**: **geçiş**öğesini seçin. Herhangi bir ön kimlik doğrulama biçimi kullanılması mümkün değildir. Sertifika Istekleri (SCEP) için kullanılan protokol bu seçeneği sağlamaz.
-   * Belirtilen **dış URL 'yi** panonuza kopyalayın.
+   * **Adı**: Uygulama için bir ad girin.
+   * **Dahili Url**: Konektörü yüklediğiniz NDES sunucunuzun dahili URL'sini/FQDN'sini girin.
+   * **Ön Kimlik Doğrulama**: **Geçiş'i**seçin. Herhangi bir ön kimlik doğrulama biçimi kullanmak mümkün değildir. Sertifika İstekleri (SCEP) için kullanılan protokol bu seçeneği sağlamaz.
+   * Sağlanan **Harici URL'yi** panonuza kopyalayın.
 
-1. Uygulamanızı kaydetmek için **+ Ekle** ' yi seçin.
+1. Uygulamanızı kaydetmek için **+Ekle'yi** seçin.
 
-1. Adım 10 ' da kopyaladığınız bağlantıyı bir tarayıcıya yapıştırarak Azure AD uygulama proxy 'si aracılığıyla NDES sunucunuza erişip erişemeyeceğinizi test edin. Varsayılan bir IIS karşılama sayfası görmeniz gerekir.
+1. 10. adımda kopyaladığınız bağlantıyı tarayıcıya yapıştırarak NDES sunucunuza Azure AD Uygulaması proxy'si üzerinden erişip erişemeyeceğiniz konusunda test edin. Varsayılan bir IIS karşılama sayfası görmeniz gerekir.
 
-1. Son bir test olarak, *mscep. dll* yolunu önceki adımda YAPıŞTıRDıĞıNıZ mevcut URL 'ye ekleyin:
+1. Son test olarak, önceki adımda yapıştırdığınız varolan URL'ye *mscep.dll* yolunu ekleyin:
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 
-1. **Http hatası 403 – Yasak** yanıt görmeniz gerekir.
+1. Bir HTTP **Hata 403** görmelisiniz - Yasak yanıt.
 
-1. Belirtilen NDES URL 'sini (Microsoft Intune aracılığıyla) cihazlara değiştirme bu değişiklik, Microsoft uç nokta yapılandırma merkezi veya Intune bulutu içinde olabilir.
+1. Sağlanan NDES URL'sini (Microsoft Intune aracılığıyla) aygıtlara değiştirin, bu değişiklik Microsoft Endpoint Configuration Center'da veya Intune Cloud'da olabilir.
 
-   * Yapılandırma Merkezi için, sertifika kayıt noktasına (CRP) gidin ve URL 'YI ayarlayın. Bu URL, cihazların ne kadar arama yaptığını ve zorluğun sunulmasını sağlar.
-   * Tek başına Intune olarak da bilinen Intune bulutu için, yeni bir SCEP ilkesi düzenleyin ya da oluşturun ve yeni URL 'YI ekleyin.
+   * Yapılandırma Merkezi için Sertifika Kayıt Noktası'na (CRP) gidin ve URL'yi ayarlayın. Bu URL, aygıtların meydan okumalarına çağrıda bulunduğu ve sundukları URL'dir.
+   * Yalnızca Intune Cloud Alone olarak da bilinen Intune Cloud için, yeni bir SCEP ilkesini edin veya oluşturun ve yeni URL ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-NDES ile tümleştirilmiş Azure AD Uygulama Ara Sunucusu, kullanıcıların erişebileceği uygulamalar yayımlayın. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application).
+NDES ile tümleşik Azure AD Uygulama Proxy ile kullanıcıların erişebilmek için uygulamalar yayımlayın. Daha fazla bilgi için Azure [AD Application Proxy kullanarak uygulama yayımlama'ya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)bakın.

@@ -1,53 +1,52 @@
 ---
-title: Tümleşik çözümler-Azure Marketi
-description: Azure Market ve AppSource 'ta Tümleşik çözümler
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+title: Entegre Çözümler - Azure Marketi
+description: Azure Marketi ve AppSource'da Entegre Çözümler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: v-chjen
-ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: d99b061b57beb003cc47b2d809f493d5a9c66888
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286175"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Market 'te Tümleşik çözümler
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Marketinde Entegre Çözümler
 
-Tümleşik bir çözüm, Microsoft iş ortaklarından en iyi şekilde sunulan ve uzman hizmet iş ortakları tarafından sunulan danışmanın, dağıtımın ve desteklenen bir araya getirir.
+Tümleşik Çözüm, uzman hizmet ortakları tarafından sağlanan danışma, dağıtım ve desteklerin yanı sıra Microsoft iş ortaklarının türünün en iyisi teknolojileri bir araya getirir.
 
-İki veya daha fazla Microsoft iş ortağı, müşterilerini ve hizmetlerini, müşterileri hızla çalışır hale getirmek için birleştirilmiş, sorunsuz ve yinelenebilir bir dağıtım deneyimi oluşturacak şekilde tümleştirmektedir.  Çözümdeki lider ortağı (genellikle hizmetler iş ortağı), ilgili özelleştirme, danışmanlık ve çözüme destek sağlayan müşteri için tek bir iletişim noktası sağlar.
+İki veya daha fazla Microsoft iş ortağı, müşterilerin hızla çalışmaya başlamasını sağlamak için birleşik, sorunsuz ve tekrarlanabilir bir dağıtım deneyimi oluşturmak için teknolojilerini ve hizmetlerini bütünleştirir.  Çözümün baş ortağı (genellikle hizmet ortağı), müşteri için tek bir iletişim noktası sağlayarak çözüm çevresinde ilgili özelleştirme, danışmanlık ve destek sağlar.
 
-Diğer senaryolarda, iş ortakları, çözümlerini birlikte ortak olarak satın alıp pazarlarken, tümleşik bir çözüm, iş ortakları genelinde teknolojiyi ve Hizmetleri tümleştiren, ortaklaşa oluşturulmuş yeni bir çözümdür.
+Diğer senaryolarda, ortaklar çözümlerini birlikte satar veya birlikte pazarlar, oysa entegre bir çözüm, teknolojiyi ve hizmetleri ortaklar arasında entegre eden ortaklaşa oluşturulmuş yeni bir çözümdür.
 
 ## <a name="advantages"></a>Yararları
 
-Tümleşik yaklaşımın avantajları şunlardır:
+Entegre yaklaşımın avantajları şunlardır:
 
-* *Sektör uzmanlığı*: sektöre özgü çözümler ve bilgi sağlayan hizmet iş ortakları
-* *Değer süresi*: anında avantajlara yardımcı olmaya yönelik tümleşik dağıtım yaklaşımı
-* *En iyi çözüm*: tümleşik bir satın alma ve uygulama deneyimine yönelik kolaylıklar bulma
+* *Sektör uzmanlığı*: Sektöre özel çözümler ve bilgi sağlayan hizmet ortakları
+* *Değer verme zamanı*: Anında avantajlar elde etmenize yardımcı olmak için entegre dağıtım yaklaşımı
+* *Türünün en iyisi çözümler*: Entegre bir satın alma ve uygulama deneyiminin kolaylığını keşfedin
 
-Daha fazla bilgi için bkz. [Tümleşik çözüm yayımlama](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers)
 
-## <a name="submit-a-nomination"></a>Aday gönder
+## <a name="submit-a-nomination"></a>Aday olma
 
-Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer iş ortaklarını tanımmalıdır. [Tümleşik çözümler aday formunu](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)tamamlamalıdır. Tümleşik çözümler program ekibi, aday 'yı gözden geçirir ve 10 iş günü içinde aşağıdaki işlemleri izler. Ekip onay ve sonraki adımları sağlar.
+Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer ortakları tanımlamalıdır. Entegre Çözümler [aday formunu](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)doldurmaları gerekmektedir. Entegre Çözümler programı ekibi adaylığı inceler ve 10 iş günü içinde takip eder. Takım onay ve sonraki adımları sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Listelerini buradan ziyaret ederek tümleşik çözümleri bulabilir ve bu değerli iş ortaklarıyla bağlantı oluşturabilirsiniz:
+Entegre Çözümleri keşfedebilir ve bu değerli iş ortaklarıyla girişlerini buradan ziyaret ederek bağlantı kurabilirsiniz:
 
-* [Zero2Hero tarafından desteklenen müşteri 360](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
-* [Hızlı ticaret](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Kredi portföyü Analizi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Sağlık bulutu güvenlik yığını](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
-* [DevOps hızlandırma altyapısı](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server destek bitişi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
-* [Hızlı veri merkezi birleştirme Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
-* [Bağlı alan hizmeti için DeviceTone IoT](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
-* [Uyum: Birleşik bir pazarlama yönetimi çözümü](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
-* [Akıllı a & bir süre](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)
+* [Müşteri 360 Zero2Hero tarafından desteklenmektedir](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Hızlı Ticaret](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Kredi Portföy Analizi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Sağlık Bulut Güvenlik Yığını](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [DevOps İvme Motoru](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Windows Server Destek Sonu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Hızlı Veri Merkezi Konsolidasyon Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
+* [Bağlı Saha Hizmeti için DeviceTone IoT](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
+* [Unison: Birleşik Pazarlama Yönetimi çözümü](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
+* [Akıllı M&Durum Tespiti](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)

@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde iş akışı Otomasyonu (Önizleme) | Microsoft Docs
-description: Azure Güvenlik Merkezi 'nde iş akışları oluşturmayı ve otomatikleştirmeyi öğrenin
+title: Azure Güvenlik Merkezi'nde iş akışı otomasyonu | Microsoft Dokümanlar
+description: Azure Güvenlik Merkezi'nde iş akışlarını nasıl oluşturup otomatikleştirin
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,97 +8,100 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462449"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384951"
 ---
-# <a name="workflow-automation-preview"></a>Workflow Otomasyonu (Önizleme)
+# <a name="workflow-automation"></a>İş akışı otomasyonu
 
-Her güvenlik programı, olay yanıtı için birden çok iş akışı içerir. Bu işlemler ilgili hissedarları bildirmeyi, bir değişiklik yönetimi işlemini başlatmayı ve belirli düzeltme adımlarını uygulamayı içerebilir. Güvenlik uzmanları, yaptığınız gibi bu yordamların pek çok adımını otomatikleştirmenizi önerir. Otomasyon ek yükü azaltır. Ayrıca işlem adımlarının hızlı, tutarlı bir şekilde ve önceden tanımlanmış gereksinimlerinize göre hızla yapılmasını sağlayarak güvenliği geliştirebilir.
+Her güvenlik programı olay yanıtı için birden çok iş akışı içerir. Bu işlemler, ilgili paydaşları bilgilendirmeyi, bir değişiklik yönetimi süreci başlatmayı ve belirli düzeltme adımlarını uygulamayı içerebilir. Güvenlik uzmanları, bu yordamların olabildiğince çok adımını otomatikleştirmenizi önerir. Otomasyon genel yükü azaltır. Ayrıca, işlem adımlarının hızlı, tutarlı ve önceden tanımlanmış gereksinimlerinize göre yapılmasını sağlayarak güvenliğinizi artırabilir.
 
-Bu makalede, Azure Güvenlik Merkezi 'nin Iş akışı Otomasyonu özelliği (Önizleme) açıklanmaktadır. Bu önizleme özelliği, güvenlik uyarıları ve önerileri üzerinde Logic Apps tetikleyebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi 'nin belirli bir kullanıcıyı e-posta ile e-posta olarak istemeniz gerekebilir. Ayrıca, [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)kullanarak Logic Apps oluşturmayı öğreneceksiniz.
+Bu makalede, Azure Güvenlik Merkezi'nin iş akışı otomasyonu özelliği açıklanmaktadır. Bu özellik, güvenlik uyarıları ve önerileri logic apps tetikleyebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi'nin belirli bir kullanıcıya e-posta atmasını isteyebilirsiniz. [Azure Logic Apps'ı](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)kullanarak Mantık Uygulamaları'nı nasıl oluşturabileceğinizi de öğreneceksiniz.
 
 > [!NOTE]
-> Daha önce kenar çubuğunda playbooks (Önizleme) görünümünü kullandıysanız, yeni Iş akışı Otomasyonu (Önizleme) sayfasında genişletilmiş işlevlerle aynı özellikleri bulacaksınız.
+> Kenar çubuğundaki Playbook (Önizleme) görünümünü daha önce kullandıysanız, yeni iş akışı otomasyonu sayfasında genişletilmiş işlevsellikle birlikte aynı özellikleri bulabilirsiniz.
 
 
 ## <a name="requirements"></a>Gereksinimler
 
-* Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere sahip olmanız gerekir:
+* Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollerine/izinlerine sahip olmalısınız:
 
-    * [Mantıksal uygulama işleci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )
+    * [Logic App Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) izinleri gereklidir veya Logic App okuma/tetikleme erişimi (bu rol mantık uygulamaları oluşturamaz veya kaldı; yalnızca varolanları *çalıştıramaz)*
 
-    * Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) izinleri gereklidir
+    * [Mantık Uygulaması Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) izinleri Logic App oluşturma ve modifikasyon için gereklidir
 
-* Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)
+* Mantık Uygulaması bağlayıcılarını kullanmak istiyorsanız, ilgili hizmetlerinde oturum açabilmek için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/Teams/Slack örnekleriniz)
 
 
-## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Bir mantıksal uygulama oluşturun ve ne zaman otomatik olarak çalışacağını tanımlayın 
+## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Bir Mantık Uygulaması oluşturun ve otomatik olarak ne zaman çalışması gerektiğini tanımlayın 
 
-1. Güvenlik Merkezi 'nin kenar çubuğundan **Iş akışı Otomasyonu (Önizleme)** seçeneğini belirleyin.
+1. Güvenlik Merkezi'nin kenar çubuğundan **İş Akışı otomasyonu'ni**seçin.
 
-    [iş akışı otomasyonları ![listesi](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    [![İş akışı otomasyonları listesi](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.  
-1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle**' ye tıklayın. 
+    Bu sayfadan yeni otomasyon kuralları oluşturabilir, varolan kuralları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.  
+1. Yeni bir iş akışı tanımlamak için **iş akışı otomasyonu ekle'yi**tıklatın. 
 
-    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
+    Yeni otomasyon seçenekleriniz ile birlikte bir bölme görüntülenir. Buraya girebilirsiniz:
     1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, "SQL" içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
-    1. Tetikleyici koşullarınız karşılandığında çalıştırılacak mantıksal uygulama. 
+    1. Bu otomatik iş akışını başlatacak tetikleyiciler. Örneğin, "SQL" içeren bir güvenlik uyarısı oluşturulduğunda Mantık Uygulamanızın çalışmasını isteyebilirsiniz.
+    1. Tetik koşullarınız karşılandığında çalışacak Mantık Uygulaması. 
 
-        [iş akışı otomasyonları ![listesi](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        [![İş akışı otomasyonları listesi](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
 
-1. Mantıksal uygulama oluşturma işlemini başlatmak için Eylemler bölümünden **Yeni bir tane oluştur ' a** tıklayın.
+1. Eylemler bölümünden, Mantık Uygulaması oluşturma işlemini başlatmak için **yeni bir tane oluştur'u** tıklatın.
 
-    Azure Logic Apps için yönlendirilirsiniz.
+    Azure Logic Apps'a götürülürsünüz.
 
-    [Yeni bir mantıksal uygulama oluşturma ![](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
+    [![Yeni Bir Mantık Uygulaması Oluşturma](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Bir ad, kaynak grubu ve konum girin ve **Oluştur**' a tıklayın.
+1. Ad, kaynak grubu ve konum girin ve **Oluştur'u**tıklatın.
 
-1. Yeni mantıksal uygulamanızda, güvenlik kategorisinden yerleşik, önceden tanımlanmış şablonlar arasından seçim yapabilirsiniz. Ya da bu işlem tetiklendiğinde gerçekleşecek özel olay akışını tanımlayabilirsiniz.
+1. Yeni Mantık Uygulamanızda, güvenlik kategorisinden yerleşik, önceden tanımlanmış şablonlar arasından seçim yapabilirsiniz. Veya bu işlem tetiklendiğinde oluşacak özel bir olay akışı tanımlayabilirsiniz.
 
-    Mantıksal uygulama tasarımcısında, güvenlik merkezi bağlayıcılarından aşağıdaki Tetikleyiciler desteklenir:
+    Logic App tasarımcısında Güvenlik Merkezi konektörlerinden aşağıdaki tetikleyiciler desteklenir:
 
-    * **Bir Azure Güvenlik Merkezi önerisi oluşturulduğunda veya tetiklendiğinde (Önizleme)**
-    * **Bir Azure Güvenlik Merkezi uyarısı oluşturulduğunda veya tetiklendiğinde (Önizleme)**
+    * **Azure Güvenlik Merkezi Önerisi oluşturulduğunda veya tetiklendiğinde**
+    * **Azure Güvenlik Merkezi Uyarısı oluşturulduğunda veya tetiklendiğinde** 
+    
+    > [!TIP]
+    > Tetikleyiciyi yalnızca ilginizi çeken önem düzeylerine sahip uyarılarla ilgili olacak şekilde özelleştirebilirsiniz.
     
     > [!NOTE]
-    > Eski tetikleyiciyi kullanıyorsanız "bir Azure Güvenlik Merkezi uyarısıyla bir yanıt tetiklendiğinde", Logic Apps Iş akışı Otomasyonu özelliği tarafından başlatılmaz. Bunun yerine, yukarıda bahsedilen tetikleyicilerden birini kullanın. 
+    > "Azure Güvenlik Merkezi uyarısına yanıt tetiklendiğinde" eski tetikleyiciyi kullanıyorsanız, Logic Apps'ınız İş Akışı Otomasyonu özelliği tarafından başlatılacaktır. Bunun yerine, yukarıda belirtilen tetikleyicilerden birini kullanın. 
 
-    [Örnek mantıksal uygulama ![](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
+    [![Örnek Mantık Uygulaması](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
-1. Mantıksal uygulamanızı tanımladıktan sonra, iş akışı Otomasyon tanımı bölmesine ("iş akışı Otomasyonu Ekle") dönün. Yeni mantıksal uygulamanızın seçim için kullanılabilir olduğundan emin olmak için **Yenile** ' ye tıklayın.
+1. Mantık Uygulamanızı tanımladıktan sonra iş akışı otomasyonu tanım bölmesine ("İş akışı otomasyonu ekle") dönün. Yeni Mantık Uygulamanızın seçilediğinden emin olmak için **Yenile'yi** tıklatın.
 
     ![Yenile](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Mantıksal uygulamanızı seçin ve Otomasyonu kaydedin. Mantıksal uygulama açılan listesinin yalnızca yukarıda bahsedilen destekleyici Güvenlik Merkezi bağlayıcıları olan Logic Apps gösterdiğini unutmayın.
+1. Mantık Uygulamanızı seçin ve otomasyonu kaydedin. Logic App açılır görülünü yalnızca yukarıda belirtilen güvenlik merkezi bağlayıcılarını destekleyen Logic Apps'ı gösterdiğini unutmayın.
 
 
-## <a name="manually-trigger-a-logic-app"></a>Mantıksal uygulamayı el ile tetikleme
+## <a name="manually-trigger-a-logic-app"></a>Bir Mantık Uygulamasını el ile tetikle
 
-Ayrıca, güvenlik önerisi görüntülenirken Logic Apps el ile de çalıştırabilirsiniz.
+Bir güvenlik uyarısını veya [Hızlı Düzeltme düzeltmesi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation)sunan herhangi bir öneriyi görüntülerken De Logic Apps'ı el ile çalıştırabilirsiniz.
 
-Mantıksal uygulamayı el ile çalıştırmak için bir öneri açın ve mantıksal uygulama tetikleme (Önizleme) seçeneğine tıklayın:
+Bir Mantık Uygulamasını el ile çalıştırmak için, Hızlı Düzeltme düzeltmesini destekleyen bir uyarı veya öneri açın ve **Tetikleme Mantığı Uygulaması'nı**tıklatın:
 
-[Mantıksal uygulama ![El Ile tetikleyin](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+[![Bir Mantık Uygulamasını el ile tetikle](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
 ## <a name="data-types-schemas"></a>Veri türleri şemaları
 
-Mantıksal uygulama örneğine geçirilen güvenlik uyarıları veya öneriler olaylarının Ham olay şemalarını görüntülemek için, [Iş akışı Otomasyonu veri türleri şemalarını](https://aka.ms/ASCAutomationSchemas)ziyaret edin. Bu, yukarıda bahsedilen güvenlik merkezi 'nin yerleşik Logic Apps bağlayıcılarını kullanmadığınız, ancak mantıksal uygulamanın genel HTTP bağlayıcısını kullanan durumlarda yararlı olabilir-olay JSON şemasını, uygun gördüğünüz şekilde el ile ayrıştırmanız için kullanabilirsiniz.
+Mantık Uygulaması örneğine aktarılan güvenlik uyarıları veya öneriler olaylarının ham olay şemalarını görüntülemek için [İş Akışı otomasyonveri türleri şemalarını](https://aka.ms/ASCAutomationSchemas)ziyaret edin. Bu, Güvenlik Merkezi'nin yukarıda belirtilen yerleşik Mantık Uygulaması konektörlerini kullanmadığınız, ancak bunun yerine Logic App'in genel HTTP konektörünü kullandığınız durumlarda yararlı olabilir - uygun gördüğünüz şekilde el ile ayrıştmak için JSON şemasını kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede Logic Apps oluşturma, güvenlik merkezi 'nde el ile çalıştırma ve yürütmeyi otomatikleştirme hakkında bilgi edindiniz. 
+Bu makalede, Logic Apps oluşturmayı, bunları Güvenlik Merkezi'nde el ile çalıştırmayı ve yürütmelerini otomatikleştirini öğrendiniz. 
 
-Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
+Diğer ilgili materyaller için aşağıdaki makalelere bakın: 
 
-- [Azure Güvenlik Merkezi 'nde güvenlik önerileri](security-center-recommendations.md)
-- [Azure Güvenlik Merkezi'ndeki güvenlik uyarıları](security-center-alerts-overview.md)
+- [Azure Güvenlik Merkezi'nde güvenlik önerileri](security-center-recommendations.md)
+- [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
 - [Azure Logic Apps hakkında](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps bağlayıcıları](https://docs.microsoft.com/connectors/)
-- [İş akışı Otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)
+- [İş akışı otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

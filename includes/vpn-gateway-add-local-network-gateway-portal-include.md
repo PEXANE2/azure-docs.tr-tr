@@ -9,16 +9,16 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73524029"
 ---
-1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
+1. Azure [portalı](https://portal.azure.com) menüsünden **kaynak oluştur'u**seçin. 
 
-   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
-2. Market 'te **Ara** alanına **yerel ağ geçidi**yazın ve aramak için **ENTER** tuşuna basın. Böylece sonuçların bir listesi döndürülür. **Yerel ağ geçidi**’ne ve sonra **Oluştur** düğmesine tıklayarak **Yerel ağ geçidi oluştur** sayfasını açın.
+   ![Azure portalında kaynak oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. Pazar **yeri** alanında Arama alanında Yerel **ağ ağ ağ geçidi**yazın ve ardından aramak için **Enter** tuşuna basın. Böylece sonuçların bir listesi döndürülür. **Yerel ağ geçidi**’ne ve sonra **Oluştur** düğmesine tıklayarak **Yerel ağ geçidi oluştur** sayfasını açın.
 
    ![Yerel ağ geçidini oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Yerel ağ geçidini oluşturma")
 
@@ -30,6 +30,6 @@ ms.locfileid: "73524029"
    - **BGP ayarları yapılandır:** Yalnızca BGP’yi yapılandırırken kullanın. Aksi takdirde, bu seçeneği işaretlemeyin.
    - **Abonelik:** Doğru aboneliğin gösterildiğinden emin olun.
    - **Kaynak Grubu:** Kullanmak istediğiniz kaynak grubunu seçin. Yeni bir kaynak grubu oluşturabilir veya önceden oluşturduğunuz birini seçebilirsiniz.
-   - **Konum:** Konum, diğer ayarların **bölgesiyle** aynı olur. Bu nesnenin oluşturulacağı konumu seçin. VNet'inizin bulunduğu konumu seçebilirsiniz ancak bu zorunlu değildir.
+   - **Yer:** Konum, diğer ayarlardaki **Bölge** ile aynıdır. Bu nesnenin oluşturulacağı konumu seçin. VNet'inizin bulunduğu konumu seçebilirsiniz ancak bu zorunlu değildir.
 
 4. Tüm değerleri belirttikten sonra yerel ağ geçidini oluşturmak için sayfanın alt tarafındaki **Oluştur** düğmesine tıklayın.

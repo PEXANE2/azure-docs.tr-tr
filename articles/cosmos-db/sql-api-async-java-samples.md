@@ -8,17 +8,17 @@ ms.topic: sample
 ms.date: 12/03/2018
 ms.author: sngun
 ms.openlocfilehash: 0a9b58a78ee9de48b721511646728bd8140ef980
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72170173"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API'si için Zaman Uyumsuz Java örnekleri
 
 > [!div class="op_single_selector"]
-> * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)
-> * [.NET v3 SDK örnekleri](sql-api-dotnet-v3sdk-samples.md)
+> * [.NET V2 SDK Örnekleri](sql-api-dotnet-samples.md)
+> * [.NET V3 SDK Örnekleri](sql-api-dotnet-v3sdk-samples.md)
 > * [Java Örnekleri](sql-api-java-samples.md)
 > * [Async Java Örnekleri](sql-api-async-java-samples.md)
 > * [Node.js Örnekleri](sql-api-nodejs-samples.md)
@@ -32,7 +32,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 * Örnek Zaman Uyumsuz Java proje dosyalarının her birindeki görevlere bağlantılar. 
 * İlgili API başvurusu içeriğine bağlantılar.
 
-**Önkoşullar**
+**Ön koşullar**
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
@@ -88,18 +88,18 @@ Komut satırından çalıştırmak için:
    > 
 
 ## <a name="database-examples"></a>Veritabanı örnekleri
-[DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos veritabanları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
+[DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltilebildiğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos veritabanları hakkında bilgi edinmek için [bkz.](databases-containers-items.md) 
 
 | Görev | API başvurusu |
 | --- | --- |
 | [Veritabanı oluşturma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L115-L132) | [AsyncDocumentClient.createDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createdatabase) |
 | [Zaten var olan bir veritabanı oluşturulamadı](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L189-L204) | |
 | [Veritabanını oluşturma ve okuma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L228-L249) | [AsyncDocumentClient.readDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.readdatabase) |
-| [Veritabanını oluşturma ve silme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L255-L276) | [AsyncDocumentClient.deleteDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.deletedatabase) |
+| [Veritabanı oluşturma ve silme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L255-L276) | [AsyncDocumentClient.deleteDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.deletedatabase) |
 | [Veritabanını oluşturma ve sorgulama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L282-L312) | [AsyncDocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Koleksiyon örnekleri
-[Collectioncrudadsyncaptest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
+[CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltilebildiğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için [veritabanları, kapsayıcılar ve öğelerkavramsal makaleyle çalışma](databases-containers-items.md) başlıklı makaleye bakın. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -111,7 +111,7 @@ Komut satırından çalıştırmak için:
 | [Koleksiyon oluşturma ve sorgulama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L339-L372) | [AsyncDocumentClient.queryCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querycollections) |
 
 ## <a name="document-examples"></a>Belge örnekleri
-[Documentcrudadsyncaptest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
+[DocumentCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltilebildiğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için [bkz.](databases-containers-items.md) 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -124,17 +124,17 @@ Komut satırından çalıştırmak için:
 | [Belge oluşturma ve silme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java#L399-L431) | [AsyncDocumentClient.deleteDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.deletedocument) |
 | [Belge oluşturma ve okuma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java#L437-L458) | [AsyncDocumentClient.readDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.readdocument) |
 
-## <a name="indexing-examples"></a>Dizin oluşturma örnekleri
-[Collectioncrudadsyncaptest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir.  Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-types.md)ve [Dizin oluşturma yolları](index-paths.md) kavramsal makaleler. 
+## <a name="indexing-examples"></a>Dizin örnekleri
+[CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltilebildiğini gösterir.  Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'de dizin oluşturma hakkında bilgi edinmek için, [dizin oluşturma ilkeleri,](index-policy.md) [dizin oluşturma türleri](index-types.md)ve [dizine](index-paths.md) alma yolları kavramsal makalelerbakın. 
 
 | Görev | API başvurusu |
 | --- | --- |
-| [Dizin oluşturma ve dizin oluşturma ilkesini ayarlama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L394-L410) | [Dizin](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.indexingpolicy) |
+| [Dizin oluşturma ve dizin oluşturma ilkesini ayarlama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L394-L410) | [Dizin oluşturma](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.indexingpolicy) |
 
 Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
 
 ## <a name="query-examples"></a>Sorgu örnekleri
-[Documentquerysamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için bkz. [SQL sorgu örnekleri](how-to-sql-query.md) kavramsal makalesi. 
+[DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki SQL sorgu başvurusu hakkında bilgi edinmek [için, SQL sorgu örnekleri](how-to-sql-query.md) kavramsal makaleye bakın. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -142,7 +142,7 @@ Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB dizin ol
 | [Basit bir belge sorgusu gerçekleştirme ve Toplam RU maliyetini öğrenme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L249-L268) | [FeedResponse.getRequestCharge](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedresponse.getrequestcharge) |
 | [Basit bir belge sorgusu gerçekleştirme, bir sayfa okuma ve döndürülen gözlemlenebilir öğe aboneliğinden çıkma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L274-L312) | |
 | [Basit bir belge sorgusu gerçekleştirme ve sonuçları filtreleme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L318-L368) | |
-| [Sıralı-bölüm belge sorgusu gerçekleştirme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
+| [Sırayla bölümleme belge sorgusu gerçekleştirme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
 
 Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL sorgusu](how-to-sql-query.md).
 
@@ -151,12 +151,12 @@ Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL s
 
 | Görev | API başvurusu |
 | --- | --- |
-| [Koleksiyon oluşturma ve aktarım hızını ayarlama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L106-L113) | [AsyncDocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.requestoptions.setofferthroughput) |
+| [Koleksiyon oluşturma ve aktarım hızını ayarlama](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L106-L113) | [AsyncDocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection)<br>[İstekSeçenekleri.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.requestoptions.setofferthroughput) |
 | [İlişkili teklifi bulmak için koleksiyonu okuma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L118-L130) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.offer.getContent)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.queryoffers) |
 | [Bir koleksiyonun teklifini değiştirerek aktarım hızını güncelleştirme](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L101-L153) | [AsyncDocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Saklı yordam örnekleri
-[StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB içindeki sunucu tarafı programlama hakkında bilgi edinmek için bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesi. 
+[StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltilebildiğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki Sunucu tarafı programlama hakkında bilgi edinmek [için, Saklı yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesine bakın. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -165,7 +165,7 @@ Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL s
 | [Saklı yordamı bir nesne bağımsız değişkeniyle oluşturma ve çalıştırma](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java#L201-L241) | |
 
 ## <a name="unique-key"></a>Benzersiz Anahtar
-[Uniqueındexasyncaptest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB benzersiz anahtarlar hakkında bilgi edinmek için, bkz. [benzersiz anahtar kısıtlamaları](unique-keys.md) kavramsal makalesi. 
+[UniqueIndexAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) dosyası aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki benzersiz [anahtarlar](unique-keys.md) hakkında bilgi edinmek için Benzersiz anahtar kısıtlamaları kavramsal makalesine bakın. 
 
 | Görev | API başvurusu |
 | --- | --- |

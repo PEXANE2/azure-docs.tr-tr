@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: yönlendirme filtreleri-Microsoft eşlemesi: Azure portal'
-description: Bu makalede, Azure portalını kullanarak Microsoft eşlemesi için rota filtreleri yapılandırma açıklanır.
+title: 'ExpressRoute: Rota filtreleri - Microsoft peering:Azure portalı'
+description: Bu makalede, Azure portalını kullanarak Microsoft'un bakışları için rota filtrelerinin nasıl yapılandırılabildiğini açıklanmaktadır.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -9,125 +9,125 @@ ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037450"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft eşlemesi için rota filtreleri yapılandırma: Azure portalı
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft'un bakışları için rota filtrelerini yapılandırma: Azure portalı
 > [!div class="op_single_selector"]
-> * [Azure Portal](how-to-routefilter-portal.md)
+> * [Azure Portalı](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
-Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi aracılığıyla kullanmanın bir yoludur. Bu makaledeki adımları yapılandırmak ve ExpressRoute devreleri için rota filtreleri yönetmenize yardımcı olur.
+Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi aracılığıyla kullanmanın bir yoludur. Bu makaledeki adımlar, ExpressRoute devreleri için rota filtrelerini yapılandırmanıza ve yönetmenize yardımcı olur.
 
-Exchange Online, SharePoint Online ve Skype Kurumsal gibi Office 365 hizmetlerine ve depolama ve SQL DB gibi Azure hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. Microsoft eşlemesi ExpressRoute devresi yapılandırıldığında, bu hizmetleri ile ilgili tüm ön eklerin oluşturulmuş BGP oturumları bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerini ve eşlemek için Hizmetler listesi için bkz: [BGP toplulukları](expressroute-routing.md#bgp).
+Exchange Online, SharePoint Online ve Skype for Business gibi Office 365 hizmetleri ve depolama ve SQL DB gibi Azure hizmetlerine Microsoft'un bakışları aracılığıyla erişilebilir. Microsoft eşleme bir ExpressRoute devresinde yapılandırıldığında, bu hizmetlerle ilgili tüm öneekler oluşturulan BGP oturumları aracılığıyla duyurulur. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşledikleri hizmetlerin listesi için [Bkz. BGP toplulukları.](expressroute-routing.md#bgp)
 
-Tüm hizmetlerine ihtiyacınız varsa, ön ekleri çok fazla sayıda BGP üzerinden bildirilir. Bu, ağınızdaki yönlendiricileri tarafından korunan rota tabloları boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi sunulan hizmetlerin bir alt kullanmayı planlıyorsanız, iki yolla yol tablolarınıza boyutunu azaltabilirsiniz. Şunları yapabilirsiniz:
+Tüm hizmetlere bağlantı gerektirirseniz, BGP üzerinden çok sayıda önek ilan edilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan rota tablolarının boyutunu önemli ölçüde artırır. Microsoft'un bakışları aracılığıyla sunulan hizmetlerin yalnızca bir alt kümesini tüketmeyi planlıyorsanız, rota tablolarınızın boyutunu iki şekilde küçültebilirsiniz. Şunları yapabilirsiniz:
 
-- BGP toplulukları üzerinde rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulaması ve birçok ağ içinde yaygın olarak kullanılır.
+- BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve birçok ağda yaygın olarak kullanılır.
 
-- Rota filtreleri tanımlayın ve bunları ExpressRoute devreniz uygulayın. Bir rota filtresinde Microsoft eşlemesi üzerinden kullanmayı planladığınız hizmet listesini seçmenize izin veren yeni bir kaynaktır. ExpressRoute yönlendiriciler yalnızca rota filtresinde tanımlanan hizmetlerine ait bir ön ekleri listesi gönderir.
+- Rota filtrelerini tanımlayın ve ExpressRoute devrenize uygulayın. Rota filtresi, Microsoft'un bakışları aracılığıyla tüketmeyi planladığınız hizmetlerin listesini seçmenize olanak tanıyan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca rota filtresinde tanımlanan hizmetlere ait öneklistesini gönderir.
 
-### <a name="about"></a>Rota filtreleri hakkında
+### <a name="about-route-filters"></a><a name="about"></a>Rota filtreleri hakkında
 
-Microsoft eşlemesi ExpressRoute devreniz yapılandırıldığında, Microsoft uç yönlendiricileri kenar yönlendiricilerine (sizin ya da bağlantı sağlayıcınızın) BGP oturumları çifti oluşturun. Ağınıza rota tanıtılmaz. Ağınızda rota tanıtılmasını sağlamak için bir rota filtresiyle ilişkilendirmeniz gerekir.
+Microsoft'un bakışları ExpressRoute devrenizde yapılandırıldığında, Microsoft kenar yönlendiricileri kenar yönlendiricileri (sizin veya bağlantı sağlayıcınızın) bir çift BGP oturumu kurar. Ağınıza rota tanıtılmaz. Ağınızda rota tanıtılmasını sağlamak için bir rota filtresiyle ilişkilendirmeniz gerekir.
 
-Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu aslında, izin vermek istediğiniz tüm BGP topluluk değerlerinin bir listesidir. Rota filtresi kaynağı tanımlandıktan ve bir ExpressRoute bağlantı hattına eklendikten sonra BGP topluluk değerleriyle eşleşen tüm ön ekler ağınızda tanıtılır.
+Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu aslında izin vermek istediğiniz tüm BGP topluluk değerlerinin bir listesidir. Rota filtresi kaynağı tanımlandıktan ve bir ExpressRoute bağlantı hattına eklendikten sonra BGP topluluk değerleriyle eşleşen tüm ön ekler ağınızda tanıtılır.
 
-Rota filtreleri bunlar üzerinde Office 365 Hizmetleri ile iliştirme mümkün olması için ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmalıdır. ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmayan rota filtreleri ekleme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için bkz: [Office 365 için Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Üzerlerinde Office 365 hizmetleri olan rota filtreleri ekleyebilmek için ExpressRoute üzerinden Office 365 hizmetlerini kullanma yetkiniz olması gerekir. ExpressRoute üzerinden Office 365 hizmetlerini tüketme yetkiniz yoksa, rota filtrelerini ekleme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için [Office 365 için Azure ExpressRoute'a](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)bakın.
 
 > [!IMPORTANT]
-> 1 Ağustos 2017'den önce yapılandırılmış olan ExpressRoute devrelerinin Microsoft eşdüzey hizmet sağlama, tüm hizmet ön eklerin rota filtreleri tanımlanmamış olsa bile, Microsoft eşlemesi tanıtılan sahip olur. 1 Ağustos 2017 veya sonrasında yapılandırılmış ExpressRoute devrelerinin Microsoft eşlemesi tüm ön ekleri olmaz bağlantı hattına bir rota filtresinde bağlanana kadar tanıtılan.
+> 1 Ağustos 2017 tarihinden önce yapılandırılan ExpressRoute devrelerinin Microsoft'a bakması, rota filtreleri tanımlanmamış olsa bile, Microsoft'un bakışları aracılığıyla duyurulan tüm hizmet önekleri olacaktır. Microsoft' un 1 Ağustos 2017 tarihinde veya sonrasında yapılandırılan ExpressRoute devrelerine bakması, devreye bir rota filtresi iliştirilene kadar herhangi bir önek reklamı yapmayacaktır.
 > 
 > 
 
-### <a name="workflow"></a>İş akışı
+### <a name="workflow"></a><a name="workflow"></a>Iş akışı
 
-Başarılı bir şekilde Microsoft eşlemesi üzerinden hizmetlere bağlanabilmesi için aşağıdaki yapılandırma adımlarını tamamlamanız gerekir:
+Microsoft'un bakışları aracılığıyla hizmetlere başarılı bir şekilde bağlanabilmek için aşağıdaki yapılandırma adımlarını tamamlamanız gerekir:
 
-- Microsoft eşleme sağlanmış olan etkin ExpressRoute bağlantı hattına sahip olmalıdır. Bu görevleri gerçekleştirmek için aşağıdaki yönergeleri kullanabilirsiniz:
-  - [ExpressRoute devresi oluşturma](expressroute-howto-circuit-portal-resource-manager.md) ve devam etmeden önce bağlantı sağlayıcınız tarafından etkinleştirilen devreniz olduğunu. ExpressRoute bağlantı hattının sağlanmış ve etkin durumda olması gerekir.
-  - [Microsoft eşlemesi oluşturma](expressroute-howto-routing-portal-resource-manager.md) BGP oturumu doğrudan yönetiyorsanız. Veya bağlantı sağlayıcınızdan eşleme bağlantı hattınız için Microsoft sağlayın.
+- Microsoft'a bakan etkin leştirilmiş bir ExpressRoute devreniz olmalıdır. Bu görevleri gerçekleştirmek için aşağıdaki yönergeleri kullanabilirsiniz:
+  - [Bir ExpressRoute devresi oluşturun](expressroute-howto-circuit-portal-resource-manager.md) ve devam etmeden önce devreyi bağlantı sağlayıcınız tarafından etkinleştirin. ExpressRoute devresi, hüküm verilen ve etkin leştirilmiş bir durumda olmalıdır.
+  - BGP oturumunu doğrudan yönetiyorsanız [Microsoft'un bakışını oluşturun.](expressroute-howto-routing-portal-resource-manager.md) Veya, bağlantı sağlayıcınızın Microsoft'un devrenize bakmasına izin ver.
 
--  Oluşturma ve bir rota filtresinde yapılandırmanız gerekir.
-    - Hizmetleri tanımlamak, Microsoft eşlemesi üzerinden kullanmak için
-    - BGP topluluk değerlerini hizmetlerle ilgili listesini tanımlayın
-    - BGP topluluk değerlerini eşleşen ön ek listesini izin verecek bir kural oluşturun
+-  Bir rota filtresi oluşturmalı ve yapılandırmanız gerekir.
+    - Microsoft'un bakışları aracılığıyla tüketmek üzere olduğunuz hizmetleri tanımlayın
+    - Hizmetlerle ilişkili BGP topluluk değerlerinin listesini belirleme
+    - BGP topluluk değerleriyle eşleşen önek listesine izin vermek için bir kural oluşturma
 
--  ExpressRoute bağlantı hattı için rota filtresi eklemeniz gerekir.
+-  Rota filtresini ExpressRoute devresine takmanız gerekir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığından emin olun:
+Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığınızdan emin olun:
 
- - Gözden geçirme [önkoşulları](expressroute-prerequisites.md) ve [iş akışları](expressroute-workflows.md) yapılandırmaya başlamadan önce.
+ - Yapılandırmaya başlamadan önce [ön koşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 
- - Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-portal-resource-manager.md) yönergelerini izleyin ve bağlantı sağlayıcınızın bağlantı hattını etkinleştirmesini isteyin. ExpressRoute bağlantı hattının sağlanmış ve etkin durumda olması gerekir.
+ - Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-portal-resource-manager.md) yönergelerini izleyin ve bağlantı sağlayıcınızın bağlantı hattını etkinleştirmesini isteyin. ExpressRoute devresi, hüküm verilen ve etkin leştirilmiş bir durumda olmalıdır.
 
- - Etkin bir Microsoft eşlemesi olması gerekir. Konumundaki yönergeleri [oluştur ve eşleme yapılandırmasını değiştirme](expressroute-howto-routing-portal-resource-manager.md)
+ - Etkin bir Microsoft bakışa sahip olmalısınız. [Oluşturma ve eşleme yapılandırması değiştirme](expressroute-howto-routing-portal-resource-manager.md) yönergeleriizleyin
 
 
-## <a name="prefixes"></a>1. adım: bir ön ek listesini ve BGP topluluk değerlerini alma
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Adım 1: Öneklerin ve BGP topluluk değerlerinin bir listesini alın
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. BGP topluluk değerlerinin bir listesini alın
 
-Microsoft eşlemesi aracılığıyla erişilebilen hizmetler ile ilişkili BGP topluluk değerlerini kullanılabilir [ExpressRoute yönlendirme gereksinimleri](expressroute-routing.md) sayfası.
+Microsoft'un bakışları aracılığıyla erişilebilen hizmetlerle ilişkili BGP topluluk değerleri [ExpressRoute yönlendirme gereksinimleri](expressroute-routing.md) sayfasında kullanılabilir.
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. kullanmak istediğiniz değerlerin bir listesini oluşturun
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Kullanmak istediğiniz değerlerin bir listesini yapın
 
-Yol filtresinde kullanmak istediğiniz [BGP topluluk değerlerinin](expressroute-routing.md#bgp) bir listesini oluşturun. 
+Rota filtresinde kullanmak istediğiniz [BGP topluluk değerlerinin](expressroute-routing.md#bgp) bir listesini yapın. 
 
-## <a name="filter"></a>2. adım: bir yol filtresi ve bir filtre kuralı oluşturma
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Adım 2: Rota filtresi ve filtre kuralı oluşturma
 
-Bir rota filtresinde yalnızca bir kuralınız olabilir ve kural 'İzin ver' türünde olmalıdır. Bu kural, kendisiyle ilişkili BGP topluluk değerlerini listesi olabilir.
+Bir rota filtresinin yalnızca bir kuralı olabilir ve kural 'İzin Ver' türünde olmalıdır. Bu kural, onunla ilişkili BGP topluluk değerlerinin bir listesi olabilir.
 
-### <a name="1-create-a-route-filter"></a>1. yol filtresi oluşturma
-Yeni bir kaynak oluşturma seçeneğini belirleyerek bir rota filtresi oluşturabilirsiniz. Tıklayın **kaynak Oluştur** > **ağ** > **RouteFilter**, aşağıdaki görüntüde gösterildiği gibi:
+### <a name="1-create-a-route-filter"></a>1. Rota filtresi oluşturma
+Yeni bir kaynak oluşturma seçeneğini seçerek bir rota filtresi oluşturabilirsiniz. Aşağıdaki resimde gösterildiği gibi bir > kaynak**Ağ** > **Rotası Filtresi** **Oluştur'u**tıklatın:
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
-Rota filtresi bir kaynak grubunda yerleştirmeniz gerekir. 
+Rota filtresini bir kaynak grubuna yerleştirmeniz gerekir. 
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
-### <a name="2-create-a-filter-rule"></a>2. filtre kuralı oluşturma
+### <a name="2-create-a-filter-rule"></a>2. Filtre kuralı oluşturma
 
-Ekleyebilir ve kuralları, rota filtresi Yönet kural sekmesini seçerek güncelleştirin.
+Rota filtreniz için yönet kuralı sekmesini seçerek kurallar ekleyebilir ve güncelleştirebilirsiniz.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
-Açılan listeden bağlanmak istediğiniz hizmetleri seçebilir ve tamamlandığında kuralı kaydedebilirsiniz.
+Açılan listeden bağlanmak istediğiniz hizmetleri seçebilir ve yapıldığında kuralı kaydedebilirsiniz.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>3. adım: bir ExpressRoute bağlantı hattı için rota filtresi ekleme
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Adım 3: Rota filtresini ExpressRoute devresine takın
 
-"Devre Ekle" düğmesini seçerek ve açılan listeden ExpressRoute bağlantı hattını seçerek yol filtresini bir devreye ekleyebilirsiniz.
+"Devre ekle" düğmesini seçerek ve açılan listeden ExpressRoute devresini seçerek rota filtresini bir devreye ekleyebilirsiniz.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
-Bağlantı sağlayıcısı, "Bağlantı hattı Ekle" düğmesi seçmeden önce ExpressRoute bağlantı hattı yenileme için ExpressRoute bağlantı hattı dikey penceresinden devre eşlemesi yapılandırırsa.
+Bağlantı sağlayıcısı ExpressRoute devreniz için eşleme yapılandırırsa, "Devre ekle" düğmesini seçmeden önce devreyi ExpressRoute devre bıçağından yenileyin.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
-## <a name="tasks"></a>Genel görevler
+## <a name="common-tasks"></a><a name="tasks"></a>Genel görevler
 
-### <a name="getproperties"></a>Bir rota filtresinde özelliklerini almak için
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>Rota filtresi özelliklerini almak için
 
-Portalda kaynak açtığınızda, bir rota filtresinde özelliklerini görüntüleyebilirsiniz.
+Portaldaki kaynağı açtığınızda rota filtresiözelliklerini görüntüleyebilirsiniz.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
-### <a name="updateproperties"></a>Bir rota filtresinde özelliklerini güncelleştirmek için
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Rota filtresinin özelliklerini güncelleştirmek için
 
-BGP topluluk değerini "Manage kuralı" düğmesini seçerek bir bağlantı hattına bağlı listesini güncelleştirebilirsiniz.
+"Yönet kuralı" düğmesini seçerek bir devreye bağlı BGP topluluk değerleri listesini güncelleştirebilirsiniz.
 
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ManageRouteFilter.png)
@@ -135,16 +135,16 @@ BGP topluluk değerini "Manage kuralı" düğmesini seçerek bir bağlantı hatt
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
-### <a name="detach"></a>Bir ExpressRoute bağlantı hattı yol filtresinden ayırmak için
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Bir Route filtresini ExpressRoute devresinden ayırmak için
 
-Bir devreyi yol filtresinden ayırmak için, devreye sağ tıklayın ve "ilişkiyi kaldır" a tıklayın.
+Bir devreyi rota filtresinden ayırmak için, devreye sağ tıklayın ve "bağlantıyı kop" düğmesine tıklayın.
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
-### <a name="delete"></a>Rota filtresi silinemedi
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Rota filtresini silmek için
 
-Bir rota filtresinde Sil düğmesini seçerek silebilirsiniz. 
+Sil düğmesini seçerek bir rota filtresini silebilirsiniz. 
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/DeleteRouteFilter.png) 
 
@@ -152,4 +152,4 @@ Bir rota filtresinde Sil düğmesini seçerek silebilirsiniz.
 
 * ExpressRoute hakkında daha fazla bilgi için, bkz. [ExpressRoute SSS](expressroute-faqs.md).
 
-* Yönlendirici yapılandırma örnekleri hakkında daha fazla bilgi için bkz. [yönlendirme ayarlamak ve yönetmek Için yönlendirici yapılandırma örnekleri](expressroute-config-samples-routing.md). 
+* Yönlendirici yapılandırma örnekleri hakkında daha fazla bilgi için [yönlendirmeyi ayarlamak ve yönetmek için Yönlendirici yapılandırma örneklerine](expressroute-config-samples-routing.md)bakın. 

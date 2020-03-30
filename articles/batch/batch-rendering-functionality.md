@@ -1,6 +1,6 @@
 ---
-title: İşleme özellikleri-Azure Batch
-description: Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çalıştırmak için kullanılır. Batch, iş yüklerini işlemeyi desteklemek için belirli özellikler içerir.
+title: Oluşturma özellikleri - Azure Toplu İş
+description: İş yüklerini ve uygulamaları çalıştırmak için Standart Azure Toplu İş özellikleri kullanılır. Toplu iş yükünü oluşturmayı desteklemek için belirli özellikler içerir.
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,91 +8,91 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449719"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
+# <a name="azure-batch-rendering-capabilities"></a>Azure Toplu İşlem oluşturma özellikleri
 
-Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çalıştırmak için kullanılır. Batch, iş yüklerini işlemeyi desteklemek için belirli özellikler de içerir.
+İş yük lerini ve uygulamalarını çalıştırmak için Standart Azure Toplu İş özellikleri kullanılır. Toplu iş yükünü oluşturmayı desteklemek için belirli özellikler de içerir.
 
-Havuzlar, işler ve görevler dahil toplu Iş kavramlarına genel bir bakış için [Bu makaleye](https://docs.microsoft.com/azure/batch/batch-api-basics)bakın.
+Havuzlar, işler ve görevler de dahil olmak üzere Toplu Iş kavramlarına genel bakış için [bu makaleye](https://docs.microsoft.com/azure/batch/batch-api-basics)bakın.
 
-## <a name="batch-pools"></a>Toplu işlem havuzları
+## <a name="batch-pools"></a>Toplu Havuzlar
 
-### <a name="rendering-application-installation"></a>Uygulama yükleme işleme
+### <a name="rendering-application-installation"></a>Uygulama yüklemesi oluşturma
 
-Yalnızca önceden yüklenmiş uygulamaların kullanılması gerekiyorsa, havuz yapılandırmasında bir Azure Marketi işleme VM görüntüsü belirtilebilir.
+Yalnızca önceden yüklenmiş uygulamaların kullanılması gerekiyorsa, havuz yapılandırmasında VM görüntüsü işleyen bir Azure Marketi belirtilebilir.
 
-Bir Windows 2016 görüntüsü ve bir CentOS görüntüsü vardır.  [Azure Marketi](https://azuremarketplace.microsoft.com)'nde VM görüntüleri ' toplu işleme ' aranarak bulunabilir.
+Windows 2016 görüntüsü ve CentOS görüntüsü vardır.  [Azure](https://azuremarketplace.microsoft.com)Marketi'nde, VM görüntüleri 'toplu işleme' arayarak bulunabilir.
 
-Örnek havuz yapılandırması için bkz. [Azure CLI işleme öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure portal ve Batch Explorer, bir havuz oluşturduğunuzda bir işleme VM görüntüsü seçmek için GUI araçları sağlar.  Bir Batch API 'SI kullanıyorsanız, bir havuz oluştururken [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) için aşağıdaki özellik değerlerini belirtin:
+Örneğin havuz yapılandırması için [Azure CLI oluşturma](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)öğreticisi'ne bakın.  Azure portalı ve Toplu Gezgin, havuz oluştururken görüntü leyen bir VM görüntüsünü seçmek için GUI araçları sağlar.  Toplu İş API kullanıyorsanız, havuz oluştururken [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) için aşağıdaki özellik değerlerini belirtin:
 
-| Yayımcı | Teklif | Sku | Sürüm |
+| Yayımcı | Sunduğu | Sku | Sürüm |
 |---------|---------|---------|--------|
-| batch | işleme-centos73 | işleme | latest |
-| batch | işleme-windows2016 | işleme | latest |
+| toplu iş | render-centos73 | Işleme | en son |
+| toplu iş | render-windows2016 | Işleme | en son |
 
-Havuz VM 'lerinde ek uygulamalar gerekliyse diğer seçenekler kullanılabilir:
+Havuz VM'lerinde ek uygulamalar gerekiyorsa diğer seçenekler kullanılabilir:
 
-* Paylaşılan görüntü galerisindeki özel bir görüntü:
-  * Bu seçeneği kullanarak VM'nizi ihtiyacınız olan uygulamalar ve sürümlerle yapılandırabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md). Autodesk ve Chaos grubu, Azure Batch lisanslama hizmetine göre doğrulanacak şekilde, sırasıyla Arnold ve V-Ray ' i değiştirdi. Bu uygulamaların sürümleriyle bu desteğe sahip olduğunuzdan emin olun, aksi takdirde kullanım başına ödeme lisansı çalışmaz. Maya veya 3ds Max 'ın geçerli sürümleri, gözetimsiz (Batch/komut satırı modunda) çalıştırıldığında bir lisans sunucusu gerektirmez. Bu seçenekle devam etme konusunda emin değilseniz Azure desteği 'ne başvurun.
+* Paylaşılan Resim Galerisi'nden özel bir resim:
+  * Bu seçeneği kullanarak VM'nizi ihtiyacınız olan uygulamalar ve sürümlerle yapılandırabilirsiniz. Daha fazla bilgi için bkz: [Paylaşılan Resim Galerisi ile havuz oluştur.](batch-sig-images.md) Autodesk ve Chaos Group, Bir Azure Toplu Lisans hizmetine karşı doğrulamak için sırasıyla Arnold ve V-Ray'i değiştirdi. Bu destekle bu uygulamaların sürümlerine sahip olduğunuzdan emin olun, aksi takdirde kullanım başına ödeme lisanslama çalışmaz. Maya veya 3ds Max'in geçerli sürümleri, başsız çalışırken (toplu/komut satırı modunda) bir lisans sunucusu gerektirmez. Bu seçeneği nasıl sürdüreceğinden emin değilseniz Azure desteğine başvurun.
 * [Uygulama paketleri](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * Bir veya daha fazla ZIP dosyası kullanarak uygulama dosyalarını paketleyin, Azure portal aracılığıyla yükleyin ve havuzu yapılandırma bölümünde paketi belirtin. Havuz VM 'Leri oluşturulduğunda, ZIP dosyaları indirilir ve dosyalar ayıklanır.
+  * Bir veya daha fazla ZIP dosyasını kullanarak uygulama dosyalarını paketleyin, Azure portalı üzerinden yükleyin ve paketi havuz yapılandırmasında belirtin. Havuz VM'leri oluşturulduğunda, ZIP dosyaları indirilir ve dosyalar ayıklanır.
 * Kaynak dosyaları:
-  * Uygulama dosyaları Azure Blob depolama alanına yüklenir ve [Havuz başlangıç görevinde](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)dosya başvurularını belirtirsiniz. Havuz VM 'Leri oluşturulduğunda, kaynak dosyalar her bir sanal makineye indirilir.
+  * Uygulama dosyaları Azure blob depolamaya yüklenir ve [havuz başlangıç görevinde](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)dosya başvurularını belirtirsiniz. Havuz VM'leri oluşturulduğunda, kaynak dosyaları her VM'ye karşı yüklenir.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Önceden yüklenmiş uygulamalar için kullanım için ödeme lisansı
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Önceden yüklenmiş uygulamalar için kullanım için ödeme lisanslama
 
-Kullanılacak uygulamalar ve havuz yapılandırmasında bir lisans ücreti belirtilmesi gerekir.
+Kullanılacak ve lisans ücreti olan uygulamaların havuz yapılandırmasında belirtilmesi gerekir.
 
-* [Havuz oluştururken](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)`applicationLicenses` özelliğini belirtin.  Aşağıdaki değerler dizeler dizisinde belirtilebilir-"Vray", "Arnold", "3dsmax", "Maya".
-* Bir veya daha fazla uygulama belirttiğinizde, bu uygulamaların maliyeti VM 'lerin maliyetine eklenir.  Uygulama fiyatları [Azure Batch fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)listelenir.
+* Havuz `applicationLicenses` [oluştururken](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)özelliği belirtin.  "vray", "arnold", "3dsmax", "maya" dizelerinde aşağıdaki değerler belirtilebilir.
+* Bir veya daha fazla uygulama belirttiğiniz zaman, bu uygulamaların maliyeti VM'lerin maliyetine eklenir.  Uygulama fiyatları Azure [Toplu Toplu fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)listelenir.
 
 > [!NOTE]
-> Bunun yerine, işleme uygulamalarını kullanmak için bir lisans sunucusuna bağlanıyorsanız, `applicationLicenses` özelliğini belirtmeyin.
+> Bunun yerine, işleme uygulamalarını kullanmak üzere bir lisans sunucusuna `applicationLicenses` bağlanırsanız, özelliği belirtmeyin.
 
-Uygulamaları seçmek ve uygulama fiyatlarını göstermek için Azure portal veya Batch Explorer kullanabilirsiniz.
+Uygulamaları seçmek ve uygulama fiyatlarını göstermek için Azure portalını veya Toplu Gezgini'ni kullanabilirsiniz.
 
-Bir uygulamayı kullanma girişiminde bulunuldu, ancak uygulama havuz yapılandırmasının `applicationLicenses` özelliğinde belirtilemezse veya bir lisans sunucusuna ulaşmadıysa, uygulama yürütmesi bir lisanslama hatası ve sıfır olmayan çıkış kodu ile başarısız olur.
+Bir uygulamayı kullanmaya çalışılırsa, ancak uygulama havuz yapılandırmasının `applicationLicenses` özelliğinde belirtilmemişse veya bir lisans sunucusuna ulaşamıyorsa, uygulama yürütmesi bir lisans hatası ve sıfır olmayan çıkış koduyla başarısız olur.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Önceden yüklenmiş uygulamalar için ortam değişkenleri
 
-Görevleri işlemek için komut satırı oluşturabilmeniz için, işleme uygulaması yürütülebilir dosyalarının yükleme konumu belirtilmelidir.  Azure Marketi VM görüntülerinde, gerçek yolları belirtmek yerine kullanılabilen sistem ortam değişkenleri oluşturulmuştur.  Bu ortam değişkenleri, her görev için oluşturulan [Standart Batch ortam değişkenlerine](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) ek niteliğindedir.
+Görevleri işlemek için komut satırı oluşturabilmek için, işleme uygulaması yürütülebilirlerinin yükleme konumu belirtilmelidir.  Azure Marketi VM görüntülerinde, gerçek yolları belirtmek yerine kullanılabilen sistem ortamı değişkenleri oluşturuldu.  Bu ortam değişkenleri, her görev için oluşturulan [standart Toplu iş ortamı değişkenlerine](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) ek olarak yapılır.
 
-|Uygulama|Uygulama çalıştırılabilir|Ortam değişkeni|
+|Uygulama|Uygulama Çalıştırılabilir|Çevre Değişkeni|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|render. exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|render. exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray tek başına|Vray. exe|VRAY_3.60.4_EXEC|
-Arnold 2017 komut satırı|açılış. exe|ARNOLD_2017_EXEC|
-|Arnold 2018 komut satırı|açılış. exe|ARNOLD_2018_EXEC|
-|Blender|Blender. exe|BLENDER_2018_EXEC|
+|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
+|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
+|Kaos Grubu V-Ray Bağımsız|vray.exe|VRAY_3.60.4_EXEC|
+Arnold 2017 komuta hattı|kick.exe|ARNOLD_2017_EXEC|
+|Arnold 2018 komuta satırı|kick.exe|ARNOLD_2018_EXEC|
+|Blender|blender.exe|BLENDER_2018_EXEC|
 
 ### <a name="azure-vm-families"></a>Azure VM aileleri
 
-Diğer iş yüklerinde olduğu gibi, uygulama sistemi gereksinimlerinin işlenmesi farklılık gösterir ve performans gereksinimleri işler ve projeler için farklılık gösterir.  Gereksinimlerinize bağlı olarak, Azure 'da çok çeşitli VM aileleri mevcuttur: en düşük maliyet, en iyi fiyat/performans, en iyi performans ve benzeri.
-Arnold gibi bazı işleme uygulamaları CPU tabanlıdır; V-Ray ve Blender döngüleri gibi diğerleri, CPU ve/veya GPU 'Ları kullanabilir.
-Kullanılabilir VM aileleri ve VM boyutlarının açıklaması için [bkz. VM türleri ve boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Diğer iş yüklerinde olduğu gibi, uygulama sistemi gereksinimlerini işleme, iş ve projeler için performans gereksinimleri farklılık gösterir.  Gereksinimlerinize bağlı olarak Azure'da çok çeşitli VM aileleri mevcuttur – en düşük maliyet, en iyi fiyat/performans, en iyi performans, ve benzeri.
+Arnold gibi bazı işleme uygulamaları CPU tabanlıdır; V-Ray ve Blender Döngüleri gibi diğerleri CPU'ları ve/veya GPU'ları kullanabilir.
+Kullanılabilir VM ailelerinin ve VM boyutlarının açıklaması [için VM türleri ve boyutlarına bakın.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 
 ### <a name="low-priority-vms"></a>Düşük öncelikli sanal makineler
 
-Diğer iş yüklerinde olduğu gibi, düşük öncelikli VM 'Ler işleme için Batch havuzlarında kullanılabilir.  Düşük öncelikli VM 'Ler, normal adanmış VM 'Lerle aynı şekilde gerçekleştirilir, ancak daha fazla Azure kapasitesi kullanır ve büyük bir indirimle kullanılabilir.  Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, kullanılabilir kapasiteye bağlı olarak, bu VM 'Lerin ayrılmayabilir veya herhangi bir zamanda yok edilebilir hale gelebilir. Bu nedenle, düşük öncelikli VM 'Ler tüm işleme işleri için uygun olmaz. Örneğin, görüntülerin işlenmesi çok saat sürebileceğinden, bu görüntülerin işlenmesi, süresi dolan VM 'Lerin kabul edilebilir olması nedeniyle kesintiye uğratılmasına ve yeniden başlatılmasına neden olur.
+Diğer iş yüklerinde olduğu gibi, işleme için Toplu Iş havuzlarında düşük öncelikli VM'lerden kullanılabilir.  Düşük öncelikli VM'ler, normal özel VM'ler ile aynı performansı gösterir, ancak fazla Azure kapasitesini kullanır ve büyük bir indirim için kullanılabilir.  Düşük öncelikli VM'lerin kullanılmasının amacı, bu VM'lerin kullanılabilir kapasiteye bağlı olarak herhangi bir zamanda tahsis edilemeyebilir veya önceden engellenemeyebilir. Bu nedenle, düşük öncelikli VM'ler tüm işleme işleri için uygun olmayacaktır. Örneğin, görüntülerin işlenmesi saatler sürüyorsa, vm'lerin önceden belirtilmesi nedeniyle bu görüntülerin işlenmesinin kesintiye uğraması ve yeniden başlatılması kabul edilemez.
 
-Düşük öncelikli VM 'lerin özellikleri ve Batch kullanarak bunları yapılandırmanın çeşitli yolları hakkında daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
+Düşük öncelikli VM'lerin özellikleri ve Toplu İş'i kullanarak yapılandırmanın çeşitli yolları hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)
 
-## <a name="jobs-and-tasks"></a>İşler ve görevler
+## <a name="jobs-and-tasks"></a>İş ve görevler
 
-İşler ve görevler için işleme özgü destek gerekmez.  Ana yapılandırma öğesi, gerekli uygulamaya başvurması gereken görev komut satıröğesidir.
-Azure Marketi VM görüntüleri kullanıldığında en iyi yöntem, yolu ve uygulama yürütülebilirini belirtmek için ortam değişkenlerini kullanmaktır.
+İşler ve görevler için işlemeye özgü destek gerekmez.  Ana yapılandırma öğesi, gerekli uygulamaya başvurması gereken görev komut satırıdır.
+Azure Marketi VM görüntüleri kullanıldığında, en iyi yöntem, yürütülebilir yolu ve uygulamayı belirtmek için ortam değişkenlerini kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplu işleme örnekleri için iki öğreticiyi deneyin:
+Toplu işleme örnekleri için iki öğreticideneyin:
 
-* [Azure CLı kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Batch Explorer kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Azure CLI'yi kullanarak oluşturma](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Batch Explorer'ı kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

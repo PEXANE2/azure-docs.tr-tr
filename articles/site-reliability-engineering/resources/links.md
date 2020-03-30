@@ -1,38 +1,38 @@
 ---
-title: SRE bağlantı koleksiyonları ve yemek bağlantıları | Microsoft Docs
-description: Bu kaynaklarla site güvenilirliği Mühendisliği bilginizi genişletin
+title: SRE bağlantı koleksiyonları ve özetleri | Microsoft Dokümanlar
+description: Bu kaynaklarla site güvenilirlik mühendisliği bilginizi genişletin
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
-ms.openlocfilehash: be6e00ba0d20d11f75954d3b9c6b056160a5016b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471260"
 ---
-# <a name="sources-for-site-reliability-engineering-information"></a>Site güvenilirliği mühendislik bilgileri kaynakları
+# <a name="sources-for-site-reliability-engineering-information"></a>Site güvenilirliği mühendisliği bilgileri için kaynaklar
 
-Web üzerinde site güvenilirliği Mühendisliği (SRE) bilgileri için birçok kaynak vardır.
+Web'de site güvenilirliği mühendisliği (SRE) bilgileri için çok, çok sayıda kaynak vardır.
 
-## <a name="curated-link-lists"></a>Seçkin bağlantı listeleri
+## <a name="curated-link-lists"></a>Küratörlü bağlantı listeleri
 
-SRE ve SRE ile ilgili konular için bağlantıların iyi bir listesini aşağıda bulabilirsiniz:
+Burada SRE ve SRE ile ilgili konular için bağlantıların bazı iyi küratörlü listeleri şunlardır:
 
-* [Başar site güvenilirliği Mühendisliği](https://github.com/dastergon/awesome-sre)
-* [Başar site güvenilirliği mühendislik araçları](https://github.com/squadcastHQ/awesome-sre-tools)
-* [Ölçeklenebilir, güvenilir ve Performank büyük ölçekli sistemlerin desenleri](http://awesome-scalability.com)
-* [başar dağıtılmış sistemler](https://github.com/theanalyst/awesome-distributed-systems)
-* [Başar Consensus](https://github.com/dgryski/awesome-consensus)
-* [başar izleme](https://github.com/crazy-canux/awesome-monitoring)
-* [Başar Observability](https://github.com/adriannovegil/awesome-observability)
+* [Awesome Site Güvenilirlik Mühendisliği](https://github.com/dastergon/awesome-sre)
+* [Awesome Site Güvenilirlik Mühendisliği Araçları](https://github.com/SquadcastHub/awesome-sre-tools)
+* [Ölçeklenebilir, Güvenilir ve Performant Büyük Ölçekli Sistemlerin Desenleri](http://awesome-scalability.com)
+* [awesome-dağıtılmış sistemler](https://github.com/theanalyst/awesome-distributed-systems)
+* [Awesome Konsensus](https://github.com/dgryski/awesome-consensus)
+* [awesome izleme](https://github.com/crazy-canux/awesome-monitoring)
+* [Müthiş Gözlemlenebilirlik](https://github.com/adriannovegil/awesome-observability)
 
-## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Site güvenilirliği mühendislerine yönelik haftalık derinlemesine bilgi
+## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Site güvenilirlik mühendisleri ilgi Haftalık özetleri
 
-* [SRE haftalık](https://sreweekly.com) -"SRE haftalık, bir site veya hizmetin mümkün olduğunca sürekli olarak kullanılabilmesini sağlamak için ilgili her şeye ayrılan bir bültendir."
-* [DevOps haftalık](https://www.devopsweekly.com) -"bir haftalık DevOps haberleri, Gareth Rushgrove tarafından size getirilen bir dilim."
-* DevOps-"hype olmadan DevOps News" [olarak bu hafta](https://thisweekindevops.com) .
-* [Kubeweekly](https://kubeweekly.io) -"Kubernetes için haftalık bültenler."
+* [SRE Weekly](https://sreweekly.com) - "SRE Weekly, bir sitenin veya hizmetin mümkün olduğunca tutarlı bir şekilde kullanılabilir olmasını sağlamakla ilgili her şeye adanmış bir bültendir."
+* [Devops Haftalık](https://www.devopsweekly.com) - "Devops haber bir haftalık dilim Gareth Rushgrove tarafından size getirilen."
+* [DevOps Bu Hafta](https://thisweekindevops.com) - "DevOps haber yutturmaca olmadan."
+* [KubeWeekly](https://kubeweekly.io) - "Her şey Kubernetes için haftalık bültenler."

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Active Directory tabanlı Hizmetleri karşılaştırın | Microsoft Docs
-description: Bu genel bakışta, farklı kimlik tekliflerini Active Directory Domain Services, Azure Active Directory ve Azure Active Directory Domain Services karşılaştırırsınız.
+title: Azure'da Etkin Dizin tabanlı hizmetleri karşılaştırın | Microsoft Dokümanlar
+description: Bu genel bakışta, Active Directory Domain Services, Azure Active Directory ve Azure Active Directory Etki Alanı Hizmetleri için farklı kimlik tekliflerini karşılaştırAbilirsiniz.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,105 +11,105 @@ ms.topic: overview
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76544285"
 ---
-# <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
+# <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yöneten Active Directory Etki Alanı Hizmetlerini, Azure Etkin Dizini ve yönetilen Azure Etkin Dizin Etki Alanı Hizmetlerini karşılaştırın
 
-Uygulamaları, Hizmetleri veya cihazları merkezi bir kimliğe erişim sağlamak için Azure 'da Active Directory tabanlı hizmetler kullanmanın üç yaygın yolu vardır. Kimlik çözümlerinde bu seçenek, kuruluşunuzun ihtiyaçları için en uygun dizini kullanma esnekliği sağlar. Örneğin, çoğunlukla mobil cihazları çalıştıran yalnızca bulutta bulunan kullanıcıları yönetiyorsanız, kendi Active Directory Domain Services (AD DS) kimlik çözümünüzü oluşturmak ve çalıştırmak mantıklı olmayabilir. Bunun yerine yalnızca Azure Active Directory kullanabilirsiniz.
+Uygulamaları, hizmetleri veya aygıtları merkezi bir kimliğe erişmek sağlamak için Azure'da Active Directory tabanlı hizmetleri kullanmanın üç yaygın yolu vardır. Kimlik çözümlerindeki bu seçim, kuruluşunuzun gereksinimleri için en uygun dizini kullanma esnekliği sağlar. Örneğin, çoğunlukla yalnızca bulut kullanıcıları mobil aygıtları çalıştıran kullanıcıları yönetiyorsanız, kendi Active Directory Domain Services (AD DS) kimlik çözümünüzü oluşturmak ve çalıştırmak mantıklı olmayabilir. Bunun yerine, Azure Etkin Dizini'ni kullanabilirsiniz.
 
-Üç Active Directory tabanlı kimlik çözümü ortak bir ad ve teknolojiyi paylaşıyorsa, ancak farklı müşteri taleplerini karşılayan hizmetler sağlamak üzere tasarlanmıştır. Yüksek düzeyde, bu kimlik çözümleri ve özellik kümeleri şunlardır:
+Active Directory tabanlı üç kimlik çözümü ortak bir ad ve teknolojiyi paylaşsa da, farklı müşteri taleplerini karşılayan hizmetler sunmak üzere tasarlanmıştır. Yüksek düzeyde, bu kimlik çözümleri ve özellik kümeleri şunlardır:
 
-* **Active Directory Domain Services (AD DS)** -kimlik ve kimlik doğrulama, bilgisayar nesne yönetimi, Grup İlkesi ve güvenler gibi önemli özellikler sağlayan, kurumsal kullanıma hazır Basit Dizin Erişim Protokolü (LDAP) sunucusu.
-    * AD DS, şirket içi BT ortamıyla birçok kuruluşta merkezi bir bileşendir ve çekirdek Kullanıcı hesabı kimlik doğrulaması ve bilgisayar yönetimi özellikleri sağlar.
-* **Azure Active Directory (Azure AD)** -Office 365, Azure Portal veya SaaS uygulamaları gibi kaynaklar için Kullanıcı hesabı ve kimlik doğrulama hizmetleri sağlayan bulut tabanlı kimlik ve mobil cihaz yönetimi.
-    * Azure AD, bulutta yerel olarak çalışabilen kullanıcılara tek bir kimlik sağlamak için şirket içi AD DS ortamıyla eşitlenebilir.
-* **Azure Active Directory Domain Services (Azure AD DS)** -etki alanına katılması, Grup ILKESI, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi tamamen uyumlu geleneksel AD DS özelliklerinin bir alt kümesiyle yönetilen etki alanı Hizmetleri sağlar.
-    * Azure AD DS, kendi şirket içi AD DS ortamıyla eşitlenebilir Azure AD ile tümleşir. Bu özellik merkezi kimlik kullanım örneklerini, bir yükseltme ve kaydırma stratejisinin parçası olarak Azure 'da çalışan geleneksel Web uygulamalarına genişletir.
+* **Active Directory Domain Services (AD DS)** - Kimlik ve kimlik doğrulama, bilgisayar nesnesi yönetimi, grup ilkesi ve güvenler gibi temel özellikleri sağlayan kurumsal kullanıma hazır hafif dizin erişim protokolü (LDAP) sunucusu.
+    * AD DS, şirket içi BT ortamına sahip birçok kuruluşta merkezi bir bileşendir ve temel kullanıcı hesabı kimlik doğrulaması ve bilgisayar yönetimi özellikleri sağlar.
+* **Azure Etkin Dizin (Azure AD)** - Office 365, Azure portalı veya SaaS uygulamaları gibi kaynaklar için kullanıcı hesabı ve kimlik doğrulama hizmetleri sağlayan bulut tabanlı kimlik ve mobil aygıt yönetimi.
+    * Azure AD, bulutta yerel olarak çalışan kullanıcılara tek bir kimlik sağlamak için şirket içi BIR AD DS ortamıyla senkronize edilebilir.
+* **Azure Active Directory Domain Services (Azure AD DS)** - Etki alanı birleştirme, grup ilkesi, LDAP ve Kerberos / NTLM kimlik doğrulaması gibi tam uyumlu geleneksel AD DS özelliklerinin bir alt kümesiyle yönetilen etki alanı hizmetleri sağlar.
+    * Azure AD DS, şirket içi AD DS ortamıyla senkronize edilebilen Azure AD ile tümleşir. Bu yetenek, merkezi kimlik kullanım kılıflarını, kaldırma ve kaydırma stratejisinin bir parçası olarak Azure'da çalışan geleneksel web uygulamalarına genişletir.
 
-Bu genel bakış makalesinde, bu kimlik çözümlerinin birlikte nasıl çalıştığı veya kuruluşunuzun ihtiyaçlarına bağlı olarak bağımsız olarak nasıl kullanılabileceği karşılaştırılmaktadır.
+Bu genel bakış makalesi, bu kimlik çözümlerinin birlikte nasıl çalışabileceğini veya kuruluşunuzun gereksinimlerine bağlı olarak bağımsız olarak nasıl kullanılacağını karşılaştırır ve karşılaştırır.
 
-## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS ve otomatik olarak yönetilen AD DS
+## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS ve kendi kendini yöneten AD DS
 
-Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulama ve hizmetlerinize sahipseniz, bulutta Active Directory Domain Services sağlamanın iki yolu vardır:
+Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişilmesi gereken uygulamalarınız ve hizmetleriniz varsa, bulutta Active Directory Domain Services sağlamanın iki yolu vardır:
 
-* Azure Active Directory Domain Services kullanarak oluşturduğunuz *yönetilen* bir etki alanı (Azure AD DS). Microsoft gerekli kaynakları oluşturur ve yönetir.
-* Sanal makineler (VM 'Ler), Windows Server Konuk işletim sistemi ve Active Directory Domain Services (AD DS) gibi geleneksel kaynakları kullanarak oluşturduğunuz ve yapılandırdığınız, *otomatik olarak yönetilen* bir etki alanı. Daha sonra bu kaynakları yönetmeye devam edersiniz.
+* Azure Etkin Dizin Etki Alanı Hizmetleri (Azure AD DS) kullanarak oluşturduğunuz *yönetilen* bir etki alanı. Microsoft gerekli kaynakları oluşturur ve yönetir.
+* Sanal makineler (VM'ler), Windows Server konuk işletim sistemi ve Active Directory Domain Services (AD DS) gibi geleneksel kaynakları kullanarak oluşturduğunuz ve yapılandırdığınız *kendi kendini yöneten* bir etki alanı. Daha sonra bu kaynakları yönetmeye devam e
 
-Azure AD DS ile çekirdek hizmet bileşenleri, Microsoft tarafından *yönetilen* etki alanı deneyimi olarak dağıtılır ve korunur. VM 'Ler, Windows Server işletim sistemi veya etki alanı denetleyicileri (DC 'Ler) gibi bileşenler için AD DS altyapısını dağıtmayın, yönetmeyin, yamazsınız ve güvende kalmazsınız.
+Azure AD DS ile temel hizmet *bileşenleri, yönetilen* bir etki alanı deneyimi olarak Microsoft tarafından sizin için dağıtılır ve korunur. Sanal Ayarlar, Windows Server OS veya etki alanı denetleyicileri (DCs) gibi bileşenler için AD DS altyapısını dağıtmaz, yönetmez, yamayapmaz ve güvenli hale getiremezsiniz.
 
-Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar.
+Azure AD DS, geleneksel kendi kendini yöneten AD DS ortamına daha küçük bir özellik alt kümesi sağlar ve bu da bazı tasarım ve yönetim karmaşıklığını azaltır. Örneğin, tasarım ve bakım için AD ormanları, etki alanı, siteler ve çoğaltma bağlantıları yoktur. Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişilmesi gereken uygulamalar ve hizmetler için Azure AD DS, en az miktarda yönetim yüküyle yönetilen bir etki alanı deneyimi sağlar.
 
-Kendi kendine yönetilen bir AD DS ortamını dağıtıp çalıştırdığınızda, ilişkili tüm altyapı ve Dizin bileşenlerini korumanız gerekir. Kendi kendine yönetilen bir AD DS ortamıyla ek bakım yükü vardır, ancak daha sonra Şemayı genişletme veya orman güvenleri oluşturma gibi ek görevler gerçekleştirebilirsiniz.
+Kendi kendini yöneten bir AD DS ortamını dağıtıp çalıştırdığınızda, ilişkili tüm altyapı ve dizin bileşenlerini korumanız gerekir. Kendi kendini yöneten BIR AD DS ortamıyla ek bakım yükü vardır, ancak daha sonra şemayı genişletme veya orman güvenleri oluşturma gibi ek görevler yapabilirsiniz.
 
-Bulutta uygulamalara ve hizmetlere kimlik sağlayan, kendi kendine yönetilen bir AD DS ortamı için ortak dağıtım modelleri şunlardır:
+Buluttaki uygulamalara ve hizmetlere kimlik sağlayan kendi kendini yöneten bir AD DS ortamı için yaygın dağıtım modelleri şunlardır:
 
-* **Tek başına bulut AD DS** -Azure VM 'leri etki alanı denetleyicileri olarak ve ayrı bir yalnızca bulut AD DS ortamı oluşturulur. Bu AD DS ortamı, şirket içi AD DS ortamıyla tümleştirilemiyor. Buluttaki VM 'Leri açmak ve yönetmek için farklı bir kimlik bilgileri kümesi kullanılır.
-* **Kaynak ormanı dağıtımı** -Azure VM 'leri etki alanı denetleyicileri olarak yapılandırılır ve var olan bir ormanın parçası olan bir AD DS etki alanı oluşturulur. Bir güven ilişkisi daha sonra şirket içi AD DS ortamına yapılandırılır. Diğer Azure VM 'Leri, bulutta bu kaynak ormanına etki alanına katılabilir. Kullanıcı kimlik doğrulaması, şirket içi AD DS ortamına bir VPN/ExpressRoute bağlantısı üzerinden çalışır.
-* Şirket **içi etki alanını Azure 'A genişletme** -bir Azure sanal ağı, bir VPN/ExpressRoute bağlantısı kullanarak şirket içi ağa bağlanır. Azure VM 'Leri, bu Azure sanal ağına bağlanarak şirket içi AD DS ortamına katılmasına olanak tanır.
-    * Diğer bir seçenek de Azure VM 'Leri oluşturmak ve bunları şirket içi AD DS etki alanından çoğaltma etki alanı denetleyicileri olarak yükseltir. Bu etki alanı denetleyicileri, şirket içi AD DS ortamına bir VPN/ExpressRoute bağlantısı üzerinden çoğaltılır. Şirket içi AD DS etki alanı, Azure 'da etkin bir şekilde genişletilir.
+* **Bağımsız bulutad DS** - Azure VM'ler etki alanı denetleyicileri olarak yapılandırılır ve ayrı, yalnızca buluta özel BIR AD DS ortamı oluşturulur. Bu AD DS ortamı şirket içi AD DS ortamıyla bütünleşmez. Bulutta VM'leri oturum etmek ve yönetmek için farklı bir kimlik bilgileri kümesi kullanılır.
+* **Kaynak ormanı dağıtımı** - Azure VM'leri etki alanı denetleyicileri olarak yapılandırılır ve varolan bir ormanın parçası olan bir AD DS etki alanı oluşturulur. Daha sonra bir güven ilişkisi şirket içi AD DS ortamına yapılandırılır. Diğer Azure VM'leri bu kaynak ormanına bulutta katılabilir. Kullanıcı kimlik doğrulaması, şirket içi AD DS ortamına vpn / ExpressRoute bağlantısı üzerinden çalışır.
+* **Şirket içi etki alanını Azure'a genişletin** - Azure sanal ağı, VPN / ExpressRoute bağlantısını kullanarak şirket içi ağa bağlanır. Azure SANAL M'ler, etki alanı yla şirket içi AD DS ortamına katılmalarını sağlayan bu Azure sanal ağına bağlanır.
+    * Alternatif, Azure VM'leri oluşturmak ve bunları şirket içi AD DS etki alanından çoğaltma etki alanı denetleyicileri olarak tanıtmaktır. Bu etki alanı denetleyicileri, şirket içi AD DS ortamına VPN / ExpressRoute bağlantısı üzerinden çoğalır. Şirket içi AD DS etki alanı etkin bir şekilde Azure'a genişletilir.
 
-Aşağıdaki tabloda, kuruluşunuz için ihtiyacınız olabilecek özelliklerden bazıları ve yönetilen bir Azure AD DS etki alanı veya otomatik olarak yönetilen bir AD DS etki alanı arasındaki farklar özetlenmektedir:
+Aşağıdaki tablo, kuruluşunuz için ihtiyaç duyabileceğiniz bazı özellikleri ve yönetilen bir Azure AD DS etki alanı ile kendi kendini yöneten bir AD DS etki alanı arasındaki farkları özetleyilmektedir:
 
-| **Özellik** | **Azure AD DS** | **Kendi kendine yönetilen AD DS** |
+| **Özellik** | **Azure REKLAM DS** | **Kendi kendini yöneten AD DS** |
 | ----------- |:---------------:|:----------------------:|
 | **Yönetilen hizmet**                               | **&#x2713;** | **&#x2715;** |
-| **Güvenli dağıtımlar**                            | **&#x2713;** | Yönetici, dağıtımın güvenliğini sağlar |
+| **Güvenli dağıtımlar**                            | **&#x2713;** | Yönetici dağıtımı güvenli hale |
 | **DNS sunucusu**                                    | **&#x2713;** (yönetilen hizmet) |**&#x2713;** |
-| **Etki alanı veya kuruluş yöneticisi ayrıcalıkları** | **&#x2715;** | **&#x2713;** |
+| **Etki alanı veya Kurumsal yönetici ayrıcalıkları** | **&#x2715;** | **&#x2713;** |
 | **Etki alanına katılma**                                   | **&#x2713;** | **&#x2713;** |
 | **NTLM ve Kerberos kullanarak etki alanı kimlik doğrulaması** | **&#x2713;** | **&#x2713;** |
-| **Kerberos kısıtlanmış temsili**               | Kaynak tabanlı | Kaynak tabanlı & hesap tabanlı|
+| **Kerberos kısıtlı delegasyon**               | Kaynak tabanlı | Kaynak tabanlı & hesap tabanlı|
 | **Özel OU yapısı**                           | **&#x2713;** | **&#x2713;** |
-| **grup ilkesi**                                  | **&#x2713;** | **&#x2713;** |
+| **Grup İlkesi**                                  | **&#x2713;** | **&#x2713;** |
 | **Şema uzantıları**                             | **&#x2715;** | **&#x2713;** |
-| **AD etki alanı/orman güvenleri**                     | **&#x2713;** (yalnızca tek yönlü giden orman güvenleri) | **&#x2713;** |
+| **AD etki alanı / orman güvenleri**                     | **&#x2713;** (yalnızca tek yönlü giden orman güvenleri) | **&#x2713;** |
 | **Güvenli LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
-| **LDAP okuma**                                     | **&#x2713;** | **&#x2713;** |
-| **LDAP yazma**                                    | **&#x2713;** (yönetilen etki alanı içinde) | **&#x2713;** |
-| **Coğrafi olarak dağıtılan dağıtımlar**                   | **&#x2715;** | **&#x2713;** |
+| **LDAP okuyun**                                     | **&#x2713;** | **&#x2713;** |
+| **LDAP yazmak**                                    | **&#x2713;** (yönetilen etki alanı içinde) | **&#x2713;** |
+| **Coğrafi dağıtılmış dağıtımlar**                   | **&#x2715;** | **&#x2713;** |
 
-## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS ve Azure AD
+## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS ve Azure REKLAM
 
-Azure AD, kuruluş tarafından kullanılan cihazların kimliğini yönetmenizi ve bu cihazlardan şirket kaynaklarına erişimi kontrol etmenizi sağlar. Kullanıcılar, bir kimlik ile cihaz sağlayan kişisel cihazlarını (kendi kendine getir (BYO) modeli) Azure AD ile de kaydedebilir. Daha sonra Azure AD, bir Kullanıcı Azure AD 'ye oturum açtığında ve güvenli kaynaklara erişmek için cihazı kullandığında cihazın kimliğini doğrular. Cihaz, Microsoft Intune gibi mobil cihaz yönetimi (MDM) yazılımı kullanılarak yönetilebilir. Bu yönetim özelliği, gizli kaynaklara erişimi yönetilen ve ilkeyle uyumlu cihazlarla kısıtlamanızı sağlar.
+Azure AD, kuruluş tarafından kullanılan aygıtların kimliğini yönetmenize ve bu aygıtlardan şirket kaynaklarına erişimi denetlemenize olanak tanır. Kullanıcılar ayrıca kişisel cihazlarını (kendi getir (BYO) modelini, aygıta kimlik sağlayan Azure AD'ye kaydedebilirler. Azure AD, bir kullanıcı Azure AD'de kaydolduğunda ve güvenli kaynaklara erişmek için aygıtı kullandığında aygıtın kimliğini doğrular. Cihaz, Microsoft Intune gibi Mobil Aygıt Yönetimi (MDM) yazılımı kullanılarak yönetilebilir. Bu yönetim yeteneği, hassas kaynaklara erişimi yönetilen ve ilke uyumlu aygıtlara sınırlamanızı sağlar.
 
-Geleneksel bilgisayarlar ve dizüstü bilgisayarlar da Azure AD 'ye katılabilir. Bu mekanizma, kullanıcıların şirket kimlik bilgilerini kullanarak cihazda oturum açmalarına izin vermek gibi, kişisel bir cihazı Azure AD 'ye kaydetmenin sunduğu avantajlardan de yararlanır.
+Geleneksel bilgisayarlar ve dizüstü bilgisayarlar da Azure AD'ye katılabilir. Bu mekanizma, kullanıcıların şirket kimlik bilgilerini kullanarak aygıtta oturum açmalarına izin vermek gibi, Azure AD ile kişisel bir aygıt kaydetmenin aynı avantajlarını sunar.
 
-Azure AD 'ye katılmış cihazlar aşağıdaki avantajları sağlar:
+Azure AD'ye katılan aygıtlar size aşağıdaki avantajları sağlar:
 
-* Azure AD tarafından güvenliği sağlanmış uygulamalara çoklu oturum açma (SSO).
-* Kurumsal ilkeyle uyumlu Kullanıcı ayarlarının cihazlar arasında dolaşımını.
-* Kurumsal kimlik bilgileri ile Iş için Windows Mağazası 'na erişin.
-* Iş için Windows Hello.
-* Şirket ilkesiyle uyumlu cihazlardan uygulamalara ve kaynaklara kısıtlı erişim.
+* Azure AD tarafından güvenli uygulamalariçin tek oturum açma (SSO).
+* Aygıtlar arasında kullanıcı ayarlarının kurumsal ilke uyumlu dolaşımı.
+* Kurumsal kimlik bilgilerini kullanarak Windows Mağazası'na kurumsal iş için erişim.
+* İşletmeler için Windows Hello.
+* Şirket ilkesine uygun cihazlardan uygulamalara ve kaynaklara kısıtlı erişim.
 
-Cihazlar, şirket içi AD DS ortamı içeren karma bir dağıtım olmadan veya Azure AD 'ye katılabilir. Aşağıdaki tabloda ortak cihaz sahipliği modelleri ve bunların genellikle bir etki alanına nasıl birleştirilebilecekleri özetlenmektedir:
+Aygıtlar, şirket içi AD DS ortamı nı içeren karma bir dağıtımla veya olmadan Azure AD'ye katılabilir. Aşağıdaki tabloda, ortak aygıt sahipliği modelleri ve bunların genellikle bir etki alanına nasıl birleştirileceği özetlenir:
 
-| **Cihaz türü**                                        | **Cihaz platformları**             | **Mekanizmadır**          |
+| **Cihaz türü**                                        | **Cihaz platformları**             | **Mechanism**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
 | Kişisel cihazlar                                          | Windows 10, iOS, Android, Mac OS | Azure AD kayıtlı    |
-| Kuruluşa ait cihaz, şirket içi AD DS katılmadı | Windows 10                       | Azure AD 'ye katılmış        |
-| Kuruluşa ait cihaz, şirket içi AD DS katıldı  | Windows 10                       | Karma Azure AD 'ye katılmış |
+| Kuruluşa ait aygıt şirket içi AD DS'ye katılmadı | Windows 10                       | Azure AD'ye katılanlar        |
+| Kuruluşa ait aygıt, şirket içi AD DS'ye katıldı  | Windows 10                       | Hibrit Azure AD'ye katılmış |
 
-Azure AD 'ye katılmış veya kayıtlı bir cihazda, Kullanıcı kimlik doğrulaması modern OAuth/OpenID Connect tabanlı protokoller kullanılarak yapılır. Bu protokoller Internet üzerinden çalışacak şekilde tasarlanmıştır. bu nedenle, kullanıcıların şirket kaynaklarına her yerden erişebileceği mobil senaryolar için harika bir seçenektir.
+Azure AD'ye bağlı veya kayıtlı bir aygıtta, kullanıcı kimlik doğrulaması modern OAuth / OpenID Connect tabanlı protokolleri kullanarak gerçekleşir. Bu protokoller internet üzerinden çalışacak şekilde tasarlanmıştır, bu nedenle kullanıcıların kurumsal kaynaklara her yerden eriştiği mobil senaryolar için mükemmeldir.
 
-Azure AD DS katılmış cihazlarda, uygulamalar kimlik doğrulaması için Kerberos ve NTLM protokollerini kullanabilir, bu nedenle, yükseltme ve kaydırma stratejisinin bir parçası olarak Azure VM 'lerinde çalışacak şekilde geçirilen eski uygulamaları destekleyebilir. Aşağıdaki tabloda cihazların nasıl temsil edildiği ve dizinde kimlik doğrulayabileceği fark özetlenmektedir:
+Azure AD DS'nin birleştirilmiş aygıtlarıyla, uygulamalar kimlik doğrulama için Kerberos ve NTLM protokollerini kullanabilir, bu nedenle kaldırma ve kaydırma stratejisinin bir parçası olarak Azure VM'lerinde çalışmak üzere geçirilen eski uygulamaları destekleyebilir. Aşağıdaki tablo, aygıtların nasıl temsil edildiği ne kadar farklı olduğunu özetler ve kendilerini dizine karşı doğrulayabilir:
 
-| **En boy**                      | **Azure AD 'ye katılmış**                                 | **Azure AD DS 'a katılmış**                                                    |
+| **Nitelik**                      | **Azure AD'ye katılım**                                 | **Azure AD DS-birleştirilmiş**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
-| Cihazı denetleyen            | Azure AD                                            | Azure AD DS yönetilen etki alanı                                                |
-| Dizindeki temsili | Azure AD dizinindeki cihaz nesneleri            | Azure AD DS yönetilen etki alanındaki bilgisayar nesneleri                        |
-| Kimlik Doğrulaması                  | OAuth/OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
-| Yönetim                      | Intune gibi mobil cihaz yönetimi (MDM) yazılımı | Grup İlkesi                                                              |
-| Networking (Ağ İletişimi)                      | Internet üzerinden çalışarak                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya eşlenmiş olmalıdır |
-| Harika...                    | Son Kullanıcı mobil veya masaüstü cihazları                  | Azure 'da dağıtılan sunucu VM 'Leri                                              |
+| Cihaz tarafından kontrol            | Azure AD                                            | Azure AD DS yönetilen etki alanı                                                |
+| Dizinde temsil | Azure AD dizinindeki aygıt nesneleri            | Azure AD DS yönetilen etki alanındabilgisayar nesneleri                        |
+| Kimlik doğrulaması                  | OAuth / OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
+| Yönetim                      | Intune gibi Mobil Cihaz Yönetimi (MDM) yazılımı | Grup İlkesi                                                              |
+| Ağ Oluşturma                      | Internet üzerinden çalışır                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya bu ağa bakılmalıdır |
+| Büyük için ...                    | Son kullanıcı mobil veya masaüstü aygıtları                  | Sunucu VM'leri Azure'da dağıtıldı                                              |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD DS kullanmaya başlamak için [Azure Portal kullanarak bir azure AD DS yönetilen etki alanı oluşturun][tutorial-create].
+Azure AD DS'yi kullanmaya başlamak için, [Azure portalını kullanarak Bir Azure AD DS yönetilen etki alanı oluşturun.][tutorial-create]
 
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md

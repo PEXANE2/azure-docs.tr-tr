@@ -1,37 +1,37 @@
 ---
-title: .NET-Azure Işlevlerinde dayanıklı varlıklara Geliştirici Kılavuzu
-description: Azure Işlevleri için Dayanıklı İşlevler Uzantısı ile .NET 'teki dayanıklı varlıklarla çalışma.
+title: .NET - Azure İşlevlerinde Dayanıklı Varlıklar Için Geliştirici Kılavuzu
+description: Azure İşlevler için Dayanıklı İşlevler uzantısı ile .NET'te dayanıklı varlıklarla nasıl çalışılı.
 author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278135"
 ---
-# <a name="developers-guide-to-durable-entities-in-net"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu
+# <a name="developers-guide-to-durable-entities-in-net"></a>.NET'te dayanıklı varlıklar için geliştirici kılavuzu
 
-Bu makalede, örnekler ve genel öneriler de dahil olmak üzere .NET ile dayanıklı varlıkların geliştirilmesi için kullanılabilir arabirimler anlatılmaktadır. 
+Bu makalede, .NET'e sahip dayanıklı varlıklar geliştirmek için mevcut arabirimleri örnekler ve genel tavsiyeler dahil olmak üzere ayrıntılı olarak açıklıyoruz. 
 
-Varlık işlevleri, uygulama durumunu hassas bir varlık koleksiyonu olarak düzenlemenin kolay bir yolunu sunan sunucusuz uygulama geliştiricileri sağlar. Temel kavramlar hakkında daha fazla ayrıntı için bkz. [dayanıklı varlıklar: kavramlar](durable-functions-entities.md) makalesi.
+Varlık işlevleri, sunucusuz uygulama geliştiricilere, ince taneli varlıklar topluluğu olarak uygulama durumunu düzenlemek için kullanışlı bir yol sağlar. Temel kavramlar hakkında daha fazla ayrıntı için [Dayanıklı Varlıklar: Kavramlar](durable-functions-entities.md) makalesine bakın.
 
 Şu anda varlıkları tanımlamak için iki API sunuyoruz:
 
-- **Sınıf tabanlı sözdizimi** , varlıkları ve işlemleri sınıflar ve yöntemler olarak temsil eder. Bu söz dizimi kolayca okunabilir bir kod üretir ve işlemler, arabirimler aracılığıyla tür denetimli bir şekilde çağrılabilir. 
+- **Sınıf tabanlı sözdizimi,** varlıkları ve işlemleri sınıflar ve yöntemler olarak temsil eder. Bu sözdizimi kolayca okunabilir kod üretir ve işlemlerin arabirimler aracılığıyla tür işaretli bir şekilde çağrılmasını sağlar. 
 
-- **İşlev tabanlı sözdizimi** , varlıkları işlev olarak temsil eden bir alt düzey arabirimdir. Varlık işlemlerinin nasıl dağıtıldığı ve varlık durumunun nasıl yönetildiği üzerinde kesin denetim sağlar.  
+- **İşlev tabanlı sözdizimi,** varlıkları işlev olarak temsil eden alt düzey bir arabirimdir. Varlık işlemlerinin nasıl gönderildiği ve varlık durumunun nasıl yönetildiği üzerinde hassas denetim sağlar.  
 
-Bu makalede, uygulamanın çoğu uygulama için daha uygun olması beklendiğinden, temel olarak sınıf tabanlı söz dizimine odaklanılır. Ancak, [işlev tabanlı sözdizimi](#function-based-syntax) , varlık durumu ve işlemleri için kendi soyutlamalarını tanımlamak veya yönetmek isteyen uygulamalar için uygun olabilir. Ayrıca, şu anda sınıf tabanlı sözdizimi tarafından desteklenmeyen genericity gerektiren kitaplıkları uygulamak için uygun olabilir. 
+Bu makalede, çoğu uygulama için daha uygun olmasını beklediğimiz için öncelikle sınıf tabanlı sözdizimine odaklanın. Ancak, [işlev tabanlı sözdizimi,](#function-based-syntax) varlık durumu ve işlemleri için kendi soyutlamalarını tanımlamak veya yönetmek isteyen uygulamalar için uygun olabilir. Ayrıca, genellik gerektiren kitaplıkları uygulamak için uygun olabilir, sınıf tabanlı sözdizimi tarafından desteklenmeyen. 
 
 > [!NOTE]
-> Sınıf tabanlı sözdizimi yalnızca işlev tabanlı sözdiziminin üzerinde bulunan bir katmandır, bu nedenle her iki çeşit de aynı uygulamadaki birbirlerinin yerine kullanılabilir. 
+> Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üstündeki bir katmandır, bu nedenle her iki türde de aynı uygulamada birbirinin yerine kullanılabilir. 
  
-## <a name="defining-entity-classes"></a>Varlık sınıfları tanımlama
+## <a name="defining-entity-classes"></a>Varlık sınıflarını tanımlama
 
-Aşağıdaki örnek, tamsayı türünde tek bir değer depolayan `Counter` varlığının bir uygulamasıdır ve `Add`, `Reset`, `Get`ve `Delete`dört işlem sunar.
+`Counter` Aşağıdaki örnek, tür tamsayı tek bir değer depolar ve dört işlem `Add` `Reset`, `Get`, `Delete`, ve .
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -67,38 +67,38 @@ public class Counter
 }
 ```
 
-`Run` işlevi, sınıf tabanlı sözdiziminin kullanılması için gereken ortak içeriği içerir. *Statik* bir Azure işlevi olmalıdır. Varlık tarafından işlenen her bir işlem iletisi için bir kez yürütülür. `DispatchAsync<T>` çağrıldığında ve varlık bellekte yoksa, `T` türünde bir nesne oluşturur ve alanlarını depolama alanında bulunan son kalıcı JSON (varsa) olarak doldurur. Ardından, eşleşen ada sahip yöntemi çağırır.
+İşlev, `Run` sınıf tabanlı sözdizimini kullanmak için gereken ortak plakayı içerir. *Statik* bir Azure İşlevi olmalıdır. Varlık tarafından işlenen her işlem iletisi için bir kez yürütür. Çağrıldığında `DispatchAsync<T>` ve varlık bellekte zaten yoksa, bir tür `T` nesnesi inşa eder ve depolamada bulunan son kalıcı JSON'dan (varsa) alanlarını doldurur. Sonra eşleşen adı ile yöntem çağırır.
 
 > [!NOTE]
-> Sınıf tabanlı bir varlığın durumu, varlık bir işlemi işlemden önce **örtük olarak oluşturulur** ve `Entity.Current.DeleteState()`çağırarak açıkça bir işlemde **silinebilir** .
+> Sınıf tabanlı bir varlığın durumu, varlık bir işlemi işleyinceden önce **örtülü olarak oluşturulur** ve bir işlemde '' çağırılarak `Entity.Current.DeleteState()`açıkça **silinebilir.**
 
-### <a name="class-requirements"></a>Sınıf gereksinimleri
+### <a name="class-requirements"></a>Sınıf Gereksinimleri
  
-Varlık sınıfları, özel süper sınıflar, arabirimler veya öznitelikler gerektirmeyen POCOs (düz eski CLR nesneleri). Ancak
+Varlık sınıfları, özel üst sınıflar, arabirimler veya öznitelikler gerektirmeyen POCOs 'lar (düz eski CLR nesneleri) içerir. Ancak:
 
-- Sınıf oluşturulabilir olmalıdır (bkz. [varlık oluşturma](#entity-construction)).
-- Sınıf JSON ile seri hale getirilebilir olmalıdır (bkz. [varlık serileştirmesi](#entity-serialization)).
+- Sınıf inşa edilebilir olmalıdır (bkz. [Varlık yapısı).](#entity-construction)
+- Sınıf JSON serializable olmalıdır (Bkz. [Varlık serileştirme).](#entity-serialization)
 
-Ayrıca, bir işlem olarak çağrılması amaçlanan her yöntemin ek gereksinimleri karşılaması gerekir:
+Ayrıca, bir işlem olarak çağrılması amaçlanan herhangi bir yöntem ek gereksinimleri karşılamalıdır:
 
-- Bir işlem en fazla bir bağımsız değişkene sahip olmalı ve herhangi bir aşırı yükleme veya genel tür bağımsız değişkeni içermemelidir.
-- Arabirim kullanarak bir Orchestration 'tan çağrılması amaçlanan bir işlemin `Task` veya `Task<T>`döndürmesi gerekir.
-- Bağımsız değişkenler ve dönüş değerleri seri hale getirilebilir değerler veya nesneler olmalıdır.
+- Bir işlem en fazla bir bağımsız değişkene sahip olmalıdır ve herhangi bir aşırı yükleme veya genel tür bağımsız değişkenleri olmamalıdır.
+- Bir arabirim kullanarak bir orkestrasyondan çağrılması gereken bir işlem geri dönmelidir `Task` veya `Task<T>`.
+- Bağımsız değişkenler ve iade değerleri serileştirilebilir değerler veya nesneler olmalıdır.
 
-### <a name="what-can-operations-do"></a>İşlemler ne yapabilir?
+### <a name="what-can-operations-do"></a>Operasyonlar ne yapabilir?
 
-Tüm varlık işlemleri varlık durumunu okuyabilir ve güncelleştirebilir ve durumdaki değişiklikler otomatik olarak depolama için kalıcı hale getirilir. Üstelik, işlemler, tüm Azure Işlevleri için genel limitlerde dış g/ç veya diğer hesaplamalar gerçekleştirebilir.
+Tüm varlık işlemleri varlık durumunu okuyabilir ve güncelleyebilir ve durumdaki değişiklikler otomatik olarak depolamaya devam edilir. Ayrıca, işlemler tüm Azure İşlevlerinin ortak genel sınırları dahilinde harici G/Ç veya diğer hesaplamaları gerçekleştirebilir.
 
-İşlemler ayrıca `Entity.Current` bağlamı tarafından belirtilen işlevlere erişebilir:
+İşlemler ayrıca bağlam tarafından `Entity.Current` sağlanan işlevsellik erişimine de sahiptir:
 
-* `EntityName`: Şu anda yürütülmekte olan varlığın adı.
-* `EntityKey`: Şu anda yürütülmekte olan varlığın anahtarı.
-* `EntityId`: Şu anda yürütülmekte olan varlığın KIMLIĞI (ad ve anahtar içerir).
+* `EntityName`: şu anda icra eden varlığın adı.
+* `EntityKey`: şu anda çalıştırılamakta olan varlığın anahtarı.
+* `EntityId`: şu anda çalıştırılamakta olan varlığın kimliği (ad ve anahtar içerir).
 * `SignalEntity`: bir varlığa tek yönlü bir ileti gönderir.
-* `CreateNewOrchestration`: yeni bir düzenleme başlatır.
-* `DeleteState`: Bu varlığın durumunu siler.
+* `CreateNewOrchestration`: yeni bir orkestrasyon başlatır.
+* `DeleteState`: bu varlığın durumunu siler.
 
-Örneğin, sayaç varlığı 100 'e ulaştığında bir düzenleme başlatan ve varlık KIMLIĞINI bir giriş bağımsız değişkeni olarak geçirdiğinde, sayaç varlığını değiştirebiliriz:
+Örneğin, sayaç 100'e ulaştığında ve varlık kimliğini giriş bağımsız değişkeni olarak geçirince bir düzenleme başlatabilmesi için karşı varlığı değiştirebiliriz:
 
 ```csharp
     public void Add(int amount) 
@@ -111,16 +111,16 @@ Tüm varlık işlemleri varlık durumunu okuyabilir ve güncelleştirebilir ve d
     }
 ```
 
-## <a name="accessing-entities-directly"></a>Varlıklara doğrudan erişme
+## <a name="accessing-entities-directly"></a>Varlıklara doğrudan erişim
 
-Sınıf tabanlı varlıklara, varlık ve onun işlemleri için açık dize adları kullanılarak doğrudan erişilebilir. Aşağıda bazı örnekler sunuyoruz; temel kavramların daha derin bir açıklaması (sinyaller ve çağrılar gibi) için bkz. [erişim varlıkları](durable-functions-entities.md#access-entities)içindeki tartışma. 
+Sınıf tabanlı varlıklar, varlık ve işlemleri için açık dize adlarını kullanarak doğrudan erişilebilir. Aşağıda bazı örnekler vermekteyiz; temel kavramların daha derin bir açıklaması için (sinyaller ve aramalar gibi) [Access varlıklarındaki](durable-functions-entities.md#access-entities)tartışmaya bakın. 
 
 > [!NOTE]
-> Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi](#accessing-entities-through-interfaces)öneririz.
+> Mümkün olduğunda, daha fazla tür denetimi sağladığından, [varlıklara arabirimler aracılığıyla erişmenizi](#accessing-entities-through-interfaces)öneririz.
 
-### <a name="example-client-signals-entity"></a>Örnek: istemci sinyalleri varlığı
+### <a name="example-client-signals-entity"></a>Örnek: istemci varlık sinyalleri
 
-Aşağıdaki Azure http Işlevi, REST kurallarını kullanarak bir SILME işlemi uygular. Anahtar, URL yolunda geçilen sayaç varlığına bir silme sinyali gönderir.
+Aşağıdaki Azure Http İşlevi, REST kurallarını kullanarak bir DELETE işlemi uygular. Anahtarı URL yolunda geçirilen karşı varlığa silme sinyali gönderir.
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -137,7 +137,7 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 
 ### <a name="example-client-reads-entity-state"></a>Örnek: istemci varlık durumunu okur
 
-Aşağıdaki Azure http Işlevi, REST kurallarını kullanarak bir GET işlemi uygular. Anahtar, URL yolunda geçilen sayaç varlığının geçerli durumunu okur.
+Aşağıdaki Azure Http İşlevi, REST kurallarını kullanarak bir GET işlemi uygular. AnahtarURL yolunda geçirilen karşı varlığın geçerli durumunu okur.
 
 ```csharp
 [FunctionName("GetCounter")]
@@ -153,11 +153,11 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> `ReadEntityStateAsync` tarafından döndürülen nesne yalnızca yerel bir kopyadır, diğer bir deyişle, bir önceki zaman noktasından varlık durumunun bir anlık görüntüsüdür. Özellikle, eski olabilir ve bu nesnenin değiştirilmesi gerçek varlık üzerinde hiçbir etkiye sahip değildir. 
+> Döndürülen `ReadEntityStateAsync` nesne yalnızca yerel bir kopyadır, yani zaman içinde daha önceki bir noktadan varlık durumunun anlık görüntüsüdür. Özellikle, eski olabilir ve bu nesneyi değiştirmenin gerçek varlık üzerinde hiçbir etkisi yoktur. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity"></a>Örnek: düzenleme ilk sinyalleri, sonra varlığı çağırır
+### <a name="example-orchestration-first-signals-then-calls-entity"></a>Örnek: orkestrasyon ilk sinyalleri, sonra varlık çağırır
 
-Aşağıdaki düzenleme bir sayaç varlığına onu arttırmasını bildirir ve ardından en son değerini okumak için aynı varlığı çağırır.
+Aşağıdaki orkestrasyon, karşı bir varlığın artışını bildirir ve ardından aynı varlığı en son değerini okumaya çağırır.
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -176,11 +176,11 @@ public static async Task<int> Run(
 }
 ```
 
-## <a name="accessing-entities-through-interfaces"></a>Arabirimler aracılığıyla varlıklara erişme
+## <a name="accessing-entities-through-interfaces"></a>Arayüzler aracılığıyla varlıklara erişim
 
-Arabirimler, oluşturulan proxy nesneleri aracılığıyla varlıklara erişmek için kullanılabilir. Bu yaklaşım, bir işlemin ad ve bağımsız değişken türünün uygulanmış ile eşleşmesini sağlar. Mümkün olduğunda varlıklara erişmek için arabirimler kullanmanızı öneririz.
+Arabirimler, oluşturulan proxy nesneleri aracılığıyla varlıklara erişmek için kullanılabilir. Bu yaklaşım, bir işlemin ad ve bağımsız değişken türünün uygulananla eşleşmesini sağlar. Varlıklara mümkün olduğunca erişmek için arabirimleri kullanmanızı öneririz.
 
-Örneğin, sayaç örneğini şu şekilde değiştirebiliriz:
+Örneğin, sayaç örneğini aşağıdaki gibi değiştirebiliriz:
 
 ```csharp
 public interface ICounter
@@ -197,13 +197,13 @@ public class Counter : ICounter
 }
 ```
 
-Varlık sınıfları ve varlık arabirimleri, [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)tarafından oluşturulan graıns ve gres arabirimine benzerdir. Dayanıklı varlıklar ve Orleans arasındaki benzerlikler ve farklar hakkında daha fazla bilgi için bkz. [sanal aktörler Ile karşılaştırma](durable-functions-entities.md#comparison-with-virtual-actors).
+Varlık sınıfları ve varlık arabirimleri [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)tarafından popüler taneler ve tahıl arabirimleri benzer. Dayanıklı Varlıklar ve Orleans arasındaki benzerlikler ve farklılıklar hakkında daha fazla bilgi için, [bkz.](durable-functions-entities.md#comparison-with-virtual-actors)
 
-Tür denetimi sağlamanın yanı sıra, arabirimler uygulamanın içindeki kaygıları daha iyi bir şekilde ayırmada yararlı olur. Örneğin, bir varlık birden çok arabirim uygulayabileceğinizden, tek bir varlık birden çok rol sunabilir. Ayrıca, bir arabirim birden çok varlık tarafından uygulanmayabilir, ancak genel iletişim desenleri yeniden kullanılabilir kitaplıklar olarak uygulanabilir.
+Tür denetimi sağlamanın yanı sıra, arabirimler uygulama içindeki endişelerin daha iyi ayrılması için yararlıdır. Örneğin, bir varlık birden çok arabirim uygulayabildiği için, tek bir varlık birden çok rol sunabilir. Ayrıca, bir arabirim birden fazla varlık tarafından uygulanabileceğinden, genel iletişim kalıpları yeniden kullanılabilir kitaplıklar olarak uygulanabilir.
 
-### <a name="example-client-signals-entity-through-interface"></a>Örnek: istemci, varlığa arabirim aracılığıyla işaret eder
+### <a name="example-client-signals-entity-through-interface"></a>Örnek: istemci, varlığı arabirim üzerinden bildirir
 
-İstemci kodu, `TEntityInterface`uygulayan varlıklara sinyal göndermek için `SignalEntityAsync<TEntityInterface>` kullanabilir. Örnek:
+İstemci `SignalEntityAsync<TEntityInterface>` kodu, uygulayan `TEntityInterface`varlıklara sinyal göndermek için kullanabilir. Örnek:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -218,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-Bu örnekte `proxy` parametresi, `Delete` çağrısını dahili olarak bir sinyaline çeviren `ICounter`dinamik olarak üretilmiş bir örneğidir.
+Bu örnekte, `proxy` parametre dinamik olarak oluşturulan `ICounter`bir örneğidir , dahili bir sinyal içine `Delete` çağrı çevirir.
 
 > [!NOTE]
-> `SignalEntityAsync` API 'Leri yalnızca tek yönlü işlemler için kullanılabilir. Bir işlem `Task<T>`döndürse bile, `T` parametresinin değeri her zaman gerçek sonuç değil null veya `default`olur.
-Örneğin, hiçbir değer döndürülmediğinden `Get` işlemini işaret etmek mantıklı değildir. Bunun yerine, istemciler sayaç durumuna doğrudan erişmek için `ReadStateAsync` ya da `Get` işlemini çağıran bir Orchestrator işlevini başlatabilir. 
+> API'ler `SignalEntityAsync` yalnızca tek yönlü işlemler için kullanılabilir. Bir işlem dönse `Task<T>`bile, `T` parametrenin değeri `default`her zaman null veya , gerçek sonuç değil olacaktır.
+Örneğin, hiçbir değer döndürülmediği için `Get` işlemi sinyalvermek mantıklı değildir. Bunun yerine, istemciler sayaç durumuna doğrudan erişmek `ReadStateAsync` için kullanabilir veya `Get` işlemi çağıran bir orchestrator işlevi başlatabilir. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Örnek: düzenleme ilk sinyalleri, sonra da varlığı ara sunucu aracılığıyla çağırır
+### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Örnek: orkestrasyon ilk sinyalleri, sonra proxy üzerinden varlık çağırır
 
-Bir varlığı bir düzenleme içinden çağırmak veya sinyal almak için, varlık için bir ara sunucu oluşturmak üzere arabirim türü ile birlikte `CreateEntityProxy` kullanılabilir. Bu proxy daha sonra, işlemleri çağırmak veya sinyal almak için kullanılabilir:
+Bir varlığı bir orkestrasyon içinden çağırmak veya işaret etmek için, `CreateEntityProxy` varlık için bir proxy oluşturmak için arabirim türüyle birlikte kullanılabilir. Bu proxy daha sonra arama veya sinyal işlemleri için kullanılabilir:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -246,39 +246,39 @@ public static async Task<int> Run(
 }
 ```
 
-Örtük olarak, `void` döndüren tüm işlemler sinyal alınır ve `Task` veya `Task<T>` döndüren işlemler çağrılır. Bu varsayılan davranışı değiştirebilir ve `SignalEntity<IInterfaceType>` yöntemini açıkça kullanarak görevi döndürseler bile sinyal işlemleri olabilir.
+Dolaylı olarak, dönen `void` tüm işlemler sinyal verilir ve `Task` `Task<T>` geri dönen veya çağrılan işlemler. Bu varsayılan davranışı değiştirebilir ve yöntemi açıkça kullanarak Görev'i `SignalEntity<IInterfaceType>` döndürseler bile sinyal işlemleri ne kadar önemli olur.
 
 ### <a name="shorter-option-for-specifying-the-target"></a>Hedefi belirtmek için daha kısa seçenek
 
-Bir arabirim kullanarak bir varlığı çağırırken veya sinyalde olduğunda, ilk bağımsız değişken hedef varlığı belirtmelidir. Hedef, varlık KIMLIĞI belirtilerek veya varlığı uygulayan tek bir sınıfın olması durumunda yalnızca varlık anahtarı olarak belirtilebilir.
+Arabirimi kullanarak bir varlığı ararken veya işaret ederken, ilk bağımsız değişken hedef varlığı belirtmelidir. Hedef, varlık kimliğini belirterek veya varlığı uygulayan tek bir sınıfın olduğu durumlarda, sadece varlık anahtarı belirtilerek belirtilebilir:
 
 ```csharp
 context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-Yalnızca varlık anahtarı belirtilirse ve çalışma zamanında benzersiz bir uygulama bulunamazsa, `InvalidOperationException` oluşturulur. 
+Yalnızca varlık anahtarı belirtilirse ve çalışma zamanında benzersiz bir `InvalidOperationException` uygulama bulunamazsa, atılır. 
 
-### <a name="restrictions-on-entity-interfaces"></a>Varlık arabirimleriyle ilgili kısıtlamalar
+### <a name="restrictions-on-entity-interfaces"></a>Varlık arabirimlerindeki kısıtlamalar
 
-Her zamanki gibi, tüm parametre ve dönüş türleri JSON ile seri hale getirilebilir olmalıdır. Aksi takdirde, serileştirme özel durumları çalışma zamanında oluşturulur.
+Her zamanki gibi, tüm parametre ve iade türleri JSON-serializable olmalıdır. Aksi takdirde, serileştirme özel durumları çalışma zamanında atılır.
 
-Ayrıca bazı ek kurallar uyguladık:
+Ayrıca bazı ek kurallar da uyguluyoruz:
 * Varlık arabirimleri yalnızca yöntemleri tanımlamalıdır.
 * Varlık arabirimleri genel parametreler içermemelidir.
-* Varlık Arabirim yöntemlerinin birden fazla parametresi olmamalıdır.
-* Varlık arabirimi yöntemlerinin `void`, `Task`veya `Task<T>` döndürmesi gerekir 
+* Varlık arabirimi yöntemlerinin birden fazla parametresi olmamalıdır.
+* Varlık arabirimi `void`yöntemleri, `Task`veya döndürme`Task<T>` 
 
-Bu kurallardan herhangi biri ihlal edilirse, arabirim `SignalEntity` veya `CreateProxy`için tür bağımsız değişkeni olarak kullanıldığında çalışma zamanında bir `InvalidOperationException` oluşturulur. Özel durum iletisi hangi kuralın bozulduğunu açıklar.
+Bu kurallardan herhangi biri ihlal `InvalidOperationException` edilirse, arabirim bir tür bağımsız değişkeni `SignalEntity` `CreateProxy`olarak kullanıldığında çalışma zamanında bir atılmıştır veya . Özel durum iletisi hangi kuralın kırıldığını açıklar.
 
 > [!NOTE]
-> `void` döndüren arabirim yöntemleri yalnızca sinyal alabilir (tek yönlü), çağrılmaz (iki yönlü). `Task` veya `Task<T>` döndüren arabirim yöntemleri çağrılabilir veya signıd olabilir. Çağrılırsa, işlemin sonucunu döndürür ya da işlem tarafından oluşturulan özel durumları yeniden atar. Ancak, imzalaymadığında, işlemden gerçek sonucu veya özel durumu döndürmez, ancak yalnızca varsayılan değer.
+> Dönen `void` arabirim yöntemleri yalnızca sinyal (tek yönlü), çağrılabilir (iki yönlü). Arabirim yöntemleri `Task` `Task<T>` geri döner veya çağrılabilir veya sinyal verebilir. Çağrıldığı takdirde, işlemin sonucunu döndürer veya işlem tarafından atılan özel durumları yeniden atarlar. Ancak, sinyal verildiğinde, işlemden gerçek sonucu veya özel durumu değil, sadece varsayılan değeri döndürürler.
 
 ## <a name="entity-serialization"></a>Varlık serileştirme
 
-Bir varlığın durumu durda kalıcı olduğundan, varlık sınıfı seri hale getirilebilir olmalıdır. Dayanıklı İşlevler çalışma zamanı, bu amaçla, serileştirme ve seri durumdan çıkarma işlemini denetlemek için bir dizi ilkeyi ve özniteliği destekleyen [JSON.net](https://www.newtonsoft.com/json) kitaplığını kullanır. En yaygın olarak C# kullanılan veri türleri (diziler ve koleksiyon türleri dahil) zaten serileştirilebilir olur ve dayanıklı varlıkların durumunu tanımlamak için kolayca kullanılabilir.
+Bir varlığın durumu kalıcı olduğundan, varlık sınıfı serileştirilebilir olmalıdır. Dayanıklı Işlevler çalışma süresi, serileştirme ve deserialization işlemini denetlemek için bir dizi ilke ve öznitelikleri destekleyen bu amaç için [Json.NET](https://www.newtonsoft.com/json) kitaplığını kullanır. En sık kullanılan C# veri türleri (diziler ve koleksiyon türleri dahil) zaten serileştirilebilir ve dayanıklı varlıkların durumunu tanımlamak için kolayca kullanılabilir.
 
-Örneğin, Json.NET, aşağıdaki sınıfı kolayca serileştirilir ve seri durumdan çıkarkaydedebilir:
+Örneğin, Json.NET aşağıdaki sınıfı kolayca serileştirebilir ve deserialize edebilir:
 
 ```csharp
 [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -307,13 +307,13 @@ public class User
 }
 ```
 
-### <a name="serialization-attributes"></a>Serileştirme öznitelikleri
+### <a name="serialization-attributes"></a>Serileştirme Öznitelikleri
 
-Yukarıdaki örnekte, temeldeki Serileştirmeyi daha görünür hale getirmek için birkaç öznitelik eklemeyi tercih ediyoruz:
-- Sınıfın seri hale getirilebilir olması gerektiğini ve yalnızca JSON özellikleri olarak açıkça işaretlenmiş üyeleri kalıcı hale getirmek için `[JsonObject(MemberSerialization.OptIn)]` ile sınıfa açıklama eklenir.
--  Bir alanın kalıcı varlık durumunun bir parçası olduğunu ve JSON gösteriminde kullanılacak özellik adını belirtmesini hatırlatmak için `[JsonProperty("name")]` ile kalıcı olacak alanlara açıklama ekleyeceğiz.
+Yukarıdaki örnekte, temel serileştirmeyi daha görünür hale getirmek için birkaç öznitelik eklemeyi seçtik:
+- Sınıfın serileştirilebilir olması gerektiğini `[JsonObject(MemberSerialization.OptIn)]` hatırlatmak ve yalnızca JSON özellikleri olarak açıkça işaretlenmiş üyeleri kalıcı hale getirmek için sınıfa açıklama ekine işaret ediyoruz.
+-  Bir alanın kalıcı varlık durumunun bir `[JsonProperty("name")]` parçası olduğunu bize hatırlatmak ve JSON gösteriminde kullanılacak özellik adını belirtmek için kalıcı olması gereken alanlara açıklama ekine yer ediyoruz.
 
-Ancak, bu öznitelikler gerekli değildir; Json.NET ile çalıştıkları sürece diğer kurallara veya özniteliklere izin verilir. Örneğin, birisi `[DataContract]` öznitelikleri veya hiç öznitelik kullanamaz:
+Ancak, bu öznitelikler gerekli değildir; diğer sözleşmelere veya niteliklere, Json.NET çalıştıkları sürece izin verilir. Örneğin, bir öznitelikleri kullanabilirsiniz, `[DataContract]` ya da hiç öznitelikleri:
 
 ```csharp
 [DataContract]
@@ -331,29 +331,29 @@ public class Counter
 }
 ```
 
-Varsayılan olarak, sınıfın adı JSON gösteriminin bir parçası *olarak depolanmaz:* Yani, varsayılan ayar olarak `TypeNameHandling.None` kullandık. Bu varsayılan davranış, `JsonObject` veya `JsonProperty` öznitelikleri kullanılarak geçersiz kılınabilir.
+Varsayılan olarak, sınıfın adı JSON gösteriminin bir parçası olarak *depolanmaz:* yani varsayılan ayar olarak kullanırız. `TypeNameHandling.None` Bu varsayılan davranış kullanılarak veya `JsonObject` `JsonProperty` öznitelikleri geçersiz kılınabilir.
 
 ### <a name="making-changes-to-class-definitions"></a>Sınıf tanımlarında değişiklik yapma
 
-Depolanan JSON nesnesi artık yeni sınıf tanımıyla eşleşmemesinden, bir uygulama çalıştırıldıktan sonra bir sınıf tanımında değişiklik yapıldığında bazı dikkatli olunması gerekir. Yine de, `JsonConvert.PopulateObject`tarafından kullanılan seri kaldırma işlemini anladığı sürece, değişen veri biçimleri ile doğru bir şekilde uğraşmak mümkündür.
+Depolanan JSON nesnesi artık yeni sınıf tanımıyla eşleşmeyebileceğinden, bir uygulama çalıştırıldıktan sonra sınıf tanımında değişiklik yaparken bazı bakımlar gereklidir. Yine de, bir tarafından `JsonConvert.PopulateObject`kullanılan deserialization işlemi anlar sürece veri biçimleri değişen ile doğru başa çıkmak genellikle mümkündür.
 
-Örneğin, bazı değişiklik örnekleri ve bunların etkileri aşağıda verilmiştir:
+Örneğin, değişikliklerin bazı örnekleri ve bunların etkisi aşağıda verilmiştir:
 
-1. Depolanan JSON 'da mevcut olmayan yeni bir özellik eklenirse, varsayılan değerini varsayar.
-1. Depolanan JSON 'da bulunan bir özellik kaldırılırsa, önceki içerik kaybedilir.
-1. Bir özellik yeniden adlandırılırsa, efekt eskisini kaldırmış ve yeni bir tane ekliyor gibi olur.
-1. Bir özelliğin türü, depolanan JSON 'dan daha sonra seri durumdan çıkarılmayacak şekilde değiştirilirse, bir özel durum oluşturulur.
-1. Bir özelliğin türü değiştirilirse, ancak depolanan JSON 'dan seri durumdan çıkarılabiliyorsa, bunu olur.
+1. Depolanan JSON'da bulunmayan yeni bir özellik eklenirse, varsayılan değerini varsayar.
+1. Depolanan JSON'da bulunan bir özellik kaldırılırsa, önceki içerik kaybolur.
+1. Bir özelliğin adı yeniden adlandırıldıysa, efekt eskisini kaldırıp yenisini eklemek gibidir.
+1. Bir özelliğin türü, depolanan JSON'dan artık deserialed edilemeyecek şekilde değiştirilirse, bir özel durum atılır.
+1. Bir özelliğin türü değiştirilirse, ancak yine de depolanan JSON'dan deserialed edilebilirse, bunu yapar.
 
-Json.NET davranışını özelleştirmek için kullanılabilecek birçok seçenek vardır. Örneğin, saklı JSON sınıfta mevcut olmayan bir alan içeriyorsa bir özel durum zorlamak için `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`özniteliğini belirtin. Rastgele biçimlerde depolanmış JSON okuyabilen seri kaldırma için özel kod yazmak da mümkündür.
+Json.NET davranışını özelleştirmek için birçok seçenek vardır. Örneğin, depolanan JSON sınıfta bulunmayan bir alan içeriyorsa, bir özel durum `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`zorlamak için özniteliği belirtin. Ayrıca, rasgele biçimlerde depolanan JSON'u okuyabilen deserialization için özel kod yazmak da mümkündür.
 
-## <a name="entity-construction"></a>Varlık oluşturma
+## <a name="entity-construction"></a>Varlık inşaatı
 
-Bazen varlık nesnelerinin nasıl oluşturulduğu hakkında daha fazla denetime sahip olmak istiyoruz. Artık varlık nesneleri oluştururken varsayılan davranışı değiştirmek için birkaç seçenek açıklıyoruz. 
+Bazen varlık nesnelerinin nasıl oluşturuldukları üzerinde daha fazla denetim uygulamak isteriz. Şimdi varlık nesneleri inşa ederken varsayılan davranışı değiştirmek için çeşitli seçenekler açıklar. 
 
 ### <a name="custom-initialization-on-first-access"></a>İlk erişimde özel başlatma
 
-Bazen, hiçbir zaman erişilemeyen veya silinen bir varlığa bir işlem göndermeden önce bazı özel başlatma işlemleri gerçekleştirmeniz gerekir. Bu davranışı belirtmek için, `DispatchAsync`önce bir koşullu eklenebilir:
+Bazen, daha önce erişilememiş veya silinmiş bir varlığa bir işlem göndermeden önce bazı özel başlatma gerçekleştirmemiz gerekir. Bu davranışı belirtmek için, bir önce `DispatchAsync`koşullu ekleyebilirsiniz:
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -369,9 +369,9 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="bindings-in-entity-classes"></a>Varlık sınıflarında bağlamalar
 
-Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. `DispatchAsync<T>` geçirilen herhangi bir nesne, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
+Normal işlevlerin aksine, varlık sınıfı yöntemleri giriş ve çıktı bağlamalarına doğrudan erişime sahip değildir. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanıp `DispatchAsync<T>` yönteme geçirilmelidir. Geçirilen `DispatchAsync<T>` tüm nesneler, bağımsız değişken olarak otomatik olarak varlık sınıfı oluşturucuya aktarılır.
 
-Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob-input.md) `CloudBlobContainer` başvurusunun sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
+Aşağıdaki örnek, `CloudBlobContainer` [blob giriş bağlamasından](../functions-bindings-storage-blob-input.md) bir başvurunun sınıf tabanlı bir varlık için nasıl kullanılabileceğini gösterir.
 
 ```csharp
 public class BlobBackedEntity
@@ -398,11 +398,11 @@ public class BlobBackedEntity
 }
 ```
 
-Azure Işlevleri 'ndeki bağlamalar hakkında daha fazla bilgi için bkz. [Azure Işlevleri Tetikleyicileri ve bağlamaları](../functions-triggers-bindings.md) belgeleri.
+Azure İşlevler'deki bağlamalar hakkında daha fazla bilgi için [Azure İşi Tetikleyicileri ve Bağlamalar](../functions-triggers-bindings.md) belgelerine bakın.
 
-### <a name="dependency-injection-in-entity-classes"></a>Varlık sınıflarında bağımlılık ekleme
+### <a name="dependency-injection-in-entity-classes"></a>Varlık sınıflarında bağımlılık enjeksiyonu
 
-Varlık sınıfları [Azure Işlevleri bağımlılığı ekleme](../functions-dotnet-dependency-injection.md)işlemini destekler. Aşağıdaki örnekte, bir `IHttpClientFactory` hizmetinin sınıf tabanlı bir varlığa nasıl kaydedileceği gösterilmektedir.
+Varlık sınıfları [Azure İşlevlerini Bağımlılık Enjeksiyonu'na](../functions-dotnet-dependency-injection.md)destekler. Aşağıdaki örnek, bir `IHttpClientFactory` hizmetin sınıf tabanlı bir varlığa nasıl kaydedilebildiğini gösterir.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -419,7 +419,7 @@ namespace MyNamespace
 }
 ```
 
-Aşağıdaki kod parçacığında, eklenen hizmetin varlık sınıfınıza nasıl dahil olduğu gösterilmektedir.
+Aşağıdaki parçacık, enjekte edilen hizmetin varlık sınıfınıza nasıl dahil edilebildiğini gösterir.
 
 ```csharp
 public class HttpEntity
@@ -447,16 +447,16 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> Serileştirme ile ilgili sorunlardan kaçınmak için, eklenen değerleri Serileştirmeden depolayabileceği alanları dışdığınızdan emin olun.
+> Serileştirme yle ilgili sorunları önlemek için, enjekte edilen değerleri serileştirmeden depolamak için gereken alanları hariç tutun.
 
 > [!NOTE]
-> Normal .NET Azure Işlevlerinde Oluşturucu Ekleme kullanmanın aksine, sınıf *tabanlı varlıkların işlevler* giriş noktası yöntemi `static`bildirilmelidir. Statik olmayan bir işlev giriş noktası bildirmek, normal Azure Işlevleri nesne Başlatıcısı ve dayanıklı varlıklar nesne Başlatıcısı arasında çakışmalara neden olabilir.
+> Normal .NET Azure İşlevlerini yapılandırmak için kullanılanların aksine, sınıf tabanlı *varlıklar* için işlevler giriş noktası yöntemi bildirilmelidir. `static` Statik olmayan bir işlev giriş noktası bildirmek, normal Azure İşlevleri nesnesi başlatılması ile Dayanıklı Varlıklar nesnesi başlatılması arasında çakışmalara neden olabilir.
 
 ## <a name="function-based-syntax"></a>İşlev tabanlı sözdizimi
 
-Şimdiye kadar, çoğu uygulama için daha uygun olması beklendiğinden, sınıf tabanlı sözdizimine odaklandık. Ancak, işlev tabanlı sözdizimi, varlık durumu ve işlemleri için kendi soyutlamalarını tanımlamak veya yönetmek isteyen uygulamalar için uygun olabilir. Ayrıca, şu anda sınıf tabanlı sözdizimi tarafından desteklenmeyen, genericity gerektiren kitaplıkları uygularken uygun olabilir. 
+Şimdiye kadar, çoğu uygulama için daha uygun olmasını beklediğimiz için sınıf tabanlı sözdizimine odaklandık. Ancak, işlev tabanlı sözdizimi, varlık durumu ve işlemleri için kendi soyutlamalarını tanımlamak veya yönetmek isteyen uygulamalar için uygun olabilir. Ayrıca, genellik gerektiren kitaplıkları uygularken sınıf tabanlı sözdizimi tarafından desteklenmeyen ler de uygun olabilir. 
 
-İşlev tabanlı sözdizimi ile Entity Işlevi, işlem gönderimi açıkça işler ve varlığın durumunu açıkça yönetir. Örneğin, aşağıdaki kod, işlev tabanlı sözdizimi kullanılarak uygulanan *sayaç* varlığını gösterir.  
+İşlev tabanlı sözdizimi ile Varlık İşlevi, işlem sevkiyatını açıkça işler ve varlığın durumunu açıkça yönetir. Örneğin, aşağıdaki kod işlev tabanlı sözdizimi kullanılarak uygulanan *Karşı* varlık gösterir.  
 
 ```csharp
 [FunctionName("Counter")]
@@ -482,30 +482,30 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="the-entity-context-object"></a>Varlık bağlam nesnesi
 
-Varlığa özgü işlevlere, `IDurableEntityContext`türünde bir bağlam nesnesi aracılığıyla erişilebilir. Bu bağlam nesnesi, varlık işlevine parametre olarak ve zaman uyumsuz-yerel özelliği `Entity.Current`ile kullanılabilir.
+Varlığa özgü işlevsellik türünden `IDurableEntityContext`bir bağlam nesnesi üzerinden erişilebilir. Bu bağlam nesnesi varlık işlevi için bir parametre olarak kullanılabilir `Entity.Current`ve async-yerel özellik üzerinden .
 
-Aşağıdaki Üyeler geçerli işlem hakkında bilgi sağlar ve bir dönüş değeri belirtmemizi sağlar. 
+Aşağıdaki üyeler geçerli işlem hakkında bilgi sağlar ve bir iade değeri belirtmemize izin verir. 
 
-* `EntityName`: Şu anda yürütülmekte olan varlığın adı.
-* `EntityKey`: Şu anda yürütülmekte olan varlığın anahtarı.
-* `EntityId`: Şu anda yürütülmekte olan varlığın KIMLIĞI (ad ve anahtar içerir).
+* `EntityName`: şu anda icra eden varlığın adı.
+* `EntityKey`: şu anda çalıştırılamakta olan varlığın anahtarı.
+* `EntityId`: şu anda çalıştırılamakta olan varlığın kimliği (ad ve anahtar içerir).
 * `OperationName`: geçerli işlemin adı.
 * `GetInput<TInput>()`: geçerli işlem için girişi alır.
-* `Return(arg)`: işlemi çağıran düzenleme için bir değer döndürür.
+* `Return(arg)`: işlemi adı verilen orkestrasyona bir değer verir.
 
-Aşağıdaki Üyeler varlığın durumunu yönetir (oluşturma, okuma, güncelleştirme, silme). 
+Aşağıdaki üyeler varlığın durumunu yönetir (oluşturma, oku, güncelle, sil). 
 
-* `HasState`: varlığın var olup olmadığı, yani bir durumu var. 
-* `GetState<TState>()`: varlığın geçerli durumunu alır. Henüz yoksa, oluşturulur.
-* `SetState(arg)`: varlığın durumunu oluşturur veya güncelleştirir.
+* `HasState`: varlığın var olup olmadığı, yani bir devlete sahip olması. 
+* `GetState<TState>()`: varlığın geçerli durumunu alır. Zaten yoksa, oluşturulur.
+* `SetState(arg)`: varlığın durumunu oluşturur veya günceller.
 * `DeleteState()`: varsa varlığın durumunu siler. 
 
-`GetState` tarafından döndürülen durum bir nesnedir, uygulama kodu tarafından doğrudan değiştirilebilir. `SetState` sonunda yeniden çağırmanız gerekmez (aynı zamanda zarar yok). `GetState<TState>` birden çok kez çağrılırsa aynı tür kullanılmalıdır.
+Döndürülen `GetState` durum bir nesneyse, doğrudan uygulama kodu tarafından değiştirilebilir. Sonunda tekrar aramaya `SetState` gerek yoktur (ama aynı zamanda zarar). Birden `GetState<TState>` çok kez çağrılırsa, aynı tür kullanılmalıdır.
 
-Son olarak, aşağıdaki Üyeler diğer varlıkları işaret etmek veya yeni düzenlemeler başlatmak için kullanılır:
+Son olarak, aşağıdaki üyeler diğer varlıklara sinyal vermek veya yeni orkestrasyonlar başlatmak için kullanılır:
 
 * `SignalEntity(EntityId, operation, input)`: bir varlığa tek yönlü bir ileti gönderir.
-* `CreateNewOrchestration(orchestratorFunctionName, input)`: yeni bir düzenleme başlatır.
+* `CreateNewOrchestration(orchestratorFunctionName, input)`: yeni bir orkestrasyon başlatır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
