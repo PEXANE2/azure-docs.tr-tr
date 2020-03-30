@@ -1,6 +1,6 @@
 ---
-title: Çalışma zamanı cihazlar - Azure IOT Edge nasıl yönettiğini öğrenin | Microsoft Docs
-description: IoT Edge çalışma zamanının, cihazlarınızda modüller, güvenlik, iletişim ve raporlamayı nasıl yönettiğini öğrenin
+title: Çalışma zamanının cihazları nasıl yönettiğini öğrenin - Azure IoT Edge | Microsoft Dokümanlar
+description: IoT Edge çalışma zamanının cihazlarınızda modülleri, güvenliği, iletişimi ve raporlamayı nasıl yönettiğini öğrenin
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284908"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IOT Edge çalışma zamanı ve mimarisini anlama
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge çalışma süresini ve mimarisini anlama
 
-IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar.
+IoT Edge çalışma zamanı, bir cihazı bir IoT Edge cihazına dönüştüren program koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge aygıtların kenarda çalıştırmak ve sonuçları iletmek için kod almasını sağlar.
 
-IoT Edge çalışma zamanı, IoT Edge cihazlarda aşağıdaki işlevlerden sorumludur:
+IoT Edge çalışma süresi, IoT Edge aygıtlarında aşağıdaki işlevlerden sorumludur:
 
-* Cihaza iş yüklerini yükleyip güncelleştirin.
-* Cihazda Azure IoT Edge güvenlik standartlarının bakımını yapın.
-* [IoT Edge modüllerinin](iot-edge-modules.md) her zaman çalıştığından emin olun.
+* Aygıttaki iş yüklerini yükleyin ve güncelleyin.
+* Aygıtta Azure IoT Edge güvenlik standartlarını koruyun.
+* [IoT Edge modüllerinin](iot-edge-modules.md) her zaman çalışır durumda olduğundan emin olun.
 * Uzaktan izleme için modül durumunu buluta bildirin.
-* Aşağı akış cihazları ve IoT Edge cihazları arasındaki iletişimi yönetin.
-* IoT Edge cihazdaki modüller arasındaki iletişimi yönetin.
-* IoT Edge cihazı ve bulutu arasındaki iletişimi yönetin.
+* Akış aşağı aygıtlar ve IoT Edge aygıtları arasındaki iletişimi yönetin.
+* IoT Edge aygıtındaki modüller arasındaki iletişimi yönetin.
+* IoT Edge aygıtı ile bulut arasındaki iletişimi yönetin.
 
-![Çalışma zamanı öngörüleri ve IOT hub'ına modül durumunu iletişim kurar.](./media/iot-edge-runtime/Pipeline.png)
+![Çalışma zamanı, öngörüleri ve modül durumunu IoT Hub'a iletiyor](./media/iot-edge-runtime/Pipeline.png)
 
-IOT Edge çalışma zamanı sorumluluklarını iki kategoriye ayrılır: iletişim ve modül yönetimi. Bu iki rol IoT Edge çalışma zamanının parçası olan iki bileşen tarafından gerçekleştirilir. *IoT Edge Aracısı* modülleri dağıttığında ve izlerken *IoT Edge hub* 'ı iletişimden sorumludur.
+IoT Edge çalışma zamanının sorumlulukları iki kategoriye ayrılır: iletişim ve modül yönetimi. Bu iki rol, IoT Edge çalışma zamanının bir parçası olan iki bileşen tarafından gerçekleştirilir.*IoT Edge hub'ı* iletişimden sorumluyken, *IoT Edge aracımodülleri* dağıtır ve izler.
 
-IoT Edge hub ve IoT Edge Aracısı, tıpkı bir IoT Edge cihazında çalışan diğer tüm modüller gibi modüllerdir. Bazen *çalışma zamanı modülleri*olarak anırlar.
+Hem IoT Edge hub'ı hem de IoT Edge aracısı, ioT Edge aygıtında çalışan diğer modüller gibi modüllerdir. Bazen çalışma zamanı modülleri olarak *adlandırılırlar.*
 
-## <a name="iot-edge-hub"></a>IOT Edge hub'ı
+## <a name="iot-edge-hub"></a>IoT Edge hub
 
-IoT Edge hub, Azure IoT Edge çalışma zamanını oluşturan iki modülden biridir. IOT hub'ın yerel bir ara sunucu olarak IOT hub'ı aynı protokol uç noktalarını göstererek görür. Bu tutarlılık anlamına istemciler (olmadığını cihazlar veya modülleri) IOT Edge çalışma zamanı, IOT Hub'ına gibi bağlanabilirsiniz.
+IoT Edge hub'ı, Azure IoT Edge çalışma süresini oluşturan iki modülden biridir. IoT Hub ile aynı protokol uç noktalarını ortaya çıkararak IoT Hub için yerel bir proxy görevi görür. Bu tutarlılık, istemcilerin (aygıtlar veya modüller olsun) IoT Edge çalışma süresine tıpkı IoT Hub'ında olduğu gibi bağlanabileceği anlamına gelir.
 
 >[!NOTE]
-> IoT Edge hub, MQTT veya AMQP kullanarak bağlanan istemcileri destekler. HTTP kullanan istemcileri desteklemez.
+> IoT Edge hub'ı, MQTT veya AMQP kullanarak bağlanan istemcileri destekler. HTTP kullanan istemcileri desteklemez.
 
-IoT Edge hub 'ı yerel olarak çalışan IoT Hub tam bir sürümü değildir. IoT Edge hub, IoT Hub için bazı görevleri sessizce devreder. Örneğin, IoT Edge hub, bir cihaz ilk kez bağlanmayı denediğinde kimlik doğrulama isteklerini IoT Hub iletir. İlk bağlantı kurulduktan sonra, güvenlik bilgileri IoT Edge hub 'ı tarafından yerel olarak önbelleğe alınır. Bu cihazdan gelecek bağlantılara, buluta yeniden kimlik doğrulaması yapmadan izin verilir.
+IoT Edge hub'ı, Yerel olarak çalışan IoT Hub'ın tam sürümü değildir. IoT Edge hub sessizce Bazı görevleri IoT Hub'a devreder. Örneğin, IoT Edge hub'ı kimlik doğrulama isteklerini bir aygıt ilk bağlanmaya çalıştığında IoT Hub'ına iletir. İlk bağlantı kurulduktan sonra, güvenlik bilgileri IoT Edge hub'ı tarafından yerel olarak önbelleğe çıkarılır. Bu aygıttan gelecek bağlantılara, bulutun kimliği tekrar doğrulamasına gerek kalmadan izin verilir.
 
-IoT Edge çözümünüzün kullandığı bant genişliğini azaltmak için, IoT Edge hub 'ı buluta kaç tane gerçek bağlantı yapıldığını en iyi duruma getirir. IoT Edge hub, modüller veya aşağı akış cihazlarından mantıksal bağlantılar alır ve bunları buluta tek bir fiziksel bağlantı için birleştirir. Bu işlemin ayrıntılarını çözümün geri kalanı için saydamdır. İstemciler, bunların tümü aynı bağlantı üzerinden gönderilen olsa da kendi bağlantı buluta sahip oldukları düşünün.
+IoT Edge çözümünüzün kullandığı bant genişliğini azaltmak için, IoT Edge hub'ı buluta kaç gerçek bağlantı yapıldığını en iyi duruma getirir. IoT Edge hub'ı modüllerden veya akış aşağı aygıtlardan mantıksal bağlantılar alır ve bunları buluta tek bir fiziksel bağlantı için birleştirir. Bu işlemin ayrıntıları çözümün geri kalanı için saydamdır. İstemciler, hepsi aynı bağlantı üzerinden gönderiliyor olsa lar bile bulutla kendi bağlantıları olduğunu düşünürler.
 
-![IoT Edge hub, fiziksel cihazlar ve IoT Hub arasında bir ağ geçididir](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge hub'ı fiziksel aygıtlar ve IoT Hub arasında bir ağ geçididir](./media/iot-edge-runtime/Gateway.png)
 
-IoT Edge hub, IoT Hub bağlanıp bağlanmadığını belirleyebilir. Bağlantı kaybolursa IoT Edge hub iletileri veya ikizi güncelleştirmelerini yerel olarak kaydeder. Bağlantı yeniden sonra tüm verileri eşitler. Bu geçici önbellek için kullanılan konum, IoT Edge hub 'ının modül ikizi bir özelliği tarafından belirlenir. Önbelleğin boyutunu değil tavan ve cihaz depolama kapasitesine sahip sürece büyüyecektir. Daha fazla bilgi için bkz. [çevrimdışı yetenekler](offline-capabilities.md).
+IoT Edge hub'ı, IoT Hub'a bağlı olup olmadığını belirleyebilir. Bağlantı kaybolursa, IoT Edge hub'ı iletileri veya ikiz güncelleştirmeleri yerel olarak kaydeder. Bir bağlantı yeniden oluşturulduktan sonra, tüm verileri eşitler. Bu geçici önbellek için kullanılan konum, IoT Edge hub'ının modül ikizinin özelliği tarafından belirlenir. Önbelleğin boyutu kapaklı değildir ve aygıt depolama kapasitesine sahip olduğu sürece büyür.Daha fazla bilgi için [Çevrimdışı özellikler bkz.](offline-capabilities.md)
 
 ### <a name="module-communication"></a>Modül iletişimi
 
-IoT Edge hub, modülü modül iletişimine kolaylaştırır. İleti Aracısı olarak IoT Edge hub 'ı kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca üzerinde iletileri ve bunlar iletileri yazma çıkışları kabul girişleri belirtmeniz gerekir. Bir çözüm geliştiricisi, bu girdileri ve çıkışları birlikte birleştirerek modüllerin bu çözüme özgü sırada verileri işlemesini sağlar.
+IoT Edge hub modülü modül iletişimini kolaylaştırır. IoT Edge hub'ını ileti aracısı olarak kullanmak modülleri birbirinden bağımsız tutar. Modüllerin yalnızca iletileri kabul ettikleri girdileri ve ileti yazdıkları çıktıları belirtmeleri gerekir. Bir çözüm geliştiricisi, modüllerin verileri söz konusu çözüme özgü sırada işlemesi için bu girdi ve çıktıları bir araya getirebilir.
 
-![IoT Edge hub, modüle modül iletişimini kolaylaştırır](./media/iot-edge-runtime/module-endpoints.png)
+![IoT Edge Hub modül-modül iletişimini kolaylaştırır](./media/iot-edge-runtime/module-endpoints.png)
 
-IoT Edge hub 'ına veri göndermek için, bir modül SendEventAsync yöntemini çağırır. İletiyi göndermek için hangi çıkış ilk bağımsız değişken belirtir. Aşağıdaki sözde kod **output1**üzerine bir ileti gönderir:
+IoT Edge hub'ına veri göndermek için bir modül SendEventAsync yöntemini çağırır. İlk bağımsız değişken, iletinin hangi çıktıya gönderilen çıktıda belirtilmeye başları. Aşağıdaki pseudocode **output1**bir mesaj gönderir:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings);
@@ -64,64 +64,64 @@ IoT Edge hub 'ına veri göndermek için, bir modül SendEventAsync yöntemini �
    await client.SendEventAsync("output1", message);
    ```
 
-Bir ileti almak için belirli bir girdi gelen iletileri işleyen bir geri çağırma kaydedin. Aşağıdaki sözde kod, **input1**üzerinde alınan tüm iletileri işlemek Için kullanılacak MessageProcessor işlevini kaydeder:
+İleti almak için, belirli bir girişte gelen iletileri işleyen bir geri arama kaydedin. Aşağıdaki pseudocode, girişte alınan tüm iletileri işlemek için kullanılacak işlev iletisiProcessor'i **kaydeder1:**
 
    ```csharp
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Moduleclient sınıfı ve iletişim yöntemleri hakkında daha fazla bilgi için bkz. tercih ettiğiniz SDK dili için API başvurusu [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet):, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)veya [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+ModuleClient sınıfı ve iletişim yöntemleri hakkında daha fazla bilgi için tercih ettiğiniz SDK dili için API referansına bakın: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python,](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python) [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable), veya [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-Çözüm geliştiricisi, IoT Edge hub 'ının iletileri modüller arasında nasıl geçireceğini belirleyen kuralları belirtmekten sorumludur. Yönlendirme kuralları bulutta tanımlanmıştır ve modülünde IoT Edge hub 'ına dağıtılır ikizi. IOT hub'ı yolları aynı sözdizimi, Azure IOT edge'deki modüller arasında tanımlamak için kullanılır. Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
+Çözüm geliştiricisi, IoT Edge hub'ın iletileri modüller arasında nasıl iletiyi iletdiğini belirleyen kuralları belirtmekten sorumludur. Yönlendirme kuralları bulutta tanımlanır ve modül ikizinde IoT Edge hub'ına itilir. IoT Hub yolları için aynı sözdizimi, Azure IoT Edge'deki modüller arasındaki yolları tanımlamak için kullanılır. Daha fazla bilgi için [bkz.](module-composition.md)
 
-![Modüller arasındaki rotalar IoT Edge hub 'ına gider](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Modüller arasındaki rotalar IoT Edge hub'ından geçer](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
-## <a name="iot-edge-agent"></a>IOT Edge Aracısı
+## <a name="iot-edge-agent"></a>IoT Edge aracısı
 
-IOT Edge, Azure IOT Edge çalışma zamanını oluşturan yapan başka bir modül aracısıdır. Modülleri örnekleme, çalışmaya devam sağlama ve IOT Hub'ına modüllerinin durumunu raporlamaya sorumludur. Bu yapılandırma verileri, ikizi IoT Edge Agent modülünün bir özelliği olarak yazılmıştır.
+IoT Edge aracısı, Azure IoT Edge çalışma süresini oluşturan diğer modüldür. Modüllerin anlık olarak oluşturulmasından, çalışmaya devam etmesinin sağlanmasından ve modüllerin durumunu IoT Hub'a bildirmeden sorumludur. Bu yapılandırma verileri IoT Edge aracı modülü ikizinin bir özelliği olarak yazılır.
 
-[IoT Edge güvenlik arka plan programı](iot-edge-security-manager.md) , cihaz başlangıcında IoT Edge aracısını başlatır. Aracı kendi modül ikizi, IOT Hub'ından alır ve dağıtım bildirimini inceler. Dağıtım bildirimi başlatılması gereken modülleri bildiren bir JSON dosyasıdır.
+[IoT Edge güvenlik daemonu,](iot-edge-security-manager.md) aygıt başlatmada IoT Edge aracısını başlatır. Aracı, modül ikizini IoT Hub'dan alır ve dağıtım bildirimini inceler. Dağıtım bildirimi, başlatılması gereken modülleri bildiren bir JSON dosyasıdır.
 
-Dağıtım bildirimindeki her öğe, bir modülle ilgili belirli bilgileri içerir ve IoT Edge Aracısı tarafından modülün yaşam döngüsünü denetlemek için kullanılır. Bazı daha ilgi çekici özellikleri şunlardır:
+Dağıtım bildirimindeki her öğe bir modül hakkında belirli bilgiler içerir ve modülün yaşam döngüsünü denetlemek için IoT Edge aracısı tarafından kullanılır. Bazı daha ilginç özellikleri şunlardır:
 
-* **Settings. image** : IoT Edge aracısının modülü başlatmak için kullandığı kapsayıcı görüntüsü. Görüntü bir parolayla korunuyorsa, IoT Edge aracısının kapsayıcı kayıt defteri kimlik bilgileriyle yapılandırılması gerekir. Kapsayıcı kayıt defteri için kimlik bilgileri, IoT Edge program klasöründeki `config.yaml` dosyasını güncelleştirerek dağıtım bildirimi veya IoT Edge cihazının kendisi kullanılarak uzaktan yapılandırılabilir.
-* **Settings. createOptions** : bir modülün kapsayıcısı başlatılırken doğrudan Moby kapsayıcı Daemon 'a geçirilen bir dize. Bu özelliğe seçenek eklemek, bağlantı noktası iletme veya bir modülün kapsayıcısına birim bağlama gibi gelişmiş yapılandırmalara izin verir.  
-* **durum** : IoT Edge aracısının modülü yerleştirdiği durum. Genellikle, bu değer, IoT Edge aracısının cihazdaki tüm modülleri hemen başlatmasını istediği için, *çalışıyor* olarak ayarlanır. Ancak, durdurulacak bir modülün başlangıç durumunu belirtebilir ve daha sonra IoT Edge aracısına bir modül başlatmasını söylemeniz için bekleyin. IoT Edge Aracısı, her modülün durumunu bildirilen özelliklerde buluta geri bildirir. İstenen özellik ve bildirilen özellik arasında bir fark davranan bir cihaz bir göstergesidir. Desteklenen durumlar şunlardır:
+* **settings.image** – IoT Edge aracısının modülü başlatmak için kullandığı kapsayıcı görüntüsü. Görüntü bir parolayla korunuyorsa, IoT Edge aracısı kapsayıcı kayıt defteri için kimlik bilgileriyle yapılandırılmalıdır. Kapsayıcı kayıt defterinin kimlik bilgileri dağıtım bildirimi kullanılarak uzaktan veya IoT Edge aygıtının `config.yaml` kendisi nde dosyayı IoT Edge program klasöründeki güncelleştirerek uzaktan yapılandırılabilir.
+* **settings.createOptions** – Modülün kapsayıcısını başlatırken doğrudan Moby kapsayıcı daemon'una geçirilen bir dize. Bu özellikteki seçeneklerin eklenmesi, bağlantı noktası yönlendirme veya bir modülün kapsayıcısına hacim ler monte etme gibi gelişmiş yapılandırmalara olanak tanır.  
+* **durum** – IoT Edge aracısının modülü yerleştirir durumu. Çoğu kişi IoT Edge aracısının aygıttaki tüm modülleri hemen başlatmasını istediği için genellikle bu değer *çalışmaya* ayarlanır. Ancak, durdurulacak bir modülün ilk durumunu belirtebilir ve IoT Edge aracısına bir modül başlatmasını söylemek için ileride bir süre bekleyebilirsiniz.IoT Edge aracısı, bildirilen özelliklerdeki her modülün durumunu buluta geri bildirir. İstenilen özellik ile bildirilen özellik arasındaki fark, yaramazlık aygıtının göstergesidir. Desteklenen durumlar şunlardır:
 
-  * İndiriliyor
+  * Indiriyor
   * Çalışıyor
-  * Sağlıksız
+  * Uygun Değil
   * Başarısız
   * Durduruldu
 
-* **restartPolicy** : IoT Edge Aracısı bir modülü yeniden başlatır. Olası değerler şunlardır:
+* **restartPolicy** – IoT Edge aracısı bir modülü nasıl yeniden başlattırılır. Olası değerler şunlardır:
   
-  * `never`: IoT Edge Aracısı modülü hiçbir şekilde yeniden başlatmaz.
-  * `on-failure`-modül kilitlenirse, IoT Edge Aracısı yeniden başlatır. Modül düzgün şekilde kapatılırsa IoT Edge Aracısı onu yeniden başlatmaz.
-  * `on-unhealthy`-modül kilitlenirse veya sağlıksız kabul edildiğinde, IoT Edge Aracısı yeniden başlatır.
-  * `always`-modül kilitlenirse, sağlıksız olarak kabul edilir veya herhangi bir şekilde kapatılırsa, IoT Edge Aracısı tarafından yeniden başlatılır.
+  * `never`– IoT Edge aracısı modülü asla yeniden başlatmaz.
+  * `on-failure`- Modül çökerse, IoT Edge aracısı onu yeniden başlatır. Modül temiz bir şekilde kapanırsa, IoT Edge aracısı yeniden başlatılamıyor.
+  * `on-unhealthy`- Modül çökerse veya sağlıksız kabul edilirse, IoT Edge aracısı onu yeniden başlatır.
+  * `always`- Modül çökerse, sağlıksız kabul edilirse veya herhangi bir şekilde kapanırsa, IoT Edge aracısı onu yeniden başlatır.
 
-* **ımagepullpolicy** -IoT Edge aracısının bir modül için en son görüntüyü otomatik olarak çekmeye çalışıp çalışmadığını belirtir. Bir değer belirtmezseniz, varsayılan olarak *OnCreate*olur. Olası değerler şunlardır:
+* **imagePullPolicy** - IoT Edge aracısı bir modül için en son görüntüyü otomatik olarak çekmeye çalışıp denemez. Bir değer belirtmezseniz, varsayılan değer *create'dir.* Olası değerler şunlardır:
 
-  * `on-create`-bir modül başlatılırken veya yeni bir dağıtım bildirimine göre modül güncelleştirirken, IoT Edge Aracısı modül görüntüsünü kapsayıcı kayıt defterinden çekmeye çalışacaktır.
-  * `never`-IoT Edge Aracısı hiçbir koşulda modül görüntüsünü kapsayıcı kayıt defterinden çekmeye çalışmaz. Bu yapılandırmayla, modül görüntüsünün cihaza alınması ve görüntü güncelleştirmelerinin yönetilmesi sizin sorumluluğunuzdadır.
+  * `on-create`- Bir modülü başlatırken veya yeni bir dağıtım bildirimine dayalı bir modülü güncellerken, IoT Edge aracısı modül görüntüsünü konteyner kayıt defterinden çekmeye çalışacaktır.
+  * `never`- IoT Edge aracısı asla modül görüntüsünü konteyner kayıt defterinden çekmeye çalışmayacaktır. Bu yapılandırma ile, modül görüntüsünü aygıta almak ve görüntü güncelleştirmelerini yönetmekten siz sorumlusunuz.
 
-IOT Edge çalışma zamanı yanıtı IOT hub'a gönderir. Olası yanıtların listesi aşağıda verilmiştir:
+IoT Edge aracısı IoT Hub'a çalışma zamanı yanıtı gönderir. Olası yanıtların bir listesi aşağıda verilmiştir:
   
-* 200 - TAMAM
-* 400 - dağıtım yapılandırması bozuk veya geçersiz.
-* 417-cihazda bir dağıtım yapılandırma kümesi yok.
-* 412 - dağıtım yapılandırma şeması sürümü geçersiz.
-* 406-IoT Edge cihaz çevrimdışı veya durum raporları göndermiyor.
-* 500-IoT Edge çalışma zamanında bir hata oluştu.
+* 200 - Tamam
+* 400 - Dağıtım yapılandırması hatalı veya geçersizdir.
+* 417 - Aygıtın dağıtım yapılandırma kümesi yok.
+* 412 - Dağıtım yapılandırmasındaki şema sürümü geçersizdir.
+* 406 - IoT Edge aygıtı çevrimdışı veya durum raporları göndermiyor.
+* 500 - IoT Edge çalışma zamanında bir hata oluştu.
 
-Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
+Daha fazla bilgi için [bkz.](module-composition.md)
 
 ### <a name="security"></a>Güvenlik
 
-IOT Edge Aracısı bir IOT Edge cihazının güvenliği kritik rol oynar. Örneğin, bir modülün görüntüsüne başlatmadan önce doğrulama gibi eylemleri gerçekleştirir.
+IoT Edge aracısı, bir IoT Edge aygıtının güvenliğinde kritik bir rol oynar. Örneğin, başlatmadan önce bir modülün görüntüsünü doğrulamak gibi eylemler gerçekleştirir.
 
-Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](iot-edge-security-manager.md)hakkında makalesini okuyun.
+Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge güvenlik yöneticisi](iot-edge-security-manager.md)hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

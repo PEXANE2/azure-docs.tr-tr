@@ -1,6 +1,6 @@
 ---
-title: Ölçeklenebilirlik-Azure Event Hubs | Microsoft Docs
-description: Bu makalede, Azure Event Hubs bölümler ve üretilen iş birimleri kullanarak ölçeklendirmeye yönelik bilgiler sağlanmaktadır.
+title: Ölçeklenebilirlik - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
+description: Bu makalede, bölümler ve iş verme birimleri kullanarak Azure Olay Hub'ları ölçeklendirme hakkında bilgi sağlar.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,37 +15,37 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280956"
 ---
-# <a name="scaling-with-event-hubs"></a>Event Hubs ile ölçeklendirme
+# <a name="scaling-with-event-hubs"></a>Olay Hub'ları ile ölçekleme
 
-Event Hubs ölçeklendirmeyi etkileyen iki etken vardır.
+Olay Hub'ları ile ölçekleme etkileyen iki faktör vardır.
 *   İşleme birimleri
 *   Bölümler
 
 ## <a name="throughput-units"></a>İşleme birimleri
 
-Event Hubs işleme kapasitesi, *işleme birimleri* tarafından denetlenir. İşleme birimleri önceden satın alınan kapasite birimleridir. Tek bir üretilen iş şunları yapmanızı sağlar:
+Event Hubs işleme kapasitesi, *işleme birimleri* tarafından denetlenir. İşleme birimleri önceden satın alınan kapasite birimleridir. Tek bir iş tamsayısı şunları sağlar:
 
-* Giriş: Kadar ikinci veya 1000 olaya (hangisi önce gerçekleşirse) saniye başına saniyede 1 MB.
-* Çıkış: Saniye başına ikinci veya 4096 olay başına 2 MB'a kadar.
+* Giriş: Saniyede en fazla 1 MB veya saniyede 1000 olay (hangisi önce gelirse).
+* Çıkış: Saniyede 2 MB'a kadar veya saniyede 4096 olay.
 
-Satın alınan işleme birimlerinin kapasitesi aşıldığında giriş azaltılır ve [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) döndürülür. Çıkış, azaltma özel durumları oluşturmaz, ancak yine de satın alınan işleme birimlerinin kapasitesiyle sınırlıdır. Yayımlama hızı özel durumları alırsanız veya daha yüksek çıkış görmeyi bekliyorsanız ad alanı için kaç tane işleme birimi satın aldığınızı denetlediğinizden emin olun. [Azure Portal](https://portal.azure.com)ad alanlarının **Ölçek** dikey penceresinde üretilen iş birimlerini yönetebilirsiniz. Ayrıca, [Event Hubs API 'lerini](event-hubs-api-overview.md)kullanarak işleme birimlerini programlı bir şekilde yönetebilirsiniz.
+Satın alınan işleme birimlerinin kapasitesi aşıldığında giriş azaltılır ve [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) döndürülür. Çıkış, azaltma özel durumları oluşturmaz, ancak yine de satın alınan işleme birimlerinin kapasitesiyle sınırlıdır. Yayımlama hızı özel durumları alırsanız veya daha yüksek çıkış görmeyi bekliyorsanız ad alanı için kaç tane işleme birimi satın aldığınızı denetlediğinizden emin olun. İşleme birimlerini [Azure portal](https://portal.azure.com) ad alanlarının **Ölçek** dikey penceresinde yönetebilirsiniz. [Ayrıca, Olay Hub'ları API'lerini](event-hubs-api-overview.md)kullanarak iş birimi birimlerini programlı olarak yönetebilirsiniz.
 
-İşleme birimleri önceden satın alınır ve saat başına faturalandırılır. Satın alındıktan sonra işleme birimleri en az bir saat için faturalandırılır. En fazla 20 işleme birimi bir Event Hubs ad alanı için satın alınabilir ve bu ad alanındaki tüm event hubs arasında paylaşılır.
+İşlem birimleri önceden satın alınır ve saat başına faturalandırılır. Satın alındıktan sonra işleme birimleri en az bir saat için faturalandırılır. Bir Olay Hub'ları ad alanı için en fazla 20 iş birimi satın alınabilir ve bu ad alanındaki tüm etkinlik hub'ları arasında paylaşılır.
 
-Event Hubs **Otomatik Şişir** özelliği, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilir. Üretilen iş birimleri artırma engeller azaltma senaryoları, burada:
+Olay Hub'larının **Otomatik şişirme** özelliği, kullanım gereksinimlerini karşılamak için iş birimi sayısını artırarak otomatik olarak ölçeklendirilir. İş birimi birimlerinin artırılması, aşağıdakisenaryoların daraltılmasını önler:
 
-- Veri giriş hızlarını kümesi işleme birimleri en fazla.
-- Veri çıkışı istek hızları kümesi işleme birimleri en fazla.
+- Veri giriş hızları ayarlanan iş birimi birimlerini aşıyor.
+- Veri çıkış isteği oranları, ayarlanan iş birimi birimlerini aşar.
 
-Tüm istekleri ServerBusy hatalarla başarısız olmadan en düşük eşikten yüksek yük artırdığı durumlarda Event Hubs hizmeti verimliliğini artırır. 
+Olay Hub'ları hizmeti, yük minimum eşiğin dışına çıktığında, ServerBusy hatalarıyla ilgili herhangi bir istek başarısız olmadan iş verisini artırır. 
 
-Otomatik Şişir özelliği hakkında daha fazla bilgi için bkz. [üretilen iş birimlerini otomatik olarak ölçeklendirme](event-hubs-auto-inflate.md).
+Otomatik şişirme özelliği hakkında daha fazla bilgi için [bkz.](event-hubs-auto-inflate.md)
 
 ## <a name="partitions"></a>Bölümler
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -61,4 +61,4 @@ Olay yayımcısı yalnızca bölüm anahtarını bilir, olayların yayımlandı�
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 - [İşleme birimlerini otomatik ölçeklendirme](event-hubs-auto-inflate.md)
-- [Event Hubs hizmete genel bakış](event-hubs-what-is-event-hubs.md)
+- [Olay Hub'ları hizmetine genel bakış](event-hubs-what-is-event-hubs.md)

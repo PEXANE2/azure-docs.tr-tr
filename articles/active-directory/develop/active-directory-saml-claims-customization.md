@@ -1,7 +1,7 @@
 ---
-title: Azure AD uygulaması SAML belirteci taleplerini özelleştirme
+title: Azure AD uygulaması SAML belirteç taleplerini özelleştirme
 titleSuffix: Microsoft identity platform
-description: Azure AD 'de kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirmeyi öğrenin.
+description: Azure AD'deki kurumsal uygulamalar için SAML belirtecinde verilen talepleri nasıl özelleştirebilirsiniz öğrenin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,169 +15,169 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263094"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl: kurumsal uygulamalar için SAML belirteci verilen iddiaları özelleştirmek
 
-Günümüzde Azure Active Directory (Azure AD), Azure AD uygulama galerisinde ve özel uygulamalarda önceden tümleştirilmiş uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla çoklu oturum açmayı (SSO) destekler. Bir Kullanıcı, SAML 2,0 protokolünü kullanarak Azure AD aracılığıyla bir uygulamanın kimliğini doğruladığında, Azure AD uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Sonra uygulama, Kullanıcı adı ve parola istemek yerine, kullanıcının oturum açmasını sağlamak için belirtecini doğrular ve kullanır. Bu SAML belirteçleri, *talep*olarak bilinen kullanıcı hakkında bilgi parçalarını içerir.
+Bugün, Azure Etkin Dizin (Azure AD), Azure AD uygulama galerisinde önceden tümleştirilmiş uygulamaların yanı sıra özel uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla tek oturum açma (SSO) destekler. Bir kullanıcı SAML 2.0 protokolünü kullanarak Azure AD aracılığıyla bir uygulamaya kimlik doğruladığında, Azure AD uygulamaya bir belirteç gönderir (http post aracılığıyla). Ve sonra, uygulama doğrular ve kullanıcı adı ve parola için soran yerine kullanıcı oturum açmak için belirteci kullanır. Bu SAML belirteçleri, kullanıcı hakkında *talep*olarak bilinen bilgi parçalarını içerir.
 
-Bir *talep* , bir kimlik sağlayıcısının bu kullanıcı için çalıştıkları belirtecin içindeki bir kullanıcı hakkında bilgi veren bir sorundur. [SAML belirtecinde](https://en.wikipedia.org/wiki/SAML_2.0), bu VERILER genellikle SAML Attribute ifadesinde bulunur. Kullanıcının benzersiz KIMLIĞI, genellikle ad tanımlayıcısı olarak da bilinen SAML konusu içinde temsil edilir.
+*Talep,* kimlik sağlayıcısının, sözkonusu kullanıcı için verdiği belirteç içindeki bir kullanıcı hakkında belirttiği bilgilerdir. [SAML belirteci,](https://en.wikipedia.org/wiki/SAML_2.0)bu veriler genellikle SAML Öznitelik Bildirimi bulunur. Kullanıcının benzersiz kimliği genellikle AD Tanımlayıcı olarak da adlandırılan SAML Konusu'nda temsil edilir.
 
-Azure AD, varsayılan olarak, Azure AD 'de kullanıcının Kullanıcı adı (Kullanıcı asıl adı olarak da bilinir) değerine sahip `NameIdentifier` bir talep içeren bir SAML belirteci verir. Bu, kullanıcıyı benzersiz şekilde tanımlayabilirler. SAML belirteci ayrıca kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler içerir.
+Varsayılan olarak, Azure AD, Azure AD'de kullanıcının kullanıcı adı (kullanıcı adı adı olarak da bilinir) değerine sahip bir `NameIdentifier` talep içeren ve kullanıcıyı benzersiz olarak tanımlayabilen bir SAML belirteci uygulamanız için sorun. SAML belirteci, kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler de içerir.
 
-SAML belirtecinde verilen talepleri uygulamaya görüntülemek veya düzenlemek için Azure portal içinde uygulamayı açın. Ardından **Kullanıcı öznitelikleri & talepler** bölümünü açın.
+SAML'de verilen başvuruları uygulamayla görüntülemek veya görüntülemek için uygulamayı Azure portalında açın. Ardından **Kullanıcı Öznitelikleri & Talepler** bölümünü açın.
 
-![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Azure portalında Kullanıcı Öznitelikleri & Talepler bölümünü açma](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
-SAML belirtecinde verilen talepleri düzenlemeniz gerekebilecek iki nedeni vardır:
+SAML belirtecinde verilen talepleri düzenlemeniz in iki olası nedeni vardır:
 
-* Uygulama `NameIdentifier` veya NameID talebinin Azure AD 'de depolanan Kullanıcı adı (veya Kullanıcı asıl adı) dışında bir şey olmasını gerektirir.
-* Uygulama, farklı bir talep URI 'si veya talep değerleri kümesi gerektirecek şekilde yazılmıştır.
+* Uygulama, Veya `NameIdentifier` NameID talebinin Azure AD'de depolanan kullanıcı adı (veya kullanıcı adı) dışında bir şey olmasını gerektirir.
+* Uygulama, farklı bir talep URI'leri veya talep değerleri kümesi ni gerektirecek şekilde yazılmıştır.
 
-## <a name="editing-nameid"></a>Ad kimliğini Düzenle
+## <a name="editing-nameid"></a>NameID düzenleme
 
-NameID (ad tanımlayıcı değeri) düzenlemek için:
+NameID'yi (ad tanımlayıcı değeri) yeniden yapmak için:
 
-1. **Ad tanımlayıcı değeri** sayfasını açın.
-1. Özniteliğe uygulamak istediğiniz özniteliği veya dönüşümü seçin. İsteğe bağlı olarak, NameID talebinin olmasını istediğiniz biçimi belirtebilirsiniz.
+1. Ad **tanımlayıcı değeri** sayfasını açın.
+1. Öznitelik için uygulamak istediğiniz öznitelik veya dönüşüm seçin. İsteğe bağlı olarak, NameID iddiasının sahip olmasını istediğiniz biçimi belirtebilirsiniz.
 
-   ![NameID (ad tanımlayıcı) değerini Düzenle](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
+   ![NameID (ad tanımlayıcı) değerini edin](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
 ### <a name="nameid-format"></a>NameID biçimi
 
-SAML isteği belirli bir biçime sahip Nameıdpolicy öğesini içeriyorsa, Azure AD istekteki biçimi kabul eder.
+SAML isteği belirli bir biçime sahip NameIDPolicy öğesi içeriyorsa, Azure AD istekteki biçimi onurlandırır.
 
-SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz biçimle birlikte NameID olarak verilecek. Hiçbir biçim belirtilmemişse Azure AD, seçilen talep kaynağıyla ilişkili varsayılan kaynak biçimini kullanır.
+SAML isteği NameIDPolicy için bir öğe içermiyorsa, Azure AD nameid'i belirttiğiniz biçimle birlikte yayımlar. Hiçbir biçim belirtilmemişse Azure AD, seçilen talep kaynağıyla ilişkili varsayılan kaynak biçimini kullanır.
 
-**Ad tanımlayıcı biçimi Seç** açılan menüsünde, aşağıdaki seçeneklerden birini seçebilirsiniz.
+Ad **tanımlayıcısı biçim** açılır lay'i seç'ten aşağıdaki seçeneklerden birini seçebilirsiniz.
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
 | **Varsayılan** | Azure AD varsayılan kaynak biçimini kullanır. |
-| **RESERVATION** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
-| **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
-| **Memesi** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
-| **Windows etki alanı nitelikli adı** | Azure AD, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
+| **Kalıcı** | Azure AD, Kalıcı'yı NameID biçimi olarak kullanır. |
+| **Emailaddress** | Azure AD, NameID biçimi olarak E-posta Adresi'ni kullanır. |
+| **Belirtilmemiş** | Azure AD, AdKimliği biçimi olarak Belirtilmemiş'i kullanır. |
+| **Windows etki alanı nitelikli adı** | Azure AD, WindowsDomainQualifiedName'i NameID biçimi olarak kullanır. |
 
-Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma SAML Protokolü](single-sign-on-saml-protocol.md).
+Geçici NameID de desteklenir, ancak açılır açılır durumda kullanılamaz ve Azure tarafında yapılandırılamaz. NameIDPolicy özniteliği hakkında daha fazla bilgi edinmek için [Tek Oturum AÇMA SAML protokolüne](single-sign-on-saml-protocol.md)bakın.
 
 ### <a name="attributes"></a>Öznitelikler
 
-`NameIdentifier` (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
+`NameIdentifier` (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçenekler arasından seçim yapabilirsiniz.
 
 | Adı | Açıklama |
 |------|-------------|
 | Email | Kullanıcının e-posta adresi |
-| userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
-| onpremisessamaccount | Şirket içi Azure AD 'den eşitlenmiş SAM hesap adı |
-| uzantının | Azure AD 'de kullanıcının ObjectID |
-| EmployeeID | Kullanıcının çalışan KIMLIĞI |
-| Dizin genişletmeleri | [Azure AD Connect eşitleme kullanılarak şirket içi Active Directory eşitlenen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) Dizin uzantıları |
-| Uzantı öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
+| Userprincipalname | Kullanıcının kullanıcı ana adı (UPN) |
+| onpremisessamaccount | Şirket içi Azure AD'den senkronize edilen SAM hesap adı |
+| Objectıd | Azure AD'de kullanıcının Objectid'i |
+| Employeeıd | Kullanıcının çalışan kimliği |
+| Dizin genişletmeleri | Azure AD [Connect Eşitlemeyi kullanarak şirket içi Active Directory'den senkronize edilen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) dizin uzantıları |
+| Uzantı Öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
 
-Daha fazla bilgi için bkz. [Tablo 3: kaynak başına GEÇERLI kimlik değerleri](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+Daha fazla bilgi için tablo [3: Kaynak başına geçerli kimlik değerleri.](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)
 
-Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (statik) değer atayabilirsiniz. Sabit değer atamak için lütfen aşağıdaki adımları izleyin:
+Azure AD'de tanımladığınız tüm taleplere sabit (statik) herhangi bir değer atayabilirsiniz. Sabit bir değer atamak için lütfen aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **Kullanıcı Öznitelikleri & Talepler** bölümünde, talepleri yeniden oluşturmak için **Edit** simgesine tıklayın.
 
-1. Değiştirmek istediğiniz gerekli talebe tıklayın.
+1. Değiştirmek istediğiniz gerekli talebi tıklatın.
 
-1. **Kaynak özniteliğinde** kuruluşunuza göre sabit değeri tırnak işareti olmadan girin ve **Kaydet**' e tıklayın.
+1. Kuruluşuna göre **Kaynak özniteliğine** tırnak işareti olmadan sabit değeri girin ve **Kaydet'i**tıklatın.
 
-    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Azure portalında Kullanıcı Öznitelikleri & Talepler bölümünü açma](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
-1. Sabit değer aşağıda gösterildiği gibi görüntülenecektir.
+1. Sabit değer aşağıdaki gibi görüntülenir.
 
-    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Azure portalında Kullanıcı Öznitelikleri & Talepler bölümünü açma](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
-### <a name="special-claims---transformations"></a>Özel talepler-dönüşümler
+### <a name="special-claims---transformations"></a>Özel talepler - dönüşümler
 
-Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
+Talep dönüşümleri işlevlerini de kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
-| **JOIN ()** | Doğrulanmış bir etki alanıyla bir özniteliği birleştirir. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
-| **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
-| **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
+| **ExtractMailPrefix()** | Etki alanı sonekini e-posta adresinden veya kullanıcı ana adından kaldırır. Bu, geçirilen kullanıcı adının yalnızca ilk bölümünü ayıklar (örneğin, "joe_smith" joe_smith@contoso.comyerine). |
+| **Katılın()** | Doğrulanmış bir etki alanıyla bir öznitelik birleştirir. Seçili kullanıcı tanımlayıcı değerinin bir etki alanı varsa, seçilen doğrulanmış etki alanını eklemek için kullanıcı adını ayıklar. Örneğin, kullanıcı tanımlayıcı değerijoe_smith@contoso.comolarak e-postayı ( ) seçerseniz ve doğrulanmış etki alanı joe_smith@contoso.onmicrosoft.comolarak contoso.onmicrosoft.com seçerseniz, bu sonuç . |
+| **ToLower()** | Seçili öznitelik karakterlerini küçük karakterlere dönüştürür. |
+| **ToUpper()** | Seçili öznitelik karakterlerini büyük harf karakterlerine dönüştürür. |
 
 ## <a name="adding-application-specific-claims"></a>Uygulamaya özgü talepler ekleme
 
-Uygulamaya özel talepler eklemek için:
+Uygulamaya özgü talepler eklemek için:
 
-1. **Kullanıcı öznitelikleri & talepler**' de, **Kullanıcı taleplerini Yönet** sayfasını açmak için **yeni talep Ekle** ' yi seçin.
-1. Taleplerin **adını** girin. Değer, SAML spec başına, bir URI deseninin tamamen izlenmesi gerekmez. Bir URI deseninin olması gerekiyorsa, bunu **ad alanı** alanına koyabilirsiniz.
-1. Talebin değerini almak için gereken **kaynağı** seçin. Kaynak özniteliği açılan listesinden bir kullanıcı özniteliği seçebilir veya bir talep olarak yaymadan önce Kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
+1. **Kullanıcı Öznitelikleri &** Talepler'de, **Kullanıcı taleplerini yönet** sayfasını açmak için yeni talep **ekle'yi** seçin.
+1. Taleplerin **adını** girin. Değer kesinlikle BIR URI desen takip etmek gerekmez, SAML spec başına. Uri deseni gerekiyorsa, **bunu Namespace** alanına koyabilirsiniz.
+1. Talebin değerini geri alacağı **Kaynağı** seçin. Kaynak öznitelik açılır bırakarak bir kullanıcı özniteliği seçebilir veya talep olarak yaymadan önce kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
 
-### <a name="claim-transformations"></a>Talep dönüştürmeleri
+### <a name="claim-transformations"></a>Talep dönüşümleri
 
-Bir Kullanıcı özniteliğine dönüşüm uygulamak için:
+Bir kullanıcı özniteliğine dönüşüm uygulamak için:
 
-1. **Talebi Yönet**bölümünde, isteği kaynak olarak *dönüştürme* ' yi seçerek **Dönüştürmeyi Yönet** sayfasını açın.
-2. Dönüştürme açılan listesinden işlevi seçin. Seçili işleve bağlı olarak, dönüşümde değerlendirmek için parametreler ve sabit bir değer sağlamanız gerekir. Kullanılabilir işlevler hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
-3. Birden çok dönüşüm uygulamak için **dönüştürme Ekle**' ye tıklayın. Bir talebe en fazla iki dönüşüm uygulayabilirsiniz. Örneğin, önce `user.mail`e-posta önekini ayıklayabilirsiniz. Ardından, dizeyi büyük harfe getirin.
+1. **Claim'i**Yönet'te, **Dönüşüm'i Yönet** sayfasını açmak için talep kaynağı olarak *Dönüşüm''u* seçin.
+2. Dönüşüm açılır tarihinden işlevi seçin. Seçilen işleve bağlı olarak, dönüşümde değerlendirmek için parametreler ve sabit bir değer sağlamanız gerekir. Kullanılabilir işlevler hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
+3. Birden çok dönüştürme uygulamak için **dönüşüm ekle'ye**tıklayın. Bir hak talebine en fazla iki dönüşüm uygulayabilirsiniz. Örneğin, önce `user.mail`e-posta önekisini ayıklayabilirsiniz. Sonra, dize büyük durumda olun.
 
-   ![NameID (ad tanımlayıcı) değerini Düzenle](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![NameID (ad tanımlayıcı) değerini edin](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
-| **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, JOIN doğrulanmış bir etki alanıyla kısıtlıdır. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
-| **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
-| **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
-| **Contains ()** | Giriş belirtilen değerle eşleşiyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, "@contoso.com" etki alanını içeriyorsa değerin kullanıcının e-posta adresi olduğu bir talep oluşturmak istiyorsanız, aksi takdirde Kullanıcı asıl adını çıkarmak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. email<br/>*Değer*: "@contoso.com"<br/>Parametre 2 (çıkış): User. email<br/>Parametre 3 (eşleşme yoksa çıkış): User. UserPrincipalName |
-| **EndWith ()** | Giriş belirtilen değerle sona ererse bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, çalışan KIMLIĞI "000" ile bitiyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak istersiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. EmployeeID<br/>*Değer*: "000"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
-| **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlıyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
-| **Ayıkla ()-sonrasında eşleme** | Belirtilen değerle eşleştirdikten sonra alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon" ise, eşleşen değer "Finance_" ise, talebin çıktısı "Bsıon" olur. |
-| **Extract ()-öncesinde eşleme** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "BSimon_US" ise, eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
-| **Ayıkla ()-eşleşen** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon_US" ise, ilk eşleşen değer "Finance_", ikinci eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
-| **ExtractAlpha ()-önek** | Dizenin ön ek alfabetik bölümünü döndürür.<br/>Örneğin, girişin değeri "BSimon_123" ise, "Bsıon" döndürür. |
-| **ExtractAlpha ()-sonek** | Dizenin son ek alfabetik bölümünü döndürür.<br/>Örneğin, girişin değeri "123_Simon" ise, "Simon" döndürür. |
-| **ExtractNumeric ()-ön ek** | Dizenin ön ek sayısal parçasını döndürür.<br/>Örneğin, girişin değeri "123_BSimon" ise, "123" döndürür. |
-| **ExtractNumeric ()-sonek** | Dizenin son ek sayısal parçasını döndürür.<br/>Örneğin, girişin değeri "BSimon_123" ise, "123" döndürür. |
-| **IfEmpty ()** | Giriş null veya boşsa bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcının çalışan KIMLIĞI boşsa, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1<br/>Parametre 3 (eşleşme yoksa çıkış): User. EmployeeID |
-| **IfNotEmpty ()** | Giriş null veya boş değilse bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcının çalışan KIMLIĞI boş değilse, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1 |
+| **ExtractMailPrefix()** | Etki alanı sonekini e-posta adresinden veya kullanıcı ana adından kaldırır. Bu, geçirilen kullanıcı adının yalnızca ilk bölümünü ayıklar (örneğin, "joe_smith" joe_smith@contoso.comyerine). |
+| **Katılın()** | İki öznitelik birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, birleştirme doğrulanmış bir etki alanıyla sınırlıdır. Seçili kullanıcı tanımlayıcı değerinin bir etki alanı varsa, seçilen doğrulanmış etki alanını eklemek için kullanıcı adını ayıklar. Örneğin, kullanıcı tanımlayıcı değerijoe_smith@contoso.comolarak e-postayı ( ) seçerseniz ve doğrulanmış etki alanı joe_smith@contoso.onmicrosoft.comolarak contoso.onmicrosoft.com seçerseniz, bu sonuç . |
+| **ToLower()** | Seçili öznitelik karakterlerini küçük karakterlere dönüştürür. |
+| **ToUpper()** | Seçili öznitelik karakterlerini büyük harf karakterlerine dönüştürür. |
+| **Içerir()** | Giriş belirtilen değerle eşleşiyorsa, bir öznitelik veya sabit çıkar. Aksi takdirde, eşleşme yoksa başka bir çıktı belirtebilirsiniz.<br/>Örneğin, değerin kullanıcının e-posta adresi olduğu bir talep tesbicetmek istiyorsanız, ""@contoso.cometki alanını içeriyorsa, aksi takdirde kullanıcı ana adı çıktısını almak istersiniz. Bunu yapmak için aşağıdaki değerleri yapılandırabilirsiniz:<br/>*Parametre 1(giriş)*: user.email<br/>*Değer*:@contoso.com" "<br/>Parametre 2 (çıktı): user.email<br/>Parametre 3 (eşleşme yoksa çıktı): user.userprincipalname |
+| **EndWith()** | Giriş belirtilen değerle biterse bir öznitelik veya sabit çıkar. Aksi takdirde, eşleşme yoksa başka bir çıktı belirtebilirsiniz.<br/>Örneğin, çalışan kimliği "000" ile biterse, değerin kullanıcının çalışan kimliği olduğu bir talep tesbit etmek istiyorsanız, aksi takdirde bir uzantı özniteliği çıkarmak istersiniz. Bunu yapmak için aşağıdaki değerleri yapılandırabilirsiniz:<br/>*Parametre 1(giriş)*: user.employeeid<br/>*Değer*: "000"<br/>Parametre 2 (çıktı): user.employeeid<br/>Parametre 3 (eşleşme yoksa çıktı): user.extensionattribute1 |
+| **Başlangıç()** | Giriş belirtilen değerle başlarsa bir öznitelik veya sabit çıkar. Aksi takdirde, eşleşme yoksa başka bir çıktı belirtebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlarsa, değerin kullanıcının çalışan kimliği olduğu bir talep temenni etmek istiyorsanız, aksi takdirde bir uzantı özniteliği çıkarmak istersiniz. Bunu yapmak için aşağıdaki değerleri yapılandırabilirsiniz:<br/>*Parametre 1(giriş)*: user.country<br/>*Değer*: "ABD"<br/>Parametre 2 (çıktı): user.employeeid<br/>Parametre 3 (eşleşme yoksa çıktı): user.extensionattribute1 |
+| **Extract() - Eşleştirme den sonra** | Belirtilen değerle eşleştikten sonra alt dizeyi döndürür.<br/>Örneğin, girdinin değeri "Finance_BSimon", eşleşen değer "Finance_" ise, talebin çıktısı "BSimon" olur. |
+| **Extract() - Eşleştirmeden önce** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girdinin değeri "BSimon_US", eşleşen değer "_US" ise, talebin çıktısı "BSimon"dur. |
+| **Extract() - Eşleştirme arasında** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girdinin değeri "Finance_BSimon_US", ilk eşleşen değer "Finance_", ikinci eşleşen değer "_US", sonra talebin çıktısı "BSimon" ise. |
+| **ExtractAlpha() - Önek** | Dize yekponi alfabetik kısmını verir.<br/>Örneğin, girdinin değeri "BSimon_123" ise, "BSimon" döndürür. |
+| **ExtractAlpha() - Sonek** | Dize alfabetik sonek kısmını döndürür.<br/>Örneğin, girişin değeri "123_Simon" ise, "Simon" döndürür. |
+| **ExtractNumeric() - Önek** | Dize önek sayısal kısmını döndürür.<br/>Örneğin, girişin değeri "123_BSimon" ise, "123" döndürür. |
+| **ExtractNumeric() - Sonek** | Dize sayısal bölümünü döndürür.<br/>Örneğin, girişin değeri "BSimon_123" ise, "123" döndürür. |
+| **IfEmpty()** | Giriş boş veya boşsa bir öznitelik veya sabit çıkar.<br/>Örneğin, belirli bir kullanıcının çalışan kimliği boşsa, uzantıözde depolanan bir öznitelik çıktısı almak isterseniz. Bunu yapmak için aşağıdaki değerleri yapılandırabilirsiniz:<br/>Parametre 1(giriş): user.employeeid<br/>Parametre 2 (output): user.extensionattribute1<br/>Parametre 3 (eşleşme yoksa çıktı): user.employeeid |
+| **IfNotEmpty()** | Giriş boş veya boş değilse, bir öznitelik veya sabit çıkar.<br/>Örneğin, belirli bir kullanıcının çalışan kimliği boş değilse, uzantıözözde depolanan bir öznitelik çıktısı almak isterseniz. Bunu yapmak için aşağıdaki değerleri yapılandırabilirsiniz:<br/>Parametre 1(giriş): user.employeeid<br/>Parametre 2 (output): user.extensionattribute1 |
 
-Ek Dönüştürmelere ihtiyacınız varsa, *SaaS uygulaması* kategorisi altında [Azure AD 'deki geri bildirim forumuna](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) fikir gönderin.
+Ek dönüşümlere ihtiyacınız varsa, fikrinizi *SaaS uygulama* kategorisi altındaki [Azure AD'deki geri bildirim forumunda](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) gönderin.
 
-## <a name="emitting-claims-based-on-conditions"></a>Koşullara göre talepleri yayma
+## <a name="emitting-claims-based-on-conditions"></a>Koşullara göre talep yayma
 
 Kullanıcı türüne ve kullanıcının ait olduğu gruba göre bir talebin kaynağını belirtebilirsiniz. 
 
 Kullanıcı türü şu olabilir:
-- **Any**: tüm kullanıcıların uygulamaya erişmesine izin verilir.
-- **Üyeler**: kiracının yerel üyesi
-- **Tüm konuklar**: Kullanıcı, Azure AD ile veya olmayan bir dış kuruluştan alınır.
-- **AAD konukları**: Konuk Kullanıcı Azure ad kullanan başka bir kuruluşa aittir.
-- **Dış konuklar**: Konuk Kullanıcı Azure AD olmayan bir dış kuruluşa aittir.
+- **Any**: Tüm kullanıcıların uygulamaya erişmesine izin verilir.
+- **Üyeler**: Kiracının yerli üyesi
+- **Tüm konuklar**: Kullanıcı, Azure AD'li veya Olmayan harici bir kuruluştan getirilir.
+- **AAD konukları**: Konuk kullanıcı Azure AD'yi kullanarak başka bir kuruluşa aittir.
+- **Dış konuklar**: Konuk kullanıcı, Azure REKLAMı olmayan harici bir kuruluşa aittir.
 
 
-Bunun yararlı olduğu bir senaryo, bir talebin kaynağı bir konuk ve bir uygulamaya erişen çalışan için farklılık gösteren bir senaryodur. Kullanıcı bir çalışan ise, NameID 'nin Kullanıcı. email kaynağı olduğunu belirtmek isteyebilirsiniz, ancak kullanıcı bir konuysanız, NameID User. extensionAttribute1 'tan kaynaklıdır.
+Bunun yararlı olduğu senaryolardan biri, bir talebin kaynağının bir konuk ve bir uygulamaya erişen bir çalışan için farklı olmasıdır. Kullanıcı bir çalışansa, NameID'nin user.email'den geldiğini, ancak kullanıcı konuksa NameID'nin user.extensionattribute1'den geldiğini belirtmek isteyebilirsiniz.
 
 Talep koşulu eklemek için:
 
-1. **Talep yönetme**' de talep koşullarını genişletin.
+1. **İddiayı**Yönet'te, Talep koşullarını genişletin.
 2. Kullanıcı türünü seçin.
-3. Kullanıcının ait olacağı grupları seçin. Belirli bir uygulama için tüm talepler genelinde en fazla 10 benzersiz grup seçebilirsiniz. 
-4. Talebin değerini almak için gereken **kaynağı** seçin. Kaynak özniteliği açılan listesinden bir kullanıcı özniteliği seçebilir veya bir talep olarak yaymadan önce Kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
+3. Kullanıcının ait olması gereken grubu(lar) seçin. Belirli bir uygulama için tüm talepler arasında en fazla 10 benzersiz grup seçebilirsiniz. 
+4. Talebin değerini geri alacağı **Kaynağı** seçin. Kaynak öznitelik açılır bırakarak bir kullanıcı özniteliği seçebilir veya talep olarak yaymadan önce kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
 
-Koşulları eklediğiniz sıra önemlidir. Azure AD, talebe göre hangi değerin yayacağına karar vermek için koşulları yukarıdan aşağıya değerlendirir. 
+Koşulları ekleme sırası önemlidir. Azure AD, talepte hangi değeri yayışacağına karar vermek için koşulları yukarıdan aşağıya doğru değerlendirir. 
 
-Örneğin, Brita Simon, contoso kiracısındaki bir Konuk Kullanıcı. Aynı zamanda Azure AD kullanan başka bir kuruluşa aittir. Fabrikam uygulaması için aşağıdaki yapılandırma verildiğinde, Brita Fabrikam ' ta oturum açmaya çalıştığında Azure AD, koşulları takip edecek şekilde değerlendirir.
+Örneğin, Brita Simon Contoso kiracı bir konuk kullanıcıdır. Azure AD kullanan başka bir kuruluşa ait. Fabrikam uygulaması için aşağıdaki yapılandırma göz önüne alındığında, Brita Fabrikam'da oturum açmaya çalıştığında, Azure AD aşağıdaki koşulları değerlendirecektir.
 
-İlk olarak, Azure AD, Brita 'ın Kullanıcı türünün `All guests`olup olmadığını doğrular. Bu, doğru olduğundan Azure AD, `user.extensionattribute1`talebine yönelik kaynağı atar. İkinci olarak, Azure AD, Brita 'ın Kullanıcı türünün `AAD guests`olup olmadığını doğrular, bu da doğru olduğundan Azure AD, talebin kaynağını `user.mail`atar. Son olarak, talep, Brita için `user.email` değer ile yayılır.
+İlk olarak, Azure AD, Brita'nın `All guests`kullanıcı türü. Bu doğrudur, sonra Azure AD iddia için kaynak `user.extensionattribute1`atar. İkinci olarak, Azure AD, Brita'nın `AAD guests`kullanıcı türü olup olmadığını doğrular, çünkü bu `user.mail`da doğrudur, azure AD talep için kaynak atar. Son olarak, iddia Brita `user.email` için değer ile yayılır.
 
-![Talep koşullu yapılandırması](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
+![Koşullu yapılandırma talepleri](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD 'de uygulama yönetimi](../manage-apps/what-is-application-management.md)
-* [Azure AD uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML tabanlı çoklu oturum açma sorunlarını giderme](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Azure AD'de uygulama yönetimi](../manage-apps/what-is-application-management.md)
+* [Azure AD uygulama galerisinde olmayan uygulamaları tek oturum açma işlemlerini yapılandırma](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Sorun giderme SAML tabanlı tek oturum açma](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

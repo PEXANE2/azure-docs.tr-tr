@@ -1,163 +1,163 @@
 ---
-title: Kavramlar-Azure Kubernetes hizmetlerinde (AKS) ağ oluşturma
-description: Azure Kubernetes hizmeti 'nde (AKS), Kubernetes kullanan ve Azure CNı ağı, giriş denetleyicileri, yük dengeleyiciler ve statik IP adresleri dahil ağ hakkında bilgi edinin.
+title: Kavramlar - Azure Kubernetes Hizmetlerinde Ağ Oluşturma (AKS)
+description: Kubenet ve Azure CNI ağ, giriş denetleyicileri, yük dengeleyicileri ve statik IP adresleri dahil olmak üzere Azure Kubernetes Hizmeti'nde (AKS) ağ ağı hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253942"
 ---
-# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
+# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti 'ndeki (AKS) uygulamalar için ağ kavramları
 
-Uygulama geliştirmeye yönelik kapsayıcı tabanlı mikro hizmetler yaklaşımında, uygulama bileşenlerinin görevlerini işlemek için birlikte çalışması gerekir. Kubernetes, bu uygulama iletişimini sağlayan çeşitli kaynaklar sağlar. Uygulamalara bir veya harici olarak bağlanabilir ve bunları kullanıma sunabilirsiniz. Yüksek oranda kullanılabilir uygulamalar oluşturmak için uygulamalarınızın yükünü dengeleyebilirsiniz. Daha karmaşık uygulamalar, SSL/TLS sonlandırması veya birden çok bileşenin yönlendirilmesi için giriş trafiğinin yapılandırılmasını gerektirebilir. Güvenlik nedenleriyle, ağ trafiğinin akışını veya düğüm ve düğümler arasında kısıtlamak da gerekebilir.
+Uygulama geliştirmeye kapsayıcı tabanlı mikro hizmetler yaklaşımında, uygulama bileşenleri görevlerini işlemek için birlikte çalışmalıdır. Kubernetes bu uygulama iletişimi sağlayan çeşitli kaynaklar sağlar. Uygulamalara dahili veya harici olarak bağlanabilir ve bunları ortaya çıkarabilirsiniz. Yüksek kullanılabilir uygulamalar oluşturmak için, uygulamalarınızı dengeyükleyebilirsiniz. Daha karmaşık uygulamalar, Birden çok bileşenin SSL/TLS sonlandırılması veya yönlendirmesi için giriş trafiğinin yapılandırmasını gerektirebilir. Güvenlik nedenleriyle, ağ trafiğinin bölmelere ve düğümlere veya bunlar arasına akışını kısıtlamanız da gerekebilir.
 
-Bu makalede, AKS 'teki uygulamalarınıza ağ iletişimi sağlayan temel kavramlar tanıtılmaktadır:
+Bu makalede, AKS uygulamalarınıza ağ sağlayan temel kavramlar tanıtışlar:
 
 - [Hizmetler](#services)
-- [Azure sanal ağları](#azure-virtual-networks)
+- [Azure sanal ağlar](#azure-virtual-networks)
 - [Giriş denetleyicileri](#ingress-controllers)
 - [Ağ ilkeleri](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Kubernetes hakkında temel bilgiler
 
-Uygulamalarınıza erişime izin vermek veya uygulama bileşenlerinin birbirleriyle iletişim kurması için Kubernetes, sanal ağ için bir soyutlama katmanı sağlar. Kubernetes düğümleri bir sanal ağa bağlanır ve pods için gelen ve giden bağlantılar sağlayabilir. *Kuin-proxy* bileşeni, bu ağ özelliklerini sağlamak için her düğümde çalışır.
+Kubernetes, uygulamalarınız için erişime izin vermek veya uygulama bileşenlerinin birbiriyle iletişim kurabilmesi için sanal ağa bir soyutlama katmanı sağlar. Kubernetes düğümleri sanal bir ağa bağlıdır ve bölmeler için gelen ve giden bağlantı sağlayabilir. *Kube-proxy* bileşeni bu ağ özelliklerini sağlamak için her düğümüzerinde çalışır.
 
-Kubernetes 'te *Hizmetler* , IP adresi veya DNS adı üzerinden ve belirli bir bağlantı noktası üzerinden doğrudan erişime izin vermek üzere Pod 'yi mantıksal olarak gruplar. Ayrıca, *yük dengeleyici*kullanarak trafik dağıtabilirsiniz. Uygulama trafiğinin daha karmaşık yönlendirmesi, giriş *denetleyicileriyle*de elde edilebilir. Kubernetes *ağ ilkeleriyle*, pod için ağ trafiğinin güvenliği ve filtrelenmesi mümkündür.
+Kubernetes'te, *Hizmetler* bir IP adresi veya DNS adı üzerinden ve belirli bir bağlantı noktasında doğrudan erişime izin vermek için bölmeleri mantıksal olarak gruplandırır. Ayrıca *bir yük dengeleyici*kullanarak trafik dağıtabilirsiniz. Giriş Denetleyicileri ile uygulama trafiğinin daha karmaşık *yönlendirmesi*de sağlanabilir. Kubernetes *ağ ilkeleri*ile bölmeler için ağ trafiğinin güvenliği ve filtrelemi mümkündür.
 
-Azure platformu, AKS kümeleri için sanal ağı basitleştirmeye de yardımcı olur. Bir Kubernetes yük dengeleyici oluşturduğunuzda, temel alınan Azure yük dengeleyici kaynağı oluşturulur ve yapılandırılır. Ağ bağlantı noktalarını pods 'de açtığınızda, karşılık gelen Azure ağ güvenlik grubu kuralları yapılandırılır. HTTP uygulama yönlendirmesi için, Azure *dış DNS* 'i de yeni giriş yolları yapılandırıldığında yapılandırabilir.
+Azure platformu, AKS kümeleri için sanal ağ landırmayı basitleştirmeye de yardımcı olur. Bir Kubernetes yük dengeleyicisi oluşturduğunuzda, temel Azure yük dengeleyici sayılsa da, temel Azure yük dengeleyicisi kaynağı oluşturulur ve yapılandırılır. Ağ bağlantı noktalarını bölmelere açtıkça, ilgili Azure ağ güvenlik grubu kuralları yapılandırılır. HTTP uygulama yönlendirmesi için Azure, yeni giriş yolları yapılandırıldıkça *harici DNS'yi* de yapılandırabilir.
 
 ## <a name="services"></a>Hizmetler
 
-Kubernetes, uygulama iş yüklerine yönelik ağ yapılandırmasını basitleştirmek için *Hizmetleri* kullanarak bir grup kümesini mantıksal olarak gruplamak ve ağ bağlantısı sağlamaktır. Aşağıdaki hizmet türleri kullanılabilir:
+Uygulama iş yükleri için ağ yapılandırmasını kolaylaştırmak için Kubernetes, bir bölme kümesini mantıksal olarak gruplandırmak ve ağ bağlantısı sağlamak için *Hizmetleri* kullanır. Aşağıdaki Hizmet türleri kullanılabilir:
 
-- **Küme IP** -aks kümesi içinde kullanılmak üzere BIR iç IP adresi oluşturur. Küme içindeki diğer iş yüklerini destekleyen yalnızca dahili uygulamalar için uygundur.
+- **Cluster IP** - AKS kümesi içinde kullanılmak üzere dahili bir IP adresi oluşturur. Kümedeki diğer iş yüklerini destekleyen yalnızca dahili uygulamalar için iyidir.
 
-    ![AKS kümesinde Küme IP trafiği akışını gösteren diyagram][aks-clusterip]
+    ![Aks kümesindeki Küme IP trafik akışını gösteren diyagram][aks-clusterip]
 
-- **NodePort** -temel düğümde, uygulamaya doğrudan düğüm IP adresi ve bağlantı noktasıyla erişilmesine izin veren bir bağlantı noktası eşlemesi oluşturur.
+- **NodePort** - Uygulamanın doğrudan düğüm IP adresi ve bağlantı noktası ile erişilmesine olanak tanıyan temel düğüm üzerinde bir bağlantı noktası eşleme oluşturur.
 
-    ![AKS kümesinde NodePort trafik akışını gösteren diyagram][aks-nodeport]
+    ![Aks kümesindeki NodePort trafik akışını gösteren diyagram][aks-nodeport]
 
-- **LoadBalancer** -bir Azure yük dengeleyici kaynağı oluşturur, bir dış IP adresi yapılandırır ve istenen Pod 'leri yük dengeleyici arka uç havuzuna bağlar. Müşterilerin trafiğinin uygulamaya erişmesine izin vermek için, istenen bağlantı noktalarında Yük Dengeleme kuralları oluşturulur. 
+- **LoadBalancer** - Bir Azure yük dengeleyici kaynağı oluşturur, harici bir IP adresi yapılandırır ve istenen bölmeleri yük dengeleyici arka uç havuzuna bağlar. Müşterilerin trafiğinin uygulamaya ulaşmasını sağlamak için, istenilen bağlantı noktalarında yük dengeleme kuralları oluşturulur. 
 
-    ![AKS kümesinde Load Balancer trafik akışını gösteren diyagram][aks-loadbalancer]
+    ![AKS kümesindeki Yük Dengeleyici trafik akışını gösteren diyagram][aks-loadbalancer]
 
-    Gelen trafiğin ek denetimi ve yönlendirmesi için, bunun yerine bir giriş [denetleyicisi](#ingress-controllers)de kullanabilirsiniz.
+    Ek denetim ve gelen trafiğin yönlendirmesi için, bunun yerine bir [Giriş denetleyicisi](#ingress-controllers)kullanabilirsiniz.
 
-- **ExternalName** -daha kolay uygulama erişimi için belırlı bir DNS girişi oluşturur.
+- **ExternalName** - Daha kolay uygulama erişimi için belirli bir DNS girişi oluşturur.
 
-Yük dengeleyiciler ve hizmetler için IP adresi dinamik olarak atanabilir veya kullanılacak mevcut bir statik IP adresi belirtebilirsiniz. Hem iç hem de dış statik IP adresleri atanabilir. Bu var olan statik IP adresi genellikle bir DNS girdisine bağlıdır.
+Yük dengeleyicileri ve hizmetleri için IP adresi dinamik olarak atanabilir veya kullanılacak varolan statik bir IP adresi belirtebilirsiniz. Hem iç hem de dış statik IP adresleri atanabilir. Bu varolan statik IP adresi genellikle bir DNS girişine bağlıdır.
 
-Hem *iç* hem de *dış* yük dengeleyiciler oluşturulabilir. İç yük dengeleyiciler için yalnızca özel bir IP adresi atanır, bu nedenle Internet 'ten erişilemez.
+Hem *iç* hem de *dış* yük dengeleyicileri oluşturulabilir. Dahili yük dengeleyicilerine yalnızca özel bir IP adresi atanmıştır, bu nedenle Internet'ten erişilemezler.
 
 ## <a name="azure-virtual-networks"></a>Azure sanal ağları
 
-AKS 'de, aşağıdaki iki ağ modelinden birini kullanan bir küme dağıtabilirsiniz:
+AKS'de aşağıdaki iki ağ modelinden birini kullanan bir küme dağıtabilirsiniz:
 
-- *Kubenet* Networking-ağ kaynakları genellikle aks kümesi dağıtıldığında oluşturulur ve yapılandırılır.
-- *Azure Container Network Interface (CNı)* ağı-aks kümesi var olan sanal ağ kaynaklarına ve yapılandırmalara bağlanır.
+- *Kubenet* ağ - Aks kümesi dağıtıldıkça ağ kaynakları genellikle oluşturulur ve yapılandırılır.
+- *Azure Kapsayıcı Ağ Arabirimi (CNI)* ağ - AKS kümesi varolan sanal ağ kaynaklarına ve yapılandırmalarına bağlıdır.
 
 ### <a name="kubenet-basic-networking"></a>Kubenet (temel) ağ
 
-*Kubernetes kullanan* Networking seçeneği, aks kümesi oluşturma için varsayılan yapılandırmadır. *Kubernetes kullanan*ile, düğümler Azure sanal ağ alt ağından bir IP adresi alır. Pods, mantıksal olarak farklı bir adres alanından düğümlerin Azure sanal ağ alt ağına bir IP adresi alır. Ağ adresi çevirisi (NAT), daha sonra, Azure sanal ağındaki kaynaklara ulaşabilmesi için yapılandırılır. Trafiğin kaynak IP adresi NAT ' dır ve düğümün birincil IP adresidir.
+*Kubenet* ağ seçeneği AKS küme oluşturma için varsayılan yapılandırmadır. *Kubenet*ile düğümler Azure sanal ağ alt netinden bir IP adresi alır. Podlar, düğümlerin Azure sanal ağ alt ağından mantıksal olarak farklı bir adres alanından IP adresi alır. Ardından podların Azure sanal ağındaki kaynaklara erişebilmesi için ağ adresi çevirisi (NAT) yapılandırması gerçekleştirilir. Trafiğin kaynak IP adresi düğümün birincil IP adresine NAT'd'dir.
 
-Düğümler [Kubernetes kullanan][kubenet] Kubernetes eklentisini kullanır. Azure platformunun sizin için sanal ağlar oluşturmasına ve yapılandırmasına izin verebilir veya AKS kümenizi mevcut bir sanal ağ alt ağına dağıtmayı seçebilirsiniz. Yine, yalnızca düğümler yönlendirilebilir bir IP adresi alır ve IP 'ler, AKS kümesi dışındaki diğer kaynaklarla iletişim kurmak için NAT kullanır. Bu yaklaşım, Pod 'nin kullanabilmesi için ağ alanınızda ayırmanız gereken IP adresi sayısını önemli ölçüde azaltır.
+Düğümler [kubenet][kubenet] Kubernetes eklentisini kullanır. Azure platformunun sizin için sanal ağları oluşturmasına ve yapılandırmasına izin verebilir veya AKS kümenizi varolan bir sanal ağ alt ağına dağıtmayı seçebilirsiniz. Yine, yalnızca düğümler bir routable IP adresi alırsınız ve bölmeler AKS kümesi dışındaki diğer kaynaklarla iletişim kurmak için NAT kullanır. Bu yaklaşım, bölmelerin kullanabilmesi için ağ alanınızda ayırmanız gereken IP adreslerinin sayısını büyük ölçüde azaltır.
 
-Daha fazla bilgi için bkz. [AKS kümesi için Kubernetes kullanan ağını yapılandırma][aks-configure-kubenet-networking].
+Daha fazla bilgi için, [bir AKS kümesi için kubenet ağ yapılandırma'ya][aks-configure-kubenet-networking]bakın.
 
-### <a name="azure-cni-advanced-networking"></a>Azure CNı (Gelişmiş) ağı
+### <a name="azure-cni-advanced-networking"></a>Azure CNI (gelişmiş) ağ
 
-Azure CNı ile her Pod, alt ağdan bir IP adresi alır ve doğrudan erişilebilir. Bu IP adresleri, ağ alanınızda benzersiz olmalı ve önceden planlanmalıdır. Her düğümün desteklediği en fazla sayıda düğüm için bir yapılandırma parametresi vardır. Düğüm başına düşen IP adresi sayısı, bu düğüm için önde ayrılır. Bu yaklaşım daha fazla planlama gerektirir, aksi takdirde IP adresi tükenmesi veya uygulamanızın beklentilerinde daha büyük bir alt ağda kümeleri yeniden oluşturma gereksinimine yol açabilir.
+Azure CNI seçeneğinde her pod, alt ağdan doğrudan erişilebilen bir IP adresi alır. Bu IP adresleri ağ alanınızda benzersiz olmalıdır ve önceden planlanmalıdır. Her düğüm, desteklediği en fazla bölme sayısı için bir yapılandırma parametresi vardır. Düğüm başına eşdeğer IP adresi sayısı, bu düğüm için ön tarafta ayrılmıştır. Bu yaklaşım, ip adresi tükenmesine veya uygulama talepleriniz arttıkça kümeleri daha büyük bir alt ağda yeniden oluşturma gereksinimine yol açabileceğinden, daha fazla planlama gerektirir.
 
-Düğümler [Azure Container Networking Interface (CNı)][cni-networking] Kubernetes eklentisini kullanır.
+Düğümler Azure [Kapsayıcı Ağ Arabirimi (CNI)][cni-networking] Kubernetes eklentisini kullanır.
 
-![Her biri tek bir Azure VNet 'e bağlanan köprülerle iki düğüm gösteren diyagram][advanced-networking-diagram]
+![Her biri tek bir Azure VNet'e bağlanan köprüleri olan iki düğümü gösteren diyagram][advanced-networking-diagram]
 
-Daha fazla bilgi için bkz. [AKS kümesi Için Azure CNI yapılandırma][aks-configure-advanced-networking].
+Daha fazla bilgi için, [bir AKS kümesi için Azure CNI'yi Yapılandır' a][aks-configure-advanced-networking]bakın.
 
 ### <a name="compare-network-models"></a>Ağ modellerini karşılaştırın
 
-Kubernetes kullanan ve Azure CNı, AKS kümeleriniz için ağ bağlantısı sağlar. Ancak, her birinin avantajları ve dezavantajları vardır. Yüksek düzeyde, aşağıdaki noktalar geçerlidir:
+Hem kubenet hem de Azure CNI, AKS kümeleriniz için ağ bağlantısı sağlar. Ancak, her biri için avantajları ve dezavantajları vardır. Yüksek düzeyde, aşağıdaki hususlar geçerlidir:
 
-* **Kubernetes kullanan**
+* **kubenet**
     * IP adresi alanını korur.
-    * Küme dışından yük dengelemek için Kubernetes iç veya dış yük dengeleyici kullanır.
-    * Kullanıcı tanımlı yolları (UDRs) el ile yönetmeniz ve korumanız gerekir.
+    * Kümenin dışından bölmelere ulaşmak için Kubernetes dahili veya harici yük dengeleyicisini kullanır.
+    * Kullanıcı tanımlı rotaları (ÜDR) el ile yönetmeli ve korumalısınız.
     * Küme başına en fazla 400 düğüm.
-* **Azure CNı**
-    * Tam sanal ağ bağlantısı alın ve bağlı ağlardan özel IP adresleri aracılığıyla doğrudan erişilebilir.
-    * Daha fazla IP adres alanı gerektirir.
+* **Azure CNI**
+    * Podlar tam sanal ağ bağlantısına sahip olur ve bağlı ağlardan özel IP adresleri üzerinden doğrudan ulaşılabilir.
+    * Daha fazla IP adresi alanı gerektirir.
 
-Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkları vardır:
+Kubenet ve Azure CNI arasında aşağıdaki davranış farklılıkları vardır:
 
-| Özellik                                                                                   | Kubernetes kullanan   | Azure CNı |
+| Özellik                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Destekleniyor |
-| Pod-POD bağlantısı                                                                         | Destekleniyor | Destekleniyor |
-| Pod-VM bağlantısı; Aynı sanal ağdaki VM                                          | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| Pod-VM bağlantısı; Eşlenen sanal ağdaki VM                                            | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| VPN veya Express Route kullanarak şirket içi erişim                                                | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Destekleniyor | Destekleniyor |
-| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Destekleniyor | Destekleniyor |
-| Varsayılan Azure DNS ve özel bölgeler                                                          | Destekleniyor | Destekleniyor |
+| Varolan veya yeni sanal ağda küme dağıtma                                            | Desteklenen - El ile uygulanan ÜTR'ler | Destekleniyor |
+| Pod-pod bağlantısı                                                                         | Destekleniyor | Destekleniyor |
+| Pod-VM bağlantısı; Aynı sanal ağda VM                                          | Pod tarafından başlatıldığında çalışır | Her iki şekilde de çalışır |
+| Pod-VM bağlantısı; Eşli sanal ağda VM                                            | Pod tarafından başlatıldığında çalışır | Her iki şekilde de çalışır |
+| VPN veya Express Route kullanarak şirket içi erişim                                                | Pod tarafından başlatıldığında çalışır | Her iki şekilde de çalışır |
+| Hizmet bitiş noktalarıtarafından güvence altına alınmıştır kaynaklara erişim                                             | Destekleniyor | Destekleniyor |
+| Kubernetes hizmetlerini yük dengeleyici hizmeti, App Gateway veya giriş denetleyicisi kullanarak ortaya çıkarma | Destekleniyor | Destekleniyor |
+| Varsayılan Azure DNS ve Özel Bölgeler                                                          | Destekleniyor | Destekleniyor |
 
-Hem Kubernetes kullanan hem de Azure CNı eklentileri DNS ile ilgili olarak, AKS 'de çalışan bir Daemon kümesi olan CoreDNS tarafından sunulur. Kubernetes üzerinde CoreDNS hakkında daha fazla bilgi için bkz. [DNS hizmetini özelleştirme](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS, bilinmeyen etki alanlarını düğüm DNS sunucularına, diğer bir deyişle, AKS kümesinin dağıtıldığı Azure sanal ağının DNS işlevselliğine iletmek üzere varsayılan olarak yapılandırılır. Bu nedenle, Azure DNS ve özel bölgeler aks 'de çalışan Pod 'ler için çalışacaktır.
+DNS ile ilgili olarak, hem kubenet hem de Azure CNI eklentileri ile DNS, AKS'de çalışan bir daemon seti olan CoreDNS tarafından sunulmaktadır. Kubernetes coredns hakkında daha fazla bilgi için [DNS Hizmeti Özelleştirme](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)bakın. CoreDNS varsayılan başına, bilinmeyen etki alanlarını düğüm DNS sunucularına, başka bir deyişle AKS kümesinin dağıtıldığı Azure Sanal Ağı'nın DNS işlevine iletmek üzere yapılandırılır. Bu nedenle, Azure DNS ve Özel Bölgeler AKS'de çalışan bölmeler için çalışır.
 
-### <a name="support-scope-between-network-models"></a>Ağ modelleri arasındaki Destek kapsamı
+### <a name="support-scope-between-network-models"></a>Ağ modelleri arasındaki destek kapsamı
 
-Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem de Azure CNı aşağıdaki yollarla dağıtılabilir:
+Kullandığınız ağ modeline bakılmaksızın, hem kubenet hem de Azure CNI aşağıdaki yollardan biriyle dağıtılabilir:
 
-* Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
-* Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
+* Azure platformu, bir AKS kümesi oluşturduğunuzda sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
+* Aks kümenizi oluştururken sanal ağ kaynaklarını el ile oluşturabilir ve yapılandırabilir ve bu kaynaklara ekleyebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
+Hizmet bitiş noktaları veya ÜD'ler gibi özellikler hem kubenet hem de Azure CNI ile desteklenmiş olsa da, [AKS için destek ilkeleri][support-policies] hangi değişiklikleri yapabileceğinizi tanımlar. Örnek:
 
-* Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
-* Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.
+* Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi ÜTR'lerinizi veya hizmet uç noktalarınızı yapılandırırken desteklenirsiniz.
+* Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturuyorsa, kendi ÜrKP'lerinizi veya hizmet bitiş noktalarınızı yapılandırmak için AKS tarafından yönetilen kaynakları el ile değiştirmek için desteklenmez.
 
 ## <a name="ingress-controllers"></a>Giriş denetleyicileri
 
-Bir LoadBalancer tür hizmeti oluşturduğunuzda, temel alınan bir Azure yük dengeleyici kaynağı oluşturulur. Yük dengeleyici, trafiği belirli bir bağlantı noktasında hizmetinize dağıtmak üzere yapılandırılmıştır. LoadBalancer yalnızca katman 4 ' te çalışıyor-hizmet gerçek uygulamalardan haberdar değildir ve ek yönlendirme konuları yapamaz.
+LoadBalancer türünde bir Hizmet oluşturduğunuzda, altta yatan bir Azure yük dengeleyici kaynağı oluşturulur. Yük dengeleyicisi, belirli bir bağlantı noktasında Hizmetinizdeki bölmelere trafik dağıtmak üzere yapılandırılır. LoadBalancer yalnızca katman 4'te çalışır - Hizmet gerçek uygulamalardan habersizdir ve ek yönlendirme hususları yapamaz.
 
-Giriş *denetleyicileri* katman 7 ' de çalışır ve uygulama trafiğini dağıtmak için daha akıllı kurallar kullanabilir. Bir giriş denetleyicisinin yaygın kullanımı, HTTP trafiğini gelen URL 'yi temel alarak farklı uygulamalara yönlendirkullanmaktır.
+*Giriş denetleyicileri* katman 7'de çalışır ve uygulama trafiğini dağıtmak için daha akıllı kurallar kullanabilir. Giriş denetleyicisinin yaygın kullanımı, HTTP trafiğini gelen URL'ye göre farklı uygulamalara yönlendirmektir.
 
-![AKS kümesinde giriş trafiği akışını gösteren diyagram][aks-ingress]
+![AKS kümesindeki Giriş trafik akışını gösteren diyagram][aks-ingress]
 
-AKS 'de NGıNX gibi bir giriş kaynağı oluşturabilir veya AKS HTTP uygulama yönlendirme özelliğini kullanabilirsiniz. Bir AKS kümesi için HTTP uygulama yönlendirmeyi etkinleştirdiğinizde, Azure platformu giriş denetleyicisi ve bir *dış DNS* denetleyicisi oluşturur. Kubernetes 'te yeni giriş kaynakları oluşturulduğu için, gerekli DNS A kayıtları kümeye özgü bir DNS bölgesinde oluşturulur. Daha fazla bilgi için bkz. [http uygulaması yönlendirmeyi dağıtma][aks-http-routing].
+AKS'de, NGINX gibi bir şeyi kullanarak bir Giriş kaynağı oluşturabilir veya AKS HTTP uygulama yönlendirme özelliğini kullanabilirsiniz. Bir AKS kümesi için HTTP uygulama yönlendirmesini etkinleştirdiğinizde, Azure platformu Giriş denetleyicisi ve *harici DNS* denetleyicisi oluşturur. Kubernetes'te yeni Giriş kaynakları oluşturuldukça, kümeye özgü bir DNS bölgesinde gerekli DNS A kayıtları oluşturulur. Daha fazla bilgi için [http uygulama yönlendirmesi dağıtma'ya][aks-http-routing]bakın.
 
-Giriş ın başka bir ortak özelliği SSL/TLS sonlandırmasından oluşur. HTTPS üzerinden erişilen büyük Web uygulamalarında TLS sonlandırma, uygulamanın kendisi yerine giriş kaynağı tarafından işlenebilir. Otomatik TLS sertifikası oluşturma ve yapılandırma sağlamak için giriş kaynağını, şifrelemem gibi sağlayıcıları kullanacak şekilde yapılandırabilirsiniz. NGıNX giriş denetleyicisini Izin Verirme ile yapılandırma hakkında daha fazla bilgi için bkz. giriş [ve TLS][aks-ingress-tls].
+Giriş'in bir diğer yaygın özelliği de SSL/TLS sonlandırmadır. HTTPS üzerinden erişilen büyük web uygulamalarında TLS sonlandırma, uygulamanın kendisi yerine Giriş kaynağı tarafından işlenebilir. Otomatik TLS sertifika oluşturma ve yapılandırma sağlamak için, Ingress kaynağını Let's Encrypt gibi sağlayıcıları kullanacak şekilde yapılandırabilirsiniz. Let's Encrypt ile NGINX Ingress denetleyicisi yapılandırma hakkında daha fazla bilgi için [Giriş ve TLS'ye][aks-ingress-tls]bakın.
 
-Ayrıca, Alım denetleyicinizi, AKS kümenizdeki kapsayıcılara yönelik isteklerde istemci kaynak IP 'sini koruyacak şekilde yapılandırabilirsiniz. Bir istemcinin isteği, Alım denetleyiciniz aracılığıyla AKS kümenizdeki bir kapsayıcıya yönlendirilince, bu isteğin özgün kaynak IP 'si hedef kapsayıcı için kullanılamaz. *İstemci kaynak IP korumasını*etkinleştirdiğinizde, istemcisinin kaynak IP 'Si, *for Için X-iletilen*istek üstbilgisinde kullanılabilir. Giriş denetleyicinizde istemci kaynak IP korumasını kullanıyorsanız SSL geçişini kullanamazsınız. İstemci kaynak IP koruması ve SSL geçişi, *yük dengeleyici* türü gibi diğer hizmetlerle birlikte kullanılabilir.
+Aks kümenizdeki kapsayıcılara gelen isteklerde istemci kaynak IP'yi korumak için giriş denetleyicinizi de yapılandırabilirsiniz. İstemci isteği giriş denetleyiciniz aracılığıyla AKS kümenizdeki bir kapsayıcıya yönlendirildiğinde, bu isteğin özgün kaynak IP'si hedef kapsayıcıda kullanılamaz. *İstemci kaynağı IP*korumaetkinleştirdiğinizde, istemci için kaynak IP *X-Forwarded-For*altında istek üstbilgisinde kullanılabilir. Giriş denetleyicinizde istemci kaynağı IP koruma kullanıyorsanız, SSL geçişini kullanamazsınız. İstemci kaynağı IP koruma ve SSL *geçişloadBalancer* türü gibi diğer hizmetlerile kullanılabilir.
 
 ## <a name="network-security-groups"></a>Ağ güvenlik grupları
 
-Ağ güvenlik grubu, sanal makineler için AKS düğümleri gibi trafiği filtreler. Yük dengeleyici gibi hizmetler oluştururken Azure platformu, gereken tüm ağ güvenlik grubu kurallarını otomatik olarak yapılandırır. Bir aks kümesindeki Pod trafiğini filtrelemek için ağ güvenlik grubu kurallarını el ile yapılandırmayın. Tüm gerekli bağlantı noktalarını ve Kubernetes hizmet bildirimlerinizi kapsamında iletme ve Azure platformunun uygun kuralları oluşturmasına veya güncelleştirmesine izin verin. Ayrıca, trafik filtresi kurallarını pods 'ye otomatik olarak uygulamak için, sonraki bölümde açıklandığı gibi ağ ilkelerini de kullanabilirsiniz.
+Ağ güvenlik grubu, AKS düğümleri gibi VM'ler için trafiği filtreler. LoadBalancer gibi Hizmetler oluşturduğunuzda, Azure platformu gereken ağ güvenlik grubu kurallarını otomatik olarak yapılandırır. Aks kümesindeki bölmetrafiğini filtrelemek için ağ güvenlik grubu kurallarını el ile yapılandırmayın. Gerekli bağlantı noktalarını ve iletmeleri Kubernetes Hizmet bildirimlerinizin bir parçası olarak tanımlayın ve Azure platformunun uygun kuralları oluşturmasına veya güncelleştirmesine izin verin. Bir sonraki bölümde belirtildiği gibi ağ ilkelerini de kullanarak bölmelere trafik filtresi kurallarını otomatik olarak uygulayabilirsiniz.
 
 ## <a name="network-policies"></a>Ağ ilkeleri
 
-Varsayılan olarak, bir AKS kümesindeki tüm FID 'ler kısıtlama olmadan trafik gönderebilir ve alabilir. Gelişmiş güvenlik için trafik akışını denetleyen kuralları tanımlamak isteyebilirsiniz. Arka uç uygulamaları genellikle yalnızca gerekli ön uç hizmetlerine sunulur veya veritabanı bileşenlerine yalnızca bunlara bağlanan uygulama katmanları erişilebilir.
+Varsayılan olarak, bir AKS kümesindeki tüm bölmeler herhangi bir sınırlama olmaksızın trafik gönderebilir ve alabilir. Gelişmiş güvenlik için, trafik akışını kontrol eden kuralları tanımlamak isteyebilirsiniz. Arka uç uygulamaları genellikle yalnızca gerekli ön uç hizmetlerine maruz kalır veya veritabanı bileşenlerine yalnızca bunlara bağlanan uygulama katmanları tarafından erişilebilir.
 
-Ağ ilkesi, AKS 'de bulunan ve pods arasındaki trafik akışını denetlemenize olanak tanıyan bir Kubernetes özelliğidir. Atanmış Etiketler, ad alanı veya trafik bağlantı noktası gibi ayarlara göre trafiğe izin vermeyi veya reddetme seçeneğini belirleyebilirsiniz. Ağ güvenlik grupları, pods değil AKS düğümleri için daha fazla. Ağ ilkelerinin kullanımı, trafik akışını denetlemek için daha uygun, bulutta yerel bir yoldur. Bir AKS kümesinde dinamik olarak oluşturulan bir ağ ilkesi varsa, gerekli ağ ilkeleri otomatik olarak uygulanabilir.
+Ağ ilkesi, AKS'de bulunan ve bölmeler arasındaki trafik akışını denetlemenize olanak tanıyan bir Kubernetes özelliğidir. Atanan etiketler, ad alanı veya trafik bağlantı noktası gibi ayarlara göre trafiğe izin vermeyi veya reddetmeyi seçebilirsiniz. Ağ güvenlik grupları daha çok AKS düğümleri içindir, bölmeler için değil. Ağ ilkelerinin kullanımı, trafik akışını denetlemek için daha uygun, buluta özgü bir yoldur. Bir AKS kümesinde bölmedinamik olarak oluşturulduğundan, gerekli ağ ilkeleri otomatik olarak uygulanabilir.
 
-Daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) içindeki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme][use-network-policies].
+Daha fazla bilgi için bkz: [Azure Kubernetes Hizmeti'nde (AKS) ağ ilkelerini kullanarak bölmeler arasındaki güvenli trafiği.][use-network-policies]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aks ağıyla çalışmaya başlamak için, [Kubernetes kullanan][aks-configure-kubenet-networking] veya [Azure CNI][aks-configure-advanced-networking]kullanarak kendi IP adresi aralığınızla bir aks kümesi oluşturun ve yapılandırın.
+AKS ağ ile başlamak [için, kubenet][aks-configure-kubenet-networking] veya [Azure CNI][aks-configure-advanced-networking]kullanarak kendi IP adres aralıkları ile bir AKS kümesi oluşturun ve yapılandırın.
 
-İlişkili en iyi uygulamalar için bkz. [AKS 'de ağ bağlantısı ve güvenlik Için en iyi uygulamalar][operator-best-practices-network].
+İlişkili en iyi uygulamalar [için AKS'de ağ bağlantısı ve güvenliği için en iyi uygulamalara][operator-best-practices-network]bakın.
 
-Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Çekirdek Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Kubernetes/AKS kümeleri ve iş yükleri][aks-concepts-clusters-workloads]
-- [Kubernetes/AKS erişimi ve kimliği][aks-concepts-identity]
-- [Kubernetes/AKS güvenliği][aks-concepts-security]
-- [Kubernetes/AKS depolaması][aks-concepts-storage]
-- [Kubernetes/AKS ölçeği][aks-concepts-scale]
+- [Kubernetes / AKS kümeleri ve iş yükleri][aks-concepts-clusters-workloads]
+- [Kubernetes / AKS erişim ve kimlik][aks-concepts-identity]
+- [Kubernetes / AKS güvenlik][aks-concepts-security]
+- [Kubernetes / AKS depolama][aks-concepts-storage]
+- [Kubernetes / AKS ölçeği][aks-concepts-scale]
 
 <!-- IMAGES -->
 [aks-clusterip]: ./media/concepts-network/aks-clusterip.png

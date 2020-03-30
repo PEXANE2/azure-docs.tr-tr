@@ -1,136 +1,136 @@
 ---
-title: Azure Site Recovery ve PowerShell kullanarak Hyper-V VM olağanüstü durum kurtarma
-description: PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'lerinin olağanüstü durum kurtarma işlemini Azure Site Recovery hizmetiyle Azure 'a otomatikleştirin.
+title: Azure Site Kurtarma ve PowerShell kullanarak Hyper-V VM olağanüstü durum kurtarma
+description: PowerShell ve Azure Kaynak Yöneticisi'ni kullanarak Azure Site Kurtarma hizmetiyle Hyper-V VM'lerin olağanüstü durum kurtarmasını Azure'a otomatikleştirin.
 author: sujayt
 manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257998"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Kaynak Yöneticisi'ni kullanarak Hyper-V V MM'ler için Azure'da olağanüstü durum kurtarma ayarlama
 
-[Azure Site Recovery](site-recovery-overview.md) , Azure sanal makinelerini (VM) ve şirket Içi VM 'leri ve fiziksel sunucuları çoğaltma, yük devretme ve kurtarma işlemlerini düzenleyerek iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur.
+[Azure Site Kurtarma,](site-recovery-overview.md) Azure sanal makinelerin (VM'ler) ve şirket içi Sanal M'lerin ve fiziksel sunucuların çoğaltılmasını, başarısızlığını ve kurtarılmasını düzenleyerek iş sürekliliğinize ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur.
 
-Bu makalede, Hyper-V VM 'lerini Azure 'a çoğaltmak için Azure Resource Manager ile birlikte Windows PowerShell 'in nasıl kullanılacağı açıklanır. Bu makalede kullanılan örnek, Hyper-V ana bilgisayarında çalışan tek bir VM 'yi Azure 'a nasıl çoğaltacağınızı gösterir.
+Bu makalede, Hyper-V V MM'leri Azure'da çoğaltmak için Azure Kaynak Yöneticisi ile birlikte Windows PowerShell'in nasıl kullanılacağı açıklanmaktadır. Bu makalede kullanılan örnek, Hyper-V ana bilgisayarda çalışan tek bir VM'yi Azure'a nasıl kopyalayabileceğinizi gösterir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell, Windows PowerShell kullanarak Azure 'ı yönetmek için cmdlet 'ler sağlar. Azure Resource Manager için Azure PowerShell kullanılabilen PowerShell cmdlet 'leri Site Recovery Azure 'da sunucularınızı korumanıza ve kurtarmanıza yardımcı olur.
+Azure PowerShell, Windows PowerShell'i kullanarak Azure'u yönetmek için cmdlet sağlar. Azure Kaynak Yöneticisi için Azure PowerShell ile kullanılabilen Site Kurtarma PowerShell cmdlets, Azure'da sunucularınızı korumanıza ve kurtarmanıza yardımcı olur.
 
-Bu makaleyi kullanmak için PowerShell uzmanı olmanız gerekmez, ancak modüller, cmdlet 'ler ve oturumlar gibi temel kavramları anlamanız gerekir. Daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell) ve [Azure Resource Manager Azure PowerShell kullanımı](../powershell-azure-resource-manager.md).
+Bu makaleyi kullanmak için PowerShell uzmanı olmanız gerekmez, ancak modüller, cmdlets ve oturumlar gibi temel kavramları anlamanız gerekir. Daha fazla bilgi için [PowerShell Dokümantasyonu'na](/powershell) bakın ve [Azure Kaynak Yöneticisi ile Azure PowerShell'i kullanma'yı kullanarak.](../powershell-azure-resource-manager.md)
 
 > [!NOTE]
-> Bulut çözümü sağlayıcısı (CSP) programındaki Microsoft iş ortakları, müşteri sunucularının korumasını kendi CSP aboneliklerine (kiracı abonelikleri) yapılandırabilir ve yönetebilir.
+> Bulut Çözüm Sağlayıcısı (CSP) programındaki Microsoft iş ortakları, müşteri sunucularının korumasını ilgili CSP aboneliklerine (kiracı abonelikleri) göre yapılandırabilir ve yönetebilir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Bu önkoşulların yerinde olduğundan emin olun:
+Şu ön koşulları yerine aldığınızdan emin olun:
 
-- [Microsoft Azure](https://azure.microsoft.com/) hesabı. [Ücretsiz deneme sürümüyle](https://azure.microsoft.com/pricing/free-trial/) başlayabilirsiniz. Ayrıca, [Azure Site Recovery Manager fiyatlandırması](https://azure.microsoft.com/pricing/details/site-recovery/)hakkında bilgi edinebilirsiniz.
-- Azure PowerShell. Bu sürüm ve nasıl yükleneceğine ilişkin bilgiler için bkz. [ınstall Azure PowerShell](/powershell/azure/install-az-ps).
+- Bir [Microsoft Azure](https://azure.microsoft.com/) hesabı. [Ücretsiz deneme sürümüyle](https://azure.microsoft.com/pricing/free-trial/) başlayabilirsiniz. Ayrıca, Azure Site [Kurtarma Yöneticisi fiyatlandırması](https://azure.microsoft.com/pricing/details/site-recovery/)hakkında da bilgi edinebilirsiniz.
+- Azure PowerShell. Bu sürüm ve nasıl yüklenir hakkında bilgi için Azure [PowerShell'i Yükle'ye](/powershell/azure/install-az-ps)bakın.
 
-Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahiptir:
+Buna ek olarak, bu makalede açıklanan özel örnek aşağıdaki ön koşullara sahiptir:
 
-- Bir veya daha fazla VM içeren Windows Server 2012 R2 veya Microsoft Hyper-V Server 2012 R2 çalıştıran Hyper-V konağı. Hyper-V sunucuları doğrudan veya bir ara sunucu üzerinden Internet 'e bağlanmalıdır.
-- Çoğaltmak istediğiniz VM 'Ler [Bu önkoşullara](hyper-v-azure-support-matrix.md#replicated-vms)uymalıdır.
+- Windows Server 2012 R2 veya Microsoft Hyper-V Server 2012 R2 çalıştıran bir Hyper-V ana bilgisayar, bir veya daha fazla VM içeren. Hyper-V sunucuları Internet'e doğrudan veya bir proxy aracılığıyla bağlanmalıdır.
+- Çoğaltmak istediğiniz [VM'ler bu ön koşullara](hyper-v-azure-support-matrix.md#replicated-vms)uygun olmalıdır.
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>1\. Adım: Azure hesabınızda oturum açın
+## <a name="step-1-sign-in-to-your-azure-account"></a>Adım 1: Azure hesabınızda oturum açın
 
-1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir, sizden hesap kimlik bilgilerinizi ister: `Connect-AzAccount`.
-   - Alternatif olarak, **kimlik bilgisi** parametresini kullanarak hesap kimlik bilgilerinizi `Connect-AzAccount` cmdlet 'ine bir parametre olarak ekleyebilirsiniz.
-   - Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin, `Connect-AzAccount -Tenant "fabrikam.com"`
-1. Hesap birden çok aboneliğe sahip olduğundan, hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin:
+1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet bir web sayfası kadar getirir hesap kimlik `Connect-AzAccount`bilgileri için sorar: .
+   - Alternatif olarak, **Kimlik Bilgileri** parametresini kullanarak `Connect-AzAccount` hesap kimlik bilgilerinizi cmdlet'e parametre olarak ekleyebilirsiniz.
+   - Kiracı adına çalışan bir CSP ortağıysanız, kiracı kimliğini veya birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin, `Connect-AzAccount -Tenant "fabrikam.com"`
+1. Bir hesabın birden fazla aboneliği olabileceğinden, kullanmak istediğiniz aboneliği hesapla ilişkilendirin:
 
    ```azurepowershell
    Set-AzContext -Subscription $SubscriptionName
    ```
 
-1. Aşağıdaki komutları kullanarak, aboneliğinizin kurtarma hizmetleri ve Site Recovery için Azure sağlayıcılarını kullanmak üzere kaydedildiğini doğrulayın:
+1. Aboneliğinizin Kurtarma Hizmetleri ve Site Kurtarma için Azure sağlayıcılarını kullanmak için kayıtlı olduğunu doğrulayın, bu komutları kullanarak:
 
    ```azurepowershell
    Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices
    ```
 
-1. Komut çıkışında, **Registrationstate** ' in **kayıtlı**olarak ayarlandığını doğrulayın. Adım 2 ' ye geçebilirsiniz. Aksi takdirde, aşağıdaki komutları çalıştırarak, eksik sağlayıcıyı aboneliğinize kaydetmeniz gerekir:
+1. Komut **çıktısında, RegistrationState'in** **Kayıtlı**olarak ayarladığını doğrulayın, Adım 2'ye geçebilirsiniz. Değilse, aşağıdaki komutları çalıştırarak eksik sağlayıcıyı aboneliğinizde kaydettirmelisiniz:
 
    ```azurepowershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
-1. Aşağıdaki komutları kullanarak sağlayıcıların başarıyla kaydedildiğini doğrulayın:
+1. Sağlayıcılar'ın aşağıdaki komutları kullanarak başarılı bir şekilde kaydolduğunu doğrulayın:
 
    ```azurepowershell
    Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices
    ```
 
-## <a name="step-2-set-up-the-vault"></a>2\. Adım: kasayı ayarlama
+## <a name="step-2-set-up-the-vault"></a>Adım 2: Kasayı ayarlama
 
-1. Kasanın oluşturulacağı bir Azure Resource Manager kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın. Yeni bir kaynak grubunu aşağıda gösterildiği gibi oluşturun. `$ResourceGroupName` değişkeni, oluşturmak istediğiniz kaynak grubunun adını içerir ve $Geo değişkeni, kaynak grubunun oluşturulacağı Azure bölgesini içerir (örneğin, "Brezilya Güney").
+1. Kasa oluşturmak veya varolan bir kaynak grubunu kullanmak için bir Azure Kaynak Yöneticisi kaynak grubu oluşturun. Aşağıdaki gibi yeni bir kaynak grubu oluşturun. Değişken `$ResourceGroupName` oluşturmak istediğiniz kaynak grubunun adını içerir ve $Geo değişkeni kaynak grubunu oluşturmak için Azure bölgesini içerir (örneğin, "Brezilya Güney").
 
    ```azurepowershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
    ```
 
-1. Aboneliğinizdeki kaynak gruplarının bir listesini almak için `Get-AzResourceGroup` cmdlet 'ini çalıştırın.
-1. Yeni bir Azure kurtarma hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyin:
+1. Aboneliğinizdeki kaynak gruplarının listesini almak için `Get-AzResourceGroup` cmdlet'i çalıştırın.
+1. Aşağıdaki gibi yeni bir Azure Kurtarma Hizmetleri kasası oluşturun:
 
    ```azurepowershell
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-`Get-AzRecoveryServicesVault` cmdlet 'ini kullanarak mevcut kasaların bir listesini alabilirsiniz.
+`Get-AzRecoveryServicesVault` Cmdlet ile mevcut kasaların listesini alabilirsiniz.
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>3\. Adım: kurtarma hizmetleri Kasası bağlamını ayarlama
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Adım 3: Kurtarma Hizmetleri kasa bağlamını ayarlama
 
-Kasa bağlamını aşağıdaki şekilde ayarlayın:
+Kasa bağlamını aşağıdaki gibi ayarlayın:
 
 ```azurepowershell
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-## <a name="step-4-create-a-hyper-v-site"></a>4\. Adım: Hyper-V sitesi oluşturma
+## <a name="step-4-create-a-hyper-v-site"></a>Adım 4: Hyper-V sitesi oluşturma
 
-1. Yeni bir Hyper-V sitesini şu şekilde oluşturun:
+1. Aşağıdaki gibi yeni bir Hyper-V sitesi oluşturun:
 
    ```azurepowershell
    $sitename = "MySite"                #Specify site friendly name
    New-AzRecoveryServicesAsrFabric -Type HyperVSite -Name $sitename
    ```
 
-1. Bu cmdlet, siteyi oluşturmak için bir Site Recovery işi başlatır ve bir Site Recovery iş nesnesi döndürür. İşin tamamlanmasını bekleyin ve işin başarıyla tamamlandığını doğrulayın.
-1. İş nesnesini almak için `Get-AzRecoveryServicesAsrJob` cmdlet 'ini kullanın ve işin geçerli durumunu kontrol edin.
-1. Site için bir kayıt anahtarı oluşturun ve şu şekilde indirin:
+1. Bu cmdlet, siteyi oluşturmak için bir Site Kurtarma işi başlatır ve bir Site Kurtarma iş nesnesini döndürür. İşin tamamlanmasını bekleyin ve işin başarıyla tamamlandığını doğrulayın.
+1. İş `Get-AzRecoveryServicesAsrJob` nesnesini almak için cmdlet'i kullanın ve işin geçerli durumunu denetleyin.
+1. Aşağıdaki gibi, site için bir kayıt anahtarı oluşturun ve indirin:
 
    ```azurepowershell
    $SiteIdentifier = Get-AzRecoveryServicesAsrFabric -Name $sitename | Select-Object -ExpandProperty SiteIdentifier
    $path = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
    ```
 
-1. İndirilen anahtarı Hyper-V konağına kopyalayın. Hyper-V konağını siteye kaydetmek için anahtar gereklidir.
+1. İndirilen anahtarı Hyper-V ana bilgisayarına kopyalayın. Hyper-V ana bilgisayarını siteye kaydetmek için anahtara ihtiyacınız var.
 
-## <a name="step-5-install-the-provider-and-agent"></a>5\. Adım: sağlayıcıyı ve aracıyı yükler
+## <a name="step-5-install-the-provider-and-agent"></a>Adım 5: Sağlayıcıyı ve aracıyı yükleyin
 
-1. [Microsoft](https://aka.ms/downloaddra)'tan sağlayıcının en son sürümüne yönelik yükleyiciyi indirin.
-1. Yükleyiciyi Hyper-V konağında çalıştırın.
-1. Yüklemenin sonunda kayıt adımına devam edin.
-1. İstendiğinde, indirilen anahtarı sağlayın ve Hyper-V konağının kaydını yapın.
-1. Hyper-V konağının siteye şu şekilde kaydedildiğini doğrulayın:
+1. [Sağlayıcının](https://aka.ms/downloaddra)en son sürümü için yükleyiyi Microsoft'tan indirin.
+1. Yükleyiciyi Hyper-V ana bilgisayarda çalıştırın.
+1. Yükleme sonunda kayıt adımı devam edin.
+1. İstendiğinde, indirilen anahtarı sağlayın ve Hyper-V ana bilgisayarının tam kaydını sağlayın.
+1. Hyper-V ana bilgisayar sitesinin siteye aşağıdaki şekilde kayıtlı olduğunu doğrulayın:
 
    ```azurepowershell
    $server = Get-AzRecoveryServicesAsrFabric -Name $siteName | Get-AzRecoveryServicesAsrServicesProvider -FriendlyName $server-friendlyname
    ```
 
-Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin ve şu adımları izleyin:
+Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin ve aşağıdaki adımları izleyin:
 
-1. Şu komutu çalıştırarak dosyaları _AzureSiteRecoveryProvider. exe_ ' den yerel bir dizine ayıklayın:
+1. Bu komutu çalıştırarak dosyaları _AzureSiteRecoveryProvider.exe'den_ yerel bir dizine ayıklayın:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -142,19 +142,19 @@ Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin 
    .\setupdr.exe /i
    ```
 
-   Sonuçlar _%ProgramData%\asrlogs\drasetupwizard.log_dosyasına kaydedilir.
+   Sonuçlar _%ProgramData%\ASRLogs\DRASetupWizard.log'a_kaydedilir.
 
-1. Şu komutu çalıştırarak sunucuyu kaydedin:
+1. Bu komutu çalıştırarak sunucuyu kaydedin:
 
    ```console
    cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
    ```
 
-## <a name="step-6-create-a-replication-policy"></a>6\. Adım: çoğaltma ilkesi oluşturma
+## <a name="step-6-create-a-replication-policy"></a>Adım 6: Çoğaltma ilkesi oluşturma
 
-Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde olmalıdır ve coğrafi çoğaltmanın etkin olması gerekir.
+Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde olmalı ve coğrafi çoğaltma etkinleştirilmiş olmalıdır.
 
-1. Çoğaltma ilkesini aşağıdaki gibi oluşturun:
+1. Aşağıdaki gibi bir çoğaltma ilkesi oluşturun:
 
    ```azurepowershell
    $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
@@ -165,15 +165,15 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
    $PolicyResult = New-AzRecoveryServicesAsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds -NumberOfRecoveryPointsToRetain $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
    ```
 
-1. Çoğaltma ilkesi oluşturma işleminin başarılı olduğundan emin olmak için döndürülen işi denetleyin.
+1. Çoğaltma ilkesi oluşturmanın başarılı olduğundan emin olmak için döndürülen işi denetleyin.
 
-1. Sitesine karşılık gelen koruma kapsayıcısını aşağıdaki gibi alın:
+1. Siteye karşılık gelen koruma konteynerini aşağıdaki gibi alın:
 
    ```azurepowershell
    $protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer
    ```
 
-1. Koruma kapsayıcısını şu şekilde çoğaltma ilkesiyle ilişkilendirin:
+1. Koruma kapsayıcısını aşağıdaki gibi çoğaltma ilkesiyle ilişkilendirin:
 
    ```azurepowershell
    $Policy = Get-AzRecoveryServicesAsrPolicy -FriendlyName $PolicyName
@@ -182,29 +182,29 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
 
 1. İlişkilendirme işinin başarıyla tamamlanmasını bekleyin.
 
-1. Koruma kapsayıcısı eşlemesini alın.
+1. Koruma kabı eşlemi alın.
 
    ```azurepowershell
    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $protectionContainer
    ```
 
-## <a name="step-7-enable-vm-protection"></a>7\. Adım: VM korumasını etkinleştirme
+## <a name="step-7-enable-vm-protection"></a>Adım 7: VM korumasını etkinleştirin
 
-1. Korumak istediğiniz VM 'ye karşılık gelen korunabilir öğeyi aşağıdaki gibi alın:
+1. Korumak istediğiniz VM'ye karşılık gelen korunabilir öğeyi aşağıdaki gibi alın:
 
    ```azurepowershell
    $VMFriendlyName = "Fabrikam-app"          #Name of the VM
    $ProtectableItem = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
    ```
 
-1. VM 'yi koruyun. Koruduğunuz sanal makineye birden fazla disk ekli ise, **Osdiskname** parametresini kullanarak işletim sistemi diskini belirtin.
+1. VM'yi koruyun. Koruduğunuz VM'de birden fazla disk varsa, **OSDiskName** parametresini kullanarak işletim sistemi diskini belirtin.
 
    ```azurepowershell
    $OSType = "Windows"          # "Windows" or "Linux"
    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID
    ```
 
-1. İlk çoğaltmadan sonra VM 'Lerin korumalı duruma ulaşmasını bekleyin. Bu işlem, çoğaltılacak veri miktarı ve Azure için kullanılabilir yukarı akış bant genişliği gibi etkenlere bağlı olarak biraz zaman alabilir. Korunan bir durum olduğunda, iş durumu ve StateDescription aşağıdaki gibi güncelleştirilir:
+1. İlk çoğaltmadan sonra VM'lerin korumalı bir duruma ulaşmasını bekleyin. Bu, çoğaltılacak veri miktarı ve Azure'a sunulan yukarı bant genişliği gibi etkenlere bağlı olarak biraz zaman alabilir. Korunan bir durum yerinde olduğunda, iş Durumu ve StateDescription aşağıdaki gibi güncelleştirilir:
 
    ```console
    PS C:\> $DRjob = Get-AzRecoveryServicesAsrJob -Job $DRjob
@@ -216,7 +216,7 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
    Completed
    ```
 
-1. Yük devretmeden sonra kurtarma özelliklerini (VM rolü boyutu gibi) ve VM NIC 'nin ekleneceği Azure ağını güncelleştirin.
+1. Kurtarma özelliklerini (VM rol boyutu gibi) ve başarısız olduktan sonra VM NIC'yi takacak ları Azure ağını güncelleştirin.
 
    ```console
    PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
@@ -237,16 +237,16 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
    ```
 
 > [!NOTE]
-> Azure 'da CMK özellikli yönetilen disklere çoğaltmak istiyorsanız az PowerShell 3.3.0 onlıve sürümlerini kullanarak aşağıdaki adımları uygulayın:
+> Azure'da CMK etkin yönetilen disklere çoğaltmak istiyorsanız, Az PowerShell 3.3.0'ı kullanarak aşağıdaki adımları yapın:
 >
-> 1. VM özelliklerini güncelleştirerek yönetilen disklere yük devretmeyi etkinleştirme
-> 1. Korunan öğenin her bir diski için disk KIMLIĞINI getirmek üzere `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 'ini kullanın
-> 1. Disk KIMLIĞININ disk şifreleme kümesine eşlenmesini içermesi için `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 'ini kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
-> 1. **Diskidtodiskencryptionsetmap** parametresindeki sözlük nesnesini geçirerek `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 'INI kullanarak VM özelliklerini güncelleştirin.
+> 1. VM özelliklerini güncelleştirerek yönetilen disklere başarısız olmasını etkinleştirme
+> 1. Korunan `Get-AzRecoveryServicesAsrReplicationProtectedItem` öğenin her diski için disk kimliğini almak için cmdlet'i kullanın
+> 1. Disk şifreleme kümesine disk kimliğinin eşlemesini içeren cmdlet kullanarak `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` bir sözlük nesnesi oluşturun. Bu disk şifreleme kümeleri, hedef bölgede sizin yeriniz tarafından önceden oluşturulacaktır.
+> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem` **DiskIdToDiskEncryptionSetMap** parametresinde sözlük nesnesini geçirerek cmdlet kullanarak VM özelliklerini güncelleştirin.
 
-## <a name="step-8-run-a-test-failover"></a>8\. Adım: yük devretme testi çalıştırma
+## <a name="step-8-run-a-test-failover"></a>Adım 8: Bir test başarısızlığını çalıştırma
 
-1. Yük devretme testini aşağıdaki şekilde çalıştırın:
+1. Aşağıdaki gibi bir test failover çalıştırın:
 
    ```azurepowershell
    $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
@@ -256,8 +256,8 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $VM -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
    ```
 
-1. Test VM 'sinin Azure 'da oluşturulduğunu doğrulayın. Test yük devretmesi işi, Azure 'da test VM oluşturulduktan sonra askıya alındı.
-1. Yük devretme testini temizlemek ve gerçekleştirmek için şunu çalıştırın:
+1. Test VM'sinin Azure'da oluşturulduğunu doğrulayın. Azure'da test VM'i oluşturulduktan sonra test başarısız olması işi askıya alınır.
+1. Test başarısızlığını temizlemek ve tamamlamak için aşağıdakileri çalıştırın:
 
    ```azurepowershell
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
@@ -265,4 +265,4 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Resource Manager PowerShell cmdlet 'leriyle Azure Site Recovery hakkında [daha fazla bilgi edinin](/powershell/module/az.recoveryservices) .
+Azure Kaynak Yöneticisi PowerShell cmdlets ile Azure Site Kurtarma hakkında [daha fazla bilgi edinin.](/powershell/module/az.recoveryservices)

@@ -1,6 +1,6 @@
 ---
-title: Data Factory kullanarak Amazon Simple Storage Service 'ten veri taşıma
-description: Azure Data Factory kullanarak Amazon Simple Storage Service 'ten (S3) veri taşıma hakkında bilgi edinin.
+title: Veri Fabrikası'nı kullanarak Verileri Amazon Basit Depolama Hizmeti'nden taşıma
+description: Azure Veri Fabrikası'nı kullanarak Verileri Amazon Basit Depolama Hizmeti'nden (S3) nasıl taşıyacağım hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,62 +13,62 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281658"
 ---
-# <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Simple Storage Service 'ten veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Amazon Basit Depolama Hizmeti'nden taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de Amazon S3 Bağlayıcısı](../connector-amazon-simple-storage-service.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Amazon S3 konektörüne](../connector-amazon-simple-storage-service.md)bakın.
 
-Bu makalede, Amazon Simple Storage Service (S3) ' den verileri taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, Verileri Amazon Basit Depolama Hizmeti'nden (S3) taşımak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanıyor.
 
-Amazon S3 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca Amazon S3 'ten diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından Amazon S3 'e taşımamaktadır.
+Amazon S3'ün verilerini desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri Fabrikası şu anda sadece Amazon S3 diğer veri depolarına veri taşıma destekler, ancak Amazon S3 diğer veri mağazalarından veri taşıma değil.
 
 ## <a name="required-permissions"></a>Gerekli izinler
-Verileri Amazon S3'ten kopyalamak için aşağıdaki izinleri verilmiş olan emin olun:
+Amazon S3'teki verileri kopyalamak için, size aşağıdaki izinlerin verildiğinden emin olun:
 
-* Amazon S3 nesne Işlemleri için `s3:GetObject` ve `s3:GetObjectVersion`.
-* Amazon S3 demet Işlemleri için `s3:ListBucket`. Data Factory kopyalama Sihirbazı ' nı kullanıyorsanız, `s3:ListAllMyBuckets` de gereklidir.
+* `s3:GetObject`ve `s3:GetObjectVersion` Amazon S3 Nesne İşlemleri için.
+* `s3:ListBucket`Amazon S3 Bucket İşlemleri için. Veri Fabrikası Kopyalama Sihirbazı kullanıyorsanız, `s3:ListAllMyBuckets` ayrıca gereklidir.
 
-Amazon S3 izinlerinin tam listesi hakkında daha fazla bilgi için bkz. [ilke Içinde Izinleri belirtme](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Amazon S3 izinlerinin tam listesi hakkında ayrıntılı bilgi [için](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)bkz.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçları veya API 'Leri kullanarak bir Amazon S3 kaynağından veri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
+Farklı araçlar veya API'ler kullanarak verileri bir Amazon S3 kaynağından hareket ettiren bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Hızlı bir anlatım için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
+Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Hızlı bir geçiş için [Bkz. Öğretici: Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için, [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
+Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeler için [Kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
 
-Araçlar veya API 'Ler kullanmanıza bakılmaksızın, verileri bir kaynak veri deposundan havuz veri deposuna taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçları veya API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız. Amazon S3 veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bu makaledeki [JSON örneği: Amazon S3 'Den Azure Blob 'a veri kopyalama](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) bölümüne bakın.
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçlar veya API'ler (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız. Bir Amazon S3 veri deposundan veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek için [JSON örneğine bakın: Verileri Amazon S3'ten Azure Blob bölümüne](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) kopyalayın.
 
 > [!NOTE]
-> Kopyalama etkinliği için desteklenen dosya ve sıkıştırma biçimleri hakkında daha fazla bilgi için, bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md).
+> Kopyalama etkinliği için desteklenen dosya ve sıkıştırma biçimleri hakkında ayrıntılar için [Azure Veri Fabrikası'ndaki Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md)bakın.
 
-Aşağıdaki bölümler, Amazon S3 'e özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Amazon S3'e özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi verilmiştir.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Amazon S3 veri deponuzu veri fabrikanıza bağlamak için **Awsaccesskey** türünde bağlı bir hizmet oluşturursunuz. Aşağıdaki tabloda, Amazon S3 (AwsAccessKey) bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Bağlantılı bir hizmet, bir veri deposuna veri fabrikasına bağlanır. Amazon S3 veri deponuzu veri fabrikanıza bağlamak için **AwsAccessKey** türünden bağlantılı bir hizmet oluşturursunuz. Aşağıdaki tablo, Amazon S3 (AwsAccessKey) bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| Accesskeyıd |Gizli erişim anahtarı kimliği. |string |Yes |
-| secretAccessKey |Gizli erişim anahtarı kendisi. |Şifrelenmiş gizli dizi |Yes |
+| accessKeyID |Gizli erişim anahtarının kimliği. |string |Evet |
+| secretAccessKey |Gizli erişim anahtarının kendisi. |Şifreli gizli dize |Evet |
 
 >[!NOTE]
->Bu bağlayıcı, Amazon S3'ten veri kopyalamak IAM hesabının erişim anahtarlarını gerektirir. [Geçici güvenlik kimlik bilgileri](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) desteklenmiyor.
+>Bu bağlayıcı, Amazon S3'ten gelen verileri kopyalamak için IAM hesabının erişim anahtarlarını gerektirir. [Geçici Güvenlik Kimlik Bilgisi](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) desteklenmez.
 >
 
 Örnek aşağıda verilmiştir:
@@ -87,24 +87,24 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Amazon S3 veri depon
 ```
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Azure Blob depolamada giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin Type özelliğini **AmazonS3**olarak ayarlayın. Veri kümesinin **Linkedservicename** özelliğini, Amazon S3 bağlı hizmetinin adı olarak ayarlayın. Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md). 
+Azure Blob depolamasında giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin tür özelliğini **AmazonS3**olarak ayarlayın. Veri kümesinin **linkedServiceName** özelliğini Amazon S3 bağlantılı hizmetin adına ayarlayın. Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](data-factory-create-datasets.md) 
 
-Yapı, kullanılabilirlik ve ilke gibi bölümler tüm veri kümesi türleri (SQL veritabanı, Azure Blob ve Azure tablosu gibi) için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **AmazonS3** türünde bir veri kümesi Için **typeproperties** bölümü (Amazon S3 veri kümesini içerir) aşağıdaki özelliklere sahiptir:
+Yapı, kullanılabilirlik ve ilke gibi bölümler tüm veri kümesi türleri için benzerdir (SQL veritabanı, Azure blob ve Azure tablosu gibi). **typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **AmazonS3** türünden bir veri kümesi (Amazon S3 veri kümesini içerir) için **typeProperties** bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| bucketName |S3 demetini adı. |Dize |Yes |
+| bucketName |S3 kova adı. |Dize |Evet |
 | anahtar |S3 nesne anahtarı. |Dize |Hayır |
-| prefix |S3 nesnesinin anahtarı için önek. Seçili bir nesne anahtarları bu öneki ile başlayın. Yalnızca anahtar boş olduğunda geçerlidir. |Dize |Hayır |
-| version |S3 sürümü oluşturma etkinse, S3 nesnesinin sürümü. |Dize |Hayır |
-| format | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. | |Hayır |
-| sıkıştırma | Veri sıkıştırma düzeyi ve türünü belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). | |Hayır |
+| Önek |S3 nesne anahtarı için önek. Anahtarları bu önek ile başlayan nesneler seçilir. Yalnızca anahtar boşolduğunda geçerlidir. |Dize |Hayır |
+| version |S3 sürümü etkinse, S3 nesnesinin sürümü. |Dize |Hayır |
+| biçim | Aşağıdaki biçim türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParkeFormat**. Biçim altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin biçimi,](data-factory-supported-file-and-compression-formats.md#text-format) [JSON biçimi,](data-factory-supported-file-and-compression-formats.md#json-format) [Avro formatı,](data-factory-supported-file-and-compression-formats.md#avro-format) [Ork formatı](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parke formatında](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlere bakın. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın. | |Hayır |
+| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Desteklenen türleri şunlardır: **GZip**, **Deflate**, **BZip2**, ve **ZipDeflate**. Desteklenen seviyeleri şunlardır: **Optimal** ve **En Hızlı**. Daha fazla bilgi için [Azure Veri Fabrikası'ndaki Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. | |Hayır |
 
 
 > [!NOTE]
-> **bucketName + Key** , S3 nesnesinin konumunu belirtir; burada Bucket, S3 nesnelerinin kök kapsayıcısıdır ve anahtar S3 nesnesinin tam yoludur.
+> **bucketName + tuşu,** kovanın S3 nesnelerinin kök kapsayıcısı olduğu S3 nesnesinin konumunu belirtir ve anahtar S3 nesnesine giden tam yoldur.
 
-### <a name="sample-dataset-with-prefix"></a>Ön eke sahip örnek veri kümesi
+### <a name="sample-dataset-with-prefix"></a>Önek ile örnek veri kümesi
 
 ```json
 {
@@ -127,7 +127,7 @@ Yapı, kullanılabilirlik ve ilke gibi bölümler tüm veri kümesi türleri (SQ
     }
 }
 ```
-### <a name="sample-dataset-with-version"></a>Örnek veri kümesi (sürümle birlikte)
+### <a name="sample-dataset-with-version"></a>Örnek veri seti (sürümile)
 
 ```json
 {
@@ -153,43 +153,43 @@ Yapı, kullanılabilirlik ve ilke gibi bölümler tüm veri kümesi türleri (SQ
 ```
 
 ### <a name="dynamic-paths-for-s3"></a>S3 için dinamik yollar
-Yukarıdaki örnek, Amazon S3 veri kümesindeki **anahtar** ve **bucketName** özellikleri için sabit değerler kullanır.
+Önceki örnek, Amazon S3 veri kümesindeki **anahtar** ve **bucketName** özellikleri için sabit değerler kullanır.
 
 ```json
 "key": "testFolder/test.orc",
 "bucketName": "testbucket",
 ```
 
-Bu özellikleri, çalışma zamanında dinamik olarak, örneğin, daBaşlat gibi sistem değişkenlerini kullanarak hesaplamanız Data Factory sağlayabilirsiniz.
+SliceStart gibi sistem değişkenlerini kullanarak Veri Fabrikası'nın bu özellikleri çalışma zamanında dinamik olarak hesaplamalarını sağlayabilirsiniz.
 
 ```json
 "key": "$$Text.Format('{0:MM}/{0:dd}/test.orc', SliceStart)"
 "bucketName": "$$Text.Format('{0:yyyy}', SliceStart)"
 ```
 
-Bir Amazon S3 veri kümesi **önek** özelliği için aynısını yapabilirsiniz. Desteklenen işlevlerin ve değişkenlerin listesi için bkz. [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md).
+Aynı şeyi bir Amazon S3 veri kümesinin **önek** özelliği için de yapabilirsiniz. Desteklenen işlevler ve değişkenlerin listesi için Bkz. [Veri Fabrikası işlevleri ve sistem değişkenleri.](data-factory-functions-variables.md)
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md). Ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için özellikler, kaynak ve havuz türlerine göre farklılık gösterir. Kopyalama etkinliğindeki bir kaynak **Filesystemsource** türünde (Amazon S3 içeren), aşağıdaki özellik **typeproperties** bölümünde mevcuttur:
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](data-factory-create-pipelines.md) Ad, açıklama, giriş ve çıktı tabloları ve ilkeler gibi özellikler tüm etkinlik türleri için kullanılabilir. Etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için özellikler kaynak ve lavabo türlerine bağlı olarak değişir. Kopyalama etkinliğindeki bir kaynak **FileSystemSource** türünden (Amazon S3'ü içerir) varsa, **typeProperties** bölümünde aşağıdaki özellik kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| özyinelemeli |S3 nesnelerinin dizin altında yinelemeli olarak kaydedilip edilmeyeceğini belirtir. |doğru/yanlış |Hayır |
+| Özyinelemeli |Dizin altında S3 nesnelerini özyinelemeli olarak listeleyip listelemeyeceğini belirtir. |doğru/yanlış |Hayır |
 
-## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON örneği: Amazon S3 'den Azure Blob depolama alanına veri kopyalama
-Bu örnek, Amazon S3 ' den bir Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler, Data Factory kopyalama etkinliği kullanılarak [desteklenen herhangi bir](data-factory-data-movement-activities.md#supported-data-stores-and-formats) havuza doğrudan kopyalanabilir.
+## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON örneği: Verileri Amazon S3'ten Azure Blob depolamaalanına kopyalama
+Bu örnek, Amazon S3'ten Azure Blob depolama alanına verilerin nasıl kopyalanır olduğunu gösterir. Ancak, veriler Veri Fabrikası'ndaki kopyalama etkinliği kullanılarak [desteklenen lavabolardan herhangi biri](data-factory-data-movement-activities.md#supported-data-stores-and-formats) için doğrudan kopyalanabilir.
 
-Örnek, aşağıdaki Data Factory varlıkları için JSON tanımları sağlar. Bu tanımları, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak Amazon S3 'ten blob depolamaya veri kopyalamak üzere bir işlem hattı oluşturmak için kullanabilirsiniz.   
+Örnek, aşağıdaki Veri Fabrikası varlıkları için JSON tanımları sağlar. Bu tanımları, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [PowerShell'i](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak Amazon S3'ten Blob depolamasına kadar olan verileri kopyalamak için bir boru hattı oluşturmak için kullanabilirsiniz.   
 
-* [Awsaccesskey](#linked-service-properties)türünde bağlı bir hizmet.
-* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-* [AmazonS3](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-* [Filesystemsource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+* [AwsAccessKey](#linked-service-properties)türünde bağlantılı bir hizmet.
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+* [AmazonS3](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+* [FileSystemSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliği ile bir [boru hattı.](data-factory-create-pipelines.md)
 
-Örnek, her saat için Amazon S3 'den bir Azure blobuna verileri kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, Amazon S3'teki verileri her saat başı Azure blob'una kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-### <a name="amazon-s3-linked-service"></a>Amazon S3 bağlı hizmeti
+### <a name="amazon-s3-linked-service"></a>Amazon S3 bağlantılı hizmet
 
 ```json
 {
@@ -218,9 +218,9 @@ Bu örnek, Amazon S3 ' den bir Azure Blob depolama alanına nasıl veri kopyalan
 }
 ```
 
-### <a name="amazon-s3-input-dataset"></a>Amazon S3 giriş veri kümesi
+### <a name="amazon-s3-input-dataset"></a>Amazon S3 giriş veri seti
 
-**"Dış" ayarı: doğru** , Data Factory hizmetine veri kümesinin veri fabrikası dışında olduğunu bildirir. Bu özelliği, işlem hattındaki bir etkinlik tarafından üretilmeyen bir giriş veri kümesinde true olarak ayarlayın.
+**"Harici" ayarı: True,** Veri Fabrikası hizmetine veri kümesinin veri fabrikasının dışında olduğunu bildirir. Bu özelliği, ardışık işlemdeki bir etkinlik tarafından üretilmeyen bir giriş veri kümesinde doğru olarak ayarlayın.
 
 ```json
     {
@@ -247,7 +247,7 @@ Bu örnek, Amazon S3 ' den bir Azure Blob depolama alanına nasıl veri kopyalan
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob çıktı veri kümesi
 
-Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```json
 {
@@ -306,9 +306,9 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 ```
 
 
-### <a name="copy-activity-in-a-pipeline-with-an-amazon-s3-source-and-a-blob-sink"></a>Bir Amazon S3 kaynağına ve bir blob havuzuna sahip bir işlem hattındaki etkinliği kopyalama
+### <a name="copy-activity-in-a-pipeline-with-an-amazon-s3-source-and-a-blob-sink"></a>Bir Amazon S3 kaynağı ve bir blob lavabo ile bir boru hattı etkinliği kopyalama
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **filesystemsource**olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **FileSystemSource**olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır.
 
 ```json
 {
@@ -356,12 +356,12 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 }
 ```
 > [!NOTE]
-> Bir kaynak veri kümesindeki sütunları bir havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+> Bir kaynak veri kümesinden sütunlara sütunları eşlemek için Azure [Veri Fabrikası'nda veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-* Veri taşıma (kopyalama etkinliği) performansını Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md).
+* Veri Fabrikası'ndaki veri hareketinin performansını (kopyalama etkinliği) etkileyen önemli faktörler ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Kopyalama etkinliği performansı ve atokskılavuzuna](data-factory-copy-activity-performance.md)bakın.
 
-* Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için, [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
+* Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeler için [Kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.

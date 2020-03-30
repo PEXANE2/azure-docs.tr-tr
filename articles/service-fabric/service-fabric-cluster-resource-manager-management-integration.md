@@ -1,26 +1,26 @@
 ---
-title: Küme Kaynak Yöneticisi yönetimi tümleştirmesi
-description: Küme Kaynak Yöneticisi ve Service Fabric Yönetimi arasındaki tümleştirme noktalarına genel bakış.
+title: Küme Kaynak Yöneticisi - Yönetim Tümleştirme
+description: Küme Kaynak Yöneticisi ve Hizmet Kumaş Yönetimi arasındaki tümleştirme noktalarına genel bakış.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258752"
 ---
-# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Küme Kaynak Yöneticisi Service Fabric küme yönetimi ile tümleştirme
-Service Fabric Küme Kaynak Yöneticisi Service Fabric yükseltmeleri değil, ancak buna dahil değildir. Küme Kaynak Yöneticisi, yönetim ile ilgili olarak, kümenin istenen durumunu ve içindeki hizmetleri izlemeye yardımcı olur. Küme Kaynak Yöneticisi, kümeyi istenen yapılandırmaya koyane zaman sistem durumu raporları gönderir. Örneğin, yeterli kapasite yoksa, Küme Kaynak Yöneticisi durum uyarıları ve sorunu belirten hatalar gönderilir. Diğer bir tümleştirme parçasının, yükseltmelerin nasıl çalıştığı ile ilgili olması vardır. Küme Kaynak Yöneticisi, yükseltmeler sırasında davranışını biraz daha değiştirir.  
+# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric küme yönetimi ile küme kaynak yöneticisi tümleştirmesi
+Service Fabric Cluster Kaynak Yöneticisi, Service Fabric'teki yükseltmeleri yönlendirmez, ancak bu işin içindedir. Küme Kaynak Yöneticisi'nin yönetime yardımcı olmasının ilk yolu kümenin istenilen durumunu ve içindeki hizmetleri izlemektir. Küme Kaynak Yöneticisi, kümeyi istenilen yapılandırmaya koyamadığı zaman sistem durumu raporları gönderir. Örneğin, kapasite yetersizse Küme Kaynak Yöneticisi, sorunu gösteren sistem durumu uyarıları ve hataları gönderir. Entegrasyonun başka bir parçası yükseltmelerin nasıl çalıştığıyla ilgili. Küme Kaynak Yöneticisi yükseltmeleri sırasında davranışını biraz değiştirir.  
 
-## <a name="health-integration"></a>Sistem durumu tümleştirmesi
-Küme Kaynak Yöneticisi, hizmetlerinizin yerleştirilmesi için tanımladığınız kuralları sürekli izler. Ayrıca, düğümlerde ve kümedeki her ölçüm için kalan kapasiteyi ve kümenin tamamını izler. Bu kuralları karşılayamaz veya yeterli kapasite yoksa, sistem durumu uyarıları ve hatalar yayınlanır. Örneğin, bir düğüm kapasiteden fazla olursa ve Küme Kaynak Yöneticisi Hizmetleri taşıyarak durumu gidermeye çalışır. Durumu düzeltemediği takdirde, hangi düğümün kapasite üzerinde olduğunu ve hangi ölçümlerle ilgili olduğunu belirten bir sistem durumu uyarısı yayar.
+## <a name="health-integration"></a>Sağlık entegrasyonu
+Küme Kaynak Yöneticisi, hizmetlerinizi yerleştirmek için tanımladığınız kuralları sürekli olarak izler. Ayrıca düğümler ve küme ve bir bütün olarak kümede her metrik için kalan kapasite izler. Bu kuralları yerine getirmez veya yeterli kapasite yoksa, sağlık uyarıları ve hataları yayılır. Örneğin, bir düğüm kapasitenin üzerindeyse ve Küme Kaynak Yöneticisi hizmetleri taşıyarak durumu düzeltmeye çalışır. Durumu düzeltemezse, hangi düğümün kapasitenin üzerinde olduğunu ve hangi ölçümler için olduğunu belirten bir sistem durumu uyarısı yayır.
 
-Kaynak Yöneticisi sistem durumu uyarılarından başka bir örnek, yerleştirme kısıtlamaları için ihlal örneğidir. Örneğin, bir yerleştirme kısıtlaması (örneğin, `“NodeColor == Blue”`) tanımladıysanız ve Kaynak Yöneticisi bu kısıtlamayı ihlal ederse, bir sistem durumu uyarısı yayar. Bu, özel kısıtlamalar ve varsayılan kısıtlamalar (hata etki alanı ve yükseltme etki alanı kısıtlamaları gibi) için geçerlidir.
+Kaynak Yöneticisi'nin sistem durumu uyarılarının bir diğer örneği de yerleşim kısıtlamalarının ihlalidir. Örneğin, bir yerleşim kısıtlaması tanımladıysanız `“NodeColor == Blue”`(örneğin) ve Kaynak Yöneticisi bu kısıtlamanın ihlalini algılarsa, sistem durumu uyarısı yayır. Bu, özel kısıtlamalar ve varsayılan kısıtlamalar (Hata Etki Alanı ve Yükseltme Etki Alanı kısıtlamaları gibi) için geçerlidir.
 
-Bu tür bir sistem durumu raporuna bir örnek aşağıda verilmiştir. Bu durumda sistem durumu raporu, sistem hizmeti bölümlerinin birine yöneliktir. Sistem durumu iletisi, bu bölümün çoğaltmaların geçici olarak çok az yükseltme etki alanına paketlediği anlamına gelir.
+İşte böyle bir sağlık raporu örneği. Bu durumda, sistem raporu sistem hizmetinin bölümlerinden biri içindir. Sistem durumu iletisi, bu bölümün yinelemelerinin geçici olarak çok az Yükseltme Etki Alanına paketlenmiş olduğunu gösterir.
 
 ```posh
 PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
@@ -62,67 +62,67 @@ HealthEvents          :
                         Transitions           : Ok->Warning = 8/10/2015 7:13:02 PM, LastError = 1/1/0001 12:00:00 AM
 ```
 
-Bu durum iletisinin bize söyledikleriniz aşağıdadır:
+Bu sağlık mesajının bize söylediği şu:
 
-1. Tüm çoğaltmaların iyi durumda olduğundan, her birinin Aggreg, HealthState: Tamam
-2. Yükseltme etki alanı dağıtım kısıtlaması Şu anda ihlal ediliyor. Bu, belirli bir yükseltme etki alanının bu bölümden daha fazla çoğaltma olduğu anlamına gelir.
-3. Çoğaltmayı içeren düğüm, ihlalin oluşmasına neden olur. Bu durumda, "Node. 8" adlı düğüm budur
-4. Şu anda bu bölüm için bir yükseltmenin olup olmadığı ("Şu anda yükseltiliyor--false")
-5. Bu hizmet için dağıtım ilkesi: "dağıtım Ilkesi--paketleme". Bu, `RequireDomainDistribution` [yerleştirme ilkesine](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)tabidir. "Paketleme" Bu durumda DomainDistribution ' ın gerekmediği anlamına gelir, bu nedenle yerleştirme ilkesinin bu hizmet için _belirtilmediğini biliyoruz_ . 
-6. Rapor gerçekleşti-8/10/2015 7:13:02 PM
+1. Tüm kopyaları kendilerini sağlıklı: Her AggregatedHealthState vardır: Ok
+2. Yükseltme Etki Alanı dağıtım kısıtlaması şu anda ihlal ediliyor. Bu, belirli bir Yükseltme Etki Alanı'nın bu bölümden olması gerekenden daha fazla yinelemeye sahip olduğu anlamına gelir.
+3. Hangi düğüm, ihlale neden olan yinelemeyi içerir. Bu durumda "Düğüm.8" adı ile düğüm
+4. Bu bölüm için şu anda bir yükseltme olup olmadığı ("Şu anda Yükseltme -- yanlış")
+5. Bu hizmetin dağıtım politikası: "Dağıtım Politikası -- Ambalaj". Bu, `RequireDomainDistribution` [yerleşim ilkesi](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)tarafından yönetilir. "Packing", bu durumda DomainDistribution'un gerekli _olmadığını_ gösterir, bu nedenle bu hizmet için yerleşim ilkesinin belirtİlmediğini biliyoruz. 
+6. Rapor ne zaman oldu - 08.10.2015 19:13:02
 
-Bu şekilde, bir şeyin yanlış olduğunu ve aynı zamanda hatalı yükseltmeleri tespit etmek ve durdurmak için kullanıldığını bildirmek üzere üretimde başlatılan bu güçle ilgili bilgiler vardır. Bu durumda, Kaynak Yöneticisi neden çoğaltmaları yükseltme etki alanına paketleyebileceğinizi öğrenmek istiyoruz. Genellikle paketleme geçicidir çünkü diğer yükseltme etki alanlarındaki düğümler kapanmıştır, örneğin.
+Bu güçler gibi bilgiler, bir şeylerin yanlış gittiğini ve kötü yükseltmeleri tespit etmek ve durdurmak için de kullanıldığını bildirmek için üretimdeki yangının sizi uyardığını uyarır. Bu durumda, Kaynak Yöneticisi'nin kopyaları neden Yükseltme Etki Alanı'na paketlemek zorunda kaldığını anlamaya calısabilir miyiz görmek isteriz. Örneğin, diğer Yükseltme Etki Alanlarındaki düğümler aşağıda olduğundan, genellikle paketleme geçicidir.
 
-Küme Kaynak Yöneticisi bazı hizmetleri yerleştirmeyi denediğizin verlim, ancak çalışan hiçbir çözüm yok. Hizmetler yerleştirilemediğiniz zaman, genellikle aşağıdaki nedenlerden biri için olur:
+Küme Kaynak Yöneticisi'nin bazı hizmetleri yerleştirmeye çalıştığını, ancak işe yarayacak herhangi bir çözüm olmadığını varsayalım. Hizmetler yerleştirilemediğinde, genellikle aşağıdaki nedenlerden biridir:
 
-1. Bazı geçici bir durum, bu hizmet örneğini veya çoğaltmayı doğru bir şekilde yerleştirmeyi olanaksız hale yaptı
-2. Hizmetin yerleştirme gereksinimleri unsatisfiable ' dir.
+1. Bazı geçici koşullar, bu hizmet örneğini veya yinelemeyi doğru bir şekilde yerleştirmeyi imkansız hale getirmiştir
+2. Hizmetin yerleştirme gereksinimleri tatmin edici değildir.
 
-Bu durumlarda, kümeden gelen sistem durumu raporları hizmetin neden yerleştirilebileceğini belirlemenize yardımcı olur Kaynak Yöneticisi. Bu işlemi kısıtlama eliminasyon sırası olarak çağırıyoruz. Sistem sırasında, sistem hizmeti etkileyen yapılandırılmış kısıtlamalara yol gösterir ve neleri ortadan kaldırabileceklerini kaydeder. Bu şekilde, hizmetler yerleştirilemediğiniz zaman hangi düğümlerin ne olduğunu ve neden olduğunu görebilirsiniz.
+Bu gibi durumlarda, Küme Kaynak Yöneticisi'nin sağlık raporları, hizmetin neden yerleştirilemeyeceğini belirlemenize yardımcı olur. Bu sürece kısıtlama giderme sırası diyoruz. Bu süre zarfında, sistem hizmeti etkileyen yapılandırılmış kısıtlamalar üzerinden yürür ve ne ortadan kaldırır kaydeder. Bu şekilde, hizmetler yerleştirilemediğinde, hangi düğümlerin ortadan kaldırıldığını ve neden ortadan kaldırıldığını görebilirsiniz.
 
 ## <a name="constraint-types"></a>Kısıtlama türleri
-Bu durum raporlarında farklı kısıtlamaların her biri hakkında konuşalım. Çoğaltmalar yerleştirilebileceği zaman bu kısıtlamalarla ilgili durum iletilerini görürsünüz.
+Bu sağlık raporlarındaki farklı kısıtlamaların her biri hakkında konuşalım. Yinelemeler yerleştirilmediğinde bu kısıtlamalarla ilgili sağlık iletilerini görürsünüz.
 
-* **Replicaexclusionstatic** ve **replicaexclusiondynamic**: Bu kısıtlamalar, aynı bölümdeki iki hizmet nesnesinin aynı düğüme yerleştirilmesi gerektiğinden bir çözümün reddedildiğini belirtir. Bu, bu düğümün başarısızlığı bu bölümü aşırı etkilediği için buna izin verilmez. ReplicaExclusionStatic ve ReplicaExclusionDynamic neredeyse aynı kuraldır ve farklar oldukça önemlidir. ReplicaExclusionStatic veya ReplicaExclusionDynamic kısıtlaması içeren bir kısıtlama eleme sırası görüyorsanız, küme, yeterli düğüm olmadığını Kaynak Yöneticisi. Bu, izin verilmeyen bu geçersiz yerleşimi kullanmak için geri kalan çözümler gerektirir. Dizideki diğer kısıtlamalar genellikle düğümlerin neden ilk yerde ortadan kaldırıldığına ilişkin bilgi sağlayacaktır.
-* **Placementconstraint**: Bu iletiyi görürseniz, hizmetin yerleştirme kısıtlamalarıyla eşleşmediği için bazı düğümleri ortadan kaldırdık. Şu anda yapılandırılmış olan yerleştirme kısıtlamalarını bu iletinin bir parçası olarak izliyoruz. Tanımlı bir yerleştirme kısıtlaması varsa, bu normaldir. Ancak, yerleştirme kısıtlaması yanlışlıkla çok fazla düğümün ortadan kaldırılmasına neden oluyorsa, bunu fark edebilirsiniz.
-* **Nodecapacity**: Bu kısıtlama, küme kaynak yöneticisi çoğaltmaları, bu düğümleri kapasiteye koyacağından, belirtilen düğümlere yerleştiremediği anlamına gelir.
-* **Benzeşim**: Bu kısıtlama, benzeşim kısıtlamasının ihlaline yol açacağından, çoğaltmayı etkilenen düğümlere yerleştiremedik anlamına gelir. [Bu makalede](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) benzeşim hakkında daha fazla bilgi
-* **Faultdomain** ve **upgradedomain**: Bu kısıtlama, çoğaltmanın belirtilen düğümlere yerleştirilmesi belirli bir hata veya yükseltme etki alanında paketlemeye neden olacaksa düğümleri ortadan kaldırır. Bu kısıtlamayı tartışan birkaç örnek, [hata ve yükseltme etki alanı kısıtlamaları ve sonuç davranışı](service-fabric-cluster-resource-manager-cluster-description.md) konularında sunulmaktadır
-* **Preferredlocation**: Normalde bu kısıtlamayı, varsayılan olarak en iyi duruma getirme olarak çalıştığı için, çözümden düğümleri kaldırarak görmemelisiniz. Tercih edilen konum kısıtlaması yükseltmeler sırasında da mevcuttur. Yükseltme sırasında, Hizmetleri yükseltmenin başlatıldığı yere geri taşımak için kullanılır.
+* **ReplicaExclusionStatic** ve **ReplicaExclusionDynamic**: Bu kısıtlamalar, aynı bölümden iki hizmet nesnesinin aynı düğüme yerleştirilmesi gerekeceği için bir çözümün reddedildiğini gösterir. Bu izin verilmez, çünkü o düğümün başarısızlığı bu bölümü aşırı etkiler. ReplicaExclusionStatic ve ReplicaExclusionDynamic hemen hemen aynı kural ve farklılıklar gerçekten önemli değildir. ÇoğaltmaExclusionStatic veya ReplicaExclusionDynamic kısıtlamasını içeren bir kısıtlama eleme dizisi görüyorsanız, Küme Kaynak Yöneticisi yeterli düğüm olmadığını düşünür. Bu, izin verilmeyen bu geçersiz yerleşimleri kullanmak için kalan çözümler gerektirir. Dizideki diğer kısıtlamalar genellikle düğümlerin neden ilk etapta ortadan kaldırıldığını bize söyleyecektir.
+* **YerleşimKısıtlaması**: Bu iletiyi görürseniz, hizmetin yerleşim kısıtlamalarıyla eşleşmediği için bazı düğümleri ortadan kaldırdığımız anlamına gelir. Bu iletinin bir parçası olarak şu anda yapılandırılan yerleşim kısıtlamalarını izleriz. Tanımlanmış bir yerleşim kısıtlamanız varsa bu normaldir. Ancak, yerleşim kısıtlaması yanlış bir şekilde çok fazla düğümün ortadan kaldırılmasına neden oluyorsa, bunu fark esiniz.
+* **Düğüm Kapasitesi**: Bu kısıtlama, Küme Kaynak Yöneticisi'nin yinelemeleri belirtilen düğümlere yerleştiremeyeceği anlamına gelir, çünkü bu onları kapasitenin üzerine koyar.
+* **Yakınlık**: Bu kısıtlama, yinelemeyi etkilenen düğümlere yerleştiremediğimizi gösterir, çünkü yakınlık kısıtlamasının ihlaline neden olur. Yakınlık hakkında daha fazla bilgi [bu makalede](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **FaultDomain** ve **UpgradeDomain**: Belirtilen düğümlere yinelemenin yerleştirilmesi belirli bir hata veya yükseltme etki alanında paketlemeye neden olacaksa, bu kısıtlama düğümleri ortadan kaldırır. Bu kısıtlamayı tartışan çeşitli [örnekler, hata ve yükseltme etki alanı kısıtlamaları ve ortaya çıkan davranış](service-fabric-cluster-resource-manager-cluster-description.md) konusu sunulmaktadır
+* **PreferredLocation**: Varsayılan olarak bir optimizasyon olarak çalıştığından, normalde bu kısıtlamanın düğümleri çözümden kaldırdığını görmemeniz gerekir. Tercih edilen konum kısıtlaması yükseltmeler sırasında da bulunur. Yükseltme sırasında, hizmetleri yükseltme başladığında oldukları yere taşımak için kullanılır.
 
-## <a name="blocklisting-nodes"></a>Blok listeleme düğümleri
-Başka bir sistem durumu iletisi Küme Kaynak Yöneticisi raporları düğümlerin blok listesinde olduğunu bildirir. Blocklist ' i sizin için otomatik olarak uygulanan geçici bir kısıtlama olarak düşünebilirsiniz. Düğümler, bu hizmet türünün örneklerini başlatırken yinelenen hatalarla karşılaştıklarında, blok alır. Düğümler, her hizmet türü temelinde listelenir. Bir düğüm, bir hizmet türü için bir blok listelenmiş ancak başka bir işlem olabilir. 
+## <a name="blocklisting-nodes"></a>Engelleme Düğümleri
+Küme Kaynak Yöneticisi'nin bildirdiği bir diğer sistem durumu iletisi de düğümlerin engellenmeleridir. Blocklisting'i sizin için otomatik olarak uygulanan geçici bir kısıtlama olarak düşünebilirsiniz. Bu hizmet türündeki örnekleri başlatırken yinelenen hatalarla karşılaştıklarında düğümler engellenir. Düğümler hizmet başına tür bazında engellenir. Bir düğüm bir hizmet türü için engellenebilir, ancak başka bir hizmet türü için engellenebilir. 
 
-Geliştirme sırasında engelleme listelemeyi hemen başlacaksınız: bazı hatalar hizmet ana bilgisayarın başlangıçta kilitlenmesine neden olur. Service Fabric, hizmet konağını birkaç kez oluşturmaya çalışır ve hata devam eder. Birkaç denemeden sonra düğüm blocklistelenir ve Küme Kaynak Yöneticisi hizmeti başka bir yerde oluşturmaya çalışacaktır. Bu hata birden çok düğümde gerçekleşiyorsa, küme sonunda geçerli düğümlerin tümünün engellenmiş olması mümkündür. Blok listeleme, istenen ölçeği karşılamak için hizmeti başarıyla başlatabilecek çok sayıda düğümü de kaldırabilir. Genellikle, bir hizmetin istenen çoğaltma veya örnek sayısının altında olduğunu belirten Kaynak Yöneticisi ve hatanın ilk başta blok listesine ne olduğunu belirten sistem durumu iletilerinin yanı sıra kümedeki ek hataları veya uyarıları görürsünüz. koy.
+Geliştirme sırasında engelleme listesi nin sık sık devreye sayılacağını görürsünüz: bazı hata, servis ana bilgisayarınızın başlangıçta çökmesine neden olur. Service Fabric birkaç kez hizmet ana bilgisayar ını oluşturmaya çalışır ve hata oluşmaya devam eder. Birkaç denemeden sonra düğüm engellenir ve Küme Kaynak Yöneticisi hizmeti başka bir yerde oluşturmaya çalışır. Bu hata birden çok düğümde olmaya devam ederse, kümedeki geçerli düğümlerin tümü engellenmiş olabilir. Blocklisting ayrıca, istenen ölçeği karşılamak için hizmeti başarıyla başlatabilecek kadar çok düğümü de kaldırabilir. Genellikle Cluster Resource Manager'dan, hizmetin istenen yineleme veya örnek sayısının altında olduğunu belirten ek hatalar veya uyarılar ve ilk sırada engelleme listesine yol açan hatanın ne olduğunu gösteren sistem durumu iletileri görürsünüz. Yer.
 
-Blok listeleme kalıcı bir durum değil. Birkaç dakika sonra, düğüm engelleme listesi öğesinden kaldırılır ve Service Fabric Bu düğümdeki hizmetleri yeniden etkinleştirebilir. Hizmetler başarısız olmaya devam ederse, düğüm bu hizmet türü için yeniden listelenir. 
+Blocklisting kalıcı bir koşul değildir. Birkaç dakika sonra düğüm bloklisteden kaldırılır ve Servis Kumaşı bu düğümdeki hizmetleri yeniden etkinleştirebilir. Hizmetler başarısız olmaya devam ederse, düğüm bu hizmet türü için yeniden engellenir. 
 
 ### <a name="constraint-priorities"></a>Kısıtlama öncelikleri
 
 > [!WARNING]
-> Kısıtlama önceliklerini değiştirme önerilmez ve kümenizde önemli olumsuz etkileri olabilir. Aşağıdaki bilgiler, varsayılan kısıtlama önceliklerinin ve bunların davranışlarının başvurusu için verilmiştir. 
+> Kısıtlama önceliklerini değiştirmek önerilmez ve kümeniz üzerinde önemli yan etkilere neden olabilir. Aşağıdaki bilgiler, varsayılan kısıtlama öncelikleri ve davranışları referans için sağlanmıştır. 
 >
 
-Bu kısıtlamaların tümünde, "Hey: hata etki alanı kısıtlamalarının sistemimde en önemli şeyler olduğunu düşündüm. Hata etki alanı kısıtlamasının ihlal olmamasını sağlamak için diğer kısıtlamaları ihlal etmek istiyorum. "
+Tüm bu kısıtlamalar ile, "Hey - Ben hata etki alanı kısıtlamaları benim sistemdeki en önemli şey olduğunu düşünüyorum düşünüyor olabilir. Hata etki alanı kısıtlamasının ihlal olmadığından emin olmak için diğer kısıtlamaları ihlal etmeye hazırım."
 
-Kısıtlamalar, farklı öncelik düzeyleriyle yapılandırılabilir. Bunlar:
+Kısıtlamalar farklı öncelik düzeyleriile yapılandırılabilir. Bunlar:
 
-   - "Hard" (0)
-   - "Soft" (1)
-   - "iyileştirme" (2)
-   - "off" (-1). 
+   - "sert" (0)
+   - "yumuşak" (1)
+   - "optimizasyon" (2)
+   - "kapalı" (-1). 
    
-Kısıtlamaların çoğu, varsayılan olarak sabit kısıtlamalar olarak yapılandırılır.
+Kısıtlamaların çoğu varsayılan olarak sabit kısıtlamalar olarak yapılandırılır.
 
-Kısıtlamaların önceliğini değiştirmek yaygın bir durumdur. Genellikle ortamı etkileyen başka bir hata veya davranışa geçici bir çözüm için, kısıtlama önceliklerinin değiştirilmesi gereken süreler vardır. Genellikle kısıtlama öncelik altyapısının esnekliği çok iyi çalıştık, ancak bu genellikle gerekli değildir. Her şeyin varsayılan önceliklerinde yer aldığı zaman. 
+Kısıtlamaların önceliğini değiştirmek nadirdir. Kısıtlama önceliklerinin değişmesi gereken zamanlar olmuştur, genellikle çevreyi etkileyen başka bir hata veya davranış etrafında çalışmak için. Genellikle kısıtlama öncelikli altyapı esnekliği çok iyi çalıştı, ancak sık sık gerekli değildir. Çoğu zaman her şey varsayılan öncelikleri oturur. 
 
-Öncelik düzeyleri, belirli bir kısıtlamanın ihlal edildiğini veya her zaman karşılanacağını _ifade eder._ Kısıtlama öncelikleri kısıtlamaların hangi sırayla uygulanacağını tanımlar. Öncelikler, tüm kısıtlamaları karşılamak mümkün olduğunda, avantajları tanımlar. Genellikle, ortamda başka bir şey olmadığı müddetçe tüm kısıtlamalar karşılanabilir. Kısıtlama ihlallerine yol açabilecek bazı senaryolar örnekleri, çakışan kısıtlamalardır veya çok sayıda eşzamanlı hatalardan oluşur.
+Öncelik düzeyleri, belirli bir kısıtlamanın ihlal _edilmeyeceği_ veya her zaman karşılanacağı anlamına gelmez. Kısıtlama öncelikleri, kısıtlamaların uygulandığı bir sıratanımlar. Tüm kısıtlamaların karşılanması imkansız olduğunda, öncelikler dengeleri tanımlar. Genellikle çevrede başka bir şey olmadığı sürece tüm kısıtlamalar tatmin edilebilir. Kısıtlama ihlallerine yol açacak senaryolara bazı örnekler, çakışan kısıtlamalar veya çok sayıda eşzamanlı hatadır.
 
-Gelişmiş durumlarda kısıtlama önceliklerini değiştirebilirsiniz. Örneğin, düğüm kapasitesi sorunlarını çözmek için gerektiğinde benzeşim 'in her zaman ihlal edildiğini güvence altına almak istediğinizi varsayalım. Bunu başarmak için, benzeşim kısıtlamasının önceliğini "Soft" (1) olarak ayarlayabilir ve kapasite kısıtlamasını "Hard" (0) olarak bırakabilirsiniz.
+Gelişmiş durumlarda, kısıtlama önceliklerini değiştirebilirsiniz. Örneğin, düğüm kapasitesi sorunlarını çözmek için gerektiğinde her zaman yakınlığın ihlal edildiğinden emin olmak istediğinizi varsan. Bunu başarmak için, yakınlık kısıtlamasının önceliğini "yumuşak" (1) olarak ayarlayabilir ve kapasite kısıtlamasını "sabit" (0) olarak ayarlayabilirsiniz.
 
-Farklı kısıtlamalar için varsayılan öncelik değerleri aşağıdaki yapılandırmada belirtilmiştir:
+Farklı kısıtlamalar için varsayılan öncelik değerleri aşağıdaki config belirtilir:
 
-ClusterManifest. xml
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -135,7 +135,7 @@ ClusterManifest. xml
         </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Bağımsız dağıtımlar için ClusterConfig.json veya Azure barındırılan kümeler için Template.json aracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -172,32 +172,32 @@ Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırı
 ```
 
 ## <a name="fault-domain-and-upgrade-domain-constraints"></a>Hata etki alanı ve yükseltme etki alanı kısıtlamaları
-Küme Kaynak Yöneticisi, hizmetlerin hata ve yükseltme etki alanları arasında yayılmasını sağlamak istiyor. Bunu, Küme Kaynak Yöneticisi altyapısının içindeki bir kısıtlama olarak modeller. Nasıl kullanıldıkları ve belirli davranışları hakkında daha fazla bilgi için, [küme yapılandırmasındaki](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)makaleye göz atın.
+Küme Kaynak Yöneticisi, hizmetlerin hata ve yükseltme etki alanları arasında yayılmasını sağlamak istiyor. Bunu Cluster Resource Manager'ın altyapısında bir kısıtlama olarak modeller. Nasıl kullanıldıkları ve belirli davranışları hakkında daha fazla bilgi için [küme yapılandırması](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)hakkındaki makaleye göz atın.
 
-Yükseltme, başarısızlık veya diğer kısıtlama ihlalleriyle uğraşmak için, Küme Kaynak Yöneticisi bir yükseltme etki alanına birkaç yinelemeyi paketlendirmek gerekebilir. Hata veya yükseltme etki alanlarına göre paketleme, normal olarak yalnızca birkaç hata oluşması veya sistemde doğru yerleşimi engellemek durumunda oluşur. Bu durumlar sırasında bile paketleme 'yı engellemek istiyorsanız `RequireDomainDistribution` [yerleştirme ilkesini](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)kullanabilirsiniz. Bunun, hizmet kullanılabilirliğini ve güvenilirliğini yan bir efekt olarak etkileyebileceğini unutmayın. bu nedenle dikkatle düşünün.
+Küme Kaynak Yöneticisi yükseltmeleri, hataları veya diğer kısıtlama ihlalleri ile başa çıkmak için bir yükseltme etki içine birkaç yineleme paketi gerekebilir. Hata veya yükseltme etki alanları içine ambalaj normalde sadece birkaç hatalar veya sistemde doğru yerleşim engelleyen diğer karmaşa olduğunda olur. Bu durumlarda bile ambalaj önlemek istiyorsanız, `RequireDomainDistribution` [yerleşim ilkesini](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)kullanabilirsiniz. Bunun bir yan etki olarak hizmet kullanılabilirliğini ve güvenilirliğini etkileyebileceğini unutmayın, bu nedenle dikkatli olun.
 
-Ortam doğru yapılandırılmışsa, yükseltmeler sırasında bile tüm kısıtlamalar tam olarak işlenir. Temel şey, Küme Kaynak Yöneticisi kısıtlamalarınız için izlenemez. İhlalin ihlal algıladığında, hemen rapor eder ve sorunu gidermeye çalışır.
+Ortam doğru şekilde yapılandırılırsa, yükseltmeler sırasında bile tüm kısıtlamalara tam olarak uyulmaktadır. Önemli olan Küme Kaynak Yöneticisi'nin kısıtlamalarınızı izlemesidir. Bir ihlali algıladığında hemen bildirir ve sorunu düzeltmeye çalışır.
 
 ## <a name="the-preferred-location-constraint"></a>Tercih edilen konum kısıtlaması
-PreferredLocation kısıtlaması, iki farklı kullanım içerdiğinden biraz farklıdır. Bu kısıtlamanın bir kullanımı uygulama yükseltmeleri sırasında yapılır. Küme Kaynak Yöneticisi, yükseltmeler sırasında bu kısıtlamayı otomatik olarak yönetir. Çoğaltmaların ilk konumlarına geri döndürdüğü yükseltmelerin tamamlandığında emin olmak için kullanılır. PreferredLocation kısıtlamasının diğer kullanımı [`PreferredPrimaryDomain` yerleştirme ilkesine](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)yöneliktir. Bunların her ikisi de iyileştirmedir ve bu nedenle PreferredLocation kısıtlaması varsayılan olarak "Iyileştirme" olarak ayarlanmış tek kısıtlamadır.
+PreferredLocation kısıtlaması, iki farklı kullanım alanı olduğundan biraz farklıdır. Bu kısıtlamanın bir kullanımı uygulama yükseltmeleri sırasında. Küme Kaynak Yöneticisi yükseltmeleri sırasında bu kısıtlamayı otomatik olarak yönetir. Yükseltmeler tamamlandığında, yinelemelerin ilk konumlarına dönmesini sağlamak için kullanılır. Tercih Edilen Konum kısıtlamasının diğer kullanımı [ `PreferredPrimaryDomain` yerleşim ilkesi](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)içindir. Bunların her ikisi de optimizasyonlar ve bu nedenle PreferredLocation kısıtlamavarsayılan olarak "Optimizasyon" için ayarlanmış tek kısıtlamadır.
 
-## <a name="upgrades"></a>Güncelleştirmelerini
-Küme Kaynak Yöneticisi, uygulama ve küme yükseltmeleri sırasında iki işi olduğu için de yardımcı olur:
+## <a name="upgrades"></a>Yükseltme
+Küme Kaynak Yöneticisi, iki işi olduğu uygulama ve küme yükseltmeleri sırasında da yardımcı olur:
 
-* küme kurallarının güvenliğinin aşılmadığından emin olun
-* yükseltmenin sorunsuz bir şekilde çalışmasına yardımcı olmaya çalışın
+* kümenin kurallarından ödün verilmediğından emin olun
+* yükseltme sorunsuz geçmesine yardımcı olmaya çalışın
 
-### <a name="keep-enforcing-the-rules"></a>Kuralların zorlanmasına devam edin
-Göz önünde bulundurulması gereken ana şey, kuralların (yerleştirme kısıtlamaları ve kapasiteleri gibi katı kısıtlamalar) yükseltmeler sırasında zorlanmaya devam etmektedir. Yerleştirme kısıtlamaları, iş yüklerinizin, yükseltmeler sırasında bile yalnızca izin verilen yerlerde çalıştırılmasını sağlar. Hizmetler yüksek kısıtlandığı zaman, yükseltmeler daha uzun sürebilir. Hizmet veya üzerinde çalıştığı düğüm bir güncelleştirme için bırakıldığında, gidebileceği birkaç seçenek olabilir.
+### <a name="keep-enforcing-the-rules"></a>Kuralları zorlamaya devam edin
+Dikkat edilmesi gereken en önemli şey, kuralların - yerleşim kısıtlamaları ve kapasiteleri gibi katı kısıtlamalar - yükseltmeleri sırasında hala uygulanmasıdır. Yerleşim kısıtlamaları, iş yüklerinizin yükseltmeler sırasında bile yalnızca izin verilen yerlerde çalışmasını sağlar. Hizmetler son derece kısıtlandığında, yükseltmeler daha uzun sürebilir. Üzerinde çalıştığı hizmet veya düğüm bir güncelleştirme için aşağı getirildiğinde, gidebileceği yerler için birkaç seçenek olabilir.
 
-### <a name="smart-replacements"></a>Akıllı değişiklikler
-Bir yükseltme başladığında Kaynak Yöneticisi kümenin geçerli düzenlemenin anlık görüntüsünü alır. Her yükseltme etki alanı tamamlandığında, bu yükseltme etki alanında bulunan Hizmetleri özgün düzenleriyle döndürmeye çalışır. Bu şekilde, yükseltme sırasında bir hizmet için en fazla iki geçiş vardır. Etkilenen düğümden bir tane çıkar ve tek bir taşı geri taşınır. Yükseltme, kümenin yerleşimini etkilememesini sağlamak için küme veya hizmeti yükseltmenin önüne döndürülüyor. 
+### <a name="smart-replacements"></a>Akıllı yedek
+Yükseltme başladığında, Kaynak Yöneticisi kümenin geçerli düzenlemesinin anlık görüntüsünü alır. Her Yükseltme Etki Alanı tamamlandığında, bu Yükseltme Etki Alanı'nda bulunan hizmetleri özgün düzenlemelerine döndürmeye çalışır. Bu şekilde yükseltme sırasında bir hizmet için en fazla iki geçiş vardır. Etkilenen düğümden bir hareket, bir hamle geri. Kümeveya hizmeti yükseltmeden önceki hale döndürmek, yükseltmenin kümenin düzenini etkilememesini de sağlar. 
 
-### <a name="reduced-churn"></a>Azaltılan dalgalanma
-Yükseltmeler sırasında oluşan başka bir şey, kümenin Kaynak Yöneticisi dengelemeyi kapatmasından oluşur. Dengelemeyi önlemek, Hizmetleri yükseltme için boşalmış düğümlere taşımak gibi, yükseltmenin kendisi için gereksiz yeniden eylemlerin yapılmasını önler. Söz konusu yükseltme bir küme yükseltmeyse, yükseltme sırasında kümenin tamamı dengelenemez. Kısıtlama denetimleri etkin kalır, yalnızca ölçümlerin öngörülü dengelenmesini temel alan hareket devre dışıdır.
+### <a name="reduced-churn"></a>Azaltılmış çalkalama
+Yükseltmeler sırasında gerçekleşen bir diğer şey de Küme Kaynak Yöneticisi'nin dengelemeyi kapatmasIdır. Dengelemenin engellenmesi, hizmetleri yükseltme için boşaltılan düğümlere taşımak gibi yükseltmenin kendisine yapılan gereksiz reaksiyonları önler. Söz konusu yükseltme bir Küme yükseltmesi ise, yükseltme sırasında tüm küme dengelenmez. Kısıtlama denetimleri etkin kalır, yalnızca ölçümlerin proaktif dengelemesine dayalı hareket devre dışı bırakılır.
 
-### <a name="buffered-capacity--upgrade"></a>Arabelleğe alınan kapasite & yükseltmesi
-Genellikle, küme kısıtlı veya tam kapalı olsa bile yükseltmenin tamamlanmasını istersiniz. Küme kapasitesini yönetmek, her zamanki yükseltmeler sırasında daha da önemlidir. Yükseltme, küme üzerinde yer aldığı için yükseltme etki alanlarının sayısına bağlı olarak kapasitenin yüzde 5 ve %20 ' si arasında geçiş yapılmalıdır. Bu işin bir yere gitmesi gereken bir yerde. Bu, [arabelleğe alınmış kapasitelerin](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) kavram kavramının yararlı olduğu yerdir. Ara belleğe alınan kapasite normal işlem sırasında kullanılır. Küme Kaynak Yöneticisi, gerekli olduğunda yükseltmeler sırasında düğümleri toplam kapasiteye (arabelleği kullanan) doldurabilir.
+### <a name="buffered-capacity--upgrade"></a>Arabelleğe Alma Kapasitesi & Yükseltme
+Genellikle küme kısıtlı veya doluya yakın olsa bile yükseltmenin tamamlanmasını istersiniz. Kümenin kapasitesini yönetmek yükseltmeler sırasında normalden daha önemlidir. Yükseltme etki alanlarının sayısına bağlı olarak, yükseltme kümede yuvarlanırken kapasitenin yüzde 5 ila 20'si geçirilmelidir. Bu iş bir yere gitmeli. Bu, [arabelleğe alma kapasiteleri](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) kavramının yararlı olduğu yerdir. Arabelleğe alma kapasitesi normal çalışma sırasında saygı duyulur. Küme Kaynak Yöneticisi, gerekirse yükseltmeler sırasında düğümleri toplam kapasitelerine (arabellek tüketen) kadar doldurabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Baştan başlayın ve [Service Fabric kümesine giriş yapın Kaynak Yöneticisi](service-fabric-cluster-resource-manager-introduction.md)
+* Baştan başlayın ve [Hizmet Kumaş Küme Kaynak Yöneticisi'ne Giriş alın](service-fabric-cluster-resource-manager-introduction.md)

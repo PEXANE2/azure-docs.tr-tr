@@ -1,7 +1,7 @@
 ---
-title: Sahneleri, görüntüleri ve ana kareleri Video Indexer
+title: Video Indexer sahneleri, çekimler ve anahtar kareler
 titleSuffix: Azure Media Services
-description: Bu konu, Video Indexer sahneleri, görüntüleri ve ana kareleri için bir genel bakış sunar.
+description: Bu konu, Video Dizinleyici sahneleri, çekimler ve anahtar kareler hakkında genel bir bakış sağlar.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,52 +11,52 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245947"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sahneler, çekimler, ana kareler
 
-Video Indexer, Videoları yapısal ve anlam özelliklerine göre zamana bağlı birimlere parçalara ayırır. Bu özellik, müşterilerin, değişen granlular temelinde video içeriğine kolayca gözatmasını, yönetmesini ve düzenlemesini sağlar. Örneğin, bu konuda açıklanan sahneleri, görüntüleri ve ana kareleri temel alan.   
+Video Indexer, videoları yapısal ve anlamsal özelliklere dayalı olarak zamansal birimlere bölmeyi destekler. Bu özellik, müşterilerin farklı parçalı durumları temel alınarak video içeriğine kolayca göz atmalarını, yönetmelerini ve bunları yönetmelerini sağlar. Örneğin, bu konuda açıklanan sahnelere, çekimlere ve anahtar karelere dayanır.   
 
 ![Sahneler, çekimler, ana kareler](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
 ## <a name="scene-detection"></a>Sahne algılama  
  
-Video Indexer görsel ipuçlarıyla videoda bir sahnenin ne zaman değişiklik olduğunu belirler. Bir sahne, tek bir olay gösterir ve bu, anlam ile ilgili olan bir dizi ardışık anlık görüntüsünü meydana gelir. Sahne küçük resmi, temel alınan görüntüsündeki ilk ana karedir. Video Indexer, bir videoyu ardışık görüntülerdeki renk tutarlılılığını temel alarak sahneleri parçalara ayırır ve her sahnenin başlangıç ve bitiş saatini alır. Sahne algılama, videoların anlamlı yönlerini içerdiğinden zorlayıcı bir görev olarak değerlendirilir.
+Video Indexer, görsel ipuçlarına göre videoda bir sahnenin ne zaman değişer olduğunu belirler. Bir sahne tek bir olayı betimler ve bir dizi ardışık çekimden oluşur, bunlar anlamsal olarak ilişkilidir. Sahne küçük resmi, altta yatan çekimin ilk anahtar çerçevesidir. Video dizinleyici, bir videoyu ardışık çekimlerarasında renk tutarlılığına dayalı sahnelere böler ve her sahnenin başlangıç ve bitiş saatini alır. Videoların anlamsal yönlerini ölçmeyi içerdiğinden sahne algılama zor bir görev olarak kabul edilir.
 
 > [!NOTE]
 > En az 3 sahne içeren videolar için geçerlidir.
 
-## <a name="shot-detection"></a>Görüntü algılama
+## <a name="shot-detection"></a>Atış algılama
 
-Video Indexer, ardışık çerçevelerin renk düzeninde hem sert hem de dereceli geçişleri izleyerek görsel ipuçlarıyla videoda bir çekneye ne zaman değişiklik olduğunu belirler. Alıcının meta verileri bir başlangıç ve bitiş zamanı ve bu çekte yer alan ana kare listesini içerir. Bu görüntüleri aynı kameradaki aynı kameradan alınan ardışık çerçevelerdir.
+Video Indexer, bir çekimin görsel ipuçlarına göre ne zaman değiştiğini, bitişik çerçevelerin renk düzenindeki ani ve aşamalı geçişleri izleyerek belirler. Çekimin meta verileri, başlangıç ve bitiş saatinin yanı sıra çekimde yer alan anahtar karelerin listesini içerir. Çekimler aynı anda aynı kameradan çekilen ardışık karelerdir.
 
-## <a name="keyframe-detection"></a>Ana kare algılama
+## <a name="keyframe-detection"></a>Anahtar kare algılama
 
-Video Indexer her bir görüntüsünü en iyi temsil eden çerçeveleri seçer. Ana kareler, Aesthetic Characteristics özelliklerine (örneğin, kontrast ve stablete) göre videonun tamamının seçtiği temsili çerçevelerdir. Video Indexer, ana kare kimliklerinin bir listesini, ana kareyi yüksek çözünürlüklü bir görüntü olarak hangi müşterilerin çıkarabileceği temel alınarak, yansımanın meta verilerinin bir parçası olarak alır.  
+Video Indexer, her çekimi en iyi temsil eden kare(ler)'i seçer. Anahtar kareler, videonun tamamından estetik özelliklere (örneğin kontrast ve kararlılık) göre seçilen temsili çerçevelerdir. Video Indexer, müşterilerin anahtar çerçeveyi yüksek çözünürlüklü bir görüntü olarak ayıklayabildiği metne dayalı olarak çekimin meta verilerinin bir parçası olarak anahtar kare lidlerin bir listesini alır.  
 
-### <a name="extracting-keyframes"></a>Ana kareleri ayıklama
+### <a name="extracting-keyframes"></a>Anahtar Kareleri Ayıklama
 
-Videonuzla ilgili yüksek çözünürlüklü ana kareleri ayıklamak için öncelikle videoyu karşıya yükleyip dizinlemenizin olması gerekir.
+Videonuz için yüksek çözünürlüklü anahtar kareleri ayıklamak için önce videoyu yüklemeniz ve dizine dizine dizine yüklemeniz gerekir.
 
-![Ana kareler](./media/scenes-shots-keyframes/extracting-keyframes.png)
+![Anahtar Kareler](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
-#### <a name="with-the-video-indexer-website"></a>Video Indexer Web sitesiyle
+#### <a name="with-the-video-indexer-website"></a>Video Indexer web sitesi ile
 
-Video Indexer Web sitesini kullanarak ana kareleri ayıklamak için videonuzu karşıya yükleyin ve dizine yükleyin. Dizin oluşturma işi tamamlandıktan sonra **İndir** düğmesine tıklayın ve **yapılar (ZIP)** öğesini seçin. Bu, yapıt klasörünü bilgisayarınıza indirir. 
+Video Indexer web sitesini kullanarak anahtar kareleri ayıklamak için videonuzu yükleyin ve dizine ekleyin. Dizin oluşturma işi tamamlandıktan sonra **İndir** düğmesine tıklayın ve **Artefakt (ZIP) seçeneğini belirleyin.** Bu, yapılar klasörünü bilgisayarınıza indirir. 
 
-![Ana kareler](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Anahtar Kareler](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-Açın ve klasörü açın. *_KeyframeThumbnail* klasöründe, videodan ayıklanan tüm ana kareleri bulacaksınız. 
+Zip'i açın ve klasörü açın. *_KeyframeThumbnail* klasöründe ve videonuzdan çıkarılan tüm anahtar kareleri bulacaksınız. 
 
-#### <a name="with-the-video-indexer-api"></a>Video Indexer API 'SI ile
+#### <a name="with-the-video-indexer-api"></a>Video Dizinleyici API ile
 
-Video Indexer API 'sini kullanarak ana kareleri almak için [karşıya yükleme video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) çağrısını kullanarak videonuzu karşıya yükleyin ve dizine alın. Dizin oluşturma işi tamamlandıktan sonra, [video dizinini al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)' ı çağırın. Bu, Video Indexer JSON dosyasındaki İçeriğinizden ayıkladığı tüm öngörüleri sağlar.  
+Video Indexer API'sini kullanarak anahtar kareler almak için [Video Yükle'yi](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) kullanarak videonuzu yükleyin ve dizine ekleyin. Dizin oluşturma işi tamamlandıktan sonra [Video Dizini Al'ı](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)arayın. Bu, Video Indexer'ın bir JSON dosyasında içeriğinizden çıkardığı tüm bilgileri size verecektir.  
 
-Her bir shot meta verisinin parçası olarak ana kare kimliklerinin bir listesini alırsınız. 
+Her çekimin meta verilerinin bir parçası olarak anahtar kare lidlerin bir listesini alırsınız. 
 
 ```json
 "shots":[  
@@ -98,35 +98,35 @@ Her bir shot meta verisinin parçası olarak ana kare kimliklerinin bir listesin
 ]
 ```
 
-Şimdi bu ana kare kimliklerinin her birini [küçük resim al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) çağrısında çalıştırmanız gerekir. Bu işlem, ana kare görüntülerinin her birini bilgisayarınıza indirir. 
+Artık bu anahtar kare lisenin her birini [Küçük Resimleri Al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) çağrısında çalıştırmanız gerekir. Bu, anahtar kare görüntülerin her birini bilgisayarınıza indirir. 
 
-## <a name="editorial-shot-type-detection"></a>Düzenleme görüntüsü türü algılama
+## <a name="editorial-shot-type-detection"></a>Editoryal atış türü algılama
 
-Ana kareler, JSON çıkışı içindeki görüntüleriyle ilişkilendirilir. 
+Anahtar kareler çıkış JSON çekim ile ilişkilidir. 
 
-Öngörüler JSON 'daki tek bir çekle ilişkili olan görüntü türü, düzenleme türünü temsil eder. Videoları kliplere, tanıtıcıya veya sanatsal amaçlar için belirli bir ana kare stilini ararken yararlı olan bu görüntü türü özelliklerini bulabilirsiniz. Farklı türler her bir görüntüsündeki ilk ana karenin analizine göre belirlenir. Anlık görüntüleri, ilk ana karede görünen yüzlerin ölçeği, boyutu ve konumu tarafından tanımlanır. 
+JSON'Un editoryal türünü temsil ettiği kavrayışlarda tek bir çekimle ilişkili çekim türü. Videoları kliplere, fragmanlara düzenlerken veya sanatsal amaçlar için belirli bir anahtar çerçevesi stilini ararken bu çekim türü özelliklerini yararlı bulabilirsiniz. Farklı türler, her çekimin ilk anahtar çerçevesinin analizine göre belirlenir. Çekimler, ilk anahtar karelerinde görünen yüzlerin ölçeğine, boyutuna ve konumuna göre tanımlanır. 
 
-Görüntü boyutu ve ölçek, kamera ve çerçevede görünen yüzlerin arasındaki uzaklığa göre belirlenir. Bu özellikleri kullanarak Video Indexer aşağıdaki görüntü türlerini algılar:
+Çekim boyutu ve ölçeği, kamera ile çerçevede görünen yüzler arasındaki mesafeye göre belirlenir. Bu özellikleri kullanarak, Video Dizinleyici aşağıdaki çekim türlerini algılar:
 
-* Geniş: bir kişinin gövdesinin tamamını gösterir.
-* Orta: bir kişinin üst gövdesini ve yüzünü gösterir.
-* Kapat: genellikle bir kişinin yüzünü gösterir.
-* Aşırı yakın: bir kişinin ekranı dolduran yüzü gösterir. 
+* Geniş: bütün bir kişinin vücudunu gösterir.
+* Orta: bir kişinin üst vücut ve yüz gösterir.
+* Yakın çekim: esas olarak bir kişinin yüzünü gösterir.
+* Aşırı yakın çekim: ekranı dolduran bir kişinin yüzünü gösterir. 
 
-Görüntü türleri, çerçeve merkezine göre konu karakterlerinin konumuyla de belirlenebilir. Bu özellik Video Indexer aşağıdaki görüntü türlerini tanımlar:
+Çekim türleri, çerçevenin ortasına göre konu karakterlerinin konumuna göre de belirlenebilir. Bu özellik, Video Dizinleyici'de aşağıdaki çekim türlerini tanımlar:
 
-* Sol yüz: çerçevenin sol tarafında bir kişi görünür.
-* Orta yüz: karenin merkezi bölgesinde bir kişi görünür.
-* Sağ yüz: çerçevenin sağ tarafında bir kişi görünür.
-* Açık Hava: bir kişi, bir dış mekayarda görüntülenir.
-* Inkapısı: bir Kullanıcı, bir ınkapılı ayarda görüntülenir.
+* Sol yüz: çerçevenin sol tarafında bir kişi belirir.
+* Orta yüz: Çerçevenin orta bölgesinde bir kişi görünür.
+* Sağ yüz: bir kişi çerçevenin sağ tarafında görünür.
+* Açık hava: bir kişi açık havada görünür.
+* Kapalı: bir kişi kapalı bir ortamda görünür.
 
 Ek özellikler:
 
-* İki anlık görüntüsü: iki kişinin orta büyüklükte bir yüzlerini gösterir.
-* Birden çok yüz: ikiden fazla kişi.
+* İki çekim: orta boy iki kişinin yüzlerini gösterir.
+* Birden fazla yüz: ikiden fazla kişi.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[API tarafından üretilen Video Indexer çıkışını inceleyin](video-indexer-output-json-v2.md#scenes)
+[API tarafından üretilen Video İndeksleyici çıktısını inceleyin](video-indexer-output-json-v2.md#scenes)

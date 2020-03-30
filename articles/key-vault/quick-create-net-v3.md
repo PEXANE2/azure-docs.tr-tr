@@ -1,66 +1,66 @@
 ---
-title: Hızlı başlangıç-.NET için Azure Key Vault istemci kitaplığı (SDK v3)
-description: .NET istemci kitaplığı 'nı (v3) kullanarak bir Azure Anahtar Kasası 'ndan gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
+title: Quickstart - .NET için Azure Key Vault istemci kitaplığı (SDK v3)
+description: .NET istemci kitaplığını (v3) kullanarak Azure anahtar kasasından nasıl sır oluşturup, alınve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 4b27893502dcded1e88b8a664531267a99c98af3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 67dedfce4be81fdf686918a310b89cf463ed389a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197547"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79457262"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v3)
 
-.NET için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
+.NET için Azure Key Vault istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
 > [!NOTE]
-> Bu hızlı başlangıç, Microsoft. Azure. Keykasası istemci kitaplığının v 3.0.4 sürümünü kullanır. Key Vault istemci kitaplığının en güncel sürümünü kullanmak için bkz. [.NET için Azure Key Vault istemci kitaplığı (SDK v4)](quick-create-net.md). 
+> Bu hızlı başlangıç, Microsoft.Azure.KeyVault istemci kitaplığı'nın v3.0.4 sürümünü kullanır. Key Vault istemci kitaplığı'nın en güncel sürümünü kullanmak [için .NET (SDK v4) için Azure Key Vault istemci kitaplığına](quick-create-net.md)bakın. 
 
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. .NET için Key Vault istemci kitaplığı 'nı kullanın:
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. .NET için Key Vault istemci kitaplığını kullanın:
 
-- Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
-- Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
-- Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
-- FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
+- Anahtarlar ve parolalar üzerinde güvenliği ve denetimi artırın.
+- Şifreleme anahtarlarını dakikalar içinde oluşturun ve aktarın.
+- Bulut ölçeği ve genel artıklık la gecikme süresini azaltın.
+- TLS/SSL sertifikaları için görevleri basitleştirin ve otomatikleştirin.
+- FIPS 140-2 Düzey 2 onaylı HSM'leri kullanın.
 
-[API başvuru belgeleri](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[API başvuru belgeleri](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 > [!NOTE]
-> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı > < Aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
+> Her anahtar kasanın benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [.NET Core 2,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [.NET Core 2.1 SDK veya sonrası](https://dotnet.microsoft.com/download/dotnet-core/2.1).
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
 
-Bu hızlı başlangıçta, Windows terminalinde `dotnet`, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)ve Windows komutlarının çalıştırdığınız varsayılır ( [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)veya [Azure Cloud Shell](https://shell.azure.com/)gibi).
+Bu hızlı başlatma, Bir `dotnet`Windows terminalinde [(PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)veya Azure Bulut [Shell](https://shell.azure.com/)gibi) Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)ve Windows komutları çalıştırdığınızı varsayar.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturma
+### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturun
 
-Konsol penceresinde, `akv-dotnet`adlı yeni bir .NET konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın.
+Konsol penceresinde, adı `dotnet new` `akv-dotnet`olan yeni bir .NET konsol uygulaması oluşturmak için komutu kullanın.
 
 
 ```console
 dotnet new console -n akvdotnet
 ```
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
+Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
 
 ```console
 dotnet build
 ```
 
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir.
+Yapı çıktısı hiçbir uyarı veya hata içermemelidir.
 
 ```console
 Build succeeded.
@@ -68,15 +68,15 @@ Build succeeded.
  0 Error(s)
 ```
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package"></a>Paketi yükleyin
 
-Konsol penceresinde, .NET için Azure Key Vault istemci Kitaplığı ' nı yükledikten sonra:
+Konsol penceresinden .NET için Azure Key Vault istemci kitaplığını yükleyin:
 
 ```console
 dotnet add package Microsoft.Azure.KeyVault
 ```
 
-Bu hızlı başlangıçta, aşağıdaki paketleri de yüklemeniz gerekecektir:
+Bu hızlı başlangıç için aşağıdaki paketleri de yüklemeniz gerekir:
 
 ```console
 dotnet add package System.Threading.Tasks
@@ -84,12 +84,12 @@ dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
 dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
+### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve anahtar kasası oluşturma
 
-Bu hızlı başlangıçta önceden oluşturulmuş bir Azure Anahtar Kasası kullanılmaktadır. [Azure CLI hızlı başlangıç](quick-create-cli.md), [Azure PowerShell hızlı](quick-create-powershell.md)başlangıç veya [Azure Portal Hızlı Başlangıç](quick-create-portal.md)adımlarını izleyerek bir Anahtar Kasası oluşturabilirsiniz. Alternatif olarak, yalnızca aşağıdaki Azure CLı komutlarını çalıştırabilirsiniz.
+Bu hızlı başlatma, önceden oluşturulmuş bir Azure anahtar kasası kullanır. [Azure CLI quickstart,](quick-create-cli.md) [Azure PowerShell quickstart](quick-create-powershell.md)veya Azure portalı [quickstart'taki](quick-create-portal.md)adımları izleyerek önemli bir kasa oluşturabilirsiniz. Alternatif olarak, aşağıdaki Azure CLI komutlarını çalıştırmanız yeterlidir.
 
 > [!Important]
-> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı > < Aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
+> Her anahtar kasanın benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -99,15 +99,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](managed-identity.md) konusuna bakın. Kolaylık sağlaması için bu hızlı başlangıç, bir .NET konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
+Bulut tabanlı bir .NET uygulamasının kimliğini doğrulamanın en basit yolu yönetilen bir kimliktir; bkz. Ayrıntılar [için Azure Key Vault'a erişmek için Uygulama Hizmeti yönetilen kimliği kullanın.](managed-identity.md) Ancak basitlik adına, bu hızlı başlatma bir .NET konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimliğini doğrulamak için bir hizmet sorumlusu nun ve erişim denetim ilkesinin kullanılması nı gerektirir.
 
-Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
+Azure CLI az reklam [sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Bu işlem, bir dizi anahtar/değer çifti döndürür. 
+Bu işlem bir dizi anahtar / değer çifti döndürecektir. 
 
 ```console
 {
@@ -117,18 +117,17 @@ Bu işlem, bir dizi anahtar/değer çifti döndürür.
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
-Aşağıdaki [anahtar kasanıza kimlik doğrulama adımınıza](#authenticate-to-your-key-vault) ulaşacağız, ClientID ve ClientSecret hakkında bir göz atın.
+Aşağıdaki anahtar kasa adımiçin [Authenticate](#authenticate-to-your-key-vault) bunları kullanacağız gibi clientId ve clientSecret not alın.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Servis müdürüne anahtar kasanıza erişim hakkı verin
 
-ClientID 'yi [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek, hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinlerini verin.
+MüşteriYi [az keyvault set-ilke](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek servis müdürünüze izin veren anahtar kasanız için bir erişim ilkesi oluşturun. Servis sorumlusuna hem anahtarlar hem de sırlar için izinleri al, listele ve ayarla.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
@@ -136,23 +135,23 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 ## <a name="object-model"></a>Nesne modeli
 
-.NET için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, gizli anahtar ayarlama ve gizli anahtar alma işlemlerinin nasıl yapılacağını gösterir.
+.NET için Azure Key Vault istemci kitaplığı, anahtarları ve sertifikalar ve sırlar gibi ilgili varlıkları yönetmenize olanak tanır. Aşağıdaki kod örnekleri size nasıl bir sır ayarlayıp bir sır alacağınızı gösterecektir.
 
-Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnetkullanılabilir.
+Tüm konsol uygulaması . https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-### <a name="add-directives"></a>Yönergeler ekleme
+### <a name="add-directives"></a>Yönergeekleme
 
-Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
+Kodunuzun üst bölümüne aşağıdaki yönergeleri ekleyin:
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
 
-### <a name="authenticate-to-your-key-vault"></a>Anahtar kasanıza kimlik doğrulama
+### <a name="authenticate-to-your-key-vault"></a>Anahtar kasanıza kimlik doğrulaması
 
-Bu .NET hızlı başlangıcı, kod içine yerleştirilmemelidir kimlik bilgilerini depolamak için ortam değişkenlerine bağımlıdır. 
+Bu .NET hızlı başlatma, koda konulmaması gereken kimlik bilgilerini depolamak için ortam değişkenlerine dayanır. 
 
-Uygulamanızı derleyip çalıştırmadan önce `akvClientId`, `akvClientSecret`, `akvTenantId`ve `akvSubscriptionId` ortam değişkenlerini yukarıda not ettiğiniz değerlere ayarlamak için `setx` komutunu kullanın.
+Uygulamanızı oluşturmadan ve çalıştırmadan `setx` önce, `akvClientId`yukarıda `akvClientSecret` `akvTenantId`belirttiğiniz `akvSubscriptionId` değerlere , , ve çevre değişkenlerini ayarlamak için komutu kullanın.
 
 ```console
 setx akvClientId <your-clientID>
@@ -160,35 +159,35 @@ setx akvClientId <your-clientID>
 setx akvClientSecret <your-clientSecret>
 ````
 
-`setx`her çağırdığınızda, "SUCCESS: belirtilen değer kaydedildi" yanıtını almalısınız.
+Her aradığınızda `setx`"SUCCESS: Belirtilen değer kaydedildi" yanıtını almalısınız.
 
-Bu ortam değişkenlerini kodunuzdaki dizelere atayın ve ardından bunları [Keyvaultclient sınıfına](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)geçirerek uygulamanızın kimliğini doğrulayın:
+Bu ortam değişkenlerini kodunuzdaki dizeleri atayın ve ardından [bunları KeyVaultClient sınıfına](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)geçirerek uygulamanızın kimliğini doğrulayın:
 
 [!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
 
-### <a name="save-a-secret"></a>Gizli dizi Kaydet
+### <a name="save-a-secret"></a>Bir sırrı kaydet
 
-Uygulamanızın kimliği doğrulandığına göre, [Setsecretasync metodunu](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) kullanarak keykasanıza gizli dizi ekleyebilirsiniz, bu, `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`form içinde olan anahtar KASANıZıN URL 'sini gerektirir. Ayrıca gizli dizi için bir ad gerektirir; "mySecret" i kullanıyoruz. 
+Artık uygulamanızın kimlik doğrulaması olduğuna göre, [SetSecretAsync yöntemini](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) kullanarak keyvault'unuza bir sır koyabilirsiniz Bu, formda `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`olan anahtar kasanızın URL'sini gerektirir. Ayrıca sır için bir isim gerektirir -- "mySecret"ı kullanıyoruz. 
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
+Gizlinin [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Gizli dizi alma
+### <a name="retrieve-a-secret"></a>Bir sır alma
 
-Artık, [Getsecretasync yöntemiyle](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) önceden ayarlanan değeri alabilirsiniz
+Artık [GetSecretAsync yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) yle önceden ayarlanmış değeri alabilirsiniz
 
 [!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
 
-Gizli bilgileriniz artık `keyvaultSecret.Value;`olarak kaydedilir.
+Sırrın artık `keyvaultSecret.Value;`.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
+Artık ihtiyaç duyulmadığında, anahtar kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLI veya Azure PowerShell'i kullanabilirsiniz.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -200,12 +199,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. [GitHub 'da konsol uygulamasının tamamına](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)bakın.
+Bu hızlı başlangıçta bir anahtar kasası oluşturdunuz, bir sır sakladınız ve bu sırrı aldınız. [GitHub'daki konsol uygulamasının tamamını](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)görün.
 
-Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
 
-- [.NET kullanarak Azure Key Vault Için hizmetten hizmete kimlik doğrulaması](service-to-service-authentication.md) uygulama
-- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
-- [Azure Key Vault geliştirici kılavuzuna](key-vault-developers-guide.md) bakın
-- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
-- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault
+- [.NET'i kullanarak Azure Anahtar Kasası'na Hizmet-servis kimlik doğrulaması uygulama](service-to-service-authentication.md)
+- Azure [Anahtar Kasasına Genel Bakış](key-vault-overview.md)
+- Azure [Key Vault geliştiricisi kılavuzuna](key-vault-developers-guide.md) bakın
+- [Anahtarlar, sırlar ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
+- Azure Key Vault en iyi uygulamalarını gözden [geçirin](key-vault-best-practices.md)

@@ -1,166 +1,166 @@
 ---
-title: Azure Site Recovery ile Azure VM yük devretmesinin ardından IP adreslerini tut
-description: Azure Site Recovery ile ikincil bir bölgeye olağanüstü durum kurtarma için Azure VM 'lerinden yük devrettikten sonra IP adreslerinin nasıl tutulacağını açıklar
+title: Azure Sitesi Kurtarma ile Azure VM başarısız olduktan sonra IP adreslerini tutma
+description: Azure Site Kurtarma ile ikincil bir bölgeye olağanüstü durum kurtarma için Azure VM'leri üzerinde başarısız olduğunda IP adreslerinin nasıl tutulup tutulabildiğini açıklar
 ms.service: site-recovery
 ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257569"
 ---
-# <a name="retain-ip-addresses-during-failover"></a>Yük devretme sırasında IP adreslerini koruma
+# <a name="retain-ip-addresses-during-failover"></a>Başarısız dönemde IP adreslerini koruyun
 
-[Azure Site Recovery](site-recovery-overview.md) , VM 'leri başka bir Azure bölgesine çoğaltarak, bir kesinti oluşursa yük devreder ve nesneler normal 'e geri döndüğünüzde birincil bölgeye geri dönebilir.
+[Azure Site Kurtarma,](site-recovery-overview.md) VM'leri başka bir Azure bölgesine kopyalayarak, bir kesinti olduğunda başarısız olarak ve işler normale döndüğünde birincil bölgeye geri dönülerek Azure VM'leri için olağanüstü durum kurtarma olanağı sağlar.
 
-Yük devretme sırasında, IP adreslemesini kaynak bölgeyle özdeş olan hedef bölgede tutmak isteyebilirsiniz:
+Başarısız olurken, IP adresini hedef bölgede kaynak bölgeyle aynı tutmak isteyebilirsiniz:
 
-- Varsayılan olarak, Azure VM 'Leri için olağanüstü durum kurtarmayı etkinleştirdiğinizde Site Recovery kaynak kaynak ayarlarına dayalı olarak hedef kaynakları oluşturur. Statik IP adresleriyle yapılandırılmış Azure VM 'Leri için Site Recovery, kullanımda değilse hedef VM için aynı IP adresini sağlamaya çalışır. Site Recovery adresleme 'nin nasıl ele aldığını gösteren tam bir açıklama için [Bu makaleyi gözden geçirin](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms).
-- Basit uygulamalar için varsayılan yapılandırma yeterlidir. Daha karmaşık uygulamalar için bağlantının yük devretmeden sonra beklendiği gibi çalıştığından emin olmak için ek kaynak sağlamanız gerekebilir.
+- Varsayılan olarak, Azure VM'leri için olağanüstü durum kurtarmayı etkinleştirdiğinizde, Site Kurtarma kaynak kaynak ayarlarını temel alan hedef kaynakları oluşturur. Statik IP adresleriyle yapılandırılan Azure VM'leri için Site Kurtarma, kullanımda değilse hedef VM için aynı IP adresini sağlamaya çalışır. Site Kurtarma'nın adresleme işlemlerini nasıl işlediğine ilişkin tam bir açıklama için [bu makaleyi inceleyin.](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)
+- Basit uygulamalar için varsayılan yapılandırma yeterlidir. Daha karmaşık uygulamalar için, bağlantının başarısız olduktan sonra beklendiği gibi çalıştığından emin olmak için ek kaynak sağlamanız gerekebilir.
 
 
-Bu makalede, daha karmaşık örnek senaryolarda IP adreslerini saklamak için bazı örnekler sağlanmaktadır. Örnekler şunlardır:
+Bu makalede, daha karmaşık örnek senaryolarda IP adreslerini saklamak için bazı örnekler sağlar. Örnekler şunlardır:
 
-- Azure 'da çalışan tüm kaynaklarla şirket için yük devretme
-- Karma dağıtıma sahip bir şirket için yük devretme ve hem şirket içinde hem de Azure 'da çalışan kaynaklar
+- Azure'da çalışan tüm kaynaklara sahip bir şirket için failover
+- Karma dağıtımı olan bir şirket ve hem şirket içinde hem de Azure'da çalışan kaynaklar için başarısız
 
-## <a name="resources-in-azure-full-failover"></a>Azure 'daki kaynaklar: tam yük devretme
+## <a name="resources-in-azure-full-failover"></a>Azure'daki kaynaklar: tam başarısız
 
-Şirket A 'nın Azure 'da çalışan tüm uygulamaları vardır.
+Şirket A tüm uygulamaları Azure'da çalışır.
 
-### <a name="before-failover"></a>Yük devretmeden önce
+### <a name="before-failover"></a>Başarısız olmadan önce
 
-Yük devretmeden önce bu mimari aşağıda verilmiştir.
+İşte başarısız olmadan önceki mimari.
 
-- Şirket A 'nın kaynak ve hedef Azure bölgelerinde aynı ağları ve alt ağları vardır.
-- Kurtarma süresi hedefini (RTO) azaltmak için, şirket SQL Server her zaman açık, etki alanı denetleyicileri vb. için çoğaltma düğümleri kullanır. Bu çoğaltma düğümleri hedef bölgedeki farklı bir VNet içinde bulunur, böylece kaynak ve hedef bölgeler arasında VPN siteden siteye bağlantı kurabilir. Kaynak ve hedefte aynı IP adresi alanı kullanılıyorsa bu mümkün değildir.  
-- Yük devretmeden önce, ağ mimarisi aşağıdaki gibidir:
+- Şirket A, kaynak ve hedef Azure bölgelerinde aynı ağlara ve alt ağlara sahiptir.
+- Kurtarma süresi hedefini (RTO) azaltmak için, şirket SQL Server Always On, etki alanı denetleyicileri vb. için çoğaltma düğümleri kullanır. Bu çoğaltma düğümleri hedef bölgede farklı bir VNet'tedir, böylece kaynak ve hedef bölgeler arasında VPN siteden siteye bağlantı kurabilirler. Kaynak ve hedefte aynı IP adresi alanı kullanılırsa bu mümkün değildir.  
+- Başarısız olmadan önce, ağ mimarisi aşağıdaki gibidir:
     - Birincil bölge Azure Doğu Asya
-        - Doğu Asya, 10.1.0.0/16 adres alanı ile VNet 'e (**kaynak VNET**) sahiptir.
-        - Doğu Asya VNet 'teki üç alt ağa bölünen iş yükleri vardır:
-            - **Alt ağ 1**: 10.1.1.0/24
-            - **Alt ağ 2**: 10.1.2.0/24
-            - **Alt ağ 3**: 10.1.3.0/24
-    - İkincil (hedef) bölge Azure Güneydoğu Asya
-        - Güneydoğu Asya 'nın, **kaynak VNET**ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
-        - Güneydoğu Asya 'da 10.2.0.0/16 adres alanı ile ek bir VNet (**Azure VNET**) vardır.
-        - **Azure VNET** , adres alanı 10.2.4.0/24 olan bir alt ağ (**alt ağ 4**) içerir.
-        - SQL Server her zaman açık, etki alanı denetleyicisi vb. için çoğaltma düğümleri **alt ağ 4**' te bulunur.
-    - **Kaynak VNET** ve **Azure VNET** , bir VPN siteden siteye bağlantısı ile bağlanır.
-    - **Kurtarma VNET** başka bir sanal ağla bağlantılı değil.
-    - **Şirket A** çoğaltılan öğeler IÇIN hedef IP adreslerini atar/doğrular. Hedef IP her VM için kaynak IP ile aynıdır.
+        - Doğu Asya adres alanı 10.1.0.0/16 ile bir VNet **(Kaynak VNet)** vardır.
+        - Doğu Asya'nın VNet'teki üç alt ağa bölünmüş iş yükleri vardır:
+            - **Alt Ağ 1**: 10.1.1.0/24
+            - **Alt Ağ 2**: 10.1.2.0/24
+            - **Alt Ağ 3**: 10.1.3.0/24
+    - İkincil (hedef) bölge Azure Güneydoğu Asya'dır
+        - Güneydoğu Asya bir kurtarma VNet **(Kurtarma VNet**) **Kaynak VNet**aynı vardır.
+        - Güneydoğu Asya'da adres alanı 10.2.0.0/16 olan ek bir VNet **(Azure VNet)** vardır.
+        - **Azure VNet,** adres alanı 10.2.4.0/24 olan bir alt ağ **(Subnet 4)** içerir.
+        - SQL Server Always On, etki alanı denetleyicisi vb. için çoğaltma düğümleri **Subnet 4'te**yer almaktadır.
+    - **Kaynak VNet** ve **Azure VNet,** VPN siteden siteye bağlantıyla bağlantılıdır.
+    - **Kurtarma VNet** başka bir sanal ağ ile bağlı değildir.
+    - **Şirket A,** çoğaltılan öğeler için hedef IP adreslerini atar/doğrular. Hedef IP, her VM için kaynak IP ile aynıdır.
 
-![Tam yük devretmeden önce Azure 'daki kaynaklar](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
+![Tam başarısız olmadan önce Azure'daki kaynaklar](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
-### <a name="after-failover"></a>Yük devretmeden sonra
+### <a name="after-failover"></a>Başarısız olduktan sonra
 
-Kaynak bölgesel bir kesinti oluşursa, A şirketi tüm kaynaklarını hedef bölgeye devreder.
+Bir kaynak bölgesel kesinti oluşursa, A Şirketi hedef bölgeye tüm kaynakları üzerinde başarısız olabilir.
 
-- Yük devretme işleminden önce hedef IP adresleriyle zaten mevcut olan Şirket A, yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET**arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir. Bu, aşağıdaki diyagramda gösterilmiştir.
-- Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki sanal ağ (**Kurtarma VNET** ve **Azure VNET**) arasındaki bağlantılar, (ara adım olarak) veya yük devretmeden önce oluşturulabilir.
-  - Şirket, bağlantıların ne zaman kurulacağıdır belirtmek için [Kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
-  - VNet eşlemesi veya siteden siteye VPN kullanan sanal ağlar arasında bağlantı kuramazlar.
-      - VNet eşlemesi bir VPN ağ geçidi kullanmaz ve farklı kısıtlamaları vardır.
-      - VNet eşleme [fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network) , VNet-VNET VPN Gateway [fiyatlandırmadan](https://azure.microsoft.com/pricing/details/vpn-gateway)farklı şekilde hesaplanır. Yük devretme işlemleri için, genellikle öngörülemeyen ağ olaylarını en aza indirmek için bağlantı türü de dahil olmak üzere kaynak ağlarla aynı bağlantı yöntemini kullanmayı tavsiye ederiz.
+- Başarısız olmadan önce hedef IP adresleri zaten mevcut ken, A Şirketi, **Recovery VNet** ve Azure **VNet**arasındaki başarısızlıktan sonra başarısız lığını düzenleyebilir ve otomatik olarak bağlantılar kurabilir. Bu aşağıdaki diyagramda gösterilmiştir...
+- Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki VNet **(Recovery VNet** ve **Azure VNet)** arasındaki bağlantılar, başarısız olmadan önce, ara adım sırasında veya sonrasında kurulabilir.
+  - Şirket, bağlantıların ne zaman kurulacağını belirtmek için [kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
+  - VNet peering veya siteden siteye VPN kullanarak VNets arasında bağlanabilir.
+      - VNet peering VPN ağ geçidi kullanmaz ve farklı kısıtlamaları vardır.
+      - VNet peering [fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-network) sı VNet-to-VNet VPN Ağ Geçidi [fiyatlandırmafarklı](https://azure.microsoft.com/pricing/details/vpn-gateway)hesaplanır. Başarısız olmak için, genellikle öngörülemeyen ağ olaylarını en aza indirmek için bağlantı türü de dahil olmak üzere kaynak ağlarla aynı bağlantı yöntemini kullanmanızı tavsiye ederiz.
 
-    ![Azure 'da tam yük devretme kaynakları](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
-
-
-
-## <a name="resources-in-azure-isolated-app-failover"></a>Azure 'daki kaynaklar: yalıtılmış uygulama yük devretmesi
-
-Uygulama düzeyinde yük devri yapmanız gerekebilir. Örneğin, belirli bir uygulama veya adanmış bir alt ağda bulunan uygulama katmanının yükünü devretmek için.
-
-- Bu senaryoda, IP adreslemesini koruyabilir, ancak bağlantı tutarsızlıklarının olasılığını artırdığından bu durum genellikle önerilmez. Ayrıca aynı Azure sanal ağı içindeki diğer alt ağlara alt ağ bağlantısını kaybedersiniz.
-- Alt ağ düzeyinde uygulama yük devretmesini yapmanın daha iyi bir yolu, yük devretme için farklı hedef IP adresleri kullanmaktır (kaynak VNet 'teki diğer alt ağlara bağlantınız olması gerekiyorsa) veya her uygulamayı kaynak bölgede kendi ayrılmış VNet 'inde yalıtabilirsiniz. İkinci yaklaşımla, kaynak bölgedeki ağlar arasında bağlantı kurabilir ve hedef bölgeye yük devretmek için aynı davranışa benzebilirsiniz.  
-
-Bu örnekte, Şirket A, uygulamaları ayrılmış sanal ağlarda kaynak bölgeye yerleştirir ve bu sanal ağlar arasında bağlantı kurar. Bu tasarımla, yalıtılmış uygulama yük devretmesi gerçekleştirebilir ve kaynak özel IP adreslerini hedef ağda saklayabilir.
-
-### <a name="before-failover"></a>Yük devretmeden önce
-
-Yük devretmeden önce, mimari aşağıdaki gibidir:
-
-- Uygulama VM 'Leri, birincil Azure Doğu Asya bölgesinde barındırılır:
-    - **APP1** VM 'Ler VNet **kaynak VNET 1**: 10.1.0.0/16 konumunda bulunur.
-    - **App2** VM 'Ler VNet **kaynak VNET 2**: 10.2.0.0/16 konumunda bulunur.
-    - **Kaynak VNET 1** ' in iki alt ağı vardır.
-    - **Kaynak VNET 2** ' nin iki alt ağı vardır.
-- İkincil (hedef) bölge Azure Güneydoğu Asya-Güneydoğu Asya, **kaynak VNET 1** ve **kaynak VNET 2**ile aynı olan bir kurtarma sanal ağlarına (**Kurtarma VNET 1** ve **Kurtarma VNET 2**) sahiptir.
-        - **Recovery VNET 1** ve **Kurtarma VNET 2** ' nin her biri, **kaynak VNET 1** ' deki alt ağlarla eşleşen Iki alt ağa sahiptir ve **kaynak VNET 2** -Güneydoğu Asya, adres alanı 10.3.0.0/16 olan ek bir VNET 'e (**Azure VNET**) sahiptir.
-        - **Azure VNET** , adres alanı 10.3.4.0/24 olan bir alt ağ (**alt ağ 4**) içerir.
-        -SQL Server her zaman açık, etki alanı denetleyicisi vb. için çoğaltma düğümleri **alt ağ 4**' te bulunur.
-- Siteden siteye VPN bağlantısı sayısı vardır: 
-    - **Kaynak VNET 1** ve **Azure VNET**
-    - **Kaynak VNET 2** ve **Azure VNET**
-    - **Kaynak VNET 1** ve **kaynak VNET 2** VPN siteden siteye bağlandı
-- **Kurtarma VNET 1** ve **Kurtarma VNET 2** başka bir sanal ağa bağlı değil.
-- **A şirketi** , RTO 'ı azaltmak Için **Kurtarma VNET 1** ve **Kurtarma VNET 2**' deki VPN ağ geçitlerini yapılandırır.  
-- **Kurtarma VNet1** ve **Kurtarma VNet2** başka bir sanal ağla bağlantılı değildir.
-- Kurtarma süresi hedefini (RTO) azaltmak için, yük devretmeden önce **Kurtarma VNet1** ve **Kurtarma VNet2** üzerinde VPN ağ geçitleri yapılandırılır.
-
-    ![Uygulama yük devretmeden önce Azure 'daki kaynaklar](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
-
-### <a name="after-failover"></a>Yük devretmeden sonra
-
-Tek bir uygulamayı etkileyen bir kesinti veya sorun durumunda (örneğimizde * * kaynak VNet 2 ' de), Şirket A, etkilenen uygulamayı aşağıdaki şekilde kurtarabilir:
+    ![Azure'daki kaynaklar tam başarısız](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 
-- Kaynak **VNet1** ve **kaynak VNet2**arasında ve **kaynak VNET2** ile **Azure VNET** arasında VPN bağlantılarının bağlantısını kesin.
-- **Kaynak VNet1** ve **Kurtarma VNet2**arasında ve **Kurtarma VNET2** ile **Azure VNET**arasında VPN bağlantıları oluşturun.
-- **Kaynak VNet2** 'de **Kurtarma VNet2**'ye yük devretme yükünü devreder.
 
-![Azure Uygulama yük devretmesi kaynakları](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
+## <a name="resources-in-azure-isolated-app-failover"></a>Azure'daki kaynaklar: yalıtılmış uygulama başarısız
+
+Uygulama düzeyinde başarısız olmanız gerekebilir. Örneğin, özel bir alt ağda bulunan belirli bir uygulama veya uygulama katmanı üzerinde başarısız olmak.
+
+- Bu senaryoda, IP adresleme sini koruyabilirsiniz, ancak bağlantı tutarsızlıkları olasılığını artırdığı için genellikle tavsiye edilmez. Ayrıca, aynı Azure VNet'teki diğer alt ağlara alt ağ bağlantısını da kaybedersiniz.
+- Alt ağ düzeyinde uygulama başarısızlığını yapmanın daha iyi bir yolu, başarısız olmak için farklı hedef IP adreslerini kullanmaktır (kaynak VNet'teki diğer alt ağlara bağlantıya ihtiyacınız varsa) veya her uygulamayı kaynak bölgede kendi özel VNet'inde yalıtmaktır. İkinci yaklaşımla kaynak bölgedeki ağlar arasında bağlantı kurabilir ve hedef bölgeye başarısız olduğunuzda aynı davranışı taklit edebilirsiniz.  
+
+Bu örnekte, Şirket A uygulamaları kaynak bölgeye özel VNet'lere yerleştirir ve bu VNet'ler arasında bağlantı kurar. Bu tasarımla, yalıtılmış uygulama başarısızlığını gerçekleştirebilir ve hedef ağdaki kaynak özel IP adreslerini saklayabilirler.
+
+### <a name="before-failover"></a>Başarısız olmadan önce
+
+Başarısız olmadan önce, mimari aşağıdaki gibidir:
+
+- Uygulama VM'leri birincil Azure Doğu Asya bölgesinde barındırılır:
+    - **Uygulama1** VM'ler VNet **Kaynak VNet 1**: 10.1.0.0/16'da bulunur.
+    - **Uygulama2** VM'ler VNet **Kaynak VNet 2:** 10.2.0.0/16'da bulunur.
+    - **Kaynak VNet 1'in** iki alt ağı vardır.
+    - **Kaynak VNet 2** iki alt ağlar vardır.
+- İkincil (hedef) bölge Azure Güneydoğu Asya ' dır - Güneydoğu Asya' da **Kaynak VNet 1** ve **Kaynak VNet 2**ile aynı olan kurtarma VNet'leri **(Recovery VNet 1** ve Recovery **VNet 2)** vardır.
+        - **Recovery VNet 1** ve **Recovery VNet 2'nin** her birinde Kaynak **VNet 1** ve Source **VNet 2'deki** alt ağlarla eşleşen iki alt ağ vardır - Güneydoğu Asya'da adres alanı 10.3.0.0/16 olan ek bir VNet **(Azure VNet)** vardır.
+        - **Azure VNet,** adres alanı 10.3.4.0/24 olan bir alt ağ **(Subnet 4)** içerir.
+        - SQL Server Always On, domain controller vb. için çoğaltma düğümleri **Subnet 4'te**yer almaktadır.
+- Siteden siteye VPN bağlantıları vardır: 
+    - **Kaynak VNet 1** ve **Azure VNet**
+    - **Kaynak VNet 2** ve **Azure VNet**
+    - **Kaynak VNet 1** ve **Kaynak VNet 2** VPN siteden siteye bağlıdır
+- **Recovery VNet 1** ve **Recovery VNet 2** başka hiçbir VNet'e bağlı değildir.
+- **Şirket A,** RTO'yü azaltmak için **Recovery VNet 1** ve **Recovery VNet 2'de**VPN ağ geçitlerini yapılandırır.  
+- **Recovery VNet1** ve **Recovery VNet2** başka bir sanal ağa bağlı değildir.
+- Kurtarma süresi hedefini (RTO) azaltmak için VPN ağ geçitleri, başarısız olmadan önce **Recovery VNet1** ve **Recovery VNet2** üzerinde yapılandırılır.
+
+    ![Uygulama başarısız olmadan önce Azure'daki kaynaklar](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
+
+### <a name="after-failover"></a>Başarısız olduktan sonra
+
+Tek bir uygulamayı etkileyen bir kesinti veya sorun durumunda (örneğimizde **Kaynak VNet 2'de), A Şirketi etkilenen uygulamayı aşağıdaki gibi kurtarabilir:
 
 
-- Bu örnek, daha fazla uygulama ve ağ bağlantısı içerecek şekilde genişletilebilir. Kaynak kaynaktan hedefe yük devrettikten sonra, benzer bir bağlantı modelini mümkün olduğunca güncel bir şekilde takip etmek önerilir.
-- VPN ağ geçitleri, bağlantı kurmak için genel IP adreslerini ve ağ geçidi atlamalarını kullanır. Genel IP adreslerini kullanmak istemiyorsanız veya ek atlamalara engel olmak istemiyorsanız, [Azure VNET eşlemesi](../virtual-network/virtual-network-peering-overview.md) 'Ni [desteklenen Azure bölgelerinde](../virtual-network/virtual-network-manage-peering.md#cross-region)sanal ağlar arası eşleme ile kullanabilirsiniz.
+- **Kaynak VNet1** ve Kaynak **VNet2**arasındaki VE **Kaynak VNet2** ile Azure **VNet** arasındaki VPN bağlantılarını kes.
+- **Kaynak VNet1** ve Recovery **VNet2**arasında ve **Recovery VNet2** ile **Azure VNet**arasında VPN bağlantıları kurun.
+- **Kurtarma VNet2** **Kaynak VNet2** VM üzerinde başarısız .
 
-## <a name="hybrid-resources-full-failover"></a>Karma kaynaklar: tam yük devretme
-
-Bu senaryoda, **B şirketi** , Azure üzerinde çalışan uygulama altyapısının bir parçası ve şirket içi çalışan geri kalanı ile bir karma iş çalıştırır. 
-
-### <a name="before-failover"></a>Yük devretmeden önce
-
-Ağ mimarisinin yük devretmeden önce nasıl göründüğü aşağıda verilmiştir.
-
-- Uygulama VM 'Leri Azure Doğu Asya içinde barındırılır.
-- Doğu Asya, 10.1.0.0/16 adres alanı ile VNet 'e (**kaynak VNET**) sahiptir.
-  - Doğu Asya **kaynak VNET**'te üç alt ağa bölünen iş yükleri vardır:
-    - **Alt ağ 1**: 10.1.1.0/24
-    - **Alt ağ 2**: 10.1.2.0/24
-    - **Alt ağ 3**: 10.1.3.0/24, adres alanı 10.1.0.0/16 olan bir Azure sanal ağını kullanma. Bu sanal ağ, **kaynak VNET** olarak adlandırılmış
-      - İkincil (hedef) bölge Azure Güneydoğu Asya:
-  - Güneydoğu Asya 'nın, **kaynak VNET**ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
-- Doğu Asya sanal makineler, Azure ExpressRoute veya siteden siteye VPN ile şirket içi veri merkezine bağlanır.
-- RTO 'ı azaltmak için Şirket B, yük devretmeden önce Azure Güneydoğu Asya 'daki kurtarma VNet 'teki ağ geçitlerini sağlar.
-- Şirket B, çoğaltılan VM 'Ler için hedef IP adreslerini atar/doğrular. Hedef IP adresi, her VM için kaynak IP adresi ile aynıdır.
+![Azure uygulamasındaki kaynaklar başarısız](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 
-![Yük devretmeden önce Şirket içinden Azure 'a bağlantı](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
+- Bu örnek, daha fazla uygulama ve ağ bağlantısı içerecek şekilde genişletilebilir. Öneri, kaynaktan hedefe başarısız olduğunda mümkün olduğunca benzer bir bağlantı modeli izlemektir.
+- VPN Ağ Geçitleri bağlantıları kurmak için ortak IP adreslerini ve ağ geçidi atlamalarını kullanır. Genel IP adreslerini kullanmak istemiyorsanız veya ek atlamalardan kaçınmak istiyorsanız, [desteklenen Azure bölgelerindesanal](../virtual-network/virtual-network-manage-peering.md#cross-region)ağlara [bakarak Azure VNet'i](../virtual-network/virtual-network-peering-overview.md) kullanabilirsiniz.
 
-### <a name="after-failover"></a>Yük devretmeden sonra
+## <a name="hybrid-resources-full-failover"></a>Karma kaynaklar: tam başarısız
+
+Bu senaryoda, **B Şirketi,** uygulama altyapısının bir kısmı Azure'da, geri kalanı şirket içinde çalışan karma bir işletme çalıştırır. 
+
+### <a name="before-failover"></a>Başarısız olmadan önce
+
+Ağ mimarisi nin başarısız olmadan önce nasıl göründüğü aşağıda veda edilmiştir.
+
+- Uygulama VM'leri Azure Doğu Asya'da barındırılır.
+- Doğu Asya adres alanı 10.1.0.0/16 ile bir VNet **(Kaynak VNet)** vardır.
+  - Doğu Asya **Kaynak VNet**üç alt ağlar arasında bölünmüş iş yükleri vardır:
+    - **Alt Ağ 1**: 10.1.1.0/24
+    - **Alt Ağ 2**: 10.1.2.0/24
+    - **Alt Ağ 3**: 10.1.3.0/24, adres alanı 10.1.0.0/16 olan bir Azure sanal ağı kullanır. Bu sanal ağın adı **Kaynak VNet**
+      - İkincil (hedef) bölge Azure Güneydoğu Asya'dır:
+  - Güneydoğu Asya bir kurtarma VNet **(Kurtarma VNet**) **Kaynak VNet**aynı vardır.
+- Doğu Asya'daki VM'ler, Azure ExpressRoute veya siteden siteye VPN içeren şirket içi bir veri merkezine bağlıdır.
+- RTO'u azaltmak için, B Şirketi, azure güneydoğu Asya'daki Recovery VNet'te başarısız olmadan önce ağ geçitlerini sağlar.
+- B şirketi, çoğaltılan VM'ler için hedef IP adreslerini atar/doğrular. Hedef IP adresi, her VM için kaynak IP adresiyle aynıdır.
 
 
-Kaynak bölgesel bir kesinti oluşursa, B şirketi tüm kaynaklarını hedef bölgeye devreder.
+![Başarısız olmadan önce şirket içinde Azure bağlantısı](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
-- Yük devretme işleminden önce hedef IP adresleri zaten mevcut olduğunda, B şirketi yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET**arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir.
-- Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki sanal ağ (**Kurtarma VNET** ve **Azure VNET**) arasındaki bağlantılar, (ara adım olarak) veya yük devretmeden önce oluşturulabilir. Şirket, bağlantıların ne zaman kurulacağıdır belirtmek için [Kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
-- Azure Güneydoğu Asya ve şirket içi veri merkezi arasında bağlantı kurulmadan önce Azure Doğu Asya ile şirket içi veri merkezi arasındaki özgün bağlantının bağlantısı kesilmelidir.
-- Şirket içi yönlendirme, hedef bölgeye işaret etmek üzere yeniden yapılandırılır ve ağ geçitleri yük devretmeye gönderilir.
+### <a name="after-failover"></a>Başarısız olduktan sonra
 
-![Yük devretmeden sonra Şirket içinden Azure 'a bağlantı](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
-## <a name="hybrid-resources-isolated-app-failover"></a>Karma kaynaklar: yalıtılmış uygulama yük devretmesi
+Kaynak bölgesel kesintisi oluşursa, B Şirketi hedef bölgeye giden tüm kaynakları üzerinde başarısız olabilir.
 
-Şirket B, yalıtılmış uygulamaların yükünü alt ağ düzeyinde devreder. Bunun nedeni, kaynak ve kurtarma sanal ağları üzerindeki adres alanının aynı olması ve şirket içi bağlantının özgün kaynağı etkin olması nedeniyle oluşur.
+- Başarısız olmadan önce hedef IP adresleri zaten mevcut olduğundan, B Şirketi başarısızlığı organize edebilir ve **Recovery VNet** ile Azure **VNet**arasındaki başarısızlıktan sonra otomatik olarak bağlantılar kurabilir.
+- Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki VNet **(Recovery VNet** ve **Azure VNet)** arasındaki bağlantılar, başarısız olmadan önce, ara adım sırasında veya sonrasında kurulabilir. Şirket, bağlantıların ne zaman kurulacağını belirtmek için [kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
+- Azure Doğu Asya ile şirket içi veri merkezi arasındaki orijinal bağlantı, Azure Güneydoğu Asya ile şirket içi veri merkezi arasındaki bağlantıyı kurmadan önce kesilmelidir.
+- Şirket içi yönlendirme, hedef bölgeye işaret edecek şekilde yeniden yapılandırılır ve ağ geçitleri başarısız lık sonrası dır.
 
- - Uygulama dayanıklılığı için B şirketinin, her uygulamayı kendi adanmış Azure VNet 'e yerleştirme yapması gerekir.
- - Her uygulamayla ayrı bir VNet 'te Şirket B, yalıtılmış uygulamaların yükünü devreder ve kaynak bağlantılarını hedef bölgeye yönlendirebilir.
+![Başarısız olduktan sonra şirket içinde Azure bağlantısı](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
+
+## <a name="hybrid-resources-isolated-app-failover"></a>Hibrit kaynaklar: yalıtılmış uygulama başarısız
+
+B şirketi, alt net düzeyinde yalıtılmış uygulamalar üzerinde başarısız olamaz. Bunun nedeni, kaynak ve kurtarma VNet'lerinde adres alanının aynı olması ve şirket içi bağlantının orijinal kaynağının etkin olmasıdır.
+
+ - Uygulama esnekliği için B Şirketinin her uygulamayı kendi özel Azure VNet'ine yerleştirmesi gerekir.
+ - Ayrı bir VNet'teki her uygulamayla, B Şirketi yalıtılmış uygulamalar üzerinde başarısız olabilir ve kaynak bağlantılarını hedef bölgeye yönlendirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kurtarma planları](site-recovery-create-recovery-plans.md)hakkında bilgi edinin.
+Kurtarma [planları](site-recovery-create-recovery-plans.md)hakkında bilgi edinin.

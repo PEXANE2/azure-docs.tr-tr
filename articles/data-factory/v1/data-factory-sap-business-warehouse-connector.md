@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak SAP Business Warehouse 'tan veri taşıma
-description: Azure Data Factory kullanarak SAP Business Warehouse 'tan veri taşıma hakkında bilgi edinin.
+title: Azure Veri Fabrikası'nı kullanarak VERILERI SAP İş Ambarından taşıma
+description: Azure Veri Fabrikası'nı kullanarak SAP İş Ambarı'ndaki verileri nasıl taşıyabildiğini öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,102 +13,102 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281060"
 ---
-# <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'Tan veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak verileri SAP İş Ambarından Taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-sap-business-warehouse-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-sap-business-warehouse.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de SAP Business Warehouse Connector](../connector-sap-business-warehouse.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki SAP İş Ambarı konektörüne](../connector-sap-business-warehouse.md)bakın.
 
 
-Bu makalede, verileri şirket içi SAP Business Warehouse 'tan (siyah beyaz) taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, verileri şirket içi SAP İş Ambarı'ndan (BW) taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
 
-Şirket içi bir SAP Business Warehouse veri deposundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir SAP Iş ambarından diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından SAP Iş ambarına taşımak için kullanmaz. 
+Verileri şirket içi SAP İş Ambarı veri deposundan desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca bir SAP İş Ambarından diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından SAP İş Ambarına taşımak için değildir. 
 
-## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
-Bu bağlayıcı SAP Business Warehouse sürüm 7. x ' i destekler. MDX sorgularını kullanarak InfoCubes ve Queryküplerinden (BEx sorguları dahil) verilerin kopyalanmasını destekler.
+## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve kurulum
+Bu bağlayıcı SAP İş Ambarı sürüm 7.x'i destekler. MDX sorgularını kullanarak InfoCubes ve QueryCubes (BEx sorguları dahil) verilerinin kopyalanması destekler.
 
-SAP BW örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri yüklemelisiniz:
-- **Veri yönetimi Gateway**: Data Factory hizmeti, veri yönetimi Gateway adlı bir bileşeni kullanarak şirket içi veri DEPOLARıNA (SAP Business Warehouse dahil) bağlanmayı destekler. Ağ geçidini ayarlamaya yönelik Veri Yönetimi ağ geçidi ve adım adım yönergeler hakkında bilgi edinmek için bkz. [Şirket içi veri deposu ile bulut veri deposu arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. SAP Business Warehouse bir Azure IaaS sanal makinesinde (VM) barındırıldığından bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
-- Ağ Geçidi makinesinde **SAP NetWeaver kitaplığı** . SAP NetWeaver kitaplığını SAP yöneticinizden alabilir veya doğrudan [SAP Software Download Center](https://support.sap.com/swdc)' dan edinebilirsiniz. En son sürüme ait indirme konumunu almak için **SAP Note #1025361** aratın. SAP NetWeaver kitaplığı (32-bit veya 64-bit) mimarisinin ağ geçidi yüklemenize uyduğundan emin olun. Daha sonra SAP NetWeaver RFC SDK 'sına dahil edilen tüm dosyaları SAP notuna göre yükler. SAP NetWeaver kitaplığı, SAP Istemci araçları yüklemesine de dahildir.
+SAP BW örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri yükleyin:
+- **Veri Yönetimi Ağ Geçidi**: Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi adı verilen bir bileşeni kullanarak şirket içi veri depolarına (SAP İş Ambarı dahil) bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlamayla ilgili adım adım yönergeler hakkında bilgi edinmek [için, verileri şirket içi veri deposu arasında bulut veri deposu makalesine taşıma](data-factory-move-data-between-onprem-and-cloud.md) başlıklı bakın. SAP İş Ambarı bir Azure IaaS sanal makinede (VM) barındırılan olsa bile ağ geçidi gereklidir. Ağ geçidi veritabanına bağlanabildiği sürece ağ geçidini veri deposuyla aynı VM'ye veya farklı bir VM'ye yükleyebilirsiniz.
+- Ağ geçidi makinesinde **SAP NetWeaver kitaplığı.** SAP Netweaver kitaplığını SAP yöneticinizden veya doğrudan [SAP Yazılım İndirme Merkezi'nden](https://support.sap.com/swdc)alabilirsiniz. En son sürümün indirme konumunu almak için **SAP Not #1025361'ni** arayın. SAP NetWeaver kitaplığı (32 bit veya 64 bit) mimarisinin ağ geçidi yüklemenizle eşleştiğinden emin olun. Ardından SAP Not'a göre SAP NetWeaver RFC SDK'da bulunan tüm dosyaları yükleyin. SAP NetWeaver kitaplığı, SAP İstemci Araçları yüklemesinde de yer alır.
 
 > [!TIP]
-> NetWeaver RFC SDK 'dan ayıklanan dll 'leri System32 klasörüne koyun.
+> NetWeaver RFC SDK'dan çıkarılan dll'leri system32 klasörüne koyun.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
+Farklı araçlar/API'ler kullanarak şirket içi Cassandra veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz. 
 
-- İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md) 
+- Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın. 
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. 
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** 
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Şirket içi SAP Business Warehouse 'tan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bu makalenin [JSON örneği: SAP Business Warehouse 'Dan Azure Blob 'a veri kopyalama](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) bölümüne bakın. 
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Şirket içi SAP İş Ambarı'ndaki verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Verileri SAP İş Ambarı'ndan Azure Blob bölümüne](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) kopyalayın. 
 
-Aşağıdaki bölümler, bir SAP BW veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, SAP BW veri deposuna özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Aşağıdaki tabloda SAP Business Warehouse (siyah-beyaz) bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Aşağıdaki tablo, SAP İş Ambarı (BW) bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | string | Yes
-systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes
-clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes
-kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
-password | Kullanıcının parolası. | string | Yes
-gatewayName | Data Factory hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
-encryptedCredential | Şifrelenmiş kimlik bilgisi dizesi. | string | Hayır
+sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | string | Evet
+systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet
+clientId | SAP W sistemindeki istemci kimliği. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet
+kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Evet
+password | Kullanıcının parolası. | string | Evet
+ağ geçidiAdı | Veri Fabrikası hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Evet
+şifreli Credential | Şifrelenmiş kimlik bilgisi dizesi. | string | Hayır
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable**türünde SAP BW veri kümesi için desteklenen türe özgü özellik yok. 
+**typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **İlişkisel Tablo**türü SAP BW veri kümesi için desteklenen türe özgü özellikler yoktur. 
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları gibi özellikler, tüm etkinlik türleri için kullanılabilir ilkeleridir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları gibi özellikler, tüm etkinlik türleri için ilkeler mevcuttur.
 
-Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Oysa, etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Copy etkinliğinin kaynağı **Relationalsource** (SAP BW içerir) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
+Kopyalama etkinliğindeki kaynak **RelationalSource** türünden (SAP BW içerir) olduğunda, typeProperties bölümünde aşağıdaki özellikler kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Yes |
+| sorgu | SAP BW örneğindeki verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Evet |
 
 
-## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON örneği: SAP Business Warehouse 'tan Azure Blob 'a veri kopyalama
-Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu örnek, şirket içi SAP Business Warehouse 'tan bir Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler, burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak, [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza **doğrudan** kopyalanabilir.  
+## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON örneği: SAP İş Ambarı'ndan Azure Blob'a veri kopyalama
+Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Bu örnek, şirket içi SAP İş Ambarı'ndan Azure Blob Depolama alanına verilerin nasıl kopyalanır olduğunu gösterir. Ancak veriler, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için **doğrudan** kopyalanabilir.  
 
 > [!IMPORTANT]
-> Bu örnek, JSON parçacıkları sağlar. Veri Fabrikası oluşturmaya yönelik adım adım yönergeler içermez. Adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makalesi arasında verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+> Bu örnek JSON parçacıkları sağlar. Veri fabrikası oluşturmak için adım adım yönergeler içermez. Adım adım yönergeler için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında hareketli veri bakın.
 
-Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
+Örnekte aşağıdaki veri fabrikası varlıkları vardır:
 
-1. [Sapbeyaz](#linked-service-properties)türünde bağlı bir hizmet.
-2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-3. [Relationaltable](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-5. [Relationalsource](#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+1. [SapBw](#linked-service-properties)türünde bağlantılı bir hizmet.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+3. [İlişkisel Tablo](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+5. [RelationalSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity içeren bir [ardışık kaynak.](data-factory-create-pipelines.md)
 
-Örnek, verileri bir SAP Business Warehouse örneğinden saatlik olarak bir Azure blobuna kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, sap İş ambarı örneğindeki verileri saatlik bir Azure blob'una kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
+İlk adım olarak, veri yönetimi ağ geçidini kur. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
 
-### <a name="sap-business-warehouse-linked-service"></a>SAP Business Warehouse bağlı hizmeti
-Bu bağlı hizmet, SAP BW örneğinizi veri fabrikasına bağlar. Type özelliği **Sapbeyaz**olarak ayarlanır. TypeProperties bölümü SAP BW örneğine yönelik bağlantı bilgilerini sağlar. 
+### <a name="sap-business-warehouse-linked-service"></a>SAP Business Warehouse bağlantılı hizmet
+Bu bağlantılı hizmet, SAP BW örneğini veri fabrikasına bağlar. Tür özelliği **SapBw**olarak ayarlanır. typeProperties bölümü SAP BW örneği için bağlantı bilgileri sağlar. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Bu bağlı hizmet, SAP BW örneğinizi veri fabrikasına bağlar. Type özelliğ
 ```
 
 ### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
-Bu bağlı hizmet, Azure depolama hesabınızı veri fabrikasına bağlar. Type özelliği **Azurestorage**olarak ayarlanır. TypeProperties bölümü, Azure depolama hesabı için bağlantı bilgilerini sağlar.
+Bu bağlantılı hizmet, Azure Depolama hesabınızı veri fabrikasına bağlar. Tür özelliği **AzureStorage**olarak ayarlanır. typeProperties bölümü, Azure Depolama hesabı için bağlantı bilgileri sağlar.
 
 ```json
 {
@@ -144,12 +144,12 @@ Bu bağlı hizmet, Azure depolama hesabınızı veri fabrikasına bağlar. Type 
 }
 ```
 
-### <a name="sap-bw-input-dataset"></a>SAP BW girişi veri kümesi
-Bu veri kümesi SAP Business Warehouse veri kümesini tanımlar. Data Factory veri kümesinin türünü **Relationaltable**olarak ayarlarsınız. Şu anda, bir SAP BW veri kümesi için herhangi bir türe özgü özellik belirtmeyin. Kopyalama etkinliği tanımındaki sorgu SAP BW örneğinden hangi verilerin okunacağını belirtir. 
+### <a name="sap-bw-input-dataset"></a>SAP BW giriş veri seti
+Bu veri kümesi SAP İş Ambarı veri kümesini tanımlar. Veri Fabrikası veri kümesinin türünü **İlişkisel Tablo**olarak ayarlarsınız. Şu anda, sap BW veri kümesi için türe özgü özellikler belirtmezsiniz. Etkinlik Kopyala tanımındaki sorgu, SAP BW örneğinden hangi verilerin okunacak olduğunu belirtir. 
 
-External özelliğinin true olarak ayarlanması, Data Factory hizmetine tablonun veri fabrikasının dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+Dış özelliğin doğru olarak ayarlanması, Veri Fabrikası hizmetine tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
-Sıklık ve Aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP BW örneğinden her saat okunmalıdır. 
+Sıklık ve aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP BW örneğinden saatlik olarak okunur. 
 
 ```json
 {
@@ -170,7 +170,7 @@ Sıklık ve Aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP
 
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob çıktı veri kümesi
-Bu veri kümesi, çıkış Azure blob veri kümesini tanımlar. Type özelliği AzureBlob olarak ayarlanır. TypeProperties bölümü, SAP BW örneğinden kopyalanmış verilerin nerede depolandığını sağlar. Veriler her saat yeni bir bloba yazılır (sıklık: Hour, Interval: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Bu veri kümesi, azure blob veri kümesiçıktısını tanımlar. Tür özelliği AzureBlob olarak ayarlanır. TypeProperties bölümü, SAP BW örneğinden kopyalanan verilerin depolandığı yeri sağlar. Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```json
 {
@@ -229,8 +229,8 @@ Bu veri kümesi, çıkış Azure blob veri kümesini tanımlar. Type özelliği 
 ```
 
 
-### <a name="pipeline-with-copy-activity"></a>Kopyalama etkinliği içeren işlem hattı
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** (SAP BW kaynağı için) olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği için belirtilen sorgu, kopyalamanın Son saatteki verilerini seçer.
+### <a name="pipeline-with-copy-activity"></a>Kopyalama etkinliği olan boru hattı
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **RelationalSource** (SAP BW kaynak için) olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. Sorgu özelliği için belirtilen **sorgu,** kopyalanacak son saatteki verileri seçer.
 
 ```json
 {
@@ -281,47 +281,47 @@ Bu veri kümesi, çıkış Azure blob veri kümesini tanımlar. Type özelliği 
 
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW için tür eşleme
-[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, kopyalama etkinliği, kaynak türlerindeki otomatik tür dönüştürmeleri aşağıdaki iki adımlı yaklaşımla birlikte havuz türlerine uygular:
+[Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama etkinliği aşağıdaki iki adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüştürmeleri gerçekleştirir:
 
-1. Yerel kaynak türlerinden .NET türüne Dönüştür
-2. .NET türünden yerel havuz türüne Dönüştür
+1. Yerel kaynak türlerinden .NET türüne dönüştürme
+2. .NET türünden yerel lavabo türüne dönüştürme
 
-SAP BW verileri taşırken, SAP BW türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
+SAP BW'den veri aktarırken, sap BW türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
 
-ABAP Dictionary içindeki veri türü | .NET veri türü
+ABAP Sözlüğü'nde veri türü | .NET Veri Türü
 -------------------------------- | --------------
-ACCP |  Int
-CHAR | Dize
+ACCP |  int
+Char | Dize
 CLNT | Dize
 CURR | Ondalık
 CUKY | Dize
-DEC | Ondalık
-FLTP | çift
+Aralık | Ondalık
+FLTP | Çift
 INT1 | Bayt
 INT2 | Int16
-INT4 | Int
-LANG | Dize
+INT4 | int
+Lang | Dize
 LCHR | Dize
-LRAW | Byte[]
+LRAW | Bayt[]
 PREC | Int16
-QUA | Ondalık
-RAW | Byte[]
-RAWSTRING | Byte[]
-STRING | Dize
-UNIT | Dize
-KATALAR | Dize
+Quan | Ondalık
+Ham | Bayt[]
+RAWSTRING | Bayt[]
+Dize | Dize
+Birim | Dize
+DATS | Dize
 NUMC | Dize
-TIMS | Dize
+TİmS | Dize
 
 > [!NOTE]
-> Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+> Kaynak veri kümesinden sütunlara kadar sütunları haritalamak için Azure [Veri Fabrikası'nda veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
 
-## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
-Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
+Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Performans ve ayarlama
-Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .
+## <a name="performance-and-tuning"></a>Performans ve Tuning
+Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.

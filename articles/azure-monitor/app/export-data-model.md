@@ -1,25 +1,25 @@
 ---
-title: Azure Application Insights veri modeli | Microsoft Docs
-description: JSON 'da sürekli dışarı aktarma işleminden dışarı aktarılmış özellikleri açıklar ve filtre olarak kullanılır.
+title: Azure Uygulama Öngörüleri Veri Modeli | Microsoft Dokümanlar
+description: JSON'da sürekli dışa aktarılan ve filtre olarak kullanılan özellikleri açıklar.
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663884"
 ---
-# <a name="application-insights-export-data-model"></a>Application Insights veri modelini dışarı aktarma
-Bu tabloda, [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 'lardan portala gönderilen telemetrinin özellikleri listelenmektedir.
-Bu özellikleri [sürekli dışarı aktarmanın](export-telemetry.md)veri çıkışında görürsünüz.
-Ayrıca, [Ölçüm Gezgini](../../azure-monitor/app/metrics-explorer.md) ve [Tanılama aramasında](../../azure-monitor/app/diagnostic-search.md)Özellik filtrelerinde görünürler.
+# <a name="application-insights-export-data-model"></a>Uygulama Öngörüleri İhracat Veri Modeli
+Bu tablo, [Uygulama Öngörüleri](../../azure-monitor/app/app-insights-overview.md) SDK'larından portala gönderilen telemetrinin özelliklerini listeler.
+Bu özellikleri [Sürekli Dışa Aktarma'dan](export-telemetry.md)veri çıktısında görürsünüz.
+Ayrıca [Metrik Gezginve](../../azure-monitor/app/metrics-explorer.md) [Tanılama Arama'daki](../../azure-monitor/app/diagnostic-search.md)özellik filtrelerinde de görünürler.
 
-Dikkat edilecek noktalar:
+Dikkat edilmesi gereken noktalar:
 
-* Bu tablolardaki `[0]`, dizin eklemeniz gereken yoldaki bir noktayı belirtir; Ancak her zaman 0 değildir.
-* Süreler, mikro saniyenin onda biri olan süre, 10000000 = = 1 saniye.
-* Tarihler ve saatler UTC biçimindedir ve ISO biçiminde verilir `yyyy-MM-DDThh:mm:ss.sssZ`
+* `[0]`bu tablolarda bir dizin eklemeniz gereken yolda bir nokta gösterir; ama her zaman 0 değildir.
+* Zaman süreleri bir mikrosaniyenin onda birindedir, bu yüzden 10000000 == 1 saniye.
+* Tarihler ve saatler UTC'dir ve ISO formatında verilir`yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Örnek
@@ -103,194 +103,194 @@ Dikkat edilecek noktalar:
   }
 
 ## <a name="context"></a>Bağlam
-Tüm telemetri türlerine bir bağlam bölümü eşlik eder. Bu alanların hepsi her veri noktasıyla aktarılmaz.
+Her türlü telemetriye bağlam bölümü eşlik ediyor. Bu alanların tümü her veri noktasıyla birlikte iletilir.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| Context. Custom. Dimensions [0] |Object [] |Özel özellikler parametresi tarafından ayarlanan anahtar-değer dize çiftleri. Anahtar en fazla uzunluğu 100, değer en fazla uzunluk 1024. 100 ' den fazla benzersiz değer, özellik aranabilir ancak kesimde kullanılamaz. Ikey başına en fazla 200 anahtar. |
-| Context. Custom. ölçümler [0] |Object [] |Özel ölçümler parametresi ve Trackölçümler tarafından ayarlanan anahtar-değer çiftleri. Anahtar en fazla uzunluğu 100, değerler sayısal olabilir. |
-| Context. Data. eventTime |string |UTC |
-| Context. Data. ısyapay |boole |İstek bir bot veya Web testinde geliyor gibi görünüyor. |
-| Context. Data. samplingRate |number |Portala gönderilen SDK'sı tarafından oluşturulan telemetri yüzdesi. 0,0-100.0 aralığı. |
-| Context. Device |object |İstemci cihazı |
-| Context. Device. Browser |string |IE, Chrome,... |
-| Context. Device. browserVersion |string |Chrome 48,0,... |
-| Context. Device. deviceModel |string | |
-| Context. Device. aygıtadı |string | |
+| context.custom.dimensions [0] |nesne [ ] |Özel özellikler parametresi tarafından ayarlanan anahtar değeri dize çiftleri. Anahtar max uzunluğu 100, değerleri max uzunluğu 1024. 100'den fazla benzersiz değerler, özellik aranabilir ancak segmentasyon için kullanılamaz. Ikey başına Max 200 tuşları. |
+| context.custom.metrics [0] |nesne [ ] |Özel ölçümler parametresi ve TrackMetrics tarafından ayarlanan anahtar değer çiftleri. Anahtar max uzunluğu 100, değerleri sayısal olabilir. |
+| context.data.eventTime |string |UTC |
+| context.data.isSentetik |boole |İstek bir bot veya web testi nden gelmiş gibi görünür. |
+| context.data.samplingRate |number |Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
+| context.device |object |İstemci aygıtı |
+| context.device.browser |string |Yani, Krom, ... |
+| context.device.browserVersion |string |Krom 48.0, ... |
+| context.device.deviceModel |string | |
+| context.device.deviceName |string | |
 | context.device.id |string | |
-| Context. Device. locale |string |en-GB, de-DE,... |
-| Context. Device. Network |string | |
-| Context. Device. oemName |string | |
-| Context. Device. OS |string | |
-| Context. Device. osVersion |string |Konak işletim sistemi |
-| Context. Device. Roleınstance |string |Sunucu ana bilgisayar kimliği |
-| Context. Device. roleName |string | |
-| Context. Device. screenResolution |string | |
-| Context. Device. Type |string |BILGISAYAR, tarayıcı,... |
-| Context. Location |object |Clienentip 'den türetilmiş. |
-| Context. Location. City |string |Bilinmiyorsa, clienentip 'den türetilmiş |
-| Context. Location. clienentip |string |Son sekizgen, anonim olarak 0 ' dır. |
-| Context. Location. kıent |string | |
-| Context. Location. Country |string | |
-| Context. Location. eyalet |string |Eyalet veya il |
-| context.operation.id |string |Aynı işlem kimliğine sahip öğeler portalda Ilgili öğeler olarak gösterilir. Genellikle istek kimliği. |
-| context.operation.name |string |URL veya istek adı |
-| Context. Operation. parentID |string |İç içe ilişkili öğelere izin verir. |
-| context.session.id |string |Aynı kaynaktan bir işlem grubunun kimliği. İşlem olmadan 30 dakikalık bir süre, bir oturumun sonuna işaret eder. |
-| Context. Session. IsFirst |boole | |
+| context.device.locale |string |en-GB, de-DE, ... |
+| context.device.network |string | |
+| context.device.oemName |string | |
+| context.device.os |string | |
+| context.device.osVersion |string |Konak işletim sistemi |
+| context.device.roleInstance |string |Sunucu ana bilgisayarkimliği |
+| context.device.roleName |string | |
+| context.device.screenResolution |string | |
+| context.device.type |string |PC, Tarayıcı, ... |
+| bağlam.location |object |Clientip'ten türetilmiştir. |
+| context.location.city |string |Biliniyorsa, clientip'ten türetilmiştir |
+| context.location.clientip |string |Son sekizgen 0'a anonimdir. |
+| context.location.continent |string | |
+| context.location.country |string | |
+| context.location.province |string |Eyalet veya il |
+| context.operation.id |string |Aynı işlem kimliğine sahip öğeler portalda İlgili Öğeler olarak gösterilir. Genellikle istek kimliği. |
+| context.operation.name |string |url veya istek adı |
+| context.operation.parentId |string |İç içe ilgili öğelere izin verir. |
+| context.session.id |string |Aynı kaynaktan gelen bir operasyon grubunun kimliği. İşlem siz 30 dakikalık bir süre oturumun sona ermesinyali. |
+| context.session.isFirst |boole | |
 | context.user.accountAcquisitionDate |string | |
-| Context. User. AccountID |string | |
+| context.user.accountId |string | |
 | context.user.anonAcquisitionDate |string | |
-| Context. User. anonId |string | |
-| context.user.authAcquisitionDate |string |[Kimliği doğrulanmış Kullanıcı](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
-| Context. User. Authıd |string | |
-| Context. User. IsAuthenticated |boole | |
-| Context. User. storeRegion |string | |
-| Internal. Data. documentVersion |string | |
-| internal.data.id |string | Bir öğe Application Insights yapıldığında atanan benzersiz kimlik |
+| context.user.anonId |string | |
+| context.user.authAcquisitionDate |string |[Kimlik Doğrulaması Kullanıcı](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |string | |
+| context.user.isAuthenticated |boole | |
+| context.user.storeRegion |string | |
+| internal.data.documentVersion |string | |
+| internal.data.id |string | Bir öğe Uygulama Öngörüleri'ne yutulduğunda atanan benzersiz kimlik |
 
 ## <a name="events"></a>Olaylar
-[Trackevent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar.
+[TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| olay [0] sayısı |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin 4 =&gt; %25. |
+| olay [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
 | olay [0] adı |string |Olay adı.  Maksimum uzunluk 250. |
-| olay [0] URL 'si |string | |
-| olay [0] urlData. Base |string | |
-| olay [0] urlData. Host |string | |
+| olay [0] url |string | |
+| olay [0] urlData.base |string | |
+| olay [0] urlData.host |string | |
 
 ## <a name="exceptions"></a>Özel durumlar
-Sunucudaki ve tarayıcıdaki [özel durumları](../../azure-monitor/app/asp-net-exceptions.md) raporlar.
+Sunucuda ve tarayıcıda [özel durumları](../../azure-monitor/app/asp-net-exceptions.md) bildirir.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| basicException [0] derlemesi |string | |
-| basicException [0] sayısı |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin 4 =&gt; %25. |
+| basicException [0] derleme |string | |
+| basicException [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
 | basicException [0] exceptionGroup |string | |
-| basicException [0] exceptionType |string | |
+| basicException [0] özel durumTürü |string | |
 | basicException [0] failedUserCodeMethod |string | |
-| basicException [0] failedUserCodeAssembly |string | |
+| basicException [0] başarısızUserCodeAssembly |string | |
 | basicException [0] handledAt |string | |
 | basicException [0] hasFullStack |boole | |
-| basicException [0] kimliği |string | |
+| basicException [0] id |string | |
 | basicException [0] yöntemi |string | |
-| basicException [0] iletisi |string |Özel durum iletisi. En fazla uzunluk 10.000. |
-| basicException [0] outerExceptionMessage |string | |
-| basicException [0] outerExceptionThrownAtAssembly |string | |
-| basicException [0] outerExceptionThrownAtMethod |string | |
-| basicException [0] outerExceptionType |string | |
+| basicException [0] iletisi |string |Özel durum iletisi. Maksimum uzunluk 10k. |
+| basicException [0] dışExceptionMessage |string | |
+| basicException [0] dışExceptionThrownAtAssembly |string | |
+| basicException [0] dışExceptionThrownAtMethod |string | |
+| basicException [0] dışÖzel Durum Türü |string | |
 | basicException [0] outerId |string | |
-| basicException [0] parsedStack [0] derlemesi |string | |
-| basicException [0] parsedStack [0] dosya adı |string | |
+| basicException [0] parsedStack [0] derleme |string | |
+| basicException [0] parsedStack [0] fileName |string | |
 | basicException [0] parsedStack [0] düzeyi |integer | |
-| basicException [0] parsedStack [0] satırı |integer | |
+| basicException [0] parsedStack [0] hattı |integer | |
 | basicException [0] parsedStack [0] yöntemi |string | |
-| basicException [0] yığını |string |En fazla uzunluk 10.000 |
+| basicException [0] yığını |string |Maksimum uzunluk 10k |
 | basicException [0] typeName |string | |
 
-## <a name="trace-messages"></a>İzleme Iletileri
-[Tracktrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)tarafından ve [günlük bağdaştırıcıları](../../azure-monitor/app/asp-net-trace-logs.md)tarafından gönderilir.
+## <a name="trace-messages"></a>İletileri İzleme
+[TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)tarafından gönderilen ve [günlük adaptörleri](../../azure-monitor/app/asp-net-trace-logs.md)tarafından .
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| ileti [0] loggerName |string | |
-| ileti [0] Parametreler |string | |
-| ileti [0] RAW |string |Günlük iletisi, en fazla uzunluk 10.000. |
-| ileti [0] severityLevel |string | |
+| mesaj [0] loggerName |string | |
+| mesaj [0] parametreleri |string | |
+| mesaj [0] ham |string |Günlük iletisi, maksimum uzunluk 10k. |
+| ileti [0] önem düzeyi |string | |
 
 ## <a name="remote-dependency"></a>Uzak bağımlılık
-TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan çağrıların](../../azure-monitor/app/asp-net-dependencies.md) performansını ve kullanımını ve tarayıcıdaki Ajax çağrılarını raporlamak için kullanılır.
+TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan çağrıların](../../azure-monitor/app/asp-net-dependencies.md) performansını ve kullanımını ve tarayıcıdaki AJAX çağrılarını bildirmek için kullanılır.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| remoteDependency bağımlılığı [0] zaman uyumsuz |boole | |
-| remoteDependency bağımlılığı [0] baseName |string | |
-| remoteDependency bağımlılığı [0] commandName |string |Örneğin, "giriş/Dizin" |
-| remoteDependency bağımlılığı [0] sayısı |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin 4 =&gt; %25. |
-| remoteDependency bağımlılığı [0] dependencyTypeName |string |HTTP, SQL,... |
-| remoteDependency bağımlılığı [0] durationMetric. Value |number |Çağrıya göre yanıtın tamamlanmasına yönelik çağrıdan geçen süre |
-| remoteDependency bağımlılığı [0] kimliği |string | |
-| remoteDependency bağımlılığı [0] adı |string |'Deki. Maksimum uzunluk 250. |
-| remoteDependency bağımlılığı [0] resultCode |string |HTTP bağımlılığıyla |
-| remoteDependency bağımlılığı [0] başarılı |boole | |
-| remoteDependency bağımlılığı [0] tür |string |Http, SQL,... |
-| remoteDependency bağımlılığı [0] URL |string |Maksimum uzunluk 2000 |
-| remoteDependency bağımlılığı [0] urlData. Base |string |Maksimum uzunluk 2000 |
-| remoteDependency bağımlılığı [0] urlData. hashTag |string | |
-| remoteDependency bağımlılığı [0] urlData. Host |string |Maksimum uzunluk 200 |
+| remoteDependency [0] async |boole | |
+| remoteDependency [0] baseName |string | |
+| remoteDependency [0] commandName |string |Örneğin "ev/dizin" |
+| remoteDependency [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
+| remoteDependency [0] bağımlılıkTypeName |string |HTTP, SQL, ... |
+| remoteDependency [0] durationMetric.value |number |Bağımlılık tarafından yanıt Tamamlama çağrıdan zaman |
+| remoteDependency [0] id |string | |
+| remoteDependency [0] adı |string |Url. Maksimum uzunluk 250. |
+| remoteDependency [0] resultCode |string |HTTP bağımlılığından |
+| remoteDependency [0] başarı |boole | |
+| remoteDependency [0] türü |string |Http, Sql,... |
+| remoteDependency [0] url |string |Maksimum uzunluk 2000 |
+| remoteDependency [0] urlData.base |string |Maksimum uzunluk 2000 |
+| remoteDependency [0] urlData.hashTag |string | |
+| remoteDependency [0] urlData.host |string |Maksimum uzunluk 200 |
 
 ## <a name="requests"></a>İstekler
-[Trackrequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)tarafından gönderildi. Standart modüller bunu, sunucuda ölçülen sunucu yanıt süresini raporlar olarak kullanır.
+[TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)tarafından gönderildi. Standart modüller, sunucuda ölçülen sunucu yanıt süresini raporlar için bunu kullanır.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| istek [0] sayısı |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin: 4 =&gt; %25. |
-| istek [0] durationMetric. Value |number |İsteğin yanıt gelme süresi. 1E7 = = 1s |
-| istek [0] kimliği |string |İşlem kimliği |
-| istek [0] adı |string |Al/postala + URL tabanı.  Maksimum uzunluk 250 |
-| istek [0] yanıt kodu |integer |İstemciye gönderilen HTTP yanıtı |
-| istek [0] başarılı |boole |Varsayılan = = (yanıt kodu &lt; 400) |
-| istek [0] URL 'si |string |Konak dahil değildir |
-| istek [0] urlData. Base |string | |
-| istek [0] urlData. hashTag |string | |
-| istek [0] urlData. Host |string | |
+| istek [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin: 4&gt; = 25%. |
+| istek [0] durationMetric.value |number |Yanıta gelen istekten itibaren zaman. 1e7 == 1'ler |
+| istek [0] id |string |İşlem kimliği |
+| istek [0] adı |string |GET/POST + url tabanı.  Maksimum uzunluk 250 |
+| request [0] responseCode |integer |Istemciye gönderilen HTTP yanıtı |
+| istek [0] başarı |boole |Varsayılan == (yanıt Kodu &lt; 400) |
+| istek [0] url |string |Ev sahibi dahil değil |
+| istek [0] urlData.base |string | |
+| istek [0] urlData.hashTag |string | |
+| istek [0] urlData.host |string | |
 
-## <a name="page-view-performance"></a>Sayfa görünümü performansı
-Tarayıcı tarafından gönderilir. Bir sayfayı işleme süresini ölçer, kullanıcıdan isteği başlatan (zaman uyumsuz AJAX çağrıları hariç).
+## <a name="page-view-performance"></a>Sayfa Görünümü Performansı
+Tarayıcı tarafından gönderildi. Bir sayfayı işlemek için kullanıcının tam görüntüleme isteğini başlatmasından (async AJAX çağrıları hariç) zamanı ölçer.
 
-Bağlam değerleri istemci işletim sistemini ve tarayıcı sürümünü gösterir.
+Bağlam değerleri istemci işletim sistemi ve tarayıcı sürümünü gösterir.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess. Value |integer |Sayfayı görüntülemek için HTML alma sonundan itibaren geçen süre. |
+| clientPerformance [0] clientProcess.value |integer |HTML'nin alınmasından sayfayı görüntülemeye kadar olan süre. |
 | clientPerformance [0] adı |string | |
-| clientPerformance [0] Ağbağlantısı. değer |integer |Ağ bağlantısı kurmak için geçen süre. |
-| clientPerformance [0] receiveRequest. Value |integer |İsteğin, yanıt olarak HTML almaya yönelik gönderilme bitiş zamanı. |
-| clientPerformance [0] sendRequest. Value |integer |HTTP isteğini göndermek için geçen süre. |
-| clientPerformance [0] toplam. değer |integer |Sayfayı görüntülemek için isteğin gönderilmesi için başlangıç zamanı. |
-| clientPerformance [0] URL 'si |string |Bu isteğin URL 'SI |
-| clientPerformance [0] urlData. Base |string | |
-| clientPerformance [0] urlData. diyez etiketi |string | |
-| clientPerformance [0] urlData. Host |string | |
-| clientPerformance [0] urlData. Protocol |string | |
+| istemciPerformance [0] networkConnection.value |integer |Bir ağ bağlantısı kurmak için zaman alınır. |
+| clientPerformance [0] receiveRequest.value |integer |İsteğin gönderilmesinin sonundan yanıtolarak HTML'yi almaya kadar olan süre. |
+| clientPerformance [0] sendRequest.value |integer |HTTP isteğini göndermek için alınan süre. |
+| clientPerformance [0] total.value |integer |Sayfayı görüntülemek için isteği göndermeye başlama saati. |
+| clientPerformance [0] url |string |Bu isteğin URL'si |
+| istemciPerformans [0] urlData.base |string | |
+| clientPerformance [0] urlData.hashTag |string | |
+| istemciPerformans [0] urlData.host |string | |
+| istemciPerformans [0] urlData.protocol |string | |
 
-## <a name="page-views"></a>Sayfa görünümleri
-TrackPageView () veya [Stoptrackpage](../../azure-monitor/app/api-custom-events-metrics.md#page-views) tarafından gönderildi
+## <a name="page-views"></a>Sayfa Görüntülemeleri
+TrackPageView() veya [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views) tarafından gönderildi
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
-| [0] sayısını görüntüle |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin 4 =&gt; %25. |
-| [0] durationMetric. Value görüntüle |integer |Değer, isteğe bağlı olarak trackPageView () veya startTrackPage ()-stopTrackPage () tarafından ayarlanır. ClientPerformance değerleriyle aynı değildir. |
-| [0] adını görüntüle |string |Sayfa başlığı.  Maksimum uzunluk 250 |
-| [0] URL 'sini görüntüle |string | |
-| [0] urlData. Base öğesini görüntüle |string | |
-| [0] urlData. diyez etiketini görüntüle |string | |
-| [0] urlData. Host öğesini görüntüle |string | |
+| görünüm [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
+| görünüm [0] süresiMetric.value |integer |Değer isteğe bağlı olarak trackPageView() veya startTrackPage() - stopTrackPage() tarafından ayarlanır. IstemciPerformans değerleri yle aynı değildir. |
+| görünüm [0] adı |string |Sayfa başlığı.  Maksimum uzunluk 250 |
+| görünüm [0] url |string | |
+| görünüm [0] urlData.base |string | |
+| görünüm [0] urlData.hashTag |string | |
+| görünüm [0] urlData.host |string | |
 
 ## <a name="availability"></a>Kullanılabilirlik
-[Kullanılabilirlik Web testlerini](../../azure-monitor/app/monitor-web-app-availability.md)raporlar.
+[Kullanılabilirlik web testlerini](../../azure-monitor/app/monitor-web-app-availability.md)raporlar.
 
 | Yol | Tür | Notlar |
 | --- | --- | --- |
 | kullanılabilirlik [0] availabilityMetric.name |string |availability |
-| kullanılabilirlik [0] Kullanılabilirbilitymetric. değer |number |1.0 ya da 0.0 |
-| kullanılabilirlik [0] sayısı |integer |100/([örnekleme](../../azure-monitor/app/sampling.md) hızı). Örneğin 4 =&gt; %25. |
+| kullanılabilirlik [0] availabilityMetric.value |number |1.0 veya 0.0 |
+| kullanılabilirlik [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
 | kullanılabilirlik [0] dataSizeMetric.name |string | |
-| kullanılabilirlik [0] dataSizeMetric. değer |integer | |
+| kullanılabilirlik [0] dataSizeMetric.value |integer | |
 | kullanılabilirlik [0] durationMetric.name |string | |
-| kullanılabilirlik [0] durationMetric. Value |number |Test süresi. 1E7 = = 1s |
-| kullanılabilirlik [0] ileti |string |Hata tanılama |
-| kullanılabilirlik [0] Sonuç |string |Başarılı/başarısız |
-| kullanılabilirlik [0] runLocation |string |Http REQ coğrafi kaynağı |
+| kullanılabilirlik [0] süresiMetric.value |number |Test süresi. 1e7==1'ler |
+| kullanılabilirlik [0] iletisi |string |Hata tanılama |
+| kullanılabilirlik [0] sonucu |string |Başarılı/Başarısız |
+| kullanılabilirlik [0] runLocation |string |Coğrafi kaynak http req |
 | kullanılabilirlik [0] testName |string | |
-| kullanılabilirlik [0] TestRunId |string | |
-| kullanılabilirlik [0] test zaman damgası |string | |
+| durumu [0] testRunId |string | |
+| kullanılabilirlik [0] testTimestamp |string | |
 
 ## <a name="metrics"></a>Ölçümler
-TrackMetric () tarafından oluşturuldu.
+TrackMetric() tarafından oluşturulur.
 
-Ölçüm değeri Context. Custom. ölçümler [0] içinde bulunur
+Metrik değer context.custom.metrics[0] bulunur.
 
 Örnek:
 
@@ -317,8 +317,8 @@ TrackMetric () tarafından oluşturuldu.
          } ] }
     }
 
-## <a name="about-metric-values"></a>Ölçüm değerleri hakkında
-Ölçüm değerleri, hem ölçüm raporlarında hem de başka bir yerde, standart bir nesne yapısıyla raporlanır. Örnek:
+## <a name="about-metric-values"></a>Metrik değerler hakkında
+Metrik değerler, hem metrik raporlarda hem de başka yerlerde, standart bir nesne yapısıyla bildirilir. Örnek:
 
       "durationMetric": {
         "name": "contoso.org",
@@ -331,18 +331,18 @@ TrackMetric () tarafından oluşturuldu.
         "sampledValue": 468.71603053650279
       }
 
-Şu anda bu durum, standart SDK modülleriyle raporlanan tüm değerlerde `count==1` de değişebilir ve yalnızca `name` ve `value` alanları yararlı olur. Diğer parametreleri ayarladığınız kendi TrackMetric çağrılarınızı yazarsanız, farklı oldukları durumlar tek durumdur.
+Şu anda - bu gelecekte değişebilir rağmen - standart SDK `count==1` modülleri `name` bildirilen `value` tüm değerlerde ve sadece ve alanları yararlıdır. Farklı olabilecekleri tek durum, diğer parametreleri ayarladığınız kendi TrackMetric aramalarınızı yazmanız olacaktır.
 
-Diğer alanların amacı, portala gelen trafiği azaltmak için ölçümlerin SDK 'da toplanmasına izin vermaktır. Örneğin, her ölçüm raporunu göndermeden önce birkaç ardışık readusing ortalamasını alabilirsiniz. Daha sonra Min, Max, standart sapma ve toplam değeri (Sum veya Average) hesaplar ve sayısı, rapor tarafından temsil edilen okuma sayısı olarak ayarlanır.
+Diğer alanların amacı, portaltrafiğini azaltmak için ölçümlerin SDK'da biraraya alınmasına izin vermektir. Örneğin, her metrik raporu göndermeden önce birbirini izleyen birkaç okumanın ortalamasına göre olabilirsiniz. Daha sonra min, max, standart sapma ve toplam değeri (toplam veya ortalama) hesaplar ve rapor tarafından temsil edilen okuma sayısına sayım ayarlayın.
 
-Yukarıdaki tablolarda, nadiren kullanılan alanları say, min, Max, stdDev ve sampledValue değerlerini attık.
+Yukarıdaki tablolarda, nadiren kullanılan alan sayısı, min, max, stdDev ve sampledValue atladık.
 
-Ölçümleri önceden toplamak yerine, telemetri hacmini azaltmanız gerekiyorsa [örnekleme](../../azure-monitor/app/sampling.md) kullanabilirsiniz.
+Ölçümleri önceden toplamak yerine, telemetri hacmini azaltmanız gerekiyorsa [örneklemeyi](../../azure-monitor/app/sampling.md) kullanabilirsiniz.
 
-### <a name="durations"></a>Sürelerde
-Aksi belirtilmedikçe, süreler bir mikro saniyenin onda temsil edildiği sürece 10000000,0, 1 saniye anlamına gelir.
+### <a name="durations"></a>Süre
+Aksi belirtilmedikçe, süreler bir mikrosaniyenin onda birinde gösterilir, böylece 100000000.0 1 saniye anlamına gelir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-* [Sürekli dışarı aktarma](export-telemetry.md)
+* [Uygulama Bilgileri](../../azure-monitor/app/app-insights-overview.md)
+* [Sürekli İhracat](export-telemetry.md)
 * [Kod örnekleri](export-telemetry.md#code-samples)

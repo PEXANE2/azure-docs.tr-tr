@@ -1,5 +1,5 @@
 ---
-title: Data Box sistem gereksinimlerini Microsoft Azure | Microsoft Docs
+title: Microsoft Azure Veri Kutusu sistem gereksinimleri| Microsoft Dokümanlar
 description: Azure Data Box'ınızın yazılım ve ağ gereksinimleri hakkında bilgi edinin
 services: databox
 author: alkohli
@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259961"
 ---
-# <a name="azure-data-box-system-requirements"></a>Azure Data Box sistem gereksinimleri
+# <a name="azure-data-box-system-requirements"></a>Azure Veri Kutusu sistem gereksinimleri
 
-Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
+Bu makalede, Microsoft Azure Veri Kutunuz ve Veri Kutusu'na bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Veri Kutunuzu dağıtmadan önce bilgileri dikkatle gözden geçirmenizi ve dağıtım ve sonraki işlem sırasında gerekli olduğu şekilde geri başvurmanızı öneririz.
 
-Sistem gereksinimleri şunları içerir:
+Sistem gereksinimleri şunlardır:
 
-* **Data Box bağlanan konaklar Için yazılım gereksinimleri** -desteklenen platformları, yerel Web Kullanıcı arabirimine yönelik TARAYıCıLARı, SMB istemcilerini ve Data Box bağlanabilecek konaklara yönelik ek gereksinimleri açıklar.
-* **Data Box Için ağ gereksinimleri** -Data Box en iyi işlem için ağ gereksinimleri hakkında bilgi sağlar.
+* **Veri Kutusu'na bağlanan ana bilgisayarlar için yazılım gereksinimleri** - desteklenen platformları, yerel web arabirimi tarayıcılarını, Kobİ istemcilerini ve Veri Kutusu'na bağlanabilen ana bilgisayarlar için ek gereksinimleri açıklar.
+* **Veri Kutusu için ağ gereksinimleri** - Veri Kutusu'nun en iyi çalışması için ağ gereksinimleri hakkında bilgi sağlar.
 
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
 
-Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı arabirimi için desteklenen tarayıcılar ve SMB istemcileri hakkındaki bilgileri içerir.
+Yazılım gereksinimleri desteklenen işletim sistemleri, yerel web kullanıcı arabirimi için desteklenen tarayıcılar ve Kobİ istemcileri hakkındaki bilgileri içerir.
 
 ### <a name="supported-operating-systems-for-clients"></a>İstemciler için desteklenen işletim sistemleri
 
@@ -51,15 +51,15 @@ Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
-Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, verileri kopyalamak için 1-GbE veri bağlantısı kullanılabilir ancak kopyalama hızları bundan etkilenir.
+Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, verileri kopyalamak için 1 GbE veri bağlantısı kullanılabilir, ancak kopyalama hızları etkilenir.
 
 ### <a name="port-requirements"></a>Bağlantı noktası gereksinimleri
 
-Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
+Aşağıdaki tabloda, SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenildi. Bu tabloda, *gelen* *istemcinin* cihazınıza erişmelerini talep ettiği yönü ifade eder. *Giden* veya *giden,* Veri Kutusu aygıtınızın verileri dağıtımın ötesinde harici olarak gönderdiği yönü ifade eder: örneğin, Internet'e giden.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Box dağıtın](data-box-deploy-ordered.md)
+* [Azure Veri Kutunuzu Dağıtma](data-box-deploy-ordered.md)

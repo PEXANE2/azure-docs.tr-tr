@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
-description: Bu makalede, Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi yöntemleri öğreneceksiniz.
+title: Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmak için en iyi uygulamalar
+description: Bu makalede, Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI'yi kullanmak için en iyi uygulamaları öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,52 +8,52 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251745"
 ---
-# <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
+# <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmak için en iyi uygulamalar
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. [Power BI,](https://docs.microsoft.com/power-bi/) verilerinizi görselleştirmenize ve sonuçları kuruluşunuz genelinde paylaşmanıza olanak tanıyan bir iş analitiği çözümüdür. Azure Veri Gezgini, Power BI'deki verilere bağlanmak için üç seçenek sunar. Yerleşik [bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini'nden Power BI'ye bir sorgu içe aktarın](power-bi-imported-query.md)veya [BIR SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makalede, Power BI ile Azure Veri Gezgini verilerinizi sorgulamak ve görselleştirmek için ipuçları sağlar. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI kullanmak için en iyi uygulamalar 
 
-En yeni terabaytlarca ham veri ile çalışırken, Power BI panoları ve raporları Snappy ve güncel tutmak için aşağıdaki yönergeleri izleyin:
+Terabaytlarca taze ham veriyle çalışırken, Power BI panoları ve raporlarını hızlı ve güncel tutmak için aşağıdaki yönergeleri izleyin:
 
-* **Seyahat ışığı** -Power BI için yalnızca raporlarınız için gereken verileri getirin. Ayrıntılı etkileşimli analizler için, kusto sorgu diliyle geçici araştırma için optimize edilmiş [Azure Veri Gezgini Web Kullanıcı arabirimini](web-query-data.md) kullanın.
+* **Seyahat ışığı** - Yalnızca raporlarınız için ihtiyacınız olan verileri Power BI'ye getirin. Derin etkileşimli analiz için, Kusto Sorgu Dili ile özel keşif için optimize edilmiş [Azure Veri Gezgini Web UI'sini](web-query-data.md) kullanın.
 
-* **Bileşik model** -en üst düzey panolar için toplanan verileri filtrelenmiş işlemsel ham verilerle birleştirmek için [bileşik model](https://docs.microsoft.com/power-bi/desktop-composite-models) kullanın. Ham verilerin ne zaman kullanılacağını ve toplu bir görünümün ne zaman kullanılacağını açıkça tanımlayabilirsiniz. 
+* **Bileşik model** - Üst düzey panolar için toplanan verileri filtrelenmiş operasyonel ham verilerle birleştirmek için [bileşik modeli](https://docs.microsoft.com/power-bi/desktop-composite-models) kullanın. Ham verilerin ne zaman kullanılacağını ve toplu görünümün ne zaman kullanılacağını açıkça tanımlayabilirsiniz. 
 
-* **Içeri aktarma modu, DirectQuery moduna karşı** -küçük veri kümelerinin etkileşimi Için **içeri aktarma** modunu kullanın. Büyük, sık güncellenen veri kümeleri için **DirectQuery** modunu kullanın. Örneğin, küçük olduklarından ve sık değişlemediğinden **Içeri aktarma** modunu kullanarak boyut tabloları oluşturun. Yenileme aralığını, beklenen veri güncelleştirmeleri hızına göre ayarlayın. Bu tablolar büyük olduğundan ve ham veriler içerdiğinden **DirectQuery** modunu kullanarak olgu tabloları oluşturun. Power BI [detaylandırma](https://docs.microsoft.com/power-bi/desktop-drillthrough)kullanarak filtrelenmiş verileri sunmak için bu tabloları kullanın.
+* **Alma modu ve DirectQuery modu** - Daha küçük veri kümelerinin etkileşimi için **Alma** modunu kullanın. Büyük, sık güncelleştirilen veri kümeleri için **DirectQuery** modunu kullanın. Örneğin, küçük oldukları ve sık sık değişmedikleri için **Alma** modunu kullanarak boyut tabloları oluşturun. Yenileme aralığını beklenen veri güncelleştirme hızına göre ayarlayın. Bu tablolar büyük olduğundan ve ham veri içerdiğinden **DirectQuery** modunu kullanarak olgu tabloları oluşturun. Power BI [delinme yoluyla](https://docs.microsoft.com/power-bi/desktop-drillthrough)filtrelenmiş verileri sunmak için bu tabloları kullanın.
 
-* **Paralellik** – Azure Veri Gezgini, doğrusal bir şekilde ölçeklenebilir bir veri platformudur, bu nedenle, uçtan uca akışın paralelliğini aşağıdaki gibi artırarak Pano işlemenin performansını artırabilirsiniz:
+* **Paralellik** – Azure Veri Gezgini doğrusal ölçeklenebilir bir veri platformudur, bu nedenle uçtan uca akışın paralelliğini aşağıdaki gibi artırarak pano oluşturma performansını artırabilirsiniz:
 
-   * [Power BI ' de DirectQuery içindeki eşzamanlı bağlantı](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)sayısını artırın.
+   * [Power BI'de DirectQuery'deki eşzamanlı bağlantı sayısını artırın.](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)
 
-   * [Paralellik kalitesini artırmak için zayıf tutarlılığı](/azure/kusto/concepts/queryconsistency)kullanın. Bu, verilerin yeniliği üzerinde bir etkiye sahip olabilir.
+   * [Paralelliği geliştirmek için zayıf tutarlılık](/azure/kusto/concepts/queryconsistency)kullanın. Bu, verilerin tazeliği üzerinde bir etkiye sahip olabilir.
 
-* **Etkin Dilimleyiciler** : raporların, kullanıma almadan verileri yüklemesini engellemek için [eşitleme Dilimleyicileri](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) kullanın. Veri kümesini yapılandırdıktan sonra tüm görselleri yerleştirip tüm Dilimleyicileri işaretledikten sonra yalnızca gerekli verileri yüklemek için eşitleme Dilimleyiciyi seçebilirsiniz.
+* **Etkili dilimleyiciler** – Hazır olmadan önce raporların veri yüklemesini önlemek için [eşitleyiciler](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) kullanın. Veri kümesini yapıladıktan, tüm görselleri yerleştirdikten ve tüm dilimleyicileri işaretledikten sonra, yalnızca gereken verileri yüklemek için eşitleyiciyi seçebilirsiniz.
 
-* **Filtreleri kullanma** -Azure Veri Gezgini aramasını ilgili veri parçalarında odaklamak için olabildiğince çok Power BI filtresi kullanın.
+* **Filtreleri kullanın** - Azure Veri Gezgini aramasını ilgili veri parçalarına odaklamak için mümkün olduğunca çok Power BI filtresi kullanın.
 
-* **Verimli görseller** : verileriniz için en iyi performansa sahip görselleri seçin.
+* **Verimli görseller** – Verileriniz için en çok performans gösteren görselleri seçin.
 
-## <a name="tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data"></a>Verileri sorgulamak için Power BI için Azure Veri Gezgini bağlayıcısını kullanmaya yönelik ipuçları
+## <a name="tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data"></a>Verileri sorgulamak için Power BI için Azure Veri Gezgini bağlayıcısını kullanma ipuçları
 
-Aşağıdaki bölümde, Power BI ile kusto sorgu dilini kullanmaya yönelik ipuçları ve püf noktaları yer almaktadır. Verileri görselleştirmek için [Azure Veri Gezgini bağlayıcısını Power BI](power-bi-connector.md) kullanma
+Aşağıdaki bölümde Power BI ile Kusto sorgu dilini kullanmak için ipuçları ve püf noktaları içerir. Verileri görselleştirmek [için Power BI için Azure Veri Gezgini bağlayıcısını](power-bi-connector.md) kullanın
 
-### <a name="complex-queries-in-power-bi"></a>Power BI 'de karmaşık sorgular
+### <a name="complex-queries-in-power-bi"></a>Power BI'deki karmaşık sorgular
 
-Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Kusto sorgunuzda **DirectQuery** `let` deyimleri kullanılırken bu yöntem gereklidir. Power BI iki sorguyu birleştiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
+Karmaşık sorgular, Kusto'da Güç Sorgusu'ndan daha kolay ifade edilir. [Bunlar Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalı ve Power BI'de çağrılmalıdır. Bu yöntem, Kusto `let` sorgunuzdaki ifadeler ile **DirectQuery** kullanırken gereklidir. Power BI iki sorguyu birleştirdiği ve `let` deyimler işleçle birlikte kullanılamadığından `join` sözdizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bir bölümünü Bir Kusto işlevi olarak kaydedin ve Power BI'nin bu iki işlevi biraraya getirmesine izin verin.
 
-### <a name="how-to-simulate-a-relative-date-time-operator"></a>Göreli tarih-saat işlecinin benzetimini yapma
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>Göreceli bir tarih-saat işleci nasıl simüle edilir?
 
-Power BI, `ago()`gibi *göreli* bir tarih-saat işleci içermez.
-`ago()`benzetimini yapmak için `DateTime.FixedLocalNow()` ve `#duration` Power BI işlevlerinin birleşimini kullanın.
+Power BI gibi `ago()` *göreceli* bir tarih-saat işleci içermez.
+Simüle `ago()`etmek için, `DateTime.FixedLocalNow()` `#duration` bir arada kullanın ve Güç BI işlevleri.
 
-`ago()` işlecini kullanarak bu sorgu yerine:
+`ago()` İşleç kullanarak bu sorgu yerine:
 
 ```kusto
     StormEvents | where StartTime > (now()-5d)
@@ -72,25 +72,25 @@ in
 
 ### <a name="reaching-kusto-query-limits"></a>Kusto sorgu sınırlarına ulaşma 
 
-Kusto sorguları, [sorgu sınırları](/azure/kusto/concepts/querylimits)bölümünde açıklandığı gibi varsayılan olarak en fazla 500.000 satıra veya 64 MB 'a döndürülür. **Azure Veri Gezgini (kusto)** bağlantı penceresinde **Gelişmiş seçenekleri** kullanarak bu Varsayılanları geçersiz kılabilirsiniz:
+Kusto sorguları, varsayılan olarak, [sorgu sınırlarında](/azure/kusto/concepts/querylimits)açıklandığı gibi 500.000 satıra veya 64 MB'a kadar geri döner. **Azure Veri Gezgini (Kusto)** bağlantı penceresinde **Gelişmiş seçenekleri** kullanarak bu varsayılanları geçersiz kılabilirsiniz:
 
-![Gelişmiş Seçenekler](media/power-bi-best-practices/advanced-options.png)
+![Gelişmiş seçenekler](media/power-bi-best-practices/advanced-options.png)
 
-Bu seçenekler, varsayılan sorgu sınırlarını değiştirmek için Sorgunuzla birlikte [set deyimlerini](/azure/kusto/query/setstatement) sorun.
+Varsayılan sorgu sınırlarını değiştirmek için sorgunuzla birlikte bu seçenekler [ayarlı deyimler:](/azure/kusto/query/setstatement)
 
-  * **Limit sorgu sonucu kayıt numarası** bir `set truncationmaxrecords` oluşturur
-  * **Bayt cinsinden limit sorgu sonucu veri boyutu** bir `set truncationmaxsize` oluşturur
-  * **Sonuç kümesi kesilmesini devre dışı bırakma** bir `set notruncation` oluşturur
+  * **Limit sorgu sonuç kayıt numarası** oluşturur`set truncationmaxrecords`
+  * **Bytes'te sorgu sonuç veri boyutunu sınırlandır**`set truncationmaxsize`
+  * **Devre dışı bırakılmaz sonuç kümesi kesilme,**`set notruncation`
 
 ### <a name="using-query-parameters"></a>Sorgu parametrelerini kullanma
 
-Sorgunuzu dinamik olarak değiştirmek için [sorgu parametrelerini](/azure/kusto/query/queryparametersstatement) kullanabilirsiniz. 
+[Sorgu parametrelerinizi](/azure/kusto/query/queryparametersstatement) dinamik olarak değiştirmek için kullanabilirsiniz. 
 
-#### <a name="using-a-query-parameter-in-the-connection-details"></a>Bağlantı ayrıntılarında sorgu parametresi kullanma
+#### <a name="using-a-query-parameter-in-the-connection-details"></a>Bağlantı ayrıntılarında sorgu parametresini kullanma
 
-Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir sorgu parametresi kullanın.
+Sorgudaki bilgileri filtrelemek ve sorgu performansını optimize etmek için bir sorgu parametresi kullanın.
  
-**Sorguları Düzenle** penceresinde, **giriş** > **Gelişmiş Düzenleyici**
+**Sorguları Edit** penceresinde, **Ana Sayfa** > **Gelişmiş Düzenleyici**
 
 1. Sorgunun aşağıdaki bölümünü bulun:
 
@@ -104,45 +104,45 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Sorgunun ilgili bölümünü parametrenizle değiştirin. Sorguyu birden çok parçaya ayırın ve parametresi ile birlikte bir ve işareti (&) kullanarak tekrar birleştirin.
+1. Sorgunun ilgili bölümünü parametrenizle değiştirin. Sorguyu birden çok parçaya bölün ve parametreyle birlikte bir ampersand (&) kullanarak geri dönüştürün.
 
-   Örneğin, Yukarıdaki sorguda `State == 'ALABAMA'` parçasını ele alacağız ve: `State == '` ve `'` `State` ' ye bölecektir:
+   Örneğin, `State == 'ALABAMA'` yukarıdaki sorguda, rolü alıp şu şekilde bölüşürüz: `State == '` `'` ve parametreyi `State` aralarında yerleştireceğiz:
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
     ```
 
-1. Sorgunuz tırnak işaretleri içeriyorsa, bunları doğru kodlayın. Örneğin, aşağıdaki sorgu: 
+1. Sorgunuz tırnak işaretleri içeriyorsa, bunları doğru şekilde kodlayın. Örneğin, aşağıdaki sorgu: 
 
    ```kusto
    "StormEvents | where State == "ALABAMA" | take 100" 
    ```
 
-   **Gelişmiş Düzenleyici** iki tırnak işaretiyle aşağıdaki gibi görünür:
+   Advanced **Editor'da** iki tırnak işareti yle aşağıdaki gibi görünür:
 
    ```kusto
     "StormEvents | where State == ""ALABAMA"" | take 100"
    ```
 
-   Üç tırnak işareti ile aşağıdaki sorguyla değiştirilmelidir:
+   Üç tırnak işareti ile aşağıdaki sorgu ile değiştirilmelidir:
 
    ```kusto
    "StormEvents | where State == """ & State & """ | take 100"
    ```
 
-#### <a name="use-a-query-parameter-in-the-query-steps"></a>Sorgu adımlarında bir sorgu parametresi kullanın
+#### <a name="use-a-query-parameter-in-the-query-steps"></a>Sorgu adımlarında sorgu parametresi kullanma
 
-Sorgu parametresini, destekleyen herhangi bir sorgu adımında kullanabilirsiniz. Örneğin, sonuçları bir parametresinin değerine göre filtreleyin.
+Sorgu parametresi, onu destekleyen herhangi bir sorgu adımında kullanabilirsiniz. Örneğin, sonuçları bir parametrenin değerine göre filtreleyin.
 
-![bir parametre kullanarak Sonuçları filtrele](media/power-bi-best-practices/filter-using-parameter.png)
+![bir parametre kullanarak filtre sonuçları](media/power-bi-best-practices/filter-using-parameter.png)
 
-### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>Kusto 'e denetim komutları vermek için Power BI veri yenileme zamanlayıcısını kullanmayın
+### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>Kusto'ya denetim komutları vermek için Power BI veri yenileme zamanlayıcısı kullanmayın
 
-Power BI, düzenli aralıklarla bir veri kaynağına yönelik sorgular veren bir veri yenileme Zamanlayıcısı içerir. Power BI, tüm sorguların salt okunurdur olduğunu varsaydığından, denetim komutlarının kusto olarak zamanlanmasında bu mekanizma kullanılmamalıdır.
+Power BI, bir veri kaynağına karşı düzenli olarak sorgu düzenleyebilen bir veri yenileme zamanlayıcısı içerir. Bu mekanizma, Denetim komutlarını Kusto'ya zamanlamak için kullanılmamalıdır, çünkü Power BI tüm sorguların salt okunur olduğunu varsayar.
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI, kusto 'e yalnızca kısa (&lt;2000 karakter) sorgular gönderebilir
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI, Kusto'ya yalnızca kısa (2000&lt;karakter) sorgu gönderebilir
 
-Power BI ' de bir sorgu çalıştırırsanız, şu hata oluşur: _"DataSource. Error: Web. Contents öğesinden içerikleri alamadı..."_ sorgu muhtemelen 2000 karakterden daha uzun. Power BI, sorguyu alınmakta olan URI 'nin bir parçası olarak kodlayan bir HTTP GET isteği vererek kusto sorgulamak için **powerquery** 'yi kullanır. Bu nedenle, Power BI tarafından verilen kusto sorguları bir istek URI 'SI (2000 karakter, eksi küçük fark) uzunluk üst sınırı ile sınırlıdır. Geçici bir çözüm olarak, kusto içinde [saklı bir işlev](/azure/kusto/query/schema-entities/stored-functions) tanımlayabilir ve bu işlevi Sorguda Power BI kullanabilirsiniz.
+Power BI'de bir sorgu çalıştırmak aşağıdaki hatayla sonuçlanırsa: _"DataSource.Error: Web.Contents içeriği alamadı..."_ sorgu büyük olasılıkla 2000 karakterden daha uzundur. Power BI, URI'nin bir parçası olarak sorguyu kodlayan bir HTTP GET isteği yayınlayarak Kusto'yu sorgulamak için **PowerQuery'yi** kullanır. Bu nedenle, Power BI tarafından verilen Kusto sorguları bir istek URI (2000 karakter, eksi küçük ofset) maksimum uzunluğu ile sınırlıdır. Geçici çözüm olarak, Kusto'da [depolanmış](/azure/kusto/query/schema-entities/stored-functions) bir işlev tanımlayabilir ve Power BI'nin sorguda bu işlevi kullanmasını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

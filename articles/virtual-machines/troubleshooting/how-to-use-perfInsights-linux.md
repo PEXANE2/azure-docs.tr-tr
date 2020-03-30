@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 'da Perfinsıghts Linux kullanımı | Microsoft Docs
-description: Linux VM performans sorunlarını gidermek için Perfınsıghts 'in nasıl kullanılacağını öğrenir.
+title: PerfInsights Linux Microsoft Azure'da nasıl kullanılır? Microsoft Dokümanlar
+description: Linux VM performans sorunlarını gidermek için PerfInsights'ı nasıl kullanacağınızı öğrenir.
 services: virtual-machines-linux'
 documentationcenter: ''
 author: anandhms
@@ -14,54 +14,54 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266994"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
-[Perfinsıghts Linux](https://aka.ms/perfinsightslinuxdownload) , tanılama verilerini toplayıp analiz eden bir kendi kendine bir tanılama aracıdır ve Azure 'da Linux sanal makine performans sorunlarını gidermenize yardımcı olacak bir rapor sağlar. Perfinsıghts, desteklenen sanal makinelerde tek başına bir araç olarak veya [Azure sanal makineleri Için performans tanılamayı](performance-diagnostics.md)kullanarak doğrudan portaldan çalıştırılabilir.
+[PerfInsights Linux,](https://aka.ms/perfinsightslinuxdownload) tanılama verilerini toplayan ve analiz eden ve Azure'daki Linux sanal makine performansı sorunlarını gidermeye yardımcı olacak bir rapor sağlayan bir kendi kendine yardım tanılama aracıdır. PerfInsights, desteklenen sanal makinelerde bağımsız bir araç olarak veya [Azure sanal makineleri için Performans Tanılama'yı](performance-diagnostics.md)kullanarak doğrudan portaldan çalıştırılabilir.
 
-Sanal makinelerle ilgili performans sorunları yaşıyorsanız, desteğe başvurmadan önce bu aracı çalıştırın.
+Destekle iletişime geçmeden önce sanal makinelerle ilgili performans sorunları yaşıyorsanız, bu aracı çalıştırın.
 
 ## <a name="supported-troubleshooting-scenarios"></a>Desteklenen sorun giderme senaryoları
 
-Perfinsıghts çeşitli bilgi türlerini toplayıp analiz edebilir. Aşağıdaki bölümlerde yaygın senaryolar ele alınmaktadır.
+PerfInsights çeşitli türde bilgileri toplayabilir ve analiz edebilir. Aşağıdaki bölümler sık karşılaşılan senaryoları kapsar.
 
 ### <a name="quick-performance-analysis"></a>Hızlı performans analizi
 
-Bu senaryo, sanal makinenizin depolama ve donanım yapılandırması, aşağıdakiler dahil çeşitli Günlükler gibi temel bilgileri toplar:
+Bu senaryo, sanal makinenizin depolama ve donanım yapılandırması gibi temel bilgileri toplar, aşağıdakiler dahil olmak üzere çeşitli günlükleri:
 
-- İşletim sistemi bilgileri
+- İşletim Sistemi bilgileri
 
 - PCI cihaz bilgileri
 
-- Genel Konuk işletim sistemi günlükleri
+- Genel Konuk İşletim Sistemi günlükleri
 
 - Yapılandırma dosyaları
 
 - Depolama bilgileri
 
-- Azure sanal makine yapılandırması ( [azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)kullanılarak toplanır)
+- Azure Sanal Makine Yapılandırması [(Azure Örneği Meta veri Hizmeti](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)kullanılarak toplanır)
 
-- Çalışan işlemlerin, diskin, belleğin ve CPU kullanımının listesi
+- Çalışan işlemler, Disk, Bellek ve CPU kullanımı listesi
 
 - Ağ bilgileri
 
-Bu, sistemi etkilememelidir olmayan bir bilgi koleksiyonudur.
+Bu, sistemi etkilememesi gereken pasif bir bilgi koleksiyonudur.
 
 >[!Note]
->Hızlı performans Analizi senaryosu aşağıdaki senaryolardan her birine otomatik olarak eklenir:
+>Hızlı performans analizi senaryosu otomatik olarak aşağıdaki senaryoların her birine dahil edilir:
 
-### <a name="performance-analysis"></a>Performans Analizi
+### <a name="performance-analysis"></a>Performans analizi
 
-Bu senaryo, hızlı performans çözümlemesine benzer, ancak tanılama bilgilerinin daha uzun süre yakalanmasını sağlar.
+Bu senaryo Hızlı performans çözümlemesine benzer, ancak tanılama bilgilerinin daha uzun süre yakalanmasını sağlar.
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Perfinsıghts tarafından ne tür bilgiler toplanır
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights tarafından ne tür bilgiler toplanır
 
-Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketicileri, yapılandırma ve çeşitli Günlükler hakkında bilgiler toplanır. Daha fazla ayrıntı aşağıda verilmiştir:
+Linux sanal makine, işletim sistemi, blok cihazlar, yüksek kaynak tüketiciler, yapılandırma ve çeşitli günlükleri hakkında bilgi toplanır. Daha fazla ayrıntı aşağıdadır:
 
 - İşletim sistemi
   - Linux dağıtımı ve sürümü
@@ -69,101 +69,101 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - Sürücü bilgileri
 
 - Donanım
-  - PCI cihazları [`*`]
+  - PCI cihazları`*`[ ]
 
 - Süreçler ve bellek
-  - İşlem listesi (görev adı, kullanılan bellek, açılan dosyalar)
-  - Toplam, kullanılabilir ve boş fiziksel bellek
+  - İşlemlistesi (görev adı, kullanılan bellek, açılan dosyalar)
+  - Toplam, kullanılabilir ve ücretsiz fiziksel bellek
   - Toplam, kullanılabilir ve serbest takas belleği
-  - CPU 'nun oluşturulması ve 5 saniyelik bir aralıktaki CPU kullanımını işleme
-  - İşlem belleği kullanımı için 5 saniyelik aralıkta profil oluşturma
+  - CPU'nun ve işlemlerin CPU kullanımını 5 saniye aralığında yakalama profilleme
+  - 5 saniye lik aralıklarla işlemlerbellek kullanımının profil oluşturma
 
-- Ağ  
-  - Bağdaştırıcılar istatistikleriyle ağ bağdaştırıcılarının listesi
+- Ağ Oluşturma  
+  - Bağdaştırıcı istatistiklerine sahip ağ bağdaştırıcıları listesi
   - Ağ yönlendirme tablosu
-  - Açık bağlantı noktaları ve durum
+  - Açılan bağlantı noktaları ve durumu
 
 - Depolama
-  - Cihaz listesini engelle
-  - Bölüm listesi
-  - Bağlama noktaları listesi
-  - MDADDM birim bilgileri
-  - LVM birimi bilgileri
-  - 5 saniyelik aralıkta tüm disklerde yakalama profili oluşturuluyor
+  - Aygıtlistesini engelleme
+  - Bölümler listesi
+  - Montaj noktaları listesi
+  - MDADM birim bilgileri
+  - LVM birim bilgileri
+  - 5 saniye lik aralıklarla tüm disklerde profil oluşturma yakalama
 
 - Günlükler
-  - /var/log/Messages
-  - /var/log/Syslog
-  - /var/log/Kern.log
+  - /var/log/iletiler
+  - /var/log/syslog
+  - /var/log/kern.log
   - /var/log/cron.log
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
-  - /var/log/Cloud-Init.log
-  - /var/log/Cloud-init-output.log
-  - /var/logtecu-Manager.log
+  - /var/log/cloud-init.log
+  - /var/log/cloud-init-output.log
+  - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[uzantı klasörü]/\*log\*
-  - /var/seçenek/Microsoft/omsconfig/omsconfig.log
-  - /var/seçenek/Microsoft/omsagent/log/omsagent.log
-  - /etc/waagentnconfig
-  - Son beş güne ait journalctl çıkışı
+  - /var/log/azure/[uzantı]/\*günlük\*
+  - /var/opt/microsoft/omsconfig/omsconfig.log
+  - /var/opt/microsoft/omsagent/log/omsagent.log
+  - /etc/waagent.config
+  - Son beş gün için journalctl çıktısı
 
 - [Azure sanal makine örneği meta verileri](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı
+>[`*`] PCI bilgileri henüz Debian ve SLES dağıtımlarında toplanmadı
 
-## <a name="run-the-perfinsights-linux-on-your-vm"></a>VM 'niz üzerinde Perfinsıghts Linux 'u çalıştırın
+## <a name="run-the-perfinsights-linux-on-your-vm"></a>VM'nizde PerfInsights Linux'u çalıştırın
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Aracı çalıştırmadan önce neleri bilmem gerekir
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Aracı çalıştırmadan önce bilmem gerekenler
 
 #### <a name="tool-requirements"></a>Araç gereksinimleri
 
-- Bu aracın, performans sorunu olan VM 'de çalıştırılması gerekir.
-- Python 2,7, VM 'de yüklü olmalıdır
+- Bu araç, performans sorunu olan VM üzerinde çalıştırılmalıdır.
+- Python 2.7 VM yüklü olmalıdır
 
-- Aşağıdaki dağıtımlar Şu anda destekleniyor:
+- Aşağıdaki dağıtımlar şu anda desteklenir:
 
     | Dağıtım               | Sürüm                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux sunucusu        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Oracle Linux Sunucusu        | 6.10`*`[ ], 7.3, 7.6, 7.5 (Oracle-Database-Ee 13.8 pazar görüntüsü)|
+    | CentOS                     | 6.5`*`[ ], 7.6                                    |
+    | RHEL                       | 7.2, 7.5, 8.0 [`*`]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
-    | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8, 9, 10 [ ]`*`                                    |
+    | SLES                       | 12 SP4`*`[ ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Lütfen [bilinen sorunlar](#known-issues) bölümüne bakın
+>[`*`] Lütfen [Bilinen sorunlar](#known-issues) bölümüne bakın
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-- RHEL 8 için Python varsayılan olarak yüklü değildir. Perfinsıghts Linux 'u çalıştırmak için, önce Python 2,7 ' i yüklemeniz gerekir
+- RHEL 8 varsayılan olarak Python yüklü değildir. PerfInsights Linux'u çalıştırmak için önce Python 2.7'yi yüklemeniz gerekir
 
-- Konuk Aracısı bilgileri toplama, CentOS 6. x üzerinde başarısız olabilir
+- Guest Agent bilgi toplama CentOS 6.x üzerinde başarısız olabilir
 
-- PCI cihaz bilgileri, DEMIN tabanlı dağıtımlarda toplanmaz
+- PCI cihazları bilgileri Debian tabanlı dağıtımlarda toplanmaz
 
-- LVM bilgileri bazı dağıtımlarla kısmen toplanır
+- LVM bilgileri kısmen bazı dağıtımlarda toplanır
 
-### <a name="how-do-i-run-perfinsights"></a>Nasıl yaparım? çalışan perfinsı
+### <a name="how-do-i-run-perfinsights"></a>PerfInsights'ı nasıl çalıştırıyorum?
 
-Azure portal 'den Azure Performans Tanılama 'Yı yükleyerek bir sanal makinede Perfinsıghts 'i çalıştırabilirsiniz. Ayrıca, tek başına bir araç olarak da çalıştırabilirsiniz.
+Azure portalından Azure Performans Tanılama'yı yükleyerek PerfInsights'ı sanal bir makinede çalıştırabilirsiniz. Ayrıca bağımsız bir araç olarak çalıştırabilirsiniz.
 
 >[!Note]
->Perfinsıghts yalnızca verileri toplayıp analiz eder. Sistemde herhangi bir değişiklik yapmaz.
+>PerfInsights verileri toplar ve analiz eder. Sistemde herhangi bir değişiklik yapmaz.
 
-#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>Azure portal ile Perfinsıghts 'i yükleyip çalıştırın
+#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>Azure portalından PerfInsights'ı yükleyin ve çalıştırın
 
-Bu seçenek hakkında daha fazla bilgi için bkz. [Azure Performans Tanılama](performance-diagnostics.md).  
+Bu seçenek hakkında daha fazla bilgi için [Azure Performans Tanılama'ya](performance-diagnostics.md)bakın.  
 
-#### <a name="run-perfinsights-in-standalone-mode"></a>Tek başına modda Perfinsıghts çalıştırma
+#### <a name="run-perfinsights-in-standalone-mode"></a>PerfInsights'ı bağımsız modda çalıştırın
 
-Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
+PerfInsights aracını çalıştırmak için aşağıdaki adımları izleyin:
 
-1. [Perfinsıghts. tar. gz](https://aka.ms/perfinsightslinuxdownload) dosyasını sanal makinenizde bir klasöre indirin ve terminalden aşağıdaki komutları kullanarak içeriği ayıklayın.
+1. [PerfInsights.tar.gz'yi](https://aka.ms/perfinsightslinuxdownload) sanal makinenizdeki bir klasöre indirin ve aşağıdaki komutları kullanarak terminalden içindekileri ayıklayın.
 
    ```bash
    wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
@@ -173,85 +173,85 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. `perfinsights.py` dosyasını içeren klasöre gidin ve ardından kullanılabilir CommandLine parametrelerini görüntülemek için `perfinsights.py` çalıştırın.
+2. Dosya içeren `perfinsights.py` klasöre gidin ve `perfinsights.py` ardından kullanılabilir komut satırı parametrelerini görüntülemek için çalıştırın.
 
     ```bash
     cd <the path of PerfInsights folder>
     sudo python perfinsights.py
     ```
 
-    ![Perfinsıghts Linux CommandLine çıkışının ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
+    ![PerfInsights Linux komut satırı çıkışının ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
 
-    Perfinsıghts senaryolarını çalıştırmaya yönelik temel sözdizimi şöyledir:
+    PerfInsights senaryolarını çalıştırmak için temel sözdizimi:
 
     ```bash
     sudo python perfinsights.py -r <ScenarioName> -d [duration]<H | M | S> [AdditionalOptions]
     ```
 
-    Hızlı performans analizi senaryosunu 1 dakika boyunca çalıştırmak ve/t MP/output klasörü altında sonuçları oluşturmak için aşağıdaki örneği kullanabilirsiniz:
+    Hızlı performans çözümleme senaryosunu 1 dakika çalıştırmak ve /tmp/output klasörü altında sonuçları oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
     ```bash
     sudo python perfinsights.py -r quick -d 1M -a -o /tmp/output
     ```
 
-    5 dakika boyunca performans analizi senaryosunu çalıştırmak ve sonuç tar Ball 'ı depolama hesabına yüklemek için aşağıdaki örneği kullanabilirsiniz:
+    Aşağıdaki örneği kullanarak 5 dakika boyunca performans analizi senaryosunu çalıştırabilir ve sonuç katran topını depolama hesabına yükleyebilirsiniz:
 
     ```bash
     sudo python perfinsights.py -r vmslow -d 300S -a -t <StorageAccountName> -k <StorageAccountKey> -i <full resource Uri of the current VM>
     ```
 
     >[!Note]
-    >Bir senaryoyu çalıştırmadan önce, Perfinsıghts kullanıcıdan tanılama bilgilerini paylaşmayı ve EULA 'Yı kabul etmesini kabul etmesini ister. Bu istemleri atlamak için **-a veya--Accept-Disclaimer-ve-Share-Diagnostic** seçeneğini kullanın.
+    >Bir senaryoyu çalıştırmadan önce, PerfInsights kullanıcıdan tanılama bilgilerini paylaşmayı ve EULA'yı kabul etmeyi kabul etmesini ister. Bu istemleri atlamak için **-a veya -accept-claimclaimer-and-share-diagnostics** seçeneğini kullanın.
     >
-    >Microsoft ile etkin bir destek biletine sahipseniz ve üzerinde çalıştığınız destek mühendisinin isteği başına Perfinsıghts çalıştırıyorsanız, **-s veya--support-Request** seçeneğini kullanarak destek bileti numarasını sağladığınızdan emin olun.
+    >Microsoft ile etkin bir destek biletiniz varsa ve birlikte çalıştığınız destek mühendisinin isteği ne olursa olsun PerfInsights çalıştırıyorsanız, destek bilet numarasını **-s veya -destek isteği** seçeneğini kullanarak verdiğinizden emin olun.
 
-Çalıştırma tamamlandığında, hiçbir çıkış klasörü belirtilmediği sürece yeni bir tar dosyası Perfinsıghts ile aynı klasörde görünür. Dosya adı **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu dosya içinde açabilirsiniz.
+Çalıştırma tamamlandığında, çıkış klasörü belirtilmediği sürece PerfInsights ile aynı klasörde yeni bir katran dosyası görünür. Dosyanın adı **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz.** Bu dosyayı çözümleme için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için dosya içindeki raporu açabilirsiniz.
 
-## <a name="review-the-diagnostics-report"></a>Tanılama raporunu gözden geçirin
+## <a name="review-the-diagnostics-report"></a>Tanılama raporunu gözden geçirme
 
-**Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyası Içinde, Perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için, **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını genişletin ve ardından **Perfinsıghts Report. html** dosyasını açın.
+**PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz** dosyasında, PerfInsights'ın bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **\_PerformanceDiagnostics yyyy-MM-dd\_hh-mm-ss-fff.tar.gz** dosyasını genişletin ve ardından **PerfInsights Report.html** dosyasını açın.
 
 ### <a name="overview-tab"></a>Genel Bakış sekmesi
 
-**Genel bakış** sekmesi temel çalıştırma ayrıntılarını ve sanal makine bilgilerini sağlar. **Bulmalar** sekmesi, Perfinsıghts raporunun tüm farklı bölümlerinden önerilerin özetini görüntüler.
+**Genel Bakış** sekmesi temel çalışma ayrıntılarını ve sanal makine bilgilerini sağlar. **Bulgular** sekmesi, PerfInsights raporunun tüm farklı bölümlerinden gelen önerilerin bir özetini görüntüler.
 
-![Perfinsıghts raporunun ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Perfinsıghts raporunun ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![PerfInsights Raporu Ekran Görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![PerfInsights Raporu Ekran Görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
-> Yüksek olarak sınıflandırılan bulgular, performans sorunlarına neden olabilecek bilinen sorunlardır. Orta olarak sınıflandırılan bulgular, performans sorunlarına neden olmayan en iyi olmayan yapılandırmayı temsil eder. Düşük olarak sınıflandırılan bulgular yalnızca bilgilendirici deyimler.
+> Yüksek olarak sınıflandırılan bulgular, performans sorunlarına neden olabilecek bilinen sorunlardır. Orta olarak sınıflandırılan bulgular, performans sorunlarına neden olmayan en iyi olmayan yapılandırmaları temsil eder. Düşük olarak kategorize edilen bulgular yalnızca bilgilendirici ifadelerdir.
 
-Tüm yüksek ve orta düzeyde bulguları ve bağlantıları gözden geçirin. Performansı en iyi duruma getirilmiş yapılandırmalara yönelik en iyi uygulamalar hakkında bilgi edinin.
+Tüm yüksek ve orta bulgular için önerileri ve bağlantıları gözden geçirin. Performansı nasıl etkileyebilecekleri ve performans için en iyi yapılandırmalar hakkında bilgi edinin.
 
 ### <a name="cpu-tab"></a>CPU sekmesi
 
-**CPU** sekmesi, SISTEM genelinde CPU tüketimi hakkında, Perfinsıghts çalıştırması sırasında bilgi sağlar. Yüksek CPU kullanım süreleri ve en uzun çalışan CPU tüketicileri hakkında bilgi, CPU ile ilgili yüksek sorunların giderilmesi için yararlı olacaktır.
+**CPU** sekmesi, PerfInsights çalışması sırasında sistem genelinde CPU tüketimi hakkında bilgi sağlar. Yüksek CPU kullanım süreleri ve en uzun süre çalışan CPU tüketicileri hakkında bilgi, CPU ile ilgili yüksek sorunları gidermek için yararlı olacaktır.
 
-![Perfinsıghts rapor CPU sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
+![PerfInsights Rapor CPU sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
 
 ### <a name="storage-tab"></a>Depolama sekmesi
 
-**Bulguları** bölümü, depolama ile ilgili çeşitli bulguları ve önerileri görüntüler.
+**Bulgular** bölümünde depolamayla ilgili çeşitli bulgular ve öneriler görüntülenir.
 
-**Blok cihazlar** ve **bölümler**, **LVM**ve **mdaddm** sekmeleri gibi ilgili diğer bölümler, blok cihazların nasıl yapılandırıldığını ve birbirleriyle ilgili olduğunu açıklamaktadır.
+**Blok Aygıtları** ve **Bölümler,** **LVM**ve **MDADM** sekmeleri gibi diğer ilgili bölümler, blok aygıtlarının nasıl yapılandırıldığı ve birbiriyle nasıl ilişkili olduğunu açıklar.
 
 ![Depolama sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
-![MDADDM sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
+![MDADM sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
 
 ### <a name="linux-tab"></a>Linux sekmesi
 
-**Linux** SEKMESI, sanal makinenizde çalışan donanım ve işletim sistemi hakkında bilgiler içerir. Ayrıntılar, çalışan işlemlerin ve konuk Aracı, PCI, CPU, sürücüler ve LIS sürücüleriyle ilgili bilgilerin bir listesini içerir.
+**Linux** sekmesi, VM'nizde çalışan donanım ve işletim sistemi hakkında bilgiler içerir. Ayrıntılar, çalışan işlemlerin listesini ve Konuk Aracı, PCI, CPU, Sürücüler ve LIS sürücüleri hakkındaki bilgileri içerir.
 
 ![Linux sekmesinin ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla gözden geçirmek için Microsoft Desteği tanılama günlüklerini ve raporları karşıya yükleyebilirsiniz. Microsoft Desteği personeli ile çalışırken, sorun giderme sürecine yardımcı olmak için Perfinsıghts tarafından oluşturulan çıktıyı iletmenize istekte bulunabilir.
+Daha fazla inceleme için tanılama günlüklerini ve raporlarını Microsoft Destek'e yükleyebilirsiniz. Microsoft Destek personeliyle çalıştığınızda, sorun giderme işlemine yardımcı olmak için PerfInsights tarafından oluşturulan çıktıyı iletmenizi isteyebilirler.
 
-Aşağıdaki ekran görüntüsünde, neler alabileceğinize benzer bir ileti gösterilmektedir:
+Aşağıdaki ekran görüntüsü, alabileceklerinize benzer bir ileti gösterir:
 
-![Microsoft Desteği örnek ileti ekran görüntüsü](media/how-to-use-perfinsights-linux/support-email.png)
+![Microsoft Desteği'nden örnek iletinin ekran görüntüsü](media/how-to-use-perfinsights-linux/support-email.png)
 
-Dosya aktarımı çalışma alanına erişmek için iletideki yönergeleri izleyin. Ek güvenlik için, ilk kullanımda parolanızı değiştirmeniz gerekir.
+Dosya aktarım çalışma alanına erişmek için iletideki yönergeleri izleyin. Ek güvenlik için parolanızı ilk kullanımda değiştirmeniz gerekir.
 
-Oturum açtıktan sonra, Perfinsıghts tarafından toplanan **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını karşıya yüklemek için bir iletişim kutusu bulacaksınız.
+Oturum açtıktan sonra, PerfInsights tarafından toplanan **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz** dosyasını yüklemek için bir iletişim kutusu bulacaksınız.

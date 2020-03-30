@@ -1,39 +1,39 @@
 ---
-title: Kurtarma Hizmetleri Kasası yapılandırmasını REST API güncelleştirme
-description: Bu makalede, REST API kullanarak kasasının yapılandırmasını güncelleştirmeyi öğrenin.
+title: REST API ile Kurtarma Hizmetleri kasa yapılandırması güncelleştirme
+description: Bu makalede, REST API'yi kullanarak kasa yapılandırmasını nasıl güncelleştireceğimiz öğrenin.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252369"
 ---
-# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
+# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API'yi kullanarak Azure Kurtarma Hizmetleri Kasası yapılandırmalarını güncelleştirme
 
-Bu makalede, Azure kurtarma hizmetleri kasasında REST API kullanarak yedeklemeyle ilgili yapılandırmaların nasıl güncelleştirileceğini açıklanmaktadır.
+Bu makalede, REST API'yi kullanarak Azure Kurtarma Hizmetleri kasasında yedekleme yle ilgili yapılandırmaların nasıl güncelleştirilenanlatılmaktadır.
 
-## <a name="soft-delete-state"></a>Geçici silme durumu
+## <a name="soft-delete-state"></a>Yumuşak silme durumu
 
-Korunan bir öğenin yedeklerini silmek, izlenmesi gereken önemli bir işlemdir. Yanlışlıkla silinmelere karşı korunmak için, Azure kurtarma hizmetleri kasasının geçici silme yeteneği vardır. Bu özellik, gerekirse silinen yedeklemeleri, silme sonrasında bir süre içinde geri yüklemesine olanak tanır.
+Korumalı bir öğenin yedeklerinin silmesi izlenmesi gereken önemli bir işlemdir. Azure Kurtarma Hizmetleri kasası, yanlışlıkla silinmelere karşı korunmak için yumuşak silme özelliğine sahiptir. Bu özellik, müşterilerin silinmiş yedeklemeleri gerekirse silinmeden sonraki bir süre içinde geri yüklemesine olanak tanır.
 
-Ancak bu özelliğin gerekmediği senaryolar vardır. Azure kurtarma hizmetleri Kasası, içinde yedekleme öğeleri varsa, hatta geçici olarak silinenler silinemez. Bu, kasanın hemen silinmesi gerektiğinde bir sorun oluşturabilir. Örneğin: dağıtım işlemleri genellikle aynı iş akışındaki oluşturulan kaynakları temizler. Dağıtım bir kasa oluşturabilir, bir öğe için yedeklemeleri yapılandırabilir, test geri yükleme yapabilir ve sonra yedekleme öğelerini ve kasasını silmeye devam edebilir. Kasa silme işlemi başarısız olursa, tüm dağıtım başarısız olabilir. Geçici silme işleminin devre dışı bırakılması, hemen silmeyi güvence altına almanın tek yoludur.
+Ancak bu yeteneğin gerekli olmadığı senaryolar vardır. Azure Kurtarma Hizmetleri kasası, içinde yumuşak silinmiş öğeler bile olsa yedek öğeler varsa silinemez. Kasanın hemen silinmesi gerekiyorsa, bu sorun yaratabilir. Örneğin: dağıtım işlemleri genellikle aynı iş akışında oluşturulan kaynakları temizler. Dağıtım bir kasa oluşturabilir, bir öğeiçin yedeklemeleri yapılandırabilir, test geri yüklemesi yapabilir ve sonra yedekleme öğelerini ve kasayı silmeye devam edebilir. Kasa silme işlemi başarısız olursa, tüm dağıtım başarısız olabilir. Yumuşak silme işlemini devre dışı bırakmak, anında silinmesini garanti etmenin tek yoludur.
 
-Bu nedenle, senaryoya bağlı olarak, müşterinin belirli bir kasa için geçici silme devre dışı bırakılıp başlatılmayacağını dikkatle seçmesi gerekir. Daha fazla bilgi için bkz. [geçici silme makalesi](backup-azure-security-feature-cloud.md#soft-delete).
+Bu nedenle, müşterinin senaryoya bağlı olarak belirli bir kasa için yumuşak silmeyi devre dışı edip etmeyeceğini dikkatle seçmesi gerekir. Daha fazla bilgi için [yumuşak silme makalesine](backup-azure-security-feature-cloud.md#soft-delete)bakın.
 
-### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu getirme
+### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API'yi kullanarak yumuşak silme durumunu getir
 
-Varsayılan olarak, yeni oluşturulan tüm kurtarma hizmetleri kasasında geçici silme durumu etkinleştirilir. Bir kasadaki geçici silme durumunu getirmek/güncelleştirmek için, yedekleme kasasının config ile ilgili [REST API belgesini](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) kullanın
+Varsayılan olarak, yeni oluşturulan Kurtarma Hizmetleri kasası için yumuşak silme durumu etkinleştirilir. Bir kasa için yumuşak silme durumunu almak/güncellemek için, yedek kasanın config ile ilgili [REST API belgesini](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) kullanın
 
-Bir kasadaki geçici silme işleminin geçerli durumunu getirmek için aşağıdaki *alma* işlemini kullanın
+Bir kasa için geçerli yumuşak silme durumunu almak için aşağıdaki *GET* işlemini kullanın
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-GET URI 'sinde `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametreleri vardır. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesi gerekmez.
+GET URI'nin `{vaultName}` `{vaultresourceGroupName}` parametreleri vardır. `{subscriptionId}` Bu örnekte, `{vaultName}` "testVault" `{vaultresourceGroupName}` ve "testVaultRG". URI'de gerekli tüm parametreler verildiğinden, ayrı bir istek organına gerek yoktur.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -41,7 +41,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="responses"></a>Yanıtlar
 
-' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
+'GET' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
 |Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
@@ -49,7 +49,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ##### <a name="example-response"></a>Örnek yanıt
 
-' GET ' isteği gönderildikten sonra, 200 (başarılı) yanıtı döndürülür.
+'GET' isteği gönderildikten sonra, 200 (başarılı) yanıt döndürülür.
 
 ```json
 {
@@ -63,15 +63,15 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-### <a name="update-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu güncelleştirme
+### <a name="update-soft-delete-state-using-rest-api"></a>REST API'yi kullanarak yumuşak silme durumunu güncelleştirme
 
-REST API kullanarak kurtarma hizmetleri kasasının geçici silme durumunu güncelleştirmek için aşağıdaki *Düzeltme Eki* işlemini kullanın
+REST API kullanarak kurtarma hizmetleri kasasının yumuşak silme durumunu güncelleştirmek için aşağıdaki *PATCH işlemini* kullanın
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-PATCH URI 'sinin `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametreleri vardır. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'yi yukarıdaki değerlerle değiştirirseniz URI şöyle görünecektir.
+PATCH URI'nin `{vaultName}` `{vaultresourceGroupName}` parametreleri vardır. `{subscriptionId}` Bu örnekte, `{vaultName}` "testVault" `{vaultresourceGroupName}` ve "testVaultRG". Eğer URI'yi yukarıdaki değerlerle değiştirirsek, URI şu şekilde görünecektir.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -79,20 +79,20 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 #### <a name="create-the-request-body"></a>İstek gövdesini oluşturma
 
-Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
+Ortak tanımlardan sonra bir istek gövdesi oluşturmak için kullanılır
 
-Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
+Daha fazla bilgi için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
 |Adı  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
-|Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
+|Etag     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
+|properties     |         | [Kasa Özellikleri](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
 |etiketler     |         | Nesne        |     Kaynak etiketleri    |
 
 #### <a name="example-request-body"></a>Örnek istek gövdesi
 
-Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirmek için kullanılır.
+Aşağıdaki örnek, yumuşak silme durumunu 'devre dışı' olarak güncelleştirmek için kullanılır.
 
 ```json
 {
@@ -105,7 +105,7 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 #### <a name="responses"></a>Yanıtlar
 
-' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
+'PATCH' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
 |Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
@@ -113,7 +113,7 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ##### <a name="example-response"></a>Örnek yanıt
 
-' PATCH ' isteği gönderildikten sonra, bir 200 (başarılı) yanıtı döndürülür.
+'PATCH' isteği gönderildikten sonra, 200 (başarılı) yanıt döndürülür.
 
 ```json
 {
@@ -129,9 +129,9 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bu kasada bir Azure VM yedeklemesi için bir yedekleme Ilkesi oluşturun](backup-azure-arm-userestapi-createorupdatepolicy.md).
+[Bu kasada bir Azure VM'yi yedeklemek için bir yedekleme ilkesi oluşturun.](backup-azure-arm-userestapi-createorupdatepolicy.md)
 
-Azure REST API 'Leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Azure REST API'leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-- [Azure kurtarma hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
+- [Azure Kurtarma Hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
 - [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)
