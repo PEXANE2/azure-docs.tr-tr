@@ -1,6 +1,6 @@
 ---
-title: Xamarin 'ten nesne (blob) depolaması kullanma | Microsoft Docs
-description: Xamarin için Azure Storage istemci kitaplığı, geliştiricilerin Yerel Kullanıcı arabirimleriyle iOS, Android ve Windows Mağazası uygulamaları oluşturmalarına olanak sağlar. Bu öğreticide, Azure Blob depolama kullanan bir uygulama oluşturmak için Xamarin 'in nasıl kullanılacağı gösterilmektedir.
+title: Xamarin nesne (Blob) depolama nasıl kullanılır | Microsoft Dokümanlar
+description: Xamarin için Azure Depolama istemci kitaplığı, geliştiricilerin kendi yerel kullanıcı arabirimleriyle iOS, Android ve Windows Mağazası uygulamaları oluşturmasına olanak tanır. Bu öğretici, Azure Blob depolama alanını kullanan bir uygulama oluşturmak için Xamarin'in nasıl kullanılacağını gösterir.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 05/11/2017
@@ -8,36 +8,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726332"
 ---
-# <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin 'ten blob depolamayı kullanma
+# <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin blob Depolama nasıl kullanılır
 
-Xamarin, geliştiricilerin Yerel Kullanıcı arabirimleriyle C# IOS, Android ve Windows Mağazası uygulamaları oluşturmak için paylaşılan bir kod temeli kullanmasını sağlar. Bu öğretici, Azure Blob depolamayı bir Xamarin uygulamasıyla nasıl kullanacağınızı gösterir. Azure depolama hakkında daha fazla bilgi edinmek için, koda girmeden önce bkz. [Microsoft Azure depolama giriş](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Xamarin, geliştiricilerin yerel kullanıcı arayüzleriyle iOS, Android ve Windows Mağazası uygulamaları oluşturmak için paylaşılan bir C# kod tabanını kullanmalarını sağlar. Bu öğretici, Xamarin uygulamasıyla Azure Blob depolama alanını nasıl kullanacağınızı gösterir. Koda dalmadan önce Azure Depolama hakkında daha fazla bilgi edinmek istiyorsanız, [Microsoft Azure Depolamasına Giriş 'e](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın.
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
-## <a name="create-a-new-xamarin-application"></a>Yeni bir Xamarin uygulaması oluşturma
+## <a name="create-a-new-xamarin-application"></a>Yeni bir Xamarin Uygulaması Oluşturun
 
-Bu öğreticide, Android, iOS ve Windows 'u hedefleyen bir uygulama oluşturacağız. Bu uygulama yalnızca bir kapsayıcı oluşturacak ve bu kapsayıcıya bir blob yükleyecek. Windows üzerinde Visual Studio 'yu kullanacağız, ancak macOS üzerinde Xamarin Studio kullanarak bir uygulama oluştururken aynı dersleri uygulanabilir.
+Bu öğretici için, Android, iOS ve Windows'u hedefleyen bir uygulama oluşturacağız. Bu uygulama sadece bir konteyner oluşturmak ve bu kapsayıcı içine bir blob yükleyin. Windows'da Visual Studio'yu kullanacağız, ancak macOS'ta Xamarin Studio'yu kullanarak bir uygulama oluştururken de aynı öğrenmeler uygulanabilir.
 
 Uygulamanızı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz yapmadıysanız, [Visual Studio Için Xamarin](https://www.xamarin.com/download)'i indirip yükleyin.
-2. Visual Studio 'yu açın ve boş bir uygulama (yerel taşınabilir) oluşturun: **Dosya > yeni > projesi > platformlar arası > boş uygulama (yerel taşınabilir)** .
-3. Çözüm Gezgini bölmesinde çözümünüze sağ tıklayın ve **çözüm Için NuGet Paketlerini Yönet**' i seçin. **Windowsazure. Storage** araması yapın ve en son kararlı sürümü çözümünüzdeki tüm projelere yükler.
-4. Projenizi derleyin ve çalıştırın.
+1. Zaten değilseniz, indirin ve [Visual Studio için Xamarin](https://www.xamarin.com/download)yükleyin.
+2. Visual Studio'u açın ve Boş Bir Uygulama (Native Portable) oluşturun: **Dosya > Yeni > Projesi > Çapraz Platform > Boş Uygulama (Native Portable)**.
+3. Çözüm Gezgini bölmesinde çözümünüzü sağ tıklatın ve **Çözüm için Paketleri Yönet'i**seçin. **WindowsAzure.Storage'ı** arayın ve çözümdeki tüm projelere en son kararlı sürümü yükleyin.
+4. Projenizi oluşturun ve çalıştırın.
 
-Artık bir sayacı artıran bir düğmeye tıklaetmenize olanak tanıyan bir uygulamanız olmalıdır.
+Artık sayaç ları oluşturan bir düğmeyi tıklatmanızı sağlayan bir uygulamanız olmalıdır.
 
-## <a name="create-container-and-upload-blob"></a>Kapsayıcı oluştur ve blobu yükle
+## <a name="create-container-and-upload-blob"></a>Kapsayıcı oluşturma ve blob yükleme
 
-Ardından, `(Portable)` projeniz altında, ' ye `MyClass.cs`bir kod ekleyeceksiniz. Bu kod bir kapsayıcı oluşturur ve bu kapsayıcıya bir BLOB yükler. `MyClass.cs`aşağıdaki gibi görünmelidir:
+Ardından, projeniz altında, `(Portable)` ''ye `MyClass.cs`bazı kodlar eklersiniz. Bu kod bir kapsayıcı oluşturur ve bu kapsayıcıya bir leke yükler. `MyClass.cs`aşağıdaki gibi görünmelidir:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -76,11 +76,11 @@ namespace XamarinApp
 }
 ```
 
-"Your_account_name_here" ve "your_account_key_here" değerini gerçek hesap adı ve hesap anahtarınızla değiştirdiğinizden emin olun.
+"your_account_name_here" ve "your_account_key_here" ile gerçek hesap adınız ve hesap anahtarınızı değiştirdiğinizden emin olun.
 
-İOS, Android ve Windows Phone projeleriniz, taşınabilir projenize başvuru yapmış olabilir. tüm paylaşılan kodunuzu tek bir yerde yazabilir ve tüm projelerinizde kullanabilirsiniz. Bundan sonra yararlanmaya başlamak için her bir projeye aşağıdaki kod satırını ekleyebilirsiniz:`MyClass.performBlobOperation()`
+iOS, Android ve Windows Phone projelerinizin tümünün Taşınabilir projenize referansları vardır , yani paylaşılan kodlarınızın tümlerini tek bir yerde yazabilir ve tüm projelerinizde kullanabilirsiniz. Artık her projeye aşağıdaki kod satırını ekleyerek yararlanmaya başlayabilirsiniz:`MyClass.performBlobOperation()`
 
-### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp. DROID > MainActivity.cs
+### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
 ```csharp
 using Android.App;
@@ -116,7 +116,7 @@ namespace XamarinApp.Droid
 }
 ```
 
-### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp. iOS > ViewController.cs
+### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp.iOS > ViewController.cs
 
 ```csharp
 using System;
@@ -163,7 +163,7 @@ namespace XamarinApp.iOS
 }
 ```
 
-### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp. WinPhone > MainPage. xaml > MainPage.xaml.cs
+### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp.WinPhone > MainPage.xaml > MainPage.xaml.cs
 
 ```csharp
 using Windows.UI.Xaml.Controls;
@@ -231,18 +231,18 @@ namespace XamarinApp.WinPhone
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Artık bu uygulamayı bir Android veya Windows Phone öykünücüsünde çalıştırabilirsiniz. Bu uygulamayı bir iOS öykünücüsünde de çalıştırabilirsiniz, ancak bunun için bir Mac gerekir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için lütfen [Visual Studio 'yu bir Mac 'e bağlama](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) belgelerini okuyun
+Artık bu uygulamayı bir Android veya Windows Phone emülatöründe çalıştırabilirsiniz. Bu uygulamayı bir iOS emülatörde de çalıştırabilirsiniz, ancak bunun için Mac gerekir. Bunun nasıl yapılacılailgili çağrılari için, Visual Studio' yu Mac' e [bağlamak](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) için gerekli belgeleri
 
-Uygulamanızı çalıştırdığınızda, kapsayıcıyı `mycontainer` depolama hesabınızda oluşturacaktır. Metin içeren blobu `myblob`içermelidir,. `Hello, world!` [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)kullanarak bunu doğrulayabilirsiniz.
+Uygulamanızı çalıştırdıktan sonra, Depolama `mycontainer` hesabınızda kapsayıcı oluşturur. İçinde metin olan blob `myblob` `Hello, world!`içermelidir. [Microsoft Azure Depolama Gezgini'ni](https://storageexplorer.com/)kullanarak bunu doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, özellikle blob depolamada bir senaryoya odaklanarak Azure Storage kullanan Xamarin 'te platformlar arası uygulama oluşturmayı öğrendiniz. Ancak, yalnızca blob depolamayla değil, tablo, dosya ve kuyruk depolama ile de çok daha fazlasını yapabilirsiniz. Daha fazla bilgi edinmek için lütfen aşağıdaki makalelere göz atın:
+Bu eğitimde, Xamarin'de Azure Depolama'yı kullanan ve özellikle Blob Depolama'daki tek bir senaryoya odaklanan bir çapraz platform uygulaması oluşturmayı öğrendiniz. Ancak, yalnızca Blob Depolama ile değil, Tablo, Dosya ve Sıra Depolama ile de çok daha fazlasını yapabilirsiniz. Daha fazla bilgi için lütfen aşağıdaki makalelere göz atın:
 
-* [.NET kullanarak Azure Blob Depolama ile çalışmaya başlama](storage-dotnet-how-to-use-blobs.md)
-* [Azure dosyaları 'na giriş](../files/storage-files-introduction.md)
+* [.NET kullanarak Azure Blob Storage’ı kullanmaya başlayın](storage-dotnet-how-to-use-blobs.md)
+* [Azure Dosyaları'na giriş](../files/storage-files-introduction.md)
 * [.NET ile Azure Dosyaları için geliştirme](../files/storage-dotnet-how-to-use-files.md)
-* [.NET kullanarak Azure Tablo Depolama ile çalışmaya başlama](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [.NET kullanarak Azure Kuyruk Depolama ile çalışmaya başlama](../queues/storage-dotnet-how-to-use-queues.md)
+* [.NET kullanarak Azure Table Storage’ı kullanmaya başlayın](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+* [.NET kullanarak Azure Kuyruk Depolamaya başlayın](../queues/storage-dotnet-how-to-use-queues.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici aracılığıyla Media Services tanılama günlüklerini izleme | Microsoft Docs
-description: Bu makalede, Azure Izleyici aracılığıyla tanılama günlüklerinin nasıl yönlendirileceği ve görüntüleneceği gösterilmektedir.
+title: Azure Monitor üzerinden Medya Hizmetleri tanı lama günlüklerini izleyin | Microsoft Dokümanlar
+description: Bu makalede, Azure Monitor üzerinden tanılama günlüklerinin nasıl yönlendirilip görüntülenenebildiğini gösterin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750888"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382928"
 ---
-# <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
+# <a name="monitor-media-services-diagnostic-logs"></a>Medya Hizmetleri tanı günlüklerini izleyin
 
-[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Bu özelliğin ayrıntılı açıklaması ve Azure Media Services ölçümleri ve tanılama günlüklerini nasıl kullanmak istediğinizi görmek için bkz. [izleme Media Services ölçümleri ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md).
+[Azure Monitor,](../../azure-monitor/overview.md) uygulamalarınızın nasıl performans gösterdiğini anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak tanır. Bu özelliğin ayrıntılı açıklaması ve Azure Medya Hizmetleri ölçümlerini ve tanılama günlüklerini neden kullanmak istediğinizi görmek için [Bkz.](media-services-metrics-diagnostic-logs.md)
 
-Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir. 
+Bu makalede, verileri depolama hesabına nasıl yönlendirip sonra da verileri nasıl görüntüleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
-- [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
+- [Monitör Medya Hizmetleri ölçümlerini ve tanılama günlüklerini gözden geçirin.](media-services-metrics-diagnostic-logs.md)
 
-## <a name="route-data-to-the-storage-account-using-the-portal"></a>Portalı kullanarak verileri depolama hesabına yönlendirme
+## <a name="route-data-to-the-storage-account-using-the-portal"></a>Portalı kullanarak verileri depolama hesabına yönlendirin
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. İçinde Media Services hesabınıza gidin ve **izleyici**altındaki **Tanılama ayarları** ' na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz. 
+1. Medya Hizmetleri hesabınıza gidin ve **Monitor**altında **Tanılama Ayarları'na** tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz.
 
     ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs01.png)
 
-1. **Tanılama ayarı Ekle**' ye tıklayın.
+1. **Tanı ayarını ekle'yi**tıklatın.
 
    Kaynak tanılama ayarı, belirli bir kaynaktan *hangi* izleme verilerinin yönlendirilmesi gerektiğine ve bu izleme verilerinin *nereye* gideceğine ilişkin bir tanımdır.
 
 1. Görüntülenen bölümde, ayarınıza bir **ad** verin ve **Bir depolama hesabında arşivle** kutusunu işaretleyin.
 
-    Günlükleri göndermek istediğiniz depolama hesabını seçin ve **Tamam**' a basın.
+    Günlükgöndermek istediğiniz depolama hesabını seçin ve **Tamam**tuşuna basın.
 1. **Günlük** ve **Ölçüm** altındaki tüm kutuları işaretleyin. Kaynak türüne bağlı olarak, bu seçeneklerden yalnızca birini kullanabilirsiniz. Bu onay kutuları, seçtiğiniz hedefe (bu örnekte bir depolama hesabına) ilgili kaynak türü için kullanılabilen günlük ve ölçüm verileri kategorilerinden hangilerinin gönderildiğini denetler.
 
    ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs02.png)
 1. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet**'e tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>CLı kullanarak verileri depolama hesabına yönlendirin
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Azure CLI'yi kullanarak verileri depolama hesabına yönlendirin
 
-Bir depolama hesabında tanılama günlüklerinin depolanmasını etkinleştirmek için aşağıdaki `az monitor diagnostic-settings` CLı komutunu çalıştırın: 
+Tanılama günlüklerinin bir Depolama Hesabında depolanmasını etkinleştirmek `az monitor diagnostic-settings` için aşağıdaki Azure CLI komutunu çalıştırAbilirsiniz:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -73,9 +73,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örneğin:
+Örnek:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \
@@ -91,12 +91,12 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 
 1. Portalda, sol gezinti çubuğundaki **Depolama Hesapları** bölümüne gidin.
 1. Önceki bölümde oluşturduğunuz depolama hesabını belirleyin ve tıklayın.
-1. **Bloblar**' a ve ardından **Öngörüler-logs-keydeliveryrequests**etiketli kapsayıcıda öğesine tıklayın. Bu, günlüklerinizin bulunduğu kapsayıcıdır. İzleme verileri, kaynak KIMLIĞI ve sonra tarih ve saate göre kapsayıcılara ayrılır.
+1. **Blobs**tıklayın, sonra konteyner etiketli **insights-logs-keydeliveryrequests**. Bu, içinde günlüklerin olduğu konteyner. İzleme verileri kaynak kimliğine, sonra tarih ve saate göre kapsayıcılara bölünerek ayrılır.
 1. Kaynak kimliği, tarih ve saat için kapsayıcılara tıklayarak PT1H.json dosyasına gidin. PT1H.json dosyasına ve **İndir**’e tıklayın.
 
  Artık depolama hesabında depolanmış JSON olayını görüntüleyebilirsiniz.
 
-### <a name="examples-of-pt1hjson"></a>PT1H. JSON örnekleri
+### <a name="examples-of-pt1hjson"></a>PT1H.json örnekleri
 
 #### <a name="clear-key-delivery-log"></a>Anahtar teslim günlüğünü temizle
 
@@ -136,7 +136,7 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 }
 ```
 
-#### <a name="widevine-encrypted-key-delivery-log"></a>Wdevine şifreli anahtar teslim günlüğü
+#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine şifreli anahtar teslim günlüğü
 
 ```json
 {
@@ -176,14 +176,14 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md)
-* [Azure Izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
-* [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitör Ölçümleri](../../azure-monitor/platform/data-platform.md)
+* [Azure Monitör Tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure kaynaklarınızdan günlük verileri toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ölçümleri izleme](media-services-metrics-howto.md)
+[İzleyici ölçümleri](media-services-metrics-howto.md)

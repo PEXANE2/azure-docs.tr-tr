@@ -1,88 +1,96 @@
 ---
-title: 'Hızlı başlangıç: şablonlarla yeni ilke ataması'
-description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir ilke ataması oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
-ms.date: 11/25/2019
+title: 'Quickstart: Şablonlarla yeni ilke ataması'
+description: Bu hızlı başlatmada, uyumlu olmayan kaynakları tanımlamak için bir ilke ataması oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
+ms.date: 03/16/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8b9b0024e5c15c78c6777b8657839791484d66b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: subject-armqs
+ms.openlocfilehash: 9f9998c407c39d11615a5997549a363a276b9e10
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980520"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471413"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak uyumlu olmayan kaynakları tanımlamak için bir ilke ataması oluşturma
 
 Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
-Bu hızlı başlangıç, yönetilen disk kullanmayan sanal makineleri belirlemek üzere ilke ataması oluşturma işleminde size yol gösterir.
+Bu hızlı başlangıç, yönetilen disk kullanmayan sanal makineleri belirlemek üzere ilke ataması oluşturma işleminde size yol gösterir. Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bir şekilde belirlemiş olacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_.
 
-Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bir şekilde belirlemiş olacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_.
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
-Bu hızlı başlangıçta, bir ilke ataması oluşturup _yönetilen diskleri kullanmayan VM 'Leri denetle_adlı yerleşik bir ilke tanımı atayabilirsiniz. Kullanılabilir yerleşik ilkelerin kısmi listesi için bkz. [Azure ilke örnekleri](./samples/index.md).
+Bu hızlı başlangıçta, bir ilke ataması oluşturur sunuz ve _yönetilen diskleri kullanmayan Denetim VM'leri_adlı yerleşik bir ilke tanımı atarsınız. Kullanılabilir yerleşik ilkelerin kısmi bir listesi için [Azure İlkesi örneklerine](./samples/index.md)bakın.
 
-İlke atamaları oluşturmak için çeşitli yöntemler vardır. Bu hızlı başlangıçta bir [hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)kullanırsınız.
-Şablonun bir kopyası aşağıda verilmiştir:
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)
+
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-36" highlight="26-34":::
+
+Şablonda tanımlanan kaynak:
+
+- [Microsoft.Authorization/policyAtamalar](/azure/templates/microsoft.authorization/policyassignments)
+
+### <a name="deploy-the-template"></a>Şablonu dağıtma
 
 > [!NOTE]
-> Azure Ilke hizmeti ücretsizdir. Daha fazla bilgi için bkz. [Azure Ilkesine genel bakış](./overview.md).
+> Azure İlkesi hizmeti ücretsizdir. Daha fazla bilgi için Azure [İlkesi'ne Genel Bakış](./overview.md)bölümüne bakın.
 
-1. Azure portal oturum açmak ve şablonu açmak için aşağıdaki görüntüyü seçin:
+1. Azure portalında oturum açmak ve şablonu açmak için aşağıdaki resmi seçin:
 
-   [![Ilke şablonunu Azure 'a dağıtma](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![İlke şablonu Azure'a dağıtma](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Ad | Değer |
+   | Adı | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
-   | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı, _MMDD\>RG 'Deki tarih\<_ . |
+   | Kaynak grubu | **Yeni Oluştur'u**seçin, bir ad belirtin ve ardından **Tamam'ı**seçin. Ekran görüntüsünde, kaynak grubu adı _MMDD\<\>rg mypolicyquickstart Date_olduğunu. |
    | Konum | Bir bölge seçin. Örneğin, **Orta ABD**. |
-   | İlke atama adı | Bir ilke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, **yönetilen disk kullanmayan VM 'Leri denetleyin**. |
-   | RG adı | İlkeyi atamak istediğiniz kaynak grubu adını belirtin. Bu hızlı başlangıçta **[resourceGroup (). Name]** varsayılan değerini kullanın. **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** , kaynak grubunu alan bir şablon işlevidir. |
-   | İlke tanımı KIMLIĞI | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-B460-a2d36003525a**belirtin. |
-   | Yukarıda belirtilen hüküm ve koşulları kabul ediyorum | Seçin |
+   | İlke Atama Adı | İlke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, **yönetilen diskleri kullanmayan Denetim VM'leri.** |
+   | Rg Adı | İlkeyi atamak istediğiniz kaynak grubu adı belirtin. Bu hızlı başlatmada varsayılan değeri **[resourceGroup().name]** kullanın. **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** kaynak grubunu alan bir şablon işlevidir. |
+   | İlke Tanımı Kimliği | Belirtin **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
+   | Yukarıda belirtilen hüküm ve koşulları kabul ediyorum | (Seçiniz) |
 
 1. **Satın al**'ı seçin.
 
 Bazı ek kaynaklar:
 
-- Daha fazla örnek şablonu bulmak için bkz. [Azure hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
-- Şablon başvurusunu görmek için [Azure şablon başvurusu](/azure/templates/microsoft.authorization/allversions)' na gidin.
-- Kaynak Yöneticisi şablonlarının nasıl geliştirileceği hakkında bilgi edinmek için bkz. [Azure Resource Manager belgeleri](../../azure-resource-manager/management/overview.md).
-- Abonelik düzeyinde dağıtım hakkında bilgi edinmek için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../../azure-resource-manager/templates/deploy-to-subscription.md).
+- Daha fazla örnek bulmak için [Azure Quickstart şablonuna](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)bakın.
+- Şablon başvuruyu görmek için [Azure şablonu başvurusuna](/azure/templates/microsoft.authorization/allversions)gidin.
+- Kaynak Yöneticisi şablonlarını nasıl geliştireceklerini öğrenmek için [Azure Kaynak Yöneticisi belgelerine](../../azure-resource-manager/management/overview.md)bakın.
+- Abonelik düzeyinde dağıtım öğrenmek için [bkz.](../../azure-resource-manager/templates/deploy-to-subscription.md)
 
-## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
+## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Seçin **Uyumluluk** sayfanın sol tarafındaki. Ardından bulun **denetim yönetilen diskleri kullanmayan Vm'leri** oluşturduğunuz ilke ataması.
+Sayfanın sol tarafında **Uyumluluk'u** seçin. Ardından, oluşturduğunuz yönetilen diskler ilkesi atamasını **kullanmayan Denetim VM'lerini** bulun.
 
 ![İlke uyumluluğuna genel bakış sayfası](./media/assign-policy-template/policy-compliance.png)
 
-Bu yeni atamayla uyumlu olmayan mevcut kaynaklar varsa, altında görünür **uyumlu olmayan kaynaklar**.
+Bu yeni atamayla uyumlu olmayan varolan kaynaklar varsa, bunlar **uyumlu olmayan kaynaklar**altında görünür.
 
-Daha fazla bilgi için bkz. [Uyumluluk nasıl çalıştığını öğrenin](./how-to/get-compliance-data.md#how-compliance-works).
+Daha fazla bilgi için [uyumluluk nasıl çalışır.](./how-to/get-compliance-data.md#how-compliance-works)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Oluşturduğunuz atamayı kaldırmak için aşağıdaki adımları izleyin:
+Oluşturulan atamayı kaldırmak için aşağıdaki adımları izleyin:
 
 1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz **Yönetilen disk kullanmayan VM'leri denetle** ilke atamasını bulun.
 
-1. Yönetilen diskler ilkesi atamasını **kullanmayan VM 'Leri denetle** ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
+1. Yönetilen diskler ilkesi atamasını **kullanmayan Denetim VM'lerini** sağ tıklatın ve **atamayı sil'i**seçin.
 
-   ![Uyumluluk genel bakış sayfasından bir atamayı silme](./media/assign-policy-template/delete-assignment.png)
+   ![Bir atamayı uyumluluk genel bakış sayfasından silme](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir kapsama yerleşik bir ilke tanımı atamış ve uyumluluk raporunu değerlendirdiniz. İlke tanımı, kapsamdaki tüm kaynakların uyumlu olan ve olmayanları tanımlayan doğrular.
+Bu hızlı başlangıçta, bir kapsama yerleşik bir ilke tanımı atadınız ve uyumluluk raporunu değerlendirdiniz. İlke tanımı, kapsamdaki tüm kaynakların uyumlu olduğunu doğrular ve hangilerinin uyumlu olmadığını tanımlar.
 
-Yeni kaynakların uyumlu olduğunu doğrulamak için ilkeleri atama hakkında daha fazla bilgi için öğreticisiyle devam edin:
+Yeni kaynakların uyumlu olduğunu doğrulamak için ilkeler atama hakkında daha fazla bilgi edinmek için aşağıdakiler için öğreticiye devam edin:
 
 > [!div class="nextstepaction"]
 > [İlke oluşturma ve yönetme](./tutorials/create-and-manage.md)

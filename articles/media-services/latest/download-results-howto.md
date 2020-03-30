@@ -1,6 +1,6 @@
 ---
-title: Bir işin sonuçlarını indir-Azure Media Services
-description: Bu makalede bir işin sonuçlarının nasıl indirileceği gösterilmektedir.
+title: İşin sonuçlarını indirin - Azure Medya Hizmetleri
+description: Bu makalede, bir işin sonuçları nasıl indirilir gösterilebilir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,18 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 0c81523d43fd316c3dc65cc2a5b34557f24014b5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346312"
 ---
-# <a name="download-the-results-of-a-job"></a>Bir işin sonuçlarını indir
+# <a name="download-the-results-of-a-job"></a>Bir işin sonuçlarını indirin
 
-Azure Media Services, videolarınızı işlerken (örneğin, kodlama veya çözümleme), [işinizin](transforms-jobs-concept.md)sonucunu depolamak için bir çıktı [varlığı](assets-concept.md) oluşturmanız gerekir. Daha sonra bu sonuçları medya hizmeti ve depolama API 'Leri kullanarak yerel bir klasöre indirebilirsiniz. 
+Azure Medya Hizmetleri'nde, videolarınızı işlerken (örneğin, kodlama veya analiz) [işinizin](transforms-jobs-concept.md)sonucunu depolamak için bir çıktı [varlığı](assets-concept.md) oluşturmanız gerekir. Daha sonra, Medya Hizmeti ve Depolama API'lerini kullanarak bu sonuçları yerel bir klasöre indirebilirsiniz. 
 
-Bu makalede, Java ve .NET SDK 'Ları kullanılarak sonuçların nasıl indirileceği gösterilmektedir.
+Bu makalede, Java ve .NET SDK'ları kullanarak sonuçların nasıl indirilen nasıl gösterildiği gösterilmiştir.
+
+## <a name="prerequisites"></a>Ön koşullar 
+
+Varlıkları yönetmeyi gözden [geçirin.](manage-asset-concept.md)
 
 ## <a name="java"></a>Java
 
@@ -120,4 +124,4 @@ Tam kod örneğine bakın: [EncodingWithMESPredefinedPreset](https://github.com/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[BIR https URL 'sinden iş girişi oluşturun](job-input-from-http-how-to.md).
+[HTTPS URL'sinden iş girişi oluşturun.](job-input-from-http-how-to.md)

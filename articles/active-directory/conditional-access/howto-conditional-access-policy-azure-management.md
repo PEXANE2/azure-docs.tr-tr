@@ -1,63 +1,64 @@
 ---
-title: Koşullu erişim-Azure yönetimi için MFA gerektir-Azure Active Directory
-description: Azure yönetim görevleri için çok faktörlü kimlik doğrulaması gerektirmek üzere özel bir koşullu erişim ilkesi oluşturma
+title: Koşullu Erişim - Azure yönetimi için MFA gerektirir - Azure Etkin Dizin
+description: Azure yönetim görevleri için çok faktörlü kimlik doğrulama gerektirecek özel bir Koşullu Erişim ilkesi oluşturun
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c4e5d90704e847b3bcd033a20311cc6c69cfe7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c90566006868c817d977699c35f2213895f3fe70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424908"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295236"
 ---
-# <a name="conditional-access-require-mfa-for-azure-management"></a>Koşullu erişim: Azure yönetimi için MFA gerektir
+# <a name="conditional-access-require-mfa-for-azure-management"></a>Koşullu Erişim: Azure yönetimi için MFA gerektirir
 
-Kuruluşlar çeşitli Azure hizmetlerini kullanır ve bunları şu şekilde Azure Resource Manager tabanlı araçlarla yönetebilir:
+Kuruluşlar çeşitli Azure hizmetleri kullanır ve bunları Azure Kaynak Yöneticisi tabanlı araçlardan yönetir:
 
-* Azure Portal
+* Azure portalında
 * Azure PowerShell
 * Azure CLI
 
-Bu araçlar, abonelik genelinde yapılandırmaların, hizmet ayarlarının ve abonelik faturalandırmasını değiştirebilecek kaynaklara son derece ayrıcalıklı erişim sağlayabilir. Bu ayrıcalıklı kaynakları korumak için Microsoft, bu kaynaklara erişen herhangi bir kullanıcı için Multi-Factor Authentication kullanılmasını gerektirir.
+Bu araçlar, abonelik genelinde yapılandırmaları, hizmet ayarlarını ve abonelik faturalandırmasını değiştirebilen kaynaklara son derece ayrıcalıklı erişim sağlayabilir. Bu ayrıcalıklı kaynakları korumak için Microsoft, bu kaynaklara erişen herhangi bir kullanıcı için çok faktörlü kimlik doğrulama sıiçin gerekli önerir.
 
-## <a name="user-exclusions"></a>Kullanıcı dışlamaları
+## <a name="user-exclusions"></a>Kullanıcı hariç tutmalar
 
-Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapların dışlanmasını öneririz:
+Koşullu Erişim ilkeleri güçlü araçlardır, aşağıdaki hesapları politikanızdan hariç öneririz:
 
-* Kiracı genelindeki hesap kilitlenmesini engellemek için **acil durum erişimi** veya **kesme camı** hesapları. Olası olmayan senaryoda tüm yöneticiler kiracınızın dışında kilitlendiğinden, acil durum erişimi yönetim hesabınız kiracıya oturum açmak için kullanılabilir ve erişimi kurtarmak için gerekli adımları uygulayın.
-   * Daha fazla bilgi için [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)makalesinde bulabilirsiniz.
-* Azure AD Connect eşitleme hesabı gibi **hizmet hesapları** ve **hizmet ilkeleri**. Hizmet hesapları, belirli bir kullanıcıya bağlı olmayan etkileşimli olmayan hesaplardır. Bunlar normalde arka uç hizmetleri tarafından kullanılır ve uygulamalara programlı erişim sağlar. MFA programlı olarak tamamlanmadığı için hizmet hesapları dışlanmalıdır.
-   * Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun. Geçici bir çözüm olarak, bu belirli hesapları temel ilkeden hariç bırakabilirsiniz.
+* Kiracı genelinde hesap kilitlemesini önlemek için **acil durum erişimi** veya kesme **hesabı.** Olası senaryoda tüm yöneticiler kiracınızın dışında kilitli, acil erişim yönetim hesabınız kiracı giriş yapmak için kullanılabilir erişimi kurtarmak için adımlar atın.
+   * Daha fazla bilgi makalede bulunabilir, [Azure AD acil erişim hesaplarını yönet](../users-groups-roles/directory-emergency-access.md).
+* **Azure** AD Connect Sync Hesabı gibi hizmet hesapları ve **hizmet ilkeleri.** Hizmet hesapları, belirli bir kullanıcıya bağlı olmayan etkileşimli olmayan hesaplardır. Normalde arka uç hizmetleri tarafından kullanılır ve uygulamalara programlı erişim sağlar. MFA programlı olarak tamamlanamadığından hizmet hesapları hariç tutulmalıdır.
+   * Kuruluşunuzun bu hesapları komut dosyası veya kodda kullanılıyorsa, [bunları yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi düşünün. Geçici bir geçici çözüm olarak, bu belirli hesapları temel ilkeden hariç tutabilirsiniz.
 
-## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
+## <a name="create-a-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
+Aşağıdaki adımlar, atanan yönetim rollerinin çok faktörlü kimlik doğrulaması gerçekleştirmesini gerektirecek koşullu erişim ilkesi oluşturulmasına yardımcı olur.
 
-1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-   1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
+1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
+1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
+1. **Yeni ilke**yi seçin.
+1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
+1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
+   1. **Altında Ekle**, **Tüm kullanıcıları**seçin.
+   1. **Dışla'nın**altında, **Kullanıcıları ve grupları** seçin ve kuruluşunuzun acil durum erişimini veya kesme cam hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya > eylemler** ' in altında, **Uygulama Seç** **' i**seçin ve **Microsoft Azure Yönetim**' i seçin ve ardından **Tamam** **' ı seçin** .
-1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' **i seçin ve**
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
+1. **Bulut uygulamaları veya eylemleri** > altında**Ekle**, **Select uygulamaları**seçin , Microsoft **Azure Yönetimi'ni**seçin ve **Sonra Bitti'yi** **seç'i** seçin.
+1. **Koşullar** > Altında**İstemci uygulamaları (Önizleme)**, **Evet** **yapılaşını** ayarlayın ve **Bitti'yi**seçin.
+1. **Access denetimleri** > altında**Hibe, Erişim** **ver'i**seçin, **çok faktörlü kimlik doğrulaması gerektir**in ve **Seç'i**seçin.
+1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
+1. İlkinizi etkinleştirmek için **Oluştur'u** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+[Koşullu Erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
-[Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
+[Koşullu Erişim Ne Varsa aracını kullanarak oturum açma davranışını simüle edin](troubleshoot-conditional-access-what-if.md)

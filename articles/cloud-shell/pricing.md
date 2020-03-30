@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell fiyatlandırması | Microsoft Docs
-description: Azure Cloud Shell fiyatlandırma, genel bakış
+title: Azure Bulut Shell fiyatlandırması | Microsoft Dokümanlar
+description: Azure Bulut Uyp'ın fiyatlandırmaya genel bakışı
 services: ''
 documentationcenter: ''
 author: maertendMSFT
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60199423"
 ---
 # <a name="pricing"></a>Fiyatlandırma
-Cloud Shell'de bash ve PowerShell Cloud shell'de aşağıdaki bilgileri konu.
+Cloud Shell'deki Bash ve Cloud Shell'deki PowerShell aşağıdaki bilgilere tabidir.
 
-## <a name="compute-cost"></a>İşlem maliyeti
-Azure Cloud Shell ücretsiz Azure tarafından sağlanan bir makinede çalışır, ancak kullanmak için bir Azure dosya paylaşımı gerektirir. 
+## <a name="compute-cost"></a>İşlem Maliyeti
+Azure Bulut Su Şuru, Azure tarafından ücretsiz olarak sağlanan bir makinede çalışır, ancak kullanmak için bir Azure dosya paylaşımı gerektirir. 
 
 ## <a name="storage-cost"></a>Depolama Maliyeti
-Cloud Shell'i dosyaları oturumlarda kalıcılığını sağlayan bağlanması bir yeni veya var olan Azure dosya paylaşımı gerektirir. Depolama normal maliyetleri doğurur.
+Bulut Kabuğu, oturumları n için dosyaları kalıcı olarak sürdürmek için yeni veya varolan bir Azure Dosyaları paylaşımının monte edilmesini gerektirir. Depolama düzenli maliyetlere neden oluyor.
 
-Denetleme [Azure dosyaları maliyetleri hakkında ayrıntılı bilgi için buraya](https://azure.microsoft.com/pricing/details/storage/files/). 
+[Azure Dosyaları maliyetleriyle ilgili ayrıntılar için buraya](https://azure.microsoft.com/pricing/details/storage/files/)bakın. 

@@ -1,31 +1,31 @@
 ---
-title: Bağlantı dizeleri-MySQL için Azure veritabanı
-description: Bu belgede, ADO.NET (C#), JDBC, Node. js, ODBC, php, Python ve Ruby dahil olmak üzere MySQL Için Azure veritabanı 'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizeleri listelenmektedir.
+title: Bağlantı dizeleri - MySQL için Azure Veritabanı
+description: Bu belge, ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python ve Ruby de dahil olmak üzere MySQL için Azure Veritabanı'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizelerini listeler.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: bee98accd8ac404eb223975571b082dae754571a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062388"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na uygulama bağlama
-Bu konu, MySQL için Azure veritabanı tarafından şablonlar ve örneklerle birlikte desteklenen bağlantı dizesi türlerini listeler. Bağlantı dizeniz içinde farklı parametrelere ve ayarlara sahip olabilirsiniz.
+# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına nasıl uygulama bağlanır
+Bu konu, MySQL için Azure Veritabanı tarafından desteklenen bağlantı dize türlerini şablonlar ve örneklerle birlikte listeler. Bağlantı dizenizde farklı parametreler ve ayarlar olabilir.
 
-- Sertifikayı almak için bkz. [SSL 'yi yapılandırma](./howto-configure-ssl.md).
-- {your_host} = \<ServerName >. MySQL. Database. Azure. com
-- {your_user} @ {ServerName} = kimlik doğrulaması için Kullanıcı kimliği biçimi doğru.  Yalnızca Kullanıcı kimliğini kullanıyorsanız kimlik doğrulaması başarısız olur.
+- Sertifikayı almak için [SSL'yi nasıl yapılandırılatırılabilirsiniz.](./howto-configure-ssl.md)
+- {your_host} \<= servername>.mysql.database.azure.com
+- {your_user}@{servername} = doğru kimlik doğrulama için userID biçimi.  Yalnızca userID kullanırsanız, kimlik doğrulama başarısız olur.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-Bu örnekte, sunucu adı `mydemoserver`, veritabanı adı `wpdb`, Kullanıcı adı `WPAdmin`ve parola `mypassword!2`. Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
+Bu örnekte, sunucu `mydemoserver`adı , veritabanı `wpdb`adı , `WPAdmin`kullanıcı adı , `mypassword!2`ve şifre . Sonuç olarak, bağlantı dizesi olmalıdır:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portal bağlantı dizesi ayrıntılarını alın
-[Azure Portal](https://portal.azure.com), MySQL Için Azure veritabanı sunucusuna gidin ve ardından **bağlantı dizeleri** ' ne tıklayarak örneğinizin dize listesini alın: Azure portal bağlantı dizeleri bölmesini ![](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portalından bağlantı dizeayrıntılarını alma
+Azure [portalında](https://portal.azure.com)MySQL sunucusu için Azure Veritabanınıza gidin ve ardından örnek için dize ![listesini almak için **Bağlantı dizelerini** tıklatın: Azure portalındaki Bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar. Bu örnekleri, veritabanı adı, parola vb. gibi kendi parametrelerinizi kullanacak şekilde değiştirin. Daha sonra bu dizeyi, kodunuzun ve uygulamalarınızdan sunucuya bağlanmak için kullanabilirsiniz.
+Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntıları sağlar. Veritabanı adı, parola ve benzeri kendi parametrelerinizi kullanmak için bu örnekleri değiştirin. Daha sonra koduve uygulamaları sunucuya bağlanmak için bu dize kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bağlantı kitaplıkları hakkında daha fazla bilgi için bkz. [Kavramlar-bağlantı kitaplıkları](./concepts-connection-libraries.md).
+- Bağlantı kitaplıkları hakkında daha fazla bilgi için [Bkz. Kavramlar - Bağlantı kitaplıkları.](./concepts-connection-libraries.md)

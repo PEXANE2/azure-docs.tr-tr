@@ -1,6 +1,6 @@
 ---
-title: Denetim ve Gelişmiş tehdit koruması PowerShell örneği-Azure SQL veritabanı
-description: Azure SQL veritabanında denetim ve Gelişmiş tehdit koruması yapılandırmak için örnek betik Azure PowerShell
+title: PowerShell denetim ve Gelişmiş Tehdit Koruması örneği - Azure SQL Veritabanı
+description: Azure SQL Veritabanında denetimi ve Gelişmiş Tehdit Koruması yapılandırmak için Azure PowerShell örnek komut dosyası
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,21 +12,21 @@ ms.author: datrigan
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
 ms.openlocfilehash: f5e107058f983df98f7d14dbe1b41ce5a66f2535
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76719985"
 ---
-# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell kullanarak SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırın
+# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>SQL Veritabanı denetimini ve Gelişmiş Tehdit Koruması'nı yapılandırmak için PowerShell'i kullanın
 
-Bu PowerShell betiği örneği, SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırır.
+Bu PowerShell komut dosyası örneği, SQL Veritabanı denetimi ve Gelişmiş Tehdit Koruması'nı yapılandırır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici AZ PowerShell 1.4.0 veya daha sonra gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -47,11 +47,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek bir veritabanı veya elastik havuz barındıran bir SQL veritabanı sunucusu oluşturur. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tek bir veritabanı veya elastik havuz oluşturur. |
+| [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek bir veritabanı veya elastik havuz barındıran bir SQL Veritabanı sunucusu oluşturur. |
+| [Yeni-AzSqlVeritabanı](/powershell/module/az.sql/new-azsqldatabase) | Tek bir veritabanı veya elastik havuz oluşturur. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Bir Depolama hesabı oluşturur. |
 | [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Bir veritabanı için denetim ilkesini ayarlar. |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Veritabanında Gelişmiş tehdit koruması ilkesini ayarlar. |
+| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Veritabanında Gelişmiş Tehdit Koruması ilkesi ni ayarlar. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

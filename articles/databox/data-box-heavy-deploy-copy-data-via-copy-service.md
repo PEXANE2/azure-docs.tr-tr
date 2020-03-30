@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: veri kopyalama hizmeti aracılığıyla Azure Data Box Heavy verileri kopyalama'
-description: Bu öğreticide, veri kopyalama hizmeti aracılığıyla Azure Data Box Heavy cihazınıza veri kopyalamayı öğreneceksiniz.
+title: "Öğretici: Veri kopyalama hizmeti aracılığıyla verileri Azure Veri Kutusu Heavy'ye kopyalama"
+description: Bu eğitimde, veri kopyalama hizmeti aracılığıyla Verileri Azure Veri Kutusu Ağır cihazınıza kopyalamayı öğrenirsiniz
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,142 +9,142 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77560229"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Öğretici: verileri Azure Data Box Heavy kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Öğretici: Verileri Azure Veri Kutusu Ağır'a kopyalamak için veri kopyalama hizmetini kullanın (önizleme)
 
-Bu öğreticide, bir ara ana bilgisayar olmadan veri kopyalama hizmeti kullanılarak verilerin nasıl kullanılacağı açıklanmaktadır. Veri kopyalama hizmeti Azure Data Box Heavy yerel olarak çalışır, SMB aracılığıyla ağa bağlı depolama (NAS) cihazınıza bağlanır ve verileri Data Box Heavy kopyalar.
+Bu öğretici, bir ara ana bilgisayar olmadan veri kopyalama hizmetini kullanarak veri nasıl yutulmak açıklanır. Veri kopyalama hizmeti Azure Veri Kutusu Ağır'da yerel olarak çalışır, sMB aracılığıyla ağa bağlı depolama (NAS) cihazınıza bağlanır ve verileri Data Box Heavy'ye kopyalar.
 
 Veri kopyalama hizmetini kullanın:
 
-- Ara ana bilgisayarların kullanılabilir olabileceği NAS ortamlarında.
-- Veri alma ve karşıya yükleme için hafta alan küçük dosyalarla birlikte. Veri kopyası hizmeti, küçük dosyalar için alma ve karşıya yükleme süresini önemli ölçüde geliştirir.
+- Ara ana bilgisayarların kullanılamadığı NAS ortamlarında.
+- Veri alımı ve yüklenmesi haftalar süren küçük dosyalarla. Veri kopyalama hizmeti, küçük dosyaların alım ve yükleme süresini önemli ölçüde artırır.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Data Box Heavy’ye veri kopyalama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. Bu öğreticiyi tamamladınız: [Azure Data Box Heavy ayarlayın](data-box-heavy-deploy-set-up.md).
+1. Bu öğreticiyi tamamladınız: [Azure Veri Kutusu Ağır'ı ayarlayın.](data-box-heavy-deploy-set-up.md)
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
-3. Veri kopyalama için bağlanacağı kaynak NAS cihazının kimlik bilgileri vardır.
-4. Yüksek hızlı bir ağa bağlanırsınız. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
+3. Veri kopyalama için bağlanacağınız kaynak NAS aygıtının kimlik bilgilerine sahipsiniz.
+4. Yüksek hızlı bir ağa bağlısınız. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
 
 ## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy’ye veri kopyalama
 
-NAS cihazına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalayacağız. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
+NAS aygıtına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalamaktır. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
-- Verileri kopyalarken, veri boyutunun [Azure depolama ve Data Box Heavy sınırları](data-box-heavy-limits.md)makalesinde açıklanan boyut sınırlarına uyduğundan emin olun.
-- Data Box Heavy tarafından karşıya yüklenen veriler Data Box Heavy dışındaki diğer uygulamalar tarafından aynı anda karşıya yüklenirse karşıya yükleme-iş hatası ve veri bozulması oluşabilir.
-- Veri kopyası hizmeti okurken veri değiştiriliyorsa, verilerin başarısızlıklarını veya bozulmasını görebilirsiniz.
+- Verileri kopyalarken, veri boyutunun Azure depolama ve Veri Kutusu [Ağır sınırlarında](data-box-heavy-limits.md)açıklanan boyut sınırlarına uyduklarından emin olun.
+- Data Box Heavy tarafından yüklenen veriler, Data Box Heavy dışındaki diğer uygulamalar tarafından aynı anda yüklenirse, yükleme işi hataları ve veri bozulmasına neden olabilir.
+- Veri kopyalama hizmeti okurken veriler değiştiriliyorsa, verilerin hataları veya bozulması nı görebilirsiniz.
 
-Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir:
+Veri kopyalama hizmetini kullanarak verileri kopyalamak için bir iş oluşturmanız gerekir:
 
-1. Data Box Heavy cihazınızın yerel Web Kullanıcı arabiriminde **yönet** > **verileri Kopyala**bölümüne gidin.
-2. **Verileri Kopyala** sayfasında **Oluştur**' u seçin.
+1. Veri Kutusu Ağır cihazınızın yerel web ui'sinde Kopya**verilerini** **yönet'e** > gidin.
+2. Veri **Kopyala** sayfasında **Oluştur'u**seçin.
 
-    !["Verileri Kopyala" sayfasında oluştur ' u seçin.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
+    !["Verileri kopyala" sayfasında Oluştur'u seçin](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
 
-3. **İşi ve başlatmayı yapılandır** iletişim kutusunda aşağıdaki alanları doldurun:
+3. **Yapıliş ve başlat** iletişim kutusunda aşağıdaki alanları doldurun:
     
     |Alan                          |Değer    |
     |-------------------------------|---------|
-    |**İş adı**                       |İş için 230 karakterden daha az benzersiz bir ad. İş adında Bu karakterlere izin verilmez: \<, \>, \|, \?, \*, \\, \:, \/ve \\\.         |
-    |**Kaynak konumu**                |Veri kaynağına ilişkin SMB yolunu şu biçimde girin: `\\<ServerIPAddress>\<ShareName>` veya `\\<ServerName>\<ShareName>`.        |
-    |**Kullanıcı Adı**                       |Veri kaynağına erişmek için `\\<DomainName><UserName>` biçimindeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
+    |**İş adı**                       |İş için 230 karakterden az benzersiz bir ad. Bu karakterler iş adına izin verilmez: \< \>, \| \?, \* \\, \: \/, , , ,\\\.         |
+    |**Kaynak konumu**                |SMB yolunu veri kaynağına formatta `\\<ServerIPAddress>\<ShareName>` sağlayın: veya `\\<ServerName>\<ShareName>`.        |
+    |**Username**                       |Veri kaynağına erişmek için biçimde `\\<DomainName><UserName>` kullanıcı adı. Yerel bir yönetici bağlanıyorsa, açık güvenlik izinlerine ihtiyaç duyarlar. Klasöre sağ tıklayın, **Özellikler'i** seçin ve ardından **Güvenlik'i**seçin. Bu, **Güvenlik** sekmesinde yerel yöneticiyi eklemelidir.       |
     |**Parola**                       |Veri kaynağına erişmek için parola.           |
-    |**Hedef depolama hesabı**    |Verileri listeden karşıya yüklemek için hedef depolama hesabını seçin.         |
-    |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu**veya **Azure dosyaları**.        |
-    |**Hedef kapsayıcı/paylaşma**    |Hedef depolama hesabınızda veri yüklemek istediğiniz kapsayıcının veya paylaşımın adını girin. Ad bir paylaşma adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Adı `sharename\directory_name` veya `containername\virtual_directory_name`biçiminde de girebilirsiniz.        |
-    |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Joker ifadelerde yalnızca `*` ve `?` desteklenir. Örneğin, ifade `*.vhd` `.vhd` uzantısına sahip tüm dosyalarla eşleşir. Benzer şekilde, `*.dl?` uzantısı `.dl` olan veya `.dll`gibi `.dl`ile başlayan tüm dosyalarla eşleşir. Benzer şekilde, `*foo` adları `foo`biten tüm dosyalarla eşleşir.<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, `.*\.vhd` normal ifade `.vhd` uzantısına sahip tüm dosyalarla eşleşir. Normal ifadeler için `<pattern>` doğrudan `regex(<pattern>)`olarak sağlayın. Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |**Dosya iyileştirme**              |Bu özellik etkinleştirildiğinde 1 MB 'den küçük dosyalar alma sırasında paketlenmiştir. Bu paketleme, küçük dosyalar için veri kopyasının hızlanmasını hızlandırır. Ayrıca dosya sayısının dizin sayısını aştığında önemli miktarda zaman kazandırır.        |
+    |**Hedef depolama hesabı**    |Listeden veri yüklemek için hedef depolama hesabını seçin.         |
+    |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blob'** u, **Sayfa Blob'** u veya **Azure Dosyalarını**engelle .        |
+    |**Hedef kapsayıcı/paylaş**    |Hedef depolama hesabınıza veri yüklemek istediğiniz kapsayıcının adını veya paylaşınızı girin. Ad bir paylaşım adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Ayrıca, adı biçime `sharename\directory_name` veya `containername\virtual_directory_name`.        |
+    |**Dosyaları eşleşen deseni kopyalama**    | Dosya adı eşleştirme desenini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter ifadelerini kullanın:** Yalnızca `*` `?` ve joker karakter ifadelerinde desteklenir. Örneğin, ifade `*.vhd` uzantısı olan tüm `.vhd` dosyalarla eşleşir. Benzer `*.dl?` şekilde, tüm dosyaları `.dl` uzantıyla eşleştirin ya da `.dl`' ile başlayan , gibi. `.dll` Aynı şekilde, `*foo` adları `foo`.<br>Doğrudan alana joker karakter ifadesini girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak kabul edilir.</li><li>**Normal ifadeler kullanın:** POSIX tabanlı düzenli ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` `.vhd` uzantısı olan tüm dosyaları eşleşir. Normal ifadeler için `<pattern>` doğrudan . `regex(<pattern>)` Normal ifadeler hakkında daha fazla bilgi için [Normal ifade diline](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)gidin - hızlı bir başvuru .</li><ul>|
+    |**Dosya optimizasyonu**              |Bu özellik etkinleştirildiğinde, 1 MB'dan küçük dosyalar yutma sırasında paketlenir. Bu ambalaj, küçük dosyalar için veri kopyasını hızlandırıyor. Ayrıca, dosya sayısı dizin sayısını aştığında önemli miktarda zaman kazandırır.        |
  
-4. **Başlat**' ı seçin. Girişler onaylanır ve doğrulama başarılı olursa iş başlatılır. İşin başlatılması birkaç dakika sürebilir.
+4. **Başlat**'ı seçin. Girişler doğrulanır ve doğrulama başarılı olursa, iş başlar. İşin başlaması birkaç dakika sürebilir.
 
-    !["İşi Yapılandır ve Başlat" iletişim kutusundan bir iş başlatın](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
+    !["İşi yapılandır ve başlat" iletişim kutusundan bir iş başlatma](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
 
-5. Belirtilen ayarlara sahip bir iş oluşturulur. Bir işi duraklatabilir, sürdürebilir, iptal edebilir veya yeniden başlatabilirsiniz. İş adının yanındaki onay kutusunu işaretleyin ve ardından uygun düğmeyi seçin.
+5. Belirtilen ayarları içeren bir iş oluşturulur. Bir işi duraklatabilir, devam ettirebilir, iptal edebilir veya yeniden başlatabilirsiniz. İş adının yanındaki onay kutusunu seçin ve ardından uygun düğmeyi seçin.
 
-    !["Veri kopyalama" sayfasında bir işi yönetme](media/data-box-deploy-copy-data-via-copy-service/select-job.png)
+    !["Verileri kopyalama" sayfasında bir işi yönetme](media/data-box-deploy-copy-data-via-copy-service/select-job.png)
     
-    - Yoğun saatlerde NAS cihazının kaynaklarını etkilediğinden bir işi duraklatabilirsiniz:
+    - Yoğun saatlerde NAS aygıtının kaynaklarını etkiliyorsa işi duraklatabilirsiniz:
 
-        !["Veri kopyalama" sayfasında bir işi duraklatma](media/data-box-deploy-copy-data-via-copy-service/pause-job.png)
+        !["Verileri kopyalama" sayfasındaki bir işi duraklatma](media/data-box-deploy-copy-data-via-copy-service/pause-job.png)
 
-        İşi yoğun olmayan saatlerde daha sonra sürdürebilirsiniz:
+        Yoğun olmayan saatlerde işe daha sonra devam edebilirsiniz:
 
-        !["Veri kopyalama" sayfasında bir işi sürdürür](media/data-box-deploy-copy-data-via-copy-service/resume-job.png)
+        !["Verileri kopyalama" sayfasında ki bir işe devam edin](media/data-box-deploy-copy-data-via-copy-service/resume-job.png)
 
-    - İstediğiniz zaman bir işi iptal edebilirsiniz:
+    - Bir işi istediğiniz zaman iptal edebilirsiniz:
 
-        !["Verileri kopyalama" sayfasında bir işi iptal etme](media/data-box-deploy-copy-data-via-copy-service/cancel-job.png)
+        !["Verileri kopyalama" sayfasındaki bir işi iptal etme](media/data-box-deploy-copy-data-via-copy-service/cancel-job.png)
         
         Bir işi iptal ettiğinizde, bir onay gereklidir:
 
-        ![İş iptalini onayla](media/data-box-deploy-copy-data-via-copy-service/confirm-cancel-job.png)
+        ![İş iptalini onaylama](media/data-box-deploy-copy-data-via-copy-service/confirm-cancel-job.png)
 
-        Bir işi iptal etme kararı verirseniz, zaten kopyalanmış olan veriler silinmez. Data Box cihazınıza kopyaladığınız tüm verileri silmek için, cihazı sıfırlayın.
+        Bir işi iptal etmeye karar verirseniz, zaten kopyalanmış veriler silinmez. Veri Kutusu aygıtınıza kopyaladığınız tüm verileri silmek için aygıtı sıfırlayın.
 
-        ![Bir cihazı sıfırlama](media/data-box-deploy-copy-data-via-copy-service/reset-device.png)
+        ![Aygıtı sıfırlama](media/data-box-deploy-copy-data-via-copy-service/reset-device.png)
 
         >[!NOTE]
-        > Bir işi iptal edebilir veya duraklatabilirsiniz, büyük dosyalar yalnızca kısmen kopyalanabilir. Bu kısmen kopyalanan dosyalar Azure 'a aynı duruma yüklenir. Bir işi iptal ettiğinizde veya duraklattığınızda, dosyalarınızın düzgün şekilde kopyalandığından emin olun. Dosyaları doğrulamak için, SMB paylaşımlarına bakın veya ürün reçetesi dosyasını indirin.
+        > Bir işi iptal ederseniz veya duraklatsanız, büyük dosyalar yalnızca kısmen kopyalanabilir. Kısmen kopyalanan bu dosyalar aynı durumda Azure'a yüklenir. Bir işi iptal ettiğinizde veya duraklattığınızda, dosyalarınızın düzgün kopyalandığından emin olun. Dosyaları doğrulamak için Kobİ paylaşımlarına bakın veya BOM dosyasını indirin.
 
-    - Ağ hatası gibi geçici bir hata nedeniyle başarısız olduysa bir işi yeniden başlatabilirsiniz. Ancak, **başarılı** veya **hatalarla tamamlanan**bir Terminal durumuna ulaştıysa bir işi yeniden başlatmazsanız. Dosya adlandırma veya dosya boyutu sorunlarından dolayı iş hataları olabilir. Bu hatalar günlüğe kaydedilir, ancak işlem tamamlandıktan sonra yeniden başlatılamaz.
+    - Ağ hatası gibi geçici bir hata nedeniyle başarısız olduysa işi yeniden başlatabilirsiniz. Ancak, **başarılı** veya **hatalarla tamamlanmış**gibi bir terminal durumuna ulaşmışsa, bir işi yeniden başlatamazsınız. İş hataları, dosya adlandırma veya dosya boyutu sorunları neden olabilir. Bu hatalar günlüğe kaydedilir, ancak iş tamamlandıktan sonra yeniden başlatılamaz.
 
-        ![Başarısız işi yeniden Başlat](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
+        ![Başarısız bir işi yeniden başlatma](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
-        Bir hata yaşarsanız ve işi yeniden başlatmazsanız, hata günlüklerini indirin ve günlük dosyalarındaki hatayı bulun. Sorunu düzelttikten sonra, dosyaları kopyalamak için yeni bir iş oluşturun. Ayrıca [, dosyaları SMB üzerinden de kopyalayabilirsiniz](data-box-deploy-copy-data.md).
+        Bir hatayla karşılaşırsanız ve işi yeniden başlatamıyorsanız, hata günlüklerini indirin ve günlük dosyalarındaki hataya bakın. Sorunu düzelttinden sonra, dosyaları kopyalamak için yeni bir iş oluşturun. [Ayrıca SMB üzerinden dosyaları](data-box-deploy-copy-data.md)kopyalayabilirsiniz.
     
     - Bu sürümde, bir işi silemezsiniz.
     
-    - Sınırsız iş oluşturabilirsiniz, ancak herhangi bir anda yalnızca en fazla 10 işi paralel olarak çalıştırabilirsiniz.
-    - **Dosya iyileştirmesi** açık ise, küçük dosyalar kopyalama performansını iyileştirmek için alma sırasında paketlenmiştir. Bu durumlarda, paketlenmiş bir dosya görürsünüz (dosya adı olarak bir GUID olacaktır). Bu dosyayı silmeyin. Karşıya yükleme sırasında paketi açılır.
+    - Sınırsız iş oluşturabilirsiniz, ancak herhangi bir anda paralel olarak en fazla 10 iş çalıştırabilirsiniz.
+    - **Dosya optimizasyonu** açıksa, kopya performansını artırmak için küçük dosyalar yutulur da paketlenir. Bu gibi durumlarda, paketlenmiş bir dosya görürsünüz (dosya adı olarak bir GUID'si olacaktır). Bu dosyayı silmeyin. Yükleme sırasında ambalajı açılacaktır.
 
-6. İş devam ederken, **verileri Kopyala** sayfasında:
+6. İş devam ederken, Veri **Kopyala** sayfasında:
 
-    - **Durum** sütununda kopyalama işinin durumunu görüntüleyebilirsiniz. Durum şu olabilir:
-        - **Çalıştıran**
-        - **Başaramadı**
-        - **Baarı**
+    - **Durum** sütununda, kopyalama işinin durumunu görüntüleyebilirsiniz. Durum şu olabilir:
+        - **Çalışıyor**
+        - **Başarısız**
+        - **Başarılı oldu**
         - **Duraklatılıyor**
-        - **Tildi**
-        - **İptali**
-        - **Edilmesi**
+        - **Duraklatıldı**
+        - **İptal Ediliyor**
+        - **İptal edildi**
         - **Hatalarla tamamlandı**
     - **Dosyalar** sütununda, kopyalanan dosyaların sayısını ve toplam boyutunu görebilirsiniz.
-    - **İşlenen** sütununda, işlenen dosyaların sayısını ve toplam boyutunu görebilirsiniz.
-    - **İş ayrıntıları sütununda,** iş ayrıntılarını görmek için **görüntüle** ' yi seçin.
-    - Kopyalama işlemi sırasında, **# Errors** sütununda gösterildiği gibi herhangi bir hata oluşursa **hata günlüğü** sütununa gidin ve sorun giderme için hata günlüklerini indirin.
+    - **İşlenen** sütunda, işlenen dosyaların sayısını ve toplam boyutunu görebilirsiniz.
+    - İş **ayrıntıları** sütununda, iş ayrıntılarını görmek için **Görünüm'i** seçin.
+    - **# Hatalar** sütununda gösterildiği gibi kopyalama işlemi sırasında herhangi bir hata oluşursa, **Hata günlüğü** sütununa gidin ve sorun giderme için hata günlüklerini indirin.
 
-Kopyalama işinin bitmesini bekleyin. Bazı hatalar yalnızca **Bağlan ve Kopyala** sayfasında günlüğe kaydedildiği için, sonraki adıma geçmeden önce kopyalama işinin hatasız şekilde bittiğinden emin olun.
+Kopyalama işinin bitmesini bekleyin. Bazı hatalar yalnızca **Bağlan ve kopyala** sayfasında günlüğe kaydedildiği için, bir sonraki adıma geçmeden önce kopyalama işinin hiçbir hata olmadan tamamlandığına emin olun.
 
-!["Bağlan ve Kopyala" sayfasında hata yok](media/data-box-deploy-copy-data-via-copy-service/verify-no-errors-on-connect-and-copy.png)
+!["Bağlan ve kopyala" sayfasında hata yok](media/data-box-deploy-copy-data-via-copy-service/verify-no-errors-on-connect-and-copy.png)
 
-Veri bütünlüğünü sağlamak için, veriler kopyalanırken bir sağlama toplamı satır içi olarak hesaplanır. Kopyalama işlemi tamamlandıktan sonra, cihazınızdaki kullanılan alanı ve boş alanı doğrulamak için **panoyu görüntüle** ' yi seçin.
+Veri bütünlüğünü sağlamak için, veriler kopyalanırken bir checksum satır içinde hesaplanır. Kopya tamamlandıktan sonra, cihazınızda kullanılan alanı ve boş alanı doğrulamak için **Görünüm panosunu** seçin.
     
 ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data-via-copy-service/verify-used-space-dashboard.png)
 
 > [!IMPORTANT]
-> Data Box Heavy, verileri ikinci düğüme kopyalamak için aynı yönergeleri tekrarlayın.
+> Verileri Data Box Heavy'deki ikinci düğüme kopyalamak için aynı yönergeleri yineleyin.
 
-Kopyalama işi tamamlandıktan sonra **göndermeye hazırlama**' yi seçebilirsiniz.
+Kopyalama işi bittikten **sonra, gönderiye hazırla'yı**seçebilirsiniz.
 
 >[!NOTE]
-> Kopyalama işleri devam ederken **göndermeye hazırlama** çalıştırılamaz.
+> Kopyalama işleri devam ederken **gönderiye hazırlanın** çalıştırılama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Box Heavy cihazınızı Microsoft 'a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Veri Kutusu Ağır cihazınızı Microsoft'a nasıl geri gönderteceklerinizi öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Box Heavy cihazınızı Microsoft 'a gönderin](./data-box-heavy-deploy-picked-up.md)
+> [Azure Veri Kutusu Ağır cihazınızı Microsoft'a gönderme](./data-box-heavy-deploy-picked-up.md)
 

@@ -9,15 +9,15 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 5ecc2964c6b0b8c2438df19b66a0f0fa11774f76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67189045"
 ---
-`myAppServicePlan` App Service planında bir [web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun. 
+Uygulama Hizmeti planında bir web uygulaması oluşturun. [web app](../articles/app-service/containers/app-service-linux-intro.md) `myAppServicePlan` 
 
-Cloud Shell'de, [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `NODE|6.9` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanları görmek için [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) komutunu çalıştırın. 
+Bulut Kabuğu'nda komutu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `NODE|6.9` olarak ayarlanmıştır. Desteklenen tüm çalışma sürelerini [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)görmek için çalıştırın. 
 
 ```azurecli-interactive
 # Bash

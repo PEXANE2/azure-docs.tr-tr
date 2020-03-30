@@ -1,6 +1,6 @@
 ---
 title: Windows Server için Azure Hibrit Avantajı
-description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin
+description: Azure'a şirket içi lisanslar getirmek için Windows Yazılım Güvencesi avantajlarınızı nasıl en üst düzeye çıkarınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing-ms
@@ -14,41 +14,41 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911805"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
-Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
+Yazılım Güvencesi olan müşteriler için, Windows Server için Azure Karma Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Windows sanal makinelerini Azure'da daha düşük bir maliyetle çalıştırmanıza olanak tanır. Windows Işletim Sistemi ile yeni sanal makineler dağıtmak için Windows Server için Azure Karma Avantajı'nı kullanabilirsiniz. Bu makale, Windows Server için Azure Karma Avantajı ile yeni VM'lerin nasıl dağıtılanabildiği ve varolan çalışan VM'leri nasıl güncelleştirebileceğiniz le ilgili adımların üzerinden geçilir. Windows Server lisanslama ve maliyet tasarrufu için Azure Karma Avantajı hakkında daha fazla bilgi için [Windows Server lisanslama için Azure Karma Avantajı sayfasına](https://azure.microsoft.com/pricing/hybrid-use-benefit/)bakın.
 
-Her 2 işlemci lisansı veya her bir 16 çekirdekli lisans kümesi, en fazla 8 çekirdeğe veya 16 adede kadar çekirdeğe kadar olan iki örneğe sahiptir. Standart sürüm lisansları için Azure Hibrit Avantajı, şirket içinde veya Azure 'da yalnızca bir kez kullanılabilir. Datacenter Edition avantajları, hem şirket içinde hem de Azure 'da eşzamanlı kullanım sağlar.
+Her 2 işlemcili lisans veya 16 çekirdekli lisansların her kümesi, 8 ana'ya kadar iki örnek veya 16 çeki ye kadar bir örnek hakkına sahiptir. Standart Sürüm lisansları için Azure Karma Avantajı yalnızca şirket içinde veya Azure'da bir kez kullanılabilir. Datacenter Edition avantajları, hem şirket içinde hem de Azure'da eşzamanlı kullanıma olanak tanır.
 
-Windows Server işletim sistemi çalıştıran herhangi bir VM ile Windows Server için Azure Hibrit Avantajı kullanmak, SQL Server veya üçüncü taraf Market yazılımları gibi ek yazılıma sahip VM 'Ler de dahil olmak üzere tüm bölgelerde desteklenmektedir. 
+Windows Server işletim sistemi çalıştıran herhangi bir VM ile Windows Server için Azure Karma Avantajı'nın kullanılması artık SQL Server veya üçüncü taraf pazar yeri yazılımı gibi ek yazılımlarla birlikte VM'ler de dahil olmak üzere tüm bölgelerde desteklenir. 
 
 
 ## <a name="classic-vms"></a>Klasik VM'ler
 
-Klasik VM 'Ler için, yalnızca şirket içi özel görüntülerden yeni VM dağıtımı desteklenir. Bu makalede desteklenen özelliklerden faydalanmak için, önce klasik VM 'Leri Kaynak Yöneticisi modele geçirmeniz gerekir.
+Klasik VM'ler için, yalnızca şirket içinde yeni VM dağıtmaözel görüntüler desteklenir. Bu makalede desteklenen özelliklerden yararlanmak için öncelikle klasik VM'leri Kaynak Yöneticisi modeline geçirmeniz gerekir.
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
-## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı kullanmanın yolları
-Windows sanal makinelerini Azure Hibrit Avantajı kullanmanın birkaç yolu vardır:
+## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Karma Avantajını kullanmanın yolları
+Azure Karma Avantajı ile Windows sanal makinelerini kullanmanın birkaç yolu vardır:
 
-1. Azure Marketi 'nde, sağlanmış Windows Server görüntülerinden birindeki VM 'Leri dağıtabilirsiniz
-2. Özel bir VM 'yi karşıya yükleyebilir ve bir Kaynak Yöneticisi şablonu kullanarak dağıtabilirsiniz Azure PowerShell
-3. Mevcut VM 'yi Azure Hibrit Avantajı ile çalıştırma arasında açıp dönüştürebilirsiniz veya Windows Server için isteğe bağlı maliyet ödeyebilirsiniz
-4. Ayrıca, sanal makine ölçek kümesindeki Windows Server için Azure Hibrit Avantajı de uygulayabilirsiniz
+1. Azure Marketi'nde sağlanan Windows Server görüntülerinden birinden VM dağıtabilirsiniz
+2. Özel bir VM yükleyebilir ve Kaynak Yöneticisi şablonu veya Azure PowerShell kullanarak dağıtabilirsiniz
+3. Azure Karma Avantajı ile çalışma arasında mevcut VM'yi geçiş yapabilir ve dönüştürebilir veya Windows Server için isteğe bağlı maliyet ödeyebilirsiniz
+4. Windows Server için Azure Karma Avantajı'nı sanal makine ölçeği kümesinde de uygulayabilirsiniz
 
 
-## <a name="create-a-vm-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı VM oluşturma
-Windows Server için Azure Hibrit Avantajı için tüm Windows Server işletim sistemi tabanlı görüntüler desteklenir. Azure platform destek görüntülerini kullanabilir veya kendi özel Windows Server görüntülerinizi yükleyebilirsiniz. 
+## <a name="create-a-vm-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Karma Avantajı ile VM oluşturma
+Windows Server işletim sistemi tabanlı tüm görüntüler, Windows Server için Azure Karma Avantajı için desteklenir. Azure platformu destek resimlerini kullanabilir veya kendi özel Windows Server resimlerinizi yükleyebilirsiniz. 
 
 ### <a name="portal"></a>Portal
-Windows Server için Azure Hibrit Avantajı bir sanal makine oluşturmak için, "para tasarrufu" bölümünün altındaki geçişi kullanın.
+Windows Server için Azure Karma Avantajı içeren bir VM oluşturmak için "Paradan tasarruf et" bölümünün altındaki geçişi kullanın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Şablon
-Kaynak Yöneticisi şablonlarınız içinde ek bir `licenseType` parametresi belirtilmelidir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md) hakkında daha fazla bilgi edinebilirsiniz
+Kaynak Yöneticisi şablonlarınızda ek bir `licenseType` parametre belirtilmelidir. [Azure Kaynak Yöneticisi şablonlarını yazma](../../resource-group-authoring-templates.md) hakkında daha fazla bilgi edinebilirsiniz
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -81,18 +81,18 @@ Kaynak Yöneticisi şablonlarınız içinde ek bir `licenseType` parametresi bel
     }
 ```
 
-## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı kullanarak var olan bir VM 'yi dönüştürme
-Windows Server Azure Hibrit Avantajı avantajlarından yararlanmak için dönüştürmek istediğiniz mevcut bir VM 'niz varsa, aşağıdaki yönergeleri izleyerek sanal makinenizin lisans türünü güncelleştirebilirsiniz.
+## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Karma Avantajı'nı kullanarak varolan bir VM'yi dönüştürme
+Windows Server için Azure Karma Avantajı'ndan yararlanmak için dönüştürmek istediğiniz mevcut bir VM'iniz varsa, aşağıdaki yönergeleri izleyerek VM'nizin lisans türünü güncelleştirebilirsiniz.
 
 > [!NOTE]
-> VM 'deki lisans türünü değiştirmek sistemin yeniden başlatılmasına veya hizmet görüşmesine neden olmasına neden olmaz.  Meta veri bayrağına yalnızca bir güncelleştirmedir.
+> VM'deki lisans türünü değiştirmek, sistemin yeniden başlatılmasına veya bir hizmet interuptionine neden olmaz.  Bu yalnızca meta veri bayrağıiçin yapılan bir güncelleştirmedir.
 > 
 
 ### <a name="portal"></a>Portal
-Portal VM dikey penceresinde, "yapılandırma" seçeneğini belirleyerek ve "Azure hibrit avantajı" seçeneğini değiştirerek sanal makineyi Azure Hibrit Avantajı kullanacak şekilde güncelleştirebilirsiniz.
+Portal VM blade'den ,"Yapılandırma" seçeneğini seçerek ve "Azure karma avantajı" seçeneğini geçiş yaparak Azure Karma Avantajı'nı kullanacak şekilde VM'yi güncelleyebilirsiniz
 
 ### <a name="powershell"></a>PowerShell
-- Mevcut Windows Server VM 'lerini Windows Server için Azure Hibrit Avantajı Dönüştür
+- Varolan Windows Server VM'lerini Windows Server için Azure Karma Avantajı'na dönüştürme
 
     ```powershell
     $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
@@ -100,7 +100,7 @@ Portal VM dikey penceresinde, "yapılandırma" seçeneğini belirleyerek ve "Azu
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-- Windows Server VM 'lerini Kullandıkça Öde 'e geri dönme
+- Windows Server VM'leri avantajla birlikte öde'ye dönüştürün
 
     ```powershell
     $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
@@ -109,20 +109,20 @@ Portal VM dikey penceresinde, "yapılandırma" seçeneğini belirleyerek ve "Azu
     ```
     
 ### <a name="cli"></a>CLI
-- Mevcut Windows Server VM 'lerini Windows Server için Azure Hibrit Avantajı Dönüştür
+- Varolan Windows Server VM'lerini Windows Server için Azure Karma Avantajı'na dönüştürme
 
     ```azurecli
     az vm update --resource-group myResourceGroup --name myVM --set licenseType=Windows_Server
     ```
 
-### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM 'nizin lisans avantajını kullandığını doğrulama
-VM 'nizi PowerShell, Kaynak Yöneticisi Şablon ya da Portal aracılığıyla dağıttıktan sonra, aşağıdaki yöntemlerde ayarı doğrulayabilirsiniz.
+### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM'nizin lisans avantajından yararlandığını doğrulama
+VM'inizi PowerShell, Resource Manager şablonu veya portalı aracılığıyla dağıttıktan sonra, ayarı aşağıdaki yöntemlerle doğrulayabilirsiniz.
 
 ### <a name="portal"></a>Portal
-Portal VM dikey penceresinde, "yapılandırma" sekmesini seçerek Windows Server için Azure Hibrit Avantajı geçişi 'ni görüntüleyebilirsiniz.
+Portal VM blade'den" Yapılandırma" sekmesini seçerek Windows Server için Azure Karma Avantajı geçişini görüntüleyebilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
-Aşağıdaki örnekte, tek bir VM için lisans türü gösterilmektedir
+Aşağıdaki örnekte, tek bir VM'nin lisans türünü gösterir
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
@@ -134,7 +134,7 @@ Location                 : westus
 LicenseType              : Windows_Server
 ```
 
-Bu çıktı, Windows Server Lisansı için Azure Hibrit Avantajı olmadan dağıtılan aşağıdaki VM ile karşıttır:
+Bu çıktı, Windows Server lisanslama için Azure Karma Avantajı olmadan dağıtılan aşağıdaki VM ile tezat oluşturuyor:
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
 Location                 : westus
@@ -147,14 +147,14 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Wind
 ```
 
 > [!NOTE]
-> VM 'deki lisans türünü değiştirmek sistemin yeniden başlatılmasına veya hizmet görüşmesine neden olmasına neden olmaz. Yalnızca meta veri lisanslama bayrağıdır.
+> VM'deki lisans türünü değiştirmek, sistemin yeniden başlatılmasına veya bir hizmet interuptionine neden olmaz. Yalnızca meta veri lisanslama bayrağıdır.
 >
 
-## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Bir abonelikte Windows Server için Azure Hibrit Avantajı tüm VM 'Leri listeleme
-Windows Server için Azure Hibrit Avantajı ile dağıtılan tüm sanal makineleri görmek ve saymak için aboneliğinizden aşağıdaki komutu çalıştırabilirsiniz:
+## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Windows Server için Azure Karma Avantajı olan tüm VM'leri abonelikte listele
+Windows Server için Azure Karma Avantajı ile dağıtılan tüm sanal makineleri görmek ve saymak için aboneliğinizden aşağıdaki komutu çalıştırabilirsiniz:
 
 ### <a name="portal"></a>Portal
-Sanal makine veya sanal makine ölçek kümeleri kaynak dikey penceresinde, tablo sütununu "Azure Hibrit Avantajı" içerecek şekilde yapılandırarak tüm VM 'lerinizin ve lisanslama türünün bir listesini görüntüleyebilirsiniz. VM ayarı "etkin", "etkin değil" veya "desteklenmiyor" durumunda olabilir.
+Sanal Makine veya Sanal makine ölçeği kaynak bıçağı kümelerinden, tablo sütununu "Azure Karma Avantajı" içerecek şekilde yapılandırarak tüm VM(ler) ve lisans türünüzün listesini görüntüleyebilirsiniz. VM ayarı "Etkin", "Etkin değil" veya "Desteklenmeyen" durumunda olabilir.
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
@@ -167,10 +167,10 @@ $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name
 az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı bir sanal makine ölçek kümesi dağıtma
-Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonlarında, VirtualMachineProfile özelliği içinde ek bir parametre `licenseType` belirtilmelidir. ARM şablonu, PowerShell, Azure CLı veya REST aracılığıyla ölçek kümesi oluşturma veya güncelleştirme sırasında bunu yapabilirsiniz.
+## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Karma Avantajı ile Sanal Makine Ölçeği Seti dağıtma
+Sanal makine ölçeği ayar Kaynak Yöneticisi şablonları `licenseType` içinde, VirtualMachineProfile özelliğiiçinde ek bir parametre belirtilmelidir. Bunu, ARM şablonu, PowerShell, Azure CLI veya REST aracılığıyla ölçek kümeniz için oluşturma veya güncelleştirme sırasında yapabilirsiniz.
 
-Aşağıdaki örnek ARM şablonunu bir Windows Server 2016 Datacenter görüntüsüyle kullanır:
+Aşağıdaki örnekte, Windows Server 2016 Datacenter görüntüsüne sahip ARM şablonu kullanılır:
 ```json
 "virtualMachineProfile": {
     "storageProfile": {
@@ -191,12 +191,12 @@ Aşağıdaki örnek ARM şablonunu bir Windows Server 2016 Datacenter görüntü
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-Ayrıca, ölçek kümesini güncelleştirme hakkında daha fazla yol için [bir sanal makine ölçek kümesini değiştirme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) hakkında daha fazla bilgi edinebilirsiniz.
+Ayrıca, ölçek kümenizi güncelleştirmenin daha fazla yolu için [sanal makine ölçeği kümesini](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) nasıl değiştirebileceğiniz hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure hibrit avantajı ile tasarruf etme](https://azure.microsoft.com/pricing/hybrid-use-benefit/) hakkında daha fazla bilgi edinin
-- [Azure hibrit avantajı hakkında sık sorulan sorular](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/) hakkında daha fazla bilgi edinin
-- [Windows Server Lisanslama ayrıntılı Kılavuzu için Azure hibrit avantajı](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit) hakkında daha fazla bilgi edinin
-- Windows Server Azure Hibrit Avantajı hakkında daha fazla bilgi edinin [ve Azure Site Recovery Azure 'a uygulama geçirmeyi daha da verimli hale getirin](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
-- [Azure 'Da çok kiracılı barındırma Ile Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) hakkında daha fazla bilgi edinin
+- [Azure Karma Avantajı ile nasıl tasarruf edebilirsiniz](https://azure.microsoft.com/pricing/hybrid-use-benefit/) hakkında daha fazla bilgi edinin
+- [Azure Karma Avantajı için sık sorulan sorular](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/) hakkında daha fazla bilgi edinin
+- [Windows Server lisanslama için Azure Karma Avantajı hakkında daha fazla](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit) bilgi edinin ayrıntılı kılavuz
+- Windows Server ve Azure Site Kurtarma için Azure Karma Avantajı hakkında daha fazla bilgi edinin, [azure'a geçiş yapan uygulamaları daha da düşük maliyetli hale getirin](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
+- [Multitenant Hosting Right ile Azure'da Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) hakkında daha fazla bilgi edinin
 - [Kaynak Yöneticisi şablonlarını kullanma](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin

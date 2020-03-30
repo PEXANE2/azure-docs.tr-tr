@@ -14,36 +14,36 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 09c93e2d851bea22e9d54dde35398f36335eb896
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967583"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382996"
 ---
-# <a name="cli-example-reset-the-account-credentials"></a>CLı örneği: Hesap kimlik bilgilerini sıfırlayın
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI örneği: Hesap kimlik bilgilerini sıfırlama
 
 Bu makaledeki Azure CLI betiği, hesabınızın kimlik bilgilerini sıfırlamayı ve app.config ayarlarını geri almayı gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar
 
-[Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
+[Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Örnek betik
 
-```
+```azurecli-interactive
 # Update the following variables for your own settings:
 resourceGroup=amsResourceGroup
 amsAccountName=amsmediaaccountname
 
 az ams account sp reset-credentials \
   --account-name $amsAccountName \
-  --resource-group $resourceGroup 
+  --resource-group $resourceGroup
  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [az AMS](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [Kimlik bilgilerini Sıfırla](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-reset-credentials)
+* [az ams](/cli/azure/ams)
+* [Kimlik bilgilerini sıfırlama](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)

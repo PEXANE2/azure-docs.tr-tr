@@ -1,7 +1,7 @@
 ---
-title: Model performansını değerlendir
+title: Model performansını değerlendirme
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) ve bu görev için kullanılabilen ölçümler hakkında model performansını değerlendirmeyi öğrenin.
+description: Azure Machine Learning Studio'da (klasik) model performansını nasıl değerlendireceklerini ve bu görev için kullanılabilen ölçümlerhakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,171 +11,171 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218150"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de model performansını değerlendirme (klasik)
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'da model performansı nasıl değerlendirilir (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Bu makalede, Azure Machine Learning Studio (klasik) ' de bir modelin performansının nasıl değerlendirileceği gösterilmektedir ve bu görev için kullanılabilen ölçümlere ilişkin kısa bir açıklama sunulmaktadır. Yaygın olarak denetlenen üç öğrenme senaryosu sunulmaktadır: 
+Bu makalede, Azure Machine Learning Studio'da (klasik) bir modelin performansının nasıl değerlendirilene kadar değerlendirilebildiğini göstermekte ve bu görev için kullanılabilen ölçümlerin kısa bir açıklamasını sunmuştur. Üç yaygın denetimli öğrenme senaryosu sunulmuştur: 
 
-* regresyon
+* Regresyon
 * ikili sınıflandırma 
-* birden çok Lass sınıflandırması
+* çok sınıflı sınıflandırma
 
 
 
-Bir modelin performansını değerlendirmek, veri bilimi işlemindeki temel aşamalardan biridir. Bir veri kümesinin Puanlama (tahminleri), eğitilen bir model tarafından ne kadar başarılı olduğunu gösterir. 
+Bir modelin performansını değerlendirmek, veri bilimi sürecinin temel aşamalarından biridir. Bir veri kümesinin puanlama (tahminleri) eğitimli bir model tarafından ne kadar başarılı olduğunu gösterir. 
 
-Azure Machine Learning Studio (klasik), ana makine öğrenimi modüllerinin ikisi aracılığıyla model değerlendirmesini destekler: [modeli değerlendirin][evaluate-model] ve [çapraz doğrulama modeli][cross-validate-model]. Bu modüller, modelinizin makine öğrenimi ve istatistiklerinde yaygın olarak kullanılan bir dizi ölçüm bakımından nasıl gerçekleştiğini görmenizi sağlar.
+Azure Machine Learning Studio (klasik), model değerlendirmesini iki ana makine öğrenme modülü aracılığıyla destekler: [Modeli Değerlendirin][evaluate-model] ve [Modeli Çapraz Doğrulayın.][cross-validate-model] Bu modüller, makine öğrenimi ve istatistikte yaygın olarak kullanılan bir dizi ölçüm açısından modelinizin nasıl performans gösterdiğini görmenizi sağlar.
 
-## <a name="evaluation-vs-cross-validation"></a>Değerlendirme ve çapraz doğrulama karşılaştırması
-Değerlendirme ve çapraz doğrulama, modelinizin performansını ölçmek için standart yollardır. Bunlar her ikisi de diğer modellerle ilgili olarak incelemenize veya karşılaştırabileceğiniz değerlendirme ölçümleri üretir.
+## <a name="evaluation-vs-cross-validation"></a>Değerlendirme ve Çapraz Doğrulama
+Değerlendirme ve çapraz doğrulama, modelinizin performansını ölçmenin standart yollarıdır. Her ikisi de inceleyebilir veya diğer modellerin bu karşılaştırıldığında değerlendirme ölçümleri oluşturun.
 
-[Değerlendirme modeli][evaluate-model] , giriş olarak bir puanlanmış veri kümesi bekler (veya iki farklı modelin performansını karşılaştırmak istediğiniz durumlarda iki durumda). Bu nedenle, sonuçları değerlendirebilmeniz için önce modeli [eğitme][train-model] modülünü kullanarak modelinizi eğitmeniz ve [model Puanlama][score-model] modülünü kullanarak bazı veri kümelerinde tahmin yapmanız gerekir. Değerlendirme, puanlanmış etiketlere/olasılıklara, hepsi de [puan modeli][score-model] modülü tarafından çıkış olan doğru etiketlere göre yapılır.
+[Değerlendirme Modeli,][evaluate-model] puanlanmış bir veri kümesini giriş olarak bekler (veya iki farklı modelin performansını karşılaştırmak isterseniz iki). Bu nedenle, sonuçları değerlendirmek için önce [Modelinizi Tren Modeli][train-model] modüllerini kullanarak eğitmeniz ve [Puan Modeli][score-model] modüllerini kullanarak bazı veri setinde öngörülerde bulunmanız gerekir. Değerlendirme, puanlanan etiketlere/olasılıklara ve gerçek etiketlere dayanır ve bunların hepsi [Puan Modeli][score-model] modülü tarafından üretilir.
 
-Alternatif olarak, giriş verilerinin farklı alt kümelerine otomatik olarak bir dizi tren (10 kattı) işlemi gerçekleştirmek için çapraz doğrulama kullanabilirsiniz. Giriş verileri 10 parçaya bölünür, burada bir test için ayrılmıştır ve eğitim için diğer 9. Bu işlem 10 kez yinelenir ve değerlendirme ölçümlerinin ortalaması alınır. Bu, bir modelin yeni veri kümelerine ne kadar iyi genelleştireceğini belirlemeye yardımcı olur. [Çapraz doğrulama modeli][cross-validate-model] modülü, eğitilmiş bir modeli ve etiketli bir veri kümesini alır ve ortalama sonuçlara ek olarak 10 katların her birinin değerlendirme sonuçlarını verir.
+Alternatif olarak, giriş verilerinin farklı alt kümelerinde otomatik olarak bir dizi tren puanı değerlendirme işlemi (10 kat) gerçekleştirmek için çapraz doğrulamayı kullanabilirsiniz. Giriş verileri, biri test için ayrılmış, diğeri eğitim için 9 bölüme ayrılmıştır. Bu işlem 10 kez tekrarlanır ve değerlendirme ölçümleri ortalamalanır. Bu, bir modelin yeni veri kümelerine ne kadar iyi genelleştirileceğini belirlemede yardımcı olur. [Çapraz Doğrulama Modeli][cross-validate-model] modülü eğitimsiz bir model alır ve bazı etiketli veri seti ve ortalama sonuçlara ek olarak, 10 kıvrımher değerlendirme sonuçlarını çıkar.
 
-Aşağıdaki bölümlerde, hem [değerlendirme modelini][evaluate-model] hem de [çapraz doğrulama model][cross-validate-model] modüllerini kullanarak basit regresyon ve sınıflandırma modelleri oluşturacağız ve performanslarını değerlendiririz.
+Aşağıdaki bölümlerde, basit regresyon ve sınıflandırma modelleri oluşturacak ve hem [Model'i değerlendirin][evaluate-model] hem de [Çapraz Doğrulama Modeli][cross-validate-model] modüllerini kullanarak performanslarını değerlendireceğiz.
 
-## <a name="evaluating-a-regression-model"></a>Regresyon modelini değerlendirme
-Bir otomobil 'nin boyut, Horsepower, altyapı özellikleri gibi özellikleri kullanarak bir fiyat tahmin etmek istediğimiz olduğunu varsayalım. Bu, hedef değişkenin (*Fiyat*) sürekli sayısal bir değer olduğu tipik bir gerileme sorunudur. Belirli bir otomobilin özellik değerleri verildiğinde, bu otomobilin fiyatını tahmin edebilen bir doğrusal regresyon modeline uyabiliriz. Bu regresyon modeli, eğitidiğimiz veri kümesini öğrenmek için kullanılabilir. Tahmin edilen otomobil fiyatlarına sahip olduktan sonra, tahmine dayalı olarak gerçek fiyatlardan ne kadar tahmin edilebileceğini inceleyerek model performansını değerlendirebiliriz. Bunu göstermek için, Machine Learning Studio (klasik) içindeki **kayıtlı veri kümeleri** bölümünde bulunan *otomatik mobil fiyat verileri (ham) veri kümesini* kullanırız.
-
-### <a name="creating-the-experiment"></a>Deneme oluşturma
-Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
-
-* Otomobil fiyat verileri (ham)
-* [Doğrusal regresyon][linear-regression]
-* [Modeli eğitme][train-model]
-* [Puan modeli][score-model]
-* [Modeli değerlendir][evaluate-model]
-
-Bağlantı noktalarını aşağıda gösterildiği gibi Şekil 1 ' de bağlayın ve [model eğitme][train-model] modülünün etiket sütununu *Price*olarak ayarlayın.
-
-![Regresyon modelini değerlendirme](./media/evaluate-model-performance/1.png)
-
-Şekil 1. Regresyon modeli değerlendiriliyor.
-
-### <a name="inspecting-the-evaluation-results"></a>Değerlendirme sonuçlarını inceleme
-Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz. Regresyon modelleri için kullanılabilen değerlendirme ölçümleri şunlardır: *Ortalama mutlak hata*, *kök anlamı mutlak hata*, *göreli mutlak hata*, *göreli kare hata*ve *belirleme katsayısı*.
-
-Burada "Error" terimi, tahmin edilen değer ile true değeri arasındaki farkı temsil eder. Bu farkın mutlak değeri veya kare değeri, tahmin edilen ve gerçek değer arasındaki fark bazı durumlarda negatif olabilir, ancak tüm örneklerde oluşan toplam hata boyutunu yakalamak için hesaplanır. Hata ölçümleri, bir regresyon modelinin tahmine dayalı performansını, tahminlerinin gerçek değerlerden oluşan ortalama sapması bakımından ölçer. Daha düşük hata değerleri, modelin tahminlerde daha doğru olduğu anlamına gelir. Tam bir hata ölçüsü, modelin verileri mükemmel bir şekilde sığdığı anlamına gelir.
-
-Ayrıca, R kare olarak da bilinen belirleme katsayısı, modelin verilere ne kadar iyi uyduğunu ölçmenin standart bir yoludur. Model tarafından açıklanan çeşitleme oranı olarak yorumlanabilir. Bu örnekte daha yüksek bir oran daha iyidir, burada 1 mükemmel bir uyum gösterir.
-
-![Doğrusal regresyon değerlendirmesi ölçümleri](./media/evaluate-model-performance/2.png)
-
-Şekil 2. Doğrusal regresyon değerlendirmesi ölçümleri.
-
-### <a name="using-cross-validation"></a>Çapraz doğrulama kullanma
-Daha önce belirtildiği gibi, [çapraz doğrulama model][cross-validate-model] modülünü kullanarak yinelenen eğitim, Puanlama ve değerlendirmeleri otomatik olarak gerçekleştirebilirsiniz. Bu durumda tüm ihtiyacınız olan bir veri kümesi, eğitilmiş bir model ve [çapraz doğrulama modeli][cross-validate-model] modülüdür (aşağıdaki şekle bakın). [Çapraz doğrulama model][cross-validate-model] modülünün özelliklerinde Label sütununu *Price* olarak ayarlamanız gerekir.
-
-![Regresyon modelinin çapraz doğrulanması](./media/evaluate-model-performance/3.png)
-
-Şekil 3. Regresyon modelinin çapraz doğrulanması.
-
-Denemeyi çalıştırdıktan sonra, [çapraz doğrulama modeli][cross-validate-model] modülünün sağ çıkış bağlantı noktasına tıklayarak değerlendirme sonuçlarını inceleyebilirsiniz. Bu, her yineleme için ölçümlerin ayrıntılı bir görünümünü (katlama) ve ölçümlerin her birinin ortalama sonucunu sağlar (Şekil 4).
-
-![Regresyon modelinin çapraz doğrulama sonuçları](./media/evaluate-model-performance/4.png)
-
-Şekil 4. Regresyon modelinin çapraz doğrulama sonuçları.
-
-## <a name="evaluating-a-binary-classification-model"></a>Ikili sınıflandırma modelini değerlendirme
-İkili sınıflandırma senaryosunda, hedef değişkeni yalnızca iki olası sonuç içerir, örneğin: {0, 1} veya {false, true}, {negative, pozitif}. Bazı demografik ve istihdam değişkenlerine sahip yetişkin çalışanları veri kümesi verildiğini ve {"< = 50 K", "> 50 K"} değerlerine sahip bir ikili değişken olan gelir düzeyini tahmin etmek isteyip istemediğiniz varsayıyoruz. Diğer bir deyişle, negatif sınıf, yılda 50 K veya daha küçük bir değere sahip olan çalışanları temsil eder ve pozitif sınıf diğer tüm çalışanları temsil eder. Regresyon senaryosunda, bir modeli eğtireceğiz, bazı verileri değerlendiyoruz ve sonuçları değerlendiririz. Buradaki temel fark, ölçüm Azure Machine Learning Studio (klasik) hesaplar ve çıktılar seçimleridir. Gelir düzeyi tahmin senaryosunu göstermek için [yetişkinlere](https://archive.ics.uci.edu/ml/datasets/Adult) yönelik veri kümesini, yaygın olarak kullanılan bir ikili sınıflandırıcının bir Studio (klasik) denemesi oluşturmak ve iki sınıf lojistik regresyon modelinin performansını değerlendirmek için kullanacağız.
+## <a name="evaluating-a-regression-model"></a>Regresyon Modelinin Değerlendirilmesi
+Boyutlar, beygir gücü, motor özellikleri ve benzeri özellikleri kullanarak bir otomobilin fiyatını tahmin etmek istediğimizi varsayalım. Bu, hedef değişkenin *(fiyatın)* sürekli sayısal bir değer olduğu tipik bir regresyon sorunudur. Belirli bir arabanın özellik değerleri göz önüne alındığında, o arabanın fiyatını tahmin edebilirsiniz doğrusal bir regresyon modeli sığdırabilirsiniz. Bu regresyon modeli, eğittiğimiz veri kümesini elde etmek için kullanılabilir. Tahmin edilen otomobil fiyatlarını gördükten sonra, tahminlerin ortalama gerçek fiyatlardan ne kadar saptadığını bakarak model performansını değerlendirebiliriz. Bunu göstermek için, Machine Learning *Studio'daki (klasik)* Kayıtlı Veri **Setleri** bölümünde bulunan Otomobil fiyat verilerini (Raw) veri kümesini kullanırız.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
+Azure Machine Learning Studio'da (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
-* Yetişkin Census geliri Ikili sınıflandırma veri kümesi
-* [İki sınıf Lojistik gerileme][two-class-logistic-regression]
-* [Modeli eğitme][train-model]
-* [Puan modeli][score-model]
-* [Modeli değerlendir][evaluate-model]
+* Otomobil fiyat verileri (Raw)
+* [Çizgisel Regresyon][linear-regression]
+* [Model Eğitme][train-model]
+* [Modeli Puanlama][score-model]
+* [Modeli Değerlendirme][evaluate-model]
 
-Bu bağlantı noktalarını Şekil 5 ' te aşağıda gösterildiği gibi bağlayın ve [model eğitme][train-model] modülünün etiket sütununu *gelir*olarak ayarlayın.
+Aşağıda Şekil 1'de gösterildiği gibi bağlantı noktalarını bağlayın ve [Tren Modeli][train-model] modülünün Etiket sütununa *fiyat*ayarlayın.
 
-![Ikili sınıflandırma modelini değerlendirme](./media/evaluate-model-performance/5.png)
+![Regresyon Modelinin Değerlendirilmesi](./media/evaluate-model-performance/1.png)
 
-Şekil 5. Ikili sınıflandırma modeli değerlendiriliyor.
+Şekil 1. Regresyon Modelinin Değerlendirilmesi.
 
-### <a name="inspecting-the-evaluation-results"></a>Değerlendirme sonuçlarını inceleme
-Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayabilir ve değerlendirme sonuçlarını görmek Için *Görselleştir* ' i seçebilirsiniz (Şekil 7). İkili sınıflandırma modelleriyle kullanılabilen değerlendirme ölçümleri şunlardır: *doğruluk*, *duyarlık*, *geri çağırma*, *F1 puanı*ve *AUC*. Ayrıca modül, doğru pozitif sonuç sayısı, yanlış negatifler, yanlış pozitif sonuçlar ve gerçek negatiflerin sayısını gösteren bir karışıklık matrisi çıkarır, bu da *Roc*, *duyarlık/geri çekme*ve *yükseltme eğrileri.*
+### <a name="inspecting-the-evaluation-results"></a>Değerlendirme Sonuçlarının İncelenmesi
+Denemeyi çalıştırdıktan sonra, [Model'i Değerlendir][evaluate-model] modülünün çıkış bağlantı noktasını tıklatabilir ve değerlendirme sonuçlarını görmek için *Visualize'ı* seçebilirsiniz. Regresyon modelleri için kullanılabilir değerlendirme ölçümleri şunlardır: *Ortalama Mutlak Hata*, Kök Ortalama Mutlak *Hata*, *Göreli Mutlak Hata*, *Göreli Kareli Hata*, ve Kararlılık *Katsayısı*.
 
-Doğruluk, doğru sınıflandırılan örneklerin oranını sağlar. Bu, genellikle bir sınıflandırıcının değerlendirmesi sırasında baktığın ilk ölçümdür. Bununla birlikte, test verileri dengesiz olduğunda (örneklerin çoğu sınıflardan birine aittir) veya sınıflardan birindeki performanstan daha fazla ilgileniyorsanız, doğruluk gerçekten bir sınıflandırıcının verimliliğini yakalamaz. Gelir düzeyi sınıflandırma senaryosunda, örneklerin %99 ' unun yıl başına 50 ' ye eşit veya daha az alan kişileri gösterdiği bazı verileri test ettiğini varsayın. Tüm örnekler için "< = 50K" sınıfını tahmin ederek 0,99 doğruluğu elde etmek mümkündür. Bu durumdaki sınıflandırıcının genel olarak iyi bir iş yapmakta olduğu görülüyor, ancak gerçekte, yüksek gelir bireylerini sınıflandırmayacak (%1) kopyalan.
+Buradaki "hata" terimi, öngörülen değer le gerçek değer arasındaki farkı temsil eder. Bu farkın mutlak değeri veya karesi genellikle tüm örneklerde hatanın toplam büyüklüğünü yakalamak için hesaplanır, çünkü tahmin edilen ve gerçek değer arasındaki fark bazı durumlarda negatif olabilir. Hata ölçümleri, bir regresyon modelinin öngörülerinin gerçek değerlerden ortalama sapması açısından tahmin performansını ölçer. Daha düşük hata değerleri, modelin öngörülerde daha doğru olduğu anlamına gelir. Genel hata ölçümü sıfır, modelin verilere mükemmel uyduğu anlamına gelir.
 
-Bu nedenle, değerlendirmenin daha belirgin yönlerini yakalayan ek ölçümleri hesaplamak yararlı olur. Bu tür ölçümlerin ayrıntılarına geçmeden önce, bir ikili sınıflandırma değerlendirmesinin karışıklık matrisini anlamak önemlidir. Eğitim kümesindeki sınıf etiketleri, genellikle pozitif veya negatif olarak ifade ettiğimiz yalnızca iki olası değeri alabilir. Bir sınıflandırıcının doğru şekilde tahmin edilen pozitif ve negatif örneklere, sırasıyla doğru pozitif sonuçlar (TP) ve gerçek negatifler (TN) denir. Benzer şekilde, yanlış sınıflandırılmış örneklere yanlış pozitif durumlar (FP) ve yanlış negatifler (FN) denir. Karışıklık matrisi, bu dört kategorinin her biri altında kalan örneklerin sayısını gösteren bir tablodur. Azure Machine Learning Studio (klasik) otomatik olarak, veri kümesindeki iki sınıftan hangisinin pozitif sınıf olduğunu belirler. Sınıf etiketleri Boole veya tamsayı ise, ' true ' veya ' 1 ' olarak etiketlenmiş örnekler pozitif sınıfa atanır. Etiketler, gelir veri kümesi gibi dizelerdir, Etiketler alfabetik olarak sıralanır ve ikinci düzey pozitif sınıf olduğunda, ilk düzey negatif sınıf olarak seçilir.
+R karesi olarak da bilinen belirleme katsayısı, modelin verilere ne kadar uyduğunu ölçmenin standart bir yoludur. Bu model tarafından açıklanan varyasyon oranı olarak yorumlanabilir. Daha yüksek bir oran 1 mükemmel bir uyum gösterir bu durumda, daha iyidir.
 
-![İkili sınıflandırma karışıklık matrisi](./media/evaluate-model-performance/6a.png)
+![Lineer Regresyon Değerlendirme Ölçümleri](./media/evaluate-model-performance/2.png)
 
-Şekil 6. İkili sınıflandırma karışıklık matrisi.
+Şekil 2. Lineer Regresyon Değerlendirme Ölçümleri.
 
-Gelir sınıflandırması sorununa geri dönerek, kullanılan sınıflandırıcının performansını anmamıza yardımcı olan birkaç değerlendirme sorusu istemek istiyoruz. Doğal bir soru: ' modelin, > 50 K (TP + FP) kazanmakta tahmin edildiği kişilerin dışına, kaç tane doğru şekilde sınıflandırıldığı (TP)? ' Bu soru, doğru sınıflandırılan pozitif sonuç oranı olan modelin **hassasiyetini** arayarak yanıtlanır: TP/(TP + FP). Diğer bir yaygın soru, "50. gelir > 50K (TP + FN) ve sınıflandırıcının doğru sınıflandırmasına (TP) kadar çok büyük olan çalışanların tümünün dışındadır. Bu aslında **geri çektir**veya sınıflandırıcının gerçek pozitif ORANı: TP/(TP + fn). Duyarlık ve geri çekme arasında açık bir denge olduğunu fark edebilirsiniz. Örneğin görece dengeli bir veri kümesi verildiğinde, genellikle pozitif örnekleri tahmin eden bir sınıflandırıcı yüksek bir geri çekmelidir, ancak negatif örneklerin birçoğu büyük miktarda yanlış pozitif sonuç oluşmasına neden olacak şekilde düşük bir duyarlık olabilir. Bu iki ölçümün nasıl değişeceğini gösteren bir çizim görmek için değerlendirme sonucu çıktısı sayfasında **duyarlık/GERI çağırma** eğrisine (Şekil 7 ' nin sol üst kısmında) tıklayabilirsiniz.
+### <a name="using-cross-validation"></a>Çapraz Doğrulama kullanma
+Daha önce de belirtildiği gibi, [Çapraz-Doğrula Modeli][cross-validate-model] modüllerini kullanarak tekrarlanan eğitim, puanlama ve değerlendirmeleri otomatik olarak gerçekleştirebilirsiniz. Bu durumda ihtiyacınız olan tek şey bir veri kümesi, eğitimsiz bir model ve [Çapraz Doğrulama Modeli][cross-validate-model] modülüdür (aşağıdaki şemaya bakın). Etiket sütununa [Çapraz Doğrula Modeli][cross-validate-model] modülünün özelliklerinde *fiyat* ayarlamalısınız.
 
-![İkili sınıflandırma değerlendirme sonuçları](./media/evaluate-model-performance/7.png)
+![Bir Regresyon Modelinin Çapraz Doğrulama](./media/evaluate-model-performance/3.png)
 
-Şekil 7. İkili sınıflandırma değerlendirme sonuçları.
+Şekil 3. Bir Regresyon Modeli çapraz doğrulama.
 
-Genellikle kullanılan başka bir ilgili ölçüm, her iki duyarlık ve geri çekmeyi göz önüne alan **F1 puandır**. Bu iki ölçümün harmonik ortalaması vardır ve şu şekilde hesaplanır: F1 = 2 (duyarlık x geri çekme)/(duyarlık + geri çağırma). F1 puanı, değerlendirmeyi tek bir sayı içinde özetlemek için iyi bir yoldur, ancak her zaman bir sınıflandırıcının nasıl davranacağını daha iyi anlamak için her iki duyarlığa bakmak ve birlikte çağırmak iyi bir uygulamadır.
+Denemeyi çalıştırdıktan sonra, [Çapraz-Onula Modeli][cross-validate-model] modülünün sağ çıkış bağlantı noktasına tıklayarak değerlendirme sonuçlarını inceleyebilirsiniz. Bu, her yineleme (kat) için ölçümlerin ve ölçümlerin her birinin ortalama sonuçlarının ayrıntılı bir görünümünü sağlar (Şekil 4).
 
-Ayrıca, bir diğeri gerçek pozitif oranı ve **alıcı Işletim özelliği (ROC)** eğrisi ve **eğri (AUC) değeri altındaki** karşılık gelen alanı yanlış pozitif orandır. Bu eğriye yaklaşmak, sol üst köşenin ne kadar iyi olduğunu, sınıflandırıcının performansının ne kadar iyi olduğunu (yanlış pozitif oranı en aza indirerek gerçek pozitif oranı en üst düzeye çıkarmasıdır) sağlar. Çizimin köşegenini yakın olan eğriler, rastgele tahmine yakın tahminlere yol açacak Sınıflandırıcılardan oluşur.
+![Bir Regresyon Modelinin Çapraz Doğrulama Sonuçları](./media/evaluate-model-performance/4.png)
 
-### <a name="using-cross-validation"></a>Çapraz doğrulama kullanma
-Regresyon örneğinde olduğu gibi, verilerin farklı alt kümelerini otomatik olarak eğitme, Puanlama ve değerlendirmek için çapraz doğrulama gerçekleştirebiliriz. Benzer şekilde, [çapraz doğrulama model][cross-validate-model] modülünü, eğitilen lojistik regresyon modelini ve bir veri kümesini kullanabiliriz. [Çapraz doğrulama model][cross-validate-model] modülünün özelliklerinde, etiket sütunu *gelir* olarak ayarlanmalıdır. Denemeyi çalıştırdıktan ve [çapraz doğrulama modeli][cross-validate-model] modülünün sağ çıkış bağlantı noktasına tıkladıktan sonra, her katlama için ikili sınıflandırma ölçümü değerlerini, her birinin ortalama ve standart sapmasına ek olarak görebiliriz. 
+Şekil 4. Bir Regresyon Modelinin Çapraz Doğrulama Sonuçları.
 
-![Ikili sınıflandırma modelinin çapraz doğrulanması](./media/evaluate-model-performance/8.png)
-
-Şekil 8. Ikili sınıflandırma modelinin çapraz doğrulanması.
-
-![Ikili sınıflandırıcının çapraz doğrulama sonuçları](./media/evaluate-model-performance/9.png)
-
-Şekil 9. Ikili sınıflandırıcının çapraz doğrulama sonuçları.
-
-## <a name="evaluating-a-multiclass-classification-model"></a>Birden çok Lass sınıflandırma modelini değerlendirme
-Bu deneyde, Iris tesisindeki üç farklı türde (sınıf) örnekler içeren popüler [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "İs") veri kümesini kullanacağız. Her örnek için dört Özellik değeri (sepal uzunluğu/genişliği ve Petal uzunluğu/genişliği) vardır. Önceki denemeleri, modelleri aynı veri kümelerini kullanarak eğitimli ve test ediyoruz. Burada, verilerin iki alt kümesini oluşturmak, birincinin üzerinde eğmek ve ikincisi değerlendirmek ve değerlendirmek için [bölünmüş veri][split] modülünü kullanacağız. Iris veri kümesi, [UCI Machine Learning deposunda](https://archive.ics.uci.edu/ml/index.html)herkese açık bir şekilde bulunabilir ve [içeri aktarma verileri][import-data] modülü kullanılarak indirilebilir.
+## <a name="evaluating-a-binary-classification-model"></a>İkili Sınıflandırma Modelinin Değerlendirilmesi
+İkili sınıflandırma senaryosunda, hedef değişkenin yalnızca iki olası sonucu vardır: {0, 1} veya {false, true}, {negative, positive}. Size bazı demografik ve istihdam değişkenleri olan yetişkin çalışanların bir veri kümesi verildiğini ve gelir düzeyini tahmin etmenizin istendiğini varsayalım, {"<=50 K", ">50 K" değerlerine sahip bir ikili değişken. Başka bir deyişle, negatif sınıf yılda 50 K'den az veya eşit kazanan çalışanları, pozitif sınıf ise diğer tüm çalışanları temsil eder. Gerileme senaryosunda olduğu gibi, bir model eğitecek, bazı veriler elde eder ve sonuçları değerlendiririz. Buradaki temel fark, Azure Machine Learning Studio (klasik) hesaplama ve çıktılarının seçimidir. Gelir düzeyi tahmin senaryosunu göstermek için, Bir Studio (klasik) deney oluşturmak ve yaygın olarak kullanılan ikili sınıflandırıcı olan iki sınıflı lojistik regresyon modelinin performansını değerlendirmek için [Yetişkin](https://archive.ics.uci.edu/ml/datasets/Adult) veri kümesini kullanacağız.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
+Azure Machine Learning Studio'da (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
-* [Verileri içeri aktar][import-data]
-* [Birden çok Lass karar ormanı][multiclass-decision-forest]
-* [Verileri Böl][split]
-* [Modeli eğitme][train-model]
-* [Puan modeli][score-model]
-* [Modeli değerlendir][evaluate-model]
+* Yetişkin Nüfus Sayımı Gelir İkili Sınıflandırması veri seti
+* [Çift Sınıflı Lojistik Regresyon][two-class-logistic-regression]
+* [Model Eğitme][train-model]
+* [Modeli Puanlama][score-model]
+* [Modeli Değerlendirme][evaluate-model]
 
-Bağlantı noktalarını Şekil 10 ' da aşağıda gösterildiği gibi bağlayın.
+Şekil 5'te gösterildiği gibi bağlantı noktalarını bağlayın ve [Tren Modeli][train-model] modülünün Etiket sütununa *gelir*ayarlayın.
 
-[Model eğitimi][train-model] modülünün etiket sütun dizinini 5 olarak ayarlayın. DataSet 'in başlık satırı yok ancak sınıf etiketlerinin beşinci sütunda olduğunu biliyoruz.
+![İkili Sınıflandırma Modelinin Değerlendirilmesi](./media/evaluate-model-performance/5.png)
 
-[Veri alma][import-data] modülüne tıklayın ve *VERI kaynağı* özelliğini *http aracılığıyla Web URL 'Si*olarak ve http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data*URL 'si* olarak ayarlayın.
+Şekil 5. İkili Sınıflandırma Modelinin Değerlendirilmesi.
 
-[Veri ayırma][split] modülündeki eğitim için kullanılacak örneklerin kesirini ayarlayın (örneğin, 0,7).
+### <a name="inspecting-the-evaluation-results"></a>Değerlendirme Sonuçlarının İncelenmesi
+Denemeyi çalıştırdıktan [sonra, Model'i Değerlendir][evaluate-model] modülünün çıkış noktasına tıklayabilir ve değerlendirme sonuçlarını görmek için *Visualize'ı* seçebilirsiniz (Şekil 7). İkili sınıflandırma modelleri için mevcut değerlendirme ölçümleri şunlardır: *Doğruluk*, *Hassaslık*, *Geri Çağırma*, *F1 Puanı*, ve *AUC*. Buna ek olarak, modül gerçek pozitif, yanlış negatifler, yanlış pozitifler ve gerçek negatiflerin yanı sıra *ROC,* *Precision/Recall*ve *Lift* eğrilerinin sayısını gösteren bir karışıklık matrisi çıkar.
 
-![Birden çok Lass sınıflandırıcısını değerlendirme](./media/evaluate-model-performance/10.png)
+Doğruluk sadece doğru sınıflanmış örneklerin oranıdır. Genellikle bir sınıflandırıcı değerlendirirken baktığınız ilk metriktir. Ancak, test verileri dengesizolduğunda (örneklerin çoğunun sınıflardan birine ait olduğu durumlarda) veya sınıflardan birinin performansıyla daha çok ilgileniyorsanız, doğruluk bir sınıflandırıcının etkinliğini gerçekten yakalamaz. Gelir düzeyi sınıflandırma senaryosunda, örneklerin %99'unun yılda 50.000'den az veya eşit kazanan kişileri temsil ettiği bazı verileri test ettiğinizi varsayalım. Tüm örnekler için "<=50K" sınıfını tahmin ederek 0,99 doğruluk elde etmek mümkündür. Bu durumda sınıflandırıcı genel olarak iyi bir iş yapıyor gibi görünüyor, ama gerçekte, yüksek gelirli bireylerin herhangi bir sınıflandırmak için başarısız (%1) Doğru.
 
-Şekil 10. Birden çok Lass sınıflandırıcısını değerlendirme
+Bu nedenle, değerlendirmenin daha belirli yönlerini yakalayan ek ölçümleri hesaplamak yararlıdır. Bu tür ölçümlerin ayrıntılarına girmeden önce, ikili sınıflandırma değerlendirmesinin kafa karışıklığı matrisini anlamak önemlidir. Eğitim kümesindeki sınıf etiketleri, genellikle pozitif veya negatif olarak adlandırdığımız yalnızca iki olası değer alabilir. Bir sınıflandırıcının doğru tahmin ettiği olumlu ve olumsuz örneklersırasıyla true positives (TP) ve true negatives (TN) olarak adlandırılır. Benzer şekilde, yanlış sınıflandırılan örneklere yanlış pozitif (FP) ve yanlış negatifler (FN) denir. Karışıklık matrisi yalnızca bu dört kategorinin her birine düşen örnek sayısını gösteren bir tablodur. Azure Machine Learning Studio (klasik), veri kümesindeki iki sınıftan hangisinin pozitif sınıf olduğuna otomatik olarak karar verir. Sınıf etiketleri Boolean veya tamsayılars ise, 'true' veya '1' etiketli örnekler pozitif sınıf atanır. Etiketler gelir veri kümesi gibi dizeleri ise, etiketler alfabetik olarak sıralanır ve ikinci düzey pozitif sınıf ise ilk düzey negatif sınıf olarak seçilir.
 
-### <a name="inspecting-the-evaluation-results"></a>Değerlendirme sonuçlarını inceleme
-Denemeyi çalıştırın ve [modeli değerlendir][evaluate-model]çıkış bağlantı noktasına tıklayın. Değerlendirme sonuçları, bu durumda bir karışıklık matrisi biçiminde sunulmuştur. Matris, üç sınıf için gerçek ve tahmin edilen örnekleri gösterir.
+![İkili Sınıflandırma Karışıklık Matrisi](./media/evaluate-model-performance/6a.png)
 
-![Birden çok Lass sınıflandırma değerlendirmesi sonuçları](./media/evaluate-model-performance/11.png)
+Şekil 6. İkili Sınıflandırma Karışıklık Matrisi.
 
-Şekil 11. Birden çok Lass sınıflandırma değerlendirmesi sonuçları.
+Gelir sınıflandırma sıcanına geri dönersek, kullanılan sınıflandırıcının performansını anlamamıza yardımcı olacak çeşitli değerlendirme soruları sormak isteriz. Doğal bir soru şudur: 'Modelin 50 K (TP+FP) >kazandığı tahmin edilen kişilerden kaç tanesi doğru olarak sınıflandırıldı (TP)?' Bu soruya doğru sınıflandırılan **Precision** pozitiflerin oranı olan modelin Hassasiyeti'ne bakarak cevaplanabilir: TP/(TP+FP). Başka bir yaygın soru "50k (TP + FN) >geliri olan tüm yüksek kazançlı çalışanların dışında, kaç sınıflandırıcı doğru sınıflandırıcı (TP) sınıflandırmak yaptı". Bu aslında **Recall**, ya da gerçek pozitif oranı: TP / (TP + FN) sınıflandırıcı. Kesinlik ve hatırlama arasında bariz bir denge olduğunu fark edebilirsiniz. Örneğin, göreceli olarak dengeli bir veri kümesi göz önüne alındığında, çoğunlukla olumlu örnekleri tahmin eden bir sınıflandırıcı, yüksek bir geri çağırma olurdu, ancak olumsuz örneklerin çoğu yanlış sınıflandırılatır ve çok sayıda yanlış pozitif sonuçla sonuçlanır. Bu iki ölçümün nasıl değiştiğine ilişkin bir çizim görmek için, değerlendirme sonucu çıktı sayfasındaki **PRECISION/RECALL** eğrisine tıklayabilirsiniz (Şekil 7'nin sol üst kısmı).
 
-### <a name="using-cross-validation"></a>Çapraz doğrulama kullanma
-Daha önce belirtildiği gibi, [çapraz doğrulama model][cross-validate-model] modülünü kullanarak yinelenen eğitim, Puanlama ve değerlendirmeleri otomatik olarak gerçekleştirebilirsiniz. Bir veri kümesi, eğitilmiş bir model ve [çapraz doğrulama modeli][cross-validate-model] modülü gerekir (aşağıdaki şekle bakın). Yine de [çapraz doğrulama modeli][cross-validate-model] modülünün etiket sütununu ayarlamanız gerekir (Bu durumda sütun dizini 5). Denemeyi çalıştırdıktan ve [çapraz doğrulama modelinin][cross-validate-model]sağ çıkış bağlantı noktasına tıkladıktan sonra, her katlama ve ortalama ve standart sapmanın ölçüm değerlerini inceleyebilirsiniz. Burada görüntülenen ölçümler, ikili sınıflandırma durumunda açıklananlara benzer. Ancak, birden çok Lass sınıflandırmasında, bir genel pozitif veya negatif sınıf olmadığından, gerçek pozitif sonuçlar/negatifler ve hatalı pozitif sonuçlar/negatifler için bir sınıf başına olarak sayım yapılır. Örneğin, ' Iris-setosa ' sınıfının kesinlik veya geri çağırma işlemi hesaplanırken, bu pozitif sınıf ve diğerlerinin negatif olduğu varsayılır.
+![İkili Sınıflandırma Değerlendirme Sonuçları](./media/evaluate-model-performance/7.png)
 
-![Birden çok Lass sınıflandırma modelinin çapraz doğrulanması](./media/evaluate-model-performance/12.png)
+Şekil 7. İkili Sınıflandırma Değerlendirme Sonuçları.
 
-Şekil 12. Birden çok Lass sınıflandırma modelinin çapraz doğrulanması.
+Sık sık kullanılan bir diğer ilgili metrik **F1 Puanı**, dikkate hem hassasiyet ve hatırlama alır. Bu iki ölçümün harmonik ortalamasıdır ve şu şekilde hesaplanır: F1 = 2 (hassas x hatırlama) / (hassas + geri çağırma). F1 puanı değerlendirmeyi tek bir sayıda özetlemek için iyi bir yoldur, ancak bir sınıflandırıcının nasıl bir şekilde nasıl hissettiğini daha iyi anlamak için hem hassasiyete bakmak hem de birlikte hatırlamak her zaman iyi bir uygulamadır.
 
-![Birden çok Lass sınıflandırma modelinin çapraz doğrulama sonuçları](./media/evaluate-model-performance/13.png)
+Buna ek olarak, **alıcı çalışma karakteristik (ROC)** eğrisi ve **Eğri (AUC)** değeri altında ilgili Alan yanlış pozitif oranı karşı gerçek pozitif oranı inceleyebilirsiniz. Bu eğri sol üst köşeye ne kadar yakınsa, sınıflandırıcının performansı o kadar iyi olur (yanlış pozitif oranı en aza indirirken gerçek pozitif oranı en üst düzeye çıkarmaktır). Çizimin diyagonaline yakın olan eğriler, rasgele tahmine yakın tahminler yapma eğiliminde olan sınıflandırıcılardan kaynaklanır.
 
-Şekil 13. Birden çok Lass sınıflandırma modelinin çapraz doğrulama sonuçları.
+### <a name="using-cross-validation"></a>Çapraz Doğrulama kullanma
+Regresyon örneğinde olduğu gibi, verilerin farklı alt kümelerini otomatik olarak sürekli eğitmek, puanlamak ve değerlendirmek için çapraz doğrulama gerçekleştirebiliriz. Benzer şekilde, Çapraz [Doğrulama Modeli][cross-validate-model] modüllerini, eğitimsiz bir lojistik regresyon modelini ve bir veri kümesini kullanabiliriz. Etiket sütunu, [Çapraz Doğrula Modeli][cross-validate-model] modülünün özelliklerinde *gelir* elde etmek için ayarlanmalıdır. Denemeyi çalıştırdıktan ve [Çapraz-Doğrulama Modeli][cross-validate-model] modülünün doğru çıkış noktasına tıkladıktan sonra, her bir inin ortalama ve standart sapmasına ek olarak her bir kat için ikili sınıflandırma metrik değerlerini görebiliriz. 
+
+![İkili Sınıflandırma Modelinin Çapraz Doğrulanması](./media/evaluate-model-performance/8.png)
+
+Şekil 8. İkili Sınıflandırma Modeli çapraz doğrulama.
+
+![İkili Sınıflandırıcının Çapraz Doğrulama Sonuçları](./media/evaluate-model-performance/9.png)
+
+Şekil 9. İkili Sınıflandırıcının Çapraz Doğrulama Sonuçları.
+
+## <a name="evaluating-a-multiclass-classification-model"></a>Çok Sınıflı Sınıflandırma Modelinin Değerlendirilmesi
+Bu deneyde, iris tesisinin üç farklı türü (sınıfı) örneklerini içeren popüler [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "ıris") veri kümesini kullanacağız. Her örnek için dört özellik değeri (sepal uzunluk/genişlik ve yaprak uzunluğu/genişliği) vardır. Önceki deneylerde, modelleri aynı veri kümelerini kullanarak eğittik ve test ettik. Burada, verilerin iki alt kümesini oluşturmak, ilkinde eğitim almak ve ikincisinde puan almak ve değerlendirmek için [Bölünmüş Veri][split] modüllerini kullanacağız. Iris veri kümesi UCI Machine [Learning Deposu'nda](https://archive.ics.uci.edu/ml/index.html)herkese açıktır ve Bir Alma [Verisi][import-data] modülü kullanılarak indirilebilir.
+
+### <a name="creating-the-experiment"></a>Deneme oluşturma
+Azure Machine Learning Studio'da (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
+
+* [Veri İthalat][import-data]
+* [Çok Sınıflı Karar Ormanı][multiclass-decision-forest]
+* [Verileri Bölme][split]
+* [Model Eğitme][train-model]
+* [Modeli Puanlama][score-model]
+* [Modeli Değerlendirme][evaluate-model]
+
+Aşağıda Şekil 10'da gösterildiği gibi bağlantı noktalarını bağlayın.
+
+[Tren Modeli][train-model] modülünün Etiket sütun dizini 5 olarak ayarlayın. Veri kümesinin üstbilgi satırı yoktur, ancak sınıf etiketlerinin beşinci sütunda olduğunu biliyoruz.
+
+[Veri Alma][import-data] modülüne tıklayın ve *Veri kaynağı* özelliğini HTTP üzerinden Web *URL'sine*ve *URL'ye* http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.dataayarlayın.
+
+[Bölünmüş Veri][split] modülünde (örneğin 0,7) eğitim için kullanılacak örneklerin kesirini ayarlayın.
+
+![Çok Sınıflı Sınıflandırıcıyı Değerlendirme](./media/evaluate-model-performance/10.png)
+
+Şekil 10. Çok Sınıflı Sınıflandırıcıyı Değerlendirme
+
+### <a name="inspecting-the-evaluation-results"></a>Değerlendirme Sonuçlarının İncelenmesi
+Denemeyi çalıştırın ve [Model'i Değerlendir'in][evaluate-model]çıkış bağlantı noktasına tıklayın. Değerlendirme sonuçları bu durumda bir karışıklık matrisi şeklinde sunulur. Matris, her üç sınıf için de gerçek ve öngörülen örnekleri gösterir.
+
+![Çok Sınıflı Sınıflandırma Değerlendirme Sonuçları](./media/evaluate-model-performance/11.png)
+
+Şekil 11. Çok Sınıflı Sınıflandırma Değerlendirme Sonuçları.
+
+### <a name="using-cross-validation"></a>Çapraz Doğrulama kullanma
+Daha önce de belirtildiği gibi, [Çapraz-Doğrula Modeli][cross-validate-model] modüllerini kullanarak tekrarlanan eğitim, puanlama ve değerlendirmeleri otomatik olarak gerçekleştirebilirsiniz. Bir veri kümesi, eğitimsiz bir model ve [Çapraz Doğrulama Modeli][cross-validate-model] modülü gerekir (aşağıdaki şemaya bakın). Yine [Çapraz Doğrula Modeli][cross-validate-model] modülünün etiket sütununa (bu durumda sütun dizini 5) ayarlamanız gerekir. Denemeyi çalıştırdıktan ve [Çapraz Doğrulama Modeli'nin][cross-validate-model]doğru çıkış bağlantı noktasını tıklattıktan sonra, her kıvrım için metrik değerlerin yanı sıra ortalama ve standart sapmayı da inceleyebilirsiniz. Burada görüntülenen ölçümler ikili sınıflandırma durumunda tartışılanlara benzer. Ancak, çok sınıflı sınıflandırmada, genel pozitif veya negatif sınıf olmadığı için, doğru pozitif/negatifve yanlış pozitif/negatiflerin hesaplanması sınıf başına bazda sayılarak yapılır. Örneğin, 'Iris-setosa' sınıfının kesinliği veya geri çağırması hesaplanırken, bunun pozitif sınıf ve diğer tüm diğerlerinin negatif olduğu varsayılır.
+
+![Çok Sınıflı Sınıflandırma Modelinin Çapraz Doğrulanması](./media/evaluate-model-performance/12.png)
+
+Şekil 12. Çok Sınıflı Sınıflandırma Modelinin Çapraz Doğrulanması.
+
+![Çok Sınıflı Sınıflandırma Modelinin Çapraz Doğrulama Sonuçları](./media/evaluate-model-performance/13.png)
+
+Şekil 13. Çok Sınıflı Sınıflandırma Modelinin Çapraz Doğrulama Sonuçları.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/

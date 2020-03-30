@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure için NS1 SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure için Azure Active Directory ve NS1 SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Azure için NS1 SSO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure için Azure Active Directory ve NS1 SSO arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,160 +16,160 @@ ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e917265f4bf6f857a0eada2433f0a0e4e24d7c5
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565596"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Öğretici: Azure için NS1 SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Öğretici: Azure için NS1 SSO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Azure için NS1 SSO 'yu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Azure için NS1 SSO 'yu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Azure için NS1 SSO'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edileceksiniz öğreneceksiniz. Azure için NS1 SSO'su Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Azure için NS1 SSO 'ya erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Azure için NS1 SSO 'da otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
+* Azure için NS1 SSO erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Azure için NS1 SSO'da otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda, yani Azure portalında yönetin.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Azure çoklu oturum açma (SSO) özellikli abonelik için NS1 SSO.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Azure için NS1 SSO tek oturum açma (SSO) aboneliği etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Azure için NS1 SSO, SP ve ıDP tarafından başlatılan SSO 'yu destekler.
-* Azure için NS1 SSO 'yu yapılandırdıktan sonra, oturum denetimini zorunlu kılabilirsiniz. Bu, kuruluşunuzun hassas verilerinin, gerçek zamanlı olarak ayıklanma ve içe taşmayı korur. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
-## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>Galeriden Azure için NS1 SSO 'SU ekleme
-
-Azure için NS1 SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden Azure için NS1 SSO 'SU ile yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
-
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Azure için ns1 SSO** yazın.
-1. Sonuçlar panelinden **Azure Için ns1 SSO** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+* Azure için NS1 SSO, SP ve IDP'yi destekler.
+* Azure için NS1 SSO'su yapılandırdıktan sonra oturum denetimini uygulayabilirsiniz. Bu, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızma larını önler. Oturum denetimi koşullu erişimden genişler. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Azure için NS1 SSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>Galeriden Azure için NS1 SSO ekleme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure IÇIN ns1 SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure için NS1 SSO 'da bağlantılı bir ilişki kurun.
+Azure için NS1 SSO'nun Azure'a entegrasyonunu Azure AD'ye yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Azure için NS1 SSO eklemeniz gerekir.
 
-Azure için NS1 SSO ile Azure AD SSO 'yu yapılandırmak ve test etmek için genel adımlar şunlardır:
+1. Bir iş veya okul hesabı veya kişisel bir Microsoft hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a**gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Azure için NS1 SSO** yazın.
+1. Sonuçlar panelinden **Azure için NS1 SSO'yu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
 
-    a. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Azure için NS1 SSO için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-    b. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Azure SSO IÇIN ns1 SSO 'Yu yapılandırın](#configure-ns1-sso-for-azure-sso)** .
+Azure AD SSO'nu Azure için NS1 SSO ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Azure için NS1 SSO'daki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bağlantılı bir ilişki kurun.
 
-    a. Azure **[test kullanıcısı için BIR ns1 SSO oluşturun](#create-an-ns1-sso-for-azure-test-user)** ve Azure IÇIN ns1 SSO 'da B. Simon 'a karşılık gelen bir. Bu karşılık gelen bu, kullanıcının Azure AD gösterimine bağlıdır.
-1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
+Azure AD SSO'yu Azure için NS1 SSO ile yapılandırmak ve test etmek için gereken genel adımlar şunlardır:
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+    a. Azure AD oturum açma'yı B.Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
 
-1. [Azure Portal](https://portal.azure.com/), **Azure için ns1 SSO** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
+    b. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak **[için Azure SSO için NS1 SSO'yu yapılandırın.](#configure-ns1-sso-for-azure-sso)**
 
-   ![Kalem simgesi vurgulanmış şekilde, SAML ile çoklu oturum açmayı ayarlama ekran görüntüsü](common/edit-urls.png)
+    a. **[Azure için NS1 SSO'da](#create-an-ns1-sso-for-azure-test-user)** B.Simon'ın bir örneğine sahip olması için Azure test kullanıcısı için bir NS1 SSO oluşturun. Bu karşılık, kullanıcının Azure AD gösterimine bağlıdır.
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    a. **Tanımlayıcı** metin kutusuna şu URL 'yi yazın: `https://api.nsone.net/saml/metadata`
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanan bir URL yazın: `https://api.nsone.net/saml/sso/<ssoid>`
+1. Azure [portalında,](https://portal.azure.com/) **Azure için NS1 SSO** uygulama tümleştirme sayfasında **Yönet** bölümünü bulun. **Tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için kalem simgesini seçin.
 
-1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı gerçekleştirin:
+   ![Saml sayfasıyla tek oturum açma ekran görüntüsü, kalem simgesi vurgulanmış](common/edit-urls.png)
 
-    **Oturum açma URL 'si** metin kutusuna şu URL 'yi yazın: `https://my.nsone.net/#/login/sso`
+1. Temel **SAML Yapılandırması** bölümünde, uygulamayı **IDP** başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+
+    a. **Tanımlayıcı** metin kutusuna aşağıdaki URL'yi yazın:`https://api.nsone.net/saml/metadata`
+
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanan bir URL yazın:`https://api.nsone.net/saml/sso/<ssoid>`
+
+1. **Ek URL'ler ayarla'yı**seçin ve uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı gerçekleştirin:
+
+    Oturum **Açma URL** metin kutusuna aşağıdaki URL'yi yazın:`https://my.nsone.net/#/login/sso`
 
     > [!NOTE]
-    > Yanıt URL 'SI değeri gerçek değil. Yanıt URL 'SI değerini gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [Azure istemci desteği ekibine yönelik ns1 SSO](mailto:techops@nsone.net) ile iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > YanıtURL değeri gerçek değil. Yanıtla URL değerini gerçek YanıtURL'i ile güncelleştirin. Değeri almak [için Azure İstemci destek ekibine](mailto:techops@nsone.net) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Azure uygulaması için NS1 SSO, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** iletişim kutusunu açmak için kurşun kalem simgesini seçin.
+1. Azure için NS1 SSO uygulaması, SAML iddialarını belirli bir biçimde bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı Öznitelikleri & Talepler** bölümünden yönetebilirsiniz. **SAML sayfasıyla Tek Oturum** Açma'da, **Kullanıcı Öznitelikleri** iletişim kutusunu açmak için kalem simgesini seçin.
 
-    ![Kalem simgesi vurgulanmış şekilde kullanıcı özniteliklerinin & talepler bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
+    ![Kalem simgesi vurgulanmış Kullanıcı Öznitelikleri & Talepler bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
 
-1. Talebi düzenlemek için öznitelik adını seçin.
+1. Talebi güncellemek için öznitelik adını seçin.
 
-    ![Öznitelik adı vurgulanmış şekilde kullanıcı özniteliklerinin & talepler bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/attribute-claim-edit.png)
+    ![Öznitelik adı vurgulanmış Kullanıcı Öznitelikleri & Talepler bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/attribute-claim-edit.png)
 
-1. **Dönüşüm**' i seçin.
+1. **Dönüşüm'u**seçin.
 
-    ![Talep yönetme bölümünün, dönüşümle vurgulanan ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/prefix-edit.png)
+    ![Dönüşüm vurgulandığı claim'i yönet bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/prefix-edit.png)
 
-1. **Dönüştürmeyi Yönet** bölümünde aşağıdaki adımları uygulayın:
+1. **Dönüşümleri Yönet** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Farklı alanlarla vurgulanmış şekilde dönüşümü yönetme bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
+    ![Çeşitli alanların vurgulandığı dönüşüm üyüldünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
 
-    1. **Dönüşüm**olarak **ExactMailPrefix ()** seçeneğini belirleyin.
+    1. **Dönüşüm**olarak **ExactMailPrefix()'yi** seçin.
 
-    1. **Parameter 1**olarak **User. UserPrincipalName** öğesini seçin.
+    1. **User.userprincipalname'yi** **Parametre 1**olarak seçin.
 
-    1. **Add (Ekle)** seçeneğini belirleyin.
+    1. **Ekle'yi**seçin.
 
-    1. **Kaydet**’i seçin.
+    1. **Kaydet'i**seçin.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala düğmesini seçin. Bu, **uygulama Federasyon meta veri URL 'sini** kopyalar ve bilgisayarınıza kaydeder.
+1. **SAML** ile tek oturum açma'da, **SAML İmza Sertifikası** bölümünde kopyala düğmesini seçin. Bu, **App Federation Metadata Url'yi** kopyalar ve bilgisayarınıza kaydeder.
 
-    ![SAML Imzalama sertifikasının, Kopyala düğmesi vurgulanmış şekilde ekran görüntüsü](common/copy-metadataurl.png)
+    ![Kopya düğmesi vurgulanmış SAML İmza Sertifikası'nın ekran görüntüsü](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden > **kullanıcılar** > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
 
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** alanında gösterilen değeri yazın.
-   1. **Oluştur**’u seçin.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** alanında gösterilen değeri yazın.
+   1. **Oluştur'u**seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure için NS1 SSO 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
+Bu bölümde, Azure için NS1 SSO'ya erişim sağlayarak B.Simon'ın Azure tek oturum açma'yı kullanmasını sağlarsınız.
 
-1. Azure portal, **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde, **Azure Için ns1 SSO**' yı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar** > **Tüm uygulamaları**seçin.
+1. Uygulamalar listesinde Azure **için NS1 SSO'yu**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
+   ![Kullanıcılar ve gruplar vurgulanırken Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin. Atama **Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
 
-    ![Kullanıcılar ve gruplar sayfasının ekran görüntüsü, Kullanıcı Ekle vurgulanmış olarak](common/add-assign-user.png)
+    ![Kullanıcı ekle ile Kullanıcılar ve gruplar sayfasının ekran görüntüsü](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** öğesini seçin. Ardından ekranın alt kısmındaki **Seç** düğmesini seçin.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmındaki **Seç** düğmesini seçin.
-1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinden **B.Simon'ı** seçin. Ardından ekranın altındaki **Seç** düğmesini seçin.
+1. SAML iddiasında, **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ardından ekranın altındaki **Seç** düğmesini seçin.
+1. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
-## <a name="configure-ns1-sso-for-azure-sso"></a>Azure SSO için NS1 SSO 'yu yapılandırma
+## <a name="configure-ns1-sso-for-azure-sso"></a>Azure SSO için NS1 SSO'ya yapı
 
-Azure için NS1 SSO 'da çoklu oturum açmayı yapılandırmak için, uygulama Federasyon meta veri URL 'sini [Azure destek ekibi Için ns1 SSO](mailto:techops@nsone.net)'ya göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak için bu ayarı yapılandırır.
+Azure tarafı için NS1 SSO'da tek oturum açma yapılandırmak için, Uygulama Federasyonu Metaveri URL'sini [Azure destek ekibi için NS1 SSO'ya](mailto:techops@nsone.net)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için yapılandırır.
 
-### <a name="create-an-ns1-sso-for-azure-test-user"></a>Azure test kullanıcısı için bir NS1 SSO oluşturma
+### <a name="create-an-ns1-sso-for-azure-test-user"></a>Azure test kullanıcısı için Bir NS1 SSO oluşturma
 
-Bu bölümde, Azure için NS1 SSO 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Azure platformu için NS1 SSO 'daki kullanıcıları eklemek üzere Azure destek ekibi için NS1 SSO ile çalışın. Kullanıcıları oluşturup etkinleştirene kadar çoklu oturum açma kullanamazsınız.
+Bu bölümde, Azure için NS1 SSO'da B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Azure platformu için NS1 SSO'ya eklemek için Azure destek ekibi için NS1 SSO ile birlikte çalışın. Kullanıcıları oluşturmadan ve etkinleştirene kadar tek oturum açma kullanamazsınız.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim paneli ' ni kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panel'i kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Access panel 'de Azure için NS1 SSO kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Azure için NS1 SSO 'da otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'nde Azure için NS1 SSO'yu seçtiğinizde, SSO'yu ayarladığınız Azure için NS1 SSO'da otomatik olarak oturum açmış olmalısınız. Daha fazla bilgi için [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)e bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -177,8 +177,8 @@ Access panel 'de Azure için NS1 SSO kutucuğunu seçtiğinizde, SSO 'yu ayarlad
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Azure için NS1 SSO 'yu deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Azure için NS1 SSO'u deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

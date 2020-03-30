@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: genlerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Genon arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Azure Active Directory tek oturum açma (SSO) Genlik ile tümleştirme | Microsoft Dokümanlar'
+description: Azure Active Directory ve Genlik arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,170 +17,170 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d077da34a6e82ced957c4da1e6abf7a5e294e78
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72596248"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Öğretici: genlerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Öğretici: Azure Active Directory tek oturum açma (SSO) Genlik ile tümleştirme
 
-Bu öğreticide, genlerle Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Genliğini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Azure Etkin Dizini (Azure AD) ile Genlitude'u nasıl entegre acağınızı öğreneceksiniz. Azure AD ile Genlik'i tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Gena erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla genliğini otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD'de Genlik erişimi olan denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Otomatik olarak Genlitude ile oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Genlik çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Genlik tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Genlik **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Genlik **, tam zamanında** Kullanıcı sağlamayı destekler
+* Genlik **SP ve IDP'nin** başlattığı SSO'ya destek veriyor
+* Genlik **Just In Time** kullanıcı sağlama destekler
 
-## <a name="adding-amplitude-from-the-gallery"></a>Galeriden Genekten ekleme
+## <a name="adding-amplitude-from-the-gallery"></a>Galeriden Genlik Ekleme
 
-Genekliği Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Genekliği eklemeniz gerekir.
+Genlik tümleştirmesini Azure AD'ye yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Genlik eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **genlik** yazın.
-1. Sonuçlar panelinden **genlik** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Genlik** yazın.
+1. Sonuç panelinden **Genlik'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amplitude"></a>Geniçin Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-amplitude"></a>Azure AD'yi Genlik için tek oturum açma yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu genlerle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Genbir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Genlik ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Genlik'teki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu genlerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Genlik ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[GENLIK SSO 'Yu yapılandırma](#configure-amplitude-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Kullanıcının Azure AD gösterimine bağlı olan Genon 'da B. Simon 'a karşılık gelen bir, **[genlik testi kullanıcısı oluşturun](#create-amplitude-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Genlik SSO'yu yapılandırın](#configure-amplitude-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    * **[Genlik testi kullanıcısını oluşturun](#create-amplitude-test-user)** - B.Simon'ın, kullanıcının Azure AD gösterimine bağlı genlikteki bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **genon** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **Genlik** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna bir URL yazın: `https://amplitude.com/saml/sso/metadata`
+    a. **Tanımlayıcı** metin kutusuna bir URL yazın:`https://amplitude.com/saml/sso/metadata`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://analytics.amplitude.com/saml/sso/<uniqueid>`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://analytics.amplitude.com/saml/sso/<uniqueid>`
 
     > [!NOTE]
-    > Yanıt URL 'SI değeri gerçek değil. Yanıt URL 'SI değerini bu öğreticide daha sonra alacaksınız.
+    > YanıtURL değeri gerçek değil. Bu öğreticide yanıt URL değerini daha sonra alırsınız.
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://analytics.amplitude.com/sso`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://analytics.amplitude.com/sso`
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Genlik ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Genlik Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Genon 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Genlik'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **GENI**seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Genlik'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-amplitude-sso"></a>Genlik SSO 'SU yapılandırma
+## <a name="configure-amplitude-sso"></a>Genlik SSO'su yapılandırın
 
-1. Bu yapılandırmayı genlerle otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Genlik içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-1. Tarayıcıya uzantı ekledikten sonra, ayarla ' ya tıklayarak **genekme** uygulamaya yönlendirebilirsiniz. Buradan, oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+1. Tarayıcıya uzantı ekledikten sonra, **Genlitude'u** Ayarla'ya tıklayın ve sizi Genlik uygulamasına yönlendirecektir. Buradan, Genlitude oturum etmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-6 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-1. Genler 'i el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve genliği şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+1. Genlik'i el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Genlitude şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Sol gezinti çubuğundan **plan Yöneticisi** ' ne tıklayın.
+1. Sol daki gezinti çubuğundan **Plan Yöneticisi'ne** tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure1.png)
+    ![Tek İşaret-On'u Yapılandır](./media/amplitude-tutorial/configure1.png)
 
-1. **SSO tümleştirmesinde** **Microsoft Azure Active Directory meta veri** seçin.
+1. **SSO**Tümleştirmesi'nden **Microsoft Azure Active Directory Meta verilerini** seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure2.png)
+    ![Tek İşaret-On'u Yapılandır](./media/amplitude-tutorial/configure2.png)
 
-1. **Çoklu oturum açma ayarlama** bölümünde aşağıdaki adımları uygulayın:
+1. Tek **Oturum Açma'yı Ayarla** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure3.png)
+    ![Tek İşaret-On'u Yapılandır](./media/amplitude-tutorial/configure3.png)
 
-    a. İndirilen **meta veri XML** dosyasını Not defteri 'nde Azure Portal açın, Içeriği **Microsoft Azure Active Directory meta verileri** metin kutusuna yapıştırın.
+    a. İndirilen **Metadata Xml'i** not defterindeki Azure portalından açın, içeriği **Microsoft Azure Active Directory Metadata** metin kutusuna yapıştırın.
 
-    b. **Yanıt URL 'si (ACS)** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** **yanıt URL** metin kutusuna yapıştırın.
+    b. **Yanıtla URL (ACS)** değerini kopyalayın ve Azure portalındaki **Temel SAML** Yapılandırması'nın **YanıtLA URL** metin kutusuna yapıştırın.
 
-    c. **Kaydet**’e tıklayın
+    c. **Kaydet'i** tıklatın
 
 ### <a name="create-amplitude-test-user"></a>Genlik testi kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı bir Kullanıcı Genolarak oluşturulur. Genlik, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten gende yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, B.Simon adlı bir kullanıcı Genlitude oluşturulur. Genlik, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Genlik'te zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 > [!Note]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa, [genliği destek ekibine](https://amplitude.zendesk.com)başvurun.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Genlitude destek ekibine](https://amplitude.zendesk.com)başvurun.
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde genlik kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız gene otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Genlik karosu tıklattığınızda, SSO'yu kurduğunuz Genlik'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile genliği deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Genlik'i deneyin](https://aad.portal.azure.com/)

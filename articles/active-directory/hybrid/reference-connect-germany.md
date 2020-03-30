@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381250"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Bulut Almanya’da Azure AD Connect - Genel Önizleme
 ## <a name="introduction"></a>Giriş
 Azure AD Connect, şirket içi Active Directory’niz ile Azure Active Directory arasında eşitleme sağlar.
 Şu anda [Microsoft Bulut Almanya](https://azure.microsoft.com/global-infrastructure/germany/
-)’daki senaryoların çoğunun operatör tarafından yürütülmesi gerekmektedir. Microsoft Cloud Almanya'yı kullanırken aşağıdaki bilgilerden haberdar olmanız gerekir:
+)’daki senaryoların çoğunun operatör tarafından yürütülmesi gerekmektedir. Microsoft Cloud Germany'i kullanırken aşağıdaki bilgilerden haberdar olmalısınız:
 
 * Eşitlemenin başarıyla gerçekleştirilebilmesi için aşağıdaki URL'lerin bir ara sunucuda açılması gerekir:
   
@@ -42,7 +42,7 @@ Azure AD Connect, şirket içi Active Directory’niz ile Azure Active Directory
 Azure AD Connect’i portalın içerisindeki Azure AD Connect dikey penceresinden indirebilirsiniz.  Azure AD Connect dikey penceresini bulmak için aşağıdaki yönergeleri kullanın.
 
 ### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect Dikey Penceresi
-Bir kez Azure portalında açtığınız:
+Azure portalına oturum imzaladıktan sonra:
 
 1. Gözat’a gidin
 2. Azure Active Directory'yi seçin
@@ -64,5 +64,5 @@ Aşağıdaki tabloda, dikey pencerede gösterilen özellikler açıklanmaktadır
 Azure AD Connect'i yüklemek için [buradaki](how-to-connect-install-roadmap.md) belgeleri kullanabilirsiniz.
 
 ## <a name="advanced-features-and-additional-information"></a>Gelişmiş özellikler ve Ek Bilgiler
-Özel ayarlar veya gelişmiş yapılandırmalar hakkında ek bilgi için Git [şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md). Bu sayfada, bilgiler ve ek rehberlik sağlayan diğer sayfalara bağlantılar bulabilirsiniz.
+Özel ayarlar veya gelişmiş yapılandırmalar hakkında daha fazla bilgi için [şirket içi kimliklerinizi Azure Etkin Dizini ile tümleştir'e](whatis-hybrid-identity.md)gidin. Bu sayfada, bilgiler ve ek rehberlik sağlayan diğer sayfalara bağlantılar bulabilirsiniz.
 

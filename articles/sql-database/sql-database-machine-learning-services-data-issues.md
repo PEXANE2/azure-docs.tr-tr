@@ -1,7 +1,7 @@
 ---
-title: R ve SQL veri türleri ve nesneleriyle çalışma
+title: R ve SQL veri türleri ve nesneleri ile çalışma
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Karşılaşabileceğiniz yaygın sorunlar da dahil olmak üzere Machine Learning Services (Önizleme) kullanarak Azure SQL veritabanı ile R 'deki veri türleri ve veri nesneleriyle nasıl çalışacağınızı öğrenin.
+description: Karşılaşabileceğiniz sık karşılaşılabilecek sorunlar da dahil olmak üzere Machine Learning Services (önizleme) kullanarak Azure SQL Veritabanı ile R'deki veri türleri ve veri nesneleri ile nasıl çalışacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,41 +13,41 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719883"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349332"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)
 
-Bu makalede, verileri [Azure SQL veritabanı 'nda Machine Learning Services (r ile)](sql-database-machine-learning-services-overview.md)içinde r ve SQL veritabanı arasında taşırken karşılaşabileceğiniz bazı yaygın sorunlar ele alınmaktadır. Bu alıştırmada elde ettiğiniz deneyim, kendi betikinizdeki verilerle çalışırken önemli bir arka plan sağlar.
-
-Karşılaşabileceğiniz yaygın sorunlar şunlardır:
-
-- Veri türleri bazen eşleşmez
-- Örtük dönüştürmeler gerçekleşmeyebilir
-- Atama ve dönüştürme işlemleri bazen gereklidir
-- R ve SQL farklı veri nesneleri kullanma
+Bu makalede, [Azure SQL Veritabanı'nda Machine Learning Services'da (R ile)](sql-database-machine-learning-services-overview.md)R ve SQL Veritabanı arasında veri taşınırken karşılaşabileceğiniz sık karşılaşılan bazı sorunlar açıklanmaktadır. Bu alıştırma yla kazandığınız deneyim, kendi komut dosyanızdaki verilerle çalışırken temel arka planı sağlar.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Karşılaşabileceğiniz sık karşılaşılabilecek sorunlar şunlardır:
 
-- Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/) .
+- Veri türleri bazen eşleşmiyor
+- Örtülü dönüşümler gerçekleşebilir
+- Döküm ve dönüştürme işlemleri bazen gereklidir
+- R ve SQL farklı veri nesneleri kullanın
 
-- Örnek kodu bu alıştırmalarda çalıştırmak için öncelikle Machine Learning Services (R ile) etkin bir Azure SQL veritabanınızın olması gerekir. Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir. [Önizlemeye kaydolma](sql-database-machine-learning-services-overview.md#signup)adımlarını izleyin.
+## <a name="prerequisites"></a>Ön koşullar
 
-- En son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. R komut dosyalarını diğer veritabanı yönetimini veya sorgu araçlarını kullanarak çalıştırabilirsiniz, ancak bu hızlı başlangıçta SSMS 'yi kullanacaksınız.
+- Azure aboneliğiniz yoksa, başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="working-with-a-data-frame"></a>Veri çerçevesiyle çalışma
+- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle Machine Learning Services (R ile) etkin leştirilmiş bir Azure SQL veritabanına sahip olmalısınız. Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır. Önizleme için [Kaydolun'daki](sql-database-machine-learning-services-overview.md#signup)adımları izleyin.
 
-Betiğinizdeki sonuçları R 'den SQL 'e döndürürse, verileri **Data. Frame**olarak döndürmelidir. Betikte oluşturduğunuz diğer nesne türleri (liste, faktör, vektör veya ikili veriler gibi), saklı yordam sonuçlarının bir parçası olarak çıktısını almak istiyorsanız bir veri çerçevesine dönüştürülüp dönüştürülmemelidir. Neyse ki, diğer nesneleri bir veri çerçevesine değiştirmeyi desteklemeye yönelik birden çok R işlevi vardır. Hatta bir ikili modeli seri hale getirebilirsiniz ve bu makalede daha sonra kullanacağınız bir veri çerçevesinde döndürebilirsiniz.
+- En son [SQL Server Management Studio'yu](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. Diğer veritabanı yönetimi veya sorgu araçlarını kullanarak R komut dosyalarını çalıştırabilirsiniz, ancak bu hızlı başlatmada SSMS'i kullanırsınız.
 
-İlk olarak, bazı temel R nesneleriyle (vektör, matrisler ve listeler) deneme yapın ve bir veri çerçevesine dönüştürmenin SQL 'e geçirilen çıktıyı nasıl değiştirdiğini görün.
+## <a name="working-with-a-data-frame"></a>Veri çerçevesi ile çalışma
 
-Bu iki "Merhaba Dünya" komut dosyasını R 'de karşılaştırın. Betikler neredeyse özdeş, ancak birincisi üç değerden oluşan tek bir sütunu döndürür, ikincisi ise tek bir değere sahip üç sütun döndürür.
+Komut dosyanız Sonuçları R'den SQL'e döndürdüğünde, **verileri data.frame**olarak döndürmesi gerekir. Komut dosyanızda oluşturduğunuz diğer nesne türlerinde (ister liste, faktör, vektör veya ikili veri olsun- depolanan yordam sonuçlarının bir parçası olarak çıktıalmak istiyorsanız veri çerçevesine dönüştürülmelidir. Neyse ki, diğer nesnelerin bir veri çerçevesine değiştirilmesini destekleyen birden çok R işlevi vardır. Hatta bir ikili modeli seri hale getirip, bu makalede daha sonra yapacağınız bir veri çerçevesi içinde döndürebilirsiniz.
+
+İlk olarak, bazı temel R nesnelerini deneyelim - vektörler, matrisler ve listeler - ve veri çerçevesine dönüştürmenin SQL'e geçen çıktıyı nasıl değiştirdiğini görelim.
+
+R bu iki "Hello World" komut karşılaştırın. Komut dosyaları hemen hemen aynı görünür, ancak ilk üç değerden oluşan tek bir sütun döndürür, ikinci ise her biri tek bir değere sahip üç sütun döndürür.
 
 **Örnek 1**
 
@@ -67,13 +67,13 @@ EXECUTE sp_execute_external_script @language = N'R'
     , @input_data_1 = N'';
 ```
 
-Sonuçlar neden farklı?
+Sonuçlar neden bu kadar farklı?
 
-Yanıt genellikle R `str()` komutu kullanılarak bulunabilir. Belirtilen R nesnesinin veri şemasına bir bilgi iletisi olarak döndürüldüğünden, işlevi R betiğinizde herhangi bir yere `str(object_name)` ekleyin. İletileri SSMS 'deki **iletiler** sekmesinde görüntüleyebilirsiniz.
+Yanıt genellikle R `str()` komutu kullanılarak bulunabilir. Belirtilen R `str(object_name)` nesnesinin veri şemasını bilgilendirme iletisi olarak döndürecek şekilde R komut dosyanızdaki herhangi bir yere işlevi ekleyin. İletileri SSMS'teki **Mesajlar** sekmesinde görüntüleyebilirsiniz.
 
-Örnek 1 ve örnek 2 ' nin bu tür farklı sonuçlara neden olduğunu anlamak için, aşağıdaki gibi her bir deyime `@script` değişken tanımının sonuna satır `str(OutputDataSet)` ekleyin:
+Örnek 1 ve Örnek 2'nin neden bu kadar `str(OutputDataSet)` farklı sonuçlara `@script` sahip olduğunu anlamak için, her deyimdeki değişken tanımının sonuna satırı ekleyin:
 
-**Str işlevi eklenen örnek 1**
+**Str fonksiyonu ekli Örnek 1**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -85,7 +85,7 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-**Str işlevi eklenen 2 örnek 2**
+**Str fonksiyonu eklendi örnek 2**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -96,40 +96,40 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-Şimdi çıktının nasıl farklı olduğunu görmek için **iletilerdeki** metni gözden geçirin.
+Şimdi, çıktının neden farklı olduğunu görmek için **Mesajlar'daki** metni gözden geçirin.
 
-**Sonuçlar-örnek 1**
+**Sonuçlar - Örnek 1**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   3 obs. of  1 variable:
+'data.frame':    3 obs. of  1 variable:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**Sonuçlar-örnek 2**
+**Sonuçlar - Örnek 2**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   1 obs. of  3 variables:
+'data.frame':    1 obs. of  3 variables:
 $ c..hello..: Factor w/ 1 level "hello": 1
 $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Gördüğünüz gibi, R sözdiziminde küçük bir değişiklik sonuçların şeması üzerinde büyük bir etkiye sahiptir. Tüm ayrıntılar için R veri türlerindeki farklılıklar, [Hadley Wickhemi tarafından "Advanced R"](http://adv-r.had.co.nz)Içindeki *veri yapıları* bölümündeki Ayrıntılar bölümünde açıklanmaktadır.
+Gördüğünüz gibi, R sözdiziminde yapılan küçük bir değişiklik sonuçların şeması üzerinde büyük bir etkiye sahipti. Tüm ayrıntılar için, R veri türleri farklılıkları [Hadley Wickham tarafından "Advanced R"](http://adv-r.had.co.nz) *Veri Yapıları* bölümünde ayrıntılı olarak açıklanmıştır.
 
-Şimdilik, veri çerçevelerine zorlama R nesneleri olduğunda beklenen sonuçları denetlemeniz gerektiğini unutmayın.
+Şimdilik, R nesnelerini veri çerçevelerine zorlarken beklenen sonuçları kontrol etmeniz gerektiğini unutmayın.
 
 > [!TIP]
-> Ayrıca, iç veri yapısı hakkında bilgi döndürmek için `is.matrix`, `is.vector`gibi R Identity işlevlerini de kullanabilirsiniz.
+> Ayrıca, iç veri yapısı hakkında `is.matrix` `is.vector`bilgi döndürmek için R kimlik işlevlerini de kullanabilirsiniz.
 
-## <a name="implicit-conversion-of-data-objects"></a>Veri nesnelerinin örtük dönüştürmesi
+## <a name="implicit-conversion-of-data-objects"></a>Veri nesnelerinin örtülü dönüşümü
 
-Her R veri nesnesi, iki veri nesnesi aynı sayıda boyuta sahipse veya herhangi bir veri nesnesi heterojen veri türleri içeriyorsa, diğer veri nesneleriyle birleştirildiğinde değerlerin nasıl işlendiğine ilişkin kendi kurallarına sahiptir.
+Her R veri nesnesinin, iki veri nesnesi aynı sayıda boyuta sahipse veya herhangi bir veri nesnesi heterojen veri türleri içeriyorsa, diğer veri nesneleriyle birleştirildiğinde değerlerin nasıl işlendiğine dair kendi kuralları vardır.
 
-Örneğin, R kullanarak matris çarpma gerçekleştirmek istediğinizi varsayın. Tek sütunlu matrisi dört değerli bir dizi ile üç değerle çarpmak ve sonuç olarak bir 4x3 matrisi beklemeniz gerekir.
+Örneğin, R kullanarak matris çarpımı gerçekleştirmek istediğinizi varsayalım. Tek sütunlu bir matrisi üç değerle dört değere sahip bir diziyle çarpmak ve sonuç olarak 4x3 matris beklemek istiyorsunuz.
 
-İlk olarak, küçük bir test verileri tablosu oluşturun.
+İlk olarak, küçük bir test verisi tablosu oluşturun.
 
 ```sql
 CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -145,7 +145,7 @@ VALUES (100);
 GO
 ```
 
-Şimdi aşağıdaki betiği çalıştırın.
+Şimdi aşağıdaki komut dosyasını çalıştırın.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -163,17 +163,17 @@ WITH RESULT SETS((
             ));
 ```
 
-Kapsıyorsa, üç değerin sütunu tek sütunlu bir matrise dönüştürülür. Matris yalnızca R 'deki bir dizide özel bir durumdur çünkü, iki bağımsız değişkeni uyumlu hale getirmek için dizi `y` örtük olarak tek sütunlu bir matriste.
+Kapakların altında, üç değerden oluşan sütun tek sütunlu bir matrise dönüştürülür. Matris, R'deki bir dizinin özel bir örneği `y` olduğundan, dizi iki bağımsız değişkeni uyumlu hale getirmek için örtülü olarak tek sütunlu bir matrise zorlanır.
 
-**Sonuçlar**
+**Sonuç -ları**
 
-|Süt|Col2|Col3|Col4|
+|Süt1|Süt2|Col3|Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1500|
 
-Ancak, `y`dizisinin boyutunu değiştirdiğinizde ne olacağını aklınızda bulabilirsiniz.
+Ancak, dizinin `y`boyutunu değiştirdiğinizde ne olur dikkat edin.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -186,21 +186,21 @@ OutputDataSet <- as.data.frame(y %*% x);
 WITH RESULT SETS(([Col1] INT));
 ```
 
-Şimdi R, sonuç olarak tek bir değer döndürür.
+Şimdi R sonuç olarak tek bir değer döndürür.
 
-**Sonuçlar**
+**Sonuç -ları**
     
-|Süt|
+|Süt1|
 |---|
 |1542|
 
-Neden? Bu durumda, iki bağımsız değişken aynı uzunlukta vektör olarak işlenebildiğinden, R iç ürünü matris olarak döndürür.  Bu, doğrusal algeköşeli kurallara göre beklenen davranıştır. Ancak, aşağı akış uygulamanız çıkış şemasının hiçbir şekilde değişmemesi durumunda sorun oluşmasına neden olabilir!
+Neden? Bu durumda, iki bağımsız değişken aynı uzunluktaki vektörler olarak işlenebileceğinden, R iç ürünü matris olarak döndürür.  Bu lineer cebir kurallarına göre beklenen davranıştır. Ancak, downstream uygulamanız çıktı şemasının asla değişmemesini bekliyorsa sorunlara neden olabilir!
 
-## <a name="merge-or-multiply-columns-of-different-length"></a>Farklı uzunluktaki sütunları birleştirin veya çarpın
+## <a name="merge-or-multiply-columns-of-different-length"></a>Farklı uzunluktaki sütunları birleştirme veya çoğaltma
 
-R, farklı boyutlardaki vektörlerle çalışmak ve bu sütun benzeri yapıları veri çerçevelerine birleştirmek için harika esneklik sağlar. Vektör listeleri tablo gibi görünebilir, ancak veritabanı tablolarını yöneten tüm kurallara uymalıdır.
+R, farklı boyutlardaki vektörlerle çalışmak ve bu sütun benzeri yapıları veri çerçeveleriyle birleştirmek için büyük esneklik sağlar. Vektör listeleri bir tablo gibi görünebilir, ancak veritabanı tablolarını yöneten tüm kurallara uymaz.
 
-Örneğin, aşağıdaki betik 6 uzunluğunda bir sayısal diziyi tanımlar ve `df1`R değişkeninde depolar. Sayısal dizi daha sonra, üç (3) değer içeren RTestData tablosunun (yukarıda oluşturulan) tamsayılarla birleştirilir ve yeni bir veri çerçevesini `df2`.
+Örneğin, aşağıdaki komut dosyası 6 uzunluğunda numerik bir dizi tanımlar `df1`ve R değişkeninde depolar. Sayısal dizi daha sonra yeni bir veri çerçevesi yapmak için üç (3) değer içeren RTestData tablosunun (yukarıda `df2`oluşturulmuş) tamsayılarla birleştirilir.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -216,11 +216,11 @@ WITH RESULT SETS((
             ));
 ```
 
-R, veri çerçevesini doldurmak için, RTestData 'dan alınan öğeleri, dizi `df1`öğe sayısıyla eşleştirmek için gereken sayıda yineler.
+Veri çerçevesini doldurmak için R, RTestData'dan alınan öğeleri dizideki `df1`öğe sayısını eşleştirmek için gerektiği kadar yineler.
 
-**Sonuçlar**
+**Sonuç -ları**
     
-|*Col2*|*Col3*|
+|*Süt2*|*Col3*|
 |----|----|
 |1|1|
 |10|2|
@@ -229,18 +229,18 @@ R, veri çerçevesini doldurmak için, RTestData 'dan alınan öğeleri, dizi `d
 |10|5|
 |100|6|
 
-Bir veri çerçevesinin yalnızca bir tablo gibi göründüğünü ve aslında vektör listesi olduğunu unutmayın.
+Bir veri çerçevesinin yalnızca bir tablogibi göründüğünü, ancak aslında vektörlerin bir listesi olduğunu unutmayın.
 
-## <a name="cast-or-convert-sql-data"></a>SQL verilerini atama veya dönüştürme
+## <a name="cast-or-convert-sql-data"></a>SQL verilerini dökme veya dönüştürme
 
-R ve SQL aynı veri türlerini kullanmaz. bu nedenle, verileri almak için SQL 'de bir sorgu çalıştırıp daha sonra bunu R çalışma zamanına geçirirseniz, genellikle bir tür örtük dönüştürme gerçekleşir. R 'den SQL 'e veri döndürdüğünüzde başka dönüştürmeler kümesi gerçekleşir.
+R ve SQL aynı veri türlerini kullanmaz, bu nedenle veri almak için SQL'de bir sorgu çalıştırDığınızda ve bunu R çalışma süresine aktardığınızda, genellikle bir tür örtük dönüştürme gerçekleşir. R'den SQL'e veri döndürdüğünde başka bir dönüşüm kümesi gerçekleşir.
 
-- SQL, verileri sorgudan R işlemine gönderir ve daha fazla verimlilik için bir iç gösterimle dönüştürür.
-- R çalışma zamanı verileri bir Data. Frame değişkenine yükler ve verileri üzerinde kendi işlemlerini gerçekleştirir.
-- Veritabanı altyapısı, güvenli bir iç bağlantı kullanarak verileri SQL 'e döndürür ve verileri SQL veri türleri bakımından gösterir.
-- SQL sorguları yayınlayarak tablo veri kümelerini işleyemeyen bir istemciyi veya ağ kitaplığını kullanarak SQL 'e bağlanarak verileri alırsınız. Bu istemci uygulaması, verileri başka yollarla etkileyebilir.
+- SQL sorgudaki verileri R işlemine iter ve daha fazla verimlilik için bir iç gösterime dönüştürür.
+- R çalışma zamanı verileri bir veri.frame değişkenine yükler ve veriler üzerinde kendi işlemlerini gerçekleştirir.
+- Veritabanı altyapısı güvenli bir iç bağlantı kullanarak verileri SQL'e döndürür ve verileri SQL veri türleri açısından sunar.
+- SQL sorguları verebilir ve tabular veri kümeleri işleyebilir bir istemci veya ağ kitaplığı kullanarak SQL bağlanarak verileri alırsınız. Bu istemci uygulaması verileri başka şekillerde etkileyebilir.
 
-Bunun nasıl çalıştığını görmek için, [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) veri ambarında bir sorgu çalıştırın. Bu görünüm, tahminler oluşturmak için kullanılan satış verilerini döndürür.
+Bunun nasıl çalıştığını görmek için [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) veri ambarında bunun gibi bir sorgu çalıştırın. Bu görünüm, tahminler oluştururken kullanılan satış verilerini döndürür.
 
 ```sql
 USE AdventureWorksDW
@@ -255,9 +255,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> Herhangi bir AdventureWorks sürümünü kullanabilir veya kendi veritabanınızı kullanarak farklı bir sorgu oluşturabilirsiniz. Nokta, metin, tarih saat ve sayısal değerler içeren bazı verileri işlemeye çalışır.
+> AdventureWorks'ün herhangi bir sürümünü kullanabilir veya kendi veritabanınızı kullanarak farklı bir sorgu oluşturabilirsiniz. Önemli olan, metin, datetime ve sayısal değerler içeren bazı verileri işlemeye çalışmaktır.
 
-Şimdi, saklı yordamın girişi olarak bu sorguyu kullanmayı deneyin.
+Şimdi, bu sorguyu depolanan yordamın girişi olarak kullanmayı deneyin.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -275,11 +275,11 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-Bir hata alırsanız, muhtemelen sorgu metninde bazı düzenlemeler yapmanız gerekir. Örneğin, WHERE yan tümcesindeki dize koşulunun iki tek tırnak işareti kümesi içine alınması gerekir.
+Bir hata alırsanız, büyük olasılıkla sorgu metninde bazı denetimler yapmanız gerekir. Örneğin, WHERE yan tümcesindeki dize yüklemi, iki tek tırnak işareti kümesiyle eklenmelidir.
 
-Sorguyu çalıştıktan sonra, R 'nin giriş verilerini nasıl değerlendirçalıştığını görmek için `str` işlevin sonuçlarını gözden geçirin.
+Sorguyu çalıştırdıktan sonra, R'nin `str` giriş verilerini nasıl işlediğini görmek için işlevin sonuçlarını gözden geçirin.
 
-**Sonuçlar**
+**Sonuç -ları**
 
 ```text
 STDOUT message(s) from external script: 'data.frame':    37 obs. of  3 variables:
@@ -288,16 +288,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- DateTime sütunu R veri türü, **Posixct**kullanılarak işlendi.
-- "ProductSeries" metin sütunu bir **faktör**olarak tanımlanmıştır ve bu da kategorik bir değişken anlamına gelir. Dize değerleri varsayılan olarak faktör olarak işlenir. R 'ye bir dize geçirirseniz, iç kullanım için bir tamsayıya dönüştürülür ve sonra çıktıda dizeye geri eşlenir.
+- Datetime sütunu R veri türü, **POSIXct**kullanılarak işlenmiştir.
+- Metin sütunu "ProductSeries" kategorik bir değişken anlamına gelen bir **faktör**olarak tanımlanmıştır. Dize değerleri varsayılan olarak etken olarak işlenir. Bir dizeyi R'ye geçirirseniz, dahili kullanım için bir tamsayıya dönüştürülür ve çıktıüzerindeki dizeye eşlenir.
 
 ## <a name="summary"></a>Özet
 
-Bu kısa örneklerden bile, SQL sorgularını giriş olarak geçirirken veri dönüştürmesinin etkilerini kontrol etme gereksinimini de görebilirsiniz. Bazı SQL veri türleri R tarafından desteklenmediğinden, hatalardan kaçınmak için şu yolları göz önünde bulundurun:
+Bu kısa örneklerden bile, SQL sorgularını giriş olarak geçerken veri dönüştürmenin etkilerini denetleme gereksinimini görebilirsiniz. Bazı SQL veri türleri R tarafından desteklenmedığından, hataları önlemek için şu yolları göz önünde bulundurun:
 
-- Verilerinizi önceden test edin ve Þemada R koduna geçerken bir sorun olabilecek sütunları veya değerleri doğrulayın.
-- `SELECT *`kullanmak yerine giriş veri kaynağınızdaki sütunları ayrı ayrı belirtin ve her bir sütunun nasıl işleneceğini öğrenin.
-- Giriş verilerinizi hazırlarken, sürprizleri önlemek için gerekli olan açık yayınları gerçekleştirin.
-- Hatalara neden olan ve modelleme için faydalı olmayan veri sütunlarını (GUID 'ler veya ROWGUID 'ler gibi) geçirmekten kaçının.
+- Verilerinizi önceden test edin ve şemanızdaki R koduna geçirildiğinde sorun olabilecek sütunları veya değerleri doğrulayın.
+- Giriş veri kaynağınızdaki sütunları kullanmak `SELECT *`yerine tek tek belirtin ve her sütunun nasıl işleneceğini bilin.
+- Sürprizlerden kaçınmak için giriş verilerinizi hazırlarken gerektiği gibi açık dökümler gerçekleştirin.
+- Hatalara neden olan ve modelleme için yararlı olmayan veri sütunlarını (GUIDS veya satır kılavuzları gibi) geçirmekten kaçının.
 
-Desteklenen ve desteklenmeyen R veri türleri hakkında daha fazla bilgi için bkz. [r kitaplıkları ve veri türleri](/sql/advanced-analytics/r/r-libraries-and-data-types).
+Desteklenen ve desteklenmeyen R veri türleri hakkında daha fazla bilgi için [Bkz.](/sql/advanced-analytics/r/r-libraries-and-data-types)

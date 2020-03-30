@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506220"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387657"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Veritabanı ile Ortak Güvenlik Gereksinimlerini Ele Almak Için Oyun Kitabı
 
@@ -657,7 +657,7 @@ Veritabanı olaylarının izlenmesi, veritabanı etkinliğini anlamanıza yardı
 **En iyi uygulamalar:**
 
 - Veritabanı sunucunuzdaki [SQL Veritabanı Denetimi'ni](sql-database-auditing.md) denetim olaylarıyla yapılandırarak, bu sunucudaki varolan ve yeni oluşturulan tüm veritabanları denetlenir.
-- Varsayılan denetim ilkesi, veritabanlarına karşı tüm eylemleri (sorgular, depolanan yordamlar ve başarısız ve başarısız oturum açmalar) içerir ve bu da yüksek miktarda denetim günlüğüyle sonuçlanabilir. Müşterilerin [PowerShell'i kullanarak farklı eylem türleri ve eylem grupları için denetim yapılandırması](sql-database-auditing.md#subheading-7)önerilir. Bunu yapılandırılacak şekilde, denetlenen eylemlerin sayısının denetlenmeleri ve olay kaybı riskinin en aza indirilmesi yardımcı olur. Özel denetim yapılandırması, müşterilerin yalnızca gereken denetim verilerini yakalamasına olanak sağlar.
+- Varsayılan denetim ilkesi, veritabanlarına karşı tüm eylemleri (sorgular, depolanan yordamlar ve başarısız ve başarısız oturum açmalar) içerir ve bu da yüksek miktarda denetim günlüğüyle sonuçlanabilir. Müşterilerin [PowerShell'i kullanarak farklı eylem türleri ve eylem grupları için denetim yapılandırması](sql-database-auditing.md#manage-auditing)önerilir. Bunu yapılandırılacak şekilde, denetlenen eylemlerin sayısının denetlenmeleri ve olay kaybı riskinin en aza indirilmesi yardımcı olur. Özel denetim yapılandırması, müşterilerin yalnızca gereken denetim verilerini yakalamasına olanak sağlar.
 - Denetim günlükleri doğrudan Azure [portalında](https://portal.azure.com/)veya yapılandırılan depolama konumundan tüketilebilir. 
 
 

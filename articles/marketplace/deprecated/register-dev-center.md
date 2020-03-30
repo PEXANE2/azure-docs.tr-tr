@@ -1,18 +1,18 @@
 ---
 title: Dev Center'a Kaydolun | Azure
 description: Geliştirici Merkezi 'ne (Dev Center) Nasıl Kaydolunur?
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 9f3dc149c74864878209a59fc5d10f62912902c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62e25a252d6a4981bddd50361d01110ec10a6e2c
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281485"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387674"
 ---
 # <a name="register-in-dev-center"></a>Geliştirme Merkezi'ne Kaydolma  
 Kişisel tarayıcı hesabına giriş olmadığınızı doğrulamaya yardımcı olmak için yeni bir Internet Explorer InPrivate veya Chrome Gizli tarama oturumu açın.  

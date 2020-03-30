@@ -1,17 +1,17 @@
 ---
 title: UWP uygulamanıza anında iletme bildirimleri ekleme
-description: Evrensel Windows Platformu (UWP) uygulamanıza anında iletme bildirimleri göndermek için Azure App Service Mobile Apps ve Azure Notification Hubs kullanmayı öğrenin.
+description: Evrensel Windows Platformu (UWP) uygulamanıza anında bildirim göndermek için Azure App Service Mobile Apps ve Azure Bildirim Hub'larını nasıl kullanacağınızı öğrenin.
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f200e9649a00bfe890d46f86e62404f1a7e844f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461428"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366295"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows uygulamanıza anında iletme bildirimleri ekleme
 
@@ -19,46 +19,46 @@ ms.locfileid: "77461428"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi gönderilmesi için [Windows hızlı başlangıç](app-service-mobile-windows-store-dotnet-get-started.md) projesine anında iletme bildirimleri eklersiniz.
+Bu öğreticide, [windows hızlı başlatma](app-service-mobile-windows-store-dotnet-get-started.md) projesine anında iletme bildirimleri eklersiniz, böylece her kayıt ekildiğinde aygıta bir anında iletme bildirimi gönderilir.
 
-İndirilen hızlı başlangıç sunucusu projesini kullanmıyorsanız, anında iletme bildirimi uzantı paketine ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure için .net arka uç sunucu SDK 'sı Mobile Apps çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
+İndirilen hızlı başlangıç sunucusu projesini kullanmazsanız, anında iletme bildirimi uzantısı paketine ihtiyacınız olacaktır. Daha fazla bilgi için [Azure Mobile Apps için .NET arka uç sunucusu SDK ile çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) bilgisine bakın.
 
-## <a name="configure-hub"></a>Bildirim Hub 'ı yapılandırma
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Bildirim Hub'ı yapılandırma
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Anında iletme bildirimleri için uygulamanızı kaydetme
 
-Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push göndermek için [Windows bildirim hizmetleri (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) ile tümleştirilecek şekilde yapılandırmanız gerekir.
+Uygulamanızı Microsoft Mağazası'na göndermeniz, ardından sunucu projenizi [Windows Push Bildirim Hizmetleri (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) ile tümleştirecek şekilde yapılandırmanız gerekir.
 
-1. Visual Studio Çözüm Gezgini, UWP uygulama projesine sağ tıklayın, **depola** > **uygulamayı mağaza ile ilişkilendir...** seçeneğini tıklayın.
+1. Visual Studio Solution Explorer'da UWP uygulama projesine sağ tıklayın, Mağaza ile **Ilişkilendir** > **Uygulamasını tıklatın...**
 
-    ![Uygulamayı Microsoft Store ilişkilendir](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    ![Uygulamayı Microsoft Mağazası ile ilişkilendirme](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. Sihirbazda, **İleri**' ye tıklayın, Microsoft hesabı ile oturum açın, **Yeni bir uygulama adı**ayırarak uygulamanız için bir ad yazın ve ardından **Ayır**' a tıklayın.
-3. Uygulama kaydı başarıyla oluşturulduktan sonra, yeni uygulama adını seçin, **İleri**' ye tıklayın ve ardından **ilişkilendir**' e tıklayın. Bu, gerekli Microsoft Store kayıt bilgilerini uygulama bildirimine ekler.
-4. [Uygulama kayıt portalı](https://apps.dev.microsoft.com/) ' na gidin ve Microsoft hesabı oturum açın. Önceki adımda ilişkilendirdiğiniz Windows Mağazası uygulaması ' na tıklayın.
-5. Kayıt sayfasında, mobil uygulama arka ucunuzu yapılandırmak için kullanacağınız **uygulama gizli** dizileri ve **paket SID 'si**altındaki değeri bir yere göz önünde bulabilirsiniz.
+2. Sihirbazda, **İleri'yi**tıklatın , Microsoft hesabınızla oturum açın, **Rezerv'de**uygulamanız için bir ad yazın, ardından **Rezerv'i**tıklatın.
+3. Uygulama kaydı başarıyla oluşturulduktan sonra yeni uygulama adını seçin, **İleri'yi**tıklatın ve ardından **Ilişkilendir'i**tıklatın. Bu, gerekli Microsoft Mağazası kayıt bilgilerini uygulama bildirimine ekler.
+4. [Uygulama Kayıt Portalı'na](https://apps.dev.microsoft.com/) gidin ve Microsoft hesabınızla oturum açın. Önceki adımda ilişkilendirdiğiniz Windows Mağazası uygulamasını tıklatın.
+5. Kayıt sayfasında, **Uygulama sırları** ve **paket SID**altında değeri bir not yapmak , bir sonraki mobil uygulama arka plan yapılandırmak için kullanacağız.
 
-    ![Uygulamayı Microsoft Store ilişkilendir](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![Uygulamayı Microsoft Mağazası ile ilişkilendirme](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > Gizli anahtar ve paket SID'si önemli güvenlik kimlik bilgileridir. Bu değerleri kimseyle paylaşmayın veya uygulamanızla birlikte dağıtmayın. **Uygulama kimliği** , Microsoft hesabı kimlik doğrulamasını yapılandırmak için gizli anahtar ile birlikte kullanılır.
+   > Gizli anahtar ve paket SID'si önemli güvenlik kimlik bilgileridir. Bu değerleri kimseyle paylaşmayın veya uygulamanızla birlikte dağıtmayın. **Uygulama Kimliği,** Microsoft Hesabı kimlik doğrulamasını yapılandırmak için gizli olarak kullanılır.
 
-[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) Ayrıca, çekme BILDIRIMLERI için UWP uygulamalarını yapılandırma yönergelerine sahiptir.
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) ayrıca anında iletme bildirimleri için UWP uygulamalarını yapılandırmak için talimatlara sahiptir.
 
-## <a name="configure-the-backend-to-send-push-notifications"></a>Arka ucunu anında iletme bildirimleri gönderecek şekilde yapılandırma
+## <a name="configure-the-backend-to-send-push-notifications"></a>Anında iletme bildirimleri göndermek için arka ucu yapılandırma
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>Sunucuyu anında iletme bildirimleri gönderecek şekilde Güncelleştir
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>Anında iletme bildirimleri göndermek için sunucuyu güncelleştirme
 
-[.Net arka ucu](#dotnet) veya [Node. js arka ucu](#nodejs)&mdash;arka uç proje türü ile eşleşen aşağıdaki yordamı kullanın.
+[Aşağıdaki ,.NET arka uç](#dotnet) veya [Node.js arka uçile](#nodejs)eşleşen arka uç proje türünüzle&mdash;eşleşen yordamı kullanın.
 
-### <a name="dotnet"></a>.NET arka uç projesi
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET arka uç projesi
 
-1. Visual Studio 'da sunucu projesine sağ tıklayın ve **NuGet Paketlerini Yönet**' e tıklayın, Microsoft. Azure. notificationhub 'ları arayın ve ardından **Install**' a tıklayın. Bu, Notification Hubs istemci kitaplığını kurar.
-2. **Denetleyiciler**' i genişletin, TodoItemController.cs açın ve aşağıdaki using deyimlerini ekleyin:
+1. Visual Studio'da sunucu projesini sağ tıklatın ve **NuGet Paketlerini Yönet'i**tıklatın, Microsoft.Azure.NotificationHub'ları arayın, ardından **Yükle'yi**tıklatın. Bu, Bildirim Hub'ları istemci kitaplığını yükler.
+2. **Denetleyicileri**genişletin, TodoItemController.cs açın ve aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using System.Collections.Generic;
@@ -66,7 +66,7 @@ Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push gön
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. **PostTodoItem** yönteminde, **ınsertasync**çağrısından sonra aşağıdaki kodu ekleyin:
+3. **PostTodoItem** yönteminde, **InsertAsync'e**çağrıdan sonra aşağıdaki kodu ekleyin:
 
     ```csharp
     // Get the settings for the server project.
@@ -102,13 +102,13 @@ Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push gön
     }
     ```
 
-    Bu kod, Bildirim Hub 'ına yeni bir öğe eklendikten sonra anında iletme bildirimi göndermesini söyler.
+    Bu kod, bildirim hub'ına yeni bir öğe yerleştirildikten sonra anında iletme bildirimi göndermesini söyler.
 
 4. Sunucu projesini yeniden yayımlayın.
 
-### <a name="nodejs"></a>Node. js arka uç projesi
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js arka uç projesi
 1. Arka uç projenizi ayarlayın.
-2. TodoItem. js dosyasındaki mevcut kodu aşağıdaki kodla değiştirin:
+2. Todoitem.js dosyasındaki varolan kodu aşağıdakilerle değiştirin:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -152,21 +152,21 @@ Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push gön
     module.exports = table;
     ```
 
-    Bu, yeni bir Todo öğesi eklendiğinde Item. Text öğesini içeren bir WNS bildirim bildirimi gönderir.
+    Bu, yeni bir todo öğesi eklendiğinde item.text içeren bir WNS tost bildirimi gönderir.
 
-3. Yerel bilgisayarınızda dosyayı düzenlediğinizde, sunucu projesini yeniden yayımlayın.
+3. Dosyayı yerel bilgisayarınızda düzenlerken sunucu projesini yeniden yayımlayın.
 
-## <a id="update-app"></a>Uygulamanıza anında iletme bildirimleri ekleyin
-Ardından, uygulamanız başlangıç sırasında anında iletme bildirimleri için kaydolmanız gerekir. Kimlik doğrulamasını zaten etkinleştirdiyseniz, Kullanıcı tarafından anında iletme bildirimlerine kaydolmayı denemeden önce oturum açtığından emin olun.
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>Uygulamanıza anında iletme bildirimleri ekleme
+Ardından, uygulamanızın başlangıç anında iletme bildirimleri için kaydolması gerekir. Kimlik doğrulamasını zaten etkinleştirdiyseniz, anında iletme bildirimleri için kaydolmaya çalışmadan önce kullanıcının giriş yaptığından emin olun.
 
-1. **App.xaml.cs** proje dosyasını açın ve aşağıdaki `using` deyimlerini ekleyin:
+1. proje **App.xaml.cs** dosyasını açın `using` ve aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using System.Threading.Tasks;
     using Windows.Networking.PushNotifications;
     ```
 
-2. Aynı dosyada, **uygulama** sınıfına aşağıdaki **ınitnotificationsasync** yöntem tanımını ekleyin:
+2. Aynı dosyada, **Uygulama** sınıfına aşağıdaki **InitNotificationsAsync** yöntem tanımını ekleyin:
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -180,9 +180,9 @@ Ardından, uygulamanız başlangıç sırasında anında iletme bildirimleri iç
     }
     ```
 
-    Bu kod, WNS adresinden uygulama için ChannelURI 'yi alır ve ardından bu Channelurı 'yi App Service mobil uygulamanıza kaydeder.
+    Bu kod, WNS'den uygulama için ChannelURI'yi alır ve bu ChannelURI'yi App Service Mobile App'inize kaydeder.
 
-3. **App.xaml.cs**' de **onbaşlatılmış** olay işleyicisinin üst kısmında, **zaman uyumsuz** değiştiricisini Yöntem tanımına ekleyin ve aşağıdaki örnekte gösterildiği gibi New **initnotificationsasync** yöntemine aşağıdaki çağrıyı ekleyin:
+3. **App.xaml.cs'da** **Başlatılan Başlatılmış** olay işleyicisinin üst kısmında, yöntem tanımına **async** değiştirici ekleyin ve aşağıdaki örnekte olduğu gibi yeni **InitNotificationsAsync** yöntemine aşağıdaki çağrıyı ekleyin:
 
     ```csharp
     protected async override void OnLaunched(LaunchActivatedEventArgs e)
@@ -193,25 +193,25 @@ Ardından, uygulamanız başlangıç sırasında anında iletme bildirimleri iç
     }
     ```
 
-    Bu, uygulama her başlatıldığında kısa süreli ChannelURI 'nin kaydettirilmesini güvence altına alır.
+    Bu, kısa ömürlü ChannelURI'nin uygulama her başlatılında kaydedildiğini garanti eder.
 
-4. UWP uygulama projenizi yeniden derleyin. Uygulamanız şimdi bildirim almaya hazırdır.
+4. UWP uygulama projenizi yeniden oluşturun. Uygulamanız şimdi bildirim almaya hazırdır.
 
-## <a id="test"></a>Uygulamanızda anında iletme bildirimlerini test etme
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>Uygulamanızdaki anında iletme bildirimlerini test edin
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>Sonraki adımlar
+## <a name="next-steps"></a><a id="more"></a>Sonraki adımlar
 
 Anında iletme bildirimleri hakkında daha fazla bilgi edinin:
 
-* [Azure için yönetilen istemciyi kullanma Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) Şablonlar, platformlar arası gönderimleri ve yerelleştirilmiş gönderimleri gönderme esnekliği sunar. Şablonların nasıl kaydedileceği hakkında bilgi edinin.
-* [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md) Bildirimlerin bırakılmış olmasının çeşitli nedenleri vardır veya cihazlar üzerinde bitmeyebilir. Bu konuda, anında iletme bildirimi hatalarının asıl nedenini çözümleme ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+* [Azure Mobil Uygulamaları için yönetilen istemci nasıl kullanılır?](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) Şablonlar, platformlar arası itme ler ve yerelleştirilmiş itmeler gönderme esnekliği sağlar. Şablonları nasıl kaydedin.
+* [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md) Bildirimlerin düşmesinin veya aygıtlara düşmemelerinin çeşitli nedenleri vardır. Bu konu, anında iletme bildirimi hatalarının temel nedenini nasıl çözümleyip çözersiniz gösterir.
 
-Aşağıdaki öğreticilerden birine devam etmeyi göz önünde bulundurun:
+Aşağıdaki öğreticilerden birine devam etmeyi düşünün:
 
 * [Uygulamanıza kimlik doğrulaması ekleme](app-service-mobile-windows-store-dotnet-get-started-users.md) Uygulamanızdaki kullanıcıların kimliklerini bir kimlik sağlayıcısı ile nasıl doğrulayacağınızı öğrenin.
-* [Uygulamanız için çevrimdışı eşitlemeyi etkinleştirin](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Mobil uygulama arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme son kullanıcıların, ağ bağlantısı yokken dahi, mobil uygulama ile etkileşim kurmalarına &mdash;veri görüntüleme, ekleme ya da değiştirme&mdash; olanak tanır.
+* [Uygulamanız için çevrimdışı eşitlemeyi etkinleştirme](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Mobil Uygulama arka uçunu kullanarak uygulamanızı çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme son kullanıcıların, ağ bağlantısı yokken dahi, mobil uygulama ile etkileşim kurmalarına &mdash;veri görüntüleme, ekleme ya da değiştirme&mdash; olanak tanır.
 
 <!-- Anchors. -->
 

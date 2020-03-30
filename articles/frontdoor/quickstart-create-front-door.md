@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: uygulamaların yüksek kullanılabilirliği için ön kapı profili oluşturma'
+title: 'Quickstart: Yüksek uygulama kullanılabilirliği için Ön Kapı profili oluşturun'
 description: Bu hızlı başlangıç makalesinde yüksek oranda kullanılabilir ve yüksek performanslı global web uygulamanız için Front Door oluşturma adımları anlatılmaktadır.
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184508"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471430"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Hızlı başlangıç: Yüksek oranda kullanılabilir global web uygulaması için Front Door oluşturma
 
@@ -26,43 +26,43 @@ Bu hızlı başlangıçta global web uygulamanız için yüksek oranda kullanıl
 
 Bu hızlı başlangıçta anlatılan senaryo, bir web uygulamasının farklı Azure bölgelerinde çalışan iki örneğini kapsamaktadır. Kullanıcı trafiğinin uygulamayı çalıştıran en yakın site arka ucu kümesine yönlendirilmesine yardımcı olmak için eşit [ağırlıklı ve aynı öncelik düzeyine sahip arka uçları](front-door-routing-methods.md) temel alan bir Front Door yapılandırması oluşturulmaktadır. Front Door, web uygulamasını sürekli izler ve en yakın site kullanım dışı olduğunda bir sonraki kullanılabilir arka uca otomatik yük devretme gerçekleştirir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıç için bir web uygulamasının farklı Azure bölgelerinde (*Doğu ABD* ve *Batı Avrupa*) çalışan iki örneğini dağıtmış olmanız gerekir. İki web uygulaması örneği de Etkin/Etkin modunda çalışıyor olmalıdır. Başka bir deyişle birinin yük devretme durumunda devreye girdiği Etkin/Beklemede yapılandırmasından farklı olarak ikisinin de her an trafik kabul eder durumda olması gerekir.
 
-1. Ekranın sol üst tarafından **Kaynak oluştur** > **Web** > **Web Uygulaması** > **Oluştur**'u seçin.
+1. Ekranın sol üst tarafında, > kaynak**Web Web** > **Uygulaması** >  **Oluştur'u**seçin.**Create**
 2. **Web Uygulaması** sayfasında aşağıdaki bilgileri girdikten veya seçtikten sonra değer belirtilmeyen yerler için varsayılan ayarları kabul edin:
 
-     | Ayar         | Value     |
+     | Ayar         | Değer     |
      | ---              | ---  |
-     | Name           | Web uygulamanız için benzersiz bir ad girin  |
+     | Adı           | Web uygulamanız için benzersiz bir ad girin  |
      | Kaynak grubu          | **Yeni**'yi seçin ve *myResourceGroupFD1* yazın. |
-     | Uygulama hizmeti planı/Konumu         | **Yeni**'yi seçin.  App Service planına *myAppServicePlanEastUS* yazın ve **Tamam**'ı seçin. 
+     | Uygulama hizmeti planı/Konumu         | **Yeni'yi**seçin.  App Service planına *myAppServicePlanEastUS* yazın ve **Tamam**'ı seçin. 
      |      Konum  |   Doğu ABD        |
     |||
 
-3. **Oluştur**'u seçin.
+3. **Oluştur'u**seçin.
 4. Web Uygulaması başarıyla dağıtıldığında varsayılan bir web sitesi oluşturulur.
 5. 1-3 arası adımları tekrarlayarak aşağıdaki ayarlarla farklı bir Azure bölgesinde ikinci bir web sitesi oluşturun:
 
-     | Ayar         | Value     |
+     | Ayar         | Değer     |
      | ---              | ---  |
-     | Name           | Web Uygulamanız için benzersiz bir ad girin  |
+     | Adı           | Web Uygulamanız için benzersiz bir ad girin  |
      | Kaynak grubu          | **Yeni**'yi seçin ve *myResourceGroupFD2* yazın. |
-     | Uygulama hizmeti planı/Konumu         | **Yeni**'yi seçin.  App Service planına *myAppServicePlanWestEurope* yazın ve **Tamam**'ı seçin. 
+     | Uygulama hizmeti planı/Konumu         | **Yeni'yi**seçin.  App Service planına *myAppServicePlanWestEurope* yazın ve **Tamam**'ı seçin. 
      |      Konum  |   Batı Avrupa      |
     |||
 
 
 ## <a name="create-a-front-door-for-your-application"></a>Uygulamanız için Front Door oluşturma
-### <a name="a-add-a-frontend-host-for-front-door"></a>BİR. Front Door için ön uç ana bilgisayar adı ekleme
+### <a name="a-add-a-frontend-host-for-front-door"></a>A. Front Door için ön uç ana bilgisayar adı ekleme
 Kullanıcı trafiğini iki arka uç arasındaki en düşük gecikme süresine göre yönlendiren bir Front Door yapılandırması oluşturun.
 
-1. Ekranın sol üst kenarından **Kaynak oluştur** > **Ağ** > **Front Door** > **Oluştur**’u seçin.
+1. Ekranın sol üst tarafında, **bir kaynak** > **Oluştur'un** > **Ön Kapı** > **Oluştur'u**seçin.
 2. **Front Door Oluştur** sayfasında temel bilgileri ekleyin ve Front Door'ın yapılandırılmasını istediğiniz aboneliği belirtin. Diğer Azure kaynaklarında olduğu gibi bir Kaynak Grubu ve yeni bir Kaynak Grubu oluşturuyorsanız bölge belirtmeniz gerekir. Son olarak Front Door'unuza bir ad vermeniz gerekir.
 3. Temel bilgileri girdikten sonra tanımlamanız gerek ilk adım yapılandırmanın **ön uç ana bilgisayar adı** olacaktır. Sonucun şuna benzer geçerli bir etki alanı adı olması gerekir: `myappfrontend.azurefd.net`. Bu ana bilgisayar adının genel olarak benzersiz olması gerekir ancak doğrulama işlemi Front Door tarafından gerçekleştirilecektir. 
 
@@ -75,14 +75,14 @@ Bir sonraki adımda Front Door'un uygulamanızın bulunduğu yeri bilmesi için 
 3. **Hedef ana bilgisayar türü** için 'App Service' seçin, web sitesini oluşturduğunuz aboneliği seçin ve **Hedef ana bilgisayar adı** bölümünde ilk web sitesi olan *myAppServicePlanEastUS.azurewebsites.net* web sitesini seçin.
 4. Kalan alanları şimdilik olduğu gibi bırakın ve **Ekle**'ye tıklayın.
 5. 2-4 arasındaki adımları tekrarlayarak *myAppServicePlanWestEurope.azurewebsites.net* adlı diğer web sitesini ekleyin.
-6. İsteğe bağlı olarak arka uç havuzu için Sistem Durumu Yoklamaları ve Yük Dengeleme ayarlarını güncelleştirebilirsiniz ancak varsayılan değerler de yeterli olacaktır. **Ekle**'ye tıklayın.
+6. İsteğe bağlı olarak arka uç havuzu için Sistem Durumu Sondaları ve Yük Dengeleme ayarlarını güncelleştirmeyi seçebilirsiniz, ancak varsayılan değerler de çalışmalıdır. **Ekle**’ye tıklayın.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Yönlendirme kuralı ekleme
 Son olarak Yönlendirme kuralları bölümünde '+' simgesine tıklayarak bir yönlendirme kuralı yapılandırın. Bu kural ön uç ana bilgisayarınızı arka uç havuzuyla eşlemek için gereklidir ve temelde `myappfrontend.azurefd.net` hedefine ulaşan bir isteği `myBackendPool` arka ucuna yönlendirme işlemidir. Front Door'unuza yönlendirme kuralı eklemek için **Ekle**'ye tıklayın. Artık Front Door'u oluşturmak için hazırsınız, **Gözden Geçir ve Oluştur**'a tıklayabilirsiniz.
 
 >[!WARNING]
-> Front Door'unuzdaki her ön uç ana bilgisayar adı ile ilişkilendirilmiş varsayılan yola ('/ **') sahip yönlendirme kuralı olduğundan** emin olmanız\* gerekir. Başka bir deyişle tüm yönlendirme kurallarınızın arasında ön uç ana bilgisayar adlarınızın her biri için varsayılan yolda ('/\*') tanımlanmış en az bir yönlendirme kuralı olmalıdır. Aksi takdirde son kullanıcı trafiği doğru şekilde yönlendirilmeyebilir.
+> Front Door'unuzdaki her ön uç ana bilgisayar adı ile ilişkilendirilmiş varsayılan yola ('/\*') sahip yönlendirme kuralı olduğundan **emin olmanız** gerekir. Başka bir deyişle tüm yönlendirme kurallarınızın arasında ön uç ana bilgisayar adlarınızın her biri için varsayılan yolda ('/\*') tanımlanmış en az bir yönlendirme kuralı olmalıdır. Aksi takdirde son kullanıcı trafiği doğru şekilde yönlendirilmeyebilir.
 
 ## <a name="view-front-door-in-action"></a>Front Door'u uygulamalı olarak görme
 Front Door'u oluşturduğunuzda yapılandırmanın dünyanın her yerine dağıtılması birkaç dakika sürecektir. İşlem tamamlandığında oluşturduğunuz ana bilgisayar adına gidin. Bunun için bir web tarayıcısı açın ve `myappfrontend.azurefd.net` URL'sini yazın. İsteğiniz otomatik olarak arka uç havuzunda belirtilen arka uçlardan en yakın olana yönlendirilir. 
