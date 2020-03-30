@@ -1,125 +1,124 @@
 ---
-title: Ticari Market 'teki Iş ortağı merkezi analizi için Özet Panosu
-description: Iş Ortağı Merkezi 'ndeki Özet panosundan Market etkinliklerini özetleyen toplam veri verilerine, eğilimler ve değerlerine nasıl erişebileceğinizi öğrenin.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Commercial Marketplace'te İş Ortağı Merkezi analitiği için özet panosu
+description: İş Ortağı Merkezi'ndeki Özet panosundan pazar yeri etkinliğini özetleyen toplu verilerin grafiklerine, eğilimlerine ve değerlerine nasıl erişilenleri öğrenin.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e20f3d156df139cfaf1935bae7fc7babd3e35fc5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3da3109bd813fc3b99a4f59e5a357fa351c75394
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480365"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281383"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'teki Özet Panosu
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari Pazar analizinde özet panosu
 
-Bu makalede, Iş Ortağı Merkezi 'ndeki Özet Panosu hakkında bilgi sağlanmaktadır. Bu Pano, tekliflerinizle ilgili Market etkinliklerini özetleyen grafikleri, eğilimleri ve toplam veri değerlerini görüntüler.
+Bu makale, İş Ortağı Merkezi'ndeki Özet panosu hakkında bilgi sağlar. Bu pano, tekliflerinizin pazar daki etkinliğini özetleyen toplu verilerin grafiklerini, eğilimlerini ve değerlerini görüntüler.
 
-Özet panosuna erişmek için ticari Market altında **[analiz panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** açın.
+Özet panosuna erişmek için Ticari Pazar Yeri altında **[Analiz panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** açın.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+> Analitik terminolojinin ayrıntılı tanımları [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
 
 ## <a name="summary-dashboard"></a>Özet panosu
 
-**Özet** panosu, her teklif türüne göre genel bir bakış sunar. **Öngörüler** , önemli bilgileri bir bakışta gösterir ve tekliflerinizin satış etkinliğinin geniş bir görünümünü sağlar. **Özet** panosunu kullanarak bu raporları görselleştirebilirsiniz. Bu makale aşağıdaki öğelerin her biri hakkında daha fazla ayrıntıya gider:
+**Özet** panosu, her teklif türüne göre genel bir bakış sunar. **Öngörüler** kritik bilgileri bir bakışta gösterir ve tekliflerinizin satış etkinliğine geniş bir bakış sağlar. **Özet** panosunu kullanarak bu raporları görselleştirebilirsiniz. Bu makalede, aşağıdaki öğelerin her biri hakkında daha fazla ayrıntı gider:
 
 - [Tarih aralığı](#date-range)
 - [Özet bölümü](#summary-section)
-- [Coğrafya ile müşteriler](#customers-by-geography)
-- [Büyüme eğilimi grafikleri](#growth-trend-charts)
-- [Müşteri puan tablosu](#customer-leaderboard)
+- [Coğrafyaya göre müşteriler](#customers-by-geography)
+- [Büyüme eğilim grafikleri](#growth-trend-charts)
+- [Müşteri lider panosu](#customer-leaderboard)
 - [Koltuk sayısı eğilimi](#seat-count-trend)
-- [Ücretsiz deneme SaaS siparişlerinin eğilimi](#free-trials-saas-orders-trend)
+- [Ücretsiz denemeler SaaS siparişleri eğilim](#free-trials-saas-orders-trend)
 
 ## <a name="elements-of-the-summary-dashboard"></a>Özet panosunun öğeleri
 
-Aşağıdaki bölümlerde Özet panosunun nasıl kullanılacağı ve verilerin nasıl okunacağı açıklanır.
+Aşağıdaki bölümlerde özet panosunun nasıl kullanılacağı ve verilerin nasıl okunduğu açıklanmıştır.
 
 ### <a name="date-range"></a>Tarih aralığı
 
-Her sayfanın sağ üst köşesinde bir tarih aralığı seçimi bulabilirsiniz. Son 3, 6 veya 12 aya dayalı bir tarih aralığı seçerek veya en fazla 12 ay süresince özel bir tarih aralığı seçerek **Özet** sayfası grafiklerinin çıkışını özelleştirin. Varsayılan tarih aralığı altı aydır.
+Her sayfanın sağ üst köşesinde bir tarih aralığı seçimi bulabilirsiniz. Son 3, 6 veya 12 aya dayalı bir tarih aralığı seçerek veya en fazla 12 aylık süreye sahip özel bir tarih aralığı seçerek **Özet** sayfa grafiklerinin çıktısını özelleştirin. Varsayılan tarih aralığı altı aydır.
 
-![İş Ortağı Merkezi panoyu çözümle](./media/analyze-dashboard.png)
+![İş Ortağı Merkezi Analiz panosu](./media/analyze-dashboard.png)
 
 ### <a name="summary-section"></a>Özet bölümü
 
-Özet bölümü, seçilen tarih aralığı boyunca oluşturulan tüm siparişlerin, alınan müşterilerin ve kullanım sayısının sayısını görüntüler. Bu ölçümlerin hesaplamadan kısmi geçerli ay dışarıda bırakılacak. Örneğin: 6k zaman çerçevesini seçtiyseniz, kullanım saatleri geçerli aydan önceki altı ay için hesaplanır. Özel bir tarih aralığı seçilirse, geçerli aydan kısmi bir miktar hesaplamadan çıkarılır.
+Özet bölümü, seçilen tarih aralığında oluşturulan tüm siparişlerin, edinilen müşterilerin ve bildirilen kullanımların sayısını görüntüler. Kısmi geçerli ay bu ölçümlerin hesaplamadışında olacaktır. Örneğin: 6M zaman dilimini seçtiyseniz, kullanım saatleri geçerli aydan önceki altı ay için hesaplanır. Özel bir tarih aralığı seçilirse, geçerli aydan kısmi bir tutar hesaplamanın dışında tutulur.
 
-![Özet panosundaki büyüme eğilimleri](./media/summary-summary-section.png)
+![Özet panosunda büyüme eğilimleri](./media/summary-summary-section.png)
 
 #### <a name="reading-the-summary-section"></a>Özet bölümünü okuma
 
-- **Siparişler**: şimdiye kadar yayımladığınız teklifler için satın alınan tüm siparişlerin sayısı (iptal edilen siparişlerin hariç).
-- **Müşteriler**: tekliflerinizi satın alan ve en az bir iptal edilmemiş siparişi olan tüm müşterilerin sayısı.
-- **Normalleştirilmiş kullanım saatleri**: VM çekirdeklerinin ([VM çekirdeği sayısı] x [saat ham kullanımı]) hesaba göre normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak belirlenen VM 'Ler [VM çekirdeklerinin sayısı] çarpanı olarak 1/6 (veya 0,1666) kullanır.
-- **Ham kullanım saatleri**: sanal makinelerin saat cinsinden çalışma miktarı. **Toplam sipariş**, **Toplam Müşteri**, **normalleştirilmiş kullanım saati**, **Ham kullanım saati**, **sayfa ziyaretlerinin**yanındaki yüzde değeri, seçilen tarih aralığı ([son ay kullanımı – ilk ay kullanımı])/ilk ay **kullanımı için kullanım büyümesi miktarını temsil eder** . Yukarıda açıklandığı gibi, geçerli ayın kısmi miktarı bu ölçüden çıkarılır.
-- **Büyüme eğilimleri**: grafiğin sütunlarının üzerine geldiğinizde çubuk grafiklerde her ay için değer görüntülenir.
-- **Yukarıyı gösteren yeşil üçgen**: pozitif bir büyüme eğilimi gösterir.
-- **Aşağı dönük kırmızı üçgen**: önceki aya göre negatif büyüme eğilimi gösterir.
+- **Siparişler**: Şimdiye kadar yayınladığınız teklifler için satın alınan tüm siparişlerin sayısı (iptal edilen siparişler hariç).
+- **Müşteriler**: Tekliflerinizi satın alan ve en az bir tane iptal edilmeyen siparişi olan tüm müşterileri say.
+- **Normalleştirilmiş kullanım saatleri**: VM çekirdeği ([VM çekirdek sayısı] x [ham kullanım saatleri]) sayısına göre normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak atanan VM'ler 1/6 (veya 0,1666) [VM çekirdek] çarpanı olarak kullanır.
+- **Ham kullanım saatleri**: VM'lerin saat bazında çalışma süresi. **Toplam siparişlerin**yanındaki yüzde değeri, **toplam müşteri,** **normalleştirilmiş kullanım saatleri,** ham **kullanım saatleri,** **sayfa ziyaretleri**ve **arama eylemleri,** seçilen tarih aralığı ([son ay kullanımı – ilk ay kullanımı])/ ilk ay kullanımı için kullanım artışı miktarını temsil eder. Yukarıda açıklandığı gibi, geçerli ayın kısmi tutarı bu ölçünün dışında tutulur.
+- **Büyüme eğilimleri**: Grafiğin sütunlarının üzerinde gezinirseniz, çubuk grafikler her ayın değerini görüntüler.
+- **Yeşil üçgen yukarı işaret**: Olumlu bir büyüme eğilimi gösterir.
+- **Aşağı yönlü işaret eden kırmızı üçgen**: Bir önceki aya göre negatif büyüme eğilimini gösterir.
 
-### <a name="customers-by-geography"></a>Coğrafya ile müşteriler
+### <a name="customers-by-geography"></a>Coğrafyaya göre müşteriler
 
-Coğrafya ısı haritasını **tarafından müşteriler** bir dünya eşlemesindeki müşteri sayısını görüntüler.
+Coğrafya ısı **haritasına göre Müşteriler,** bir dünya haritasında müşteri sayısını görüntüler.
 
-![Özet panosunda coğrafya ile müşteriler](./media/summary-customers-by-geography.png)
+![Özet panosunda coğrafyaya göre müşteriler](./media/summary-customers-by-geography.png)
 
-- Tam konumu görüntülemek için Haritayı taşıyabilirsiniz.
-- Belirli bir konuma yakınlaştırabilirsiniz.
-- Isı haritasını 'in, belirli konumdaki müşteri sayısı, sipariş sayısı, normalleştirilmiş kullanım saatlerinin ayrıntılarını görüntülemek için bir ek kılavuz vardır.
-- Haritada konum yakınlaştırmak için kılavuzda bir ülke arayabilir ve seçebilirsiniz. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
-- **Yeni** bir müşteri, seçili tarih aralığında yer alan ilk kez tekliflerinizin birini satın almış.
+- Haritayı tam konumu görüntülemek için taşıyabilirsiniz.
+- Belirli bir konumu yakınlaştırabilirsiniz.
+- Isı haritası, belirli bir konumda müşteri sayısı, sipariş sayısı, normalleştirilmiş kullanım saatleri ayrıntılarını görüntülemek için tamamlayıcı bir ızgara vardır.
+- Haritadaki konumu yakınlaştırmak için ızgarada bir ülkeyi arayabilir ve seçebilirsiniz. Haritadaki **Ana Ekran** düğmesine basarak orijinal görünüme geri dön.
+- **Yeni** bir müşteri, seçilen tarih aralığında ay boyunca ilk kez tekliflerinizden birini satın aldı.
 
-### <a name="growth-trend-charts"></a>Büyüme eğilimi grafikleri
+### <a name="growth-trend-charts"></a>Büyüme eğilim grafikleri
 
-Eğilimleri, **satın alınan** siparişlerin (iptal edilen siparişler dahil), **müşteriler tarafından alınan müşterilerin** (kayıp müşterileri dahil) ve raporlanan kullanım bildirilen, seçilen tarih aralığına göre aylık olarak görüntülenen **kullanım** artışına göre izleyebilirsiniz. Bu eğilimleri daha fazla analiz ederek grafiğin altındaki bağlantılar ' ı seçerek ilgili **sipariş**, **kullanım**, **Müşteri**veya **Market öngörüleri** sayfalarına gidebilirsiniz.
+Satın **alınan siparişlerinizin** büyümesine (iptal edilen siparişleri içerir), **satın alınan müşterilerin** (kayıp müşterileri içerir) ve seçilen tarih aralığına göre ay ay görüntülenen **kullanım** durumuna bağlı olarak eğilimleri görüntüleyebilirsiniz. Bu eğilimleri, ilgili **sipariş,** **kullanım,** **müşteri**veya **Market İstatistikleri** sayfalarına yönlendiren grafiğin altındaki bağlantıları seçerek daha da analiz edebilirsiniz.
 
-Market için **sayfa ziyaretlerini ve eylem eğilimi grafiklerine yapılan çağrı** , Azure Market ve appsource için iki sekmede görüntülenir.
+Market, Azure pazar yeri ve AppSource için iki sekmede **Sayfa ziyaretleri ve eylem çağrısı** eğilim grafikleri sunar.
 
-![Özet panosunda sayfa ziyaretleri ve eylem eğilimi grafiklerine çağrı](./media/summary-page-visits-and-cta.png)
+![Özet panosunda sayfa ziyaretleri ve eylemlere çağrı eğilim grafikleri](./media/summary-page-visits-and-cta.png)
 
-**Tekliflere göre siparişler** grafiği, siparişlerinizi teklif adına göre düzenler.
+**Tekliflerin grafiğindeki siparişler,** siparişlerinizi Teklif adına göre düzenler.
 
-**Satış kanalı pasta grafiğine göre siparişler** , Satış kanalına göre, seçili tarih aralığı boyunca siparişlerinizi (müşterilerin iptal ettiği siparişler dahil) düzenler. Satış kanalı, müşteriler tarafından bulut çözümü sağlayıcısı (CSP), kurumsal, Bayi aracılığıyla kurumsal, GTM ve kullandıkça öde gibi Azure 'u satın almak için kullanılan lisans sözleşmesinin türüdür.
+Satış kanalı pasta **grafiğine göre siparişler,** seçilen tarih aralığında, Satış kanalına göre siparişlerinizi (müşterilerin iptal ettiği siparişler dahil) düzenler. Satış kanalı, müşterilerin Azure satın almak için kullandıkları bulut çözüm sağlayıcısı (CSP), Enterprise, Enterprise by Reseller, GTM ve Kullandıkça Öde satın almak için kullanılan lisans sözleşmesi türüdür.
 
-**Satış kanalı** pasta grafiklerine göre **teklifleri** ve kullanımları, sırasıyla en önde gelen teklifler ve satış kanallarına göre kullanım dökümünü sunar. İç pasta grafik, ham kullanımı ve dış Pasta grafiğini temsil eder normalleştirilmiş kullanımı temsil eder.
+**Tekliflerin kullanımı** ve satış kanalı pasta çizelgeleri **tarafından kullanımı,** sırasıyla üst teklifler ve satış kanalları tarafından kullanım dökümünü sunar. İç pasta grafiği ham kullanımı, dış pasta grafiği ise normalleştirilmiş kullanımı temsil eder.
 
-Market lisans türü ve **Market lisans türü** pasta grafiklerine göre **siparişler** , siparişlerin ve kullanımlarındaki ilgili lisans türlerine göre bir dökümünü görüntüler. Lisans türleri şunları içerir:
+**Pazar yeri lisans türüne göre verilen siparişler** ve pazar yeri lisans türü pasta çizelgelerine göre **kullanım,** siparişlerin ve kullanımlarının ilgili lisans türüne göre dökümünü görüntüler. Lisans türleri şunlardır:
 
-- **Azure üzerinden faturalandırılır**: Bu lisans türüyle Microsoft aracılığıyla teklifinizi satmayı seçtiğinizde Microsoft, müşterileri sizin adınıza faturalar. Ödeme türleri, kredi kartı veya kurumsal faturalandırma aracılığıyla Kullandıkça Öde 'yi içerir.
-- **Kendi lisansınızı getir**: Microsoft, müşterileri bu tür Market teklifiyle kullanım için faturalandırmaz. Bu kullanım, Market 'te **Şimdi al (ücretsiz)** olarak listelenir.
-- **Ücretsiz**: Microsoft, müşterileri bu tür Market teklifiyle kullanım için faturalandırmaz. Bu kullanım, Market 'te **ücretsiz deneme** olarak listelenir.
-- **Satıcı olarak Microsoft**: **bulut çözümü sağlayıcısı (CSP) programının**bir parçası olarak Microsoft satıcıları tarafından satılan teklifleri temsil eder.
+- **Azure üzerinden faturalandırılır**: Microsoft, teklifinizi Microsoft üzerinden bu lisans türüyle satmayı seçtiğinizde müşterilerinizi sizin adınıza fatura eder. Ödeme türleri arasında kredi kartı veya Kurumsal faturalama yoluyla kullandıkça öde dahildir.
+- **Kendi lisansınızı getirin**: Microsoft, bu tür pazar teklifiyle müşterilerine kullanımları için fatura landırmaz. Bu kullanım, pazaryerinde **şimdi (Ücretsiz) alın** olarak listelenir.
+- **Ücretsiz**: Microsoft, bu tür pazar teklifiyle müşterilerine kullanımları için fatura landırmaz. Bu kullanım, pazarda **Ücretsiz deneme** olarak listelenir.
+- **Microsoft satıcı olarak**: Microsoft satıcıları tarafından **Bulut Çözüm Sağlayıcısı (CSP) programının**bir parçası olarak satılan teklifleri temsil eder.
 
-### <a name="customer-leaderboard"></a>Müşteri puan tablosu
+### <a name="customer-leaderboard"></a>Müşteri lider panosu
 
-En yüksek sayıda siparişi olan ilk 50 müşteri, en yüksek sıra sayısına ve sıra yüzdesine göre sıralanmış bir *öncü panoda*görüntülenir.
+En yüksek sipariş sayısına sahip en iyi 50 müşteri, en yüksek sipariş sayısı ve sipariş yüzdesiyle sıralanmış bir *lider panosunda*görüntülenir.
 
-- Profil ayrıntılarını, teklif tarafından düzenlenen siparişleri veya Azure lisans türü ve fiyatlandırma kanalı tarafından düzenlenen siparişleri görüntülemek için bir müşteri seçin.
-- Yer halka grafik **bazında teklifler** , ilk dört teklifi (order count 'a göre) ve kalan teklifleri ' rest All ' olarak gruplanmış olarak gösterir.
-- Halka grafik **sunarak normalleştirilmiş kullanım** en iyi beş teklifi kullanıma sunar.
+- Profil ayrıntılarını, teklife göre düzenlenen siparişleri veya Azure lisans türü ve fiyatlandırma kanalına göre düzenlenen siparişleri görüntülemek için bir müşteri seçin.
+- Siparişler donut grafiğine göre **Teklifler** ilk dört teklifi (sipariş sayısına göre) ve geri kalan teklifleri 'Rest All' olarak gruplandırılır sunar.
+- Teklif donut grafiği **ile normalleştirilmiş kullanım,** kullanıma göre ilk beş teklifi sunar.
 
 > [!NOTE]
-> Müşterinin kişisel bilgileri yalnızca müşterinin onay sağlamış olması halinde sunulur. **Sahip** rolü izinleri düzeyi ile oturum açtıysanız, bu bilgileri görüntüleyebilirsiniz. **Katkıda** bulunan rolüne sahip kullanıcılar bu bilgileri görüntüleyemeyecektir. [Kullanıcı rolleri ve izinleri hakkında daha fazla bilgi edinin](./manage-account.md#define-user-roles-and-permissions).
+> Müşterinin kişisel bilgileri yalnızca müşterinin rızası nı sağlamışsa sunulacaktır. **Bir Owner** rol izinleri düzeyi ile oturum açtıysanız bu bilgileri görüntüleyebilirsiniz. **Katılımcı** rolüne sahip kullanıcılar bu bilgileri görüntüleyemez. [Kullanıcı rolleri ve izinleri hakkında daha fazla bilgi edinin.](./manage-account.md#define-user-roles-and-permissions)
 
-### <a name="seat-count-trend"></a>Koltuk sayısı eğilimi
+### <a name="seat-count-trend"></a>Koltuk Sayısı Trendi
 
-**Bilgisayar başına/site başına siparişler** , fiyatlandırma modeline göre satın alınan tüm siparişlerin dökümünü gösterir. **Bilgisayar sayısı eğilimi** grafiği, bilgisayar başına yazılım (SaaS) teklifleriniz için satın alınan siparişlere karşı siparişler sunar.
+**Koltuk başına/ site başına** grafik başına verilen siparişler, fiyatlandırma modeline göre satın alınan tüm siparişlerin dökümünü sunar. **Koltuk sayısı trend** grafiği, koltuk başına tüm Yazılımlar için satın alınan siparişlere karşılık koltuklar sunar Hizmet (SaaS) sunar.
 
-### <a name="free-trials-saas-orders-trend"></a>Ücretsiz deneme SaaS siparişlerinin eğilimi
+### <a name="free-trials-saas-orders-trend"></a>Ücretsiz denemeler SaaS siparişleri eğilim
 
-**Ücretsiz deneme SaaS siparişleri eğilim** grafiği, 30 günlük deneme süresi sunan ücretsiz deneme SaaS teklifleri için siparişlerin eğilimini sunar.
+**Ücretsiz deneme SaaS siparişleri trend** grafiği, SaaS'in 30 günlük deneme süresiyle sunduğu ücretsiz denemeler için sipariş trendini sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'Nde ticari Market Için analiz](./analytics.md).
-- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
-- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
-- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
-- Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
-- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
-- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+- İş Ortağı Merkezi Ticari Pazarı'nda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik bölümüne](./analytics.md)bakın.
+- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [Ticari Pazar analitiğinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
+- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [Ticari Pazar analitiğinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
+- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [Ticari Pazar analitiğinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
+- Son 30 gün içinde indirme isteklerinizin bir listesi için, [Ticari Pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
+- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [Commercial Marketplace analitiğinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
+- Ticari Pazar yeri analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.

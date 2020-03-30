@@ -1,47 +1,47 @@
 ---
-title: Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
-description: Komut satırı projenize bir çıkış bağlaması ekleyerek Azure Işlevlerini bir Azure depolama kuyruğuna bağlamayı öğrenin.
+title: Komut satırı araçlarını kullanarak Azure Fonksiyonlarını Azure Depolama'ya bağlayın
+description: Komut satırı projenize bir çıktı bağlama ekleyerek Azure İşlevlerini Azure Depolama kuyruğuna nasıl bağlayabilirsiniz öğrenin.
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e3c37b368b723cc95302949baa8e85e2a8b621be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9181caf516d5c2003cfe99b125d2921732cbbb9d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201930"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473396"
 ---
-# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
+# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Fonksiyonlarını Azure Depolama'ya bağlayın
 
-Bu makalede, bir Azure depolama kuyruğunu [önceki hızlı](functions-create-first-azure-function-azure-cli.md)başlangıçta oluşturduğunuz işlev ve depolama hesabıyla tümleştirmeniz gerekir. Bu tümleştirmeyi, HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *Çıkış bağlaması* kullanarak elde edersiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç için birkaç USD 'nin ötesinde ek maliyet yoktur. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
+Bu makalede, bir Azure Depolama [kuyruğunu önceki quickstart'ta](functions-create-first-azure-function-azure-cli.md)oluşturduğunuz işlev ve depolama hesabıyla tümleştirirsiniz. Bu tümleştirmeyi, bir HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *çıktı bağlama* kullanarak elde elabilirsiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç birkaç USD sent ötesinde hiçbir ek maliyete tabi değildir. Bağlamalar hakkında daha fazla bilgi edinmek için [Azure İşlevlerini tetikleyen ve bağlama kavramlarına](functions-triggers-bindings.md)bakın.
 
-## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
+## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırın
 
-Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](functions-create-first-azure-function-azure-cli.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
+Başlamadan önce, makaleyi tamamlamanız gerekir, [Hızlı Başlat: Komut satırından bir Azure İşlevleri projesi oluşturun.](functions-create-first-azure-function-azure-cli.md) Bu makalenin sonunda kaynakları zaten temizlediyseniz, Azure'daki işlev uygulamasını ve ilgili kaynakları yeniden oluşturmak için adımları yeniden gözden geçirin.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Azure depolama bağlantı dizesini alma
+## <a name="retrieve-the-azure-storage-connection-string"></a>Azure Depolama bağlantı dizesini alın
 
-Önceki hızlı başlangıçta Azure 'da bir işlev uygulaması oluşturduğunuzda, bir depolama hesabı da oluşturmuş olursunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu ayarı *Local. Settings. JSON* dosyasına indirerek bu bağlantıyı, işlevi yerel olarak çalıştırırken aynı hesaptaki bir depolama kuyruğuna yazma işlemi kullanabilirsiniz. 
+Önceki hızlı başlangıçta Azure'da bir işlev uygulaması oluşturduğunuzda, bir Depolama hesabı da oluşturdunuz. Bu hesabın bağlantı dizesi Azure'daki uygulama ayarlarında güvenli bir şekilde depolanır. Ayarı *local.settings.json* dosyasına indirerek, işlevi yerel olarak çalıştırırken bu bağlantıyı aynı hesaptaki Depolama kuyruğuna yazma'yı kullanabilirsiniz. 
 
-1. Projenin kökünden, aşağıdaki komutu çalıştırarak `<APP_NAME>` önceki hızlı başlangıçta işlev uygulamanızın adıyla değiştirin. Bu komut, dosyadaki varolan tüm değerlerin üzerine yazar.
+1. Projenin kökünden, önceki hızlı başlangıçtaki işlev `<APP_NAME>` uygulamanızın adını değiştirerek aşağıdaki komutu çalıştırın. Bu komut, dosyadaki varolan değerlerin üzerine yazılır.
 
     ```
     func azure functionapp fetch-app-settings <APP_NAME>
     ```
     
-1. *Local. Settings. JSON* ' ı açın ve depolama hesabı bağlantı dizesi olan `AzureWebJobsStorage`adlı değeri bulun. Ad `AzureWebJobsStorage` ve bağlantı dizesini Bu makalenin diğer bölümlerinde kullanırsınız.
+1. *local.settings.json'u* açın ve `AzureWebJobsStorage`Depolama hesabı bağlantı dizesi olan adlı değeri bulun. Bu makalenin `AzureWebJobsStorage` diğer bölümlerinde adı ve bağlantı dizesini kullanırsınız.
 
 > [!IMPORTANT]
-> *Local. Settings. JSON* , Azure 'dan indirilen gizli dizileri içerdiğinden, bu dosyayı her zaman kaynak denetiminden dışlayın. Yerel işlevler projesiyle oluşturulan *. gitignore* dosyası, varsayılan olarak dosyayı dışlar.
+> *local.settings.json* Azure'dan indirilen sırları içerdiğinden, bu dosyayı her zaman kaynak denetiminden hariç tutar. Yerel işlevler projesiyle oluşturulan *.gitignore* dosyası varsayılan olarak dosyayı dışlar.
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-## <a name="add-an-output-binding-definition-to-the-function"></a>İşleve çıkış bağlama tanımı ekleme
+## <a name="add-an-output-binding-definition-to-the-function"></a>İşleviçin çıktı bağlama tanımı ekleme
 
-Bir işlev yalnızca bir tetikleyicisine sahip olsa da, özel tümleştirme kodu yazmadan diğer Azure hizmetlerine ve kaynaklarına bağlanmanızı sağlayan birden çok giriş ve çıkış bağlaması olabilir. 
+Bir işlevin yalnızca bir tetikleyicisi olsa da, özel tümleştirme kodu yazmadan diğer Azure hizmetlerine ve kaynaklarına bağlanmanızı sağlayan birden çok giriş ve çıktı bağlaması olabilir. 
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Bu bağlamaları, işlev klasörünüzdeki *function. JSON* dosyasında bildirirsiniz. Önceki hızlı başlangıçta, *Httpexample* klasöründeki *function. JSON* dosyanız `bindings` koleksiyonunda iki bağlama içerir:  
+Bu bağlamaları işlev klasörünüzde *işlev.json* dosyasında bildirirsiniz. Önceki hızlı başlangıçtan itibaren, *HttpExample* klasöründeki `bindings` *function.json* dosyanız koleksiyonda iki bağlama içerir:  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
@@ -57,46 +57,46 @@ Bu bağlamaları, işlev klasörünüzdeki *function. JSON* dosyasında bildirir
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Her bağlamanın en az bir türü, yönü ve adı vardır. Yukarıdaki örnekte, ilk bağlama Direction `in``httpTrigger` türüdür. `in` yönü için, `name` tetikleyici tarafından çağrıldığında işleve gönderilen giriş parametresinin adını belirtir.  
+Her bağlamanın en az bir türü, yönü ve adı vardır. Yukarıdaki örnekte, ilk bağlama yönü `httpTrigger` `in`ile türüdür. `in` Yön için, `name` tetikleyici tarafından çağrıldığınızda işleve gönderilen bir giriş parametresinin adını belirtir.  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Koleksiyondaki ikinci bağlama `res`olarak adlandırılmıştır. Bu `http` bağlama, HTTP yanıtını yazmak için kullanılan bir çıkış bağlamadır (`out`). 
+Koleksiyondaki ikinci bağlama adı `res`. Bu `http` bağlama, HTTP`out`yanıtını yazmak için kullanılan bir çıktı bağlama ( ) 
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için, aşağıdaki kodda gösterildiği gibi, `queue` türünde bir `out` bağlama `msg`adını ekleyin:
+Bu işlevden bir Azure Depolama kuyruğuna `out` yazmak `queue` için, `msg`aşağıdaki kodda gösterildiği gibi, adında bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-Koleksiyondaki ikinci bağlama Direction `out``http` türündedir, bu durumda `$return` özel `name`, bu bağlamanın bir giriş parametresi sağlamak yerine işlevin dönüş değerini kullandığını gösterir.
+Koleksiyondaki ikinci `http` bağlama yönü `out`ile tür , bu durumda `name` `$return` özel bu bağlama bir giriş parametresi sağlamak yerine işlevin dönüş değerini kullandığını gösterir.
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için, aşağıdaki kodda gösterildiği gibi, `queue` türünde bir `out` bağlama `msg`adını ekleyin:
+Bu işlevden bir Azure Depolama kuyruğuna `out` yazmak `queue` için, `msg`aşağıdaki kodda gösterildiği gibi, adında bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-powershell"  
-Koleksiyondaki ikinci bağlama `res`olarak adlandırılmıştır. Bu `http` bağlama, HTTP yanıtını yazmak için kullanılan bir çıkış bağlamadır (`out`). 
+Koleksiyondaki ikinci bağlama adı `res`. Bu `http` bağlama, HTTP`out`yanıtını yazmak için kullanılan bir çıktı bağlama ( ) 
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için, aşağıdaki kodda gösterildiği gibi, `queue` türünde bir `out` bağlama `msg`adını ekleyin:
+Bu işlevden bir Azure Depolama kuyruğuna `out` yazmak `queue` için, `msg`aşağıdaki kodda gösterildiği gibi, adında bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Bu durumda, `msg` işleve çıkış bağımsız değişkeni olarak verilir. `queue` bir tür için, `queueName` sıranın adını da belirtmeniz ve `connection`' deki Azure depolama bağlantısı 'nın ( *Local. Settings. JSON*' dan) *adını* sağlamanız gerekir. 
+Bu durumda, `msg` bir çıktı bağımsız değişkeni olarak işlev verilir. Bir `queue` tür için, sıranın adını belirtmeniz `queueName` ve Azure Depolama bağlantısının *adını* *(local.settings.json'dan)*.'da `connection`sağlamanız gerekir. 
 ::: zone-end  
 
 ::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
 ::: zone-end  
 
-Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md) ve [sıra çıkış yapılandırması](functions-bindings-storage-queue-output.md#configuration).
+Bağlamaayrıntıları hakkında daha fazla bilgi için Azure [İşlevlerini tetikler ve bağlamalar kavramları ve](functions-triggers-bindings.md) [sıra çıktıyapılandırması'na](functions-bindings-storage-queue-output.md#configuration)bakın.
 
-## <a name="add-code-to-use-the-output-binding"></a>Çıkış bağlamayı kullanmak için kod ekleme
+## <a name="add-code-to-use-the-output-binding"></a>Çıktı bağlamayı kullanmak için kod ekleme
 
-*Function. JSON*' da belirtilen sıra bağlaması ile, artık işlevinizi `msg` çıktı parametresini alacak şekilde güncelleştirebilir ve iletileri kuyruğa yazabilirsiniz.
+*function.json'da*belirtilen sıra bağlama ile artık çıktı parametresini `msg` almak ve sıraya ileti yazmak için işlevinizi güncelleştirebilirsiniz.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -118,101 +118,101 @@ Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işle
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 ::: zone-end 
 
-Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanıza gerek olmadığını* gözlemleyin. Tüm bu tümleştirme görevleri, Azure Işlevleri çalışma zamanı ve sıra çıkış bağlamasında kolayca işlenir.
+Kimlik doğrulama, sıra başvurusu alma veya veri yazma için kod yazmanız *gerekmesin.* Tüm bu tümleştirme görevleri Azure İşlevleri çalışma zamanında ve sıra çıktısına bağlamada rahatlıkla işlenir.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
 [!INCLUDE [functions-extension-bundles-info](../../includes/functions-extension-bundles-info.md)]
 
-## <a name="view-the-message-in-the-azure-storage-queue"></a>Azure depolama sırasındaki iletiyi görüntüleme
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Azure Depolama kuyruğundaki iletiyi görüntüleme
 
-Kuyruğu [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) veya [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)görüntüleyebilirsiniz. Ayrıca, aşağıdaki adımlarda açıklandığı gibi, kuyruğu Azure CLı 'de de görebilirsiniz:
+[Kuyruğa Azure portalında](../storage/queues/storage-quickstart-queues-portal.md) veya [Microsoft Azure Depolama Gezgini'nde](https://storageexplorer.com/)görüntüleyebilirsiniz. Aşağıdaki adımlarda açıklandığı gibi, Azure CLI'deki sırayı da görüntüleyebilirsiniz:
 
-1. İşlevin proje *yerel. Setting. JSON* dosyasını açın ve bağlantı dizesi değerini kopyalayın. Bir Terminal veya komut penceresinde, `<MY_CONNECTION_STRING>`yerine belirli bağlantı dizenizi yapıştırarak `AZURE_STORAGE_CONNECTION_STRING`adlı bir ortam değişkeni oluşturmak için aşağıdaki komutu çalıştırın. (Bu ortam değişkeni, `--connection-string` bağımsız değişkenini kullanarak sonraki her komuta bağlantı dizesi sağlamanız gerekmez.)
+1. İşlev projesinin *yerel.setting.json* dosyasını açın ve bağlantı dize değerini kopyalayın. Bir terminal veya komut penceresinde, aşağıdaki komutu çalıştırarak bir ortam değişkeni oluşturmak için , `AZURE_STORAGE_CONNECTION_STRING`'yerine belirli bağlantı dizesi yapıştırma `<MY_CONNECTION_STRING>`. (Bu ortam değişkeni, `--connection-string` bağımsız değişkeni kullanarak sonraki her komuta bağlantı dizesi sağlamanız gerekolmadığı anlamına gelir.)
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[Powershell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<MY_CONNECTION_STRING>"
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     set AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
     ---
     
-1. Seçim Hesabınızdaki depolama kuyruklarını görüntülemek için [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) komutunu kullanın. Bu komutun çıktısı, işlev bu kuyruğa ilk iletisini yazmışsa oluşturulan `outqueue`adlı bir sıra içermelidir.
+1. (İsteğe bağlı) Hesabınızdaki [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) Depolama kuyruklarını görüntülemek için komutu kullanın. Bu komutun çıktısı, işlev `outqueue`bu kuyruğa ilk iletisini yazdığında oluşturulan , adlı bir sıra içermelidir.
     
-    ```azure-cli
+    ```azurecli
     az storage queue list --output tsv
     ```
 
-1. Bu kuyruktan iletiyi okumak için [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) komutunu kullanın. Bu, daha önce işlev test edilirken kullandığınız ilk ad olmalıdır. Komut kuyruktan ilk iletiyi okur ve kaldırır. 
+1. İşlevdaha önce test ederken kullandığınız ilk ad olmalıdır bu kuyruktaki iletiyi okumak için [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) komutu kullanın. Komut ilk iletiyi sıradan okur ve kaldırır. 
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[Powershell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 
-    Bu betik, yerel bir geçici dosyadan Base64 kodlamalı ileti koleksiyonunun kodunu çözmek için Certutil kullanır. Çıkış yoksa, bir hata olması durumunda certutil çıkışını gizlemeyi durdurmak için komut dosyasından `> NUL` kaldırmayı deneyin. 
+    Bu komut dosyası, yerel bir geçici dosyadan base64 kodlanmış ileti koleksiyonunu çözmek için certutil kullanır. Çıktı yoksa, bir hata olması `> NUL` durumunda certutil çıktısını bastırmayı durdurmak için komut dosyasından kaldırmayı deneyin. 
     
     ---
     
-    İleti gövdesi [Base64 kodlamalı](functions-bindings-storage-queue-trigger.md#encoding)depolandığından, iletinin görüntülenmeden önce kodu çözülemedi. `az storage message get`yürütmeden sonra ileti kuyruktan kaldırılır. `outqueue`içinde yalnızca bir ileti varsa, bu komutu ikinci kez çalıştırıp bir hata elde ettiğinizde bir ileti almazsınız.
+    İleti gövdesi [base64 kodlu](functions-bindings-storage-queue-trigger.md#encoding)olarak depolandığı için, ileti görüntülenmeden önce deşifre edilmelidir. Yürütmeden `az storage message get`sonra ileti kuyruktan kaldırılır. Yalnızca bir ileti `outqueue`varsa, bu komutu ikinci kez çalıştırdığınızda bir ileti almazsınız ve bunun yerine bir hata alırsınız.
 
-## <a name="redeploy-the-project-to-azure"></a>Projeyi Azure 'a yeniden dağıtın
+## <a name="redeploy-the-project-to-azure"></a>Projeyi Azure'a yeniden dağıtma
 
-İşlevin Azure depolama kuyruğuna bir ileti yazdığını doğruladığınıza göre, Azure üzerinde çalışan uç noktayı güncelleştirmek için projenizi yeniden dağıtabilirsiniz.
+İşlevin Azure Depolama kuyruğuna bir ileti yazdığını yerel olarak doğruladığınıza göre, Projenizi Azure'da çalışan bitiş noktasını güncelleştirmek için yeniden dağıtabilirsiniz.
 
-1. *Localfunctionsproj* klasöründe, projeyi yeniden dağıtmak için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) komutunu kullanın ve`<APP_NAME>` uygulamanızın adıyla değiştirin.
+1. *LocalFunctionsProj* klasöründe, uygulamanızın adını değiştirerek [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) `<APP_NAME>` projeyi yeniden dağıtmak için komutu kullanın.
 
     ```
     func azure functionapp publish <APP_NAME>
     ```
     
-1. Önceki hızlı başlangıçta olduğu gibi, yeniden dağıtılan işlevi sınamak için bir tarayıcı veya KıVRıMLı kullanın.
+1. Önceki hızlı başlatmada olduğu gibi, yeniden dağıtılan işlevi sınamak için bir tarayıcı veya CURL kullanın.
 
     # <a name="browser"></a>[Tarayıcı](#tab/browser)
     
-    Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini bir tarayıcı adres çubuğuna kopyalayın, `&name=Functions`sorgu parametresini ekleyin. , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
+    Yayımlama komutunun çıktısında gösterilen invoke **URL'sinin** tamamını bir tarayıcı adresi `&name=Functions`çubuğuna kopyalayın ve sorgu parametresini ekler. Tarayıcı, işlevi yerel olarak çalıştırdığınızda olduğu gibi benzer çıktıları görüntülemelidir.
 
-    ![İşlevin çıktısı Azure üzerinde bir tarayıcıda çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
+    ![İşlevin çıktısı bir tarayıcıda Azure'da çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
-    # <a name="curl"></a>[kıvr](#tab/curl)
+    # <a name="curl"></a>[Curl](#tab/curl)
     
-    [`curl`](https://curl.haxx.se/) `&name=Functions`parametresini ekleyerek **Invoke URL**'siyle çalıştırın. Komutun çıktısı, "Hello Functions" metni olmalıdır.
+    Invoke [`curl`](https://curl.haxx.se/) **URL'si**ile çalıştırın, parametreyi `&name=Functions`ekle. Komutun çıktısı "Merhaba İşlevler" metni olmalıdır.
     
-    ![İşlevin çıktısı, Azure 'da KıVRıMLı kullanılarak çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
+    ![İşlevin çıktısı CURL kullanarak Azure'da çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
     --- 
 
-1. Depolama sırasını, önceki bölümde açıklandığı gibi bir kez inceleyerek sıraya yazılan yeni iletiyi içerdiğini doğrulayın.
+1. Sıraya yazılan yeni iletiyi içerdiğini doğrulamak için önceki bölümde açıklandığı gibi Depolama sırasını yeniden inceleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, daha fazla maliyet ödemeden kaçınmak için kaynak grubunu ve içerdiği tüm kaynakları silmek için aşağıdaki komutu kullanın.
+Bitirdikten sonra, daha fazla maliyete yol alamamak için kaynak grubunu ve içerdiği tüm kaynakları silmek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
@@ -220,37 +220,37 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Artık çekirdek araçları ve Azure CLı kullanarak komut satırından Işlev geliştirme hakkında daha fazla bilgi edinebilirsiniz:
+Depolama kuyruğuna veri yazmak için HTTP tetiklenen işlevinizi güncellediniz. Artık Temel Araçlar ve Azure CLI'yi kullanarak komut satırından İşlevler geliştirme hakkında daha fazla bilgi edinebilirsiniz:
 
-+ [Azure Functions Core Tools çalışın](functions-run-local.md)  
++ [Azure İşlevleri Temel Araçlarıyla Çalışma](functions-run-local.md)  
 
 ::: zone pivot="programming-language-csharp"  
-+ [İçindeki C#tüm işlev projelerinin örnekleri ](/samples/browse/?products=azure-functions&languages=csharp).
++ [C# 'daki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=csharp)
 
-+ [Azure Işlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md)  
++ [Azure İşlevler C# geliştirici başvurusu](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
-+ [JavaScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=javascript).
++ [JavaScript'teki tam Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=javascript)
 
-+ [Azure Işlevleri JavaScript Geliştirici Kılavuzu](functions-reference-node.md)  
++ [Azure İşlevler JavaScript geliştirici kılavuzu](functions-reference-node.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-+ [TypeScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=typescript).
++ [TypeScript'teki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=typescript)
 
-+ [Azure Işlevleri TypeScript Geliştirici Kılavuzu](functions-reference-node.md#typescript)  
++ [Azure İşlevler TypeScript geliştirici kılavuzu](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-+ [Python 'da tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=python).
++ [Python'daki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=python)
 
-+ [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md)  
++ [Azure İşlevler Python geliştirici kılavuzu](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-+ [PowerShell 'de tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=azurepowershell).
++ [PowerShell'deki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=azurepowershell)
 
-+ [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md) 
++ [Azure İşgücü Shell geliştirici kılavuzu](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
++ [Azure Fonksiyonları tetikler ve bağlamalar](functions-triggers-bindings.md)
 
-+ [İşlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
++ [Fonksiyonlar fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
 
-+ [Tüketim planı maliyetlerini tahmin etme](functions-consumption-costs.md) 
++ [Tüketim planı maliyetlerinin tahmini](functions-consumption-costs.md) 

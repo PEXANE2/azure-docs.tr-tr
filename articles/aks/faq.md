@@ -1,186 +1,186 @@
 ---
-title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
-description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
+title: Azure Kubernetes Hizmeti (AKS) için sık sorulan sorular
+description: Azure Kubernetes Hizmeti (AKS) ile ilgili sık sorulan bazı soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 1531308a8d0bd5a09952d8ad8ccd03c92f2f99eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c4bb4328af5df7f729967c7b249847b2ab098770
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497759"
 ---
-# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
-Bu makalede, Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular ele alınmaktadır.
+Bu makalede, Azure Kubernetes Hizmeti (AKS) ile ilgili sık sorulan sorular ele alçıkmaktadır.
 
-## <a name="which-azure-regions-currently-provide-aks"></a>Hangi Azure bölgeleri Şu anda AKS sağlıyor?
+## <a name="which-azure-regions-currently-provide-aks"></a>Şu anda hangi Azure bölgeleri AKS sağlıyor?
 
-Kullanılabilir bölgelerin tüm listesi için bkz. [aks bölgeleri ve kullanılabilirliği][aks-regions].
+Kullanılabilir bölgelerin tam listesi için [AKS bölgelerine ve kullanılabilirliğine][aks-regions]bakın.
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS düğüm otomatik ölçeklendirmeyi destekliyor mu?
+## <a name="does-aks-support-node-autoscaling"></a>AKS düğüm otomatikleştiriyi destekliyor mu?
 
-Evet, aracıdaki aracı düğümlerini otomatik olarak ölçeklendirme özelliği şu anda önizlemede kullanılabilir. Yönergeler için bkz. [AKS 'de uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme][aks-cluster-autoscaler] . AKS otomatik ölçeklendirme, [Kubernetes otomatik Scaler][auto-scaler]'ı temel alır.
+Evet, AKS'de aracı düğümlerini yatay olarak otomatik olarak ölçeklendirme yeteneği şu anda önizlemede kullanılabilir. Bkz. Yönergeler için [AKS'deki uygulama taleplerini karşılamak][aks-cluster-autoscaler] için bir kümeyi otomatik olarak ölçeklendirin. AKS otomatik ölçeklendirme [Kubernetes autoscaler][auto-scaler]dayanmaktadır.
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>AKS 'i var olan sanal ağınızdan dağıtabilir miyim?
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>AKS'yi mevcut sanal ağıma dağıtabilir miyim?
 
-Evet, [Gelişmiş Ağ özelliğini][aks-advanced-networking]kullanarak bir aks kümesini mevcut bir sanal ağa dağıtabilirsiniz.
+Evet, [gelişmiş ağ özelliğini][aks-advanced-networking]kullanarak bir AKS kümesini varolan bir sanal ağa dağıtabilirsiniz.
 
-## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API sunucusuna kimlerin erişebileceğini sınırlayabilir miyim?
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API sunucusuna kimlerin erişimini sınırlandırabilir miyim?
 
-Evet, [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][api-server-authorized-ip-ranges]kullanarak Kubernetes API sunucusuna erişimi sınırlayabilirsiniz.
+Evet, [API Server Yetkili IP Aralıkları][api-server-authorized-ip-ranges]kullanarak Kubernetes API sunucusuna erişimi sınırlayabilirsiniz.
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API sunucusunu yalnızca sanal ağım içinde erişilebilir yapabilir miyim?
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API sunucusunu yalnızca sanal ağımda erişilebilir hale getirebilir miyim?
 
-Şu anda değil, ancak bu planlanmaktadır. İlerlemeyi [aks GitHub][private-clusters-github-issue]deposunda izleyebilirsiniz.
+Şu anda değil, ama bu planlanmış. [AKS GitHub repo'sundaki][private-clusters-github-issue]ilerlemeyi izleyebilirsiniz.
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Tek bir kümede farklı VM boyutlarına sahip olabilir miyim?
 
-Evet, [birden çok düğüm havuzu][multi-node-pools]oluşturarak aks kümenizde farklı sanal makine boyutları kullanabilirsiniz.
+Evet, [birden çok düğüm havuzları][multi-node-pools]oluşturarak AKS kümenizde farklı sanal makine boyutları kullanabilirsiniz.
 
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Güvenlik güncelleştirmeleri AKS aracı düğümlerine uygulandı mi?
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>GÜVENLIK güncelleştirmeleri AKS aracı düğümlerine uygulanır mı?
 
-Azure, bir gecelik zamanlamaya göre kümenizdeki Linux düğümlerine otomatik olarak güvenlik düzeltme ekleri uygular. Ancak, bu Linux düğümlerinin gerektiği şekilde yeniden başlatılmasını sağlamaya sorumlusunuz. Düğümleri yeniden başlatmak için çeşitli seçenekleriniz vardır:
+Azure, güvenlik yamaları kümesinizdeki Linux düğümlerine gecelik bir programla otomatik olarak uygular. Ancak, bu Linux düğümlerinin gerektiği gibi yeniden başlatılmasını sağlamaktan siz sorumlusunuz. Düğümleri yeniden başlatmak için birkaç seçeneğiniz vardır:
 
-- Azure portal veya Azure CLı aracılığıyla el ile.
-- AKS kümenizi yükselterek. Küme yükseltmeleri, [düğümleri][cordon-drain] otomatik olarak kaldırır ve yeni bir düğümü en son Ubuntu görüntüsü ve yeni bir yama sürümü ya da bir Ikincil Kubernetes sürümü ile çevrimiçi duruma getirir. Daha fazla bilgi için bkz. [AKS kümesini yükseltme][aks-upgrade].
-- Kubernetes için açık kaynaklı bir yeniden başlatma cini olan [Kured](https://github.com/weaveworks/kured)'yi kullanarak. Kured bir [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) olarak çalışır ve her düğümü, bir yeniden başlatmanın gerekli olduğunu belirten bir dosyanın varlığına izler. Küme genelinde, işletim sistemi yeniden başlatmaları aynı [Cordon ve boşaltma işlemi][cordon-drain] tarafından bir küme yükseltmesi olarak yönetilir.
+- Azure portalı veya Azure CLI üzerinden el ile.
+- AKS kümenizi yükselterek. Küme, [kordon ve drenaj düğümlerini][cordon-drain] otomatik olarak yükseltir ve ardından en son Ubuntu görüntüsü ve yeni bir yama sürümü veya küçük bir Kubernetes sürümüyle yeni bir düğümü çevrimiçi duruma getirir. Daha fazla bilgi için [bir AKS kümesini yükseltme'ye][aks-upgrade]bakın.
+- [Kured](https://github.com/weaveworks/kured)kullanarak , Kubernetes için bir açık kaynak yeniden başlatma daemon. Kured, [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) olarak çalışır ve yeniden başlatma nın gerekli olduğunu belirten bir dosyanın varlığını her düğümü izler. Küme genelinde, işletim sistemi yeniden başlatmaları küme yükseltmesi ile aynı [akkor ve boşaltma işlemi][cordon-drain] yle yönetilir.
 
-Kured kullanma hakkında daha fazla bilgi için bkz. [AKS içindeki düğümlere güvenlik ve çekirdek güncelleştirmeleri uygulama][node-updates-kured].
+Kured kullanma hakkında daha fazla bilgi için, [AKS'deki düğümlere güvenlik ve çekirdek güncelleştirmeleri uygula'ya][node-updates-kured]bakın.
 
 ### <a name="windows-server-nodes"></a>Windows Server düğümleri
 
-Windows Server düğümleri için (Şu anda AKS 'de önizlemededir) Windows Update, en son güncelleştirmeleri otomatik olarak çalıştırmaz ve uygulamaz. Windows Update yayın döngüsünün ve kendi doğrulama işleminizin etrafında düzenli bir zamanlamaya göre, küme üzerinde ve AKS kümenizdeki Windows Server düğüm havuzunda bir yükseltme gerçekleştirmeniz gerekir. Bu yükseltme işlemi, en son Windows Server görüntüsünü ve düzeltme eklerini çalıştıran düğümleri oluşturur, daha sonra eski düğümleri kaldırır. Bu işlemle ilgili daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Windows Server düğümleri (şu anda AKS önizlemede), Windows Update otomatik olarak çalışmaz ve en son güncelleştirmeleri uygulamaz. Windows Update sürüm döngüsü ve kendi doğrulama işleminiz etrafında düzenli bir zamanlamada, AKS kümenizde küme ve Windows Server düğüm havuzunda(lar) bir yükseltme gerçekleştirmeniz gerekir. Bu yükseltme işlemi, en son Windows Server görüntüsünü çalıştıran düğümler ve düzeltme etekleri oluşturur ve eski düğümleri kaldırır. Bu işlem hakkında daha fazla bilgi için [AKS'deki düğüm havuzuna yükseltme bölümüne][nodepool-upgrade]bakın.
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS ile neden iki kaynak grubu oluşturulur?
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Neden AKS ile iki kaynak grubu oluşturulur?
 
-AKS, sanal makine ölçek kümeleri, sanal ağlar ve yönetilen diskler dahil olmak üzere bir dizi Azure altyapı kaynağı üzerinde oluşturulur. Bu, AKS tarafından sunulan yönetilen Kubernetes ortamında Azure platformunun birçok temel özelliği avantajlarından yararlanmanızı sağlar. Örneğin, çoğu Azure sanal makine türü doğrudan AKS ile kullanılabilir ve Azure ayırmaları bu kaynaklara otomatik olarak iskontolar almak için kullanılabilir.
+AKS, sanal makine ölçek kümeleri, sanal ağlar ve yönetilen diskler de dahil olmak üzere bir dizi Azure altyapı kaynağı üzerine inşa edilmiştir. Bu, AKS tarafından sağlanan yönetilen Kubernetes ortamında Azure platformunun birçok temel özelliğinden yararlanmanızı sağlar. Örneğin, çoğu Azure sanal makine türü doğrudan AKS ile kullanılabilir ve Azure Rezervasyonları bu kaynaklarda otomatik olarak indirim almak için kullanılabilir.
 
-Bu mimariyi etkinleştirmek için, her bir AKS dağıtımı iki kaynak grubuna yaymıştır:
+Bu mimariyi etkinleştirmek için, her AKS dağıtımı iki kaynak grubuna yayılır:
 
-1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus*. Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
-1. *Düğüm kaynak grubu*olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus*gibi bir adı vardır. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
+1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubunun bir örneği *MC_myResourceGroup_myAKSCluster_eastus.* Bu ikinci kaynak grubunun adını nasıl belirtinen hakkında bilgi için sonraki bölüme bakın.
+1. *Düğüm kaynak grubu*olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar Kubernetes düğüm VM'leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus*gibi bir adı vardır. AKS, küme silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
 
-## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğümü kaynak grubu için kendi adını verebilir miyim?
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğüm kaynak grubu için kendi adımı verebilir miyim?
 
-Evet. Varsayılan olarak, AKS, düğüm kaynak grubunu *MC_resourcegroupname_clustername_location*olarak adlandırın, ancak kendi adınızı de sağlayabilirsiniz.
+Evet. Varsayılan olarak, AKS düğüm kaynak grubunu *MC_resourcegroupname_clustername_location*adlar, ancak kendi adınızı da sağlayabilirsiniz.
 
-Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, *--node-Resource-Group* parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
+Kendi kaynak grup adınızı belirtmek için [aks önizleme][aks-preview-cli] Azure CLI uzantısı sürümünü *0.3.2* veya sonraki sürüm yükleyin. [Az aks oluşturma][az-aks-create] komutunu kullanarak bir AKS kümesi oluşturduğunuzda, *--düğüm-kaynak grubu* parametresini kullanın ve kaynak grubu için bir ad belirtin. Aks kümesini dağıtmak için [bir Azure Kaynak Yöneticisi şablonu kullanıyorsanız,][aks-rm-template] kaynak grubu adını *düğümKaynak Grubu* özelliğini kullanarak tanımlayabilirsiniz.
 
-* İkincil kaynak grubu, kendi aboneliğinizde Azure Kaynak sağlayıcısı tarafından otomatik olarak oluşturulur.
-* Yalnızca kümeyi oluştururken özel bir kaynak grubu adı belirtebilirsiniz.
+* İkincil kaynak grubu, kendi aboneliğinizde Azure kaynak sağlayıcısı tarafından otomatik olarak oluşturulur.
+* Özel bir kaynak grubu adı yalnızca küme oluştururken belirtebilirsiniz.
 
-Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklınızda bulundurun:
+Düğüm kaynak grubuyla çalışırken şunları yapamayacağınızı unutmayın:
 
-* Düğüm kaynak grubu için mevcut bir kaynak grubu belirtin.
+* Düğüm kaynak grubu için varolan bir kaynak grubu belirtin.
 * Düğüm kaynak grubu için farklı bir abonelik belirtin.
 * Küme oluşturulduktan sonra düğüm kaynak grubu adını değiştirin.
-* Düğüm kaynak grubu içindeki yönetilen kaynakların adlarını belirtin.
-* Düğüm kaynak grubu içindeki yönetilen kaynakların etiketlerini değiştirin veya silin. (Sonraki bölümde daha fazla bilgi için bkz.)
+* Düğüm kaynak grubundaki yönetilen kaynakların adlarını belirtin.
+* Düğüm kaynak grubundaki yönetilen kaynakların etiketlerini değiştirin veya silin. (Sonraki bölümdeki ek bilgilere bakın.)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Düğüm kaynak grubundaki AKS kaynaklarının etiketlerini ve diğer özelliklerini değiştirebilir miyim?
 
-Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, hataları ölçekleme ve yükseltme gibi beklenmedik sonuçlara ulaşabilirsiniz. AKS özel etiketler oluşturmanıza ve değiştirmenize olanak sağlar. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. AKS kümesindeki düğüm kaynak grubu altındaki kaynakları değiştirerek, hizmet düzeyi hedefini (SLO) böedersiniz. Daha fazla bilgi için bkz. [AKS bir hizmet düzeyi sözleşmesi sunuyor mu?](#does-aks-offer-a-service-level-agreement)
+Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, ölçekleme ve yükseltme hataları gibi beklenmeyen sonuçlar elde edebilirsiniz. AKS, özel etiketler oluşturmanıza ve değiştirmenize olanak tanır. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. AKS kümesindeki düğüm kaynak grubunun altındaki kaynakları değiştirerek, hizmet düzeyi hedefini (SLO) bozarsınız. Daha fazla bilgi için [bkz: AKS hizmet düzeyi sözleşmesi sunuyor mu?](#does-aks-offer-a-service-level-agreement)
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Kubernetes giriş denetleyicileri AKS 'i destekliyor? Giriş denetleyicileri eklenebilir mi, kaldırılabilir mi?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Aks hangi Kubernetes kabul kontrolörlerini destekliyor? Kabul denetleyicileri eklenebilir veya kaldırılabilir mi?
 
-AKS aşağıdaki [giriş denetleyicilerini][admission-controllers]destekler:
+AKS aşağıdaki [kabul kontrolörlerini][admission-controllers]destekler:
 
-- *Namespaceyaşam döngüsü*
+- *NamespaceYaşam Döngüsü*
 - *LimitRanger*
-- *Çalıştırıp*
-- *DefaultStorageClass*
-- *Defaulttoleranationseconds*
-- *Değiştirici Tingadmissionweb kancası*
-- *ValidatingAdmissionWebhook*
-- *ResourceQuota*
+- *ServiceAccount*
+- *Varsayılan StorageClass*
+- *DefaultTolerationSeconds*
+- *MutasyonA UğramışKabulWebhook*
+- *DoğrulamaKabulWebhook*
+- *Kaynak Kotası*
 
-Şu anda AKS 'de giriş denetleyicileri listesini değiştiremezsiniz.
+Şu anda, AKS'deki kabul denetleyicilerinin listesini değiştiremezsiniz.
 
-## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS ile tümleşik Azure Key Vault mı?
+## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault AKS ile entegre mi?
 
-AKS Şu anda Azure Key Vault ile yerel olarak tümleştirilmiştir. Ancak, [Kubernetes projesi için Azure Key Vault flexvolume][keyvault-flexvolume] , Kubernetes Pod 'den Key Vault gizli anahtarlara doğrudan tümleştirmeyi sağlar.
+AKS şu anda Azure Key Vault ile yerel olarak entegre değil. Ancak, [Kubernetes için Azure Key Vault FlexVolume projesi,][keyvault-flexvolume] Kubernetes bölmelerinden Key Vault sırlarına doğrudan entegrasyon sağlar.
 
-## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS üzerinde Windows Server kapsayıcıları çalıştırabilir miyim?
+## <a name="can-i-run-windows-server-containers-on-aks"></a>Windows Server kapsayıcılarını AKS'de çalıştırabilir miyim?
 
-Evet, Windows Server kapsayıcıları önizlemede kullanılabilir. AKS 'de Windows Server kapsayıcıları çalıştırmak için, Konuk işletim sistemi olarak Windows Server çalıştıran bir düğüm havuzu oluşturursunuz. Windows Server kapsayıcıları yalnızca Windows Server 2019 kullanabilir. Başlamak için bkz. [Windows Server düğüm havuzu Ile AKS kümesi oluşturma][aks-windows-cli].
+Evet, Windows Server kapsayıcıları önizlemede kullanılabilir. AKS'de Windows Server kapsayıcılarını çalıştırmak için, Windows Server'ı konuk işletim sistemi olarak çalıştıran bir düğüm havuzu oluşturursunuz. Windows Server kapsayıcıları yalnızca Windows Server 2019'u kullanabilir. Başlamak için bkz: [Windows Server düğüm havuzu olan bir AKS kümesi oluştur.][aks-windows-cli]
 
-Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı akış Windows Server 'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar hakkında daha fazla bilgi için bkz. [AKS kısıtlamalarında Windows Server kapsayıcıları][aks-windows-limitations].
+Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı Windows Server'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar hakkında daha fazla bilgi [için, AKS sınırlamalarında Windows Server kapsayıcılarına][aks-windows-limitations]bakın.
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>AKS bir hizmet düzeyi sözleşmesi sunuyor mu?
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS hizmet düzeyi sözleşmesi sunuyor mu?
 
-Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
+Hizmet düzeyi sözleşmesinde (SLA), yayınlanan hizmet düzeyi karşılanmazsa sağlayıcı müşteriye hizmet in maliyetini geri ödemeyi kabul eder. AKS ücretsiz olduğundan, hiçbir maliyet geri ödeme için kullanılabilir, bu nedenle AKS hiçbir resmi SLA vardır. Ancak AKS, Kubernetes API sunucusu için en az yüzde 99,5'lik kullanılabilirliği korumayı amaçlamaktadır.
 
-Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) okuyun.
+Kubernetes kontrol düzleminin çalışma süresi ile Azure Sanal Makinelerde çalışan belirli iş yükünüzün kullanılabilirliği anlamına gelen AKS hizmet kullanılabilirliği arasındaki ayrımı tanımak önemlidir. Denetim düzlemi hazır değilse denetim düzlemi kullanılamıyor olsa da, Azure VM'lerinde çalışan küme iş yükleriniz çalışmaya devam edebilir. Azure VM'ler ücretli kaynaklar göz önüne alındığında, bir finansal SLA tarafından desteklenen. Azure VM SLA hakkında daha fazla bilgi ve [Kullanılabilirlik Bölgeleri][availability-zones]gibi özelliklerle kullanılabilirliği nasıl artıracağınız [hakkında daha fazla bilgi için burayı](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) okuyun.
 
-## <a name="why-cant-i-set-maxpods-below-30"></a>Neden Maxpod 'yi 30 altında ayarlayamıyorum?
+## <a name="why-cant-i-set-maxpods-below-30"></a>Neden maxPods'u 30'un altına ayarlamıyorum?
 
-AKS 'de, Azure CLı ve Azure Resource Manager şablonlarını kullanarak kümeyi oluştururken `maxPods` değerini ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNı, *en az bir değer* gerektirir (oluşturma sırasında doğrulama):
+AKS'de, Azure `maxPods` CLI ve Azure Kaynak Yöneticisi şablonlarını kullanarak küme oluştururken değeri ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNI *en az değer* gerektirir (oluşturma zamanında doğrulanır):
 
-| Ağ | Minimum | Maksimum |
+| Ağ Oluşturma | Minimum | Maksimum |
 | -- | :--: | :--: |
-| Azure CNı | 30 | 250 |
-| Kubernetes kullanan | 30 | 110 |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
 
-Aks yönetilen bir hizmet olduğundan, kümenin bir parçası olarak eklentiler ve pod 'leri dağıtıp yönettik. Geçmişte, kullanıcılar, yönetilen yığınların çalışması için gereken değerden daha düşük bir `maxPods` değeri tanımlayabilir (örneğin, 30). Aks şu formülü kullanarak en az sayıda Pod sayısını hesaplar: ((maxpods veya (maxpods * vm_count)) > yönetilen eklenti en düşük.
+AKS yönetilen bir hizmet olduğundan, kümenin bir parçası olarak eklentileri ve bölmeleri dağıtıp yönetiyoruz. Geçmişte, kullanıcılar yönetilen bölmelerin çalışması gereken değerden daha düşük bir `maxPods` değer tanımlayabilirdi (örneğin, 30). AKS artık bu formülü kullanarak en az pod sayısını hesaplar: ((maxPods veya (maxPods * vm_count)) yönetilen eklenti bölmeleri > minimum.
 
-Kullanıcılar en düşük `maxPods` doğrulamasını geçersiz kılamaz.
+Kullanıcılar minimum `maxPods` doğrulamayı geçersiz kılabilir.
 
-## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerine Azure rezervasyon indirimleri uygulayabilir miyim?
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerime Azure rezervasyon indirimleri uygulayabilir miyim?
 
-AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırılır, bu nedenle AKS 'de kullandığınız VM boyutu için [Azure ayırmaları][reservation-discounts] satın aldıysanız, bu indirimler otomatik olarak uygulanır.
+AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırılır, bu nedenle AKS'de kullandığınız VM boyutu için [Azure rezervasyonları][reservation-discounts] satın aldıysanız, bu indirimler otomatik olarak uygulanır.
 
-## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracılar arasında taşıyabilir/geçirebilir miyim?
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracıları arasında taşıyabilir/taşıyabilir miyim?
 
-`az aks update-credentials` komutu, bir AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+Komut, `az aks update-credentials` bir AKS kümesini Azure kiracıları arasında taşımak için kullanılabilir. Bir hizmet [sorumlusu güncelleştirmeyi veya oluşturmayı seç'teki](https://docs.microsoft.com/azure/aks/update-credentials) yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin.](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)
 
-## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kümemi abonelikler arasında taşıyabilir/geçirebilir miyim?
 
-Abonelikler arasında küme hareketi şu anda desteklenmiyor.
+Kümelerin abonelikler arasındaki hareketi şu anda desteklenmiş.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli Azure aboneliğinden diğerine taşıyabilir miyim? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli azure aboneliğinden başka bir kümeye taşıyabilir miyim? 
 
-AKS kümenizi ve bunun ilişkili kaynaklarını Azure abonelikleri arasında taşıma desteklenmez.
+AKS kümenizi ve ilişkili kaynaklarıAzure abonelikleri arasında taşıma sı desteklenmez.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Küme silme misim neden bu kadar uzun sürüyor? 
 
-Çoğu küme Kullanıcı isteğiyle silinir; Bazı durumlarda, özellikle de müşteriler kendi kaynak grubunu getiriyor ya da faaliyetsiz görevler silme işlemleri ek zaman alabilir veya başarısız olabilir. Silme işlemiyle ilgili bir sorununuz varsa, RG üzerinde kilit olmadığından emin olun, RG 'nin dışındaki tüm kaynakların RG, vb. ile ilişkisi olduğunu kontrol edin.
+Çoğu küme, kullanıcı isteği üzerine silinir; bazı durumlarda, özellikle müşterilerin kendi Kaynak Gruplarını getirdikleri veya RG'ler arası görevlerin silinmesi ek zaman alabilir veya başarısız olabilir. Silmelerle ilgili bir sorununuz varsa, RG'de kilit olmadığını, RG dışındaki kaynakların RG ile bağlantısının kesilmediğini, vb. iki kez kontrol edin.
 
-## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>' Nodekaybedildi ' veya ' bilinmiyor ' durumunda Pod/dağıtımlar varsa, kümemi yükseltebilirim?
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>'NodeLost' veya 'Unknown' durumunda pod / dağıtımlarım varsa, kümemi yükseltebilir miyim?
 
-, Ancak AKS bunun için önerilmez. Yükseltme, kümenin durumu bilindiğinde ve sağlıklı olduğunda gerçekleştirilmesi ideal olmalıdır.
+Yapabilirsiniz, ancak AKS bunu önermez. Yükseltmeler ideal kümenin durumu bilinen ve sağlıklı olduğunda yapılmalıdır.
 
-## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Sağlıksız bir durumda bir veya daha fazla düğümü olan bir kümeniz varsa veya bilgisayarı kapatırsanız, bir yükseltme gerçekleştirebilir miyim?
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Sağlıksız bir durumda bir veya daha fazla düğümiçeren bir kümem varsa veya kapatılırsa, yükseltme gerçekleştirebilir miyim?
 
-Hayır, yükseltmeden önce lütfen başarısız durumundaki düğümleri silin/kaldırın veya kümeden kaldırın.
+Hayır, lütfen yükseltmeden önce başarısız durumdaki veya kümeden kaldırılan düğümleri silin/kaldırın.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ben bir küme silme koştu, ama hatayı görmek`[Errno 11001] getaddrinfo failed` 
 
-En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Lütfen bunları kaldırın ve silmeyi yeniden deneyin.
+En yaygın olarak, bunun nedeni bir veya daha fazla Ağ Güvenlik Grubu (NSG) hala kullanımda olan ve kümeyle ilişkili olan kullanıcılardır.  Lütfen kaldırın ve silmeyi yeniden deneyin.
 
-## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Bir yükseltme çalıştırdım, ancak şu anda My Pod çökme döngülerinde ve hazırlık araştırmaları başarısız oldu mu?
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Ben bir yükseltme koştu, ama şimdi benim pods çarpışma döngüleri ve hazırlık sondaları başarısız?
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+Lütfen servis müdürünün süresinin dolmadığını onaylayın.  Lütfen bakın: [AKS hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [AKS güncelleştirme kimlik bilgileri.](https://docs.microsoft.com/azure/aks/update-credentials)
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, Mount, bağlama vb. sağlayamıyor. 
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Benim küme çalışıyordu, ama aniden loadbalancers, mount PVC, vb hükmü olamaz? 
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+Lütfen servis müdürünün süresinin dolmadığını onaylayın.  Lütfen bakın: [AKS hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [AKS güncelleştirme kimlik bilgileri.](https://docs.microsoft.com/azure/aks/update-credentials)
 
-## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçeği kümesi API'lerini el ile ölçeklendirmek için kullanabilir miyim?
 
-Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'Lerini (`az aks scale`) kullanın.
+Hayır, sanal makine ölçeği kümesi API'leri kullanarak ölçek işlemleri desteklenmez. AKS API'lerini`az aks scale`kullanın ( ).
 
-## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Sanal makine ölçek kümelerini, 0 düğüme el ile ölçeklendirmek için kullanabilir miyim?
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>0 düğümlerine el ile ölçeklendirmek için sanal makine ölçek kümelerini kullanabilir miyim?
 
-Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez.
+Hayır, sanal makine ölçeği kümesi API'leri kullanarak ölçek işlemleri desteklenmez.
 
-## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Tüm VM 'lerimi durdurabilir veya serbest bırakabilirsiniz miyim?
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Tüm VM'lerimi durdurabilir veya ayırabilir miyim?
 
-AKS, bu tür bir yapılandırmaya ve kurtarmaya yönelik esnekliği mekanizmalarına sahip olsa da önerilen bir yapılandırma değildir.
+AKS böyle bir config dayanacak ve kurtarmak için esneklik mekanizmaları olsa da, bu önerilen bir yapılandırma değildir.
 
-## <a name="can-i-use-custom-vm-extensions"></a>Özel VM uzantılarını kullanabilir miyim?
+## <a name="can-i-use-custom-vm-extensions"></a>Özel VM uzantıları kullanabilir miyim?
 
-Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri yüklemek için, vb. Lütfen Kubernetes API 'Leri ve mekanizmalarından yararlanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets 'ten yararlanın.
+Hiçbir AKS yönetilen bir hizmet değildir ve IaaS kaynaklarının manipülasyonu desteklenmez. Özel bileşenleri vb yüklemek için lütfen Kubernetes API'lerinden ve mekanizmalarından yararlanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets'den yararlanın.
 
 <!-- LINKS - internal -->
 

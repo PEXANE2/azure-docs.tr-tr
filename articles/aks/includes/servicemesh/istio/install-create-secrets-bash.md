@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: e8b94b4adc39de81dbdf17dfd24fcff39532b482
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594026"
 ---
-### <a name="add-grafana-secret"></a>Grafana gizli dizisi Ekle
+### <a name="add-grafana-secret"></a>Grafana Secret ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` belirtecini parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+Belirteci parolanızla değiştirin `REPLACE_WITH_YOUR_SECURE_PASSWORD` ve aşağıdaki komutları çalıştırın:
 
 ```bash
 GRAFANA_USERNAME=$(echo -n "grafana" | base64)
@@ -33,9 +33,9 @@ data:
 EOF
 ```
 
-### <a name="add-kiali-secret"></a>Kiali gizli dizisi Ekle
+### <a name="add-kiali-secret"></a>Kiali Secret ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` belirtecini parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+Belirteci parolanızla değiştirin `REPLACE_WITH_YOUR_SECURE_PASSWORD` ve aşağıdaki komutları çalıştırın:
 
 ```bash
 KIALI_USERNAME=$(echo -n "kiali" | base64)

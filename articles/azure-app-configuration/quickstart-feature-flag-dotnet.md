@@ -1,6 +1,6 @@
 ---
-title: .NET Framework uygulamalarına özellik bayrakları eklemeye yönelik hızlı başlangıç | Microsoft Docs | Microsoft Docs
-description: .NET Framework uygulamalara özellik bayrakları eklemeye ve bunları Azure Uygulama yapılandırmasında yönetmeye yönelik bir hızlı başlangıç
+title: .NET Framework uygulamalarına özellik bayrakları eklemek için hızlı başlangıç | Microsoft Dokümanlar | Microsoft Dokümanlar
+description: .NET Framework uygulamalarına özellik bayrakları eklemek ve Azure Uygulama Yapılandırması'nda bunları yönetmek için hızlı bir başlangıç
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,46 +15,46 @@ ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77619299"
 ---
-# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
+# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlatma: Bir .NET Framework uygulamasına özellik bayrakları ekleme
 
-Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını oluşturmak için Azure uygulama yapılandırmasını bir .NET Framework uygulamasına katabilirsiniz. Tüm özellik Bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için uygulama yapılandırma hizmetini kullanabilirsiniz. 
+Bu hızlı başlangıçta, özellik yönetiminin uçtan uca uygulanmasını oluşturmak için Azure Uygulama Yapılandırmasını bir .NET Framework uygulamasına dahil eleştirirsiniz. Tüm özellik bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için Uygulama Yapılandırma hizmetini kullanabilirsiniz. 
 
-.NET Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
+.NET Özellik Yönetimi kitaplıkları, kapsamlı özellik bayrak desteği yle çerçeveyi genişletir. Bu kitaplıklar .NET yapılandırma sisteminin üzerine inşa edilmiştir. .NET yapılandırma sağlayıcısı aracılığıyla App Configuration ile sorunsuz bir şekilde entegre olurlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
+- [.NET Çerçeve 4.8](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
+## <a name="create-an-app-configuration-store"></a>Uygulama Yapılandırma mağazası oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. `Beta`adlı özellik bayrağını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin.
+6. **Özellik Yöneticisi** > **+Ekle** adlı bir `Beta`özellik bayrağı eklemek için seçin.
 
     > [!div class="mx-imgBorder"]
-    > Beta](media/add-beta-feature-flag.png) adlı özellik bayrağını etkinleştirmek ![
+    > ![Beta adlı özellik bayrağını etkinleştirme](media/add-beta-feature-flag.png)
 
-    Şimdilik `label` tanımsız bırakın.
+    Şimdilik `label` tanımsız bırak.
 
-## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
+## <a name="create-a-net-console-app"></a>Bir .NET konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **projesi**' ni seçin.
+1. Visual Studio'yı başlatın ve **Dosya** > **Yeni** > **Projesi'ni**seçin.
 
-1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
+1. **Yeni bir proje oluştur'da**Konsol proje türüne filtre uygulayın ve Console **Console** **App'a (.NET Framework)** tıklayın. **İleri**'ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**’ tıklayın.
+1. **Yeni projenizi yapılandırın,** bir proje adı girin. **Çerçeve**altında **,NET Framework 4.8** veya üzerini seçin. **Oluştur'u**tıklatın.
 
-## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
+## <a name="connect-to-an-app-configuration-store"></a>Uygulama Yapılandırma mağazasına bağlanma
 
-1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, aşağıdaki NuGet paketlerini arayıp projenize ekleyin. Bunları bulamıyorsanız, **ön sürümü dahil et** onay kutusunu seçin.
+1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet'i**seçin. **Gözat** sekmesinde, projenize aşağıdaki NuGet paketlerini arayın ve ekleyin. Bulamıyorsanız, **Yayın Öncesi Ekle** onay kutusunu seçin.
 
     ```
     Microsoft.Extensions.DependencyInjection
@@ -62,7 +62,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
     Microsoft.FeatureManagement
     ```
 
-1. *Program.cs* açın ve aşağıdaki deyimleri ekleyin:
+1. *açık Program.cs* ve aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using Microsoft.Extensions.DependencyInjection;
@@ -71,7 +71,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
     using Microsoft.FeatureManagement;
     ```
 
-1. Özellik bayraklarının alınabilmesi için `UseFeatureFlags` seçeneğini belirterek uygulama yapılandırmasına bağlanmak üzere `Main` yöntemini güncelleştirin. Sonra `Beta` Özellik bayrağı etkinse bir ileti görüntülenir.
+1. Özellik `Main` bayraklarının alınması için `UseFeatureFlags` seçeneği belirterek Uygulama Yapılandırması'na bağlanmak için yöntemi güncelleştirin. Ardından özellik bayrağı `Beta` etkinse bir ileti görüntüleyin.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -101,21 +101,21 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
         }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
+## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak oluşturma ve çalıştırma
 
-1. **ConnectionString** adlı bir ortam değişkenini uygulama yapılandırma deponuzın bağlantı dizesine ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın:
+1. App Configuration mağazanızın bağlantı dizesine **ConnectionString** adında bir ortam değişkeni ayarlayın. Windows komut istemini kullanıyorsanız, aşağıdaki komutu çalıştırın:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
+    Windows PowerShell kullanıyorsanız, aşağıdaki komutu çalıştırın:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-1. Değişikliğin etkili olması için Visual Studio 'Yu yeniden başlatın. 
+1. Değişikliğin etkili olmasını sağlamak için Visual Studio'yu yeniden başlatın. 
 
-1. Konsol uygulamasını derlemek ve çalıştırmak için CTRL + F5 tuşlarına basın.
+1. Konsol uygulamasını oluşturmak ve çalıştırmak için Ctrl + F5 tuşuna basın.
 
-    ![Özellik bayrağı etkin olan uygulama](./media/quickstarts/dotnet-app-feature-flag.png)
+    ![Özellik bayrağı etkin leştirilmiş uygulama](./media/quickstarts/dotnet-app-feature-flag.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -123,7 +123,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, uygulama yapılandırmasında bir özellik bayrağı oluşturdunuz ve bunu bir .NET Framework konsol uygulamasıyla kullandınız. Uygulama yeniden başlatılmadan Özellik bayraklarını ve diğer yapılandırma değerlerini dinamik olarak güncelleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
+Bu hızlı başlangıçta, App Configuration'da bir özellik bayrağı oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. Uygulamayı yeniden başlatmadan özellik bayraklarını ve diğer yapılandırma değerlerini dinamik olarak nasıl güncelleştireceğiz öğrenmek için bir sonraki öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-dotnet.md)
+> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-dotnet.md)

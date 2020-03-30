@@ -1,40 +1,40 @@
 ---
-title: Azure Application Insights telemetri ayırma
-description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
+title: Azure Uygulama Öngörülerinde telemetriyi ayırma
+description: Geliştirme, test ve üretim pulları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671469"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Geliştirme, test ve üretimden telemetri ayırma
+# <a name="separating-telemetry-from-development-test-and-production"></a>Telemetriyi Geliştirme, Test ve Üretimden Ayırma
 
-Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve önceden yayınlanan sürümden [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrisini karıştırmak istemezsiniz. Karışıklığın önüne geçmek için, farklı geliştirme aşamalarından Telemetriyi ayrı Application Insights kaynaklarına (ıkeys 'ler) göre ayrı olarak gönderin. Bir sürüm bir aşamadan diğerine geçiş yaparken izleme anahtarının değiştirilmesini kolaylaştırmak için, yapılandırma dosyası yerine koddaki Ikey ' i ayarlamak yararlı olabilir. 
+Bir web uygulamasının bir sonraki sürümünü geliştirirken, yeni sürümden ve zaten yayımlanmış sürümden [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrisini karıştırmak istemezsinuz. Karışıklığı önlemek için, farklı geliştirme aşamalarından telemetriyi ayrı enstrümantasyon anahtarları (ituşları) ile Application Insights kaynaklarını ayırmak için gönderin. Bir sürüm bir aşamadan diğerine taşınırken enstrümantasyon anahtarını değiştirmeyi kolaylaştırmak için, yapılandırma dosyasıyerine ikey'i kodolarak ayarlamak yararlı olabilir. 
 
-(Sisteminiz bir Azure bulut hizmeti ise [ayrı ıkeys 'leri ayarlamaya yönelik başka bir yöntem](../../azure-monitor/app/cloudservices.md)vardır.)
+(Sisteminiz bir Azure Bulut Hizmetiise, [ayrı ikeys ayarlamanın başka bir yöntemi vardır.)](../../azure-monitor/app/cloudservices.md)
 
-## <a name="about-resources-and-instrumentation-keys"></a>Kaynaklar ve izleme anahtarları hakkında
+## <a name="about-resources-and-instrumentation-keys"></a>Kaynaklar ve enstrümantasyon tuşları hakkında
 
-Web uygulamanız için Application Insights izlemeyi ayarlarken Microsoft Azure ' de bir Application Insights *kaynağı* oluşturursunuz. Uygulamanızdan toplanan Telemetriyi görmek ve analiz etmek için Azure portal bu kaynağı açarsınız. Kaynak bir *izleme anahtarı* (Ikey) ile tanımlanır. Uygulamanızı izlemek için Application Insights paketini yüklediğinizde, Telemetriyi nereye gönderileceğini bilmesi için izleme anahtarıyla yapılandırırsınız.
+Web uygulamanız için Application Insights izleme yi ayarladığınızda, Microsoft Azure'da bir Application Insights *kaynağı* oluşturursunuz. Uygulamanızdan toplanan telemetriyi görmek ve analiz etmek için bu kaynağı Azure portalında açarsınız. Kaynak bir *enstrümantasyon anahtarı* (ikey) ile tanımlanır. Uygulamanızı izlemek için Application Insights paketini yüklediğinizde, telemetriyi nereye göndereceğini bilmesi için uygulama landırma tuşuyla yapılandırabilirsiniz.
 
-Genellikle farklı senaryolarda ayrı kaynaklar veya tek bir paylaşılan kaynak kullanmayı tercih edersiniz:
+Genellikle farklı senaryolarda ayrı kaynaklar veya tek bir paylaşılan kaynak kullanmayı seçersiniz:
 
-* Farklı, bağımsız uygulamalar-her uygulama için ayrı bir kaynak ve Ikey kullanın.
-* Birden çok bileşen veya bir iş uygulaması rolü-tüm bileşen uygulamaları için [tek bir paylaşılan kaynak](../../azure-monitor/app/app-map.md) kullanın. Telemetri cloud_RoleName özelliğine göre filtrelenebilir veya kesimlenebilir.
-* Geliştirme, test ve yayın-' damga ' veya üretim aşamasında sistemin sürümleri için ayrı bir kaynak ve Ikey kullanın.
-* A | B testi-tek bir kaynak kullanın. Telemetrileri tanımlayan bir özelliği bir özellik eklemek için Telemetryınitializer oluşturun.
+* Farklı, bağımsız uygulamalar - Her uygulama için ayrı bir kaynak ve ikey kullanın.
+* Tek bir iş uygulamasının birden çok bileşeni veya rolü - Tüm bileşen uygulamaları için tek bir [paylaşılan kaynak](../../azure-monitor/app/app-map.md) kullanın. Telemetri, cloud_RoleName özelliği tarafından filtrelenebilir veya segmente edilebilir.
+* Geliştirme, Test ve Sürüm - Sistemin 'damga' veya üretim aşamasındaki sürümleri için ayrı bir kaynak ve ikey kullanın.
+* A | B testi - Tek bir kaynak kullanın. Türevlerini tanımlayan telemetriye özellik eklemek için bir TelemetryInitializer oluşturun.
 
 
-## <a name="dynamic-ikey"></a>Dinamik izleme anahtarı
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dinamik enstrümantasyon anahtarı
 
-Kod üretim aşamaları arasında taşındığı için Ikey 'in değiştirilmesini kolaylaştırmak için yapılandırma dosyası yerine kodu olarak ayarlayın.
+Kod üretim aşamaları arasında ilerlerken ikey'i değiştirmeyi kolaylaştırmak için, yapılandırma dosyasında değil koda ayarlayın.
 
-Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı ayarlayın:
+Anahtarı, ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde ayarlayın:
 
-*C#*
+*C #*
 
     protected void Application_Start()
     {
@@ -44,12 +44,12 @@ Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı a
           WebConfigurationManager.AppSettings["ikey"];
       ...
 
-Bu örnekte, farklı kaynaklar için ıkeys 'ler Web yapılandırma dosyasının farklı sürümlerine yerleştirilir. Yayın betiğinin bir parçası olarak yapabileceğiniz Web yapılandırma dosyasını değiştirme-hedef kaynağı takas eder.
+Bu örnekte, farklı kaynakların ituşları web yapılandırma dosyasının farklı sürümlerine yerleştirilir. Sürüm komut dosyasının bir parçası olarak yapabileceğiniz web yapılandırma dosyasını değiştirme hedef kaynağı değiştirir.
 
 ### <a name="web-pages"></a>Web sayfaları
-Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç dikey penceresinden aldığınız betikte](../../azure-monitor/app/javascript.md)de kullanılır. Komut dosyasına tam olarak kodlamak yerine sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
+iKey, uygulamanızın web sayfalarında, [quickstart blade'den aldığınız komut dosyasında](../../azure-monitor/app/javascript.md)da kullanılır. Bunun yerine kelimenin tam anlamıyla komut dosyasına kodlama, sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
 
-*Razor 'de JavaScript*
+*Razor içinde JavaScript*
 
     <script type="text/javascript">
     // Standard Application Insights web page script:
@@ -62,44 +62,44 @@ Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç dikey penceresinde
     }) // ...
 
 
-## <a name="create-additional-application-insights-resources"></a>Ek Application Insights kaynakları oluşturma
-Farklı uygulama bileşenlerine veya aynı bileşenin farklı damgalar (geliştirme ve test/üretim) için telemetri ayırmak üzere yeni bir Application Insights kaynağı oluşturmanız gerekir.
+## <a name="create-additional-application-insights-resources"></a>Ek Uygulama Öngörüleri kaynakları oluşturun
+Farklı uygulama bileşenleri için telemetriyi ayırmak veya aynı bileşenin farklı pulları (dev/test/üretim) için yeni bir Uygulama Öngörüleri kaynağı oluşturmanız gerekir.
 
-[Portal.Azure.com](https://portal.azure.com)bir Application Insights kaynağı ekleyin:
+[portal.azure.com,](https://portal.azure.com)bir Application Insights kaynağı ekleyin:
 
 ![Yeni, Application Insights öğesine tıklayın](./media/separate-resources/01-new.png)
 
-* **Uygulama türü** , genel bakış dikey penceresinde gördüklerinizi ve [Ölçüm Gezgini](../../azure-monitor/app/metrics-explorer.md)'nde kullanılabilen özellikleri etkiler. Uygulama türünü görmüyorsanız, Web sayfaları için Web türlerinden birini seçin.
-* **Kaynak grubu** , [Access Control](../../azure-monitor/app/resources-roles-access-control.md)gibi özellikleri yönetmeye kolaylık vardır. Geliştirme, test ve üretim için ayrı kaynak grupları kullanabilirsiniz.
-* **Abonelik** , Azure 'daki ödeme hesabıdır.
-* **Konum** , verilerinizi nerede tutacağız. Şu anda değiştirilemez. 
-* **Panoya Ekle** , Azure giriş sayfanıza kaynağınız için hızlı erişim kutucuğu koyar. 
+* **Uygulama türü,** genel bakış bıçağında gördüklerinizi ve [metrik gezginde](../../azure-monitor/app/metrics-explorer.md)bulunan özellikleri etkiler. Uygulama türünü görmüyorsanız, web sayfaları için web türlerinden birini seçin.
+* **Kaynak grubu,** [erişim denetimi](../../azure-monitor/app/resources-roles-access-control.md)gibi özellikleri yönetmek için bir kolaylıktır. Geliştirme, test ve üretim için ayrı kaynak grupları kullanabilirsiniz.
+* **Abonelik,** Azure'daki ödeme hesabınızdır.
+* **Konum,** verilerinizi sakladığımız yerdir. Şu anda değiştirilemez. 
+* **Panoya ekle,** Azure Giriş sayfanızda kaynağınız için hızlı erişim döşemesi koyar. 
 
-Kaynağı oluşturmak birkaç saniye sürer. İşiniz bittiğinde bir uyarı görürsünüz.
+Kaynağı oluşturmak birkaç saniye sürer. Bittiğinde bir uyarı görürsünüz.
 
-(Bir kaynağı otomatik olarak oluşturmak için bir [PowerShell betiği](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) yazabilirsiniz.)
+(Otomatik olarak bir kaynak oluşturmak için bir [PowerShell komut dosyası](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) yazabilirsiniz.)
 
-### <a name="getting-the-instrumentation-key"></a>İzleme anahtarını alma
-İzleme anahtarı, oluşturduğunuz kaynağı tanımlar. 
+### <a name="getting-the-instrumentation-key"></a>Enstrümantasyon anahtarını alma
+Enstrümantasyon anahtarı oluşturduğunuz kaynağı tanımlar. 
 
-![Temel bileşenler ' e tıklayın, Izleme tuşuna tıklayın, CTRL + C](./media/separate-resources/02-props.png)
+![Essentials'a tıklayın, Enstrümantasyon Tuşu, CTRL+C'yi tıklatın](./media/separate-resources/02-props.png)
 
-Uygulamanızın veri göndereceği tüm kaynakların izleme anahtarlarına ihtiyacınız vardır.
+Uygulamanızın veri göndereceği tüm kaynakların enstrümantasyon tuşlarına ihtiyacınız var.
 
-## <a name="filter-on-build-number"></a>Derleme numarasını filtrele
-Uygulamanızın yeni bir sürümünü yayımladığınızda, farklı yapılardan Telemetriyi ayırabilmek isteyeceksiniz.
+## <a name="filter-on-build-number"></a>Yapı numarasına filtre uygulayın
+Uygulamanızın yeni bir sürümünü yayımladığınızda, telemetriyi farklı yapılardan ayırmak isteyebilirsiniz.
 
-Uygulama sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve [Ölçüm Gezgini](../../azure-monitor/app/metrics-explorer.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
+Uygulama Sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve metrik [gezgin](../../azure-monitor/app/metrics-explorer.md) sonuçlarına filtre uygulayabilmeniz için ayarlayabilirsiniz.
 
-![Bir özellik üzerinde filtreleme](./media/separate-resources/050-filter.png)
+![Özellik üzerinde filtreleme](./media/separate-resources/050-filter.png)
 
-Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
+Uygulama Sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
-* Doğrudan ayarla:
+* Doğrudan ayarlayın:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Tüm TelemetryClient örneklerinin tutarlı şekilde ayarlandığından emin olmak için bu satırı bir [telemetri başlatıcısında](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sarın.
-* [ASP.NET] `BuildInfo.config`sürümünde sürümü ayarlayın. Web modülü, BuildLabel düğümünden sürümü alacak. Bu dosyayı projenize ekleyin ve Çözüm Gezgini her zaman Kopyala özelliğini ayarlamayı unutmayın.
+* Tüm TelemetriIstemci örneklerinin tutarlı bir şekilde ayarlandığından emin olmak için bu satırı bir [telemetri baş harfine](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sarın.
+* [ASP.NET] Sürümü ' `BuildInfo.config`de ayarlayın Web modülü sürümü BuildLabel düğümünden alır. Bu dosyayı projenize ekleyin ve Çözüm Gezgini'nde Her Zaman Kopyala özelliğini ayarlamayı unutmayın.
 
     ```XML
 
@@ -114,7 +114,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] MSBuild 'te Builınfo. config dosyasını otomatik olarak oluşturun. Bunu yapmak için `.csproj` dosyanıza birkaç satır ekleyin:
+* [ASP.NET] MSBuild'te BuildInfo.config'i otomatik olarak oluşturun. Bunu yapmak için dosyanıza `.csproj` birkaç satır ekleyin:
 
     ```XML
 
@@ -123,14 +123,14 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     </PropertyGroup>
     ```
 
-    Bu, *yourprojectname*adlı bir dosya oluşturur. Builınfo. config. Yayımla işlemi onu Builınfo. config olarak yeniden adlandırır.
+    Bu, *ProjectName*adlı bir dosya oluşturur. BuildInfo.config. Yayımlama işlemi buildInfo.config olarak yeniden adlandırır.
 
-    Visual Studio ile derleme sırasında derleme etiketi bir yer tutucu (AutoGen_...) içerir. Ancak MSBuild ile birlikte kullanıldığında, doğru sürüm numarasıyla doldurulur.
+    Yapı etiketi, Visual Studio ile oluşturduğunuzda bir yer tutucu (AutoGen_...) içerir. Ama MSBuild ile inşa edildiğinde, doğru sürüm numarası ile doldurulur.
 
-    MSBuild 'in sürüm numaraları oluşturmasına izin vermek için, AssemblyReference.cs içinde `1.0.*` gibi sürümü ayarlayın
+    MSBuild'in sürüm numaraları oluşturmasına izin `1.0.*` vermek için, AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Sürüm ve sürüm izleme
-Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. `.csproj` dosyanızda şunu ekleyin:  
+Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. Dosyanıza `.csproj` şunları ekleyin:  
 
 ```XML
 
@@ -141,13 +141,13 @@ Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Bu
 
 Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/app/metrics-explorer.md) sürüme göre filtreleyebilirsiniz.
 
-Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulup oluşturulduğuna dikkat edin.
+Ancak, yapı sürüm numarasının Visual Studio'daki geliştirici yapısı tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulduğuna dikkat edin.
 
 ### <a name="release-annotations"></a>Sürüm ek açıklamaları
-Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. Aşağıdaki görüntüde bu işaretin nasıl göründüğü gösterilmiştir.
+Azure DevOps kullanıyorsanız, yeni bir sürüm yayınladığınızda grafiklerinize [bir ek açıklama işaretçisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. Aşağıdaki görüntüde bu işaretin nasıl göründüğü gösterilmiştir.
 
 ![Bir grafikteki örnek sürüm ek açıklamasının ekran görüntüsü](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Birden çok rol için paylaşılan kaynaklar](../../azure-monitor/app/app-map.md)
-* [Ayırt etmek için telemetri başlatıcısı oluşturma | B çeşitleri](../../azure-monitor/app/api-filtering-sampling.md#add-properties)
+* [Create a Telemetry Initializer to distinguish A| B varyantları](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

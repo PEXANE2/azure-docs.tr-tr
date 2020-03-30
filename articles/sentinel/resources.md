@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel ile çalışırken faydalı kaynaklar | Microsoft Docs
-description: Bu belge, Azure Sentinel ile çalışırken yararlı kaynakların bir listesini sağlar.
+title: Azure Sentinel ile çalışırken yararlı kaynaklar| Microsoft Dokümanlar
+description: Bu belge, Azure Sentinel ile çalışırken size yararlı kaynakların bir listesini sağlar.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,70 +16,70 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
 ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585280"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmak için kullanışlı kaynaklar
 
 
 
-Bu makalede, Azure Sentinel ile çalışma hakkında daha fazla bilgi almanıza yardımcı olabilecek kaynaklar listelenmektedir.
+Bu makalede, Azure Sentinel ile çalışma hakkında daha fazla bilgi edinmenize yardımcı olabilecek kaynaklar listelanmaktadır.
 
-Azure Logic Apps bağlayıcılar: <https://docs.microsoft.com/connectors/>
+Azure Mantık Uygulamaları bağlayıcıları:<https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
-Azure Sentinel 'in denetim günlükleri [Azure etkinlik günlüklerinde](../azure-monitor/platform/platform-logs-overview.md)tutulur.
+Azure Sentinel denetim günlükleri [Azure Etkinlik Günlükleri'nde](../azure-monitor/platform/platform-logs-overview.md)tutulur.
 
-Aşağıdaki desteklenen işlemler denetlenebilir.
+Desteklenen aşağıdaki işlemler denetlenebilir.
 
 |İşlem adı|    Kaynak türü|
 |----|----|
-|Çalışma kitabı oluştur veya güncelleştir  |Microsoft. Insights/çalışma kitapları|
-|Çalışma kitabını Sil    |Microsoft. Insights/çalışma kitapları|
-|Iş akışını ayarla   |Microsoft.Logic/workflows|
-|Iş akışını Sil    |Microsoft.Logic/workflows|
-|Kayıtlı arama oluştur    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
-|Kayıtlı aramayı Sil    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
-|Uyarı kurallarını Güncelleştir |Microsoft. Securityınsights/alertRules|
-|Uyarı kurallarını Sil |Microsoft. Securityınsights/alertRules|
-|Uyarı kuralı yanıt eylemlerini Güncelleştir |Microsoft. Securityınsights/alertRules/Actions|
-|Uyarı kuralı yanıt eylemlerini Sil |Microsoft. Securityınsights/alertRules/Actions|
-|Yer Imlerini güncelleştirme   |Microsoft. Securityınsights/yer işaretleri|
-|Yer Imlerini Sil   |Microsoft. Securityınsights/yer işaretleri|
-|Güncelleştirme çalışmaları   |Microsoft. Securityınsights/durumlar|
-|Durum araştırmasını Güncelleştir  |Microsoft. Securityınsights/durumlar/araştırmalar|
-|Case açıklamaları oluşturma   |Microsoft. Securityınsights/Cases/Comments|
-|Veri bağlayıcılarını güncelleştirme |Microsoft. Securityınsights/veri bağlayıcıları|
-|Veri bağlayıcıları silme |Microsoft. Securityınsights/veri bağlayıcıları|
-|Güncelleştirme ayarları    |Microsoft. Securityınsights/ayarlar|
+|Çalışma kitabı oluşturma veya güncelleştirme  |Microsoft.Insights/çalışma kitapları|
+|Çalışma Kitabını Sil    |Microsoft.Insights/çalışma kitapları|
+|İş Akışını Ayarla   |Microsoft.Logic/iş akışları|
+|İş Akışını Silme    |Microsoft.Logic/iş akışları|
+|Kayıtlı Arama Oluşturma    |Microsoft.OperationalInsights/çalışma alanları/savedSearches|
+|Kaydedilen Aramayı Sil    |Microsoft.OperationalInsights/çalışma alanları/savedSearches|
+|Uyarı Kurallarını Güncelleştir |Microsoft.SecurityInsights/alertRules|
+|Uyarı Kurallarını Sil |Microsoft.SecurityInsights/alertRules|
+|Uyarı Kuralı Yanıt Eylemlerini Güncelleştir |Microsoft.SecurityInsights/alertRules/actions|
+|Uyarı Kuralı Yanıt Eylemlerini Sil |Microsoft.SecurityInsights/alertRules/actions|
+|Yer İşaretlerini Güncelleştir   |Microsoft.SecurityInsights/yer imleri|
+|Yer İşaretlerini Sil   |Microsoft.SecurityInsights/yer imleri|
+|Servis Taleplerini Güncelleştir   |Microsoft.SecurityInsights/Cases|
+|Servis Talebi Araştırmayı Güncelleştir  |Microsoft.SecurityInsights/Durumlar/soruşturmalar|
+|Büyük/Küçük Harf Açıklamaları Oluşturma   |Microsoft.SecurityInsights/Cases/comments|
+|Veri Bağlayıcılarını Güncelleştir |Microsoft.SecurityInsights/dataConnectors|
+|Veri Bağlayıcılarını Sil |Microsoft.SecurityInsights/dataConnectors|
+|Ayarları Güncelleştir    |Microsoft.SecurityInsights/settings|
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel 'de denetim ve raporlama verilerini görüntüleme
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel'de denetim ve raporlama verilerini görüntüleme
 
-Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz gerçekleştirebileceğiniz bir Azure Sentinel 'e aktararak görüntüleyebilirsiniz.
+Bu verileri Azure Etkinliği günlüğünden Azure Sentinel'e aktararak görüntüleyebilir ve bu veriler üzerinde araştırma ve analiz gerçekleştirebilirsiniz.
 
-1. [Azure etkinlik](connect-azure-activity.md) veri kaynağını bağlayın. Bunu yaptıktan sonra, denetim olayları AzureActivity adlı **Günlükler** ekranında yeni bir tabloya akışla kaydedilir.
-2. Ardından, diğer tüm tablolar gibi KQL kullanarak verileri sorgulayın.
+1. Azure [Etkinliği](connect-azure-activity.md) veri kaynağını bağlayın. Bunu yaptıktan sonra, denetim olayları Azure Activity adlı **Günlükler** ekranında yeni bir tabloya akışı.
+2. Ardından, diğer tabloda olduğu gibi KQL kullanarak verileri sorgulayın.
 
 
 
 ## <a name="vendor-documentation"></a>Satıcı belgeleri
 
-| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantı**|
+| **Satıcı**  | **Azure Sentinel'de olayı kullanma** | **Bağlantı**|
 |----|----|----|
 | GitHub| Topluluk sayfasına erişmek için kullanılır| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto sorgu dili Kursu| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
+| PaloAlto| CEF'i yapılandır| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
+| Çoğul Görüş | Kusto Sorgu Dili kursu| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
-## <a name="blogs-and-forums"></a>Bloglar ve Forumlar
+## <a name="blogs-and-forums"></a>Bloglar ve forumlar
 
-Sorularınızı Azure Sentinel için [Techcommunity alanına](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) gönderin.
+Sorularınızı Azure Sentinel için [TechCommunity alanında](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) yayınlayın.
 
-[Techcommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) ve [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)Azure Sentinel blog yayınlarını görüntüleyin.
+[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) ve [Microsoft Azure'daki](https://azure.microsoft.com/blog/tag/azure-sentinel/)Azure Sentinel blog gönderilerini görüntüleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](https://blogs.msdn.com/b/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.
+Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesi vardır. Microsoft Azure Güvenlik ve [Uyumluluk blogunda](https://blogs.msdn.com/b/azuresecurity/)Azure güvenliği ve uyumluluğu hakkında ek bilgiler bulabilirsiniz.

@@ -1,24 +1,24 @@
 ---
 title: Bir özelliğin birden çok örneğini tanımlama
-description: Bir kaynak üzerinde bir özellik oluştururken birden çok kez yinelemek için Azure Resource Manager şablonunda kopyalama işlemini kullanın.
+description: Bir kaynak üzerinde özellik oluştururken birden çok kez yeniden sıralamak için Azure Kaynak Yöneticisi şablonunda kopyalama işlemini kullanın.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622854"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258116"
 ---
-# <a name="property-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda Özellik yinelemesi
+# <a name="property-iteration-in-arm-templates"></a>ARM şablonlarında özellik yinelemesi
 
-Bu makalede, Azure Resource Manager şablonunuzda bir özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Şablonunuzda bir kaynağın Özellikler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir özelliğin öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+Bu makalede, Azure Kaynak Yöneticisi (ARM) şablonunuzda birden fazla özellik örneğinin nasıl oluşturulabileceğiniz gösterilmektedir. Şablonunuzdaki bir kaynağın özellikler bölümüne **kopya** öğesi ekleyerek, dağıtım sırasında bir mülkün öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca şablon sözdizimini yinelemek zorunda kalmaktan da kaçının.
 
-Ayrıca [kaynakları](copy-resources.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)kullanarak kopyalamayı kullanabilirsiniz.
+Ayrıca [kaynaklar,](copy-resources.md) [değişkenler](copy-variables.md)ve [çıktıları](copy-outputs.md)ile kopya kullanabilirsiniz.
 
 ## <a name="property-iteration"></a>Özellik yineleme
 
-Copy öğesi aşağıdaki genel biçime sahiptir:
+Kopyalama öğesi aşağıdaki genel biçime sahiptir:
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 ]
 ```
 
-**Ad**için oluşturmak istediğiniz kaynak özelliğinin adını sağlayın. **Count** özelliği, özelliği için istediğiniz yineleme sayısını belirtir.
+**Ad**için, oluşturmak istediğiniz kaynak özelliğinin adını sağlayın. **Sayım** özelliği, özellik için istediğiniz yineleme sayısını belirtir.
 
-**Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun.
+**Giriş** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulmuş bir dizi öğe oluşturursunuz.
 
-Aşağıdaki örnek, `copy` bir sanal makinede dataDisks özelliğine nasıl uygulanacağını gösterir:
+Aşağıdaki örnek, sanal `copy` bir makinede dataDisks özelliğine nasıl uygulanacağı gösterilmektedir:
 
 ```json
 {
@@ -78,13 +78,13 @@ Aşağıdaki örnek, `copy` bir sanal makinede dataDisks özelliğine nasıl uyg
 }
 ```
 
-Özellik yinelemesi içinde `copyIndex` kullanırken yinelemenin adını belirtmeniz gerektiğini unutmayın.
+Bir özellik `copyIndex` yinelemeiçinde kullanırken, yinelemenin adını sağlamanız gerektiğine dikkat edin.
 
 > [!NOTE]
-> Özellik yinelemesi de bir konum bağımsız değişkenini destekler. Konum, Copyındex (' dataDisks ', 1) gibi yinelemenin adından sonra gelmelidir.
+> Özellik yinelemesi de bir ofset bağımsız değişkeni destekler. Ofset, copyIndex('dataDisks', 1 gibi yinelemenin adından sonra gelmelidir.
 >
 
-Kaynak Yöneticisi, dağıtım sırasında `copy` dizisini genişletir. Dizinin adı, özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
+Kaynak Yöneticisi dağıtım `copy` sırasında diziyi genişletir. Dizinin adı özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
 
 ```json
 {
@@ -113,13 +113,13 @@ Kaynak Yöneticisi, dağıtım sırasında `copy` dizisini genişletir. Dizinin 
       ...
 ```
 
-Copy öğesi bir dizidir, böylece kaynak için birden fazla özellik belirtebilirsiniz.
+Kaynak için birden fazla özellik belirtebilmeniz için kopyalama öğesi bir dizidir.
 
 ```json
 {
   "type": "Microsoft.Network/loadBalancers",
   "apiVersion": "2017-10-01",
-  "name": "examleLB",
+  "name": "exampleLB",
   "properties": {
     "copy": [
       {
@@ -141,7 +141,7 @@ Copy öğesi bir dizidir, böylece kaynak için birden fazla özellik belirtebil
 }
 ```
 
-Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesine ada göre başvurun.
+Kaynak ve özellik yinelemeyi birlikte kullanabilirsiniz. Ada göre özellik yinelemebaşvuru.
 
 ```json
 {
@@ -175,27 +175,27 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 }
 ```
 
-## <a name="copy-limits"></a>Sınırları Kopyala
+## <a name="copy-limits"></a>Kopyalama sınırları
 
-Sayım 800 ' i aşamaz.
+Sayım 800'i geçemez.
 
-Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
+Sayı negatif sayı olamaz. Azure PowerShell 2.6 veya sonraki sürümlerle, Azure CLI 2.0.74 veya sonraki sürümlerle veya REST API sürümü **2019-05-10** veya daha yeni bir şablon uyguluyorsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLI ve REST API'nin önceki sürümleri nde sayım için sıfır desteklenmez.
 
-## <a name="example-templates"></a>Örnek şablonları
+## <a name="example-templates"></a>Örnek şablonlar
 
-Aşağıdaki örnek, bir özellik için birden fazla değer oluşturmak için ortak bir senaryoyu gösterir.
+Aşağıdaki örnek, bir özellik için birden fazla değer oluşturmak için ortak bir senaryo gösterir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
+|[Değişken sayıda veri diski içeren VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Sanal bir makineyle birkaç veri diski dağıtıyor. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: Kaynak Yöneticisi şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
-* Copy öğesinin diğer kullanımları için bkz.:
-  * [Azure Resource Manager şablonlarda kaynak yinelemesi](copy-resources.md)
-  * [Azure Resource Manager şablonlarda değişken yineleme](copy-variables.md)
-  * [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md)
-* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
-* Şablonunuzu dağıtmayı öğrenmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
+* Bir öğreticiye geçmek için [Bkz. Öğretici: ARM şablonlarını kullanarak birden çok kaynak örneği oluşturun.](template-tutorial-create-multiple-instances.md)
+* Kopyalama öğesinin diğer kullanımları için bkz:
+  * [ARM şablonlarında kaynak yinelemesi](copy-resources.md)
+  * [ARM şablonlarında değişken yineleme](copy-variables.md)
+  * [ARM şablonlarında çıkış yinelemesi](copy-outputs.md)
+* Şablonun bölümleri hakkında bilgi edinmek istiyorsanız, [Bkz.](template-syntax.md)
+* Şablonunuzu nasıl dağıtılayarak dağıtılayacaklarını öğrenmek için [bkz.](deploy-powershell.md)
 

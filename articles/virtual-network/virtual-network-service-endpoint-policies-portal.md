@@ -1,7 +1,7 @@
 ---
-title: Hizmet uç noktası ilkeleri oluşturma ve ilişkilendirme-Azure portal
+title: Hizmet bitiş noktası ilkeleri oluşturma ve ilişkilendirme - Azure portalı
 titlesuffix: Azure Virtual Network
-description: Bu makalede, Azure portal kullanarak hizmet uç noktası ilkelerini ayarlamayı ve kullanmayı öğrenin.
+description: Bu makalede, Azure portalını kullanarak hizmet bitiş noktası ilkelerini nasıl ayarlayıp ilişkilendireceklerini öğrenin.
 services: virtual-network
 documentationcenter: virtual-network
 author: RDhillon
@@ -13,104 +13,104 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651271"
 ---
-# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal kullanarak hizmet uç noktası ilkesi oluşturma, değiştirme veya silme
+# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portalını kullanarak hizmet bitiş noktası ilkesi oluşturma, değiştirme veya silme
 
-Hizmet uç noktası ilkeleri, sanal ağ trafiğini hizmet uç noktaları üzerinden belirli Azure kaynaklarına filtrelemenizi sağlar. Hizmet uç noktası ilkelerine alışkın değilseniz, daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış](virtual-network-service-endpoint-policies-overview.md) bölümüne bakın.
+Hizmet bitiş noktası ilkeleri, sanal ağ trafiğini hizmet bitiş noktaları üzerinden belirli Azure kaynaklarına filtrelemenize olanak tanır. Hizmet uç noktası ilkelerini bilmiyorsanız, daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış](virtual-network-service-endpoint-policies-overview.md) alabilirsiniz.
 
  Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Hizmet uç noktası ilkesi oluşturma
-> * Hizmet uç noktası ilke tanımı oluşturma
+> * Hizmet bitiş noktası ilkesi oluşturma
+> * Hizmet uç noktası ilkesi tanımı oluşturma
 > * Alt ağ ile sanal ağ oluşturma
-> * Hizmet uç noktası ilkesini bir alt ağ ile ilişkilendirme
+> * Hizmet bitiş noktası ilkesini bir alt ağla ilişkilendirme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="create-a-service-endpoint-policy"></a>Hizmet uç noktası ilkesi oluşturma
+## <a name="create-a-service-endpoint-policy"></a>Hizmet bitiş noktası ilkesi oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. Arama bölmesinde "hizmet uç noktası ilkesi" yazın ve **hizmet uç noktası İlkesi** ' ni seçin ve ardından **Oluştur**' u seçin.
+2. Arama bölmesinde ,"hizmet bitiş noktası ilkesi" yazın ve **Hizmet bitiş noktası ilkesini** seçin ve ardından **Oluştur'u**seçin.
 
-![Hizmet uç noktası İlkesi Oluştur](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
+![Hizmet bitiş noktası ilkesi oluşturma](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
 
-3. **Temel** bilgiler bölümünde aşağıdaki bilgileri girin veya seçin 
+3. **Temel Bilgiler'de** aşağıdaki bilgileri girin veya seçin 
 
-   - Abonelik: ilke için aboneliğinizi seçin
-   - Kaynak grubu: **Yeni oluştur** ' u seçin ve *myresourcegroup* girin
-   - Ad: myEndpointPolicy
-   - Konum: Orta ABD
+   - Abonelik : İlke için aboneliğinizi seçin
+   - Kaynak grubu : **Yeni Oluştur'u** seçin ve *myResourceGroup'a* girin
+   - Adı : myEndpointPolicy
+   - Yer : Merkez ABD
  
-   ![Hizmet uç noktası İlkesi temelleri oluşturma](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
+   ![Hizmet uç noktası ilkesi temelleri oluşturma](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
 
-4. **Kaynaklar** altında **+ Ekle** ' yi seçin ve **Kaynak Ekle** bölmesinde aşağıdaki bilgileri girin veya seçin
+4. Kaynak bölmesine + **Kaynak** Altına **Ekle'yi** seçin ve aşağıdaki bilgileri girin veya seçin **Add a resource**
 
-   - Hizmet: hizmet uç noktası Ilkeleriyle yalnızca **Microsoft. Storage** kullanılabilir
-   - Kapsam: **tek bir hesap**dışında, **abonelikteki tüm hesaplar** ve **kaynak grubundaki tüm hesaplar** ' ı seçin.
-   - Abonelik: depolama hesabı aboneliğinizi seçin. İlke ve depolama hesapları farklı aboneliklerde olabilir.
-   - Kaynak grubu: kaynak grubunuzu seçin. Kapsam, "kaynak grubundaki tüm hesaplar" veya "tek hesap" olarak ayarlandıysa gereklidir.  
-   - Kaynak: seçili abonelik veya kaynak grubu altında Azure depolama kaynağınızı seçin
-   - Kaynağı eklemeyi bitirmeden alt kısımdaki **Ekle** düğmesine tıklayın
+   - Hizmet : Yalnızca **Microsoft.Storage** Service Endpoint İlkeleri ile kullanılabilir
+   - Kapsam : Tek **Hesap'tan**birini seçin, **abonelikteki tüm hesaplar** ve **kaynak grubundaki tüm hesaplar**
+   - Abonelik : Depolama hesabı için aboneliğinizi seçin. İlke ve depolama hesapları farklı aboneliklerde olabilir.
+   - Kaynak grubu : Kaynak grubunuzu seçin. Kapsam "Kaynak grubundaki tüm hesaplar" veya "Tek hesap" olarak ayarlanmışsa gereklidir.  
+   - Kaynak : Seçili Abonelik veya Kaynak Grubu altında Azure Depolama kaynağınızı seçin
+   - Kaynak eklemeyi bitirmek için alttaki **Ekle** düğmesine tıklayın
 
-   ![Hizmet uç noktası ilke tanımı-kaynak](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
+   ![Hizmet uç noktası ilkesi tanımı - kaynak](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
 
-   - Yukarıdaki adımları gerektiği şekilde tekrarlayarak daha fazla kaynak ekleyin
+   - Yukarıdaki adımları gerektiği gibi yineleyerek daha fazla kaynak ekleyin
 
-5. İsteğe bağlı: **etiketlere**aşağıdaki bilgileri girin veya seçin:
+5. İsteğe bağlı: Girin veya seçin, **Etiketler**aşağıdaki bilgileri:
    
-   - Anahtar: ilke için anahtarınızı seçin. Ex: Bölüm     
-   - Değer: anahtar için değer çifti girin. Ex: finans
+   - Anahtar : İlke için anahtarınızı seçin. Örn: Bölüm     
+   - Değer : Anahtar için değer çiftini girin. Ör: Finans
 
-6. **Gözden geçir + oluştur**' u seçin. Bilgileri doğrulayıp **Oluştur**' a tıklayın. Daha fazla düzenleme yapmak için **önceki**seçeneğine tıklayın. 
+6. **Gözden Geçir + Oluştur'u**seçin. Bilgileri doğrulayın ve **Oluştur'u**tıklatın. Daha fazla değişme yapmak için **önceki'** yi tıklatın. 
 
-   ![Hizmet uç noktası ilkesi son doğrulamaları oluştur](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
+   ![Hizmet uç noktası ilkesi son doğrulamaları oluşturma](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
-## <a name="view-endpoint-policies"></a>Uç nokta ilkelerini görüntüleme 
+## <a name="view-endpoint-policies"></a>Uç nokta ilkelerini görüntüleyin 
 
-1. Portaldaki *tüm hizmetler* kutusunda, *hizmet uç noktası ilkeleri*yazmaya başlayın. **Hizmet uç noktası ilkeleri**' ni seçin.
-2. **Abonelikler**' in altında, aşağıdaki resimde gösterildiği gibi aboneliğinizi ve kaynak grubunuzu seçin
+1. Portaldaki *Tüm hizmetler* kutusunda, hizmet bitiş noktası *ilkeleri*yazmaya başlayın. **Hizmet Bitiş Noktası İlkeleri'ni**seçin.
+2. **Abonelikler**altında, aşağıdaki resimde gösterildiği gibi abonelik ve kaynak grubunuzu seçin
 
    ![İlkeyi göster](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
-3. İlkeyi seçin ve ilke **tanımları** ' na tıklayarak daha fazla ilke tanımı görüntüleyin veya ekleyin.
+3. İlkeyi seçin ve daha fazla ilke tanımı görüntülemek veya eklemek için **İlke Tanımları'nı** tıklatın.
 
    ![İlke tanımlarını göster](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. İlkenin ilişkilendirildiği alt ağları görüntülemek için **ilişkili alt ağları** seçin. Henüz bir alt ağ ilişkilendirilmediyse, sonraki adımdaki yönergeleri izleyin.
+4. İlkenin ilişkili olduğu alt ağları görüntülemek için **İlişkili alt ağları** seçin. Henüz hiçbir alt ağ ilişkilendirilmezse, bir sonraki adımdaki yönergeleri izleyin.
 
    ![İlişkili alt ağlar](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
-5. Bir ilkeyi bir alt ağla ilişkilendir
+5. Bir ilkeyi bir alt ağla ilişkilendirme
 
 >[!WARNING] 
-> İlkeyi verilen alt ağla ilişkilendirmeden önce alt ağdan erişilen tüm kaynakların ilke tanımına eklendiğinden emin olun. İlke ilişkilendirildikten sonra, hizmet uç noktaları üzerinden yalnızca *listelenen kaynaklara izin ver* erişimine izin verilir. 
+> İlkeyi verilen alt ağa ilişkilendirmeden önce alt ağdan erişilen tüm kaynakların ilke tanımına eklenmiş olduğundan emin olun. İlke ilişkilendirildikten sonra, yalnızca hizmet bitiş noktaları üzerinden *izin verilen* kaynaklara erişime izin verilir. 
 >
-> Ayrıca, hizmet uç noktası ilkesiyle ilişkili olan alt ağda yönetilen bir Azure hizmeti olmadığından emin olun
+> Ayrıca, hizmet bitiş noktası ilkesiyle ilişkilendirilmekte olan alt ağda yönetilen Azure hizmetinin bulunmadığından emin olun
 
-- Bir ilkeyi bir alt ağla ilişkilendirebilmeniz için önce bir sanal ağ ve alt ağ oluşturmanız gerekir. Bu konuda yardım almak için lütfen [sanal ağ oluşturma](./quick-create-portal.md) makalesine bakın.
+- Bir ilkeyi bir alt ağla ilişkilendirebilmek için önce sanal bir ağ ve alt ağ oluşturmanız gerekir. Bu sorundan yardım almak için lütfen [Sanal Ağ Oluştur](./quick-create-portal.md) makalesine bakın.
 
-- Sanal ağ ve alt ağ kurulduktan sonra, Azure depolama için sanal ağ hizmet uç noktalarını yapılandırmanız gerekir. Sanal ağ dikey penceresinde **hizmet uç noktaları**' nı seçin ve sonraki bölmede **Microsoft. Storage** ' ı ve **alt ağlar** altında, istediğiniz VNET veya alt ağı seçin
+- Sanal ağa ve alt ağ kurulumu yaptıktan sonra, Azure Depolama için Sanal Ağ Hizmeti Bitiş Noktalarını yapılandırmanız gerekir. Sanal Ağ bıçak, **Hizmet bitiş noktaları**seçin ve sonraki bölmede **Microsoft.Storage** seçin ve **Subnets** altında istenilen VNet veya Subnet seçin
 
-- Şimdi aşağıda gösterildiği gibi alt ağ için hizmet uç noktasını yapılandırmadan önce hizmet uç noktası ilkeleri oluşturduysanız, yukarıdaki bölmedeki açılan listeden hizmet uç noktası Ilkesini seçebilirsiniz
+- Şimdi, aşağıda gösterildiği gibi Subnet için Hizmet Bitiş Noktası'nı yapılandırmadan önce Hizmet Bitiş Noktası ilkelerini zaten oluşturduysanız, yukarıdaki bölmedeki açılır noktadan Hizmet Bitiş Noktası İlkesi'ni seçmeyi seçebilirsiniz
 
-    ![Hizmet uç noktası oluştururken alt ağı ilişkilendir](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
+    ![Hizmet bitiş noktası oluştururken alt ağı ilişkilendirme](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
 
-- Hizmet uç noktaları zaten yapılandırıldıktan sonra hizmet uç noktası ilkelerini ilişkilendirirseniz, aşağıda gösterildiği gibi **Ilişkili alt ağlar** bölmesine giderek alt ağı hizmet uç noktası ilke dikey penceresinden ilişkilendirmeyi seçebilirsiniz
+- VEYA Hizmet Bitiş Noktaları zaten yapılandırıldıktan sonra Hizmet Bitiş Noktası ilkelerini ilişkilendiriyorsanız, aşağıda gösterildiği gibi **İlişkili Alt Ağlar** bölmesine yönlendirerek Alt ağı Hizmet Bitiş Noktası İlkesi açısından ilişkilendirmeyi seçebilirsiniz
 
-    ![Alt ağı SEP ile ilişkilendir](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
+    ![SEP ile ortak alt ağ](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
 
 >[!WARNING] 
->Tüm bölgelerdeki Azure depolama kaynaklarına erişim, bu alt ağdaki hizmet uç noktası Ilkesi olarak kısıtlanır.
+>Tüm bölgelerdeki Azure Depolama kaynaklarına erişim, bu alt ağdan Hizmet Bitiş Noktası İlkesi uyarınca kısıtlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide bir hizmet uç noktası İlkesi oluşturdunuz ve bir alt ağ ile ilişkilendirdiyseniz. Hizmet uç noktası ilkeleri hakkında daha fazla bilgi için bkz [. hizmet uç noktası ilkelerine genel bakış.](virtual-network-service-endpoint-policies-overview.md)
+Bu öğreticide, bir hizmet bitiş noktası ilkesi oluşturdunuz ve bir alt ağla ilişkilendirdin. Hizmet bitiş noktası ilkeleri hakkında daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış abakın.](virtual-network-service-endpoint-policies-overview.md)

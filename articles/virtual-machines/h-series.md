@@ -1,59 +1,59 @@
 ---
-title: H serisi-Azure sanal makineleri
-description: H serisi VM 'Ler için belirtim.
+title: H serisi - Azure Sanal Makineler
+description: H serisi VM'ler için teknik özellikler.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/10/2020
 ms.author: lahugh
-ms.openlocfilehash: a71b7b7de6f6039106b43576847675f48de803c8
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: cb05a8c42c5710182f81d4bc1c76b78abe59c882
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79088060"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79470512"
 ---
 # <a name="h-series"></a>H Serisi
 
-H serisi VM 'Ler, yüksek CPU sıklıklarca veya çekirdek gereksinimlerine göre büyük bellek kullanan uygulamalar için iyileştirilmiştir. H serisi VM 'Ler özelliği 8 veya 16 Intel Xeon E5 2667 v3 işlemci çekirdekleri, CPU çekirdeği başına en fazla 14 GB RAM ve hiper iş parçacığı yok. Uyumlu RDMA performansı için engelleyici olmayan bir FAT ağacı yapılandırmasında 56 GB/sn Mellanox FDR InfiniBand içindeki H Serisi özellikleri. H serisi VM 'Ler Intel MPı 5. x ve MS-MPı 'yi destekler.
+H serisi VM'ler, çekirdek gereksinimleri başına yüksek CPU frekansları veya büyük bellek tarafından yönlendirilen uygulamalar için optimize edilebiyi optimize edin. H serisi VM'ler 8 veya 16 Intel Xeon E5 2667 v3 işlemci çekirdeğine, CPU çekirdeği başına 14 GB'a kadar RAM'e sahiptir ve hiper iş parçacığı yoktur. H serisi, tutarlı RDMA performansı için engelleyici olmayan yağ ağacı yapılandırmasında 56 Gb/sn Mellanox FDR InfiniBand'e sahiptir. H serisi VM'ler Intel MPI 5.x ve MS-MPI'yi destekler.
 
 ACU: 290-300
 
-Premium Depolama: desteklenmiyor
+Premium Depolama: Desteklenmiyor
 
-Premium depolama önbelleği: desteklenmiyor
+Premium Depolama Önbelleğe Alma: Desteklenmiyor
 
-Dinamik Geçiş: desteklenmiyor
+Canlı Geçiş: Desteklenmiyor
 
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
+| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/s | Temel CPU frekansı (GHz) | Tüm çekirdek frekansı (GHz, tepe) | Tek çekirdekli frekans (GHz, tepe) | RDMA performansı (Gb/s) | MPI desteği | Geçici depolama (GB) | Maksimum veri diskleri | Maksimum Ethernet NIC'leri |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5. x, MS-MPı | 1000 | 32 | 2 |
-| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5. x, MS-MPı | 2000 | 64 | 4 |
-| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5. x, MS-MPı | 1000 | 32 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5. x, MS-MPı | 2000 | 64 | 4 |
-| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5. x, MS-MPı | 2000 | 64 | 4 |
-| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5. x, MS-MPı | 2000 | 64 | 4 |
+| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 
-<sup>1</sup> MPI uygulamaları için, adanmış RDMA arka uç ağı, FDR InfiniBand ağı tarafından etkinleştirilir.
+<sup>1</sup> MPI uygulamaları için, özel RDMA arka uç ağı FDR InfiniBand ağı tarafından etkinleştirilir.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
 ## <a name="supported-os-images-linux"></a>Desteklenen işletim sistemi görüntüleri (Linux)
  
-Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı vardır:
+Azure Marketi'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı vardır:
   
-* **CentOS tabanlı HPC** -SR-IOV etkin olmayan VM 'Ler, CentOS tabanlı sürüm 6,5 HPC veya sonraki bir sürüm olan 7,5 ' e kadar uygundur. H serisi VM 'Ler için 7,1 sürümlerinin 7,5 olması önerilir. RDMA sürücüleri ve Intel MPı 5,1 VM 'ye yüklenir.
-  SR-ıOV VM 'lerinde, CentOS-HPC 7,6, RDMA sürücüleri ve çeşitli MPı paketleri yüklüyken en iyi duruma getirilmiş ve önceden yüklenmiş olarak sunulur.
-  Diğer RHEL/CentOS VM görüntüleri için, InfiniBand 'yi etkinleştirmek üzere ınfinıbandlinux uzantısını ekleyin. Bu Linux VM uzantısı, RDMA bağlantısı için (SR-ıOV VM 'lerde), Mellanox temelli sürücüleri (SR-ıOV) Aşağıdaki PowerShell cmdlet 'i, mevcut bir RDMA özellikli sanal makineye ınfinibanddriverlinux uzantısının en son sürümünü (sürüm 1,0) yüklüyor. RDMA özellikli VM, *Myvm* olarak adlandırılır ve *Batı ABD* bölgesindeki *myresourcegroup* adlı kaynak grubunda aşağıdaki gibi dağıtılır:
+* **CentOS tabanlı HPC** - SR-IOV özellikli olmayan VM'ler için, CentOS tabanlı sürüm 6.5 HPC veya daha sonraki bir sürüm, 7.5'e kadar uygundur. H serisi VM'ler için 7.1 ile 7.5 sürümleri önerilir. RDMA sürücüleri ve Intel MPI 5.1 VM'ye yüklenir.
+  SR-IOV VM'ler için CentOS-HPC 7.6, RDMA sürücüleri ve yüklü çeşitli MPI paketleri ile optimize edilmiş ve önceden yüklenmiş olarak gelir.
+  Diğer RHEL/CentOS VM görüntüleri için InfiniBandLinux uzantısını ekleyerek InfiniBand'i etkinleştirin. Bu Linux VM uzantısı RDMA bağlantısı için Mellanox OFED sürücülerini (SR-IOV VM'lerde) yükler. Aşağıdaki PowerShell cmdlet, Mevcut RDMA özellikli vm'de InfiniBandDriverLinux uzantısının en son sürümünü (sürüm 1.0) yükler. RDMA özellikli VM *myVM* olarak adlandırılır ve *Batı ABD* bölgesindeki *myResourceGroup* adlı kaynak grubunda aşağıdaki gibi dağıtılır:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Alternatif olarak, VM uzantıları aşağıdaki JSON öğesiyle kolay dağıtım için Azure Resource Manager şablonlarına dahil edilebilir:
+  Alternatif olarak, VM uzantıları aşağıdaki JSON öğesi ile kolay dağıtım için Azure Kaynak Yöneticisi şablonlarına eklenebilir:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -62,7 +62,7 @@ Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı 
   } 
   ```
   
-  Aşağıdaki komut, *Myresourcegroup*adlı kaynak grubunda dağıtılan *myvmss* adlı mevcut bir sanal makıne ölçek kümesindeki tüm RDMA özellikli vm 'Lere en son 1,0 ınfinibanddriverlinux uzantısını yükleme:
+  Aşağıdaki komut, *myResourceGroup*adlı kaynak grubunda dağıtılan *myVMSS* adlı mevcut bir sanal makine ölçeğinde tüm RDMA özellikli VM'lerde en son sürüm 1.0 InfiniBandDriverLinux uzantısını yükler:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -71,25 +71,25 @@ Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı 
   ```
   
   > [!NOTE]
-  > CentOS tabanlı HPC görüntülerinde, çekirdek güncelleştirmeleri, **yıum** yapılandırma dosyasında devre dışıdır. Bunun nedeni, Linux RDMA sürücülerinin bir RPM paketi olarak dağıtılmaktadır ve çekirdek güncelleştirilirse sürücü güncelleştirmeleri çalışmayabilir.
+  > CentOS tabanlı HPC görüntülerinde çekirdek güncelleştirmeleri **yum** yapılandırma dosyasında devre dışı bırakılır. Bunun nedeni, Linux RDMA sürücülerinin Bir RPM paketi olarak dağıtılması ve çekirdek güncelleştirilirse sürücü güncelleştirmelerinin çalışmayabilir olmasıdır.
   >
   
 
-* **SUSE Linux Enterprise Server** , HPC için SLES 12 SP3, HPC için SLES 12 SP3 (Premium), HPC için SLES 12 SP1, HPC için SLES 12 SP1, HPC (Premium), SLES 12 SP4 ve SLES 15. RDMA sürücüleri yüklenir ve Intel MPı paketleri sanal makineye dağıtılır. Aşağıdaki komutu çalıştırarak MPı 'yi çalıştırın:
+* **SUSE Linux Enterprise Server** - HPC için SLES 12 SP3, HPC için SLES 12 SP3 (Premium), HPC için SLES 12 SP1, HPC için SLES 12 SP1 (Premium), SLES 12 SP4 ve SLES 15. RDMA sürücüleri yüklenir ve Intel MPI paketleri VM'de dağıtılır. Aşağıdaki komutu çalıştırarak MPI yükleyin:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. VM 'de RDMA sürücülerini yapılandırın ve Intel MPı 'yi indirmek için Intel ile kaydolun:
+* **Ubuntu** - Ubuntu Server 16.04 LTS, 18.04 LTS. VM'deki RDMA sürücülerini yapılandırın ve Intel MPI'yi indirmek için Intel'e kaydolun:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  InfiniBand 'yi etkinleştirme hakkında daha fazla ayrıntı için MPı 'yi [ayarlama bölümüne bakın](/workloads/hpc/enable-infiniband.md).
+  InfiniBand'i etkinleştirme, MPI'yi ayarlama hakkında daha fazla bilgi [için](./workloads/hpc/enable-infiniband.md)bkz.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaçlı](sizes-general.md)
+- [Genel amaç](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -98,4 +98,4 @@ Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.

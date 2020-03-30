@@ -1,7 +1,7 @@
 ---
-title: 'Kümeleme modeli eğitme: modül başvurusu'
+title: 'Tren Kümeleme Modeli: Modül Referansı'
 titleSuffix: Azure Machine Learning
-description: Kümeleme modellerini eğitmek için Azure Machine Learning kümeleme modelini eğitme modülünü nasıl kullanacağınızı öğrenin.
+description: Kümeleme modellerini eğitmek için Azure Machine Learning'de Tren Kümeleme Modeli modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,50 +9,50 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 7053fab28b4a231c92f31e344cf09ffef3a6b146
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c29baf3cdda998a2ab78c84f3311b84d37086bcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477434"
 ---
 # <a name="train-clustering-model"></a>Kümeleme Modeli Eğitme
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Bir kümeleme modeli eğitme için bu modülü kullanın.
+Kümeleme modelini eğitmek için bu modülü kullanın.
 
-Modül, zaten [K-bit kümeleme](k-means-clustering.md) modülünü kullanarak yapılandırdığınız eğitilen bir kümeleme modeli alır ve etiketli ya da etiketsiz veri kümesi kullanarak modeli ilerleder. Modül hem tahmin için kullanabileceğiniz eğitilen bir model hem de eğitim verilerinde her bir durum için bir küme atamaları kümesi oluşturur.
+Modül, [K-Means Kümeleme](k-means-clustering.md) modüllerini kullanarak zaten yapılandırdığınız eğitimsiz bir kümeleme modelini alır ve modeli etiketli veya etiketlenmemiş veri kümesi kullanarak eğitir. Modül, hem tahmin için kullanabileceğiniz eğitilmiş bir model hem de eğitim verilerindeki her servis talebi için küme atamaları kümesi oluşturur.
 
 > [!NOTE]
-> Bir kümeleme modeli, eğitim makine öğrenimi modelleri için genel modül olan [model eğitme](train-model.md) modülü kullanılarak eğitilemez. Bunun nedeni, [eğitme modelinin](train-model.md) yalnızca denetimli öğrenme algoritmalarıyla çalışmasıdır. K-ve diğer kümeleme algoritmalarının, açıklanmadan önce, bu algoritmanın etiketli verilerden öğrenilecebileceği anlamına gelir.  
+> Bir kümeleme modeli, makine öğrenme modellerinin eğitimi için genel modül olan [Tren Modeli](train-model.md) modülü kullanılarak eğitilemez. Tren [Modeli](train-model.md) sadece denetimli öğrenme algoritmaları ile çalışır olmasıdır. K-araçları ve diğer kümeleme algoritmaları denetimsiz öğrenmesağlar, bu da algoritmanın etiketlenmemiş verilerden öğrenebileceği anlamına gelir.  
   
-## <a name="how-to-use-train-clustering-model"></a>Bir kümeleme modeli eğitimi kullanma  
+## <a name="how-to-use-train-clustering-model"></a>Tren Kümeleme Modeli nasıl kullanılır?  
 
-1.  Tasarımcıdaki işlem hattınızda **kümeleme modeli eğitimi** modülünü ekleyin. Modülü, **eğitme** kategorisinde **Machine Learning modüller**altında bulabilirsiniz.  
+1.  Tasarımcıda boru hattınıza **Tren Kümeleme Modeli** modüllerini ekleyin. Modülü **Makine Öğrenimi Modülleri**altında, **Tren** kategorisinde bulabilirsiniz.  
   
-2. [K-anlamı kümeleme](k-means-clustering.md) modülünü veya uyumlu bir kümeleme modeli oluşturan başka bir özel modülü ekleyin ve kümeleme modelinin parametrelerini ayarlayın.  
+2. [K-Means Kümeleme](k-means-clustering.md) modülünün veya uyumlu bir kümeleme modeli oluşturan başka bir özel modülü ekleyin ve kümeleme modelinin parametrelerini ayarlayın.  
     
-3.  Bir eğitim veri kümesini, **kümeleme modeli eğitimi**için sağ girişe iliştirin.
+3.  **Tren Kümeleme Modeli'nin**sağ girişine bir eğitim veri kümesi takın.
   
-5.  **Sütun kümesi**' nde, kümeler oluştururken kullanılacak veri kümesinden sütunları seçin. İyi özellikleri olan sütunları seçtiğinizden emin olun: Örneğin, benzersiz değerlere sahip kimlikleri veya diğer sütunları ya da aynı değere sahip sütunları kullanmaktan kaçının.
+5.  **Sütun**Kümesi'nde, yapı kümelerinde kullanmak üzere veri kümesinden sütunları seçin. İyi özellikler oluşturan sütunları seçtiğinizden emin olun: örneğin, özgün değerlere sahip diğer disvediğer sütunları veya aynı değerlere sahip sütunları kullanmaktan kaçının.
 
-    Bir etiket varsa, bunu bir özellik olarak kullanabilir ya da kapatabilirsiniz.  
+    Bir etiket varsa, bunu özellik olarak kullanabilir veya dışarıda bırakabilirsiniz.  
   
-6. Yeni küme etiketiyle eğitim verilerini bir araya getirmek istiyorsanız, **yalnızca sonuç için Ekle veya işaretini kaldır**seçeneğini işaretleyin.
+6. Yeni küme etiketiyle birlikte eğitim verilerini çıkarmak istiyorsanız, yalnızca **ek ineve onayını veya yalnızca sonucu onayını alın**seçeneğini belirleyin.
 
-    Bu seçeneğin işaretini kaldırırsanız yalnızca küme atamaları çıkışlardır. 
+    Bu seçeneği n için seçerseniz, yalnızca küme atamaları çıktıdır. 
 
-7. İşlem hattını çalıştırın veya **kümeleme modeli eğitimi** modülüne tıklayın ve **Seçileni Çalıştır**' ı seçin.  
+7. Ardışık hattı gönderin veya **Tren Kümeleme Modeli** modülünü tıklatın ve **Seçili Çalıştır'ı**seçin.  
   
 ### <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
++ Eğitilen modelin anlık görüntüsünü kaydetmek **için, Tren modeli** modülünün sağ panelindeki **Çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **Kayıt veri kümesi** simgesini seçin.
 
-+ Modelden puanlar oluşturmak için [kümelere veri ata](assign-data-to-clusters.md)' yı kullanın.
++ Modelden puan lar oluşturmak [için, Kümelere Veri Atay'ı](assign-data-to-clusters.md)kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

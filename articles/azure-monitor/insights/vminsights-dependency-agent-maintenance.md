@@ -1,73 +1,73 @@
 ---
-title: VM'ler için Azure İzleyici bağımlılık aracısını yükseltme | Microsoft Docs
-description: Bu makalede komut satırı, Kurulum Sihirbazı ve diğer yöntemleri kullanarak VM'ler için Azure İzleyici bağımlılık aracısının nasıl yükseltileceği açıklanır.
+title: VM Bağımlılık aracısı için Azure Monitörü nasıl yükseltilir?
+description: Bu makalede, komut satırı, kurulum sihirbazı ve diğer yöntemleri kullanarak VM Bağımlılık aracısı için Azure Monitörü nasıl yükseltilir açıklanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: c98c48a4494ac37ef4868c44d4a7adacfd0d48da
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: c55bee9880c4134f2e304a7fc5176225477fe5f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480768"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>VM'ler için Azure İzleyici bağımlılık aracısını yükseltme
+# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>VM Bağımlılık aracısı için Azure Monitörü nasıl yükseltilir?
 
-VM'ler için Azure İzleyici bağımlılık aracısının ilk dağıtımından sonra, hata düzeltmeleri veya yeni özellik ya da işlevsellik desteği içeren güncelleştirmeler serbest bırakılır.  Bu makale, kullanılabilir yöntemleri ve yükseltmenin el ile veya Otomasyon aracılığıyla nasıl gerçekleştirileceğini anlamanıza yardımcı olur.
+VM Bağımlılık aracısı için Azure Monitörü'nün ilk dağıtımından sonra, hata düzeltmeleri veya yeni özellikler veya işlevler desteği içeren güncelleştirmeler yayımlanır.  Bu makale, mevcut yöntemleri ve yükseltmenin el ile veya otomasyon yoluyla nasıl gerçekleştirilip gerçekleştirililebildiğini anlamanıza yardımcı olur.
 
 ## <a name="upgrade-options"></a>Yükseltme seçenekleri 
 
-Windows ve Linux 'un bağımlılık Aracısı en son sürüme el ile veya makinenin üzerinde çalıştığı ortama ve dağıtım senaryosuna bağlı olarak otomatik olarak yükseltilebilir. Aşağıdaki yöntemler aracıyı yükseltmek için kullanılabilir.
+Windows ve Linux için Bağımlılık aracısı, dağıtım senaryosuna ve makinenin içinde çalışan ortama bağlı olarak el ile veya otomatik olarak en son sürüme yükseltilebilir. Aracıyı yükseltmek için aşağıdaki yöntemler kullanılabilir.
 
-|Ortam |Yükleme yöntemi |Yükseltme yöntemi |
+|Ortam |Kurulum yöntemi |Yükseltme yöntemi |
 |------------|--------------------|---------------|
-|Azure VM | [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) için bağımlılık Aracısı VM Uzantısı | *Otomatik* olarak, Azure Resource Manager şablonunuzu otomatik olarak varsayılan olarak yükseltilir. bu özelliği otomatik yükseltme özelliğini **yanlış**olarak ayarlayarak geri çevirebilirsiniz. Otomatik yükseltmenin devre dışı bırakıldığı ikincil sürüm için yükseltme, ana sürüm yükseltmesi de aynı yöntemi izler-uzantıyı kaldırın ve yeniden yükleyin. |
-| Özel Azure VM görüntüleri | Windows/Linux için bağımlılık aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir.|
-| Azure dışı VM 'Ler | Windows/Linux için bağımlılık aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir. |
+|Azure VM | [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) için Bağımlılık aracısı VM uzantısı | Azure Kaynak Yöneticisi şablonunuzu, özellik *otomatikYükseltmeMinorVersion'u* **false**olarak ayarlayarak devre dışı bırakmak üzere yapılandırmadığınız sürece aracı otomatik olarak otomatik olarak yükseltilir. Otomatik yükseltmenin devre dışı bırakıldığı küçük sürüm için yükseltme ve ana sürüm yükseltmesi de aynı yöntemi izleyin - uzantıyı kaldırın ve yeniden yükleyin. |
+| Özel Azure VM görüntüleri | Windows/Linux için Bağımlılık aracısının el ile yüklenmesi | VM'leri aracının en yeni sürümüne güncellemenin, Windows yükleyici paketini veya Linux'un kendi kendine ayıklama ve yüklenebilir kabuk komut paketi paketini çalıştıran komut satırından gerçekleştirilmesi gerekir.|
+| Azure Olmayan VM'ler | Windows/Linux için Bağımlılık aracısının el ile yüklenmesi | VM'leri aracının en yeni sürümüne güncellemenin, Windows yükleyici paketini veya Linux'un kendi kendine ayıklama ve yüklenebilir kabuk komut paketi paketini çalıştıran komut satırından gerçekleştirilmesi gerekir. |
 
-## <a name="upgrade-windows-agent"></a>Windows aracısını yükselt 
+## <a name="upgrade-windows-agent"></a>Windows aracıyı yükseltme 
 
-Bir Windows VM 'deki aracıyı, bağımlılık Aracısı VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut Istemi, komut dosyası veya başka bir Otomasyon çözümünden ya da InstallDependencyAgent-Windows. exe Kurulum Sihirbazı ' nı kullanarak komutunu çalıştırın.  
+Windows VM'deki aracıyı Bağımlılık aracısı VM uzantısı kullanılarak yüklü olmayan en son sürüme güncelleştirmek için Komut Komut Komut Ustem'den, komut dosyasından veya diğer otomasyon çözümünden veya InstallDependencyAgent-Windows.exe Kurulum Sihirbazı'nı kullanarak çalışırsınız.  
 
 Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyagentwindows)indirebilirsiniz.
 
-### <a name="using-the-setup-wizard"></a>Kurulum Sihirbazı 'Nı kullanma
+### <a name="using-the-setup-wizard"></a>Kurulum Sihirbazını Kullanma
 
-1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
+1. Yönetim haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum sihirbazını başlatmak için **InstallDependencyAgent-Windows. exe** ' yi yürütün.
+2. Kurulum Sihirbazı'nı başlatmak için **InstallDependencyAgent-Windows.exe'yi** çalıştırın.
    
-3. Bağımlılık aracısının önceki sürümünü kaldırmak ve sonra en son sürümü yüklemek için **Dependency Agent kurulum** Sihirbazı ' nı izleyin.
+3. Bağımlılık **aracısının** önceki sürümünü kaldırmak ve ardından en son sürümü yüklemek için Bağımlılık Aracısı Kurulumu sihirbazını izleyin.
 
 
 ### <a name="from-the-command-line"></a>Komut satırından
 
-1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
+1. Yönetim haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aşağıdaki komutu çalıştırın.
+2. Şu komutu çalıştırın.
 
     ```dos
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    `/RebootMode=manual` parametresi, bazı süreçler önceki sürümden dosya kullanıyorsa ve bunlara bir kilit varsa, yükseltmenin makinenin otomatik olarak yeniden başlatılmasını önler. 
+    Parametre, `/RebootMode=manual` bazı işlemler önceki sürümdeki dosyaları kullanıyorsa ve üzerinde kilit varsa yükseltmenin makineyi otomatik olarak yeniden başlatmasını önler. 
 
-3. Yükseltmenin başarılı olduğunu doğrulamak için, ayrıntılı kurulum bilgileri için `install.log` denetleyin. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
+3. Yükseltmenin başarılı olduğunu doğrulamak `install.log` için ayrıntılı kurulum bilgilerini kontrol edin. Günlük dizini *%Programfiles%\Microsoft Bağımlılık Aracısı\günlükleridir.*
 
-## <a name="upgrade-linux-agent"></a>Linux aracısını yükselt 
+## <a name="upgrade-linux-agent"></a>Linux aracıyı yükseltme 
 
-Linux üzerinde bağımlılık aracısının önceki sürümlerinden yükseltme desteklenir ve yeni bir yüklemeyle aynı komutu izleyerek gerçekleştirilir.
+Linux'taki Bağımlılık aracısının önceki sürümlerinden yükseltme, yeni bir yüklemeyle aynı komutu izleyerek desteklenir ve gerçekleştirilir.
 
 Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyagentlinux)indirebilirsiniz.
 
-1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
+1. Yönetim haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kök`sh InstallDependencyAgent-Linux64.bin -s`olarak aşağıdaki komutu çalıştırın. 
+2. Aşağıdaki komutu kök`sh InstallDependencyAgent-Linux64.bin -s`olarak çalıştırın. 
 
-Bağımlılık Aracısı'nı başlatmak başarısız olursa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur. 
+Bağımlılık aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracıları üzerinde, günlük dizini */var/opt/microsoft/dependency-agent/log'* dur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'lerinizi bir süre izlemeyi durdurmak veya VM'ler için Azure İzleyici tamamen kaldırmak istiyorsanız, bkz. [VM'ler için Azure izleyici sanal makinelerinizin Izlenmesini devre dışı bırakma](vminsights-optout.md).
+VM'lerinizi bir süre izlemeyi durdurmak veya VM'ler için Azure Monitörünü tamamen kaldırmak istiyorsanız, [VM'ler için Azure Monitör'de VM'lerinizin izlemesini devre dışı](vminsights-optout.md)bırakın.

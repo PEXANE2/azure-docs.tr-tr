@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus güvenlik duvarı kuralları | Microsoft Docs
-description: Belirli IP adreslerinden Azure Service Bus bağlantılara izin vermek için güvenlik duvarı kuralları kullanma.
+title: Azure Hizmet Veri Servisi veri hizmetleri için IP güvenlik duvarı kurallarını yapılandırma
+description: Belirli IP adreslerinden Azure Hizmet Veri Servisi'ne bağlantılara izin vermek için Güvenlik Duvarı Kuralları nasıl kullanılır?
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,66 +11,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9887d5448eabd272ab2528e4fc758265f2ada977
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475952"
 ---
-# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus-güvenlik duvarı kurallarını kullanma
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Azure Hizmet Veri Servisi veri hizmetleri için IP güvenlik duvarı kurallarını yapılandırma
+Varsayılan olarak, Hizmet Veri Servisi ad alanlarına, istek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
 
-Azure Service Bus yalnızca belirli bir bilinen sitelerden erişilebilen senaryolarda güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, bu adresler kurumsal bir NAT ağ geçidinin bu olabilir.
+Bu özellik, Azure Servis Veri Tos'unyalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Ekspres Rotası][express-route]ile Hizmet Veri Yolu kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden veya kurumsal bir NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir güvenlik duvarı **kuralı** oluşturabilirsiniz. 
 
-## <a name="when-to-use"></a>Kullanılması gereken durumlar
+## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
+IP güvenlik duvarı kuralları Hizmet Veri Servisi ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Hizmet Veri Gönderisi ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
 
-Yalnızca belirli bir IP adresi aralığından trafik alması ve diğer her şeyi reddetmesi gibi Service Bus kurmak istiyorsanız, diğer IP adreslerinden Service Bus uç noktaları engellemek için bir *güvenlik duvarı* üzerinden yararlanabilirsiniz. Örneğin, şirket içi altyapınızla özel bağlantılar oluşturmak için [Azure Express Route][express-route] ile Service Bus kullanıyorsunuz. 
+## <a name="use-azure-portal"></a>Azure portalı kullanma
+Bu bölümde, Hizmet Veri Aracı ad alanı için IP güvenlik duvarı kuralları oluşturmak için Azure portalının nasıl kullanılacağı gösterilmektedir. 
 
-## <a name="how-filter-rules-are-applied"></a>Filtre kurallarının uygulanma yöntemi
+1. [Azure portalındaki](https://portal.azure.com) **Hizmet Veri Servisi ad alanınıza** gidin.
+2. Sol menüde **Ağ seçeneği'ni** seçin. Varsayılan olarak, **Tüm ağlar** seçeneği seçilir. Servis Veri Gönderi ad alanınız herhangi bir IP adresinden bağlantıları kabul eder. Bu varsayılan ayar, 0.0.0.0/0 IP adresi aralığını kabul eden bir kurala eşdeğerdir. 
 
-IP filtresi kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar, istemcilerden herhangi bir desteklenen protokolünü kullanarak tüm bağlantıları için geçerlidir.
+    ![Güvenlik Duvarı - Tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. Sayfanın üst kısmında **Seçili Ağlar** seçeneğini seçin. Güvenlik **Duvarı** bölümünde aşağıdaki adımları izleyin:
+    1. Geçerli istemcinize ad alanına erişim sağlamak için **istemci IP adresinizi ekle** seçeneğini seçin. 
+    2. **Adres aralığı**için CIDR gösterimine belirli bir IPv4 adresi veya bir dizi IPv4 adresi girin. 
+    3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarLarını atlayıp atlamayacağına izin**vermek isteyip istemediğinizi belirtin. 
 
-Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt IP kuralı başvurmayacak.
+        ![Güvenlik Duvarı - Tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. Ayarları kaydetmek için araç çubuğunda **Kaydet'i** seçin. Onayın portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.
 
-## <a name="default-setting"></a>Varsayılan ayar
-
-Varsayılan olarak, Service Bus Portal 'daki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, ad alanınız herhangi bir IP adresine bağlantı kabul ettiği anlamına gelir. Bu varsayılan ayarı 0.0.0.0/0 IP adresi aralığı kabul eden bir kural eşdeğerdir.
-
-## <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirme
-
-IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
-
->[!WARNING]
-> Güvenlik duvarı kuralları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir.
->
-> IP filtrelemesi (güvenlik duvarı kuralları) uygulandığında güvenilir Microsoft Hizmetleri desteklenmez ve yakında kullanıma sunulacaktır.
->
-> IP filtrelemesi ile çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure Stream Analytics
-> - Azure Event Grid ile tümleştirme
-> - Azure IoT Hub yolları
-> - Azure IoT Device Explorer
->
-> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
-> - Azure İşlevleri
-
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla bir sanal ağ ve güvenlik duvarı kuralı oluşturma
+## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
+Bu bölümde, sanal ağ ve güvenlik duvarı kuralı oluşturan örnek bir Azure Kaynak Yöneticisi şablonu vardır.
 
 > [!IMPORTANT]
-> Güvenlik duvarları ve sanal ağlar yalnızca Service Bus **Premium** katmanında desteklenir.
+> Güvenlik duvarları ve Sanal Ağlar yalnızca Servis Veri Veri Tos'un **premium** katmanında desteklenir.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı eklenmesini sağlar.
+Aşağıdaki Kaynak Yöneticisi şablonu, varolan bir Hizmet Veri Sitesi ad alanına sanal ağ kuralı eklemeyi sağlar.
 
-Şablon parametreleri:
+Template parameters:
 
-- **ipMask** tek bir IPv4 adresi veya IP adresleri CIDR gösteriminde bir bloğu. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
+- **ipMask,** CIDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğudur. Örneğin, CIDR gösteriminde 70.37.104.0/24, 70.37.104.0 ile 70.37.104.255 arasında 256 IPv4 adresini temsil eder ve 24 aralık için önemli öneek bitlerinin sayısını gösterir.
 
 > [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
+> İnkar edilen kurallar mümkün olmasa da, Azure Kaynak Yöneticisi şablonu bağlantıları kısıtlamayan varsayılan eylem **kümesine "İzin Ver"** olarak ayarlanır.
+> Sanal Ağ veya Güvenlik Duvarları kurallarını yaparken ***"varsayılan Eylem"i*** değiştirmemiz gerekir
 > 
-> başlangıç
+> Kaynak
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -133,6 +120,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -141,13 +129,13 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
   }
 ```
 
-Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+Şablonu dağıtmak için Azure [Kaynak Yöneticisi][lnk-deploy]yönergelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure sanal ağlarına Service Bus erişimi kısıtlayan için şu bağlantıya bakın:
+Hizmet Veri Servisi'nden Azure sanal ağlarına erişimi zorlamak için aşağıdaki bağlantıya bakın:
 
-- [Service Bus için sanal ağ hizmeti uç noktaları][lnk-vnet]
+- [Servis Veri Servisi için Sanal Ağ Hizmeti Bitiş Noktaları][lnk-vnet]
 
 <!-- Links -->
 

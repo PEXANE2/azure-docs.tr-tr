@@ -1,7 +1,7 @@
 ---
-title: 'Eğitim SVD öneren: modül başvurusu'
+title: 'Tren SVD Tavsiye: Modül Referans'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning, SVD algoritmasını kullanarak bir Bayeme öneren eğitme için, öneren ' deki eğitme SVD modülünü nasıl kullanacağınızı öğrenin.
+description: SVD algoritmasını kullanarak Bayesian tavsiye cihazını eğitmek için Azure Machine Learning'deki Train SVD Recommender modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,68 +9,68 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477417"
 ---
 # <a name="train-svd-recommender"></a>SVD Önerenini Eğitme
 
-Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) bulunan SVD öneren modülünün nasıl kullanılacağı açıklanır. Tek değer ayrıştırma (SVD) algoritmasına dayalı bir öneri modeli geliştirmek için bu modülü kullanın.  
+Bu makalede, Azure Machine Learning tasarımcısında (önizleme) Train SVD Recommender modülünün nasıl kullanılacağı açıklanmaktadır. Tek Değer Ayrıştırma (SVD) algoritmasını temel alan bir öneri modelini eğitmek için bu modülü kullanın.  
 
-Tren SVD öneren modülü kullanıcı-öğe derecelendirme üçlü veri kümesini okur. Eğitilen bir SVD öneren döndürür. Daha sonra eğitilen modeli kullanarak, Puanlama tahmin edebilir veya öneriler oluşturabilir ve bu da [SVD öneren](score-svd-recommender.md) modülünü kullanabilirsiniz.  
+Train SVD Recommender modülü, kullanıcı öğesi derecelendirmesinin üç katına kadar olan bir veri kümesini okur. Eğitimli bir SVD tavsiye cihazını döndürür. Daha [sonra, Score SVD Recommender](score-svd-recommender.md) modüllerini kullanarak derecelendirmeleri tahmin etmek veya öneriler oluşturmak için eğitilmiş modeli kullanabilirsiniz.  
 
 
   
-## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>Öneri modelleri ve SVD öneren hakkında daha fazla bilgi  
+## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>Tavsiye modelleri ve SVD tavsiye cihazı hakkında daha fazla bilgi  
 
-Öneri sisteminin ana amacı, sistem *kullanıcılarına* bir veya daha fazla *öğe* önermektir. Bir öğe örnekleri bir film, Restoran, kitap veya şarkı olabilir. Kullanıcı bir kişi, bir kişi grubu veya öğe tercihleri olan başka bir varlık olabilir.  
+Bir öneri sisteminin temel amacı, sistem *kullanıcılarına* bir veya daha fazla *öğe* önermektir. Bir öğeye örnek olarak film, restoran, kitap veya şarkı verilebilir. Kullanıcı bir kişi, bir kişi grubu veya madde tercihleri olan başka bir varlık olabilir.  
 
-Öneren sistemlerinde iki ana yaklaşım vardır: 
+Tavsiye eden sistemlere iki temel yaklaşım vardır: 
 
-+ **İçerik tabanlı** bir yaklaşım, kullanıcıların ve öğelerin özelliklerinin kullanımını sağlar. Kullanıcılar Age ve cinsiyet gibi özelliklerle açıklanabilir. Öğeler, yazar ve üretici gibi özelliklerle açıklanabilir. Sosyal eşleme sitelerinde, içerik tabanlı öneri sistemlerinin tipik örneklerini bulabilirsiniz. 
-+ **Işbirliğine dayalı filtreleme** yalnızca kullanıcıların ve öğelerin tanımlayıcılarını kullanır. Bu varlıklar hakkında, kullanıcılar tarafından verilen derecelendirmelerin (seyrek) bir matrisinden bu varlıklarla ilgili örtük bilgiler alır. Derecelendirdikleri öğelerden ve aynı öğeleri derecelendirdiğiniz diğer kullanıcılardan bir kullanıcı hakkında bilgi edinebilirsiniz.  
++ **İçerik tabanlı** bir yaklaşım, hem kullanıcılar hem de öğeler için özellikleri kullanır. Kullanıcılar yaş ve cinsiyet gibi özellikleri ile tanımlanabilir. Öğeler yazar ve üretici gibi özelliklertarafından açıklanabilir. Sosyal çöpçatanlık sitelerinde içerik tabanlı tavsiye sistemlerinin tipik örneklerini bulabilirsiniz. 
++ **İşbirlikçi filtreleme** yalnızca kullanıcıların ve öğelerin tanımlayıcılarını kullanır. Bu varlıklar hakkında örtük bilgileri, kullanıcılar tarafından öğelere verilen (seyrek) derecelendirme matrisinden alır. Bir kullanıcı hakkında derecelendirdikleri öğelerden ve aynı öğeleri derecelendirmiş diğer kullanıcılardan bilgi edinebiliriz.  
 
-SVD öneren, kullanıcıların ve öğelerin tanımlayıcılarını ve kullanıcılar tarafından öğeler tarafından verilen derecelendirmelerin bir matrisini kullanır. *İşbirlikçi bir öneren*. 
+SVD tavsiye cihazı, kullanıcıların ve öğelerin tanımlayıcılarını ve kullanıcılar tarafından öğelere verilen derecelendirme matrisini kullanır. İşbirlikçi bir *tavsiyecihazı.* 
 
-SVD öneren hakkında daha fazla bilgi için bkz. ilgili araştırma sayfası: [öneren sistemleri Için matris oluşturma teknikleri](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
+SVD tavsiye cihazı hakkında daha fazla bilgi için ilgili araştırma makalesine bakın: [Tavsiye sistemleri için matris faktörizasyon teknikleri.](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)
 
 
-## <a name="how-to-configure-train-svd-recommender"></a>Eğitim nasıl yapılandırılır SVD öneren  
+## <a name="how-to-configure-train-svd-recommender"></a>Tren SVD Tavsiye Nasıl Yapılandırılır  
 
 ### <a name="prepare-data"></a>Verileri hazırlama
 
-Modülünü kullanmadan önce, giriş verileriniz öneri modelinin beklediği biçimde olmalıdır. Eğitim veri kümesi Kullanıcı-öğe derecelendirme Üçlü listesi gereklidir.
+Modülü kullanmadan önce, giriş verileriniz öneri modelinin beklediği biçimde olmalıdır. Kullanıcı öğesi derecelendirmesi üç katına kadar bir eğitim veri kümesi gereklidir.
 
-+ İlk sütunda kullanıcı tanımlayıcıları bulunur.
-+ İkinci sütunda öğe tanımlayıcıları bulunur.
-+ Üçüncü sütun, Kullanıcı öğesi çiftinin derecelendirmesini içerir. Derecelendirme değerleri sayısal türde olmalıdır.  
++ İlk sütun kullanıcı tanımlayıcıları içerir.
++ İkinci sütun öğe tanımlayıcıları içerir.
++ Üçüncü sütun, kullanıcı öğesi çiftinin derecelendirmesini içerir. Derecelendirme değerleri sayısal türde olmalıdır.  
 
-Azure Machine Learning tasarımcısında **film derecelendirmeleri** veri kümesi ( **veri kümelerini** seçin ve **örnekler**) beklenen biçimi gösterir:
+Azure Machine Learning tasarımcısındaki **Film Derecelendirmeleri** veri kümesi (belirli **Datasets** ve ardından **Örnekler)** beklenen biçimi gösterir:
 
-![Film derecelendirmeleri](media/module/movie-ratings-dataset.png)
+![Film Reytingleri](media/module/movie-ratings-dataset.png)
 
-Bu örnekten, tek bir kullanıcının birçok film derecelendirip derecelendirilmesine bakabilirsiniz. 
+Bu örnekten, tek bir kullanıcının birkaç filmi derecelendirdiğini görebilirsiniz. 
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
-1.  Tasarımcıda SVD öneren modülünü eğit hale ekleyin ve eğitim verilerine bağlayın.  
+1.  Train SVD Recommender modülünü tasarımcıdaki boru hattınıza ekleyin ve eğitim verilerine bağlayın.  
    
-2.  **Faktörlerin sayısı**için öneren ile kullanılacak faktörlerin sayısını belirtin.  
+2.  **Çarpan sayısı**için, önerici ile kullanılacak etken sayısını belirtin.  
     
-    Her faktörün, kullanıcının öğeyle ne kadar ilgili olduğunu ölçer. Faktörlerin sayısı Ayrıca, görünmeyen faktör alanının boyutaldır. Artan Kullanıcı ve öğe sayısı sayesinde daha fazla sayıda etmen ayarlamanız daha iyidir. Ancak sayı çok büyükse performans kaybolabilir.
+    Her faktör, kullanıcının öğeyle ne kadar ilgili olduğunu ölçer. Faktörlerin sayısı da gizli faktör uzayın boyutsallığıdır. Kullanıcı ve öğe sayısı arttıkça, daha fazla sayıda etken ayarlamak daha iyidir. Ancak sayı çok büyükse, performans düşebilir.
     
-3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30 ' dur.
+3.  **Öneri algoritması yinelemelerinin sayısı, algoritmanın** giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı ne kadar yüksekse, tahminler o kadar doğrudur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30’dur.
 
 4.  **Öğrenme oranı**için, öğrenme için adım boyutunu tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
-    Öğrenme oranı her yinelemede adımın boyutunu belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitim en iyi çözümü bulmayı daha uzun sürer. 
+    Öğrenme hızı, her yinelemedeki adımın boyutunu belirler. Adım boyutu çok büyükse, en uygun çözümü aşabilirsiniz. Adım boyutu çok küçükse, en iyi çözümü bulmak için eğitim daha uzun sürer. 
   
-5.  İşlem hattını çalıştırma.  
+5.  Boru hattını gönderin.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

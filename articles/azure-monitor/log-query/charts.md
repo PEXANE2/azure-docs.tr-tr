@@ -1,29 +1,29 @@
 ---
-title: Azure Izleyici günlük sorgularından grafikler ve diyagramlar oluşturma | Microsoft Docs
-description: Günlük verilerinizi farklı yollarla görüntülemek için Azure Izleyici 'de çeşitli görselleştirmeler açıklanmıştır.
+title: Azure Monitor günlük sorgularından grafik ve diyagram oluşturma | Microsoft Dokümanlar
+description: Günlük verilerinizi farklı şekillerde görüntülemek için Azure Monitor'daki çeşitli görselleştirmeleri açıklar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670330"
 ---
-# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularından grafikler ve diyagramlar oluşturma
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Monitor günlük sorgularından grafikler ve diyagramlar oluşturma
 
 > [!NOTE]
-> Bu dersi tamamlamadan önce [Azure izleyici günlük sorgularında gelişmiş toplamaları](advanced-aggregations.md) tamamlamanız gerekir.
+> Bu dersi tamamlamadan önce [Azure Monitor günlük sorgularında Gelişmiş toplamaları](advanced-aggregations.md) tamamlamanız gerekir.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Bu makalede, Azure Izleyici 'de günlük verilerinizi farklı yollarla görüntülemek için çeşitli görselleştirmeler açıklanmaktadır.
+Bu makalede, günlük verilerinizi farklı şekillerde görüntülemek için Azure Monitor'daki çeşitli görselleştirmeler açıklanmaktadır.
 
 ## <a name="charting-the-results"></a>Sonuçları grafikleme
-Son bir saat içinde işletim sistemi başına kaç bilgisayar olduğunu inceleyerek başlayın:
+Son bir saat içinde işletim sistemi başına kaç bilgisayar olduğunu gözden geçirerek başlayın:
 
 ```Kusto
 Heartbeat
@@ -35,13 +35,13 @@ Varsayılan olarak, sonuçlar tablo olarak görüntülenir:
 
 ![Tablo](media/charts/table-display.png)
 
-Daha iyi bir görünüm elde etmek için **grafik**' i seçin ve sonuçları görselleştirmek için **pasta** seçeneğini belirleyin:
+Daha iyi bir görünüm elde etmek için **Grafik'i**seçin ve sonuçları görselleştirmek için **Pasta** seçeneğini seçin:
 
-![Pasta grafik](media/charts/charts-and-diagrams-pie.png)
+![Pasta grafiği](media/charts/charts-and-diagrams-pie.png)
 
 
-## <a name="timecharts"></a>Timegrafiklerim
-1 saatlik depo gözlerinde ortalama, 50. ve 6. yüzdebirlik değeri için işlemci zamanı gösterir. Sorgu birden çok seri oluşturur ve ardından zaman grafiğinde hangi serinin gösterileceğini seçebilirsiniz:
+## <a name="timecharts"></a>Zaman çizelgeleri
+İşlemci saatinin ortalama, 50 ve 95'inci yüzdelik dilimini 1 saatlik kutularda gösterin. Sorgu birden çok seri oluşturur ve daha sonra zaman grafiğinde hangi diziyi gösterebileceğinizi seçebilirsiniz:
 
 ```Kusto
 Perf
@@ -50,13 +50,13 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-**Çizgi** grafik görüntüleme seçeneğini belirleyin:
+**Çizgi** grafik görüntüleme seçeneğini seçin:
 
 ![Çizgi grafik](media/charts/charts-and-diagrams-multiSeries.png)
 
-### <a name="reference-line"></a>Başvuru çizgisi
+### <a name="reference-line"></a>Referans satırı
 
-Başvuru satırı, ölçümün belirli bir eşiği aşmadığını kolayca belirlemenize yardımcı olabilir. Grafiğe satır eklemek için, veri kümesini sabit bir sütun ile genişletin:
+Referans satırı, metrik belirli bir eşiği aşarsa kolayca belirlemenize yardımcı olabilir. Grafiğe satır eklemek için, veri kümesini sabit bir sütunla genişletin:
 
 ```Kusto
 Perf
@@ -66,10 +66,10 @@ Perf
 | extend Threshold = 20
 ```
 
-![Başvuru çizgisi](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
+![Referans satırı](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Birden çok boyut
-`summarize` `by` yan tümcesindeki birden çok ifade, her değer birleşimi için bir tane olmak üzere sonuçlarda birden çok satır oluşturur.
+Sonuçlarda birden `by` çok `summarize` satır oluşturma yan tümcesindeki birden çok ifade, her değer birleşimi için bir tane.
 
 ```Kusto
 SecurityEvent
@@ -77,16 +77,16 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Sonuçları bir grafik olarak görüntülediğinizde, `by` yan tümcesindeki ilk sütunu kullanır. Aşağıdaki örnek, _EventID_ kullanılarak yığılmış bir sütun grafiği gösterir. Boyutların `string` türünde olması gerekir, bu nedenle bu örnekte _EventID_ dizeye dönüştürüldü. 
+Sonuçları bir grafik olarak gördüğünüzde, yan tümcedeki ilk sütunu `by` kullanır. Aşağıdaki _örnekte, EventID'yi_ kullanarak yığılmış bir sütun grafiği gösterilmektedir. Boyutlar türde `string` olmalıdır, bu nedenle bu örnekte _EventID_ dize için döküm ediliyor. 
 
-![Çubuk grafik olay kimliği](media/charts/charts-and-diagrams-multiDimension1.png)
+![Çubuk grafik EventID](media/charts/charts-and-diagrams-multiDimension1.png)
 
-Sütun adıyla açılan menüyü seçerek arasında geçiş yapabilirsiniz. 
+Sütun adı ile açılır bırakma seçerek arasında geçiş yapabilirsiniz. 
 
 ![Çubuk grafik AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Izleyici günlük verileriyle [kusto sorgu dilini](/azure/kusto/query/) kullanmaya yönelik diğer derslere bakın:
+Azure Monitor günlük verileriyle [Kusto sorgu dilini](/azure/kusto/query/) kullanmak için diğer derslere bakın:
 
 - [Dize işlemleri](string-operations.md)
 - [Tarih ve saat işlemleri](datetime-operations.md)
@@ -94,4 +94,4 @@ Azure Izleyici günlük verileriyle [kusto sorgu dilini](/azure/kusto/query/) ku
 - [Gelişmiş toplamalar](advanced-aggregations.md)
 - [JSON ve veri yapıları](json-data-structures.md)
 - [Gelişmiş sorgu yazma](advanced-query-writing.md)
-- [Birleştirmeler](joins.md)
+- [Birleştirme](joins.md)

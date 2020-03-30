@@ -1,7 +1,7 @@
 ---
-title: Azure sanal ağ NAT bağlantısı sorunlarını giderme
+title: Azure Sanal Ağ NAT bağlantısıyla sorun giderme
 titleSuffix: Azure Virtual Network
-description: Sanal ağ NAT ile ilgili sorunları giderin.
+description: Sanal Ağ NAT ile sorunları giderin.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,161 +12,170 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79202170"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408493"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Sanal Ağ NAT bağlantısıyla sorun giderme
 
-Bu makale, yöneticilerin sanal ağ NAT kullanırken bağlantı sorunlarını tanılayıp çözümlemesine yardımcı olur.
+Bu makale, yöneticilerin Sanal Ağ NAT'ı kullanırken bağlantı sorunlarını tanılamanıza ve çözmenize yardımcı olur.
 
-## <a name="problems"></a>Sorunlar
+## <a name="problems"></a>Sorun
 
 * [SNAT tükenmesi](#snat-exhaustion)
-* [ICMP ping işlemi başarısız oluyor](#icmp-ping-is-failing)
-* [Bağlantı sorunları](#connectivity-failures)
-* [IPv6 birlikte bulunma](#ipv6-coexistence)
+* [ICMP ping başarısız oluyor](#icmp-ping-is-failing)
+* [Bağlantı hataları](#connectivity-failures)
+* [IPv6 birlikte yaşama](#ipv6-coexistence)
 
-Bu sorunları çözmek için aşağıdaki bölümdeki adımları izleyin.
+Bu sorunları gidermek için aşağıdaki bölümdeki adımları izleyin.
 
 ## <a name="resolution"></a>Çözüm
 
 ### <a name="snat-exhaustion"></a>SNAT tükenmesi
 
-Tek bir [NAT ağ geçidi kaynağı](nat-gateway-resource.md) 64.000 ' den 1.000.000 ' e kadar eşzamanlı akışı destekler.  Her IP adresi, kullanılabilir stoğa 64.000 SNAT bağlantı noktası sağlar. Her NAT ağ geçidi kaynağı için en fazla 16 IP adresi kullanabilirsiniz.  SNAT mekanizması daha ayrıntılı olarak [açıklanmıştır.](nat-gateway-resource.md#source-network-address-translation)
+Tek bir [NAT ağ geçidi kaynağı](nat-gateway-resource.md) 64.000'den 1 milyon eşzamanlı akışı destekler.  Her IP adresi, mevcut envantere 64.000 SNAT bağlantı noktası sağlar. NAT ağ geçidi kaynağı başına en fazla 16 IP adresi kullanabilirsiniz.  SNAT mekanizması [burada](nat-gateway-resource.md#source-network-address-translation) daha ayrıntılı olarak açıklanmıştır.
 
-SNAT tükenmesi 'nın temel nedenlerinden biri, giden bağlantının kurulma ve yönetilme şekli için bir kenar modeldir.  Bu bölümü dikkatli bir şekilde inceleyin.
+Sık sık SNAT tükenmesinin temel nedeni, giden bağlantının nasıl kurulduğu ve yönetildiğine ilişkin bir anti-desendir.  Bu bölümü dikkatli bir şekilde inceleyin.
 
 #### <a name="steps"></a>Adımlar
 
-1. Uygulamanızın giden bağlantı oluşturma şeklini araştırın (örneğin, kod incelemesi veya paket yakalama). 
-2. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın hatalı çalışıp çalışmadığını belirleme.  Bulgularınızı eklemek için Azure Izleyici 'de [ölçümleri](nat-metrics.md) kullanın. SNAT bağlantıları ölçümü için "başarısız" kategorisini kullanın.
-3. Uygun desenlerin izlendikten sonra değerlendirin.
-4. SNAT bağlantı noktası tükenmesi 'nin NAT ağ geçidi kaynağına atanan ek IP adresleriyle azaltılıp azaltılmasının gerekip gerekmediğini değerlendirin.
+1. Uygulamanızın giden bağlantı yı nasıl oluşturduğunu (örneğin, kod incelemesi veya paket yakalama) araştırın. 
+2. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın kötü davranış tanınıp davranmadığını belirleyin.  Bulgularınızı doğrulamak için Azure Monitor'daki [ölçümleri](nat-metrics.md) kullanın. SNAT Connections ölçümü için "Başarısız" kategorilerini kullanın.
+3. Uygun desenlerin izilip uyulmamasa değerlendirin.
+4. SNAT bağlantı noktası tükenmesi NAT ağ geçidi kaynağına atanan ek IP adresleri ile azaltılmalıdır değerlendirin.
 
 #### <a name="design-patterns"></a>Tasarım desenleri
 
-Mümkün olduğunda her zaman bağlantı yeniden kullanımı ve bağlantı havuzlarından yararlanın.  Bu desenler, kaynak tükenmesi sorunlarından kaçınır ve öngörülebilir davranışa neden olur. Bu desenlerin temelleri birçok geliştirme kitaplığı ve çerçeve içinde bulunabilir.
+Her zaman mümkün olduğunca bağlantı yeniden kullanımı ve bağlantı havuzu avantajlarından yararlanın.  Bu desenler kaynak tükenmesi sorunlarını önler ve öngörülebilir davranışlara neden olur. Bu desenler için ilkel birçok geliştirme kütüphaneleri ve çerçeveleri bulunabilir.
 
-_**Çözüm:**_ Uygun desenleri kullan
+_**Çözüm:**_ Uygun desenleri ve en iyi uygulamaları kullanma
 
-- Diğer işlemlere yönelik bağlantı kaynaklarını boşaltmak için uzun süre çalışan işlemler için [zaman uyumsuz yoklama düzenlerini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) düşünün.
-- Uzun süreli akışlar (örneğin, yeniden kullanılan TCP bağlantıları), ara sistemlerin zaman aşımına uğramaması için TCP keepcanlı veya uygulama katmanı keepcanlı olarak kullanılmalıdır.
-- Geçici hata veya hata kurtarma sırasında agresif yeniden denemeler/bursts önlemek için düzgün [yeniden deneme desenleri](https://docs.microsoft.com/azure/architecture/patterns/retry) kullanılmalıdır.
-Her HTTP işlemi için yeni TCP bağlantısı oluşturma ("atomik bağlantılar" olarak da bilinir), bir anti-örünmedir.  Atomik bağlantılar, uygulamanızın iyi ve çöp kaynaklarını ölçeklendirmasını engeller.  Her zaman ardışık düzen birden çok işlem aynı bağlantıya sahiptir.  Uygulamanız işlem hızı ve kaynak maliyetlerinde yarar olacaktır.  Uygulamanız aktarım katmanı şifrelemesini (örneğin, TLS) kullandığında, yeni bağlantıların işlenmesiyle ilişkili önemli bir maliyet vardır.  Ek en iyi yöntem desenleri için [Azure bulut tasarım modellerini](https://docs.microsoft.com/azure/architecture/patterns/) gözden geçirin.
+- Atomik istekler (bağlantı başına bir istek) kötü bir tasarım seçimidir. Bu tür anti-desen ölçek sınırlar, performansı azaltır ve güvenilirliği azaltır. Bunun yerine, bağlantı ve ilişkili SNAT bağlantı noktalarının sayısını azaltmak için HTTP/S bağlantılarını yeniden kullanın. TLS kullanırken düşük el sıkışma, genel merkez ve kriptografik işlem maliyeti nedeniyle uygulama ölçeği artacak ve performans artacaktır.
+- DNS, istemci DNS çözümleyicileri sonucunu önbelleğe almadığında, birim olarak birçok ayrı akış sağlayabilir. Önbelleğe alma kullanın.
+- UDP akışları (örneğin DNS aramaları) SNAT bağlantı noktalarını boşta zaman aşımı süresince ayırır. Boşta zaman aşımı ne kadar uzun sayılsa, SNAT bağlantı noktaları üzerindeki basınç da o kadar yüksek olur. Kısa boşta zaman alakart kullanın (örneğin 4 dakika).
+- Bağlantı hacminizi şekillendirmek için bağlantı havuzlarını kullanın.
+- TCP akışını asla sessizce terk etmeyin ve akışı temizlemek için TCP zamanlayıcılarına güvenin. Bu, ara sistemlere ve uç noktalara ayrılan durumu bırakır ve bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirecektir. Bu uygulama hataları ve SNAT yorgunluğu tetikleyebilir. 
+- TCP yakın ilgili zamanlayıcı değerleri etki uzman bilgisi olmadan değiştirilmemelidir. TCP toparlanacak olsa da, bir bağlantının bitiş noktaları beklentileri uyuşmadığında uygulama performansınız olumsuz etkilenebilir. Zamanlayıcıları değiştirme isteği genellikle altta yatan bir tasarım sorununun işaretidir. Aşağıdaki önerileri gözden geçirin.
 
-#### <a name="possible-mitigations"></a>Olası azaltmalar
+Çoğu kez SNAT tükenmesi de altta yatan uygulamada diğer anti-desenler ile güçlendirilmiş olabilir. Hizmetinizin ölçeğini ve güvenilirliğini geliştirmek için bu ek desenleri ve en iyi uygulamaları gözden geçirin.
 
-_**Çözüm:**_ Giden bağlantıyı aşağıdaki şekilde ölçeklendirin:
+- Diğer işlemler için bağlantı kaynaklarını serbest hale getirmek için uzun süren işlemler için [eşzamanlı yoklama desenleri](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) düşünün.
+- Uzun ömürlü akışlar (örneğin yeniden kullanılan TCP bağlantıları) ara sistemlerin zamanlamasını önlemek için TCP keepalives veya uygulama katmanı keepalives kullanmalıdır. Boşta kalma süresini artırmak son çaredir ve temel nedeni çözmeyebilir. Uzun bir zaman aşımı, zaman aşımı sona erdiğinde düşük oranlı hatalara neden olabilir ve gecikme ve gereksiz hatalara neden olabilir.
+- Geçici hata veya hata kurtarma sırasında agresif yeniden deneme/patlamaları önlemek için zarif [yeniden deneme desenleri](https://docs.microsoft.com/azure/architecture/patterns/retry) kullanılmalıdır.
+Her HTTP işlemi için yeni bir TCP bağlantısı oluşturmak ("atomik bağlantılar" olarak da bilinir) bir anti-desendir.  Atomik bağlantılar, uygulamanızın iyi ölçeklemesini ve kaynakları boşa harcamasını önleyecektir.  Her zaman aynı bağlantıya birden fazla işlem boru hattı.  Uygulamanız işlem hızı ve kaynak maliyetlerinden yararlanacaktır.  Uygulamanız aktarım katmanı şifrelemesi (örneğin TLS) kullandığında, yeni bağlantıların işlenmesiyle ilişkili önemli bir maliyet vardır.  Ek en iyi uygulama [desenleri](https://docs.microsoft.com/azure/architecture/patterns/) için Azure Bulut Tasarım Desenleri'ni gözden geçirin.
 
-| Senaryo | Elde |Risk azaltma |
+#### <a name="additional-possible-mitigations"></a>Ek olası azaltıcı etkenler
+
+_**Çözüm:**_ Giden bağlantıyı aşağıdaki gibi ölçeklendirin:
+
+| Senaryo | Kanıt |Risk azaltma |
 |---|---|---|
-| SNAT bağlantı noktaları ve SNAT bağlantı noktası tükenmesi için yüksek kullanım dönemlerinde çekişme yaşıyor olursunuz. | Azure Izleyici 'de SNAT bağlantıları [ölçümü](nat-metrics.md) için "başarısız" kategorisi, zaman ve yüksek bağlantı hacminde geçici veya kalıcı sorunları gösterir.  | Ek genel IP adresi kaynakları veya genel IP öneki kaynakları ekleyip ekleyemediğine göre belirlenir. Bu ekleme, NAT ağ geçidiniz için toplamda en fazla 16 IP adresi sağlar. Bu ek, kullanılabilir SNAT bağlantı noktaları (IP adresi başına 64.000) için daha fazla envanter sağlar ve senaryonuzu daha da ölçeklendirmenize olanak tanır.|
-| Zaten 16 IP adresi vermiş ve hala SNAT bağlantı noktası tükenmesi yaşıyor. | Ek IP adresi ekleme girişimi başarısız olur. Genel IP adresi kaynaklarından veya genel IP öneki kaynaklarından alınan toplam IP adresi sayısı toplam 16 değerini aşıyor. | Uygulama ortamınızı birden çok alt ağ arasında dağıtın ve her alt ağ için bir NAT ağ geçidi kaynağı sağlayın.  Önceki [kılavuza](#design-patterns)göre iyileştirmek için tasarım modellerinizi yeniden değerlendirin. |
+| Yüksek kullanım dönemlerinde SNAT bağlantı noktaları ve SNAT bağlantı noktası tükenmesi için çekişme yaşıyorsunuz. | Azure Monitor'da SNAT Connections [ölçümü](nat-metrics.md) için "başarısız" kategorisi, zaman ve yüksek bağlantı hacminde geçici veya kalıcı hatalar gösterir.  | Ek genel IP adresi kaynakları veya genel IP öneki kaynakları ekleyip ekleyebileceğinizi belirleyin. Bu ek, NAT ağ geçidinize toplam 16 IP adresine kadar izin verir. Bu ek, kullanılabilir SNAT bağlantı noktaları için daha fazla stok sağlar (IP adresi başına 64.000) ve senaryonuzu daha da ölçeklendirmenize olanak sağlar.|
+| Zaten 16 IP adresi verdiniz ve hala SNAT bağlantı noktası tükenmesi yaşıyorsunuz. | Ek IP adresi ekleme girişimi başarısız olur. Ortak IP adresi kaynaklarından veya genel IP öneki kaynaklarından toplam IP adresi sayısı toplam 16'yı aşıyor. | Uygulama ortamınızı birden çok alt ağ arasında dağıtın ve her alt ağ için bir NAT ağ geçidi kaynağı sağlayın.  Önceki [kılavuza](#design-patterns)göre en iyi duruma getirmek için tasarım deseni(ler)'i yeniden değerlendirin. |
 
 >[!NOTE]
->SNAT tükenmesinin neden oluştuğunu anlamak önemlidir. Ölçeklenebilir ve güvenilir senaryolar için doğru desenleri kullandığınızdan emin olun.  İstek nedenini bilmeden bir senaryoya daha fazla SNAT bağlantı noktası eklenmesi, son çare olmalıdır. Senaryolarınızın SNAT bağlantı noktası envanterine neden olduğunu anladıysanız daha fazla IP adresi ekleyerek stoğa daha fazla SNAT bağlantı noktası eklenmesi, uygulamanız ölçeklenirken yalnızca aynı tükenme başarısızlığını geciktirecek.  Diğer verimsizlikleri ve anti-desenlerinde maskeleme yapabilirsiniz.
+>SNAT yorgunluğunun neden oluştuğunu anlamak önemlidir. Ölçeklenebilir ve güvenilir senaryolar için doğru desenleri kullandığınızdan emin olun.  Talebin nedenini anlamadan bir senaryoya daha fazla SNAT bağlantı noktası eklemek son çare olmalıdır. Senaryonuzun Neden SNAT bağlantı noktası envanteri üzerinde baskı uyguladığını anlamıyorsanız, daha fazla IP adresi ekleyerek envantere daha fazla SNAT bağlantı noktası eklemek yalnızca uygulamanız ölçeklendirilirken aynı tükenme hatasını geciktirir.  Diğer verimsizlikleri ve anti-desenleri gontluyor olabilirsiniz.
 
-### <a name="icmp-ping-is-failing"></a>ICMP ping işlemi başarısız oluyor
+### <a name="icmp-ping-is-failing"></a>ICMP ping başarısız oluyor
 
-[Sanal ağ NAT](nat-overview.md) , IPv4 UDP ve TCP protokollerini destekler. ICMP desteklenmez ve başarısız olması beklenir.  
+[Sanal Ağ NAT,](nat-overview.md) IPv4 UDP ve TCP protokollerini destekler. ICMP desteklenmez ve başarısız olması beklenir.  
 
-_**Çözüm:**_ Bunun yerine, uçtan uca bağlantıyı doğrulamak için TCP bağlantı testlerini (örneğin, "TCP ping") ve UDP 'ye özgü uygulama katmanı testlerini kullanın.
+_**Çözüm:**_ Bunun yerine, uçuç bağlantısını doğrulamak için TCP bağlantı testlerini (örneğin "TCP ping") ve UDP'ye özgü uygulama katmanı testlerini kullanın.
 
-Aşağıdaki tabloda, testleri başlatmak için kullanılacak araçlar için bir başlangıç noktası kullanılabilir.
+Aşağıdaki tablo, testleri başlatmak için hangi araçların kullanılacağı bir başlangıç noktası olarak kullanılabilir.
 
-| İşletim sistemi | Genel TCP bağlantısı sınaması | TCP uygulama katmanı testi | UDP |
+| İşletim sistemi | Genel TCP bağlantı testi | TCP uygulama katmanı testi | UDP |
 |---|---|---|---|
-| Linux | NC (genel bağlantı testi) | kıvrımlı (TCP uygulama katmanı testi) | uygulamaya özgü |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
+| Linux | nc (genel bağlantı testi) | curl (TCP uygulama katmanı testi) | uygulamaya özgü |
+| Windows | [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
 
-### <a name="connectivity-failures"></a>Bağlantı sorunları
+### <a name="connectivity-failures"></a>Bağlantı hataları
 
-[Sanal ağ NAT](nat-overview.md) ile bağlantı sorunları çeşitli farklı sorunlardan kaynaklanıyor olabilir:
+Virtual Network [NAT](nat-overview.md) ile bağlantı sorunları birkaç farklı sorunlardan kaynaklanabilir:
 
-* NAT ağ geçidinin geçici veya kalıcı [SNAT tükenmesi](#snat-exhaustion) ,
-* Azure altyapısında geçici başarısızlıklar, 
-* Azure ile genel Internet hedefi arasındaki yoldaki geçici sorunlar 
-* genel Internet hedefindeki geçici veya kalıcı arızalar.
+* NAT ağ geçidinin geçici veya kalıcı [SNAT](#snat-exhaustion) tükenmesi,
+* Azure altyapısındaki geçici hatalar, 
+* Azure ile ortak Internet hedefi arasındaki yolda geçici hatalar, 
+* genel Internet hedefgeçici veya kalıcı hatalar.
 
-Doğrulama bağlantısı için aşağıdaki gibi araçları kullanın. [ICMP pingi desteklenmez](#icmp-ping-is-failing).
+Doğrulama bağlantısı için aşağıdaki gibi araçları kullanın. [ICMP ping desteklenmiyor.](#icmp-ping-is-failing)
 
-| İşletim sistemi | Genel TCP bağlantısı sınaması | TCP uygulama katmanı testi | UDP |
+| İşletim sistemi | Genel TCP bağlantı testi | TCP uygulama katmanı testi | UDP |
 |---|---|---|---|
-| Linux | NC (genel bağlantı testi) | kıvrımlı (TCP uygulama katmanı testi) | uygulamaya özgü |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
+| Linux | nc (genel bağlantı testi) | curl (TCP uygulama katmanı testi) | uygulamaya özgü |
+| Windows | [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
 
 #### <a name="snat-exhaustion"></a>SNAT tükenmesi
 
-Bu makaledeki [SNAT tükenmesi](#snat-exhaustion) bölümüne bakın.
+Bu makalede [SNAT yorgunluk](#snat-exhaustion) inceleme bölümü.
 
 #### <a name="azure-infrastructure"></a>Azure altyapısı
 
-Azure, altyapısını büyük önem taşıyan şekilde izler ve çalışır. Geçici sorunlar ortaya çıkabilir, iletimlerin kayıpsız olduğunun garantisi yoktur.  TCP uygulamaları için SYN yeniden iletimlerine izin veren tasarım düzenlerini kullanın. Bir kayıp SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden aktarım için yeterince büyük olan bağlantı zaman aşımlarını kullanın.
+Azure, altyapısını büyük bir özenle izler ve çalışır. Geçici arızalar oluşabilir, iletimlerin kayıpsız olduğunun garantisi yoktur.  TCP uygulamaları için SYN yeniden iletimine izin veren tasarım desenleri kullanın. Kayıp bir SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden iletimine izin verecek kadar büyük bağlantı zaman zaman larını kullanın.
 
-_**Çözümden**_
+_**Çözüm:**_
 
-* [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin.
-* SYN yeniden aktarım davranışını denetleyen bir TCP yığınındaki yapılandırma parametresi RTO ([yeniden Iletim zaman aşımı](https://tools.ietf.org/html/rfc793)) olarak adlandırılır. RTO değeri ayarlanabilir ancak varsayılan olarak üstel geri ile 1 saniye veya daha yüksektir.  Uygulamanızın bağlantı zaman aşımı çok kısaysa (örneğin 1 saniye), tek biçimli bağlantı zaman aşımları görebilirsiniz.  Uygulama bağlantısı zaman aşımını artırın.
-* Daha uzun bir süre gözlemlerseniz, varsayılan uygulama davranışlarıyla birlikte beklenmeyen zaman aşımları varsa, daha fazla sorun giderme için bir destek
+* [SNAT yorgunluk](#snat-exhaustion)için kontrol edin.
+* SYN yeniden iletim davranışını kontrol eden bir TCP yığınındaki yapılandırma parametresine RTO[(Yeniden iletim Zaman Dışarısı)](https://tools.ietf.org/html/rfc793)denir. RTO değeri ayarlanabilir, ancak genellikle 1 saniye veya daha yüksek varsayılan olarak üstel geri tepme ile.  Uygulamanızın bağlantı zaman ayarı çok kısaysa (örneğin 1 saniye), düzensiz bağlantı zaman zaman ları görebilirsiniz.  Uygulama bağlantısı zaman dışarısını artırın.
+* Varsayılan uygulama davranışlarıyla daha uzun, beklenmeyen zaman aşımı gözlemlerseniz, daha fazla sorun giderme için bir destek örneği açın.
 
-TCP bağlantı zaman aşımını azaltma veya RTO parametresini ayarlama yapay önerilmez.
+TCP bağlantı zaman süresini yapay olarak azaltmanızı veya RTO parametresini aparatlamanızı önermiyoruz.
 
-#### <a name="public-internet-transit"></a>genel Internet geçişi
+#### <a name="public-internet-transit"></a>Toplu İnternet geçişi
 
-Geçici hataların olasılığı, hedef ve daha fazla ara sistemlere daha uzun bir yol ile artar. Geçici hataların, [Azure altyapısına](#azure-infrastructure)göre sıklığın artmasına yönelik olması beklenmektedir. 
+Hedefe giden daha uzun bir yol ve daha fazla ara sistem le geçici hata olasılığı artar. Geçici hataların [Azure altyapısı](#azure-infrastructure)üzerinde sıklığının artması beklenmektedir. 
 
-Yukarıdaki [Azure altyapısı](#azure-infrastructure) bölümüyle aynı yönergeleri izleyin.
+Önceki [Azure altyapısı](#azure-infrastructure) bölümüyle aynı kılavuzu izleyin.
 
-#### <a name="internet-endpoint"></a>Internet uç noktası
+#### <a name="internet-endpoint"></a>Internet bitiş noktası
 
-Önceki bölümler, iletişimin kurulduğu Internet uç noktasıyla birlikte geçerlidir. Bağlantı başarısını etkileyebilecek diğer faktörler şunlardır:
+Önceki bölümler, iletişimin kurulduğu Internet bitiş noktasıyla birlikte geçerlidir. Bağlantı başarısını etkilenebilen diğer faktörler şunlardır:
 
-* hedef tarafta trafik yönetimi, örneğin
-- Hedef tarafı tarafından uygulanan API hız sınırlaması
-- Volumetric DDoS azaltmaları veya Aktarım katmanı trafiği şekillendirme
-* güvenlik duvarı veya hedefteki diğer bileşenler 
+* dahil olmak üzere hedef tarafında trafik yönetimi,
+- Hedef tarafın uyguladığı API oranı sınırlayıcı
+- Hacimsel DDoS azaltımları veya taşıma katmanı trafiği şekillendirme
+* varış yerinde güvenlik duvarı veya diğer bileşenler 
 
-Genellikle kaynak üzerinde paket yakalar ve hedefin ne olduğunu belirlemek için hedef (varsa) gereklidir.
+Genellikle paket yakalamalar kaynak ve hedef (varsa) ne yer alıyor belirlemek için gereklidir.
 
-_**Çözümden**_
+_**Çözüm:**_
 
-* [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin. 
-* Aynı bölgedeki bir uç nokta ile veya başka bir yerde karşılaştırma için bağlantıyı doğrulayın.  
-* Yüksek hacimli veya işlem oranı testi oluşturuyorsanız, oranın azaltılmasının, hataların oluşma riskini azalttığını araştırın.
-* Değiştirme oranı başarısızlık oranını etkilerken, API Hız sınırlarına veya hedef taraftaki diğer kısıtlamalara ulaşılmadığını denetleyin.
-* Araştırmanızın giderilmesi sonuçlandırıldıysanız, daha fazla sorun giderme için bir destek talebi açın.
+* [SNAT yorgunluk](#snat-exhaustion)için kontrol edin. 
+* Karşılaştırma için aynı bölgedeki veya başka bir yerde bir bitiş noktasına bağlantı doğrulayın.  
+* Yüksek hacimli veya işlem hızı testi oluşturuyorsanız, oranı azaltmanın hata oluşumunu azaltıp azaltmadığınızı keşfedin.
+* Oran değiştirme hata oranını etkiliyorsa, API oranı sınırlarına veya hedef taraftaki diğer kısıtlamalara ulaşılıp ulaşılamaydığını kontrol edin.
+* Soruşturmanız sonuçsuz kaldıysa, daha fazla sorun giderme için bir destek örneği açın.
 
-#### <a name="tcp-resets-received"></a>TCP sıfırlama alındı
+#### <a name="tcp-resets-received"></a>TCP Sıfırlamaları alındı
 
-NAT ağ geçidi, devam ediyor olarak tanınmayan trafik için kaynak VM 'de TCP sıfırlamaları üretir.
+NAT ağ geçidi, devam eden olarak tanınmayan trafik için kaynak VM'de TCP sıfırlamaları oluşturur.
 
-Olası bir nedenden dolayı TCP bağlantısının boşta kalma süresi doldu.  Boşta kalma zaman aşımını 4 dakika ila 120 dakikaya kadar ayarlayabilirsiniz.
+Olası nedenlerden biri, TCP bağlantısının zamansız zamanlanmış olmasıdır.  Boşta kalma süresini 4 dakikadan 120 dakikaya kadar ayarlayabilirsiniz.
 
-TCP sıfırlama, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmaz. Hedef taraftaki TCP sıfırlamaları, NAT ağ geçidi kaynağı değil kaynak VM tarafından oluşturulur.
+TCP Sıfırlamaları, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmadı. Hedef tarafındaki TCP sıfırlamaları NAT ağ geçidi kaynağı tarafından değil, kaynak VM tarafından oluşturulur.
 
-_**Çözümden**_
+_**Çözüm:**_
 
-* [Tasarım desenleri](#design-patterns) önerilerini gözden geçirin.  
-* Gerekirse daha fazla sorun giderme için bir destek talebi açın.
+* Tasarım desen önerilerini gözden [geçirin.](#design-patterns)  
+* Gerekirse daha fazla sorun giderme için bir destek örneği açın.
 
-### <a name="ipv6-coexistence"></a>IPv6 birlikte bulunma
+### <a name="ipv6-coexistence"></a>IPv6 birlikte yaşama
 
-[Sanal ağ NAT](nat-overview.md) , IPv4 UDP ve TCP protokollerini destekler ve [IPv6 ön ekine sahip bir alt ağda dağıtım desteklenmez](nat-overview.md#limitations).
+[Sanal Ağ NAT](nat-overview.md) IPv4 UDP ve TCP protokolleri destekler ve [bir IPv6 öneki ile](nat-overview.md#limitations)bir alt net üzerinde dağıtım desteklenmez.
 
-_**Çözüm:**_ NAT ağ geçidini IPv6 öneki olmayan bir alt ağda dağıtın.
+_**Çözüm:**_ IPv6 öneki olmayan bir alt net üzerinde NAT ağ geçidi dağıtın.
 
-[Sanal ağ NAT UserVoice](https://aka.ms/natuservoice)aracılığıyla ek özelliklerde ilgi gösterebilirsiniz.
+[Sanal Ağ NAT UserVoice](https://aka.ms/natuservoice)üzerinden ek özellikler ilgi gösterebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sanal ağ NAT](nat-overview.md) hakkında bilgi edinin
-* [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
+* Sanal [Ağ NAT](nat-overview.md) hakkında bilgi edinin
+* [NAT ağ geçidi kaynağı](nat-gateway-resource.md) ab Fry öğrenin
 * [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
-* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+* [UserVoice Sanal Ağ NAT için sonraki oluşturmak için ne söyle.](https://aka.ms/natuservoice)
 

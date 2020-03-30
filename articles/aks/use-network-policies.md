@@ -1,88 +1,88 @@
 ---
-title: Azure Kubernetes Service (aks) ile ağ ilkeleriyle güvenli Pod
-description: Azure Kubernetes Service 'te (AKS) Kubernetes ağ ilkelerini kullanarak, düğüm içinde ve dışında akan trafiği güvenli hale getirme hakkında bilgi edinin
+title: Azure Kubernetes Hizmeti'nde (AKS) ağ ilkeleriyle güvenli bölmeler
+description: Azure Kubernetes Hizmeti'nde (AKS) Kubernetes ağ ilkelerini kullanarak bölmelere girip çıkan trafiği nasıl güvenli hale erdireceklerini öğrenin
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473617"
 ---
-# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içindeki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) ağ ilkelerini kullanarak bölmeler arasındaki trafiği güvenli hale
 
-Kubernetes 'te modern, mikro hizmet tabanlı uygulamalar çalıştırdığınızda, genellikle hangi bileşenlerin birbirleriyle iletişim kurabildiğini denetlemek istersiniz. En az ayrıcalık ilkesi, trafiğin bir Azure Kubernetes hizmeti (aks) kümesindeki Pod arasında nasıl akatuladığının uygulanması gerekir. Büyük olasılıkla trafiği doğrudan arka uç uygulamalarına engellemek istediğinizi varsayalım. Kubernetes içindeki *ağ ilkesi* özelliği, bir kümedeki düğüm 'ler arasındaki giriş ve çıkış trafiği için kurallar tanımlamanızı sağlar.
+Kubernetes'te modern, mikro hizmet tabanlı uygulamalar çalıştırdığınızda, genellikle hangi bileşenlerin birbiriyle iletişim kurabileceğini denetlemek istersiniz. En az ayrıcalık ilkesi, bir Azure Kubernetes Hizmeti (AKS) kümesindeki bölmeler arasında trafiğin nasıl aksabildiği konusunda uygulanmalıdır. Trafiği doğrudan arka uç uygulamalara engellemek istediğinizi varsayalım. Kubernetes'teki *Ağ İlkesi* özelliği, kümedeki bölmeler arasındaki giriş ve çıkış trafiği için kuralları tanımlamanıza olanak tanır.
 
-Bu makalede ağ ilkesi altyapısının nasıl yükleneceği ve Kubernetes ağ ilkelerinin nasıl oluşturulduğu gösterilir ve aks 'deki Pod 'ler arasındaki trafik akışını denetleyebilirsiniz Ağ ilkesi yalnızca, AKS 'deki Linux tabanlı düğümler ve düğüm 'ler için kullanılmalıdır.
+Bu makalede, aks bölmeleri arasındaki trafik akışını denetlemek için ağ ilkesi altyapısı yüklemek ve Kubernetes ağ ilkeleri oluşturmak nasıl gösterir. Ağ ilkesi yalnızca AKS'deki Linux tabanlı düğümler ve bölmeler için kullanılmalıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLI sürümü 2.0.61 veya daha sonra yüklenmiş ve yapılandırılan gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
 
 > [!TIP]
-> Önizleme sırasında ağ ilkesi özelliğini kullandıysanız, [Yeni bir küme oluşturmanızı](#create-an-aks-cluster-and-enable-network-policy)öneririz.
+> Önizleme sırasında ağ ilkesi özelliğini kullandıysanız, [yeni bir küme oluşturmanızı](#create-an-aks-cluster-and-enable-network-policy)öneririz.
 > 
-> Önizleme sırasında ağ ilkesi kullanan varolan test kümelerini kullanmaya devam etmek istiyorsanız, kümenizi en son GA sürümü için yeni bir Kubernetes sürümüne yükseltin ve ardından, kilitlenen ölçüm sunucusunu ve Kubernetes 'i onarmak için aşağıdaki YAML bildirimini dağıtın panosunda. Bu çözüm yalnızca Calıco Ağ İlkesi altyapısını kullanan kümeler için gereklidir.
+> Önizleme sırasında ağ ilkesini kullanan varolan test kümelerini kullanmaya devam etmek istiyorsanız, kümenizi en son GA sürümü için yeni bir Kubernetes sürümlerine yükseltin ve çöken ölçüm sunucusu ve Kubernetes'i düzeltmek için aşağıdaki YAML bildirimini dağıtın Pano. Bu düzeltme yalnızca Calico ağ ilkesi altyapısını kullanan kümeler için gereklidir.
 >
-> En iyi güvenlik uygulaması olarak, AKS kümesine nelerin dağıtıldığını anlamak için [Bu YAML bildiriminin içeriğini gözden geçirin][calico-aks-cleanup] .
+> Güvenlik en iyi uygulama olarak, AKS kümesine nelerin dağıtılmış olduğunu anlamak için [bu YAML bildiriminin içeriğini gözden geçirin.][calico-aks-cleanup]
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
 ## <a name="overview-of-network-policy"></a>Ağ ilkesine genel bakış
 
-AKS kümesindeki tüm FID 'ler, varsayılan olarak kısıtlama olmadan trafik gönderebilir ve alabilir. Güvenliği artırmak için trafik akışını denetleyen kurallar tanımlayabilirsiniz. Arka uç uygulamalar genellikle yalnızca gerekli ön uç hizmetlerine sunulur, örneğin. Ya da, veritabanı bileşenlerine yalnızca bunlara bağlanan uygulama katmanları erişilebilir.
+AKS kümesindeki tüm bölmeler varsayılan olarak herhangi bir sınırlama olmaksızın trafik gönderebilir ve alabilir. Güvenliği artırmak için, trafik akışını kontrol eden kurallar tanımlayabilirsiniz. Arka uç uygulamaları genellikle yalnızca gerekli ön uç hizmetlerine maruz kalır, örneğin. Veya, veritabanı bileşenlerine yalnızca onlara bağlanan uygulama katmanları erişebilir.
 
-Ağ Ilkesi, düğüm arasındaki iletişim için erişim ilkelerini tanımlayan bir Kubernetes belirtimidir. Ağ ilkelerini kullanarak, trafiği göndermek ve almak ve bunları bir veya daha fazla etiket seçiciyle eşleşen bir pod koleksiyonuna uygulamak için sıralı bir kural kümesi tanımlarsınız.
+Ağ İlkesi, Podlar arasındaki iletişim için erişim ilkelerini tanımlayan bir Kubernetes belirtimidir. Ağ İlkeleri'ni kullanarak, trafiği göndermek ve almak için sıralı kurallar kümesini tanımlar ve bunları bir veya daha fazla etiket seçiciyle eşleşen bir bölme koleksiyonuna uygularsınız.
 
-Bu ağ ilkesi kuralları YAML bildirimleri olarak tanımlanır. Ağ ilkeleri, ayrıca bir dağıtım veya hizmet oluşturan daha geniş bir bildirimin parçası olarak dahil edilebilir.
+Bu ağ ilkesi kuralları YAML bildirimleri olarak tanımlanır. Ağ ilkeleri, dağıtım veya hizmet de oluşturan daha geniş bir bildirimin parçası olarak eklenebilir.
 
-### <a name="network-policy-options-in-aks"></a>AKS 'deki ağ ilkesi seçenekleri
+### <a name="network-policy-options-in-aks"></a>AKS'de ağ ilkesi seçenekleri
 
-Azure, ağ ilkesini uygulamak için iki yol sağlar. Bir AKS kümesi oluştururken bir ağ ilkesi seçeneği belirleyin. İlke seçeneği küme oluşturulduktan sonra değiştirilemez:
+Azure, ağ ilkesini uygulamanın iki yolunu sağlar. Bir AKS kümesi oluştururken bir ağ ilkesi seçeneği seçersiniz. İlke seçeneği küme oluşturulduktan sonra değiştirilemez:
 
-* Azure 'un *Azure ağ ilkeleri*olarak adlandırılan kendi uygulamasıdır.
-* *Calıco ağ ilkeleri*, [tigera][tigera]tarafından sağlanan açık kaynaklı ağ ve ağ güvenlik çözümüdür.
+* *Azure'un Azure Ağ İlkeleri*olarak adlandırılan kendi uygulaması.
+* *Calico Ağ Politikaları*, [Tigera][tigera]tarafından kurulan bir açık kaynak ağı ve ağ güvenliği çözümü.
 
-Her iki uygulama da belirtilen ilkeleri zorlamak için Linux *Iptables* kullanır. İlkeler izin verilen ve izin verilmeyen IP çiftleri kümesine çevrilir. Bu çiftler daha sonra IPTable filtre kuralları olarak programlanır.
+Her iki uygulama da belirtilen ilkeleri uygulamak için Linux *IPTable'ları* kullanır. İlkeler, izin verilen ve izin verilmeyen IP çiftleri kümelerine çevrilir. Bu çiftler daha sonra IPTable filtre kuralları olarak programlanır.
 
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure ile Calıco ilkeleri ve özellikleri arasındaki farklılıklar
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure ve Calico ilkeleri ile yetenekleri arasındaki farklar
 
-| Özellik                               | Azure                      | Calıco                      |
+| Özellik                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Desteklenen platformlar                      | Linux                      | Linux                       |
-| Desteklenen ağ seçenekleri             | Azure CNı                  | Azure CNı ve Kubernetes kullanan       |
-| Kubernetes belirtimiyle uyumluluk | Desteklenen tüm ilke türleri |  Desteklenen tüm ilke türleri |
-| Ek özellikler                      | None                       | Küresel ağ Ilkesi, küresel ağ kümesi ve konak uç noktasından oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri yönetmek için `calicoctl` CLı kullanma hakkında daha fazla bilgi için bkz. [calicoctl User Reference][calicoctl]. |
-| Destek                                  | Azure desteği ve mühendislik ekibi tarafından desteklenir | Calıco topluluk desteği. Ücretli ek destek hakkında daha fazla bilgi için bkz. [Proje Calıco destek seçenekleri][calico-support]. |
-| Günlüğe kaydetme                                  | Iptables 'da eklenen/silinen kurallar, */var/log/Azure-NPM.log* altındaki her konakta günlüğe kaydedilir. | Daha fazla bilgi için bkz. [Calıco bileşen günlükleri][calico-logs] |
+| Desteklenen ağ seçenekleri             | Azure CNI                  | Azure CNI ve kubenet       |
+| Kubernetes belirtimine uygunluk | Desteklenen tüm ilke türleri |  Desteklenen tüm ilke türleri |
+| Ek özellikler                      | None                       | Global Ağ İlkesi, Global Ağ Kümesi ve Ana Bilgisayar Uçnokta'ndan oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri `calicoctl` yönetmek için CLI'yi kullanma hakkında daha fazla bilgi için [kalikoktl kullanıcı başvurusuna][calicoctl]bakın. |
+| Destek                                  | Azure desteği ve Mühendislik ekibi tarafından desteklenir | Calico toplum desteği. Ek ücretli destek hakkında daha fazla bilgi için [Project Calico destek seçeneklerine][calico-support]bakın. |
+| Günlüğe Kaydetme                                  | IPTable'larda eklenen / silinen kurallar */var/log/azure-npm.log* altında her ana bilgisayarda günlüğe kaydedilir | Daha fazla bilgi için [Calico bileşen günlüklerine][calico-logs] bakın |
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS kümesi oluşturma ve ağ ilkesini etkinleştirme
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Bir AKS kümesi oluşturun ve ağ ilkesini etkinleştirin
 
-Ağ ilkelerini sürüyor olarak görmek için, trafik akışını tanımlayan bir ilkeyi oluşturalım ve genişletelim:
+Ağ ilkelerini iş başında görmek için, trafik akışını tanımlayan bir ilke oluşturup genişletelim:
 
-* Pod 'a giden tüm trafiği reddedin.
+* Pod tüm trafik inkar.
 * Pod etiketlerine göre trafiğe izin verin.
-* Ad alanına göre trafiğe izin ver.
+* Ad alanına göre trafiğe izin verin.
 
 İlk olarak, ağ ilkesini destekleyen bir AKS kümesi oluşturalım. 
 
 > [!IMPORTANT]
 >
-> Ağ İlkesi özelliği yalnızca küme oluşturulduğunda etkinleştirilebilir. Mevcut bir AKS kümesinde ağ ilkesini etkinleştiremezsiniz.
+> Ağ ilkesi özelliği yalnızca küme oluşturulduğunda etkinleştirilebilir. Varolan bir AKS kümesinde ağ ilkesini etkinleştiremezsiniz.
 
-Azure ağ Ilkesini kullanmak için [Azure CNI eklentisini][azure-cni] kullanmanız ve kendi sanal ağınızı ve alt ağlarını tanımlamanız gerekir. Gerekli alt ağ aralıklarının nasıl planlanacağı hakkında daha ayrıntılı bilgi için bkz. [Gelişmiş ağı yapılandırma][use-advanced-networking]. Calıco ağ Ilkesi, aynı Azure CNı eklentisiyle ya da Kubenet CNı eklentisiyle birlikte kullanılabilir.
+Azure Ağ İlkesi'ni kullanmak için [Azure CNI eklentisini][azure-cni] kullanmanız ve kendi sanal ağınızı ve alt ağlarınızı tanımlamanız gerekir. Gerekli alt ağ aralıklarının nasıl planlanagerektiği hakkında daha ayrıntılı bilgi için gelişmiş [ağ bağlantısını yapılandırmaya][use-advanced-networking]bakın. Calico Ağ İlkesi, aynı Azure CNI eklentisi veya Kubenet CNI eklentisi ile kullanılabilir.
 
 Aşağıdaki örnek komut dosyası:
 
 * Bir sanal ağ ve alt ağ oluşturur.
-* AKS kümesiyle kullanılmak üzere bir Azure Active Directory (Azure AD) hizmet sorumlusu oluşturur.
-* Sanal ağdaki AKS küme hizmeti sorumlusu için *katkıda bulunan* izinleri atar.
-* Tanımlı sanal ağda bir AKS kümesi oluşturur ve ağ ilkesini sunar.
-    * *Azure* ağ ilkesi seçeneği kullanılır. Bunun yerine Calıco 'yı ağ ilkesi seçeneği olarak kullanmak için `--network-policy calico` parametresini kullanın. Note: Calıco, `--network-plugin azure` ya da `--network-plugin kubenet`ile birlikte kullanılabilir.
+* AKS kümesinde kullanılmak üzere bir Azure Etkin Dizin (Azure AD) hizmet ilkesi oluşturur.
+* Sanal ağdaki AKS küme hizmeti ilkesi için *Katılımcı* İzinleri atar.
+* Tanımlanan sanal ağda bir AKS kümesi oluşturur ve ağ ilkesini sağlar.
+    * *Azure* ağ ilkesi seçeneği kullanılır. Bunun yerine Calico'yu ağ ilkesi `--network-policy calico` seçeneği olarak kullanmak için parametreyi kullanın. Not: Calico ya da `--network-plugin azure` `--network-plugin kubenet`.
 
-Kendi güvenli *sp_password*sağlayın. *RESOURCE_GROUP_NAME* ve *CLUSTER_NAME* değişkenlerini değiştirebilirsiniz:
+Kendi güvenli *SP_PASSWORD*sağlayın. *RESOURCE_GROUP_NAME* ve *CLUSTER_NAME* değişkenleri değiştirebilirsiniz:
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -135,44 +135,44 @@ az aks create \
     --network-policy azure
 ```
 
-Kümenin oluşturulması birkaç dakika sürer. Küme hazır olduğunda, [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanarak Kubernetes kümenize bağlanmak için `kubectl` yapılandırın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır:
+Kümenin oluşturulması birkaç dakika sürer. Küme hazır olduğunda, az `kubectl` [aks get-credentials][az-aks-get-credentials] komutunu kullanarak Kubernetes kümenize bağlanmak için yapılandırın. Bu komut kimlik bilgilerini karşıdan yükler ve Kubernetes CLI'yi bunları kullanacak şekilde yapılandırır:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
 ```
 
-## <a name="deny-all-inbound-traffic-to-a-pod"></a>Pod 'a gelen tüm trafiği reddetme
+## <a name="deny-all-inbound-traffic-to-a-pod"></a>Bir bölmeye gelen tüm trafiği reddetme
 
-Belirli ağ trafiğine izin vermek için kurallar tanımladıktan önce, ilk olarak tüm trafiği reddetmek için bir ağ ilkesi oluşturun. Bu ilke size yalnızca istenen trafiği beyaz listeye yüklemeye başlamak için bir başlangıç noktası sağlar. Ayrıca, ağ ilkesi uygulandığında trafiğin bırakıldığının açıkça görebilirsiniz.
+Belirli ağ trafiğine izin vermek için kurallar tanımlamadan önce, önce tüm trafiği reddetmek için bir ağ ilkesi oluşturun. Bu ilke, yalnızca istenen trafiği beyaz listeye almaya başlamak için bir başlangıç noktası sağlar. Ağ ilkesi uygulandığında trafiğin bırakıldığını da açıkça görebilirsiniz.
 
-Örnek uygulama ortamı ve trafik kuralları için öncelikle örnek pods 'yi çalıştırmak üzere *geliştirme* adlı bir ad alanı oluşturalım:
+Örnek uygulama ortamı ve trafik kuralları için, önce örnek bölmeleri çalıştırmak için *geliştirme* adlı bir ad alanı oluşturalım:
 
 ```console
 kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-NGıNX çalıştıran örnek bir arka uç Pod oluşturun. Bu arka uç Pod, örnek arka uç Web tabanlı bir uygulamanın benzetimini yapmak için kullanılabilir. Bu Pod 'ı *geliştirme* ad alanında oluşturun ve *80* numaralı bağlantı noktasını Web trafiğini sunacak şekilde açın. Bir sonraki bölümde bir ağ ilkesiyle hedeflemenize olanak sağlamak için pod *öğesini App = WebApp, role = arka uç* ile etiketleyin:
+NGINX çalıştıran bir örnek arka uç pod oluşturun. Bu arka uç bölmesi, örnek bir arka uç web tabanlı uygulamayı simüle etmek için kullanılabilir. *Geliştirme* ad alanında bu bölmeyi oluşturun ve web trafiğine hizmet etmek için bağlantı noktası *80'i* açın. Pod'u *app=webapp,role=backend* ile etiketleyin, böylece bir sonraki bölümde bir ağ ilkesiyle hedefleyebiliriz:
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
 ```
 
-Farklı bir pod oluşturun ve varsayılan NGıNX Web sayfasına başarıyla ulaşabilmeyi test etmek için bir terminal oturumu ekleyin:
+Varsayılan NGINX web sayfasına başarıyla erişebileceğinizi test etmek için başka bir bölme oluşturun ve bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Kabuk isteminde, varsayılan NGıNX Web sayfasına erişebildiğinizden emin olmak için `wget` kullanın:
+Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişebileceğinizi onaylamak için kullanın:
 
 ```console
 wget -qO- http://backend
 ```
 
-Aşağıdaki örnek çıktıda varsayılan NGıNX Web sayfasının döndürdüğü gösterilmektedir:
+Aşağıdaki örnek çıktı, varsayılan NGINX web sayfasının döndürüldettiğini gösterir:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,7 +180,7 @@ Aşağıdaki örnek çıktıda varsayılan NGıNX Web sayfasının döndürdüğ
 [...]
 ```
 
-Ekli Terminal oturumundan çıkın. Test Pod 'u otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Test bölmesi otomatik olarak silinir.
 
 ```console
 exit
@@ -188,7 +188,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Ağ ilkesi oluşturma ve uygulama
 
-Artık, örnek arka uç pod üzerinde temel NGıNX Web sayfasını kullanabilirsiniz, tüm trafiği reddetmek için bir ağ ilkesi oluşturun. `backend-policy.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu bildirim, ilkeyi örnek NGINX Pod 'unuz gibi *App: WebApp, role: arka uç* etiketi olan Pod 'ye eklemek için bir *Pod Seçicisi* kullanır. Giriş altında hiçbir kural tanımlanmadığı için *Pod 'a giden*tüm trafik reddedilir:
+Artık örnek arka uç bölmesinde temel NGINX web sayfasını kullanabileceğinizi doğruladığınıziçin, tüm trafiği reddetmek için bir ağ ilkesi oluşturun. Adlandırılmış `backend-policy.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu bildirim, ilkeyi *uygulama:webapp,role:backend* etiketine sahip bölmelere eklemek için bir *podSelector* kullanır, örneğin NGINX bölmeniz gibi. *Giriş*altında hiçbir kural tanımlanmaz, bu nedenle bölmeye gelen tüm trafik reddedilir:
 
 ```yaml
 kind: NetworkPolicy
@@ -204,40 +204,43 @@ spec:
   ingress: []
 ```
 
-[Kubectl Apply][kubectl-apply] komutunu kullanarak ağ ilkesini uygulayın ve YAML bildiriminizde adı belirtin:
+Azure [https://shell.azure.com](https://shell.azure.com) Bulut Shell'i tarayıcınızda açmak için gidin.
 
-```azurecli-interactive
+[Kubectl uygula][kubectl-apply] komutunu kullanarak ağ ilkesini uygulayın ve YAML manifestonuzun adını belirtin:
+
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-### <a name="test-the-network-policy"></a>Ağ ilkesini test etme
+### <a name="test-the-network-policy"></a>Ağ ilkesini test edin
 
-
-Arka uç pod üzerinde NGıNX Web sayfasını yeniden kullanıp kullanabileceizin görelim. Başka bir test Pod oluşturun ve bir terminal oturumu ekleyin:
+Bakalım arka uç bölmesindeki NGINX web sayfasını tekrar kullanabilecek misiniz? Başka bir test bölmesi oluşturun ve bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Kabuk isteminde, varsayılan NGıNX Web sayfasına erişip erişemayabilmeniz için `wget` kullanın. Bu kez, zaman aşımı değerini *2* saniyeye ayarlayın. Ağ ilkesi artık tüm gelen trafiği engeller, bu nedenle aşağıdaki örnekte gösterildiği gibi sayfa yüklenemez:
+Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişip erişemeyebildiğinizi görmek için kullanın. Bu kez, bir zaman kaybı değerini *2* saniyeye ayarlayın. Ağ ilkesi artık tüm gelen trafiği engeller, bu nedenle aşağıdaki örnekte gösterildiği gibi sayfa yüklenmez:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
-Ekli Terminal oturumundan çıkın. Test Pod 'u otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Test bölmesi otomatik olarak silinir.
 
 ```console
 exit
 ```
 
-## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Pod etiketine dayalı gelen trafiğe izin ver
+## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Pod etiketine göre gelen trafiğe izin verme
 
-Önceki bölümde, bir arka uç NGıNX Pod zamanlandı ve tüm trafiği reddedecek bir ağ ilkesi oluşturuldu. Ön uç Pod oluşturalım ve ağ ilkesini ön uç kapalarından trafiğe izin verecek şekilde güncellim.
+Önceki bölümde, bir arka uç NGINX pod zamanlandı ve tüm trafiği reddetmek için bir ağ ilkesi oluşturuldu. Bir ön uç bölmesi oluşturalım ve ön uç bölmelerinden gelen trafiğe izin verecek şekilde ağ ilkesini güncelleştirelim.
 
-Ağ ilkesini, Etiketler *Uygulama: WebApp, rol: ön uç* ve herhangi bir ad alanında yer alan etiketlere giden trafiğe izin verecek şekilde güncelleştirin. Önceki *arka uç ilkesi. YAML* dosyasını düzenleyin ve bildirim aşağıdaki örnekte olduğu gibi, *matchlabels* giriş kurallarını ekleyin:
+Etiketler *uygulaması:webapp,role:frontend* ve herhangi bir ad alanı ile bölmelerden gelen trafiğe izin vermek için ağ ilkesini güncelleştirin. Önceki arka *uç-policy.yaml* dosyasını düzenlediniz ve bildiriminizin aşağıdaki örnek gibi görünmesi için *matchLabels* giriş kurallarını ekleyin:
 
 ```yaml
 kind: NetworkPolicy
@@ -260,29 +263,29 @@ spec:
 ```
 
 > [!NOTE]
-> Bu ağ ilkesi, giriş kuralı için bir *namespaceselector* ve bir *Pod seçici* öğesi kullanır. YAML sözdizimi, giriş kurallarının eklenebilir olması için önemlidir. Bu örnekte, giriş kuralının uygulanması için her iki öğenin de eşleşmesi gerekir. *1,12* ' dan önceki Kubernetes sürümleri, bu öğeleri doğru şekilde yorumlayamayabilir ve ağ trafiğini beklendiği gibi kısıtlayabilir. Bu davranış hakkında daha fazla bilgi için bkz. [seçicilerin ve seçicilerin davranışı][policy-rules].
+> Bu ağ ilkesi, giriş kuralı için bir *namespaceSelector* ve *podSelector* öğesi kullanır. YAML sözdizimi, giriş kurallarının katkı maddesi olması için önemlidir. Bu örnekte, her iki öğenin de uygulanacak giriş kuralı ile eşleşmesi gerekir. *1.12'den* önceki Kubernetes sürümleri bu öğeleri doğru yorumlamayabilir ve ağ trafiğini beklediğiniz gibi kısıtlayabilir. Bu davranış hakkında daha fazla bilgi için, seçicilere ve [arasından Davranış bölümüne][policy-rules]bakın.
 
-[Kubectl Apply][kubectl-apply] komutunu kullanarak güncelleştirilmiş ağ ilkesini uygulayın ve YAML bildirimin adını belirtin:
+[Kubectl uygula][kubectl-apply] komutunu kullanarak güncelleştirilmiş ağ ilkesini uygulayın ve YAML manifestonuzun adını belirtin:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-*App = WebApp, role = ön uç* ve bir terminal oturumu iliştirme olarak etiketlenmiş bir pod zamanlayın:
+*App=webapp,role=frontend* olarak etiketlenmiş bir bölme zamanlayın ve terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Kabuk isteminde, varsayılan NGıNX Web sayfasına erişip erişemayabilmeniz için `wget` kullanın:
+Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişip erişemeyebildiğinizi görmek için kullanın:
 
 ```console
 wget -qO- http://backend
 ```
 
-Giriş kuralı, Etiketler *Uygulama: WebApp, rol: ön uç*olan IP 'leri olan trafiğe izin verdiğinden, ön uç Pod 'daki trafiğe izin verilir. Aşağıdaki örnek çıktıda döndürülen varsayılan NGıNX Web sayfası gösterilmektedir:
+Giriş kuralı etiketleri uygulaması olan bölmeleri ile trafik sağlar *çünkü: webapp,rol: frontend*, ön uç bölmesinden trafik izin verilir. Aşağıdaki örnek çıktı, döndürülen varsayılan NGINX web sayfasını gösterir:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -290,60 +293,62 @@ Giriş kuralı, Etiketler *Uygulama: WebApp, rol: ön uç*olan IP 'leri olan tra
 [...]
 ```
 
-Ekli Terminal oturumundan çıkın. Pod otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Bölme otomatik olarak silinir.
 
 ```console
 exit
 ```
 
-### <a name="test-a-pod-without-a-matching-label"></a>Eşleşen bir etiket olmadan Pod 'u test etme
+### <a name="test-a-pod-without-a-matching-label"></a>Eşleşen bir etiket olmadan bir bölmeyi test edin
 
-Ağ ilkesi, Pod etiketli *Uygulama: WebApp, rol: ön uç*için trafiğe izin verir, ancak diğer tüm trafiği reddetmelidir. Bu etiketlerin olmadığı başka bir pod 'ın arka uç NGıNX Pod 'a erişip erişemeyeceğini görmek için test edelim. Başka bir test Pod oluşturun ve bir terminal oturumu ekleyin:
+Ağ ilkesi pods etiketli uygulamadan trafik *sağlar: webapp,rol: frontend,* ancak diğer tüm trafik inkar etmelidir. Bu etiketlerolmadan başka bir bölmenin arka uç NGINX bölmesine erişip erişemeyeceğini test edelim. Başka bir test bölmesi oluşturun ve bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Kabuk isteminde, varsayılan NGıNX Web sayfasına erişip erişemayabilmeniz için `wget` kullanın. Ağ ilkesi gelen trafiği engeller, bu nedenle aşağıdaki örnekte gösterildiği gibi sayfa yüklenemez:
+Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişip erişemeyebildiğinizi görmek için kullanın. Ağ ilkesi gelen trafiği engeller, bu nedenle sayfa aşağıdaki örnekte gösterildiği gibi yüklenemez:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
-Ekli Terminal oturumundan çıkın. Test Pod 'u otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Test bölmesi otomatik olarak silinir.
 
 ```console
 exit
 ```
 
-## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Yalnızca tanımlı bir ad alanı içinden trafiğe izin ver
+## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Yalnızca tanımlı bir ad alanı içinden gelen trafiğe izin verme
 
-Önceki örneklerde, tüm trafiği reddeden bir ağ ilkesi oluşturdunuz ve ardından belirli bir etikete sahip olmayan trafiğe izin vermek için ilkeyi güncelleştirmiş olursunuz. Diğer bir yaygın gereksinim, trafiği yalnızca belirli bir ad alanı dahilinde sınırlandırmaya yönelik bir seçenektir. Önceki örneklerde bir *geliştirme* ad alanındaki trafik varsa, başka bir ad alanından gelen trafiğin (örneğin, *Üretim*) yük uzayına ulaşmasını engelleyen bir ağ ilkesi oluşturun.
+Önceki örneklerde, tüm trafiği reddeden bir ağ ilkesi oluşturdunuz ve ardından belirli bir etikete sahip bölmelerden gelen trafiğe izin verecek şekilde ilkeyi güncelleştirmişsiniz. Başka bir ortak gereksinim, trafiği yalnızca belirli bir ad alanı içinde sınırlamaktır. Önceki örnekler *geliştirme* ad alanında trafik için ise, *üretim*gibi başka bir ad alanından gelen trafiğin bölmelere ulaşmasını engelleyen bir ağ ilkesi oluşturun.
 
-İlk olarak, bir üretim ad alanının benzetimini yapmak için yeni bir ad alanı oluşturun:
+İlk olarak, üretim ad alanını simüle etmek için yeni bir ad alanı oluşturun:
 
 ```console
 kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-*App = WebApp, role = ön uç*olarak etiketlenmiş *Üretim* ad alanında bir test Pod 'u zamanlayın. Terminal oturumu ekleyin:
+*Üretim* ad alanında *app=webapp,role=frontend*olarak etiketlenmiş bir test bölmesi zamanlayın. Terminal oturumu ekle:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Kabuk isteminde, varsayılan NGıNX Web sayfasına erişebildiğinizden emin olmak için `wget` kullanın:
+Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişebileceğinizi onaylamak için kullanın:
 
 ```console
 wget -qO- http://backend.development
 ```
 
-Pod 'un etiketleri, ağ ilkesinde Şu anda izin verilen şekilde eşleştiğinden, trafiğe izin verilir. Ağ İlkesi ad alanlarına ve yalnızca Pod etiketlerine bakar. Aşağıdaki örnek çıktıda döndürülen varsayılan NGıNX Web sayfası gösterilmektedir:
+Pod etiketleri ağ ilkesinde şu anda izin verilenle eşleştirdiği için, trafiğe izin verilir. Ağ ilkesi ad alanlarına değil, yalnızca pod etiketlerini bakar. Aşağıdaki örnek çıktı, döndürülen varsayılan NGINX web sayfasını gösterir:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -351,7 +356,7 @@ Pod 'un etiketleri, ağ ilkesinde Şu anda izin verilen şekilde eşleştiğinde
 [...]
 ```
 
-Ekli Terminal oturumundan çıkın. Test Pod 'u otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Test bölmesi otomatik olarak silinir.
 
 ```console
 exit
@@ -359,7 +364,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>Ağ ilkesini güncelleştirme
 
-Giriş kuralı *Namespaceselector* bölümünü yalnızca *geliştirme* ad alanı içinden gelen trafiğe izin verecek şekilde güncelleştirelim. Aşağıdaki örnekte gösterildiği gibi, *arka uç ilkesi. YAML* bildirim dosyasını düzenleyin:
+Giriş kuralı *namespaceSelector* bölümünü yalnızca *geliştirme* ad alanı nın içinden gelen trafiğe izin verecek şekilde güncelleştirelim. Aşağıdaki örnekte gösterildiği gibi *arka uç-policy.yaml* bildirim dosyasını edin:
 
 ```yaml
 kind: NetworkPolicy
@@ -383,51 +388,53 @@ spec:
           role: frontend
 ```
 
-Daha karmaşık örneklerde, bir *namespaceselector* ve sonra bir *Pod Seçicisi*gibi birden çok giriş kuralı tanımlayabilirsiniz.
+Daha karmaşık örneklerde, *bir namespaceSelector* ve daha sonra bir *podSelector*gibi birden çok giriş kuralları tanımlayabilirsiniz.
 
-[Kubectl Apply][kubectl-apply] komutunu kullanarak güncelleştirilmiş ağ ilkesini uygulayın ve YAML bildirimin adını belirtin:
+[Kubectl uygula][kubectl-apply] komutunu kullanarak güncelleştirilmiş ağ ilkesini uygulayın ve YAML manifestonuzun adını belirtin:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-### <a name="test-the-updated-network-policy"></a>Güncelleştirilmiş ağ ilkesini test etme
+### <a name="test-the-updated-network-policy"></a>Güncelleştirilmiş ağ ilkesini test edin
 
-*Üretim* ad alanında başka bir pod zamanlayın ve bir terminal oturumu ekleyin:
+*Üretim* ad alanında başka bir bölme zamanlayın ve bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Kabuk isteminde, ağ ilkesinin artık trafiği reddettiğinde emin olmak için `wget` kullanın:
+Kabuk isteminde, `wget` ağ ilkesinin artık trafiği reddettiğini görmek için kullanın:
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
-Test Pod 'dan çıkma:
+Test bölmesinin çıkışı:
 
 ```console
 exit
 ```
 
-*Üretim* ad alanından gelen trafik reddedildiğinde, *geliştirme* ad alanında bir test Pod 'u yeniden zamanlayın ve bir terminal oturumu ekleyin:
+*Üretim* ad alanından gelen trafik reddedilirken, *geliştirme* ad alanına bir test bölmesi zamanlayın ve bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Ağ ilkesinin trafiğe izin verdiğini görmek için Kabuk isteminde `wget` kullanın:
+Kabuk isteminde, `wget` ağ ilkesinin trafiğe izin verdiğini görmek için kullanın:
 
 ```console
 wget -qO- http://backend
 ```
 
-Pod, ağ ilkesinde izin verilen şekilde eşleşen ad alanında zamanlandığı için trafiğe izin verilir. Aşağıdaki örnek çıktıda döndürülen varsayılan NGıNX Web sayfası gösterilmektedir:
+Bölme, ağ ilkesinde izin verilenlerle eşleşen ad alanında zamanlandığı için trafiğe izin verilir. Aşağıdaki örnek çıktı, döndürülen varsayılan NGINX web sayfasını gösterir:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -435,7 +442,7 @@ Pod, ağ ilkesinde izin verilen şekilde eşleşen ad alanında zamanlandığı 
 [...]
 ```
 
-Ekli Terminal oturumundan çıkın. Test Pod 'u otomatik olarak silinir.
+Ekli terminal oturumundan çıkın. Test bölmesi otomatik olarak silinir.
 
 ```console
 exit
@@ -443,7 +450,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede, iki ad alanı oluşturduk ve bir ağ ilkesi uyguladık. Bu kaynakları temizlemek için [kubectl Delete][kubectl-delete] komutunu kullanın ve kaynak adlarını belirtin:
+Bu makalede, iki ad alanı oluşturduk ve bir ağ ilkesi uyguladık. Bu kaynakları temizlemek için [kubectl delete][kubectl-delete] komutunu kullanın ve kaynak adlarını belirtin:
 
 ```console
 kubectl delete namespace production
@@ -452,9 +459,9 @@ kubectl delete namespace development
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ağ kaynakları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) içindeki uygulamalar Için ağ kavramları][concepts-network].
+Ağ kaynakları hakkında daha fazla bilgi için [Azure Kubernetes Hizmeti'ndeki (AKS) uygulamalar için Ağ kavramlarına][concepts-network]bakın.
 
-İlkeler hakkında daha fazla bilgi edinmek için bkz. [Kubernetes ağ ilkeleri][kubernetes-network-policies].
+İlkeler hakkında daha fazla bilgi edinmek için [Kubernetes ağ ilkelerine][kubernetes-network-policies]bakın.
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

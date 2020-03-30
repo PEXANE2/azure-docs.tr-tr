@@ -1,7 +1,7 @@
 ---
-title: 'Verileri el Ile girin: modül başvurusu'
+title: 'Verileri El Ile Girin: Modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Değer yazarak küçük bir veri kümesi oluşturmak için Azure Machine Learning verileri el Ile gir modülünü nasıl kullanacağınızı öğrenin. Veri kümesinde birden çok sütun olabilir.
+description: Değerleri yazarak küçük bir veri kümesi oluşturmak için Azure Machine Learning'de Verileri El Ile Gir modüllerini nasıl kullanacağınızı öğrenin. Veri kümesinde birden çok sütun olabilir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,54 +10,54 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367525"
 ---
-# <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
+# <a name="enter-data-manually-module"></a>Veri Modüllerini El Ile Girin
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Değer yazarak küçük bir veri kümesi oluşturmak için **verileri el Ile gir** modülünü kullanın. Veri kümesinde birden çok sütun olabilir.
+Değerleri yazarak küçük bir veri kümesi oluşturmak için **Verileri El Ile Gir** modüllerini kullanın. Veri kümesinde birden çok sütun olabilir.
   
-Bu modül, aşağıdaki senaryolarda yararlı olabilir:  
+Bu modül gibi senaryolarda yararlı olabilir:  
   
-- Test için küçük bir değer kümesi oluşturuluyor.  
+- Sınama için küçük bir değer kümesi oluşturma.  
 - Etiketlerin kısa bir listesini oluşturma.  
-- Bir veri kümesine eklenecek sütun adlarının listesini yazma.
+- Veri kümesine eklemek için sütun adlarının listesini yazma.
 
 ## <a name="create-a-dataset"></a>Veri kümesi oluşturma 
   
-1. [Verileri el Ile gir](./enter-data-manually.md) modülünü ardışık düzene ekleyin. Bu modülü, Azure Machine Learning **veri girişi ve çıkış** kategorisinde bulabilirsiniz. 
+1. Veri [Girin modüllerini](./enter-data-manually.md) el ile ardınıza ekleyin. Bu modülü Azure Machine Learning'de **Veri Girişi ve Çıktısı** kategorisinde bulabilirsiniz. 
   
-1. **DataFormat**için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrıştırılaceğini belirlemektir. Her biçimin gereksinimleri önemli ölçüde farklılık gösterir, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
+1. **DataFormat**için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrışdırılması gerektiğini belirler. Her biçim için gereksinimler büyük ölçüde farklıdır, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
   
-   - **Arff**: WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
-   - **CSV**: virgülle ayrılmış değerler biçimi. Daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).    
-   - **Svmlight**: Vowpal Wabbit ve diğer makine öğrenimi çerçeveleri tarafından kullanılan biçim.    
-   - **TSV**: sekmeyle ayrılmış değerler biçimi.
+   - **ARFF**: Weka tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
+   - **CSV**: Virgülden ayrılmış değerler biçimidir. Daha fazla bilgi için [CSV'ye dönüştür'e](./convert-to-csv.md)bakın.    
+   - **SVMLight**: Vowpal Wabbit ve diğer makine öğrenimi çerçeveleri tarafından kullanılan biçimdir.    
+   - **TSV**: Sekme ayrılmış değerler biçimi.
 
-   Bir biçim seçer ve biçim belirtimlerini karşılayan veriler sağlamazsanız, bir çalışma zamanı hatası oluşur.
+   Bir biçim seçerseniz ve biçim belirtimlerini karşılayan veriler sağlamazsanız, çalışma zamanı hatası oluşur.
   
-1. Veri girmeye başlamak için **veri** metin kutusunun içine tıklayın. Aşağıdaki biçimler özel dikkat gerektirir:  
+1. Veri girmeye başlamak için **Veri** metin kutusunun içini tıklatın. Aşağıdaki biçimler özel dikkat gerektirir:  
   
-   - **CSV**: birden çok sütun oluşturmak için, virgülle ayrılmış metinde yapıştırın veya alanlar arasında virgül kullanarak birden çok sütun yazın.
+   - **CSV**: Birden çok sütun oluşturmak, virgülle ayrılmış metne yapıştırmak veya alanlar arasında virgül kullanarak birden çok sütun yazın.
   
-     **HasHeader** seçeneğini belirlerseniz, ilk değer satırını sütun başlığı olarak kullanabilirsiniz.  
+     **HasHeader** seçeneğini seçerseniz, sütun başlığı olarak ilk değer satırını kullanabilirsiniz.  
   
-     Bu seçeneğin işaretini kaldırırsanız, sütun adları (Sütun1, Col2, vb.) kullanılır. Daha sonra, [meta verileri Düzenle](./edit-metadata.md)kullanarak sütun adlarını ekleyebilir veya değiştirebilirsiniz.  
+     Bu seçeneği seçerseniz, sütun adları (Col1, Col2 ve benzeri) kullanılır. Daha sonra [Meta Verilerini Edit'i](./edit-metadata.md)kullanarak sütun adları ekleyebilir veya değiştirebilirsiniz.  
   
-   - **TSV**: birden çok sütun oluşturmak için, sekmeyle ayrılmış metin içine yapıştırın veya alanlar arasında sekmeleri kullanarak birden çok sütun yazın.  
+   - **TSV**: Birden çok sütun oluşturmak için, sekme ayrılmış metne yapıştırın veya alanlar arasında sekmeler kullanarak birden çok sütun yazın.  
   
-     **HasHeader** seçeneğini belirlerseniz, ilk değer satırını sütun başlığı olarak kullanabilirsiniz.  
+     **HasHeader** seçeneğini seçerseniz, sütun başlığı olarak ilk değer satırını kullanabilirsiniz.  
   
-     Bu seçeneğin işaretini kaldırırsanız, sütun adları (Sütun1, Col2, vb.) kullanılır. Daha sonra, [meta verileri Düzenle](./edit-metadata.md)kullanarak sütun adlarını ekleyebilir veya değiştirebilirsiniz.  
+     Bu seçeneği seçerseniz, sütun adları (Col1, Col2 ve benzeri) kullanılır. Daha sonra [Meta Verilerini Edit'i](./edit-metadata.md)kullanarak sütun adları ekleyebilir veya değiştirebilirsiniz.  
   
-   - **Arff**: varolan bir arff biçim dosyasını yapıştırın. Değerleri doğrudan yazıyorsanız, verilerin başına isteğe bağlı üstbilgiyi ve gerekli öznitelik alanlarını eklediğinizden emin olun. 
+   - **ARFF**: Varolan bir ARFF biçim dosyasına yapıştırın. Değerleri doğrudan yazıyorsanız, verilerin başında isteğe bağlı üstbilgi ve gerekli öznitelik alanlarını eklediğinizden emin olun. 
 
-     Örneğin, aşağıdaki üst bilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı `SampleText`. Dize türünün desteklenmediğini unutmayın.
+     Örneğin, aşağıdaki üstbilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı `SampleText`. String türünün desteklenmediğini unutmayın.
     
      ```text
      % Title: SampleText.ARFF  
@@ -67,9 +67,9 @@ Bu modül, aşağıdaki senaryolarda yararlı olabilir:
      \<type first data row here>  
      ```
 
-   - **Svmlight**: svmlight biçimini kullanarak değerlere yazın veya yapıştırın.  
+   - **SVMLight : SVMLight**biçimini kullanarak değerlere yazın veya yapıştırın.  
   
-     Örneğin, aşağıdaki örnek, SVMLight biçiminde kan bağış veri kümesinin ilk birkaç satırını temsil eder:  
+     Örneğin, aşağıdaki örnek SVMLight biçiminde Kan Bağışı veri kümesinin ilk birkaç satırını temsil eder:  
   
      ```text  
      # features are [Recency], [Frequency], [Monetary], [Time]  
@@ -77,23 +77,23 @@ Bu modül, aşağıdaki senaryolarda yararlı olabilir:
      1 1:0 2:13 3:3250 4:28   
      ```  
   
-     [Verileri el Ile gir](./enter-data-manually.md) modülünü çalıştırdığınızda, bu satırlar sütun ve dizin değerlerinin veri kümesine aşağıdaki şekilde dönüştürülür:  
+     [Veri Girin](./enter-data-manually.md) modüllerini çalıştırdığınızda, bu satırlar aşağıdaki gibi sütunlar ve dizin değerleri veri kümesine dönüştürülür:  
   
-     |Süt|Col2|Col3|Col4|Etiketler|  
+     |Süt1|Süt2|Col3|Col4|Etiketler|  
      |-|-|-|-|-|  
-     |0,00016|0,004|0,999961|0,00784|1|  
-     |0|0,004|0,999955|0,008615|1|  
+     |0.00016|0.004|0.999961|0.00784|1|  
+     |0|0.004|0.999955|0.008615|1|  
   
 1. Yeni bir satır başlatmak için her satırdan sonra Enter tuşunu seçin.      
      
-   Birden fazla boş son satır eklemek için birden çok kez gir ' i seçerseniz boş satırlar kaldırılır veya kırpılır.  
+   Birden çok boş satır eklemek için birden çok kez Enter'u seçerseniz, boş satırlar kaldırılır veya kırpılır.  
   
-   Eksik değerleri olan satırlar oluşturursanız, bunları her zaman daha sonra filtreleyebilirsiniz.  
+   Eksik değerlere sahip satırlar oluşturursanız, bunları her zaman daha sonra filtreleyebilirsiniz.  
   
-1. Çıkış bağlantı noktasını diğer modüllere bağlayın ve işlem hattını çalıştırın.  
+1. Çıkış bağlantı noktasını diğer modüllere bağlayın ve ardışık hattı çalıştırın.  
   
-   Veri kümesini görüntülemek için modüle sağ tıklayın ve **Görselleştir**' i seçin.
+   Veri kümesini görüntülemek için modülü sağ tıklatın ve **Visualize'ı**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

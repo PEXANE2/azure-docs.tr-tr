@@ -1,64 +1,64 @@
 ---
-title: Portalı kullanarak Azure adanmış Konakları dağıtma
-description: Portalı kullanarak adanmış konaklara VM 'Ler dağıtın.
+title: Portalı kullanarak Azure'a özel ana bilgisayarları dağıtma
+description: Portalı kullanarak özel ana bilgisayarlara VM dağıtın.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: b6f5e155b76535c4d9e0080983d5f54cec3adb01
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 3d014014b540e5ea5959483427dec4b239ceaf7b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476799"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Portalı kullanarak VM 'Leri adanmış konaklara dağıtma
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Portalı kullanarak özel ana bilgisayarlara VM dağıtma
 
-Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
+Bu makalede, sanal makinelerinizi (VM) barındırmak için [Azure'a adanmış](dedicated-hosts.md) bir ana bilgisayar oluşturma konusunda size rehberlik eder. 
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts-portal](../../../includes/virtual-machines-common-dedicated-hosts-portal.md)]
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-1. **Yeni** sayfada, **popüler**bölümünde **Windows Server 2016 Datacenter**' ı seçin.
-1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun ve ardından **kaynak grubu**olarak, *myayrılmış hostsrg* ' yi seçin. 
-1. **Örnek ayrıntıları** altında, *Sanal makine adı* için **myVM** yazın ve *Konum* için **Doğu ABD**'yi seçin.
-1. **Kullanılabilirlik seçenekleri** ' nde **kullanılabilirlik alanı**' nı seçin, açılan listeden *1* ' i seçin.
-1. Boyut için **boyutu Değiştir**' i seçin. Kullanılabilir boyutlar listesinde, **Standart E2s v3**gibi Esv3 serilerinden birini seçin. Tüm kullanılabilir boyutları görmek için filtreyi temizlemeniz gerekebilir.
+1. **Yeni** sayfada, **Popüler** **altında, Windows Server 2016 Datacenter'ı**seçin.
+1. Temel **Bilgiler** sekmesinde, **Proje ayrıntıları**altında, doğru aboneliğin seçildiğinden emin olun ve kaynak **grubu**olarak *myDedicatedHostsRG'yi* seçin. 
+1. **Örnek ayrıntıları** altında, **Sanal makine adı** için *myVM* yazın ve **Konum** için *Doğu ABD*'yi seçin.
+1. **Kullanılabilirlik seçeneklerinde** **Kullanılabilirlik bölgesini**seçin, açılır yerden *1'i* seçin.
+1. Boyut için **boyutu değiştir'i**seçin. Mevcut boyutlar listesinde, **Standart E2s v3**gibi Esv3 serisinden birini seçin. Kullanılabilir boyutların tümünün görülmesi için filtreyi temizlemeniz gerekebilir.
 1. **Yönetici hesabı** altında, *azureuser* gibi bir kullanıcı adı ve bir parola girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
-1. **Gelen bağlantı noktası kuralları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** öğesini seçin.
-1. Sayfanın üst kısmında **Gelişmiş** sekmesini seçin ve **konak** bölümünde konak **grubu** için *Myhostgroup* ve **konak**için *myhost* ' u seçin. 
-    konak grubu ve konak](./media/dedicated-hosts-portal/advanced.png) ![seçin
+1. **Gelen bağlantı noktası kuralları altında,** **seçili bağlantı noktalarına izin ver'i** seçin ve ardından açılır bağlantı noktasından **RDP'yi (3389)** seçin.
+1. Sayfanın üst kısmında Gelişmiş **sekmesini** seçin ve **Ana Bilgisayar** bölümünde, **Host grubu** için *myHostGroup'u* ve **Host**için *myHost'u* seçin. 
+    ![Ana bilgisayar grubunu ve ana bilgisayar grubunu seçin](./media/dedicated-hosts-portal/advanced.png)
 1. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
-1. Doğrulamanın geçtiğini belirten iletiyi gördüğünüzde **Oluştur**' u seçin.
+1. Doğrulamanın geçtiği iletiyi gördüğünüzde **Oluştur'u**seçin.
 
-## <a name="add-an-existing-vm"></a>Var olan bir VM 'yi ekleme 
+## <a name="add-an-existing-vm"></a>Varolan bir VM ekleme 
 
-Bir çıkış VM 'sini ayrılmış bir konağa ekleyebilirsiniz, ancak önce VM 'nin Stop\satıcılarla locatedolması gerekir. Bir VM 'yi adanmış bir konağa taşımadan önce, VM yapılandırmasının desteklendiğinden emin olun:
+Özel bir ana bilgisayara varolan bir VM ekleyebilirsiniz, ancak VM'nin önce Stop\Deallocated olması gerekir. Bir VM'yi özel bir ana bilgisayara taşımadan önce, VM yapılandırmasının desteklendirildiğinden emin olun:
 
-- VM boyutu, ayrılmış konakla aynı büyüklükte bir aile içinde olmalıdır. Örneğin, adanmış ana bilgisayarınız DSv3 ise sanal makine boyutu Standard_D4s_v3 olabilir, ancak bir Standard_A4_v2 olamaz. 
-- VM 'nin adanmış konakla aynı bölgede bulunması gerekir.
-- VM, bir yakınlık yerleşimi grubunun parçası olamaz. Ayrılmış bir konağa taşımadan önce VM 'yi yakınlık yerleşimi grubundan kaldırın. Daha fazla bilgi için bkz. [bir VM 'yi bir yakınlık yerleşimi grubundan taşıma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
-- VM bir kullanılabilirlik kümesinde olamaz.
-- VM bir kullanılabilirlik bölgeindeyse, konak grubuyla aynı Kullanılabilirlik bölgesi olması gerekir. VM ve konak grubu için kullanılabilirlik bölgesi ayarlarının eşleşmesi gerekir.
+- VM boyutu, özel ana bilgisayarla aynı boyutta olmalıdır. Örneğin, özel ana bilgisayarınız DSv3 ise, VM boyutu Standard_D4s_v3 olabilir, ancak Standard_A4_v2 olamaz. 
+- VM'nin özel ana bilgisayarla aynı bölgede bulunması gerekir.
+- VM yakınlık yerleştirme grubunun bir parçası olamaz. VM'yi özel bir ana bilgisayara taşımadan önce yakınlık yerleşim grubundan çıkarın. Daha fazla bilgi için bkz: [VM'yi yakınlık yerleşim grubundan taşıma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM kullanılabilirlik kümesinde olamaz.
+- VM bir kullanılabilirlik bölgesindeyse, ana bilgisayar grubuyla aynı kullanılabilirlik bölgesi olmalıdır. VM ve ana bilgisayar grubu için kullanılabilirlik bölgesi ayarları eşleşmelidir.
 
-[Portalı](https://portal.azure.com)kullanarak VM 'yi adanmış bir konağa taşıyın.
+VM'yi [portalı](https://portal.azure.com)kullanarak özel bir ana bilgisayara taşıyın.
 
 1. VM için sayfayı açın.
-1. VM 'yi serbest bırakmak için **Durdur** ' u seçin.
-1. Sol menüden **yapılandırma** ' yı seçin.
-1. Açılır menülerden bir konak grubu ve konak seçin.
-1. İşiniz bittiğinde sayfanın en üstündeki **Kaydet** ' i seçin.
-1. VM konağa eklendikten sonra, sol menüden **genel bakış** ' ı seçin.
-1. Sanal makineyi yeniden başlatmak için sayfanın üst kısmındaki **Başlat** ' ı seçin.
+1. **Durdurmak** için Dur\deallocate VM'yi seçin.
+1. Sol menüden **Yapılandırma'yı** seçin.
+1. Açılan menülerden bir ana bilgisayar grubu ve bir ana bilgisayar seçin.
+1. Bittiğinde, sayfanın üst kısmında **Kaydet'i** seçin.
+1. VM ana bilgisayara eklendikten sonra sol menüden **Genel Bakış'ı** seçin.
+1. Sayfanın üst kısmında VM'yi yeniden başlatmak için **Başlat'ı** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için bkz. [adanmış ana bilgisayarlara](dedicated-hosts.md) genel bakış. 
+- Daha fazla bilgi [için, Özel ana bilgisayarlarına](dedicated-hosts.md) genel bakış alabakın. 
 
-- [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
+- Bir bölgede maksimum esneklik için hem bölgeleri hem de fay etki alanlarını kullanan örnek şablon [burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)bulunur.
 
-- Ayrıca, [Azure PowerShell](dedicated-hosts-powershell.md)kullanarak adanmış bir konak dağıtabilirsiniz.
+- [Azure PowerShell'i](dedicated-hosts-powershell.md)kullanarak özel bir ana bilgisayar da dağıtabilirsiniz.

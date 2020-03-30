@@ -1,47 +1,47 @@
 ---
-title: Hızlı başlangıç-Java için Azure Key Vault istemci kitaplığı
-description: Azure SDK istemci kitaplıkları için hızlı başlangıçlara yazmak üzere biçim ve içerik ölçütleri sağlar.
+title: Quickstart - Java için Azure Key Vault istemci kitaplığı
+description: Azure SDK istemci kitaplıkları için Hızlı Başlangıçlar yazmak için biçim ve içerik ölçütleri sağlar.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: be76a274671b0112ca0a5e326f6bb6bb8852842b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd2373eb1c5cd5b48651c9215b5d6ad85c7acd68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197564"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79457279"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault istemci kitaplığı
+# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Quickstart: Java için Azure Key Vault istemci kitaplığı
 
-Java için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
+Java için Azure Key Vault istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Java için Key Vault istemci kitaplığını kullanarak şunları yapın:
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Java için Key Vault istemci kitaplığını kullanın:
 
-- Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
-- Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
-- Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
-- FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
+- Anahtarlar ve parolalar üzerinde güvenliği ve denetimi artırın.
+- Şifreleme anahtarlarını dakikalar içinde oluşturun ve aktarın.
+- Bulut ölçeği ve genel artıklık la gecikme süresini azaltın.
+- TLS/SSL sertifikaları için görevleri basitleştirin ve otomatikleştirin.
+- FIPS 140-2 Düzey 2 onaylı HSM'leri kullanın.
 
-[Kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [apı başvuru belgeleri](https://azure.github.io/azure-sdk-for-java) | [Ürün belgeleri](index.yml) | [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+[Kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API referans belgeleri](https://azure.github.io/azure-sdk-for-java) | [Ürün belgeleri](index.yml) | [Örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
-- [Apache Maven](https://maven.apache.org)
+- Azure aboneliği - [ücretsiz bir abonelik oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [Java Geliştirme Kiti (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri
+- [Apaçi Maven](https://maven.apache.org)
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
 
-Bu hızlı başlangıçta, bir Linux Terminal penceresinde [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Apache Maven](https://maven.apache.org) çalıştırdığınız varsayılmaktadır.
+Bu hızlı başlangıç, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Apache Maven'i](https://maven.apache.org) bir Linux terminal penceresinde çalıştırdığınızı varsayar.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
 ### <a name="create-new-java-console-app"></a>Yeni Java konsol uygulaması oluşturma
 
-Konsol penceresinde, `akv-java`adlı yeni bir Java konsol uygulaması oluşturmak için `mvn` komutunu kullanın.
+Konsol penceresinde, adı `mvn` `akv-java`olan yeni bir Java konsol uygulaması oluşturmak için komutu kullanın.
 
 ```console
 mvn archetype:generate -DgroupId=com.keyvault.quickstart
@@ -51,7 +51,7 @@ mvn archetype:generate -DgroupId=com.keyvault.quickstart
                        -DinteractiveMode=false
 ```
 
-Projenin üretilme çıktısı şuna benzer şekilde görünür:
+Proje oluşturma çıktısı şuna benzer:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -75,15 +75,15 @@ Projenin üretilme çıktısı şuna benzer şekilde görünür:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Dizininizi yeni oluşturulan Akv-Java/klasörüyle değiştirin.
+Dizini yeni oluşturulan akv-java/ klasörüne değiştirin.
 
 ```console
 cd akv-java
 ```
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package"></a>Paketi yükleyin
 
-*Pod. xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğelerini bağımlılıklar grubuna ekleyin.
+Metin düzenleyicinizdeki *pom.xml* dosyasını açın. Bağımlılıklar grubuna aşağıdaki bağımlılık öğelerini ekleyin.
 
 ```xml
     <dependency>
@@ -99,12 +99,12 @@ cd akv-java
     </dependency>
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
+### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve anahtar kasası oluşturma
 
-Bu hızlı başlangıçta önceden oluşturulmuş bir Azure Anahtar Kasası kullanılmaktadır. [Azure CLI hızlı başlangıç](quick-create-cli.md), [Azure PowerShell hızlı](quick-create-powershell.md)başlangıç veya [Azure Portal Hızlı Başlangıç](quick-create-portal.md)adımlarını izleyerek bir Anahtar Kasası oluşturabilirsiniz. Alternatif olarak, aşağıdaki Azure CLı komutlarını çalıştırabilirsiniz.
+Bu hızlı başlatma, önceden oluşturulmuş bir Azure anahtar kasası kullanır. [Azure CLI quickstart,](quick-create-cli.md) [Azure PowerShell quickstart](quick-create-powershell.md)veya Azure portalı [quickstart'taki](quick-create-portal.md)adımları izleyerek önemli bir kasa oluşturabilirsiniz. Alternatif olarak, aşağıdaki Azure CLI komutlarını çalıştırabilirsiniz.
 
 > [!Important]
-> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı > < Aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
+> Her anahtar kasanın benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -114,15 +114,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bulut tabanlı bir uygulamanın kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](managed-identity.md) konusuna bakın. Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur.
+Bulut tabanlı bir uygulamanın kimliğini doğrulamanın en basit yolu yönetilen bir kimliktir; bkz. Ayrıntılar [için Azure Key Vault'a erişmek için Uygulama Hizmeti yönetilen kimliği kullanın.](managed-identity.md) Ancak basitlik adına, bu hızlı başlangıç bir hizmet ilkesi ve bir erişim denetim ilkesi kullanımını gerektiren bir masaüstü uygulaması oluşturur.
 
-Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
+Azure CLI az reklam [sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Bu işlem, bir dizi anahtar/değer çifti döndürür. 
+Bu işlem bir dizi anahtar / değer çifti döndürecektir. 
 
 ```console
 {
@@ -132,28 +132,27 @@ Bu işlem, bir dizi anahtar/değer çifti döndürür.
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
-Sonraki iki adımda kullanabilmemiz için ClientID, clientSecret ve Tenantıd ' yi göz önünde ayırın.
+Sonraki iki adımda kullanacağımız için clientId, clientSecret ve tenantId'e dikkat edin.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Servis müdürüne anahtar kasanıza erişim hakkı verin
 
-ClientID 'yi [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek, hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinlerini verin.
+MüşteriYi [az keyvault set-ilke](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek servis müdürünüze izin veren anahtar kasanız için bir erişim ilkesi oluşturun. Servis sorumlusuna hem anahtarlar hem de sırlar için izinleri al, listele ve ayarla.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Ortam değişkenlerini ayarlama
+#### <a name="set-environmental-variables"></a>Çevresel değişkenleri ayarlama
 
-Uygulamamızda DefaultAzureCredential yöntemi üç ortam değişkenine dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve `AZURE_TENANT_ID`. Bu değişkenleri, yukarıdaki [bir hizmet sorumlusu oluşturma](#create-a-service-principal) adımında not ettiğiniz ClientID, ClientSecret ve tenantıd değerlerine ayarla ' yı kullanın. Ortam değişkenlerinizi ayarlamak için `export VARNAME=VALUE` biçimini kullanın. (Bu yöntem yalnızca geçerli kabuğunuzun ve kabuktan oluşturulan süreçlerin değişkenlerini ayarlar; bu değişkenleri ortamınıza kalıcı olarak eklemek için `/etc/environment ` dosyanızı düzenleyin.) 
+Uygulamamızdaki Varsayılan AzureCredential yöntemi üç çevresel değişkene dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve `AZURE_TENANT_ID`. bu değişkenleri yukarıda [bir hizmet anası](#create-a-service-principal) oluştur adımında belirttiğiniz clientId, clientSecret ve tenantId değerlerine ayarlayın. Çevresel `export VARNAME=VALUE` değişkenlerinizi ayarlamak için biçimi kullanın. (Bu yöntem yalnızca geçerli kabuğunuz için değişkenleri ve kabuktan oluşturulan işlemleri ayarlar; bu değişkenleri `/etc/environment ` ortamınıza kalıcı olarak eklemek, dosyanızı yeniden düzenlendi.) 
 
-Ayrıca, Anahtar Kasası adınızı `KEY_VAULT_NAME`adlı bir ortam değişkeni olarak kaydetmeniz gerekir.
+Ayrıca anahtar kasa adınızı bir ortam değişkeni `KEY_VAULT_NAME`olarak kaydetmeniz gerekir.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -167,15 +166,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Nesne modeli
 
-Java için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
+Java için Azure Key Vault istemci kitaplığı, anahtarları ve sertifikalar ve sırlar gibi ilgili varlıkları yönetmenize olanak tanır. Aşağıdaki kod örnekleri, bir istemci oluşturmak, bir sır ayarlamak, bir sır almak ve bir sırrı silmek nasıl gösterecektir.
 
-Konsol uygulamasının tamamı [aşağıda](#sample-code)verilmiştir.
+Tüm konsol uygulaması [aşağıdadır.](#sample-code)
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-### <a name="add-directives"></a>Yönergeler ekleme
+### <a name="add-directives"></a>Yönergeekleme
 
-Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
+Kodunuzun üst bölümüne aşağıdaki yönergeleri ekleyin:
 
 ```java
 import com.azure.identity.DefaultAzureCredentialBuilder;
@@ -185,9 +184,9 @@ import com.azure.security.keyvault.secrets.SecretClientBuilder;
 import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 ```
 
-### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
+### <a name="authenticate-and-create-a-client"></a>Kimlik doğrulaması ve istemci oluşturma
 
-Anahtar kasanıza kimlik doğrulama ve Anahtar Kasası istemcisi oluşturma, yukarıdaki [ortam değişkenlerini ayarla](#set-environmental-variables) adımında bulunan ortam değişkenlerine bağlıdır. Anahtar kasanızın adı, `https://<your-key-vault-name>.vault.azure.net`biçimindeki Anahtar Kasası URI 'sine genişletilir.
+Anahtar kasanıza doğrulanması ve anahtar kasa istemcisi oluşturma, yukarıdaki [Set çevresel değişkenler](#set-environmental-variables) adımındaki çevresel değişkenlere bağlıdır. Anahtar tonozunuzun adı, formatında, `https://<your-key-vault-name>.vault.azure.net`anahtar kasası URI'ye genişletilir.
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -199,39 +198,39 @@ SecretClient secretClient = new SecretClientBuilder()
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>Gizli dizi Kaydet
+### <a name="save-a-secret"></a>Bir sırrı kaydet
 
-Uygulamanızın kimliği doğrulandığına göre, `secretClient.setSecret` yöntemini kullanarak anahtar kasanıza gizli dizi ekleyebilirsiniz. Bu, gizli dizi için bir ad gerektirir; bu örnekteki `secretName` değişkenine "mySecret" değerini atadık.  
+Uygulamanızın kimliği doğrulanına göre, `secretClient.setSecret` yöntemi kullanarak keyvault'unuza bir sır koyabilirsiniz. Bu, gizli bir ad gerektirir -- bu örnekteki `secretName` değişkene "mySecret" değerini atadık.  
 
 ```java
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
+Gizlinin [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Gizli dizi alma
+### <a name="retrieve-a-secret"></a>Bir sır alma
 
-Artık `secretClient.getSecret` yöntemiyle daha önceden ayarlanan değeri alabilirsiniz.
+Şimdi `secretClient.getSecret` yöntemle önceden ayarlanmış değeri alabilirsiniz.
 
 ```java
 KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
  ```
 
-Artık `retrievedSecret.getValue()`alınan gizli dizi değerine erişebilirsiniz.
+Artık alınan sırrın değerine `retrievedSecret.getValue()`.
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Son olarak, `secretClient.beginDeleteSecret` yöntemiyle anahtar kasaınızdan parolayı silelim.
+Son olarak, `secretClient.beginDeleteSecret` yöntemle anahtar kasanızdan sırrı silelim.
 
 ```java
 secretClient.beginDeleteSecret(secretName);
 ```
 
-Parolanın [az keykasasecret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla yapıldığını doğrulayabilirsiniz:
+Gizli [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutu ile gitti doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -239,7 +238,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
+Artık ihtiyaç duyulmadığında, anahtar kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLI veya Azure PowerShell'i kullanabilirsiniz.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -312,9 +311,9 @@ public class App {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Bu hızlı başlangıçta bir anahtar kasası oluşturdunuz, bir sır sakladınız ve bu sırrı aldınız. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
 
-- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
-- [Azure Key Vault geliştirici kılavuzuna](key-vault-developers-guide.md) bakın
-- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
-- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault
+- Azure [Anahtar Kasasına Genel Bakış](key-vault-overview.md)
+- Azure [Key Vault geliştiricisi kılavuzuna](key-vault-developers-guide.md) bakın
+- [Anahtarlar, sırlar ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
+- Azure Key Vault en iyi uygulamalarını gözden [geçirin](key-vault-best-practices.md)

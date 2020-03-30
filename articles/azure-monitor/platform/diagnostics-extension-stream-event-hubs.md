@@ -1,51 +1,51 @@
 ---
-title: Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
-description: Azure Izleyici 'de tanılama uzantısı 'nı, Azure 'un dışındaki konumlara iletmek için Azure Olay Hub 'ına veri göndermek üzere yapılandırın.
+title: Windows Azure tanılama uzantısından Azure Etkinlik Hub'larına veri gönderme
+description: Azure Monitor'daki tanılama uzantısını azure etkinlik hub'ına göndermek için yapılandırın ve böylece Azure dışındaki konumlara iletebilirsiniz.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672540"
 ---
-# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
-Azure tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Azure 'un dışındaki konumlara iletmek için Microsoft Azure tanılama uzantısı 'ndan (WAD) [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) veri gönderme işleminin nasıl yapılacağı açıklanır.
+# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure tanılama uzantısından Azure Etkinlik Hub'larına veri gönderme
+Azure tanılama uzantısı, Azure Monitor'da konuk işletim sisteminden izleme verileri ve Azure sanal makineleri ve diğer bilgi işlem kaynaklarının iş yüklerini toplayan bir aracıdır. Bu makalede, Azure dışındaki konumlara iletilebilmeniz için Windows Azure Tanılama uzantısından (WAD) [Azure Etkinlik Hub'larına](https://azure.microsoft.com/services/event-hubs/) nasıl veri gönderilebildiğiniz açıklanmaktadır.
 
 ## <a name="supported-data"></a>Desteklenen veriler
 
-Event Hubs 'e gönderilebilecek Konuk işletim sisteminden toplanan veriler aşağıdakileri içerir. WAD tarafından toplanan ve IIS günlükleri ve kilitlenme dökümleri dahil diğer veri kaynakları Event Hubs gönderilemez.
+Etkinlik Hub'larına gönderilebilen konuk işletim sisteminden toplanan veriler aşağıdakileri içerir. IIS Günlükleri ve kilitlenme dökümleri de dahil olmak üzere WAD tarafından toplanan diğer veri kaynakları Olay Hub'larına gönderilemez.
 
 * Windows için Olay İzleme (ETW) olayları
 * Performans sayaçları
-* Windows olay günlüğü 'nde uygulama günlükleri de dahil olmak üzere Windows olay günlükleri
+* Windows olay günlüğündeki uygulama günlükleri de dahil olmak üzere Windows olay günlükleri
 * Azure Tanılama altyapısı günlükleri
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Windows Tanılama uzantısı 1,6 veya üzeri. Desteklenen kaynaklar için [Azure tanılama uzantısı yapılandırma şeması sürümleri ve geçmiş](diagnostics-extension-versions.md) bir sürüm geçmişi ve [Azure tanılama uzantısına genel bakış](diagnostics-extension-overview.md) bölümüne bakın.
-* Event Hubs ad alanı her zaman sağlanmalıdır. Ayrıntılar için bkz. [Event Hubs ile çalışmaya başlama](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
+* Windows tanılama uzantısı 1.6 veya daha yüksek. Sürüm geçmişi için [Azure Diagnostics uzantısı yapılandırma şema sürümlerine ve geçmişine](diagnostics-extension-versions.md) ve desteklenen kaynaklara [genel bakış alada Azure Tanılama uzantısı uzantısına](diagnostics-extension-overview.md) bakın.
+* Olay Hub'ları ad alanı her zaman sağlanmalıdır. Ayrıntılar için [Etkinlik Hub'ları ile başlayın.](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 
 ## <a name="configuration-schema"></a>Yapılandırma şeması
-Yapılandırma şemasının bir başvurusu için tanılama uzantısını ve [Azure tanılama yapılandırma şemasını](diagnostics-extension-schema-windows.md) etkinleştirmek ve yapılandırmak üzere farklı seçenekler için bkz. [Windows Azure tanılama uzantısı 'nı (wad) yükleyip](diagnostics-extension-windows-install.md) yapılandırma. Bu makalenin geri kalanında, bu yapılandırmanın bir olay hub 'ına veri göndermek için nasıl kullanılacağı açıklanır. 
+Tanılama uzantısını ve [Azure Tanılama yapılandırma şemasını](diagnostics-extension-schema-windows.md) yapılandırma şemasına başvurmak üzere etkinleştirmek ve yapılandırmak için farklı seçenekler için [Windows Azure tanılama uzantısını (WAD) yükle ve yapılandırın.](diagnostics-extension-windows-install.md) Bu makalenin geri kalanı, bir olay hub'ına veri göndermek için bu yapılandırmanın nasıl kullanılacağını açıklar. 
 
-Azure Tanılama her zaman günlükleri ve ölçümleri bir Azure depolama hesabına gönderir. Ek konumlara veri gönderen bir veya daha fazla *veri havuzları* yapılandırabilirsiniz. Her havuz, genel yapılandırmanın [Sinksconfig öğesinde](diagnostics-extension-schema-windows.md#sinksconfig-element) özel yapılandırmadaki hassas bilgilerle tanımlanır. Bu olay hub 'ları yapılandırması aşağıdaki tablodaki değerleri kullanır.
+Azure Tanılama, günlükleri ve ölçümleri her zaman bir Azure Depolama hesabına gönderir. Ek konumlara veri gönderen bir veya daha fazla *veri lavabosu* yapılandırabilirsiniz. Her lavabo, özel yapılandırmadaki hassas bilgilerle kamu yapılandırmasının [SinksConfig öğesinde](diagnostics-extension-schema-windows.md#sinksconfig-element) tanımlanır. Olay hub'ları için bu yapılandırma aşağıdaki tablodaki değerleri kullanır.
 
 | Özellik | Açıklama |
 |:---|:---|
-| Adı | Havuz için tanımlayıcı ad. Yapılandırmada, havuza hangi veri kaynaklarının gönderileceğini belirtmek için kullanılır. |
-| Url  | \<Event-hub-Namespace\>. servicebus.windows.net/\<Event-hub-Name\>biçimindeki Olay Hub 'ının URL 'si.          |
-| SharedAccessKeyName | En az **gönderme** yetkisine sahip olay hub 'ı için paylaşılan erişim ilkesinin adı. |
-| SharedAccessKey     | Olay Hub 'ı için paylaşılan erişim ilkesinden birincil veya ikincil anahtar. |
+| Adı | Lavabonun açıklayıcı adı. Lavaboya hangi veri kaynaklarının gönderilen leri belirtmek için yapılandırmada kullanılır. |
+| Url  | Olay hub'ı biçimindeki \<olay merkezinin\>url'si.servicebus.windows.net/\<olay-hub-name.\>          |
+| PaylaşılanErişimKeyName | En azından **Gönderme** yetkisine sahip olay merkezi için paylaşılan bir erişim ilkesinin adı. |
+| SharedAccessKey     | Olay merkeziiçin paylaşılan erişim ilkesinden birincil veya ikincil anahtar. |
 
-Örnek ortak ve özel konfigürasyonlar aşağıda gösterilmiştir. Bu, Olay Hub 'ı veri havuzunun nasıl yapılandırılacağını ve kullanılacağını göstermek için tek bir performans sayacı ve olay günlüğü ile en az bir yapılandırmadır. Daha karmaşık bir örnek için bkz. [Azure tanılama yapılandırma şeması](diagnostics-extension-schema-windows.md) .
+Örnek genel ve özel yapılandırmalar aşağıda gösterilmiştir. Bu, olay hub veri lavabosu nasıl yapılandırılabildiğini ve kullanılacağını göstermek için tek bir performans sayacı ve olay günlüğü içeren en az yapılandırmadır. Daha karmaşık bir örnek için [Azure Tanılama yapılandırma şemasına](diagnostics-extension-schema-windows.md) bakın.
 
-### <a name="public-configuration"></a>Ortak yapılandırma
+### <a name="public-configuration"></a>Genel yapılandırma
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Azure Tanılama her zaman günlükleri ve ölçümleri bir Azure depolama hesab�
 
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
-Veri havuzuna veri göndermek için, veri kaynağının düğümünde **havuzlar** özniteliğini belirtirsiniz. **Havuz** özniteliğini yerleştirdiğiniz yerdir, atamanın kapsamını belirler. Aşağıdaki örnekte, **havuzlar** özniteliği, tüm alt performans sayaçlarının Olay Hub 'ına gönderilmesine neden olacak **PerformanceCounters** düğümü olarak tanımlanmıştır.
+Veri lavabosuna veri göndermek için, veri kaynağının düğümünde **lavabo** özniteliğini belirtirsiniz. **Lavabo özniteliğini** nereye yerleştirdiğiniz, atamanın kapsamını belirler. Aşağıdaki örnekte, **lavabo özniteliği,** tüm alt performans sayaçlarının olay merkezine gönderilmesine neden olacak **PerformanceCounters** düğümüne tanımlanır.
 
 ```JSON
 "PerformanceCounters": {
@@ -131,7 +131,7 @@ Veri havuzuna veri göndermek için, veri kaynağının düğümünde **havuzlar
 ```
 
 
-Aşağıdaki örnekte, **havuzlar** özniteliği yalnızca bu performans sayaçlarının Olay Hub 'ına gönderilmesine neden olacak üç sayaca doğrudan uygulanır. 
+Aşağıdaki örnekte, **lavabo özniteliği** doğrudan yalnızca bu performans sayaçlarının olay merkezine gönderilmesine neden olacak üç sayaçiçin uygulanır. 
 
 ```JSON
 "PerformanceCounters": {
@@ -164,20 +164,20 @@ Aşağıdaki örnekte, **havuzlar** özniteliği yalnızca bu performans sayaçl
 }
 ```
 
-## <a name="validating-configuration"></a>Yapılandırma doğrulanıyor
-Verilerin Olay Hub 'ına gönderildiğini doğrulamak için çeşitli yöntemler kullanabilirsiniz. basit yöntem, [Azure Blob depolamada veya Azure Data Lake Storage azure Event Hubs aracılığıyla olayları yakalama](../../event-hubs/event-hubs-capture-overview.md)bölümünde açıklandığı gibi Event Hubs yakalamayı kullanmaktır. 
+## <a name="validating-configuration"></a>Yapılandırmayı doğrulama
+Verilerin olay merkezine gönderildiğini doğrulamak için çeşitli yöntemler kullanabilirsiniz. ne basit yöntem, Azure Blob Depolama veya [Azure Veri Gölü Depolama'daki Azure Olay Hub'ları aracılığıyla Yakalama etkinliklerinde](../../event-hubs/event-hubs-capture-overview.md)açıklandığı gibi Olay Hub'ları yakalamayı kullanmaktır. 
 
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs havuzları sorunlarını giderme
+## <a name="troubleshoot-event-hubs-sinks"></a>Sorun Giderme Olay Hub'ları lavabolar
 
-- Azure Tanılama yönelik Günlükler ve hatalar içeren Azure Storage Table **WADDiagnosticInfrastructureLogsTable** ' a bakın. Tek bir seçenek, bu depolama hesabına bağlanmak, bu tabloyu görüntülemek ve son 24 saat içinde zaman damgasına bir sorgu eklemek için [Azure Depolama Gezgini](https://www.storageexplorer.com) gibi bir araç kullanmaktır. Aracı, bir. csv dosyasını dışarı aktarmak ve Microsoft Excel gibi bir uygulamada açmak için kullanabilirsiniz. Excel, hangi hatanın raporlandığını görmek için **Eventhubs**gibi arama kartı dizelerini aramanızı kolaylaştırır.  
+- Azure Diagnostik'in kendisi için günlükler ve hatalar içeren AZURE Depolama tablosu **WADDiagnosticInfrastructureLogsTable'a** bakın. Seçeneklerden biri, bu depolama hesabına bağlanmak, bu tabloyu görüntülemek ve son 24 saat içinde TimeStamp için bir sorgu eklemek için [Azure Depolama Gezgini](https://www.storageexplorer.com) gibi bir araç kullanmaktır. Aracı .csv dosyasını dışa aktarmak ve Microsoft Excel gibi bir uygulamada açmak için kullanabilirsiniz. Excel, hangi hatanın bildirileni görmek için **EventHub'lar**gibi arama kartı dizelerini aramayı kolaylaştırır.  
 
-- Olay Hub 'ınızın başarıyla sağlandığını denetleyin. Yapılandırmanın **Privateconfig** bölümündeki tüm bağlantı bilgileri, portalda görüldüğü gibi kaynağınızın değerleriyle aynı olmalıdır. Portalda bir SAS ilkesinin tanımlanmış (örnekteki*Sendrule* ) olduğundan ve *gönderme* izninin verildiğinden emin olun.  
+- Olay merkezinizin başarıyla sağlanmış olduğundan denetleyin. Yapılandırmanın **PrivateConfig** bölümündeki tüm bağlantı bilgileri, kaynağınızın portalda görüldüğü gibi değerleriyle eşleşmelidir. Portalda tanımlanmış bir SAS ilkesi (örnekteki*SendRule)* olduğundan ve *Gönderme* izni verildiğinden emin olun.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Event Hubs’a genel bakış](../../event-hubs/event-hubs-about.md)
-* [Olay Hub’ı oluşturma](../../event-hubs/event-hubs-create.md)
+* [Olay Hub'larına genel bakış](../../event-hubs/event-hubs-about.md)
+* [Etkinlik merkezi oluşturma](../../event-hubs/event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](../../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->

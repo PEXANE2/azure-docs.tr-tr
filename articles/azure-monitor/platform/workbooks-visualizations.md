@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici çalışma kitabı görselleştirmeleri
-description: Metin, grafikler, ızgaralar, ağaçlar ve grafikler dahil olmak üzere tüm Azure Izleyici çalışma kitabı görselleştirme bileşenleri hakkında bilgi edinin.
+title: Azure Monitör çalışma kitabı görselleştirmeleri
+description: Metin, grafikler, ızgaralar, ağaçlar ve grafikler dahil olmak üzere tüm Azure Monitor çalışma kitabı görselleştirmeleri bileşenleri hakkında bilgi edinin.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658039"
 ---
-# <a name="azure-monitor-workbook-visualizations"></a>Azure Izleyici çalışma kitabı görselleştirmeleri
+# <a name="azure-monitor-workbook-visualizations"></a>Azure Monitör çalışma kitabı görselleştirmeleri
 
-Azure Izleyici çalışma kitapları, raporlama ihtiyaçlarınızı karşılamak için birçok farklı görselleştirme stilini destekler. Bu makalede, her görselleştirme türünün örnekleri verilmiştir.
+Azure Monitor çalışma kitapları, raporlama ihtiyaçlarınızı karşılamak için bir dizi farklı görselleştirme stilini destekler. Bu makalede, her görüntüleme türünden örnekler verilmektedir.
 
 ## <a name="text"></a>Metin
 
-Çalışma kitapları yazarların çalışma kitaplarına metin blokları eklemesine izin verir. Metin, kullanıcıların verilerinizi yorumlamasını, Bölüm başlıklarınızı vb. sağlamak için Telemetriyi insan olarak analiz edebilir.
+Çalışma kitapları, yazarların çalışma kitaplarına metin blokları eklemelerine olanak sağlar. Metin, telemetrinin insan analizi, kullanıcıların verilerinizi yorumlamasına yardımcı olacak bilgiler, bölüm başlıkları vb. olabilir.
 
 ![Apdex metin tablosunun ekran görüntüsü](./media/workbooks-visualizations/apdex.png)
 
-Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılığıyla eklenir.
+Metin, tam biçimlendirme denetimi sağlayan bir Markdown denetimi ile eklenir.
 
-![İşlenmiş tabloyu oluşturan ham Markup ekran görüntüsü](./media/workbooks-visualizations/markdown.png)
+![İşlenen tabloyu oluşturan ham işaretlemenin ekran görüntüsü](./media/workbooks-visualizations/markdown.png)
 
 ### <a name="add-a-text-control"></a>Metin denetimi ekleme
 
-1. **Düzenleme** araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir metin denetimi eklemek için **metin ekle** bağlantısını kullanın.
-3. Denetime marka ekleyin.
-4. Biçimli metni görmek için, **Düzenle** düğmesine tıklayın.
+1. İş kitabını **düzenleme** araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına metin denetimi eklemek için **metin ekle** bağlantısını kullanın.
+3. Kontrole Markdown'u ekleyin.
+4. Biçimlendirilmiş metni görmek için **Bitti Düzenleme** düğmesini tıklatın.
 
 > [!TIP]
-> Farklı biçimlendirme seçenekleri hakkında bilgi edinmek için bu [Markaşağı](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) ile bu sayfayı kullanın.
+> Farklı biçimlendirme seçenekleri hakkında bilgi edinmek için bu [Markdown hile sayfasını](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) kullanın.
 
 ## <a name="charts"></a>Grafikler
 
-Çalışma kitapları, izleme verilerinin grafik olarak sunulmasını sağlar. Desteklenen grafik türleri çizgi, çubuk, çubuk kategorik, alan, dağılım çizimleri, pasta ve saati içerir. Yazarlar, grafiğin yüksekliğini, genişliğini, renk paletini, göstergeyi, başlıkları, veri içermeyen iletiyi ve vb. özelleştirmeyi seçebilirler.
+Çalışma kitapları izleme verilerinin grafik olarak sunulmasını sağlar. Desteklenen grafik türleri satır, çubuk, çubuk kategorik, alan, dağılım çizimleri, pasta ve zaman içerir. Yazarlar grafiğin yüksekliğini, genişliğini, renk paletini, göstergeyi, başlıkları, veri olmayan iletiyi vb. özelleştirmeyi seçebilirler.
 
-Çalışma kitapları hem Günlükler hem de ölçüm veri kaynakları için grafikleri destekler. 
+Çalışma kitapları hem günlükler hem de metrik veri kaynakları için grafikleri destekler. 
 
-### <a name="adding-a-log-chart"></a>Günlük grafik ekleme
+### <a name="adding-a-log-chart"></a>Günlük grafiği ekleme
 
-1. **Düzenleme** araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın.
-3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analizinize yönelik [KQL](https://docs.microsoft.com/azure/kusto/query/) 'yi girmek için sorgu düzenleyicisini kullanın (örneğin, isteklerin eğilimi).
-5. Görselleştirmeyi şunlardan birine ayarlayın: **alan**, **çubuk**, **çubuk (kategorik)** , **çizgi**, **pasta**, **dağılım**veya **zaman**.
-6. Gerekirse daha fazla parametre belirleyin; örneğin, zaman aralığı, görselleştirme, boyut, renk paleti ve gösterge.
+1. İş kitabını **düzenleme** araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için **sorgu ekle** bağlantısını kullanın.
+3. Sorgu türünü **Günlük,** kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemeniz için [KQL'yi](https://docs.microsoft.com/azure/kusto/query/) girmek için Sorgu düzenleyicisini kullanın (örneğin, istek eğilimi).
+5. Görselleştirmeyi aşağıdakilerden birine ayarlayın: **Alan,** **Çubuk,** **Çubuk (kategorik),** **Çizgi,** **Pasta,** **Dağılım,** veya **Zaman**.
+6. Zaman aralığı, görselleştirme, boyut, renk paleti ve gösterge gibi gerekirse diğer parametreleri ayarlayın.
 
-![Düzenleme modundaki günlük grafiğinin ekran görüntüsü](./media/workbooks-visualizations/log-chart.png)
+![Günlük grafiğin edit modunda ekran görüntüsü](./media/workbooks-visualizations/log-chart.png)
 
-#### <a name="log-chart-parameters"></a>Günlük grafiği parametreleri
+#### <a name="log-chart-parameters"></a>Günlük grafik parametreleri
 
 | Parametre | Açıklama | Örnek |
 | ------------- |:-------------|:-------------|
-| `Query Type` | Kullanılacak sorgunun türü | Günlük, Azure Kaynak Grafiği vb. |
-| `Resource Type` | Hedeflenecek kaynak türü | Application Insights, Log Analytics veya Azure-önce |
-| `Resources` | Ölçüm değerinin alınacağı kaynak kümesi | MyApp1 |
-| `Time Range` | Günlük grafiğinin görüntüleneceği zaman penceresi | Son saat, son 24 saat, vb. |
-| `Visualization` | Kullanılacak görselleştirme | Alan, çubuk, çizgi, pasta, dağılım, saat, çubuk kategorik |
+| `Query Type` | Kullanılacak sorgu türü | Günlük, Azure Kaynak Grafiği vb. |
+| `Resource Type` | Hedeflenene kadar kaynak türü | Uygulama Öngörüleri, Günlük Analitiği veya Azure ilk |
+| `Resources` | Metrik değerini almak için bir kaynak kümesi | MyApp1 |
+| `Time Range` | Günlük grafiğini görüntülemek için zaman penceresi | Son saat, Son 24 saat, vb. |
+| `Visualization` | Kullanılacak görselleştirme | Alan, Çubuk, Çizgi, Pasta, Dağılım, Zaman, çubuk kategorik |
 | `Size` | Denetimin dikey boyutu | Küçük, orta, büyük veya tam |
-| `Color palette` | Grafikte kullanılacak renk paleti. Çok ölçümlü veya kesimli modda yoksayıldı. | Mavi, yeşil, kırmızı, vb. |
-| `Legend` | Gösterge için kullanılacak toplama işlevi | Değerlerin toplamı veya ortalaması ya da Max, min, First, Last değeri |
-| `Query` | Grafik görselleştirmesi tarafından beklenen biçimde veri döndüren herhangi bir KQL sorgusu | _\|-serisi istekleri = Count () varsayılan = 0 (1D) zaman damgasında şimdi (). Adım 1 sa_ |
+| `Color palette` | Grafikte kullanılacak renk paleti. Çok metrikveya parçalı modda yoksayılır. | Mavi, yeşil, kırmızı, vb. |
+| `Legend` | Gösterge için kullanılacak toplama işlevi | Değerlerin Toplamı veya Ortalaması veya Max, Min, İlk, Son değer |
+| `Query` | Grafik görselleştirme tarafından beklenen biçimde veri döndüren herhangi bir KQL sorgusu | _istekleri \| make-series Requests = count() default = 0 zaman damgası üzerinde önce(1d) şimdi() adım 1h_ |
 
-### <a name="adding-a-metric-chart"></a>Ölçüm grafiği ekleme
+### <a name="adding-a-metric-chart"></a>Metrik grafik ekleme
 
-1. **Düzenleme** araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına ölçüm denetimi eklemek için **ölçüm Ekle** bağlantısını kullanın.
-3. Kaynak türünü (örneğin, depolama hesabı), hedeflenecek kaynakları, ölçüm ad alanını ve adı ve kullanılacak toplamayı seçin.
-4. Gerekirse, daha fazla zaman aralığı, bölme, görselleştirme, boyut ve renk paleti gibi diğer parametreleri ayarlayın.
+1. İş kitabını **düzenleme** araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına metrik denetim eklemek için **metrik** ekle bağlantısını kullanın.
+3. Bir kaynak türü (örneğin, Depolama Hesabı), hedeflenene kadar kaynakları, metrik ad alanını ve adını ve kullanılacak toplamayı seçin.
+4. Gerekirse diğer parametreleri ayarlayın - zaman aralığı, bölme, görselleştirme, boyut ve renk paleti gibi.
 
-![Düzenleme modundaki ölçüm grafiğinin ekran görüntüsü](./media/workbooks-visualizations/metric-chart.png)
+![Edit modunda metrik grafiğin ekran görüntüsü](./media/workbooks-visualizations/metric-chart.png)
 
-#### <a name="metric-chart-parameters"></a>Ölçüm grafiği parametreleri
+#### <a name="metric-chart-parameters"></a>Metrik grafik parametreleri
 
 | Parametre | Açıklama | Örnek |
 | ------------- |:-------------|:-------------|
-| `Resource Type` | Hedeflenecek kaynak türü | Depolama alanı veya sanal makine. |
-| `Resources` | Ölçüm değerinin alınacağı kaynak kümesi | MyStorage1 |
-| `Namespace` | Ölçüm ile ad alanı | Depolama > blobu |
-| `Metric` | Görselleştirilecek ölçüm | Depolama > blob > Işlemleri |
-| `Aggregation` | Ölçüm için uygulanacak toplama işlevi | Toplam, sayı, ortalama, vb. |
-| `Time Range` | Ölçümün görüntüleneceği zaman penceresi | Son saat, son 24 saat, vb. |
-| `Visualization` | Kullanılacak görselleştirme | Alan, çubuk, çizgi, dağılım, kılavuz |
-| `Split By` | İsteğe bağlı olarak bir boyuttaki ölçüyü bölme | Coğrafi türe göre işlemler |
+| `Resource Type` | Hedeflenene kadar kaynak türü | Depolama veya Sanal Makine. |
+| `Resources` | Metrik değerini almak için bir kaynak kümesi | MyStorage1 |
+| `Namespace` | Metrik ile ad alanı | Depolama > Blob |
+| `Metric` | Görselleştirmek için metrik | Depolama > Blob > İşlemleri |
+| `Aggregation` | Metrik uygulamak için toplama işlevi | Toplam, Sayı, Ortalama, vb. |
+| `Time Range` | Metriğin görüntülenebilmek için zaman penceresi | Son saat, Son 24 saat, vb. |
+| `Visualization` | Kullanılacak görselleştirme | Alan, Çubuk, Çizgi, Dağılım, Izgara |
+| `Split By` | İsteğe bağlı olarak metrik bir boyut üzerinde bölme | Geo türüne göre hareketler |
 | `Size` | Denetimin dikey boyutu | Küçük, orta veya büyük |
-| `Color palette` | Grafikte kullanılacak renk paleti. `Split by` parametresi kullanılırsa yoksayıldı | Mavi, yeşil, kırmızı, vb. |
+| `Color palette` | Grafikte kullanılacak renk paleti. Parametre `Split by` kullanılırsa yoksayıldı | Mavi, yeşil, kırmızı, vb. |
 
-## <a name="grids"></a>Kılavuzları
+## <a name="grids"></a>Kılavuzlar
 
-Kılavuzlar veya tablolar, verileri kullanıcılara sunmak için yaygın bir yoldur. Çalışma kitapları kullanıcıların, raporları için zengin bir kullanıcı arabirimi sağlamak üzere kılavuzun sütunlarını tek tek tarzlarına olanak tanır.
+Izgaralar veya tablolar, kullanıcılara veri sunmanın yaygın bir yoludur. Çalışma kitapları, kullanıcıların raporları için zengin bir kullanıcı arabirimi sağlamak için ızgarasütunlarını tek tek stile biçmesine olanak sağlar.
 
-Aşağıdaki örnekte, simgeler, helemaps ve Spark-çubuklarını birleştiren ve karmaşık bilgileri sunan bir kılavuz gösterilmektedir. Çalışma kitabı ayrıca sıralama, arama kutusu ve Analize Git düğmesi de sağlar.
+Aşağıdaki örnekte, karmaşık bilgileri sunmak için simgeleri, ısı eşlemlerini ve kıvılcım çubuklarını birleştiren bir ızgara gösterilmektedir. Çalışma kitabı ayrıca sıralama, arama kutusu ve analitik gider düğmesi de sağlar.
 
-![Günlük tabanlı kılavuzun ekran görüntüsü](./media/workbooks-visualizations/grid.png)
+![Günlük tabanlı ızgaranın ekran görüntüsü](./media/workbooks-visualizations/grid.png)
 
-### <a name="adding-a-log-based-grid"></a>Günlük tabanlı kılavuz ekleme
+### <a name="adding-a-log-based-grid"></a>Günlük tabanlı ızgara ekleme
 
-1. **Düzenleme** araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın.
-3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analizinize yönelik KQL 'yi (örneğin, bir eşiğin altında belleğe sahip VM 'Ler) girmek için sorgu düzenleyicisini kullanın
-5. Görselleştirmeyi **kılavuza** ayarla
-6. Gerekirse daha fazla parametre belirleyin, örneğin, zaman aralığı, boyut, renk paleti ve gösterge.
+1. İş kitabını **düzenleme** araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için **sorgu ekle** bağlantısını kullanın.
+3. Sorgu türünü **Günlük,** kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemeniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın (örneğin, bir eşiğin altında bellek olan VM'ler)
+5. Görselleştirmeyi **Grid** olarak ayarlama
+6. Zaman aralığı, boyut, renk paleti ve gösterge gibi gerekirse diğer parametreleri ayarlayın.
 
-![Günlük tabanlı kılavuz sorgusunun ekran görüntüsü](./media/workbooks-visualizations/grid-query.png)
+![Günlük tabanlı ızgara sorgusunun ekran görüntüsü](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Parça
+## <a name="tiles"></a>Kutucuklar
 
-Kutucuklar, çalışma kitaplarında Özet verileri sunmak için çok faydalı bir yoldur. Aşağıdaki görüntüde, ayrıntılı bir kılavuzun en üstünde yer alan, uygulama düzeyi özetinin yaygın kullanım durumu gösterilmektedir.
+Kutucuklar, özet verileri çalışma kitaplarında sunmanın çok yararlı bir yoludur. Aşağıdaki resimde, ayrıntılı bir ızgaranın üstündeki uygulama düzeyi özeti gibi, ortak bir kutucuk kullanım örneği gösterilmektedir.
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/tiles-summary.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/tiles-summary.png)
 
-Çalışma kitabı kutucukları; bir başlık, alt başlık, büyük metin, simge, ölçüm tabanlı degradeler, Spark çizgisi/çubukları, alt bilgi vb. gösteren
+Çalışma kitabı kutucukları bir başlık, altyazı, büyük metin, simgeler, metrik tabanlı degradeler, kıvılcım çizgisi/çubukları, altbilgi vb. gösteren desteği destekler.
 
-### <a name="adding-a-tile"></a>Kutucuk ekleme
+### <a name="adding-a-tile"></a>Döşeme Ekleme
 
-1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın. 
-3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+1. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için **sorgu ekle** bağlantısını kullanın. 
+3. Sorgu türünü **Günlük,** kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | top 7 by Requests desc
     ```
-5. Boyutu **tam** olarak ayarla
-6. Görselleştirmeyi **döşemeler** olarak ayarlama
-7. Ayarlar bölmesini açmak için **kutucuk ayarları** düğmesine tıklayın
-8. **Döşeme alanları**' nda, şunu ayarlayın:
-    * Başlık: `name`
-    * Sol: `Requests`, Işleyici: `Big Number`, renk paleti: `Green to Red`, en düşük değer: `0`
-    * Alt: `appName`
-9. Bölmenin alt kısmındaki **Kaydet ve Kapat** düğmesine tıklayın.
+5. Boyutu **Tam** olarak ayarla
+6. Görselleştirmeyi **Kutucuklar** olarak ayarlama
+7. Ayarlar bölmesini açmak için **Döşeme Ayarları** düğmesini tıklatın
+8. **Kiremit Alanlarında**, set:
+    * Başlık:`name`
+    * Sol: `Requests`, Renderer: `Big Number`, `Green to Red`Renk Paleti: , Min Değer:`0`
+    * Alt:`appName`
+9. Bölmenin altındaki **Kaydet ve Kapat** düğmesini tıklatın.
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/tile-settings.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/tile-settings.png)
 
-Bu, kutucukların okuma modunda nasıl görüneceğini aşağıda bulabilirsiniz:
+Bu, kutucukların okuma modunda nasıl görüneceğidir:
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/tiles-read-mode.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/tiles-read-mode.png)
 
-## <a name="trees"></a>Ağaçlarında
+## <a name="trees"></a>Ağaç
 
-Çalışma kitapları ağaç kılavuzları aracılığıyla hiyerarşik görünümleri destekler. Ağaçlar, bir ayrıntıya gitme deneyimi için bazı satırların bir sonraki düzeye Genişletilebilir olmasını sağlar.
+Çalışma kitapları, ağaç ızgaraları üzerinden hiyerarşik görünümleri destekler. Ağaçlar, bazı satırların bir sonraki seviyeye genişletilebilir olmasını sağlar.
 
-Aşağıdaki örnekte, ağaç ızgarası olarak görselleştirilen kapsayıcı sistem durumu ölçümleri (çalışma kümesi boyutu) gösterilmektedir. Burada en üst düzey düğümler Azure Kubernetes Service (aks) düğümlerdir, bir sonraki düzey Pod ve son düzeyi kapsayıcılardır. Yine de sütunlarınızı bir kılavuzda (heatmap, simgeler, bağlantı) biçimlendirme yapabildiğinize dikkat edin. Bu durumda temel alınan veri kaynağı AKS günlüklerine sahip bir Log Analytics çalışma alanıdır.
+Aşağıdaki örnek, ağaç ızgarası olarak görselleştirilmiş kapsayıcı sistem durumu ölçümlerini (çalışma kümesi boyutu) gösterir. Buradaki üst düzey düğümler Azure Kubernetes Service (AKS) düğümleri, bir sonraki düzey bölmeler ve son düzey kapsayıcılar. Sütunlarınızı ızgaradaki gibi biçimlendirebildiğinize dikkat edin (ısı haritası, simgeler, bağlantı). Bu durumda altta yatan veri kaynağı AKS günlükleri ile bir Log Analytics çalışma alanıdır.
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/trees.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/trees.png)
 
-### <a name="adding-a-tree-grid"></a>Ağaç ızgarası ekleme
-1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın. 
-3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+### <a name="adding-a-tree-grid"></a>Ağaç Izgara Ekleme
+1. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için **sorgu ekle** bağlantısını kullanın. 
+3. Sorgu türünü **Günlük,** kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     requests
     | summarize Requests = count() by ParentId = appName, Id = name
@@ -171,44 +171,44 @@ Aşağıdaki örnekte, ağaç ızgarası olarak görselleştirilen kapsayıcı s
     | project Name, Kind, Requests, Id, ParentId
     | order by Requests desc
     ```
-5. Görselleştirmeyi **kılavuza** ayarla
-6. Ayarlar bölmesini açmak için **sütun ayarları** düğmesine tıklayın
-7. Alt kısımdaki **ağaç/grup ayarları** bölümünde, şunu ayarlayın:
-    * Ağaç türü: `Parent/Child`
-    * Kimlik alanı: `Id`
-    * Üst kimlik alanı: `ParentId`
-    * Genişleticiyi göster: `Name`
-    * Ağacın en üst düzeyini genişletin: `checked`
-8. Üstteki _sütunlar_ bölümünde, şunu ayarlayın:
-    * _Kimlik_ sütunu oluşturucu: `Hidden`
-    * _Üst kimlik_ -sütun oluşturucu: `Hidden`
-    * _İstek_ sütunu işleyici: `Bar`, Color: `Blue`, minimum değer: `0`
-9. Bölmenin alt kısmındaki _Kaydet ve Kapat_ düğmesine tıklayın.    
+5. Görselleştirmeyi **Grid** olarak ayarlama
+6. Ayarlar bölmesini açmak için **Sütun Ayarları** düğmesini tıklatın
+7. Alttaki **Ağaçlara/Ayarlara Göre Gruplandırma** bölümünde, ayarlayın:
+    * Ağaç Türü:`Parent/Child`
+    * Id Alanı:`Id`
+    * Üst Kimlik Alanı:`ParentId`
+    * Genişleticiüzerinde göster:`Name`
+    * Ağacın üst düzeyini genişletin:`checked`
+8. Üstteki _Sütunlar_ bölümünde, ayarlayın:
+    * _Id_ - Sütun İşleyicisi:`Hidden`
+    * _Üst Id_ - Sütun İşleyicisi:`Hidden`
+    * _İstekler_ - Sütun `Bar`İşleyicisi: , Renk: `Blue`, Minimum Değer:`0`
+9. Bölmenin altındaki _Kaydet ve Kapat_ düğmesini tıklatın.    
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/tree-settings.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/tree-settings.png)
 
-### <a name="tree-settings"></a>Ağaç ayarları
+### <a name="tree-settings"></a>Ağaç Ayarları
 
 | Ayar | Açıklama |
 |:------------- |:-------------|
-| `Id Field` | Kılavuzdaki her satırın benzersiz kimliği |
-| `Parent Id Field` | Geçerli satırın üst öğesinin kimliği |
-| `Show the expander on` | Ağaç genişleticisindeki gösterileceği sütun. Ağaç kılavuzlarında çok okunabilir olmadıklarından kimlik ve üst kimlik alanlarını gizleyebilmek yaygındır. Bunun yerine, genişletici, varlığın adı gibi daha okunabilir bir değere sahip bir alanda görünür |
-| `Expand the top level of the tree` | İşaretliyse, ağaç Kılavuzu en üst düzeyde genişletilir. Varsayılan olarak daha fazla bilgi göstermek istiyorsanız kullanışlıdır |
+| `Id Field` | Kılavuzdaki her satırın benzersiz Kimliği |
+| `Parent Id Field` | Geçerli satırın üst numarası |
+| `Show the expander on` | Ağaç genişleticinin gösterilen sütun. Ağaç ızgaralarının çok okunabildikleri nden kimlik lerini ve üst kimlik alanını gizlemeleri yaygındır. Bunun yerine, genişletici daha okunabilir değeri olan bir alanda görünür - varlığın adı gibi |
+| `Expand the top level of the tree` | İşaretlenirse, ağaç ızgarası en üst düzeyde genişletilir. Varsayılan olarak daha fazla bilgi göstermek istiyorsanız yararlı |
 
-## <a name="graphs"></a>Performansının
+## <a name="graphs"></a>Grafik
 
-Çalışma kitapları, izleme varlıkları arasındaki ilişkileri göstermek için günlüklerdeki verileri temel alarak rastgele grafikleri görselleştirmeyi destekler.
+Çalışma kitapları, izleme varlıkları arasındaki ilişkileri göstermek için günlüklerden gelen verilere dayalı rasgele grafikleri görselleştirmeyi destekler.
 
-Aşağıdaki grafikte, dış bilgisayarlardan gelen/giden çeşitli bağlantı noktaları aracılığıyla bir bilgisayarın içindeki/dışındaki veri akışı gösterilmektedir. Bu, türe (bilgisayar ile bağlantı noktası ve dış IP) göre renklendirilir ve kenar boyutları, içindeki veri akışı miktarına karşılık gelir. Temel veriler, KQL sorgu hedefleme VM bağlantılarından gelir.
+Aşağıdaki grafikte, harici bilgisayarlara/harici bilgisayarlara çeşitli bağlantı noktası üzerinden bilgisayara giriş/çıkış akan veriler gösterin. Türüne göre renklenir (bilgisayar vs port u harici IP' ye karşı) ve kenar boyutları arada akan veri miktarına karşılık gelir. Altta yatan veriler VM bağlantılarını hedefleyen KQL sorgusundan gelir.
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/graph.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/graph.png)
 
-### <a name="adding-a-graph"></a>Grafik ekleme
-1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın. 
-3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+### <a name="adding-a-graph"></a>Grafik Ekleme
+1. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için **sorgu ekle** bağlantısını kullanın. 
+3. Sorgu türünü **Günlük,** kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
@@ -230,9 +230,9 @@ Aşağıdaki grafikte, dış bilgisayarlardan gelen/giden çeşitli bağlantı n
     nodes
     | union (links)
     ```
-7. Görselleştirmeyi **grafiğe** ayarla
-8. Ayarlar bölmesini açmak için **grafik ayarları** düğmesine tıklayın
-9. Alttaki _Düzen alanlarında_ , şunu ayarlayın:
+7. Görselleştirmeyi **Grafik** olarak ayarlama
+8. Ayarlar bölmesini açmak için **Grafik Ayarları** düğmesini tıklatın
+9. Alttaki _Düzen Alanları'nda,_ ayarlayın:
     * `Node Id`: `Id`
     * `Source Id`: `SourceId`
     * `Target Id`: `TargetId`
@@ -242,15 +242,15 @@ Aşağıdaki grafikte, dış bilgisayarlardan gelen/giden çeşitli bağlantı n
     * `Coloring Type`: `Categorical`
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
-10. En üstteki _düğüm biçimi ayarları_ ' nda, şunu ayarlayın:
-    * _Popüler içerik_-sütun kullanım: `Name`, sütun oluşturucu: `Text`
-    * _Center Content_-kullanım sütunu: `Calls`, sütun oluşturucu: `Big Number`, renk paleti: `None`
-    * _Alt içerik_-kullanılacak sütun: `Kind`, sütun oluşturucu: `Text`
-10. Bölmenin alt kısmındaki _Kaydet ve Kapat_ düğmesine tıklayın.
+10. En üstteki _Düğüm Biçimi Ayarları'nda:_
+    * _En İyi İçerik_ `Name`- Kullanım Sütunu: , Sütun İşleyicisi:`Text`
+    * _Merkezi İçerik_- `Calls`Kullanım Sütunu: `Big Number`, Sütun İşleyici: , Renk Paleti:`None`
+    * _Alt İçerik_- `Kind`Kullanım Sütunu: , Sütun İşleyicisi:`Text`
+10. Bölmenin altındaki _Kaydet ve Kapat_ düğmesini tıklatın.
 
-![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/graph-settings.png)
+![Döşeme özeti görünümü ekran görüntüsü](./media/workbooks-visualizations/graph-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager çalışma kitaplarını [dağıtın](workbooks-automate.md) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
+* Çalışma kitaplarını Azure Kaynak Yöneticisi ile [dağıtın.](workbooks-automate.md)
+* Çalışma kitabı kaynaklarınıza erişimi [kontrol](workbooks-access-control.md) edin ve paylaşın.

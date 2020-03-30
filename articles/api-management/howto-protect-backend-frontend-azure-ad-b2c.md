@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C ve Azure API Management kullanarak SPA arka ucunu OAuth 2,0 ile koruyun.
-description: Azure Active Directory B2C, Azure API Management ve kolay kimlik doğrulamasını kullanarak bir API 'yi bir JavaScript SPA 'dan çağırarak, OAuth 2,0 ile bir API 'yi koruyun.
+title: Azure Active Directory B2C ve Azure API Yönetimi'ni kullanarak SPA arka ucunu OAuth 2.0 ile koruyun.
+description: Bir JavaScript SPA'dan çağrılmak üzere Azure Active Directory B2C, Azure API Yönetimi ve Easy Auth'u kullanarak Bir API'yi OAuth 2.0 ile koruyun.
 services: api-management, azure-ad-b2c, app-service
 documentationcenter: ''
 author: WillEastbury
@@ -14,93 +14,93 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475485"
 ---
-# <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
+# <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0, Azure Active Directory B2C ve Azure API Yönetimi ile SPA arka ucunu koruyun
 
-Bu senaryoda, bir API 'yi korumak için Azure API Management örneğinizi nasıl yapılandırabileceğiniz gösterilmektedir.
-Azure AD B2C ile OAuth 2,0 protokolünü kullanacağız ve EasyAuth kullanarak bir Azure Işlevleri arka ucunu güvenli hale getirmek için API Management.
+Bu senaryo, bir API'yi korumak için Azure API Yönetimi örneğini nasıl yapılandırabileceğinizi gösterir.
+EasyAuth kullanarak Bir Azure İşlevlerini arka ucunu güvence altına almak için API Yönetimi ile birlikte Azure AD B2C ile OAuth 2.0 protokolünü kullanacağız.
 
-## <a name="aims"></a>Amaçlar
-API Management, Azure Işlevleri ve Azure AD B2C ile basitleştirilmiş bir senaryoda nasıl kullanılabileceğini görebiliriz. Bir API 'yi çağıran ve Azure AD B2C kullanıcıları oturum açan bir JavaScript (JS) uygulaması oluşturacaksınız. Ardından, arka uç API 'sini korumak için API Management Validate-JWT ilke özelliklerini kullanacaksınız.
+## <a name="aims"></a>Amaçları
+Azure İşlevler ve Azure AD B2C ile API Yönetimi'nin basitleştirilmiş bir senaryoda nasıl kullanılabileceğini göreceğiz. Azure AD B2C'li kullanıcılarda işaretleyen api çağıran bir JavaScript (JS) uygulaması oluşturursunuz. Ardından, Arka Uç API'sini korumak için API Management'ın doğrulama-jwt ilkesi özelliklerini kullanırsınız.
 
-Derinlemesine savunma için, yeniden bitiş API 'SI içinde yeniden belirteç doğrulamak üzere EasyAuth ' i kullanırız.
+Derinlemesine savunma için, daha sonra arka uç API içinde tekrar belirteç doğrulamak için EasyAuth kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
-* Ön uç JS tek sayfalı uygulamayı barındırmak için bir Azure (StorageV2) Genel Amaçlı v2 depolama hesabı
-* Azure API Management örneği 
-* Çağrılan API 'yi barındırmak için boş bir Azure Işlev uygulaması (bir Windows tüketim planında v2 .NET Core çalışma zamanı 'nı çalıştıran)
-* Bir aboneliğe bağlı Azure AD B2C kiracısı 
+## <a name="prerequisites"></a>Ön koşullar
+Bu makaledeki adımları izlemek için şunları yapmış olmalısınız:
+* Ön uç JS Tek Sayfa uygulamasına ev sahipliği yapmak için bir Azure (StorageV2) Genel Amaçlı V2 Depolama Hesabı
+* Azure API Yönetimi örneği 
+* Çağrılan API'yi barındırmak için boş bir Azure İşlevi uygulaması (Windows Tüketim Planı'nda V2 .NET Core çalışma süresini çalıştırıyor)
+* Aboneleğe bağlı bir Azure AD B2C kiracısı 
 
-Uygulamada, üretim iş yüklerinde aynı bölgedeki kaynakları kullanabilirsiniz, ancak bu nasıl yapılır makalesi için dağıtım bölgesi önemli değildir.
+Uygulamada aynı bölgedeki kaynakları üretim iş yüklerinde kullanmanıza rağmen, bu nasıl yapılan makale için dağıtım bölgesi önemli değildir.
 
 ## <a name="overview"></a>Genel Bakış
-Bu işlem tamamlandıktan sonra, kullanımdaki bileşenlerin ve aralarındaki akışın bir gösterimi aşağıda verilmiştir.
-![Kullanımdaki ve Flow bileşenleri](../api-management/media/howto-protect-backend-frontend-azure-ad-b2c/image-arch.png "Kullanımdaki ve Flow bileşenleri")
+Burada kullanılan bileşenlerin bir örneği ve bu işlem tamamlandıktan sonra aralarındaki akış.
+![Kullanılan ve akışta olan bileşenler](../api-management/media/howto-protect-backend-frontend-azure-ad-b2c/image-arch.png "Kullanılan ve akışta olan bileşenler")
 
-Adımlara hızlı bir genel bakış aşağıda verilmiştir:
+Adımların hızlı bir özeti aşağıda verebilirsiniz:
 
-1. Kapsamlarla (ön uç, API Management) ve API uygulamaları ile API erişimi sağlamak Azure AD B2C oluşturun
-1. Kullanıcıların Azure AD B2C oturum açmasını sağlamak için kaydolma veya oturum açma ilkelerini oluşturun 
-1. Geliştirici konsolunda OAuth2 Kullanıcı yetkilendirmesini etkinleştirmek için yeni Azure AD B2C Istemci kimlikleri ve anahtarlarıyla API Management yapılandırın
-1. Işlev API 'sini oluşturma
-1. Yeni Azure AD B2C Istemci KIMLIĞI ve anahtarlarıyla EasyAuth 'yi etkinleştirmek ve APıM VIP 'ye kilitlemek için Işlev API 'sini yapılandırın 
-1. API Management içinde API tanımını oluşturma
-1. API Management API yapılandırması için Oauth2 ayarlama
-1. **CORS** ilkesini ayarlama ve her gelen Istek için OAuth belirtecini doğrulamak üzere **Validate-JWT** ilkesini ekleme
-1. API 'YI kullanmak için çağıran uygulamayı oluşturun
-1. JS SPA örneğini karşıya yükle
-1. Örnek JS Istemci uygulamasını yeni Azure AD B2C Istemci KIMLIĞI ve anahtarlarıyla yapılandırın 
-1. Istemci uygulamasını test etme
+1. Kapsamları olan Azure AD B2C Arama (Frontend, API Yönetimi) ve API Uygulamaları oluşturun ve API Erişimi verir
+1. Kullanıcıların Azure AD B2C ile oturum açmalarına olanak sağlamak için oturum açma veya oturum açma ilkeleri oluşturun 
+1. Geliştirici Konsolunda OAuth2 kullanıcı yetkilendirmesini etkinleştirmek için API Yönetimini yeni Azure AD B2C İstemci işleri ve anahtarlarıyla yapım
+1. İşlev API'sini oluşturma
+1. İşlev API'sini easyAuth'u yeni Azure AD B2C İstemci Kimliği ve Anahtarları ile etkinleştirecek şekilde yapılandırın ve APIM VIP'ye kilitleyin 
+1. API Yönetiminde API Tanımını Oluşturma
+1. API Yönetimi API yapılandırması için Oauth2'yi ayarlama
+1. **CORS** ilkesini ayarlayın ve gelen her istek için OAuth belirteci doğrulamak için **doğrulama-jwt** ilkesini ekleyin
+1. API'yi tüketmek için arama uygulaması oluşturma
+1. JS SPA Örneğini Yükleyin
+1. Örnek JS İstemci Uygulamasını yeni Azure AD B2C İstemci Kimliği ve anahtarlarıyla yapılandırın 
+1. İstemci Uygulamasını Test Edin
 
-## <a name="configure-azure-ad-b2c"></a>Azure AD B2C Yapılandır 
-Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygulayın.
+## <a name="configure-azure-ad-b2c"></a>Azure AD B2C'yi yapılandırma 
+Portaldaki Azure AD B2C bıçağını açın ve aşağıdaki adımları yapın.
 1. **Uygulamalar** sekmesini seçin 
-1. Aşağıdaki amaçlar için ' Ekle ' düğmesine tıklayın ve üç uygulama oluşturun
-   * Ön uç Istemcisi.
-   * Arka uç Işlev API 'SI.
-   * Seçim API Management geliştirici portalı (Azure API Management 'yi tüketim katmanında çalıştırmadığınız müddetçe daha sonra bu senaryoya daha fazla).
-1. Tüm 3 uygulamalar için WebApp/Web API 'yi ayarlayın ve yalnızca ön uç Istemcisi için ' örtük akışa Izin ver ' öğesini Evet olarak ayarlayın.
-1. Şimdi uygulama KIMLIĞI URI 'sini ayarlayın, benzersiz bir öğe seçin ve oluşturulmakta olan hizmetle ilgili bir seçim yapın.
-1. Artık https://localhostgibi yanıt URL 'leri için yer tutucuları kullanın, bu URL 'leri daha sonra güncelleştireceğiz.
-1. ' Oluştur ' düğmesine tıklayın ve yukarıdaki üç uygulamanın her biri için 2-5 adımlarını yineleyin, sonra da her üç uygulama için AppID URI 'sini, adı ve uygulama KIMLIĞINI daha sonra kullanmak üzere kaydetme.
-1. Uygulamalar listesinden API Management geliştirici portalı uygulamasını açın ve *anahtarlar* sekmesini seçin (Genel altında) ve ardından ' anahtar oluştur ' düğmesine tıklayarak bir kimlik doğrulama anahtarı oluşturun
-1. Kaydet 'e tıklandıktan sonra anahtarı daha sonra kullanılmak üzere güvenli bir yere kaydedin-bu anahtarı görüntülemek ve kopyalamak için alacağınız tek şans olduğunu unutmayın.
-1. Şimdi *yayımlanan kapsamlar* sekmesini SEÇIN (API erişimi altında)
-1. Işlev API 'niz için bir kapsam oluşturup adlandırın, kapsamı kaydedin ve tam kapsam değerini ve ardından ' Kaydet 'e tıklayın.
+1. 'Ekle' düğmesini tıklatın ve aşağıdaki amaçlar için üç uygulama oluşturun
+   * Frontend Müşterisi.
+   * Arka uç işlevi API'si.
+   * [İsteğe bağlı] API Yönetimi geliştirici portalı (tüketim katmanında Azure API Yönetimi'ni çalıştırdığınız sürece, daha sonra bu senaryohakkında daha fazla şey bulabilirsiniz).
+1. Tüm 3 uygulama için WebApp / Web API'yi ayarlayın ve yalnızca Frontend İstemci için 'Örtülü akışa izin verin'i evet olarak ayarlayın.
+1. Şimdi App ID URI'yi ayarlayın, oluşturulan hizmetle ilgili benzersiz ve alakalı bir şey seçin.
+1. Şimdilik yanıt urlleri için yer tutucular kullanın, https://localhostbu url'leri daha sonra güncelleştireceğiz.
+1. Yukarıdaki üç uygulamanın her biri için 'Oluştur'u tıklatın ve ardından yukarıdaki üç uygulamanın her biri için 2-5 adımlarını tekrarlayın ve üç uygulama için daha sonra kullanmak üzere AppID URI, ad ve Uygulama Kimliği'ni kaydedin.
+1. UYGULAMA listesinden API Yönetimi Geliştirici Portalı Uygulamasını açın ve *Anahtarlar* sekmesini seçin (Genel altında) ardından auth tuşu oluşturmak için 'Anahtar Oluştur'u tıklatın
+1. Kaydet'i tıklattıktan sonra, anahtarı daha sonra kullanmak için güvenli bir yere kaydedin - bu yerin bu anahtarı görüntülemek ve kopyalamak için tek şans olduğunu unutmayın.
+1. Şimdi *Yayımlanmış Kapsamlar* Sekmesini seçin (API Erişimi altında)
+1. İşlev API'niz için bir kapsam oluşturun ve adlandırın ve Kapsam ve doldurulan Tam Kapsam Değerini kaydedin ve ardından 'Kaydet'i tıklatın.
    > [!NOTE]
-   > Azure AD B2C kapsamları, API 'lerinizin API erişimi dikey penceresi aracılığıyla, diğer uygulamaların uygulama izinlerini, sizin de yalnızca adlandırılmış API 'niz için sizin oluşturduğunuz etkin bir şekilde bir şekilde oluşturabilebileceği etkin izinlere sahiptir.
-1. Diğer iki uygulamayı açın ve ardından *API erişimi* sekmesini bulun.
-1. Bunlara arka uç API kapsamına erişim izni verin ("kullanıcının profiline erişme").
-1. Bir kimlik doğrulama anahtarı oluşturmak ve bu anahtarları daha sonra güvenli bir yerde kaydetmek için, her biri ' genel ' altındaki *anahtarlar* sekmesini seçerek bir anahtar oluşturun.
+   > Azure AD B2C kapsamları, API'nizde, diğer uygulamaların uygulamalarından API erişim bıçağı aracılığıyla erişim isteyebileceği etkin izinlerdir ve etkili bir şekilde, çağrılan API'niz için uygulama izinleri oluşturdunuz.
+1. Diğer iki uygulamayı açın ve ardından *API Access* sekmesinin altına bakın.
+1. Onlara arka uç API kapsamına ve zaten orada olan varsayılan kapsamına erişim izni ver ("Kullanıcının profiline erişin").
+1. Auth tuşu oluşturmak ve bu anahtarları daha sonra güvenli bir yere kaydetmek için 'General' altındaki *Keys* sekmesini seçerek her biri için bir anahtar oluşturun.
 
-## <a name="create-a-sign-up-or-sign-in-user-flow"></a>"Kaydolma veya oturum açma" Kullanıcı akışı oluşturma
-1. Azure AD B2C dikey penceresinin köküne (veya ' genel bakış ') dön 
-1. Ardından "Kullanıcı Akışları (Ilkeler)" öğesini seçin ve "Yeni Kullanıcı akışı" seçeneğine tıklayın
-1. ' Kaydol ve oturum aç ' Kullanıcı akış türünü seçin
-1. İlkeye bir ad verin ve daha sonra için kaydedin.
-1. Ardından ' kimlik sağlayıcıları ' altında ' Kullanıcı KIMLIĞI kaydolma ' seçeneğini işaretleyin (Bu durum ' e-posta kaydı ') ve Tamam ' a tıklayabilirsiniz. 
-1. ' Kullanıcı öznitelikleri ve talepler ' altında ' daha fazla göster... ' seçeneğine tıklayın. daha sonra kullanıcılarınızın girmesini ve belirtece döndürülmesini istediğiniz talep seçeneklerini belirleyin. Toplamak ve döndürmek için en azından ' görünen ad ' ve ' e-posta adresi ' seçeneğini işaretleyin ve ' Tamam 'a tıklayın, sonra ' oluştur ' seçeneğine tıklayın.
-1. Listede oluşturduğunuz ilkeyi seçin, sonra ' Kullanıcı akışını Çalıştır ' düğmesine tıklayın.
-1. Bu eylem kullanıcı akışını Çalıştır dikey penceresini açacak, ön uç uygulamasını seçtiğinizde, ardından ' etki alanı Seç ' için açılan menü altında gösterilen b2clogin.com etki alanının adresini kaydeder.
-1. En üstteki bağlantıya tıklayarak ' iyi bilinen OpenID yapılandırma uç noktasını açın ve authorization_endpoint ve token_endpoint değerlerini iyi bilinen OpenID yapılandırma uç noktası olarak bağlantı değerine kaydedin.
+## <a name="create-a-sign-up-or-sign-in-user-flow"></a>"Kaydol veya Kaydol" kullanıcı akışı oluşturma
+1. Azure AD B2C Blade'in köküne (Veya 'Genel Bakış'a' dön 
+1. Ardından "Kullanıcı Akışları (İlkeler)" seçeneğini belirleyin ve "Yeni kullanıcı akışı"na tıklayın
+1. 'Kaydolun ve oturum açın' kullanıcı akış türünü seçin
+1. İlkeye bir ad verin ve daha sonra kaydedin.
+1. Ardından 'Kimlik sağlayıcıları' altında 'Kullanıcı Kimliği kaydolun' seçeneğini işaretleyin (bu durum 'E-posta yla kaydol' olarak dalanabilir) ve Tamam'ı tıklatın. 
+1. 'Kullanıcı Öznitelikleri ve talepleri' altında 'Daha Fazlasını Göster...' seçeneğini tıklayın. ardından, kullanıcılarınızın girmesini istediğiniz ve belirteciolarak iade edilen talep seçeneklerini seçin. Toplamak ve geri dönmek için en az 'Görüntüadı' ve 'E-posta Adresi'ni işaretleyin ve 'Tamam'ı tıklatın ve ardından 'Oluştur'u tıklatın.
+1. Listede oluşturduğunuz ilkeyi seçin ve ardından 'Kullanıcı akışını çalıştır' düğmesini tıklatın.
+1. Bu eylem çalıştırılabilen kullanıcı akış bıçağını açar, ön uç uygulamasını seçer ve ardından açılan b2clogin.com etki alanının adresini 'Etki alanı seçin' için açılır alan adı altında kaydeder.
+1. 'İyi bilinen openid yapılandırma bitiş noktasını' açmak için üstteki bağlantıyı tıklatın ve authorization_endpoint ve token_endpoint değerlerinin yanı sıra bağlantının değerini iyi bilinen openid yapılandırma bitiş noktası olarak kaydedin.
 
    > [!NOTE]
-   > B2C Ilkeleri, farklı veri bileşenleri yakalamak ve kullanıcıların farklı yollarla oturum açabilmek için Azure AD B2C oturum açma uç noktalarını kullanıma sunlamanızı sağlar. Bu durumda, iyi bilinen bir yapılandırma uç noktası sunan bir kaydolma veya oturum açma uç noktası yapılandırdık, özellikle oluşturulan ilkeniz p = parametresi tarafından URL 'de tanımlandı.
+   > B2C İlkeleri, farklı veri bileşenlerini yakalayabilmek ve kullanıcıları farklı şekillerde oturum açabilmek için Azure AD B2C giriş uç noktalarını ortaya çıkarmanızı sağlar. Bu durumda, iyi bilinen bir yapılandırma bitiş noktasını ortaya çıkaran bir kayıt veya oturum açma bitiş noktasını yapılandırdık, özellikle oluşturulan politikamız URL'de p= parametresi tarafından tanımlandı.
    > 
-   > Bu işlem yapıldıktan sonra, artık kullanıcıları birden çok uygulamada imzalayabileceğiniz bir sektör kimliği platformu olan işlevsel bir Işletmeniz vardır. 
-   > İsterseniz ' Kullanıcı akışını Çalıştır ' düğmesine tıklayabilirsiniz (kaydolma veya oturum açma işlemine ulaşmak için) ve uygulamada ne yapacaklarına ilişkin bir fikir edinebilirsiniz, ancak uygulama henüz dağıtılmadığı için uçtaki yeniden yönlendirme adımı başarısız olur.
+   > Bu yapıldıktan sonra , artık birden fazla uygulama içine kullanıcıları imzalayacak işlevsel bir İş tüketici kimlik platformu var. 
+   > İsterseniz burada 'Kullanıcı akışını çalıştır' düğmesini tıklatabilir (kaydolma veya oturum açma işleminden geçmek için) ve uygulamada ne yapacağını anlayabilir, ancak uygulama henüz dağıtılmadı gibi sonunda yeniden yönlendirme adımı başarısız olacaktır.
 
-## <a name="build-the-function-api"></a>İşlev API 'sini oluşturma
-1. Aboneliğinizdeki öğeleri yeniden yapılandırabilmemiz için Azure portal standart Azure AD kiracınıza geri dönün 
-1. Azure portal Işlev uygulamaları dikey penceresine gidin, boş işlev uygulamanızı açın, sonra hızlı başlangıç yoluyla yeni bir portal Içi ' Web kancası + API ' işlevi oluşturun.
-1. Aşağıdaki örnek kodu, görüntülenen varolan kodun üzerinde. CSX öğesine yapıştırın.
+## <a name="build-the-function-api"></a>İşlev API'sini oluşturun
+1. Aboneliğinizdeki öğeleri yeniden yapılandırabilmemiz için Azure portalındaki standart Azure AD kiracınıza geri dön 
+1. Azure portalının İşlev Uygulamaları bıçağına gidin, boş işlev uygulamanızı açın ve hızlı başlangıç yoluyla yeni bir Portal Içi 'Webhook + API' işlevi oluşturun.
+1. Örnek kodu aşağıdan Run.csx'e görünen varolan kodun üzerine yapıştırın.
 
    ```csharp
    
@@ -118,10 +118,10 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
    ```
 
    > [!NOTE]
-   > Yeni yapıştırdığınız c# betiği işlev kodu yalnızca bir satırı işlevler günlüklerine kaydeder ve bazı dinamik veriler (Tarih ve saat) ile "Merhaba Dünya" metnini döndürür.
+   > Az önce yapıştırdığınız c# komut dosyası işlev kodu, bir satırı işlev günlüklerine kaydeder ve bazı dinamik verilerle (tarih ve saat) "Hello World" metnini döndürür.
 
-3. Sol taraftaki dikey penceredeki "tümleştir" seçeneğini belirleyin ve ardından bölmenin sağ üst köşesindeki ' Gelişmiş Düzenleyici ' öğesini seçin.
-4. Örnek kodu var olan JSON üzerine yapıştırın.
+3. Sol bıçaktan "Tümleştir"i seçin ve bölmenin sağ üst köşesindeki "Gelişmiş Düzenleyici"yi seçin.
+4. Aşağıdaki örnek kodu varolan json'un üzerine yapıştırın.
 
    ```json
    {
@@ -145,76 +145,76 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
    }
    ```
 
-5. HttpTrigger1 sekmesine dönün, ' Işlev URL 'SI Al ' seçeneğine tıklayın, ardından görüntülenen URL 'YI kopyalayın.
+5. HttpTrigger1 sekmesine geri dön, 'İşlev URL'sini Al'ı tıklatın ve ardından görünen URL'yi kopyalayın.
 
    > [!NOTE]
-   > Az önce oluşturduğunuz bağlamalar, yalnızca yeni kopyaladığınız URL 'ye anonim HTTP GET isteklerini yanıtlamak için IŞLEVLERE söyleyecektir. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) artık çok basit bir yük döndürmekte olan ölçeklenebilir bir sunucusuz https API 'siyle karşılaştık.
-   > Artık bu API 'yi yukarıdaki URL 'YI kullanarak bir Web tarayıcısından çağırmayı test edebilirsiniz. Ayrıca, URL 'nin? Code = gizli bölümünü de açabilir ve Azure Işlevlerinin bir 401 hatası döndürmesini kanıtlayabilirsiniz.
+   > Az önce oluşturduğunuz ciltler, Fonksiyonlar'a anonim http GET isteklerini kopyaladığınız URL'ye yanıtlamalarını söylemeniz yeterlidir. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) Şimdi çok basit bir yük döndürme yeteneğine sahip bir ölçeklenebilir sunucusuz https API var.
+   > Artık yukarıdaki URL'yi kullanarak bu API'yi bir web tarayıcısından çağırmayı test edebilir, URL'nin ?code=secret bölümünü de silebilir ve Azure Fonksiyonları'nın 401 hata döndüreceğini kanıtlayabilirsiniz.
 
-## <a name="configure-and-secure-the-function-api"></a>İşlev API 'sini yapılandırma ve koruma
-1. İşlev uygulamasındaki iki ek alanın yapılandırılması gerekir (kimlik doğrulama ve ağ kısıtlamaları).
-1. Kimlik doğrulama/yetkilendirme yapılandırmam, bu nedenle, genel bakış sayfasını göstermek için işlev uygulamasının adına (&lt;Z&gt; işlevleri simgesinin yanında) tıklayın.
-1. Sonra ' platform özellikleri ' sekmesini seçin ve ' kimlik doğrulama/yetkilendirme ' seçeneğini belirleyin.
-1. App Service kimlik doğrulaması özelliğini açın.
-1. ' Kimlik doğrulama sağlayıcıları ' altında ' Azure Active Directory ' öğesini seçin ve yönetim modu anahtarından ' Advanced ' öğesini seçin.
-1. Arka uç Işlev API 'sinin uygulama KIMLIĞINI (Azure AD B2C ' Istemci KIMLIĞI ' kutusuna) yapıştırın
-1. En Iyi bilinen açık kimlik yapılandırma uç noktasını, verenin URL 'SI kutusuna kaydolma veya oturum açma ilkesinden (Bu yapılandırmayı daha önce kaydettik) yapıştırın.
-1. Tamam ' ı seçin.
-1. İsteğin kimliği doğrulanmamış açılan menü açılır listesini "Azure Active Directory ile oturum aç" olarak ayarlayın ve Kaydet ' e tıklayın.
-
-   > [!NOTE]
-   > Artık Işlev API 'niz dağıtılır ve doğru anahtar sağlanmazsa 401 yanıt vermelidir ve geçerli bir istek sunulursa verileri döndürmelidir.
-   > Kimliği doğrulanmamış istekleri işlemek için ' Azure AD Ile oturum aç ' seçeneğini yapılandırarak EasyAuth 'e ek derinlemesine savunma güvenliği ekledik. Bu işlem arka uç İşlev Uygulaması ve ön uç SPA arasındaki yetkisiz istek davranışını değiştirecek ve EasyAuth, 401 yetkili olmayan bir yanıt yerine AAD 'ye bir 302 yeniden yönlendirme yayınlacağına dikkat edin. bunu API Management daha sonra kullanarak düzeltebiliriz.
-   > Hala bir IP güvenliği uygulanamadığından, geçerli bir anahtarınız ve OAuth2 belirteciniz varsa, herkes bunu her yerde çağırabilir ve tüm isteklerin API Management aracılığıyla gelmesini zorlamak istiyoruz.
-   > API Management tüketim katmanını kullanıyorsanız, söz konusu katman için adanmış bir statik IP olmadığından, bu kilidi VIP tarafından gerçekleştiremezsiniz, paylaşılan gizli dizi işlev anahtarı aracılığıyla API aramalarınızı kilitleme yöntemine bağlı olmanız gerekir , bu nedenle 11-13 adımları mümkün olmayacaktır.
-
-1. ' Kimlik doğrulama/yetkilendirme ' dikey penceresini kapat 
-1. ' Ağ ' ' ı seçin ve sonra ' erişim kısıtlamaları ' ' nı seçin
-1. Ardından, izin verilen işlev uygulaması IP 'lerini API Management örneği VIP 'sine kilitleyin. Bu VIP, portalın API yönetimi-genel bakış bölümünde gösterilir.
-1. İşlevler portalı ile etkileşime devam etmek ve aşağıdaki isteğe bağlı adımları uygulamak istiyorsanız, kendi genel IP adresinizi veya CıDR aralığınızı da buraya eklemeniz gerekir.
-1. Listede bir izin verme girişi olduğunda Azure, diğer tüm adresleri engellemek için örtük bir reddetme kuralı ekler. 
-
-IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. API Management VIP gibi tek bir adres eklemeniz gerektiğinde, bunu xx. xx. xx. xx biçiminde eklemeniz gerekir.
+## <a name="configure-and-secure-the-function-api"></a>İşlev API'sini yapılandırma ve güvenli hale getirmesi
+1. İşlev uygulamasındaki iki ekstra alanın (Auth ve Network Restrictions) yapılandırılması gerekir.
+1. Öncelikle Kimlik Doğrulama / Yetkilendirme'yi yapılandıralım, bu nedenle genel bakış &lt;sayfasını&gt; göstermek için işlev uygulamasının adını (Z işlevleri simgesinin yanında) tıklayın.
+1. Sonraki 'Platform özellikleri' sekmesini seçin ve 'Kimlik Doğrulama / Yetkilendirme'yi seçin.
+1. Uygulama Hizmeti Kimlik Doğrulaması özelliğini açın.
+1. 'Kimlik Doğrulama Sağlayıcıları' altında 'Azure Etkin Dizini'ni seçin ve Yönetim Modu anahtarından 'Gelişmiş' seçeneğini belirleyin.
+1. Arka uç işlevi API'sinin uygulama kimliğini (Azure AD B2C'den 'İstemci Kimliği' kutusuna) yapıştırın
+1. İyi bilinen açık kimlik yapılandırma bitiş noktasını kaydokuldan yapıştırın veya ilkeyi Veren URL kutusuna kaydedin (bu yapılandırmayı daha önce kaydetmiştik).
+1. Tamam'ı seçin.
+1. İstek kimlik doğrulaması olmadığında Eylem'i "Azure Etkin Diziniyle Oturum Aç"a ayarlayın ve ardından Kaydet'i tıklatın.
 
    > [!NOTE]
-   > Artık Işlev API 'niz, API Yönetimi veya adresiniz aracılığıyla değil herhangi bir yerden çağrılabilir olmamalıdır.
+   > Şimdi İşlev API'niz dağıtıldı ve doğru anahtar sağlandığı takdirde 401 yanıt atmalı ve geçerli bir istek sunulduğunda verileri döndürmelidir.
+   > EasyAuth'ta, kimliği doğrulanmamış istekleri işlemek için 'Azure AD ile Giriş' seçeneğini yapılandırarak ayrıntılı savunma güvenliği eklediniz. EasyAuth 401 Yetkili Olmayan yanıt yerine AAD'ye 302 yönlendirmesi yapacağından, bunun Backend İşlev Uygulaması ve Frontend SPA arasındaki yetkisiz istek davranışını değiştireceğini unutmayın, bunu daha sonra API Yönetimi'ni kullanarak düzelteceğiz.
+   > Geçerli bir anahtarınız ve OAuth2 jetonu varsa, geçerli bir anahtarınız ve OAuth2 jetonu varsa, herkes bunu her yerden arayabilir - ideal olarak tüm istekleri API Yönetimi üzerinden gelmeye zorlamak istiyoruz.
+   > API Yönetimi tüketim katmanını kullanıyorsanız, bu katman için özel statik BIR IP olmadığı için VIP tarafından bu kilitlemeyi gerçekleştiremeceksiniz, paylaşılan gizli işlev anahtarı aracılığıyla API çağrılarınızı kilitleme yöntemine güvenmeniz gerekir , bu nedenle 11-13 adımları mümkün olmayacaktır.
+
+1. 'Kimlik Doğrulama / Yetkilendirme' bıçağını kapatın 
+1. 'Ağ' seçeneğini seçin ve ardından 'Erişim Kısıtlamaları'nı seçin
+1. Ardından, izin verilen işlev uygulaması IP'lerini API Yönetimi örneği VIP'ye kilitleyin. Bu VIP, portalın API yönetimi - genel bakış bölümünde gösterilir.
+1. İşlevportalı ile etkileşime devam etmek ve aşağıdaki isteğe bağlı adımları gerçekleştirmek istiyorsanız, burada da kendi genel IP adresinizi veya CIDR aralığını eklemeniz gerekir.
+1. Listede izin girişi olduğunda, Azure diğer tüm adresleri engellemek için örtülü bir reddet kuralı ekler. 
+
+IP kısıtlamaları paneline CIDR biçimlendirilmiş adres blokları eklemeniz gerekir. API Management VIP gibi tek bir adres eklemeniz gerektiğinde xx.xx.xx.xx biçiminde eklemeniz gerekir.
+
+   > [!NOTE]
+   > Artık İşlev API'niz API yönetimi veya adresiniz dışında herhangi bir yerden çağrılabilir olmamalıdır.
    
-## <a name="import-the-function-app-definition"></a>İşlev uygulaması tanımını içeri aktarma
-1. *API Management dikey penceresini*açın ve sonra *örneğinizi*açın.
-1. Örneğinizin API Management bölümündeki API dikey penceresini seçin.
-1. ' Yeni bir API Ekle ' bölmesinden ' İşlev Uygulaması ' öğesini seçin ve ardından açılan pencerenin üst kısmından ' tam ' seçeneğini belirleyin.
-1. Araştır ' a tıklayın, içinde API barındırmakta olduğunuz işlev uygulamasını seçin ve Seç ' e tıklayın.
-1. API 'ye API Management iç kullanımı için bir ad ve açıklama verin ve bunu ' sınırsız ' ürüne ekleyin.
-1. Daha sonra kullanmak için temel URL 'YI kaydettiğinizden emin olun ve ardından Oluştur ' a tıklayın.
+## <a name="import-the-function-app-definition"></a>İşlev uygulaması tanımını alma
+1. *API Management bıçağını*açın, ardından *örneğini*açın.
+1. Örneğinizin API Yönetimi bölümünden API Blade'i seçin.
+1. 'Yeni API Ekle' bölmesinden 'İşlev Uygulaması'nı seçin ve açılan pencerenin üst kısmından 'Tam' seçeneğini belirleyin.
+1. Gözat'ı tıklatın, içinde API barındırdığınız işlev uygulamasını seçin ve seç'e tıklayın.
+1. API'ye API Yönetimi'nin dahili kullanımı için bir ad ve açıklama verin ve 'sınırsız' Ürüne ekleyin.
+1. Daha sonra kullanmak üzere temel URL'yi kaydettiğinizden ve ardından oluştur'u tıklattığınızdan emin olun.
 
-## <a name="configure-oauth2-for-api-management"></a>API Management için Oauth2 yapılandırma
+## <a name="configure-oauth2-for-api-management"></a>API Yönetimi için Oauth2'yi yapılandırın
 
-1. Sonra, güvenlik sekmesinden OAuth 2,0 dikey penceresini seçin ve ' Ekle ' seçeneğine tıklayın.
-1. Eklenen OAuth uç noktası için *görünen ad* ve *Açıklama* değerlerini verin (Bu değerler bir sonraki adımda Oauth2 uç noktası olarak görünür).
-1. Bu değer kullanılmayabilmeniz için, Istemci kayıt sayfası URL 'sine herhangi bir değer girebilirsiniz.
-1. *Örtük kimlik doğrulama* izin türünü denetleyin ve yetkilendirme kodu verme türünü işaretli olarak bırakın.
-1. *Yetkilendirme* ve *belirteç* uç noktası alanlarına gidin ve daha önce iyi bilinen yapılandırma XML belgesinden yakaladığınız değerleri girin.
-1. Aşağı kaydırın ve ' Resource ' adlı *ek gövde parametresini* Azure AD B2C uygulama kaydından arka uç işlev API 'SI istemci kimliği ile doldurun
-1. ' Istemci kimlik bilgileri ' ni seçin, Istemci KIMLIĞINI geliştirici konsolu uygulamasının uygulama KIMLIĞI olarak ayarlayın-tüketim API Management modelini kullanıyorsanız bu adımı atlayın.
-1. Istemci parolasını daha önce kaydettiğiniz anahtara ayarlayın-tüketim API Management modelini kullanıyorsanız bu adımı atlayın.
-1. Son olarak, artık daha sonra kullanılmak üzere API Management kimlik doğrulama kodu verme redirect_uri kaydeder.
+1. Ardından, Güvenlik Sekmesinden Oauth 2.0 bıçağını seçin ve 'Ekle'yi tıklatın
+1. Eklenen Oauth Endpoint için *Ekran Adı* ve *Açıklama* için değerler verin (bu değerler bir sonraki adımda Oauth2 bitiş noktası olarak gösterecektir).
+1. Bu değer kullanılmayabileceğinden, Müşteri kayıt sayfası URL'sindeki herhangi bir değeri girebilirsiniz.
+1. Örtülü *Auth* Grant türünü kontrol edin ve Yetkilendirme kodu hibe türünü işaretli bırakın.
+1. *Yetkilendirme* ve *Token* uç noktası alanlarına taşıyın ve daha önce bilinen yapılandırma xml belgesinden yakaladığınız değerleri girin.
+1. Azure AD B2C App kaydından Backend Function API istemci kimliğiyle 'kaynak' adı verilen *ek gövde parametresi* aşağı kaydırın ve doldurulun
+1. 'İstemci kimlik bilgileri'ni seçin, Müşteri Kimliğini Geliştirici konsol uygulamasının uygulama kimliğine ayarlayın - tüketim API Yönetimi modelini kullanıyorsanız bu adımı atlayın.
+1. İstemci Sırrını daha önce kaydettiğiniz anahtara ayarlayın - tüketim API Yönetimi modelini kullanıyorsanız bu adımı atlayın.
+1. Son olarak, daha sonra kullanmak üzere API Management'ın auth kod hibesinin redirect_uri kaydedin.
 
-## <a name="set-up-oauth2-for-your-api"></a>API 'niz için Oauth2 ayarlama
-1. API 'niz portalın sol tarafında ' tüm API 'Ler ' bölümünde görünür, API 'nizi tıklayarak açın.
-1. ' Ayarlar ' sekmesini seçin.
-1. Ayarlarınızı, kullanıcı yetkilendirmesi radyo düğmesinden "OAuth 2,0" seçerek güncelleştirin.
-1. Daha önce tanımladığınız OAuth sunucusunu seçin.
-1. ' Kapsamı geçersiz kıl ' onay kutusunu işaretleyin ve arka uç API çağrısı için kaydettiğiniz kapsamı daha önce üzerinde girin.
+## <a name="set-up-oauth2-for-your-api"></a>API'niz için Oauth2'yi ayarlayın
+1. API'niz portalın sol tarafında 'Tüm API'ler' bölümünün altında görünür, üzerine tıklayarak API'nizi açar.
+1. 'Ayarlar' Sekmesini seçin.
+1. Kullanıcı yetkilendirme radyo düğmesinden "Oauth 2.0" seçeneğini seçerek ayarlarınızı güncelleyin.
+1. Daha önce tanımladığınız Oauth sunucusunu seçin.
+1. 'Kapsamı geçersiz kılma' onay kutusunu işaretleyin ve daha önce arka uç API çağrısı için kaydettiğiniz kapsamı girin.
 
    > [!NOTE]
-   > Artık Azure AD B2C ' dan erişim belirteçlerine nasıl yetki vereceğiz ve Oauth2 Azure Active Directory B2C yapılandırmanızı nasıl anlayacağını bilen bir API Management örneğidir.
+   > Artık, istekleri yetkilendirmek için Azure AD B2C'den jetonlara nasıl erişebileceğimizi bilen ve Oauth2 Azure Active Directory B2C yapılandırmamızı anlayan bir API Yönetimi örneğimiz var.
 
-## <a name="set-up-the-cors-and-validate-jwt-policies"></a>**CORS** ve **Validate-JWT** ilkelerini ayarlama
+## <a name="set-up-the-cors-and-validate-jwt-policies"></a>**CORS'i** ayarlayın ve **doğrulayın-jwt ilkelerini**
 
-> Aşağıdaki bölümler, kullanılan APıM katmanının ne olursa olsun gelmelidir. 
+> Kullanılan APIM katmanına bakılmaksızın aşağıdaki bölümler izlenmelidir. 
 
-1. Tasarım sekmesine geri dönün ve "tüm API 'Ler" i seçin, sonra da ilke düzenleyicisini göstermek için kod görünümü düğmesine tıklayın.
-1. Gelen bölümünü düzenleyin ve aşağıdaki XML 'yi şöyle olacak şekilde yapıştırın.
+1. Tasarım sekmesine geri dön ve "Tüm API'ler"i seçin ve ardından ilke düzenleyicisini göstermek için kod görünümü düğmesini tıklatın.
+1. Gelen bölümü edin ve aşağıdaki gibi okunsın şekilde aşağıdaki xml yapıştırın.
 
    ```xml
    <inbound>
@@ -242,56 +242,56 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
        </cors>
    </inbound>
    ```
-1. OpenID-config URL 'sini, oturum açma veya kaydolma ilkesi için iyi bilinen Azure AD B2C uç noktası ile eşleşecek şekilde düzenleyin.
-1. Talep değerini, arka uç API 'SI uygulamasının istemci KIMLIĞI olarak da bilinen geçerli uygulama KIMLIĞIYLE eşleşecek şekilde düzenleyin ve kaydedin.
+1. Kaydolma veya oturum açma ilkesi için tanınmış Azure AD B2C bitiş noktanıza uyacak şekilde openid-config url'sini edin.
+1. Arka uç API uygulaması için istemci kimliği olarak da bilinen geçerli uygulama kimliğiyle eşleşecek şekilde talep değerini edin ve kaydedin.
 
    > [!NOTE]
-   > Artık API Yönetimi, JS SPA uygulamalarına çapraz kaynak isteklerini yanıtlayabilir ve isteğin API 'sine iletilmeden önce, geçirilen JWT kimlik doğrulama belirtecinin, azaltma, hız sınırlaması ve ön doğrulama işlemleri gerçekleştirmeye çalışır.
+   > Şimdi API yönetimi JS SPA uygulamalarına çapraz menşe isteklerine yanıt verebiliyor ve isteği Fonksiyon API'sine iletmeden önce geçirilen JWT auth belirtecinin daraltma, fiyat sınırlama ve ön doğrulamasını gerçekleştirecek.
 
    > [!NOTE]
-   > Aşağıdaki bölüm isteğe bağlıdır ve geliştirici portalını desteklemeyen **Tüketim** katmanına uygulanmaz.
-   > Geliştirici portalını kullanmayı düşünmüyorsanız veya tüketim katmanını kullandığınızdan bu yana bunu kullanmazsınız, lütfen bu adımı atlayın ve ["API 'yi kullanmak Için JAVASCRIPT Spa 'Yı derleyin"](#build-the-javascript-spa-to-consume-the-api)bölümüne atlayın.
+   > Aşağıdaki bölüm isteğe bağlıdır ve geliştirici portalını desteklemeyen **Tüketim** katmanı için geçerli değildir.
+   > Geliştirici portalını kullanmak istemiyorsanız veya Tüketim katmanını kullandığınızdan beri kullanamıyorsanız, lütfen bu adımı atlayın ve doğrudan ["API'yi tüketmek için JavaScript SPA'yı oluşturun"](#build-the-javascript-spa-to-consume-the-api)'a atlayın.
 
-## <a name="optional-configure-the-developer-portal"></a>Seçim Geliştirici portalını yapılandırma
+## <a name="optional-configure-the-developer-portal"></a>[İsteğe bağlı] Geliştirici portalını yapılandırma
 
-1. Azure AD B2C dikey penceresini açın ve geliştirici portalı için uygulama kaydına gidin
-1. Daha önce API Management kimlik doğrulama kodu verme redirect_uri yapılandırdığınızda, ' yanıt URL 'SI ' girişini not ettiğiniz şekilde ayarlayın.
+1. Azure AD B2C bıçağını açın ve Geliştirici Portalı için uygulama kaydına gidin
+1. DAHA önce API Yönetimi'nde auth kodu hibesinin redirect_uri yapılandırdığınızda not aldığınıza 'Url'yi Yanıtla' girişini ayarlayın.
 
-   `Echo API`OAuth 2,0 kullanıcı yetkilendirmesi etkin olduğuna göre, Geliştirici Konsolu API çağrılmadan önce Kullanıcı için bir erişim belirteci edinir.
+   Şimdi OAuth 2.0 kullanıcı yetkilendirmesi `Echo API`etkinleştirildiğinde, Geliştirici Konsolu API'yi aramadan önce kullanıcı için bir erişim belirteci elde eder.
 
-1. Geliştirici Portalında `Echo API` her bir işleme gidin ve bunu geliştirici konsoluna getirmek için **dene** ' yi seçin.
-1. Yeni eklediğiniz yetkilendirme sunucusuna karşılık gelen **Yetkilendirme** bölümünde yeni bir öğe olduğunu aklınızda edin.
-1. Yetkilendirme açılan listesinden **yetkilendirme kodu** ' nu seçin ve Azure AD kiracısında oturum açmanız istenir. Zaten hesapla oturum açtıysanız, bu durum istenmez.
-1. Başarılı oturum açma işleminden sonra, isteğe bir `Authorization: Bearer` üst bilgisi, Base64 'te kodlanmış Azure AD B2C bir erişim belirteciyle eklenir. 
-1. **Gönder** ' i seçin ve API 'yi başarıyla çağırabilirsiniz.
-
-   > [!NOTE]
-   > Artık API Yönetimi, API 'nizi test etmek için geliştirici portalı için belirteçler edinebilir ve bu tanımı anlayabilir ve geliştirme portalındaki uygun test sayfasını işleyebilir.
-
-1. API Management portalının genel bakış dikey penceresinde, API Yöneticisi olarak oturum açmak için ' Geliştirici Portalı ' seçeneğine tıklayın.
-1. Burada ve API 'nizin diğer seçili tüketicileri bir konsoldan test edebilir ve bunları çağırabilir.
-1. ' Ürünler ' seçeneğini belirleyip ' sınırsız ' seçeneğini belirleyip daha önce oluşturduğumuz API 'yi seçin ve ' deneyın ' seçeneğine tıklayın
-1. API abonelik anahtarını gösterin ve daha sonra ihtiyacınız olacak istek URL 'siyle güvenli bir yere kopyalayın.
-1. Ayrıca, OAuth auth açılan listesinden örtük ' i seçin ve bir açılan pencerede burada kimlik doğrulaması yapmanız gerekebilir.
-1. ' Gönder ' düğmesine tıklayın ve tümü iyi ise, İşlev Uygulaması 200 Tamam iletisiyle API yönetimi aracılığıyla bir merhaba iletiyle ve bazı JSON ile yanıt vermelidir.
+1. Geliştirici `Echo API` portalının altındaki herhangi bir operasyona göz atın ve sizi Geliştirici Konsolu'na getirmek için **Deneyin'i** seçin.
+1. Az önce eklediğiniz yetkilendirme sunucusuna karşılık gelen **Yetkilendirme** bölümünde yeni bir öğe not edin.
+1. Yetkilendirme açılır listesinden **Yetkilendirme kodunu** seçin ve Azure AD kiracısında oturum açmanız istenir. Hesapla zaten oturum açtıysanız, sizden istenmeyebilir.
+1. Başarılı oturum açmadan `Authorization: Bearer` sonra, Base64'te kodlanmış Azure AD B2C'den bir erişim belirteciyle isteğe bir üstbilgi eklenir. 
+1. **Gönder'i** seçin ve API'yi başarıyla arayabilirsiniz.
 
    > [!NOTE]
-   > Tebrikler, artık bir API 'yi yayımlamak, güvenli hale getirmek ve kullanmak için birlikte çalışan Azure AD B2C, API Management ve Azure Işlevleriniz vardır. Bu yöntemi kullanarak, API 'nin aslında güvenlik altında olduğunu fark etmiş olabilirsiniz: API Management OCP-Subscription-Key üst bilgisi ve yetkilendirme: taşıyıcı JWT.
-   > Bu örnekte, JavaScript tek sayfalı bir uygulama olduğu için API Management anahtarı yalnızca fiyat sınırlaması ve faturalandırma çağrıları için kullanırız.
-   > Gerçek yetkilendirme ve kimlik doğrulama Azure AD B2C tarafından işlenir ve JWT içinde kapsüllenir ve bu, API Management ve daha sonra Azure Işlevleri tarafından iki kez onaylanır.
+   > Artık API yönetimi, geliştirici portalının API'nizi test etmesi için belirteçler edinebilir ve bunun tanımını anlayabilir ve geliştirme portalında uygun test sayfasını işletebilir.
 
-## <a name="build-the-javascript-spa-to-consume-the-api"></a>API 'YI kullanmak için JavaScript SPA 'yı oluşturma
-1. Azure portal depolama hesapları dikey penceresini açın 
-1. Oluşturduğunuz hesabı seçin ve ayarlar bölümünden ' statik Web sitesi ' dikey penceresini seçin (' statik Web sitesi ' seçeneğini görmüyorsanız, v2 hesabı oluşturduğunuza bakın).
-1. Statik web barındırma özelliğini ' Enabled ' olarak ayarlayın ve Dizin belgesi adını ' index. html ' olarak ayarlayın ve ardından ' Kaydet 'e tıklayın.
-1. Birincil uç noktanın içeriğini, bu konum ön uç sitesinin barındırıldığı yerde aklınızda olun. 
+1. API Yönetimi portalının genel bakış açısından, API yöneticisi olarak oturum açabilmek için 'Geliştirici Portalı'nı tıklatın.
+1. Burada, siz ve API'nizin diğer seçili tüketicileri bunları bir konsoldan test edebilir ve arayabilirsiniz.
+1. 'Ürünler'i seçin, ardından 'Sınırsız'ı seçin, ardından daha önce oluşturduğumuz API'yi seçin ve 'TRY IT'e tıklayın
+1. API abonelik anahtarının hide'sını boşaltın ve daha sonra gereksinim duyduğunuz istek url'si ile birlikte güvenli bir yere kopyalayın.
+1. Ayrıca Oauth auth açılan, Örtük seçin ve burada bir pop-up ile doğrulamak zorunda klabilirsiniz.
+1. 'Gönder'i tıklatın ve her şey yolundaysa, İşlev Uygulamanız 200 OK mesajı ve bazı JSON ile API yönetimi aracılığıyla bir merhaba mesajıyla yanıt vermelidir.
 
    > [!NOTE]
-   > Azure Blob Storage + CDN yeniden yazma veya Azure App Service, ancak blob Storage 'ın statik Web sitesi barındırma özelliği, Azure depolama 'dan statik Web içeriği/HTML/JS/CSS hizmeti sunmak için varsayılan bir kapsayıcı sağlar ve bizim için sıfır iş için varsayılan bir sayfa çıkarır.
+   > Tebrikler, artık Bir API'yi yayımlamak, güvenli hale getirmek ve tüketmek için birlikte çalışan Azure AD B2C, API Yönetimi ve Azure Fonksiyonları'na sahipsiniz. API aslında iki kez bu yöntemi kullanarak güvenli olduğunu fark etmiş olabilirsiniz, bir kez API Yönetimi Ocp-Abonelik-Anahtar Üstbilgi ile, ve bir kez Yetkilendirme ile: Bearer JWT.
+   > Bu örnek bir JavaScript Tek Sayfa Uygulaması olduğundan, api yönetim anahtarını yalnızca fiyat sınırlayıcı ve faturalandırma çağrıları için kullanırız.
+   > Gerçek Yetkilendirme ve Kimlik Doğrulama, Azure AD B2C tarafından işlenir ve JWT'de özetlenir ve bu da iki kez, bir kez API Yönetimi ve ardından Azure Fonksiyonları tarafından doğrulanır.
 
-## <a name="upload-the-js-spa-sample"></a>JS SPA örneğini karşıya yükle
-1. Hala depolama hesabı dikey penceresinde, blob hizmeti bölümünde ' blob ' dikey penceresini seçin ve sağ bölmede görüntülenen $web kapsayıcısına tıklayın.
-1. Aşağıdaki kodu makinenizde yerel olarak index. html olarak bir dosyaya kaydedin ve ardından index. html dosyasını $web kapsayıcısına yükleyin.
+## <a name="build-the-javascript-spa-to-consume-the-api"></a>API'yi tüketmek için JavaScript SPA'yı oluşturun
+1. Azure portalında depolama hesapları blade'ini açın 
+1. Oluşturduğunuz hesabı seçin ve Ayarlar bölümünden 'Statik Web Sitesi' bıçağını seçin ('Statik Web Sitesi' seçeneğini görmüyorsanız, bir V2 hesabı oluşturduğunuzdan kontrol edin).
+1. Statik web barındırma özelliğini 'etkin' olarak ayarlayın ve dizin belge adını 'index.html' olarak ayarlayın, ardından 'kaydet'i tıklatın.
+1. Bu konum, ön uç sitesinin barındırılan yer olduğu için Birincil Bitiş Noktası'nın içeriğini not edin. 
+
+   > [!NOTE]
+   > Azure Blob Depolama + CDN yeniden yazmak veya Azure App Service kullanabilirsiniz - ama Blob Depolama Statik Web barındırma özelliği bize statik web içeriği hizmet için varsayılan bir kapsayıcı verir / html / js / Azure Depolama css ve sıfır iş için bizim için varsayılan bir sayfa çıkaracaktır.
+
+## <a name="upload-the-js-spa-sample"></a>JS SPA örneğini yükleyin
+1. Depolama hesap bıçağında yken, Blob Service bölümünden 'Blobs' bıçağını seçin ve sağ bölmede görünen $web kabına tıklayın.
+1. Aşağıdaki kodu makinenizde yerel olarak index.html olarak bir dosyaya kaydedin ve ardından dosya index.html dosyasını $web kapsayıcısına yükleyin.
 
    ```html
    <!doctype html>
@@ -408,18 +408,18 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
    
    ```
 
-1. Son bölümde daha önce depoladığınız statik Web sitesi birincil uç noktasına gidin.
+1. Son bölümde daha önce depoladığınız Statik Web Sitesi Birincil Bitiş Noktasına göz atın.
 
    > [!NOTE]
-   > Tebrikler, yalnızca bir JavaScript tek sayfalı uygulamayı, API için anahtarlarınız ile yapılandırmadığınız veya yalnızca Azure AD B2C ayrıntılarınız ile JS uygulamasını yapılandırdığımız için Azure depolama 'ya yalnızca bir JavaScript tek sayfalı uygulama dağıttınız, ancak bunu açtığınızda sayfa çalışmaz.
+   > Tebrikler, JS uygulamasını api tuşlarınızla yapılandırmadığımız veya JS uygulamasını Azure AD B2C ayrıntılarınız ile yapılandırmadığımız için Azure Depolama'ya bir JavaScript Tek Sayfa Uygulaması dağıttınız - sayfayı açtığınızda henüz çalışmayacaktır.
 
-## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>Azure AD B2C için JS SPA 'yı yapılandırın
-1. Artık her şeyin nerede olduğunu biliyoruz: SPA 'yı uygun API Management API adresiyle ve doğru Azure AD B2C uygulama/istemci kimlikleri ile yapılandırabiliriz
-1. Azure portal depolama dikey penceresine dönün ve index. html ' ye tıklayın ve ardından ' blobu Düzenle ' öğesini seçin 
-1. Kimlik doğrulama ayrıntılarını, daha önce B2C 'de kaydettiğiniz ön uç uygulamanızla eşleşecek şekilde güncelleştirin ve ' b2cScopes ' değerlerinin API arka ucu için olduğunu unutmayın.
-1. WebApi anahtar ve API URL 'si, API işleminin API Management test bölmesinde bulunabilir.
-1. API Management dikey penceresine geri API Management bir APıM abonelik anahtarı oluşturun, ' abonelikler ' seçeneğini belirleyip ' Abonelik Ekle ' seçeneğini ve ardından kaydı kaydedin. Oluşturulan satırın yanındaki üç nokta (...) simgesine tıklanması, birincil anahtarı kopyalayabilmeniz için anahtarları gösterbilmenizi sağlar.
-1. Aşağıdaki kod gibi görünmelidir:-  
+## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>Azure AD B2C için JS SPA'yı yapılandırın
+1. Artık her şeyin nerede olduğunu biliyoruz: SPA'yı uygun API Yönetimi API adresi ve doğru Azure AD B2C uygulaması / istemci işlisi ile yapılayabiliriz
+1. Azure portalı depolama bıçağına geri dön ve index.html'e tıklayın ve ardından 'Blob'u Edit'i seçin' seçeneğini belirleyin 
+1. 'B2cScopes' değerlerinin API arka uç için olduğunu belirterek, daha önce B2C'de kaydettiğiniz ön uç uygulamanızla eşleşecek şekilde auth ayrıntılarını güncelleyin.
+1. WebApi anahtarı ve api url'si API işlemi için API Yönetimi test bölmesinde bulunabilir.
+1. API Management'a geri giderek, 'Abonelikler' seçeneğini seçerek ve 'Abonelik Ekle'yi tıklatarak ve ardından kaydı kaydederek Bir APIM abonelik anahtarı oluşturun. Oluşturulan satırın yanındaki Elipsis'i (...) tıklattığınızda, birincil anahtarı kopyalayabilmeniz için tuşları göstermenize olanak sağlar.
+1. Aşağıdaki kod gibi bir şey görünmelidir:-  
 
    ```javascript
    var applicationConfig =
@@ -433,36 +433,33 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 
 1. Kaydet’e tıklayın.
 
-## <a name="set-the-redirect-uris-for-the-azure-ad-b2c-frontend-app"></a>Azure AD B2C ön uç uygulaması için yeniden yönlendirme URI 'Lerini ayarlayın
-1. Azure AD B2C dikey penceresini açın ve JavaScript ön uç uygulaması için uygulama kaydına gidin
-1. Yukarıdaki statik Web sitesi birincil uç noktasını daha önce ayarlarken, yeniden yönlendirme URL 'sini not ettiğiniz şekilde ayarlayın
+## <a name="set-the-redirect-uris-for-the-azure-ad-b2c-frontend-app"></a>Azure AD B2C ön yüz uygulaması için yönlendirme URL'lerini ayarlama
+1. Azure AD B2C bıçağını açın ve JavaScript Frontend Uygulaması için uygulama kaydına gidin
+1. Yukarıdaki statik web sitesi birincil bitiş noktasını ayarladığınızda yeniden yönlendirme URL'sini belirttiğiniz URL'ye ayarlayın
 
    > [!NOTE] 
-   > Bu yapılandırma, ön uç uygulamasının istemcisinin Azure AD B2C uygun taleplerle bir erişim belirteci almasına neden olur.
-   > SPA, arka uç API 'sine yapılan çağrıda https üstbilgisine bir taşıyıcı belirteci olarak ekleyebilecektir.
-   > API Management, istek temelli Azure Işlev API 'sine geçmeden önce, abonelik anahtarı tarafından uç noktaya göre fiyat sınırı çağrılarını ön doğrulayacak olarak doğrular.
-   > SPA, yanıtı tarayıcıda işleyecek.
+   > Bu yapılandırma, ön uç uygulamasının istemcisinin Azure AD B2C'den uygun talepleri içeren bir erişim belirteci almasına neden olur.
+   > SPA, arka uç API'sine yapılan çağrıdaki https üstbilgisine bunu taşıyıcı belirteci olarak ekleyebilir.
+   > API Yönetimi, isteği alan Azure İşlevi API'sine geçmeden önce belirteç, fiyat sınırı çağrılarını abone anahtarıyla bitiş noktasına önceden doğrular.
+   > SPA yanıtı tarayıcıda verecektir.
 
-   > *Tebrikler, Azure AD B2C, Azure API Management, Azure Işlevleri Azure App Service yetkilendirmeyi, mükemmel uyum içinde çalışacak şekilde yapılandırdınız!*
+   > *Tebrikler, mükemmel bir uyum içinde çalışmak için Azure AD B2C, Azure API Yönetimi, Azure İşlevleri, Azure Uygulama Hizmeti Yetkilendirmesi'ni yapılandırıldınız!*
 
    > [!NOTE]
-   > Artık basit bir güvenlik API 'SI olan basit bir uygulama sunuyoruz, bunu test edelim.
+   > Şimdi basit bir güvenli API ile basit bir uygulama var, bunu test edelim.
 
-## <a name="test-the-client-application"></a>İstemci uygulamasını test etme
-1. Daha önce oluşturduğunuz depolama hesabından not ettiğiniz örnek uygulama URL 'sini açın
-1. Sağ üst köşede "oturum aç" düğmesine tıklayın, bu tıklama Azure AD B2C oturum açma veya oturum açma profilini açılır.
-1. Ekranın "oturum açmış olduğu gibi" bölümünde oturum açma sonrası, JWT 'ınızdan doldurulur.
-1. Şimdi "Web API 'Sini çağır" seçeneğine tıklayın ve sayfanın, güvenli API 'nizden geri gönderilen değerlerle güncelleştirilmesi gerekir.
+## <a name="test-the-client-application"></a>İstemci uygulamasını test edin
+1. Daha önce oluşturduğunuz depolama hesabından not aldığınız örnek uygulama URL'sini açın
+1. Sağ üst köşede "Oturum Aç"ı tıklayın, bu tıklama Azure AD B2C kaydolur veya profilinde oturum açın.
+1. Ekranın "Oturum Açtım" bölümünde Oturum Aç'ı JWT'nizden doldurulacaktır.
+1. Şimdi "Web Api'yi Ara"yı tıklatın ve sayfanın güvenli API'nizden gönderilen değerlerle güncelleştirmelisiniz.
 
-## <a name="and-were-done"></a>Biz de yaptık
-Yukarıdaki adımlar, API Management Azure AD B2C birçok farklı kullanılmasına izin vermek için uyarlanmıştır ve düzenlenebilir.
+## <a name="and-were-done"></a>Ve işimiz bitti.
+Yukarıdaki adımlar, API Yönetimi ile Azure AD B2C'nin birçok farklı kullanımına izin verecek şekilde uyarlanabilir ve düzenlenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
-* API Management hakkında daha fazla [videoya](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
-* Arka uç hizmetinizi güvenli hale getirmeye yönelik diğer yollar için bkz. [Karşılıklı sertifika kimlik doğrulaması](api-management-howto-mutual-certificates.md).
-* Özel talepler atamak ve belirteçlerde mevcut olduklarını doğrulamak üzere bir API Management İlkesi kullanmak için Azure AD Graph API kullanmayı göz önünde bulundurun.
-
-* [API Management hizmet örneği oluşturun](get-started-create-service-instance.md).
-
-* [Ilk API 'Nizi yönetin](import-and-publish.md).
+* [Azure Active Directory ve OAuth2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+* API Yönetimi hakkında daha fazla [video](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
+* Arka uç hizmetinizi güvence altına almanın diğer yolları için [Karşılıklı Sertifika kimlik doğrulaması'na](api-management-howto-mutual-certificates.md)bakın.
+* [BIR API Yönetimi hizmeti örneği oluşturun.](get-started-create-service-instance.md)
+* [İlk API'nizi yönetin.](import-and-publish.md)

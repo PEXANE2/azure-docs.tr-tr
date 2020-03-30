@@ -1,7 +1,7 @@
 ---
-title: "CSV 'ye Dönüştür: modül başvurusu"
+title: "CSV'ye dönüştürün: Modül Başvurusu"
 titleSuffix: Azure Machine Learning
-description: Bir veri kümesini, R veya Python betik modülleriyle yüklenebilen, verilelebilecek veya paylaşılabilen CSV biçimine dönüştürmek için Azure Machine Learning CSV 'ye dönüştürme modülünü nasıl kullanacağınızı öğrenin.
+description: Bir veri kümesini İndirilebilen, dışa aktarılabilen veya R veya Python komut dosyası modülleriyle paylaşılabilen bir CSV biçimine dönüştürmek için Azure Machine Learning'de CSV'ye Dönüştür modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,49 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8206a88695c89d04eabe89e79a5aff8469cc6862
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152440"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477689"
 ---
-# <a name="convert-to-csv-module"></a>CSV modülüne Dönüştür
+# <a name="convert-to-csv-module"></a>CSV modülüne dönüştürün
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Bir veri kümesini, R veya Python betik modülleriyle yüklenebilen, verilelebilecek veya paylaşılabilen bir CSV biçimine dönüştürmek için bu modülü kullanın.
+Bir veri kümesini, R veya Python komut dosyası modülleriyle indirilebilen, dışa aktarılabilen veya paylaşılabilen bir CSV biçimine dönüştürmek için bu modülü kullanın.
 
-### <a name="more-about-the-csv-format"></a>CSV biçimi hakkında daha fazla bilgi 
+### <a name="more-about-the-csv-format"></a>CSV formatı hakkında daha fazla şey 
 
-"Virgülle ayrılmış değerler" için temsil eden CSV biçimi, birçok harici makine öğrenimi aracı tarafından kullanılan bir dosya biçimidir. CSV, R veya Python gibi açık kaynak dillerle çalışırken ortak bir değişim biçimidir.
+"Virgülden ayrılmış değerler" anlamına gelen CSV biçimi, birçok harici makine öğrenme aracı tarafından kullanılan bir dosya biçimidir. CSV, R veya Python gibi açık kaynak dilleriyle çalışırken ortak bir değişim biçimidir.
 
-Azure Machine Learning ' de çalışmalarınızın çoğunu olsanız bile, veri kümenizi dış araçlar 'da kullanmak üzere CSV 'ye dönüştürmeyi yararlı bulabileceğiniz zamanlar olabilir. Örneğin:
+Çalışmalarınızın çoğunu Azure Machine Learning'de yapsanız bile, veri kümenizi harici araçlarda kullanmak üzere CSV'ye dönüştürmeyi kullanışlı bulabileceğiniz zamanlar vardır. Örnek:
 
-+ Excel ile açmak veya ilişkisel bir veritabanına içeri aktarmak için CSV dosyasını indirin.  
-+ CSV dosyasını bulut depolama alanına kaydedin ve görselleştirmeler oluşturmak için Power BI adresinden bağlanın.  
-+ Verileri R ve Python 'da kullanmak üzere hazırlamak için CSV biçimini kullanın. 
++ Excel ile açmak için CSV dosyasını indirin veya ilişkisel bir veritabanına aktarın.  
++ CSV dosyasını bulut depolamaalanına kaydedin ve görselleştirmeler oluşturmak için Power BI'den dosyaya bağlanın.  
++ Verileri R ve Python'da kullanılmak üzere hazırlamak için CSV biçimini kullanın. 
 
-Bir veri kümesini CSV 'ye dönüştürdüğünüzde, CSV Azure ML çalışma alanınıza kaydedilir. Azure Storage yardımcı programını kullanarak dosyayı doğrudan açabilir ve kullanabilirsiniz. Ayrıca, **CSV 'ye Dönüştür modülüne Dönüştür** ' i seçip çıktıyı görüntülemek için sağ paneldeki **çıktılar** sekmesinin altındaki histogram simgesini seçin. CSV 'yi sonuçlar klasöründen yerel bir dizine indirebilirsiniz.  
+Bir veri kümesini CSV'ye dönüştürdüğünüzde, csv Azure ML çalışma alanınızda kaydedilir. Dosyayı doğrudan açmak ve kullanmak için bir Azure depolama yardımcı programı kullanabilirsiniz. Ayrıca CSV modülüne Dönüştür'ü seçerek tasarımcıdaki **CSV'ye** erişebilir, ardından çıktıyı görüntülemek için sağ paneldeki **Çıktılar** sekmesinin altındaki histogram simgesini seçebilirsiniz. CSV'yi Sonuçlar klasöründen yerel bir dizine indirebilirsiniz.  
 
-## <a name="how-to-configure-convert-to-csv"></a>CSV 'ye dönüştürme yapılandırma
+## <a name="how-to-configure-convert-to-csv"></a>Convert'i CSV'ye yapılandırma
 
 
-1.  CSV 'ye dönüştürme modülüne işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri dönüştürme** grubunda bulabilirsiniz. 
+1.  Convert to CSV modüllerini boru hattınıza ekleyin. Bu modülü tasarımcıda **Veri Dönüşümü** grubunda bulabilirsiniz. 
 
-2. Veri kümesini çıkaran herhangi bir modüle bağlayın.   
+2. Veri kümesini oluşturan herhangi bir modüle bağlayın.   
   
-3.  İşlem hattını çalıştırma.
+3.  Boru hattını gönderin.
 
 ### <a name="results"></a>Sonuçlar
   
 
-**CSV 'ye Dönüştür**' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları**altında Bu simgelerden birini seçin.  
+**CSV'ye Dönüştür'ün**sağ panelindeki **Çıktılar** sekmesini seçin ve Bağlantı **Noktası çıkışlarının**altındaki bu simgelerden birini seçin.  
 
-+ **Veri kümesini kaydet**: simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
++ **Veri kümesini kaydet**: Simgeyi seçin ve CSV dosyasını ayrı bir veri kümesi olarak Azure ML çalışma alanına kaydedin. Veri kümesini Modül ağacı olarak Benim Veri **Kümeleri mitlerinin** altında bulabilirsiniz.
 
- + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak Data. csv dosyasını indirmek için yönergeleri izleyin.
+ + **Çıktıyı Görüntüle**: Göz simgesini seçin ve **Results_dataset** klasörüne göz atmak için yönergeyi izleyin ve data.csv dosyasını indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

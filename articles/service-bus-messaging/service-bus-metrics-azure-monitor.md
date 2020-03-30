@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
-description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
+title: Azure Monitör'de Azure Hizmet Veri Meskeni ölçümleri| Microsoft Dokümanlar
+description: Bu makalede, Hizmet Veri Hizmeti kuruluşları (kuyruklar, konular ve abonelikler) izlemek için Azure Monitor'un nasıl kullanılacağı açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -9,166 +9,170 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 227dfaff211eb60c5c2b25b5c76ecc82b6ce3edc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79260975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240796"
 ---
-# <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
+# <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitör'de Azure Hizmet Veri Meskeni ölçümleri
 
-Service Bus ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde Service Bus kaynaklarınızın genel durumunu değerlendirebilirsiniz. Bu istatistikler Service Bus durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler, Azure desteğine başvurun gerek kalmadan kök neden sorunlarını da yardımcı olabilir.
+Service Bus ölçümleri, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm veri kümesiyle, Yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Hizmet Veri Hizmeti Veri Birimi kaynaklarınızın genel durumunu değerlendirebilirsiniz. Bu istatistikler, Servis Veri Servisi'nin durumunu izlemenize yardımcı olduğu için önemli olabilir. Ölçümler, Azure desteğine başvurmaya gerek kalmadan kök neden sorunlarının giderilmesine de yardımcı olabilir.
 
-Azure İzleyici, çeşitli Azure Hizmetleri genelinde izleme için birleştirilmiş bir kullanıcı arabirimi sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
+Azure Monitor, çeşitli Azure hizmetlerinde izleme için birleşik kullanıcı arabirimleri sağlar. Daha fazla bilgi için Microsoft [Azure'da İzleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub'da .NET örneği [içeren Azure Monitörünü Al ölçütlerine](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) bakın.
 
 > [!IMPORTANT]
-> 2 saatlik bir varlıkla hiçbir etkileşim kalmadığında, varlık artık boşta kalmayacağı sürece ölçümler "0" değerini bir değer olarak göstermeye başlayacaktır.
+> Bir varlıkla 2 saat boyunca herhangi bir etkileşim olmadığında, ölçümler varlık boşta kalana kadar "0"ı değer olarak göstermeye başlar.
 
 ## <a name="access-metrics"></a>Erişim ölçümleri
 
-Azure İzleyici ölçümlerine erişim birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Azure izleyici günlükleri ve Event Hubs gibi çözümleme çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md).
+Azure Monitor ölçümlere erişmek için birden çok yol sağlar. Azure [portalı](https://portal.azure.com)üzerinden ölçümlere erişebilir veya Azure Monitor API'lerini (REST ve .NET) ve Azure Monitor günlükleri ve Etkinlik Hub'ları gibi çözüm çözümlerini kullanabilirsiniz. Daha fazla bilgi için [Azure Monitor'daki Ölçümler'e](../azure-monitor/platform/data-platform-metrics.md)bakın.
 
-Ölçümler, varsayılan olarak etkindir ve en son 30 Günün verilerini erişebilir. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu değer, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) 'nda yapılandırılır.
+Ölçümler varsayılan olarak etkinleştirilir ve en son 30 günlük verilere erişebilirsiniz. Verileri daha uzun süre saklamanız gerekiyorsa, metrik verileri bir Azure Depolama hesabına arşivleyebilirsiniz. Bu değer Azure Monitor'daki [tanı ayarlarında](../azure-monitor/platform/diagnostic-settings.md) yapılandırılır.
 
-## <a name="access-metrics-in-the-portal"></a>Portalda erişim ölçümlerini
+## <a name="access-metrics-in-the-portal"></a>Portaldaki erişim ölçümleri
 
-[Azure Portal](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnek, başarılı istekleri ve hesap düzeyinde gelen istekleri görüntülemek gösterilmektedir:
+[Azure portalında](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnekte, hesap düzeyinde başarılı isteklerin ve gelen isteklerin nasıl görüntülenenedöneceği gösterilmektedir:
 
 ![][1]
 
-Ad alanı aracılığıyla doğrudan ölçümleri de erişebilirsiniz. Bunu yapmak için ad alanınızı seçin ve ardından **ölçümler**' e tıklayın. Varlığın kapsamına filtrelenen ölçümleri göstermek için varlığı seçin ve ardından **ölçümler**' e tıklayın.
+Ölçümlere doğrudan ad alanı üzerinden de erişebilirsiniz. Bunu yapmak için, ad alanınızı seçin ve ardından **Ölçümler'i**tıklatın. Varlığın kapsamına filtre uygulanmış ölçümleri görüntülemek için varlığı seçin ve ardından **Ölçümler'i**tıklatın.
 
 ![][2]
 
-Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
+Boyutları destekleyen ölçümler için, istenen boyut değerine filtre uygulamanız gerekir.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
-Azure Izleyici 'de ölçümler ve uyarılar her uyarı temelinde ücretlendirilir. Bu ücretler, uyarı kurulum ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
+Azure Monitor'daki Ölçümler ve Uyarılar, uyarı bazında ücretlendirilir. Bu ücretler, uyarı kurulumu olduğunda ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
 
-Ölçüm verilerini alan ek çözümler, bu çözümler tarafından doğrudan faturalandırılır. Örneğin, ölçüm verileri bir Azure depolama hesabına arşivleme, Azure Depolama tarafından faturalandırılır. Ayrıca, gelişmiş analizler için ölçüm verilerini Log Analytics akışı halinde Log Analytics olarak faturalandırılırsınız.
+Ölçümleri oluşturan verilerin doğrudan bu çözümler tarafından faturalandırıldırılan ek çözümler. Örneğin, metrik verileri bir Azure Depolama hesabına arşivlerseniz Azure Depolama tarafından faturalandırılırsınız. Gelişmiş analiz için metrik verileri Log Analytics'e aktarıyorsanız, Log Analytics tarafından faturalandırılırsınız.
 
-Aşağıdaki ölçümler size sistem hizmetinizin genel bakış sunar. 
+Aşağıdaki ölçümler, hizmetinizin durumu hakkında genel bir bakış sağlar. 
 
 > [!NOTE]
-> Farklı bir adla geçildiği size çeşitli ölçümleri kullanımdan. Bu, başvurularını güncelleştirmek gerektirebilir. "Kullanım dışı" anahtar sözcüğüyle işaretli ölçümleri, bundan sonra desteklenmeyecek.
+> Farklı bir ad altında taşındıkları için birkaç ölçümü küçümsüyoruz. Bu, başvurularınızı güncelleştirmenizi gerektirebilir. "Amortismana" anahtar kelimesi ile işaretlenmiş ölçümler ileriye dönük olarak desteklenmeyen.
 
-Azure İzleyici, tüm ölçüm değerleri dakikada gönderilir. Zaman ayrıntı düzeyi ölçüm değerleri sunulduğu zaman aralığını tanımlar. Tüm Service Bus ölçümleri için desteklenen zaman aralığı 1 dakikadır.
+Tüm ölçüm değerleri her dakika Azure Monitor'a gönderilir. Zaman tanecikleri, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm Servis Veri Yolunda ölçümleri için desteklenen zaman aralığı 1 dakikadır.
 
 ## <a name="request-metrics"></a>İstek ölçümleri
 
-Veri ve yönetim işlemleri istek sayısını sayar.
+Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-| Gelen Istekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Başarılı Istekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Sunucu hataları|Belirli bir süre içinde Service Bus hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Kullanıcı hataları nedeniyle, belirtilen bir süredeki işlenmedi istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Kısıtlanmış Istekler|Kullanım aşıldığı için kısıtlanan isteklerin sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+| Gelen İstekler| Belirli bir süre içinde Servis Otobüsü hizmetine yapılan istek sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Başarılı İstekler|Belirli bir süre içinde Servis Otobüsü hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Sunucu Hataları|Belirli bir süre içinde Servis Veri Servisi'ndeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Kullanıcı Hataları (aşağıdaki alt bölüme bakın)|Belirli bir dönemdeki kullanıcı hataları nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Daraltılmış İstekler|Kullanım aşıldığından azaltılan istek sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
 
 ### <a name="user-errors"></a>Kullanıcı hataları
 
-Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktadır:
+Aşağıdaki iki hata türü kullanıcı hataları olarak sınıflandırılır:
 
-1. İstemci tarafı hataları (HTTP olarak 400 hata olacaktır).
-2. [Mesajgelocklostexception](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)gibi iletileri işlerken oluşan hatalar.
+1. İstemci tarafı hataları (HTTP bu 400 hata olacaktır).
+2. [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)gibi iletileri işlerken oluşan hatalar.
 
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-| İletiler| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
-| ActiveMessages| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
-| Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/>Boyut: EntityName |
-| Zamanlanan iletiler| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama  <br/> Boyut: EntityName |
+|Gelen Mesajlar|Belirli bir süre içinde Servis Veri Servisi'ne gönderilen etkinlik veya ileti sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Giden Mesajlar|Belirli bir süre içinde Servis Veri Servisi'nden alınan etkinlik veya ileti sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+| İletiler| Kuyruktaki/konudaki ileti sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Ortalama <br/> Boyut: EntityName |
+| ActiveMessages| Bir sırada/konudaki etkin iletilerin sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Ortalama <br/> Boyut: EntityName |
+| Ölü harfli mesajlar| Bir sırada/konudaki ölü harflerle yazılmış iletilerin sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Ortalama <br/>Boyut: EntityName |
+| Zamanlanmış iletiler| Bir sırada/konudaki zamanlanmış iletilerin sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Ortalama  <br/> Boyut: EntityName |
 
 > [!NOTE]
-> Aşağıdaki ölçümler için değerler, zaman içinde değerlerdir. Söz konusu noktadan hemen sonra tüketilen gelen iletiler bu ölçümlere yansıtılmayabilir. 
+> Aşağıdaki ölçümler için değerler zaman içinde nokta değerleridir. Bu noktadan hemen sonra tüketilen gelen iletiler bu ölçümlere yansıtılmayabilir. 
 > - İletiler
 > - Etkin iletiler 
-> - Kullanılmayan iletiler 
-> - Zamanlanan iletiler 
+> - Ölü harfli mesajlar 
+> - Zamanlanmış iletiler 
 
-## <a name="connection-metrics"></a>Bağlantı ölçümü
+## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-|ActiveConnection sayısı|Bir varlığın yanı sıra bir ad alanı etkin bağlantı sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Aktif Bağlantılar|Bir ad alanının yanı sıra bir varlıktaki etkin bağlantı sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Kaynak kullanım ölçümleri
 
 > [!NOTE] 
-> Aşağıdaki ölçümler yalnızca **Premium** katmanıyla birlikte kullanılabilir. 
+> Aşağıdaki ölçümler yalnızca **premium** katmanda kullanılabilir. 
+> 
+> Premium katman ad alanı için herhangi bir kesinti için izlemek için önemli ölçümler şunlardır: **ad alanı başına CPU kullanımı** ve ad alanı başına bellek **boyutu.** Azure Monitor'u kullanarak bu ölçümler için [uyarılar ayarlayın.](../azure-monitor/platform/alerts-metric.md)
+> 
+> İzleyebileceğiniz diğer ölçüm şudur: **daraltılmış istekler.** Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığı sürece sorun olmamalıdır. Daha fazla bilgi için [Azure Hizmet Veri Hizmetleri Premium katmanında Azaltma'ya](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) bakın
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-|Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
-|Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
+|Ad alanı başına CPU kullanımı|Ad alanının yüzde CPU kullanımı.<br/><br/> Birim: Yüzde <br/> Toplama Türü: Maksimum <br/> Boyut: EntityName|
+|Ad alanı başına bellek boyutu kullanımı|Ad alanının yüzde bellek kullanımı.<br/><br/> Birim: Yüzde <br/> Toplama Türü: Maksimum <br/> Boyut: EntityName|
 
-## <a name="metrics-dimensions"></a>Ölçümleri boyutları
+## <a name="metrics-dimensions"></a>Metrik boyutları
 
-Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Boyutları için ölçümlerinizi eklemek isteğe bağlıdır. Ölçümleri, boyutları eklemezseniz, ad alanı düzeyinde belirtilir. 
+Azure Hizmet Veri Servisi, Azure Monitor'daki ölçümler için aşağıdaki boyutları destekler. Ölçümlerinize boyut ekleme isteğe bağlıdır. Boyutlar eklemezseniz, ölçümler ad alanı düzeyinde belirtilir. 
 
 |Boyut adı|Açıklama|
 | ------------------- | ----------------- |
-|EntityName| Service Bus ad alanı altındaki mesajlaşma varlıklarını destekler.|
+|Varlıkadı| Service Bus, ad alanı altında ileti taraflarını destekler.|
 
-## <a name="set-up-alerts-on-metrics"></a>Ölçümler üzerinde uyarıları ayarlama
+## <a name="set-up-alerts-on-metrics"></a>Ölçümlerde uyarılar ayarlama
 
-1. **Service Bus ad alanı** sayfasının **ölçümler** sekmesinde **uyarıları Yapılandır**' ı seçin. 
+1. **Hizmet Veri Kurumu Ad Alanı** sayfasının **Ölçümler** **sekmesinde, uyarıları yapılandır'ı**seçin. 
 
-    ![Ölçümler sayfası-uyarıları yapılandırma menüsü](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. **Hedef Seç** seçeneğini belirleyin ve **Kaynak Seç** sayfasında aşağıdaki işlemleri yapın: 
-    1. **Kaynak türüne göre filtrele** alanı Için **Service Bus ad alanlarını** seçin. 
-    2. **Aboneliğe göre filtrele** alanı için aboneliğinizi seçin.
-    3. Listeden **Service Bus ad alanını** seçin. 
+    ![Ölçümler sayfası - Uyarıları yapılandır menüsünü yapılandır](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
+2. Hedef **Seç** seçeneğini seçin ve **kaynak** seç sayfasında aşağıdaki eylemleri yapın: 
+    1. Kaynak türü alanına göre Filtre için **Hizmet Veri Günü Ad Alanları'nı** seçin. **Filter by resource type** 
+    2. Abonelik alanına **göre Filtre** için aboneliğinizi seçin.
+    3. Listeden **servis veri günü ad alanını** seçin. 
     4. **Done** (Bitti) öğesini seçin. 
     
         ![Ad alanı seçin](./media/service-bus-metrics-azure-monitor/select-namespace.png)
-1. **Ölçüt Ekle**' yi seçin ve **sinyal mantığını Yapılandır** sayfasında aşağıdaki işlemleri yapın:
-    1. **Sinyal türü**için **ölçümleri** seçin. 
-    2. Bir sinyal seçin. Örneğin: **hizmet hataları**. 
+1. **Ölçüt Ekle'yi**seçin ve **sinyal mantığı** sayfasında aşağıdaki işlemleri yapın:
+    1. Sinyal türü için **Ölçümler'i**seçin. **Metrics** 
+    2. Bir sinyal seçin. Örneğin: **Hizmet hataları**. 
 
         ![Sunucu hatalarını seçin](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
-    1. Condition **değerinden büyük** 'ı seçin.
-    2. **Zaman toplama**için **Toplam** ' u seçin. 
+    1. **Koşul**için **büyük'ün'ünü** seçin.
+    2. **Zaman Toplamı**için **Toplam'ı** seçin. 
     3. **Eşik**için **5** girin. 
     4. **Done** (Bitti) öğesini seçin.    
 
-        ![Koşul Belirt](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
-1. **Kural oluştur** sayfasında, **uyarı ayrıntılarını tanımla**' yı genişletin ve aşağıdaki eylemleri yapın:
+        ![Koşul belirtin](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
+1. Oluştur **kuralı** **sayfasında, uyarı ayrıntılarını tanımla'yı**genişletin ve aşağıdaki eylemleri yapın:
     1. Uyarı için bir **ad** girin. 
-    2. Uyarı için bir **Açıklama** girin.
-    3. Uyarı için **önem derecesi** ' ni seçin. 
+    2. Uyarı için bir **açıklama** girin.
+    3. Uyarı için **önem derecesini** seçin. 
 
         ![Uyarı ayrıntıları](./media/service-bus-metrics-azure-monitor/alert-details.png)
-1. **Kural oluştur** sayfasında, **eylem grubu tanımla**' yı genişletin, **yeni eylem grubu**' nu seçin ve **eylem grubu Ekle sayfasında**aşağıdaki işlemleri yapın. 
+1. Oluştur **kuralı** sayfasında, **Eylem Grubunu Tanımla'yı**genişletin, **Yeni eylem grubunu**seçin ve eylem grubu ekle **sayfasında**aşağıdaki eylemleri yapın. 
     1. Eylem grubu için bir ad girin.
     2. Eylem grubu için kısa bir ad girin. 
     3. Aboneliğinizi seçin. 
     4. Kaynak grubunu seçin. 
-    5. Bu izlenecek yol için **eylem adı**için **e-posta gönder** ' i girin.
-    6. **Eylem türü**Için **e-posta/SMS/Push/Voice** ' ı seçin. 
+    5. Bu geçiş için **EYLEM İsİm**için **e-posta gönder'i** girin.
+    6. EYLEM TÜRÜ için **E-posta/SMS/Push/Voice** seçeneğini **belirleyin.** 
     7. **Ayrıntıları düzenle** seçeneğini belirleyin. 
     8. **E-posta/SMS/Push/Voice** sayfasında aşağıdaki işlemleri yapın:
-        1. **E-posta**seçeneğini belirleyin. 
+        1. **E-posta**seçin. 
         2. **E-posta adresini**yazın. 
-        3. **Tamam**’ı seçin.
+        3. **Tamam'ı**seçin.
 
             ![Uyarı ayrıntıları](./media/service-bus-metrics-azure-monitor/add-action-group.png)
-        4. **Eylem grubu Ekle** sayfasında **Tamam**' ı seçin. 
-1. **Kural oluştur** sayfasında, **Uyarı kuralı oluştur**' u seçin. 
+        4. Eylem **grubu ekle** sayfasında **Tamam'ı**seçin. 
+1. Oluştur **kuralı** sayfasında **uyarı kuralı nı oluştur'u**seçin. 
 
-    ![Uyarı kuralı oluştur düğmesi](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
+    ![Uyarı kuralı düğmesi oluşturma](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. [Azure izleyiciye genel bakış](../monitoring-and-diagnostics/monitoring-overview.md).
+Azure [Monitörü'ne genel bakışa](../monitoring-and-diagnostics/monitoring-overview.md)bakın.
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
