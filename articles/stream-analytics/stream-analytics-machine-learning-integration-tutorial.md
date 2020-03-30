@@ -1,200 +1,204 @@
 ---
-title: Azure Machine Learning ile Azure Stream Analytics tümleştirmesi
-description: Bu makalede, bir kullanıcı tanımlı işlevini kullanarak, Azure Machine Learning tümleşik basit bir Azure Stream Analytics işi hızlı bir şekilde ayarlamak açıklar.
+title: Azure Machine Learning ile Azure Akış Analizi entegrasyonu
+description: Bu makalede, kullanıcı tanımlı bir işlev kullanarak Azure Machine Learning'i entegre eden basit bir Azure Akış Analizi işinin nasıl hızla ayarlanacağı açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: c683cfeadcc13e5112a4687e18db9338d3574cd3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067084"
 ---
-# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini gerçekleştirme (Önizleme)
-Bu makalede, Azure Machine Learning Studio (klasik) tümleştiren basit bir Azure Stream Analytics işinin hızlı bir şekilde nasıl ayarlanacağı açıklanır. Cortana Intelligence Galerisi'nde akış metin verileri analiz ve gerçek zamanlı yaklaşım puanını belirlemek için Machine Learning yaklaşım analizi modeli kullanın. Cortana Intelligence Suite'i kullanarak yaklaşım analizi model oluşturmanın ayrıntılı olarak incelenmektedir hakkında endişelenmeden, bu görevi gerçekleştirmenize olanak tanır.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile duygu analizi gerçekleştirin
 
-Bu makaleden bu gibi senaryolarda öğrenecekleriniz uygulayabilirsiniz:
+Bu makalede, Azure Machine Learning Studio'ya (klasik) entegre olan basit bir Azure Akış Analizi işinin nasıl hızlı bir şekilde ayarlanacağı açıklanmaktadır. Akışmetin verilerini analiz etmek ve duygu puanını gerçek zamanlı olarak belirlemek için Cortana İstihbarat Galerisi'nden Machine Learning duygu analizi modelini kullanırsınız. Cortana Intelligence Suite'i kullanmak, bir duygu analizi modeli oluşturmanın inceliklerini düşünmeden bu görevi yerine getirmenizi sağlar.
 
-* Twitter verilerini akış üzerinde gerçek zamanlı duygu analizi.
-* Müşteri kayıtlarını çözümleme destek personeli ile sohbetleri.
-* Forumlar, bloglar ve videolar hakkındaki yorumları değerlendiriliyor. 
-* Çok sayıda diğer gerçek zamanlı ve Tahmine dayalı Puanlama senaryolar.
+> [!TIP]
+> Gelişmiş performans ve güvenilirlik için Azure Machine Learning Studio (klasik) UDF yerine [Azure Machine Learning UDF'leri](machine-learning-udf.md) kullanmanız önerilir.
 
-Gerçek hayattaki bir senaryoda, doğrudan bir Twitter veri akışından verileri elde edersiniz. Akış analizi işi, Azure Blob Depolama alanında bir CSV dosyasından tweet'leri alır. böylece öğretici basitleştirmek için onu yazılır. Kendi CSV dosyası oluşturabilirsiniz veya örnek CSV dosyası, aşağıdaki görüntüde gösterildiği gibi kullanabilirsiniz:
+Bu makalede öğrendiklerinizi bu gibi senaryolara uygulayabilirsiniz:
 
-![Bir CSV dosyasında gösterilen örnek tweetleri](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+* Twitter verilerinin akışında gerçek zamanlı duyarlılığı analiz etmek.
+* Destek personeli ile müşteri sohbetlerinin kayıtlarını analiz etmek.
+* Forumlarda, bloglarda ve videolardaki yorumları değerlendirme. 
+* Diğer birçok gerçek zamanlı, tahmine dayalı puanlama senaryoları.
 
-Oluşturduğunuz akış analizi işi yaklaşım analizi model kullanıcı tanımlı işlevi (UDF) blob depolama alanından örnek metin verilere uygular. ' % S'çıkış (yaklaşım analizi sonuç) farklı bir CSV dosyasında aynı blob deposuna yazılır. 
+Gerçek bir senaryoda, verileri doğrudan bir Twitter veri akışından alırsınız. Öğreticiyi basitleştirmek için, Akış Analizi işinin Azure Blob depolama alanında bir CSV dosyasından tweet ler alacağı şekilde yazılır. Kendi CSV dosyanızı oluşturabilir veya aşağıdaki resimde gösterildiği gibi örnek bir CSV dosyası kullanabilirsiniz:
 
-Aşağıdaki şekil, bu yapılandırma gösterilmektedir. , Daha gerçekçi bir senaryo için belirtildiği gibi blob depolama ile Twitter verilerini Azure Event Hubs'a giriş akış değiştirebilirsiniz. Ayrıca, yapı bir [Microsoft Power BI](https://powerbi.microsoft.com/) birleşik yaklaşım, gerçek zamanlı görselleştirme.    
+![CSV dosyasında gösterilen örnek tweetler](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
-![Stream Analytics, Machine Learning tümleştirme genel bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
+Oluşturduğunuz Streaming Analytics işi, blob deposundaki örnek metin verilerine kullanıcı tanımlı işlev (UDF) olarak duygu analizi modelini uygular. Çıktı (duyarlılık analizi sonucu) farklı bir CSV dosyasında aynı blob deposuna yazılır. 
+
+Aşağıdaki şekil bu yapılandırmayı göstermektedir. Belirtildiği gibi, daha gerçekçi bir senaryo için, blob depolamayı Azure Etkinlik Hub'larından gelen Twitter verilerini akışla değiştirebilirsiniz. Ayrıca, toplam duyarlılığın [Microsoft Power BI](https://powerbi.microsoft.com/) gerçek zamanlı görselleştirmesini oluşturabilirsiniz.    
+
+![Stream Analytics Machine Learning entegrasyonuna genel bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure aboneliği.
-* Bazı veriler içeren bir CSV dosyası. Öğesinden daha önce gösterilen dosyayı indirebilirsiniz [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), ya da kendi dosya oluşturabilirsiniz. Bu makalede GitHub dosyasından kullandığınız varsayılır.
+* Içinde bazı veriler bulunan bir CSV dosyası. Daha önce gösterilen dosyayı [GitHub'dan](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv)indirebilir veya kendi dosyanızı oluşturabilirsiniz. Bu makale için, dosyayı GitHub'dan kullandığınız varsayılır.
 
-Yüksek düzeyde, bu makalede gösterilen görevleri tamamlamak için aşağıdakileri yapın:
+Yüksek düzeyde, bu makalede gösterilen görevleri tamamlamak için aşağıdakileri yaparsınız:
 
-1. Bir Azure depolama hesabı ve blob depolama kapsayıcısı oluşturun ve CSV biçimli bir giriş dosyasını kapsayıcıya yüklemek.
-3. Cortana Intelligence Gallery Azure Machine Learning Studio (klasik) çalışma alanınıza bir yaklaşım Analizi modeli ekleyin ve bu modeli Machine Learning çalışma alanında bir Web hizmeti olarak dağıtın.
-5. Giriş metin için yaklaşım belirlemek için bir işlev olarak bu web hizmetini çağıran bir Stream Analytics işi oluşturun.
-6. Stream Analytics işini başlatın ve çıktıyı denetleyin.
+1. Bir Azure depolama hesabı ve blob depolama kapsayıcısı oluşturun ve kapsayıcıya CSV biçimli bir giriş dosyası yükleyin.
+3. Cortana İstihbarat Galerisi'nden Azure Machine Learning Studio (klasik) çalışma alanına bir duygu analizi modeli ekleyin ve bu modeli Machine Learning çalışma alanında bir web hizmeti olarak dağıtın.
+5. Metin girişine ilişkin duyarlılığı belirlemek için bu web hizmetini işlev olarak çağıran bir Akış Analizi işi oluşturun.
+6. Stream Analytics işini başlatın ve çıktıyı kontrol edin.
 
-## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Bir depolama kapsayıcısı oluşturun ve CSV giriş dosyasını karşıya yükle
-Bu adım için Github'da kullanılabilir bir gibi herhangi bir CSV dosyasına kullanabilirsiniz.
+## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Bir depolama kapsayıcısı oluşturun ve CSV giriş dosyasını yükleyin
+Bu adım için, GitHub'dan kullanılabilen dosya gibi herhangi bir CSV dosyasını kullanabilirsiniz.
 
-1. Azure portalında **kaynak Oluştur** > **depolama** > **depolama hesabı**.
+1. Azure portalında, **kaynak** > **Depolama Deposu** > **hesabı**oluştur'u tıklatın.
 
-2. Bir ad sağlayın (`samldemo` örnekte). Ad yalnızca küçük harflerden ve rakamlardan kullanabilirsiniz ve Azure genelinde benzersiz olmalıdır. 
+2. Bir ad`samldemo` sağlayın (örnekte). Ad yalnızca küçük harfleri ve sayıları kullanabilir ve Azure'da benzersiz olmalıdır. 
 
-3. Mevcut bir kaynak grubunu belirtin ve konumu belirtin. Konum için Bu öğreticide oluşturulan tüm kaynakları aynı konumu kullanmanızı öneririz.
+3. Varolan bir kaynak grubu belirtin ve bir konum belirtin. Konum için, bu öğreticide oluşturulan tüm kaynakların aynı konumu kullanmasını öneririz.
 
-    ![Depolama hesabı ayrıntılarını girin](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
+    ![depolama hesabı ayrıntılarını sağlama](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. Azure portalında depolama hesabı seçin. Depolama hesabı dikey penceresinde **kapsayıcıları** ve ardından  **+ &nbsp;kapsayıcı** blob depolama alanı oluşturmak için.
+4. Azure portalında depolama hesabını seçin. Depolama hesabı **çubuğunda, Kapsayıcılar'ı** tıklatın ve ardından blob depolama alanı oluşturmak için ** + &nbsp;Kapsayıcı'yı** tıklatın.
 
-    ![Giriş BLOB depolama kapsayıcısı oluşturma](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
+    ![Giriş için blob depolama kabı oluşturma](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Kapsayıcı için bir ad sağlayın (`azuresamldemoblob` örnekte) doğrulayın **erişim türü** ayarlanır **Blob**. İşiniz bittiğinde, **Tamam**’a tıklayın.
+5. Kapsayıcı için bir ad`azuresamldemoblob` (örnekte) sağlayın ve **Access türünün** **Blob**olarak ayarlı olduğunu doğrulayın. İşiniz bittiğinde, **Tamam**’a tıklayın.
 
-    ![BLOB kapsayıcı ayrıntılarını belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
+    ![blob konteyner ayrıntılarını belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
-6. İçinde **kapsayıcıları** dikey penceresinde, bu kapsayıcı için dikey pencereyi açar Yeni kapsayıcıyı seçin.
+6. **Konteynerler** bıçağında, o kap için bıçağı açan yeni kabı seçin.
 
 7. **Karşıya Yükle**'ye tıklayın.
 
-    ![Bir kapsayıcı için 'Karşıya Yükle' düğmesine](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
+    ![Konteyner için 'Yükle' düğmesi](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. İçinde **blobu karşıya yükleme** dikey penceresinde, karşıya yükleme **sampleinput.csv** daha önce indirdiğiniz dosyayı. İçin **Blob türü**seçin **blok blobu** ve blok boyutu Bu öğretici için yeterliyse 4 MB olarak ayarlayın.
+8. Upload **blob** bıçak, daha önce indirdiğiniz **sampleinput.csv** dosyasını yükleyin. **Blob türü için,** **Blob'u engelle'yi** seçin ve blok boyutunu bu öğretici için yeterli olan 4 MB'a ayarlayın.
 
-9. Tıklayın **karşıya** dikey pencerenin alt kısmındaki düğmesi.
+9. Bıçağın altındaki **Yükle** düğmesini tıklatın.
 
-## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Cortana Intelligence Galeriden yaklaşım analizi modeli ekleme
+## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Cortana İstihbarat Galerisi'nden duygu analizi modelini ekleyin
 
-Örnek veriler bir blob içinde olduğuna göre Cortana Intelligence Galerisi'nde yaklaşım analizi modeli etkinleştirebilirsiniz.
+Örnek veriler bir blob içinde olduğuna göre, Cortana İstihbarat Galerisi'nde duygu analizi modelini etkinleştirebilirsiniz.
 
-1. Git [yaklaşım Tahmine dayalı analiz modeli](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) Cortana Intelligence Galerisi'nde sayfası.  
+1. Cortana İstihbarat Galerisi'ndeki [tahmine dayalı duyarlılık analizi modeli](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) sayfasına gidin.  
 
-2. Tıklayın **Studio'da Aç**.  
+2. **Studio'da Aç'ı**tıklatın.  
    
-   ![Stream Analytics Machine Learning, Machine Learning Studio'yu Aç](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Machine Learning, açık Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. Çalışma alanına dönmek oturum açın. Bir konum seçin.
+3. Çalışma alanına gitmek için oturum açın. Bir konum seçin.
 
-4. Tıklayın **çalıştırma** sayfanın alt kısmındaki. İşlem sürerken, yaklaşık bir dakika sürer.
+4. Sayfanın altındaki **Çalıştır'ı** tıklatın. İşlem devam ediyor, bu da yaklaşık bir dakika sürüyor.
 
-   ![Machine Learning Studio'da deneme çalıştırma](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Machine Learning Studio'da deneme yürütmek](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. İşlem başarıyla çalıştırdıktan sonra seçin **Web hizmeti Dağıt** sayfanın alt kısmındaki.
+5. İşlem başarıyla çalıştırdıktan sonra, sayfanın altındaki **Web Hizmetini Dağıt'ı** seçin.
 
-   ![Machine Learning Studio'da deneme bir web hizmeti olarak dağıtma](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![bir web hizmeti olarak Machine Learning Studio deneme dağıtmak](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
-6. Yaklaşım analizi modeli kullanıma hazır olduğunu doğrulamak için tıklayın **Test** düğmesi. "Microsoft seviyorum gibi" giriş metin sağlayın. 
+6. Duygu analizi modelinin kullanıma hazır olduğunu doğrulamak için **Test** düğmesini tıklatın. "Microsoft'u seviyorum" gibi metin girişi sağlayın. 
 
-   ![Machine Learning Studio'da deneme test](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Machine Learning Studio test deneyi](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
-    Test çalışıyorsa, aşağıdaki örneğe benzer bir sonuç bakın:
+    Test işe yarıyorsa, aşağıdaki örneğe benzer bir sonuç görürsünüz:
 
-   ![Machine Learning Studio'da test sonuçları](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Machine Learning Studio test sonuçları](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. İçinde **uygulamaları** sütun tıklayın **Excel 2010 veya önceki çalışma kitabı** bir Excel çalışma kitabı indirmek için bağlantı. Çalışma kitabı, API anahtarını ve daha sonra Stream Analytics işi ayarlamak için gereken URL içerir.
+7. **Uygulamalar** sütununda, Excel çalışma kitabını indirmek için **Excel 2010 veya önceki çalışma kitabı** bağlantısını tıklatın. Çalışma kitabı, Akış Analizi işini ayarlamak için daha sonra ihtiyacınız olan API anahtarını ve URL'yi içerir.
 
-    ![Stream Analytics Machine Learning, Hızlı Bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Machine Learning, hızlı bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Machine Learning modelini kullanan bir Stream Analytics işi oluşturma
+## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Machine Learning modelini kullanan bir Akış Analizi işi oluşturun
 
-Şimdi, blob depolama alanında CSV dosyasından örnek tweetleri okuyan bir Stream Analytics işi oluşturabilirsiniz. 
+Artık blob depolamasında CSV dosyasından örnek tweetleri okuyan bir Stream Analytics işi oluşturabilirsiniz. 
 
 ### <a name="create-the-job"></a>İşi oluşturma
 
-1. [Azure portalına](https://portal.azure.com) gidin.  
+1. [Azure portalına](https://portal.azure.com)gidin.  
 
-2. Tıklayın **kaynak Oluştur** > **nesnelerin interneti** > **Stream Analytics işi**. 
+2.  > Bir kaynak**Internet of Things** > **Stream Analytics iş** **oluşturun'u**tıklatın. 
 
-3. İş adı `azure-sa-ml-demo`bir abonelik belirtin, mevcut bir kaynak grubu belirtin veya yeni bir tane oluşturun ve iş konumunu seçin.
+3. İşi `azure-sa-ml-demo`adlandırın, bir abonelik belirtin, varolan bir kaynak grubu belirtin veya yeni bir tane oluşturun ve işin konumunu seçin.
 
-   ![Yeni Stream Analytics işine ilişkin ayarlar belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
+   ![yeni Akış Analizi işi için ayarları belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
-### <a name="configure-the-job-input"></a>İş Girişi yapılandırma
-İş giriş blob depolama alanına daha önce yüklenen CSV dosyasından alır.
+### <a name="configure-the-job-input"></a>İş girişini yapılandırma
+İş, girişini daha önce blob depolamaalanına yüklediğiniz CSV dosyasından alır.
 
-1. İş, altında oluşturulduktan sonra **iş topolojisi** işi dikey penceresinde **girişleri** seçeneği.    
+1. İş oluşturulduktan sonra, iş bıçağındaki **İş Topolojisi** altında **Girişler** seçeneğini tıklatın.    
 
-2. İçinde **girişleri** dikey penceresinde tıklayın **Stream giriş eklemek** >**Blob Depolama**
+2. **Giriş** bıçağında, **Akış Girişi** >**Blob depolama alanını** tıklatın
 
-3. Doldurun **Blob Depolama** dikey penceresini aşağıdaki değerlerle:
+3. **Blob Depolama** bıçağını aşağıdaki değerlerle doldurun:
 
    
    |Alan  |Değer  |
    |---------|---------|
-   |**Giriş diğer adı** | Adı kullanmak `datainput` seçip **blob depolama aboneliğinizde seçin**       |
+   |**Girdi diğer adı** | Adı `datainput` kullanın ve **aboneliğinizden blob depolama alanını seçin**       |
    |**Depolama hesabı**  |  Daha önce oluşturduğunuz depolama hesabını seçin.  |
-   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıya seçin (`azuresamldemoblob`)        |
-   |**Olay serileştirme biçimi**  |  Seçin **CSV**       |
+   |**Kapsayıcı**  | Daha önce oluşturduğunuz`azuresamldemoblob`kapsayıcıyı seçin ( )        |
+   |**Olay serileştirme biçimi**  |  **CSV'yi** seçin       |
 
-   ![Yeni Stream Analytics işi girişi için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Yeni Stream Analytics iş girişi için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet**'e tıklayın.
 
-### <a name="configure-the-job-output"></a>İş çıkışını yapılandırma
-İş, sonuçlar burada giriş aynı blob depolamaya gönderir. 
+### <a name="configure-the-job-output"></a>İş çıktısını yapılandırma
+İş, sonuçları girdi aldığı aynı blob depolama alanına gönderir. 
 
-1. Altında **iş topolojisi** işi dikey penceresinde **çıkışları** seçeneği.  
+1. **İş Bıçaklarında İş Topolojisi** altında **Çıktılar** seçeneğini tıklatın.  
 
-2. İçinde **çıkışları** dikey penceresinde tıklayın **Ekle** >**Blob Depolama**ve ardından diğer ad ile bir çıktı ekleyin `datamloutput`. 
+2. **Çıktılar** çubuğunda,**Blob depolama ekle'yi** **tıklatın** >ve ardından `datamloutput`takma adla çıktı ekleyin. 
 
-3. Doldurun **Blob Depolama** dikey penceresini aşağıdaki değerlerle:
+3. **Blob Depolama** bıçağını aşağıdaki değerlerle doldurun:
 
    |Alan  |Değer  |
    |---------|---------|
-   |**Çıkış diğer adı** | Adı kullanmak `datamloutput` seçip **blob depolama aboneliğinizde seçin**       |
+   |**Çıktı diğer adı** | Adı `datamloutput` kullanın ve **aboneliğinizden blob depolama alanını seçin**       |
    |**Depolama hesabı**  |  Daha önce oluşturduğunuz depolama hesabını seçin.  |
-   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıya seçin (`azuresamldemoblob`)        |
-   |**Olay serileştirme biçimi**  |  Seçin **CSV**       |
+   |**Kapsayıcı**  | Daha önce oluşturduğunuz`azuresamldemoblob`kapsayıcıyı seçin ( )        |
+   |**Olay serileştirme biçimi**  |  **CSV'yi** seçin       |
 
-   ![Yeni Stream Analytics işi çıktı için ayarları](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
+   ![Yeni Stream Analytics iş çıktısı için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
-4. **Save (Kaydet)** düğmesine tıklayın.   
+4. **Kaydet**'e tıklayın.   
 
 
-### <a name="add-the-machine-learning-function"></a>Machine Learning işlevi ekleme 
-Daha önce bir web hizmetine bir Machine Learning modeli yayımladı. Stream analiz iş çalıştırıldığında, bu senaryoda, her örnek tweet girdisinden yaklaşım analizi için web hizmetine gönderir. Machine Learning web hizmeti bir yaklaşım döndürür (`positive`, `neutral`, veya `negative`) ve pozitif olan tweet'i bir olasılık. 
+### <a name="add-the-machine-learning-function"></a>Makine Öğrenimi işlevini ekle 
+Daha önce bir web hizmeti için bir Machine Learning modeli yayınladı. Bu senaryoda, Akış Analizi işi çalıştığında, girişten her örnek tweet'i duyarlılık analizi için web hizmetine gönderir. Machine Learning web hizmeti bir`positive` `neutral`duygu `negative`(, , veya ) ve tweet olumlu olma olasılığı döndürür. 
 
-Öğreticinin bu bölümünde, Stream analiz işteki bir fonksiyon tanımlayın. İşlevi, web hizmetine bir tweet gönderin ve yanıt almak için çağrılabilir. 
+Öğreticinin bu bölümünde, Akış Çözümlemesi işinde bir işlev tanımlarsınız. İşlev, web hizmetine bir tweet göndermek ve yanıtı geri almak için çağrılabilir. 
 
-1. Daha önce Excel çalışma kitabında yüklediğiniz web hizmeti URL'sini ve API anahtarı olduğundan emin olun.
+1. Excel çalışma kitabında daha önce indirdiğiniz web hizmeti URL'si ve API anahtarına sahip olduğundan emin olun.
 
-2. İşi dikey pencerenize gidin > **işlevleri** >  **+ Ekle** > **AzureML**
+2. İş > **İş** > Bıçaklarınıza gidin +**AzureML** **Ekle** > 
 
-3. Doldurun **Azure Machine Learning işlevi** dikey penceresini aşağıdaki değerlerle:
+3. **Azure Machine Learning fonksiyon** bıçağını aşağıdaki değerlerle doldurun:
 
    |Alan  |Değer  |
    |---------|---------|
-   | **İşlev diğer adı** | Adı kullanın `sentiment` seçip **sağlayan Azure Machine Learning işlevi ayarlarını elle** size sağlayan bir seçenek URL'sini ve anahtarını girin.      |
+   | **İşlev takma adı** | Adınızı `sentiment` kullanın ve URL'yi ve anahtarı girme seçeneği sunan **Azure Machine Learning işlev ayarlarını el ile sağlayın'ı** seçin.      |
    | **URL**| Web hizmeti URL'sini yapıştırın.|
-   |**Anahtar** | API anahtarını yapıştırın. |
+   |**Anahtar** | API tuşunu yapıştırın. |
   
-   ![Stream Analytics işi için Machine Learning işlevi eklemek için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
+   ![Stream Analytics işine Makine Öğrenimi işlevi eklemek için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
-4. **Save (Kaydet)** düğmesine tıklayın.
+4. **Kaydet**'e tıklayın.
 
-### <a name="create-a-query-to-transform-the-data"></a>Verileri dönüştürmek için bir sorgu oluşturun
+### <a name="create-a-query-to-transform-the-data"></a>Verileri dönüştürmek için sorgu oluşturma
 
-Stream Analytics, bildirim temelli, SQL tabanlı sorgu giriş incelemek ve işlemek için kullanır. Bu bölümde, her tweet girişten okur ve ardından ilgili yaklaşım analizi gerçekleştirmek için Machine Learning işlevi çağıran bir sorgu oluşturun. Sorgu sonucu (blob depolama) tanımlanan çıkış ardından gönderir.
+Akış Analizi, girişi incelemek ve işlemek için bildirimsel, SQL tabanlı bir sorgu kullanır. Bu bölümde, girişten her tweet'i okuyan ve ardından duygu analizi gerçekleştirmek için Machine Learning işlevini çağıran bir sorgu oluşturursunuz. Sorgu daha sonra sonucu tanımladığınız çıktıya (blob depolama) gönderir.
 
-1. Proje genel bakış dikey penceresine dönün.
+1. İşe genel bakış bıçağına geri dönün.
 
-2.  Altında **iş topolojisi**, tıklayın **sorgu** kutusu.
+2.  **İş Topolojisi**altında Sorgu **kutusunu** tıklatın.
 
 3. Aşağıdaki sorguyu girin:
 
@@ -209,50 +213,50 @@ Stream Analytics, bildirim temelli, SQL tabanlı sorgu giriş incelemek ve işle
     FROM sentiment  
     ```    
 
-    Sorgu, daha önce oluşturduğunuz işlev çağırır (`sentiment`) girişte her tweet üzerinde yaklaşım analizi gerçekleştirmek için. 
+    Sorgu, girişteki her tweet'te duyarlılık çözümlemesi gerçekleştirmek için daha önce oluşturduğunuz işlevi (`sentiment`) çağırır. 
 
-4. Tıklayın **Kaydet** sorguyu kaydetmek için.
+4. Sorguyu kaydetmek için **Kaydet**’e tıklayın.
 
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 
-Stream Analytics işi şimdi başlayabilirsiniz.
+Artık Stream Analytics işine başlayabilirsiniz.
 
 ### <a name="start-the-job"></a>İşi başlatma
-1. Proje genel bakış dikey penceresine dönün.
+1. İşe genel bakış bıçağına geri dönün.
 
-2. Tıklayın **Başlat** dikey penceresinin üstünde.
+2. Bıçağın üst kısmında **başlat'ı** tıklatın.
 
-3. İçinde **başlangıç işi**seçin **özel**ve ardından bir CSV dosyasını blob depolamaya yüklediğiniz gün seçin. İşiniz bittiğinde tıklayın **Başlat**.  
+3. Başlangıç **işinde,** **Özel'i**seçin ve csv dosyasını blob depolama alanına yüklediğinizden bir gün önce seçin. Bittiğinde, **Başlat'ı**tıklatın.  
 
 
-### <a name="check-the-output"></a>Çıktıyı denetleyin
-1. Etkinlik görene kadar birkaç dakika iş izin **izleme** kutusu. 
+### <a name="check-the-output"></a>Çıktıyı kontrol edin
+1. **İzleme** kutusunda etkinliği görene kadar işin birkaç dakika çalışmasına izin verin. 
 
-2. Blob depolama içeriğini incelemek için normalde kullandığınız bir aracınız varsa, incelemek için bu aracı kullanın `azuresamldemoblob` kapsayıcı. Alternatif olarak, Azure portalında aşağıdaki adımları uygulayın:
+2. Blob depolama alanının içeriğini incelemek için normalde kullandığınız bir aracınız varsa, `azuresamldemoblob` kapsayıcıyı incelemek için bu aracı kullanın. Alternatif olarak, Azure portalında aşağıdaki adımları yapın:
 
-    1. Portalı'nda bulması `samldemo` depolama hesabı ve hesap içinde Bul `azuresamldemoblob` kapsayıcı. Kapsayıcıyı iki dosyada bakın: örnek tweetleri içeren dosyayı ve Stream Analytics işi tarafından oluşturulan bir CSV dosyası.
-    2. Oluşturulan dosyayı sağ tıklayın ve ardından **indirme**. 
+    1. Portalda, `samldemo` depolama hesabını bulun ve hesap içinde `azuresamldemoblob` kapsayıcıyı bulun. Kapsayıcıda iki dosya görürsünüz: örnek tweetleri içeren dosya ve Stream Analytics işi tarafından oluşturulan bir CSV dosyası.
+    2. Oluşturulan dosyayı sağ tıklatın ve ardından **İndir'i**seçin. 
 
-   ![Blob depolama alanından CSV iş çıktısını indirme](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
+   ![Blob depolamadan CSV iş çıktısını indirin](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
 
-3. Oluşturulan CSV dosyasını açın. Aşağıdaki örneğe benzer bir şey görürsünüz:  
+3. Oluşturulan CSV dosyasını açın. Aşağıdaki örnek gibi bir şey görürsünüz:  
    
-   ![Stream Analytics, Machine Learning, CSV görüntüleyin](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Machine Learning, CSV görünümü](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 
 ### <a name="view-metrics"></a>Ölçümleri görüntüle
-Azure Machine Learning işlevi ile ilgili ölçümleri de görüntüleyebilirsiniz. Aşağıdaki işlev ile ilgili ölçümleri görüntülenen **izleme** işi dikey pencerede kutusunda:
+Azure Machine Learning işleviyle ilgili ölçümleri de görüntüleyebilirsiniz. İşle ilgili aşağıdaki ölçümler iş bıçağındaki **İzleme** kutusunda görüntülenir:
 
-* **İşlev istekleri** Machine Learning web hizmetine gönderilen isteklerin sayısını gösterir.  
-* **İşlev olayları** olay istek sayısını gösterir. Varsayılan olarak, bir Machine Learning web hizmetine her isteği en fazla 1.000 olayları içerir.  
+* **İşlev İstekleri,** Machine Learning web hizmetine gönderilen istek sayısını gösterir.  
+* **İşlev Olayları** istekteki olay sayısını gösterir. Varsayılan olarak, Machine Learning web hizmetine yapılan her istek en fazla 1.000 olay içerir.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API tümleştirin ve makine öğrenimi](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [REST API ve Makine Öğrenimini Entegre Edin](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 

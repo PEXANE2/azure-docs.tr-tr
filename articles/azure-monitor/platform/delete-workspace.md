@@ -1,56 +1,56 @@
 ---
-title: Azure Log Analytics çalışma alanını silme ve kurtarma | Microsoft Docs
-description: Kişisel abonelikte bir tane oluşturduysanız veya çalışma alanı modelinizi yeniden yapılandırmak için Log Analytics çalışma alanınızı silmeyi öğrenin.
+title: Azure Günlük Analizi çalışma alanını silme ve kurtarma | Microsoft Dokümanlar
+description: Kişisel bir abonelikte bir tane oluşturduysanız veya çalışma alanı modelinizi yeniden yapılandırıyorsanız, Günlük Analizi çalışma alanınızı nasıl sileydiğinizi öğrenin.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054931"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
+# <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Günlük Analizi çalışma alanını silme ve kurtarma
 
-Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve silinen çalışma alanının nasıl kurtarılacağı açıklanmaktadır. 
+Bu makalede, Azure Log Analytics çalışma alanı yumuşak silme kavramı ve silinen çalışma alanının nasıl kurtarılacağA çalışılabilenler açıklanmaktadır. 
 
-## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanı silinirken dikkat edilecek noktalar
+## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanını silerken dikkat edilmesi gerekenler
 
-Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz – verileri kalıcı olarak silinmek üzere kuyruğa alınır ve 30 gün içinde tamamen temizlenir. Çalışma alanı adı ' yayımlandı ' ve bunu yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
+Bir Log Analytics çalışma alanını sildiğinizde, silinme nin kazara veya kasıtlı olup olmadığını, verileri ve bağlı aracıları da dahil olmak üzere çalışma alanının kurtarılmasına olanak sağlamak için bir yumuşak silme işlemi gerçekleştirilir. Yumuşak silme döneminden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz – verileri kalıcı silme için sıraya alınır ve 30 gün içinde tamamen temizlenir. Çalışma alanı adı 'serbest' ve yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
 
 > [!NOTE]
-> Geçici silme davranışını geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek istiyorsanız, [kalıcı çalışma alanı silme](#permanent-workspace-delete)bölümündeki adımları izleyin.
+> Yumuşak silme davranışını geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek istiyorsanız, [Kalıcı çalışma alanı silme](#permanent-workspace-delete)adımlarını izleyin.
 
-Hizmet işleminizi olumsuz yönde etkileyebilecek önemli veriler ve yapılandırma olabileceğinden, bir çalışma alanını sildiğinizde dikkatli olmak istersiniz. Şu gibi Log Analytics verilerini depolayan aracıları, çözümleri ve diğer Azure hizmetlerini ve kaynakları inceleyin:
+Hizmet işleminizi olumsuz etkileyebilecek önemli veriler ve yapılandırma olabileceğinden, bir çalışma alanını sildiğinizde dikkatli olmak istersiniz. Verilerini Log Analytics'te depolayan hangi aracıların, çözümlerin ve diğer Azure hizmetlerinin ve kaynaklarının bunlar la ilgili olarak gözden geçirilmesi:
 
 * Yönetim çözümleri
 * Azure Otomasyonu
 * Windows ve Linux sanal makinelerinde çalışan aracılar
-* Ortamınızdaki Windows ve Linux bilgisayarları üzerinde çalışan aracılar
+* Ortamınızda Windows ve Linux bilgisayarlarda çalışan aracılar
 * System Center Operations Manager
 
-Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanıcıların izni bozulur. Kullanıcılar başka çalışma alanlarıyla ilişkiliyse, bu diğer çalışma alanlarıyla Log Analytics kullanmaya devam edebilirler.
+Yumuşak silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanıcıların izni kesilir. Kullanıcılar diğer çalışma alanlarıyla ilişkiliyse, günlük analitiği kullanmaya devam edebilirler.
 
-## <a name="soft-delete-behavior"></a>Geçici silme davranışı
+## <a name="soft-delete-behavior"></a>Yumuşak silme davranışı
 
-Çalışma alanı silme işlemi, çalışma alanı Kaynak Yöneticisi kaynağını kaldırır, ancak yapılandırma ve veriler 14 gün boyunca tutulur ve çalışma alanının silindiği görünümü verir. Çalışma alanına rapor verecek şekilde yapılandırılan tüm aracılar ve System Center Operations Manager yönetim grupları, geçici silme dönemi boyunca yalnız bırakılmış durumda kalır. Bu hizmet, silinen çalışma alanının verileri ve bağlı kaynakları dahil olmak üzere, silme işlemini geri alarak kurtarmak için bir mekanizma sağlar.
+Çalışma alanı silme işlemi çalışma alanı Kaynak Yöneticisi kaynağını kaldırır, ancak yapılandırması ve verileri çalışma alanının silindiği görünümünü sağlarken 14 gün boyunca saklanır. Çalışma alanına rapor vermek üzere yapılandırılan tüm aracılar ve Sistem Merkezi Operasyon Yöneticisi yönetim grupları, yumuşak silme döneminde yetim durumda kalır. Hizmet ayrıca, verileri ve bağlı kaynakları da dahil olmak üzere silinen çalışma alanını kurtarmak için bir mekanizma sağlar ve aslında silme işlemini geri alar.
 
 > [!NOTE] 
-> Azure Otomasyonu hesabınız gibi yüklü çözümler ve bağlı hizmetler, silme sırasında çalışma alanından kalıcı olarak kaldırılır ve kurtarılamaz. Çalışma alanını önceden yapılandırılmış durumuna getirmek için kurtarma işleminden sonra bunların yeniden yapılandırılması gerekir.
+> Azure Otomasyon hesabınız gibi yüklü çözümler ve bağlantılı hizmetler silme zamanında çalışma alanından kalıcı olarak kaldırılır ve kurtarılamaz. Bunlar, çalışma alanını daha önce yapılandırılmış durumuna getirmek için kurtarma işleminden sonra yeniden yapılandırılmalıdır.
 
-Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
+[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)kullanarak veya [Azure portalında](https://portal.azure.com)bir çalışma alanını silebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
-2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
-3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil** ' e tıklayın.
-   ![seçim alanı Özellikler bölmesinden](media/delete-workspace/log-analytics-delete-workspace.png)
-4. Çalışma alanını silme işlemini onaylamanızı isteyen onay iletisi penceresi göründüğünde **Evet**' e tıklayın.
-   ![çalışma alanının silinmesini onaylayın](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+1. Oturum açabilmek için [Azure portalına](https://portal.azure.com)gidin. 
+2. Azure portalında **Tüm hizmetler'i**seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Günlük Analizi çalışma alanlarını**seçin.
+3. Günlük Analizi çalışma alanları listesinde bir çalışma alanı seçin ve ardından orta bölmenin üst kısmından **Sil'i** tıklatın.
+   ![Çalışma Alanı özellikleri bölmesinden silme seçeneği](media/delete-workspace/log-analytics-delete-workspace.png)
+4. Onay iletisi penceresi çalışma alanının silinmesini onaylamanızı istediğinde **Evet'i**tıklatın.
+   ![Çalışma alanının silinmesini onaylama](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
@@ -58,37 +58,37 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ```
 
 ## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
-Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtımı tekrarlamanız gereken geliştirme ve test gibi bazı senaryolara uygun olmayabilir. Bu gibi durumlarda, çalışma alanınızı kalıcı olarak silebilir ve geçici silme dönemini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
+Yumuşak silme yöntemi, aynı ayarlar ve çalışma alanı adı ile bir dağıtımı yinelemeniz gereken geliştirme ve sınama gibi bazı senaryolara sığmayabilir. Bu gibi durumlarda çalışma alanınızı kalıcı olarak silebilir ve yumuşak silme süresini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
 
 
 > [!IMPORTANT]
-> Kalıcı çalışma alanı silme işlemini, geri döndürülemez bu yana dikkatli bir şekilde kullanın, çalışma alanınızı ve verilerini kurtaramayacağız.
+> Geri döndürülemez olduğundan kalıcı çalışma alanı silme işlemini dikkatli kullanın ve çalışma alanınızı ve verilerini kurtaramazsınız.
 
-Kalıcı çalışma alanı silme, şu anda REST API aracılığıyla gerçekleştirilebilir.
+Kalıcı çalışma alanı silme şu anda REST API üzerinden gerçekleştirilebilir.
 
 > [!NOTE]
-> Herhangi bir API isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
+> Herhangi bir API isteği, istek üstbilgisine bir Taşıyıcı yetkilendirme belirteci içermelidir.
 >
-> Belirteci şunları kullanarak edinebilirsiniz:
+> Belirteci aşağıdakileri kullanarak edinebilirsiniz:
 > - [Uygulama kayıtları](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
-> - Tarayıcıda geliştirici konsolunu (F12) kullanarak Azure portal gidin. **Batch** , **istek üstbilgileri**altındaki kimlik doğrulama dizesinin örneklerinden birine bakın. Bu, model *yetkilendirmesi: taşıyıcı <token>* olacaktır. Örnekte gösterildiği gibi bunu kopyalayın ve API çağra ekleyin.
-> - Azure REST belgeleri sitesine gidin. herhangi bir API üzerinde **deneyin** , taşıyıcı belirtecini KOPYALAYıN ve API çağra ekleyin.
-Çalışma alanınızı kalıcı olarak silmek için, [çalışma alanları-Rest]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) API çağrısını bir zorlama etiketiyle birlikte kullanın:
+> - Tarayıcıda geliştiricinin konsolunu (F12) kullanarak Azure portalına gidin. **İstek Üstbilgilerinin**altındaki kimlik doğrulama dizesi için toplu iş lerden birine **bakın.** Bu desen yetkilendirme *olacak: Taşıyıcı <token> *. Örneklerde gösterildiği gibi api çağrınıza bunu kopyalayın ve ekleyin.
+> - Azure REST dokümantasyon sitesine gidin. herhangi bir API'de **deneyin,** Taşıyıcı belirteci kopyalayın ve API çağrınıza ekleyin.
+Çalışma alanınızı kalıcı olarak silmek için Çalışma Alanlarını kullanın - REST API çağrısını kuvvet etiketiyle [silin:]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)
 >
 > ```rst
 > DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
 > Authorization: Bearer eyJ0eXAiOiJKV1Qi….
 > ```
-WHERE ' eyJ0eXAiOiJKV1Qi... ' tam yetkilendirme belirtecini temsil eder.
+Nerede 'eyJ0eXAiOiJKV1Qi ...' tam yetkilendirme belirteci temsil eder.
 
-## <a name="recover-workspace"></a>Çalışma alanını kurtar
+## <a name="recover-workspace"></a>Çalışma alanını kurtarma
 
-Çalışma alanının geçici silme işleminden önce ilişkilendirildiği abonelik ve kaynak grubu için katkıda bulunan izinleriniz varsa, verileri, yapılandırması ve bağlı aracıları da dahil olmak üzere geçici silme döneminde kurtarabilirsiniz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz ve kalıcı silme için atanmaz. Silinen çalışma alanlarının adları, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturulmaya çalışılırken kullanılamaz.  
+Çalışma alanının yumuşak silme işleminden önce ilişkili olduğu abonelik ve kaynak grubuna Katkıda Bulunan İzinler varsa, verileri, yapılandırması ve bağlı aracıları da dahil olmak üzere yumuşak silme döneminde kurtarabilirsiniz. Yumuşak silme döneminden sonra, çalışma alanı kurtarılamaz ve kalıcı silme için atanır. Silinen çalışma alanlarının adları yumuşak silme döneminde korunur ve yeni bir çalışma alanı oluşturmaya çalışırken kullanılamaz.  
 
-Aşağıdaki özellikler silinen çalışma alanı ayrıntılarıyla doldurulduğu sürece, bir çalışma alanını yeniden oluşturarak kurtarabilirsiniz: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) veya [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) .
+Aşağıdaki özellikler silinen çalışma alanı ayrıntılarıyla doldurulur sayılsa [da,](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) aşağıdaki çalışma alanı oluşturma yöntemlerini kullanarak bir çalışma alanını yeniden oluşturarak kurtarabilirsiniz: PowerShell veya [REST API:]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)
 
 * Abonelik Kimliği
-* Kaynak grubu adı
+* Kaynak Grubu adı
 * Çalışma alanı adı
 * Bölge
 
@@ -98,9 +98,9 @@ PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
 PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
 ```
 
-Çalışma alanı ve tüm verileri kurtarma işleminden sonra geri getirilir. Çözüm ve bağlı hizmetler silindiği zaman çalışma alanından kalıcı olarak kaldırılmıştır ve çalışma alanını daha önce yapılandırılmış durumuna getirmek için yeniden yapılandırılması gerekir. İlişkili çözümler yeniden yüklenene ve şemaları çalışma alanına eklenene kadar, bazı veriler, çalışma alanı kurtarmasından sonra sorgu için kullanılamayabilir.
+Çalışma alanı ve tüm verileri kurtarma işleminden sonra geri getirilir. Çözümler ve bağlantılı hizmetler silindiğinde çalışma alanından kalıcı olarak kaldırıldı ve bunlar çalışma alanını daha önce yapılandırılmış durumuna getirmek için yeniden yapılandırılmalıdır. İlişkili çözümler yeniden yüklenene ve şemaları çalışma alanına eklenene kadar bazı veriler çalışma alanı kurtarmadan sonra sorgu için kullanılamayabilir.
 
 > [!NOTE]
-> * [Azure Portal](https://portal.azure.com)çalışma alanı kurtarma desteklenmiyor. 
-> * Geçici silme dönemi sırasında çalışma alanının yeniden oluşturulması, bu çalışma alanı adının zaten kullanımda olduğunu belirten bir bildirim sağlar. 
+> * Çalışma alanı kurtarma Sıtkı [Portalı'nda](https://portal.azure.com)desteklenmez. 
+> * Yumuşak silme döneminde bir çalışma alanını yeniden oluşturmak, bu çalışma alanı adının zaten kullanımda olduğunu gösterir. 
 > 

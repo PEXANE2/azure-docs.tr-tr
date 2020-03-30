@@ -1,13 +1,13 @@
 ---
 title: Azure Dosyalarını yedekleme hakkında SSS
-description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
+description: Bu makalede, Azure dosya paylaşımlarınızı Azure Yedekleme hizmetiyle nasıl koruyacağınıza ilişkin sık sorulan soruların yanıtlarını keşfedin.
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302551"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
@@ -34,11 +34,11 @@ Evet. Eşitleme Gruplarına bağlanan Azure Dosya Paylaşımlarının koruması 
 
 Yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabı seçildiğinde Depolama Hesabı, bu işlemin yapıldığı Kasaya kaydolur. Dosya paylaşımları farklı bir Kasa ile korumayı seçerseniz, bu Kasadan seçilen Depolama Hesabının [Kaydını Sil](troubleshoot-azure-files.md#configuring-backup)’in.
 
-### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya Paylaşımlarımı yedeklemediğim kasayı değiştirebilir miyim?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya paylaşımlarımı yedeklediğim Kasa'yı değiştirebilir miyim?
 
-Evet. Ancak, bağlı kasadan [bir dosya paylaşımında korumayı durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , bu depolama hesabının [kaydını](troubleshoot-azure-files.md#configuring-backup) kaldırmanız ve ardından farklı bir kasadan korumanız gerekir.
+Evet. Ancak, bağlı Kasa'dan [bir dosya paylaşımında korumayı durdurmanız,](manage-afs-backup.md#stop-protection-on-a-file-share) bu Depolama Hesabının [Kaydını Açmanız](troubleshoot-azure-files.md#configuring-backup) ve ardından farklı bir Vault'tan korumanız gerekir.
 
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Hangi coğrafyalar 'ın Azure dosya paylaşımlarını yedekleyebilirim?
+### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Azure Dosyası paylaşımlarını hangi coğrafyalarda yedekleyebilirim?
 
 Azure Dosya paylaşımları için yedekleme şu anda Önizleme aşamasındadır ve yalnızca aşağıdaki bölgelerde kullanılabilir:
 
@@ -67,23 +67,23 @@ Azure Dosya paylaşımları için yedekleme şu anda Önizleme aşamasındadır 
 - Batı ABD (WUS)
 - Orta Batı ABD (WCUS)
 - Batı ABD 2 (WUS 2)
-- US Gov Arizona (UGA)
-- US Gov Teksas (UGT)
-- US Gov Virginia (UGV)
-- Avustralya Orta (ACL)
-- Hindistan Batı (ıNW)
-- Güney Afrika Kuzey (SAN)
-- BAE Kuzey (UA)
-- Fransa Orta (FRC)
+- ABD Gov Arizona (UGA)
+- ABD Gov Texas (UGT)
+- ABD Gov Virginia (UGV)
+- Avustralya Merkez (ACL)
+- Hindistan Batı (INW)
+- Güney Afrika Kuzey(SAN)
+- BAE Kuzey(UAN)
+- Fransa Merkez (FRC)
 - Almanya Kuzey (GN)                       
-- Almanya Orta Batı (GWC)
-- Güney Afrika Batı (gördüğünüz)
-- BAE Orta (UAC)
+- Almanya Batı Orta (GWC)
+- Güney Afrika Batı (SAW)
+- BAE Merkez (UAC)
 - NWE (Norveç Doğu)     
 - NWW (Norveç Batı)
 - SZN (İsviçre Kuzey)
 
-Yukarıda belirtilmeyen bir bölgede kullanmanız gerekiyorsa [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) adresine yazın.
+[AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) Yukarıda listelenmemiş belirli bir coğrafi içinde kullanmanız gerekiyorsa yazın.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kasada kaç tane Azure dosya paylaşımını koruyabilirim?
 
@@ -95,9 +95,9 @@ Hayır. Depolama Hesabındaki tüm dosya paylaşımları, aynı Kasa tarafından
 
 ## <a name="backup"></a>Backup
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Dosya paylaşma başına kaç zamanlanmış yedekleme yapılandırabilirim?
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Dosya paylaşımı başına kaç tane zamanlanmış yedekleme yapılandırabilirim?
 
-Azure Backup Şu anda Azure dosya paylaşımlarının zamanlanan bir kez günlük yedeklemesini yapılandırmayı destekliyor.
+Azure Yedekleme şu anda Azure Dosya Paylaşımlarının zamanlanmış bir kez yedeklemesini yapılandırmayı destekler.
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>Dosya paylaşımı başına kaç tane İsteğe Bağlı yedekleme alabilirim?
 
@@ -113,23 +113,23 @@ Bir Azure dosya paylaşımı silindiğinde, size silinecek yedeklemelerin listes
 
 Evet. Korumayı durdurduğunuzda **Yedekleme Verilerini Koru** seçeneğini belirlediyseniz tüm mevcut geri yükleme noktalarından geri yükleme yapabilirsiniz.
 
-### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal etdiğimde ne olur?
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal edersem ne olur?
 
-Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi duraklar ve iptalden önce geri yüklenen tüm dosyalar, geri alma işlemleri yapılmadan yapılandırılmış hedefte (orijinal veya alternatif konum) kalır.
+Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi durur ve iptalden önce geri yüklenen tüm dosyalar, herhangi bir geri alma olmadan yapılandırılmış hedefte (orijinal veya alternatif konum) kalır.
 
-## <a name="manage-backup"></a>Yedeklemeyi Yönet
+## <a name="manage-backup"></a>Yedeklemeyi yönet
 
-### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>PowerShell 'i Azure dosya paylaşımlarının yedeklerini yapılandırmak/yönetmek/geri yüklemek için kullanabilir miyim?
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Azure Dosyası paylaşımlarının yedeklemelerini yapılandırmak/yönetmek/geri yüklemek için PowerShell'i kullanabilir miyim?
 
-Evet. Lütfen [buradaki](backup-azure-afs-automation.md) ayrıntılı belgelere bakın
+Evet. Lütfen detaylı [belgelere](backup-azure-afs-automation.md) buradan bakınız.
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it"></a>Azure Backup tarafından alınan anlık görüntülere erişebilir ve bu görüntüleri bağlayabilir miyim?
 
 Azure Backup tarafından alınan tüm Anlık Görüntülere, portaldaki, PowerShell veya CLI’daki Anlık Görüntüler Görüntülenerek erişilebilir. Azure Dosyaları paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure Dosyaları için paylaşım anlık görüntülerine genel bakış (önizleme)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabildiğim maksimum bekletme nedir?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabileceğim maksimum bekletme nedir?
 
-Azure dosya paylaşımları için yedekleme, 180 güne kadar bekletme ilkesi yapılandırma olanağı sunar. Ancak, [PowerShell 'de "isteğe bağlı yedekleme" seçeneğini](backup-azure-afs-automation.md#trigger-an-on-demand-backup)kullanarak, 10 yıl boyunca bir kurtarma noktası tutabilirsiniz.
+Azure dosya paylaşımları için yedekleme, ilkeleri 180 güne kadar bekletme yle yapılandırma olanağı sunar. Ancak, [PowerShell'deki "İsteğe bağlı yedekleme" seçeneğini](backup-azure-afs-automation.md#trigger-an-on-demand-backup)kullanarak, 10 yıl boyunca bile bir kurtarma noktasını koruyabilirsiniz.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Bir Azure dosya paylaşımı için Yedekleme ilkesini değiştirdiğimde ne olur?
 
@@ -137,7 +137,7 @@ Dosya paylaşımlarında yeni bir ilke uygulandığında yeni ilkenin zamanlama 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Backup diğer alanlarıyla ilgili daha fazla bilgi edinmek için, bu diğer yedekleme hakkında SSS bölümüne bakın:
+Azure Yedekleme'nin diğer alanları hakkında daha fazla bilgi edinmek için şu diğer Yedekleme SSS'lerinden bazılarına bakın:
 
 - [Kurtarma Hizmetleri kasası hakkında SSS](backup-azure-backup-faq.md)
 - [Azure VM yedeklemesi hakkında SSS](backup-azure-vm-backup-faq.md)

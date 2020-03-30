@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs Apple Anında İletilen Bildirim Servisi yapılandırma | Microsoft Docs
-description: Apple Anında İletilen Bildirim Servisi (APNS) ayarlarını kullanarak bir Azure Notification Hub 'ını yapılandırmayı öğrenin.
+title: Azure Bildirim Hub'larında Apple Anında Bildirim Hizmetini Yapılandırma | Microsoft Dokümanlar
+description: Apple Anında Bildirim Hizmeti (APNS) ayarlarıyla bir Azure bildirim hub'ı nasıl yapılandırıştırmayı öğrenin.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,40 +12,41 @@ ms.date: 03/25/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 116af5192236045ec50409f65a9687ffec5223b5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: eb1122ba3de0002507589d3e607d1e39d905c308
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127528"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal bir Bildirim Hub 'ı için Apple Anında İletilen Bildirim Servisi (APNS) ayarlarını yapılandırma
-Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Apple Anında İletilen Bildirim Servisi (APNS) ayarlarının nasıl yapılandırılacağı gösterilmektedir. 
+# <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portalındaki bir bildirim merkezi için Apple Anında Bildirim Hizmeti ayarlarını yapılandırın
+
+Bu makalede, Azure portalını kullanarak bir Azure bildirim merkezi için Apple Push Bildirim Hizmeti (APNS) ayarlarını nasıl yapılandırabileceğiniz gösterilmektedir. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın. 
+Daha önce bir bildirim hub'ı oluşturmadıysanız, şimdi bir bildirim hub'ı oluşturun. Daha fazla bilgi için [bkz.](create-notification-hub-portal.md) 
 
-## <a name="configure-apple-push-notification-service"></a>Apple Anında İletilen Bildirim Servisi Yapılandır
+## <a name="configure-apple-push-notification-service"></a>Apple Anında İtme Bildirim Hizmetini Yapılandırma
 
-Aşağıdaki yordam bir Bildirim Hub 'ı için Apple Anında İletilen Bildirim Servisi (APNS) ayarlarını yapılandırma adımları sunar:
+Aşağıdaki yordam, bir bildirim hub'ı için Apple Anında Bildirim Hizmeti (APNS) ayarlarını yapılandırmanız için adımlar verir:
 
-1. Azure portal, **Bildirim Hub** 'ı sayfasında, sol taraftaki menüden **Apple (APNs)** öğesini seçin.
+1. Azure portalında, **Bildirim Merkezi** sayfasında sol menüde **Apple (APNS)** seçeneğini belirleyin.
 
-1. **Kimlik doğrulama modu**Için, **sertifika** ya da **belirteç**seçin.
+1. **Kimlik Doğrulama Modu**için **Sertifika** veya **Belirteç'i**seçin.
 
-   a. **Sertifika**seçerseniz:
-   * Dosya simgesini seçin ve ardından karşıya yüklemek istediğiniz *. p12* dosyasını seçin.
-   * Bir parola girin.
-   * **Korumalı alan** modunu seçin. Ya da uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modu ' nu seçin.
+   a. **Sertifika'yı**seçerseniz:
+   * Dosya simgesini seçin ve sonra yüklemek istediğiniz *.p12* dosyasını seçin.
+   * Parola girin.
+   * **Korumalı alan** modunu seçin. Veya uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modunu seçin.
 
-     ![Azure portal bir APNS sertifika yapılandırmasının ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
+     ![Azure portalında apns sertifikası yapılandırmasının ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
-   b. **Belirteç**' yi seçerseniz:
+   b. **Token'ı**seçerseniz:
 
-   * **Anahtar kimliği**, **paket KIMLIĞI**, **Takım Kimliği**ve **belirteç**değerlerini girin.
-   * **Korumalı alan** modunu seçin. Ya da uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modu ' nu seçin.
+   * **Anahtar Kimliği,** Paket **Kimliği,** **Takım Kimliği**ve **Belirteç**değerlerini girin.
+   * **Korumalı alan** modunu seçin. Veya uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modunu seçin.
 
-     ![Azure portal bir APNS belirteç yapılandırması ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
+     ![Azure portalında apns belirteç yapılandırmasının ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İOS cihazlarına bildirim göndermeye yönelik adım adım yönergeler için aşağıdaki makaleye bakın: [Notification Hubs ve APNs kullanarak iOS cihazlarına anında iletme bildirimleri gönderme](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+bildirimleri iOS aygıtlarına iletme için adım adım yönergeleri içeren bir öğretici için aşağıdaki makaleye bakın: [Bildirim Hub'ları ve APNS'leri kullanarak iOS aygıtlarına bildirimleri iletme](notification-hubs-ios-apple-push-notification-apns-get-started.md)

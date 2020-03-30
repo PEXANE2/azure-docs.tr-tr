@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 79459be30a5a2018dc82486a84895b1a954941bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188870"
 ---
-1. İçinde [Azure portalında](https://portal.azure.com/)seçin **tümüne Gözat** > **uygulama hizmetleri**. Ardından select, Mobile Apps arka ucu. Altında **ayarları**seçin **App Service gönderim**. Ardından, bildirim hub'ı adı seçin.
-2. Git **Windows (WNS)** . Enter **güvenlik anahtarı** (gizli) ve **paket SID'si** Live Services siteden aldığınız. Ardından, **Kaydet**.
+1. Azure [portalında](https://portal.azure.com/)Tüm > **Uygulama Hizmetlerine** **Gözat'ı**seçin. Ardından Mobil Uygulamalarınızı arka uçta seçin. **Ayarlar**altında, **Uygulama Hizmeti İtme'yi**seçin. Ardından bildirim merkezi adınızı seçin.
+2. **Windows'a (WNS)** gidin. Ardından, Canlı Hizmetler sitesinden aldığınız **Güvenlik anahtarını** (istemci sırrı) ve **Paket SID'yi** girin. Ardından **Kaydet'i**seçin.
 
-    ![Portalda WNS anahtarı ayarlayın](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+    ![Portaldaki WNS anahtarını ayarlama](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-Arka ucunuza WNS anında iletme bildirimleri göndermek için kullanmak üzere yapılandırılmıştır.
+Arka uç artık anında iletme bildirimleri göndermek için WNS kullanmak üzere yapılandırılmıştır.

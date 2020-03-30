@@ -1,73 +1,73 @@
 ---
-title: Azure IoT Central kişisel panoları oluşturma | Microsoft Docs
-description: Kullanıcı olarak, kişisel panolarınızı oluşturma ve yönetme hakkında bilgi edinin.
+title: Azure IoT Merkezi kişisel panoları oluşturun | Microsoft Dokümanlar
+description: Bir kullanıcı olarak, kişisel panolarınızı nasıl oluşturup yöneteceklerinizi öğrenin.
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9da7efad816a466eb9d2902e36a95c5ae0fa626b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158138"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Birden çok pano oluşturma ve yönetme
 
-**Pano** , uygulamanıza ilk gittiğinizde yüklenen sayfasıdır. Uygulamanızdaki bir **Oluşturucu** , tüm kullanıcılar için varsayılan uygulama panosunu tanımlar. Bu varsayılan panoyu kendi kişiselleştirilmiş uygulama panonuz ile değiştirebilirsiniz. Farklı verileri görüntüleyen ve aralarında geçiş yapan çeşitli panolarınız olabilir. 
+**Pano,** uygulamanıza ilk gittiğınızda yüklenen sayfadır. Uygulamanızdaki **bir oluşturucu,** tüm kullanıcılar için varsayılan uygulama panosunu tanımlar. Bu varsayılan panoyu kendi kişiselleştirilmiş uygulama panonuzla değiştirebilirsiniz. Farklı verileri görüntüleyen ve aralarında geçiş yapan birkaç panonuz olabilir. 
 
-Uygulamanın yöneticisiyseniz, uygulamanın diğer kullanıcılarıyla paylaşmak için en fazla 10 uygulama düzeyi Pano da oluşturabilirsiniz. Yalnızca **yöneticilerin** uygulama düzeyi panoları oluşturma, düzenleme ve silme olanağı vardır. 
+Uygulamanın **admin** yöneticisiyseniz, uygulamanın diğer kullanıcılarıyla paylaşmak üzere en fazla 10 uygulama düzeyi panosu oluşturabilirsiniz. Yalnızca **yöneticiler** uygulama düzeyi panoları oluşturma, düzenle ve silme yeteneğine sahiptir. 
 
-## <a name="create-dashboard"></a>Pano Oluştur
+## <a name="create-dashboard"></a>Pano oluşturma
 
-Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşturulan bir uygulamada gösterilmektedir. Varsayılan uygulama panosunu bir kişisel Pano ile veya bir yönetici ise başka bir uygulama düzeyi panosu ile değiştirebilirsiniz. Bunu yapmak için sayfanın sol üst kısmındaki **+ Yeni** ' yi seçin.
+Aşağıdaki ekran görüntüsü, **Özel Uygulama** şablonundan oluşturulan bir uygulamada panoyu gösterir. Varsayılan uygulama panosunu kişisel bir panoyla veya yöneticiyseniz, başka bir uygulama düzeyi panosuyla değiştirebilirsiniz. Bunu yapmak için sayfanın sol üst kısmında **+ Yeni'yi** seçin.
  
 > [!div class="mx-imgBorder"]
-> "özel uygulama" şablonuna dayalı uygulamalar için Pano ![](media/howto-create-personal-dashboards/dashboard-custom-app.png)
+> !["Özel Uygulama" şablonuna dayalı uygulamalar için pano](media/howto-create-personal-dashboards/dashboard-custom-app.png)
 
-**+ Yeni** seçildiğinde Pano Düzenleyicisi açılır. Düzenleyicide, panonuza bir ad verebilir ve kitaplıktan öğe seçebilirsiniz. Kitaplık, Panoyu özelleştirmek için kullanabileceğiniz kutucukları ve Pano temel öğelerini içerir.
-
-> [!div class="mx-imgBorder"]
-> Pano kitaplığı](media/howto-create-personal-dashboards/dashboard-library.png) ![
-
-Uygulamanın yöneticisiyseniz **, bir kişisel** düzey pano veya uygulama düzeyi panosu oluşturmak istediğinizde değiştirme seçeneği sunulur. Kişisel bir düzey Pano oluşturursanız, yalnızca sizin görebileceksiniz. Uygulama düzeyi panosu oluşturursanız, uygulamanın her kullanıcısı onu görebilir. Bir başlık girdikten ve oluşturmak istediğiniz Pano türünü seçtikten sonra, daha sonra kutucukları kaydedebilir ve ekleyebilirsiniz. Ya da şimdi hazır olduğunuzda ve bir cihaz şablonu ve cihaz örneği eklediyseniz, devam edebilir ve ilk Kutucuğunuzu oluşturabilirsiniz. 
++ **Yeni'yi** seçmek pano düzenleyicisini açar. Düzenleyicide, panonuza bir ad verebilir ve kitaplıktaki öğeleri seçebilirsiniz. Kitaplık, panoyu özelleştirmek için kullanabileceğiniz kutucukları ve pano ilkellerini içerir.
 
 > [!div class="mx-imgBorder"]
-> ![cihaz ayrıntılarını yapılandırma "sıcaklık ayrıntılarını içeren form](media/howto-create-personal-dashboards/device-details.png)
+> ![Pano kitaplığı](media/howto-create-personal-dashboards/dashboard-library.png)
 
-Örneğin, cihazın geçerli sıcaklığını için bir **telemetri** kutucuğu ekleyebilirsiniz. Bunu yapmak için:
-1. Bir **cihaz şablonu** seçin
-1. Bir pano kutucuğunda görmek istediğiniz cihaz için bir **cihaz örneği** seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.
-1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna tıklayabilir ve **Birleştir**' e tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihaz örneği seçip panoda bir sıcaklık telemetri kutucuğu oluşturma gösterilmektedir.
-1. Kutucuğu panoya kaydetmek için sol üst kısımdaki **Kaydet** ' i seçin.
+Uygulamanın bir **yöneticisiyseniz,** kişisel düzey panosu veya uygulama düzeyi panosu oluşturmak istiyorsanız geçiş seçeneği verilir. Kişisel düzeyde bir pano oluşturursanız, bunu yalnızca siz görebilirsiniz. Bir uygulama düzeyi panosu oluşturursanız, uygulamanın her kullanıcısı bunu görebilir. Bir başlık girdikten ve oluşturmak istediğiniz pano türünü seçtikten sonra, daha sonra kaydedebilir ve kutucuk ekleyebilirsiniz. Veya şimdi hazırsanız ve bir aygıt şablonu ve aygıt örneği eklediyseniz, devam edebilir ve ilk döşemenizi oluşturabilirsiniz. 
 
 > [!div class="mx-imgBorder"]
-> ![Pano "sekmesi sıcaklık kutucuğu için Ayrıntılar](media/howto-create-personal-dashboards/temperature-tile-edit.png)
+> ![Cihaz Ayrıntılarını Yapılandır" formu, Sıcaklık için ayrıntılarla birlikte](media/howto-create-personal-dashboards/device-details.png)
 
-Artık kişisel panonuzu görüntülediğinizde, cihaz için **sıcaklık** ayarıyla yeni kutucuğu görürsünüz:
+Örneğin, aygıtın geçerli sıcaklığı için bir **Telemetri** döşemesi ekleyebilirsiniz. Bunu yapmak için:
+1. Aygıt **Şablonu** Seçin
+1. Pano döşemesinde görmek istediğiniz aygıt için aygıt **örneği** seçin. Daha sonra, döşemede kullanılabilecek aygıtın özelliklerinin bir listesini görürsünüz.
+1. Panodaki döşemeyi oluşturmak için **Sıcaklık'ı** tıklatın ve pano alanına sürükleyin. Ayrıca **Sıcaklık'ın** yanındaki onay kutusunu tıklatAbilir ve **Birleştir'i**tıklatın. Aşağıdaki ekran görüntüsü, bir Aygıt Şablonu ve Aygıt Örneği'ni seçip panoda sıcaklık telemetrisi döşemesi oluşturmayı gösterir.
+1. Döşemeyi panoya kaydetmek için sol üstteki **Kaydet'i** seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Pano "sekmesi sıcaklık kutucuğu için Ayrıntılar](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Sıcaklık döşemesi için ayrıntıları içeren pano" sekmesi](media/howto-create-personal-dashboards/temperature-tile-edit.png)
 
-Kişisel panolarınızı daha fazla özelleştirmeyi öğrenmek için Kitaplıktaki diğer döşeme türlerini keşfedebilirsiniz.
+Artık kişisel panonuzu görüntülediğinizde, aygıtın **Sıcaklık** ayarı olan yeni döşemeyi görürsünüz:
 
-Azure IoT Central 'de kutucukları kullanma hakkında daha fazla bilgi için bkz. [panonuza kutucuk ekleme](howto-add-tiles-to-your-dashboard.md).
+> [!div class="mx-imgBorder"]
+> ![Sıcaklık döşemesi için ayrıntıları içeren pano" sekmesi](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+
+Kişisel panolarınızı nasıl daha da özelleştirebileceğinizi keşfetmek için kitaplıktaki diğer döşeme türlerini keşfedebilirsiniz.
+
+Azure IoT Central'da kutucukların nasıl kullanılacağı hakkında daha fazla bilgi edinmek [için panonuza Kutucuk Ekle'ye](howto-add-tiles-to-your-dashboard.md)bakın.
 
 ## <a name="manage-dashboards"></a>Panoları yönetme
 
-Birkaç kişisel panonuz olabilir ve bunlar arasında geçiş yapabilir ya da varsayılan uygulama panolarından birini seçebilirsiniz:
+Birkaç kişisel panoya sahip olabilir ve aralarında geçiş yapabilir veya varsayılan uygulama panolarından birini seçebilirsiniz:
 
 > [!div class="mx-imgBorder"]
-> Panolar arasında geçiş ![](media/howto-create-personal-dashboards/switch-dashboards.png)
+> ![Panolar arasında geçiş](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-Kişisel panolarınızı düzenleyebilir ve artık ihtiyacınız olmayan panoları silebilirsiniz. **Yönetici**kullanıyorsanız, uygulama düzeyi panoları da düzenleme veya silme imkanına sahip olursunuz.
+Kişisel panolarınızı düzenleyebilir ve artık ihtiyacınız olmayan panoları silebilirsiniz. Yöneticiyseniz, **admin**uygulama düzeyi panolarını da düzenleyebilme veya silme olanağınız vardır.
 
 > [!div class="mx-imgBorder"]
-> panoları silme ![](media/howto-create-personal-dashboards/delete-dashboards.png)
+> ![Panoları silme](media/howto-create-personal-dashboards/delete-dashboards.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kişisel panolar oluşturmayı ve yönetmeyi öğrendiğinize göre, [uygulama tercihlerinizi nasıl yönetebileceğinizi öğrenebilirsiniz](howto-manage-preferences.md)
+Artık kişisel panoları oluşturmayı ve yönetmeyi öğrendiğinize [göre, uygulama tercihlerinizi nasıl yönetebileceğinizi öğrenebilirsiniz](howto-manage-preferences.md)

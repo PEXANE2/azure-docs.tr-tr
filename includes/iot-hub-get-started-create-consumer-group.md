@@ -5,20 +5,20 @@ ms.author: robinsh
 ms.topic: include
 ms.date: 05/20/2019
 ms.openlocfilehash: c164433efc6a34a3a06676a3145feb18d3de80b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66248791"
 ---
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>IOT hub'ınıza bir tüketici grubu Ekle
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT hub'ınıza bir tüketici grubu ekleme
 
-[Tüketici grupları](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) uygulamalar ve bağımsız olarak aynı olay hub'ı uç noktasına ait verilerin kullanmak için Azure hizmetleri sağlayan olay akışının içine bağımsız görünümler sağlar. Bu bölümde, bu öğreticinin ilerleyen bölümlerinde uç noktasından veri çekmek üzere kullanılan IOT hub'ınızın yerleşik uç noktasına bir tüketici grubu ekleyin.
+[Tüketici grupları,](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) uygulamaların ve Azure hizmetlerinin aynı Event Hub bitiş noktasından bağımsız olarak veri tüketmesini sağlayan etkinlik akışına bağımsız görünümler sağlar. Bu bölümde, ioT hub'ınızın yerleşik bitiş noktasına, bu öğreticide daha sonra son noktadan veri çekmek için kullanılan bir tüketici grubu eklersiniz.
 
-IOT hub'ınıza bir tüketici grubu eklemek için aşağıdaki adımları izleyin:
+IoT hub'ınıza bir tüketici grubu eklemek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com/) IoT hub'ınızı açın.
 
-2. Sol bölmeden **yerleşik uç noktaları**seçin **olayları** sağ bölmede altında bir ad girin **tüketici grupları**. **Kaydet**’i seçin.
+2. Sol bölmede Yerleşik **uç noktaları**seçin, sağ bölmedeki **Olaylar'ı** seçin ve **Tüketici gruplarının**altında bir ad girin. **Kaydet'i**seçin.
 
-   ![IOT hub'ına bir tüketici grubu oluşturun](./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png)
+   ![IoT hub'ınızda bir tüketici grubu oluşturma](./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png)

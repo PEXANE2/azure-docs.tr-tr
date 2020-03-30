@@ -1,37 +1,37 @@
 ---
-title: Azure Image Builder ile Linux VM oluşturma (Önizleme)
-description: Azure görüntü Oluşturucu ile bir Linux VM oluşturun.
+title: Azure Image Builder ile Bir Linux VM oluşturma (önizleme)
+description: Azure Image Builder ile bir Linux VM oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0d36d7db4d85ece8de77040925c535305951562b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066677"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Linux VM oluşturma
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Linux VM oluşturun
 
-Bu makalede, Azure görüntü Oluşturucu ve Azure CLı kullanarak özelleştirilmiş bir Linux görüntüsünü nasıl oluşturabileceğiniz gösterilmektedir. Bu makaledeki örnek, görüntüyü özelleştirmek için üç farklı [özelleştiriciler](image-builder-json.md#properties-customize) kullanır:
+Bu makalede, Azure Image Builder ve Azure CLI'yi kullanarak nasıl özelleştirilmiş bir Linux görüntüsü oluşturabileceğiniz gösterilmektedir. Bu makaledeki örnek, görüntüyü özelleştirmek için üç farklı [özelleştirici](image-builder-json.md#properties-customize) kullanır:
 
-- Shell (ScriptUri)-bir [kabuk betiği](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)indirir ve çalıştırır.
-- Kabuk (satır içi)-belirli komutları çalıştırır. Bu örnekte, satır içi komutlar bir dizin oluşturma ve işletim sistemini güncelleştirme içerir.
-- Dosya-GitHub ' [dan bir dosyayı](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) VM 'deki bir dizine kopyalar.
+- Shell (ScriptUri) - indirir ve bir [kabuk komut dosyası](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)çalışır.
+- Shell (satır içi) - belirli komutları çalıştırın. Bu örnekte, satır satır komutları bir dizin oluşturma ve işletim sistemi güncelleştirmeiçerir.
+- Dosya - [GitHub'daki](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) bir dosyayı VM'deki bir dizine kopyalar.
 
-Ayrıca, bir `buildTimeoutInMinutes`belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
+Ayrıca bir `buildTimeoutInMinutes`. Varsayılan değer 240 dakikadır ve daha uzun çalışan yapılara izin vermek için yapı süresini artırabilirsiniz.
 
-Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Helloımagetemplatelinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
+Görüntüyü yapılandırmak için bir örnek .json şablonu kullanıyor olacağız. Kullandığımız .json dosyası burada: [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
 > [!IMPORTANT]
-> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Image Builder şu anda genel önizlemede.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="register-the-features"></a>Özellikleri kaydetme
-Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
+## <a name="register-the-features"></a>Özellikleri kaydedin
+Önizleme sırasında Azure Image Builder'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -43,7 +43,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Kaydınızı denetleyin.
+Kaydınızı kontrol edin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -51,7 +51,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Kayıtlı değilse, aşağıdakileri çalıştırın:
+Kayıtlı demiyorlarsa, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -61,10 +61,10 @@ az provider register -n Microsoft.Storage
 
 ## <a name="setup-example-variables"></a>Kurulum örnek değişkenleri
 
-Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız.
+Bazı bilgileri tekrar tekrar kullanarak bu bilgileri depolamak için bazı değişkenler oluşturacağız.
 
 
-```azurecli-interactive
+```console
 # Resource group name - we are using myImageBuilderRG in this example
 imageResourceGroup=myImageBuilerRGLinux
 # Datacenter location - we are using West US 2 in this example
@@ -75,23 +75,23 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
+Abonelik kimliğiniz için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`elde edebilirsiniz.
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
 ## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturun.
-Bu, görüntü yapılandırma şablonu yapıtı ve görüntüsünü depolamak için kullanılır.
+Bu, görüntü yapılandırma şablonu artifakı ve görüntüyü depolamak için kullanılır.
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarla
-Görüntü Oluşturucu ' katkıda bulunan ' iznini kaynak grubunda oluşturmak için izin verin. Doğru izinler olmadan görüntü oluşturma başarısız olur. 
+## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarlama
+Kaynak grubundaki görüntüyü oluşturmak için Görüntü Oluşturucuya 'katkıda bulunan' izni verin. Uygun izinler olmadan, görüntü oluşturma başarısız olur. 
 
-`--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
+Değer, `--assignee` Image Builder hizmetinin uygulama kayıt kimliğidir. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -102,9 +102,9 @@ az role assignment create \
 
 ## <a name="download-the-template-example"></a>Şablon örneğini indirin
 
-Kullanmanız için parametreli bir örnek görüntü yapılandırma şablonu oluşturulmuştur. Sample. json dosyasını indirin ve daha önce ayarladığınız değişkenlerle yapılandırın.
+Kullanmanız için parametreli örnek görüntü yapılandırma şablonu oluşturuldu. Örnek .json dosyasını indirin ve daha önce ayarladığınız değişkenlerle yapılandırın.
 
-```azurecli-interactive
+```bash
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
@@ -114,20 +114,20 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-Bu örnek. JSON öğesini gerektiği şekilde değiştirebilirsiniz. Örneğin, `buildTimeoutInMinutes` değerini daha uzun süre çalışan derlemeler için izin verecek şekilde artırabilirsiniz. `vi`gibi bir metin düzenleyicisini kullanarak Cloud Shell dosyayı düzenleyebilirsiniz.
+Bu örneği gerektiği gibi .json olarak değiştirebilirsiniz. Örneğin, daha uzun çalışan `buildTimeoutInMinutes` yapılara izin verme değerini artırabilirsiniz. Bulut Bulut'ta dosyayı ' gibi `vi`bir metin düzenleyicisi kullanarak edinebilirsiniz.
 
-```azurecli-interactive
+```bash
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Kaynak görüntü için her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir, `latest`kullanamazsınız.
+> Kaynak görüntü için, her zaman bir sürüm `latest` [belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir, kullanamazsınız.
 >
-> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, [izinlerin kaynak grubu için ayarlandığından](#set-permissions-on-the-resource-group)emin olmanız gerekir.
+> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, [izinlerin kaynak grubu için ayarlandığınızdan](#set-permissions-on-the-resource-group)emin olmanız gerekir.
 
 
 ## <a name="submit-the-image-configuration"></a>Görüntü yapılandırmasını gönderme
-Görüntü yapılandırmasını VM görüntü Oluşturucu hizmetine gönderme
+Görüntü yapılandırmasını VM Image Builder hizmetine gönderme
 
 ```azurecli-interactive
 az resource create \
@@ -138,14 +138,14 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
-Başarılı bir şekilde tamamlanırsa, bir başarı iletisi döndürür ve $imageResourceGroup bir görüntü Oluşturucu yapılandırma şablonu yapıtı oluşturur. ' Gizli türleri göster ' i etkinleştirirseniz, portalda kaynak grubunu görebilirsiniz.
+Başarıyla tamamlanırsa, bir başarı iletisi döndürür ve $imageResourceGroup bir görüntü oluşturucu yapılandırma şablonu yapı oluşturur. 'Gizli türleri göster'i etkinleştirirseniz, portaldaki kaynak grubunu görebilirsiniz.
 
-Ayrıca, arka planda, görüntü Oluşturucu aboneliğinizde bir hazırlama kaynak grubu oluşturur. Image Builder, görüntü derlemesi için hazırlama kaynak grubunu kullanır. Kaynak grubunun adı şu biçimde olacaktır: `IT_<DestinationResourceGroup>_<TemplateName>`.
+Ayrıca, arka planda, Image Builder aboneliğinizde bir hazırlama kaynak grubu oluşturur. Image Builder, görüntü oluşturma için hazırlama kaynak grubunu kullanır. Kaynak grubunun adı bu biçimde olacaktır: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
 > [!IMPORTANT]
-> Hazırlama kaynak grubunu doğrudan silmeyin. Görüntü şablonu yapıtı silerseniz, hazırlama kaynak grubunu otomatik olarak siler. Daha fazla bilgi için bu makalenin sonundaki [Temizleme](#clean-up) bölümüne bakın.
+> Evreleme kaynak grubunu doğrudan silmeyin. Resim şablonu artifakını silerseniz, hazırlama kaynak grubunu otomatik olarak siler. Daha fazla bilgi için, bu makalenin sonundaki [Temizleme](#clean-up) bölümüne bakın.
 
-Görüntü yapılandırma şablonu gönderimi sırasında hizmet bir hata bildirirse, [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) adımlarına bakın. Derlemeyi göndermeyi yeniden denemeden önce şablonu da silmeniz gerekir. Şablonu silmek için:
+Hizmet, görüntü yapılandırma şablonu gönderimi sırasında bir hata bildiriyorsa, [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) adımlarını görün. Ayrıca, yapıyı yeniden göndermeye çalışmadan önce şablonu silmeniz gerekir. Şablonu silmek için:
 
 ```azurecli-interactive
 az resource delete \
@@ -154,9 +154,9 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>Görüntü derlemesini Başlat
+## <a name="start-the-image-build"></a>Görüntü oluşturmayı başlatın
 
-Görüntü derlemesini başlatın.
+Görüntü oluşturmayı başlatın.
 
 
 ```azurecli-interactive
@@ -167,14 +167,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Derleme tamamlanana kadar bekleyin, bu örnekte 10-15 dakika sürebilir.
+Yapı tamamlanana kadar bekleyin, bu örnek için, 10-15 dakika sürebilir.
 
-Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
+Herhangi bir hatayla karşılaşırsanız, lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Oluşturduğunuz görüntüyü kullanarak VM 'yi oluşturun.
+Oluşturduğunuz görüntüyü kullanarak VM'yi oluşturun.
 
 ```azurecli-interactive
 az vm create \
@@ -186,15 +186,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM 'yi oluşturma çıktısından IP adresini alın ve VM 'ye SSH için kullanın.
+IP adresini VM oluşturma çıktısından alın ve SSH'den VM'ye kullanın.
 
-```azurecli-interactive
+```bash
 ssh azureuser@<pubIp>
 ```
 
-Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleştirildiğini görmeniz gerekir!
+SSH bağlantınız kurulur kurulmaz görüntünün Günün Mesajı ile özelleştirilmelerini görmelisiniz!
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -203,23 +203,23 @@ Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleşt
 *******************************************************
 ```
 
-SSH bağlantısını kapatmak için işiniz bittiğinde `exit` yazın.
+SSH bağlantısını kapatmak için yaptığınız da yazın. `exit`
 
-## <a name="check-the-source"></a>Kaynağı denetleyin
+## <a name="check-the-source"></a>Kaynağı kontrol edin
 
-Görüntü Oluşturucu şablonunda, ' Özellikler ' içinde, kaynak görüntüyü, çalıştırılan özelleştirme betiğini ve nerede dağıtıldığını görürsünüz.
+Görüntü Oluşturucu Şablonu'nda, 'Özellikler'de kaynak görüntüyü, çalıştırdığı özelleştirme komut dosyasını ve nerede dağıtıldığını görürsünüz.
 
-```azurecli-interactive
+```bash
 cat helloImageTemplateLinux.json
 ```
 
-Bu. JSON dosyası hakkında daha ayrıntılı bilgi için bkz. [Görüntü Oluşturucu şablonu başvurusu](image-builder-json.md)
+Bu .json dosyası hakkında daha ayrıntılı bilgi için [Bkz. Resim oluşturucu şablonu başvurusu](image-builder-json.md)
 
 ## <a name="clean-up"></a>Temizleme
 
-İşiniz bittiğinde, kaynakları silebilirsiniz.
+İşi bittiğinde, kaynakları silebilirsiniz.
 
-Görüntü Oluşturucu şablonunu silin.
+Resim oluşturucu şablonu silin.
 
 ```azurecli-interactive
 az resource delete \
@@ -228,13 +228,13 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-Görüntü kaynak grubunu silin.
+Resim kaynak grubunu silin.
 
-```bash
+```azurecli
 az group delete -n $imageResourceGroup
 ```
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan. json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için bkz. [Görüntü Oluşturucu şablonu başvurusu](image-builder-json.md).
+Bu makalede kullanılan .json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için [Bkz. Resim Oluşturucu şablonu başvurusu.](image-builder-json.md)

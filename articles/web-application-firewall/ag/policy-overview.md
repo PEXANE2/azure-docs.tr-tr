@@ -1,65 +1,65 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
-description: Bu makale, Web uygulaması güvenlik duvarı (WAF) genel, site başına ve URI başına ilkelere yönelik bir genel bakıştır.
+title: Azure Web Uygulama Güvenlik Duvarı (WAF) ilkesine genel bakış
+description: Bu makale, Web Uygulaması Güvenlik Duvarı (WAF) genel, site başına ve URI başına ilkelerine genel bir bakıştır.
 services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: d90c887c2e93b44a8dd13dab0b4f03665ea335c3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060263"
 ---
-# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
+# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web Uygulama Güvenlik Duvarı (WAF) ilkesine genel bakış
 
-Web uygulaması güvenlik duvarı Ilkeleri tüm WAF ayarlarını ve yapılandırmasını içerir. Bu, dışlamaları, özel kuralları, yönetilen kuralları vb. içerir. Bu ilkeler daha sonra bir uygulama ağ geçidi (genel), bir dinleyici (site başına) veya yol tabanlı bir kural (URI başına), etkili olması için ilişkilendirilir.
+Web Uygulaması Güvenlik Duvarı İlkeleri tüm WAF ayarlarını ve yapılandırmalarını içerir. Buna dışlamalar, özel kurallar, yönetilen kurallar ve benzeri kurallar dahildir. Bu ilkeler daha sonra bir uygulama ağ geçidi (genel), dinleyici (site başına) veya bunların etkili olması için yol tabanlı bir kuralla (URI başına) ilişkilendirilir.
 
 > [!NOTE]
-> Azure Web uygulaması güvenlik duvarı (WAF)-site başına ve URI başına ilkeler genel önizlemede.
+> Site başına ve URI başına Azure Web Uygulaması Güvenlik Duvarı (WAF) genel önizlemededir.
 > 
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-Oluşturabileceğiniz ilke sayısı için bir sınır yoktur. Bir ilke oluşturduğunuzda, etkili olması için bir uygulama ağ geçidi ile ilişkilendirilmesi gerekir. Uygulama ağ geçitleri, dinleyicileri ve yol tabanlı kuralların herhangi bir birleşimiyle ilişkilendirilebilir.
+Oluşturabileceğiniz ilke sayısında bir sınır yoktur. Bir ilke oluşturduğunuzda, etkili olmak için bir uygulama ağ geçidi ile ilişkili olmalıdır. Uygulama ağ geçitleri, dinleyiciler ve yol tabanlı kuralların herhangi bir birleşimi ile ilişkili olabilir.
 
-## <a name="global-waf-policy"></a>Global WAF ilkesi
+## <a name="global-waf-policy"></a>Küresel WAF politikası
 
-Bir WAF ilkesini küresel olarak ilişkilendirdiğinizde, WAF Application Gateway arkasındaki her site aynı yönetilen kurallarla, Özel kurallarla, dışlamalarla ve diğer yapılandırılmış ayarlarla korunur.
+Bir WAF ilkesini genel olarak ilişkilendirdiğinizde, Application Gateway WAF'ınızın arkasındaki her site aynı yönetilen kurallar, özel kurallar, dışlamalar ve diğer yapılandırılmış ayarlarla korunur.
 
-Tek bir ilkenin tüm sitelere uygulanmasını istiyorsanız, ilkeyi uygulama ağ geçidiyle ilişkilendirebilirsiniz. Daha fazla bilgi için, Azure portal kullanarak bir WAF ilkesi oluşturmak ve uygulamak üzere [Application Gateway Için Web uygulaması güvenlik duvarı Ilkeleri oluşturma](create-waf-policy-ag.md) konusuna bakın. 
+Tüm sitelere tek bir ilke uygulamak istiyorsanız, ilkeyi uygulama ağ geçidiyle ilişkilendirebilirsiniz. Daha fazla bilgi için, Azure portalını kullanarak bir WAF ilkesi oluşturmak ve uygulamak [için Uygulama Ağ Geçidi için Web Uygulaması Güvenlik Duvarı ilkeleri oluştur'a](create-waf-policy-ag.md) bakın. 
 
 ## <a name="per-site-waf-policy"></a>Site başına WAF ilkesi
 
-Site başına WAF ilkeleri ile, site başına ilkeleri kullanarak tek bir WAF 'nin arkasında farklı güvenlik gereksinimlerine sahip birden fazla siteyi koruyabilirsiniz. Örneğin, WAF 'nizin arkasındaki beş site varsa, dışlamaları, özel kuralları, yönetilen kural kümelerini ve her site için tüm diğer WAF ayarlarını özelleştirmek üzere beş ayrı WAF ilkesine (her dinleyici için bir tane) sahip olabilirsiniz.
+Site başına WAF ilkeleriyle, site başına ilkeler kullanarak tek bir WAF'ın arkasında farklı güvenlik gereksinimleri olan birden çok siteyi koruyabilirsiniz. Örneğin, WAF'Nizin arkasında beş site varsa, dışlamaları, özel kuralları, yönetilen kural kümelerini ve her site için diğer tüm WAF ayarlarını özelleştirmek için beş ayrı WAF politikasına (her dinleyici için bir tane) sahip olabilirsiniz.
 
-Application Gateway 'e uygulanan bir genel ilke olduğunu varsayalım. Daha sonra bu uygulama ağ geçidinde bir dinleyiciye farklı bir ilke uygularsınız. Dinleyicinin ilkesi artık yalnızca bu dinleyici için geçerli olur. Application Gateway 'in genel ilkesi, kendisine atanmış belirli bir ilke olmayan diğer tüm dinleyiciler ve yol tabanlı kurallara hala uygulanır.
+Uygulama ağ geçidinizin genel bir ilkesi olduğunu varsan. Ardından, bu uygulama ağ geçidindeki bir dinleyiciye farklı bir ilke uygularsınız. Dinleyicinin politikası artık sadece o dinleyici için geçerli. Uygulama ağ geçidinin genel ilkesi, kendilerine atanmış belirli bir ilke olmayan diğer tüm dinleyiciler ve yol tabanlı kurallar için hala geçerlidir.
 
-## <a name="per-uri-policy"></a>URI başına ilke
+## <a name="per-uri-policy"></a>URI başına politikası
 
-URI düzeyine daha fazla özelleştirme için, bir WAF ilkesini yol tabanlı bir kuralla ilişkilendirebilirsiniz. Farklı ilkeler gerektiren tek bir sitede belirli sayfalar varsa, WAF ilkesinde yalnızca belirli bir URI 'yi etkileyen değişiklikler yapabilirsiniz. Bu, bir ödeme veya oturum açma sayfası veya WAF 'nizin arkasındaki diğer sitelerden daha fazla belirli bir WAF ilkesi gerektiren başka bir URI için de geçerlidir.
+URI düzeyine kadar daha fazla özelleştirme için, bir WAF ilkesini yol tabanlı bir kuralla ilişkilendirebilirsiniz. Tek bir siteiçinde farklı ilkeler gerektiren belirli sayfalar varsa, WAF ilkesinde yalnızca belirli bir URI'yi etkileyen değişiklikler yapabilirsiniz. Bu, bir ödeme veya oturum açma sayfası veya WAF'ınızın arkasındaki diğer sitelere göre daha spesifik bir WAF ilkesine ihtiyaç duyan diğer URL'ler için geçerli olabilir.
 
-Site başına WAF ilkelerinde olduğu gibi, daha belirgin ilkeler, daha az spesifik olanları geçersiz kılar. Bu, bir URL yolu eşlemesindeki URI başına bir ilkenin üzerinde her site veya genel WAF ilkesini geçersiz kılacak anlamına gelir.
+Site başına WAF ilkelerinde olduğu gibi, daha spesifik ilkeler daha az özel ilkeleri geçersiz kılar. Bu, BIR URL yol haritasındaki URI başına ilkenin, site başına veya küresel WAF ilkesini geçersiz kdığı anlamına gelir.
 
 ## <a name="example"></a>Örnek
 
-Üç siteniz olduğunu varsayalım: contoso.com, fabrikam.com ve adatum.com tümü aynı uygulama ağ geçidi arkasında. Tüm üç siteye de bir WAF uygulanmasını istiyorsunuz, ancak müşterilerin ürünleri ziyaret ettiği, gözatdığı ve satın satın aldığı yer olduğu için adatum.com ile güvenlik eklemeniz gerekir.
+Üç siteniz olduğunu varsa, contoso.com, fabrikam.com ve aynı uygulama ağ geçidinin arkasında adatum.com. Her üç siteye de bir WAF uygulanmasını istiyorsunuz, ancak müşterilerin ürünleri ziyaret ettiği, göz attığı ve satın aldığı yer olduğu için adatum.com ile daha fazla güvenlik gerekiyor.
 
-Bir genel ilkeyi, bazı temel ayarlar, dışlamaları veya özel kurallar ile birlikte kullanarak, trafiği engelleyen bazı yanlış pozitif durumları durdurmanız gerekir. Bu durumda, fabrikam.com ve contoso.com, SQL arka ucu olmayan statik sayfalar olduğundan, genel SQL ekleme kurallarının çalışıyor olması gerekmez. Bu nedenle, genel ilkede bu kuralları devre dışı bırakabilirsiniz.
+Bazı yanlış pozitif lerin trafiği engellemesini durdurmak için gerekirse bazı temel ayarlar, dışlamalar veya özel kurallarla BIRLIKTE WAF'a küresel bir ilke uygulayabilirsiniz. Bu durumda, fabrikam.com ve contoso.com SQL arka ucu olmayan statik sayfalar olduğundan, genel SQL enjeksiyon kurallarının çalıştırılması gerekmez. Böylece küresel politikada bu kuralları devre dışı kullanabilirsiniz.
 
-Bu genel ilke contoso.com ve fabrikam.com için uygundur, ancak oturum açma bilgilerinin ve ödemelerin işlendiği adatum.com konusunda daha dikkatli olmanız gerekir. Adatum dinleyicisine site başına ilke uygulayabilir ve SQL kurallarını çalışır durumda bırakabilirsiniz. Ayrıca, bazı trafiği engelleyen bir tanımlama bilgisinin olduğunu varsayalım. bu nedenle, yanlış pozitif değeri durdurmak için bu tanımlama bilgisi için bir dışlama oluşturabilirsiniz. 
+Bu küresel politika contoso.com ve fabrikam.com için uygundur, ancak oturum açma bilgilerinin ve ödemelerin işlendiği adatum.com konusunda daha dikkatli olmanız gerekir. Adatum dinleyicisine site başına bir ilke uygulayabilir ve SQL kurallarını çalışır durumda bırakabilirsiniz. Ayrıca bazı trafiği engelleyen bir çerez olduğunu varsayalım, böylece yanlış pozitif durdurmak için bu çerez için bir dışlama oluşturabilirsiniz. 
 
-Adatum.com/payments URI 'SI, dikkatli olmanız gereken yerdir. Bu nedenle, bu URI üzerinde başka bir ilke uygulayın ve tüm kuralları etkin bırakın ve ayrıca tüm dışlamaları kaldırın.
+Uri'adatum.com/payments dikkatli olmanız gereken yerdir. Bu nedenle, uri'ye başka bir ilke uygulayın ve tüm kuralları etkin bırakın ve ayrıca tüm dışlamaları kaldırın.
 
-Bu örnekte, iki site için geçerli olan genel bir ilkeniz vardır. Tek bir site için geçerli olan bir site başına ilkeniz ve ardından belirli bir yol tabanlı kural için geçerli olan URI başına bir ilke vardır. Bu örnek için ilgili PowerShell için site başına ve URI başına ilkeler oluşturma bölümüne bakın.
+Bu örnekte, iki site için geçerli olan genel bir ilkeniz vardır. Bir site için geçerli olan site başına bir politikanız ve ardından belirli bir yol tabanlı kural için geçerli olan URI başına bir ilkeniz vardır. Bu örnek için ilgili PowerShell için site başına ve URI başına politikaların nasıl oluşturulup oluşturulabildiğini (var olduğunda buraya bağlantı ekle) bakın.
 
-## <a name="existing-waf-configurations"></a>Var olan WAF yapılandırması
+## <a name="existing-waf-configurations"></a>Mevcut WAF yapılandırmaları
 
-Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yönetilen kural kümesi yapılandırması, dışlamaları vb.) bir WAF ilkesinde bulunur. Var olan bir WAF 'niz varsa, bu ayarlar WAF yapılandırmanızda yine de mevcut olabilir. Yeni WAF ilkesine geçme hakkında daha fazla bilgi için bkz. (link: WAF config dosyasını WAF Ilkesine geçirme). 
+Tüm yeni Web Uygulaması Güvenlik Duvarı'nın WAF ayarları (özel kurallar, yönetilen kural kümesi yapılandırmaları, dışlamalar vb.) bir WAF ilkesinde bulunur. Varolan bir WAF'ınız varsa, bu ayarlar WAF yapılandırmanızda hala bulunabilir. Yeni WAF ilkesine geçme hakkında daha fazla bilgi için [WAF Config'i bir WAF Politikasına geçirin.](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell kullanarak site başına ve URI başına ilkeler oluşturun.
+Azure PowerShell'i kullanarak site başına ve URI başına ilkeler oluşturun.

@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188414"
 ---
-### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010, SharePoint 2013'e yükseltin ve ardından StorSomple bağdaştırıcısı SharePoint için yükleyin
+### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010'u SharePoint 2013'e yükseltin ve ardından SharePoint için StorSomple Adaptörü'ne yükleyin
 > [!IMPORTANT]
-> Daha önce KKY dış depolama birimine taşınan dosyalar yükseltme tamamlandı ve KKY özelliği yeniden etkinleştirilene kadar kullanılamaz. Kullanıcı etkisini sınırlamak için herhangi bir yükseltme veya planlanan bir bakım penceresi sırasında yeniden gerçekleştirin.
+> Daha önce RBS aracılığıyla harici depolama ya taşınmış olan dosyalar, yükseltme tamamlanana ve RbS özelliği yeniden etkinleştirilene kadar kullanılamaz. Kullanıcı etkisini sınırlamak için, planlanan bakım penceresi sırasında herhangi bir yükseltme veya yeniden yükleme gerçekleştirin.
 > 
 > 
 
-#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>SharePoint 2010, SharePoint 2013'e yükseltin ve ardından bağdaştırıcısı yüklemek için
-1. SharePoint 2010 grupta te dış BLOB'ları ve KKY etkinleştirildiği içerik veritabanları için BLOB deposu yolu unutmayın. 
-2. Yükleyin ve yeni SharePoint 2013 grubuna yapılandırın. 
-3. Veritabanları, uygulamalar ve site koleksiyonları, SharePoint 2010 gruptan yeni SharePoint 2013 grubuna taşıyın. Yönergeler için Git [SharePoint 2013'e yükseltme işlemine genel bakış](https://technet.microsoft.com/library/cc262483.aspx).
-4. Yeni gruptaki SharePoint için StorSimple bağdaştırıcısını yükleyin. Git [SharePoint için StorSimple bağdaştırıcısı](#install-the-storsimple-adapter-for-sharepoint) yordamlar.
-5. 1\. adımda not ettiğiniz bilgileri kullanarak, içerik veritabanları için aynı kümesi KKY etkinleştirmek ve SharePoint 2010 yüklemesinde kullanılan BLOB deposu yolu sağlayın. Git [yapılandırma KKY](#configure-rbs) yordamlar. Bu adımı tamamladıktan sonra daha önce te dış dosyaları yeni grubundan erişilebilir olması gerekir. 
+#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>SharePoint 2010'u SharePoint 2013'e yükseltmek ve ardından bağdaştırıcıyı yüklemek için
+1. SharePoint 2010 çiftliğinde, dışa uygun BLOB'lar ve RBS'nin etkin olduğu içerik veritabanları için BLOB mağaza yoluna dikkat edin. 
+2. Yeni SharePoint 2013 çiftliğini yükleyin ve yapılandırın. 
+3. Veritabanlarını, uygulamaları ve site koleksiyonlarını SharePoint 2010 çiftliğinden yeni SharePoint 2013 çiftliğine taşıyın. Talimatlar [için SharePoint 2013 yükseltme işlemine genel bakış bölümüne](https://technet.microsoft.com/library/cc262483.aspx)gidin.
+4. Yeni çiftliğe SharePoint için StorSimple Adaptör'üne yükleyin. Yordamlar [için SharePoint için StorSimple Adaptör'ünü yükleyin.](#install-the-storsimple-adapter-for-sharepoint)
+5. Adım 1'de belirttiğiniz bilgileri kullanarak, aynı içerik veritabanları kümesi için KÇY'yi etkinleştirin ve SharePoint 2010 yüklemesinde kullanılan blob mağaza yolunu sağlayın. Yordamlar için [RbS'yi Yapılandır'a](#configure-rbs) gidin. Bu adımı tamamladıktan sonra, daha önce dışa dışlanmış dosyalara yeni çiftlikten erişilebilir olmalıdır. 
 
-### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükseltme
+### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple Adaptörü yükseltin
 > [!IMPORTANT]
-> Bu yükseltme, aşağıdaki nedenlerle planlı bakım penceresi sırasında gerçekleşecek şekilde zamanlamanız gerekir:
+> Bu yükseltmeyi, aşağıdaki nedenlerle planlanan bir bakım penceresinde oluşacak şekilde zamanlamanız gerekir:
 > 
-> * Daha önce te dış içerik bağdaştırıcısı yeniden kadar kullanılamaz.
-> * SharePoint için StorSimple bağdaştırıcısını önceki sürümünü kaldırdıktan sonra ancak yeni sürümü yüklemeden önce siteye yüklenen herhangi bir içeriği içerik veritabanında depolanır. Yeni bağdaştırıcı yükledikten sonra bu içeriği StorSimple cihazına geçmeniz gerekecektir. Microsoft kullanabileceğiniz `RBS Migrate()` içeriği taşımak için SharePoint ile dahil edilen PowerShell cmdlet'i. Daha fazla bilgi için [içine veya dışına KKY İçerik Geçişi](https://technet.microsoft.com/library/ff628255.aspx). 
+> * Daha önce dışa uyaran yeniden yüklenene kadar haricileştirilmiş içerik kullanılamaz.
+> * SharePoint için StorSimple Adaptörü'nün önceki sürümünü yükledikten sonra siteye yüklenen ancak yeni sürümü yüklemeden önce siteye yüklenen tüm içerikler içerik veritabanında depolanır. Yeni bağdaştırıcıyı yükledikten sonra bu içeriği StorSimple aygıtına taşımanız gerekir. İçeriği geçirmek için `RBS Migrate()` SharePoint ile birlikte verilen Microsoft PowerShell cmdlet'ini kullanabilirsiniz. Daha fazla bilgi için [bkz.](https://technet.microsoft.com/library/ff628255.aspx) 
 > 
 > 
 
-#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükseltme
-1. SharePoint için StorSimple Bağdaştırıcısı'nın önceki sürümünü kaldırın.
+#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple Adaptör'u yükseltmek için
+1. SharePoint için StorSimple Adaptörü'nün önceki sürümünü kaldırın.
    
    > [!NOTE]
-   > Bu otomatik olarak KKY içerik veritabanlarında devre dışı bırakır. Bununla birlikte, mevcut Blobları StorSimple cihazında kalır. KKY devre dışı bırakılır ve Bloblara içerik veritabanlarına taşınmamış çünkü bu Bloblar için tüm istekler başarısız olur. 
+   > Bu, içerik veritabanlarındaki KÇY'yi otomatik olarak devre dışı katır. Ancak, varolan BLOB'lar StorSimple aygıtında kalır. RbS devre dışı bırakıldığından ve BLOB'lar içerik veritabanlarına geri geçirilemedığından, bu BLOB'lar için yapılan tüm istekler başarısız olur. 
    > 
    > 
-2. SharePoint için StorSimple bağdaştırıcısını yeni yükleyin. Yeni bağdaştırıcı, daha önce etkin veya devre dışı KKY için içerik veritabanları otomatik olarak algılar ve önceki ayarları kullanır.
+2. SharePoint için yeni StorSimple Adaptör'üne yükleyin. Yeni bağdaştırıcı, daha önce Etkinleştirilen veya Devre dışı bırakılan içerik veritabanlarını otomatik olarak tanır ve önceki ayarları kullanır.
 

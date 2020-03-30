@@ -1,82 +1,85 @@
 ---
-title: B2B işbirliği ile davet kullanım-Azure AD
-description: Son kullanıcılar için, gizlilik koşullarına yönelik anlaşma dahil olmak üzere Azure AD B2B işbirliği daveti kullanım deneyimini açıklar.
+title: B2B işbirliğinde davet kullanımı - Azure AD
+description: Azure AD B2B işbirliği daveti kullanım deneyimini, gizlilik koşulları anlaşması da dahil olmak üzere son kullanıcılar için açıklar.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050831"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti ödeme
 
-Bu makalede, konuk kullanıcıların kaynaklarınızda ve iletişim kurdukları onay sürecinde erişebileceği yollar açıklanmaktadır. Konuğa bir davet e-postası gönderirseniz, davet, konuğun uygulamanıza veya portala erişim sağlamak için yararlanana bir bağlantı içerir. Davet e-postası, konuklarınızın kaynaklarınıza erişebileceği yollarla yalnızca biridir. Alternatif olarak, dizininize Konuk ekleyebilir ve paylaşmak istediğiniz portalın ya da uygulamanın doğrudan bağlantısını sağlayabilirsiniz. Konukların, kullandıkları yöntemden bağımsız olarak, bir ilk kez onay süreci aracılığıyla yapılır. Bu işlem, konukların gizlilik koşullarını kabul etmesini ve ayarlamış olduğunuz tüm [kullanım koşullarını](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) kabul etmesini sağlar.
+Bu makalede, konuk kullanıcıların kaynaklarınıza nasıl erişebileceği ve karşılaşacakları onay süreci açıklanmaktadır. Davete davet e-postası gönderirseniz, davet, konuğun uygulamanıza veya portalınıza erişmek için kullanabileceği bir bağlantı içerir. Davet e-postası, konukların kaynaklarınıza erişebildiği yollardan sadece biridir. Alternatif olarak, rehberinize konuk ekleyebilir ve paylaşmak istediğiniz portal veya uygulamaya doğrudan bağlantı verebilirsiniz. Kullandıkları yöntemne bakılmaksızın, konuklar a.b.d. Bu işlem, misafirlerinizin gizlilik koşullarını kabul etmesini ve ayarladığınız [tüm kullanım koşullarını](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) kabul etmesini sağlar.
 
-Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının başlangıçta **Pendingkabulünü**olarak ayarlanan bir izin durumu (PowerShell 'de görüntülenebilir) vardır. Bu ayar, Konuk davetinizi kabul edene ve gizlilik ilkenize ve kullanım koşullarınıza karşı kabul edilene kadar kalır. Bundan sonra, onay durumu **kabul edildi**olarak değişir ve izin sayfaları artık konuğa sunulmaz.
+Dizininize bir konuk kullanıcı eklediğinizde, konuk kullanıcı hesabının başlangıçta **BeklemeKabul**olarak ayarlanmış bir onay durumu (PowerShell'de görüntülenebilir). Bu ayar, konuk davetinizi kabul edene ve gizlilik politikanızı ve kullanım koşullarınızı kabul edene kadar kalır. Bundan sonra, onay durumu **Kabul edilir**ve onay sayfaları artık misafire sunulmaz.
 
-## <a name="redemption-through-the-invitation-email"></a>Davet e-postası üzerinden ödeme
+   > [!IMPORTANT]
+   > **31 Mart 2021'den itibaren Microsoft,** B2B işbirliği senaryoları için yönetilmeyen Azure AD hesapları ve kiracılar oluşturarak artık davetlerin itfasını desteklemez. Hazırlık olarak, müşterilerin tek [seferlik parola kimlik doğrulaması e-postasını](one-time-passcode.md)seçmelerini öneririz. Bu genel önizleme özelliği hakkındaki görüşlerinizi memnuniyetle karşılıyoruz ve işbirliği yapmak için daha fazla yol oluşturmaktan heyecan duyuyoruz.
 
-[Azure Portal kullanarak](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)dizininize bir Konuk kullanıcı eklediğinizde, işlemde konuğa bir davet e-postası gönderilir. Ayrıca, [PowerShell kullanırken](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) , dizininize Konuk kullanıcıları eklemek için davet e-postaları gönderilmesini de tercih edebilirsiniz. İşte e-postadaki bağlantıyı kullandıklarında konuğun deneyiminden oluşan bir açıklama.
+## <a name="redemption-through-the-invitation-email"></a>Davet e-postası aracılığıyla kullanım
 
-1. Konuk, **Microsoft davetlerden**gönderilen bir [davet e-postası](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) alır.
-2. Konuk, e-postada **Başlarken** ' i seçer.
-3. Konukta bir Azure AD hesabına, bir Microsoft hesabına (MSA) veya bir Federasyon kuruluşunda e-posta hesabına sahip değilse, bu, bir MSA oluşturması istenir ( [bir kerelik geçiş kodu](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) özelliği etkin DEĞILSE, MSA gerektirmez).
-4. Konuk, aşağıda açıklanan [onay deneyimine](#consent-experience-for-the-guest) göre yapılır.
+[Azure portalını kullanarak](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)dizininize bir konuk kullanıcı eklediğinizde, bu süreçte misafire bir davet e-postası gönderilir. Ayrıca, dizininize konuk kullanıcı eklemek için [PowerShell'i kullanırken](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) davet e-postaları göndermeyi de seçebilirsiniz. E-postadaki bağlantıyı kullandıklarında konuğun deneyiminin bir açıklaması aşağıda veda edebilirsiniz.
 
-## <a name="redemption-through-a-direct-link"></a>Doğrudan bir bağlantı üzerinden ödeme
+1. Konuk, **Microsoft Invitations'tan**gönderilen bir davet [e-postası](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) alır.
+2. Konuk e-postada **Başlat'ı** seçer.
+3. Konuğun federe bir kuruluşta Azure AD hesabı, Microsoft Hesabı (MSA) veya e-posta hesabı yoksa, msa oluşturmaları istenir [(bir kerelik geçiş kodu](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) özelliği etkinleştirilmediği sürece ve MSA gerektirmez).
+4. Konuk aşağıda açıklanan [rıza deneyimi](#consent-experience-for-the-guest) ile yönlendirilir.
 
-Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
+## <a name="redemption-through-a-direct-link"></a>Doğrudan bağlantı üzerinden kullanım
+
+Davet e-postasına alternatif olarak, bir misafire uygulamanıza veya portalınıza doğrudan bağlantı verebilirsiniz. Öncelikle Azure [portalı](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)üzerinden konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından, uygulamaları doğrudan oturum açma bağlantıları da dahil olmak üzere [kullanıcılara dağıtmanın özelleştirilebilir yollarından](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)herhangi birini kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bir bağlantı kullandığında, yine de ilk kez izin deneyimi boyunca yönlendirilir.
 
 > [!IMPORTANT]
-> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.com gibi ortak bir URL, kimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
- > - Uygulamalar erişim paneli: https://myapps.microsoft.com/?tenantid=&lt; Kiracı kimliği&gt; 
- > - Doğrulanan etki alanı için uygulamalar erişim paneli: https://myapps.microsoft.com/&lt; doğrulanan etki alanı&gt;
- > - Azure portal: https://portal.azure.com/&lt; Kiracı kimliği&gt;
- > - Tek uygulama: bkz. [doğrudan oturum açma bağlantısı](../manage-apps/end-user-experiences.md#direct-sign-on-links) kullanma
+> Doğrudan bağlantı kiracıya özel olmalıdır. Başka bir deyişle, konuğun paylaşılan uygulamanın bulunduğu kiracınızda kimliğinin doğrulanabilmesi için kiracı kimliği veya doğrulanmış etki alanı içermelidir. Kimlik doğrulaması https://myapps.microsoft.com için ev kiracısına yönlendireceği için, bu url gibi ortak bir URL bir konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantıya bazı örnekler aşağıda verilmiştir:
+ > - Uygulamalar erişim https://myapps.microsoft.com/?tenantid=&ltpaneli: ;kiracı kimliği&gt; 
+ > - Doğrulanmış bir etki alanı https://myapps.microsoft.com/&ltiçin uygulamalar erişim paneli: ;doğrulanmış etki alanı&gt;
+ > - Azure portalı: https://portal.azure.com/&lt;kiracı kimliği&gt;
+ > - Bireysel uygulama: [doğrudan oturum açma bağlantısını](../manage-apps/end-user-experiences.md#direct-sign-on-links) nasıl kullanacağız
 
-Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:
- - Kullanıcının Federasyon kuruluşunda bir Azure AD hesabı, MSA veya e-posta hesabı yoktur. Tek seferlik geçiş kodu özelliğini kullanmıyorsanız, bir MSA oluşturma adımlarında gezinmek için konuğun davet e-postasını sağlaması gerekir.
- - Bazen davet eden Kullanıcı nesnesinin bir e-posta adresi olmayabilir (örneğin, bir Outlook ilgili kişisi nesnesi). Bu durumda, Kullanıcı davet e-postasında kullanım URL 'sini tıklamalıdır.
- - Kullanıcı, davet edilen e-posta adresinin diğer adıyla oturum açabilir. (Diğer ad, bir e-posta hesabıyla ilişkili ek bir e-posta adresidir.) Bu durumda, Kullanıcı davet e-postasında kullanım URL 'sini tıklamalıdır.
+Davet e-postasının doğrudan bir bağlantı üzerinden tavsiye edildiği bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:
+ - Kullanıcının federe bir kuruluşta Azure AD hesabı, MSA'sı veya e-posta hesabı yoktur. Tek seferlik parola özelliğini kullanmıyorsanız, konuğun MSA oluşturmak için adımlarda yönlendirilmesi için davet e-postasını kullanması gerekir.
+ - Bazen davet edilen kullanıcı nesnesi, ilgili kişi nesnesiyle (örneğin, Outlook kişi nesnesi) çakışması nedeniyle e-posta adresine sahip olmayabilir. Bu durumda, kullanıcının davet e-postasındakullanım URL'sini tıklatması gerekir.
+ - Kullanıcı, davet edilen e-posta adresinin takma adı ile oturum açabilir. (Takma ad, bir e-posta hesabıyla ilişkili ek bir e-posta adresidir.) Bu durumda, kullanıcının davet e-postasındakullanım URL'sini tıklatması gerekir.
 
-## <a name="consent-experience-for-the-guest"></a>Konuk için onay deneyimi
+## <a name="consent-experience-for-the-guest"></a>Konuk için rıza deneyimi
 
-Bir konuk, bir iş ortağı kuruluşundaki kaynaklara ilk kez erişmek üzere oturum açtığında, bunlar aşağıdaki sayfalara kılavuzluk ederler. 
+Bir konuk, bir ortak kuruluştaki kaynaklara erişmek için ilk kez giriş yaptığında, aşağıdaki sayfalarda yönlendirilir. 
 
-1. Konuk, davet eden kuruluşun gizlilik bildirimini açıklayan **Izinleri gözden geçirme** sayfasını inceler. Bir kullanıcının devam etmesi için bilgilerin kullanımını davet eden kuruluşun gizlilik ilkelerine uygun olarak **kabul etmesi** gerekir.
+1. Konuk, davet eden kuruluşun gizlilik bildirimini açıklayan **İnceleme izinleri** sayfasını inceler. Bir kullanıcı, bilgilerinin davet edilen kuruluşun gizlilik politikalarına uygun olarak kullanımını **kabul** etmelidir.
 
-   ![İzinleri gözden geçir sayfasını gösteren ekran görüntüsü](media/redemption-experience/review-permissions.png) 
+   ![İnceleme izinleri sayfasını gösteren ekran görüntüsü](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > Kiracı Yöneticisi olarak kuruluşunuzun gizlilik bildirimine nasıl bağlayabileceğiniz hakkında bilgi için bkz. [nasıl yapılır: kuruluşunuzun gizlilik bilgilerini Azure Active Directory ekleme](https://aka.ms/adprivacystatement).
+   > Kiracı yönetici olarak kuruluşunuzun gizlilik bildirimine nasıl bağlantı kurabileceğiniz hakkında bilgi için [bkz.](https://aka.ms/adprivacystatement)
 
-2. Kullanım koşulları yapılandırılırsa, Konuk açılıp kullanım koşullarını inceler ve **kabul et**' i seçer. 
+2. Kullanım koşulları yapılandırılırsa, konuk açılışını yapıp kullanım koşullarını gözden geçirir ve sonra **Kabul Et'i**seçer. 
 
    ![Yeni kullanım koşullarını gösteren ekran görüntüsü](media/redemption-experience/terms-of-use-accept.png) 
 
    > [!NOTE]
-   > Yapılandırma > **kuruluş Ilişkilerini** **yönetme** > **kullanım koşulları**için [kullanım koşulları](../governance/active-directory-tou.md) ' nı yapılandırabilirsiniz.
+   > **Kuruluş**ilişkileri >  **Yönetme** > Kullanım [Koşullarını](../governance/active-directory-tou.md) **görebilirsiniz.**
 
-3. Aksi belirtilmediği takdirde, Konuk, konuk tarafından erişebilen uygulamaları listeleyen uygulamalar erişim paneline yönlendirilir.
+3. Aksi belirtilmedikçe, konuk, konuğun erişebileceği uygulamaları listeleyen Uygulamalar erişim paneline yönlendirilir.
 
    ![Uygulamalar erişim panelini gösteren ekran görüntüsü](media/redemption-experience/myapps.png) 
 
-Dizininizde, Konuk **davetinin kabul edilebilir** değeri **Evet**olarak değişir. Bir MSA oluşturulduysa, Konuk **kaynağı** **Microsoft hesabını**gösterir. Konuk Kullanıcı hesabı özellikleri hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği kullanıcısının özellikleri](user-properties.md). 
+Dizininizde, konuğun **Daveti** kabul edilen değer değişiklikleri **Evet**olarak değiştirilmiştir. Bir MSA oluşturulduysa, konuğun **Kaynağı** **Microsoft Hesabı'nı**gösterir. Konuk kullanıcı hesabı özellikleri hakkında daha fazla bilgi için Azure [AD B2B işbirliği kullanıcısının özellikleri](user-properties.md)bölümüne bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 - [Azure portalında Azure Active Directory B2B işbirliği kullanıcıları ekleme](add-users-administrator.md)
-- [Bilgi çalışanları, Azure Active Directory B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
-- [PowerShell kullanarak Azure Active Directory B2B işbirliği kullanıcıları ekleme](customize-invitation-api.md#powershell)
-- [Bir kuruluştan Konuk Kullanıcı olarak ayrılın](leave-the-organization.md)
+- [Bilgi çalışanları Azure Active Directory'ye B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
+- [PowerShell'i kullanarak Azure Active Directory B2B işbirliği kullanıcıları ekleme](customize-invitation-api.md#powershell)
+- [Bir kuruluşu konuk kullanıcı olarak bırakma](leave-the-organization.md)

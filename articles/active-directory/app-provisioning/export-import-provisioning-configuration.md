@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma | Microsoft Docs
-description: Microsoft Graph API 'sini kullanarak sağlama yapılandırmasını dışarı ve içeri aktarmayı öğrenin.
+title: Sağlama yapılandırmanızı dışa aktarın ve olağanüstü durum kurtarma için bilinen iyi bir duruma geri dön.| Microsoft Dokümanlar
+description: Sağlama yapılandırmanızı nasıl dışa aktarıp olağanüstü durum kurtarma için bilinen iyi bir duruma geri döndürmeyi öğrenin.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,75 +12,91 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 03/19/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367801"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051307"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma
+# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Sağlama yapılandırmanızı dışa aktarın ve bilinen iyi bir duruma geri dön
 
-Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için Microsoft Graph API ve Microsoft Graph Gezginini kullanabilirsiniz. Sağlama yapılandırmanızın bir yedeğini oluşturmak için burada yakalanan adımları da kullanabilirsiniz. 
+## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Sağlama yapılandırmanızı Azure portalından dışa aktarma ve alma
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1\. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
+### <a name="how-can-i-export-my-provisioning-configuration"></a>Sağlama yapılandırmamı nasıl dışa aktarabilirim?
+Yapılandırmanızı dışa aktarmak için:
+1. Sol daki gezinti panelinde [bulunan Azure portalında](https://portal.azure.com/) **Azure Etkin Dizin'i**seçin.
+2. Azure **Etkin Dizin** bölmesinde **Kurumsal uygulamaları** seçin ve uygulamanızı seçin.
+3. Sol gezinti bölmesinde, **hükmü**seçin. Sağlama yapılandırma sayfasından, **öznitelik eşlemeleri**tıklayın, sonra **gelişmiş seçenekleri göstermek**ve nihayet **şema gözden geçirin.** Bu seni şema editörüne götürecek. 
+5. Şemanızı indirmek için sayfanın üst kısmındaki komut çubuğuna indir'e tıklayın.
 
-1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesinde dışarı aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin. 
-1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Microsoft Graph Explorer işlemlerinde kullanılacaktır.
+### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Olağanüstü durum kurtarma - bilinen iyi bir duruma geri dön
+Yapılandırmanızı dışa aktarmak ve kaydetmek yapılandırmanızın önceki bir sürümüne geri dönmenizi sağlar. Sağlama yapılandırmanızı dışa aktarmanızı ve öznitelik eşlemelerinizde veya kapsam filtrelerinizde bir değişiklik yaptığınızda daha sonra kullanmak üzere kaydetmenizi öneririz. Yapmanız gereken tek şey yukarıdaki adımlarda indirdiğiniz JSON dosyasını açmak, JSON dosyasının tüm içeriğini kopyalamak, şema düzenleyicisinde JSON yükünün tüm içeriğini değiştirmek ve sonra kaydetmektir. Etkin bir sağlama döngüsü varsa, tamamlanır ve bir sonraki döngü güncelleştirilmiş şema kullanır. Bir sonraki döngü, her kullanıcıyı ve grubu yeni yapılandırmaya göre yeniden değerlendiren bir başlangıç döngüsü de olacaktır. Önceki yapılandırmaya geri dönerken aşağıdakileri göz önünde bulundurun:
+* Kullanıcılar kapsamda olmaları gerekip gerekmeyeceğini belirlemek için yeniden değerlendirilir. Kapsam filtreleri değiştiyse, kullanıcı artık kapsamda değilse devre dışı bırakılır. Bu çoğu durumda istenen davranış olsa da, bunu önlemek isteyebilirsiniz ve kapsam silme işlevini [natle](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kullanabilirsiniz zamanlar vardır. 
+* Sağlama yapılandırmanızı değiştirmek hizmeti yeniden başlatır ve [bir başlangıç döngüsünü](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)tetikler.
 
-   ![App Service ana iş günü KIMLIĞI](./media/export-import-provisioning-configuration/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2\. Adım: Microsoft Graph Explorer 'da oturum açın
+## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API'yi kullanarak sağlama yapılandırmanızı dışa aktarma ve alma
+Microsoft Graph API'nizi ve Microsoft Graph Explorer'ı kullanarak Kullanıcı Sağlama öznitelik eşlemenizi ve şemasını bir JSON dosyasına dışa aktarabilir ve Azure AD'ye geri aktarabilirsiniz. Ayrıca, sağlama yapılandırmanızın bir yedeklemesini oluşturmak için burada yakalanan adımları da kullanabilirsiniz. 
 
-1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) Başlat
-1. "Microsoft 'a oturum aç" düğmesine tıklayın ve Azure AD Genel yönetici veya uygulama Yöneticisi kimlik bilgilerini kullanarak oturum açın.
+### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Adım 1: Uygulama Hizmeti Asıl Kimliğinizi (Object ID) alın
 
-    ![Microsoft Graph oturum açma](./media/export-import-provisioning-configuration/wd_export_02.png)
+1. Azure [portalını](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *İş gününüzü AD Kullanıcı Sağlama uygulaması* eşlenesine aktarmak istiyorsanız, söz konusu uygulamanın Özellikler bölümüne gidin. 
+1. Sağlama uygulamanızın Özellikler bölümünde, *Nesne Kimliği* alanıyla ilişkili GUID değerini kopyalayın. Bu değer, Uygulamanızın **ServicePrincipalId'i** olarak da adlandırılır ve Microsoft Graph Explorer işlemlerinde kullanılır.
 
-1. Başarılı oturum açma işlemi tamamlandıktan sonra, sol bölmedeki Kullanıcı hesabı ayrıntılarını görürsünüz.
+   ![İş Günü Uygulama Hizmeti Ana Kimliği](./media/export-import-provisioning-configuration/wd_export_01.png)
 
-## <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>3\. Adım: sağlama uygulamasının sağlama Işi KIMLIĞINI alma
+### <a name="step-2-sign-into-microsoft-graph-explorer"></a>Adım 2: Microsoft Graph Explorer'da oturum açma
 
-Microsoft Graph Gezgini ' nde, [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan **serviceprincipalıd** Ile [serviceprincipalıd] yerine aşağıdaki Get sorgusunu çalıştırın.
+1. [Microsoft Graph Explorer'ı](https://developer.microsoft.com/graph/graph-explorer) başlatın
+1. Azure AD Global Admin veya App Admin kimlik bilgilerini kullanarak "Microsoft ile Oturum Açma" düğmesine tıklayın ve oturum açın.
+
+    ![Microsoft Graph Oturum Açma](./media/export-import-provisioning-configuration/wd_export_02.png)
+
+1. Başarılı oturum açma dan sonra, kullanıcı hesap ayrıntılarını sol bölmede görürsünüz.
+
+### <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>Adım 3: Sağlama Uygulamasının Sağlama İş Kimliğini Alma
+
+Microsoft Graph Explorer'da, [servicePrincipalId] yerine adım [1'den](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)çıkarılan **ServicePrincipalId** ile aşağıdaki GET sorgusunu çalıştırın.
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
 ```
 
-Aşağıda gösterildiği gibi bir yanıt alacaksınız. Yanıtta bulunan "ID özniteliği" öğesini kopyalayın. Bu değer **Provisioningjobıd** ' dir ve temel alınan şema meta verilerini almak için kullanılır.
+Aşağıda gösterildiği gibi bir yanıt alırsınız. Yanıtta bulunan "kimlik özniteliği"ni kopyalayın. Bu değer **ProvisioningJobId'dir** ve temel şema meta verilerini almak için kullanılır.
 
-   [![sağlama Işi KIMLIĞI](./media/export-import-provisioning-configuration/wd_export_03.png)](./media/export-import-provisioning-configuration/wd_export_03.png#lightbox)
+   [![İş Kimliği Sağlama](./media/export-import-provisioning-configuration/wd_export_03.png)](./media/export-import-provisioning-configuration/wd_export_03.png#lightbox)
 
-## <a name="step-4-download-the-provisioning-schema"></a>4\. Adım: sağlama şemasını Indirme
+### <a name="step-4-download-the-provisioning-schema"></a>Adım 4: Provizyon Şema İndir
 
-Microsoft Graph Gezgini 'nde, aşağıdaki GET sorgusunu çalıştırarak [Serviceprincipalıd] ve [Provisioningjobıd] değerini, önceki adımlarda alınan Serviceprincipalıd ve Provisioningjobıd ile değiştirin.
+Microsoft Graph Explorer'da, [servicePrincipalId] ve [ProvisioningJobId] ile önceki adımlarda alınan ServicePrincipalId ve ProvisioningJobId'i değiştirerek aşağıdaki GET sorgusunu çalıştırın.
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
 ```
 
-JSON nesnesini yanıttan kopyalayın ve şemanın bir yedeğini oluşturmak için dosyayı bir dosyaya kaydedin.
+Yanıttan JSON nesnesini kopyalayın ve şema yedeklemesi oluşturmak için bir dosyaya kaydedin.
 
-## <a name="step-5-import-the-provisioning-schema"></a>5\. Adım: sağlama şemasını Içeri aktarma
+### <a name="step-5-import-the-provisioning-schema"></a>Adım 5: Provizyon Şema'sını İthalat
 
 > [!CAUTION]
-> Bu adımı yalnızca, Azure portal kullanarak değiştirilemeyen yapılandırma şemasını değiştirmeniz gerekiyorsa veya daha önce yedeklenen bir dosyanın geçerli ve çalışma şemasına sahip olan yapılandırmayı geri yüklemeniz gerekiyorsa gerçekleştirin.
+> Bu adımı yalnızca Azure portalı kullanılarak değiştirilemeyen yapılandırma için şemayı değiştirmeniz gerekiyorsa veya yapılandırmayı önceden yedeklenmiş bir dosyadan geçerli ve çalışan şema ile geri yüklemeniz gerekiyorsa gerçekleştirin.
 
-Microsoft Graph Gezgini 'nde, aşağıdaki PUT sorgusunu, [Serviceprincipalıd] ve [Provisioningjobıd] değerini, önceki adımlarda alınan Serviceprincipalıd ve Provisioningjobıd ile değiştirerek yapılandırın.
+Microsoft Graph Explorer'da, [servicePrincipalId] ve [ProvisioningJobId] ile önceki adımlarda alınan ServicePrincipalId ve ProvisioningJobId'i değiştirerek aşağıdaki PUT sorgusunu yapılandırın.
 
 ```http
     PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
 ```
 
-"Istek gövdesi" sekmesinde, JSON Şema dosyasının içeriğini kopyalayın.
+"İstek Gövdesi" sekmesinde, JSON şema dosyasının içeriğini kopyalayın.
 
-   [Istek gövdesini ![](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
+   [![İstek Gövdesi](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
 
-"Istek üstbilgileri" sekmesinde, Içerik türü üst bilgi özniteliğini "Application/JSON" değeriyle ekleyin
+"İstek Üstbilgi" sekmesinde, "uygulama/json" değeriyle İçerik Türü üstbilgi özniteliğini ekleyin
 
-   [Istek üst bilgilerini ![](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
+   [![İstek Başlıkları](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-Yeni şemayı içeri aktarmak için "Sorguyu Çalıştır" düğmesine tıklayın.
+Yeni şemayı almak için "Sorguyu Çalıştır" düğmesine tıklayın.

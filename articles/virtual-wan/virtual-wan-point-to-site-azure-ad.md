@@ -1,37 +1,36 @@
 ---
-title: Azure ile noktadan siteye bağlantı için Azure AD kimlik doğrulamasını yapılandırma | Microsoft Docs
-description: Bu öğreticide, kullanıcı VPN için Azure Active Directory kimlik doğrulamasını yapılandırmayı öğrenin.
+title: 'Kullanıcı VPN bağlantısı için Azure AD kimlik doğrulamasını yapılandırma: Virtual WAN'
+description: Kullanıcı VPN'i için Azure Active Directory kimlik doğrulamasını nasıl yapılandırılabildiğini öğrenin.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: tutorial
-ms.date: 02/07/2019
+ms.topic: conceptual
+ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122020"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059493"
 ---
-# <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
+# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Kullanıcı VPN'i için Azure Active Directory kimlik doğrulamasını yapılandırma
 
-Bu öğreticide, bir OpenVPN VPN bağlantısı üzerinden Azure 'daki kaynaklarınıza bağlanmak üzere sanal WAN 'daki Kullanıcı VPN 'si için Azure AD kimlik doğrulamasını yapılandırma hakkında yönergeler verilmektedir. Azure Active Directory kimlik doğrulaması yalnızca OpenVPN Protokolü ve Windows çalıştıran istemciler kullanan ağ geçitleri için kullanılabilir.
+Bu makalede, Virtual WAN'daki Kullanıcı VPN'i için Azure AD kimlik doğrulaması nın OpenVPN VPN bağlantısı üzerinden Azure'daki kaynaklarınıza bağlanmak için nasıl yapılandırılacağı gösterilmektedir. Azure Active Directory kimlik doğrulaması yalnızca OpenVPN iletişim kuralını kullanan ağ geçitleri ve Windows çalıştıran istemciler için kullanılabilir.
 
 Bu tür bir bağlantı, istemci bilgisayarda bir istemcinin yapılandırılmış olmasını gerektirir. Sanal WAN hakkında daha fazla bilgi için bkz. [Sanal WAN'a Genel Bakış](virtual-wan-about.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAN oluşturma
 > * Hub oluşturma
 > * P2S yapılandırması oluşturma
-> * VPN istemci profilini indir
+> * VPN istemci profili indirin
 > * P2S yapılandırmasını bir hub'a uygulama
 > * Bir sanal ağı bir hub'a bağlama
 > * VPN istemci yapılandırmasını indirme ve uygulama
 > * Sanal WAN'ınızı görüntüleme
-> * Kaynak durumunu görüntüleme
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -39,163 +38,158 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../virtual-network/quick-create-portal.md)başlangıca bakın.
+* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın hiçbirinin bağlanmak istediğiniz sanal ağlarla örtüşmediğini doğrulayın. Azure portalında sanal ağ oluşturmak için [Hızlı Başlangıç'a](../virtual-network/quick-create-portal.md)bakın.
 
-* Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
+* Sanal ağınızın herhangi bir sanal ağ ağ geçidi yok. Sanal ağınızın bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağların bunun yerine Sanal WAN hub ağ geçidine bağlanmasını gerektirir.
 
-* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
+* Hub bölgenizden bir IP adresi aralığı edinin. Hub, Virtual WAN tarafından oluşturulan ve kullanılan sanal bir ağdır. Hub için belirttiğiniz adres aralığı, bağlandığınız varolan sanal ağlarınizle çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını bilmiyorsanız, bu ayrıntıları sizin için sağlayabilecek biriyle işbirliği yapabilirsiniz.
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
-## <a name="wan"></a>Sanal WAN oluşturma
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>Sanal WAN oluşturma
 
 Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure hesabınızla oturum açın.
 
-1. Sanal WAN sayfasına gidin. Portalda **+Kaynak oluştur**’a tıklayın. Arama kutusuna **sanal WAN** yazın ve ENTER ' u seçin.
-2. Sonuçlardan **sanal WAN** ' ı seçin. Sanal WAN sayfasında, **Oluştur** ' a tıklayarak WAN sayfası oluştur sayfasını açın.
-3. **WAN oluştur** sayfasında, **temel bilgiler** sekmesinde aşağıdaki alanları girin:
+1. Sanal WAN sayfasına gidin. Portalda **+Kaynak oluştur**’a tıklayın. Arama kutusuna **Sanal WAN** yazın ve Enter'u seçin.
+2. Sonuçlardan **Sanal WAN'ı** seçin. Sanal WAN sayfasında, WAN Oluştur sayfasını açmak için **Oluştur'u** tıklatın.
+3. WAN **Oluştur** sayfasında, **Temel Bilgiler** sekmesinde aşağıdaki alanları doldurun:
 
    ![Sanal WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Abonelik**: Kullanmak istediğiniz aboneliği seçin.
-   * **Kaynak grubu** -yeni oluştur veya var olanı kullan.
-   * **Kaynak grubu konumu** -açılan listeden bir kaynak konumu seçin. WAN, global bir kaynaktır ve belirli bir bölgeyle sınırlı değildir. Ancak oluşturduğunuz WAN kaynağını daha kolay yönetmek ve bulmak için bir bölge seçmeniz gerekir.
-   * **Ad** -WAN 'nizi çağırmak istediğiniz adı yazın.
-   * **Şunu yazın:** Stand. Temel bir WAN oluşturursanız, yalnızca temel bir hub oluşturabilirsiniz. Temel hub 'lar yalnızca VPN siteden siteye bağlantı özelliğine sahiptir.
-4. Alanları doldurmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin.
-5. Doğrulama geçtikten sonra, sanal WAN oluşturmak için **Oluştur** ' u seçin.
+   * **Kaynak grubu** - Yeni oluşturun veya varolanları kullanın.
+   * **Kaynak grubu konumu** - Açılır kaynak konumundan bir kaynak konumu seçin. WAN, global bir kaynaktır ve belirli bir bölgeyle sınırlı değildir. Ancak oluşturduğunuz WAN kaynağını daha kolay yönetmek ve bulmak için bir bölge seçmeniz gerekir.
+   * **Ad** - WAN adını vermek istediğiniz Adı yazın.
+   * **Türü:** Standart. Temel WAN oluşturursanız, yalnızca bir Temel hub oluşturabilirsiniz. Temel hub'lar yalnızca VPN'den siteye bağlantı yeteneğine sahiptir.
+4. Alanları doldurmayı bitirdikten sonra **Gözden Geçir +Oluştur'u**seçin.
+5. Doğrulama geçtikten sonra, sanal WAN oluşturmak için **Oluştur'u** seçin.
 
-## <a name="site"></a>Boş bir sanal hub oluşturun
+## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>Boş bir sanal hub oluşturma
 
-1. Sanal WAN 'ınız altında, hub ' ı seçin ve **+ yeni merkez**' e tıklayın.
+1. Sanal WAN'ınızın altında Hub'ları seçin ve **+Yeni Hub'ı**tıklatın.
 
    ![yeni site](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
-2. Sanal hub Oluştur sayfasında aşağıdaki alanları girin.
+2. Sanal hub oluştur sayfasında aşağıdaki alanları doldurun.
 
-   **Bölge** -sanal hub 'ı dağıtmak istediğiniz bölgeyi seçin.
+   **Bölge** - Sanal hub'ı dağıtmak istediğiniz bölgeyi seçin.
 
-   **Ad** -sanal hub 'ınızı çağırmak istediğiniz adı girin.
+   **Ad** - Sanal hub'ınızı aramak istediğiniz adı girin.
 
-   **Hub özel adres alanı** -hub 'ın CIDR gösteriminde adres aralığı.
+   **Hub özel adres alanı** - CIDR gösteriminde hub'ın adres aralığı.
 
    ![yeni site](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
 3. **Gözden geçir ve oluştur**’a tıklayın.
-4. **Doğrulama başarılı** sayfasında **Oluştur**' a tıklayın.
+4. Geçirilen **doğrulama** sayfasında **oluştur'u**tıklatın.
 
-## <a name="site"></a>Yeni bir P2S yapılandırması oluşturma
+## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Yeni bir P2S yapılandırması oluşturma
 
 P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri tanımlar.
 
-1. Sanal WAN ' ın altında, **Kullanıcı VPN yapılandırması**' nı seçin.
+1. Sanal WAN'ınız altında **Kullanıcı VPN yapılandırmalarını**seçin.
 
-   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
+   ![yeni config](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. **+ Kullanıcı VPN yapılandırması oluştur**' a tıklayın.
+2. **+Kullanıcı VPN config oluştur'a**tıklayın.
 
-   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+   ![yeni config](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. Bilgileri girin ve **Oluştur** ' a tıklayın.
+3. Bilgileri girin ve **Oluştur'u** tıklatın
 
-   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
+   ![yeni config](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
-## <a name="hub"></a>Hub atamasını Düzenle
+## <a name="edit-hub-assignment"></a><a name="hub"></a>Hub atamasını düzenleme
 
-1. Sanal WAN altındaki **hub** + dikey penceresine gidin.
-2. VPN sunucusu yapılandırmasını ilişkilendirmek istediğiniz hub 'ı seçin ve üç nokta (...) simgesine tıklayın.
+1. Sanal WAN altında **Hubs** bıçak gidin.
+2. Vpn sunucusu yapılandırmasını ilişkilendirmek istediğiniz hub'ı seçin ve elipsleri (...) tıklatın.
 
    ![yeni site](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
-3. **Sanal hub 'ı Düzenle**' ye tıklayın.
-4. **Noktadan siteye ağ geçidini dahil** et onay kutusunu işaretleyin ve Istediğiniz **ağ geçidi ölçek birimini** seçin.
+3. **Sanal hub'ı edit'i**tıklatın.
+4. **Yer-iş geçidi ekle onay** kutusunu işaretleyin ve istediğiniz **Ağ Geçidi ölçeği birimini** seçin.
 
    ![yeni site](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
-5. VPN istemcilerine atanan IP adreslerine ait **adres havuzunu** girin.
+5. VPN istemcilerine IP adreslerinin atanacağı **Adres havuzunu** girin.
 6. **Onayla**'ya tıklayın.
 7. İşlemin tamamlanması 30 dakika kadar sürebilir.
 
-## <a name="device"></a>VPN profilini indir
+## <a name="download-vpn-profile"></a><a name="device"></a>VPN profili indirme
 
 İstemcilerinizi yapılandırmak için VPN profilini kullanın.
 
-1. Sanal WAN 'nizin sayfasında, **Kullanıcı VPN yapılandırması**' na tıklayın.
-2. Sayfanın üst kısmında, **Kullanıcı VPN yapılandırması 'Nı indir**' e tıklayın.
+1. Sanal WAN'ınız için sayfada **Kullanıcı VPN yapılandırmalarını**tıklatın.
+2. Sayfanın üst kısmında, **kullanıcı VPN config indir'i**tıklatın.
 3. Dosya oluşturulduktan sonra bağlantıya tıklayarak indirebilirsiniz.
 4. VPN istemcilerini yapılandırmak için profil dosyasını kullanın.
 
 ## <a name="configure-user-vpn-clients"></a>Kullanıcı VPN istemcilerini yapılandırma
 
-Bağlanmak için, Azure VPN Istemcisini indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda önceki adımlarda indirilen VPN istemci profilini içeri aktarmanız gerekir.
+Bağlanmak için Azure VPN İstemci'sini indirmeniz ve VNet'e bağlanmak isteyen her bilgisayarda önceki adımlarda indirilen VPN istemcisi profilini almanız gerekir.
 
 > [!NOTE]
-> Azure AD kimlik doğrulaması yalnızca OpenVPN® Protokolü bağlantılarında desteklenir.
+> Azure AD kimlik doğrulaması yalnızca&reg; OpenVPN iletişim iletişim bağlantıları için desteklenir.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN istemcisini indirmek için
 
-Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) kullanın.
+Azure VPN İstemcisini indirmek için bu [bağlantıyı](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) kullanın.
 
-#### <a name="import"></a>İstemci profilini içeri aktarmak için
+#### <a name="to-import-a-client-profile"></a><a name="import"></a>İstemci profili almak için
 
-1. Sayfasında **Içeri aktar**' ı seçin.
+1. Sayfada, **İçe Aktar'ı**seçin.
 
-    ![aktarmaya](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![içeri aktar](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
-2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
+2. Profil xml dosyasına göz atın ve seçin. Dosya seçilirken **Aç'ı**seçin.
 
-    ![aktarmaya](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![içeri aktar](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
-3. Profilin adını belirtin ve **Kaydet**' i seçin.
+3. Profilin adını belirtin ve **Kaydet'i**seçin.
 
-    ![aktarmaya](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![içeri aktar](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
-4. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
+4. VPN'e bağlanmak için **Bağlan'ı** seçin.
 
-    ![aktarmaya](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![içeri aktar](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
+5. Bağlandıktan sonra simge yeşile döner ve **Bağlı**der.
 
-    ![aktarmaya](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![içeri aktar](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>İstemci profilini silmek için
+#### <a name="to-delete-a-client-profile"></a><a name="delete"></a>İstemci profilini silmek için
 
-1. Silmek istediğiniz istemci profilinin yanındaki üç nokta (...) simgesini seçin. Ardından **Kaldır**' ı seçin.
+1. Silmek istediğiniz istemci profilinin yanındaki elipsleri (...) seçin. Ardından **Kaldır'ı**seçin.
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
-2. Silmek için **Kaldır** ' ı seçin.
+2. Silmek için **Kaldır'ı** seçin.
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>Bağlantı sorunlarını Tanıla
+#### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Bağlantı sorunlarını tanılama
 
-1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki üç nokta (...) simgesini seçin. Ardından **Tanıla**' yı seçin.
+1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü ortaya çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki elipsleri (...) seçin. Ardından **Tanıla'yı**seçin.
 
-    ![tanın](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![Tanılamak](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
-2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır**' ı seçin.
+2. Bağlantı **Özellikleri** sayfasında Tanıyı **Çalıştır'ı**seçin.
 
-    ![tanın](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![Tanılamak](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
 3. Kimlik bilgilerinizle oturum açın.
 
-    ![tanın](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![Tanılamak](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
-4. Tanılama sonuçlarını görüntüleyin.
+4. Tanı sonuçlarını görüntüleyin.
 
-    ![tanın](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![Tanılamak](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>Sanal WAN 'nizi görüntüleme
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Sanal WAN'ınızı görüntüleme
 
 1. Sanal WAN'a gidin.
-2. Genel bakış sayfasında haritadaki her bir nokta bir hub'ı temsil eder. Hub sistem durumu özetini görüntülemek için noktalardan birinin üzerine gidin.
+2. Genel bakış sayfasında haritadaki her bir nokta bir hub'ı temsil eder.
 3. Hub'lar ve bağlantılar bölümünde herhangi bir hub'ın durumunu, sitesini, bölgesini, VPN bağlantısı durumunu ve gelen/giden baytları görüntüleyebilirsiniz.
 
-## <a name="viewhealth"></a>Kaynak sistem durumunu görüntüleme
 
-1. WAN'ınıza gidin.
-2. WAN sayfanızın **Destek ve sorun giderme** bölümünde **Sistem durumu**'na tıklayın ve kaynağınızı görüntüleyin.
-
-
-## <a name="cleanup"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
 
 Bu kaynaklar artık gerekli değilse, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
 

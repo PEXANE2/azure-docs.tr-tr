@@ -1,7 +1,7 @@
 ---
-title: Müşteri tarafından yönetilen anahtarları yapılandırmak için Azure CLı 'yi kullanma
+title: Müşteri tarafından yönetilen anahtarları yapılandırmak için Azure CLI'yi kullanın
 titleSuffix: Azure Storage
-description: Azure CLı kullanarak müşteri tarafından yönetilen anahtarları Azure depolama şifrelemesi için Azure Key Vault ile yapılandırma hakkında bilgi edinin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal edebilmesini sağlar.
+description: Azure Depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırmak için Azure CLI'yi nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,24 +10,24 @@ ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fcb4636263843143e685de2e3d2a27bf87cc5a90
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 6be15b3fdef94c07e70eba7c4234979b5ac62344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061170"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLI'yi kullanarak müşteri tarafından yönetilen anahtarları Azure Anahtar Kasası ile yapılandırın
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, Azure CLı kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Key Vault nasıl yapılandırılacağı gösterilmektedir. Azure CLı kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure CLI kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/quick-create-cli.md).
+Bu makalede, Azure CLI kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Anahtar Kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: Azure CLI'yi kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-cli.md)
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına bir kimlik atayın
+## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına kimlik atama
 
-Depolama hesabınız için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere öncelikle depolama hesabına sistem tarafından atanan bir yönetilen kimlik atayın. Bu yönetilen kimliği, depolama hesabı izinlerini anahtar kasasına erişim vermek için kullanacaksınız.
+Depolama hesabınız için müşteri tarafından yönetilen anahtarları etkinleştirmek için, önce depolama hesabına sistem tarafından atanmış yönetilen bir kimlik atayın. Bu yönetilen kimliği, depolama hesabının anahtar kasasına erişme izni vermek için kullanırsınız.
 
-Azure CLı kullanarak yönetilen bir kimlik atamak için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)' i çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Azure CLI kullanarak yönetilen bir kimlik atamak için [az depolama hesabı güncelleştirmesini](/cli/azure/storage/account#az-storage-account-update)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 az account set --subscription <subscription-id>
@@ -38,13 +38,13 @@ az storage account update \
     --assign-identity
 ```
 
-Azure CLı ile sistem tarafından atanan yönetilen kimlikleri yapılandırma hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
+Sistem tarafından atanan yönetilen kimlikleri Azure CLI ile yapılandırma hakkında daha fazla bilgi için, [Azure CLI'yi kullanarak Azure VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)'ya bakın.
 
-## <a name="create-a-new-key-vault"></a>Yeni bir Anahtar Kasası oluşturun
+## <a name="create-a-new-key-vault"></a>Yeni bir anahtar kasası oluşturma
 
-Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları depolamak üzere kullandığınız anahtar kasasında iki anahtar koruma ayarı etkinleştirilmiş, **geçici silme** ve **Temizleme işlemi**yapılmalıdır. PowerShell veya Azure CLı kullanarak bu ayarların etkinleştirildiği yeni bir Anahtar Kasası oluşturmak için aşağıdaki komutları yürütün. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları depolamak için kullandığınız anahtar kasasının iki anahtar koruma ayarı etkin leştirilmiş olmalıdır: **Yumuşak Silme** ve **Temizleme).** PowerShell veya Azure CLI'yi kullanarak bu ayarları etkinleştiren yeni bir anahtar kasası oluşturmak için aşağıdaki komutları uygulayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
-Azure CLı kullanarak yeni bir Anahtar Kasası oluşturmak için [az keykasa Create komutunu](/cli/azure/keyvault#az-keyvault-create)çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Azure CLI kullanarak yeni bir anahtar tonozu oluşturmak için [az keyvault oluştur'u](/cli/azure/keyvault#az-keyvault-create)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 az keyvault create \
@@ -55,13 +55,13 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-**Geçici silme** özelliğini etkinleştirme ve Azure CLI ile mevcut bir anahtar kasasında **Temizleme** hakkında BILGI edinmek için, [CLI ile geçici silme özelliğini kullanma](../../key-vault/key-vault-soft-delete-cli.md)bölümünde **geçici** silme ve **Temizleme korumasını** etkinleştirme başlıklı bölümlere bakın.
+Azure CLI ile varolan bir anahtar kasasında **Yumuşak Silme** ve **Temizleme'yi** etkinleştirmeyi öğrenmek için, [CLI ile yumuşak silmeyi etkinleştirme](../../key-vault/key-vault-soft-delete-cli.md)ve Temizleme **Korumasını Etkinleştirme** başlıklı bölümlere bakın. **Enabling soft-delete**
 
-## <a name="configure-the-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesini yapılandırma
+## <a name="configure-the-key-vault-access-policy"></a>Anahtar kasa erişim ilkesini yapılandırma
 
-Daha sonra, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası için erişim ilkesini yapılandırın. Bu adımda, daha önce depolama hesabına atadığınız yönetilen kimliği kullanacaksınız.
+Ardından, depolama hesabının erişim izinleri olacak şekilde anahtar kasasının erişim ilkesini yapılandırın. Bu adımda, depolama hesabına daha önce atadığınız yönetilen kimliği kullanırsınız.
 
-Anahtar Kasası için erişim ilkesini ayarlamak için [az keykasa Set-Policy komutunu](/cli/azure/keyvault#az-keyvault-set-policy)çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Anahtar kasasının erişim ilkesini ayarlamak için [az keyvault ayar-ilkesini](/cli/azure/keyvault#az-keyvault-set-policy)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -76,9 +76,9 @@ az keyvault set-policy \
     --key-permissions get recover unwrapKey wrapKey
 ```
 
-## <a name="create-a-new-key"></a>Yeni anahtar oluştur
+## <a name="create-a-new-key"></a>Yeni bir anahtar oluşturma
 
-Ardından, anahtar kasasında bir anahtar oluşturun. Bir anahtar oluşturmak için [az keykasa Key Create komutunu](/cli/azure/keyvault/key#az-keyvault-key-create)çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Ardından, anahtar kasasında bir anahtar oluşturun. Bir anahtar oluşturmak için [az keyvault tuşunu arayın.](/cli/azure/keyvault/key#az-keyvault-key-create) Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 az keyvault key create
@@ -88,9 +88,9 @@ az keyvault key create
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma
 
-Varsayılan olarak, Azure depolama şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Azure depolama hesabınızı müşteri tarafından yönetilen anahtarlar için yapılandırın ve depolama hesabıyla ilişkilendirilecek anahtarı belirtin.
+Varsayılan olarak, Azure Depolama şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Azure Depolama hesabınızı müşteri tarafından yönetilen anahtarlar için yapılandırın ve depolama hesabıyla ilişkilendirilen anahtarı belirtin.
 
-Depolama hesabının şifreleme ayarlarını güncelleştirmek için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)' i çağırın. Depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere `--encryption-key-source` parametresini ekleyin ve `Microsoft.Keyvault` olarak ayarlayın. Örnek, anahtarı depolama hesabıyla ilişkilendirmek için gereken her iki değerin de Anahtar Kasası URI 'sini ve en son anahtar sürümünü sorgular. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Depolama hesabının şifreleme ayarlarını güncelleştirmek için aşağıdaki örnekte gösterildiği gibi [az depolama hesabı güncelleştirmesini](/cli/azure/storage/account#az-storage-account-update)arayın. Parametreyi `--encryption-key-source` ekleyin ve `Microsoft.Keyvault` depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirecek şekilde ayarlayın. Örnek, anahtarı depolama hesabıyla ilişkilendirmek için her iki değerde de gerekli olan anahtar tonoz u ve en son anahtar sürümünü de sorgular. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -114,15 +114,15 @@ az storage account update
 
 ## <a name="update-the-key-version"></a>Anahtar sürümünü güncelleştirme
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için depolama hesabını güncelleştirmeniz gerekir. İlk olarak, az keykasa [Show](/cli/azure/keyvault#az-keyvault-show)komutunu çağırarak Anahtar Kasası URI 'sini sorgulama, [az keykasa anahtar listesi-sürümlerini](/cli/azure/keyvault/key#az-keyvault-key-list-versions)çağırarak anahtar sürümü için. Ardından, önceki bölümde gösterildiği gibi, depolama hesabının şifreleme ayarlarını anahtarın yeni sürümünü kullanacak şekilde güncelleştirmek için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) ' i çağırın.
+Anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için depolama hesabını güncelleştirmeniz gerekir. İlk olarak, [az keyvault show'u](/cli/azure/keyvault#az-keyvault-show)arayarak uri anahtar kasası ve az [keyvault anahtar listesi sürümlerini](/cli/azure/keyvault/key#az-keyvault-key-list-versions)arayarak anahtar sürümü için sorgula. Ardından, önceki bölümde gösterildiği gibi anahtarın yeni sürümünü kullanmak için depolama hesabının şifreleme ayarlarını güncelleştirmek için [az depolama hesabı güncelleştirmesini](/cli/azure/storage/account#az-storage-account-update) arayın.
 
 ## <a name="use-a-different-key"></a>Farklı bir anahtar kullanın
 
-Azure depolama şifrelemesi için kullanılan anahtarı değiştirmek için, [müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](#configure-encryption-with-customer-managed-keys) bölümünde gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) ' i çağırın ve yeni anahtar adını ve sürümünü sağlayın. Yeni anahtar farklı bir anahtar kasasında ise, Anahtar Kasası URI 'sini de güncelleştirin.
+Azure Depolama şifrelemesi için kullanılan anahtarı değiştirmek için, [müşteri tarafından yönetilen anahtarlarla yapılandırma şifrelemesinde](#configure-encryption-with-customer-managed-keys) gösterildiği gibi az depolama hesabı [güncelleştirmesini](/cli/azure/storage/account#az-storage-account-update) arayın ve yeni anahtar adı ve sürümünü sağlayın. Yeni anahtar farklı bir anahtar kasasındaysa, uri anahtar kasasını da güncelleyin.
 
-## <a name="revoke-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları iptal et
+## <a name="revoke-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları iptal edin
 
-Bir anahtarın tehlikede olduğunu düşünüyorsanız, Anahtar Kasası erişim ilkesini kaldırarak müşteri tarafından yönetilen anahtarları iptal edebilirsiniz. Müşteri tarafından yönetilen bir anahtarı iptal etmek için, aşağıdaki örnekte gösterildiği gibi [az keykasa Delete-Policy](/cli/azure/keyvault#az-keyvault-delete-policy) komutunu çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Bir anahtarın ele geçirildiğini düşünüyorsanız, anahtar kasa erişim ilkesini kaldırarak müşteri tarafından yönetilen anahtarları iptal edebilirsiniz. Müşteri tarafından yönetilen bir anahtarı iptal etmek için aşağıdaki örnekte gösterildiği gibi [az keyvault silme ilkesi](/cli/azure/keyvault#az-keyvault-delete-policy) komutunu arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```azurecli-interactive
 az keyvault delete-policy \
@@ -130,9 +130,9 @@ az keyvault delete-policy \
     --object-id $storage_account_principal
 ```
 
-## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
+## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı
 
-Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, depolama hesabınız Microsoft tarafından yönetilen anahtarlarla yeniden şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakmak için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) ' i çağırın ve aşağıdaki örnekte gösterildiği gibi, `--encryption-key-source parameter` `Microsoft.Storage`olarak ayarlayın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Müşteri tarafından yönetilen anahtarları devre dışı dışı bettiğinizde, depolama hesabınız bir kez daha Microsoft tarafından yönetilen anahtarlarla şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı katmak için `--encryption-key-source parameter` az `Microsoft.Storage`depolama [hesabı güncelleştirmesini](/cli/azure/storage/account#az-storage-account-update) arayın ve aşağıdaki örnekte gösterildiği gibi , Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```azurecli-interactive
 az storage account update
@@ -143,5 +143,5 @@ az storage account update
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md) 
-- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Veriler için Azure Depolama şifrelemesi](storage-service-encryption.md) 
+- [Azure Anahtar Kasası Nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

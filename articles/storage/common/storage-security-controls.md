@@ -1,67 +1,66 @@
 ---
-title: Azure depolama için güvenlik denetimleri
-description: Azure Storage 'ı değerlendirmek için güvenlik denetimlerinin denetim listesi
+title: Azure Depolama için güvenlik denetimleri
+description: Azure Depolama'yı değerlendirmek için güvenlik denetimleri denetim listesi
 services: storage
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.service: storage
+ms.subservice: common
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2cc54077456fce1e7e0f47843a762beee8e715f7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526765"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061125"
 ---
-# <a name="security-controls-for-azure-storage"></a>Azure depolama için güvenlik denetimleri
+# <a name="security-controls-for-azure-storage"></a>Azure Depolama için güvenlik denetimleri
 
-Bu makale, Azure depolama 'da yerleşik olarak bulunan güvenlik denetimlerini belgeler. 
+Bu makalede, Azure Depolama'da yerleşik güvenlik denetimleri belgeleilmiştir. 
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet |  |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Depolama Hizmeti Şifrelemesi bkz. [Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmalarını destekler.  Kullanıcılar, hizmete iletilmeden önce verileri de şifreleyebilir. |
-| Şifrelenmiş API çağrıları| Evet |  |
+| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet |  |
+| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | [Azure Key Vault'ta müşteri tarafından yönetilen anahtarları kullanarak Depolama Hizmeti Şifrelemesi'ne](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın.|
+| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Yok |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmalarını destekleyin.  Kullanıcılar, hizmete aktarılmadan önce verileri de şifreleyebilir. |
+| API şifreli aramalar| Evet |  |
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Evet |  |
-| VNet ekleme desteği| Yok |  |
+| Hizmet bitiş noktası desteği| Evet |  |
+| VNet enjeksiyon desteği| Yok |  |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | |
-| Zorlamalı tünel desteği| Yok |  |
+| Zorunlu tünel desteği| Yok |  |
 
-## <a name="monitoring--logging"></a>& Günlüğü izleme
+## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Azure Izleyici ölçümleri|
-| Denetim ve yönetim düzlemi günlüğü ve denetimi | Evet | Etkinlik günlüğünü Azure Resource Manager |
-| Veri düzlemi günlüğü ve denetimi| Evet | Hizmet tanılama günlükleri.|
+| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | Azure Monitör Ölçümleri|
+| Kontrol ve yönetim düzlemi günlüğü ve denetimi | Evet | Azure Kaynak Yöneticisi Etkinlik Günlüğü |
+| Veri düzlemi günlüğü ve denetimi| Evet | Hizmet Tanılama Günlükleri.|
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Azure Active Directory, paylaşılan anahtar, paylaşılan erişim belirteci. |
-| Yetkilendirme| Evet | RBAC, POSIX ACL 'Leri ve SAS belirteçleri aracılığıyla yetkilendirme desteği |
+| Kimlik doğrulaması| Evet | Azure Etkin Dizin, Paylaşılan anahtar, Paylaşılan erişim jetonu. |
+| Yetkilendirme| Evet | RBAC, POSIX AKLAR ve SAS Jetonları ile Destek Yetkilendirmesi |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | Azure Resource Manager API 'Leri aracılığıyla kaynak sağlayıcısı sürümlendirmeyi destekleme |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet | Azure Kaynak Yöneticisi API'leri aracılığıyla Kaynak Sağlayıcı sürümüne destek |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

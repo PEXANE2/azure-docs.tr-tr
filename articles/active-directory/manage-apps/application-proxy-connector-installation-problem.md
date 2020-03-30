@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy 'Si aracı bağlayıcısını yükleme sorunu | Microsoft Docs
-description: Uygulama proxy 'Si aracı bağlayıcısını yüklerken karşılaşabileceğiniz sorunları giderme
+title: Uygulama Proxy Aracı Sıtkı 'nın yüklenmesinde sorun | Microsoft Dokümanlar
+description: Uygulama Proxy AracıSı Bağlayıcısı'nı yüklerken karşılaşabileceğiniz sorunları giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,64 +16,64 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049140"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
-Microsoft AAD uygulama proxy Bağlayıcısı, bulut kullanılabilir uç noktadan iç etki alanına bağlantı kurmak için giden bağlantıları kullanan bir iç etki alanı bileşenidir.
+Microsoft AAD Application Proxy Bağlayıcısı, bulut kullanılabilir uç noktadan dahili etki alanına bağlantı kurmak için giden bağlantıları kullanan bir dahili etki alanı bileşenidir.
 
-## <a name="general-problem-areas-with-connector-installation"></a>Bağlayıcı yüklemesiyle ilgili genel sorun alanı
+## <a name="general-problem-areas-with-connector-installation"></a>Bağlayıcı kurulumu ile Genel Sorun Alanları
 
-Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşağıdaki alanlardan biridir:
+Bağlayıcının yüklenmesi başarısız olduğunda, kök neden genellikle aşağıdaki alanlardan biridir:
 
-1.  **Bağlantı** – başarılı bir yükleme işleminin tamamlanabilmesi için yeni bağlayıcının sonraki güven özelliklerini kaydetmesi ve kurması gerekir. Bu, AAD uygulama proxy 'Si bulut hizmetine bağlanarak yapılır.
+1.  **Bağlantı** – başarılı bir yüklemeyi tamamlamak için, yeni bağlayıcının gelecekteki güven özelliklerini kaydetmesi ve kurması gerekir. Bu, AAD Application Proxy bulut hizmetine bağlanarak yapılır.
 
-2.  **Güven kurulumu** – yeni bağlayıcı, otomatik olarak imzalanan bir sertifika oluşturur ve bulut hizmetine kaydeder.
+2.  **Trust Establishment** – yeni bağlayıcı kendi imzalı bir sertifika oluşturur ve bulut hizmetine kaydolur.
 
-3.  **Yöneticinin kimlik doğrulaması** – yükleme sırasında, kullanıcının bağlayıcı yüklemesini tamamlaması için yönetici kimlik bilgilerini sağlaması gerekir.
+3.  **Adminin kimlik doğrulaması** – yükleme sırasında, kullanıcı Bağlayıcı yüklemesini tamamlamak için yönetici kimlik bilgilerini sağlamalıdır.
 
 > [!NOTE]
-> Bağlayıcı yükleme günlükleri,% TEMP% klasöründe bulunabilir ve yükleme hatasına neden olan sorun hakkında ek bilgi sağlanmasına yardımcı olabilir.
+> Bağlayıcı yükleme günlükleri %TEMP% klasöründe bulunabilir ve yükleme hatasına neyin neden olduğu hakkında ek bilgi sağlamaya yardımcı olabilir.
 
-## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Cloud Application Proxy hizmeti ve Microsoft oturum açma sayfasıyla bağlantıyı doğrulama
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Bulut Uygulama Proxy hizmetine ve Microsoft Giriş sayfasına bağlantıyı doğrulama
 
-**Amaç:** Bağlayıcı makinenin AAD uygulama proxy 'Si kayıt uç noktasına ve Microsoft oturum açma sayfasına bağlanabildiğini doğrulayın.
+**Amaç:** Bağlayıcı makinenin AAD Application Proxy kayıt bitiş noktasının yanı sıra Microsoft giriş sayfasına bağlanabildiğinizi doğrulayın.
 
-1.  Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olduğunu doğrulamak için [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya diğer bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.
+1.  Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olduğunu doğrulamak için [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya başka bir bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.
 
-2.  Bu bağlantı noktalarından herhangi biri başarılı olmazsa, güvenlik duvarının veya arka uç proxy 'sinin gerekli etki alanlarına ve bağlantı noktalarına erişimi olduğunu doğrulayın, Şirket [içi ortamınızı hazırlayın](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
+2.  Bu bağlantı noktalarından herhangi biri başarılı olmazsa, Güvenlik Duvarı veya arka uç proxy'sinin gerekli etki alanları ve bağlantı noktalarına erişimi olduğunu doğrulayın, [şirket içi ortamınızı hazırlayın.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)
 
-3.  Bir tarayıcı (ayrı bir sekme) açın ve şu Web sayfasına gidin: <https://login.microsoftonline.com>, bu sayfada oturum açabildiğinizden emin olun.
+3.  Bir tarayıcı açın (ayrı sekme) ve `https://login.microsoftonline.com`aşağıdaki web sayfasına gidin: , bu sayfaya giriş yapabileceğinizden emin olun.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Uygulama proxy 'Si güven sertifikası için makine ve arka uç bileşenleri desteğini doğrulama
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Uygulama Proxy güven sertifikası için Makine ve arka uç bileşenleri desteği doğrulayın
 
-**Amaç:** Bağlayıcı makinesinin, arka uç proxy 'sinin ve güvenlik duvarının, daha sonra güven için bağlayıcı tarafından oluşturulan sertifikayı destekleyebildiğini doğrulayın.
+**Amaç:** Konektör makinesi, arka uç proxy ve güvenlik duvarının bağlayıcı tarafından gelecekteki güven için oluşturulan sertifikayı destekleyebilir doğrulayın.
 
 >[!NOTE]
->Bağlayıcı, TLS 1.2 tarafından desteklenen bir SHA512 olur sertifikası oluşturmaya çalışır. Makine veya arka uç güvenlik duvarı ve proxy TLS 1.2 'yi desteklemiyorsa, yükleme başarısız olur.
+>Konektör, TLS1.2 tarafından desteklenen bir SHA512 sertifikası oluşturmaya çalışır. Makine veya arka uç güvenlik duvarı ve proxy TLS1.2 desteklemiyorsa, yükleme başarısız olur.
 >
 >
 
-**Sorunu çözmek için:**
+**Sorunu gidermek için:**
 
-1.  Makinenin TLS 1.2 'yi desteklediğini doğrulayın – 2012 R2 'den sonraki tüm Windows sürümleri TLS 1,2 ' i desteklemelidir. Bağlayıcı makineniz 2012 R2 veya daha önceki bir sürümden yüklüyse, şu KBs 'lerin makinede yüklü olduğundan emin olun: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Makinenin TLS1.2'yi desteklediğini doğrulayın – 2012 R2'den sonraki tüm Windows sürümleri TLS 1.2'yi desteklemelidir. Konektör makineniz 2012 R2 veya önceki bir sürümüne aitse, makineye aşağıdaki KB'lerin takıldıklarından emin olun:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
-2.  Ağ yöneticinize başvurun ve arka uç proxy 'sinin ve güvenlik duvarının giden trafik için SHA512 olur engellemediğinden emin olun.
+2.  Ağ yöneticinize başvurun ve arka uç proxy'sinin ve güvenlik duvarının giden trafik için SHA512'yi engellemediğini doğrulamak isteyin.
 
-## <a name="verify-admin-is-used-to-install-the-connector"></a>Bağlayıcıyı yüklemek için yöneticinin kullanıldığını doğrulayın
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Yöneticinin konektörü yüklemek için kullanıldığını doğrulayın
 
-**Amaç:** Bağlayıcıyı yüklemeye çalışan kullanıcının doğru kimlik bilgilerine sahip bir yönetici olduğunu doğrulayın. Şu anda, yüklemenin başarılı olması için kullanıcının en az bir uygulama Yöneticisi olması gerekir.
+**Amaç:** Bağlayıcıyı yüklemeye çalışan kullanıcının doğru kimlik bilgilerine sahip bir yönetici olduğunu doğrulayın. Şu anda, yüklemenin başarılı olabilmesi için kullanıcının en az bir uygulama yöneticisi olması gerekir.
 
 **Kimlik bilgilerinin doğru olduğunu doğrulamak için:**
 
-<https://login.microsoftonline.com> bağlanın ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory** -&gt; **kullanıcılar ve gruplar** -**tüm kullanıcıları**&gt; giderek Kullanıcı rolünü kontrol edebilirsiniz. 
+`https://login.microsoftonline.com` Bağlanın ve aynı kimlik bilgilerini kullanın. Girişin başarılı olduğundan emin olun. **Azure Etkin Dizin**  - &gt; Kullanıcıları ve **Tüm Kullanıcıları** **Grupla'ya**  - &gt; giderek kullanıcı rolünü kontrol edebilirsiniz. 
 
-Kullanıcı hesabınızı ve ardından ortaya çıkan menüdeki "Dizin rolü" nü seçin. Seçili rolün "uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlarla ilgili sayfaların hiçbirine erişemiyorsanız, gerekli rolünüzün olması gerekmez.
+Kullanıcı hesabınızı seçin, ardından ortaya çıkan menüde "Dizin Rolü"nü seçin. Seçili rolün "Uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlar daki sayfaların hiçbirine erişemiyorsanız, gerekli role sahip olmazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Proxy bağlayıcılarını anlama](application-proxy-connectors.md)

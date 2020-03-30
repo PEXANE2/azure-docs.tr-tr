@@ -1,9 +1,9 @@
 ---
-title: Oracle Linux VHD oluşturma ve karşıya yükleme
+title: Oracle Linux VHD oluşturma ve yükleme
 description: Oracle Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
-ms.author: mimckitt
-ms.openlocfilehash: 240333e55f23f2536d3cf14d2bb817e5776c8139
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: 784d6c01125a9fd6ec291f32e989e4b22e7607af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066571"
 ---
-# <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure için Oracle Linux bir sanal makine hazırlama
+# <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure için bir Oracle Linux sanal makine hazırlayın
 
-Bu makalede bir Oracle Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
+Bu makalede, zaten sanal bir sabit diske bir Oracle Linux işletim sistemi yüklediğinizvarsayar. .vhd dosyaları oluşturmak için birden çok araç vardır, örneğin Hyper-V gibi bir sanallaştırma çözümü. Talimatlar için [hyper-v rolünü yükleyin ve Sanal Makineyi Yapılandırın'](https://technet.microsoft.com/library/hh846766.aspx)a bakın.
 
 ## <a name="oracle-linux-installation-notes"></a>Oracle Linux yükleme notları
-* Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
-* Hyper-V ve Azure desteği, uygun olmayan kurumsal çekirdek (UEK) veya Red Hat uyumlu çekirdekle Oracle Linux.
-* Oracle 'ın UEK2, gerekli sürücüleri içermediğinden Hyper-V ve Azure üzerinde desteklenmez.
-* VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz.
-* Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , veri disklerinde kullanılabilir.
-* 2\.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Oracle Linux 6,6 ve üzeri sürümlerde düzeltildi
-* İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
-* Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
-* `Addons` deposunun etkinleştirildiğinden emin olun. `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) dosyasını düzenleyin ve satır `enabled=0` bu dosyada **[`enabled=1`]** veya **[ol6_addons]** altında ol7_addons olacak şekilde değiştirin.
+* Linux'u Azure'a hazırlama hakkında daha fazla ipucu için lütfen [Genel Linux Yükleme Notları'na](create-upload-generic.md#general-linux-installation-notes) bakın.
+* Hyper-V ve Azure, Oracle Linux'u Kırılmaz Kurumsal Çekirdek (UEK) veya Red Hat Uyumlu Çekirdek ile destekler.
+* Oracle'ın UEK2'si Hyper-V ve Azure'da desteklenmez, çünkü gerekli sürücüleri içermez.
+* VHDX biçimi Azure'da desteklenmez, yalnızca **Sabit VHD'de**dir.  Hyper-V Manager veya convert-vhd cmdlet kullanarak diski VHD formatına dönüştürebilirsiniz.
+* Linux sistemini yüklerken LVM yerine standart bölümler kullanmanız önerilir (genellikle birçok kurulum için varsayılan). Bu, özellikle bir işletim sistemi diskinin sorun giderme için başka bir VM'ye eklenmesi gerekiyorsa, klonlanmış VM'lerle LVM adı çakışmalarını önler. Tercih edilirse veri disklerinde [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kullanılabilir.
+* 2.6.37'den önceki Linux çekirdek sürümleri, Hyper-V'de daha büyük VM boyutlarına sahip NUMA'yı desteklemez. Bu sorun öncelikle upstream Red Hat 2.6.32 çekirdeğini kullanarak eski dağılımları etkiler ve Oracle Linux 6.6 ve daha sonra
+* OS diskinde bir takas bölümü yapılandırmayın. Linux aracısı geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bu konuda daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
+* Azure'daki tüm VHD'lerin 1MB'ye hizalanmış bir sanal boyutu olmalıdır. Ham diskten VHD'ye dönüştürürken, dönüştürmeden önce ham disk boyutunun 1MB'nin katı olduğundan emin olmalısınız. Daha fazla bilgi için [Linux Yükleme Notları'na](create-upload-generic.md#general-linux-installation-notes) bakın.
+* Deponun `Addons` etkin olduğundan emin olun. `/etc/yum.repos.d/public-yum-ol6.repo`Dosyayı (Oracle Linux 6) `/etc/yum.repos.d/public-yum-ol7.repo`veya (Oracle Linux 7) düzenle ve `enabled=0` satırı bu dosyadaki **[ol6_addons]** veya `enabled=1` **[ol7_addons]** altında değiştirin.
 
-## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 ve üzeri
-Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yapılandırma adımlarını tamamlamalısınız.
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6.4 ve sonrası
+Sanal makinenin Azure'da çalışması için işletim sisteminde belirli yapılandırma adımlarını tamamlamanız gerekir.
 
-1. Hyper-V Yöneticisi 'nin orta bölmesinde, sanal makineyi seçin.
-2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
-3. Aşağıdaki komutu çalıştırarak NetworkManager 'ı kaldırın:
+1. Hyper-V Manager'ın orta bölmesinde sanal makineyi seçin.
+2. Sanal makinenin penceresini açmak için **Bağlan'ı** tıklatın.
+3. Aşağıdaki komutu çalıştırarak NetworkManager'ı kaldırın:
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Note:** Paket zaten yüklü değilse, bu komut bir hata iletisiyle başarısız olur. Bu beklenen bir durumdur.
-4. Aşağıdaki metni içeren `/etc/sysconfig/` dizininde **ağ** adlı bir dosya oluşturun:
+    **Not:** Paket zaten yüklenmediyse, bu komut bir hata iletisiyle başarısız olur. Bu beklenen bir durumdur.
+4. Dizinde `/etc/sysconfig/` aşağıdaki metni içeren **ağ** adlı bir dosya oluşturun:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Aşağıdaki metni içeren `/etc/sysconfig/network-scripts/` dizininde **ifcfg-eth0** adlı bir dosya oluşturun:
+5. Dizinde `/etc/sysconfig/network-scripts/` aşağıdaki metni içeren **ifcfg-eth0** adlı bir dosya oluşturun:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -59,71 +59,71 @@ Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yap
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-6. Ethernet arabirimleri için statik kurallar oluşturmaktan kaçınmak için uıdev kurallarını değiştirin. Bu kurallar Microsoft Azure veya Hyper-V ' d a bir sanal makine kopyalanırken sorunlara neden olabilir:
+6. Ethernet arabirimi(ler) için statik kurallar oluşturmamak için udev kurallarını değiştirin. Bu kurallar, Microsoft Azure veya Hyper-V'de sanal bir makineklonlarken sorunlara neden olabilir:
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-7. Aşağıdaki komutu çalıştırarak ağ hizmetinin önyükleme zamanında başlamasını sağlayın:
+7. Ağ hizmetinin önyükleme zamanında aşağıdaki komutu çalıştırarak başlayacağından emin olun:
    
         # chkconfig network on
-8. Aşağıdaki komutu çalıştırarak Python-pyasn1 ' i yüklemelisiniz:
+8. Python-pyasn1'i aşağıdaki komutu çalıştırarak yükleyin:
    
         # sudo yum install python-pyasn1
-9. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir metin düzenleyicisinde "/boot/grub/menu.lst" öğesini açın ve çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+9. Grub yapılandırmanızdaki çekirdek önyükleme satırını Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu bir metin düzenleyicisinde "/boot/grub/menu.lst" olarak açın ve çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir.
+   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarında Azure desteğine yardımcı olabilir.
    
-   Yukarıdaki ' a ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
+   Yukarıdakilere ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
    
         rhgb quiet crashkernel=auto
    
-   Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.
+   Grafiksel ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istediğimiz bir bulut ortamında kullanışlı değildir.
    
-   `crashkernel` seçeneği istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltarak, daha küçük VM boyutları üzerinde sorunlu olabilecek bir şekilde azalyacağını unutmayın.
-10. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
-11. Aşağıdaki komutu çalıştırarak Azure Linux aracısını yükler. En son sürüm 2.0.15 ' dir.
+   İstenirse `crashkernel` seçenek yapılandırılmış olarak bırakılabilir, ancak bu parametrenin VM'deki kullanılabilir bellek miktarını 128MB veya daha fazla azaltacağını ve bunun da küçük VM boyutlarında sorunlu olabileceğini unutmayın.
+10. SSH sunucusunun yükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılan dır.
+11. Aşağıdaki komutu çalıştırarak Azure Linux Aracısını yükleyin. En son sürümü 2.0.15 olduğunu.
     
         # sudo yum install WALinuxAgent
     
-    Walınuxagent paketinin yüklenmesinde, ağ yöneticisi ve NetworkManager-GNOME paketlerini adım 2 ' de açıklandığı gibi kaldırılmayan bir şekilde kaldıracağına dikkat edin.
+    WALinuxAgent paketinin yüklenmesi, adım 2'de açıklandığı gibi zaten kaldırılmadıysa NetworkManager ve NetworkManager-gnome paketlerini kaldıracaktır.
 12. İşletim sistemi diskinde takas alanı oluşturmayın.
     
-    Azure Linux Aracısı, Azure 'da sağlamaktan sonra sanal makineye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırabilir. Yerel kaynak diskinin *geçici* bir disk olduğunu ve VM 'nin sağlaması geri edildiğinde boşaltılıp boşaltıyacağını unutmayın. Azure Linux aracısını yükledikten sonra (önceki adıma bakın),/etc/waagent.exe için aşağıdaki parametreleri uygun şekilde değiştirin:
+    Azure Linux Aracısı, Azure'da sağlama yaptıktan sonra VM'ye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırabilir. Yerel kaynak diskinin *geçici* bir disk olduğunu ve VM deprovisioned olduğunda boşalınabileceğini unutmayın. Azure Linux Aracısını yükledikten sonra (önceki adıma bakın), /etc/waagent.conf'ta aşağıdaki parametreleri uygun şekilde değiştirin:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-13. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
+13. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-14. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+14. Hyper-V Manager'da **Eylem -> Kapat'ı** tıklatın. Linux VHD'niz artık Azure'a yüklenmeye hazır.
 
 ---
-## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 ve üzeri
-**Oracle Linux 7 ' deki değişiklikler**
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7.0 ve sonrası
+**Oracle Linux 7'deki değişiklikler**
 
-Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya benzer, ancak dikkat edilmesi gereken bazı önemli farklılıklar vardır:
+Azure için Oracle Linux 7 sanal makine hazırlamak Oracle Linux 6'ya çok benzer, ancak kayda değer birkaç önemli fark vardır:
 
-* Azure, uygun olmayan kurumsal çekirdek (UEK) veya Red Hat uyumlu çekirdekle Oracle Linux destekler. UEK ile Oracle Linux önerilir.
-* NetworkManager paketi artık Azure Linux aracısıyla çakışmayacaktır. Bu paket varsayılan olarak yüklenir ve kaldırılmadığını öneririz.
-* GRUB2 artık varsayılan önyükleme yükleyicisi olarak kullanıldığından, çekirdek parametrelerini düzenlemeyle ilgili yordam değişmiştir (aşağıya bakın).
-* XFS artık varsayılan dosya sistemidir. İsterseniz ext4 dosya sistemi hala kullanılabilir.
+* Azure, Oracle Linux'u Kırılmaz Kurumsal Çekirdek (UEK) veya Red Hat Uyumlu Çekirdek ile destekler. UEK ile Oracle Linux önerilir.
+* NetworkManager paketi artık Azure Linux aracısıyla çakışmıyor. Bu paket varsayılan olarak yüklenir ve kaldırılmadığını öneririz.
+* GRUB2 artık varsayılan bootloader olarak kullanılır, bu nedenle çekirdek parametrelerini düzenleme yordamı değişti (aşağıya bakın).
+* XFS artık varsayılan dosya sistemidir. İstenirse ext4 dosya sistemi kullanılabilir.
 
 **Yapılandırma adımları**
 
-1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
-2. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
-3. Aşağıdaki metni içeren `/etc/sysconfig/` dizininde **ağ** adlı bir dosya oluşturun:
+1. Hyper-V Manager'da sanal makineyi seçin.
+2. Sanal makine için bir konsol penceresi açmak için **Bağlan'ı** tıklatın.
+3. Dizinde `/etc/sysconfig/` aşağıdaki metni içeren **ağ** adlı bir dosya oluşturun:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Aşağıdaki metni içeren `/etc/sysconfig/network-scripts/` dizininde **ifcfg-eth0** adlı bir dosya oluşturun:
+4. Dizinde `/etc/sysconfig/network-scripts/` aşağıdaki metni içeren **ifcfg-eth0** adlı bir dosya oluşturun:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -132,54 +132,54 @@ Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya ben
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-5. Ethernet arabirimleri için statik kurallar oluşturmaktan kaçınmak için uıdev kurallarını değiştirin. Bu kurallar Microsoft Azure veya Hyper-V ' d a bir sanal makine kopyalanırken sorunlara neden olabilir:
+5. Ethernet arabirimi(ler) için statik kurallar oluşturmamak için udev kurallarını değiştirin. Bu kurallar, Microsoft Azure veya Hyper-V'de sanal bir makineklonlarken sorunlara neden olabilir:
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-6. Aşağıdaki komutu çalıştırarak ağ hizmetinin önyükleme zamanında başlamasını sağlayın:
+6. Ağ hizmetinin önyükleme zamanında aşağıdaki komutu çalıştırarak başlayacağından emin olun:
    
         # sudo chkconfig network on
-7. Aşağıdaki komutu çalıştırarak Python-pyasn1 paketini yüklemelisiniz:
+7. Python-pyasn1 paketini aşağıdaki komutu çalıştırarak yükleyin:
    
         # sudo yum install python-pyasn1
-8. Geçerli yum meta verilerini temizlemek ve tüm güncelleştirmeleri yüklemek için aşağıdaki komutu çalıştırın:
+8. Geçerli yum meta verileri temizlemek ve güncellemeleri yüklemek için aşağıdaki komutu çalıştırın:
    
         # sudo yum clean all
         # sudo yum -y update
-9. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir metin düzenleyicisinde "/etc/default/grub" dosyasını açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin, örneğin:
+9. Grub yapılandırmanızdaki çekirdek önyükleme satırını Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu açık "/etc/default/grub" bir metin düzenleyicisi `GRUB_CMDLINE_LINUX` yapmak ve parametre, örneğin de) edin:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Ayrıca, Oracle Linux 7 ' deki NIC 'ler için adlandırma kurallarını, uygun olmayan kurumsal çekirdekle devre dışı bırakır. Yukarıdaki ' a ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
+   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarında Azure desteğine yardımcı olabilir. Ayrıca, Unbreakable Enterprise Kernel ile Oracle Linux 7'deki NIC'lerin adlandırma kurallarını da kapatır. Yukarıdakilere ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
    
        rhgb quiet crashkernel=auto
    
-   Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.
+   Grafiksel ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istediğimiz bir bulut ortamında kullanışlı değildir.
    
-   `crashkernel` seçeneği istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltarak, daha küçük VM boyutları üzerinde sorunlu olabilecek bir şekilde azalyacağını unutmayın.
-10. Yukarıdaki "/etc/default/grub" düzenlemesini tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+   İstenirse `crashkernel` seçenek yapılandırılmış olarak bırakılabilir, ancak bu parametrenin VM'deki kullanılabilir bellek miktarını 128MB veya daha fazla azaltacağını ve bunun da küçük VM boyutlarında sorunlu olabileceğini unutmayın.
+10. Yukarıdaki başına "/etc/default/grub" düzenlemesini yaptıktan sonra, grub yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-11. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
-12. Aşağıdaki komutu çalıştırarak Azure Linux aracısını yükler:
+11. SSH sunucusunun yükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılan dır.
+12. Aşağıdaki komutu çalıştırarak Azure Linux Aracısını yükleyin:
     
         # sudo yum install WALinuxAgent
         # sudo systemctl enable waagent
 13. İşletim sistemi diskinde takas alanı oluşturmayın.
     
-    Azure Linux Aracısı, Azure 'da sağlamaktan sonra sanal makineye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırabilir. Yerel kaynak diskinin *geçici* bir disk olduğunu ve VM 'nin sağlaması geri edildiğinde boşaltılıp boşaltıyacağını unutmayın. Azure Linux aracısını yükledikten sonra (önceki adıma bakın),/etc/waagent.exe için aşağıdaki parametreleri uygun şekilde değiştirin:
+    Azure Linux Aracısı, Azure'da sağlama yaptıktan sonra VM'ye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırabilir. Yerel kaynak diskinin *geçici* bir disk olduğunu ve VM deprovisioned olduğunda boşalınabileceğini unutmayın. Azure Linux Aracısını yükledikten sonra (önceki adıma bakın), /etc/waagent.conf'ta aşağıdaki parametreleri uygun şekilde değiştirin:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-14. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
+14. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-15. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+15. Hyper-V Manager'da **Eylem -> Kapat'ı** tıklatın. Linux VHD'niz artık Azure'a yüklenmeye hazır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Azure 'da yeni sanal makineler oluşturmak için Oracle Linux. vhd 'nizi kullanmaya hazırsınız. . Vhd dosyasını ilk kez Azure 'a yüklüyorsanız, bkz. [özel bir diskten LINUX VM oluşturma](upload-vhd.md#option-1-upload-a-vhd).
+Azure'da yeni sanal makineler oluşturmak için Oracle Linux .vhd'inizi kullanmaya hazırsınız. .vhd dosyasını Azure'a ilk kez bu kez yüklediğinizde, [bkz.](upload-vhd.md#option-1-upload-a-vhd)
 

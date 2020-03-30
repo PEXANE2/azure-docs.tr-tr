@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makineler için birden çok IP adresi-Portal | Microsoft Docs
-description: Azure portal kullanarak bir sanal makineye birden çok IP adresi atamayı öğrenin | Kaynak Yöneticisi.
+title: Azure sanal makineleri için birden fazla IP adresi - Portal | Microsoft Dokümanlar
+description: Azure portalını kullanarak sanal bir makineye birden çok IP adresi atamayı öğrenin | Kaynak Yöneticisi.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,95 +15,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a5bb9bb9c584aef8ac79b3c275d01d3c498da843
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244998"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060626"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portal kullanarak sanal makinelere birden çok IP adresi atama
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portalını kullanarak sanal makinelere birden çok IP adresi atama
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> Bu makalede, Azure portal kullanılarak Azure Resource Manager dağıtım modeli aracılığıyla bir sanal makinenin (VM) nasıl oluşturulacağı açıklanmaktadır. Klasik dağıtım modeliyle oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlama](../resource-manager-deployment-model.md) makalesini okuyun.
+> Bu makalede, Azure portalını kullanarak Azure Kaynak Yöneticisi dağıtım modeli aracılığıyla sanal makine (VM) nasıl oluşturulacak açıklanmaktadır. Klasik dağıtım modeli aracılığıyla oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlayın](../resource-manager-deployment-model.md) makalesini okuyun.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Birden çok IP adresi olan bir VM oluşturma
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Birden çok IP adresi ile VM oluşturma
 
-Birden çok IP adresi veya statik bir özel IP adresi olan bir VM oluşturmak istiyorsanız, PowerShell veya Azure CLı kullanarak oluşturmanız gerekir. Nasıl yapılacağını öğrenmek için, bu makalenin en üstündeki PowerShell veya CLı seçeneklerine tıklayın. Tek bir dinamik özel IP adresi ve (isteğe bağlı olarak) tek bir genel IP adresi olan bir VM oluşturabilirsiniz. [WINDOWS VM oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md) veya [Linux VM oluşturma](../virtual-machines/linux/quick-create-portal.md) makalelerinde bulunan adımları izleyerek portalı kullanın. VM 'yi oluşturduktan sonra, bu makalenin [VM 'ye IP adresleri ekleme](#add) bölümündeki adımları IZLEYEREK, IP adresi türünü dinamik iken statik olarak değiştirebilir ve portalı kullanarak ek IP adresleri ekleyebilirsiniz.
+Birden çok IP adresi veya statik özel IP adresi içeren bir VM oluşturmak istiyorsanız, bu adresi PowerShell veya Azure CLI kullanarak oluşturmanız gerekir. Nasıl yapılacağını öğrenmek için, bu makalenin üst kısmındaki PowerShell veya CLI seçeneklerini tıklatın. Tek bir dinamik özel IP adresine ve (isteğe bağlı olarak) tek bir genel IP adresine sahip bir VM oluşturabilirsiniz. [Windows VM Oluştur](../virtual-machines/virtual-machines-windows-hero-tutorial.md) veya Linux [VM](../virtual-machines/linux/quick-create-portal.md) makaleleri oluşturma adımlarını izleyerek portalı kullanın. VM'yi oluşturduktan sonra, IP adresi türünü dinamikten statike değiştirebilir ve ip adresleri ekle adımlarını bu makalenin [VM bölümüne](#add) izleyerek portalı kullanarak ek IP adresleri ekleyebilirsiniz.
 
-## <a name="add"></a>VM 'ye IP adresleri ekleme
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM'ye IP adresleri ekleme
 
-Aşağıdaki adımları tamamlayarak bir Azure ağ arabirimine özel ve genel IP adresleri ekleyebilirsiniz. Aşağıdaki bölümlerde yer alan örneklerde, [senaryosunda](#scenario)AÇıKLANAN üç IP yapılandırmasına sahıp bir VM zaten var, ancak bu gerekli değildir.
+Ardından gelen adımları tamamlayarak Azure ağ arabirimine özel ve genel IP adresleri ekleyebilirsiniz. Aşağıdaki bölümlerdeki örnekler, [senaryoda](#scenario)açıklanan üç IP yapılandırması ile zaten bir VM'niz olduğunu varsayar, ancak gerekli değildir.
 
-### <a name="coreadd"></a>Temel adımlar
+### <a name="core-steps"></a><a name="coreadd"></a>Temel adımlar
 
-1. https://portal.azure.com Azure portal gidin ve gerekirse oturum açın.
-2. Portalda, **daha fazla hizmet** ' e tıklayın > filtre kutusuna *sanal makineler* yazın ve ardından **sanal makineler**' e tıklayın.
-3. **Sanal makineler** BÖLMESINDE, IP adreslerini eklemek istediğiniz VM 'ye tıklayın. Görüntülenen sanal makine bölmesinde **ağ arabirimleri** ' ne tıklayın ve ardından IP adreslerini eklemek istediğiniz ağ arabirimini seçin. Aşağıdaki resimde gösterilen örnekte, *Myvm* adlı VM 'Den *MYNıC* adlı NIC seçilidir:
+1. Azure portalına göz https://portal.azure.com atın ve gerekirse bu portalda oturum açın.
+2. Portalda, filtre kutusunda *sanal makineleri* > **diğer hizmetleri** tıklatın ve ardından **Sanal makineler'i**tıklatın.
+3. Sanal **makineler** bölmesinde, IP adresleri eklemek istediğiniz VM'yi tıklatın. **Ağ** Sekmesine gidin. Sayfadaki **Ağ arabirimine** tıklayın. Aşağıdaki resimde gösterildiği gibi: 
 
-    ![Ağ arabirimi](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. Seçtiğiniz NIC için görüntülenen bölmede, **IP yapılandırması**' na tıklayın.
+    ![VM’ye genel IP adresi ekleme](./media/virtual-network-multiple-ip-addresses-portal/figure200319.png)
+4. Ağ **arabirimi** bölmesinde **IP yapılandırmalarını**tıklatın.
 
-Eklemek istediğiniz IP adresi türüne bağlı olarak, aşağıdaki bölümlerden birindeki adımları tamamlayın.
+5. Seçtiğiniz NIC için görünen bölmede **IP yapılandırmalarını**tıklatın. **Eklemek**istediğiniz IP adresi türüne bağlı olarak, takip eden bölümlerden birinde adımları tamamla'yı tıklatın ve ardından **Tamam'ı**tıklatın. 
 
-### <a name="add-a-private-ip-address"></a>**Özel IP adresi ekle**
+### <a name="add-a-private-ip-address"></a>**Özel IP adresi ekleme**
 
-Yeni bir özel IP adresi eklemek için aşağıdaki adımları izleyin:
+Yeni bir özel IP adresi eklemek için aşağıdaki adımları tamamlayın:
 
-1. Bu makalenin [temel adımlar](#coreadd) bölümündeki adımları uygulayın.
-2. **Ekle**'ye tıklayın. Görüntülenen **IP Yapılandırması Ekle** bölmesinde, *kısmına 10.0.0.7* Ile bir *statik* özel IP adresi olarak *Ipconfig-4* adlı bir IP yapılandırması oluşturun ve ardından **Tamam**' a tıklayın.
+1. Bu makalenin [Temel adımlar](#coreadd) bölümündeki adımları tamamlayın.
+2. **Ekle**’ye tıklayın. Görünen **IP ekle yapılandırma** bölmesinde, *Statik* özel IP adresi olarak *10.0.0.7* içeren *IPConfig-4* adında bir IP yapılandırması oluşturun ve **ardından Tamam'ı**tıklatın.
 
     > [!NOTE]
-    > Statik bir IP adresi eklerken, NIC 'nin bağlı olduğu alt ağda kullanılmamış, geçerli bir adres belirtmeniz gerekir. Seçtiğiniz adres yoksa, Portal IP adresi için bir X görüntüler ve farklı bir tane seçmeniz gerekir.
+    > Statik bir IP adresi eklerken, NIC'nin bağlı olduğu alt ağüzerinde kullanılmayan, geçerli bir adres belirtmeniz gerekir. Seçtiğiniz adres kullanılamıyorsa, portal IP adresi için bir X görüntüler ve farklı bir adres seçmeniz gerekir.
 
-3. Tamam ' a tıkladığınızda, bölmesi kapanır ve yeni IP yapılandırmasının listelendiğini görürsünüz. **IP Yapılandırması Ekle** bölmesini kapatmak için **Tamam** ' ı tıklatın.
-4. Ek IP yapılandırması eklemek için **Ekle** ' ye TıKLAYABILIR veya IP adresleri ekleme işleminin tamamlanabilmesi için tüm açık kanları kapatabilirsiniz.
-5. Bu makalenin [BIR VM işletim SISTEMINE IP adresleri ekleme](#os-config) bölümündeki ADıMLARı tamamlayarak VM işletim SISTEMINE özel IP adreslerini ekleyin.
+3. Tamam'ı tıklattığınızda bölme kapanır ve listelenen yeni IP yapılandırmasını görürsünüz. **IP ekle yapılandırma** bölmesini kapatmak için **Tamam'ı** tıklatın.
+4. Ek IP yapılandırmaları eklemek için **Ekle'yi** tıklatabilir veya IP adresleri eklemeyi bitirmek için tüm açık bıçakları kapatabilirsiniz.
+5. Bu makalenin Bir VM işletim sistemi bölümüne IP [ekle adreslerindeki](#os-config) adımları tamamlayarak özel IP adreslerini VM işletim sistemine ekleyin.
 
-### <a name="add-a-public-ip-address"></a>Genel IP adresi ekleme
+### <a name="add-a-public-ip-address"></a>Herkese açık bir IP adresi ekleme
 
-Genel IP adresi kaynağı yeni bir IP yapılandırmasına veya var olan bir IP yapılandırmasına ilişkilendirerek genel bir IP adresi eklenir.
+Ortak BIR IP adresi, ortak bir IP adresi kaynağını yeni bir IP yapılandırmasına veya varolan bir IP yapılandırmasına ilişkilendirerek eklenir.
 
 > [!NOTE]
-> Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
+> Genel IP adreslerinin nominal ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Abonelikte kullanılabilecek genel IP adreslerinin sayısının bir sınırı vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
 > 
 
-### <a name="create-public-ip"></a>Genel IP adresi kaynağı oluşturma
+### <a name="create-a-public-ip-address-resource"></a><a name="create-public-ip"></a>Ortak IP adresi kaynağı oluşturma
 
-Genel IP adresi, genel IP adresi kaynağı için bir ayardır. IP yapılandırması ile ilişkilendirmek istediğiniz bir IP yapılandırması ile ilişkili olmayan bir genel IP adresi kaynağınız varsa, aşağıdaki adımları atlayın ve gerekli olan bölümlerden birindeki adımları tamamlayın. Kullanılabilir bir genel IP adresi kaynağınız yoksa, bir tane oluşturmak için aşağıdaki adımları izleyin:
+Ortak IP adresi, ortak bir IP adresi kaynağının ayarlarından biridir. Şu anda bir IP yapılandırmasına ilişkilendirmek istediğiniz bir IP yapılandırması ile ilişkili olmayan bir genel IP adresi kaynağınız varsa, aşağıdaki adımları atlayın ve istediğiniz gibi aşağıdaki bölümlerden birinde adımları tamamlayın. Kullanılabilir bir genel IP adresi kaynağınız yoksa, oluşturmak için aşağıdaki adımları tamamlayın:
 
-1. https://portal.azure.com Azure portal gidin ve gerekirse oturum açın.
-3. Portalda, **ağ** > **genel IP adresi** > **kaynak oluştur ' a** tıklayın.
-4. Görüntülenen **genel IP adresi oluştur** bölmesinde, bir **ad**girin, bir **IP adresi atama** türü, **abonelik**, **kaynak grubu**ve **konum**seçin ve ardından aşağıdaki resimde gösterildiği gibi **Oluştur**' a tıklayın:
+1. Azure portalına göz https://portal.azure.com atın ve gerekirse bu portalda oturum açın.
+3. Portalda, kaynak > **Oluşturma** > Ortak IP adresi **oluşturun'u**tıklatın.**Public IP address**
+4. Görünen **ortak IP adresi oluştur** bölmesinde, **bir Ad**girin, bir IP adresi **atama** türü, **Abonelik,** **Kaynak grubu**ve **Konum**seçin, ardından aşağıdaki resimde gösterildiği gibi **Oluştur'u**tıklatın:
 
-    ![Genel IP adresi kaynağı oluşturma](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
+    ![Ortak IP adresi kaynağı oluşturma](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Genel IP adresi kaynağını bir IP yapılandırmasıyla ilişkilendirmek için aşağıdaki bölümlerden birindeki adımları tamamlayın.
+5. Ortak IP adresi kaynağını bir IP yapılandırmasına ilişkilendirmek için izleyen bölümlerden birinde adımları tamamlayın.
 
-#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Genel IP adresi kaynağını yeni bir IP yapılandırmasıyla ilişkilendir
+#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Ortak IP adresi kaynağını yeni bir IP yapılandırması ile ilişkilendirme
 
-1. Bu makalenin [temel adımlar](#coreadd) bölümündeki adımları uygulayın.
-2. **Ekle**'ye tıklayın. Görüntülenen **IP Yapılandırması Ekle** bölmesinde *Ipconfig-4*adlı bir IP yapılandırması oluşturun. **Genel IP adresini** etkinleştirin ve görüntülenen **ortak IP adresini seçin** bölmesinden mevcut, kullanılabilir bir genel IP adresi kaynağı seçin.
+1. Bu makalenin [Temel adımlar](#coreadd) bölümündeki adımları tamamlayın.
+2. **Ekle**’ye tıklayın. Görünen **IP ekle yapılandırma** bölmesinde *IPConfig-4*adında bir IP yapılandırması oluşturun. Genel **IP adresini** etkinleştirin ve görünen genel IP **adresi seç** bölmesinden varolan, kullanılabilir bir genel IP adresi kaynağını seçin.
 
-    Genel IP adresi kaynağını seçtikten sonra, **Tamam** ' a tıklayın ve bölmesi kapanır. Mevcut bir genel IP adresiniz yoksa, bu makalenin [genel IP adresi kaynağı oluşturma](#create-public-ip) bölümündeki adımları tamamlayarak bir tane oluşturabilirsiniz. 
+    Genel IP adresi kaynağını seçtikten sonra **Tamam'ı** tıklatın ve bölme kapanır. Varolan bir genel IP adresiniz yoksa, bu makalenin [genel IP adresi kaynak](#create-public-ip) oluşturma bölümündeki adımları tamamlayarak bir tane oluşturabilirsiniz. 
 
-3. Yeni IP yapılandırmasını gözden geçirin. Özel bir IP adresi açıkça atanmamış olsa da, tüm IP yapılandırmalarının özel bir IP adresi olması gerektiğinden, IP yapılandırmasına otomatik olarak bir tane atanır.
-4. Ek IP yapılandırması eklemek için **Ekle** ' ye TıKLAYABILIR veya IP adresleri ekleme işleminin tamamlanabilmesi için tüm açık kanları kapatabilirsiniz.
-5. Bu makalenin [BIR VM işletim SISTEMINE IP adresleri Ekle](#os-config) bölümünde işletim sisteminizin ADıMLARıNı tamamlayarak VM işletim SISTEMINE özel IP adresini ekleyin. Genel IP adresini işletim sistemine eklemeyin.
+3. Yeni IP yapılandırmasını gözden geçirin. Özel bir IP adresi açıkça atanmamış olsa da, tüm IP yapılandırmalarının özel bir IP adresi olması gerektiğinden, bir tanesi otomatik olarak IP yapılandırmasına atanır.
+4. Ek IP yapılandırmaları eklemek için **Ekle'yi** tıklatabilir veya IP adresleri eklemeyi bitirmek için tüm açık bıçakları kapatabilirsiniz.
+5. Bu makalenin Bir VM işletim sistemi bölümüne IP adresleri ekle işletim sisteminizin adımlarını tamamlayarak Özel IP adresini [VM işletim sistemine](#os-config) ekleyin. İşletim sistemine genel IP adresini eklemeyin.
 
-#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Genel IP adresi kaynağını mevcut bir IP yapılandırmasıyla ilişkilendir
+#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Ortak IP adresi kaynağını varolan bir IP yapılandırması ile ilişkilendirme
 
-1. Bu makalenin [temel adımlar](#coreadd) bölümündeki adımları uygulayın.
-2. Genel IP adresi kaynağını eklemek istediğiniz IP yapılandırmasına tıklayın.
-3. Görüntülenen IPConfig bölmesinde **IP adresi**' ne tıklayın.
-4. Görüntülenen **ortak IP adresi seçin** bölmesinde genel bir IP adresi seçin.
-5. **Kaydet** ' e tıklayın ve bölmeler kapanır. Mevcut bir genel IP adresiniz yoksa, bu makalenin [genel IP adresi kaynağı oluşturma](#create-public-ip) bölümündeki adımları tamamlayarak bir tane oluşturabilirsiniz.
+1. Bu makalenin [Temel adımlar](#coreadd) bölümündeki adımları tamamlayın.
+2. Ortak IP adresi kaynağını eklemek istediğiniz IP yapılandırmasını tıklatın.
+3. Görünen IPConfig bölmesinde **IP adresini**tıklatın.
+4. Görünen **genel IP adresini seç** bölmesinde herkese açık bir IP adresi seçin.
+5. **Kaydet'i** tıklatın ve bölmeler kapanır. Varolan bir genel IP adresiniz yoksa, bu makalenin [genel IP adresi kaynak](#create-public-ip) oluşturma bölümündeki adımları tamamlayarak bir tane oluşturabilirsiniz.
 3. Yeni IP yapılandırmasını gözden geçirin.
-4. Ek IP yapılandırması eklemek için **Ekle** ' ye TıKLAYABILIR veya IP adresleri ekleme işleminin tamamlanabilmesi için tüm açık kanları kapatabilirsiniz. Genel IP adresini işletim sistemine eklemeyin.
+4. Ek IP yapılandırmaları eklemek için **Ekle'yi** tıklatabilir veya IP adresleri eklemeyi bitirmek için tüm açık bıçakları kapatabilirsiniz. İşletim sistemine genel IP adresini eklemeyin.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

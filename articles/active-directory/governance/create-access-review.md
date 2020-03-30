@@ -1,8 +1,8 @@
 ---
-title: Gruplar & uygulamalar için erişim gözden geçirmesi oluşturma-Azure AD
-description: Azure Active Directory erişim gözden geçirmeleriyle grup üyelerinin veya uygulama erişiminin erişim incelemesini oluşturmayı öğrenin.
+title: Gruplar & uygulamalarda erişim incelemesi oluşturma - Azure AD
+description: Azure Active Directory erişim incelemelerinde grup üyelerinin veya uygulama erişiminin erişim incelemesini nasıl oluşturabilirsiniz öğrenin.
 services: active-directory
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,143 +11,143 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/06/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d3b8f2cf7db474f2a67ebaed818a0a440a195326
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128854"
 ---
-# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim incelemelerinde grupların ve uygulamaların erişim incelemesi oluşturma
 
-Çalışanlar için gruplara ve uygulamalara erişim ve zaman içinde konuklar değişiklikleri. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Azure Active Directory (Azure AD) kullanarak Grup üyeleri veya uygulama erişimi için erişim gözden geçirmeleri oluşturabilir. Erişimi düzenli olarak gözden geçirmeniz gerekiyorsa yinelenen erişim İncelemeleri de oluşturabilirsiniz. Bu senaryolar hakkında daha fazla bilgi için bkz. [Kullanıcı erişimini yönetme](manage-user-access-with-access-reviews.md) ve [konuk erişimini yönetme](manage-guest-access-with-access-reviews.md).
+Çalışanlar ve misafirler için gruplara ve uygulamalara erişim zaman içinde değişir. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için, grup üyeleri veya uygulama erişimi için erişim incelemeleri oluşturmak için Azure Etkin Dizini'ni (Azure AD) kullanabilir. Erişimi düzenli olarak gözden geçirmeniz gerekiyorsa, yinelenen erişim incelemeleri de oluşturabilirsiniz. Bu senaryolar hakkında daha fazla bilgi [Manage guest access](manage-guest-access-with-access-reviews.md)için [bkz.](manage-user-access-with-access-reviews.md)
 
-Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
+Bu makalede, grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi nasıl oluşturulacak açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Premium P2
-- Genel yönetici veya Kullanıcı Yöneticisi
+- Genel yönetici veya Kullanıcı yöneticisi
 
-Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#license-requirements).
+Daha fazla bilgi için Lisans [gereksinimlerine](access-reviews-overview.md#license-requirements)bakın.
 
-## <a name="create-one-or-more-access-reviews"></a>Bir veya daha fazla erişim incelemesi oluşturun
+## <a name="create-one-or-more-access-reviews"></a>Bir veya daha fazla erişim incelemesi oluşturma
 
-1. Azure portal oturum açın ve [Identity idare sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)açın.
+1. Azure portalında oturum açın ve [Kimlik Yönetimi sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)açın.
 
-1. Sol menüde, **erişim gözden geçirmeleri**' na tıklayın.
+1. Sol menüde, **Yorumlara Eriş'i**tıklatın.
 
-1. Yeni erişim gözden geçirmesi oluşturmak için **Yeni erişim gözden geçirmesi** ' na tıklayın.
+1. Yeni bir erişim incelemesi oluşturmak için **Yeni erişim incelemesini** tıklatın.
 
-    ![Kimlik yönetimi 'nde erişim İncelemeleri bölmesi](./media/create-access-review/access-reviews.png)
+    ![Kimlik Yönetimi'nde access incelemeleri bölmesi](./media/create-access-review/access-reviews.png)
 
-1. Erişim gözden geçirmesini adlandırın. İsteğe bağlı olarak, incelemeye bir açıklama verin. Ad ve açıklama gözden geçirenlere gösterilir.
+1. Erişim incelemesini adlandırın. İsteğe bağlı olarak, gözden geçirmeye bir açıklama verin. Ad ve açıklama gözden geçirenlere gösterilir.
 
-    ![Erişim incelemesi oluşturma-adı ve açıklamayı Gözden geçirme](./media/create-access-review/name-description.png)
+    ![Erişim incelemesi oluşturma - İnceleme adı ve açıklaması](./media/create-access-review/name-description.png)
 
-1. **Başlangıç tarihini**ayarlayın. Varsayılan olarak, bir erişim gözden geçirmesi bir kez gerçekleşir, oluşturulduğu zaman başlatılır ve bir ayda sonlanır. Başlangıç ve bitiş tarihlerini, gelecekte bir erişim incelemesi başlatacak şekilde ve son olarak istediğiniz sayıda güne dönüştürebilirsiniz.
+1. Başlangıç **tarihini**ayarlayın. Varsayılan olarak, bir erişim incelemesi bir kez oluşur, oluşturulduğu anda başlar ve bir ay içinde sona erer. Başlangıç ve bitiş tarihlerini, gelecekte bir erişim incelemesi başlangıcı ve istediğiniz kadar gün olmak üzere değiştirebilirsiniz.
 
-    ![Erişim incelemesi oluşturma-başlangıç ve bitiş tarihleri](./media/create-access-review/start-end-dates.png)
+    ![Erişim incelemesi oluşturma - Başlangıç ve bitiş tarihleri](./media/create-access-review/start-end-dates.png)
 
-1. Erişim gözden geçirmesini yinelenen hale getirmek için **Sıklık** ayarını **bir saatten** **haftalık**, **aylık**, **üç aylık**, **yarı yıllık**veya **yıllık**olarak değiştirin. Her bir yinelenen serinin gözden geçiricilerin giriş için kaç gün sonra açık olacağını tanımlamak için **süre** kaydırıcısını veya metin kutusunu kullanın. Örneğin, aylık bir gözden geçirme için ayarlayabileceğiniz en uzun süre, çakışan incelemelerden kaçınmak için 27 gün olabilir.
+1. Erişim incelemesini yinelenen yapmak **için, Sıklık** ayarını **Bir defadan** **Haftalık,** **Aylık,** **Üç Aylık,** **Altı aylık**veya **Yıllık**olarak değiştirin. Yinelenen serinin her incelemesinin gözden geçirenlerin girişi için kaç gün açık olacağını tanımlamak için **Süre** kaydırıcısını veya metin kutusunu kullanın. Örneğin, bir aylık inceleme için ayarlayabildiğiniz en yüksek süre, çakışan incelemeleri önlemek için 27 gündür.
 
-1. Yinelenen erişim gözden geçirme serisinin nasıl sonlandıralınacağını belirtmek için **bitiş** ayarını kullanın. Seriler üç şekilde bitemez: sürekli olarak gözden geçirmeler başlatacak şekilde, belirli bir tarihe kadar veya tanımlanan sayıda oluşumdan sonra sürekli olarak çalışır. Siz, başka bir Kullanıcı Yöneticisi veya başka bir genel yönetici, **ayarları**, bu tarihte sona erecek şekilde değiştirerek, oluşturulduktan sonra seriyi durdurabilir.
+1. Yinelenen erişim gözden geçirme serisinin nasıl sona erdirilen ini belirtmek için **Bitiş** ayarını kullanın. Seri üç şekilde sona erebilir: yorumları süresiz olarak, belirli bir tarihe kadar veya belirli sayıda olay tamamlandıktan sonra sürekli olarak çalışır. Siz, başka bir Kullanıcı yöneticisi veya başka bir Global yönetici, **ayarlardaki**tarihi değiştirerek, bu tarihte sona erecek şekilde, oluşturulduktan sonra seriyi durdurabilirsiniz.
 
-1. **Kullanıcılar** bölümünde, erişim incelemesinin uygulandığı kullanıcıları belirtin. Erişim incelemeleri bir grubun üyeleri veya bir uygulamaya atanmış kullanıcılar için olabilir. Üye olan veya uygulamaya erişimi olan tüm kullanıcıları gözden geçirmek yerine, yalnızca üye olan (veya uygulamaya atanan) Konuk kullanıcıları gözden geçirmek için erişim incelemesini daha fazla kapsama aktarabilirsiniz.
+1. **Kullanıcılar** bölümünde, erişim incelemesinin uygulandığı kullanıcıları belirtin. Erişim incelemeleri bir grubun üyeleri veya bir uygulamaya atanan kullanıcılar için olabilir. Erişim gözden geçirmesini, üye olan veya uygulamaya erişimi olan tüm kullanıcıları gözden geçirmek yerine yalnızca üye olan (veya uygulamaya atanmış) konuk kullanıcıları gözden geçirmek için kapsamınıza girebilirsiniz.
 
-    ![Erişim incelemesi oluşturma-kullanıcılar](./media/create-access-review/users.png)
+    ![Erişim incelemesi oluşturma - Kullanıcılar](./media/create-access-review/users.png)
 
-1. **Grup** bölümünde, üyeliğini gözden geçirmek istediğiniz bir veya daha fazla grup seçin.
-
-    > [!NOTE]
-    > Birden fazla grup seçilmesi birden çok erişim incelemesi oluşturacaktır. Örneğin, beş grup seçilmesi beş ayrı erişim incelemesi oluşturacaktır.
-    
-    ![Erişim incelemesi oluşturma-Grup seçme](./media/create-access-review/select-group.png)
-
-1. **Uygulamalar** bölümünde (adım 8 ' de **bir uygulamaya atanmış** ' i seçtiyseniz), erişimi incelemek istediğiniz uygulamaları seçin.
+1. **Grup** bölümünde, üyeliği gözden geçirmek istediğiniz bir veya daha fazla grup seçin.
 
     > [!NOTE]
-    > Birden fazla uygulama seçilmesi birden çok erişim incelemesi oluşturacaktır. Örneğin beş uygulama seçildiğinde beş ayrı erişim incelemesi oluşturulur.
+    > Birden fazla grup seçmek, birden çok erişim incelemesi oluşturur. Örneğin, beş grup seçmek beş ayrı erişim incelemesi oluşturur.
     
-    ![Erişim incelemesi oluşturma-uygulama seçme](./media/create-access-review/select-application.png)
+    ![Erişim incelemesi oluşturma - Grubu seçin](./media/create-access-review/select-group.png)
 
-1. **Gözden geçirenler** bölümünde, kapsamdaki tüm kullanıcıları gözden geçirmek için bir ya da daha fazla kişi seçin. Ya da üyelerin kendi erişimini incelemesini seçebilirsiniz. Kaynak bir grup ise, Grup sahiplerini gözden geçirmesini isteyebilirsiniz. Ayrıca, gözden geçirenlerin erişimi onayladıklarında bir neden vermesini de isteyebilirsiniz.
+1. **Uygulamalar** bölümünde (8. adımda **bir uygulamaya Atanmış'ı** seçtiyseniz), erişimi gözden geçirmek istediğiniz uygulamaları seçin.
 
-    ![Erişim incelemesi oluşturma-gözden geçirenler](./media/create-access-review/reviewers.png)
+    > [!NOTE]
+    > Birden fazla uygulama seçmek birden çok erişim incelemesi oluşturur. Örneğin, beş uygulama seçmek beş ayrı erişim incelemesi oluşturur.
+    
+    ![Erişim incelemesi oluşturma - Uygulamayı seçin](./media/create-access-review/select-application.png)
 
-1. **Programlar** bölümünde, kullanmak istediğiniz programı seçin. **Varsayılan program** her zaman vardır.
+1. Gözden **Geçirenler** bölümünde, kapsamdaki tüm kullanıcıları gözden geçirmek için bir veya daha fazla kişi seçin. Veya üyelerin kendi erişimlerini gözden geçirmelerini seçebilirsiniz. Kaynak bir grupsa, grup sahiplerinden gözden geçirmelerini isteyebilirsiniz. Ayrıca, gözden geçirenlerin erişimi onayladıklarında bir neden sağlamasını da gerektirebilirsiniz.
 
-    ![Erişim incelemesi oluşturma-programlar](./media/create-access-review/programs.png)
+    ![Erişim incelemesi oluşturma - Gözden Geçirenler](./media/create-access-review/reviewers.png)
 
-    Farklı amaçlar için erişim incelemelerini, programlar halinde düzenleyerek nasıl izleneceğini ve toplayacağınızı basitleştirebilirsiniz. Her erişim incelemesi bir programla bağlantılı olabilir. Daha sonra bir denetçi için rapor hazırlarken, belirli bir girişim için kapsamdaki erişim incelemelerine odaklanabilirsiniz. Programlar ve erişim gözden geçirme sonuçları, genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu rolündeki kullanıcılar tarafından görülebilir.
+1. **Programlar** bölümünde, kullanmak istediğiniz programı seçin. **Varsayılan Program** her zaman mevcuttur.
 
-    Programların listesini görmek için, erişim İncelemeleri sayfasına gidin ve **Programlar**' ı seçin. Genel yönetici veya Kullanıcı Yöneticisi rollüyorsanız, ek programlar oluşturabilirsiniz. Örneğin, her uyumluluk girişimi veya iş hedefi için bir program olmasını seçebilirsiniz. Artık bir programa ihtiyacınız yoksa ve onunla bağlantılı denetimleri yoksa, onu silebilirsiniz.
+    ![Erişim incelemesi oluşturma - Programlar](./media/create-access-review/programs.png)
 
-### <a name="upon-completion-settings"></a>Tamamlama ayarlarından sonra
+    Farklı amaçlar için erişim değerlendirmelerini programlarhalinde düzenleyerek izleme ve toplama yolunuz basitleştirebilirsiniz. Her erişim incelemesi bir programa bağlanabilir. Daha sonra bir denetçi için raporlar hazırlarken, belirli bir girişim için kapsamdaki erişim incelemelerini odaklayabilirsiniz. Programlar ve erişim inceleme sonuçları Global yönetici, Kullanıcı yöneticisi, Güvenlik yöneticisi veya Güvenlik okuyucu rolündeki kullanıcılar tarafından görülebilir.
 
-1. Bir gözden geçirme tamamlandıktan sonra ne olacağını belirtmek için **Tamamlama Ayarları** bölümüne bakın.
+    Programların listesini görmek için erişim incelemeleri sayfasına gidin ve **Programlar'ı**seçin. Global yönetici veya Kullanıcı yöneticisi rolündeyseniz, ek programlar oluşturabilirsiniz. Örneğin, her uyumluluk girişimi veya iş hedefi için bir programa sahip olmayı seçebilirsiniz. Artık bir programa ihtiyacınız yoksa ve programa bağlı herhangi bir denetimi yoksa, silebilirsiniz.
 
-    ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings.png)
+### <a name="upon-completion-settings"></a>Tamamlanma ayarları üzerine
 
-1. Engellenen kullanıcılar için otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**üzere **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
+1. İnceleme tamamlandıktan sonra ne olacağını belirtmek **için, Tamamlanın ayarları** bölümünü genişletin.
 
-1. Gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme süresi içinde gözden **geçirmeli yanıt** verme listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
+    ![Erişim incelemesi oluşturma - Tamamlanma ayarları üzerine](./media/create-access-review/upon-completion-settings.png)
 
-    - **Değişiklik yok** -kullanıcının erişimini değiştirmeden bırak
-    - **Erişimi kaldır** -kullanıcının erişimini kaldır
-    - **Erişimi onayla** -kullanıcının erişimini Onayla
-    - **Öneriler alın** -kullanıcının devam eden erişimini reddetme veya onaylama konusunda sistemin önerisini alın
+1. Otomatik olarak kaldırmak istiyorsanız, reddedilen kullanıcılar için erişim, **Otomatik etkinleştirmek** **için kaynağa sonuçları uygulayın** ayarlayın. İnceleme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı Devre **Dışı Bırak'a**ayarlayın.
+
+1. Gözden **geçiren** tarafından gözden geçirilmedir kullanıcılar için ne olacağını belirtmek için gözden geçiren değil listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilen kullanıcıları etkilemez. Son gözden geçirenin kararı Reddedilirse, kullanıcının erişimi kaldırılır.
+
+    - **Değişiklik yok** - Kullanıcının erişimini değiştirmeden bırakın
+    - **Erişimi kaldırma** - Kullanıcının erişimini kaldırma
+    - **Erişimi onayla** - Kullanıcının erişimini onayla
+    - **Öneriler alın** - Kullanıcının sürekli erişimini reddetme veya onaylama konusunda sistemin önerisini alın
 
 ### <a name="advanced-settings"></a>Gelişmiş ayarlar
 
-1. Ek ayarları belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
+1. Ek ayarlar belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
 
-    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings.png)
+    ![Erişim incelemesi oluşturma - Gelişmiş ayarlar](./media/create-access-review/advanced-settings.png)
 
-1. Kullanıcının erişim bilgilerini temel alarak sistem önerilerini gözden geçirenlere göstermek üzere **etkinleştirilecek** **önerileri göster** ' i ayarlayın.
+1. Gözden geçirenlere kullanıcının erişim bilgilerini temel alan sistem önerilerini göstermek **için** **önerileri göster'i** ayarlayın.
 
-1. Gözden geçirenin onay için bir neden vermesini gerektirmesini **sağlamak** için onay için bir **neden gerektir '** i ayarlayın.
+1. Gözden geçirenin onay için bir neden sağlamasını gerektirecek **etkinleştirmek** için **onay üzerinde neden gerektirin.**
 
-1. Bir erişim incelemesi başladığında ve bir gözden geçirme tamamlandığında yöneticilere, Azure **ad 'nin gözden** geçirenlere e-posta bildirimleri göndermesini sağlamak için **posta bildirimleri** ayarlayın.
+1. **Posta bildirimlerini** Azure AD'nin erişim incelemesi başladığında gözden geçirenlere ve inceleme tamamlandığında yöneticilere e-posta bildirimleri göndermesini **etkinleştirecek** şekilde ayarlayın.
 
-1. Azure AD 'nin, gözden geçirenleri tamamlamadıkları gözden geçirenler için sürmekte olan erişim gözden geçirmeleri gönderme anımsatıcıları **sağlamak üzere** **anımsatıcıları** ayarlayın.
+1. Azure AD'nin incelemesini tamamlamamış gözden geçirenlere devam eden erişim incelemelerini anımsatımlarını göndermesini **etkinleştirmek** için **Anımsatıcıları** ayarlayın.
 
     Varsayılan olarak, bitiş tarihine kadar olan sürenin yarısına ulaşıldığında, Azure AD henüz yanıt vermemiş olan gözden geçirenlere bir anımsatıcı gönderir.
 
-## <a name="start-the-access-review"></a>Erişim gözden geçirmesini Başlat
+## <a name="start-the-access-review"></a>Erişim incelemesini başlatma
 
-Erişim gözden geçirmesi ayarlarını belirttikten sonra **Başlat**' a tıklayın. Erişim incelemesi, listenizde durumunun bir göstergesi olacak şekilde görünür.
+Erişim incelemesi ayarlarını belirttikten sonra **Başlat'ı**tıklatın. Erişim incelemesi listenizde durumunun bir göstergesiyle görünür.
 
-![Erişim gözden geçirmeleri ve durumlarının listesi](./media/create-access-review/access-reviews-list.png)
+![Erişim incelemeleri listesi ve durumları](./media/create-access-review/access-reviews-list.png)
 
-Varsayılan olarak, Azure AD gözden geçirenlere İnceleme başladıktan kısa bir bir e-posta gönderir. Azure AD 'ye e-posta gönderme seçeneğini belirlerseniz, gözden geçirenlere bir erişim incelemesinin tamamlanmasını beklediğini bildirin. Bunlara, [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md)yönergelerini gösterebilirsiniz. Gözden geçirmeniz konuklarınız kendi erişimini gözden geçirmeleri için ise, bunları [gruplara veya uygulamalara yönelik erişimin nasıl incelendiğinin](review-your-access.md)talimatlarını gösterir.
+Varsayılan olarak, Azure AD inceleme başladıktan kısa bir süre sonra gözden geçirenlere bir e-posta gönderir. E-postayı Azure AD'nin göndermemesini seçerseniz, gözden geçirenlere bir erişim incelemesinin tamamlanmasını beklediğini bildirdiğinden emin olun. Gruplara [veya uygulamalara erişimi gözden geçirme](perform-access-review.md)yönergelerini onlara gösterebilirsiniz. İncelemeniz konukların kendi erişimlerini gözden geçirmeleri içinse, onlara [gruplara veya uygulamalara erişimi](review-your-access.md)nasıl gözden geçireceklerine yönelik talimatları gösterin.
 
-Konukları gözden geçirenler olarak atadıysanız ve daveti kabul etmediyse, bu kullanıcılar, gözden geçirenlerden önce daveti kabul etmeleri gerektiğinden, erişim incelemelerinden e-posta almamalıdır.
+Konukları gözden geçiren olarak atadıysanız ve daveti kabul etmedilerse, önce daveti incelemeden önce kabul etmeleri gerektiğinden erişim incelemelerinden bir e-posta almayacaktır.
 
-## <a name="access-review-status-table"></a>Erişim gözden geçirmesi durum tablosu
+## <a name="access-review-status-table"></a>Erişim gözden geçirme durum tablosu
 
 | Durum | Tanım |
 |--------|------------|
-|NotStarted | İnceleme oluşturuldu, Kullanıcı keşfi başlamak için bekliyor. |
-|Başlatılıyor   | Gözden geçirinin parçası olan tüm kullanıcıları tanımlamak için Kullanıcı keşfi devam ediyor. |
-|Başlatılıyor | İnceleme başlatılıyor. E-posta bildirimleri etkinse, e-postalar gözden geçirenlere gönderilir. |
-|Devam ediyor | İnceleme başlatıldı. E-posta bildirimlerinin etkin olduğu e-postalar gözden geçirenlere gönderilmiştir. Gözden geçirenler, son tarihe kadar karar gönderebilir. |
-|Tamamlan | Gözden geçirme tamamlandı ve gözden geçirme sahibine e-postalar gönderiliyor. |
-|Oto gözden geçirme | İnceleme bir sistem inceleme aşamasında. Sistem, öneriler veya önceden yapılandırılmış kararlar temelinde incelenebilecek kullanıcılar için kararları kaydediyor. |
-|Oto gözden geçirildi | Gözden geçirilmemiş tüm kullanıcılar için sistem tarafından kararlar kaydedilir. İnceleme, otomatik uygulama etkinse **uygulamaya** devam etmek için hazırlayın. |
-|Uygulamayı | Onaylanan kullanıcılar için erişim değişikliği olmayacaktır. |
-|Uygulanmış | Varsa, reddedilen kullanıcılar kaynak veya dizinden kaldırılmıştır. |
+|Başlatılmama | İnceleme oluşturuldu, kullanıcı bulma başlatmak için bekliyor. |
+|Başlatılıyor   | İncelemenin bir parçası olan tüm kullanıcıları tanımlamak için kullanıcı bulma işlemi devam ediyor. |
+|Başlatılıyor | İnceleme başlıyor. E-posta bildirimleri etkinse, e-postalar gözden geçirenlere gönderilir. |
+|Devam Ediyor | İnceleme başladı. E-posta bildirimleri etkinse, gözden geçirenlere e-postalar gönderilir. Gözden geçirenler kararları vade tarihine kadar sunabilirler. |
+|Tamamla | İnceleme tamamlanıyor ve e-postalar inceleme sahibine gönderiliyor. |
+|AutoReviewing | Gözden geçirme bir sistem gözden geçirme aşamasındadır. Sistem, önerilere veya önceden yapılandırılmış kararlara dayalı olarak gözden geçirilmeyen kullanıcılar için kararları kaydediyor. |
+|Otomatik Yorumlanan | Kararlar, gözden geçirilemeyen tüm kullanıcılar için sistem tarafından kaydedilmiştir. Otomatik Uygulama etkinse **Uygulama'ya** devam etmek için gözden geçirme hazırdır. |
+|Uygulama | Onaylanan kullanıcılar için erişimde değişiklik olmayacaktır. |
+|Uygulandı | Reddedilen kullanıcılar, varsa, kaynaktan veya dizinden kaldırıldı. |
 
-## <a name="create-reviews-via-apis"></a>API 'Ler aracılığıyla incelemeler oluşturma
+## <a name="create-reviews-via-apis"></a>API'ler aracılığıyla incelemeler oluşturma
 
-API 'Leri kullanarak erişim İncelemeleri de oluşturabilirsiniz. Azure portal grup ve uygulama kullanıcılarının erişim incelemelerini yönetmek için ne yapmanız gerekir Microsoft Graph API 'Leri kullanılarak da yapılabilir. Daha fazla bilgi için bkz. [Azure AD erişim gözden GEÇIRMELERI API başvurusu](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Kod örneği için bkz. [Microsoft Graph aracılığıyla Azure AD erişim gözden geçirmeleri alma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+API'leri kullanarak da erişim incelemeleri oluşturabilirsiniz. Azure portalındaki grupların ve uygulama kullanıcılarının erişim değerlendirmelerini yönetmek için yaptığınız şey Microsoft Graph API'leri kullanılarak da yapılabilir. Daha fazla bilgi için, [Azure AD erişim incelemeleri API başvurusuna](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)bakın. Bir kod örneği için, [Microsoft Graph üzerinden Azure AD erişim incelemelerini alma örneği'ne](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md)
-- [Grupları veya uygulamaları kendiniz için erişimi gözden geçirin](review-your-access.md)
-- [Grupların veya uygulamaların erişim incelemesini tamamlar](complete-access-review.md)
+- [Gruplara veya uygulamalara kendiniz için erişimi gözden geçirin](review-your-access.md)
+- [Grupların veya uygulamaların erişim gözden geçirmesini tamamlama](complete-access-review.md)

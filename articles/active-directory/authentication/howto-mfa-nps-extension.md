@@ -1,6 +1,6 @@
 ---
-title: NPS ile Azure MFA özellikleri Sağlama-Azure Active Directory
-description: Mevcut kimlik doğrulama altyapınıza bulut tabanlı iki adımlı doğrulama özelliği ekleyin
+title: NPS kullanarak Azure MFA özelliklerini sağlama - Azure Etkin Dizini
+description: Mevcut kimlik doğrulama altyapınıza bulut tabanlı iki aşamalı doğrulama özellikleri ekleme
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,45 +11,45 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263861"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051164"
 ---
-# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
-Azure MFA için ağ Ilkesi sunucusu (NPS) uzantısı, mevcut sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı MFA özellikleri ekler. NPS uzantısıyla, yeni sunucuları yüklemek, yapılandırmak ve bakımını yapmak zorunda kalmadan mevcut kimlik doğrulama akışınıza telefon araması, SMS mesajı veya telefon uygulaması doğrulama ekleyebilirsiniz. 
+Azure MFA için Ağ İlkesi Sunucusu (NPS) uzantısı, varolan sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı MFA özellikleri ekler. NPS uzantısı ile, yeni sunucular yüklemek, yapılandırmak ve korumak zorunda kalmadan mevcut kimlik doğrulama akışınıza telefon görüşmesi, kısa mesaj veya telefon uygulaması doğrulaması ekleyebilirsiniz. 
 
-Bu uzantı, Azure MFA sunucusunu dağıtmadan VPN bağlantılarını korumak isteyen kuruluşlar için oluşturulmuştur. NPS uzantısı, federal veya eşitlenmiş kullanıcılar için ikinci bir kimlik doğrulama faktörü sağlamak üzere RADIUS ve bulut tabanlı Azure MFA arasında bir bağdaştırıcı görevi görür.
+Bu uzantı, Azure MFA Sunucusu'nu dağıtmadan VPN bağlantılarını korumak isteyen kuruluşlar için oluşturulmuştur. NPS uzantısı, federal veya senkronize kullanıcılar için ikinci bir kimlik doğrulama faktörü sağlamak için RADIUS ve bulut tabanlı Azure MFA arasında bir bağdaştırıcı görevi görür.
 
 Azure MFA için NPS uzantısını kullanırken, kimlik doğrulama akışı aşağıdaki bileşenleri içerir: 
 
-1. **NAS/VPN sunucusu** , VPN istemcilerinden gelen istekleri alır ve NPS sunucularına RADIUS isteklerine dönüştürür. 
-2. **NPS sunucusu** , RADIUS istekleri için birincil kimlik doğrulamasını gerçekleştirmek üzere Active Directory bağlanır ve başarılı olduğunda, isteği yüklü herhangi bir uzantıya geçirir.  
-3. **NPS uzantısı** , ikincil kimlik doğrulaması IÇIN Azure MFA 'ya bir istek tetikler. Uzantı yanıtı aldıktan sonra ve MFA sınaması başarılı olursa, Azure STS tarafından verilen bir MFA talebi içeren güvenlik belirteçlerine sahip NPS sunucusunu sağlayarak kimlik doğrulama isteğini tamamlar.  
-4. **Azure MFA** , kullanıcının ayrıntılarını almak için Azure Active Directory ile iletişim kurar ve kullanıcıya yapılandırılmış bir doğrulama yöntemi kullanarak ikincil kimlik doğrulamasını gerçekleştirir.
+1. **NAS/VPN Server** VPN istemcilerinden istekalır ve bunları RADIUS isteklerine dönüştürür. 
+2. **NPS Server,** RADIUS istekleri için birincil kimlik doğrulamasını gerçekleştirmek için Active Directory'ye bağlanır ve başarılı olunda isteği yüklü tüm uzantılara geçirir.  
+3. **NPS Uzantı,** ikincil kimlik doğrulaması için Azure MFA'ya bir istek tetikler. Uzantı yanıtı aldıktan ve MFA mücadelesi başarılı olursa, NPS sunucusuna Azure STS tarafından verilen Bir MFA talebi içeren güvenlik belirteçleri sağlayarak kimlik doğrulama isteğini tamamlar.  
+4. **Azure MFA,** kullanıcının ayrıntılarını almak için Azure Active Directory ile iletişim kurar ve kullanıcıya yapılandırılan bir doğrulama yöntemini kullanarak ikincil kimlik doğrulamasını gerçekleştirir.
 
-Aşağıdaki diyagramda bu üst düzey kimlik doğrulama isteği akışı gösterilmektedir: 
+Aşağıdaki diyagram, bu üst düzey kimlik doğrulama isteği akışını göstermektedir: 
 
 ![Kimlik doğrulama akış diyagramı](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
 
-NPS uzantısı, artıklığı otomatik olarak işler, bu nedenle özel bir yapılandırmaya gerek kalmaz.
+NPS uzantısı artıklığı otomatik olarak işler, böylece özel bir yapılandırmaya ihtiyacınız olmaz.
 
-İhtiyaç duyduğunuz kadar çok sayıda Azure MFA özellikli NPS sunucusu oluşturabilirsiniz. Birden çok sunucu yüklüyorsanız, bunların her biri için fark istemci sertifikası kullanmanız gerekir. Her sunucu için bir sertifika oluşturmak, her sertifikayı tek tek güncelleştirebilmeniz ve tüm sunucularınızda kapalı kalma süresi konusunda endişelenmenize gerek kalmaz.
+İhtiyacınız olduğu kadar Azure MFA özellikli NPS sunucusu oluşturabilirsiniz. Birden çok sunucu yüklerseniz, her biri için bir fark istemci sertifikası kullanmanız gerekir. Her sunucu için bir sertifika oluşturmak, her sertifikayı ayrı ayrı güncelleştirebileceğiniz ve tüm sunucularınızdaki kapalı kalma süresi konusunda endişelenmeyebileceğiniz anlamına gelir.
 
-VPN sunucuları, kimlik doğrulama isteklerini yönlendirdiklerinden, yeni Azure MFA özellikli NPS sunucularının farkında olmaları gerekir.
+VPN sunucuları kimlik doğrulama isteklerini yönlendirir, bu nedenle yeni Azure MFA özellikli NPS sunucularından haberdar olmaları gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmıştır. Başlamadan önce aşağıdaki önkoşullara sahip olduğunuzdan emin olun.
+NPS uzantısı, varolan altyapınızla çalışmak içindir. Başlamadan önce aşağıdaki ön koşullara sahip olduğunuzdan emin olun.
 
 ### <a name="licenses"></a>Lisanslar
 
-Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](multi-factor-authentication.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
+Azure MFA için NPS Uzantısı, [Azure Çok Faktörlü Kimlik Doğrulaması lisansına](multi-factor-authentication.md) sahip müşteriler tarafından kullanılabilir (Azure AD Premium, EMS veya MFA tek başına lisansile birlikte verilir). Kullanıcı başına veya kimlik doğrulama lisansları başına gibi Azure MFA'nın tüketim tabanlı lisansları NPS uzantısı ile uyumlu değildir. 
 
 ### <a name="software"></a>Yazılım
 
@@ -57,29 +57,29 @@ Windows Server 2008 R2 SP1 veya üzeri.
 
 ### <a name="libraries"></a>Kitaplıklar
 
-Bu kitaplıklar, uzantısıyla otomatik olarak yüklenir.
+Bu kitaplıklar uzantısı ile otomatik olarak yüklenir.
 
-- [Visual Studio 2013 C++ için görsel yeniden dağıtılabilir paketler (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Windows PowerShell için Microsoft Azure Active Directory Modülü Version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual Studio 2013 Için Visual C++ Yeniden Dağıtılabilir Paketler (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Windows PowerShell sürüm 1.1.166.0 için Microsoft Azure Active Directory Modülü](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
-Windows PowerShell için Microsoft Azure Active Directory Modülü, zaten mevcut değilse, kurulum sürecinin bir parçası olarak çalıştırdığınız bir yapılandırma betiği aracılığıyla yüklenir. Daha önce yüklenmemişse bu modülü yüklemeye gerek yoktur.
+Windows PowerShell için Microsoft Azure Active Directory Modülü, kurulum işleminin bir parçası olarak çalıştırdığınız bir yapılandırma komut dosyası aracılığıyla zaten mevcut değilse yüklenir. Zaten yüklü değilse, bu modülü önceden yüklemenize gerek yoktur.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Active Directory eşitlenmesi ve MFA için kayıtlı olması gerekir.
+NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Etkin Dizin'e eşitlenmeleri ve MFA'ya kaydolması gerekir.
 
-Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin KIMLIĞINIZI [Azure Portal](https://portal.azure.com)bulabilirsiniz. Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
+Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin kimliğine ve yönetici kimlik bilgilerine ihtiyacınız var. Dizin kimliğinizi [Azure portalında](https://portal.azure.com)bulabilirsiniz. Yönetici olarak oturum açın. **Azure Etkin Dizini'ni**arayın ve seçin, ardından **Özellikler'i**seçin. GUID'i **Dizin Kimliği** kutusunda kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID'yi kiracı kimliği olarak kullanırsınız.
 
-![Azure Active Directory özellikleri altında Dizin KIMLIĞINIZI bulun](./media/howto-mfa-nps-extension/properties-directory-id.png)
+![Azure Etkin Dizin özellikleri altında Dizin Kimliğinizi bulun](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
 ### <a name="network-requirements"></a>Ağ gereksinimleri
 
-NPS sunucusunun, 80 ve 443 bağlantı noktaları üzerinden aşağıdaki URL 'lerle iletişim kurabilmesi gerekir.
+NPS sunucusunun 80 ve 443 bağlantı noktaları üzerinden aşağıdaki URL'lerle iletişim kurabilmesi gerekir.
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
 
-Ayrıca, [belirtilen PowerShell betiği kullanılarak bağdaştırıcının kurulumunu](#run-the-powershell-script) tamamlaması Için aşağıdaki URL 'lere bağlantı gerekir
+Ayrıca, [sağlanan PowerShell komut dosyasını kullanarak bağdaştırıcının kurulumünü](#run-the-powershell-script) tamamlamak için aşağıdaki URL'lere bağlantı gereklidir
 
 - https:\//login.microsoftonline.com
 - https:\//provisioningapi.microsoftonline.com
@@ -87,186 +87,186 @@ Ayrıca, [belirtilen PowerShell betiği kullanılarak bağdaştırıcının kuru
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-NPS uzantısını yüklemeden önce, kimlik doğrulama trafiğini işleyecek ortamı hazırlamak istersiniz.
+NPS uzantısını yüklemeden önce, kimlik doğrulama trafiğini işlemek için ortamınızı hazırlamak istersiniz.
 
-### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Etki alanına katılmış sunucuda NPS rolünü etkinleştirme
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Etki alanı birleştirilmiş sunucuda NPS rolünü etkinleştirme
 
-NPS sunucusu Azure Active Directory bağlanır ve MFA isteklerinin kimliğini doğrular. Bu rol için bir sunucu seçin. NPS uzantısı, RADIUS olmayan istekler için hata oluşturduğundan, diğer hizmetlerden gelen istekleri işleyemeyen bir sunucu seçmeyi öneririz. NPS sunucusu, ortamınız için birincil ve ikincil kimlik doğrulama sunucusu olarak ayarlanmalıdır; RADIUS isteklerini başka bir sunucuya ara sunucu olarak kullanamaz.
+NPS sunucusu Azure Etkin Dizini'ne bağlanır ve MFA isteklerini doğrular. Bu rol için bir sunucu seçin. NPS uzantısı RADIUS olmayan tüm istekler için hata lar attığından, diğer hizmetlerden gelen istekleri işlemeyen bir sunucu seçmenizi öneririz. NPS sunucusu, ortamınız için birincil ve ikincil kimlik doğrulama sunucusu olarak ayarlanmalıdır; RADIUS isteklerini başka bir sunucuya ekleyemez.
 
-1. Sunucunuzda Sunucu Yöneticisi hızlı başlangıç menüsünde **rol ve Özellik Ekleme Sihirbazı** ' nı açın.
-2. Yükleme türü için **rol tabanlı veya özellik tabanlı yükleme** ' yi seçin.
-3. **Ağ İlkesi ve erişim Hizmetleri** sunucu rolünü seçin. Bu rolü çalıştırmak için gerekli özellikleri bilgilendirebilen bir pencere açılır.
-4. Onay sayfasına kadar sihirbaza devam edin. **Yükle**’yi seçin.
+1. Sunucunuzda, Sunucu Yöneticisi Quickstart menüsünden **Rolleri ve Özellikleri Ekle Sihirbazı'nı** açın.
+2. Yükleme türünüz için **Rol tabanlı veya özellik tabanlı yüklemeyi** seçin.
+3. Ağ **İlkesi ve Erişim Hizmetleri** sunucu rolünü seçin. Bu rolü çalıştırmak için gerekli özellikler hakkında sizi bilgilendirmek için bir pencere açılabilir.
+4. Onay sayfasına kadar sihirbaz aracılığıyla devam edin. **Yükle**’yi seçin.
 
-Artık NPS için tasarlanmış bir sunucunuz olduğuna göre, bu sunucuyu VPN çözümünün gelen RADIUS isteklerini işleyecek şekilde de yapılandırmanız gerekir.
+Artık NPS için atanmış bir sunucunuz olduğuna göre, vpn çözümünden gelen RADIUS isteklerini işlemek için bu sunucuyu da yapılandırmanız gerekir.
 
-### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>VPN çözümünüzü NPS sunucusuyla iletişim kuracak şekilde yapılandırma
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>VPN çözümünüzü NPS sunucusuyla iletişim kurmak için yapılandırın
 
-Kullandığınız VPN çözümüne bağlı olarak, RADIUS kimlik doğrulama ilkenizi yapılandırma adımları değişir. Bu ilkeyi, RADIUS NPS sunucunuza işaret etmek üzere yapılandırın.
+Kullandığınız VPN çözümüne bağlı olarak, RADIUS kimlik doğrulama ilkenizi yapılandırma adımları değişir. Bu ilkeyi RADIUS NPS sunucunuza işaret etmek için yapılandırın.
 
-### <a name="sync-domain-users-to-the-cloud"></a>Etki alanı kullanıcılarını buluta eşitleme
+### <a name="sync-domain-users-to-the-cloud"></a>Etki alanı kullanıcılarını bulutla senkronize etme
 
-Bu adım kiracınızda zaten tamamlanmış olabilir, ancak Azure AD Connect veritabanlarınızı yakın zamanda eşitler.
+Bu adım kiracınızda zaten tamamlanmış olabilir, ancak Azure AD Connect'in veritabanlarınızı son zamanlarda senkronize ettiğini iki kez kontrol etmek gerekir.
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > seçin **Azure AD Connect**
-3. Eşitleme durumunuzu **etkinleştirildiğini** ve son eşitlemenin bir saatten daha önce olduğunu doğrulayın.
+2. **Azure Etkin Dizini** > Azure**AD Bağlantısı'nı** seçin
+3. Eşitleme durumunun **Etkin** olduğunu ve son eşitlemenizin bir saatten kısa bir süre önce olduğunu doğrulayın.
 
-Eşitlemenin yeni bir hepsini açmanız gerekiyorsa [Azure AD Connect eşitleme: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)' daki yönergeler bizimle yapılır.
+Yeni bir eşitleme turu başlatmanız gerekiyorsa, Azure AD Connect eşitlemesinde bize verilen [yönergeler: Zamanlayıcı.](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)
 
-### <a name="determine-which-authentication-methods-your-users-can-use"></a>Kullanıcılarınızın hangi kimlik doğrulama yöntemlerini kullanabileceğini belirleme
+### <a name="determine-which-authentication-methods-your-users-can-use"></a>Kullanıcılarınızın kullanabileceği kimlik doğrulama yöntemlerini belirleme
 
-NPS uzantısı dağıtımıyla hangi kimlik doğrulama yöntemlerinin kullanılabilir olduğunu etkileyen iki etken vardır:
+NPS uzantılı dağıtımda hangi kimlik doğrulama yöntemlerinin kullanılabileceğini etkileyen iki etken vardır:
 
-1. RADIUS istemcisi (VPN, NetScaler sunucusu veya diğer) ile NPS sunucuları arasında kullanılan parola şifreleme algoritması.
-   - **Pap** , BULUTTA Azure MFA 'nın tüm kimlik doğrulama yöntemlerini destekler: telefon araması, tek yönlü SMS mesajı, mobil uygulama BILDIRIMI, oath Donanım belirteçleri ve mobil uygulama doğrulama kodu.
-   - **CHAPv2** ve **EAP** desteği telefon araması ve mobil uygulama bildirimi.
+1. RADIUS istemcisi (VPN, Netscaler sunucusu veya diğer) ve NPS sunucuları arasında kullanılan parola şifreleme algoritması.
+   - **PAP,** bulutta Azure MFA'nın tüm kimlik doğrulama yöntemlerini destekler: telefon görüşmesi, tek yönlü kısa mesaj, mobil uygulama bildirimi, OATH donanım belirteçleri ve mobil uygulama doğrulama kodu.
+   - **CHAPV2** ve **EAP** destek telefon görüşmesi ve mobil uygulama bildirimi.
 
       > [!NOTE]
-      > NPS uzantısını dağıtırken, kullanıcılarınız için hangi yöntemlerin kullanılabildiğini değerlendirmek üzere bu faktörleri kullanın. RADIUS istemciniz PAP 'yi destekliyorsa, ancak istemci UX ' in doğrulama kodu için giriş alanı yoksa, telefon araması ve mobil uygulama bildirimi desteklenen iki seçenekten oluşan bir uygulamadır.
+      > NPS uzantısını dağıttığınızda, kullanıcılarınız için hangi yöntemlerin kullanılabilen yöntemleri değerlendirmek için bu etkenleri kullanın. RADIUS istemciniz PAP'ı destekliyorsa, ancak istemci UX'nin doğrulama kodu için giriş alanları yoksa, telefon görüşmesi ve mobil uygulama bildirimi desteklenen iki seçenektir.
       >
-      > Ayrıca, VPN istemci UX 'niz giriş alanını destekliyorsa ve ağ erişim Ilkesini yapılandırdıysanız, kimlik doğrulaması başarılı olabilir, ancak ağ Ilkesinde yapılandırılan RADIUS özniteliklerinin hiçbiri ağ erişim cihazına uygulanmaz. RRAS sunucusu ya da VPN istemcisi gibi. Sonuç olarak, VPN istemcisinin, erişim olmadan istenen veya daha az erişimi olabilir.
+      > Buna ek olarak, VPN istemciniz UX giriş alanını destekliyorsa ve Ağ Erişim İlkesi'ni yapılandırmışsanız , kimlik doğrulaması başarılı olabilir, ancak Ağ Politikası'nda yapılandırılan RADIUS özniteliklerinin hiçbiri Ağ Erişim Aygıtı'na uygulanmaz, RRAS sunucusu gibi, ne de VPN istemcisi. Sonuç olarak, VPN istemcisi istenilenden daha fazla erişime sahip olabilir veya daha az erişim emeyebilir.
       >
 
-2. İstemci uygulamasının (VPN, NetScaler sunucusu veya diğer) işleyebileceği giriş yöntemleri. Örneğin, VPN istemcisinin, kullanıcının bir metin veya mobil uygulamadan bir doğrulama kodu yazmasıdır.
+2. İstemci uygulamasının (VPN, Netscaler sunucusu veya diğer) işleyebilir giriş yöntemleri. Örneğin, VPN istemcisinin kullanıcının bir metin veya mobil uygulamadan doğrulama kodu yazabilmesine izin vermek için bazı araçları var mı?
 
-[Desteklenmeyen kimlik doğrulama yöntemlerini Azure 'da devre dışı](howto-mfa-mfasettings.md#verification-methods) bırakabilirsiniz.
+[Azure'da desteklenmeyen kimlik doğrulama yöntemlerini devre dışı kullanabilirsiniz.](howto-mfa-mfasettings.md#verification-methods)
 
-### <a name="register-users-for-mfa"></a>MFA için kullanıcıları kaydetme
+### <a name="register-users-for-mfa"></a>Kullanıcıları MFA'ya kaydedin
 
-NPS uzantısını dağıtmadan ve kullanmadan önce, iki adımlı doğrulama gerçekleştirmek için gereken kullanıcıların MFA için kayıtlı olması gerekir. Daha sonra, uzantıyı dağıtırken Test etmek için, Multi-Factor Authentication için tam olarak kayıtlı olan en az bir test hesabınız olması gerekir.
+NPS uzantısını dağıtmadan ve kullanmadan önce, iki aşamalı doğrulama gerçekleştirmesi gereken kullanıcıların MFA'ya kaydolması gerekir. Daha hemen, uzantıyı dağıtırken test etmek için, Multi-Factor Authentication için tam olarak kayıtlı en az bir test hesabına ihtiyacınız vardır.
 
-Bir sınama hesabını kullanmaya başlamak için bu adımları kullanın:
+Test hesabının başlatılmasını sağlamak için şu adımları kullanın:
 
-1. Bir test hesabıyla [https://aka.ms/mfasetup](https://aka.ms/mfasetup) için oturum açın.
-2. Bir doğrulama yöntemi ayarlamak için istemleri izleyin.
-3. Test hesabı için çok faktörlü kimlik doğrulaması gerektiren [bir koşullu erişim Ilkesi oluşturun](howto-mfa-getstarted.md#create-conditional-access-policy) .
+1. Bir test [https://aka.ms/mfasetup](https://aka.ms/mfasetup) hesabı ile oturum açın.
+2. Doğrulama yöntemi ayarlamak için istemleri izleyin.
+3. Test hesabı için çok faktörlü kimlik doğrulaması gerektirecek [koşullu erişim ilkesi oluşturun.](howto-mfa-getstarted.md#create-conditional-access-policy)
 
 ## <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
 
 > [!IMPORTANT]
-> NPS uzantısını VPN erişim noktasına göre farklı bir sunucuya yükler.
+> NPS uzantısını VPN erişim noktasından farklı bir sunucuya yükleyin.
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Azure MFA için NPS uzantısını indirme ve yükleme
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Azure MFA için NPS uzantısını indirin ve yükleyin
 
-1. [NPS uzantısını](https://aka.ms/npsmfa) Microsoft İndirme Merkezi ' nden indirin.
-2. İkiliyi, yapılandırmak istediğiniz ağ Ilkesi sunucusuna kopyalayın.
-3. *Setup. exe* ' yi çalıştırın ve yükleme yönergelerini izleyin. Hatalarla karşılaşırsanız, önkoşul bölümündeki iki kitaplığı başarıyla yüklediğinden emin olun.
+1. [NPS Uzantısını](https://aka.ms/npsmfa) Microsoft İndirme Merkezi'nden indirin.
+2. İkiliyi yapılandırmak istediğiniz Ağ İlkesi Sunucusu'na kopyalayın.
+3. *setup.exe'yi* çalıştırın ve kurulum yönergelerini izleyin. Hatalarla karşılaşırsanız, ön koşul bölümündeki iki kitaplıkbaşarıyla yüklendiğinden iki kez kontrol edin.
 
 #### <a name="upgrade-the-nps-extension"></a>NPS uzantısını yükseltme
 
-Mevcut bir NPS uzantısı yüklemesini yükseltirken, temeldeki sunucunun yeniden başlatılmasını önlemek için aşağıdaki adımları izleyin:
+Varolan bir NPS uzantısı yüklemesini yükseltirken, temel sunucunun yeniden başlatılmasını önlemek için aşağıdaki adımları tamamlayın:
 
-1. Mevcut sürümü kaldır
-1. Yeni yükleyiciyi Çalıştır
-1. Ağ Ilkesi sunucusu (IAS) hizmetini yeniden başlatın
+1. Varolan sürümü kaldırma
+1. Yeni yükleyiciyi çalıştırın
+1. Ağ Politikası Sunucusu (IAS) hizmetini yeniden başlatın
 
 ### <a name="run-the-powershell-script"></a>PowerShell betiğini çalıştırma
 
-Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada C:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
+Yükleyici bu konumda bir PowerShell komut `C:\Program Files\Microsoft\AzureMfa\Config` dosyası oluşturur: (C:\ yükleme sürücünüzdür). Bu PowerShell komut dosyası her çalıştırılında aşağıdaki eylemleri gerçekleştirir:
 
-- Otomatik olarak imzalanan bir sertifika oluşturun.
-- Sertifikanın ortak anahtarını Azure AD 'de hizmet sorumlusu ile ilişkilendirin.
-- Sertifikayı yerel makine sertifika deposunda depolayın.
-- Sertifikanın özel anahtarına ağ kullanıcısı için erişim izni verin.
-- NPS 'YI yeniden başlatın.
+- Kendi imzalı bir sertifika oluşturun.
+- Sertifikanın ortak anahtarını Azure AD'deki hizmet sorumlusuyla ilişkilendirin.
+- Sertifikayı yerel makine sertifika deposunda saklayın.
+- Sertifikanın özel anahtarına Network User'a erişim izni ver.
+- NPS'yi yeniden başlatın.
 
-Kendi sertifikalarınızı kullanmak istemiyorsanız (PowerShell betiğinin oluşturduğu otomatik olarak imzalanan sertifikalar yerine), yüklemeyi gerçekleştirmek için PowerShell betiğini çalıştırın. Uzantıyı birden çok sunucuya yüklerseniz, her birinin kendi sertifikası olmalıdır.
+Kendi sertifikalarınızı kullanmak istemiyorsanız (PowerShell komut dosyasının oluşturduğu kendi imzalı sertifikalar yerine), yüklemeyi tamamlamak için PowerShell Script'i çalıştırın. Uzantıyı birden çok sunucuya yüklerseniz, her birinin kendi sertifikası olmalıdır.
 
-1. Windows PowerShell 'i yönetici olarak çalıştırın.
+1. Windows PowerShell'i yönetici olarak çalıştırın.
 2. Dizinleri değiştirin.
 
    `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
 
-3. Yükleyici tarafından oluşturulan PowerShell betiğini çalıştırın.
+3. Yükleyici tarafından oluşturulan PowerShell komut dosyasını çalıştırın.
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
-4. Azure AD 'de yönetici olarak oturum açın.
-5. Kiracı KIMLIĞINIZ için PowerShell istemleri. Önkoşullar bölümündeki Azure portal kopyaladığınız dizin KIMLIĞI GUID 'sini kullanın.
-6. Betik tamamlandığında PowerShell bir başarı iletisi gösterir.  
+4. Azure AD'de yönetici olarak oturum açın.
+5. PowerShell, kiracı kimliğiniz için istemde kalır. Önkoşullar bölümünde Azure portalından kopyaladığınız Dizin Kimliği GUID'i kullanın.
+6. PowerShell komut dosyası bittiğinde bir başarı iletisi gösterir.  
 
-Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu adımları yineleyin.
+Yük dengeleme için ayarlamak istediğiniz ek NPS sunucularında bu adımları yineleyin.
 
-Önceki bilgisayar sertifikanızın süresi dolmuşsa ve yeni bir sertifika oluşturulduysa, süresi geçmiş tüm sertifikaları silmelisiniz. Süre dolma sertifikaları olması, NPS uzantısıyla başlayarak soruna neden olabilir.
+Önceki bilgisayar sertifikanızın süresi dolduysa ve yeni bir sertifika oluşturulduysa, süresi dolmuş sertifikaları silmeniz gerekir. Süresi dolmuş sertifikalar, NPS Uzantısı'nın başlatılmasıyla ilgili sorunlara neden olabilir.
 
 > [!NOTE]
-> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN =\<Tenantıd\>, OU = MICROSOFT NPS uzantısı**olmalıdır. 
+> PowerShell komut dosyasıyla sertifika oluşturmak yerine kendi sertifikalarınızı kullanıyorsanız, bunların NPS adlandırma kuralına uygun olduğundan emin olun. Özne adı **CN=\<TenantID\>,OU=Microsoft NPS Uzantılı**olmalıdır. 
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımlar
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımları
 
-Azure Kamu Bulutu kullanan müşteriler için, her NPS sunucusunda aşağıdaki ek yapılandırma adımları gereklidir:
+Azure Genel Bulutu kullanan müşteriler için her NPS sunucusunda aşağıdaki ek yapılandırma adımları gereklidir:
 
-1. NPS sunucusunda **kayıt defteri Düzenleyicisi** 'ni açın.
-1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` sayfasına gidin. Aşağıdaki anahtar değerlerini ayarlayın:
+1. NPS sunucusunda Kayıt Defteri Düzenleyicisi'ni açın. **Registry Editor**
+1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` sayfasına gidin. Aşağıdaki temel değerleri ayarlayın:
 
     | Kayıt defteri anahtarı       | Değer |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
 
-1. Her NPS sunucusu için kayıt defteri anahtarı değerlerini ayarlamak için önceki iki adımı tekrarlayın.
-1. NPS hizmetini her NPS sunucusu için yeniden başlatın.
+1. Her NPS sunucusu için kayıt defteri anahtar değerlerini ayarlamak için önceki iki adımı yineleyin.
+1. Her NPS sunucusu için NPS hizmetini yeniden başlatın.
 
-    En az etki için, her NPS sunucusunu tek seferde bir tane tek tek götürün ve tüm bağlantıların boşlanmasını bekleyin.
+    Minimum etki için, her NPS sunucusunu Birer birer NLB dönüşünden çıkarın ve tüm bağlantıların boşalmasını bekleyin.
 
-### <a name="certificate-rollover"></a>Sertifika geçişi
+### <a name="certificate-rollover"></a>Sertifika devri
 
-NPS uzantısının Release 1.0.1.32 ile birden çok sertifika okumak artık desteklenmektedir. Bu yetenek, sertifika güncelleştirmelerinin süresi dolmadan önce işlenmesine yardımcı olur. Kuruluşunuz NPS uzantısının önceki bir sürümünü çalıştırıyorsa, sürüm 1.0.1.32 veya üstünü yükseltmeniz gerekir.
+NPS uzantısı 1.0.1.32 sürümü ile, birden fazla sertifika okuma şimdi desteklenir. Bu özellik, son kullanma tarihinden önce sertifika güncelleştirmelerini kaydetmeyi kolaylaştıracaktır. Kuruluşunuz NPS uzantısının önceki bir sürümünü çalıştırıyorsa, sürüm 1.0.1.32 veya daha yüksek yükseltmeniz gerekir.
 
-`AzureMfaNpsExtnConfigSetup.ps1` betiği tarafından oluşturulan sertifikalar 2 yıl için geçerlidir. BT kuruluşları, sertifikaları süre sonu için izlemelidir. NPS uzantısı için sertifikalar, kişisel ' in altındaki yerel bilgisayar sertifika deposuna yerleştirilir ve betiğe verilen kiracı KIMLIĞINE verilir.
+`AzureMfaNpsExtnConfigSetup.ps1` Komut dosyası tarafından oluşturulan sertifikalar 2 yıl süreyle geçerlidir. BT kuruluşları, sertifikaların sona erme tarihini izlemelidir. NPS uzantısına ait sertifikalar Kişisel sertifika deposuna yerleştirilir ve komut dosyasına verilen kiracı kimliğine verilir.
 
-Bir sertifika sona erme tarihine yaklaşıyorsa, değiştirmek için yeni bir sertifika oluşturulmalıdır.  Bu işlem, `AzureMfaNpsExtnConfigSetup.ps1` yeniden çalıştırılarak ve istendiğinde aynı kiracı KIMLIĞINI koruyarak gerçekleştirilir. Bu işlem, ortamınızdaki her NPS sunucusunda tekrarlanmış olmalıdır.
+Bir sertifika son kullanma tarihine yaklaşırken, sertifikanın yerine yeni bir sertifika oluşturulmalıdır.  Bu `AzureMfaNpsExtnConfigSetup.ps1` işlem, yeniden çalıştırılarak ve istendiğinde aynı kiracı kimliğini tutarak gerçekleştirilir. Bu işlem ortamınızdaki her NPS sunucusunda yinelenmelidir.
 
-## <a name="configure-your-nps-extension"></a>NPS uzantınızı yapılandırma
+## <a name="configure-your-nps-extension"></a>NPS uzantınızı yapılandırın
 
-Bu bölüm, başarılı bir NPS uzantısı dağıtımı için tasarım konuları ve öneriler içerir.
+Bu bölümde, başarılı NPS uzantılı dağıtımlar için tasarım konuları ve öneriler yer almaktadır.
 
 ### <a name="configuration-limitations"></a>Yapılandırma sınırlamaları
 
-- Azure MFA için NPS uzantısı, kullanıcıları ve ayarları MFA sunucusundan buluta geçirmeye yönelik araçlar içermez. Bu nedenle, mevcut dağıtım yerine yeni dağıtımlar için uzantıyı kullanmanızı öneririz. Uzantıyı var olan bir dağıtımda kullanıyorsanız, kullanıcılarınızın MFA ayrıntılarını bulutta doldurmak için yeniden prova yapması gerekir.  
-- NPS uzantısı, Azure MFA 'da Ikincil kimlik doğrulamasını gerçekleştirmek için kullanıcıyı tanımlamak üzere şirket içi Active Directory 'den UPN 'yi kullanır. Uzantı, alternatif oturum açma KIMLIĞI gibi farklı bir tanıtıcıyı veya UPN dışında özel Active Directory alanı kullanacak şekilde yapılandırılabilir. Daha fazla bilgi için, [Multi-Factor Authentication IÇIN NPS uzantısının gelişmiş yapılandırma seçenekleri](howto-mfa-nps-extension-advanced.md)makalesine bakın.
+- Azure MFA için NPS uzantısı, kullanıcıları ve ayarları MFA Server'dan buluta geçirmek için araçlar içermez. Bu nedenle, uzantıyı varolan dağıtım yerine yeni dağıtımlar için kullanmanızı öneririz. Uzantıyı varolan bir dağıtımda kullanırsanız, kullanıcılarınızın MFA ayrıntılarını bulutta doldurmak için yeniden prova yapması gerekir.  
+- NPS uzantısı, Ikincil Auth'u gerçekleştirmek için Azure MFA'daki kullanıcıyı tanımlamak için şirket içi Etkin dizinindeki UPN'yi kullanır. Uzantı, upn dışında alternatif giriş kimliği veya özel Active Directory alanı gibi farklı bir tanımlayıcı kullanacak şekilde yapılandırılabilir. Daha fazla bilgi için, makaleye bakın, [Multi-Factor Authentication için NPS uzantısı için gelişmiş yapılandırma seçenekleri.](howto-mfa-nps-extension-advanced.md)
 - Tüm şifreleme protokolleri tüm doğrulama yöntemlerini desteklemez.
-   - **Pap** telefon aramasını, tek yönlü SMS iletisini, mobil uygulama bildirimini ve mobil uygulama doğrulama kodunu destekler
-   - **CHAPv2** ve **EAP** desteği telefon araması ve mobil uygulama bildirimi
+   - **PAP** telefon görüşmesini, tek yönlü kısa mesajı, mobil uygulama bildirimini ve mobil uygulama doğrulama kodunu destekler
+   - **CHAPV2** ve **EAP** destek telefon görüşmesi ve mobil uygulama bildirimi
 
-### <a name="control-radius-clients-that-require-mfa"></a>MFA gerektiren RADIUS istemcilerini denetleme
+### <a name="control-radius-clients-that-require-mfa"></a>MFA gerektiren RADIUS istemcilerini kontrol edin
 
-NPS uzantısını kullanarak bir RADIUS istemcisi için MFA 'yı etkinleştirdikten sonra, bu istemciye yönelik tüm kimlik doğrulamaları MFA gerçekleştirmek için gereklidir. Bazı RADIUS istemcileri için MFA 'yı etkinleştirmek istiyorsanız, diğer bir deyişle, iki NPS sunucusunu yapılandırabilir ve uzantıyı yalnızca birine yükleyebilirsiniz. MFA ile yapılandırılan NPS sunucusuna istek göndermesini ve diğer RADIUS istemcilerini uzantı ile yapılandırılmamış NPS sunucusuna göndermesini gerektirmek istediğiniz RADIUS istemcilerini yapılandırın.
+NPS Uzantısı'nı kullanarak bir RADIUS istemcisi için MFA'yı etkinleştirdikten sonra, bu istemciiçin tüm kimlik doğrulamalarının MFA gerçekleştirmesi gerekir. Bazı RADIUS istemcileri için MFA'yı etkinleştirmek, ancak diğerleri için değil, iki NPS sunucusunu yapılandırabilir ve uzantıyı bunlardan yalnızca birine yükleyebilirsiniz. MFA'nın uzantıyla yapılandırılan NPS sunucusuna istek göndermesini, uzantıyla yapılandırılmayan NPS sunucusuna diğer RADIUS istemcilerini göndermesini istediğiniz RADIUS istemcilerini yapılandırın.
 
-### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>MFA için kayıtlı olmayan kullanıcılara hazırlanma
+### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>MFA'ya kaydolmamış kullanıcılar için hazırlanın
 
-MFA için kayıtlı olmayan kullanıcılarınız varsa, kimlik doğrulamaya çalıştıklarında ne olacağını belirleyebilirsiniz. Özellik davranışını denetlemek için kayıt defteri yolu *HKLM\Software\Microsoft\AzureMFA* kayıt defteri ayarını *REQUIRE_USER_MATCH* kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır:
+MFA'ya kayıtlı olmayan kullanıcılarınız varsa, kimlik doğrulaması yapmaya çalıştıklarında ne olacağını belirleyebilirsiniz. Özellik davranışını denetlemek için kayıt defteri *ayarı* REQUIRE_USER_MATCH *HKLM\Software\Microsoft\AzureMFA'daki* kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır:
 
 | Anahtar | Değer | Varsayılan |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | DOĞRU/YANLıŞ | Ayarlanmadı (TRUE değerine denktir) |
+| REQUIRE_USER_MATCH | DOĞRU/YANLıŞ | Ayarlanmıyor (TRUE'ya eşdeğer) |
 
-Bu ayarın amacı, bir Kullanıcı MFA 'ya kaydolmadıysa ne yapılacağını belirlemektir. Anahtar mevcut olmadığında, ayarlanmamışsa veya TRUE olarak ayarlandığında ve Kullanıcı kayıtlı değilse, uzantı MFA sınamasını başarısız olur. Anahtar yanlış olarak ayarlandığında ve Kullanıcı kayıtlı değilse, kimlik doğrulaması MFA yapılmadan devam eder. Bir Kullanıcı MFA 'ya kaydedildiyse, REQUIRE_USER_MATCH FALSE olarak ayarlanmış olsa bile MFA ile kimlik doğrulaması yapılmalıdır.
+Bu ayarın amacı, bir kullanıcı MFA'ya kaydolmadığında ne yapacağını belirlemektir. Anahtar yoksa, ayarlanmaz veya TRUE olarak ayarlanmışsa ve kullanıcı kaydedilmezse, uzantı MFA mücadelesinde başarısız olur. Anahtar FALSE olarak ayarlandığında ve kullanıcı kaydedilmediğinde, kimlik doğrulama MFA gerçekleştirmeden devam eder. Bir kullanıcı MFA'ya kayıtlıysa, REQUIRE_USER_MATCH FALSE olarak ayarlansa bile MFA ile kimlik doğrulaması gerekir.
 
-Kullanıcılarınız eklenirken bu anahtarı oluşturmayı ve yanlış olarak ayarlamayı tercih edebilirsiniz; ancak bunların hepsi Azure MFA için henüz kaydedilmeyebilir. Bununla birlikte, anahtarı ayarlamak MFA 'ya kayıtlı olmayan kullanıcıların oturum açmasına izin verdiğinden, üretime geçmeden önce bu anahtarı kaldırmanız gerekir.
+Bu anahtarı oluşturmayı ve kullanıcılarınız binerken FALSE olarak ayarlayabilirsiniz ve tüm bunlar henüz Azure MFA'ya kaydolmayabilir. Ancak, anahtarı ayarlamak MFA'ya kaydolmamış kullanıcıların oturum açmasına izin verdiğinden, üretime gitmeden önce bu anahtarı kaldırmanız gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="nps-extension-health-check-script"></a>NPS uzantısı durum denetimi betiği
+### <a name="nps-extension-health-check-script"></a>NPS uzantısı sistem durumu denetimi komut dosyası
 
-NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımlarını gerçekleştirmek için aşağıdaki komut dosyası kullanılabilir.
+NPS uzantısı sorun giderme temel sistem durumu denetimi adımları gerçekleştirmek için aşağıdaki komut dosyası kullanılabilir.
 
-[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
-
----
-
-### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Nasıl yaparım? istemci sertifikası 'nın beklendiği şekilde yüklendiğini doğrulayın.
-
-Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, **CN \<tenantıd\>, OU = MICROSOFT NPS uzantısı** olan bir konu adına sahiptir
-
-*AzureMfaNpsExtnConfigSetup. ps1* betiği tarafından oluşturulan otomatik olarak imzalanan sertifikaların Ayrıca iki yıla ait geçerlilik ömrü de vardır. Sertifikanın yüklendiği doğrulanırken, sertifikanın sona ermemiş olduğunu da denetlemeniz gerekir.
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
-### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>İstemci serimin Azure Active Directory kiracım ile ilişkili olduğunu nasıl doğrulayabilirim?
+### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>İstemci sertifikasının beklendiği gibi yüklenmiş olduğunu nasıl doğrulayabilirim?
 
-PowerShell komut istemi ' ni açın ve aşağıdaki komutları çalıştırın:
+Sertifika deposunda yükleyici tarafından oluşturulan kendi imzalı sertifikayı arayın ve özel anahtarın kullanıcı **NETWORK SERVICE'e**verilen izinlere sahip olup olmadığını kontrol edin. **Sertifikac, CN \<tenantid\>, OU = Microsoft NPS Uzantı** bir konu adı vardır
+
+*AzureMfaNpsExtnConfigSetup.ps1* komut dosyası tarafından oluşturulan kendi imzalı sertifikaların da geçerlilik süresi iki yıldır. Sertifikanın yüklü olduğunu doğrularken, sertifikanın süresinin dolup olmadığını da denetlemeniz gerekir.
+
+---
+
+### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Müşteri sertifikamın Azure Etkin Dizini'ndeki kiracımla ilişkili olduğunu nasıl doğrulayabilirim?
+
+PowerShell komutunu açın ve aşağıdaki komutları çalıştırın:
 
 ``` PowerShell
 import-module MSOnline
@@ -274,9 +274,9 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
-Bu komutlar, kiracınızı, PowerShell oturumunuzda NPS uzantısı örneğinizle ilişkilendiren tüm sertifikaları yazdırır. İstemci sertifikanızı özel anahtar olmadan bir "Base-64 kodlamalı X. 509.440 (. cer)" dosyası olarak dışarı aktararak ve PowerShell 'deki listeyle karşılaştırarak sertifikanızın olup olmadığına bakın.
+Bu komutlar, powershell oturumunuzdaki NPS uzantıörneğinizle kiracınızı ilişkilendiren tüm sertifikaları yazdırır. Özel anahtar olmadan "Base-64 kodlu X.509(.cer)" dosyası olarak müşteri sertifikanızı dışa aktararak sertifikanızı arayın ve PowerShell'in listesiyle karşılaştırın.
 
-Aşağıdaki komut, "C:" sürücünüzde. cer biçiminde "npscercertificate" adlı bir dosya oluşturur.
+Aşağıdaki komut ,.cer biçiminde "C:" sürücünüzde "npscertificate" adlı bir dosya oluşturur.
 
 ``` PowerShell
 import-module MSOnline
@@ -284,61 +284,61 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-Bu komutu çalıştırdığınızda C sürücünüze gidin, dosyayı bulun ve üzerine çift tıklayın. Ayrıntılar ' a gidin ve "parmak izi" ' ne gidin, sunucuda yüklü sertifikanın parmak izini bu bir ile karşılaştırın. Sertifika parmak izleri eşleşmelidir.
+Bu komutu çalıştırdıktan sonra, C sürücünüze gidin, dosyayı bulun ve üzerine çift tıklayın. Ayrıntılara gidin ve "parmak izi" olarak aşağı kaydırın, sunucuda yüklü olan sertifikanın parmak izini bununla karşılaştırın. Sertifika parmak izleri eşleşmelidir.
 
-Geçerli-ve geçerli-Until zaman damgalarına, bir komut birden fazla sertifika döndürürse açık yanlış sığacak şekilde filtre uygulamak için kullanılabilir.
+Geçerli ve Geçerli-Zaman damgaları, insan tarafından okunabilir şeklinde, komut birden fazla cert döndürür bariz uyumsuzluklar filtrelemek için kullanılabilir.
 
 ---
 
 ### <a name="why-cannot-i-sign-in"></a>Neden oturum açamıyorum?
 
-Parolanızın süresinin dolmadığından emin olun. NPS uzantısı, oturum açma iş akışının bir parçası olarak parolaların değiştirilmesini desteklemez. Daha fazla yardım için kuruluşunuzun BT ekibine başvurun.
+Parolanızın süresinin dolup dolmadığından kontrol edin. NPS Uzantı, oturum açma iş akışının bir parçası olarak parolaların değiştirilmesini desteklemez. Daha fazla yardım için kuruluşunuzun BT Personeliile iletişime geçin.
 
 ---
 
-### <a name="why-are-my-requests-failing-with-adal-token-error"></a>İsteklerim neden ADAL belirteci hatasıyla başarısız oluyor?
+### <a name="why-are-my-requests-failing-with-adal-token-error"></a>İsteklerim Neden ADAL belirteç hatasıyla başarısız oluyor?
 
-Bu hata, birkaç nedenden biri nedeniyle olabilir. Sorun gidermeye yardımcı olması için aşağıdaki adımları kullanın:
+Bu hata çeşitli nedenlerden biri nedeniyle olabilir. Sorun gidermeye yardımcı olmak için şu adımları kullanın:
 
 1. NPS sunucunuzu yeniden başlatın.
-2. İstemci sertifikası 'nın beklendiği gibi yüklendiğini doğrulayın.
-3. Sertifikanın Azure AD 'deki kiracınızla ilişkili olduğunu doğrulayın.
-4. Uzantıyı çalıştıran sunucudan https://login.microsoftonline.com/ adresine erişilebildiğini doğrulayın.
+2. İstemci sertifikasının beklendiği gibi yüklü olduğunu doğrulayın.
+3. Azure AD'de sertifikanın kiracınızla ilişkili olduğunu doğrulayın.
+4. Uzantıyı çalıştıran sunucudan `https://login.microsoftonline.com/` adresine erişilebildiğini doğrulayın.
 
 ---
 
-### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Kimlik doğrulaması, kullanıcının bulunamadığını bildiren HTTP günlüklerinde hata vererek başarısız olur mu?
+### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Kimlik doğrulama, kullanıcının bulunmadığını belirten HTTP günlüklerinde bir hatayla neden başarısız oluyor?
 
-AD Connect 'in çalıştığını ve kullanıcının hem Windows Active Directory hem de Azure Active Directory bulunduğundan emin olun.
+AD Connect'in çalıştığını ve kullanıcının hem Windows Etkin Dizini hem de Azure Etkin Dizini'nde bulunduğunu doğrulayın.
 
 ---
 
-### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Tüm kimlik doğrulamalarımı olan günlüklerde neden HTTP Connect hataları görüyorum?
+### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Neden tüm kimlik doğrulamalarım başarısız olan günlüklerde HTTP bağlantı hataları görüyorum?
 
 NPS uzantısını çalıştıran sunucudan https://adnotifications.windowsazure.com adresine ulaşılabildiğini doğrulayın.
 
 ---
 
-### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Geçerli bir sertifika mevcut olmasına rağmen neden kimlik doğrulaması çalışmıyor?
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Geçerli bir sertifika olmasına rağmen kimlik doğrulama neden çalışmıyor?
 
-Önceki bilgisayar sertifikanızın süresi dolmuşsa ve yeni bir sertifika oluşturulduysa, süresi geçmiş tüm sertifikaları silmelisiniz. Süre dolma sertifikaları olması, NPS uzantısıyla başlayarak soruna neden olabilir.
+Önceki bilgisayar sertifikanızın süresi dolduysa ve yeni bir sertifika oluşturulduysa, süresi dolmuş sertifikaları silmeniz gerekir. Süresi dolmuş sertifikalar, NPS Uzantısı'nın başlatılmasıyla ilgili sorunlara neden olabilir.
 
-Geçerli bir sertifikanız olup olmadığını denetlemek için, MMC kullanarak yerel bilgisayar hesabının sertifika depolama alanını denetleyin ve sertifikanın süre sonu tarihini geçirmediğinden emin olun. Yeni geçerli bir sertifika oluşturmak için, "[PowerShell betiğini Çalıştır](#run-the-powershell-script)" bölümünde açıklanan adımları yeniden çalıştırın.
+Geçerli bir sertifikanız olup olmadığını kontrol etmek için, MMC'yi kullanarak yerel Bilgisayar Hesabının Sertifika Deposu'nu kontrol edin ve sertifikanın son kullanma tarihini geçmediğinden emin olun. Yeni geçerli bir sertifika oluşturmak için "[PowerShell komut dosyasını çalıştır](#run-the-powershell-script)" bölümünün altındaki adımları yeniden
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL Protokollerini ve Şifre Paketlerini yönetme
 
-Kuruluşunuz tarafından gerektirmedikleri takdirde, daha eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
+Kuruluşunuz gerektirmedikçe, daha eski ve daha zayıf şifreleme paketlerinin devre dışı bırakılmaları veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
 
 ### <a name="additional-troubleshooting"></a>Ek sorun giderme
 
-Ek sorun giderme kılavuzu ve olası çözümler, [Azure MULTI-Factor AUTHENTICATION NPS uzantısından hata Iletilerini çözümleme](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
+Azure Çok Faktörlü Kimlik Doğrulama için [NPS uzantısından gelen hata iletilerini çözümle](howto-mfa-nps-extension-errors.md)makalesinde ek sorun giderme kılavuzu ve olası çözümler bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows Server 'da ağ Ilkesi sunucusu 'na genel bakış ve yapılandırma](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [Windows Server'da Ağ Politikası Sunucusu'na genel bakış ve yapılandırma](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
-- Oturum açmak için alternatif kimlikleri yapılandırın veya [Multi-Factor Authentication IÇIN NPS uzantısının gelişmiş yapılandırma seçeneklerinde](howto-mfa-nps-extension-advanced.md) iki adımlı doğrulama gerçekleştirmemelidir.
+- Oturum açma için alternatif kimlikleri yapılandırma veya [Çok Faktörlü Kimlik Doğrulama için NPS uzantısı için Gelişmiş yapılandırma seçeneklerinde](howto-mfa-nps-extension-advanced.md) iki aşamalı doğrulama gerçekleştirmemesi gereken IP'ler için bir özel durum listesi ayarlama
 
-- NPS uzantısını kullanarak [Uzak Masaüstü Ağ Geçidi](howto-mfa-nps-extension-rdg.md) ve [VPN sunucularını](howto-mfa-nps-extension-vpn.md) tümleştirmeyi öğrenin
+- NPS uzantısını kullanarak [Uzak Masaüstü Ağ Geçidi](howto-mfa-nps-extension-rdg.md) ve VPN [sunucularını](howto-mfa-nps-extension-vpn.md) nasıl entegre edebilirsiniz öğrenin
 
 - [Azure Multi-Factor Authentication için NPS uzantısından alınan hata iletilerini çözme](howto-mfa-nps-extension-errors.md)

@@ -1,7 +1,7 @@
 ---
-title: Veri erişimi için RBAC rolü atamak üzere Azure portal kullanma
+title: Veri erişimi için bir RBAC rolü atamak için Azure portalını kullanma
 titleSuffix: Azure Storage
-description: Rol tabanlı erişim denetimi (RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure portal nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve özel RBAC rollerini destekler.
+description: Rol tabanlı erişim denetimine (RBAC) sahip bir Azure Etkin Dizin güvenlik ilkesine izin atamak için Azure portalını nasıl kullanacağınızı öğrenin. Azure Depolama, Azure AD aracılığıyla kimlik doğrulama için yerleşik ve özel RBAC rollerini destekler.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867497"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için RBAC rolü atamak üzere Azure portal kullanın
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve sıra verilerine erişmek için bir RBAC rolü atamak için Azure portalını kullanın
 
-Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar.
+Azure Etkin Dizin (Azure AD), rol tabanlı [erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarına izin vermektedir. Azure Depolama, blob veya sıra verilerine erişmek için kullanılan ortak izin kümelerini kapsayan yerleşik RBAC rolleri kümesini tanımlar.
 
-Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
+Bir Azure REKLAM güvenlik ilkesine bir RBAC rolü atandığında, Azure bu güvenlik ilkesi için bu kaynaklara erişim sağlar. Erişim, abonelik düzeyine, kaynak grubuna, depolama hesabına veya tek bir kapsayıcı veya sıraya kadar kapsama edilebilir. Azure AD güvenlik ilkesi, [Azure kaynakları için](../../active-directory/managed-identities-azure-resources/overview.md)bir kullanıcı, bir grup, bir uygulama hizmeti ilkesi veya yönetilen bir kimlik olabilir.
 
-Bu makalede, RBAC rolleri atamak için Azure portal nasıl kullanılacağı açıklanır. Azure portal RBAC rolleri atamak ve depolama kaynaklarınıza erişimi yönetmek için basit bir arabirim sağlar. Ayrıca, Azure komut satırı araçlarını veya Azure depolama yönetimi API 'Lerini kullanarak blob ve kuyruk kaynakları için RBAC rolleri atayabilirsiniz. Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim kimlik doğrulaması](storage-auth-aad.md). 
+Bu makalede, RBAC rolleri atamak için Azure portalının nasıl kullanılacağı açıklanmaktadır. Azure portalı, RBAC rollerini atamak ve depolama kaynaklarınıza erişimi yönetmek için basit bir arayüz sağlar. Azure komut satırı araçlarını veya Azure Depolama yönetimi API'lerini kullanarak blob ve kuyruk kaynakları için RBAC rolleri de atayabilirsiniz. Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için azure [etkin dizinini kullanarak Azure bloblarına ve kuyruklarına doğru doğrulama erişimi](storage-auth-aad.md)ne bakın. 
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için RBAC rolleri
+## <a name="rbac-roles-for-blobs-and-queues"></a>Lekeler ve kuyruklar için RBAC rolleri
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -33,74 +33,74 @@ Bu makalede, RBAC rolleri atamak için Azure portal nasıl kullanılacağı aç�
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>Azure portal kullanarak RBAC rolleri atama
+## <a name="assign-rbac-roles-using-the-azure-portal"></a>Azure portalını kullanarak RBAC rollerini atama
 
-Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portal bu kaynağa gidin. Kaynak için **Access Control (IAM)** ayarlarını görüntüleyin ve rol atamalarını yönetmek için aşağıdaki yönergeleri izleyin:
+Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portalındaki bu kaynağa gidin. Kaynak için **Erişim Denetimi (IAM)** ayarlarını görüntüleyin ve rol atamalarını yönetmek için aşağıdaki yönergeleri izleyin:
 
-1. Azure AD güvenlik sorumlusuna erişim sağlamak için uygun Azure Storage RBAC rolünü atayın.
+1. Bir Azure REKLAM güvenlik ilkesine erişim sağlamak için uygun Azure Depolama RBAC rolünü atayın.
 
-1. Azure Resource Manager [okuyucusu](../../role-based-access-control/built-in-roles.md#reader) rolünü, Azure AD kimlik bilgilerini kullanarak Azure Portal kapsayıcı veya kuyruklara erişmesi gereken kullanıcılara atayın. 
+1. Azure AD kimlik bilgilerini kullanarak Azure portalı üzerinden kapsayıcılara veya kuyruklara erişebilen kullanıcılara Azure Kaynak Yöneticisi [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolünü atayın. 
 
-Aşağıdaki bölümlerde bu adımların her biri daha ayrıntılı olarak açıklanır.
+Aşağıdaki bölümlerde bu adımların her biri daha ayrıntılı olarak açıklayınız.
 
 > [!NOTE]
-> Bir Azure depolama hesabınızın sahibi olarak, otomatik olarak veri erişim izni atanmaz. Siz açıkça kendiniz bir RBAC rolü için Azure depolama atamanız gerekir. Aboneliğinizi aboneliğiniz, kaynak grubunuz, depolama hesabınız veya bir kapsayıcı veya kuyruk düzeyinde atayabilirsiniz.
+> Azure Depolama hesabınızın sahibi olarak, verilere erişmek için otomatik olarak izin atanırsınız. Azure Depolama için kendinize açıkça bir RBAC rolü atamalısınız. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya bir kapsayıcı veya kuyruk düzeyinde atayabilirsiniz.
 >
-> Depolama hesabınızda hiyerarşik bir ad alanı etkinse bir kapsayıcıya veya kuyruğa kapsamlı bir rol atayamazsınız.
+> Depolama hesabınızda hiyerarşik bir ad alanı etkinse, kapsayıcıya veya kuyruğa kapsamlı bir rol atayamazsınız.
 
-### <a name="assign-a-built-in-rbac-role"></a>Yerleşik RBAC rolü atama
+### <a name="assign-a-built-in-rbac-role"></a>Yerleşik bir RBAC rolü atama
 
-Bir güvenlik sorumlusuna rol atamadan önce, verdiğiniz izinlerin kapsamını göz önünde bulundurduğunuzdan emin olun. Uygun kapsama karar vermek için [kaynak kapsamını belirleme](#determine-resource-scope) bölümünü gözden geçirin.
+Bir güvenlik ilkesine bir rol atamadan önce, vermekte olduğunuz izinlerin kapsamını göz önünde bulundurun. Uygun [kapsama](#determine-resource-scope) karar vermek için kaynak kapsamını belirley ini gözden geçirin.
 
-Burada gösterilen yordam, bir kapsayıcıya kapsamlı bir rol atar, ancak bir sıraya kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz: 
+Burada gösterilen yordam, kapsayıcıya kapsamlı bir rol atar, ancak bir sıraya kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz: 
 
-1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin ve hesabın **genel bakışını** görüntüleyin.
-1. Hizmetler altında **Bloblar**' ı seçin. 
-1. Rolü atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin. 
-1. Kapsayıcının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
+1. Azure [portalında,](https://portal.azure.com)depolama hesabınıza gidin ve hesap için **Genel Bakış'ı** görüntüleyin.
+1. Hizmetler altında **Blobs'ı**seçin. 
+1. Rol atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin. 
+1. Kapsayıcının erişim denetim ayarlarını görüntülemek için **Access denetimi (IAM)** seçeneğini belirleyin. Rol **atamaları** listesini görmek için Rol atamaları sekmesini seçin.
 
-    ![Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    ![Kapsayıcı erişim denetim ayarlarını gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
-1. Yeni bir rol eklemek için **rol ataması Ekle** düğmesine tıklayın.
-1. **Rol ataması Ekle** penceresinde, atamak Istediğiniz Azure depolama rolünü seçin. Ardından, bu rolü atamak istediğiniz güvenlik sorumlusunu bulmak için arama yapın.
+1. Yeni bir rol eklemek için **rol atamaekle** düğmesini tıklatın.
+1. Rol **atama ekle** penceresinde, atamak istediğiniz Azure Depolama rolünü seçin. Ardından, bu rolü atamak istediğiniz güvenlik ilkesini bulmak için arama yapın.
 
-    ![RBAC rolü atamayı gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    ![RBAC rolünün nasıl atayılabildiğini gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. **Save (Kaydet)** düğmesine tıklayın. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Kullanıcı tarafından eklenen kullanıcının, *örnek kapsayıcı*adlı kapsayıcıda bulunan veriler için okuma izinleri olduğunu gösterir.
+1. **Kaydet**'e tıklayın. Rolü atadığınız kimlik, bu rolün altında listelenir. Örneğin, aşağıdaki resim, kullanıcının şimdi eklenen *örnek kapsayıcı*adlı kapsayıcıdaki verilere yönelik izinleri okuduğunu gösterir.
 
-    ![Bir role atanan kullanıcı listesini gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    ![Bir role atanan kullanıcıların listesini gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
-Depolama hesabı, kaynak grubu veya aboneliğe kapsamlı bir rol atamak için benzer adımları izleyebilirsiniz.
+Depolama hesabına, kaynak grubuna veya aboneye kapsamlı bir rol atamak için benzer adımları izleyebilirsiniz.
 
-### <a name="assign-the-reader-role-for-portal-access"></a>Portal erişimi için okuyucu rolünü atama
+### <a name="assign-the-reader-role-for-portal-access"></a>Portal erişimi için Okuyucu rolünü atama
 
-Azure depolama için bir güvenlik sorumlusuna yerleşik veya özel bir rol atadığınızda, Depolama hesabınızdaki veriler üzerinde işlem gerçekleştirmek üzere bu güvenlik sorumlusuna izinler vermiş olursunuz. Yerleşik **veri okuyucu** rolleri bir kapsayıcı veya kuyruktaki veriler için okuma izinleri sağlar, ancak yerleşik **veri katılımcısı** rolleri bir kapsayıcı veya sıraya yönelik okuma, yazma ve silme izinleri sağlar. İzinler belirtilen kaynak kapsamına alınır.  
-Örneğin, **Depolama Blobu veri katılımcısı** rolünü **örnek kapsayıcısı**adlı bir kapsayıcı düzeyinde Kullanıcı Mary 'ye atarsanız, Mary, bu kapsayıcıdaki tüm bloblara okuma, yazma ve silme erişimi verilir.
+Azure Depolama için bir güvenlik ilkesine yerleşik veya özel bir rol atadığınızda, depolama hesabınızdaki verilerüzerinde işlem gerçekleştirmesi için bu güvenlik sorumlusuna izin vermiş olursunuz. Yerleşik Veri **Okuyucu** rolleri kapsayıcıveya kuyruktaki veriler için okuma izinleri sağlarken, yerleşik **Veri Katılımcısı** rolleri bir kapsayıcı veya kuyruğa okuma, yazma ve silme izinleri sağlar. İzinler belirtilen kaynağa kapsamlıdır.  
+Örneğin, Örnek **kapsayıcı**adlı bir kapsayıcı düzeyinde kullanıcı Mary depolama **Blob Veri Katılımcısı** rolünü atarsanız, O zaman Meryem'e okuma, yazma ve bu kapsayıcıdaki tüm lekelere erişimi silme izni verilir.
 
-Ancak, Mary Azure portal bir blobu görüntülemek isterse, **Depolama Blobu veri katılımcısı** rolü kendisini görüntülemek için, portalda blob 'a gezinmek için yeterli izinleri sağlamaz. Portalda gezinmek ve görünen diğer kaynakları görüntülemek için ek Azure AD izinleri gereklidir.
+Ancak, Mary Azure portalında bir blob görüntülemek istiyorsa, depolama **Blob Veri Katkıda bulunan** rolü tek başına görüntülemek için açılan portalda gezinmek için yeterli izin sağlamaz. Portalda gezinmek ve orada görünen diğer kaynakları görüntülemek için ek Azure AD izinleri gereklidir.
 
-Kullanıcılarınızın Azure portal bloblara erişebilmeleri gerekiyorsa, bu kullanıcılara, depolama hesabı düzeyinde veya daha yüksek olan başka bir RBAC rolü, [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü atayın. **Okuyucu** rolü, kullanıcıların depolama hesabı kaynaklarını görüntülemesine izin veren, ancak değiştirmelerini sağlayan bir Azure Resource Manager roldür. Azure depolama 'daki verilere yönelik okuma izinleri sağlamaz, ancak yalnızca hesap yönetimi kaynakları için geçerlidir.
+Kullanıcılarınızın Azure portalındaki lekelere erişebilmesi gerekiyorsa, bu kullanıcılara depolama hesabı düzeyinde veya üzerinde olan kullanıcılara ek bir RBAC [rolü,Reader](../../role-based-access-control/built-in-roles.md#reader) rolü atayın. **Okuyucu** rolü, kullanıcıların depolama hesabı kaynaklarını görüntülemesine izin veren, ancak bunları değiştirmemelerini sağlayan bir Azure Kaynak Yöneticisi rolüdür. Azure Depolama'daki veriler için okuma izinleri sağlamaz, yalnızca hesap yönetimi kaynaklarına verir.
 
-Kullanıcının Azure portal bloblara erişebilmeleri için **okuyucu** rolünü atamak için aşağıdaki adımları izleyin. Bu örnekte, atama depolama hesabı kapsamıdır:
+Kullanıcının Azure portalındaki lekelere erişebilmeleri için **Okuyucu** rolünü atamak için aşağıdaki adımları izleyin. Bu örnekte, atama depolama hesabına kapsamlıdır:
 
-1. [Azure portalında](https://portal.azure.com) depolama hesabınıza gidin.
-1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
-1. **Rol ataması Ekle** penceresinde **okuyucu** rolünü seçin. 
-1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-1. Rolü atamak istediğiniz güvenlik sorumlusunu bulmak için arama yapın.
-1. Rol atamasını kaydedin.
+1. Azure [portalında](https://portal.azure.com)depolama hesabınıza gidin.
+1. Depolama hesabının erişim denetim ayarlarını görüntülemek için **Access denetimini (IAM)** seçin. Rol **atamaları** listesini görmek için Rol atamaları sekmesini seçin.
+1. Rol **atamaekle** penceresinde **Okuyucu** rolünü seçin. 
+1. Alana **Atama erişiminden** Azure **AD kullanıcısını, grubunu veya hizmet sorumlusunu**seçin.
+1. Rolü atamak istediğiniz güvenlik ilkesini bulmak için arama yapın.
+1. Rol atamasını kaydet.
 
-**Okuyucu** rolünü atamak yalnızca Azure Portal kullanarak blob 'lara veya kuyruklara erişmesi gereken kullanıcılar için gereklidir.
+**Okuyucu** rolünü atamak yalnızca Azure portalını kullanarak blob'lara veya kuyruklara erişmeihtiyacı olan kullanıcılar için gereklidir.
 
 > [!IMPORTANT]
-> Azure portal Depolama Gezgini önizleme sürümü, blob veya kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action**içeren bir rol atanmalıdır.
+> Azure portalındaki Depolama Gezgini'nin önizleme sürümü, blob veya sıra verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portalındaki Depolama Gezgini verilere erişmek için her zaman hesap anahtarlarını kullanır. Azure portalında Depolama Gezgini'ni kullanmak için **Microsoft.Storage/storageAccounts/listkeys/action'ı**içeren bir rol atanmış olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim kimlik doğrulaması](storage-auth-aad.md). 
-- RBAC hakkında daha fazla bilgi edinmek için bkz. [rol tabanlı erişim denetimi (RBAC) nedir?](../../role-based-access-control/overview.md).
-- Azure PowerShell, Azure CLı veya REST API ile RBAC rol atamalarını atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure PowerShell ile yönetme](../../role-based-access-control/role-assignments-powershell.md)
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure CLı ile yönetme](../../role-based-access-control/role-assignments-cli.md)
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) REST API ile yönetme](../../role-based-access-control/role-assignments-rest.md)
-- Depolama uygulamalarınızın içinden kapsayıcılara ve kuyruklara erişim yetkisi verme hakkında bilgi edinmek için bkz. Azure [Storage uygulamalarıyla Azure ad kullanma](storage-auth-aad-app.md).
+- Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için azure [etkin dizinini kullanarak Azure bloblarına ve kuyruklarına doğru doğrulama erişimi](storage-auth-aad.md)ne bakın. 
+- RBAC hakkında daha fazla bilgi edinmek için [bkz.](../../role-based-access-control/overview.md)
+- Azure PowerShell, Azure CLI veya REST API ile RBAC rol atamalarının nasıl atayılmayı ve yöneteceğimizi öğrenmek için aşağıdaki makalelere bakın:
+    - [Azure PowerShell ile rol tabanlı erişim denetimini (RBAC) yönetme](../../role-based-access-control/role-assignments-powershell.md)
+    - [Azure CLI ile rol tabanlı erişim denetimini (RBAC) yönetme](../../role-based-access-control/role-assignments-cli.md)
+    - [REST API ile rol tabanlı erişim denetimini (RBAC) yönetme](../../role-based-access-control/role-assignments-rest.md)
+- Depolama uygulamalarınızın içinden kapsayıcılara ve kuyruklara erişimi nasıl onaylarsınız öğrenmek için Azure [Depolama uygulamalarıyla Azure REKLAMını Kullan'a](storage-auth-aad-app.md)bakın.

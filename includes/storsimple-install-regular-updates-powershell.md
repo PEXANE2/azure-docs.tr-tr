@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: dc50f94ae9b207961a71480c2fc172e88db79cf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188404"
 ---
-#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell aracılığıyla düzenli güncelleştirmeler yüklemek için
-1. Cihaz seri konsoluna açıp seçenek 1, **tam erişimle oturum açmak**. Parolayı yazın. Varsayılan parola *Password1*. 
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell üzerinden düzenli güncelleştirmeler yüklemek için
+1. Cihaz seri konsolu açın ve seçenek 1 seçin, **tam erişim ile giriş**yapın. Parolayı yazın. Varsayılan parola *Password1'dir.* 
 2. Komut istemine şunları yazın:
    
      `Get-HcsUpdateAvailability`
    
-    Güncelleştirmeler varsa ve yıkıcı veya kesintiye uğratmayan güncelleştirmelerin olup olmadığını size bildirilir.
+    Güncelleştirmelerin kullanılabilir olup olmadığı ve güncelleştirmelerin kesintiye uğrayıp veya kesintiye uğramayacağını size bildirilir.
 3. Komut istemine şunları yazın:
    
      `Start-HcsUpdate`
    
-    Güncelleştirme işlemini başlatacak.
+    Güncelleştirme işlemi başlayacaktır.
 
 > [!IMPORTANT]
-> * Bu komut yalnızca düzenli güncelleştirmeler için geçerlidir. Bu komut yalnızca bir denetleyicisinde çalıştırın, ancak her iki denetleyicilerinin güncelleştirilir. 
-> * Denetleyici yük devretmesi güncelleştirme işlemi sırasında fark edebilirsiniz; Ancak, yük devretme işlemi ya da sistem kullanılabilirliği etkilemez.
+> * Bu komut yalnızca normal güncelleştirmeler için geçerlidir. Bu komutu yalnızca bir denetleyicide çalıştırın, ancak her iki denetleyici de güncelleştirilir. 
+> * Güncelleştirme işlemi sırasında bir denetleyicinin başarısız olduğunu fark edebilirsiniz; ancak, failover sistem kullanılabilirliğini veya çalışmasını etkilemez.
 > 
 > 
 

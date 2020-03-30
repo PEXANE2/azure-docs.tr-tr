@@ -1,6 +1,6 @@
 ---
-title: Azure önkoşulları 'nda OpenShift kapsayıcı platformu 3,11
-description: Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtma önkoşulları.
+title: Azure önkoşullarda OpenShift Konteyner Platformu 3.11
+description: OpenShift Kapsayıcı Platformu 3.11'i Azure'da dağıtmak için ön koşullar.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,63 +14,64 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066617"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
+# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>OpenShift Kapsayıcı Platformu 3.11'i Azure'da dağıtmak için ortak ön koşullar
 
-Bu makalede, Azure 'da OpenShift kapsayıcı platformunu veya OKD 'yi dağıtmaya yönelik genel Önkoşullar açıklanmaktadır.
+Bu makalede, Azure'da OpenShift Kapsayıcı Platformu veya OKD dağıtmak için ortak ön koşullar açıklanmaktadır.
 
-Openshıft yüklemesi, anormal PlayBook 'lar kullanır. Anerişilebilir, yükleme adımlarını tamamlamaya yönelik tüm küme konaklarına bağlanmak için Secure Shell (SSH) kullanır.
+OpenShift kurulumu nda Ansible oyun kitapları kullanır. Ansible, yükleme adımlarını tamamlamak için tüm küme ana bilgisayarlarına bağlanmak için Secure Shell (SSH) kullanır.
 
-Anormal, uzak konaklara SSH bağlantısı yaptığında, bir parola giremiyorum. Bu nedenle, özel anahtarın kendisiyle ilişkili bir parolası (parola) olamaz veya dağıtım başarısız olur.
+Ansible uzak ana bilgisayarlara SSH bağlantısı yaptığında, parola giremez. Bu nedenle, özel anahtarın parolasıyla ilişkili bir parolası (parola) olamaz veya dağıtım başarısız olur.
 
-Sanal makineler (VM 'Ler) Azure Resource Manager şablonları aracılığıyla dağıtıldığı için, tüm VM 'lere erişim için aynı ortak anahtar kullanılır. Karşılık gelen özel anahtar, tüm PlayBook 'ları yürüten sanal makinede olmalıdır. Bu eylemi güvenli bir şekilde gerçekleştirmek için, özel anahtarı VM 'ye geçirmek üzere bir Azure Anahtar Kasası kullanılır.
+Sanal makineler (VM'ler) Azure Kaynak Yöneticisi şablonları aracılığıyla dağıtıldığı için, aynı ortak anahtar tüm Sanal Makinelere erişmek için kullanılır. Karşılık gelen özel anahtar, tüm oyun kitaplarını da çalıştıran VM'de olmalıdır. Bu eylemi güvenli bir şekilde gerçekleştirmek için, özel anahtarı VM'ye geçirmek için bir Azure anahtar kasası kullanılır.
 
-Kapsayıcılar için kalıcı depolama gereksinimi varsa kalıcı birimler gereklidir. OpenShift kalıcı birimler için Azure sanal sabit disklerini (VHD) destekler, ancak Azure 'un önce bulut sağlayıcısı olarak yapılandırılması gerekir.
+Kapsayıcılar için kalıcı depolama gereksinimi varsa, kalıcı hacimler gereklidir. OpenShift, kalıcı birimler için Azure sanal sabit disklerini (VHD'ler) destekler, ancak öncelikle Azure'un bulut sağlayıcısı olarak yapılandırılması gerekir.
 
 Bu modelde, OpenShift:
 
-- Bir Azure depolama hesabında veya yönetilen diskte bir VHD nesnesi oluşturur.
-- VHD 'yi bir VM 'ye takar ve birimi biçimlendirir.
-- Birimi Pod 'a bağlar.
+- Azure depolama hesabında veya yönetilen bir diskte bir VHD nesnesi oluşturur.
+- VHD'yi VM'ye bağlar ve ses düzeyini biçimlendirin.
+- Ses seviyesini bölmeye bağlar.
 
-Bu yapılandırmanın çalışması için, OpenShift 'in Azure 'da bu görevleri gerçekleştirmek için izinleri olması gerekir. Bu amaçla bir hizmet sorumlusu kullanılır. Hizmet sorumlusu, kaynak izinleri verilen Azure Active Directory bir güvenlik hesabıdır.
+Bu yapılandırmanın çalışması için OpenShift'in bu görevleri Azure'da gerçekleştirmek için izinlere ihtiyacı vardır. Bu amaçla bir hizmet sorumlusu kullanılır. Hizmet sorumlusu, Azure Etkin Dizini'nde kaynaklara izin verilen bir güvenlik hesabıdır.
 
-Hizmet sorumlusunun, kümeyi oluşturan depolama hesaplarına ve VM 'lere erişimi olması gerekir. Tüm OpenShift kümesi kaynakları tek bir kaynak grubuna dağıtışsam, hizmet sorumlusuna bu kaynak grubuna izinler verilebilir.
+Hizmet sorumlusunun, kümeyi oluşturan depolama hesaplarına ve VM'lere erişimi olması gerekir. Tüm OpenShift küme kaynakları tek bir kaynak grubuna dağıtılırsa, hizmet ilkesine bu kaynak grubuna izin verilebilir.
 
-Bu kılavuzda, önkoşullara ilişkin yapıların nasıl oluşturulacağı açıklanmaktadır.
+Bu kılavuz, ön koşullarla ilişkili yapılarınasıl oluşturulacak açıklanır.
 
 > [!div class="checklist"]
-> * OpenShift kümesi için SSH anahtarlarını yönetmek üzere bir Anahtar Kasası oluşturun.
-> * Azure bulut sağlayıcısı tarafından kullanılmak üzere bir hizmet sorumlusu oluşturun.
+> * OpenShift kümesi için SSH tuşlarını yönetmek için bir anahtar kasası oluşturun.
+> * Azure Bulut Sağlayıcısı tarafından kullanılmak üzere bir hizmet ilkesi oluşturun.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
-[Az Login](/cli/azure/reference-index) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin veya Cloud Shell kullanmak için **dene** ' ye tıklayın.
+[Az giriş](/cli/azure/reference-index) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin veya Cloud Shell'i kullanmak için **Deneyin'i** tıklatın.
 
-```azurecli 
+```azurecli
 az login
 ```
+
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Anahtar kasasını barındırmak için adanmış bir kaynak grubu kullanmanız gerekir. Bu grup, OpenShift küme kaynaklarının dağıtıldığı kaynak grubundan ayrıdır.
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Anahtar kasasını barındırmak için özel bir kaynak grubu kullanmalısınız. Bu grup, OpenShift küme kaynaklarının dağıtıldığı kaynak grubundan ayrıdır.
 
-Aşağıdaki örnek *eastus* konumunda *keyvaultrg* adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek, *eastus* konumunda *keyvaultrg* adlı bir kaynak grubu oluşturur:
 
-```azurecli 
+```azurecli
 az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
-[Az keykasa Create](/cli/azure/keyvault) komutuyla küme için SSH anahtarlarını depolamak üzere bir Anahtar Kasası oluşturun. Anahtar Kasası adı genel olarak benzersiz olmalıdır ve şablon dağıtımı için etkinleştirilmeli ve dağıtım "KeyVaultParameterReferenceSecretRetrieveFailed" hatası ile başarısız olacak.
+Az keyvault oluşturma komutu ile küme için SSH tuşlarını depolamak için bir [anahtar tonoz oluşturun.](/cli/azure/keyvault) Anahtar kasa adı genel olarak benzersiz olmalı ve şablon dağıtımı için etkinleştirilmelidir veya dağıtım "KeyVaultParameterReferenceSecretRetrieveFailed" hatası ile başarısız olur.
 
-Aşağıdaki örnek, *keyvaultrg* kaynak grubunda *keykasası* adlı bir Anahtar Kasası oluşturur:
+Aşağıdaki örnek, *keyvaultrg* kaynak grubunda *keyvault* adlı bir anahtar tonoz oluşturur:
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -79,50 +80,52 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH anahtarı oluşturma 
-OpenShift kümesine erişimin güvenliğini sağlamak için bir SSH anahtarı gereklidir. `ssh-keygen` komutunu kullanarak bir SSH anahtar çifti oluşturun (Linux veya macOS üzerinde):
+OpenShift kümesine erişimi güvence altına almak için bir SSH anahtarı gereklidir. Komutu `ssh-keygen` kullanarak (Linux veya macOS üzerinde):
  
- ```bash
+```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> SSH anahtar çiftiniz parola/parola içeremez.
+> SSH anahtar çiftinizin parolası / parolası olamaz.
 
-Windows 'da SSH anahtarları hakkında daha fazla bilgi için bkz. [Windows 'DA SSH anahtarları oluşturma](/azure/virtual-machines/linux/ssh-from-windows). OpenSSH biçiminde özel anahtarı dışarı aktardığınızdan emin olun.
+Windows'daki SSH tuşları hakkında daha fazla bilgi için [Windows'da SSH tuşlarının nasıl oluşturulabildiğini](/azure/virtual-machines/linux/ssh-from-windows)görün. Özel anahtarı OpenSSH biçiminde dışa aktardığından emin olun.
 
-## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>SSH özel anahtarını Azure Key Vault depolama
-OpenShift dağıtımı, OpenShift ana yöneticisine güvenli erişim sağlamak için oluşturduğunuz SSH anahtarını kullanır. Dağıtımı, SSH anahtarını güvenli bir şekilde almak üzere etkinleştirmek için aşağıdaki komutu kullanarak anahtarı Key Vault ' de saklayın:
+## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Azure Key Vault'ta SSH özel anahtarını depolama
+OpenShift dağıtımı, OpenShift yöneticisine erişimi güvence altına almak için oluşturduğunuz SSH anahtarını kullanır. Dağıtımın SSH tuşunu güvenli bir şekilde alabilmesi için, aşağıdaki komutu kullanarak anahtarı Key Vault'ta saklayın:
 
 ```azurecli
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma 
-Openshıft, bir Kullanıcı adı ve parola veya hizmet sorumlusu kullanarak Azure ile iletişim kurar. Azure hizmet sorumlusu, OpenShift gibi uygulamalar, hizmetler ve otomasyon araçları ile kullanabileceğiniz bir güvenlik kimliğidir. Hizmet sorumlusunun Azure 'da gerçekleştirebileceği işlemleri kontrol edin ve tanımlar. Hizmet sorumlusu izinlerinin tüm abonelik yerine belirli kaynak gruplarına kapsamını atamak en iyisidir.
+OpenShift, bir kullanıcı adı ve parola veya bir hizmet sorumlusu kullanarak Azure ile iletişim kurar. Azure hizmet ilkesi, OpenShift gibi uygulamalar, hizmetler ve otomasyon araçlarıyla kullanabileceğiniz bir güvenlik kimliğidir. İzinleri, hizmet sorumlusunun Azure'da hangi işlemleri gerçekleştirebileceğine göre denetler ve tanımlarsınız. Hizmet sorumlusunun izinlerini tüm abonelik yerine belirli kaynak gruplarına kapsamak en iyisidir.
 
-[Az ad SP Create-for-RBAC](/cli/azure/ad/sp) ile bir hizmet sorumlusu oluşturun ve OpenShift 'in ihtiyaç duyacağı kimlik bilgilerini çıktı.
+[Az reklam sp create-for-rbac](/cli/azure/ad/sp) ile bir hizmet müdürü oluşturun ve OpenShift'in ihtiyaç duyduğu kimlik bilgilerini çıktı.
 
-Aşağıdaki örnek bir hizmet sorumlusu oluşturur ve bu gruba, *openkaydırıcı Trg*adlı bir kaynak grubuna katkıda bulunan izinleri atar.
+Aşağıdaki örnekte bir hizmet ilkesi oluşturulur ve katılımcı izinlerini *openshiftrg*adlı bir kaynak grubuna atar.
 
-İlk olarak, *openkaydırıcı Trg*adlı kaynak grubunu oluşturun:
+İlk olarak, *openshiftrg*adlı kaynak grubu oluşturun:
 
 ```azurecli
 az group create -l eastus -n openshiftrg
 ```
 
-Hizmet sorumlusu oluşturma:
+Hizmet ilkesi oluşturun:
 
 ```azurecli
 az group show --name openshiftrg --query id
 ```
-Komutun çıkışını kaydedin ve sonraki komutta $scope yerine kullanın
+
+Komutun çıktısını kaydedin ve bir sonraki komutta $scope yerine kullanın
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --scopes $scope \
 ```
 
-Komuttan döndürülen AppID özelliğini ve parolayı bir yere göz atın:
+Komuttan döndürülen appId özelliğine ve parolaya dikkat edin:
+
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -132,46 +135,47 @@ Komuttan döndürülen AppID özelliğini ve parolayı bir yere göz atın:
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
+
  > [!WARNING] 
- > Bu parolayı yeniden almak mümkün olmadığından, güvenli parolayı yazdığınızdan emin olun.
+ > Bu parolayı tekrar almak mümkün olmayacağından güvenli parolayı yazdığından emin olun.
 
-Hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure CLI Ile Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Hizmet ilkeleri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Yalnızca Kaynak Yöneticisi şablona uygulanabilir Önkoşullar
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Yalnızca Kaynak Yöneticisi şablonu için geçerli olan önkoşullar
 
-SSH özel anahtarı (**Sshprivatekey**), Azure AD İstemci parolası (**Aadclientsecret**), OpenShift yönetici parolası (**OpenshiftPassword**) ve Red Hat abonelik Yöneticisi parolası ya da etkinleştirme anahtarı (**rhsmPasswordOrActivationKey**) için gizli dizi oluşturulması gerekir.  Ayrıca, özel SSL sertifikaları kullanılıyorsa, altı ek parolaların oluşturulması gerekir- **routingcafile**, **routingsertifikadosyası**, **routingkeyfile**, **mastercafile**, **mastersertifikadosyası**ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
+SSH özel anahtarı **(sshPrivateKey),** Azure AD istemcisi gizli (**aadClientSecret),** OpenShift yönetici şifresi (**openshiftPassword**) ve Red Hat Subscription Manager şifresi veya etkinleştirme anahtarı **(rhsmPasswordOrActivationKey)** için sırlar oluşturulmalıdır.  Ayrıca, özel SSL sertifikaları kullanılırsa, o zaman altı ek sırlar oluşturulması gerekir - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
 
-Şablon, belirli gizli adlara başvurur, böylece yukarıda listelenen kalın adları kullanmanız **gerekir** (büyük/küçük harfe duyarlı).
+Şablon belirli gizli adlar başvurur, bu nedenle yukarıda listelenen kalın lı adları kullanmanız **gerekir** (büyük/küçük harf duyarlı).
 
-### <a name="custom-certificates"></a>Özel sertifikalar
+### <a name="custom-certificates"></a>Özel Sertifikalar
 
-Varsayılan olarak, şablon OpenShift Web Konsolu ve yönlendirme etki alanı için otomatik olarak imzalanan sertifikaları kullanarak bir OpenShift kümesi dağıtır. Özel SSL sertifikaları kullanmak istiyorsanız ' routingCertType ' öğesini ' Custom ' ve ' masterCertType ' olarak ' Custom ' olarak ayarlayın.  Sertifikalar için. ped biçiminde CA, sertifika ve anahtar dosyaları gerekir.  Özel sertifikaları diğeri için kullanmak mümkündür.
+Varsayılan olarak, şablon OpenShift web konsolu ve yönlendirme etki alanı için kendi imzalı sertifikaları kullanarak bir OpenShift kümesi dağıtır. Özel SSL sertifikaları kullanmak istiyorsanız, 'routingCertType'ı 'özel' ve 'masterCertType'ı 'özel' olarak ayarlayın.  Sertifikalar için CA, Cert ve Key dosyalarına .pem biçiminde ihtiyacınız vardır.  Biri için özel sertifikalar kullanmak mümkündür, ancak diğeri için değil.
 
-Bu dosyaları Key Vault gizli dizileri içinde depolamanız gerekir.  Özel anahtar için kullanılan Key Vault aynı kullanın.  Gizli adlar için 6 ek giriş gerektirmek yerine, şablon her bir SSL sertifika dosyası için belirli gizli adları kullanmak üzere sabit olarak kodlanır.  Aşağıdaki tablodaki bilgileri kullanarak sertifika verilerini depolayın.
+Bu dosyaları Key Vault sırlarında saklamanız gerekir.  Özel anahtar için kullanılanla aynı Anahtar Kasası'nı kullanın.  Gizli adlar için 6 ek giriş gerektirmek yerine, şablon SSL sertifika dosyalarının her biri için belirli gizli adlar kullanmak için sabit kodlanır.  Aşağıdaki tablodaki bilgileri kullanarak sertifika verilerini depolayın.
 
-| Gizli dizi adı      | Sertifika dosyası   |
+| Gizli Ad      | Sertifika dosyası   |
 |------------------|--------------------|
-| mastercafile     | Ana CA dosyası     |
-| mastersertifikadosyası   | Ana SERTIFIKA dosyası   |
-| masterkeyfile    | Ana anahtar dosyası    |
-| routingcafile    | Yönlendirme CA dosyası    |
-| routingsertifikadosyası  | Yönlendirme SERTIFIKASı dosyası  |
-| routingkeyfile   | yönlendirme anahtarı dosyası   |
+| mastercafile     | ana CA dosyası     |
+| mastercertfile   | ana CERT dosyası   |
+| masterkeyfile    | ana Anahtar dosyası    |
+| yönlendirmecafile    | ca dosyayönlendirme    |
+| yönlendirmecertfile  | CERT dosyayı yönlendirme  |
+| yönlendirmekeyfile   | yönlendirme Anahtarı dosyası   |
 
-Azure CLı kullanarak gizli dizileri oluşturun. Aşağıda bir örnek verilmiştir.
+Azure CLI'yi kullanarak sırları oluşturun. Aşağıda bir örnektir.
 
-```bash
+```azurecli
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede aşağıdaki konular ele alınmaktadır:
+Bu makalede aşağıdaki konular ele alınmıştır:
 > [!div class="checklist"]
-> * OpenShift kümesi için SSH anahtarlarını yönetmek üzere bir Anahtar Kasası oluşturun.
-> * Azure bulut çözümü sağlayıcısı tarafından kullanılmak üzere bir hizmet sorumlusu oluşturun.
+> * OpenShift kümesi için SSH tuşlarını yönetmek için bir anahtar kasası oluşturun.
+> * Azure Bulut Çözüm Sağlayıcısı tarafından kullanılmak üzere bir hizmet ilkesi oluşturun.
 
-Sonra, bir OpenShift kümesi dağıtın:
+Ardından, bir OpenShift kümesi dağıtın:
 
-- [OpenShift kapsayıcı platformunu dağıtma](./openshift-container-platform-3x.md)
-- [OpenShift kapsayıcı platformu dağıtımını otomatik olarak yönetilen Market Teklifini dağıtma](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [OpenShift Konteyner Platform'u dağıt](./openshift-container-platform-3x.md)
+- [OpenShift Konteyner Platformu Kendi Kendini Yöneten Pazar Teklifi dağıtın](./openshift-container-platform-3x-marketplace-self-managed.md)

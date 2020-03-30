@@ -1,6 +1,6 @@
 ---
-title: Azure Blob depolamada verileri kopyalama ve dönüştürme
-description: BLOB depolama alanına ve veri kopyalama ve Data Factory kullanarak blob depolamada veri dönüştürme hakkında bilgi edinin.
+title: Azure Blob depolama alanında verileri kopyalama ve dönüştürme
+description: Veri Fabrikası'nı kullanarak Blob depolamaya gelen ve bu depolamadan gelen verileri nasıl kopyalayacağım ve Blob depolamadaki verileri nasıl dönüştüreceklerini öğrenin.
 ms.author: jingwang
 author: linda33wj
 manager: shwang
@@ -10,80 +10,80 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: f21c99b18102adc9d43c21964e51b7c7b769771e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065503"
 ---
-# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Blob depolamasında verileri kopyalama ve dönüştürme
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-blob-connector.md)
 > * [Geçerli sürüm](connector-azure-blob-storage.md)
 
-Bu makalede, Azure Blob depolama alanından verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir ve veri akışı kullanarak Azure Blob depolama alanındaki verileri dönüştürebilirsiniz. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
+Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure Blob depolamadan ve Azure Blob depolamasından kopyalanması ve Azure Blob depolamasındaverileri dönüştürmek için Veri Akışı'nın nasıl kullanılacağı özetlenir. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Azure Blob Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Azure Blob bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Veri akışını eşleme](concepts-data-flow-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
-- [Etkinliği sil](delete-activity.md)
+- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)
+- [Etkinliği silme](delete-activity.md)
 
-Kopyalama etkinliği için bu blob Storage Bağlayıcısı şunları destekler:
+Kopyalama etkinliği için bu Blob depolama bağlayıcısı şunları destekler:
 
-- Gelen genel amaçlı Azure depolama hesapları ve sık/seyrek erişimli blob depolama ve BLOB'ları kopyalanıyor. 
-- Azure kaynaklarında kimlik doğrulamaları için hesap anahtarı, hizmet paylaşılan erişim imzası, asıl veya yönetilen hizmet kimliği kullanarak BLOB'ları kopyalanıyor.
-- Blok kopyalama bloblarından eklemek ya da blok blobları, sayfa blobları ve yalnızca veriler kopyalanıyor.
-- Blob 'ları, [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile olduğu gibi kopyalama veya ayrıştırma veya oluşturma.
-- [Kopyalama sırasında dosya meta verilerini koru](#preserve-metadata-during-copy).
+- Blob'ları genel amaçlı Azure depolama hesaplarına ve sıcak/havalı blob depolama sına kopyalama. 
+- Azure kaynakları kimlik doğrulamaları için hesap anahtarı, hizmet paylaşılan erişim imzası, hizmet sorumlusu veya yönetilen kimlikler kullanarak blob'ları kopyalama.
+- Blobs'ı blok, ek veya sayfa lekelerinden kopyalama ve yalnızca blobları engellemek için verileri kopyalama.
+- Blobs'u olduğu gibi kopyalama veya desteklenen dosya [biçimleri ve sıkıştırma codec'leri](supported-file-formats-and-compression-codecs.md)ile blobs'ları ayrıştırma veya oluşturma.
+- [Kopya sırasında dosya meta verilerini koruyun.](#preserve-metadata-during-copy)
 
 >[!IMPORTANT]
->Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip blob depolamaya bağlanmak için Azure tümleştirme çalışma zamanı 'nı kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
+>Güvenilen Microsoft hizmetlerinin Azure Depolama güvenlik duvarı ayarlarında **bu depolama hesabı seçeneğine erişmesini** etkinleştiriyorsanız ve Blob Depolama'nıza bağlanmak için Azure tümleştirme çalışma süresini kullanmak istiyorsanız, yönetilen kimlik kimlik [doğrulaması](#managed-identity)kullanmanız gerekir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Blob depolama alanına belirli Data Factory varlıkları tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, Blob depolamasına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Azure Blob Bağlayıcısı aşağıdaki kimlik doğrulama türlerini desteklemek için ilgili ayrıntılar bölümüne bakın:
+Azure Blob bağlayıcısı aşağıdaki kimlik doğrulama türlerini destekler ve ayrıntılarla ilgili bölüme bakın:
 
 - [Hesap anahtarı kimlik doğrulaması](#account-key-authentication)
 - [Paylaşılan erişim imzası kimlik doğrulaması](#shared-access-signature-authentication)
 - [Hizmet sorumlusu kimlik doğrulaması](#service-principal-authentication)
-- [Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler](#managed-identity)
+- [Azure kaynakları kimlik doğrulaması için yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->SQL veri ambarı 'na veri yüklemek için PolyBase kullanılırken, kaynak veya hazırlama blobu depolama alanı sanal ağ uç noktasıyla yapılandırılmışsa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız ve şirket içinde barındırılan Integration Runtime sürümle kullanmanız gerekir 3,18 veya üzeri. Daha fazla yapılandırma önkoşulları ile [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
+>Verileri SQL Veri Ambarı'na yüklemek için PolyBase'i kullanırken, kaynak veya evreleme Blob depolama alanınız Virtual Network bitiş noktasıyla yapılandırıldıysa, PolyBase tarafından gerekli olduğu şekilde yönetilen kimlik doğrulamasını kullanmalı ve sürümle birlikte Kendi kendine barındırılan Tümleştirme Runtime'ı kullanmalısınız 3.18 veya üzeri. Daha fazla yapılandırma ön koşuluyla [yönetilen kimlik kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 >[!NOTE]
->Hdınsights ve Azure Machine Learning etkinlikleri yalnızca Azure Blob depolama hesabı anahtarı kimlik doğrulamasını destekler.
+>HDInsights ve Azure Machine Learning etkinlikleri yalnızca Azure Blob depolama hesabı anahtar kimlik doğrulamasını destekler.
 
 ### <a name="account-key-authentication"></a>Hesap anahtarı kimlik doğrulaması
 
-Depolama hesabı anahtarı kimlik doğrulaması kullanmak için aşağıdaki özellikler desteklenir:
+Depolama hesabı anahtar kimlik doğrulamasını kullanmak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Yes |
-| connectionString | ConnectionString özelliği için depolama alanına bağlanmak için gereken bilgileri belirtin. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . (Veri deponuz özel bir ağdaysa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Tür özelliği **AzureBlobStorage** (önerilen) veya **AzureStorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Evet |
+| Connectionstring | ConnectionString özelliği için Depolama'ya bağlanmak için gereken bilgileri belirtin. <br/> Hesap anahtarını Azure Key Vault'a `accountKey` koyabilir ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. |Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağdaysa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 >[!NOTE]
->Hesap anahtarı kimlik doğrulaması kullanılırken ikincil blob hizmeti uç noktası desteklenmez. Diğer kimlik doğrulama türlerini kullanabilirsiniz.
+>İkincil Blob Service Endpoint hesap anahtarı kimlik doğrulaması kullanırken desteklenmez. Diğer kimlik doğrulama türlerini kullanabilirsiniz.
 
 >[!NOTE]
->"AzureStorage" tür bağlı hizmeti kullanıyorsanız, hala olarak desteklenmektedir-olduğu sırada bu yeni "AzureBlobStorage" kullanmak için bağlı hizmet türü ileriye dönük önerilir.
+>"AzureStorage" türüne bağlı hizmeti kullanıyorsanız, bu yeni "AzureBlobStorage" bağlantılı hizmet türünü ileriye dönük olarak kullanmanız önerilirken, bu hizmet yine de olduğu gibi desteklenir.
 
 **Örnek:**
 
@@ -103,7 +103,7 @@ Depolama hesabı anahtarı kimlik doğrulaması kullanmak için aşağıdaki öz
 }
 ```
 
-**Örnek: Azure Key Vault hesap anahtarını depolayın**
+**Örnek: Azure Key Vault'ta mağaza hesabı anahtarı**
 
 ```json
 {
@@ -131,27 +131,27 @@ Depolama hesabı anahtarı kimlik doğrulaması kullanmak için aşağıdaki öz
 
 ### <a name="shared-access-signature-authentication"></a>Paylaşılan erişim imzası kimlik doğrulaması
 
-Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bir istemci belirli bir süre boyunca depolama hesabınızdaki nesnelere sınırlı vermek için paylaşılan erişim imzası kullanabilirsiniz. Hesap erişim anahtarlarınızı paylaşmak zorunda değilsiniz. Paylaşılan erişim imzası için depolama kaynak kimliği doğrulanmış erişim için gerekli tüm bilgileri sorgu parametrelerini kapsayan bir URI'dir. Paylaşılan erişim imzası ile depolama kaynaklarına erişmek için istemci yalnızca uygun oluşturucu veya yöntemi için paylaşılan erişim imzasını geçmesi gerekir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. paylaşılan erişim [imzaları: paylaşılan erişim imzası modelini anlama](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bir istemciye depolama hesabınızdaki nesnelere belirli bir süre için sınırlı izinler vermek için paylaşılan erişim imzasını kullanabilirsiniz. Hesap erişim anahtarlarınızı paylaşmak zorunda değilsiniz. Paylaşılan erişim imzası, sorgu parametrelerinde bir depolama kaynağına kimlik doğrulaması için gerekli tüm bilgileri kapsayan bir URI'dir. Paylaşılan erişim imzasıyla depolama kaynaklarına erişmek için istemcinin yalnızca paylaşılan erişim imzasını uygun oluşturucuya veya yönteme geçirmesi gerekir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzaları: Paylaşılan erişim imza modelini anlayın.](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 > [!NOTE]
->- Data Factory artık **hizmet paylaşılan erişim imzalarını** ve **Hesap paylaşılan erişim imzalarını**desteklemektedir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../storage/common/storage-sas-overview.md).
->- Daha sonra veri kümesi Yapılandırması'nda klasör yolu kapsayıcı düzeyinden başlayarak mutlak bir yoludur. Bir yolu, SAS URI'sini birlikte hizalanır yapılandırmanız gerekir.
+>- Veri Fabrikası artık hem **hizmet paylaşılan erişim imzalarını** hem de **hesap paylaşılan erişim imzalarını**destekler. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni](../storage/common/storage-sas-overview.md)ver.
+>- Daha sonraki veri kümesi yapılandırmasında, klasör yolu kapsayıcı düzeyinden başlayarak mutlak yoldur. SAS URI'nizdeki yolla uyumlu bir yapıya sahip olanı yapılandırmanız gerekir.
 
 > [!TIP]
-> Depolama hesabınız için hizmet paylaşılan erişim imzası oluşturmak için aşağıdaki PowerShell komutlarını yürütebilirsiniz. Yer tutucuları değiştirmeniz ve gerekli izni verin.
+> Depolama hesabınız için paylaşılan bir hizmet erişim imzası oluşturmak için aşağıdaki PowerShell komutlarını gerçekleştirebilirsiniz. Yer tutucuları değiştirin ve gerekli izni ver.
 > `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Paylaşılan erişim imzası kimlik doğrulaması kullanmak için aşağıdaki özellikler desteklenir:
+Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Yes |
-| sasUri | Blob/kapsayıcı gibi depolama kaynakları için paylaşılan erişim imzası URI 'sini belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, otomatik dönüşten yararlanmak ve belirteç bölümünü kaldırmak için Azure Key Vault SAS belirtecini de koyabilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanının kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Tür özelliği **AzureBlobStorage** (önerilen) veya **AzureStorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Evet |
+| sasUri | Blob/konteyner gibi Depolama kaynaklarına paylaşılan erişim imzası URI'yi belirtin. <br/>Bu alanı Güvenli Bir Şekilde Veri Fabrikası'nda depolamak için SecureString olarak işaretleyin. Otomatik döndürmeden yararlanmak ve belirteç kısmını kaldırmak için Azure Key Vault'a SAS belirteci de koyabilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. |Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Zamanı'nı veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 >[!NOTE]
->"AzureStorage" tür bağlı hizmeti kullanıyorsanız, hala olarak desteklenmektedir-olduğu sırada bu yeni "AzureBlobStorage" kullanmak için bağlı hizmet türü ileriye dönük önerilir.
+>"AzureStorage" türüne bağlı hizmeti kullanıyorsanız, bu yeni "AzureBlobStorage" bağlantılı hizmet türünü ileriye dönük olarak kullanmanız önerilirken, bu hizmet yine de olduğu gibi desteklenir.
 
 **Örnek:**
 
@@ -174,7 +174,7 @@ Paylaşılan erişim imzası kimlik doğrulaması kullanmak için aşağıdaki �
 }
 ```
 
-**Örnek: Azure Key Vault hesap anahtarını depolayın**
+**Örnek: Azure Key Vault'ta mağaza hesabı anahtarı**
 
 ```json
 {
@@ -203,42 +203,42 @@ Paylaşılan erişim imzası kimlik doğrulaması kullanmak için aşağıdaki �
 }
 ```
 
-Paylaşılan erişim imzası URI'si oluşturduğunuzda, aşağıdaki noktaları göz önünde bulundurun:
+Paylaşılan bir erişim imzası URI oluşturduğunuzda, aşağıdaki noktaları göz önünde bulundurun:
 
-- Uygun okuma/yazma izinleri (okuma, yazma, okuma/yazma) bağlı hizmet, data factory'de nasıl kullanıldığına göre nesneler üzerinde ayarlayın.
-- **Süre sonu süresini** uygun şekilde ayarlayın. İşlem hattının etkin dönemini içinde depolama nesnelerine erişim süresi sona ermiyor emin olun.
-- URI, ihtiyacınıza göre doğru kapsayıcıda/blobda oluşturulmalıdır. Data Factory, bu belirli bir bloba erişmek bir blob için paylaşılan erişim imzası URI'si sağlar. BLOB depolama kapsayıcısına yönelik paylaşılan erişim imzası URI 'SI, Data Factory o kapsayıcıdaki Bloblar arasında yineleme yapmasına izin verir. Daha sonra daha fazla veya daha az nesne erişim sağlamak veya paylaşılan erişim imzası URI'si güncelleştirmek için yeni bir URI'ya bağlı hizmet güncelleştirmeyi unutmayın.
+- Veri fabrikanızda bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığına bağlı olarak nesneler üzerinde uygun okuma/yazma izinleri ayarlayın.
+- **Son kullanma süresini** uygun şekilde ayarlayın. Depolama nesnelerine erişimin ardışık ardışık etkin süre içinde sona ermediğinden emin olun.
+- URI ihtiyaca göre doğru kap/blob da oluşturulmalıdır. Bir blob için paylaşılan erişim imzası URI Veri Fabrikası belirli bir blob erişmesine olanak sağlar. Blob depolama konteynerine ortak erişim imzası URI, Veri Fabrikası'nın bu kapsayıcıdaki lekeleri tekrarlamasına olanak tanır. Daha sonra daha fazla veya daha az nesneye erişim sağlamak veya paylaşılan erişim imzası URI'yi güncelleştirmek için bağlantılı hizmeti yeni URI ile güncelleştirmeyi unutmayın.
 
 ### <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
 
-Azure depolama hizmeti sorumlusu kimlik doğrulaması için genel olarak, [Azure Active Directory kullanarak Azure depolama 'ya erişimi doğrulama](../storage/common/storage-auth-aad.md)bölümüne bakın.
+Azure Depolama hizmeti nin temel kimlik doğrulaması için Azure [Etkin Dizin'i kullanarak Azure Depolama'ya kimlik doğrulama](../storage/common/storage-auth-aad.md)erişimine bakın.
 
-Hizmet sorumlusu kimlik doğrulaması kullanmak için aşağıdaki adımları izleyin:
+Hizmet temel kimlik doğrulamasını kullanmak için aşağıdaki adımları izleyin:
 
-1. Uygulamanızı [bir Azure AD kiracısıyla](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)kaydederek Azure Active Directory (Azure AD) uygulamasına bir uygulama varlığı kaydedin. Bağlı hizmetini tanımlamak için kullandığınız şu değerleri not edin:
+1. Uygulamanızı [bir Azure AD kiracısıyla kaydederek](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)bir uygulama kuruluşunu Azure Etkin Dizin'e (Azure AD) kaydedin. Bağlantılı hizmeti tanımlamak için kullandığınız aşağıdaki değerlere dikkat edin:
 
     - Uygulama Kimliği
     - Uygulama anahtarı
     - Kiracı Kimliği
 
-2. Hizmet sorumlusu uygun Azure Blob Depolama alanında izni. Roller hakkında daha fazla ayrıntı içeren [RBAC Ile Azure depolama verilerine yönelik erişim haklarını yönetme](../storage/common/storage-auth-aad-rbac.md) bölümüne bakın.
+2. Azure Blob depolama alanında hizmet müdürüne uygun izin ver. Roller hakkında daha fazla ayrıntı içeren [RBAC ile Azure Depolama verilerine erişim haklarını yönet'e](../storage/common/storage-auth-aad-rbac.md) bakın.
 
-    - **Kaynak olarak**, erişim denetimi 'NDE (IAM), en az **Depolama Blobu veri okuyucu** rolü verin.
-    - **Havuz olarak**, erişim denetimi 'NDE (IAM), en az **Depolama Blobu veri katılımcısı** rolü verin.
+    - **Kaynak olarak,** Access denetiminde (IAM), en azından **Depolama Blob Veri Okuyucu** rolünü verir.
+    - **Lavabo olarak**, Access denetiminde (IAM), en azından **Depolama Blob Veri Katılımcısı** rolünü verin.
 
-Bu özellikler bir Azure Blob Depolama bağlı hizmeti için desteklenir:
+Bu özellikler, Azure Blob depolamasına bağlı bir hizmet için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/`düzeniyle Azure Blob Storage hizmeti uç noktasını belirtin. |Yes |
-| servicePrincipalId | Uygulamanın istemci kimliği belirtin. | Yes |
-| servicePrincipalKey | Uygulama anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, Azure portalının sağ üst köşedeki fare gelerek alın. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . (Veri deponuz özel bir ağdaysa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Tür özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Evet |
+| Serviceendpoint | Azure Blob depolama hizmeti bitiş noktasını `https://<accountName>.blob.core.windows.net/`' deseni ile belirtin. |Evet |
+| hizmetPrincipalId | Uygulamanın istemci kimliğini belirtin. | Evet |
+| servicePrincipalKey | Uygulamanın anahtarını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| Kiracı | Uygulamanızın bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı kimliği) belirtin. Azure portalının sağ üst köşesinde fareyi gezdirerek alın. | Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağdaysa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 >[!NOTE]
->Hizmet sorumlusu kimlik doğrulaması yalnızca "AzureBlobStorage" türü tarafından desteklenen bağlı hizmeti, ancak değil önceki "AzureStorage" bağlantılı hizmet türü.
+>Hizmet temel kimlik doğrulaması yalnızca "AzureBlobStorage" türüne bağlı hizmet tarafından desteklenir, ancak önceki "AzureStorage" türüne bağlı hizmet tarafından desteklenmez.
 
 **Örnek:**
 
@@ -264,32 +264,32 @@ Bu özellikler bir Azure Blob Depolama bağlı hizmeti için desteklenir:
 }
 ```
 
-### <a name="managed-identity"></a>Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Azure kaynakları kimlik doğrulaması için yönetilen kimlikler
 
-Veri Fabrikası, bu belirli veri fabrikasını temsil eden [Azure kaynakları için yönetilen bir kimlikle](data-factory-service-identity.md)ilişkilendirilebilir. Bu yönetilen kimliği, kendi hizmet sorumlunuzu kullanmaya benzer şekilde BLOB depolama kimlik doğrulaması için doğrudan kullanabilirsiniz. Bu belirlenen / için Blob depolamanızın erişim ve kopyalama veri fabrikasına sağlar.
+Bir veri fabrikası, bu özel veri fabrikasını temsil eden Azure kaynakları için yönetilen bir [kimlikle](data-factory-service-identity.md)ilişkilendirilebilir. Blob depolama kimlik doğrulaması için bu yönetilen kimliği kendi hizmet yöneticinizi kullanmaya benzer şekilde doğrudan kullanabilirsiniz. Bu, belirlenmiş fabrikanın Blob depolamanıza/verilerine erişmesine ve kopyalanmasına olanak tanır.
 
-Azure Storage kimlik doğrulaması için [Azure Active Directory kullanarak genel olarak Azure depolama 'ya erişim kimlik doğrulaması](../storage/common/storage-auth-aad.md) konusuna bakın. Azure kaynakları ile kimlik doğrulaması için yönetilen kimlikleri kullanmak için bu adımları izleyin:
+Genel olarak Azure Depolama kimlik doğrulaması için [Azure Etkin Dizinini kullanarak Azure Depolama'ya kimlik doğrulama](../storage/common/storage-auth-aad.md) erişimine bakın. Azure kaynakları kimlik doğrulaması için yönetilen kimlikleri kullanmak için aşağıdaki adımları izleyin:
 
-1. Fabrikalarınızla birlikte oluşturulan **yönetilen kimlik nesne kimliği** değerini kopyalayarak [Veri Fabrikası tarafından yönetilen kimlik bilgilerini alın](data-factory-service-identity.md#retrieve-managed-identity) .
+1. Fabrikanızla birlikte oluşturulan **yönetilen kimlik nesnesi kimliğinin** değerini kopyalayarak [veri fabrikası tarafından yönetilen kimlik bilgilerini alın.](data-factory-service-identity.md#retrieve-managed-identity)
 
-2. Azure Blob Depolama alanında yönetilen kimlik uygun izni verin. Roller hakkında daha fazla ayrıntı içeren [RBAC Ile Azure depolama verilerine yönelik erişim haklarını yönetme](../storage/common/storage-auth-aad-rbac.md) bölümüne bakın.
+2. Azure Blob depolama alanında yönetilen kimlik doğru iznini ver. Roller hakkında daha fazla ayrıntı içeren [RBAC ile Azure Depolama verilerine erişim haklarını yönet'e](../storage/common/storage-auth-aad-rbac.md) bakın.
 
-    - **Kaynak olarak**, erişim denetimi 'NDE (IAM), en az **Depolama Blobu veri okuyucu** rolü verin.
-    - **Havuz olarak**, erişim denetimi 'NDE (IAM), en az **Depolama Blobu veri katılımcısı** rolü verin.
+    - **Kaynak olarak,** Access denetiminde (IAM), en azından **Depolama Blob Veri Okuyucu** rolünü verir.
+    - **Lavabo olarak**, Access denetiminde (IAM), en azından **Depolama Blob Veri Katılımcısı** rolünü verin.
 
 >[!IMPORTANT]
->Blob 'dan (kaynak veya hazırlama olarak) verileri SQL veri ambarı 'na yüklemek için PolyBase kullanırsanız, [BLOB için yönetilen](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) kimlik kimlik doğrulaması kullanılırken 1. ve 2. adımları Azure Active Directory (Azure AD) ve 2) SQL veritabanı sunucunuza kaydetme, SQL veritabanı sunucunuza Depolama Blobu veri katılımcısı rolünü atayın; Rest Data Factory tarafından işlenir. BLOB depolama alanı bir Azure sanal ağ uç noktası ile yapılandırılmışsa, verileri dosyadan yüklemek için PolyBase kullanmak üzere PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
+>Blob'dan (kaynak veya evreleme olarak) verileri SQL Veri Ambarı'na yüklemek için PolyBase kullanıyorsanız, Blob için yönetilen kimlik kimlik doğrulamasını kullanırken, [bu kılavuzdaki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1 ve 2 adımlarını da takip ettiğinizden emin olun 1) SQL Veritabanı sunucunuzu Azure Active Directory (Azure AD) ile kaydedin ve 2) Depolama Blob Veri Katılımcısı rolünü SQL Veritabanı sunucunuza atayın; geri kalanı Veri Fabrikası tarafından işlenir. Blob depolama alanınız, ondan veri yüklemek için PolyBase'i kullanmak üzere bir Azure Sanal Ağ bitiş noktasıyla yapılandırıldıysa, PolyBase tarafından gerekli olduğu şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
 
-Bu özellikler bir Azure Blob Depolama bağlı hizmeti için desteklenir:
+Bu özellikler, Azure Blob depolamasına bağlı bir hizmet için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/`düzeniyle Azure Blob Storage hizmeti uç noktasını belirtin. |Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . (Veri deponuz özel bir ağdaysa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Tür özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Evet |
+| Serviceendpoint | Azure Blob depolama hizmeti bitiş noktasını `https://<accountName>.blob.core.windows.net/`' deseni ile belirtin. |Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağdaysa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 > [!NOTE]
-> Kimlik doğrulaması yalnızca "AzureBlobStorage" tarafından desteklenen Azure kaynakları için yönetilen kimlikleri bağlantılı hizmet türü ancak değil önceki "AzureStorage" bağlantılı hizmet türü. 
+> Azure kaynakları kimlik doğrulaması için yönetilen kimlikler yalnızca "AzureBlobStorage" türüne bağlı hizmet tarafından desteklenir, ancak önceki "AzureStorage" türüne bağlı hizmet tarafından desteklenmez. 
 
 **Örnek:**
 
@@ -311,18 +311,18 @@ Bu özellikler bir Azure Blob Depolama bağlı hizmeti için desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Biçim tabanlı veri kümesindeki `location` ayarları altında Azure blobu için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler, biçim tabanlı veri `location` kümesinde ayarlar altında Azure Blob için desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Veri kümesindeki konumun Type özelliği **AzureBlobStorageLocation**olarak ayarlanmalıdır. | Yes      |
-| kapsayıcı  | Blob kapsayıcısı.                                          | Yes      |
-| folderPath | Verilen kapsayıcı altındaki klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
-| fileName   | Verilen kapsayıcı + folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
+| type       | Veri kümesindeki konumun tür özelliği **AzureBlobStorageLocation**olarak ayarlanmalıdır. | Evet      |
+| kapsayıcı  | Blob kabı.                                          | Evet      |
+| folderPath | Verilen kapsayıcının altındaki klasöre giden yol. Klasöre filtre açmak için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarlarını belirtin. | Hayır       |
+| fileName   | Verilen kapsayıcı + folderPath altında dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarlarını belirtin. | Hayır       |
 
 **Örnek:**
 
@@ -353,27 +353,27 @@ Biçim tabanlı veri kümesindeki `location` ayarları altında Azure blobu içi
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Blob Depolama kaynak ve havuz desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde Blob depolama kaynağı ve lavabo tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="blob-storage-as-a-source-type"></a>BLOB Depolama kaynak türü
+### <a name="blob-storage-as-a-source-type"></a>Kaynak türü olarak blob depolama
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Biçim tabanlı kopyalama kaynağında `storeSettings` ayarları altında Azure blobu için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` kaynağındaki ayarlar altında Azure Blob için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` altındaki tür özelliği **AzureBlobStorageReadSettings**olarak ayarlanmalıdır. | Yes                                           |
-| özyinelemeli                | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında bir dosya tabanlı depolama, bir boş klasör veya alt klasör olduğunu unutmayın kopyalanır değil veya havuz oluşturulur. İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır                                            |
-| prefix                   | Kaynak bloblarını filtrelemek için veri kümesinde yapılandırılan, belirtilen kapsayıcının altındaki blob adı için ön ek. Adı bu önek ile başlayan blob 'lar seçilidir. <br>Yalnızca `wildcardFolderPath` ve `wildcardFileName` özellikleri belirtilmediğinde geçerlidir. | Hayır                                                          |
-| Yavaya Cardfolderpath       | Kaynak klasörleri filtrelemek için veri kümesinde yapılandırılan, belirtilen kapsayıcının altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa çıkmak için `^` kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
-| Yavaya Cardfilename         | Kaynak dosyalarını filtrelemek için, belirtilen kapsayıcı ve folderPath/yaya Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa çıkmak için `^` kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | `fileName` veri kümesinde belirtilmemişse Evet |
-| modifiedDatetimeStart    | Dosyaları filtre özniteliğine dayanarak: son değişiklik. Son değiştirilme zamanı `modifiedDatetimeStart` ve `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  `modifiedDatetimeStart` DateTime değeri olduğunda ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd` DateTime değeri olduğunda ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir. | Hayır                                            |
-| modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                            |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                            |
+| type                     | Altındaki tür `storeSettings` özelliği **AzureBlobStorageReadSettings**olarak ayarlanmalıdır. | Evet                                           |
+| Özyinelemeli                | Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. Özyineleme gerçek olarak ayarlandığında ve lavabo dosya tabanlı bir depo olduğunda, boş bir klasörün veya alt klasörün kopyalanmadığını veya lavaboda oluşturulmadığını unutmayın. İzin verilen değerler **doğru** (varsayılan) ve **yanlıştır.** | Hayır                                            |
+| Önek                   | Kaynak lekeleri filtrelemek için veri kümesinde yapılandırılan verilen kapsayıcının altındaki blob adı için önek. Adı bu önek ile başlayan blobs seçilir. <br>Yalnızca özellikler `wildcardFolderPath` belirtilmediğinde geçerlidir. `wildcardFileName` | Hayır                                                          |
+| joker KarakterFolderPath       | Kaynak klasörlerine filtre uygulayacak şekilde veri kümesinde yapılandırılan verilen kapsayıcının altındaki joker karakteriçeren klasör yolu. <br>İzin verilen joker `*` karakterler şunlardır: (sıfır `?` veya daha fazla karakterle eşleşir) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın. <br>Klasör ve [dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. | Hayır                                            |
+| jokerKarakterFileName         | Kaynak dosyaları filtrelemek için verilen kapsayıcı + folderPath/jokerKarakterFolderPath altında joker karakter içeren dosya adı. <br>İzin verilen joker `*` karakterler şunlardır: (sıfır `?` veya daha fazla karakterle eşleşir) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın.  Klasör ve [dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. | Veri `fileName` kümesinde belirtilmemişse evet |
+| modifiyeDatetimeBaşlat    | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine dosya özniteliği filtresi uygulanamayacağı anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir. | Hayır                                            |
+| modifiedDatetimeEnd      | Yukarıdakiyle aynı.                                               | Hayır                                            |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır                                            |
 
 > [!NOTE]
-> Parquet/delimited metin biçimi için, sonraki bölümde bahsedilen **Blobsource** türü kopyalama etkinliği kaynağı, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam etmektedir. Bu yeni modeli ileriye doğru kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçti.
+> Parke/sınırlı metin biçimi için, bir sonraki bölümde belirtilen **BlobSource** türü kopyalama etkinlik kaynağı geriye dönük uyumluluk için olduğu gibi desteklenir. İleriye dönük bu yeni modeli kullanmanız önerilir ve ADF yazarlı UI bu yeni türleri oluşturmaya geçti.
 
 **Örnek:**
 
@@ -416,18 +416,18 @@ Biçim tabanlı kopyalama kaynağında `storeSettings` ayarları altında Azure 
 ]
 ```
 
-### <a name="blob-storage-as-a-sink-type"></a>Bir havuz türü olarak BLOB Depolama alanı
+### <a name="blob-storage-as-a-sink-type"></a>Lavabo türü olarak blob depolama
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopya havuzunda `storeSettings` ayarları altında desteklenir:
+Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` lavabosunda ayarlar altında Azure Blob için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` altındaki tür özelliği **AzureBlobStorageWriteSettings**olarak ayarlanmalıdır. | Yes      |
-| copyBehavior             | Kaynak dosyaları bir dosya tabanlı veri deposundan olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yol, hedef dosya hedef klasöre göreli yoluna aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlarına sahip. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya ya da blob adı belirtilirse, birleştirilmiş dosya adı belirtilen adıdır. Aksi takdirde, bir otomatik olarak oluşturulan dosya adı değil. | Hayır       |
-| Blocksizeınmb | Blok bloblarına veri yazmak için kullanılan blok boyutunu MB olarak belirleyin. [Blok Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer **4 ile 100 MB arasındadır**. <br/>Varsayılan olarak, ADF, kaynak depolama türü ve verilerinize göre blok boyutunu otomatik olarak belirlenir. Blob 'a ikili olmayan kopya için, varsayılan blok boyutu 100 MB 'tır, bu nedenle en fazla 4,95 TB veriye uyum sağlar. Verileriniz büyük olmadığında en iyi durumda olmayabilir, özellikle de kötü ağ ile şirket içinde barındırılan Integration Runtime, işlem zaman aşımı veya performans sorunu ile sonuçlanır. Açıkça bir blok boyutu belirtebilirsiniz, ancak Blocksizeınmb * 50000, verileri depolamak için yeterince büyük olduğundan, kopyalama etkinliği çalıştırması başarısız olur. | Hayır |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır       |
+| type                     | Altındaki tür `storeSettings` özelliği **AzureBlobStorageWriteSettings**olarak ayarlanmalıdır. | Evet      |
+| copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosya olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>- Koruma Hiyerarşisi (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasörüne göreli yolu hedef klasöre hedef dosyanın göreli yolu ile aynıdır.<br/><b>- FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak oluşturulmuş adları vardır. <br/><b>- Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya veya blob adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulmuş bir dosya adıdır. | Hayır       |
+| blockSizeInMB | Blobs engellemek için veri yazmak için kullanılan MB blok boyutunu belirtin. [Blobs Engelle hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer **4 ile 100 MB arasındadır.** <br/>Varsayılan olarak, ADF kaynak mağaza türüve verilerinize bağlı olarak blok boyutunu otomatik olarak belirler. Blob'a ikili olmayan kopya için varsayılan blok boyutu en fazla 4,95 TB veriye sığacak şekilde 100 MB'dır. Verileriniz büyük olmadığında, özellikle de çalışma zaman ayarı veya performans sorunuyla sonuçlanan kötü ağla Kendi kendine barındırılan Tümleştirme Çalışma Süresi'ni kullandığınızda en iyi olmayabilir. BlockSizeInMB*50000'in verileri depolayacak kadar büyük olduğundan emin olurken, bir blok boyutunu açıkça belirtebilirsiniz, aksi takdirde kopyalama etkinliği başarısız olur. | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır       |
 
 **Örnek:**
 
@@ -466,142 +466,143 @@ Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopya havuzunda `storeS
 
 ### <a name="folder-and-file-filter-examples"></a>Klasör ve dosya filtresi örnekleri
 
-Bu bölümde, klasör yolu ve dosya adının joker karakter filtreleriyle elde edilen davranışı açıklanmaktadır.
+Bu bölümde, klasör yolunun ve dosya adının joker karakter filtreleriyle ortaya çıkan davranışı açıklanmaktadır.
 
-| folderPath | fileName | özyinelemeli | Kaynak klasör yapısı ve filtre sonucu ( **kalın** olan dosyalar alınır)|
+| folderPath | fileName | Özyinelemeli | Kaynak klasör yapısı ve filtre sonucu **(kalın** renkteki dosyalar alınır)|
 |:--- |:--- |:--- |:--- |
-| `container/Folder*` | (boş, Varsayılanı kullan) | false | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `container/Folder*` | (boş, Varsayılanı kullan) | true | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `container/Folder*` | `*.csv` | false | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `container/Folder*` | `*.csv` | true | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `container/Folder*` | (boş, varsayılan kullanın) | yanlış | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
+| `container/Folder*` | (boş, varsayılan kullanın) | true | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
+| `container/Folder*` | `*.csv` | yanlış | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
+| `container/Folder*` | `*.csv` | true | kapsayıcı<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
 
-### <a name="some-recursive-and-copybehavior-examples"></a>Özyinelemeli ve copyBehavior örnekler
+### <a name="some-recursive-and-copybehavior-examples"></a>Bazı özyinelemeli ve copyBehavior örnekleri
 
-Bu bölümde, elde edilen davranışını özyinelemeli ve copyBehavior değer farklı birleşimleri kopyalama işlemi açıklanmaktadır.
+Bu bölümde, özyinelemeli ve copyBehavior değerlerinin farklı birleşimleri için Kopyalama işleminin ortaya çıkan davranışı açıklanmaktadır.
 
-| özyinelemeli | copyBehavior | Kaynak klasör yapısı | Sonuçta elde edilen hedef |
+| Özyinelemeli | copyBehavior | Kaynak klasör yapısı | Elde çıkan hedef |
 |:--- |:--- |:--- |:--- |
-| true |preserveHierarchy | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef klasör Klasör1, kaynağı olarak aynı yapıya sahip oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef Klasör1 aşağıdaki yapısı ile oluşturulur: <br/><br/>Klasör1<br/>Fıle1 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/>dosya2 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/>file3 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/>File4 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/>File5 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad |
-| true |mergeFiles | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef Klasör1 aşağıdaki yapısı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 + File3 + File4 + File5 içerikleri, otomatik olarak oluşturulan bir dosya adına sahip tek bir dosyada birleştirilir. |
-| false |preserveHierarchy | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef klasör Klasör1 aşağıdaki yapısı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/><br/>Subfolder1 dosya3 File4 ve File5 ile toplanmış değil. |
-| false |flattenHierarchy | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef klasör Klasör1 aşağıdaki yapısı ile oluşturulur: <br/><br/>Klasör1<br/>Fıle1 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/>dosya2 için &nbsp;&nbsp;&nbsp;&nbsp;otomatik olarak ad<br/><br/>Subfolder1 dosya3 File4 ve File5 ile toplanmış değil. |
-| false |mergeFiles | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Hedef klasör Klasör1 aşağıdaki yapısı ile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 içerikleri, otomatik olarak oluşturulan dosya adına sahip tek bir dosyada birleştirilir. fıle1'de otomatik olarak oluşturulan adı<br/><br/>Subfolder1 dosya3 File4 ve File5 ile toplanmış değil. |
+| true |korumaHiyerarşisi | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef klasör Folder1 kaynakla aynı yapıyla oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 |
+| true |flattenHiyerarşi | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef Folder1 aşağıdaki yapıile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulmuş ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulmuş ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 için otomatik olarak oluşturulmuş ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 için otomatik olarak oluşturulmuş ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 için otomatik olarak oluşturulmuş ad |
+| true |birleştirmeDosyaları | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef Folder1 aşağıdaki yapıile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 içeriği otomatik olarak oluşturulmuş bir dosya adı ile bir dosyada birleştirilir. |
+| yanlış |korumaHiyerarşisi | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef klasör Folder1 aşağıdaki yapıile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
+| yanlış |flattenHiyerarşi | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef klasör Folder1 aşağıdaki yapıile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulmuş ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulmuş ad<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
+| yanlış |birleştirmeDosyaları | Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 | Hedef klasör Folder1 aşağıdaki yapı ile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 içeriği otomatik olarak oluşturulmuş bir dosya adı ile bir dosyada birleştirilir. File1 için otomatik olarak oluşturulmuş ad<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
 
-## <a name="preserve-metadata-during-copy"></a>Kopya sırasında meta verileri koru
+## <a name="preserve-metadata-during-copy"></a>Kopyalama sırasında meta verileri koruma
 
-Dosyaları Amazon S3/Azure Blob/Azure Data Lake Storage 2. Azure Data Lake Storage 2./Azure Blob 'a kopyaladığınızda, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz. [Meta verileri koru](copy-activity-preserve-metadata.md#preserve-metadata)'dan daha fazla bilgi edinin.
+Dosyaları Amazon S3/Azure Blob/Azure Veri Gölü Depolama Gen2'den Azure Veri Gölü Depolama Gen2/Azure Blob'a kopyalarken, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz. [Meta verileri koru](copy-activity-preserve-metadata.md#preserve-metadata)adresinden daha fazla bilgi edinin.
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
-Eşleme veri akışındaki verileri dönüştürürken, JSON, avro, sınırlandırılmış metin veya Parquet biçimindeki Azure Blob depolama 'dan dosyaları okuyabilir ve yazabilirsiniz. Daha fazla bilgi için bkz. veri akışı eşleme özelliğinde [kaynak dönüştürme](data-flow-source.md) ve [Havuz dönüştürme](data-flow-sink.md) .
+Veri akışını eşlemede verileri dönüştürürken, JSON, Avro, Sınırlı Metin veya Parke biçimindeAzure Blob Depolama'dan dosyaları okuyabilir ve yazabilirsiniz. Daha fazla bilgi için, eşleme veri akışı özelliğinde [kaynak dönüşümü](data-flow-source.md) ve [lavabo dönüşümüne](data-flow-sink.md) bakın.
 
-### <a name="source-transformation"></a>Kaynak dönüştürme
+### <a name="source-transformation"></a>Kaynak dönüşümü
 
-Kaynak dönüşümünde, Azure Blob depolama alanındaki bir kapsayıcı, klasör veya tek bir dosyadan okuma yapabilirsiniz. **Kaynak seçenekleri** sekmesi, dosyaların nasıl okunduğunu yönetmenizi sağlar. 
+Kaynak dönüşümünde, Azure Blob Depolama'daki bir kapsayıcı, klasör veya tek tek dosyadan okuyabilirsiniz. **Kaynak seçenekleri** sekmesi, dosyaların nasıl okunduğunu yönetmenize olanak tanır. 
 
 ![Kaynak seçenekleri](media/data-flow/sourceOptions1.png "Kaynak seçenekleri")
 
-**Joker karakter yolu:** Bir joker karakter deseninin kullanılması, ADF 'nin eşleşen her klasör ve dosyada tek bir kaynak dönüşümünde döngüye girmesine neden olur. Bu, tek bir akış içinde birden çok dosyayı işlemek için etkili bir yoldur. Mevcut joker karakter deseniniz üzerine getirildiğinde görüntülenen + işaretiyle birden çok joker karakter eşleştirme deseni ekleyin.
+**Joker karakter yolu:** Joker karakter deseni kullanmak, ADF'ye eşleşen her klasör ve dosyayı tek bir Kaynak dönüşümünde döngüye sokmasını emreder. Bu, tek bir akış içinde birden çok dosyayı işlemek için etkili bir yoldur. Varolan joker karakter deseninizin üzerinde gezinirken görünen + işaretiyle birden çok joker karakter eşleştirme deseni ekleyin.
 
-Kaynak kapsayıcısından bir düzeniyle eşleşen bir dosya serisi seçin. Yalnızca kapsayıcı, veri kümesinde belirtilebilir. Bu nedenle, joker karakter yolunuzda Ayrıca, kök klasörden klasör yolunuzdan de yer verilmelidir.
+Kaynak kapsayıcınızdan, desenle eşleşen bir dizi dosya seçin. Veri kümesinde yalnızca kapsayıcı belirtilebilir. Bu nedenle joker yolunuz, kök klasöründen klasör yolunuzu da içermelidir.
 
 Joker karakter örnekleri:
 
-* ```*``` herhangi bir karakter kümesini temsil eder
-* ```**``` özyinelemeli dizin iç içe geçirmeyi temsil eder
-* ```?``` bir karakter değiştirir
-* ```[]``` parantez içindeki daha fazla karakterden biriyle eşleşiyor
+* ```*```Herhangi bir karakter kümesini temsil eder
+* ```**```Özyinelemeli dizin iç içe geçme temsil eder
+* ```?```Bir karakterin yerine
+* ```[]```Köşeli ayraçlarda daha fazla karakterden biriyle eşleşir
 
-* ```/data/sales/**/*.csv```/Data/Sales altındaki tüm CSV dosyalarını alır
-* ```/data/sales/20??/**``` 20. yüzyıl içindeki tüm dosyaları alır
-* ```/data/sales/2004/*/12/[XY]1?.csv```, iki basamaklı bir sayı tarafından önekli X veya Y ile başlayan Aralık içinde 2004 içindeki tüm CSV dosyalarını alır
+* ```/data/sales/**/*.csv```Tüm csv dosyalarını /data/satış altında alır
+* ```/data/sales/20??/**/```20. yüzyıldaki tüm dosyaları alır
+* ```/data/sales/*/*/*.csv```CSV dosyalarını /data/sales altında iki seviye alır
+* ```/data/sales/2004/*/12/[XY]1?.csv```2004 yılında aralık ayında tüm csv dosyalarını iki basamaklı bir sayı ile önceden belirlenmiş X veya Y ile başlayarak alır
 
-**Bölüm kök yolu:** Dosya kaynağınızda bir ```key=value``` biçimiyle bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
+**Bölüm Kök Yolu:** Dosya kaynağınızda bir ```key=value``` biçimle bölümlenmiş klasörleriniz varsa (örneğin, yıl=2019), veri akışı veri akışınızdaki bir sütun adına bu bölüm klasörü ağacının üst düzeyini atayabilirsiniz.
 
 İlk olarak, bölümlenmiş klasörler ve okumak istediğiniz yaprak dosyaları olan tüm yolları içerecek şekilde bir joker karakter ayarlayın.
 
-![Bölüm kaynak dosyası ayarları](media/data-flow/partfile2.png "Bölüm dosyası ayarı")
+![Bölüm kaynak dosya ayarları](media/data-flow/partfile2.png "Bölüm dosyası ayarı")
 
-Klasör yapısının en üst düzeyinin ne olduğunu tanımlamak için bölüm kök yolu ayarını kullanın. Veri önizleme aracılığıyla verilerinizin içeriğini görüntülediğinizde, ADF 'nin klasör düzeylerinizde bulunan çözümlenmiş bölümleri eklemesini görürsünüz.
+Klasör yapısının en üst düzeyinin ne olduğunu tanımlamak için Bölüm Kök Yolu ayarını kullanın. Verilerinizin içeriğini bir veri önizlemesi aracılığıyla görüntülediğinizde, ADF'nin klasör düzeylerinizin her birinde bulunan çözülmüş bölümleri ekleyeceğini görürsünüz.
 
 ![Bölüm kök yolu](media/data-flow/partfile1.png "Bölüm kök yolu önizlemesi")
 
-**Dosya listesi:** Bu bir dosya kümesidir. İşlemek için göreli yol dosyalarının bir listesini içeren bir metin dosyası oluşturun. Bu metin dosyasına işaret edin.
+**Dosya listesi:** Bu bir dosya kümesi. İşlenmesi gereken göreli yol dosyalarının listesini içeren bir metin dosyası oluşturun. Bu metin dosyasını işaret edin.
 
-**Depolanacak sütun dosya adı:** Kaynak dosyanın adını verilerinizin bir sütununda depolayın. Dosya adı dizesini depolamak için buraya yeni bir sütun adı girin.
+**Dosya adını depolamak için sütun:** Verilerinizdeki bir sütunda kaynak dosyanın adını depolayın. Dosya adı dizesini depolamak için buraya yeni bir sütun adı girin.
 
-**Tamamlandıktan sonra:** Veri akışı çalıştıktan sonra kaynak dosyayla ilgili hiçbir şey yapma seçeneğini belirleyin, kaynak dosyayı silin veya kaynak dosyayı taşıyın. Taşımanın yolları görelidir.
+**Tamamlandıktan sonra:** Veri akışı çalıştırdıktan sonra kaynak dosyayla hiçbir şey yapmamayı, kaynak dosyayı silmeyi veya kaynak dosyayı taşımayı seçin. Taşıma yolları görecelidir.
 
-Kaynak dosyalarını başka bir konuma işleme sonrası taşımak için, önce dosya işlemi için "taşı" yı seçin. Sonra, "Kimden" dizinini ayarlayın. Yolunuzda herhangi bir joker karakter kullanmıyorsanız, "Kimden" ayarı kaynak klasörünüzün bulunduğu klasör olacaktır.
+Kaynak dosyalarını işleme sonrası başka bir konuma taşımak için önce dosya işlemi için "Taşı"yı seçin. Sonra, "from" dizinini ayarlayın. Yolunuz için herhangi bir joker karakter kullanmıyorsanız, "from" ayarı kaynak klasörünüzle aynı klasör olacaktır.
 
-Joker karakter içeren bir kaynak yolunuz varsa söz dizinizin aşağıdaki gibi görünmesi gerekir:
+Joker karakterli bir kaynak yolunuz varsa, sözdiziminiz aşağıdaki gibi görünür:
 
 ```/data/sales/20??/**/*.csv```
 
-"Kimden" olarak belirtebilirsiniz
+"From" olarak belirtebilirsiniz
 
 ```/data/sales```
 
-Ve "to" as
+Ve "to" olarak
 
 ```/backup/priorSales```
 
-Bu durumda,/Data/Sales altında kaynağı bulunan tüm dosyalar/Backup/priorsales' a taşınır.
+Bu durumda, /data/sales altında nistemin alınan tüm dosyalar /backup/priorSales'e taşınır.
 
 > [!NOTE]
-> Dosya işlemleri, bir işlem hattındaki veri akışını Yürüt etkinliğini kullanan bir işlem hattı çalıştırmasıyla (bir işlem hattı hata ayıklaması veya yürütme çalıştırması) veri akışını başlattığınızda çalışır. Dosya işlemleri veri akışı hata ayıklama *modunda çalışmaz.*
+> Dosya işlemleri yalnızca bir ardışık ardışık işlem hattında Veri Akışı etkinliğini kullanan bir ardışık hatlar veri ayıklama veya yürütme çalıştırıcısından (bir veri ayıklama veya yürütme çalıştır) veri akışını başlattığınızda çalışır. Dosya işlemleri Veri Akışı hata ayıklama modunda *çalışmaz.*
 
-**Son değiştirme ölçütü:** Son değiştirilme tarihi için bir tarih aralığı belirterek hangi dosyaları işleyeistediğinizi filtreleyebilirsiniz. Tüm tarih zamanları UTC olarak. 
+**Son değiştirilene göre filtrele:** En son ne zaman değiştirildiklerine ait bir tarih aralığı belirterek hangi dosyaları işlediğinizi filtreleyebilirsiniz. Tüm randevu saatleri UTC'dedir. 
 
-### <a name="sink-properties"></a>Havuz özellikleri
+### <a name="sink-properties"></a>Lavabo özellikleri
 
-Havuz dönüşümünde, Azure Blob depolamada bir kapsayıcı veya klasöre yazabilirsiniz. **Ayarlar** sekmesi, dosyaların nasıl yazıldığını yönetmenizi sağlar.
+Lavabo dönüşümünde, Azure Blob Depolama'daki bir kapsayıcıya veya klasöre yazabilirsiniz. **Ayarlar** sekmesi, dosyaların nasıl yazıldığını yönetmenize olanak tanır.
 
-![havuz seçenekleri](media/data-flow/file-sink-settings.png "havuz seçenekleri")
+![lavabo seçenekleri](media/data-flow/file-sink-settings.png "lavabo seçenekleri")
 
-**Klasörü temizle:** Hedef klasörün, veriler yazılmadan önce temizlenip temizlenmeyeceğini belirler.
+**Klasörü temizleyin:** Veriler yazılmadan önce hedef klasörün temizlenip temizlenmediğini belirler.
 
-**Dosya adı seçeneği:** Hedef klasördeki hedef dosyaların nasıl adlandırıldığını belirler. Dosya adı seçenekleri şunlardır:
-   * **Varsayılan**: Spark 'ın bölüm varsayılanlarına göre dosya adına erişmesine izin verin.
-   * **Model**: bölüm başına çıktı dosyalarınızı numaralandırır bir model girin. Örneğin, **[n]. csv** , loans1. csv, loans2. csv, vb. oluşturacaktır.
-   * **Bölüm başına**: bölüm başına bir dosya adı girin.
-   * **Sütunda veri olarak**: çıkış dosyasını bir sütunun değeri olarak ayarlayın. Yol, hedef klasöre değil, veri kümesi kapsayıcısına göredir.
-   * **Tek bir dosyaya çıkış**: bölümlenmiş çıktı dosyalarını tek bir adlandırılmış dosyada birleştirin. Yol, veri kümesi klasörüne görelidir. Lütfen birleştirme işleminin düğüm boyutuna bağlı olarak başarısız olabileceğini unutmayın. Bu seçenek, büyük veri kümeleri için önerilmez.
+**Dosya adı seçeneği:** Hedef dosyaların hedef klasörde nasıl adlandırıldığını belirler. Dosya adı seçenekleri şunlardır:
+   * **Varsayılan**: Spark'ın PART varsayılanlarına göre dosyaları adlandırmasına izin verin.
+   * **Desen**: Çıktı dosyalarınızı bölüm başına sayısala getiren bir desen girin. Örneğin, **krediler[n].csv** loans1.csv, loans2.csv, ve benzeri yaratacaktır.
+   * **Bölüm Başına**: Bölüm başına bir dosya adı girin.
+   * **Sütundaki veriler olarak**: Çıktı dosyasını bir sütunun değerine ayarlayın. Yol, hedef klasöre değil, veri kümesi kapsayıcısına göredir. Veri setinizde bir klasör yolunuz varsa, bu yol geçersiz kılınacaktır.
+   * **Çıktı tek bir dosyaya**: Bölümlenmiş çıktı dosyalarını tek bir adlandırılmış dosyada birleştirin. Yol veri kümesi klasörüne göredir. Te birleştirme işleminin düğüm boyutuna bağlı olarak başarısız olabileceğini lütfen unutmayın. Bu seçenek büyük veri kümeleri için önerilmez.
 
-**Tüm teklif:** Tüm değerlerin tırnak içine alınmış olup olmayacağını belirler
+**Tüm alıntı:** Tüm değerlerin tırnak içine alıp almayacağını belirler
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
-## <a name="getmetadata-activity-properties"></a>GetMetadata etkinlik özellikleri
+## <a name="getmetadata-activity-properties"></a>Metaveri etkinlik özelliklerini alın
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin 
+Özellikler hakkında daha fazla bilgi edinmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) kontrol edin 
 
-## <a name="delete-activity-properties"></a>Etkinlik özelliklerini Sil
+## <a name="delete-activity-properties"></a>Etkinlik özelliklerini silme
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [silme etkinliği](delete-activity.md) onay
+Özellikler hakkında ayrıntılı bilgi edinmek için [Sil etkinliğini denetleyin](delete-activity.md)
 
 ## <a name="legacy-models"></a>Eski modeller
 
 >[!NOTE]
->Geriye dönük uyumluluk için aşağıdaki modeller hala desteklenmektedir. Yukarıdaki bölümlerde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
+>Aşağıdaki modeller hala geriye dönük uyumluluk için olduğu gibi desteklenir. İleriye dönük yukarıdaki bölümlerde belirtilen yeni modeli kullanmanız önerilir ve ADF yazarlı UI yeni modeli oluşturmaya geçti.
 
-### <a name="legacy-dataset-model"></a>Eski veri kümesi modeli
+### <a name="legacy-dataset-model"></a>Eski dataset modeli
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği **AzureBlob**olarak ayarlanmalıdır. |Yes |
-| folderPath | Kapsayıcı ve blob depolama alanında bir klasör yolu. <br/><br/>Joker karakter filtresi, kapsayıcı adı dışında bir yol için desteklenir. İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa çıkmak için `^` kullanın. <br/><br/>Örnekler: myblobcontainer/myblobfolder/, [klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. |GetMetadata etkinliği için Hayır kopyalama/arama etkinliği için Evet |
-| fileName | Belirtilen "folderPath" altındaki blob (lar) için **ad veya joker karakter filtresi** . Bu özellik için bir değer belirtmezseniz, klasördeki tüm blobları için veri kümesini işaret eder. <br/><br/>Filtre için, izin verilen joker karakterler şunlardır: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>Gerçek dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa çıkmak için `^` kullanın.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde ve etkinlik havuzunda **Preservehierarchy** belirtilmemişse, kopyalama etkinliği otomatik olarak aşağıdaki Düzenle sahip blob adını oluşturur: "*Data. [ Etkinlik çalıştırma KIMLIĞI GUID 'SI]. [DÜZEDEN hiyerarşi varsa GUID]. [yapılandırıldıysa Biçimlendir]. [yapılandırıldıysa sıkıştırma]* ", ör." Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt. gz "; sorgu yerine tablo adını kullanarak tablo kaynağından kopyalama yaparsanız, ad deseninin adı " *[tablo adı]. [ Biçim]. [yapılandırıldıysa sıkıştırma]* ", ör." MyTable. csv ". |Hayır |
-| modifiedDatetimeStart | Dosyaları filtre özniteliğine dayanarak: son değişiklik. Son değiştirilme zamanı `modifiedDatetimeStart` ve `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  `modifiedDatetimeStart` DateTime değeri olduğunda ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd` DateTime değeri olduğunda ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
-| modifiedDatetimeEnd | Dosyaları filtre özniteliğine dayanarak: son değişiklik. Son değiştirilme zamanı `modifiedDatetimeStart` ve `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  `modifiedDatetimeStart` DateTime değeri olduğunda ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd` DateTime değeri olduğunda ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
-| format | (İkili kopya) depoları arasında dosya tabanlı olduğu gibi dosyaları kopyalamak girdi ve çıktı veri kümesi tanımları biçimi bölümüne atlayın.<br/><br/>Belirli bir biçimdeki dosyaları ayrıştırmak veya oluşturmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **Orcformat**ve **parquetformat**. **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON biçimi](supported-file-formats-and-compression-codecs-legacy.md#json-format), [avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parquet biçim](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümleri. |Hayır (yalnızca ikili kopya senaryosu için) |
-| sıkıştırma | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler **en iyi** ve **en hızlardır**. |Hayır |
+| type | Veri kümesinin tür özelliği **AzureBlob**olarak ayarlanmalıdır. |Evet |
+| folderPath | Blob depolama sındaki kapsayıcı ve klasöre giden yol. <br/><br/>Joker karakter filtresi, kapsayıcı adı hariç yol için desteklenir. İzin verilen joker `*` karakterler şunlardır: (sıfır `?` veya daha fazla karakterle eşleşir) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın. <br/><br/>Örnekler: myblobcontainer/myblobfolder/, Klasör [ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. |Kopyalama/Arama etkinliği için Evet, GetMetadata etkinliği için Hayır |
+| fileName | Belirtilen "folderPath" altındaki blob(lar) için **ad veya joker karakter filtresi.** Bu özellik için bir değer belirtmezseniz, veri kümesi klasördeki tüm lekeleri işaret eder. <br/><br/>Filtre için izin verilen `*` joker karakterler şunlardır: (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>- Örnek 1:`"fileName": "*.csv"`<br/>- Örnek 2:`"fileName": "???20180427.txt"`<br/>Gerçek `^` dosya adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın.<br/><br/>Bir çıktı veri kümesi için dosya Adı belirtilmediğinde ve **korumaHiyerarşisi** etkinlik lavabosunda belirtilmediğinde, kopyalama etkinliği otomatik olarak aşağıdaki desenle blob adını oluşturur: "*Data.[ etkinlik çalıştırın ID GUID]. [GUID if FlattenHiyerarşiy]. [yapılandırılırsa biçimlendirme]. [yapılandırılırsa sıkıştırma]*"örneğin "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz"; sorgu yerine tablo adını kullanarak tablo kaynağından kopyalarsanız, ad deseni "*[tablo adı].[ biçimlendirin]. [yapılandırılırsa sıkıştırma]*", örneğin "MyTable.csv". |Hayır |
+| modifiyeDatetimeBaşlat | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Büyük miktarda dosya filtresi yapmak istediğinizde bu ayarı etkinleştirerek veri hareketinin genel performansının etkileneceğini unutmayın. <br/><br/> Özellikler, veri kümesine dosya özniteliği filtresi uygulanmayacak anlamına gelen NULL olabilir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir.| Hayır |
+| modifiedDatetimeEnd | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Büyük miktarda dosya filtresi yapmak istediğinizde bu ayarı etkinleştirerek veri hareketinin genel performansının etkileneceğini unutmayın. <br/><br/> Özellikler, veri kümesine dosya özniteliği filtresi uygulanmayacak anlamına gelen NULL olabilir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir.| Hayır |
+| biçim | Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın.<br/><br/>Belirli bir biçimde dosyaları ayrışdırmak veya oluşturmak istiyorsanız, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ve **ParkquetFormat**. **Biçim** altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin biçimi,](supported-file-formats-and-compression-codecs-legacy.md#text-format) [JSON biçimi,](supported-file-formats-and-compression-codecs-legacy.md#json-format) [Avro formatı,](supported-file-formats-and-compression-codecs-legacy.md#avro-format) [Ork formatı](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parke formatında](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümlere bakın. |Hayır (yalnızca ikili kopyalama senaryosu için) |
+| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve sıkıştırma codec'lerine](supported-file-formats-and-compression-codecs-legacy.md#compression-support)bakın.<br/>Desteklenen türleri **GZip,** **Deflate**, **BZip2**, ve **ZipDeflate**vardır.<br/>Desteklenen seviyeler **Optimal** ve **En Hızlı'dır.** |Hayır |
 
 >[!TIP]
->Tüm Blobları bir klasör altına kopyalamak için yalnızca **FolderPath** ' i belirtin.<br>Belirli bir ada sahip tek bir blobu kopyalamak için klasör bölümü ve dosya adı ile dosya **adı Ile** **FolderPath** belirtin.<br>Bir klasör altındaki Blobların bir alt kümesini kopyalamak için klasör bölümü ve **dosya adı** joker karakter filtresi ile **FolderPath** öğesini belirtin. 
+>Tüm blob'ları bir klasörün altında kopyalamak için **yalnızca folderPath'i** belirtin.<br>Belirli bir adla tek bir blob kopyalamak için **folderPath** klasörünü ve dosya adı içeren **dosya adı** ile birlikte belirtin.<br>Blobs alt kümesini bir klasörün altında kopyalamak için **folderPath** klasörünü klasör bölümü yle ve **fileName'yi** joker karakter filtresiile belirtin. 
 
 **Örnek:**
 
@@ -637,9 +638,9 @@ Havuz dönüşümünde, Azure Blob depolamada bir kapsayıcı veya klasöre yaza
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **Blobsource**olarak ayarlanmalıdır. |Yes |
-| özyinelemeli | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında bir dosya tabanlı depolama, bir boş klasör veya alt klasör olduğunu unutmayın kopyalanır değil veya havuz oluşturulur.<br/>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
+| type | Kopyalama etkinlik kaynağının türü özelliği **BlobSource**olarak ayarlanmalıdır. |Evet |
+| Özyinelemeli | Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. Özyineleme gerçek olarak ayarlandığında ve lavabo dosya tabanlı bir depo olduğunda, boş bir klasörün veya alt klasörün kopyalanmadığını veya lavaboda oluşturulmadığını unutmayın.<br/>İzin verilen değerler **doğru** (varsayılan) ve **yanlıştır.** | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır |
 
 **Örnek:**
 
@@ -673,13 +674,13 @@ Havuz dönüşümünde, Azure Blob depolamada bir kapsayıcı veya klasöre yaza
 ]
 ```
 
-### <a name="legacy-copy-activity-sink-model"></a>Eski kopyalama etkinliği havuz modeli
+### <a name="legacy-copy-activity-sink-model"></a>Eski kopyalama etkinliği lavabo modeli
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği **Blobsink**olarak ayarlanmalıdır. |Yes |
-| copyBehavior | Kaynak dosyaları bir dosya tabanlı veri deposundan olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yol, hedef dosya hedef klasöre göreli yoluna aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlarına sahip. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya ya da blob adı belirtilirse, birleştirilmiş dosya adı belirtilen adıdır. Aksi takdirde, bir otomatik olarak oluşturulan dosya adı değil. | Hayır |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
+| type | Kopyalama etkinliği lavabotürü özelliği **BlobSink**olarak ayarlanmalıdır. |Evet |
+| copyBehavior | Kaynak dosya tabanlı bir veri deposundan dosya olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>- Koruma Hiyerarşisi (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasörüne göreli yolu hedef klasöre hedef dosyanın göreli yolu ile aynıdır.<br/><b>- FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak oluşturulmuş adları vardır. <br/><b>- Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya veya blob adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulmuş bir dosya adıdır. | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır |
 
 **Örnek:**
 
@@ -715,4 +716,4 @@ Havuz dönüşümünde, Azure Blob depolamada bir kapsayıcı veya klasöre yaza
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi [için](copy-activity-overview.md#supported-data-stores-and-formats)bkz.

@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188407"
 ---
-#### <a name="to-cable-your-device-for-power"></a>İçin cihazınızın güç bağlantısını yapın
+#### <a name="to-cable-your-device-for-power"></a>Cihazınızı güç için kablolamak için
 > [!NOTE]
-> StorSimple Cihazınızda iki kasaları yedekli PCMs içerir. Her kasa için PCMs yüklenmeli ve yüksek kullanılabilirlik sağlamak için farklı güç kaynaklarına bağlandınız.
+> StorSimple cihazınızdaki her iki kasada gereksiz PCM'ler bulunmaktadır. Her kasa için, pcm'lerin yüklü olması ve yüksek kullanılabilirlik sağlamak için farklı güç kaynaklarına bağlanması gerekir.
 > 
 > 
 
-1. Tüm PCMs güç anahtarlarda OFF konumda olduğundan emin olun.
-2. Birincil muhafaza güç kablosu her iki PCMs için bağlanın. Güç kablosu aşağıda kırmızı power kablolama diyagramdaki tanımlanır.
-3. Birincil kasada iki PCMs ayrı güç kaynakları kullandığınızdan emin olun.
-4. Güç kablosu raf dağıtım birimleri gücüyle diyagram kablo gücünü gösterildiği gibi ekleyin.
-5. EBOD muhafazası için 2-4 arası adımları yineleyin.
-6. EBOD muhafazası üzerinde her PCM açık konuma üzerinde güç anahtarı döndürerek açın.
-7. EBOD muhafazası yeşil LED'lerini arkasındaki EBOD denetleyicinin üzerinde etkinleştirilir denetleyerek açık olduğunu doğrulayın.
-8. Birincil muhafaza açık konuma her PCM anahtar döndürerek açın.
-9. Sistem üzerinde LED'lerini açık olan cihaz denetleyicisi sağlayarak olduğunu doğrulayın.
-10. Dört LED'lerini EBOD denetleyicisi SAS bağlantı noktasını yanındaki yeşil olduğunu doğrulayarak EBOD denetleyicisi ve cihaz denetleyicisi arasındaki bağlantıyı etkin olduğundan emin olun.
+1. Tüm PCM'lerin güç anahtarlarının KAPALı konumda olduğundan emin olun.
+2. Birincil kasada güç kablolarını her iki PC'ye de bağlayın. Güç kabloları aşağıdaki güç kablolama diyagramında kırmızı ile tanımlanır.
+3. Birincil kasadaki iki PCM'nin ayrı güç kaynakları kullandığından emin olun.
+4. Güç kablolarını güç kablolama diyagramında gösterildiği gibi raf dağıtım ünitelerindeki güce takın.
+5. EBOD muhafazası için 2'den 4'e kadar olan adımları tekrarlayın.
+6. Her PCM'deki güç düğmesini ANDAKI konuma çevirerek EBOD kasasını açın.
+7. EBOD denetleyicisinin arka sideki yeşil LED'lerin açık olup olmadığını kontrol ederek EBOD kasasının açık olduğunu doğrulayın.
+8. Her PCM anahtarını AÇI KONUMUna çevirerek birincil muhafazayı açın.
+9. Cihaz denetleyici LED'lerinin açık olduğundan emin olarak sistemin açık olduğunu doğrulayın.
+10. EBOD denetleyicisi üzerindeki SAS bağlantı noktasının yanındaki dört LED'in yeşil olduğunu doğrulayarak EBOD denetleyicisi ile aygıt denetleyicisi arasındaki bağlantının etkin olduğundan emin olun.
     
     > [!IMPORTANT]
-    > Sisteminiz için yüksek kullanılabilirlik sağlamak için kesinlikle Aşağıdaki diyagramda da görüldüğü düzeni kablo gücüne bağlı kalmanızı öneririz.
+    > Sisteminiz için yüksek kullanılabilirlik sağlamak için, aşağıdaki diyagramda gösterilen güç kablolama düzenine kesinlikle uymanızı öneririz.
     > 
     > 
     
-    ![Kabloyla 4U cihazınızın güç bağlantısını yapın](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
+    ![Güç için 4U cihazınızı kablolayın](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
     
-    **Güç kabloları**
+    **Güç kablolama**
     
-    | Etiket | Açıklama |
+    | Etiketle | Açıklama |
     |:--- |:--- |
-    | 1 |Birincil |
+    | 1 |Birincil muhafaza |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
     | 4 |Denetleyici 0 |
     | 5 |Denetleyici 1 |
-    | 6 |EBOD Denetleyicisi 0 |
-    | 7 |EBOD denetleyicisi 1 |
+    | 6 |EBOD denetleyici 0 |
+    | 7 |EBOD denetleyici si1 |
     | 8 |EBOD muhafazası |
-    | 9 |Pdu'lar |
+    | 9 |PD'ler |
 

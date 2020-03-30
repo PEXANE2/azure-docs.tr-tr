@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188816"
 ---
-İstemciler veya cihazınıza bağlı konaklar için desteklenen işletim sistemlerinin bir listesi aşağıda verilmiştir. Şirket içinde bu işletim sistemi sürümlerinde test edilmiştir.
+Cihazınıza bağlı istemciler veya ana bilgisayarlar için desteklenen işletim sistemlerinin bir listesi aşağıda veda edilmiştir. Bu işletim sistemi sürümleri şirket içinde test edildi.
 
-| **İşletim sistemi/platform** | **Sürümleri** |
+| **İşletim sistemi/platform** | **Sürümler** |
 | --- | --- |
 | Windows Server |2012 R2 <br> 2016 <br> 2019|
 | Windows |8, 10 |
-| SUSE Linux |Kuruluş Sunucusu 12 (x86_64)|
+| SUSE Linux |Kurumsal Sunucu 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
 | CentOS | 7.0 |
 | Mac OS | 10.14.1 |

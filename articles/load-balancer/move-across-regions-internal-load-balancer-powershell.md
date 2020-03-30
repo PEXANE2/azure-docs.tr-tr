@@ -1,72 +1,72 @@
 ---
-title: Azure iç Load Balancer Azure PowerShell kullanarak başka bir Azure bölgesine taşıma
-description: Azure iç Load Balancer bir Azure bölgesinden diğerine taşımak için Azure Resource Manager şablonu kullanın Azure PowerShell
+title: Azure PowerShell'i kullanarak Azure dahili Yük Bakiyeleyicisini başka bir Azure bölgesine taşıyın
+description: Azure PowerShell'i kullanarak Azure dahili Yük Bakiyeleyicisini bir Azure bölgesinden diğerine taşımak için Azure Kaynak Yöneticisi şablonunu kullanın
 author: asudbring
 ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644282"
 ---
-# <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Azure iç Load Balancer PowerShell kullanarak başka bir bölgeye taşıma
+# <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>PowerShell'i kullanarak Azure dahili Yük Bakiyesini başka bir bölgeye taşıyın
 
-Mevcut iç yük dengeleyicinizi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırmaya sahip bir iç yük dengeleyici oluşturmak isteyebilirsiniz. Ayrıca olağanüstü durum kurtarma planlamasının bir parçası olarak bir iç yük dengeleyiciyi başka bir bölgeye taşımak isteyebilirsiniz.
+Varolan iç yük bakiyecinizi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, sınama için aynı yapılandırmaya sahip bir dahili yük dengeleyicisi oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak bir iç yük dengeleyicisini başka bir bölgeye taşımak isteyebilirsiniz.
 
-Azure iç yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir iç yük dengeleyicinin mevcut yapılandırmasını ve sanal ağını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, yük dengeleyiciyi ve sanal ağı bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonları yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
+Azure dahili yük dengeleyicileri bir bölgeden diğerine taşınamaz. Ancak, bir iç yük dengeleyicisinin varolan yapılandırmasını ve sanal ağını dışa aktarmak için bir Azure Kaynak Yöneticisi şablonu kullanabilirsiniz.  Daha sonra, yük bakiyesi ve sanal ağı şablona dışlayarak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve ardından şablonları yeni bölgeye dağıtarak kaynağı başka bir bölgeye ayarlayabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için kaynak [gruplarını şablonlara dışa aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure iç yük dengeleyicinin, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
+- Azure dahili yük bakiyeleyicisinin taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
-- Azure iç yük dengeleyiciler bölgeler arasında taşınamaz.  Yeni Yük dengeleyiciyi hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
+- Azure dahili yük dengeleyicileri bölgeler arasında taşıt edilemez.  Yeni yük dengeleyicisini hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
 
-- Bir iç yük dengeleyici yapılandırmasını dışarı aktarmak ve başka bir bölgede iç yük dengeleyici oluşturmak için bir şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
+- Bir dahili yük dengeleyici yapılandırması dışa aktarmak ve başka bir bölgede bir iç yük dengeleyicisi oluşturmak için bir şablon dağıtmak için, Ağ Katılımcısı rolü veya daha yüksek olması gerekir.
    
-- Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları, sanal makineler ve sanal ağlar dahil değildir ancak bunlarla sınırlı değildir.
+- Kaynak ağ düzenini ve şu anda kullanmakta olduğunuz tüm kaynakları tanımlayın. Bu düzen yük dengeleyicileri, ağ güvenlik grupları, sanal makineler ve sanal ağlar içerir, ancak bunlarla sınırlı değildir.
 
-- Azure aboneliğinizin, kullanılan hedef bölgede iç yük dengeleyiciler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
+- Azure aboneliğinizin, kullanılan hedef bölgede dahili yük dengeleyicileri oluşturmanıza olanak sağladığını doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
+- Aboneliğinizin bu işlem için yük dengeleyicileri eklenmesini destekleyecek yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
-## <a name="prepare-and-move"></a>Hazırlama ve taşıma
-Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma için iç yük dengeleyiciyi hazırlama ve Azure PowerShell kullanarak iç yük dengeleyici yapılandırmasını hedef bölgeye taşıma işlemleri gösterilmektedir.  Bu işlemin bir parçası olarak, iç yük dengeleyicinin sanal ağ yapılandırması dahil olmalıdır ve iç yük dengeleyici taşınmadan önce önce yapılmalıdır.
+## <a name="prepare-and-move"></a>Hazırlanın ve hareket edin
+Aşağıdaki adımlar, Kaynak Yöneticisi şablonu kullanarak iç yük dengeleyicisinin taşımaya nasıl hazırlanacağını ve azure PowerShell kullanarak iç yük dengeleyici yapılandırmasını hedef bölgeye nasıl taşıyacağımı gösterir.  Bu işlemin bir parçası olarak, dahili yük dengeleyicisinin sanal ağ yapılandırması dahil edilmeli ve iç yük dengeleyicisini hareket ettirmeden önce yapılmalıdır.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>Sanal ağ şablonunu dışarı aktarma ve Azure PowerShell dağıtma
+### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>Sanal ağ şablonu dışa aktarın ve Azure PowerShell'den dağıtın
 
 1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  Hedef bölgeye taşımak istediğiniz sanal ağın kaynak KIMLIĞINI alın ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanarak bir değişkene yerleştirin:
+2.  Hedef bölgeye taşımak istediğiniz sanal ağın kaynak kimliğini edinin ve [Get-AzVirtualNetwork'ü](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanarak bir değişkene yerleştirin:
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Kaynak sanal ağı bir. JSON dosyasına dışarı aktarma [-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)komutunu yürütebileceğiniz dizine aktarın:
+3. Kaynak sanal ağı [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)komutunu çalıştırdığınız dizine .json dosyasına dışa aktarın:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  **\<Resource-Group-name >. JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
+4. İndirilen dosya, kaynağın dışa aktarılan kaynak grubundan sonra adlandırılacaktır.  ** \<kaynak grubu adı>.json** adlı komuttan dışa aktarılan dosyayı bulun ve seçtiğiniz bir editörde açın:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
    ```
 
-5. Sanal ağ adının parametresini düzenlemek için, kaynak sanal ağ adının **DefaultValue** özelliğini hedef sanal ağınızın adıyla değiştirin, adın tırnak içinde olduğundan emin olun:
+5. Sanal ağ adının parametresini değiştirmek için, kaynak sanal ağ adının özellik **varsayılan** değerini hedef sanal ağınızın adıyla değiştirin, adın tırnak içinde olduğundan emin olun:
     
     ```json
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentmyResourceGroupVNET.json#",
@@ -78,7 +78,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         }
     ```
 
-6.  VNET 'in taşınacağı hedef bölgeyi düzenlemek için kaynaklar altındaki **Location** özelliğini değiştirin:
+6.  VNET'in taşınacağı hedef bölgeyi değiştirmek için kaynakların altındaki **konum** özelliğini değiştirin:
 
     ```json
     "resources": [
@@ -98,16 +98,16 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     ```
   
-7. Bölge konum kodlarını almak için aşağıdaki komutu çalıştırarak [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) cmdlet 'ini Azure PowerShell kullanabilirsiniz:
+7. Bölge konum kodlarını elde etmek için aşağıdaki komutu çalıştırarak Azure PowerShell cmdlet [Get-AzLocation'ı](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) kullanabilirsiniz:
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8.  Ayrıca, **\<kaynak-grup-adı >. JSON** dosyasındaki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+8.  İsterseniz kaynak ** \<grubu adı>.json** dosyasındaki diğer parametreleri de değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlı olarak aşağıdakileri yapabilirsiniz:
 
-    * **Adres alanı** : **kaynak** > **adresalanı** bölümü değiştirilerek ve **\<Resource-Group-name >. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek, sanal ağın adres alanı kaydedilmeden önce değiştirilebilir:
+    * **Adres Alanı** - Kaynak **resources** > **adresiSpace** bölümünü değiştirerek ve ** \<kaynak grubu adı>.json** dosyasındaki **adresPrefixes** özelliğini değiştirerek kaydetmeden önce VNET'in adres alanı değiştirilebilir:
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
         ```
 
-    * **Alt ağ** -alt ağ adı ve alt ağ adres alanı, **\<Resource-group-name >. JSON** dosyasının **alt ağlar** bölümü değiştirilerek değiştirilebilir veya öğesine eklenebilir. Alt ağın adı, **ad** özelliğini değiştirerek değiştirilebilir. **\<Resource-Group-name >. JSON** dosyasındaki **addresspredüzeltmesini** özelliğini değiştirerek alt ağ adres alanı değiştirilebilir:
+    * **Subnet** - Alt ağ adı ve alt net adresi ** \<alanı, kaynak grubu adı>.json** dosyasının **alt ağlar** bölümü değiştirilerek değiştirilebilir veya eklenebilir. Alt ağın **adı, ad** özelliği değiştirilerek değiştirilebilir. Alt ağ adresi alanı ** \<kaynak grubu adı>.json** dosyasındaki **adresPrefix** özelliği değiştirilerek değiştirilebilir:
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 ]
         ```
 
-         **\<Resource-Group-name >. JSON** dosyasında, adres ön ekini değiştirmek için, yukarıda listelenen bölüm ve aşağıda listelenen **tür** bölümü olmak üzere iki yerde düzenlenmelidir.  **Addresspredüzeltmesini** özelliğini, yukarıdaki bir ile eşleşecek şekilde değiştirin:
+         Kaynak grubu adı>.json dosyasında, adres önekini değiştirmek için, yukarıda listelenen bölüm ve aşağıda listelenen **tür** bölümü olmak üzere iki yerde düzenlenmelidir. ** \<**  Yukarıdakiyle eşleşecek şekilde **adresPrefix** özelliğini değiştirin:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,22 +194,22 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
          ]
         ```
 
-9.  **Resource-Group-name >. json dosyasını\<** kaydedin.
+9.  Kaynak ** \<grubu adı>.json** dosyasını kaydedin.
 
-10. Hedef sanal ağın [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturun
+10. Hedef VNET'in [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturma
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenen ** \<kaynak grubu adı>.json** dosyasını [Yeni-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak önceki adımda oluşturulan kaynak grubuna dağıtın:
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. Hedef bölgede kaynakların oluşturulduğunu doğrulamak için [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
+12. Hedef bölgede oluşturulan kaynakları doğrulamak için [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) ve [Get-AzVirtualNetwork'ü](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
     
     ```azurepowershell-interactive
 
@@ -222,7 +222,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     Get-AzVirtualNetwork -Name <target-virtual-network-name> -ResourceGroupName <target-resource-group-name>
 
     ```
-### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>İç yük dengeleyici şablonunu dışarı aktarma ve Azure PowerShell dağıtma
+### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Dahili yük dengeleyicisi şablonu dışa aktarma ve Azure PowerShell'den dağıtma
 
 1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
     
@@ -230,24 +230,24 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     Connect-AzAccount
     ```
 
-2. Hedef bölgeye taşımak istediğiniz iç yük dengeleyicinin kaynak KIMLIĞINI alın ve [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)kullanarak bir değişkene yerleştirin:
+2. Hedef bölgeye taşımak istediğiniz dahili yük dengeleyicisinin kaynak kimliğini edinin ve [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)kullanarak bir değişkene yerleştirin:
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Kaynak iç yük dengeleyici yapılandırmasını bir. JSON dosyasına dışarı aktarma [-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)komutunu çalıştırdığınız dizine aktarın:
+3. Kaynak iç yük dengeleyici yapılandırmasını [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)komutunu uyguladığınız dizine .json dosyasına dışa aktarma:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  **\<Resource-Group-name >. JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
+4. İndirilen dosya, kaynağın dışa aktarılan kaynak grubundan sonra adlandırılacaktır.  ** \<kaynak grubu adı>.json** adlı komuttan dışa aktarılan dosyayı bulun ve seçtiğiniz bir editörde açın:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
    ```
 
-5. İç yük dengeleyici adının parametresini düzenlemek için, kaynak iç yük dengeleyici adının **DefaultValue** özelliğini hedef iç yük dengeleyicinizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
+5. İç yük bakiyesi adının parametresini değiştirmek için, kaynak iç yük bakiyesi adının özellik **varsayılan** değerini hedef iç yük bakiyeleyicinizin adıyla değiştirin, adın tırnak içinde olduğundan emin olun:
 
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -263,19 +263,19 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
              }
     ```
  
-6. Yukarıda taşınan hedef sanal ağın değerini düzenlemek için öncelikle kaynak KIMLIĞINI edinmeniz ve sonra **\<Resource-Group-name >. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir.  KIMLIĞI almak için [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
+6. Yukarıda taşınan hedef sanal ağın değerini yeniden leştirmek için önce kaynak kimliğini edinmeniz ve ardından ** \<kaynak grubu adı>.json** dosyasına kopyalayıp yapıştırmanız gerekir.  Kimliği almak için [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
     ```
-    Kaynak KIMLIĞINI göstermek için değişkeni yazın ve ENTER tuşuna basın.  KIMLIK yolunu vurgulayın ve panoya kopyalayın:
+    Kaynak kimliğini görüntülemek için değişkeni ve isabet girini yazın.  Kimlik yolunu vurgulayın ve panoya kopyalayın:
 
     ```powershell
     PS C:\> $targetVNETID
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  **\<Resource-Group-name >. JSON** dosyasında, **kaynak kimliğini** hedef sanal ağ kimliği için ikinci parametrede **DefaultValue** 'ın yerine,, yolu tırnak içine aldığınızdan emin olun:
+7.  Kaynak grubu adı>.json dosyasında, hedef sanal ağ kimliği için ikinci parametrede **varsayılan Değer** yerine kaynak **kimliğini** değişkenden yapıştırın ve yolu tırnak içine aldığınızdan emin olun: ** \<**
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
              }
     ```
 
-8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, **\<Resource-Group-name >. JSON** dosyasındaki **Resources** altında **Location** özelliğini değiştirin:
+8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, kaynak ** \<grubu adı>.json** dosyasındaki **kaynakların** altındaki **konum** özelliğini değiştirin:
 
     ```json
         "resources": [
@@ -306,16 +306,16 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 },
     ```
 
-11. Bölge konum kodlarını almak için aşağıdaki komutu çalıştırarak [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) cmdlet 'ini Azure PowerShell kullanabilirsiniz:
+11. Bölge konum kodlarını elde etmek için aşağıdaki komutu çalıştırarak Azure PowerShell cmdlet [Get-AzLocation'ı](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) kullanabilirsiniz:
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+12. İsterseniz şablondaki diğer parametreleri de değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
     
-    * **SKU** - **\<Resource-group-name >. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyiciyi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
+    * **Sku** - ** \<Kaynak grubu adı>.json** dosyasındaki **sku** > **adı** özelliğini değiştirerek yapılandırmadaki iç yük dengeleyicisinin sku'yu standarttan temele veya temelden standarda değiştirebilirsiniz:
 
         ```json
         "resources": [
@@ -329,9 +329,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 "tier": "Regional"
             },
         ```
-      Temel ve standart SKU yük dengeleyiciler arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
+      Temel ve standart sku yük dengeleyicileri arasındaki farklar hakkında daha fazla bilgi için Azure [Standart Yük Dengeleyicisi genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
 
-    * **Yük Dengeleme kuralları** : **\<kaynak-grup-adı >. JSON** dosyasının **loadBalancingRules** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmaya Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz.
+    * **Yük dengeleme kuralları** - ** \<Kaynak grubu adı>.json** dosyasının **loadBalancingRules** bölümüne girişler ekleyerek veya kaldırarak yapılandırmadaki yük dengeleme kurallarını ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "loadBalancingRules": [
@@ -361,9 +361,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                     }
                 ]
         ```
-       Yük Dengeleme kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+       Yük dengeleme kuralları hakkında daha fazla bilgi için Azure [Yük Dengeleyicisi nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Yoklamalar** - **\<kaynak-grup-adı >. JSON** dosyasının **yoklamalar** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmadaki yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
+    * **Problar** - ** \<Kaynak grubu adı>.json** dosyasının **sondalar** bölümüne girişler ekleyerek veya kaldırarak yapılandırmadaki yük dengeleyicisi için bir sonda ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "probes": [
@@ -381,9 +381,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                     }
                 ],
         ```
-       Azure Load Balancer sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+       Azure Yük Dengeleyici sistem sondaları hakkında daha fazla bilgi için [Bkz. Yük Dengeleyici sistem sondaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Gelen NAT kuralları** - **\<Resource-group-name >. JSON** dosyasının **ınboundnatrules** bölümüne girdi ekleyerek veya kaldırarak yük dengeleyici için gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Gelen NAT kuralları** - ** \<Kaynak grubu adı>.json** dosyasının **gelen NatRules** bölümüne girişler ekleyerek veya kaldırarak yük bakiyesi için gelen NAT kurallarıek veya kaldırabilirsiniz:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                     }
                 ]
         ```
-        Bir gelen NAT kuralı ekleme veya kaldırma işleminin tamamlanabilmesi için, kuralın **\<kaynak-grup-adı >. JSON** dosyasının sonunda bir **tür** özelliği olarak mevcut veya kaldırılmış olması gerekir:
+        Gelen NAT kuralının eklenmesi veya kaldırılmasıiçin, kural ** \<kaynak grubu adı>.json** dosyasının sonunda bir **tür** özelliği olarak bulunmalıdır:
 
         ```json
         {
@@ -429,16 +429,16 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
             }
         }
         ```
-        Gelen NAT kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        Gelen NAT kuralları hakkında daha fazla bilgi için Azure [Yük Dengeleyicisi nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
     
-13. **Resource-Group-name >. json dosyasını\<** kaydedin.
+13. Kaynak ** \<grubu adı>.json** dosyasını kaydedin.
     
-10. Hedef bölgede, [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılacak hedef iç yük dengeleyicinin dağıtılacağı bir kaynak grubu oluşturun. Yukarıdaki mevcut kaynak grubu, bu işlemin bir parçası olarak da kullanılabilir:
+10. [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılacak hedef iç yük dengeleyicisi için hedef bölgede bir kaynak grubu oluşturun veya oluşturun. Yukarıdan gelen varolan kaynak grubu da bu işlemin bir parçası olarak yeniden kullanılabilir:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenen ** \<kaynak grubu adı>.json** dosyasını [Yeni-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak önceki adımda oluşturulan kaynak grubuna dağıtın:
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     
     ```
 
-12. Hedef bölgede kaynakların oluşturulduğunu doğrulamak için [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) ve [Get-azloadbalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)komutunu kullanın:
+12. Hedef bölgede oluşturulan kaynakları doğrulamak için [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) ve [Get-AzLoadBalancer'ı](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)kullanın:
     
     ```azurepowershell-interactive
 
@@ -460,9 +460,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     ```
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>Vazgeç 
 
-Dağıtımdan sonra, hedefteki sanal ağ ve yük dengeleyiciyi baştan başlatmak veya atmak istiyorsanız hedefte oluşturulan kaynak grubunu silin ve taşınan sanal ağ ile yük dengeleyici silinir.  Kaynak grubunu kaldırmak için [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)komutunu kullanın:
+Dağıtımdan sonra, hedefteki sanal ağı ve yük bakiyesini yeniden başlatmak veya atmak isterseniz, hedefte oluşturulan kaynak grubunu silin ve taşınan sanal ağ ve yük bakiyeleyicisi silinir.  Kaynak grubunu kaldırmak için [Remove-AzResourceGroup'u](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)kullanın:
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>Temizleme
 
-Değişiklikleri uygulamak ve NSG 'nin taşınmasını tamamlamak için, kaynak NSG veya kaynak grubunu silin, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) veya [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) ve [Remove-azloadbalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) komutunu kullanın
+Değişiklikleri işlemek ve NSG'nin hareketini tamamlamak için, kaynak NSG'yi veya kaynak grubunu silin, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) veya [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) ve [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) kullanın
 
 ```azurepowershell-interactive
 
@@ -491,7 +491,7 @@ Remove-AzVirtualNetwork -Name <virtual-network-name> -ResourceGroupName <resourc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure iç yük dengeleyiciyi bir bölgeden diğerine taşımış ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
+Bu eğitimde, bir Azure iç yük dengeleyicisini bir bölgeden diğerine taşıdınız ve kaynak kaynaklarını temizlediniz.  Azure'da kaynakları bölgeler arasında taşıma ve olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek için şu na bakın:
 
 
 - [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

@@ -1,69 +1,69 @@
 ---
-title: Dayanıklı İşlevler-Azure Işlevlerinde HTTP özellikleri
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki tümleşik HTTP özellikleri hakkında bilgi edinin.
+title: Dayanıklı İşlevlerde HTTP özellikleri - Azure Fonksiyonları
+description: Azure İşlevler için Dayanıklı İşlevler uzantısındaki tümleşik HTTP özellikleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132507"
 ---
-# <a name="http-features"></a>HTTP özellikleri
+# <a name="http-features"></a>HTTP Özellikleri
 
-Dayanıklı İşlevler, dayanıklı düzenlemeleri ve varlıkları HTTP iş akışlarına eklemenizi kolaylaştıran çeşitli özelliklere sahiptir. Bu makale, bu özelliklerden bazıları hakkında ayrıntılara gider.
+Dayanıklı Fonksiyonlar, dayanıklı orkestrasyonları ve varlıkları HTTP iş akışlarına dahil etmeyi kolaylaştıran çeşitli özelliklere sahiptir. Bu makalede, bu özelliklerden bazıları hakkında ayrıntılı olarak gider.
 
-## <a name="exposing-http-apis"></a>HTTP API 'Lerini gösterme
+## <a name="exposing-http-apis"></a>HTTP API'leri açığa çıkarma
 
-Düzenlemeler ve varlıklar, HTTP istekleri kullanılarak çağrılabilir ve yönetilebilir. Dayanıklı İşlevler uzantısı yerleşik HTTP API 'Lerini kullanıma sunar. Ayrıca, HTTP ile tetiklenen işlevlerin içindeki düzenleyiciler ve varlıklarla etkileşim kurmak için API 'Ler sağlar.
+Orkestrasyonlar ve varlıklar HTTP istekleri kullanılarak çağrılabilir ve yönetilebilir. Dayanıklı İşlevler uzantısı yerleşik HTTP API'leri ortaya çıkarır. Ayrıca, HTTP tarafından tetiklenen işlevler içinden gelen orkestrasyonlar ve varlıklarla etkileşim kurmak için API'ler sağlar.
 
-### <a name="built-in-http-apis"></a>Yerleşik HTTP API 'Leri
+### <a name="built-in-http-apis"></a>Dahili HTTP API'leri
 
-Dayanıklı İşlevler uzantısı, Azure Işlevleri konağına otomatik olarak bir dizi HTTP API 'si ekler. Bu API 'lerle, herhangi bir kod yazmadan, düzenleme ve varlıklarla etkileşim kurabilir ve bunları yönetebilirsiniz.
+Dayanıklı Işlevler uzantısı, Azure İşlevleri ana bilgisayara otomatik olarak bir dizi HTTP API ekler. Bu API'lerle, herhangi bir kod yazmadan orkestrasyonlar ve varlıklarla etkileşim kurabilir ve yönetebilirsiniz.
 
-Aşağıdaki yerleşik HTTP API 'Leri desteklenir.
+Aşağıdaki yerleşik HTTP API'leri desteklenir.
 
-* [Yeni düzenleme Başlat](durable-functions-http-api.md#start-orchestration)
+* [Yeni orkestrasyon başlatın](durable-functions-http-api.md#start-orchestration)
 * [Sorgu düzenleme örneği](durable-functions-http-api.md#get-instance-status)
-* [Düzenleme örneğini Sonlandır](durable-functions-http-api.md#terminate-instance)
-* [Bir Orchestration 'a dış olay gönderme](durable-functions-http-api.md#raise-event)
-* [Düzenleme geçmişini temizle](durable-functions-http-api.md#purge-single-instance-history)
-* [Bir varlığa işlem olayı gönderme](durable-functions-http-api.md#signal-entity)
-* [Bir varlığın durumunu al](durable-functions-http-api.md#get-entity)
-* [Varlıkların listesini sorgulama](durable-functions-http-api.md#list-entities)
+* [Düzenleme örneğini sonlandırma](durable-functions-http-api.md#terminate-instance)
+* [Harici bir olayı orkestrasyona gönderme](durable-functions-http-api.md#raise-event)
+* [Tasfiye orkestrasyon tarihi](durable-functions-http-api.md#purge-single-instance-history)
+* [Bir kuruluşa işlem olayı gönderme](durable-functions-http-api.md#signal-entity)
+* [Bir varlığın durumunu alma](durable-functions-http-api.md#get-entity)
+* [Varlıkların listesini sorgula](durable-functions-http-api.md#list-entities)
 
-Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik HTTP API 'Lerinin tam bir açıklaması için bkz. [http API 'leri makalesi](durable-functions-http-api.md) .
+Dayanıklı İşlevler uzantısı tarafından açığa çıkarılan tüm yerleşik HTTP API'lerinin tam bir açıklaması için [HTTP API'ler makalesine](durable-functions-http-api.md) bakın.
 
-### <a name="http-api-url-discovery"></a>HTTP API URL keşfi
+### <a name="http-api-url-discovery"></a>HTTP API URL bulma
 
-[Orchestration istemci bağlaması](durable-functions-bindings.md#orchestration-client) , uygun http yanıt yükleri oluşturabilen API 'leri kullanıma sunar. Örneğin, belirli bir düzenleme örneği için yönetim API 'Lerinin bağlantılarını içeren bir yanıt oluşturabilir. Aşağıdaki örneklerde, bu API 'nin yeni bir Orchestration örneği için nasıl kullanılacağını gösteren bir HTTP tetikleyici işlevi gösterilmektedir:
+[Orkestrasyon istemcisi bağlama,](durable-functions-bindings.md#orchestration-client) kullanışlı HTTP yanıt yükleri oluşturabilen API'leri ortaya çıkarır. Örneğin, belirli bir orkestrasyon örneği için yönetim API'lerine bağlantılar içeren bir yanıt oluşturabilir. Aşağıdaki örnekler, bu API'nin yeni bir düzenleme örneği için nasıl kullanılacağını gösteren bir HTTP tetikleyici işlevi gösterir:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-**index. js**
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function. JSON**
+**fonksiyon.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-Daha önce gösterilen HTTP-Trigger işlevlerini kullanarak bir Orchestrator işlevinin başlatılması, herhangi bir HTTP istemcisi kullanılarak yapılabilir. Aşağıdaki kıvrımlı komutu `DoWork`adlı bir Orchestrator işlevi başlatır:
+Daha önce gösterilen HTTP-tetik işlevlerini kullanarak bir orkestratör işlevi başlatma herhangi bir HTTP istemcisi kullanılarak yapılabilir. Aşağıdaki cURL komutu adlı `DoWork`bir orkestratör işlevi başlatır:
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-Daha sonra, KIMLIĞI olarak `abc123` olan bir düzenleme için örnek bir yanıt örneğidir. Bazı ayrıntılar netlik açısından kaldırılmıştır.
+Sonraki kimliği olarak olan `abc123` bir orkestrasyon için örnek bir yanıttır. Bazı ayrıntılar netlik için kaldırıldı.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -80,41 +80,41 @@ Retry-After: 10
 }
 ```
 
-Önceki örnekte `Uri` bitiş alanları yerleşik bir HTTP API 'sine karşılık gelir. Hedef Orchestration örneğini yönetmek için bu API 'Leri kullanabilirsiniz.
+Önceki örnekte, biten alanların her `Uri` biri yerleşik bir HTTP API'ye karşılık gelir. Hedef düzenleme örneğini yönetmek için bu API'leri kullanabilirsiniz.
 
 > [!NOTE]
-> Web kancası URL 'Lerinin biçimi, çalıştırdığınız Azure Işlevleri ana bilgisayarının sürümüne bağlıdır. Önceki örnek, Azure Işlevleri 2,0 konağına yöneliktir.
+> Webhook URL'lerinin biçimi, Hangi Azure İşlevlerini çalıştırdığınıza bağlıdır. Önceki örnek, Azure İşlevler 2.0 ana bilgisayarı içindir.
 
-Tüm yerleşik HTTP API 'Lerinin açıklaması için bkz. [http API başvurusu](durable-functions-http-api.md).
+Tüm yerleşik HTTP API'lerinin açıklaması için [HTTP API başvurusuna](durable-functions-http-api.md)bakın.
 
-### <a name="async-operation-tracking"></a>Zaman uyumsuz işlem izleme
+### <a name="async-operation-tracking"></a>Async işlem izleme
 
-Daha önce bahsedilen HTTP yanıtı, Dayanıklı İşlevler uzun süre çalışan HTTP zaman uyumsuz API 'Leri uygulamaya yardımcı olacak şekilde tasarlanmıştır. Bu model bazen *yoklama tüketici stili*olarak adlandırılır. İstemci/sunucu akışı aşağıdaki gibi çalışmaktadır:
+Daha önce bahsedilen HTTP yanıtı, uzun süredir devam eden VEDa İşlevlere sahip HTTP async API'leri uygulanmasına yardımcı olmak üzere tasarlanmıştır. Bu desen bazen *yoklama tüketici deseni*olarak adlandırılır. İstemci/sunucu akışı aşağıdaki gibi çalışır:
 
-1. İstemci bir Orchestrator işlevi gibi uzun süreli bir işlemi başlatmak için bir HTTP isteği yayınlar.
-1. Hedef HTTP tetikleyicisi, "statusQueryGetUri" değerine sahip bir konum üst bilgisine sahip HTTP 202 yanıtı döndürüyor.
-1. İstemci, konum üstbilgisindeki URL 'YI yoklar. İstemci, bir konum üstbilgisiyle HTTP 202 yanıtlarını görmeyi sürdürür.
-1. Örnek tamamlandığında veya başarısız olduğunda, konum üstbilgisindeki uç nokta HTTP 200 döndürür.
+1. İstemci, bir orkestratör işlevi gibi uzun süren bir işlemi başlatmak için bir HTTP isteği yayınlar.
+1. Hedef HTTP tetikleyicideğeri "statusQueryGetUri" olan bir Konum üstbilgisi ile bir HTTP 202 yanıtı döndürür.
+1. İstemci URL'yi Konum başlığında yoklar. İstemci http 202 yanıtlarını konum üstbilgisiyle görmeye devam ediyor.
+1. Örnek bittiğinde veya başarısız olduğunda, Konum üstbilgisindeki bitiş noktası HTTP 200'ü döndürür.
 
-Bu protokol, bir HTTP uç noktasını yoklayacak ve konum üst bilgisini izleyen dış istemcilerle veya hizmetlerle uzun süre çalışan işlemlerin koordinasyonunu sağlar. Bu düzenin istemci ve sunucu uygulamaları Dayanıklı İşlevler HTTP API 'Lerinde yerleşik olarak bulunur.
-
-> [!NOTE]
-> Varsayılan olarak, [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) tarafından sunulan tüm HTTP tabanlı eylemler standart zaman uyumsuz işlem modelini destekler. Bu özellik, uzun süreli dayanıklı bir işlevi Logic Apps bir iş akışının parçası olarak katıştırmayı mümkün kılar. Zaman uyumsuz HTTP desenleri için Logic Apps desteği hakkında daha fazla ayrıntı için [Azure Logic Apps iş akışı eylemleri ve Tetikleyicileri belgelerine](../../logic-apps/logic-apps-workflow-actions-triggers.md)öğrenebilirsiniz.
+Bu protokol, bir HTTP bitiş noktasını yoklayabilen ve Konum üstbilgisini takip eden dış istemciler veya hizmetlerle uzun süren işlemlerin koordinasyonuna olanak tanır. Bu desenin hem istemci hem de sunucu uygulamaları Dayanıklı Fonksiyonlar HTTP API'lerinde yerleşiktir.
 
 > [!NOTE]
-> Düzenleyiciyle etkileşimler yalnızca HTTP tarafından tetiklenen işlevlerden değil, herhangi bir işlev türünden yapılabilir.
+> Varsayılan olarak, [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) tarafından sağlanan tüm HTTP tabanlı eylemler standart eşzamanlı işlem modelini destekler. Bu özellik, Logic Apps iş akışının bir parçası olarak uzun süredir çalışan dayanıklı bir işlevi gömmeyi mümkün kılar. [Azure Logic Apps iş akışı eylemlerinde ve belgeleri tetikleyen](../../logic-apps/logic-apps-workflow-actions-triggers.md)asynchronous HTTP desenleri için Logic Apps desteği hakkında daha fazla ayrıntı bulabilirsiniz.
 
-İstemci API 'Leri kullanarak düzenleme ve varlıkların nasıl yönetileceği hakkında daha fazla bilgi için bkz. [örnek yönetimi makalesi](durable-functions-instance-management.md).
+> [!NOTE]
+> Orkestrasyonlarla etkileşimler sadece HTTP tarafından tetiklenen işlevlerden değil, herhangi bir işlev türünden yapılabilir.
 
-## <a name="consuming-http-apis"></a>HTTP API 'Lerini kullanma
+İstemci API'lerini kullanarak orkestrasyonların ve varlıkların nasıl yönetileceği hakkında daha fazla bilgi için [Örnek yönetimi makalesine](durable-functions-instance-management.md)bakın.
 
-Orchestrator [işlevi kod kısıtlamalarında](durable-functions-code-constraints.md)açıklandığı gibi, Orchestrator işlevleri doğrudan g/ç işlemleri yapamıyor. Bunun yerine, genellikle g/ç işlemlerini yapan [etkinlik işlevlerini](durable-functions-types-features-overview.md#activity-functions) çağırır.
+## <a name="consuming-http-apis"></a>HTTP API'leri Tüketme
 
-Dayanıklı İşlevler 2,0 ' den başlayarak, [düzenleme, Orchestration tetikleyicisi bağlamasını](durable-functions-bindings.md#orchestration-trigger)kullanarak HTTP API 'lerini yerel olarak kullanabilir.
+[Orchestrator işlev kodu kısıtlamalarıaçıklandığı](durable-functions-code-constraints.md)gibi, orkestratör işlevleri doğrudan G /O yapamaz. Bunun yerine, genellikle G/Ç işlemleri yapan [etkinlik işlevlerini](durable-functions-types-features-overview.md#activity-functions) çağırırlar.
 
-Aşağıdaki örnek kod, giden HTTP isteği yapan bir Orchestrator işlevini göstermektedir:
+Dayanıklı Fonksiyonlar 2.0 ile başlayarak, orkestrasyon lar yerel olarak [düzenleme tetikleme bağlama](durable-functions-bindings.md#orchestration-trigger)kullanarak HTTP API'leri tüketebilir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+Aşağıdaki örnek kod, giden bir HTTP isteği yapan bir orkestratör işlevini gösterir:
+
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -151,28 +151,28 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-"HTTP çağrısı" eylemini kullanarak Orchestrator işlevleriniz içinde aşağıdaki işlemleri yapabilirsiniz:
+"HTTP'yi ara" eylemini kullanarak, orkestratör işlevlerinizde aşağıdaki eylemleri yapabilirsiniz:
 
-* Daha sonra bahsedilen bazı sınırlamalarla birlikte doğrudan düzenleme işlevlerinden HTTP API 'Lerini çağırın.
-* İstemci tarafı HTTP 202 durum yoklama düzenlerini otomatik olarak destekler.
-* Diğer Azure uç noktalarına yetkili HTTP çağrıları yapmak için [Azure yönetilen kimliklerini](../../active-directory/managed-identities-azure-resources/overview.md) kullanın.
+* Http API'leri daha sonra belirtilen bazı sınırlamalarla doğrudan orkestrasyon işlevlerinden arayın.
+* İstemci tarafındaki HTTP 202 durum yoklama modellerini otomatik olarak destekleyin.
+* Diğer Azure uç noktalarına yetkili HTTP aramaları yapmak için [Azure Yönetilen Kimlikler'i](../../active-directory/managed-identities-azure-resources/overview.md) kullanın.
 
-HTTP API 'Lerini doğrudan Orchestrator işlevlerinden kullanma özelliği, belirli bir yaygın senaryolar kümesi için kolaylık olarak tasarlanmıştır. Bu özelliklerin tümünü etkinlik işlevlerini kullanarak kendiniz uygulayabilirsiniz. Birçok durumda, etkinlik işlevleri size daha fazla esneklik sağlayabilir.
+HTTP API'leri doğrudan orchestrator işlevlerinden tüketme olanağı, belirli bir dizi ortak senaryo için kolaylık sağlamak amacıyla tasarlanmıştır. Tüm bu özellikleri etkinlik işlevlerini kullanarak kendiniz uygulayabilirsiniz. Çoğu durumda, etkinlik işlevleri size daha fazla esneklik sağlayabilir.
 
 ### <a name="http-202-handling"></a>HTTP 202 işleme
 
-"HTTP çağrısı" API 'SI, yoklama tüketici deseninin istemci tarafını otomatik olarak uygulayabilir. Çağrılan bir API, konum üst bilgisine sahip bir HTTP 202 yanıtı döndürürse, Orchestrator işlevi, 202 dışında bir yanıt alınana kadar konum kaynağını otomatik olarak yoklar. Bu yanıt Orchestrator işlev koduna döndürülen yanıt olacaktır.
+"ÇAĞRı HTTP" API otomatik olarak anket tüketici deseni istemci tarafı uygulayabilirsiniz. Çağrılan bir API Konum üstbilgisiyle bir HTTP 202 yanıtını döndürürse, orkestratör işlevi 202'den başka bir yanıt alana kadar Konum kaynağını otomatik olarak yoklar. Bu yanıt, orchestrator işlev koduna döndürülen yanıt olacaktır.
 
 > [!NOTE]
-> Orchestrator işlevleri, [zaman uyumsuz işlem izleme](#async-operation-tracking)bölümünde açıklandığı gibi, sunucu tarafı yoklamayı tüketici modelini de yerel olarak destekler. Bu destek, bir işlev uygulamasındaki düzenlemeler diğer işlev uygulamalarındaki Orchestrator işlevlerini kolayca koordine edebileceğiniz anlamına gelir. Bu, [alt düzenleme](durable-functions-sub-orchestrations.md) kavramıyla benzerdir, ancak uygulamalar arası iletişime yönelik destek sağlar. Bu destek, mikro hizmet stili uygulama geliştirmesi için özellikle yararlıdır.
+> Orchestrator işlevleri, [Async işlem izlemede](#async-operation-tracking)açıklandığı gibi, sunucu tarafındaki yoklama tüketici deseni de doğal olarak destekler. Bu destek, tek bir işlev uygulamasındaki orkestrasyonların diğer işlev uygulamalarındaki orkestratör işlevlerini kolayca koordine edebileceği anlamına gelir. Bu [alt-orkestrasyon](durable-functions-sub-orchestrations.md) kavramına benzer, ancak çapraz uygulama iletişimi desteği ile. Bu destek özellikle microservice tarzı uygulama geliştirme için yararlıdır.
 
 ### <a name="managed-identities"></a>Yönetilen kimlikler
 
-Dayanıklı İşlevler, yetkilendirme için Azure Active Directory (Azure AD) belirteçlerini kabul eden API 'Lerin çağrılarını yerel olarak destekler. Bu destek, bu belirteçleri almak için [Azure yönetilen kimliklerini](../../active-directory/managed-identities-azure-resources/overview.md) kullanır.
+Dayanıklı İşlevler, yetkilendirme için Azure Etkin Dizin (Azure AD) belirteçlerini kabul eden API'lere yapılan çağrıları destekler. Bu destek, bu belirteçleri elde etmek için [Azure yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md) kullanır.
 
-Aşağıdaki kod .NET Orchestrator işlevine bir örnektir. İşlevi, Azure Resource Manager [sanal makineler REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak bir sanal makineyi yeniden başlatmak için kimliği doğrulanmış çağrılar yapar.
+Aşağıdaki kod bir .NET orchestrator işlevinin bir örneğidir. İşlev, Azure Kaynak Yöneticisi sanal makineleri REST [API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak sanal bir makineyi yeniden başlatmak için kimlik doğrulaması çağrıları yapar.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -224,41 +224,41 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Önceki örnekte `tokenSource` parametresi, [Azure Resource Manager](../../azure-resource-manager/management/overview.md)IÇIN Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler `https://management.core.windows.net`Kaynak URI 'SI tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme iznine sahip olduğu varsayılır `myRG`.
+Önceki örnekte, `tokenSource` parametre [Azure Kaynak Yöneticisi](../../azure-resource-manager/management/overview.md)için Azure AD belirteçleri elde etmek için yapılandırılır. Belirteçleri kaynak URI `https://management.core.windows.net`tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını veya yönetilen bir kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimlik veya yönetilen kimlik belirtilen kaynak grubunda `myRG`VM'leri yönetme iznine sahip olduğu varsayılır.
 
-Çalışma zamanında, yapılandırılmış belirteç kaynağı otomatik olarak bir OAuth 2,0 erişim belirteci döndürür. Kaynak daha sonra, Giden isteğin yetkilendirme üstbilgisine bir taşıyıcı belirteci olarak belirteç ekler. Bu model, aşağıdaki nedenlerden dolayı HTTP isteklerine el ile Yetkilendirme üstbilgileri eklemenin bir geliştirmedir:
+Çalışma zamanında, yapılandırılan belirteç kaynağı otomatik olarak bir OAuth 2.0 erişim belirteci döndürür. Kaynak daha sonra giden isteğin Yetkilendirme üstbilgisine taşıyıcı belirteci olarak belirteci ekler. Bu model, aşağıdaki nedenlerden dolayı HTTP isteklerine yetkilendirme üstbilgilerini el ile eklemeye yönelik bir gelişmedir:
 
-* Belirteç yenileme otomatik olarak işlenir. Süre dolma belirteçleri hakkında endişelenmeniz gerekmez.
-* Belirteçler hiçbir şekilde dayanıklı düzenleme durumunda depolanmaz.
-* Belirteç alımını yönetmek için herhangi bir kod yazmanız gerekmez.
+* Belirteç yenilemesi otomatik olarak işlenir. Süresi dolmuş jetonlar hakkında endişelenmenize gerek yok.
+* Belirteçler asla dayanıklı orkestrasyon durumunda depolanır.
+* Belirteç edinimi yönetmek için herhangi bir kod yazmanız gerekmez.
 
-[Önceden derlenmiş C# RestartVMs](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)örneğinde daha kapsamlı bir örnek bulabilirsiniz.
+[Önceden derlenmiş C# RestartVMs örneğinde](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)daha eksiksiz bir örnek bulabilirsiniz.
 
-Yönetilen kimlikler Azure Kaynak yönetimiyle sınırlı değildir. Microsoft ve Web Apps 'ten gelen Azure hizmetleri dahil olmak üzere Azure AD taşıyıcı belirteçlerini kabul eden herhangi bir API 'ye erişmek için Yönetilen kimlikler kullanabilirsiniz. Bir iş ortağının Web uygulaması başka bir işlev uygulaması bile olabilir. Microsoft 'un Azure AD ile kimlik doğrulamasını destekleyen Azure hizmetlerinin bir listesi için bkz. Azure [ad kimlik doğrulamasını destekleyen Azure hizmetleri](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Yönetilen kimlikler Azure kaynak yönetimiyle sınırlı değildir. Microsoft'un Azure hizmetleri ve iş ortaklarından gelen web uygulamaları da dahil olmak üzere Azure AD taşıyıcı belirteçlerini kabul eden tüm API'lere erişmek için yönetilen kimlikleri kullanabilirsiniz. Bir ortağın web uygulaması başka bir işlev uygulaması bile olabilir. Microsoft'un Azure AD ile kimlik doğrulamasını destekleyen Azure hizmetlerinin listesi için Azure [AD kimlik doğrulamasını destekleyen Azure hizmetlerine](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)bakın.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-HTTP API 'Lerini çağırmaya yönelik yerleşik destek, kullanışlı bir özelliktir. Tüm senaryolar için uygun değildir.
+HTTP API'leri aramak için yerleşik destek bir kolaylık özelliğidir. Tüm senaryolar için uygun değil.
 
-Orchestrator işlevleri tarafından gönderilen HTTP istekleri ve yanıtları kuyruk iletileri olarak serileştirilir ve kalıcıdır. Bu sıraya alma davranışı, [Orchestration Replay IÇIN http çağrılarının güvenilir ve güvenli](durable-functions-orchestrations.md#reliability)olmasını sağlar. Ancak, sıraya alma davranışının sınırlamaları da vardır:
+Orchestrator işlevleri tarafından gönderilen HTTP istekleri ve yanıtları seri hale getirilmiş ve sıra iletisi olarak kalıcıdır. Bu kuyruk davranışı, HTTP çağrılarının [düzenleme tekrarı için güvenilir ve güvenli](durable-functions-orchestrations.md#reliability)olmasını sağlar. Ancak, kuyruk davranışı da sınırlamaları vardır:
 
-* Her HTTP isteği, yerel bir HTTP istemcisiyle karşılaştırıldığında ek gecikme süresi içerir.
-* Bir kuyruk iletisine sığamayacak olan büyük istek veya Yanıt iletileri, düzenleme performansını önemli ölçüde düşürebilir. İleti yüklerini blob depolamaya boşaltma yükü olası performans düşüşüne neden olabilir.
-* Akış, öbekli ve ikili yükleri desteklenmez.
+* Her HTTP isteği, yerel bir HTTP istemcisi ile karşılaştırıldığında ek gecikme gerektirir.
+* Sıra iletisine sığmayacak büyük istek veya yanıt iletileri, orkestrasyon performansını önemli ölçüde düşürebilir. İleti yüklerinin blob depolamasına yük boşaltma yükü, olası performans düşüşüne neden olabilir.
+* Akış, yığınve ikili yükler desteklenmez.
 * HTTP istemcisinin davranışını özelleştirme yeteneği sınırlıdır.
 
-Bu sınırlamaların herhangi biri kullanım durumunu etkileyebileceğinden, giden HTTP çağrıları yapmak için etkinlik işlevlerini ve dile özgü HTTP istemci kitaplıklarını kullanmayı göz önünde bulundurun.
+Bu sınırlamalardan herhangi biri kullanım durumunuzu etkileyebilecekse, bunun yerine giden HTTP aramaları yapmak için etkinlik işlevlerini ve dile özgü HTTP istemci kitaplıklarını kullanmayı düşünün.
 
 > [!NOTE]
-> .NET geliştiricisiyseniz, bu özelliğin, yerleşik .NET **HttpRequestMessage** ve **HttpResponseMessage** türleri yerine **Durablehttprequest** ve **durablehttpresponse** türlerini nasıl kullandığını merak ediyor olabilirsiniz.
+> Bir .NET geliştiricisiyseniz, bu özelliğin yerleşik .NET **HttpRequestMessage** ve **HttpResponseMessage** türleri yerine neden **Dayanıklı HttpRequest** ve **Dayanıklı HttpYanıt** türlerini kullandığını merak edebilirsiniz.
 >
-> Bu tasarım seçeneği bilerek yapılır. Birincil neden, özel türlerin, kullanıcıların iç HTTP istemcisinin desteklenen davranışları hakkında yanlış varsayımlar olmamasını sağlamaya yardımcı olur. Dayanıklı İşlevler özgü türler Ayrıca API tasarımını basitleştirecek hale gelir. Ayrıca, [yönetilen kimlik tümleştirmesi](#managed-identities) ve [yoklama tüketicisi](#http-202-handling)gibi özel özellikleri daha kolay bir şekilde yapabilirler. 
+> Bu tasarım seçimi kasıtlıdır. Birincil nedeni, özel türleri kullanıcıların iç HTTP istemcisinin desteklenen davranışları hakkında yanlış varsayımlar yapmamasını sağlamak yardımcı olmasıdır. Dayanıklı Işlevlere özgü türler, API tasarımını basitleştirmeyi de mümkün kılar. Ayrıca daha kolay yönetilen kimlik [entegrasyonu](#managed-identities) ve [yoklama tüketici deseni](#http-202-handling)gibi özel özellikleri kullanılabilir yapabilirsiniz. 
 
-### <a name="extensibility-net-only"></a>Genişletilebilirlik (yalnızca .NET)
+### <a name="extensibility-net-only"></a>Genişletilebilirlik (.Yalnızca NET)
 
-Orchestration 'ın iç HTTP istemcisinin davranışını özelleştirmek, [Azure işlevleri .net bağımlılığı ekleme](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)kullanılarak yapılabilir. Bu özellik küçük davranışsal değişiklikler yapmak için yararlı olabilir. Ayrıca, ekleme sahte nesneler tarafından HTTP istemcisinin birim testi için de yararlı olabilir.
+Düzenlemenin dahili HTTP istemcisinin davranışını özelleştirmek [Azure İşlevleri .NET bağımlılık enjeksiyonu](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)kullanılarak mümkündür. Bu yetenek küçük davranış değişiklikleri yapmak için yararlı olabilir. Sahte nesneler enjekte ederek HTTP istemcisini birim olarak test etmek de yararlı olabilir.
 
-Aşağıdaki örnek, dış HTTP uç noktaları çağıran Orchestrator işlevleri için SSL sertifika doğrulamasını devre dışı bırakmak üzere bağımlılık ekleme 'nin kullanımını gösterir.
+Aşağıdaki örnek, harici HTTP uç noktalarını arayan düzenleyici işlevleri için TLS/SSL sertifika doğrulamasını devre dışı etmek için bağımlılık enjeksiyonunun kullanılmasını gösterir.
 
 ```csharp
 public class Startup : FunctionsStartup
@@ -276,7 +276,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 {
     public HttpMessageHandler CreateHttpMessageHandler()
     {
-        // Disable SSL certificate validation (not recommended in production!)
+        // Disable TLS/SSL certificate validation (not recommended in production!)
         return new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback =

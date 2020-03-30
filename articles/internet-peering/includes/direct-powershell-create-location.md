@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86d768db7a31c634bdaca6c93f633c7bbaf10a65
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774295"
 ---
-**Get-AzPeeringLocation** PowerShell cmdlet 'i, sonraki adımlarda kullanacağınız zorunlu parametre `Kind`bir eşleme konumları listesi döndürür:
+PowerShell cmdlet **Get-AzPeeringLocation,** daha sonraki adımlarda kullanacağınız zorunlu parametreye `Kind`sahip görünen konumların listesini döndürür:
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
@@ -26,11 +26,11 @@ Doğrudan eşleme konumları aşağıdaki alanları içerir:
 * Ülke
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
-* BandwidthOffers
+* Bant GenişliğiTeklifler
 
-[Peeringdb](https://w www.peeringdb.com)'ye başvurarak istenen eşleme özelliğinde mevcut olduğunu doğrulayın.
+[PeeringDB'ye](https://wwww.peeringdb.com)atıfta bulunarak istediğiniz eşleme tesisinde bulunduğunuzu doğrulayın.
 
-Bir doğrudan eşleme oluşturmak için Seattle 'ın eşleme konumu olarak nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir:
+Aşağıda, Doğrudan bir eşleme oluşturmak için Seattle'ın eşleme konumu olarak nasıl kullanılacağını gösteren bir örnek verilmiştir:
 
 ```powershell
 $peeringLocations = Get-AzPeeringLocation -Kind Direct

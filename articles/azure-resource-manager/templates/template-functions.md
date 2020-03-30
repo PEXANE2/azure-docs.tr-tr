@@ -1,22 +1,22 @@
 ---
 title: Şablon işlevleri
-description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
+description: Değerleri almak, dizeleri ve sayısal larla çalışmak ve dağıtım bilgilerini almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156268"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager şablon işlevleri
+# <a name="arm-template-functions"></a>ARM şablon fonksiyonları
 
-Bu makalede, bir Azure Resource Manager şablonunda kullanabileceğiniz tüm işlevler açıklanmaktadır. Şablonunuzda işlevleri kullanma hakkında daha fazla bilgi için bkz. [şablon sözdizimi](template-expressions.md).
+Bu makalede, bir Azure Kaynak Yöneticisi (ARM) şablonunda kullanabileceğiniz tüm işlevler açıklanmaktadır. Şablonunuzdaki işlevleri kullanma hakkında bilgi için [şablon sözdizimine](template-expressions.md)bakın.
 
-Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](template-syntax.md#functions).
+Kendi işlevlerinizi oluşturmak için [Kullanıcı tanımlı işlevlere](template-syntax.md#functions)bakın.
 
-Çoğu işlev bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtıldığında aynı şekilde çalışır. Birkaç işlev tüm kapsamlarında kullanılamaz. Bunlar aşağıdaki listelerde belirtilmiştir.
+Çoğu işlev, bir kaynak grubuna, abonelikte, yönetim grubuna veya kiracıya dağıtıldığında aynı şekilde çalışır. Birkaç işlev tüm kapsamlarda kullanılamaz. Aşağıdaki listelerde belirtilmiştir.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -40,23 +40,23 @@ Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](t
 
 Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler sağlar.
 
-* [dizide](template-functions-array.md#array)
+* [Dizi](template-functions-array.md#array)
 * [Coalesce](template-functions-array.md#coalesce)
 * [Concat](template-functions-array.md#concat)
-* [vardır](template-functions-array.md#contains)
+* [Içerir](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [olmamalıdır](template-functions-array.md#empty)
-* [adı](template-functions-array.md#first)
-* [imin](template-functions-array.md#intersection)
-* [nesnesinde](template-functions-array.md#json)
-* [soyadına](template-functions-array.md#last)
-* [uzunluklu](template-functions-array.md#length)
-* [Min](template-functions-array.md#min)
-* [Biçimlendir](template-functions-array.md#max)
-* [aralığı](template-functions-array.md#range)
-* [Şimdilik](template-functions-array.md#skip)
-* [almanız](template-functions-array.md#take)
-* [birleşim](template-functions-array.md#union)
+* [empty](template-functions-array.md#empty)
+* [Ilk](template-functions-array.md#first)
+* [Kesişim](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [Son](template-functions-array.md#last)
+* [Uzun -luğu](template-functions-array.md#length)
+* [Dk](template-functions-array.md#min)
+* [Max](template-functions-array.md#max)
+* [Aralığı](template-functions-array.md#range)
+* [Atlamak](template-functions-array.md#skip)
+* [almak](template-functions-array.md#take)
+* [Birliği](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -66,26 +66,26 @@ Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler s
 
 ## <a name="comparison-functions"></a>Karşılaştırma işlevleri
 
-Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
+Kaynak Yöneticisi şablonlarınızda karşılaştırma yapmak için çeşitli işlevler sağlar.
 
-* [eşittir](template-functions-comparison.md#equals)
-* [büyüktür](template-functions-comparison.md#less)
-* [Lessotalals](template-functions-comparison.md#lessorequals)
-* [ilerisi](template-functions-comparison.md#greater)
+* [equals](template-functions-comparison.md#equals)
+* [daha az](template-functions-comparison.md#less)
+* [lessOrEquals](template-functions-comparison.md#lessorequals)
+* [büyüktür](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Dağıtım değeri işlevleri
+## <a name="deployment-value-functions"></a>Dağıtım değeri fonksiyonları
 
-Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin değerlerini almak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, şablonun bölümlerinden ve dağıtımla ilgili değerlerden değerler almak için aşağıdaki işlevleri sağlar:
 
-* [dağıtmak](template-functions-deployment.md#deployment)
-* [ortamınızın](template-functions-deployment.md#environment)
-* [parametreler](template-functions-deployment.md#parameters)
-* [değişkenlerinin](template-functions-deployment.md#variables)
+* [Dağıtım](template-functions-deployment.md#deployment)
+* [Ortam](template-functions-deployment.md#environment)
+* [Parametre](template-functions-deployment.md#parameters)
+* [Değişken](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -97,11 +97,11 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 
 Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* ['](template-functions-logical.md#and)
+* [Ve](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [kullandıysanız](template-functions-logical.md#if)
-* [başlatılmadı](template-functions-logical.md#not)
-* [veya](template-functions-logical.md#or)
+* [if](template-functions-logical.md#if)
+* [Değil](template-functions-logical.md#not)
+* [Veya](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -116,18 +116,18 @@ Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevl
 
 ## <a name="numeric-functions"></a>Sayısal işlevler
 
-Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, tümselerle çalışmak için aşağıdaki işlevleri sağlar:
 
-* [ekleyemiyorum](template-functions-numeric.md#add)
-* [Copyındex](template-functions-numeric.md#copyindex)
-* [DIV](template-functions-numeric.md#div)
+* [add](template-functions-numeric.md#add)
+* [copyIndex](template-functions-numeric.md#copyindex)
+* [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
-* ['tir](template-functions-numeric.md#int)
-* [Min](template-functions-numeric.md#min)
-* [Biçimlendir](template-functions-numeric.md#max)
-* [alma](template-functions-numeric.md#mod)
-* [MUL](template-functions-numeric.md#mul)
-* [alt](template-functions-numeric.md#sub)
+* [int](template-functions-numeric.md#int)
+* [Dk](template-functions-numeric.md#min)
+* [Max](template-functions-numeric.md#max)
+* [mod](template-functions-numeric.md#mod)
+* [Mul](template-functions-numeric.md#mul)
+* [Alt](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -142,20 +142,20 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 ## <a name="resource-functions"></a>Kaynak işlevleri
 
-Resource Manager kaynak değerlerini almak için aşağıdaki işlevleri sunar:
+Kaynak Yöneticisi kaynak değerleri almak için aşağıdaki işlevleri sağlar:
 
-* [Extensionresourceıd](template-functions-resource.md#extensionresourceid)
-* [listAccountSas](template-functions-resource.md#list)
-* [ListKeys 'i al](template-functions-resource.md#listkeys)
-* [Listgizlilikler](template-functions-resource.md#list)
-* [Listele](template-functions-resource.md#list)
-* [sağlayıcılarla](template-functions-resource.md#providers)
-* [başvurunun](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) -yalnızca bir kaynak grubuna yapılan dağıtımlarda kullanılabilir.
-* [RESOURCEID](template-functions-resource.md#resourceid) -herhangi bir kapsamda kullanılabilir, ancak geçerli parametreler kapsama göre değişir.
-* [abonelik](template-functions-resource.md#subscription) -yalnızca bir kaynak grubuna veya aboneliğe yapılan dağıtımlarda kullanılabilir.
-* [Subscriptionresourceıd](template-functions-resource.md#subscriptionresourceid)
-* [Tenantresourceıd](template-functions-resource.md#tenantresourceid)
+* [uzantısıResourceId](template-functions-resource.md#extensionresourceid)
+* [listeAccountSas](template-functions-resource.md#list)
+* [listeTuşları](template-functions-resource.md#listkeys)
+* [listSecrets](template-functions-resource.md#list)
+* [liste*](template-functions-resource.md#list)
+* [Sağlayıcı](template-functions-resource.md#providers)
+* [Başvuru](template-functions-resource.md#reference)
+* [resourceGroup](template-functions-resource.md#resourcegroup) - yalnızca bir kaynak grubuna dağıtımlarda kullanılabilir.
+* [resourceId](template-functions-resource.md#resourceid) - herhangi bir kapsamda kullanılabilir, ancak geçerli parametreler ilerki kapsamına bağlı olarak değişir.
+* [abonelik](template-functions-resource.md#subscription) - yalnızca bir kaynak grubuna veya aboneye dağıtımlarda kullanılabilir.
+* [abonelikResourceId](template-functions-resource.md#subscriptionresourceid)
+* [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -190,45 +190,45 @@ Resource Manager kaynak değerlerini almak için aşağıdaki işlevleri sunar:
 
 ## <a name="string-functions"></a>Dize işlevleri
 
-Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi dizeleri ile çalışmak için aşağıdaki işlevleri sağlar:
 
-* [biçiminde](template-functions-string.md#base64)
+* [base64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [Concat](template-functions-string.md#concat)
-* [vardır](template-functions-string.md#contains)
+* [Içerir](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
-* [dataUriToString](template-functions-string.md#datauritostring)
-* [olmamalıdır](template-functions-string.md#empty)
-* [endsWith](template-functions-string.md#endswith)
-* [adı](template-functions-string.md#first)
-* [formatını](template-functions-string.md#format)
-* ['ini](template-functions-string.md#guid)
-* [IndexOf](template-functions-string.md#indexof)
-* [soyadına](template-functions-string.md#last)
-* [LastIndexOf](template-functions-string.md#lastindexof)
-* [uzunluklu](template-functions-string.md#length)
+* [dataUritostring](template-functions-string.md#datauritostring)
+* [empty](template-functions-string.md#empty)
+* [Endswith](template-functions-string.md#endswith)
+* [Ilk](template-functions-string.md#first)
+* [Biçim](template-functions-string.md#format)
+* [Guıd](template-functions-string.md#guid)
+* [ındexof](template-functions-string.md#indexof)
+* [Son](template-functions-string.md#last)
+* [Lastındexof](template-functions-string.md#lastindexof)
+* [Uzun -luğu](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
-* [Asma sol](template-functions-string.md#padleft)
-* [değiştirin](template-functions-string.md#replace)
-* [Şimdilik](template-functions-string.md#skip)
-* [split](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [dizisinde](template-functions-string.md#string)
-* [dizeden](template-functions-string.md#substring)
-* [almanız](template-functions-string.md#take)
-* [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
-* [kırpma](template-functions-string.md#trim)
+* [Padleft](template-functions-string.md#padleft)
+* [Değiştirmek](template-functions-string.md#replace)
+* [Atlamak](template-functions-string.md#skip)
+* [Split](template-functions-string.md#split)
+* [Startswith](template-functions-string.md#startswith)
+* [Dize](template-functions-string.md#string)
+* [Dize](template-functions-string.md#substring)
+* [almak](template-functions-string.md#take)
+* [Tolower](template-functions-string.md#tolower)
+* [Toupper](template-functions-string.md#toupper)
+* [Döşeme](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [kullanılmamışsa](template-functions-string.md#uri)
-* [URIComponent](template-functions-string.md#uricomponent)
-* [Urıonenttostring](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
+* [Urı](template-functions-string.md#uri)
+* [uriComponent](template-functions-string.md#uricomponent)
+* [uriComponentToString](template-functions-string.md#uricomponenttostring)
+* [utcŞimdi](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md)
-* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlantılı şablonları kullanma](linked-templates.md)
-* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md)
+* ARM şablonundaki bölümlerin açıklaması için [bkz.](template-syntax.md)
+* Birden çok şablonu birleştirmek için bkz: [Azure Kaynak Yöneticisi ile bağlantılı şablonları kullanma](linked-templates.md)
+* Bir kaynak türü oluştururken belirli sayıda kez yeniden sıralamak için azure [kaynak yöneticisinde birden çok kaynak örneği oluşturma](copy-resources.md)bölümüne bakın.
+* Oluşturduğunuz şablonu nasıl dağıtabileceğinizi görmek için [bkz.](deploy-powershell.md)

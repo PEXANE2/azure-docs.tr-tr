@@ -9,24 +9,24 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188941"
 ---
 Önbelleğinizi panoya sabitlemediyseniz **Tüm hizmetleri** kullanarak [Azure portalında](https://portal.azure.com) bulabilirsiniz.
 
-![Azure önbelleği için Redis Gözat dikey penceresi](media/redis-cache-browse/redis-cache-browse.png)
+![Redis Gözatma Bıçağı için Azure Önbelleği](media/redis-cache-browse/redis-cache-browse.png)
 
-Önbelleklerinizi görüntülemek için tıklayın **tüm hizmetleri** araması **Azure önbelleği için Redis**. 
+Önbelleklerinizi görüntülemek için **Tüm hizmetleri** tıklatın ve **Redis için Azure Önbelleği'ni**arayın. 
 
 Ayarlarını görüntülemek ve yapılandırmak için istediğiniz önbelleği seçin.
 
-![Azure önbelleği için Redis önbelleğe Gözat listesi](media/redis-cache-browse/redis-caches.png)
+![Redis Gözat Önbelleği Listesi için Azure Önbelleği](media/redis-cache-browse/redis-caches.png)
 
-Görüntüleyebilir ve Önbelleği'ndeki yapılandırma **Azure önbelleği için Redis** dikey penceresi.
+Önbelleğinizi Redis için **Azure Önbelleğinden** görüntüleyebilir ve yapılandırabilirsiniz.
 
-![Azure önbelleği için Redis tüm ayarlar](media/redis-cache-browse/redis-cache-blade.png)
+![Redis Tüm Ayarları için Azure Önbelleği](media/redis-cache-browse/redis-cache-blade.png)
 
 

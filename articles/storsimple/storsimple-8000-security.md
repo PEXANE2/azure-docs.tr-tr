@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi güvenlik | Microsoft Docs
-description: Şirket içindeki ve buluttaki StorSimple hizmetinizi, cihazınızı ve verilerinizi koruyan güvenlik ve gizlilik özelliklerini açıklar.
+title: StorSimple 8000 serisi güvenlik | Microsoft Dokümanlar
+description: StorSimple hizmetinizi, cihazınızı ve verilerinizi şirket içinde ve bulutta koruyan güvenlik ve gizlilik özelliklerini açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,277 +15,277 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75891507"
 ---
-# <a name="storsimple-security-and-data-protection"></a>StorSimple güvenliği ve veri koruması
+# <a name="storsimple-security-and-data-protection"></a>StorBasit güvenlik ve veri koruması
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Güvenlik, özellikle teknoloji gizli veya özel verilerle kullanıldığında yeni bir teknolojiyi benimseme konusunda önemli bir konudur. Farklı teknolojileri değerlendirirken, veri koruma için riskleri ve maliyetleri de göz önünde bulundurmanız gerekir. Microsoft Azure StorSimple, veri koruma için hem güvenlik hem de gizlilik çözümü sağlar ve şunları sağlamaya yardımcı olur:
+Güvenlik, özellikle teknoloji gizli veya özel verilerle kullanıldığında, yeni bir teknolojiyi benimseyen herkes için önemli bir sorundur. Farklı teknolojileri değerlendirirken, veri koruması için artan riskleri ve maliyetleri göz önünde bulundurmanız gerekir. Microsoft Azure StorSimple, veri koruması için hem güvenlik hem de gizlilik çözümü sağlayarak şunları sağlar:
 
-* **Gizlilik** – verilerinizi yalnızca yetkili varlıkları görüntüleyebilir.
-* **Bütünlük** – yalnızca yetkili varlıklar, verilerinizi değiştirebilir veya silebilir.
+* **Gizlilik** – Verilerinizi yalnızca yetkili kuruluşlar görüntüleyebilir.
+* **Bütünlük** – Verilerinizi yalnızca yetkili kuruluşlar değiştirebilir veya silebilir.
 
-Microsoft Azure StorSimple çözümü, birbirleriyle etkileşime geçen dört ana bileşenden oluşur:
+Microsoft Azure StorSimple çözümü, birbiriyle etkileşim edebilen dört ana bileşenden oluşur:
 
-* **Microsoft Azure içinde barındırılan storsimple Aygıt Yöneticisi hizmeti** : StorSimple cihazını yapılandırmak ve sağlamak için kullandığınız yönetim hizmeti.
-* **StorSimple cihazı** : veri merkezinizde yüklü fiziksel bir cihaz. Veri üreten tüm konaklar ve istemciler StorSimple cihazına bağlanır ve cihaz verileri yönetir ve uygun şekilde Azure bulutuna taşımaktadır.
-* **Cihaza bağlı istemciler/konaklar** : altyapınızda StorSimple cihazına bağlanan ve korunması gereken veriler üreten istemciler.
+* **StorSimple Device Manager hizmeti Microsoft Azure'da barındırılır** – StorSimple aygıtını yapılandırmak ve sağlamak için kullandığınız yönetim hizmeti.
+* **StorSimple aygıt** – Veri merkezinizde yüklü fiziksel bir aygıt. Veri üreten tüm ana bilgisayarlar ve istemciler StorSimple aygıtına bağlanır ve aygıt verileri yönetir ve uygun şekilde Azure bulutuna taşır.
+* **Aygıta bağlı istemciler/ana bilgisayarlar** – Altyapınızda StorSimple aygıtına bağlanan ve korunması gereken veriler üreten istemciler.
 * **Bulut depolama** – Azure bulutunda verilerin depolandığı konum.
 
-Aşağıdaki bölümlerde, bu bileşenlerin her birinin ve bunlarda depolanan verilerin korunmasına yardımcı olan StorSimple güvenlik özellikleri açıklanır. Ayrıca, Microsoft Azure StorSimple güvenliğine ve bunlara karşılık gelen yanıtlara sahip olabileceğiniz soruların bir listesini de içerir.
+Aşağıdaki bölümlerde, bu bileşenlerin her birinin korunmasına yardımcı olan StorSimple güvenlik özellikleri ve bu bileşenlerde depolanan veriler açıklanır. Ayrıca, Microsoft Azure StorSimple güvenliği hakkında sorabileceğiniz soruların bir listesini ve ilgili yanıtları içerir.
 
-## <a name="storsimple-device-manager-service-protection"></a>StorSimple Aygıt Yöneticisi hizmeti koruması
+## <a name="storsimple-device-manager-service-protection"></a>StorSimple Aygıt Yöneticisi servis koruması
 
-StorSimple Aygıt Yöneticisi hizmeti, Microsoft Azure barındırılan ve kuruluşunuzun temin sahip olduğu tüm StorSimple cihazlarını yönetmek için kullanılan bir yönetim hizmetidir. Bir Web tarayıcısı üzerinden Azure portal oturum açmak için kuruluş kimlik bilgilerinizi kullanarak StorSimple Aygıt Yöneticisi hizmetine erişebilirsiniz.
+StorSimple Device Manager hizmeti, Microsoft Azure'da barındırılan ve kuruluşunuzun temin ettiği tüm StorSimple aygıtlarını yönetmek için kullanılan bir yönetim hizmetidir. Bir web tarayıcısı üzerinden Azure portalında oturum açmak için kuruluş kimlik bilgilerinizi kullanarak StorSimple Device Manager hizmetine erişebilirsiniz.
 
-StorSimple Aygıt Yöneticisi hizmetine erişim, kuruluşunuzun StorSimple içeren bir Azure aboneliğine sahip olmasını gerektirir. Aboneliğiniz, Azure portalında erişebildiğiniz özellikleri yönetir. Kuruluşunuzun bir Azure aboneliği yoksa ve bunlar hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure 'a kuruluş olarak kaydolma](../active-directory/fundamentals/sign-up-organization.md).
+StorSimple Aygıt Yöneticisi hizmetine erişim, kuruluşunuzun StorSimple içeren bir Azure aboneliğine sahip olmasını gerektirir. Aboneliğiniz, Azure portalında erişebildiğiniz özellikleri yönetir. Kuruluşunuzun bir Azure aboneliği yoksa ve bunlar hakkında daha fazla bilgi edinmek istiyorsanız, [kuruluş olarak Azure'a Kaydolun'a](../active-directory/fundamentals/sign-up-organization.md)bakın.
 
-StorSimple Aygıt Yöneticisi hizmeti Azure 'da barındırıldığından Azure Güvenlik özellikleri tarafından korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/security/)’ne gidin.
+StorSimple Device Manager hizmeti Azure'da barındırıldığı için Azure güvenlik özellikleri tarafından korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/security/)’ne gidin.
 
-## <a name="storsimple-device-protection"></a>StorSimple cihaz koruması
+## <a name="storsimple-device-protection"></a>StorBasit cihaz koruması
 
-StorSimple cihazı, yedekli denetleyiciler ve otomatik yük devretme özellikleri ile birlikte katı hal sürücüleri (SSD 'Ler) ve sabit disk sürücüleri (HDD 'Ler) içeren bir şirket içi karma depolama aygıtıdır. Denetleyiciler, daha az sıklıkta kullanılan verileri buluta taşırken, depolama katmanlamasını, şu anda yerel depolama (StorSimple cihazında veya şirket içi sunucular) üzerinde yerel depolama alanında (ya da etkin) verileri yerleştirerek yönetir.
+StorSimple cihazı, katı hal sürücüleri (SSD'ler) ve sabit disk sürücüleri (HDD'ler) ile yedek denetleyiciler ve otomatik arıza özellikleri içeren şirket içi karma depolama aygıtıdır. Denetleyiciler depolama katmanlamasını yönetir, şu anda kullanılan (veya sıcak) verileri yerel depolamaya (StorSimple aygıtında veya şirket içi sunuculara) yerleştirirken, daha az kullanılan verileri buluta taşıyor.
 
-Yalnızca yetkili StorSimple cihazlarının Azure aboneliğinizde oluşturduğunuz StorSimple Aygıt Yöneticisi hizmetine katılmasına izin verilir. Bir cihazı yetkilendirmek için hizmet kayıt anahtarını sağlayarak StorSimple Aygıt Yöneticisi hizmetine kaydolmanız gerekir. Hizmet kayıt anahtarı Azure portal oluşturulan 128 bitlik bir rastgele anahtardır.
+Azure aboneliğinizde oluşturduğunuz StorSimple Aygıt Yöneticisi hizmetine yalnızca yetkili StorSimple aygıtları katılabilir. Bir aygıtı yetkilendirmek için, servis kayıt anahtarını sağlayarak aygıtı StorSimple Device Manager hizmetine kaydettirmelisiniz. Hizmet kayıt anahtarı, Azure portalında oluşturulan 128 bitlik rastgele bir anahtardır.
 
-![Hizmet kayıt anahtarı](./media/storsimple-security/ServiceRegistrationKey.png)
+![Servis kayıt anahtarı](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Hizmet kayıt anahtarı alma hakkında bilgi edinmek için [Adım 2: hizmet kayıt anahtarını alma](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)bölümüne gidin.
+Servis kayıt anahtarını nasıl alın diye öğrenmek için [Adım 2'ye gidin: Servis kayıt anahtarını edinin.](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)
 
-Hizmet kayıt anahtarı 100 + karakter içeren uzun bir anahtardır. Anahtarı kopyalayabilir ve güvenli bir konumdaki bir metin dosyasına kaydedebilirsiniz. böylece, gerektiğinde ek cihazları yetkilendirmek için kullanabilirsiniz. İlk cihazınızı kaydettikten sonra hizmet kayıt anahtarı kaybolursa, StorSimple Aygıt Yöneticisi hizmetinden yeni bir anahtar oluşturabilirsiniz. Bu, mevcut cihazların çalışmasını etkilemez.
+Hizmet kayıt anahtarı, 100'den fazla karakter içeren uzun bir anahtardır. Anahtarı kopyalayabilir ve güvenli bir konumda bir metin dosyasına kaydedebilirsiniz, böylece gerektiğinde ek aygıtları yetkilendirmek için kullanabilirsiniz. İlk cihazınızı kaydettikten sonra servis kayıt anahtarı kaybolursa, StorSimple Device Manager hizmetinden yeni bir anahtar oluşturabilirsiniz. Bu, varolan aygıtların çalışmasını etkilemez.
 
-Bir cihaz kaydedildikten sonra, Microsoft Azure iletişim kurmak için belirteçleri kullanır. Hizmet kayıt anahtarı cihaz kaydından sonra kullanılmaz.
+Bir aygıt kaydedildikten sonra, Microsoft Azure ile iletişim kurmak için belirteçleri kullanır. Servis kayıt anahtarı cihaz kaydından sonra kullanılmaz.
 
 > [!NOTE]
-> Her kullanım sonrasında hizmet kayıt anahtarını yeniden oluşturmanız önerilir.
+> Her kullanımdan sonra hizmet kayıt anahtarını yeniden oluşturmanızı öneririz.
 
 
-## <a name="protect-your-storsimple-solution-via-passwords"></a>StorSimple çözümünüzü parolalar aracılığıyla koruma
+## <a name="protect-your-storsimple-solution-via-passwords"></a>StorSimple çözümünüzü parolalarla koruyun
 
-Parolalar, bilgisayar güvenliğinin önemli bir yönüdür ve verilerinizin yalnızca yetkili kullanıcıların erişimine açık olduğundan emin olmak için StorSimple çözümünde yaygın olarak kullanılır. StorSimple aşağıdaki parolaları yapılandırmanıza olanak sağlar:
+Parolalar bilgisayar güvenliğinin önemli bir yönüdür ve verilerinizin yalnızca yetkili kullanıcılar tarafından erişilebilir olmasını sağlamaya yardımcı olmak için StorSimple çözümünde yaygın olarak kullanılır. StorSimple aşağıdaki parolaları yapılandırmanızı sağlar:
 
-* StorSimple cihaz yöneticisi parolası
-* Çekişme El Sıkışma Kimlik Doğrulama Protokolü (CHAP) Başlatıcı ve hedef parolalar
+* StorBasit aygıt yöneticisi parolası
+* Challenge El Sıkışma Kimlik Doğrulama Protokolü (CHAP) başlatıcısı ve hedef şifreleri
 * StorSimple Snapshot Manager parolası
 
-### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>StorSimple için Windows PowerShell ve StorSimple cihaz yöneticisi parolası
+### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>StorSimple ve StorSimple aygıt yöneticisi parolası için Windows PowerShell
 
-StorSimple için Windows PowerShell, StorSimple cihazını yönetmek için kullanabileceğiniz bir komut satırı arabirimidir. StorSimple için Windows PowerShell, cihazınızı kaydetmenize, cihazınızda ağ arabirimini yapılandırmanıza, belirli güncelleştirme türlerini yüklemenize, destek oturumuna erişerek cihazınızda sorun gidermenize ve cihaz durumunu değiştirmenize olanak tanıyan özellikler içerir. Cihazdaki seri konsoluna bağlanarak veya Windows PowerShell uzaktan iletişimini kullanarak StorSimple için Windows PowerShell erişebilirsiniz.
+StorSimple için Windows PowerShell, StorSimple aygıtını yönetmek için kullanabileceğiniz bir komut satırı arabirimidir. StorSimple için Windows PowerShell, cihazınızı kaydetmenize, cihazınızdaki ağ arabirimini yapılandırmanıza, belirli güncelleştirme türlerini yüklemenize, destek oturumuna erişerek cihazınızın sorun gidermesine ve aygıt durumunu değiştirmenize olanak tanıyan özelliklere sahiptir. StorSimple için Windows PowerShell'e aygıttaki seri konsola bağlanarak veya Windows PowerShell remoting'i kullanarak erişebilirsiniz.
 
-PowerShell uzaktan iletişimi, HTTPS veya HTTP üzerinden yapılabilir. HTTPS üzerinden uzaktan yönetim etkinleştirilirse, uzak yönetim sertifikasını cihazdan indirmeniz ve uzak istemciye yüklemeniz gerekir. PowerShell uzaktan iletişim hakkında daha fazla bilgi için, [StorSimple cihazınıza uzaktan bağlanma](storsimple-8000-remote-connect.md)konusuna gidin.
+PowerShell remoting HTTPS veya HTTP üzerinden yapılabilir. HTTPS üzerinden uzaktan yönetim etkinse, uzaktan yönetim sertifikasını aygıttan indirmeniz ve uzak istemciye yüklemeniz gerekir. PowerShell remoting hakkında daha fazla bilgi [için, StorSimple cihazınıza uzaktan Bağlan'a](storsimple-8000-remote-connect.md)gidin.
 
-Cihaza bağlanmak için StorSimple için Windows PowerShell kullandıktan sonra cihazda oturum açmak için Cihaz Yöneticisi parolasını sağlamanız gerekir.
+Cihaza bağlanmak için StorSimple için Windows PowerShell'i kullandıktan sonra, aygıtta oturum açmak için aygıt yöneticisi parolasını sağlamanız gerekir.
 
 ![Cihaz yöneticisi parolası](./media/storsimple-security/DeviceAdminPW.png)
 
-Aşağıdaki en iyi yöntemleri göz önünde bulundurun:
+Aşağıdaki en iyi uygulamaları aklınızda bulundurun:
 
-* Uzaktan yönetim varsayılan olarak kapalıdır. StorSimple Aygıt Yöneticisi hizmetini etkinleştirmek için kullanabilirsiniz. En iyi güvenlik uygulaması olarak, uzaktan erişim yalnızca gerçekten gerekli olduğu süre boyunca etkinleştirilmelidir.
-* Parolayı değiştirirseniz, tüm uzaktan erişim kullanıcılarına beklenmedik bir bağlantı kaybı yaşamamasını sağlayacak şekilde bildirimde bulunduğundan emin olun.
-* StorSimple Aygıt Yöneticisi hizmeti mevcut parolaları alamıyor: yalnızca bunları sıfırlayabilir. Unutursa parolayı sıfırlamanız gerekmez diye tüm parolaları güvenli bir yerde depolamanızı öneririz. Parolayı sıfırlamanız gerekiyorsa, sıfırlamadan önce tüm kullanıcıları bilgilendirdiğinizden emin olun.
+* Uzaktan yönetim varsayılan olarak kapatılır. Bunu etkinleştirmek için StorSimple Device Manager hizmetini kullanabilirsiniz. Güvenlik en iyi uygulama olarak, uzaktan erişim yalnızca gerçekte gerekli olan zaman diliminde etkinleştirilmelidir.
+* Parolayı değiştirirseniz, beklenmeyen bir bağlantı kaybı yaşamaması için tüm uzaktan erişim kullanıcılarına bildirimde bulunun.
+* StorSimple Device Manager hizmeti varolan parolaları alamaz: yalnızca bunları sıfırlayabilir. Unutulursa parolayı sıfırlamak zorunda kalmamak için tüm parolaları güvenli bir yerde saklamanızı öneririz. Parolayı sıfırlamanız gerekiyorsa, sıfırlamadan önce tüm kullanıcıları bilgilendirdiğinizden emin olun.
 
-Cihaza bir seri bağlantı kullanarak Windows PowerShell arabirimine erişebilirsiniz. Ayrıca, daha fazla güvenlik sağlayan HTTP veya HTTPS kullanarak uzaktan da erişebilirsiniz. HTTPS, seri veya HTTP bağlantısından daha yüksek düzeyde güvenlik sağlar. Ancak HTTPS kullanmak için, öncelikle cihaza erişecek istemci bilgisayara bir sertifika yüklemeniz gerekir. Uzaktan erişim sertifikasını StorSimple Aygıt Yöneticisi hizmetindeki cihaz yapılandırması sayfasından indirebilirsiniz. Uzaktan erişim sertifikası kaybolursa, yeni bir sertifika indirip uzaktan yönetimi kullanma yetkisine sahip tüm istemcilere yaymalısınız.
+Aygıta seri bağlantı kullanarak Windows PowerShell arabirimine erişebilirsiniz. Ayrıca, ek güvenlik sağlayan HTTP veya HTTPS'yi kullanarak uzaktan erişebilirsiniz. HTTPS, seri veya HTTP bağlantısından daha yüksek bir güvenlik düzeyi sağlar. Ancak, HTTPS'yi kullanmak için öncelikle istemci bilgisayara aygıta erişecek bir sertifika yüklemeniz gerekir. Uzaktan erişim sertifikasını StorSimple Device Manager hizmetindeki aygıt yapılandırma sayfasından indirebilirsiniz. Uzaktan erişim sertifikası kaybolursa, yeni bir sertifika indirmeniz ve uzaktan yönetim kullanma yetkisi olan tüm istemcilere yaymanız gerekir.
 
-### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Çekişme El Sıkışma Kimlik Doğrulama Protokolü (CHAP) Başlatıcı ve hedef parolalar
+### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Challenge El Sıkışma Kimlik Doğrulama Protokolü (CHAP) başlatıcısı ve hedef şifreleri
 
-CHAP, StorSimple cihazı tarafından uzak istemcilerin kimliğini doğrulamak için kullanılan bir kimlik doğrulama şemadır. Doğrulama, paylaşılan bir parolayı temel alır. CHAP tek yönlü (tek yönlü) veya karşılıklı (çift yönlü) olabilir. Tek yönlü CHAP ile hedef (StorSimple cihazı) bir başlatıcısının (ana bilgisayar) kimliğini doğrular. Karşılıklı veya ters CHAP, hedefin başlatıcıyı kimliğini doğrulamasını ve ardından başlatıcıya hedefin kimliğini doğrulamasını gerektirir. StorSimple, her iki yöntemi de kullanacak şekilde yapılandırılabilir.
+CHAP, Uzak istemcilerin kimliğini doğrulamak için StorSimple aygıtı tarafından kullanılan bir kimlik doğrulama şemasıdır. Doğrulama paylaşılan bir parolayı temel adatır. CHAP tek yönlü (tek yönlü) veya karşılıklı (çift yönlü) olabilir. Tek yönlü CHAP ile hedef (StorSimple aygıtı) bir başlatıcıyı (ana bilgisayar) doğrular. Karşılıklı veya ters CHAP, hedefin başlatıcıyı ve ardından başlatıcının hedefi doğrulamasını gerektirir. StorSimple'ınız her iki yöntemi de kullanacak şekilde yapılandırılabilir.
 
-CHAP 'yi yapılandırırken aşağıdakilere dikkat edin:
+CHAP'yi yapılandırırken aşağıdakihususlara dikkat edin:
 
-* CHAP Kullanıcı adı 233 karakterden daha azını içermelidir.
-* CHAP parolası 12 ile 16 karakter arasında olmalıdır. Daha uzun bir Kullanıcı adı veya parola kullanmaya çalışılması, Windows ana bilgisayarında bir kimlik doğrulama hatasına neden olur.
+* CHAP kullanıcı adı 233 karakterden az olmalıdır.
+* CHAP parolası 12 ile 16 karakter arasında olmalıdır. Daha uzun bir kullanıcı adı veya parola kullanmaya çalışmak, Windows ana bilgisayarda kimlik doğrulama hatasına neden olur.
 * Hem CHAP başlatıcısı hem de CHAP hedefi için aynı parolayı kullanamazsınız.
-* Parolayı ayarladıktan sonra değişiklik yapılabilir, ancak alınamaz. Parola değiştirilirse, tüm uzaktan erişim kullanıcılarını StorSimple cihazına başarıyla bağlanabilmeleri için bilgilendirdiğinizden emin olun.
+* Parolayı ayarladıktan sonra değiştirilebilir, ancak geri alınamaz. Parola değiştirilirse, StorSimple cihazına başarılı bir şekilde bağlanabilmeleri için tüm uzaktan erişim kullanıcılarına bildirimde bulunun.
 
-CHAP ve StorSimple çözümünüz için nasıl yapılandırılacağı hakkında daha fazla bilgi için, [StorSimple cihazınız IÇIN CHAP yapılandırma](storsimple-8000-configure-chap.md)bölümüne gidin.
+CHAP hakkında daha fazla bilgi ve StorSimple çözümünüz için nasıl yapılandırılabildiğini zedebilirsiniz, [StorSimple cihazınız için CHAP'yi Yapılandır'a](storsimple-8000-configure-chap.md)gidin.
 
 ### <a name="storsimple-snapshot-manager-password"></a>StorSimple Snapshot Manager parolası
 
-StorSimple Snapshot Manager, uygulamayla tutarlı yedeklemeler oluşturmak için birim grupları ve Windows Birim Gölge Kopyası Hizmeti kullanan bir Microsoft Yönetim Konsolu (MMC) ek bileşenidir. Ayrıca, StorSimple Snapshot Manager kullanarak yedekleme zamanlamaları oluşturabilir, birimleri kopyalayabilir veya geri yükleyebilirsiniz.
+StorSimple Snapshot Manager, uygulama tutarlı yedeklemeler oluşturmak için birim grupları ve Windows Birim Gölge Kopyalama Hizmeti kullanan bir Microsoft Yönetim Konsolu (MMC) snap-in'dir. Buna ek olarak, yedekleme zamanlamaları oluşturmak ve birimleri klonlamak veya geri yüklemek için StorSimple Snapshot Manager'ı kullanabilirsiniz.
 
-Bir cihazı StorSimple Snapshot Manager kullanacak şekilde yapılandırdığınızda, StorSimple Snapshot Manager parolasını sağlamanız gerekecektir. Bu parola öncelikle kayıt sırasında StorSimple için Windows PowerShell ayarlanır. Ayrıca, StorSimple Aygıt Yöneticisi hizmetinden parola ayarlanabilir ve değiştirilebilir. Bu parola, StorSimple Snapshot Manager cihazın kimliğini doğrular.
+Bir aygıtı StorSimple Snapshot Manager'ı kullanacak şekilde yapılandırdığınızda, StorSimple Snapshot Manager parolasını sağlamanız gerekir. Bu parola ilk olarak kayıt sırasında StorSimple için Windows PowerShell'de ayarlanır. Parola, StorSimple Device Manager hizmetinden de ayarlanabilir ve değiştirilebilir. Bu parola, StorSimple Snapshot Manager ile aygıtın kimliğini doğrular.
 
 ![StorSimple Snapshot Manager parolası](./media/storsimple-security/SnapshotMgrPassword.png)
 
-StorSimple Snapshot Manager parolası 14 ile 15 karakter arasında olmalıdır ve büyük harf, küçük harf, sayısal ve özel karakterlerden oluşan 3 veya daha fazla bir bileşim içermelidir. StorSimple Snapshot Manager parolasını ayarladıktan sonra değişiklik yapılabilir ancak alınamaz. Parolayı değiştirirseniz, tüm uzak kullanıcılara bildirimde bulunduğundan emin olun.
+StorSimple Snapshot Manager parolası 14 ila 15 karakter olmalıdır ve büyük harf, küçük harf, sayısal ve özel karakterlerin 3 veya daha fazlasını içermelidir. StorSimple Snapshot Manager parolasını ayarladıktan sonra değiştirilebilir, ancak alınamaz. Parolayı değiştirirseniz, tüm uzak kullanıcıları bilgilendirdiğinizden emin olun.
 
-StorSimple Snapshot Manager hakkında daha fazla bilgi için bkz. [storsimple Snapshot Manager nedir?](storsimple-what-is-snapshot-manager.md)
+StorSimple Snapshot Manager hakkında daha fazla bilgi için [StorSimple Snapshot Manager nedir?](storsimple-what-is-snapshot-manager.md)
 
-### <a name="password-best-practices"></a>Parola en iyi uygulamaları
+### <a name="password-best-practices"></a>Parolalarla ilgili en iyi yöntemler
 
-StorSimple parolalarının sağlam ve iyi korunan olduğundan emin olmak için aşağıdaki yönergeleri kullanmanızı öneririz:
+StorSimple parolalarının güçlü ve iyi korunduğundan emin olmak için aşağıdaki yönergeleri kullanmanızı öneririz:
 
-* Parolalarınızı her üç ayda bir değiştirin. Parolaların değiştirilmesi yıllık olarak zorlanır.
-* Güçlü parolalar kullanın. Daha fazla bilgi için daha [güçlü parolalar oluşturma ve bunları koruma](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/)bölümüne gidin.
-* Farklı erişim mekanizmaları için her zaman farklı parolalar kullanın; belirttiğiniz parolaların her biri benzersiz olmalıdır.
-* StorSimple cihazına erişim yetkisi olmayan herkesle parola paylaşmayın.
-* Parola biçimindeki başkalarının veya ipucunun önünde bir parola hakkında konuşmayın.
-* Bir hesap veya parolanın tehlikede olduğunu düşünüyorsanız, olay bilgilerini bilgi güvenliği bölümünüze bildirin.
-* Tüm parolaları gizli, gizli bilgiler olarak değerlendirin. 
+* Parolalarınızı her üç ayda bir değiştirin. Parolaları değiştirme her yıl uygulanır.
+* Güçlü parolalar kullanın. Daha fazla bilgi için [daha güçlü parolalar oluştur'a](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/)gidin ve bunları koruyun.
+* Her zaman farklı erişim mekanizmaları için farklı parolalar kullanın; belirttiğiniz parolaların her biri benzersiz olmalıdır.
+* StorSimple cihazına erişme yetkisi olmayan kişilerle parola paylaşmayın.
+* Başkalarının önünde parola hakkında konuşmayın veya parolanın biçimihakkında ipucu vermez.
+* Bir hesabın veya parolanın ele geçirildiğini sanıyorsanız, olayı bilgi güvenliği departmanınıza bildirin.
+* Tüm parolaları hassas ve gizli bilgiler olarak ele alın. 
 
-## <a name="storsimple-data-protection"></a>StorSimple veri koruma
+## <a name="storsimple-data-protection"></a>StorBasit veri koruması
 
-Bu bölümde, yoldaki ve depolanmış verilerdeki verileri koruyan StorSimple güvenlik özellikleri açıklanmaktadır.
+Bu bölümde, aktarım ve depolanan verilerdeki verileri koruyan StorSimple güvenlik özellikleri açıklanmaktadır.
 
-Diğer bölümlerde açıklandığı gibi, parolalar, StorSimple çözümünüze erişebilmek için kullanıcıların kimliğini yetkilendirmek ve kimliklerini doğrulamak için kullanılır. Diğer bir güvenlik değerlendirmesi, depolama sistemleri arasında aktarılırken ve depolanırken verileri yetkisiz kullanıcılardan koruyor. Aşağıdaki bölümlerde StorSimple ile sunulan veri koruma özellikleri açıklanır.
+Diğer bölümlerde açıklandığı gibi, parolalar, StorSimple çözümünüze erişebilmeleri için kullanıcıları yetkilendirmek ve doğrulamak için kullanılır. Başka bir güvenlik hususu, depolama sistemleri arasında aktarılırken ve depolanırken verileri yetkisiz kullanıcılardan korumaktır. Aşağıdaki bölümlerde StorSimple ile sağlanan veri koruma özellikleri açıklanmaktadır.
 
 > [!NOTE]
-> Yinelenenleri kaldırma, StorSimple cihazında ve Microsoft Azure depolama alanında depolanan veriler için ek koruma sağlar. Veriler yinelenirse, veri nesneleri eşlemek ve bunlara erişmek için kullanılan meta verilerden ayrı olarak depolanır: birim yapısına, dosya sistemine veya dosya adına göre verileri yeniden oluşturmak için kullanılabilir depolama düzeyi bağlamı yoktur.
+> Deduplication, StorSimple aygıtında ve Microsoft Azure depolama alanında depolanan veriler için ek koruma sağlar. Veriler çoğaltıldığında, veri nesneleri eşlemek ve bunlara erişmek için kullanılan meta verilerden ayrı olarak depolanır: birim yapısına, dosya sistemine veya dosya adına dayalı verileri yeniden oluşturmak için kullanılabilir depolama düzeyi bağlamı yoktur.
 
 
-## <a name="protect-data-flowing-through-the-service"></a>Hizmet üzerinden akan verileri koruma
+## <a name="protect-data-flowing-through-the-service"></a>Hizmet aracılığıyla akan verileri koruma
 
-StorSimple Aygıt Yöneticisi hizmetinin birincil amacı, StorSimple cihazını Yönetve yapılandırmaya sağlamaktır. StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure çalışır. Cihaz yapılandırma verilerini girmek için Azure portal kullanır ve ardından Microsoft Azure StorSimple Aygıt Yöneticisi hizmetini kullanarak verileri cihaza gönderir. StorSimple, Azure hizmeti güvenliğinin tehlikeye girmesi, depolanan bilgilerin güvenliğinin aşılmasına yol gerektirmediğinden emin olmak için asimetrik anahtar çiftleri sistemini kullanır.
+StorSimple Aygıt Yöneticisi hizmetinin birincil amacı, StorSimple cihazını yönetmek ve yapılandırmaktır. StorSimple Device Manager hizmeti Microsoft Azure'da çalışır. Aygıt yapılandırma verilerini girmek için Azure portalını kullanırsınız ve microsoft Azure verileri aygıta göndermek için StorSimple Device Manager hizmetini kullanır. StorSimple, Azure hizmetinin tehlikeye atılmaması için bir asimetrik anahtar çifti sistemi kullanır.
 
-![Uçuş sırasında veri şifrelemesi](./media/storsimple-security/DataEncryption.png)
+![Uçuşta veri şifreleme](./media/storsimple-security/DataEncryption.png)
 
-Asimetrik anahtar sistemi, hizmet üzerinden akan verilerin şu şekilde korunmasına yardımcı olur:
+Asimetrik anahtar sistemi, hizmet aracılığıyla akan verilerin aşağıdaki gibi korunmasına yardımcı olur:
 
-1. Asimetrik ortak ve özel anahtar çifti kullanan bir veri şifreleme sertifikası cihazda oluşturulur ve verileri korumak için kullanılır. Anahtarlar, ilk cihaz kaydedildiğinde oluşturulur.
-2. Veri şifreleme sertifika anahtarları, kayıt sırasında ilk cihaz tarafından rastgele oluşturulan güçlü bir 128 bitlik anahtar olan hizmet veri şifreleme anahtarı tarafından korunan bir kişisel bilgi değişimi (. pfx) dosyasına aktarılmakta.
-3. Sertifikanın ortak anahtarı, StorSimple Aygıt Yöneticisi hizmeti için güvenli şekilde kullanılabilir hale getirilir ve özel anahtar cihazda kalır.
-4. Hizmetin girildiği veriler ortak anahtar kullanılarak şifrelenir ve cihazda depolanan özel anahtar kullanılarak şifresi çözülür ve Azure hizmetinin cihaza akan verilerin şifresini çözemeyeceğinden emin olur.
+1. Aygıtta asimetrik ortak ve özel anahtar çifti kullanan bir veri şifreleme sertifikası oluşturulur ve verileri korumak için kullanılır. Anahtarlar ilk aygıt kaydedildiğinde oluşturulur.
+2. Veri şifreleme sertifikası anahtarları, kayıt sırasında ilk aygıt tarafından rasgele oluşturulan güçlü bir 128 bit anahtar olan hizmet veri şifreleme anahtarı tarafından korunan Bir Kişisel Bilgi Alışverişi (.pfx) dosyasına dışa aktarılır.
+3. Sertifikanın ortak anahtarı Güvenli bir şekilde StorSimple Device Manager hizmetine verilir ve özel anahtar aygıtta kalır.
+4. Hizmete giren veriler ortak anahtar kullanılarak şifrelenir ve aygıtta depolanan özel anahtar kullanılarak şifrelenir ve Azure hizmetinin aygıta akan verilerin şifresini çözememesini sağlar.
 
-Hizmet veri şifreleme anahtarı yalnızca hizmete kayıtlı olan ilk cihazda oluşturulur. Hizmette kayıtlı olan tüm sonraki cihazların aynı hizmet veri şifreleme anahtarını kullanması gerekir.
+Hizmet veri şifreleme anahtarı yalnızca hizmete kayıtlı ilk aygıtta oluşturulur. Hizmete kayıtlı sonraki tüm aygıtlar aynı hizmet veri şifreleme anahtarını kullanmalıdır.
 
 > [!IMPORTANT]
-> Hizmet veri şifreleme anahtarının bir kopyasını oluşturmak ve güvenli bir konuma kaydetmek çok önemlidir. Hizmet veri şifreleme anahtarının bir kopyası, yetkili bir kişi tarafından erişilebilmesi ve cihaz yöneticisine kolayca iletilebilmeleri için bu şekilde depolanmalıdır.
+> Hizmet veri şifreleme anahtarının bir kopyasını yapmak ve güvenli bir konuma kaydetmek çok önemlidir. Hizmet veri şifreleme anahtarının bir kopyası yetkili bir kişi tarafından erişilebilen ve aygıt yöneticisine kolayca iletilebilecek şekilde depolanmalıdır.
 > 
-> Hizmet veri şifreleme anahtarı kaybolursa, bir Microsoft destek sorumlusu, çevrimiçi durumda en az bir cihazınız olması şartıyla bu hizmeti almanıza yardımcı olabilir. Hizmet veri şifreleme anahtarını alındıktan sonra değiştirmenizi öneririz.
+> Hizmet veri şifreleme anahtarı kaybolursa, bir Microsoft destek elemanı çevrimiçi durumda en az bir aygıtınız olması koşuluyla bu anahtarı almanıza yardımcı olabilir. Hizmet veri şifreleme anahtarını alındıktan sonra değiştirmenizi öneririz.
 
-Hizmet veri şifreleme anahtarını ve ilgili veri şifreleme sertifikasını değiştirmek için, [StorSimple aygıt yöneticisi hizmetiniz için hizmet veri şifreleme anahtarını değiştirme](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)bölümündeki adımları izleyin. Şifreleme anahtarlarının değiştirilmesi, tüm cihazların yeni anahtarla güncelleştirilmesini gerektirir. Bu nedenle, tüm cihazlar çevrimiçi olduğunda anahtarı değiştirmenizi öneririz. Cihazlar çevrimdışıysa, anahtarları farklı bir zamanda değiştirilebilir. Güncel olmayan anahtarları olan cihazlar yine de yedeklemeler çalıştırabilecektir, ancak anahtar güncelleştirilene kadar verileri geri yükleyemeyecektir.
+Hizmet veri şifreleme anahtarını ve ilgili veri şifreleme sertifikasını değiştirmek [için StorSimple Device Manager hizmetiniz için hizmet veri şifreleme anahtarını değiştir'deki](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)adımları izleyin. Şifreleme anahtarlarını değiştirmek için tüm aygıtların yeni anahtarla güncelleştirilmesi gerekir. Bu nedenle, tüm aygıtlar çevrimiçi olduğunda anahtarı değiştirmenizi öneririz. Aygıtlar çevrimdışıysa, anahtarları farklı bir zamanda değiştirilebilir. Güncel olmayan anahtarları olan aygıtlar yedeklemeleri çalıştırmaya devam eder, ancak anahtar güncelleştirilene kadar verileri geri yükemezler.
 
-Hizmet veri şifreleme anahtarı ve veri şifreleme sertifikasının kullanım süreleri dolmaz. Bununla birlikte, anahtar güvenliğinin aşılmasına engel olmak için hizmet veri şifreleme anahtarını yıllık olarak değiştirmenizi öneririz.
+Hizmet veri şifreleme anahtarı ve veri şifreleme sertifikasının süresi dolmaz. Ancak, anahtar gizliliğini önlemeye yardımcı olmak için hizmet veri şifreleme anahtarını her yıl değiştirmenizi öneririz.
 
 ## <a name="protect-data-at-rest"></a>Bekleyen verileri koruma
 
-StorSimple cihazı, kullanım sıklığına bağlı olarak, verileri katmanda yerel olarak ve bulutta depolayarak verileri yönetir. Cihaza bağlı olan tüm konak makineler, verileri cihaza gönderir ve daha sonra verileri buluta doğru şekilde taşımış olur. Veriler, Internet üzerinden güvenli bir şekilde cihazdan buluta aktarılır. Her cihazda, bu cihazdaki tüm paylaşılan birimleri yüzey eden bir Iscsı hedefi vardır. Bulut depolamaya gönderilmeden önce tüm veriler şifrelenir. 
+StorSimple cihazı, kullanım sıklığına bağlı olarak verileri yerel olarak ve bulutta katmanlarda depolayarak yönetir. Aygıta bağlı tüm ana bilgisayar makineleri aygıta veri gönderir ve verileri uygun şekilde buluta taşır. Veriler cihazdan Bulut'a Internet üzerinden güvenli bir şekilde aktarılır. Her aygıtın, o cihazdaki tüm paylaşılan birimleri yüzer bir iSCSI hedefi vardır. Tüm veriler bulut depolamaya gönderilmeden önce şifrelenir. 
 
 ![Bulut depolama şifreleme anahtarı](./media/storsimple-security/CloudStorageEncryption.png)
 
-StorSimple, verilerin güvenliğini ve bütünlüğünü buluta taşımadığından emin olmak için aşağıdaki gibi bulut depolama şifreleme anahtarlarını tanımlamanızı sağlar:
+StorSimple, buluta taşınan verilerin güvenliğini ve bütünlüğünü sağlamak için bulut depolama şifreleme anahtarlarını aşağıdaki gibi tanımlamanıza olanak tanır:
 
-* Bir birim kapsayıcısı oluşturduğunuzda bulut depolama şifreleme anahtarını belirtirsiniz. Anahtar daha sonra değiştirilemez veya eklenemez.
-* Bir birim kapsayıcısındaki tüm birimler aynı şifreleme anahtarını paylaşır. Belirli bir birim için farklı bir şifreleme biçimi istiyorsanız, bu birimi barındırmak için yeni bir birim kapsayıcısı oluşturmanızı öneririz.
-* StorSimple Aygıt Yöneticisi hizmetine bulut depolama şifreleme anahtarını girdiğinizde, anahtar, hizmet veri şifreleme anahtarının ortak bölümü kullanılarak şifrelenir ve ardından cihaza gönderilir.
-* Bulut depolama şifreleme anahtarı, hizmette herhangi bir yere depolanmaz ve yalnızca cihaz tarafından bilinir.
-* Bir bulut depolama şifreleme anahtarı belirtmek isteğe bağlıdır. Konakta şifrelenmiş verileri cihaza gönderebilirsiniz.
+* Bir birim kapsayıcı oluştururken bulut depolama şifreleme anahtarını belirtirsiniz. Anahtar değiştirilemez veya daha sonra eklenemez.
+* Birim kapsayıcıdaki tüm birimler aynı şifreleme anahtarını paylaşır. Belirli bir birim için farklı bir şifreleme biçimi istiyorsanız, bu birimi barındıracak yeni bir birim kapsayıcıoluşturmanızı öneririz.
+* StorSimple Device Manager hizmetinde bulut depolama şifreleme anahtarını girdiğinizde, anahtar hizmet veri şifreleme anahtarının ortak bölümü kullanılarak şifrelenir ve aygıta gönderilir.
+* Bulut depolama şifreleme anahtarı hizmetin hiçbir yerinde depolanmaz ve yalnızca aygıt tarafından bilinir.
+* Bulut depolama şifreleme anahtarı belirtmek isteğe bağlıdır. Ana bilgisayarda şifrelenmiş verileri aygıta gönderebilirsiniz.
 
-### <a name="additional-security-best-practices"></a>Ek en iyi güvenlik uygulamaları
+### <a name="additional-security-best-practices"></a>Ek güvenlik en iyi uygulamaları
 
-* Bölünmüş trafik: tamamen ayrılmış bir ağ dağıtarak ve fiziksel yalıtımın bir seçenek olmadığı VLAN 'Lar kullanarak, kurumsal LAN 'daki Kullanıcı trafiğinizi Iscsı SAN 'larınızı yalıtın. Iscsı depolaması için adanmış bir ağ, iş açısından kritik verilerinizin güvenliğini ve performansını garanti eder. Depolama ve kullanıcı trafiğinin kurumsal bir LAN üzerinden karıştırılması önerilmez ve gecikme süresini artırabilir ve ağ arızalarına neden olabilir.
-* Konak tarafı ağ güvenliği için TCP/IP boşaltma altyapısını (TOE) destekleyen ağ arabirimlerini kullanın. TOE, ağ bağdaştırıcısında TCP 'yi işleyerek CPU yükünü azaltır.
+* Trafiği böl: tamamen ayrılmış bir ağ dağıtarak ve fiziksel yalıtımın bir seçenek olmadığı VLAN'ları kullanarak iSCSI SAN'ınızı kurumsal bir LAN'daki kullanıcı trafiğinden yalıtın. iSCSI depolama için özel bir ağ, iş açısından kritik verilerinizin güvenliğini ve performansını garanti eder. Depolama ve kullanıcı trafiğinin kurumsal bir LAN üzerinden karıştırılması önerilmez ve gecikmeyi artırabilir ve ağ hatalarına neden olabilir.
+* Ana bilgisayar ağ güvenliği için, TCP/IP Boşaltma Motoru'nun (TOE) destekleyen ağ arabirimlerini kullanın. TOE, ağ bağdaştırıcısı üzerinde TCP işleyerek CPU yükünü azaltır.
 
 ## <a name="protect-data-via-storage-accounts"></a>Depolama hesapları aracılığıyla verileri koruma
 
-Her Microsoft Azure aboneliği, bir veya daha fazla depolama hesabı oluşturabilir. (Depolama hesabı, Azure bulutu 'nda depolanan verilerle çalışmak için benzersiz bir ad alanı sağlar.) Bir depolama hesabına erişim, bu depolama hesabıyla ilişkili abonelik ve erişim anahtarları tarafından denetlenir.
+Her Microsoft Azure aboneliği bir veya daha fazla depolama hesabı oluşturabilir. (Depolama hesabı, Azure bulutunda depolanan verilerle çalışmak için benzersiz bir ad alanı sağlar.) Bir depolama hesabına erişim, abonelik ve bu depolama hesabıyla ilişkili erişim anahtarları tarafından denetlenir.
 
-Bir depolama hesabı oluşturduğunuzda Microsoft Azure, bir tane, StorSimple cihazı depolama hesabına eriştiğinde kimlik doğrulama için kullanılan 2 512 bitlik depolama erişim anahtarları oluşturur. Bu anahtarların yalnızca birinin kullanımda olduğunu unutmayın. Diğer anahtar, ayrılmış olarak tutulur ve anahtarları düzenli aralıklarla döndürmenize olanak tanır. Anahtarları döndürmek için ikincil anahtarı etkin hale getirin ve ardından birincil anahtarı silebilirsiniz. Daha sonra bir sonraki döndürme sırasında kullanılmak üzere yeni bir anahtar oluşturabilirsiniz. (Güvenlik nedenleriyle birçok veri merkezi için anahtar döndürme gerekir.)
+Bir depolama hesabı oluşturduğunuzda, Microsoft Azure, StorSimple aygıtı depolama hesabına eriştığında kimlik doğrulama için kullanılan iki adet 512 bit depolama erişim anahtarı oluşturur. Bu anahtarlardan yalnızca birinin kullanıldığını unutmayın. Diğer anahtar, anahtarları periyodik olarak döndürmenize olanak tanıyan yedekte tutulur. Tuşları döndürmek için ikincil anahtarı etkin hale getirin ve ardından birincil anahtarı silersiniz. Daha sonra bir sonraki döndürme sırasında kullanmak üzere yeni bir anahtar oluşturabilirsiniz. (Güvenlik nedenleriyle, birçok veri merkezi anahtar döndürme gerektirir.)
 
-Anahtar dönüşü için aşağıdaki en iyi yöntemleri izlemeniz önerilir:
+Anahtar döndürme için aşağıdaki en iyi uygulamaları izlemenizi öneririz:
 
-* Depolama hesabınızın yetkisiz kullanıcılar tarafından erişilmediğinden emin olmak için depolama hesabı anahtarlarını düzenli olarak döndürmeniz gerekir.
-* Düzenli olarak, Azure yöneticiniz, depolama hesabına doğrudan erişmek için Azure portal depolama bölümünü kullanarak birincil veya ikincil anahtarı değiştirmeli veya yeniden üretmelidir.
+* Depolama hesabınıza yetkisiz kullanıcılar tarafından erişilemediğinden emin olmak için depolama hesabı anahtarlarını düzenli olarak döndürmeniz gerekir.
+* Azure yöneticiniz, depolama hesabına doğrudan erişmek için Azure portalının Depolama bölümünü kullanarak birincil veya ikincil anahtarı düzenli olarak değiştirmeli veya yeniden oluşturmalıdır.
 
 ## <a name="protect-data-via-encryption"></a>Şifreleme yoluyla verileri koruma
 
-StorSimple, StorSimple çözümünüzün bileşenleri arasında depolanan veya seyahat eden verileri korumak için aşağıdaki şifreleme algoritmalarını kullanır.
+StorSimple, StorSimple çözümünüzün bileşenleri arasında depolanan veya bunlar arasında seyahat eden verileri korumak için aşağıdaki şifreleme algoritmalarını kullanır.
 
-| Algoritma | Anahtar uzunluğu | Protokoller/uygulamalar/açıklamalar |
+| Algoritma | Anahtar uzunluğu | Protokoller/uygulamalar/yorumlar |
 | --- | --- | --- |
-| RSA |2048 |RSA PKCS 1 v 1.5, cihaza gönderilen yapılandırma verilerini şifrelemek için Azure portal tarafından kullanılır: Örneğin, depolama hesabı kimlik bilgileri, StorSimple cihaz yapılandırması ve bulut depolama şifreleme anahtarları. |
-| AES |256 |CBC ile AES, hizmet veri şifreleme anahtarının ortak bölümünü StorSimple cihazından Azure portal gönderilmeden önce şifrelemek için kullanılır. Veri, bulut depolama hesabına gönderilmeden önce verileri şifrelemek için StorSimple cihazı tarafından da kullanılır. |
+| RSA |2048 |RSA PKCS 1 v1.5, aygıta gönderilen yapılandırma verilerini şifrelemek için Azure portalı tarafından kullanılır: örneğin, depolama hesabı kimlik bilgileri, StorSimple aygıt yapılandırması ve bulut depolama şifreleme anahtarları. |
+| AES |256 |CBC'li AES, StorSimple aygıtından Azure portalına gönderilmeden önce hizmet veri şifreleme anahtarının ortak bölümünü şifrelemek için kullanılır. Ayrıca, veriler bulut depolama hesabına gönderilmeden önce verileri şifrelemek için StorSimple aygıtı tarafından da kullanılır. |
 
 ## <a name="storsimple-cloud-appliance-security"></a>StorSimple Cloud Appliance güvenliği
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
-## <a name="managing-personal-information"></a>Kişisel bilgileri yönetme
+## <a name="managing-personal-information"></a>Kişisel bilgilerin yönetimi
 
-Fiziksel ve sanal serinin her ikisi için de StorSimple Aygıt Yöneticisi, aşağıdaki anahtar örneklerinde kişisel bilgileri toplar:
+Hem fiziksel hem de sanal seriler için StorSimple Aygıt Yöneticisi aşağıdaki önemli durumlarda kişisel bilgileri toplar:
 
-- Kullanıcıların e-posta adresinin yapılandırıldığı Kullanıcı ayarlarını uyarır. Bu bilgiler yönetici tarafından görüntülenebilir ve temizlenir. Bu hem StorSimple 8000 serisi cihazları hem de StorSimple Sanal dizileri için geçerlidir.
-  * StorSimple 8000 serisinin ayarlarını görüntülemek ve temizlemek için, [StorSimple uyarılarını görüntüleme ve yönetme](storsimple-8000-manage-alerts.md#configure-alert-settings) bölümündeki adımları izleyin.
-  * StorSimple Sanal dizisinin ayarlarını görüntülemek ve temizlemek için, [StorSimple uyarılarını görüntüleme ve yönetme](storsimple-virtual-array-manage-alerts.md#configure-alert-settings) bölümündeki adımları izleyin.
-- Paylaşımlar üzerinde bulunan verilere erişebilen kullanıcılar. Paylaşma verilerine erişebilen kullanıcıların listesi görüntülenir ve görüntülenebilir. Bu liste paylaşımlar silindiğinde de silinir. Bu yalnızca StorSimple Sanal dizileri için geçerlidir.
-  * Bir paylaşıma erişebilen veya silen Kullanıcı listesini görüntülemek için, [StorSimple Sanal dizisindeki paylaşımları yönetme](storsimple-virtual-array-manage-shares.md) bölümündeki adımları izleyin.
+- Kullanıcıların e-posta adresinin yapılandırıldığı kullanıcı ayarlarını uyar. Bu bilgiler yönetici tarafından görüntülenebilir ve temizlenebilir. Bu, hem StorSimple 8000 serisi aygıtlar hem de StorSimple Sanal Diziler için geçerlidir.
+  * StorSimple 8000 serisinin ayarlarını görüntülemek ve temizlemek için Görünüm'deki adımları izleyin [ve StorSimple uyarılarını yönetin](storsimple-8000-manage-alerts.md#configure-alert-settings)
+  * StorSimple Virtual Array ayarlarını görüntülemek ve temizlemek için Görünüm'deki adımları izleyin [ve StorSimple uyarılarını yönetin](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Paylaşımlarda bulunan verilere erişebilen kullanıcılar. Paylaşım verilerine erişebilen kullanıcıların listesi görüntülenir ve görüntülenebilir. Paylaşımlar silindiğinde bu liste de silinir. Bu yalnızca StorSimple Sanal Diziler için geçerlidir.
+  * Bir paylaşıma erişebilen veya silebilen kullanıcı listesini görüntülemek için [StorSimple Virtual Array'deki paylaşımları yönet](storsimple-virtual-array-manage-shares.md) adımlarını izleyin
 
 Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)’nde Microsoft Gizlilik ilkesini gözden geçirin.
 
 ## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
-Güvenlik ve Microsoft Azure StorSimple ilgili bazı sorular ve yanıtlar aşağıda verilmiştir.
+Aşağıda güvenlik ve Microsoft Azure StorSimple ile ilgili bazı sorular ve yanıtlar verilmiştir.
 
-**S:** Hizmetimin güvenliği aşılmış. Sonraki adımlarım ne olmalıdır?
+**S:** Hizmetim tehlikede. Sonraki adımlarım ne olmalı?
 
-Y **:** Katmanlama verileri için kullanılan depolama hesabı için hizmet veri şifreleme anahtarını ve depolama hesabı anahtarlarını hemen değiştirmelisiniz. Yönergeler için şuraya gidin:
+**A:** Verileri katmanlama için kullanılan depolama hesabının hizmet veri şifreleme anahtarını ve depolama hesabı anahtarlarını hemen değiştirmeniz gerekir. Talimatlar için şu telefona gidin:
 
 * [Hizmet veri şifreleme anahtarını değiştirme](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [Depolama hesaplarının anahtar dönüşü](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
+* [Depolama hesaplarının anahtar döndürmesi](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**S:** Hizmet kayıt anahtarı isteyen yeni bir StorSimple cihazım var. Nasıl yaparım? almak mı istiyorsunuz?
+**S:** Ben hizmet kayıt anahtarı için soran yeni bir StorSimple cihaz var. Nasıl geri alabiliyorum?
 
-Y **:** Bu anahtar, StorSimple Aygıt Yöneticisi hizmetini ilk oluşturduğunuzda oluşturulmuştur. Cihaza bağlanmak için StorSimple Aygıt Yöneticisi hizmetini kullandığınızda, hizmet kayıt anahtarını görüntülemek veya yeniden oluşturmak için hizmet hızlı başlangıç sayfasını kullanabilirsiniz. Yeni bir hizmet kayıt anahtarı oluşturulması, var olan kayıtlı cihazları etkilemez. Yönergeler için şuraya gidin:
+**A:** Bu anahtar, StorSimple Device Manager hizmetini ilk oluşturduğunuzda oluşturulmuştur. Cihaza bağlanmak için StorSimple Device Manager hizmetini kullandığınızda, servis kayıt anahtarını görüntülemek veya yeniden oluşturmak için servis hızlı başlangıç sayfasını kullanabilirsiniz. Yeni bir hizmet kayıt anahtarı oluşturmak varolan kayıtlı aygıtları etkilemez. Talimatlar için şu telefona gidin:
 
-* [Hizmet kayıt anahtarını görüntüleyin veya yeniden oluşturun](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
+* [Hizmet kayıt anahtarını görüntüleme veya yenileme](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
 **S:** Hizmet veri şifreleme anahtarımı kaybettim. Ne yapmalıyım?
 
-Y **:** Microsoft Desteği başvurun. Cihazınızda bir destek oturumunda oturum açabilir ve anahtarı almanıza yardımcı olur (en az bir cihaz çevrimiçi olarak sunulur). Hizmet veri şifreleme anahtarını elde ettikten hemen sonra, yeni anahtarın yalnızca sizin için bilindiğinden emin olmak için bunu değiştirmelisiniz. Yönergeler için şuraya gidin:
+**A:** Microsoft Destek'e başvurun. Cihazınızdaki bir destek oturumunda oturum açabilir ve anahtarı almanıza yardımcı olabilir (en az bir cihaz çevrimiçi olması koşuluyla). Hizmet veri şifreleme anahtarını aldıktan hemen sonra, yeni anahtarın yalnızca sizin için bilindiğinden emin olmak için bu anahtarı değiştirmeniz gerekir. Talimatlar için şu telefona gidin:
 
 * [Hizmet veri şifreleme anahtarını değiştirme](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**S:**  Hizmet veri şifreleme anahtarı değişikliği için bir cihaz yetkilendirdim, ancak anahtar değiştirme işlemini başlatmadınız. Ne yapmam gerekir?
+**S:**  Bir hizmet veri şifreleme anahtarı değişikliği için bir cihazyetkilendim, ancak anahtar değiştirme işlemini başlatmadım. Ne yapmalıyım?
 
-Y **:** Zaman aşımı süresi dolmuşsa, hizmet veri şifreleme anahtarı değişikliği için cihazı yeniden Yetkilendir ve işlemi yeniden başlatmanız gerekir.
+**A:** Zaman aşımı süresi dolduysa, servis veri şifreleme anahtarı değişikliği için aygıtı yeniden yetkilendirmeniz ve işlemi yeniden başlatmanız gerekir.
 
-**S:**  Hizmet veri şifreleme anahtarını değiştirdim, ancak diğer cihazları 4 saat içinde güncelleştirebildim. Yeniden başlatmak zorunda mıyım?
+**S:**  Hizmet veri şifreleme anahtarını değiştirdim, ancak diğer aygıtları 4 saat içinde güncelleştiremiyorum. Yeniden başlamak zorunda mıyım?
 
-Y **:** 4 saatlik zaman dilimi yalnızca değişikliği başlatıyor. Yetkili StorSimple cihazında güncelleştirme işlemini başlattıktan sonra, tüm cihazlar güncelleştirilene kadar yetkilendirme geçerlidir.
+**A:** 4 saatlik zaman dilimi yalnızca değişikliği başlatmak içindir. Yetkili StorSimple aygıtında güncelleştirme işlemini başlattıktan sonra, tüm aygıtlar güncelleştirilene kadar yetkilendirme geçerlidir.
 
-**S:** StorSimple yöneticimiz şirketten ayrıldı. Ne yapmam gerekir?
+**S:** StorSimple yöneticimiz şirketten ayrıldı. Ne yapmalıyım?
 
-Y **:** StorSimple cihazına erişime izin veren parolaları değiştirin ve sıfırlayın ve yeni bilgilerin yetkisiz personel tarafından bilinmediğinden emin olmak için hizmet veri şifreleme anahtarını değiştirin. Yönergeler için şuraya gidin:
+**A:** StorSimple aygıtına erişime izin veren parolaları değiştirin ve sıfırlayın ve yeni bilgilerin yetkisiz personel tarafından bilinmediğinden emin olmak için hizmet veri şifreleme anahtarını değiştirin. Talimatlar için şu telefona gidin:
 
-* [StorSimple parolalarınızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın](storsimple-8000-change-passwords.md)
+* [StorSimple Device Manager hizmetini kullanarak storsimple parolalarınızı değiştirin](storsimple-8000-change-passwords.md)
 * [Hizmet veri şifreleme anahtarını değiştirme](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [StorSimple cihazınız için CHAP yapılandırma](storsimple-8000-configure-chap.md)
+* [StorSimple cihazınız için CHAP'yi yapılandırın](storsimple-8000-configure-chap.md)
 
-**S:** StorSimple cihazına bağlanan bir konağa StorSimple Snapshot Manager parolasını sağlamak istiyorum, ancak parola kullanılamıyor. Ne yapabilirim?
+**S:** StorSimple aygıtına bağlanan bir ana bilgisayara StorSimple Snapshot Manager parolasını sağlamak istiyorum, ancak parola kullanılamıyor. Ne yapabilirim?
 
-Y **:** Parolayı unuttuysanız yeni bir tane oluşturmanız gerekir. Ardından, var olan tüm kullanıcılara parolanın değiştirildiğini ve yeni parolayı kullanmak üzere istemcilerini güncelleştirmesi gerektiğini bildirin. Yönergeler için şuraya gidin:
+**A:** Parolayı unuttuysanız, yeni bir parola oluşturmanız gerekir. Ardından, varolan tüm kullanıcılara parolanın değiştirildiğini ve yeni parolayı kullanmak için istemcilerini güncelleştirmeleri gerektiğini bildirdiğinden emin olun. Talimatlar için şu telefona gidin:
 
 * [StorSimple Snapshot Manager parolasını değiştirme](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
-* [Bir cihazın kimliğini doğrulama](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
+* [Aygıtın kimliğini doğrulatın](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**S:** StorSimple için Windows PowerShell uzaktan erişim sertifikası cihazda değiştirildi. Uzaktan erişim istemcilerimi güncelleştirmek Nasıl yaparım? mı?
+**S:** StorSimple için Windows PowerShell'e uzaktan erişim sertifikası aygıtta değiştirildi. Uzaktan erişim istemcilerimi nasıl güncellerim?
 
-Y **:** StorSimple Aygıt Yöneticisi hizmetinden yeni sertifikayı indirebilir ve sonra uzaktan erişim istemcilerinizin sertifika deposunda yüklü olmasını sağlayabilirsiniz. Yönergeler için şuraya gidin:
+**A:** Yeni sertifikayı StorSimple Device Manager hizmetinden indirebilir ve uzaktan erişim istemcilerinizin sertifika deposuna yüklenmesini sağlayabilirsiniz. Talimatlar için şu telefona gidin:
 
-* [Import-Certificate cmdlet 'i](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [İthalat-Sertifika cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**S:** StorSimple Aygıt Yöneticisi hizmeti tehlikeye atılırsa My Data Protected mi?
+**S:** StorSimple Device Manager hizmeti tehlikeye girerse verilerim korunur mu?
 
-Y **:** Hizmet yapılandırma verileri, bir Web tarayıcısında görüntülediğinizde ortak anahtarınızla her zaman şifrelenir. Hizmetin özel anahtara erişimi olmadığından, hizmet hiçbir veri göremez. StorSimple Aygıt Yöneticisi hizmeti tehlikeye atılırsa, StorSimple Aygıt Yöneticisi hizmetinde hiçbir anahtar depolanmadığı için hiçbir etkisi olmaz.
+**A:** Hizmet yapılandırma verileri, bir web tarayıcısında görüntülediğinizde her zaman ortak anahtarınızla şifrelenir. Hizmetin özel anahtara erişimi olmadığından, hizmet herhangi bir veri göremez. StorSimple Device Manager hizmeti tehlikeye girerse, StorSimple Device Manager hizmetinde depolanan anahtar lar olmadığından hiçbir etkisi yoktur.
 
-**S:** Veri şifreleme sertifikasına birisi erişim kazandığında, verilerim tehlikeye girebilir mi?
+**S:** Birisi veri şifreleme sertifikasına erişirse, verilerim tehlikeye girer mi?
 
-Y **:** Microsoft Azure, müşterinin veri şifreleme anahtarını (. pfx dosyası) şifrelenmiş bir biçimde depolar. . Pfx dosyası şifrelendiğinden ve StorSimple hizmeti. pfx dosyasının şifresini çözmek için hizmet veri şifreleme anahtarına sahip olmadığından, yalnızca. pfx dosyasına erişim elde etmek herhangi bir gizli dizi sunmaz.
+**A:** Microsoft Azure, müşterinin veri şifreleme anahtarını (.pfx dosyası) şifreli bir biçimde saklar. .pfx dosyası şifrelenmiş olduğundan ve StorSimple hizmeti .pfx dosyasının şifresini çözmek için hizmet veri şifreleme anahtarına sahip olmadığından, sadece .pfx dosyasına erişim elde etmek herhangi bir sırrı açığa çıkarmaz.
 
-**S:** Bir kamu varlığı verileri Microsoft 'a isterse ne olur?
+**S:** Bir devlet kurumu Microsoft'a verilerimi sorarsa ne olur?
 
-Y **:** Tüm veriler hizmette şifrelendiğinden ve özel anahtar cihazla tutulduğundan, kamu varlığı müşteriden veri sormalıdır.
+**A:** Tüm veriler hizmette şifrelendirildiğinden ve özel anahtar cihazla tutulduğundan, kamu tüzel kişistürünün müşteriden verileri istemesi gerekir.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[StorSimple cihazınızı dağıtın](storsimple-8000-deployment-walkthrough-u2.md).
+[StorSimple cihazınızı dağıtın.](storsimple-8000-deployment-walkthrough-u2.md)
 

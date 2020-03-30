@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 83d1804aaebb20439f40cc0516b03f436837855c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75968298"
 ---
 ## <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
@@ -21,5 +21,5 @@ ms.locfileid: "75968298"
 
 [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/common/storage-azure-cli.md) veya [.NET için Azure Depolama Kaynak Sağlayıcısı](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)’nı da kullanarak Azure depolama hesabı oluşturabilirsiniz.
 
-Şu anda Azure 'da bir depolama hesabı oluşturmayı tercih ediyorsanız, kodunuzu yerel bir ortamda çalıştırmak ve test etmek için Azure Storage öykünücüsü de kullanabilirsiniz. Daha fazla bilgi için bkz. [Geliştirme ve Sınama için Azure Storage Öykünücüsünü Kullanma](../articles/storage/common/storage-use-emulator.md).
+Şu anda Azure'da bir depolama hesabı oluşturmamayı tercih ederseniz, kodunuzu yerel bir ortamda çalıştırmak ve test etmek için Azure depolama emülatörü de kullanabilirsiniz. Daha fazla bilgi için [bkz.](../articles/storage/common/storage-use-emulator.md)
 

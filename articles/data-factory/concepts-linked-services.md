@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory bağlı hizmetler
-description: Data Factory 'de bağlı hizmetler hakkında bilgi edinin. Bağlı hizmetler işlem/veri depolarını Data Factory 'ye bağlar.
+title: Azure Data Factory'de bağlı hizmetler
+description: Veri Fabrikası'nda bağlantılı hizmetler hakkında bilgi edinin. Bağlantılı hizmetler bilgi işlem/veri depolarını veri fabrikasına bağlar.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,36 +12,36 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75563556"
 ---
-# <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetler
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory'de bağlı hizmetler
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-datasets.md)
 > * [Geçerli sürüm](concepts-linked-services.md)
 
-Bu makalede, bağlı hizmetlerin ne olduğu, JSON biçiminde nasıl tanımlandığı ve Azure Data Factory işlem hatları 'nda nasıl kullanıldığı açıklanmaktadır.
+Bu makalede, bağlantılı hizmetlerin ne olduğu, JSON biçiminde nasıl tanımlandığı ve Azure Veri Fabrikası ardışık hatlarında nasıl kullanıldığı açıklanmaktadır.
 
-Data Factory yeni bir deyişle, genel bakış için bkz. [Azure Data Factory giriş](introduction.md) .
+Veri Fabrikası'nda yeniyseniz, genel bakış için [Azure Veri Fabrikası'na Giriş'e](introduction.md) bakın.
 
 ## <a name="overview"></a>Genel Bakış
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, verileri şirket içi SQL Server Azure Blob depolamaya kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SQL veri ambarı 'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz. Bu işlem, en üst kısımdaki iş zekası (BI) raporlama çözümlerini oluşturulmuştur. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md) .
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. **Ardışık işlem,** bir görevi birlikte gerçekleştiren **etkinliklerin** mantıksal bir gruplandırmasIdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, şirket içi bir SQL Server'dan Azure Blob depolama alanına veri kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Ardından, çıktı verileri üretmek için Blob depolamadan gelen verileri işlemek için Azure HDInsight kümesinde Hive komut dosyası çalıştıran bir Kovan etkinliği kullanabilirsiniz. Son olarak, çıktı verilerini Azure SQL Veri Ambarı'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz ve bunun üzerine iş zekası (BI) raporlama çözümleri oluşturulur. Boru hatları ve etkinlikler hakkında daha fazla bilgi için Azure Veri Fabrikası'ndaki [Boru Hatları ve etkinliklere](concepts-pipelines-activities.md) bakın.
 
-Şimdi, veri **kümesi** , **etkinliklerde** giriş ve çıkış olarak kullanmak istediğiniz verilere işaret eden veya başvuruda bulunan verilerin adlandırılmış bir görünümüdür.
+Şimdi, **veri kümesi,** **etkinliklerinizde** kullanmak istediğiniz verileri giriş ve çıktı olarak yalnızca işaretleyen veya başvuran verilerin adlandırılmış görünümüdür.
 
-Bir veri kümesi oluşturmadan önce, veri deponuzu veri fabrikasına bağlamak için **bağlı bir hizmet** oluşturmanız gerekir. Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Bu şekilde düşünün; veri kümesi, bağlantılı veri depolarındaki verilerin yapısını temsil eder ve bağlı hizmet, veri kaynağıyla bağlantıyı tanımlar. Örneğin, Azure depolama bağlı hizmeti bir depolama hesabını veri fabrikasına bağlar. Azure blob veri kümesi, blob kapsayıcısını ve işlenecek giriş bloblarını içeren Azure depolama hesabı içindeki klasörü temsil eder.
+Bir veri kümesi oluşturmadan önce, veri deponuzu veri fabrikasına bağlamak için bağlantılı bir **hizmet** oluşturmanız gerekir. Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Şöyle düşünün; veri kümesi, bağlı veri depoları içindeki verilerin yapısını temsil eder ve bağlantılı hizmet veri kaynağına olan bağlantıyı tanımlar. Örneğin, Azure Depolama bağlantılı bir hizmet, bir depolama hesabını veri fabrikasına bağlar. Azure Blob veri kümesi, işlenecek giriş bloblarını içeren bu Azure depolama hesabındaki blob kapsayıcısını ve klasörünü temsil eder.
 
-Örnek senaryo aşağıda verilmiştir. Blob depolamadan SQL veritabanına veri kopyalamak için, iki bağlı hizmet oluşturursunuz: Azure depolama ve Azure SQL veritabanı. Daha sonra, iki veri kümesi oluşturun: Azure blob veri kümesi (Azure Storage bağlı hizmeti 'ne başvurur) ve Azure SQL tablo veri kümesi (Azure SQL veritabanı bağlı hizmetini ifade eder). Azure depolama ve Azure SQL veritabanı bağlı hizmetleri, Data Factory çalışma zamanında, sırasıyla Azure depolama ve Azure SQL veritabanınıza bağlanmak için kullandığı bağlantı dizelerini içerir. Azure blob veri kümesi blob depoınızda giriş bloblarını içeren blob kapsayıcısını ve BLOB klasörünü belirtir. Azure SQL tablo veri kümesi, verilerin kopyalanacağı SQL veritabanınızda SQL tablosunu belirtir.
+İşte örnek bir senaryo. Blob depolamasundaki verileri bir SQL veritabanına kopyalamak için iki bağlantılı hizmet oluşturursunuz: Azure Depolama ve Azure SQL Veritabanı. Ardından, iki veri kümesi oluşturun: Azure Blob veri kümesi (Azure Depolama bağlantılı hizmete başvurur) ve Azure SQL Table veri kümesi (Azure SQL Veritabanı bağlantılı hizmete başvurur). Azure Depolama ve Azure SQL Veritabanı bağlantılı hizmetler, Veri Fabrikası'nın sırasıyla Azure Depolama ve Azure SQL Veritabanınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizeleri içerir. Azure Blob veri kümesi, Blob depolama alanınızdaki giriş bloblarını içeren blob kapsayıcısını ve blob klasörünü belirtir. Azure SQL Tablo veri kümesi, verilerin kopyalanış olacağı SQL veritabanınızdaki SQL tablosunu belirtir.
 
-Aşağıdaki diyagramda, Data Factory içinde işlem hattı, etkinlik, veri kümesi ve bağlı hizmet arasındaki ilişkiler gösterilmektedir:
+Aşağıdaki diyagram, Veri Fabrikası'nda ardışık hatlar, etkinlik, veri kümesi ve bağlantılı hizmet arasındaki ilişkileri gösterir:
 
-![İşlem hattı, etkinlik, veri kümesi, bağlı hizmetler arasındaki ilişki](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+![Boru hattı, etkinlik, veri kümesi, bağlantılı hizmetler arasındaki ilişki](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
 
-## <a name="linked-service-json"></a>Bağlı hizmet JSON 'ı
-Data Factory bağlı bir hizmet, JSON biçiminde aşağıdaki gibi tanımlanır:
+## <a name="linked-service-json"></a>Bağlantılı hizmet JSON
+Veri Fabrikası'ndaki bağlantılı bir hizmet JSON formatında aşağıdaki gibi tanımlanır:
 
 ```json
 {
@@ -59,17 +59,17 @@ Data Factory bağlı bir hizmet, JSON biçiminde aşağıdaki gibi tanımlanır:
 }
 ```
 
-Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
+Aşağıdaki tabloda yukarıdaki JSON özellikleri açıklanır:
 
-Özellik | Açıklama | Gereklidir |
+Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-ad | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-type | Bağlı hizmetin türü. Örneğin: AzureStorage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Evet |
-typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için, bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Evet |
-connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Hayır
+ad | Bağlantılı hizmetin adı. Bkz. [Azure Veri Fabrikası - Adlandırma kuralları.](naming-rules.md) |  Evet |
+type | Bağlantılı hizmettürü. Örneğin: AzureStorage (veri deposu) veya AzureBatch (bilgi işlem). typeProperties için açıklamaya bakın. | Evet |
+typeProperties | Tür özellikleri her veri deposu veya bilgi işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu bağlayıcısı makalesine gidin. <br/><br/> Desteklenen bilgi işlem türleri ve bunların türü özellikleri için [Bkz. Bilgi İşlem bağlantılı hizmetler.](compute-linked-services.md) | Evet |
+connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. | Hayır
 
-## <a name="linked-service-example"></a>Bağlı hizmet örneği
-Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün AzureStorage olarak ayarlandığını unutmayın. Azure depolama bağlı hizmetinin tür özellikleri bir bağlantı dizesi içerir. Data Factory hizmeti, çalışma zamanında veri deposuna bağlanmak için bu bağlantı dizesini kullanır.
+## <a name="linked-service-example"></a>Bağlantılı hizmet örneği
+Aşağıdaki bağlantılı hizmet, Azure Depolama bağlantılı bir hizmettir. Türün AzureStorage olarak ayarlanmasına dikkat edin. Azure Depolama bağlantılı hizmetin tür özellikleri arasında bir bağlantı dizesi yer alıyor. Veri Fabrikası hizmeti, çalışma zamanında veri deposuna bağlanmak için bu bağlantı dizesini kullanır.
 
 ```json
 {
@@ -89,18 +89,18 @@ Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün AzureS
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Şu araçlardan veya SDK 'Lardan birini kullanarak bağlı hizmetler oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager şablonu ve Azure Portal
+Bu araçlardan veya SDK'lardan birini kullanarak bağlantılı hizmetler oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API,](quickstart-create-data-factory-rest-api.md)Azure Kaynak Yöneticisi Şablonu ve Azure portalı
 
-## <a name="data-store-linked-services"></a>Veri deposu bağlı hizmetleri
-[Bağlayıcı genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesindeki Data Factory tarafından desteklenen veri depolarının listesini bulabilirsiniz. Desteklenen bağlantı özelliklerini öğrenmek için bir veri deposuna tıklayın.
+## <a name="data-store-linked-services"></a>Veri deposu bağlantılı hizmetler
+[Bağlayıcıya genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesinden Veri Fabrikası tarafından desteklenen veri depolarının listesini bulabilirsiniz. Desteklenen bağlantı özelliklerini öğrenmek için bir veri deposunu tıklatın.
 
-## <a name="compute-linked-services"></a>İşlem bağlı hizmetleri
-Farklı işlem ortamları hakkında ayrıntılı bilgi edinmek için [desteklenen başvuru işlem ortamları](compute-linked-services.md) , veri fabrikanınızdan ve farklı yapılandırmalardan bağlanabilirsiniz.
+## <a name="compute-linked-services"></a>İşlem bağlantılı hizmetler
+Veri fabrikanızdan bağlanabileceğiniz farklı bilgi işlem [ortamları](compute-linked-services.md) ve farklı yapılandırmalar hakkında ayrıntılar için desteklenen başvuru işlem ortamları.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu araçlardan veya SDK 'Lardan birini kullanarak işlem hatları ve veri kümeleri oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticiye bakın.
+Bu araçlardan veya SDK'lardan birini kullanarak ardışık hatlar ve veri kümeleri oluşturmak için adım adım talimatlar için aşağıdaki öğreticiye bakın.
 
 - [Hızlı başlangıç: .NET kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)
-- [Hızlı başlangıç: PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md)
-- [Hızlı başlangıç: REST API kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-rest-api.md)
-- [Hızlı başlangıç: Azure portal kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-portal.md)
+- [Quickstart: PowerShell kullanarak bir veri fabrikası oluşturun](quickstart-create-data-factory-powershell.md)
+- [Quickstart: REST API kullanarak bir veri fabrikası oluşturmak](quickstart-create-data-factory-rest-api.md)
+- [Quickstart: Azure portalLarını kullanarak bir veri fabrikası oluşturun](quickstart-create-data-factory-portal.md)

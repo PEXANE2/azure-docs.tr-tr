@@ -1,66 +1,69 @@
 ---
-title: Azure Stream Analytics içindeki ölçek Machine Learning işlevleri
-description: Bu makalede bölümlendirme ve akış birimleri yapılandırarak Machine Learning işlevleri kullanan Stream Analytics işlerin nasıl ölçeklendiriyapılacağı açıklanır.
+title: Azure Akış Analizi'nde Makine Öğrenimi işlevlerini ölçeklendirin
+description: Bu makalede, bölümleme ve akış birimlerini yapılandırarak Makine Öğrenimi işlevlerini kullanan Akış Analizi işlerinin nasıl ölçeklendirilenanlatılmaktadır.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/16/2020
+ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066998"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (klasik) işlevleriyle Stream Analytics işinizi ölçeklendirin
 
-Bu makalede Azure Machine Learning işlevleri kullanan Azure Stream Analytics işlerin verimli bir şekilde ölçeklendirilmesi açıklanmaktadır. Genel olarak Stream Analytics işlerinin ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [Ölçek işleri](stream-analytics-scale-jobs.md).
+> [!TIP]
+> Gelişmiş performans ve güvenilirlik için Azure Machine Learning Studio (klasik) UDF yerine [Azure Machine Learning UDF'leri](machine-learning-udf.md) kullanmanız önerilir.
 
-## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Stream Analytics Azure Machine Learning işlev nedir?
+Bu makalede, Azure Makine Öğrenimi işlevlerini kullanan Azure Akış Analizi işlerinin nasıl verimli bir şekilde ölçeklendirilenir. Genel olarak Stream Analytics işlerinin nasıl ölçeklendirilenhakkında bilgi için makale [ölçeklendirme işlerine](stream-analytics-scale-jobs.md)bakın.
 
-Stream Analytics bir Machine Learning işlevi Stream Analytics sorgu dilinde normal işlev çağrısı gibi kullanılabilir. Ancak, arka planda bu işlev çağrıları aslında Web hizmeti istekleri Azure Machine Learning.
+## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Stream Analytics'te Azure Machine Learning işlevi nedir?
 
-Birden çok satırı aynı Web hizmeti API çağrısında birlikte "toplu olarak" izleyerek Machine Learning Web hizmeti isteklerinin verimini geliştirebilirsiniz. Bu gruplandırma bir mini toplu iş olarak adlandırılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) Web Hizmetleri](../machine-learning/studio/consume-web-services.md). Stream Analytics Azure Machine Learning Studio (klasik) için destek önizleme aşamasındadır.
+Stream Analytics'teki Makine Öğrenimi işlevi, Stream Analytics sorgu dilinde normal bir işlev çağrısı gibi kullanılabilir. Ancak, bu işlev çağrıları aslında Azure Machine Learning Web Service istekleridir.
 
-## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning işlevlerle Stream Analytics işi yapılandırma
+Aynı web hizmeti API çağrısında birden çok satırı bir araya getirerek Machine Learning web hizmeti isteklerinin iş kısmını geliştirebilirsiniz. Bu gruplandırmaya mini toplu iş denir. Daha fazla bilgi için [Azure Machine Learning Studio (klasik) Web Hizmetleri'ne](../machine-learning/studio/consume-web-services.md)bakın. Stream Analytics'teki Azure Machine Learning Studio (klasik) desteği önizlemede.
+
+## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning işlevleriyle Bir Akış Analizi işini yapılandırma
 
 Stream Analytics işiniz tarafından kullanılan Machine Learning işlevini yapılandırmak için iki parametre vardır:
 
-* Machine Learning işlev çağrılarının toplu iş boyutu.
-* Stream Analytics işi için sağlanan akış birimlerinin (SUs) sayısı.
+* Machine Learning işlevinin toplu boyutu çağırır.
+* Stream Analytics işi için sağlanan Akış Birimi (SUs) sayısı.
 
-SUs için uygun değerleri belirlemek için Stream Analytics işin gecikmesini veya her SU verimini iyileştirmek isteyip istemediğinize karar verin. İyi bölümlenen bir Stream Analytics sorgusunun aktarım hızını artırmak için, SUs her zaman bir işe eklenebilir. Ek SUs işi çalıştırma maliyetini artırır.
+SUs'lar için uygun değerleri belirlemek için, Stream Analytics işinin gecikmesini mi yoksa her SU'nun masını mı optimize etmek istediğinize karar verin. SUs'lar, iyi bölümlenmiş bir Akış Analizi sorgusunun verisini artırmak için her zaman bir işe eklenebilir. Ek SUs'lar işi çalıştırma maliyetini artırır.
 
-Stream Analytics işiniz için gecikme süresi *toleransını* belirleme. Toplu iş boyutunu artırmak, Azure Machine Learning isteklerinizin gecikmesini ve Stream Analytics işinin gecikmesini arttırır.
+Stream Analytics işiniz için gecikme *toleransını* belirleyin. Toplu iş boyutunu artırmak, Azure Machine Learning isteklerinizin gecikmesini ve Stream Analytics işinin gecikmesini artırır.
 
-Toplu iş boyutunu artırmak, Stream Analytics işinin **aynı sayıda** Machine Learning Web hizmeti isteği ile **daha fazla olay** işlemesini sağlar. Machine Learning Web hizmeti gecikmesi artışı genellikle toplu iş boyutu artışına göre daha doğrusal olur. 
+Toplu iş boyutunun artırılması, Akış Analizi işinin **aynı sayıda** Machine Learning web hizmeti isteğiyle daha fazla **olayı** işlemesine olanak tanır. Machine Learning web hizmeti gecikmesinin artması genellikle toplu iş boyutunun artmasına doğru değildir. 
 
-Belirli bir durumda Machine Learning Web hizmeti için en uygun maliyetli toplu iş boyutunu göz önünde bulundurmanız önemlidir. Web hizmeti istekleri için varsayılan toplu iş boyutu 1000 ' dir. Bu varsayılan boyutu, Stream Analytics için [Stream Analytics REST API](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Akış Analizi REST API") veya [PowerShell istemcisini](stream-analytics-monitor-and-manage-jobs-use-powershell.md)kullanarak değiştirebilirsiniz.
+Herhangi bir durumda bir Machine Learning web hizmeti için en uygun maliyetli toplu iş boyutunu göz önünde bulundurmak önemlidir. Web hizmeti istekleri için varsayılan toplu iş boyutu 1000'dir. [Stream Analytics REST API'sini](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Akış Analizi REST API") veya Stream [Analytics için PowerShell istemcisini](stream-analytics-monitor-and-manage-jobs-use-powershell.md)kullanarak bu varsayılan boyutu değiştirebilirsiniz.
 
-Bir toplu iş boyutuna karar verdikten sonra, işlevin saniyede işlemesi gereken olay sayısına göre akış birimlerinin (SUs) sayısını ayarlayabilirsiniz. Akış birimleri hakkında daha fazla bilgi için bkz. [Stream Analytics ölçek işleri](stream-analytics-scale-jobs.md).
+Toplu iş boyutuna karar verdikten sonra, işlevin saniyede işlemesi gereken olay sayısına bağlı olarak akış birimi (SUs) sayısını ayarlayabilirsiniz. Akış birimleri hakkında daha fazla bilgi için [Bkz. Akış Analizi ölçeğinde işler.](stream-analytics-scale-jobs.md)
 
-Her 6 SUs Machine Learning Web hizmetine yönelik 20 eşzamanlı bağlantı alır. Ancak, 1 SU işi ve 3 SU işi 20 eşzamanlı bağlantı alır.  
+Her 6 SUs, Machine Learning web hizmetine 20 eşzamanlı bağlantı alır. Ancak, 1 SU iş ve 3 SU işleri 20 eşzamanlı bağlantıları olsun.  
 
-Uygulamanız saniyede 200.000 olay oluşturursa ve toplu iş boyutu 1000 ise, sonuçta elde edilen Web hizmeti gecikmesi 200 MS 'dir. Bu hız, her bağlantının her saniye Machine Learning Web hizmetinde beş istek yapabileceği anlamına gelir. Stream Analytics işi, 20 bağlantıyla birlikte 200 MS ve 100.000 olaylarında 20.000 olayı saniye içinde işleyebilir.
+Uygulamanız saniyede 200.000 olay oluşturuyorsa ve toplu iş boyutu 1000 ise, ortaya çıkan web hizmeti gecikme süresi 200 ms'dir. Bu oran, her bağlantının Makine Öğrenimi web hizmetine saniyede beş istekte bulunabileceği anlamına gelir. 20 bağlantıyla Stream Analytics işi 200 ms'de 20.000, saniyede 100.000 etkinlik işleyebilir.
 
-Saniyede 200.000 olay işlemek için, Stream Analytics işi 12 ' ye kadar olan 40 eşzamanlı bağlantı gerektirir. Aşağıdaki diyagramda Stream Analytics işinden Machine Learning Web hizmeti uç noktasına yapılan istekler gösterilmektedir – her 6 SUs, Web hizmeti için en fazla 20 eşzamanlı bağlantı Machine Learning.
+Saniyede 200.000 olayı işlemek için Stream Analytics işinin 12 SUs'a ulaşan 40 eşzamanlı bağlantıya ihtiyacı vardır. Aşağıdaki diyagram, Stream Analytics işinden Machine Learning web hizmeti bitiş noktasına olan istekleri göstermektedir – Her 6 SUs'un Machine Learning web hizmetine en üst düzeyde 20 eşzamanlı bağlantısı vardır.
 
-![Machine Learning Işlevleri ile Stream Analytics ölçek iki iş örneği](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Machine Learning Işlevleri ile Stream Analytics ölçek iki iş örneği")
+![Makine Öğrenimi Fonksiyonları ile Ölçek Akışı Analizi iki iş örneği](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Makine Öğrenimi Fonksiyonları ile Ölçek Akışı Analizi iki iş örneği")
 
-Genel olarak ***b*** toplu iş boyutu için, b toplu iş boyutunda Web hizmeti gecikmesi için ***L*** , ***N*** SUs ile bir Stream Analytics işinin aktarım hızı:
+Genel olarak, toplu boyut için ***B,*** b toplu boyutunda web hizmeti gecikmesi milisaniye cinsinden ***L,*** ***N*** SUs ile bir Stream Analytics işinin iş akışı:
 
-![Machine Learning Işlevleri formülüyle ölçek Stream Analytics](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Machine Learning Işlevleri formülüyle ölçek Stream Analytics")
+![Makine Öğrenme Fonksiyonları Formülü ile Ölçek Akışı Analizi](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Makine Öğrenme Fonksiyonları Formülü ile Ölçek Akışı Analizi")
 
-Ayrıca, Machine Learning Web hizmetinde ' maksimum eşzamanlı çağrılar ' yapılandırabilirsiniz. Bu parametreyi en büyük değere ayarlamanız önerilir (Şu anda 200).
+Machine Learning web hizmetindeki 'maksimum eşzamanlı çağrıları' da yapılandırabilirsiniz. Bu parametreyi maksimum değere (şu anda 200) ayarlamak önerilir.
 
-Bu ayar hakkında daha fazla bilgi için, [Machine Learning Web Hizmetleri Için ölçeklendirme makalesini](../machine-learning/studio/scaling-webservice.md)inceleyin.
+Bu ayar hakkında daha fazla bilgi için Machine [Learning Web Services için Ölçekleme makalesini](../machine-learning/studio/scaling-webservice.md)inceleyin.
 
-## <a name="example--sentiment-analysis"></a>Örnek: Yaklaşım Analizi
-Aşağıdaki örnek, [Stream Analytics Machine Learning tümleştirme öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, yaklaşım Analizi Machine Learning işleviyle Stream Analytics bir işi içerir.
+## <a name="example--sentiment-analysis"></a>Örnek – Duygu Analizi
+Aşağıdaki örnek, [Akış Analizi Makine Öğrenme entegrasyon öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, duygu analizi Machine Learning işlevine sahip bir Stream Analytics işini içerir.
 
-Sorgu, aşağıdaki örnekte gösterildiği **gibi, sonra yaklaşım işlevinin gösterdiği** basit bir tamamen bölümlenmiş sorgudur:
+Sorgu, aşağıdaki örnekte gösterildiği gibi, **duygu** işlevi tarafından izlenen basit bir tam bölümlü sorgudur:
 
 ```SQL
     WITH subquery AS (
@@ -72,75 +75,75 @@ Sorgu, aşağıdaki örnekte gösterildiği **gibi, sonra yaklaşım işlevinin 
     From subquery
 ```
 
-Bir Stream Analytics işi oluşturmak için gereken yapılandırmayı incelemektir. Bu, saniye başına 10.000/sn cinsinden en fazla fiyata izin veren bir ücret analizi yapar.
+Saniyede 10.000 tweet hızında tweetlerin duyarlılık analizini yapan bir Stream Analytics işi oluşturmak için gerekli yapılandırmayı inceleyelim.
 
-1 SU kullanılarak bu Stream Analytics iş trafiği işleyebilir mi? İş, 1000 varsayılan toplu iş boyutunu kullanarak giriş ile devam edebilir. Yaklaşım Analizi Machine Learning Web hizmetinin varsayılan gecikmesi (varsayılan toplu iş boyutu 1000 ile), bir saniyeden daha fazla gecikme süresi üretir.
+1 SU kullanarak, bu Stream Analytics işi trafiği idare edebilir mi? İş, varsayılan 1000 toplu iş boyutunu kullanarak girişi takip edebilir. Duygu analizi Machine Learning web hizmetinin varsayılan gecikmesi (varsayılan toplu iş boyutu 1000 olan) bir saniyeden fazla gecikme yaratmaz.
 
-Stream Analytics işin **genel** veya uçtan uca gecikmesi genellikle birkaç saniye sürer. *Özellikle* Machine Learning işlevi çağrılarındaki bu Stream Analytics işe daha ayrıntılı bir bakış uygulayın. Toplu iş boyutu 1000 ile, 10.000 olaylarının bir verimi Web hizmetinde 10 istek alır. Tek bir SU ile, bu giriş trafiğini barındırmak için yeterli eşzamanlı bağlantı vardır.
+Akış Analizi işinin **genel** veya uçlardan uca gecikmesi genellikle birkaç saniye olur. Bu Stream Analytics işine, *özellikle* de Machine Learning işlev çağrılarına daha ayrıntılı bir göz atın. 1000 toplu iş boyutuyla, 10.000 etkinlik iş bir iş bölümü web hizmeti için yaklaşık 10 istek alır. Bir SU ile bile, bu giriş trafiğini karşılamak için yeterli eşzamanlı bağlantı vardır.
 
-Giriş olayı hızı, 100x tarafından artıyorsa, Stream Analytics işin saniye başına 1.000.000 kata kadar işlemesi gerekir. Artan ölçeği gerçekleştirmenin iki seçeneği vardır:
+Giriş olay hızı 100 x artarsa, Akış Analizi işinin saniyede 1.000.000 tweet işlemesi gerekir. Artan ölçeği gerçekleştirmek için iki seçenek vardır:
 
 1. Toplu iş boyutunu artırın.
-2. Olayları paralel olarak işlemek için giriş akışını bölümleyin.
+2. Olayları paralel olarak işlemek için giriş akışını bölümle.
 
-İlk seçenekle iş **gecikmesi** artar.
+İlk seçenekle, iş **gecikmesi** artar.
 
-İkinci seçenekle, daha fazla eşzamanlı Machine Learning Web hizmeti isteğinde bulunan daha fazla SUs sağlamanız gerekir. Bu daha fazla sayıda SUs, iş **maliyetini**artırır.
+İkinci seçenekle, daha eşzamanlı Machine Learning web hizmeti isteklerine sahip olmak için daha fazla SUs sağlamanız gerekecektir. Bu daha fazla sayıda SUs, iş **maliyetini**artırır.
 
-Her toplu iş boyutu için aşağıdaki gecikme ölçümlerini kullanarak ölçeklendirmeyi inceleyelim:
+Her toplu iş boyutu için aşağıdaki gecikme sonu ölçümlerini kullanarak ölçeklemeye bakalım:
 
-| Gecikme süresi | Toplu işlem boyutu |
+| Gecikme süresi | Toplu iş boyutu |
 | --- | --- |
-| 200 MS | 1000-olay toplu işleri veya altı |
-| 250 MS | 5\.000-olay toplu işleri |
-| 300 MS | 10.000-olay toplu işleri |
-| 500 ms | 25.000-olay toplu işleri |
+| 200 ms | 1000-olay toplu veya altında |
+| 250 ms | 5.000 etkinliklik toplu iş |
+| 300 ms | 10.000 etkinliklik toplu iş |
+| 500 ms | 25.000 etkinliklik toplu iş |
 
-1. İlk seçenek (daha fazla SUs**sağlamama** ) kullanılıyor. Toplu iş boyutu **25.000**olarak artırılabilir. Toplu iş boyutunu bu şekilde artırmak, işin 1.000.000 olay işlemesini, Machine Learning Web hizmetiyle 20 eş zamanlı bağlantıyla (çağrı başına 500 ms gecikme süresi ile) işlemesini sağlayacaktır. Bu nedenle, Machine Learning Web hizmeti isteklerine yönelik yaklaşım işlev istekleri nedeniyle Stream Analytics işinin ek gecikmesi **200 MS** 'den **500 MS**'ye artırılabilir. Ancak, Machine Learning Web Hizmetleri bir isteğin yük boyutunun 4 MB veya daha küçük olmasını gerektirdiğinden ve 100 saniyelik işlemden sonra Web hizmeti isteklerinin zaman aşımına uğramasıyla, toplu **iş boyutu sonsuz bir şekilde** artamamıştır.
-1. İkinci seçenek olarak, toplu iş boyutu 1000 ' de kalır, 200-MS Web hizmeti gecikme süresiyle, Web hizmetine yönelik her 20 eş zamanlı bağlantı, dakikada * 20 * 5 olay = 100.000 ' i 1000 işleyebilir. Bu nedenle, saniye başına 1.000.000 olay işlemek için, işin 60 SUs olması gerekir. İlk seçenekle karşılaştırıldığında Stream Analytics iş daha fazla Web hizmeti toplu istek oluşturacak ve bu da daha yüksek maliyetli bir maliyet oluşturuyor.
+1. İlk seçeneği kullanma (daha fazla SUs**sağlamamak).** Toplu iş boyutu **25.000'e**çıkarılabilir. Toplu iş boyutunu bu şekilde artırmak, işin Machine Learning web hizmetine 20 eşzamanlı bağlantıyla (arama başına 500 ms gecikmeyle) 1.000.000 olayı işlemesine olanak sağlar. Yani Machine Learning web hizmeti isteklerine karşı duygu fonksiyonu istekleri nedeniyle Stream Analytics işinin ek gecikme **si 200 ms'den 500** **ms'e**çıkarılacak. Ancak, Machine Learning web hizmetleri bir isteğin taşıma boyutunun 4 MB veya daha küçük olmasını gerektirdiğinden ve web hizmeti 100 saniye çalışmadan sonra zaman adedi istediği için toplu iş boyutu sonsuz olarak **artırılamaz.**
+1. İkinci seçeneği kullanarak, toplu iş boyutu 1000 olarak bırakılır, 200-ms web hizmeti gecikme sayarı ile, web hizmeti ne 20 eşzamanlı bağlantıları 1000 * 20 * 5 olaylar = 100.000 saniyede işlemek mümkün olacaktır. Yani saniyede 1.000.000 olayı işlemek için, işin 60 SUs'a ihtiyacı var. İlk seçenekle karşılaştırıldığında, Stream Analytics işi daha fazla web hizmeti toplu iş isteği nde bulunarak daha yüksek bir maliyet oluşturur.
 
-Aşağıda, farklı SUs ve Batch boyutları (saniye başına olay sayısı) için Stream Analytics işi verimlilik için bir tablo verilmiştir.
+Aşağıda, farklı SUs'lar ve toplu iş boyutları (saniyede olay sayısında) için Stream Analytics işinin iş akışı için bir tablo yer almaktadır.
 
-| toplu iş boyutu (ML gecikmesi) | 500 (200 ms) | 1\.000 (200 ms) | 5\.000 (250 MS) | 10.000 (300 ms) | 25.000 (500 MS) |
+| toplu iş boyutu (ML gecikme) | 500 (200 ms) | 1.000 (200 ms) | 5.000 (250 ms) | 10.000 (300 ms) | 25.000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2,500 |5\.000 |20.000 |30,000 |50.000 |
-| **3 SUs** |2,500 |5\.000 |20.000 |30,000 |50.000 |
-| **6 SUs** |2,500 |5\.000 |20.000 |30,000 |50.000 |
-| **12 SUs** |5\.000 |10,000 |40,000 |60,000 |100.000 |
-| **18 SUs** |7\.500 |15.000 |60,000 |90,000 |150,000 |
+| **1 SU** |2,500 |5.000 |20.000 |30,000 |50.000 |
+| **3 SUs** |2,500 |5.000 |20.000 |30,000 |50.000 |
+| **6 SUs** |2,500 |5.000 |20.000 |30,000 |50.000 |
+| **12 SUs** |5.000 |10,000 |40,000 |60.000 |100.000 |
+| **18 SUs** |7.500 |15.000 |60.000 |90,000 |150.000 |
 | **24 SUs** |10,000 |20.000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
-| **60 SUs** |25,000 |50.000 |200,000 |300,000 |500,000 |
+| **60 SUs** |25,000 |50.000 |200,000 |300,000 |500.000 |
 
-Şimdi, Stream Analytics çalışma Machine Learning işlevlerinin nasıl çalıştığını daha iyi anlayabilirsiniz. Ayrıca, veri kaynaklarından alınan Stream Analytics işlerin "çekme" verilerini ve her "çekme" Stream Analytics işinin işlemesi için bir olay toplu işi döndürdüğünü de anlamış olabilirsiniz. Bu çekme modeli Machine Learning Web hizmeti isteklerini nasıl etkiler?
+Şimdiye kadar, Stream Analytics'te Machine Learning'in nasıl çalıştığını iyi anlamış olmalısınız. Akış Analizi'nin veri kaynaklarından verileri "çektiğini" ve her "çekmenin" Akış Analizi işinin işlemesi için bir dizi olayı döndürtettiğini de büyük olasılıkla anlayabilirsiniz. Bu çekme modeli Machine Learning web hizmeti isteklerini nasıl etkiler?
 
-Normalde, Machine Learning işlevleri için belirlediğimiz toplu iş boyutu, her Stream Analytics iş "pull" tarafından döndürülen olay sayısıyla tamamen bölünemez. Bu gerçekleştiğinde, Machine Learning Web hizmeti "kısmi" toplu işlerle çağırılır. Kısmi toplu işlerin kullanılması, olayları çekme işleminden çekmeye kadar birleştirme sırasında ek iş gecikmesi yükünü ortadan kaldırır.
+Normalde, Machine Learning işlevleri için belirlediğimiz toplu iş boyutu, her Stream Analytics işi "çekme" tarafından döndürülen olay sayısıyla tam olarak bölünemez. Bu durumda, Machine Learning web hizmeti "kısmi" toplu işlerle çağrılır. Kısmi toplu iş partilerinin kullanılması, çekmeden çekmeye kadar olan olayları biraraya getirmek için ek iş gecikmesi yüküne neden olur.
 
-## <a name="new-function-related-monitoring-metrics"></a>İşlevle ilgili yeni izleme ölçümleri
-Stream Analytics işinin Izleyici alanında, işlevle ilgili üç ek ölçüm eklenmiştir. Bunlar, aşağıdaki grafikte gösterildiği gibi **Işlev isteklerdir**, **Işlev OLAYLARı** ve **başarısız işlev isteklerdir**.
+## <a name="new-function-related-monitoring-metrics"></a>Yeni işlevle ilgili izleme ölçümleri
+Bir Akış Analizi işinin Monitör alanında, işleve ilişkin üç ek ölçüm eklendi. Aşağıdaki grafikte gösterildiği gibi **Fonksiyon İsteKLerİ,** **İşLEV EtkİnLİkLerİ** ve **BAŞARıSıZ İşLEV İsteMLerİdir.**
 
-![Machine Learning Işlevleri ölçümleriyle ölçek Stream Analytics](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Machine Learning Işlevleri ölçümleriyle ölçek Stream Analytics")
+![Makine Öğrenme Fonksiyonları Ölçümleri ile Ölçek Akışı Analizi](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Makine Öğrenme Fonksiyonları Ölçümleri ile Ölçek Akışı Analizi")
 
-, Aşağıdaki gibi tanımlanır:
+Aşağıdaki gibi tanımlanır:
 
-**Işlev istekleri**: işlev isteklerinin sayısı.
+**İşLEV İsteKLerİ**: İşlev isteklerinin sayısı.
 
-**Işlev olayları**: işlev isteklerindeki olay sayısı.
+**İşLEV EtkİnLİkLerİ**: İşlev isteklerindeki sayı olayları.
 
-**Başarısız Işlev istekleri**: başarısız işlev isteklerinin sayısı.
+**BAŞARıSıZ İşLEV İsteKLerİ**: Başarısız işlev isteklerinin sayısı.
 
-## <a name="key-takeaways"></a>Anahtar koymalar
+## <a name="key-takeaways"></a>Anahtar Paketler
 
-Machine Learning işlevlerle bir Stream Analytics işini ölçeklendirmek için aşağıdaki faktörleri göz önünde bulundurun:
+Bir Akış Analizi işini Machine Learning işlevleriyle ölçeklendirmek için aşağıdaki faktörleri göz önünde bulundurun:
 
-1. Giriş olayı oranı.
-2. Çalışan Stream Analytics işi için toleranslı gecikme süresi (ve bu nedenle Machine Learning Web hizmeti isteklerinin toplu iş boyutu).
-3. Sağlanan Stream Analytics SUs ve Machine Learning Web hizmeti isteklerinin sayısı (işlevle ilgili ek maliyetler).
+1. Giriş olay hızı.
+2. Çalışan Stream Analytics işi için tolere edilen gecikme (ve böylece Machine Learning web hizmeti isteklerinin toplu boyutu).
+3. Sağlanan Akış Analizi SUs'ları ve Machine Learning web hizmeti isteklerinin sayısı (işleçle ilgili ek maliyetler).
 
-Örnek olarak, tamamen bölümlenmiş bir Stream Analytics sorgusu kullanılmıştır. Daha karmaşık bir sorgu gerekliyse, [Azure Stream Analytics forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) Stream Analytics takımdan ek yardım almak için harika bir kaynaktır.
+Örnek olarak tam bölümlü bir Akış Analizi sorgusu kullanılmıştır. Daha karmaşık bir sorgu gerekiyorsa, Azure Akışı Analizi forumu Stream [Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) ekibinden ek yardım almak için harika bir kaynaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Stream Analytics hakkında daha fazla bilgi edinmek için bkz.:
+Stream Analytics hakkında daha fazla bilgi edinmek için bkz:
 
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
