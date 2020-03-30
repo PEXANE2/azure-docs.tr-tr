@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e375c42ee91061c9f558daa9affba875664f777f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774126"
 ---
-Eşler listesini almak için `Get-AzPeering` komutunu çalıştırın:
+Eşlemelistesini almak için komutu `Get-AzPeering` çalıştırın:
 
 ```powershell
 $directPeering = Get-AzPeering -ResourceGroupName "PeeringResourceGroup" -Name "SeattleDirectPeering"
 ```
 
-Aşağıda, uçtan uca sağlama başarıyla tamamlandığında örnek bir yanıt verilmiştir:
+Aşağıda, uçuça sağlama başarıyla tamamlandığında örnek bir yanıt verilmiştir:
 
 ```powershell
     Name                 : SeattleDirectPeering

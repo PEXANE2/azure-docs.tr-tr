@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Container Service-SSS
+title: (AmortismanA Uğradı) Azure Kapsayıcı Hizmeti - SSS
 description: Docker kapsayıcı uygulamalarını çalıştıran bir sanal makine kümesi oluşturma, yapılandırma ve yönetme işlemini kolaylaştıran Azure Container Service hizmeti hakkında sık sorulan soruları yanıtlar.
 services: container-service
 author: dlepow
@@ -10,13 +10,13 @@ ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f031f55bbff534181459bb1bf7469f315aee27cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887793"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>Kullanım DıŞı Kapsayıcı hizmeti sık sorulan sorular
+# <a name="deprecated-container-service-frequently-asked-questions"></a>(AmortismanA Uğradı) Konteyner Servisi sık sorulan sorular
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -52,7 +52,7 @@ Ek ayrıntılar için lütfen [kapsayıcılar için destek ilkemize](https://sup
 
 Kümeniz için Linux sanal makinelerinde kimlik doğrulamasına yönelik bir SSH RSA genel ve özel anahtar çifti oluşturmak için, işletim sisteminizde standart araçları kullanabilirsiniz. Adımlar için [OS X ve Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) veya [Windows](../../virtual-machines/linux/ssh-from-windows.md) yönergelerine bakın. 
 
-Bir kapsayıcı hizmeti kümesi dağıtmak için Azure CLı komutlarını kullanırsanız, kümeniz için SSH anahtarları otomatik olarak oluşturulabilir.
+Bir kapsayıcı hizmeti kümesini dağıtmak için Azure CLI komutlarını kullanırsanız kümenize yönelik SSH anahtarları otomatik olarak oluşturulabilir.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Kubernetes kümem için nasıl hizmet sorumlusu oluşturabilirim?
 
@@ -104,7 +104,7 @@ Bağlantı dizesini Azure portalında veya Azure komut satırı araçlarını ku
 
 4. **Özet** sayfasındaki **Çıktılar** altında çeşitli küme bağlantıları sağlanır. **SSHMaster0**, kapsayıcı hizmeti kümenizdeki birinci ana sunucuya bir SSH bağlantı dizesi sağlar. 
 
-Daha önce belirtildiği gibi, ana sunucunun FQDN'sini bulmak için Azure araçlarını da kullanabilirsiniz. Ana sunucunun FQDN’sini ve kümeyi oluştururken belirttiğiniz kullanıcı adını kullanarak ana sunucuyla SSH bağlantısı oluşturun. Örneğin:
+Daha önce belirtildiği gibi, ana sunucunun FQDN'sini bulmak için Azure araçlarını da kullanabilirsiniz. Ana sunucunun FQDN’sini ve kümeyi oluştururken belirttiğiniz kullanıcı adını kullanarak ana sunucuyla SSH bağlantısı oluşturun. Örnek:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -112,9 +112,9 @@ ssh userName@masterFQDN –A –p 22 
 
 Daha fazla bilgi için bkz. [Azure Container Service kümesine bağlanma](../../container-service/kubernetes/container-service-connect.md).
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>DNS ad çözümlemem Windows’da çalışmıyor. Ne yapmam gerekir?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>DNS ad çözümlemem Windows’da çalışmıyor. Ne yapmalıyım?
 
-Düzeltmeler hala etkin bir şekilde kullanıma hazır olan Windows üzerinde bazı bilinen DNS sorunları vardır. Ortamınızın bundan faydalanabilir olması için lütfen en güncel ACS-Engine ve Windows sürümünü ( [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
+Windows'da bilinen bazı DNS sorunları vardır ve düzeltmeleri hala etkin olarak aşamalı olarak devre dışı sürülmektedir. Ortamınızın bundan yararlanabilmesi için lütfen en güncel acs-engine ve Windows sürümünü [(KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
 
 | DNS Belirtisi | Geçici çözüm  |
 |-------------|-------------|

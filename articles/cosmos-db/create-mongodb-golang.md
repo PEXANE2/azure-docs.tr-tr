@@ -1,6 +1,6 @@
 ---
-title: MongoDB ve Golang SDK için Azure Cosmos DB API 'sini kullanan konsol uygulaması
-description: ", MongoDB için Azure Cosmos DB API 'sini kullanarak bağlanmak ve sorgulamak için kullanabileceğiniz bir Golang kod örneği sunar."
+title: MongoDB ve Golang SDK için Azure Cosmos DB'nin API'sini kullanan konsol uygulaması
+description: Azure Cosmos DB'nin MongoDB için API'sini kullanarak bağlanmak ve sorgulamak için kullanabileceğiniz bir Golang kodu örneği sunar.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75441959"
 ---
-# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB ve Golang SDK için API 'sini kullanarak bir konsol uygulaması oluşturma
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Hızlı başlangıç: MongoDB ve Golang SDK için Azure Cosmos DB'nin API'yi kullanarak bir konsol uygulaması oluşturun
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -25,20 +25,20 @@ ms.locfileid: "75441959"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB'nin çekirdeğindeki küresel dağıtım ve yatay ölçek özelliklerinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızla oluşturabilir ve sorgulayabilirsiniz.
 
-Bu hızlı başlangıçta, [Golang](https://golang.org/) 'de yazılmış mevcut bir MongoDB uygulamasını alma ve mongodb IÇIN Azure Cosmos DB API 'Sini kullanarak Cosmos veritabanınıza bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu hızlı başlangıç, [Golang'da](https://golang.org/) yazılmış mevcut bir MongoDB uygulamasını nasıl alıp Cosmos Veritabanınıza nasıl bağlayabilirsiniz, Azure Cosmos DB'nin MongoDB için API'sini kullanarak nasıl bağlanabilirsiniz.
 
-Diğer bir deyişle, Golang uygulamanız yalnızca bir MongoDB istemcisi kullanarak bağlantı olduğunu bilir. Verilerin Cosmos veritabanında depolandığı uygulama için saydamdır.
+Başka bir deyişle, Golang uygulamanız yalnızca bir MongoDB istemcisi kullanarak bağladığını bilir. Verilerin Bir Cosmos veritabanında depolanmış olması uygulamaya saydamdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
+- Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free) bir hesap oluşturun. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 - [Go](https://golang.org/dl/) ve [Go](https://golang.org/) dilinde temel bilgi düzeyi.
-- Bir IDE: [GoLand](https://www.jetbrains.com/go/) jetbrains [Visual Studio Code'u](https://code.visualstudio.com/) Microsoft tarafından veya [Atom](https://atom.io/). Bu öğreticide, GoLand kullanıyorum.
+- Bir IDE - Jetbrains tarafından [GoLand,](https://www.jetbrains.com/go/) Microsoft veya [Atom](https://atom.io/)tarafından [Visual Studio Code](https://code.visualstudio.com/) . Bu öğretici, ben GoLand kullanıyorum.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
@@ -61,7 +61,7 @@ Diğer bir deyişle, Golang uygulamanız yalnızca bir MongoDB istemcisi kullana
     go get gopkg.in/mgo.v2
     ```
 
-[Mgo](https://labix.org/mgo) sürücüsü olan bir [MongoDB](https://www.mongodb.com/) sürücüsü [Go diline](https://golang.org/) özellikleri standart Go izleyen çok basit bir API altında zengin ve seçimi uygular deyimleri.
+[Mgo](https://labix.org/mgo) sürücüsü standart Go deyimleri aşağıdaki çok basit bir API altında özellikleri zengin ve iyi test edilmiş bir seçim uygular [Go dili](https://golang.org/) için bir [MongoDB](https://www.mongodb.com/) sürücüsüdür.
 
 <a id="connection-string"></a>
 
@@ -87,15 +87,15 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
 
 Aşağıdaki kod parçacıklarının tamamı, main.go dosyasından alınmıştır.
 
-### <a name="connecting-the-go-app-to-cosmos-db"></a>Go uygulamasını Cosmos DB 'ye bağlama
+### <a name="connecting-the-go-app-to-cosmos-db"></a>Go uygulamasını Cosmos DB'ye bağlama
 
-MongoDB için Azure Cosmos DB API 'SI SSL etkin bağlantıyı destekler. Bağlanmak için, MgO içinde **Dialserver** işlevini tanımlamanız gerekir [. Dialınfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo)ve TLS kullanımını yapın [.](https://golang.org/pkg/crypto/tls#Dial) Bağlantıyı gerçekleştirmek için Çevir işlevi.
+Azure Cosmos DB'nin MongoDB için API'si SSL özellikli bağlantıyı destekler. Bağlanmak için mgo'da **DialServer** işlevini tanımlamanız [gerekir. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), ve [tls yararlanmak.* *](https://golang.org/pkg/crypto/tls#Dial) Bağlantıyı gerçekleştirmek için arama işlevi.
 
-Aşağıdaki Golang kod parçacığı, Go uygulamasını MongoDB için Azure Cosmos DB API 'siyle bağlar. *Dialınfo* sınıfı, oturum oluşturma seçeneklerini barındırır.
+Aşağıdaki Golang kodu snippet, Go uygulamasını Azure Cosmos DB'nin MongoDB api'si ile bağlar. *DialInfo* sınıfı oturum oluşturmak için seçenekler tutar.
 
 ```go
 // DialInfo holds options for establishing a session.
@@ -131,7 +131,7 @@ session.SetSafe(&mgo.Safe{})
 
 SSL bağlantısı yoksa **mgo.Dial()** yöntemi kullanılır. SSL bağlantısı için **mgo.DialWithInfo()** yöntemi gerekir.
 
-Oturum nesnesinin oluşturulması için **DialWIthInfo{}** nesnesinin bir örneği kullanılır. Oturum bağlantısı kurulduktan sonra aşağıdaki kod parçacığını kullanarak koleksiyona erişebilirsiniz:
+Oturum nesnesini oluşturmak için **DialWIthInfo{} ** nesnesinin bir örneği kullanılır. Oturum bağlantısı kurulduktan sonra aşağıdaki kod parçacığını kullanarak koleksiyona erişebilirsiniz:
 
 ```go
 collection := session.DB("database").C("package")
@@ -170,7 +170,7 @@ if err != nil {
 
 ### <a name="query-or-read-a-document"></a>Bir belgeyi sorgulama veya okuma
 
-Cosmos DB, her bir koleksiyonda depolanan verilere karşı zengin sorguları destekler. Aşağıdaki örnek kod, koleksiyonunuzdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
+Cosmos DB, her koleksiyonda depolanan verilere karşı zengin sorguları destekler. Aşağıdaki örnek kod, koleksiyonunuzdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
 
 ```go
 // Get a Document from the collection
@@ -214,9 +214,9 @@ if err != nil {
     
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-1. Golang 'de, GOPATH 'nizin ( **Dosya**, **Ayarlar**, **Git**, **gopath**bölümünde bulunur) gopkg yüklendiği konumu içerdiğinden emin olun. Bu, varsayılan olarak, userprofile\go şeklindedir. 
+1. Golang'da, GOPATH'inizin **(Dosya**, **Ayarlar**, **Go**, **GOPATH**altında mevcuttur) gopkg'ın yüklendiği konumu içerdiğinden emin olun, bu da varsayılan olarak USERPROFILE\go'dur. 
 2. Uygulamayı çalıştırdıktan sonra belgeyi görebilmeniz için 103.-107. satırlar arasında yer alan ve belgeyi silen satırları açıklama satırı yapın.
-3. Golang 'de **Çalıştır**' a ve ardından **' ana yapı oluştur. git ve Çalıştır '** düğmesine tıklayın.
+3. Golang'da **Çalıştır'ı**tıklatın ve ardından **'Main.go oluştur ve çalıştır' seçeneğini**tıklatın.
 
     Uygulama işlemi tamamlar ve [Belge oluşturma](#create-document)’da oluşturulan belgenin açıklamasını görüntüler.
     
@@ -226,7 +226,7 @@ if err != nil {
     Process finished with exit code 0
     ```
 
-    ![Uygulamanın çıkışını gösteren golang](./media/create-mongodb-golang/goglang-cosmos-db.png)
+    ![Uygulamanın çıktısını gösteren Golang](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
 ## <a name="review-your-document-in-data-explorer"></a>Veri Gezgini’nde belgenizi gözden geçirin
 
@@ -248,7 +248,7 @@ Belgenizi Veri Gezgini’nde görmek için Azure portalına dönün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Cosmos hesabı oluşturmayı ve Golang uygulamasını çalıştırmayı öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta, bir Cosmos hesabı oluşturmayı ve bir Golang uygulaması çalıştırmayı öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)

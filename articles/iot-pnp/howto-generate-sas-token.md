@@ -1,27 +1,27 @@
 ---
-title: IoT Tak ve Kullan önizleme deposuna erişmek için güvenlik belirteci oluşturma | Microsoft Docs
-description: Programlama yoluyla IoT Tak ve Kullan önizleme modeli deposuna eriştiğinizde kullanılacak bir paylaşılan erişim imza belirteci oluşturun.
+title: IoT Tak ve Çalıştır Önizleme deposuna erişmek için güvenlik belirteci oluşturma | Microsoft Dokümanlar
+description: Bir IoT Tak ve Çalıştır Önizleme modeli deposuna programlı olarak erişdiğinizde kullanmak üzere paylaşılan bir erişim imza belirteci oluşturun.
 author: Philmea
 ms.author: philmea
 ms.date: 12/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f008627317588467d731ccc03aec7738f58e46e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159209"
 ---
-# <a name="generate-sas-token"></a>SAS belirteci oluştur
+# <a name="generate-sas-token"></a>SAS belirteci oluşturma
 
-Bu nasıl yapılır Kılavuzu, IoT Tak ve Kullan önizleme modeli deposu API 'Leri ile kullanmak üzere programlı bir şekilde paylaşılan erişim imzası (SAS) belirteci oluşturmayı gösterir.
+Bu nasıl yapılır kılavuzu, IoT Tak ve Çalıştır Önizleme modeli deposu API'leri ile kullanılacak paylaşılan erişim imzası (SAS) belirteci nasıl programlanabilir şekilde oluşturacağınızı gösterir.
 
 ## <a name="python"></a>Python
 
-Aşağıdaki kod parçacığında, Python kullanarak bir SAS belirteci oluşturma gösterilmektedir:
+Aşağıdaki parçacık Python kullanarak bir SAS belirteci oluşturmak için nasıl gösterir:
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Aşağıdaki kod parçacığında, C\#kullanarak bir SAS belirteci oluşturma gösterilmektedir:
+Aşağıdaki parçacık, C\#kullanarak nasıl bir SAS belirteci oluşturacağınızı gösterir:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -72,16 +72,16 @@ public static string generateSasToken(string hostName, string repoId, string key
 }
 ```
 
-## <a name="use-the-sas-token"></a>SAS belirtecini kullanma
+## <a name="use-the-sas-token"></a>SAS belirteci kullanma
 
-Bir SAS belirteci oluşturduktan sonra, bir HTTP POST isteği oluşturmak için kullanabilirsiniz. Örneğin:
+Bir SAS belirteci oluşturduktan sonra, bir HTTP POST isteği nde bulunmak için kullanabilirsiniz. Örnek:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-İstemciye bir SAS belirteci verirseniz, istemci kaynağın birincil anahtarına sahip değildir ve karmayı elde etmek için ters çeviremez. Bir SAS belirteci, istemcinin erişebileceği ve ne kadar süreyle erişebileceklerini denetlemenizi sağlar. İlkede birincil anahtarı değiştirdiğinizde, bundan oluşturulan tüm SAS belirteçleri geçersiz kılınır.
+Bir istemciye bir SAS belirteci verirseniz, istemci kaynağın birincil anahtarına sahip değildir ve elde etmek için karmayı tersine çeviremez. SAS belirteci, istemcinin nelere erişebileceği ve ne kadar süreyle erişebileceği üzerinde denetim sağlar. İlkede birincil anahtarı değiştirdiğinizde, ondan oluşturulan SAS belirteçleri geçersiz kılınmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Tak ve Kullan önizleme modeli depolarında erişim için kullanılacak güvenlik belirteçleri oluşturmayı öğrendiğinize göre, [ıot Tak ve kullan Preview modelleme geliştirici kılavuzunda](concepts-developer-guide.md)daha fazla bilgi edinilmesi önerilir.
+Şimdi model IoT Tak ve Çalıştır Önizleme modeli depolarına erişmek için kullanmak için güvenlik belirteçleri oluşturma hakkında öğrendim, önerilen bir sonraki adım [IoT Tak ve Çalıştır Önizleme modelleme geliştirici kılavuzunda](concepts-developer-guide.md)daha fazla bilgi edinmektir.

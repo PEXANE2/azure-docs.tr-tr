@@ -1,29 +1,29 @@
 ---
-title: Şablon işlevleri-sayısal
-description: Sayılarla çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+title: Şablon işlevleri - sayısal
+description: Sayılarla çalışmak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156353"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için sayısal işlevler
+# <a name="numeric-functions-for-arm-templates"></a>ARM şablonları için sayısal işlevler
 
-Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, Azure Kaynak Yöneticisi (ARM) şablonunuzda ki tümsekler ile çalışmak için aşağıdaki işlevleri sağlar:
 
-* [ekleyemiyorum](#add)
-* [Copyındex](#copyindex)
-* [DIV](#div)
+* [add](#add)
+* [copyIndex](#copyindex)
+* [div](#div)
 * [float](#float)
-* ['tir](#int)
-* [Biçimlendir](#max)
-* [Min](#min)
-* [alma](#mod)
-* [MUL](#mul)
-* [alt](#sub)
+* [int](#int)
+* [Max](#max)
+* [Dk](#min)
+* [mod](#mod)
+* [Mul](#mul)
+* [Alt](#sub)
 
 <a id="add" />
 
@@ -32,22 +32,22 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 ## <a name="add"></a>add
 `add(operand1, operand2)`
 
-Belirtilen iki tam sayının toplamını döndürür.
+Sağlanan iki toplamın toplamını verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
-|:--- |:--- |:--- |:--- | 
-|operand1 |Yes |int |Eklenecek ilk numara. |
-|işlenen2 |Yes |int |Eklenecek ikinci sayı. |
+|:--- |:--- |:--- |:--- |
+|operand1 |Evet |int |Eklenecek ilk sayı. |
+|operand2 |Evet |int |Eklenecek ikinci sayı. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Parametrelerin toplamını içeren bir tamsayı.
+Parametrelerin toplamını içeren bir sonsayı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) iki parametre ekler.
+Aşağıdaki [örnek şabloniki](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) parametre ekler.
 
 ```json
 {
@@ -80,91 +80,91 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| Adresult | Int | 8 |
+| addResult | int | 8 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
 
-## <a name="copyindex"></a>Copyındex
+## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Yineleme döngüsünün dizinini döndürür. 
+Yineleme döngüsü dizini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| loopName | Hayır | string | Yinelemeyi alma döngüsünün adı. |
-| offset |Hayır |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
+| loopName | Hayır | string | Yineleme almak için döngü nün adı. |
+| uzaklık |Hayır |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
 
 ### <a name="remarks"></a>Açıklamalar
 
-Bu işlev her zaman bir **kopyalama** nesnesiyle birlikte kullanılır. **Konum**için hiçbir değer sağlanmazsa, geçerli yineleme değeri döndürülür. Yineleme değeri sıfırdan başlar. Kaynak ya da değişken tanımlarken yineleme döngülerini kullanabilirsiniz.
+Bu işlev her zaman bir **kopyalama** nesnesi ile kullanılır. **Ofset**için değer sağlanmadıysa, geçerli yineleme değeri döndürülür. Yineleme değeri sıfırdan başlar. Kaynakları veya değişkenleri tanımlarken yineleme döngülerini kullanabilirsiniz.
 
-**Loopname** özelliği, copyındex 'in bir kaynak yinelemeye mi yoksa Özellik yinelemesine mi başvurmadığını belirtmenizi sağlar. **Loopname**için değer sağlanmazsa, geçerli kaynak türü yinelemesi kullanılır. Bir özellik üzerinde yineleme yaparken **Loopname** için bir değer belirtin. 
- 
-**Copyındex**'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
+**loopName** özelliği, copyIndex'in bir kaynak yinelemesine mi yoksa özellik yinelemesine mi atıfta bulunup bulunmadığını belirtmenize olanak tanır. **loopName**için değer sağlanmadıysa, geçerli kaynak türü yinelemesi kullanılır. Bir özellik üzerinde yinelenirken **loopName** için bir değer sağlayın.
 
-Bir değişken tanımlarken **Copyındex** kullanımına ilişkin bir örnek için bkz. [değişkenler](template-syntax.md#variables).
+**copyIndex'i**nasıl kullandığınızın tam açıklaması için [bkz.](copy-resources.md)
+
+Bir değişkeni tanımlarken **copyIndex** kullanma örneği için, [bkz.](template-syntax.md#variables)
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, bir kopya döngüsünü ve ada dahil olan dizin değerini gösterir. 
+Aşağıdaki örnekte bir kopya döngüsü ve addahil dizin değeri gösterilmektedir.
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
 ```
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Yinelemenin geçerli dizinini temsil eden bir tamsayı.
+Yinelemenin geçerli dizinini temsil eden bir sonsyon.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Belirtilen iki tamsayının tamsayı bölümünü döndürür.
+Sağlanan iki tümsenin insabölümünü verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Bölünmekte olan sayı. |
-| işlenen2 |Yes |int |Bölmek için kullanılan sayı. 0 olamaz. |
+| operand1 |Evet |int |Bölünen sayı. |
+| operand2 |Evet |int |Bölmek için kullanılan sayı. 0 olamaz. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Bölümü temsil eden bir tamsayı.
+Tümeni temsil eden bir karşıcı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) bir parametreyi başka bir parametreye böler.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) bir parametreyi başka bir parametreye böler.
 
 ```json
 {
@@ -197,22 +197,22 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| divResult | Int | 2 |
+| divResult | int | 2 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -220,20 +220,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-Değeri kayan noktalı sayıya dönüştürür. Bu işlevi yalnızca, bir mantıksal uygulama gibi özel parametreleri uygulamaya geçirirken kullanırsınız.
+Değeri kayan nokta numarasına dönüştürür. Bu işlevi yalnızca Mantık Uygulaması gibi bir uygulamaya özel parametreler aktarırken kullanırsınız.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
+| arg1 |Evet |dize veya int |Kayan nokta numarasına dönüştürülecek değer. |
 
-### <a name="return-value"></a>Dönüş değeri
-Kayan nokta sayısı.
+### <a name="return-value"></a>Döndürülen değer
+Kayan nokta numarası.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, bir mantıksal uygulamaya parametreleri geçirmek için float 'in nasıl kullanılacağını gösterir:
+Aşağıdaki örnekte, bir Mantık Uygulamasına parametreleri geçirmek için float nasıl kullanılacağı gösterilmektedir:
 
 ```json
 {
@@ -254,28 +254,28 @@ Aşağıdaki örnek, bir mantıksal uygulamaya parametreleri geçirmek için flo
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Belirtilen değeri bir tamsayıya dönüştürür.
+Belirtilen değeri bir karşıcıya dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
+| valueToConvert |Evet |dize veya int |Bir karşıcıya dönüştürülecek değer. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Dönüştürülmüş değerin bir tamsayı.
+Dönüştürülen değerin bir karşıcısı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) , Kullanıcı tarafından sağlanmış parametre değerini Integer olarak dönüştürür.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) kullanıcı tarafından sağlanan parametre değerini birandıkaya dönüştürür.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -291,19 +291,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| intResult | Int | 4 |
+| intResult | int | 4 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
@@ -311,24 +311,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>en büyük
+## <a name="max"></a>max
 `max (arg1)`
 
-Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar listesini döndürür.
+Bir dizi tamsayı veya virgülle ayrılmış tamsayılar listesinden en büyük değeri verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Evet |isterler dizisi veya virgülle ayrılmış bir insa listesi |En yüksek değeri elde etmek için koleksiyon. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Koleksiyondaki en büyük değeri temsil eden bir tamsayı.
+Koleksiyondaki en büyük değeri temsil eden bir karşıcı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) , en fazla bir diziyi ve tamsayılar listesini nasıl kullanacağınızı gösterir:
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) bir dizi ve tamsayılar listesi ile max nasıl kullanılacağını gösterir:
 
 ```json
 {
@@ -354,20 +354,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| ıntoutput | Int | 5 |
+| diziÇıktı | int | 5 |
+| intOutput | int | 5 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -375,24 +375,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>en küçük
+## <a name="min"></a>min
 `min (arg1)`
 
-Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayılar listesini döndürür.
+Bir tamsede dizisinden veya virgülle ayrılmış bir tamsayılar listesinden en az değeri verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Evet |isterler dizisi veya virgülle ayrılmış bir insa listesi |En düşük değeri almak için toplama. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Koleksiyondan en küçük değeri temsil eden bir tamsayı.
+Koleksiyondaki minimum değeri temsil eden bir sonda.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) , en az bir dizi ve tamsayılar listesi ile min nasıl kullanılacağını gösterir:
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) min'in bir dizi ve tamsayılar listesiyle nasıl kullanılacağını gösterir:
 
 ```json
 {
@@ -418,20 +418,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| ıntoutput | Int | 0 |
+| diziÇıktı | int | 0 |
+| intOutput | int | 0 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -439,24 +439,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>alma
+## <a name="mod"></a>mod
 `mod(operand1, operand2)`
 
-Belirtilen iki tamsayının kullanıldığı tamsayı bölümünün kalanını döndürür.
+Sağlanan iki tümseci kullanarak, tümseci bölümünün geri kalanını verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Bölünmekte olan sayı. |
-| işlenen2 |Yes |int |Bölmek için kullanılan sayı 0 olamaz. |
+| operand1 |Evet |int |Bölünen sayı. |
+| operand2 |Evet |int |Bölmek için kullanılan sayı 0 olamaz. |
 
-### <a name="return-value"></a>Dönüş değeri
-Kalanı temsil eden bir tamsayı.
+### <a name="return-value"></a>Döndürülen değer
+Geri kalanını temsil eden bir sonsayı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) , bir parametreyi başka bir parametreye bölmek için geri kalanı döndürür.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) bir parametrenin kalan kısmını başka bir parametreye bölerek döndürür.
 
 ```json
 {
@@ -489,19 +489,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modResult | int | 1 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
@@ -509,25 +509,25 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mul" />
 
-## <a name="mul"></a>MUL
+## <a name="mul"></a>Mul
 `mul(operand1, operand2)`
 
-Belirtilen iki tamsayının çarpma sayısını döndürür.
+Sağlanan iki tümsenin çoğalmasını verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Çarpılacak ilk sayı. |
-| işlenen2 |Yes |int |Çarpılacak ikinci sayı. |
+| operand1 |Evet |int |Çarpılacayailk sayı. |
+| operand2 |Evet |int |Çarpılmak için ikinci sayı. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Çarpma temsil eden bir tamsayı.
+Çarpma işlemini temsil eden bir karşıcı.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) bir parametreyi başka bir parametreyle çarpar.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) bir parametreyi başka bir parametreyle çarpar.
 
 ```json
 {
@@ -560,19 +560,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| Çoklu sonuç | Int | 15 |
+| mulResult | int | 15 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
@@ -580,24 +580,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>sub
+## <a name="sub"></a>Alt
 `sub(operand1, operand2)`
 
-Belirtilen iki tamsayının çıkarma sayısını döndürür.
+Sağlanan iki tümsenin çıkarını verir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Çıkarılan sayı. |
-| işlenen2 |Yes |int |Çıkarılan sayı. |
+| operand1 |Evet |int |Çıkarılan sayı. |
+| operand2 |Evet |int |Çıkarılan sayı. |
 
-### <a name="return-value"></a>Dönüş değeri
-Çıkarma temsil eden bir tamsayı.
+### <a name="return-value"></a>Döndürülen değer
+Çıkarmayı temsil eden bir karşımat.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) bir parametreyi başka bir parametreden çıkartır.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) başka bir parametreden bir parametre çıkarır.
 
 ```json
 {
@@ -630,27 +630,27 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| Alt sonuç | Int | 4 |
+| subResult | int | 4 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLI ile dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+PowerShell ile bu örnek şablonu dağıtmak için şunları kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
-* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
+* Azure Kaynak Yöneticisi şablonundaki bölümlerin açıklaması için [bkz.](template-syntax.md)
+* Birden çok şablonu birleştirmek için bkz: [Azure Kaynak Yöneticisi ile bağlantılı şablonları kullanma.](linked-templates.md)
+* Bir kaynak türü oluştururken belirli sayıda kez yeniden sıralamak için azure [kaynak yöneticisinde birden çok kaynak örneği oluşturma](copy-resources.md)bölümüne bakın.
+* Oluşturduğunuz şablonu nasıl dağıtabileceğinizi görmek için Azure [Kaynak Yöneticisi şablonuyla bir uygulama dağıt'a](deploy-powershell.md)bakın.
 

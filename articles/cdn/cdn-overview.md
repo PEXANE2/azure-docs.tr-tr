@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75660639"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure’da içerik teslim ağı nedir?
@@ -35,10 +35,10 @@ Web sitesi varlıklarını teslim etmek için Azure CDN kullanmanın avantajlar�
 
 Geçerli CDN düğümü konumlarının listesi için bkz. [Azure CDN POP konumları](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 ![CDN'ye Genel Bakış](./media/cdn-overview/cdn-overview.png)
 
-1. Bir kullanıcı (Alice), _&lt;uç nokta adı&gt;_ .azureedge.net gibi özel bir etki alanı adına sahip olan bir URL’yi kullanarak bir dosya (varlık olarak da adlandırılır) isteğinde bulunur. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
+1. Bir kullanıcı (Alice), _ &lt;son nokta adı&gt;_.azureedge.net gibi özel bir etki alanı adı olan bir URL kullanarak bir dosyayı (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
     
 2. Bulunma noktasındaki uç sunucuların önbelleğinde dosya mevcut değilse bulunma noktası, kaynak sunucudan dosyayı ister. Kaynak sunucu; bir Azure Web App, Azure Bulut Hizmeti, Azure Depolama hesabı veya genel olarak erişilebilen herhangi bir web sunucusu olabilir.
    
@@ -64,7 +64,7 @@ CDN aboneliği sınırları hakkında daha fazla bilgi için bkz. [CDN sınırla
 ## <a name="azure-cdn-features"></a>Azure CDN özellikleri
 Azure CDN aşağıdaki temel özellikleri sunar:
 
-- [Dinamik site hızlandırma](cdn-dynamic-site-acceleration.md)
+- [Dinamik alan ivmesi](cdn-dynamic-site-acceleration.md)
 - [CDN önbelleğe alma kuralları](cdn-caching-rules.md)
 - [HTTPS özel etki alanı desteği](cdn-custom-ssl.md)
 - [Azure tanılama günlükleri](cdn-azure-diagnostic-logs.md)

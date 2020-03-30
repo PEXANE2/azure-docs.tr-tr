@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 87fd6b626efb60c7fc7ec8896f2c3758ae5cc33c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188178"
 ---
 ### <a name="app-service-plan"></a>App Service planı
-Web uygulamasını barındırmak için service planı oluşturur. Planınızla adını sağlayın **hostingPlanName** parametresi. Plan kaynak grubu için kullandığınız konumun aynısını konumdur. Fiyatlandırma katmanı ve çalışan boyutu belirtilir **sku** ve **workerSize** parametreleri
+Web uygulamasını barındırmak için hizmet planını oluşturur. **HostingPlanName** parametresi aracılığıyla planın adını sağlarsınız. Planın konumu, kaynak grubu için kullanılan konumla aynıdır. Fiyatlandırma katmanı ve işçi boyutu **sku** ve **işçiBoyutu** parametrelerinde belirtilir
 
     {
       "apiVersion": "2015-08-01",

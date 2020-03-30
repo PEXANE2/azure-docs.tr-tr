@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub (CLı) hızlı başlangıç 'a telemetri gönderme
-description: Bu hızlı başlangıçta, bir IoT Hub 'ı oluşturmak, Telemetriyi göndermek ve bir cihaz ile hub arasındaki iletileri görüntülemek için Azure CLı kullanılarak çalışmaya başlamak IoT Hub yeni geliştiriciler gösterilmektedir.
+title: Azure IoT Hub'ına (CLI) hızlı başlatmaya telemetri gönderin
+description: Bu hızlı başlangıç, IoT Hub'ına yeni başlayan geliştiricilere, bir IoT hub'ı oluşturmak, telemetri göndermek ve aygıt la hub arasındaki iletileri görüntülemek için Azure CLI'yi kullanarak nasıl başlayacaklarını gösterir.
 ms.service: iot-hub
 ms.topic: quickstart
 ms.custom:
@@ -10,193 +10,193 @@ ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
 ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78851437"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlatma: Bir aygıttan bir IoT hub'ına telemetri gönderin ve Azure CLI ile izleyin
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir IoT Hub ve sanal cihaz oluşturmak, hub 'a cihaz telemetrisi göndermek ve buluttan cihaza ileti göndermek için Azure CLı 'yi kullanırsınız. Cihaz ölçümlerini görselleştirmek için Azure portal de kullanabilirsiniz. Bu, IoT Hub bir uygulamayla etkileşim kurmak için CLı kullanan geliştiriciler için temel bir iş akışıdır.
+IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlatmada, Bir IoT Hub'ı ve simüle edilmiş bir aygıt oluşturmak, aygıt telemetrisini hub'a göndermek ve buluttan aygıta ileti göndermek için Azure CLI'yi kullanırsınız. Aygıt ölçümlerini görselleştirmek için Azure portalını da kullanırsınız. Bu, Bir IoT Hub uygulamasıyla etkileşimkurmak için CLI'yi kullanan geliştiriciler için temel bir iş akışıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
-- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-- Azure CLı. Bu hızlı başlangıçta, tarayıcınızda çalışan etkileşimli bir CLı kabuğu olan Azure Cloud Shell kullanarak tüm komutları çalıştırabilirsiniz. Cloud Shell kullanıyorsanız, herhangi bir şey yüklemeniz gerekmez. CLı 'yi yerel olarak kullanmayı tercih ediyorsanız bu hızlı başlangıç, Azure CLı sürüm 2.0.76 veya üstünü gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
+## <a name="prerequisites"></a>Ön koşullar
+- Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir abonelik oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure CLI. Tarayıcınızda çalışan etkileşimli bir CLI kabuğu olan Azure Bulut Kabuğu'nu kullanarak bu hızlı başlangıçta tüm komutları çalıştırabilirsiniz. Bulut Kabuğu'nu kullanıyorsanız, hiçbir şey yüklemeniz gerekmez. CLI'yi yerel olarak kullanmayı tercih ederseniz, bu hızlı başlatma azure CLI sürümü 2.0.76 veya daha sonra gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye]( /cli/azure/install-azure-cli)bakın.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-CLı 'yi yerel olarak veya Cloud Shell ' de çalıştırdığınız bağımsız olarak, portalı tarayıcınızda açık tutun.  Daha sonra bu hızlı başlangıçta kullanacaksınız.
+İster yerel olarak ister Bulut Kabuğu'nda CLI çalıştırın, portalı tarayıcınızda açık tutun.  Daha sonra bu hızlı başlangıç kullanın.
 
-## <a name="launch-the-cloud-shell"></a>Cloud Shell başlatın
-Bu bölümde Azure Cloud Shell bir örneğini başlatın. CLı 'yi yerel olarak kullanırsanız, [ıkı CLI oturumu hazırlama](#prepare-two-cli-sessions)bölümüne atlayın.
+## <a name="launch-the-cloud-shell"></a>Bulut Kabuğunu Başlat
+Bu bölümde, Azure Bulut Kabuğu'nun bir örneğini başlatAbilirsiniz. CLI'yi yerel olarak kullanıyorsanız, [iki CLI oturumu hazırla](#prepare-two-cli-sessions)bölümüne atlayın.
 
-Cloud Shell başlatmak için:
+Bulut Kabuğunu başlatmak için:
 
-1. Azure portal sağ üstteki menü çubuğunda **Cloud Shell** düğmesini seçin. 
+1. Azure portalındaki sağ üst menü çubuğundaki **Bulut Kabuğu** düğmesini seçin. 
 
-    ![Azure portal Cloud Shell düğmesi](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
+    ![Azure portalı Bulut Shell düğmesi](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
 
     > [!NOTE]
-    > Cloud Shell ilk kez kullandıysanız, Cloud Shell kullanmak için gerekli olan depolama alanı oluşturmanızı ister.  Depolama hesabı ve Microsoft Azure dosyaları paylaşma oluşturmak için bir abonelik seçin. 
+    > Bulut Kabuğu'nu ilk kez kullanıyorsanız, Bulut Kabuğu'nu kullanmanız gereken depolama alanı oluşturmanızı ister.  Depolama hesabı oluşturmak ve Microsoft Azure Dosyaları paylaşmak için bir abonelik seçin. 
 
-2. **Ortam Seç** açılan menüsünde tercıh ettiğiniz CLI ortamınızı seçin. Bu hızlı başlangıç, **Bash** ortamını kullanır. Aşağıdaki CLı komutlarının hepsi PowerShell ortamında da çalışır. 
+2. **Select ortamı** açılır düşüşünde tercih ettiğiniz CLI ortamını seçin. Bu hızlı **başlatma, Bash** ortamını kullanır. Aşağıdaki Tüm CLI komutları Powershell ortamında da çalışır. 
 
-    ![CLı ortamı seçin](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
+    ![CLI ortamını seçin](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
-## <a name="prepare-two-cli-sessions"></a>İki CLı oturumu hazırlama
+## <a name="prepare-two-cli-sessions"></a>İki CLI oturumu hazırlayın
 
-Bu bölümde, iki Azure CLı oturumu hazırlarsınız. Cloud Shell kullanıyorsanız, iki oturumu ayrı tarayıcı sekmelerinde çalıştıracaksınız. Yerel bir CLı istemcisi kullanıyorsanız, iki ayrı CLı örneği çalıştıracaksınız. İlk oturumu bir sanal cihaz olarak, ikinci oturum ise iletileri izlemek ve göndermek için kullanacaksınız. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak için **Kopyala** ' yı seçin, kabuk oturumunuza yapıştırın ve çalıştırın.
+Bu bölümde, iki Azure CLI oturumu hazırlayın. Bulut Kabuğu'nu kullanıyorsanız, iki oturumu ayrı tarayıcı sekmelerinde çalıştırın. Yerel bir CLI istemcisi kullanıyorsanız, iki ayrı CLI örneği çalıştırın. İlk oturumu benzetimli aygıt, ikinci oturumu ise iletileri izlemek ve göndermek için kullanırsınız. Bir komutu çalıştırmak **Copy** için, bu hızlı başlatmada bir kod bloğunu kopyalamak, kabuk oturumunuza yapıştırmak ve çalıştırmak için Kopyala'yı seçin.
 
-Azure CLı, Azure hesabınızda oturum açmanızı gerektirir. Azure CLı kabuğu oturumunuz ile IoT Hub 'ınız arasındaki tüm iletişimin kimliği doğrulanır ve şifrelenir. Sonuç olarak, bu hızlı başlangıç, bağlantı dizesi gibi gerçek bir cihazla kullanacağınız ek kimlik doğrulamasına gerek kalmaz.
+Azure CLI, Azure hesabınıza oturum açmanızı gerektirir. Azure CLI kabuk oturumunuz la IoT hub'ınız arasındaki tüm iletişimin kimliği doğrulanır ve şifrelenir. Sonuç olarak, bu hızlı başlatma, bağlantı dizesi gibi gerçek bir aygıtla kullanacağınız ek kimlik doğrulaması gerektirmez.
 
-*  CLı kabuğunuzun Azure CLı için Microsoft Azure IoT uzantısını eklemek için [az Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) komutunu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+*  CLI kabuğunuza Azure CLI için Microsoft Azure IoT Uzantısı eklemek için [az uzantı ekleme](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) komutunu çalıştırın. IOT Uzantı, Azure CLI'ye IoT Hub, IoT Edge ve IoT Aygıt Sağlama Hizmeti (DPS) özel komutlarını ekler.
 
    ```azurecli
    az extension add --name azure-iot
    ```
    
-   Azure ıOT uzantısını yükledikten sonra, Cloud Shell oturumunda yeniden yüklemeniz gerekmez. 
+   Azure IOT uzantısını yükledikten sonra, herhangi bir Bulut Bulutu oturumunda yeniden yüklemeniz gerekmez. 
 
    [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-*  İkinci bir CLı oturumu açın.  Cloud Shell kullanıyorsanız, **yeni oturum aç**' ı seçin. CLı 'yi yerel olarak kullanıyorsanız ikinci bir örnek açın. 
+*  İkinci bir CLI oturumu açın.  Bulut Kabuğu'nu kullanıyorsanız, **yeni oturum aç'ı**seçin. CLI'yi yerel olarak kullanıyorsanız, ikinci bir örnek açın. 
 
     >[!div class="mx-imgBorder"]
-    >Yeni Cloud Shell oturum ![açın](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+    >![Yeni Cloud Shell oturumunu açın](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub'ı oluşturma
-Bu bölümde, bir kaynak grubu ve bir IoT Hub oluşturmak için Azure CLı 'yi kullanırsınız.  Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. IoT Hub, IoT uygulamanız ve cihazlar arasında çift yönlü iletişim için merkezi bir ileti hub 'ı olarak davranır. 
+Bu bölümde, bir kaynak grubu ve bir IoT Hub'ı oluşturmak için Azure CLI'yi kullanırsınız.  Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. IoT Hub, IoT uygulamanız ve aygıtlar arasındaki çift yönlü iletişim için merkezi bir ileti merkezi görevi görür. 
 
 > [!TIP]
-> İsteğe bağlı olarak, [Azure Portal](iot-hub-create-through-portal.md), [Visual Studio Code](iot-hub-create-use-iot-toolkit.md)veya diğer programlı yöntemleri kullanarak bir Azure Kaynak grubu, IoT Hub ve diğer kaynakları oluşturabilirsiniz.  
+> İsteğe bağlı olarak, [Azure portalı,](iot-hub-create-through-portal.md) [Visual Studio Kodu](iot-hub-create-use-iot-toolkit.md)veya diğer programlı yöntemleri kullanarak bir Azure kaynak grubu, bir IoT Hub ve diğer kaynaklar oluşturabilirsiniz.  
 
-1. Bir kaynak grubu oluşturmak için [az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
+1. Bir kaynak grubu oluşturmak için [az grubu oluşturma](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu çalıştırın. Aşağıdaki *komut, doğudaki* konumda *MyResourceGroup* adında bir kaynak grubu oluşturur. 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
+1. Bir IoT hub'ı oluşturmak için [az iot hub](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) oluşturma komutunu çalıştırın. Bir IoT hub'ı oluşturmak birkaç dakika sürebilir. 
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. IoT Hub 'ı adı Azure 'da genel olarak benzersiz olmalıdır. Bu yer tutucu, IoT Hub 'ınızın adını göstermek için bu hızlı başlangıçtaki geri kalanında kullanılır.
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. Azure'da bir IoT hub adı genel olarak benzersiz olmalıdır. Bu yer tutucu, ioT hub adınızı temsil etmek için bu hızlı başlatmanın geri kalanında kullanılır.
 
     ```azurecli
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
     ```
 
-## <a name="create-and-monitor-a-device"></a>Cihaz oluşturma ve izleme
-Bu bölümde, ilk CLı oturumunda bir sanal cihaz oluşturacaksınız. Sanal cihaz, IoT Hub 'ınıza cihaz telemetri gönderir. İkinci CLı oturumunda, olayları ve Telemetriyi izler ve sanal cihaza buluttan cihaza bir ileti gönderirsiniz.
+## <a name="create-and-monitor-a-device"></a>Aygıt oluşturma ve izleme
+Bu bölümde, ilk CLI oturumunda benzetimli bir aygıt oluşturursunuz. Benzetimli cihaz, aygıt telemetrisini IoT hub'ınıza gönderir. İkinci CLI oturumunda, olayları ve telemetriyi izler ve simüle edilen aygıta buluttan aygıta ileti gönderirsiniz.
 
-Sanal cihaz oluşturmak ve başlatmak için:
-1. İlk CLı oturumunda [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
+Benzetimli bir aygıt oluşturmak ve başlatmak için:
+1. İlk CLI oturumunda [az iot hub aygıt-kimlik oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, benzetilen aygıt kimliğini oluşturur. 
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. 
 
-    *Simdevice*. Bu adı doğrudan bu hızlı başlangıçta sanal cihaz için kullanabilirsiniz. İsteğe bağlı olarak, farklı bir ad kullanın. 
+    *simDevice*. Bu hızlı başlatmanın geri kalanında bu adı doğrudan benzetilen aygıt için kullanabilirsiniz. İsteğe bağlı olarak, farklı bir ad kullanın. 
 
     ```azurecli
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. İlk CLı oturumunda [az IoT Device simülasyonu](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-simulate) komutunu çalıştırın.  Bu, sanal cihazı başlatır. Cihaz, IoT Hub 'ınıza telemetri gönderir ve bundan gelen iletileri alır.  
+1. İlk CLI oturumunda [az iot aygıtını çalıştırın](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-simulate) komutu benzetin.  Bu, simüle edilen aygıtı başlatır. Cihaz IoT hub'ınıza telemetri gönderir ve ondan iletiler alır.  
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. 
 
     ```azurecli
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-Bir cihazı izlemek için:
-1. İkinci CLı oturumunda, [az IoT Hub Monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) komutunu çalıştırın. Bu, sanal cihazı izlemeye başlar. Çıkış, sanal cihazın IoT Hub 'ına gönderdiği Telemetriyi gösterir.
+Bir aygıtı izlemek için:
+1. İkinci CLI oturumunda, [az iot hub monitör-olaylar](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) komutunu çalıştırın. Bu, simüle edilen aygıtı izlemeye başlar. Çıktı, benzetilen aygıtın IoT hub'ına gönderdiği telemetriyi gösterir.
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. 
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-    ![İzleme olaylarını Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-monitor.png)
+    ![Cloud Shell izleme etkinlikleri](media/quickstart-send-telemetry-cli/cloud-shell-monitor.png)
 
-1. Sanal cihazı ikinci CLı oturumunda izledikten sonra, izlemeyi durdurmak için CTRL + C tuşlarına basın. 
+1. İkinci CLI oturumunda simüle edilen aygıtı izledikten sonra izlemeyi durdurmak için Ctrl+C tuşuna basın. 
 
-## <a name="use-the-cli-to-send-a-message"></a>CLı kullanarak bir ileti gönderin
-Bu bölümde, sanal cihaza bir ileti göndermek için ikinci CLı oturumunu kullanırsınız.
+## <a name="use-the-cli-to-send-a-message"></a>İleti göndermek için CLI'yi kullanma
+Bu bölümde, benzetilen aygıta ileti göndermek için ikinci CLI oturumunu kullanırsınız.
 
-1. İlk CLı oturumunda, sanal cihazın çalıştığını onaylayın. Cihaz durdurulmuşsa, başlatmak için aşağıdaki komutu çalıştırın:
+1. İlk CLI oturumunda, benzetilen aygıtın çalıştığını doğrulayın. Aygıt durduysa, başlatmak için aşağıdaki komutu çalıştırın:
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. 
 
     ```azurecli
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. İkinci CLı oturumunda, [az IoT Device C2D-Message Send](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device/c2d-message?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-c2d-message-send) komutunu çalıştırın. Bu, IoT Hub 'ınızdan sanal cihaza buluttan cihaza bir ileti gönderir. İleti bir dize ve iki anahtar-değer çifti içerir.  
+1. İkinci CLI oturumunda, [az iot cihazı c2d-message gönderme](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device/c2d-message?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-c2d-message-send) komutunu çalıştırın. Bu, IoT hub'ınızdan simüle edilen aygıta buluttan cihaza ileti gönderir. İleti, bir dize ve iki anahtar değeri çifti içerir.  
 
-    *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
+    *YourIotHubName*. Aşağıdaki yer tutucuyu IoT hub'ınız için seçtiğiniz adla değiştirin. 
 
     ```azurecli
     az iot device c2d-message send -d simDevice --data "Hello World" --props "key0=value0;key1=value1" -n {YourIoTHubName}
     ```
-    İsteğe bağlı olarak, Azure portal kullanarak buluttan cihaza iletiler gönderebilirsiniz. Bunu yapmak için IoT Hub genel bakış sayfasına göz atın, **IoT cihazları**' nı seçin, sanal cihazı seçin ve **cihaza mesaj**' ı seçin. 
+    İsteğe bağlı olarak, Azure portalını kullanarak buluttan cihaza iletigönderebilirsiniz. Bunu yapmak için, IoT Hub'ınız için genel bakış sayfasına göz atın, **IoT Aygıtlarını**seçin, simüle edilen aygıtı seçin ve **Aygıta İleti'yi**seçin. 
 
-1. İlk CLı oturumunda, sanal cihazın iletiyi aldığını onaylayın. 
+1. İlk CLI oturumunda, benzetilen aygıtın iletiyi aldığını doğrulayın. 
 
-    ![Buluttan cihaza ileti Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
+    ![Bulut Shell buluttan cihaza ileti](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. İletiyi görüntüleyip, ikinci CLı oturumunu kapatın. İlk CLı oturumunu açık tutun. Daha sonraki bir adımda kaynakları temizlemek için bunu kullanırsınız.
+1. İletiyi görüntüledikten sonra ikinci CLI oturumunu kapatın. İlk CLI oturumunu açık tutun. Kaynakları daha sonraki bir adımda temizlemek için kullanırsınız.
 
-## <a name="view-messaging-metrics-in-the-portal"></a>Portalda mesajlaşma ölçümlerini görüntüleme
-Azure portal, IoT Hub ve cihazlarınızın tüm yönlerini yönetmenizi sağlar. Cihazlardan Telemetriyi gösteren tipik bir IoT Hub uygulamasında cihazları izlemek veya cihaz telemetrisi üzerinde ölçümleri görüntülemek isteyebilirsiniz. 
+## <a name="view-messaging-metrics-in-the-portal"></a>Portaldaki mesajlaşma ölçümlerini görüntüleme
+Azure portalı, IoT Hub'ınızın ve cihazlarınızın tüm yönlerini yönetmenize olanak tanır. Aygıtlardan telemetri yiyerek tipik bir IoT Hub uygulamasında, aygıtları izlemek veya aygıt telemetrisindeki ölçümleri görüntülemek isteyebilirsiniz. 
 
-Azure portal ileti ölçümlerini görselleştirmek için:
-1. Portalın sol gezinti menüsünde **tüm kaynaklar**' ı seçin. Bu, oluşturduğunuz IoT Hub 'ı dahil olmak üzere aboneliğinizdeki tüm kaynakları listeler. 
+Azure portalında mesajlaşma ölçümlerini görselleştirmek için:
+1. PortalDaki sol navigasyon menüsünde **Tüm Kaynaklar'ı**seçin. Bu, oluşturduğunuz IoT hub'ı da dahil olmak üzere aboneliğinizdeki tüm kaynakları listeler. 
 
-1. Oluşturduğunuz IoT Hub 'ında bağlantıyı seçin. Portal, merkez için genel bakış sayfasını görüntüler.
+1. Oluşturduğunuz IoT hub'ındaki bağlantıyı seçin. Portal, hub için genel bakış sayfasını görüntüler.
 
-1. IoT Hub sol bölmede **ölçümler** ' i seçin. 
+1. IoT Hub'ınızın sol bölmesinde **Ölçümler'i** seçin. 
 
     ![IoT Hub mesajlaşma ölçümleri](media/quickstart-send-telemetry-cli/iot-hub-portal-metrics.png)
 
-1. **Kapsamınızdan**IoT Hub 'ınızın adını girin.
+1. **Kapsam'a**IoT hub adınızı girin.
 
-2. **Ölçüm ad**alanında *IoT Hub standart ölçümleri* ' ni seçin.
+2. Metrik Ad Alanında *Iot Hub Standart* Ölçümleri'ni seçin. **Metric Namespace**
 
-3. **Ölçümde** *kullanılan toplam ileti sayısını* seçin. 
+3. **Metrik'te** *kullanılan toplam ileti sayısını* seçin. 
 
-4. Fare işaretçinizi, cihazınızın ileti gönderdiği zaman çizelgesi alanının üzerine getirin. Zaman çizelgesinin sol alt köşesinde bulunan bir noktadaki toplam ileti sayısı görüntülenir.
+4. Fare işaretçinizi cihazınızın ileti gönderdiği zaman çizelgesi alanının üzerine getirin. Zaman içinde bir noktadaki toplam ileti sayısı zaman çizelgesinin sol alt köşesinde görüntülenir.
 
     ![Azure IoT Hub ölçümlerini görüntüleme](media/quickstart-send-telemetry-cli/iot-hub-portal-view-metrics.png)
 
-5. İsteğe bağlı olarak, sanal cihazınızdaki diğer ölçümleri göstermek için **ölçüm** açılan listesini kullanın. Örneğin, *C2D ileti teslimleri tamamlandı* veya *Toplam cihaz (Önizleme)* . 
+5. İsteğe bağlı olarak, simüle edilen aygıtınızdaki diğer ölçümleri görüntülemek için **Metrik** açılır bırakma yı kullanın. Örneğin, *C2d ileti teslimleri tamamlandı* veya *Toplam aygıtlar (önizleme)*. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu hızlı başlangıçta oluşturulan Azure kaynaklarına artık ihtiyacınız yoksa, Azure CLı 'yi kullanarak bunları silebilirsiniz.
+Bu hızlı başlatmada oluşturulan Azure kaynaklarına artık ihtiyacınız yoksa, bunları silmek için Azure CLI'yi kullanabilirsiniz.
 
-Önerilen bir sonraki makaleye devam ederseniz, önceden oluşturduğunuz kaynakları tutabilir ve yeniden kullanabilirsiniz. 
+Bir sonraki önerilen makaleye devam ederseniz, oluşturduğunuz kaynakları saklayabilir ve yeniden kullanabilirsiniz. 
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
 Bir kaynak grubunu adıyla silmek için:
-1. [Az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
+1. az [grubu silme](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub'ını ve oluşturduğunuz aygıt kaydını kaldırır.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kaynak grubunun silindiğini onaylamak için [az Group List](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list) komutunu çalıştırın.  
+1. Kaynak grubunun silinir onaylamak için [az grup liste](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list) komutunu çalıştırın.  
 
     ```azurecli
     az group list
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta IoT Hub 'ı oluşturmak, sanal cihaz oluşturmak, telemetri göndermek, telemetri izlemek, bir buluttan cihaza ileti göndermek ve kaynakları temizlemek için Azure CLı 'yi kullandınız. Cihazınızda mesajlaşma ölçümlerini görselleştirmek için Azure portal kullandınız.
+Bu hızlı başlangıçta, bir IoT hub'ı oluşturmak, simüle edilmiş bir aygıt oluşturmak, telemetri göndermek, telemetriyi izlemek, buluttan aygıta ileti göndermek ve kaynakları temizlemek için Azure CLI'yi kullandınız. Cihazınızdaki mesajlaşma ölçümlerini görselleştirmek için Azure portalını kullandınız.
 
-Bir cihaz geliştiricisiyseniz, önerilen sonraki adım C için Azure IoT cihaz SDK 'sını kullanan telemetri hızlı başlangıcını görmenize yöneliktir. Isteğe bağlı olarak, tercih ettiğiniz dil veya SDK 'daki kullanılabilir Azure IoT Hub telemetri hızlı başlangıç makalelerinden birine bakın.
+Bir aygıt geliştiricisiyseniz, önerilen sonraki adım, C için Azure IoT Device SDK'yı kullanan telemetri hızlı başlatmasını görmek, tercih ettiğiniz dilde veya SDK'da kullanılabilir Azure IoT Hub telemetrisi hızlı başlatma makalelerinden birini görmektir.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme (C)](quickstart-send-telemetry-c.md)
+> [Hızlı başlatma: Bir aygıttan IoT hub'ına (C) telemetri gönderme](quickstart-send-telemetry-c.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN Gateway: genel bakış-yüksek oranda kullanılabilir ağ geçidi yapılandırması'
+title: 'Azure VPN Ağ Geçidi: Genel Bakış - Yüksek Kullanılabilirağ Geçidi yapılandırmaları'
 description: Bu makalede Azure VPN Gateways kullanan yüksek oranda kullanılabilir yapılandırma seçeneklerine genel bakış sunulmaktadır.
 services: vpn-gateway
 author: yushwang
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779629"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Yüksek Oranda Kullanılabilir Şirket İçi ve Dışı ile Sanal Ağdan Sanal Ağa Bağlantı
 Bu makalede Azure VPN gateways kullanan şirket içi ve dışı ile Sanal Ağdan Sanal Ağa bağlantınız için Yüksek Oranda Kullanılabilir yapılandırma seçeneklerine genel bakış sunulmaktadır.
 
-## <a name = "activestandby"></a>Azure VPN Gateway artıklığı hakkında
+## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Azure VPN gateway yedekliliği hakkında
 Her Azure VPN gateway, etkin bir bekleme yapılandırmasında iki örnekten oluşur. Etkin örnekte gerçekleşen herhangi bir planlı bakım veya plansız kesintide, beklemedeki örnek otomatik olarak yükü devralıp S2S VPN veya Sanal Ağdan Sanal Ağa bağlantıları sürdürür. Bu geçiş kısa bir kesintiye neden olur. Planlı bakım için bağlantı 10 ila 15 saniye içinde geri yüklenmelidir. Planlanmamış sorunlar için bağlantı kurtarma süresi yaklaşık 1 dakika ile en kötü durumda 1 buçuk dakika arasında değişir. Ağ geçidiyle P2S VPN istemci bağlantıları için P2S bağlantıları kesilir ve kullanıcıların istemci makinelerden yeniden bağlantı kurması gerekir.
 
 ![Etkin Bekleme](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -29,19 +29,19 @@ Her Azure VPN gateway, etkin bir bekleme yapılandırmasında iki örnekten olu�
 * Etkin-etkin Azure VPN gateway
 * Her ikisinin birleşimi
 
-### <a name = "activeactiveonprem"></a>Birden çok şirket içi VPN cihazı
+### <a name="multiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>Birden fazla şirket içi VPN cihazı
 Şirket içi ağınızdan Azure VPN gateway’e bağlanmak için aşağıdaki diyagramda gösterildiği gibi birden fazla VPN cihazı kullanabilirsiniz:
 
 ![Birden Fazla Şirket İçi VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
 
 Bu yapılandırma aynı Azure VPN ağ geçidinden aynı konumdaki şirket içi cihazlarınıza birden fazla etkin tünel sağlar. Bazı gereksinimler ve kısıtlamalar vardır:
 
-1. VPN cihazlarınız ile Azure arasında birden fazla S2S VPN bağlantısı oluşturmanız gerekir. Aynı şirket içi ağdan Azure 'a birden fazla VPN cihazı bağladığınızda, her bir VPN cihazı için bir yerel ağ geçidi ve Azure VPN ağ Geçidinizden her yerel ağ geçidine bir bağlantı oluşturmanız gerekir.
+1. VPN cihazlarınız ile Azure arasında birden fazla S2S VPN bağlantısı oluşturmanız gerekir. Aynı şirket içi ağdan Azure'a birden fazla VPN aygıtı bağladığınızda, her VPN aygıtı için bir yerel ağ ağ geçidi ve Azure VPN ağ geçidinizden her yerel ağ ağ geçidine bir bağlantı oluşturmanız gerekir.
 2. VPN cihazlarınıza karşılık gelen yerel ağ geçitleri "GatewayIpAddress" özelliğinde benzersiz genel IP adreslerine sahip olmalıdır.
 3. Bu yapılandırma için BGP gereklidir. Bir VPN cihazını temsil eden her yerel ağ geçidinin "BgpPeerIpAddress" özelliğinde belirtilen benzersiz bir BGP eşleme IP adresi olmalıdır.
 4. Her yerel ağ geçidindeki AddressPrefix özellik alanı birbiriyle örtüşmemelidir. AddressPrefix alanında “BgpPeerIpAddress” özelliğini /32 CIDR biçiminde belirtmeniz gerekir; örneğin, 10.200.200.254/32.
 5. Aynı şirket içi ağ ön eklerini Azure VPN ağ geçidinize tanıtmak için BGP kullanmanız gerekir; bu durumda trafik bu tünellerden eşzamanlı olarak iletilir.
-6. Eşit maliyetli çoklu yol yönlendirmesi (ECMP) kullanmanız gerekir.
+6. Eşit maliyetli çok yönlendirme (ECMP) kullanmanız gerekir.
 7. Her bağlantı Azure VPN ağ geçidinizin en fazla tünel sayısına göre sayılır; Temel ve Standart SKU’lar için 10 ve Yüksek Performanslı SKU’lar için 30. 
 
 Bu yapılandırmada Azure VPN ağ geçidi hala etkin bekleme modundadır; bu nedenle [yukarıda](#activestandby) açıklanan yük devretme davranışının ve kısa kesintinin aynısı gerçekleşir. Ancak, bu kurulum şirket içi ağınızda ve VPN cihazlarınızda arıza ya da kesintilere karşı koruma sağlar.

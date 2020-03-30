@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188403"
 ---
-#### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell aracılığıyla normal düzeltmeleri yüklemek için
-1. Cihaz seri konsoluna bağlanın. Daha fazla bilgi için [1. adım: Seri konsola bağlanmak](../articles/storsimple/storsimple-update-device.md#step1).
-2. Seri konsol menüsünde seçeneğini 1 **tam erişimle oturum açmak**. Parolayı yazın. Varsayılan parola **Password1**.
+#### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell üzerinden düzenli düzeltmeler yüklemek için
+1. Aygıt seri konsoluna bağlanın. Daha fazla bilgi için [Bkz. Adım 1: Seri konsoluna bağlanın.](../articles/storsimple/storsimple-update-device.md#step1)
+2. Seri konsol menüsünde, seçenek 1'i seçin, **tam erişimle giriş yapın.** Parolayı yazın. Varsayılan parola **Password1'dir.**
 3. Komut istemine şunları yazın:
    
     ```
@@ -22,9 +22,9 @@ ms.locfileid: "67188403"
    
     > [!IMPORTANT]
     >
-    > Bu komut, yalnızca normal düzeltmeler için geçerlidir. Bu komut yalnızca bir denetleyicisinde çalıştırın, ancak her iki denetleyicilerinin güncelleştirilir.
-    > Denetleyici yük devretmesi güncelleştirme işlemi sırasında fark edebilirsiniz; Ancak, yük devretme işlemi ya da sistem kullanılabilirliği etkilemez.
+    > Bu komut yalnızca normal düzeltmeler için geçerlidir. Bu komutu yalnızca bir denetleyicide çalıştırın, ancak her iki denetleyici de güncelleştirilir.
+    > Güncelleştirme işlemi sırasında bir denetleyicinin başarısız olduğunu fark edebilirsiniz; ancak, failover sistem kullanılabilirliğini veya çalışmasını etkilemez.
 
-4. İstendiğinde, düzeltme dosyalarını içeren ağ paylaşılan klasörün yolunu girin.
-5. Onaylamanız istenir. Tür **Y** düzeltme yüklemeye devam etmek için.
+4. İstendiğinde, yolu düzeltme dosyalarını içeren ağ paylaşılan klasörüne sağlar.
+5. Onayınız istenir. Düzeltme yüklemesine devam etmek için **Y** yazın.
 

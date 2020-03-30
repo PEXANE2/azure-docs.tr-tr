@@ -1,6 +1,6 @@
 ---
-title: Kod, proje ve veritabanı örnekleri Azure Analysis Services | Microsoft Docs
-description: Bu makalede, Azure Analysis Services için kod, proje ve veritabanı örnekleri hakkında bilgi edinmek için kaynaklar açıklanır.
+title: Azure Analiz Hizmetleri kodu, proje ve veritabanı örnekleri | Microsoft Dokümanlar
+description: Bu makalede, Azure Çözümleme Hizmetleri için kod, proje ve veritabanı örnekleri hakkında bilgi edinmek için kaynaklar açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,43 +8,43 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247832"
 ---
-# <a name="azure-analysis-services-samples"></a>Azure Analysis Services örnekleri
+# <a name="azure-analysis-services-samples"></a>Azure Analiz Hizmetleri örnekleri
 
-Ortamınız için Analysis Services hakkında bilgi edinmenize ve test etmenize yardımcı olması için aşağıdaki örnek kaynakları kullanın.
+Ortamınız için Analiz Hizmetleri hakkında bilgi edinmenize ve test ettiğinize yardımcı olmak için aşağıdaki örnek kaynakları kullanın.
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-GitHub 'daki [Analysis Services](https://github.com/Microsoft/Analysis-Services) deposu açık kaynak kodu örnekleri ve topluluk projelerini içerir. 
+GitHub'daki [Analiz Hizmetleri](https://github.com/Microsoft/Analysis-Services) deposu açık kaynak kod örnekleri ve topluluk projeleri içerir. 
 
-## <a name="tabular-model-project-and-database-samples"></a>Tablosal model projesi ve veritabanı örnekleri
+## <a name="tabular-model-project-and-database-samples"></a>Tabular model proje ve veritabanı örnekleri
 
-GitHub üzerinde [Analysis Services Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) , en yaygın kullanılan örnek tablosal model projem ' dir. VS projesini veya tamamlanmış bir örnek tablosal model veritabanını indirebilirsiniz.
+[GitHub'da Analiz Hizmetleri için Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) en yaygın olarak kullanılan örnek tabular model projesidir. Bir VS projesini veya tamamlanmış örnek tabular model veritabanını indirebilirsiniz.
 
-## <a name="sample-database-on-azure"></a>Azure 'da örnek veritabanı
+## <a name="sample-database-on-azure"></a>Azure'da örnek veritabanı
 
-Azure SYNAPSE Analytics (SQL veri ambarı), sağlanan bir kaynağa eklenebilecek bir örnek AdventureWorksDW veritabanı sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SYNAPSE ANALYTICS SQL havuzu oluşturma ve sorgulama](/azure/sql-data-warehouse/create-data-warehouse-portal).
+Azure Synapse Analytics (SQL Data Warehouse), sağlanan bir kaynağa dahil edilebilen örnek bir AdventureWorksDW veritabanı sağlar. Daha fazla bilgi için [Bkz. Quickstart: Bir Azure Synapse Analytics SQL havuzu oluşturun ve sorgulayın.](/azure/sql-data-warehouse/create-data-warehouse-portal)
 
-## <a name="sample-databases-on-github"></a>GitHub 'da örnek veritabanları
+## <a name="sample-databases-on-github"></a>GitHub'daki örnek veritabanları
 
-GitHub 'daki Bu örnek veritabanları, kendi modellerinizi oluşturmak ve test etmek için kullanılabilir. 
+GitHub'daki bu örnek veritabanları kendi modellerinizi oluşturmak ve test etmek için kullanılabilir. 
 
 [Adventure Works örnek veritabanları](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
 
-[Wide World Importers veritabanları](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
+[Geniş Dünya İthalatçılar örnek veritabanları](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
-## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works Internet Sales örnek modeli Azure portal
+## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Azure portalında Adventure Works İnternet Satışları örnek modeli
 
-Azure portal bir Analysis Services sunucunuz varsa, bir örnek modeli hızla ve kolayca oluşturabilirsiniz. Sunucunuzun genel bakış Azure portal sayfasında, **yeni model**' e tıklayın ve ardından **bir veri kaynağı seçin**bölümünde **örnek veriler**' i seçin.
+Azure portalında Bir Analiz Hizmetleri sunucunuz varsa, hızlı ve kolay bir örnek model oluşturabilirsiniz. Azure portalında sunucunuzun genel bakış sayfasında **Yeni model'i**tıklatın ve ardından **veri kaynağı seçin**, Örnek **verileri**seçin.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Adventure Works öğreticisi](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
-[Azure şirket içi veri ağ geçidi](analysis-services-gateway.md)  
+[Macera İşleri öğretici](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Azure Şirket Içi Veri Ağ Geçidi](analysis-services-gateway.md)  

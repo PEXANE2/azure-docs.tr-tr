@@ -9,41 +9,41 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188310"
 ---
-Azure sanal makineleri (VM'ler) halinde kategorilere farklı durumları geçtikleri *sağlama* ve *güç* durumları. Bu makalenin amacı, bu durumları açıklayan ve müşterilerin olduğunda özellikle vurgulamak için örneği için kullanım faturalandırılır ' dir. 
+Azure Sanal Makineler (VM'ler), *sağlama* ve *güç* durumlarına kategorize edilebilen farklı durumları geçer. Bu makalenin amacı, bu durumları açıklamak ve özellikle müşterilerin örneğin kullanımı için faturalandırıldığında vurgulamaktır. 
 
 ## <a name="power-states"></a>Güç durumları
 
-Güç durumu, sanal makinenin bilinen son durumu temsil eder.
+Güç durumu VM'nin bilinen son durumunu temsil eder.
 
 ![VM güç durumu diyagramı](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
-Aşağıdaki tabloda, her örnek durum açıklamasını sağlar ve örnek kullanım için veya faturalandırılır olup olmadığını gösterir.
+Aşağıdaki tablo her örnek durumunun açıklamasını sağlar ve örneğin kullanımı için faturalandırılıp faturalandırılmadığını gösterir.
 
 <table>
 <tr>
 <th>
-Eyalet
+Durum
 </th>
 <th>
 Açıklama
 </th>
 <th>
-Örnek Kullanım faturalandırma
+Örnek kullanım faturalandırma
 </th>
 </tr>
 <tr>
 <td>
-<p><b>Başlatma</b></p>
+<p><b>Başlatılıyor</b></p>
 </td>
 <td>
-<p>VM başlatılıyor.</p>
+<p>VM başlıyor.</p>
 <code>"statuses": [<br>
    {<br>
       "code": "PowerState/starting",<br>
@@ -53,15 +53,15 @@ Açıklama
     ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılmaz</b></p>
+<p><b>Faturalandırılmama</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>Çalıştıran</b></p>
+<p><b>Çalışıyor</b></p>
 </td>
 <td>
-<p>Bir VM için normal çalışma durumu</p>
+<p>VM için normal çalışma durumu</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/running",<br>
@@ -71,7 +71,7 @@ Açıklama
  ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılır</b></p>
+<p><b>Fatura</b></p>
 </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ Açıklama
 <p><b>Durduruluyor</b></p>
 </td>
 <td>
-<p>Bu geçici bir durumdur. Tamamlandığında, olarak görünür **durduruldu**.</p>
+<p>Bu bir geçiş durumudur. Tamamlandığında, **Durduruldu**olarak gösterecektir.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -89,7 +89,7 @@ Açıklama
  ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılır</b></p>
+<p><b>Fatura</b></p>
 </td>
 </tr>
 <tr>
@@ -97,8 +97,8 @@ Açıklama
 <p><b>Durduruldu</b></p>
 </td>
 <td>
-<p>VM Kapat konuk işletim sistemi içinde aşağı gelen veya değiştiremiyor API'lerini kullanarak.</p>
-<p>Donanım yine de VM ayrılır ve konak üzerinde kalır. </p>
+<p>VM konuk işletim sistemi içinden veya PowerOff API'leri kullanılarak kapatıldı.</p>
+<p>Donanım hala VM'ye tahsis edilir ve ana bilgisayarda kalır. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopped",<br>
@@ -108,7 +108,7 @@ Açıklama
  ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılır&#42;</b></p>
+<p><b>Faturalı&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -116,7 +116,7 @@ Açıklama
 <p><b>Serbest bırakılıyor</b></p>
 </td>
 <td>
-<p>Geçiş durumu. Tamamlandığında, VM olarak görünür **Deallocated**.</p>
+<p>Geçiş durumu. Tamamlandığında, VM **Deallocated**olarak gösterecektir.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -126,7 +126,7 @@ Açıklama
  ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılmaz&#42;</b></p>
+<p><b>Faturalı değil&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -134,7 +134,7 @@ Açıklama
 <p><b>Serbest bırakıldı</b></p>
 </td>
 <td>
-<p>VM başarıyla durduruldu ve ana bilgisayardan kaldırılır. </p>
+<p>VM başarıyla durduruldu ve ana bilgisayardan kaldırıldı. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocated",<br>
@@ -144,30 +144,30 @@ Açıklama
  ]</code><br>
 </td>
 <td>
-<p><b>Faturalandırılmaz</b></p>
+<p><b>Faturalandırılmama</b></p>
 </td>
 </tr>
 </tbody>
 </table>
 
 
-&#42;Diskler ve ağ gibi bazı Azure kaynak ücretleri. Yazılım lisanslarını örneğinde ücretleri uygulanmaz.
+&#42;Diskler ve Ağ gibi bazı Azure kaynakları ücrete tabidir. Örneğin yazılım lisansları ücrete tabi değildir.
 
-## <a name="provisioning-states"></a>Sağlama durumları
+## <a name="provisioning-states"></a>Hüküm veren devletler
 
-Sağlama durumu, sanal makine üzerindeki bir kullanıcı tarafından başlatılan, Denetim düzlemi işleminin durumudur. Bu durumlar, sanal makinenin güç durumu ayrıdır.
+Sağlama durumu, VM'de kullanıcı tarafından başlatılan, denetim düzlemi işleminin durumudur. Bu durumlar Bir VM'nin güç durumundan ayrıdır.
 
 - **Oluşturma** – VM oluşturma.
 
-- **Güncelleştirme** – var olan bir VM için model güncelleştirir. Başlangıç/yeniden başlatma da kalan altında güncelleştirme gibi model olmayan bazı VM değiştirir.
+- **Güncelleştirme** – varolan bir VM için modeli güncelleştirir. Başlat/Yeniden Başlatma gibi VM'de model olmayan bazı değişiklikler de güncelleştirme kapsamına girer.
 
-- **Silme** – sanal Makineyi silme.
+- **Delete** – VM silme.
 
-- **Serbest** – burada bir VM durduruldu ve ana bilgisayardan kaldırılır. Bir VM serbest bırakılıyor, güncelleştirmeyle ilgili sağlama durumları görüntülemesi için bir güncelleştirmeyi kabul edilir.
+- **Deallocate** – VM'nin durdurulup ana bilgisayardan kaldırıldığı yerdir. VM'nin ayrılması güncelleştirme olarak kabul edilir, bu nedenle güncelleştirmeyle ilgili hüküm veren durumları görüntüler.
 
 
 
-Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra geçiş işlemi durumlar şunlardır:
+Platform kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra geçiş işlemi durumları şunlardır:
 
 <br>
 
@@ -227,8 +227,8 @@ Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra ge
 <p><b>İşletim sistemi sağlama durumları</b></p>
 </td>
 <td width="366">
-<p>Bir işletim sistemi görüntüsüne ve özelleştirilmiş bir görüntü değil ile oluşturulan bir VM'yi, aşağıdaki alt durum gösterilebilir:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; VM çalışıyor ve konuk işletim sistemi yüklemesi devam ediyor. <p /> 
+<p>Özel bir görüntüyle değil de işletim sistemi görüntüsüyle bir VM oluşturulursa, aşağıdaki alt durumlar gözlemlenebilir:</p>
+<p>1. <b>OSProvisioning</b> &ndash; Devam Ediyor VM çalışıyor ve konuk işletim sistemi kurulumu devam ediyor. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra ge
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; kısa süreli durumu. VM için hızlı bir şekilde geçiş **başarı** sürece herhangi bir uzantısı yüklü olması gerekir. Uzantıları Yükleme zaman alabilir. <br />
+<p>2. <b>OSProvisioningKomple</b> &ndash; Kısa ömürlü durum. Herhangi bir uzantı yüklenmesi gerekmedikçe VM hızla **Başarı'ya** geçiş eder. Uzantıları yüklemek zaman alabilir. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,15 +244,15 @@ Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra ge
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Not</b>: İşletim sistemi sağlama geçiş için **başarısız** bir işletim sistemi hatası veya işletim sistemi sürede yüklemez. Müşteriler, altyapı üzerinde dağıtılan sanal makine için faturalandırılırsınız.</p>
+<p><b>Not</b>: İşletim sistemi hatası varsa veya işletim sistemi zamanında yüklenmezse Işletim Sistemi Sağlama **Başarısız'a** geçiş yapabilir. Müşteriler, altyapıda dağıtılan VM için faturalandırılır.</p>
 </td>
 </tr>
 </table>
 
 
-İşlem tamamlandıktan sonra VM şu durumlardan birini geçer:
+İşlem tamamlandıktan sonra, VM aşağıdaki durumlardan birine geçecektir:
 
-- **Başarılı** – kullanıcı tarafından başlatılan Eylemler tamamladınız.
+- **Başarılı** – kullanıcı tarafından başlatılan eylemler tamamlandı.
 
     ```
   "statuses": [ 
@@ -267,7 +267,7 @@ Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra ge
 
  
 
-- **Başarısız** – başarısız olan bir işlemi temsil eder. Daha fazla bilgi ve olası çözümleri almak için hata kodlarını bakın.
+- **Başarısız** – başarısız bir işlemi temsil eder. Daha fazla bilgi ve olası çözümler almak için hata kodlarına bakın.
 
     ```
   "statuses": [
@@ -283,11 +283,11 @@ Kullanıcı tarafından başlatılan bir eylem platformu kabul ettikten sonra ge
 
 
 
-## <a name="vm-instance-view"></a>Sanal makine örnek görünümü
+## <a name="vm-instance-view"></a>VM örnek görünümü
 
-Örnek görünümü API VM çalışma durumu bilgileri sağlar. Daha fazla bilgi için [sanal makineler - örnek görünümü](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API belgeleri.
+Örnek görünümü API VM çalışma durumu bilgileri sağlar. Daha fazla bilgi için [Sanal Makineler - Örnek Görünüm](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API belgelerine bakın.
 
-Azure kaynak Gezgini, VM'nin çalışır durumda görüntülemek için basit bir kullanıcı Arabirimi sağlar: [Kaynak Gezgini](https://resources.azure.com/).
+Azure Kaynakları gezgini, VM çalışan durumunu görüntülemek için basit bir kullanıcı arabirimi sağlar: [Kaynak Gezgini.](https://resources.azure.com/)
 
-Sağlama durumları VM özelliklerini ve örnek görünümünü görülebilir. Güç durumları VM örneği görünümünde kullanılabilir. 
+Sağlama durumları VM özellikleri ve örnek görünümünde görülebilir. Güç durumları VM örneğingörünümünde kullanılabilir. 
 

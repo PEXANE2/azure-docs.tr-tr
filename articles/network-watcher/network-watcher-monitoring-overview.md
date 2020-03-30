@@ -15,19 +15,19 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844998"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Ağ İzleyicisi nedir?
 
-Azure Ağ İzleyicisi, Azure sanal ağındaki kaynaklarda izleme, tanılama, ölçümleri görüntüleme ve günlükleri etkinleştirme veya devre dışı bırakma işlemleri için araçlar sağlar. Ağ Izleyicisi, sanal makineler, sanal ağlar, uygulama ağ geçitleri, yük dengeleyiciler, vb. dahil olmak üzere IaaS (hizmet olarak altyapı) ürünlerinin ağ durumunu izlemek ve onarmak için tasarlanmıştır. Not: için tasarlanmamıştır ve PaaS izleme veya web analizi için çalışmayacak. 
+Azure Ağ İzleyicisi, Azure sanal ağındaki kaynaklarda izleme, tanılama, ölçümleri görüntüleme ve günlükleri etkinleştirme veya devre dışı bırakma işlemleri için araçlar sağlar. Network Watcher, Sanal Makineler, Sanal Ağlar, Uygulama Ağ Geçitleri, Yük dengeleyicileri vb. içeren IaaS (Hizmet Olarak Altyapı) ürünlerinin ağ sağlığını izlemek ve onarmak için tasarlanmıştır. Not: PaaS izleme veya Web analitiği için tasarlanmamıştır ve çalışmaz. 
 
 ## <a name="monitoring"></a>İzleme
 
-### <a name = "connection-monitor"></a>Sanal makine ile uç nokta arasındaki iletişimi izleme
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>Sanal makine ile uç nokta arasındaki iletişimi izleme
 
 Uç noktalar başka bir sanal makine (VM), tam etki alanı adı (FQDN), tekdüzen kaynak tanımlayıcısı (URI) veya IPv4 adresi olabilir. *Bağlantı izleyicisi* özelliği, iletişimi düzenli aralıklarla izler ve size sanal makineyle uç nokta arasındaki ulaşılabilirlik, gecikme ve ağ topolojisi değişikliklerini bildirir. Örneğin, veritabanı sunucusu sanal makinesiyle iletişim kuran bir web sunucusu sanal makineniz olabilir. Kuruluşunuzda sizin tanımadığınız biri web sunucusu ya da veritabanı sunucusu sanal makinesine veya alt ağına özel bir yol veya ağ güvenliği kuralı uygulamıştır.
 
@@ -55,7 +55,7 @@ Bir sanal makine dağıttığınızda, Azure sanal makineye gelen veya giden tra
 
 Sanal makine oluşturduğunuzda, Azure varsayılan olarak ağ trafiği için çeşitli giden yollar oluşturur. Sanal makineler gibi sanal ağ üzerine dağıtılmış tüm kaynaklardan giden trafik, Azure'un varsayılan yolları temelinde yönlendirilir. Azure'un varsayılan yollarını geçersiz kılabilir veya ek yollar oluşturabilirsiniz. Sanal makinenin belirli bir yol nedeniyle diğer kaynaklarla artık iletişim kuramadığını fark edebilirsiniz. *Sonraki atlama* özelliği kaynak ve hedef IPv4 adresi belirtmenize olanak tanır. Ardından sonraki atlama özelliği iletişimi test eder ve trafiği yönlendirmek için kullanılan sonraki atlama türü hakkında sizi bilgilendirir. Siz de yönlendirme sorununu çözmek için yolu kaldırabilir, değiştirebilir veya yol ekleyebilirsiniz. [Sonraki atlama](diagnose-vm-network-routing-problem.md) özelliği hakkında daha fazla bilgi edinin.
 
-### <a name="connection-troubleshoot"></a>Sanal makineden giden bağlantı sorunlarını tanılama
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Sanal makineden giden bağlantı sorunlarını tanılama
 
 *Bağlantı sorunlarını giderme* özelliği, sanal makine ile başka bir sanal makine, bir FQDN, URI veya IPv4 adresi arasındaki bağlantıyı test etmenize olanak tanır. Test, [bağlantı izleyicisi](#connection-monitor) özelliği kullanılırken döndürülenlere benzer bilgiler döndürür ama bağlantı izleyicisinin yaptığı gibi zamana yayılmış bir izleme yerine zamanın belirli bir noktasında bağlantıyı test eder. [Bağlantı sorunlarını giderme](network-watcher-connectivity-overview.md) özelliğini kullanarak bağlantılarda sorun giderme hakkında daha fazla bilgi edinin.
 
@@ -95,10 +95,10 @@ Ağ güvenlik grupları (NSG) sanal makinedeki ağ arabirimine gelen veya burada
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Ağ kaynakları için tanılamak günlüklerini görüntüleme
 
-Ağ güvenlik grupları, genel IP adresleri, yük dengeleyiciler, sanal ağ geçitleri ve uygulama ağ geçitleri gibi Azure ağ kaynakları için tanılama günlüğünü etkinleştirebilirsiniz. *Tanılama günlükleri* özelliği, tanılama günlüğü oluşturan tüm mevcut ağ kaynaklarında ağ kaynağı tanılama günlüklerini tek bir arabirimden etkinleştirmenize ve devre dışı bırakmanıza olanak tanır. Tanılama günlüklerini, Microsoft Power BI ve Azure Izleyici günlükleri gibi araçları kullanarak görüntüleyebilirsiniz. Azure ağ tanılama günlüklerini çözümleme hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerinde Azure ağ çözümleri](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Ağ güvenlik grupları, genel IP adresleri, yük dengeleyiciler, sanal ağ geçitleri ve uygulama ağ geçitleri gibi Azure ağ kaynakları için tanılama günlüğünü etkinleştirebilirsiniz. *Tanılama günlükleri* özelliği, tanılama günlüğü oluşturan tüm mevcut ağ kaynaklarında ağ kaynağı tanılama günlüklerini tek bir arabirimden etkinleştirmenize ve devre dışı bırakmanıza olanak tanır. Microsoft Power BI ve Azure Monitor günlükleri gibi araçları kullanarak tanılama günlüklerini görüntüleyebilirsiniz. Azure ağ tanılama günlüklerini çözümleme hakkında daha fazla bilgi edinmek için [Azure Monitor günlüklerinde Azure ağ çözümlerine](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)bakın.
 
-## <a name="network-watcher-automatic-enablement"></a>Ağ Izleyicisi otomatik etkinleştirme
-Aboneliğinizde bir sanal ağ oluşturduğunuzda veya güncelleştirdiğinizde, sanal ağınızın bölgesinde ağ Izleyicisi otomatik olarak etkinleştirilir. Ağ İzleyicisi’nin otomatik olarak etkinleştirilmesi sırasında kaynaklarınız veya bu hizmete ilişkin ücretler etkilenmez. Daha fazla bilgi için bkz. [Ağ İzleyicisi oluşturma](network-watcher-create.md).
+## <a name="network-watcher-automatic-enablement"></a>Ağ İzleyicisi otomatik etkinleştirme
+Aboneliğinizde sanal ağı oluşturur veya güncelleştirirken, Sanal Ağınızın bölgesinde Ağ İzleyicisi otomatik olarak etkinleştirilir. Ağ İzleyicisi'nin otomatik olarak etkinleştirmesi kaynaklarınızı veya ilişkili ücretleri hiçbir şekilde etkilemez. Daha fazla bilgi için [Ağ İzleyicisi'nin oluşturmaya bakınız.](network-watcher-create.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

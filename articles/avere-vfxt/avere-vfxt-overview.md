@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76153200"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Azure için Avere vFXT nedir?
@@ -19,13 +19,13 @@ Azure için Avere vFXT, yoğun veri kullanan yüksek performanslı bilgi işlem 
 
 Avere vFXT şu yaygın bilgi işlem senaryolarını destekler:
 
-* Karma bulut mimarisi-Azure için avere vFXT, dosyaları taşımaya gerek kalmadan bulut bilgi işlem avantajını sağlayan bir donanım depolama sistemiyle çalışabilir.
+* Karma bulut mimarisi - Azure için Avere vFXT, dosyaları taşımak zorunda kalmadan bulut bilgi işlemavantajı sağlayan bir donanım depolama sistemiyle çalışabilir.
 
-* Azure için bulut patlaması-avere vFXT, verilerinizi tek bir proje için buluta taşımanızı veya tüm iş akışının kalıcı olarak "kaldırın ve kaydırmasını" sağlayabilir.
+* Bulut patlaması - Azure için Avere vFXT, verilerinizi tek bir proje için buluta taşımanıza veya tüm iş akışını kalıcı olarak "kaldırmave kaydırmaya" yardımcı olabilir.
 
 ![Blob depolama alanına ve şirket içi veri merkezine bağlı bir Azure aboneliğindeki Avere vFXT sisteminin ayrıntılarını gösteren diyagram](media/avere-vfxt-hybrid.png)
 
-Azure için avere vFXT, bu durumlar için idealdir:
+Azure için Avere vFXT bu durumlar için en uygun olan:
 
 * HPC iş yükleri için yoğun okuma işlemleri
 * Ortak NFS protokolünü kullanan uygulamalar
@@ -44,9 +44,9 @@ Avere vFXT kümesi medya ve eğlence sektöründe zaman açısından kritik proj
 
 ### <a name="life-sciences"></a>Yaşam bilimleri
 
-Avere vFXT, araştırmacıların Azure Işlem 'da ikincil analiz iş akışlarını çalıştırmasına ve konumlarına bakılmaksızın genomıc verilerine erişmesine olanak tanır.
+Avere vFXT, araştırmacıların Azure İşleme'de ikincil analiz iş akışları çalıştırmalarına ve konumları ne olursa olsun genomik verilere erişmelerine olanak tanır.
 
-İlaç araştırmada avere vFXT kümeleri, araştırmacıların ilaç-Target etkileşimlerini tahmin etmesine ve araştırma verilerini çözümlemesine yardımcı olarak ilaç bulmayı hızlandırabilir.
+Farmasötik araştırmalarda, Avere vFXT kümeleri araştırmacıların ilaç hedef etkileşimlerini tahmin etmesine ve araştırma verilerini analiz etmesine yardımcı olarak ilaç keşfini hızlandırabilir.
 
 ### <a name="financial-services-analytics"></a>Finansal hizmetler analizi
 
@@ -64,18 +64,18 @@ Avere vFXT kümesi, istenen dosyaları önbelleğe alır. Tekrarlanan istekler %
 * Azure Blob ile uyumludur
 * NFSv3 veya SMB2 protokolünü kullanır
 
-Azure için avere vFXT aşağıdaki Azure kaynaklarını kullanır:
+Azure için Avere vFXT aşağıdaki Azure kaynaklarını kullanır:
 
 |Azure bileşeni|   |
 |----------|-----------|
 |Sanal makineler|3 veya daha fazla E32s_v3|
 |Premium SSD depolama alanı|200 GB işletim sistemi alanına ek olarak düğüm başına 1 TB-4 TB önbellek alanı |
 |Depolama hesabı (isteğe bağlı) |v2|
-|Veri arka uç depolama alanı (isteğe bağlı) | Boş bir LRS Blob kapsayıcısı |
+|Veri arka uç depolama (isteğe bağlı) | Boş bir LRS Blob kapsayıcısı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dağıtımı için kendi avere vFXT 'nizi planlamak ve oluşturmak için bu makaleleri okuyun.
+Azure dağıtımı için kendi Avere vFXT'nizi planlamak ve oluşturmak için bu makaleleri okuyun.
 
 * [Sisteminizi planlayın](avere-vfxt-deploy-plan.md)
 * [Dağıtıma genel bakış](avere-vfxt-deploy-overview.md)

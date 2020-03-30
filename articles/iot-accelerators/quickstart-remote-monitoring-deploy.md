@@ -1,5 +1,5 @@
 ---
-title: Bir bulut tabanlı IOT Uzaktan izleme çözümü - Azure'ı deneyin | Microsoft Docs
+title: Bulut tabanlı IoT uzaktan izleme çözümünü deneyin - Azure | Microsoft Dokümanlar
 description: Bu hızlı başlangıçta Uzaktan İzleme Azure IoT çözümünü dağıtacak ve çözüm panosunda oturum açıp işlevleri kullanacaksınız.
 author: dominicbetts
 manager: timlt
@@ -10,23 +10,23 @@ ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
 ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "60890169"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Hızlı Başlangıç: Bir bulut tabanlı uzaktan izleme çözümünü deneyin
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Hızlı başlangıç: Bulut tabanlı uzaktan izleme çözümünü deneme
 
 Bu hızlı başlangıçta Azure IoT Uzaktan İzleme çözümü hızlandırıcısını dağıtmayı öğreneceksiniz. Bu bulut tabanlı çözümde **Dashboard** (Pano) sayfasını kullanarak sanal cihazları harita üzerinde görselleştirecek ve **Maintenance** (Bakım) sayfasını kullanarak sanal bir soğutucu cihazından gelen basınç uyarısına müdahale edeceksiniz. Bu çözüm hızlandırıcısını, kendi uygulamanızın başlangıç noktası veya bir öğrenme aracı olarak kullanabilirsiniz.
 
 İlk dağıtımda, Contoso adlı bir şirket için bir çözüm hızlandırıcısı yapılandırılır. Contoso'da çalışan bir operatör olarak, farklı fiziksel ortamlara dağıtılmış olan soğutucular gibi farklı türdeki cihazları yönetiyorsunuz. Soğutucu cihazı Uzaktan İzleme çözümü hızlandırıcısına sıcaklık, nem ve basınç telemetri verilerini göndermektedir.
 
-Bu hızlı başlangıçta dağıtan bir **temel** maliyetlerinizi azaltırken diğer yandan çözüm Hızlandırıcısını sınama ve tanıtma amaçlarıyla sürümü. Dağıtabileceğiniz farklı sürümleri hakkında daha fazla bilgi için bkz. [temel ve standart dağıtımları](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
+Bu hızlı başlatma, maliyetleri en aza indiren test ve gösterim amaçları için çözüm hızlandırıcının **Temel** sürümünü dağıtır. Dağıtabileceğiniz farklı sürümler hakkında daha fazla bilgi için [Temel ve standart dağıtımlara](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments)bakın.
 
 Bu hızlı başlangıcı tamamlamak etkin bir Azure aboneliğinizin olması gerekir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
 
@@ -34,18 +34,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure hesabınızın kimlik bilgilerini kullanarak [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) adresinden oturum açın.
 
-Tıklayın **Uzaktan izleme** Döşe. Üzerinde **Uzaktan izleme** sayfasında **şimdi deneyin**:
+Uzaktan **İzleme** döşemesini tıklatın. Uzaktan **İzleme** sayfasında, **Şimdi Deneyin'i**tıklatın:
 
 ![Uzaktan İzlemeyi Seçme](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Seçin  **C# mikro Hizmetler** olarak **dağıtım seçenekleri**. Java ve C# uygulamalara aynı özelliklere sahip.
+**Dağıtım seçenekleri**olarak **C# Microservices'i** seçin. Java ve C# uygulamaları aynı özelliklere sahiptir.
 
-Uzaktan İzleme çözümü hızlandırıcınız için benzersiz bir **Solution name** (Çözüm adı) değeri girin. Bu hızlı başlangıçta biz bizim arıyoruz **contoso-rm**.
+Uzaktan İzleme çözümü hızlandırıcınız için benzersiz bir **Solution name** (Çözüm adı) değeri girin. Bu hızlı başlangıç için, bizim **contoso-rm**diyoruz.
 
-Çözüm hızlandırıcısını dağıtırken kullanmak istediğiniz **Subscription** (Abonelik) ve **Region** (Bölge) seçimini yapın. Genelde size en yakın bölgeyi seçmeniz gerekir. Bu hızlı başlangıçta kullanıyoruz **Doğu ABD**.
-Seçebileceğiniz **Visual Studio Enterprise**, ancak siz bir [genel yönetici veya kullanıcı](iot-accelerators-permissions.md) Bunu yapmak için.
+Çözüm hızlandırıcısını dağıtırken kullanmak istediğiniz **Subscription** (Abonelik) ve **Region** (Bölge) seçimini yapın. Genelde size en yakın bölgeyi seçmeniz gerekir. Bu hızlı başlangıç için, **Doğu ABD**kullanıyoruz.
+**Visual Studio Enterprise'ı**seçebilirsiniz, ancak bunu yapmak için küresel bir yönetici [veya kullanıcı](iot-accelerators-permissions.md) olmalısınız.
 
-Dağıtımınıza başlamak için tıklatın **Oluştur**. Bu işlemin çalışması en az beş dakika sürer:
+Dağıtımınızı başlatmak için **Oluştur'u**tıklatın. Bu işlemin çalışması en az beş dakika sürer:
 
 ![Uzaktan İzleme çözümünün ayrıntıları](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Azure aboneliğinize dağıtım tamamlandığında, çözüm dosyasında yeşil 
 
 ![Yeni çözümü seçme](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Açılan panelden Uzaktan İzleme çözümü hızlandırıcınızla ilgili bilgileri görüntüleyebilirsiniz. Seçin **çözüm hızlandırıcınız Git** Uzaktan izleme çözüm hızlandırıcınız görüntülemek için:
+Açılan panelden Uzaktan İzleme çözümü hızlandırıcınızla ilgili bilgileri görüntüleyebilirsiniz. Uzaktan İzleme çözüm hızlandırıcınızı görüntülemek için **çözüm hızlandırıcınıza git'i** seçin:
 
 ![Çözüm paneli](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -87,13 +87,13 @@ Contoso'da bir operatör olarak cihazlarınızı çözüm panosundan izleyebilir
 
 **Dashboard** (Pano) sayfasının **Alerts** (Uyarılar) panelinde **Chiller pressure too high** (Soğutucu basıncı çok yüksek) uyarısını görebilirsiniz. Soğutucu harita üzerinde kırmızı raptiyeyle gösterilmektedir (haritayı kaydırmanız ve yakınlaştırmanız gerekebilir):
 
-[![Panoda basınç uyarısı ve harita üzerinde cihaz gösterilir](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
+[![Pano, haritaüzerinde basınç uyarısı ve aygıtı gösterir](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
 **Alerts** (Uyarılar) panelinde, **Explore** (Keşfet) sütununda **Chiller pressure too high** (Soğutucu basıncı çok yüksek) kuralının yanındaki **...** simgesine tıklayın. Bu eylem sizi uyarıyı tetikleyen kuralın ayrıntılarını görüntüleyebileceğiniz **Maintenance** (Bakım) sayfasına yönlendirir.
 
 **Chiller pressure too high** (Soğutucu basıncı çok yüksek) bakım sayfasında uyarıları tetikleyen kuralın ayrıntıları gösterilir. Bu sayfada uyarıların tetiklendiği zaman ve bunları tetikleyen cihaz da görüntülenir:
 
-[![Tetiklenen uyarıların listesini gösteren Maintenance (Bakım) sayfası](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
+[![Bakım sayfası tetiklenen uyarıların listesini gösterir](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
 Uyarıyı tetikleyen sorunu ve ilgili cihazı tanımladınız. Operatör olarak gerçekleştirmeniz gereken sonraki adımlar uyarıyı onaylamak ve sorunu gidermektir.
 
@@ -101,19 +101,19 @@ Uyarıyı tetikleyen sorunu ve ilgili cihazı tanımladınız. Operatör olarak 
 
 Diğer operatörlere bu uyarının üzerinde çalıştığınızı göstermek için uyarıyı seçin ve **Alert status** (Uyarı durumu) bilgisini **Acknowledged** (Onaylandı) olarak değiştirin:
 
-[![Uyarıyı seçme ve onaylama](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
+[![Uyarıyı seçin ve onaylayın](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
 Durum sütunundaki değer **Acknowledged** (Onaylandı) olarak değiştirilir.
 
 Soğutucu üzerinde işlem yapmak için **Related information** (İlgili bilgiler) bölümüne inin, **Alerted devices** (Uyarıya sahip cihazlar) listesinden soğutucu cihazını seçin ve **Jobs** (İşler) öğesini seçin:
 
-[![Cihazı seçme ve eylem zamanlama](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
+[![Aygıtı seçin ve bir eylem zamanlayın](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
 **İşler** panelinde **Çalıştırma yöntemi**’ni ve ardından **EmergencyValveRelease** yöntemini seçin. **ChillerPressureRelease** iş adını ekleyin ve **Uygula**’ya tıklayın. Bu ayarlar sizin için hemen yürütülen bir iş oluşturur.
 
-İş durumunu görüntülemek için **Maintenance** (Bakım) sayfasına dönün ve **Jobs** (İşler) görünümünde iş listesini görüntüleyin. İşlemi çalıştırıldı görebilmek için önce birkaç saniye beklemeniz gerekebilir:
+İş durumunu görüntülemek için **Maintenance** (Bakım) sayfasına dönün ve **Jobs** (İşler) görünümünde iş listesini görüntüleyin. İşin çalıştırılmasını görebilmeniz için birkaç saniye beklemeniz gerekebilir:
 
-[![Jobs (İşler) görünümünde işlerin durumu](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
+[![İşler görünümündeki işlerin durumu](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 
 ### <a name="check-the-pressure-is-back-to-normal"></a>Basıncın normale dönüp dönmediğini kontrol etme
 
@@ -123,7 +123,7 @@ Soğutucudan gelen basınç telemetrisini görüntülemek için **Dashboard** (P
 
 Olayı kapatmak için **Maintenance** (Bakım) sayfasına gidin, uyarıyı seçin ve durumunu **Closed** (Kapalı) olarak ayarlayın:
 
-[![Uyarısı seçin ve kapatın](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
+[![Uyarıyı seçin ve kapatın](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
 
 Durum sütunundaki değer **Closed** (Kapalı) olarak değiştirilir.
 
@@ -131,7 +131,7 @@ Durum sütunundaki değer **Closed** (Kapalı) olarak değiştirilir.
 
 Öğreticilere devam etmeyi planlıyorsanız Uzaktan İzleme çözümü hızlandırıcısı dağıtımını bırakın.
 
-Çözüm hızlandırıcısına ihtiyacınız kalmadıysa [Sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasında hızlandırıcıyı seçip **Çözümü Sil**’e tıklayarak bunu silebilirsiniz:
+Çözüm hızlandırıcısına artık ihtiyacınız yoksa, Çözüm Lüzatı'nı seçerek ve Ardından **Çözüm Sil'i**tıklatarak [Sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasından silin:
 
 ![Çözümü sil](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
@@ -145,4 +145,4 @@ Bu hızlı başlangıçta Uzaktan İzleme çözümü hızlandırıcısını dağ
 Simülasyon cihazları kullanan çözüm hızlandırıcısı hakkında daha fazla bilgi için aşağıdaki öğreticiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: IOT cihazlarınızı izleme](iot-accelerators-remote-monitoring-monitor.md)
+> [Öğretici: IoT cihazlarınızı izleme](iot-accelerators-remote-monitoring-monitor.md)

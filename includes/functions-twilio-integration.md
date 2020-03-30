@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188172"
 ---
-Bu örnek kullanılmasına [Twilio](https://www.twilio.com/) hizmeti bir cep telefonunuza SMS mesajları gönderebilir. Azure işlevleri için Twilio destek zaten [Twilio bağlama](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), ve örnek bu özelliği kullanır.
+Bu örnek, bir cep telefonuna SMS mesajları göndermek için [Twilio](https://www.twilio.com/) hizmetini kullanmayı içerir. Azure İşlevleri zaten [Twilio bağlama yoluyla Twilio](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)için destek vardır ve örnek bu özelliği kullanır.
 
-İhtiyacınız olan ilk şey bir Twilio hesabıdır. Ücretsiz, oluşturabilirsiniz https://www.twilio.com/try-twilio. Hesabınızı edindikten sonra aşağıdaki üç ekleme **uygulama ayarları** işlev uygulamanız için.
+İhtiyacın olan ilk şey bir Twilio hesabı. Bir ücretsiz https://www.twilio.com/try-twiliooluşturabilirsiniz. Bir hesabınız olduktan sonra, işlev uygulamanıza aşağıdaki üç **uygulama ayarını** ekleyin.
 
-| Uygulama ayarı adı | Değer Açıklama |
+| Uygulama ayar adı | Değer açıklaması |
 | - | - |
-| **TwilioAccountSid**  | Twilio hesabınızın SID'sini |
-| **TwilioAuthToken**   | Twilio hesabınız için kimlik doğrulama belirteci |
-| **TwilioPhoneNumber** | Twilio hesabınızla ilişkili telefon numarası. Bu, SMS mesajları göndermek için kullanılır. |
+| **TwilioAccountSid**  | Twilio hesabınız için SID |
+| **TwilioAuthToken**   | Twilio hesabınız için Auth belirteci |
+| **TwilioPhoneNumber** | Twilio hesabınızla ilişkili telefon numarası. Bu SMS mesajları göndermek için kullanılır. |

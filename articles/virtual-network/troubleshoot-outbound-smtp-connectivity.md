@@ -1,6 +1,6 @@
 ---
-title: Azure 'da giden SMTP bağlantısı sorunlarını giderme | Microsoft Docs
-description: Azure 'da giden SMTP bağlantısı sorunlarını giderme hakkında bilgi edinin.
+title: Azure'da giden SMTP bağlantısıyla sorun giderme | Microsoft Dokümanlar
+description: Azure'da giden SMTP bağlantısı sorunlarını nasıl gidereceklerini öğrenin.
 services: virtual-network
 author: genlin
 manager: dcscontentpm
@@ -13,45 +13,45 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058947"
 ---
-# <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
+# <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure'da giden SMTP bağlantısı sorunlarını giderme
 
-15 Kasım 2017 tarihinden itibaren, bir sanal makineden (VM) doğrudan dış etki alanlarına (outlook.com ve gmail.com) gönderilen giden e-posta iletileri yalnızca Microsoft Azure içindeki belirli Abonelik türleri için kullanılabilir hale getirilir. TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. (Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır.)
+15 Kasım 2017'den itibaren, sanal bir makineden (VM) doğrudan dış etki adlarına (outlook.com ve gmail.com gibi) gönderilen giden e-posta iletileri yalnızca Microsoft Azure'daki belirli abonelik türlerine sunulur. TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. (Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır.)
 
-Bu davranış değişikliği, 15 Kasım 2017 ' den beri yalnızca yeni abonelikler ve Yeni dağıtımlar için geçerlidir.
+Davranıştaki bu değişiklik yalnızca 15 Kasım 2017'den bu yana yeni abonelikler ve yeni dağıtımlar için geçerlidir.
 
-## <a name="recommended-method-of-sending-email"></a>E-posta göndermek için önerilen yöntem
-Azure VM 'lerinden veya Azure Uygulama hizmetlerinden e-posta göndermek için kimliği doğrulanmış SMTP geçiş hizmetlerini (genellikle TCP bağlantı noktası 587 veya 443 üzerinden bağlantı, ancak diğer bağlantı noktalarını da destekler) kullanmanızı öneririz. Bu hizmetler, üçüncü taraf e-posta sağlayıcılarının iletiyi reddetme olasılığını en aza indirmek için IP veya etki alanı saygınlığını sürdürmek üzere kullanılır. Bu tür SMTP geçiş Hizmetleri, [SendGrid](https://sendgrid.com/partners/azure/)'e dahil değildir ancak bunlarla sınırlı değildir. Ayrıca, şirket içi olarak çalışan ve kullanabileceğiniz güvenli bir SMTP geçiş hizmetiniz de mümkündür.
+## <a name="recommended-method-of-sending-email"></a>Önerilen e-posta gönderme yöntemi
+Azure VM'lerden veya Azure Uygulama Hizmetlerinden e-posta göndermek için kimlik doğrulaması verilen SMTP geçiş hizmetlerini (genellikle TCP port 587 veya 443 üzerinden bağlanan ancak diğer bağlantı noktalarını da destekleyen) kullanmanızı öneririz. Bu hizmetler, üçüncü taraf e-posta sağlayıcılarının iletiyi reddetme olasılığını en aza indirmek için IP veya etki alanı itibarını korumak için kullanılır. Bu tür SMTP röle hizmetleri [SendGrid](https://sendgrid.com/partners/azure/)içerir ancak bunlarla sınırlı değildir. Ayrıca, kullanabileceğiniz şirket içinde çalışan güvenli bir SMTP röle hizmetiniz de olabilir.
 
-Bu e-posta teslim hizmetlerinin kullanılması, abonelik türünden bağımsız olarak Azure 'da kısıtlı değildir.
+Bu e-posta teslim hizmetlerini kullanmak, abonelik türünden bağımsız olarak Azure'da kısıtlanmaz.
 
 ## <a name="enterprise-agreement"></a>Kurumsal Anlaşma
-Kurumsal Anlaşma Azure kullanıcıları için, kimlik doğrulamalı geçiş kullanmadan e-posta gönderme teknik özelliğinin bir değişikliği yoktur. Hem yeni hem de mevcut Kurumsal Anlaşma kullanıcılar Azure platformundan herhangi bir kısıtlama olmadan doğrudan Azure VM 'lerinden giden e-posta teslimini doğrudan dış e-posta sağlayıcılarına deneyebilir. E-posta sağlayıcılarının belirli bir kullanıcıdan gelen e-postayı kabul edeceğini garanti etmese de, teslim denemeleri Kurumsal Anlaşma abonelikleri içindeki VM 'Ler için Azure platformu tarafından engellenmeyecektir. Herhangi bir ileti teslimini veya belirli sağlayıcıları içeren istenmeyen posta filtreleme sorunlarını gidermek için doğrudan e-posta sağlayıcılarıyla çalışmanız gerekir.
+Kurumsal Sözleşme Azure kullanıcıları için, kimlik doğrulaması röle kullanmadan e-posta gönderme teknik yeteneğinde bir değişiklik yoktur. Hem yeni hem de mevcut Enterprise Agreement kullanıcıları, Azure platformundan herhangi bir kısıtlama olmaksızın Azure VM'lerinden doğrudan harici e-posta sağlayıcılarına giden e-posta dağıtımını deneyebilir. E-posta sağlayıcılarının herhangi bir kullanıcıdan gelen e-postaları kabul edeceği garanti edilmese de, teslim girişimleri Kurumsal Sözleşme abonelikleri içindeki VM'ler için Azure platformu tarafından engellenmez. Belirli sağlayıcıları içeren ileti teslimini veya SPAM filtreleme sorunlarını gidermek için doğrudan e-posta sağlayıcılarıyla çalışmanız gerekir.
 
 ## <a name="pay-as-you-go"></a>Kullandıkça Öde
-Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik teklifleri için 15 Kasım 2017 tarihinden önce kaydolduysanız, giden e-posta teslimini deneyebilme özelliği hiçbir değişiklik olmayacaktır. Azure platformundan herhangi bir kısıtlama olmadan bu aboneliklerdeki Azure VM 'lerinden gelen e-posta teslimini doğrudan dış e-posta sağlayıcılarına deneyebileceksiniz. Bu, e-posta sağlayıcılarının belirli bir kullanıcıdan gelen e-postayı kabul edeceğini garanti etmez ve kullanıcıların herhangi bir ileti teslimini veya belirli sağlayıcıları içeren istenmeyen posta filtreleme sorunlarını gidermek için doğrudan e-posta sağlayıcılarıyla çalışması gerekecektir.
+15 Kasım 2017'den önce You-You-Go Veya Microsoft İş Ortağı Ağı abonelik teklifleri için kaydolduysanız, giden e-posta dağıtımını deneme teknik yeteneğinde bir değişiklik olmayacaktır. Bu abonelikler dahilinde Azure VM'lerinden gelen giden e-posta dağıtımını doğrudan Azure platformundan herhangi bir kısıtlama olmaksızın harici e-posta sağlayıcılarına deneyebilirsiniz. Yine, e-posta sağlayıcılarının herhangi bir kullanıcıdan gelen e-postaları kabul edeceği garanti edilmez ve kullanıcıların belirli sağlayıcıları içeren ileti teslimini veya SPAM filtreleme sorunlarını gidermek için doğrudan e-posta sağlayıcılarıyla çalışmak zorunda kalacaktır.
 
-15 Kasım 2017 ' den sonra oluşturulan Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelikler için, bu abonelikler içindeki VM 'lerden doğrudan gönderilen e-postaları engelleyen teknik kısıtlamalar olacaktır. Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilme olanağı istiyorsanız, kısıtlamayı kaldırmak için bir istek yapabilirsiniz. İstekler, Microsoft 'un kararına göre incelenip onaylanacaktır ve yalnızca ek sahtekarlık denetimleri yapıldıktan sonra verilecek. Bir istek yapmak için aşağıdaki sorun türünü kullanarak bir destek talebi açın: **Teknik** **sanal ağ** **bağlantısı** **e-posta gönderemez (SMTP/bağlantı noktası 25).**  >  >  >  Dağıtımınızın neden kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun.
+15 Kasım 2017'den sonra oluşturulan You-You-Go Veya Microsoft İş Ortağı Ağı abonelikleri için, bu abonelikler içinde doğrudan VM'lerden gönderilen e-postaları engelleyen teknik kısıtlamalar olacaktır. Azure VM'lerden doğrudan harici e-posta sağlayıcılarına e-posta gönderme olanağı istiyorsanız (kimlik doğrulamalı Bir SMTP geçişi kullanmıyorsanız), kısıtlamayı kaldırmak için istekte bulunabilirsiniz. İstekler Microsoft'un takdirine bağlı olarak gözden geçirilir ve onaylanır ve bunlara yalnızca ek dolandırıcılıkla mücadele denetimleri yapıldıktan sonra verilir. İstekte bulunmak için aşağıdaki sorun türünü kullanarak bir destek örneği açın: **Teknik** > **Sanal Ağ** > **Bağlantısı** > **e-posta gönderemez (SMTP/Port 25)**. Dağıtımınızın kimlik doğrulaması bir röle kullanmak yerine neden doğrudan posta sağlayıcılarına posta göndermesi gerektiğine ilişkin ayrıntıları eklediğinizden emin olun.
 
-Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik dışlandıktan sonra ve VM 'Ler Azure portal ' & ' başlatıldı ' olarak durdurulduktan sonra, Bu abonelikteki tüm VM 'Ler ileri alınır. Muafiyet yalnızca istenen aboneliğe uygulanabilir ve yalnızca doğrudan internet 'e yönlendirilen sanal makine trafiği için geçerlidir. Azure [güvenlik duvarı](https://azure.microsoft.com/services/azure-firewall/) gibi Azure PaaS hizmetleri aracılığıyla yönlendirme bağlantı noktası 25 trafiği desteklenmez.
+Bir You-As-You-Go veya Microsoft İş Ortağı Ağı aboneliği muaf olduktan ve VM'ler Azure portalından 'Durduruldu' & 'Başlatıldı' sonra, bu abonelikteki tüm VM'ler ileriye dönük olarak muaf tutulur. Bu muafiyet yalnızca talep edilen abonelik için geçerlidir ve yalnızca doğrudan internete yönlendirilen Sanal Makine trafiği için geçerlidir. [Azure Güvenlik Duvarı](https://azure.microsoft.com/services/azure-firewall/) gibi Azure PaaS hizmetleri üzerinden bağlantı noktası 25 trafiğini yönlendirme desteklenmez.
 
 > [!NOTE]
-> Microsoft, hizmet koşullarının ihlal edildiğini tespit ettiyse bu muafiyeti iptal etme hakkını saklı tutar.
+> Microsoft, hizmet şartlarının ihlal edildiğinin tespit edilmesi halinde bu muafiyeti iptal etme hakkını saklı tutar.
 
-## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure Pass, Open ile Azure, eğitim, BizSpark ve ücretsiz deneme
-15 Kasım 2017 ' den sonra bir MSDN, Azure Pass, Open ile Azure, eğitim, BizSpark, Azure Sponsorluğu, Azure öğrenci, ücretsiz deneme veya herhangi bir Visual Studio aboneliği oluşturduysanız, bunlar içindeki VM 'lerden gönderilen e-postayı engelleyen teknik kısıtlamalara sahip olursunuz. Abonelikler doğrudan e-posta sağlayıcılarına. Kötüye kullanımı engellemek için kısıtlamalar yapılır. Bu kısıtlamayı kaldırma isteği verilecek.
+## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure Pass, Açık, Eğitim, BizSpark ve Ücretsiz Deneme de Azure
+15 Kasım 2017'den sonra MSDN, Azure Pass, Azure açık, eğitimde Azure, BizSpark, Azure Sponsorluğunda, Azure Öğrenci, Ücretsiz Deneme veya herhangi bir Visual Studio aboneliği oluşturduysanız, bu kapsamdaki VM'lerden gönderilen e-postaları engelleyen teknik kısıtlamalar alabilirsiniz abonelikleri doğrudan e-posta sağlayıcılarına aktarır. Kısıtlamalar kötüye kullanımı önlemek için yapılır. Bu kısıtlamayı kaldırmak için hiçbir istek kabul edilecektir.
 
-Bu abonelik türlerini kullanıyorsanız, bu makalenin önceki kısımlarında açıklandığı gibi SMTP geçiş hizmetlerini kullanmanız veya abonelik türünü değiştirmeniz önerilir.
+Bu abonelik türlerini kullanıyorsanız, bu makalede daha önce belirtildiği gibi SMTP geçiş hizmetlerini kullanmanız veya abonelik türünüzü değiştirmeniz için teşvik edilirsiniz.
 
-## <a name="cloud-service-provider-csp"></a>Bulut hizmeti sağlayıcısı (CSP)
+## <a name="cloud-service-provider-csp"></a>Bulut Hizmet Sağlayıcısı (CSP)
 
-Azure kaynaklarını CSP aracılığıyla kullanıyorsanız, güvenli bir SMTP geçişi kullanılmıyorsa, CSP 'yi sizin adınıza Microsoft ile bir kaldırma muafiyeti isteği oluşturmak üzere isteyebilirsiniz.
+Azure kaynaklarını CSP üzerinden kullanıyorsanız, güvenli bir SMTP rölesi kullanılamazsa CSP'den Microsoft ile engellemeyi kaldırma isteği oluşturmasını isteyebilirsiniz.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
-Hala yardıma ihtiyacınız varsa, aşağıdaki sorun türünü kullanarak sorununuzun hızlı bir şekilde çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) : **Abonelik yönetimi** Sorun türü: **Bağlantı noktası 25 e-posta akışını etkinleştirme isteği**.
+Hala yardıma ihtiyacınız varsa, aşağıdaki sorun türünü kullanarak sorununuzu hızlı bir şekilde çözmek için [desteğe başvurun:](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) **Abonelik Yönetimi** Sorunu türü: Bağlantı **Noktası 25 e-posta akışını etkinleştirme isteği.**

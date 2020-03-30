@@ -10,23 +10,23 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751620"
 ---
 > [!TIP]
-> API özelliği kümesini göstermek için Swagger gizli dizi önizlemesi sağlanır.
-> [Docs.westcentralus.azuresmartspaces.net/Management/Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger)adresinde barındırılır.
+> API özellik kümesini göstermek için Bir Swagger sneak önizlemesi sağlanır.
+> [docs.westcentralus.azuresmartspaces.net/management/swagger'da](https://docs.westcentralus.azuresmartspaces.net/management/swagger)ev sahipliği yaptı.
 
-Üzerinde kendi üretilen yönetim API Swagger belgelerinize erişebilirsiniz:
+Kendi oluşturulan Yönetim API Swagger belgelerinize şu andan erişebilirsiniz:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Ad | Şununla değiştir |
+| Adı | Şununla değiştir |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Azure dijital TWINS örneğinizin adı |
-| YOUR_LOCATION | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
+| YOUR_INSTANCE_NAME | Azure Dijital İkizler örneğinizin adı |
+| YOUR_LOCATION | Örneğiniz hangi sunucu bölgesinde barındırılır |

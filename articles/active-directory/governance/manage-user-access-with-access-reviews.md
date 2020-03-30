@@ -1,5 +1,5 @@
 ---
-title: Erişim gözden geçirmeleri ile Kullanıcı erişimini yönetme-Azure AD
+title: Erişim incelemeleri ile kullanıcı erişimini yönetme - Azure AD
 description: Azure Active Directory erişim gözden geçirmeleri ile bir grup üyeliği veya bir uygulamaya atama aracılığıyla kullanıcı erişimini yönetmeyi öğrenin
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c307b349144974a4d38f937feeebb98f369d047
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932408"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle kullanıcı erişimini yönetme
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) sayesinde kullanıcıların uygun erişime sah
 
 - Azure AD Premium P2
 
-Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#license-requirements).
+Daha fazla bilgi için Lisans [gereksinimlerine](access-reviews-overview.md#license-requirements)bakın.
 
 ## <a name="create-and-perform-an-access-review"></a>Erişim gözden geçirmesi oluşturma ve gerçekleştirme
 
@@ -44,20 +44,20 @@ Bir erişim gözden geçirmesinde bir veya daha çok kullanıcı gözden geçire
 
 2. Her kullanıcının kendi erişimini mi gözden geçireceğine yoksa bir veya daha fazla kullanıcının tüm kullanıcıların erişimini mi gözden geçireceğine karar verin.
 
-3. Genel yönetici veya Kullanıcı Yöneticisi olarak, [Identity idare sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)gidin.
+3. Genel yönetici veya kullanıcı yöneticisi olarak [Kimlik Yönetimi sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)gidin.
 
-4. Erişim gözden geçirmesini oluşturun. Daha fazla bilgi için bkz. [gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma](create-access-review.md).
+4. Erişim incelemesini oluşturun. Daha fazla bilgi için [bkz.](create-access-review.md)
 
-5. Erişim incelemesi başladığında, gözden geçirenlerden giriş vermesini isteyin. Varsayılan olarak, her biri Azure AD 'den, [gruplara veya uygulamalara erişimi gözden geçirdikleri](perform-access-review.md)erişim paneli bağlantısı ile bir e-posta alır.
+5. Erişim incelemesi başladığında, gözden geçirenlerden giriş vermelerini isteyin. Varsayılan olarak, her biri Azure AD'den [gruplara veya uygulamalara erişimi gözden geçirdikleri](perform-access-review.md)erişim paneline bağlantı içeren bir e-posta alırlar.
 
 6. Gözden geçirenler bilgi girmediyse, Azure AD’nin onlara bir anımsatıcı göndermesini isteyebilirsiniz. Varsayılan olarak, bitiş tarihine kadar olan sürenin yarısına ulaşıldığında, Azure AD henüz yanıt vermemiş olan gözden geçirenlere bir anımsatıcı gönderir.
 
-7. Gözden geçirenler bilgileri girdikten sonra erişim gözden geçirmesini durdurun ve değişiklikleri uygulayın. Daha fazla bilgi için bkz. [grupların veya uygulamaların erişim Incelemesini tamamlamaya](complete-access-review.md)yönelik.
+7. Gözden geçirenler bilgileri girdikten sonra erişim gözden geçirmesini durdurun ve değişiklikleri uygulayın. Daha fazla bilgi için bkz: [Grupların veya uygulamaların erişim incelemesini tamamla.](complete-access-review.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma](create-access-review.md)
+[Grupların veya uygulamaların erişim gözden geçirmesini oluşturma](create-access-review.md)
 
 
 

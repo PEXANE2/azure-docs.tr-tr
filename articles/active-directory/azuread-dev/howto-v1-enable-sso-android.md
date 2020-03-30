@@ -1,10 +1,9 @@
 ---
-title: ADAL kullanarak Android 'de uygulamalar arası SSO 'yu etkinleştirme | Microsoft Docs
-description: Uygulamalarınızdaki çoklu oturum açmayı etkinleştirmek için ADAL SDK 'nın özelliklerini kullanma.
+title: ADAL kullanarak Android'de çapraz uygulama SSO nasıl etkinleştirilir | Microsoft Dokümanlar
+description: Uygulamalarınızda tek oturum açmayı etkinleştirmek için ADAL SDK'nın özelliklerini nasıl kullanacağınız.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
@@ -15,61 +14,62 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154823"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Nasıl yapılır: ADAL kullanarak Android 'de uygulamalar arası SSO 'yu etkinleştirme
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Nasıl olur: ADAL kullanarak Android'de çapraz uygulama SSO'su etkinleştirin
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Çoklu oturum açma (SSO), kullanıcıların kimlik bilgilerini yalnızca bir kez girmelerini ve bu kimlik bilgilerinin diğer uygulamaların kullanabileceği platformlar arasında (Microsoft hesapları veya Microsoft 365 bir iş hesabı gibi) otomatik olarak çalışmasını sağlar yayımcıyı bağımsız olarak.
+Tek oturum açma (SSO), kullanıcıların kimlik bilgilerini yalnızca bir kez girmelerine ve bu kimlik bilgilerinin uygulamalar da ve diğer uygulamaların kullanabileceği platformlar da (Microsoft Hesapları veya Microsoft 365'teki bir iş hesabı gibi) otomatik olarak çalışmasını sağlar. yayıncı önemli.
 
-Microsoft 'un SDK 'larıyla birlikte kimlik platformu, kendi uygulama paketinizde veya aracı özelliği ve Authenticator uygulamalarıyla tüm cihaz genelinde SSO 'yu etkinleştirmeyi kolaylaştırır.
+Microsoft'un kimlik platformu, SDK'larla birlikte, SSO'yu kendi uygulama paketinizde veya aracı özelliği ve Kimlik Doğrulayıcı uygulamalarıyla tüm cihazda etkinleştirmenizi kolaylaştırır.
 
-Bu nasıl yapılır bölümünde, müşterilerinize SSO sağlamak için uygulamanızın içinde SDK 'Yı nasıl yapılandıracağınızı öğreneceksiniz.
+Bu nasıl yapılandırılırsa, müşterilerinize SSO sağlamak için uygulamanız dahilinde SDK'yı nasıl yapılandırabileceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
+Bu nasıl yapılacağını bildiğinizi varsayar:
 
-- Azure Active Directory için eski portalı kullanarak uygulamanızı sağlayın (Azure AD). Daha fazla bilgi için bkz. [uygulamayı kaydetme](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
-- Uygulamanızı [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)tümleştirin.
+- Azure Active Directory (Azure AD) için eski portalı kullanarak uygulamanızı sağlama. Daha fazla bilgi için [bkz.](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+- Uygulamanızı Azure [AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)ile tümleştirin.
 
-## <a name="single-sign-on-concepts"></a>Çoklu oturum açma kavramları
+## <a name="single-sign-on-concepts"></a>Tek oturum açma kavramları
 
-### <a name="identity-brokers"></a>Kimlik aracıları
+### <a name="identity-brokers"></a>Kimlik simsarları
 
-Microsoft, farklı satıcılardan uygulamalar arasında kimlik bilgilerinin köprülemesini ve kimlik bilgilerinin doğrulanması için tek bir güvenli yer gerektiren gelişmiş özellikler için tüm mobil platformlar için uygulamalar sağlar. Bunlar **aracılar**olarak adlandırılır.
+Microsoft, farklı satıcılardan gelen uygulamalar arasında kimlik bilgilerinin birleştirilmesine olanak tanıyan her mobil platform ve kimlik bilgilerini doğrulamak için tek bir güvenli yer gerektiren gelişmiş özellikler için uygulamalar sağlar. Bunlara **broker**denir.
 
-İOS ve Android 'de aracılar, müşterilerin çalışanlara ait cihazların bazılarını veya tümünü yöneten bir şirket tarafından bağımsız olarak yüklemiş veya cihaza itilbileceği indirilebilir uygulamalar aracılığıyla sağlanır. Aracılar, güvenlik yönetimini yalnızca bazı uygulamalar için veya BT Yöneticisi yapılandırmasına bağlı olarak tüm cihaz için destekler. Bu işlevsellik, Windows 'ta, teknik olarak Web kimlik doğrulama Aracısı olarak bilinen, işletim sisteminde yerleşik bir hesap Seçicisi tarafından sağlanır.
+iOS ve Android'de, brokerlar, müşterilerin bağımsız olarak yükleyebileceği veya çalışanları için cihazların bir kısmını veya tamamını yöneten bir şirket tarafından cihaza itildiği indirilebilir uygulamalar aracılığıyla sağlanır. Aracılar, bt yöneticisi yapılandırmasını temel alan bazı uygulamalar veya aygıtın tamamı için güvenliği yönetmeyi destekler. Windows'da bu işlevsellik, teknik olarak Web Kimlik Doğrulama Aracısı olarak bilinen işletim sistemine yerleşik bir hesap seçici tarafından sağlanır.
 
-#### <a name="broker-assisted-login"></a>Aracı yardımlı oturum açma
+#### <a name="broker-assisted-login"></a>Broker destekli giriş
 
-Aracı yardımlı oturum açmalar, Aracı uygulamasında gerçekleşen oturum açma deneyimlerinden ve kimlik platformunu uygulayan cihazdaki tüm uygulamalarda kimlik bilgilerini paylaşmak için aracının depolama ve güvenliğini kullanır. Uygulamalarınızın etkili olması, içindeki kullanıcıları imzalamak için aracıya bağımlıdır. İOS ve Android 'de, Bu aracılar müşterilerin bağımsız olarak yüklemiş olduğu indirilebilir uygulamalar aracılığıyla veya cihazı Kullanıcı için yöneten bir şirket tarafından cihaza gönderilebilecek şekilde sağlanır. Bu tür bir uygulama örneği, iOS üzerinde Microsoft Authenticator uygulamasıdır. Bu işlevsellik, Windows 'ta, teknik olarak Web kimlik doğrulama Aracısı olarak bilinen, işletim sisteminde yerleşik bir hesap Seçicisi tarafından sağlanır.
-Deneyim platforma göre farklılık gösterir ve bazen doğru yönetilmiyorsa kullanıcılara karışıklığa neden olabilir. Facebook uygulamanız yüklüyse ve başka bir uygulamadan Facebook Connect kullanıyorsanız, bu düzene en çok alışkın olursunuz. Kimlik platformu aynı kalıbı kullanır.
+Broker destekli oturum açmalar, broker uygulamasında meydana gelen ve aracının depolama ve güvenliğini kullanarak kimlik platformını uygulayan cihazdaki tüm uygulamalarda kimlik bilgilerini paylaşmak için kullanılan oturum açma deneyimleridir. Uygulamalarınızın anlamı, kullanıcıları oturum açacak aracıya güvenecektir. iOS ve Android'de bu brokerlar, müşterilerin bağımsız olarak yükleyebileceği veya cihazı kullanıcıiçin yöneten bir şirket tarafından cihaza itilebildiği indirilebilir uygulamalar aracılığıyla sağlanır. Bu tür uygulamalara örnek olarak iOS'taki Microsoft Authenticator uygulaması örnektir. Windows'da bu işlevsellik, teknik olarak Web Kimlik Doğrulama Aracısı olarak bilinen işletim sistemine yerleşik bir hesap seçici tarafından sağlanır.
+Deneyim platforma göre değişir ve doğru yönetilmezse bazen kullanıcılar için rahatsız edici olabilir. Facebook uygulamasını yüklediyseniz ve başka bir uygulamadan Facebook Connect kullanıyorsanız, muhtemelen bu modele aşinasınızdır. Kimlik platformu aynı deseni kullanır.
 
-Android 'de hesap Seçicisi, uygulamanızın üst kısmında görüntülenir ve bu, kullanıcıya daha az karışıklığa neden olur.
+Android'de, hesap seçici uygulamanızın üstünde görüntülenir ve bu da kullanıcı için daha az rahatsız edicidir.
 
-#### <a name="how-the-broker-gets-invoked"></a>Aracının nasıl çağrıldığında
+#### <a name="how-the-broker-gets-invoked"></a>Komisyoncu nasıl çağrılır
 
-Cihaza Microsoft Authenticator uygulaması gibi uyumlu bir aracı yüklüyse, kimlik SDK 'Ları, bir kullanıcı kimlik platformundan herhangi bir hesabı kullanarak oturum açmak istediklerinde, aracı sizin için çağırma işini otomatik olarak yapılır.
+Microsoft Authenticator uygulaması gibi aygıta uyumlu bir broker yüklenirse, bir kullanıcı kimlik platformundan herhangi bir hesabı kullanarak oturum açmak istediğini belirttiğinde kimlik SDK'ları aracıyı sizin için çağırmak işini otomatik olarak yapar.
 
-#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 'un uygulamanın geçerli olmasını sağlar
+#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft uygulamanın geçerli olmasını nasıl sağlar?
 
-Aracıyı çağıran bir uygulamanın kimliğinin, aracı yardımlı oturum açmada sunulan güvenlik için önemli olduğundan emin olunması gerekir. iOS ve Android yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar zorlamaz, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Microsoft 'un her zaman çalışma zamanında doğru uygulamayla iletişim kurmasını sağlamak için, geliştiricinin uygulamasını Microsoft 'a kaydederken özel bir redirectURI sağlaması istenir. **Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır.** Bu özel redirectURI, uygulamanın sertifika parmak izini içerir ve Google Play Store tarafından uygulama için benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıyı çağırdığında, aracı, Android işletim sistemi tarafından Aracı adı verilen sertifika parmak izini sağlamasını ister. Aracı, kimlik sistemine yapılan çağrıda bu sertifika parmak izini Microsoft 'a sağlar. Uygulamanın sertifika parmak izi, kayıt sırasında geliştirici tarafından bize sunulan sertifika parmak iziyle eşleşmiyorsa, uygulamanın istediği kaynak için belirteç erişimi reddedilir. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
+Broker i arayan bir uygulamanın kimliğinin sağlanması ihtiyacı, broker destekli oturum açmalarda sağlanan güvenlik için çok önemlidir. iOS ve Android yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcıları zorlamaz, bu nedenle kötü amaçlı uygulamalar yasal bir uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için verilen belirteçleri alabilir. Microsoft'un çalışma zamanında her zaman doğru uygulamayla iletişim kurmasını sağlamak için, geliştiriciden uygulamalarını Microsoft'a kaydederken özel bir redirectURI sağlaması istenir. **Geliştiriciler bu yönlendirme URI zanaat nasıl ayrıntılı olarak aşağıda ele alınmıştır.** Bu özel redirectURI, uygulamanın sertifika parmak izini içerir ve Google Play Store tarafından uygulamaya özgü olması sağlanır. Bir uygulama broker'ı aradığında, broker Android işletim sisteminden broker'ı çağıran sertifika parmak izini sağlamasını ister. Aracı, kimlik sistemine yapılan çağrıda bu sertifikaparmak izini Microsoft'a sağlar. Başvurunun sertifika parmak izi, kayıt sırasında geliştirici tarafından bize verilen sertifika parmak izi ile eşleşmiyorsa, uygulamanın talep ettiği kaynak için belirteçlere erişim reddedilir. Bu denetim, yalnızca geliştirici tarafından kaydedilmiş uygulamanın belirteçleri almasını sağlar.
 
-Aracılı-SSO oturum açmaları aşağıdaki avantajlara sahiptir:
+Aracılı-SSO girişleri aşağıdaki avantajlara sahiptir:
 
-* Kullanıcı, satıcıya bakılmaksızın tüm uygulamalarında SSO ile karşılaşır.
-* Uygulamanız, koşullu erişim ve Intune senaryolarını destekleme gibi daha gelişmiş iş özellikleri kullanabilir.
+* Kullanıcı, satıcı ne olursa olsun tüm uygulamalarında SSO'yu deneyimler.
+* Uygulamanız Koşullu Erişim gibi daha gelişmiş iş özelliklerini kullanabilir ve Intune senaryolarını destekleyebilir.
 * Uygulamanız, iş kullanıcıları için sertifika tabanlı kimlik doğrulamasını destekleyebilir.
-* Uygulamanın kimliği ve Kullanıcı, ek güvenlik algoritmaları ve şifrelemesi ile aracı uygulaması tarafından doğrulandığından, daha güvenli bir oturum açma deneyimi.
+* Uygulamanın ve kullanıcının kimliği olarak daha güvenli oturum açma deneyimi, ek güvenlik algoritmaları ve şifreleme ile aracı uygulaması tarafından doğrulanır.
 
-SDK 'ların, SSO 'yu etkinleştirmek için aracı uygulamalarla nasıl çalıştığı hakkında bir temsili aşağıda verilmiştir:
+SSO'yu etkinleştirmek için SDK'ların broker uygulamalarıyla nasıl çalıştığını aşağıda açıklayabilirsiniz:
 
 ```
 +------------+ +------------+   +-------------+
@@ -96,39 +96,39 @@ SDK 'ların, SSO 'yu etkinleştirmek için aracı uygulamalarla nasıl çalışt
 
 ```
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Aracı yardımlı SSO için SSO 'yu açma
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Broker destekli SSO için SSO'ya açma
 
-Uygulamanın cihazda yüklü olan herhangi bir aracıyı kullanma yeteneği varsayılan olarak kapalıdır. Uygulamanızı aracıda kullanabilmek için bazı ek yapılandırmalar yapmanız ve uygulamanıza bazı kodlar eklemeniz gerekir.
+Bir uygulamanın aygıta yüklenen herhangi bir aracıyı kullanabilmesi varsayılan olarak kapatılır. Aracıile uygulamanızı kullanmak için, bazı ek yapılandırma yapmak ve uygulamanıza bazı kod eklemek gerekir.
 
-İzlenecek adımlar şunlardır:
+İzlenen adımlar şunlardır:
 
-1. Uygulama kodunuzun MS SDK 'ya çağrılması için aracı modunu etkinleştirin
-2. Yeni bir yeniden yönlendirme URI 'SI oluşturun ve hem uygulama hem de uygulama kaydınız için
+1. Uygulama kodunuzdaki MS SDK'ya yapılan çağrıda broker modunu etkinleştirme
+2. Uri'yi yeni bir yönlendirme kurun ve bunu hem uygulamanıza hem de uygulama kaydınıza sağlayın
 3. Android bildiriminde doğru izinleri ayarlama
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. Adım: uygulamanızda aracı modunu etkinleştirme
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Adım 1: Uygulamanızda broker modunu etkinleştirin
 
-Uygulamanızın aracıyı kullanma özelliği, kimlik doğrulama örneğinizin "Ayarlar" veya ilk kurulumunu oluştururken açıktır. Bunu uygulamanızda yapmak için:
+Kimlik Doğrulama örneğinizin "ayarları" veya ilk kurulumunu oluşturduğunuzda uygulamanızın aracıyı kullanma özelliği açıktır. Bunu uygulamanızda yapmak için:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2\. Adım: URL şemanızın bulunduğu yeni bir yeniden yönlendirme URI 'SI oluşturma
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Adım 2: URL Şemanızla yeni bir yeniden yönlendirme URI kurun
 
-Doğru uygulamanın, kimlik bilgisi belirteçlerini döndüren doğru uygulamanın aldığından emin olmak için, uygulamanıza Android işletim sisteminin doğrulayabilmesi için geri çağırdığınızdan emin olmanız gerekir. Android işletim sistemi, Google Play deposundaki sertifikanın karmasını kullanır. Sertifikanın bu karması, standart dışı bir uygulama tarafından taklit edilemez. Microsoft, aracı uygulamasının URI 'siyle birlikte, belirteçlerin doğru uygulamaya döndürülmesini sağlar. Uygulamaya, benzersiz bir yeniden yönlendirme URI 'SI gereklidir.
+Doğru uygulamanın iade edilen kimlik bilgilerini aldığından emin olmak için, Android işletim sisteminin doğrulayabildiği bir şekilde başvurunuza geri çağrının yapılmasını sağlamanız gerekir. Android işletim sistemi, Google Play mağazasında sertifikanın karma sını kullanır. Sertifikanın bu karma bir haydut uygulama tarafından taklit edilemez. Microsoft, aracı uygulamanın URI'si ile birlikte belirteçlerin doğru uygulamaya döndürülmesini sağlar. Benzersiz bir yönlendirme URI uygulama üzerinde kayıtlı olması gereklidir.
 
-Yeniden yönlendirme URI 'niz doğru biçimde olmalıdır:
+Yeniden yönlendirme URI uygun biçimde olmalıdır:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-örn.: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+ör: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-[Azure Portal](https://portal.azure.com/)kullanarak, bu yeniden yönlendirme URI 'sini uygulama kaydınız için kaydedebilirsiniz. Azure AD uygulama kaydı hakkında daha fazla bilgi için bkz. [Azure Active Directory tümleştirme](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Bu yeniden yönlendirme URI'yi [Azure portalını](https://portal.azure.com/)kullanarak uygulama kaydınızda kaydedebilirsiniz. Azure AD uygulama kaydı hakkında daha fazla bilgi için azure [etkin dizinle tümleştirme](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)'ye bakın.
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3\. Adım: uygulamanızda doğru izinleri ayarlama
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Adım 3: Uygulamanızda doğru izinleri ayarlama
 
-Android 'de aracı uygulaması, uygulamalar arasında kimlik bilgilerini yönetmek için Android IŞLETIM sisteminin accounts Manager özelliğini kullanır. Android 'de aracıyı kullanabilmeniz için uygulama bildiriminizde AccountManager hesaplarını kullanma izinleri olmalıdır. Bu izinler, [burada hesap yöneticisi Için Google belgelerinde](https://developer.android.com/reference/android/accounts/AccountManager.html) ayrıntılı olarak ele alınmıştır.
+Android'deki broker uygulaması, uygulamalar arasında kimlik bilgilerini yönetmek için Android işletim sistemi'nin Accounts Manager özelliğini kullanır. Android'deki aracıyı kullanabilmek için uygulama manifestonuzun AccountManager hesaplarını kullanma izinlerine sahip olması gerekir. Bu izinler, Hesap Yöneticisi [için Google belgelerinde](https://developer.android.com/reference/android/accounts/AccountManager.html) ayrıntılı olarak tartışılmıştır
 
 Özellikle, bu izinler şunlardır:
 
@@ -138,10 +138,10 @@ USE_CREDENTIALS
 MANAGE_ACCOUNTS
 ```
 
-### <a name="youve-configured-sso"></a>SSO 'yu yapılandırdınız!
+### <a name="youve-configured-sso"></a>SSO'ya göre yapılandırıldınız!
 
-Artık kimlik SDK 'Sı, her ikisi de uygulamalarınızın genelinde kimlik bilgilerini paylaşır ve cihazında varsa aracıyı çağırır.
+Artık kimlik SDK, hem uygulamalarınızda kimlik bilgilerini otomatik olarak paylaşır hem de aygıtlarında varsa aracıyı çağırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) hakkında bilgi edinin
+* Tek [oturum açma SAML protokolü](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) hakkında bilgi edinin

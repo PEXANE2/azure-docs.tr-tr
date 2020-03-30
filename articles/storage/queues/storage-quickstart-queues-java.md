@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure kuyruk depolama kitaplığı V12-Java'
-description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyruğu Java V12 kitaplığı 'nı nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri okumayı ve silmeyi öğreneceksiniz. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
+title: 'Hızlı başlangıç: Azure Sıra depolama kitaplığı v12 - Java'
+description: Kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure Queue Java v12 kitaplığını nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri nasıl okuyup sildiğinizi öğrenirsiniz. Ayrıca bir sırayı nasıl sildiğinizi de öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/4/2019
@@ -8,43 +8,43 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78199810"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Quickstart: Java için Azure Queue depolama istemcikitaplığı v12
 
-Java için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çalışmaya başlayın. Azure kuyruk depolaması, daha sonra almak ve işlemek üzere çok sayıda ileti depolamaya yönelik bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere bu adımları izleyin.
+Java için Azure Queue depolama istemcisi kitaplığı sürümü 12 ile başlayın. Azure Sıra depolama, daha sonra alma ve işleme için çok sayıda ileti depolamak için bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
-Java için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
+Aşağıdakiler için Java için Azure Queue depolama istemcisi v12'yi kullanın:
 
 * Bir kuyruk oluşturma
-* Bir kuyruğa ileti ekleme
+* Kuyruğa ileti ekleme
 * Kuyruktaki iletilere göz atın
 * Kuyruktaki bir iletiyi güncelleştirme
-* Kuyruktaki iletileri alma ve silme
+* Sıradaki iletileri alma ve silme
 * Bir kuyruk silme
 
-[API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [Paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* [Java Geliştirme Kiti (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri
+* [Apaçi Maven](https://maven.apache.org/download.cgi)
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* Azure depolama hesabı - [bir depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-Bu bölüm, Java için Azure kuyruk depolama istemci kitaplığı V12 ile çalışmak üzere bir proje hazırlama konusunda size yol gösterir.
+Bu bölüm, Java için Azure Queue depolama istemcisi kitaplığı v12 ile çalışmak üzere bir proje hazırlamakonusunda size yol sunar.
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
+*Kuyruklar-quickstart-v12*adlı bir Java uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-hızlı başlangıç-V12*adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad *kuyrukları-quickstart-v12*ile yeni bir konsol uygulaması oluşturmak için Maven kullanın. "Merhaba dünya!" oluşturmak için aşağıdaki **mvn** komutunu yazın. Java projesi.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -54,7 +54,7 @@ Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
                           -DinteractiveMode=false
    ```
 
-1. Projenin üretilme çıktısı şuna benzer görünmelidir:
+1. Proje oluşturma çıktısı şuna benzer:
 
     ```console
     [INFO] Scanning for projects...
@@ -91,15 +91,15 @@ Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. Yeni oluşturulan *kuyruklara geç hızlı başlangıç-V12* dizini.
+1. Yeni oluşturulan *kuyruklar-quickstart-v12* dizinine geçin.
 
    ```console
    cd queues-quickstart-v12
    ```
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package"></a>Paketi yükleyin
 
-*Pod. xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğesini bağımlılıklar grubuna ekleyin.
+Metin düzenleyicinizdeki *pom.xml* dosyasını açın. Bağımlılıklar grubuna aşağıdaki bağımlılık öğesini ekleyin.
 
 ```xml
 <dependency>
@@ -113,12 +113,12 @@ Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
 
 Proje dizininden:
 
-1. */Src/Main/Java/com/Queues/QuickStart* dizinine gidin
-1. Düzenleyicinizde *app. Java* dosyasını açın
-1. `System.out.println("Hello world!");` ifadesini silme
-1. `import` yönergeleri ekleme
+1. */src/main/java/com/queues/quickstart* dizinine gidin
+1. Editörünüzde *App.java* dosyasını açın
+1. İfadeyi `System.out.println("Hello world!");` silme
+1. `import` Yönergeekleme
 
-Kod aşağıdaki gibidir:
+İşte kod:
 
 ```java
 package com.queues.quickstart;
@@ -143,40 +143,40 @@ public class App
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
+Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Bir sıra iletisi 64 KB boyutuna kadar olabilir. Bir sıra, bir depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle eşzamanlı olarak işlemek için bir çalışma biriktirme listesi oluşturmak için kullanılır. Sıra depolama üç tür kaynak sunar:
 
 * Depolama hesabı
-* Depolama hesabındaki bir kuyruk
-* Kuyruktaki iletiler
+* Depolama hesabında bir sıra
+* Sıra içindeki iletiler
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
-![Kuyruk depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
+![Sıra depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
 
-Şu kaynaklarla etkileşim kurmak için aşağıdaki Java sınıflarını kullanın:
+Bu kaynaklarla etkileşimde kalmak için aşağıdaki Java sınıflarını kullanın:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` sınıfı bir `QueueClient` nesnesini yapılandırır ve başlatır.
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessageıtem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` sınıfı, bir kuyrukta [receivemessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` Sınıf bir `QueueClient` nesneyi yapılandırır ve anında alır.
+* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenize olanak tanır.
+* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` Sınıf, tek bir sırayı ve iletilerini yönetmenize ve işlemenize olanak tanır.
+* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` Sınıf, bir sırada [receiveMessages'ı](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) ararken döndürülen tek tek nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu örnek kod parçacıkları, Java için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki eylemleri nasıl yapılacağını gösterir:
+Bu örnek kod parçacıkları, Java için Azure Kuyruk depolama istemcisi kitaplığıyla aşağıdaki işlemleri nasıl yapacağınızı gösterir:
 
-* [Bağlantı dizesini al](#get-the-connection-string)
-* [Sıra oluşturma](#create-a-queue)
-* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+* [Bağlantı dizesini alma](#get-the-connection-string)
+* [Bir kuyruk oluşturma](#create-a-queue)
+* [Kuyruğa ileti ekleme](#add-messages-to-a-queue)
 * [Kuyruktaki iletilere göz atın](#peek-at-messages -in-a-queue)
 * [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
-* [Kuyruktaki iletileri alma ve silme](#receive-and-delete-messages-from-a-queue)
-* [Kuyruğu silme](#delete-a-queue)
+* [Sıradaki iletileri alma ve silme](#receive-and-delete-messages-from-a-queue)
+* [Bir kuyruk silme](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-Aşağıdaki kod, depolama hesabı için bağlantı dizesini alır. Bağlantı dizesi, [depolama Bağlantı dizenizi yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkenini saklı tutulur.
+Aşağıdaki kod depolama hesabının bağlantı dizesini alır. Bağlantı dizesi, [depolama bağlantı dizesi](#configure-your-storage-connection-string) bölümüne Yapılandırıldığında oluşturulan ortam değişkeni depolanır.
 
-Bu kodu `main` yönteminin içine ekleyin:
+Bu kodu yöntemin `main` içine ekleyin:
 
 ```java
 System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
@@ -192,15 +192,15 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir GUID değeri ekler.
+Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için sıra adına bir GUID değeri ekler.
 
 > [!IMPORTANT]
-> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/naming-queues-and-metadata).
+> Sıra adları yalnızca küçük harfler, sayılar ve tireler içerebilir ve bir harf veya sayıyla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad da 3 ve 63 karakter uzunluğunda olmalıdır. Sıraları adlandırma hakkında daha fazla bilgi için [Bkz.](/rest/api/storageservices/naming-queues-and-metadata)
 
 
-[Queueclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) yöntemini çağırın.
+[QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızdaki sırayı oluşturmak için [oluşturma](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) yöntemini arayın.
 
-`main` yönteminin sonuna bu kodu ekleyin:
+Bu kodu `main` yöntemin sonuna ekleyin:
 
 ```java
 // Create a unique name for the queue
@@ -219,11 +219,11 @@ QueueClient queueClient = new QueueClientBuilder()
 queueClient.create();
 ```
 
-### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
+### <a name="add-messages-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı, [SendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) metodunu çağırarak kuyruğa ileti ekler. Ayrıca, bir `sendMessage` çağrısından döndürülen bir [sendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) öğesini kaydeder. Sonuç, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
+Aşağıdaki kod snippet [sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) yöntemini çağırarak sıraya iletiekler. Ayrıca, `sendMessage` bir çağrıdan döndürülen bir [SendMessageResult'ı](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) da kaydeder. Sonuç, iletiyi daha sonra programda güncelleştirmek için kullanılır.
 
-`main` yönteminin sonuna bu kodu ekleyin:
+Bu kodu `main` yöntemin sonuna ekleyin:
 
 ```java
 System.out.println("\nAdding messages to the queue...");
@@ -238,9 +238,9 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[PeekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peelkMessages` yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+PeekMessages yöntemini arayarak kuyruktaki [iletilere göz atın.](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) Yöntem, `peelkMessages` sıranın önünden bir veya daha fazla ileti alır, ancak iletinin görünürlüğünü değiştirmez.
 
-`main` yönteminin sonuna bu kodu ekleyin:
+Bu kodu `main` yöntemin sonuna ekleyin:
 
 ```java
 System.out.println("\nPeek at the messages in the queue...");
@@ -252,7 +252,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Updatemessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `updateMessage` yöntemi bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, kodda daha önce kaydedilen `SendMessageResult` kullanarak ileti KIMLIĞINI ve pop alındı bilgisini geçirin. İleti KIMLIĞI ve pop alındısı hangi iletinin güncelleştirilecek olduğunu belirler.
+UpdateMessage yöntemini çağırarak iletinin içeriğini [güncelleştirin.](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) Yöntem, `updateMessage` iletinin görünürlük zaman anına ve içeriğini değiştirebilir. İleti içeriği 64 KB boyutuna kadar olan UTF-8 kodlanmış bir dize olmalıdır. İleti için yeni içerikle birlikte, kodda daha önce `SendMessageResult` kaydedilen içeriği kullanarak ileti kimliğini ve pop makbuzu'nu iletin. İleti kimliği ve pop makbuzu hangi iletiyi güncelleştireceklerini tanımlar.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -265,13 +265,13 @@ queueClient.updateMessage(result.getMessageId(),
                           Duration.ofSeconds(1));
 ```
 
-### <a name="receive-and-delete-messages-from-a-queue"></a>Kuyruktaki iletileri alma ve silme
+### <a name="receive-and-delete-messages-from-a-queue"></a>Sıradaki iletileri alma ve silme
 
-[Receivemessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) yöntemini çağırarak önceden eklenmiş iletileri indirin. Örnek kod aynı zamanda iletileri alındıktan ve işlendikten sonra kuyruktan de siler. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
+Daha önce eklenen iletileri [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) yöntemini arayarak indirin. Örnek kod, iletileri alındıktan ve işlendikten sonra da sıradan siler. Bu durumda, işleme yalnızca konsolda ileti yi görüntüler.
 
-Uygulama, iletileri almadan ve silmeden önce `System.console().readLine();` çağırarak kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
+Uygulama, iletileri almadan önce `System.console().readLine();` arayarak kullanıcı girişi için duraklatAbilir ve siler. [Azure portalınızda](https://portal.azure.com) kaynakların silinmeden önce doğru oluşturulduğunu doğrulayın. Açıkça silinmeyen iletiler, bunları işlemek için başka bir şans için kuyrukta tekrar görünür hale gelir.
 
-`main` yönteminin sonuna bu kodu ekleyin:
+Bu kodu `main` yöntemin sonuna ekleyin:
 
 ```java
 System.out.println("\nPress Enter key to receive messages and delete them from the queue...");
@@ -292,9 +292,9 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Aşağıdaki kod, [silme](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
+Aşağıdaki kod, [sil](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) yöntemini kullanarak sırayı silerek oluşturulan kaynakları temizler.
 
-`main` yönteminin sonuna bu kodu ekleyin:
+Bu kodu `main` yöntemin sonuna ekleyin:
 
 ```java
 System.out.println("\nPress Enter key to delete the queue...");
@@ -309,21 +309,21 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Bu uygulama, bir Azure kuyruğuna üç ileti oluşturur ve ekler. Kod kuyruktaki iletileri listeler, ardından kuyruğu silmeden önce bunları alır ve siler.
+Bu uygulama, Azure kuyruğuna üç ileti oluşturur ve ekler. Kod, kuyruktaki iletileri listeler, ardından sırayı silmeden önce alır ve siler.
 
-Konsol pencerenizde uygulama dizininize gidip uygulamayı derleyin ve çalıştırın.
+Konsol pencerenizde, uygulama dizininize gidin ve ardından uygulamayı oluşturun ve çalıştırın.
 
 ```console
 mvn compile
 ```
 
-Ardından, paketini oluşturun.
+Sonra, paketi oluşturun.
 
 ```console
 mvn package
 ```
 
-Uygulamayı yürütmek için aşağıdaki `mvn` komutunu çalıştırın.
+Uygulamayı çalıştırmak `mvn` için aşağıdaki komutu çalıştırın.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonThreads=false
@@ -355,17 +355,17 @@ Deleting queue: quickstartqueues-fbf58f33-4d5a-41ac-ac0e-1a05d01c7003
 Done
 ```
 
-Uygulama iletileri almadan önce durakladığında, [Azure Portal](https://portal.azure.com)depolama hesabınızı kontrol edin. İletilerin kuyrukta olduğunu doğrulayın.
+Uygulama ileti almadan önce durakladığında, [Azure portalındaki](https://portal.azure.com)depolama hesabınızı kontrol edin. İletilerin sırada olduğunu doğrulayın.
 
-İletileri almak ve silmek için **ENTER** tuşuna basın. İstendiğinde, kuyruğu silmek ve tanıtımı sona ermesini sağlamak için **ENTER** tuşuna basın.
+İletileri almak ve silmek için **Enter** tuşuna basın. İstendiğinde, sırayı silmek ve demoyu bitirmek için **Enter** tuşuna tekrar basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir kuyruk oluşturmayı ve Java kodunu kullanarak buna ileti eklemeyi öğrendiniz. Ardından iletileri göz atmayı, almayı ve silmeyi öğrendiniz. Son olarak, bir ileti sırasının nasıl silineceğini öğrendiniz.
+Bu hızlı başlangıçta, Java kodunu kullanarak kuyruk oluşturmayı ve ona ileti eklemeyi öğrendiniz. Ardından iletileri gözetlemeyi, almayı ve silmeyi öğrendiniz. Son olarak, ileti kuyruğunun nasıl silinir öğrenilir.
 
-Öğreticiler, örnekler, hızlı bir şekilde ve diğer belgeler için şu adresi ziyaret edin:
+Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
 > [Java bulut geliştiricileri için Azure](https://docs.microsoft.com/azure/java/)
 
-* Daha fazla Azure kuyruk depolama örneği uygulaması görmek için [Azure kuyruk depolama SDK V12 Java istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)geçin.
+* Daha fazla Azure Kuyruğu depolama örneği uygulaması görmek için [Azure Queue depolama alanı SDK v12 Java istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)devam edin.

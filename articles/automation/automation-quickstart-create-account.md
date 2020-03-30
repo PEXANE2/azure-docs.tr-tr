@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: a2d15dd520db16012f530d2ac6188a4642c89795
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421652"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
@@ -19,7 +19,7 @@ Azure Otomasyonu hesaplarını Azure üzerinden oluşturabilirsiniz. Bu yöntem,
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure'da oturum açın
 
@@ -27,16 +27,16 @@ https://portal.azure.com adresinden Azure'da oturum açın
 
 1. Azure’ın sol üst köşesinde bulunan **Kaynak oluştur** düğmesine tıklayın.
 
-1. **Yönetim araçları &** seçin ve ardından **Otomasyon**' u seçin.
+1. **BT & Yönetim Araçları'nı**seçin ve ardından **Otomasyon'u**seçin.
 
-1. Hesap bilgilerini girin. **Azure Farklı Çalıştır hesabı oluştur** alanında **Evet**'i seçerek Azure kimlik doğrulamasını kolaylaştıran yapıtların otomatik olarak etkinleştirilmesini sağlayın. Otomasyon Hesabını oluştururken adın daha sonra değiştirilemeyeceğini unutmayın. *Otomasyon hesabı adları, bölge ve kaynak grubu başına benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.* Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir. İşlemi tamamladığınızda Otomasyon hesabı dağıtımını başlatmak için **Oluştur**'a tıklayın.
+1. Hesap bilgilerini girin. **Azure Farklı Çalıştır hesabı oluştur** alanında **Evet**'i seçerek Azure kimlik doğrulamasını kolaylaştıran yapıtların otomatik olarak etkinleştirilmesini sağlayın. Otomasyon Hesabını oluştururken adın daha sonra değiştirilemeyeceğini unutmayın. *Otomasyon Hesabı adları bölge ve kaynak grubuna göre benzersizdir. Silinen Otomasyon Hesapları nın adları hemen kullanılamayabilir.* Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir. İşlemi tamamladığınızda Otomasyon hesabı dağıtımını başlatmak için **Oluştur**'a tıklayın.
 
     ![Otomasyon hesabınız hakkındaki bilgileri sayfaya girin](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
     > Otomasyon Hesabı dağıtabileceğiniz konumların güncel listesi için bkz. [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
 
-1. Dağıtım tamamlandığında, **tüm hizmetler**' e tıklayın, **Otomasyon hesapları** ' nı seçin ve oluşturduğunuz Otomasyon hesabını seçin.
+1. Dağıtım tamamlandığında, Tüm **Hizmetler,Otomasyon** **Hesapları'nı** tıklatın ve oluşturduğunuz Otomasyon Hesabını seçin.
 
     ![Otomasyon hesabına genel bakış](./media/automation-quickstart-create-account/automation-account-overview.png)
 

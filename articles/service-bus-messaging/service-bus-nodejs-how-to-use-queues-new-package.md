@@ -1,6 +1,6 @@
 ---
-title: Node. js ' de Azure/Service-Bus kuyruklarını kullanma
-description: Yeni @azure/service-bus paketini kullanarak bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir NodeJS programı yazmayı öğrenin.
+title: Düğüm.js'de azure/servis veri-servis kuyrukları nasıl kullanılır?
+description: Yeni @azure/service-bus paketi kullanarak Servis Veri Yolu kuyruğuna ileti göndermek ve ileti almak için Bir Nodejs programı yazmayı öğrenin.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,35 +14,35 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78330660"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: node. js ve Azure/Service-Bus paketiyle Service Bus kuyruklarını kullanma
-Bu öğreticide, yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketini kullanarak bir Service Bus kuyruğuna ileti göndermek ve ileti almak Için bir NodeJS programı yazmayı öğreneceksiniz. Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
+# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Quickstart: Node.js ve azure/servis veri günü paketi ile Servis Veri Servisi kuyrukları nasıl kullanılır?
+Bu eğitimde, yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketi kullanarak Bir Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti almak için bir Nodejs programı yazmayı öğrenirsiniz. Bu paket daha hızlı [AMQP 1.0 protokolünü](service-bus-amqp-overview.md) kullanırken, eski [azure-sb](https://www.npmjs.com/package/azure-sb) paketi [Service Bus REST çalışma zamanı API'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullansın. Örnekler JavaScript ile yazılmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
-- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-- Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin. Service Bus örneğiniz için bağlantı dizesini ve oluşturduğunuz kuyruğun adını aklınızda edin. Bu değerleri örneklerde kullanacağız.
+## <a name="prerequisites"></a>Ön koşullar
+- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
+- Üzerinde çalışmanız gereken bir sıra yoksa, kuyruk oluşturmak için Hizmet Veri Hizmetleri sırası makalesi [oluşturmak için Azure kullan portalındaki](service-bus-quickstart-portal.md) adımları izleyin. Hizmet Veri Servisi örneğinizin bağlantı dizesini ve oluşturduğunuz kuyruğun adını not edin. Bu değerleri örneklerde kullanacağız.
 
 > [!NOTE]
-> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node. js uygulamasının nasıl oluşturulacağı hakkında yönergeler için bkz. [bir Node. js uygulamasını Azure Web sitesine](../app-service/app-service-web-get-started-nodejs.md)veya [Node. js bulut hizmetini Windows PowerShell kullanarak](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)oluşturma ve dağıtma.
-> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketi henüz sıra oluşturmayı desteklemiyor. Program aracılığıyla bunları oluşturmak istiyorsanız lütfen [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) paketini kullanın.
+> - Bu öğretici, [Nodejs](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Bir Düğüm.js uygulamasının nasıl oluşturulacağına ilişkin talimatlar için [bkz.](../app-service/app-service-web-get-started-nodejs.md) [Node.js cloud service using Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
+> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz kuyruk oluşturulmasını desteklemiyor. Programlı [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) bir şekilde oluşturmak istiyorsanız lütfen paketi kullanın.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma
-Service Bus için NPM paketini yüklemek için, yolunda `npm` olan bir komut istemi açın, dizini örneklerinizin olmasını istediğiniz klasörle değiştirin ve ardından bu komutu çalıştırın.
+Servis Veri Yolu için npm paketini yüklemek için, yoluna çıkan bir komut istemi `npm` açın, dizini örneklerinizi almak istediğiniz klasöre değiştirin ve bu komutu çalıştırın.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
-Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Kuyruk istemcisini aldıktan sonra, ileti göndermek için bir gönderici oluşturabilir ve bunun üzerinde [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) veya [sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) yöntemini kullanabilirsiniz.
+Servis Veri Servisi kuyruğuyla etkileşim kurmak [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfını anlık olarak kullanmak ve [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfını anında kullanmakla başlar. Sıra istemcisine sahip olduktan sonra, bir gönderen oluşturabilir ve ileti göndermek için üzerinde [gönder](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) veya [gönderyöntemini](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
-2. `send.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Bu kod, kuyruğunuza 10 ileti gönderir.
+2. Çağrılan `send.js` bir dosya oluşturun ve aşağıdaki kodu içine yapıştırın. Bu kod, kuyruğunuza 10 ileti gönderir.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -79,20 +79,20 @@ Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft
       console.log("Error occurred: ", err);
     });
     ```
-3. Yukarıdaki kodda, kuyruğunuzun bağlantı dizesini ve adını girin.
-4. Sonra bu dosyayı yürütmek için komut isteminde komut `node send.js` çalıştırın.
+3. Yukarıdaki koda bağlantı dizesini ve sıranızın adını girin.
+4. Ardından bu `node send.js` dosyayı çalıştırmak için komut isteminde komutu çalıştırın.
 
-Tebrikler! Service Bus kuyruğuna ileti gönderdiniz.
+Tebrikler! Servis Veri Servisi kuyruğuna ileti gönderdiniz.
 
-İletiler, gönderirken ayarlayabileceğiniz `label` ve `messageId` gibi bazı standart özelliklere sahiptir. Herhangi bir özel özellik ayarlamak istiyorsanız, özel verilerinizin anahtar-değer çiftlerini tutabilecek bir JSON nesnesi olan `userProperties`kullanın.
+İletiler gibi `label` bazı standart `messageId` özelliklere sahiptir ve gönderirken ayarlayabilirsiniz. Özel özellikler ayarlamak istiyorsanız, özel `userProperties`verilerinizin anahtar değeri çiftlerini tutabilen bir json nesnesi olan nesneyi kullanın.
 
-Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Bir kuyrukta tutulan ileti sayısında bir sınır yoktur ancak bir sıranın tuttuğu iletilerin toplam boyutunun bir üst sınırı vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları](service-bus-quotas.md).
+Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Kuyrukta tutulan ileti sayısında bir sınır yoktur, ancak bir kuyruk tarafından tutulan iletilerin toplam boyutunda bir kapak vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için [Servis Otobüsü kotalarına](service-bus-quotas.md)bakın.
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
-Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Sıra istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) veya [registermessagehandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
+Servis Veri Servisi kuyruğuyla etkileşim kurmak [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfını anlık olarak kullanmak ve [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfını anında kullanmakla başlar. Sıra istemcisine sahip olduğunuzda, bir alıcı oluşturabilir ve ileti almak için [iletileri almak](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) veya [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) yöntemini kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
-2. `recieve.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Bu kod, kuyruğunuzdan 10 ileti almaya çalışır. Aldığınız gerçek sayı, sıradaki ileti sayısına ve ağ gecikmesine bağlıdır.
+2. Çağrılan `recieve.js` bir dosya oluşturun ve aşağıdaki kodu içine yapıştırın. Bu kod, kuyruğunuzdan 10 ileti almaya çalışır. Aldığınız gerçek sayı, kuyruktaki ileti sayısına ve ağ gecikmedurumuna bağlıdır.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -120,19 +120,19 @@ Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft
       console.log("Error occurred: ", err);
     });
     ```
-3. Yukarıdaki kodda, kuyruğunuzun bağlantı dizesini ve adını girin.
-4. Sonra bu dosyayı yürütmek için komut isteminde komut `node receiveMessages.js` çalıştırın.
+3. Yukarıdaki koda bağlantı dizesini ve sıranızın adını girin.
+4. Ardından bu `node receiveMessages.js` dosyayı çalıştırmak için komut isteminde komutu çalıştırın.
 
-Tebrikler! Service Bus sırasından ileti aldınız.
+Tebrikler! Servis Veri Servisi kuyruğundan iletiler aldınız.
 
-[Createreceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) yöntemi, [receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerine sahip bir sabit listesi olan bir `ReceiveMode` alır. İleti üzerinde `complete()`, `abandon()`, `defer()`veya `deadletter()` yöntemlerinden birini kullanarak `PeekLock` modunu kullanıyorsanız, [iletilerinizi kapatmanız](message-transfers-locks-settlement.md#settling-receive-operations) gerektiğini unutmayın.
+[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) yöntemi `ReceiveMode` [receiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerleri ile bir enum alır. İletideki `PeekLock` herhangi `complete()`bir yöntemi `abandon()` `defer()` `deadletter()` kullanarak modu kullanıyorsanız [iletilerinizi kapatmayı](message-transfers-locks-settlement.md#settling-receive-operations) unutmayın.
 
 > [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın.
-- [Kuyruklar, konu başlıkları ve abonelikler](service-bus-queues-topics-subscriptions.md)
-- [GitHub üzerinde Service Bus için diğer NodeJS örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) kullanıma al
+- [Kuyruklar, konular ve abonelikler](service-bus-queues-topics-subscriptions.md)
+- [GitHub'daki Servis Otobüsü için diğer Nodejs örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) ödeme
 - [Node.js Geliştirici Merkezi](https://azure.microsoft.com/develop/nodejs/)
 

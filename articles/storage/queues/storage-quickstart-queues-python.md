@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure kuyruk depolama kitaplığı V12-Python'
-description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyruğu Python V12 kitaplığı 'nı nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri okumayı ve silmeyi öğreneceksiniz. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
+title: 'Hızlı başlangıç: Azure Sıra depolama kitaplığı v12 - Python'
+description: Kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure Queue Python v12 kitaplığını nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri nasıl okuyup sildiğinizi öğrenirsiniz. Ayrıca bir sırayı nasıl sildiğinizi de öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/10/2019
@@ -8,41 +8,41 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78199776"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Quickstart: Python için Azure Queue depolama istemcikitapv12
 
-Python için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çalışmaya başlayın. Azure kuyruk depolaması, daha sonra almak ve işlemek üzere çok sayıda ileti depolamaya yönelik bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere bu adımları izleyin.
+Python için Azure Queue depolama istemcisi kitaplığı sürümü 12 ile başlayın. Azure Sıra depolama, daha sonra alma ve işleme için çok sayıda ileti depolamak için bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
-Python için Azure kuyruk depolama istemci kitaplığı V12 şu şekilde kullanın:
+Python için Azure Queue depolama istemcisi v12'yi kullanın:
 
 * Bir kuyruk oluşturma
-* Bir kuyruğa ileti ekleme
+* Kuyruğa ileti ekleme
 * Kuyruktaki iletilere göz atın
 * Kuyruktaki bir iletiyi güncelleştirme
 * Kuyruktan ileti alma
-* Kuyruktaki iletileri silme
+* İletileri kuyruktan silme
 * Bir kuyruk silme
 
-[API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [paketi (Python paket dizini)](https://pypi.org/project/azure-storage-queue/) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[API referans belgeleri](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [Paketi (Python Paket Dizini)](https://pypi.org/project/azure-storage-queue/) | [Örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* Azure depolama hesabı - [bir depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* İşletim sisteminiz için [Python](https://www.python.org/downloads/) - 2.7, 3.5 veya üzeri
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-Bu bölüm, Python için Azure kuyruk depolama istemci kitaplığı V12 ile çalışmak üzere bir proje hazırlama konusunda size yol gösterir.
+Bu bölüm, Python için Azure Queue depolama istemcisi kitaplığı v12 ile çalışmak üzere bir proje hazırlamakonusunda size yol sunar.
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12*.
+*Kuyruklar-quickstart-v12*adlı bir Python uygulaması oluşturun.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 
@@ -50,29 +50,29 @@ Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12*.
     mkdir queues-quickstart-v12
     ```
 
-1. Yeni oluşturulan *kuyruklara geç hızlı başlangıç-V12* dizini.
+1. Yeni oluşturulan *kuyruklar-quickstart-v12* dizinine geçin.
 
     ```console
     cd queues-quickstart-v12
     ```
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package"></a>Paketi yükleyin
 
-`pip install` komutunu kullanarak Python için Azure Blob Storage istemci kitaplığı 'nı paketi ' ni yükler.
+Komutu kullanarak Python paketi için Azure Blob depolama istemcisi kitaplığını yükleyin. `pip install`
 
 ```console
 pip install azure-storage-queue
 ```
 
-Bu komut, Python paketi için Azure kuyruk depolama istemci kitaplığını ve bağımlı olduğu tüm kitaplıkları kurar. Bu durumda, yalnızca Python için Azure çekirdek kitaplığı vardır.
+Bu komut, Python paketi için Azure Kuyruk depolama istemcisi kitaplığını ve bağlı olduğu tüm kitaplıkları yükler. Bu durumda, bu Python için azure çekirdek kitaplığıdır.
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
-1. Kod Düzenleyicinizde yeni bir metin dosyası açın
-1. `import` deyimleri Ekle
-1. Çok temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
+1. Kod düzenleyicinizde yeni bir metin dosyası açma
+1. Ekstre ekleme `import`
+1. Çok temel özel durum işleme de dahil olmak üzere program için yapı oluşturma
 
-    Kod aşağıdaki gibidir:
+    İşte kod:
 
     ```python
     import os, uuid
@@ -87,46 +87,46 @@ Bu komut, Python paketi için Azure kuyruk depolama istemci kitaplığını ve b
 
     ```
 
-1. Yeni dosyayı *Kuyruklar-QuickStart-V12* dizinine *Queues-QuickStart-v12.py* olarak kaydedin.
+1. Yeni dosyayı *kuyruklar-quickstart-v12* dizininde *queues-quickstart-v12.py* olarak kaydedin.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
+Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Bir sıra iletisi 64 KB boyutuna kadar olabilir. Bir sıra, bir depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle eşzamanlı olarak işlemek için bir çalışma biriktirme listesi oluşturmak için kullanılır. Sıra depolama üç tür kaynak sunar:
 
 * Depolama hesabı
-* Depolama hesabındaki bir kuyruk
-* Kuyruktaki iletiler
+* Depolama hesabında bir sıra
+* Sıra içindeki iletiler
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
-![Kuyruk depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
+![Sıra depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
 
-Şu kaynaklarla etkileşim kurmak için aşağıdaki Python sınıflarını kullanın:
+Bu kaynaklarla etkileşimkurmak için aşağıdaki Python sınıflarını kullanın:
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenize olanak tanır.
+* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` Sınıf, tek bir sırayı ve iletilerini yönetmenize ve işlemenize olanak tanır.
+* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` Sınıf, receive_messages bir sırada [ararken](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) döndürülen tek tek nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu örnek kod parçacıkları, Python için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki eylemleri nasıl yapılacağını gösterir:
+Bu örnek kod parçacıkları, Python için Azure Kuyruk depolama istemcisi kitaplığıyla aşağıdaki işlemleri nasıl yapacağınızı gösterir:
 
-* [Bağlantı dizesini al](#get-the-connection-string)
-* [Sıra oluşturma](#create-a-queue)
-* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+* [Bağlantı dizesini alma](#get-the-connection-string)
+* [Bir kuyruk oluşturma](#create-a-queue)
+* [Kuyruğa ileti ekleme](#add-messages-to-a-queue)
 * [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
 * [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
 * [Kuyruktan ileti alma](#receive-messages-from-a-queue)
-* [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
-* [Kuyruğu silme](#delete-a-queue)
+* [İletileri kuyruktan silme](#delete-messages-from-a-queue)
+* [Bir kuyruk silme](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-Aşağıdaki kod, depolama hesabı için bağlantı dizesini alır. Bağlantı dizesi, [depolama Bağlantı dizenizi yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkenini saklı tutulur.
+Aşağıdaki kod depolama hesabının bağlantı dizesini alır. Bağlantı dizesi, [depolama bağlantı dizesi](#configure-your-storage-connection-string) bölümüne Yapılandırıldığında oluşturulan ortam değişkeni depolanır.
 
-Bu kodu `try` bloğunun içine ekleyin:
+Bu kodu `try` bloğun içine ekleyin:
 
 ```python
     # Retrieve the connection string for use with the application. The storage
@@ -140,14 +140,14 @@ Bu kodu `try` bloğunun içine ekleyin:
 
 ### <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir UUID değeri ekler.
+Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için sıra adına bir UUID değerini ekler.
 
 > [!IMPORTANT]
-> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> Sıra adları yalnızca küçük harfler, sayılar ve tireler içerebilir ve bir harf veya sayıyla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad da 3 ve 63 karakter uzunluğunda olmalıdır. Sıraları adlandırma hakkında daha fazla bilgi için [Bkz.](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)
 
-[Queueclient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) yöntemini çağırın.
+[QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızdaki sırayı oluşturmak için [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) yöntemini arayın.
 
-`try` bloğunun sonuna bu kodu ekleyin:
+Bu kodu `try` bloğun sonuna ekleyin:
 
 ```python
     # Create a unique name for the queue
@@ -163,11 +163,11 @@ Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin
     queue_client.create_queue()
 ```
 
-### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
+### <a name="add-messages-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) yöntemini çağırarak kuyruğa ileti ekler. Ayrıca, üçüncü `send_message` çağrısından döndürülen [Queuemessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) öğesini de kaydeder. `saved_message`, programın ilerleyen kısımlarında ileti içeriğini güncelleştirmek için kullanılır.
+Aşağıdaki kod snippet [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) yöntemini çağırarak sıraya iletiekler. Ayrıca üçüncü `send_message` çağrıdan döndürülen [QueueMessage'ı](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) da kaydeder. İleti `saved_message` içeriğini daha sonra programda güncelleştirmek için kullanılır.
 
-`try` bloğunun sonuna bu kodu ekleyin:
+Bu kodu `try` bloğun sonuna ekleyin:
 
 ```python
     print("\nAdding messages to the queue...")
@@ -180,9 +180,9 @@ Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[Peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peek_messages` yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+[peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) yöntemini arayarak kuyruktaki iletilere göz atın. Yöntem, `peek_messages` sıranın önünden bir veya daha fazla ileti alır, ancak iletinin görünürlüğünü değiştirmez.
 
-`try` bloğunun sonuna bu kodu ekleyin:
+Bu kodu `try` bloğun sonuna ekleyin:
 
 ```python
     print("\nPeek at the messages in the queue...")
@@ -197,7 +197,7 @@ Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `update_message` yöntemi bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. Yeni içerikle birlikte, kodda daha önce kaydedilen iletiden değer geçirin. `saved_message` değerler güncelleştirilecek iletiyi belirler.
+[update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) yöntemini arayarak iletinin içeriğini güncelleştirin. Yöntem, `update_message` iletinin görünürlük zaman anına ve içeriğini değiştirebilir. İleti içeriği 64 KB boyutuna kadar olan UTF-8 kodlanmış bir dize olmalıdır. Yeni içerikle birlikte, kodda daha önce kaydedilmiş iletiden değerleri aktarın. Değerler `saved_message` hangi iletiyi güncelleştireceklerini belirler.
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -209,9 +209,9 @@ Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/
 
 ### <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-[Receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) yöntemini çağırarak önceden eklenmiş iletileri indirin.
+[receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) yöntemini arayarak daha önce eklenen iletileri indirin.
 
-`try` bloğunun sonuna bu kodu ekleyin:
+Bu kodu `try` bloğun sonuna ekleyin:
 
 ```python
     print("\nReceiving messages from the queue...")
@@ -220,13 +220,13 @@ Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/
     messages = queue_client.receive_messages(messages_per_page=5)
 ```
 
-### <a name="delete-messages-from-a-queue"></a>Kuyruktaki iletileri silme
+### <a name="delete-messages-from-a-queue"></a>İletileri kuyruktan silme
 
-İletileri alındıktan ve işlendikten sonra kuyruktan silin. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
+İletileri alındıktan ve işlendikten sonra kuyruktan silin. Bu durumda, işleme yalnızca konsolda ileti yi görüntüler.
 
-Uygulama, iletileri işleyerek ve silmeden önce `input` çağırarak kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
+Uygulama, iletileri işleyip silmeden önce arayarak `input` kullanıcı girişi için duraklatır. [Azure portalınızda](https://portal.azure.com) kaynakların silinmeden önce doğru oluşturulduğunu doğrulayın. Açıkça silinmeyen iletiler, bunları işlemek için başka bir şans için kuyrukta tekrar görünür hale gelir.
 
-`try` bloğunun sonuna bu kodu ekleyin:
+Bu kodu `try` bloğun sonuna ekleyin:
 
 ```python
     print("\nPress Enter key to 'process' messages and delete them from the queue...")
@@ -243,9 +243,9 @@ Uygulama, iletileri işleyerek ve silmeden önce `input` çağırarak kullanıc�
 
 ### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Aşağıdaki kod, [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
+Aşağıdaki kod, [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) yöntemini kullanarak sırayı silerek oluşturulan kaynakları temizler.
 
-Bu kodu `try` bloğunun sonuna ekleyin ve dosyayı kaydedin:
+Bu kodu `try` bloğun sonuna ekleyin ve dosyayı kaydedin:
 
 ```python
     print("\nPress Enter key to delete the queue...")
@@ -260,9 +260,9 @@ Bu kodu `try` bloğunun sonuna ekleyin ve dosyayı kaydedin:
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Bu uygulama, bir Azure kuyruğuna üç ileti oluşturur ve ekler. Kod kuyruktaki iletileri listeler, ardından kuyruğu silmeden önce bunları alır ve siler.
+Bu uygulama, Azure kuyruğuna üç ileti oluşturur ve ekler. Kod, kuyruktaki iletileri listeler, ardından sırayı silmeden önce alır ve siler.
 
-Konsol pencerenizde, *Queues-QuickStart-v12.py* dosyasını içeren dizine gidin, ardından uygulamayı çalıştırmak için aşağıdaki `python` komutunu yürütün.
+Konsol pencerenizde, *queues-quickstart-v12.py* dosyasını içeren dizine gidin ve `python` uygulamayı çalıştırmak için aşağıdaki komutu çalıştırın.
 
 ```console
 python queues-quickstart-v12.py
@@ -297,18 +297,18 @@ Deleting queue...
 Done
 ```
 
-Uygulama iletileri almadan önce durakladığında, [Azure Portal](https://portal.azure.com)depolama hesabınızı kontrol edin. İletilerin kuyrukta olduğunu doğrulayın.
+Uygulama ileti almadan önce durakladığında, [Azure portalındaki](https://portal.azure.com)depolama hesabınızı kontrol edin. İletilerin sırada olduğunu doğrulayın.
 
-İletileri almak ve silmek için **ENTER** tuşuna basın. İstendiğinde, kuyruğu silmek ve tanıtımı sona ermesini sağlamak için **ENTER** tuşuna basın.
+İletileri almak ve silmek için **Enter** tuşuna basın. İstendiğinde, sırayı silmek ve demoyu bitirmek için **Enter** tuşuna tekrar basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir sıranın nasıl oluşturulacağını ve Python kodunu kullanarak iletiye nasıl ileti ekleneceğini öğrendiniz. Ardından iletileri göz atmayı, almayı ve silmeyi öğrendiniz. Son olarak, bir ileti sırasının nasıl silineceğini öğrendiniz.
+Bu hızlı başlatmada, Python kodunu kullanarak kuyruk oluşturmayı ve ona ileti eklemeyi öğrendiniz. Ardından iletileri gözetlemeyi, almayı ve silmeyi öğrendiniz. Son olarak, ileti kuyruğunun nasıl silinir öğrenilir.
 
-Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
+Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Python geliştiricileri için Azure](https://docs.microsoft.com/azure/python/)
+> [Python Geliştiricileri için Azure](https://docs.microsoft.com/azure/python/)
 
-* Daha fazla bilgi edinmek için bkz. [Python Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
-* Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama V12 Python istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)geçin.
+* Daha fazla bilgi edinmek [için Python için Azure Depolama kitaplıklarına](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)bakın.
+* Daha fazla Azure Kuyruğu depolama örneği uygulaması görmek için [Azure Queue depolama v12 Python istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)devam edin.

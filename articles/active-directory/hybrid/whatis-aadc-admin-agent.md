@@ -1,63 +1,63 @@
 ---
-title: Azure AD Connect yönetici Aracısı nedir? Azure AD Connect | Microsoft Docs
-description: Eşitleme ve Azure AD ile şirket içi ortamınızı izlemek için kullanılan araçları açıklar.
+title: Azure AD Connect Yönetici Aracısı Nedir - Azure AD Connect | Microsoft Dokümanlar
+description: Şirket içi ortamınızı Azure AD ile senkronize etmek ve izlemek için kullanılan araçları açıklar.
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 222dab87ee71870e564e426d7466555893cc565b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 79f68635820125161ed4f5777e27a20de9e6fbe8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305214"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80049391"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect Yönetim Aracısı nedir? 
-Azure AD Connect Yönetim Aracısı, bir Azure Active Directory Connect sunucusuna yüklenebilen yeni bir Azure Active Directory Connect bileşenidir. Bir destek talebi açtığınızda Microsoft destek mühendisine sorunları gidermeye yardımcı olan Active Directory ortamınızdan belirli verileri toplamak için kullanılır. 
+Azure AD Connect Yönetim Aracısı, Azure Active Directory Connect'in bir Azure Active Directory Connect sunucusuna yüklenebilen yeni bir bileşenidir. Bir destek servis talebi açtığınızda microsoft destek mühendisinin sorunları gidermesine yardımcı olan Etkin Dizin ortamınızdan belirli verileri toplamak için kullanılır. 
 
 >[!NOTE]
->Yönetici aracısı yüklenmez ve varsayılan olarak etkin değildir.  Destek durumlarında yardımcı olacak verileri toplamak için aracıyı yüklemelisiniz.
+>Yönetici aracısı yüklenmez ve varsayılan olarak etkinleştirilir.  Destek durumlarına yardımcı olmak için veri toplamak için aracıyı yüklemeniz gerekir.
 
-Yüklendiğinde, Azure AD Connect Yönetim Aracısı Azure Active Directory verileri için belirli istekleri bekler, eşitleme ortamından istenen verileri alır ve Microsoft desteği 'ne sunulan Azure Active Directory gönderir in. 
+Azure AD Connect Yönetim Aracısı yüklendiğinde Azure Active Directory'den belirli veri isteklerini bekler, eşitleme ortamından istenen verileri alır ve Microsoft desteğine sunulduğu Azure Active Directory'ye gönderir Mühendisi. 
 
-Azure AD Connect yönetim aracısının ortamınızdan aldığı bilgiler hiçbir şekilde depolanmaz; bu, yalnızca Microsoft destek mühendisine, Azure Active Directory Connect araştırıp sorunları gidermeye yardımcı olur Azure AD Connect yönetim aracısını açtığınız ilgili destek, Azure AD Connect sunucusunda varsayılan olarak yüklü değildir. 
+Azure AD Connect Yönetim Aracısı'nın ortamınızdan aldığı bilgiler hiçbir şekilde depolanmaz - Azure Active Directory Connect'i araştırmave sorun gidermede yardımcı olmak için yalnızca Microsoft destek mühendisine görüntülenir Azure AD Connect Yönetim Aracısını açtığınız ilgili destek durumu varsayılan olarak Azure AD Connect Server'da yüklenmez. 
 
-## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Azure AD Connect sunucusuna Azure AD Connect yönetim aracısını yükler 
+## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Azure AD Connect Yönetim Aracısını Azure AD Connect sunucusuna yükleme 
 
-Önkoşullar:
-1.  Azure AD Connect sunucuya yüklendi
-2.  Azure AD Connect Health sunucuya yüklendi
+Ön koşullar:
+1.    Azure AD Connect sunucuda yüklü
+2.    Azure AD Connect Health sunucuda yüklü
 
-![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent0.png)
+![yönetici ajan](media/whatis-aadc-admin-agent/adminagent0.png)
 
 Azure AD Connect Yönetim Aracısı ikilileri AAD Connect sunucusuna yerleştirilir. Aracıyı yüklemek için aşağıdakileri yapın:
 
-1.  PowerShell 'i yönetici modunda aç
-2.  Uygulamanın CD 'nin bulunduğu dizine gidin "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
-3.  ConfigureAdminAgent. ps1 öğesini çalıştırın
+1.    Yönetici modunda powershell'i açın
+2.    Uygulamanın bulunduğu dizin "C:\Program Files\Microsoft Azure Active Directory Connect\Tools" dizinine gidin
+3.    YapılandırılanAdminAgent.ps1 çalıştırın
 
-İstendiğinde lütfen Azure AD Genel yönetici kimlik bilgilerinizi girin. Bu, Azure AD Connect yüklemesi sırasında girilen kimlik bilgileri ile aynı olmalıdır.
+İstendiğinde, lütfen Azure AD genel yönetici kimlik bilgilerinizi girin. Bu, Azure AD Connect yüklemesi sırasında girilen kimlik bilgileriyle aynı olmalıdır.
 
-Aracı yüklendikten sonra, sunucunuzun Denetim Masası 'ndaki "Program Ekle/Kaldır" listesinde aşağıdaki iki yeni programı görürsünüz: 
+Aracı yüklendikten sonra sunucunuzun Denetim Masası'nda "Program Ekle/Kaldır" listesinde aşağıdaki iki yeni programı görürsünüz: 
 
-![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent1.png)
+![yönetici ajan](media/whatis-aadc-admin-agent/adminagent1.png)
 
-## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Eşitleme hizmetimde hangi veriler Microsoft hizmet mühendisine gösteriliyor? 
-Microsoft Desteği mühendisinin bir destek talebi açtığınızda, belirli bir kullanıcı için, Active Directory içindeki ilgili veriler, Azure Active Directory Connect sunucusundaki Active Directory bağlayıcı alanı, Azure 'daki Azure Active Directory bağlayıcı alanı için görebilir. Active Directory sunucuya ve meta veri deposuna Azure Active Directory Connect sunucusunda bağlanın. 
+## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Eşitleme hizmetimdeki veriler Microsoft servis mühendisine gösterilir? 
+Bir destek örneği açtığınızda Microsoft Destek Mühendisi belirli bir kullanıcı için Active Directory'deki ilgili verileri, Azure Active Directory Connect sunucusundaki Active Directory bağlayıcı alanını, Azure'daki Azure Etkin Dizin bağlayıcı alanını görebilir Active Directory Connect sunucusu ve Azure Active Directory Connect sunucusundaki Metaverse. 
 
-Microsoft Desteği mühendisi sisteminizdeki verileri değiştiremez ve herhangi bir parolayı göremez. 
+Microsoft Destek Mühendisi sisteminizdeki hiçbir veriyi değiştiremez ve parola ları göremez. 
 
-## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Microsoft destek mühendisinin verilerinize erişimini istemiyorum ne yapmalıyım? 
-Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrısı için verilerinize erişmesini istemiyorsanız, hizmet yapılandırma dosyasını aşağıda açıklandığı gibi değiştirerek işlevselliği devre dışı bırakabilirsiniz: 
+## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Microsoft destek mühendisinin verilerime erişmesini istemiyorsam ne olur? 
+Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrısı için verilerinize erişmesini istemiyorsanız, hizmet config dosyasını aşağıda açıklandığı şekilde değiştirerek işlevselliği devre dışı kullanabilirsiniz: 
 
-1.  Not defteri 'nde **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** öğesini açın.
-2.  **Userdataenabled** ayarını aşağıda gösterildiği gibi devre dışı bırakın. **Userdataenabled** ayarı varsa ve true olarak ayarlanırsa, false olarak ayarlayın. Ayar yoksa, ayarı aşağıda gösterildiği gibi ekleyin.    
+1.    **C:\Program Dosyalarını Aç\Microsoft Azure AD Connect Yönetim Aracısı\AzureADConnectAdministrationService.exe.config** in not defteri.
+2.    Aşağıda gösterildiği gibi **UserDataEnabled** ayarını devre dışı kılabilir. **UserDataEnabled** ayarı varsa ve doğru olarak ayarlanmışsa, yanlış olarak ayarlayın. Ayar yoksa, ayarı aşağıda gösterildiği gibi ekleyin.    
 
     ```xml
     <appSettings>
@@ -66,10 +66,10 @@ Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrıs�
     </appSettings>
     ```
 
-3.  Yapılandırma dosyasını kaydedin.
-4.  Azure AD Connect Yönetim Aracısı hizmetini aşağıda gösterildiği gibi yeniden başlatın
+3.    Config dosyasını kaydedin.
+4.    Azure AD Connect Yönetim Aracısı hizmetini aşağıda gösterildiği gibi yeniden başlatın
 
-![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent2.png)
+![yönetici ajan](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

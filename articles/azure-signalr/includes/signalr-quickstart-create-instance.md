@@ -8,10 +8,10 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75392137"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Hizmeti örneği oluşturma
@@ -33,11 +33,11 @@ Uygulamanız Azure’da bir SignalR hizmeti örneğine bağlanır.
     | **[Kaynak Grubu](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | SignalR Hizmeti örneğinizin oluşturulacağı yeni kaynak grubunun adı. | 
     | **Konum** | Batı ABD | Size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
     | **Fiyatlandırma katmanı** | Ücretsiz | Azure SignalR Hizmetini ücretsiz deneyin. |
-    | **Birim sayısı** |  Geçerli değil | Birim sayısı, SignalR Hizmeti örneğinizin kaç bağlantı kabul edebileceğini belirtir. Bu yalnızca Standart katmanda yapılandırılabilir. |
-    | **Hizmet modu** |  Sunucusuz | Azure Işlevleri veya REST API kullanmak için. |
+    | **Birim sayısı** |  Uygulanamaz | Birim sayısı, SignalR Hizmeti örneğinizin kaç bağlantı kabul edebileceğini belirtir. Bu yalnızca Standart katmanda yapılandırılabilir. |
+    | **Servis modu** |  Sunucusuz | Azure İşlevler veya REST API ile kullanım için. |
 
     ![SignalR Hizmeti Oluşturma](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. SignalR Hizmeti örneğini dağıtmaya başlamak için **Oluştur**’u seçin.
 
-1. Örnek dağıtıldıktan sonra portalda açın ve ayarlar sayfasını bulun. Azure SignalR hizmetini Azure Işlevleri bağlama veya REST API aracılığıyla kullanıyorsanız, hizmet modu ayarını *sunucusuz* olarak değiştirin. Aksi halde *Klasik* veya *varsayılan* olarak bırakın.
+1. Örnek dağıtıldıktan sonra portalda açın ve Ayarlar sayfasını bulun. Yalnızca Azure İşlevler bağlama veya REST API aracılığıyla Azure SinyalR Hizmeti kullanıyorsanız Hizmet Modu ayarını *Serverless* olarak değiştirin. Aksi takdirde *Klasik* veya *Varsayılan* olarak bırakın.

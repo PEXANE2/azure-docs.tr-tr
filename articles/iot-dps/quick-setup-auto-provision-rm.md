@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure IoT Hub cihaz sağlamayı ayarlama
-description: Azure hızlı başlangıç-bir şablon kullanarak Azure IoT Hub cihaz sağlama hizmeti 'ni (DPS) ayarlama
+title: Azure Kaynak Yöneticisi şablonu kullanarak Azure IoT Hub Aygıt Sağlama'yı ayarlama
+description: Azure quickstart - Bir şablon kullanarak Azure IoT Hub Aygıt Sağlama Hizmeti'ni (DPS) ayarlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,28 +9,28 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74969591"
 ---
-# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini bir Azure Resource Manager şablonuyla ayarlama
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Hızlı başlatma: Azure Kaynak Yöneticisi şablonuyla IoT Hub Aygıt Sağlama Hizmetini ayarlama
 
-Cihazlarınızın sağlanması için gerekli Azure bulut kaynaklarını programlı olarak ayarlamak için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)’ı kullanabilirsiniz. Bu adımlarda, bir IoT Hub 'ı ve yeni bir IoT Hub cihaz sağlama hizmeti oluşturma ve Azure Resource Manager şablonu kullanarak iki hizmeti birbirine bağlama gösterilmektedir. Bu hızlı başlangıç, bir kaynak grubu oluşturmak ve şablonu dağıtmak için gereken programlama adımlarını gerçekleştirmek için [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) kullanır, ancak bu adımları gerçekleştirmek ve şablonunuzu dağıtmak için [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .net, Ruby veya diğer programlama dillerini kolayca kullanabilirsiniz. 
+Cihazlarınızın sağlanması için gerekli Azure bulut kaynaklarını programlı olarak ayarlamak için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)’ı kullanabilirsiniz. Bu adımlar, bir IoT hub'ı ve yeni bir IoT Hub Aygıt Sağlama Hizmetinin nasıl oluşturulabileceğinizi ve azure kaynak yöneticisi şablonu kullanarak iki hizmeti birbirine nasıl bağlayacaklarını gösterir. Bu hızlı başlatma, bir kaynak grubu oluşturmak ve şablonu dağıtmak için gereken programlı adımları gerçekleştirmek için [Azure CLI'yi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) kullanır, ancak bu adımları gerçekleştirmek ve şablonunuzu dağıtmak için [Azure portalı](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby veya diğer programlama dillerini kolayca kullanabilirsiniz. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- Bu hızlı başlangıç, Azure CLı 'yı yerel olarak çalıştırmanızı gerektirir. Azure CLI 2.0 veya sonraki bir sürümünü yüklemiş olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- Bu hızlı başlatma, Azure CLI'yi yerel olarak çalıştırmanızı gerektirir. Azure CLI 2.0 veya sonraki bir sürümünü yüklemiş olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Azure’da oturum açma ve kaynak grubu oluşturma
 
 Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
-1. Komut isteminde, [oturum açma komutunu][lnk-login-command]çalıştırın:
+1. Komut isteminde [oturum açma komutunu][lnk-login-command] çalıştırın:
     
     ```azurecli
     az login
@@ -38,7 +38,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
     Kodu kullanarak kimlik doğrulaması gerçekleştirmek için yönergeleri uygulayın ve bir web tarayıcısı üzerinden Azure hesabınızda oturum açın.
 
-2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek][lnk-az-account-command] için aşağıdaki komutu kullanın:
+2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek için aşağıdaki komutu][lnk-az-account-command] kullanın:
     
     ```azurecli
     az account list 
@@ -50,7 +50,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
     az account set --subscription {your subscription name or id}
     ```
 
-3. IoT hub’ları ve sağlama hizmetleri gibi Azure bulut kaynaklarını bir kaynak grubunda oluşturursunuz. Mevcut bir kaynak grubunu kullanın veya [bir kaynak grubu oluşturmak için aşağıdaki komutu][lnk-az-resource-command]çalıştırın:
+3. IoT hub’ları ve sağlama hizmetleri gibi Azure bulut kaynaklarını bir kaynak grubunda oluşturursunuz. Mevcut bir kaynak grubunu kullanın veya [kaynak grubu oluşturmak için aşağıdaki komutu][lnk-az-resource-command] çalıştırabilirsiniz:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -77,7 +77,7 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
    }
    ```
 
-2. **parameters** bölümünü aşağıdaki içerikle değiştirin. Parameters bölümü, değerleri başka bir dosyadan geçirilebilecek parametreleri tanımlar. Bu bölüm, oluşturulacak IoT Hub ve sağlama hizmetinin adını tanımlar. Ayrıca hem IoT Hub 'ı hem de sağlama hizmeti için konumu tanımlar. Değerler, IoT Hub 'larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle kısıtlanır. Cihaz Sağlama Hizmeti için desteklenen konumların listesi için aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırabilir veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yapabilirsiniz.
+2. **parameters** bölümünü aşağıdaki içerikle değiştirin. Parametreler bölümü, değerleri başka bir dosyadan geçirilebilen parametreleri tanımlar. Bu bölümde, oluşturulacak IoT hub'ının adı ve sağlama hizmeti tanımlanır. Ayrıca, hem IoT hub'ı hem de sağlama hizmetinin konumunu tanımlar. Değerler, IoT hub'larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle sınırlandırılacaktır. Cihaz Sağlama Hizmeti için desteklenen konumların listesi için aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırabilir veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yapabilirsiniz.
 
    ```json
     "parameters": {
@@ -113,7 +113,7 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
 
    ```
 
-4. Bir IoT hub’ı oluşturmak için **kaynaklar** koleksiyonuna aşağıdaki satırları ekleyin. JSON, IoT Hub 'ı oluşturmak için gereken en düşük özellikleri belirtir. **Ad** ve **konum** değerleri başka bir dosyadan parametre olarak geçirilir. Bir şablondaki IoT Hub 'ı için belirtebileceğiniz özellikler hakkında daha fazla bilgi edinmek için bkz. [Microsoft. Devices/IotHubs şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
+4. Bir IoT hub’ı oluşturmak için **kaynaklar** koleksiyonuna aşağıdaki satırları ekleyin. JSON, bir IoT hub'ı oluşturmak için gereken minimum özellikleri belirtir. **Ad** ve **konum** değerleri başka bir dosyadan parametre olarak geçirilir. Şablondaki bir IoT hub'ı için belirtebileceğiniz özellikler hakkında daha fazla bilgi edinmek için [Microsoft.Devices/IotHubs şablon başvurusuna](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)bakın.
 
    ```json
         {
@@ -133,9 +133,9 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
 
    ``` 
 
-5. Sağlama hizmetini oluşturmak için **kaynaklar** koleksiyonundaki IoT hub belirtiminden sonra aşağıdaki satırları ekleyin. Sağlama hizmetinin **adı** ve **konumu** parametreler olarak geçirilir. **Iothubs** koleksiyonu, sağlama hizmetine bağlanacak IoT Hub 'larını belirtir. Her bağlı IoT hub’ı için en azından **connectionString** ve **location** özelliklerini belirtmeniz gerekir. Ayrıca her IoT hub’ında **allocationWeight** ve **applyAllocationPolicy** gibi özelliklerin yanı sıra sağlama hizmetinin kendisi üzerinde **allocationPolicy** ve **authorizationPolicies** gibi özellikler de ayarlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Microsoft.Devices/provisioningServices şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices).
+5. Sağlama hizmetini oluşturmak için **kaynaklar** koleksiyonundaki IoT hub belirtiminden sonra aşağıdaki satırları ekleyin. Sağlama hizmetinin **adı** ve **konumu** parametre olarak geçirilecektir. **iotHubs** koleksiyonu, ioT hub'larını sağlama hizmetine bağlamak için belirtir. Her bağlı IoT hub’ı için en azından **connectionString** ve **location** özelliklerini belirtmeniz gerekir. Ayrıca her IoT hub’ında **allocationWeight** ve **applyAllocationPolicy** gibi özelliklerin yanı sıra sağlama hizmetinin kendisi üzerinde **allocationPolicy** ve **authorizationPolicies** gibi özellikler de ayarlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Microsoft.Devices/provisioningServices şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices).
 
-   **dependsOn** özelliği, Kaynak Yöneticisi’nin sağlama hizmetini oluşturmadan önce IoT hub’ını oluşturmasını sağlamak için kullanılır. Şablon, önce hub’ın ve hub’a ait anahtarların oluşturulması için IoT hub’ının bağlantı dizesinin sağlama hizmetiyle bağlantısını belirtmesini gerektirir. Şablon, parametreli değişkenlerden bağlantı dizesi oluşturmak için **Concat** ve **ListKeys** gibi işlevleri kullanır. Daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablon işlevleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions).
+   **dependsOn** özelliği, Kaynak Yöneticisi’nin sağlama hizmetini oluşturmadan önce IoT hub’ını oluşturmasını sağlamak için kullanılır. Şablon, önce hub’ın ve hub’a ait anahtarların oluşturulması için IoT hub’ının bağlantı dizesinin sağlama hizmetiyle bağlantısını belirtmesini gerektirir. Şablon, parametreli değişkenlerden bağlantı dizesini oluşturmak için **concat** ve **listKeys** gibi işlevleri kullanır. Daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablon işlevleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions).
 
    ```json
         {
@@ -234,7 +234,7 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
 
 ## <a name="create-a-resource-manager-parameter-file"></a>Bir Kaynak Yöneticisi parametre dosyası oluşturma
 
-Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetinin adını ve bunları oluşturmak için konumu (Azure bölgesi) belirtmek için parametreler kullanır. Bu parametreleri ayrı bir dosyadan şablona geçirirsiniz. Bunu yapmanız birden fazla dağıtım için aynı şablonu yeniden kullanabilmenizi sağlar. Parametre dosyasını oluşturmak için şu adımları uygulayın:
+Son adımda tanımladığınız şablon, ioT hub'ının adını, sağlama hizmetinin adını ve bunları oluşturmak için konumu (Azure bölgesi) belirtmek için parametreleri kullanır. Bu parametreleri ayrı bir dosyadan şablona geçirirsiniz. Bunu yapmanız birden fazla dağıtım için aynı şablonu yeniden kullanabilmenizi sağlar. Parametre dosyasını oluşturmak için şu adımları uygulayın:
 
 1. Aşağıdaki çatı içeriğiyle **parameters.json** adlı bir Azure Resource Manager parametre dosyası oluşturmak için bir metin düzenleyici kullanın: 
 
@@ -247,7 +247,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
    }
    ```
 
-2. Parametre bölümüne **iotHubName** değerini ekleyin.  IoT Hub adı Azure 'da genel olarak benzersiz olmalıdır; bu nedenle örnek adına benzersiz bir ön ek veya sonek eklemek ya da tamamen yeni bir ad seçmek isteyebilirsiniz. Adınızın bir IoT Hub 'ı için doğru adlandırma kurallarına uyduğundan emin olun: 3-50 karakter uzunluğunda olmalıdır ve yalnızca büyük veya küçük harf alfasayısal karakterlerini veya kısa çizgileri ('-') içerebilir. 
+2. Parametre bölümüne **iotHubName** değerini ekleyin.  IoT hub adı Azure'da genel olarak benzersiz olmalıdır, bu nedenle örnek ada benzersiz bir önek veya sonek eklemek veya tamamen yeni bir ad seçmek isteyebilirsiniz. Adınızın bir IoT hub'ı için uygun adlandırma kurallarını izlediğinden emin olun: 3-50 karakter uzunluğunda olmalıdır ve yalnızca büyük veya küçük harfleralfaerik karakterler veya tireler ('-') içerebilir. 
 
    ```json
     "parameters": {
@@ -258,7 +258,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
    
    ```
 
-3. Parametre bölümüne **provisioningServiceName** değerini ekleyin. Ayrıca, sağlama hizmetiniz için genel olarak benzersiz bir ad seçmeniz gerekir. IoT Hub cihaz sağlama hizmeti için doğru adlandırma kurallarına uyduğundan emin olun: 3-64 karakter uzunluğunda olmalıdır ve yalnızca büyük veya küçük harf alfasayısal karakterlerini veya kısa çizgileri ('-') içerebilir.
+3. Parametre bölümüne **provisioningServiceName** değerini ekleyin. Ayrıca, sağlama hizmetiniz için benzersiz bir ad seçmeniz gerekir. Bir IoT Hub Aygıt Sağlama Hizmeti için uygun adlandırma kurallarını izlediğinden emin olun: 3-64 karakter uzunluğunda olmalıdır ve yalnızca büyük veya küçük harfleralfaerik karakterler veya tireler ('-') içerebilir.
 
    ```json
     "parameters": {
@@ -272,7 +272,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
 
    ```
 
-4. Parametre bölümüne **hubLocation** değerini ekleyin. Bu değer, hem IoT hub’ının hem de sağlama hizmetinin konumunu belirtir. Değerin, şablon dosyasındaki parametre tanımında yer alan **allowedValues** koleksiyonunda belirtilmiş konumlardan birine karşılık gelmesi gerekir. Bu koleksiyon, değerleri hem IoT hub’larını hem de sağlama hizmetlerini destekleyen Azure konumları ile kısıtlar. Cihaz sağlama hizmeti için desteklenen konumların bir listesi için, komutu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`çalıştırabilir veya [Azure durum](https://azure.microsoft.com/status/) sayfasına gidebilir ve "cihaz sağlama hizmeti" üzerinde arama yapabilirsiniz.
+4. Parametre bölümüne **hubLocation** değerini ekleyin. Bu değer, hem IoT hub’ının hem de sağlama hizmetinin konumunu belirtir. Değerin, şablon dosyasındaki parametre tanımında yer alan **allowedValues** koleksiyonunda belirtilmiş konumlardan birine karşılık gelmesi gerekir. Bu koleksiyon, değerleri hem IoT hub’larını hem de sağlama hizmetlerini destekleyen Azure konumları ile kısıtlar. Aygıt Sağlama Hizmeti için desteklenen konumların listesi için komutu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`çalıştırabilir veya Azure [Durumu](https://azure.microsoft.com/status/) sayfasına gidip "Aygıt Sağlama Hizmeti"nde arama yapabilirsiniz.
 
    ```json
     "parameters": {
@@ -300,13 +300,13 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
 
 Şablonlarınızı dağıtmak ve dağıtımı doğrulamak için aşağıdaki Azure CLI komutlarını kullanın.
 
-1. Şablonunuzu dağıtmak için, şablon ve parametre dosyalarını içeren klasöre gidin ve [bir dağıtımı başlatmak için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)çalıştırın:
+1. Şablonunuzu dağıtmak için, şablon ve parametre dosyalarını içeren klasöre gidin ve dağıtımı başlatmak için aşağıdaki [komutu çalıştırın:](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
     ```
 
-   Bu işlemin tamamlanması birkaç dakika sürebilir. Tamamlandıktan sonra, çıktıda "başarılı" gösteren **Provisioningstate** özelliğini arayın. 
+   Bu işlemin tamamlanması birkaç dakika sürebilir. Bir kez bittikten sonra, çıkış "Başarılı" gösteren **provisioningState** özelliği arayın. 
 
    ![Sağlama çıkışı](./media/quick-setup-auto-provision-rm/output.png) 
 
@@ -320,7 +320,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlar veya öğreticilerle devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, IoT Hub 'ı veya sağlama hizmeti gibi [tek bir kaynağı silmek][lnk-az-resource-command]ya da bir kaynak grubunu ve tüm kaynaklarını silmek IÇIN Azure CLI 'yı kullanabilirsiniz.
+Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlar veya öğreticilerle devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, Azure CLI'yi IoT hub'ı veya sağlama hizmeti gibi [tek bir kaynağı silmek][lnk-az-resource-command]veya bir kaynak grubunu ve tüm kaynaklarını silmek için kullanabilirsiniz.
 
 Sağlama hizmetini silmek için aşağıdaki komutu çalıştırın:
 
@@ -339,14 +339,14 @@ Bir kaynak grubuyla birlikte bu kaynak grubunun tüm kaynaklarını silmek için
 az group delete --name {your resource group name}
 ```
 
-Ayrıca, Azure portal, PowerShell veya REST API 'Lerini kullanarak kaynak gruplarını ve tek tek kaynakları silebilir ve Azure Resource Manager veya IoT Hub cihaz sağlama hizmeti için yayımlanmış desteklenen platform SDK 'larını kullanabilirsiniz.
+Azure portalı, PowerShell veya REST API'lerinin yanı sıra Azure Kaynak Yöneticisi veya IoT Hub Aygıt Sağlama Hizmeti için yayınlanan desteklenen platform SDK'larını kullanarak kaynak gruplarını ve tek tek kaynakları da silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir IoT Hub 'ı ve bir cihaz sağlama hizmeti örneği dağıttık ve iki kaynağı bağladınız. Sanal bir cihaz sağlamak üzere bu kurulumu nasıl kullanacağınızı öğrenmek için, sanal cihaz oluşturma hızlı başlangıç ile devam edin.
+Bu hızlı başlangıçta, bir IoT hub'ı ve aygıt sağlama hizmeti örneğini dağıttınız ve iki kaynağı birbirine bağladınız. Bu kurulumu niçin simüle edilmiş bir aygıt sağlamak için kullanacağınızı öğrenmek için, benzetilen bir aygıt oluşturmak için hızlı başlatmaya devam edin.
 
 > [!div class="nextstepaction"]
-> [Sanal cihaz oluşturmak için hızlı başlangıç](./quick-create-simulated-device.md)
+> [Simüle edilmiş bir aygıt oluşturmak için hızlı başlatma](./quick-create-simulated-device.md)
 
 
 <!-- Links -->

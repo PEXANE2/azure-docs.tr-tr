@@ -9,13 +9,13 @@ ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 89a97196f14332ec1812dc3e8a16905af1aa4407
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67188857"
 ---
-Cloud Shell’de, [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutuyla bir App Service planı oluşturun.
+Bulut Kabuğu'nda, komutla [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) birlikte bir Uygulama Hizmeti planı oluşturun.
 
 Aşağıdaki örnekte, **Ücretsiz** fiyatlandırma katmanı kullanılarak `myAppServicePlan` adlı bir App Service planı oluşturulmaktadır:
 

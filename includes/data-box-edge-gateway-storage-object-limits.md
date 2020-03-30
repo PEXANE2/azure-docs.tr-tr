@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188824"
 ---
-Azure nesnelerin yazılabilir boyutları aşağıda verilmiştir. Yüklenen tüm dosyalar bu sınırlara uyacak emin olun.
+Azure nesnelerinin yazılabilir boyutları aşağıda verebilirsiniz. Yüklenen tüm dosyaların bu sınırlara uyduklarına emin olun.
 
-| Azure nesne türü | Karşıya yükleme sınırı                                             |
+| Azure nesne türü | Yükleme sınırı                                             |
 |-------------------|-----------------------------------------------------------|
-| Blok blobu        | ~ 4,75 TB                                                 |
-| Sayfa blobu         | 1 TB <br> Sayfa blobu biçiminde yüklenen her dosya 512 bayt hizalı (tamsayı katı) olmalıdır, aksi takdirde yükleme başarısız olur. <br> VHD ve VHDX 512 bayt hizalı var. |
-| Azure Dosyaları         | 1 TB <br> Sayfa blobu biçiminde yüklenen her dosya 512 bayt hizalı (tamsayı katı) olmalıdır, aksi takdirde yükleme başarısız olur. <br> VHD ve VHDX 512 bayt hizalı var. |
+| Blok Blob        | ~ 4.75 TB                                                 |
+| Sayfa Blob         | 1 TB <br> Sayfa Blob formatında yüklenen her dosya 512 bayt hizalanmış olmalıdır (integral bir çoklu) aksi takdirde yükleme başarısız olur. <br> VHD ve VHDX 512 bayt hizalanmış. |
+| Azure Dosyaları         | 1 TB <br> Sayfa Blob formatında yüklenen her dosya 512 bayt hizalanmış olmalıdır (integral bir çoklu) aksi takdirde yükleme başarısız olur. <br> VHD ve VHDX 512 bayt hizalanmış. |
 
 > [!IMPORTANT]
-> (Bağımsız olarak depolama türü) dosyaları oluşturma, en çok 5 TB izin verilir. Bir dosya boyutu, yukarıdaki tabloda tanımlanan karşıya yükleme sınırı büyüktür oluşturursanız, ancak dosyayı karşıya. Alan kazanmak için dosyayı el ile silmeniz gerekir.
+> Dosyaların oluşturulmasına (depolama türüne bakılmaksızın) en fazla 5 TB'ye kadar izin verilir. Ancak, boyutu önceki tabloda tanımlanan yükleme sınırından büyük olan bir dosya oluşturursanız, dosya yüklenmez. Alanı geri almak için dosyayı el ile silmeniz gerekir.

@@ -1,7 +1,7 @@
 ---
-title: Bilişsel Beceri başına mil
+title: Şekillendirici bilişsel becerisi
 titleSuffix: Azure Cognitive Search
-description: Yapılandırılmamış verilerden meta verileri ve yapılandırılmış bilgileri ayıklayın ve Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde bir karmaşık tür olarak şekillendirin.
+description: Yapılandırılmamış verilerden meta verileri ve yapılandırılmış bilgileri ayıklayın ve Azure Bilişsel Arama'daki bir AI zenginleştirme ardışık alanında karmaşık bir tür olarak şekillendirin.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754125"
 ---
-# <a name="shaper-cognitive-skill"></a>Bilişsel Beceri başına mil
+# <a name="shaper-cognitive-skill"></a>Şekillendirici bilişsel becerisi
 
-**Mil başına** , birkaç girişi, daha sonra zenginleştirme ardışık düzeninde başvurulabilen [karmaşık bir türde](search-howto-complex-data-types.md) birleştirir. Her **Beceri,** temel olarak bir yapı oluşturmanızı, bu yapının üyelerinin adını tanımlamanızı ve her üyeye değer atamanızı sağlar. Birleştirme senaryolarında yararlı olan birleştirilmiş alan örnekleri, tek bir yapıya bir ad ve soyadı, tek bir yapıya şehir ve eyalet, benzersiz kimlik oluşturmak için ise tek bir yapıya bir ad ve Doğum tarihi birleştirmek içerir.
+**Shaper** becerisi, daha sonra zenginleştirme ardışık alanında başvurulan karmaşık bir [türde](search-howto-complex-data-types.md) birkaç girişi birleştirir. **Şekillendirici** becerisi, temelde bir yapı oluşturmanıza, bu yapının üyelerinin adlarını tanımlamanıza ve her üyeye değer atamanıza olanak tanır. Arama senaryolarında yararlı olan birleştirilmiş alanlara örnek olarak, ad ve soyad birin tek bir yapıda, şehir ve devlette tek bir yapıda veya benzersiz kimlik oluşturmak için ad ve doğum tarihini tek bir yapıda birleştirme verilebilir.
 
-Ayrıca, [Senaryo 3](#nested-complex-types) ' te gösterilen yetenek **başına mil** , girişe Isteğe bağlı bir *SourceContext* özelliği ekler. *Kaynak* ve *SourceContext* özellikleri birbirini dışlıyor. Giriş beceri bağlamındaki ise, *kaynağı*kullanmanız yeterlidir. Giriş, yetenek bağlamından *farklı* bir bağlamda bulunuyorsa *SourceContext*kullanın. *SourceContext* , kaynak olarak değinmekte olan belirli bir öğe ile iç içe bir giriş tanımlamanızı gerektirir. 
+Ayrıca, [senaryo 3'te](#nested-complex-types) gösterilen **Şekillendirici** becerisi girişe isteğe bağlı bir *kaynakBağlam* özelliği ekler. *Kaynak* ve *kaynakBağlam* özellikleri birbirini dışlar. Giriş beceri bağlamında ise, sadece *kaynak*kullanın. Giriş beceri bağlamından *farklı* bir bağlamdaysa, *kaynak Bağlamını*kullanın. *Kaynak Bağlam,* kaynak olarak ele alınmakta olan belirli bir öğeyle iç içe bir girdi tanımlamanızı gerektirir. 
 
-Çıkış adı her zaman "çıktı" olur. Dahili olarak, işlem hattı aşağıdaki örneklerde gösterildiği gibi "çözümleyiciler Edtext" gibi farklı bir adı eşleyebilir, **ancak niteliğin kendisi** yanıtta "çıktı" döndürür. Bu, zenginleştirilmiş belgelerde hata ayıklaması yapıyorsanız ve adlandırma tutarsızlığı fark ediyorsanız veya özel bir yetenek oluşturuyorsanız ve yanıtı kendi kendinize yapılandırırken önemli olabilir.
+Çıktı adı her zaman "çıktı"dır. Dahili olarak, ardışık hatlar aşağıdaki örneklerde gösterildiği gibi "çözümlenmiş Metin" gibi farklı bir adı eşleyebilir, ancak **Shaper** becerisi yanıtta "çıktı" döndürür. Zenginleştirilmiş belgeleri hata ayıklıyorsanız ve adlandırma tutarsızlığını fark ediyorsanız veya özel bir beceri oluşturuyorsanız ve yanıtı kendiniz yapılıyorsanız bu önemli olabilir.
 
 > [!NOTE]
-> Beceri **başına mil** , bilişsel HIZMETLER API 'siyle bağlantılı değildir ve bunu kullanmak için ücretlendirilirsiniz. Yine de bir bilişsel [Hizmetler kaynağı iliştirmelisiniz](cognitive-search-attach-cognitive-services.md), ancak her gün çok az sayıda günlük zenginleştirme için sizi sınırlayan **ücretsiz** Kaynak seçeneğini geçersiz kılabilirsiniz.
+> **Shaper** beceri Bilişsel Hizmetler API bağlı değildir ve bunu kullanmak için ücret değildir. Yine de, günlük günlük zenginleştirmeler az sayıda sizi sınırlayan **Ücretsiz** kaynak seçeneği geçersiz kılmak için, [bilişsel hizmetler kaynak eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. util. Shaperbeceri
+Microsoft.Skills.Util.ShaperBeceri
 
-## <a name="scenario-1-complex-types"></a>Senaryo 1: karmaşık türler
+## <a name="scenario-1-complex-types"></a>Senaryo 1: karmaşık türleri
 
-İki üyeye sahip olan *çözümleyiciler* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: *metin* *ve yaklaşım*sırasıyla. Bir dizinde, çok parçalı aranabilir bir alana *karmaşık tür* denir ve genellikle kaynak verilere eşlenen karşılık gelen bir karmaşık yapıya sahip olduğunda oluşturulur.
+*Çözümlenmiş Metin* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: sırasıyla *metin* ve *duyarlılık.* Bir dizinde, çok parçalı aranabilir alan *karmaşık* tür olarak adlandırılır ve genellikle kaynak verilerin eşleyen karşılık gelen karmaşık bir yapıya sahip olduğunda oluşturulur.
 
-Ancak karmaşık türler oluşturmaya yönelik başka bir yaklaşım, Beceri **başına biçimlendiricilerledir** . Bu yeteneği bir beceri dahil ederek, Beceri işleme sırasında bellek içi işlemler veri şekillerini, daha sonra dizininizdeki karmaşık bir türle eşleştirilebilen iç içe yapılar ile çıktısını alabilir. 
+Ancak, karmaşık türleri oluşturmak için başka bir yaklaşım **Shaper** beceri geçer. Bu beceriyi bir beceriye dahil ederek, skillset işleme sırasındaki bellek işlemleri iç içe yapılarla veri şekilleri çıkararak dizininizdeki karmaşık bir türe eşlenebilir. 
 
-Aşağıdaki örnek beceri tanımı, üye adlarını girdi olarak sağlar. 
+Aşağıdaki örnekte beceri tanımı üye adlarını giriş olarak sağlar. 
 
 
 ```json
@@ -61,9 +61,9 @@ Aşağıdaki örnek beceri tanımı, üye adlarını girdi olarak sağlar.
 }
 ```
 
-### <a name="sample-index"></a>Örnek Dizin
+### <a name="sample-index"></a>Örnek dizini
 
-Bir Dizin Oluşturucu tarafından bir beceri çağrılır ve bir Dizin Oluşturucu bir dizin gerektirir. Dizininizdeki bir karmaşık alan temsili aşağıdaki örneğe benzer şekilde görünebilir. 
+Bir skillset bir dizinleyici tarafından çağrılır ve bir dizin oluşturma gerektirir. Dizininizdeki karmaşık bir alan gösterimi aşağıdaki örnek gibi görünebilir. 
 
 ```json
 
@@ -90,7 +90,7 @@ Bir Dizin Oluşturucu tarafından bir beceri çağrılır ve bir Dizin Oluşturu
 
 ### <a name="skill-input"></a>Beceri girişi
 
-Yetenek **başına bu mil** için kullanılabilir giriş sağlayan gelen JSON belgesi şu şekilde olabilir:
+Bu **Shaper** becerisi için kullanılabilir girdi sağlayan gelen bir JSON belgesi şu olabilir:
 
 ```json
 {
@@ -107,9 +107,9 @@ Yetenek **başına bu mil** için kullanılabilir giriş sağlayan gelen JSON be
 ```
 
 
-### <a name="skill-output"></a>Yetenek çıkışı
+### <a name="skill-output"></a>Beceri çıktısı
 
-**Biçimlendiriciye** , *metin* ve yaklaşım birleştirilmiş öğeleri Ile *çözümleyiciler, Çözümleyicileri edtext* adlı yeni bir öğe *oluşturur.* Bu çıktı dizin şemasına uyar. Azure Bilişsel Arama dizininde içeri ve dizinli olur.
+**Shaper** beceri *metin* ve *duygu*kombine unsurları ile *analizText* adlı yeni bir öğe oluşturur. Bu çıktı dizin şemasına uygundur. Azure Bilişsel Arama dizininde içe aktarılır ve dizine eklenir.
 
 ```json
 {
@@ -129,11 +129,11 @@ Yetenek **başına bu mil** için kullanılabilir giriş sağlayan gelen JSON be
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>Senaryo 2: giriş birleştirme
+## <a name="scenario-2-input-consolidation"></a>Senaryo 2: giriş konsolidasyonu
 
-Başka bir örnekte, ardışık düzen işlemenin farklı aşamalarında, kitabın başlığını ayıkladığınızı ve kitabın farklı sayfalarındaki bölüm başlıklarını çıkardığınızı düşünelim. Artık bu çeşitli girdilerden oluşan tek bir yapı oluşturabilirsiniz.
+Başka bir örnekte, boru hattı işlemenin farklı aşamalarında, bir kitabın başlığını ve kitabın farklı sayfalarındaki bölüm başlıklarını ayıkladığınızu düşünün. Artık bu çeşitli girdilerden oluşan tek bir yapı oluşturabilirsiniz.
 
-Bu senaryo için **Shaper** beceri tanımı aşağıdaki örneğe benzeyebilir:
+Bu senaryonun **Şekillendirici** beceri tanımı aşağıdaki örnek gibi görünebilir:
 
 ```json
 {
@@ -158,8 +158,8 @@ Bu senaryo için **Shaper** beceri tanımı aşağıdaki örneğe benzeyebilir:
 }
 ```
 
-### <a name="skill-output"></a>Yetenek çıkışı
-Bu durumda, **mil** tek bir dizi oluşturmak için tüm bölüm başlıklarını düzleştirir. 
+### <a name="skill-output"></a>Beceri çıktısı
+Bu durumda, **Shaper** tek bir dizi oluşturmak için tüm bölüm başlıkları düzleştirir. 
 
 ```json
 {
@@ -183,11 +183,11 @@ Bu durumda, **mil** tek bir dizi oluşturmak için tüm bölüm başlıklarını
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Senaryo 3: iç içe bağlamlardan giriş birleştirme
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Senaryo 3: iç içe geçmiş bağlamlardan giriş konsolidasyonu
 
-Bir kitabın unvanına, bölümlerine ve içeriğine sahip olduğunu ve içerik üzerinde varlık tanıma ve anahtar tümceciklerini çalıştırmanın yanı sıra, artık farklı becerilerden sonuçları bölüm adı, varlıklar ve anahtar tümcecikleriyle tek bir şekle toplamanız gerektiğini düşünün.
+Bir kitabın başlığına, bölümlerine ve içeriğine sahip olduğunuzu ve varlık tanıma ve içeriğinde anahtar tümcecikler çalıştırdığınızı ve şimdi farklı becerilerin sonuçlarını bölüm adı, varlıklar ve anahtar tümceciklerle tek bir şekle toplamanız gerektiğini düşünün.
 
-Bu senaryo için **Shaper** beceri tanımı aşağıdaki örneğe benzeyebilir:
+Bu senaryonun **Şekillendirici** beceri tanımı aşağıdaki örnek gibi görünebilir:
 
 ```json
 {
@@ -223,8 +223,8 @@ Bu senaryo için **Shaper** beceri tanımı aşağıdaki örneğe benzeyebilir:
 }
 ```
 
-### <a name="skill-output"></a>Yetenek çıkışı
-Bu durumda, **Shaper** karmaşık bir tür oluşturur. Bu yapı bellek içinde mevcuttur. Bir [bilgi deposuna](knowledge-store-concept-intro.md)kaydetmek istiyorsanız, Beceri uygulamanızda depolama özelliklerini tanımlayan bir projeksiyon oluşturmanız gerekir.
+### <a name="skill-output"></a>Beceri çıktısı
+Bu durumda, **Şekillendirici** karmaşık bir tür oluşturur. Bu yapı bellekte var. Bir [bilgi deposuna](knowledge-store-concept-intro.md)kaydetmek istiyorsanız, becerinizde depolama özelliklerini tanımlayan bir projeksiyon oluşturmalısınız.
 
 ```json
 {
@@ -249,7 +249,7 @@ Bu durumda, **Shaper** karmaşık bir tür oluşturur. Bu yapı bellek içinde m
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Karmaşık türleri kullanma](search-howto-complex-data-types.md)
-+ [Bilgi deposu (Önizleme)](knowledge-store-concept-intro.md)
-+ [REST 'te bilgi deposu oluşturma](knowledge-store-create-rest.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Karmaşık türleri nasıl kullanılır?](search-howto-complex-data-types.md)
++ [Bilgi deposu (önizleme)](knowledge-store-concept-intro.md)
++ [REST'te bir bilgi deposu oluşturun](knowledge-store-create-rest.md)

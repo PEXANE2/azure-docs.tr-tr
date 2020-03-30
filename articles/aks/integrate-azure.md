@@ -6,22 +6,22 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273012"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Azure için Açık Hizmet Aracısı (OSBA) kullanarak Azure tarafından yönetilen hizmetlerle tümleştirme
 
 [Kubernetes Hizmet Kataloğu][kubernetes-service-catalog] ile birlikte Azure için Açık Hizmet Aracısı (OSBA), geliştiricilerin Kubernetes’te Azure tarafından yönetilen hizmetleri kullanmasına izin verir. Bu kılavuz; Kubernetes Hizmet Kataloğu, Azure için Açık Hizmet Aracısı (OSBA) ve Azure tarafından yönetilen hizmetleri kullanan uygulamaları dağıtmaya odaklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bir Azure aboneliği
 
-* Azure CLı: [yerel olarak yükler][azure-cli-install]veya [Azure Cloud Shell][azure-cloud-shell]kullanın.
+* Azure CLI: [Yerel olarak yükleyebilir][azure-cli-install] veya [Azure Cloud Shell][azure-cloud-shell]'de kullanabilirsiniz.
 
-* HELI CLı 2.7 +: [yerel olarak yükler][helm-cli-install]veya [Azure Cloud Shell][azure-cloud-shell]kullanın.
+* Helm CLI 2.7+: [Yerel olarak yükleyebilir][helm-cli-install] veya [Azure Cloud Shell][azure-cloud-shell]'de kullanabilirsiniz.
 
 * Azure aboneliğinizde Katkıda Bulunan rolü ile bir hizmet sorumlusu oluşturma izinleri
 
@@ -31,7 +31,7 @@ ms.locfileid: "78273012"
 
 Birinci adım, bir Helm grafiği kullanarak Kubernetes kümenize Hizmet Kataloğu yüklemektir.
 
-Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+Tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Cloud Shell'i açmak için gidin.
 
 Kümenizdeki Tiller (Helm sunucusu) yüklemesini şununla yükseltin:
 
@@ -78,7 +78,7 @@ v1beta1.storage.k8s.io               10
 
 Sonraki adımda, Azure tarafından yönetilen hizmetler için kataloğu içeren [Azure için Açık Hizmet Aracısı][open-service-broker-azure]’nı yükleyin. Kullanılabilir Azure hizmetleri arasında PostgreSQL için Azure Veritabanı, MySQL için Azure Veritabanı ve Azure SQL Veritabanı bulunur.
 
-Azure Held deposu için açık Hizmet Aracısı ekleyerek başlayın:
+İlk olarak Azure Helm deposu için Açık Hizmet Aracısı ekleyerek başlayalım:
 
 ```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin | Microsoft Docs
-description: Node. js kullanarak Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazına bağlanın ve bunlarla etkileşime geçin.
+title: Azure IoT çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme aygıtıyla etkileşimde olun | Microsoft Dokümanlar
+description: Azure IoT çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme aygıtına bağlanmak ve onlarla etkileşimde kalmak için Node.js'yi kullanın.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -9,21 +9,21 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75550749"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (node. js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Quickstart: Çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme cihazıyla etkileşimkurun (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, Node. js ' nin çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için nasıl kullanılacağı gösterilmektedir.
+IoT Tak ve Çalıştır Önizleme, altta yatan aygıt uygulaması hakkında bilgi sahibi olmadan bir aygıtın yetenekleriyle etkileşimkurmanızı sağlayarak IoT'yi kolaylaştırır. Bu hızlı başlangıç, çözümünüze bağlı bir IoT Tak ve Çalıştır aygıtına bağlanmak ve bunları kontrol etmek için Node.js'i nasıl kullanacağınızı gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Node. js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
+Bu hızlı başlangıcı tamamlamak için geliştirme makinenizde Node.js'ye ihtiyacınız vardır. [Nodejs.org](https://nodejs.org)birden fazla platform için önerilen en son sürümü indirebilirsiniz.
 
 Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
 
@@ -35,75 +35,75 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın (daha sonra kullanmak üzere):
+Hub'ınız için _IoT hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın (daha sonra kullanmak için not):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
+## <a name="run-the-sample-device"></a>Örnek aygıtı çalıştırma
 
-Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node. js ' de yazılmış bir örnek ortam algılayıcısı kullanırsınız. Aşağıdaki yönergelerde, cihazın nasıl yükleneceği ve çalıştırılacağı gösterilmektedir:
+Bu hızlı başlatmada, IoT Tak ve Çalıştır aygıtı olarak Düğüm.js ile yazılmış örnek bir çevre sensörü kullanırsınız. Aşağıdaki yönergeler, aygıtı nasıl yükleyip çalıştıracağınıznızı gösterir:
 
-1. Seçtiğiniz dizinde bir Terminal penceresi açın. [Node. js GitHub deposu Için Azure IoT örneklerini](https://github.com/azure-samples/azure-iot-samples-node) bu konuma kopyalamak için aşağıdaki komutu yürütün:
+1. Seçtiğiniz dizinde bir terminal penceresi açın. [Node.js](https://github.com/azure-samples/azure-iot-samples-node) GitHub deposu için Azure IoT Örneklerini bu konuma klonlamak için aşağıdaki komutu uygulayın:
 
     ```cmd/sh
     git clone https://github.com/azure-samples/azure-iot-samples-node
     ```
 
-1. Bu terminal penceresi artık _cihaz_ terminalinize göre kullanılacaktır. Klonlanmış deponuzdaki klasöre gidin ve **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Device** klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
+1. Bu terminal penceresi artık _aygıt_ terminaliniz olarak kullanılacaktır. Klonlanmış deponuzun klasörüne gidin ve **/azure-iot-samples-node/digital-twins/Quickstarts/Device** klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükleyin:
 
     ```cmd/sh
     npm install
     ```
 
-1. _Cihaz bağlantı dizesini_yapılandırın:
+1. _Aygıt bağlantı dizesini_yapılandır:
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Aşağıdaki komutla örneği çalıştırın:
+1. Örneği aşağıdaki komutla çalıştırın:
 
     ```cmd/sh
     node sample_device.js
     ```
 
-1. Cihazın bazı bilgileri gönderdiğini ve onun çevrimiçi olduğunu söyleyen iletiler görürsünüz. Bu, cihazın hub 'a telemetri verileri göndermeyi başladığını ve artık komutları ve özellik güncelleştirmelerini almaya hazır olduğunu gösterir. Bu terminali kapatmayın, daha sonra Ayrıca, hizmet örneklerinin da çalıştığını onaylamanız gerekir.
+1. Aygıtın bazı bilgiler gönderdiğini ve kendisini çevrimiçi olarak bildirdiğini belirten iletiler görürsünüz. Bu, aygıtın hub'a telemetri verileri göndermeye başladığını ve artık komutları ve özellik güncelleştirmelerini almaya hazır olduğunu gösterir. Bu terminali kapatmayın, servis örneklerinin de çalıştığını doğrulamak için daha sonra ihtiyacınız olacak.
 
-## <a name="run-the-sample-solution"></a>Örnek çözümü çalıştırma
+## <a name="run-the-sample-solution"></a>Örnek çözümçalıştırma
 
-Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de örnek bir IoT çözümü kullanırsınız.
+Bu hızlı başlatmada, örnek aygıtla etkileşim kurmak için Düğüm.js'de örnek bir IoT çözümü kullanırsınız.
 
-1. Başka bir Terminal penceresi açın (Bu _hizmet_ terminalinize eklenecektir). Klonlanmış deponuzdaki klasöre gidin ve **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Service** klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
+1. Başka bir terminal penceresi açın (bu sizin _servis_ terminaliniz olacak). Klonlanmış deponuzun klasörüne gidin ve **/azure-iot-samples-node/digital-twins/Quickstarts/Service** klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükleyin:
 
     ```cmd/sh
     npm install
     ```
 
-1. Hizmetin bağlanmasına izin vermek için _IoT Hub bağlantı dizesini_ yapılandırın:
+1. Hizmetin ona bağlanmasına izin verecek _şekilde IoT hub bağlantı dizesini_ yapılandırın:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     ```
 
-### <a name="read-a-property"></a>Bir özelliği okuyun
+### <a name="read-a-property"></a>Bir özelliği okuma
 
-1. _Cihazı_ terminalde bağladığınızda, çevrimiçi durumunu belirten aşağıdaki iletiyi gördünüz:
+1. _Aygıtı_ terminaline bağladığınızda, çevrimiçi durumunu belirten aşağıdaki iletiyi gördünuz:
 
     ```cmd/sh
     reported state property as online
     ```
 
-1. **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Service** klasöründe **get_digital_twin. js**dosyasını açın. `<DEVICE_ID_GOES_HERE>` yer tutucusunu cihaz KIMLIĞINIZLE değiştirin ve dosyayı kaydedin.
+1. **/azure-iot-samples-node/digital-twins/Quickstarts/Service** klasöründe **get_digital_twin.js**dosyasını açın. Yer `<DEVICE_ID_GOES_HERE>` tutucuyu aygıt kimliğinizle değiştirin ve dosyayı kaydedin.
 
-1. _Hizmet_ terminaline gidin ve cihaz bilgilerini okumak üzere örneği çalıştırmak için aşağıdaki komutu kullanın:
+1. _Servis_ terminaline gidin ve aygıtın bilgilerini okumak için örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşenine gidin. `state` özelliğinin _çevrimiçi_olarak raporlanmışsa görürsünüz:
+1. _Servis_ terminali çıkışında `environmentalSensor` bileşene gidin. Bu `state` özellik _online_olarak bildirilmiştir bakın:
 
     ```JSON
     "environmentalSensor": {
@@ -118,11 +118,11 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     }
     ```
 
-### <a name="update-a-writable-property"></a>Yazılabilir bir özelliği güncelleştirme
+### <a name="update-a-writable-property"></a>Yazılabilir özelliği güncelleştirme
 
-1. **Update_digital_twin_property. js**dosyasını açın.
+1. Dosyayı **açın update_digital_twin_property.js**.
 
-1. Dosyanın başlangıcında, büyük yertutucuları ile tanımlanmış sabitler kümesi vardır. `<DEVICE_ID_GOES_HERE>` yer tutucusunu gerçek cihaz KIMLIĞINIZLE değiştirin, kalan sabitleri aşağıdaki değerlerle güncelleştirin ve dosyayı kaydedin:
+1. Dosyanın başında, büyük yer tutucularla tanımlanan bir sabit kümesi vardır. Yer `<DEVICE_ID_GOES_HERE>` tutucuyu gerçek aygıt kimliğinizle değiştirin, kalan sabitleri aşağıdaki değerlerle güncelleştirin ve dosyayı kaydedin:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -130,13 +130,13 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     const propertyValue = 42;
     ```
 
-1. _Hizmet_ terminali ' ne gidin ve özelliği güncelleştirmek üzere örneği çalıştırmak için aşağıdaki komutu kullanın:
+1. _Servis_ terminaline gidin ve özelliği güncelleştirmek için örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
     node update_digital_twin_property.js
     ```
 
-1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. 42 'nin yeni parlaklık değerini görmek için `environmentalSensor` bileşenine gidin.
+1. _Servis_ terminali çıktısı güncelleştirilmiş aygıt bilgilerini gösterir. 42'nin yeni parlaklık değerini görmek için `environmentalSensor` bileşene gidin.
 
     ```json
     "environmentalSensor": {
@@ -156,19 +156,19 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     }
     ```
 
-1. _Cihaz terminalinize_ gidin, cihazın güncelleştirmeyi aldığını görürsünüz:
+1. _Aygıt_ terminalinize gidin, aygıtın güncelleştirmeyi aldığını görürsünüz:
 
     ```cmd/sh
     Received an update for brightness: 42
     updated the property
     ```
-2. _Hizmet_ terminalinize geri dönüp, özelliğin güncelleştirildiğini onaylamak için cihaz bilgilerini yeniden almak üzere aşağıdaki komutu çalıştırın.
+2. _Servis_ terminalinize geri dön ve özelliğin güncelleştirildiğini doğrulamak için cihaz bilgilerini yeniden almak için aşağıdaki komutu çalıştırın.
     
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşeni altında, güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
+3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşenin altında, güncelleştirilmiş parlaklık değerinin raporlandığını görürsünüz. Not: Aygıtın güncelleştirmeyi tamamlaması biraz zaman alabilir. Aygıt özellik güncelleştirmesini gerçekten işleyene kadar bu adımı yineleyebilirsiniz.
     
     ```json
     "environmentalSensor": {
@@ -198,9 +198,9 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
 
 ### <a name="invoke-a-command"></a>Komut çağırma
 
-1. **İnvoke_command. js**dosyasını açın.
+1. Dosyayı **invoke_command.js'yi**açın.
 
-1. Dosyanın başlangıcında, `<DEVICE_ID_GOES_HERE>` yer tutucusunu gerçek cihaz KIMLIĞINIZLE değiştirin. Kalan sabitleri aşağıdaki değerlerle güncelleştirin ve sonra dosyayı kaydedin:
+1. Dosyanın başında, yer tutucuyu `<DEVICE_ID_GOES_HERE>` gerçek aygıt kimliğinizle değiştirin. Kalan sabitleri aşağıdaki değerlerle güncelleştirin ve ardından dosyayı kaydedin:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -208,13 +208,13 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     const commandArgument = '<For the environmental sensor, this value does not matter. Any string will do.>'; 
     ```
 
-1. _Hizmet_ terminali ' ne gidin. Komutu çağırmak için örneği çalıştırmak için aşağıdaki komutu kullanın:
+1. _Servis_ terminaline git. Komutu çağırmak için örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
     node invoke_command.js
     ```
 
-1. _Hizmet_ terminalinde çıktı aşağıdaki onayı göstermelidir:
+1. _Servis_ terminalindeki çıktı aşağıdaki onayı göstermelidir:
 
     ```cmd/sh
     invoking command blink on interface instanceenvironmentalSensor for device <device ID>...
@@ -226,7 +226,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     }
     ```
 
-1. _Cihaz_ terminali ' ne gidin, komutun kabul edilmiş olduğunu görürsünüz:
+1. _Aygıt_ terminaline gidin, komutun kabul edildiğini görürsünüz:
 
     ```cmd/sh
     received command: blink for interfaceInstance: environmentalSensor
@@ -237,7 +237,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta IoT Tak ve Kullan cihazını IoT çözümüne bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
+Bu hızlı başlatmada, bir IoT Tak ve Çalıştır aygıtını IoT çözümüne nasıl bağlayabileceğinizi öğrendiniz. IoT Tak ve Çalıştır aygıtlarınızla etkileşimedebilen bir çözümü nasıl oluşturabilirsiniz hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](howto-develop-solution.md)
+> [Nasıl Yapılsın: Aygıta bağlanma ve aygıtla etkileşim kurma](howto-develop-solution.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma'
-description: Bu makalede, Azure Service Bus kuyruklarından ileti oluşturmak, göndermek ve almak için Python 'un nasıl kullanılacağı gösterilmektedir.
+title: 'Hızlı başlangıç: Python ile Azure Servis Veri Servisi kuyruklarını kullanma'
+description: Bu makalede, Azure Hizmet Veri Hizmetleri kuyrukları oluşturmak, ileti göndermek ve ileti almak için Python'u nasıl kullanacağınızı gösterir.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -15,46 +15,46 @@ ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
 ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76773488"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma
+# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Servis Veri Servisi kuyruklarını kullanma
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Bu makalede, Azure Service Bus kuyruklarından ileti oluşturmak, göndermek ve almak için Python 'un nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, Azure Hizmet Veri Hizmetleri kuyrukları oluşturmak, ileti göndermek ve ileti almak için Python'u nasıl kullanacağınızı gösterir. 
 
-Python Azure Service Bus kitaplıkları hakkında daha fazla bilgi için bkz. [Python için Service Bus kitaplıkları](/python/api/overview/azure/servicebus?view=azure-python).
+Python Azure Hizmet Veri Veri Günü kitaplıkları hakkında daha fazla bilgi için [Python için Hizmet Veri Servisi kitaplıklarına](/python/api/overview/azure/servicebus?view=azure-python)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
-- Azure aboneliği. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-- [Hızlı başlangıç: bir Service Bus konusu ve abonelikleri oluşturmak için Azure Portal](service-bus-quickstart-topics-subscriptions-portal.md)kullanarak oluşturulan bir Service Bus ad alanı. Bu makalede daha sonra kullanmak için, **paylaşılan erişim ilkeleri** ekranından birincil bağlantı dizesini kopyalayın. 
-- Python [Azure Service Bus][Python Azure Service Bus package] paketi yüklüyken Python 3.4 x veya üzeri. Daha fazla bilgi için bkz. [Python Yükleme Kılavuzu](/azure/python/python-sdk-azure-install). 
+- Azure aboneliği. Visual Studio [veya MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
+- Quickstart'taki adımları izleyerek oluşturulan Hizmet Veri Kurumu ad [alanı: Hizmet Veri Servisi konusu ve abonelikleri oluşturmak için Azure portalını kullanın.](service-bus-quickstart-topics-subscriptions-portal.md) Bu makalenin ilerleyen saatlerinde kullanmak üzere **Paylaşılan erişim ilkeleri** ekranından birincil bağlantı dizesini kopyalayın. 
+- [Python Azure Servis Veri Servisi][Python Azure Service Bus package] paketi yüklü olan Python 3.4x veya üzeri. Daha fazla bilgi için [Python Yükleme Kılavuzu'na](/azure/python/python-sdk-azure-install)bakın. 
 
-## <a name="create-a-queue"></a>Kuyruk oluşturma
+## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-**Servicebusclient** nesnesi kuyruklarla çalışmanıza olanak sağlar. Service Bus programlı olarak erişmek için, Python dosyanızın en üstüne aşağıdaki satırı ekleyin:
+**ServiceBusClient nesnesi** kuyruklarla çalışmanızı sağlar. Hizmet Veri Veri Tos'a programlı bir şekilde erişmek için Python dosyanızın üst bölümüne aşağıdaki satırı ekleyin:
 
 ```python
 from azure.servicebus import ServiceBusClient
 ```
 
-**Servicebusclient** nesnesi oluşturmak için aşağıdaki kodu ekleyin. `<connectionstring>`, Service Bus birincil bağlantı dizesi değeri ile değiştirin. Bu değeri, [Azure portal][Azure portal]Service Bus ad alanında **paylaşılan erişim ilkeleri** altında bulabilirsiniz.
+**ServiceBusClient** nesnesi oluşturmak için aşağıdaki kodu ekleyin. Servis `<connectionstring>` Veri Kurumu birincil bağlantı dize değeri ile değiştirin. Bu değeri [Azure portalında][Azure portal]Hizmet Veri Kurumu ad alanınızda **Paylaşılan erişim ilkeleri** altında bulabilirsiniz.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-Aşağıdaki kod, varsayılan ayarlarla `taskqueue` adlı bir sıra oluşturmak için **Servicebusclient** 'ın `create_queue` yöntemini kullanır:
+Aşağıdaki kod, `create_queue` varsayılan ayarları ile adlı `taskqueue` bir sıra oluşturmak için **ServiceBusClient** yöntemini kullanır:
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-İleti yaşam süresi (TTL) veya en büyük konu boyutu gibi varsayılan sıra ayarlarını geçersiz kılmak için seçeneklerini kullanabilirsiniz. Aşağıdaki kod, en fazla 5 GB sıra boyutu ve 1 dakikalık TTL değeri ile `taskqueue` adlı bir kuyruk oluşturur:
+İleti süresi (TTL) veya maksimum konu boyutu gibi varsayılan sıra ayarlarını geçersiz kılmak için seçenekleri kullanabilirsiniz. Aşağıdaki kod, en fazla `taskqueue` 5 GB sıra boyutu ve 1 dakika TTL değeri ile adlandırılan bir sıra oluşturur:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -63,7 +63,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
 
-Bir Service Bus kuyruğuna ileti göndermek için, bir uygulama **Servicebusclient** nesnesinde `send` yöntemini çağırır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve `taskqueue` kuyruğuna bir test iletisi gönderir. `<connectionstring>`, Service Bus birincil bağlantı dizesi değeri ile değiştirin. 
+Hizmet Veri Servisi sırasına ileti göndermek için, `send` bir uygulama **ServiceBusClient** nesnesindeki yöntemi çağırır. Aşağıdaki kod örneği bir sıra istemcisi oluşturur `taskqueue` ve kuyruğa bir test iletisi gönderir. Servis `<connectionstring>` Veri Kurumu birincil bağlantı dize değeri ile değiştirin. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -78,13 +78,13 @@ queue_client.send(msg)
 
 ### <a name="message-size-limits-and-quotas"></a>İleti boyutu sınırları ve kotaları
 
-Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Kuyruğun tutatabilecek ileti sayısı için bir sınır yoktur, ancak sıranın tuttuğu mesajların toplam boyutunun bir üst sınırı vardır. Sıra boyutunu oluşturma sırasında, 5 GB üst sınırı ile tanımlayabilirsiniz. 
+Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Bir kuyruğun tutabileceği ileti sayısında bir sınır yoktur, ancak sıranın tuttuğu iletilerin toplam boyutunda bir kapak vardır. 5 GB üst sınırı ile oluşturma sırasında sıra boyutunu tanımlayabilirsiniz. 
 
-Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları][Service Bus quotas].
+Kotalar hakkında daha fazla bilgi için [Servis Otobüsü kotalarına][Service Bus quotas]bakın.
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-Queue Client, **Servicebusclient** nesnesinde `get_receiver` yöntemini kullanarak bir kuyruktan ileti alır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve `taskqueue` sırasından bir ileti alır. `<connectionstring>`, Service Bus birincil bağlantı dizesi değeri ile değiştirin. 
+Sıra istemcisi `get_receiver` **ServiceBusClient** nesnesindeki yöntemi kullanarak bir kuyruktan iletileri alır. Aşağıdaki kod örneği bir sıra istemcisi oluşturur `taskqueue` ve kuyruktan bir ileti alır. Servis `<connectionstring>` Veri Kurumu birincil bağlantı dize değeri ile değiştirin. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -100,28 +100,28 @@ with queue_client.get_receiver() as queue_receiver:
         message.complete()
 ```
 
-### <a name="use-the-peek_lock-parameter"></a>Peek_lock parametresini kullanma
+### <a name="use-the-peek_lock-parameter"></a>peek_lock parametresini kullanma
 
-`get_receiver` isteğe bağlı `peek_lock` parametresi, Service Bus iletileri okudukları sırada silip silmeyeceğini belirler. İleti alma için varsayılan mod *PeekLock*' dır veya `peek_lock` **true**olarak ayarlanır ve bu, iletileri kuyruktan silmeden onları okur (göz atar) ve kilitler. Her ileti daha sonra kuyruktan kaldırılacak şekilde açıkça tamamlanmalıdır.
+İsteğe `peek_lock` bağlı `get_receiver` parametre, Servis Veri Tos'unun iletileri okundukları sırada kuyruktan silip silmeyeceğini belirler. İleti alma için varsayılan mod *PeekLock'tır*veya `peek_lock` **True**olarak ayarlanır, bu modu okur (peeks) ve sırayla silmeden iletileri kilitler. Daha sonra her iletinin kuyruktan kaldırılması için açıkça tamamlanması gerekir.
 
-Sıradaki iletileri okurken silmek için, `get_receiver` `peek_lock` parametresini **false**olarak ayarlayabilirsiniz. Alma işleminin bir parçası olarak ileti silme en basit modeldir, ancak yalnızca bir hata oluşursa uygulamanın eksik iletileri kabul edebildiği durumlarda işe yarar. Bu davranışı anlamak için, tüketicinin işlemeden önce bir alma isteği yaptığı ve sonra çöktüğü bir senaryo düşünün. İleti alındığı sırada silinirse, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenmeden önce aldığı iletiyi kaçırmıştır.
+İletileri okundukları sırada kuyruktan silmek **için**False `peek_lock` parametresini `get_receiver` ayarlayabilirsiniz. İletileri alma işleminin bir parçası olarak silerbırakmak en basit modeldir, ancak yalnızca uygulama bir hata olduğunda eksik iletileri tolere edebilirse çalışır. Bu davranışı anlamak için, tüketicinin bir alma isteği yayınladığı ve işlemeden önce çöktüğün bir senaryoyu düşünün. İleti alınırken silinmişse, uygulama yeniden başlatıldığında ve iletileri yeniden tüketmeye başladığında, kilitlenmeden önce aldığı iletiyi kaçırmıştır.
 
-Uygulamanız eksik iletileri kabul edemiyorum, alma iki aşamalı bir işlemdir. PeekLock, tüketilen bir sonraki iletiyi bulur, diğer tüketicilerin bunu almasını engellemek için onu kilitler ve uygulamaya döndürür. İleti işlendikten veya depolandıktan sonra uygulama, **ileti** nesnesine `complete` yöntemini çağırarak alma işleminin ikinci aşamasını tamamlar.  `complete` yöntemi iletiyi tüketildiği gibi işaretler ve sıradan kaldırır.
+Uygulamanız kaçırılan iletilere tahammül edemiyorsa, almak iki aşamalı bir işlemdir. PeekLock, bir sonraki iletinin tüketilmesi gerektiğini bulur, diğer tüketicilerin bu iletiyi almasını önlemek için kilitler ve uygulamaya geri verir. İletiyi işledikten veya depoladıktan sonra, uygulama `complete` **İleti** nesnesindeki yöntemi çağırarak alma işleminin ikinci aşamasını tamamlar.  Yöntem, `complete` iletinin tüketildiğini işaretler ve sıradan kaldırır.
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Uygulama kilitlenmelerini ve okunamaz iletileri işle
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunamayan iletileri işleme
 
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Alıcı uygulama bir nedenden dolayı bir iletiyi işleyemeyeceği takdirde **ileti** nesnesinde `unlock` yöntemi çağırabilir. Service Bus kuyruktaki iletinin kilidini açar ve aynı ya da başka bir tüketen uygulama tarafından yeniden alınmak üzere kullanılabilir hale gelir.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulaması bir iletiyi nedense işlemiyorsa, `unlock` **İleti** nesnesi üzerindeki yöntemi çağırabilir. Servis Veri Servisi, sıra içindeki iletinin kilidini açar ve aynı veya başka bir tüketen uygulama tarafından yeniden alınmak üzere kullanılabilir hale getirir.
 
-Sıra içinde kilitlenen iletiler için de bir zaman aşımı vardır. Bir uygulama, kilit zaman aşımı dolmadan önce bir iletiyi işleyemezse, örneğin, uygulama kilitlenirse, Service Bus otomatik olarak iletinin kilidini açar ve tekrar alınabilmesini sağlar.
+Sıra içinde kilitli iletiler için bir zaman arası da vardır. Bir uygulama kilit süresi dolmadan önce bir iletiyi işlemezse (örneğin uygulama çöküyorsa, Servis Veri Servisi iletinin kilidini otomatik olarak açar ve yeniden alınmak üzere kullanılabilir hale getirir.
 
-Bir uygulama bir ileti işlendikten sonra, ancak `complete` yöntemi çağrılmadan önce kilitlenirse, ileti yeniden başlatıldığında uygulamaya yeniden gönderilir. Bu davranış genellikle *en az bir kez işleme*olarak adlandırılır. Her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme kabul edememesi durumunda, yinelenen ileti teslimini işlemek için teslim denemelerinde sabit olarak kalan ileti **MessageID** özelliğini kullanabilirsiniz. 
+Bir uygulama bir iletiyi işledikten `complete` sonra ancak yöntemi aramadan önce çökerse, ileti yeniden başlatıldığında uygulamaya yeniden teslim edilir. Bu davranış genellikle *En az bir kez İşleme*olarak adlandırılır. Her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme tolere edemiyorsa, yinelenen ileti teslimini işlemek için teslim girişimlerinde sabit kalan iletinin **MessageId** özelliğini kullanabilirsiniz. 
 
 > [!TIP]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, bir Service Bus ad alanına bağlanmanızı ve mesajlaşma varlıklarını kolayca yönetmenizi sağlar. Araç içeri/dışarı aktarma işlevselliği ve konuları, kuyrukları, abonelikleri, geçiş Hizmetleri, Bildirim Hub 'larını ve Olay Hub 'larını test etme özelliği gibi gelişmiş özellikler sağlar.
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, Bir Servis Veri Günü ad alanına bağlanmanızı ve ileti varlıklarını kolayca uygulamanızı sağlar. Araç, alma/dışa aktarma işlevselliği ve konuları, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus kuyrukların temellerini öğrendiğinize göre, daha fazla bilgi edinmek için [Kuyruklar, konular ve abonelikler][Queues, topics, and subscriptions] konusuna bakın.
+Artık Servis Veri Yolu kuyruklarının temellerini öğrendiğiniz için, daha fazla bilgi edinmek için [Kuyruklar, konular ve aboneliklere][Queues, topics, and subscriptions] bakın.
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  

@@ -9,47 +9,47 @@ ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188895"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
 
 1. StorSimple Cihaz Yöneticinize gidip **Cihazlar**’ı seçin. Hizmetinize bağlı cihazların listesinden güncelleştirmek istediğiniz cihazı seçip tıklayın.
 
-2. Altında **ayarları**, tıklayın **cihaz güncelleştirmeleri**.  
+2. **Ayarlar**altında, **Aygıt güncelleştirmelerini**tıklatın.  
 
-3. Yazılım güncelleştirmeleri varsa bir ileti görürsünüz. Güncelleştirmeleri denetlemek için **Tara**’ya da tıklayabilirsiniz. Çalıştırmakta olduğunuz yazılım sürümü not edin. 
+3. Yazılım güncelleştirmeleri varsa bir ileti görürsünüz. Güncelleştirmeleri denetlemek için **Tara**’ya da tıklayabilirsiniz. Çalıştırdığınız yazılım sürümüne dikkat edin. 
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate3m1.png)
 
-    Tarama başlayıp başarıyla tamamlandığında size bildirilir.
+    Tbmm başladığında ve başarıyla tamamlandığında size bildirilir.
  
-4. Güncelleştirmeleri tarandıktan sonra **Güncelleştirmeleri indir**’e tıklayın. Altında **yeni güncelleştirmeler**, sürüm notlarını gözden geçirin. Güncelleştirmeler İndirildikten sonra yüklemeyi onaylamanız gerektiğini de unutmayın. **Tamam**'ı tıklatın.
+4. Güncelleştirmeleri tarandıktan sonra **Güncelleştirmeleri indir**’e tıklayın. **Yeni güncelleştirmeler**altında, sürüm notlarını gözden geçirin. Ayrıca, güncelleştirmeler indirildikten sonra yüklemeyi onaylamanız gerektiğini unutmayın. **Tamam**'a tıklayın.
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     Karşıya yükleme başlayıp başarıyla tamamlandığında size bildirilir.
 
-5. Altında **cihaz güncelleştirmeleri**, tıklayın **yükleme**.
+5. **Aygıt güncelleştirmeleri** **altında, Yükle'yi**tıklatın.
 
      ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
-6. Altında **yeni güncelleştirmeler**, güncelleştirmenin kesintiye uğratacağı. Sanal dizi tek düğümlü bir cihaz olduğundan, cihaz güncelleştirildikten sonra yeniden başlatılır. Bu işlem devam eden G/Ç işlemlerini kesintiye uğratır. Güncelleştirmeleri yüklemek için **Tamam**’a tıklayın.
+6. **Yeni güncelleştirmeler**altında, güncelleştirmenin kesintiye uğratıcı olduğu konusunda uyarılırsınız. Sanal dizi tek düğümlü bir cihaz olduğundan, cihaz güncelleştirildikten sonra yeniden başlatılır. Bu işlem devam eden G/Ç işlemlerini kesintiye uğratır. Güncelleştirmeleri yüklemek için **Tamam**’a tıklayın.
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     Yükleme işi başladığında size bildirilir.
 
-7.  Yükleme işi başarıyla tamamlandıktan sonra tıklayın **işi görüntüle** bağlantı. Bu eylem açılır **Güncelleştirmeleri Yükle** dikey penceresi. İşle ilgili ayrıntılı bilgileri burada görüntüleyebilirsiniz. 
+7.  Yükleme işi başarıyla tamamlandıktan sonra **İşİ Görüntüle** bağlantısını tıklatın. Bu eylem sizi **Güncelleştirmeleri Yükle** bıçağa götürür. İşle ilgili ayrıntılı bilgileri burada görüntüleyebilirsiniz. 
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
-8. Yazılım sürümü güncelleştirme 1 (10.0.10296.0) çalıştıran bir sanal dizin ile başladıysanız, artık güncelleştirme 1.1 çalıştırıyorsanız ve gerçekleştirilir. Kalan adımları atlayabilirsiniz. 
+8. Yazılım sürümü Güncelleştirme 1 (10.0.10296.0) çalıştıran sanal bir dizi ile başladıysanız, şimdi Güncelleştirme 1.1 çalıştırıyorsanız ve yapılır. Kalan adımları atlayabilirsiniz. 
 
-    Yazılım sürümü güncelleştirme 0.6 (10.0.10293.0) çalıştıran bir sanal dizin ile başladıysanız, artık güncelleştirme 1.0 için güncelleştirilir. Güncelleştirmelerin mevcut olduğunu belirten başka bir ileti görürsünüz. Güncelleştirme 1.1 yüklemek için 4-7. adımları tekrarlayın.
+    Yazılım sürümü Güncelleştirme 0.6 (10.0.10293.0) çalıştıran sanal bir dizi ile başladıysanız, şimdi Güncelleştirme 1.0 güncelleştirilir. Güncelleştirmelerin kullanılabildiğini belirten başka bir ileti görürsünüz. Güncelleştirme 1.1'i yüklemek için 4-7 adımlarını yineleyin.
 
     
 

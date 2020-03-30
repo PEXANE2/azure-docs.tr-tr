@@ -1,47 +1,47 @@
 ---
-title: Azure SignalR hizmeti örneğini ölçeklendirme
-description: Azure portal veya Azure CLı aracılığıyla kapasiteyi eklemek veya azaltmak için bir Azure SignalR hizmeti örneğini ölçeklendirmenin nasıl yapılacağını öğrenin.
+title: Azure SignalR Hizmeti'nin bir örneğini ölçeklendirin
+description: Azure portalı veya Azure CLI aracılığıyla kapasite eklemek veya azaltmak için Bir Azure Sinyal Hizmeti örneğini nasıl ölçeklendireceklerini öğrenin.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659296"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR hizmet örneğini ölçeklendirme
-Bu makalede, Azure SignalR hizmeti örneğinizin nasıl ölçeklenmesi gösterilmektedir. Ölçeklendirme, ölçek artırma ve genişleme için iki senaryo vardır.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure Sinyal Hizmeti örneğini ölçeklendirme nasıl?
+Bu makalede, Azure SinyalR Hizmeti örneğini nasıl ölçeklendirileceğinizi gösterilmektedir. Ölçeklendirme, ölçeklendirme ve ölçeklendirme için iki senaryo vardır.
 
-* [Ölçeği artırma](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): daha fazla birim, bağlantı, ileti ve daha fazlasını öğrenin. Fiyatlandırma katmanını ücretsiz olarak standart olarak değiştirerek ölçeği değiştirmiş olursunuz.
-* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): SignalR birimlerinin sayısını artırın. Ölçeği 100 birim kadar genişletebilirsiniz.
+* [Ölçeklendirme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Daha fazla birim, bağlantı, mesaj ve daha fazlasını alın. Fiyatlandırma katmanını Ücretsiz'den Standard'a değiştirerek ölçeklendirirsiniz.
+* [Ölçeklendir](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): SignalR birimlerinin sayısını artırın. 100 adede kadar ölçeklendirebilirsiniz.
 
-Ölçek ayarlarının uygulanması birkaç dakika sürer. Nadir durumlarda, uygulanması yaklaşık 30 dakika sürebilir. Bunlar, kodunuzun değiştirilmesini veya sunucu uygulamanızı yeniden dağıtmanıza gerek kalmaz.
+Ölçek ayarlarının uygulanması birkaç dakika sürer. Nadir durumlarda, uygulamak için yaklaşık 30 dakika sürebilir. Kodunuzu değiştirmenizi veya sunucu uygulamanızı yeniden dağıtmanızı gerektirmezler.
 
-Tek bir SignalR hizmetinin fiyatlandırma ve kapasiteleri hakkında daha fazla bilgi için bkz. [Azure SignalR hizmeti fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/signalr-service/).  
+Tek tek SignalR Hizmetinin fiyatlandırması ve kapasiteleri hakkında bilgi için [Azure SignalR Hizmet Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/signalr-service/)bakın.  
 
 > [!NOTE]
-> SignalR hizmetini **ücretsiz** katmandan **Standart** katmana değiştirme veya bunun tersini yapmak, genel hizmet IP 'si değiştirilir ve genellikle DEĞIŞIKLIĞI tüm internet genelinde DNS sunucularına yaymaya 30-60 dakika sürer. DNS 'in güncelleştirilebilmesi için hizmetinize ulaşılamıyor olabilir. Genellikle fiyatlandırma katmanınızı çok sık değiştirmeniz önerilmez.
+> SignalR Hizmetini **Ücretsiz** katmandan **Standart** katmana veya tam tersi olarak değiştirmek, kamu hizmeti IP'si değiştirilir ve genellikle tüm internet üzerinden DNS sunucularında yapılan değişikliği yaymak 30-60 dakika sürer. DNS güncelleştirilmeden önce hizmetiniz erişilemeyebilir. Genellikle fiyatlandırma katmanınızı çok sık değiştirmeniz önerilmez.
 
 
-## <a name="scale-on-azure-portal"></a>Azure portal ölçeklendirin
+## <a name="scale-on-azure-portal"></a>Azure portalında ölçekle
 
 1. Tarayıcınızda [Azure portalı](https://portal.azure.com)’nı açın.
 
-2. SignalR hizmeti sayfanızda, sol menüden **Ölçek**' i seçin.
+2. SignalR Hizmeti sayfanızda, sol menüden **Ölçek'i**seçin.
    
-3. Fiyatlandırma katmanınızı seçin ve ardından **Seç**' e tıklayın. **Standart** katman için birim sayısını ayarlayın.
+3. Fiyatlandırma katmanınızı seçin ve sonra **Seç'i**tıklatın. Birim sayısını **Standart** Katman için ayarlayın.
    
     ![Portalda Ölçeklendir](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. **Save (Kaydet)** düğmesine tıklayın.
+4. **Kaydet**'e tıklayın.
 
-## <a name="scale-using-azure-cli"></a>Azure CLı kullanarak ölçeklendirme
+## <a name="scale-using-azure-cli"></a>Azure CLI'yi kullanarak ölçeklendirme
 
-Bu betik, **ücretsiz** katmanda yeni bir SignalR hizmeti kaynağı ve yeni bir kaynak grubu oluşturur ve **Standart** katmana ölçeklendirir. 
+Bu komut dosyası, **Free** Tier'in yeni bir SignalR Service kaynağı nı ve yeni bir kaynak grubunu oluşturur ve standart **katmana** kadar ölçeklendirir. 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -79,15 +79,15 @@ Yeni kaynak grubu için oluşturulan gerçek adı not edin. Tüm grup kaynaklar�
 
 ## <a name="compare-pricing-tiers"></a>Fiyatlandırma katmanlarını karşılaştırın
 
-Her fiyatlandırma katmanı için dahil edilen mesajlar ve bağlantılar gibi ayrıntılı bilgiler için bkz. [SignalR hizmeti fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/signalr-service/).
+Her fiyatlandırma katmanı için dahil edilen mesajlar ve bağlantılar gibi ayrıntılı bilgi için [SignalR Hizmet Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/signalr-service/)bakın.
 
-Her katmandaki hizmet limitleri, Kotalar ve kısıtlamalar tablosu için bkz. [SignalR hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
+Her katmandaki hizmet sınırları, kotalar ve kısıtlamalar tablosu için [SignalR Hizmet sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, tek bir SignalR hizmet örneğinin nasıl ölçeklendirileceğini öğrendiniz.
+Bu kılavuzda, tek SignalR Hizmeti örneğini nasıl ölçeklendirdiğinizi öğrendiniz.
 
-Ölçeklendirme, parçalama ve çapraz bölge senaryolarında de birden fazla uç nokta desteklenir.
+Ölçekleme, parçalama ve bölgeler arası senaryolar için birden çok uç nokta da desteklenir.
 
 > [!div class="nextstepaction"]
-> [SignalR hizmetini birden çok örnek ile ölçeklendirme](./signalr-howto-scale-multi-instances.md)
+> [birden çok örnekle sinyalr hizmetini ölçeklendir](./signalr-howto-scale-multi-instances.md)

@@ -1,33 +1,33 @@
 ---
-title: Kullanıcı tarafından atanan yönetilen kimlik ile uygulama dağıtma
-description: Bu makalede, Kullanıcı tarafından atanan yönetilen kimlik ile Service Fabric uygulamasının nasıl dağıtılacağı gösterilmektedir
+title: Kullanıcı tarafından atanan yönetilen bir kimlikle uygulamayı dağıtma
+description: Bu makalede, kullanıcı tarafından atanan yönetilen bir kimlikle Service Fabric uygulamasını nasıl dağıtabileceğinizi gösterir
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610344"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Kullanıcı tarafından atanan yönetilen kimlikle Service Fabric uygulaması dağıtma (Önizleme)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Kullanıcı Tarafından Atanan Yönetilen Kimlikle Hizmet Kumaşı uygulamasını dağıtma (önizleme)
 
-Yönetilen kimliğe sahip bir Service Fabric uygulamasını dağıtmak için, uygulamanın, genellikle bir Azure Resource Manager şablonuyla Azure Resource Manager ile dağıtılması gerekir. Service Fabric uygulamasının Azure Resource Manager aracılığıyla nasıl dağıtılacağı hakkında daha fazla bilgi için bkz. [Uygulamaları ve hizmetleri Azure Resource Manager kaynakları olarak yönetme](service-fabric-application-arm-resource.md).
+Yönetilen kimliğe sahip bir Hizmet Dokusu uygulamasını dağıtmak için uygulamanın genellikle Azure Kaynak Yöneticisi şablonuyla Azure Kaynak Yöneticisi aracılığıyla dağıtılması gerekir. Azure Kaynak Yöneticisi aracılığıyla Hizmet Dokusu uygulamasının nasıl dağıtılancaya kadar dağıtılabildiğim hakkında daha fazla bilgi [için](service-fabric-application-arm-resource.md)bkz.
 
 > [!NOTE] 
 > 
-> Azure kaynağı olarak dağıtılmayan uygulamalarda Yönetilen kimlikler **olamaz** . 
+> Azure kaynağı olarak dağıtılmayan uygulamaların Yönetilen Kimlikleri **olamaz.** 
 >
-> Yönetilen kimlik ile uygulama dağıtımı Service Fabric API sürümü `"2019-06-01-preview"`ile desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz.
+> Yönetilen Kimlik ile Hizmet Kumaş uygulama dağıtımı `"2019-06-01-preview"`API sürümü ile desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz.
 >
 
-## <a name="user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik
+## <a name="user-assigned-identity"></a>Kullanıcı Tarafından Atanan Kimlik
 
-Uygulamayı kullanıcı tarafından atanan kimlikle etkinleştirmek için önce **Identity** özelliğini **userassigned** türü ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin. Ardından, Kullanıcı tarafından atanan kimliklerin her biri için bir kolay ad ile PrincipalId eşleme bir listesini içeren **uygulama** kaynağı için **Özellikler** bölümünün Içine bir **managedıdentities** bölümü ekleyin. Kullanıcı tarafından atanan kimlikler hakkında daha fazla bilgi için bkz. [Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+Kullanıcı Tarafından Atanan kimlikle uygulamayı etkinleştirmek için, önce kimlik **özelliğini** tür **kullanıcıSı Atanmış** ve başvurulan kullanıcı tarafından atanan kimliklerle uygulama kaynağına ekleyin. Ardından, kullanıcı tarafından atanan kimliklerin her biri için principalId eşlemesine eşdostu ad listesini içeren **uygulama** kaynağının **özellikleri** bölümünün içine **yönetilen** Kimlikler bölümü ekleyin. Kullanıcı Atanan Kimlikler hakkında daha fazla bilgi [için, kullanıcı tarafından atanan yönetilen bir kimlik oluştur, listele veya sil.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)
 
 ### <a name="application-template"></a>Uygulama şablonu
 
-Kullanıcı tarafından atanan kimlikle uygulamayı etkinleştirmek için, önce **kimlik** özelliğini **userassigned** türü ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin ve ardından, Kullanıcı tarafından atanan kimliklerin her biri için bir kolay ad ile PrincipalId eşleme bir listesini içeren **Properties** bölümünün içine bir **managedıdentities** nesnesi ekleyin.
+Kullanıcı Atanmış kimlikle uygulamayı etkinleştirmek için, önce tür **userAssigned** ve başvurulan kullanıcı atanan kimliklerle uygulama kaynağına **kimlik** özelliği ekleyin, ardından atanan her bir kimlik için principalId eşlemesine uygun ad listesini içeren **özellikler** bölümüne **yönetilen Kimlikler** nesnesi ekleyin.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -58,13 +58,13 @@ Kullanıcı tarafından atanan kimlikle uygulamayı etkinleştirmek için, önce
       }
     }
 
-Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygulama için yönetilen kimliğin kolay adı olarak kullanılır. Aşağıdaki örneklerde gerçek kolay ad "AdminUser" olduğu varsayılır.
+Yukarıdaki örnekte, atanan kimliğin kaynak adı, uygulama için yönetilen kimliğin dostu adı olarak kullanılmaktadır. Aşağıdaki örnekler, gerçek dostu adın "AdminUser" olduğunu varsayar.
 
-### <a name="application-package"></a>Uygulama paketi
+### <a name="application-package"></a>Başvuru paketi
 
-1. Azure Resource Manager şablonunun `managedIdentities` bölümünde tanımlanan her bir kimlik için, **sorumlular** bölümünde uygulama bildiriminde bir `<ManagedIdentity>` etiketi ekleyin. `Name` özniteliğin `managedIdentities` bölümünde tanımlanan `name` özelliğiyle eşleşmesi gerekir.
+1. Azure Kaynak Yöneticisi `managedIdentities` şablonundaki bölümde tanımlanan her `<ManagedIdentity>` kimlik **için, Müdürler** bölümünün altındaki uygulama bildirimine bir etiket ekleyin. Öznitelik `Name` bölümünde tanımlanan `name` özellik eşleşmesi `managedIdentities` gerekir.
 
-    **ApplicationManifest. xml**
+    **ApplicationManifest.xml**
 
     ```xml
       <Principals>
@@ -74,9 +74,9 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
       </Principals>
     ```
 
-2. **Servicemanifestımport** bölümünde, yönetilen kimliği kullanan hizmet Için bir **ıdentitybindingpolicy** ekleyin. Bu ilke `AdminUser` kimliğini, daha sonra hizmet bildirimine eklenmesi gereken hizmete özgü bir kimlik adıyla eşler.
+2. **ServiceManifestImport** bölümünde, Yönetilen Kimliği kullanan hizmet için bir **IdentityBindingPolicy** ekleyin. Bu ilke, `AdminUser` kimliği daha sonra hizmet bildirimine eklenmesi gereken hizmete özgü bir kimlik adı ile eşler.
 
-    **ApplicationManifest. xml**
+    **ApplicationManifest.xml**
 
     ```xml
       <ServiceManifestImport>
@@ -86,9 +86,9 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
       </ServiceManifestImport>
     ```
 
-3. **Kaynak** bölümünün içinde, uygulama bildiriminin `IdentityBindingPolicy` `ServiceIdentityRef` eşleşen ada sahip bir **managedıdentity** eklemek için hizmet bildirimini güncelleştirin:
+3. **Uygulamalar** bildirimindeki adla eşleşen `ServiceIdentityRef` Kaynaklar bölümüne **Yönetilen Kimlik** eklemek `IdentityBindingPolicy` için hizmet bildirimini güncelleştirin:
 
-    **ServiceManifest. xml**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -101,5 +101,5 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Service Fabric uygulama kodunda yönetilen kimliği kullanma](how-to-managed-identity-service-fabric-app-code.md)
-* [Diğer Azure kaynaklarına Service Fabric uygulama erişimi verme](how-to-grant-access-other-resources.md)
+* [Hizmet Kumaşı uygulama kodunda Yönetilen Kimlik nasıl kullanılır?](how-to-managed-identity-service-fabric-app-code.md)
+* [Diğer Azure kaynaklarına Hizmet Kumaşı uygulaması erişimi nasıl verilir?](how-to-grant-access-other-resources.md)

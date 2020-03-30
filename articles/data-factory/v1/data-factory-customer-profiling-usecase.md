@@ -1,6 +1,6 @@
 ---
-title: Kullanım Örneği - Müşteri Profili Oluşturma
-description: Oyun müşterilerinin profilini oluşturmak için veri odaklı bir iş akışı (işlem hattı) oluşturmak üzere Azure Data Factory nasıl kullanıldığını öğrenin.
+title: Kullanım Örneği - Müşteri Profilleme
+description: Azure Veri Fabrikası'nın, oyun müşterilerinin profiline veri odaklı bir iş akışı (ardışık kaynak) oluşturmak için nasıl kullanıldığını öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,57 +12,57 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969284"
 ---
-# <a name="use-case---customer-profiling"></a>Kullanım Örneği - Müşteri Profili Oluşturma
-Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Cortana Intelligence hakkında daha fazla bilgi için [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)ziyaret edin. Bu belgede, Azure Data Factory ortak analiz sorunlarını nasıl çözebileceğini anlamak için basit bir kullanım durumu açıklıyoruz.
+# <a name="use-case---customer-profiling"></a>Kullanım Örneği - Müşteri Profilleme
+Azure Veri Fabrikası, çözüm hızlandırıcıların Cortana İstihbarat Paketi'ni uygulamak için kullanılan birçok hizmetten biridir.  Cortana Intelligence hakkında daha fazla bilgi için [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)adresini ziyaret edin. Bu belgede, Azure Veri Fabrikası'nın yaygın analiz sorunlarını nasıl çözebileceğini anlamaya başlamanıza yardımcı olacak basit bir kullanım örneğini açıklıyoruz.
 
 ## <a name="scenario"></a>Senaryo
-Contoso, birden çok platform için oyunlar oluşturan bir oyun şirketidir: oyun konsolları, yandan tutulan cihazlar ve kişisel bilgisayarlar (bilgisayarlar). Oyuncular bu oyunları oynatacak için kullanım düzenlerini, oyun stilini ve Kullanıcı tercihlerini izleyen büyük miktarda günlük verisi üretilir.  Contoso, demografi, bölgesel ve ürün verileriyle birleştirildiğinde, oyuncuların deneyimlerini geliştirme ve yükseltmeler ve oyun içi satın alma işlemleri için nasıl hedefleceği hakkında rehberlik almak için analiz yapabilir. 
+Contoso birden fazla platform için oyun yaratan bir oyun şirketidir: oyun konsolları, el cihazları ve kişisel bilgisayarlar (bilgisayarlar). Oyuncular bu oyunları oynarken, kullanıcının kullanım kalıplarını, oyun stilini ve tercihlerini izleyen büyük hacimli günlük verileri üretilir.  Demografik, bölgesel ve ürün verileriyle birleştirildiğinde Contoso, oyuncuların deneyimlerini nasıl geliştireceklerine ve yükseltmeler ve oyun içi satın alımlar için onları nasıl hedefleyecekleri konusunda onlara rehberlik etmek için analiz ler gerçekleştirebilir. 
 
-Contoso 'nun hedefi, oynatıcıların oyun geçmişine bağlı olarak, satış ve çapraz satış fırsatlarını belirlemektir ve iş büyümesi için etkileyici özellikler ekleyerek müşterilere daha iyi bir deneyim sağlar. Bu kullanım örneğinde, bir iş örneği olarak bir oyun şirketi kullanıyoruz. Şirket, oyuncuları temel alarak oyunlarını iyileştirmek istiyor. Bu ilkeler, müşterilerine kendi malları ve Hizmetleri etrafında sahip olmak ve müşterilerinin deneyimini geliştirmek isteyen tüm işletmeler için geçerlidir.
+Contoso'nun amacı, oyuncularının oyun geçmişine dayalı up-sell/cross-sell fırsatlarını belirlemek ve iş büyümesini sağlamak ve müşterilere daha iyi bir deneyim sunmak için ilgi çekici özellikler eklemektir. Bu kullanım durumu için, bir oyun şirketini bir işletmeye örnek olarak kullanırız. Şirket, oyunlarını oyuncuların davranışlarına göre optimize etmek istiyor. Bu ilkeler, müşterilerinin mal ve hizmetleri etrafında etkileşime girmek ve müşterilerinin deneyimini geliştirmek isteyen her işletme için geçerlidir.
 
-Bu çözümde, contoso yakın zamanda başlatıldığı bir pazarlama kampanyasının verimliliğini değerlendirmek istiyor. Ham oyun günlükleri ile başlıyoruz, coğrafi konum verileri ile onları işleyebilir ve zenginleştirin, reklam başvuru verileriyle birleştirin ve son olarak, kampanyanın etkisini analiz etmek için bunları bir Azure SQL veritabanına kopyalayın.
+Bu çözümde Contoso, yakın zamanda başlattığı bir pazarlama kampanyasının etkinliğini değerlendirmek istemese de. Ham oyun günlükleriyle başlar, bunları coğrafi konum verileriyle işleyip zenginleştiririz, reklam referans verileriyle birleştirileriz ve son olarak kampanyanın etkisini analiz etmek için azure SQL Veritabanı'na kopyalarız.
 
-## <a name="deploy-solution"></a>Çözümü dağıt
-Bu basit kullanım örneğini erişmeniz ve denemeniz, bir Azure [aboneliği](https://azure.microsoft.com/pricing/free-trial/), bir [Azure Blob depolama hesabı](../../storage/common/storage-account-create.md)ve bir [Azure SQL veritabanı](../../sql-database/sql-database-get-started.md)olmalıdır. Müşteri profili oluşturma işlem hattını, veri fabrikanızın giriş sayfasındaki **örnek ardışık düzen** kutucuğundan dağıtırsınız.
+## <a name="deploy-solution"></a>Çözüm Dağıt
+Bu basit kullanım örneğine erişmek ve denemek için tek ihtiyacınız olan bir [Azure aboneliği,](https://azure.microsoft.com/pricing/free-trial/)bir [Azure Blob depolama hesabı](../../storage/common/storage-account-create.md)ve bir Azure SQL [Veritabanıdır.](../../sql-database/sql-database-get-started.md) Örnek **ardışık hatlar** döşemesinden müşteri profil oluşturma ardışık hattını veri fabrikanızın ana sayfasında dağıtMış sınız.
 
-1. Bir veri fabrikası oluşturun veya var olan bir veri fabrikasını açın. Veri Fabrikası oluşturma adımları için [Data Factory kullanarak blob DEPOLAMADAN SQL veritabanına veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) konusuna bakın.
-2. Data Factory için **Data Factory** dikey penceresinde **örnek işlem hatları** kutucuğuna tıklayın.
+1. Bir veri fabrikası oluşturun veya varolan bir veri fabrikasını açın. Bkz. Bir veri fabrikası oluşturmak için adımlar için [Veri Fabrikası'nı kullanarak Blob Depolama'dan SQL Veritabanına verileri kopyalayın.](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+2. Veri fabrikası için **DATA FACTORY** bıçak, Örnek **boru hatları** döşemesi tıklatın.
 
-    ![Örnek işlem hatları kutucuğu](./media/data-factory-samples/SamplePipelinesTile.png)
-3. Örnek işlem **hatları** dikey penceresinde, dağıtmak istediğiniz **müşteri profili oluşturma** ' ya tıklayın.
+    ![Örnek boru hatları döşemesi](./media/data-factory-samples/SamplePipelinesTile.png)
+3. Örnek **ardışık hatlar** bıçak, dağıtmak istediğiniz **Müşteri profil oluşturma** tıklatın.
 
-    ![Örnek işlem hatları dikey penceresi](./media/data-factory-samples/SampleTile.png)
-4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesabınızın adı ve anahtarınız, Azure SQL Server adı, veritabanı, Kullanıcı KIMLIĞI ve parola.
+    ![Örnek boru hatları bıçak](./media/data-factory-samples/SampleTile.png)
+4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesap adınız ve anahtarınız, Azure SQL sunucu adınız, veritabanınız, Kullanıcı Kimliğiniz ve parolanız.
 
-    ![Örnek dikey pencere](./media/data-factory-samples/SampleBlade.png)
-5. Yapılandırma ayarlarını belirterek tamamladıktan sonra, işlem hatları tarafından kullanılan örnek işlem hatlarını ve bağlı hizmetleri/tabloları oluşturmak/dağıtmak için **Oluştur** ' a tıklayın.
-6. **Örnek işlem hatları** dikey penceresinde daha önce tıklattığınız örnek kutucukta dağıtım durumunu görürsünüz.
+    ![Örnek bıçak](./media/data-factory-samples/SampleBlade.png)
+5. Yapılandırma ayarlarını belirtmeyi bitirdikten sonra, örnek ardışık hatlar ve ardışık hatlar tarafından kullanılan bağlantılı hizmetleri/tabloları oluşturmak/dağıtmak için **Oluştur'u** tıklatın.
+6. **Örnek ardışık hatlar** bıçak üzerinde daha önce tıkladığınız örnek döşemede dağıtım durumunu görürsünüz.
 
     ![Dağıtım durumu](./media/data-factory-samples/DeploymentStatus.png)
-7. Örnek için kutucukta **dağıtım başarılı** iletisini gördüğünüzde, **örnek işlem hatları** dikey penceresini kapatın.  
-8. **Data Factory** dikey penceresinde bağlı hizmetler, veri kümeleri ve işlem hatları 'nın veri fabrikanıza eklendiğini görürsünüz.  
+7. **Dağıtım'ın** örnek için döşemede başarılı iletisini gördüğünüzde, **Örnek ardışık hatlar bıçaklarını** kapatın.  
+8. **DATA FACTORY** bıçak üzerinde, bağlantılı hizmetlerin, veri kümelerinin ve boru hatlarının veri fabrikanıza eklenmediğini görürsünüz.  
 
     ![Data Factory dikey penceresi](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="solution-overview"></a>Çözüme Genel Bakış
-Bu basit kullanım örneği, verileri almak, hazırlamak, dönüştürmek, analiz etmek ve yayımlamak için Azure Data Factory nasıl kullanabileceğinizi gösteren bir örnek olarak kullanılabilir.
+Bu basit kullanım örneği, verileri yutmak, hazırlamak, dönüştürmek, analiz etmek ve yayımlamak için Azure Veri Fabrikası'nı nasıl kullanabileceğinize bir örnek olarak kullanılabilir.
 
 ![Uçtan uca iş akışı](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
 
-Bu şekilde, veri ardışık düzenleri dağıtıldıktan sonra Azure portal nasıl göründüğü gösterilmektedir.
+Bu Şekil, veri ardışık lıklarının dağıtıldıktan sonra Azure portalında nasıl göründüğünü gösterilmektedir.
 
-1. **Partitiongamelogspipeline** blob depolamadan ham oyun olaylarını okur ve yıl, ay ve güne göre bölümler oluşturur.
-2. **Enrichgamelogspipeline** , bölümlenmiş oyun olaylarını coğrafi kod başvuru verileriyle BIRLEŞTIRIR ve IP adreslerini karşılık gelen coğrafi konumlara eşleyerek verileri zenginleştirir.
-3. **Çözümleyiciler** , en gelişmiş verileri kullanır ve pazarlama kampanyası verimliliğini içeren nihai çıktıyı oluşturmak için bunu reklam verileriyle işler.
+1. **PartitionGameLogsPipeline** blob depolama dan ham oyun olayları okur ve yıl, ay ve gün dayalı bölümler oluşturur.
+2. **EnrichGameLogsPipeline,** coğrafi kod referans verileriyle bölümlenmiş oyun etkinliklerine katılır ve IP adreslerini ilgili coğrafi konumlara eşleyerek verileri zenginleştirir.
+3. **AnalyzeMarketingCampaignPipeline** ardışık alanı zenginleştirilmiş verileri kullanır ve pazarlama kampanyası etkinliğini içeren son çıktıyı oluşturmak için reklam verileriyle işler.
 
-Bu örnekte, giriş verilerini kopyalamak, verileri dönüştürmek ve işlemek ve nihai verileri bir Azure SQL veritabanına çıkarmak için Data Factory kullanılır.  Ayrıca veri işlem hatları ağını görselleştirin, bunları yönetebilir ve durumlarını kullanıcı arabiriminden izleyebilirsiniz.
+Bu örnekte, Veri Fabrikası, giriş verilerini kopyalayan, verileri dönüştüren ve işleyen ve son verileri bir Azure SQL Veritabanına aktaran etkinlikleri düzenlemek için kullanılır.  Ayrıca veri ardışık lıklar ağını görselleştirebilir, bunları yönetebilir ve durumlarını Kullanıcı UI'den izleyebilirsiniz.
 
 ## <a name="benefits"></a>Avantajlar
-Kullanıcı profili analizlerini en iyi duruma getirerek ve iş hedefleri ile hizalayarak, oyun şirketi kullanım modellerini hızlıca toplayabilir ve pazarlama kampanyalarının verimliliğini analiz edebilir.
+Oyun şirketi, kullanıcı profili analitiğini optimize ederek ve iş hedefleriyle uyumlu hale getirmekle, kullanım modellerini hızla toplayabilir ve pazarlama kampanyalarının etkinliğini analiz edebiliyor.
 

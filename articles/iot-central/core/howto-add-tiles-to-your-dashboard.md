@@ -1,89 +1,89 @@
 ---
-title: Panolarınıza kutucuk ekleme | Microsoft Docs
-description: Oluşturucu olarak, varsayılan Azure IoT Central uygulama panosunu yapılandırmayı öğrenin.
+title: Panonuza kutucuk ekleme | Microsoft Dokümanlar
+description: Oluşturucu olarak, varsayılan Azure IoT Merkezi uygulama panosunu nasıl yapılandırıştırmayı öğrenin.
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158817"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
-**Pano** , uygulamaya erişimi olan KULLANıCıLAR uygulamanın URL 'sine gitince yüklenen sayfasıdır. Uygulamanızı **uygulama şablonlarından**birinde oluşturduysanız, uygulamanız başlamak için önceden tanımlanmış bir panoya sahip olur. Uygulamanızı **eski uygulama** uygulaması şablonundan oluşturduysanız, panonuz başlamak için boş olacaktır.
+**Pano,** uygulamaya erişimi olan kullanıcılar uygulamanın URL'sine gittiğinde yüklenen sayfadır. **Uygulamaşablonlarından**birinden uygulamanızı oluşturduysanız, uygulamanızın başlatmak için önceden tanımlanmış bir panosu olacaktır. Uygulamanızı Eski uygulama **uygulama** şablonundan oluşturduysanız, panonuz başlamak için boş olur.
 
 > [!NOTE]
-> Kullanıcılar, varsayılan uygulama panosuna ek olarak [birden çok Pano oluşturabilir](howto-create-personal-dashboards.md) . Bu panolar yalnızca Kullanıcı tarafından kişisel olabilir veya uygulamanın tüm kullanıcıları arasında paylaşılabilir. 
+> Kullanıcılar varsayılan uygulama panosuna ek olarak [birden çok pano oluşturabilir.](howto-create-personal-dashboards.md) Bu panolar yalnızca kullanıcıya özel olabilir veya uygulamanın tüm kullanıcıları arasında paylaşılabilir. 
 
-## <a name="add-tiles"></a>Kutucuk Ekle
+## <a name="add-tiles"></a>Kutucuk ekle
 
-Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşturulan bir uygulamada gösterilmektedir. Uygulamanıza ilişkin varsayılan panoyu özelleştirmek için sayfanın sol üst kısmında **Düzenle** ' yi seçin.
-
-> [!div class="mx-imgBorder"]
-> "örnek contoso" şablonunu temel alan uygulamalar için Pano ![](media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png)
-
-**Düzenle** seçildiğinde Pano kitaplığı bölmesi açılır. Kitaplık, Panoyu özelleştirmek için kullanabileceğiniz kutucukları ve Pano temel öğelerini içerir.
+Aşağıdaki ekran görüntüsü, **Özel Uygulama** şablonundan oluşturulan bir uygulamada panoyu gösterir. Uygulamanız için varsayılan panoyu özelleştirmek için sayfanın sol üst **kısmındaki Edit'i** seçin.
 
 > [!div class="mx-imgBorder"]
-> Pano kitaplığı](media/howto-add-tiles-to-your-dashboard/dashboard-library.png) ![
+> !["Örnek Contoso" şablonuna dayalı uygulamalar için pano](media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png)
 
-Örneğin, cihazın geçerli sıcaklığını için bir **telemetri** kutucuğu ekleyebilirsiniz. Bunu yapmak için:
-1. Bir **cihaz şablonu** seçin
-1. Bir pano kutucuğunda görmek istediğiniz cihaz için bir **cihaz örneği** seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.
-1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna tıklayabilir ve **Birleştir**' e tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihaz örneği seçip panoda bir sıcaklık telemetri kutucuğu oluşturma gösterilmektedir.
-1. Kutucuğu panoya kaydetmek için sol üst kısımdaki **Kaydet** ' i seçin.
+**Edit'i** seçmek pano kitaplık panelini açar. Kitaplık, panoyu özelleştirmek için kullanabileceğiniz kutucukları ve pano ilkellerini içerir.
 
 > [!div class="mx-imgBorder"]
-> ayarlar ve özellikler hakkındaki ayrıntılarla "cihaz ayrıntılarını yapılandırma" formunu ![](media/howto-add-tiles-to-your-dashboard/device-details.png)
+> ![Pano kitaplığı](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
 
-Artık bir operatör varsayılan uygulama panosunu görüntülediğinde, cihaz için **sıcaklığa** sahip yeni kutucuğu görürler. Her kutucukta, kutucuk oluşturulduğunda görüntülenecek olan önceden seçilmiş bir grafik, grafik, vb. bulunur. Ancak, kullanıcılar bu görselleştirmeyi düzenlemeyi ve değiştirmeyi seçebilir. 
-
-> [!div class="mx-imgBorder"]
-> "Pano" sekmesini, kutucuk için](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png) ve özellikleriyle ![.
-
-## <a name="edit-tiles"></a>Kutucukları Düzenle
-
-Panodaki bir kutucuğu düzenlemek için, önce sayfanın sol üst kısmında **Düzenle** ' ye tıklayın, bu, pano ve tüm kutucukları için düzenleme modunu açar. 
+Örneğin, aygıtın geçerli sıcaklığı için bir **Telemetri** döşemesi ekleyebilirsiniz. Bunu yapmak için:
+1. Aygıt **Şablonu** Seçin
+1. Pano döşemesinde görmek istediğiniz aygıt için aygıt **örneği** seçin. Daha sonra, döşemede kullanılabilecek aygıtın özelliklerinin bir listesini görürsünüz.
+1. Panodaki döşemeyi oluşturmak için **Sıcaklık'ı** tıklatın ve pano alanına sürükleyin. Ayrıca **Sıcaklık'ın** yanındaki onay kutusunu tıklatAbilir ve **Birleştir'i**tıklatın. Aşağıdaki ekran görüntüsü, bir Aygıt Şablonu ve Aygıt Örneği'ni seçip panoda sıcaklık telemetrisi döşemesi oluşturmayı gösterir.
+1. Döşemeyi panoya kaydetmek için sol üstteki **Kaydet'i** seçin.
 
 > [!div class="mx-imgBorder"]
-> Seçili kutucuk için düzenleme modu etkinleştirilmiş Pano ekranına ![](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
+> ![Ayarlar ve özellikler için ayrıntılarla birlikte "Aygıt Ayrıntılarını Yapılandırma" formu](media/howto-add-tiles-to-your-dashboard/device-details.png)
 
-Ardından, düzenlemek istediğiniz kutucuğun sağ üst köşesindeki **dişli** simgesine tıklayın. Burada, kutucuğun başlığını, görselleştirmesini, toplamayı, vb. gibi düzenleyebilirsiniz.
-
-> [!div class="mx-imgBorder"]
-> kutucuk toplaması ayarları için ![açılan listesi](media/howto-add-tiles-to-your-dashboard/aggregation-settings.png)
-
-Ayrıca, kutucukta **cetvel** simgesine tıklayarak grafik görselleştirmeyi değiştirebilirsiniz.
+Şimdi bir operatör varsayılan uygulama panosunu görüntülediğinde, aygıtın **Sıcaklığı** ile yeni döşemeyi görür. Her döşeme, döşeme oluşturulduğunda görüntülenecek önceden seçilmiş bir grafik, grafik vb. vardır. Ancak, kullanıcılar bu görselleştirmeyi ve değiştirmeyi seçebilir. 
 
 > [!div class="mx-imgBorder"]
-> kutucuk görselleştirme ayarları için ![açılan listesi](media/howto-add-tiles-to-your-dashboard/visualization-settings.png)
+> ![Döşeme için görüntülenen ayarları ve özellikleri ile "Pano" sekmesi](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-## <a name="tile-types"></a>Döşeme türleri
+## <a name="edit-tiles"></a>Kutucukları edin
 
-Aşağıdaki tabloda Azure IoT Central kutucukların kullanımı özetlenmektedir:
+Panodaki bir kutucuğu yeniden güncellemek için, önce sayfanın sol üst kısmındaki **ve** pano ve tüm kutucuklar için edit modunu açacak olan Edit'i tıklatın. 
+
+> [!div class="mx-imgBorder"]
+> ![Seçili bir döşeme için etkinleştirilen edit moduna sahip pano ekranı](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
+
+Ardından, düzeltmek istediğiniz döşemenin sağ üst köşesindeki **Dişli** simgesine tıklayın. Burada başlığı, görselleştirme, toplama, vb dahil olmak üzere kiremit yönlerini edebilirsiniz.
+
+> [!div class="mx-imgBorder"]
+> ![Döşeme toplama ayarları için açılır bırakma](media/howto-add-tiles-to-your-dashboard/aggregation-settings.png)
+
+Döşemeüzerindeki **Cetvel** simgesine tıklayarak grafik görselleştirmesini de değiştirebilirsiniz.
+
+> [!div class="mx-imgBorder"]
+> ![Döşeme görselleştirme ayarları için açılır bırakma](media/howto-add-tiles-to-your-dashboard/visualization-settings.png)
+
+## <a name="tile-types"></a>Kiremit türleri
+
+Aşağıdaki tablo, Azure IoT Central'daki kutucukların kullanımını özetley:
  
-| Kaldır | Pano | Açıklama
+| Kutucuk | Pano | Açıklama
 | ----------- | ------- | ------- |
-| İçerik | Uygulama ve cihaz kümesi panoları |Markın desteklenen kutucuklar başlık ve açıklama metnini görüntüleyen tıklatılabilir kutucuklardır. Ayrıca, bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bu kutucuğu bağlantı kutucuğu olarak da kullanabilirsiniz.|
-| Resim | Uygulama ve cihaz kümesi panoları |Görüntü kutucukları özel bir görüntü görüntüler ve tıklatılabilir olabilir. Panoya grafik eklemek ve isteğe bağlı olarak bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bir görüntü kutucuğu kullanın.|
-| Etiket | Uygulama panoları |Etiket kutucukları, bir panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. İlgili bilgileri panoya, iletişim ayrıntılarına veya yardım 'a eklemek için bir etiket kutucuğu kullanın.|
-| Eşleme | Uygulama ve cihaz kümesi panoları |Harita kutucukları bir haritadaki bir cihazın konumunu ve durumunu görüntüler. Örneğin, bir cihazın nerede olduğunu ve fanı 'nin geçiş yapıp yapmadığını görüntüleyebilirsiniz.|
-| Çizgi grafik | Uygulama ve cihaz panoları |Çizgi grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümünün bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çizgi grafik görüntüleyebilirsiniz.|
-| Çubuk grafik | Uygulama ve cihaz panoları |Çubuk grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
-| Pasta grafik | Uygulama ve cihaz kümesi panoları |Pasta grafik kutucukları, bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler.|
-| Isı Haritası | Uygulama ve cihaz kümesi panoları |Isı haritası kutucukları, renk olarak temsil edilen cihaz kümesi hakkındaki bilgileri görüntüler.|
-| Olay geçmişi | Uygulama ve cihaz panoları |Olay geçmişi kutucukları bir zaman dönemi içinde bir cihaz için olayları görüntüler. Örneğin, son bir saat içinde bir cihaz için tüm sıcaklık değişikliklerini göstermek üzere onu kullanabilirsiniz.|
-| Durum geçmişi | Uygulama ve cihaz panoları |Durum geçmişi kutucukları bir zaman döneminin ölçüm değerlerini görüntüler. Örneğin, son bir saat içinde bir cihaz için sıcaklık değerlerini göstermek üzere onu kullanabilirsiniz.|
-| KPI | Uygulama ve cihaz panoları | KPI kutucukları bir dönem için bir toplama telemetrisi veya olay ölçümü görüntüler. Örneğin, son bir saat içinde bir cihaz için ulaşılan en fazla sıcaklık sayısını göstermek için bunu kullanabilirsiniz.|
-| Bilinen son değer | Uygulama ve cihaz panoları |Son bilinen değer kutucukları, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu kutucuğu, bir cihaz için en son sıcaklık, basınç ve nem ölçümlerini göstermek için kullanabilirsiniz.|
+| İçerik | Uygulama ve cihaz seti panoları |İşaretle destekli döşemeler, başlık ve açıklama metnini görüntüleyen tıklanabilir kutucuklardır. Bu döşemeyi, kullanıcının uygulamanızla ilgili bir URL'de gezinmesini sağlamak için bağlantı döşemesi olarak da kullanabilirsiniz.|
+| Görüntü | Uygulama ve cihaz seti panoları |Resim döşemeleri özel bir resim görüntüler ve tıklanabilir. Panoya grafik eklemek ve isteğe bağlı olarak bir kullanıcının uygulamanızla alakalı bir URL'de gezinmesini sağlamak için resim döşemesini kullanın.|
+| Etiketle | Uygulama panoları |Etiket döşemeleri panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. Panoya bu tür açıklamalar, iletişim bilgileri veya yardım la ilgili bilgileri eklemek için etiket döşemesi kullanın.|
+| Eşleme | Uygulama ve cihaz seti panoları |Harita kutucukları bir haritada aygıtın konumunu ve durumunu görüntüler. Örneğin, bir aygıtın nerede olduğunu ve fanı açık olup olmadığını görüntüleyebilirsiniz.|
+| Çizgi Grafiği | Uygulama ve cihaz panoları |Çizgi grafiği döşemeleri, bir aygıt için belirli bir süre için toplam ölçüm grafiği görüntüler. Örneğin, bir aygıtın son bir saatteki ortalama sıcaklığını ve basıncını gösteren bir çizgi grafiği görüntüleyebilirsiniz.|
+| Çubuk Grafiği | Uygulama ve cihaz panoları |Çubuk grafik döşemeleri, bir aygıt için belirli bir süre için toplam ölçümlerin grafiğini görüntüler. Örneğin, bir aygıtın son bir saatteki ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
+| Pasta Grafiği | Uygulama ve cihaz seti panoları |Pasta grafiği döşemeleri, bir aygıt için belirli bir süre için toplam ölçümlerin grafiğini görüntüler.|
+| Isı Haritası | Uygulama ve cihaz seti panoları |Isı Haritası döşemeleri, renk olarak temsil edilen cihaz kümesi hakkındaki bilgileri görüntüler.|
+| Etkinlik Geçmişi | Uygulama ve cihaz panoları |Olay Geçmişi kutucukları bir aygıt için olayları bir zaman dilimi içinde görüntüler. Örneğin, son bir saat içinde bir aygıtın tüm sıcaklık değişikliklerini göstermek için kullanabilirsiniz.|
+| Devlet Tarihi | Uygulama ve cihaz panoları |Durum geçmişi kutucukları bir döneme ait ölçüm değerlerini görüntüler. Örneğin, son saat içinde bir aygıtın sıcaklık değerlerini göstermek için kullanabilirsiniz.|
+| KPI | Uygulama ve cihaz panoları | KPI karoları bir süre için toplu bir telemetri veya olay ölçümü görüntüler. Örneğin, son bir saat içinde bir aygıt için ulaşılan maksimum sıcaklığı göstermek için kullanabilirsiniz.|
+| Bilinen Son Değer | Uygulama ve cihaz panoları |Bilinen son değer döşemeleri, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu döşemeyi bir aygıtın en son sıcaklık, basınç ve nem ölçümlerini görüntülemek için kullanabilirsiniz.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central varsayılan uygulama panonuzun nasıl yapılandırılacağını öğrendiğinize göre, [Kişisel Pano oluşturmayı öğrenin](howto-create-personal-dashboards.md).
+Azure IoT Merkezi varsayılan uygulama panonuzu yapılandırmayı öğrendiğinize göre, [kişisel bir pano oluşturmayı öğrenebilirsiniz.](howto-create-personal-dashboards.md)

@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Kubernetes için Azure Container Service giriş
+title: (AmortismanA Uğradı) Kubernetes için Azure Konteyner Hizmetine Giriş
 description: Kubernetes için Azure Container Service, Azure üzerinde kapsayıcı tabanlı uygulamaları dağıtmayı ve yönetmeyi kolaylaştırır.
 author: gabrtv
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
 ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76271578"
 ---
-# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>Kullanım DıŞı Kubernetes için Azure Container Service giriş
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(AmortismanA Uğradı) Kubernetes için Azure Konteyner Hizmetine Giriş
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes Service (AKS) genel bakış](../../aks/intro-kubernetes.md).
+> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü için Azure [Kubernetes Hizmetine (AKS) genel bakış'a](../../aks/intro-kubernetes.md)bakın.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -29,7 +29,7 @@ Azure Container Service’i kullanarak Azure’un kuruluş düzeyindeki özellik
 Azure Container Service’i ile amacımız, günümüzde müşterilerimiz arasında popüler olan açık kaynak araçları ve teknolojileri kullanan bir kapsayıcı barındırma ortamı sunmaktır. Bu işlem için standart Kubernetes API uç noktalarını kullanıma sunacağız. Bu standart uç noktaları kullanarak, bir Kubernetes kümesiyle iletişim kurma özelliğine sahip olan tüm yazılımlardan faydalanabilirsiniz. Örneğin [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/), [helm](https://helm.sh/) veya [draft](https://github.com/Azure/draft) arasından seçim yapabilirsiniz.
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service"></a>Azure Container Service kullanan bir Kubernetes kümesi oluşturma
-Azure Container Service’i kullanmaya başlamak için portal aracılığıyla (Market’te [Azure Container Service](container-service-kubernetes-walkthrough.md) ifadesini aratın) veya **Azure CLI** ile bir Azure Container Service kümesi dağıtırsınız. Azure Resource Manager şablonları hakkında daha fazla denetime gereksinim duyan İleri düzey bir kullanıcıysanız açık kaynak [acs-engine](https://github.com/Azure/acs-engine) projesini kullanarak kendi özel Kubernetes kümenizi oluşturup `az` CLI’si ile dağıtabilirsiniz.
+Azure Container Service’i kullanmaya başlamak için portal aracılığıyla (Market’te [Azure Container Service](container-service-kubernetes-walkthrough.md) ifadesini aratın) veya **Azure CLI** ile bir Azure Container Service kümesi dağıtırsınız. Azure Resource Manager şablonları hakkında daha fazla denetime gereksinim duyan İleri düzey bir kullanıcıysanız açık kaynak [acs-engine](https://github.com/Azure/acs-engine) projesini kullanarak kendi özel Kubernetes kümenizi oluşturup `az` CLI'si ile dağıtabilirsiniz.
 
 ### <a name="using-kubernetes"></a>Kubernetes kullanma
 Kubernetes, kapsayıcılı uygulamaların dağıtımını, ölçeklendirmesini ve yönetimini otomatikleştirir. Aşağıdaki zengin özelliklere sahiptir:

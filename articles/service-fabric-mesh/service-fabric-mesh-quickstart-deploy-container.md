@@ -1,15 +1,15 @@
 ---
-title: Hızlı başlangıç-Merhaba Dünya Azure Service Fabric ağı 'na dağıtma
+title: Quickstart - Azure Servis Kumaş Örgü'ye Merhaba Dünyası Dağıt
 description: Bu hızlı başlangıçta, bir Service Fabric Mesh uygulamasının Azure Service Fabric Mesh’e nasıl dağıtıldığı gösterilir.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75458965"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
@@ -25,7 +25,7 @@ Henüz bir Azure hesabınız yoksa, başlamadan önce [ücretsiz hesap oluşturu
 ## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama 
 Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Şu [yönergeleri](service-fabric-mesh-howto-setup-cli.md) izleyerek Azure Service Fabric Mesh CLI uzantısı modülünü yükleyin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 Azure'da oturum açın ve aboneliğinizi ayarlayın.
 
 ```azurecli-interactive
@@ -47,9 +47,9 @@ az group create --name myResourceGroup --location eastus
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Önceki komutu kullanarak bir Linux uygulama dağıtır [linux.json şablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Bir Windows uygulamasını dağıtmak istiyorsanız, kullanın [windows.json şablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). Windows kapsayıcı görüntüleri Linux kapsayıcı görüntülerinden büyüktür ve dağıtılması daha uzun sürebilir.
+Önceki komut [linux.json şablonunu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)kullanarak bir Linux uygulaması dağıtıyor. Bir Windows uygulaması dağıtmak istiyorsanız, [windows.json şablonu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json)kullanın. Windows kapsayıcı görüntüleri Linux kapsayıcı görüntülerinden büyüktür ve dağıtılması daha uzun sürebilir.
 
-Bu komut, aşağıda gösterilen bir JSON parçacığı oluşturur. Altında ```outputs``` JSON çıkışını kopyalama bölümünü ```publicIPAddress``` özelliği.
+Bu komut, aşağıda gösterilen bir JSON parçacığı üretecektir. JSON ```outputs``` çıktıbölümü altında, özelliği ```publicIPAddress``` kopyalayın.
 
 ```json
 "outputs": {
@@ -60,7 +60,7 @@ Bu komut, aşağıda gösterilen bir JSON parçacığı oluşturur. Altında ```
 }
 ```
 
-Bu bilgiler geldiği ```outputs``` ARM şablonu bölümünde. Bu bölümde, aşağıda gösterildiği gibi ağ geçidi kaynağının genel IP adresini Getir başvuruyor. 
+Bu bilgiler ARM ```outputs``` şablonundaki bölümden gelir. Aşağıda gösterildiği gibi, bu bölümde ortak IP adresini almak için Ağ Geçidi kaynağı başvurur. 
 
 ```json
   "outputs": {
@@ -93,7 +93,7 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Uygulamayı silmeye hazırsanız, kaynak grubunu ve içerdiği uygulama ve ağ kaynaklarını kaldırmak için [az Group Delete][az-group-delete] komutunu çalıştırın.
+Uygulamayı silmeye hazır olduğunuzda, kaynak grubunu, uygulamayı ve uygulamanın içerdiği ağ kaynaklarını kaldırmak için [az group delete][az-group-delete] komutunu çalıştırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

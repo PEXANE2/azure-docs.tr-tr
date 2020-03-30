@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-PowerShell Azure Analysis Services kullanarak Azure Analysis Services oluşturma | Microsoft Docs
+title: Quickstart - PowerShell Azure Analiz Hizmetlerini Kullanarak Azure Analiz Hizmetleri Oluşturun | Microsoft Dokümanlar
 description: PowerShell kullanarak bir Azure Analysis Services sunucusu oluşturma hakkında bilgi edinin.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442865"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Hızlı başlangıç: Sunucu oluşturma - PowerShell
@@ -26,15 +26,15 @@ Bu hızlı başlangıç, Azure aboneliğinizde bir Azure Analysis Services sunuc
 - **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması ve ilgili dizinde bir hesabınızın olması gerekir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
 - **Azure PowerShell**. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
-## <a name="import-azanalysisservices-module"></a>Al az. AnalysisServices modülü
+## <a name="import-azanalysisservices-module"></a>İthalat Az.AnalysisServices modülü
 
-Aboneliğinizde bir sunucu oluşturmak için [az. AnalysisServices](/powershell/module/az.analysisservices) modülünü kullanın. PowerShell oturumunuza az. AnalysisServices modülünü yükleyin.
+Aboneliğinizde bir sunucu oluşturmak için [Az.AnalysisServices](/powershell/module/az.analysisservices) modüllerini kullanırsınız. Az.AnalysisServices modüllerini PowerShell oturumunuza yükleyin.
 
 ```powershell
 Import-Module Az.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın. Ekrandaki yönergeleri izleyin.
 
@@ -44,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Azure kaynak grubu](../azure-resource-manager/management/overview.md), Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Sunucunuzu oluşturduğunuzda, aboneliğinizde bir kaynak grubu belirtmeniz gerekir. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir tane oluşturabilirsiniz. Aşağıdaki örnekte Batı ABD bölgesinde `myResourceGroup` adında bir kaynak grubu oluşturulmaktadır.
+[Azure kaynak grubu](../azure-resource-manager/management/overview.md), Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Sunucunuzu oluşturduğunuzda, aboneliğinizde bir kaynak grubu belirtmeniz gerekir. Zaten bir kaynak grubunuz yoksa, [Yeni Kaynak Grubu](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak oluşturabilirsiniz. Aşağıdaki örnekte Batı ABD bölgesinde `myResourceGroup` adında bir kaynak grubu oluşturulmaktadır.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -72,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 Bu hızlı başlangıçta PowerShell kullanarak Azure aboneliğinizde sunucu oluşturmayı öğrendiniz. Sunucuyu oluşturduğunuza göre bir sunucu güvenlik duvarı yapılandırarak (isteğe bağlı) güvenliğinin sağlanmasına yardımcı olacaksınız. Sunucunuza doğrudan portaldan örnek bir veri modeli de ekleyebilirsiniz. Örnek modelin olması, model veritabanı rollerini yapılandırma ve istemci bağlantılarını test etme işlemlerini öğrenme konusunda yardımcı olur. Daha fazla bilgi edinmek için, örnek model ekleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal](analysis-services-qs-firewall.md)      
+> [Quickstart: Sunucu güvenlik duvarLarını yapılandırma - Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Öğretici: Sunucunuza örnek model ekleme](analysis-services-create-sample-model.md)

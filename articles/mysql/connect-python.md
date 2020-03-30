@@ -1,65 +1,67 @@
 ---
-title: Python kullanarak bağlanma-MySQL için Azure veritabanı
+title: MySQL için Python - Azure Veritabanı'nı kullanarak bağlanın
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Python kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: seo-python-october2019
+ms.custom:
+- mvc
+- seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938928"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067910"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile bağlanmak ve veri sorgulamak için Python kullanma
+# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Quickstart: MySQL için Azure Veritabanı ile veri bağlamak ve sorgulamak için Python'u kullanın
 
-Bu hızlı başlangıçta Python kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
+Bu hızlı başlangıçta, Python'u kullanarak MySQL için bir Azure Veritabanına bağlanırsınız. Daha sonra, veritabanındaki verileri Mac, Ubuntu Linux ve Windows platformlarından sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanırsınız. 
 
-Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
+Bu konu Python'u kullanmaya aşina olduğunuzu varsayar, ancak MySQL için Azure Veritabanı ile çalışmaya yeni başlıyorsunuz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- MySQL sunucusu için bir Azure Veritabanı. [Azure portalı kullanarak MySQL sunucusu için bir Azure Veritabanı oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya Azure [CLI'yi kullanarak MySQL sunucusu için bir Azure Veritabanı oluşturun.](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Python’u ve MySQL bağlayıcısını yükleme
 
-Aşağıdaki adımları kullanarak bilgisayarınıza Python ve Python için MySQL bağlayıcısını yüklersiniz: 
+Python'u ve Python için MySQL konektörünü aşağıdaki adımları kullanarak bilgisayarınıza yükleyin: 
 
 > [!NOTE]
-> Bu hızlı başlangıç, MySQL 'e bağlanmak için ham SQL sorgu yaklaşımını kullanır. Bir Web çerçevesi kullanıyorsanız, Framework için önerilen bağlayıcıyı kullanın, örneğin, Docgo için [mysqlclient](https://pypi.org/project/mysqlclient/) .
+> Bu hızlı başlatma, MySQL'e bağlanmak için ham bir SQL sorgu yaklaşımı kullanır. Bir web çerçevesi kullanıyorsanız, çerçeve için önerilen bağlayıcıyı (örneğin, Django için [mysqlclient)](https://pypi.org/project/mysqlclient/) kullanın.
 
-1. İşletim sistemi için [Python 3,7 veya üstünü](https://www.python.org/downloads/) indirin ve yükleyin. MySQL Bağlayıcısı bunun gerektirdiği için Python 'u `PATH`eklediğinizden emin olun.
+1. İşletim sisteminiz için [Python 3.7 veya üzeri](https://www.python.org/downloads/) indirin ve yükleyin. MySQL konektörü `PATH`bunu gerektirdiğinden, python'u sizin ,' nize eklediğinizden emin olun.
    
-1. Bir komut istemi veya `bash` kabuğu açın ve büyük V anahtarıyla `python -V` çalıştırarak Python sürümünüzü kontrol edin.
+1. Bir komut istemi `bash` veya kabuk açın ve `python -V` büyük V anahtarı ile çalıştırarak Python sürümünü kontrol edin.
    
-1. `pip` paketi yükleyicisi, Python 'un en son sürümlerine dahildir. `pip install -U pip`çalıştırarak `pip` en son sürüme güncelleştirin. 
+1. Paket `pip` yükleyici Python'un en son sürümlerinde yer alan paket yükleyicidir. Çalıştırarak en son `pip install -U pip`sürüme güncelleştirin. `pip` 
    
-   `pip` yüklü değilse, `get-pip.py`indirip yükleyebilirsiniz. Daha fazla bilgi için bkz. [yükleme](https://pip.pypa.io/en/stable/installing/). 
+   `pip` Yüklenmiyorsa, `get-pip.py`'yi ' yle indirip yükleyebilirsiniz. Daha fazla bilgi için [Yükleme'ye](https://pip.pypa.io/en/stable/installing/)bakın. 
    
-1. Python için MySQL bağlayıcısını ve bağımlılıklarını yüklemek için `pip` kullanın:
+1. Python `pip` ve bağımlılıkları için MySQL bağlayıcısını yüklemek için kullanın:
    
    ```bash
    pip install mysql-connector-python
    ```
    
-   MySQL için Python bağlayıcısını [MySQL.com](https://dev.mysql.com/downloads/connector/python/)adresinden da yükleyebilirsiniz. Python için MySQL Bağlayıcısı hakkında daha fazla bilgi için [MySQL Bağlayıcısı/Python Geliştirici Kılavuzu](https://dev.mysql.com/doc/connector-python/en/)' na bakın. 
+   MySQL için Python bağlayıcısını [mysql.com'dan](https://dev.mysql.com/downloads/connector/python/)da yükleyebilirsiniz. Python için MySQL Bağlayıcısı hakkında daha fazla bilgi için [MySQL Bağlayıcısı/Python Geliştirici Kılavuzu'na](https://dev.mysql.com/doc/connector-python/en/)bakın. 
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 
-Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlantı bilgilerini alın. Sunucu adı, veritabanı adı ve oturum açma kimlik bilgileri gerekir.
+MySQL için Azure Veritabanı'na bağlanmak için gereken bağlantı bilgilerini Azure portalından alın. Sunucu adı, veritabanı adı ve giriş kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
    
-1. Portal arama çubuğunda, oluşturduğunuz MySQL sunucusu için Azure veritabanı 'nı ( **demosunucum**gibi) arayın ve seçin.
+1. Portal arama çubuğunda, **mydemoserver**gibi oluşturduğunuz MySQL sunucusu için Azure Veritabanı'nı arayın ve seçin.
    
    ![MySQL için Azure Veritabanı sunucu adı](./media/connect-python/1_server-overview-name-login.png)
    
-1. Sunucunun **genel bakış** sayfasında **sunucu adı** ve **Sunucu Yöneticisi oturum açma adı**' nı bir yere göz atın. Parolanızı unutursanız, bu sayfadan parolayı da sıfırlayabilirsiniz.
+1. Sunucunun Genel **Bakış** sayfasından, Sunucu **adını** ve **Server yönetici giriş adını**not edin. Parolanızı unutursanız, parolayı bu sayfadan da sıfırlayabilirsiniz.
    
    ![MySQL için Azure Veritabanı sunucu adı](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
@@ -68,18 +70,18 @@ Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlan
 Bu makaledeki her kod örneği için:
 
 1. Metin düzenleyicisinde yeni bir dosya oluşturun.
-1. Kod örneğini dosyaya ekleyin. Kodda `<mydemoserver>`, `<myadmin>`, `<mypassword>`ve `<mydatabase>` yer tutucuları MySQL sunucunuzun ve veritabanınızın değerleriyle değiştirin.
-1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py*gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
-1. Kodu çalıştırmak için bir komut istemi veya `bash` kabuğu açın ve dizini proje klasörünüze değiştirin, örneğin `cd pythonmysql`. `python` komutu ve ardından dosya adını yazın, örneğin `python createtable.py`ve ENTER tuşuna basın. 
+1. Kod örneğini dosyaya ekleyin. Kodda, MySQL `<mydemoserver>` `<myadmin>`sunucunuz `<mydatabase>` ve veritabanınızın değerleri ile , , `<mypassword>`, ve yer tutucuları değiştirin.
+1. Dosyayı *C:\pythonmysql\createtable.py* veya */home/username/pythonmysql/createtable.py*gibi *.py* uzantılı bir proje klasörüne kaydedin.
+1. Kodu çalıştırmak için, bir komut `bash` istemi veya kabuk açın ve proje `cd pythonmysql`klasörünüzde dizin değiştirin, örneğin. Örneğin, `python` `python createtable.py`dosya adının ardından gelen komutu yazın ve Enter tuşuna basın. 
    
    > [!NOTE]
-   > Windows 'da *Python. exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya *Python. exe*' nin tam yolunu sağlamanız gerekebilir, örneğin `C:\python27\python.exe createtable.py`.
+   > Windows'da, *python.exe* bulunamazsa, Python yolunu PATH ortamı değişkeninize eklemeniz veya *python.exe'ye* `C:\python27\python.exe createtable.py`tam yol sağlamanız gerekebilir.
 
 ## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
 
-Sunucu ve veritabanına bağlanmak, tablo oluşturmak ve **Insert** SQL ifadesini kullanarak verileri yüklemek için aşağıdaki kodu kullanın. 
+Sunucuya ve veritabanına bağlanmak, tablo oluşturmak ve **insert** SQL deyimi kullanarak veri yüklemek için aşağıdaki kodu kullanın. 
 
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Kod mysql.connector kitaplığını alır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL için Azure Veritabanı'na bağlanmak için [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod bağlantıda bir imleç kullanır ve [imleç.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MYSQL veritabanına karşı SQL sorgusu yürütür. 
 
 ```python
 import mysql.connector
@@ -134,9 +136,9 @@ else:
 
 Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
 
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Kod mysql.connector kitaplığını alır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL için Azure Veritabanı'na bağlanmak için [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod bağlantıda bir imleç kullanır ve [imleç.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MYSQL veritabanına karşı SQL sorgusu yürütür. 
 
-Kod, [fetchAll ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) yöntemini kullanarak veri satırlarını okur, sonuç kümesini bir koleksiyon satırında tutar ve satırlarda döngü yapmak için `for` bir yineleyici kullanır.
+Kod, [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) yöntemini kullanarak veri satırlarını okur, sonucu bir toplama `for` satırında tutar ve satırların üzerine dönmek için bir yineleyici kullanır.
 
 ```python
 import mysql.connector
@@ -184,7 +186,7 @@ else:
 
 Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. 
 
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Kod mysql.connector kitaplığını alır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL için Azure Veritabanı'na bağlanmak için [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod bağlantıda bir imleç kullanır ve [imleç.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MYSQL veritabanına karşı SQL sorgusu yürütür. 
 
 ```python
 import mysql.connector
@@ -227,7 +229,7 @@ else:
 
 Bağlanmak ve **DELETE** SQL deyimini kullanarak verileri kaldırmak için aşağıdaki kodu kullanın. 
 
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Kod mysql.connector kitaplığını alır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL için Azure Veritabanı'na bağlanmak için [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod bağlantıda bir imleç kullanır ve [imleç.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MYSQL veritabanına karşı SQL sorgusu yürütür. 
 
 ```python
 import mysql.connector

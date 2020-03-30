@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki'
-description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node. js ' de blob ve kapsayıcılar oluşturma, karşıya yükleme ve silme
+title: 'Quickstart: JavaScript için Azure Blob depolama istemcisi kitaplığı v10'
+description: JavaScript için Azure Depolama istemcikitapv10 ile Düğüm.js'de blob ve kapsayıcılar oluşturma, yükleme ve silme
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/24/2020
@@ -8,21 +8,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78269496"
 ---
-# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: node. js ' de JavaScript ile v10 arasındaki SDK ile Blobları yönetme
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Quickstart: Node.js JavaScript v10 SDK ile blobs yönetin
 
-Bu hızlı başlangıçta, Node. js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir, listeler ve siler ve kapsayıcıları yönetirsiniz.
+Bu hızlı başlangıçta, Node.js kullanarak lekeleri yönetmeyi öğrenirsiniz. Blobs, resimler, belgeler, akışlı ortam ve arşiv verileri de dahil olmak üzere büyük miktarda metin veya ikili veri tutabilen nesnelerdir. Blob'ları yükler, indirir, listeler ve silersiniz ve kapsayıcıları yönetirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure Depolama hesabı. [Depolama hesabı oluşturma](../common/storage-account-create.md).
-- [Node.js](https://nodejs.org/en/download/).
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Azure Depolama hesabı. [Bir depolama hesabı oluşturun.](../common/storage-account-create.md)
+- [Düğüm.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
@@ -80,7 +80,7 @@ Container "demo" is deleted
 Done
 ```
 
-Bu hızlı başlangıç için yeni bir depolama hesabı kullanıyorsanız, yalnızca "*kapsayıcılar:* " etiketinin altında listelenen *demo* kapsayıcısını görebilirsiniz.
+Bu hızlı başlangıç için yeni bir depolama hesabı kullanıyorsanız, yalnızca "*Kapsayıcılar:*" etiketi altında listelenen *demo* kapsayıcısını görebilirsiniz.
 
 ## <a name="understanding-the-code"></a>Kodu anlama
 
@@ -135,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
+API tarafından yapılan istekler belirli bir aralıktan sonra zaman alabilen bir şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -143,7 +143,7 @@ const ONE_MINUTE = 60 * 1000;
 
 ### <a name="calling-code"></a>Kodu çağırma
 
-JavaScript'in *async/await* söz dizimini desteklemek için, tüm çağırma kodu *execute* adlı bir işlev içinde sarmalanır. Daha sonra *execute* çağrılır ve bir promise olarak işlenir.
+JavaScript'in *async/await* söz dizimini desteklemek için, tüm çağırma kodu *execute* adlı bir işlev içinde sarmalanır. Sonra *yürütmek* denir ve bir söz olarak ele alınır.
 
 ```javascript
 async function execute() {
@@ -205,7 +205,7 @@ Kapsayıcıda olduğu gibi blok blobu da henüz mevcut değildir. *blockBlobURL*
 
 ### <a name="using-the-aborter-class"></a>Aborter sınıfını kullanma
 
-API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman aşımına uğradığını yönetmekten sorumludur. Aşağıdaki kod, bir istek kümesinin yürütülmesi için 30 dakika verildiği bir bağlam oluşturur.
+API tarafından yapılan istekler belirli bir aralıktan sonra zaman alabilen bir şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman ları nasıl devre dışı bıraktırılanları yönetmekten sorumludur. Aşağıdaki kod, bir dizi isteke yürütülmesi için 30 dakika verilen bir bağlam oluşturur.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
@@ -216,7 +216,7 @@ Aborters, şu işlevleri sunarak istekler üzerinde denetim sahibi olmanızı sa
 - belirli bir istek grubu için verilen süreyi belirleme
 - grup içindeki tek bir isteğin ne kadar yürütülmesi gerektiğini belirleme
 - istekleri iptal etme
-- isteklerinizin tamamının zaman aşımına uğramasını önlemek için *Aborter.none* statik üyesini kullanma
+- *Aborter.none* statik üye yi kullanarak isteklerinizin tamamen zamanlamasını engellemek için
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
@@ -363,7 +363,7 @@ const downloadedContent = await streamToString(downloadResponse.readableStreamBo
 console.log(`Downloaded blob content: "${downloadedContent}"`);
 ```
 
-Yanıt bir akış olarak döndürülür. Bu örnekte, akış aşağıdaki *Streamtostring* yardımcı işlevini kullanarak bir dizeye dönüştürülür.
+Yanıt bir akış olarak döndürülür. Bu örnekte, akış aşağıdaki *streamToString* yardımcı işlevi kullanılarak bir dizeye dönüştürülür.
 
 ```javascript
 // A helper method used to read a Node.js readable stream into a string
@@ -408,5 +408,5 @@ Depolama hesabına yazılan tüm veriler kod örneğinin sonunda otomatik olarak
 Bu hızlı başlangıçta Node.js kullanarak Azure Blob depolamadaki blobları ve kapsayıcıları yönetme adımları gösterilmektedir. Bu SDK ile çalışma hakkında daha fazla bilgi edinmek için, GitHub deposunu inceleyin.
 
 > [!div class="nextstepaction"]
-> Azure Storage [JAVASCRIPT API başvurusu](/javascript/api/overview/azure/storage-overview)
-> [JavaScript deposu için Azure Storage ile v10 arasındaki SDK](https://github.com/Azure/azure-storage-js)
+> [JavaScript deposu](https://github.com/Azure/azure-storage-js)
+> için Azure Depolama v10 SDK[Azure Depolama JavaScript API Başvurusu](/javascript/api/overview/azure/storage-overview)

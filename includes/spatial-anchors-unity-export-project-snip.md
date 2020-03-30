@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
 ms.openlocfilehash: fa51e40f70764dcdb8ff750b06786dd665081926
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67135057"
 ---
-Açık **Build Settings** seçerek **dosya** > **Build Settings**.
+ >  **Dosya**Oluşturma Ayarları'nı seçerek **Yapı Ayarlarını** Açın.**Build Settings**
 
-Altında **sahneler oluşturun**, Sahne tüm bunların yanında bir onay işareti sahip olduğunuzdan emin olun.
+**Scenes In Build'in**altında, tüm sahnelerin yanlarında bir onay işareti olduğundan emin olun.

@@ -1,5 +1,5 @@
 ---
-title: Bir bulut tabanlı IOT Tahmine dayalı bakım çözümü - Azure'ı deneyin | Microsoft Docs
+title: Bulut tabanlı IoT tahmine dayalı bakım çözümlerini deneyin - Azure | Microsoft Dokümanlar
 description: Bu hızlı başlangıçta Tahmine Dayalı Bakım Azure IoT çözümünü dağıtacak ve çözüm panosunda oturum açıp işlevleri kullanacaksınız.
 author: dominicbetts
 manager: timlt
@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62106822"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Hızlı Başlangıç: Bulut tabanlı bir çözüm bağlı cihazlarım bir Tahmine dayalı bakım analizini Çalıştır'ı deneyin
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Hızlı başlangıç: Bağlı cihazlarımda tahmine dayalı bakım analizi çalıştırmak için bulut tabanlı bir çözüm deneme
 
 Bu hızlı başlangıçta Azure IoT Tahmine Dayalı Bakım çözümü hızlandırıcısını dağıtarak bulut tabanlı tahmine dayalı bakım simülasyonu çalıştırmayı öğreneceksiniz. Çözüm hızlandırıcısını dağıttıktan sonra, çözümün **Pano** sayfasını kullanarak simülasyon uçak motoru verilerinden yararlanan tahmine dayalı bakım analizi çalıştırırsınız. Bu çözüm hızlandırıcısını, kendi uygulamanızın başlangıç noktası veya bir öğrenme aracı olarak kullanabilirsiniz.
 
@@ -26,7 +26,7 @@ Fabrikam uçağının motorları, uçuş sırasında motor koşullarını izleye
 
 Bu hızlı başlangıcı tamamlamak etkin bir Azure aboneliğinizin olması gerekir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Çözüm hızlandırıcısını dağıtırken kullanmak istediğiniz **Subscription** (Abonelik) ve **Region** (Bölge) seçimini yapın. Genelde size en yakın bölgeyi seçmeniz gerekir. Bu hızlı başlangıçta **Visual Studio Enterprise** ve **Doğu ABD** kullanıyoruz. Abonelikte [genel yönetici veya kullanıcı](iot-accelerators-permissions.md) olmanız gerekir.
 
-Tıklayın **Oluştur** dağıtımına başlamak için. Bu işlemin çalışması en az beş dakika sürer:
+Dağıtımı başlatmak için **Oluştur'u** tıklatın. Bu işlemin çalışması en az beş dakika sürer:
 
 ![Tahmine Dayalı Bakım çözümü ayrıntıları](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Azure aboneliğinize dağıtım tamamlandığında, çözüm dosyasında yeşil 
 
 ![Çözüm paneli](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
- Çözüm Hızlandırıcısını hakkında bilgi görüntülenen sayfasında görüntüleyebilirsiniz. Seçin **çözüm hızlandırıcınız Git** Tahmine dayalı bakım çözüm hızlandırıcınız görüntülemek için:
+ Görüntülenen sayfada çözüm hızlandırıcısı hakkındaki bilgileri görüntüleyebilirsiniz. Öngörülü Bakım çözüm hızlandırıcınızı görüntülemek için **çözüm hızlandırıcınıza git'i** seçin:
 
 ![Çözüm paneli](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
@@ -80,7 +80,7 @@ Benzetimi istediğiniz an durdurabilirsiniz; ancak, **Benzetimi Başlat**’a t�
 
 Daha fazla incelemeyi planlıyorsanız, Tahmine Dayalı Bakım çözümü hızlandırıcısını dağıtımda bırakın.
 
-Çözüm hızlandırıcısına ihtiyacınız kalmadıysa [Sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasında hızlandırıcıyı seçip **Çözümü Sil**’e tıklayarak bunu silebilirsiniz:
+Çözüm hızlandırıcısına artık ihtiyacınız yoksa, Çözüm Lüzatı'nı seçerek ve Ardından **Çözüm Sil'i**tıklatarak [Sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasından silin:
 
 ![Çözümü sil](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
@@ -91,4 +91,4 @@ Bu hızlı başlangıçta Tahmine Dayalı Bakım çözümü hızlandırıcısın
 Çözüm hızlandırıcısı ve simülasyon uçak motorları hakkında daha fazla bilgi için aşağıdaki makaleyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-walkthrough.md)
+> [Tahmine Dayalı Bakım çözüm hızlandırıcıya genel bakış](iot-accelerators-predictive-walkthrough.md)

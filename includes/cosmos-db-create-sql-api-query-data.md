@@ -9,27 +9,27 @@ ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927413"
 ---
-Verilerinizi almak ve filtrelemek için Veri Gezgini sorguları kullanabilirsiniz.
+Verilerinizi almak ve filtrelemek için Veri Gezgini'ndeki sorguları kullanabilirsiniz.
 
-1. Veri Gezgini **öğeleri** sekmesinin en üstünde, varsayılan sorgu `SELECT * FROM c`gözden geçirin. Bu sorgu, koleksiyondaki tüm belgeleri alır ve KIMLIK sırasına göre görüntüler. 
+1. Veri Gezgini'ndeki **Öğeler** sekmesinin üst kısmında `SELECT * FROM c`varsayılan sorguyu gözden geçirin. Bu sorgu, koleksiyondaki tüm belgeleri kimlik sırasına göre alır ve görüntüler. 
    
    ![Veri Gezgini’ndeki varsayılan sorgu: `SELECT * FROM c`](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    
-1. Sorguyu değiştirmek için **Filtreyi Düzenle**' yi seçin, varsayılan sorguyu `ORDER BY c._ts DESC`değiştirin ve sonra **Filtre Uygula**' yı seçin.
+1. Sorguyu değiştirmek için **Filtreyi Edit'i** `ORDER BY c._ts DESC`seçin, varsayılan sorguyu değiştirin ve ardından **Filtre Uygula'yı**seçin.
    
    ![ORDER BY c._ts DESC ekleyerek ve Filtre Uygula’ya tıklayarak varsayılan sorguyu değiştirin](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 
-   Değiştirilen sorgu, belgeleri zaman damgalarına göre azalan sırada görüntüler, bu nedenle artık ikinci belgeniz önce listelenir. 
+   Değiştirilen sorgu, belgeleri zaman damgasına göre azalan sırada görüntüler, bu nedenle şimdi ikinci belgeniz önce listelenir. 
    
-   ![Sorgu ORDER BY c olarak değiştirildi. _ts DESC ve Filtre Uygula 'ya tıklayın](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
+   ![Sorguc._ts DESC ve Uygula Filtresi'ni tıklatarak ORDER olarak değiştirildi](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
 
-SQL söz dizimini biliyorsanız, sorgu koşulu kutusuna desteklenen herhangi bir [SQL](../articles/cosmos-db/sql-api-sql-query.md) sorgusunu girebilirsiniz. Ayrıca, sunucu tarafı iş mantığı için saklı yordamlar, UDF 'ler ve Tetikleyiciler oluşturmak üzere Veri Gezgini de kullanabilirsiniz. 
+SQL sözdizimini biliyorsanız, sorgu yüklemi kutusuna desteklenen [SQL sorgularını](../articles/cosmos-db/sql-api-sql-query.md) girebilirsiniz. Depolanan yordamlar, UDF'ler ve tetikleyiciler oluşturmak için sunucu tarafı iş mantığı için Veri Gezgini'ni de kullanabilirsiniz. 
 
-Veri Gezgini, API 'lerde kullanılabilen tüm yerleşik programlı veri erişim özelliklerine kolay Azure portal erişim sağlar. Ayrıca, iş üretimini ölçeklendirmek, anahtar ve bağlantı dizelerini almak ve Azure Cosmos DB hesabınız için ölçümleri ve SLA 'Ları gözden geçirmek üzere portalını de kullanabilirsiniz. 
+Data Explorer, API'lerde bulunan tüm yerleşik programlı veri erişim özelliklerine kolay Azure portalı erişimi sağlar. Ayrıca, azure Cosmos DB hesabınız için iş elde etme, anahtar ve bağlantı dizelerini almak ve ölçümleri ve SLA'ları gözden geçirmek için portalı da kullanırsınız. 
 

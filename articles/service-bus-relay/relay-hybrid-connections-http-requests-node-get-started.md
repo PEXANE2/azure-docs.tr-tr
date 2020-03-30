@@ -1,5 +1,5 @@
 ---
-title: Azure Relay Karma Bağlantılar-düğümdeki HTTP istekleri
+title: Azure Röle Karma Bağlantıları - Düğümdeki HTTP istekleri
 description: Node’da Azure Relay Karma Bağlantılar HTTP istekleri için bir Node.js konsol uygulaması yazın.
 services: service-bus-relay
 documentationcenter: node
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
 ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462034"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Node’da Relay Karma Bağlantılar HTTP istekleri ile çalışmaya başlama
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Bu hızlı başlangıçta, HTTP protokolünü kullanarak ileti gönderen ve alan Node. js gönderici ve alıcı uygulamaları oluşturacaksınız. Uygulamalar Azure Relay Karma Bağlantılar özelliğini kullanır. Genel olarak Azure Relay hakkında bilgi edinmek için bkz. [Azure Relay](relay-what-is-it.md). 
+Bu hızlı başlatmada, HTTP protokolünü kullanarak ileti gönderen ve alan Node.js uygulamaları oluşturursunuz. Uygulamalar, Azure Rölesi'nin Karma Bağlantılar özelliğini kullanır. Azure Rölesi hakkında genel bilgi edinmek için Azure [Röle'ye](relay-what-is-it.md)bakın. 
 
-Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
+Bu hızlı başlangıçta, aşağıdaki adımları atarsınız:
 
 1. Azure portalını kullanarak Geçiş ad alanı oluşturma.
 2. Azure portalını kullanarak o ad alanında karma bağlantı oluşturma.
@@ -36,8 +36,8 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 5. Uygulamaları çalıştırın.
 
 ## <a name="prerequisites"></a>Ön koşullar
-- [Node.js](https://nodejs.org/en/).
-- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+- [Düğüm.js](https://nodejs.org/en/).
+- Azure aboneliği. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 ## <a name="create-a-namespace-using-the-azure-portal"></a>Azure portalı kullanılarak ad alanı oluşturma
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -65,6 +65,6 @@ Relay hizmetine ileti göndermek için herhangi bir HTTP istemcisini kullanabili
 Tebrikler, Node.js kullanarak uçtan uca bir Karma Bağlantılar uygulaması oluşturdunuz!
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, ileti göndermek ve almak için HTTP kullanan Node. js istemcisi ve sunucu uygulamaları oluşturdunuz. Azure Relay Karma Bağlantılar özelliği, ileti göndermek ve almak için WebSockets kullanımını da destekler. WebSockets Azure Relay Karma Bağlantılar nasıl kullanacağınızı öğrenmek için bkz. [WebSockets hızlı başlangıç](relay-hybrid-connections-node-get-started.md).
+Bu hızlı başlangıçta, ileti göndermek ve almak için HTTP'yi kullanan Node.js istemcisi ve sunucu uygulamaları oluşturdunuz. Azure Röle'nin Karma Bağlantılar özelliği, ileti göndermek ve almak için WebSockets'i kullanmayı da destekler. Azure Relay Karma Bağlantıları ile WebSockets'i nasıl kullanacağınızı öğrenmek için [WebSockets'e hızlı başla'](relay-hybrid-connections-node-get-started.md)bakın.
 
-Bu hızlı başlangıçta, istemci ve sunucu uygulamaları oluşturmak için Node. js ' yi kullandınız. .NET Framework kullanarak istemci ve sunucu uygulamalarının nasıl yazılacağını öğrenmek için bkz. [.net WebSockets hızlı başlangıç](relay-hybrid-connections-dotnet-get-started.md) veya [.net http hızlı başlangıç](relay-hybrid-connections-http-requests-dotnet-get-started.md).
+Bu hızlı başlatmada, istemci ve sunucu uygulamaları oluşturmak için Node.js kullandınız. .NET Framework'ü kullanarak istemci ve sunucu uygulamalarının nasıl yazılabildiğini öğrenmek için [.NET WebSockets quickstart](relay-hybrid-connections-dotnet-get-started.md) veya [.NET HTTP quickstart](relay-hybrid-connections-http-requests-dotnet-get-started.md)adresine bakın.

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde oturum aç
-description: Belirtilen sayısal ifadenin doğal logaritmasını döndürmek için Azure Cosmos DB SQL sistem işlevi hakkında bilgi edinin
+title: Azure Cosmos DB sorgu dilinde Gİrİş YAP
+description: Belirtilen sayısal ifadenin doğal logaritmasını döndürmek için Azure Cosmos DB'deki LOG SQL sistem işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302517"
 ---
-# <a name="log-azure-cosmos-db"></a>GÜNLÜK (Azure Cosmos DB)
- Belirtilen sayısal ifadenin doğal logaritmasını döndürür.  
+# <a name="log-azure-cosmos-db"></a>GİR (Azure Cosmos DB)
+ Belirtilen sayısal ifadenin doğal logaritmasını verir.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,24 +28,24 @@ LOG (<numeric_expr> [, <base>])
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-*temel*  
-   Logaritmanın tabanı ayarlayan isteğe bağlı sayısal bağımsız değişken.  
+*base*  
+   Logaritma için temel ayarlar isteğe bağlı sayısal bağımsız değişken.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Varsayılan olarak, LOG() doğal logaritmasını döndürür. Logaritmanın tabanı, isteğe bağlı temel parametresini kullanarak başka bir değere değiştirebilirsiniz.  
+  Varsayılan olarak, LOG() doğal logaritma döndürür. İsteğe bağlı temel parametreyi kullanarak logaritmiktabanını başka bir değerle değiştirebilirsiniz.  
   
-  Doğal logaritma, **e** 'nin bir ırrational sabiti olarak 2,718281828 'e eşit olduğu, taban **e**'nin logaritmasına neden olur.  
+  Doğal logaritma temel **e**logaritma , **e** yaklaşık 2.718281828 eşit irrasyonel bir sabittir.  
   
-  Üstel bir sayının doğal logaritmasını sayıdır kendisini: günlük (EXP (n)) = n. Ve üstel bir sayının doğal logaritma sayı kendisini: EXP (günlüğü (n)) = n.  
+  Bir sayının üstel kısmının doğal logaritması sayının kendisidir: LOG (EXP(n ) ) = n. Ve bir sayının doğal logaritma üslü sayının kendisidir: EXP (LOG(n ) ) = n.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir değişken bildirir ve belirtilen değişkeni (10) logaritmasını döndürür.  
+  Aşağıdaki örnekbir değişken bildirir ve belirtilen değişkenin logaritma değerini döndürür (10).  
   
 ```sql
 SELECT LOG(10) AS log  
@@ -57,7 +57,7 @@ SELECT LOG(10) AS log
 [{log: 2.3025850929940459}]  
 ```  
   
- Aşağıdaki örnek bir sayının üs değeri için `LOG` hesaplar.  
+ Aşağıdaki örnek, `LOG` bir sayının üsiçin hesaplar.  
   
 ```sql
 SELECT EXP(LOG(10)) AS expLog  
@@ -71,10 +71,10 @@ SELECT EXP(LOG(10)) AS expLog
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

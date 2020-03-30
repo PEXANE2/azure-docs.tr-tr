@@ -1,6 +1,6 @@
 ---
 title: Microsoft Access kaynaklarından veri kopyalama
-description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Microsoft Access kaynaklarından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopya etkinliği kullanarak desteklenen lavabo veri depolarına Microsoft Access kaynaklarından gelen verileri nasıl kopyalaylayamamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,54 +12,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892540"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access veri depolarından veri kopyalama
+# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Microsoft Access veri depolarından kopyalayın
 
-Bu makalede, Microsoft Access veri deposundan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, Microsoft Access veri deposundaki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Microsoft Access Connector, aşağıdaki etkinlikler için desteklenir:
+Bu Microsoft Access bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Microsoft Access kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Microsoft Access kaynağından desteklenen herhangi bir lavabo veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu Microsoft Access bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Şirket içinde barındırılan bir Integration Runtime ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
-- Integration Runtime makinesindeki veri deposu için Microsoft Access ODBC sürücüsünü yükler.
+- Kendi kendine barındırılan Tümleştirme Çalışma Zamanı'nı ayarlayın. Ayrıntılar için [Kendi barındırılan Tümleştirme Çalışma Zamanı](create-self-hosted-integration-runtime.md) makalesine bakın.
+- Tümleştirme Runtime makinesinde veri deposu için Microsoft Access ODBC sürücüsünü yükleyin.
 
 >[!NOTE]
->ODBC sürücüsünün Microsoft Access 2016 sürümü bu bağlayıcı ile çalışmıyor. Bunun yerine sürücü sürüm 2013 veya 2010 kullanın.
+>ODBC sürücüsünün Microsoft Access 2016 sürümü bu bağlayıcıyla çalışmaz. Bunun yerine sürücü sürümü 2013 veya 2010'u kullanın.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Microsoft Access Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özelliklerle ilgili ayrıntıları sağlar.
+Aşağıdaki bölümlerde, Microsoft Access bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler Microsoft Access bağlantılı hizmet için desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Evet |
-| connectionString | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault depolama kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin.| Evet |
-| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Evet |
-| userName adı | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
-| parola | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
-| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
+| type | Tür özelliği şu şekilde ayarlanmalıdır: **MicrosoftAccess** | Evet |
+| Connectionstring | Kimlik bilgileri bölümünü hariç alan ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Tümleştirme Runtime makinesinde ayarladığınız Sistem DSN'yi (Veri Kaynak Adı) kullanabilirsiniz (yine de bağlantılı hizmetteki kimlik bölümünü buna göre belirtmeniz gerekir).<br> Ayrıca Azure Key Vault'a bir parola `password` koyabilir ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz.Azure [Anahtar Kasası'ndaki](store-credentials-in-key-vault.md) Mağaza kimlik bilgilerine daha fazla ayrıntı yla bakın.| Evet |
+| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulama türü.<br/>İzin verilen değerler şunlardır: **Temel** ve **Anonim**. | Evet |
+| userName | Temel kimlik doğrulamasını kullanıyorsanız kullanıcı adını belirtin. | Hayır |
+| password | Kullanıcı Adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
+| kimlik bilgisi | Bağlantı dizesinin sürücüye özgü özellik değeri biçiminde belirtilen erişim kimlik bilgileri bölümü. Bu alanı SecureString olarak işaretleyin. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullarda](#prerequisites)belirtildiği gibi Kendi kendine barındırılan Tümleştirme Çalışma Süresi gereklidir. |Evet |
 
 **Örnek:**
 
@@ -87,14 +87,14 @@ Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Microsoft Access veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Microsoft Access veri kümesi tarafından desteklenen özelliklerin bir listesi bulunmaktadır.
 
-Verileri Microsoft Access 'ten kopyalamak için aşağıdaki özellikler desteklenir:
+Microsoft Access'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Evet |
-| tableName | Microsoft Access 'teki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **MicrosoftAccessTable** | Evet |
+| tableName | Microsoft Access'teki tablonun adı. | Kaynak için hayır (etkinlik kaynağında "sorgu" belirtilirse);<br/>Lavabo için evet |
 
 **Örnek**
 
@@ -116,16 +116,16 @@ Verileri Microsoft Access 'ten kopyalamak için aşağıdaki özellikler destekl
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Microsoft Access source tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Microsoft Access kaynağı tarafından desteklenen özelliklerin bir listesi sağlanır.
 
 ### <a name="microsoft-access-as-source"></a>Kaynak olarak Microsoft Access
 
-Microsoft Access uyumlu veri deposundan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+Microsoft Access uyumlu veri deposundan veri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Evet |
-| sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının tür özelliği şu şekilde ayarlanmalıdır: **MicrosoftAccessSource** | Evet |
+| sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
 **Örnek:**
 
@@ -159,9 +159,9 @@ Microsoft Access uyumlu veri deposundan veri kopyalamak için, etkinlik **kayna�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

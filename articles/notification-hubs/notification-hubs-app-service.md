@@ -1,6 +1,6 @@
 ---
-title: App Service Mobile Apps ile tümleştirme Notification Hubs
-description: Azure Notification Hubs Azure App Service Mobile Apps nasıl çalıştığını öğrenin.
+title: App Service Mobil Uygulamaları ile Bildirim Hub'ları entegrasyonu
+description: Azure Bildirim Hub'larının Azure App Service Mobile Apps ile nasıl çalıştığını öğrenin.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76264161"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps ile Tümleştirme

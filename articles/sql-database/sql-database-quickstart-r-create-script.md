@@ -1,7 +1,7 @@
 ---
-title: Basit R betikleri oluşturma ve çalıştırma
+title: Basit R komut dosyaları oluşturma ve çalıştırma
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Azure SQL veritabanı Machine Learning Services (Önizleme) basit R betikleri çalıştırın.
+description: Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde basit R komut dosyaları çalıştırın (önizleme).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,35 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768503"
 ---
-# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services basit R betikleri oluşturma ve çalıştırma (Önizleme)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Quickstart: Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde basit R komut dosyaları oluşturun ve çalıştırın (önizleme)
 
-Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Machine Learning Services (R ile) kullanarak bir R betikleri kümesi oluşturup çalıştırırsınız.
+Bu hızlı başlangıçta, Azure SQL Veritabanı'nda Machine Learning Services (R ile) kullanarak bir R komut dosyası kümesi oluşturur ve çalıştırAbilirsiniz.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Sunucu düzeyinde güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) olan BIR [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) . [Önizleme Için kaydolun](sql-database-machine-learning-services-overview.md#signup).
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Sunucu düzeyinde güvenlik [duvarı kuralına](sql-database-server-level-firewall-rule.md) sahip bir [Azure SQL veritabanı](sql-database-single-database-get-started.md)
+- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir. [Önizleme için kaydolun](sql-database-machine-learning-services-overview.md#signup).
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]
-> Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir.
+> Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır.
 
-Bu örnek, iyi biçimlendirilmiş bir R betiğini kaydırmak için [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamını kullanır.
+Bu örnek, iyi biçimlendirilmiş bir R komut dosyasını sarmak için depolanan [yordamı sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) kullanır.
 
 ## <a name="run-a-simple-script"></a>Basit bir komut dosyası çalıştırma
 
-R betiğini çalıştırmak için, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)sistem saklı yordamına bir bağımsız değişken olarak geçireceğiz.
+R komut dosyası çalıştırmak için, sistem depolanan yordam, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)bir argüman olarak geçer.
 
-Aşağıdaki adımlarda, SQL veritabanınızda Bu örnek R betiğini çalıştıracaksınız:
+Aşağıdaki adımlarda, bu örnek R komut dosyasını SQL veritabanınızda çalıştıracaksınız:
 
 ```r
 a <- 1
@@ -52,13 +52,13 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. **SQL Server Management Studio**’yu açın ve SQL veritabanınıza bağlanın.
+1. **SQL Server Management Studio'nuzu** açın ve SQL veritabanınıza bağlanın.
 
-   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
+   Bağlanmak için yardıma ihtiyacınız varsa, [Azure SQL veritabanını bağlamak ve sorgulamak için Hızlı Başlangıç: SQL Server Management Studio'yı kullanın.](sql-database-connect-query-ssms.md)
 
-1. Tüm R betiğini [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamına geçirin.
+1. Tüm R komut dosyasını [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) depolanan yordamına geçirin.
 
-   Betik `@script` bağımsız değişkeniyle geçirilir. `@script` bağımsız değişkeninin içindeki her şey geçerli bir R kodu olmalıdır.
+   Komut dosyası bağımsız `@script` değişkenden geçirilir. Bağımsız değişkenin `@script` içindeki her şey geçerli Bir R kodu olmalıdır.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -71,26 +71,26 @@ print(c(c, d))
     '
     ```
 
-   Hata alırsanız Machine Learning Services (R ile) genel önizleme sürümü SQL veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [önkoşulları](#prerequisites) inceleyin.
+   Hata alırsanız Machine Learning Services (R ile) genel önizleme sürümü SQL veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [Ön koşullara](#prerequisites) bakın.
 
    > [!NOTE]
-   > Yönetici değilseniz, dış kodu otomatik olarak çalıştırabilirsiniz. Komutunu kullanarak diğer kullanıcılara izin verebilirsiniz:
-   <br>*\<Kullanıcı adı\>* **BIR dış betik yürütün** .
+   > Yöneticiyseniz, harici kodu otomatik olarak çalıştırabilirsiniz. Komutu kullanarak diğer kullanıcılara izin verebilirsiniz:
+   <br>**GRANT KULLANıCı** * \<Adı\>* için HERHANGI BIR Dış SCRIPT YÜRÜTMEK .
 
-2. Doğru sonuç hesaplanır ve R `print` işlevi sonucu **iletiler** penceresine döndürür.
+2. Doğru sonuç hesaplanır ve `print` R işlevi sonucu **İletiler** penceresine döndürür.
 
-   Şuna benzer görünmelidir.
+   Buna benzer bir şey olmalı.
 
-    **Sonuçlar**
+    **Sonuç -ları**
 
     ```text
     STDOUT message(s) from external script:
     0.5 2
     ```
 
-## <a name="run-a-hello-world-script"></a>Merhaba Dünya betiği çalıştırma
+## <a name="run-a-hello-world-script"></a>Hello World komut dosyası çalıştırın
 
-Tipik bir örnek komut dosyası, yalnızca "Merhaba Dünya" dizesinin çıktısını veren bir örnektir. Aşağıdaki komutu çalıştırın.
+Tipik bir örnek komut dosyası sadece dize "Hello World" çıkışları biridir. Şu komutu çalıştırın.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -100,16 +100,16 @@ WITH RESULT SETS(([Hello World] INT));
 GO
 ```
 
-Bu saklı yordamın girişleri şunlardır:
+Bu depolanan yordamın girdileri şunlardır:
 
 | | |
 |-|-|
-| @language | çağrılacak dil uzantısını tanımlar, bu örnekte R |
-| @script | R çalışma zamanına geçirilen komutları tanımlar. Tüm R betiğinizin Unicode metin olarak bu bağımsız değişkende olması gerekir. Ayrıca, **nvarchar** türünde bir değişkene metin ekleyebilir ve sonra değişkeni çağırabilirsiniz |
-| @input_data_1 | veri çerçevesi olarak SQL Server verileri döndüren R çalışma zamanına geçilen sorgu tarafından döndürülen veriler |
-|SONUÇ KÜMELERIYLE | yan tümcesi, SQL Server için döndürülen veri tablosunun şemasını tanımlar, sütun adı olarak "Merhaba Dünya" ekler, veri türü için **int** |
+| @language | aramak için dil uzantısı tanımlar, bu durumda, R |
+| @script | R çalışma zamanına geçen komutları tanımlar. Tüm R komut dosyanız, Unicode metni olarak bu bağımsız değişkene eklenmelidir. Ayrıca metin **türü nvarchar** bir değişkenekleyebilirsiniz ve daha sonra değişken çağırabilirsiniz |
+| @input_data_1 | sorgu tarafından döndürülen, verileri veri çerçevesi olarak SQL Server'a döndüren R çalışma süresine geçirilen veriler |
+|SONUÇ SETLERI ILE | yan tümce, SQL Server için döndürülen veri tablosunun şemasını tanımlar, "Hello World" sütun adı olarak, veri türü için **int** |
 
-Komut aşağıdaki metni verir:
+Komut aşağıdaki metni çıkar:
 
 | Hello World |
 |-------------|
@@ -117,11 +117,11 @@ Komut aşağıdaki metni verir:
 
 ## <a name="use-inputs-and-outputs"></a>Girişleri ve çıkışları kullanma
 
-Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , genellikle GEÇERLI bir SQL sorgusu biçiminde sağladığınız, giriş olarak tek bir veri kümesini kabul eder. Ardından, çıkış olarak tek bir R veri çerçevesini döndürür.
+Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) genellikle geçerli bir SQL sorgusu şeklinde sağladığınız tek bir veri kümesini giriş olarak kabul eder. Daha sonra çıktı olarak tek bir R veri çerçevesi döndürür.
 
-Şimdilik, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **ınputdataset** ve **outputdataset**' in varsayılan giriş ve çıkış değişkenlerini kullanalım.
+Şimdilik, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)varsayılan giriş ve çıkış değişkenlerini kullanalım: **InputDataSet** ve **OutputDataSet**.
 
-1. Test verilerinin küçük bir tablosunu oluşturun.
+1. Küçük bir test verisi tablosu oluşturun.
 
     ```sql
     CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -137,18 +137,18 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     GO
     ```
 
-1. Tabloyu sorgulamak için `SELECT` ifadesini kullanın.
+1. Tabloyu `SELECT` sorgulamak için deyimi kullanın.
   
     ```sql
     SELECT *
     FROM RTestData
     ```
 
-    **Sonuçlar**
+    **Sonuç -ları**
 
     ![RTestData tablosunun içeriği](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Aşağıdaki R betiğini çalıştırın. `SELECT` deyimini kullanarak tablodaki verileri alır, R çalışma zamanına geçirir ve verileri veri çerçevesi olarak döndürür. `WITH RESULT SETS` yan tümcesi, SQL veritabanı için döndürülen veri tablosunun şemasını tanımlar, *newcolname*sütun adını ekler.
+1. Aşağıdaki R komut dosyasını çalıştırın. `SELECT` İfadeyi kullanarak tablodaki verileri alır, R çalışma zamanından geçirir ve verileri veri çerçevesi olarak döndürür. Yan `WITH RESULT SETS` tümce, SQL Veritabanı için döndürülen veri tablosunun şeasını tanımlar ve sütun adı *NewColName'i*ekler.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -157,11 +157,11 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    **Sonuçlar**
+    **Sonuç -ları**
 
     ![Tablodan veri döndüren R betiğinin çıktısı](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Şimdi giriş ve çıkış değişkenlerinin adlarını değiştirelim. Varsayılan giriş ve çıkış değişkeni adları **ınputdataset** ve **outputdataset**, bu betik adları **SQL_in** ve **SQL_out**olarak değiştirir:
+1. Şimdi giriş ve çıktı değişkenlerinin adlarını değiştirelim. Varsayılan giriş ve çıkış değişken adları **InputDataSet** ve **OutputDataSet**vardır, bu komut dosyası **SQL_in** ve **SQL_out**adlarını değiştirir:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -172,14 +172,14 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    R 'nin büyük/küçük harfe duyarlı olduğunu unutmayın. R betikte (**SQL_out**, **SQL_in**) kullanılan giriş ve çıkış değişkenlerinin, büyük/küçük harf ile `@input_data_1_name` ve `@output_data_1_name`ile tanımlanan değerlerle eşleşmesi gerekir.
+    R'nin büyük/küçük harf duyarlı olduğunu unutmayın. R komut dosyasında **(SQL_out**, **SQL_in)** kullanılan giriş ve `@input_data_1_name` `@output_data_1_name`çıkış değişkenlerinin, büyük/küçük harf dahil tanımlanan değerlerle eşleşmesi gerekir.
 
    > [!TIP]
    > Yalnızca bir giriş veri kümesi parametre olarak iletilebilir ve yalnızca bir veri kümesini döndürebilirsiniz. Ancak R kodunuzdan diğer tüm veri kümelerini çağırabilir ve veri kümesine ek olarak diğer türlerin çıkışlarını döndürebilirsiniz. Ayrıca OUTPUT anahtar sözcüğünü herhangi bir parametreye ekleyerek sonuçlarla birlikte döndürülmesini sağlayabilirsiniz.
 
-1. Ayrıca, giriş verisi olmayan (`@input_data_1` boş olarak ayarlanır) R betiğini kullanarak yalnızca değerler oluşturabilirsiniz.
+1. Ayrıca, giriş verisi olmayan (boş olarak`@input_data_1` ayarlanır) yalnızca R komut dosyasını kullanarak değerler oluşturabilirsiniz.
 
-   Aşağıdaki betik "Hello" ve "World" metnini çıktı olarak verir.
+   Aşağıdaki komut dosyası "merhaba" ve "dünya" metnini çıkar.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -191,13 +191,13 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Sonuçlar**
+    **Sonuç -ları**
 
     ![Giriş olarak @script kullanarak sonuçları sorgulama](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>R sürümünü denetleme
 
-SQL veritabanınızda hangi R sürümünün yüklü olduğunu görmek isterseniz, aşağıdaki betiği çalıştırın.
+SQL veritabanınızda Hangi R sürümünün yüklü olduğunu görmek istiyorsanız, aşağıdaki komut dosyasını çalıştırın.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -205,9 +205,9 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-R `print` işlevi, sürümü **İletiler** penceresinde döndürür. Aşağıdaki örnek çıktıda, bu durumda SQL Database 'in R sürüm 3.4.4 yüklü olduğunu görebilirsiniz.
+R `print` işlevi, sürümü **İletiler** penceresinde döndürür. Aşağıdaki örnek çıktıda, bu durumda SQL Veritabanı'nın 3.4.4 sürümünün yüklü olduğunu görebilirsiniz.
 
-**Sonuçlar**
+**Sonuç -ları**
 
 ```text
 STDOUT message(s) from external script:
@@ -232,7 +232,7 @@ nickname       Someone to Lean On
 
 Microsoft, SQL veritabanınızda önceden Machine Learning Services ile birlikte yüklenmiş bir dizi R paketi sunar.
 
-Sürüm, bağımlılıklar, lisans ve kitaplık yolu bilgileri de dahil olmak üzere hangi R paketlerinin yüklü olduğunu görmek için aşağıdaki betiği çalıştırın.
+Sürüm, bağımlılıklar, lisans ve kitaplık yol bilgileri de dahil olmak üzere R paketlerinin yüklü olduğu bir listeyi görmek için aşağıdaki komut dosyasını çalıştırın.
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -247,21 +247,21 @@ WITH result sets((
             ));
 ```
 
-Çıktı R 'deki `installed.packages()` ve bir sonuç kümesi olarak döndürülür.
+Çıktı R'den geliyor `installed.packages()` ve sonuç kümesi olarak döndürülür.
 
-**Sonuçlar**
+**Sonuç -ları**
 
 ![R içindeki yüklü paketler](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL veritabanı 'nda R 'yi kullanarak bir makine öğrenimi modeli oluşturmak için bu hızlı başlangıcı izleyin:
+SQL Veritabanı'nda R kullanarak bir makine öğrenme modeli oluşturmak için aşağıdaki hızlı başlatmayı izleyin:
 
 > [!div class="nextstepaction"]
-> [Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma ve eğitme](sql-database-quickstart-r-train-score-model.md)
+> [Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model oluşturma ve bunları eğitme (önizleme)](sql-database-quickstart-r-train-score-model.md)
 
-R (Önizleme) ile Azure SQL veritabanı Machine Learning Services hakkında daha fazla bilgi için aşağıdaki makalelere bakın.
+R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri hakkında daha fazla bilgi için (önizleme), aşağıdaki makalelere bakın.
 
-- [R ile Azure SQL veritabanı Machine Learning Services (Önizleme)](sql-database-machine-learning-services-overview.md)
-- [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)
-- [Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)](sql-database-machine-learning-services-data-issues.md)
+- [R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme)](sql-database-machine-learning-services-overview.md)
+- [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
+- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)](sql-database-machine-learning-services-data-issues.md)

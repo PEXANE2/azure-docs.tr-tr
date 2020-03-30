@@ -1,6 +1,6 @@
 ---
-title: Azure hızlı başlangıç-Azure Resource Manager şablonu kullanarak bir Azure Anahtar Kasası ve gizli dizi oluşturma | Microsoft Docs
-description: Azure Anahtar kasaları oluşturmayı ve Azure Resource Manager şablonu kullanarak kasalarına gizli dizileri eklemeyi gösteren hızlı başlangıç.
+title: Azure Quickstart - Azure Kaynak Yöneticisi şablonu kullanarak bir Azure anahtar kasası ve bir sır oluşturun | Microsoft Dokümanlar
+description: Azure anahtar kasalarının nasıl oluşturulup oluşturulacaklarını hızlı bir şekilde gösterin ve Azure Kaynak Yöneticisi şablonu kullanarak kasalara sır ekleyin.
 services: key-vault
 author: mumian
 manager: dougeby
@@ -12,27 +12,27 @@ ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
 ms.openlocfilehash: 015ae2e8e36d4a563138051bce33f5d283bde789
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78297928"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Hızlı başlatma: Kaynak Yöneticisi şablonu kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın
 
-[Azure Key Vault](./key-vault-overview.md) , anahtarlar, parolalar, sertifikalar ve diğer gizli diziler gibi gizli dizileri için güvenli bir depo sağlayan bir bulut hizmetidir. Bu hızlı başlangıç, bir anahtar kasası ve gizli dizi oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır.
+[Azure Key Vault,](./key-vault-overview.md) anahtarlar, parolalar, sertifikalar ve diğer sırlar gibi sırlar için güvenli bir mağaza sağlayan bir bulut hizmetidir. Bu hızlı başlangıç, önemli bir kasa ve bir sır oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Şablonda izinlerin yapılandırılması için Azure AD kullanıcı nesnesi kimliğiniz gerekir. Aşağıdaki yordam nesne KIMLIĞINI (GUID) alır.
+* Şablonda izinlerin yapılandırılması için Azure AD kullanıcı nesnesi kimliğiniz gerekir. Aşağıdaki yordam nesne kimliğini (GUID) alır.
 
-    1. Aşağıdaki Azure PowerShell veya Azure CLı komutunu çalıştırarak **deneyin**' i seçin ve ardından betiği kabuk bölmesine yapıştırın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+    1. Aşağıdaki Azure PowerShell veya Azure CLI komutunu **Tseç'i**seçerek çalıştırın ve ardından komut dosyasını kabuk bölmesine yapıştırın. Komut dosyasını yapıştırmak için kabuğu sağ tıklatın ve sonra **Yapıştır'ı**seçin.
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
@@ -42,7 +42,7 @@ Bu makaleyi tamamlamak için gerekenler:
         echo "Press [ENTER] to continue ..."
         ```
 
-        # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+        # <a name="powershell"></a>[Powershell](#tab/PowerShell)
         ```azurepowershell-interactive
         $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
         (Get-AzADUser -UserPrincipalName $upn).Id
@@ -51,53 +51,53 @@ Bu makaleyi tamamlamak için gerekenler:
 
         ---
 
-    2. Nesne KIMLIĞINI yazın. Bu hızlı başlangıç bölümünün sonraki bölümünde olması gerekir.
+    2. Nesne kimliğini yazın. Bu hızlı başlangıç sonraki bölümde gerekir.
 
-## <a name="create-a-vault-and-a-secret"></a>Kasa ve gizli dizi oluşturma
+## <a name="create-a-vault-and-a-secret"></a>Bir kasa ve bir sır oluşturun
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-key-vault-create/).
+Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/101-key-vault-create/)
 
 :::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
 
-Şablonda iki Azure kaynağı tanımlanmıştır:
+Şablonda iki Azure kaynağı tanımlanır:
 
-* [**Microsoft. keykasası/Vaults**](/azure/templates/microsoft.keyvault/vaults): bir Azure Anahtar Kasası oluşturun.
-* [**Microsoft. Keykasası/kaults/gizlilikler**](/azure/templates/microsoft.keyvault/vaults/secrets): Anahtar Kasası gizli anahtarı oluşturma.
+* [**Microsoft.KeyVault/vaults**](/azure/templates/microsoft.keyvault/vaults): bir Azure anahtar kasası oluşturun.
+* [**Microsoft.KeyVault/vaults/secrets**](/azure/templates/microsoft.keyvault/vaults/secrets): önemli bir kasa sırrı oluşturun.
 
-Daha fazla Azure Key Vault şablon örneği [burada](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)bulunabilir.
+Daha fazla Azure Key Vault şablon örnekleri [burada](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)bulabilirsiniz.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir anahtar kasa ve bir sır oluşturur.
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
+    [![Azure'a Dağıt](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-    ![Kaynak Yöneticisi şablonu, Key Vault tümleştirme, Portal dağıtma](./media/quick-create-template/create-key-vault-using-template-portal.png)
+    ![Kaynak Yöneticisi şablonu, Key Vault entegrasyonu, dağıtım portalı](./media/quick-create-template/create-key-vault-using-template-portal.png)
 
-    Belirtilmediği takdirde, anahtar kasasını ve bir parolayı oluşturmak için varsayılan değeri kullanın.
+    Belirtilmediği sürece, anahtar kasasını ve sırrı oluşturmak için varsayılan değeri kullanın.
 
     * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
+    * **Kaynak grubu**: **Yeni Oluştur'u**seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam'ı**tıklatın.
     * **Konum**: Bir konum seçin.  Örneğin, **Orta ABD**.
-    * **Key Vault adı**: Anahtar Kasası için,. Vault.Azure.net ad alanı içinde genel olarak benzersiz olması gereken bir ad girin. Dağıtımı doğruladığınızda, sonraki bölümde adı kullanmanız gerekir.
-    * **Kiracı kimliği**: şablon IşLEVI kiracı kimliğinizi otomatik olarak alır.  Varsayılan değeri değiştirmeyin.
-    * **Ad Kullanıcı kimliği**: [ön koşullardan](#prerequisites)aldığınız Azure AD Kullanıcı nesne kimliğinizi girin.
-    * **Gizli dizi adı**: anahtar kasasında depoladığınız gizli dizi için bir ad girin.  Örneğin, **AdminPassword**.
-    * **Gizli dizi değeri**: gizli değeri girin.  Bir parola depolukarşılaşırsanız, Önkoşullarda oluşturduğunuz oluşturulan parolanın kullanılması önerilir.
+    * **Anahtar Vault Adı**: .vault.azure.net ad alanı içinde küresel olarak benzersiz olması gereken anahtar kasası için bir ad girin. Dağıtımı doğrularken bir sonraki bölümde adın ada ihtiyacı vardır.
+    * **Kiracı Kimliği**: şablon işlevi kiracı kimliğinizi otomatik olarak alır.  Varsayılan değeri değiştirmeyin.
+    * **Reklam Kullanıcı Kimliği**: [Önkoşullar'dan](#prerequisites)aldığınız Azure AD kullanıcı nesnekimliğinizi girin.
+    * **Gizli Ad**: anahtar kasasında sakladığınız gizli nin adını girin.  Örneğin, **adminpassword**.
+    * **Gizli Değer**: gizli değeri girin.  Bir parola saklarsanız, oluşturduğunuz parolayı Önkoşullar'da kullanmanız önerilir.
     * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Seçin.
-3. **Satın al**'ı seçin. Anahtar Kasası başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
+3. **Satın al**'ı seçin. Anahtar kasası başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
-    ![Kaynak Yöneticisi şablonu, Key Vault tümleştirme, Portal dağıtma bildirimi](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![Kaynak Yöneticisi şablonu, Key Vault entegrasyonu, portal bildirimi dağıtma](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure portal, şablonu dağıtmak için kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
+Azure portalı şablonu dağıtmak için kullanılır. Azure portalına ek olarak, Azure PowerShell, Azure CLI ve REST API'yi de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için [şablonları dağıt'a](../azure-resource-manager/templates/deploy-powershell.md)bakın.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-Anahtar kasasını ve parolayı denetlemek için Azure portal kullanabilir ya da oluşturulan gizli anahtarı listelemek için aşağıdaki Azure CLı veya Azure PowerShell betiğini kullanabilirsiniz.
+Anahtar kasasını ve sırrı denetlemek için Azure portalını kullanabilir veya oluşturulan sırrı listelemek için aşağıdaki Azure CLI veya Azure PowerShell komut dosyasını kullanabilirsiniz.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -108,7 +108,7 @@ az keyvault secret list --vault-name $keyVaultName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $keyVaultName = Read-Host -Prompt "Enter your key vault name"
@@ -118,21 +118,21 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-Çıktı şuna benzer:
+Çıktı aşağıdakilere benzer:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-![Kaynak Yöneticisi şablonu, Key Vault tümleştirme, Portal doğrulama çıkışını dağıtma](./media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![Kaynak Yöneticisi şablonu, Key Vault entegrasyonu, dağıtım portalı doğrulama çıktısı](./media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
-![Kaynak Yöneticisi şablonu, Key Vault tümleştirme, Portal doğrulama çıkışını dağıtma](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
+![Kaynak Yöneticisi şablonu, Key Vault entegrasyonu, dağıtım portalı doğrulama çıktısı](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
 ---
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Diğer Key Vault hızlı başlangıçları ve öğreticileri bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmanız yararlı olabilir.
-Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vault ve ilgili kaynaklar silinir. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için:
+Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vault ve ilgili kaynaklar silinir. Azure CLI veya Azure PowerShell kullanarak kaynak grubunu silmek için:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -143,7 +143,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -155,9 +155,9 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir anahtar kasası ve gizli dizi oluşturdunuz ve dağıtımı doğruladı. Key Vault ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta, Azure Kaynak Yöneticisi şablonu kullanarak bir anahtar kasa sı ve bir sır oluşturdunuz ve dağıtımı doğruladınız. Key Vault ve Azure Kaynak Yöneticisi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
-- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
-- [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
-- [Anahtarlar, gizlilikler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında daha fazla bilgi alın
-- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault
+- Azure [Anahtar Kasasına Genel Bakış](key-vault-overview.md)
+- [Azure Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
+- [Anahtarlar, sırlar ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında daha fazla bilgi alın
+- Azure Key Vault en iyi uygulamalarını gözden [geçirin](key-vault-best-practices.md)

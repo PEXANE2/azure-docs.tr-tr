@@ -9,22 +9,22 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68780098"
 ---
-1. Sanal ağ geçidinizin sayfasını açın. Buraya çeşitli yollardan gidebilirsiniz. VNet 'iniz adına giderek ağ geçidine gidebilirsiniz- **> genel bakış-> bağlı cihazlar-ağ geçidinizin > adı**.
-2. Ağ geçidinin sayfasında **Bağlantılar**' a tıklayın. Bağlantılar sayfasının üstündeki **+Ekle**’ye tıklayarak **Bağlantı ekle** sayfasını açın.
+1. Sanal ağ ağ ağ geçidiniz için sayfayı açın. Buraya çeşitli yollardan gidebilirsiniz. **VNet -> Genel Bakış -> Bağlı aygıtlarınızın adı -> Ağ geçidinizin adı**>'na giderek ağ geçidine gidebilirsiniz.
+2. Ağ geçidi için **sayfada, Bağlantılar'ı**tıklatın. Bağlantılar sayfasının üstündeki **+Ekle**’ye tıklayarak **Bağlantı ekle** sayfasını açın.
 
    ![Siteden Siteye bağlantısı oluşturma](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. **Bağlantı ekle** sayfasında, bağlantınız için değerleri yapılandırın.
 
-   - **Ada** Bağlantınızı adlandırın.
-   - **Bağlantı türü:** **Siteden siteye (IPSec)** seçeneğini belirleyin.
-   - **Sanal ağ geçidi:** Bu ağ geçidinden bağlanmakta olduğunuz için değer sabittir.
-   - **Yerel ağ geçidi:** **Bir yerel ağ geçidi seçin** ' e tıklayın ve kullanmak istediğiniz yerel ağ geçidini seçin.
+   - **Ad:** Bağlantınızı adlandırın.
+   - **Bağlantı türü:****Siteden siteye (IPSec)** seçeneğini belirleyin.
+   - **Sanal ağ geçidi:** Bu ağ geçidinden bağlandığınız için değer sabittir.
+   - **Yerel ağ geçidi:****Bir yerel ağ geçidi seçin**'e tıklayıp kullanmak istediğiniz yerel ağ geçidini seçin.
    - **Paylaşılan Anahtar:** Buradaki değer, yerel şirket için VPN cihazınız için kullandığınız değerle eşleşmelidir. Örnekte 'abc123' değeri kullanılmıştır, ancak siz daha karmaşık bir değer kullanabilirsiniz (ve kullanmalısınız). Önemli olan, burada belirttiğiniz değerin VPN cihazınızı yapılandırırken belirttiğiniz değerle aynı olmasıdır.
    - **Abonelik**, **Kaynak Grubu** ve **Konum** için kalan değerler sabittir.
 

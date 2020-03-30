@@ -9,49 +9,49 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188805"
 ---
 ## <a name="view-device-telemetry"></a>Cihaz telemetrisini görüntüleme
 
-Cihazınızın gönderilen telemetriyi görüntüleyebilirsiniz **Device Explorer** çözümdeki sayfası.
+Cihazınızdan gönderilen telemetriyi aygıt **explorer** sayfasında niçin çözümde görüntüleyebilirsiniz.
 
-1. Şirket cihaz listesinde sağladığınız cihazı seçin **Device Explorer** sayfası. Bir panel Cihazınızı bir çizim cihaz telemetri dahil olmak üzere ilgili bilgileri görüntüler:
+1. **Aygıt Gezgini** sayfasındaki aygıtlar listesinde sizin hükmettiğiniz aygıtı seçin. Bir panel, aygıt telemetrisinin çizimi de dahil olmak üzere cihazınızla ilgili bilgileri görüntüler:
 
-    ![Cihaz ayrıntıları bakın](media/iot-suite-visualize-connecting/devicesdetail.png)
+    ![Aygıt ayrıntılarını görün](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-1. Seçin **baskısı** telemetri görünümünü değiştirmek için:
+1. Telemetri ekranını değiştirmek için **Basınç'ı** seçin:
 
-    ![Basınç telemetrisini görüntüleme](media/iot-suite-visualize-connecting/devicespressure.png)
+    ![Basınç telemetrisini görüntüle](media/iot-suite-visualize-connecting/devicespressure.png)
 
-1. Cihazınız hakkında tanılama bilgilerini görüntülemek için aşağı kaydırın **tanılama**:
+1. Cihazınızla ilgili tanılama bilgilerini görüntülemek için **Tanılama'ya**gidin:
 
-    ![Cihaz tanılamayı görüntüle](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+    ![Cihaz tanılama bilgilerini görüntüleme](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
 
-## <a name="act-on-your-device"></a>Cihazınızda hareket
+## <a name="act-on-your-device"></a>Cihazınızda hareket edin
 
-Cihazlarınızda yöntem çağırmak için **Device Explorer** Uzaktan izleme çözümünde sayfası. Örneğin, Uzaktan izleme çözüm içinde **Soğutucu** cihazları uygulayan bir **yeniden** yöntemi.
+Aygıtlarınızda yöntemleri çağırmak için Uzaktan İzleme çözümündeki **Aygıt Gezgini** sayfasını kullanın. Örneğin, Uzaktan İzleme çözümünde **Chiller** aygıtları yeniden **başlatma** yöntemi uygular.
 
-1. Seçin **cihazları** gitmek için **Device Explorer** çözümdeki sayfası.
+1. Çözümdeki **Aygıt Gezgini** sayfasına gitmek için **Aygıtlar'ı** seçin.
 
-1. Şirket cihaz listesinde sağladığınız cihazı seçin **Device Explorer** sayfası:
+1. **Aygıt Gezgini** sayfasındaki aygıtlar listesinde sizin hükmettiğiniz aygıtı seçin:
 
-    ![Gerçek Cihazınızı seçin](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![Gerçek cihazınızı seçin](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Cihazınızda çağırabilirsiniz yöntemlerin listesini görüntülemek için seçin **işleri**, ardından **yöntemleri**. Birden fazla cihazda çalıştırılacak bir iş zamanlamak için listede birden çok cihaz seçebilirsiniz. **İşleri** paneli yöntemi türleri, seçtiğiniz tüm cihazlar için ortak gösterir.
+1. Cihazınızda arayabilirsiniz yöntemlerin listesini görüntülemek **için, İşler,** sonra **Yöntemleri**seçin. Birden çok aygıtta çalışacak bir iş zamanlamak için, listede birden çok aygıt seçebilirsiniz. **İşler** paneli seçtiğiniz tüm aygıtlar için ortak yöntem türlerini gösterir.
 
-1. Seçin **yeniden**, iş adı kümesine **RebootPhysicalChiller** seçip **Uygula**:
+1. **Yeniden Başlat'ı**seçin, iş adını **RebootPhysicalChiller** olarak ayarlayın ve sonra **Uygula'yı**seçin:
 
-    ![Üretici yazılımı güncelleştirme zamanla](media/iot-suite-visualize-connecting/deviceschedule.png)
+    ![Firmware güncelleştirmesini zamanlama](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. İletiler dizisini sanal cihazı yöntemi işlerken cihazınızın kodunu çalıştıran konsolda görüntüler.
+1. Simüle edilen aygıt yöntemi işlerken konsolda aygıt kodunuzu çalıştıran bir dizi ileti görüntülenir.
 
 > [!NOTE]
-> İş çözümdeki durumunu izlemek için seçin **iş durumunu görüntüleme**.
+> Çözümdeki işin durumunu izlemek için **İş Durumunu Görüntüle'yi**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Makaleyi [Uzaktan izleme çözüm Hızlandırıcısını özelleştirme](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) çözüm Hızlandırıcısını özelleştirmek için kullanabileceğiniz adımlar anlatılmaktadır.
+Makale, [Çözüm Hızlandırıcısını Özelleştirmek](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) için çözüm hızlandırıcısını özelleştirmenin bazı yollarını açıklar.

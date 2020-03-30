@@ -1,5 +1,5 @@
 ---
-title: Azure Depolama Gezgini kullanarak Azure dosya paylaşımlarını yönetme
+title: Azure Depolama Gezgini'ni kullanarak Azure dosya paylaşımlarını yönetme
 description: Bu hızlı başlangıcı Azure dosyalarını yönetmek için Azure Depolama Gezgini kullanma hakkında bilgi edinmek için kullanın.
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431816"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Hızlı Başlangıç: Azure Depolama Gezgini ile Azure dosya paylaşımları oluşturma ve yönetme
@@ -19,7 +19,7 @@ Bu kılavuzda, Azure Depolama Gezgini'ni kullanarak [Azure dosya paylaşımları
 
 Azure Depolama Gezgini Windows, macOS ve Linux için kullanılabilen popüler bir istemci aracıdır. Depolama Gezgini’ni kullanarak Azure dosya paylaşımlarını ve diğer depolama kaynaklarını yönetebilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıç için Depolama Gezgini'nin yüklü olması gerekir. İndirip yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)’ne gidin.

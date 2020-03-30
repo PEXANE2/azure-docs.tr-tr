@@ -1,6 +1,6 @@
 ---
-title: Azure AD'ye parola karması eşitleme nedir? | Microsoft Docs
-description: Parola Karması eşitlemeyi açıklar.
+title: Azure AD ile parola karma senkronizasyonu nedir? | Microsoft Belgeleri
+description: Parola karma eşitlemesi açıklar.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,35 +12,35 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66253853"
 ---
-# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD'ye parola karması eşitleme nedir?
-Parola Karması eşitleme karma kimlik gerçekleştirmek için kullanılan oturum açma yöntemleri biridir. Karma bir karma Azure AD Connect eşitlendiğinde, şirket içi Active Directory örneğinden kullanıcılar parola bulut tabanlı bir Azure ad örneği.
+# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD ile parola karma senkronizasyonu nedir?
+Parola karma eşitleme, karma kimlik gerçekleştirmek için kullanılan oturum açma yöntemlerinden biridir. Azure AD Connect, şirket içi Active Directory örneğinden bulut tabanlı Azure AD örneğine kullanıcı parolasının karmasını eşitler.
 
-Parola Karması eşitleme uygulanan Azure AD Connect eşitlemesi ile dizin eşitleme özelliğini uzantısıdır. Bu özellik, Office 365 gibi Azure AD hizmetlerinde oturum açmak için kullanabilirsiniz. Hizmete şirket içi Active Directory Örneğinizde oturum açmak için kullandığınız aynı parolayı kullanarak oturum açın.
+Parola karma eşitleme, Azure AD Connect eşitlemesi tarafından uygulanan dizin eşitleme özelliğinin bir uzantısıdır. Bu özelliği, Office 365 gibi Azure AD hizmetlerinde oturum açabilmek için kullanabilirsiniz. Şirket içi Active Directory örneğinde oturum açtığınızda kullandığınız parolayı kullanarak hizmette oturum açabilirsiniz.
 
 ![Azure AD Connect nedir?](./media/how-to-connect-password-hash-synchronization/arch1.png)
 
-Parola Karması eşitleme için yalnızca bir tane korumak için kullanıcılarının ihtiyaç duyduğu olan parola sayısını azaltarak yardımcı olur. Parola Karması eşitleme yapabilirsiniz:
+Parola karma senkronizasyonu parola sayısını azaltarak yardımcı olur, kullanıcılarınızın sadece bir korumak gerekir. Parola karma senkronizasyonu şunları yapabilir:
 
-* Kullanıcılarınızın verimliliğini artırın.
-* Yardım Masası maliyetlerini azaltın.  
+* Kullanıcılarınızın üretkenliğini artırın.
+* Yardım masası maliyetlerinizi azaltın.  
 
-Kullanmaya karar verirseniz, isteğe bağlı olarak, parola karması eşitleme yedek olarak ayarlayabilirsiniz [Active Directory Federasyon Hizmetleri (AD FS) ile Federasyon](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) , oturum açma yöntemi olarak.
+İsteğe bağlı olarak, oturum açma yönteminiz olarak [Active Directory Federation Services (AD FS) ile Federasyon'u](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) kullanmaya karar verirseniz, parola karma senkronizasyonunu yedek olarak ayarlayabilirsiniz.
 
-Parola Karması eşitleme, ortamınızda kullanmak için yapmanız:
+Ortamınızda parola karma senkronizasyonunu kullanmak için şunları yapmanız gerekir:
 
-* Azure AD Connect yükleme.  
-* Şirket içi Active Directory örneğinizi ve Azure Active Directory örneğinizle arasında dizin eşitlemesi yapılandırın.
-* Parola karma eşitlemesini etkinleştirme.
+* Azure AD Connect'i yükleyin.  
+* Şirket içi Active Directory örneğiniz ile Azure Etkin Dizin örneğiniz arasında dizin eşitlemesi yapılandırın.
+* Parola karma eşitlemesini etkinleştirin.
 
 
 
-Daha fazla bilgi için [karma kimlik nedir?](whatis-hybrid-identity.md).
+Daha fazla bilgi için [bkz: Karma kimlik nedir?](whatis-hybrid-identity.md)
 
 
 
@@ -49,7 +49,7 @@ Daha fazla bilgi için [karma kimlik nedir?](whatis-hybrid-identity.md).
 
 - [Hibrit kimlik nedir?](whatis-hybrid-identity.md)
 - [Azure AD Connect ve Connect Health nedir?](whatis-azure-ad-connect.md)
-- [Geçişli kimlik doğrulaması (PTA) nedir?](how-to-connect-pta.md)
+- [Geçiş kimlik doğrulaması (PTA) nedir?](how-to-connect-pta.md)
 - [Federasyon nedir?](whatis-fed.md)
-- [Üzerinde çoklu oturum nedir?](how-to-connect-sso.md)
-- [Parola Karması eşitleme nasıl çalışır?](how-to-connect-password-hash-synchronization.md)
+- [Tek işaret nedir?](how-to-connect-sso.md)
+- [Parola karma eşitleme nasıl çalışır?](how-to-connect-password-hash-synchronization.md)

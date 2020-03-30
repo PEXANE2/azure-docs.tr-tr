@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 17789da87ee171f301b00198e25c039821be6f32
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593304"
 ---
 > [!IMPORTANT]
-> Bu özellik yalnızca kullanılabilir **verizon'dan Azure CDN standart** ve **verizon'dan Azure CDN Premium** ürünleri. **Azure CDN from Akamai**'de desteklenmez. CDN özelliklerinin karşılaştırması için bkz. [Azure CDN ürün özellikleri](../articles/cdn/cdn-features.md).
+> Bu özellik yalnızca **Verizon'dan Azure CDN Standard** ve **Verizon ürünlerinden Azure CDN Premium** ile kullanılabilir. **Azure CDN from Akamai**'de desteklenmez. CDN özelliklerinin karşılaştırması için bkz. [Azure CDN ürün özellikleri](../articles/cdn/cdn-features.md).

@@ -1,15 +1,15 @@
 ---
-title: Azure 'da kuyruk iletileri tarafından tetiklenen bir işlev oluşturma
+title: Azure'da sıra iletileri tarafından tetiklenen bir işlev oluşturma
 description: Bir Azure Depolama kuyruğuna gönderilmiş iletiler tarafından çağrılan sunucusuz işlev oluşturmak için Azure İşlevlerini kullanın.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769260"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Kuyruk Depolama tarafından tetiklenen bir işlev oluşturma
@@ -36,7 +36,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-a-queue-triggered-function"></a>Kuyruk ile tetiklenen bir işlev oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **+** **Fonksiyonlar'ın**yanındaki düğmeyi tıklatın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -46,7 +46,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. Arama alanına `queue` yazıp **Kuyruk tetikleyici** şablonunu seçin.
 
-1. İstenirse, Azure Storage uzantısını ve işlev uygulamasındaki tüm bağımlılıkları yüklemek için **Install** ' ı seçin. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İstenirse, Azure Depolama uzantısını ve işlev uygulamasındaki bağımlılıkları yüklemek için **Yükle'yi** seçin. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -78,7 +78,7 @@ Ardından Azure Depolama hesabınıza bağlanıp **myqueue-items** depolama kuyr
 
     ![Depolama kimlik bilgilerini girin ve bağlanın.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Eklediğiniz depolama hesabını genişletin, **Kuyruklar**'a sağ tıklayın, **Kuyruk oluştur**'a tıklayın, `myqueue-items` yazın ve Enter tuşuna basın.
+1. Ekli depolama hesabını genişletin, **Kuyruklar'ı**sağ tıklatın, **Sıra Oluştur'u**tıklatın, yazın `myqueue-items`ve sonra enter tuşuna basın.
 
     ![Depolama kuyruğu oluşturun.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
@@ -86,9 +86,9 @@ Artık bir depolama kuyruğunuz var ve kuyruğa ileti ekleyerek işlevi test ede
 
 ## <a name="test-the-function"></a>İşlevi test etme
 
-1. Azure portalına dönün, işlevinizi bulun, sayfanın en altındaki **Günlükler** bölümünü genişletin ve günlük akışının duraklatılmış olmadığından emin olun.
+1. Azure portalında, işlevinize göz atın, sayfanın altındaki **Günlükleri** genişletin ve günlük akışının duraklatmadığından emin olun.
 
-1. Depolama Gezgini, depolama hesabınızı, **kuyrukları**ve **myQueue-Items**' ı genişletin ve ardından **ileti Ekle**' ye tıklayın.
+1. Depolama Gezgini'nde, depolama hesabınızı, **Kuyruklarınızı**ve **myqueue öğelerinizi**genişletin ve **ardından İleti Ekle'yi**tıklatın.
 
     ![Kuyruğa bir ileti ekleyin.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 
@@ -108,7 +108,7 @@ Artık bir depolama kuyruğunuz var ve kuyruğa ileti ekleyerek işlevi test ede
 
 Depolama kuyruğuna bir ileti eklendiğinde çalışacak bir işlev oluşturdunuz. Kuyruk depolama tetikleyicileri hakkında daha fazla bilgi için bkz. [Azure İşlevleri Kuyruk depolama bağlamaları](functions-bindings-storage-queue.md).
 
-İlk işlevinizi oluşturdığınıza göre, işleve başka bir kuyruğa ileti yazan bir çıkış bağlaması ekleyelim.
+Şimdi ilk işlevinizi oluşturduğunuza göre, başka bir kuyruğa ileti yazan işleve bir çıktı bağlama ekleyelim.
 
 > [!div class="nextstepaction"]
 > [İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme](functions-integrate-storage-queue-output-binding.md)

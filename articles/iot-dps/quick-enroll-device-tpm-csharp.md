@@ -1,6 +1,6 @@
 ---
-title: Kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetmeC#
-description: Hızlı başlangıç-Service SDK kullanarak C# TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'NE (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+title: 'TPM aygıtını C kullanarak Azure Aygıt Sağlama Hizmetine kaydedin #'
+description: Quickstart - C# hizmeti SDK'yı kullanarak TPM cihazını Azure IoT Hub Aygıt Sağlama Hizmetine (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,67 +10,67 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: ee1b803459e0c81b86021b617a29e0b29ee19909
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74976851"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Hızlı başlangıç: Service SDK kullanarak C# cihaz sağlama HIZMETI IoT Hub TPM cihazı kaydetme
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Quickstart: C# hizmeti SDK kullanarak TPM cihazını IoT Hub Aygıt Sağlama Hizmetine kaydedin
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-Bu makalede, [ C# hizmet SDK 'sını](https://github.com/Azure/azure-iot-sdk-csharp) ve örnek C# .NET Core uygulamasını kullanarak Azure IoT Hub cihaz sağlama hizmeti 'nde bir TPM cihazı için tek bir kayıt oluşturma işlemi gösterilmektedir. İsteğe bağlı olarak, bu bireysel kayıt girişini kullanarak sanal bir TPM cihazını sağlama hizmetine kaydedebilirsiniz. Bu adımlar hem Windows hem de Linux bilgisayarlarda çalışır, ancak bu makalede bir Windows geliştirme bilgisayarı kullanılmaktadır.
+Bu makalede, [C# Service SDK](https://github.com/Azure/azure-iot-sdk-csharp) ve örnek c# .NET Core uygulamasını kullanarak Azure IoT Hub Aygıt Sağlama Hizmeti'ndeki bir TPM aygıtı için tek bir kaydın nasıl programlanabilir bir şekilde oluşturulacak olduğu gösterilmektedir. Bu bireysel kayıt girişini kullanarak, simüle edilmiş bir TPM aygıtını sağlama hizmetine isteğe bağlı olarak kaydedebilirsiniz. Bu adımlar hem Windows hem de Linux bilgisayarlarda çalışsa da, bu makalede bir Windows geliştirme bilgisayarı kullanır.
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
-1. Bilgisayarınızda [Visual Studio 2019](https://www.visualstudio.com/vs/) yüklü olduğunu doğrulayın.
+1. Bilgisayarınızda [Visual Studio 2019](https://www.visualstudio.com/vs/) yüklü olduğunuzu doğrulayın.
 
-1. Bilgisayarınızda yüklü [.NET Core SDK](https://www.microsoft.com/net/download/windows) olduğunu doğrulayın.
+1. Bilgisayarınızda [.NET Core SDK](https://www.microsoft.com/net/download/windows) yüklü olduğunuzu doğrulayın.
 
-1. Devam etmeden önce [Azure portal IoT Hub cihaz sağlama hizmetini ayarlama](./quick-setup-auto-provision.md) bölümündeki adımları uygulayın.
+1. Devam etmeden önce [Azure portalıyla IoT Hub Aygıt Sağlama Hizmeti'ni ayarlama](./quick-setup-auto-provision.md) adımlarını tamamlayın.
 
-1. Seçim Bu hızlı başlangıç sonunda sanal bir cihaz kaydetmek istiyorsanız cihaz [SDK 'sını kullanarak C# sanal bir TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) bölümündeki yordamı, cihaz için bir onay anahtarı aldığınız adıma kadar izleyin. Daha sonra bu hızlı başlangıçta kullanmanız gerektiğinden, onay anahtarını, kayıt KIMLIĞINI ve isteğe bağlı olarak cihaz KIMLIĞINI kaydedin.
+1. (İsteğe bağlı) Bu hızlı başlatmanın sonunda simüle edilmiş bir aygıtı kaydetmek istiyorsanız, Oluştur'daki yordamı izleyin ve C# cihazı SDK'yı kullanarak aygıt için bir onay anahtarı aldığınız adıma kadar [simüle edilmiş bir TPM aygıtı nı uygulayın.](quick-create-simulated-device-tpm-csharp.md) Onay anahtarını, kayıt kimliğini ve isteğe bağlı olarak aygıt kimliğini kaydedin, çünkü bunları daha sonra bu hızlı başlangıçta kullanmanız gerekir.
 
    > [!NOTE]
-   > Azure portal kullanarak bireysel kayıt oluşturma adımlarını izleyin.
+   > Azure portalını kullanarak tek bir kayıt oluşturmak için adımları izlemeyin.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Sağlama hizmetinizin bağlantı dizesini alma
 
 Bu hızlı başlangıçtaki örnek için sağlama hizmetinizin bağlantı dizesine ihtiyacınız vardır.
 
-1. Azure portal oturum açın, **tüm kaynaklar**' ı ve ardından cihaz sağlama hizmeti ' ni seçin.
+1. Azure portalında oturum açın, **Tüm kaynakları**ve ardından Cihaz Sağlama Hizmeti'ni seçin.
 
-1. **Paylaşılan erişim ilkeleri**' ni seçin ve ardından özelliklerini açmak için kullanmak istediğiniz erişim ilkesini seçin. **Erişim ilkesi**' nde, birincil anahtar bağlantı dizesini kopyalayın ve kaydedin.
+1. **Paylaşılan erişim ilkelerini**seçin, ardından özelliklerini açmak için kullanmak istediğiniz erişim ilkesini seçin. **Access İlkesi'nde**birincil anahtar bağlantı dizesini kopyalayın ve kaydedin.
 
     ![Portaldan sağlama hizmeti bağlantı dizesini alma](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>Bireysel kayıt örneğini oluşturma
 
-Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Biraz değişiklikle, bireysel kayıt eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. IoT Core ile geliştirme hakkında daha fazla bilgi için bkz. [Windows IoT Core geliştirici belgeleri](https://docs.microsoft.com/windows/iot-core/).
+Bu bölümde, bir TPM aygıtı için tek tek bir kayıt ekleyen bir .NET Core konsol uygulamasının nasıl oluşturulutamamolduğu, sağlama hizmetinize nasıl eklenilir. Biraz değişiklikle, bireysel kayıt eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. IoT Core ile geliştirme hakkında daha fazla bilgi edinmek için [Windows IoT Core geliştirici belgelerine](https://docs.microsoft.com/windows/iot-core/)bakın.
 
-1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin. **Yeni proje oluştur**' da, Için C# **konsol uygulaması (.NET Core)** proje şablonunu seçin ve **İleri**' yi seçin.
+1. Visual Studio'u açın ve **yeni bir proje oluştur'u**seçin. **Yeni bir proje oluştur'da,** C# için Konsol Uygulaması **(.NET Core)** proje şablonu seçin ve **İleri'yi**seçin.
 
-1. Projeyi *Createtpmenrollment*olarak adlandırın ve **Oluştur**' a basın.
+1. *Project CreateTpmEnrollment'ı*adlandırın ve **Oluştur'a**basın.
 
-    ![Visual C# Windows Klasik Masaüstü projesini yapılandırma](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
+    ![Visual C# Windows Classic Desktop projesini yapılandır](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. Çözüm Visual Studio 'da açıldığında, **Çözüm Gezgini** bölmesinde, **Createtpmenrollment** projesine sağ tıklayın. **NuGet Paketlerini Yönet**' i seçin.
+1. Çözüm Visual Studio'da, **Çözüm Gezgini** bölmesinde açıldığında **CreateTpmEnrollment** projesine sağ tıklayın. **NuGet Paketlerini Yönet'i**seçin.
 
-1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, **Microsoft. Azure. Devices. sağlama. hizmeti**' ni arayın ve ardından **Install**tuşuna basın.
+1. **NuGet Package Manager'da** **Gözat'ı,** Aramayı ve **Microsoft.Azure.Devices.Provisioning.Service'i**seçin ve ardından **Yükle'ye**basın.
 
    ![NuGet Paket Yöneticisi penceresi](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
-   Bu adım, [Azure IoT sağlama hizmeti istemci SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+   Bu adım, [Azure IoT Sağlama Hizmeti İstemi SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketini ve bağımlılıklarını karşıdan yükler, yükler ve ekler.
 
-1. Aşağıdaki `using` deyimlerini `Program.cs`en üstündeki diğer `using` deyimlerinden sonra ekleyin:
+1. Aşağıdaki `using` ifadeleri en üstteki diğer `using` ifadelerden sonra `Program.cs`ekleyin:
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Aşağıdaki alanları `Program` sınıfına ekleyerek aşağıda listelenen değişiklikleri yapın.
+1. Aşağıdaki değişiklikleri yaparak `Program` sınıfa aşağıdaki alanları ekleyin.
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -87,13 +87,13 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * `ProvisioningServiceConnectionString` yer tutucu değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
+   * `ProvisioningServiceConnectionString` Yer tutucu değerini, kaydı oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
 
    * İsteğe bağlı olarak kayıt kimliğini, onay anahtarını, cihaz kimliğini ve sağlama durumunu değiştirebilirsiniz.
 
-   * Bu hızlı başlangıcı [cihaz SDK 'sını kullanarak C# sanal bir cihaz oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) hızlı başlangıcı ile birlikte kullanıyorsanız, onay anahtarını ve kayıt kimliğini bu hızlı başlangıçta not ettiğiniz değerlerle değiştirin. Cihaz KIMLIĞINI bu hızlı başlangıçta önerilen değer ile değiştirebilir, kendi değerini kullanabilir veya bu örnekteki varsayılan değeri kullanabilirsiniz.
+   * Bu hızlı başlatmayı [C# cihazı SDK kullanarak simüle](quick-create-simulated-device-tpm-csharp.md) edilmiş bir TPM aygıtı nı oluşturarak simüle edilmiş bir tpm aygıtını kullanıyorsanız, onay anahtarını ve kayıt kimliğini bu hızlı başlatmada belirttiğiniz değerlerle değiştirin. Aygıt kimliğini bu hızlı başlatmada önerilen değerle değiştirebilir, kendi değerinizi kullanabilir veya bu örnekteki varsayılan değeri kullanabilirsiniz.
 
-1. `Program` sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, bireysel kayıt girişi oluşturur ve sonra tek bir kaydı sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateIndividualEnrollmentAsync` yöntemini çağırır.
+1. `Program` Sınıfa aşağıdaki yöntemi ekleyin.  Bu kod tek tek kayıt girişi `CreateOrUpdateIndividualEnrollmentAsync` oluşturur `ProvisioningServiceClient` ve daha sonra tek tek kaydı sağlama hizmetine eklemek için yöntem çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -128,7 +128,7 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
    }
    ```
 
-1. Son olarak, `Main` yönteminin gövdesini aşağıdaki satırlarla değiştirin:
+1. Son olarak, yöntemin `Main` gövdesini aşağıdaki satırlarla değiştirin:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();
@@ -142,33 +142,33 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
   
 Örneği Visual Studio'da çalıştırarak TPM cihazınızın bireysel kaydını oluşturun.
 
-Bir komut Istemi penceresi görünür ve onay iletilerini göstermeye başlar. Başarılı bir şekilde oluşturulduğunda, komut Istemi penceresinde yeni bireysel kaydın özellikleri görüntülenir.
+Komut İstemi penceresi görüntülenir ve onay iletilerini göstermeye başlar. Başarılı oluşturmada, Komut İstemi penceresi yeni tek tek kaydın özelliklerini görüntüler.
 
-Bireysel kaydın oluşturulduğunu doğrulayabilirsiniz. Cihaz sağlama hizmeti özetine gidin ve kayıtları **Yönet**' i seçin ve **bireysel**kayıtlar ' ı seçin. Örnekte kullandığınız kayıt kimliğine karşılık gelen yeni bir kayıt girdisi görmelisiniz.
+Tek tek kaydın oluşturulduğunu doğrulayabilirsiniz. Aygıt Sağlama Hizmeti özetine gidin ve **Kayıtları Yönet'i**seçin ve ardından **Bireysel Kayıtları**seçin. Örnekte kullandığınız kayıt kimliğine karşılık gelen yeni bir kayıt girdisi görmelisiniz.
 
 ![Portaldaki kayıt özellikleri](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
-Onay anahtarını ve girişin diğer özelliklerini doğrulamak için girişi seçin.
+Girişiçin onay anahtarını ve diğer özellikleri doğrulamak için girişi seçin.
 
-[Cihaz SDK 'sını kullanarak C# sanal bir TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) ile ilgili adımları izlediyseniz, sanal cihazınızı kaydetmek için bu hızlı başlangıçta kalan adımlara devam edebilirsiniz. Azure Portal'ı kullanarak bireysel kayıt oluşturma adımlarını atladığınızdan emin olun.
+C# cihazı SDK hızlı başlat'ı [kullanarak simüle edilmiş bir TPM aygıtı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) adımlarını takip ediyorsanız, simüle edilmiş aygıtınızı kaydetmek için bu hızlı başlatmada kalan adımları kullanmaya devam edebilirsiniz. Azure Portal'ı kullanarak bireysel kayıt oluşturma adımlarını atladığınızdan emin olun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-C# Hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Aksi takdirde, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
+C# hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlatmada oluşturulan kaynakları temizlemeyin. Aksi takdirde, bu hızlı başlatma tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-1. Bilgisayarınızda C# örnek çıkış penceresini kapatın.
+1. Bilgisayarınızdaki C# örnek çıkış penceresini kapatın.
 
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.
+1. Azure portalında Cihaz Sağlama hizmetinize gidin, **Kayıtları Yönet'i**seçin ve ardından **Bireysel Kayıtlar** sekmesini seçin. Bu hızlı başlangıcı kullanarak oluşturduğunuz kayıt girişi için *Kayıt Kimliği'nin* yanındaki onay kutusunu seçin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
 
-1. [Cihaz SDK 'sını kullanarak C# ](quick-create-simulated-device-tpm-csharp.md) sanal bir TPM cihazı oluşturma ve sağlama bölümündeki adımları IZLEDIYSENIZ, sanal bir TPM cihazı oluşturmak için aşağıdaki adımları uygulayın:
+1. Benzetimli bir TPM aygıtı oluşturmak için [C# cihazı SDK'yı kullanarak simüle edilmiş bir TPM aygıtı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) adımlarını izlediyseniz, aşağıdaki adımları yapın:
 
     1. TPM simülatör penceresini ve simülasyon cihazının örnek çıkış penceresini kapatın.
 
-    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. Araştırıcılar altındaki menüde, **IoT cihazları**' nı seçin, bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *cihaz kimliği* ' nin yanındaki onay kutusunu Işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
+    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. **Explorers**altındaki menüde , **IoT aygıtlarını**seçin , bu hızlı başlatmada kaydettiğiniz aygıtın *AYGıT Kimliğinin* yanındaki onay kutusunu seçin ve ardından bölmenin üst kısmındaki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir TPM cihazı için program aracılığıyla tek bir kayıt girişi oluşturdunuz. İsteğe bağlı olarak, bilgisayarınızda bir TPM sanal cihazı oluşturdunuz ve Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak IoT Hub 'ınıza sağladınız. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin.
+Bu hızlı başlatmada, bir TPM aygıtı için programlı bir şekilde tek bir kayıt girişi oluşturdunuz. İsteğe bağlı olarak, bilgisayarınızda TPM simüle edilmiş bir aygıt oluşturdunuz ve Azure IoT Hub Aygıt Sağlama Hizmeti'ni kullanarak IoT hub'ınıza sokuldum. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [Azure IoT Hub Cihazı Sağlama Hizmeti öğreticileri](./tutorial-set-up-cloud.md)

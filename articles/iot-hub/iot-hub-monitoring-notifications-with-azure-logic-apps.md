@@ -1,8 +1,8 @@
 ---
-title: IoT uzaktan izleme ve bildirimler Azure Logic Apps | Microsoft Docs
-description: IoT Hub 'ınızda IoT sıcaklık izleme için Azure Logic Apps kullanın ve algılanan tüm bozukluklar için posta kutunuza otomatik olarak e-posta bildirimleri gönderin.
+title: Azure Logic Apps ile IoT uzaktan izleme ve bildirimler | Microsoft Dokümanlar
+description: IoT hub'ınızda IoT sıcaklık izleme için Azure Logic Apps'ı kullanın ve algılanan anormallikler için posta kutunuza otomatik olarak e-posta bildirimleri gönderin.
 author: robinsh
-keywords: IoT izleme, IoT bildirimleri, IoT sıcaklık izleme
+keywords: iot izleme, iot bildirimleri, iot sıcaklık izleme
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -10,27 +10,27 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68385724"
 ---
-# <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler
+# <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT hub'ınızı ve posta kutunuzu bağlayan Azure Logic Apps ile IoT uzaktan izleme ve bildirimler
 
-![Uçtan uca diyagram](media/iot-hub-monitoring-notifications-with-azure-logic-apps/iot-hub-e2e-logic-apps.png)
+![Uçuça diyagram](media/iot-hub-monitoring-notifications-with-azure-logic-apps/iot-hub-e2e-logic-apps.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) , şirket içi ve bulut hizmetlerinde, bir veya daha fazla kuruluşta ve çeşitli protokollerde iş akışlarını düzenlemenize yardımcı olabilir. Mantıksal uygulama tetikleyici ile başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanbilen bir veya daha fazla eylem gelir. Bu esneklik, IoT izleme senaryoları için ideal bir IoT çözümü Logic Apps sağlar. Örneğin, bir IoT Hub uç noktasındaki bir cihazdan telemetri verilerinin varışı, bir Azure Storage blob 'undaki verileri ambara yönelik mantıksal uygulama iş akışları başlatabilir, veri anormallarını uyarmak için e-posta uyarıları gönderebilir, bir cihaz hata bildirirse bir teknisyen ziyaret edebilir vb.
+[Azure Logic Apps,](https://docs.microsoft.com/azure/logic-apps/) şirket içi ve bulut hizmetleri, bir veya daha fazla kuruluş ve çeşitli protokoller arasında iş akışları düzenlemenize yardımcı olabilir. Bir mantık uygulaması bir tetikleyici yle başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanabilecek bir veya daha fazla eylem izlenir. Bu esneklik, Logic Apps'ı IoT izleme senaryoları için ideal bir IoT çözümü haline getirir. Örneğin, bir aygıttan bir Aygıttan gelen telemetri verilerinin Bir IoT Hub bitiş noktasından gelmesi, verileri Azure Depolama blob'unda depolamak için mantık uygulaması iş akışları başlatabilir, veri anormallikleri konusunda uyarmak için e-posta uyarıları gönderebilir, bir aygıt arıza bildiriyorsa teknisyen ziyareti zamanlayabilir , ve saire.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-IoT Hub 'ınızı ve posta kutunuzu, sıcaklık izleme ve bildirimler için bağlayan bir mantıksal uygulama oluşturmayı öğreneceksiniz.
+IoT hub'ınızı ve posta kutunuzu sıcaklık izleme ve bildirimler için birbirine bağlayan bir mantık uygulaması oluşturmayı öğrenirsiniz.
 
-Cihazınızda çalışan istemci kodu, IoT Hub 'ınıza gönderdiği her telemetri iletisindeki `temperatureAlert`bir uygulama özelliği ayarlar. İstemci kodu 30 C üzerinde bir sıcaklık algıladığında, bu özelliği olarak `true`ayarlar; Aksi takdirde, özelliğini olarak `false`ayarlar.
+Aygıtınızda çalışan istemci kodu, `temperatureAlert`IoT hub'ınıza gönderdiği her telemetri iletisine bir uygulama özelliği ayarlar. İstemci kodu 30 C'nin üzerindeki bir sıcaklığı `true`algıladığında, bu özelliği ; aksi takdirde, özelliği `false`.
 
-IoT Hub 'ınıza ulaşan iletiler, gövdede bulunan telemetri verileri ve `temperatureAlert` uygulama özelliklerinde bulunan özelliği ile şuna benzer şekilde görünür (sistem özellikleri gösterilmez):
+IoT hub'ınıza gelen iletiler, gövdede bulunan telemetri verileri ve `temperatureAlert` uygulama özelliklerinde bulunan özellik (sistem özellikleri gösterilmez):
 
 ```json
 {
@@ -46,211 +46,211 @@ IoT Hub 'ınıza ulaşan iletiler, gövdede bulunan telemetri verileri ve `tempe
 }
 ```
 
-IoT Hub ileti biçimi hakkında daha fazla bilgi edinmek için bkz. [IoT Hub Iletileri oluşturma ve okuma](iot-hub-devguide-messages-construct.md).
+IoT Hub ileti biçimi hakkında daha fazla bilgi edinmek için [IoT Hub iletileri oluştur ve okuyun.](iot-hub-devguide-messages-construct.md)
 
-Bu konu başlığında, `temperatureAlert` `true` özelliğin Service Bus uç noktasına olduğu iletileri göndermek için IoT Hub 'ınızda yönlendirme ayarlarsınız. Ardından Service Bus uç noktasına ulaşan iletilerde tetiklenen bir mantıksal uygulama ayarlarsınız ve size bir e-posta bildirimi gönderir.
+Bu konuda, `temperatureAlert` özelliğin bir Hizmet Veri Merkezi bitiş noktasına olduğu iletileri `true` göndermek için IoT hub'ınızda yönlendirme yi ayarlarsınız. Daha sonra, Servis Veri Servisi bitiş noktasına gelen iletileri tetikleyen ve size bir e-posta bildirimi gönderen bir mantık uygulaması ayarlarsınız.
 
-## <a name="what-you-do"></a>Yapabilecekleriniz
+## <a name="what-you-do"></a>Ne yaparsınız
 
-* Service Bus bir ad alanı oluşturun ve buna bir Service Bus sırası ekleyin.
-* Service Bus kuyruğuna sıcaklık uyarısı içeren iletileri yönlendirmek için IoT Hub 'ınıza özel bir uç nokta ve yönlendirme kuralı ekleyin.
-* Service Bus kuyruğunuzdan iletileri tüketmek ve istenen alıcıya bildirim e-postaları göndermek için bir mantıksal uygulama oluşturun, yapılandırın ve test edin.
+* Bir Hizmet Veri Servisi ad alanı oluşturun ve buna bir Hizmet Veri Servisi kuyruğu ekleyin.
+* Servis Veri Yolu kuyruğuna sıcaklık uyarısı içeren iletileri yönlendirmek için IoT hub'ınıza özel bir bitiş noktası ve yönlendirme kuralı ekleyin.
+* Hizmet Veri Servisi kuyruğunuzdaki iletileri tüketmek ve istenen alıcıya bildirim e-postaları göndermek için bir mantık uygulaması oluşturun, yapılandırın ve test edin.
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [Node. js Ile Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md). Bu, aşağıdaki gereksinimleri kapsar:
+* [Raspberry Pi online simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğretici veya cihaz öğreticiler birini tamamlayın; örneğin, [ahududu Pi düğüm ile.js](iot-hub-raspberry-pi-kit-node-get-started.md). Bunlar aşağıdaki gereksinimleri kapsar:
 
   * Etkin bir Azure aboneliği.
-  * Aboneliğiniz kapsamındaki bir Azure IoT Hub 'ı.
-  * Azure IoT Hub 'ınıza telemetri iletileri gönderen cihazınızda çalışan bir istemci uygulaması.
+  * Aboneliğiniz altında bir Azure IoT hub'ı.
+  * Cihazınızda çalışan ve Azure IoT hub'ınıza telemetri iletileri gönderen bir istemci uygulaması.
 
-## <a name="create-service-bus-namespace-and-queue"></a>Service Bus ad alanı ve kuyruk oluşturma
+## <a name="create-service-bus-namespace-and-queue"></a>Hizmet Veri Günü ad alanı ve sıra oluşturma
 
-Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen kısımlarında, bir mantık uygulaması tarafından çekilecek ve bildirim e-postası göndermek için bir sıcaklık uyarısı içeren iletileri Service Bus kuyruğuna yönlendirmek üzere IoT Hub 'ınızda bir yönlendirme kuralı oluşturursunuz.
+Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen saatlerinde, IoT hub'ınızda, Hizmet Veri Servisi sırasına sıcaklık uyarısı içeren iletileri yönlendirmek için bir yönlendirme kuralı oluşturursunuz ve burada bir mantık uygulaması tarafından alınır ve bir bildirim e-postası göndermek için tetiklersiniz.
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus ad alanı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) **+ kaynak** > tümleştirmeServiceBus > oluştur ' u seçin.
+1. Azure [portalında](https://portal.azure.com/), + Kaynak > **Tümleştirme** > Hizmeti Veri **Yolunda'nı seçin.****Service Bus**
 
-1. **Ad alanı oluştur** bölmesinde aşağıdaki bilgileri sağlayın:
+1. Ad **alanı oluştur** bölmesine aşağıdaki bilgileri sağlayın:
 
-   **Ad**: Service Bus ad alanının adı. Ad alanı, Azure genelinde benzersiz olmalıdır.
+   **Adı**: Servis veri günü ad alanının adı. Ad alanı Azure'da benzersiz olmalıdır.
 
-   **Fiyatlandırma katmanı**: Açılan listeden **temel** ' yı seçin. Temel katman Bu öğretici için yeterlidir.
+   **Fiyatlandırma katmanı**: Açılan listeden **Temel'i** seçin. Temel katman bu öğretici için yeterlidir.
 
-   **Kaynak grubu**: IoT Hub 'ınızın kullandığı kaynak grubunu kullanın.
+   **Kaynak grubu**: IoT hub'ınızın kullandığı kaynak grubunu kullanın.
 
-   **Konum**: IoT Hub 'ınızın kullandığı konumu kullanın.
+   **Konum**: IoT hub'ınızın kullandığı konumu kullanın.
 
-   ![Azure portal bir Service Bus ad alanı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
+   ![Azure portalında servis veri günü ad alanı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. **Oluştur**’u seçin. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
+1. **Oluştur'u**seçin. Bir sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 
-### <a name="add-a-service-bus-queue-to-the-namespace"></a>Ad alanına Service Bus kuyruğu ekleme
+### <a name="add-a-service-bus-queue-to-the-namespace"></a>Ad alanına Hizmet Veri Servisi kuyruğu ekleme
 
-1. Service Bus ad alanını açın. Service Bus ad alanına almanın en kolay yolu kaynak grubundan kaynak **grupları** seçmek, kaynak grubunuzu seçmek ve ardından kaynak listesinden Service Bus ad alanını seçmesidir.
+1. Servis Veri Günü ad alanını açın. Hizmet Veri Yolu ad alanına gitmenin en kolay yolu kaynak bölmesinden **Kaynak gruplarını** seçmek, kaynak grubunuzu seçmek ve ardından kaynak listesinden Hizmet Veri Yolu ad alanını seçmektir.
 
-1. **Service Bus ad alanı** bölmesinde **+ kuyruk**' u seçin.
+1. Service **Bus Namespace** bölmesine **+ Sıra'yı**seçin.
 
-1. Sıra için bir ad girin ve ardından **Oluştur**' u seçin. Sıra başarıyla oluşturulduğunda, **kuyruk oluştur** bölmesi kapanır.
+1. Sıra için bir ad girin ve sonra **Oluştur'u**seçin. Sıra başarıyla oluşturulduğunda, **sıra oluştur** bölmesi kapanır.
 
-   ![Azure portal bir Service Bus kuyruğu ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
+   ![Azure portalında servis veri hizmeti sırası ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. **Service Bus ad alanı** bölmesine geri dönün, **varlıklar**altında **Kuyruklar**' ı seçin. Listeden Service Bus kuyruğunu açın ve sonra **paylaşılan erişim ilkeleri** >  **+ Ekle**' yi seçin.
+1. **Hizmet Veri Servisi Ad Alanı** bölmesine geri dön, **Varlıklar**altında, **Kuyruklar'ı**seçin. Hizmet Veri Servisi sırasını listeden açın ve ardından **Paylaşılan erişim ilkeleri** > **+ Ekle'yi**seçin.
 
-1. İlke için bir ad girin, **Yönet**' i işaretleyin ve ardından **Oluştur**' u seçin.
+1. İlke için bir ad girin, **Yönet'i**denetleyin ve sonra **Oluştur'u**seçin.
 
-   ![Azure portal bir Service Bus kuyruğu ilkesi ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
+   ![Azure portalında servis veri günü sırası ilkesi ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
 
-## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>IoT Hub 'ınıza özel bir uç nokta ve yönlendirme kuralı ekleme
+## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>IoT hub'ınıza özel bir uç nokta ve yönlendirme kuralı ekleme
 
-IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir sıcaklık uyarısı içeren iletileri, mantıksal uygulamanız tarafından alınacakları uç noktaya yönlendirmek için bir ileti yönlendirme kuralı oluşturun. Yönlendirme kuralı, cihaz üzerinde çalışan istemci kodu `temperatureAlert = "true"`tarafından ayarlanan `temperatureAlert` uygulama özelliğinin değerine bağlı olarak iletileri iletmek için bir yönlendirme sorgusu kullanır. Daha fazla bilgi için bkz. [ileti özelliklerine göre ileti yönlendirme sorgusu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekleyin ve bu uç noktaya sıcaklık uyarısı içeren iletileri yönlendirmek için bir ileti yönlendirme kuralı oluşturun ve bunların mantık uygulamanız tarafından alınacağı. Yönlendirme kuralı, `temperatureAlert = "true"`aygıtta çalışan istemci kodu tarafından ayarlanan `temperatureAlert` uygulama özelliğinin değerine göre iletileri iletmek için bir yönlendirme sorgusu kullanır. Daha fazla bilgi edinmek [için, ileti özelliklerine göre İleti yönlendirme sorgusuna](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)bakın.
 
-### <a name="add-a-custom-endpoint"></a>Özel uç nokta ekleme
+### <a name="add-a-custom-endpoint"></a>Özel bir bitiş noktası ekleme
 
-1. IoT Hub 'ınızı açın. IoT Hub 'a almanın en kolay yolu kaynak **grupları** kaynak bölmesinden seçmeniz, kaynak grubunuzu seçmeniz ve ardından kaynak listesinden IoT Hub 'ınızı seçmeniz gerekir.
+1. IoT hub'ınızı açın. IoT hub'ına gitmenin en kolay yolu kaynak bölmesinden **Kaynak gruplarını** seçmek, kaynak grubunuzu seçmek ve ardından kaynaklar listesinden IoT hub'ınızı seçmektir.
 
-1. **Mesajlaşma**altında **ileti yönlendirme**' yi seçin. **İleti yönlendirme** bölmesinde **Özel uç noktalar** sekmesini seçin ve **+ Ekle**' yi seçin. Aşağı açılan listeden **Service Bus kuyruğu**' nu seçin.
+1. **İleti altında**İleti **yönlendirme'yi**seçin. İleti **yönlendirme** bölmesine Özel uç **noktaları** sekmesini seçin ve sonra **+ Ekle'yi**seçin. Açılan listeden **Servis veri günü kuyruğunu**seçin.
 
-   ![Azure portal IoT Hub 'ınıza bir uç nokta ekleyin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![Azure portalındaki IoT hub'ınıza bir bitiş noktası ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
-1. **Service Bus uç noktası Ekle** bölmesinde aşağıdaki bilgileri girin:
+1. Servis **veri yolunda uç nokta** bölmesine aşağıdaki bilgileri girin:
 
-   **Uç nokta adı**: Uç noktanın adı.
+   **Bitiş noktası adı**: Bitiş noktasının adı.
 
-   **Service Bus ad alanı**: Oluşturduğunuz ad alanını seçin.
+   **Servis veri günü ad alanı**: Oluşturduğunuz ad alanını seçin.
 
-   **Service Bus kuyruğu**: Oluşturduğunuz kuyruğu seçin.
+   **Servis veri servisi sırası**: Oluşturduğunuz sırayı seçin.
 
-   ![Azure portal IoT Hub 'ınıza bir uç nokta ekleyin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
+   ![Azure portalındaki IoT hub'ınıza bir bitiş noktası ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. **Oluştur**’u seçin. Uç nokta başarıyla oluşturulduktan sonra, sonraki adıma geçin.
+1. **Oluştur'u**seçin. Bitiş noktası başarıyla oluşturulduktan sonra bir sonraki adıma geçin.
 
-### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekle
+### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekleme
 
-1. **İleti yönlendirme** bölmesine geri dönün, **rotalar** sekmesini seçin ve **+ Ekle**' yi seçin.
+1. **İleti yönlendirme** bölmesine geri dön, **Yollar** sekmesini seçin ve sonra **+ Ekle'yi**seçin.
 
-1. **Yol Ekle** bölmesinde aşağıdaki bilgileri girin:
+1. **Rota** ekle bölmesine aşağıdaki bilgileri girin:
 
-   **Ad**: Yönlendirme kuralının adı.
+   **Adı**: Yönlendirme kuralının adı.
 
-   **Uç nokta**: Oluşturduğunuz uç noktayı seçin.
+   **Bitiş Noktası**: Oluşturduğunuz bitiş noktasını seçin.
 
-   **Veri kaynağı**: **Cihaz telemetri iletileri**' ni seçin.
+   **Veri kaynağı**: **Aygıt Telemetri İletilerini**seçin.
 
-   **Yönlendirme sorgusu**: `temperatureAlert = "true"` yazın.
+   **Yönlendirme sorgusu**: `temperatureAlert = "true"`Girin .
 
-   ![Azure portal yönlendirme kuralı ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
+   ![Azure portalında yönlendirme kuralı ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. **Kaydet**’i seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
+1. **Kaydet'i**seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
 
-## <a name="create-and-configure-a-logic-app"></a>Mantıksal uygulama oluşturma ve yapılandırma
+## <a name="create-and-configure-a-logic-app"></a>Mantık Uygulaması oluşturma ve yapılandırma
 
-Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık uyarısı içeren iletileri yönlendirmek üzere ayarlarsınız. Şimdi, Service Bus kuyruğu izlemek için bir mantıksal uygulama ayarlarsınız ve kuyruğa bir ileti eklendiğinde e-posta bildirimi gönderilir.
+Önceki bölümde, IoT hub'ınızı Servis Veri Yolu kuyruğa sıcaklık uyarısı içeren iletileri yönlendirmek için ayarlarsınız. Şimdi, Hizmet Veri Servisi sırasını izlemek ve sıraya bir ileti eklendiğinde bir e-posta bildirimi göndermek için bir mantık uygulaması ayarlayın.
 
 ### <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-1. **Kaynak** > tümleştirmemantıksal > **uygulaması**oluştur ' u seçin.
+1. Kaynak > **Tümleştirme** > **Mantığı Uygulaması** **Oluştur'u**seçin.
 
 1. Aşağıdaki bilgileri girin:
 
-   **Ad**: Mantıksal uygulamanın adı.
+   **Adı**: Mantık uygulamasının adı.
 
-   **Kaynak grubu**: IoT Hub 'ınızın kullandığı kaynak grubunu kullanın.
+   **Kaynak grubu**: IoT hub'ınızın kullandığı kaynak grubunu kullanın.
 
-   **Konum**: IoT Hub 'ınızın kullandığı konumu kullanın.
+   **Konum**: IoT hub'ınızın kullandığı konumu kullanın.
 
-   ![Azure portal bir mantıksal uygulama oluşturun](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
+   ![Azure portalında bir mantık uygulaması oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur'u**seçin.
 
-### <a name="configure-the-logic-app-trigger"></a>Mantıksal uygulama tetikleyicisini yapılandırma
+### <a name="configure-the-logic-app-trigger"></a>Mantık uygulaması tetikleyicisini yapılandırma
 
-1. Mantıksal uygulamayı açın. Mantıksal uygulamayı almanın en kolay yolu kaynak bölmesinde kaynak **grupları** seçmek, kaynak grubunuzu seçmek ve ardından kaynak listesinden mantıksal uygulamanızı seçmesidir. Mantıksal uygulamayı seçtiğinizde Logic Apps Tasarımcısı açılır.
+1. Mantık uygulamasını açın. Mantık uygulamasına gitmenin en kolay yolu kaynak bölmesinden **Kaynak gruplarını** seçmek, kaynak grubunuzu seçmek ve ardından kaynak listesinden mantık uygulamanızı seçmektir. Mantık uygulamasını seçtiğinizde, Logic Apps Designer açılır.
 
-1. Logic Apps tasarımcısında **Şablonlar** ' a kaydırın ve **boş mantıksal uygulama**' yı seçin.
+1. Logic Apps Designer'da **Şablonlar'a** gidin ve **Boş Mantık Uygulaması'nı**seçin.
 
-   ![Azure portal boş bir mantıksal uygulama ile başlayın](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5-start-with-blank-logic-app-azure-portal.png)
+   ![Azure portalında boş bir mantık uygulamasıyla başlayın](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5-start-with-blank-logic-app-azure-portal.png)
 
-1. **Tümü** sekmesini seçin ve ardından **Service Bus**' yi seçin.
+1. **Tümler** sekmesini seçin ve ardından **Servis Veri Yolunda'nı**seçin.
 
-   ![Mantıksal uygulamanızı oluşturmaya başlamak için Service Bus seçin Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
+   ![Azure portalında mantık uygulamanızı oluşturmaya başlamak için Servis Veri Servisi'ni seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. **Tetikleyiciler**altında **bir veya daha fazla ileti bir sıraya ulaştığında (otomatik olarak tamamlanır)** seçeneğini belirleyin.
+1. **Tetikleyiciler**altında, **bir veya daha fazla ileti sıraya geldiğinde (otomatik tamamlama) seçeneğini belirleyin.**
 
-   ![Azure portal mantıksal uygulamanız için tetikleyiciyi seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
+   ![Azure portalında mantık uygulamanızın tetikleyicisini seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
-1. Service Bus bağlantısı oluşturun.
-   1. Bir bağlantı adı girin ve listeden Service Bus ad alanınızı seçin. Sonraki ekran açılır.
+1. Servis veri günü bağlantısı oluşturun.
+   1. Bir bağlantı adı girin ve listeden Servis Veri Aracı ad alanınızı seçin. Bir sonraki ekran açılır.
 
-      ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![Azure portalında mantık uygulamanız için servis veri servisi bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   1. Service Bus ilkesini (RootManageSharedAccessKey) seçin. Ardından **Oluştur**' u seçin.
+   1. Servis veri servisi ilkesini (RootManageSharedAccessKey) seçin. Ardından **Oluştur'u**seçin.
 
-      ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
+      ![Azure portalında mantık uygulamanız için servis veri servisi bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. Son ekranda, **kuyruk adı**için, açılan listeden oluşturduğunuz kuyruğu seçin. `175` **En fazla ileti sayısı**için girin.
+   1. Son ekranda, **Sıra adı**için açılan dan oluşturduğunuz sırayı seçin. Maksimum `175` **ileti sayısı**için girin.
 
-      ![Mantıksal uygulamanızdaki Service Bus bağlantısı için en fazla ileti sayısını belirtin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+      ![Mantık uygulamanızda servis veri servisi bağlantısı için maksimum ileti sayısını belirtin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
-   1. Değişikliklerinizi kaydetmek için Logic Apps tasarımcısının en üstündeki menüden **Kaydet** ' i seçin.
+   1. Değişikliklerinizi kaydetmek için Logic Apps Designer'ın üst kısmındaki menüden **Kaydet'i** seçin.
 
-### <a name="configure-the-logic-app-action"></a>Mantıksal uygulama eylemini yapılandırma
+### <a name="configure-the-logic-app-action"></a>Mantık uygulaması eylemini yapılandırma
 
-1. Bir SMTP hizmet bağlantısı oluşturun.
+1. Bir SMTP servis bağlantısı oluşturun.
 
-   1. **Yeni adım**'ı seçin. **Bir eylem seçin**bölümünde **Tümü** sekmesini seçin.
+   1. **Yeni adım**'ı seçin. **Bir eylem seçin,** **Tümü** sekmesini seçin.
 
-   1. Arama `smtp` kutusuna yazın, arama sonucunda **SMTP** hizmetini seçin ve ardından **e-posta gönder**' i seçin.
+   1. Arama `smtp` kutusuna yazın, arama sonucuna **SMTP** hizmetini seçin ve ardından **E-posta Gönder'i**seçin.
 
-      ![Azure portal mantıksal uygulamanızda bir SMTP bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
+      ![Azure portalındaki mantık uygulamanızda Bir SMTP bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
 
-   1. Posta kutunuzun SMTP bilgilerini girin ve ardından **Oluştur**' u seçin.
+   1. Posta kutunuz için SMTP bilgilerini girin ve ardından **Oluştur'u**seçin.
 
-      ![Azure portal mantıksal uygulamanıza SMTP bağlantı bilgilerini girin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10-enter-smtp-connection-info-logic-app-azure-portal.png)
+      ![Azure portalındaki mantık uygulamanıza SMTP bağlantı bilgilerini girin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10-enter-smtp-connection-info-logic-app-azure-portal.png)
 
-      [Hotmail/Outlook. com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970), [Gmail](https://support.google.com/a/answer/176600?hl=en)ve [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html)için SMTP bilgilerini alın.
+      [Hotmail/Outlook.com,](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970) [Gmail](https://support.google.com/a/answer/176600?hl=en)ve [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html)için SMTP bilgilerini alın.
 
       > [!NOTE]
-      > Bağlantıyı kurmak için SSL 'yi devre dışı bırakmanız gerekebilir. Bu durumda ve bağlantı kurulduktan sonra SSL 'yi yeniden etkinleştirmek istiyorsanız, bu bölümün sonundaki isteğe bağlı adıma bakın.
+      > Bağlantıyı kurmak için SSL'yi devre dışı bmalısınız. Bu durumda ve bağlantı kurulduktan sonra SSL'yi yeniden etkinleştirmek istiyorsanız, bu bölümün sonundaki isteğe bağlı adıma bakın.
 
-   1. **E-posta gönder** adımında **yeni parametre Ekle** açılır listesinden **Kimden** **,,** **Konu** ve **gövde**' yi seçin. Seçim kutusunu kapatmak için ekrandaki herhangi bir yere tıklayın veya dokunun.
+   1. **E-posta Gönder** adımında **yeni parametre** açılır ekle'den, **From**, **To**, **Subject** and **Body**'yi seçin. Seçim kutusunu kapatmak için ekranın herhangi bir yerine tıklayın veya dokunun.
 
-      ![SMTP bağlantısı e-posta alanlarını seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
+      ![SMTP bağlantı e-posta alanlarını seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. E-posta adresinizi ve  **' yi,** `High temperature detected` **Konu** ve **gövde**için girin. **Bu akış iletişim kutusunda kullanılan uygulamalardan ve bağlayıcılardan dinamik Içerik Ekle** iletişim kutusu açılırsa, kapatmak için **Gizle** ' yi seçin. Bu öğreticide dinamik içerik kullanmayın.
+   1. **From** ve **To**ve **Subject** `High temperature detected` and Body için e-posta **adresinizi**girin. Bu akış iletişim kutusunda **kullanılan uygulamalardan ve bağlayıcılardan dinamik içerik ekle açılırsa,** kapatmak için **Gizle'yi** seçin. Bu öğreticide dinamik içerik kullanmazsınız.
 
-      ![SMTP bağlantısı e-posta alanlarını doldur](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
+      ![Doldurma SMTP bağlantı e-posta alanları](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 
-   1. SMTP bağlantısını kaydetmek için **Kaydet** ' i seçin.
+   1. SMTP bağlantısını kaydetmek için **Kaydet'i** seçin.
 
-1. Seçim E-posta sağlayıcınızla bağlantı kurmak için SSL 'yi devre dışı bırakmanız ve yeniden etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
+1. (İsteğe bağlı) E-posta sağlayıcınızla bağlantı kurmak için SSL'yi devre dışı kaldırmanız gerekiyorsa ve yeniden etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
 
-   1. **Mantıksal uygulama** bölmesindeki **geliştirme araçları**altında **API bağlantıları**' nı seçin.
+   1. Mantık **uygulama** bölmesinde, **Geliştirme Araçları**altında, **API bağlantılarını**seçin.
 
    1. API bağlantıları listesinden SMTP bağlantısını seçin.
 
-   1. **SMTP API bağlantısı** bölmesinde, **genel**altında, **API bağlantısını Düzenle**' yi seçin.
+   1. **SMTP API Bağlantı** bölmesinde, **Genel**altında, **API'yi Edit bağlantısını**seçin.
 
-   1. **API bağlantısını Düzenle** bölmesinde **SSL 'yi etkinleştir**' i seçin, e-posta hesabınız için parolayı yeniden girin ve **Kaydet**' i seçin.
+   1. **API Bağlantısını Edit** bölmesine, **SSL'yi etkinleştir'i**seçin, e-posta hesabınız için parolayı yeniden girin ve **Kaydet'i**seçin.
 
-      ![Azure portal mantıksal uygulamanızda SMTP API bağlantısını düzenleyin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
+      ![Azure portalındaki mantık uygulamanızda SMTP API bağlantısını edin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
 
-Mantıksal uygulamanız artık Service Bus kuyruğundan sıcaklık uyarılarını işlemeye hazır ve e-posta hesabınıza bildirim gönderiyor.
+Mantık uygulamanız artık Servis Veri Servisi kuyruğundan sıcaklık uyarılarını işlemeye ve e-posta hesabınıza bildirim göndermeye hazırdır.
 
 ## <a name="test-the-logic-app"></a>Mantıksal uygulamayı test etme
 
-1. İstemci uygulamasını cihazınızda başlatın.
+1. Cihazınızda istemci uygulamasını başlatın.
 
-1. Fiziksel bir cihaz kullanıyorsanız, sıcaklık 30 derece uzunluğu aşana kadar ısı sensörine yakın bir ısı kaynağı dikkatle getirin. Çevrimiçi simülatör kullanıyorsanız, istemci kodu 30 C 'yi aşan telemetri iletilerini rastgele olarak çıktı.
+1. Fiziksel bir cihaz kullanıyorsanız, sıcaklık 30 dereceyi aşana kadar ısı sensörüne dikkatlice bir ısı kaynağı getirin. Çevrimiçi simülatörü kullanıyorsanız, istemci kodu rasgele 30 C'yi aşan telemetri iletileri çıkaracaktır.
 
-1. Mantıksal uygulama tarafından gönderilen e-posta bildirimlerini almaya başlamanız gerekir.
+1. Mantık uygulaması tarafından gönderilen e-posta bildirimlerini almaya başlamalısınız.
 
    > [!NOTE]
-   > E-posta hizmeti sağlayıcınız, e-postayı gönderen sizin olduğundan emin olmak için gönderici kimliğini doğrulamanız gerekebilir.
+   > E-posta hizmet sağlayıcınızın e-postayı gönderenin siz olduğundan emin olmak için gönderen inkimliğini doğrulaması gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub 'ınızı ve posta kutunuzu, sıcaklık izleme ve bildirimler için bağlayan bir mantıksal uygulamayı başarıyla oluşturdunuz.
+IoT hub'ınızı ve posta kutunuzu sıcaklık izleme ve bildirimler için bağlayan bir mantık uygulamasını başarıyla oluşturdunuz.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

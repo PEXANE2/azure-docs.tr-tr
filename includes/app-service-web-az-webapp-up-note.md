@@ -9,20 +9,20 @@ ms.date: 02/27/2019
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 8b5be0a438d9c5bb1fd0596368327c53a2d6c31f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67189047"
 ---
 > [!NOTE]
 > `az webapp up` komutu şu eylemleri gerçekleştirir:
 >
->- Varsayılan oluşturma [kaynak grubu](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create).
+>- Varsayılan [kaynak grubu](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)oluşturun.
 >
->- Varsayılan oluşturma [app service planı](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create).
+>- Varsayılan bir [uygulama hizmet planı](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)oluşturun.
 >
->- [Uygulama oluşturma](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) belirtilen ada sahip.
+>- Belirtilen ada sahip [bir uygulama oluşturun.](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)
 >
->- [Zip dağıtma](https://docs.microsoft.com/azure/app-service/deploy-zip) dosyaları uygulamanın geçerli çalışma dizini.
+>- Geçerli çalışma dizininden uygulamaya dosya [dağıtın.](https://docs.microsoft.com/azure/app-service/deploy-zip)
 >

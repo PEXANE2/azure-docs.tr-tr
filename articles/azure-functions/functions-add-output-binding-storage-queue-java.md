@@ -1,53 +1,53 @@
 ---
-title: Java işlevinizi Azure depolama 'ya bağlama
-description: Bir kuyruk depolama çıkış bağlaması kullanarak HTTP ile tetiklenen bir Java işlevini Azure depolama 'ya bağlamayı öğrenin.
+title: Java işlevinizi Azure Depolama'ya bağlayın
+description: Bir Kuyruk depolama çıktısı bağlama kullanarak HTTP tarafından tetiklenen bir Java işlevini Azure Depolama'ya nasıl bağlayabilirsiniz öğrenin.
 author: KarlErickson
 ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272799"
 ---
-# <a name="connect-your-java-function-to-azure-storage"></a>Java işlevinizi Azure depolama 'ya bağlama
+# <a name="connect-your-java-function-to-azure-storage"></a>Java işlevinizi Azure Depolama'ya bağlayın
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-java-maven.md) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
+Bu makalede, [önceki quickstart makalesinde](functions-create-first-java-maven.md) oluşturduğunuz işlevin Azure Depolama kuyruğuyla nasıl tümleştirilen ekidir. Bu işleve eklediğiniz çıktı bağlama, bir HTTP isteğindeki verileri kuyruktaki bir iletiye yazar.
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage`adlı bir uygulama ayarında depolanıyor.  
+Çoğu bağlama, Bağlı hizmete erişmek için Işlevlerin kullandığı depolanmış bir bağlantı dizesi gerektirir. Bu bağlantıyı kolaylaştırmak için, işlev uygulamanızla oluşturduğunuz Depolama hesabını kullanırsınız. Bu hesaba bağlantı zaten adlı `AzureWebJobsStorage`bir uygulama ayarında depolanır.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleye başlamadan önce, [Java hızlı](functions-create-first-java-maven.md)başlangıcının 1. bölümündeki adımları uygulayın.
+Bu makaleyi başlatmadan önce, [Java quickstart bölüm 1](functions-create-first-java-maven.md)adımları tamamlayın.
 
-## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
+## <a name="download-the-function-app-settings"></a>Fonksiyon uygulama ayarlarını indirin
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Uzantı paketlerini etkinleştir
+## <a name="enable-extension-bundles"></a>Uzantı demetlerini etkinleştirme
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Artık, depolama çıkış bağlamasını projenize ekleyebilirsiniz.
+Artık projenize Depolama çıktısı bağlamayı ekleyebilirsiniz.
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-Java projesinde bağlamalar, işlev yönteminde bağlama ek açıklamaları olarak tanımlanır. *Function. JSON* dosyası daha sonra bu ek açıklamaları temel alınarak otomatik olarak oluşturulur.
+Java projesinde, bağlamalar işlev yöntemine bağlama ek açıklamaları olarak tanımlanır. *Function.json* dosyası daha sonra bu ek açıklamalara göre otomatik olarak oluşturulur.
 
-_Src/Main/Java_altındaki işlev kodunuzun konumuna gidin, *function. Java* proje dosyasını açın ve `run` yöntemi tanımına aşağıdaki parametreyi ekleyin:
+_Src/main/java_altında işlev kodunuzu konumuna göz atın, *Function.java* proje dosyasını açın `run` ve yöntem tanımına aşağıdaki parametreyi ekleyin:
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-`msg` parametresi, işlev tamamlandığında çıkış bağlamasına ileti olarak yazılmış dizelerin koleksiyonunu temsil eden bir [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) türüdür. Bu durumda, çıktı `outqueue`adlı bir depolama kuyruğudur. Depolama hesabı için bağlantı dizesi `connection` yöntemi tarafından ayarlanır. Bağlantı dizesinin kendisi yerine, depolama hesabı bağlantı dizesini içeren uygulama ayarını geçirirsiniz.
+`msg` Parametre, işlev [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) tamamlandığında çıktı bağlamasına ileti olarak yazılan dizeler koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı `outqueue`bir depolama sırasıdır. Depolama hesabının bağlantı dizesi `connection` yönteme göre ayarlanır. Bağlantı dizesi yerine, Depolama hesabı bağlantı dizesini içeren uygulama ayarını geçersiniz.
 
-`run` yöntemi tanımı aşağıdaki örnekteki gibi görünmelidir:  
+`run` Yöntem tanımı şimdi aşağıdaki örnek gibi görünmelidir:  
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -62,15 +62,15 @@ public HttpResponseMessage run(
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Şimdi, işlev kodunuzun çıkış bağlamasına yazmak için yeni `msg` parametresini kullanabilirsiniz. `name` değerini `msg` çıkış bağlamasına eklemek için başarı yanıtından önce aşağıdaki kod satırını ekleyin.
+Şimdi, işlev kodunuzdan çıktı bağlama yazmak için yeni `msg` parametreyi kullanabilirsiniz. Çıktı bağlama değeri eklemek `name` için başarı yanıtı önce kod aşağıdaki satırı ekleyin. `msg`
 
 ```java
 msg.setValue(name);
 ```
 
-Çıkış bağlamayı kullandığınızda, kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
+Çıktı bağlama kullandığınızda, kimlik doğrulaması, sıra başvurusu almak veya veri yazmak için Azure Depolama SDK kodunu kullanmanız gerekmez. İşlevler çalışma zamanı ve sıra çıktısı bağlama bu görevleri sizin için yapar.
 
-`run` yönteminiz aşağıdaki örnekteki gibi görünmelidir:
+Yönteminiz `run` şimdi aşağıdaki örnek gibi görünmelidir:
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -97,9 +97,9 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>Testleri güncelleştirme
 
-Ayrıca, aynı zamanda bir test kümesi oluşturduğundan, bu testleri `run` yöntemi imzasında yeni `msg` parametresini işleyecek şekilde güncelleştirmeniz gerekir.  
+Arketip aynı zamanda bir dizi test oluşturduğundan, yöntem imzasındaki `msg` yeni parametreyi işlemek için bu testleri güncelleştirmeniz `run` gerekir.  
 
-_Src/test/Java_altındaki test kodunuzun konumuna gidin, *function. Java* proje dosyasını açın ve `//Invoke` altındaki kod satırını aşağıdaki kodla değiştirin.
+_Src/test/java_altında test kodunuzun konumuna göz atın, *Function.java* proje dosyasını `//Invoke` açın ve aşağıdaki kodla kod satırını değiştirin.
 
 ```java
 @SuppressWarnings("unchecked")
@@ -109,11 +109,11 @@ final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.clas
 final HttpResponseMessage ret = new Function().run(req, msg, context);
 ``` 
 
-Artık yeni çıkış bağlamasını yerel olarak denemeye hazırsınız.
+Artık yeni çıktı bağlamayı yerel olarak denemeye hazırsınız.
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-Daha önce olduğu gibi, projeyi derlemek ve Işlevler çalışma zamanını yerel olarak başlatmak için aşağıdaki komutu kullanın:
+Daha önce olduğu gibi, projeyi oluşturmak ve Işlevleri yerel olarak çalıştırma zamanını başlatmak için aşağıdaki komutu kullanın:
 
 ::: zone pivot="java-build-tools-maven"  
 ```bash
@@ -130,17 +130,17 @@ gradle azureFunctionsRun
 ::: zone-end
 
 > [!NOTE]  
-> Host. JSON içindeki uzantı paketlerini etkinleştirdiyseniz, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#add-to-your-functions-app) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
+> Host.json'da uzantı demetlerini etkinleştirdiğiniz için, [Depolama bağlama uzantısı](functions-bindings-storage-blob.md#add-to-your-functions-app) başlangıç sırasında diğer Microsoft bağlama uzantılarıyla birlikte karşıdan yüklendi ve sizin için yüklendi.
 
-Daha önce olduğu gibi, yeni bir Terminal penceresinde kıvrımlı kullanarak işlevi komut satırından tetikleyin:
+Daha önce olduğu gibi, yeni bir terminal penceresinde cURL kullanarak komut satırından işlevi tetikle:
 
 ```CMD
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-Bu kez, çıkış bağlama aynı zamanda depolama hesabınızda `outqueue` adlı bir kuyruk oluşturur ve bu dizeyi içeren bir ileti ekler.
+Bu kez, çıktı bağlama depolama hesabınızda adlı `outqueue` bir sıra oluşturur ve aynı dize ile bir ileti ekler.
 
-Ardından, yeni kuyruğu görüntülemek ve bir iletinin eklendiğini doğrulamak için Azure CLı 'yi kullanırsınız. Kuyruğunuzu, [Microsoft Azure Depolama Gezgini][Azure Storage Explorer] veya [Azure Portal](https://portal.azure.com)kullanarak da görüntüleyebilirsiniz.
+Ardından, yeni kuyruğa görüntülemek ve bir iletinin eklandığını doğrulamak için Azure CLI'yi kullanırsınız. Microsoft [Azure Depolama Gezgini'ni][Azure Storage Explorer] kullanarak veya [Azure portalında](https://portal.azure.com)da sıranızı görüntüleyebilirsiniz.
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
@@ -148,7 +148,7 @@ Ardından, yeni kuyruğu görüntülemek ve bir iletinin eklendiğini doğrulama
 
 ### <a name="redeploy-the-project"></a>Projeyi yeniden dağıtın 
 
-Yayınlanan uygulamanızı güncelleştirmek için aşağıdaki komutu yeniden çalıştırın:  
+Yayınlanan uygulamanızı güncellemek için aşağıdaki komutu yeniden çalıştırın:  
 
 ::: zone pivot="java-build-tools-maven"  
 ```bash
@@ -162,21 +162,21 @@ gradle azureFunctionsDeploy
 ```
 ::: zone-end
 
-Yine, dağıtılan işlevi test etmek için kıvrımlı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte olduğu gibi POST isteğinin gövdesinde `AzureFunctions` değerini URL 'ye geçirin:
+Yine, dağıtılan işlevi sınamak için cURL kullanabilirsiniz. Daha önce olduğu `AzureFunctions` gibi, post isteğinin gövdesindeki değeri aşağıdaki örnekte olduğu gibi URL'ye iletin:
 
 ```bash
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Çıkış bağlamasının, kuyrukta beklendiği gibi yeni bir ileti üretdiğini doğrulamak için [depolama kuyruğu iletisini yeniden inceleyebilirsiniz](#query-the-storage-queue) .
+Çıktı bağlamanın beklendiği gibi kuyrukta yeni bir ileti oluşturduğunu doğrulamak için [Depolama sıra iletisini](#query-the-storage-queue) yeniden inceleyebilirsiniz.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Java ile Azure Işlevleri geliştirme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevleri Java geliştirici kılavuzu](functions-reference-java.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md). Java 'daki tüm Işlev projelerinin örnekleri için bkz. [Java işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=Java). 
+Depolama kuyruğuna veri yazmak için HTTP tetiklenen işlevinizi güncellediniz. Java ile Azure İşlevleri geliştirme hakkında daha fazla bilgi edinmek için [Azure İşlevler Java geliştirici kılavuzuna](functions-reference-java.md) ve [Azure İşlevlerini tetikleyenlere ve bağlamalara](functions-triggers-bindings.md)bakın. Java'daki tam Fonksiyon projeleri örnekleri için [Java İşlevleri örneklerine](/samples/browse/?products=azure-functions&languages=Java)bakın. 
 
-Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
+Ardından, işlev uygulamanız için Uygulama Öngörüleri izlemeetkinleştirmelisiniz:
 
 > [!div class="nextstepaction"]
 > [Application Insights tümleştirmesini etkinleştirme](functions-monitoring.md#manually-connect-an-app-insights-resource)

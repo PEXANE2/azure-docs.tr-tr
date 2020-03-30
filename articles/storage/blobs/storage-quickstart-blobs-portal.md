@@ -1,26 +1,26 @@
 ---
-title: Hızlı başlangıç-Azure portal bir blob oluşturun
+title: Quickstart - Azure portalı ile bir leke oluşturma
 titleSuffix: Azure Storage
 description: Bu hızlı başlangıçta nesne (Blob) depolamada Azure portalı kullanacaksınız. Sonra, Azure Depolama’ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek için Azure portalını kullanırsınız.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241055"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061388"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portalla kullanarak blobları yükleme, indirme ve listeleme
 
 Bu hızlı başlangıçta, [Azure portalını](https://portal.azure.com/) kullanarak Azure Depolamada bir kapsayıcı oluşturma ve bu kapsayıcı içinde blok bloblarını karşıya yükleme ve indirme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -29,9 +29,9 @@ Bu hızlı başlangıçta, [Azure portalını](https://portal.azure.com/) kullan
 Azure portalında bir kapsayıcı oluşturmak için şu adımları izleyin:
 
 1. Azure portalında yeni depolama hesabınıza gidin.
-2. Depolama hesabının sol menüsünde, **BLOB hizmeti** bölümüne gidin ve **kapsayıcılar**' ı seçin.
+2. Depolama hesabı nın sol menüsünde **Blob servis** bölümüne gidin ve ardından **Kapsayıcılar'ı**seçin.
 3. **+ Kapsayıcı** düğmesini seçin.
-4. Yeni kapsayıcınız için bir ad yazın. Kapsayıcı adı küçük harflerden oluşmalı ve bir harf veya rakamla başlamalıdır; yalnızca harf, rakam ve tire (-) karakterini içerebilir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, blobları ve meta verileri adlandırma ve bunlara başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+4. Yeni kapsayıcınız için bir ad yazın. Kapsayıcı adı küçük harflerden oluşmalı ve bir harf veya rakamla başlamalıdır; yalnızca harf, rakam ve tire (-) karakterini içerebilir. Kapsayıcı ve blob adları hakkında daha fazla bilgi için, [bkz.](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 5. Kapsayıcıya genel erişim düzeyini ayarlayın. Varsayılan düzey **Özel (anonim erişim yok)** şeklindedir.
 6. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
 
@@ -45,13 +45,13 @@ Azure portalında yeni kapsayıcınıza bir blok blobu yüklemek için aşağıd
 
 1. Azure portalında, önceki bölümde oluşturduğunuz kapsayıcıya gidin.
 2. İçerdiği blobların listesini görüntülemek üzere kapsayıcıyı seçin. Bu kapsayıcı yeni olduğundan içinde blob olmayacaktır.
-3. Karşıya yükleme dikey penceresini açmak için **karşıya yükle** düğmesini seçin
-4. Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için yerel dosya sisteminize gözatamazsınız
+3. Yükleme bıçağını açmak için **Yükle** düğmesini seçin
+4. Blok blob olarak yüklenir bir dosya bulmak için yerel dosya sisteminize göz atın
      
     ![Yerel sürücünüzden bir blobu karşıya yüklemeyi gösteren ekran görüntüsü](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. İsteğe bağlı olarak, kimlik doğrulama türü, erişim katmanı veya sanal klasör yolu gibi diğer ayarları tanımlamak için Gelişmiş bölümünü genişletin.
-6. Karşıya yüklemeyi yürütmek için **karşıya yükle** düğmesini seçin
+5. İsteğe bağlı olarak, kimlik doğrulama türü, erişim katmanı veya sanal klasör yolu gibi diğer ayarı tanımlamak için gelişmiş bölümü genişletin.
+6. **Yüklemeyi** gerçekleştirmek için Yükle düğmesini seçin
 7. Bu şekilde istediğiniz sayıda blobu karşıya yükleyin. Artık yeni blobların kapsayıcı içinde listelendiğini görürsünüz.
 
 ## <a name="download-a-block-blob"></a>Blok blobu indirme
@@ -69,12 +69,12 @@ Kapsayıcıyı silmek için:
 
 1. Azure portalında, depolama hesabınızdaki kapsayıcı listesine gidin.
 2. Silinecek kapsayıcıyı seçin.
-3. **Daha fazla** düğmesini ( **...** ) ve ardından **Sil**’i seçin.
+3. **Daha fazla** düğmesini (**...**) ve ardından **Sil**’i seçin.
 4. Kapsayıcıyı silmek istediğinizi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, dosyaları Azure portalla yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, Blob depolama Nasıl yapılır öğreticisiyle devam edin.
+Bu hızlı başlangıçta, dosyaları Azure portalla yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, Blob depolama nasıl yapılır öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
 > [Blob Depolama İşlemleri Nasıl Yapılır](storage-dotnet-how-to-use-blobs.md)

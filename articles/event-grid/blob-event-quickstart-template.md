@@ -1,6 +1,6 @@
 ---
-title: Blob Depolama olaylarını Web uç noktasına gönder-şablon
-description: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure Resource Manager şablonu kullanın. Olayları bir Web kancasına gönder. '
+title: Blob depolama olaylarını web bitiş noktasına gönderme - şablon
+description: Blob depolama hesabı oluşturmak ve etkinliklerine abone olmak için Azure Olay Ağıtını ve Azure Kaynak Yöneticisi şablonunu kullanın. Olayları bir Webhook'a gönderin.
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,21 +10,21 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
 ms.openlocfilehash: 343ed57c87ea6df5db4cde0978132af31419f905
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78303350"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Blob Depolama olaylarını Azure Resource Manager şablonu kullanarak Web uç noktasına yönlendirme
+# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Blob depolama olaylarını web bitiş noktasına yönlendirin
 
-Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede bir BLOB depolama hesabı oluşturmak, söz konusu BLOB depolama olaylarına abone olmak ve sonucu görüntülemek için bir olay tetiklemeniz için bir **Azure Resource Manager şablonu** kullanırsınız. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
+Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede, blob depolama hesabı oluşturmak, bu blob depolama için olaylara abone olmak ve sonucu görüntülemek için bir olay tetiklemek için bir **Azure Kaynak Yöneticisi şablonu** kullanın. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 
@@ -32,39 +32,39 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
 1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
 
-    [Azure’a Dağıtma](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+    [Azure'a Dağıt](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 1. Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
 
 1. Siteyi görürsünüz ancak henüz yayımlanmış olay yoktur.
 
    ![Yeni siteyi görüntüleme](./media/blob-event-quickstart-portal/view-site.png)
 
-## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Event Grid abonelikle depolama hesabı oluşturma
+## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Olay Izgara aboneliği yle depolama hesabı oluşturma
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage).
+Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)
 
 [!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
 
-Şablonda iki Azure kaynağı tanımlanmıştır:
+Şablonda iki Azure kaynağı tanımlanır:
 
-* [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
-* [ **"Microsoft. Storage/storageAccounts/Providers/Eventabonelikler**](/azure/templates/microsoft.eventgrid/eventsubscriptions): depolama hesabı için Azure Event Grid aboneliği oluşturun.
+* [**Microsoft.Storage/storageHesapları:**](/azure/templates/microsoft.storage/storageaccounts)bir Azure Depolama hesabı oluşturun.
+* [**"Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): depolama hesabı için bir Azure Olay Ağı aboneliği oluşturun.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve bir şablonu açmak için aşağıdaki bağlantıyı seçin. Şablon bir anahtar kasası ve gizli dizi oluşturur.
+1. Azure'da oturum açmak ve şablon açmak için aşağıdaki bağlantıyı seçin. Şablon bir anahtar kasa ve bir sır oluşturur.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json"><img src="./media/blob-event-quickstart-template/deploy-to-azure.png" alt="deploy to azure"/></a>
 
-2. **Uç noktasını**belirtin: Web uygulamanızın URL 'sini sağlayın ve GIRIŞ sayfası url 'sine `api/updates` ekleyin.
-3. Şablonu dağıtmak için **satın al** ' ı seçin.
+2. Bitiş **noktasını**belirtin: web uygulamanızın URL'sini sağlayın ve ana sayfa URL'sine ekleyin. `api/updates`
+3. Şablonu dağıtmak için **Satın Alma'yı** seçin.
 
-  Azure portal, şablonu dağıtmak için burada kullanılır. Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
+  Azure portalı burada şablonu dağıtmak için kullanılır. Azure PowerShell, Azure CLI ve REST API'yi de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için [şablonları dağıt'a](../azure-resource-manager/templates/deploy-powershell.md)bakın.
 
 > [!NOTE]
-> Daha fazla Azure Event Grid [şablon örneği bulabilirsiniz](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).
+> Burada daha fazla Azure Olay Izgara [şablonu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)örnekleri bulabilirsiniz.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
@@ -76,20 +76,20 @@ Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olay�
 
 Dosya yükleyerek Blob depolaması için bir olay tetiklemiş olursunuz. Dosyanın belirli bir içeriğe sahip olmasına gerek yoktur. Bu makalede testfile.txt adlı bir dosyaya sahip olduğunuz kabul edilmektedir ancak herhangi bir dosyayı kullanabilirsiniz.
 
-Dosyayı Azure Blob depolama alanına yüklediğinizde, Event Grid abone olurken yapılandırdığınız uç noktaya bir ileti gönderir. İleti JSON biçimindedir ve bir veya daha fazla olaya sahip bir dizi içerir. Aşağıdaki örnekte, JSON iletisi bir olay içeren bir dizi içerir. Web uygulamanızı görüntülediğinizde blob oluşturma olayının gönderildiğini göreceksiniz.
+Dosyayı Azure Blob depolama alanına yüklediğinizde, Olay Grid abone yken yapılandırdığınız bitiş noktasına bir ileti gönderir. İleti JSON biçimindedir ve bir veya daha fazla olayı içeren bir dizi içerir. Aşağıdaki örnekte, JSON iletisi tek bir olay içeren bir dizi içerir. Web uygulamanızı görüntülediğinizde blob oluşturma olayının gönderildiğini göreceksiniz.
 
 ![Sonuçları görüntüleme](./media/blob-event-quickstart-portal/view-results.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında [kaynak grubunu silin](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
-).
+Artık gerekmediğinde, [kaynak grubunu silin.](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
+)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Resource Manager şablonları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure Resource Manager belgeleri](/azure/azure-resource-manager)
-* [Azure Resource Manager şablonlarda kaynakları tanımlama](/azure/templates/)
-* [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
-* [Azure Event Grid şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).
+* [Azure Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager)
+* [Azure Kaynak Yöneticisi şablonlarında kaynakları tanımlama](/azure/templates/)
+* [Azure Quickstart şablonları](https://azure.microsoft.com/resources/templates/)
+* [Azure Olay Izgara şablonları.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)

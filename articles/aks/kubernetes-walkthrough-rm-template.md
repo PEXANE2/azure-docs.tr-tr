@@ -1,52 +1,54 @@
 ---
-title: Hızlı başlangıç-Azure Kubernetes hizmeti (AKS) kümesi oluşturma
-description: Azure Resource Manager şablonu kullanarak bir Kubernetes kümesini hızlıca oluşturmayı ve Azure Kubernetes Service (AKS) içinde uygulama dağıtmayı öğrenin
+title: Quickstart - Azure Kubernetes Hizmeti (AKS) kümesi oluşturma
+description: Azure Kaynak Yöneticisi şablonu kullanarak bir Kubernetes kümesini nasıl hızlı bir şekilde oluşturup Azure Kubernetes Hizmeti'nde (AKS) bir uygulama dağıtılamayı öğrenin
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273788"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80129466"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Kubernetes hizmeti (AKS) kümesi dağıtma
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Hızlı başlatma: Azure Kaynak Yöneticisi şablonu kullanarak Bir Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
-Azure Kubernetes hizmeti (AKS), kümelerinizi hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir AKS kümesi dağıtırsınız. Bir Web ön ucu ve bir Reda örneği içeren çok kapsayıcılı bir uygulama kümede çalıştırılır.
+Azure Kubernetes Service (AKS), kümeleri hızla dağıtmanızı ve yönetmenize olanak tanıyan yönetilen bir Kubernetes hizmetidir. Bu hızlı başlangıçta, Azure Kaynak Yöneticisi şablonu kullanarak bir AKS kümesi ni dağıtAbilirsiniz. Kümede web ön ucu ve Redis örneği içeren çok kapsayıcılı bir uygulama çalıştırılır.
 
 ![Azure Vote’a göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için Azure [Kubernetes Hizmeti (AKS) için Kubernetes temel kavramlarına][kubernetes-concepts]bakın.
+
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.61 veya üstünü çalıştırıyor olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu hızlı başlatma, Azure CLI sürümünü 2.0.61 veya daha yeni bir sürüm olarak çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Active Directory hizmet sorumlusu sağlarsınız. Bu kaynaklardan herhangi birine ihtiyacınız varsa, aşağıdaki bölüme bakın; Aksi takdirde [AKS kümesi oluşturma](#create-an-aks-cluster) bölümüne atlayın.
+Kaynak Yöneticisi şablonu kullanarak bir AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Etkin Dizin hizmet ilkesi sağlarsınız. Bu kaynaklardan herhangi birini istiyorsanız, aşağıdaki bölüme bakın; aksi takdirde [AKS küme](#create-an-aks-cluster) oluşturma bölümüne atlayın.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
-AKS düğümlerine erişmek için bir SSH anahtar çifti kullanarak bağlanırsınız. SSH ortak ve özel anahtar dosyaları oluşturmak için `ssh-keygen` komutunu kullanın. Varsayılan olarak, bu dosyalar *~/PST SSH* dizininde oluşturulur. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
+AKS düğümlerine erişmek için bir SSH anahtar çifti kullanarak bağlanırsınız. SSH `ssh-keygen` ortak ve özel anahtar dosyaları oluşturmak için komutu kullanın. Varsayılan olarak, bu dosyalar *~/.ssh* dizininde oluşturulur. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyalar üzerine yazılır.
 
-Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+Tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Cloud Shell'i açmak için gidin.
 
-Aşağıdaki komut RSA şifrelemesini ve 2048 bit uzunluğunu kullanarak bir SSH anahtar çifti oluşturur:
+Aşağıdaki komut, RSA şifrelemesi ve 2048'in biraz uzunluğunu kullanan bir SSH anahtar çifti oluşturur:
 
 ```console
 ssh-keygen -t rsa -b 2048
 ```
 
-SSH anahtarları oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da kimlik doğrulaması IÇIN SSH anahtarları oluşturma ve yönetme][ssh-keys].
+SSH anahtarları oluşturma hakkında daha fazla bilgi için [Azure'da kimlik doğrulama için SSH anahtarlarını oluştur ve yönet'][ssh-keys]e bakın.
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller. Varsayılan olarak, bu hizmet sorumlusu bir yıl için geçerlidir.
+Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller. Varsayılan olarak, bu hizmet ilkesi bir yıl için geçerlidir.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -68,42 +70,52 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Bu hızlı başlangıçta kullanılan şablon, [bir Azure Kubernetes hizmet kümesi dağıtmaktır](https://azure.microsoft.com/resources/templates/101-aks/). Daha fazla AKS örneği için bkz. [aks hızlı başlangıç şablonları][aks-quickstart-templates] sitesi.
+### <a name="review-the-template"></a>Şablonu gözden geçirme
+
+Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/101-aks/)
+
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+
+Daha fazla AKS örneği için [AKS quickstart şablonları][aks-quickstart-templates] sitesine bakın.
+
+### <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın.
 
-    [![Azure’a dağıtma](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [![Azure'a Dağıt](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. Aşağıdaki değerleri seçin veya girin.  
+2. Aşağıdaki değerleri seçin veya girin.
 
-    Bu hızlı başlangıçta, *Işletim sistemi disk boyutu GB*, *Aracı sayısı*, *Aracı VM boyutu*, *Işletim sistemi türü*ve *Kubernetes sürümü*için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
+    Bu hızlı başlangıç için, OS *Disk Boyutu GB,* *Agent Count,* *Agent VM Size,* *OS Türü*ve *Kubernetes Sürümü*için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
 
-    * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin. Kaynak grubu için *Myresourcegroup*gibi benzersiz bir ad girin ve ardından **Tamam**' ı seçin.
+    * **Abonelik**: Azure aboneliği seçin.
+    * **Kaynak grubu**: **Yeni Oluştur'u**seçin. kaynak grubu için *myResourceGroup*gibi benzersiz bir ad girin ve **ardından Tamam'ı**seçin.
     * **Konum**: **Doğu ABD**gibi bir konum seçin.
-    * **Küme adı**: aks kümesi Için *Myakscluster*gibi benzersiz bir ad girin.
-    * **DNS ön eki**: kümeniz için *myakscluster*gibi benzersiz bir DNS öneki girin.
-    * **Linux Yöneticisi Kullanıcı adı**: SSH kullanarak bağlanmak için *azureuser*gibi bir Kullanıcı adı girin.
-    * **Ssh rsa ortak anahtarı**: SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub*içeriğini).
-    * **Hizmet sorumlusu Istemci kimliği**: `az ad sp create-for-rbac` komutundan hizmet sorumlusunun *AppID* 'sini kopyalayıp yapıştırın.
-    * **Hizmet sorumlusu Istemci parolası**: hizmet sorumlusunun *parolasını* `az ad sp create-for-rbac` komutuyla kopyalayıp yapıştırın.
-    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum**: kabul etmek için bu kutuyu işaretleyin.
+    * **Küme adı**: *MYAKSCluster*gibi AKS kümesi için benzersiz bir ad girin.
+    * **DNS öneki**: Kümeniz için *miakscluster*gibi benzersiz bir DNS öneki girin.
+    * **Linux Admin Kullanıcı Adı**: *Azureuser*gibi SSH kullanarak bağlanmak için bir kullanıcı adı girin.
+    * **SSH RSA Public Key**: SSH anahtar çiftinizin *ortak* kısmını kopyalayın ve yapıştırın (varsayılan olarak *~/.ssh/id_rsa.pub'ın*içeriği).
+    * **Hizmet Müdürü Müşteri Kimliği**: Servis müdürünün *appId'ini* `az ad sp create-for-rbac` komuttan kopyalayıp yapıştırın.
+    * **Servis Müdürü İstemci Sırrı**: Servis müdürünüzin `az ad sp create-for-rbac` *parolasını* komuttan kopyalayıp yapıştırın.
+    * **Yukarıdaki hüküm ve koşulları kabul ediyorum**: Kabul etmek için bu kutuyu işaretleyin.
 
-    ![Portalda Azure Kubernetes hizmet kümesi oluşturmak için şablon Kaynak Yöneticisi](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
+    ![Portalda bir Azure Kubernetes Hizmet kümesi oluşturmak için Kaynak Yöneticisi şablonu](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
 3. **Satın al**'ı seçin.
 
-AKS kümesini oluşturmak birkaç dakika sürer. Sonraki adıma geçmeden önce kümenin başarılı bir şekilde dağıtılmasını bekleyin.
+AKS kümesini oluşturmak birkaç dakika sürer. Bir sonraki adıma geçmeden önce kümenin başarıyla dağıtılmasını bekleyin.
 
-## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
+## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl` yerel olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
+### <a name="connect-to-the-cluster"></a>Kümeye bağlanma
+
+Bir Kubernetes kümesini yönetmek için [kubectl][kubectl], Kubernetes komut satırı istemcisi kullanırsınız. Azure Bulut Su Şur'u kullanıyorsanız, `kubectl` zaten yüklenmiş. Yerel `kubectl` olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
 
 ```azurecli
 az aks install-cli
 ```
 
-Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][az-aks-get-credentials] komutunu kullanın. Bu komut kimlik bilgilerini karşıdan yükler ve Kubernetes CLI'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -115,7 +127,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktı, önceki adımlarda oluşturulan düğümleri gösterir. Tüm düğümlerin durumunun *hazırlanmaya*çalıştığından emin olun:
+Aşağıdaki örnek çıktı, önceki adımlarda oluşturulan düğümleri gösterir. Tüm düğümlerin durumunun *Hazır*olduğundan emin olun:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -124,14 +136,14 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>Uygulamayı çalıştırma
+### <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki [Kubernetes dağıtımı][kubernetes-deployment] vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki [Kubernetes hizmeti][kubernetes-service] de oluşturulur; redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
+Kubernetes bildirim dosyası, küme için hangi kapsayıcı görüntülerinin çalıştırılması gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirim, biri örnek Azure Vote Python uygulamaları, diğeri ise Redis örneği için olmak üzere iki [Kubernetes dağıtımı][kubernetes-deployment] içerir. Redis örneği için bir dahili hizmet ve Azure Oylaması uygulamasına internetten erişmek için harici bir hizmet olmak üzere iki [Kubernetes Hizmeti][kubernetes-service] de oluşturulur.
 
 > [!TIP]
-> Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha çok gerçek dünyada senaryolar için [Azure dev Spaces][azure-dev-spaces] kullanarak doğrudan aks kümesinde kodunuzun hatalarını hızla yineleyebilirsiniz ve hatalarını ayıklayabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
+> Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha fazla gerçek dünya senaryolarında kodunuzu doğrudan AKS kümesinde hızlıca yineleyip hatalarını ayıklamak için [Azure Dev Spaces][azure-dev-spaces]’ı kullanabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
 
-`azure-vote.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML tanımına kopyalayın. Azure Cloud Shell kullanırsanız, bu dosya `vi` veya bir sanal veya fiziksel sistemde çalışırken `nano` kullanılarak oluşturulabilir:
+Adlandırılmış `azure-vote.yaml` bir dosya oluşturun ve aşağıdaki YAML tanımında kopyalayın. Azure Bulut Kabuğu'nu kullanıyorsanız, bu `vi` dosya `nano` sanal veya fiziksel bir sistem üzerinde çalışıyormuş gibi oluşturulabilir:
 
 ```yaml
 apiVersion: apps/v1
@@ -218,13 +230,13 @@ spec:
     app: azure-vote-front
 ```
 
-[Kubectl Apply][kubectl-apply] komutunu kullanarak uygulamayı dağıtın ve YAML bildiriminizde adı belirtin:
+[Kubectl uygula][kubectl-apply] komutunu kullanarak uygulamayı dağıtın ve YAML manifestonuzun adını belirtin:
 
 ```console
 kubectl apply -f azure-vote.yaml
 ```
 
-Aşağıdaki örnek çıktıda başarıyla oluşturulan dağıtımlar ve hizmetler gösterilmektedir:
+Aşağıdaki örnek çıktı, başarıyla oluşturulan Dağıtımları ve Hizmetleri gösterir:
 
 ```output
 deployment "azure-vote-back" created
@@ -233,58 +245,58 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+### <a name="test-the-application"></a>Uygulamayı test etme
 
-Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
+Uygulama çalıştığında, bir Kubernetes hizmeti uygulamanın ön ucunu internete maruz bırakır. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
-İlerleme durumunu izlemek için [kubectl get service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
+İlerlemeyi izlemek için, bağımsız değişkenle birlikte `--watch` [kubectl get service][kubectl-get] komutunu kullanın.
 
 ```console
 kubectl get service azure-vote-front --watch
 ```
 
-Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gösterilir.
+Başlangıçta *azure-vote-front* hizmeti için *EXTERNAL-IP* *beklemede*olarak gösterilir.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek bir genel IP adresi olarak değiştiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*EXTERNAL-IP* adresi *beklemeden* gerçek bir genel IP `CTRL-C` adresine `kubectl` değiştiğinde, izleme işlemini durdurmak için kullanın. Aşağıdaki örnek çıktı, hizmete atanan geçerli bir genel IP adresini gösterir:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Azure oy uygulamasını çalışırken görmek için, hizmetinizin dış IP adresine bir Web tarayıcısı açın.
+Azure Oylaması uygulamasını iş başında görmek için, hizmetin dış IP adresine bir web tarayıcısı açın.
 
 ![Azure Vote’a göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>Kümeyi silme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Küme artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve tüm ilgili kaynakları kaldırın.
+Kümeye artık ihtiyacınız yoksa [az group delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [aks hizmet sorumlusu konuları ve silme][sp-delete].
+> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete].
 
 ## <a name="get-the-code"></a>Kodu alma
 
-Bu hızlı başlangıçta, bir Kubernetes dağıtımı oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanıldı. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub'da bulunur.
+Bu hızlı başlatmada, önceden oluşturulmuş kapsayıcı görüntüleri bir Kubernetes dağıtımı oluşturmak için kullanılmıştır. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub'da bulunur.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Kubernetes kümesi dağıtıp ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız. Oluşturduğunuz küme için [Kubernetes web panosuna erişin][kubernetes-dashboard] .
+Bu hızlı başlangıçta, bir Kubernetes kümesi dağıtıp ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız. Oluşturduğunuz [kümeiçin Kubernetes web panosuna erişin.][kubernetes-dashboard]
 
 AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklaması için Kubernetes küme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
-> [AKS öğreticisi][aks-tutorial]
+> [AKS eğitimi][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

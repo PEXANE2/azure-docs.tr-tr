@@ -1,6 +1,6 @@
 ---
-title: HDInsight 'ta ML Hizmetleri için işlem bağlamı seçenekleri-Azure
-description: HDInsight üzerinde ML Hizmetleri olan kullanıcılara sunulan farklı işlem bağlamı seçenekleri hakkında bilgi edinin
+title: HDInsight'ta ML Hizmetleri için içerik seçeneklerini bilgi işlem - Azure
+description: HDInsight'ta ML Hizmetleri ile kullanıcıların kullanabileceği farklı bilgi işlem bağlamseçenekleri hakkında bilgi edinin
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75660265"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri için bilgi işlem bağlam ı seçenekleri
 
-Azure HDInsight üzerinde ML Hizmetleri, işlem bağlamını ayarlayarak çağrıların nasıl yürütüleceğini denetler. Bu makalede, yürütmenin kenar düğümünün veya HDInsight kümesinin çekirdekleri arasında paralel olup olmadığını belirtmek için kullanılabilecek seçenekler özetlenmektedir.
+Azure HDInsight'taki ML Hizmetleri, bilgi işlem bağlamını ayarlayarak çağrıların nasıl yürütüldedildiğini denetler. Bu makalede, yürütmenin kenar düğümü veya HDInsight kümesinin çekirdekleri arasında paralelleştirilip paralelleştirilemeyeceğini belirtmek için kullanılabilen seçenekler sıralanır.
 
-Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü ile, uç düğüm sunucusunun çekirdekleri arasında geri alınamaz şekilde dağıtılmış işlevleri çalıştırma seçeneğiniz vardır. Ayrıca, Iptal edilebilir ' in Hadoop haritasını azaltma veya Apache Spark işlem bağlamlarını kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz.
+Bir kümenin kenar düğümü kümeye bağlanmak ve R komut dosyalarınızı çalıştırmak için uygun bir yer sağlar. Kenar düğümü ile, RevoScaler'ın paralelleştirilmiş dağıtılmış işlevlerini kenar düğümü sunucusunun çekirdekleri arasında çalıştırma seçeneğiniz vardır. RevoScaleR'ın Hadoop Harita Azaltma veya Apache Spark bilgi işlem bağlamlarını kullanarak kümenin düğümleri üzerinde de çalıştırabilirsiniz.
 
-## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri
+## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight'ta ML Hizmetleri
 
-[Azure HDInsight üzerinde ml Hizmetleri](r-server-overview.md) , R tabanlı analizler için en son özellikleri sağlar. [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob depolama") depolama hesabınızda, bir Data Lake Store veya yerel Linux dosya sisteminde Apache Hadoop bir kapsayıcıda depolanan verileri kullanabilir. ML Hizmetleri açık kaynak R üzerinde oluşturulmuş olduğundan, oluşturduğunuz R tabanlı uygulamalar 8000 + açık kaynaklı R paketlerinden herhangi birini uygulayabilir. Ayrıca, Microsoft 'un ML Hizmetleri 'ne dahil olan büyük veri analizi paketindeki, [iptal edilebilir](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)olan bu yordamları da kullanabilirler.  
+[Azure HDInsight'taki ML Hizmetleri,](r-server-overview.md) R tabanlı analitik için en son özellikleri sağlar. [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob depolama") depolama hesabınızda, Veri Gölü Deposu'nda veya yerel Linux dosya sisteminizde apache Hadoop HDFS kapsayıcısında depolanan verileri kullanabilir. ML Hizmetleri açık kaynak R üzerine kurulduğundan, oluşturduğunuz R tabanlı uygulamalar 8000+ açık kaynak R paketinden herhangi birini uygulayabilir. Ayrıca, Microsoft'un ML Hizmetleri ile birlikte verilen büyük veri analiz paketi [RevoScaleR'deki](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)rutinleri de kullanabilirler.  
 
-## <a name="compute-contexts-for-an-edge-node"></a>Kenar düğümü için işlem bağlamları
+## <a name="compute-contexts-for-an-edge-node"></a>Kenar düğümü için bağlamları hesaplama
 
-Genel olarak, kenar düğümündeki ML Hizmetleri kümesinde çalıştırılan bir R betiği, o düğümdeki R yorumlayıcısı içinde çalışır. Özel durumlar, Iptal edilmiş bir işlevi çağıran bu adımlardır. Iptal etme işlemi, geri alınamaz işlem bağlamını nasıl ayarlayacağınızla belirlenen bir işlem ortamında çalışır.  R betiğini bir kenar düğümünden çalıştırdığınızda, işlem bağlamının olası değerleri şunlardır:
+Genel olarak, kenar düğümünde ML Hizmetleri kümesinde çalışan bir R komut dosyası, bu düğümüzerinde R yorumlayıcısı içinde çalışır. Özel durumlar, RevoScaleR işlevini çağıran adımlardır. RevoScaleR çağrıları, RevoScaleR bilgi işlem bağlamını nasıl ayarladığınıza göre belirlenen bir bilgi işlem ortamında çalışır.  R komut dosyanızı kenar düğümünden çalıştırdığınızda, bilgi işlem bağlamının olası değerleri şunlardır:
 
-- Yerel sıralı (*Yerel*)
-- Yerel paralel (*localpar*)
-- Harita azalt
+- yerel sıralı (*yerel*)
+- yerel paralel (*localpar*)
+- Harita Küçültme
 - Spark
 
-*Yerel* ve *localpar* seçenekleri yalnızca **rxexec** çağrılarının nasıl yürütüldüğünden farklılık gösterir. Bunlar `rxOptions(numCoresToUse=6)`, aksi durumda Iptal edilmiş **Numscaler Numcorestouse seçeneğinin kullanılamadıkça** , diğer tüm mevcut çekirdekler genelinde paralel bir biçimde yürütülür. Paralel yürütme seçenekleri en iyi performansı sunar.
+*Yerel* ve *yerel par* seçenekleri yalnızca **rxExec** çağrılarının nasıl yürütüldedildiği konusunda farklılık gösterir. Her ikisi de revoScaler **numCoresToUse** seçeneğinin kullanımı yoluyla aksi belirtilmedikçe, mevcut tüm çekirdekler `rxOptions(numCoresToUse=6)`arasında paralel bir şekilde diğer rx-fonksiyon çağrıları yürütmek, örneğin . Paralel yürütme seçenekleri en iyi performansı sunar.
 
-Aşağıdaki tablo, çağrıların nasıl yürütüleceğini ayarlamak için çeşitli işlem bağlamı seçeneklerini özetler:
+Aşağıdaki tablo, çağrıların nasıl yürütüldedildiğini ayarlamak için çeşitli bilgi işlem bağlamı seçeneklerini özetler:
 
 | İşlem bağlamı  | Nasıl ayarlanır                      | Yürütme bağlamı                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Yerel sıralı | rxSetComputeContext (' yerel ')    | Uç düğüm sunucusunun çekirdekleri arasında paralel yürütme, sanal olarak yürütülen rxExec çağrıları dışında |
-| Yerel paralel   | rxSetComputeContext (' localpar ') | Uç düğüm sunucusunun çekirdekleri genelinde paralel yürütme |
-| Spark            | RxSpark ()                       | HDI kümesinin düğümleri genelinde Spark aracılığıyla paralel olarak dağıtılmış yürütme |
-| Harita azalt       | RxHadoopMR()                    | Harita aracılığıyla paralel olarak dağıtılmış yürütme, HDI kümesinin düğümleri genelinde azalmış |
+| Yerel sıralı | rxSetComputeContext('yerel')    | Seri olarak çalıştırılan rxExec çağrıları dışında kenar düğümü sunucusunun çekirdekleri arasında paralelleştirilmiş yürütme |
+| Yerel paralellik   | rxSetComputeContext('localpar') | Kenar düğümü sunucusunun çekirdekleri arasında paralelleştirilmiş yürütme |
+| Spark            | RxSpark()                       | HDI kümesinin düğümleri arasında Kıvılcım üzerinden paralelleştirilmiş dağıtılmış yürütme |
+| Harita Küçültme       | RxHadoopMR()                    | HDI kümesinin düğümleri arasında Harita Küçültme ile paralelleştirilmiş dağıtılmış yürütme |
 
-## <a name="guidelines-for-deciding-on-a-compute-context"></a>İşlem bağlamına karar verme yönergeleri
+## <a name="guidelines-for-deciding-on-a-compute-context"></a>Bilgi işlem bağlamında karar verme yönergeleri
 
-Her tercih ettiğiniz üç seçenekten hangisinin analiz çalışmalarınızın yapısına, boyutuna ve verilerinizin konumuna bağlıdır. Size, hangi işlem bağlamını kullanacağınızı belirten basit bir formül yoktur. Ancak, doğru seçimi yapmanıza yardımcı olabilecek bazı temel ilkeler, en azından, bir kıyaslama çalıştırmadan önce seçimlerinizi daraltmanıza yardımcı olur. Bu temel ilkeler şunları içerir:
+Paralelleştirilmiş yürütme sağlayan seçtiğiniz üç seçenekten hangisi, analitik çalışmanızın niteliğine, verilerinizin boyutuna ve konumuna bağlıdır. Hangi bilgi işlem bağlamında kullanılacağını söyleyen basit bir formül yoktur. Ancak, doğru seçimi yapmanıza veya en azından bir kıyaslama çalıştırmadan önce seçimlerinizi daraltmanıza yardımcı olabilecek bazı yol gösterici ilkeler vardır. Bu yol gösterici ilkeler şunlardır:
 
-- Yerel Linux dosya sistemi, bir daha hızlıdır.
-- Veriler yerel ise ve XDF 'da ise yinelenen çözümlemeler daha hızlıdır.
-- Bir metin veri kaynağından küçük miktarlarda veri akışı yapmak tercih edilir. Veri miktarı büyükse, analiz etmeden önce XDF öğesine dönüştürün.
-- Verileri analiz için kenar düğümüne kopyalama veya akışa alma yükü çok büyük miktarlarda veri için yönetilemez hale gelir.
-- ApacheSpark, Hadoop 'daki analizler için haritanın azalmasına kıyasla daha hızlıdır.
+- Yerel Linux dosya sistemi HDFS'den daha hızlıdır.
+- Veriler yerelse ve XDF'deyse tekrarlanan analizler daha hızlıdır.
+- Bir metin veri kaynağından az miktarda veri akışı tercih edilir. Veri miktarı daha büyükse, çözümlemeden önce XDF'ye dönüştürün.
+- Verileri çözümleme için kenar düğümüne kopyalama veya akış yükü, çok büyük miktarda veri için yönetilemez hale gelir.
+- ApacheSpark Hadoop analiz için Map Reduce daha hızlıdır.
 
-Bu ilkeler verildiğinde, aşağıdaki bölümlerde bir işlem bağlamı seçmek için bazı genel Thumb kuralları sunulur.
+Bu ilkeler göz önüne alındığında, aşağıdaki bölümlerde bir bilgi işlem bağlamı seçmek için başparmak bazı genel kurallar sunuyoruz.
 
 ### <a name="local"></a>Yerel
 
-- Analiz edilecek veri miktarı küçükse ve yinelenen analiz gerektirmiyorsa, *Yerel* veya *localpar*kullanarak doğrudan çözümleme yordamına akış yapın.
-- Analiz edilecek veri miktarı küçük veya orta ölçekli ise ve yinelenen analiz gerektiriyorsa, bunu yerel dosya sistemine kopyalayın, XDF dosyasına aktarın ve *Yerel* veya *localpar*aracılığıyla çözümleyin.
+- Çözümleneniz gereken veri miktarı küçükse ve tekrarlanan çözümleme gerektirmiyorsa, *yerel* veya *yerel par*kullanarak doğrudan analiz rutinine aktarın.
+- Çözümleneniz gereken veri miktarı küçük veya orta ölçekliyse ve tekrarlanan analiz gerektiriyorsa, yerel dosya sistemine kopyalayın, XDF'ye aktarın ve *yerel* veya *yerel par*üzerinden analiz edin.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Analiz edilecek veri miktarı büyükse, **Rxhivedata** veya **Rxparquetdata**kullanarak bir Spark veri çerçevesine veya (depolama bir sorun değilse), bu dosyayı Spark işlem bağlamını kullanarak analiz edin.
+- Çözümlenenden büyük veri miktarı büyükse, **rxHiveData** veya **RxParquetData**kullanarak bir Spark DataFrame'e veya HDFS'deki XDF'ye (depolama sorun olmadığı sürece) aktarın ve Spark bilgi işlem bağlamını kullanarak analiz edin.
 
-### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop eşleme azaltma
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Harita Azalt
 
-- Eşleme, genellikle daha yavaş olduğundan Spark işlem bağlamındaki bir sorun ortaya çıkardıysanız işlem bağlamını azaltır.  
+- Genellikle daha yavaş olduğundan, Yalnızca Spark bilgi işlem bağlamında aşılmaz bir sorunla karşılaşırsanız, Harita Yıkbilgini azaltma bağlamını kullanın.  
 
-## <a name="inline-help-on-rxsetcomputecontext"></a>RxSetComputeContext üzerinde satır içi yardım
-Daha fazla bilgi ve Iptal işlemi bağlamlarının örnekleri için, rxSetComputeContext yönteminde R 'deki satır içi yardıma bakın, örneğin:
+## <a name="inline-help-on-rxsetcomputecontext"></a>rxSetComputeContext'ta satır satır başına yardım
+Daha fazla bilgi ve RevoScaleR bilgi işlem bağlamları örnekleri için, rxSetComputeContext yönteminde R satır altı yardım bakın, örneğin:
 
     > ?rxSetComputeContext
 
-Ayrıca, [Machine Learning Server belgelerine](https://docs.microsoft.com/machine-learning-server/) [dağıtılmış bilgi işlem genel bakış](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) bölümüne de bakabilirsiniz.
+Machine [Learning Server belgelerinde](https://docs.microsoft.com/machine-learning-server/) [Dağıtılmış bilgi işlem özetine](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) de bakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, yürütmenin kenar düğümünün veya HDInsight kümesinin çekirdekleri arasında paralel olup olmadığını belirtmek için kullanılabilecek seçenekler hakkında bilgi edindiniz. ML hizmetlerini HDInsight kümeleriyle kullanma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Bu makalede, yürütmenin kenar düğümü veya HDInsight kümesinin çekirdekleri arasında paralelleştirilip paralelleştirilmediğini belirtmek için kullanılabilen seçenekleri öğrendiniz. HDInsight kümeleriyle ML Hizmetlerini nasıl kullanacağınız hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
-- [Apache Hadoop için ML hizmetlerine genel bakış](r-server-overview.md)
-- [HDInsight üzerinde ML Hizmetleri için Azure depolama seçenekleri](r-server-storage.md)
+- [Apache Hadoop için ML Hizmetlerine Genel Bakış](r-server-overview.md)
+- [HDInsight'ta ML Hizmetleri için Azure Depolama seçenekleri](r-server-storage.md)

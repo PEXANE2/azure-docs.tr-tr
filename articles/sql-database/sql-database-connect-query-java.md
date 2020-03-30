@@ -1,6 +1,6 @@
 ---
-title: Veritabanını sorgulamak için Java kullanma
-description: Java kullanarak bir Azure SQL veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturmayı gösterir.
+title: Veritabanını sorgulamak için Java'yı kullanma
+description: Azure SQL veritabanına bağlanan bir program oluşturmak ve T-SQL deyimlerini kullanarak sorgulamak için Java'yı nasıl kullanacağınızı gösterir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,65 +12,65 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: 034f92ca3b7552373ae69148d09d58d3a5dd166a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768654"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Java kullanarak Azure SQL veritabanı sorgulama
 
-Bu hızlı başlangıçta, Java kullanarak Azure SQL veritabanına bağlanın ve T-SQL deyimlerini kullanarak verileri sorgulayın.
+Bu hızlı başlatmada, Bir Azure SQL veritabanına bağlanmak için Java'yı ve verileri sorgulamak için T-SQL deyimlerini kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)ile ilgili yazılımlar
+- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)ile ilgili yazılım
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[Macos](#tab/macos)
 
-  Homebrew ve Java 'yı yükledikten sonra [macOS üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)bölümünde **1,2** ve **1,3** adımlarını kullanarak Maven 'yi oluşturun.
+  Homebrew ve Java'yı yükleyin, ardından [macOS'ta SQL Server'ı kullanarak Java uygulamaları oluşturun'da](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) **1.2** ve **1.3** adımlarını kullanarak Maven'i yükleyin.
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Java Geliştirme Seti ' ni, sonra da [Ubuntu üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)bölümünde **1,2**, **1,3**ve **1,4** adımlarını kullanarak Maven 'i yüklersiniz.
+  Java'yı, Java Geliştirme Kiti'ni yükleyin, ardından [Ubuntu'da SQL Server'ı kullanarak Java uygulamaları oluşturun'da](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) **1.2,** **1.3**ve **1.4** adımlarını kullanarak Maven'i yükleyin.
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  Java 'yı yükleyip [Windows üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)bölümünde **1,2** ve **1,3** adımlarını kullanarak Maven 'yi oluşturun.
+  Java'yı yükleyin, ardından [Windows'ta SQL Server'ı kullanarak Java uygulamaları oluşturun'da](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) **1.2** ve **1.3** adımlarını kullanarak Maven'i yükleyin.
 
   ---
 
 > [!IMPORTANT]
-> Bu makaledeki betikler, **Adventure Works** veritabanını kullanmak için yazılmıştır.
+> Bu makaledeki komut dosyaları Adventure **Works** veritabanını kullanmak için yazılmıştır.
 
 > [!NOTE]
-> İsteğe bağlı olarak bir Azure SQL yönetilen örneği kullanmayı seçebilirsiniz.
+> İsteğe bağlı olarak Azure SQL yönetilen bir örneği kullanmayı seçebilirsiniz.
 >
-> Oluşturmak ve yapılandırmak için [Azure portalını](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)'i veya [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)'Yi kullanın, sonra [yerinde veya](sql-database-managed-instance-configure-p2s.md) [VM](sql-database-managed-instance-configure-vm.md) bağlantısı kurun.
+> Oluşturmak ve yapılandırmak için [Azure Portalını,](sql-database-managed-instance-get-started.md) [PowerShell'i](scripts/sql-database-create-configure-managed-instance-powershell.md)veya [CLI'yi,](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)ardından [yerinde](sql-database-managed-instance-configure-p2s.md) veya [VM](sql-database-managed-instance-configure-vm.md) bağlantısını kurun.
 >
-> Verileri yüklemek için bkz. [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) dosyası Ile [bacpac ile geri yükleme](sql-database-import.md) veya bkz. [Wide World Importers veritabanını geri yükleme](sql-database-managed-instance-get-started-restore.md).
+> Verileri yüklemek için, [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) [dosyasıyla BACPAC ile geri yükleme'ye](sql-database-import.md) bakın veya [Geniş Dünya İthalatçılar veritabanını geri yükleyin.](sql-database-managed-instance-get-started-restore.md)
 
-## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
+## <a name="get-sql-server-connection-information"></a>SQL sunucu bağlantı bilgilerini alın
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Gelecek yordamlar için tam nitelikli sunucu adı veya ana bilgisayar adı, veritabanı adı ve giriş bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
 2. **SQL veritabanlarını** seçin veya **SQL yönetilen örnekler** sayfasını açın.
 
-3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin. 
+3. Genel **Bakış** sayfasında, tek bir veritabanı için **Sunucu adının** yanındaki tam nitelikli sunucu adını veya yönetilen bir örnek için **Host'un** yanındaki tam nitelikli sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine tıklayın ve **Kopyasimgesini** seçin. 
 
 ## <a name="create-the-project"></a>Proje oluşturma
 
-1. Komut isteminden *SQLtest*adlı yeni bir Maven projesi oluşturun.
+1. Komut isteminden *sqltest*adında yeni bir Maven projesi oluşturun.
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. Klasörü *SQLtest* olarak değiştirin ve en sevdiğiniz metin düzenleyicinizle *Pod. xml* dosyasını açın. Aşağıdaki kodu kullanarak projenizin bağımlılıklarına **SQL Server Için MICROSOFT JDBC sürücüsü** ekleyin.
+1. Klasörü *sqltest* olarak değiştirin ve favori metin düzenleyicisiyle *pom.xml'i* açın. Aşağıdaki kodu kullanarak projenizin bağımlılıklarına **SQL Server için Microsoft JDBC Sürücüsü'nü** ekleyin.
 
     ```xml
     <dependency>
@@ -93,11 +93,11 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="add-code-to-query-database"></a>Sorgu veritabanına kod ekleme
 
-1. Şu adreste bulunan Maven projenizde *app. Java* adlı bir dosyanız zaten olmalıdır:
+1. Maven projenizde *App.java* adında bir dosyanız olmalıdır:
 
-   *.. \Sqltest\src\mainjava\com\sqldbsamples\app.exe*
+   *.. \sqltest\src\main\java\com\sqldbsamples\App.java*
 
-1. Dosyayı açıp içeriğini aşağıdaki kodla değiştirin. Daha sonra sunucunuz, veritabanınız, Kullanıcı ve parolanız için uygun değerleri ekleyin.
+1. Dosyayı açıp içeriğini aşağıdaki kodla değiştirin. Ardından sunucunuz, veritabanınız, kullanıcınız ve parolanız için uygun değerleri ekleyin.
 
     ```java
     package com.sqldbsamples;
@@ -166,7 +166,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. İlk 20 satırın döndürüldüğünden emin olun ve uygulama penceresini kapatın.
+1. En iyi 20 satırın döndürüldünden doğrulayın ve uygulama penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

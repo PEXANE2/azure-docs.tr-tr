@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156064"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -22,7 +22,7 @@ Evet. Her abonelikte, Azure Backup hizmetinin desteklenen her bir bölgesi için
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Her bir kasa için kaydedilebilen sunucu/makine sayısına yönelik sınırlar var mıdır?
 
-Kasa başına en fazla 1000 Azure Sanal makinesi kaydedebilirsiniz. Microsoft Azure Backup Aracısı kullanıyorsanız, kasa başına 50 MAB aracısına kadar kaydedebilirsiniz. Ayrıca bir kasaya 50 MAB sunucusu/DPM sunucusu kaydedebilirsiniz.
+Kasa başına en fazla 1000 Azure Sanal makinesi kaydedebilirsiniz. Microsoft Azure Yedekleme Aracısı kullanıyorsanız, kasa başına en fazla 50 MARS aracısı kaydedebilirsiniz. Ayrıca 50 MABS sunucusu/DPM sunucusundan kasaya kaydedebilirsiniz.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Bir kasada kaç veri kaynağı/öğe korunabilir?
 
@@ -75,7 +75,7 @@ Evet.
 
 Azure Backup, Azure Backup Sunucusu ve DPM kullanılarak korunan dosyaların, klasörlerin ve uygulamaların yedeklenmesi için şu işletim sistemlerini destekler.
 
-**OS** | **SKU** | **Ayrıntılar**
+**İşletim Sistemi** | **Sku** | **Şey**
 --- | --- | ---
 İş İstasyonu | |
 Windows 10 64 bit | Enterprise, Pro, Home | Makinelerin en son hizmet paketlerini ve güncelleştirmeleri çalıştırması gerekir.
@@ -113,7 +113,7 @@ Azure VM | 16 veri diski<br/> 16'dan fazla diski (en çok 32 disk) olan VM'lerin
 
 Aşağıdaki tabloda, her bir veri kaynağı boyutunun nasıl belirlendiği açıklanmaktadır.
 
-**Veri kaynağı** | **Ayrıntılar**
+**Veri kaynağı** | **Şey**
 --- | ---
 Birim |Yedeklenmekte olan tek bir birim VM'den yedeklenen verilerin miktarı.
 SQL Server veritabanı |Yedeklenmekte olan tek bir SQL veritabanının boyutu.
@@ -123,7 +123,7 @@ BMR/Sistem durumu |Yedeklenmekte olan makinenin BMR'sinin veya sistem durumunun 
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası kullanılarak yedeklenen veri miktarının bir sınırı var mı?
 
-Bir kurtarma hizmetleri Kasası kullanarak yedekleyebileceğiniz toplam veri miktarı için bir sınır yoktur. Tek tek veri kaynakları (Azure VM 'Leri dışında), en fazla 54.400 GB boyutunda olabilir. Sınırlar hakkında daha fazla bilgi için [destek matrisindeki kasa sınırları bölümüne](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)bakın.
+Kurtarma Hizmetleri kasasını kullanarak yedeklediğiniz toplam veri miktarında bir sınır yoktur. Tek tek veri kaynakları (Azure VM'leri dışında), en fazla 54.400 GB boyutunda olabilir. Limitler hakkında daha fazla bilgi için [destek matrisindeki kasa sınırları bölümüne](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)bakın.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Kurtarma Hizmetleri kasasına aktarılan verilerin büyüklüğü neden yedekleme için seçilen verilerden daha küçük?
 

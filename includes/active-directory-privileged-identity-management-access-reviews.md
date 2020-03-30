@@ -9,75 +9,75 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67476245"
 ---
-## <a name="create-one-or-more-access-reviews"></a>Bir veya daha fazla erişim gözden geçirmesi oluşturma
+## <a name="create-one-or-more-access-reviews"></a>Bir veya daha fazla erişim incelemesi oluşturma
 
-1. Tıklayın **yeni** yeni bir erişim gözden geçirmesi oluşturma.
+1. Yeni bir erişim incelemesi oluşturmak için **Yeni'yi** tıklatın.
 
-1. Erişim gözden geçirmesi adı. İsteğe bağlı olarak, gözden geçirme bir açıklama girin. Ad ve açıklama gözden geçirenlere gösterilmektedir.
+1. Erişim incelemesini adlandırın. İsteğe bağlı olarak, gözden geçirmeye bir açıklama verin. Ad ve açıklama gözden geçirenlere gösterilir.
 
-    ![Erişim gözden geçirmesi - gözden geçirme adı ve açıklaması oluştur](./media/active-directory-privileged-identity-management-access-reviews/name-description.png)
+    ![Erişim incelemesi oluşturma - İnceleme adı ve açıklaması](./media/active-directory-privileged-identity-management-access-reviews/name-description.png)
 
-1. Ayarlama **başlangıç tarihi**. Varsayılan olarak, erişim gözden geçirmesi bir kez gerçekleşir, aynı oluşturulduğunda başlar ve bir ay içinde sonlandırır. Başlangıç değiştirebilirsiniz ve istediğiniz sayıda gün ancak erişim sağlamak için bitiş tarihi başlangıç gelecekte ve son gözden geçirin.
+1. Başlangıç **tarihini**ayarlayın. Varsayılan olarak, bir erişim incelemesi bir kez oluşur, oluşturulduğu anda başlar ve bir ay içinde sona erer. Başlangıç ve bitiş tarihlerini, gelecekte bir erişim incelemesi başlangıcı ve istediğiniz kadar gün olmak üzere değiştirebilirsiniz.
 
-    ![Tarih sıklığı, süresi sonu, kaç kez başlangıç ve bitiş tarihi](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Başlangıç tarihi, sıklık, süre, bitiş, kaç kez ve bitiş tarihi](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
-1. Erişim gözden geçirme yineleme yapmak için değiştirme **sıklığı** ayarını **bir kez** için **haftalık**, **aylık**,  **Üç aylık**, **yıllık**, veya **yarı annually**. Kullanım **süresi** kaç gün yinelenen serisinin her incelenmesi gereken gözden geçirenler girişten açık tanımlamak için kaydırıcı veya metin kutusu. Örneğin, bir aylık gözden geçirilmek üzere ayarlayabileceğiniz en uzun süre 27 incelemeleri çakışan önlemek için gündür.
+1. Erişim incelemesini yinelenen yapmak **için, Sıklık** ayarını **Bir defadan** **Haftalık,** **Aylık,** **Üç Aylık,** **Yıllık**veya Altı Aylık olarak **değiştirin.** Yinelenen serinin her incelemesinin gözden geçirenlerin girişi için kaç gün açık olacağını tanımlamak için **Süre** kaydırıcısını veya metin kutusunu kullanın. Örneğin, bir aylık inceleme için ayarlayabildiğiniz en yüksek süre, çakışan incelemeleri önlemek için 27 gündür.
 
-1. Kullanım **son** yinelenen erişim sonlandırma belirtmek için ayarı serisini gözden geçirin. Serinin üç şekilde sonlandırabilirsiniz: süresiz olarak, belirli bir tarihe kadar veya tanımlanan sayıda yineleme tamamlandıktan sonra incelemeleri başlatmak için sürekli olarak çalışmasını. Size, başka bir kullanıcının yönetici veya başka bir genel yönetici serisi oluşturulduktan sonra tarih değiştirerek durdurabilirsiniz **ayarları**, böylece bu tarihte sonlandırır.
+1. Yinelenen erişim gözden geçirme serisinin nasıl sona erdirilen ini belirtmek için **Bitiş** ayarını kullanın. Seri üç şekilde sona erebilir: yorumları süresiz olarak, belirli bir tarihe kadar veya belirli sayıda olay tamamlandıktan sonra sürekli olarak çalışır. Siz, başka bir Kullanıcı yöneticisi veya başka bir Global yönetici, **ayarlardaki**tarihi değiştirerek, bu tarihte sona erecek şekilde, oluşturulduktan sonra seriyi durdurabilirsiniz.
 
-1. İçinde **kullanıcılar** bölümünde, üyeliğini gözden geçirmek istediğiniz bir veya daha fazla rol seçin.
+1. **Kullanıcılar** bölümünde, üyeliği gözden geçirmek istediğiniz bir veya daha fazla rol seçin.
 
-    ![Kullanıcılar kapsamının rol üyeliğini gözden geçirmek için](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Kullanıcıların rol üyeliğini gözden geçirmek için kapsamı](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Birden fazla rolü seçerek birden çok erişim gözden geçirmeleri oluşturacaksınız. Örneğin, beş rolleri seçme beş ayrı bir erişim gözden geçirmeleri oluşturacaksınız.
+    > Birden fazla rol seçmek, birden çok erişim incelemesi oluşturur. Örneğin, beş rol seçmek beş ayrı erişim incelemesi oluşturur.
 
-    Erişim gözden geçirmesi Azure AD rolleri oluşturuyorsanız, aşağıdaki gözden geçirme üyeliği listesinin bir örneğini gösterir.
+    Azure AD rollerinin bir erişim incelemesi oluşturuyorsanız, aşağıdaki gözden geçirme üyelik listesinin bir örneğini gösterir.
 
-    ![Seçebileceğiniz üyelik bölmesindeki liste Azure AD rollerini İncele](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Seçebileceğiniz Azure AD rollerini listeleyen üyelik bölmelerini gözden geçirin](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Erişim gözden geçirmesi Azure kaynağı rolleri oluşturuyorsanız, aşağıdaki gözden geçirme üyeliği listesinin bir örneğini gösterir.
+    Azure kaynak rollerinin bir erişim incelemesi oluşturuyorsanız, aşağıdaki gözden geçirme üyelik listesinin bir örneğini gösterir.
 
-    ![Gözden geçirme üyeliği bölmesinde Azure kaynak rolleri listeleme seçebilirsiniz](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Seçebileceğiniz Azure kaynak rollerini listeleyen üyelik bölmelerini gözden geçirin](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
-1. İçinde **gözden geçirenler** bölümünde, tüm kullanıcıları gözden geçirmek için bir veya daha fazla kişi seçin. Veya kendi erişim gözden üyelere sahip seçebilirsiniz.
+1. Gözden **Geçirenler** bölümünde, tüm kullanıcıları gözden geçirmek için bir veya daha fazla kişi seçin. Veya üyelerin kendi erişimlerini gözden geçirmelerini seçebilirsiniz.
 
-    ![Gözden geçirenler listesinde seçilen kullanıcılarla veya üyeler (kendi)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Seçilen kullanıcıların veya üyelerin gözden geçirenler listesi (kendi kendine)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
-    - **Seçili kullanıcıları** -erişim gerek duyan bilmiyorsanız bu seçeneği kullanın. Bu seçenek belirtilmişse, gözden geçirmeyi tamamlamak için bir kaynak sahibi veya grup yöneticisi atayabilirsiniz.
-    - **Üyeler (kendi)** -kullanıcılar kendi rol atamalarını gözden geçirmek için bu seçeneği kullanın.
+    - **Seçili kullanıcılar** - Kimlertarafından erişilmeihtiyacı olduğunu bilmiyorsanız bu seçeneği kullanın. Bu seçenekle, incelemeyi tamamlanması için bir kaynak sahibine veya grup yöneticisine atayabilirsiniz.
+    - **Üyeler (kendi kendine)** - Kullanıcıların kendi rol atamalarını gözden geçirmesini sağlamak için bu seçeneği kullanın.
 
-### <a name="upon-completion-settings"></a>Tamamlanma ayarları hakkında
+### <a name="upon-completion-settings"></a>Tamamlanma ayarları üzerine
 
-1. Bir gözden geçirme tamamlandıktan sonra ne olacağını belirlemek için Genişlet **tamamlama ayarlarını bağlı** bölümü.
+1. İnceleme tamamlandıktan sonra ne olacağını belirtmek **için, Tamamlanın ayarları** bölümünü genişletin.
 
-    ![Tamamlanmasından sonra ayarlar otomatik olarak uygulanır ve gözden geçirme değil yanıt vermesi gerekir](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Otomatik uygulama için tamamlanma ayarları sonra ve yanıt vermiyor gözden geçirmelisiniz](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
-1. Erişimi reddedildi kullanıcılar için otomatik olarak Kaldır istiyorsanız **otomatik uygulama sonuçları kaynağa** için **etkinleştirme**. Gözden Geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtar kümesine **devre dışı**.
+1. Reddedilen kullanıcıların erişimini otomatik olarak kaldırmak istiyorsanız, **Otomatik'i kaynak için** **Etkinleştir'e**uygulayın' ı ayarlayın. İnceleme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı Devre **Dışı Bırak'a**ayarlayın.
 
-1. Kullanım **Gözden Geçiren değil yanıt** Gözden Geçiren tarafından gözden geçirme süresi içinde geçirilmedi kullanıcıların ne olacağını belirlemek için liste. Bu ayar, gözden geçirenler tarafından el ile gözden geçirdikten kullanıcılar etkilemez. Son gözden geçirenin karar verme ise, kullanıcının erişim kaldırılacak.
+1. Gözden **geçiren** tarafından gözden geçirilmedir kullanıcılar için ne olacağını belirtmek için gözden geçiren değil listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilen kullanıcıları etkilemez. Son gözden geçirenin kararı Reddedilirse, kullanıcının erişimi kaldırılır.
 
-    - **Hiçbir değişiklik** -kullanıcının erişimini değiştirmeden bırakın
-    - **Erişimi Kaldır** -kullanıcının erişimini Kaldır
-    - **Erişimi onayla** -kullanıcının erişimini onaylama
-    - **Öneriler alın** - reddetme üzerinde sistemin öneri alın veya kullanıcı onaylama erişim devam
+    - **Değişiklik yok** - Kullanıcının erişimini değiştirmeden bırakın
+    - **Erişimi kaldırma** - Kullanıcının erişimini kaldırma
+    - **Erişimi onayla** - Kullanıcının erişimini onayla
+    - **Öneriler alın** - Kullanıcının sürekli erişimini reddetme veya onaylama konusunda sistemin önerisini alın
 
 ### <a name="advanced-settings"></a>Gelişmiş ayarlar
 
-1. Ek ayarları belirtmek için genişletin **Gelişmiş ayarlar** bölümü.
+1. Ek ayarlar belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
 
-    ![Gelişmiş ayarları göster önerileri için neden onay, posta bildirimleri ve anımsatıcılar gerektirir](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![Öneriler göstermek için gelişmiş ayarlar, onay için neden, posta bildirimleri ve anımsatıcılar gerektirir](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
-1. Ayarlama **önerileri göster** için **etkinleştirme** önerileri gözden geçirenler sistem göstermek için kullanıcının erişim bilgilerini temel.
+1. Gözden geçirenlere kullanıcının erişim bilgilerini temel alan sistem önerilerini göstermek **için** **önerileri göster'i** ayarlayın.
 
-1. Ayarlama **onayda nedeni gerekli kıl** için **etkinleştirme** onay gerekçesi sağlamak gözden geçireni gerektirmek için.
+1. Gözden geçirenin onay için bir neden sağlamasını gerektirecek **etkinleştirmek** için **onay üzerinde neden gerektirin.**
 
-1. Ayarlama **posta bildirimleri** için **etkinleştirme** bir gözden geçirme tamamlandığında erişim gözden geçirmesi başlatıldığında gözden geçirenlere ve yöneticilere e-posta bildirimleri gönderme Azure AD'ye sahip olması.
+1. **Posta bildirimlerini** Azure AD'nin erişim incelemesi başladığında gözden geçirenlere ve inceleme tamamlandığında yöneticilere e-posta bildirimleri göndermesini **etkinleştirecek** şekilde ayarlayın.
 
-1. Ayarlama **anımsatıcılar** için **etkinleştirme** sahip Azure AD göndermek erişim gözden geçirmesi anımsatıcı sürüyor, gözden geçirme tamamlamayan gözden geçirenlere.
+1. Azure AD'nin incelemesini tamamlamamış gözden geçirenlere devam eden erişim incelemelerini anımsatımlarını göndermesini **etkinleştirmek** için **Anımsatıcıları** ayarlayın.

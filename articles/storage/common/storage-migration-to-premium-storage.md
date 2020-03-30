@@ -1,6 +1,6 @@
 ---
-title: VM 'Leri Azure Premium depolamaya geçirme | Microsoft Docs
-description: Mevcut sanal makinelerinizi Azure Premium depolamaya geçirin. Premium Depolama, Azure sanal makinelerinde çalışan g/ç yoğunluklu iş yükleri için yüksek performanslı ve düşük gecikmeli disk desteği sunar.
+title: VM'leri Azure Premium Depolamaalanına Geçirme | Microsoft Dokümanlar
+description: Mevcut VM'lerinizi Azure Premium Depolama alanına taşıyın. Premium Depolama, Azure Sanal Makinelerde çalışan Yoğun I/İş yoğun iş yükleri için yüksek performanslı, düşük gecikmeli disk desteği sunar.
 services: storage
 author: roygara
 ms.service: storage
@@ -10,165 +10,165 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748337"
 ---
-# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Depolama 'ya geçiş (yönetilmeyen diskler)
+# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Depolamasına (Yönetilmeyen Diskler) geçiş
 
 > [!NOTE]
-> Bu makalede, yönetilmeyen standart diskleri kullanan bir sanal makinenin yönetilmeyen Premium diskler kullanan bir VM 'ye geçirilmesi açıklanmaktadır. Yeni VM 'Ler için Azure yönetilen diskleri kullanmanızı ve önceki yönetilmeyen disklerinizi yönetilen disklere dönüştürmenizi öneririz. Yönetilen diskler, gerek kalmaması için temel depolama hesaplarını işler. Daha fazla bilgi için lütfen [yönetilen disklerimize genel bakış](../../virtual-machines/windows/managed-disks-overview.md)bölümüne bakın.
+> Bu makalede, yönetilmeyen standart diskleri yönetilmeyen premium diskler kullanan bir VM'ye nasıl geçirilir anlatılmaktadır. Yeni VM'ler için Azure Yönetilen Diskler kullanmanızı ve önceki yönetilmeyen disklerinizi yönetilen disklere dönüştürmenizi öneririz. Yönetilen Diskler, temel depolama hesaplarını işleyebilir, böylece bunu yapmak zorunda kalmamanızı sağlar. Daha fazla bilgi için lütfen [Yönetilen Disklere Genel Bakış'a](../../virtual-machines/windows/managed-disks-overview.md)bakın.
 >
 
-Azure Premium Depolama, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Uygulamanızın VM disklerini Azure Premium depolamaya geçirerek bu disklerin hızını ve performansından yararlanabilirsiniz.
+Azure Premium Depolama, Yoğun Yoğun Giş yükü çalıştıran sanal makineler için yüksek performanslı, düşük gecikmeli disk desteği sağlar. Uygulamanızın VM disklerini Azure Premium Depolama'ya geçirerek bu disklerin hızından ve performansından yararlanabilirsiniz.
 
-Bu kılavuzun amacı, Azure Premium Storage 'ın yeni kullanıcılarının geçerli sisteminden Premium depolamaya sorunsuz bir geçiş yapmaya daha iyi hazırlanmasına yardımcı olmak için tasarlanmıştır. Kılavuz, bu işlemdeki anahtar bileşenlerinden üçünü adresler:
+Bu kılavuzun amacı, Azure Premium Depolama'nın yeni kullanıcılarının mevcut sistemlerinden Premium Depolama'ya sorunsuz bir geçiş yapmaya daha iyi hazırlanmalarına yardımcı olmaktır. Kılavuz, bu işlemdeki üç temel bileşene hitap eder:
 
-* [Premium Depolama 'ya geçiş planlaması](#plan-the-migration-to-premium-storage)
-* [Sanal sabit diskleri (VHD 'ler) Premium depolamaya hazırlama ve kopyalama](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
-* [Premium Depolama kullanarak Azure sanal makinesi oluşturma](#create-azure-virtual-machine-using-premium-storage)
+* [Premium Depolamaya Geçiş Planı](#plan-the-migration-to-premium-storage)
+* [Sanal Sabit Diskleri (VHD'ler) Premium Depolamaya Hazırlama ve Kopyalama](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
+* [Premium Depolama'yı kullanarak Azure Sanal Makine Oluşturun](#create-azure-virtual-machine-using-premium-storage)
 
-VM 'Leri diğer platformlardan Azure Premium Depolama 'ya geçirebilir veya mevcut Azure VM 'lerini standart depolamadan Premium depolamaya geçirebilirsiniz. Bu kılavuzda iki senaryonun adımları ele alınmaktadır. Senaryonuza bağlı olarak ilgili bölümde belirtilen adımları izleyin.
+VM'leri diğer platformlardan Azure Premium Depolama'ya veya mevcut Azure VM'lerini Standart Depolama'dan Premium Depolama'ya geçirebilirsiniz. Bu kılavuz, her iki senaryo için adımları kapsar. Senaryonuza bağlı olarak ilgili bölümde belirtilen adımları izleyin.
 
 > [!NOTE]
-> Premium SSD 'lerin özelliklerine genel bir bakış ve fiyatlandırma özelliği bulabilirsiniz: [IaaS VM 'leri için bir disk türü seçin](../../virtual-machines/windows/disks-types.md#premium-ssd). Uygulamanızın en iyi performansı için yüksek ıOPS gerektiren tüm sanal makine diskleri için Azure Premium Depolama 'ya geçiş yapmanızı öneririz. Diskiniz yüksek ıOPS gerektirmiyorsa, sanal makine disk verilerini SSD 'Ler yerine sabit disk sürücülerinde (HDD) depolayan standart depolamada tutarak maliyetleri sınırlayabilirsiniz.
+> Premium SSD'lerin bir özelliğe genel bakışı ve fiyatlandırması: [IaaS VM'ler için bir disk türü seçin.](../../virtual-machines/windows/disks-types.md#premium-ssd) Uygulamanız için en iyi performansı için yüksek IOPS gerektiren sanal makine diskini Azure Premium Depolama'ya geçirmenizi öneririz. Diskiniz yüksek IOPS gerektirmiyorsa, sanal makine disk verilerini SSD'ler yerine Sabit Disk Sürücüleri'nde (HDD) depolayan Standart Depolama'da saklayarak maliyetleri sınırlayabilirsiniz.
 >
 
-Geçiş işleminin tamamen tamamlanması, bu kılavuzda belirtilen adımlardan önce ve sonra ek eylemler yapılmasını gerektirebilir. Örnek olarak, sanal ağların veya bitiş noktalarının yapılandırılması ya da uygulama içinde, uygulamanızda bazı kapalı kalma süresi gerektirebilecek kod değişiklikleri yapılması sayılabilir. Bu eylemler her bir uygulama için benzersizdir ve bunları, Premium depolamaya mümkün olduğunca sorunsuz şekilde tam geçiş yapmak için bu kılavuzda belirtilen adımlarla birlikte tamamlamalısınız.
+Geçiş işleminin bütünüyle tamamlanması, bu kılavuzda sağlanan adımlardan önce ve sonra ek eylemler gerektirebilir. Örnekler arasında sanal ağların veya uç noktaların yapılandırılması veya uygulamanızda bazı kapalı kalma süreleri gerektirebilecek kod değişiklikleri nin uygulamanın kendisi nde yapılması sayılabilir. Bu eylemler her uygulamaya özgüdür ve Premium Depolama'ya mümkün olduğunca sorunsuz bir şekilde geçiş yapmak için bu kılavuzda sağlanan adımlarla birlikte bunları tamamlamanız gerekir.
 
-## <a name="plan-the-migration-to-premium-storage"></a>Premium Depolama 'ya geçiş planlaması
-Bu bölüm, bu makaledeki geçiş adımlarını izlemeye hazırmanızı sağlar ve VM ve disk türlerinde en iyi kararı vermenize yardımcı olur.
+## <a name="plan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>Premium Depolama'ya geçiş için plan
+Bu bölüm, bu makaledeki geçiş adımlarını izlemeye hazır olduğunuzu ve VM ve Disk türleri hakkında en iyi kararı vermenize yardımcı olur.
 
 ### <a name="prerequisites"></a>Ön koşullar
-* Bir Azure aboneliğine ihtiyaç duyacaksınız. Bir tane yoksa, bir aylık [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) aboneliği oluşturabilir veya daha fazla seçenek Için [Azure fiyatlandırmasını](https://azure.microsoft.com/pricing/) ziyaret edebilirsiniz.
-* PowerShell cmdlet 'lerini yürütmek için Microsoft Azure PowerShell modüle ihtiyacınız olacaktır. Yükleme noktası ve yükleme yönergeleri için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
-* Premium depolamada çalışan Azure VM 'lerini kullanmayı planlarken, Premium depolama özellikli VM 'Leri kullanmanız gerekir. Premium depolama özellikli VM 'lerle hem standart hem de Premium Depolama disklerini kullanabilirsiniz. Premium depolama diskleri, daha sonra daha fazla VM türüyle kullanılabilir olacaktır. Tüm kullanılabilir Azure VM disk türleri ve boyutları hakkında daha fazla bilgi için bkz. [sanal makineler Için boyutlar](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Cloud Services için](../../cloud-services/cloud-services-sizes-specs.md)boyutlar.
+* Bir Azure aboneliğiniz olmalıdır. Yoksa, bir aylık [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) aboneliği oluşturabilir veya daha fazla seçenek için [Azure Fiyatlandırması'nı](https://azure.microsoft.com/pricing/) ziyaret edebilirsiniz.
+* PowerShell cmdlets'i çalıştırmak için Microsoft Azure PowerShell modülüne ihtiyacınız olacaktır. Yükleme noktası ve yükleme yönergeleri için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+* Premium Depolama'da çalışan Azure VM'leri kullanmayı planladığınızı, Premium Depolama özellikli VM'leri kullanmanız gerekir. Premium Depolama özellikli VM'ler ile hem Standart hem de Premium Depolama disklerini kullanabilirsiniz. Premium depolama diskleri gelecekte daha fazla VM türüyle kullanılabilir. Kullanılabilir tüm Azure VM disk türleri ve boyutları hakkında daha fazla bilgi için [sanal makineler için Boyutlar](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Bulut Hizmetleri Boyutları'na](../../cloud-services/cloud-services-sizes-specs.md)bakın.
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
-Azure VM, uygulamalarınızın VM başına 256 TB 'a kadar depolama alanına sahip olması için çeşitli Premium Depolama disklerinin iliştirmesini destekler. Premium Depolama ile uygulamalarınız VM başına 80.000 ıOPS (saniye başına giriş/çıkış işlemi) ve okuma işlemleri için çok düşük gecikme süreleriyle VM başına 2000 MB ve saniyede MB elde edebilir. Çeşitli VM 'Lerde ve disklerde seçenekleriniz vardır. Bu bölüm, iş yükünüze en uygun bir seçenek bulmanıza yardımcı olur.
+Azure VM, uygulamalarınızın VM başına 256 TB'a kadar depolama alanına sahip olması için birkaç Premium Depolama diski eklemeyi destekler. Premium Depolama ile uygulamalarınız, okuma işlemleri için son derece düşük gecikmelerle VM başına 80.000 IOPS (saniyede giriş/çıkış işlemleri) ve VM başına saniyede 2000 MB disk üretimi elde edebilir. Çeşitli VM'ler ve Diskler seçenekleriniz vardır. Bu bölüm, iş yükünüze en uygun seçeneği bulmanıza yardımcı olmak içindir.
 
 #### <a name="vm-sizes"></a>VM boyutları
-Azure VM boyutu belirtimleri, [sanal makineler Için boyutlar](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bölümünde listelenmiştir. Premium depolamayla çalışan sanal makinelerin performans özelliklerini gözden geçirin ve iş yükünüze en uygun VM boyutunu seçin. Disk trafiğini yönlendirmek için sanal makinenizde yeterli kullanılabilir bant genişliği olduğundan emin olun.
+Azure VM boyutu belirtimleri [sanal makineler için Boyutlar'da](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)listelenir. Premium Depolama ile çalışan sanal makinelerin performans özelliklerini gözden geçirin ve iş yükünüze en uygun VM boyutunu seçin. VM'nizde disk trafiğini yönlendirmek için yeterli bant genişliği olduğundan emin olun.
 
 #### <a name="disk-sizes"></a>Disk boyutları
-VM 'niz ile kullanılabilecek beş tür disk vardır ve her birinin belirli IOPS ve aktarım hızı limitleri vardır. Kapasite, performans, ölçeklenebilirlik ve en yoğun yük bakımından uygulamanızın gereksinimlerine bağlı olarak, sanal makinenizin disk türünü seçerken bu limitleri dikkate alın.
+VM'inizle kullanılabilen beş tür disk vardır ve her birinin belirli IOP'leri ve iş elde edilme sınırları vardır. Kapasite, performans, ölçeklenebilirlik ve tepe yükleri açısından uygulamanızın ihtiyaçlarına göre VM'niz için disk türünü seçerken bu sınırları göz önünde bulundurun.
 
-| Premium diskler türü  | P10   | P20   | P30            | P40            | P50            | 
+| Premium Diskler Türü  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Disk boyutu           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| Disk başına IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
-| Disk başına çıkış | Saniyede 100 MB | saniyede 150 MB | saniyede 200 MB | saniyede 250 MB | saniyede 250 MB |
+| Disk başına IOPS       | 500   | 2300  | 5000           | 7.500           | 7.500           | 
+| Disk başına aktarım hızı | Saniyede 100 MB | Saniyede 150 MB | Saniyede 200 MB | Saniyede 250 MB | Saniyede 250 MB |
 
-İş yükünüze bağlı olarak, VM 'niz için ek veri disklerinin gerekli olup olmadığını saptayın. Sanal makinenize birkaç kalıcı veri diski ekleyebilirsiniz. Gerekirse, birimin kapasitesini ve performansını artırmak için disklerin genelinde bir dizi oluşturabilirsiniz. ( [Bkz. disk](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)şeritleme nedir.) Premium depolama veri disklerini [depolama alanları kullanarak ayırdıysanız][4], kullanılan her disk için tek bir sütunla yapılandırmalısınız. Aksi halde, disklerin disk genelindeki düzensiz dağıtımı nedeniyle, Şeritli birimin genel performansı beklenenden daha düşük olabilir. Linux VM 'Ler için *mdaddm* yardımcı programını kullanarak aynı elde edebilirsiniz. Ayrıntılar için bkz. [Linux üzerinde yazılım RAID yapılandırma](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) makalesi.
+İş yükünüze bağlı olarak, VM'iniz için ek veri disklerinin gerekli olup olmadığını belirleyin. VM'nize birkaç kalıcı veri diski ekleyebilirsiniz. Gerekirse, birimin kapasitesini ve performansını artırmak için diskler arasında şerit yapabilirsiniz. (Burada Disk Şeritleme [here](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)nedir bakın.) [Depolama Alanları'nı][4]kullanarak Premium Depolama veri disklerini şeritlerseniz, kullanılan her disk için bir sütunla yapılandırmanız gerekir. Aksi takdirde, şeritlerli birimin genel performansı, diskler arasında trafiğin düzensiz dağılımı nedeniyle beklenenden düşük olabilir. Linux VMs için aynı ulaşmak için *mdadm* yardımcı programı kullanabilirsiniz. Ayrıntılar için [Linux'ta Yazılım RAID'i yapılandırın](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) makalesine bakın.
 
 #### <a name="storage-account-scalability-targets"></a>Depolama hesabı ölçeklenebilirlik hedefleri
 
-Premium Depolama hesaplarının aşağıdaki ölçeklenebilirlik hedefleri vardır. Uygulama gereksinimleriniz tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa, uygulamanızı birden çok depolama hesabı kullanacak şekilde derleyin ve verilerinizi bu depolama hesaplarında bölümleyin.
+Premium Depolama hesapları aşağıdaki ölçeklenebilirlik hedeflerine sahiptir. Uygulama gereksinimleriniz tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşıyorsa, uygulamanızı birden çok depolama hesabı kullanmak ve verilerinizi bu depolama hesapları arasında bölmek için oluşturun.
 
-| Toplam hesap kapasitesi | Yerel olarak yedekli depolama hesabı için toplam bant genişliği |
+| Toplam Hesap Kapasitesi | Yerel Olarak Yedekli Depolama Hesabı için Toplam Bant Genişliği |
 |:--- |:--- |
-| Disk kapasitesi: 35TB<br />Anlık görüntü kapasitesi: 10 TB |Gelen + giden için saniyede 50 Gigabit |
+| Disk kapasitesi: 35 TB<br />Anlık görüntü kapasitesi: 10 TB |Gelen + Giden ler için saniyede 50 gigadir'e kadar |
 
-Premium Depolama belirtimleri hakkında daha fazla bilgi için bkz. [Premium sayfa BLOB depolama hesapları Için ölçeklenebilirlik hedefleri](../blobs/scalability-targets-premium-page-blobs.md).
+Premium Depolama özellikleri hakkında daha fazla bilgi için, [premium sayfa blob depolama hesapları için Ölçeklenebilirlik hedeflerine](../blobs/scalability-targets-premium-page-blobs.md)bakın.
 
 #### <a name="disk-caching-policy"></a>Disk önbelleğe alma ilkesi
-Varsayılan olarak, disk önbelleğe alma ilkesi tüm Premium veri diskleri için *salt okunurdur* ve VM 'ye bağlı olan Premium işletim sistemi diski Için *okuma yazma* işlemi yapılır. Bu yapılandırma ayarı, uygulamanızın IOs için en iyi performansı elde etmek için önerilir. Daha iyi uygulama performansı elde edebilmeniz için, yazma ağır veya salt yazılır veri diskleri (örneğin, SQL Server günlük dosyaları) için disk önbelleğe almayı devre dışı bırakın. Var olan veri disklerinin önbellek ayarları, *set-AzureDataDisk* cmdlet 'inin [Azure Portal](https://portal.azure.com) veya *-hostcaching* parametresi kullanılarak güncelleştirilemeyebilir.
+Varsayılan olarak, disk önbelleğe alma ilkesi tüm Premium veri diskleri için *Salt Okunur* ve VM'ye bağlı Premium işletim sistemi diski için *Okuma-Yazma'dır.* Bu yapılandırma ayarı, uygulamanızın IO'ları için en iyi performansı elde etmek için önerilir. Yazma ağır veya yalnızca yazma veri diskleri (SQL Server günlük dosyaları gibi) için, daha iyi uygulama performansı elde edebilmek için disk önbelleği devre dışı kullanabilirsiniz. Varolan veri disklerinin önbellek ayarları Azure [portalı](https://portal.azure.com) veya *Set-AzureDataDisk* cmdlet'in *-HostCaching* parametresi kullanılarak güncellenebilir.
 
 #### <a name="location"></a>Konum
-Azure Premium depolamanın kullanılabildiği bir konum seçin. Kullanılabilir konumlara ilişkin güncel bilgiler için bkz. [bölgeye göre Azure hizmetleri](https://azure.microsoft.com/regions/#services) . VM için diskleri depolayan depolama hesabıyla aynı bölgede bulunan VM 'Ler, ayrı bölgelerde olduklarından çok daha iyi performans sağlayacaktır.
+Azure Premium Depolama'nın kullanılabildiği bir konum seçin. Kullanılabilir konumlarla ilgili güncel bilgiler için [Bölgeye göre Azure Hizmetleri'ne](https://azure.microsoft.com/regions/#services) bakın. Diskleri VM için depolayan Depolama hesabıyla aynı bölgede bulunan VM'ler, ayrı bölgelerde olup olmadıklarına göre çok daha iyi performans sağlar.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Diğer Azure VM yapılandırma ayarları
-Azure VM oluştururken, belirli VM ayarlarını yapılandırmanız istenir. Daha sonra değiştirebilmeniz veya daha sonra ekleyebilmek için, VM 'nin kullanım ömrü boyunca birkaç ayar düzeltildiğinde unutmayın. Bu Azure VM yapılandırma ayarlarını gözden geçirin ve bunların iş yükü gereksinimlerinize uygun şekilde yapılandırıldığından emin olun.
+Azure VM oluştururken, belirli VM ayarlarını yapılandırmanız istenir. Unutmayın, VM'nin ömrü boyunca çok az ayar sabitlenirken, daha sonra başkalarını değiştirebilir veya ekleyebilirsiniz. Bu Azure VM yapılandırma ayarlarını gözden geçirin ve bunların iş yükü gereksinimlerinize uyacak şekilde uygun şekilde yapılandırıldığından emin olun.
 
 ### <a name="optimization"></a>İyileştirme
-[Azure Premium Depolama: yüksek performans Için tasarım](../../virtual-machines/windows/premium-storage-performance.md) , Azure Premium depolama kullanan yüksek performanslı uygulamalar oluşturmaya yönelik yönergeler sağlar. Uygulamanız tarafından kullanılan teknolojiler için geçerli olan performans en iyi uygulamaları ile Birleşik yönergeleri izleyebilirsiniz.
+[Azure Premium Depolama: Yüksek Performans için Tasarım,](../../virtual-machines/windows/premium-storage-performance.md) Azure Premium Depolama'yı kullanarak yüksek performanslı uygulamalar oluşturmak için yönergeler sağlar. Uygulamanız tarafından kullanılan teknolojiler için geçerli olan en iyi performans uygulamalarıyla birlikte yönergeleri takip edebilirsiniz.
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Sanal sabit diskleri (VHD 'ler) Premium depolamaya hazırlama ve kopyalama
-Aşağıdaki bölümde, VM 'nizden VHD 'leri hazırlama ve VHD 'leri Azure depolama 'ya kopyalama yönergeleri sunulmaktadır.
+## <a name="prepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Sanal sabit diskleri (VHD'ler) Premium Depolama'ya hazırlama ve kopyalama
+Aşağıdaki bölümde VM'lerinizden VH'ler hazırlamak ve VHD'leri Azure Depolama alanına kopyalamak için yönergeler verilmektedir.
 
-* [Senaryo 1: "mevcut Azure VM 'lerini Azure Premium depolamaya geçirdim."](#scenario1)
-* [Senaryo 2: "diğer platformlardaki VM 'Leri Azure Premium Depolama 'ya geçirdim."](#scenario2)
+* [Senaryo 1: "Mevcut Azure VM'lerini Azure Premium Depolama alanına aktarıyorum."](#scenario1)
+* [Senaryo 2: "VM'leri diğer platformlardan Azure Premium Depolama'ya aktarıyorum."](#scenario2)
 
 ### <a name="prerequisites"></a>Ön koşullar
-VHD 'leri geçişe hazırlamak için şunlar gerekir:
+VHD'leri geçişe hazırlamak için şunları yapmanız gerekir:
 
-* Bir Azure aboneliği, bir depolama hesabı ve bu depolama hesabındaki, VHD 'nizi kopyalayabilmeniz için bir kapsayıcı. Hedef depolama hesabının, gereksiniminize bağlı olarak bir standart veya Premium depolama hesabı olabileceğini unutmayın.
-* İçinden birden çok VM örneği oluşturmayı planlıyorsanız VHD 'yi genelleştirmek için bir araç. Örneğin, Windows için Sysprep veya Ubuntu için vırt-Sysprep.
-* VHD dosyasını depolama hesabına yüklemek için bir araç. Bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](storage-use-azcopy.md) veya [Azure Depolama Gezgini](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)kullanma. Bu kılavuzda, AzCopy aracını kullanarak VHD 'nizin kopyalanması açıklanmaktadır.
+* Azure aboneliği, depolama hesabı ve VHD'nizi kopyalayabildiğiniz bu depolama hesabındaki bir kapsayıcı. Hedef depolama hesabının gereksiniminize bağlı olarak standart veya Premium Depolama hesabı olabileceğini unutmayın.
+* Birden çok VM örneği oluşturmayı planlıyorsanız VHD'yi genelleştirmek için bir araçtır. Örneğin, Windows için sysprep veya Ubuntu için virt-sysprep.
+* VHD dosyasını Depolama hesabına yüklemek için bir araç. [Bkz. AzCopy Command-Line Utility ile veri aktarımı](storage-use-azcopy.md) veya bir [Azure depolama gezgini](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)kullanın. Bu kılavuzda, AzCopy aracını kullanarak VHD'nizi kopyalamanız açıklanmaktadır.
 
 > [!NOTE]
-> AzCopy ile zaman uyumlu kopyalama seçeneğini belirlerseniz, en iyi performans için, hedef depolama hesabıyla aynı bölgede yer alan bir Azure VM 'den bu araçlardan birini çalıştırarak VHD 'nizi kopyalayın. Bir VHD 'yi farklı bir bölgedeki Azure VM 'den kopyalıyorsanız, performanağınız daha yavaş olabilir.
+> AzCopy ile senkron kopyalama seçeneğini seçerseniz, en iyi performans için, hedef depolama hesabıyla aynı bölgede bulunan bir Azure VM'den bu araçlardan birini çalıştırarak VHD'nizi kopyalayın. Bir VHD'yi farklı bir bölgedeki Bir Azure VM'den kopyalıyorsanız, performansınız daha yavaş olabilir.
 >
-> Sınırlı bant genişliğine sahip büyük miktarda veriyi kopyalamak için [Azure içeri/dışarı aktarma hizmetini kullanarak blob depolamaya veri aktarmayı](../storage-import-export-service.md)düşünün; Bu, sabit disk sürücülerine bir Azure veri merkezine aktararak verilerinizi aktarmanızı sağlar. Azure Içeri/dışarı aktarma hizmetini kullanarak verileri yalnızca standart depolama hesabına kopyalayabilirsiniz. Veriler standart depolama hesabınızda olduktan sonra, verileri Premium Depolama hesabınıza aktarmak için [kopyalama blob API 'sini](https://msdn.microsoft.com/library/azure/dd894037.aspx) veya AzCopy öğesini kullanabilirsiniz.
+> Sınırlı bant genişliği üzerinden büyük miktarda veri kopyalamak [için, verileri Blob Depolama'ya aktarmak için Azure İçe Alma/Dışa Aktarma hizmetini kullanmayı](../storage-import-export-service.md)düşünün; bu, sabit disk sürücülerini bir Azure veri merkezine göndererek verilerinizi aktarmanızı sağlar. Verileri yalnızca standart bir depolama hesabına kopyalamak için Azure İçe Alma/Dışa Aktarma hizmetini kullanabilirsiniz. Veriler standart depolama hesabınıza ulaştıktan sonra, verileri premium depolama hesabınıza aktarmak için [Kopya Blob API'sını](https://msdn.microsoft.com/library/azure/dd894037.aspx) veya AzCopy'yi kullanabilirsiniz.
 >
-> Microsoft Azure yalnızca sabit boyutlu VHD dosyalarını desteklediğini unutmayın. VHDX dosyaları veya dinamik VHD 'ler desteklenmez. Dinamik bir VHD varsa [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) cmdlet 'ini kullanarak onu sabit boyuta dönüştürebilirsiniz.
+> Microsoft Azure'un yalnızca sabit boyutlu VHD dosyalarını desteklediğini unutmayın. VHDX dosyaları veya dinamik VHDD'ler desteklenmez. Dinamik bir VHD'niz varsa, [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) cmdlet'i kullanarak sabit boyuta dönüştürebilirsiniz.
 >
 >
 
-### <a name="scenario1"></a>Senaryo 1: "mevcut Azure VM 'lerini Azure Premium depolamaya geçirdim."
-Mevcut Azure VM 'lerini geçiriyorsanız VM 'yi durdurun, VHD türüne göre VHD 'ler hazırlayın ve sonra da AzCopy veya PowerShell ile VHD 'yi kopyalayın.
+### <a name="scenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>Senaryo 1: "Mevcut Azure VM'lerini Azure Premium Depolama alanına aktarıyorum."
+Varolan Azure VM'lerini geçiriyorsanız, VM'yi durdurun, istediğiniz VHD türüne göre VHD'ler hazırlayın ve VHD'yi AzCopy veya PowerShell ile kopyalayın.
 
-Temiz bir durum geçirmek için VM 'nin tamamen kapanması gerekir. Geçiş tamamlanana kadar kesinti süresi olacaktır.
+VM'nin temiz bir duruma geçiş yapması için tamamen aşağı olması gerekir. Geçiş tamamlanana kadar bir kesinti olacaktır.
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>1\. Adım VHD 'leri geçiş için hazırlama
-Mevcut Azure sanal makinelerini Premium depolamaya geçiriyorsanız, VHD 'niz şu şekilde olabilir:
+#### <a name="step-1-prepare-vhds-for-migration"></a>1. Adım. VHD'leri geçiş için hazırlama
+Mevcut Azure VM'lerini Premium Depolama alanına geçiriyorsanız, VHD'niz şu olabilir:
 
 * Genelleştirilmiş bir işletim sistemi görüntüsü
 * Benzersiz bir işletim sistemi diski
-* Veri diski
+* Bir veri diski
 
-Aşağıda, VHD 'nizi hazırlamaya yönelik bu 3 senaryoya kılavuzluk ederiz.
+Aşağıda VHD hazırlamak için bu 3 senaryolar üzerinden yürümek.
 
-##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Birden çok VM örneği oluşturmak için genelleştirilmiş bir Işletim sistemi VHD 'SI kullanın
-Birden çok genel Azure VM örneği oluşturmak için kullanılacak bir VHD 'yi karşıya yüklüyorsanız, önce bir Sysprep yardımcı programını kullanarak VHD 'yi genelleştirmelisiniz. Bu, şirket içinde veya bulutta bulunan bir VHD için geçerlidir. Sysprep, makineye özgü tüm bilgileri VHD 'den kaldırır.
+##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Birden çok VM örneği oluşturmak için genelleştirilmiş bir İşletim Sistemi VHD kullanın
+Birden çok genel Azure VM örneği oluşturmak için kullanılacak bir VHD yüklüyorsanız, öncelikle bir sysprep yardımcı programı kullanarak VHD'yi genellemeniz gerekir. Bu, şirket içinde veya bulutta bulunan bir VHD için geçerlidir. Sysprep, VHD'den makineye özgü tüm bilgileri kaldırır.
 
 > [!IMPORTANT]
-> Bir anlık görüntü alın veya VM 'nizi genelleştirmeye başlamadan önce yedekleyin. Sysprep çalıştırmak, sanal makine örneğini durdurur ve serbest bırakılır. Aşağıdaki adımları izleyerek Sysprep bir Windows işletim sistemi VHD 'SI. Sysprep komutunu çalıştırmanın sanal makineyi kapatmanızı gerektirdiğini unutmayın. Sysprep hakkında daha fazla bilgi için bkz. [Sysprep genel bakış](https://technet.microsoft.com/library/hh825209.aspx) veya [Sysprep Teknik Başvurusu](https://technet.microsoft.com/library/cc766049.aspx).
+> Genelleme yapmadan önce vm'nizi anlık görüntü olarak alın veya yedekleştirin. Çalışan sysprep duracak ve VM örneğini bulmak. Windows OS VHD'yi sysprep için aşağıdaki adımları izleyin. Sysprep komutunu çalıştırmanın sanal makineyi kapatmanızı gerektireceğini unutmayın. Sysprep hakkında daha fazla bilgi için [Sysprep Genel Bakış](https://technet.microsoft.com/library/hh825209.aspx) veya [Sysprep Teknik Referans'a](https://technet.microsoft.com/library/cc766049.aspx)bakın.
 >
 >
 
-1. Yönetici olarak bir komut Istemi penceresi açın.
-2. Sysprep 'ı açmak için aşağıdaki komutu girin:
+1. Yönetici olarak Komut İstemi pencerelerini açın.
+2. Sysprep'i açmak için aşağıdaki komutu girin:
 
     ```
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. Sistem Hazırlama aracında sistem hazır olmayan deneyim (OOBE) seçeneğini belirleyin, generalize onay kutusunu seçin, **Kapat**' ı seçin ve ardından aşağıdaki görüntüde gösterildiği gibi **Tamam**' a tıklayın. Sysprep, işletim sistemini genelleştirirsiniz ve sistemi kapatır.
+3. Sistem Hazırlama Aracında, Kutudan Kullanıma Sun Deneyimi Girin'i (OOBE) seçin, Genelle'yi onay kutusunu seçin, **Kapatma'yı**seçin ve aşağıdaki resimde gösterildiği gibi **Tamam'ı**tıklatın. Sysprep işletim sistemini genelleştirecek ve sistemi kapatacaktır.
 
     ![][1]
 
-Ubuntu sanal makinesi için, vırt-Sysprep ' i kullanarak aynı elde edin. Daha fazla bilgi için bkz. [vırt-Sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) . Ayrıca bkz. diğer Linux işletim sistemleri için açık kaynak [Linux sunucu sağlama yazılımı](https://www.cyberciti.biz/tips/server-provisioning-software.html) .
+Bir Ubuntu VM için, aynı elde etmek için virt-sysprep kullanın. Daha fazla bilgi için [virt-sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) bakın. Diğer Linux işletim sistemleri için açık kaynak Koda sahip [Linux Server Provisioning yazılımlarından](https://www.cyberciti.biz/tips/server-provisioning-software.html) bazılarına da bakın.
 
-##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Tek bir VM örneği oluşturmak için benzersiz bir Işletim sistemi VHD 'SI kullanın
-VM üzerinde çalışan, makineye özgü verileri gerektiren bir uygulamanız varsa, VHD 'yi genelleştirmeyin. Genelleştirilmiş olmayan bir VHD, benzersiz bir Azure VM örneği oluşturmak için kullanılabilir. Örneğin, VHD 'niz üzerinde etki alanı Denetleyicsahipseniz, Sysprep 'in yürütülmesi bir etki alanı denetleyicisi olarak etkisiz hale getirir. VM 'niz üzerinde çalışan uygulamaları ve VHD 'yi genelleştirmeden önce Sysprep çalıştırmanın etkilerini gözden geçirin.
+##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Tek bir VM örneği oluşturmak için benzersiz bir İşletim Sistemi VHD kullanın
+VM üzerinde çalışan ve makineye özgü veri gerektiren bir uygulamanız varsa, VHD'yi genellemayın. Özgün bir Azure VM örneği oluşturmak için genelleştirilmeyen bir VHD kullanılabilir. Örneğin, VHD'nizde Etki Alanı Denetleyicisi varsa, sysprep'i yürütmek etki alanı denetleyicisi olarak etkisiz hale getirecektir. VM'nizde çalışan uygulamaları ve VHD'yi genellemeden önce sysprep çalıştırmanın bunlar üzerindeki etkisini gözden geçirin.
 
-##### <a name="register-data-disk-vhd"></a>Veri diski VHD 'sini kaydetme
-Azure 'da geçiş yapmak için veri diskleriniz varsa, bu veri disklerini kullanan VM 'Lerin kapatıldığından emin olmanız gerekir.
+##### <a name="register-data-disk-vhd"></a>Veri diski VHD'yi kaydet
+Azure'da geçirilecek veri diskiniz varsa, bu veri disklerini kullanan Sanal Kullanım Aygıtlarının kapatıldığından emin olmalısınız.
 
-VHD 'yi Azure Premium Depolama 'ya kopyalamak ve sağlanmış bir veri diski olarak kaydetmek için aşağıda açıklanan adımları izleyin.
+VHD'yi Azure Premium Depolama alanına kopyalamak ve sağlanan bir veri diski olarak kaydetmek için aşağıda açıklanan adımları izleyin.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>2\. Adım. VHD 'niz için hedef oluşturma
-VHD 'nizin sürdürülmesi için bir depolama hesabı oluşturun. VHD 'lerinizin depolanacağı yeri planlarken aşağıdaki noktaları göz önünde bulundurun:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>2. Adım VHD'niz için hedef oluşturma
+VHD'lerinizi korumak için bir depolama hesabı oluşturun. VHD'lerinizi nerede depolayacağınızda aşağıdaki noktaları göz önünde bulundurun:
 
 * Hedef Premium depolama hesabı.
-* Depolama hesabı konumu, son aşamada oluşturacağınız, Premium depolama özellikli Azure VM 'Lerle aynı olmalıdır. Yeni bir depolama hesabına kopyalayabilir veya gereksinimlerinize göre aynı depolama hesabını kullanmayı planlarsınız.
-* Sonraki aşama için hedef depolama hesabının depolama hesabı anahtarını kopyalayın ve kaydedin.
+* Depolama hesabı konumu, son aşamada oluşturacağınız Premium Depolama özellikli Azure VM'lerle aynı olmalıdır. Yeni bir depolama hesabına kopyalayabilir veya gereksinimlerinize göre aynı depolama hesabını kullanmayı planlayabilirsiniz.
+* Hedef depolama hesabının depolama hesabı anahtarını bir sonraki aşama için kopyalayın ve kaydedin.
 
-Veri diskleri için, bazı veri disklerini standart bir depolama hesabında tutmayı seçebilirsiniz (örneğin, daha soğuk depolama olan diskler), ancak üretim iş yükü için tüm verileri Premium Depolama kullanmak üzere taşımayı önemle öneririz.
+Veri diskleri için, bazı veri disklerini standart bir depolama hesabında tutmayı seçebilirsiniz (örneğin, daha serin depolama alanına sahip diskler), ancak premium depolamayı kullanmak için üretim iş yükü için tüm verileri taşımanızı şiddetle öneririz.
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>3. adım. AzCopy veya PowerShell ile VHD 'YI kopyalama
-Bu iki seçenekten birini işlemek için kapsayıcı yolunu ve depolama hesabı anahtarınızı bulmanız gerekir. Kapsayıcı yolu ve depolama hesabı anahtarı, **Azure Portal** > **depolama**alanında bulunabilir. Kapsayıcı URL 'SI "https:\//myaccount.blob.core.windows.net/mycontainer/" şeklinde olacaktır.
+#### <a name="step-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>3. Adım. AzCopy veya PowerShell ile VHD kopyalayın
+Bu iki seçeneklerden birini işlemek için konteyner yolunuzu ve depolama hesabı anahtarınızı bulmanız gerekir. Konteyner yolu ve depolama hesabı anahtarı **Azure Portal** > **Depolama'da**bulunabilir. Konteyner URL'si "https:\//myaccount.blob.core.windows.net/mycontainer/" gibi olacaktır.
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Seçenek 1: AzCopy ile bir VHD 'YI kopyalama (zaman uyumsuz kopya)
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Seçenek 1: AzCopy ile bir VHD kopyalayın (Asynchronous copy)
 
-AzCopy kullanarak, VHD 'YI Internet üzerinden kolayca yükleyebilirsiniz. VHD 'lerin boyutuna bağlı olarak bu işlem zaman alabilir. Bu seçeneği kullanırken depolama hesabı giriş/çıkış sınırlarını denetlemeyi unutmayın. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-standard-account.md) .
+AzCopy'yi kullanarak VHD'yi Internet üzerinden kolayca yükleyebilirsiniz. VHD'lerin boyutuna bağlı olarak, bu işlem zaman alabilir. Bu seçeneği kullanırken depolama hesabı giriş/çıkış sınırlarını kontrol etmeyi unutmayın. Ayrıntılar [için standart depolama hesapları için ölçeklenebilirlik ve performans hedeflerine](scalability-targets-standard-account.md) bakın.
 
-1. AzCopy 'i buradan indirip yükleyin: [en son AzCopy sürümü](https://aka.ms/downloadazcopy)
-2. Azure PowerShell açın ve AzCopy 'ın yüklü olduğu klasöre gidin.
-3. VHD dosyasını "kaynak" kaynağından "hedefe" kopyalamak için aşağıdaki komutu kullanın.
+1. İndirin ve burada azcopy [yükleyin: AzCopy en son sürümü](https://aka.ms/downloadazcopy)
+2. Azure PowerShell'i açın ve AzCopy'nin yüklü olduğu klasöre gidin.
+3. VHD dosyasını "Kaynak"tan "Hedef"e kopyalamak için aşağıdaki komutu kullanın.
 
    ```azcopy
    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -180,21 +180,21 @@ AzCopy kullanarak, VHD 'YI Internet üzerinden kolayca yükleyebilirsiniz. VHD '
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
     ```
  
-   AzCopy komutunda kullanılan parametrelerin açıklamaları aşağıda verilmiştir:
+   Aşağıdana komutu kullanılan parametrelerin açıklamaları şunlardır:
 
-   * **/Source:** _&lt;kaynak&gt;:_ VHD 'yi içeren KLASÖRÜN veya depolama kapsayıcısı URL 'sinin konumu.
-   * **/SourceKey:** _&lt;kaynak-hesap-anahtar&gt;:_ kaynak depolama hesabının depolama hesabı anahtarı.
-   * **/Dest:** _&lt;hedef&gt;:_ VHD 'yi kopyalamak için depolama kapsayıcısı URL 'si.
-   * **/Destkey:** _&lt;dest-account-Key&gt;:_ hedef depolama hesabının depolama hesabı anahtarı.
-   * **/Model:** _&lt;dosya adı&gt;:_ kopyalanacak VHD 'nin dosya adını belirtin.
+   * **/Source:** _ &lt;&gt;kaynak :_ VHD içeren klasörün veya depolama kapsayıcısının URL'sinin konumu.
+   * **/SourceKey:** _ &lt;kaynak-hesap&gt;anahtarı :_ Kaynak depolama hesabının depolama hesabı anahtarı.
+   * **/Dest:** _ &lt;&gt;hedef :_ VHD'yi kopyalamak için depolama kapsayıcısı URL'si.
+   * **/DestKey:** _ &lt;dest-account-key&gt;:_ Hedef depolama hesabının depolama hesabı anahtarı.
+   * **/Pattern:** _ &lt;dosya&gt;adı :_ Kopyalamak için VHD'nin dosya adını belirtin.
 
-AzCopy aracını kullanma hakkında ayrıntılı bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](storage-use-azcopy.md).
+AzCopy aracını kullanma hakkında daha fazla bilgi için, [AzCopy Command-Line Utility ile veri aktarımı'na](storage-use-azcopy.md)bakın.
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Seçenek 2: PowerShell ile bir VHD kopyalama (eşitlenmiş kopya)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Seçenek 2: PowerShell ile Bir VHD kopyalayın (Senkronize kopya)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ayrıca start-AzStorageBlobCopy PowerShell cmdlet 'ini kullanarak VHD dosyasını kopyalayabilirsiniz. VHD 'yi kopyalamak için Azure PowerShell ' de aşağıdaki komutu kullanın. < > Değerlerini, kaynak ve hedef depolama hesabınızdaki karşılık gelen değerlerle değiştirin. Bu komutu kullanmak için hedef depolama hesabınızda VHD adında bir kapsayıcı olması gerekir. Kapsayıcı yoksa, komutunu çalıştırmadan önce bir tane oluşturun.
+PowerShell cmdlet Start-AzStorageBlobCopy'i kullanarak VHD dosyasını da kopyalayabilirsiniz. VHD'yi kopyalamak için Azure PowerShell'de aşağıdaki komutu kullanın.  <> 'daki değerleri kaynak ve hedef depolama hesabınızdaki karşılık gelen değerlerle değiştirin. Bu komutu kullanmak için, hedef depolama hesabınızda vhds adında bir kapsayıcı olması gerekir. Kapsayıcı yoksa, komutu çalıştırmadan önce bir tane oluşturun.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -218,55 +218,55 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Senaryo 2: "diğer platformlardaki VM 'Leri Azure Premium Depolama 'ya geçirdim."
-VHD 'yi Azure olmayan bulut depolamadan Azure 'a geçiriyorsanız, önce VHD 'yi yerel bir dizine aktarmanız gerekir. VHD 'nin depolandığı yerel dizinin tüm kaynak yolunu ve ardından Azure depolama 'ya yüklemek için AzCopy komutunu kullanın.
+### <a name="scenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>Senaryo 2: "VM'leri diğer platformlardan Azure Premium Depolama'ya aktarıyorum."
+VHD'yi Azure olmayan Bulut Depolama'dan Azure'a taşıyorsanız, öncelikle VHD'yi yerel bir dizine dışa aktarmanız gerekir. VHD'nin kullanışlı olarak depolandığı yerel dizinin tam kaynak yolunu ve ardından Azure Depolama'ya yüklemek için AzCopy'yi kullanarak sahip olun.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>1\. Adım VHD 'YI yerel bir dizine aktarma
-##### <a name="copy-a-vhd-from-aws"></a>AWS 'den bir VHD kopyalama
-1. AWS kullanıyorsanız, EC2 örneğini bir Amazon S3 demetini içindeki bir VHD 'ye aktarın. Amazon EC2 komut satırı arabirimi (CLı) aracını yüklemek üzere Amazon EC2 örneklerini dışarı aktarmak için Amazon belgelerinde açıklanan adımları izleyin ve EC2 örneğini bir VHD dosyasına aktarmak için Create-Instance-Export-Task komutunu çalıştırın. **Oluşturma-örnek-dışarı aktarma-görev** komutunu&#95;çalıştırırken DISK&#95;görüntüsü biçim değişkeni için **VHD 'yi** kullandığınızdan emin olun. İçe aktarılmış VHD dosyası, bu işlem sırasında belirlediğiniz Amazon S3 demet içine kaydedilir.
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>1. Adım. VHD'yi yerel bir dizine aktarma
+##### <a name="copy-a-vhd-from-aws"></a>AWS'den bir VHD kopyalama
+1. AWS kullanıyorsanız, EC2 örneğini Bir Amazon S3 kovasında bir VHD'ye dışa aktarın. Amazon EC2 komut satırı arabirimi (CLI) aracını yüklemek için Amazon EC2 Örnekleri Nin İhracatı için Amazon belgelerinde açıklanan adımları izleyin ve EC2 örneğini VHD dosyasına aktarmak için oluşturma örneği-verme görev komutunu çalıştırın. **Create-instance-export-task** komutunu çalıştırırken Disk&#95;IMAGE&#95;FORMAT değişkeni için **VHD** kullandığınızdan emin olun. Dışa aktarılan VHD dosyası, bu işlem sırasında belirlediğiniz Amazon S3 kovasında kaydedilir.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. S3 demetini 'nden VHD dosyasını indirin. VHD dosyasını seçin ve ardından **Eylemler** **karşıdan yükle** > .
+2. VHD dosyasını S3 kovasından indirin. VHD dosyasını seçin, ardından **Eylemler** > **İndir.**
 
     ![][3]
 
-##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Diğer Azure dışı buluttan bir VHD 'yi kopyalama
-VHD 'yi Azure olmayan bulut depolamadan Azure 'a geçiriyorsanız, önce VHD 'yi yerel bir dizine aktarmanız gerekir. VHD 'nin depolandığı yerel dizinin tüm kaynak yolunu kopyalayın.
+##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Azure olmayan diğer bulutlardan bir VHD kopyalama
+VHD'yi Azure olmayan Bulut Depolama'dan Azure'a taşıyorsanız, öncelikle VHD'yi yerel bir dizine dışa aktarmanız gerekir. VHD'nin depolandığı yerel dizinin tam kaynak yolunu kopyalayın.
 
-##### <a name="copy-a-vhd-from-on-premises"></a>Şirket içinden bir VHD 'yi kopyalama
-VHD 'yi şirket içi bir ortamdan geçiriyorsanız, VHD 'nin depolandığı tam kaynak yoluna ihtiyacınız olacaktır. Kaynak yolu bir sunucu konumu veya dosya paylaşma olabilir.
+##### <a name="copy-a-vhd-from-on-premises"></a>Şirket içinden bir VHD kopyalama
+VHD'yi şirket içi ortamdan geçiriyorsanız, VHD'nin depolandığı tam kaynak yola ihtiyacınız olacaktır. Kaynak yolu bir sunucu konumu veya dosya paylaşımı olabilir.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>2\. Adım. VHD 'niz için hedef oluşturma
-VHD 'nizin sürdürülmesi için bir depolama hesabı oluşturun. VHD 'lerinizin depolanacağı yeri planlarken aşağıdaki noktaları göz önünde bulundurun:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>2. Adım VHD'niz için hedef oluşturma
+VHD'lerinizi korumak için bir depolama hesabı oluşturun. VHD'lerinizi nerede depolayacağınızda aşağıdaki noktaları göz önünde bulundurun:
 
-* Hedef depolama hesabı, uygulamanızın gereksinimlerine bağlı olarak standart veya Premium depolama alanı olabilir.
-* Depolama hesabı bölgesi, son aşamada oluşturacağınız, Premium depolama özellikli Azure VM 'Lerle aynı olmalıdır. Yeni bir depolama hesabına kopyalayabilir veya gereksinimlerinize göre aynı depolama hesabını kullanmayı planlarsınız.
-* Sonraki aşama için hedef depolama hesabının depolama hesabı anahtarını kopyalayın ve kaydedin.
+* Hedef depolama hesabı, uygulama gereksiniminize bağlı olarak standart veya premium depolama alanı olabilir.
+* Depolama hesabı bölgesi, son aşamada oluşturacağınız Premium Depolama özellikli Azure VM'lerle aynı olmalıdır. Yeni bir depolama hesabına kopyalayabilir veya gereksinimlerinize göre aynı depolama hesabını kullanmayı planlayabilirsiniz.
+* Hedef depolama hesabının depolama hesabı anahtarını bir sonraki aşama için kopyalayın ve kaydedin.
 
-Üretim iş yükü için tüm verileri Premium Depolama kullanmak üzere taşımayı önemle öneririz.
+Premium depolamayı kullanmak için üretim iş yükü için tüm verileri taşımanızı şiddetle öneririz.
 
-#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3\. Adım. VHD 'YI Azure depolama 'ya yükleme
-Artık yerel dizinde VHD 'niz olduğuna göre,. vhd dosyasını Azure depolama 'ya yüklemek için AzCopy veya AzurePowerShell kullanabilirsiniz. Her iki seçenek de aşağıda verilmiştir:
+#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. Adım VHD'yi Azure Depolama'ya yükleme
+VHD'niz yerel dizinde olduğuna göre, .vhd dosyasını Azure Depolama'ya yüklemek için AzCopy veya AzurePowerShell'i kullanabilirsiniz. Her iki seçenek de burada verilmiştir:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Seçenek 1: Azure PowerShell Add-AzureVhd kullanarak. vhd dosyasını karşıya yükleme
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Seçenek 1: .vhd dosyasını yüklemek için Azure PowerShell Ekle-AzureVhd'ı kullanma
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Bir örnek \<URI > **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** olabilir. Bir örnek \<> **_"C:\yol\to\upload.vhd"_** olabilir.
+Uri \<>'ın **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** olabileceğine bir örnek. Örnek \<FileInfo> **_"C:\path\to\upload.vhd"_** olabilir.
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Seçenek 2:. vhd dosyasını karşıya yüklemek için AzCopy kullanma
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Seçenek 2: .vhd dosyasını yüklemek için AzCopy kullanma
 
-AzCopy kullanarak, VHD 'YI Internet üzerinden kolayca yükleyebilirsiniz. VHD 'lerin boyutuna bağlı olarak bu işlem zaman alabilir. Bu seçeneği kullanırken depolama hesabı giriş/çıkış sınırlarını denetlemeyi unutmayın. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-standard-account.md) .
+AzCopy'yi kullanarak VHD'yi Internet üzerinden kolayca yükleyebilirsiniz. VHD'lerin boyutuna bağlı olarak, bu işlem zaman alabilir. Bu seçeneği kullanırken depolama hesabı giriş/çıkış sınırlarını kontrol etmeyi unutmayın. Ayrıntılar [için standart depolama hesapları için ölçeklenebilirlik ve performans hedeflerine](scalability-targets-standard-account.md) bakın.
 
-1. AzCopy 'i buradan indirip yükleyin: [en son AzCopy sürümü](https://aka.ms/downloadazcopy)
-2. Azure PowerShell açın ve AzCopy 'ın yüklü olduğu klasöre gidin.
-3. VHD dosyasını "kaynak" kaynağından "hedefe" kopyalamak için aşağıdaki komutu kullanın.
+1. İndirin ve burada azcopy [yükleyin: AzCopy en son sürümü](https://aka.ms/downloadazcopy)
+2. Azure PowerShell'i açın ve AzCopy'nin yüklü olduğu klasöre gidin.
+3. VHD dosyasını "Kaynak"tan "Hedef"e kopyalamak için aşağıdaki komutu kullanın.
 
    ```azcopy
       AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -278,91 +278,91 @@ AzCopy kullanarak, VHD 'YI Internet üzerinden kolayca yükleyebilirsiniz. VHD '
       AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
    ```
 
-   AzCopy komutunda kullanılan parametrelerin açıklamaları aşağıda verilmiştir:
+   Aşağıdana komutu kullanılan parametrelerin açıklamaları şunlardır:
 
-   * **/Source:** _&lt;kaynak&gt;:_ VHD 'yi içeren KLASÖRÜN veya depolama kapsayıcısı URL 'sinin konumu.
-   * **/SourceKey:** _&lt;kaynak-hesap-anahtar&gt;:_ kaynak depolama hesabının depolama hesabı anahtarı.
-   * **/Dest:** _&lt;hedef&gt;:_ VHD 'yi kopyalamak için depolama kapsayıcısı URL 'si.
-   * **/Destkey:** _&lt;dest-account-Key&gt;:_ hedef depolama hesabının depolama hesabı anahtarı.
-   * **/Blobtype: sayfa:** Hedefin bir Sayfa Blobu olduğunu belirtir.
-   * **/Model:** _&lt;dosya adı&gt;:_ kopyalanacak VHD 'nin dosya adını belirtin.
+   * **/Source:** _ &lt;&gt;kaynak :_ VHD içeren klasörün veya depolama kapsayıcısının URL'sinin konumu.
+   * **/SourceKey:** _ &lt;kaynak-hesap&gt;anahtarı :_ Kaynak depolama hesabının depolama hesabı anahtarı.
+   * **/Dest:** _ &lt;&gt;hedef :_ VHD'yi kopyalamak için depolama kapsayıcısı URL'si.
+   * **/DestKey:** _ &lt;dest-account-key&gt;:_ Hedef depolama hesabının depolama hesabı anahtarı.
+   * **/BlobType: sayfa:** Hedefin bir sayfa blob olduğunu belirtir.
+   * **/Pattern:** _ &lt;dosya&gt;adı :_ Kopyalamak için VHD'nin dosya adını belirtin.
 
-AzCopy aracını kullanma hakkında ayrıntılı bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](storage-use-azcopy.md).
+AzCopy aracını kullanma hakkında daha fazla bilgi için, [AzCopy Command-Line Utility ile veri aktarımı'na](storage-use-azcopy.md)bakın.
 
-##### <a name="other-options-for-uploading-a-vhd"></a>Bir VHD yüklemek için diğer seçenekler
-Ayrıca, aşağıdaki yollardan birini kullanarak depolama hesabınıza bir VHD yükleyebilirsiniz:
+##### <a name="other-options-for-uploading-a-vhd"></a>VHD yüklemek için diğer seçenekler
+Ayrıca aşağıdaki araçlardan birini kullanarak depolama hesabınıza bir VHD yükleyebilirsiniz:
 
-* [Azure depolama kopya blobu API 'SI](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Blobları karşıya yükleme Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/)
-* [Depolama Içeri/dışarı aktarma hizmeti REST API başvurusu](https://msdn.microsoft.com/library/dn529096.aspx)
+* [Azure Depolama Kopyalama Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Depolama Gezgini Yükleme Blobs](https://azurestorageexplorer.codeplex.com/)
+* [Depolama İthalat/İhracat Hizmeti REST API Referans](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> Tahmini karşıya yükleme süresi 7 günden uzunsa Içeri/dışarı aktarma hizmeti kullanmanızı öneririz. Veri boyutu ve aktarım biriminden süreyi tahmin etmek için [Datatransferspeedhesaplayıcı](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) ' yı kullanabilirsiniz.
+> Tahmini yükleme süresi 7 günden uzunsa, Alma/Dışa Aktarma Hizmetini kullanmanızı öneririz. Veri boyutu ve aktarım biriminden gelen zamanı tahmin etmek için [DataTransferSpeedCalculator'ı](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) kullanabilirsiniz.
 >
-> İçeri/dışarı aktarma, standart bir depolama hesabına kopyalamak için kullanılabilir. AzCopy gibi bir araç kullanarak standart depolamadan Premium depolama hesabına kopyalamanız gerekir.
+> Alma/Dışa Aktarma, standart bir depolama hesabına kopyalamak için kullanılabilir. AzCopy gibi bir aracı kullanarak standart depolama dan premium depolama hesabına kopyalamanız gerekir.
 >
 >
 
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Depolama kullanarak Azure VM 'Leri oluşturma
-VHD 'yi karşıya yükledikten veya istenen depolama hesabına kopyaladıktan sonra, bu bölümdeki yönergeleri izleyerek, senaryonuza bağlı olarak VHD 'yi bir IŞLETIM sistemi görüntüsü veya işletim sistemi diski olarak kaydedin ve bundan sonra bir VM örneği oluşturun. Veri diski VHD 'SI, oluşturulduktan sonra VM 'ye iliştirilebilir.
-Bu bölümün sonunda örnek bir geçiş betiği verilmiştir. Bu basit betik tüm senaryolarla eşleşmiyor. Betiği, belirli senaryonuz ile eşleşecek şekilde güncelleştirmeniz gerekebilir. Bu betiğin senaryonuz için geçerli olup olmadığını görmek için [örnek geçiş betiği](#a-sample-migration-script)bölümüne bakın.
+## <a name="create-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Depolama'yı kullanarak Azure VM'leri oluşturun
+VHD yüklendikten veya istenen depolama hesabına kopyalandıktan sonra, bu bölümdeki talimatları uygulayarak VHD'yi senaryonuza bağlı olarak işletim sistemi görüntüsü veya işletim sistemi diski olarak kaydedin ve ondan bir VM örneği oluşturun. Veri diski VHD oluşturulduktan sonra VM'ye bağlanabilir.
+Bu bölümün sonunda örnek bir geçiş komut dosyası sağlanır. Bu basit komut dosyası tüm senaryolarla eşleşmez. Komut dosyasını belirli senaryonuzla eşleşecek şekilde güncelleştirmeniz gerekebilir. Bu komut dosyasının senaryonuza uygun olup olmadığını görmek için [Örnek Geçiş Komut Dosyası'nın](#a-sample-migration-script)altına bakın.
 
 ### <a name="checklist"></a>Denetim Listesi
-1. Tüm VHD disklerinin kopyalanması tamamlanana kadar bekleyin.
-2. Premium depolamanın geçirdiğiniz bölgede kullanılabilir olduğundan emin olun.
-3. Kullanacağınız yeni VM serisini belirleyin. Bu bir Premium depolama alanı olmalıdır ve boyut, bölgedeki kullanılabilirliğine ve gereksinimlerinize bağlı olarak olmalıdır.
-4. Kullanacağınız VM boyutunun tam olarak belirleyin. VM boyutunun, sahip olduğunuz veri diski sayısını desteklemeye yetecek kadar büyük olması gerekir. Örneğin 4 veri diskine sahipseniz, VM 'nin 2 veya daha fazla çekirdeği olmalıdır. Ayrıca, güç, bellek ve ağ bant genişliği gereksinimlerini işlemeyi göz önünde bulundurun.
-5. Hedef bölgede bir Premium depolama hesabı oluşturun. Bu, yeni VM için kullanacağınız hesaptır.
-6. Disk listesi ve karşılık gelen VHD blob 'ları dahil olmak üzere geçerli VM ayrıntılarına sahip olmanız gerekir.
+1. Tüm VHD diskkopyalama tamamlanana kadar bekleyin.
+2. Premium Depolama'nın göç ettiğiniz bölgede kullanılabilir olduğundan emin olun.
+3. Kullanacakyeni VM serisine karar verin. Premium Depolama yeteneğine sahip olmalı ve boyutu bölgedeki kullanılabilirliğe ve ihtiyaçlarınıza bağlı olarak olmalıdır.
+4. Kullanacağınız tam VM boyutuna karar verin. VM boyutunun sahip olduğunuz veri diski sayısını destekleyecek kadar büyük olması gerekir. Örneğin 4 veri diskininvarsa, VM'de 2 veya daha fazla çekirdek olmalıdır. Ayrıca, işleme gücü, bellek ve ağ bant genişliği gereksinimlerini düşünün.
+5. Hedef bölgede bir Premium Depolama hesabı oluşturun. Bu, yeni VM için kullanacağınız hesaptır.
+6. Disklerin ve karşılık gelen VHD blob'larının listesi de dahil olmak üzere geçerli VM ayrıntılarını kullanışlı bir şekilde elde edin.
 
-Uygulamanızı kapalı kalma süresi için hazırlayın. Temiz bir geçiş yapmak için, geçerli sistemdeki tüm işlemleri durdurmanız gerekir. Yalnızca yeni platforma geçirebileceğiniz tutarlı bir duruma sahip olabilirsiniz. Kesinti süresi, geçirilecek disklerdeki veri miktarına bağlıdır.
+Başvurunuzu kapalı kalma süresine hazırlayın. Temiz bir geçiş yapmak için, geçerli sistemdeki tüm işlemleri durdurmanız gerekir. Ancak o zaman, yeni platforma geçirebileceğiniz tutarlı bir duruma getirebilirsiniz. Kapalı kalma süresi, geçirilecek disklerde bulunan veri miktarına bağlıdır.
 
 > [!NOTE]
-> Özelleştirilmiş bir VHD diskinden bir Azure Resource Manager VM oluşturuyorsanız, lütfen mevcut diski kullanarak Kaynak Yöneticisi VM 'yi dağıtmak için [Bu şablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) bakın.
+> Özel bir VHD Disk'ten bir Azure Kaynak Yöneticisi VM oluşturuyorsanız, varolan diski kullanarak Kaynak Yöneticisi VM'yi dağıtmak için lütfen [bu şablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) bakın.
 >
 >
 
-### <a name="register-your-vhd"></a>VHD 'nizi kaydetme
-İşletim sistemi VHD 'sinden bir VM oluşturmak veya yeni bir VM 'ye veri diski eklemek için, önce bunları kaydetmeniz gerekir. VHD 'nin senaryosuna bağlı olarak aşağıdaki adımları izleyin.
+### <a name="register-your-vhd"></a>VHD'nizi kaydedin
+OS VHD'den bir VM oluşturmak veya yeni bir VM'ye veri diski eklemek için önce bunları kaydetmeniz gerekir. VHD'nizin senaryosuna bağlı olarak aşağıdaki adımları izleyin.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Birden çok Azure VM örneği oluşturmak için genelleştirilmiş Işletim sistemi VHD 'SI
-Genelleştirilmiş işletim sistemine bir veya daha fazla VM örneği oluşturabilmeniz için, depolama hesabına bir **Azure VM** görüntüsü olarak kaydedin. VHD 'nizi bir Azure VM işletim sistemi görüntüsü olarak kaydetmek için aşağıdaki PowerShell cmdlet 'lerini kullanın. VHD 'nin kopyalandığı tüm kapsayıcı URL 'sini sağlayın.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Birden çok Azure VM örneği oluşturmak için Genelleştirilmiş İşletim Sistemi VHD
+Genelleştirilmiş işletim sistemi görüntüsü VHD depolama hesabına yüklendikten sonra, bir veya daha fazla VM örneği oluşturabilmeniz için bunu **Azure VM Görüntüsü** olarak kaydedin. VHD'nizi Azure VM işletim sistemi görüntüsü olarak kaydetmek için aşağıdaki PowerShell cmdlets'i kullanın. VHD'nin kopyalandığı konteyner URL'sinin tamamını sağlayın.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 ```
 
-Bu yeni Azure VM görüntüsünün adını kopyalayın ve kaydedin. Yukarıdaki örnekte, *OSImageName*' dir.
+Bu yeni Azure VM Görüntüsünün adını kopyalayın ve kaydedin. Yukarıdaki örnekte, *OSImageName*olduğunu.
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Tek bir Azure VM örneği oluşturmak için benzersiz Işletim sistemi VHD 'SI
-Benzersiz işletim sistemi VHD 'SI depolama hesabına yüklendikten sonra, bundan bir VM örneği oluşturabilmeniz için **Azure işletim sistemi diski** olarak kaydedin. VHD 'nizi bir Azure işletim sistemi diski olarak kaydetmek için bu PowerShell cmdlet 'lerini kullanın. VHD 'nin kopyalandığı tüm kapsayıcı URL 'sini sağlayın.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Tek bir Azure VM örneği oluşturmak için Benzersiz İşletim Sistemi VHD
+Benzersiz IŞLETIM Sistemi VHD depolama hesabına yüklendikten sonra, bu hesaptan bir VM örneği oluşturabilmeniz için bunu Azure **İşLetim Diski** olarak kaydedin. VHD'nizi Azure İş Let'i olarak kaydetmek için bu PowerShell cmdlets'i kullanın. VHD'nin kopyalandığı konteyner URL'sinin tamamını sağlayın.
 
 ```powershell
 Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 ```
 
-Bu yeni Azure işletim sistemi diskinin adını kopyalayın ve kaydedin. Yukarıdaki örnekte, *OSDisk*'dir.
+Bu yeni Azure İşletim Sistemi Diskinin adını kopyalayın ve kaydedin. Yukarıdaki örnekte, *OSDisk*olduğunu.
 
-#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Yeni Azure VM örneğine eklenecek veri diski VHD 'SI
-Veri diski VHD 'SI depolama hesabına yüklendikten sonra, yeni DS serinizle, DSv2 serisi veya GS serisi Azure VM örneğine iliştirilebilecek şekilde Azure veri diski olarak kaydedin.
+#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Yeni Azure VM örneğine(ler) eklenecek veri diski VHD
+Veri diski VHD depolama hesabına yüklendikten sonra, yeni DS Serisi, DSv2 serisi veya GS Serisi Azure VM örneğinize eklenebilecek şekilde bunu Azure Veri Diski olarak kaydedin.
 
-VHD 'nizi bir Azure veri diski olarak kaydetmek için bu PowerShell cmdlet 'lerini kullanın. VHD 'nin kopyalandığı tüm kapsayıcı URL 'sini sağlayın.
+VHD'nizi Azure Veri Diski olarak kaydetmek için bu PowerShell cmdlets'i kullanın. VHD'nin kopyalandığı konteyner URL'sinin tamamını sağlayın.
 
 ```powershell
 Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 ```
 
-Bu yeni Azure veri diskinin adını kopyalayın ve kaydedin. Yukarıdaki örnekte *veri diski*bulunur.
+Bu yeni Azure Veri Diskinin adını kopyalayın ve kaydedin. Yukarıdaki örnekte, *Bu DataDisk*olduğunu.
 
-### <a name="create-a-premium-storage-capable-vm"></a>Premium depolama özellikli VM oluşturma
-İşletim sistemi görüntüsü veya işletim sistemi diski kaydedildikten sonra yeni bir DS serisi, DSv2 serisi veya GS serisi bir VM oluşturun. Kaydettiğiniz işletim sistemi görüntüsü veya işletim sistemi disk adını kullanacaksınız. Premium Depolama katmanından VM türünü seçin. Aşağıdaki örnekte *Standard_DS2* VM boyutunu kullanıyoruz.
+### <a name="create-a-premium-storage-capable-vm"></a>Premium Depolama özelliğine sahip bir VM oluşturun
+İşletim sistemi veya işletim sistemi diski kaydedildikten sonra yeni bir DS serisi, DSv2 serisi veya GS serisi VM oluşturun. Kaydettiğiniz işletim sistemi görüntüsünü veya işletim sistemi disk adını kullanacaksınız. Premium Depolama katmanından VM türünü seçin. Aşağıdaki örnekte, *Standard_DS2* VM boyutunu kullanıyoruz.
 
 > [!NOTE]
-> Kapasite ve performans gereksinimlerinizin yanı sıra kullanılabilir Azure disk boyutları ile eşleştiğinden emin olmak için disk boyutunu güncelleştirin.
+> Kapasite ve performans gereksinimlerinize ve kullanılabilir Azure disk boyutlarıyla eşleştiğinden emin olmak için disk boyutunu güncelleştirin.
 >
 >
 
-Yeni VM 'yi oluşturmak için aşağıdaki adım adım PowerShell cmdlet 'lerini izleyin. İlk olarak, ortak parametreleri ayarlayın:
+Yeni VM oluşturmak için aşağıdaki adım PowerShell cmdlets adım izleyin. İlk olarak, ortak parametreleri ayarlayın:
 
 ```powershell
 $serviceName = "yourVM"
@@ -374,16 +374,16 @@ $vmName ="yourVM"
 $vmSize = "Standard_DS2"
 ```
 
-İlk olarak, yeni sanal makinelerinizi barındırmakta olduğunuz bir bulut hizmeti oluşturun.
+İlk olarak, yeni VM'lerinizi barındıracağınız bir bulut hizmeti oluşturun.
 
 ```powershell
 New-AzureService -ServiceName $serviceName -Location $location
 ```
 
-Sonra, senaryonuza bağlı olarak, kaydettiğiniz işletim sistemi görüntüsü veya işletim sistemi diskinden Azure VM örneğini oluşturun.
+Ardından, senaryonuza bağlı olarak, kaydettiğiniz işletim sistemi görüntüsünden veya işletim sistemi diskinden Azure VM örneğini oluşturun.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Birden çok Azure VM örneği oluşturmak için genelleştirilmiş Işletim sistemi VHD 'SI
-Kaydolmakta olduğunuz **Azure işletim sistemi görüntüsünü** kullanarak bir veya daha fazla yeni DS SERISI Azure VM örneği oluşturun. Aşağıda gösterildiği gibi yeni VM oluştururken VM yapılandırmasında bu işletim sistemi görüntüsünün adını belirtin.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Birden çok Azure VM örneği oluşturmak için Genelleştirilmiş İşletim Sistemi VHD
+Kaydettiğiniz **Azure İşletim Sistemi Görüntüsünü** kullanarak bir veya daha fazla yeni DS Serisi Azure VM örneğini oluşturun. Aşağıda gösterildiği gibi yeni VM oluştururken Bu OS Image adını VM yapılandırmasında belirtin.
 
 ```powershell
 $OSImage = Get-AzureVMImage –ImageName "OSImageName"
@@ -395,8 +395,8 @@ Add-AzureProvisioningConfig -Windows –AdminUserName $adminUser -Password $admi
 New-AzureVM -ServiceName $serviceName -VM $vm
 ```
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Tek bir Azure VM örneği oluşturmak için benzersiz Işletim sistemi VHD 'SI
-Kaydettiğiniz **Azure işletim sistemi diskini** kullanarak yenı bir DS SERISI Azure VM örneği oluşturun. Yeni VM 'yi oluştururken aşağıda gösterildiği gibi VM yapılandırmasında bu işletim sistemi disk adını belirtin.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Tek bir Azure VM örneği oluşturmak için Benzersiz İşletim Sistemi VHD
+Kaydettiğiniz **Azure İşLetim Diskini** kullanarak yeni bir DS serisi Azure VM örneği oluşturun. Aşağıda gösterildiği gibi yeni VM oluştururken VM yapılandırmasında bu OS Disk adını belirtin.
 
 ```powershell
 $OSDisk = Get-AzureDisk –DiskName "OSDisk"
@@ -406,12 +406,12 @@ $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.Di
 New-AzureVM -ServiceName $serviceName –VM $vm
 ```
 
-Bulut hizmeti, bölge, depolama hesabı, kullanılabilirlik kümesi ve önbelleğe alma ilkesi gibi diğer Azure VM bilgilerini belirtin. Sanal makine örneğinin ilişkili işletim sistemi veya veri disklerinde birlikte bulunması gerektiğini, bu nedenle seçilen bulut hizmeti, bölge ve depolama hesabının tümünün, bu disklerin temel alınan VHD 'Lerle aynı konumda olması gerekir.
+Bulut hizmeti, bölge, depolama hesabı, kullanılabilirlik kümesi ve önbelleğe alma ilkesi gibi diğer Azure VM bilgilerini belirtin. VM örneğinin ilişkili işletim sistemi veya veri diskleriyle birlikte bulunması gerektiğini, bu nedenle seçilen bulut hizmeti, bölge ve depolama hesabının tümü bu disklerin temel VHD'leriyle aynı konumda olmalıdır.
 
 ### <a name="attach-data-disk"></a>Veri diski ekleme
-Son olarak, veri diski VHD 'leri kayıtlıysa, bunları yeni Premium depolama özellikli Azure VM 'sine bağlayın.
+Son olarak, kayıtlı veri diski VHD'leri varsa, bunları yeni Premium Depolama özellikli Azure VM'sine takın.
 
-Yeni VM 'ye veri diski eklemek ve önbelleğe alma ilkesini belirtmek için aşağıdaki PowerShell cmdlet 'ini kullanın. Aşağıdaki örnekte, önbelleğe alma ilkesi *salt okunur*olarak ayarlanmıştır.
+Yeni VM'ye veri diski eklemek ve önbelleğe alma ilkesini belirtmek için aşağıdaki PowerShell cmdlet'i kullanın. Aşağıdaki örnekte önbelleğe alma ilkesi *ReadOnly*olarak ayarlanır.
 
 ```powershell
 $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
@@ -422,27 +422,27 @@ Update-AzureVM  -VM $vm
 ```
 
 > [!NOTE]
-> Bu kılavuzun kapsamında olmayan uygulamanızı desteklemek için gereken ek adımlar olabilir.
+> Bu kılavuzda yer almayan uygulamanızı desteklemek için gerekli ek adımlar olabilir.
 >
 >
 
-### <a name="checking-and-plan-backup"></a>Yedekleme denetleniyor ve planlıyor
-Yeni VM çalışır duruma getirildikten sonra, aynı oturum açma kimliğini ve parolayı kullanarak, özgün VM olarak da erişin ve her şeyin beklendiği gibi çalıştığını doğrulayın. Şeritli birimler dahil olmak üzere tüm ayarlar yeni VM 'de mevcut olacaktır.
+### <a name="checking-and-plan-backup"></a>Yedeklemeyi denetleme ve planlama
+Yeni VM çalışmaya başladıktan sonra, aynı giriş kimliği ve parolayı kullanarak orijinal VM'dir ve her şeyin beklendiği gibi çalıştığını doğrulayın. Çizgili hacimler de dahil olmak üzere tüm ayarlar yeni VM'de bulunur.
 
-Son adım, uygulamanın ihtiyaçlarına göre yeni VM için yedekleme ve bakım zamanlamasını planlıyor.
+Son adım, yeni VM için uygulamanın gereksinimlerine göre yedekleme ve bakım çizelgesi planlamaktır.
 
-### <a name="a-sample-migration-script"></a>Örnek geçiş betiği
-Geçirilecek birden fazla sanal makine varsa, PowerShell betikleri aracılığıyla Otomasyon yararlı olacaktır. Aşağıda, bir VM 'nin geçişini otomatikleştiren örnek bir komut dosyası verilmiştir. Aşağıdaki betiğin yalnızca bir örnek olduğunu ve geçerli VM diskleri hakkında bazı varsayımlar olduğunu unutmayın. Betiği, belirli senaryonuz ile eşleşecek şekilde güncelleştirmeniz gerekebilir.
+### <a name="a-sample-migration-script"></a><a name="a-sample-migration-script"></a>Örnek geçiş komut dosyası
+Geçiş yapacak birden çok VM'niz varsa, PowerShell komut dosyaları üzerinden otomasyon yararlı olacaktır. Aşağıda, VM'nin geçişini otomatikleştiren örnek bir komut dosyası vereyim. Aşağıdaki komut dosyasının yalnızca bir örnek olduğunu ve geçerli VM diskleri hakkında birkaç varsayım yapıldığını unutmayın. Komut dosyasını belirli senaryonuzla eşleşecek şekilde güncelleştirmeniz gerekebilir.
 
 Varsayımlar şunlardır:
 
-* Klasik Azure VM 'Leri oluşturuyorsunuz.
-* Kaynak işletim sistemi diskleriniz ve kaynak veri diskleriniz aynı depolama hesabı ve aynı kapsayıcıda. İşletim sistemi disklerinizin ve veri disklerinizin aynı yerde olmaması durumunda, VHD 'leri depolama hesapları ve kapsayıcılar üzerinden kopyalamak için AzCopy veya Azure PowerShell kullanabilirsiniz. Önceki adıma bakın: VHD 'yi [AzCopy veya PowerShell Ile kopyalama](#copy-vhd-with-azcopy-or-powershell). Senaryolarınızı karşılamak için bu betiğin düzenlenmesinin başka bir seçimdir, ancak daha kolay ve daha hızlı olduğundan AzCopy veya PowerShell kullanmanızı öneririz.
+* Klasik Azure VM'leri oluşturuyorsunuz.
+* Kaynak Işletim Sistemi Diskleriniz ve kaynak Veri Diskleriniz aynı depolama hesabında ve aynı kapsayıcıdadır. İşletim Sistemi Diskleriniz ve Veri Diskleriniz aynı yerde değilse, Depolama hesapları ve kapsayıcılar üzerinden VHD'leri kopyalamak için AzCopy veya Azure PowerShell'i kullanabilirsiniz. Önceki adıma bakın: [AzCopy veya PowerShell ile VHD kopyalayın.](#copy-vhd-with-azcopy-or-powershell) Senaryonuzu karşılamak için bu komut dosyasını düzenlemek başka bir seçenektir, ancak daha kolay ve daha hızlı olduğu için AzCopy veya PowerShell kullanmanızı öneririz.
 
-Otomasyon betiği aşağıda verilmiştir. Metni, bilgilerinizi ile değiştirin ve betiği, belirli senaryonuzla eşleşecek şekilde güncelleştirin.
+Otomasyon komut dosyası aşağıda verilmiştir. Metni bilgilerinizle değiştirin ve komut dosyasını belirli senaryonuzla eşleşecek şekilde güncelleştirin.
 
 > [!NOTE]
-> Mevcut betiği kullanmak, kaynak sanal makinenizin ağ yapılandırmasını korumaz. Geçirilen sanal makinelerinizdeki ağ ayarlarını yeniden yapılandırmaya ihtiyacınız olacak.
+> Varolan komut dosyasının kullanılması, kaynak VM'nizin ağ yapılandırmasını korumaz. Geçirilen VM'lerinizdeki ağ ayarlarını yeniden yorumlamanız gerekir.
 >
 >
 
@@ -739,37 +739,37 @@ Otomasyon betiği aşağıda verilmiştir. Metni, bilgilerinizi ile değiştirin
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="optimization"></a>İyileştirme
-Geçerli VM yapılandırmanız, özellikle standart disklerle iyi çalışmak üzere özelleştirilebilir. Örneğin, dizili bir birimde birçok disk kullanarak performansı artırmak için. Örneğin, Premium depolamada ayrı olarak 4 disk kullanmak yerine, maliyeti tek bir diske sahip olacak şekilde iyileştirebiliyor olabilirsiniz. Bunun gibi iyileştirmeler, büyük/küçük harfe göre işlenmelidir ve geçişten sonra özel adımlara gerek duyar. Ayrıca, bu işlemin, kurulumda tanımlanan disk düzenine bağlı olan veritabanları ve uygulamalar için iyi çalışmadığına de göz önünde bulabilirsiniz.
+#### <a name="optimization"></a><a name="optimization"></a>İyileştirme
+Geçerli VM yapılandırmanız, Standart disklerle iyi çalışacak şekilde özelleştirilebilir. Örneğin, çizgili bir birimde çok sayıda disk kullanarak performansı artırmak için. Örneğin, Premium Depolama'da 4 diski ayrı ayrı kullanmak yerine, tek bir diske sahip olarak maliyeti en iyi duruma getirebilirsiniz. Bu gibi optimizasyonların servis talebi bazında ele alınması ve geçişten sonra özel adımlar gerektirmesi gerekir. Ayrıca, bu işlemin kurulumda tanımlanan disk düzenine bağlı veritabanları ve uygulamalar için iyi çalışmayabilir unutmayın.
 
 ##### <a name="preparation"></a>Hazırlık
-1. Önceki bölümde açıklandığı gibi basit geçişi doldurun. Geçişten sonra yeni VM 'de iyileştirmeler gerçekleştirilecek.
-2. İyileştirilmiş yapılandırma için gereken yeni disk boyutlarını tanımlayın.
-3. Geçerli disklerin/birimlerin yeni disk belirtimlerine eşlenmesinin belirlenmesi.
+1. Önceki bölümde açıklandığı gibi Basit Geçiş'i tamamlayın. Geçişten sonra yeni VM'de optimizasyonlar yapılacaktır.
+2. En iyi duruma getirilmiş yapılandırma için gereken yeni disk boyutlarını tanımlayın.
+3. Geçerli disklerin/birimlerin yeni disk özelliklerine eşlenemesini belirleyin.
 
 ##### <a name="execution-steps"></a>Yürütme adımları
-1. Premium depolama VM 'sinde doğru boyutlara sahip yeni diskler oluşturun.
-2. VM 'de oturum açın ve geçerli birimdeki verileri, bu birimle eşleşen yeni diske kopyalayın. Bunu, yeni bir diskle eşleşmesi gereken tüm geçerli birimler için yapın.
-3. Ardından, uygulama ayarlarını yeni disklere geçiş yapmak için değiştirin ve eski birimleri ayırın.
+1. Premium Depolama VM'de doğru boyutlarda yeni diskler oluşturun.
+2. VM'ye giriş yapın ve geçerli birimdeki verileri o ses düzeyiyle eşleyen yeni diske kopyalayın. Bunu, yeni bir diskle eşlenebilen tüm geçerli birimler için yapın.
+3. Ardından, yeni disklere geçmek için uygulama ayarlarını değiştirin ve eski birimleri ayırın.
 
-Uygulamanın daha iyi disk performansına yönelik olarak ayarlanması için lütfen [yüksek performanslı](../../virtual-machines/windows/premium-storage-performance.md) makalemize ilişkin uygulama performansını en iyi duruma getirme bölümüne bakın.
+Daha iyi disk performansı için uygulamayı aparat etmek için lütfen [yüksek performanslı](../../virtual-machines/windows/premium-storage-performance.md) makale tasarımımızın en iyi duruma getirilmesi uygulama performansı bölümüne bakın.
 
 ### <a name="application-migrations"></a>Uygulama geçişleri
-Veritabanları ve diğer karmaşık uygulamalar, geçiş için uygulama sağlayıcısı tarafından tanımlanan özel adımlara gerek duyar. Lütfen ilgili uygulama belgelerine başvurun. Örneğin genellikle veritabanları yedekleme ve geri yükleme aracılığıyla geçirilebilir.
+Veritabanları ve diğer karmaşık uygulamalar geçiş için uygulama sağlayıcısı tarafından tanımlandığı gibi özel adımlar gerektirebilir. Lütfen ilgili başvuru belgelerine bakın. Örneğin genellikle veritabanları yedekleme ve geri yükleme yoluyla geçirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sanal makineleri geçirmeye yönelik belirli senaryolar için aşağıdaki kaynaklara bakın:
+Geçiren sanal makineler için belirli senaryolar için aşağıdaki kaynaklara bakın:
 
-* [Azure sanal makinelerini depolama hesapları arasında geçirme](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Bir Windows Server VHD oluşturun ve Azure 'a yükleyin.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Bir Linux VHD oluşturma ve Azure 'a yükleme](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Sanal makineleri Amazon AWS 'den Microsoft Azure 'ye geçirme](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Azure Sanal Makinelerini Depolama Hesapları arasında geçirme](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Azure'a bir Windows Server VHD oluşturun ve yükleyin.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Linux VHD Oluşturma ve Azure'a Yükleme](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Sanal Makineleri Amazon AWS'den Microsoft Azure'a geçirme](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Ayrıca, Azure depolama ve Azure sanal makineleri hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+Ayrıca, Azure Depolama ve Azure Sanal Makineleri hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Azure depolama alanı](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Depolama](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [IaaS VM 'Leri için bir disk türü seçin](../../virtual-machines/windows/disks-types.md)
+* [IaaS VM’leri için disk türü seçme](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

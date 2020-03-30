@@ -1,95 +1,95 @@
 ---
-title: Azure Analysis Services istemci kitaplıkları | Microsoft Docs
-description: İstemci uygulamaları ve araçları 'na bağlanmak için gereken istemci kitaplıklarını açıklar Azure Analysis Services
+title: Azure Analiz Hizmetleri istemci kitaplıkları | Microsoft Dokümanlar
+description: Azure Analiz Hizmetleri'ni bağlamak için istemci uygulamaları ve araçları için gerekli istemci kitaplıklarını açıklar
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f099546ced64bd911916164879cd533329761c66
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c5914c7987d5a54a6bcc779231287309517f5121
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129218"
 ---
-# <a name="client-libraries-for-connecting-to-analysis-services"></a>Analysis Services bağlantı için istemci kitaplıkları
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>Analiz Hizmetlerine bağlanmak için istemci kitaplıkları
 
-İstemci kitaplıkları, Analysis Services sunucularına bağlanmak için istemci uygulamalar ve araçlar için gereklidir. Visual Studio için Power BI Desktop, Excel, SQL Server Management Studio (SSMS) ve Analysis Services projeleri uzantısı gibi Microsoft istemci uygulamaları, her üç istemci kitaplığı da yükler ve düzenli uygulama güncelleştirmeleriyle birlikte günceller. Bazı durumlarda, istemci kitaplıklarının daha yeni sürümlerini yüklemeniz gerekebilir. Özel istemci uygulamaları da istemci kitaplıklarının yüklü olmasını gerektirir.
+İstemci kitaplıkları, istemci uygulamalarının ve araçlarının Çözümleme Hizmetleri sunucularına bağlanması için gereklidir. Visual Studio için Power BI Desktop, Excel, SQL Server Management Studio (SSMS) ve Analysis Services proje uzantısı gibi Microsoft istemci uygulamaları üç istemci kitaplıklarını da yükler ve düzenli uygulama güncelleştirmeleriyle birlikte güncelleştirir. Bazı durumlarda, istemci kitaplıklarının daha yeni sürümlerini yüklemeniz gerekebilir. Özel istemci uygulamaları da istemci kitaplıkları yüklü gerektirir.
 
-## <a name="download-the-latest-client-libraries-windows-installer"></a>En son istemci kitaplıklarını indir (Windows Installer)  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>En son istemci kitaplıklarını (Windows Installer) indirin  
 
 |İndirme  |Ürün sürümü  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.0.5    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.0.5     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.29.25    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.29.25       |
+|[Çyn](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.8.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.8.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO ve ADOMD (NuGet paketleri)
 
-Analysis Services Management Objects (AMO) ve ADOMD istemci kitaplıkları, [NuGet.org](https://www.nuget.org/)adresinden yüklenebilen paketler olarak sunulmaktadır. Windows Installer kullanmak yerine NuGet başvurularına geçiş yapmanız önerilir. 
+Analiz Hizmetleri Yönetimi Nesneleri (AMO) ve ADOMD istemci kitaplıkları [NuGet.org](https://www.nuget.org/)yüklenebilir paketler olarak mevcuttur. Windows Installer kullanmak yerine NuGet başvurularına geçiş yapmamanız önerilir. 
 
 |Paket  | Ürün sürümü  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.0.5      |
+|[Çyn](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.8.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.8.0      |
 
-NuGet Paket derlemeleri AssemblyVersion anlam sürümü oluşturma: büyük. Bazı. Düzeltmesi. NuGet başvuruları GAC 'de farklı bir sürüm olsa bile beklenen sürümü yükler (MSI yüklemesi sonucu olur). Her sürüm için düzeltme eki artırılır. AMO ve ADOMD sürümleri eşitlenmiş olarak tutulur.
+NuGet paket derlemeleri AssemblyVersion semantik sürüm izleyin: MAJOR. Küçük. Yama. NuGet referansları, GAC'de farklı bir sürüm olsa bile (MSI yüklemesinden kaynaklanan) beklenen sürümü yükler. PATCH her sürüm için artımlı. AMO ve ADOMD sürümleri senkronize tutulur.
 
 ## <a name="understanding-client-libraries"></a>İstemci kitaplıklarını anlama
 
-Analysis Services, veri sağlayıcıları olarak da bilinen üç istemci kitaplığı kullanır. ADOMD.NET ve Analysis Services Management Objects (AMO), yönetilen istemci kitaplıklarıdır. Analysis Services OLE DB Sağlayıcısı (MSOLAP DLL) yerel bir istemci kitaplığı. Genellikle, üçü de aynı anda yüklenir. **Azure Analysis Services, üç kitaplık için en son sürümleri gerektirir**. 
+Çözümleme Hizmetleri, veri sağlayıcıları olarak da bilinen üç istemci kitaplıklarını kullanır. ADOMD.NET ve Analiz Hizmetleri Yönetim Nesneleri (AMO) istemci kitaplıkları yönetilir. Analiz Hizmetleri OLE DB Sağlayıcısı (MSOLAP DLL) yerel bir istemci kitaplığıdır. Genellikle, her üç aynı anda yüklenir. **Azure Çözümleme Hizmetleri, üç kitaplık tan en son sürümlerini gerektirir.** 
 
-Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci kitaplığı da yükler ve yeni sürümler kullanılabilir olduğunda bunları güncelleştirir. Güncelleştirmelerin sürümüne veya sıklığına bağlı olarak, bazı istemci kitaplıkları Azure Analysis Services için gereken en son sürümler olmayabilir. Aynı durum AsCmd, TOM, ADOMD.NET gibi özel uygulamalar ve diğer arabirimler için de geçerlidir. Bu uygulamalar, kitaplıkları el ile veya program aracılığıyla yüklemeyi gerektirir. El ile yükleme için istemci kitaplıkları, dağıtılabilir paketler olarak SQL Server Özellik paketlerine dahil edilmiştir. Ancak, bu istemci kitaplıkları SQL Server sürüme bağlanır ve en son sürümü olmayabilir.  
+Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları üç istemci kitaplıklarını da yükler ve yeni sürümler kullanılabilir olduğunda güncelleştirin. Güncelleştirmelerin sürümüne veya sıklığına bağlı olarak, bazı istemci kitaplıkları Azure Çözümleme Hizmetleri tarafından gerekli olan en son sürümler olmayabilir. Aynı durum AsCmd, TOM, ADOMD.NET gibi özel uygulamalar ve diğer arabirimler için de geçerlidir. Bu uygulamalar kitaplıkları el ile veya programlı bir şekilde yüklemeyi gerektirir. Manuel yükleme için istemci kitaplıkları, dağıtılabilir paketler olarak SQL Server özellik paketlerine dahildir. Ancak, bu istemci kitaplıkları SQL Server sürümüne bağlıdır ve en son olmayabilir.  
 
-İstemci bağlantıları için istemci kitaplıkları, bir Azure Analysis Services sunucusundan bir veri kaynağına bağlanmak için gereken veri sağlayıcılarından farklıdır. Veri kaynağı bağlantıları hakkında daha fazla bilgi için bkz. [veri kaynağı bağlantıları](analysis-services-datasource.md).
+İstemci bağlantıları için istemci kitaplıkları, Bir Azure Analiz Hizmetleri sunucusundan bir veri kaynağına bağlanmak için gereken veri sağlayıcılarından farklıdır. Veri kaynağı bağlantıları hakkında daha fazla bilgi edinmek için [Bkz. Veri kaynağı bağlantıları.](analysis-services-datasource.md)
 
 ## <a name="client-library-types"></a>İstemci kitaplığı türleri
 
-### <a name="analysis-services-ole-db-provider-msolap"></a>Analysis Services OLE DB Sağlayıcısı (MSOLAP) 
+### <a name="analysis-services-ole-db-provider-msolap"></a>Analiz Hizmetleri OLE DB Sağlayıcısı (MSOLAP) 
 
- Analysis Services OLE DB Sağlayıcısı (MSOLAP), Analysis Services veritabanı bağlantıları için yerel istemci kitaplığıdır. Bu, hem ADOMD.NET hem de AMO tarafından dolaylı olarak kullanılır, bu da veri sağlayıcısına bağlantı istekleri temsilcisi olarak yapılır. OLE DB sağlayıcıyı doğrudan uygulama kodundan da çağırabilirsiniz.  
+ Analiz Hizmetleri OLE DB Sağlayıcısı (MSOLAP), Çözümhizmetleri veritabanı bağlantıları için yerel istemci kitaplığıdır. Hem ADOMD.NET hem de AMO tarafından dolaylı olarak kullanılır ve bağlantı isteklerini veri sağlayıcısına devretin. OLE DB Sağlayıcısını doğrudan uygulama kodundan da arayabilirsiniz.  
   
- Analysis Services OLE DB Sağlayıcısı, Analysis Services veritabanlarına erişmek için kullanılan çoğu araç ve istemci uygulaması tarafından otomatik olarak yüklenir. Analysis Services verilerine erişmek için kullanılan bilgisayarlarda yüklü olmalıdır.  
+ Analiz Hizmetleri OLE DB Sağlayıcısı, Analiz Hizmetleri veritabanlarına erişmek için kullanılan çoğu araç ve istemci uygulaması tarafından otomatik olarak yüklenir. Analiz Hizmetleri verilerine erişmek için kullanılan bilgisayarlara yüklenmesi gerekir.  
   
- OLE DB sağlayıcılar genellikle bağlantı dizelerinde belirtilir. Analysis Services bağlantı dizesi, OLE DB sağlayıcısına başvurmak için farklı bir terminolojisi kullanır: MSOLAP.\<sürümü >. dll.
+ OLE DB sağlayıcıları genellikle bağlantı dizelerinde belirtilir. Çözümleme Hizmetleri bağlantı dizesi, OLE DB Sağlayıcısı: MSOLAP'a başvurmak için farklı bir adlandırma kullanır. \<sürüm>.dll.
 
-### <a name="amo"></a>AMO  
+### <a name="amo"></a>Çyn  
 
- AMO, sunucu yönetimi ve veri tanımı için kullanılan bir yönetilen istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analysis Services bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en az `"data source=\<servername>"`oluşur. Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API 'yi kullanırsınız. Hem Visual Studio hem de SSMS, bir Analysis Services örneğine bağlanmak için AMO kullanır.  
+ AMO, sunucu yönetimi ve veri tanımı için kullanılan yönetilen bir istemci kitaplığıdır. Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analiz Hizmetleri'ne bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en `"data source=\<servername>"`az düzeydedir ve bu bağlantı . Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API'yi kullanırsınız. Hem Visual Studio hem de SSMS, Analiz Hizmetleri örneğine bağlanmak için AMO'yu kullanır.  
 
   
 ### <a name="adomd"></a>ADOMD
 
- ADOMD.NET, Analysis Services verileri sorgulamak için kullanılan bir yönetilen veri istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. 
+ ADOMD.NET, Çözümleme Hizmetleri verilerini sorgulamak için kullanılan yönetilen bir veri istemcisi kitaplığıdır. Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. 
   
- Bir veritabanına bağlanırken, üç kitaplıkların hepsi için bağlantı dizesi özellikleri benzerdir. ADOMD.NET için tanımladığınız neredeyse tüm bağlantı dizeleri [Microsoft. AnalysisServices. AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) Ile de amo ve ANALYSIS SERVICES OLE DB sağlayıcısı (msolap) için de kullanılır. Daha fazla bilgi için bkz. [bağlantı dizesi &#40;özellikleri&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services).  
+ Bir veritabanına bağlanırken, her üç kitaplık için bağlantı dize özellikleri benzer. [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) kullanarak ADOMD.NET için tanımladığınız hemen hemen tüm bağlantı dizeleri, AMO ve Analiz Hizmetleri OLE DB Sağlayıcısı (MSOLAP) için de çalışır. Daha fazla bilgi için, [Bağlantı dize özellikleri &#40;Analiz Hizmetleri&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services)bakın.  
 
   
-##  <a name="bkmk_LibUpdate"></a>İstemci kitaplığı sürümünü belirleme   
+##  <a name="how-to-determine-client-library-version"></a><a name="bkmk_LibUpdate"></a>İstemci kitaplığı sürümü nasıl belirlenir?   
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
+1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek sayıyı seçin.
   
-2.  **MSOLAP. dll** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
+2.  Sağ tıklayın **msolap.dll** > **Özellikler** > **Ayrıntılar**. Dosya adı msolap140.dll ise, en son sürümden eskidir ve yükseltilmelidir.
     
     ![İstemci kitaplığı ayrıntıları](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
-### <a name="amo"></a>AMO
+### <a name="amo"></a>Çyn
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
-2. **Microsoft. AnalysisServices** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın.  
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek sayıyı seçin.
+2. **Microsoft.AnalysisServices** > **Özellikleri** > **Ayrıntıları**sağ tıklatın.  
 
 ### <a name="adomd"></a>ADOMD
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
-2. **Microsoft. AnalysisServices. AdomdClient** > **Özellikler** > **Ayrıntılar**' a sağ tıklayın.  
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek sayıyı seçin.
+2. **Microsoft.AnalysisServices.AdomdClient** > **Özellikleri** > **Ayrıntıları**sağ tıklayın.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Excel   bağlanma](analysis-services-connect-excel.md)  
+[Excel ile bağlan](analysis-services-connect-excel.md)    
 [Power BI ile bağlanma](analysis-services-connect-pbi.md)

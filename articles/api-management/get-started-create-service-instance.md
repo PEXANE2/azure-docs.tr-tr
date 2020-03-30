@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: acfa10ea506e063bf6b230386ca0722f1c959d18
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442570"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Yeni bir Azure API Management hizmeti örneği oluşturma
@@ -27,23 +27,23 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![API Management örneği](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+![API Yönetimi örneği](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
 ## <a name="create-a-new-service"></a>Yeni hizmet oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Azure **giriş** sayfasında **kaynak oluştur** ' u de seçebilirsiniz. 
+1. Azure portalı menüsünden **kaynak oluştur'u**seçin. Azure **Giriş** sayfasında **kaynak oluştur'u** da seçebilirsiniz. 
    
-   ![Kaynak oluştur ' u seçin](./media/get-started-create-service-instance/00-CreateResource-01.png)
+   ![Kaynak Oluştur'u seçin](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
-1. **Yeni** ekranda, **tümleştirme** ' i seçin ve ardından **API Management**' yi seçin.
+1. **Yeni** ekranda **Tümleştirme'yi** seçin ve ardından **API Yönetimi'ni**seçin.
    
    ![Yeni Azure API Management örneği](./media/get-started-create-service-instance/00-CreateResource-02.png)
    
-1. **API Management hizmet** ekranında Ayarlar ' ı girin.
+1. **API Yönetimi hizmet** ekranına ayarları girin.
    
    ![yeni örnek](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
    
@@ -54,7 +54,7 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 | **Kaynak Grubu**      | *apimResourceGroup*                           | Yeni veya var olan bir kaynak seçebilirsiniz. Kaynak grubu; yaşam döngüsünü, izinleri ve ilkeleri paylaşan kaynakların bir koleksiyonudur. [Burada](../azure-resource-manager/management/overview.md#resource-groups) daha fazla bilgi edinin.                                                                                                  |
 | **Konum**            | *Batı ABD*                                    | Yakınınızdaki coğrafi bölgeyi seçin. Açılır listede yalnızca kullanılabilir API Management hizmet bölgeleri görünür.                                                                                                                                                                                                          |
 | **Kuruluş adı**   | Kuruluşunuzun adı                 | Bu ad, geliştirici portalının başlığı ve bildirim e-postalarının göndereni gibi birkaç yerde kullanılır.                                                                                                                                                                                                             |
-| **Yönetici e-postası** | *Yönetici\@org.com*                               | **API Management**’tan tüm bildirimlerin gönderileceği e-posta adresini ayarlayın.                                                                                                                                                                                                                                              |
+| **Yönetici e-postası** | *admin\@org.com*                               | **API Management**’tan tüm bildirimlerin gönderileceği e-posta adresini ayarlayın.                                                                                                                                                                                                                                              |
 | **Fiyatlandırma katmanı**        | *Geliştirici*                                   | Hizmeti değerlendirmek için **Geliştirici** katmanını ayarlayın. Bu katman, üretim kullanımı için değildir. API Management katmanlarını ölçeklendirme hakkında daha fazla bilgi için bkz. [yükseltme ve ölçeklendirme](upgrade-and-scale.md).                                                                                                                                    |
 
 3. **Oluştur**’u seçin.
@@ -68,17 +68,17 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 
 Artık gerekli değilse, aşağıdaki adımları izleyerek kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz:
 
-1. Azure portal, **kaynak gruplarını**arayıp seçin. **Giriş** sayfasında **kaynak grupları** ' nı da seçebilirsiniz. 
+1. Azure portalında **Kaynak gruplarını**arayın ve seçin. **Ana** Sayfada **Kaynak gruplarını** da seçebilirsiniz. 
 
    ![Kaynak grupları gezintisi](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-1. **Kaynak grupları** sayfasında, kaynak grubunuzu seçin.
+1. Kaynak **grupları** sayfasında kaynak grubunuzu seçin.
 
    ![Kaynak grupları gezintisi](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
-1. Kaynak grubu sayfasında, **kaynak grubunu sil**' i seçin. 
+1. Kaynak grubu sayfasında **kaynak grubunu sil'i**seçin. 
    
-1. Kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+1. Kaynak grubunuzun adını yazın ve sonra **Sil'i**seçin.
 
    ![Kaynak grubunu silme](./media/get-started-create-service-instance/00-DeleteResource-03.png)
 

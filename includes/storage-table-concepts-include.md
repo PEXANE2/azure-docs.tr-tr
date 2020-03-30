@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77013751"
 ---
 ## <a name="what-is-table-storage"></a>Tablo depolama nedir
@@ -31,7 +31,7 @@ Tablo depolamada şu bileşenler bulunur:
   Azure Cosmos DB Tablo API’si hesapları şu biçimi kullanır: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Bu adres biçimini OData protokolüyle birlikte kullanarak doğrudan Azure tablolarını işaret edebilirsiniz. Daha fazla bilgi için bkz. [OData.org][OData.org].
-* **Hesaplar** Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesapları hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../articles/storage/common/storage-account-overview.md).
+* **Hesaplar** Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesapları hakkında daha fazla bilgi için Bkz. [Depolama hesabı genel bakışı.](../articles/storage/common/storage-account-overview.md)
 
     Tüm Azure Cosmos DB erişimi bir Tablo API’si hesabı üzerinden yapılır. Tablo API’si hesabı oluşturmaya ilişkin ayrıntılar için bkz. [Tablo API’si hesabı oluşturma](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
 * **Tablo**: Tablo, bir varlıklar koleksiyonudur. Tablolar varlıklardaki şemayı zorlamaz; bu da, tek tabloda farklı özellik kümelerine sahip varlıklar olabileceği anlamına gelir.  

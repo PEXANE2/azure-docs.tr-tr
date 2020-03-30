@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
-description: Azure HDInsight 'ta kurumsal güvenlik sağlamaya yönelik çeşitli yöntemleri öğrenin.
+title: Azure HDInsight'ta kurumsal güvenliğe genel bakış
+description: Azure HDInsight'ta kurumsal güvenliği sağlamak için çeşitli yöntemleri öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,91 +8,91 @@ ms.service: hdinsight
 ms.topic: overview
 ms.date: 03/03/2020
 ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78267715"
 ---
-# <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
+# <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight'ta kurumsal güvenliğe genel bakış
 
-Azure HDInsight, kurumsal güvenlik ihtiyaçlarınızı karşılamak için çeşitli yöntemler sunar. Bu çözümlerin çoğu varsayılan olarak etkinleştirilmez. Bu esneklik, sizin için en önemli olan güvenlik özelliklerini seçmenizi sağlar ve istemediğiniz özellikler için ödeme yapmaktan kaçınmanıza yardımcı olur. Bu aynı zamanda, kurulum ve ortamınız için doğru çözümlerin etkinleştirildiğinden emin olmak sizin sorumluluğunuzdadır.
+Azure HDInsight, kurumsal güvenlik gereksinimlerinizi karşılamak için çeşitli yöntemler sunar. Bu çözümlerin çoğu varsayılan olarak etkinleştirilmez. Bu esneklik, sizin için en önemli olan güvenlik özelliklerini seçmenize olanak tanır ve istemediğiniz özellikler için ödeme yapmaktan kaçınmanıza yardımcı olur. Bu aynı zamanda, kurulum ve ortamınız için doğru çözümlerin etkin olduğundan emin olmak sizin sorumluluğunuzda dır.
 
-Bu makale, güvenlik çözümlerini dört geleneksel güvenlik, kimlik doğrulaması, yetkilendirme ve şifreleme satırları üzerinde bölerek güvenlik çözümlerine bakar.
+Bu makalede, güvenlik çözümlerini dört geleneksel güvenlik sütunu boyunca bölerek güvenlik çözümleri ne kadar görünür: çevre güvenliği, kimlik doğrulama, yetkilendirme ve şifreleme.
 
-Bu makalede ayrıca HDInsight kümeleri için Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlayan **Azure hdınsight kurumsal güvenlik paketi (ESP)** açıklanır.
+Bu makalede ayrıca, HDInsight kümeleri için Active Directory tabanlı kimlik doğrulama, çok kullanıcılı destek ve rol tabanlı erişim denetimi sağlayan **Azure HDInsight Kurumsal Güvenlik Paketi (ESP)** de tanıtıştır.
 
-## <a name="enterprise-security-pillars"></a>Kurumsal Güvenlik pilsi
+## <a name="enterprise-security-pillars"></a>Kurumsal güvenlik direkleri
 
-Kurumsal Güvenlik 'e bakmaya yönelik bir yöntem, güvenlik çözümlerini denetim türüne göre dört ana gruba böler. Bu gruplar ayrıca güvenlik ile aynı şekilde adlandırılır ve aşağıdakiler şunlardır: çevre güvenliği, kimlik doğrulama, yetkilendirme ve şifreleme.
+Kurumsal güvenliğe bakmanın bir yolu, güvenlik çözümlerini denetim türüne göre dört ana gruba böler. Bu gruplara güvenlik sütunları da denir ve bunlar şunlardır: çevre güvenliği, kimlik doğrulama, yetkilendirme ve şifreleme.
 
 ### <a name="perimeter-security"></a>Çevre güvenliği
 
-HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-network-deployment.md)aracılığıyla elde edilir. Kurumsal Yönetici, sanal ağ (VNET) içinde bir küme oluşturabilir ve sanal ağa erişimi kısıtlamak için ağ güvenlik grupları (NSG) kullanabilir. Yalnızca gelen NSG kurallarında izin verilen IP adresleri HDInsight kümesiyle iletişim kurabiliyor. Bu yapılandırma, çevre güvenliği sağlar.
+HDInsight'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-network-deployment.md)aracılığıyla sağlanır. Bir kuruluş yöneticisi sanal ağ (VNET) içinde bir küme oluşturabilir ve sanal ağa erişimi kısıtlamak için ağ güvenlik gruplarını (NSG) kullanabilir. Yalnızca gelen NSG kurallarında izin verilen IP adresleri HDInsight kümesiyle iletişim kurabilir. Bu yapılandırma çevre güvenliği sağlar.
 
-VNET 'te dağıtılan tüm kümelerin, küme ağ geçitlerine özel HTTP erişimi için sanal ağın içindeki özel bir IP 'ye çözümlenen özel bir uç noktası da olur.
+VNET'te dağıtılan tüm kümelerin, küme ağ geçitlerine özel HTTP erişimi için VNET içindeki özel bir IP'ye göre çözülen özel bir bitiş noktası da vardır.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
-HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu yetenekler sayesinde, yönetilen bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Bundan sonra, kümeden kimlik doğrulaması yapan ve üzerinde oturum açabilen çalışanların bir listesini yapılandırabilirsiniz.
+HDInsight'ın [Kurumsal Güvenlik Paketi](apache-domain-joined-architecture.md) Active Directory tabanlı kimlik doğrulama, çok kullanıcılı destek ve rol tabanlı erişim denetimi sağlar. Etkin Dizin tümleştirmesi [Azure Active Directory Etki Alanı Hizmetleri'nin](../../active-directory-domain-services/overview.md)kullanımıyla elde edilir. Bu özelliklerle, yönetilen active directory etki alanına katılan bir HDInsight kümesi oluşturabilirsiniz. Daha sonra, kümenin kimliğini doğrulayıp oturum açabilen kuruluşçalışanlarının listesini yapılandırabilirsiniz.
 
-Bu kurulumla, kurumsal çalışanlar, kendi etki alanı kimlik bilgilerini kullanarak küme düğümlerinde oturum açabilir. Ayrıca, küme ile etkileşimde bulunmak için Apache ambarı görünümleri, ODBC, JDBC, PowerShell ve REST API 'Ler gibi diğer onaylanan uç noktalarla kimlik doğrulaması yapmak için etki alanı kimlik bilgilerini de kullanabilirler.
+Bu kurulumla, kurumsal çalışanlar etki alanı kimlik bilgilerini kullanarak küme düğümlerinde oturum açabilirler. Ayrıca, kümeyle etkileşimde kalmak için Apache Ambari Views, ODBC, JDBC, PowerShell ve REST API'leri gibi diğer onaylı uç noktalarıyla kimlik doğrulamayapmak için etki alanı kimlik bilgilerini de kullanabilirler.
 
 ### <a name="authorization"></a>Yetkilendirme
 
-Çoğu kuruluşun takip eden en iyi uygulama, her çalışanın kurumsal kaynaklara erişiminin olmadığından emin olmanızı sağlar. Benzer şekilde, yönetici, küme kaynakları için rol tabanlı erişim denetimi ilkeleri tanımlayabilir. Bu yalnızca ESP kümelerinde kullanılabilir.
+Çoğu işletmenin izlediği en iyi uygulama, her çalışanın tüm kurumsal kaynaklara erişemediğinden emin olmaktır. Aynı şekilde, yönetici küme kaynakları için rol tabanlı erişim denetimi ilkeleri tanımlayabilir. Bu yalnızca ESP kümelerinde kullanılabilir.
 
-Hadoop Yöneticisi, Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)ve [Kafka](apache-domain-joined-run-kafka.md) için Apache Ranger 'daki eklentileri kullanarak rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir. RBAC ilkelerini yapılandırmak, izinleri kuruluştaki bir rolle ilişkilendirmenize olanak tanır. Bu soyutlama katmanı, kişilerin yalnızca iş sorumluluklarını gerçekleştirmek için gerekli izinlere sahip olmasını kolaylaştırır. Ranger Ayrıca çalışanların veri erişimini ve erişim denetimi ilkelerine yapılan değişiklikleri denetlemenize olanak tanır.
+Hadoop admin apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)ve [Kafka](apache-domain-joined-run-kafka.md) Apache Ranger bu eklentileri kullanarak güvenli rol tabanlı erişim kontrolü (RBAC) yapılandırabilirsiniz. RBAC ilkelerini yapılandırmak, izinleri kuruluştaki bir rolile ilişkilendirmenize olanak tanır. Bu soyutlama katmanı, insanların yalnızca iş sorumluluklarını yerine getirmek için gereken izinlere sahip olmalarını kolaylaştırır. Ranger ayrıca çalışanların veri erişimini ve denetim politikalarına erişmek için yapılan değişiklikleri denetlemenize de olanak tanır.
 
-Örneğin yönetici [Apache Ranger](https://ranger.apache.org/)’ı Hive için erişim denetim ilkeleri belirleyecek şekilde yapılandırabilir. Bu işlevsellik, satır düzeyinde ve sütun düzeyinde filtreleme (veri maskeleme) ve duyarlı verileri yetkisiz kullanıcılardan filtrelemesini sağlar.
+Örneğin yönetici [Apache Ranger](https://ranger.apache.org/)’ı Hive için erişim denetim ilkeleri belirleyecek şekilde yapılandırabilir. Bu işlevsellik satır düzeyinde ve sütun düzeyinde filtreleme (veri maskeleme) sağlar ve hassas verileri yetkisiz kullanıcılardan filtreler.
 
 ### <a name="auditing"></a>Denetim
 
-Küme kaynaklarına erişimi denetleme ve veriler, kaynakların yetkisiz veya istenmeden erişimini izlemek için gereklidir. HDInsight küme kaynaklarını yetkisiz kullanıcılardan korumak ve verilerin güvenliğini sağlamak önemlidir.
+Küme kaynaklarına ve verilerin tüm erişimlerinin denetlenilmesi, kaynakların yetkisiz veya kasıtsız erişimini izlemek için gereklidir. HDInsight küme kaynaklarını yetkisiz kullanıcılardan korumak ve verileri güvence altına almak kadar önemlidir.
 
-Yönetici, HDInsight kümesi kaynaklarına ve verilerine yönelik tüm erişimi görüntüleyebilir ve rapor edebilir. Yönetici ayrıca Apache Ranger desteklenen uç noktalarında oluşturulan erişim denetim ilkelerine yapılan tüm değişiklikleri görüntüleyebilir ve rapor edebilir.
+Yönetici, HDInsight küme kaynakları ve verilerini görüntüleyebilir ve raporlayabilir. Yönetici ayrıca Apache Ranger desteklenen uç noktalarda oluşturulan erişim denetimi ilkelerindeki tüm değişiklikleri görüntüleyebilir ve raporlayabilir.
 
-Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) ve denetim kayıtları sağlayan tabloları görüntüleyin.
+Apache Ranger ve Ambari denetim günlüklerine erişmek ve erişim günlüklerini ssh olarak erişmek için [Azure Monitor'u etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) ve denetim kayıtları sağlayan tabloları görüntüleyin.
 
 ### <a name="encryption"></a>Şifreleme
 
-Verilerin korunması, kurumsal güvenlik ve uyumluluk gereksinimlerini karşılamak için önemlidir. Yetkisiz çalışanların verilerine erişimi sınırlandırma ile birlikte şifrelemeniz gerekir.
+Verilerin korunması, kuruluş güvenliği ve uyumluluk gereksinimlerini karşılamak için önemlidir. Yetkisiz çalışanların verilerine erişimi kısıtlamanın yanı sıra, verileri şifrelemeniz gerekir.
 
-HDInsight kümeleri için veri depoları, Azure Blob depolama ve Azure Data Lake Storage 1./Gen2, bekleyen verilerin şeffaf sunucu tarafı [şifrelemesini](../../storage/common/storage-service-encryption.md) destekler. Güvenli HDInsight kümeleri, bekleyen verilerin sunucu tarafı şifrelemesi özelliği ile sorunsuz bir şekilde çalışır.
+HDInsight kümeleri, Azure Blob depolama ve Azure Veri Gölü Depolama Gen1/Gen2 için her iki veri deposu da, veri şeffaf sunucu tarafından [şifrelemeyi](../../storage/common/storage-service-encryption.md) destekler. Güvenli HDInsight kümeleri, sunucu tarafındaki bu veri şifreleme özelliğiyle sorunsuz bir şekilde çalışır.
 
 ### <a name="compliance"></a>Uyumluluk
 
-Azure uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve bağımsız üçüncü taraf denetim kurumları tarafından üretilen değerlendirmeler, sözleşmeli değişiklik DTU 'lar dahil olmak üzere çeşitli türlerde türler temel alır. Microsoft tarafından üretilen kendi kendine değerlendirmeler ve müşteri Kılavuzu belgeleri. HDInsight uyumluluk bilgileri için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center) ve [Microsoft Azure uyumluluğuna genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
+Azure uyumluluk teklifleri, resmi sertifikalar, attestation'lar, doğrulamalar, yetkilendirmeler ve bağımsız üçüncü taraf denetim firmaları tarafından üretilen değerlendirmeler, sözleşme değişiklikleri dahil olmak üzere çeşitli güvence türlerine dayanır. öz değerlendirmeler ve Microsoft tarafından üretilen müşteri yönlendirme belgeleri. HDInsight uyumluluk bilgileri için [Microsoft Güven Merkezi'ne](https://www.microsoft.com/trust-center) ve Microsoft [Azure uyumluluğuna Genel Bakış'a](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)bakın.
 
 ## <a name="shared-responsibility-model"></a>Paylaşılan sorumluluk modeli
 
-Aşağıdaki görüntüde ana sistem güvenlik alanı ve her birinde kullanabileceğiniz güvenlik çözümleri özetlenmektedir. Ayrıca, hangi güvenlik alanlarının bir müşteri olarak sorumluluğunda olduğunu ve hangi alanların hizmet sağlayıcısı olarak HDInsight 'ın sorumluluğu olduğunu vurgular.
+Aşağıdaki resim, ana sistem güvenlik alanlarını ve her birinde kullanabileceğiniz güvenlik çözümlerini özetler. Ayrıca, müşteri olarak hangi güvenlik alanlarının sizin sorumluluğunuzda olduğunu ve servis sağlayıcısı olarak HANGI alanların HDInsight'ın sorumluluğunda olduğunu da vurgular.
 
-![HDInsight paylaşılan sorumlulukları diyagramı](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
+![HDInsight paylaşılan sorumluluklar diyagramı](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
 
-Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlantıları verilmiştir.
+Aşağıdaki tablo, her güvenlik çözümü türü için kaynaklara bağlantılar sağlar.
 
-| Güvenlik alanı | Kullanılabilir çözümler | Sorumlu parti |
+| Güvenlik alanı | Çözümler mevcuttur | Sorumlu taraf |
 |---|---|---|
-| Veri erişim güvenliği | Azure Data Lake Storage 1. ve Gen2 için [erişim denetim listelerinin ACL 'lerini](../../storage/blobs/data-lake-storage-access-control.md) yapılandırma  | Müşteri |
-|  | Depolama hesaplarında ["güvenli aktarım gerekli"](../../storage/common/storage-require-secure-transfer.md) özelliğini etkinleştirin. | Müşteri |
-|  | [Azure depolama güvenlik duvarlarını](../../storage/common/storage-network-security.md) ve sanal ağları yapılandırma | Müşteri |
-|  | Cosmos DB ve [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) için [Azure sanal ağ hizmet uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) yapılandırma | Müşteri |
-|  | Yoldaki veriler için [TLS şifrelemenin](../../storage/common/storage-security-tls.md) etkinleştirildiğinden emin olun. | Müşteri |
-|  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
-| Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [kimlik doğrulamasını yapılandırma](apache-domain-joined-configure-using-azure-adds.md) | Müşteri |
-|  | [Apache Ranger yetkilendirme](apache-domain-joined-run-hive.md) ilkelerini yapılandırma | Müşteri |
-|  | [Azure izleyici günlüklerini](../hdinsight-hadoop-oms-log-analytics-tutorial.md) kullanma | Müşteri |
-| İşletim sistemi güvenliği | En son güvenli temel görüntüyle kümeler oluşturun | Müşteri |
-|  | Düzenli aralıklarla [Işletim sistemi düzeltme eki uygulama](../hdinsight-os-patching.md) | Müşteri |
-| Ağ güvenliği | [Sanal ağ](../hdinsight-plan-virtual-network-deployment.md) yapılandırma |
-|  | [Gelen ağ güvenlik grubu (NSG) kurallarını](../hdinsight-plan-virtual-network-deployment.md#networktraffic) yapılandırma | Müşteri |
-|  | Güvenlik duvarıyla [giden trafik kısıtlamasını](../hdinsight-restrict-outbound-traffic.md) yapılandırma | Müşteri |
-| Sanallaştırılmış altyapı | Yok | HDInsight (bulut sağlayıcısı) |
+| Veri Erişim Güvenliği | Azure Veri Gölü Depolama Gen1 ve Gen2 için [erişim denetim listelerini](../../storage/blobs/data-lake-storage-access-control.md) yapılandırma  | Müşteri |
+|  | Depolama [hesaplarındaki "Güvenli aktarım gerekli"](../../storage/common/storage-require-secure-transfer.md) özelliğini etkinleştirin. | Müşteri |
+|  | Azure [Depolama güvenlik duvarlarını](../../storage/common/storage-network-security.md) ve sanal ağları yapılandırma | Müşteri |
+|  | Cosmos DB ve [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) için [Azure sanal ağ hizmeti bitiş noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) yapılandırma | Müşteri |
+|  | Aktarım sırasındaki veriler için [TLS şifrelemesi](../../storage/common/storage-security-tls.md) etkinleştirildiğinden emin olun. | Müşteri |
+|  | Azure Depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
+| Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştir ve [Kimlik Doğrulamayı Yapılandır](apache-domain-joined-configure-using-azure-adds.md) | Müşteri |
+|  | [Apache Ranger Yetkilendirme](apache-domain-joined-run-hive.md) ilkelerini yapılandırma | Müşteri |
+|  | [Azure Monitör günlüklerini](../hdinsight-hadoop-oms-log-analytics-tutorial.md) kullanma | Müşteri |
+| İşletim sistemi güvenliği | En son güvenli temel görüntüye sahip kümeler oluşturma | Müşteri |
+|  | Düzenli aralıklarla [Işletim Sistemi Yama'sı](../hdinsight-os-patching.md) | Müşteri |
+| Ağ güvenliği | [Sanal ağı](../hdinsight-plan-virtual-network-deployment.md) yapılandırma |
+|  | Gelen [ağ güvenlik grubu (NSG) kurallarını](../hdinsight-plan-virtual-network-deployment.md#networktraffic) yapılandırma | Müşteri |
+|  | Güvenlik Duvarı ile [Giden Trafik Kısıtlaması'nı](../hdinsight-restrict-outbound-traffic.md) yapılandırma | Müşteri |
+| Sanallaştırılmış altyapı | Yok | HDInsight (Bulut sağlayıcısı) |
 | Fiziksel altyapı güvenliği | Yok | HDInsight (bulut sağlayıcısı) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [ESP ile HDInsight kümelerini planlayın](apache-domain-joined-architecture.md)
-* [HDInsight kümelerini ESP ile yapılandırma](apache-domain-joined-configure.md)
-* [HDInsight kümelerini ESP ile yönetme](apache-domain-joined-manage.md)
+* [ESP ile HDInsight kümeleri için plan](apache-domain-joined-architecture.md)
+* [HDInsight kümelerini ESP ile yapılandırın](apache-domain-joined-configure.md)
+* [ESP ile HDInsight kümelerini yönetme](apache-domain-joined-manage.md)

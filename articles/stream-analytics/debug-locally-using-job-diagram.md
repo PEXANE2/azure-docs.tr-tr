@@ -1,6 +1,6 @@
 ---
-title: Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
-description: Bu makalede, Visual Studio için Azure Stream Analytics Araçları ' nda iş diyagramı kullanarak sorguların yerel olarak nasıl hata ayıklaması yapılacağı açıklanır.
+title: Visual Studio'da iş diyagramını kullanarak Azure Akış Analizi sorgularını yerel olarak ayıklama
+description: Bu makalede, Visual Studio için Azure Akış Analizi Araçları'nda iş diyagramını kullanarak sorguları yerel olarak nasıl ayıklanırın açıklanmaktadır.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,72 +8,72 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76847205"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio'da iş diyagramını kullanarak Azure Akış Analizi sorgularını yerel olarak ayıklama
 
-Çıkış olmayan ya da beklenmeyen sonuçlara neden olan işler, akış sorguları için ortak sorun giderme senaryolarından oluşur. Sorgunuzu Visual Studio 'da yerel olarak test ederken iş diyagramını kullanarak her adımın ara sonuç kümesini ve ölçümlerini inceleyebilirsiniz. İş diyagramları sorunları giderirken bir sorunun kaynağını hızlı bir şekilde ayırmanıza yardımcı olabilir.
+Sonuç elde edilemeyen işler veya beklenmeyen sonuçlar, akış sorguları için sık karşılaşılan sorun giderme senaryolarıdır. Her adım için ara sonuç kümesini ve ölçümlerini incelemek için sorgunuzu Visual Studio'da yerel olarak sınarken iş diyagramını kullanabilirsiniz. İş diyagramları, sorunları giderdiğinizde sorunun kaynağını hızlı bir şekilde yalıtmanıza yardımcı olabilir.
 
-## <a name="debug-a-query-using-job-diagram"></a>İş diyagramı kullanarak bir sorgu hatalarını ayıklama
+## <a name="debug-a-query-using-job-diagram"></a>İş diyagramı kullanarak sorguhataayık
 
-Giriş verilerini çıktı verilerine dönüştürmek için bir Azure Stream Analytics betiği kullanılır. İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak çıkış havuzları aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, `WITH` bir ifade kullanılarak betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Bir sorunun kaynağını bulmak için her bir ara sonuç kümesindeki her bir sorgu adımındaki ölçümleri ve verileri görüntüleyebilirsiniz.
-
-> [!NOTE]
-> Bu iş diyagramı yalnızca tek bir düğümdeki yerel test için verileri ve ölçümleri gösterir. Performans ayarlama ve sorun giderme için kullanılmamalıdır.
-
-### <a name="start-local-testing"></a>Yerel Testi Başlat
-
-Visual Studio kullanarak Stream Analytics işi oluşturmayı veya [var olan bir işi yerel bir projeye aktarmayı](stream-analytics-vs-tools.md#export-jobs-to-a-project)öğrenmek Için bu [hızlı](stream-analytics-quick-create-vs.md) başlangıcı kullanın. Sorguyu yerel giriş verileriyle test etmek istiyorsanız, bu [yönergeleri](stream-analytics-live-data-local-testing.md)izleyin. Canlı giriş ile test etmek istiyorsanız bir sonraki adıma geçin.
+Bir Azure Akışı Analizi komut dosyası, giriş verilerini çıktı verilerine dönüştürmek için kullanılır. İş diyagramı, birden çok sorgu adımı ve son olarak da çıktı lavaboları aracılığıyla veri giriş kaynaklarından (Event Hub, IoT Hub, vb.) nasıl aktığını gösterir. Her sorgu adımı, bir deyim kullanılarak komut dosyasında `WITH` tanımlanan geçici bir sonuç kümesine eşlenir. Bir sorunun kaynağını bulmak için ayarlanan her ara sonuçta her sorgu adımının verilerinin yanı sıra ölçümleri de görüntüleyebilirsiniz.
 
 > [!NOTE]
-> Bir işi yerel projeye dışa aktarıp canlı bir giriş akışına karşı test etmek istiyorsanız, tüm girişlerin kimlik bilgilerini tekrar belirtmeniz gerekir.  
+> Bu iş diyagramı yalnızca tek bir düğümdeki yerel sınama için verileri ve ölçümleri gösterir. Performans atonlama ve sorun giderme için kullanılmamalıdır.
 
-Betik düzenleyicisinden giriş ve çıkış kaynağını seçin ve **yerel olarak çalıştır**' ı seçin. İş Diyagramı sağ tarafta görüntülenir.
+### <a name="start-local-testing"></a>Yerel sınama başlatın
+
+Visual Studio'u kullanarak Bir Akış Analizi işi oluşturmayı veya [varolan bir işi yerel bir projeye nasıl dışa aktarın'](stream-analytics-vs-tools.md#export-jobs-to-a-project)ı öğrenmek için bu [Hızlı Başlat'ı](stream-analytics-quick-create-vs.md) kullanın. Sorguyu yerel giriş verileriyle sınamak istiyorsanız, aşağıdaki [yönergeleri](stream-analytics-live-data-local-testing.md)izleyin. Canlı girişle test etmek istiyorsanız, bir sonraki adıma geçin.
+
+> [!NOTE]
+> Bir işi yerel projeye dışa aktarıyorsanız ve canlı giriş akışına karşı sınamak istiyorsanız, tüm girişlerin kimlik bilgilerini yeniden belirtmeniz gerekir.  
+
+Komut dosyası düzenleyicisinden giriş ve çıktı kaynağını seçin ve **yerel olarak Çalıştır'ı**seçin. İş diyagramı sağ tarafta görünür.
 
 ### <a name="view-the-intermediate-result-set"></a>Ara sonuç kümesini görüntüleme  
 
-1. Betiğe gitmek için sorgu adımını seçin. Sol taraftaki düzenleyicide ilgili betiğe otomatik olarak yönlendirilirsiniz.
+1. Komut dosyasına gitmek için sorgu adımını seçin. Otomatik olarak soldaki düzenleyicideki ilgili komut dosyasına yönlendirilirsiniz.
 
-   ![İş diyagramı git betiği](./media/debug-locally-using-job-diagram/navigate-script.png)
+   ![İş diyagramı komut dosyasıgezinmek](./media/debug-locally-using-job-diagram/navigate-script.png)
 
-2. Sorgu adımı ' nı seçin ve açılan iletişim kutusunda **Önizleme** ' yi seçin. Sonuç kümesi, alt Sonuç penceresindeki bir sekmede gösterilir.
+2. Sorgu adımını seçin ve açılan iletişim kutusunda **Önizleme'yi** seçin. Sonuç kümesi, alt sonuç penceresindeki bir sekmede gösterilir.
 
    ![İş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram/preview-result.png)
 
-### <a name="view-step-metrics"></a>Adım ölçümlerini görüntüle
+### <a name="view-step-metrics"></a>Adım ölçümlerini görüntüleme
 
-Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri keşfedebilirsiniz.
+Bu bölümde, diyagramın her bölümü için kullanılabilir ölçümleri incelersiniz.
 
-#### <a name="input-sources-live-stream"></a>Giriş kaynakları (canlı akış)
+#### <a name="input-sources-live-stream"></a>Giriş kaynakları (Canlı akış)
 
 ![İş diyagramı canlı giriş kaynakları](./media/debug-locally-using-job-diagram/live-input.png)
 
 |Ölçüm|Açıklama|
 |-|-|
-|**Taxırıde**| Girişin adı.|
-|**Olay Hub’ı** | Giriş kaynağı türü.|
+|**TaksiRide**| Girişin adı.|
+|**Etkinlik Merkezi** | Giriş kaynak türü.|
 |**Olaylar**|Okunan olay sayısı.|
-|**Biriktirme listesindeki olay kaynakları**|Event Hubs ve IoT Hub girişleri için kaç tane daha fazla ileti okunması gerekiyor.|
-|**Bayt cinsinden olaylar**|Okunan bayt sayısı.|
-| **Düşürülmüş olaylar**|Seri durumdan çıkarma dışında bir sorunu olan olay sayısı.|
-|**Erken olaylar**| Yüksek filigrandan önce uygulama zaman damgasına sahip olay sayısı.|
-|**Geç olaylar**| Yüksek filigrandan sonra uygulama zaman damgasına sahip olay sayısı.|
-|**Olay kaynakları**| Okunan veri birimi sayısı. Örneğin, Blobların sayısı.|
+|**Backlogged Olay Kaynakları**|Olay Hub'ları ve IoT Hub girişleri için daha kaç iletinin okunması gerekir.|
+|**Bayt'taki Olaylar**|Okunan bayt sayısı.|
+| **Bozulmuş Olaylar**|Deserialization dışında bir sorun vardı olayların sayısı.|
+|**Erken Olaylar**| Yüksek filigrandan önce uygulama zaman damgası olan olayların sayısı.|
+|**Geç Olaylar**| Yüksek filigrandan sonra uygulama zaman damgası olan olayların sayısı.|
+|**Etkinlik Kaynakları**| Veri birimlerinin sayısı okundu. Örneğin, lekelerin sayısı.|
 
-#### <a name="input-sources-local-input"></a>Giriş kaynakları (yerel giriş)
+#### <a name="input-sources-local-input"></a>Giriş kaynakları (Yerel giriş)
 
 ![İş diyagramı yerel giriş kaynakları](./media/debug-locally-using-job-diagram/local-input.png)
 
 |Ölçüm|Açıklama|
 |-|-|
-|**Taxırıde**| Girişin adı.|
-|**Satır sayısı**| Adımdan oluşturulan satır sayısı.|
-|**Veri boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
-|**Yerel giriş**| Yerel verileri giriş olarak kullanın.|
+|**TaksiRide**| Girişin adı.|
+|**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
+|**Veri Boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
+|**Yerel giriş**| Giriş olarak yerel verileri kullanın.|
 
 #### <a name="query-steps"></a>Sorgu adımları
 
@@ -82,47 +82,47 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 |Ölçüm|Açıklama|
 |-|-|
 |**TripData**|Geçici sonuç kümesinin adı.|
-|**Satır sayısı**| Adımdan oluşturulan satır sayısı.|
-|**Veri boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
+|**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
+|**Veri Boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
   
-#### <a name="output-sinks-live-output"></a>Çıkış havuzları (canlı çıkış)
+#### <a name="output-sinks-live-output"></a>Çıkış lavaboları (Canlı çıktı)
 
-![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/live-output.png)
-
-|Ölçüm|Açıklama|
-|-|-|
-|**regionaggEH**|Çıkışın adı.|
-|**Olaylar**|Havuza çıkış yapılacak olay sayısı.|
-
-#### <a name="output-sinks-local-output"></a>Çıkış havuzları (yerel çıkış)
-
-![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/local-output.png)
+![İş diyagramı yerel çıktı lavabolar](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Ölçüm|Açıklama|
 |-|-|
-|**regionaggEH**|Çıkışın adı.|
-|**Yerel çıkış**| Yerel bir dosyaya giden sonuç çıktısı.|
-|**Satır sayısı**| Yerel dosyaya giden satır sayısı.|
-|**Veri boyutu**| Yerel dosyanın veri çıktısının boyutu.|
+|**regionaggEH**|Çıktının adı.|
+|**Olaylar**|Lavabolara çıkan olay çıktılarının sayısı.|
 
-### <a name="close-job-diagram"></a>İş diyagramını kapat
+#### <a name="output-sinks-local-output"></a>Çıktı lavaboları (Yerel çıktı)
 
-Artık iş diyagramına ihtiyacınız yoksa sağ üst köşedeki **Kapat** ' ı seçin. Diyagram penceresini kapattıktan sonra, görüntülemek için yerel testi yeniden başlatmanız gerekir.
+![İş diyagramı yerel çıktı lavabolar](./media/debug-locally-using-job-diagram/local-output.png)
 
-### <a name="view-job-level-metrics-and-stop-running"></a>İş düzeyi ölçümlerini görüntüle ve çalışmayı durdur
+|Ölçüm|Açıklama|
+|-|-|
+|**regionaggEH**|Çıktının adı.|
+|**Yerel Çıktı**| Yerel bir dosyaya sonuç çıktısı.|
+|**Satır Sayısı**| Yerel dosyaya satır çıktısı sayısı.|
+|**Veri Boyutu**| Yerel dosyaya veri çıktısının boyutu.|
 
-Diğer iş düzeyi ölçümleri, açılan konsolda görüntülenir. İşi durdurmak istiyorsanız konsolda **CTRL + C** tuşlarına basın.
+### <a name="close-job-diagram"></a>İş diyagramı kapatma
+
+Artık iş diyagramına ihtiyacınız yoksa, sağ üst köşede **Kapat'ı** seçin. Diyagram penceresini kapattıktan sonra, görmek için yerel sınama yı yeniden başlatmanız gerekir.
+
+### <a name="view-job-level-metrics-and-stop-running"></a>İş düzeyi ölçümlerini görüntüleyin ve çalıştırmayı durdurun
+
+Diğer iş düzeyi ölçümleri açılır konsolda gösterir. İşi durdurmak istiyorsanız konsoldaki **Ctrl+C** tuşuna basın.
 
 ![İş diyagramı işi durdur](./media/debug-locally-using-job-diagram/stop-job.png)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Power BI ve Azure Data Lake Storage 1. çıkış havuzları, kimlik doğrulama modeli sınırlamaları nedeniyle desteklenmez.
+* Power BI ve Azure Veri Gölü Depolama Gen1 çıktıları kimlik doğrulama modeli sınırlamaları nedeniyle desteklenmez.
 
-* Yalnızca bulut giriş seçeneklerine sahip [zaman ilkeleri](stream-analytics-out-of-order-and-late-events.md) desteklerken yerel giriş seçenekleri destekler.
+* Yalnızca bulut giriş seçenekleri [zaman ilkeleri](stream-analytics-out-of-order-and-late-events.md) desteğine sahipken, yerel giriş seçenekleri desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Azure Stream Analytics işleri görüntülemek için Visual Studio](stream-analytics-vs-tools.md)
-* [Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test etme (Önizleme)](stream-analytics-live-data-local-testing.md)
+* [Quickstart: Visual Studio'u kullanarak Bir Akış Analizi işi oluşturun](stream-analytics-quick-create-vs.md)
+* [Azure Akış Analizi işlerini görüntülemek için Visual Studio'yı kullanın](stream-analytics-vs-tools.md)
+* [Visual Studio için Azure Akış Analizi araçlarını kullanarak canlı verileri yerel olarak test edin (Önizleme)](stream-analytics-live-data-local-testing.md)

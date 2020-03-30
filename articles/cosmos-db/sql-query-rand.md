@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde S_SAYI_ÜRET
-description: Azure Cosmos DB 'de SQL sistem işlevi S_SAYI_ÜRET hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde RAND
+description: Azure Cosmos DB'de SQL sistem fonksiyonu RAND hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302228"
 ---
-# <a name="rand-azure-cosmos-db"></a>S_SAYI_ÜRET (Azure Cosmos DB)
- [0, 1) öğesinden rastgele oluşturulan sayısal değeri döndürür.
+# <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
+ Rasgele oluşturulan sayısal değeri [0,1) döndürür.
  
 ## <a name="syntax"></a>Sözdizimi
   
@@ -23,17 +23,17 @@ ms.locfileid: "78302228"
 RAND ()  
 ```  
 
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
 
-  Sayısal bir ifade döndürür.
+  Sayısal bir ifade verir.
 
 ## <a name="remarks"></a>Açıklamalar
 
-  `RAND` belirleyici olmayan bir işlevdir. Yinelenen `RAND` çağrıları aynı sonuçları döndürmez.
+  `RAND`nondeterministic bir fonksiyondur. Yinelenen çağrılar aynı sonuçları `RAND` döndürmez.
 
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek rastgele oluşturulmuş bir sayısal değer döndürür.
+  Aşağıdaki örnek rasgele oluşturulan sayısal değeri döndürür.
   
 ```sql
 SELECT RAND() AS rand 
@@ -47,10 +47,10 @@ SELECT RAND() AS rand
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

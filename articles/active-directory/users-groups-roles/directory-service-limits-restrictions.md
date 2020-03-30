@@ -1,6 +1,6 @@
 ---
-title: Hizmet sınırları ve kısıtlamaları-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory hizmeti için kullanım kısıtlamaları ve diğer hizmet limitleri
+title: Hizmet sınırları ve kısıtlamaları - Azure Active Directory | Microsoft Dokümanlar
+description: Azure Active Directory hizmeti için kullanım kısıtlamaları ve diğer hizmet sınırları
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,14 +16,14 @@ ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659653"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD hizmet sınırlamaları ve kısıtlamaları
-Bu makale Azure Active Directory (Azure AD) hizmeti için kullanım kısıtlamalarını ve diğer hizmet sınırlarını içerir. Microsoft Azure hizmet sınırlarının tam kümesini arıyorsanız bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+Bu makale, Azure Etkin Dizin (Azure AD) hizmeti için kullanım kısıtlamalarını ve diğer hizmet sınırlarını içerir. Microsoft Azure hizmet sınırlarının tam kümesini arıyorsanız, [Azure Abonelik ve Hizmet Sınırları, Kotalar ve Kısıtlamalar'a](../../azure-resource-manager/management/azure-subscription-service-limits.md)bakın.
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

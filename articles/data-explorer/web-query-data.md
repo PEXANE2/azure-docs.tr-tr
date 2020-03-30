@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Azure Veri Gezgini Web kullanıcı arabiriminde verileri Sorgulama'
-description: Bu hızlı başlangıçta, sorgu ve Azure Veri Gezgini Web kullanıcı arabiriminde veri paylaşma hakkında bilgi edinin.
+title: "Hızlı başlatma: Azure Veri Gezgini Web UI'de verileri sorgula"
+description: Bu hızlı başlangıçta, Azure Veri Gezgini Web UI'de verileri nasıl sorgulayabileceğinizi ve paylaşabileceğinizi öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,25 +8,25 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797182"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Hızlı Başlangıç: Azure Veri Gezgini Web kullanıcı arabiriminde verileri Sorgulama
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Hızlı başlatma: Azure Veri Gezgini Web UI'de verileri sorgula
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, sorgu çalıştırmanızı ve paylaşmanızı sağlayan bir web uygulaması sunar. Bu uygulama Azure portalda ve tek başına bir web uygulaması olarak sağlanır. Bu makalede uygulamanın birden fazla kümeye bağlanmanızı ve sorgularınızın ayrıntılı bağlantılarını paylaşmanızı sağlayan tek başına sürümünde çalışacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, sorgu çalıştırmanızı ve paylaşmanızı sağlayan bir web uygulaması sunar. Bu uygulama Azure portalda ve tek başına bir web uygulaması olarak sağlanır. Bu makalede uygulamanın birden fazla kümeye bağlanmanızı ve sorgularınızın ayrıntılı bağlantılarını paylaşmanızı sağlayan tek başına sürümünde çalışacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için Azure aboneliğine ek olarak [bir test kümesine ve veritabanına](create-cluster-database-portal.md) ihtiyacınız vardır.
 
 ## <a name="sign-in-to-the-application"></a>Uygulamada oturum açma
 
-[Uygulamada](https://dataexplorer.azure.com/) oturum açın.
+[Uygulamada](https://dataexplorer.azure.com/)oturum açın.
 
 ## <a name="add-clusters"></a>Küme ekleme
 
@@ -38,11 +38,11 @@ Sorgu çalıştırmaya başlamak için en az bir küme bağlantısı eklemeniz g
 
 1. Uygulamanın sol üst köşesinden **Küme ekle**'yi seçin.
 
-1. İçinde **Ekle küme** iletişim kutusu, URI girin ve ardından **Ekle**.
+1. Küme **ekle** iletişim kutusunda URI'yi girin ve sonra **Ekle'yi**seçin.
 
-   Yardım küme URI'si, kullanabilir `https://help.kusto.windows.net`. Kendi kümenizi varsa, kümenizin bir URI sağlayın. Örneğin, `https://mydataexplorercluster.westus.kusto.windows.net` aşağıdaki görüntüde gösterildiği gibi:
+   Yardım kümesi URI'yi `https://help.kusto.windows.net`kullanabilirsiniz. Kendi kümeniz varsa, kümenizin URI'sini sağlayın. Örneğin, `https://mydataexplorercluster.westus.kusto.windows.net` aşağıdaki resimde olduğu gibi:
 
-    ![Sunucu Portal URI](media/web-query-data/server-uri.png)
+    ![Portal'da Sunucu URI](media/web-query-data/server-uri.png)
 
 1. Sol taraftaki bölmede **help** kümesini görmeniz gerekir. Erişebileceğiniz örnek tabloları görmek için **Samples** veritabanını genişletin.
 
@@ -151,7 +151,7 @@ Temel sorguların nasıl çalıştığını gördünüz. Şimdi sonuçları öze
 
     Bu panel Excel'deki özet tablo alan listesine benzerdir ve doğrudan kılavuzda daha ayrıntılı analiz gerçekleştirmenizi sağlar.
 
-1. Seçin **Pivot modu**, sütunları'ı şu şekilde sürükleyin: **Durum** için **satır grupları**; **DamageProperty** için **değerleri**; ve **EventType** için **sütun etiketleri**.  
+1. **Özet Modu**'nu seçip sütunları şu şekilde sürükleyin. **State**: **Satır grupları**; **DamageProperty**: **Değerler** ve **EventType**: **Sütun etiketleri**.  
 
     ![Özet modu](media/web-query-data/pivot-mode.png)
 

@@ -1,75 +1,75 @@
 ---
-title: Özel bir ortamla Azure Notebooks önizleme projesi oluşturma
-description: Azure Notebooks önizlemede, belirli bir yüklü paketler ve başlatma betikleri kümesiyle yapılandırılmış yeni bir proje oluşturun.
+title: Özel bir ortamla Azure Not Defterleri Önizleme projesi oluşturun
+description: Azure Not Defteri Önizleme'de belirli bir yüklü paket ler ve başlangıç komut dosyalarıyla yapılandırılan yeni bir proje oluşturun.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78196850"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede özel ortamla bir proje oluşturma
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Hızlı başlatma: Azure Not Defterleri Önizleme'de özel bir ortama sahip bir proje oluşturma
 
-Azure not defterlerinde bir proje, not defterleri, veri dosyaları, belgeler, resimler ve özgü Kurulum komutları ile yapılandırılmış bir ortam ile birlikte vb. gibi dosyaları koleksiyonudur. Proje ortamıyla tanımlayarak, proje kendi Azure not defterleri hesaba klonlar herkes gerekli ortam yeniden oluşturmak ihtiyaç duydukları tüm bilgilere sahiptir.
+Azure Not Defterleri'ndeki bir proje, belirli kurulum komutlarıyla yapılandırılabilen bir ortamla birlikte not defterleri, veri dosyaları, belgeler, resimler gibi dosyaların bir koleksiyonudur. Projeyle ortamı tanımlayarak, projeyi kendi Azure Dizüstü Bilgisayar hesabına klonlayan herkes, gerekli ortamı yeniden oluşturmak için gereken tüm bilgilere sahiptir.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
-1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. (Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md)).
+1. Azure [Not Defterleri'ne](https://notebooks.azure.com) gidin ve oturum açın. (Ayrıntılar için [Bkz. Hızlı Başlangıç - Azure Not Defterlerinde Oturum Aç).](quickstart-sign-in-azure-notebooks.md)
 
-1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
+1. Herkese açık profil sayfanızdan, sayfanın üst kısmında **Projelerim'i** seçin:
 
-    ![Projeleri bağlantımı tarayıcı penceresinin üst kısmındaki](media/quickstarts/my-projects-link.png)
+    ![Tarayıcı penceresinin üst kısmındaki Projelerim bağlantısı](media/quickstarts/my-projects-link.png)
 
-1. **Projelerim** sayfasında **+ Yeni proje** ' yi seçin (klavye kısayolu: n); düğme yalnızca tarayıcı penceresi dar ise **+** olarak görünebilir:
+1. **Projelerim** sayfasında + **Yeni Proje 'yi** (klavye kısayolu: n); düğmesi yalnızca tarayıcı **+** penceresi darsa gibi görünebilir:
 
-    ![Projelerim sayfasında yeni proje komutu](media/quickstarts/new-project-command.png)
+    ![Projelerim sayfasında yeni Proje komutu](media/quickstarts/new-project-command.png)
 
-1. Görüntülenen **Yeni proje oluştur** açılır penceresinde aşağıdaki ayrıntıları girin veya ayarlayın, sonra **Oluştur**' u seçin.
+1. Aşağıdaki ayrıntıları görünen, giren veya ayarlayan **Yeni Proje Oluştur** açılır penceresinde Oluştur seçeneğini **belirleyin:**
 
-    - **Proje adı**: özel bir ortama sahip proje
-    - **Proje kimliği**: proje-özel-ortam
-    - **Ortak proje**: (işaretsiz)
-    - **README.MD oluşturma**: (işaretsiz)
+    - **Proje adı**: Özel bir ortama sahip proje
+    - **Project ID**: proje-özel ortam
+    - **Kamu projesi**: (temizlendi)
+    - **bir README.md oluşturun**: (temizlendi)
 
-1. Birkaç dakika sonra Azure not defterleri yeni projeye gider. **+ Yeni** açılan listesini (yalnızca **+** olarak görünebilir) seçip **Not defteri**' ni seçerek projeye bir not defteri ekleyin.
+1. Birkaç dakika sonra Azure Dizüstü Bilgisayarlar sizi yeni projeye yönlendirer. **+ Yeni** açılır (yalnızca **+** olarak görünebilir) seçeneğini seçerek projeye bir not defteri ekleyin ( sonra Not **Defteri'ni**seçin.
 
-1. Not defterine özel ortam gibi bir ad verin *. ipynb*, dil için **Python 3,6** ' i seçin ve **Yeni**' yi seçin.
+1. Not defterine *Özel environment.ipynb*gibi bir ad verin, dil için **Python 3.6'yı** seçin ve **Yeni'yi**seçin.
 
-## <a name="add-a-custom-setup-step"></a>Özel Kurulum adımı ekleyin
+## <a name="add-a-custom-setup-step"></a>Özel kurulum adımı ekleme
 
-1. Proje sayfasında **proje ayarları**' nı seçin.
+1. Proje sayfasında Proje **Ayarları'nı**seçin.
 
     ![Proje ayarları komutu](media/quickstarts/project-settings-command.png)
 
-1. **Proje ayarları** açılır penceresinde **ortam** sekmesini seçin ve ardından **ortam kurulum adımları**altında **+ Ekle**' yi seçin:
+1. Proje **Ayarları** açılır açılır, **Çevre** sekmesini seçin, sonra **Çevre Kurulum Adımları**altında , seçin + **Ekle**:
 
-    ![Yeni bir ortam Kurulum adımı eklemek için komutu](media/quickstarts/environment-add-command.png)
+    ![Yeni bir ortam kurulum adımı eklemek için komut](media/quickstarts/environment-add-command.png)
 
-1. **+ Add** komutu, bir işlem tarafından tanımlanan bir adım ve projenizdeki dosyalardan seçilen bir hedef dosya oluşturur. Aşağıdaki işlemler desteklenmektedir:
+1. **+ Ekle** komutu, bir işlem tarafından tanımlanan bir adım ve projenizdeki dosyalardan seçilen bir hedef dosyası oluşturur. Aşağıdaki işlemler desteklenir:
 
    | İşlem | Açıklama |
    | --- | --- |
-   | Requirements.txt | Python projeleri requirements.txt dosyasında bağımlılıkları tanımlayın. Bu seçenek, projenin dosya listesinden uygun dosyayı seçin ve ayrıca ek görünen açılan Python sürümünü seçin. Gerekirse, projeye geri dönmek için **iptal** ' i seçin, dosyayı karşıya yükleyin veya oluşturun, ardından **proje ayarları** > **ortam** sekmesine dönüp yeni bir adım oluşturun. Bu adımla birlikte, projede bir not defterini çalıştırmak otomatik olarak çalıştırılır `pip install -r <file>` |
-   | Kabuk betiği | Ortamı başlatmak için çalıştırmak istediğiniz komutları içeren bir bash kabuğu betiğini (genellikle *. sh* uzantılı bir dosya) göstermek için kullanın. |
-   | Environment.yml | Bir ortamı yönetmek için Conda kullanan bir Python projesi, bağımlılıkları tanımlayacak *ortamlar. yıml* dosyasını kullanır. Bu seçenek belirtilmişse, projenin dosya listeden uygun dosyayı seçin. |
+   | Gereksinimler.txt | Python projeleri gereksinimlerini tanımlar.txt dosyasında. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin ve görünen ek açılır durumda Python sürümünü de seçin. Gerekirse, projeye dönmek, dosyayı yüklemek veya oluşturmak için **İptal'i** seçin, ardından **Proje Ayarları** > **Ortamı** sekmesine dönün ve yeni bir adım oluşturun. Bu adım ın devreye sokulduğunda, projede bir not defterinin çalıştırıl`pip install -r <file>` |
+   | Kabuk komut dosyası | Ortamı niçin çalıştırmak istediğiniz komutları içeren bir bash kabuk komutunu (genellikle *.sh* uzantılı bir dosya) belirtmek için kullanın. |
+   | Çevre.yml | Bir ortamı yönetmek için conda kullanan bir Python projesi bağımlılıkları açıklamak için bir *ortam.yml* dosyası kullanır. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin. |
 
    > [!WARNING]
-   > Bu bir önizleme hizmeti geliştirildiği için, `Environment.yml` ayarının projenize beklendiği şekilde uygulanamadığı bilinen bir sorun vardır. İçindeki proje ve jupi Not defterleri, belirtilen ortam dosyasını yok olarak yüklemez.
+   > Bu, geliştirilmekte olan bir önizleme hizmeti olduğundan, `Environment.yml` şu anda ayarın beklendiği gibi projenize uygulanmadığı bilinen bir sorun vardır. Proje ve içindeki Jupyter dizüstü bilgisayarlar şu anda belirtilen ortam dosyasını yüklemez.
 
-1. Herhangi bir kurulum adımını kaldırmak için adımın sağındaki **X** seçeneğini belirleyin.
+1. Herhangi bir kurulum adımını kaldırmak için adımın sağındaki **X'i** seçin.
 
-1. Tüm kurulum adımları yerinde olduğunda, **Kaydet**' i seçin. (Değişiklikleri atmak için **iptal** ' i seçin).
+1. Tüm kurulum adımları yerindeyken **Kaydet'i**seçin. (Değişiklikleri atmak için **İptal'i** seçin).
 
-1. Ortamınızı test etmek için yeni bir not defteri oluşturup çalıştırın, sonra, bir Python `import` deyimi kullanma gibi, ortamdaki bir pakete bağlı olan deyimlerle bir kod hücresi oluşturun. Deyim başarılı olursa, gerekli paket ortamda başarıyla yüklendi.
+1. Ortamınızı sınamak için yeni bir not defteri oluşturun ve çalıştırın, ardından Python `import` deyimi kullanmak gibi ortamdaki pakete bağlı ifadeler içeren bir kod hücresi oluşturun. İfade başarılı olursa, gerekli paket ortama başarıyla yüklenmiş olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md)
+> [Azure Dizüstü Bilgisayarlar'da projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter dizüstü çalıştırmak oluşturmak](tutorial-create-run-jupyter-notebook.md)

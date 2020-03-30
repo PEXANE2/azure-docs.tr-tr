@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure şablonuyla Linux sanal makine ölçek kümesi oluşturma
+title: Quickstart - Azure şablonuyla linux sanal makine ölçeği seti oluşturma
 description: Örnek uygulama dağıtan ve otomatik ölçeklendirme kurallarını yöneten bir Azure Resource Manager şablonuyla hızlıca bir Linux sanal makine ölçek kümesi oluşturmayı öğrenin
 author: cynthn
 tags: azure-resource-manager
@@ -9,26 +9,26 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: a2712bc4a758a0cac6fe8357a0d4c14c594978c3
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76279179"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Hızlı Başlangıç: Azure şablonuyla Linux sanal makine ölçek kümesi oluşturma
 Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendirilen sanal makine kümesi dağıtmanızı ve yönetmenizi sağlar. Ölçek kümesi içindeki sanal makine sayısını el ile ölçeklendirebilir veya CPU, bellek talebi ya da ağ trafiği gibi kaynak kullanımını temel alan otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Azure Load Balancer daha sonra ölçek kümesindeki sanal makine örneklerine trafiği dağıtır. Bu hızlı başlangıçta, Azure Resource Manager şablonu ile bir sanal makine ölçek kümesi oluşturur ve örnek uygulama dağıtırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 
 ## <a name="define-a-scale-set-in-a-template"></a>Şablonda ölçek kümesi tanımlama
 Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı sağlar. Şablonlar JavaScript Nesne Gösterimi (JSON) ile yazılmıştır ve uygulamanıza ait Azure altyapısı ortamının tamamını tanımlar. Tek bir şablonda sanal makine ölçek kümesi oluşturabilir, uygulamaları yükleyebilir ve otomatik ölçeklendirme kurallarını yapılandırabilirsiniz. Değişkenleri ve parametreleri kullanarak bu şablonu var olan ölçek kümelerini güncelleştirme veya yenilerini oluşturma amacıyla tekrar kullanabilirsiniz. Şablonları Azure portalı, Azure CLI veya Azure PowerShell aracılığıyla ya da sürekli tümleştirme/sürekli teslim (CI/CD) işlem hatlarından dağıtabilirsiniz.
 
-Şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). JSON sözdizimi ve özellikleri için bkz. [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) Template Reference.
+Şablonlar hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi'ne genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)bilgisine bakın. JSON sözdizimi ve özellikleri için [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) şablon başvurusuna bakın.
 
 Şablonla ölçek kümesi oluşturmak için gerekli kaynakları tanımlamanız gerekir. Sanal makine ölçek kümesi kaynak türünün ana bölümleri şunlardır:
 
@@ -98,7 +98,7 @@ Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı 
 
 [Linux'ta Python HTTP sunucusu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) şablonu, Özel Betik Uzantısı'nı kullanarak bir Python web çerçevesi olan [Bottle](https://bottlepy.org/docs/dev/) uygulamasını ve basit bir HTTP sunucusu yükler. 
 
-İki betik **fileUris** - *installserver.sh* ve *workserver.py* içinde tanımlanmıştır. Bu dosyalar GitHub'dan indirildikten sonra *commandToExecute*, uygulamayı yüklemek ve yapılandırmak için `bash installserver.sh` komutunu çalıştırır:
+İki komut dosyası **fileUris** - *installserver.sh*tanımlanır ve *workserver.py*. Bu dosyalar GitHub'dan indirildikten sonra *commandToExecute*, uygulamayı yüklemek ve yapılandırmak için `bash installserver.sh` komutunu çalıştırır:
 
 ```json
 "extensionProfile": {
@@ -153,7 +153,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-*Http:\//Publicıpaddress: 9000/do_work*biçiminde bir Web tarayıcısına yük DENGELEYICININ genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+Yük bakiyesi genel IP adresini http biçimindeki bir web tarayıcısına *\/girin: /publicIpAddress:9000/do_work*. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![NGINX varsayılan web sayfası](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
