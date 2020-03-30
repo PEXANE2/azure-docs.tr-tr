@@ -1,7 +1,7 @@
 ---
-title: MacOS ve iOS 'ta SSO 'yu yapılandırma
+title: macOS ve iOS'ta SSO'ya yapı
 titleSuffix: Microsoft identity platform
-description: MacOS ve iOS 'ta çoklu oturum açma (SSO) yapılandırma hakkında bilgi edinin.
+description: macOS ve iOS'ta tek bir tabelayı (SSO) nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -18,71 +18,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262457"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılandırılır: sso'nun macOS ve iOS'ta yapılandırılMası
 
-MacOS ve iOS için Microsoft kimlik doğrulama kitaplığı (MSAL), macOS/iOS uygulamaları ve tarayıcıları arasında çoklu oturum açmayı (SSO) destekler. Bu makalede aşağıdaki SSO senaryoları ele alınmaktadır:
+macOS ve iOS için Microsoft Kimlik Doğrulama Kitaplığı (MSAL), macOS/iOS uygulamaları ve tarayıcılar arasında Tek Oturum Açma (SSO) destekler. Bu makale, aşağıdaki SSO senaryolarını kapsar:
 
-- [Birden çok uygulama arasında sessiz SSO](#silent-sso-between-apps)
+- [Birden fazla uygulama arasında sessiz SSO](#silent-sso-between-apps)
 
-Bu tür SSO, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulama arasında çalışmaktadır. Anahtar anahtardan diğer uygulamalar tarafından yazılan yenileme belirteçlerini okuyarak ve bunları sessizce erişim belirteçleri için değiştirerek sessiz SSO (yani, Kullanıcı kimlik bilgileri istenmez) sağlar.  
+Bu tür SSO, aynı Apple Geliştiricisi tarafından dağıtılan birden çok uygulama arasında çalışır. Anahtarlıktan diğer uygulamalar tarafından yazılmış yenileme belirteçlerini okuyarak ve bunları sessizce erişim belirteçleri için değiş tokuş ederek sessiz SSO (diğer bir deyişle, kullanıcı kimlik bilgileri için istenmez) sağlar.  
 
-- [Kimlik doğrulama Aracısı aracılığıyla SSO](#sso-through-authentication-broker-on-ios)
-
-> [!IMPORTANT]
-> Bu akış macOS 'ta kullanılamaz.
-
-Microsoft, mobil cihaz Azure Active Directory (AAD) ile kaydedildiği sürece farklı satıcılardan uygulamalar arasında SSO 'yu etkinleştiren aracılar adlı uygulamalar sağlar. Bu tür SSO, kullanıcının cihazında bir aracı uygulamasının yüklü olmasını gerektirir.
-
-- **MSAL ve Safari arasındaki SSO**
-
-SSO, [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) sınıfı aracılığıyla elde edilir. Diğer uygulamalardan ve Safari tarayıcısından var olan oturum açma durumunu kullanır. Aynı Apple geliştiricisi tarafından dağıtılan uygulamalarla sınırlı değildir, ancak bazı kullanıcı etkileşimini gerektirir.
-
-Uygulamanızda oturum açmak için varsayılan Web görünümünü kullanıyorsanız, MSAL tabanlı uygulamalar ve Safari arasında otomatik SSO alırsınız. MSAL tarafından desteklenen Web görünümleri hakkında daha fazla bilgi edinmek için [tarayıcıları ve Web görünümlerini özelleştirme](customize-webviews.md)makalesini ziyaret edin.
+- [Kimlik Doğrulama aracısı aracılığıyla SSO](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
-> Bu tür SSO, macOS 'ta Şu anda kullanılamıyor. MacOS on MSAL, yalnızca Safari ile SSO desteği olmayan WKWebView 'u destekliyor. 
+> Bu akış macOS'ta kullanılamaz.
+
+Microsoft, mobil aygıt Azure Active Directory'ye (AAD) kayıtlı olduğu sürece farklı satıcılardan gelen uygulamalar arasında SSO'ya olanak tanıyan broker adı verilen uygulamalar sağlar. Bu tür SSO, kullanıcının cihazına bir broker uygulamasının yüklenmesini gerektirir.
+
+- **MSAL ve Safari arasında SSO**
+
+[SSO, ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) sınıfı aracılığıyla elde edilir. Diğer uygulamalardan ve Safari tarayıcısından varolan oturum açma durumunu kullanır. Aynı Apple Developer tarafından dağıtılan uygulamalarla sınırlı değildir, ancak bazı kullanıcı etkileşimi gerektirir.
+
+Kullanıcıları oturum etmek için uygulamanızdaki varsayılan web görünümünü kullanırsanız, MSAL tabanlı uygulamalar ve Safari arasında otomatik SSO alırsınız. MSAL'ın desteklediği web görünümleri hakkında daha fazla bilgi edinmek için [tarayıcıları ve Web Görünümlerini Özelleştir'i ziyaret edin.](customize-webviews.md)
+
+> [!IMPORTANT]
+> Bu tür SSO şu anda macOS'ta kullanılamıyor. macOS'taki MSAL yalnızca Safari ile SSO desteği olmayan WKWebView'ı destekler. 
 
 - **ADAL ve MSAL macOS/iOS uygulamaları arasında sessiz SSO**
 
-MSAL hedefi-C, ADAL hedefi-C tabanlı uygulamalarla geçişi ve SSO 'yu destekler. Uygulamalar aynı Apple geliştiricisi tarafından dağıtılmalıdır.
+MSAL Objective-C, ADAL Objective-C tabanlı uygulamalarla göçü ve SSO'yı destekler. Uygulamaların aynı Apple Geliştiricisi tarafından dağıtılması gerekir.
 
-ADAL ve MSAL tabanlı uygulamalar arasında platformlar arası SSO için yönergeler için [macOS ve iOS 'TA adal ve msal uygulamaları arasındaki SSO](sso-between-adal-msal-apps-macos-ios.md) 'yu inceleyin.
+ADAL ve MSAL tabanlı uygulamalar arasında çapraz uygulama SSO talimatları için [macOS ve iOS'taki ADAL ve MSAL uygulamaları arasındaki SSO'ya](sso-between-adal-msal-apps-macos-ios.md) bakın.
 
 ## <a name="silent-sso-between-apps"></a>Uygulamalar arasında sessiz SSO
 
-MSAL, iOS Anahtarlık erişim grupları aracılığıyla SSO paylaşımını destekler.
+MSAL, iOS anahtarlık erişim grupları aracılığıyla SSO paylaşımını destekler.
 
-Uygulamalarınızda SSO 'yu etkinleştirmek için aşağıda daha ayrıntılı olarak açıklanan aşağıdaki adımları gerçekleştirmeniz gerekir:
+Uygulamalarınızda SSO'yu etkinleştirmek için, aşağıda daha ayrıntılı olarak açıklanan aşağıdaki adımları yapmanız gerekir:
 
-1. Tüm uygulamalarınızın aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI kullandığından emin olun.
-1. Anahtar zincirlerini paylaşabilmek için tüm uygulamalarınızın Apple 'dan aynı imzalama sertifikasını paylaştığından emin olun.
-1. Uygulamalarınızın her biri için aynı Anahtarlık yetkilendirmesini isteyin.
-1. MSAL SDK 'larına, varsayılan bir bilgisayardan farklıysa, kullanmamızı istediğiniz paylaşılan Anahtarlık hakkında bilgi verin.
+1. Tüm uygulamalarınızın aynı İstemci Kimliği veya Uygulama Kimliği'ni kullandığından emin olun.
+1. Anahtarlıkları paylaşabilmeniz için tüm uygulamalarınızın Apple'dan aynı imza sertifikasını paylaştığından emin olun.
+1. Her uygulamanız için aynı anahtarlık hakkını isteyin.
+1. MSAL SDK'lara varsayılan anahtardan farklıysa kullanmamızı istediğiniz paylaşılan anahtarzinciri nden bahsedin.
 
-### <a name="use-the-same-client-id-and-application-id"></a>Aynı Istemci KIMLIĞINI ve uygulama KIMLIĞINI kullanın
+### <a name="use-the-same-client-id-and-application-id"></a>Aynı İstemci Kimliği ve Uygulama Kimliğini Kullanma
 
-Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olmak için Microsoft Identity platformu için, bu uygulamaların aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
+Microsoft kimlik platformunun hangi uygulamaların jetonları paylaşabileceğini bilmesi için, bu uygulamaların aynı İstemci Kimliğini veya Uygulama Kimliğini paylaşması gerekir. Bu, portala ilk uygulamanızı kaydettiğinizde size sağlanan benzersiz tanımlayıcıdır.
 
-Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
+Microsoft kimlik platformunun, aynı Uygulama Kimliğini ayrı kullanan uygulamalara yönlendirme **uri'leri**tarafından anlatılıyor. Her uygulama, biniş portalında kayıtlı birden çok Yönlendirme URIs'ine sahip olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Örnek:
 
-APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`  
-App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`  
-App3 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp3://auth`  
+App1 Uri Yönlendirme:`msauth.com.contoso.mytestapp1://auth`  
+App2 Redirect URI:`msauth.com.contoso.mytestapp2://auth`  
+App3 Redirect URI:`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Yeniden yönlendirme URI 'lerinin biçimi, [msal yeniden yönlendirme URI 'si biçim gereksinimleri](redirect-uris-ios.md#msal-redirect-uri-format-requirements)bölümünde belgelenen msal desteği biçimiyle uyumlu olmalıdır.
+> Yeniden yönlendirme uris biçimi MSAL destekler biçimi ile uyumlu olmalıdır, [Hangi MSAL Yönlendirme URI biçimi gereksinimleri](redirect-uris-ios.md#msal-redirect-uri-format-requirements)belgelenmiştir.
 
-### <a name="setup-keychain-sharing-between-applications"></a>Uygulamalar arasında Anahtarlık paylaşımı kurma
+### <a name="setup-keychain-sharing-between-applications"></a>Uygulamalar arasında anahtarlık paylaşımı
 
-Anahtarlık paylaşımını etkinleştirmek için Apple 'ın [özellik ekleme](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) makalesine bakın. Önemli olan şey, anahtarlarınızın ne şekilde çağrdığına karar vereceğinize ve bu yeteneği SSO 'ya dahil edilecek tüm uygulamalarınıza eklemektir.
+Anahtarlık paylaşımını etkinleştirmek için Apple'ın [Ekleme Özellikleri](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) makalesine bakın. Önemli olan, anahtarzincirinizin ne olarak adlandırılmasını istediğinize karar vermeniz ve bu yeteneği SSO'da yer alacak tüm uygulamalarınız için eklemenizdir.
 
-Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde bu örneğe benzer bir şey içeren bir `entitlements.plist` dosyası görürsünüz:
+Yetkilendirmeleri doğru ayarladığınızda, proje dizininizde aşağıdaki `entitlements.plist` gibi bir örnek içeren bir dosya görürsünüz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,19 +98,19 @@ Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde bu örneğ
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>Yeni bir anahtarlık grubu Ekle
+#### <a name="add-a-new-keychain-group"></a>Yeni bir anahtarlık grubu ekleme
 
-Proje **olanaklarınız**için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu şu olmalıdır:
-* iOS üzerinde `com.microsoft.adalcache` 
-* macOS üzerinde `com.microsoft.identity.universalstorage`.
+Proje **Yeteneklerinize**yeni bir anahtar zinciri grubu ekleyin. Anahtarlık grubu:
+* `com.microsoft.adalcache`iOS üzerinde 
+* `com.microsoft.identity.universalstorage`macOS'ta.
 
-![Anahtarlık örneği](media/single-sign-on-macos-ios/keychain-example.png)
+![anahtarlık örneği](media/single-sign-on-macos-ios/keychain-example.png)
 
-Daha fazla bilgi için bkz. [Anahtarlık grupları](howto-v2-keychain-objc.md).
+Daha fazla bilgi için [anahtarlık gruplarına](howto-v2-keychain-objc.md)bakın.
 
 ## <a name="configure-the-application-object"></a>Uygulama nesnesini yapılandırma
 
-Her bir uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra, SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun `MSALPublicClientApplication` yapılandırın:
+Her uygulamanızda anahtarlık yetkilendirmesini etkinleştirdikten ve SSO'yu kullanmaya hazır olduğunuzda, `MSALPublicClientApplication` aşağıdaki örnekte olduğu gibi anahtarzinciri erişim grubunuzla yapılandırın:
 
 Amaç-C:
 
@@ -122,7 +122,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -137,19 +137,19 @@ do {
 ```
 
 > [!WARNING]
-> Uygulamalarınız genelinde bir anahtarlık paylaştığınızda, herhangi bir uygulama kullanıcı veya hatta uygulamanızın tamamında tüm belirteçleri silebilir.
-> Arka plan çalışması yapmak için belirteçleri kullanan uygulamalarınız varsa, bu özellikle etkili bir şekilde belirlenir.
-> Anahtarlık paylaşımı, uygulamanız Microsoft Identity SDK kaldırma işlemlerini kullandığında çok dikkatli olmanız gerektiği anlamına gelir.
+> Uygulamalarınız arasında bir anahtar zinciri paylaştığınızda, herhangi bir uygulama kullanıcıları ve hatta uygulamanızdaki belirteçlerin tümünü silebilir.
+> Arka plan çalışması yapmak için belirteçlere dayanan uygulamalarınız varsa, bu özellikle etkili dir.
+> Anahtar zinciri paylaşmak, uygulamanız Microsoft kimlik SDK kaldırma işlemlerini kullanırken çok dikkatli olmalısınız anlamına gelir.
 
-İşte bu kadar! Microsoft Identity SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Hesap listesi, uygulama örnekleri arasında da paylaşılır.
+İşte bu kadar! Microsoft kimliği SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşır. Hesap listesi uygulama örnekleri arasında da paylaşılacaktır.
 
-## <a name="sso-through-authentication-broker-on-ios"></a>İOS üzerinde kimlik doğrulama Aracısı aracılığıyla SSO
+## <a name="sso-through-authentication-broker-on-ios"></a>Ios'ta Kimlik Doğrulama aracısı aracılığıyla SSO
 
-MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. Microsoft Authenticator, AAD kayıtlı cihazlar için SSO sağlar ve uygulamanızın koşullu erişim ilkelerini izlemesine de yardımcı olur.
+MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. Microsoft Authenticator, AAD'ye kayıtlı aygıtlar için SSO sağlar ve uygulamanızın Koşullu Erişim ilkelerini izlemesine yardımcı olur.
 
-Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
+Uygulamanız için bir kimlik doğrulama aracısı kullanarak SSO'yu nasıl etkinleştirdiğiniz aşağıda veda edilebilen adımlar şunlardır:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örnek:
+1. Uygulamaiçin uygulama için aracı uyumlu bir Yönlendirme URI biçimini uygulamanızın Info.plist'ine kaydedin. Broker uyumlu Redirect URI `msauth.<app.bundle.id>://auth`biçimidir. '<app.bundle.id>'' ile başvurunuzun paket kimliğini değiştirin. Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -158,7 +158,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. `LSApplicationQueriesSchemes`altındaki uygulamanızın Info. plist ' e aşağıdaki şemaları ekleyin:
+1. Uygulamanızın Info.plist aşağıdaki `LSApplicationQueriesSchemes`şemaları ekleyin:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -168,7 +168,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. Geri çağırmaları işlemek için `AppDelegate.m` dosyanıza aşağıdakileri ekleyin:
+1. Geri aramaları işlemek `AppDelegate.m` için dosyanıza aşağıdakileri ekleyin:
 
     Amaç-C:
     
@@ -179,7 +179,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-    SWIFT
+    Swift:
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -187,8 +187,8 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyasına yerleştirmeniz gerekir.
-Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
+**Xcode 11 kullanıyorsanız,** bunun yerine dosyaya `SceneDelegate` MSAL geri arama yerleştirmelisiniz.
+Eski iOS ile uyumluluk için hem UISceneDelegate'ı hem de UIApplicationDelegate'i destekliyorsanız, MSAL geri aramanın her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:
 
@@ -203,7 +203,7 @@ Amaç-C:
  }
 ```
 
-SWIFT
+Swift:
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -221,4 +221,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin
+[Kimlik Doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin

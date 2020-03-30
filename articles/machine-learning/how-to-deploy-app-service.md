@@ -1,7 +1,7 @@
 ---
-title: Ml modellerini Azure App Service dağıtma (Önizleme)
+title: ML modellerini Azure Uygulama Hizmetine dağıtın (önizleme)
 titleSuffix: Azure Machine Learning
-description: Azure App Service bir modeli bir Web uygulamasına dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin.
+description: Azure Uygulama Hizmeti'ndeki bir Web Uygulamasına bir model dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,71 +10,71 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 2a3e1f1997857ab9812fe87d5ec68b71e280e6ce
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 3e6cfde20d9f4d56af836e06b0c9a84010dea47b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122551"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282826"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
+# <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure Uygulama Hizmetine bir makine öğrenme modeli dağıtma (önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning bir modeli Azure App Service Web uygulaması olarak nasıl dağıtacağınızı öğrenin.
+Azure Uygulama Hizmeti'nde web uygulaması olarak Azure Machine Learning'den bir modeli nasıl dağıtılayın öğrenin.
 
 > [!IMPORTANT]
-> Hem Azure Machine Learning hem de Azure App Service genel kullanıma sunulduğunda Machine Learning hizmetinden App Service bir model dağıtabilme özelliği önizlemededir.
+> Hem Azure Machine Learning hem de Azure Uygulama Hizmeti genel olarak kullanılabilir olsa da, Machine Learning hizmetinden Uygulama Hizmeti'ne bir model dağıtma olanağı önizlemededir.
 
-Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
+Azure Machine Learning ile eğitimli makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu resim, verileri alan, modele gönderen ve sonra yanıtı döndüren bir web hizmeti içerir. Azure Uygulama Hizmeti görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
 
-* Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](/azure/app-service/configure-authentication-provider-aad) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
-* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) .
-* İstemcilerle hizmet arasında güvenli iletişim için [SSL desteği](/azure/app-service/configure-ssl-certificate-in-code) .
+* Gelişmiş güvenlik için gelişmiş [kimlik doğrulaması.](/azure/app-service/configure-authentication-provider-aad) Kimlik doğrulama yöntemleri hem Azure Etkin Dizini hem de çok faktörlü auth'u içerir.
+* Yeniden dağıtmak zorunda kalmadan [otomatik ölçeklendirin.](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)
+* İstemciler ve hizmet arasında güvenli iletişim için [TLS desteği.](/azure/app-service/configure-ssl-certificate-in-code)
 
-Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi için bkz. [App Service genel bakış](/azure/app-service/overview).
+Azure Uygulama Hizmeti tarafından sağlanan özellikler hakkında daha fazla bilgi için [Uygulama Hizmetine genel bakış'a](/azure/app-service/overview)bakın.
 
 > [!IMPORTANT]
-> Dağıtılan modelinizle kullanılan Puanlama verilerini veya Puanlama sonuçlarını günlüğe kaydetmek istiyorsanız, bunun yerine Azure Kubernetes hizmetine dağıtmanız gerekir. Daha fazla bilgi için bkz. [Üretim modellerinizde veri toplama](how-to-enable-data-collection.md).
+> Dağıtılmış modelinizde kullanılan puanlama verilerini veya puanlama sonuçlarını günlüğe kaydetme yeteneğine ihtiyacınız varsa, bunun yerine Azure Kubernetes Hizmeti'ne dağıtmanız gerekir. Daha fazla bilgi için [bkz.](how-to-enable-data-collection.md)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı](how-to-manage-workspace.md) oluştur makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](tutorial-train-models-with-aml.md) .
+* Çalışma alanınızda kayıtlı eğitimli bir makine öğrenme modeli. Bir modeliniz yoksa, Resim [sınıflandırma öğreticisini kullanın:](tutorial-train-models-with-aml.md) bir modeli eğitmek ve kaydetmek için model eğitin.
 
     > [!IMPORTANT]
-    > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
+    > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarladığınızvarsa varsaymaktadır:
     >
-    > * `ws`-Azure Machine Learning çalışma alanınız.
-    > * `model`-dağıtılacak kayıtlı model.
-    > * `inference_config`-modelin çıkarım yapılandırması.
+    > * `ws`- Azure Makine Öğrenimi çalışma alanınız.
+    > * `model`- Dağıtılacak kayıtlı model.
+    > * `inference_config`- Model için çıkarım yapılandırması.
     >
-    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için Azure [Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
 
-## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
+## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 
-Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken temel öğeler açıklanmaktadır:
+Dağıtmadan önce, modeli bir web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki liste, dağıtım için gereken temel öğeleri açıklar:
 
-* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+* Bir __giriş komut dosyası__. Bu komut dosyası istekleri kabul eder, modeli kullanarak isteği puanlar ve sonuçları döndürür.
 
     > [!IMPORTANT]
-    > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
+    > Giriş komut dosyası modelinize özgüdür; gelen istek verilerinin biçimini, modeliniz tarafından beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamanız gerekir.
     >
-    > İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, istemciye döndürmeden önce yanıtı dönüştürebilir.
+    > İstek verileri modeliniz tarafından kullanılabilir olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca istemciye dönmeden önce yanıtı dönüştürebilir.
 
     > [!IMPORTANT]
-    > Azure Machine Learning SDK, Web hizmeti için veri deposuna veya veri kümelerine erişim için bir yol sağlamaz. Dağıtım dışında depolanan verilere (örneğin, bir Azure depolama hesabında) erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
+    > Azure Machine Learning SDK, web hizmetinin veri deponuza veya veri kümelerinize erişmesi için bir yol sağlamaz. Bir Azure Depolama hesabı gibi dağıtım dışında depolanan verilere erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python için Azure Depolama SDK.](https://github.com/Azure/azure-storage-python)
     >
-    > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-use-parallel-run-step.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
+    > Senaryonuz için işe yada bir diğer alternatif de, puanlama sırasında veri depolarına erişim sağlayan [toplu iş tahminleridir.](how-to-use-parallel-run-step.md)
 
-    Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+    Giriş komut dosyaları hakkında daha fazla bilgi için Azure [Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
 
-* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
+* Giriş komut dosyasını veya modeli çalıştırmak için gereken yardımcı komut dosyaları veya Python/Conda paketleri gibi **bağımlılıklar**
 
-Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
+Bu varlıklar bir __çıkarım yapılandırmasına__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
-> Azure App Service ile kullanım için bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak > = 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
+> Azure Uygulama Hizmeti ile kullanılmak üzere çıkarım yapılandırması oluştururken bir [Ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, sürüm >= 1,0,45 pip bağımlılığı olarak azureml varsayılanları eklemeniz gerektiğini lütfen unutmayın. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve çıkarım yapılandırmasıyla kullanmayı gösterir:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -91,19 +91,19 @@ Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım ya
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
+Ortamlar hakkında daha fazla bilgi için [bkz.](how-to-use-environments.md)
 
-Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+Çıkarım yapılandırması hakkında daha fazla bilgi için [Azure Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
 
 > [!IMPORTANT]
-> Azure App Service ' ye dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
+> Azure Uygulama Hizmeti'ne dağıtılırken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
+Azure Uygulama Hizmetine dağıtılan Docker görüntüsünü oluşturmak için [Model.package'ı](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden yeni bir görüntü ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulabildiğini gösterir:
 
 > [!NOTE]
-> Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config`, çıkarım ortamının yapılandırmasını içerdiğini varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+> Kod snippet kayıtlı `model` bir model içeren ve `inference_config` çıkarım ortamı için yapılandırma içeren varsayar. Daha fazla bilgi için Azure [Machine Learning ile Modelleri Dağıt'a](how-to-deploy-and-where.md)bakın.
 
 ```python
 from azureml.core import Model
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-`show_output=True`, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum `<acrinstance>.azurecr.io/package:<imagename>`biçimindedir. Örneğin, `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem tamamlandığında, çalışma alanınız için görüntü Azure Kapsayıcı Kayıt Defteri'nde oluşturulur. Görüntü yüklendikten sonra Azure Konteyner Kayıt Defterinizdeki konum görüntülenir. Döndürülen konum biçimindedir. `<acrinstance>.azurecr.io/package:<imagename>` Örneğin, `myml08024f78fd10.azurecr.io/package:20190827151241`.
 
 > [!IMPORTANT]
-> Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
+> Görüntüyü dağıtırken kullanıldığı gibi konum bilgilerini kaydedin.
 
-## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
+## <a name="deploy-image-as-a-web-app"></a>Görüntüyü web uygulaması olarak dağıtma
 
-1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. `<acrinstance>`, daha önce `package.location`döndürülen TH değeri ile değiştirin:
+1. Görüntüyü içeren Azure Kapsayıcı Kayıt Defteri'nin giriş kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<acrinstance>` önce döndürülen th `package.location`e değeri ile değiştirin:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -147,25 +147,25 @@ print(package.location)
 
     __Kullanıcı adı__ ve __parolalardan__biri için değeri kaydedin.
 
-1. Hizmeti dağıtmaya yönelik bir kaynak grubunuz veya App Service planınız yoksa, aşağıdaki komutlar her ikisinin de nasıl oluşturulacağını gösterir:
+1. Hizmeti dağıtmak için zaten bir kaynak grubunuz veya uygulama hizmet planınız yoksa, aşağıdaki komutlar her ikisini birden nasıl oluşturabileceğinizi gösterir:
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Bu örnekte, __temel__ bir fiyatlandırma katmanı (`--sku B1`) kullanılır.
+    Bu örnekte, __temel__ fiyatlandırma`--sku B1`katmanı ( ) kullanılır.
 
     > [!IMPORTANT]
-    > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
+    > Azure Machine Learning tarafından oluşturulan görüntüler Linux'u kullanır, bu nedenle parametreyi `--is-linux` kullanmanız gerekir.
 
-1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin:
+1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Daha `<acrinstance>` `<imagename>` önce döndürülen `package.location` değerlerle değiştirin:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
     ```
 
-    Bu komut aşağıdaki JSON belgesine benzer bilgiler döndürür:
+    Bu komut, aşağıdaki JSON belgesine benzer bilgileri döndürür:
 
     ```json
     {
@@ -186,15 +186,15 @@ print(package.location)
     ```
 
     > [!IMPORTANT]
-    > Bu noktada, Web uygulaması oluşturulmuştur. Ancak, görüntüyü içeren Azure Container Registry kimlik bilgilerini sağlamadıysanız, Web uygulaması etkin değildir. Bir sonraki adımda, kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız.
+    > Bu noktada, web uygulaması oluşturuldu. Ancak, görüntüyü içeren Azure Kapsayıcı Kayıt Defteri'ne kimlik bilgilerini sağlamadığınız için, web uygulaması etkin değildir. Bir sonraki adımda, kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız.
 
-1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin. `<username>` ve `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
+1. Web uygulamasına konteyner kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Daha `<acrinstance>` `<imagename>` önce döndürülen `package.location` değerlerle değiştirin. Daha `<username>` `<password>` önce alınan ACR giriş bilgilerini değiştirin ve bu bilgilerle değiştirin:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
-    Bu komut aşağıdaki JSON belgesine benzer bilgiler döndürür:
+    Bu komut, aşağıdaki JSON belgesine benzer bilgileri döndürür:
 
     ```json
     [
@@ -225,7 +225,7 @@ print(package.location)
     ]
     ```
 
-Bu noktada, Web uygulaması görüntüyü yüklemeye başlar.
+Bu noktada, web uygulaması görüntüyü yüklemeye başlar.
 
 > [!IMPORTANT]
 > Görüntünün yüklenmesi birkaç dakika sürebilir. İlerlemeyi izlemek için aşağıdaki komutu kullanın:
@@ -234,7 +234,7 @@ Bu noktada, Web uygulaması görüntüyü yüklemeye başlar.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Görüntü yüklendikten ve site etkin olduktan sonra, günlük `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`bildiren bir ileti görüntüler.
+> Görüntü yüklendikten ve site etkin hale geldikten sonra, `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`günlük belirten bir ileti görüntüler.
 
 Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisayar adını bulabilirsiniz:
 
@@ -242,11 +242,11 @@ Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisaya
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Bu komut aşağıdaki ana bilgisayar adına benzer bilgileri döndürür `<app-name>.azurewebsites.net`. Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
+Bu komut, aşağıdaki ana bilgisayar `<app-name>.azurewebsites.net`adına benzer bilgileri döndürür - . Bu değeri hizmet için __temel url'nin__ bir parçası olarak kullanın.
 
-## <a name="use-the-web-app"></a>Web uygulamasını kullanma
+## <a name="use-the-web-app"></a>Web Uygulamasını Kullanma
 
-İstekleri modele geçiren Web hizmeti `{baseurl}/score`konumunda bulunur. Örneğin, `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
+İstekleri modele aktaran web hizmeti `{baseurl}/score`. Örneğin, `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL'ye nasıl veri gönderilen ve yanıtı nasıl görüntülenebildiğini gösterir:
 
 ```python
 import requests
@@ -269,8 +269,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Linux belgelerindeki App Service](/azure/app-service/containers/) Web uygulamanızı yapılandırmayı öğrenin.
-* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
-* [Azure App Service BIR SSL sertifikası kullanın](/azure/app-service/configure-ssl-certificate-in-code).
-* [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](/azure/app-service/configure-authentication-provider-aad).
-* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)
+* Web Uygulamanızı Linux belgelerinde [Uygulama Hizmeti'nde](/azure/app-service/containers/) yapılandırmayı öğrenin.
+* [Azure'da Otomatik Ölçekleme ile başlayın'da](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)ölçeklendirme hakkında daha fazla bilgi edinin.
+* [Azure Uygulama Hizmetinizde TLS/SSL sertifikası kullanın.](/azure/app-service/configure-ssl-certificate-in-code)
+* [Uygulama Hizmeti uygulamanızı Azure Active Directory oturum unu kullanacak şekilde yapılandırın.](/azure/app-service/configure-authentication-provider-aad)
+* [Web hizmeti olarak dağıtılan bir ML Modelini tüketin](how-to-consume-web-service.md)

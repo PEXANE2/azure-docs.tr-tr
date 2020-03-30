@@ -1,9 +1,9 @@
 ---
-title: Azure AD deposu verileri ne kadar süreyle bildiriyor? | Microsoft Docs
-description: Azure 'un çeşitli raporlama verisi türlerini ne kadar depoladığını öğrenin.
+title: Azure AD raporlama verilerini ne kadar süreyle depolar? | Microsoft Belgeleri
+description: Azure'un çeşitli raporlama verilerini ne kadar süreyle depoladığını öğrenin.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
@@ -13,72 +13,73 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: chadam
+ms.date: 03/24/2020
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52f8873527d92e621ef032f5bc3e82d3364a691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239554"
 ---
-# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD deposu verileri ne kadar süreyle bildiriyor?
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD raporlama verilerini ne kadar süreyle depolar?
 
-Bu makalede, Azure Active Directory farklı etkinlik raporları için veri bekletme ilkeleri hakkında bilgi edineceksiniz. 
+
+Bu makalede, Azure Etkin Dizini'ndeki farklı etkinlik raporlarının veri saklama ilkeleri hakkında bilgi edinebilirsiniz. 
 
 ### <a name="when-does-azure-ad-start-collecting-data"></a>Azure AD ne zaman veri toplamaya başlar?
 
-| Azure AD sürümü | Koleksiyon başlangıcı |
+| Azure AD Sürümü | Toplama Başlat |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Abonelik için kaydolduğunuzda |
-| Azure AD Ücretsiz <br /> Azure AD Basic | [Azure Active Directory dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) ilk açışınızda veya [Raporlama API 'lerini](https://aka.ms/aadreports) kullandığınızda  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Bir abonelik için kaydolduğunuzda |
+| Azure AD Ücretsiz| [Azure Active Directory bıçağını](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) ilk kez açtığınızda veya [raporlama API'lerini](https://aka.ms/aadreports) kullandığınızda  |
 
 ---
 
-### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Azure portal etkinlik verileri ne zaman kullanılabilir?
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Etkinlik verileri Azure portalında ne zaman kullanılabilir?
 
-- **Hemen** -Azure Portal raporlarla zaten çalışıyorsanız.
-- **2 saat içinde** -Azure Portal raporlamayı açmadıysanız.
-
----
-
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium lisans aldıktan sonra etkinlik verilerini ne kadar yakında görebilirim?
-
-Ücretsiz lisansınız olan etkinlik verileriniz zaten varsa, yükseltme sırasında hemen görebilirsiniz. Hiç veriniz yoksa, Premium lisansa yükselttikten sonra verilerin raporlarda gösterilmesi bir veya iki gün sürer.
+- **Hemen** - Azure portalındaki raporlarla zaten çalışıyorsanız.
+- **2 saat içinde** - Azure portalında raporlamayı açamadıysanız.
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Bir Azure AD Premium lisansı aldıktan sonra geçen aya ait verileri görebilir miyim?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium lisans aldıktan sonra etkinlik verilerini ne kadar sürede görebiliyorum?
 
-Yakın zamanda bir premium sürüme (deneme sürümü dahil) geçiş yaptıysanız, başlangıçta verileri en fazla 7 güne kadar görebilirsiniz. Veriler birikme sırasında son 30 güne ait verileri görebilirsiniz.
-
----
-
-### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD, güvenlik sinyali verilerini toplamaya ne zaman başlar?  
-
-Güvenlik sinyalleri için, **kimlik koruma merkezini**kullanmayı tercih ettiğinizde koleksiyon işlemi başlar. 
+Zaten ücretsiz lisans ile etkinlik verileri varsa, o zaman yükseltme hemen görebilirsiniz. Herhangi bir veriniz yoksa, premium lisansa yükselttikten sonra verilerin raporlarda gösterilmesi bir veya iki gün sürer.
 
 ---
 
-### <a name="how-long-does-azure-ad-store-the-data"></a>Azure AD verileri ne kadar süreyle depolar?
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Azure AD premium lisansı aldıktan sonra geçen ayın verilerini görebilir miyim?
+
+Yakın zamanda premium bir sürüme (deneme sürümü de dahil) geçtiyseniz, başlangıçta 7 güne kadar veriyi görebilirsiniz. Veriler biriktiğinde, son 30 güne ait verileri görebilirsiniz.
+
+---
+
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD güvenlik sinyali verilerini toplamaya ne zaman başlar?  
+
+Güvenlik sinyalleri için, **kimlik koruma merkezini**kullanmayı tercih ettiğinizde toplama işlemi başlar. 
+
+---
+
+### <a name="how-long-does-azure-ad-store-the-data"></a>Azure AD verileri ne kadar süreyle saklar?
 
 **Etkinlik raporları**    
 
-| Rapor                 | Azure AD Ücretsiz | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--            | :--                 | :--                 |
-| Denetim günlükleri             | 7 gün        |  7 gün        | 30 gün             | 30 gün             |
-| Oturum açma işlemleri               | Yok           |  Yok           | 30 gün             | 30 gün             |
-| Azure MFA kullanımı        | 30 gün       |  30 gün       | 30 gün             | 30 gün             |
+| Rapor                 | Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--                 | :--                 |
+| Denetim günlükleri             | 7 gün        | 30 gün             | 30 gün             |
+| Oturum açma işlemleri               | 7 gün        | 30 gün             | 30 gün             |
+| Azure MFA kullanımı        | 30 gün       | 30 gün             | 30 gün             |
 
-Azure Izleyici 'yi kullanarak bir Azure depolama hesabına yönlendirerek, yukarıda özetlenen varsayılan saklama süresinden daha uzun bir süre için denetim ve oturum açma etkinlik verilerini koruyabilirsiniz. Daha fazla bilgi için bkz. Azure [ad günlüklerini bir Azure depolama hesabına arşivleme](quickstart-azure-monitor-route-logs-to-storage-account.md).
+Denetim ve oturum açma etkinliği verilerini, Azure Monitor'u kullanarak bir Azure depolama hesabına yönlendirme yaparak yukarıda özetlenen varsayılan bekletme döneminden daha uzun süre saklayabilirsiniz. Daha fazla bilgi için [bkz.](quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 **Güvenlik sinyalleri**
 
-| Rapor         | Azure AD Ücretsiz | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--            | :--                 | :--                 |
-| Risk altındaki kullanıcılar  | 7 gün        | 7 gün         | 30 gün             | 90 gün             |
-| Riskli oturum açma işlemleri | 7 gün        | 7 gün         |  30 gün            | 90 gün             |
+| Rapor         | Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--                 | :--                 |
+| Risk altındaki kullanıcılar  | 7 gün        | 30 gün             | 90 gün             |
+| Riskli oturum açma işlemleri | 7 gün        | 30 gün             | 90 gün             |
 
 ---

@@ -1,6 +1,6 @@
 ---
-title: Azure 'dan Azure 'a olağanüstü durum kurtarma mimarisi Azure Site Recovery
-description: Azure Site Recovery hizmetini kullanarak Azure VM 'Leri için Azure bölgeleri arasında olağanüstü durum kurtarmayı ayarlarken kullanılan mimariye genel bakış.
+title: Azure'dan Azure'a olağanüstü durum kurtarma mimarisi Azure Site Kurtarma'da
+description: Azure Site Kurtarma hizmetini kullanarak Azure VM'leri için Azure bölgeleri arasında olağanüstü durum kurtarma ayarlarken kullanılan mimariye genel bakış.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,175 +8,175 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371622"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294109"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
 
-Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak Azure sanal makineleri (VM) için olağanüstü durum kurtarma dağıtırken kullanılan mimari, bileşenler ve süreçler açıklanmaktadır. Olağanüstü durum kurtarma kurulumu ile Azure VM 'Leri, farklı bir hedef bölgeye sürekli olarak çoğaltılır. Bir kesinti oluşursa, VM 'Lerin yükünü ikincil bölgeye devreder ve oradan bunlara erişebilirsiniz. Her şey normal şekilde çalıştığında, yeniden devreder ve birincil konumda çalışmaya devam edebilirsiniz.
+Bu makalede, [Azure Site Kurtarma](site-recovery-overview.md) hizmetini kullanarak Azure sanal makineleri (VM) için olağanüstü durum kurtarma dağıtırken kullanılan mimari, bileşenler ve işlemler açıklanmaktadır. Olağanüstü durum kurtarma kurulumuyla, Azure VM'leri sürekli olarak farklı bir hedef bölgeye çoğaltır. Bir kesinti oluşursa, ikincil bölgeye VM üzerinden başarısız olabilir ve bu nedenle bunlara erişebilirsiniz. Her şey normal şekilde yeniden çalıştığında, geri başarısız olabilir ve birincil konumda çalışmaya devam edebilirsiniz.
 
 
 
 ## <a name="architectural-components"></a>Mimari bileşenler
 
-Azure VM 'Leri için olağanüstü durum kurtarma ile ilgili bileşenler aşağıdaki tabloda özetlenmiştir.
+Azure Sanal Taşıtları için olağanüstü durum kurtarma yla ilgili bileşenler aşağıdaki tabloda özetlenmiştir.
 
 **Bileşen** | **Gereksinimler**
 --- | ---
-**Kaynak bölgedeki sanal makineler** | [Desteklenen bir kaynak bölgedeki](azure-to-azure-support-matrix.md#region-support)Azure VM 'lerinden biridir.<br/><br/> Sanal makineler desteklenen herhangi bir [işletim sistemini](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)çalıştırıyor olabilir.
-**Kaynak VM depolaması** | Azure VM 'Leri yönetilebilir veya depolama hesaplarına dağılmış yönetilmeyen disklere sahip olabilir.<br/><br/>Desteklenen Azure depolama [hakkında bilgi edinin](azure-to-azure-support-matrix.md#replicated-machines---storage) .
-**Kaynak VM ağları** | VM 'Ler kaynak bölgedeki bir sanal ağdaki (VNet) bir veya daha fazla alt ağda yer alabilir. Ağ gereksinimleri hakkında [daha fazla bilgi edinin](azure-to-azure-support-matrix.md#replicated-machines---networking) .
-**Önbellek depolama hesabı** | Kaynak ağda bir önbellek depolama hesabı gerekir. Çoğaltma sırasında, VM değişiklikleri hedef depolamaya gönderilmeden önce önbellekte depolanır.  Önbellek depolama hesaplarının standart olması gerekir.<br/><br/> Önbellek kullanmak, bir VM 'de çalışan üretim uygulamaları üzerinde en düşük etkiyi sağlar.<br/><br/> Önbellek depolama gereksinimleri hakkında [daha fazla bilgi edinin](azure-to-azure-support-matrix.md#cache-storage) . 
-**Hedef kaynaklar** | Hedef kaynaklar çoğaltma sırasında ve bir yük devretme gerçekleştiğinde kullanılır. Site Recovery, varsayılan olarak hedef kaynağı ayarlayabilir veya bunları oluşturabilir/özelleştirebilirsiniz.<br/><br/> Hedef bölgede, VM 'Ler oluşturabiliyor ve aboneliğinizin hedef bölgede gerekli olacak VM boyutlarını desteklemek için yeterli kaynağa sahip olup olmadığını denetleyin. 
+**Kaynak bölgedeki VM'ler** | [Desteklenen kaynak bölgedeki](azure-to-azure-support-matrix.md#region-support)azure vm'lerinden biri daha.<br/><br/> VM'ler desteklenen herhangi bir [işletim sistemini](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)çalıştırıyor olabilir.
+**Kaynak VM depolama** | Azure VM'leri yönetilebilir veya yönetilmeyen disklerin depolama hesaplarına yayılmasına neden olabilir.<br/><br/>Desteklenen Azure depolama [alanı hakkında bilgi edinin.](azure-to-azure-support-matrix.md#replicated-machines---storage)
+**Kaynak VM ağları** | VM'ler kaynak bölgede bir sanal ağda (VNet) bir veya daha fazla alt ağda bulunabilir. Ağ gereksinimleri hakkında [daha fazla bilgi edinin.](azure-to-azure-support-matrix.md#replicated-machines---networking)
+**Önbellek depolama hesabı** | Kaynak ağda bir önbellek depolama hesabına ihtiyacınız var. Çoğaltma sırasında, VM değişiklikleri hedef depolamaya gönderilmeden önce önbellekte depolanır.  Önbellek depolama hesapları Standart olmalıdır.<br/><br/> Önbellek kullanmak, VM üzerinde çalışan üretim uygulamaları üzerinde en az etkiyi sağlar.<br/><br/> Önbellek depolama gereksinimleri hakkında [daha fazla bilgi edinin.](azure-to-azure-support-matrix.md#cache-storage) 
+**Hedef kaynakları** | Hedef kaynaklar çoğaltma sırasında ve bir hata oluştuğunda kullanılır. Site Kurtarma varsayılan olarak hedef kaynağı ayarlayabilir veya bunları oluşturabilir/özelleştirebilirsiniz.<br/><br/> Hedef bölgede, VM'ler oluşturup oluşturabildiğinizi ve aboneliğinizin hedef bölgede ihtiyaç duyulacak VM boyutlarını desteklemek için yeterli kaynağa sahip olup olmadığını denetleyin. 
 
 ![Kaynak ve hedef çoğaltma](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
-## <a name="target-resources"></a>Hedef kaynaklar
+## <a name="target-resources"></a>Hedef kaynakları
 
-Bir sanal makine için çoğaltmayı etkinleştirdiğinizde Site Recovery, hedef kaynakları otomatik olarak oluşturma seçeneğini sağlar. 
+Bir VM için çoğaltmayı etkinleştirdiğinizde, Site Kurtarma otomatik olarak hedef kaynakları oluşturma seçeneği verir. 
 
 **Hedef kaynak** | **Varsayılan ayar**
 --- | ---
 **Hedef abonelik** | Kaynak abonelikle aynı.
-**Hedef kaynak grubu** | VM 'Lerin yük devretmeden sonra ait olduğu kaynak grubu.<br/><br/> Kaynak bölgesi dışında herhangi bir Azure bölgesinde olabilir.<br/><br/> Site Recovery, hedef bölgede "ASR" sonekine sahip yeni bir kaynak grubu oluşturur.<br/><br/>
-**Hedef VNet** | Çoğaltılan VM 'Lerin yük devretme sonrasında bulunduğu sanal ağ (VNet). Kaynak ve hedef sanal ağlar arasında bir ağ eşlemesi oluşturulur ve tam tersi de geçerlidir.<br/><br/> Site Recovery, "ASR" sonekine sahip yeni bir VNet ve alt ağ oluşturur.
-**Hedef depolama hesabı** |  VM, yönetilen bir disk kullanmıyorsa, verilerin çoğaltılacağı depolama hesabıdır.<br/><br/> Site Recovery, kaynak depolama hesabını yansıtmak için hedef bölgede yeni bir depolama hesabı oluşturur.
-**Yönetilen çoğaltma diskleri** | VM yönetilen bir disk kullanıyorsa, bu, verilerin çoğaltılacağı yönetilen disklerdir.<br/><br/> Site Recovery, kaynağı yansıtmak için depolama bölgesinde çoğaltma tarafından yönetilen diskler oluşturur.
-**Hedef kullanılabilirlik kümeleri** |  Çoğaltma VM 'lerinin yük devretme sonrasında bulunduğu kullanılabilirlik kümesi.<br/><br/> Site Recovery, kaynak konumdaki bir kullanılabilirlik kümesinde bulunan VM 'Ler için, hedef bölgede "ASR" sonekine sahip bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümesi varsa, kullanılır ve yeni bir tane oluşturulmaz.
-**Hedef kullanılabilirlik alanları** | Hedef bölge kullanılabilirlik bölgelerini destekliyorsa Site Recovery, kaynak bölgede kullanılan aynı bölge numarasını atar.
+**Hedef kaynak grubu** | Başarısız olduktan sonra VM'lerin ait olduğu kaynak grubu.<br/><br/> Kaynak bölge dışında herhangi bir Azure bölgesinde olabilir.<br/><br/> Site Kurtarma hedef bölgede "asr" soneki ile yeni bir kaynak grubu oluşturur.<br/><br/>
+**Hedef VNet** | Çoğaltılan VM'lerin başarısız olduktan sonra bulunduğu sanal ağ (VNet). Kaynak ve hedef sanal ağlar arasında bir ağ eşleme oluşturulur ve bunun tersi de vardır.<br/><br/> Site Kurtarma yeni bir VNet ve alt ağ oluşturur, "asr" soneki ile.
+**Hedef depolama hesabı** |  VM yönetilen bir disk kullanmıyorsa, bu verilerin çoğaltıldığı depolama hesabıdır.<br/><br/> Site Kurtarma, kaynak depolama hesabını yansıtmak için hedef bölgede yeni bir depolama hesabı oluşturur.
+**Yineleme yönetilen diskler** | VM yönetilen bir disk kullanıyorsa, bu, verilerin çoğaltıldığı yönetilen disklertir.<br/><br/> Site Kurtarma, kaynağı yansıtmak için depolama bölgesinde yineleme yönetilen diskler oluşturur.
+**Hedef kullanılabilirlik kümeleri** |  Başarısız olduktan sonra çoğaltma VM'lerinin bulunduğu kullanılabilirlik kümesi.<br/><br/> Site Kurtarma, kaynak konumda ayarlanan bir kullanılabilirlik kümesinde bulunan VM'ler için hedef bölgede "asr" sonekiyle bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümesi varsa, kullanılır ve yeni si oluşturulmaz.
+**Hedef kullanılabilirlik bölgeleri** | Hedef bölge kullanılabilirlik bölgelerini destekliyorsa, Site Kurtarma kaynak bölgede kullanılan la aynı bölge numarasını atar.
 
 ### <a name="managing-target-resources"></a>Hedef kaynakları yönetme
 
-Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
+Hedef kaynakları aşağıdaki gibi yönetebilirsiniz:
 
-- Çoğaltmayı etkinleştirdiğinizde hedef ayarları değiştirebilirsiniz.
-- Hedef ayarları, çoğaltma zaten çalıştıktan sonra değiştirebilirsiniz. Özel durum kullanılabilirlik türüdür (tek örnek, küme veya bölge). Bu ayarı değiştirmek için çoğaltmayı devre dışı bırakmanız, ayarı değiştirmeniz ve ardından yeniden etkinleştirmeniz gerekir.
+- Çoğaltmayı etkinleştirirken hedef ayarlarını değiştirebilirsiniz.
+- Çoğaltma zaten çalışmaya başladıktan sonra hedef ayarlarını değiştirebilirsiniz. Özel durum kullanılabilirlik türüdür (tek örnek, küme veya bölge). Bu ayarı değiştirmek için çoğaltmayı devre dışı bırakıp, ayarı değiştirmeniz ve ardından yeniden etkinleştirmeniz gerekir.
 
 
 
 ## <a name="replication-policy"></a>Çoğaltma ilkesi 
 
-Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
+Azure VM çoğaltmayı etkinleştirdiğinizde, varsayılan olarak Site Kurtarma tabloda özetlenen varsayılan ayarları içeren yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
+**İlke ayarı** | **Şey** | **Varsayılan**
 --- | --- | ---
-**Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
-**Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir
+**Kurtarma noktası tutma** | Site Kurtarma'nın kurtarma noktalarını ne kadar tuttuğunu belirtir | 24 saat
+**Uygulama tutarlı anlık görüntü frekansı** | Site Kurtarma'nın uygulama tutarlı bir anlık görüntü alma sıklığı. | Her dört saatte bir
 
 ### <a name="managing-replication-policies"></a>Çoğaltma ilkelerini yönetme
 
-Varsayılan çoğaltma ilkeleri ayarlarını yönetebilir ve şu şekilde değiştirebilirsiniz:
-- Çoğaltmayı etkinleştirdiğiniz sürece ayarları değiştirebilirsiniz.
-- Dilediğiniz zaman bir çoğaltma ilkesi oluşturabilir ve sonra çoğaltmayı etkinleştirdiğinizde uygulayabilirsiniz.
+Varsayılan çoğaltma ilkeleri ayarlarını aşağıdaki gibi yönetebilir ve değiştirebilirsiniz:
+- Çoğaltmayı etkinleştirirken ayarları değiştirebilirsiniz.
+- İstediğiniz zaman bir çoğaltma ilkesi oluşturabilir ve çoğaltmayı etkinleştirdiğinizde uygulayabilirsiniz.
 
 ### <a name="multi-vm-consistency"></a>Çoklu VM tutarlılığı
 
-VM 'Lerin birlikte çoğaltılmasını ve yük devretmeyle tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahip olmasını istiyorsanız, bunları bir çoğaltma grubunda toplayabilirsiniz. Çoklu VM tutarlılığı, iş yükü performansını etkiler ve yalnızca tüm makineler arasında tutarlılık gerektiren iş yüklerini çalıştıran VM 'Ler için kullanılmalıdır. 
+VM'lerin birlikte çoğaltılmasını istiyorsanız ve başarısız olan kilitlenme tutarlıve uygulama tutarlı kurtarma noktalarını paylaştıysanız, bunları bir çoğaltma grubunda bir araya getirebilirsiniz. Multi-VM tutarlılık iş yükü performansını etkiler ve yalnızca tüm makinelerde tutarlılık gerektiren iş yüklerini çalıştıran VM'ler için kullanılmalıdır. 
 
 
 
 ## <a name="snapshots-and-recovery-points"></a>Anlık görüntüler ve kurtarma noktaları
 
-Kurtarma noktaları, belirli bir zaman noktasında alınan VM disklerinin anlık görüntülerinden oluşturulur. Bir VM 'nin yükünü devretmek için, hedef konumdaki VM 'yi geri yüklemek üzere bir kurtarma noktası kullanırsınız.
+Kurtarma noktaları, belirli bir zamanda alınan VM disklerinin anlık görüntülerinden oluşturulur. Bir VM üzerinde başarısız olduğunuzda, hedef konumda VM geri yüklemek için bir kurtarma noktası kullanın.
 
-Yük devretme sırasında, genellikle VM 'nin bozulma veya veri kaybı olmadan başlamasını ve VM verilerinin işletim sistemi için ve VM 'de çalışan uygulamalar için tutarlı olmasını sağlamak istiyoruz. Bu, alınan anlık görüntülerin türüne bağlıdır.
+Başarısız olduğunda, genellikle VM'nin herhangi bir bozulma veya veri kaybı olmadan başladığından ve VM verilerinin işletim sistemi ve VM'de çalışan uygulamalar için tutarlı olduğundan emin olmak isteriz. Bu, çekilen anlık görüntü türüne bağlıdır.
 
-Site Recovery anlık görüntüleri aşağıdaki gibi alır:
+Site Kurtarma aşağıdaki gibi anlık alır:
 
-1. Site Recovery, varsayılan olarak verilerin çökme ile tutarlı anlık görüntülerini ve bunlar için bir sıklık belirtirseniz uygulamayla tutarlı anlık görüntüleri alır.
-2. Kurtarma noktaları anlık görüntülerden oluşturulur ve çoğaltma ilkesindeki bekletme ayarlarına uygun olarak depolanır.
+1. Site Kurtarma, varsayılan olarak verilerin kilitlenme tutarlı anlık görüntülerini ve bunlar için bir sıklık belirtirseniz uygulama tutarlı anlık görüntüler alır.
+2. Kurtarma noktaları anlık görüntülerden oluşturulur ve çoğaltma ilkesindeki bekletme ayarlarına göre depolanır.
 
 ### <a name="consistency"></a>Tutarlılık
 
-Aşağıdaki tabloda farklı türlerde tutarlılık açıklanmaktadır.
+Aşağıdaki tabloda farklı tutarlılık türleri açıklanmaktadır.
 
-### <a name="crash-consistent"></a>Kilitlenme ile tutarlı
+### <a name="crash-consistent"></a>Kilitlenme tutarlılığı
 
-**Açıklama** | **Ayrıntılar** | **Önerilen**
+**Açıklama** | **Şey** | **Öneri**
 --- | --- | ---
-Kilitlenme ile tutarlı bir anlık görüntü, anlık görüntü çekilirken diskteki verileri yakalar. Bellekte herhangi bir şey içermez.<br/><br/> VM kilitlenirse veya güç kablosu anlık görüntünün alındığı anlık sunucudan çekilmişse mevcut olan disk üzerindeki verilerin eşdeğerini içerir.<br/><br/> Kilitlenme tutarlılığı, işletim sistemi veya VM 'deki uygulamalar için veri tutarlılığı garantisi vermez. | Site Recovery, varsayılan olarak her beş dakikada bir çökme ile tutarlı kurtarma noktaları oluşturur. Bu ayar değiştirilemez.<br/><br/>  | Günümüzde, çoğu uygulama kilitlenme ile tutarlı noktalarından iyi bir şekilde kurtarabilir.<br/><br/> Kilitlenme tutarlı kurtarma noktaları, genellikle işletim sistemlerinin ve DHCP sunucuları ve yazdırma sunucuları gibi uygulamaların çoğaltılması için yeterlidir.
+Kilitlenme tutarlı anlık görüntü, anlık görüntü alındığında diskteki verileri yakalar. Hafızada hiçbir şey yok.<br/><br/> VM kilitlenirse veya anlık görüntünün çekildiği anda güç kablosu sunucudan çekilirse, mevcut olacak disk üzerindeki verilerin eşdeğerini içerir.<br/><br/> Kilitlenme tutarlılığı, işletim sistemi veya VM'deki uygulamalar için veri tutarlılığını garanti etmez. | Site Kurtarma varsayılan olarak her beş dakikada bir kilitlenme tutarlı kurtarma noktaları oluşturur. Bu ayar değiştirilemez.<br/><br/>  | Günümüzde çoğu uygulama, kilitlenme tutarlı noktalarından iyi bir şekilde kurtulabilir.<br/><br/> Kilitlenme tutarlı kurtarma noktaları genellikle işletim sistemlerinin çoğaltılması ve DHCP sunucuları ve yazdırma sunucuları gibi uygulamalar için yeterlidir.
 
-### <a name="app-consistent"></a>Uygulamayla tutarlı
+### <a name="app-consistent"></a>Uygulama tutarlılığı
 
-**Açıklama** | **Ayrıntılar** | **Önerilen**
+**Açıklama** | **Şey** | **Öneri**
 --- | --- | ---
-Uygulamayla tutarlı kurtarma noktaları, uygulamayla tutarlı anlık görüntülerden oluşturulur.<br/><br/> Uygulamayla tutarlı bir anlık görüntü, kilitlenme ile tutarlı bir anlık görüntüdeki tüm bilgileri, ayrıca bellekteki tüm verileri ve devam eden işlemleri içerir. | Uygulamayla tutarlı anlık görüntüler Birim Gölge Kopyası Hizmeti (VSS) kullanır:<br/><br/>   1) bir anlık görüntü başlatıldığında VSS, birimde bir kopyalama-yazma (COW) işlemi gerçekleştirir.<br/><br/>   2) COW 'yı gerçekleştirmeden önce VSS, makinede bellekte yerleşik verileri diske temizlemesi için gereken her uygulamayı bilgilendirir.<br/><br/>   3) VSS daha sonra yedekleme/olağanüstü durum kurtarma uygulamasının (Bu durumda Site Recovery) anlık görüntü verilerini okumasını ve devam etmesini sağlar. | Uygulamayla tutarlı anlık görüntüler, belirttiğiniz sıklığa göre yapılır. Bu sıklık, kurtarma noktalarını saklamak için ayarlamış olduğunuz her zaman daha az olmalıdır. Örneğin, varsayılan 24 saat ayarını kullanarak kurtarma noktalarını koruuyorsanız, sıklığı 24 saatten az olacak şekilde ayarlamanız gerekir.<br/><br/>Daha karmaşıktır ve kilitlenmeyle tutarlı anlık görüntülerden daha uzun sürer.<br/><br/> Çoğaltma için etkin bir VM üzerinde çalışan uygulamaların performansını etkiler. 
+Uygulama tutarlı kurtarma noktaları, uygulama tutarlı anlık görüntülerden oluşturulur.<br/><br/> Uygulama tutarlı anlık görüntü, kilitlenme tutarlı anlık görüntüdeki tüm bilgilerin yanı sıra bellekteki ve devam eden işlemlerdeki tüm verileri içerir. | Uygulama tutarlı anlık görüntüler, Birim Gölge Kopyalama Hizmeti'ni (VSS):<br/><br/>   1) Anlık görüntü başlatıldığında, VSS birim üzerinde bir kopya-on-write (COW) işlemi gerçekleştirir.<br/><br/>   2) COW'u gerçekleştirmeden önce VSS, makinedeki her uygulamayı bellekte yerleşik verilerini diske çekmesi için bilgilendirir.<br/><br/>   3) VSS sonra yedekleme / olağanüstü durum kurtarma uygulaması (bu durumda Site Kurtarma) anlık verileri okumak ve devam sağlar. | Uygulama tutarlı anlık görüntüler, belirttiğiniz frekansa göre alınır. Bu sıklık her zaman kurtarma noktalarını korumak için ayarladığınızdan daha az olmalıdır. Örneğin, varsayılan 24 saatlik ayarı kullanarak kurtarma noktalarını korursanız, sıklığı 24 saatten az olarak ayarlamanız gerekir.<br/><br/>Bunlar daha karmaşıktır ve çarpışma tutarlı anlık görüntülerden daha uzun sürer.<br/><br/> Çoğaltma için etkin leştirilmiş bir VM üzerinde çalışan uygulamaların performansını etkiler. 
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-Azure VM için çoğaltmayı etkinleştirdiğinizde aşağıdakiler olur:
+Bir Azure VM için çoğaltmayı etkinleştirdiğinizde aşağıdaki ler olur:
 
-1. Site Recovery Mobility hizmeti uzantısı, sanal makineye otomatik olarak yüklenir.
-2. Uzantı, VM 'yi Site Recovery kaydeder.
-3. VM için sürekli çoğaltma başlar.  Disk yazmaları, kaynak konumdaki önbellek depolama hesabına hemen aktarılır.
-4. Site Recovery önbellekteki verileri işler ve hedef depolama hesabına veya çoğaltma ile yönetilen disklere gönderir.
-5. Veriler işlendikten sonra, kilitlenme tutarlı kurtarma noktaları beş dakikada bir oluşturulur. Uygulamayla tutarlı kurtarma noktaları, çoğaltma ilkesinde belirtilen ayara göre oluşturulur.
+1. Site Kurtarma Mobilitehizmeti uzantısı VM'ye otomatik olarak yüklenir.
+2. Uzantı, VM'yi Site Kurtarma ile kaydeder.
+3. VM için sürekli çoğaltma başlar.  Disk yazmaları hemen kaynak konumdaki önbellek depolama hesabına aktarılır.
+4. Site Kurtarma önbellekteki verileri işler ve hedef depolama hesabına veya çoğaltma yönetilen disklere gönderir.
+5. Veriler işlendikten sonra, kilitlenme tutarlı kurtarma noktaları her beş dakikada bir oluşturulur. Uygulama tutarlı kurtarma noktaları çoğaltma ilkesinde belirtilen ayarına göre oluşturulur.
 
-![Çoğaltma işlemini etkinleştirme, 2. adım](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Çoğaltma işlemini etkinleştirme, adım 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Çoğaltma işlemi**
 
 ## <a name="connectivity-requirements"></a>Bağlantı gereksinimleri
 
- Çoğaltılan Azure VM 'lerinin giden bağlantısı olması gerekir. Site Recovery VM 'ye yönelik bağlantı bağlantısı gerekmez. 
+ Çoğaltdığınız Azure VM'ler için giden bağlantı gerekir. Site Kurtarma'nın VM'ye gelen bağlantıya asla ihtiyacı olmaz. 
 
-### <a name="outbound-connectivity-urls"></a>Giden bağlantı (URL 'Ler)
+### <a name="outbound-connectivity-urls"></a>Giden bağlantı (URL'ler)
 
-VM 'ler için giden erişim URL 'lerle denetleniyorsa, bu URL 'Lere izin verin.
+VM'ler için giden erişim URL'lerle kontrol ediliyorsa, bu URL'lere izin verin.
 
-| **URL** | **Ayrıntılar** |
+| **URL** | **Şey** |
 | ------- | ----------- |
 | *.blob.core.windows.net | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
 | login.microsoftonline.com | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
 | *.hypervrecoverymanager.windowsazure.com | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | *.servicebus.windows.net | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
-| *.vault.azure.net | Portal aracılığıyla ADE özellikli sanal makineler için çoğaltmayı etkinleştirme erişimine izin verir
-| *. automation.ext.azure.com | Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik olarak yükseltilmelerini olanaklı bir şekilde etkinleştirir
+| *.vault.azure.net | Portal üzerinden ADE özellikli sanal makineler için çoğaltmayı etkinleştirme olanağı sağlar
+| *.automation.ext.azure.com | Portal üzerinden çoğaltılan bir öğe için mobilite aracısının otomatik olarak yükseltilmesine olanak sağlar
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
-IP adreslerini kullanarak VM 'Ler için giden bağlantıyı denetlemek üzere bu adreslere izin verin.
-Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) 'nde bulunabileceğini lütfen unutmayın 
+IP adreslerini kullanarak VM'ler için giden bağlantıyı denetlemek için bu adreslere izin verin.
+Ağ bağlantısı gereksinimleriyle ilgili ayrıntıları ağ [beyaz kağıtlarında](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) bulabileceğinizi lütfen unutmayın 
 
-#### <a name="source-region-rules"></a>Kaynak bölgesi kuralları
+#### <a name="source-region-rules"></a>Kaynak bölge kuralları
 
-**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kural** |  **Şey** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory karşılık gelen aralıklara izin ver (Azure AD)  | AzureActiveDirectory
-HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olay Hub 'ına karşılık gelen aralıklarına izin verin. | EventsHub.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
+HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin verme | Depolama. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Etkin Dizin'e (Azure AD) karşılık gelen aralıklara izin verme  | AzureActiveDirectory
+HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olaylar Hub'ına karşılık gelen aralıklara izin verin. | EventsHub' da. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Kurtarma'ya karşılık gelen aralıklara izin verme  | AzureSiteKurtarma
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Anahtar Kasası'na karşılık gelen aralıklara izin verin (Bu yalnızca portal üzerinden ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyon Denetleyicisine karşılık gelen aralıklara izin verin (Bu, yalnızca portal üzerinden çoğaltılan bir öğe için mobilite aracısının otomatik olarak yükseltilmesi için gereklidir) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Hedef bölge kuralları
 
-**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kural** |  **Şey** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklara izin ver  | AzureActiveDirectory
-HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olay Hub 'ına karşılık gelen aralıklara izin verin. | EventsHub.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
+HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin verme | Depolama. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Azure AD'ye karşılık gelen aralıklara izin verme  | AzureActiveDirectory
+HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olaylar Hub'ına karşılık gelen aralıklara izin verin. | EventsHub' da. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Kurtarma'ya karşılık gelen aralıklara izin verme  | AzureSiteKurtarma
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Anahtar Kasası'na karşılık gelen aralıklara izin verin (Bu yalnızca portal üzerinden ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyon Denetleyicisine karşılık gelen aralıklara izin verin (Bu, yalnızca portal üzerinden çoğaltılan bir öğe için mobilite aracısının otomatik olarak yükseltilmesi için gereklidir) | GuestAndHybridManagement
 
 
-#### <a name="control-access-with-nsg-rules"></a>NSG kurallarıyla erişimi denetleme
+#### <a name="control-access-with-nsg-rules"></a>NSG kurallarıyla erişimi kontrol edin
 
-[NSG kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview)kullanarak Azure ağlarına/alt ağlarına ağ trafiğini FILTRELEYEREK VM bağlantısını kontrol ederseniz, aşağıdaki gereksinimleri dikkate alın:
+[NSG kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview)kullanarak ağ trafiğini Azure ağlarına/alt ağlarına filtreleyerek VM bağlantısını denetlerseniz, aşağıdaki gereksinimleri dikkate alabilirsiniz:
 
-- Kaynak Azure bölgesinin NSG kuralları, çoğaltma trafiği için giden erişime izin verilmelidir.
-- Bir test ortamında, üretim ortamına girmeden önce kurallar oluşturmanızı öneririz.
+- Kaynak Azure bölgesi için NSG kuralları çoğaltma trafiği için giden erişime izin vermelidir.
+- Bunları üretime sokmadan önce bir test ortamında kurallar oluşturmanızı öneririz.
 - Tek tek IP adreslerine izin vermek yerine [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın.
-    - Hizmet etiketleri, güvenlik kuralları oluştururken karmaşıklığı en aza indirmek için birlikte toplanan bir IP adresi önekleri grubunu temsil eder.
-    - Microsoft, zaman içinde hizmet etiketlerini otomatik olarak güncelleştirir. 
+    - Hizmet etiketleri, güvenlik kuralları oluştururken karmaşıklığı en aza indirmek için bir araya getirilmiş bir grup IP adresi önekleri grubunu temsil eder.
+    - Microsoft, servis etiketlerini zaman içinde otomatik olarak güncelleştirir. 
  
-Site Recovery [giden bağlantı](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) hakkında daha fazla bilgi edinin ve [NSG 'ler ile bağlantıyı kontrol](concepts-network-security-group-with-site-recovery.md)edin.
+Site Kurtarma ve [NSG'lerle bağlantıyı denetleme](concepts-network-security-group-with-site-recovery.md)için [giden bağlantı](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) hakkında daha fazla bilgi edinin.
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>Çoklu VM tutarlılığı için bağlantı
@@ -188,12 +188,12 @@ Site Recovery [giden bağlantı](azure-to-azure-about-networking.md#outbound-con
 
 
 
-## <a name="failover-process"></a>Yük devretme işlemi
+## <a name="failover-process"></a>Başarısız işlem
 
-Yük devretme başlattığınızda VM 'Ler hedef kaynak grubunda, hedef sanal ağda, hedef alt ağda ve hedef kullanılabilirlik kümesinde oluşturulur. Yük devretme sırasında, herhangi bir kurtarma noktası kullanabilirsiniz.
+Bir başarısızlık başlattığınızda, Sanal Kaynaklar Grubu'nda, hedef sanal ağda, hedef alt ağda ve hedef kullanılabilirlik kümesinde VM'ler oluşturulur. Bir hata sırasında, herhangi bir kurtarma noktası kullanabilirsiniz.
 
-![Yük devretme işlemi](./media/concepts-azure-to-azure-architecture/failover.png)
+![Başarısız işlem](./media/concepts-azure-to-azure-architecture/failover.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Azure VM 'yi bir ikincil bölgeye [hızlıca çoğaltın](azure-to-azure-quickstart.md) .
+Azure VM'yi ikinci bir bölgeye [hızla çoğaltın.](azure-to-azure-quickstart.md)

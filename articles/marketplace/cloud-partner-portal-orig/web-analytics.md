@@ -1,105 +1,103 @@
 ---
-title: Web Analytics
-description: .
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Web Analizi
+description: Bu makalede, işinizi en iyi şekilde büyütmek için Web Analytics'i nasıl öğreneceğiniz ve kullanacağınız hakkında talimatlar verilmektedir.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285342"
 ---
-<a name="web-analytics"></a>Web Analytics
+<a name="web-analytics"></a>Web Analizi
 =============
 
-Bu makalede, işletmenizin en iyi şekilde büyümesini sağlamak için Web analizinin nasıl öğreneceği ve kullanılacağı hakkında yönergeler sunulmaktadır. Şu anda bu Öngörüler sekmesi tüm AppSource teklifleri için kullanılabilir.
+Bu makalede, işinizi en iyi şekilde büyütmek için Web Analytics'i nasıl öğreneceğiniz ve kullanacağınız hakkında talimatlar verilmektedir. Şu anda bu Öngörüler sekmesi herhangi bir AppSource teklifi için kullanılabilir.
 
-Teklifinizi oluşturup yayımladığınıza göre, yolculuğun bir sonraki bölümü,\' başarısını izleyip ölçmeye yönelik. **Web Analytics**ile, tekliflerinizin her birinin Market 'te ne kadar iyi bir şekilde çalıştığını görme imkanını ekledik. Yolculuğa başlamak için, yeni analiz sekmesini görmek üzere Bulut İş Ortağı Portalı sol tarafındaki Öngörüler sayfasına gidin.
+Teklifinizi oluşturup yayınladığınıza göre, yolculuğunuzun bir sonraki bölümü onun\' başarısını izlemek ve ölçmektir. **Web Analytics**ile, tekliflerinizin her birinin pazarda tam olarak ne kadar iyi olduğunu görme olanağı nı ekledik. Seyahatinize başlamak için, yeni Analytics sekmesini görmek için Bulut İş Ortağı Portalı'nın sol tarafındaki Öngörüler sayfasına gidin.
 
 ![WebAnalytics sayfası](./media/si-getting-started/WebAnalytics1.png)
 
-Microsoft Power BI ile oluşturulmuş yayımcı KIMLIĞINIZ için zengin bir pano görürsünüz ve her gün, her gün yenilenen\' verilerinizi görmenize olanak sağlar.
+Microsoft Power BI ile oluşturulmuş ve her gün yenilenen teklif\' verilerinizin her birini görmenizi sağlayan Publisher ID'niz için zengin bir pano görürsünüz.
 
-<a name="microsoft-campaigns"></a>**Microsoft kampanyaları**
+<a name="microsoft-campaigns"></a>**Microsoft Kampanyaları**
 -----------------------
 
-Tekliflerinizi büyütmek ve tekliflerinizin büyümesini izlemek için Bulut İş Ortağı Portalı **Microsoft kampanyalarını** kullanma özelliğini etkinleştirdik. Kampanyalar, Market için, uygulama ayrıntıları sayfanıza müşteri gönderen farklı kanalları izlemenize imkan tanıyan yeni, desteklenen bir özelliktir.
+Tekliflerinizi büyütmek ve tekliflerinizi büyütmek için Bulut İş Ortağı Portalı'nda **Microsoft kampanyalarını** kullanma olanağı sağladık. Kampanyalar, müşterileri uygulama ayrıntıları sayfanıza gönderen farklı kanalları izlemenize olanak tanıyan pazar yeri için yeni desteklenen bir özelliktir.
 
-### <a name="how-to-make-a-campaign"></a>**Kampanya oluşturma**
+### <a name="how-to-make-a-campaign"></a>**Kampanya Nasıl Yapılır?**
 
-Kampanyaları tanımlamanın en kolay yolu, URL 'nize Market 'teki uygulama ayrıntısı sayfasında yer alan özel bir sözcük/terim ekliyoruz. Google, Bing, LinkedIn ve diğer birçok site, bir reklam oluşturmanızı, sitelerini istediğiniz siteye bağlamayı teşvik eder.
+Kampanyaları tanımlamanın en basit yolu, URL'nize pazardaki uygulama ayrıntı sayfanıza inen özel bir sözcük/terim eklemenizdir. Google, Bing, LinkedIn ve diğer birçok site, bir reklam oluşturmanızı, kendi sitelerinden istediğiniz siteye bağlantı kurmanızı öneririz.
 
-Genel olarak, bu çabalar yeni müşterileri ürününüzle kullanmanıza yardımcı olmak ve kanallarınızın her birinin nasıl yaptığı hakkında başarıyı ölçmek açısından önemlidir. Bu, kampanyaların geldiği yerdir.
+Genel olarak, bu çabalar yeni müşterileri ürününüzün içine itmeye yardımcı olmak içindir ve her bir kanalınızın başarısını ölçmek esastır. Kampanyalar burada devreye sayılsın.
 
-Kendi kampanyanızı oluşturmak için iki yol vardır.
+Kendi kampanyanızı oluşturmanın iki yolu vardır.
 
-1. URL 'nize, kampanyanın ne olduğunu ve bu müşterilerin hangi sayfa/olay geldiğini açıklayan **mktcmpıd** sorgu parametresini ekleyin.
+1. URL'nize kampanyanın ne olduğunu ve bu müşterilerin hangi sayfadan/olaydan geldiğini açıklayan sorgu parametresi **mktcmpid'i** ekleyin.
 
-Örneğin, şunları kullanabilirsiniz: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Örneğin şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Gelişmiş): URL 'de desteklenen, genel kampanya kimliklerimizden birini kullanın. Kullanmanız gereken ek başvuru etiketlerine göz duymasını istiyoruz, bu nedenle bu ek etiketleri otomatik olarak tanıma kuralını destekliyoruz:
+1. (Gelişmiş): URL'de desteklenen genel kampanya kişilerimizden birini kullanın. Kullanmanız gereken ek ref etiketleri ile uyumlu olmak istiyoruz, bu nedenle bu ek etiketleri otomatik olarak tanımak için kuralı destekliyoruz:
     
-    1. **UTM\_kampanyası**
-    2. **Uta\_kaynağı**
+    1. **utm\_kampanyası**
+    2. **utm\_kaynak**
     3. **ref**
-    4. **YN**
+    4. **src**
 
-Örneğin, şunları kullanabilirsiniz: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Örneğin şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
-Kampanyanın, müşterinin geldiği konum (e-posta, blog, sosyal medya kaynağı vb.) gibi birden fazla kaynağı daha ayrıntılı olarak belirlemek için bu kampanya kimliklerinin birden çok birleşimini kullanabilirsiniz.
+Müşterinin geldiği yer (e-posta, blog, sosyal medya kaynağı, vb.) gibi kampanya için trafiği yönlendiren birden fazla kaynağı daha fazla belirlemek için bu kampanya kimliklerinin birden fazla sının bir birleşimine sahip olmayı seçebilirsiniz.
 
-Örneğin:
+Örnek:
 
-1. Bülten başvuran: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn başvuran: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Bülten referrer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. LinkedIn referrer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
-### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Kampanyaların tüm sayfalarınızda geçiş yapmalarını sağlama**
+### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Kampanyaların tüm sayfalarınızdan geçmesini sağlama**
 
-Kampanyalarınızın, trafiği yönlendiren bir ara sayfasına sahip olduğu bir senaryo olabilir ve bu sayede müşterileri Market 'e gönderebilirsiniz. İlk kampanya kimliklerinizi Market 'e göndereceğiniz son URL 'ye geçirmek önemlidir.
+Kampanyalarınızın, trafiği yönlendirdiğiniz ve müşterileri pazara göndermeye devam ettiği bir ara sayfaya sahip olduğu bir senaryo olabilir. İlk kampanya bilgilerinizi pazara gönderdiğiniz son URL'ye aktarmak önemlidir.
 
 Örnek aşağıda verilmiştir:
 
-1. Pazarlama çalışanı, Google 'dan şirket\'s giriş sayfasına <https://contoso.com>trafiği yönlendirmek için reklamları satın alarak. Bu giriş sayfasında, <https://appsource.com>'e giden ürün\" bağlantısını deneyin \".
-2. Kullanıcı ad 'ye tıklar ve şirket\'s giriş sayfasında yer alır.
-    1.  Başvuru URL 'SI = google.com
-    2.  Giriş sayfası URL 'SI = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Kullanıcı \"tıkladıktan sonra ürünümüzü\" bağlantısını deneyin ve AppSource 'a gider.
-    1. Başvuru URL 'SI = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Giriş sayfası URL 'SI (**Bu URL 'nin utm\_kampanyası içerdiğinden ve utm\_kaynağının bu URL 'ye eklendiğinden emin olun**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**UTM\_kampanya = MyCampaignAdName & UTM\_kaynak = mysourceadname** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+1. Pazarlama çalışanı, şirketin\'açılış sayfasına <https://contoso.com>trafik çekmek için Google'dan reklam satın alır. Bu açılış sayfasında \"gider\" benim ürün <https://appsource.com>bağlantısı deneyin .
+2. Bir kullanıcı reklamı tıklar ve\'şirketinin açılış sayfasına iner.
+    1.  Sevk URL = google.com
+    2.  Açılış Sayfası URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Kullanıcı benim ürün \"\" bağlantısını deneyin tıklar ve AppSource gider.
+    1. Başvuru URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Açılış Sayfası URL'si (**Bu URL'nin\_utm kampanyasına ve utm\_kaynağının bu URL'ye eklenmediğinden emin olun**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm\_kampanyası=MyCampaignAdName&utm\_kaynak=MySourceAdName](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
-<a name="how-to-evaluate-the-success-of-a-campaign"></a>Kampanyanın başarısını değerlendirme
+<a name="how-to-evaluate-the-success-of-a-campaign"></a>Kampanyanın başarısı nasıl değerlendirilir?
 -----------------------------------------
 
-### <a name="page-visits-by-campaign"></a>**Kampanyaya göre sayfa ziyaretleri**
+### <a name="page-visits-by-campaign"></a>**Kampanyaya Göre Sayfa Ziyaretleri**
 
 ![WebAnalytics2](./media/si-getting-started/WebAnalytics2.png)
 
-Bu, günlük sayfa ziyaretlerinizin her birinin, geldiği kampanya tarafından dökülübir dökümden oluşur.
+Bu, geldikleri kampanyaya göre günlük sayfa ziyaretlerinizin her birinin dökümüdür.
 
-### <a name="conversion-rate-by-campaign"></a>**Kampanyaya göre dönüştürme oranı**
+### <a name="conversion-rate-by-campaign"></a>**Kampanyaya göre dönüşüm oranı**
 
 ![WebAnalytics3](./media/si-getting-started/WebAnalytics3.png)
 
-Tüm teklifinizin dönüştürme oranını gösterdiğimiz gibi, bu grafikte farklı kampanyalarınızın nasıl yaptığına ilişkin dökümü görebilirsiniz. Bu grafik, daha yüksek dönüştürme oranı kampanyalarınızın nereden geldiğini belirlemenize yardımcı olmalıdır.
+Teklifinizin tamamının dönüşüm oranını gösterme şekline benzer şekilde, bu grafikte farklı kampanyalarınızın nasıl olduğunu görebilirsiniz. Bu grafik, daha yüksek dönüşüm oranı kampanyalarınızın nereden geldiğini belirlemenize yardımcı olur.
 
 ### <a name="distribution-by-campaign"></a>**Kampanyaya göre dağıtım**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Müşterilerinizin etki alanlarına baktığımız gibi, bu grafik, kullanıcıların kapsamındaki Market 'e geldiği kampanya başına verilerinizin dağılımını görmenizi sağlar. \_NoCampaign, müşterinin Market 'e gezindiklerinde URL 'de bir kampanya KIMLIĞI olmadığı anlamına gelir.
+Müşterilerinizin etki adlarına nasıl baktığımıza benzer şekilde, bu grafik, kullanıcıların pazara girdiği kampanya başına verilerinizin dağıtımını görmenizi sağlar. \_NoCampaign, müşterinin pazara gittiğinde url'de kampanya kimliği olmadığı anlamına gelir.
 
 <a name="next-steps"></a>**Sonraki Adımlar**
 --------------
 
-Tekliflerinizi başarılı bir şekilde izleyebilmenizi sağladığınıza göre, size kendi kampanyalarınızı oluşturmanız önerilir.
+Artık tekliflerinizin başarısını takip edebilme yeteneğine sahip olduğunuza göre, kendi kampanyalarınızı oluşturmanızı teşvik etmek istiyoruz.
 
-Sorularınız/Özellik istekleriniz varsa, bunları sağ üst köşede bulunan geri bildirimde bulunarak paylaşabilirsiniz.
+Sorularınız/özellik talepleriniz varsa, bunları sağ üst köşede bulunan Geri Bildirim aracılığıyla paylaşın.
 
-![Bulut İş Ortağı Portalı geri bildirim](./media/si-getting-started/WebAnalytics5.png)
+![Bulut İş Ortağı Portalında Geri Bildirim](./media/si-getting-started/WebAnalytics5.png)

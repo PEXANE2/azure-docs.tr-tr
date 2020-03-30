@@ -1,78 +1,72 @@
 ---
-title: Önizlemede veri sorgulama-Azure Time Series Insights | Microsoft Docs
-description: Veri sorgulama kavramları ve HTTP REST API genel bakış Azure Time Series Insights önizlemede.
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+title: Önizlemede veri sorgulama - Azure Time Series Öngörüleri | Microsoft Dokümanlar
+description: Azure Zaman Serisi Öngörüleri Önizlemesinde veri sorgu kavramları ve HTTP REST API genel bakışı.
+author: shreyasharmamsft
+ms.author: shresha
+manager: dpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 03/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 898515f49672a19ed8bf1c62439128b6727afc73
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 23094ec71dac5780def10e16b90de0b818ef3c68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087398"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284900"
 ---
-# <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri sorgulama
+# <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure Time Series Öngörüleri Önizlemesinde veri sorgulama
 
-Azure Time Series Insights önizleme, genel yüzey API 'Leri aracılığıyla ortamda depolanan olaylar ve meta veriler üzerinde veri sorgulama imkanı sunar. Bu API 'Ler [Time Series Insights önizleme Gezgininde](./time-series-insights-update-explorer.md)de kullanılır.
+Azure Time Series Öngörüleri, genel yüzey API'leri aracılığıyla ortamda depolanan olaylar ve meta veriler hakkında veri sorgulamaolanağı sağlar. Bu API'ler aynı zamanda [Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)tarafından da kullanılmaktadır.
 
-Time Series Insights ' de üç birincil API kategorisi mevcuttur:
+Time Series Insights'ta üç ana API kategorisi mevcuttur:
 
-* **Ortam API 'leri**: Bu apı 'ler Time Series Insights ortamındaki sorguları etkinleştirir. Sorgu örnekleri, çağıranın erişimi olan ortamların ve ortam meta verilerinin listesidir.
-* **Zaman serisi modeli-sorgu (TSM-Q) API 'leri**: zaman serisi modelinin ortam bölümünde depolanan meta verilerde oluşturma, okuma, güncelleştirme ve SILME (CRUD) işlemlerine izin vermez. Örnekler, türler ve Hiyerarşiler örnektir.
-* **Zaman serisi sorgusu (TSQ) API 'leri**: kaynak sağlayıcıdan kaydedildiğinden veya değişkenlerin bir parçası olan skaler ve toplama işlevleri kullanılarak verileri azaltarak telemetri veya olay verilerinin alınmasına izin vermez. Bu API 'Ler zaman serisi verilerinde hesaplamaları dönüştürmek, birleştirmek ve uygulamak için işlemler gerçekleştirebilir.
+* **Çevre API'leri**: Bu API'ler Time Series Insights ortamının kendisinde sorguyapılmasını sağlar. Bunlar, arayanın erişebildiği ortamların listesini toplamak ve meta verileri çevrelemek için kullanılabilir.
+* **Zaman Serisi Model-Sorgu (TSM-Q) API'leri**: Ortamın Zaman Serisi Modeli'nde depolanan meta veriler üzerinde (CRUD) oluşturma, okuma, güncelleme ve silme (CRUD) işlemlerinin oluşturulmasını sağlar. Bunlar, örneklere, türlere ve hiyerarşilere erişmek ve bunları erişmek için kullanılabilir.
+* **Zaman Serisi Sorgusu (TSQ) API'leri**: Kaynak sağlayıcıdan kaydedildiği gibi telemetri veya olay verilerinin alınmasını sağlar ve gelişmiş skaler ve toplama işlevleri ni kullanarak veriler üzerinde performant hesaplamaları ve toplamaları sağlar.
 
-Time Series Insights hesaplamaları ifade etmek için zengin bir dize tabanlı ifade dili, [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx)kullanır.
+Time Series Insights hesaplamaları ifade etmek için zengin bir dize tabanlı ifade dili, [Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)kullanır.
 
-## <a name="azure-time-series-insights-preview-core-apis"></a>Azure Time Series Insights Preview Core API 'Leri
+## <a name="azure-time-series-insights-core-apis"></a>Azure Time Series Öngörüleri çekirdek API'leri
 
-Aşağıdaki temel API 'Ler desteklenir.
+Aşağıdaki temel API'ler desteklenir.
 
-[![zaman serisi sorgusuna genel bakış](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[![Zaman Serisi Sorgusuna genel bakış](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-## <a name="environment-apis"></a>Ortam API 'Leri
+## <a name="environment-apis"></a>Çevre API'leri
 
-Aşağıdaki ortam API 'Leri kullanılabilir:
+* [Ortamlar API'si alın](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): Arayanın erişmeye yetkili olduğu ortamların listesini verir.
+* [Ortamlar Kullanılabilirlik API alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): Olay zaman `$ts`damgası üzerinde olay sayısı dağıtımını verir. Bu API, varsa zaman aralıklarına bölünen olayların sayısını döndürerek ortamda herhangi bir olay olup olmadığını belirlemeye yardımcı olur.
+* [Olay Şeması API'sini Alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): Belirli bir arama aralığı için olay şema meta verilerini verir. Bu API, verilen arama aralığı için şemada bulunan tüm meta verileri ve özellikleri nalınmasına yardımcı olur.
 
-* [Ortamları al API 'si](/rest/api/time-series-insights/management/environments/get): çağıranın erişim yetkisine sahip olduğu ortamların listesini döndürür.
-* [Ortamları al kullanılabilirlik API 'si](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): olay sayısı `$ts`olay zaman damgası üzerinden dağılımını döndürür. Bu API, varsa olay sayısını döndürerek zaman damgasında herhangi bir olay olup olmadığını belirlemenize yardımcı olur.
-* [Olay şeması API 'Si al](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): belirli bir arama yayılması için olay şeması meta verilerini döndürür. Bu API, belirtilen arama alanı için şemada bulunan tüm meta verileri ve özellikleri almaya yardımcı olur.
+## <a name="time-series-model-query-tsm-q-apis"></a>Zaman Serisi Model-Sorgu (TSM-Q) API'leri
 
-## <a name="time-series-model-query-tsm-q-apis"></a>Zaman serisi modeli-sorgu (TSD-Q) API 'Leri
+Bu API'lerin çoğu, birden çok Zaman Serisi Modeli varlıklarında toplu CRUD işlemlerini etkinleştirmek için toplu yürütme işlemini destekler:
 
-Aşağıdaki zaman serisi modeli sorgu API 'Leri kullanılabilir. Bu API 'lerin çoğu, birden çok zaman serisi model varlığı üzerinde toplu CRUD işlemlerini etkinleştirmek için toplu yürütme işlemini destekler:
+* [Model Ayarları API](https://docs.microsoft.com/rest/api/time-series-insights/preview#model-settings-api): Varsayılan türde ve ortamın model adı üzerinde *GET* ve *PATCH'i* etkinleştirir.
+* [Tip API](https://docs.microsoft.com/rest/api/time-series-insights/preview#types-api): Zaman Serisi türleri ve ilişkili değişkenler üzerinde CRUD sağlar.
+* [Hiyerarşiler API](https://docs.microsoft.com/rest/api/time-series-insights/preview#hierarchies-api): Zaman Serisi hiyerarşileri ve ilişkili alan yollarında CRUD sağlar.
+* [Örnekler API](https://docs.microsoft.com/rest/api/time-series-insights/preview#instances-api): Zaman Serisi örneklerinde ve ilişkili örnek alanlarında CRUD'u etkinleştirir. Ayrıca, Örnekler API aşağıdaki işlemleri destekler:
+  * [Arama](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/search): Örnek özniteliklerine göre zaman serisi örneklerinde aramada isabetlerin kısmi bir listesini alır.
+  * [Öner](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/suggest): Örnek özniteliklerine dayalı olarak zaman serisi örneklerini arar ve aramada isabetlerin kısmi bir listesini önerir.
 
-* [Model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): varsayılan tür ve ortamın model adı üzerinde *Get* ve *Patch* seçeneklerini sunar.
-* [Türler API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): zaman serisi türlerinde ve bunlarla ilişkili değişkenlerde CRUD 'yi mümkün.
-* [Hiyerarşiler API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): zaman serisi hiyerarşilerinde ve bunlarla ilişkili alan yollarında CRUD 'yi mümkün.
-* [Örnek API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): zaman serisi örneklerine ve bunlarla ilişkili örnek alanlarına CRUD 'yi sunar. Ayrıca, örnekleri API 'SI aşağıdaki işlemleri destekler:
-  * [Arama](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/search): örnek özniteliklerine göre zaman serisi örnekleri aramasında bir isabetlerin kısmi listesini alır.
-  * [Öneri](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/suggest):, örnek özniteliklerine göre zaman serisi örnekleri aramasında arama sırasında oluşan kısmi bir liste arar ve bu noktaları önerir.
+## <a name="time-series-query-tsq-apis"></a>Zaman Serisi Sorgusu (TSQ) API'leri
 
-## <a name="time-series-query-tsq-apis"></a>Zaman serisi sorgusu (TSQ) API 'Leri
+Bu API'ler Time Series Insights'taki çok katmanlı depolama çözümümüzde her iki mağazada da mevcuttur. Sorgu URL parametreleri, sorgunun yürütülmesi gereken [mağaza türünü](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) belirtmek için kullanılır:
 
-Aşağıdaki zaman serisi sorgu API 'Leri kullanılabilir. Bu API 'Ler Time Series Insights tüm desteklenen çok katmanlı depolama alanları üzerinde kullanılabilir. Sorgu URL 'SI parametreleri sorgunun yürütülmesi gereken [Depo türünü](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) belirtmek için kullanılır:
+* [Etkinlik API'sini Edinin](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents): Kaynak sağlayıcıdan Time Series Öngörüleri'nde kaydedildikleri sırada ham olayların ve ilişkili olay zaman damgalarının sorgulanmasını ve alınmasını sağlar. Bu API, belirli bir Zaman Serisi kimliği ve arama süresi için ham olayların alınmasına izin verir. Bu API, seçili girişiçin tam yanıt veri kümesini almak için pagination destekler. 
 
-* [Olayları al API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents): kaynak sağlayıcıdan Time Series Insights kaydedildiğinden Time Series Insights verilerinin olayları sorgulamasını ve alınmasını mümkün. Bu API, belirli bir zaman serisi KIMLIĞI ve arama kapsamı için ham olayların alınmasına izin verir. Bu API, seçilen giriş için tüm veri kümesini almak üzere sayfalandırmayı destekler. 
+* [Seri API'yi Al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries): Ham olaylar üzerinde değişkenler tarafından tanımlanan hesaplamaları uygulayarak, işlem yapılan değerlerin ve ilişkili olay zaman damgalarının sorgulanmasını ve alınmasını sağlar. Bu değişkenler Zaman Serisi Modeli'nde tanımlanabilir veya sorguda satır içinde sağlanabilir. Bu API, seçili girişiçin tam yanıt veri kümesini almak için pagination destekler. 
 
-* [Seri API 'Si al](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries): hatta, hattaki verileri kullanarak yakalanan olaylardan Time Series Insights verilerinin sorgu ve alınmasına izin vermez. Döndürülen değerler modelde tanımlanan veya satır içi olarak verilen değişkenlere göre yapılır. Bu API, seçilen giriş için tüm veri kümesini almak üzere sayfalandırmayı destekler. Bu API, hesaplanan özellikleri veya sütunları tanımlamaya yardımcı olur.
+* [Toplam Seri API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries): Ham olaylar üzerinde değişkenler tarafından tanımlanan hesaplamalar uygulayarak, toplanan değerlerin ve ilişkili aralık zaman damgalarının sorgulanmasını ve alınmasını sağlar. Bu değişkenler Zaman Serisi Modeli'nde tanımlanabilir veya sorguda satır içinde sağlanabilir. Bu API, seçili girişiçin tam yanıt veri kümesini almak için pagination destekler. 
+  
+  Belirli bir arama aralığı ve aralığı için, bu API, Bir Zaman Serisi Kimliği için aralık başına değişken başına toplu yanıt verir. Yanıt veri kümesindeki aralık sayısı, dönem onayonaylarını (Unix çağından bu yana geçen milisaniye sayısı - 1 Ocak 1970) ve onayonaylarının sorguda belirtilen aralık aralığı boyutuna bölünmesiyle hesaplanır.
 
-    >[!NOTE]
-    > Toplama yan tümcesi, bir modelde belirtilse veya satır içi sağlanmış olsa bile yok sayılır.
-
-  Get Series API 'SI her Aralık için her değişken için bir zaman serisi değeri döndürür. Bir zaman serisi değeri, Time Series Insights bir sorgudan çıkış JSON için kullanılan bir biçimdir. Döndürülen değerler, zaman serisi KIMLIĞI ve belirtilen değişken kümesi temel alınarak hesaplanır.
-
-* [Toplama serisi API 'si](/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregatevariable): kaydedilen verileri örnekleyerek ve toplayarak yakalanan olaylardan Time Series Insights verilerinin sorgu ve alınmasına izin vermez. Bu API, [devamlılık belirteçlerini](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage)kullanarak devamlılığın yürütülmesini destekler.
-
-  Toplama serisi API 'SI her Aralık için her değişken için bir zaman serisi değeri döndürür. Değerler, zaman serisi KIMLIĞINI ve sağlanmış olan değişken kümesini temel alır. Toplama serisi API 'SI, zaman serisi modelinde depolanan veya toplu olarak veya örnek veriler için satır içi olarak belirtilen değişkenleri kullanarak azalmaya erişir.
+  Yanıt kümesinde döndürülen zaman damgaları, aralıktaki örneklenmiş olayların değil, sol aralık sınırlarıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Time Series Insights önizlemede [depolama ve](./time-series-insights-update-storage-ingress.md) giriş hakkında daha fazla bilgi edinin.
-- Time Series Insights Preview [veri modelleme](./time-series-insights-update-tsm.md) makalesini okuyun.
-- [Zaman SERISI kimliğini seçmek için en iyi yöntemleri](./time-series-insights-update-how-to-id.md)bulun.
+- [Zaman Serisi Modeli'nde](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)tanımlanabilecek farklı değişkenler hakkında daha fazla bilgi edinin.
+- [Zaman Serisi Öngörüler Explorer'dan](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)verileri nasıl sorgulayabilirsiniz hakkında daha fazla bilgi edinin.

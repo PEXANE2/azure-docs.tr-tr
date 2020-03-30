@@ -1,6 +1,6 @@
 ---
-title: Etkileyen Linux VM için özel ölçümler toplayın telegraf Agent
-description: Azure 'daki bir Linux sanal makinesine etkileyen bir Linux VM 'de etkileyen ve aracıyı Azure Izleyici 'de yayımlamak üzere yapılandıran yönergeler.
+title: InfluxData Telegraf aracısı ile Linux VM için özel ölçümler toplayın
+description: InfluxData Telegraf aracısının Azure'daki bir Linux VM'de nasıl dağıtılanağacağına ve aracıyı Azure Monitor'da ölçümleri yayımlayacak şekilde yapılandırmaya ilişkin yönergeler.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,53 +8,53 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655472"
 ---
-# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
+# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>InfluxData Telegraf aracısı ile bir Linux VM için özel ölçümler toplayın
 
-Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda çalışan bir aracı veya hatta iç izleme sistemleri aracılığıyla özel ölçümler toplayabilirsiniz. Ardından, bunları doğrudan Azure Izleyici 'ye gönderebilirsiniz. Bu makalede, Azure 'daki bir Linux sanal makinesine [etkileyen](https://www.influxdata.com/) bir Linux VM 'de etkileyen ve aracıyı Azure izleyici 'ye yayımlamak üzere yapılandırmanın nasıl yapılandırılacağı hakkında yönergeler sağlanmaktadır. 
+Azure Monitor'u kullanarak, uygulama telemetriniz, Azure kaynaklarınızda çalışan bir aracı ve hatta dışarıdan izleme sistemleri aracılığıyla özel ölçümler toplayabilirsiniz. Ardından bunları doğrudan Azure Monitor'a gönderebilirsiniz. Bu makalede, [InfluxData](https://www.influxdata.com/) Telegraf aracısının Azure'daki bir Linux VM'de nasıl dağıtılanıncaya kadar dağıtılanın caizdir ve aracıyı Azure Monitor'da ölçümleri yayımlayacak şekilde yapılandırın. 
 
-## <a name="influxdata-telegraf-agent"></a>Etkileyen XData telegraf Aracısı 
+## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf aracısı 
 
-[Telegraf](https://docs.influxdata.com/telegraf/) , 150 farklı kaynaklardan ölçüm toplamayı sağlayan bir eklenti temelli aracıdır. SANAL makinenizde çalışan iş yüklerine bağlı olarak, bir aracıyı, ölçümleri toplamak için özel giriş eklentilerinden faydalanmak üzere yapılandırabilirsiniz. MySQL, NGıNX ve Apache örnekleri aşağıda verilmiştir. Çıkış eklentilerini kullanarak, aracı seçtiğiniz hedeflere yazabilir. Telegraf Aracısı, Azure Izleyici özel ölçümleriyle REST API doğrudan tümleştirilmiştir. Azure Izleyici çıkış eklentisini destekler. Bu eklentiyi kullanarak, aracı Linux sanal makinenizde iş yüküne özgü ölçümler toplayabilir ve bunları Azure Izleyici 'ye özel ölçümler olarak gönderebilir. 
+[Telegraf,](https://docs.influxdata.com/telegraf/) 150'den fazla farklı kaynaktan ölçümlerin toplanmasını sağlayan bir eklenti aracıdır. VM'nizde hangi iş yüklerinin çalıştırıldığına bağlı olarak, aracıyı ölçümleri toplamak için özel giriş eklentilerinden yararlanacak şekilde yapılandırabilirsiniz. Örnek Olarak MySQL, NGINX ve Apache verilebilir. Temsilci, çıktı eklentilerini kullanarak seçtiğiniz hedeflere yazabilir. Telegraf aracısı doğrudan Azure Monitor özel ölçümleri REST API ile tümleşik olmuştur. Azure Monitor çıktı eklentisi destekler. Aracı, bu eklentiyi kullanarak Linux VM'nizde iş yüküne özel ölçümler toplayabilir ve bunları Azure Monitor'a özel ölçümler olarak gönderebilir. 
 
- ![Telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
+ ![Telgraf temsilcisine genel bakış](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
-## <a name="send-custom-metrics"></a>Özel ölçümleri gönder 
+## <a name="send-custom-metrics"></a>Özel ölçümler gönderme 
 
-Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
+Bu öğretici için, Ubuntu 16.04 LTS işletim sistemini çalıştıran bir Linux VM dağıtıyoruz. Telegraf aracısı çoğu Linux işletim sistemi için desteklenir. Hem Debian ve RPM paketleri [InfluxData indirme portalında](https://portal.influxdata.com/downloads)paketlenmemiş Linux ikilileri ile birlikte mevcuttur. Ek yükleme yönergeleri ve seçenekleri için bu [Telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
-Yeni bir Linux sanal makinesi oluşturun: 
+Yeni bir Linux VM oluşturun: 
 
-1. Sol taraftaki gezinti bölmesinden **kaynak oluştur** seçeneğini belirleyin. 
-1. **Sanal makine**araması yapın.  
-1. **Ubuntu 16,04 LTS** ' yi seçin ve **Oluştur**' u seçin. 
-1. **MyTelegrafVM**gıbı bir VM adı sağlayın.  
-1. Disk türünü **SSD**olarak bırakın. Daha sonra **azureuser**gibi bir **Kullanıcı adı**sağlayın. 
-1. **Kimlik doğrulama türü**için **parola**' yı seçin. Daha sonra bu VM 'ye SSH için kullanacağınız bir parola girin. 
-1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Sonra **Tamam**’ı seçin. 
+1. Sol navigasyon bölmesinden **kaynak oluştur** seçeneğini seçin. 
+1. Sanal **Makine**için arama .  
+1. **Ubuntu 16.04 LTS'yi** seçin ve **Oluştur'u**seçin. 
+1. **MyTelegrafVM**gibi bir VM adı sağlayın.  
+1. Disk türünü **SSD**olarak bırakın. Ardından **azureuser**gibi bir **kullanıcı adı**sağlayın. 
+1. **Kimlik Doğrulama türü için** **Parola'yı**seçin. Daha sonra bu VM'ye SSH için kullanacağınız bir parola girin. 
+1. Yeni **kaynak grubu oluşturmayı**seçin. Ardından **myResourceGroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Sonra **Tamam**’ı seçin. 
 
     ![Ubuntu sanal makinesi oluşturma](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
 1. VM için bir boyut seçin. Örneğin, **İşlem türü** veya **Disk türü**’ne göre filtreleyebilirsiniz. 
 
-    ![Sanal makine boyutu telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
+    ![Sanal makine boyutu Telegraph aracısı genel bakış](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. **Ağ > ağ** **güvenlik grubu** 'ndaki **Ayarlar** sayfasında, **ortak gelen bağlantı noktalarını seçin** > **http** ve **SSH (22)** öğesini seçin. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
+1.  >  **Ağ****Ağı Güvenlik Grubu'ndaki** >  **Ayarlar** sayfasında ortak gelen**bağlantı noktalarını seçin,** **HTTP** ve **SSH (22) seçeneğini**belirleyin. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
 
 1. Özet sayfasında **Oluştur**’u seçerek sanal makine dağıtımını başlatın. 
 
-1. VM, Azure portalı panosuna sabitlenir. Dağıtım tamamlandıktan sonra VM Özeti otomatik olarak açılır. 
+1. VM, Azure portalı panosuna sabitlenir. Dağıtım bittikten sonra VM özeti otomatik olarak açılır. 
 
-1. VM bölmesinde **kimlik** sekmesine **gidin. sanal**makinenizde sistem tarafından atanan bir kimlik ayarlanmış olduğundan emin olun. 
+1. VM bölmesinde, **Kimlik** sekmesine gidin. **On** 
  
-    ![Telegraf VM kimlik önizlemesi](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
+    ![Telegraf VM kimlik önizleme](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma 
 
@@ -62,17 +62,17 @@ VM ile bir SSH bağlantısı oluşturun. VM’nizin genel bakış sayfasından *
 
 ![Telegraf VM genel bakış sayfası](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-**Sanal makineye bağlan** sayfasında, 22 numaralı bağlantı noktası üzerinden DNS adına göre bağlanmak için varsayılan seçenekleri olduğu gibi bırakın. **VM yerel hesabı 'nı kullanarak oturum açma**bölümünde bir bağlantı komutu gösterilir. Komutu kopyalamak için düğmeyi seçin. Aşağıdaki örnekte SSH bağlantı komutunun nasıl göründüğü gösterilmiştir: 
+**Sanal makineye bağlan** sayfasında, 22 numaralı bağlantı noktası üzerinden DNS adına göre bağlanmak için varsayılan seçenekleri olduğu gibi bırakın. **VM yerel hesabı kullanarak Giriş,** bir bağlantı komutu gösterilir. Komutu kopyalamak için düğmeyi seçin. Aşağıdaki örnekte SSH bağlantı komutunun nasıl göründüğü gösterilmiştir: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
 ```
 
-SSH bağlantısı komutunu, Windows üzerinde Ubuntu üzerinde Azure Cloud Shell veya Bash gibi bir kabuğa yapıştırın veya bağlantıyı oluşturmak için seçtiğiniz bir SSH istemcisini kullanın. 
+SSH bağlantı komutunu Windows'ta Ubuntu'da Azure Bulut Kabuğu veya Bash gibi bir kabuk haline getirin veya bağlantıyı oluşturmak için seçtiğiniz bir SSH istemcisini kullanın. 
 
-## <a name="install-and-configure-telegraf"></a>Telegraf 'yi yükleyip yapılandırın 
+## <a name="install-and-configure-telegraf"></a>Telegraf'ı yükleme ve yapılandırma 
 
-Telegraf de, paketini sanal makineye yüklemek için SSH oturumınızdan aşağıdaki komutları çalıştırın: 
+Telegraf Debian paketini VM'ye yüklemek için SSH oturumunuzdaki aşağıdaki komutları çalıştırın: 
 
 ```cmd
 # download the package to the VM 
@@ -80,7 +80,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Telegraf 'in yapılandırma dosyası telegraf 'ın işlemlerini tanımlıyor. Varsayılan olarak, **/etc/telegraf/telegraf.conf**yoluna örnek bir yapılandırma dosyası yüklenir. Örnek yapılandırma dosyasında tüm olası giriş ve çıkış eklentileri listelenir. Ancak, özel bir yapılandırma dosyası oluşturacağız ve aracının bunu aşağıdaki komutları çalıştırarak kullanması gerekir: 
+Telegraf'ın yapılandırma dosyası Telegraf'ın işlemlerini tanımlar. Varsayılan olarak, bir örnek yapılandırma dosyası yol **/ etc/telegraf/telegraf.conf**yüklenir. Örnek yapılandırma dosyası, olası tüm giriş ve çıktı eklentilerini listeler. Ancak, özel bir yapılandırma dosyası oluşturacağız ve aracının aşağıdaki komutları çalıştırarak dosyayı kullanmasını sağlayacağız: 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 
@@ -91,9 +91,9 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 ```
 
 > [!NOTE]  
-> Yukarıdaki kod yalnızca iki giriş eklentisi sunar: **CPU** ve **bellek**. Makinenizde çalışan iş yüküne bağlı olarak daha fazla giriş eklentisi ekleyebilirsiniz. Docker, MySQL ve NGıNX örnekleri örnektir. Giriş eklentilerinin tam listesi için **ek yapılandırma** bölümüne bakın. 
+> Önceki kod yalnızca iki giriş eklentisi sağlar: **cpu** ve **mem**. Makinenizde çalışan iş yüküne bağlı olarak daha fazla giriş eklentisi ekleyebilirsiniz. Docker, MySQL ve NGINX buna örnek olarak verilebilir. Giriş eklentilerinin tam listesi için **Ek yapılandırma** bölümüne bakın. 
 
-Son olarak, aracının yeni yapılandırmayı kullanmaya başlamasını sağlamak için, aşağıdaki komutları çalıştırarak aracının durdurulmasını ve başlamasını zorlıyoruz: 
+Son olarak, aracının yeni yapılandırmayı kullanmaya başlaması için aracıyı aşağıdaki komutları çalıştırarak durdurmaya ve başlatmaya zorlarız: 
 
 ```cmd
 # stop the telegraf agent on the VM 
@@ -101,33 +101,33 @@ sudo systemctl stop telegraf
 # start the telegraf agent on the VM to ensure it picks up the latest configuration 
 sudo systemctl start telegraf 
 ```
-Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve bunları Azure Izleyici 'ye yayacaktır. 
+Artık aracı, belirtilen giriş eklentilerinin her birinden ölçümler toplayacak ve bunları Azure Monitor'a yayacak. 
 
-## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Telegraf ölçümlerini Azure portal çizme 
+## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Azure portalında Telegraf ölçümlerinizi çizin 
 
-1. [Azure portalını](https://portal.azure.com) açın. 
+1. Azure [portalını](https://portal.azure.com)açın. 
 
-1. Yeni **izleyici** sekmesine gidin. Ardından **ölçümler**' i seçin.  
+1. Yeni **Monitör** sekmesine gidin. Ardından **Ölçümler'i**seçin.  
 
-     ![İzleme-ölçümler (Önizleme)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
+     ![Monitör - Ölçümler (önizleme)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
-1. Kaynak seçicideki sanal makineyi seçin.
+1. Kaynak seçicide VM'nizi seçin.
 
-     ![Ölçüm grafiği](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
+     ![Metrik grafik](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
 
-1. **Telegraf/CPU** ad alanını seçin ve **usage_system** ölçümünü seçin. Bu ölçümdeki boyutlara göre filtreleme veya bunları bölme seçeneklerinden birini belirleyebilirsiniz.  
+1. **Telegraf/CPU** ad alanını seçin ve **usage_system** metrik'i seçin. Bu metrikteki boyutlara göre filtre uygulama yapmayı veya üzerlerine bölmeyi seçebilirsiniz.  
 
-     ![Ad alanı ve ölçüm seçin](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
+     ![Ad alanı ve metrik seçin](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
 
 ## <a name="additional-configuration"></a>Ek yapılandırma 
 
-Önceki izlenecek yol, birkaç temel giriş eklentisinden ölçümleri toplamak üzere telegraf aracısının nasıl yapılandırılacağı hakkında bilgi sağlar. Telegraf Aracısı, bazı destekleyici ek yapılandırma seçenekleri ile 150 fazla giriş eklentisi desteği içerir. Etkileyen, [desteklenen eklentilerin bir listesini](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) ve [bunların nasıl yapılandırılacağı](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)hakkında yönergeler yayımlamıştır.  
+Önceki izbis, telegraf aracısını birkaç temel giriş eklentisinden ölçümler toplamak üzere nasıl yapılandırılabilenbilgiler sağlar. Telegraf aracısı 150'den fazla giriş eklentisi için destek sağlarken, bazıları ek yapılandırma seçeneklerini destekler. InfluxData desteklenen [eklentileri](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) ve bunları [yapılandırmak için nasıl](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)talimatlar bir listesini yayımladı.  
 
-Ayrıca, bu kılavuzda, aracının dağıtıldığı VM hakkında ölçümleri göstermek için telegraf aracısını kullandınız. Telegraf Aracısı, diğer kaynaklar için bir toplayıcı ve bir ölçüm ileticisi olarak da kullanılabilir. Aracıyı diğer Azure kaynakları için ölçümleri göstermek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [telegraf Için Azure Izleyici özel ölçüm çıktısı](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
+Ayrıca, bu gözden geçirme de, aracının dağıtılan VM hakkında ölçümler yontmak için Telegraf aracısını kullandınız. Telegraf aracısı, diğer kaynaklar için ölçümlerin toplayıcısı ve iletmesi olarak da kullanılabilir. Aracıyı diğer Azure kaynakları için ölçümler yatacak şekilde nasıl yapılandıracağını öğrenmek [için, Telegraf için Azure Monitörü Özel Metrik](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)Çıktısı'na bakın.  
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 
-Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Ardından, silinecek kaynak grubunun adını onaylayın. 
+Artık bunlara ihtiyaç duyulmadığında, kaynak grubunu, sanal makineyi ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin ve **Sil'i**seçin. Ardından silmek için kaynak grubunun adını onaylayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.

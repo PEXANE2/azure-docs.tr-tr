@@ -1,61 +1,61 @@
 ---
-title: Bağlantı sorunlarını giderme-MariaDB için Azure veritabanı
-description: Denemeler, güvenlik duvarı sorunları ve kesintiler gerektiren geçici hatalar da dahil olmak üzere MariaDB için Azure veritabanı bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
+title: Sorun giderme bağlantı sorunları - MariaDB için Azure Veritabanı
+description: Yeniden deneme gerektiren geçici hatalar, güvenlik duvarı sorunları ve kesintiler de dahil olmak üzere MariaDB için Azure Veritabanı'na bağlantı sorunlarını nasıl gidereceklerini öğrenin.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536369"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı bağlantı sorunlarını giderme
+# <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı bağlantı sorunlarını giderme
 
-Bağlantı sorunlarına aşağıdakiler de dahil olmak üzere çeşitli öğeler neden olmuş olabilir:
+Bağlantı sorunları, şunları dahil olmak üzere çeşitli nedenlerden kaynaklanabilir:
 
 * Güvenlik duvarı ayarları
-* Bağlantı zaman aşımı
-* Hatalı oturum açma bilgileri
-* MariaDB kaynakları için Azure veritabanı 'nda maksimum sınıra ulaşıldı
-* Hizmetin altyapısıyla ilgili sorunlar
-* Hizmette gerçekleştirilen bakım
-* Sunucunun işlem ayırması, sanal çekirdek sayısı ölçeklenerek veya farklı bir hizmet katmanına taşınarak değiştirilir
+* Bağlantı zaman ayarı
+* Yanlış giriş bilgileri
+* MariaDB kaynakları için bazı Azure Veritabanında ulaşılan maksimum sınır
+* Hizmet altyapısı ile ilgili sorunlar
+* Bakım hizmetinde yapılıyor
+* Sunucunun bilgi işlem dağılımı vCores sayısını ölçekleme veya farklı bir hizmet katmanına hareket ettirerek değiştirilir
 
-Genellikle, MariaDB için Azure veritabanı bağlantı sorunları şu şekilde sınıflandırılabilir:
+Genel olarak, MariaDB için Azure Veritabanı'na bağlantı sorunları aşağıdaki gibi sınıflandırılabilir:
 
 * Geçici hatalar (kısa ömürlü veya aralıklı)
-* Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
+* Kalıcı veya geçici olmayan hatalar (düzenli olarak yineleyen hatalar)
 
-## <a name="troubleshoot-transient-errors"></a>Geçici hatalarda sorun giderme
+## <a name="troubleshoot-transient-errors"></a>Geçici hataları giderme
 
-Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım veya yazılımla ilgili bir hatayla karşılaştığında veya sunucunuzun sanal çekirdeklerini veya hizmet katmanını değiştirirsiniz. MariaDB hizmeti için Azure veritabanı 'nın yerleşik yüksek kullanılabilirliği vardır ve bu tür sorunların otomatik olarak azaltılmasına yönelik olarak tasarlanmıştır. Bununla birlikte, uygulamanız, genellikle 60 saniyeden kısa bir süre boyunca sunucu bağlantısını kaybeder. Büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi bazı olayların hafifletmek daha uzun sürebilir.
+Geçici hatalar bakım yapıldığında oluşur, sistem donanım veya yazılımda bir hatayla karşılaşır veya sunucunuzun vCores veya servis katmanını değiştirirsiniz. MariaDB hizmeti için Azure Veritabanı yerleşik yüksek kullanılabilirlik sağlar ve bu tür sorunları otomatik olarak azaltmak üzere tasarlanmıştır. Ancak, uygulamanız sunucuya olan bağlantısını genellikle en fazla 60 saniyeden kısa bir süre için kaybeder. Bazı olayların bazen kısa sürede hafifletilmesi, örneğin büyük bir işlemin uzun süren bir kurtarma işlemine neden olması gibi sürebilir.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını çözme adımları
 
-1. Uygulama tarafından hataların bildirildiği zaman içinde oluşan bilinen kesintiler için [Microsoft Azure hizmet panosunu](https://azure.microsoft.com/status) denetleyin.
-2. MariaDB için Azure veritabanı gibi bir bulut hizmetine bağlanan uygulamalar, geçici hatalar beklemelisiniz ve bunları kullanıcılara uygulama hataları olarak eklemek yerine bu hataları işlemek için yeniden deneme mantığını uygulamalıdır. En iyi uygulamalar ve geçici hataları işlemeye yönelik tasarım yönergeleri için, [MariaDB Için Azure veritabanı geçici bağlantı hatalarının işlenmesini](concepts-connectivity.md) gözden geçirin.
-3. Sunucu kaynak sınırlarına yaklaşıyorsa, hatalar geçici bağlantı sorunu olabilir. [MariaDB Için Azure veritabanı 'Ndaki sınırlamalara](concepts-limits.md)bakın.
-4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
+1. Hataların uygulama tarafından raporlandığı süre içinde meydana gelen bilinen kesintiler için [Microsoft Azure Hizmet Panosu'nu](https://azure.microsoft.com/status) denetleyin.
+2. MariaDB için Azure Veritabanı gibi bir bulut hizmetine bağlanan uygulamalar geçici hatalar beklemeli ve kullanıcılara uygulama hatası olarak bunları yüzeye çıkarmak yerine bu hataları işlemek için yeniden deneme mantığı uygulamalıdır. En iyi uygulamalar ve geçici hataları işlemek için tasarım yönergeleri [için MariaDB için Azure Veritabanı için geçici bağlantı hatalarının işlenmesini](concepts-connectivity.md) gözden geçirin.
+3. Bir sunucu kaynak sınırlarına yaklaştıkça, hatalar geçici bağlantı sorunu gibi görünebilir. [MariaDB için Azure Veritabanındaki Sınırlamalar'a](concepts-limits.md)bakın.
+4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaşma süresi 60 saniyeyi aşarsa veya belirli bir günde birden fazla hata oluşumu nu görürseniz, Azure Destek sitesinde **Destek Al'ı** seçerek bir [Azure](https://azure.microsoft.com/support/options) destek isteği dosyalayın.
 
-## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarda sorun giderme
+## <a name="troubleshoot-persistent-errors"></a>Kalıcı hataları giderme
 
-Uygulama, MariaDB için Azure veritabanı 'na kalıcı olarak bağlanamıyorsa, genellikle aşağıdakilerden biriyle ilgili bir sorun olduğunu gösterir:
+Uygulama ısrarla MariaDB için Azure Veritabanı'na bağlanamazsa, genellikle aşağıdakilerden biriyle ilgili bir sorunu gösterir:
 
-* Güvenlik duvarı yapılandırması: MariaDB sunucusu veya istemci tarafı güvenlik duvarı için Azure veritabanı bağlantıları engelliyor.
-* İstemci tarafında ağ yeniden yapılandırması: yeni bir IP adresi veya bir ara sunucu eklendi.
-* Kullanıcı hatası: Örneğin, bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik *\@ServerName* son eki gibi bağlantı parametrelerini yanlış yazmış olabilirsiniz.
+* Güvenlik duvarı yapılandırması: MariaDB sunucusu veya istemci tarafındaki güvenlik duvarı için Azure Veritabanı bağlantıları engelliyor.
+* İstemci tarafında ağ yeniden yapılandırması: Yeni bir IP adresi veya proxy sunucusu eklendi.
+* Kullanıcı hatası: Örneğin, bağlantı dizesindeki sunucu adı veya kullanıcı adındaeksik * \@* sunucu adı soneki gibi bağlantı parametrelerini yanlış yazdınız olabilir.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını çözme adımları
 
-1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-manage-firewall-portal.md) ayarlayın. Yalnızca geçici test amacıyla, başlangıç IP adresi olarak 0.0.0.0 kullanarak bir güvenlik duvarı kuralı ayarlayın ve bitiş IP adresi olarak 255.255.255.255 kullanın. Bu, sunucuyu tüm IP adreslerine açar. Bu, bağlantı sorununuzu giderirse, bu kuralı kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
-2. İstemci ile İnternet arasındaki tüm güvenlik duvarlarında, bağlantı noktası 3306 ' ın giden bağlantılar için açık olduğundan emin olun.
-3. Bağlantı dizenizi ve diğer bağlantı ayarlarını doğrulayın. [MariaDB Için Azure veritabanı 'na uygulama bağlamayı](howto-connection-string.md)inceleyin.
-4. Panodaki hizmet durumunu denetleyin. Bölgesel bir kesinti olduğunu düşünüyorsanız, yeni bir bölgeye kurtarma adımları için bkz. [MariaDB Için Azure veritabanı ile iş sürekliliği 'Ne genel bakış](concepts-business-continuity.md) .
+1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-manage-firewall-portal.md) ayarlayın. Yalnızca geçici sınama amacıyla, başlangıç IP adresi olarak 0.0.0.0'ı ve bitiş IP adresi olarak 255.255.255.255 kullanarak bir güvenlik duvarı kuralı ayarlayın. Bu, sunucuyu tüm IP adreslerine açar. Bu, bağlantı sorununuzu çözerse, bu kuralı kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
+2. İstemci ve internet arasındaki tüm güvenlik duvarlarında, 3306 bağlantı noktasının giden bağlantılar için açık olduğundan emin olun.
+3. Bağlantı dizenizi ve diğer bağlantı ayarlarınızı doğrulayın. [MariaDB için uygulamaların Azure Veritabanına nasıl bağlanışla bağlanabildiğini](howto-connection-string.md)gözden geçirin.
+4. Panodaki servis durumunu kontrol edin. Bölgesel bir kesinti olduğunu düşünüyorsanız, yeni bir bölgeye kurtarılan adımlar [için MariaDB için Azure Veritabanı ile iş sürekliliğine genel bakış](concepts-business-continuity.md) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [MariaDB için Azure veritabanı geçici bağlantı hatalarını işleme](concepts-connectivity.md)
+* [MariaDB için Azure Veritabanı için geçici bağlantı hatalarının işlenmesi](concepts-connectivity.md)

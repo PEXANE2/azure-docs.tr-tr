@@ -1,76 +1,76 @@
 ---
-title: Azure IOT Edge cihazları çevrimdışı - çalışması | Microsoft Docs
-description: IOT Edge cihazları ve modülleri uzun süre için internet bağlantısı olmadan nasıl çalışabilir ve IOT Edge çevrimdışı çok çalışması normal bir IOT cihazları nasıl olanak sağlayabileceğiniz anlayın.
+title: Aygıtları çevrimdışı çalıştırma - Azure IoT Edge | Microsoft Dokümanlar
+description: IoT Edge cihazlarının ve modüllerinin uzun süre internet bağlantısı olmadan nasıl çalışabildiğini ve IoT Edge'in normal IoT aygıtlarının da çevrimdışı çalışmasını nasıl etkinleştirebileceğini anlayın.
 author: kgremban
 ms.author: kgremban
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a057eac8d2a0114cb58f738277e3e9a8fed90672
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 55512491121aee28404ab5f85b4223c67a2f0e1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80236070"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlayın
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge aygıtları, modülleri ve alt aygıtları için genişletilmiş çevrimdışı yetenekleri anlama
 
-Azure IoT Edge, IoT Edge cihazlarınızda genişletilmiş çevrimdışı işlemleri destekler ve IoT Edge olmayan alt cihazlarda çevrimdışı işlemleri de mümkün. Bir IoT Edge cihazda IoT Hub bağlanmak için bir fırsat olduğu sürece, bu cihaz ve tüm alt cihazlar aralıklı olarak veya internet bağlantısı olmadan çalışmaya devam edebilir.
+Azure IoT Edge, IoT Edge aygıtlarınızda genişletilmiş çevrimdışı işlemleri destekler ve IoT Edge olmayan alt aygıtlarda da çevrimdışı işlemleri etkinleştirir. Bir IoT Edge aygıtı, IoT Hub'a bağlanmak için tek bir fırsata sahip olduğu sürece, bu aygıt ve alt aygıtlar aralıklı olarak veya internet bağlantısı olmadan çalışmaya devam edebilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
-Bir IoT Edge cihaz çevrimdışı moda geçtiğinde, IoT Edge hub 'ı üç rol alır. İlk olarak, cihaz yeniden kadar bunları kaydeder ve Yukarı Akış çıkacak herhangi bir iletiyi depolar. İkinci olarak, bunlar çalışmaya devam edebilmesi için modüller ve alt cihazların kimliğini doğrulamak için IOT Hub adına hareket eder. Üçüncü olarak, IOT hub'ı aracılığıyla normalde çıkacak alt cihazlar arasındaki iletişimi sağlar.
+Bir IoT Edge aygıtı çevrimdışı moda geçtiğinde, IoT Edge hub'ı üç rol üstlenir. İlk olarak, yukarı ya da akış adaabilecek iletileri depolar ve aygıt yeniden bağlanana kadar kaydeder. İkinci olarak, modülleri ve alt aygıtları doğrulayabilmeleri için IoT Hub adına hareket eder. Üçüncü olarak, normalde IoT Hub üzerinden gidecek alt aygıtlar arasında iletişim sağlar.
 
-Aşağıdaki örnek, bir IOT Edge senaryo çevrimdışı modda nasıl çalıştığı gösterilmektedir:
+Aşağıdaki örnek, Bir IoT Edge senaryosunun çevrimdışı modda nasıl çalıştığını gösterir:
 
 1. **Cihazları yapılandırma**
 
-   IOT Edge cihazları otomatik olarak etkinleştirilen çevrimdışı özellikleri vardır. Diğer IOT cihazlarına söz konusu özellik genişletmek için cihazlar IOT hub'ında arasında bir üst-alt ilişkisi bildirmeniz gerekir. Daha sonra, alt cihazları atanan üst cihazlarına güvenmek ve bir ağ geçidi olarak üst öğe aracılığıyla cihazdan buluta iletişimleri yönlendirmek üzere yapılandırırsınız.
+   IoT Edge aygıtları otomatik olarak çevrimdışı özelliklere sahiptir. Bu özelliği diğer IoT aygıtlarına genişletmek için, IoT Hub'daki aygıtlar arasında bir üst-alt ilişkisi bildirmeniz gerekir. Ardından, alt aygıtları atanan üst aygıtlarına güvenecek şekilde yapılandırır ve aygıttan buluta iletişimi ağ geçidi olarak üst aygıt üzerinden yönlendirirsiniz.
 
-2. **IoT Hub ile Eşitle**
+2. **IoT Hub ile eşitleme**
 
-   En az bir kez IOT Edge çalışma zamanı yüklendikten sonra IOT Edge cihazı IOT Hub ile eşitlemek için çevrimiçi olması gerekir. Bu eşitleme, IOT Edge cihazı atanmış tüm alt cihazlar hakkında bilgi alır. IOT Edge cihazı de güvenli bir şekilde çevrimdışı işlemlerini etkinleştirmek için yerel önbelleği güncelleştirir ve telemetri iletilerini yerel depolama ayarlarını alır.
+   IoT Edge çalışma süresinin yüklenmesinden sonra en az bir kez, IoT Edge aygıtının IoT Hub ile eşitlenmesi için çevrimiçi olması gerekir. Bu eşitlemede, IoT Edge aygıtı kendisine atanan alt aygıtlar hakkında ayrıntılı bilgi alır. IoT Edge aygıtı ayrıca çevrimdışı işlemleri etkinleştirmek için yerel önbelleğini güvenli bir şekilde güncelleştirir ve telemetri iletilerinin yerel depolama ayarları alır.
 
-3. **Çevrimdışı çalış**
+3. **Çevrimdışı**
 
-   IOT Edge cihaz, dağıtılan modülleri ve tüm alt öğeleri IOT cihazları IOT Hub'ından bağlı değilken süresiz olarak çalışabilir. Modüller ve alt cihazlar, çevrimdışıyken IoT Edge hub ile kimlik doğrulaması yaparak başlayabilir ve yeniden başlatılabilir. IOT Hub'ına Yukarı Akış ilişkili telemetri yerel olarak depolanır. İletişim alt IOT cihazları veya modülleri arasında doğrudan yöntemler veya iletileri korunur.
+   IoT Hub'dan bağlantısı kesilse de, IoT Edge aygıtı, dağıtılmış modülleri ve alt IoT aygıtları süresiz olarak çalışabilir. Modüller ve alt aygıtlar çevrimdışıyken IoT Edge hub'ı ile kimlik doğrulaması yaparak başlatılabilir ve yeniden başlatılabilir. IoT Hub'a bağlı telemetri yerel olarak depolanır. Modüller veya alt IoT aygıtları arasındaki iletişim doğrudan yöntemler veya mesajlar la sürdürülmektedir.
 
-4. **IoT Hub yeniden bağlama ve yeniden eşitleme**
+4. **IoT Hub ile yeniden bağlanma ve yeniden senkronize etme**
 
-   IOT Hub ile bağlantı kurulduktan sonra IOT Edge cihazı yeniden eşitler. Yerel olarak depolanan iletiler IoT Hub doğrudan dağıtılır, ancak bağlantının hızına, IoT Hub gecikme süresine ve ilgili faktörlere bağlıdır. Bunlar, depolandıkları sırada teslim edilir.
+   IoT Hub bağlantısı geri yüklendikten sonra, IoT Edge aygıtı yeniden eşitlenir. Yerel olarak depolanan iletiler hemen IoT Hub'ına teslim edilir, ancak bağlantının hızına, IoT Hub gecikmesine ve ilgili etkenlere bağlıdır. Depolandıkları aynı sırada teslim edilirler.
 
-   Modüller istenen ve bildirilen özellikleri ve cihazlar arasındaki farkları mutabık kılınır. IOT Edge cihazı IOT cihazları atanan alt kümesine herhangi bir değişiklik güncelleştirir.
+   Modüllerin ve cihazların istenilen ve bildirilen özellikleri arasındaki farklar uzlaştırılır. IoT Edge aygıtı, atanan alt IoT aygıtları kümesindeki değişiklikleri güncelleştirir.
 
-## <a name="restrictions-and-limits"></a>Kısıtlamaları ve sınırlar
+## <a name="restrictions-and-limits"></a>Kısıtlamalar ve sınırlar
 
-Bu makalede açıklanan genişletilmiş çevrimdışı yetenekler, [IoT Edge Version 1.0.7 veya üzeri](https://github.com/Azure/azure-iotedge/releases)sürümlerde sunulmaktadır. Önceki sürümlerde çevrimdışı özelliklerinin bir alt kümesi. IOT Edge mevcut genişletilmiş çevrimdışı özellikleri olmayan cihazlar, çalışma zamanı sürümü değiştirerek yükseltilemez ancak bu özellikler sağlamak için yeni bir IOT Edge cihaz kimliği ile yapılandırılması gerekir.
+Bu makalede açıklanan genişletilmiş çevrimdışı özellikleri [IoT Edge sürüm 1.0.7 veya daha yüksek](https://github.com/Azure/azure-iotedge/releases)mevcuttur. Önceki sürümler çevrimdışı özelliklerin bir alt kümesine sahiptir. Genişletilmiş çevrimdışı özellikleri olmayan mevcut IoT Edge aygıtları çalışma zamanı sürümünü değiştirerek yükseltilemez, ancak bu özellikleri elde etmek için yeni bir IoT Edge aygıt kimliğiyle yeniden yapılandırılmalıdır.
 
-Yalnızca IoT Edge olmayan cihazlar alt cihaz olarak eklenebilir.
+Alt aygıtlar olarak yalnızca IoT Edge olmayan aygıtlar eklenebilir.
 
-IoT Edge cihazlar ve atanan alt cihazları ilk, tek seferlik eşitlemeden sonra süresiz olarak çevrimdışı çalışabilir. Ancak, iletilerin depolanması yaşam süresi (TTL) ayarına ve iletileri depolamaya yönelik kullanılabilir disk alanına bağlıdır.
+IoT Edge aygıtları ve atanan alt aygıtlar, ilk kez eşitlemeden sonra süresiz olarak çevrimdışı çalışabilir. Ancak, iletilerin depolanması, canlı (TTL) ayarına ve iletileri depolamak için kullanılabilir disk alanına bağlıdır.
 
-## <a name="set-up-parent-and-child-devices"></a>Üst ve alt cihazları ayarlama
+## <a name="set-up-parent-and-child-devices"></a>Üst ve alt aygıtları ayarlama
 
-IoT Edge bir cihazın genişletilmiş çevrimdışı yeteneklerini alt IoT cihazlarına genişletmesi için iki adımı gerçekleştirmeniz gerekir. İlk olarak Azure portal üst-alt ilişkilerini bildirin. İkinci olarak, üst cihaz ve herhangi bir alt cihaz arasında bir güven ilişkisi oluşturun ve ardından, bir ağ geçidi olarak üst öğe üzerinden gezinmek için cihazdan buluta iletişimleri yapılandırın.
+Bir IoT Edge aygıtının genişletilmiş çevrimdışı özelliklerini alt IoT aygıtlarına genişletebilmek için iki adımı tamamlamanız gerekir. İlk olarak, üst-alt ilişkilerini Azure portalında bildirin. İkinci olarak, üst aygıt ve herhangi bir alt aygıt arasında bir güven ilişkisi oluşturun ve ardından aygıttan buluta iletişimi ağ geçidi olarak üst aygıttan geçecek şekilde yapılandırın.
 
-### <a name="assign-child-devices"></a>Alt cihaz atama
+### <a name="assign-child-devices"></a>Alt aygıtları atama
 
-Alt cihazlar, aynı IoT Hub kayıtlı IoT Edge olmayan herhangi bir cihaz olabilir. Üst cihazlarda birden çok alt cihaz olabilir, ancak bir alt cihazın yalnızca bir üst öğesi vardır. Alt cihazları bir sınır cihazına ayarlamak için üç seçenek vardır: Azure portal, Azure CLı veya IoT Hub hizmeti SDK 'sını kullanma.
+Alt aygıtlar, aynı IoT Hub'ına kayıtlı olan IoT Edge olmayan aygıtlar olabilir. Üst aygıtların birden çok alt aygıtı olabilir, ancak alt aygıtta yalnızca bir üst öğe vardır. Alt aygıtları bir kenar aygıtına ayarlamak için üç seçenek vardır: Azure portalı üzerinden, Azure CLI'yi kullanarak veya IoT Hub hizmeti SDK'yı kullanarak.
 
-Aşağıdaki bölümlerde, var olan IoT cihazları için IoT Hub ' de üst/alt ilişkiyi nasıl bildirebileceği hakkında örnekler sağlanmaktadır. Alt cihazlarınız için yeni cihaz kimlikleri oluşturuyorsanız, daha fazla bilgi için bkz. [Azure 'da bir aşağı akış cihazının kimliğini doğrulama IoT Hub](how-to-authenticate-downstream-device.md) .
+Aşağıdaki bölümlerde, mevcut IoT aygıtları için IoT Hub'ındaki üst/alt ilişkisini nasıl bildirebileceğinize ilişkin örnekler verilmiştir. Alt çocuklarınız için yeni aygıt kimlikleri oluşturuyorsanız, daha fazla bilgi için [bir alt akış aygıtını Azure IoT Hub'ına doğrulayın'](how-to-authenticate-downstream-device.md) a bakın.
 
-#### <a name="option-1-iot-hub-portal"></a>Seçenek 1: IoT Hub Portal
+#### <a name="option-1-iot-hub-portal"></a>Seçenek 1: IoT Hub Portalı
 
-Yeni bir cihaz oluştururken üst-alt ilişkisi bildirebilirsiniz. Ya da var olan cihazlar için, üst IoT Edge cihazının veya alt IoT cihazının cihaz ayrıntıları sayfasından ilişkiyi bildirebilirsiniz.
+Yeni bir aygıt oluştururken üst-alt ilişkisini bildirebilirsiniz. Veya varolan aygıtlar için, ilişkiyi üst IoT Edge aygıtının veya alt IoT aygıtının aygıt ayrıntıları sayfasından bildirebilirsiniz.
 
-   ![IOT Edge cihaz ayrıntıları sayfasından alt cihazları yönetme](./media/offline-capabilities/manage-child-devices.png)
+   ![Alt aygıtları IoT Edge aygıt ayrıntıları sayfasından yönetme](./media/offline-capabilities/manage-child-devices.png)
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>2\. seçenek: `az` komut satırı aracını kullanma
+#### <a name="option-2-use-the-az-command-line-tool"></a>Seçenek 2: `az` Komut satırı aracını kullanın
 
-[Azure komut satırı arabirimini](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) [IoT uzantısı](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 veya üzeri) ile birlikte kullanarak, üst alt ilişkilerini [cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alt komutları ile yönetebilirsiniz. Aşağıdaki örnekte, hub 'daki tüm IoT Edge olmayan cihazları bir IoT Edge cihazının alt cihazları olacak şekilde atamak için bir sorgu kullanılır.
+[IoT uzantılı](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 veya daha yeni) [Azure komut satırı arabirimini](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) kullanarak, [aygıt kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alt komutlarıyla üst alt ilişkileri yönetebilirsiniz. Aşağıdaki örnekte, hub'daki IoT Edge olmayan tüm aygıtları bir IoT Edge aygıtının alt aygıtları olarak atamak için bir sorgu kullanılır.
 
-```shell
+```azurecli
 # Set IoT Edge parent device
 egde_device="edge-device1"
 
@@ -91,36 +91,36 @@ az iot hub device-identity add-children \
   --subscription replace-with-sub-name
 ```
 
-Farklı bir cihaz alt kümesini seçmek için [sorguyu](../iot-hub/iot-hub-devguide-query-language.md) değiştirebilirsiniz. Büyük bir cihaz kümesi belirtirseniz komut birkaç saniye sürebilir.
+Farklı bir aygıt alt kümesi seçmek için [sorguyu](../iot-hub/iot-hub-devguide-query-language.md) değiştirebilirsiniz. Büyük bir aygıt kümesi belirtirseniz komut birkaç saniye sürebilir.
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>Seçenek 3: IoT Hub hizmeti SDK 'sını kullanma
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Seçenek 3: IoT Hub Hizmeti SDK kullanın
 
-Son olarak, Java ya da Node. js IoT Hub Service C#SDK 'sını kullanarak üst alt öğe ilişkilerini programlı bir şekilde yönetebilirsiniz. SDK kullanarak [bir alt cihaz atamaya bir örnek](https://aka.ms/set-child-iot-device-c-sharp) aşağıda verilmiştir. C#
+Son olarak, C#, Java veya Node.js IoT Hub Service SDK'yı kullanarak üst alt ilişkileri programlı bir şekilde yönetebilirsiniz. Burada C# SDK kullanarak [bir alt aygıt atama örneği](https://aka.ms/set-child-iot-device-c-sharp) verilmiştir.
 
-### <a name="set-up-the-parent-device-as-a-gateway"></a>Ana cihazı ağ geçidi olarak ayarlama
+### <a name="set-up-the-parent-device-as-a-gateway"></a>Üst aygıtı ağ geçidi olarak ayarlama
 
-Üst/alt öğe ilişkisini saydam bir ağ geçidi olarak düşünebilirsiniz. burada, alt cihazın IoT Hub kendi kimliği vardır, ancak bulut üzerinden kendi üst yoluyla iletişim kurar. Güvenli iletişim için, alt cihazın, ana cihazın güvenilir bir kaynaktan geldiğini doğrulayabilmesi gerekir. Aksi halde, üçüncü taraflar üst düzey cihazları üst öğeleri taklit etmek ve iletişimleri ele almak için ayarlayabilir.
+Bir üst/alt ilişkisini, alt aygıtın IoT Hub'da kendi kimliğine sahip olduğu ancak üst öğesi üzerinden bulut üzerinden iletişim kurduğu saydam bir ağ geçidi olarak düşünebilirsiniz. Güvenli iletişim için alt aygıtın ana aygıtın güvenilir bir kaynaktan geldiğini doğrulayabilmesi gerekir. Aksi takdirde, üçüncü taraflar ebeveynlerin kimliğine bürünmek ve iletişimi engellemek için kötü amaçlı aygıtlar kurabilir.
 
-Bu güven ilişkisini oluşturmanın bir yolu, aşağıdaki makalelerde ayrıntılı olarak açıklanmıştır:
+Bu güven ilişkisini oluşturmanın bir yolu aşağıdaki makalelerde ayrıntılı olarak açıklanmıştır:
 
 * [IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)
-* [Bir aşağı akış (alt) cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md)
+* [Bir alt akış (alt) aygıtını Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>DNS sunucularını belirtme
+## <a name="specify-dns-servers"></a>DNS sunucularını belirtin
 
-Sağlamlığını artırmak için ortamınızda kullanılan DNS sunucusu adreslerini belirtmeniz önemle tavsiye edilir. DNS sunucunuzu IoT Edge için ayarlamak için, bkz. [Edge Aracısı modülü için çözüm ' boş yapılandırma dosyası ' ' nı sürekli raporlar ve sorun giderme makalesinde cihazda hiç modül başlamıyor](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) .
+Sağlamlığı artırmak için, ortamınızda kullanılan DNS sunucu adreslerini belirtmeniz önerilir. DNS sunucunuzu IoT Edge olarak ayarlamak için Edge Agent modülünün çözünürlüğüne bakın [sürekli olarak 'boş config dosyası' raporlanır ve](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) sorun giderme makalesinde cihazda hiçbir modül başlatılamaz.
 
-## <a name="optional-offline-settings"></a>İsteğe bağlı bir çevrimdışı ayarları
+## <a name="optional-offline-settings"></a>İsteğe bağlı çevrimdışı ayarlar
 
-Cihazlarınız çevrimdışı kalırsa, IoT Edge üst cihaz, bağlantı kurulana kadar tüm cihazdan buluta iletileri depolar. IoT Edge hub modülü, çevrimdışı iletilerin depolanmasını ve iletilmesini yönetir. Uzun süreler boyunca çevrimdışı duruma getirebileceği cihazlarda, iki IoT Edge hub ayarını yapılandırarak performansı iyileştirin.
+Aygıtlarınız çevrimdışı olursa, IoT Edge ana aygıtı bağlantı yeniden kurulana kadar tüm aygıttan buluta iletileri depolar. IoT Edge hub modülü, çevrimdışı iletilerin depolanmasını ve iletilmesinin yönetilmesini sağlar. Uzun süre çevrimdışı kılabilecek aygıtlar için, iki IoT Edge hub ayarını yapılandırarak performansı optimize edin.
 
-İlk olarak, IoT Edge hub 'ının iletileri cihazın yeniden bağlanmasına yetecek kadar uzun tutacağından, canlı ayar süresini artırın. Daha sonra, ileti depolaması için ek disk alanı ekleyin.
+İlk olarak, IoT Edge hub'ı iletileri aygıtınızın yeniden bağlanmasına yetecek kadar uzun tutabilsin diye canlı ayar süresini artırın. Ardından, ileti depolama için ek disk alanı ekleyin.
 
 ### <a name="time-to-live"></a>Yaşam süresi
 
-Ayar yaşam süresi dolmadan önce teslim edilecek bir ileti bekleyebileceği süreyi (saniye cinsinden) ' dir. 7200 saniye (iki saat) varsayılandır. Maksimum değer yalnızca 2.000.000.000 etrafında olan bir tamsayı değişkeninin maksimum değeri ile sınırlıdır.
+Canlı ayar süresi, iletinin süresi dolmadan önce teslim edilmeyi bekleyecek olan süredir (saniye cinsinden). Varsayılan değer 7200 saniyedir (iki saat). Maksimum değer yalnızca 2 milyar civarında olan bir toplam değişkenin maksimum değeriyle sınırlıdır.
 
-Bu ayar, ikizi modülünde depolanan IoT Edge hub 'ının istenen bir özelliğidir. Azure portal veya doğrudan dağıtım bildiriminde yapılandırabilirsiniz.
+Bu ayar, modül ikizinde depolanan IoT Edge hub'ının istenen bir özelliğidir. Azure portalında veya doğrudan dağıtım bildiriminde yapılandırabilirsiniz.
 
 ```json
 "$edgeHub": {
@@ -134,13 +134,13 @@ Bu ayar, ikizi modülünde depolanan IoT Edge hub 'ının istenen bir özelliği
 }
 ```
 
-### <a name="host-storage-for-system-modules"></a>Sistem modülleri için konak depolaması
+### <a name="host-storage-for-system-modules"></a>Sistem modülleri için ana bilgisayar depolama
 
-Mesajlar ve modül durumu bilgileri, varsayılan olarak IoT Edge hub 'ının yerel kapsayıcı dosya sisteminde depolanır. Özellikle çevrimdışı çalışırken, daha iyi güvenilirlik sağlamak için, konak IoT Edge cihazında depolamayı da ayırabilirsiniz. Daha fazla bilgi için bkz. [modüllerin bir cihazın yerel depolama alanına erişmesine Izin verme](how-to-access-host-storage-from-module.md)
+İletiler ve modül durumu bilgileri varsayılan olarak IoT Edge hub'ın yerel kapsayıcı dosya sisteminde depolanır. Daha iyi güvenilirlik için, özellikle çevrimdışı çalışırken, depolamayı ana bilgisayar IoT Edge aygıtına da ayırabilirsiniz. Daha fazla bilgi için [bkz.](how-to-access-host-storage-from-module.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Üst/alt cihaz bağlantılarınız için saydam bir ağ geçidi ayarlama hakkında daha fazla bilgi edinin:
+Üst/alt aygıt bağlantılarınız için saydam bir ağ geçidi kurma hakkında daha fazla bilgi edinin:
 
 * [IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)
 * [Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure CLı kullanarak birden çok IP adresi olan VM
+title: Azure CLI'yi kullanarak birden fazla IP adresine sahip VM
 titlesuffix: Azure Virtual Network
-description: Azure komut satırı arabirimi 'ni (CLı) kullanarak bir sanal makineye birden çok IP adresi atamayı öğrenin.
+description: Azure komut satırı arabirimini (CLI) kullanarak sanal bir makineye birden çok IP adresi atamayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: kumud
-ms.openlocfilehash: b99e5e6809a909184d775c70b56c249c11734cb9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 144f30463adb3dfbce1717e06548baccc8286f8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240231"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLı kullanarak sanal makinelere birden çok IP adresi atama
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI'yi kullanarak sanal makinelere birden çok IP adresi atama
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Bu makalede, Azure CLı kullanarak Azure Resource Manager dağıtım modeli aracılığıyla bir sanal makinenin (VM) nasıl oluşturulacağı açıklanmaktadır. Klasik dağıtım modeliyle oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlama](../resource-manager-deployment-model.md) makalesini okuyun.
+Bu makalede, Azure CLI'yi kullanarak Azure Kaynak Yöneticisi dağıtım modeli aracılığıyla sanal makine (VM) nasıl oluşturulacak açıklanmaktadır. Klasik dağıtım modeli aracılığıyla oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlayın](../resource-manager-deployment-model.md) makalesini okuyun.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Birden çok IP adresi olan bir VM oluşturma
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Birden çok IP adresi ile VM oluşturma
 
-Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi ile örnek bir sanal makine oluşturma açıklanmaktadır. "" Ve IP adresi türlerindeki değişken değerlerini, uygulamanız için gereken şekilde değiştirin. 
+İzleyen adımlar, senaryoda açıklandığı gibi, birden çok IP adresine sahip örnek bir sanal makinenin nasıl oluşturulacak olduğunu açıklar. Uygulamanız için "" ve IP adresi türlerinde değişken değerlerini gerektiği gibi değiştirin. 
 
-1. Henüz yüklenmemişse [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleme.
-2. [Linux VM 'ler IÇIN SSH ortak ve özel anahtar çifti oluşturma](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)bölümündeki adımları tamamlayarak Linux VM 'ler için SSH ortak ve özel anahtar çifti oluşturun.
-3. Komut kabuğundan, komut `az login` oturum açın ve kullanmakta olduğunuz aboneliği seçin.
-4. Bir Linux veya Mac bilgisayarda aşağıdaki betiği yürüterek VM 'yi oluşturun. Betik bir kaynak grubu, bir sanal ağ (VNet), üç IP yapılandırmasına sahip bir NIC ve kendisine bağlı iki NIC içeren bir VM oluşturur. NIC, genel IP adresi, sanal ağ ve VM kaynaklarının hepsi aynı konum ve abonelikte bulunmalıdır. Kaynakların tümünün aynı kaynak grubunda mevcut olması gerekmese de, aşağıdaki betikte.
+1. Azure [CLI'yi](/cli/azure/install-azure-cli) zaten yüklü değilseniz yükleyin.
+2. Linux VM'leri için SSH ortak ve özel anahtar çifti oluşturma adımlarını tamamlayarak Linux [VM'leri için bir SSH ortak ve özel anahtar çifti](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)oluşturun.
+3. Komut kabuğundan komutla giriş `az login` yapın ve kullandığınız aboneliği seçin.
+4. Linux veya Mac bilgisayarında izleyen komut dosyasını çalıştırarak VM'yi oluşturun. Komut dosyası bir kaynak grubu, bir sanal ağ (VNet), üç IP yapılandırması ile bir NIC ve ona bağlı iki NIC ile bir VM oluşturur. NIC, genel IP adresi, sanal ağ ve VM kaynaklarının tümü aynı konumda ve abonelikte bulunmalıdır. Kaynakların tümü aynı kaynak grubunda var olmak zorunda olmasa da, aşağıdaki komut dosyasında varolurlar.
 
 ```bash
     
@@ -153,30 +153,30 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-Bir NIC ile 3 IP yapılandırmasına sahip bir VM oluşturmaya ek olarak, betik şunu oluşturur:
+Komut dosyası, 3 IP yapılandırmalı NIC'li bir VM oluşturmaya ek olarak şunları oluşturur:
 
-- Varsayılan olarak tek bir Premium yönetilen disk, ancak oluşturabileceğiniz disk türü için başka seçenekleriniz vardır. Ayrıntılar için [Azure CLI 'yı kullanarak LINUX VM oluşturma](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun.
-- Bir alt ağa ve iki genel IP adresine sahip bir sanal ağ. Alternatif olarak, *var olan* sanal ağ, alt ağ, NIC veya genel IP adresi kaynaklarını kullanabilirsiniz. Ek kaynaklar oluşturmak yerine var olan ağ kaynaklarını nasıl kullanacağınızı öğrenmek için `az vm create -h`girin.
+- Varsayılan olarak tek bir premium yönetilen disk, ancak oluşturabileceğiniz disk türü için başka seçenekleriniz vardır. Ayrıntılar için [Azure CLI makalesini kullanarak Linux VM Oluştur'u](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) okuyun.
+- Bir alt net ve iki genel IP adresi olan bir sanal ağ. Alternatif olarak, *varolan* sanal ağ, alt ağ, NIC veya genel IP adresi kaynaklarını kullanabilirsiniz. Ek kaynaklar oluşturmak yerine varolan ağ kaynaklarını `az vm create -h`nasıl kullanacağınızı öğrenmek için girin.
 
-Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
+Genel IP adreslerinin nominal ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Abonelikte kullanılabilecek genel IP adreslerinin sayısının bir sınırı vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
 
-VM oluşturulduktan sonra, NIC yapılandırmasını görüntülemek için `az network nic show --name MyNic1 --resource-group myResourceGroup` komutunu girin. NIC ile ilişkili IP yapılandırmalarının listesini görüntülemek için `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` girin.
+VM oluşturulduktan sonra NIC `az network nic show --name MyNic1 --resource-group myResourceGroup` yapılandırmasını görüntülemek için komutu girin. NIC `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` ile ilişkili IP yapılandırmalarının listesini görüntülemek için girin.
 
-Bu makalenin [BIR VM işletim SISTEMINE IP adresleri Ekle](#os-config) bölümünde işletim sisteminizin ADıMLARıNı tamamlayarak VM işletim SISTEMINE özel IP adreslerini ekleyin.
+Bu makalenin Bir VM işletim sistemi bölümüne IP adresleri ekle işletim sisteminizin adımlarını tamamlayarak özel IP adreslerini [VM işletim sistemine](#os-config) ekleyin.
 
-## <a name="add"></a>VM 'ye IP adresleri ekleme
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM'ye IP adresleri ekleme
 
-Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel ve genel IP adresleri ekleyebilirsiniz. Örnekler, bu makalede açıklanan [senaryoya](#scenario) göre derleme yapılır.
+Aşağıdaki adımları tamamlayarak varolan bir Azure ağ arabirimine ek özel ve genel IP adresleri ekleyebilirsiniz. Örnekler, bu makalede açıklanan [senaryo](#scenario) üzerine inşa edin.
 
-1. Bir komut kabuğu açın ve bu bölümde yer alan kalan adımları tek bir oturum içinde doldurun. Azure CLı yüklü ve yapılandırılmış değilse, [Azure CLI yükleme](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesindeki adımları uygulayın ve `az-login` komutuyla Azure hesabınızda oturum açın.
+1. Bir komut kabuğu açın ve bu bölümdeki kalan adımları tek bir oturumda tamamlayın. Azure CLI'yi zaten yüklemediyseniz ve yapılandırmanız yoksa, [Azure CLI yükleme](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesindeki adımları tamamlayın `az-login` ve komutla Azure hesabınıza giriş yapın.
 
-2. Gereksinimlerinize göre aşağıdaki bölümlerden birindeki adımları doldurun:
+2. Gereksinimlerinize bağlı olarak aşağıdaki bölümlerden birinde adımları tamamlayın:
 
-    **Özel IP adresi ekle**
+    **Özel IP adresi ekleme**
     
-    Bir NIC 'ye özel bir IP adresi eklemek için, aşağıdaki komutu kullanarak bir IP yapılandırması oluşturmanız gerekir. Statik IP adresi, alt ağ için kullanılmamış bir adres olmalıdır.
+    NIC'e özel bir IP adresi eklemek için, aşağıdaki komutu kullanarak bir IP yapılandırması oluşturmanız gerekir. Statik IP adresi alt ağ için kullanılmayan bir adres olmalıdır.
 
-    ```bash
+    ```azurecli
     az network nic ip-config create \
     --resource-group myResourceGroup \
     --nic-name myNic1 \
@@ -184,19 +184,19 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
     --name IPConfig-4
     ```
     
-    Benzersiz yapılandırma adlarını ve özel IP adreslerini (statik IP adresleri olan yapılandırmalar için) kullanarak, ihtiyacınız olan sayıda yapılandırma oluşturun.
+    Benzersiz yapılandırma adlarını ve özel IP adreslerini kullanarak (statik IP adreslerine sahip yapılandırmalar için) istediğiniz kadar yapılandırma oluşturun.
 
-    **Genel IP adresi ekleme**
+    **Herkese açık bir IP adresi ekleme**
     
-    Genel bir IP adresi, yeni bir IP yapılandırmasıyla ya da var olan bir IP yapılandırmasıyla ilişkilendirerek eklenir. İhtiyaç duyduğunuz gibi, izleyen bölümlerden birindeki adımları tamamlayın.
+    Genel bir IP adresi, yeni bir IP yapılandırması veya varolan bir IP yapılandırması ile ilişkilendirilerek eklenir. Aşağıdaki bölümlerden birinde, istediğiniz gibi adımları tamamlayın.
 
-    Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
+    Genel IP adreslerinin nominal ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Abonelikte kullanılabilecek genel IP adreslerinin sayısının bir sınırı vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
 
-    - **Kaynağı yeni bir IP yapılandırmasıyla ilişkilendir**
+    - **Kaynağı yeni bir IP yapılandırması ile ilişkilendirme**
     
-        Yeni bir IP yapılandırmasına genel IP adresi eklediğinizde, tüm IP yapılandırmalarının özel bir IP adresi olması gerektiğinden özel bir IP adresi de eklemeniz gerekir. Var olan bir genel IP adresi kaynağı ekleyebilir veya yeni bir tane oluşturabilirsiniz. Yeni bir tane oluşturmak için aşağıdaki komutu girin:
+        Yeni bir IP yapılandırmasında herkese açık bir IP adresi eklediğinizde, tüm IP yapılandırmalarının özel bir IP adresi olması gerektiğinden, özel bir IP adresi de eklemeniz gerekir. Varolan bir genel IP adresi kaynağı ekleyebilir veya yeni bir tane oluşturabilirsiniz. Yeni bir komut oluşturmak için aşağıdaki komutu girin:
     
-        ```bash
+        ```azurecli
         az network public-ip create \
         --resource-group myResourceGroup \
         --location westcentralus \
@@ -204,9 +204,9 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         --dns-name mypublicdns3
         ```
 
-        Statik bir özel IP adresi ve ilişkili *myPublicIP3* genel IP adresi kaynağı ile yenı bir IP yapılandırması oluşturmak için aşağıdaki komutu girin:
+        Statik özel IP adresi ve ilişkili *myPublicIP3* genel IP adresi kaynağı yla yeni bir IP yapılandırması oluşturmak için aşağıdaki komutu girin:
 
-        ```bash
+        ```azurecli
         az network nic ip-config create \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
@@ -215,16 +215,16 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         --public-ip-address myPublicIP3
         ```
 
-    - **Kaynağı var olan BIR IP yapılandırmasıyla ilişkilendir** Genel IP adresi kaynağı, yalnızca bir tane ilişkilendirilmiş olmayan bir IP yapılandırmasıyla ilişkilendirilebilir. Aşağıdaki komutu girerek bir IP yapılandırmasının ilişkili bir genel IP adresine sahip olup olmadığını belirleyebilirsiniz:
+    - **Kaynağı varolan bir IP yapılandırmasına ilişkilendirme** Ortak BIR IP adresi kaynağı yalnızca zaten ilişkili olmayan bir IP yapılandırması ile ilişkilendirilebilir. Aşağıdaki komutu girerek bir IP yapılandırmasının ilişkili bir genel IP adresine sahip olup olmadığını belirleyebilirsiniz:
 
-        ```bash
+        ```azurecli
         az network nic ip-config list \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
         --query "[?provisioningState=='Succeeded'].{ Name: name, PublicIpAddressId: publicIpAddress.id }" --output table
         ```
 
-        Döndürülen çıkış:
+        Döndürülen çıktı:
     
             Name        PublicIpAddressId
             
@@ -232,9 +232,9 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        *Ipconfig-3* Için **Publicıpaddressıd** sütunu çıktıda boş olduğundan, şu anda onunla ilişkili genel IP adresi kaynağı yok. Ipconfig-3 ' e var olan bir genel IP adresi kaynağı ekleyebilir veya bir tane oluşturmak için aşağıdaki komutu girebilirsiniz:
+        *IpConfig-3* için **PublicIpAddressId** sütunu çıktıda boş olduğundan, şu anda bu sütunla ilişkili hiçbir genel IP adresi kaynağı bulunmamaktadır. IpConfig-3'e varolan bir genel IP adresi kaynağı ekleyebilir veya aşağıdaki komutu girerek bir tane oluşturabilirsiniz:
 
-        ```bash
+        ```azurecli
         az network public-ip create \
         --resource-group  myResourceGroup
         --location westcentralus \
@@ -243,9 +243,9 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         --allocation-method Static
         ```
     
-        Genel IP adresi kaynağını *Ipconfig-3*ADLı mevcut IP yapılandırması ile ilişkilendirmek için aşağıdaki komutu girin:
+        Genel IP adresi kaynağını *IPConfig-3*adlı mevcut IP yapılandırmasına ilişkilendirmek için aşağıdaki komutu girin:
     
-        ```bash
+        ```azurecli
         az network nic ip-config update \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
@@ -253,16 +253,16 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         --public-ip myPublicIP3
         ```
 
-3. Aşağıdaki komutu girerek, NIC 'ye atanan özel IP adreslerini ve genel IP adresi kaynak kimliklerini görüntüleyin:
+3. Aşağıdaki komutu girerek NIC'e atanan özel IP adreslerini ve genel IP adresi kaynağı Kimliklerini görüntüleyin:
 
-    ```bash
+    ```azurecli
     az network nic ip-config list \
     --resource-group myResourceGroup \
     --nic-name myNic1 \
     --query "[?provisioningState=='Succeeded'].{ Name: name, PrivateIpAddress: privateIpAddress, PrivateIpAllocationMethod: privateIpAllocationMethod, PublicIpAddressId: publicIpAddress.id }" --output table
     ```
 
-    Döndürülen çıkış: <br>
+    Döndürülen çıktı: <br>
     
         Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
         
@@ -271,6 +271,6 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
-4. Bu makalenin [BIR VM işletim SISTEMINE IP adresleri ekleme](#os-config) bölümündeki yönergeleri IZLEYEREK, NIC 'ye EKLEDIĞINIZ özel IP adreslerini VM işletim sistemine ekleyin. Genel IP adreslerini işletim sistemine eklemeyin.
+4. BU makalenin Bir [VM işletim sistemi](#os-config) bölümüne IP adresleri ekle yönergeleriizek vm işletim sistemine NIC'ye eklediğiniz özel IP adreslerini ekleyin. Ortak IP adreslerini işletim sistemine eklemeyin.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

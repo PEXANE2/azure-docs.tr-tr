@@ -1,24 +1,25 @@
 ---
-title: Azure Cosmos DB için SQL anahtar sözcükleri
+title: Azure Cosmos DB için SQL anahtar kelimeleri
 description: Azure Cosmos DB için SQL anahtar kelimeleri hakkında bilgi edinin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498546"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
-Bu makalede, Azure Cosmos DB SQL sorgularında kullanılabilecek anahtar sözcükler ayrıntılı olarak açıklanır.
+# <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB'deki anahtar kelimeler
 
-## <a name="between"></a>ARALARıNDA
+Bu makalede, Azure Cosmos DB SQL sorgularında kullanılabilecek anahtar kelimeler ayrıntılı olarak belirtilmiştir.
 
-ANSI SQL 'de olduğu gibi, sorguları dize veya sayısal değer aralıklarına göre ifade etmek için BETWEEN anahtar sözcüğünü kullanabilirsiniz. Örneğin, aşağıdaki sorgu ilk alt öğenin 1-5, dahil olduğu tüm öğeleri döndürür.
+## <a name="between"></a>BETWEEN
+
+Sözcük tabirini `BETWEEN` dize veya sayısal değerler aralıklarına karşı ifade etmek için anahtar sözcüğü kullanabilirsiniz. Örneğin, aşağıdaki sorgu, ilk çocuğun notunun 1-5 olduğu tüm öğeleri, dahil olarak döndürür.
 
 ```sql
     SELECT *
@@ -26,30 +27,30 @@ ANSI SQL 'de olduğu gibi, sorguları dize veya sayısal değer aralıklarına g
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-ANSI SQL 'den farklı olarak, aşağıdaki örnekte olduğu gibi FROM yan tümcesindeki BETWEEN yan tümcesini de kullanabilirsiniz.
+Aşağıdaki örnekte `BETWEEN` olduğu `SELECT` gibi, yan tümcedeki anahtar kelimeyi de kullanabilirsiniz.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-SQL API 'de, ANSI SQL 'den farklı olarak, Aralık sorguları karışık türlerin özelliklerine göre ifade edebilirsiniz. Örneğin, `grade` bazı öğelerde `5` gibi bir sayı ve diğer `grade4` gibi bir dize olabilir. Bu durumlarda, JavaScript 'de olduğu gibi, iki farklı tür arasındaki karşılaştırma `Undefined`sonuçlanır, bu nedenle öğe atlanır.
+SQL API'de, ANSI SQL'in aksine, aralık sorgularını karışık türlerdeki özelliklere karşı ifade edebilirsiniz. Örneğin, `grade` bazı öğelerdeki `5` gibi bir sayı ve `grade4` diğeröğelerdeki gibi bir dize olabilir. Bu gibi durumlarda, JavaScript'te olduğu gibi, iki `Undefined`farklı tür arasındaki karşılaştırma, öğenin atlanabilmesi için sonuç verir.
 
 > [!TIP]
-> Daha hızlı sorgu yürütme süreleri için, bir Aralık dizin türünü kullanan bir dizin oluşturma ilkesi oluşturun herhangi bir sayısal özellik veya BETWEEN yan tümcesi filtreleyen yollar.
+> Daha hızlı sorgu yürütme süreleri için, `BETWEEN` yan tümcenin filtre uyguladığı sayısal özelliklere veya yollara karşı aralık dizin türü kullanan bir dizin oluşturma ilkesi oluşturun.
 
-## <a name="distinct"></a>AYRı
+## <a name="distinct"></a>DISTINCT
 
-DISTINCT anahtar sözcüğü sorgunun projeksiyonundaki yinelemeleri ortadan kaldırır.
+Anahtar `DISTINCT` kelime, sorgunun projeksiyonundaki yinelenenleri ortadan kaldırır.
 
-Bu örnekte, her bir soyadı için sorgu proje değerleri:
+Bu örnekte, sorgu her soyadı için değerleri projeleri:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
 [
@@ -57,14 +58,14 @@ Sonuçlar şunlardır:
 ]
 ```
 
-Ayrıca, benzersiz nesneleri de proje yapabilirsiniz. Bu durumda, lastName alanı iki belgeden birinde yok, bu nedenle sorgu boş bir nesne döndürüyor.
+Benzersiz nesneleri de yansıtabilirsiniz. Bu durumda, soyad alanı iki belgeden birinde bulunmaz, bu nedenle sorgu boş bir nesneyi döndürür.
 
 ```sql
 SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
 [
@@ -75,16 +76,16 @@ Sonuçlar şunlardır:
 ]
 ```
 
-DISTINCT, bir alt sorgu içindeki projeksiyde kullanılabilir:
+DISTINCT, bir alt sorgu içindeki projeksiyonda da kullanılabilir:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-Bu sorgu, her bir çocuğun yinelenenleri kaldırılmış olan 1 ' i içeren bir diziyi projeler. Bu dizi, dış sorguda ChildNames ve yansıtılan olarak diğer ad.
+Bu sorgu, yinelenenleri kaldırılmış olan her çocuğun givenName içeren bir dizi yi yitir. Bu dizi, Alt Adlar olarak adlanır ve dış sorguda yansıtılır.
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
 [
@@ -102,7 +103,7 @@ Sonuçlar şunlardır:
 ]
 ```
 
-Toplam sistem işlevi olan sorgular ve DISTINCT içeren bir alt sorgu desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
+Toplu sistem işlevi ve alt sorgusu `DISTINCT` olan sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -110,7 +111,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-Belirtilen değerin listedeki herhangi bir değerle eşleşip eşleşmediğini denetlemek için ın anahtar sözcüğünü kullanın. Örneğin, aşağıdaki sorgu `id` `WakefieldFamily` veya `AndersenFamily`tüm aile öğelerini döndürür.
+Belirtilen bir değerin listedeki herhangi bir değerle eşleşip eşleşmediğini kontrol etmek için IN anahtar sözcüğini kullanın. Örneğin, aşağıdaki sorgu tüm aile öğelerini `WakefieldFamily` `AndersenFamily`döndürür. `id`
 
 ```sql
     SELECT *
@@ -118,7 +119,7 @@ Belirtilen değerin listedeki herhangi bir değerle eşleşip eşleşmediğini d
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-Aşağıdaki örnek, durumun belirtilen değerlerden herhangi biri olduğu tüm öğeleri döndürür:
+Aşağıdaki örnek, durum belirtilen değerlerden herhangi biri olduğu tüm öğeleri döndürür:
 
 ```sql
     SELECT *
@@ -126,22 +127,22 @@ Aşağıdaki örnek, durumun belirtilen değerlerden herhangi biri olduğu tüm 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 'si, FROM kaynağında ın anahtar sözcüğüyle eklenen yeni bir yapı ile [JSON dizileri üzerinde yineleme](sql-query-object-array.md#Iteration)desteği sağlar.
+SQL API, FROM kaynağındaki anahtar kelime aracılığıyla eklenen yeni bir yapıyla [JSON dizileri üzerinde yeniden derecelendirme](sql-query-object-array.md#Iteration)desteği sağlar.
 
-Bölüm anahtarınızı `IN` filtresine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
+Bölüm anahtarınızı filtreye `IN` eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre olur.
 
-## <a name="top"></a>Sayfanın Üstü
+## <a name="top"></a>TOP
 
-ÜSTTEKI anahtar sözcüğü, sorgu sonuçlarının ilk `N` sayısını tanımsız bir sırada döndürür. En iyi uygulama olarak, sonuçları sıralı değerlerin ilk `N` sayısıyla sınırlamak için ORDER BY yan tümcesiyle birlikte en üstteki ' ı kullanın. Bu iki yan tümceyi birleştirmek, en üst düzey etkileri tahmin edilebilir olarak göstermek için tek yoldur.
+TOP anahtar sözcüğü, `N` ilk sorgu sonuçlarını tanımlanmamış bir sırada döndürür. En iyi uygulama olarak, `ORDER BY` sonuçları ilk sıralı `N` değer sayısıyla sınırlamak için yan tümceyle BIRLIKTE TOP'u kullanın. Bu iki yan tümceyi birleştirmek, TOP'un hangi satırları etkilediğini tahmin edilebilir bir şekilde göstermenin tek yoludur.
 
-Aşağıdaki örnekte olduğu gibi, ya da parametreli sorguları kullanarak bir değişken değeri ile en üstteki bir sabit değerle kullanabilirsiniz.
+Top'u aşağıdaki örnekte olduğu gibi sabit bir değerle veya parametreli sorguları kullanarak değişken değeriyle kullanabilirsiniz.
 
 ```sql
     SELECT TOP 1 *
     FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [{
@@ -166,5 +167,5 @@ Sonuçlar şunlardır:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Başlarken](sql-query-getting-started.md)
-- [Birleştirmeler](sql-query-join.md)
-- [Alt](sql-query-subquery.md)
+- [Birleştirme](sql-query-join.md)
+- [Alt sorgular](sql-query-subquery.md)

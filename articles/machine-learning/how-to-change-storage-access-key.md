@@ -1,7 +1,7 @@
 ---
 title: Depolama hesabı erişim anahtarlarını değiştirme
 titleSuffix: Azure Machine Learning
-description: Çalışma alanınız tarafından kullanılan Azure depolama hesabı için erişim anahtarlarını değiştirme hakkında bilgi edinin. Azure Machine Learning, verileri ve modelleri depolamak için bir Azure depolama hesabı kullanır.
+description: Çalışma alanınız tarafından kullanılan Azure Depolama hesabının erişim anahtarlarını nasıl değiştireceğinizi öğrenin. Azure Machine Learning, verileri ve modelleri depolamak için bir Azure Depolama hesabı kullanır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,41 +10,41 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: ab7aaeb2b28592aab38d112b02340160a6c882ee
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296931"
 ---
-# <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
+# <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning tarafından kullanılan Azure depolama hesapları için erişim anahtarlarını değiştirme hakkında bilgi edinin. Azure Machine Learning, verileri veya eğitilen modelleri depolamak için depolama hesaplarını kullanabilir.
+Azure Machine Learning tarafından kullanılan Azure Depolama hesaplarının erişim anahtarlarını nasıl değiştireceğinizi öğrenin. Azure Machine Learning, verileri veya eğitimli modelleri depolamak için depolama hesaplarını kullanabilir.
 
-Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
+Güvenlik amacıyla, bir Azure Depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda, yeni anahtarı kullanmak için Azure Machine Learning'in güncelleştirilmesi gerekir. Azure Machine Learning, hem model depolama için hem de veri deposu olarak depolama hesabını kullanıyor olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı](how-to-manage-workspace.md) oluştur makalesine bakın.
 
-* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* [Azure MACHINE LEARNING CLI uzantısı](reference-azure-machine-learning-cli.md).
+* [Azure Machine Learning CLI uzantısı.](reference-azure-machine-learning-cli.md)
 
 > [!NOTE]
-> Bu belgedeki kod parçacıkları, Python SDK 'sının 1.0.83 sürümü ile test edilmiştir.
+> Bu belgedeki kod parçacıkları Python SDK'nın 1.0.83 sürümüyle test edilmiştir.
 
 <a id="whattoupdate"></a> 
 
-## <a name="what-needs-to-be-updated"></a>Nelerin güncelleştirilmesi gerekiyor
+## <a name="what-needs-to-be-updated"></a>Güncellenmesi gerekenler
 
-Depolama hesapları, Azure Machine Learning çalışma alanı tarafından kullanılabilir (Günlükler, modeller, anlık görüntüler vb.) ve bir veri deposu olarak kullanılır. Çalışma alanını güncelleştirme işlemi tek bir Azure CLı komutu ve depolama anahtarı güncelleştirildikten sonra çalıştırılabilir. Veri depolarını güncelleştirme işlemi daha fazla yer alır ve şu anda depolama hesabını kullanan veri depolarının keşfedilmelerini ve sonra yeniden kaydettirmesini gerektirir.
+Depolama hesapları Azure Machine Learning çalışma alanı (günlükleri, modelleri, anlık görüntüleri vb. depolama) ve veri deposu olarak kullanılabilir. Çalışma alanını güncelleştirme işlemi tek bir Azure CLI komutudur ve depolama anahtarını güncelleştirdikten sonra çalıştırılabilir. Veri depolarını güncelleştirme işlemi daha fazla ilgilidir ve hangi veri depolarının şu anda depolama hesabını kullandığını ve sonra bunları yeniden kaydettirmelerini keşfetmeyi gerektirir.
 
 > [!IMPORTANT]
-> Azure CLı kullanarak çalışma alanını ve aynı zamanda Python kullanarak veri depolarını güncelleştirin. Yalnızca birini veya diğerini güncelleştirmek yeterli değildir ve her ikisi de güncelleştirilene kadar hatalara neden olabilir.
+> Çalışma alanını Azure CLI'yi ve veri depolarını Python'u kullanarak aynı anda güncelleştirin. Yalnızca birini veya diğerini güncelleştirmek yeterli değildir ve her ikisi de güncelleştirilene kadar hatalara neden olabilir.
 
-Veri depfederler tarafından kullanılan depolama hesaplarını öğrenmek için aşağıdaki kodu kullanın:
+Veri depolarınız tarafından kullanılan depolama hesaplarını keşfetmek için aşağıdaki kodu kullanın:
 
 ```python
 import azureml.core
@@ -66,34 +66,36 @@ for name, ds in datastores.items():
               ds.account_name + ", container name: " + ds.container_name)
 ```
 
-Bu kod, Azure Storage kullanan kayıtlı veri depolarına bakar ve aşağıdaki bilgileri listeler:
+Bu kod, Azure Depolama'yı kullanan kayıtlı veri depolarını arar ve aşağıdaki bilgileri listeler:
 
-* Veri deposu adı: depolama hesabının kaydedildiği veri deposunun adı.
-* Depolama hesabı adı: Azure depolama hesabının adı.
+* Datastore adı: Depolama hesabının kayıtlı olduğu veri deposunun adı.
+* Depolama hesabı adı: Azure Depolama hesabının adı.
 * Kapsayıcı: Bu kayıt tarafından kullanılan depolama hesabındaki kapsayıcı.
 
-Ayrıca, her bir veri deposu türünü yeniden kaydetmek için farklı yöntemler olduğu için veri deposunun bir Azure Blobu veya bir Azure dosya paylaşımının olup olmadığını gösterir.
+Ayrıca, her veri deposu türünü yeniden kaydetmek için farklı yöntemler olduğundan, veri deposunun Azure Blob'u veya Azure Dosyası paylaşımı için olup olmadığını da gösterir.
 
-İçin erişim anahtarlarını yeniden üretmeyi planladığınız depolama hesabı için bir giriş varsa, veri deposu adını, depolama hesabı adını ve kapsayıcı adını kaydedin.
+Erişim anahtarlarını yenilemeyi planladığınız depolama hesabı için bir giriş varsa, veri deposu adını, depolama hesabı adını ve kapsayıcı adını kaydedin.
 
-## <a name="update-the-access-key"></a>Erişim anahtarını güncelleştirme
+## <a name="update-the-access-key"></a>Erişim anahtarını güncelleştir
 
-Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için aşağıdaki adımları kullanın:
+Azure Machine Learning'i yeni anahtarı kullanmak üzere güncelleştirmek için aşağıdaki adımları kullanın:
 
 > [!IMPORTANT]
-> Tüm adımları gerçekleştirin, CLı kullanarak çalışma alanını ve Python kullanarak veri depolarını güncelleştirme. Yalnızca bir veya diğerini güncelleştirmek, her ikisi de güncelleştirilene kadar hatalara neden olabilir.
+> CLI'yi kullanarak hem çalışma alanını hem de Python'u kullanarak veri depolarını güncelleştiren tüm adımları gerçekleştirin. Yalnızca biri veya diğerinin güncelleştirilmesi, her ikisi de güncelleştirilene kadar hatalara neden olabilir.
 
-1. Anahtarı yeniden oluşturun. Erişim anahtarı oluşturma hakkında bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md). Yeni anahtarı kaydedin.
+1. Anahtarı yenile. Erişim anahtarını yenileme hakkında bilgi [için](../storage/common/storage-account-keys-manage.md)bkz. Yeni anahtarı kaydet.
 
-1. Yeni anahtarı kullanmak üzere çalışma alanını güncelleştirmek için aşağıdaki adımları kullanın:
+1. Yeni anahtarı kullanmak için çalışma alanını güncelleştirmek için aşağıdaki adımları kullanın:
 
-    1. Aşağıdaki Azure CLı komutunu kullanarak çalışma alanınızı içeren Azure aboneliğinde oturum açın:
+    1. Aşağıdaki Azure CLI komutunu kullanarak çalışma alanınızı içeren Azure aboneliğinde oturum açmak için:
 
         ```azurecli-interactive
         az login
         ```
 
-    1. Yeni anahtarı kullanmak üzere çalışma alanını güncelleştirmek için aşağıdaki komutu kullanın. `myworkspace` Azure Machine Learning çalışma alanı adınızla değiştirin ve `myresourcegroup`, çalışma alanını içeren Azure Kaynak grubunun adıyla değiştirin.
+        [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+    1. Yeni anahtarı kullanmak için çalışma alanını güncelleştirmek için aşağıdaki komutu kullanın. Azure `myworkspace` Machine Learning çalışma alanı adınızı `myresourcegroup` değiştirin ve çalışma alanını içeren Azure kaynak grubunun adı ile değiştirin.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -101,9 +103,9 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
 
         [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-        Bu komut, çalışma alanı tarafından kullanılan Azure depolama hesabı için yeni anahtarları otomatik olarak eşitler.
+        Bu komut, çalışma alanı tarafından kullanılan Azure depolama hesabının yeni anahtarlarını otomatik olarak eşitler.
 
-1. Depolama hesabını kullanan veri depolarınızı yeniden kaydettirmek için, [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın:
+1. Depolama hesabını kullanan datastore(lar)ı yeniden kaydetmek [için, güncellenmesi gerekenler](#whattoupdate) bölümündeki değerleri ve aşağıdaki kodla 1.
 
     ```python
     # Re-register the blob container
@@ -123,8 +125,8 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
     
     ```
 
-    `overwrite=True` belirtildiğinden, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
+    `overwrite=True` Belirtildiğiiçin, bu kod varolan kaydın üzerine yazar ve yeni anahtarı kullanmak üzere güncelleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depolarını kaydetme hakkında daha fazla bilgi için [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıf başvurusuna bakın.
+Veri depolarını kaydetme hakkında daha [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) fazla bilgi için sınıf başvurusuna bakın.

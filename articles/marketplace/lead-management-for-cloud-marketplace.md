@@ -1,128 +1,127 @@
 ---
-title: Bulut Marketi için lider yönetimi | Azure Marketi ve AppSource
-description: Azure Marketi ve AppSource 'ta teklifleri ve teknik yapıtları yayımlamaya ilişkin çeşitli konulara genel bakış
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+title: Bulut pazarı için müşteri adayı yönetimi | Azure Marketi ve AppSource
+description: Azure Marketi ve AppSource'a yayımlama teklifleri ve teknik eserlerle ilgili çeşitli konulara genel bakış
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94510d02a28e0364f1c715dbcf9ff641fe2b14fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813286"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286141"
 ---
-# <a name="lead-management-for-cloud-marketplace"></a>Bulut Marketi için lider yönetimi
+# <a name="lead-management-for-cloud-marketplace"></a>Bulut marketi için müşteri adayı yönetimi
 
 
-Müşteriler her türlü iyi iş merkeziydi. Bugünün ürün alma dönüştürmesinin dönüşümünde, pazarlamacılar müşterilere doğrudan bağlanmaya ve bir ilişki oluşturmaya odaklanmalıdır. Yüksek kaliteli müşteri adaylarının oluşturulması, satış döngünüzde önemli bir araçtır. Teklifinizi [bulut iş ortağı portalı](https://cloudpartner.azure.com/)listeledikten sonra müşteri iletişim bilgilerini bir müşterinin ilgilendirerek veya ürününüzü Market 'te dağıttığı bir şekilde hemen almasını sağlamak için etkinleştirilen araçlar vardır. 
+Müşteriler her iyi iş merkezidir. Günümüzün ürün satın almadönüşüm, pazarlamacılar doğrudan müşterilerle bağlantı ve bir ilişki kurma odaklanmak gerekir. Bu nedenle, yüksek kaliteli müşteri adayları oluşturmak satış döngünüz için hayati bir araçtır. Teklifinizi [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)listeledikten sonra, müşteri ilginizi gösterdikten veya ürününüzü pazarda dağıtdıktan hemen sonra, programlı bir şekilde müşteri iletişim bilgilerini almanıza olanak sağlayan araçlar vardır. 
 
 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Market 'teki müşteri adayları nelerdir?
+## <a name="what-are-leads-in-the-marketplace"></a>Pazardaki müşteri adayları nelerdir?
 
-Müşteri adayları, ürünlerinizi Market 'ten ilgilenen veya dağıtmakta olan müşterilerden elde edilir. Ürününüzün Azure Market veya AppSource 'ta listelenip listelenmediğini, CRM 'nizden Bulut İş Ortağı Portalı ' deki listelerinizi doğru şekilde ayarladıktan sonra müşterilerden müşteri adaylarını alabileceksiniz. 
+Müşteri adayları, ürünlerinizi Pazar'dan ilgilenen veya dağıtan müşterilerden gelmektedir. Ürününuz Azure Marketi'nde veya AppSource'da listelenmiş olsun, CRM'nizden Bulut İş Ortağı Portalı'ndaki girişinize doğru şekilde ayarlandıktan sonra müşterilerden müşteri adayları alabilirsiniz 
 
 
-## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>CRM sisteminizi bulut iş ortağı portalı ile bağlama
+## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>CRM sisteminizi bulut iş ortağı portalına bağlama
 
-Müşteri adaylarını almaya başlamak için Bulut İş Ortağı Portalı, müşteri adayı yönetimi Bağlayıcısı, CRM bilgilerinizin bulunduğu bir CRM sistemi listesine kolayca kolayca takılabilmesi için tasarlanmıştır. Artık, bir dış sistemle tümleştirme için önemli bir mühendislik çabası olmadan Market tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
+Müşteri adaylarını almaya başlamak için, Bulut İş Ortağı Portalı'ndaki Müşteri Adayı Yönetimi bağlayıcısı, CRM bilgilerinizle kolayca bağlanabilecek şekilde tasarlanmıştır. Artık, harici bir sistemle entegre olmak için önemli bir mühendislik çabası olmadan pazar tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
 
-Olası her bir müşteri adayı hedefini nasıl bağlayacağınız hakkında adım adım yönergeler aşağıda verilmiştir:
+Olası müşteri adayı hedeflerinin her birini nasıl bağlayacaklarına ilişkin adım adım talimatlar aşağıda veda edebilirsiniz:
 
-**DYNAMICS CRM online** - müşteri adaylarını almak IÇIN Dynamics CRM Online 'ı yapılandırma yönergelerini almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) .
+**Dynamics CRM Online** - Müşteri Adayları almak için Dynamics CRM Online'ı nasıl yapılandıracağınız la ilgili talimatları almak için[buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 
-**Marketo** - müşteri adaylarını almak üzere Marketo lider yapılandırmasını ayarlamaya yönelik yönergeleri almak Için [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) .
+**Marketo** - Müşteri adayları almak için Marketo Müşteri Adayı Yapılandırması'nı kurmak için talimatları almak için[buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 
-**Salesforce** - müşteri adaylarını almak için Salesforce örneğinizi ayarlamaya yönelik yönergeler almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) .
+**Salesforce** - Müşteri adayı almak için Salesforce örneğini ayarlama yönergelerini almak için[burayı tıklatın.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-**Azure tablosu - Azure** tablosu 'nda müşteri adaylarını almak için Azure depolama hesabınızı ayarlamaya yönelik yönergeleri almak üzere [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) .
+**Azure Tablosu** - Azure tablosunda müşteri adayları almak için Azure depolama hesabınızı ayarlama yönergelerini almak için[buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)
 
-**Https uç noktası** - müşteri adaylarını almak üzere HTTPS uç noktanızı ayarlamaya yönelik yönergeleri almak Için [buraya tıklayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) .
+**Https Endpoint** - İpuçları almak için Https Endpoint'inizi ayarlama yönergelerini almak için[buraya tıklayın.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)
 
-Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifiniz üzerinde isabet yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi, canlı çalışmadan önce görüntülerken, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz. Müşteri adaylarını kaybetmemeniz için müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir. bu nedenle, bu bağlantıları sonunda her değişiklik yapıldığında güncelleştirdiğinizden emin olun.
+Müşteri adayı hedefinizi doğru şekilde yapılandırdıktan ve teklifiniz üzerine Yayımla'yı vurduktan sonra bağlantıyı doğrularız ve size bir test müşteri adayı göndeririz. Canlı yayına çıkmadan önce teklifi görüntülerken, teklifi önizleme ortamında kendiniz elde etmeye çalışarak müşteri adayı bağlantınızı da test edebilirsiniz. Müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir, böylece müşteri adayı kaybetmeyin, bu nedenle bir şey değiştiğinde bu bağlantıları güncelleştirdiğinizden emin olun.
 
 
 ### <a name="what-are-the-next-steps"></a>Sonraki adımlar nelerdir?
 
-Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & Pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için geri bildirim ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
+Teknik kurulum yapıldıktan sonra, bu müşteri adaylarını mevcut satış & pazarlama stratejinize ve operasyonel süreçlerinize dahil etmelidir. Genel satış sürecinizi daha iyi anlamak istiyoruz ve başarılı olmak için yüksek kaliteli müşteri adayları ve yeterli veri sağlama konusunda sizinle yakın bir şekilde çalışmak istiyoruz. Bu müşterilerin başarılı olması için size gönderdiğimiz müşteri adaylarını nasıl optimize edebileceğimiz ve geliştirebileceğimiz hakkındaki görüşlerinizi memnuniyetle karşılıyoruz. Satış ekibinizin Market Müşteri Adayları ile daha başarılı olmasını sağlamak için geri bildirim ve öneriler sunmak istiyorsanız bize bildirin.
 
 
 
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Bulut iş ortağı portalında yayımlama sırasında ortak lider yapılandırma hataları 
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Bulut iş ortağı portalında yayımlama sırasında sık karşılaşılan müşteri adayı yapılandırma hataları 
 
-**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Dynamics CRM hesap ayarlarını kontrol edin. LastCRMError: Dynamics CRM 'de oturum açılamıyor, LastCRMException:** 
+**Dynamics CRM'ye giden ipucunu kaydedemedi. Dynamics CRM hesap ayarlarını kontrol edin. LastCRMError: Dynamics CRM'de oturum açamayan LastCRMException:** 
 
-> O365 kimlik doğrulaması seçildiyse, Kullanıcı hesabının ve parolanın geçerli olup olmadığını denetleyin. AAD seçildiyse, kiracı KIMLIĞI, uygulama KIMLIĞI ve uygulama gizli anahtarı 'nın AAD 'de ayarlanmış olan ile eşleşip eşleşmediğini denetleyin. [Buradaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)yönergeleri izleyin. Hesap Kullanıcı adı/parola geçerliyse, lütfen Dynamics 365 ' e erişime sahip olduğundan ve atanmış bir lisansa sahip olduğundan emin olun (Office kullanıcısı kullanılıyorsa Azure Active Directory veya güvenlik ayarları kullanıyorsanız 11-15 adımları). 
+> O365 kimlik doğrulaması seçildiyse, kullanıcı hesabı nın ve parolanın geçerli olup olmadığını kontrol edin. AAD seçildiyse, kiracı kimliği, uygulama kimliği ve uygulama gizli anahtarının AAD'de ayarlananla eşleşip eşleşmediğini kontrol edin. Talimatları [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)takip edin. Hesap kullanıcı adı/parolası geçerliyse, lütfen Dynamics 365'e erişimi olduğundan ve atanmış bir lisansa sahip olduğundan emin olun (Office kullanıcısını kullanıyorsanız Azure Etkin Dizin veya Güvenlik Ayarları kullanıyorsanız 11-15 adım). 
 
  
-**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Kullanıcı, lider varlığındaki leadsourcecode özniteliği için oluşturma izinlerine sahip değil** 
+**Dynamics CRM'ye giden ipucunu kaydedemedi. Kullanıcı, müşteri adayı varlığındaki kurşun kaynak kodu özniteliği için izin oluşturmuyor** 
 
-> Uygulama/kullanıcının Microsoft Market lider yazıcı için güvenlik rolleri eksik. [Burada](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)Office kullanıcısı kullanıyorsanız, Azure Active Directory veya güvenlik ayarlarını kullanıyorsanız 11-15 adımlarını izleyin.
+> Uygulama/kullanıcı, Microsoft Market'in baş yazarı için güvenlik rolü(ler) eksiktir. [Burada](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)bir Office kullanıcıkullanıyorsanız Azure Etkin Dizin veya Güvenlik Ayarları kullanıyorsanız 11-15 adımlarını izleyin.
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: kiracı bulunamadı. Bu örnek, kiracı için etkin abonelikler yoksa gerçekleşebilir.**  
+**AAD kullanarak Dynamics CRM'ye giden müşteri adayı nı kaydedemedi. İstisna:: Kiracı bulunamadı. Kiracı için etkin abonelik yoksa bu örnek oluşabilir.**  
 
-> Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) ) göre dizin kimliğini alın 
+> Müşteri adayı yönetimi bölümünde sağlanan Dizin Kimliği geçerli bir dizin değildir. Lütfen Adım 2'deki talimatlara göre Dizin Kimliği'ni alın (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: SecLib:: RetrievePrivilegeForUser başarısız oldu-kullanıcıya hiçbir rol atanmadı.**  
+**Dynamics CRM'ye giden ipucunu kaydedemedi. LastCRMError: SecLib::RetrievePrivilegeForUser başarısız oldu - kullanıcıya hiçbir rol atanmadı.**  
 
-> Çözüm: Microsoft Market lider yazıcısına güvenlik rolü atayın. Güvenlik ayarları altında [buradaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) yönergeleri izleyin 
+> Çözüm: Güvenlik rolünü Microsoft Market baş yazarına atayın. Güvenlik ayarları altında [talimatları buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) izleyin 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: tanımlayıcılı uygulama dizinde bulunamadı** 
+**AAD kullanarak Dynamics CRM'ye giden müşteri adayı nı kaydedemedi. Özel Durum:: Tanımlayıcıile uygulama dizinde bulunamadı** 
 
-> Lider Yönetimi bölümünde belirtilen uygulama kimliği geçerli bir dizin değil. Lütfen 8. adımdaki yönergelere göre dizin kimliğini alın (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Müşteri adayı yönetimi bölümünde sağlanan Uygulama Kimliği geçerli bir dizin değildir. Lütfen Adım 8'deki yönergelere göre Dizin Kimliği'ni alın (Azure Etkin Dizini altında, [buradan).](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: Istenen kiracı tanımlayıcısı geçerli değil ve geçerli dış etki alanı biçimi değil** 
+**AAD kullanarak Dynamics CRM'ye giden müşteri adayı nı kaydedemedi. Özel Durum:: İstenen kiracı tanımlayıcısı geçerli değildir ve geçerli harici etki alanı biçimi değildir** 
 
-> Lider Yönetimi bölümünde belirtilen dizin kimliği geçerli bir dizin değil. Lütfen adım 2 ' deki yönergelere (Azure Active Directory altında, [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)) göre dizin kimliğini alın. 
+> Müşteri adayı yönetimi bölümünde sağlanan Dizin Kimliği geçerli bir dizin değildir. Lütfen Adım 2'deki yönergelere göre Dizin Kimliği'ni alın (Azure Etkin Dizini altında, [buradan).](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**AAD kullanılarak Dynamics CRM 'ye müşteri adayı kaydedilemedi. Özel durum:: kimlik bilgileri doğrulanırken hata.: geçersiz istemci parolası belirtildi.** 
+**AAD kullanarak Dynamics CRM'ye giden müşteri adayı nı kaydedemedi. Özel Durum:: Kimlik bilgilerini doğrulayan hata.: Geçersiz istemci sırrı sağlanır.** 
 
-> Çözüm: Azure portalında oturum açın, uygulama anahtarının Bulut İş Ortağı Portalı ile eşleşip eşleşmediğini denetleyin. Lütfen 10. adımdaki yönergeye (Azure Active Directory), [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)) göre parola oluşturun. 
+> Çözüm: Azure Portalı'nda oturum açın, uygulama anahtarının Bulut İş Ortağı Portalı'ndakilerle eşleşip eşleşmeyini kontrol edin. Lütfen Adım 10'daki yönergeye göre (Azure Etkin Dizini altında) buradan parola [oluşturun.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Müşteri adayı Dynamics CRM 'ye kaydedilemedi. LastCRMError: 00:02:00 sonrasında bir yanıt beklenirken istek kanalı zaman aşımına uğradı. Istek çağrısına geçirilen zaman aşımı değerini artırın veya bağlamada SendTimeout değerini artırın. Bu işlem için ayrılan süre daha uzun bir zaman aşımı değerinin bir bölümü olabilir.**  
+**Dynamics CRM'ye giden ipucunu kaydedemedi. LastCRMError: İstek kanalı 00:02:00'den sonra yanıt beklerken zaman doldu. İstek çağrısına geçen zaman dilimi değerini artırın veya Bağlama'daki SendTimeout değerini artırın. Bu işlem için ayrılan süre, daha uzun bir zaman aşımının bir parçası olabilir.**  
 
-> Çözüm: Bulut İş Ortağı Portalı oturum açın, storefront > ayrıntılarını > Müşteri adayı hedefi > > URL 'sini denetleyin, geçerli bir dinamik CRM örneği olup olmadığını denetleyin
+> Çözüm: Bulut İş Ortağı Portalında oturum açın, Müşteri Adayı hedef >> URL >> Storefront ayrıntılarını kontrol edin, geçerli bir Dinamik CRM örneği olup olmadığını kontrol edin
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**Müşteri adayları nedir ve neden Market 'te bir yayımcı olarak önemlidir?** 
+**İpuçları nedir ve marketplace'te bir yayıncı olarak benim için neden önemlidir?** 
 
-Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürününüzün [Azure Market](https://azuremarketplace.microsoft.com/en-us) veya [appsource](https://appsource.microsoft.com/)'ta listelenip listelenmediğini, teklifiniz üzerinde müşteri adayı hedefini ayarladıysanız, ürününüzle ilgilenen müşterilerin müşteri adaylarını elde edebileceksiniz.  
-
-
-**Lider hedefini ayarlama konusunda nereden yardım alabilirim?** 
-
-Belgeleri buradan bulabilirsiniz: [müşteri adaylarını al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) veya aka.MS/marketplacepublishersupport aracılığıyla destek bileti gönder teklif türü ve müşteri adayı yönetimi. 
+Müşteri adayları, ürünlerinizi Market'ten dağıtan müşterilerdir. Ürününuz [Azure Marketi'nde](https://azuremarketplace.microsoft.com/en-us) veya [AppSource'da](https://appsource.microsoft.com/)listelenmiş olsun, teklifinizdeki müşteri hedefini kursanız, ürününizle ilgilenen müşterilerin müşteri adaylarını alabilirsiniz.  
 
 
+**Müşteri adayımın ayarlanması nda nereden yardım alabilirim?** 
 
-**Market 'te teklif yayımlamak için bir lider hedefi yapılandırmak istiyorum mu?**
+Belgeleri burada bulabilirsiniz: [Müşteri müşteri adaylarını alın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) veya teklif türünü ve müşteri adayı yönetimini seçmek aka.ms/marketplacepublishersupport destek bileti gönderin. 
 
-Evet, bir benimle Iletişim kurun SaaS uygulaması veya danışmanlık hizmetleri yayımlıyorsanız.  
+
+
+**Market'te bir teklif yayınlamak için bir müşteri adayı nı yapılandırmam gerekiyor mu?**
+
+Evet, Bir İletişim Me SaaS uygulaması veya Danışmanlık Hizmetleri yayınlıyorsanız.  
  
 
 
 **Müşteri adayı yapılandırmasının doğru olduğunu nasıl doğrulayabilirim?**
 
-Teklifinizi ve lider hedefini ayarladıktan sonra teklifinizi yayımlayın. Müşteri adayı doğrulama adımında Market, teklifiniz tarafından yapılandırılan lider hedefine bir test lideri gönderecek. 
+Teklifinizi ayarladıktan sonra ve varış noktasını belirledikten sonra teklifinizi yayınlayın. Müşteri adayı doğrulama adımında, Marketplace teklifinizde yapılandırılan müşteri adayı hedefine bir test müşteri adayı gönderir. 
 
 
-**Test lideri nasıl bulabilirim?**
+**Test ipucunu nasıl bulabilirim?**
 
 
-Müşteri adayı Hedefinizdeki "MSFT_TEST" araması yapın, örnek bir test lideri verileri aşağıda verilmiştir: 
+Müşteri adayı hedefinizde "MSFT_TEST" araması yapın, örnek test müşteri adayı verilerini aşağıda bulabilirsiniz: 
 
-Şirket = MSFT_TEST_636573304831318844 
+şirket = MSFT_TEST_636573304831318844 
 
 ülke = ABD 
 
-Açıklama = MSFT_TEST_636573304831318844 
+açıklama = MSFT_TEST_636573304831318844 
 
-e-posta = MSFT_TEST_636573304831318844@test.com
+e-posta =MSFT_TEST_636573304831318844@test.com
 
 kodlama = UTF-8 
 
@@ -132,28 +131,28 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<teklif adı > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844| \<Teklif Adı> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
 telefon = 1234567890 
 
-title = MSFT_TEST_636573304831318844 
+başlık = MSFT_TEST_636573304831318844 
 
  
 
-**Canlı bir teklifim var, ancak hiçbir müşteri adayı görmüyorum?**
+**Canlı bir teklifim var ama bir ipucu göremiyorum.**
 
-Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geçirilmesi, müşteri adayları şu biçimde olacaktır: **Kaynak-eylem | Teklif** 
+Her müşteri adayı seçtiğiniz müşteri adayı hedefindeki alanlarda veri aktarılacak, müşteri adayları bu biçimde gelecektir: **Kaynak-Eylem| Teklif** 
 
-  *Ğına*
+  *Kaynak:*
 
     "AzureMarketplace", 
     "AzurePortal", 
     "TestDrive",  
     "SPZA" (acronym for AppSource) 
 
-  *Eylem*
+  *Eylem:*
 
     "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -165,7 +164,7 @@ Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geç
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  *Sunar*
+  *Sunmaktadır:*
 
     "checkpoint.check-point-r77-10sg-byol", 
     "bitnami.openedxcypress", 
@@ -173,7 +172,7 @@ Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geç
 
  
 
-  *Müşteri bilgilerinin örnek verileri aşağıda verilmiştir*
+  *İşte müşteri bilgilerinin örnek verileri*
 
     { 
 
@@ -193,41 +192,41 @@ Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geç
 
     } 
 
-[Müşteri adayı bilgileri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)altında daha fazla bilgi edinin. 
+Müşteri Adayı [Bilgileri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)altında daha fazla bilgi edinin. 
 
 
-**Azure BLOB 'U lider hedefi olarak yapılandırdım, neden müşteri adayını görmüyorum?** 
+**Azure BLOB'u müşteri adayı olarak yapılandırıldım, neden müşteri adayını göremiyorum?** 
 
-Lider yalnızca, müşteri adayı hedefi olarak Azure BLOB depolamayı seçtiğinizde yazılır. Müşteri adayının gerçek zamanını almak için Azure tablosuna geçiş yapın 
-
-
-**Market 'ten bir e-posta aldım, neden CRM 'de müşteri adayını bulamıyorum?**  
-
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle. edu etki alanından PII verileri geçirmedik. Aka.ms/marketplacepublishersupport aracılığıyla destek bileti gönderme 
+Müşteri adayı yalnızca müşteri adayı olarak Azure BLOB depolama alanını seçtiğinizde yazılır. Müşteri adayını gerçek zamanlı olarak almak için Azure tablosuna geçme 
 
 
- **Azure Tablo/Azure blobu 'nı lider hedefim olarak yapılandırdım, müşteri adaylarını nasıl görüntüleyebilirim?** 
+**Marketplace'ten bir e-posta aldım, crm'imde neden müşteri adayı bulamıyorum?**  
 
-Blob veya tabloya Azure portalından erişebilirsiniz veya Azure depolama hesabınızın tablolarını/bloblarını görüntülemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz. 
-
-
-**Azure tablosunu lider hedefim olarak yapılandırdım, Market tarafından yeni bir müşteri adayı gönderildiğinde bildirim alabilir miyim?** 
-
-Evet, [buradaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)belgelerde Azure tablo + işlevini ayarlamak için yönergeleri izleyin. 
+Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedenlerinden dolayı .edu etki alanından kişisel bilgi verisi geçirmiyoruz. aka.ms/marketplacepublishersupport aracılığıyla destek bileti gönderin 
 
 
+ **Müşteri adayı olarak Azure Tablo/Azure BLOB'u yapılandırıldım, müşteri adaylarını nasıl görüntüleyebilirim?** 
 
-**Salesforce 'um hedefi olarak Salesforce yapılandırdım, neden müşteri adaylarını bulamıyorum?** 
+Azure Portalı'ndan blob veya tabloya erişebilir veya Azure depolama hesabınızın tablolarını/lekelerini görüntülemek için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz. 
 
-Müşteri adayı formunun bir seçim listesine göre zorunlu bir alan olup olmadığını denetleyin. Yanıt Evet ise, alanı üzerinde zorunlu olmayan bir metin alanına geçin.  
+
+**Azure Tablosu'nu müşteri adayım olarak yapılandırıldım, Market tarafından yeni bir müşteri adayı gönderildiğinde bilgilendirilebilir miyim?** 
+
+Evet, [buradaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)belgelerde Azure Tablo + İşlev'i ayarlamak için yönergeleri izleyin. 
+
+
+
+**Satış Gücü'ni müşteri adayım olarak yapılandırıldım, neden müşteri adaylarını bulamıyorum?** 
+
+Web'in yol formuna ilişkin bir seçim listesine dayalı zorunlu bir alan olup olmadığını denetleyin. Evet ise, alanı zorunlu olmayan bir metin alanına geçin.  
  
 
-**Lider hedefimde bir sorun oluştu ve bazı müşteri adaylarını kaçırdım. E-postada bana gönderilebilirim?** 
+**Benim kurşun hedef ile ilgili bir sorun vardı ve bazı yol cevapsız. Bunları bana bir e-posta yla göndertebilir miyim?** 
 
-PII (özel olarak tanımlanabilen bilgiler) ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı bilgilerini paylaşamazsınız. 
+Kişisel Bilgiler (Özel Tanımlanabilir Bilgiler) ilkeleri nedeniyle, müşteri adayı bilgilerini güvenli olmayan e-posta yoluyla paylaşamayız. 
 
 
 
-**Azure depolama 'yı (BLOB/tablo), lider hedefi olarak yapılandırdım, ne kadar ücret alınacaktır?** 
+**Müşteri adayım olarak Azure Depolama 'yı (BLOB/Tablo) yapılandırdım, ne kadara mal olacak?** 
 
-Öncü gen verileri düşüktür (neredeyse tüm yayımcılar için 1 GB <). Maliyet, bir 50 ayda 1.000 müşteri adayı alınmışsa, ücretlendirilecektir. 
+Kurşun gen verileri düşüktür (hemen hemen tüm yayıncılar için 1 GB <). Maliyet, bir ay içinde 1.000 müşteri adayı alınırsa, yaklaşık 50 sente mal olacak. 
