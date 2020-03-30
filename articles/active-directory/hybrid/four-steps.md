@@ -1,6 +1,6 @@
 ---
-title: Güçlü bir Identity Foundation için dört adım-Azure AD
-description: Bu konuda, müşterilerin güçlü bir kimlik Foundation oluşturmak için uygulayabileceğiniz dört adım karma kimliği açıklanmaktadır.
+title: Güçlü bir kimlik temeline dört adım - Azure AD
+description: Bu konu, karma kimlik müşterilerinin güçlü bir kimlik temeli oluşturmak için atabileceği dört adımı açıklar.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -14,259 +14,259 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74206788"
 ---
-# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
+# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeline dört adım
 
-Uygulamalara ve verilere erişimin yönetilmesi, uygulamaların buluta hızlı bir şekilde taşınması nedeniyle çevre ağları ve güvenlik duvarları gibi geleneksel ağ güvenlik sınırı stratejilerine artık güvenmemelidir. Artık kuruluşların, kuruluşun uygulamalarına ve verilerine kimlerin ve ne erişimi olduğunu denetlemek için kimlik çözümüne güvenmesi gerekir. Daha fazla kuruluş, çalışanların kendi cihazlarını iş ve cihazlarını Internet 'e bağlanabildiği her yerden kullanmasını sağlar. Bu cihazların uyumlu ve güvenli olmasını sağlamak, bir kuruluşun uygulamayı seçtiği kimlik çözümünde önemli bir konudur. Bugünün dijital çalışma alanında, kimlik, buluta taşınan herhangi bir kuruluşun [birincil denetim düzledir](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) .
+Uygulamalara ve verilere erişimi yönetmek, uygulamaların buluta hızlı bir şekilde taşınması nedeniyle çevre ağları ve güvenlik duvarları gibi geleneksel ağ güvenliği sınır stratejilerine artık güvenemez. Artık kuruluşlar, kuruluşun uygulamalarına ve verilerine kimlerin ve neyin erişenekadar erişebilenleri denetlemek için kimlik çözümlerine güvenmelidir. Daha fazla kuruluş, çalışanların internete bağlanabilecekleri her yerden kendi cihazlarını işlerine ve aygıtlarını kullanmalarına olanak sağlıyor. Bu aygıtların uyumlu ve güvenli olmasını sağlamak, bir kuruluşun uygulamayı seçtiği kimlik çözümünde önemli bir husustur. Günümüzün dijital işyerinde kimlik, buluta taşınan tüm kuruluşların [birincil kontrol düzlemidir.](https://www.microsoft.com/security/technology/identity-access-management?rtc=1)
 
-Azure Active Directory (Azure AD) karma kimlik çözümünü benimseme bölümünde kuruluşlar, otomasyon, yetkilendirme, self servis ve çoklu oturum açma özellikleri aracılığıyla üretkenliği artıran Premium özelliklere erişim elde edebilir. Çalışanlarınızın şirket kaynaklarına, işlerini yapması gereken her yerde erişmelerini sağlar, böylece BT takımınızın, doğru kişilerin güvenli üretkenlik sağlamak üzere doğru kaynaklara doğru erişime sahip olmasını sağlayarak erişimi yönetebilmesini sağlar.
+Kuruluşlar, Azure Active Directory (Azure AD) karma kimlik çözümlerini benimseyerek, otomasyon, temsilcilik, self servis ve tek oturum açma özellikleri yle üretkenliğin kilidini açan birinci sınıf özelliklere erişmeye kazanç sağlar. Çalışanlarınuzun işlerini yapmaları gereken her yerden şirket kaynaklarına erişmesine olanak sağlarken, BT ekibinizin de doğru kişilerin güvenli üretkenlik sağlamak için doğru kaynaklara erişimini sağlayarak bu erişimi yönetmesine olanak tanır.
 
-Bu en iyi uygulama denetim listesi, dersleri temel alınarak, kuruluşunuzda *güçlü* bir kimlik temeli oluşturmak için önerilen eylemleri hızlı bir şekilde dağıtmanıza yardımcı olacaktır:
+Öğrenmelerimize dayanarak, en iyi uygulamaların bu denetim listesi, kuruluşunuzda *güçlü* bir kimlik temeli oluşturmak için önerilen eylemleri hızla dağıtmanıza yardımcı olacaktır:
 
-* Uygulamalara kolayca bağlanın
-* Her Kullanıcı için otomatik olarak bir kimlik oluşturun
-* Kullanıcılarınıza güvenli bir şekilde güç katın
-* Öngörülerinizi çalıştırın
+* Uygulamalara kolayca bağlanma
+* Her kullanıcı için otomatik olarak bir kimlik oluşturma
+* Kullanıcılarınızı güvenli bir şekilde güçlendirin
+* Öngörülerinizi operasyonel hale
 
-## <a name="step-1---connect-to-apps-easily"></a>1\. adım-uygulamalara kolayca bağlanma
+## <a name="step-1---connect-to-apps-easily"></a>Adım 1 - Uygulamalara kolayca bağlanın
 
-Uygulamalarınızı Azure AD 'ye bağlayarak, çoklu oturum açma (SSO) ve Kullanıcı hazırlama işlemlerini etkinleştirerek Son Kullanıcı üretkenliğini ve güvenliğini geliştirebilirsiniz. Uygulamalarınızı tek bir yerde (Azure AD) yönetirken, yönetim yükünü en aza indirebilir ve güvenlik ve uyumluluk ilkeleriniz için tek bir denetim noktası elde edebilirsiniz.
+Uygulamalarınızı Azure AD'ye bağlayarak, tek oturum açma (SSO) sağlayarak son kullanıcı üretkenliğini ve güvenliğini artırabilir ve kullanıcı sağlama yapabilirsiniz. Uygulamalarınızı tek bir yerde, Azure AD'de yöneterek, yönetim ek lerini en aza indirebilir ve güvenlik ve uyumluluk ilkeleriniz için tek bir denetim noktası elde edebilirsiniz.
 
-Bu bölüm, uygulamalara Kullanıcı erişimini yönetme, iç uygulamalara güvenli uzaktan erişim sağlama ve uygulamalarınızı Azure AD 'ye geçirme avantajlarına yönelik seçeneklerinizi anlatmaktadır.
+Bu bölüm, uygulamalara kullanıcı erişimini yönetme, dahili uygulamalara güvenli uzaktan erişim sağlama ve uygulamalarınızı Azure AD'ye geçirmenin avantajlarını kapsar.
 
-### <a name="make-apps-available-to-your-users-seamlessly"></a>Uygulamalarınızı kullanıcılarınız için sorunsuz bir şekilde kullanılabilir hale getirin
+### <a name="make-apps-available-to-your-users-seamlessly"></a>Uygulamaları kullanıcılarınızın kullanımına sorunsuz bir şekilde sun
 
-Azure AD, yöneticilerin [Azure Portal](https://portal.azure.com/)kurumsal uygulamalar galerisine [uygulama eklemesini](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) sağlar. Kurumsal uygulamalar galerisine uygulamalar eklemek, uygulamaları kimlik sağlayıcınız olarak Azure AD 'yi kullanacak şekilde yapılandırmanızı kolaylaştırır. Ayrıca, koşullu erişim ilkeleriyle uygulamaya yönelik Kullanıcı erişimini yönetmenizi ve kullanıcıların parolalarını tekrar tekrar girmesi ve hem şirket içinde hem de otomatik olarak oturum açmasını sağlamak için uygulamalara çoklu oturum açma (SSO) yapılandırma olanağı sağlar. bulut tabanlı uygulamalar.
+Azure AD, yöneticilerin [Azure portalındaki](https://portal.azure.com/)Kurumsal uygulamalar galerisine [uygulama eklemesine](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) olanak tanır. Kurumsal uygulamalar galerisine uygulama eklemek, uygulamaları kimlik sağlayıcınız olarak Azure AD'yi kullanacak şekilde yapılandırmanızı kolaylaştırır. Ayrıca, Koşullu Erişim ilkeleriyle uygulamaya kullanıcı erişimini yönetmenize ve kullanıcıların parolalarını tekrar tekrar girmek zorunda kalmaması ve hem şirket içinde hem de şirket içinde otomatik olarak oturum açmaları için uygulamalara tek oturum açma (SSO) yapılandırmanızı sağlar bulut tabanlı uygulamalar.
 
-Uygulamalar Azure AD galerisine eklendikten sonra, kullanıcılar bunlara atanan uygulamaları görebilir ve gerektiğinde diğer uygulamaları arayabilir ve talep edebilir. Azure AD, kullanıcıların uygulamalarına erişmesi için [çeşitli yöntemler](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) sağlar:
+Uygulamalar Azure AD galerisine eklendikten sonra, kullanıcılar kendilerine atanan uygulamaları görebilir ve gerektiğinde diğer uygulamaları arayabilir ve isteyebilir. Azure AD, kullanıcıların uygulamalarına erişmeleri için [çeşitli yöntemler](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) sunar:
 
-* Erişim paneli/uygulamalarım
+* Erişim paneli/Uygulamalarım
 * Office 365 uygulama başlatıcısı
 * Birleştirilmiş uygulamalarda doğrudan oturum açma
 * Doğrudan oturum açma bağlantıları
 
-Uygulamalara yönelik kullanıcı erişimi hakkında daha fazla bilgi edinmek için bkz. **3. adım--bu makaledeki kullanıcılarınıza güç katın** .
+Uygulamalara kullanıcı erişimi hakkında daha fazla bilgi edinmek için **bkz.**
 
-### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Uygulamaları Active Directory Federasyon Hizmetleri (AD FS) 'den Azure AD 'ye geçirme
+### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Uygulamaları Active Directory Federation Services'den Azure AD'ye geçirin
 
-Active Directory Federasyon Hizmetleri (AD FS) (ADFS) ' dan Azure AD 'ye çoklu oturum açma yapılandırmasını geçirme güvenlik, daha tutarlı yönetilebilirlik ve işbirliği özelliklerine ek yetenekler sağlar. En iyi sonuçlar için uygulamalarınızı AD FS 'den Azure AD 'ye geçirmeniz önerilir. Uygulama kimlik doğrulaması ve yetkilendirmesinin Azure AD 'ye getirilmesi aşağıdaki avantajları sağlar:
+Active Directory Federation Services'dan (ADFS) Azure AD'ye tek oturum açma yapılandırması geçirmek, güvenlik, daha tutarlı yönetilebilirlik ve işbirliği konusunda ek özellikler sağlar. En iyi sonuçlar için, uygulamalarınızı AD FS'den Azure AD'ye geçirmenizi öneririz. Uygulama kimlik doğrulamanızı ve yetkilendirmenizi Azure AD'ye getirmek size aşağıdaki avantajları sağlar:
 
 * Maliyeti yönetme
-* Risk yönetimi
+* Riski yönetme
 * Üretkenliği artırma
-* Uyumluluk ve idare hakkında adresleme
+* Uyumluluk ve yönetişimin ele alınması
 
-Daha fazla bilgi edinmek için [uygulamalarınızı Azure Active Directory](https://aka.ms/migrateapps/whitepaper) teknik incelemeye geçirme konusuna bakın.
+Daha fazla bilgi edinmek [için Uygulamalarınızı Azure Etkin Dizin teknik incelemesine geçirin.](https://aka.ms/migrateapps/whitepaper)
 
-### <a name="enable-secure-remote-access-to-apps"></a>Uygulamalara güvenli uzaktan erişimi etkinleştir
+### <a name="enable-secure-remote-access-to-apps"></a>Uygulamalara güvenli uzaktan erişim sağlama
 
-[Azure AD uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) , kuruluşların şirket içi uygulamaları, iç uygulamalara güvenli bir şekilde erişmesi gereken uzak kullanıcılar için buluta yayımlamasına yönelik basit bir çözüm sunar. Azure AD 'de çoklu oturum açma işleminden sonra, kullanıcılar dış URL 'Ler veya dahili uygulama portalı aracılığıyla hem buluta hem de şirket içi uygulamalara erişebilir.
+[Azure AD Application Proxy,](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) kuruluşların dahili uygulamalara güvenli bir şekilde erişmeye ihtiyaç duyan uzak kullanıcılar için şirket içi uygulamaları bulutta yayımlamaları için basit bir çözüm sağlar. Azure AD'de tek bir oturum açtıktan sonra, kullanıcılar hem bulut hem de şirket içi uygulamalara harici URL'ler veya dahili uygulama portalı aracılığıyla erişebilir.
 
-Azure AD Uygulama Ara Sunucusu aşağıdaki avantajları sunmaktadır:
+Azure AD Application Proxy aşağıdaki avantajları sunar:
 
-* Azure AD 'yi şirket içi kaynaklara genişletme
-  * Bulut ölçeğinde güvenlik ve koruma
-  * Koşullu erişim ve etkinleştirilmesi kolay Multi-Factor Authentication gibi özellikler
-* Çevre ağında VPN ve geleneksel ters proxy çözümleri gibi bileşenler yok
-* Gelen bağlantı gerekli değil
-* Bulutta ve şirket içinde cihazlar, kaynaklar ve uygulamalar arasında çoklu oturum açma (SSO)
-* Son kullanıcıları her zaman ve her yerde üretken olmaya güçler
+* Azure AD'yi şirket içi kaynaklara genişletme
+  * Bulut ölçekli güvenlik ve koruma
+  * Koşullu Erişim ve Çok Faktörlü Kimlik Doğrulama gibi kolay etkinleştirilebilen özellikler
+* VPN ve geleneksel ters proxy çözümleri gibi çevre ağında hiçbir bileşen yok
+* Gelen bağlantı gerekmez
+* Bulutta ve şirket içinde cihazlar, kaynaklar ve uygulamalar arasında tek oturum açma (SSO)
+* Son kullanıcıların her zaman ve her yerde üretken olmalarını sağlar
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security ile gölge BT 'yi bulma
+### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security ile Gölge BT'yi Keşfedin
 
-Modern kuruluşlarda, BT departmanları genellikle kullanıcıların işlerini yapması için kullanılan tüm bulut uygulamalarının farkında değildir. BT yöneticileri, çalışanlarının ne kadar olduğunu düşündüklerini yaklaşık olarak 30 veya 40 söyledikleri hakkında bir şekilde görür. Gerçekte, ortalama, kuruluşunuzda çalışanlar tarafından kullanılan 1.000 ayrı uygulama üzerinde bulunur. çalışanların %80 ' ü incelemeyen ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmayan, tasdiksiz uygulamalar kullanıyor.
+Modern işletmelerde, BT departmanları genellikle kullanıcıların işlerini yapmak için kullandıkları tüm bulut uygulamalarından haberdar değildir. BT yöneticilerine çalışanlarının kaç bulut uygulaması kullandığını düşündükleri sorulduğunda, ortalama 30 veya 40 diyorlar. Gerçekte, ortalama 1.000'den fazla ayrı uygulama kuruluşunuzdaki çalışanlar tarafından kullanılıyor. Çalışanların %80'i, kimsenin incelemediği ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmadığı yaptırımuygulamaları kullanır.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS), KULLANıCıLARıN, SSO ve koşullu erişim gibi yeteneklerden yararlanması için, Kullanıcı tarafından tasdikli ve kurumsal uygulamalar galerisine ekleyebileceği yararlı uygulamaları belirlemenize yardımcı olabilir.
+[Microsoft Bulut Uygulama Güvenliği](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS), kullanıcıların SSO ve Koşullu Erişim gibi özelliklerden yararlanabilmesi için BT'nin onaylayıp Kurumsal uygulamalar galerisine ekleyebileceği kullanıcılar arasında popüler olan yararlı uygulamaları belirlemenize yardımcı olabilir.
 
-<em>"**Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em>[John BLASI  --- , Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security,** kullanıcılarımızın Accenture'un korunmasına yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde bulut ve SaaS uygulamalarımızı doğru şekilde kullanmalarını sağlamamıza yardımcı olur."</em> --- [John Blasi, Genel Müdür, Bilgi Güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-MCAS Ayrıca, gölge BT 'nin risk düzeyini tespit edebilir, kurumsal verilere yetkisiz erişimi, olası veri sızıntısını ve uygulamalarda bulunan diğer güvenlik risklerini de belirleyebilir.
+McAS, gölge BT'yi algılamanın yanı sıra uygulamaların risk düzeyini de belirleyebilir, kurumsal verilere yetkisiz erişimi, olası veri sızıntısını ve uygulamaların doğasında bulunan diğer güvenlik risklerini engelleyebilir.
 
-## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>2\. adım-her kullanıcı için otomatik olarak bir kimlik oluşturun
+## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Adım 2 - Her kullanıcı için otomatik olarak bir kimlik oluşturma
 
-Şirket içi ve bulut tabanlı dizinlerin bir Azure AD karma kimlik çözümünde birlikte getirilmesi, bulutta mevcut kimliklerinizi sağlayarak mevcut şirket içi Active Directory yatırımınızı yeniden kullanmanıza olanak tanır. Çözüm, şirket içi kimlikleri Azure AD ile eşitler, ancak şirket içi Active Directory, kimlikler için birincil kaynak olarak mevcut idare çözümleriyle birlikte çalışır. Microsoft 'un Azure AD hibrit kimlik çözümü, şirket içi ve bulut tabanlı yeteneklere yayıldığından, konumlarından bağımsız olarak tüm kaynaklarda kimlik doğrulaması ve yetkilendirme için ortak bir kullanıcı kimliği oluşturur.
+Azure AD karma kimlik çözümünde şirket içi ve bulut tabanlı dizinleri bir araya getirmek, mevcut kimliklerinizi bulutta sağlayarak mevcut şirket içi Active Directory yatırımınızı yeniden kullanmanıza olanak tanır. Çözüm, şirket içi kimlikleri Azure AD ile eşitlerken, BT, kimlikler için birincil doğruluk kaynağı olarak şirket içi Active Directory'yi mevcut yönetim çözümleriyle çalışır durumda tutar. Microsoft'un Azure AD karma kimlik çözümü şirket içi ve bulut tabanlı özellikleri kapsar ve konumlarından bağımsız olarak tüm kaynaklara kimlik doğrulama ve yetkilendirme için ortak bir kullanıcı kimliği oluşturur.
 
-Şirket içi dizinlerinizi Azure AD ile tümleştirmek, kullanıcılarınızın hem bulut kaynaklarına hem de şirket içi kaynaklara erişmek için ortak bir kimlik sağlayarak uygulamalar ve hizmetler arasında birden çok hesap kullanmalarını önler. Birden çok hesap kullanmak, son kullanıcılar ve buna benzer bir noktasıdır. Bir son kullanıcı perspektifinden, birden çok hesaba sahip olmak birden çok parolayı hatırlamaları gerektiği anlamına gelir. Bunu önlemek için, birçok kullanıcı her bir hesap için aynı parolayı yeniden kullanır ve bu da bir güvenlik perspektifinden hatalı olur. BT perspektifinden, Son Kullanıcı şikayetleriyle birlikte daha fazla parola sıfırlamaları ve yardım masası maliyetlerine daha fazla yeniden kullanım sağlar.
+Şirket içi dizinlerinizi Azure AD ile tümleştirmek, kullanıcılarınızı daha üretken hale getirir ve hem bulut hem de şirket içi kaynaklara erişmek için ortak bir kimlik sağlayarak kullanıcıların uygulamalar ve hizmetler arasında birden çok hesap kullanmasını engeller. Birden çok hesap kullanmak, hem son kullanıcılar hem de BT için bir acı noktasıdır. Son kullanıcı açısından bakıldığında, birden çok hesaba sahip olmak, birden çok parolayı hatırlamak zorunda kalmak anlamına gelir. Bunu önlemek için, birçok kullanıcı güvenlik açısından kötü olan her hesap için aynı parolayı yeniden kullanır. BT açısından bakıldığında, yeniden kullanım genellikle son kullanıcı şikayetleriyle birlikte daha fazla parola sıfırlama ve yardım masası maliyetine yol açar.
 
-Azure AD Connect, şirket içi kimliklerinizi Azure AD ile eşitlemek için kullanılan, daha sonra bulut uygulamalarına erişmek için kullanılan araçtır. Kimlikler Azure AD 'de olduktan sonra Salesforce veya Concur gibi SaaS uygulamalarına temin edebilirler.
+Azure AD Connect, şirket içi kimliklerinizi Azure AD ile senkronize etmek için kullanılan ve bulut uygulamalarına erişmek için kullanılabilen araçtır. Kimlikler Azure AD'ye yüklendikten sonra Salesforce veya Concur gibi SaaS uygulamalarına sağlayabilir.
 
-Bu bölümde, bulut için yüksek kullanılabilirlik, modern kimlik doğrulama ve şirket içi parmak izini azaltma önerilerini listeliyoruz.
+Bu bölümde, yüksek kullanılabilirlik sağlamak, bulut için modern kimlik doğrulaması sağlamak ve şirket içi ayak izinizi azaltmak için önerileri listeliyoruz.
 
 > [!NOTE]
-> Azure AD Connect hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure AD Connect eşitleme nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
+> Azure AD Connect hakkında daha fazla bilgi edinmek istiyorsanız, Azure [AD Bağlantı Eşitleme nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
 
-### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Azure AD Connect için bir hazırlama sunucusu kurun ve güncel tutun
+### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Azure AD Connect için bir hazırlama sunucusu ayarlayın ve güncel tutun
 
-Azure AD Connect, sağlama sürecinde bir anahtar rol oynar. Eşitleme sunucusu herhangi bir nedenle çevrimdışı kalırsa, şirket içi değişiklikler bulutta güncellenmez ve kullanıcılara erişim sorunlarına neden olur. Eşitleme sunucusu çevrimdışı olduktan sonra yöneticilerin eşitlemeyi hızlı bir şekilde sürdürmesini sağlayan bir yük devretme stratejisi tanımlamanız önemlidir.
+Azure AD Connect, sağlama işleminde önemli bir rol oynar. Eşitleme Sunucusu herhangi bir nedenle çevrimdışı olursa, şirket içi değişiklikler bulutta güncelleştirilmez ve kullanıcılara erişim sorunlarına neden olur. Eşitleme sunucusu çevrimdışı olduktan sonra yöneticilerin eşitleme yi hızlı bir şekilde sürdürmelerine olanak tanıyan bir hata stratejisi tanımlamak önemlidir.
 
-Birincil Azure AD Connect sunucunuzun çevrimdışı olması durumunda yüksek kullanılabilirlik sağlamak için, Azure AD Connect için ayrı bir [hazırlama sunucusu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) dağıtmanız önerilir. Sunucu dağıtmak, yöneticinin hazırlama sunucusunu basit bir yapılandırma anahtarıyla üretime "yükselmesini" sağlar. Hazırlama modunda yapılandırılmış bir bekleme sunucusuna sahip olmak, yeni yapılandırma değişikliklerini test etmenize ve dağıtmanıza ve eskisini açığa çıkarırsam yeni bir sunucu tanıtmaya de olanak tanır.
+Birincil Azure AD Connect sunucunuzun çevrimdışı olması durumunda yüksek kullanılabilirlik sağlamak için Azure AD Connect için ayrı bir [hazırlama sunucusu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) dağıtmanız önerilir. Sunucu dağıtmak, yöneticinin evreleme sunucusunu basit bir yapılandırma anahtarıyla üretime "tanıtmasına" olanak tanır. Hazırlama modunda yapılandırılan bir bekleme sunucusuna sahip olmak, yeni yapılandırma değişikliklerini sınamanızı ve dağıtmanızı ve eskisini devre dışı bırakmak durumunda yeni bir sunucu tanıtmanızı da sağlar.
 
 > [!TIP]
-> Azure AD Connect düzenli olarak güncelleştirilir. Bu nedenle, performans geliştirmelerinden, hata düzeltmelerinden ve her yeni sürümün sağladığı yeni özelliklerden yararlanmak için hazırlama sunucusunu güncel tutmanız önemle tavsiye edilir.
+> Azure AD Connect düzenli olarak güncelleştirilir. Bu nedenle, her yeni sürümün sağladığı performans geliştirmelerinden, hata düzeltmelerinden ve yeni özelliklerden yararlanmak için evreleme sunucusunu güncel tutmanız önerilir.
 
-### <a name="enable-cloud-authentication"></a>Bulut kimlik doğrulamasını etkinleştir
+### <a name="enable-cloud-authentication"></a>Bulut kimlik doğrulamasını etkinleştirme
 
-Şirket içi Active Directory kuruluşların, Azure AD Connect kullanarak dizinini Azure AD 'ye genişletmesi ve uygun kimlik doğrulama yöntemini yapılandırması gerekir. Kuruluşunuz için [doğru kimlik doğrulama yöntemini seçmek](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) , uygulamaları buluta taşıma sürecinizdeki ilk adımdır. Tüm bulut verilerine ve kaynaklarına erişimi denetlemediğinden bu kritik bir bileşendir.
+Şirket içi Active Directory'ye sahip kuruluşlar, Azure AD Connect'i kullanarak dizinlerini Azure AD Bağlantısı'na genişletmeli ve uygun kimlik doğrulama yöntemini yapılandırmalıdır. Kuruluşunuz için [doğru kimlik doğrulama yöntemini seçmek,](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) uygulamaları buluta taşıma yolculuğunuzdaki ilk adımdır. Tüm bulut verilerine ve kaynaklarına erişimi kontrol ettiği için kritik bir bileşendir.
 
-Azure AD 'de şirket içi dizin nesnelerinde bulut kimlik doğrulamasını etkinleştirmek için en basit ve önerilen yöntem, [Parola karması eşitlemesini](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) etkinleştirmektir. Alternatif olarak, bazı kuruluşlar [doğrudan kimlik doğrulamayı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) etkinleştirmeyi düşünebileceğiniz bir işlem olabilir.
+Azure AD'deki şirket içi dizin nesneleri için bulut kimlik doğrulamasını etkinleştirmek için en basit ve önerilen yöntem [Parola Karma Eşitleme(PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) etkinleştirmektir. Alternatif olarak, bazı kuruluşlar [Geçiş Kimlik Doğrulaması'nı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) etkinleştirmeyi düşünebilir.
 
-PHS veya PTA seçeneklerinden birini tercih etmeksizin, kullanıcıların kurumsal ağınızda Windows 7 ve 8 cihazları kullanırken kullanıcı adını ve parolasını sürekli olarak girmeden buluta erişmelerini sağlamak için [sorunsuz çoklu oturum açmayı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) unutmayın. Çoklu oturum açma olmadan, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. Benzer şekilde, BT personelinin Office 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir. Tüm kuruluş için standartlaştırılmış bir çoklu oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, risk azaltma, rapor verme ve idare açısından önemlidir.
+PHS veya PTA'yı seçin, kullanıcıların kurumsal ağınızdaki Windows 7 ve 8 cihazlarını kullanırken kullanıcı adlarını ve parolalarını uygulamada sürekli girmeden bulut uygulamalarına erişebilmeleri için [Sorunsuz Tek Oturum](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) Açma'yı etkinleştirmeyi unutmayın. Tek oturum açmadan, kullanıcıların uygulamaya özgü parolaları hatırlaması ve her uygulamada oturum açmaları gerekir. Aynı şekilde, BT personelinin Office 365, Box ve Salesforce gibi her uygulama için kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açmaları için zaman harcamaları gerekir. Tüm kuruluşa standartlaştırılmış tek oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, riskin azaltılması, rapor verme yeteneği ve yönetişim için çok önemlidir.
 
-Zaten AD FS veya başka bir şirket içi kimlik doğrulama sağlayıcısı kullanan kuruluşlar için, kimlik sağlayıcınız olarak Azure AD 'ye geçilmesi karmaşıklığı azaltabilir ve kullanılabilirliği iyileştirebilir. Federasyonu kullanmaya yönelik özel kullanım çalışmalarınız yoksa, daha az şirket içi bir kaplama ve bulut tekliflerinin avantajlarından yararlanmak için federal kimlik doğrulamasından PHS ve sorunsuz SSO ya da PTA ve sorunsuz SSO 'lara geçiş yapmanızı öneririz. Geliştirilmiş kullanıcı deneyimleri. Daha fazla bilgi için bkz. [Azure Active Directory için Federasyondan Parola karması eşitlemesine geçiş](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
+AD FS'yi veya başka bir şirket içi kimlik doğrulama sağlayıcısını kullanan kuruluşlar için, kimlik sağlayıcınız olarak Azure AD'ye geçmek karmaşıklığı azaltabilir ve kullanılabilirliği artırabilir. Federasyonu kullanmak için özel kullanım durumlarınız yoksa, azaltılmış şirket içi ayak izinin avantajlarından ve bulutun sunduğu esneklikten yararlanmak için federe kimlik doğrulamadan PHS ve Dikişsiz SSO veya PTA ve Dikişsiz SSO'ya geçiş yapmanızı öneririz. geliştirilmiş kullanıcı deneyimleri. Daha fazla bilgi için bkz: [Azure Etkin Dizini için federasyondan parola karma eşitlemesine geçir.](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync)
 
-### <a name="enable-automatic-deprovisioning-of-accounts"></a>Hesapların otomatik olarak sağlamasını etkinleştir
+### <a name="enable-automatic-deprovisioning-of-accounts"></a>Hesapların otomatik olarak yok edilmesini etkinleştirme
 
-Uygulamalarınızda otomatik sağlama ve sağlamayı kaldırma özelliğinin etkinleştirilmesi, birden fazla sistem genelinde kimliklerin yaşam döngüsünü yönetmek için en iyi stratejidir. Azure AD, ServiceNow ve Salesforce gibi çeşitli popüler SaaS uygulamalarına ve [SCIM 2,0 protokolünü](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)uygulayan diğerlerine yönelik [Otomatik, ilke tabanlı sağlama ve](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) Kullanıcı hesaplarını sağlamayı destekler. Özel kod veya CSV dosyalarının el ile karşıya yüklenmesi gereken geleneksel sağlama çözümlerinin aksine, sağlama hizmeti bulutta barındırılır ve Azure portal kullanılarak ayarlanabilir ve yönetilebilecek önceden tümleştirilmiş bağlayıcılar Özellikler. Otomatik sağlamayı kaldırma 'nın önemli bir avantajı, kuruluştan ayrıldıklarında kullanıcıların kimliklerini anahtar SaaS uygulamalarından anında kaldırarak kuruluşunuzun güvenliğini sağlamaya yardımcı olur.
+Uygulamalarınız için otomatik sağlama ve deprovisioning etkinleştirme, birden çok sistem arasında kimliklerin yaşam döngüsünü yönetmek için en iyi stratejidir. Azure AD, serviceNow ve Salesforce gibi çeşitli popüler SaaS uygulamalarına ve [SCIM 2.0 protokolünü](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)uygulayan diğer uygulamalara kullanıcı hesaplarının [otomatik, ilke tabanlı sağlanmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) ve bunların yok olmasını destekler. Özel kod veya CSV dosyalarının el ile yüklenmesini gerektiren geleneksel sağlama çözümlerinin aksine, sağlama hizmeti bulutta barındırılır ve Azure portalı kullanılarak kurulabilen ve yönetilebilen önceden tümleşik bağlayıcılara sahiptir. Otomatik deprovisioning'in önemli bir avantajı, kullanıcıların kimliklerini kuruluştan ayrıldıklarında anahtar SaaS uygulamalarından anında kaldırarak kuruluşunuzun güvenliğini sağlamaya yardımcı olmasıdır.
 
-Otomatik Kullanıcı hesabı sağlama ve nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+Otomatik kullanıcı hesabı sağlama ve nasıl çalıştığı hakkında daha fazla bilgi edinmek için Azure [Etkin Dizini ile SaaS Uygulamalarına OtomatikLeştirme ve Kullanım Danamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)Bölümü'ne bakın.
 
-## <a name="step-3---empower-your-users-securely"></a>3\. adım-kullanıcılarınıza güvenli bir şekilde güç katın
+## <a name="step-3---empower-your-users-securely"></a>Adım 3 - Kullanıcılarınızı güvenli bir şekilde güçlendirin
 
-Bugünün dijital çalışma alanında, güvenliği üretkenlik ile dengelemek önemlidir. Ancak, son kullanıcılar genellikle üretkenliğini ve bulut uygulamalarına erişimini yavaşlatan güvenlik ölçümlerine geri gönderim sağlar. Bu konuda yardım almak için Azure AD, kullanıcıların yönetim yükünü en aza indirerek üretken kalmasını sağlayan self servis özellikleri sağlar.
+Günümüzün dijital işyerinde, güvenliği verimlilikle dengelemek önemlidir. Ancak, son kullanıcılar genellikle üretkenliklerini ve bulut uygulamalarına erişimlerini yavaşlatan güvenlik önlemlerini geri püskürter. Azure AD, bu sorunu gidermek için, kullanıcıların yönetim ek yükü en aza indirirken üretken kalmalarını sağlayan self servis özellikleri sağlar.
 
-Bu bölümde, geri kalan dikkatli sırasında kullanıcılarınızı güçleyerek kuruluşunuzdaki uçuşleştirme kaldırma önerileri listelenmiştir.
+Bu bölümde, tetikte kalırken kullanıcılarınızı güçlendirerek cihazınızdaki sürtünmeyi ortadan kaldırmak için öneriler listeleneb.)'de.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Tüm kullanıcılar için self servis parola sıfırlamayı etkinleştir
+### <a name="enable-self-service-password-reset-for-all-users"></a>Tüm kullanıcılar için Self Servis Parola Sıfırlama'yı etkinleştirme
 
-Azure [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR), BT yöneticilerinin kullanıcıların yönetici müdahalesi olmadan parolalarını veya hesaplarını sıfırlamasına ve bunların kilidini açmalarına izin veren basit bir yol sunar. Sistem, kullanıcıların sisteme erişimini izleyen ayrıntılı raporlama içerir, ayrıca kötüye kullanım veya uygunsuz kullanım konusunda uyaran bildirimler sağlar.
+Azure'un [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR), BT yöneticilerinin kullanıcıların parolalarını veya hesaplarını yönetici müdahalesi olmadan sıfırlamalarına ve kilidini açmalarına olanak sağlaması için basit bir araç sunar. Sistem, kullanıcıların sisteme erişimini izleyen ayrıntılı raporlama içerir, ayrıca kötüye kullanım veya uygunsuz kullanım konusunda uyaran bildirimler sağlar.
 
-Varsayılan olarak, Azure AD, parola sıfırlama gerçekleştirdiğinde hesapların kilidini açar. Ancak, [Şirket içinde Azure AD Connect tümleştirmeyi](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)etkinleştirdiğinizde, bu iki işlemi ayrı ayrı ayırın ve bu da kullanıcıların, parolayı sıfırlamak zorunda kalmadan hesabının kilidini açmalarına olanak sağlar.
+Varsayılan olarak, Azure AD parola sıfırlama gerçekleştirirken hesapların kilidini açar. Ancak, Azure AD Connect [tümleştirmesini şirket içinde](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)etkinleştirdiğinizde, kullanıcıların parolayı sıfırlamak zorunda kalmadan hesaplarının kilidini açmalarını sağlayan bu iki işlemi ayırma seçeneğiniz de vardır.
 
-### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>MFA ve SSPR için tüm kullanıcıların kayıtlı olduğundan emin olun
+### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Tüm kullanıcıların MFA ve SSPR'ye kayıtlı olduğundan emin olun
 
-Azure, kullanıcıların MFA ve SSPR için Kaydolmakta olduğundan emin olmak için siz ve kuruluşunuz tarafından kullanılabilen raporlar sağlar. Kaydolmamış kullanıcıların süreç üzerinde eğitime yapması gerekebilir.
+Azure, kullanıcıların MFA ve SSPR'ye kayıtlı olduğundan emin olmak için sizin ve kuruluşunuz tarafından kullanılabilecek raporlar sağlar. Kayıt yaptırmayan kullanıcıların bu süreçte eğitilmesi gerekebilir.
 
-MFA [oturum açma işlemleri raporu](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) , MFA kullanımı hakkında bilgiler IÇERIR ve MFA 'nın kuruluşunuzda nasıl çalıştığı hakkında öngörüler sunar. Azure AD 'de oturum açma etkinliğine erişim (ve denetim ve risk algılamaları), sorun giderme, Kullanım Analizi ve adli araştırmalar için önemlidir.
+MFA [oturum açma raporu,](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) MFA kullanımı hakkında bilgi içerir ve MFA'nın kuruluşunuzdaki çalışma şeklihakkında size bilgi verir. Azure AD için oturum açma etkinliğine (ve denetimlere ve risk algılamalarına) erişim sağlamak, sorun giderme, kullanım analitiği ve adli tıp araştırmaları için çok önemlidir.
 
-Benzer şekilde, [self servis parola yönetimi raporu](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) , SSPR 'ye kimin sahip olduğunu (veya ayrılmadığını) belirlemede kullanılabilir.
+Aynı şekilde, [Self servis Şifre Yönetimi raporu,](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) SSPR'ye kimin kaydolduğunu (veya kaydetmediğini) belirlemek için kullanılabilir.
 
-### <a name="self-service-app-management"></a>Self Servis uygulama yönetimi
+### <a name="self-service-app-management"></a>Self servis uygulama yönetimi
 
-Kullanıcılarınızın erişim panelinden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasını ve erişim istemesini sağlamak istediğiniz uygulamalara [self servis uygulama erişimini](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) etkinleştirmeniz gerekir. Self Servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine bulmasına ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasını sağlayan harika bir yoldur. İş grubunun, erişim panellerinden, [parola çoklu oturum açma uygulamalarında](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) bu kullanıcılara atanan kimlik bilgilerini yönetmesine izin verebilirsiniz.
+Kullanıcılarınız uygulamaları erişim panelinden kendi kendine keşfedebilmeniz için, kullanıcıların kendi kendine keşfetmesine ve erişimini istemesine izin vermek istediğiniz uygulamalara [self servis uygulama erişimini](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) etkinleştirmeniz gerekir. Self servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine keşfetmelerine ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasına izin vermek için harika bir yoldur. İş grubunun, bu kullanıcılara [Parola Tek Oturum](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) Açma Uygulamaları için atanan kimlik bilgilerini erişim panellerinden yönetmesine izin verebilirsiniz.
 
 ### <a name="self-service-group-management"></a>Self servis grup yönetimi
 
-Kullanıcıların uygulamalara atanması en iyi şekilde, gruplar kullanılırken en iyi şekilde eşlenir, çünkü ölçeği büyük ölçüde esneklik ve yönetebilme olanağı sağlar:
+Kullanıcıları uygulamalara atamak, grupları kullanırken en iyi şekilde eşlenir, çünkü büyük esneklik ve ölçekte yönetme olanağı sağlar:
 
-* Dinamik grup üyeliği kullanılarak öznitelik tabanlı
-* Uygulama sahiplerine yetkilendirme
+* Dinamik grup üyeliğini kullanarak öznitelik tabanlı
+* Uygulama sahiplerine temsilci
 
-Azure AD, güvenlik gruplarını ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, üyelik isteklerini onaylayabilecek veya reddedebilen ve grup üyeliği denetimini atayan bir grup sahibi tarafından yönetilebilir. [Self servis grup yönetimi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)olarak bilindiğinde, bu özellik, yönetim rolü atanmamış Grup sahiplerinin, isteklerini işlemek üzere yöneticilere güvenmeksizin grupları oluşturup yönetmesine izin vererek zamandan tasarruf sağlar.
+Azure AD, güvenlik grupları ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, üyelik isteklerini onaylayan veya reddedebilen ve grup üyeliğinin denetimini devreden bir grup sahibi tarafından yönetilebilir. Self [servis grup yönetimi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)olarak bilinen bu özellik, yönetime atanamayan grup sahiplerinin isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan gruplar oluşturmasına ve yönetmesine izin vererek zamandan tasarruf sağlar.
 
-## <a name="step-4---operationalize-your-insights"></a>4\. adım-öngörülerinizi çalıştırma
+## <a name="step-4---operationalize-your-insights"></a>Adım 4 - Öngörülerinizi operasyonel hale
 
-Güvenlikle ilgili olayları ve ilgili uyarıları denetleme ve günlüğe kaydetme, kullanıcıların üretken kalmasını sağlamak ve kuruluşunuzun güvende kalması için etkili bir stratejinin önemli bileşenleridir. Güvenlik günlükleri ve raporları, şu gibi bir sorunun yanıtlanmasına yardımcı olabilir:
+Güvenlikle ilgili olayların ve ilgili uyarıların denetlemesi ve günlüğe kaydetmesi, kullanıcıların üretken kalmasını ve kuruluşunuzun güvende olmasını sağlamak için etkin bir stratejinin temel bileşenleridir. Güvenlik günlükleri ve raporları aşağıdaki gibi soruları yanıtlamaya yardımcı olabilir:
 
-* Ne için ödeme yapabileceğinizi kullanıyorsunuz?
-* Kiracımda şüpheli veya kötü amaçlı olan bir şey var mı?
-* Güvenlik olayı sırasında kim etkilendi?
+* Parasını ödediğin şeyi mi kullanıyorsun?
+* Kiracımda şüpheli ya da kötü niyetli bir şey oluyor mu?
+* Bir güvenlik olayı sırasında kim etkilendi?
 
-Güvenlik günlükleri ve raporları, size bir elektronik şüpheli etkinlik kaydı sağlar ve ağın denendiği veya başarılı bir şekilde dışarıdan sızma ve iç saldırılar olduğunu gösterebilen desenleri tespit etmenize yardımcı olur. Kullanıcı etkinliğini izlemek, mevzuat uyumluluğu, analiz yapmak ve daha fazlasını yapmak için denetimi kullanabilirsiniz. Uyarılar güvenlik olaylarının bildirimleri sağlar.
+Güvenlik günlükleri ve raporları, şüpheli etkinliklerin elektronik bir kaydını sağlar ve ağın ve dahili saldırıların girişimini veya başarılı bir şekilde dış ağını gösteren desenleri algılamanıza yardımcı olur. Denetimi, kullanıcı etkinliğini izlemek, mevzuata uygunluğu belgelemek, adli analiz yapmak ve daha fazlasını yapmak için kullanabilirsiniz. Uyarılar güvenlik olayları bildirimleri sağlar.
 
 ### <a name="assign-least-privileged-admin-roles-for-operations"></a>İşlemler için en az ayrıcalıklı yönetici rolleri atama
 
-İşlemlere yaklaşımınızı düşünürken göz önünde bulundurmanız gereken birkaç yönetim düzeyi vardır. İlk düzey yönetim yükünü genel yöneticinize koyar. Her zaman genel yönetici rolünü kullanarak, daha küçük şirketler için uygun olabilir. Ancak, yardım masası personeli ve yöneticiler için belirli görevlerden sorumlu olan büyük kuruluşlar için, genel yönetici rolünü atamak, bu bireyler üzerinde ve sonrasındaki görevleri yönetme olanağı sağladığından bir güvenlik riski oluşturabilir yapabilmeleri gereken özellikler.
+Operasyonlara yaklaşımınızı düşündüğünüzde, göz önünde bulundurulması gereken birkaç yönetim düzeyi vardır. Birinci düzey, yönetim yükünü küresel yöneticinizin (ler) üzerine yerleştirir. Her zaman küresel yönetici rolünü kullanarak, küçük şirketler için uygun olabilir. Ancak, yardım masası personeli ve belirli görevlerden sorumlu yöneticilere sahip daha büyük kuruluşlar için, bu kişilere yukarıda ve ötesindeki görevleri yönetme olanağı sağladığından, küresel yönetici rolünü atamak bir güvenlik riski olabilir yapabilecekkapasitelerini.
 
-Bu durumda, bir sonraki yönetim düzeyini göz önünde bulundurmanız gerekir. Azure AD 'yi kullanarak son kullanıcıları daha az ayrıcalıklı rollerdeki görevleri yönetebilen "sınırlı yöneticiler" olarak belirleyebilirsiniz. Örneğin, yardım masası personelinizi [güvenlik okuyucusu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) rolüne atayabilir ve bunlara salt okuma erişimiyle güvenlikle ilgili özellikleri yönetme olanağı sağlayabilirsiniz. Ya da, parola olmayan kimlik bilgilerini sıfırlama veya Azure hizmet durumunu okuma ve yapılandırma olanağı sağlamak için bireylere [kimlik doğrulama Yöneticisi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) rolünü atamak mantıklı bir fikir verir.
+Bu durumda, bir sonraki yönetim düzeyini göz önünde bulundurmalısınız. Azure AD'yi kullanarak, son kullanıcıları görevleri daha az ayrıcalıklı rollerde yönetebilecek "sınırlı yöneticiler" olarak atayabilirsiniz. Örneğin, yalnızca okunur erişimle güvenlikle ilgili özellikleri yönetme olanağı sağlamak için yardım masası personelinizi [güvenlik okuyucu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) rolüolarak atayabilirsiniz. Ya da parola dışı kimlik bilgilerini sıfırlama veya Azure Hizmet Durumu'nu okuma ve yapılandırma olanağı sağlamak için kimlik [doğrulama yöneticisi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) rolünü bireylere atamak mantıklı olabilir.
 
-Daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)bölümüne bakın.
+Daha fazla bilgi edinmek için [Azure Etkin Dizin'inde Yönetici rol izinlerine](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)bakın.
 
-### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health kullanarak karma bileşenleri (Azure AD Connect eşitleme, AD FS) izleme
+### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health'i kullanarak karma bileşenleri (Azure AD Connect eşitleme, AD FS) izleyin
 
-Azure AD Connect ve AD FS, yaşam döngüsü yönetimi ve kimlik doğrulaması olabilecek önemli bileşenlerdir ve sonuç olarak kesintiler kesintiye neden olabilir. Bu nedenle, bu bileşenlerin izlenmesi ve raporlanması için Azure AD Connect Health dağıtmanız gerekir.
+Azure AD Connect ve AD FS, yaşam döngüsü yönetimini ve kimlik doğrulamasını kırabilecek ve sonuçta kesintilere yol açabilecek kritik bileşenlerdir. Bu nedenle, bu bileşenlerin izlenmesi ve raporlanması için Azure AD Connect Health'i dağıtmanız gerekir.
 
-Daha fazla bilgi edinmek için [Azure AD Connect Health kullanarak AD FS İzleyicisi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)'ni okuyun.
+Daha fazla bilgi için [Azure AD Connect Health'i kullanarak SPS'yi izleyin'](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)i okuyun.
 
-### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Analiz için veri günlüklerini toplamak üzere Azure Izleyici 'yi kullanma
+### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Analitik için veri günlükleri toplamak için Azure Monitörünü kullanın
 
-[Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) , ayrıntılı Öngörüler, gelişmiş analiz ve akıllı makine öğrenimi sağlayan tüm Azure AD günlükleri için birleştirilmiş bir izleme portalıdır. Azure Izleyici ile, kaynaklarınızın durumu ve performansına ilişkin daha fazla görünürlük elde etmek için Portal içindeki ölçümleri ve günlükleri kullanabilir ve API 'Ler aracılığıyla kullanabilirsiniz. Bu,, geleneksel üçüncü taraf SıEM sistemlerini destekleyen API 'Ler ve veri dışa aktarma seçenekleri aracılığıyla çok çeşitli ürün tümleştirmelerini etkinleştirerek portalda tek bir cam deneyim bölmesini etkinleştirir. Azure Izleyici aynı zamanda, kaynaklarınızı etkileyen sorunlar hakkında bildirim almak veya Otomatik eylemler gerçekleştirmek üzere uyarı kuralları yapılandırma olanağı da sağlar.
+[Azure Monitor,](https://docs.microsoft.com/azure/azure-monitor/overview) derin öngörüler, gelişmiş analitik ve akıllı makine öğrenimi sağlayan tüm Azure REKLAM günlükleri için birleşik bir izleme portalıdır. Azure Monitor ile, kaynaklarınızın durumu ve performansı hakkında daha fazla görünürlük elde etmek için portal içinde ve API'ler aracılığıyla ölçümleri ve günlükleri tüketebilirsiniz. Geleneksel üçüncü taraf SIEM sistemlerini destekleyen API'ler ve veri dışaaklama seçenekleri aracılığıyla geniş bir ürün entegrasyonu yelpazesi sağlarken portal içinde tek bir cam deneyimi bölmesi sağlar. Azure Monitor ayrıca, uyarı kurallarını uyarı kurallarını yapılandırma veya kaynaklarınızı etkileyen konularda otomatik eylemlerde bulunmak için de izin verir.
 
 ![Azure İzleyici](./media/four-steps/image1.png)
 
-### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Liderliğiniz ve güne ait gün için özel panolar oluşturun
+### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Liderliğiniz ve günden güne özel panolar oluşturun
 
-SıEM çözümü olmayan kuruluşlar, Azure AD için [Power BI Içerik paketini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) indirebilir. Power BI içerik paketi, kullanıcılarınızın Azure AD özelliklerini benimseme ve kullanma şeklini anlamanıza yardımcı olmak için önceden oluşturulmuş raporlar içerir. bu sayede, dizininizdeki tüm etkinliklere ilişkin Öngörüler elde etmenizi sağlayabilirsiniz. Ayrıca, kendi [özel panonuzu](https://docs.microsoft.com/power-bi/service-dashboards) oluşturabilir ve günlük etkinlikleri raporlamak için liderlik ekibinizle paylaşabilirsiniz. Panolar, işinizi izlemenin ve en önemli ölçümlerinizin tümünü bir bakışta görmenize yönelik harika bir yoldur. Bir panodaki görselleştirmeler, temel alınan bir veri kümesinden veya çok fazla, temel alınan bir rapordan veya çok sayıda olabilir. Bir Pano, şirket içi ve bulut verilerini birleştirerek verilerin nerede yaşına bakılmaksızın birleştirilmiş bir görünüm sağlar.
+SIEM çözümü olmayan kuruluşlar Azure AD için [Power BI İçerik Paketini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) indirebilir. Power BI içerik paketi, kullanıcılarınızın Azure AD özelliklerini nasıl benimsediğini ve kullandığını anlamanıza yardımcı olmak için önceden oluşturulmuş raporlar içerir ve bu da dizininizdeki tüm etkinlikler hakkında bilgi edinmenize olanak tanır. Ayrıca kendi özel [panonuzu](https://docs.microsoft.com/power-bi/service-dashboards) oluşturabilir ve günlük etkinlikleri raporlamak için liderlik ekibinizle paylaşabilirsiniz. Panolar, işletmenizi izlemek ve en önemli ölçümlerinizi bir bakışta görmek için harika bir yoldur. Panolardaki görselleştirmeler, bir veya daha fazla temel alınan veri kümesinden ve bağlantılı rapordan oluşabilir. Bir panoda şirket içi ve bulut verileri bir arada kullanılabilir ve verilerin konumundan bağımsız olarak tümleşik bir görünüm oluşturulabilir.
 
-![Özel panoyu Power BI](./media/four-steps/image2.png)
+![Güç BI özel pano](./media/four-steps/image2.png)
 
-### <a name="understand-your-support-call-drivers"></a>Destek çağrı sürücülerinizi anlayın
+### <a name="understand-your-support-call-drivers"></a>Destek arama sürücülerinizi anlayın
 
-Bu makalede özetlenen bir karma kimlik çözümü uyguladığınızda, destek aramalarınızın sonunda bir azalma olduğunu fark etmelisiniz. Unutulan parolalar ve hesap kilitlenmelerini gibi yaygın sorunlar, Azure 'un self servis parola sıfırlama uygulaması tarafından azaltıldığından, self servis uygulama erişiminin etkinleştirilmesi, kullanıcıların bağlı olmadan uygulamalara kendi kendine keşif ve erişim istemesine izin verir. BT personeliniz üzerinde.
+Bu makalede özetlenen bir karma kimlik çözümü uyguladığınızda, sonuçta destek çağrılarınızda bir azalma fark etmelisiniz. Unutulan parolalar ve hesap kilitlenmeleri gibi yaygın sorunlar Azure'un self servis parola sıfırlama sını uygulayarak azaltılırken, self servis uygulama erişimini etkinleştirmek kullanıcıların uygulamalara güvenmeden kendi kendine keşfetmesini ve erişimini istemesine olanak tanır. BT personelinizde.
 
-Destek çağrılarında bir azalmayla karşılaşmıyorsanız, SSPR veya self servis uygulama erişiminin doğru şekilde yapılandırılıp yapılandırılmadığını veya sistematik olabilecek başka yeni sorunlar olup olmadığını onaylama girişiminde destek çağrı sürücülerinizi çözümlemeniz önerilir Belirtilen.
+Destek aramalarında bir azalma gözlemlemezseniz, SSPR veya self servis uygulama erişiminin doğru yapılandırıldığını veya sistematik olarak yapIlebilen başka yeni sorunlar olup olmadığını doğrulamak için destek çağrı sürücülerinizi analiz etmenizi öneririz Ele.
 
-*"Dijital dönüşümde yolculuğunda, etkili bir ekosistem için ABD, iş ortakları ve bulut hizmeti sağlayıcıları arasında sorunsuz bir şekilde tümleştirmeyi kolaylaştırmak amacıyla güvenilir bir kimlik ve erişim yönetim sağlayıcısı gerekiyordu. Azure AD, riskleri algılamamızı ve yanıt verebilmesini sağlayan gerekli özellikleri ve görünürlüğü bize sunan en iyi seçenektir. "* --- [yazan almasri, küresel bilgi güvenlik Direktörü, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"Dijital dönüşüm yolculuğumuzda, etkin bir ekosistem için bizimle, iş ortaklarımıza ve bulut hizmeti sağlayıcılarına sorunsuz ve güvenli entegrasyonu kolaylaştırmak için güvenilir bir kimlik ve erişim yönetimi sağlayıcısına ihtiyacımız vardı; Azure AD, riskleri algılamamızı ve yanıt vermemizi sağlayan gerekli yetenekleri ve görünürlüğü sunan en iyi seçenekti."* --- [Yazan Almasri, Küresel Bilgi Güvenliği Direktörü, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
-### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Öngörüleri yönlendirmek için uygulama kullanımınızı izleyin
+### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Öngörüler yönlendirmek için uygulamaları kullanımınızı izleyin
 
-Gölge BT 'yi bulmaya ek olarak, [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) kullanarak kuruluşunuzda uygulama kullanımını izlemek, bulut uygulamalarının taahhüdünü tamamen avantajlarından yararlanmak için kuruluşunuz hareket etmenize yardımcı olabilir. Etkinlik üzerinde geliştirilmiş görünürlük ve bulut uygulamaları genelinde kritik verilerin korunmasını artırmak için varlıklarınızı denetlemenize yardımcı olabilir. MCAS kullanarak kuruluşunuzda uygulama kullanımını izlemek aşağıdaki soruları cevaplamanıza yardımcı olabilir:
+Shadow IT'i keşfetmenin yanı sıra, Microsoft [Cloud App Security'yi](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) kullanarak kuruluşunuz genelinde uygulama kullanımını izlemek, bulut uygulamaları vaadinden tam olarak yararlanmak için hareket ederken kuruluşunuzda yardımcı olabilir. Daha iyi bir etkinlik görünürlüğü sayesinde varlıklarınızın denetimini korumanıza yardımcı olabilir ve bulut uygulamaları ndaki kritik verilerin korunmasını artırabilir. MCAS kullanarak kuruluşunuzdaki uygulama kullanımını izlemek aşağıdaki soruları yanıtlamanıza yardımcı olabilir:
 
-* Tasdikli olmayan uygulamalar, verileri depolamak için kullanılan çalışanlar mi?
-* Gizli verilerin nerede ve ne zaman bulutta depolanıyor?
-* Buluttaki hassas verilere kimler erişiyor?
+* Çalışanlar verileri depolamak için hangi onaylanmamış uygulamaları kullanıyor?
+* Hassas veriler bulutta nerede ve ne zaman depolanıyor?
+* Buluttaki hassas verilere kim erişiyor?
 
-*"Cloud App Security sayesinde, anormallikleri hızlı bir şekilde belirleyebiliyoruz ve işlem yapabilirsiniz."* --- [Eric Tapenske, üst düzey Müdür, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Cloud App Security ile, anormallikleri hızlı bir şekilde tespit edebilir ve harekete geçebiliriz."* --- [Eric LePenske, Kıdemli Müdür, Bilgi Güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Özet
 
-Karma kimlik çözümü uygulamak için birçok önemli nokta vardır, ancak bu dört adımlı denetim listesi, kullanıcıların daha üretken ve güvenli olmasını sağlayacak bir kimlik altyapısını hızlıca gerçekleştirmenize yardımcı olur.
+Karma Kimlik çözümünü uygulamanın birçok yönü vardır, ancak bu dört adımlı denetim listesi, kullanıcıların daha üretken ve güvenli olmasını sağlayacak bir kimlik altyapısını hızla gerçekleştirmenize yardımcı olur.
 
-* Uygulamalara kolayca bağlanın
-* Her Kullanıcı için otomatik olarak bir kimlik oluşturun
-* Kullanıcılarınıza güvenli bir şekilde güç katın
-* Öngörülerinizi çalıştırın
+* Uygulamalara kolayca bağlanma
+* Her kullanıcı için otomatik olarak bir kimlik oluşturma
+* Kullanıcılarınızı güvenli bir şekilde güçlendirin
+* Öngörülerinizi operasyonel hale
 
-Bu belgede, kuruluşunuz için güçlü bir kimlik temeli oluşturmaya yönelik yararlı bir yol haritası sunuyoruz.
+Bu belgenin kuruluşunuz için güçlü bir kimlik temeli oluşturmak için yararlı bir yol haritası olmasını umuyoruz.
 
-## <a name="identity-checklist"></a>Kimlik denetim listesi
+## <a name="identity-checklist"></a>Kimlik kontrol listesi
 
-BT yolculuğuna kuruluşunuzda daha katı bir kimlik temele başladığınızda, başvuru için aşağıdaki denetim listesini yazdırmanızı öneririz.
+Kuruluşunuzdaki daha sağlam bir kimlik temeline yolculuğunuza başlarken başvuru için aşağıdaki denetim listesini yazdırmanızı öneririz.
 
-### <a name="today"></a>Adresten
-
-|Açtınız mı?|Öğe|
-|:-|:-|
-||Bir grup için pilot self servis parola sıfırlama (SSPR)|
-||Azure AD Connect Health kullanarak karma bileşenleri izleme|
-||İşlem için en az ayrıcalıklı yönetici rolleri atama|
-||Microsoft Cloud App Security ile gölge BT 'yi bulma|
-||Analiz için veri günlüklerini toplamak üzere Azure Izleyici 'yi kullanma|
-
-### <a name="next-two-weeks"></a>Sonraki iki hafta
+### <a name="today"></a>Bugün
 
 |Açtınız mı?|Öğe|
 |:-|:-|
-||Kullanıcılarınız için bir uygulamayı kullanılabilir hale getirme|
-||Tercih ettiğiniz SaaS uygulaması için pilot Azure AD sağlama|
+||Bir grup için Pilot Self Servis Şifre Sıfırlama (SSPR)|
+||Azure AD Connect Health'i kullanarak karma bileşenleri izleme|
+||Operasyon için en az ayrıcalıklı yönetici rolleri atama|
+||Microsoft Cloud App Security ile Gölge BT'yi Keşfedin|
+||Analiz için veri günlükleri toplamak için Azure Monitörünü kullanın|
+
+### <a name="next-two-weeks"></a>Önümüzdeki iki hafta
+
+|Açtınız mı?|Öğe|
+|:-|:-|
+||Bir uygulamayı kullanıcılarınız için kullanılabilir hale getirin|
+||Tercih için bir SaaS uygulaması için Pilot Azure AD sağlık|
 ||Azure AD Connect için bir hazırlama sunucusu kurun ve güncel tutun|
-||ADFS 'den Azure AD 'ye uygulama geçirmeye başlayın|
-||Liderliğiniz ve güne ait gün için özel panolar oluşturun|
+||Uygulamaları ADFS'den Azure AD'ye geçirmebaşlatma|
+||Liderliğiniz ve günden güne özel panolar oluşturun|
 
-### <a name="next-month"></a>Sonraki ay
-
-|Açtınız mı?|Öğe|
-|:-|:-|
-||Öngörüleri yönlendirmek için uygulama kullanımınızı izleyin|
-||Uygulamalara yönelik pilot güvenli uzaktan erişim|
-||MFA ve SSPR için tüm kullanıcıların kayıtlı olduğundan emin olun|
-||Bulut kimlik doğrulamasını etkinleştir|
-
-### <a name="next-three-months"></a>Sonraki üç ay
+### <a name="next-month"></a>Gelecek ay
 
 |Açtınız mı?|Öğe|
 |:-|:-|
-||Self Servis uygulama yönetimini etkinleştirme|
-||Self Servis Grup yönetimini etkinleştir|
-||Öngörüleri yönlendirmek için uygulama kullanımınızı izleyin|
-||Destek çağrı sürücülerinizi anlayın|
+||Öngörüler yönlendirmek için uygulamaları kullanımınızı izleyin|
+||Pilot, uygulamalara uzaktan erişimi güvenli hale getirmek|
+||Tüm kullanıcıların MFA ve SSPR'ye kayıtlı olduğundan emin olun|
+||Bulut kimlik doğrulamasını etkinleştirme|
+
+### <a name="next-three-months"></a>Önümüzdeki üç ay
+
+|Açtınız mı?|Öğe|
+|:-|:-|
+||Self servis uygulama yönetimini etkinleştirme|
+||Self servis grup yönetimini etkinleştirme|
+||Öngörüler yönlendirmek için uygulamaları kullanımınızı izleyin|
+||Destek arama sürücülerinizi anlayın|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Active Directory yeteneklerini ve bu beş adımlı denetim listesini kullanarak, [kimlik altyapınızın güvenliğini sağlamaya yönelik beş](https://aka.ms/securitysteps)adım aracılığıyla güvenli durunuzu nasıl artırabileceğinizi öğrenin.
+Azure Active Directory'nin özelliklerini ve bu beş adımlı denetim listesini kullanarak güvenli duruşunuzu nasıl artırabileceğinizi öğrenin - [Kimlik altyapınızı güvence altına almak için beş adım.](https://aka.ms/securitysteps)
 
-Azure AD 'deki kimlik özelliklerinin, kuruluşların kendi kimlik yönetimini geleneksel şirket içi sistemlerden Azure AD 'ye hızla benimsemesini ve taşımasına imkan tanıyan çözümler ve yetenekler sunarak bulut yönetilen yönetimine geçişinizi hızlandırmanıza nasıl yardımcı olabileceğini öğrenin. [Azure AD, şirket Içi Iş yükleri Için bulut tarafından yönetilen yönetim sağlar](https://aka.ms/cloudgoverned).
+Azure AD'deki kimlik özelliklerinin, kuruluşların kimlik yönetimlerini geleneksel şirket içi sistemlerden Azure AD'ye hızlı bir şekilde benimsemelerine ve taşımalarına olanak tanıyan çözümler ve özellikler sağlayarak bulut yönetim yönetimine geçişinizi hızlandırmanıza nasıl yardımcı olabileceğini öğrenin - [Azure AD Şirket İçi İş Yükleri için Bulut Yönetim Yönetimini Nasıl Sunar.](https://aka.ms/cloudgoverned)

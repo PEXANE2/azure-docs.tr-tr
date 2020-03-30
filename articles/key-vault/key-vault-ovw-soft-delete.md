@@ -1,5 +1,6 @@
 ---
-title: Azure Key Vault geçici silme | Microsoft Docs
+title: Azure Key Vault yumuşak silme | Microsoft Dokümanlar
+description: Azure Key Vault'ta yumuşak silme, silinmiş anahtar kasalarını ve anahtarlar, sırlar ve sertifikalar gibi anahtar kasa nesnelerini kurtarmanızı sağlar.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,91 +8,91 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 31d3556609737212ee1257015d12e9e0621ea4ee
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9c72b2ea71da94215fc9193ffdf3906449ec5571
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457381"
 ---
-# <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici genel bakış
+# <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
-Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır. Özellikle, aşağıdaki senaryolara adresliyoruz:
+Key Vault'un yumuşak silme özelliği, silinen kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır, buna yumuşak silme olarak bilinir. Özellikle, aşağıdaki senaryoları ele alıyoruz:
 
-- Bir anahtar kasasının kurtarılabilir silme desteği
-- Anahtar Kasası nesnelerinin kurtarılabilir silme desteği (örn. Anahtarlar, gizlilikler, sertifikalar)
+- Anahtar kasasının geri kazanılabilir silinmesi için destek
+- Anahtar kasa nesnelerinin geri kazanılabilir silinmesi için destek (ör. anahtarlar, sırlar, sertifikalar)
 
 ## <a name="supporting-interfaces"></a>Destekleyici arabirimler
 
-Geçici silme özelliği, ilk olarak [rest](/rest/api/keyvault/), [CLI](key-vault-soft-delete-cli.md), [PowerShell](key-vault-soft-delete-powershell.md) ve [.net/C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) arabirimler aracılığıyla kullanılabilir.
+Yumuşak silme özelliği başlangıçta [REST](/rest/api/keyvault/), [CLI](key-vault-soft-delete-cli.md), [PowerShell](key-vault-soft-delete-powershell.md) ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) arayüzleri aracılığıyla kullanılabilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-Azure Anahtar kasaları, Azure Resource Manager tarafından yönetilen, izlenen kaynaklardır. Azure Resource Manager, silme işlemi için iyi tanımlanmış bir davranış belirtir. Bu, başarılı bir SILME işleminin, o kaynağa artık erişilemeyecek şekilde neden olması gerekir. Geçici silme özelliği, silmenin yanlışlıkla mi yoksa bilerek mi olduğunu, Silinen nesnenin kurtarılmasına yöneliktir.
+Azure Anahtar Kasaları, Azure Kaynak Yöneticisi tarafından yönetilen izlenen kaynaklardır. Azure Kaynak Yöneticisi ayrıca, başarılı bir DELETE işleminin bu kaynağa artık erişilememesine neden olması gerektiğini gerektiren iyi tanımlanmış bir silme davranışı da belirtir. Yumuşak silme özelliği, silinen nesnenin silinmesi yanlışlıkla veya kasıtlı olsun, kurtarma adresi.
 
-1. Tipik senaryoda, bir kullanıcı yanlışlıkla bir anahtar kasasını veya bir Anahtar Kasası nesnesini silmiş olabilir; Bu Anahtar Kasası veya Anahtar Kasası nesnesi önceden belirlenmiş bir süre için kurtarılabilir ise, Kullanıcı silme işlemini geri alabilir ve verilerini kurtarabilir.
+1. Tipik senaryoda, bir kullanıcı yanlışlıkla bir anahtar kasasını veya anahtar kasa nesnesini silmiş olabilir; bu anahtar kasası veya anahtar kasa nesnesi önceden belirlenmiş bir süre için kurtarılabilir ise, kullanıcı silme geri alabilir ve verilerini kurtarmak.
 
-2. Farklı bir senaryoda, standart dışı bir Kullanıcı bir anahtar kasasını veya kasadaki bir anahtar gibi bir Anahtar Kasası nesnesini bir iş kesintisi olacak şekilde silmeye çalışabilir. Temel verilerin gerçek silinmesinden, anahtar kasasının veya Anahtar Kasası nesnesinin silinmesini bir şekilde ayırmak, örneğin, veri silme izinlerini farklı, güvenilen bir rolde kısıtlamak için tarafından bir güvenlik önlemi olarak kullanılabilir. Bu yaklaşım, bir işlem için çekirdek gerektirir, aksi takdirde veri kaybına neden olabilir.
+2. Farklı bir senaryoda, haydut bir kullanıcı bir iş kesintisine neden olmak için bir anahtar kasasını veya kasa içindeki anahtar gibi önemli bir kasa nesnesini silmeyi deneyebilir. Anahtar kasasının veya anahtar kasa nesnesinin silinmesini, temel verilerin gerçek silinmesinden ayırmak, örneğin, veri silme izinlerini farklı, güvenilir bir rol ile sınırlandırarak bir güvenlik önlemi olarak kullanılabilir. Bu yaklaşım, aksi takdirde hemen bir veri kaybına neden olabilecek bir işlem için etkin bir çoğunluk gerektirir.
 
-### <a name="soft-delete-behavior"></a>Geçici silme davranışı
+### <a name="soft-delete-behavior"></a>Yumuşak silme davranışı
 
-Geçici silme etkin olduğunda, silinen kaynaklar olarak işaretlenen kaynaklar belirli bir süre boyunca (varsayılan olarak 90 gün) tutulur. Bu hizmet daha sonra silme işlemini geri almak için silinen nesneyi kurtarmaya yönelik bir mekanizma sağlar.
+Yumuşak silme etkinleştirildiğinde, silinmiş kaynaklar olarak işaretlenmiş kaynaklar belirli bir süre (varsayılan olarak 90 gün) tutulur. Hizmet ayrıca silinen nesneyi kurtarmak için bir mekanizma sağlar ve aslında silme işlemini geri alar.
 
-Yeni bir Anahtar Kasası oluştururken geçici silme işlemi varsayılan olarak açık olur. [Azure CLI](key-vault-soft-delete-cli.md) veya [Azure PowerShell](key-vault-soft-delete-powershell.md)aracılığıyla geçici silme olmadan bir Anahtar Kasası oluşturabilirsiniz. Bir anahtar kasasında geçici silme etkinleştirildikten sonra devre dışı bırakılamaz
+Yeni bir anahtar kasası oluştururken, varsayılan olarak yumuşak silme açıktır. [Azure CLI](key-vault-soft-delete-cli.md) veya [Azure Powershell](key-vault-soft-delete-powershell.md)üzerinden yumuşak silme olmadan bir anahtar kasası oluşturabilirsiniz. Anahtar kasasında yumuşak silme etkinleştirildiğinde devre dışı tutulamaz
 
-Varsayılan saklama süresi 90 gündür ancak Anahtar Kasası oluşturma sırasında, bekletme ilkesi aralığını, Azure portal ile 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. Bir kez ayarlandıktan sonra bekletme ilkesi aralığı değiştirilemez.
+Varsayılan bekletme süresi 90 gündür, ancak anahtar kasa oluşturma sırasında, bekletme ilkesi aralığını Azure portalı üzerinden 7 ila 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruma tutma ilkesi aynı aralığı kullanır. Ayarlandıktan sonra, bekletme ilkesi aralığı değiştirilemez.
 
-Saklama süresi geçene kadar geçici olarak silinen bir anahtar kasasının adını yeniden kullanamazsınız.
+Bekletme süresi geçene kadar yumuşak silinmiş anahtar kasasının adını yeniden kullanamazsınız.
 
-### <a name="purge-protection"></a>Korumayı temizle 
+### <a name="purge-protection"></a>Temizleme koruması 
 
-Temizleme koruması isteğe bağlı bir Key Vault davranıştır ve **Varsayılan olarak etkin değildir**. [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) veya [PowerShell](key-vault-soft-delete-powershell.md#enabling-purge-protection)aracılığıyla etkinleştirilebilir.
+Temizleme koruması isteğe bağlı bir Anahtar Kasa sıdavranışıdır ve **varsayılan olarak etkinleştirilir.** [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) veya [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection)ile açılabilir.
 
-Temizleme koruması açık olduğunda, saklama süresi geçene kadar bir kasa veya silinen durumdaki bir nesne temizlenemiyor. Geçici olarak silinen kasalar ve nesneler kurtarılabilir ve bu da bekletme ilkesinin izlenmeyeceğinden emin olur. 
+Temizleme koruması açıkken, silinen durumdaki bir kasa veya nesne bekletme süresi geçene kadar temizlenemez. Yumuşak silinmiş kasalar ve nesneler, bekletme ilkesinin izlenmesini sağlayarak kurtarılabilir. 
 
-Varsayılan saklama süresi 90 gündür, ancak bekletme ilkesi aralığını Azure portal ile 90 7 güne kadar bir değere ayarlamak mümkündür. Bekletme ilkesi aralığı ayarlandıktan ve kaydedildikten sonra bu kasa için değiştirilemez. 
+Varsayılan bekletme süresi 90 gündür, ancak bekletme ilkesi aralığını Azure portalı üzerinden 7 ile 90 gün arasında bir değere ayarlamak mümkündür. Bekletme ilkesi aralığı ayarlanıp kaydedildikten sonra bu kasa için değiştirilemez. 
 
-### <a name="permitted-purge"></a>İzin verilen temizleme
+### <a name="permitted-purge"></a>İzin verilen tasfiye
 
-Bir anahtar kasasını kalıcı olarak silme, Temizleme, proxy kaynağında bir POST işlemi yoluyla yapılabilir ve özel ayrıcalıklar gerektirir. Genellikle, bir anahtar kasasını yalnızca abonelik sahibi temizlenebilir. POST işlemi, bu kasanın anlık ve kurtarılabilir silme işlemlerini tetikler. 
+Kalıcı olarak silme, temizleme, anahtar kasa proxy kaynak üzerinde bir POST işlemi ile mümkündür ve özel ayrıcalıklar gerektirir. Genellikle, yalnızca abonelik sahibi anahtar kasasını temizlemek mümkün olacaktır. POST operasyonu kasanın hemen ve geri alınamaz şekilde silinmesini tetikler. 
 
-Özel durumlar şunlardır:
-- Azure aboneliği *silinebilir*olarak işaretlendiyse. Bu durumda, yalnızca hizmet gerçek silme işlemini gerçekleştirebilir ve bu işlemi zamanlanmış bir işlem olarak yapar. 
-- --Enable-temizle-Protection bayrağı kasada etkin olduğunda. Bu durumda, Key Vault, özgün gizli nesne, nesneyi kalıcı olarak silmek için silinmek üzere işaretlendiyse, 90 gün boyunca bekleyecektir.
+İstisnalar şunlardır:
+- Azure aboneliği *kullanılamaz*olarak işaretlendiğinde. Bu durumda, yalnızca hizmet daha sonra fiili silme gerçekleştirebilir ve bunu zamanlanmış bir işlem olarak yapar. 
+- Tonozda --etkinleştir-temizleme koruma bayrağı etkinleştirildiğinde. Bu durumda, Key Vault, özgün gizli nesnenin nesneyi kalıcı olarak silmek için silinmesi için işaretlendiğinden itibaren 90 gün bekler.
 
-### <a name="key-vault-recovery"></a>Anahtar Kasası kurtarma
+### <a name="key-vault-recovery"></a>Anahtar kasa kurtarma
 
-Bir anahtar kasasını sildikten sonra, hizmet aboneliğin altında, kurtarma için yeterli meta veri ekleyerek bir proxy kaynağı oluşturur. Proxy kaynağı, silinen Anahtar Kasası ile aynı konumda bulunan saklı bir nesnedir. 
+Anahtar kasası silen hizmet, abonelik altında bir proxy kaynağı oluşturarak kurtarma için yeterli meta veri ekler. Proxy kaynağı, silinen anahtar kasası ile aynı konumda bulunan depolanmış bir nesnedir. 
 
-### <a name="key-vault-object-recovery"></a>Anahtar Kasası nesne kurtarma
+### <a name="key-vault-object-recovery"></a>Anahtar kasa nesne kurtarma
 
-Anahtar gibi bir Anahtar Kasası nesnesini sildikten sonra, hizmet nesneyi silinen bir duruma yerleştirir ve bu işlem herhangi bir alma işlemi için erişilemez hale gelir. Bu durumda, Anahtar Kasası nesnesi yalnızca listelenmiş, kurtarılabilir veya zorla/kalıcı olarak silinebilir. 
+Anahtar gibi önemli bir kasa nesnesi silindikten sonra, hizmet nesneyi silinmiş bir duruma yerleştirerek herhangi bir alma işlemi için erişilemez hale getirir. Bu durumdayken, anahtar tonoz nesnesi yalnızca listelenebilir, kurtarılabilir veya zorla/kalıcı olarak silinebilir. 
 
-Aynı zamanda Key Vault, önceden belirlenmiş bir saklama aralığından sonra yürütülmek üzere silinen Anahtar Kasası veya Anahtar Kasası nesnesine karşılık gelen temel verilerin silinmesini zamanlayamaz. Kasaya karşılık gelen DNS kaydı, bekletme aralığı süresince de korunur.
+Aynı zamanda, Key Vault, önceden belirlenmiş bir bekletme aralığından sonra yürütülmesi için silinmiş anahtar kasasına veya anahtar kasanesnesine karşılık gelen temel verilerin silinmesini zamanlar. Kasaya karşılık gelen DNS kaydı da bekletme aralığı süresince saklanır.
 
-### <a name="soft-delete-retention-period"></a>Geçici silme bekletme süresi
+### <a name="soft-delete-retention-period"></a>Yumuşak silme bekletme süresi
 
-Geçici olarak silinen kaynaklar ayarlanan süre, 90 gün boyunca tutulur. Geçici silme bekletme aralığı sırasında aşağıdakiler geçerlidir:
+Yumuşak silinen kaynaklar 90 gün, belirli bir süre için tutulur. Yumuşak silme bekletme aralığı sırasında aşağıdaki ler uygulanır:
 
-- Tüm anahtar kasalarını ve Anahtar Kasası nesnelerini, aboneliğiniz için geçici silme durumunda listeleyebilir ve bunlarla ilgili silme ve kurtarma bilgilerine erişim de sağlayabilirsiniz.
-    - Yalnızca özel izinlere sahip kullanıcılar silinmiş kasaları listeleyebilir. Kullanıcılarınızın silinen kasaların işlenmesi için bu özel izinlerle özel bir rol oluşturmasını öneririz.
-- Aynı konumda aynı ada sahip bir Anahtar Kasası oluşturulamıyor; Bu Anahtar Kasası, aynı ada sahip ve silinmiş durumda olan bir nesne içeriyorsa, belirli bir kasada Anahtar Kasası nesnesi oluşturulamıyor 
-- Yalnızca özel ayrıcalıklı bir Kullanıcı, ilgili proxy kaynağında bir kurtarma komutu vererek bir Anahtar Kasası veya Anahtar Kasası nesnesini geri yükleyebilir.
-    - Kaynak grubu altında bir Anahtar Kasası oluşturma ayrıcalığına sahip olan Kullanıcı, özel rolün üyesi kasayı geri yükleyebilir.
-- Bir anahtar kasasını veya Anahtar Kasası nesnesini, ilgili proxy kaynağında silme komutu vererek zorla silebilir.
+- Aboneliğiniz için yumuşak silme durumundaki tüm anahtar kasaları ve anahtar kasa nesnelerini listeleyebilir ve bunlarla ilgili silme ve kurtarma bilgilerine erişebilirsiniz.
+    - Yalnızca özel izinlere sahip kullanıcılar silinen kasaları listeleyebilir. Kullanıcılarımızın silinen kasaları işlemek için bu özel izinlerle özel bir rol oluşturmalarını öneririz.
+- Aynı ada sahip anahtar kasası aynı konumda oluşturulamaz; buna karşılık, bu anahtar tonozaynı ada sahip bir nesne içeriyorsa ve silinmiş durumdaysa, belirli bir kasada anahtar tonoz nesnesi oluşturulamaz 
+- Yalnızca özel olarak ayrıcalıklı bir kullanıcı, ilgili proxy kaynağında kurtarma komutu vererek anahtar kasasını veya anahtar kasa nesnesini geri yükleyebilir.
+    - Kaynak grubunun altında anahtar kasa oluşturma ayrıcalığına sahip olan kullanıcı, özel rolün üyesi olan kasayı geri yükleyebilir.
+- Yalnızca özel olarak ayrıcalıklı bir kullanıcı, ilgili proxy kaynağında silme komutu vererek bir anahtar kasasını veya anahtar kasa nesnesini zorla silebilir.
 
-Bir Anahtar Kasası veya Anahtar Kasası nesnesi kurtarılamazsa, bekletme aralığının sonunda hizmet, geçici olarak silinen anahtar kasasını veya Anahtar Kasası nesnesini ve içeriğini temizleme işlemini gerçekleştirir. Kaynak silme işlemi yeniden planlanmayabilir.
+Anahtar kasa veya anahtar tonoz nesnesi kurtarılmadığı sürece, bekletme aralığının sonunda hizmet yumuşak silinmiş anahtar tonoz veya anahtar kasa nesnesi ve içeriğinin tasfiyesini gerçekleştirir. Kaynak silme yeniden zamanlanmamış olabilir.
 
-### <a name="billing-implications"></a>Faturalandırma etkileri
+### <a name="billing-implications"></a>Faturalandırma sonuçları
 
-Genel olarak, bir nesne (bir Anahtar Kasası veya bir anahtar veya gizli dizi) silinmiş durumdaysa yalnızca iki işlem olabilir: ' Temizle ' ve ' Recover '. Diğer tüm işlemler başarısız olur. Bu nedenle, nesne mevcut olsa bile hiçbir işlem gerçekleştirilemediği için hiçbir kullanım gerçekleşmeyecektir. Ancak şu özel durumlar mevcuttur:
+Genel olarak, bir nesne (anahtar kasası veya anahtar veya gizli) silinmiş durumda olduğunda, yalnızca iki işlem mümkündür: 'temizleme' ve 'kurtarma'. Diğer tüm işlemler başarısız olur. Bu nedenle, nesne olsa bile, hiçbir işlem gerçekleştirilebilir ve bu nedenle hiçbir kullanım oluşacak, bu nedenle hiçbir fatura. Ancak aşağıdaki istisnalar vardır:
 
-- ' Temizleme ' ve ' Kurtarma ' eylemleri, normal Anahtar Kasası işlemlerine göre sayılır ve faturalandırılır.
-- Nesne bir HSM anahtaralıyorsa, son 30 gün içinde bir anahtar sürümü kullanılıyorsa, aylık ücret başına ' HSM korumalı anahtar ' ücreti uygulanır. Bundan sonra, nesne silinmiş durumda olduğundan, buna karşı hiçbir işlem gerçekleştirilemediği için hiçbir ücret uygulanmaz.
+- 'tasfiye' ve 'kurtarma' eylemleri normal anahtar kasa işlemleri ne kadar sayılır ve faturalandırılır.
+- Nesne bir HSM tuşuysa, son 30 gün içinde anahtar sürümü kullanılmışsa, aylık anahtar sürümü başına 'HSM Protected tuşu' ücreti uygulanır. Bundan sonra, nesne silinmiş durumda olduğundan, nesne aleyhine hiçbir işlem yapılamaz, bu nedenle hiçbir ücret uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki iki kılavuz, geçici silme kullanmaya yönelik birincil kullanım senaryolarını sunmaktadır.
+Aşağıdaki iki kılavuz, yumuşak silme kullanmak için birincil kullanım senaryolarını sunar.
 
 - [Key Vault geçici silmeyi PowerShell ile kullanma](key-vault-soft-delete-powershell.md) 
 - [Key Vault geçici silmeyi CLI ile kullanma](key-vault-soft-delete-cli.md)

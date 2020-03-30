@@ -1,6 +1,6 @@
 ---
-title: Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı
-description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin
+title: Çok Kiracılı Barındırma Hakları ile Windows 10'u Azure'da dağıtma
+description: Azure'a şirket içi lisanslar getirmek için Windows Yazılım Güvencesi avantajlarınızı nasıl en üst düzeye çıkarınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
@@ -14,39 +14,39 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101498"
 ---
-# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
-Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta eklemenizi sağlar ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırın. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Çok Kiracılı Barındırma Hakları ile Windows 10'u Azure'da dağıtma 
+Kullanıcı başına Windows 10 Enterprise E3/E5 veya kullanıcı başına Windows Sanal Masaüstü Erişimi (Kullanıcı Abonelik Lisansları veya Eklenti Kullanıcı Abonelik Lisansları) olan müşteriler için, Windows 10 için Multitenant Barındırma Hakları, Windows 10 Lisanslarınızı buluta getirmenize ve başka bir lisans için ödeme yapmadan Azure'da Windows 10 Sanal Makineler çalıştırmanıza olanak tanır. Daha fazla bilgi için lütfen [Windows 10 için Multitenant Hosting'e](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)bakın.
 
 > [!NOTE]
-> Bu makalede, Azure Market 'te Windows 10 Pro Desktop görüntüleri için lisans avantajı 'nı uygulamanız gösterilmektedir.
-> - MSDN abonelikleri için Azure Market 'te Windows 7, 8,1, 10 Enterprise (x64) görüntüleri için lütfen [geliştirme ve test senaryoları Için Azure 'Da Windows istemcisine](client-images.md) bakın
-> - Windows Server lisanslama avantajları için lütfen [Windows Server görüntüleri Için Azure hibrit kullanım avantajları](hybrid-use-benefit-licensing.md)bölümüne bakın.
+> Bu makalede, Azure Marketi'nde Windows 10 Pro Desktop resimleriiçin lisans avantajı nı uygulamanız gösterilmektedir.
+> - MSDN Abonelikleri için Azure Marketi'ndeki Windows 7, 8.1, 10 Kurumsal (x64) görseller için, [geliştirme/test senaryoları için lütfen Azure'daki Windows istemcisine](client-images.md) bakın
+> - Windows Server lisanslama avantajları için lütfen [Windows Server görüntüleri için Azure Karma kullanım avantajlarına](hybrid-use-benefit-licensing.md)bakın.
 >
 
-## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketi 'nden Windows 10 görüntüsünü dağıtma 
-PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, Windows 10 görüntüsü aşağıdaki PublisherName, teklif, SKU ile bulunabilir.
+## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketinden Windows 10 Görüntüsünü Dağıtma 
+Powershell, CLI ve Azure Kaynak Yöneticisi şablon dağıtımları için Windows 10 resmi aşağıdaki publishername, offer, sku ile bulunabilir.
 
-| OS  |      PublisherName      |  Sunduğu | Sku |
+| İşletim Sistemi  |      PublisherName      |  Sunduğu | Sku |
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-Pron  |
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-Pron  |
 
-## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD 'yi Azure 'a yükleme
-Genelleştirilmiş bir Windows 10 VHD 'yi karşıya yüklüyorsanız, lütfen Windows 10 ' un yerleşik yönetici hesabının varsayılan olarak etkin olmadığını unutmayın. Yerleşik yönetici hesabını etkinleştirmek için, Özel Betik uzantısının parçası olarak aşağıdaki komutu ekleyin.
+## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD'yi Azure'a Yükleme
+Genelleştirilmiş bir Windows 10 VHD yüklüyorsanız, Windows 10'un varsayılan olarak yerleşik yönetici hesabı nın etkinleştirilemediğini lütfen unutmayın. Yerleşik yönetici hesabını etkinleştirmek için, Özel Komut Dosyası uzantısının bir parçası olarak aşağıdaki komutu ekleyin.
 
 ```powershell
 Net user <username> /active:yes
 ```
 
-Aşağıdaki PowerShell kod parçacığı, yerleşik yönetici de dahil olmak üzere tüm yönetici hesaplarını etkin olarak işaretlemenize olanak sağlar. Bu örnek, yerleşik Yönetici Kullanıcı adı bilinmiyorsa yararlı olur.
+Aşağıdaki powershell snippet yerleşik yönetici de dahil olmak üzere tüm yönetici hesaplarını etkin olarak işaretlemektir. Bu örnek, yerleşik yönetici kullanıcı adı bilinmiyorsa yararlıdır.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -56,12 +56,12 @@ if($adminAccount.Disabled)
 }
 ```
 Daha fazla bilgi için: 
-* [VHD 'yi Azure 'a yükleme](upload-generalized-managed.md)
-* [Bir Windows VHD 'yi Azure 'a yüklemek üzere hazırlama](prepare-for-upload-vhd-image.md)
+* [Azure'a VHD yükleme](upload-generalized-managed.md)
+* [Azure'a yüklemek için Windows VHD nasıl hazırlanır?](prepare-for-upload-vhd-image.md)
 
 
-## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Windows 10 ' un çok kiracılı barındırma haklarıyla dağıtımı
-[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. VHD 'nizi hazırladıktan sonra `Add-AzVhd` cmdlet 'ini kullanarak Azure depolama hesabınıza VHD 'yi aşağıdaki gibi yükleyin:
+## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Windows 10'u Çok Kiracılı Barındırma Haklarıyla Dağıtma
+En son [Azure PowerShell'i yüklediğinizden ve yapılandırdığınızdan](/powershell/azure/overview)emin olun. VHD'nizi hazırladıktan sonra, cmdlet'i kullanarak `Add-AzVhd` VHD'yi Azure Depolama hesabınıza yükleyin:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -69,7 +69,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Azure Resource Manager şablonu dağıtımını kullanarak dağıtma** Kaynak Yöneticisi şablonlarınız içinde, için `licenseType` ek bir parametre belirtilebilir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md)hakkında daha fazla bilgi edinebilirsiniz. VHD 'nizi Azure 'a yükledikten sonra, işlem sağlayıcısının bir parçası olarak lisans türünü içerecek şekilde Kaynak Yöneticisi şablonu düzenleyin ve şablonunuzu normal olarak dağıtın:
+**Azure Kaynak Yöneticisi Şablon Dağıtımı'nı kullanarak dağıtma** Kaynak Yöneticisi şablonlarınızda, ek `licenseType` bir parametre belirtilebilir. [Azure Kaynak Yöneticisi şablonlarını yazma](../../resource-group-authoring-templates.md)hakkında daha fazla bilgi edinebilirsiniz. VHD'niz Azure'a yüklendikten sonra, lisans türünü bilgi işlem sağlayıcısının bir parçası olarak eklemek ve şablonunuzu normal olarak dağıtmak için Kaynak Yöneticisi şablonunuzu edin:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -78,18 +78,18 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**PowerShell aracılığıyla dağıtma** PowerShell aracılığıyla Windows Server VM 'nizi dağıttığınızda, için `-LicenseType`ek bir parametreye sahip olursunuz. VHD 'nizi Azure 'a yükledikten sonra, kullanarak `New-AzVM` bir VM oluşturun ve lisans türünü aşağıdaki gibi belirtin:
+**PowerShell üzerinden dağıt** Windows Server VM'nizi PowerShell üzerinden dağıtırken, `-LicenseType`'' için ek bir parametreniz var. VHD'niz Azure'a yüklendikten sonra, bir `New-AzVM` VM kullanarak bir VM oluşturur ve lisans türünü aşağıdaki gibi belirtirsiniz:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
-## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM 'nizin lisans avantajını kullanarak emin olun
-VM 'nizi PowerShell veya Kaynak Yöneticisi dağıtım yöntemiyle dağıttıktan sonra, lisans türünü `Get-AzVM` aşağıdaki gibi doğrulayın:
+## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM'nizin lisans avantajından yararlandığını doğrulayın
+PowerShell veya Resource Manager dağıtım yöntemi yle VM'inizi dağıttıktan sonra, lisans türünü aşağıdaki gibi `Get-AzVM` doğrulayın:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-Çıktı, doğru lisans türüyle Windows 10 için aşağıdaki örneğe benzer:
+Çıktı, doğru lisans türüne sahip Windows 10 için aşağıdaki örneğe benzer:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -97,7 +97,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Bu çıktı, Azure hibrit kullanım avantajı lisanslaması olmadan dağıtılan aşağıdaki VM ile karşıttır. Örneğin, Azure galerisinden doğrudan dağıtılan bir VM.
+Bu çıktı, doğrudan Azure Galerisi'nden dağıtılan bir VM gibi Azure Karma Kullanım Avantajı lisansı olmadan dağıtılan aşağıdaki VM ile tezat oluşturmaktadır:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -105,14 +105,14 @@ Location                 : westus
 LicenseType              :
 ```
 
-## <a name="additional-information-about-joining-azure-ad"></a>Azure AD 'ye katılma hakkında ek bilgiler
+## <a name="additional-information-about-joining-azure-ad"></a>Azure AD'ye katılma hakkında ek bilgiler
 >[!NOTE]
->Azure, yerleşik yönetici hesabı olan tüm Windows sanal makinelerini AAD 'ye katmak için kullanılamaz. Örneğin, *ayarlar > hesap > erişim iş veya okul > + Bağlan* çalışmaz. Azure AD 'yi el ile birleştirmek için ikinci yönetici hesabı olarak oluşturmanız ve oturum açmanız gerekir. Azure AD 'yi bir sağlama paketi kullanarak da yapılandırabilirsiniz, daha fazla bilgi edinmek için *sonraki adımlar* bölümüne bağlantıyı kullanın.
+>Azure, AAD'ye katılmak için kullanılamayacak yerleşik yönetici hesabıyla tüm Windows VM'lerini kullanır. Örneğin, *Ayarlar > Hesap > Access Work veya Okul > +Connect* çalışmaz. Azure AD'ye el ile katılmak için ikinci bir yönetici hesabı oluşturmanız ve oturum açmanız gerekir. Ayrıca bir sağlama paketi kullanarak Azure AD yapılandırabilirsiniz, daha fazla bilgi edinmek için *Sonraki Adımlar* bölümü bağlantısını kullanın.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Windows 10 için VDA yapılandırma](https://docs.microsoft.com/windows/deployment/vda-subscription-activation) hakkında daha fazla bilgi edinin
-- [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) hakkında daha fazla bilgi edinin
+- [Windows 10 için VDA Yapılandırma](https://docs.microsoft.com/windows/deployment/vda-subscription-activation) hakkında daha fazla bilgi edinin
+- [Windows 10 için Multitenant Hosting](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) hakkında daha fazla bilgi edinin
 
 

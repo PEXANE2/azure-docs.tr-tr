@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihazınızı açın veya kapatın
-description: Yeni bir StorSimple cihazını nasıl kullanacağınızı, kapatılmış veya kapalı bir cihazı açma ve çalışan bir cihazı kapatma hakkında bilgiler sağlar.
+title: StorSimple 8000 serisi cihazınızı açma veya kapatma
+description: Yeni bir StorSimple aygıtının nasıl açılacağını, kapatılmış veya güç kaybeden bir aygıtı nasıl açacağını ve çalışan bir aygıtı nasıl kapatacağını açıklar.
 author: alkohli
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
@@ -9,162 +9,162 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254631"
 ---
-# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızı açma veya kapatma
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızı açın veya kapatın
 
 ## <a name="overview"></a>Genel Bakış
-Microsoft Azure StorSimple cihazının kapatılması, normal sistem işleminin bir parçası olarak gerekli değildir. Ancak, yeni bir cihaz veya kapatılması gereken bir cihaz açmanız gerekebilir. Genellikle, başarısız olan donanımı değiştirmek, bir birimi fiziksel olarak taşımak veya hizmet dışı bir cihaz almak zorunda olduğu durumlarda bir kapatma gerekir. Bu öğreticide, StorSimple cihazınızı farklı senaryolarda açma ve kapatma için gereken yordam açıklanmaktadır.
+Normal sistem çalışmasının bir parçası olarak bir Microsoft Azure StorSimple aygıtının kapatılması gerekli değildir. Ancak, yeni bir aygıtı veya kapatılması gereken bir aygıtı açmanız gerekebilir. Genellikle, başarısız donanımı değiştirmeniz, bir birimi fiziksel olarak taşımanız veya aygıtı hizmet dışı götürmeniz gereken durumlarda kapatma gerekir. Bu öğretici, StorSimple cihazınızı farklı senaryolarda açmak ve kapatmak için gerekli yordamı açıklar.
 
-## <a name="turn-on-a-new-device"></a>Yeni bir cihazı aç
-StorSimple cihazını ilk kez açmak için gereken adımlar, cihazın 8100 veya 8600 modeli olmasına bağlı olarak farklılık gösterir. 8100 tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD Kasası olan çift taraflı bir cihazdır. Her iki modelin ayrıntılı adımları aşağıdaki bölümlerde ele alınmıştır.
+## <a name="turn-on-a-new-device"></a>Yeni bir cihazı açma
+StorSimple aygıtını ilk kez açma adımları, aygıtın 8100 veya 8600 modeli olup olmadığına bağlı olarak değişir. 8100 tek bir birincil kasaya sahipken, 8600 birincil kasası ve EBOD muhafazası olan çift kasalı bir cihazdır. Her iki model için ayrıntılı adımlar aşağıdaki bölümlerde ele alınmıştır.
 
-* [Yalnızca birincil Kasası olan yeni cihaz](#new-device-with-primary-enclosure-only)
-* [EBOD kasası ile yeni cihaz](#new-device-with-ebod-enclosure)
+* [Yalnızca birincil kasaya sahip yeni aygıt](#new-device-with-primary-enclosure-only)
+* [EBOD muhafazalı yeni cihaz](#new-device-with-ebod-enclosure)
 
-### <a name="new-device-with-primary-enclosure-only"></a>Yalnızca birincil Kasası olan yeni cihaz
-StorSimple 8100 modeli tek bir muhafaza aygıtıdır. Cihazınız yedekli güç ve soğutma modülleri (PCMs) içerir. Yüksek kullanılabilirlik sağlamak için her iki PCMs 'nin yüklü ve farklı güç kaynaklarına bağlanması gerekir.
+### <a name="new-device-with-primary-enclosure-only"></a>Yalnızca birincil kasaya sahip yeni aygıt
+StorSimple 8100 modeli tek bir kasa cihazıdır. Cihazınızyedek Güç ve Soğutma Modülleri (PCM) içerir. Yüksek kullanılabilirlik sağlamak için her iki PCM'nin de yüklü ve farklı güç kaynaklarına bağlanması gerekir.
 
-Cihazınızın güç bağlantısını yapmak için aşağıdaki adımları uygulayın.
+Cihazınızı güç için kablolamak için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 > [!NOTE]
-> Tüm cihaz kurulumu ve kablolama yönergeleri için, [StorSimple 8100 cihazınızı yükleme](storsimple-8100-hardware-installation.md)bölümüne gidin. Yönergeleri tam olarak izlediğinizden emin olun.
+> Tam cihaz kurulumu ve kablolama yönergeleri için [StorSimple 8100 cihazınızı yükleyin.](storsimple-8100-hardware-installation.md) Talimatları tam olarak uyguladığınıza emin olun.
 > 
 > 
 
-### <a name="new-device-with-ebod-enclosure"></a>EBOD kasası ile yeni cihaz
-StorSimple 8600 modelinde hem birincil bir kutu hem de bir EBOD kasası vardır. Bu, birimlerin seri bağlantılı SCSI (SAS) bağlantısı ve gücü için bir araya gruplanmalıdır.
+### <a name="new-device-with-ebod-enclosure"></a>EBOD muhafazalı yeni cihaz
+StorSimple 8600 modeli hem birincil kasaya hem de EBOD kasaya sahiptir. Bu, birimlerin Seri Bağlı SCSI (SAS) bağlantısı ve gücü için birbirine bağlanmasını gerektirir.
 
-Bu cihazı ilk kez ayarlarken, önce SAS kablolaması için adımları gerçekleştirin ve ardından güç kabloları adımlarını doldurun.
+Bu aygıtı ilk kez ayarlarken, önce SAS kablolama için adımları gerçekleştirin ve ardından güç kablolama için adımları tamamlayın.
 
 [!INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 > [!NOTE]
-> Tüm cihaz kurulumu ve kablolama yönergeleri için, [StorSimple 8600 cihazınızı yükleme](storsimple-8600-hardware-installation.md)bölümüne gidin. Yönergeleri tam olarak izlediğinizden emin olun.
+> Tam cihaz kurulumu ve kablolama yönergeleri için [StorSimple 8600 cihazınızı yükleyin.](storsimple-8600-hardware-installation.md) Talimatları tam olarak uyguladığınıza emin olun.
 
-## <a name="turn-on-a-device-after-shutdown"></a>Kapatmadan sonra bir cihazı açma
-Bir StorSimple cihazını kapatduktan sonra açma adımları, cihazın bir 8100 veya 8600 modeli olmasına bağlı olarak farklılık belirtir. 8100 tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD Kasası olan çift taraflı bir cihazdır.
+## <a name="turn-on-a-device-after-shutdown"></a>Kapatma dan sonra aygıtı açma
+Bir StorSimple aygıtı kapatıldıktan sonra açma adımları, aygıtın 8100 veya 8600 model olmasına bağlı olarak farklıdır. 8100 tek bir birincil kasaya sahipken, 8600 birincil kasası ve EBOD muhafazası olan çift kasalı bir cihazdır.
 
-* [Yalnızca birincil Kasası olan cihaz](#device-with-primary-enclosure-only)
-* [EBOD kasası ile cihaz](#device-with-ebod-enclosure)
+* [Yalnızca birincil kasaya sahip aygıt](#device-with-primary-enclosure-only)
+* [EBOD muhafazalı cihaz](#device-with-ebod-enclosure)
 
-### <a name="device-with-primary-enclosure-only"></a>Yalnızca birincil Kasası olan cihaz
-Bir kapatmadan sonra, bir StorSimple cihazını birincil bir muhafaza ve EBOD Kasası olmadan açmak için aşağıdaki yordamı kullanın.
+### <a name="device-with-primary-enclosure-only"></a>Yalnızca birincil kasaya sahip aygıt
+Kapatma dan sonra, birincil kasası olan ve EBOD muhafazası olmayan bir StorSimple cihazını açmak için aşağıdaki yordamı kullanın.
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Bir cihazı yalnızca birincil bir kasa ile açmak için
-1. Güç ve soğutma modüllerindeki (PCMs) güç anahtarlarının kapalı konumda olduğundan emin olun. Anahtarlar kapalı konumda değilse, bunları kapalı konumuna çevirin ve ışıklarının bitmesini bekleyin.
-2. Her iki PCMs üzerindeki güç anahtarlarını açık konuma getirerek cihazı açın. Cihazın açık olması gerekir.
-3. Cihazın tam açık olduğunu doğrulamak için aşağıdakileri denetleyin:
+#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Yalnızca birincil kasası olan bir aygıtı açmak için
+1. Hem Güç hem de Soğutma Modülleri'ndeki (PCM) güç anahtarlarının KAPALı konumda olduğundan emin olun. Anahtarlar KAPALI konumda değilse, bunları KAPALI konuma getirin ve ışıkların sönmesini bekleyin.
+2. Her iki PCM'deki güç anahtarlarını ANDAKI konuma çevirerek cihazı açın. Cihaz açılmalıdır.
+3. Aygıtın tam olarak açıktık ını doğrulamak için aşağıdakileri kontrol edin:
    
-   1. Her iki PCM modül üzerindeki Tamam LED 'Leri yeşildir.
-   2. Her iki denetleyicde durum LED 'Leri düz yeşil.
-   3. Denetleyicilerden birindeki mavi ışığı yanıp söndüğü için denetleyicinin etkin olduğunu gösterir.
+   1. Her iki PCM modülündeki OK LED'ler yeşildir.
+   2. Her iki denetleyicide durum LED'leri düz yeşildir.
+   3. Denetleyicilerden birinin mavi LED'i yanıp sönüyor, bu da denetleyicinin etkin olduğunu gösteriyor.
       
-      Bu koşullardan herhangi biri karşılanmazsa, cihazınız sağlıklı değildir. Lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
+      Bu koşullardan herhangi biri karşılanmazsa, cihazınız sağlıklı değildir. Lütfen [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
 
-### <a name="device-with-ebod-enclosure"></a>EBOD kasası ile cihaz
-Bir kapatmadan sonra, bir StorSimple cihazını birincil bir kutu ve EBOD kasası ile açmak için aşağıdaki yordamı kullanın. Her bir adımı tam olarak açıklandığı gibi sırayla gerçekleştirin. Bunun başarısız olması, veri kaybına neden olabilir.
+### <a name="device-with-ebod-enclosure"></a>EBOD muhafazalı cihaz
+Kapatmadan sonra, birincil kasası ve EBOD muhafazası olan bir StorSimple aygıtını açmak için aşağıdaki yordamı kullanın. Her adımı açıklandığı gibi sırayla gerçekleştirin. Aksi takdirde veri kaybına neden olabilir.
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Bir cihazı birincil ve EBOD kasası ile açmak için
-1. EBOD Kasası 'nın birincil muhafaza ile bağlı olduğundan emin olun. Daha fazla bilgi için bkz. [StorSimple 8600 cihazınızı yüklemeyi](storsimple-8600-hardware-installation.md).
-2. Hem EBOD hem de birincil kasaları üzerindeki güç ve soğutma modüllerinin (PCMs) kapalı konumunda olduğundan emin olun. Anahtarlar kapalı konumda değilse, bunları kapalı konumuna çevirin ve ışıklarının bitmesini bekleyin.
-3. Her iki PCMs üzerindeki güç anahtarlarını açık konuma getirerek EBOD Kasası 'nı etkinleştirin. PCM LED 'Leri yeşil olmalıdır. Bu birim üzerinde yeşil bir EBOD denetleyicisi, EBOD Kasası 'nın açık olduğunu gösterir.
-4. Her iki PCMs üzerindeki güç anahtarlarını açık konuma getirerek birincil Kasası açın. Tüm sistem artık açık olmalıdır.
-5. SAS LED 'lerini yeşil olduğunu doğrulayın. Bu, EBOD kasası ile birincil kasa arasındaki bağlantının iyi olmasını sağlar.
+#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Birincil ve EBOD muhafazası olan bir cihazı açmak için
+1. EBOD kasasının birincil kasaya bağlı olduğundan emin olun. Daha fazla bilgi için [StorSimple 8600 cihazınızı yükleyin.](storsimple-8600-hardware-installation.md)
+2. Hem EBOD hem de birincil kasalarda bulunan Güç ve Soğutma Modüllerinin (PCM) KAPALı konumda olduğundan emin olun. Anahtarlar KAPALI konumda değilse, bunları KAPALI konuma getirin ve ışıkların sönmesini bekleyin.
+3. Her iki PCM'deki güç anahtarlarını andaki konuma çevirerek önce EBOD kasasını açın. PCM LED'ler yeşil olmalıdır. Bu ünitedeki yeşil EBOD denetleyici LED,EBOD kasasının ait olduğunu gösterir.
+4. Her iki PCM'deki güç anahtarlarını ANDAKI konuma çevirerek birincil muhafazayı açın. Tüm sistem şu anda avelmemeli.
+5. SAS LED'lerinin yeşil olduğunu doğrulayın, bu da EBOD kasası ile birincil kasa arasındaki bağlantının iyi olmasını sağlar.
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Güç kaybından sonra bir cihazı açma
-Güç kesintisi veya kesinti, StorSimple cihazını kapatabilir. Güç kesintisi güç kaynağı veya güç kaynaklarının birinde gerçekleşebilir. Kurtarma adımları, cihazın bir 8100 veya 8600 modeli olmasına bağlı olarak farklılık belirtir. 8100 tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD Kasası olan çift taraflı bir cihazdır. Bu bölümde her senaryonun kurtarma yordamı açıklanmaktadır.
+## <a name="turn-on-a-device-after-a-power-loss"></a>Güç kaybından sonra cihazı açma
+Elektrik kesintisi veya kesinti, StorSimple aygıtını kapatabilir. Elektrik kesintisi, güç kaynaklarının birinde veya her iki güç kaynağında da olabilir. Kurtarma adımları, aygıtın 8100 veya 8600 modeli olup olmadığına bağlı olarak farklıdır. 8100 tek bir birincil kasaya sahipken, 8600 birincil kasası ve EBOD muhafazası olan çift kasalı bir cihazdır. Bu bölümde, her senaryo için kurtarma yordamı açıklanır.
 
-* [Yalnızca birincil Kasası olan cihaz](#8100)
-* [EBOD kasası ile cihaz](#8600)
+* [Yalnızca birincil kasaya sahip aygıt](#8100)
+* [EBOD muhafazalı cihaz](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Yalnızca birincil kasa <a name="8100"> cihaz
-Güç kaynaklarının birine güç kaybı olursa sistem normal işlemine devam edebilir. Ancak, cihazın yüksek oranda kullanılabilirliğini sağlamak için güç kaynağına mümkün olan en kısa sürede yeniden yükleyin.
+### <a name="device-with-primary-enclosure-only-a-name8100"></a>Yalnızca birincil kasaya sahip aygıt<a name="8100">
+Güç kaynaklarının birinde güç kaybı olursa sistem normal işleyişine devam edebilir. Ancak, cihazın yüksek kullanılabilirliğini sağlamak için, güç kaynağına mümkün olan en kısa sürede güç geri yükleyin.
 
-Her iki güç kaynağı üzerinde güç kesintisi veya güç kesintisi varsa, sistem düzenli olarak ve denetimli bir şekilde kapanır. Güç geri yüklendiğinde sistem otomatik olarak açılır.
+Her iki güç kaynağında da elektrik kesintisi veya elektrik kesintisi varsa, sistem düzenli ve kontrollü bir şekilde kapanır. Güç geri yüklendiğinde, sistem otomatik olarak açılacaktır.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD Kasası <a name="8600"> cihaz
+### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD muhafazalı cihaz<a name="8600">
 #### <a name="power-loss-on-one-power-supply"></a>Bir güç kaynağında güç kaybı
-Birincil kasadan veya EBOD kasasında güç kaynaklarının birine güç kaybı varsa, Sistem normal işlemine devam edebilir. Ancak, cihazın yüksek oranda kullanılabilirliğini sağlamak için lütfen güç kaynağına en kısa sürede gücü geri yükleyin.
+Sistem, birincil kasada veya EBOD muhafazasında güç kaynaklarından birinde güç kesintisi olursa normal çağrısına devam edebilir. Ancak, cihazın yüksek kullanılabilirliğini sağlamak için, lütfen mümkün olan en kısa sürede güç kaynağına güç geri yükleyin.
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Birincil ve EBOD kasaları üzerinde hem güç kaynaklarında güç kaybı
-Her iki güç kaynağı üzerinde güç kesintisi veya güç kesintisi varsa, EBOD Kasası hemen kapanır ve birincil kasa düzenli olarak ve denetimli bir şekilde kapanır. Güç geri yüklendiğinde, Gereç otomatik olarak başlatılır.
+#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Birincil ve EBOD muhafazalarında hem güç kaynaklarında güç kaybı
+Her iki güç kaynağında da elektrik kesintisi veya elektrik kesintisi olursa, EBOD muhafazası derhal kapanır ve birincil kasa düzenli ve kontrollü bir şekilde kapanır. Güç geri yüklendiğinde, cihaz otomatik olarak çalışmaya başlar.
 
-Güç el ile kapatılmışsa, sisteme güç geri yüklemek için aşağıdaki adımları uygulayın.
+Güç el ile kapatılırsa, sisteme güç geri yüklemek için aşağıdaki adımları izleyin.
 
-1. EBOD Kasası 'nı açın.
-2. EBOD Kasası açıldıktan sonra, birincil Kasası açın.
+1. EBOD kasasını açın.
+2. EBOD muhafazası açOlduktan sonra, birincil muhafazayı açın.
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>EBOD Kasası 'ndaki güç kaynaklarında güç kaybı
-Kablolarınızı ayarlarken, EBOD 'nin hiç bağımsız olarak ayrı bir PDU 'ya bağlı olduğundan emin olmanız gerekir. EBOD ve birincil kutu aynı anda başarısız olursa sistem kurtarılır.
+### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>EBOD kasası üzerindeki her iki güç kaynağında da güç kaybı
+Kablolarınızı kurduğunuzda, EBOD'un hiçbir zaman ayrı bir PDU'ya bağlı olmadığından emin olmalısınız. EBOD ve birincil kasa aynı anda başarısız olursa, sistem düzelir.
 
-Her iki güç kaynağı üzerinde yalnızca EBOD Kasası başarısız olursa, sistem otomatik olarak kurtarılmaz. Sistemi açmak ve sağlıklı bir duruma geri yüklemek için aşağıdaki adımları uygulayın:
+Her iki güç kaynağında da yalnızca EBOD muhafazası arızalanırsa, sistem otomatik olarak iyileşmez. Sistemi açmak ve sağlıklı bir duruma geri yüklemek için aşağıdaki adımları izleyin:
 
-1. Birincil kutu açıksa hem güç hem de soğutma modüllerini (PCMs) kapatın.
+1. Birincil kasa açıksa, hem Güç hem de Soğutma Modüllerini (PCM) kapatın.
 2. Sistemin kapanması için birkaç dakika bekleyin.
-3. EBOD Kasası 'nı açın.
-4. EBOD Kasası açıldıktan sonra, birincil Kasası açın.
+3. EBOD kasasını açın.
+4. EBOD muhafazası açOlduktan sonra, birincil muhafazayı açın.
 
-## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Birincil ve EBOD Kasası bağlantısı kaybolduktan sonra cihazı aç
-Bekleme denetleyicisi ile buna karşılık gelen EBOD denetleyicisi arasında bağlantı kaybolursa cihaz çalışmaya devam eder. Sistem etkin denetleyicisi ile buna karşılık gelen EBOD denetleyicisi arasındaki bağlantı kaybolursa, yük devretme gerçekleşmelidir ve cihazın normal olarak çalışmaya devam etmesi gerekir.
+## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Birincil ve EBOD muhafaza bağlantısı kaybolduktan sonra cihazı açın
+Bekleme denetleyicisi ile ilgili EBOD denetleyicisi arasındaki bağlantı kaybolursa, aygıt çalışmaya devam ediyor. Sistem etkin denetleyicisi ile ilgili EBOD denetleyicisi arasındaki bağlantı kaybolursa, arıza meydana gelmeli ve cihaz normal şekilde çalışmaya devam etmelidir.
 
-Hem seri bağlı SCSI (SAS) kabloları kaldırıldığında ya da EBOD kasası ile birincil kasa arasındaki bağlantı çıkarıldığında, cihaz çalışmayı durdurur. Bu noktada, aşağıdaki adımları gerçekleştirin.
+Her iki Seri Bağlı SCSI (SAS) kablosu kaldırıldığında veya EBOD kasası ile birincil kasa arasındaki bağlantı kesildiğinde, aygıt çalışmayı durdurur. Bu noktada, aşağıdaki adımları gerçekleştirin.
 
 ### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Bağlantı kaybolduktan sonra cihazı açmak için
-1. Cihazın arkasına erişin.
-2. EBOD kasası ve birincil kasa arasındaki SAS kablosu bağlantısı bozulur, EBOD Kasası 'ndaki tüm SAS Lane LED 'Leri kapalı olur.
-3. EBOD kasası ve birincil kasa üzerinde hem güç hem de soğutma modüllerini (PCMs) kapatın.
-4. Her iki muhafazaın arkasında bulunan tüm ışıklar kapanana kadar bekleyin.
-5. SAS kablolarını yeniden takın ve EBOD kasası ile birincil kasa arasında iyi bir bağlantı olduğundan emin olun.
-6. Her iki PCM öğesini de açık konuma getirerek EBOD Kasası 'nı etkinleştirin.
-7. Yeşil LED 'in açık olduğunu kontrol ederek EBOD Kasası ' nın açık olduğundan emin olun.
-8. Birincil Kasası açın.
-9. Denetleyicinin yeşil LED 'in açık olduğunu kontrol ederek birincil kutunun açık olduğundan emin olun.
-10. SAS Lane LED 'Leri (EBOD denetleyicisi başına dört) açık olduğunu kontrol ederek, birincil muhafaza ile EBOD Kasası bağlantısının iyi olduğunu doğrulayın.
+1. Aygıtın arkasına erişin.
+2. EBOD kasası ile birincil kasa arasındaki SAS kablo bağlantısı kırılırsa, EBOD kasası üzerindeki tüm SAS şeritLI LED'ler kapalı olacaktır.
+3. EBOD muhafazası ve birincil kasada hem Güç hem de Soğutma Modüllerini (PCM'leri) kapatın.
+4. Her iki kasanın arka tarafındaki tüm ışıklar kapanana kadar bekleyin.
+5. SAS kablolarını yeniden takın ve EBOD muhafazası ile birincil kasa arasında iyi bir bağlantı olduğundan emin olun.
+6. Her iki PCM anahtarını da ANDAKI konuma getirerek önce EBOD kasasını açın.
+7. Yeşil LED'in A.B.D. olup olmadığını kontrol ederek EBOD kasasının üzerinde olduğundan emin olun.
+8. Birincil muhafazayı açın.
+9. Denetleyici yeşil LED'inin AÇ OLUP Olmadığını kontrol ederek birincil muhafazanın üzerinde olduğundan emin olun.
+10. Birincil kasaile EBOD muhafaza bağlantısının, SAS şeritLI LED'lerin (EBOD denetleyicibaşına dört) tüm AÇI'da olup olmadığını kontrol ederek iyi olduğunu doğrulayın.
 
 > [!IMPORTANT]
-> SAS kabloları kusurlu veya EBOD kasası ile birincil kasa arasındaki bağlantı iyi değilse, sistemi açtığınızda kurtarma moduna geçer. Lütfen bu durumda [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
+> SAS kabloları arızalıysa veya EBOD muhafazası ile birincil kasa arasındaki bağlantı iyi değilse, sistemi açtığınızda kurtarma moduna geçer. Bu durumda lütfen [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
 
 
 ## <a name="turn-off-a-running-device"></a>Çalışan bir cihazı kapatma
-Çalışan bir StorSimple cihazının taşınmakta olması, hizmetten alınması veya değiştirilmesini gerektiren hatalı çalışan bir bileşene sahip olması gerekebilir. Bu adımlar, StorSimple cihazının bir 8100 veya 8600 modeli olmasına bağlı olarak farklılık belirtir. 8100 tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD Kasası olan çift taraflı bir cihazdır. Bu bölümde çalışan bir cihazı kapatma adımları ayrıntılı olarak yapılır.
+Çalışan bir StorSimple aygıtıtaşınıyorsa, hizmet dışı ediliyorsa veya değiştirilmesi gereken arızalı bir bileşeni varsa kapatılması gerekebilir. Adımlar, StorSimple aygıtının 8100 veya 8600 modeli olup olmadığına bağlı olarak farklıdır. 8100 tek bir birincil kasaya sahipken, 8600 birincil kasası ve EBOD muhafazası olan çift kasalı bir cihazdır. Bu bölümde çalışan bir aygıtı kapatmak için adımlar ayrıntıları.
 
-* [Birincil Kasası olan cihaz](#8100a)
-* [EBOD kasası ile cihaz](#8600a)
+* [Birincil muhafazalı aygıt](#8100a)
+* [EBOD muhafazalı cihaz](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Birincil kasa <a name="8100a"> cihaz
-Cihazı düzenli ve denetimli bir şekilde kapatmak için Azure portal veya StorSimple için Windows PowerShell aracılığıyla yapabilirsiniz. 
+### <a name="device-with-primary-enclosure-a-name8100a"></a>Birincil muhafazalı aygıt<a name="8100a">
+Aygıtı düzenli ve kontrollü bir şekilde kapatmak için, bunu Azure portalı üzerinden veya StorSimple için Windows PowerShell üzerinden yapabilirsiniz. 
 
 > [!IMPORTANT]
-> Çalışan bir cihazı cihazın arkasında bulunan güç düğmesini kullanarak kapatmayın.
+> Cihazın arka sideki güç düğmesini kullanarak çalışan bir aygıtı kapatmayın.
 > 
-> Cihazı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure portal, > **Donanım durumunu** **izlemek** > **cihazlar** ' a gidin ve tüm bileşenlerin durumunun yeşil olduğunu doğrulayın. Bu, yalnızca sağlıklı bir sistem için geçerlidir. Sistem hatalı çalışan bir bileşeni değiştirmek için kapalıysa, **donanım durumundaki**ilgili bileşen için başarısız (kırmızı) veya düşürülmüş (sarı) durumu görürsünüz.
+> Aygıtı kapatmadan önce, tüm aygıt bileşenlerinin sağlıklı olduğundan emin olun. Azure portalında **Aygıtlar** > **Donanımını İzle** > **durumuna**gidin ve tüm bileşenlerin durumunun yeşil olduğunu doğrulayın. Bu sadece sağlıklı bir sistem için geçerlidir. Sistem arızalı bir bileşeni değiştirmek için kapatılıyorsa, **Donanım Durumu'ndaki**ilgili bileşen için başarısız (kırmızı) veya bozulmuş (sarı) bir durum görürsünüz.
 > 
 > 
 
-StorSimple için Windows PowerShell veya Azure portal erişduktan sonra, [StorSimple cihazını kapatma](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)bölümündeki adımları izleyin. 
+StorSimple için Windows PowerShell'e veya Azure portalına eriştinkten sonra, [bir StorSimple aygıtını kapatma](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)adımlarını izleyin. 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD Kasası <a name="8600a"> cihaz
+### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD muhafazalı cihaz<a name="8600a">
 > [!IMPORTANT]
-> Birincil kasası ve EBOD Kasası 'nı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure portal, > **donanım sistem durumunu** **izlemek** > **cihazlar** ' a gidin ve tüm bileşenlerin sağlıklı olduğunu doğrulayın.
+> Birincil muhafazayı ve EBOD muhafazasını kapatmadan önce, tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure portalında **Aygıtlar** > **Donanımını İzle'ye** > **Hardware health**gidin ve tüm bileşenlerin sağlıklı olduğunu doğrulayın.
 
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Çalışan bir cihazı EBOD kasası ile kapatmak için
-1. Birincil kasa için [bir StorSimple cihazını kapatma](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) bölümünde listelenen tüm adımları izleyin.
-2. Birincil kutu kapatıldıktan sonra, güç ve soğutma modülü (PCM) anahtarlarını kapatarak EBOD 'yi kapatın.
-3. EBOD 'nin kapatılmakta olduğunu doğrulamak için, EBOD Kasası 'nın arkasında bulunan tüm ışıklarının kapalı olduğunu kontrol edin.
+#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>EBOD muhafazalı çalışan bir aygıtı kapatmak için
+1. Birincil kasa için [bir StorSimple aygıtını kapatın'da](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) listelenen tüm adımları izleyin.
+2. Birincil kasa kapatıldıktan sonra, Hem Güç hem de Soğutma Modülü (PCM) anahtarlarını ters çevirerek EBOD'u kapatın.
+3. EBOD'un kapandığını doğrulamak için, EBOD kasasının arka yerindeki tüm ışıkların kapalı olup olmadığını kontrol edin.
 
 > [!NOTE]
-> EBOD kasasının birincil Kasası 'na bağlanması için kullanılan SAS kabloları, sistem kapanıncaya kadar kaldırılmamalıdır.
+> EBOD kasasını birincil kasaya bağlamak için kullanılan SAS kabloları, sistem kapatılana kadar çıkarılmamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-StorSimple cihazını açarken veya kapatırken sorunlarla karşılaşırsanız [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
+StorSimple aygıtını açarken veya kapatırken sorunlarla karşılaşırsanız [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?
+title: Azure Güvenlik Duvarı Yöneticisi Önizlemesi nedir?
 description: Azure Güvenlik Duvarı Yöneticisi özellikleri hakkında bilgi edinin
 author: vhorne
 ms.service: firewall-manager
@@ -8,34 +8,34 @@ ms.topic: overview
 ms.date: 03/13/2020
 ms.author: victorh
 ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79366283"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?
+# <a name="what-is-azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi Önizlemesi nedir?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi, bulut tabanlı güvenlik perimeters için merkezi güvenlik ilkesi ve rota yönetimi sağlayan bir güvenlik yönetim hizmetidir. 
+Azure Güvenlik Duvarı Yöneticisi Önizleme, bulut tabanlı güvenlik çevreleri için merkezi güvenlik ilkesi ve rota yönetimi sağlayan bir güvenlik yönetimi hizmetidir. 
 
-Güvenlik Duvarı Yöneticisi, iki ağ mimarisi türü için güvenlik yönetimi sağlayabilir:
+Güvenlik Duvarı Yöneticisi iki ağ mimarisi türü için güvenlik yönetimi sağlayabilir:
 
 - **güvenli sanal hub**
 
-   [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources) 'ı, hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
-- **Hub sanal ağı**
+   [Azure Sanal WAN Hub'ı,](../virtual-wan/virtual-wan-about.md#resources) hub ve kollu mimarileri kolayca oluşturmanıza olanak tanıyan Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, güvenli sanal *[hub](secured-virtual-hub.md)* olarak adlandırılır. 
+- **hub sanal ağ**
 
-   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmiş olmayan tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
+   Bu, oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağıdır. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, hub *sanal ağ*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı İlkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren kollu sanal ağları eşleyebilirsiniz. Ayrıca, herhangi bir konuşmayla bakmayan bağımsız sanal ağlarda güvenlik duvarlarını da yönetebilirsiniz.
 
-*Güvenli sanal hub* ve *hub sanal ağ* mimarilerinin ayrıntılı bir karşılaştırması Için bkz. [Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?](vhubs-and-vnets.md).
+*Güvenli sanal hub* ve hub *sanal ağ* mimarilerinin ayrıntılı bir karşılaştırması için Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri [nelerdir?](vhubs-and-vnets.md)
 
-![Güvenlik Duvarı-yönetici](media/overview/firewallmanagerv5.png)
+![güvenlik duvarı yöneticisi](media/overview/firewallmanagerv5.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure Güvenlik Duvarı Yöneticisi Önizleme özellikleri
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi aşağıdaki özellikleri sunar:
+Azure Güvenlik Duvarı Yöneticisi Önizleme aşağıdaki özellikleri sunar:
 
 ### <a name="central-azure-firewall-deployment-and-configuration"></a>Merkezi Azure Güvenlik Duvarı dağıtımı ve yapılandırması
 
@@ -43,53 +43,53 @@ Farklı Azure bölgelerine ve aboneliklerine yayılan birden çok Azure Güvenli
 
 ### <a name="hierarchical-policies-global-and-local"></a>Hiyerarşik ilkeler (genel ve yerel)
 
-Azure Güvenlik Duvarı ilkelerini birden çok güvenli sanal hub genelinde merkezi olarak yönetmek için Azure Güvenlik Duvarı Yöneticisi Önizlemesi ' ni kullanabilirsiniz. Merkezi BT ekipleriniz, ekipler genelinde kurumsal çapta güvenlik duvarı ilkesini zorlamak için küresel güvenlik duvarı ilkelerini yazabilir. Yerel olarak yazılmış güvenlik duvarı ilkeleri, daha iyi çeviklik için bir DevOps self servis modeline izin verir.
+Birden çok güvenli sanal hub'da Azure Güvenlik Duvarı ilkelerini merkezi olarak yönetmek için Azure Güvenlik Duvarı Yöneticisi Önizleme'yi kullanabilirsiniz. Merkezi BT ekipleriniz, ekipler arasında kuruluş genelinde geniş güvenlik duvarı ilkesini uygulamak için genel güvenlik duvarı ilkeleri yazabilir. Yerel olarak yazılmış güvenlik duvarı ilkeleri, Daha iyi çeviklik için DevOps self servis modeline izin verir.
 
-### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Gelişmiş güvenlik için üçüncü taraf hizmet olarak güvenlik ile tümleşik
+### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Gelişmiş güvenlik için hizmet olarak üçüncü taraf güvenlikle entegre
 
-Azure Güvenlik Duvarı 'na ek olarak, VNet ve şube Internet bağlantılarınız için ek ağ koruması sağlamak üzere üçüncü taraf güvenlik hizmeti (SECaaS) sağlayıcılarını tümleştirebilirsiniz.
+Azure Güvenlik Duvarı'na ek olarak, VNet ve şube Internet bağlantılarınız için ek ağ koruması sağlamak için üçüncü taraf güvenliği hizmet (SECaaS) sağlayıcıları olarak tümleştirebilirsiniz.
 
-Bu özellik yalnızca güvenli sanal hub dağıtımları ile kullanılabilir.
+Bu özellik yalnızca güvenli sanal hub dağıtımlarında kullanılabilir.
 
-- VNet 'Ten Internet 'e (V2I) trafik filtreleme
+- VNet'den Internet'e (V2I) trafik filtreleme
 
-   - Tercih ettiğiniz üçüncü taraf güvenlik sağlayıcınızla giden sanal ağ trafiğini filtreleyin.
-   - Azure üzerinde çalışan bulut iş yükleriniz için Gelişmiş Kullanıcı tarafından uyumlu Internet korumasından yararlanın.
+   - Giden sanal ağ trafiğini tercih ettiğiniz üçüncü taraf güvenlik sağlayıcınıza filtreuygulayın.
+   - Azure'da çalışan bulut iş yükleri için gelişmiş kullanıcı tarafından çalışan Internet korumasından yararlanın.
 
-- Internet 'Ten dallan (B2I) trafik filtreleme
+- Şubeden İnternete (B2I) trafik filtreleme
 
-   Internet senaryolarına şube için üçüncü taraf filtrelemesini kolayca eklemek üzere Azure bağlantınız ve küresel dağıtım özelliğinden yararlanın.
+   Internet senaryolarına dal için üçüncü taraf filtresini kolayca eklemek için Azure bağlantınızdan ve genel dağıtımınızdan yararlanın.
 
-Güvenilen güvenlik sağlayıcıları hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi güvenilen güvenlik iş ortakları (Önizleme) nedir?](trusted-security-partners.md)
+Güvenilen güvenlik sağlayıcıları hakkında daha fazla bilgi için Azure [Güvenlik Duvarı Yöneticisi'nin güvendiği güvenlik ortakları (önizleme) nedir?](trusted-security-partners.md)
 
-### <a name="centralized-route-management"></a>Merkezi yol yönetimi
+### <a name="centralized-route-management"></a>Merkezi rota yönetimi
 
-Bağlı olan sanal ağlarda Kullanıcı tanımlı yolları (UDR) el ile ayarlama gereksinimi olmadan, filtreleme ve günlüğe kaydetme için güvenli hub 'ınıza trafiği kolayca yönlendirin. 
+Kullanıcı Tanımlı Rotalar'ı (UDR) kollu olarak ayarlamaya gerek kalmadan, trafiği filtreleme ve günlüğe kaydetme için güvenli merkezinize kolayca yönlendirin. 
 
-Bu özellik yalnızca güvenli sanal hub dağıtımları ile kullanılabilir.
+Bu özellik yalnızca güvenli sanal hub dağıtımlarında kullanılabilir.
 
-Şube için üçüncü taraf sağlayıcıları (B2I) trafik filtrelemesini, VNet 'Ten sanal ağa (B2V), VNET 'Ten VNET 'e (V2V) ve VNET 'Ten Internet 'e (V2I) yönelik Azure Güvenlik Duvarı ile yan yana kullanabilirsiniz. V2I trafik filtreleme için üçüncü taraf sağlayıcıları, B2V veya V2V için Azure Güvenlik Duvarı gerekmediği sürece de kullanabilirsiniz. 
+Branch to Internet (B2I) trafik filtrelemi için üçüncü taraf sağlayıcıları, Branch to VNet (B2V), VNet to VNet (V2V) ve VNet to Internet (V2I) için Azure Güvenlik Duvarı ile yan yana kullanabilirsiniz. Azure Güvenlik Duvarı B2V veya V2V için gerekli olmadığı sürece V2I trafik filtreleme için üçüncü taraf sağlayıcıları da kullanabilirsiniz. 
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Azure Güvenlik Duvarı Ilkeleri bölgeler arasında kullanılabilir. Örneğin, Batı ABD bir ilke oluşturabilir ve Doğu ABD ' de kullanabilirsiniz. 
+Azure Güvenlik Duvarı İlkeleri bölgeler arasında kullanılabilir. Örneğin, Batı ABD'de bir politika oluşturabilir ve Doğu ABD'de kullanabilirsiniz. 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi aşağıdaki bilinen sorunlara sahiptir:
+Azure Güvenlik Duvarı Yöneticisi Önizleme'nin bilinen sorunları şunlardır:
 
 |Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
-|Üçüncü taraf filtreleme sınırlamaları.|V2I Azure Firewall B2V ve V2V ile üçüncü taraf sağlayıcılarla trafik filtrelemesi desteklenmez.|Araştırma|
-|Trafik bölme şu anda desteklenmiyor.|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
-|Bölge başına bir güvenli sanal hub.|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
-|Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır.|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Araştırma|
-|Güvenli sanal hub ile hub arası iletişim çalışmıyor|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmiyor.|Araştırma|
-|Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
-|Güvenlik Duvarı Ilkesinde IP grupları desteklenmez.|IP grupları genel önizlemede ve şu anda yalnızca geleneksel güvenlik duvarı kuralları ile desteklenir.|Çözüm devam ediyor.
-|Bulut çözümü sağlayıcısı (CSP) abonelikleri desteklenmez.|Şu anda [CSP abonelikleri](https://azure.microsoft.com/offers/ms-azr-0145p/) desteklenmez.|Araştırma
+|Üçüncü taraf filtreleme sınırlamaları.|Üçüncü taraf sağlayıcılarla V2I trafik filtreleme, Azure Güvenlik Duvarı B2V ve V2V ile desteklenmez.|Araştırılıyor|
+|Trafik bölme şu anda desteklenmiyor.|Office 365 ve Azure Genel PaaS trafik bölme şu anda desteklenmez. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçmek, iş ortağı hizmeti aracılığıyla tüm Azure Genel PaaS ve Office 365 trafiğini de gönderir.|Merkezde trafik bölmesini araştırıyoruz.
+|Bölge başına güvenli bir sanal hub.|Bölge başına birden fazla güvenli sanal hub'A sahip olamazsınız.|Bir bölgede birden çok sanal WAN oluşturun.|
+|Temel ilkeler yerel politikayla aynı bölgede olmalıdır.|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Bir bölgede oluşturulan bir ilkeyi başka bir bölgeden güvenli bir hub'da yine uygulayabilirsiniz.|Araştırılıyor|
+|Güvenli Sanal Hub ile çalışmıyor hub arası iletişim|Güvenli Sanal Hub ile Güvenli Sanal Hub iletişimi henüz desteklenmedi.|Araştırılıyor|
+|Aynı sanal WAN'ı paylaşan tüm Güvenli Sanal Hub'lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün Virtual WAN Hub'ları ile uyumludur.|Güvenli Sanal Hub'ların farklı kaynak gruplarında oluşturulmasına izin vermek için birden çok Sanal WAN oluşturun.|
+|IP Grupları Güvenlik Duvarı Politikası'nda desteklenmez.|IP Grupları genel önizlemededir ve şu anda yalnızca geleneksel güvenlik duvarı kurallarıyla desteklenir.|Düzeltme devam ediyor.
+|Bulut Çözüm Sağlayıcısı (CSP) abonelikleri desteklenmez.|Şu [anda, CSP abonelikleri](https://azure.microsoft.com/offers/ms-azr-0145p/) desteklenmez.|Araştırılıyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış](deployment-overview.md)
-- [Güvenli sanal hub 'lar](secured-virtual-hub.md)hakkında bilgi edinin.
+- [Azure Güvenlik Duvarı Yöneticisi Önizleme dağıtımına genel bakışı](deployment-overview.md) gözden geçirin
+- Güvenli [Sanal Hub'lar](secured-virtual-hub.md)hakkında bilgi edinin.

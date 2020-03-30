@@ -5,23 +5,23 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
 ms.topic: conceptual
-description: Azure dev alanında NuGet paketlerine erişmek ve bunları kullanmak için özel bir NuGet akışı kullanın.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
+description: Azure Geliştirme Alanı'nda NuGet paketlerine erişmek ve bunları kullanmak için özel bir NuGet akışı kullanın.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Konteyner Hizmeti, konteynerler
 manager: gwallace
 ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325737"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces ile özel bir NuGet akışı kullanma
 
-Bir NuGet akışı, paket kaynaklarını bir projeye dahil etmek için uygun bir yol sağlar. Bağımlılıkların Docker kapsayıcısına düzgün şekilde yüklenmesi için Azure Dev Spaces bu akışa erişmesi gerekir.
+NuGet beslemesi, paket kaynaklarını projeye dahil etmek için kullanışlı bir yol sağlar. Bağımlılıkların Docker kapsayıcısına düzgün şekilde yüklenmesi için Azure Geliştirme Alanları'nın bu akışa erişmesi gerekir.
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet akışı ayarlama
 
-`PackageReference` düğümü altındaki `*.csproj` dosyasına bağımlılığı için bir [paket başvurusu](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) ekleyin. Örneğin:
+Düğüm [package reference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) altında `*.csproj` dosyada bağımlılığıiçin bir paket başvurusu ekleyin. `PackageReference` Örnek:
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ Bir NuGet akışı, paket kaynaklarını bir projeye dahil etmek için uygun bir
 </ItemGroup>
 ```
 
-Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) dosyası oluşturun ve NuGet akışınız için `packageSources` ve `packageSourceCredentials` bölümlerini ayarlayın. `packageSources` bölümü, AKS kümenizdeki erişilebilir olması gereken akış URL 'nizi içerir. `packageSourceCredentials`, akışa erişim için kimlik bilgileridir. Örneğin:
+Proje klasöründe bir [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) dosyası `packageSources` oluşturun `packageSourceCredentials` ve NuGet akışınızın bölümlerini ayarlayın. Bölüm, `packageSources` AKS kümenizden erişilebilen özet url'nizi içerir. Özet `packageSourceCredentials` akışına erişmek için kimlik bilgileri vardır. Örnek:
 
 ```xml
 <packageSources>
@@ -46,17 +46,17 @@ Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/referenc
 </packageSourceCredentials>
 ```
 
-`NuGet.Config` dosyasını görüntüye kopyalamak için Dockerfiles 'ı güncelleştirin. Örneğin:
+Dosyayı görüntüye kopyalamak için Dockerdosyalarınızı güncelleştirin. `NuGet.Config` Örnek:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
 ```
 
 > [!TIP]
-> Windows 'da, `NuGet.Config`, `Nuget.Config`ve `nuget.config` tümü geçerli dosya adları olarak çalışmaktadır. Linux 'ta yalnızca `NuGet.Config`, bu dosya için geçerli bir dosya adıdır. Azure Dev Spaces Docker ve Linux kullandığından, bu dosya `NuGet.Config`olarak adlandırılmalıdır. Adlandırmayı el ile veya `dotnet restore --configfile nuget.config`çalıştırarak giderebilirsiniz.
+> Windows'da `NuGet.Config` `Nuget.Config`ve `nuget.config` tüm geçerli dosya adları olarak çalışır. Linux'ta `NuGet.Config` yalnızca bu dosya için geçerli bir dosya adı verilir. Azure Dev Spaces Docker ve Linux kullandığından, bu dosyanın adı `NuGet.Config`verilmelidir. Adlandırmayı el ile veya çalıştırarak `dotnet restore --configfile nuget.config`düzeltebilirsiniz.
 
 
-Git kullanıyorsanız, sürüm denetiminde NuGet akışınız için kimlik bilgilerine sahip olmanız gerekmez. `NuGet.Config` dosyasının sürüm denetimine eklenmemesi için, projeniz için `.gitignore` `NuGet.Config` ekleyin. Azure Dev Spaces kapsayıcı görüntüsü oluşturma işlemi sırasında bu dosya gerekecektir, ancak varsayılan olarak, eşitleme sırasında `.gitignore` ve `.dockerignore` tanımlanan kurallara uyar. Varsayılanı değiştirmek ve Azure Dev Spaces `NuGet.Config` dosyayı eşitlemesine izin vermek için `azds.yaml` dosyasını güncelleştirin:
+Git kullanıyorsanız, sürüm denetiminde NuGet akışınızın kimlik bilgilerine sahip olmamalıdır. Dosyanın `.gitignore` sürüm denetimine eklenmemesi için projeniz için ekleyin. `NuGet.Config` `NuGet.Config` Azure Dev Spaces kapsayıcı görüntü oluşturma işlemi sırasında bu dosyaya ihtiyaç duyar, `.gitignore` `.dockerignore` ancak varsayılan olarak eşitleme sırasında ve sırasında tanımlanan kurallara uyar. Varsayılanı değiştirmek ve Azure Dev Spaces'in `NuGet.Config` dosyayı `azds.yaml` eşitlemesine izin vermek için dosyayı güncelleştirin:
 
 ```yaml
 build:
@@ -67,7 +67,7 @@ ignore:
 
 Git kullanmıyorsanız, bu adımı atlayabilirsiniz.
 
-`azds up` veya Visual Studio Code ya da Visual Studio 'da `F5` bir sonraki sefer çalıştırdığınızda Azure Dev Spaces, paket bağımlılıklarını yüklemek için `NuGet.Config` dosyasını eşitler.
+Visual Studio Code `azds up` veya `F5` Visual Studio'da bir sonraki kez çalıştırdığınızda veya vurduğunuzda, Azure Dev Spaces dosyayı `NuGet.Config` paket bağımlılıklarını yüklemek için kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

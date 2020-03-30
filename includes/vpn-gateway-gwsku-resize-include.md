@@ -9,19 +9,19 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4842c55b2b1fd23f4d6b7996ccf02e7141504836
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73495761"
 ---
-Bir Generation1 veya Generation2 SKU 'sunu yükseltmek veya indirgeyebilmeniz için `Resize-AzVirtualNetworkGateway` PowerShell cmdlet 'ini kullanabilirsiniz (tüm VpnGw SKU 'Ları temel SKU 'Lar dışında yeniden boyutlandırılabilir). Temel ağ geçidi SKU 'SU kullanıyorsanız, ağ geçidinizi yeniden boyutlandırmak [yerine bu yönergeleri kullanın](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) .
+PowerShell cmdlet'i `Resize-AzVirtualNetworkGateway` Generation1 veya Generation2 SKU'yu yükseltmek veya düşürmek için kullanabilirsiniz (Temel SKU'lar hariç tüm VpnGw SKU'lar yeniden boyutlandırılabilir). Temel ağ geçidi SKU kullanıyorsanız, ağ geçidinizi yeniden boyutlandırmak için [bu yönergeleri kullanın.](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)
 
-Aşağıdaki PowerShell örneği, VpnGw2 için yeniden boyutlandırılan bir ağ geçidi SKU 'SU gösterir.
+Aşağıdaki PowerShell örneği, VpnGw2'ye yeniden boyutlandırılan bir ağ geçidi SKU'sunu gösterir.
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```
 
-Ayrıca, sanal ağ geçidinizin **yapılandırma** sayfasına gidip açılan listeden farklı bir SKU seçerek Azure Portal bir ağ geçidini yeniden boyutlandırabilirsiniz.
+Ayrıca, sanal ağ ağ ağ geçidiniz için **Yapılandırma** sayfasına giderek ve açılır geçitten farklı bir SKU seçerek Azure portalındaki bir ağ geçidini yeniden boyutlandırabilirsiniz.

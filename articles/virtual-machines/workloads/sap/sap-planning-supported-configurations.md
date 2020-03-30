@@ -1,6 +1,6 @@
 ---
-title: "Azure üzerinde SAP: Azure VM 'Leri ile desteklenen senaryolar"
-description: SAP iş yüküyle desteklenen Azure sanal makineler senaryoları
+title: "Azure'da SAP: Azure VM'lerle Desteklenen Senaryolar"
+description: Azure Sanal Makineler SAP iş yüküyle senaryoları destekledi
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -17,294 +17,294 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137637"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
-Azure 'da SAP NetWeaver, Business One, `Hybris` veya S/4HANA sistemleri mimarisi tasarlamak, ölçeklenebilir, verimli ve yüksek oranda kullanılabilir bir dağıtıma ulaşmak için kullanabileceğiniz çeşitli mimariler ve araçlar için çok sayıda farklı fırsat açar. Kullanılan işletim sistemine veya DBMS 'ye bağımlı olsa da kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure 'da aynı şekilde desteklenmez. Bu belge, Azure VM 'Leri kullanan desteklenen yüksek kullanılabilirliğe sahip olmayan yapılandırmaların ve yüksek kullanılabilirliğe sahip yapılandırmaların ve mimarilerin oluşmasına yol açacaktır. [Hana büyük örneklerle](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)desteklenen senaryolar IÇIN, [Hana büyük örnekler için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)makalesine bakın. 
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makine destekli senaryolarda SAP iş yükü
+Azure'da SAP NetWeaver, `Hybris` Business one veya S/4HANA sistem mimarisinin tasarlanması, ölçeklenebilir, verimli ve yüksek kullanılabilir bir dağıtıma ulaşmak için kullanılacak çeşitli mimariler ve araçlar için birçok farklı fırsat sunar. Kullanılan işletim sistemine veya DBMS'ye bağlı olsa da, kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure'da aynı şekilde desteklenmez. Bu belge, yalnızca Azure VM'leri kullanarak desteklenen yüksek kullanılabilirlik dışı yapılandırmalar ve yüksek kullanılabilirlik yapılandırmaları ve mimarileri aracılığıyla yol açacaktır. [HANA Büyük Örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)ile desteklenen senaryolar [için, HANA Büyük Örnekleri için desteklenen makaleyi kontrol edin.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario) 
 
 
-## <a name="2-tier-configuration"></a>2 katmanlı yapılandırma
-SAP 2 katmanlı yapılandırmanın, SAP DBMS ve aynı sunucu veya VM birimi üzerinde çalışan uygulama katmanının birleştirilmiş bir katmanından oluşturulması kabul edilir. İkinci katman, Kullanıcı arabirimi katmanı olarak kabul edilir. 2 katmanlı bir yapılandırma söz konusu olduğunda, DBMS ve SAP uygulama katmanı, Azure VM 'nin kaynaklarını paylaşır. Sonuç olarak, farklı bileşenleri kaynaklar için rekabet altına almak için bir şekilde yapılandırmanız gerekir. Ayrıca, VM kaynaklarının aşırı abone olunmamasına dikkat etmeniz gerekir. Bu tür bir yapılandırma, dahil edilen farklı Azure bileşenlerinin [Azure hizmet düzeyi anlaşmalarının](https://azure.microsoft.com/support/legal/sla/) ötesinde yüksek kullanılabilirlik sağlamaz.
+## <a name="2-tier-configuration"></a>2 Katmanlı yapılandırma
+SAP 2 Katmanlı yapılandırma, SAP DBMS'nin ve aynı sunucu veya VM biriminde çalışan uygulama katmanının birleştirilmiş katmanından oluşturulmuş olarak kabul edilir. İkinci katman kullanıcı arabirimi katmanı olarak kabul edilir. 2 Katmanlı yapılandırma durumunda, DBMS ve SAP uygulama katmanı Azure VM'nin kaynaklarını paylaşır. Sonuç olarak, farklı bileşenleri, kaynaklar için rekabet etmeyen bir şekilde yapılandırmanız gerekir. Ayrıca VM'nin kaynaklarına aşırı abone olmamak için dikkatli olmanız gerekir. Böyle bir yapılandırma, ilgili farklı Azure bileşenlerinin [Azure Hizmet Düzeyi anlaşmaları](https://azure.microsoft.com/support/legal/sla/) dışında yüksek kullanılabilirlik sağlamaz.
 
-Böyle bir yapılandırmanın grafik gösterimi şöyle görünebilir:
+Böyle bir yapılandırmanın grafik gösterimi aşağıdaki gibi görünebilir:
 
-![Basit 2 katmanlı yapılandırma](./media/sap-planning-supported-configurations/two-tier-simple-configuration.png)
+![Basit 2 Katmanlı yapılandırma](./media/sap-planning-supported-configurations/two-tier-simple-configuration.png)
 
-Bu tür yapılandırmalarda Windows, Red hat, SUSE ve Oracle Linux, üretim ve üretim dışı durumlar için SQL Server, Oracle, DB2, maxDB ve SAP Ao 'un DBMS sistemleri için desteklenir. DBMS olarak SAP HANA için, bu tür bir yapılandırma yalnızca üretim dışı durumlar için desteklenir. Bu, [Azure Hana büyük örneklerinin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) dağıtım durumunu da içerir.
-Azure 'da desteklenen tüm işletim sistemi/DBMS birleşimleri için, bu tür yapılandırma desteklenir. Ancak, DBMS ve SAP bileşenlerinin yapılandırılmasını, DBMS ve SAP bileşenlerinin bellek ve CPU kaynakları için rekabet etme ve böylece fiziksel olarak kullanılabilir kaynakları aşmayacak şekilde ayarlamanız zorunludur. Bu, DBMS 'nin ayrılmasına izin verilen belleği kısıtlayarak yapılmalıdır. Ayrıca, uygulama örneklerinde SAP Genişletilmiş belleğini de sınırlamanız gerekir. Ayrıca, bileşenlerin CPU kaynaklarını en üst düzeye çıkarmadığından emin olmak için VM 'nin CPU tüketimini de izlemeniz gerekir. 
-
-> [!NOTE]
-> Üretim SAP sistemlerinde, bu belgenin ilerleyen kısımlarında açıklandığı gibi daha yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmalarının kullanılması önerilir
-
-
-## <a name="3-tier-configuration"></a>3 katmanlı yapılandırma
-Bu tür yapılandırmalarda SAP uygulama katmanını ve DBMS katmanını farklı VM 'Lere ayırabilirsiniz. Genellikle daha büyük sistemler ve SAP uygulama katmanının kaynakları üzerinde daha esnek olma nedenleri vardır. En basit kurulumda, dahil edilen farklı Azure bileşenlerinin [Azure hizmet düzeyi anlaşmalarının](https://azure.microsoft.com/support/legal/sla/) ötesinde yüksek kullanılabilirlik yoktur. 
-
-Grafik gösterimi şöyle görünür:
-
-![Basit 2 katmanlı yapılandırma](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
-
-Bu tür bir yapılandırma Windows, Red hat, SUSE ve Oracle Linux ' de desteklenir ve üretim ve üretim dışı durumlar için SQL Server, Oracle, DB2, SAP HANA, maxDB ve SAP Ao 'un DBMS sistemleri için de kullanılır. Bu, [Azure Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)için varsayılan dağıtım yapılandırmadır. Basitme için SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadınız. Bu basit 3 katmanlı yapılandırmada SAP Merkezi Hizmetleri için yüksek kullanılabilirlik koruması yoktur.
+Bu tür yapılandırmalar, üretim ve üretim dışı durumlar için SQL Server, Oracle, Db2, maxDB ve SAP ASE'nin DBMS sistemleri için Windows, Red Hat, SUSE ve Oracle Linux ile desteklenir. Sap HANA için DBMS olarak, bu tür yapılandırmalar yalnızca üretim dışı servis talepleri için desteklenir. Buna [Azure HANA Büyük Örneklerinin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) dağıtım durumu da dahildir.
+Azure'da desteklenen tüm OS/DBMS birleşimleri için bu tür yapılandırma lar desteklenir. Ancak, DBMS ve SAP bileşenlerinin yapılandırmasını, DBMS ve SAP bileşenlerinin bellek ve CPU kaynakları için rekabet edemeyecek ve böylece fiziksel kullanılabilir kaynakları aşacak şekilde ayarlamanız zorunludur. Bu, DBMS'nin ayırmasına izin verilen belleği kısıtlayarak yapılmalıdır. Ayrıca, uygulama örneklerinde SAP Genişletilmiş Bellek'i sınırlamanız gerekir. Ayrıca, bileşenlerin CPU kaynaklarını en üst düzeye çıkarmadığından emin olmak için VM'nin CPU tüketimini genel olarak izlemeniz gerekir. 
 
 > [!NOTE]
-> Üretim SAP sistemlerinde, bu belgenin ilerleyen kısımlarında açıklandığı gibi daha yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmalarının kullanılması önerilir
+> Üretim SAP sistemleri için, bu belgede daha sonra açıklandığı gibi ek yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmaları öneririz
 
 
-## <a name="multiple-dbms-instances-per-vm-or-hana-large-instance-unit"></a>VM veya HANA büyük örnek birimi başına birden çok DBMS örneği
-Bu yapılandırma türünde, Azure VM veya HANA büyük örnek birimi başına birden çok DBMS örneği barındırabilirsiniz. Mosyon, bakım yapmak için daha az işletim sistemine sahip olabilir ve bu da düşük maliyetleri azaltır. Daha büyük bir VM veya HANA büyük örnek birimi kaynaklarını birden çok DBMS örneği arasında paylaşarak daha fazla esneklik ve daha verimlilik elde edebilirsiniz. Bu yapılandırmaların şimdiye kadar, üretim dışı sistemler için büyük ölçüde gösterilmıştı.
+## <a name="3-tier-configuration"></a>3 Katmanlı yapılandırma
+Bu tür yapılandırmalarda SAP uygulama katmanını ve DBMS katmanını farklı VM'lere ayırırsınız. Bunu genellikle daha büyük sistemler ve SAP uygulama katmanının kaynakları üzerinde daha esnek olma nedenleriyle yaparsınız. En basit kurulumda, ilgili farklı Azure bileşenlerinin [Azure Hizmet Düzeyi anlaşmaları](https://azure.microsoft.com/support/legal/sla/) dışında yüksek kullanılabilirlik yoktur. 
 
-Benzer bir yapılandırma şöyle görünebilir:
+Grafik gösterimi gibi görünür:
+
+![Basit 2 Katmanlı yapılandırma](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+
+Bu tür yapılandırma, üretim ve üretim dışı durumlar için SQL Server, Oracle, Db2, SAP HANA, maxDB ve SAP ASE'nin DBMS sistemleri için Windows, Red Hat, SUSE ve Oracle Linux'ta desteklenir. Bu, Azure HANA Büyük Örnekleri için varsayılan dağıtım [yapılandırmasıdır.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) Basitleştirme için, SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadık. Bu basit 3 Katmanlı yapılandırmada SAP Central Services için yüksek kullanılabilirlik koruması olmaz.
+
+> [!NOTE]
+> Üretim SAP sistemleri için, bu belgede daha sonra açıklandığı gibi ek yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmaları öneririz
+
+
+## <a name="multiple-dbms-instances-per-vm-or-hana-large-instance-unit"></a>VM veya HANA Büyük Örnek birimi başına birden fazla DBMS örneği
+Bu yapılandırma türünde, Azure VM veya HANA Büyük Örnek birimi başına birden çok DBMS örneğini barındırarsınız. Motivasyon korumak için daha az işletim sistemleri ve bu azaltılmış maliyetler ile olabilir. Diğer motivasyonlar, daha büyük bir VM veya HANA Büyük Örnek biriminin kaynaklarını birden çok DBMS örneği arasında paylaşarak daha fazla esnekliğe ve daha verimliliğe sahip olmak olabilir. Şimdiye kadar bu yapılandırmalar çoğunlukla üretim dışı sistemler için gösteriyordu.
+
+Böyle bir yapılandırma gibi görünebilir:
 
 ![Bir birimde birden çok DBMS örneği](./media/sap-planning-supported-configurations/multiple-database-instances.png)
 
-Bu tür DBMS dağıtımı için desteklenir:
+Bu tür DBMS dağıtımı şu lar için desteklenir:
 
-- Windows üzerinde SQL Server
-- IBM DB2. Makalede [birden çok örnek (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html) ayrıntılarını bulma
-- Oracle için. Ayrıntılar için bkz. [sap destek notu #1778431](https://launchpad.support.sap.com/#/notes/1778431) ve ilgili SAP notları
-- SAP HANA için, bir VM 'de birden çok örnek, SAP bu dağıtım yöntemini (MCOS) çağırır, desteklenir. Ayrıntılar için bkz. SAP makalesi [bir konaktaki birden çok SAP HANA sistemi (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
-- /b2751fd43bec41a9a14e01913f1edf18.htm html)
+- Windows'da SQL Server
+- IBM Db2. Makalede birden [fazla örnek (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html) ayrıntıları bulun
+- Oracle için. Ayrıntılar için [SAP destek notu #1778431](https://launchpad.support.sap.com/#/notes/1778431) ve ilgili SAP notlarına bakın
+- SAP HANA için, bir VM'de birden çok örnek, SAP bu dağıtım yöntemini MCOS olarak adlandırır, desteklenir. Ayrıntılar için SAP makalesine bakın [Çoklu SAP HANA Sistemleri Tek Ana Bilgisayarda (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
-Birden çok veritabanı örneğini bir konakta çalıştırırken, farklı örneklerin kaynaklar için rekabet olmadığından ve bu nedenle VM 'nin fiziksel kaynak sınırlarını aşmadığından emin olmanız gerekir. Bu durum özellikle, VM 'yi paylaşan örnek sayısını ayırabilmeniz gereken bellek için geçerlidir. Bu Ayrıca, farklı veritabanı örneklerinin faydalanma CPU kaynakları için de doğru olabilir. Bahsedilen tüm DBMS 'nin, bir örnek düzeyinde bellek ayırmayı ve CPU kaynaklarını sınırlandırmaya izin veren yapılandırmalara sahip olması gerekir.
-Azure VM 'Leri için bu tür bir yapılandırmaya yönelik destek sağlamak üzere, veriler için kullanılan disklerin veya birimlerin, farklı örnekler tarafından yönetilen veritabanlarının günlük/yineleme günlüğü dosyaları birbirinden ayrı olması beklenmektedir. Diğer bir deyişle, farklı DBMS örneği tarafından yönetilen veritabanlarının veri veya günlük/yineleme günlüğü dosyalarını aynı disklerin veya birimlerin paylaşılması gerekmez. 
+Tek bir ana bilgisayarda birden çok veritabanı örneği çalıştırıldığında, farklı örneklerin kaynaklar için rekabet etmediğinden ve bu nedenle VM'nin fiziksel kaynak sınırlarını aştığından emin olmanız gerekir. Bu, özellikle VM'yi paylaşan örneklerden herhangi birinin ayırabileceği belleği kapatmanız gereken bellek için geçerlidir. Bu, farklı veritabanı örneklerinin yararlanabileceği CPU kaynakları için de geçerli olabilir. Bahsedilen tüm DBMS'lerin, örnek düzeyinde bellek ayırma ve CPU kaynaklarını sınırlamaya izin veren yapılandırmaları vardır.
+Azure VM'leri için böyle bir yapılandırma için destek olması için, farklı örnekler tarafından yönetilen veritabanlarının veri ve günlük günlük dosyaları için kullanılan disklerin veya birimlerin ayrı olması beklenir. Veya başka bir deyişle, farklı DBMS örneği tarafından yönetilen veritabanlarının veri veya günlük dosyalarının aynı diskleri veya birimleri paylaşması gerekmez. 
 
-HANA büyük örneklerine yönelik disk yapılandırması, yapılandırılmış ve [Hana büyük örnekleri Için desteklenen senaryolarda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos)ayrıntılıdır. 
+HANA Büyük Örnekleri için disk yapılandırması yapılandırılmış teslim edilir ve [HANA Büyük Örnekleri için Desteklenen senaryolarda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos)ayrıntılı. 
 
 > [!NOTE]
-> Üretim SAP sistemlerinde, bu belgenin ilerleyen kısımlarında açıklandığı gibi, daha yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmalarının kullanılması önerilir. Birden çok DBMS örneğine sahip VM 'Ler, bu belgede daha sonra açıklanan yüksek kullanılabilirlik yapılandırmalarında desteklenmez.
+> Üretim SAP sistemleri için, bu belgede daha sonra açıklandığı gibi ek yüksek kullanılabilirlik ve nihai olağanüstü durum kurtarma yapılandırmaları öneririz. Birden çok DBMS örneğine sahip VM'ler, bu belgede daha sonra açıklanan yüksek kullanılabilirlik yapılandırmalarıyla desteklenmez.
 
 
-## <a name="multiple-sap-dialog-instances-in-one-vm"></a>Bir VM 'de birden çok SAP Iletişim kutusu örneği
-Birçok durumda, çıplak sunucularda veya özel bulutlarda çalışan VM 'lerde bile birden çok iletişim kutusu örneği dağıtılır. Bu tür yapılandırmaların nedeni belirli SAP iletişim örneklerinin belirli iş yüküne, iş işlevlerine veya iş yükü türlerine uyarlamalarıdır. Bu örneklerin ayrı sanal makinelere yalılamamasının nedeni, işletim sistemi bakım ve işlemlerinin çabasıyla karşılaşmaktır. Ya da birçok durumda VM 'nin barındırıcı ya da operatörü, sanal makine işletilerek yönetici başına aylık bir ücret ister. Azure 'da, Windows, Red hat, SUSE ve Oracle Linux işletim sistemlerinde üretim ve üretim dışı amaçlar için desteklenen tek bir VM 'de birden çok SAP iletişim kutusu örneği barındırma senaryosu. Tek bir VM 'de birden çok SAP uygulama sunucusu örneği çalışıyorsa, Windows ve modern Linux kernels ' de bulunan PHYS_MEMSIZE SAP Kernel parametresi ayarlanmalıdır. Ayrıca, SAP Genişletilmiş belleğinin otomatik büyümesinin uygulandığı Windows gibi işletim sistemlerinde SAP Genişletilmiş bellek genişletmesinin sınırlandırgetirilmesi önerilir. Bu, SAP profili parametresiyle `em/max_size_MB`yapılabilir.
+## <a name="multiple-sap-dialog-instances-in-one-vm"></a>Bir VM'de birden çok SAP İletişim örneği
+Birçok durumda, birden çok iletişim örnekleri çıplak metal sunucularda ve hatta özel bulutlarda çalışan VM'lerde dağıtılır. Bu tür yapılandırmaların nedeni, belirli SAP iletişim örneklerini belirli iş yükü, iş işlevselliği veya iş yükü türlerine uyarlamaktı. Bu örnekleri ayrı VM'lere ayırmamanın nedeni işletim sistemi bakım ve işlemlerinin çabasıydı. Veya birçok durumda, VM'nin ev sahibi veya operatörünün vm'başına aylık ücret istemesi ve yönetilmesi durumunda maliyetler. Azure'da, Windows, Red Hat, SUSE ve Oracle Linux işletim sistemlerinde üretim ve üretim dışı amaçlar için desteklenen tek bir VM içinde birden fazla SAP iletişim örneğini barındırma senaryosu. Windows ve modern Linux çekirdeklerinde bulunan SAP çekirdek parametresi PHYS_MEMSIZE, tek bir VM'de birden çok SAP Application Server örneği çalışıyorsa ayarlanmalıdır. Sap genişletilmiş Belleğin otomatik büyümesinin uygulandığı Windows gibi işletim sistemlerinde SAP Genişletilmiş Bellek genişlemesini sınırlaması da önerilir. Bu SAP profil parametresi `em/max_size_MB`ile yapılabilir.
 
-Azure VM 'lerinde birden çok SAP iletişim örneğinin çalıştırıldığı 3 katmanlı bir yapılandırmada şöyle görünebilirler:
+Azure VM'lerde birden çok SAP iletişim örneğinin çalıştırıldığı 3 Katmanlı yapılandırmada şu şekilde görünebilir:
 
 ![Bir birimde birden çok DBMS örneği](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
-Basitme için SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadınız. Bu basit 3 katmanlı yapılandırmada SAP Merkezi Hizmetleri için yüksek kullanılabilirlik koruması yoktur. Üretim sistemleri için SAP Merkezi Hizmetleri korumasız olarak ayrılmamanız önerilmez. Daha fazla bilgi için, SAP merkezi örnekleri etrafında çok düzeyli yapılandırmaların ve bu tür çok düzeyli yapılandırmaların yüksek kullanılabilirliğine yönelik bilgiler için, bu belgenin sonraki bölümlerine bakın.
+Basitleştirme için, SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadık. Bu basit 3 Katmanlı yapılandırmada SAP Central Services için yüksek kullanılabilirlik koruması olmaz. Üretim sistemleri için SAP Central Services'ı korumasız bırakmak önerilmez. SAP Merkezi Örnekleri ve bu tür çoklu SID yapılandırmalarının yüksek kullanılabilirliği etrafında ki çoklu SID yapılandırmaları hakkındaki ayrıntılar için bu belgenin sonraki bölümlerine bakın.
 
 ## <a name="high-availability-protection-for-the-sap-dbms-layer"></a>SAP DBMS katmanı için yüksek kullanılabilirlik koruması
-SAP üretim sistemlerini dağıttığımızda, yüksek kullanılabilirlik yapılandırmalarının etkin bekleme türünü göz önünde bulundurmanız gerekir. Özellikle, verilerin tam performans ve ölçeklenebilirlik sağlayabilmesi için belleğe yüklenmesi gereken SAP HANA, Azure hizmeti düzeltme, yüksek kullanılabilirlik için ideal bir ölçüdür. 
+SAP üretim sistemlerini dağıtmaya baktığınızda, sıcak bekleme tipi yüksek kullanılabilirlik yapılandırmalarını göz önünde bulundurmanız gerekir. Özellikle, tam performansı ve ölçeklenebilirliği geri alabilmek için verilerin belleğe yüklenmesi gereken SAP HANA'da, Azure hizmet iyileştirmesi yüksek kullanılabilirlik için ideal bir ölçü değildir. 
 
-Genel olarak, docs.microsoft.com ' deki SAP iş yükü bölümünde belirtilen yüksek kullanılabilirlik yapılandırmalarının ve yazılım paketlerinin genel olarak kullanılmasını destekler. SAP Note [#1928533](https://launchpad.support.sap.com/#/notes/1928533)aynı ifadeyi okuyabilirsiniz. Microsoft, SAP iş yüküyle birlikte Microsoft tarafından belgelenmeyen diğer yüksek kullanılabilirliğe sahip üçüncü taraf yazılım çerçeveleri için destek sağlamaz. Bu gibi durumlarda, yüksek kullanılabilirlik çerçevesinin üçüncü taraf tedarikçisidir, destek sürecine bir müşteri olarak sizin için ihtiyaç duyan yüksek kullanılabilirliğe sahip yapılandırmaya yönelik destek tarafdır. Özel durumlara bu makalede değineceğiz. 
+Genel olarak Microsoft, docs.microsoft.com'da SAP iş yükü bölümü altında açıklanan yalnızca yüksek kullanılabilirlik yapılandırmalarını ve yazılım paketlerini destekler. Aynı deyimi SAP [not#1928533](https://launchpad.support.sap.com/#/notes/1928533)okuyabilirsiniz. Microsoft, SAP iş yüküyle birlikte Microsoft tarafından belgelenmeyen diğer yüksek kullanılabilirlik üçüncü taraf yazılım çerçeveleri için destek sağlamaz. Bu gibi durumlarda, yüksek kullanılabilirlik çerçevesinin üçüncü taraf tedarikçisi, müşteri olarak sizin tarafınıza dahil edilmesi gereken yüksek kullanılabilirlik yapılandırması için destekleyici taraftır. İstisnalar bu makalede belirtilmeye devam edilmiştir. 
 
-Genel olarak, Azure VM 'lerinde veya HANA büyük örnekler birimlerinde sınırlı bir yüksek kullanılabilirlik yapılandırması kümesini destekler. HANA büyük örneklerinin desteklenen senaryolarında, [Hana büyük örnekler Için desteklenen belge senaryolarını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)okuyun.
+Genel olarak Microsoft, Azure VM'lerde veya HANA Büyük Örnekler birimlerinde sınırlı sayıda yüksek kullanılabilirlik yapılandırmalarını destekler. HANA Büyük Örnekleri desteklenen senaryolar [için, HANA Büyük Örnekleri için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)belgeyi okuyun.
 
-Azure VM 'Ler için, aşağıdaki yüksek kullanılabilirlik yapılandırması DBMS düzeyinde desteklenir:
+Azure VM'ler için aşağıdaki yüksek kullanılabilirlik yapılandırmaları DBMS düzeyinde desteklenir:
 
-- SUSE ve Red hat üzerinde Linux pacemaker tabanlı sistem çoğaltmasını SAP HANA. Ayrıntılı makalelere göz atın:
-    - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-    - [Red Hat Enterprise Linux üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
-- SUSE ve Red hat üzerinde [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) kullanarak genişleme n + b yapılandırma SAP HANA. Ayrıntılar aşağıdaki makalelerde listelenmiştir:
-    - [SUSE Linux Enterprise Server} üzerinde Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-    - [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- Windows genişleme dosya hizmetleri 'ni temel alan yük devretme kümesi SQL Server. Üretim sistemlerine yönelik öneri, kümeleme yerine SQL Server her zaman açık olarak kullanmaktır. SQL Server her zaman açık, ayrı depolama kullanarak daha iyi kullanılabilirlik sağlar. Ayrıntılar Bu makalede açıklanmıştır: 
-    - [Azure sanal makinelerinde SQL Server yük devretme kümesi örneği yapılandırma](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
-- SQL Server her zaman açık, Azure 'da SQL Server için Windows işletim sistemi ile desteklenir. Bu, Azure 'daki üretim SQL Server örnekleri için varsayılan önerimiz olur. Ayrıntılar aşağıdaki makalelerde açıklanmıştır:
-    - [Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları Ile tanışın](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
-    - [Azure sanal makinelerinde farklı bölgelerde her zaman açık kullanılabilirlik grubu yapılandırın](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr).
-    - [Azure 'Da Always on kullanılabilirlik grubu için bir yük dengeleyici yapılandırın](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener).
-- Windows için Oracle Data Guard ve Oracle Linux. Oracle Linux ayrıntılarını bu makalede bulabilirsiniz:
-    - [Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
-- SUSE ve RHEL için SUSE ve RHEL ayrıntılı belgelerindeki IBM DB2 HADR, burada pacemaker kullanılarak sunulmaktadır:
-    - [Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
-    - [Red Hat Enterprise Linux sunucusundaki Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)
-- SAP Ao ve SAP maxDB yapılandırması, bu belgelerde ayrıntılı olarak:
+- SAP HANA Sistem Çoğaltma Linux Pacemaker SUSE ve Red Hat dayalı. Ayrıntılı makalelere bakın:
+    - [SUSE Linux Enterprise Server'da Azure VM'lerde SAP HANA'nın yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+    - [Red Hat Enterprise Linux'ta Azure VM'lerde SAP HANA'nın yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+- SUSE ve Red Hat'teki [Azure NetApp Dosyalarını](https://azure.microsoft.com/services/netapp/) kullanarak SAP HANA ölçeklendirin n+m yapılandırmaları. Ayrıntılar bu makalelerde listelenmiştir:
+    - [SUSE Linux Enterprise Server'da Azure NetApp Dosyalarını kullanarak Azure VM'lerde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtın}](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+    - [Red Hat Enterprise Linux'ta Azure NetApp Dosyalarını kullanarak Azure VM'lerinde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- Windows Scale-Out Dosya Hizmetleri'ni temel alan SQL Server Failover kümesi. Üretim sistemleri için öneri kümeleme yerine SQL Server Always On kullanmak olsa da. SQL Server Always Her zaman ayrı depolama alanı kullanarak daha iyi kullanılabilirlik sağlar. Ayrıntılar bu makalede açıklanmıştır: 
+    - [Azure sanal makinelerde SQL Server failover küme örneğini yapılandırma](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
+- SQL Server Always On, Azure'daki SQL Server için Windows işletim sistemi ile desteklenir. Bu, Azure'daki sql server örnekleri için varsayılan öneridir. Ayrıntılar bu makalelerde açıklanmıştır:
+    - [Azure sanal makinelerde SQL Server Always On kullanılabilirlik gruplarına tanıtın.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+    - [Farklı bölgelerdeki Azure sanal makinelerinde Her Zaman Açık kullanılabilirlik grubunu yapılandırın.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)
+    - [Azure'daki Her Zaman Kullanılabilirlik grubu için bir yük dengeleyicisi yapılandırın.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener)
+- Windows ve Oracle Linux için Oracle Data Guard. Oracle Linux için ayrıntılar bu makalede bulunabilir:
+    - [Azure Linux sanal makinesinde Oracle Data Guard uygulamasını](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+- Ibm Db2 HADR Üzerinde SUSE ve RHEL Pacemaker kullanarak SUSE ve RHEL için ayrıntılı belgeler burada verilmiştir:
+    - [Pacemaker ile SUSE Linux Enterprise Server'da Azure VM'lerde IBM Db2 LUW'un yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
+    - [Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)
+- Sap ASE ve SAP maxDB yapılandırması bu belgelerde ayrıntılı olarak:
     - [SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
-    - [Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
-- HANA büyük örnek yüksek kullanılabilirlik senaryoları şu şekilde ayrıntılıdır:
-    - [HANA büyük örnekler için desteklenen senaryolar-yüksek kullanılabilirlik için STONITH ile HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability)
-    - [HANA büyük örnekler için desteklenen senaryolar-konak otomatik yük devretme (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11)
+    - [Azure VM'lerde SAP MaxDB, liveCache ve Content Server dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
+- HANA Büyük Örnekler yüksek kullanılabilirlik senaryoları ayrıntılı olarak:
+    - [Yüksek kullanılabilirlik için STONITH ile HANA Büyük Örnekleri- HSR için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability)
+    - [HANA Büyük Örnekleri için desteklenen senaryolar - Ana bilgisayar otomatik failover (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11)
 
 > [!IMPORTANT]
-> Yukarıda açıklanan senaryolardan hiçbiri için, bir VM 'de birden çok DBMS örneğinin yapılandırmasını destekliyoruz. Her durumda, sanal makine başına yalnızca bir veritabanı örneği dağıtılabilir ve açıklanan yüksek kullanılabilirlik yöntemleriyle korunabilir. Aynı Windows veya pacemaker yük devretme kümesi altında birden çok DBMS örneğinin korunması bu **noktada desteklenmez.** Ayrıca, Oracle Data Guard yalnızca VM dağıtım durumları başına tek bir örnek için desteklenir. 
+> Yukarıda açıklanan senaryoların hiçbiri için, tek bir VM'de birden çok DBMS örneğinin yapılandırmalarını destekliyoruz. Her durumda, VM başına yalnızca bir veritabanı örneği dağıtılabilir ve açıklanan yüksek kullanılabilirlik yöntemleriyle korunabilir. Aynı Windows veya Pacemaker failover kümesi altında birden çok DBMS örneğinin korunması şu anda **desteklenmez.** Ayrıca Oracle Data Guard, yalnızca VM dağıtım servis talepleri başına tek bir örnek için desteklenir. 
 
-Çeşitli veritabanı sistemleri, tek bir DBMS örneği altında birden çok veritabanını barındırmanıza olanak tanır. SAP HANA durumda olduğu gibi, birden çok veritabanı birden çok veritabanı kapsayıcısında (MDC) barındırılabilir. Bu çok veritabanı yapılandırmalarının tek bir yük devretme kümesi kaynağı içinde çalıştığı durumlarda, bu konfigürasyonlar desteklenir. Desteklenmeyen yapılandırmalarda birden çok küme kaynağı olması gereken durumlar vardır. Birden çok SQL Server kullanılabilirlik grubu tanımladığınız yapılandırmalarda olduğu gibi, bir SQL Server örneği altında.
+Çeşitli veritabanı sistemleri, tek bir DBMS örneği altında birden çok veritabanını barındırmaya olanak sağlar. SAP HANA örneğinde olduğu gibi, birden çok veritabanı birden çok veritabanı kapsayıcısında (MDC) barındırılabilir. Bu çok veritabanı yapılandırmalarının tek bir başarısız küme kaynağı içinde çalıştığı durumlarda, bu yapılandırmalar desteklenir. Desteklenmeyen yapılandırmalar, birden çok küme kaynağının gerekli olduğu durumlardır. Birden çok SQL Server Kullanılabilirlik Grubu tanımlayacağınız yapılandırmalara gelince, tek bir SQL Server örneği altında.
 
 
 ![DBMS HA yapılandırması](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)
 
-DBMS bir/veya işletim sistemine bağlı olarak, Azure yük dengeleyici gibi bileşenler çözüm mimarisinin bir parçası olarak gerekli olabilir veya olmayabilir. 
+DBMS an/veya işletim sistemlerine bağlı olarak, Azure yük dengeleyicisi gibi bileşenler çözüm mimarisinin bir parçası olarak gerekli olabilir veya olmayabilir. 
 
-Özellikle maxDB için depolama yapılandırmasının farklı olması gerekir. MaxDB 'de, yüksek kullanılabilirliğe sahip yapılandırmalara yönelik verilerin ve günlük dosyalarının paylaşılan depolamada bulunması gerekir. Yalnızca maxDB söz konusu olduğunda, paylaşılan depolama yüksek kullanılabilirlik için desteklenir. Diğer tüm DBMS için, düğüm başına ayrı depolama yığınları yalnızca desteklenen disk yapılandırmalarıdır.
+Özellikle maxDB için depolama yapılandırmasının farklı olması gerekir. maxDB'de veri ve günlük dosyalarının yüksek kullanılabilirlik yapılandırmaları için paylaşılan depolama alanında bulunması gerekir. Yalnızca maxDB durumunda, paylaşılan depolama yüksek kullanılabilirlik için desteklenir. Düğüm başına diğer tüm DBMS ayrı depolama yığınları için desteklenen tek disk yapılandırmaları vardır.
 
-Diğer yüksek kullanılabilirlik çerçevelerinin mevcut olduğu bilinmektedir ve Microsoft Azure de çalıştırılmak üzere bilinmektedir. Ancak, Microsoft bu çerçeveleri test etmedi. Yüksek kullanılabilirlik yapılandırmanızı bu çerçevelerle derlemek istiyorsanız, bu yazılımın sağlayıcısıyla birlikte çalışmanız gerekir:
+Diğer yüksek kullanılabilirlik çerçevelerinin bulunduğu ve Microsoft Azure'da da çalıştırılabildiği bilinmektedir. Ancak, Microsoft bu çerçeveleri sınamadı. Bu çerçevelerle yüksek kullanılabilirlik yapılandırmanızı oluşturmak istiyorsanız, aşağıdakiler için bu yazılımın sağlayıcısıyla çalışmanız gerekir:
 
 - Dağıtım mimarisi geliştirme
 - Mimarinin dağıtımı
-- Mimari desteği
+- Mimarinin desteklenmesi
 
 > [!IMPORTANT]
-> Microsoft Azure Market, Azure yerel depolama 'nın en üstünde depolama çözümleri sağlayan çeşitli yazılım gereçlerini sunmaktadır. Bu yazılım gereçleri, NFS paylaşımları oluşturmak için kullanılabilir ve ayrıca, bir bekleme düğümünün gerekli olduğu genişleme dağıtımlarında SAP HANA teorik olarak kullanılabilir. Çeşitli nedenlerden dolayı, Azure 'da Microsoft ve SAP tarafından gerçekleştirilen hiçbir DBMS dağıtımı için bu depolama yazılım gereçlerinden hiçbiri desteklenmez. Bu noktada, SMB paylaşımlarında DBMS dağıtımları desteklenmez. NFS paylaşımlarındaki DBMS dağıtımları [Azure NetApp FILES](https://azure.microsoft.com/services/netapp/)NFS 4,1 paylaşımlarıyla sınırlıdır.
+> Microsoft Azure Marketi, Azure yerel depolama alanının üzerinde depolama çözümleri sağlayan çeşitli yumuşak cihazlar sunar. Bu yumuşak cihazlar, teorik olarak bekleme düğümü gerektiren SAP HANA ölçeklendirme dağıtımlarında teorik olarak kullanılabilen NFS paylaşımları oluşturmak için de kullanılabilir. Çeşitli nedenlerden dolayı, bu depolama yumuşak cihazların hiçbiri Microsoft ve SAP tarafından Azure'daki DBMS dağıtımları için desteklenmez. DBMS'nin Kobİ hisselerine dağıtımları şu anda hiç desteklenmez. NFS hisselerinde DBMS'nin [dağıtımı, Azure NetApp Dosyalarındaki](https://azure.microsoft.com/services/netapp/)NFS 4.1 paylaşımları ile sınırlıdır.
 
 
-## <a name="high-availability-for-sap-central-service"></a>SAP Merkezi hizmeti için yüksek kullanılabilirlik
-SAP Merkezi Hizmetleri, SAP yapılandırmanızın ikinci bir tek hata noktasıdır. Sonuç olarak, bu merkezi hizmet süreçlerini de korumanız gerekir. SAP iş yükü için desteklenen ve belgelenen teklif şöyle okur:
+## <a name="high-availability-for-sap-central-service"></a>SAP Merkez Servisi için Yüksek Kullanılabilirlik
+SAP Merkezi Hizmetleri, SAP yapılandırmanızın ikinci tek hata noktasıdır. Sonuç olarak, bu Merkezi Hizmetler süreçlerini de korumanız gerekir. SAP iş yükü için desteklenen ve belgelenen teklif şöyledir:
 
-- Sapmnt ve küresel aktarım dizini için Windows genişleme dosya hizmetleri 'ni kullanan Windows Yük devretme kümesi sunucusu. Ayrıntılar makalesinde açıklanmaktadır:
-    - [Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP yoks/SCS örneği oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-    - [SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-- Sapmnt ve genel aktarım dizini için [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) tabanlı SMB paylaşımının kullanıldığı Windows Yük devretme kümesi sunucusu. Ayrıntılar makalesinde listelenmiştir:
-    - [SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-- Windows Yük devretme kümesi sunucusu, SIOS `Datakeeper`tabanlı. Microsoft tarafından belgelense de, bu çözüm kullanılırken SIOS desteğiyle birlikte çalışmak için, SIOS ile bir destek ilişkisine ihtiyacınız vardır. Ayrıntılar makalesinde açıklanmaktadır:
-    - [Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-    - [SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
-- SUSE işletim sisteminde, iki SUSE VM kullanarak yüksek oranda kullanılabilir bir NFS paylaşımıyla oluşturma ve dosya çoğaltma için `drdb`. Ayrıntılar makalede belgelenmiştir
-    - [SAP uygulamaları için SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-    - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- Pacemaker SUSE işletim sistemi [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)tarafından sunulan NFS paylaşımlarına sahiptir. Ayrıntılar şu şekilde belgelenmiştir
-    - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- `glusterfs` kümesinde barındırılan NFS paylaşımıyla Red Hat işletim sisteminde pacemaker. Makalelerde Ayrıntılar bulunabilir
-    - [Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
-    - [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerinde `GlusterFS`](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
-- [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)barındırılan NFS paylaşımıyla Red Hat işletim sisteminde pacemaker. Ayrıntılar makalesinde açıklanmaktadır
-    - [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+- Windows Failover Cluster Server sapmnt ve global aktarım dizini için Windows Scale-out Dosya Hizmetleri'ni kullanır. Ayrıntılar makalede açıklanmıştır:
+    - [Azure'da dosya paylaşımı kullanarak bir Windows failover kümesinde SAP ASCS/SCS örneğini kümeleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+    - [SAP ASCS/SCS örnekleri için Windows failover kümesi ve dosya paylaşımı kullanarak Azure altyapılarını SAP yüksek kullanılabilirliği için hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+- Windows Failover Cluster Server, sapmnt ve global aktarım dizini için [Azure NetApp Dosyalarını](https://azure.microsoft.com/services/netapp/) temel alan Kobİ paylaşımını kullanır. Ayrıntılar makalede listelenmiştir:
+    - [SAP uygulamaları için Azure NetApp Files(SMB) ile Windows'daki Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+- Windows Failover Cluster Server `Datakeeper`SIOS dayalı . Microsoft tarafından belgelenmiş olsa da, Bu çözümü kullanırken SIOS desteğiile etkileşimkurabileceğiniz için SIOS ile bir destek ilişkisine ihtiyacınız vardır. Ayrıntılar makalede açıklanmıştır:
+    - [Azure'da bir küme paylaşılan disk kullanarak bir Windows failover kümesinde SAP ASCS/SCS örneğini kümeleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+    - [SAP ASCS/SCS için Windows failover kümesi ve paylaşılan disk kullanarak Azure altyapısını SAP HA için hazırlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
+- Pacemaker SUSE işletim sistemi iki SUSE VMs kullanarak ve `drdb` dosya çoğaltma için son derece kullanılabilir NFS payı oluşturma ile. Ayrıntılar makalede belgelenmiştir
+    - [SAP uygulamaları için SUSE Linux Enterprise Server'da Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
+    - [SUSE Linux Enterprise Server'da Azure VM'lerde NFS için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+- [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)tarafından sağlanan NFS paylaşımlarından yararlanan Pacemaker SUSE işletim sistemi. Ayrıntılar belgelenmiştir
+    - [SAP uygulamaları için Azure NetApp Dosyaları ile SUSE Linux Enterprise Server'da Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+- Pacemaker Red Hat işletim sistemi nfs payı `glusterfs` ile bir küme üzerinde barındırılan. Ayrıntılar makalelerde bulunabilir
+    - [Red Hat Enterprise Linux'ta SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+    - [`GlusterFS`SAP NetWeaver için Red Hat Enterprise Linux'ta Azure VM'lerde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- NFS paylaşımı ile Red Hat işletim sistemi pacemaker [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)üzerinde barındırılan . Ayrıntılar makalede açıklanmıştır
+    - [Azure Sanal Makineler, SAP uygulamaları için Azure NetApp Dosyaları ile Red Hat Enterprise Linux'ta SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-Listelenen çözümlerde, `Datakeeper` ürünü desteklemek ve doğrudan sorunlar durumunda SIOS ile birlikte çalışmak için SIOS ile bir destek ilişkisine ihtiyacınız vardır. Windows, Red Hat ve/veya SUSE işletim sisteminin lisanslanma yöntemine bağlı olarak, listelenen yüksek kullanılabilirliğe sahip yapılandırmalara tam destek sağlamak için işletim sistemi sağlayıcınıza sahip bir destek sözleşmeniz de gerekebilir.
+Listelenen çözümler arasında, `Datakeeper` ürünü desteklemek ve sorunlar durumunda doğrudan SIOS ile etkileşimde bulunmak için SIOS ile bir destek ilişkisine ihtiyacınız vardır. Windows, Red Hat ve/veya SUSE OS'yi lisanslayız şekline bağlı olarak, listelenen yüksek kullanılabilirlik yapılandırmalarının tam desteğine sahip olmak için işletim sistemi sağlayıcınızla bir destek sözleşmesi ne kadar süreniz olması da gerekebilir.
 
-Yapılandırma şöyle de gösterilebilir:
+Yapılandırma aşağıdaki gibi görüntülenebilir:
 
 ![DBMS ve ASCS HA yapılandırması](./media/sap-planning-supported-configurations/high-available-3-tier-configuration.png)
 
-Grafiklerin sağ tarafında, yüksek oranda kullanılabilir SAP Merkezi Hizmetleri gösterilir. Bir sorun olması durumunda yük devretme kümesi çerçevesiyle korunan SAP merkezi hizmetlerinin yanı sıra, yüksek oranda kullanılabilir bir NFS ya da SMB paylaşımında bir zorunludur, sapmnt ve küresel aktarım dizininin de bir Windows paylaşılan diski tek bir VM 'nin varlığını bağımsız olarak kullanılabilir. Windows Yük devretme kümesi sunucusu ve Paceyapıcısı gibi bazı çözümler, trafiği sağlıklı bir düğüme yönlendirmek veya yeniden yönlendirmek için bir Azure Yük Dengeleyici gerektirir.
+Grafiklerin sağ tarafında, kullanılabilir SAP Merkezi Hizmetleri gösterilir. SAP Central hizmetlerinin bir sorun durumunda başarısız olabilecek bir küme çerçevesi ile korunmasına ek olarak, sapmnt ve küresel aktarım dizininin tek bir VM varlığından bağımsız olarak kullanılabilir. Windows Failover Cluster Server ve Pacemaker gibi çözümlerden bazıları, trafiği sağlıklı bir düğüme yönlendirmek veya yönlendirmek için bir Azure yük dengeleyicisi gerektirecektir.
 
-Gösterilen listede, Oracle Linux işletim sisteminin bir açıklaması yoktur. Oracle Linux, bir küme çerçevesi olarak pacemaker 'ı desteklemez. SAP sisteminizi Oracle Linux dağıtmak istiyorsanız ve Oracle Linux için yüksek kullanılabilirlik çerçevesine ihtiyacınız varsa, üçüncü taraf tedarikçilerle çalışmanız gerekir. Tedarikçilerden biri, Azure 'da SAP tarafından desteklenen Linux için koruma paketiyle birlikte SIOS 'dir. Daha fazla bilgi için bkz. SAP Note #1662610-daha fazla bilgi için bkz. [Linux IÇIN SIOS koruma paketi destek ayrıntıları](https://launchpad.support.sap.com/#/notes/1662610) .
+Gösterilen listede, Oracle Linux işletim sisteminden bahsedilmemiştir. Oracle Linux bir küme çerçevesi olarak Pacemaker desteklemiyor. SAP sisteminizi Oracle Linux'ta dağıtmak istiyorsanız ve Oracle Linux için yüksek kullanılabilirlik çerçevesine ihtiyacınız varsa, üçüncü taraf tedarikçilerle çalışmanız gerekir. Tedarikçilerden biri, Azure'da SAP tarafından desteklenen Linux için Koruma Paketi'ne sahip SIOS'tur. Daha fazla bilgi için SAP not #1662610 - Daha fazla bilgi [için Linux için SIOS Protection Suite için destek ayrıntılarını](https://launchpad.support.sap.com/#/notes/1662610) okuyun.
 
 
 
-### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>Yukarıda listelenen SAP Merkezi Hizmetleri senaryolarında desteklenen depolama alanı
-Azure Depolama türlerinin yalnızca bir alt kümesi yüksek oranda kullanılabilir NFS veya SAP Merkezi Hizmetleri küme senaryolarımızda kullanım için kalite sağlayan SMB paylaşımları sağladığından desteklenen depolama türlerinin bir listesi olduğundan
+### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>Yukarıda listelenen SAP Merkezi Hizmetler senaryoları ile desteklenen depolama
+Yalnızca Azure depolama türlerinin bir alt kümesi, SAP Merkezi Hizmetleri küme senaryolarımızdaki kullanım için bu kaliteyi yüksek oranda kullanılabilir NFS veya Kobİ paylaşımları sağladığından, desteklenen depolama türlerinin bir listesi
 
-- Windows genişleme dosya sunucusu ile Windows Yük devretme kümesi sunucusu, Azure NetApp Files hariç olmak üzere tüm yerel Azure depolama türlerine dağıtılabilir. Bununla birlikte, verimlilik ve ıOPS 'nin üstün hizmet düzeyi anlaşmaları nedeniyle Premium depolamanın yararlanması önerilir.
-- Azure NetApp Files SMB içeren Windows Yük devretme kümesi sunucusu Azure NetApp Files destekleniyor. Azure dosya hizmetlerindeki SMB paylaşımları bu noktada **desteklenmez.**
-- Windows Yük devretme kümesi sunucusu `Datakeeper`, SIOS 'yi temel alan Windows paylaşılan diski, Azure NetApp Files hariç tüm yerel Azure depolama türlerine dağıtılabilir. Bununla birlikte, verimlilik ve ıOPS 'nin üstün hizmet düzeyi anlaşmaları nedeniyle Premium depolamanın yararlanması önerilir.
-- Azure NetApp Files üzerindeki NFS paylaşımlarını kullanan SUSE veya Red Hat Paceyapıcısı Azure NetApp Files desteklenir. 
-- İki VM arasında bir `drdb` yapılandırması kullanan SUSE Paceyapıcısı, Azure NetApp Files hariç yerel Azure Depolama türleri kullanılarak desteklenir. Bununla birlikte, verimlilik ve ıOPS 'nin üstün hizmet düzeyi anlaşmaları nedeniyle Premium depolamanın yararlanması önerilir.
-- NFS paylaşımının sağlanması için `glusterfs` kullanan Red Hat Paceyapıcısı, Azure NetApp Files hariç yerel Azure Depolama türleri kullanılarak desteklenir. Bununla birlikte, verimlilik ve ıOPS 'nin üstün hizmet düzeyi anlaşmaları nedeniyle Premium depolamanın yararlanması önerilir.
+- Windows Scale-out File Server'a sahip Windows Failover Cluster Server, Azure NetApp Dosyaları hariç tüm azure depolama türlerinde dağıtılabilir. Ancak, öneri, iş ve IOPS'deki üstün hizmet düzeyi anlaşmaları nedeniyle Premium Depolama'dan yararlanmaktır.
+- Azure NetApp Dosyalarında Kobİ'ye sahip Windows Failover Cluster Server, Azure NetApp Dosyalarında desteklenir. Azure Dosyası hizmetlerinde Kobİ paylaşımları şu anda **desteklenmez.**
+- SIOS `Datakeeper` tabanlı windows paylaşılan diske sahip Windows Failover Cluster Server, Azure NetApp Dosyaları hariç tüm azure depolama türlerinde dağıtılabilir. Ancak, öneri, iş ve IOPS'deki üstün hizmet düzeyi anlaşmaları nedeniyle Premium Depolama'dan yararlanmaktır.
+- Azure NetApp Dosyalarında NFS paylaşımlarını kullanan SUSE veya Red Hat Pacemaker Azure NetApp Dosyalarında desteklenir. 
+- İki VM arasında `drdb` yapılandırma kullanan SUSE Pacemaker, Azure NetApp Dosyaları dışında yerel Azure depolama türleri kullanılarak desteklenir. Ancak, öneri, iş ve IOPS'deki üstün hizmet düzeyi anlaşmaları nedeniyle Premium Depolama'dan yararlanmaktır.
+- NFS paylaşımını sağlamak için kullandığı `glusterfs` Red Hat Pacemaker, Azure NetApp Dosyaları dışında yerel Azure depolama türleri kullanılarak desteklenir. Ancak, öneri, iş ve IOPS'deki üstün hizmet düzeyi anlaşmaları nedeniyle Premium Depolama'dan yararlanmaktır.
 
 > [!IMPORTANT]
-> Microsoft Azure Market, Azure yerel depolama 'nın en üstünde depolama çözümleri sağlayan çeşitli yazılım gereçlerini sunmaktadır. Bu yazılım araçları, NFS veya SMB paylaşımları oluşturmak için kullanılabilir ve ayrıca teorik olarak yük devretme kümelenmiş SAP merkezi hizmetlerinde de kullanılabilir. Bu çözümler, Microsoft tarafından SAP iş yükü için doğrudan desteklenmez. NFS veya SMB paylaşımınızı oluşturmak için böyle bir çözüm kullanmaya karar verirseniz, SAP Merkezi hizmeti yapılandırma desteğinin, depolama yumuşak gereci 'nda yazılımın sahibi olan üçüncü taraf tarafından sağlanması gerekir.
+> Microsoft Azure Marketi, Azure yerel depolama alanının üzerinde depolama çözümleri sağlayan çeşitli yumuşak cihazlar sunar. Bu yumuşak cihazlar NFS veya Kobİ hisseleri oluşturmak için de teorik olarak kümelenmiş SAP Merkezi Hizmetleri üzerinde de kullanılabilir oluşturmak için kullanılabilir. Bu çözümler, SAP iş yükü için Microsoft tarafından doğrudan desteklenmez. NFS veya Kobİ payınızı oluşturmak için böyle bir çözüm kullanmaya karar verirseniz, SAP Merkezi Hizmet yapılandırmasına yönelik desteğin, yazılımı niçin depolama yumuşak cihazında bulunan üçüncü taraf tarafından sağlanması gerekir.
 
 
-## <a name="multi-sid-sap-central-services-failover-clusters"></a>Çoklu SID SAP Merkezi Hizmetler yük devretme kümeleri
-Yük devretme kümesi yapılandırmasında, SAP 'nin büyük SAP lanlarında gereken sanal makine sayısını azaltmak için SAP Merkezi Hizmetleri örneklerini birden çok farklı SAP sisteminin çalıştırmasına izin verir. 30 veya daha fazla NetWeaver veya S/4HANA üretim sistemine sahip olduğunuz durumları düşünün. Birden çok SID Kümelemesi olmadan, bu yapılandırmaların 30 veya daha fazla Windows veya pacemaker yük devretme kümesi yapılandırmasında 60 veya daha fazla VM olması gerekir. DBMS yük devretme kümelerinin yanı sıra, gereklidir. Yük devretme kümesi yapılandırmasındaki iki düğüm arasında birden fazla SAP Merkezi hizmeti dağıtmak, VM 'lerin sayısını önemli ölçüde azaltabilir. Ancak, tek bir iki düğümlü küme yapılandırmasında birden fazla SAP merkezi hizmet örneğinin dağıtımı da bazı dezavantajlara sahiptir. Küme yapılandırmasındaki tek bir VM 'nin etrafındaki sorunlar birden çok SAP sistemine uygulanır. Küme yapılandırmasında çalışan konuk IŞLETIM sistemindeki bakım, birden çok üretim SAP sistemi etkilendiğinden daha fazla koordinasyon gerektirir. SAP 'yi işleme gibi araçlar, sistem kopyalama sürecinde çok SID Kümelemesi desteklememektedir.
+## <a name="multi-sid-sap-central-services-failover-clusters"></a>Multi-SID SAP Merkezi Hizmetleri kümeler üzerinde başarısız
+Sap, büyük SAP manzaralarında gereken VM sayısını azaltmak için, başarısız küme yapılandırmasında birden çok farklı SAP sisteminin SAP Merkezi Hizmetleri örneklerini çalıştırmaya olanak tanır. 30 veya daha fazla NetWeaver veya S/4HANA üretim sistemine sahip olduğunuz durumları düşünün. Çoklu SID kümeleme olmadan, bu yapılandırmalar 30 veya daha fazla Windows veya Pacemaker failover küme yapılandırmalarında 60 veya daha fazla VM gerektirir. DBMS failover kümeleri dışında gerekli. Bir failover küme yapılandırmasında iki düğüm üzerinde birden çok SAP merkezi hizmeti dağıtmak, VM sayısını önemli ölçüde azaltabilir. Ancak, tek bir iki düğüm küme yapılandırması üzerinde birden çok SAP Central hizmetleri örnekleri dağıtmada bazı dezavantajları da vardır. Küme yapılandırmasındaki tek bir VM'nin sorunları birden çok SAP sistemine uygulanır. Küme yapılandırmasında çalışan konuk işletim sistemi üzerinde bakım, birden çok üretim SAP sistemleri etkilendiği için daha fazla koordinasyon gerektirir. SAP LaMa gibi araçlar, sistem klonlama işlemlerinde çoklu SID kümeleme işlemini desteklemiyor.
 
-Azure 'da, Windows işletim sistemi için ENSA1 ve ENSA2 ile bir çoklu SID küme yapılandırması desteklenir. Öneri, eski sıraya alma çoğaltma hizmeti mimarisini (ENSA1) bir çoklu SID kümesinde yeni mimari (ENSA2) ile birleştirmemelidir. Bu tür bir mimari hakkındaki ayrıntılar makalelerde belgelenmiştir
+Azure'da, ENSA1 ve ENSA2 işletim sistemine sahip Windows işletim sistemi için çok SID küme yapılandırması desteklenir. Öneri, eski Enqueue Çoğaltma Hizmeti mimarisini (ENSA1) yeni mimariyle (ENSA2) tek bir çoklu SID kümeüzerinde birleştirmek değildir. Böyle bir mimari ile ilgili ayrıntılar makalelerde belgelenmiştir
 
-- [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk ile Azure üzerinde çok düzeyli yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk) 
-- [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share) 
+- [Windows Server Failover Clustering ve Azure'da paylaşılan disk ile SAP ASCS/SCS örneği çoklu SID yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk) 
+- [Windows Server Failover Clustering ve Azure'da dosya paylaşımı ile SAP ASCS/SCS örneği çoklu SID yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share) 
 
-SUSE için, pacemaker tabanlı çok düzeyli bir küme de desteklenir. Şu ana kadar yapılandırma desteklenir:
+SUSE için, Pacemaker tabanlı bir multi-SID küme de desteklenir. Şimdiye kadar yapılandırma için desteklenir:
 
 - En fazla beş SAP ASCS/SCS örneği
-- Eski sıraya alma çoğaltma sunucusu buz mimarisi (ENSA1)
-- İki düğümlü Paceyapıcısı küme yapılandırması
+- Eski enqueue çoğaltma sunucusu buz mimarisi (ENSA1)
+- İki düğüm Pacemaker küme yapılandırmaları
 
-Yapılandırma, [SAP uygulamaları için SUSE Linux Enterprise Server Çoklu SID Kılavuzu ' nda Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) olarak belgelenmiştir
+Yapılandırma, [SAP uygulamaları multi-SID kılavuzu için SUSE Linux Enterprise Server'daki Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlikte](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) belgelenmiştir
 
-Sıraya alma çoğaltması sunucusu olan bir çoklu SID kümesi, şema gibi
+Enqueue Çoğaltma sunucusu şematik olarak görünen bir çoklu SID kümesi
 
 ![DBMS ve ASCS HA yapılandırması](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
-## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA genişleme senaryoları
-SAP HANA ölçek genişletme senaryoları, [SAP HANA donanım dizininde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)listelenen Hana sertifikalı Azure VM 'lerinin bir alt kümesi için desteklenir. ' Kümeleme ' sütununda ' Yes ' ile işaretlenen tüm VM 'Ler OLAP veya S/4HANA ölçeği için kullanılabilir. Bekleme olmadan yapılandırma, Azure Depolama türleri ile desteklenir: 
+## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA ölçeklendirme senaryoları
+SAP HANA ölçeklendirme senaryoları, [SAP HANA donanım dizininde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)listelenen HANA sertifikalı Azure VM'lerinin bir alt kümesi için desteklenir. 'Kümeleme' sütununda 'Evet' ile işaretlenmiş tüm VM'ler OLAP veya S/4HANA ölçeklendirmesi için kullanılabilir. Bekleme değiştirilen konfigürasyonlar Azure Depolama türleri ile desteklenir: 
 
-- /Hana/log birimi için Azure Write Hızlandırıcısı dahil olmak üzere Azure Premium Depolama
+- /hana/log birimi için Azure Yazma hızlandırıcısı da dahil olmak üzere Azure Premium Depolama
 - [Ultra disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Bekleyen düğüm (ler) ile OLAP veya S/4HANA için genişleme yapılandırmalarının SAP HANA, yalnızca Azure NetApp Files üzerinde barındırılan NFS ile desteklenir.
+Bekleme düğümü(ler) olan OLAP veya S/4HANA için SAP HANA ölçeklendirme yapılandırmaları yalnızca Azure NetApp Files'da paylaşılan NFS ile desteklenir.
 
-Bekleyen düğümü olan veya olmadan tam depolama yapılandırması hakkında daha fazla bilgi için, makalelere göz atın:
+Bekleme düğümü olan veya olmayan tam depolama yapılandırmaları hakkında daha fazla bilgi için makaleleri kontrol edin:
 
-- [Azure sanal makine depolama yapılandırmalarının SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
-- [SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- [SAP destek notunun #2080991](https://launchpad.support.sap.com/#/notes/2080991)
+- [SAP HANA Azure sanal makine depolama alanı yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
+- [SUSE Linux Enterprise Server'da Azure NetApp Dosyalarını kullanarak Azure VM'lerinde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [Red Hat Enterprise Linux'ta Azure NetApp Dosyalarını kullanarak Azure VM'lerinde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SAP destek notu #2080991](https://launchpad.support.sap.com/#/notes/2080991)
 
-HANA büyük örnekleri desteklenen HANA genişleme yapılandırmalarının ayrıntıları için aşağıdaki belgeler geçerlidir:
+HANA Büyük Örnekleri desteklenen HANA ölçeklendirme yapılandırmaları ayrıntıları için aşağıdaki belgeler geçerlidir:
 
-- [Hazırda bekleme ile büyük örnek ölçeği genişletme için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby)
-- [Hazır olmayan HANA büyük örnekler için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby)
+- [HANA Büyük Örnekleri için desteklenen senaryolar bekleme ile ölçeklendirildi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby)
+- [HANA Büyük Örnekler için desteklenen senaryolar beklemeden ölçeklendirildi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby)
 
 
-## <a name="disaster-recovery-scenario"></a>Olağanüstü durum kurtarma senaryosu
-Desteklenen çeşitli olağanüstü durum kurtarma senaryoları vardır. Tüm Azure bölgelerinin kılavuzdan sonra dengeleyecekse, olağanüstü durum mimarilerini mimarilere göre tanımladık. Bu, olağanüstü durum kurtarma hedefi 'nin SAP manzara 'yi çalıştırmak için hedef olarak farklı bir Azure bölgesi olması gerektiği anlamına gelir. DBMS katmanındaki ve DBMS olmayan katmandaki yöntemleri ve konfigürasyonları ayırdık. 
+## <a name="disaster-recovery-scenario"></a>Olağanüstü Durum Kurtarma Senaryosu
+Desteklenen çeşitli olağanüstü durum kurtarma senaryoları vardır. Felaket mimarilerini, tam bir Azure bölgesinin şebeke dışına gidişini telafi etmesi gereken mimariler olarak tanımlıyoruz. Bu, SAP ortamınızı çalıştırmak için hedef olarak farklı bir Azure bölgesi olması için olağanüstü durum kurtarma hedefine ihtiyacımız olduğu anlamına gelir. DBMS katmanındaki ve DBMS olmayan katmandaki yöntemleri ve yapılandırmaları ayırıyoruz. 
 
 ### <a name="dbms-layer"></a>DBMS katmanı
-DBMS katmanı için, her zaman açık, Oracle Data Guard, DB2 HADR, SAP ASE her zaman açık veya HANA sistem çoğaltması gibi DBMS yerel çoğaltma mekanizmalarını kullanan yapılandırmalarda yapılandırma desteklenir. Tek bir Azure bölgesi içinde dağıtılan tipik yüksek kullanılabilirlik senaryolarında olduğu gibi, bu gibi durumlarda çoğaltma akışının zaman uyumsuz olması zorunludur. Bu tür desteklenen bir DBMS olağanüstü durum kurtarma yapılandırmasına örnek olarak, [Azure bölgelerindeki SAP HANA kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions#combine-availability-within-one-region-and-across-regions)makalesinde açıklanmaktadır. Bu bölümdeki ikinci grafik, örnek olarak HANA ile bir senaryoyu açıklar. SAP uygulamaları için desteklenen ana veritabanlarının hepsi böyle bir senaryoya dağıtılabilir.
+DBMS katmanı için, Her Zaman Açık, Oracle Data Guard, Db2 HADR, SAP ASE Always-On veya HANA Sistem Çoğaltma gibi DBMS yerel çoğaltma mekanizmalarını kullanan yapılandırmalar desteklenir. Bu gibi durumlarda çoğaltma akışının, tek bir Azure bölgesinde dağıtılan tipik yüksek kullanılabilirlik senaryolarında olduğu gibi senkron yerine eşzamanlı olması zorunludur. Desteklenen bir DBMS olağanüstü durum kurtarma yapılandırmasının tipik bir örneği, [Azure bölgeleri arasında SAP HANA kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions#combine-availability-within-one-region-and-across-regions)makalesinde açıklanmıştır. Bu bölümdeki ikinci grafik, HANA içeren bir senaryoyu örnek olarak açıklar. SAP uygulamaları için desteklenen ana veritabanlarının tümü böyle bir senaryoda dağıtılabilir.
 
-VM 'nin tam iş yükü trafiğine karşılaşmadığından, olağanüstü durum kurtarma bölgesinde daha küçük bir VM 'yi hedef örnek olarak kullanmak desteklenir. Bunu yaptığınızda, aşağıdaki noktaları göz önünde bulundurmanız gerekir:
+VM tam iş yükü trafiğini yaşamadığından, olağanüstü durum kurtarma bölgesinde daha küçük bir VM'nin hedef örnek olarak kullanılması desteklenir. Bunu yaparken, aşağıdaki hususları göz önünde bulundurmanız gerekir:
 
-- Daha küçük VM türleri, daha küçük VM 'Lere bağlı olan çok sayıda diske izin vermez
-- Daha küçük VM 'Ler daha az ağ ve depolama aktarım hızına sahiptir
-- VM aileleri arasında yeniden boyutlandırma, farklı VM 'Ler tek bir Azure kullanılabilirlik kümesinde toplandığında veya M serisi ailesi ile Mv2 ailesi sanal makineleri arasında yeniden boyutlandırma gerçekleşiyorsa bir sorun olabilir
-- Veritabanı örneği için CPU ve bellek tüketimi, bu değişiklikleri verilere en az gecikmeyle uygulamak üzere en az gecikmeyle ve yeterli CPU ve bellek kaynağına sahip değişiklikler akışını alabiliyor  
+- Daha küçük VM türleri, küçük VM'lerden çok sayıda diskin eklenmesine izin vermez
+- Daha küçük VM'ler daha az ağ ve depolama iş metoduna sahiptir
+- Farklı VM'ler tek bir Azure Kullanılabilirlik Kümesi'nde toplandığında veya yeniden boyutlandırma M-Serisi ailesi ile Mv2 VM ailesi arasında gerçekleştiğinde VM aileleri arasında yeniden boyutlandırma sorun olabilir
+- Veritabanı örneğinin CPU ve bellek tüketimi, bu değişiklikleri en az gecikmeyle verilere uygulamak için en az gecikme ve yeterli CPU ve bellek kaynağı yla değişikliklerin akışını alabilme  
 
-Farklı VM boyutlarının sınırlamaları hakkında daha fazla ayrıntı için [burada](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) bulunabilir 
+Farklı VM boyutları sınırlamaları hakkında daha fazla bilgi [burada](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) bulabilirsiniz 
 
-Bir DR hedefini dağıtmaya yönelik başka bir desteklenen yöntem, bir üretim dışı SAP örneğinin üretim dışı bir DBMS örneğini çalıştıran bir VM 'de yüklü ikinci bir DBMS örneğidir. Bu, DR senaryosunda ana örnek olarak çalışması gereken belirli hedef örnekler için bellek, CPU kaynakları, ağ bant genişliği ve depolama bant genişliği hakkında bilgi almanız gerektiğinden bu biraz daha zor olabilir. Özellikle de HANA 'da, verilerin DR hedefi örneğine önceden yüklenmemiş olması için paylaşılan bir konakta DR hedefi olarak işlev gören örneği yapılandırmanız önemle önerilir.
+DR hedefini dağıtmanın desteklenen bir diğer yöntemi de, üretim dışı bir SAP örneğinin üretim dışı DBMS örneğini çalıştıran bir VM'ye ikinci bir DBMS örneğinin yüklenmesidir. Dr senaryosunda ana örnek olarak çalışması gereken belirli hedef örnekleri için bellek, CPU kaynakları, ağ bant genişliği ve depolama bant genişliği ne gerektiğini anlamaya gerek bu yana bu biraz daha zor olabilir. Özellikle HANA'da, verilerin DR hedef örneğine önceden yüklenmemesi için paylaşılan bir ana bilgisayarda DR hedefi olarak işlev gösteren örneği yapılandırmanız önerilir.
 
-HANA büyük örnek DR senaryolarında şu belgeleri kontrol edin:
+HANA Büyük Örnek DR senaryoları için bu belgeleri denetleyin:
 
-- [Depolama çoğaltması kullanan DR ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication)
-- [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [Depolama çoğaltması ile HSR ve DR ile yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication)
-- [Depolama çoğaltması kullanarak DR ile genişleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication)
+- [Depolama çoğaltma kullanarak DR ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication)
+- [Depolama çoğaltma kullanarak DR (çok amaçlı) ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
+- [Depolama çoğaltma kullanarak DR (çok amaçlı) ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
+- [Depolama çoğaltma ile HSR ve DR ile yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication)
+- [Depolama çoğaltma kullanarak DR ile ölçeklendirme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication)
 - [HSR kullanarak DR ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr)
-- [Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized)
+- [Dr tek düğüm HSR (maliyet optimize)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized)
 - [HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr)
-- [HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet için iyileştirilmiş)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
+- [HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet optimize edilmiş)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
 - [HSR kullanarak DR ile ölçeklendirme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr)
 
 > [!NOTE]
-> [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanımı, SAP iş yükü altındaki DBMS dağıtımları için sınanmamıştır. Sonuç olarak, bu zaman noktasındaki SAP sistemlerinin DBMS katmanı için desteklenmez. Microsoft ve SAP tarafından listelenmeyen diğer çoğaltma yöntemleri desteklenmez. Farklı Azure bölgeleri arasında SAP sistemlerinin DBMS katmanını çoğaltmak için üçüncü taraf yazılım kullanılması, yazılımın satıcısı tarafından desteklenilmesi gerekir ve Microsoft ve SAP destek kanalları aracılığıyla desteklenmez. 
+> Azure [Site Kurtarma](https://azure.microsoft.com/services/site-recovery/) kullanımı SAP iş yükü altındaki DBMS dağıtımları için sınanmandı. Sonuç olarak, bu noktada SAP sistemlerinin DBMS katmanı için desteklenmez. Microsoft ve SAP tarafından listelenmeyen diğer çoğaltma yöntemleri desteklenmez. Sap sistemlerinin DBMS katmanını farklı Azure Bölgeleri arasında çoğaltmak için üçüncü taraf yazılımlarının kullanılması, yazılımın satıcısı tarafından desteklenmesi gerekir ve Microsoft ve SAP destek kanalları aracılığıyla desteklenmez. 
  
 ## <a name="non-dbms-layer"></a>DBMS olmayan katman
-SAP uygulama katmanı ve gereken son paylaşımlar veya depolama konumları için, iki ana senaryo müşteriler tarafından yararlanılabilir:
+SAP uygulama katmanı ve gerekli olan nihai paylaşımlar veya depolama konumları için, iki ana senaryo müşteriler tarafından yararlanılır:
 
-- İkinci Azure bölgesindeki olağanüstü durum kurtarma hedefleri, herhangi bir üretim veya üretim dışı amaçla kullanılmıyor. Bu senaryoda, olağanüstü durum kurtarma hedefi olarak işlev gösteren VM 'Ler ideal şekilde dağıtılır ve görüntü ve üretim SAP uygulama katmanının görüntülerinde yapılan değişiklikler olağanüstü durum kurtarma bölgesine çoğaltılır. Böyle bir görevi gerçekleştirebilen bir işlevsellik [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-move-overview). Azure Site Recovery bunun gibi Azure 'dan Azure 'a çoğaltma senaryolarını destekler. 
-- Olağanüstü durum kurtarma hedefleri, gerçekte üretim dışı sistemler tarafından kullanılan sanal makinelerlerdir. Tüm SAP yatay, üretim sistemlerine genellikle bir bölgede ve üretim dışı sistemlere sahip olan iki farklı Azure bölgesine yayılır. Birçok müşteri dağıtımında, müşterinin bir üretim sistemine eşdeğer bir üretim dışı sistemi vardır. Müşterinin uygulama katmanında üretim dışı sistemlere önceden yüklenmiş üretim uygulaması örnekleri vardır. Yük devretme durumunda, üretim dışı örnekler kapatılırlar, üretim VM 'lerinin sanal adları, üretim dışı VM 'lere taşınır (DNS 'de yeni IP adresleri atandıktan sonra) ve önceden yüklenmiş üretim örnekleri çalışmaya başlama
+- İkinci Azure bölgesindeki olağanüstü durum kurtarma hedefleri herhangi bir üretim veya üretim dışı amaçlar için kullanılmamaktadır. Bu senaryoda, olağanüstü durum kurtarma hedefi olarak işlev gören VM'ler ideal olarak dağıtılamaz ve üretim SAP uygulama katmanının görüntülerindeki görüntü ve değişiklikler olağanüstü durum kurtarma bölgesine çoğaltılır. Böyle bir görevi gerçekleştirebilen bir işlev [Azure Site Kurtarma'dır.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-move-overview) Azure Site Kurtarma, bunun gibi Azure'dan Azure'a çoğaltma senaryolarını destekler. 
+- Olağanüstü durum kurtarma hedefleri, üretim dışı sistemler tarafından fiilen kullanılan VM'lerdir. Tüm SAP ortamı, genellikle bir bölgede üretim sistemleri ve başka bir bölgedeki üretim dışı sistemlerle iki farklı Azure bölgesine yayılır. Birçok müşteri dağıtımında, müşteri üretim sistemine eşdeğer bir üretim dışı sisteme sahiptir. Müşteri, üretim dışı sistemlere uygulama katmanına önceden yüklenmiş üretim uygulama örneklerine sahiptir. Bir arıza durumunda, üretim dışı örnekler kapatılır, üretim VM'lerinin sanal adları üretim dışı VM'lere taşınır (DNS'de yeni IP adresleri atadıktan sonra) ve önceden yüklenmiş üretim örnekleri başlatılır
 
 ### <a name="sap-central-services-clusters"></a>SAP Merkezi Hizmetler kümeleri
-Paylaşılan diskler (Windows), SMB paylaşımları (Windows) veya NFS paylaşımlarını kullanan SAP Merkezi Hizmetler kümeleri, çoğaltma biraz daha zordur. Windows tarafında Windows Storage çoğaltma olası bir çözümdür. Linux rsync, önemli bir çözümdür.
+Paylaşılan diskler (Windows), Kobİ paylaşımları (Windows) veya NFS paylaşımlarını kullanan SAP Merkezi Hizmetler kümelerini çoğaltmak biraz daha zordur. Windows tarafında, Windows Depolama Çoğaltma olası bir çözümdür. Linux rsync üzerinde uygulanabilir bir çözümdür.
 
 
 
 ## <a name="non-supported-scenario"></a>Desteklenmeyen senaryo
-Azure mimarilerinde SAP iş yükü için desteklenmeyen bir senaryo listesi var. **Desteklenmez** , SAP ve Microsoft bu konfigürasyonları destekleyeceği ve bu tür mimariler oluşturmak için yazılım tarafından sunulan son ilgili üçüncü tarafa ertelenmesi gereken anlamına gelir. Kategorilerin ikisi şunlardır:
+Azure mimarilerinde SAP iş yükü için desteklenmeyen bir senaryo listesi vardır. **Desteklenmeyen,** SAP ve Microsoft'un bu yapılandırmaları destekleyemeyecekleri ve bu tür mimarileri oluşturmak için yazılım sağlayan ilgili bir üçüncü tarafa ertelemeleri gerektiği anlamına gelir. Kategorilerden ikisi şunlardır:
 
-- Depolama Soft gereçler: Azure Marketi 'nde sunulan bir dizi depolama yazılım aygıtı vardır. Satıcıların bazıları, Azure 'da SAP yazılımıyla ilgili olarak bu depolama yazılım gereçlerinin nasıl kullanılacağına ilişkin bir belge sunar. Bu depolama yazılım gereçlerinin satıcısı tarafından bu depolama alanı yazılım gereçlerine yönelik olan yapılandırmaların veya dağıtımların sağlanması gerekir. Bu olgu Ayrıca [sap desteği notuna](https://launchpad.support.sap.com/#/notes/2015553) de göre belirlenir #2015553
-- Yüksek kullanılabilirlik çerçeveleri: yalnızca Paceyapıcısı ve Windows Server yük devretme kümesi, Azure 'da SAP iş yükü için yüksek kullanılabilirlik çerçeveleri destekliyordu. Daha önce belirtildiği gibi, SIOS `Datakeeper` çözümü Microsoft tarafından açıklanmaktadır ve belgelenmiştir. Bununla birlikte, SIOS `Datakeeper` bileşenlerinin bu bileşenleri sağlayan satıcı olarak SIOS ile desteklenmesi gerekir. SAP ayrıca çeşitli SAP notlarındaki diğer sertifikalı yüksek kullanılabilirlik çerçeveleri de listelenmiştir. Bazıları Azure için üçüncü taraf satıcı tarafından da sertifikalandırilmiştir. Bununla birlikte, bu ürünleri kullanan yapılandırma desteğinin ürün satıcısı tarafından sağlanması gerekir. Farklı satıcıların SAP destek işlemlerine farklı entegrasyonu vardır. Azure 'da dağıtılan SAP yapılandırmalarında ürünü kullanmaya karar vermeden önce, belirli bir satıcı için en uygun destek sürecini Açıklığa kavuşturmanız gerekir.
-- Veritabanı dosyalarının paylaşılan disklerde bulunduğu paylaşılan disk kümeleri, maxDB dışında desteklenmez. Diğer tüm veritabanları için desteklenen çözüm, yüksek kullanılabilirlik senaryolarını yapılandırmak için bir SMB veya NFS paylaşım veya paylaşılan disk yerine ayrı depolama konumları içermelidir
+- Depolama yumuşak aletleri: Azure pazarda sunulan bir dizi depolama yumuşak aletleri vardır. Satıcılardan bazıları, SAP yazılımıyla ilgili olarak Azure'da bu depolama yumuşak cihazlarının nasıl kullanılacağına ilişkin kendi belgeleri sunar. Bu tür depolama yumuşak aletleri içeren yapılandırmaları veya dağıtımları desteği bu depolama yumuşak aletleri satıcı tarafından sağlanmalıdır. Bu gerçek [SAP destek notunda](https://launchpad.support.sap.com/#/notes/2015553) da #2015553
+- Yüksek Kullanılabilirlik çerçeveleri: Yalnızca Pacemaker ve Windows Server Failover Cluster, Azure'daki SAP iş yükü için yüksek kullanılabilirlik çerçeveleri desteklenir. Daha önce de belirtildiği gibi, `Datakeeper` SIOS çözümü Microsoft tarafından açıklanmıştır ve belgelenmiştir. Bununla birlikte, SIOS `Datakeeper` bileşenlerinin bu bileşenleri sağlayan satıcı olarak SIOS aracılığıyla desteklenmesi gerekir. SAP ayrıca çeşitli SAP notlarında diğer sertifikalı yüksek kullanılabilirlik çerçevelerini de listeledi. Bazıları Azure için üçüncü taraf satıcı tarafından da sertifikalandı. Bununla birlikte, bu ürünleri kullanan yapılandırmalar için destek ürün satıcısı tarafından sağlanmalıdır. Farklı satıcıların SAP destek süreçlerine farklı tümleştirmeleri var. Ürünü Azure'da dağıtılan SAP yapılandırmalarında kullanmaya karar vermeden önce, belirli satıcı için en iyi destek işleminin hangileri için en iyi şekilde çalıştığını açıklığa kavuşturmalısınız.
+- Veritabanı dosyalarının paylaşılan disklerde bulunduğu paylaşılan disk kümeleri maxDB dışında desteklenmez. Diğer tüm veritabanı için desteklenen çözüm, yüksek kullanılabilirlik senaryolarını yapılandırmak için SMB veya NFS paylaşımı veya paylaşılan disk yerine ayrı depolama konumlarına sahip olmaktır
 
 Desteklenmeyen diğer senaryolar şunlardır:
 
-- SAP uygulama katmanı ve SAP DBMS katmanı arasında NetWeaver, S/4HANA ve ör. `Hybris`gösterildiği gibi daha büyük bir ağ gecikmesi sunan dağıtım senaryoları. Buna aşağıdakiler dahildir:
-    - Şirket içi katmanlardan birini dağıtma, diğer katman Azure 'da dağıtılır
-    - Farklı bir Azure bölgesindeki sistemin SAP uygulama katmanını DBMS katmanından dağıtma
-    - Azure 'da ve bu tür bir mimari desenlerinin Azure yerel hizmeti tarafından sağlandığı durumlar dışında, Azure 'da birlikte bulunan veri merkezlerinde bir katmanı ve Azure 'daki diğer katmanı dağıtma
-    - SAP uygulama katmanı ve DBMS katmanı arasında ağ sanal gereçlerini dağıtma
-    - SAP DBMS katmanı veya SAP Genel aktarım dizini için Azure veri merkezlerinde birlikte bulunan veri merkezlerinde barındırılan depolamayı kullanma
-    - İki katmanı iki farklı bulut satıcısı ile dağıtma. Örneğin, DBMS katmanını Oracle bulut altyapısında ve Azure 'da uygulama katmanında dağıtma
-- Çok örnekli HANA Paceyapıcısı küme yapılandırması
-- Windows 'da desteklenen SAP veritabanları için ANF 'de SOFS veya SMB aracılığıyla paylaşılan disklere sahip Windows küme yapılandırması. Bunun yerine, belirli veritabanlarının yerel yüksek kullanılabilirlik çoğaltmasının kullanımını ve ayrı depolama yığınları kullanmayı öneririz.
-- Linux üzerinde desteklenen SAP veritabanlarının, ANF 'nin üzerinde bulunan veritabanı dosyalarıyla, SAP HANA hariç dağıtımı.
-- Oracle DBMS 'nin Windows ve Oracle Linux dışındaki tüm konuk IŞLETIM sistemlerinde dağıtımı. Ayrıca bkz. [sap destek notuna #2039619](https://launchpad.support.sap.com/#/notes/2039619)
+- NetWeaver, S/4HANA ve örneğin' de gösterildiği gibi SAP'nin ortak mimarisindeki SAP uygulama katmanı ile SAP DBMS katmanı `Hybris`arasında daha büyük bir ağ gecikmesi getiren dağıtım senaryoları. Buna aşağıdakiler dahildir:
+    - Katmanlardan birini şirket içinde dağıtma, diğer katman ise Azure'da dağıtılır
+    - Bir sistemin SAP uygulama katmanını DBMS katmanından farklı bir Azure bölgesinde dağıtma
+    - Azure'da ve Azure'da diğer katmanda birlikte bulunan veri merkezlerinde, bu tür bir mimari desenlerin Azure yerel hizmeti tarafından sağlandığı durumlar dışında bir katmanı dağıtma
+    - SAP uygulama katmanı ile DBMS katmanı arasında ağ sanal cihazları dağıtma
+    - SAP DBMS katmanı veya SAP küresel aktarım dizini için Azure veri merkezinin ortak bulunan veri merkezlerinde barındırılan depolamadan yararlanma
+    - İki farklı bulut satıcısıyla iki katmanı dağıtma. Örneğin, Oracle Cloud Infrastructure'da DBMS katmanını ve Azure'da uygulama katmanını dağıtma
+- Çok ÖrnekLI HANA Pacemaker küme yapılandırmaları
+- Windows'da desteklenen SAP veritabanları için ANF'de SOFS veya SMB aracılığıyla paylaşılan disklere sahip Windows Cluster yapılandırmaları. Bunun yerine, belirli veritabanlarının yerel yüksek kullanılabilirlik çoğaltma kullanımını öneririz ve ayrı depolama yığınları kullanın
+- SAP HANA hariç ANF'nin üstünden NFS hisselerinde bulunan veritabanı dosyalarıyla Linux'ta desteklenen SAP veritabanlarının dağıtımı
+- Oracle DBMS'nin Windows ve Oracle Linux'tan başka herhangi bir konuk işletim sistemi üzerinde dağıtımı. Ayrıca bakınız [SAP destek notu #2039619](https://launchpad.support.sap.com/#/notes/2039619)
 
-Test etmediğiniz senaryolar ve bu nedenle şu şekilde liste ile ilgili hiçbir deneyim yok:
+Test etmediğimiz ve bu nedenle liste yle ilgili hiçbir deneyimimiz olmadığı senaryo(lar) :
 
-- DBMS katmanı VM 'lerini çoğaltma Azure Site Recovery. Sonuç olarak, olası olağanüstü durum kurtarma yapılandırması için veritabanı yerel zaman uyumsuz çoğaltma işlevini kullanmanızı öneririz
+- Azure Site Kurtarma çoğaltma DBMS katmanı VMs. Sonuç olarak, olası olağanüstü durum kurtarma yapılandırması için veritabanı nın yerel asynchronous çoğaltma işlevini kullanmanızı öneririz
  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) 'da sonraki adımları okuyun
+[SAP NetWeaver için Azure Sanal Makineler planlaması ve uygulamasında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) sonraki adımları okuyun
 
 
 

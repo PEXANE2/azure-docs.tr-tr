@@ -1,171 +1,171 @@
 ---
-title: Azure Application Insights bağlantı dizeleri | Microsoft Docs
-description: Bağlantı dizelerini kullanma.
+title: Azure Uygulama Öngörüleri'nde bağlantı dizeleri | Microsoft Dokümanlar
+description: Bağlantı dizeleri nasıl kullanılır.
 ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136715"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
 
 ## <a name="overview"></a>Genel Bakış
 
-Bağlantı dizeleri, birden çok proxy ayarı gereksinimini ortadan kaldıran, Application Insights kullanıcılarına tek bir yapılandırma ayarı sağlar. Verileri izleme hizmetine göndermek isteyen intranet Web sunucuları, sogeign veya hibrit bulut ortamları için son derece kullanışlıdır.
+Bağlantı dizeleri, Application Insight kullanıcılarına tek bir yapılandırma ayarı vererek birden çok proxy ayarına duyulan gereksinimi ortadan kaldırır. İzleme hizmetine veri göndermek isteyen intranet web sunucuları, egemen veya karma bulut ortamları için son derece yararlıdır.
 
-Anahtar değer çiftleri, kullanıcıların her bir Application Insights (AI) hizmeti/ürünü için bir önek son eki birleşimini tanımlamak için kolay bir yol sağlar.
+Anahtar değer çiftleri, kullanıcıların her Uygulama Öngörüleri (AI) hizmeti/ ürünü için bir önek sonek birleşimi tanımlamaları için kolay bir yol sağlar.
 
 > [!IMPORTANT]
-> Hem bağlantı dizesini hem de Izleme anahtarını ayarlamayı önermiyoruz. Bir kullanıcının her ikisini de ayarlaması durumunda, en son ayarlanan ilke öncelikli olur. 
+> Hem Bağlantı String hem de Enstrümantasyon anahtarını ayarlamanızı önermiyoruz. Bir kullanıcının her ikisini de ayarlaması durumunda, en son ayarlanan önceki gün olacaktır. 
 
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış 
 
-Bu, en etkili olduğunu görselleştirdiğimiz müşteri senaryolarında:
+Bunu en çok etkiye sahip olarak görselleştirdiğimiz müşteri senaryoları:
 
-- Güvenlik Duvarı özel durumları veya proxy yönlendirmeleri 
+- Güvenlik duvarı özel durumları veya proxy yönlendirmeleri 
 
-    Intranet web sunucusu için izlemenin gerekli olduğu durumlarda, daha önceki çözümümüzde müşterilerin yapılandırmanıza ayrı hizmet uç noktaları eklemesi istenir. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)bakın. 
-    Bağlantı dizeleri, bu çabayı tek bir ayara azaltarak daha iyi bir alternatif sunar. Basit önek, sonek değişikliği, tüm uç noktaların doğru hizmetlere otomatik olarak doldurulmasını ve yeniden yönlendirilmesine olanak tanır. 
+    Intranet web sunucusu için izleme nin gerekli olduğu durumlarda, önceki çözümümüz müşterilerden yapılandırmanıza ayrı hizmet uç noktaları eklemelerini istemiştir. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)bakın. 
+    Bağlantı dizeleri, bu çabayı tek bir ayara indirgeyerek daha iyi bir alternatif sunar. Basit bir önek, sonek değişikliği otomatik popülasyon ve doğru hizmetleriçin tüm uç noktaların yeniden yönlendirme sağlar. 
 
-- Sogeign veya hibrit bulut ortamları
+- Egemen veya Karma bulut ortamları
 
-    Kullanıcılar, tanımlı bir [Azure Kamu bölgesine](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)veri gönderebilir.
-    Bağlantı dizeleri, intranet sunucularınız veya karma bulut ayarları için uç nokta ayarlarını tanımlamanızı sağlar. 
+    Kullanıcılar tanımlı bir [Azure Devlet Bölgesine](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)veri gönderebilir.
+    Bağlantı dizeleri, intranet sunucularınız veya karma bulut ayarlarınız için uç nokta ayarlarını tanımlamanıza olanak tanır. 
 
 ## <a name="getting-started"></a>Başlarken
 
-### <a name="finding-my-connection-string"></a>Bağlantı dizim mi bulunuyor?
+### <a name="finding-my-connection-string"></a>Bağlantı dizemi bulmak mı?
 
-Bağlantı dizeniz Application Insights kaynağınızın genel bakış dikey penceresinde görüntülenir.
+Bağlantı dizeniz, Application Insights kaynağınızın Genel Bakış bıçağında görüntülenir.
 
-![Genel Bakış dikey penceresinde bağlantı dizesi](media/overview-dashboard/overview-connection-string.png)
+![genel bakış bıçak üzerinde bağlantı dizesi](media/overview-dashboard/overview-connection-string.png)
 
 ### <a name="schema"></a>Şema
 
-#### <a name="max-length"></a>En fazla uzunluk
+#### <a name="max-length"></a>Uzunluk üst sınırı
 
-Bağlantı desteklenen en fazla 4096 karakter uzunluğunda.
+Bağlantı, en fazla desteklenen 4096 karakter uzunluğundadır.
 
 #### <a name="key-value-pairs"></a>Anahtar-değer çiftleri
 
-Bağlantı dizesi, noktalı virgülle ayrılmış anahtar-değer çiftleri olarak temsil edilen ayarların bir listesini içerir: `key1=value1;key2=value2;key3=value3`
+Bağlantı dizesi, yarı nokta nokta ile ayrılmış anahtar değer çiftleri olarak temsil edilen ayarların bir listesini oluşturur:`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>Sözdizimi
 
-- `InstrumentationKey` (örn: 00000000-0000-0000-0000-000000000000) bağlantı dizesi **gerekli** bir alandır.
-- `Authorization` (örn: Ikey) (bugün yalnızca Ikey yetkilendirmesini desteklediğimiz için bu ayar isteğe bağlıdır.)
-- `EndpointSuffix` (örn: applicationinsights.azure.cn) uç nokta son ekinin ayarlanması, SDK 'nın hangi Azure bulutunun bağlanmasına yol açacaktır. SDK, her bir hizmet için uç noktanın geri kalanını birleştirir.
-- Açık uç noktalar.
-  Bağlantı dizesinde, herhangi bir hizmet açıkça geçersiz kılınabilir.
-   - `IngestionEndpoint` (örn: https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint` (örn: https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint` (örn: https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint` (örn: https://snapshot.applicationinsights.azure.com)
+- `InstrumentationKey`(ör. 0000000-0000-0000-0000-00000000000000)  Bağlantı dizesi **gerekli** bir alandır.
+- `Authorization`(ör. ikey) (Bugün yalnızca ikey yetkilendirmeyi desteklediğimiz için bu ayar isteğe bağlıdır.)
+- `EndpointSuffix`(ör. applicationinsights.azure.cn) Bitiş noktası sonekinin ayarlanması, SDK'ya hangi Azure bulutuna bağlanacağını bildirir. SDK, bireysel hizmetler için bitiş noktasının geri kalanını bir araya getirecektir.
+- Açık Uç Noktalar.
+  Herhangi bir hizmet, bağlantı dizesinde açıkça geçersiz kılınabilir.
+   - `IngestionEndpoint`(ör.https://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`(ör.https://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`(ör.https://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`(ör.https://snapshot.applicationinsights.azure.com)
 
 #### <a name="endpoint-schema"></a>Uç nokta şeması
 
 `<prefix>.<suffix>`
-- Ön ek: bir hizmeti tanımlar. 
-- Sonek: ortak etki alanı adını tanımlar.
+- Önek: Bir hizmeti tanımlar. 
+- Sonek: Ortak etki alanı adını tanımlar.
 
 ##### <a name="valid-suffixes"></a>Geçerli sonekler
 
-Geçerli sonekler listesi aşağıdadır 
+Geçerli soneklerin listesi aşağıda veda edebilirsiniz 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
 
-Ayrıca bkz: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Ayrıca bakınız:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
-##### <a name="valid-prefixes"></a>Geçerli ön ekler
+##### <a name="valid-prefixes"></a>Geçerli önekler
 
-- [Telemetri](./app-insights-overview.md)alımı: `dc`
-- [Canlı ölçümler](./live-stream.md): `live`
-- [Profil Oluşturucu](./profiler-overview.md): `profiler`
-- [Anlık görüntü](./snapshot-debugger.md): `snapshot`
+- [Telemetri Yutma](./app-insights-overview.md):`dc`
+- [Canlı Ölçümler](./live-stream.md):`live`
+- [Profilci](./profiler-overview.md):`profiler`
+- [Anlık görüntü](./snapshot-debugger.md):`snapshot`
 
 
 
-## <a name="connection-string-examples"></a>Bağlantı dizesi örnekleri
+## <a name="connection-string-examples"></a>Bağlantı dize örnekleri
 
 
 ### <a name="minimal-valid-connection-string"></a>En az geçerli bağlantı dizesi
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
-Bu örnekte, yalnızca Izleme anahtarı ayarlanmıştır.
+Bu örnekte, yalnızca Enstrümantasyon Anahtarı ayarlanmıştır.
 
-- Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
-- İzleme anahtarı: 00000000-0000-0000-0000-000000000000
-- Bölgesel hizmet URI 'Leri, [SDK varsayılanlarına](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) dayanır ve genel Global Azure 'a bağlanır:
-   - Alma: https://dc.services.visualstudio.com/
-   - Canlı ölçümler: https://rt.services.visualstudio.com/
-   - Profil Oluşturucu: https://agent.azureserviceprofiler.net/
-   - Hata ayıklayıcı: https://agent.azureserviceprofiler.net/  
+- Yetkilendirme düzeni varsayılan olarak "ikey" 
+- Enstrümantasyon Anahtarı: 00000000-0000-0000-00000-00000000000
+- Bölgesel hizmet URI'leri [SDK varsayılanlarına](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) dayanır ve genel azure'a bağlanır:
+   - Yenmesi:https://dc.services.visualstudio.com/
+   - Canlı ölçümler:https://rt.services.visualstudio.com/
+   - Profiler:https://agent.azureserviceprofiler.net/
+   - Hata ayıklayıcı:https://agent.azureserviceprofiler.net/  
 
 
 
-### <a name="connection-string-with-endpoint-suffix"></a>Uç nokta sonekine sahip bağlantı dizesi
+### <a name="connection-string-with-endpoint-suffix"></a>Bitiş noktası soneki ile bağlantı dizesi
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-Bu örnekte, bu bağlantı dizesi uç nokta sonekini belirtir ve SDK hizmet uç noktaları oluşturur.
+Bu örnekte, bu bağlantı dizesi bitiş noktası soneki belirtir ve SDK hizmet uç noktaları inşa eder.
 
-- Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
-- İzleme anahtarı: 00000000-0000-0000-0000-000000000000
-- Bölgesel hizmet URI 'Leri, belirtilen uç nokta sonekine dayalıdır: 
-   - Alma: https://dc.ai.contoso.com
-   - Canlı ölçümler: https://live.ai.contoso.com
-   - Profil Oluşturucu: https://profiler.ai.contoso.com 
-   - Hata ayıklayıcı: https://snapshot.ai.contoso.com   
+- Yetkilendirme düzeni varsayılan olarak "ikey" 
+- Enstrümantasyon Anahtarı: 00000000-0000-0000-00000-00000000000
+- Bölgesel hizmet URI'leri sağlanan uç nokta sonekine dayanır: 
+   - Yenmesi:https://dc.ai.contoso.com
+   - Canlı ölçümler:https://live.ai.contoso.com
+   - Profiler:https://profiler.ai.contoso.com 
+   - Hata ayıklayıcı:https://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>Açık uç nokta geçersiz kılmalarla bağlantı dizesi 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>Açık uç nokta geçersiz kılarile bağlantı dizesi 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-Bu örnekte, bu bağlantı dizesi her hizmet için açık geçersiz kılmalar belirler. SDK, değişiklik yapılmadan belirtilen tam uç noktaları kullanır.
+Bu örnekte, bu bağlantı dizesi her hizmet için açık geçersiz kılmaları belirtir. SDK, herhangi bir değişiklik yapılmadan sağlanan tam uç noktaları kullanır.
 
-- Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
-- İzleme anahtarı: 00000000-0000-0000-0000-000000000000
-- Bölgesel hizmet URI 'Leri açık geçersiz kılma değerlerine dayalıdır: 
-   - Alma: https:\//custom.com:111/
+- Yetkilendirme düzeni varsayılan olarak "ikey" 
+- Enstrümantasyon Anahtarı: 00000000-0000-0000-00000-00000000000
+- Bölgesel hizmet URI'leri açık geçersiz kılma değerlerini temel alar: 
+   - Yutma: https:\//custom.com:111/
    - Canlı ölçümler: https:\//custom.com:222/
-   - Profil Oluşturucu: https:\//custom.com:333/ 
-   - Hata ayıklayıcı: https:\//custom.com:444/   
+   - Profilci: https:\//custom.com:333/ 
+   - Hata Ayıklama:\/https: /custom.com:444/   
 
 
-## <a name="how-to-set-a-connection-string"></a>Bağlantı dizesi ayarlama
+## <a name="how-to-set-a-connection-string"></a>Bağlantı dizesi nasıl ayarlanır?
 
-Bağlantı dizeleri aşağıdaki SDK sürümlerinde desteklenir:
-- .NET ve .NET Core v 2.12.0
-- Java v 2.5.1
-- JavaScript v 2.3.0
-- NodeJS v 1.5.0
-- Python v 1.0.0
+Bağlantı Dizeleri aşağıdaki SDK sürümlerinde desteklenir:
+- .NET ve .NET Çekirdek v2.12.0
+- Java v2.5.1
+- Javascript v2.3.0
+- NodeJS v1.5.0
+- Python v1.0.0
 
-Bir bağlantı dizesi, kod, ortam değişkeni veya yapılandırma dosyası aracılığıyla ayarlanabilir.
+Bağlantı dizesi kod, ortam değişkeni veya yapılandırma dosyasında ayarlanabilir.
 
 
 
 ### <a name="environment-variable"></a>Ortam değişkeni
 
-- Bağlantı dizesi: `APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Bağlantı Dizesi:`APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.NET SDK örneği
+### <a name="net-sdk-example"></a>.Net SDK örneği
 
-TelemetryConfiguration. ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetriConfiguration.ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net açıkça ayarlanmış:
+.Net Açıkça Ayarlayın:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.NET yapılandırma dosyası:
+.Net Config Dosyası:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ var configuration = new TelemetryConfiguration
 ```
 
 
-NetCore config. JSON: 
+NetCore config.json: 
 
 ```json
 {
@@ -197,12 +197,12 @@ NetCore config. JSON:
 ### <a name="java-sdk-example"></a>Java SDK örneği
 
 
-Java açıkça ayarlanmış:
+Java Açıkça Ayarlayın:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. xml
+UygulamaInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -210,11 +210,11 @@ ApplicationInsights. xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>JavaScript SDK örneği
+### <a name="javascript-sdk-example"></a>Javascript SDK örneği
 
-Önemli: JavaScript ortam değişkenlerinin kullanımını desteklemez.
+Önemli: Javascript Çevre Değişkenlerinin kullanımını desteklemez.
 
-Kod parçacığını kullanma:
+Parçacığı kullanma:
 
 ```javascript
 <script type="text/javascript">
@@ -227,7 +227,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ```
 
 
-El ile kurulum:
+Manuel Kurulum:
 ```javascript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Node SDK örneği
+### <a name="node-sdk-example"></a>Düğüm SDK örneği
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -249,7 +249,7 @@ appInsights.start();
 
 ### <a name="python-sdk-example"></a>Python SDK örneği
 
-Kullanıcıların ortam değişkenini ayarlamanızı öneririz.
+Kullanıcıların ortam değişkenini ayarlamalarını öneririz.
 
 Bağlantı dizesini açıkça ayarlamak için:
 
@@ -266,14 +266,14 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Çalışma zamanında şunlarla kullanmaya başlayın:
 
-* [Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure VM ve Azure sanal makine ölçeği IIS tarafından barındırılan uygulamaları ayarla](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS sunucusu](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
 Geliştirme zamanında şunlarla kullanmaya başlayın:
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Çekirdeği](../../azure-monitor/app/asp-net-core.md)
+* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)

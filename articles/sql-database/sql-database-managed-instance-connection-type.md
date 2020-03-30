@@ -10,43 +10,43 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819469"
 ---
-# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL veritabanı yönetilen örnek bağlantı türleri
+# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Veritabanı yönetilen örnek bağlantı türleri
 
-Bu makalede, istemcilerin bağlantı türüne bağlı olarak Azure SQL veritabanı yönetilen örneği 'ne nasıl bağlanacağı açıklanmaktadır. Bağlantı türlerini değiştirmeye yönelik betik örnekleri aşağıda verilmiştir ve varsayılan bağlantı ayarlarını değiştirmekle ilgili önemli noktalar verilmektedir.
+Bu makalede, istemcilerin bağlantı türüne bağlı olarak Azure SQL Veritabanı'na nasıl bağlanılmayı başardığı açıklanmaktadır. Bağlantı türlerini değiştirmek için komut dosyası örnekleri aşağıda, varsayılan bağlantı ayarlarını değiştirmeye ilişkin hususların yanı sıra verilmiştir.
 
 ## <a name="connection-types"></a>Bağlantı türleri
 
-Azure SQL veritabanı yönetilen örneği aşağıdaki iki bağlantı türünü destekler:
+Azure SQL Veritabanı yönetilen örnek aşağıdaki iki bağlantı türünü destekler:
 
-- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar. Yeniden yönlendirme kullanarak bağlantı sağlamak için, 1433 ve 11000-11999 bağlantı noktalarında erişime izin vermek üzere güvenlik duvarları ve ağ güvenlik grupları (NSG) açmanız gerekir. Paketler doğrudan veritabanına gider ve bu nedenle proxy üzerinden yeniden yönlendirme kullanan gecikme süresi ve işleme performans iyileştirmeleri vardır.
-- **Ara sunucu (varsayılan):** Bu modda, tüm bağlantılar proxy ağ geçidi bileşeni kullanıyor. Bağlantıyı etkinleştirmek için, yalnızca özel ağlar için bağlantı noktası 1433 ve genel bağlantı bağlantı noktası 3342 ' nin açılması gerekir. Bu modun seçilmesi, iş yükünün doğasına bağlı olarak daha yüksek gecikme süresine ve düşük aktarım hızına yol açabilir. En düşük gecikme süresi ve en yüksek aktarım hızı için proxy bağlantı İlkesi üzerinden yeniden yönlendirme bağlantı ilkesini öneririz.
+- **Yönlendirme (önerilir):** İstemciler doğrudan veritabanını barındıran düğüme bağlantılar kurar. Yeniden yönlendirmeyi kullanarak bağlantıyı etkinleştirmek için, 1433 ve 11000-11999 bağlantı noktalarına erişime izin vermek için güvenlik duvarları ve Ağ Güvenlik Grupları (NSG) açmanız gerekir. Paketler doğrudan veritabanına gider ve bu nedenle Proxy üzerinden Yönlendirme'yi kullanarak gecikme ve iş verme performansı iyileştirmeleri vardır.
+- **Proxy (varsayılan):** Bu modda, tüm bağlantılar bir proxy ağ geçidi bileşeni kullanıyor. Bağlantıyı etkinleştirmek için, özel ağlar için yalnızca 1433 bağlantı noktası ve ortak bağlantı için 3342 bağlantı noktasının açılması gerekir. Bu modun seçilmesi, iş yükünün doğasına bağlı olarak daha yüksek gecikme ve daha düşük iş yüküne neden olabilir. En düşük gecikme ve en yüksek iş için Proxy bağlantı ilkesi üzerinden Yeniden Yönlendirme bağlantı ilkesini şiddetle öneririz.
 
-## <a name="redirect-connection-type"></a>Yeniden yönlendirme bağlantı türü
+## <a name="redirect-connection-type"></a>Bağlantı türünü yeniden yönlendirme
 
-Yeniden yönlendirme bağlantı türü, TCP oturumu SQL altyapısına kurulduktan sonra, istemci oturumu yük dengeleyiciden sanal küme düğümünün hedef sanal IP 'sini edinir. Sonraki paketler, ağ geçidini atlayarak doğrudan sanal küme düğümüne akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
+Yeniden yönlendirme bağlantı türü, TCP oturumu SQL motoruna kurulduktan sonra istemci oturumunun sanal küme düğümünün hedef sanal IP'sini yük bakiyesinden elde ettiği anlamına gelir. Sonraki paketler ağ geçidini atlayarak doğrudan sanal küme düğümüne akar. Aşağıdaki diyagram bu trafik akışını göstermektedir.
 
-![yeniden yönlendirme. png](media/sql-database-managed-instance-connection-types/redirect.png)
+![redirect.png](media/sql-database-managed-instance-connection-types/redirect.png)
 
 > [!IMPORTANT]
-> Yeniden yönlendirme bağlantı türü şu anda yalnızca özel uç nokta için çalışıyor. Bağlantı türü ayarından bağımsız olarak, genel uç nokta üzerinden gelen bağlantılar bir ara sunucu üzerinden olur.
+> Yeniden yönlendirme bağlantı türü şu anda yalnızca özel bitiş noktası için çalışır. Bağlantı türü ayarı ne olursa olsun, ortak bitiş noktasından gelen bağlantılar bir proxy aracılığıyla olacaktır.
 
 ## <a name="proxy-connection-type"></a>Proxy bağlantı türü
 
-Ara sunucu bağlantı türü, TCP oturumunun ağ geçidi kullanılarak kurulduğu ve sonraki tüm paketlerin üzerinden akış yaptığı anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
+Proxy bağlantı türü, TCP oturumunun ağ geçidi kullanılarak kurulduğu ve sonraki tüm paketlerin içinden aktığı anlamına gelir. Aşağıdaki diyagram bu trafik akışını göstermektedir.
 
-![Proxy. png](media/sql-database-managed-instance-connection-types/proxy.png)
+![proxy.png](media/sql-database-managed-instance-connection-types/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>PowerShell kullanarak bağlantı türü ayarlarını değiştirme betiği
+## <a name="script-to-change-connection-type-settings-using-powershell"></a>PowerShell kullanarak bağlantı türü ayarlarını değiştirmek için komut dosyası
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki PowerShell betiği, yönetilen bir örnek için yeniden yönlendirme için bağlantı türünün nasıl değiştirileceğini gösterir.
+Aşağıdaki PowerShell komut dosyası, yönetilen bir örneğin yeniden yönlendirmeiçin bağlantı türünü nasıl değiştireceğinigösterir.
 
 ```powershell
 Install-Module -Name Az
@@ -66,5 +66,5 @@ $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Veritabanını yönetilen örneğe geri yükleme](sql-database-managed-instance-get-started-restore.md)
-- [Yönetilen örnekte ortak bir uç noktanın nasıl yapılandırılacağını](sql-database-managed-instance-public-endpoint-configure.md) öğrenin
-- [Yönetilen örnek bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md) hakkında bilgi edinin
+- Yönetilen örnekte genel bitiş noktasını nasıl [yapılandırılamayı](sql-database-managed-instance-public-endpoint-configure.md) öğrenin
+- Yönetilen [örnek bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md) hakkında bilgi edinin

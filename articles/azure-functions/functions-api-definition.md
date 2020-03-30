@@ -1,81 +1,81 @@
 ---
-title: Azure Işlevlerinde Openapı meta verileri
-description: Azure Işlevlerinde Openapı desteğine genel bakış
+title: Azure İşlerinde API meta verilerini açma
+description: Azure İşlevlerini Açmak için openapi desteğine genel bakış
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74227410"
 ---
-# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Işlevlerinde Openapı 2,0 meta veri desteği (Önizleme)
-Azure Işlevlerinde Openapı 2,0 (eski adıyla Swagger) meta veri desteği, bir işlev uygulamasının içine Openapı 2,0 tanımını yazmak için kullanabileceğiniz bir önizleme özelliğidir. Ardından, işlev uygulamasını kullanarak bu dosyayı barındırabilirsiniz.
+# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure İşlerinde OpenAPI 2.0 meta veri desteği (önizleme)
+Azure İşlevleri'ndeki OpenAPI 2.0 (eski adıyla Swagger) meta veri desteği, bir işlev uygulamasının içine OpenAPI 2.0 tanımı yazmak için kullanabileceğiniz bir önizleme özelliğidir. Daha sonra işlev uygulamasını kullanarak bu dosyayı barındırabilirsiniz.
 
 > [!IMPORTANT]
-> OpenAPI önizleme özelliği şu anda yalnızca 1.x çalışma zamanında kullanılabilir. 1\.x işlev uygulaması oluşturma hakkında bilgi [burada bulunabilir](./functions-versions.md#creating-1x-apps).
+> OpenAPI önizleme özelliği şu anda yalnızca 1.x çalışma zamanında kullanılabilir. 1.x işlev uygulaması oluşturma hakkında bilgi [burada bulunabilir](./functions-versions.md#creating-1x-apps).
 
-[Openapı meta verileri](https://swagger.io/) , bir REST API barındıran bir işlevin çok çeşitli diğer yazılımlar tarafından tüketilebilmesi için izin verir. Bu yazılım, PowerApps gibi Microsoft tekliflerini ve [Azure App Service API Apps özelliğini](../app-service/overview.md), [Postman](https://www.getpostman.com/docs/importing_swagger)gibi üçüncü taraf geliştirici araçlarını ve [diğer birçok paketi](https://swagger.io/tools/)içerir.
+[OpenAPI meta verileri,](https://swagger.io/) rest API barındıran bir işlevin çok çeşitli yazılımlar tarafından tüketilmesine olanak tanır. Bu yazılım PowerApps ve Azure [App Service API Apps özelliği](../app-service/overview.md)gibi Microsoft teklifleri içerir, [Postman](https://www.getpostman.com/docs/importing_swagger)gibi üçüncü taraf geliştirici araçları, ve [daha birçok paket.](https://swagger.io/tools/)
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Belirli özellikler hakkında daha fazla bilgi edinmek için [kullanmaya başlama öğreticisiyle](./functions-api-definition-getting-started.md) başlayıp bu belgeye geri dönmenizi öneririz.
+>[Öğreticiye başlamakve](./functions-api-definition-getting-started.md) daha sonra belirli özellikler hakkında daha fazla bilgi edinmek için bu belgeye geri dönmenizi öneririz.
 
-## <a name="enable"></a>Openapı tanımı desteğini etkinleştir
-İşlev uygulamanızın **platform özelliklerinin** **API tanımı** sayfasındaki tüm openapı ayarlarını yapılandırabilirsiniz.
+## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI tanım desteğini etkinleştirme
+İşlev uygulamanızın **Platform özelliklerindeki** **API Tanımı** sayfasındaki tüm OpenAPI ayarlarını yapılandırabilirsiniz.
 
 > [!NOTE]
-> İşlev API 'SI tanım özelliği şu anda beta çalışma zamanı için desteklenmiyor.
+> İşlev API tanım özelliği şu anda beta çalışma süresi için desteklenmez.
 
-Barındırılan bir Openapı tanımının ve hızlı başlangıç tanımının oluşturulmasını etkinleştirmek için **API tanımı kaynağını** **Function (Önizleme)** olarak ayarlayın. **Dış URL** , işlevinizin başka bir yerde barındırılan bir openapı tanımı kullanmasına izin verir.
+Barındırılan OpenAPI tanımının ve hızlı başlangıç tanımının oluşumunu etkinleştirmek **için, API tanım kaynağını** **İşlev (Önizleme)** olarak ayarlayın. **Harici URL,** işlevinizin başka bir yerde barındırılan bir OpenAPI tanımını kullanmasına olanak tanır.
 
-## <a name="generate-definition"></a>İşlevinizin meta verilerinden bir Swagger iskelet oluşturun
-Şablon, ilk Openapı tanımınızı yazmaya başlamanıza yardımcı olabilir. Tanım şablonu özelliği, HTTP tetikleyici işlevlerinizin her biri için function. JSON dosyasındaki tüm meta verileri kullanarak bir seyrek Openapı tanımı oluşturur. İstek ve yanıt şablonları gibi [openapı BELIRTIMINDEN](https://swagger.io/specification/)API 'niz hakkında daha fazla bilgi doldurmanız gerekir.
+## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>İşlevinizin meta verilerinden bir Swagger iskeleti oluşturma
+Şablon, ilk OpenAPI tanımınızı yazmaya başlamanıza yardımcı olabilir. Tanım şablonu özelliği, HTTP tetikleyici işlevlerinizin her biri için function.json dosyasındaki tüm meta verileri kullanarak seyrek bir OpenAPI tanımı oluşturur. İstek ve yanıt şablonları gibi [OpenAPI belirtiminden](https://swagger.io/specification/)API'niz hakkında daha fazla bilgi doldurmanız gerekir.
 
-Adım adım yönergeler için bkz. [Başlangıç Öğreticisi](./functions-api-definition-getting-started.md).
+Adım adım talimatlar için, [başlangıç öğreticibakın.](./functions-api-definition-getting-started.md)
 
-### <a name="templates"></a>Kullanılabilir şablonlar
+### <a name="available-templates"></a><a name="templates"></a>Kullanılabilir şablonlar
 
-|Ad| Açıklama |
+|Adı| Açıklama |
 |:-----|:-----|
-|Oluşturulan tanım|İşlevin mevcut meta verilerinden çıkarsanoluşturulabilecek en fazla bilgi miktarına sahip bir Openapı tanımı.|
+|Oluşturulan Tanım|İşlevin varolan meta verilerinden çıkarılabilen maksimum bilgi miktarına sahip bir OpenAPI tanımı.|
 
-### <a name="quickstart-details"></a>Oluşturulan tanımda eklenen meta veriler
+### <a name="included-metadata-in-the-generated-definition"></a><a name="quickstart-details"></a>Oluşturulan tanıma meta veriler dahil
 
-Aşağıdaki tabloda, üretilen Swagger iskelet 'e eşlendiğinden, function. JSON dosyasındaki Azure portal ayarları ve karşılık gelen veriler temsil edilir.
+Aşağıdaki tablo, oluşturulan Swagger iskeletine eşlenen Azure portal ayarlarını ve function.json'daki ilgili verileri temsil eder.
 
-|Swagger.json|Portal Kullanıcı arabirimi|Function. JSON|
+|Swagger.json|Portal UI|Fonksiyon.json|
 |:----|:-----|:-----|
-|[Ana Bilgisayar](https://swagger.io/specification/#fixed-fields-15)|**İşlev uygulaması ayarları** > **App Service ayarları** > **genel bakış** > **URL 'si**|*Yok*
-|[Yollar](https://swagger.io/specification/#paths-object-29)| > **SEÇILI http yöntemlerini** **tümleştirin**|Bağlamalar: Route
-|[Yol öğesi](https://swagger.io/specification/#path-item-object-32)| > **yol şablonunu** **tümleştirin**|Bağlamalar: Yöntemler
-|[Güvenlik](https://swagger.io/specification/#security-scheme-object-112)|**Belirlenmesine**|*Yok*|
-|operationId|**Rota + Izin verilen fiiller**|Rota + Izin verilen fiiller|
+|[Konak](https://swagger.io/specification/#fixed-fields-15)|**İşlev uygulama ayarları** > **Uygulama Hizmeti ayarları** > **Genel Bakış** > **URL**|*Mevcut değil*
+|[Yollar](https://swagger.io/specification/#paths-object-29)|**Integrate** > **Seçili HTTP yöntemlerini** tümleştir|Ciltler: Rota
+|[Yol Öğesi](https://swagger.io/specification/#path-item-object-32)|**Integrate** > **Rota şablonuna** tümleştir|Ciltler: Yöntemler
+|[Güvenlik](https://swagger.io/specification/#security-scheme-object-112)|**Anahtarlar**|*Mevcut değil*|
+|operationID*|**Rota + İzin verilen fiiller**|Rota + İzin Verilen Fiiller|
 
-\*işlem KIMLIĞI yalnızca PowerApps ve Flow ile tümleştirme için gereklidir.
+\*Operasyon kimliği yalnızca PowerApps ve Flow ile tümleştirmek için gereklidir.
 > [!NOTE]
-> X-MS-Summary uzantısı, Logic Apps, PowerApps ve Flow 'da bir görünen ad sağlar.
+> X-ms-özet uzantısı Logic Apps, PowerApps ve Flow'da bir görüntü adı sağlar.
 >
-> Daha fazla bilgi için bkz. [PowerApps Için Swagger tanımınızı özelleştirme](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
+> Daha fazla bilgi için [PowerApps için Swagger tanımınızı özelleştir'e](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)bakın.
 
-## <a name="CICD"></a>Bir API tanımı ayarlamak için CI/CD kullanma
+## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>API tanımı nı ayarlamak için CI/CD'yi kullanma
 
- Kaynak denetiminden API tanımınızı değiştirmek için kaynak denetimini etkinleştirmeden önce portalda API tanımı barındırmayı etkinleştirmeniz gerekir. Aşağıdaki yönergeleri izleyin:
+ KAYNAK denetimini etkinleştirmeden önce portalda API tanımı barındırmayı etkinleştirmeniz gerekir. Aşağıdaki talimatları izleyin:
 
-1. İşlev uygulaması ayarlarınızda **API tanımına (Önizleme)** gidin.
-   1. **API tanımı kaynağını** **işlev**olarak ayarlayın.
-   1. **API tanımı şablonu oluştur** ' a tıklayın ve ardından daha sonra değiştirmek üzere bir şablon tanımı oluşturmak için **kaydedin** .
-   1. API tanımı URL 'nizi ve anahtarınızı aklınızda edin.
-1. [Sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlayın](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
-2. \Site\wwwroot\.azurefunctions\swagger\swagger.JSON. konumundaki kaynak denetiminde Swagger. json dosyasını değiştirme
+1. İşlev uygulama ayarlarınızda **API Tanımına (önizleme)** göz atın.
+   1. **API tanım kaynağını** **İşlev**olarak ayarlayın.
+   1. Daha sonra değiştirmek için bir şablon tanımı oluşturmak için **API tanım şablonu oluştur'u** ve ardından **Kaydet'i** tıklatın.
+   1. API tanım URL'nizi ve anahtarınızı not edin.
+1. [Sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlayın.](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment)
+2. \site\wwwroot\.azurefunctions\swagger\swagger.json adresindekaynak denetiminde swagger.json'u değiştirin.
 
-Şimdi, deponuzdaki Swagger. json dosyasında yapılan değişiklikler, API tanım URL 'sindeki ve adım 1. c ' de not ettiğiniz anahtar üzerinde işlev uygulamanız tarafından barındırılır.
+Şimdi, deponuzdaki swagger.json değişiklikleri, adım 1.c'de belirttiğiniz API tanım URL'sinde ve anahtarında işlev uygulamanız tarafından barındırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kullanmaya başlama öğreticisi](functions-api-definition-getting-started.md). Bir Openapı tanımını eylemde görmek için kılavuzumuzu deneyin.
-* [Azure Işlevleri GitHub deposu](https://github.com/Azure/Azure-Functions/). API tanımı desteği önizlemesi hakkında geri bildirimde bulunmak için Işlevler deposuna göz atın. Güncelleştirilmesini istediğiniz her şey için bir GitHub sorunu oluşturun.
-* [Azure işlevleri geliştirici başvurusu](functions-reference.md). Kodlama işlevleri ve Tetikleyicileri ve bağlamaları tanımlama hakkında bilgi edinin.
+* [Öğretici başlarken](functions-api-definition-getting-started.md). OpenAPI tanımını iş başında görmek için gözden geçirme mizi deneyin.
+* [Azure İşlevler GitHub deposu.](https://github.com/Azure/Azure-Functions/) API tanımı destek önizlemesi hakkında bize geri bildirimde yer almak için Fonksiyonlar deposuna göz atın. Güncelleştirilmiş görmek istediğiniz her şey için Bir GitHub sorunu yapın.
+* [Azure Fonksiyonları geliştirici başvurusu.](functions-reference.md) Kodlama işlevleri ve tetikleyicileri ve bağlamaları tanımlama hakkında bilgi edinin.

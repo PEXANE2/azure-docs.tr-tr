@@ -1,33 +1,33 @@
 ---
-title: Azure IoT Hub sorgu dilini anlayın | Microsoft Docs
-description: Geliştirici Kılavuzu-IoT Hub 'ınızdaki cihaz/modül TWINS ve işleri hakkında bilgi almak için kullanılan SQL benzeri IoT Hub sorgu dilinin açıklaması.
+title: Azure IoT Hub sorgu dilini anlama | Microsoft Dokümanlar
+description: Geliştirici kılavuzu - IoT hub'ınızdan aygıt/modül ikizleri ve işleri hakkında bilgi almak için kullanılan SQL benzeri IoT Hub sorgu dilinin açıklaması.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499197"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül TWINS, işler ve ileti yönlendirme için sorgu dili IoT Hub
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül ikizleri, işler ve mesaj yönlendirmesi için IoT Hub sorgu dili
 
-IoT Hub, [cihaz TWINS](iot-hub-devguide-device-twins.md), [Modül TWINS](iot-hub-devguide-module-twins.md), [işler](iot-hub-devguide-jobs.md)ve [ileti yönlendirme](iot-hub-devguide-messages-d2c.md)ile ilgili bilgileri almak için güçlü bir SQL benzeri dil sağlar. Bu makalede şunları sunulmaktadır:
+IoT [Hub, aygıt ikizleri,](iot-hub-devguide-device-twins.md)modül [ikizleri,](iot-hub-devguide-module-twins.md) [işleri](iot-hub-devguide-jobs.md)ve ileti [yönlendirmeile](iot-hub-devguide-messages-d2c.md)ilgili bilgi almak için güçlü bir SQL benzeri dil sağlar. Bu makalede sunar:
 
 * IoT Hub sorgu dilinin ana özelliklerine giriş ve
-* Dilin ayrıntılı açıklaması. İleti yönlendirme için sorgu dili hakkındaki ayrıntılar için bkz. [ileti yönlendirmesinde sorgular](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
+* Dilin ayrıntılı açıklaması. İleti yönlendirme için sorgu dili yle ilgili ayrıntılar için [ileti yönlendirmedeki sorgulara](../iot-hub/iot-hub-devguide-routing-query-syntax.md)bakın.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Cihaz ve modül ikizi sorguları
+## <a name="device-and-module-twin-queries"></a>Cihaz ve modül ikiz sorguları
 
-[Cihaz TWINS](iot-hub-devguide-device-twins.md) ve [Modül TWINS](iot-hub-devguide-module-twins.md) , hem Etiketler hem de özellikler olarak rastgele JSON nesneleri içerebilir. IoT Hub, tüm ikizi bilgilerini içeren tek bir JSON belgesi olarak Device TWINS ve modül TWINS 'i sorgulamanızı sağlar.
+[Aygıt ikizleri](iot-hub-devguide-device-twins.md) ve [modül ikizleri](iot-hub-devguide-module-twins.md) hem etiketleri hem de özellikleri olarak rasgele JSON nesneleri içerebilir. IoT Hub, tüm ikiz bilgilerini içeren tek bir JSON belgesi olarak aygıt ikizleri ve modül ikizleri sorgulamanızı sağlar.
 
-Örneğin, IoT Hub cihazlarınızın aşağıdaki yapıya sahip olduğunu varsayın (modül ikizi, yalnızca ek bir ModuleID ile benzerdir):
+Örneğin, IoT hub aygıtı ikizlerinizin aşağıdaki yapıya sahip olduğunu varsayalım (modül ikizi sadece ek bir moduleId ile benzer olacaktır):
 
 ```json
 {
@@ -79,25 +79,25 @@ IoT Hub, [cihaz TWINS](iot-hub-devguide-device-twins.md), [Modül TWINS](iot-hub
 }
 ```
 
-### <a name="device-twin-queries"></a>Cihaz ikizi sorguları
+### <a name="device-twin-queries"></a>Aygıt ikiz sorguları
 
-IoT Hub cihaz TWINS 'i **cihazlar**adlı bir belge koleksiyonu olarak kullanıma sunar. Örneğin, aşağıdaki sorgu tüm cihaz TWINS kümesini alır:
+IoT Hub aygıt ikizleri **aygıt**lar olarak adlandırılan bir belge koleksiyonu olarak ortaya çıkarır. Örneğin, aşağıdaki sorgu aygıt ikizlerinin tüm kümesini alır:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) büyük sonuçların sayfalamayı destekler.
+> [Azure IoT SDK'lar](iot-hub-devguide-sdks.md) büyük sonuçların çağrılmalarını destekler.
 
-IoT Hub, rastgele koşullara göre cihaz ikizlerini filtrelemesini almanızı sağlar. Örneğin, **Location. Region** etiketinin **US** olarak ayarlandığı cihaz TWINS 'i almak için aşağıdaki sorguyu kullanın:
+IoT Hub, rasgele koşullarla filtreleme sağlayan aygıt ikizlerini almanızı sağlar. Örneğin, **konum.bölge** etiketinin **ABD** olarak ayarlandığı aygıt ikizlerini almak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Boole işleçleri ve aritmetik karşılaştırmalar de desteklenir. Örneğin, ABD 'de bulunan ve her dakikadan daha az telemetri gönderecek şekilde yapılandırılmış cihaz ikizlerini almak için aşağıdaki sorguyu kullanın:
+Boolean operatörleri ve aritmetik karşılaştırmalar da desteklenir. Örneğin, ABD'de bulunan ve her dakikadan daha az telemetri gönderecek şekilde yapılandırılan aygıt ikizlerini almak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ SELECT * FROM devices
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Bir kolaylık olması halinde, dizi sabitlerini de **ın** ve **ın** (Not ın) işleçleriyle kullanmak da mümkündür. Örneğin, WiFi veya kablolu bağlantıyı rapor eden cihaz TWINS 'sini almak için aşağıdaki sorguyu kullanın:
+Kolaylık sağlamak için, **IN** ve **NIN** (içinde değil) işleçleri ile dizi sabitleri kullanmak da mümkündür. Örneğin, WiFi veya kablolu bağlantı bildiren aygıt ikizlerini almak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Belirli bir özelliği içeren tüm cihaz TWINS 'i tanımlamak genellikle gereklidir. IoT Hub, bu amaçla `is_defined()` işlevi destekler. Örneğin, `connectivity` özelliğini tanımlayan cihaz TWINS 'sini almak için aşağıdaki sorguyu kullanın:
+Genellikle belirli bir özellik içeren tüm cihaz ikizleri tanımlamak için gereklidir. IoT Hub bu `is_defined()` amaç için işlevi destekler. Örneğin, `connectivity` özelliği tanımlayan aygıt ikizlerini almak için aşağıdaki sorguyu kullanın:
 
 ```SQL
 SELECT * FROM devices
   WHERE is_defined(properties.reported.connectivity)
 ```
 
-Filtreleme yeteneklerinin tam başvurusu için [WHERE yan tümcesi](iot-hub-devguide-query-language.md#where-clause) bölümüne bakın.
+Filtreleme özelliklerinin tam başvurusu için [WHERE yan tümcesi](iot-hub-devguide-query-language.md#where-clause) bölümüne bakın.
 
-Gruplandırma ve toplamalar de desteklenir. Örneğin, her telemetri yapılandırma durumundaki cihaz sayısını bulmak için aşağıdaki sorguyu kullanın:
+Gruplandırma ve toplamalar da desteklenir. Örneğin, her telemetri yapılandırma durumundaki aygıt sayısını bulmak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ SELECT properties.reported.telemetryConfig.status AS status,
   GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Bu gruplandırma sorgusu, aşağıdaki örneğe benzer bir sonuç döndürür:
+Bu gruplandırma sorgusu aşağıdaki örneğe benzer bir sonuç döndürecek:
 
 ```json
 [
@@ -149,29 +149,29 @@ Bu gruplandırma sorgusu, aşağıdaki örneğe benzer bir sonuç döndürür:
 ]
 ```
 
-Bu örnekte, üç cihaz başarılı bir yapılandırma raporladı, iki yapılandırma hala yapılandırmayı uyguluyor ve bir hata bildirdi.
+Bu örnekte, üç aygıt başarılı yapılandırma rapor, iki hala yapılandırma uygulamakta ve bir hata bildirdi.
 
-Projeksiyon sorguları, geliştiricilerin yalnızca ilgilendikleri özellikleri döndürmesini sağlar. Örneğin, tüm bağlantısı kesilen cihazların son etkinlik saatini almak için aşağıdaki sorguyu kullanın:
+Projeksiyon sorguları, geliştiricilerin yalnızca önem verdikleri özellikleri döndürmesine olanak tanır. Örneğin, bağlantısı kesilen tüm aygıtların son etkinlik süresini almak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>Module ikizi sorguları
+### <a name="module-twin-queries"></a>Modül ikiz sorguları
 
-Modül TWINS 'de sorgulama, cihaz ikiklikleri, farklı bir koleksiyon/ad alanı kullanılarak sorgulanmasına benzer. cihazlar yerine **cihazlar. modüller** **' de**sorgulama yapabilirsiniz:
+Modül ikizleri üzerinde sorgulama, aygıt ikizleri üzerinde sorgulama benzer, ancak farklı bir koleksiyon / ad alanı kullanarak; **cihazlardan**değil, **devices.modules**sorgu:
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-Cihazlar ve cihazlar. modüller koleksiyonları arasında birleşime izin vermedik. Cihazlarda modül genelindeki modülleri sorgulamak istiyorsanız, etiketleri temel alarak yapabilirsiniz. Bu sorgu, tarama durumuna sahip tüm cihazlarda tüm modül TWINS 'i döndürür:
+Cihazlar ve cihazlar.modül koleksiyonları arasında birleştirmeye izin vermiyoruz. Modül ikizlerini aygıtlar arasında sorgulamak istiyorsanız, bunu etiketlere göre yaparsınız. Bu sorgu, tarama durumuna sahip tüm aygıtlar arasındaki tüm modül ikizlerini döndürecektir:
 
 ```sql
 SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
-Bu sorgu tüm modül TWINS 'i tarama durumuyla döndürür, ancak yalnızca belirtilen cihaz alt kümesinde:
+Bu sorgu, yalnızca aygıtların belirtilen alt kümesinde, tarama durumuna sahip tüm modül ikizlerini döndürecektir:
 
 ```sql
 SELECT * FROM devices.modules
@@ -179,9 +179,9 @@ SELECT * FROM devices.modules
   AND deviceId IN ['device1', 'device2']
 ```
 
-### <a name="c-example"></a>C#örneğinde
+### <a name="c-example"></a>C# örneği
 
-Sorgu işlevi, **registrymanager** sınıfında [ C# hizmet SDK 'sı](iot-hub-devguide-sdks.md) tarafından sunulur.
+Sorgu işlevi **RegistryManager** sınıfında [C# hizmeti SDK](iot-hub-devguide-sdks.md) tarafından ortaya çıkarır.
 
 Basit bir sorgu örneği aşağıda verilmiştir:
 
@@ -197,13 +197,13 @@ while (query.HasMoreResults)
 }
 ```
 
-**Sorgu** nesnesi, bir sayfa boyutu (100 'e kadar) ile oluşturulur. Daha sonra, **Getnextastwınasync** yöntemleri birden çok kez çağırarak birden çok sayfa alınır.
+**Sorgu** nesnesi bir sayfa boyutu (en fazla 100) ile anında verilir. Daha sonra **getNextAsTwinAsync** yöntemlerini birden çok kez arayarak birden çok sayfa alınır.
 
-Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak birden çok **sonraki** değeri kullanıma sunar. Örneğin, cihaz ikizi veya iş nesneleri ya da projeksiyonlar kullanılırken düz JSON.
+Sorgu nesnesi, sorgunun gerektirdiği deserialization seçeneğine bağlı olarak birden çok **Sonraki** değeri gösterir. Örneğin, aygıt ikizi veya iş nesneleri veya projeksiyonları kullanırken düz JSON.
 
-### <a name="nodejs-example"></a>Node. js örneği
+### <a name="nodejs-example"></a>Düğüm.js örneği
 
-Sorgu işlevselliği, **kayıt defteri** nesnesindeki [Node. js için Azure IoT hizmeti SDK 'sı](iot-hub-devguide-sdks.md) tarafından sunulur.
+Sorgu işlevi, **Kayıt Defteri** nesnesindeki [Node.js için Azure IoT hizmeti SDK](iot-hub-devguide-sdks.md) tarafından ortaya çıkarır.
 
 Basit bir sorgu örneği aşağıda verilmiştir:
 
@@ -226,20 +226,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-**Sorgu** nesnesi, bir sayfa boyutu (100 'e kadar) ile oluşturulur. Ardından, **Nextastwin** yöntemi birden çok kez çağırarak birden çok sayfa alınır.
+**Sorgu** nesnesi bir sayfa boyutu (en fazla 100) ile anında verilir. Daha sonra **nextAsTwin** yöntemini birden çok kez arayarak birden çok sayfa alınır.
 
-Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak birden çok **sonraki** değeri kullanıma sunar. Örneğin, cihaz ikizi veya iş nesneleri ya da projeksiyonlar kullanılırken düz JSON.
+Sorgu nesnesi, sorgunun gerektirdiği deserialization seçeneğine bağlı olarak birden çok **Sonraki** değeri gösterir. Örneğin, aygıt ikizi veya iş nesneleri veya projeksiyonları kullanırken düz JSON.
 
 ### <a name="limitations"></a>Sınırlamalar
 
 > [!IMPORTANT]
-> Sorgu sonuçları, cihaz iksındaki en son değerlere göre birkaç dakikalık gecikmeye neden olabilir. Bağımsız cihaz TWINS 'i KIMLIĞE göre sorgularken [Get ikizi REST API](https://docs.microsoft.com/rest/api/iothub/service/gettwin)kullanın. Bu API her zaman en son değerleri döndürür ve daha yüksek azaltma sınırlarına sahiptir. REST API doğrudan verebilir veya [Azure IoT Hub hizmeti SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)'larından birindeki denk işlevselliği kullanabilirsiniz.
+> Sorgu sonuçları, aygıt ikizlerinde en son değerlere göre birkaç dakika gecikmeye neden olabilir. Tek tek aygıt ikizlerini kimlikle sorgulıyorsanız, [ikiz REST API'sını](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)kullanın. Bu API her zaman en son değerleri döndürür ve daha yüksek azaltma limitlerine sahiptir. REST API'sini doğrudan verebilir veya [Azure IoT Hub Hizmeti SDK'larından](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)birinde eşdeğer işlevselliği kullanabilirsiniz.
 
-Şu anda, karşılaştırmalar yalnızca ilkel türler arasında desteklenir (nesne yok), örneğin `... WHERE properties.desired.config = properties.reported.config` yalnızca bu özelliklerde ilkel değerler varsa desteklenir.
+Şu anda karşılaştırmalar yalnızca ilkel türler (nesne yok) arasında desteklenir, örneğin `... WHERE properties.desired.config = properties.reported.config` yalnızca bu özelliklerin ilkel değerleri varsa desteklenir.
 
-## <a name="get-started-with-jobs-queries"></a>İşleri sorgular ile çalışmaya başlama
+## <a name="get-started-with-jobs-queries"></a>İş sorgularıyla başlayın
 
-[İşler](iot-hub-devguide-jobs.md) , cihaz kümelerinde işlemleri yürütmek için bir yol sağlar. Her cihaz ikizi, **işler**adlı bir koleksiyonda yer aldığı işlerin bilgilerini içerir.
+[İşler,](iot-hub-devguide-jobs.md) aygıt kümelerinde işlemleri yürütmek için bir yol sağlar. Her aygıt ikizi, **iş**adı verilen bir koleksiyonda parçası olduğu işlerin bilgilerini içerir.
 
 ```json
 {
@@ -270,25 +270,25 @@ Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak bi
 }
 ```
 
-Şu anda, bu koleksiyon IoT Hub sorgu dilinde **Devices.Jobs** olarak sorgulanabilir.
+Şu anda, bu koleksiyon IoT Hub sorgu dilinde **devices.jobs** olarak sorgulanabilir.
 
 > [!IMPORTANT]
-> Şu anda, Device TWINS sorgulanırken işler özelliği hiçbir zaman döndürülmez. Diğer bir deyişle, ' FROM devices ' içeren sorgular. İşler özelliğine yalnızca `FROM devices.jobs`kullanarak doğrudan sorgularla erişilebilir.
+> Şu anda, aygıt ikizlerini sorgularken işler özelliği hiçbir zaman döndürülmedi. Diğer bir şey, 'FROM aygıtları' içeren sorgular. İşler özelliğine yalnızca doğrudan sorgularla `FROM devices.jobs`erişilebilir.
 >
 >
 
-Örneğin, tek bir cihazı etkileyen tüm işleri (geçmişte ve zamanlanan) almak için aşağıdaki sorguyu kullanabilirsiniz:
+Örneğin, tek bir aygıtı etkileyen tüm işleri (geçmiş ve zamanlanmış) almak için aşağıdaki sorguyu kullanabilirsiniz:
 
 ```sql
 SELECT * FROM devices.jobs
   WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Bu sorgunun döndürülen her iş için cihaza özgü durumu (ve muhtemelen doğrudan yöntem yanıtı) nasıl sağladığını aklınızda bulabilirsiniz.
+Bu sorgunun döndürülen her işin aygıta özgü durumunu (ve büyük olasılıkla doğrudan yöntem yanıtını) nasıl sağladığını unutmayın.
 
-Ayrıca, **Devices.Jobs** koleksiyonundaki tüm nesne özelliklerinde rastgele Boole koşullara göre filtrelemek mümkündür.
+**devices.jobs** koleksiyonundaki tüm nesne özelliklerine rasgele Boolean koşullarıyla filtre uygulayabilirsiniz.
 
-Örneğin, belirli bir cihaz için 2016 Eylül 'tan sonra oluşturulan tüm tamamlanmış Device ikizi Update işlerini almak için aşağıdaki sorguyu kullanın:
+Örneğin, belirli bir aygıt için Eylül 2016'dan sonra oluşturulan tamamlanmış tüm aygıt ikiz güncelleştirme işlerini almak için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -298,7 +298,7 @@ SELECT * FROM devices.jobs
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-Tek bir işin cihaz başına sonuçlarını da alabilirsiniz.
+Ayrıca, tek bir işin aygıt başına sonuçlarını da alabilirsiniz.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -307,15 +307,15 @@ SELECT * FROM devices.jobs
 
 ### <a name="limitations"></a>Sınırlamalar
 
-Şu anda, **Devices.Jobs** üzerindeki sorgular şunları desteklemez:
+Şu anda, **devices.jobs** sorguları desteklenmez:
 
-* Bu nedenle, yalnızca `SELECT *` mümkündür.
-* İş özelliklerine ek olarak cihaz ikizi başvuran koşullar (yukarıdaki bölüme bakın).
-* Count, AVG, group by gibi toplamalar gerçekleştiriliyor.
+* Projeksiyonlar, bu `SELECT *` nedenle sadece mümkündür.
+* İş özelliklerine ek olarak aygıt ikizine başvuran koşullar (önceki bölüme bakın).
+* Count, avg, group by gibi toplamaları gerçekleştirir.
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub sorgusunun temelleri
 
-Her IoT Hub sorgu SELECT ve FROM yan tümcelerinden, isteğe bağlı WHERE ve GROUP BY yan tümceleriyle oluşur. Her sorgu, JSON belgelerinin bir koleksiyonunda çalıştırılır, örneğin cihaz ikikesi. FROM yan tümcesi, (**cihazlar**, **cihazlar. modüller**veya **Devices.Jobs**) üzerinde tekrarlandırılmış belge koleksiyonunu belirtir. Sonra WHERE yan tümcesindeki filtre uygulanır. Toplamalar ile, bu adımın sonuçları GROUP BY yan tümcesinde belirtilen şekilde gruplandırılır. Her grup için, SELECT yan tümcesinde belirtilen şekilde bir satır oluşturulur.
+Her IoT Hub sorgusu, isteğe bağlı WHERE ve GROUP BY yan tümceleriyle SELECT ve FROM yan tümcelerinden oluşur. Her sorgu JSON belgelerinin bir koleksiyon, örneğin cihaz ikizler çalıştırılır. FROM yan tümcesi belge koleksiyonunun **(cihazlar,** **devices.modules**veya **devices.jobs)** üzerinde titreşeceğini gösterir. Daha sonra WHERE yan tümcesindeki filtre uygulanır. Toplamalarda, bu adımın sonuçları GROUP BY yan tümcesinde belirtildiği şekilde gruplandırılır. Her grup için SELECT yan tümcesinde belirtildiği gibi bir satır oluşturulur.
 
 ```sql
 SELECT <select_list>
@@ -326,20 +326,20 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM yan tümcesi
 
-**FROM < from_specification >** yan tümcesi yalnızca üç değeri kabul edebilir: **cihazlardan** cihaz ikizlerini sorgular **. modüller, modülleri** sorgulamak için veya **Devices.Jobs 'den** sorgu işi-cihaz başına ayrıntılar.
+**FROM <from_specification>** yan tümcesi yalnızca üç değer üstlenebilir: **aygıtlardan** aygıt ikizlerini sorguya, **FROM devices.modules'den** sorgu modülü ne kadar, veya **FROM devices.jobs'dan** aygıt başına iş ayrıntılarını sorgulaya.
 
-## <a name="where-clause"></a>WHERE tümcesi
+## <a name="where-clause"></a>WHERE yan tümcesi
 
-**Where < filter_condition >** yan tümcesi isteğe bağlıdır. Bu, FROM koleksiyonundaki JSON belgelerinin sonucun bir parçası olarak dahil edilmesini sağlamak için karşılaması gereken bir veya daha fazla koşulu belirtir. Herhangi bir JSON belgesi, sonuca eklenmek için belirtilen koşulları "true" olarak değerlendirmelidir.
+**WHERE <filter_condition>** maddesi isteğe bağlıdır. FROM koleksiyonundaki JSON belgelerinin sonucun bir parçası olarak dahil edilebilmek için karşılanması gereken bir veya daha fazla koşulu belirtir. Herhangi bir JSON belgesi, sonuca dahil edilebilmek için belirtilen koşulları "doğru" olarak değerlendirmelidir.
 
-İzin verilen koşullar, bölüm [ifadelerinde ve koşullarında](iot-hub-devguide-query-language.md#expressions-and-conditions)açıklanmıştır.
+İzin verilen koşullar bölüm [İfadeler ve koşullar](iot-hub-devguide-query-language.md#expressions-and-conditions)açıklanmıştır.
 
 ## <a name="select-clause"></a>SELECT yan tümcesi
 
-**SELECT < select_list >** zorunludur ve sorgudan alınan değerleri belirtir. Yeni JSON nesneleri oluşturmak için kullanılacak JSON değerlerini belirtir.
-IÇINDEKI koleksiyonun filtrelenmiş (ve isteğe bağlı olarak gruplanmış) alt kümesinin her öğesi için, projeksiyon aşaması yeni bir JSON nesnesi oluşturur. Bu nesne SELECT yan tümcesinde belirtilen değerlerle oluşturulur.
+**SELECT <select_list>** zorunludur ve sorgudan hangi değerlerin alınıp alınacaklarını belirtir. Yeni JSON nesneleri oluşturmak için kullanılacak JSON değerlerini belirtir.
+FROM koleksiyonunun filtrelenmiş (ve isteğe bağlı olarak gruplandırılan) alt kümesinin her öğesi için projeksiyon aşaması yeni bir JSON nesnesi oluşturur. Bu nesne SELECT yan tümcesinde belirtilen değerlerle oluşturulur.
 
-SELECT yan tümcesinin dilbilgisini aşağıda verilmiştir:
+SELECT yan tümcesinin dilbilgisi aşağıdadır:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -361,15 +361,15 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** , from koleksiyonundaki JSON belgesinin herhangi bir özelliğine başvurur. SELECT yan tümcelerinin bazı örnekleri, Device ikizi sorguları ile çalışmaya başlama bölümünde bulunabilir.
+**Attribute_name,** FROM koleksiyonundaki JSON belgesinin herhangi bir özelliğine atıfta bulunur. SELECT yan tümcelerine bazı örnekler aygıt ikiz sorguları ile başlar bölümünde bulunabilir.
 
-Şu anda, **Select*** öğesinden farklı seçim yan tümceleri yalnızca cihaz ikslarındaki toplu sorgularda desteklenir.
+Şu anda SELECT ***'den**farklı seçim yan tümceleri yalnızca aygıt ikizlerinde toplu sorgularda desteklenir.
 
 ## <a name="group-by-clause"></a>GROUP BY yan tümcesi
 
-**GROUP BY < group_specification >** yan tümcesi WHERE yan tümcesinde belirtilen filtreden sonra ve Select içinde belirtilen projeksiyon öncesinde yürütülen isteğe bağlı bir adımdır. Bir özniteliğin değerine göre belgeleri gruplandırır. Bu gruplar, SELECT yan tümcesinde belirtilen şekilde toplanmış değerler oluşturmak için kullanılır.
+**GROUP BY <group_specification>** yan tümcesi, WHERE yan tümcesinde belirtilen filtreden sonra ve SELECT'te belirtilen projeksiyondan önce uygulayan isteğe bağlı bir adımdır. Belgeleri bir öznitelik değerine göre gruplar. Bu gruplar SELECT yan tümcesinde belirtildiği gibi toplanan değerleri oluşturmak için kullanılır.
 
-GROUP BY kullanan bir sorgu örneği:
+GROUP BY'yi kullanan bir sorgu örneği:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -378,7 +378,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-GROUP BY için biçimsel sözdizimi şöyledir:
+GROUP BY için resmi sözdizimi:
 
 ```
 GROUP BY <group_by_element>
@@ -387,24 +387,24 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**Attribute_name** , from koleksiyonundaki JSON belgesinin herhangi bir özelliğine başvurur.
+**Attribute_name,** FROM koleksiyonundaki JSON belgesinin herhangi bir özelliğine atıfta bulunur.
 
-Şu anda GROUP BY yan tümcesi yalnızca cihaz ikizleri sorgulanırken desteklenir.
+Şu anda, GROUP BY yan tümcesi yalnızca aygıt ikizlerini sorgularken desteklenir.
 
 > [!IMPORTANT]
-> `group` terimi Şu anda sorgularda özel bir anahtar sözcük olarak kabul edilir. Büyük/küçük harf olarak `group`, özellik adı olarak kullanılır, örneğin, `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`hataları önlemek için çift ayraçla çevrelemeyi düşünün.
+> Terim `group` şu anda sorgularda özel bir anahtar kelime olarak kabul edilir. Durumda, mülk `group` adınız olarak kullanırsanız, hataları önlemek için onu çift parantezle `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`çevrelemeyi düşünün, örneğin.
 >
 
 ## <a name="expressions-and-conditions"></a>İfadeler ve koşullar
 
-Yüksek düzeyde, bir *ifade*:
+Yüksek düzeyde, bir *ifade:*
 
-* Bir JSON türü örneği (Boolean, sayı, dize, dizi veya nesne gibi) olarak değerlendirilir.
-* , Yerleşik işleçler ve işlevler kullanılarak cihaz JSON belgesinden ve sabitlerinden gelen veriler işlenerek tanımlanır.
+* JSON türü (Boolean, sayı, dize, dizi veya nesne gibi) bir örneğine değerlendirir.
+* JSON belgesive sabitlerden gelen verilerin yerleşik işleçler ve işlevler kullanılarak manipüle edilmesiyle tanımlanır.
 
-*Koşullar* bir Boole değeri değerlendiren ifadelerdir. Boolean **true** değerinden farklı olan herhangi bir sabit **yanlış**olarak değerlendirilir. Bu kural **null**, **tanımsız**, herhangi bir nesne veya dizi örneği, herhangi bir dize **ve Boole değeri**içerir.
+*Koşullar* boolean için değerlendirmek ifadelerdir. Boolean **gerçek** herhangi bir sabit farklı **yanlış**olarak kabul edilir. Bu kural **null,** **tanımlanmamış,** herhangi bir nesne veya dizi örneği, herhangi bir dize ve Boolean **yanlış**içerir.
 
-İfadelerin sözdizimi şöyledir:
+İfadeler için sözdizimi:
 
 ```
 <expression> ::=
@@ -432,76 +432,76 @@ Yüksek düzeyde, bir *ifade*:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-İfadeler sözdiziminde her bir simgenin ne olduğunu anlamak için aşağıdaki tabloya bakın:
+Sözdizimi ifadelerindeki her sembolün ne anlama geldiğini anlamak için aşağıdaki tabloya bakın:
 
 | Sembol | Tanım |
 | --- | --- |
-| attribute_name | **From** koleksiyonundaki JSON belgesinin herhangi bir özelliği. |
-| binary_operator | [İşleçler](#operators) bölümünde listelenen herhangi bir ikili işleç. |
-| function_name| [İşlevler](#functions) bölümünde listelenen herhangi bir işlev. |
-| decimal_literal |Ondalık gösteriminde ifade edilen bir float. |
-| hexadecimal_literal |' 0x ' dizesinin ardından onaltılık basamak dizesi tarafından ifade edilen bir sayı. |
-| string_literal |Dize değişmez değerleri, sıfır veya daha fazla Unicode karakter dizisi veya kaçış dizileri tarafından temsil edilen Unicode dizelerdir. Dize sabit değerleri tek tırnak veya çift tırnak içine alınır. İzin verilen kaçış: `\'`, `\"`, `\\`, 4 onaltılık basamak tarafından tanımlanan Unicode karakterler için `\uXXXX`. |
+| Öznitelik_adý | **FROM** koleksiyonundaki JSON belgesinin herhangi bir özelliği. |
+| binary_operator | [Operatörler](#operators) bölümünde listelenen herhangi bir ikili işleç. |
+| function_name| [Fonksiyonlar](#functions) bölümünde listelenen herhangi bir işlev. |
+| decimal_literal |Ondalık gösterimle ifade edilen bir float. |
+| hexadecimal_literal |'0x' dizesi tarafından ifade edilen bir sayı ve ardından bir hexadecimal basamak dizesi. |
+| string_literal |String literals, sıfır veya daha fazla Unicode karakter veya kaçış dizileri dizisi yle temsil edilen Unicode dizeleridir. String literals tek tırnak veya çift tırnak içinde kapalıdır. İzin verilen `\'`kaçışlar: `\uXXXX` , , , `\"` `\\`4 hexadecimal basamak ile tanımlanan Unicode karakterleri için. |
 
 ### <a name="operators"></a>İşleçler
 
 Aşağıdaki işleçler desteklenir:
 
-| Ailesi | İşleçler |
+| Family (Aile) | İşleçler |
 | --- | --- |
 | Aritmetik |+, -, *, /, % |
-| Mantıksal |VE, VEYA DEĞİL |
+| Mantıksal |VE, YA DA, DEĞIL |
 | Karşılaştırma |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>İşlevler
 
-TWINS ve işleri sorgularken yalnızca desteklenen işlev şunlardır:
+İkizleri ve işleri sorgularken desteklenen tek işlev şudur:
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| IS_DEFINED (özellik) | Özelliğin bir değer atandığını (`null`dahil) belirten bir Boole değeri döndürür. |
+| IS_DEFINED (özellik) | Özellik bir değer atanmış olup olmadığını belirten bir Boolean döndürür (dahil). `null` |
 
-Rotalar koşullarında aşağıdaki matematik işlevleri desteklenir:
-
-| İşlev | Açıklama |
-| -------- | ----------- |
-| ABS (x) | Belirtilen sayısal ifade (pozitif) mutlak değerini döndürür. |
-| EXP (x) | Belirtilen sayısal ifadenin üstel değerini döndürür (e ^ x). |
-| Güç (x, y) | Belirtilen bir ifadenin belirtilen kuvvetinin değerini döndürür (x ^ y).|
-| KARE (x) | Belirtilen bir sayısal değer karesini döndürür. |
-| TAVAN (x) | Büyüktür veya eşittir, belirtilen sayısal ifadenin en küçük tamsayı değerini döndürür. |
-| KAT (x) | Belirtilen sayısal ifade küçük veya eşit en büyük tamsayı döndürür. |
-| IMZALA (x) | (+ 1) pozitif, sıfır (0) veya eksi (-1) belirtilen sayısal ifade döndürür.|
-| SQRT (x) | Belirtilen sayısal değerinin kare kökünü döndürür. |
-
-Yollar koşullarında, aşağıdaki tür denetimi ve atama işlevleri desteklenir:
+Rota koşullarında aşağıdaki matematik işlevleri desteklenir:
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. Giriş bir sayı ise `noop`; dize bir sayıyı temsil etmediği `Undefined`.|
-| IS_ARRAY | Belirtilen ifade türü bir dizi olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_BOOL | Belirtilen ifade türünü bir Boole değeri olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_DEFINED | Özellik değeri atanıp atanmadığını gösteren bir Boole değeri döndürür. |
-| IS_NULL | Belirtilen ifadenin türü null olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_NUMBER | Belirtilen ifade türünü bir sayı olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_OBJECT | Belirtilen ifade türünü bir JSON nesnesi olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_PRIMITIVE | Belirtilen ifadenin türünün bir ilkel öğe (dize, Boole, sayısal veya `null`) olduğunu gösteren bir Boole değeri döndürür. |
-| IS_STRING | Belirtilen ifadenin türü dize olup olmadığını gösteren bir Boole değeri döndürür. |
+| ABS(x) | Belirtilen sayısal ifadenin mutlak (pozitif) değerini verir. |
+| EXP(x) | Belirtilen sayısal ifadenin (e^x) üstel değerini verir. |
+| GÜÇ(x,y) | Belirtilen ifadenin değerini belirtilen güce (x^y) verir.|
+| KARE(x)    | Belirtilen sayısal değerin karesini verir. |
+| TAVAN(x) | Belirtilen sayısal ifadeden daha büyük veya eşit olan en küçük tümseci değerini verir. |
+| KAT(x) | Belirtilen sayısal ifadeden daha az veya eşit olan en büyük tümseci döndürür. |
+| İşaret(x) | Belirtilen sayısal ifadenin pozitif (+1), sıfır (0) veya negatif (-1) işaretini verir.|
+| SQRT(x) | Belirtilen sayısal değerin kare kökünü verir. |
 
-Yollar koşullarında aşağıdaki dize işlevleri desteklenir:
+Rota koşullarında, aşağıdaki tip kontrol ve döküm fonksiyonları desteklenir:
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| CONCAT (x, y,...) | İki veya daha fazla dize değerlerini birleştirirken sonucu olan bir dize döndürür. |
-| Uzunluk (x) | Belirtilen dize ifadesinin karakter sayısını döndürür.|
-| DAHA düşük (x) | Büyük harf karakter verileri küçük harfe dönüştürmenin sonra bir dize ifadesi döndürür. |
-| UPPER (x) | Küçük harf karakter verileri büyük harfe dönüştürmenin sonra bir dize ifadesi döndürür. |
-| Alt DIZE (dize, başlangıç [, uzunluk]) | Belirtilen karakterin sıfır tabanlı konumunda başlayan bir dize ifadesi bölümünü döndürür ve belirtilen uzunlukta veya dizenin sonuna kadar devam eder. |
-| INDEX_OF (dize, parça) | İkinci dizenin başlangıç konumunu döndürür dize bulunamazsa, ilk belirtilen dize ifadesi veya -1 içindeki ifadenin dize.|
-| STARTS_WITH (x, y) | Boole döndürüp döndüremeyeceğini belirten döndürür ilk dize ifade olup olmadığını ve ikinci başlatır. |
-| ENDS_WITH (x, y) | Boole döndürüp döndüremeyeceğini belirten döndürür ilk dize ifade olup olmadığını ve ikinci sona erer. |
-| IÇERIR (x, y) | Döndürür bir Boolean gösteren ikinci ilk dize ifade olup olmadığını içerir. |
+| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop`giriş bir sayı ise; `Undefined` dize bir sayıtemsil etmiyorsa.|
+| IS_ARRAY | Belirtilen ifade nin türü bir dizi olup olmadığını belirten bir Boolean değeri döndürür. |
+| IS_BOOL | Belirtilen ifadenin türü boolean olup olmadığını belirten bir Boolean değeri döndürür. |
+| IS_DEFINED | Özellik bir değer atanmış olup olmadığını belirten bir Boolean döndürür. |
+| IS_NULL | Belirtilen ifadenin türünün null olup olmadığını belirten bir Boolean değeri döndürür. |
+| IS_NUMBER | Belirtilen ifadenin türü bir sayı olup olmadığını belirten bir Boolean değeri döndürür. |
+| IS_OBJECT | Belirtilen ifade nin türünün JSON nesnesi olup olmadığını belirten bir Boolean değeri döndürür. |
+| IS_PRIMITIVE | Belirtilen ifadenin türünün ilkel olup olmadığını belirten bir Boolean değeri döndürür (dize, Boolean, sayısal veya). `null` |
+| IS_STRING | Belirtilen ifade nin türü bir dize olup olmadığını belirten bir Boolean değeri döndürür. |
+
+Rota koşullarında aşağıdaki dize işlevleri desteklenir:
+
+| İşlev | Açıklama |
+| -------- | ----------- |
+| CONCAT(x, y, ...) | İki veya daha fazla dize değeri birlikiyor sonucu bir dize döndürür. |
+| UZUNLUK(x) | Belirtilen dize ifadesinin karakter sayısını döndürür.|
+| ALT(x) | Büyük harf karakter verilerini küçük harfe dönüştürdükten sonra bir dize ifadesi döndürür. |
+| ÜST(x) | Küçük karakter verilerini büyük harfe dönüştürdükten sonra bir dize ifadesi döndürür. |
+| SUBSTRING(string, start [, uzunluk]) | Dize ifadesinin belirtilen karakter sıfır tabanlı konumdan başlayan bir bölümünü döndürür ve belirtilen uzunluğa veya dize sonuna kadar devam ederse. |
+| INDEX_OF(dize, parça) | İlk belirtilen dize ifadesi içinde ikinci dize ifadesinin ilk oluşumunun başlangıç konumunu döndürür veya dize bulunamazsa -1.|
+| STARTS_WITH(x, y) | İlk dize ifadesinin ikinciyle başlayıp başlamadığını belirten bir Boolean döndürür. |
+| ENDS_WITH(x, y) | İlk dize ifadesinin ikinciyle bitip bitmediğini belirten bir Boolean döndürür. |
+| İçERİğİ(x,y) | İlk dize ifadesinin ikinciyi isayı içerip içerdirip içerdirmed |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure IoT SDK](iot-hub-devguide-sdks.md)'larını kullanarak uygulamalarınızda sorguları yürütmeyi öğrenin.
+[Azure IoT SDK'larını](iot-hub-devguide-sdks.md)kullanarak uygulamalarınızda sorguları nasıl yürüterinizi öğrenin.

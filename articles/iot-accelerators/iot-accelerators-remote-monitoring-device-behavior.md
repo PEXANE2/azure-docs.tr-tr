@@ -1,6 +1,6 @@
 ---
-title: Uzaktan Izleme çözümünde sanal cihaz-Azure | Microsoft Docs
-description: Bu makalede, uzaktan izleme çözümünde sanal bir cihazın davranışını tanımlamak için JavaScript 'in nasıl kullanılacağı açıklanır.
+title: Uzaktan İzleme çözümünde simüle edilen aygıt - Azure | Microsoft Dokümanlar
+description: Bu makalede, uzaktan izleme çözümünde simüle edilmiş bir aygıtın davranışını tanımlamak için JavaScript'in nasıl kullanılacağı açıklanmaktadır.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,37 +9,37 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890856"
 ---
-# <a name="implement-the-device-model-behavior"></a>Cihaz modeli davranışını uygulama
+# <a name="implement-the-device-model-behavior"></a>Aygıt modeli davranışını uygulama
 
-Makale, sanal cihaz modelini tanımlayan şemayı açıklanan [cihaz modeli şemasını anlayın](iot-accelerators-remote-monitoring-device-schema.md) . Bu makale, sanal bir cihazın davranışını uygulayan iki tür JavaScript dosyasına başvurmaktadır:
+Makale [Anlayın aygıt modeli şema](iot-accelerators-remote-monitoring-device-schema.md) benzetilen bir benzetim aygıt modeli tanımlar. Bu makalede, benzetilen bir aygıtın davranışını uygulayan iki javascript dosyası türüne atıfta bulunulan:
 
-- **Durum** Cihazın iç durumunu güncelleştirmek için sabit aralıklarda çalışan JavaScript dosyaları.
-- **Yöntemi** Çözüm cihazda bir yöntemi çağırdığında çalışan JavaScript dosyaları.
+- **Devlet** Aygıtın iç durumunu güncelleştirmek için sabit aralıklarla çalışan JavaScript dosyaları.
+- **Yöntem** Çözüm aygıtta bir yöntem çağırdığında çalışan JavaScript dosyaları.
 
 > [!NOTE]
-> Cihaz modeli davranışları yalnızca cihaz benzetimi hizmetinde barındırılan sanal cihazlar içindir. Gerçek bir cihaz oluşturmak istiyorsanız, bkz. [cihazınızı uzaktan izleme çözüm hızlandırıcısına bağlama](iot-accelerators-connecting-devices.md).
+> Aygıt modeli davranışları yalnızca aygıt simülasyon hizmetinde barındırılan simüle edilmiş aygıtlar içindir. Gerçek bir aygıt oluşturmak istiyorsanız, [cihazınızı Uzaktan İzleme çözüm hızlandırıcısına bağlayın'](iot-accelerators-connecting-devices.md)a bakın.
 
 Bu makalede şunları öğreneceksiniz:
 
 >[!div class="checklist"]
-> * Sanal cihazın durumunu denetleme
-> * Sanal cihazın uzaktan Izleme çözümünün yöntem çağrısına nasıl yanıt vereceğini tanımlayın
-> * Betiklerinizde hata ayıklama
+> * Benzetimli aygıtın durumunu denetleme
+> * Simüle edilmiş bir aygıtın Uzaktan İzleme çözümünden gelen bir yöntem çağrısına nasıl yanıt verilebildiğini tanımlayın
+> * Komut dosyalarınızı hata ayıklama
 
 ## <a name="state-behavior"></a>Durum davranışı
 
-Cihaz modeli şemasının [Benzetim](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) bölümü, sanal cihazın iç durumunu tanımlar:
+Aygıt modeli şemasının [Simülasyon](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) bölümü, simüle edilmiş bir aygıtın dahili durumunu tanımlar:
 
-- `InitialState`, cihaz durumu nesnesinin tüm özellikleri için ilk değerleri tanımlar.
-- `Script`, cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar.
+- `InitialState`aygıt durumu nesnesinin tüm özellikleri için ilk değerleri tanımlar.
+- `Script`aygıt durumunu güncelleştirmek için bir zamanlamada çalışan bir JavaScript dosyasını tanımlar.
 
-Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanımı gösterilmektedir:
+Aşağıdaki örnek, benzetilen bir soğutucu aygıtı için aygıt durumu nesnesinin tanımını gösterir:
 
 ```json
 "Simulation": {
@@ -61,9 +61,9 @@ Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanım�
 }
 ```
 
-`InitialState` bölümünde tanımlandığı gibi, sanal cihazın durumu Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, **Chiller-01-State. js**' de tanımlanan `main` işlevine girdi olarak geçirilir. Bu örnekte, Simülasyon hizmeti her beş saniyede bir **Chiller-01-State. js** dosyasını çalıştırır. Betik, sanal cihazın durumunu değiştirebilir.
+`InitialState` Simüle cihazın durumu, bölümde tanımlandığı gibi, simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri `main` **chiller-01-state.js'de**tanımlanan işleve giriş olarak geçirilir. Bu örnekte, simülasyon hizmeti **chiller-01-state.js** dosyasını her beş saniyede bir çalıştırUr. Komut dosyası, benzetilen aygıtın durumunu değiştirebilir.
 
-Aşağıda, tipik bir `main` işlevinin ana hattı gösterilmektedir:
+Aşağıdaki tipik `main` bir işlevin anahatlarını gösterir:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -76,15 +76,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` parametresi aşağıdaki özelliklere sahiptir:
+`context` Parametre aşağıdaki özelliklere sahiptir:
 
-- biçim `yyyy-MM-dd'T'HH:mm:sszzz` bir dize olarak `currentTime`
-- `deviceId`, örneğin `Simulated.Chiller.123`
-- `deviceModel`, örneğin `Chiller`
+- `currentTime`biçimi ile bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, örneğin`Simulated.Chiller.123`
+- `deviceModel`, örneğin`Chiller`
 
-`state` parametresi cihaz benzetimi hizmeti tarafından sürdürülen cihaz durumunu içerir. Bu değer, önceki `main`çağrısının döndürdüğü `state` nesnesidir.
+Parametre, `state` aygıt simülasyon hizmeti tarafından korunan aygıtın durumunu içerir. Bu değer, `state` önceki çağrıtarafından döndürülen `main`nesnedir.
 
-Aşağıdaki örnek, Simülasyon hizmeti tarafından tutulan cihaz durumunu işlemek için `main` yönteminin tipik bir uygulamasını gösterir:
+Aşağıdaki örnek, simülasyon hizmeti `main` tarafından tutulan aygıt durumunu işlemek için yöntemin tipik bir uygulamasını gösterir:
 
 ```javascript
 // Default state
@@ -118,7 +118,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Aşağıdaki örnek, `main` yönteminin zaman içinde farklılık gösteren telemetri değerlerinin benzetimini nasıl benzebileceğini gösterir:
+Aşağıdaki örnek, yöntemin `main` zaman içinde değişen telemetri değerlerini nasıl simüle edebileceğini gösterir:
 
 ```javascript
 /**
@@ -156,13 +156,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-GitHub üzerinde [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) ' nin tamamını görüntüleyebilirsiniz.
+GitHub'da [soğutucu-01-state.js'nin](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) tamamını görüntüleyebilirsiniz.
 
 ## <a name="method-behavior"></a>Yöntem davranışı
 
-Cihaz modeli şemasının [Cloudtodevicemethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) bölümü, sanal bir cihazın yanıt verdiği yöntemleri tanımlar.
+Aygıt modeli şemasının [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) bölümü, simüle edilmiş bir aygıtın yanıt verme yöntemlerini tanımlar.
 
-Aşağıdaki örnek, sanal bir chilcihaz tarafından desteklenen yöntemlerin listesini gösterir:
+Aşağıdaki örnek, benzetimli bir soğutucu aygıtı tarafından desteklenen yöntemlerin listesini gösterir:
 
 ```json
 "CloudToDeviceMethods": {
@@ -185,11 +185,11 @@ Aşağıdaki örnek, sanal bir chilcihaz tarafından desteklenen yöntemlerin li
 }
 ```
 
-Her yöntemin, yönteminin davranışını uygulayan ilişkili bir JavaScript dosyası vardır.
+Her yöntem, yöntemin davranışını uygulayan ilişkili bir JavaScript dosyasına sahiptir.
 
-Şema `InitialState` bölümünde tanımlandığı gibi, sanal cihazın durumu Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, yöntemi çağrıldığında JavaScript dosyasında tanımlanan `main` işlevine girdi olarak geçirilir. Betik, sanal cihazın durumunu değiştirebilir.
+Şema `InitialState` bölümünde tanımlandığı gibi simüle cihazın durumu simülasyon servisi tarafından bellekte tutulur. Durum bilgileri, yöntem çağrıldığında `main` JavaScript dosyasında tanımlanan işleve giriş olarak aktarılır. Komut dosyası, benzetilen aygıtın durumunu değiştirebilir.
 
-Aşağıda, tipik bir `main` işlevinin ana hattı gösterilmektedir:
+Aşağıdaki tipik `main` bir işlevin anahatlarını gösterir:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -197,23 +197,23 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` parametresi aşağıdaki özelliklere sahiptir:
+`context` Parametre aşağıdaki özelliklere sahiptir:
 
-- biçim `yyyy-MM-dd'T'HH:mm:sszzz` bir dize olarak `currentTime`
-- `deviceId`, örneğin `Simulated.Chiller.123`
-- `deviceModel`, örneğin `Chiller`
+- `currentTime`biçimi ile bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, örneğin`Simulated.Chiller.123`
+- `deviceModel`, örneğin`Chiller`
 
-`state` parametresi cihaz benzetimi hizmeti tarafından sürdürülen cihaz durumunu içerir.
+Parametre, `state` aygıt simülasyon hizmeti tarafından korunan aygıtın durumunu içerir.
 
-`properties` parametresi, IoT Hub cihaz ikizi bildirilen özellikler olarak yazılan cihazın özelliklerini içerir.
+Parametre, `properties` IoT Hub aygıt ikizine bildirilen özellikler olarak yazılan aygıtın özelliklerini içerir.
 
-Yöntemi davranışını uygulamaya yardımcı olmak için kullanabileceğiniz üç genel işlev vardır:
+Yöntemin davranışını uygulamaya yardımcı olmak için kullanabileceğiniz üç genel işlev vardır:
 
-- Simülasyon hizmeti tarafından tutulan durumu güncelleştirmek için `updateState`.
-- tek bir cihaz özelliğini güncelleştirmek `updateProperty`.
-- uzun süre çalışan bir görevin benzetimini yapmak için yürütmeyi duraklatmaya `sleep`.
+- `updateState`simülasyon servisi tarafından tutulan durumu güncellemek için.
+- `updateProperty`tek bir aygıt özelliğini güncelleştirmek için.
+- `sleep`uzun süren bir görevi simüle etmek için yürütmeyi duraklatmak için.
 
-Aşağıdaki örnek, **IncreasePressure-method. js** betiğinin benzetimli chilcihazlar tarafından kullanılan kısaltılmış bir sürümünü göstermektedir:
+Aşağıdaki örnek, simüle edilmiş soğutucu aygıtları tarafından kullanılan **IncreasePressure-method.js** komut dosyasının kısaltılmış bir sürümünü gösterir:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -248,27 +248,27 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Betik dosyalarında hata ayıklama
+## <a name="debugging-script-files"></a>Komut dosyası dosyalarını hata ayıklama
 
-Durum ve Yöntem betikleri çalıştırmak için cihaz benzetimi hizmeti tarafından kullanılan JavaScript Yorumlayıcısına bir hata ayıklayıcı eklemek mümkün değildir. Ancak, bilgileri hizmet günlüğünde günlüğe kaydedebilirsiniz. Yerleşik `log()` işlevi, işlev yürütmeyi izlemek ve hata ayıklamak için bilgileri kaydetmenizi sağlar.
+Durum ve yöntem komut dosyalarını çalıştırmak için aygıt simülasyon hizmeti tarafından kullanılan Javascript yorumlayıcısına hata ayıklayıcı eklemek mümkün değildir. Ancak, bilgileri hizmet günlüğüne kaydedebilirsiniz. Yerleşik `log()` işlev, işlev yürütmeyi izlemek ve hata ayıklamak için bilgileri kaydetmenizi sağlar.
 
-Bir sözdizimi hatası varsa yorumlayıcı başarısız olur ve hizmet günlüğüne bir `Jint.Runtime.JavaScriptException` girişi yazar.
+Sözdizimi hatası varsa, yorumlayıcı başarısız `Jint.Runtime.JavaScriptException` olur ve hizmet günlüğüne bir giriş yazar.
 
-GitHub 'da [hizmeti yerel olarak çalıştırma](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) makalesi, cihaz benzetimi hizmetini yerel olarak nasıl çalıştıracağınızı gösterir. Hizmeti yerel olarak çalıştırmak, sanal cihazlarınızda buluta dağıtmadan önce sanal cihazlarınızın hatalarını ayıklamayı kolaylaştırır.
+Hizmeti GitHub'daki [yerel olarak](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) çalıştırma makalesi, aygıt simülasyon hizmetini yerel olarak nasıl çalıştırabileceğinizi gösterir. Hizmeti yerel olarak çalıştırmak, simüle edilmiş aygıtlarınızı buluta dağıtmadan önce hata ayıklamanızı kolaylaştırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, kendi özel sanal cihaz modelinizin davranışının nasıl tanımlanacağı açıklanmaktadır. Bu makalede nasıl yapılacağı açıklanır:
+Bu makalede, kendi özel simüle aygıt modelinizin davranışını nasıl tanımlanabilirsiniz. Bu makalede, nasıl gösterin:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Sanal cihazın durumunu denetleme
-> * Sanal cihazın uzaktan Izleme çözümünün yöntem çağrısına nasıl yanıt vereceğini tanımlayın
-> * Betiklerinizde hata ayıklama
+> * Benzetimli aygıtın durumunu denetleme
+> * Simüle edilmiş bir aygıtın Uzaktan İzleme çözümünden gelen bir yöntem çağrısına nasıl yanıt verilebildiğini tanımlayın
+> * Komut dosyalarınızı hata ayıklama
 
-Sanal bir cihazın davranışını nasıl belirttireceğinizi öğrendiğinize göre, önerilen sonraki adım, [sanal cihaz oluşturmayı](iot-accelerators-remote-monitoring-create-simulated-device.md)öğrenmektir.
+Artık benzetilen bir aygıtın davranışını nasıl belirtdiğinizi öğrendiğiniz için, önerilen bir sonraki [adım, benzetimli bir aygıtın](iot-accelerators-remote-monitoring-create-simulated-device.md)nasıl oluşturulabildiğini öğrenmektir.
 
-Uzaktan Izleme çözümü hakkında daha fazla geliştirici bilgisi için bkz.:
+Uzaktan İzleme çözümü hakkında daha fazla geliştirici bilgisi için bkz:
 
 * [Geliştirici Başvuru Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Geliştirici Sorun Giderme Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

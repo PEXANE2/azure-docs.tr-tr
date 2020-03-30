@@ -7,89 +7,89 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79200489"
 ---
-Bu adımda, bir Azure SQL veritabanı sunucusu ve AdventureWorksLT örnek verisi kullanan tek bir veritabanı oluşturacaksınız. Azure portal menüleri ve ekranları kullanarak veya Azure Cloud Shell bir Azure CLı veya PowerShell betiği kullanarak veritabanı oluşturabilirsiniz.
+Bu adımda, bir Azure SQL Veritabanı sunucusu ve AdventureWorksLT örnek verilerini kullanan tek bir veritabanı oluşturursunuz. Veritabanını Azure portal menülerini ve ekranlarını kullanarak veya Azure Bulut BulutU'nda Bir Azure CLI veya PowerShell komut dosyası kullanarak oluşturabilirsiniz.
 
-Tüm Yöntemler, sunucu düzeyinde bir güvenlik duvarı kuralını, kullanmakta olduğunuz bilgisayarın genel IP adresinin sunucuya erişmek için ayarlanmasını sağlar. Sunucu güvenlik duvarı kuralları oluşturma hakkında daha fazla bilgi için bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](../sql-database-server-level-firewall-rule.md). Ayrıca, veritabanı düzeyinde güvenlik duvarı kuralları da ayarlayabilirsiniz. Bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). 
+Tüm yöntemler, sunucuya erişmek için kullandığınız bilgisayarın genel IP adresine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı ayarlamayı içerir. Sunucu güvenlik duvarı kuralları oluşturma hakkında daha fazla bilgi [için](../sql-database-server-level-firewall-rule.md)bkz. Veritabanı düzeyinde güvenlik duvarı kuralları da ayarlayabilirsiniz. Bkz. [Veritabanı düzeyinde güvenlik duvarı kuralı oluşturun.](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal bir kaynak grubu, SQL Server ve tek veritabanı oluşturmak için:
+Azure portalında bir kaynak grubu, SQL sunucusu ve tek bir veritabanı oluşturmak için:
 
-1. [Portalda](https://portal.azure.com) oturum açın.
-1. Arama çubuğundan **Azure SQL**araması yapın ve seçin.
-1. **Azure SQL** sayfasında **Ekle**' yi seçin. 
+1. [Portalda](https://portal.azure.com)oturum aç.
+1. Arama çubuğundan **Azure SQL'i**arayın ve seçin.
+1. Azure **SQL** sayfasında **Ekle'yi**seçin. 
    
-   ![Azure SQL 'e Ekle](../media/sql-database-single-database-get-started/sqldbportal.png)
+   ![Azure SQL'e Ekle](../media/sql-database-single-database-get-started/sqldbportal.png)
    
-1. **SQL dağıtım seçeneğini belirleyin** sayfasında, **kaynak türü**altında **tek bir veritabanı** ile **SQL veritabanları** kutucuğunu seçin. **Ayrıntıları göster**' i seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
-1. **Oluştur**’u seçin.
+1. SELECT **SQL dağıtım seçeneği** sayfasında, **Kaynak türü**altında **Tek veritabanı** olan SQL **veritabanları** döşemesini seçin. **Ayrıntıları Göster'i**seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
+1. **Oluştur'u**seçin.
    
    ![Tek veritabanı oluşturma](../media/sql-database-single-database-get-started/create-single-database.png)
    
-1. **SQL veritabanı oluştur** formunun **temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, henüz seçili değilse doğru Azure **aboneliğini** seçin.
-1. **Kaynak grubu**altında **Yeni oluştur**' u seçin, *myresourcegroup*girin ve **Tamam**' ı seçin.
-1. Veritabanı **ayrıntıları**' nın altında, **veritabanı adı** için *mysampledatabase*yazın.
-1. **Sunucu**Için **Yeni oluştur**' u seçin ve **Yeni sunucu** formunu aşağıdaki gibi doldurun:
-   - **Sunucu adı**: *te yapılandırılmış MySQLServer*ve benzersizlik için bazı karakterler girin.
-   - **Sunucu Yöneticisi oturum açma**: *azureuser*girin.
-   - **Parola**: gereksinimleri karşılayan bir parola girin ve **Parolayı Onayla** alanına yeniden girin.
-   - **Konum**: açılır ve **(US) Doğu ABD**gibi bir konum seçin.
+1. **SQL veritabanı** oluştur formunun **Temeller** sekmesinde, **Project ayrıntıları**altında, henüz seçilmemişse doğru Azure **Aboneliği'ni** seçin.
+1. **Kaynak grubu**altında, **yeni oluştur'u**seçin , *myResourceGroup'u*girin ve **Tamam'ı**seçin.
+1. **Veritabanı ayrıntıları**altında, **Veritabanı adı** için *mySampleDatabase*girin.
+1. **Sunucu**için **yeni oluştur'u**seçin ve **Yeni sunucu** formunu aşağıdaki gibi doldurun:
+   - **Sunucu adı**: *mysqlserver*girin ve benzersizlik için bazı karakterler.
+   - **Server admin giriş**: *Azureuser*girin .
+   - **Parola**: Gereksinimleri karşılayan bir parola girin ve **parolayı onayla** alanına tekrar girin.
+   - **Konum**: Aşağı inin ve **(ABD) Doğu ABD**gibi bir yer seçin.
    
-   **Tamam**’ı seçin.
+   **Tamam'ı**seçin.
    
    ![Yeni sunucu](../media/sql-database-single-database-get-started/new-server.png)
    
-   Sunucuda ve veritabanlarında oturum açabilmek için Sunucu Yöneticisi oturum açma bilgilerini ve parolasını kaydedin. Oturum açma veya parolayı unutursanız, veritabanı oluşturulduktan sonra **SQL Server** sayfasında oturum açma adını alabilir veya parolayı sıfırlayabilirsiniz. **SQL Server** sayfasını açmak Için veritabanına **genel bakış** sayfasında sunucu adını seçin.
+   Sunucu ve veritabanlarında oturum açabilmeniz için sunucu yöneticisi giriş ve parolasını kaydedin. Oturum açma veya parolanızı unutursanız, veritabanı oluşturulduktan sonra giriş adını alabilir veya **SQL server** sayfasındaki parolayı sıfırlayabilirsiniz. **SQL sunucu** sayfasını açmak için **veritabanına Genel Bakış** sayfasındaki sunucu adını seçin.
    
-1. **İşlem + depolama**altında, Varsayılanları yeniden yapılandırmak Istiyorsanız **Veritabanını yapılandır**' ı seçin.
+1. **Hesaplama + depolama**altında, varsayılanları yeniden yapılandırmak istiyorsanız, **veritabanını yapılandır'ı**seçin.
    
-   **Yapılandır** sayfasında, isteğe bağlı olarak şunları yapabilirsiniz:
-   - **İşlem katmanını** **sağlanmasından** **sunucusuz**olarak değiştirin.
-   - **Sanal çekirdekler** ve **en fazla veri boyutu**ayarlarını gözden geçirin ve değiştirin.
-   - Donanım oluşturmayı değiştirmek için **yapılandırmayı Değiştir** ' i seçin.
+   **Yapılandırılan** sayfada isteğe bağlı olarak şunları yapabilirsiniz:
+   - İşlem **katmanını** **Provisioned'den** **Serverless'a**değiştirin.
+   - **vCores** ve Veri maksimum boyutu ayarlarını gözden geçirin ve **değiştirin.**
+   - Donanım oluşturmayı değiştirmek için **yapılandırmayı değiştir'i** seçin.
    
-   Herhangi bir değişiklik yaptıktan sonra **Uygula**' yı seçin.
+   Herhangi bir değişiklik yaptıktan sonra **Uygula'yı**seçin.
    
-1. **İleri ' yi** seçin. sayfanın en altındaki Ağ.
+1. **Sonraki'ni seçin:** Sayfanın altındaki ağ.
    
-   ![Yeni SQL veritabanı-temel sekmesi](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   ![Yeni SQL veritabanı - Temel sekme](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
    
-1. **Ağ** sekmesinde, **bağlantı yöntemi**altında **ortak uç nokta**' ı seçin. 
-1. **Güvenlik duvarı kuralları**altında, **geçerli Istemci IP adresini ekle** ' yi **Evet**olarak ayarlayın.
-1. Ileri ' yi seçin: sayfanın en altındaki **ek ayarlar** .
+1. **Ağ** sekmesinde, **Bağlantı yöntemi** **altında, Ortak bitiş noktasını**seçin. 
+1. **Güvenlik Duvarı kuralları altında,** geçerli istemci IP adresini **Evet'e** **ekle'yi** ayarlayın.
+1. **Sonraki'ni seçin:** Sayfanın altındaki ek ayarlar.
    
    ![Ağ sekmesi](../media/sql-database-single-database-get-started/networking.png)
    
-   Güvenlik Duvarı ayarları hakkında daha fazla bilgi için bkz. [Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin verme](../sql-database-networkaccess-overview.md) ve [Özel uç nokta ekleme](../../private-link/private-endpoint-overview.md).
+   Güvenlik duvarı ayarları hakkında daha fazla bilgi için azure [hizmetlerine ve kaynaklarına bu sunucuya erişmeye izin](../sql-database-networkaccess-overview.md) ver ve özel bir bitiş noktası [ekleyin'e](../../private-link/private-endpoint-overview.md)bakın.
    
-1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan**için **örnek**' i seçin.
-1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.
+1. Ek **ayarlar** sekmesinde, **Veri kaynağı** bölümünde, **varolan verileri kullanmak**için **Örnek'i**seçin.
+1. Sayfanın altındaki **Gözden Geçir + seçeneğini** belirleyin.
    
    ![Ek ayarlar sekmesi](../media/sql-database-single-database-get-started/additional-settings.png)
    
-1. Ayarları inceledikten sonra **Oluştur**' u seçin.
+1. Ayarları inceledikten sonra **Oluştur'u**seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure komut satırı arabirimi (Azure CLı) kullanarak bir Azure Kaynak grubu, SQL Server ve tek veritabanı oluşturabilirsiniz. Azure Cloud Shell kullanmak istemiyorsanız, bilgisayarınıza [Azure CLI 'yı yükleyebilirsiniz](/cli/azure/install-azure-cli) .
+Azure komut satırı arabirimini (Azure CLI) kullanarak bir Azure kaynak grubu, SQL sunucusu ve tek bir veritabanı oluşturabilirsiniz. Azure Bulut Kabuğu'nu kullanmak istemiyorsanız, bilgisayarınıza [Azure CLI yükleyin.](/cli/azure/install-azure-cli)
 
-Aşağıdaki kod örneğini Azure Cloud Shell çalıştırmak için kod örneği başlık çubuğunda **deneyin** ' i seçin. Cloud Shell açıldığında, kod örneği başlık çubuğunda **Kopyala** ' yı seçin ve kod örneğini Cloud Shell penceresine yapıştırın. Kodda `<Subscription ID>` Azure abonelik KIMLIĞINIZ ile değiştirin ve `$startip` ve `$endip`için, `0.0.0.0`, kullanmakta olduğunuz bilgisayarın genel IP adresi ile değiştirin.
+Azure Bulut Su Şurası'nda aşağıdaki kod örneğini çalıştırmak için kod örneği başlık çubuğunda **deneyin'i** seçin. Bulut Kabuğu açıldığında, **Copy** kod örneği başlık çubuğunda Kopyala'yı seçin ve kod örneğini Bulut Kabuğu penceresine yapıştırın. Kodda, Azure `<Subscription ID>` Abonelik Kimliğinizle ve `$startip` `$endip`kullandığınız `0.0.0.0` bilgisayarın genel IP adresiyle değiştirin.
 
-Azure 'da oturum açmak için ekrandaki istemleri izleyin ve kodu çalıştırın. 
+Azure'da oturum açma ve kodu çalıştırma istemini izleyin. 
 
-Ayrıca, üstteki çubukta Cloud Shell simgesini seçerek Azure portal Azure Cloud Shell de kullanabilirsiniz. 
+Üst teki Bulut Kabuğu simgesini seçerek Azure portalından Azure Bulut Kabuğu'nu da kullanabilirsiniz. 
    
    ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
    
-Portalda Cloud Shell ilk kez kullandığınızda, **hoş geldiniz** Iletişim kutusunda **Bash** ' i seçin. Sonraki oturumlar, bir bash ortamında Azure CLı 'yı kullanacaktır veya Cloud Shell denetim çubuğundan **Bash** seçeneğini belirleyebilirsiniz. 
+Portalda Cloud Shell'i ilk kez **kullandığınızda, Hoş Geldiniz** iletişim kutusunda **Bash'i** seçin. Sonraki oturumlarda Bir Bash ortamında Azure CLI kullanır veya Bulut Kabuğu denetim çubuğundan **Bash'i** seçebilirsiniz. 
 
-Aşağıdaki Azure CLı kodu, sunucuya erişmek için bir Azure Kaynak grubu, SQL Server, tek veritabanı ve güvenlik duvarı kuralı oluşturur. Oluşturulan kaynak grubunu ve sunucu adlarını kaydettiğinizden emin olun, böylece bu kaynakları daha sonra yönetebilirsiniz.
+Aşağıdaki Azure CLI kodu, sunucuya erişmek için bir Azure kaynak grubu, SQL sunucusu, tek veritabanı ve güvenlik duvarı kuralı oluşturur. Bu kaynakları daha sonra yönetebilmek için oluşturulan kaynak grubunu ve sunucu adlarını kaydettiğinden emin olun.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -145,35 +145,35 @@ az sql db create \
     --capacity 2 \
 ```
 
-Yukarıdaki kod şu Azure CLı komutlarını kullanır:
+Önceki kod şu Azure CLI komutlarını kullanır:
 
 | Komut | Açıklama |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. | 
+| [az hesap seti](/cli/azure/account?view=azure-cli-latest#az-account-set) | Aboneliği geçerli etkin abonelik olarak ayarlar. | 
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
-| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Sunucunun güvenlik duvarı kurallarını oluşturur. | 
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tek veritabanları ve elastik havuzlar barındıran bir SQL Veritabanı sunucusu oluşturur. |
+| [az sql server güvenlik duvarı kuralı oluşturma](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Sunucunun güvenlik duvarı kurallarını oluşturur. | 
 | [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | Bir veritabanı oluşturur. | 
 
-Azure SQL veritabanı Azure CLı örnekleri hakkında daha fazla bilgi için bkz. [Azure CLI örnekleri](../sql-database-cli-samples.md).
+Daha fazla Azure SQL Veritabanı Azure CLI örnekleri için [Azure CLI örneklerine](../sql-database-cli-samples.md)bakın.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Windows PowerShell kullanarak bir Azure Kaynak grubu, SQL Server ve tek veritabanı oluşturabilirsiniz. Azure Cloud Shell kullanmak istemiyorsanız [Azure PowerShell modülünü yükleyebilirsiniz](/powershell/azure/install-az-ps).
+Windows PowerShell'i kullanarak bir Azure kaynak grubu, SQL sunucusu ve tek bir veritabanı oluşturabilirsiniz. Azure Bulut Kabuğu'nu kullanmak istemiyorsanız, [Azure PowerShell modüllerini yükleyin.](/powershell/azure/install-az-ps)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aşağıdaki kod örneğini Azure Cloud Shell çalıştırmak için kod başlık çubuğunda **deneyin** ' i seçin. Cloud Shell açıldığında, kod örneği başlık çubuğunda **Kopyala** ' yı seçin ve kod örneğini Cloud Shell penceresine yapıştırın. Kodda `<Subscription ID>` Azure abonelik KIMLIĞINIZ ile değiştirin ve `$startIp` ve `$endIp`için, `0.0.0.0`, kullanmakta olduğunuz bilgisayarın genel IP adresi ile değiştirin. 
+Azure Bulut Kabuğu'nda aşağıdaki kod örneğini çalıştırmak için kod başlığı çubuğunda **deneyin'i** seçin. Bulut Kabuğu açıldığında, **Copy** kod örneği başlık çubuğunda Kopyala'yı seçin ve kod örneğini Bulut Kabuğu penceresine yapıştırın. Kodda, Azure `<Subscription ID>` Abonelik Kimliğinizle ve `$startIp` `$endIp`kullandığınız `0.0.0.0` bilgisayarın genel IP adresiyle değiştirin. 
 
-Azure 'da oturum açmak için ekrandaki istemleri izleyin ve kodu çalıştırın. 
+Azure'da oturum açma ve kodu çalıştırma istemini izleyin. 
 
-Ayrıca, üstteki çubukta Cloud Shell simgesini seçerek Azure portal Azure Cloud Shell de kullanabilirsiniz. 
+Üst teki Bulut Kabuğu simgesini seçerek Azure portalından Azure Bulut Su Şunları Topünü de kullanabilirsiniz. 
    
    ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
    
-Portaldan Cloud Shell ilk kez kullandığınızda, **hoş geldiniz** Iletişim kutusunda **PowerShell** ' i seçin. Sonraki oturumlar PowerShell kullanır veya Cloud Shell denetim çubuğundan seçebilirsiniz. 
+Portaldan Cloud Shell'i ilk kez **kullandığınızda, Hoş Geldiniz** iletişim kutusunda **PowerShell'i** seçin. Sonraki oturumlarda PowerShell kullanır veya Cloud Shell denetim çubuğundan seçebilirsiniz. 
 
-Aşağıdaki PowerShell kodu, sunucuya erişmek için bir Azure Kaynak grubu, SQL Server, tek veritabanı ve güvenlik duvarı kuralı oluşturur. Oluşturulan kaynak grubunu ve sunucu adlarını kaydettiğinizden emin olun, böylece bu kaynakları daha sonra yönetebilirsiniz.
+Aşağıdaki PowerShell kodu, sunucuya erişmek için bir Azure kaynak grubu, SQL sunucusu, tek veritabanı ve güvenlik duvarı kuralı oluşturur. Bu kaynakları daha sonra yönetebilmek için oluşturulan kaynak grubunu ve sunucu adlarını kaydettiğinden emin olun.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -233,15 +233,15 @@ Aşağıdaki PowerShell kodu, sunucuya erişmek için bir Azure Kaynak grubu, SQ
    $database
    ```
 
-Yukarıdaki kod bu PowerShell cmdlet 'lerini kullanır:
+Önceki kod bu PowerShell cmdlets kullanır:
 
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal sunucu için bir güvenlik duvarı kuralı oluşturur. | 
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL veritabanı tek veritabanı oluşturur. | 
+| [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL Veritabanı sunucusu oluşturur. |
+| [Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal bir sunucu için bir güvenlik duvarı kuralı oluşturur. | 
+| [Yeni-AzSqlVeritabanı](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL Veritabanı tek bir veritabanı oluşturur. | 
 
-Daha fazla Azure SQL veritabanı PowerShell örneği için bkz. [Azure PowerShell örnekleri](../sql-database-powershell-samples.md).
+Daha fazla Azure SQL Veritabanı PowerShell örneği için [Azure PowerShell örneklerine](../sql-database-powershell-samples.md)bakın.
 
 ---

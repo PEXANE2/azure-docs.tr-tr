@@ -1,151 +1,151 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme çalıştırma
-description: Azure Site Recovery ile VM 'Leri/fiziksel sunucuları Azure 'a devretmek.
+title: Azure Site Kurtarma ile olağanüstü durum kurtarma sırasında bir hata çalıştırma
+description: Azure Site Kurtarma ile Azure'a vm'ler/fiziksel sunucular üzerinde nasıl başarısız olunacağı.
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79257699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471277"
 ---
-# <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure 'a yük devretme çalıştırma
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinde Azure'a bir arıza çalıştırma
 
-Bu makalede [Azure Site Recovery](site-recovery-overview.md) ' de şirket Içi makinelerin Azure 'a yük devretme işlemi açıklanır
+Bu makalede, [Azure Site Kurtarma'da](site-recovery-overview.md) şirket içi makinelerden Azure'a nasıl geçilen
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Olağanüstü durum kurtarma 'daki yük devretme süreci hakkında [bilgi edinin](failover-failback-overview.md) .
-- Birden fazla makinenin yükünü devretmek istiyorsanız, bir kurtarma planında makineleri nasıl [toplayacağınızı öğrenin](recovery-plan-overview.md) .
-- Tam yük devretme yapmadan önce, her şeyin beklendiği gibi çalıştığından emin olmak için bir [olağanüstü durum kurtarma detayına](site-recovery-test-failover-to-azure.md) sahip olun.
+- Olağanüstü durum kurtarma daki başarısızlık süreci hakkında [bilgi edinin.](failover-failback-overview.md)
+- Birden çok makinede başarısız olmak istiyorsanız, kurtarma planında makineleri nasıl bir araya topladığınızı [öğrenin.](recovery-plan-overview.md)
+- Tam bir arıza yapmadan önce, her şeyin beklendiği gibi çalıştığından emin olmak için bir [olağanüstü durum kurtarma tatbikatı](site-recovery-test-failover-to-azure.md) çalıştırın.
 
-## <a name="prepare-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmaya hazırlanma
+## <a name="prepare-to-connect-after-failover"></a>Başarısız olduktan sonra bağlanmaya hazırlanın
 
-Yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanabildiğinizden emin olmak için, yük devretmeden önce şirket içi yapmanız gereken birkaç şey vardır.
+Başarısız olduktan sonra oluşturulan Azure VM'lerine bağlanabildiğinizden emin olmak için, başarısız olmadan önce şirket içinde yapmanız gereken birkaç şey aşağıda verebilirsiniz.
 
 
-### <a name="prepare-on-premises-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmak için şirket içi hazırlama
+### <a name="prepare-on-premises-to-connect-after-failover"></a>Başarısız olduktan sonra bağlanmak için şirket içinde hazırlanın
 
-Yük devretmenin ardından RDP/SSH kullanarak Azure VM 'lerine bağlanmak isterseniz, yük devretmeden önce şirket içi yapmanız gereken birkaç şey vardır.
+Başarısız olduktan sonra RDP/SSH kullanarak Azure VM'lerine bağlanmak istiyorsanız, başarısız olmadan önce şirket içinde yapmanız gereken birkaç şey vardır.
 
-**Yük devretmeden sonra** | **Konum** | **Eylemler**
+**Başarısız olduktan sonra** | **Konum** | **Eylemler**
 --- | --- | ---
-**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı** 'nda **izin verilen uygulamalar** > tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve **Windows Güvenlik Duvarı** 'Nda **etki alanı ve özel** ağlar için **izin VERILEN uygulamalar ve Özellikler** -> RDP 'ye izin verildiğinden emin olun.<br/><br/> <br/><br/> Tüm statik kalıcı rotaları ve WinHTTP proxy 'yi kaldırın. İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
-**Linux çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | VM 'deki Secure Shell hizmetinin sistem önyüklemesi üzerinde otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
+**Windows çalıştıran Azure VM** | Arıza dan önce şirket içi makine | Azure VM'ye Internet üzerinden erişmek için RDP'yi etkinleştirin ve **TCP**ve UDP kurallarının Herkese Açık olarak eklenmediğinden ve **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalardaki**tüm profiller için RDP'ye izin verildiğinden emin olun.<br/><br/> Azure VM'ye sitebağlantısı üzerinden erişmek için makinede RDP'yi etkinleştirin ve **Etki Alanı ve Özel** ağlar için Windows Güvenlik **Duvarı** -> **İzin Verilen uygulamalarda ve özelliklerde**RDP'ye izin verildiğini sağlayın.<br/><br/> <br/><br/> Statik kalıcı yolları ve WinHTTP proxy'yi kaldırın. İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandıklarına emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Bir başarısızlığı tetiklediğinde VM'de bekleyen Windows güncelleştirmeleri olmadığından emin olun. Windows güncelleştirmesi, başarısız olduğunuzda başlayabilir ve güncelleştirme tamamlanana kadar VM'de oturum açamazsınız.
+**Linux çalıştıran Azure VM** | Arıza dan önce şirket içi makine | VM'deki Secure Shell hizmetinin sistem önyüklemede otomatik olarak başlatılıdığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
 
 
 ## <a name="run-a-failover"></a>Yük devretme çalıştırma
 
-Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için yük devretmeyi nasıl çalıştıracağınızı açıklar. Tek bir VM için yük devretme çalıştırmak istiyorsanız, bir [VMware VM](vmware-azure-tutorial-failover-failback.md), [fiziksel sunucu](physical-to-azure-failover-failback.md)veya bir [Hyper-V sanal makinesi](hyper-v-azure-failover-failback-tutorial.md)için yönergeleri izleyin.
+Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için bir failover çalıştırmak için nasıl açıklanır. Eğer tek bir VM için bir failover çalıştırmak istiyorsanız, bir [VMware VM](vmware-azure-tutorial-failover-failback.md)için yönergeleri izleyin , fiziksel bir [sunucu,](physical-to-azure-failover-failback.md)veya [Hyper-V VM](hyper-v-azure-failover-failback-tutorial.md).
 
 
-Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
+Kurtarma planı başarısızlığını aşağıdaki gibi çalıştırın:
 
-1. Site Recovery kasasında **Kurtarma planlarını** > *recoveryplan_name*' nı seçin.
-2. **Yük devretme**' ye tıklayın.
+1. Site Kurtarma kasasında, **Kurtarma Planları** > *recoveryplan_name'yi*seçin.
+2. **Failover'ı**tıklatın.
 
     ![Yük devretme](./media/site-recovery-failover/Failover.png)
 
-3. Yük **devretme > yük** **devretme yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
-4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
+3. **Failover** > **Failover yönünde,** Azure'a çoğalıyorsanız varsayılanı bırakın.
+4. **Failover'da,** başarısız olmak için bir **Kurtarma Noktası** seçin.
 
-    - **En son**: en son noktayı kullanın. Bu, Site Recovery hizmetine gönderilen tüm verileri işler ve her makine için bir kurtarma noktası oluşturur. Yük devretmeden sonra oluşturulan VM, yük devretme tetiklendiğinde Site Recovery çoğaltılan tüm verilere sahip olduğundan, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
-   - **En son işlenen**: Site Recovery tarafından zaten işlenen en son kurtarma noktasına VM 'lerin yükünü devretmek için bu seçeneği kullanın. En son işlenen kurtarma noktasını VM **en son kurtarma noktalarında**görebilirsiniz. Bu seçenek, işlenmemiş verileri işlemek için bir süre harcanması için düşük bir RTO sağlar
-   - **En son uygulamayla tutarlı**: Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına VM 'leri devretmek için bu seçeneği kullanın.
-   - **En son çoklu VM işlendi**: Bu seçenek, çoğaltma grubunun bir parçası olan VM 'lerin en son ortak çoklu VM tutarlı kurtarma noktasına devredilmesine sahiptir. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder. Bu seçenek yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM içeren kurtarma planları içindir.
-   - **En son çoklu VM uygulaması-tutarlı**: Bu seçenek, bir çoğaltma grubunun parçası olan VM 'ler, en son ortak çoklu VM ile uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder. Yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM 'ye sahip kurtarma planları için.
-   - **Özel**: kurtarma planları için kullanılamaz. Bu seçenek yalnızca tek VM 'lerin yük devretmesi içindir.
+    - **Son**: En son noktayı kullanın. Bu, Site Kurtarma hizmetine gönderilen tüm verileri işler ve her makine için bir kurtarma noktası oluşturur. Bu seçenek en düşük RPO'yu (Kurtarma Noktası Hedefi) sağlar, çünkü failover'dan sonra oluşturulan VM, başarısız olduğunda Site Kurtarma'ya çoğaltılan tüm verilere sahiptir.
+   - **En son işlenen**: Bu seçeneği, Site Kurtarma tarafından zaten işlenmiş olan en son kurtarma noktasına VM'ler üzerinde başarısız olmak için kullanın. VM **Son Kurtarma Noktaları'nda**en son işlenmiş kurtarma noktasını görebilirsiniz. İşlenmemiş verilerin işlenmesi için zaman harcanması nedeniyle bu seçenek düşük bir RTO sağlar
+   - **En son uygulama tutarlılığı**: Site Kurtarma tarafından işlenen en son uygulama tutarlı kurtarma noktasına VM'leri başarısız olmak için bu seçeneği kullanın.
+   - **En son çoklu VM işlenmiş**: Bu seçenekle, çoğaltma grubunun bir parçası olan VM'ler ile en son ortak multi-VM tutarlı kurtarma noktasına başarısız olur. Diğer sanal makineler en son işlenmiş kurtarma noktasına kadar başarısız. Bu seçenek yalnızca çoklu VM tutarlılığı etkin leştirilmiş en az bir VM'si olan kurtarma planları içindir.
+   - **En son multi-VM uygulama tutarlılığı**: Çoğaltma grubunun bir parçası olan bu seçenekle VM'ler en son yaygın çoklu VM uygulama tutarlı kurtarma noktasına geçemez. Diğer sanal makineler en son uygulama tutarlı kurtarma noktasına başarısız. Yalnızca multi-VM tutarlılığı etkin en az bir VM olan kurtarma planları için.
+   - **Özel**: Kurtarma planları için kullanılamaz. Bu seçenek yalnızca tek tek VM'lerin başarısız olması içindir.
 
-5. Yük devretmeye başlamadan önce kaynak VM 'Leri kapatmak Site Recovery isterseniz, **yük devretmeye başlamadan önce kapatma makinesini** seçin. Kapatma işlemi başarısız olsa bile yük devretme devam eder.  
+5. Site Kurtarma'nın başarısız olmadan önce kaynak VM'leri kapatmasını **istiyorsanız, kapatma makinesini** seçin. Kapatma işlemi başarısız olsa bile yük devretme devam eder.  
 
     > [!NOTE]
-    > Hyper-V VM 'lerinin yükünü devretmek, kapatıldı, yük devretmeyi tetiklemeden önce henüz hizmete gönderilmemiş olan şirket içi verileri eşitlemeye ve çoğaltmaya çalışır. 
+    > Hyper-V VM'ler üzerinde başarısız olursanız, kapatma, başarısız olmayı tetiklemeden önce, henüz servise gönderilmemiş şirket içi verileri eşitlemeye ve çoğaltmaya çalışır. 
 
-6. **İşler** sayfasında yük devretme ilerlemesini izleyin. Hatalar gerçekleşse bile kurtarma planı tamamlanana kadar çalışır.
-7. Yük devretmeden sonra, doğrulamak için VM 'de oturum açın. 
-8. Yük devretme için kullanılacak farklı bir kurtarma noktasına geçiş yapmak istiyorsanız, **değişiklik kurtarma noktasını**kullanın.
-9. Hazırsanız, yük devretmeyi gerçekleştirebilirsiniz. **Kaydetme** eylemi, hizmetle kullanılabilen tüm kurtarma noktalarını siler. **Kurtarma noktasını Değiştir** seçeneği artık kullanılabilir olmayacaktır.
+6. **İşler** sayfasında başarısız ilerlemeyi izleyin. Hatalar oluşsa bile, kurtarma planı tamamlanana kadar çalışır.
+7. Başarısız olduktan sonra, doğrulamak için VM'de oturum açın. 
+8. Başarısız olmak için kullanmak üzere farklı kurtarma noktasına geçmek istiyorsanız, **Kurtarma noktasını değiştir'i**kullanın.
+9. Hazır olduğunda, başarısızlık taahhüdünde bulunabilirsin. **Commit** eylemi, hizmette kullanılabilen tüm kurtarma noktalarını siler. **Kurtarma noktasını değiştir** seçeneği artık kullanılamıyor.
 
-## <a name="run-a-planned-failover-hyper-v"></a>Planlı Yük devretmeyi çalıştırma (Hyper-V)
+## <a name="run-a-planned-failover-hyper-v"></a>Planlı bir başarısızlık çalıştırma (Hyper-V)
 
-Hyper-V VM 'Leri için planlı bir yük devretme çalıştırabilirsiniz.
+Hyper-V VM'ler için planlanmış bir başarısızlık çalıştırabilirsiniz.
 
-- Planlanmış bir yük devretme, sıfır veri kaybı yük devretme seçeneğidir.
-- Planlı bir yük devretme tetiklendiğinde, ilk olarak kaynak sanal makineler kapatılır, en son veriler eşitlenir ve ardından bir yük devretme tetiklenir.
-- Planlanmış **Yük** devretme seçeneğini kullanarak planlı yük devretme çalıştırırsınız. Düzenli yük devretmede benzer bir şekilde çalışır.
+- Planlı bir hata, sıfır veri kaybı failover seçeneğidir.
+- Planlı bir hata tetiklendiğinde, önce kaynak sanal makineler kapatılır, en son veriler eşitlenir ve ardından bir hata tetiklenir.
+- **Planlı başarısızlık** seçeneğini kullanarak planlı bir hata çalıştırın. Bu düzenli bir failover benzer bir şekilde çalışır.
  
-## <a name="track-failovers"></a>Yük devretme izleme
+## <a name="track-failovers"></a>Arızaları izleme
 
-Yük devretmeyle ilişkili bir dizi iş vardır.
+Failover ile ilişkili işler vardır.
 
 ![Yük devretme](./media/site-recovery-failover/FailoverJob.png)
 
-- **Önkoşul denetimi**: yük devretme için gereken tüm koşulların karşılanmasını sağlar.
-- **Yük devretme**: verileri BIR Azure VM 'den oluşturulabilmesi için işler. **En son** kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.
-- **Başlat**: önceki adımda işlenen verileri kullanarak BIR Azure VM oluşturur.
+- **Önkoşullar kontrolü**: Başarısız olmak için gerekli tüm koşulların yerine getirilmesini sağlar.
+- **Failover**: Verileri, azure vm'si oluşturulabilecek şekilde işler. **En Son** kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.
+- **Başlangıç**: Önceki adımda işlenen verileri kullanarak bir Azure VM oluşturur.
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini Iptal etmeyin**: yük devretme BAŞLATıLMADAN önce VM için çoğaltma durduruldu. Devam eden bir işi iptal ederseniz, yük devretme işlemi duraklar, ancak VM çoğaltılmak üzere başlamaz. Çoğaltma yeniden başlatılamaz.
+> **Devam eden bir başarısızlık iptal etmeyin**: Failover başlamadan önce, VM için çoğaltma durdurulur. Devam eden bir işi iptal ederseniz, başarısızlık durur, ancak VM çoğalmaya başlamaz. Çoğaltma yeniden başlatılamaz.
 
 
-### <a name="extra-failover-time"></a>Ek yük devretme süresi
+### <a name="extra-failover-time"></a>Ekstra zaman fazla
 
-Bazı durumlarda VM yük devretmesi, genellikle yaklaşık sekiz ila 10 dakika boyunca geçen ara adım gerektirir. Bunlar, bu ek adım/zamandan etkilenen makinelerdir:
+Bazı durumlarda, VM failover genellikle tamamlamak için yaklaşık sekiz ila 10 dakika sürer ara adım gerektirir. Bu ek adım/zaman etkilenen makineler şunlardır:
 
-* 9,8 'den eski bir Mobility hizmeti sürümü çalıştıran VMware sanal makineleri.
-* Fiziksel sunucular ve fiziksel sunucu olarak korunan Hyper-V VM 'Leri.
-* VMware Linux VM 'Leri.
-* Bu sürücülerin önyükleme sürücüleri olarak bulunmadığı VMware VM 'Leri:
+* 9,8'den eski bir Mobilite hizmet sürümü çalıştıran VMware sanal makineleri.
+* Fiziksel sunucular ve Hyper-V VM'ler fiziksel sunucular olarak korunur.
+* VMware Linux VM'ler.
+* Bu sürücülerin önyükleme sürücüsü olarak bulunmadığı VMware VM'ler:
     * storvsc
-    * VMBus
+    * vmbus
     * storflt
     * intelide
-    * ATAPI
-* DHCP veya statik IP adresleri kullanıp kullanmadığını bağımsız olarak, DHCP 'nin etkin olmadığı VMware VM 'Leri.
+    * Atapı
+* DHCP veya statik IP adresleri kullanıp kullanmadıklarına bakılmaksızın DHCP etkin olmayan VMware VM'ler.
 
 
-## <a name="automate-actions-during-failover"></a>Yük devretme sırasında eylemleri otomatikleştirme
+## <a name="automate-actions-during-failover"></a>Başarısız olurken eylemleri otomatikleştirin
 
-Yük devretme sırasında eylemleri otomatikleştirmek isteyebilirsiniz. Bunu yapmak için kurtarma planlarında betikleri veya Azure Otomasyonu runbook 'larını kullanabilirsiniz.
+Başarısız lık sırasında eylemleri otomatikleştirmek isteyebilirsiniz. Bunu yapmak için, kurtarma planlarında komut dosyalarını veya Azure otomasyon runbook'larını kullanabilirsiniz.
 
-- Betik ekleme dahil olmak üzere Kurtarma planlarını oluşturma ve özelleştirme hakkında [bilgi edinin](site-recovery-create-recovery-plans.md) .
-- Kurtarma planlarına Azure Otomasyonu runbook 'ları eklemeyi [öğrenin](site-recovery-runbook-automation.md) .
+- Komut dosyaları ekleme de dahil olmak üzere kurtarma planları oluşturma ve özelleştirme hakkında [bilgi edinin.](site-recovery-create-recovery-plans.md)
+- Kurtarma planlarına Azure Otomasyon runbook'ları ekleme hakkında [bilgi edinin.](site-recovery-runbook-automation.md)
 
 
-## <a name="configure-settings-after-failover"></a>Yük devretmeden sonra ayarları Yapılandır
+## <a name="configure-settings-after-failover"></a>Başarısız olduktan sonra ayarları yapılandır
 
-### <a name="retain-drive-letters-after-failover"></a>Yük devretme sonrasında sürücü harflerini sakla
+### <a name="retain-drive-letters-after-failover"></a>Başarısız olduktan sonra sürücü harflerini koruyun
 
-Site Recovery sürücü harflerinin bekletilmesini yönetir. VM çoğaltma sırasında diskleri dışaktarıyorsanız, bunun nasıl çalıştığına ilişkin [bir örnek inceleyin](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) .
+Site Kurtarma, sürücü harflerinin bekletinme işlemlerini işler. VM çoğaltma sırasında diskleri dışlıyorsanız, bunun nasıl çalıştığına [bir örnek gözden geçirin.](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk)
 
-### <a name="prepare-in-azure-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmak için Azure 'da hazırlama
+### <a name="prepare-in-azure-to-connect-after-failover"></a>Azure'da başarısız olduktan sonra bağlanmak için hazırlanın
 
-RDP veya SSH kullanarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanmak istiyorsanız, tabloda özetlenen gereksinimleri izleyin.
+RDP veya SSH kullanarak başarısız olduktan sonra oluşturulan Azure VM'lerine bağlanmak istiyorsanız, tabloda özetlenen gereksinimleri izleyin.
 
-**Yük devretme** | **Konum** | **Eylemler**
+**Başarısızlık** | **Konum** | **Eylemler**
 --- | --- | ---
-**Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
-**Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>
+**Windows çalıştıran Azure VM** | Azure VM başarısız olduktan sonra |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> RDP bağlantı noktasına gelen bağlantılara izin vermek için VM üzerinden başarısız olan ağ güvenlik grubu kurallarının (ve bağlı olduğu Azure alt ağının) olması gerekir.<br/><br/> VM'nin ekran görüntüsünü doğrulamak için **Önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, VM'nin çalıştığını denetleyin ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
+**Linux çalıştıran Azure VM** | Azure VM başarısız olduktan sonra | VM üzerinden başarısız olan ağ güvenlik grubu kurallarının (ve bağlı olduğu Azure alt ağının) SSH bağlantı noktasına gelen bağlantılara izin vermeleri gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM'nin ekran görüntüsü için **Önyükleme tanılamalarını** kontrol edin.<br/><br/>
 
 Yük devretme sonrasında karşılaştığınız bağlantı sorunlarını gidermek için [burada](site-recovery-failover-to-azure-troubleshoot.md) anlatılan adımları izleyin.
 
-## <a name="set-up-ip-addressing"></a>IP adresini ayarlama
+## <a name="set-up-ip-addressing"></a>IP adresleme ayarlama
 
-- **Iç IP adresleri**: yük devretmeden sonra BIR Azure VM 'SININ iç IP adresini ayarlamak için birkaç seçeneğiniz vardır:
-    - Aynı IP adresini sakla: Azure VM 'de şirket içi makineye ayrılan IP adresini de kullanabilirsiniz.
-    - Farklı IP adresi kullan: Azure VM için farklı bir IP adresi kullanabilirsiniz.
-    - İç IP adreslerini ayarlama hakkında [daha fazla bilgi edinin](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) .
-- **Dış IP adresleri**: yük devretmede genel IP adreslerini koruyabilirsiniz. Yük devretme işleminin bir parçası olarak oluşturulan Azure VM 'lerine Azure bölgesinde kullanılabilir bir Azure genel IP adresi atanmalıdır. Genel bir IP adresini el ile veya işlemi bir kurtarma planıyla otomatikleştirerek atayabilirsiniz. [Daha fazla bilgi edinin](concepts-public-ip-address-with-site-recovery.md).
+- **Dahili IP adresleri**: Bir Azure VM'nin dahili IP adresini başarısız olduktan sonra ayarlamak için birkaç seçeneğiniz vardır:
+    - Aynı IP adresini koruyun: Azure VM'de şirket içi makineye ayrılan IP adresiyle aynı IP adresini kullanabilirsiniz.
+    - Farklı IP adresi kullanın: Azure VM için farklı bir IP adresi kullanabilirsiniz.
+    - Dahili IP adreslerini ayarlama hakkında [daha fazla bilgi edinin.](concepts-on-premises-to-azure-networking.md#assign-an-internal-address)
+- **Harici IP adresleri**: Genel IP adreslerini başarısız lıkta saklayabilirsiniz. Başarısız olma işleminin bir parçası olarak oluşturulan Azure VM'lere Azure bölgesinde kullanılabilen bir Azure genel IP adresi atanmalıdır. Ortak bir IP adresi, el ile veya kurtarma planıyla işlemi otomatikleştirerek atayabilirsiniz. [Daha fazla bilgi edinin](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yük devretmesini tamamladıktan sonra, Azure sanal makinelerini şirket içi siteye tekrar Çoğaltmaya başlamak için yeniden korumanız gerekir. Çoğaltma çalışıyor ve çalıştıktan sonra, hazırsanız şirket içi oturum açma işlemi geri alabilirsiniz.
+Başarısız olduktan sonra, Azure VM'lerini şirket içi siteye çoğaltmaya başlamak için yeniden korumanız gerekir. Çoğaltma çalışmaya başladıktan sonra, hazır olduğunuzda şirket içinde başarısız olabilirsiniz.
 
-- Yeniden koruma ve yeniden çalışma hakkında [daha fazla bilgi edinin](failover-failback-overview.md#reprotectionfailback) .
-- VMware yeniden koruma ve yeniden çalışma için [hazırlanma](vmware-azure-reprotect.md) .
-- [Yeniden başarısız oldu](hyper-v-azure-failback.md) Hyper-V VM 'Leri.
-- Fiziksel sunucular için yük devretme ve yeniden çalışma işlemi [hakkında bilgi edinin](physical-to-azure-failover-failback.md) .
+- Yeniden koruma ve geri dönüş hakkında [daha fazla bilgi edinin.](failover-failback-overview.md#reprotectionfailback)
+- VMware yeniden koruma ve geri başarısız için [hazırlanın.](vmware-azure-reprotect.md)
+- [Geri başarısız](hyper-v-azure-failback.md) Hiper-V VM' ler.
+- Fiziksel sunucular için failover ve failback işlemi [hakkında bilgi edinin.](physical-to-azure-failover-failback.md)
 

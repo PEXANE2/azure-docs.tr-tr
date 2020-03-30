@@ -1,6 +1,6 @@
 ---
-title: Azure klasik VM 'Leri 1 Mart 2023 ' de devre dışı sunuyoruz
-description: Makale, klasik VM 'nin devre dışı bırakılması hakkında üst düzey bir genel bakış sağlar
+title: Azure Klasik VM'leri 1 Mart 2023'te emekli yediriyoruz
+description: Makale Klasik VM emeklilik üst düzey bir bakış sağlar
 services: virtual-machines
 author: tanmaygore
 manager: vashan
@@ -11,40 +11,40 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
 ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127341"
 ---
-# <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
+# <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023'e kadar Azure Kaynak Yöneticisi'ne taşıyın 
 
-2014 ' de, Azure Resource Manager için IaaS 'yi başlattınız ve bu yana özellikleri artırdık. [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) artık tam IaaS özelliklerine ve diğer geliştirmeleri içerdiğinden, Service Manager Azure 'Da IaaS VM 'lerinin yönetimini 28 Şubat 2020 tarihinde devre dışı bırakıyoruz ve bu Işlevsellik 1 Mart 2023 tarihinde tamamen kullanımdan kaldırılmıştır. 
+2014 yılında Azure Kaynak Yöneticisi'nde IaaS'yi başlattık ve o zamandan beri yetenekleri geliştiriyoruz. [Azure Kaynak Yöneticisi](https://azure.microsoft.com/features/resource-manager/) artık tam IaaS özelliklerine ve diğer gelişmelere sahip olduğundan, 28 Şubat 2020'de Azure Servis Yöneticisi aracılığıyla IaaS VM'lerinin yönetimini amortismana kattık ve bu işlevsellik 1 Mart 2023'te tamamen kullanımdan kaldırılacaktır. 
 
-Bugün, IaaS VM 'lerinin %90 ' u Azure Resource Manager kullanıyor. IaaS kaynaklarını Azure Service Manager (ASM) aracılığıyla kullanıyorsanız, şimdi geçişinizi planlamaya başlayın ve [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)yararlanmak Için 1 Mart 2023 ' den yararlanın.
+Bugün, IaaS VM'lerinin yaklaşık %90'ı Azure Kaynak Yöneticisi kullanıyor. IaaS kaynaklarını Azure Servis Yöneticisi (ASM) aracılığıyla kullanıyorsanız, geçişinizi şimdi planlamaya başlayın ve [Azure Kaynak Yöneticisi'nden](https://docs.microsoft.com/azure/azure-resource-manager/management/)yararlanmak için 1 Mart 2023'e kadar tamamlayın.
 
-Klasik VM 'Ler, kullanımdan kaldırma için [modern yaşam döngüsü ilkesini](https://support.microsoft.com/help/30881/modern-lifecycle-policy) takip edecektir.
+Klasik VM'ler emeklilik için [Modern Yaşam Döngüsü Politikası'nı](https://support.microsoft.com/help/30881/modern-lifecycle-policy) takip edecektir.
 
 ## <a name="how-does-this-affect-me"></a>Bu değişiklik beni nasıl etkileyecek? 
 
-1) 28 Şubat 2020 ' den itibaren, Azure Service Manager (ASM) aracılığıyla IaaS VM 'Leri, Şubat 2020 ' nin ayda kullanmayan müşteriler artık klasik VM 'Ler oluşturamaz. 
-2) Müşteriler, 1 Mart 2023 ' de artık Azure Service Manager kullanarak IaaS VM 'Leri başlatamaz ve hala çalışıyor veya ayrılan ya da ayrılmakta ve serbest bırakılır. 
-2) 1 Mart 2023 ' de, Azure Resource Manager 'e geçirilmemiş abonelikler, kalan klasik VM 'Leri silme zaman çizelgeleriyle ilgili olarak bilgilendirilir.  
+1) 28 Şubat 2020'den itibaren, Şubat 2020 ayında Azure Servis Yöneticisi (ASM) aracılığıyla IaaS VM'lerini kullanmayan müşteriler artık klasik VM'ler oluşturamayacak. 
+2) 1 Mart 2023'te müşteriler Azure Servis Yöneticisi'ni kullanarak Artık IaaS VM'lerini başlatamayacak ve hala çalışan veya ayrılan lar durdurulacak ve devre dışı bırakılacaktır. 
+2) 1 Mart 2023'te, Azure Kaynak Yöneticisi'ne geçiş yapmayan abonelikler, kalan Klasik VM'leri silme zaman çizelgeleri hakkında bilgilendirilir.  
 
-Aşağıdaki Azure hizmetleri ve işlevleri, bu kullanımdan kaldırma sürecinden **etkilenmeyecektir**: 
+Aşağıdaki Azure hizmetleri ve **NOT** işlevleri bu emeklilikten etkilenmez: 
 - Cloud Services 
-- Klasik VM 'Ler **tarafından kullanılmayan depolama hesapları** 
-- Sanal ağlar (VNet) klasik VM 'Ler **tarafından kullanılmıyor.** 
+- Klasik VM'ler tarafından **kullanılmayan** depolama hesapları 
+- Sanal ağlar (VNets) klasik VM'ler tarafından **kullanılmaz.** 
 - Diğer klasik kaynaklar
 
-## <a name="what-actions-should-i-take"></a>Hangi eylemleri gerçekleştirmeniz gerekir? 
+## <a name="what-actions-should-i-take"></a>Hangi eylemleri yapmalıyım? 
 
-- Azure Resource Manager için geçişinizi planlamaya hemen başlayın. 
+- Geçişinizi bugün Azure Kaynak Yöneticisi'ne planlamaya başlayın. 
 
-- Klasik [Linux](./linux/migration-classic-resource-manager-plan.md) ve [Windows](./windows/migration-classic-resource-manager-plan.md) sanal makinelerinizi Azure Resource Manager 'e geçirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) .
+- Klasik [Linux](./linux/migration-classic-resource-manager-plan.md) ve [Windows](./windows/migration-classic-resource-manager-plan.md) VM'lerinizi Azure Kaynak Yöneticisi'ne geçirme hakkında [daha fazla bilgi edinin.](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)
 
-- Daha fazla bilgi için [Azure Resource Manager geçişe klasik ile Ilgili sık sorulan sorulara](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) bakın
+- Daha fazla bilgi [için, azure kaynak yöneticisi geçişi için klasik hakkında sık sorulan sorulara](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) bakın
 
-- Teknik sorular ve sorunlar için [desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Teknik sorular ve sorunlar için [desteğe başvurun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-- SSS ve geri bildirim kapsamında bulunmayan diğer sorular için aşağıdaki yorumu inceleyin.
+- SSS ve geri bildirimin parçası olmayan diğer sorularınız için aşağıdaki yorumu yapın.

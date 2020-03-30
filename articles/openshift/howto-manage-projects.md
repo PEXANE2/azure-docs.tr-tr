@@ -1,51 +1,51 @@
 ---
-title: Azure Red Hat OpenShift 'te kaynakları yönetme | Microsoft Docs
+title: Azure Red Hat OpenShift'te kaynakları yönetme | Microsoft Dokümanlar
 description: Azure Red Hat OpenShift kümesinde projeleri, şablonları, görüntü akışlarını yönetme
 services: openshift
-keywords: Red Hat OpenShift projeleri kendi kendine hazırlayıcı ister
+keywords: kırmızı şapka openshift projeler istekleri self-provisioner
 author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139122"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesinde projeleri, şablonları, görüntü akışlarını yönetme 
 
-Bir OpenShift kapsayıcı platformunda, projeler ilişkili nesneleri gruplandırmak ve yalıtmak için kullanılır. Yönetici olarak, geliştiricilere belirli projelere erişim verebilir, kendi projelerini oluşturmalarına izin verebilir ve bu kullanıcılara ayrı projeler için yönetici hakları verebilirsiniz.
+OpenShift Kapsayıcı Platformu'nda, ilgili nesneleri gruplandırmak ve yalıtmak için projeler kullanılır. Yönetici olarak, geliştiricilere belirli projelere erişim sağlayabilir, kendi projelerini oluşturmalarına izin verebilir ve onlara tek tek projeleriçin yönetim hakları verebilirsiniz.
 
-## <a name="self-provisioning-projects"></a>Kendi kendine sağlama projeleri
+## <a name="self-provisioning-projects"></a>Kendi kendini sağlayan projeler
 
-Geliştiricilerin kendi projelerini oluşturmasını sağlayabilirsiniz. Bir API uç noktası proje-istek adlı bir şablona göre bir proje sağlamaktan sorumludur. Web Konsolu ve `oc new-project` komutu, geliştirici yeni bir proje oluşturduğunda bu uç noktayı kullanır.
+Geliştiricilerin kendi projelerini oluşturmalarını sağlayabilirsiniz. API bitiş noktası, proje isteği adlı şablona göre proje sağlamadan sorumludur. Geliştirici yeni bir `oc new-project` proje oluşturduğunda web konsolu ve komut bu bitiş noktasını kullanır.
 
-Bir proje isteği gönderildiğinde, API, şablonda aşağıdaki parametreleri yerine koyar:
+Proje isteği gönderildiğinde, API şablonda aşağıdaki parametrelerin yerine geçer:
 
 | Parametre               | Açıklama                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | Projenin adı. Gereklidir.             |
-| PROJECT_DISPLAYNAME     | Projenin görünen adı. Boş olabilir. |
+| PROJECT_DISPLAYNAME     | Projenin görüntü adı. Boş olabilir. |
 | PROJECT_DESCRIPTION     | Projenin açıklaması. Boş olabilir.  |
-| PROJECT_ADMIN_USER      | Yönetme kullanıcısının Kullanıcı adı.       |
-| PROJECT_REQUESTING_USER | İstekte bulunan kullanıcının Kullanıcı adı.           |
+| PROJECT_ADMIN_USER      | Yönetici kullanıcının kullanıcı adı.       |
+| PROJECT_REQUESTING_USER | İstenen kullanıcının kullanıcı adı.           |
 
-API 'ye erişim, kendi kendini hazırlayıcılar kümesi rol bağlamasıyla geliştiricilere verilir. Bu özellik tüm kimliği doğrulanmış geliştiriciler için varsayılan olarak kullanılabilir.
+API'ye erişim, kendi kendini sağımlayıcıküme rol bağlama ile geliştiricilere verilir. Bu özellik varsayılan olarak tüm kimlik doğrulaması yapılan geliştiriciler tarafından kullanılabilir.
 
 ## <a name="modify-the-template-for-a-new-project"></a>Yeni bir proje için şablonu değiştirme 
 
-1. `customer-admin` ayrıcalıkları olan bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
 
-2. Varsayılan proje-istek şablonunu düzenleyin.
+2. Varsayılan proje isteği şablonu'nu edin.
 
    ```
    oc edit template project-request -n openshift
    ```
 
-3. Aşağıdaki ek açıklamayı ekleyerek varsayılan proje şablonunu Azure Red Hat OpenShift (ARO) güncelleştirme işleminden kaldırın: `openshift.io/reconcile-protect: "true"`
+3. Aşağıdaki ek açıklamayı ekleyerek Azure Red Hat OpenShift (ARO) güncelleştirme işleminden varsayılan proje şablonunu kaldırın:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -55,21 +55,21 @@ API 'ye erişim, kendi kendini hazırlayıcılar kümesi rol bağlamasıyla geli
    ...
    ```
 
-   Proje-istek şablonu, ARO güncelleştirme işlemi tarafından güncellenmeyecektir. Bu, müşterilerin şablonu özelleştirmesini ve küme güncelleştirilirken bu özelleştirmeleri korumalarını sağlar.
+   Proje isteği şablonu ARO güncelleştirme işlemi tarafından güncelleştirilmeyecektir. Bu, müşterilerin şablonu özelleştirmesine ve küme güncelleştirildiğinde bu özelleştirmeleri korumasına olanak tanır.
 
-## <a name="disable-the-self-provisioning-role"></a>Kendi kendine sağlama rolünü devre dışı bırakma
+## <a name="disable-the-self-provisioning-role"></a>Kendi kendini sağlama rolünü devre dışı
 
-Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sağlamasını engelleyebilirsiniz.
+Kimlik doğrulaması yapılan bir kullanıcı grubunun kendi kendine yeni projeler sağlamasını engelleyebilirsiniz.
 
-1. `customer-admin` ayrıcalıkları olan bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
 
-2. Kendi kendine hazırlayıcılar kümesi rol bağlamasını düzenleyin.
+2. Kendi kendini bulalı kümerolünü bağlamayı edin.
 
    ```
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Aşağıdaki ek açıklamayı ekleyerek, rolü ARO güncelleştirme işleminden kaldırın: `openshift.io/reconcile-protect: "true"`.
+3. Aşağıdaki ek açıklamaekleyerek rolü ARO güncelleştirme işleminden `openshift.io/reconcile-protect: "true"`kaldırın: .
 
    ```
    ...
@@ -79,7 +79,7 @@ Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sa�
    ...
    ```
 
-4. `system:authenticated:oauth` proje oluşturmasını engellemek için küme rolü bağlamasını değiştirin:
+4. Proje oluşturmayı önlemek `system:authenticated:oauth` için küme rol bağlamayı değiştirin:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -99,20 +99,20 @@ Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sa�
      name: osa-customer-admins
    ```
 
-## <a name="manage-default-templates-and-imagestreams"></a>Varsayılan şablonları ve ımagestreams 'yi yönetme
+## <a name="manage-default-templates-and-imagestreams"></a>Varsayılan şablonları ve görüntüAkışlarını yönetme
 
-Azure Red Hat OpenShift 'te, `openshift` ad alanı içindeki tüm varsayılan şablonlar ve görüntü akışları için güncelleştirmeleri devre dışı bırakabilirsiniz.
-Tüm `Templates` ve `openshift` ad alanındaki `ImageStreams` güncelleştirmelerini devre dışı bırakmak için:
+Azure Red Hat OpenShift'te, ad alanı içindeki `openshift` varsayılan şablonlar ve görüntü akışları için güncelleştirmeleri devre dışı kullanabilirsiniz.
+TÜM `Templates` ve `ImageStreams` `openshift` ad alanında güncelleştirmeleri devre dışı kalmak için:
 
-1. `customer-admin` ayrıcalıkları olan bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
 
-2. `openshift` ad alanını Düzenle:
+2. Ad `openshift` alanını edin:
 
    ```
    oc edit namespace openshift
    ```
 
-3. Aşağıdaki ek açıklamayı ekleyerek `openshift` ad alanını ARO güncelleştirme işleminden kaldırın: `openshift.io/reconcile-protect: "true"`
+3. Aşağıdaki `openshift` ek açıklamaekleyerek Ad alanını ARO güncelleştirme işleminden kaldırın:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,7 +122,7 @@ Tüm `Templates` ve `openshift` ad alanındaki `ImageStreams` güncelleştirmele
    ...
    ```
 
-   `openshift` ad alanındaki herhangi bir nesne, `openshift.io/reconcile-protect: "true"` ek açıklama ekleyerek güncelleştirme işleminden kaldırılabilir.
+   `openshift` Ad alanındaki herhangi bir tek tek nesne, ek açıklama `openshift.io/reconcile-protect: "true"` ekleyerek güncelleştirme işleminden kaldırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

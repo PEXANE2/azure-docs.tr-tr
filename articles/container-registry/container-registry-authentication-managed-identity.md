@@ -1,61 +1,61 @@
 ---
 title: Yönetilen kimlikle kimlik doğrulaması
-description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
+description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen Azure kimliğini kullanarak özel konteyner kayıt defterinizdeki resimlere erişim sağlayın.
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456499"
 ---
-# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
+# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure kapsayıcı kayıt defterinde kimlik doğrulama yapmak için Azure yönetilen bir kimlik kullanma 
 
-Kayıt defteri kimlik bilgilerini sağlamaya veya yönetmeye gerek kalmadan, başka bir Azure kaynağından Azure Container Registry 'de kimlik doğrulaması yapmak için [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanın. Örneğin, ortak bir kayıt defteri kullandığınız kadar kolay bir şekilde, kapsayıcı Kayıt defterinizden kapsayıcı görüntülerine erişmek için bir Linux sanal makinesinde Kullanıcı tarafından atanan veya sistem tarafından atanan bir yönetilen kimlik ayarlayın.
+Kayıt defteri kimlik bilgilerini sağlamaveya yönetmeye gerek kalmadan, azure [kaynaklarının](../active-directory/managed-identities-azure-resources/overview.md) başka bir Azure kapsayıcı kayıt defterine kimlik doğrulaması için yönetilen bir kimlik kullanın. Örneğin, bir Linux VM'de, konteyner kayıt defterinizdeki kapsayıcı görüntülerine erişmek için, genel kayıt defterini kullandığınız kadar kolay bir şekilde kullanıcı tarafından atanmış veya sistem tarafından atanmış bir yönetilen kimlik ayarlayın.
 
-Bu makalede, Yönetilen kimlikler ve nasıl yapılır hakkında daha fazla bilgi edinebilirsiniz:
+Bu makale için, yönetilen kimlikler ve nasıl yönetilebilirsiniz hakkında daha fazla bilgi edinebilirsiniz:
 
 > [!div class="checklist"]
-> * Azure VM 'de Kullanıcı tarafından atanan veya sistem tarafından atanan bir kimliği etkinleştirme
-> * Azure Container Registry 'ye kimlik erişimi verme
-> * Yönetilen kimliği kullanarak kayıt defterine erişin ve bir kapsayıcı görüntüsü çekin 
+> * Azure VM'de kullanıcı tarafından atanmış veya sistem tarafından atanmış bir kimliği etkinleştirme
+> * Azure kapsayıcı kayıt defterine kimlik erişimi verme
+> * Kayıt defterine erişmek ve kapsayıcı görüntüsünü çekmek için yönetilen kimliği kullanma 
 
-Azure kaynaklarını oluşturmak için bu makale, Azure CLı sürüm 2.0.55 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+Azure kaynaklarını oluşturmak için bu makalede, Azure CLI sürümü 2.0.55 veya daha sonra çalıştırmanız gerekmektedir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
-Bir kapsayıcı kayıt defteri ayarlamak ve buna bir kapsayıcı görüntüsü göndermek için Ayrıca, Docker 'ın yerel olarak yüklü olması gerekir. Docker, tüm [MacOS][docker-mac], [Windows][docker-windows]veya [Linux][docker-linux] sistemlerinde Docker 'ı kolayca yapılandıran paketler sağlar.
+Bir kapsayıcı kayıt defteri ayarlamak ve bir kapsayıcı görüntüsünü ona itmek için Docker'ın yerel olarak yüklenmesi de gerekir. Docker [macOS][docker-mac], [Windows][docker-windows] veya [Linux][docker-linux]'ta Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
-## <a name="why-use-a-managed-identity"></a>Yönetilen kimlik neden kullanılmalıdır?
+## <a name="why-use-a-managed-identity"></a>Neden yönetilen bir kimlik kullanıyorsun?
 
-Azure kaynakları için yönetilen bir kimlik, Azure hizmetlerini Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen kimlik sağlar. Yönetilen bir kimlikle, sanal makineler de dahil olmak üzere [belirli Azure kaynaklarını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)yapılandırabilirsiniz. Daha sonra, kodu veya betiklerdeki kimlik bilgilerini geçirmeden diğer Azure kaynaklarına erişmek için bu kimliği kullanın.
+Azure kaynakları için yönetilen bir kimlik, Azure hizmetlerine Azure Etkin Dizin'de (Azure AD) otomatik olarak yönetilen bir kimlik sağlar. Sanal makineler de dahil olmak üzere [belirli Azure kaynaklarını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)yönetilen bir kimlikle yapılandırabilirsiniz. Ardından, kimlik bilgilerini kod veya komut dosyasında geçirmeden diğer Azure kaynaklarına erişmek için kimliği kullanın.
 
-Yönetilen kimlikler iki türtür:
+Yönetilen kimlikler iki türden gelir:
 
-* Birden fazla kaynağa atayabileceğiniz ve istediğiniz sürece devam eden *Kullanıcı tarafından atanan kimlikler*. Kullanıcı tarafından atanan kimlikler Şu anda önizlemededir.
+* Birden çok kaynağa atayabileceğiniz ve istediğiniz kadar süreyle devam edebileceğiniz *kullanıcı tarafından atanan kimlikler.* Kullanıcı tarafından atanan kimlikler şu anda önizlemededir.
 
-* Tek bir sanal makine gibi belirli bir kaynak için benzersiz olan ve söz konusu kaynağın kullanım ömrü boyunca kullanılan *sistem tarafından yönetilen bir kimlik*.
+* Tek bir sanal makine gibi belirli bir kaynağa özgü olan ve bu kaynağın ömrü boyunca süren sistem tarafından yönetilen bir *kimlik.*
 
-Yönetilen kimliğe sahip bir Azure kaynağı ayarladıktan sonra, herhangi bir güvenlik sorumlusu gibi, kimliğe başka bir kaynağa istediğiniz erişimi verin. Örneğin, Azure 'da özel bir kayıt defterine çekme, gönderme ve çekme veya diğer izinleri içeren bir yönetilen kimlik rolü atayın. (Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).) Bir veya daha fazla kaynağa bir kimlik erişimi verebilirsiniz.
+Yönetilen bir kimliğe sahip bir Azure kaynağı ayarladıktan sonra, kimlik istediğiniz erişimi herhangi bir güvenlik ilkesi gibi başka bir kaynağa verin. Örneğin, yönetilen bir kimliği, Azure'daki özel bir kayıt defterine çekme, itme ve çekme veya diğer izinlerle bir rol atayın. (Kayıt defteri rollerinin tam listesi için [Azure Kapsayıcı Kayıt Defteri rolleri ve izinlerine](container-registry-roles.md)bakın.) Bir veya daha fazla kaynağa kimlik erişimi verebilirsiniz.
 
-Daha sonra, kodunuzda kimlik bilgileri olmadan [Azure AD kimlik doğrulamasını destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanın. Bir sanal makineden bir Azure Container Registry 'ye erişmek üzere kimliği kullanmak için Azure Resource Manager ile kimlik doğrulaması yapabilirsiniz. Senaryonuza bağlı olarak yönetilen kimliği kullanarak nasıl kimlik doğrulaması yapılacağını seçin:
+Ardından, kodunuzda kimlik belgesi olmadan [Azure AD kimlik doğrulamasını destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)herhangi bir hizmetin kimliğini kullanın. Sanal bir makineden bir Azure kapsayıcı kayıt defterine erişmek için kimliği kullanmak için Azure Kaynak Yöneticisi ile kimlik doğrulaması yaptığınızda, kimliğinizi kullanırsınız. Senaryonuza bağlı olarak yönetilen kimliği kullanarak kimlik doğrulamayı seçin:
 
-* HTTP veya REST çağrılarını kullanarak programlı [bir şekilde Azure AD erişim belirteci alma](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+* HTTP veya REST çağrılarını kullanarak azure [AD erişimine](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programlı olarak bir Azure REKLAM erişimi edinin
 
-* [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 'larını kullanma
+* Azure [SDK'larını](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) kullanma
 
-* Kimlik ile [Azure CLI veya PowerShell 'de oturum açın](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) . 
+* Kimlikle [Azure CLI veya PowerShell'de oturum açın.](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun ve buna örnek bir kapsayıcı görüntüsü gönderin. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
+Azure kapsayıcı kayıt defteriniz yoksa, bir kayıt defteri oluşturun ve örnek bir kapsayıcı görüntüsünü ona itin. Adımlar için [Bkz. Hızlı Başlangıç: Azure CLI'yi kullanarak özel bir kapsayıcı kayıt defteri oluşturun.](container-registry-get-started-azure-cli.md)
 
-Bu makalede `aci-helloworld:v1` kapsayıcı resminin kayıt defterinizde depolandığını varsaymaktadır. Örneklerde, *Mycontainerregistry*'nin kayıt defteri adı kullanılır. Sonraki adımlarda kendi kayıt defteriniz ve görüntü adlarınızla değiştirin.
+Bu makalede, kayıt `aci-helloworld:v1` defterinizde depolanan kapsayıcı görüntüsü olduğunu varsayar. Örnekler *myContainerRegistry*bir kayıt defteri adı kullanın. Sonraki adımlarda kendi kayıt defteri ve resim adlarınızı değiştirin.
 
-## <a name="create-a-docker-enabled-vm"></a>Docker özellikli bir VM oluşturma
+## <a name="create-a-docker-enabled-vm"></a>Docker özellikli vm oluşturma
 
-Docker özellikli bir Ubuntu sanal makinesi oluşturun. Ayrıca, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı sanal makineye yüklemeniz gerekir. Zaten bir Azure sanal makineniz varsa, sanal makineyi oluşturmak için bu adımı atlayın.
+Docker özellikli bir Ubuntu sanal makinesi oluşturun. [Azure CLI'yi](/cli/azure/install-azure-cli?view=azure-cli-latest) sanal makineye yüklemeniz de gerekir. Zaten bir Azure sanal makineniz varsa, sanal makineyi oluşturmak için bu adımı atlayın.
 
-[Az VM Create][az-vm-create]ile varsayılan bir Ubuntu Azure sanal makinesi dağıtın. Aşağıdaki örnek, *Myresourcegroup*adlı mevcut bir kaynak grubunda *mydockervm* adlı bir sanal makine oluşturur:
+Az vm oluştur ile varsayılan bir Ubuntu Azure sanal makine [dağıtın.][az-vm-create] Aşağıdaki örnek, *myResourceGroup*adlı varolan bir kaynak grubunda *myDockerVM* adında bir VM oluşturur:
 
 ```azurecli
 az vm create \
@@ -66,23 +66,23 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLı tarafından gösterilecek `publicIpAddress` göz atın. VM 'ye SSH bağlantısı oluşturmak için bu adresi kullanın.
+VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLI `publicIpAddress` tarafından görüntülenenlere dikkat edin. VM'ye SSH bağlantıları yapmak için bu adresi kullanın.
 
-### <a name="install-docker-on-the-vm"></a>SANAL makineye Docker 'ı yükler
+### <a name="install-docker-on-the-vm"></a>Docker'ı VM'ye yükleyin
 
-VM çalıştırıldıktan sonra VM ile bir SSH bağlantısı oluşturun. *Publicıpaddress* değerini sanal MAKINENIZIN genel IP adresiyle değiştirin.
+VM çalışmaya devam ettikten sonra, VM'ye Bir SSH bağlantısı kurun. *PublicIpAddress'i* VM'nizin genel IP adresiyle değiştirin.
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-SANAL makineye Docker yüklemek için aşağıdaki komutu çalıştırın:
+Docker'ı VM'ye yüklemek için aşağıdaki komutu çalıştırın:
 
 ```bash
 sudo apt install docker.io -y
 ```
 
-Yükleme sonrasında, Docker 'ın sanal makinede düzgün çalıştığını doğrulamak için aşağıdaki komutu çalıştırın:
+Yüklemeden sonra, Docker'ın VM üzerinde düzgün çalıştığını doğrulamak için aşağıdaki komutu çalıştırın:
 
 ```bash
 sudo docker run -it hello-world
@@ -98,7 +98,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 
-Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Bu makalede, sürüm 2.0.55 veya üstünü yüklediğinizden emin olun.
+Azure CLI'yi Ubuntu sanal makinenize yüklemek için [Azure CLI'yi](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) yükleyin' i yükleyin adımlarını izleyin. Bu makale için sürüm 2.0.55 veya sonraki sürümyüklediğinizden emin olun.
 
 SSH oturumundan çıkın.
 
@@ -106,13 +106,13 @@ SSH oturumundan çıkın.
 
 ### <a name="create-an-identity"></a>Kimlik oluşturma
 
-[Az Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Daha önce kapsayıcı kayıt defteri veya sanal makine ya da farklı bir tane oluşturmak için kullandığınız kaynak grubunu kullanabilirsiniz.
+Az kimlik oluşturma komutunu kullanarak aboneliğinizde bir [kimlik oluşturun.](/cli/azure/identity?view=azure-cli-latest#az-identity-create) Konteyner kayıt defterini veya sanal makineyi veya farklı bir tane oluşturmak için daha önce kullandığınız kaynak grubunu kullanabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Aşağıdaki adımlarda kimliği yapılandırmak için [az Identity Show][az-identity-show] komutunu kullanarak KIMLIğIN kaynak kimliğini ve hızmet sorumlusu kimliğini değişkenlere depolayın.
+Aşağıdaki adımlarda kimliği yapılandırmak için, kimliğin kaynak kimliğini ve hizmet asıl kimliğini değişkenlerde depolamak için [az identity show][az-identity-show] komutunu kullanın.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -122,109 +122,109 @@ userID=$(az identity show --resource-group myResourceGroup --name myACRId --quer
 spID=$(az identity show --resource-group myResourceGroup --name myACRId --query principalId --output tsv)
 ```
 
-Sanal makinenizde CLı 'da oturum açarken kimliğin KIMLIĞI daha sonraki bir adımda gerektiğinden, şu değeri gösterin:
+Sanal makinenizden CLI'de oturum açışı yaptığınızda daha sonraki bir adımda kimliğin kimliğine ihtiyacınız olduğundan, değeri gösterin:
 
 ```bash
 echo $userID
 ```
 
-KIMLIK şu biçimdedir:
+Kimlik formu:
 
 ```
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myACRId
 ```
 
-### <a name="configure-the-vm-with-the-identity"></a>VM 'yi kimlikle yapılandırma
+### <a name="configure-the-vm-with-the-identity"></a>VM'yi kimlikle yapılandırma
 
-Aşağıdaki [az VM Identity Assign][az-vm-identity-assign] komutu, DOCKER VM 'nizi Kullanıcı tarafından atanan kimlikle yapılandırır:
+Aşağıdaki [az vm kimlik atama][az-vm-identity-assign] komutu Docker VM'nizi kullanıcı tarafından atanan kimlikle yapılandırır:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM --identities $userID
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine kimlik erişimi verme
+### <a name="grant-identity-access-to-the-container-registry"></a>Konteyner kayıt defterine kimlik erişimi verme
 
-Şimdi, kapsayıcıyı kapsayıcı Kayıt defterinize erişecek şekilde yapılandırın. Önce, kayıt defterinin kaynak KIMLIĞINI almak için [az ACR Show][az-acr-show] komutunu kullanın:
+Şimdi kapsayıcı kayıt defterinize erişmek için kimliği yapılandırın. Önce kayıt defterinin kaynak kimliğini almak için [az acr göster][az-acr-show] komutunu kullanın:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-AcrPull rolünü kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın. Bu rol, kayıt defterine [çekme izinleri](container-registry-roles.md) sağlar. Çekme ve anında iletme izinlerini sağlamak için ACRPush rolünü atayın.
+AcrPull rolünü kayıt defterine atamak için [az rol ataması oluşturma][az-role-assignment-create] komutunu kullanın. Bu rol kayıt defterine [çekme izinleri](container-registry-roles.md) sağlar. Hem çekme hem de itme izinleri sağlamak için ACRPush rolünü atayın.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Kimliği kullanarak kayıt defterine erişin
+### <a name="use-the-identity-to-access-the-registry"></a>Kayıt defterine erişmek için kimliği kullanma
 
-Kimliğiyle yapılandırılmış Docker sanal makinesine SSH. VM 'de yüklü olan Azure CLı 'yı kullanarak aşağıdaki Azure CLı komutlarını çalıştırın.
+Kimlikle yapılandırılan Docker sanal makinesine SSH. VM'de yüklü olan Azure CLI'yi kullanarak aşağıdaki Azure CLI komutlarını çalıştırın.
 
-İlk olarak, VM 'de yapılandırdığınız kimliği kullanarak [az Login][az-login]Ile Azure CLI kimlik doğrulamasını yapın. `<userID>`için, önceki bir adımda aldığınız kimliğin KIMLIĞINI değiştirin. 
+İlk olarak, VM'de yapılandırdığınız kimliği kullanarak [az giriş][az-login]le Azure CLI'ye kimlik doğrulaması yapın. Bunun `<userID>`için, önceki adımda aldığınız kimliğin yerine geçin. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda CLı, kayıt defteri ile oturumunuzu sorunsuz bir şekilde doğrulamak için `az login` çalıştırdığınızda oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını `sudo`ile çalıştırmanız gerekebilir.)
+Daha sonra, [az acr giriş][az-acr-login]ile kayıt defterine doğrulayın. Bu komutu kullandığınızda, CLI, oturumunuzu kapsayıcı kayıt `az login` defteriyle sorunsuz bir şekilde doğrulamak için çalıştırdığınızda oluşturulan Etkin Dizin belirteci'ni kullanır. (VM kurulumuna bağlı olarak, bu komutu ve docker komutlarını `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-`Login succeeded` bir ileti görmeniz gerekir. Ardından, kimlik bilgileri sağlamadan `docker` komutlarını çalıştırabilirsiniz. Örneğin, `aci-helloworld:v1` görüntüsünü çekmek için [Docker Pull][docker-pull] çalıştırın ve kayıt defterinizin oturum açma sunucusu adını belirtin. Oturum açma sunucusu adı, kapsayıcı kayıt defteri adınızın (tümü küçük harf) ve ardından `.azurecr.io` (örneğin, `mycontainerregistry.azurecr.io`) oluşur.
+Bir `Login succeeded` mesaj görmelisin. Daha sonra `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, kayıt [docker pull][docker-pull] defterinizin `aci-helloworld:v1` giriş sunucusu adını belirterek görüntüyü çekmek için docker çekin çalıştırın. Giriş sunucusu adı kapsayıcı kayıt defteri adınızı (tüm küçük `.azurecr.io` harf) ve `mycontainerregistry.azurecr.io`ardından oluşur - örneğin, .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>Örnek 2: sistem tarafından atanan bir kimlikle erişim
+## <a name="example-2-access-with-a-system-assigned-identity"></a>Örnek 2: Sistemle atanmış bir kimlikle erişim
 
-### <a name="configure-the-vm-with-a-system-managed-identity"></a>VM 'yi sistem tarafından yönetilen bir kimlikle yapılandırma
+### <a name="configure-the-vm-with-a-system-managed-identity"></a>VM'yi sistem tarafından yönetilen bir kimlikle yapılandırma
 
-Aşağıdaki [az VM Identity Assign][az-vm-identity-assign] komutu, DOCKER VM 'nizi sistem tarafından atanan bir kimlikle yapılandırır:
+Aşağıdaki [az vm kimlik atama][az-vm-identity-assign] komutu Docker VM'nizi sistem tarafından atanmış bir kimlikle yapılandırır:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Sonraki adımlarda kullanmak üzere VM 'nin kimliğinin `principalId` (hizmet sorumlusu KIMLIĞI) değerine bir değişken ayarlamak için [az VM Show][az-vm-show] komutunu kullanın.
+Bir değişkeni VM kimliğinin `principalId` değerine (hizmet ana kimliği) ayarlamak için az [vm show][az-vm-show] komutunu kullanın ve sonraki adımlarda kullanın.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine kimlik erişimi verme
+### <a name="grant-identity-access-to-the-container-registry"></a>Konteyner kayıt defterine kimlik erişimi verme
 
-Şimdi, kapsayıcıyı kapsayıcı Kayıt defterinize erişecek şekilde yapılandırın. Önce, kayıt defterinin kaynak KIMLIĞINI almak için [az ACR Show][az-acr-show] komutunu kullanın:
+Şimdi kapsayıcı kayıt defterinize erişmek için kimliği yapılandırın. Önce kayıt defterinin kaynak kimliğini almak için [az acr göster][az-acr-show] komutunu kullanın:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-Kimliğe AcrPull rolünü atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın. Bu rol, kayıt defterine [çekme izinleri](container-registry-roles.md) sağlar. Çekme ve anında iletme izinlerini sağlamak için ACRPush rolünü atayın.
+AcrPull rolünü kimliğe atamak için [az rol ataması oluşturma][az-role-assignment-create] komutunu kullanın. Bu rol kayıt defterine [çekme izinleri](container-registry-roles.md) sağlar. Hem çekme hem de itme izinleri sağlamak için ACRPush rolünü atayın.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Kimliği kullanarak kayıt defterine erişin
+### <a name="use-the-identity-to-access-the-registry"></a>Kayıt defterine erişmek için kimliği kullanma
 
-Kimliğiyle yapılandırılmış Docker sanal makinesine SSH. VM 'de yüklü olan Azure CLı 'yı kullanarak aşağıdaki Azure CLı komutlarını çalıştırın.
+Kimlikle yapılandırılan Docker sanal makinesine SSH. VM'de yüklü olan Azure CLI'yi kullanarak aşağıdaki Azure CLI komutlarını çalıştırın.
 
-İlk olarak, VM 'deki sistem tarafından atanan kimliği kullanarak [az oturum açma][az-login]Ile Azure CLI kimlik doğrulamasını yapın.
+İlk olarak, VM'de sistem tarafından atanan kimliği kullanarak Azure CLI'yi [az girişle][az-login]doğrulayın.
 
 ```azurecli
 az login --identity
 ```
 
-Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda CLı, kayıt defteri ile oturumunuzu sorunsuz bir şekilde doğrulamak için `az login` çalıştırdığınızda oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını `sudo`ile çalıştırmanız gerekebilir.)
+Daha sonra, [az acr giriş][az-acr-login]ile kayıt defterine doğrulayın. Bu komutu kullandığınızda, CLI, oturumunuzu kapsayıcı kayıt `az login` defteriyle sorunsuz bir şekilde doğrulamak için çalıştırdığınızda oluşturulan Etkin Dizin belirteci'ni kullanır. (VM kurulumuna bağlı olarak, bu komutu ve docker komutlarını `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-`Login succeeded` bir ileti görmeniz gerekir. Ardından, kimlik bilgileri sağlamadan `docker` komutlarını çalıştırabilirsiniz. Örneğin, `aci-helloworld:v1` görüntüsünü çekmek için [Docker Pull][docker-pull] çalıştırın ve kayıt defterinizin oturum açma sunucusu adını belirtin. Oturum açma sunucusu adı, kapsayıcı kayıt defteri adınızın (tümü küçük harf) ve ardından `.azurecr.io` (örneğin, `mycontainerregistry.azurecr.io`) oluşur.
+Bir `Login succeeded` mesaj görmelisin. Daha sonra `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, kayıt [docker pull][docker-pull] defterinizin `aci-helloworld:v1` giriş sunucusu adını belirterek görüntüyü çekmek için docker çekin çalıştırın. Giriş sunucusu adı kapsayıcı kayıt defteri adınızı (tüm küçük `.azurecr.io` harf) ve `mycontainerregistry.azurecr.io`ardından oluşur - örneğin, .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -232,14 +232,14 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Container Registry ile yönetilen kimlikler kullanma hakkında bilgi edindiniz ve şunları yapabilirsiniz:
+Bu makalede, Azure Kapsayıcı Kayıt Defteri ile yönetilen kimlikleri kullanmayı ve nasıl şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure VM 'de Kullanıcı tarafından atanan veya sistem tarafından atanan bir kimliği etkinleştirme
-> * Azure Container Registry 'ye kimlik erişimi verme
-> * Yönetilen kimliği kullanarak kayıt defterine erişin ve bir kapsayıcı görüntüsü çekin
+> * Azure VM'de kullanıcı tarafından atanmış veya sistemtarafından atanmış bir kimliği etkinleştirme
+> * Azure kapsayıcı kayıt defterine kimlik erişimi verme
+> * Kayıt defterine erişmek ve kapsayıcı görüntüsünü çekmek için yönetilen kimliği kullanma
 
-* [Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/)hakkında daha fazla bilgi edinin.
+* [Azure kaynakları için yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/)hakkında daha fazla bilgi edinin.
 
 
 <!-- LINKS - external -->

@@ -1,16 +1,16 @@
 ---
-title: Hızlı başlangıç-Azure SignalR hizmeti REST API
-description: REST API Azure SignalR hizmeti ile aşağıdaki örnekleri kullanarak nasıl kullanacağınızı öğrenin. REST API belirtiminin ayrıntılarını bulun.
+title: Quickstart - Azure SignalR Service REST API
+description: Örnekleri takip eden Azure SignalR Hizmeti ile REST API'yi nasıl kullanacağınızı öğrenin. REST API belirtiminin ayrıntılarını bulun.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157688"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Hızlı Başlangıç: Konsol uygulamasından gerçek zamanlı iletiler yayımlama
@@ -19,11 +19,11 @@ Azure SignalR hizmeti, yayıncılık gibi sunucudan istemciye doğrudan iletişi
 
 Bu hızlı başlangıçta C# dilinde bir komut satırı uygulamasından bağlı istemci uygulamalarına nasıl ileti gönderebileceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/core)
+* [.NET Çekirdek SDK](https://www.microsoft.com/net/download/core)
 * Tercih ettiğiniz bir metin veya kod düzenleyicisi.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -99,7 +99,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 ## <a name="usage"></a>Kullanım
 
-Sunucu başlatıldıktan sonra şu iletiyi göndermek için komutunu kullanın:
+Sunucu başladıktan sonra, ileti göndermek için komutu kullanın:
 
 ```
 send user <User Id>
@@ -111,11 +111,11 @@ broadcast
 
 Farklı istemci adları ile birden çok istemci başlatabilirsiniz.
 
-## <a name="usage"> </a> Üçüncü taraf hizmetlerle tümleştirme
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Üçüncü taraf hizmetlerle tümleştirme
 
 Azure SignalR hizmeti, üçüncü taraf hizmetlerin sistemle tümleştirilmesini sağlar.
 
-### <a name="definition-of-technical-specifications"></a>Teknik belirtimlerin tanımı
+### <a name="definition-of-technical-specifications"></a> Teknik özelliklerin tanımı
 
 Aşağıdaki tabloda, desteklenen tüm REST API sürümleri gösterilmektedir. Belirli bir sürüme ait tanım dosyasını da bulabilirsiniz
 
@@ -130,9 +130,9 @@ API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Tümüne yayınla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Gruba yayınla](#broadcast-group) | **&#x2713;** | **&#x2713;**
-Bazı gruplara yayın | **&#x2713;** Kullanım dışı | `N / A`
+Bazı gruplara yayın | **&#x2713;** (Amortismana Uğradı) | `N / A`
 [Belirli kullanıcılara gönder](#send-user) | **&#x2713;** | **&#x2713;**
-Bazı kullanıcılara gönder | **&#x2713;** Kullanım dışı | `N / A`
+Bazı kullanıcılara gönder | **&#x2713;** (Amortismana Uğradı) | `N / A`
 [Gruba kullanıcı ekleme](#add-user-to-group) | `N / A` | **&#x2713;**
 [Gruptan kullanıcı kaldırma](#remove-user-from-group) | `N / A` | **&#x2713;**
 
@@ -178,7 +178,7 @@ Sürüm | API HTTP Yöntemi | İstek URL'si
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, SignalR hizmetinden istemcilere gerçek zamanlı ileti yayınlamak için REST API kullanmayı öğrendiniz. Daha sonra, REST API üzerine inşa olan SignalR hizmeti bağlamasıyla Azure Işlevleri geliştirme ve dağıtma hakkında daha fazla bilgi edinin.
+Bu hızlı başlangıçta, SignalR Hizmeti'nden istemcilere gerçek zamanlı mesaj yayınlamak için REST API'yi nasıl kullanacağınızı öğrendiniz. Ardından, REST API'nin üzerine inşa edilen SignalR Service bağlama ile Azure Işlevlerini nasıl geliştirip dağıtılayıp dağıtılanın hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure SignalR hizmeti bağlamalarını kullanarak Azure Işlevleri geliştirme](signalr-quickstart-azure-functions-csharp.md)
+> [Azure SignalR Hizmeti bağlamalarını kullanarak Azure İşlevlerini Geliştirme](signalr-quickstart-azure-functions-csharp.md)

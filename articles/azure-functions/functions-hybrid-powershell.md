@@ -1,25 +1,25 @@
 ---
-title: PowerShell işlevlerini kullanarak uzak şirket içi kaynakları yönetme
-description: Bir PowerShell işlev uygulamasını şirket içi kaynaklara bağlamak için Azure Relay Karma Bağlantılar yapılandırmayı öğrenin. Bu, daha sonra şirket içi kaynağı uzaktan yönetmek için kullanılabilir.
+title: PowerShell işlevlerini kullanarak şirket içi uzak kaynakları yönetme
+description: Bir PowerShell işlev uygulamasını şirket içi kaynaklara bağlamak için Azure Röle'deki Karma Bağlantıları nasıl yapılandırabileceğinizi ve şirket içi kaynağı uzaktan yönetmek için nasıl kullanılacağını öğrenin.
 author: eamono
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226927"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure Işlevleri 'nde PowerShell ile karma ortamları yönetme ve App Service Karma Bağlantılar
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure İşlevleri ve Uygulama Hizmeti Karma Bağlantılarında PowerShell ile karma ortamları yönetme
 
-Azure App Service Karma Bağlantılar özelliği, diğer ağlardaki kaynaklara erişim sağlar. [Karma bağlantılar](../app-service/app-service-hybrid-connections.md) belgelerinde bu yetenek hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, bir şirket içi sunucuyu hedefleyen PowerShell işlevlerini çalıştırmak için bu özelliğin nasıl kullanılacağı açıklanır. Bu sunucu daha sonra, şirket içi ortamdaki tüm kaynakları bir Azure PowerShell işlevinden yönetmek için kullanılabilir.
+Azure App Service Karma Bağlantılar özelliği, diğer ağlardaki kaynaklara erişim sağlar. Bu özellik hakkında daha fazla bilgi için [Karma Bağlantılar](../app-service/app-service-hybrid-connections.md) belgelerinde bulabilirsiniz. Bu makalede, şirket içi bir sunucuhedefleyen PowerShell işlevleriçalıştırmak için bu yeteneğin nasıl kullanılacağı açıklanmaktadır. Bu sunucu daha sonra bir Azure PowerShell işlevinden şirket içi ortamdaki tüm kaynakları yönetmek için kullanılabilir.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>PowerShell uzaktan iletişim için bir şirket içi sunucu yapılandırma
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>PowerShell remoting için şirket içi sunucu yapılandırma
 
-Aşağıdaki betik PowerShell uzaktan iletişimini mümkün kılar ve yeni bir güvenlik duvarı kuralı ve WinRM HTTPS dinleyicisi oluşturur. Sınama amacıyla, otomatik olarak imzalanan bir sertifika kullanılır. Bir üretim ortamında, imzalı bir sertifika kullanmanızı öneririz.
+Aşağıdaki komut dosyası PowerShell remoting sağlar ve yeni bir güvenlik duvarı kuralı ve winrm https dinleyici oluşturur. Test amacıyla, kendi imzalı bir sertifika kullanılır. Üretim ortamında, imzalı bir sertifika kullanmanızı öneririz.
 
 ```powershell
 # For configuration of WinRM, see
@@ -48,95 +48,95 @@ cmd.exe /C $Cmd
 
 ## <a name="create-a-powershell-function-app-in-the-portal"></a>Portalda bir PowerShell işlev uygulaması oluşturma
 
-App Service Karma Bağlantılar özelliği yalnızca temel, standart ve yalıtılmış fiyatlandırma planlarında kullanılabilir. PowerShell ile işlev uygulaması oluşturduğunuzda, bu planlardan birini oluşturun veya seçin.
+App Service Karma Bağlantılar özelliği yalnızca Temel, Standart ve Yalıtılmış fiyatlandırma planlarında kullanılabilir. PowerShell ile işlev uygulamasını oluşturduğunuzda, bu planlardan birini oluşturun veya seçin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **+ kaynak oluştur** ' u seçin ve ardından **işlev uygulaması**' nı seçin.
+1. Azure [portalında](https://portal.azure.com)+ Soldaki menüde **kaynak oluştur '** u seçin ve ardından **İşlev uygulamasını**seçin.
 
-1. **Barındırma planı**için **App Service plan**' ı seçin ve **App Service plan/konum**' u seçin.
+1. **Barındırma planı** **için, App Service planını**seçin ve ardından Uygulama Hizmeti **planını/Konumu'nü**seçin.
 
-1. **Yeni oluştur**' u seçin, **App Service bir plan** adı yazın, kendinize yakın bir [bölgede](https://azure.microsoft.com/regions/) bir konum seçin ya da Işlevlerinizin erişebileceği diğer hizmetlere yakın bir **konum** seçin ve ardından **fiyatlandırma katmanı**' nı seçin.
+1. Yeni , Uygulama **Hizmeti planı** adı **oluştur'u**seçin, yakınınızdaki bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlerin yakınında bir **Konum** seçin ve ardından **Fiyatlandırma katmanını**seçin.
 
-1. S1 standart planını seçin ve ardından **Uygula**' yı seçin.
+1. S1 Standart planını seçin ve sonra **Uygula'yı**seçin.
 
-1. Planı oluşturmak için **Tamam** ' ı seçin ve ardından tabloda belirtilen geri kalan **işlev uygulaması** ayarlarını aşağıdaki ekran görüntüsünden hemen sonra yapılandırın:
+1. Planı oluşturmak için **Tamam'ı** seçin ve aşağıdaki ekran görüntüsünden hemen sonra tabloda belirtildiği şekilde kalan **İşlev Uygulaması** ayarlarını yapılandırın:
 
-    ![PowerShell Çekirdek işlev uygulaması](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![PowerShell Core fonksiyon uygulaması](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Uygulama adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler: `a-z`, `0-9`, ve `-`.  | 
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
     | **Kaynak Grubu** |  myResourceGroup | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. Önerilen değeri de kullanabilirsiniz. |
-    | **OS** | Tercih edilen işletim sistemi | Windows ' u seçin. |
-    | **Çalışma zamanı yığını** | Tercih edilen dil | PowerShell Core ' u seçin. |
-    | **Depolama** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir. Var olan bir hesabı da kullanabilirsiniz.
-    | **Application Insights** | Varsayılan | En yakın desteklenen bölgede aynı *uygulama adının* Application Insights kaynağını oluşturur. Bu ayarı genişleterek, **Yeni kaynak adını** değiştirebilir veya verilerinizi depolamak istediğiniz [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) bölgesinde farklı bir **konum** seçebilirsiniz. |
+    | **İşletim Sistemi** | Tercih Edilen İşletim Sistemi | Windows’u seçin. |
+    | **Çalışma zamanı yığını** | Tercih edilen dil | PowerShell Core'u seçin. |
+    | **Depolama** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalıdır ve yalnızca sayılar ve küçük harfler içerebilir. Var olan bir hesabı da kullanabilirsiniz.
+    | **Uygulama Bilgileri** | Varsayılan | Desteklenen en yakın bölgede aynı *Uygulama adının* Uygulama Öngörüleri kaynağını oluşturur. Bu ayarı genişleterek, **Yeni kaynak adını** değiştirebilir veya verilerinizi depolamak istediğiniz Bir Azure [coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) bölgesinde farklı bir **Konum** seçebilirsiniz. |
 
-1. Ayarlarınız doğrulandıktan sonra **Oluştur**' u seçin.
+1. Ayarlarınız doğrulandıktan sonra **Oluştur'u**seçin.
 
-1. Portalın sağ üst köşesindeki **bildirim** simgesini seçin ve "dağıtım başarılı" iletisini bekleyin.
+1. Portalın sağ üst köşesindeki **Bildirim** simgesini seçin ve "Dağıtım başarılı oldu" iletisini bekleyin.
 
-1. Yeni işlev uygulamanızı görüntülemek için **Kaynağa git**’i seçin. **Panoya sabitle ' yi**de seçebilirsiniz. Sabitleme, panonuzdan bu işlev uygulama kaynağına döndürülmesini kolaylaştırır.
+1. Yeni işlev uygulamanızı görüntülemek için **Kaynağa git**’i seçin. **Panoya Sabitle'yi**de seçebilirsiniz. Sabitleme, panonuzdan bu işlev uygulaması kaynağına geri dönmeyi kolaylaştırır.
 
 ## <a name="create-a-hybrid-connection-for-the-function-app"></a>İşlev uygulaması için karma bağlantı oluşturma
 
-Karma bağlantılar, işlev uygulamasının ağ bölümünde yapılandırılır:
+Karma bağlantılar, işlev uygulamasının ağ bölümünden yapılandırılır:
 
-1. İşlev uygulamasındaki **platform özellikleri** sekmesini seçin ve ardından **ağ**' ı seçin. 
-   Platform ağı için uygulamaya genel bakış ![](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. **Karma bağlantı uç noktalarınızı yapılandırın**' ı seçin.
+1. İşlev **uygulamasındaPlatform özellikleri** sekmesini seçin ve ardından **Ağ'ı**seçin. 
+   ![Platform ağı için Uygulamaya Genel Bakış](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. **Karma bağlantı uç noktalarınızı yapılandır'ı**seçin.
    ![Ağ](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. **Karma bağlantı ekle**' yi seçin.
-   Karma bağlantı](./media/functions-hybrid-powershell/hybrid-connection-overview.png) ![  
-1. Aşağıdaki ekran görüntüsünden hemen sonra gösterildiği gibi karma bağlantıyla ilgili bilgileri girin. Uzak komutları çalıştırırken sunucu daha sonra hatırlanmasını kolaylaştırmak için **uç nokta ana bilgisayar** ayarını şirket içi sunucunun ana bilgisayar adıyla eşleştirme seçeneğiniz vardır. Bağlantı noktası, sunucuda daha önce tanımlanan varsayılan Windows Uzaktan Yönetim hizmeti bağlantı noktasıyla eşleşir.
-  Karma bağlantı](./media/functions-hybrid-powershell/add-hybrid-connection.png) eklemek ![  
+1. **Karma bağlantı ekle'yi**seçin.
+   ![Karma Bağlantı](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Aşağıdaki ekran görüntüsünden hemen sonra gösterildiği gibi karma bağlantı yla ilgili bilgileri girin. Uzak komutları çalıştırırken sunucuyu daha sonra hatırlamayı kolaylaştırmak için **Endpoint Ana Bilgisayar** ayarı şirket içi sunucunun ana bilgisayarının adı yla eşleşmesini sağlama seçeneğiniz vardır. Bağlantı noktası, sunucuda daha önce tanımlanan varsayılan Windows uzaktan yönetim hizmeti bağlantı noktasıyla eşleşir.
+  ![Karma Bağlantı Ekle](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **Karma bağlantı adı**: ContosoHybridOnPremisesServer
+    **Hibrid bağlantı adı**: ContosoHybridOnPremisesServer
     
-    **Uç nokta ana bilgisayarı**: finance1
+    **Endpoint Host**: finance1
     
-    **Uç nokta bağlantı noktası**: 5986
+    **Bitiş Noktası Bağlantı Noktası**: 5986
     
-    **ServiceBus ad alanı**: Yeni oluştur
+    **Servicebus namespace**: Yeni Oluştur
     
-    **Konum**: kullanılabilir bir konum seçin
+    **Konum**: Kullanılabilir bir konum seçin
     
-    **Ad**: contosopowershellhibrit
+    **Adı**: contosopowershellhybrid
 
-5. Karma bağlantıyı oluşturmak için **Tamam ' ı** seçin.
+5. Karma bağlantı oluşturmak için **Tamam'ı** seçin.
 
-## <a name="download-and-install-the-hybrid-connection"></a>Karma bağlantıyı indirme ve yükleme
+## <a name="download-and-install-the-hybrid-connection"></a>Karma bağlantıyı indirin ve kurun
 
-1. . Msi dosyasını bilgisayarınıza yerel olarak kaydetmek için **bağlantı yöneticisini indir** ' i seçin.
-Yükleme yükleyicisi ![](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. . Msi dosyasını yerel bilgisayarınızdan şirket içi sunucuya kopyalayın.
+1. .msi dosyasını bilgisayarınıza yerel olarak kaydetmek için **bağlantı yöneticisini karşıdan yükle'yi** seçin.
+![Yükleyiciyi indirin](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
+1. .msi dosyasını yerel bilgisayarınızdan şirket içi sunucuya kopyalayın.
 1. Hizmeti şirket içi sunucuya yüklemek için Karma Bağlantı Yöneticisi yükleyicisini çalıştırın.
-Karma bağlantı](./media/functions-hybrid-powershell/hybrid-installation.png) ![yüklemesi  
-1. Portalda karma bağlantıyı açın ve ağ geçidi bağlantı dizesini panoya kopyalayın.
-karma bağlantı dizesi ![Kopyala](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. Şirket içi sunucuda Karma Bağlantı Yöneticisi Kullanıcı arabirimini açın.
-![açık karma bağlantı kullanıcı arabirimi](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. **El Ile gir** düğmesini seçin ve bağlantı dizesini panodan yapıştırın.
-bağlantıyı ![](./media/functions-hybrid-powershell/enter-manual-connection.png) Yapıştır  
-1. Karma Bağlantı Yöneticisi, bağlı olarak gösterilmezse PowerShell 'den yeniden başlatın.
+![Karma Bağlantı Yükle](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. Portaldan, karma bağlantıyı açın ve ardından ağ geçidi bağlantı dizesini panoya kopyalayın.
+![Karma bağlantı dizelerini kopyalama](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Karma Bağlantı Yöneticisi UI'yi şirket içi sunucuda açın.
+![Açık Hibrit Bağlantı UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. El **Ile Gir** düğmesini seçin ve bağlantı dizesini panodan yapıştırın.
+![Bağlantıyı yapıştır](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+1. Bağlı olarak görünmüyorsa, PowerShell'den Hibrit Bağlantı Yöneticisi'ni yeniden başlatın.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
-## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Yönetici hesabının parolası için bir uygulama ayarı oluşturma
+## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Yönetici hesabının parolası için uygulama ayarı oluşturma
 
-1. İşlev uygulamasındaki **platform özellikleri** sekmesini seçin.
-1. **Genel ayarlar**altında **yapılandırma**' yı seçin.
-Platform yapılandırma](./media/functions-hybrid-powershell/select-configuration.png) ![seçin  
-1. **Yeni uygulama ayarını** genişleterek parola için yeni bir ayar oluşturun.
-1. Bu ayarı _Contosouserpassword_olarak adlandırın ve parolayı girin.
-1. **Tamam** ' ı ve ardından Kaydet ' i seçerek parolayı işlev uygulamasında depolayın.
-parola için ![uygulama ayarı Ekle](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. İşlev **uygulamasındaki Platform özellikleri** sekmesini seçin.
+1. **Genel Ayarlar**altında **Yapılandırma'yı**seçin.
+![Platform yapılandırması seçin](./media/functions-hybrid-powershell/select-configuration.png)  
+1. Parola için yeni bir ayar oluşturmak için **Yeni uygulama ayarını** genişletin.
+1. _Ayar ContosoUserPassword_adını ve şifreyi girin.
+1. **Tamam'ı** seçin ve ardından parolayı işlev uygulamasında depolamak için kaydedin.
+![Parola için uygulama ayarı ekleme](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>Test etmek için bir işlev http tetikleyicisi oluşturun
+## <a name="create-a-function-http-trigger-to-test"></a>Test etmek için bir işlev http tetikleyici oluşturma
 
-1. İşlev uygulamasından yeni bir HTTP tetikleyici işlevi oluşturun.
-yeni HTTP tetikleyicisi oluşturma ![](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. İşlev uygulamasından yeni bir HTTP tetikleme işlevi oluşturun.
+![Yeni HTTP tetikleyicisi oluşturma](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
 1. Şablondaki PowerShell kodunu aşağıdaki kodla değiştirin:
 
     ```powershell
@@ -172,12 +172,12 @@ yeni HTTP tetikleyicisi oluşturma ![](./media/functions-hybrid-powershell/creat
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. İşlevi test etmek için **Kaydet** ve **Çalıştır** ' ı seçin.
-işlev uygulamasını test ![](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. İşlevi test etmek için **Kaydet** ve **Çalıştır'ı** seçin.
+![İşlev uygulamasını test edin](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>Şirket içi diğer sistemleri yönetme
+## <a name="managing-other-systems-on-premises"></a>Diğer sistemlerin şirket içinde yönetilmesi
 
-Yerel ortamdaki diğer sunuculara ve yönetim sistemlerine bağlanmak için bağlı şirket içi sunucuyu kullanabilirsiniz. Bu, PowerShell işlevlerinizi kullanarak Azure 'dan veri merkezi işlemlerinizi yönetmenizi sağlar. Aşağıdaki betik, belirtilen kimlik bilgileri altında çalışan bir PowerShell yapılandırma oturumu kaydeder. Bu kimlik bilgileri, uzak sunuculardaki bir yönetici için olmalıdır. Daha sonra bu yapılandırmayı yerel sunucu veya veri merkezindeki diğer uç noktalara erişmek için kullanabilirsiniz.
+Bağlı şirket içi sunucuyu yerel ortamdaki diğer sunuculara ve yönetim sistemlerine bağlanmak için kullanabilirsiniz. Bu, PowerShell işlevlerinizi kullanarak veri merkezi işlemlerinizi Azure'dan yönetmenize olanak tanır. Aşağıdaki komut dosyası, sağlanan kimlik bilgileri altında çalışan bir PowerShell yapılandırma oturumu kaydeder. Bu kimlik bilgileri uzak sunucularda bir yönetici için olmalıdır. Daha sonra yerel sunucu veya veri merkezi diğer uç noktalara erişmek için bu yapılandırmayı kullanabilirsiniz.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -244,13 +244,13 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-Bu betikteki aşağıdaki değişkenleri ortamınızdaki ilgili değerlerle değiştirin:
+Bu komut dosyasındaki aşağıdaki değişkenleri ortamınızdan gelen geçerli değerlerle değiştirin:
 * $HybridEndpoint
 * $RemoteServer
 
-Yukarıdaki iki senaryoda, Azure Işlevleri ve Karma Bağlantılar PowerShell kullanarak şirket içi ortamlarınızı bağlanabilir ve yönetebilirsiniz. İşlevlerde [karma bağlantılar](../app-service/app-service-hybrid-connections.md) ve [PowerShell](./functions-reference-powershell.md)hakkında daha fazla bilgi edinmenize önerilir.
+Önceki iki senaryoda, Azure İşlevleri ve Karma Bağlantılar'da PowerShell'i kullanarak şirket içi ortamlarınızı bağlayabilir ve yönetebilirsiniz. [İşlevlerde Hibrit Bağlantılar](../app-service/app-service-hybrid-connections.md) ve [PowerShell](./functions-reference-powershell.md)hakkında daha fazla bilgi edinmenizi öneririz.
 
-Azure [sanal ağlarını](./functions-create-vnet.md) Azure işlevleri aracılığıyla şirket içi ortamınıza bağlanmak için de kullanabilirsiniz.
+Azure İşlevler aracılığıyla şirket ortamınıza bağlanmak için Azure [sanal ağlarını](./functions-create-vnet.md) da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

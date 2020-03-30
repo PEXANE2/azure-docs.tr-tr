@@ -1,6 +1,6 @@
 ---
-title: PıM-Azure AD 'de Azure Kaynak rolü atamalarını yenileme | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içinde Azure Kaynak rol atamalarını genişletmeyi veya yenilemeyi öğrenin.
+title: PIM'de Azure kaynak rol atamalarını yenileme - Azure AD | Microsoft Dokümanlar
+description: Azure AD Ayrıcalıklı Kimlik Yönetimi'nde (PIM) Azure kaynak rol atamalarını nasıl genişletecek veya yenileyiniz öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,120 +17,120 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 577c028582bc3b23d13e71522bb83db558065ee2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022907"
 ---
-# <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rol atamalarını genişletme veya yenileme
+# <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rol atamalarını genişletme veya yenileme
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM), Azure kaynakları için erişim ve atama yaşam döngüsünü yönetmek üzere denetimler sağlar. Yöneticiler, başlangıç ve bitiş tarih-saat özelliklerini kullanarak roller atayabilir. Atama sonu yaklaşırsa, Privileged Identity Management etkilenen kullanıcılara veya gruplara e-posta bildirimleri gönderir. Ayrıca, uygun erişimin korunduğundan emin olmak için kaynağın yöneticilerine e-posta bildirimleri gönderir. Atamalar yenilenebilir ve erişim genişletilmese bile 30 güne kadar, zaman aşımına uğradı.
+Azure Etkin Dizin (Azure AD) Ayrıcalıklı Kimlik Yönetimi (PIM), Azure kaynaklarının erişim ve atama yaşam döngüsünü yönetmek için denetimler sağlar. Yöneticiler, başlangıç ve bitiş tarihi özelliklerini kullanarak roller atayabilir. Atama sonu yaklaştığında, Ayrıcalıklı Kimlik Yönetimi etkilenen kullanıcılara veya gruplara e-posta bildirimleri gönderir. Ayrıca, uygun erişimin korunmasını sağlamak için kaynağın yöneticilerine e-posta bildirimleri gönderir. Atamalar yenilenebilir ve erişim uzatılmasa bile süresi dolmuş durumda 30 güne kadar görünür kalabilir.
 
-## <a name="who-can-extend-and-renew"></a>Kimler genişletebilir ve yenileyebilirim?
+## <a name="who-can-extend-and-renew"></a>Kimler genişletebilir ve yenileyebilir?
 
-Rol atamalarını yalnızca kaynağın yöneticileri genişletebilir veya yenileyebilirler. Etkilenen Kullanıcı veya Grup, sona ermek üzere olan rolleri genişletmeyi isteyebilir ve zaten kullanım süreleri dolan rolleri yenileme isteğinde bulunabilir.
+Yalnızca kaynağın yöneticileri rol atamalarını genişletebilir veya yenileyebilir. Etkilenen kullanıcı veya grup, süresi dolmak üzere olan rolleri genişletmeyi ve süresi dolmuş rolleri yenilemeyi isteyebilir.
 
 ## <a name="when-are-notifications-sent"></a>Bildirimler ne zaman gönderilir?
 
-Privileged Identity Management, e-posta bildirimlerini kullanıcılara ve süresi dolmadan önce 14 gün içinde ve bir gün içinde süresi dolan rol gruplarını gönderir. Atama resmi olarak sona erdiğinde ek bir e-posta gönderir.
+Ayrıcalıklı Kimlik Yönetimi, yöneticilere ve etkilenen kullanıcıya veya görev süresi nin bitiminden bir gün önce 14 gün içinde sona eren rol gruplarına e-posta bildirimleri gönderir. Atama nın süresi resmi olarak sona erdiğinde ek bir e-posta gönderir.
 
-Yöneticiler, bir kullanıcı veya Grup, uzatmak veya yenilemek için süresi dolan veya süresi dolan bir rol isteği atandığında bildirim alır. Belirli bir yönetici isteği çözümlediğinde, diğer tüm yöneticilere çözümleme kararı (onaylanan veya reddedildi) bildirilir. Daha sonra, istenen kullanıcı veya gruba karar bildirilir.
+Yöneticiler, bir kullanıcı veya grup, süresi dolan veya süresi dolan bir rol isteklerini genişletmeveya yenileme isteği verdiğinde bildirimler alır. Belirli bir yönetici isteği çözdüğünde, diğer tüm yöneticiler karar kararı ndan haberdar edilir (onaylanır veya reddedilir). Daha sonra talep eden kullanıcı ya da grup karar bildirilir.
 
-## <a name="extend-role-assignments"></a>Rol atamalarını uzat
+## <a name="extend-role-assignments"></a>Rol atamalarını genişletme
 
-Aşağıdaki adımlarda bir rol atamasının uzantısı veya yenilenmesini isteme, çözme veya yönetme işlemi ana hatlarıyla verilmiştir.
+Aşağıdaki adımlar, bir rol atamasının genişletilmesini veya yenilenmesini istemek, çözmek veya yönetmek için süreci ana hatlar.
 
-### <a name="self-extend-expiring-assignments"></a>Süresi dolan atamaları kendi kendine uzat
+### <a name="self-extend-expiring-assignments"></a>Süresi dolan atamaları kendi kendine uza
 
-Bir role atanan kullanıcılar veya gruplar, süresi dolan rol atamalarını bir kaynağın **rollerim** sayfasındaki **uygun** veya **etkin** sekmesinden veya Privileged Identity Management portalının en üst düzey **Roller** sayfasından genişletebilir. Kullanıcılar veya gruplar, sonraki 14 gün içinde süresi dolan uygun ve etkin (atanan) rolleri genişletmeyi isteyebilir.
+Bir role atanan kullanıcılar veya gruplar, süresi dolan rol atamalarını doğrudan kaynağın **Rollerim** sayfasındaki **Uygun** veya **Etkin** sekmesinden ve üst düzey Ayrıcalıklı Kimlik Yönetimi portalının **rollerim** sayfasından genişletebilir. Kullanıcılar veya gruplar, önümüzdeki 14 gün içinde süresi dolan uygun ve etkin (atanmış) rolleri genişletmeyi isteyebilir.
 
-![Azure kaynakları-rollerim sayfası bir eylem sütunuyla uygun rolleri listeleme](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
+![Azure kaynakları - Bir Eylem sütunuyla uygun rolleri listeleyen rollerim sayfası](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 
-Atama bitiş tarihi-saati 14 gün içinde olduğunda, **genişletilecek** düğme Kullanıcı arabirimindeki etkin bir bağlantı haline gelir. Aşağıdaki örnekte, geçerli tarihin 27 Mart olduğunu varsayalım.
+Atama bitiş tarihi 14 gün içinde olduğunda, **Genişletme** düğmesi kullanıcı arabiriminde etkin bir bağlantı haline gelir. Aşağıdaki örnekte, geçerli tarihin 27 Mart olduğunu varsayalım.
 
-![Etkinleştirilecek veya genişletilir bağlantıları olan eylem sütunu](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
+![Etkinleştirme veya Genişletme bağlantıları içeren eylem sütunu](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
 
-Bu rol atamasının bir uzantısını istemek için **Genişlet** ' i seçerek istek formunu açın.
+Bu rol atamasının uzatılmasını istemek için, istek formunu açmak için **Genişlet'i** seçin.
 
-![Rol atama bölmesini bir neden kutusuyla Genişlet](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
+![Neden kutusuyla rol atama bölmesi genişletme](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
 
-Orijinal atama hakkında bilgi görüntülemek için **atama ayrıntıları**' nı genişletin. Uzantı isteği için bir neden girin ve **Genişlet**' i seçin.
+Özgün atama yla ilgili bilgileri görüntülemek için **Atama ayrıntılarını**genişletin. Uzantı isteği için bir neden girin ve sonra **Genişlet'i**seçin.
 
 >[!NOTE]
->Uzantının neden gerekli olduğuna ilişkin ayrıntıları ve uzantının ne kadar süreyle verileceğini (Bu bilgilere sahipseniz) dahil etmenizi öneririz.
+>Uzantının neden gerekli olduğu ve uzantının ne kadar süreyle verilmesi gerektiği (bu bilgilere sahipseniz) ayrıntılarını da dahil etmenizi öneririz.
 
-![Rol atama bölmesini, atama ayrıntıları genişletilmiş olarak Genişlet](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
+![Atama ayrıntıları genişletilmiş olan rol atama bölmesi genişletme](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
 
-Kaynak yöneticileri, bir süre içinde, uzantı isteğini gözden geçirmesini isteyen bir e-posta bildirimi alır. Genişletme isteği zaten gönderilmezse portalda bir Azure bildirimi görüntülenir.
+Birkaç dakika içinde, kaynak yöneticileri uzantı isteğini gözden geçirmelerini isteyen bir e-posta bildirimi alır. Genişletme isteği zaten gönderildiyse, portalda bir Azure bildirimi görüntülenir.
 
-![Zaten var olan bir bekleyen rol atama uzantısının olduğunu açıklayan bildirim](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
+![Zaten bekleyen bir rol atama uzantısı olduğunu açıklayan bildirim](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
 
-İsteğiniz durumunu görüntülemek veya iptal etmek için **bekleyen istekler** sayfasına gidin.
+İsteğinizin durumunu görüntülemek veya iptal etmek için **Bekleyen istekler** sayfasına gidin.
 
-![Azure kaynakları-bekleyen istenen ve Iptal için bir bağlantının listelendiği bekleyen istekler sayfası](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
+![Azure kaynakları - Bekleyen istekler sayfası, bekleyen istekler sayfasını listeler ve İptal bağlantısı](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
 
 ### <a name="admin-approved-extension"></a>Yönetici onaylı uzantısı
 
-Bir kullanıcı veya grup bir rol atamasını genişletme isteği gönderdiğinde, kaynak yöneticileri özgün atamanın ayrıntılarını ve isteğin nedenini içeren bir e-posta bildirimi alır. Bildirim, yöneticinin onaylama veya reddetme isteğine doğrudan bir bağlantı içerir.
+Bir kullanıcı veya grup rol atamasını uzatmak için bir istek gönderdiğinde, kaynak yöneticileri özgün atamanın ayrıntılarını ve isteğin nedenini içeren bir e-posta bildirimi alır. Bildirim, yöneticinin onaylaması veya reddetmesi isteğine doğrudan bir bağlantı içerir.
 
-Yöneticiler, e-postadaki bağlantıyı izleyen bir ek olarak, Privileged Identity Management yönetim portalına giderek ve sol bölmedeki **Istekleri Onayla** ' yı seçerek istekleri onaylayabilir veya reddedebilir.
+Yöneticiler, e-postadaki bağlantıyı izlemenin yanı sıra, Ayrıcalıklı Kimlik Yönetimi yönetim portalına giderek ve sol bölmedeki **Onay isteklerini** seçerek istekleri onaylayabilir veya reddedebilir.
 
-![Azure kaynakları-istekleri onaylama sayfası istekleri ve onaylama veya reddetme bağlantıları](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Azure kaynakları - Onaylamak veya reddetmek için istekleri sayfa listeleme isteklerini ve bağlantılarını onaylayın](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Yönetici **Onayla** veya **Reddet**seçeneğini belirlediğinde, istek ayrıntıları, denetim günlükleri için bir iş denetimi sağlamak üzere bir alanla birlikte gösterilir.
+Yönetici Onayla veya **Reddet'i**seçtiğinde, denetim günlükleri için bir iş gerekçesi sağlamak için bir alanla birlikte isteğin ayrıntıları gösterilir. **Approve**
 
-![İstek sahibi nedeni, atama türü, başlangıç zamanı, bitiş zamanı ve nedenle rol atama isteğini onaylayın](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![İstek nedeni, atama türü, başlangıç zamanı, bitiş saati ve neden ile rol atama isteğini onaylama](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
-Rol atamasını genişletme isteği onaylarken, kaynak yöneticileri yeni bir başlangıç tarihi, bitiş tarihi ve atama türü seçebilir. Yönetici belirli bir görevi (örneğin, bir gün) tamamlamaya sınırlı erişim sağlamak isterse, atama türünü değiştirmek gerekli olabilir. Bu örnekte, yönetici atamayı **uygun** durumundan **etkin**olarak değiştirebilir. Bu, etkinleştirmelerine gerek kalmadan istek sahibine erişim sağlayabilecekleri anlamına gelir.
+Rol atamasını genişletmek için bir isteği onaylarken, kaynak yöneticileri yeni bir başlangıç tarihi, bitiş tarihi ve atama türü seçebilir. Yönetici belirli bir görevi tamamlamak için sınırlı erişim sağlamak istiyorsa atama türünü değiştirmek gerekebilir (örneğin, bir gün). Bu örnekte, yönetici atamayı **Uygun'dan** **Etkin'e**değiştirebilir. Bu, etkinleştirmelerine gerek kalmadan istekte bulunabilecekleri anlamına gelir.
 
-### <a name="admin-initiated-extension"></a>Yönetici tarafından başlatılan uzantı
+### <a name="admin-initiated-extension"></a>Yönetici başlatılan uzantısı
 
-Role atanan bir Kullanıcı rol ataması için bir uzantı istemezse, yönetici kullanıcı adına bir atamayı genişletebilir. Rol atamasının yönetim uzantılarında onay gerekmez, ancak bildirimler rol genişletildikten sonra diğer tüm yöneticilere gönderilir.
+Bir role atanan bir kullanıcı rol ataması için uzantı talep etmezse, yönetici atamayı kullanıcı adına genişletebilir. Rol atamasının yönetim uzantıları onay gerektirmez, ancak bildirimler, görev süresi uzatıldıktan sonra diğer tüm yöneticilere gönderilir.
 
-Rol atamasını genişletmek için Privileged Identity Management kaynak rolüne veya atama görünümüne gidin. Uzantı gerektiren atamayı bulun. Ardından Eylem sütununda **Genişlet** ' i seçin.
+Rol atamasını genişletmek için, Ayrıcalıklı Kimlik Yönetimi'nde kaynak rolüne veya atama görünümüne göz atın. Uzantı gerektiren atamayı bulun. Ardından eylem sütununda **Genişlet'i** seçin.
 
-![Azure kaynakları-uzatma bağlantılarıyla uygun rolleri listelemeyi içeren atamalar sayfası](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
+![Azure kaynakları - uzanacak bağlantılarla uygun rolleri listeleyen atamalar sayfası](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
 
-## <a name="renew-role-assignments"></a>Rol atamalarını Yenile
+## <a name="renew-role-assignments"></a>Rol atamalarını yenileme
 
-Kavramsal olarak bir uzantı isteme işlemine benzer olsa da, zaman aşımına uğradı bir rol atamasını yenileme işlemi farklıdır. Aşağıdaki adımları kullanarak, atamalar ve yöneticiler gerektiğinde, zaman aşımına uğradı rollere erişimi yenileyebilirler.
+Kavramsal olarak bir uzantı isteme işlemine benzer olsa da, süresi dolmuş bir rol atamasını yenileme işlemi farklıdır. Aşağıdaki adımları kullanarak, atamalar ve yöneticiler gerektiğinde süresi dolmuş rollere erişimi yenileyebilir.
 
-### <a name="self-renew"></a>Kendi kendine yenileme
+### <a name="self-renew"></a>Kendini yenileme
 
-Artık kaynaklara erişemeyen kullanıcılar, en fazla 30 günlük atama geçmişine erişebilir. Bunu yapmak için, sol bölmedeki **rollerim** 'e gözatıp, sonra da Azure Kaynak rolleri bölümünde **zaman aşımına uğradı roller** sekmesini seçin.
+Kaynaklara artık erişemeyen kullanıcılar, süresi 30 güne kadar süresi dolmuş atama geçmişine erişebilir. Bunu yapmak için, sol bölmedeki **Rollerim'e** göz atarlar ve ardından Azure kaynak rolleri bölümünde **Süresi Dolmuş roller** sekmesini seçerler.
 
-![Rollerim sayfası-zaman aşımına uğradı roller sekmesi](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
+![Roller sayfam - Süresi dolmuş roller sekmesi](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
 
-Gösterilen roller listesi, varsayılan olarak **uygun rollerdir**. Uygun ve etkin atanan roller arasında geçiş yapmak için açılan menüyü kullanın.
+**Uygun rolleriçin**varsayılan olarak gösterilen rollerin listesi. Uygun ve Etkin atanmış roller arasında geçiş yapmak için açılır menüyü kullanın.
 
-Listedeki rol atamalarından herhangi biri için yenileme **isteğinde bulunan yenileme eylemini seçin** . Ardından istek için bir neden belirtin. Kaynak yöneticisinin onaylama veya reddetme kararı vermesine yardımcı olabilecek ek bağlam veya bir iş gerekçesinin yanı sıra bir süre sağlamak yararlı olur.
+Listedeki rol atamalarından herhangi biri için yenileme isteğinde bulunmak için, **Eylemi Yenile'yi** seçin. Sonra istek için bir neden sağlayın. Kaynak yöneticisinin onaylamaya veya reddetmeye karar vermesine yardımcı olabilecek herhangi bir ek bağlam veya iş gerekçesine ek olarak bir süre sağlamak yararlıdır.
 
-![Neden kutusunu gösteren rol atama bölmesini Yenile](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
+![Neden kutusunu gösteren rol atama bölmelerini yenileme](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
 
-İstek gönderildikten sonra, kaynak yöneticilerine bir rol atamasını yenilemeye yönelik bekleyen bir istek bildirilir.
+İstek gönderildikten sonra, kaynak yöneticilerine rol atamasını yenilemek için bekleyen bir istek bildirilir.
 
 ### <a name="admin-approves"></a>Yönetici onaylar
 
-Kaynak yöneticileri, e-posta bildiriminde bulunan bağlantıdan veya Azure portal Privileged Identity Management erişerek ve sol bölmeden **Istekleri Onayla** ' yı seçerek yenileme isteğine erişebilir.
+Kaynak yöneticileri, yenileme isteğine e-posta bildirimindeki bağlantıdan veya Azure portalından Ayrıcalıklı Kimlik Yönetimi'ne erişerek ve sol bölmeden **Onay isteklerini** seçerek erişebilir.
 
-![Azure kaynakları-istekleri onaylama sayfası istekleri ve onaylama veya reddetme bağlantıları](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Azure kaynakları - Onaylamak veya reddetmek için istekleri sayfa listeleme isteklerini ve bağlantılarını onaylayın](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Yönetici **Onayla** veya **Reddet**seçeneğini belirlediğinde, denetim günlükleri için bir iş denetimi sağlamak üzere isteğin ayrıntıları bir alanla birlikte gösterilir.
+Bir yönetici Onayla veya **Reddet'i** seçtiğinde, denetim günlükleri için bir iş gerekçesi sağlamak için isteğin ayrıntıları bir alanla birlikte gösterilir. **Deny**
 
-![İstek sahibi nedeni, atama türü, başlangıç zamanı, bitiş zamanı ve nedenle rol atama isteğini onaylayın](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![İstek nedeni, atama türü, başlangıç zamanı, bitiş saati ve neden ile rol atama isteğini onaylama](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
-Rol atamasını yenileme isteği onaylanırken, kaynak yöneticilerinin yeni bir başlangıç tarihi, bitiş tarihi ve atama türü girmesi gerekir.
+Rol atamasını yenileme isteğini onaylarken, kaynak yöneticilerinin yeni bir başlangıç tarihi, bitiş tarihi ve atama türü girmeleri gerekir.
 
 ### <a name="admin-renew"></a>Yönetici yenileme
 
-Kaynak yöneticileri, bir kaynağın sol gezinti menüsündeki **Üyeler** sekmesinden süre dolma rol atamalarını yenileyebilirler. Ayrıca, bir kaynak rolünün **süresi geçen** roller sekmesinden süresi geçen rol atamalarını yenileyebilirler.
+Kaynak yöneticileri, kaynağın sol gezinti menüsündeki **Üyeler** sekmesinden süresi dolmuş rol atamalarını yenileyebilir. Ayrıca, bir kaynak rolünün **Süresi Dolmuş** rolleri sekmesi içinden süresi dolmuş rol atamalarını da yenileyebilirler.
 
-Tüm süre dolma rolü atamalarının listesini görüntülemek için, **Üyeler** ekranında, **son kullanma tarihi olan roller**' i seçin.
+Süresi dolan tüm rol atamalarının listesini görüntülemek için **Üyeler** ekranında **Süresi Dolmuş rolleri**seçin.
 
-![Azure kaynakları-roller sayfası, yenileme bağlantıları olan vadesi geçen rolleri listeleme](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
+![Azure kaynakları - Üyeler sayfası, yenileme bağlantılarıyla süresi dolmuş rolleri listele](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Privileged Identity Management Azure Kaynak rolleri için istekleri onaylama veya reddetme](pim-resource-roles-approval-workflow.md)
-- [Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)
+- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rolleri için istekleri onaylama veya reddetme](pim-resource-roles-approval-workflow.md)
+- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rol ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)

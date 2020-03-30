@@ -1,7 +1,7 @@
 ---
 title: Azure Yapay Zeka Galerisi
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Yapay Zeka Galerisi analiz kaynaklarını ve daha fazlasını paylaşma ve keşfetme. Diğerlerinden öğrenin ve topluluğa kendi katkılarınızı yapın.
+description: Azure AI Galerisi'nde analitik kaynakları ve daha fazlasını paylaşın ve keşfedin. Başkalarından öğrenin ve topluma kendi katkılarınızı yapın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,196 +11,196 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204333"
 ---
-# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI Galerisi'nde kaynakları paylaşın ve keşfedin
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-**[Azure yapay zeka Galerisi](https://gallery.azure.ai)** , Azure AI ile oluşturulmuş çözümleri bulmak ve paylaşmak için topluluk odaklı bir sitedir.
-Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz çeşitli kaynakları vardır.
+**[Azure AI Galerisi,](https://gallery.azure.ai)** Azure AI ile oluşturulmuş çözümleri keşfetmek ve paylaşmak için topluluk odaklı bir sitedir.
+Galeri, kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz çeşitli kaynaklara sahiptir.
 
-## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
+## <a name="what-can-i-find-in-the-gallery"></a>Galeride ne bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlar:
+Azure AI Galerisi, Microsoft ve veri bilimi topluluğu üyeleri tarafından katkıda bulunulan bir dizi farklı kaynak içerir. Bunlar:
 
-* **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
-* **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.
-* **Koleksiyonlar** -bir koleksiyon, belirli bir çözümü veya kavramı ele alan denemeleri, API 'ler ve diğer Galeri kaynaklarını gruplamanıza olanak tanır.
-* **Özel modüller** -kendi denemeleri kullanabilmeniz için, özel modülleri Studio (klasik) çalışma alanınıza indirebilirsiniz.
-* **Jupi Not defterleri** -Jupimter Not defterleri, tek ve etkileşimli bir tuvalde kod, veri görselleştirmeleri ve belgeler içerir. Galeri not defterlerinde öğreticiler ve Gelişmiş makine öğrenimi teknikleri ve çözümleri ayrıntılı açıklamalar sağlar.
+* **Deneyler** - Galeri, Azure Machine Learning Studio'da (klasik) geliştirilmiş çok çeşitli denemeler içerir. Bunlar, belirli bir makine öğrenimi tekniğini gösteren hızlı kavram kanıtı deneylerinden karmaşık makine öğrenimi sorunları için tam gelişmiş çözümlere kadar uzanır.
+* **Öğreticiler** - Makine öğrenimi teknolojileri ve kavramları arasında size yol bulmak veya çeşitli makine öğrenimi sorunlarını çözmek için gelişmiş yöntemleri tanımlamak için bir dizi öğretici mevcuttur.
+* **Koleksiyonlar** - Koleksiyon, belirli bir çözüm veya kavrama yönelik denemeleri, API'leri ve diğer Galeri kaynaklarını bir araya toplamanızı sağlar.
+* **Özel Modüller** - Kendi deneylerinizde kullanmak üzere Studio (klasik) çalışma alanınıza özel modüller indirebilirsiniz.
+* **Jupyter Notebooks** - Jupyter Notebook'lar kod, veri görselleştirmeleri ve belgeleri tek bir etkileşimli tuvalde içerir. Galerideki defterler, gelişmiş makine öğrenimi teknikleri ve çözümleri hakkında öğreticiler ve ayrıntılı açıklamalar sağlar.
 
-## <a name="discover-and-contribute"></a>Bulma ve katkıda bulunma
+## <a name="discover-and-contribute"></a>Keşfedin ve katkıda bulunun
 
-Galeri 'de Microsoft ve veri bilimi topluluğu tarafından katkıda bulunulan farklı kaynak türlerine herkes tarafından gözatabilir ve arama yapabilirsiniz.
+Herkes Galeri'de Microsoft ve veri bilimi topluluğu tarafından katkıda bulunulan farklı kaynak türlerine göz atabilir ve arama yapabilir.
 Daha fazla bilgi edinmek ve kendi veri analizi sorunlarınızı çözmeye başlamak için bu kaynakları kullanın.
 
-Son yayınlanan ve popüler kaynakları galeride kolayca bulabilir veya ada, etiketlere, algoritmalara ve diğer özniteliklere göre arama yapabilirsiniz.
-Galeri üst bilgisinde **Tümünü araştır** ' a tıklayın ve ardından sayfanın solundaki ara işlevselliklerindeki ' ı seçin ve üst kısımdaki arama terimlerini girin.
-Tüm kutucukların içinden yazar adına tıklayarak belirli bir yazarın katkılarını görüntüleyin.
-Her kaynak sayfasındaki yorumlar bölümünde yorum yapabilir, geri bildirim sağlayabilir veya soru sorabilirsiniz.
-LinkedIn veya Twitter 'ın paylaşma yeteneklerini kullanarak veya bir bağlantıya e-posta göndererek arkadaşlarınızla veya iş arkadaşlarınızla ilgi çekici bir kaynak de paylaşabilirsiniz.
+Galeri'de yakın zamanda yayınlanan ve popüler kaynakları kolayca bulabilirsiniz veya ada, etiketlere, algoritmalara ve diğer özniteliklere göre arama yapabilirsiniz.
+Galeri üstbilgisinde **tümünü tarayın'ı** tıklatın ve ardından sayfanın solundaki arama ayrıntılarını seçin ve en üste arama terimleri girin.
+Kutucukların herhangi birinden yazar adını tıklayarak belirli bir yazarın katkılarını görüntüleyin.
+Her kaynak sayfasındaki yorum bölümünden yorum yapabilir, geri bildirimde bulunabilir veya soru sorabilirsiniz.
+LinkedIn veya Twitter'ın paylaşım özelliklerini kullanarak veya bir bağlantıyı e-postayla göndererek arkadaşlarınızla veya iş arkadaşlarınızla ilgi çekici bir kaynak paylaşabilirsiniz.
 
-Oturum açtığınızda Galeri topluluğunun bir üyesi olursunuz. Bu sayede, başkalarının bulduğunuz çözümlerden yararlanabilmesi için kaynakları indirebilir veya kendi Galeri öğelerinizi katkıda bulunun.
+Oturum açken Galeri topluluğunun bir üyesi olursunuz. Bu, başkalarının keşfettiğiniz çözümlerden yararlanabilmesi için kaynakları indirmenize veya kendi Galeri öğelerinize katkıda bulunmanıza olanak tanır.
 
-Kendi analiz çözümlerinizi geliştirmek için kullanmak üzere **denemeleri**, **özel modüller**ve **jupyıter not defterlerini** indirebilirsiniz.
-Galeriye **denemeleri**, **öğreticiler**ve **koleksiyonlar** katkıda bulunabilir.
+Kendi analiz çözümlerinizi geliştirmede kullanmak üzere **denemeleri,** **özel modülleri**ve **Jupyter dizüstü bilgisayarları** indirebilirsiniz.
+Galeri'ye **denemeler,** **öğreticiler**ve **koleksiyonlar** katabilirsiniz.
 
-## <a name="download-experiments-modules-notebooks"></a>Denemeleri, modüller, Not defterleri indirin
+## <a name="download-experiments-modules-notebooks"></a>Deneyleri, modülleri, dizüstü bilgisayarları indirin
 
-Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanınıza **denemeleri**, **özel modüller**ve **jupyıter not defterlerini** indirebilirsiniz.
+Kendi çözümlerinizi geliştirirken kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanına **deneyler,** **özel modüller**ve **Jupyter dizüstü** bilgisayarlar indirebilirsiniz.
 
-AI Galerisi içinden bir kaynağı indirmek için:
+AI Galerisi içinden bir kaynak indirmek için:
 
-1. Kaynağı AI galerisinde açın.
-1. **Studio 'Da aç**' a tıklayın.
+1. Kaynağı AI Galerisi'nde açın.
+1. **Studio'da Aç'ı**tıklatın.
 
-![AI galerisinden bir öğe açma](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
+![AI Galerisi'nden bir öğe açma](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-Studio içinden bir kaynak indirmek için (klasik):
+Studio (klasik) içinden bir kaynak indirmek için:
 
-1. Studio 'da (klasik) **Yeni**' yi seçin.
-1. **Modül**, **deneme**veya **Not defteri**seçin.
-1. Galeri kaynağı bulmak için inceleyin veya arayın.
-1. Farenizi kaynağa getirin ve ardından **Studio 'Da aç**' ı seçin.
-    Machine Learning Studio (klasik) içinden açık Galeri deney ![](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+1. Studio'da (klasik), **Yenİ'yi**seçin.
+1. **Modül,** **Deneme**veya **Not Defteri'ni**seçin.
+1. Galeri kaynağını bulmak için göz atın veya arama yapın.
+1. Farenizi kaynağa doğru yönlendirin ve ardından **Studio'da Aç'ı**seçin.
+    ![Machine Learning Studio (klasik) içinden Açık Galeri deney](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Kaynak çalışma alanınızda olduktan sonra, bunu, Studio 'da oluşturduğunuz her şeyi (klasik) yaptığınız gibi özelleştirebilir ve kullanabilirsiniz.
+Kaynak çalışma alanınızda olduğunda, Studio'da (klasik) oluşturduğunuz her şey gibi özelleştirebilir ve kullanabilirsiniz.
 
-İçeri aktarılan özel modülü kullanmak için:
+İthal özel bir modül kullanmak için:
 
-1. Bir deneme oluşturun veya var olan bir denemeyi açın.
-1. Çalışma alanınızdaki özel modüllerin listesini genişletmek için, modül paletinde **özel**' i seçin. Deneme tuvalinin sol için modül paletinin olur.
-1. İçeri aktardığınız modülü seçin ve denemenize sürükleyin.
+1. Bir deneme oluşturun veya varolan bir denemeyi açın.
+1. Çalışma alanınızdaki özel modüllerin listesini genişletmek için, modül paletinde **Özel'i**seçin. Modül paleti deney tuvalinin solundadır.
+1. Aldığınız modülü seçin ve denemenize sürükleyin.
 
-## <a name="contribute-experiments"></a>Katkıda bulun denemeleri
+## <a name="contribute-experiments"></a>Denemelere katkıda bulunun
 
-Analiz tekniklerini göstermek veya diğerlerine çözümlerinde bir hızlı başlangıç sağlamak için, Studio 'da (klasik) geliştirdiğiniz **denemeleri** katkıda bulunun.
-Diğer bir deyişle, galerinizin katkısında yer aldığı için, katkınızın görünüm ve indirmelerinin sayısını takip edebilirsiniz.
-Kullanıcılar ayrıca, yorum ekleyebilir ve veri bilimi topluluğunun diğer üyeleriyle katkılarınızı paylaşabilir.
-Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tartışma aracı ile oturum açabilirsiniz.
+Analitik tekniklerini göstermek veya diğerlerine çözümlerine hızlı bir başlangıç yapmak için Studio'da (klasik) geliştirdiğiniz **deneylere** katkıda bulunabilirsiniz.
+Galeri'deki katkınız başkaları da size rastladıkça, katkınızın görüş ve indirme sayısını takip edebilirsiniz.
+Kullanıcılar ayrıca yorum ekleyebilir ve katkıda bulunabileceğiniz verileri bilim topluluğunun diğer üyeleriyle paylaşabilir.
+Ayrıca, katkılarınızla ilgili yorumlar için bildirim almak için Disqus gibi bir tartışma aracıyla oturum açabilirsiniz.
 
-1. Denemeniz için Studio 'da (klasik) açın.
+1. Studio'da (klasik) denemenizi açın.
 
-1. Deneme tuvalinin altındaki Eylemler listesinde **Galeriye Yayımla**' yı seçin.
+1. Deneme tuvalinin altındaki eylemler listesinde **Galeri'ye Yayımla'yı**seçin.
 
-1. Galeride, açıklayıcı bir **ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözüm yaptığınız gerçek sorunu vurgulayın. Açıklayıcı bir deneme başlığına örnek olarak "Ikili sınıflandırma: Twitter Yaklaşım Analizi."
+1. Galeri'de açıklayıcı bir **Ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözdüğünuz gerçek dünya problemini vurgulayın. Açıklayıcı bir deney başlığıörneği "İkili Sınıflandırma: Twitter Duygu Analizi"dir.
 
-1. **Özet** kutusunda, denemenizin bir özetini girin. Denemeyi çözen sorun ve nasıl yaklaşıldığında kısaca açıklayın.
+1. **SUMMARY** kutusuna, denemenizin bir özetini girin. Deneyin çözdüğüne ve ona nasıl yaklaştığınızı kısaca açıklayın.
 
-1. **AYRıNTıLı açıklama** kutusunda, denemenizin her bölümünde yaptığınız adımları açıklayacağız. Dahil etmek için bazı yararlı konular şunlardır:
+1. **DETAYLI TANIMLAMA** kutusunda, denemenizin her bölümünde attığınız adımları açıklayın. Eklenecek bazı yararlı konular şunlardır:
    * Deneme grafiği ekran görüntüsü
-   * Veri kaynakları ve açıklaması
+   * Veri kaynakları ve açıklama
    * Veri işleme
    * Özellik mühendisliği
    * Model açıklaması
-   * Sonuçları ve model performansını değerlendirme
+   * Model performansının sonuçları ve değerlendirilmesi
 
-   Açıklamanızı biçimlendirmek için markdown'ı kullanabilirsiniz. Deneme açıklaması sayfasındaki girişlerinizin deneme yayımlandığında nasıl görüneceğini görmek için **Önizleme**' yi seçin.
-
-   > [!TIP]
-   > Markdown düzenleme ve Önizleme küçük için sağlanan metin kutuları. Deneme belgelerinizi bir markı düzenleyicisine (örneğin, [Visual Studio Code](https://aka.ms/vscode)) yazmanızı ve sonra tamamlanan belgeleri kopyalayıp galerideki metin kutusuna yapıştırmayı öneririz.
-
-1. **Görüntü seçimi** sayfasında, denemenizin küçük bir görüntüsünü seçin. Deneme ayrıntıları sayfasının ve deneme kutucuğunda en küçük resim görüntüsü görünür. Kullanıcıların galeri göz diğer kullanıcıların resmine görürsünüz. Bilgisayarınızdan bir resim yükleyin ya da Galeriden stok bir görüntü seçin.
-
-1. **Ayarlar** sayfasında, **görünürlük**' ın altında, Içeriğinizi herkese açık (**genel**) veya yalnızca sayfaya bağlantısı olan kişiler için erişilebilir hale mi (**listelenmemiş**) seçin.
+   Açıklamanızı biçimlendirmek için işaretlemeyi kullanabilirsiniz. Deneme açıklaması sayfasındaki girişlerinizin deneme yayımlandığında nasıl görüneceğini görmek için **Önizleme'yi**seçin.
 
    > [!TIP]
-   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > İşaretle düzenleme ve önizleme için sağlanan metin kutuları küçüktür. Deneme belgelerinizi bir işaretleme düzenleyicisine [(Visual Studio Code](https://aka.ms/vscode)gibi) yazmanızı ve ardından tamamlanan belgeleri Galeri'deki metin kutusuna kopyalayıp yapıştırmamanızı öneririz.
 
-1. Denemeyi galeriye yayımlamak için **Tamam** onay işaretini seçin.
+1. Resim **Seçimi** sayfasında, denemeniz için küçük resim resmi seçin. Küçük resim resmi, deneme ayrıntıları sayfasının üst kısmında ve deneme döşemesinde görünür. Diğer kullanıcılar Galeri'ye göz attıklarında küçük resim resmini görürler. Bilgisayarınızdan bir resim yükleyebilir veya Galeri'den bir stok görüntüsü seçebilirsiniz.
 
-### <a name="update-your-experiment"></a>Denemenizi güncelleştir
+1. **Ayarlar** sayfasında, **Görünürlük**altında, içeriğinizi herkese açık olarak yayımlayıp yayınlamamayı **(Herkese Açık)** veya yalnızca sayfaya bağlantısı olan kişiler tarafından erişilemeyeceğini zivvetle **(Listedışı)** seçin.
 
-Gerekirse, galeride yayımlanmış bir denemeyi akışında (modüller, parametreleri vb.) için değişiklik yapabilirsiniz. Machine Learning Studio (klasik) içinde, denemenize yapmak istediğiniz tüm değişiklikleri yapın ve yeniden yayımlayın. Yayımlanan denemenizi yaptığınız değişikliklerle güncelleştirilir.
+   > [!TIP]
+   > Belgenizin herkese açık olarak yayınlamadan önce doğru göründüğünden emin olmak istiyorsanız, denemeyi önce **Listelenmemiş**olarak yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **Herkese Açık** olarak değiştirebilirsiniz. Bir denemeyi **Genel Olarak** ayarladıktan sonra daha sonra Listelenmemiş olarak değiştiremeyeceğiniz dikkat **edin.**
 
-Denemenizde doğrudan galeri için aşağıdaki bilgileri değiştirebilirsiniz:
+1. Denemeyi Galeri'de yayınlamak için **Tamam** onay işaretini seçin.
 
-* Deney adı
-* Özet ya da açıklaması
+### <a name="update-your-experiment"></a>Denemenizi güncelleştirin
+
+Gerekirse, Galeri'de yayınladığınız bir denemede iş akışında (modüller, parametreler vb.) değişiklikler yapabilirsiniz. Machine Learning Studio'da (klasik), denemede yapmak istediğiniz değişiklikleri yapın ve sonra yeniden yayımlayın. Yayınlanan denemeniz değişikliklerinizle güncellenecektir.
+
+Denemeniz için aşağıdaki bilgilerden herhangi birini doğrudan Galeri'de değiştirebilirsiniz:
+
+* Deneme adı
+* Özet veya açıklama
 * Etiketler
 * Görüntü
-* Görünürlük ayarı (**genel** veya **listelenmemiş**)
+* Görünürlük ayarı (**Genel** veya **Listedışı**)
 
-Galeriden denemeler de silebilirsiniz.
+Denemeyi Galeri'den de silebilirsiniz.
 
-Bu değişiklikleri yapmak veya deneme Ayrıntıları sayfasında veya galeride profil sayfanızdan denemeyi silin.
+Bu değişiklikleri yapabilir veya denemeyi silebilir, deneme ayrıntıları sayfasından veya Galeri'deki profil sayfanızdan.
 
-* Deneme ayrıntıları sayfasında, denemenizin ayrıntılarını değiştirmek için **Düzenle**' yi seçin. Ayrıntılar sayfası, düzenleme moduna girer. Değişiklik yapmak için deneme adı, Özet veya etiketlerin yanındaki **Düzenle** ' yi seçin. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Deneyinin görünürlük ayarlarını değiştirmek (**genel** veya **listelenmemiş**) ya da bir deneyden denemeyi silmek için **Ayarlar** simgesini seçin.
+* Deneme ayrıntıları sayfasında, denemenizin ayrıntılarını değiştirmek için **Edit'i**seçin. Ayrıntılar sayfası edit moduna girer. Değişiklik yapmak için deneme adının, özetinin veya etiketlerinin yanında **Edit'i** seçin. Değişiklik yapmayı **bitirdiğinizde, Bitti'yi**seçin. Denemenin görünürlük ayarlarını **(Herkese Açık** veya **Liste dışı)** değiştirmek veya denemeyi Galeri'den silmek için **Ayarlar** simgesini seçin.
 
-* Profil sayfanızda, deneme için aşağı oku seçin ve ardından **Düzenle**' yi seçin. Bu sizi düzenleme modunda denemeniz için ayrıntıları sayfasına götürür. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Galerideki denemeyi silmek için **Sil**' i seçin.
+* Profil sayfanızda, deneme için aşağı ok'u seçin ve ardından **Edit'i**seçin. Bu, sizi denemenizin ayrıntılar sayfasına, edit modunda götürür. Değişiklik yapmayı bitirdiğinizde, **Bitti'yi**seçin. Denemeyi Galeri'den silmek için **Sil'i**seçin.
 
-### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Belgeleme ve denemenizi yayımlama için ipuçları
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Denemenizi belgelemek ve yayımlamanız için ipuçları
 
-* Önceki veri bilimi deneyimi okuyucu var, ancak basit bir dil kullanmak üzere yararlı olabilir varsayabilirsiniz. Mümkün olduğunca ayrıntılı şeyler açıklanmaktadır.
-* Yeterli bilgi ve denemenizi gidin okuyucular yardımcı olmak için adım adım açıklamalar sağlar.
-* Görselleri yorumlamak ve deneme belgelerinize doğru şekilde kullanmak, okuyucular için yararlı olabilir. Görselleri deneme grafikleri ve veri ekran görüntüleri içerir.
-* Denemeniz için bir veri kümesi eklerseniz (yani, veri kümesini Içeri aktarma verileri modülünden içeri aktarmadığınız), veri kümesi denemenizin bir parçasıdır ve galeride yayımlanır. Yayımladığınız veri kümesinin, herkes tarafından paylaşım ve indirmeye izin veren lisanslama koşullarına sahip olduğundan emin olun. Galeri katkıları, Azure [kullanım koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamında ele alınmıştır.
+* Okuyucunun daha önce veri bilimi deneyimi olduğunu varsayabilirsiniz, ancak basit bir dil kullanmak yararlı olabilir. Mümkün olduğunda her şeyi ayrıntılı olarak açıklayın.
+* Okuyucuların denemenizde gezinmesine yardımcı olmak için yeterli bilgi ve adım adım açıklamalar sağlayın.
+* Görseller, okuyucuların deneme belgelerinizi doğru yorumlamaları ve kullanmaları için yararlı olabilir. Görseller deney grafiklerini ve verilerin ekran görüntülerini içerir.
+* Denemenize bir veri kümesi eklerseniz (diğer bir deyişle, veri kümesini Alma Veri modülü üzerinden içe aktarmıyorsunuz), veri kümesi denemenizin bir parçasıdır ve Galeri'de yayımlanır. Yayımladırdığınız veri kümesinin herkes tarafından paylaşılmasına ve indirilmesine izin veren lisans koşulları olduğundan emin olun. Galeri katkıları Azure [Kullanım Koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamındadır.
 
-## <a name="contribute-tutorials-and-collections"></a>Öğreticiler ve koleksiyonlar için katkıda bulunun
+## <a name="contribute-tutorials-and-collections"></a>Eğitimlere ve koleksiyonlara katkıda bulunun
 
-Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğretici yazarak veya belirli bir çözüm etrafında birden çok kaynak gruplandıran bir **koleksiyon** oluşturarak yardımcı olabilirsiniz.
+Galeri'de makine öğrenimi kavramlarını açıklayan bir **öğretici** yazarak veya belirli bir çözüm etrafında birden çok kaynağı bir araya getiren bir **koleksiyon** oluşturarak başkalarına yardımcı olabilirsiniz.
 
-1. Microsoft hesabı kullanarak galeride oturum açın.
+1. Microsoft hesabınızı kullanarak Galeri'de oturum açın.
 
-1. Sayfanın sağ üst köşesindeki görüntünüzü seçin ve ardından adınızı seçin.
+1. Sayfanın sağ üst köşesindeki resminizi seçin ve ardından adınızı seçin.
 
 1. **Yeni Öğe**’yi seçin.
 
-1. **Açıklama** sayfasında, **öğe türü**için **öğretici** veya **koleksiyon**' ı seçin. Bir ad, kısa bir Özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkılarınızı bulmasına yardımcı olabilecek Etiketler girin. Ardından **İleri**'ye tıklayın.
+1. **Açıklama** sayfasında, **ITEM TYPE**için **Öğretici** veya **Koleksiyon'u**seçin. Bir ad, kısa bir özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkınızı bulmasına yardımcı olabilecek etiketler girin. Ardından **İleri**’ye tıklayın.
 
-1. **Görüntü seçimi** sayfasında katkısıyla görüntülenen bir görüntü seçin. Kendi görüntü dosyanızı karşıya yükleyin veya stok görüntüsünü seçin. Kullanıcıların katkıınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir görüntü seçin. Ardından **İleri**'ye tıklayın.
+1. Resim **Seçimi** sayfasında, katkınızla birlikte görüntülenen bir resim seçin. Kendi resim dosyanızı yükleyebilir veya stok görüntüsü seçebilirsiniz. Kullanıcıların katkınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir resim seçin. Ardından **İleri**’ye tıklayın.
 
-1. **Ayarlar** sayfasında, **görünürlük**Için, katkınızın **herkese açık** olup olmadığını seçin (herkes tarafından görüntülenebilir) veya **listelenmemiş** (yalnızca doğrudan bağlantı olan kişiler tarafından görüntülenebilir).
+1. **Ayarlar** sayfasında, **Görünürlük**için katkınızın **Herkese Açık** (herkes görüntüleyebilir) veya Liste **dışı** olup olmadığını seçin (yalnızca doğrudan bağlantısı olan kişiler görüntüleyebilir).
 
    > [!TIP]
-   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > Belgenizin herkese açık olarak yayınlamadan önce doğru göründüğünden emin olmak istiyorsanız, denemeyi önce **Listelenmemiş**olarak yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **Herkese Açık** olarak değiştirebilirsiniz. Bir denemeyi **Genel Olarak** ayarladıktan sonra daha sonra Listelenmemiş olarak değiştiremeyeceğiniz dikkat **edin.**
 
-1. **Oluştur**’u seçin.
+1. **Oluştur'u**seçin.
 
-Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
+Katkınız artık Azure AI Galerisi'nde. Katkılarınız **Öğeler** sekmesinde hesap sayfanızda listelenir.
 
-### <a name="add-to-and-edit-your-collection"></a>Koleksiyonunuza ekleme ve düzenleme
+### <a name="add-to-and-edit-your-collection"></a>Koleksiyonunuzu ekleme ve bu la ilgili olarak edin
 
-Koleksiyonunuzda öğeleri iki şekilde ekleyebilirsiniz:
+Koleksiyonunuza öğeleri iki şekilde ekleyebilirsiniz:
 
-* Koleksiyonu açın, **Düzenle**' yi seçin ve ardından **öğe Ekle**' yi seçin. Galerinize katkıda bulunan öğeleri ekleyebilir veya galerideki öğeleri eklemek için arama yapabilirsiniz. Eklemek istediğiniz öğeleri seçtikten sonra **Ekle**' ye tıklayın.
+* Koleksiyonu açın, **Öğe Ekle'yi**seçin ve ardından **Öğe Ekle'yi**seçin. Galeriye katkıda bulunduğunuz öğeleri ekleyebilir veya Ekleyecek öğeler için Galeri'de arama yapabilirsiniz. Eklemek istediğiniz öğeleri seçtikten sonra **Ekle'yi**tıklatın.
 
-* Galeriye gözatarken eklemek istediğiniz bir öğe bulursanız, öğeyi açın ve **koleksiyona Ekle**' yi seçin. Öğeyi eklemek istediğiniz koleksiyonu seçin.
+* Galeri'de gezinirken eklemek istediğiniz bir öğe bulursanız, öğeyi açın ve **koleksiyona ekle'yi**seçin. Öğeyi eklemek istediğiniz koleksiyonu seçin.
 
-**Düzenle**'yi seçerek koleksiyonunuzdaki öğeleri düzenleyebilirsiniz.
+Koleksiyonunuzdaki öğeleri **Edit'i**seçerek düzenleme yapabilirsiniz.
 
-* Koleksiyonunuz için Özet, açıklama veya etiketleri değiştirebilirsiniz.
+* Koleksiyonunuzun özetini, açıklamasını veya etiketlerini değiştirebilirsiniz.
 * Bir öğenin yanındaki okları kullanarak koleksiyondaki öğelerin sırasını değiştirebilirsiniz.
-* Koleksiyonunuzdaki öğelere Not eklemek için bir öğenin sağ üst köşesini seçin ve **Not Ekle/Düzenle**' yi seçin.
-* Koleksiyonunuzdan bir öğeyi kaldırmak için bir öğenin sağ üst köşesini seçin ve ardından **Kaldır**' ı seçin.
+* Koleksiyonunuzdaki öğelere not eklemek için, öğenin sağ üst köşesini seçin ve ardından **Not Ekle/Düzelt'i**seçin.
+* Bir öğeyi koleksiyonunuzdan kaldırmak için, öğenin sağ üst köşesini seçin ve ardından **Kaldır'ı**seçin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**Görüntü gönderme veya düzenlemeyle ilgili gereksinimler nelerdir?**
+**Bir resmi göndermek veya düzenlemek için gerekenler nelerdir?**
 
-Katkısıyla gönderdiğiniz görüntüler bir kutucuk oluşturmak için kullanılır. Görüntüleri bir aspect ratio 3: 2'in ve 960 çözünürlüğü 500 KB değerinden küçük olmasını öneririz &#215; 640.
+Katkınızla gönderdiğiniz resimler bir kiremit oluşturmak için kullanılır. Görüntülerin 3:2 en boy oranı ve 960 &#215; 640 çözünürlüğe sahip 500 KB'den daha küçük olmasını öneririz.
 
-**Denemem sırasında kullandığım veri kümesine ne olur? Veri kümesi galeride da yayımlanmış mi?**
+**Bir denemede kullandığım veri kümesine ne olur? Veri kümesi Galeri'de de yayınlanır mı?**
 
-Veri kümeniz denemenizin bir parçası ise ve Içeri aktarma verileri modülünden içeri aktarılmamışsa, veri kümesi, denemenizin bir parçası olarak galeride yayımlanır. Denemenize göre yayımladığınız veri kümesinin uygun lisans koşullarına sahip olduğundan emin olun. Lisans koşullarını herkes paylaşmak ve verileri indirmek izin vermelidir. Galeri katkıları, Azure [kullanım koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamında ele alınmıştır.
+Veri kümeniz denemenizin bir parçasıysa ve İçe Aktar Veri modülü üzerinden aktarılamıyorsa, veri kümesi denemenizin bir parçası olarak Galeri'de yayımlanır. Denemenizle yayımladığınız veri kümesinin uygun lisans koşullarına sahip olduğundan emin olun. Lisans koşulları, herkesin verileri paylaşmasına ve indirmesine izin vermelidir. Galeri katkıları Azure [Kullanım Koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamındadır.
 
-**Azure HDInsight veya SQL Server veri çekmek için veri alma modülünü kullanan bir denemem var. Verileri almak için kimlik bilgilerimi kullanır. Bu tür bir deneme yayınlayabilirim miyim? Kimlik bilgilerimin paylaşılmaması için nasıl emin olabilirim?**
+**Azure HDInsight veya SQL Server'dan veri çekmek için Bir İçe Aktarma Verisi modülü kullanan bir denemem var. Verileri almak için kimlik bilgilerimi kullanıyor. Bu tür deneyleri yayınlayabilir miyim? Kimlik bilgilerimin paylaşılmayacağından nasıl emin olabilirim?**
 
-Şu anda galeride kimlik bilgilerini kullanan bir deneyde yayımlayamazsınız.
+Şu anda Galeri'de kimlik bilgilerini kullanan bir deneme yi yayımlayamazsınız.
 
-**Nasıl yaparım? birden çok etiket girin.**
+**Birden çok etiketi nasıl girebilirim?**
 
-Başka bir etiket girmek için bir etiket girdikten sonra SEKME tuşuna basın.
+Bir etiket girdikten sonra, başka bir etiket girmek için Sekme tuşuna basın.
 
-## <a name="we-want-to-hear-from-you"></a>Sizi dinlemek istiyoruz!
+## <a name="we-want-to-hear-from-you"></a>Görüşlerinizi almak isteriz!
 
-Galerinin kullanıcılarımıza ve kullanıcılarımıza göre olmasını istiyoruz. Galeri hakkında ne kadar sevdiğiniz veya nefret verdiğiniz şeyleri bize bildirmek için sağ taraftaki gülümseme 'nı kullanın.  
+Galeri'nin kullanıcılarımız ve kullanıcılarımız tarafından yönlendirilmesini istiyoruz. Galeri hakkında neyi sevdiğinizi ya da nefret ettiğinizi bize söylemek için sağdaki gülen güllegül'ün kullanın.  
 
 ![Geri Bildirim](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[GALERIYE > >](https://gallery.azure.ai)**
+**[BENI GALERIye götür >>](https://gallery.azure.ai)**

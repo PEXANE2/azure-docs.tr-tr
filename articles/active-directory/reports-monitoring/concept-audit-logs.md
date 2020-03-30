@@ -18,45 +18,45 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253240"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
-Azure Active Directory (Azure AD) raporlarında, ortamınızın nasıl çalıştığını öğrenmek için gereken bilgileri alabilirsiniz.
+Azure Etkin Dizin (Azure AD) raporlarıyla, ortamınızın nasıl olduğunu belirlemek için ihtiyacınız olan bilgileri alabilirsiniz.
 
 Raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
 - **Etkinlik** 
-    - **Oturum açma** işlemleri – [oturum açma işlemleri raporu](concept-sign-ins.md) , yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar.
-    - **Denetim günlükleri** - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Denetim günlüklerine örnek olarak, Azure AD 'de Kullanıcı, uygulama, Grup, rol ve ilke ekleme veya kaldırma gibi herhangi bir kaynak üzerinde yapılan değişiklikler bulunur.
+    - **Oturum açma -** [Oturum açma raporu,](concept-sign-ins.md) yönetilen uygulamaların kullanımı ve kullanıcı oturum açma etkinlikleri hakkında bilgi sağlar.
+    - **Denetim günlükleri** - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Denetim günlüklerine örnek olarak, Azure AD'deki kullanıcılar, uygulamalar, gruplar, roller ve ilkeler ekleme veya kaldırma gibi kaynaklarda yapılan değişiklikler verilebilir.
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum açmalar** - [Riskli oturum](concept-risky-sign-ins.md) açma, kullanıcı hesabının yasal sahibi olmayan biri tarafından gerçeklegelmiş olabilecek oturum açma girişiminin göstergesidir. 
+    - **Risk için işaretlenmiş kullanıcılar** - Riskli bir [kullanıcı,](concept-user-at-risk.md) gizliliği ihlal edilmiş olabilecek bir kullanıcı hesabı için bir göstergedir.
 
-Bu makale, denetim raporuna genel bir bakış sağlar.
+Bu makalede, denetim raporu genel bir bakış sağlar.
  
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
-* **Güvenlik Yöneticisi**, **güvenlik okuyucu**, **rapor okuyucu** , **Genel okuyucu** veya **genel yönetici** rolleri içindeki kullanıcılar
+* **Güvenlik Yöneticisi, Güvenlik** **Okuyucu,** **Rapor Okuyucu,** **Global Reader** veya **Global Administrator** rollerindeki kullanıcılar
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory** **izleme** bölümünde **Denetim günlükleri** ' ni seçin. Denetim günlüklerinin bir saate kadar gecikme sürebileceğini unutmayın. bu nedenle, görevi tamamladıktan sonra Denetim etkinlik verilerinin portalda gösterilmesi uzun sürebilir.
+Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory'nin** **İzleme** bölümünde **Denetim günlüklerini** seçin. Denetim günlüklerinin bir saate kadar bir gecikme sarası olabileceğini unutmayın, bu nedenle görevi tamamladıktan sonra denetim etkinliği verilerinin portalda gösterilmesi o kadar uzun sürebilir.
 
 
 
 Denetim günlüklerinin aşağıdakileri gösteren bir varsayılan liste görünümü vardır:
 
 - Olayın tarihi ve saati
-- oluşumu günlüğe tutan hizmet
+- oluşumu günlüğe kaydeden hizmet
 - etkinliğin kategorisi ve adı (*ne*) 
 - etkinliğin durumu (başarı veya başarısızlık)
 - Hedef
-- etkinliğin başlatıcısı/aktör (kim)
+- Bir etkinliğin başlatıcısı/aktörü (kim)
 
 ![Denetim günlükleri](./media/concept-audit-logs/listview.png "Denetim günlükleri")
 
@@ -68,7 +68,7 @@ Bu sayede ek alanları görüntüleyebilir ya da zaten görüntülenen alanları
 
 ![Denetim günlükleri](./media/concept-audit-logs/columnselect.png "Denetim günlükleri")
 
-Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
+Daha ayrıntılı bilgi almak için liste görünümünde bir öğe seçin.
 
 ![Denetim günlükleri](./media/concept-audit-logs/details.png "Denetim günlükleri")
 
@@ -87,10 +87,10 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 
 ![Denetim günlükleri](./media/concept-audit-logs/filter.png "Denetim günlükleri")
 
-**Hizmet** filtresi, aşağıdaki hizmetlerin açılan listesinden seçim yapmanıza olanak sağlar:
+**Hizmet** filtresi, aşağıdaki hizmetlerin açılır listesinden seçim yapmanızı sağlar:
 
 - Tümü
-- AAD yönetim UX
+- AAD Yönetim UX
 - Erişim Gözden Geçirmeleri
 - Hesap Sağlama
 - Uygulama Ara Sunucusu
@@ -98,55 +98,55 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - B2C
 - Koşullu Erişim
 - Çekirdek Dizin
-- Yetkilendirme Yönetimi
-- Karma kimlik doğrulaması
+- Yetki Yönetimi
+- Karma Kimlik Doğrulama
 - Kimlik Koruması
 - Davetli Kullanıcılar
 - MIM Hizmeti
 - MyApps
-- PıM
+- PIM
 - Self Servis Grup Yönetimi
 - Self Servis Parola Yönetimi
 - Kullanım Koşulları
 
-**Kategori** filtresi, aşağıdaki filtrelerden birini seçmenize olanak sağlar:
+**Kategori** filtresi aşağıdaki filtrelerden birini seçmenize olanak tanır:
 
 - Tümü
 - AdministrativeUnit
-- ApplicationManagement
-- Kimlik Doğrulaması
+- Uygulama Yönetimi
+- Kimlik doğrulaması
 - Yetkilendirme
 - İletişim
 - Cihaz
 - DeviceConfiguration
-- DirectoryManagement
-- EntitlementManagement
-- GroupManagement
+- DizinYönetimi
+- Yetki Yönetimi
+- Grup Yönetimi
 - KerberosDomain
-- KeyManagement
+- Anahtar Yönetimi
 - Etiketle
 - Diğer
-- PermissionGrantPolicy
+- İzinGrantPolitikası
 - İlke
-- ResourceManagement
+- Kaynak Yönetimi
 - RoleManagement
 - Kullanıcı Yönetimi
 
-**Etkinlik** filtresi, yaptığınız kategori ve etkinlik kaynak türü seçimine dayalıdır. Görmek istediğiniz belirli bir etkinliği ya da tüm etkinlikleri seçebilirsiniz. 
+**Etkinlik** filtresi, yaptığınız kategori ve etkinlik kaynağı türü seçimini temel almaktadır. Görmek istediğiniz belirli bir etkinliği ya da tüm etkinlikleri seçebilirsiniz. 
 
-Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Grafik API'sini kullanarak tüm Denetim Etkinliklerinin listesini alabilirsiniz:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
-**Durum** filtresi, bir denetim işleminin durumuna göre filtrelemenize izin verir. Durum aşağıdakilerden biri olabilir:
+**Durum** filtresi, denetim işleminin durumuna göre filtreleme yapmanızı sağlar. Durum aşağıdakilerden biri olabilir:
 
 - Tümü
 - Başarılı
 - Hata
 
-**Hedef** filtre, ad veya Kullanıcı asıl adı (UPN) ile başlayarak belirli bir hedef için arama yapmanıza olanak tanır. Hedef adı ve UPN, büyük/küçük harfe duyarlıdır. 
+**Hedef** filtresi, belirli bir hedefi ad veya kullanıcı anaadının (UPN) başlayarak aramayapmanızı sağlar. Hedef adı ve UPN büyük/küçük harf duyarlıdır. 
 
-**Başlatan** filtresi, bir aktör adının veya bir evrensel asıl ADıNıN (UPN) ile nasıl başlayacağını tanımlamanızı sağlar. Ad ve UPN, büyük/küçük harfe duyarlıdır.
+**Başlatılmış filtre,** bir aktörün adının veya evrensel bir anaadın (UPN) neyle başladığını tanımlamanızı sağlar. Adı ve UPN büyük/küçük harf duyarlıdır.
 
-**Tarih aralığı** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.  
+**Tarih aralığı** filtresi, döndürülen veriler için bir zaman dilimi tanımlamanızı sağlar.  
 Olası değerler şunlardır:
 
 - 7 gün
@@ -155,7 +155,7 @@ Olası değerler şunlardır:
 
 Özel bir zaman çerçevesi seçerken başlangıç ve bitiş zamanını yapılandırabilirsiniz.
 
-Filtre uygulanmış verileri, 250.000 kayda kadar, **İndir** düğmesini seçerek de indirmeyi seçebilirsiniz. Günlükleri CSV veya JSON biçiminde indirebilirsiniz. İndirebileceğiniz kayıt sayısı [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md)tarafından sınırlandırılır.
+Ayrıca, **İndir** düğmesini seçerek 250.000'e kadar kayıt olan filtrelenmiş verileri indirmeyi de seçebilirsiniz. Günlükleri CSV veya JSON formatında indirebilirsiniz. İndirebileceğiniz kayıt sayısı [Azure Etkin Dizin raporu bekletme ilkeleriyle](reference-reports-data-retention.md)sınırlandırılmıştır.
 
 ![Denetim günlükleri](./media/concept-audit-logs/download.png "Denetim günlükleri")
 
@@ -186,11 +186,11 @@ Kullanıcı ve grup tabanlı denetim raporları ile aşağıdakiler gibi sorular
 
 - Bir grup veya kullanıcıya hangi lisanslar atanmış?
 
-Yalnızca kullanıcılarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kullanıcılar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasındaki **Kullanıcı yönetimi** , önceden seçilmiş kategori olarak var.
+Yalnızca kullanıcılarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kullanıcılar** sekmesinin **İzleme** bölümünde **Denetim günlükleri** altında filtreuygulanmış bir görünüm bulabilirsiniz. Bu giriş noktası, **UserManagement'ı** önceden seçilmiş kategori olarak sunar.
 
 ![Denetim günlükleri](./media/concept-audit-logs/users.png "Denetim günlükleri")
 
-Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **gruplar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktası, önceden seçilmiş kategori olarak **Groupmanagement** 'a sahiptir.
+Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Gruplar** sekmesinin **Denetim** bölümünde **Denetim günlükleri** altında filtreuygulanmış bir görünüm bulabilirsiniz. Bu giriş **noktası, GroupManagement'ı** önceden seçilmiş kategori olarak alır.
 
 ![Denetim günlükleri](./media/concept-audit-logs/groups.png "Denetim günlükleri")
 
@@ -198,24 +198,24 @@ Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, *
 
 Uygulama tabanlı denetim raporları ile aşağıdakiler gibi soruların yanıtlarını alabilirsiniz:
 
-* Eklenen veya güncellenen uygulamalar nelerdir?
+* Hangi uygulamalar eklendi veya güncelleştirildi?
 * Hangi uygulamalar kaldırıldı?
-* Bir uygulama için bir hizmet sorumlusu değiştirildi mi?
+* Bir uygulama için hizmet sorumlusu değişti mi?
 * Uygulamaların adları değiştirildi mi?
 * Belirli bir uygulama için kim onay verdi?
 
-Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kurumsal uygulamalar** dikey penceresinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasında, **uygulama türü**olarak önceden seçilmiş **Kurumsal uygulamalar** vardır.
+Uygulamalarınız ile ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kurumsal uygulamalar** bıçağının **Etkinlik** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş **noktası, Uygulama** **Türü**olarak önceden seçilmiş Enterprise uygulamaları vardır.
 
 ![Denetim günlükleri](./media/concept-audit-logs/enterpriseapplications.png "Denetim günlükleri")
 
 ## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
 
-[Microsoft 365 Yönetim merkezinden](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 yönetici merkezinden Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlükleri çok fazla dizin kaynaklarını paylaşsa da, yalnızca Microsoft 365 yönetici merkezi Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Ayrıca, [Office 365 Yönetim API'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak Office 365 etkinlik günlüklerine programlı olarak erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD denetim etkinliği başvurusu](reference-audit-activities.md)
-- [Azure AD raporları bekletme başvurusu](reference-reports-data-retention.md)
-- [Azure AD günlüğü gecikme süreleri başvurusu](reference-reports-latencies.md)
+- [Azure AD, bekletme başvurusu rapor etti](reference-reports-data-retention.md)
+- [Azure AD günlük gecikmeleri başvurusu](reference-reports-latencies.md)

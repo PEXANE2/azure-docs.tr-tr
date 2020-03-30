@@ -1,6 +1,6 @@
 ---
-title: NFSv 4.1 varsayılan etki alanını Azure NetApp Files için yapılandırın | Microsoft Docs
-description: Azure NetApp Files ile NFSv 4.1 kullanmak için NFS istemcisinin nasıl yapılandırılacağını açıklar.
+title: Azure NetApp Dosyaları için NFSv4.1 varsayılan etki alanını yapılandırma | Microsoft Dokümanlar
+description: NFSv4.1'i Azure NetApp Dosyaları ile kullanmak için NFS istemcisinin nasıl yapılandırılabildiğini açıklar.
 documentationcenter: ''
 author: b-juche
 manager: ''
@@ -14,63 +14,63 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 77178a23206eadae941794c92b8dd99fe2ca1e05
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906292"
 ---
-# <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırın
+# <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma
 
-NFSv4, bir kimlik doğrulama etki alanı kavramını tanıtır. Azure NetApp Files Şu anda hizmetten NFS istemcisine yalnızca kök Kullanıcı eşlemesini desteklemektedir. NFSv 4.1 işlevini Azure NetApp Files birlikte kullanmak için NFS istemcisini güncelleştirmeniz gerekir.
+NFSv4 kimlik doğrulama etki alanı kavramını sunar. Azure NetApp Files şu anda hizmetten NFS istemcisine yalnızca root kullanıcı eşleme sini destekler. Azure NetApp Dosyaları ile NFSv4.1 işlevini kullanmak için NFS istemcisini güncellemeniz gerekir.
 
-## <a name="default-behavior-of-usergroup-mapping"></a>Kullanıcı/Grup eşlemesinin varsayılan davranışı
+## <a name="default-behavior-of-usergroup-mapping"></a>Kullanıcı/grup eşlemesinin varsayılan davranışı
 
-NFSv4 etki alanı `localdomain`olarak ayarlandığı için kök eşleme varsayılan olarak `nobody` kullanıcısına ayarlanır. Bir Azure NetApp Files NFSv 4.1 birimini kök olarak bağladığınızda, dosya izinlerini şöyle görürsünüz:  
+NFSv4 `nobody` etki alanı `localdomain`olarak ayarlandığı için kök eşleme kullanıcı için varsayılan. Bir Azure NetApp Files NFSv4.1 birimini kök olarak monte ettiğinizde, dosya izinlerini aşağıdaki gibi görürsünüz:  
 
-![NFSv 4.1 için Kullanıcı/Grup eşlemesinin varsayılan davranışı](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
+![NFSv4.1 için kullanıcı/grup eşlemenin varsayılan davranışı](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Yukarıdaki örnekte gösterildiği gibi, `file1` kullanıcısının `root`olması gerekir, ancak varsayılan olarak `nobody` eşlenir.  Bu makalede `file1` kullanıcının `root`nasıl ayarlanacağı gösterilmektedir.  
+Yukarıdaki örnekte de görüldüğü `file1` gibi, `root`kullanıcı için `nobody` olmalıdır , ancak varsayılan olarak eşler.  Bu makalede, kullanıcıyı `file1` nasıl `root`.'a ayarlayabileceğinizi gösterir  
 
 ## <a name="steps"></a>Adımlar 
 
-1. NFS istemcisinde `/etc/idmapd.conf` dosyasını düzenleyin.   
-    Satır `#Domain` açıklamasını kaldırın (diğer bir deyişle, satırdan `#` kaldırın) ve değer `localdomain` değeri `defaultv4iddomain.com`olarak değiştirin. 
+1. NFS `/etc/idmapd.conf` istemcisindeki dosyayı edin.   
+    Satırı `#Domain` açıklamayı kaldırın (diğer `#` bir şekilde satırı kaldırın) `localdomain` `defaultv4iddomain.com`ve değeri ' le değiştirin. 
 
     İlk yapılandırma: 
     
-    ![NFSv 4.1 için başlangıç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
+    ![NFSv4.1 için ilk yapılandırma](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
 
-    Yapılandırma güncelleştirildi:
+    Güncelleştirilmiş yapılandırma:
     
-    ![NFSv 4.1 için yapılandırma güncelleştirildi](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
+    ![NFSv4.1 için güncelleştirilmiş yapılandırma](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
 
-2. Bağlı olan tüm NFS birimlerinin bağlantısını çıkarın.
-3. `/etc/idmapd.conf` dosyasını güncelleştirin.
-4. `rpcbind` hizmetini konakta yeniden başlatın (`service rpcbind restart`) veya yalnızca konağı yeniden başlatın.
-5. NFS birimlerini gereken şekilde bağlayın.   
+2. Şu anda monte edilmiş herhangi bir NFS cildini sökme.
+3. Dosyayı `/etc/idmapd.conf` güncelleştirin.
+4. Hizmeti ana `rpcbind` bilgisayarda yeniden`service rpcbind restart`başlatın ( veya yalnızca ana bilgisayarı yeniden başlatın.
+5. NFS birimlerini gerektiği gibi monte edin.   
 
-    Bkz. [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). 
+    [Bkz. Windows veya Linux sanal makineleri için bir ses düzeyini mount veya sökme.](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 
 
-Aşağıdaki örnek, sonuçta elde edilen Kullanıcı/Grup değişikliğini göstermektedir: 
+Aşağıdaki örnekte, ortaya çıkan kullanıcı/grup değişikliği gösterilmektedir: 
 
-![NFSv 4.1 için sonuç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![NFSv4.1 için ortaya çıkan yapılandırma](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
-Örnekte gösterildiği gibi, Kullanıcı/Grup artık `nobody` `root`olarak değiştirilmiştir.
+Örnekte de görüldüğü gibi, kullanıcı/grup `nobody` `root`artık .'dan .'a değiştirildi.
 
-## <a name="behavior-of-other-non-root-users-and-groups"></a>Diğer (kök olmayan) kullanıcıların ve grupların davranışı
+## <a name="behavior-of-other-non-root-users-and-groups"></a>Diğer (kökolmayan) kullanıcı ve grupların davranışı
 
-Azure NetApp Files, NFSv 4.1 birimlerindeki dosyalarla veya klasörlerle ilişkili izinlere sahip olan yerel kullanıcıları (bir konakta yerel olarak oluşturulan kullanıcılar) destekler. Ancak, hizmet şu anda birden çok düğümdeki kullanıcıları/grupları eşleştirmeyi desteklemez. Bu nedenle, bir konakta oluşturulan kullanıcılar varsayılan olarak başka bir konakta oluşturulan kullanıcılara eşlenmiyor. 
+Azure NetApp Files, NFSv4.1 birimlerinde dosya veya klasörlerle ilişkili izinleri olan yerel kullanıcıları (ana bilgisayarda yerel olarak oluşturulan kullanıcılar) destekler. Ancak, hizmet şu anda birden çok düğüm arasında kullanıcıların/grupların eşleneme desteklemiyor. Bu nedenle, bir ana bilgisayarda oluşturulan kullanıcılar varsayılan olarak başka bir ana bilgisayarda oluşturulan kullanıcılarla eşleşmez. 
 
-Aşağıdaki örnekte, `Host1` üç adet test Kullanıcı hesabı vardır (`testuser01`, `testuser02`, `testuser03`): 
+Aşağıdaki örnekte, `Host1` varolan üç test`testuser01` `testuser02`kullanıcı `testuser03`hesabı vardır ( , , ): 
 
-![NFSv 4.1 için sonuç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![NFSv4.1 için ortaya çıkan yapılandırma](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
-`Host2`, test Kullanıcı hesaplarının oluşturulmadığını, ancak aynı birimin her iki konağa da bağlı olduğunu unutmayın:
+On `Host2`, test kullanıcı hesapları oluşturulmadı unutmayın, ancak aynı birim her iki ana bilgisayara monte edilir:
 
-![NFSv 4.1 için sonuç yapılandırması](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
+![NFSv4.1 için ortaya çıkan yapılandırma](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
 
 ## <a name="next-step"></a>Sonraki adım 
 
-[Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+[Windows veya Linux sanal makineleri için birimi bağlama veya ayırma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 

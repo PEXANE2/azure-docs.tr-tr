@@ -1,39 +1,39 @@
 ---
-title: Azure Veri Kataloğu sorunlarını giderme
-description: Bu makalede, Azure Veri Kataloğu kaynaklarıyla ilgili genel sorun giderme sorunları açıklanmaktadır.
+title: Azure Veri Kataloğu sorun giderme
+description: Bu makalede, Azure Veri Kataloğu kaynakları için sık karşılaşılan sorun giderme kaygıları açıklanmaktadır.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68879547"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Veri Kataloğu sorunlarını giderme
 
-Bu makalede, Azure Veri Kataloğu kaynaklarıyla ilgili genel sorun giderme sorunları açıklanmaktadır. 
+Bu makalede, Azure Veri Kataloğu kaynakları için sık karşılaşılan sorun giderme kaygıları açıklanmaktadır. 
 
-## <a name="functionality-limitations"></a>İşlev sınırlamaları
+## <a name="functionality-limitations"></a>İşlevsellik sınırlamaları
 
-Azure Veri Kataloğu kullanırken aşağıdaki işlev sınırlıdır:
+Azure Veri Kataloğu'nu kullanırken aşağıdaki işlevler sınırlıdır:
 
-- **Konuk rolü** türündeki hesaplar desteklenmez. Konuk hesaplarını Azure Veri Kataloğu 'nun kullanıcıları olarak ekleyemez ve Konuk kullanıcılar bu portalı üzerinde [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)kullanamaz.
+- **Konuk Rolü** türüne sahip hesaplar desteklenmez. Azure Veri Kataloğu kullanıcısı olarak konuk hesapları ekleyemezsiniz ve [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)konuk kullanıcılar portalı .
 
-- Azure Resource Manager şablonlarını veya Azure PowerShell komutlarını kullanarak Azure Veri Kataloğu kaynakları oluşturma desteklenmez.
+- Azure Kaynak Yöneticisi Şablonları veya Azure PowerShell komutlarını kullanarak Azure Veri Kataloğu kaynakları oluşturma desteklenmez.
 
-- Azure Veri Kataloğu kaynağı Azure kiracılar arasında taşınamaz.
+- Azure Veri Kataloğu kaynağı Azure Kiracıları arasında taşınamaz.
 
 ## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory ilke yapılandırması
 
-Azure Veri Kataloğu portalında oturum açabildiğiniz, ancak veri kaynağı kayıt aracında oturum açmak istediğinizde oturum açmanızı engelleyen bir hata iletisiyle karşılaştığınız bir durum yaşayabilirsiniz. Bu hata, şirket ağı veya şirket ağının dışından bağlantı kurulurken gerçekleşebilir.
+Azure Veri Kataloğu portalında oturum açabildiğiniz, ancak veri kaynağı kayıt aracında oturum açmak istediğinizde oturum açmanızı engelleyen bir hata iletisiyle karşılaştığınız bir durum yaşayabilirsiniz. Bu hata, şirket ağındayken veya şirket ağının dışından bağlanırken oluşabilir.
 
 Kayıt aracı, kullanıcının Azure Active Directory ile oturum açtığını doğrulamak için *form kimlik doğrulaması* kullanır. Başarılı bir oturum açma için Azure Active Directory yöneticisinin *genel kimlik doğrulama ilkesinde* form kimlik doğrulamasını etkinleştirmesi gerekir.
 
-Genel kimlik doğrulama ilkesi ile aşağıdaki görüntüde gösterildiği gibi kimlik doğrulamasını intranet ve extranet bağlantıları için ayrı ayrı etkinleştirebilirsiniz. Bağlanmakta olduğunuz ağ için form kimlik doğrulaması etkinleştirilmemişse, oturum açma hataları oluşabilir.
+Genel kimlik doğrulama ilkesi ile aşağıdaki görüntüde gösterildiği gibi kimlik doğrulamasını intranet ve extranet bağlantıları için ayrı ayrı etkinleştirebilirsiniz. Bağlandığınız ağ için form kimlik doğrulaması etkinleştirilemezse oturum açma hataları oluşabilir.
 
  ![Azure Active Directory genel kimlik doğrulama ilkesi](./media/troubleshoot-policy-configuration/global-auth-policy.png)
 

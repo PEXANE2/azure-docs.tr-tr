@@ -1,7 +1,7 @@
 ---
-title: Modelinizde hata ayıklama
+title: Modelinizi hata ayıklama
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) içinde model eğitme ve model modülleri Puanlama tarafından oluşturulan hatalarda hata ayıklama.
+description: Azure Machine Learning Studio'da (klasik) Train Model ve Score Model modülleri tarafından üretilen hataları nasıl ayıklama.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,63 +11,63 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
 ms.openlocfilehash: 910e788830ec55b610a9234a8c8ac75dda1ea189
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218095"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio modelinizde hata ayıklama (klasik)
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'da modelinizi hata ayıklama (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Bir model çalıştırırken aşağıdaki hatalarla karşılaşabilirsiniz:
+Bir modeli çalıştırırken, aşağıdaki hatalarla karşılaşabilirsiniz:
 
-* [model eğitme][train-model] modülü bir hata üretir 
-* [puan modeli][score-model] modülü hatalı sonuçlar oluşturuyor 
+* [Tren Modeli][train-model] modülü bir hata üretir 
+* [Score Model][score-model] modülü yanlış sonuçlar üretir 
 
-Bu makalede bu hataların olası nedenleri açıklanmaktadır.
+Bu makalede, bu hataların olası nedenleri açıklanmaktadır.
 
 
-## <a name="train-model-module-produces-an-error"></a>Train Model modülü bir hata oluşturur.
+## <a name="train-model-module-produces-an-error"></a>Tren Modeli Modülü bir hata üretir
 
 ![image1](./media/debug-models/train_model-1.png)
 
-[Model eğitme][train-model] modülü iki giriş bekler:
+[Tren Modeli][train-model] Modülü iki giriş bekler:
 
-1. Azure Machine Learning Studio (klasik) tarafından sunulan modeller koleksiyonundan makine öğrenimi modelinin türü.
-2. Tahmin edilecek değişkeni belirten belirtilen bir etiket sütunuyla eğitim verileri (diğer sütunların özellikler olduğu varsayılır).
+1. Azure Machine Learning Studio (klasik) tarafından sağlanan model koleksiyonundan makine öğrenme modeli türü.
+2. Tahmin etmek için değişkeni belirten belirli bir Etiket sütununa sahip eğitim verileri (diğer sütunların Özellikler olduğu varsayılır).
 
-Bu modül, aşağıdaki durumlarda bir hata oluşturabilecek:
+Bu modül aşağıdaki durumlarda bir hata üretebilir:
 
-1. Etiket sütununda hatalı şekilde belirtildi. Bu, birden fazla sütun etiketi olarak seçilir ya da yanlış sütun dizini seçili oluşabilir. Örneğin, ikinci durum, yalnızca 25 sütun içeren bir giriş veri kümesiyle 30 ' un bir sütun dizini kullanılıyorsa geçerlidir.
+1. Etiket sütunu yanlış belirtilir. Bu, Etiket olarak birden fazla sütun seçilirse veya yanlış sütun dizini seçilirse bu durum olabilir. Örneğin, yalnızca 25 sütunu olan bir giriş veri kümesiyle 30 sütun dizini kullanılıyorsa ikinci büyük/küçük harf uygulanır.
 
-2. Veri kümesi herhangi bir özellik sütunu içermiyor. Örneğin, giriş veri kümesi etiketi sütun olarak işaretlenmiş, yalnızca bir sütun varsa olacaktır, modeli oluşturmak üzere hiçbir özellik. Bu durumda, [model eğitimi][train-model] modülü bir hata üretir.
+2. Veri kümesi herhangi bir Özellik sütunu içermez. Örneğin, giriş veri kümesinde Etiket sütunu olarak işaretlenmiş yalnızca bir sütun varsa, modeli oluşturacak özellik olmaz. Bu durumda, [Tren Modeli][train-model] modülü bir hata üretir.
 
-3. Giriş veri kümesi (Özellikler veya etiket), sonsuz bir değeri içerir.
+3. Giriş veri kümesi (Özellikler veya Etiket) değer olarak Sonsuzluk içerir.
 
-## <a name="score-model-module-produces-incorrect-results"></a>Score Model modülü hatalı sonuçlar üretir.
+## <a name="score-model-module-produces-incorrect-results"></a>Puan Modeli Modülü yanlış sonuçlar üretir
 
 ![image2](./media/debug-models/train_test-2.png)
 
-Denetimli öğrenme için tipik bir eğitim/test denemesinde, [bölünmüş veri][split] modülü özgün veri kümesini iki parçaya böler: bir bölüm modeli eğmek için, bir bölüm ise eğitilen modelin ne kadar iyi performans olduğunu öğrenmek için kullanılır. Eğitilen modelin sonra sonuçları sonra model doğruluğunu belirlemek için değerlendirilir test verileri puanlamak için kullanılır.
+Denetimli öğrenme için tipik bir eğitim/test denemesinde, [Bölünmüş Veri][split] modülü orijinal veri kümesini iki bölüme ayırır: bir parça modeli eğitmek için kullanılır ve bir parça eğitimli modelin ne kadar iyi performans gösterdiğini puanlamak için kullanılır. Daha sonra eğitilen model, test verilerini puanlamak için kullanılır ve ardından sonuçlar modelin doğruluğunu belirlemek için değerlendirilir.
 
-[Puan modeli][score-model] modülü iki giriş gerektirir:
+[Puan Modeli][score-model] modülü iki giriş gerektirir:
 
-1. Eğitim [modeli][train-model] modülünden eğitilen bir model çıkışı.
-2. Modeli eğitmek için kullanılan veri kümesinden farklı bir Puanlama veri kümesi.
+1. [Tren Modeli][train-model] modülünden eğitimli bir model çıkışı.
+2. Modeli eğitmek için kullanılan veri kümesinden farklı bir puanlama veri kümesi.
 
-Deneme başarılı olsa bile, [puan modeli][score-model] modülü hatalı sonuçlar üretir. Birkaç senaryo bu sorunun oluşmasına neden olabilir:
+Deneme başarılı olsa bile, [Score Model][score-model] modülü yanlış sonuçlar üretir. Birkaç senaryo bu sorunun gerçekleşmesine neden olabilir:
 
-1. Belirtilen etiket kategorik ise ve bir regresyon modeli veri üzerinde eğitilmiş ise, [puan modeli][score-model] modülü tarafından yanlış bir çıktı oluşturulur. Regresyon sürekli yanıt değişkeni gerektirdiğinden budur. Bu durumda, bir sınıflandırma modelini kullanmak daha uygun olacaktır. 
+1. Belirtilen Etiket kategorikse ve veriler üzerinde bir regresyon modeli eğitilirse, [Skor Modeli][score-model] modülü tarafından yanlış bir çıktı üretilir. Bunun nedeni, gerilemenin sürekli bir yanıt değişkeni gerektirmesidir. Bu durumda, bir sınıflandırma modeli kullanmak daha uygun olacaktır. 
 
-2. Benzer şekilde, etiket sütununda kayan nokta numarası sahip bir veri kümesi üzerinde bir sınıflandırma modeli eğitilir, istenmeyen sonuçlara neden olabilir. Bunun nedeni, sınıflandırmanın yalnızca sonlu ve küçük bir sınıf kümesi üzerinde yer alan değerlere izin veren ayrık bir yanıt değişkeni gerektirmesidir.
+2. Benzer şekilde, bir sınıflandırma modeli Etiket sütununda kayan nokta numaraları olan bir veri kümesi üzerinde eğitilirse, istenmeyen sonuçlar üretebilir. Bunun nedeni, sınıflandırmanın yalnızca sonlu ve küçük sınıflar kümesi üzerinde değişen değerlere izin veren ayrı bir yanıt değişkeni gerektirmesidir.
 
-3. Puanlama veri kümesi, modeli eğitmek için kullanılan tüm özellikleri içermiyorsa, [puan modeli][score-model] bir hata üretir.
+3. Puanlama veri kümesi modeli eğitmek için kullanılan tüm özellikleri içermiyorsa, [Puan Modeli][score-model] bir hata üretir.
 
-4. Puanlama veri kümesindeki bir satır, özelliklerinin herhangi biri için eksik bir değer veya sonsuz bir değer içeriyorsa, [puan modeli][score-model] söz konusu satıra karşılık gelen bir çıktı oluşturmaz.
+4. Puanlama veri kümesindeki bir satır eksik bir değer veya özelliklerinden herhangi biri için sonsuz bir değer içeriyorsa, [Puan Modeli][score-model] bu satıra karşılık gelen herhangi bir çıktı üretmez.
 
-5. [Puan modeli][score-model] , Puanlama veri kümesindeki tüm satırlarda aynı çıktıları üretebilir. Bu, örneğin, örnek yaprak düğümü başına en düşük sayısı olması sayıdan fazla eğitim örnekleri kullanılabilir seçilirse karar ormanları kullanarak sınıflandırma çalışılırken gerçekleşebilir.
+5. [Puan Modeli,][score-model] puanlama veri kümesindeki tüm satırlar için aynı çıktıları üretebilir. Bu durum, örneğin, yaprak düğümü başına en az sayıda örnek kullanılabilir eğitim örneklerinden daha fazla olarak seçilirse, Karar Ormanları kullanılarak sınıflandırmaya çalışırken oluşabilir.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

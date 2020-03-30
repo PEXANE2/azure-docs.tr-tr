@@ -1,154 +1,154 @@
 ---
-title: Azure Otomasyonu ile Azure Analysis Services modellerini yenileme | Microsoft Docs
-description: Bu makalede, Azure Otomasyonu kullanılarak Azure Analysis Services için model yenilemelerinin nasıl değiştirileceği açıklanır.
+title: Azure Otomasyonu ile Azure Analiz Hizmetleri modellerini yenileyin | Microsoft Dokümanlar
+description: Bu makalede, Azure Çözümleme Hizmetleri için Azure Otomasyonu'nun nasıl kodlanması açıklanmaktadır.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572363"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
-Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablolu modellerinizde otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.  
+Azure Otomasyonu ve PowerShell Runbook'ları kullanarak Azure Analizi tabular modellerinizde otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.  
 
-Bu makaledeki örnekte [PowerShell SqlServer modülleri](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanılmaktadır.
+Bu makaledeki [örnekpowershell SqlServer modüllerini](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır.
 
-Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
+Bir modeli yenilemeyi gösteren örnek bir PowerShell Runbook bu makalede daha sonra sağlanır.  
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır.
+Tüm aramaların geçerli bir Azure Etkin Dizini (OAuth 2) belirteciyle kimlik doğrulaması yapılmalıdır.  Bu makaledeki örnek, Azure Çözümleme Hizmetleri'nin kimliğini doğrulamak için bir Hizmet Sorumlusu (SPN) kullanır.
 
-Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+Hizmet Sorumlusu oluşturma hakkında daha fazla bilgi edinmek için Azure [portalını kullanarak bir hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md)'na bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
-> Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresinin güvenlik duvarında beyaz listelenmesi gerekir.
+> Aşağıdaki örnek, Azure Çözümleme Hizmetleri güvenlik duvarının devre dışı bırakıldığını varsayar. Güvenlik duvarı etkinse, istek başlatıcısının genel IP adresinin güvenlik duvarında beyaz listeye alınması gerekir.
 
-### <a name="install-sqlserver-modules-from-powershell-gallery"></a>PowerShell galerisinden SqlServer modüllerini yükler.
+### <a name="install-sqlserver-modules-from-powershell-gallery"></a>PowerShell galerisinden SqlServer modüllerini yükleyin.
 
-1. Azure Otomasyonu hesabınızda **modüller**' e ve ardından **Galeriye gözatıp**' ye tıklayın.
+1. Azure Otomasyon Hesabınızda **Modülleri**tıklatın ve **ardından galeriye göz atın.**
 
-2. Ara çubuğunda, **SqlServer**için arama yapın.
+2. Arama **çubuğunda, SqlServer'ı**arayın.
 
-    ![Modül ara](./media/analysis-services-refresh-azure-automation/1.png)
+    ![Arama Modülleri](./media/analysis-services-refresh-azure-automation/1.png)
 
-3. SqlServer ' ı seçin ve **Içeri aktar**' a tıklayın.
+3. SqlServer'ı seçin ve sonra **Aktar'ı**tıklatın.
  
-    ![Modül içeri aktar](./media/analysis-services-refresh-azure-automation/2.png)
+    ![İthalat Modülü](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
  
-### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
+### <a name="create-a-service-principal-spn"></a>Hizmet Sorumlusu Oluşturma (SPN)
 
-Hizmet sorumlusu oluşturma hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+Hizmet Sorumlusu oluşturma hakkında bilgi edinmek için Azure [portalını kullanarak bir hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md)'na bakın.
 
-### <a name="configure-permissions-in-azure-analysis-services"></a>Azure Analysis Services izinlerini yapılandırma
+### <a name="configure-permissions-in-azure-analysis-services"></a>Azure Çözümleme Hizmetlerinde izinleri yapılandırma
  
-Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip olmalıdır. Daha fazla bilgi için bkz. [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md).
+Oluşturduğunuz Hizmet Yöneticisi'nin sunucuda sunucu yöneticisi izinleri olmalıdır. Daha fazla bilgi için bkz. [sunucu yöneticisi rolüne bir hizmet sorumlusu ekle.](analysis-services-addservprinc-admins.md)
 
-## <a name="design-the-azure-automation-runbook"></a>Azure Otomasyonu runbook 'Unu tasarlama
+## <a name="design-the-azure-automation-runbook"></a>Azure Otomasyon Runbook'u tasarla
 
-1. Otomasyon hesabında, hizmet sorumlusunu güvenli bir şekilde depolamak için kullanılacak bir **kimlik bilgileri** kaynağı oluşturun.
+1. Otomasyon Hesabında, Hizmet Anapara'sını güvenli bir şekilde depolamak için kullanılacak bir **Kimlik Bilgileri** kaynağı oluşturun.
 
-    ![Kimlik bilgisi oluştur](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Kimlik bilgisi oluşturma](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Kimlik bilgisinin ayrıntılarını girin.  **Kullanıcı adı**Için, **parola**için **SPN ClientID**girin, **SPN gizli**anahtarını girin.
+2. Kimlik bilgisi için ayrıntıları girin.  Kullanıcı **adı**için, **SPN ClientId**girin , **Şifre**için , **SPN Secret**girin.
 
-    ![Kimlik bilgisi oluştur](./media/analysis-services-refresh-azure-automation/7.png)
+    ![Kimlik bilgisi oluşturma](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Otomasyon Runbook 'Unu içeri aktarma
+3. Otomasyon Runbook'u Alma
 
-    ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/8.png)
+    ![Runbook'u Içe Aktar](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. **Refresh-model. ps1** dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
+4. **Refresh-Model.ps1** dosyasına göz atın, bir **Ad** ve **açıklama**sağlayın ve ardından **Oluştur'u**tıklatın.
 
-    ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/9.png)
+    ![Runbook'u Içe Aktar](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Runbook oluşturulduğunda, otomatik olarak düzenleme moduna geçer.  **Yayımla**’yı seçin.
+5. Runbook oluşturulduğunda, otomatik olarak edit moduna geçer.  **Yayımla**’yı seçin.
 
-    ![Runbook 'U Yayımla](./media/analysis-services-refresh-azure-automation/10.png)
+    ![Runbook'u Yayımla](./media/analysis-services-refresh-azure-automation/10.png)
 
     > [!NOTE]
-    > Daha önce oluşturulan kimlik bilgisi kaynağı, **Get-AutomationPSCredential** komutu kullanılarak runbook tarafından alınır.  Bu komut daha sonra Azure Analysis Services kimlik doğrulamasını gerçekleştirmek için **Invoke-ProcessASADatabase** PowerShell komutuna geçirilir.
+    > Daha önce oluşturulan kimlik bilgisi **kaynağı, Get-AutomationPSCredential** komutu kullanılarak runbook tarafından alınır.  Bu komut, azure çözümleme hizmetlerine kimlik doğrulamaişlemi gerçekleştirmek için **Invoke-ProcessASADatabase** PowerShell komutuna geçirilir.
 
-6. **Başlat**' a tıklayarak runbook 'u test edin.
+6. Başlat'ı tıklatarak runbook'u test **edin.**
 
-    ![Runbook 'U başlatma](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Runbook'u başlat](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. **DatabaseName**, **Analysisserver**ve **RefreshType** parametrelerini doldurun ve ardından **Tamam**' a tıklayın. Runbook el ile çalıştırıldığında **Webkancaverisi** parametresi gerekli değildir.
+7. **DATABASENAME,** **ANALYSISSERVER**ve **REFRESHTYPE** parametrelerini doldurun ve **Tamam'ı**tıklatın. Runbook el ile çalıştırıldığında **WEBHOOKDATA** parametresi gerekli değildir.
 
-    ![Runbook 'U başlatma](./media/analysis-services-refresh-azure-automation/12.png)
+    ![Runbook'u başlat](./media/analysis-services-refresh-azure-automation/12.png)
 
-Runbook başarıyla yürütülürse, aşağıdakine benzer bir çıktı alırsınız:
+Runbook başarıyla yürütülürse, aşağıdaki gibi bir çıktı alırsınız:
 
-![Başarılı çalıştırma](./media/analysis-services-refresh-azure-automation/13.png)
+![Başarılı Çalıştırma](./media/analysis-services-refresh-azure-automation/13.png)
 
-## <a name="use-a-self-contained-azure-automation-runbook"></a>Kendi içinde Azure Otomasyonu runbook 'U kullanma
+## <a name="use-a-self-contained-azure-automation-runbook"></a>Bağımsız Azure Otomasyon Runbook'u kullanma
 
-Runbook, Azure Analysis Services modeli yenilemeyi zamanlanan bir şekilde tetikleyebilir.
+Runbook, Azure Analiz Hizmetleri modelinin zamanlanmış olarak yenilenmesini tetiklemek üzere yapılandırılabilir.
 
-Bu, aşağıdaki gibi yapılandırılabilir:
+Bu aşağıdaki gibi yapılandırılabilir:
 
-1. Otomasyon Runbook 'unda **zamanlamalar**' a ve ardından **bir zamanlama ekleyin**.
+1. Otomasyon Runbook'unda **Zamanlamaları**tıklatın ve ardından **Zamanlama Ekleyin.**
  
-    ![Zamanlama Oluştur](./media/analysis-services-refresh-azure-automation/14.png)
+    ![Zamanlama oluşturma](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. **Zamanla** ' ya tıklayın > **Yeni bir zamanlama oluşturun**ve ardından ayrıntıları girin.
+2. **Zamanlama'yı** > tıklatın**Yeni bir zamanlama oluşturun**ve ardından ayrıntıları doldurun.
 
-    ![Zamanlamayı Yapılandır](./media/analysis-services-refresh-azure-automation/15.png)
+    ![Zamanlamayı yapılandırma](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur'u**tıklatın.
 
-4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
+4. Zamanlama nın parametrelerini doldurun. Bunlar, Runbook her tetikleninher tetikleninde kullanılır. **WEBHOOKDATA** parametresi bir zamanlama ile çalışırken boş bırakılmalıdır.
 
-    ![Parametreleri Yapılandır](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Parametreleri yapılandırma](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. **Tamam** düğmesine tıklayın.
+5. **Tamam**'a tıklayın.
 
-## <a name="consume-with-data-factory"></a>Data Factory kullanma
+## <a name="consume-with-data-factory"></a>Veri Fabrikası ile Tüketin
 
-Azure Data Factory kullanarak runbook 'u kullanmak için önce runbook için bir **Web kancası** oluşturun. Web **kancası** , bir Azure Data Factory Web etkinliği aracılığıyla ÇAĞRıLABILECEK bir URL sağlar.
+Azure Veri Fabrikası'nı kullanarak runbook'u kullanmak için önce runbook için bir **Webhook** oluşturun. **Webhook,** Azure Veri Fabrikası web etkinliği aracılığıyla çağrılabilen bir URL sağlar.
 
 > [!IMPORTANT]
-> **Web kancası**oluşturmak için Runbook 'un durumu **yayımlanmalıdır**.
+> **Bir Webhook**oluşturmak için Runbook'un durumunun **yayımlanmış**olması gerekir.
 
-1. Otomasyon Runbook 'unda **Web kancaları**' na ve ardından **Web kancası Ekle**' ye tıklayın.
+1. Otomasyon Runbook'unuzda **Webhooks'u**tıklatın ve ardından **Webhook Ekle'yi**tıklatın.
 
-   ![Web kancası Ekle](./media/analysis-services-refresh-azure-automation/17.png)
+   ![Webhook Ekle](./media/analysis-services-refresh-azure-automation/17.png)
 
-2. Web kancasına bir ad ve süre sonu verin.  Ad yalnızca Otomasyon Runbook 'Unun içindeki Web kancasını tanımlar, URL 'nin bir parçasını oluşturmaz.
+2. Webhook'a bir ad ve bir son kullanma süresi verin.  Ad yalnızca Otomasyon Runbook içinde Webhook tanımlar, url bir parçası nı oluşturmaz.
 
    >[!CAUTION]
-   >Bir kez daha geri ulaştığınızdan, Sihirbazı kapatmadan önce URL 'YI kopyalamadiğinizden emin olun.
+   >Sihirbazı kapatmadan önce URL'yi kopyaladığınızdan emin olun, çünkü bir kez kapatıldıktan sonra geri alamıyorsunuz.
     
-   ![Web kancasını yapılandırma](./media/analysis-services-refresh-azure-automation/18.png)
+   ![Webhook'u yapılandırma](./media/analysis-services-refresh-azure-automation/18.png)
 
-    Web kancası parametreleri boş kalabilir.  Azure Data Factory Web etkinliğini yapılandırırken parametreler, Web çağrısının gövdesine geçirilebilir.
+    Webhook için parametreler boş kalabilir.  Azure Veri Fabrikası web etkinliğini yapılandırırken, parametreler web aramasının gövdesine aktarılabilir.
 
-3. Data Factory, bir **Web etkinliği** yapılandırın
+3. Veri Fabrikası'nda, bir **web etkinliğini** yapılandırma
 
 ### <a name="example"></a>Örnek
 
-   ![Örnek Web etkinliği](./media/analysis-services-refresh-azure-automation/19.png)
+   ![Örnek Web Etkinliği](./media/analysis-services-refresh-azure-automation/19.png)
 
-**URL** , Web kancasından oluşturulan URL 'dir.
+**URL,** Webhook'tan oluşturulan URL'dir.
 
-**Gövde** , aşağıdaki özellikleri içermesi gereken bir JSON belgesidir:
+**Gövde,** aşağıdaki özellikleri içermesi gereken bir JSON belgesidir:
 
 
 |Özellik  |Değer  |
 |---------|---------|
-|**AnalysisServicesDatabase**     |Azure Analysis Services veritabanının adı <br/> Örnek: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services sunucu adı. <br/> Örnek: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |Gerçekleştirilecek yenileme türü. <br/> Örnek: tam         |
+|**AnalysisServicesDatabase**     |Azure Analiz Hizmetleri veritabanının adı <br/> Örnek: AdventureWorksDB         |
+|**AnalysisServicesServer**     |Azure Çözümleme Hizmetleri sunucu adı. <br/> Örnek: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**VeritabanıYenileme Türü**     |Gerçekleştirecek yenileme türü. <br/> Örnek: Tam         |
 
 Örnek JSON gövdesi:
 
@@ -160,30 +160,30 @@ Azure Data Factory kullanarak runbook 'u kullanmak için önce runbook için bir
 }
 ```
 
-Bu parametreler runbook PowerShell betiği içinde tanımlanmıştır.  Web etkinliği yürütüldüğünde, geçirilen JSON yükü Web KANCASı VERILERI olur.
+Bu parametreler powershell komut dosyasında tanımlanır.  Web etkinliği yürütüldüğünde, geçirilen JSON yükü WEBHOOKDATA'dır.
 
-Bu, seri durumdan çıkarılan ve PowerShell parametreleri olarak depolanarak Invoke-Komusasdatabase PowerShell komutu tarafından kullanılır.
+Bu deserialized ve PowerShell parametreleri olarak depolanır, daha sonra Invoke-ProcesASDatabase PowerShell komutu tarafından kullanılır.
 
-![Seri durumdan çıkarılan Web kancası](./media/analysis-services-refresh-azure-automation/20.png)
+![Deserialized Webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
-## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>Karma çalışanı Azure Analysis Services ile kullanma
+## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>Azure Çözümleme Hizmetleri ile Karma Çalışan Kullanma
 
-Statik bir genel IP adresine sahip bir Azure sanal makinesi, Azure Otomasyon Karma Çalışanı olarak kullanılabilir.  Bu genel IP adresi daha sonra Azure Analysis Services güvenlik duvarına eklenebilir.
+Statik genel IP adresine sahip bir Azure Sanal Makinesi, Azure Otomasyon Karma İşçisi olarak kullanılabilir.  Bu genel IP adresi daha sonra Azure Çözümleme Hizmetleri güvenlik duvarına eklenebilir.
 
 > [!IMPORTANT]
-> Sanal makine genel IP adresinin statik olarak yapılandırıldığından emin olun.
+> Sanal Makine genel IP adresinin statik olarak yapılandırıldığından emin olun.
 >
->Azure Otomasyonu karma çalışanları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirme](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>Azure OtomasyonKarma Çalışanları yapılandırma hakkında daha fazla bilgi edinmek [için, Karma Runbook Çalışanı'nı kullanarak veri merkezinizdeki veya bulutunuzdaki kaynakları Otomatikleştir'e](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)bakın.
 
-Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, Web kancasını yapılandırırken > karma çalışanı **üzerinde Çalıştır** seçeneğini **seçmedir** .
+Bir Karma İşçi yapılandırıldıktan sonra, Veri Fabrikası [ile Tüket](#consume-with-data-factory)bölümünde açıklandığı gibi bir Webhook oluşturun.  Buradaki tek fark, Webhook'u yapılandırırken > **Karma** **Çalışan'da Çalıştır**seçeneğini seçmektir.
 
-Karma çalışanı kullanan örnek Web kancası:
+Hybrid Worker kullanarak örnek webhook:
 
-![Örnek karma çalışanı Web kancası](./media/analysis-services-refresh-azure-automation/21.png)
+![Örnek Hibrit İşçi Webhook](./media/analysis-services-refresh-azure-automation/21.png)
 
-## <a name="sample-powershell-runbook"></a>Örnek PowerShell runbook 'U
+## <a name="sample-powershell-runbook"></a>Örnek PowerShell Runbook
 
-Aşağıdaki kod parçacığı, bir PowerShell runbook 'U kullanarak Azure Analysis Services modeli yenilemenin nasıl gerçekleştiribir örneğidir.
+Aşağıdaki kod parçacığı, PowerShell Runbook kullanarak Azure Analiz Hizmetleri modeli yenilemesinin nasıl gerçekleştirilebildiğini gösterir.
 
 ```powershell
 param

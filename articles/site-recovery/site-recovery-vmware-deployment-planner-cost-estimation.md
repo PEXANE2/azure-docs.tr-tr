@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin
-description: Bu makalelerde, VMware olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı maliyet tahminleri gözden geçirilmesi açıklanmaktadır.
+title: Azure Sitesi Kurtarma Dağıtım Planlayıcısı'ndaki maliyet tahminlerini gözden geçirin
+description: Bu makalede, VMware olağanüstü durum kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı'ndaki maliyet tahminlerinin nasıl gözden geçirilen anlatılmaktadır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953337"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısındaki maliyet tahminlerini gözden geçirme 
 
 Dağıtım planlayıcısı raporu, [Öneriler](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) sayfalarında maliyet tahmini özeti ve Maliyet Tahmini sayfasında da ayrıntılı maliyet analizi sağlar. Sanal makine başına ayrıntılı maliyet analizi içerir. 
 
 >[!Note]
->Dağıtım planlayıcısı aracı v 2.5 ' nin geçerli sürümü, yönetilen disklere çoğaltılan VM 'Ler için maliyet tahmini sağlar.
+>Dağıtım planlayıcısı aracı v2.5'in geçerli sürümü, Yönetilen Disklere çoğaltma sağlayan VM'ler için maliyet tahmini sağlar.
 
 ### <a name="cost-estimation-summary"></a>Maliyet tahmini özeti 
-Grafta, seçtiğiniz hedef bölgede ve rapor oluşturma için belirttiğiniz para biriminde Azure'a tahmini toplam olağanüstü durum kurtarma (DR) maliyetinin özet görünümü gösterilir.
+Grafta, seçtiğiniz hedef bölgede ve rapor oluşturma için belirttiğiniz para biriminde Azure'a tahmini toplam olağanüstü durum kurtarma (DR) maliyeti gösterilir.
 Maliyet tahmini özeti
 
 ![Maliyet tahmini özeti](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
@@ -116,17 +116,17 @@ Sanal makineleri el ile eklemek için:
 
 **VM Sayısı**: Yapılandırmayla eşleşen sanal makine sayısı. Benzer yapılandırmadaki sanal makinelerin profili oluşturulmadıysa ancak bunlar korunacaksa, mevcut sanal makinelerin sayısını güncelleştirebilirsiniz.
 
-**IaaS boyutu (Öneri)** : Uyumlu sanal makinenin araç tarafından önerilen sanal makine rolü boyutudur. 
+**IaaS boyutu (Öneri)**: Uyumlu sanal makinenin araç tarafından önerilen sanal makine rolü boyutudur. 
 
-**IaaS boyutu (Sizin seçiminiz)** : Varsayılan olarak, önerilen VM rolü boyutuyla aynıdır. İhtiyacınıza göre rolü değiştirebilirsiniz. İşlem maliyetinde seçtiğiniz sanal makine rolü boyutu temel alınır.
+**IaaS boyutu (Sizin seçiminiz)**: Varsayılan olarak, önerilen VM rolü boyutuyla aynıdır. İhtiyacınıza göre rolü değiştirebilirsiniz. İşlem maliyetinde seçtiğiniz sanal makine rolü boyutu temel alınır.
 
 **Depolama türü**: Sanal makine tarafından kullanılan depolamanın türü. Bu, standart veya premium depolamadır.
 
-**VM toplam depolama alanı boyutu (GB)** : kaynak VM 'nin toplam depolaması.
+**VM toplam depolama boyutu (GB)**: Kaynak VM'nin toplam depolama alanıdır.
 
 **Yıllık DR Tatbikatları sayısı**: Bir yılda gerçekleştirdiğiniz DR Tatbikatlarının sayısı. Varsayılan olarak, yılda 4 kez gerçekleştirilir. Belirli sanal makineler için süreyi değiştirebilir veya en üst satıra yeni bir değer girip 'Tümüne uygula' düğmesine tıklayarak yeni değerin tüm sanal makinelere uygulanmasını sağlayabilirsiniz. Yıllık DR Tatbikatları sayısı ve her DR Tatbikatının süresi temelinde, toplam DR Tatbikatı maliyeti hesaplanır.  
 
-**Her DR Tatbikatının süresi (Gün)** : Her DR Tatbikatının süresi. Varsayılan olarak, [Disaster Recovery Yazılım Güvencesi avantajına](https://azure.microsoft.com/pricing/details/site-recovery) göre her 90 günde bir 7 gündür. Belirli sanal makineler için süreyi değiştirebilir veya en üst satıra yeni bir değer girip 'Tümüne uygula' düğmesine tıklayarak, yeni değerin tüm sanal makinelere uygulanmasını sağlayabilirsiniz. Toplam DR Tatbikatı maliyeti, yıllık DR Tatbikatlarının sayısıyla her DR Tatbikatının süresi temel alınarak hesaplanır.
+**Her DR Tatbikatının süresi (Gün)**: Her DR Tatbikatının süresi. Varsayılan olarak, [Disaster Recovery Yazılım Güvencesi avantajına](https://azure.microsoft.com/pricing/details/site-recovery) göre her 90 günde bir 7 gündür. Belirli sanal makineler için süreyi değiştirebilir veya en üst satıra yeni bir değer girip 'Tümüne uygula' düğmesine tıklayarak, yeni değerin tüm sanal makinelere uygulanmasını sağlayabilirsiniz. Toplam DR Tatbikatı maliyeti, yıllık DR Tatbikatlarının sayısıyla her DR Tatbikatının süresi temel alınarak hesaplanır.
   
 **İşletim sistemi türü**: Sanal makinenin işletim sistemi türü. Windows veya Linux'tır. İşletim sistemi türü Windows olduğunda, o sanal makineye Azure Hibrit Kullanım Teklifi uygulanabilir. 
 
@@ -138,7 +138,7 @@ Sanal makineleri el ile eklemek için:
 
 **Durağan depolama maliyeti**: Çoğaltmanın depolama maliyetini içerir.
 
-**Toplam DR Tatbikatı maliyeti (ortalama)** : DR Tatbikatının işlem ve depolama maliyetini içerir.
+**Toplam DR Tatbikatı maliyeti (ortalama)**: DR Tatbikatının işlem ve depolama maliyetini içerir.
 
 **ASR lisans maliyeti**: Azure Site Recovery lisansının maliyeti.
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Desteklenen para birimleri
 Azure Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin tümünde maliyet raporu oluşturabilir.
 
-|Currency|Ad||Currency|Ad||Currency|Ad|
+|Para birimi|Adı||Para birimi|Adı||Para birimi|Adı|
 |---|---|---|---|---|---|---|---|
 |ARS|Arjantin Pesosu ($)||AUD|Avustralya Doları ($)||BRL|Brezilya Reali (R$)|
 |CAD|Kanada Doları ($)||CHF|İsviçre Frangı (chf)||DKK|Danimarka Kronu (kr)|

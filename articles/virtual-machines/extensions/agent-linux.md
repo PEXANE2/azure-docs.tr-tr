@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM aracısına genel bakış
-description: Linux aracısının (waagent) nasıl yükleneceğini ve yapılandırılacağını, sanal makinenizin Azure Fabric denetleyicisiyle etkileşimini yönetme hakkında bilgi edinin.
+title: Azure Linux VM Aracısı'na Genel Bakış
+description: Sanal makinenizin Azure Kumaş Denetleyicisi ile etkileşimini yönetmek için Linux Aracısını (waagent) nasıl yükleyip yapılandırıştırmayı öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -16,123 +16,123 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073866"
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
+# <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux Aracısını Anlama ve Kullanma
 
-Microsoft Azure Linux Aracısı (waagent) Linux & FreeBSD sağlamasını ve Azure yapı denetleyicisi ile VM etkileşimini yönetir. Azure, sağlama işlevselliği sağlayan Linux aracısına ek olarak, bazı Linux Işletim sistemleri için Cloud-init kullanma seçeneğini de sağlar. Linux Aracısı, Linux ve FreeBSD IaaS dağıtımları için aşağıdaki işlevleri sağlar:
+Microsoft Azure Linux Aracısı (waagent), Linux & FreeBSD sağlama ve Azure Kumaş Denetleyicisi ile VM etkileşimini yönetir. Azure, sağlama işlevi sağlayan Linux Aracısı'na ek olarak, bazı Linux işletim sistemi için bulut init kullanma seçeneği de sunar. Linux Aracısı, Linux ve FreeBSD IaaS dağıtımları için aşağıdaki işlevselliği sağlar:
 
 > [!NOTE]
-> Daha fazla bilgi için [Benioku dosyasına](https://github.com/Azure/WALinuxAgent/blob/master/README.md)bakın.
+> Daha fazla bilgi için [README'ye](https://github.com/Azure/WALinuxAgent/blob/master/README.md)bakın.
 > 
 > 
 
-* **Görüntü sağlama**
+* **Görüntü Sağlama**
   
   * Kullanıcı hesabı oluşturma
   * SSH kimlik doğrulama türlerini yapılandırma
   * SSH ortak anahtarlarının ve anahtar çiftlerinin dağıtımı
-  * Ana bilgisayar adı ayarlanıyor
-  * Ana bilgisayar adı Platform DNS 'ye yayımlanıyor
-  * Platforma SSH ana bilgisayar anahtarı parmak izini bildirme
-  * Kaynak disk yönetimi
-  * Kaynak diski biçimlendirme ve bağlama
-  * Değiştirme alanını yapılandırma
-* **Ağ**
+  * Ana bilgisayar adını ayarlama
+  * Ana bilgisayar adını dns platformuna yayımlama
+  * Platforma SSH ana bilgisayar anahtar parmak izini bildirme
+  * Kaynak Disk Yönetimi
+  * Kaynak diskini biçimlendirme ve montaj
+  * Takas alanını yapılandırma
+* **Ağ Oluşturma**
   
-  * Platform DHCP sunucularıyla uyumluluğu geliştirmek için yolları yönetir
+  * Platform DHCP sunucularıyla uyumluluğu artırmak için yolları yönetir
   * Ağ arabirimi adının kararlılığını sağlar
-* **İne**
+* **Çekirdek**
   
-  * Sanal NUMA 'yı yapılandırır (çekirdek <`2.6.37`için devre dışı bırak)
-  * /Dev/random için Hyper-V entropi kullanır
-  * Kök cihaz (uzak olabilir) için SCSI zaman aşımlarını yapılandırır
+  * Sanal NUMA'yı yapılandırır (çekirdek `2.6.37`<için devre dışı)
+  * /dev/random için Hyper-V entropi tüketir
+  * Kök aygıt için SCSI zaman zaman larını yapılandırır (uzak olabilir)
 * **Tanılama**
   
-  * Konsol yeniden yönlendirme seri bağlantı noktası
-* **SCVMM dağıtımları**
+  * Seri bağlantı noktasına konsol yeniden yönlendirme
+* **SCVMM Dağıtımları**
   
-  * System Center Virtual Machine Manager 2012 R2 ortamında çalışırken Linux için VMM aracısını algılar ve önyükleme
+  * System Center Virtual Machine Manager 2012 R2 ortamında çalışırken Linux için VMM aracısını algılar ve önyüklemeler
 * **VM Uzantısı**
   
-  * Yazılım ve yapılandırma Otomasyonu 'nu etkinleştirmek için Microsoft ve Iş ortakları tarafından Linux VM 'ye (IaaS) yazılan bileşen ekleme
-  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) VM uzantısı başvuru uygulama
+  * Yazılım ve yapılandırma otomasyonuna olanak sağlamak için Microsoft ve İş Ortakları tarafından yazılan bileşeni Linux VM'ye (IaaS) enjekte edin
+  * VM Uzantısı referans uygulaması[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>İletişim
-Platformdan aracıya bilgi akışı iki kanal aracılığıyla gerçekleşir:
+Platformdan aracıya bilgi akışı iki kanal üzerinden gerçekleşir:
 
-* IaaS dağıtımları için önyükleme zamanına bağlı bir DVD. Bu DVD, gerçek SSH keypairs dışında tüm sağlama bilgilerini içeren bir OVF uyumlu yapılandırma dosyası içerir.
-* Dağıtım ve topoloji yapılandırmasını elde etmek için kullanılan bir REST API ortaya çıkaran bir TCP uç noktası.
+* IaaS dağıtımları için önyükleme süresi eklenmiş BIR DVD. Bu DVD, gerçek SSH anahtar çiftleri dışındaki tüm sağlama bilgilerini içeren OVF uyumlu bir yapılandırma dosyası içerir.
+* Dağıtım ve topoloji yapılandırmasını elde etmek için kullanılan bir REST API'sini ortaya çıkaran bir TCP uç noktası.
 
 ## <a name="requirements"></a>Gereksinimler
-Aşağıdaki sistemler test edilmiştir ve Azure Linux aracısıyla birlikte çalışmak üzere bilinmektedir:
+Aşağıdaki sistemler test edilmiştir ve Azure Linux Aracısı ile çalıştığı bilinmektedir:
 
 > [!NOTE]
-> Bu liste, burada açıklandığı gibi Microsoft Azure platformundaki desteklenen sistemlerin resmi listesinden farklı olabilir: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Bu liste, burada açıklandığı gibi, Microsoft Azure Platformu'ndaki desteklenen sistemlerin resmi listesinden farklı olabilir:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
-* CentOS 6.3 +
-* Red Hat Enterprise Linux 6.7 +
-* Debir 7.0 +
-* Ubuntu 12.04 +
-* openSUSE 12.3 +
-* SLES 11 SP3 +
-* Oracle Linux 6.4 +
+* CentOS 6.3+
+* Kırmızı Şapka Kurumsal Linux 6.7+
+* Debian 7.0+
+* Ubuntu 12.04+
+* açıkSUSE 12.3+
+* SLES 11 SP3+
+* Oracle Linux 6.4+
 
-Desteklenen diğer sistemler:
+Diğer Desteklenen Sistemler:
 
-* FreeBSD 10 + (Azure Linux Aracısı v 2.0.10 +)
+* FreeBSD 10+ (Azure Linux Aracısı v2.0.10+)
 
-Linux Aracısı düzgün çalışması için bazı sistem paketlerine bağımlıdır:
+Linux aracısı düzgün çalışması için bazı sistem paketlerine bağlıdır:
 
-* Python 2.6 +
-* OpenSSL 1.0 +
-* OpenSSH 5.3 +
-* Dosya sistemi yardımcı programları: sfdisk, Fdisk, mkfs, ayrıştırmuş
-* Parola araçları: chpasswd, sudo
-* Metin işleme araçları: SED, grep
-* Ağ araçları: IP-yol
-* UDF FILESYSTEMS 'ı bağlamak için çekirdek desteği.
+* Python 2.6+
+* OpenSSL 1.0+
+* OpenSSH 5.3+
+* Filesystem yardımcı programları: sfdisk, fdisk, mkfs, ayrılmış
+* Şifre araçları: chpasswd, sudo
+* Metin işleme araçları: sed, grep
+* Ağ araçları: ip-route
+* UDF filesystems montajı için çekirdek desteği.
 
 ## <a name="installation"></a>Yükleme
-Dağıtım paketi deposundaki bir RPM veya bir DEB paketini kullanarak yükleme, Azure Linux aracısını yükleme ve yükseltme için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](../linux/endorsed-distros.md) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin.
+Dağıtımınızın paket deposundan bir RPM veya DEB paketi kullanarak yükleme, Azure Linux Aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Onaylanan tüm [dağıtım sağlayıcıları,](../linux/endorsed-distros.md) Azure Linux aracı paketini görüntülerine ve depolarına entegre ederler.
 
-Kaynaktan veya özel konumlara veya öneklere yükleme gibi gelişmiş yükleme seçenekleri için [GitHub 'Daki Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent) depolarındaki belgelere bakın.
+Kaynaktan yükleme veya özel konumlar alavese veya önek gibi gelişmiş yükleme seçenekleri için [GitHub'daki Azure Linux Aracısı reposundaki](https://github.com/Azure/WALinuxAgent) belgelere bakın.
 
-## <a name="command-line-options"></a>Komut satırı seçenekleri
-### <a name="flags"></a>bayrakları
-* verbose: belirtilen komutun ayrıntı düzeyini artır
-* zorla: Bazı komutların etkileşimli onayını atlayın
+## <a name="command-line-options"></a>Komut Satırı Seçenekleri
+### <a name="flags"></a>Bayraklar
+* verbose: Belirtilen komutun ayrıntılılığını artırmak
+* kuvvet: Bazı komutlar için etkileşimli onayı atla
 
 ### <a name="commands"></a>Komutlar
-* Yardım: desteklenen komutları ve bayrakları listeler.
-* sağlamayı kaldırma: sistemi temizlemeyi deneyin ve yeniden sağlama için uygun hale getirin. Aşağıdaki işlem şunları siler:
+* yardım: Desteklenen komutları ve bayrakları listeler.
+* deprovision: Sistemi temizlemeye ve yeniden temine uygun hale getirmeye çalışmak. Aşağıdaki işlem siler:
   
-  * Tüm SSH ana bilgisayar anahtarları (sağlama. RegenerateSshHostKeyPair, yapılandırma dosyasında ' y ' ise)
-  * /Etc/resolv.exe içindeki nameserver yapılandırması
-  * /Etc/shadow 'tan kök parola (sağlama. DeleteRootPassword, yapılandırma dosyasında ' y ' ise)
-  * Önbelleğe alınmış DHCP istemci kiraları
-  * Ana bilgisayar adını localhost.localdomain adına sıfırlar
+  * Tüm SSH ana bilgisayar anahtarları (Provisioning.RegenerateSshHostKeyPair yapılandırma dosyasında 'y' ise)
+  * /etc/resolv.conf'ta nameserver yapılandırması
+  * /etc/shadow'dan kök parolası (Provisioning.DeleteRootPassword yapılandırma dosyasında 'y' ise)
+  * Önbelleğe alınmış DHCP istemci kiralamaları
+  * Ana bilgisayar adını localhost.localdomain'e sıfırlar
 
 > [!WARNING]
-> Sağlamayı kaldırma, görüntünün tüm hassas bilgilerin temizlenmesini ve yeniden dağıtım için uygun olduğunu garanti etmez.
+> Deprovisioning, görüntünün tüm hassas bilgilerden temizlendiğini ve yeniden dağıtım için uygun olduğunu garanti etmez.
 > 
 > 
 
-* sağlamayı kaldırma + Kullanıcı: her şeyi dedeme (yukarıdaki) gerçekleştirir ve ayrıca, sağlanan son kullanıcı hesabını (/var/lib/waagent 'tan alınan) ve ilişkili verileri de siler. Bu parametre, önceden Azure üzerinde daha önce temin edilen bir görüntünün sağlanması ve yeniden kullanılması olabilir.
-* Sürüm: waagent sürümünü görüntüler
-* serialconsole: ttyS0 (ilk seri bağlantı noktası) önyükleme konsolu olarak işaretlemesi için GRUB 'yi yapılandırır. Bu, çekirdek önyükleme günlüklerinin seri bağlantı noktasına gönderilmesini ve hata ayıklama için kullanılabilir hale gelmesini sağlar.
-* Daemon: platformla etkileşimi yönetmek için waagent 'ı bir daemon olarak çalıştırın. Bu bağımsız değişken waagent Init betiğine waagent için belirtilir.
-* Başlat: waagent 'ı arka plan işlemi olarak çalıştır
+* deprovision+user: Her şeyi -deprovision (üstte) gerçekleştirir ve ayrıca son sağlanan kullanıcı hesabını (/var/lib/waagent'dan elde edilen) ve ilişkili verileri siler. Bu parametre, daha önce Azure'da kullanılabilen bir resmin görüntünün görüntünün görüntünün ele geçirilip yeniden kullanılabilmesi için kaldırılmasıdır.
+* sürüm: Waagent sürümünü görüntüler
+* serialconsole: GRUB'u ttyS0(ilk seri bağlantı noktası) önyükleme konsolu olarak işaretlemek için yapılandırır. Bu, çekirdek önyükleme günlüklerinin seri bağlantı noktasına gönderilmesini ve hata ayıklama için kullanılabilir hale getirilmesini sağlar.
+* daemon: platform ile etkileşimi yönetmek için bir daemon olarak waagent çalıştırın. Bu bağımsız değişken, waagent init komut dosyasında waagent için belirtilir.
+* başlangıç: Arka plan işlemi olarak waagent çalıştırın
 
 ## <a name="configuration"></a>Yapılandırma
-Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Aşağıda örnek bir yapılandırma dosyası gösterilmektedir:
+Bir yapılandırma dosyası (/etc/waagent.conf) waagent eylemlerini denetler. Aşağıda örnek bir yapılandırma dosyası gösterilmektedir:
 
     ```
     Provisioning.Enabled=y
@@ -160,189 +160,189 @@ Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Aş
     AutoUpdate.Enabled=y
     ```
 
-Aşağıdaki çeşitli yapılandırma seçenekleri açıklanmaktadır. Yapılandırma seçenekleri üç türtür; Boolean, dize veya tamsayı. Boole yapılandırma seçenekleri "y" veya "n" olarak belirtilebilir. "None" özel anahtar sözcüğü, bazı dize türü yapılandırma girdileri için aşağıdaki Ayrıntılar olarak kullanılabilir:
+Aşağıdaki çeşitli yapılandırma seçenekleri açıklanmıştır. Yapılandırma seçenekleri üç türden dir; Boolean, String veya Integer. Boolean yapılandırma seçenekleri "y" veya "n" olarak belirtilebilir. Özel anahtar kelime "Yok" aşağıdaki ayrıntıları olarak bazı dize türü yapılandırma girişleri için kullanılabilir:
 
-**Sağlama. etkin:**  
+**Provisioning.Enabled:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Bu, kullanıcının aracıdaki sağlama işlevini etkinleştirmesine veya devre dışı bırakmasına olanak sağlar. Geçerli değerler şunlardır "y" veya "n". Sağlama devre dışıysa, görüntüdeki SSH ana bilgisayarı ve Kullanıcı anahtarları korunur ve Azure sağlama API 'sinde belirtilen yapılandırma yok sayılır.
+Bu, kullanıcının aracıdaki sağlama işlevini etkinleştirmesine veya devre dışı etmesine olanak tanır. Geçerli değerler "y" veya "n" olur. Sağlama devre dışı bırakılırsa, görüntüdeki SSH ana bilgisayarı ve kullanıcı anahtarları korunur ve Azure sağlama API'sinde belirtilen yapılandırma lar yoksayılır.
 
 > [!NOTE]
-> `Provisioning.Enabled` parametresi, sağlama için Cloud-init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
+> Parametre, `Provisioning.Enabled` sağlama için bulut init'i kullanan Ubuntu Bulut Görüntüleri'nde "n" varsayılanolarak kullanılır.
 > 
 > 
 
-**Sağlama. DeleteRootPassword:**  
+**Provisioning.DeleteRootPassword:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa,/etc/shadow dosyasındaki kök parola sağlama işlemi sırasında silinir.
+Ayarlanırsa, /etc/shadow dosyasındaki kök parola sağlama işlemi sırasında silinir.
 
-**Sağlama. RegenerateSshHostKeyPair:**  
+**Provisioning.RegenerateSshHostKeyPair:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ayarlanırsa, tüm SSH ana bilgisayar anahtar çiftleri (ECDSA, dsa ve RSA),/etc/ssh/kaynağından sağlama işlemi sırasında silinir. Ve tek bir yeni anahtar çifti oluşturulur.
+Ayarlanırsa, tüm SSH ana bilgisayar anahtar çiftleri (ecdsa, dsa ve rsa) /etc/ssh/'den sağlama işlemi sırasında silinir. Ve tek bir taze anahtar çifti oluşturulur.
 
-Yeni anahtar çiftinin şifreleme türü, sağlama. SshHostKeyPairType girişi tarafından yapılandırılabilir. Bazı dağıtımlar, SSH arka plan programı yeniden başlatıldığında (örneğin, yeniden başlatma sırasında) eksik şifreleme türleri için SSH anahtar çiftlerini yeniden oluşturur.
+Taze anahtar çifti için şifreleme türü Provisioning.SshHostKeyPairType girişi tarafından yapılandırılabilir. Bazı dağıtımlar, SSH daemon yeniden başlatıldığında (örneğin, yeniden başlatıldığında) eksik şifreleme türleri için SSH anahtar çiftlerini yeniden oluşturur.
 
-**Sağlama. SshHostKeyPairType:**  
+**Provisioning.SshHostKeyPairType:**  
 ```
 Type: String  
 Default: rsa
 ```
-Bu, sanal makinede SSH Daemon tarafından desteklenen bir şifreleme algoritması türüne ayarlanabilir. Genellikle desteklenen değerler "RSA", "dsa" ve "ECDSA" dir. Windows üzerinde "Putty. exe", "ECDSA" desteklemez. Bu nedenle, bir Linux dağıtımına bağlanmak için Windows üzerinde Putty. exe kullanmayı düşünüyorsanız, "RSA" veya "dsa" kullanın.
+Bu sanal makinede SSH daemon tarafından desteklenen bir şifreleme algoritması türüne ayarlanabilir. Genellikle desteklenen değerler "rsa", "dsa" ve "ecdsa"dır. Windows'daki "macun.exe" "ecdsa"yı desteklemez. Bu nedenle, Bir Linux dağıtımına bağlanmak için Windows'da macun.exe kullanmayı planlıyorsanız, "rsa" veya "dsa" kullanın.
 
-**Sağlama. MonitorHostName:**  
+**Provisioning.MonitorHostName:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ayarlanırsa, waagent Linux sanal makinesini ana bilgisayar adı değişiklikleri için izler ("hostname" komutu tarafından döndürülen) ve değişikliği yansıtmak için görüntüdeki ağ yapılandırmasını otomatik olarak güncelleştirir. Ad değişikliğini DNS sunucularına göndermek için sanal makinede ağ yeniden başlatılır. Bu, Internet bağlantısının kısa bir kaybına neden olur.
+Ayarlanırsa, waagent ana bilgisayar adı değişiklikleri için Linux sanal makinesini izler ("hostname" komutu yla döndürülür) ve değişikliği yansıtacak şekilde görüntüdeki ağ yapılandırmasını otomatik olarak güncelleştirir. Ad değişikliğini DNS sunucularına itmek için sanal makinede ağ yeniden başlatılır. Bu, Internet bağlantısının kısa sürede kaybolmasına neden olabilir.
 
 **Provisioning.DecodeCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa, waagent CustomData 'ın Base64 'ten kodunu çözer.
+Ayarlanırsa, waagent Base64'ten CustomData'yı çözer.
 
 **Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa, waagent sağlamaktan sonra CustomData öğesini yürütür.
+Ayarlanırsa, waagent sağlama dan sonra CustomData yürütür.
 
-**Sağlama. AllowResetSysUser**
+**Provisioning.AllowResetSysUser**
 ```
 Type: Boolean
 Default: n
 ```
-Bu seçenek, sys kullanıcısının parolasının sıfırlanmasına izin verir; Varsayılan değer devre dışıdır.
+Bu seçenek, sys kullanıcısının parolasının sıfırlanmasına izin verir; varsayılan devre dışı bırakılır.
 
-**Sağlama. Passwordcryptıd**  
+**Provisioning.PasswordCryptId**  
 ```
 Type: String  
 Default: 6
 ```
-Parola karması oluşturulurken Crypt tarafından kullanılan algoritma.  
- 1-MD5  
- 2A-Blowbalık  
+Parola karma oluştururken crypt tarafından kullanılan algoritma.  
+ 1 - MD5  
+ 2a - Balon balığı  
  5 - SHA-256  
  6 - SHA-512  
 
-**Sağlama. PasswordCryptSaltLength**  
+**Provisioning.PasswordCryptSaltLength**  
 ```
 Type: String  
 Default: 10
 ```
-Parola karması oluşturulurken kullanılan rastgele anahtar uzunluğu.
+Parola karma oluştururken kullanılan rasgele tuz uzunluğu.
 
-**ResourceDisk. Format:**  
+**ResourceDisk.Format:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Ayarlanırsa, platform tarafından sunulan kaynak disk, "ResourceDisk. FileSystem" içinde Kullanıcı tarafından istenen dosya sistemi türü "NTFS" dışında herhangi bir şeydir waagent tarafından biçimlendirilir ve bağlanır. Diskte Linux (83) türünde tek bir bölüm kullanılabilir hale getirilir. Bu bölüm, başarıyla bağlanlanabilir ise biçimlendirilmedi.
+Ayarlanırsa, "ResourceDisk.Filesystem"de kullanıcı tarafından istenen dosya sistemi türü "ntfs"ten başka bir şeyse, platform tarafından sağlanan kaynak diski waagent tarafından biçimlendirilir ve monte edilir. Linux (83) türünde tek bir bölüm diskte kullanılabilir hale getirilir. Bu bölüm başarıyla monte edilebiliyorsa biçimlendirilmemiştir.
 
-**ResourceDisk. FileSystem:**  
+**ResourceDisk.Filesystem:**  
 ```
 Type: String  
 Default: ext4
 ```
-Bu, kaynak diskinin dosya sistemi türünü belirtir. Desteklenen değerler Linux dağıtımına göre farklılık gösterir. Dize X ise, mkfs. X, Linux görüntüsünde bulunmalıdır. SLES 11 görüntüleri genellikle ' ext3 ' kullanmalıdır. FreeBSD görüntülerinin burada ' UFS2 ' kullanması gerekir.
+Bu, kaynak diski için dosya sistemi türünü belirtir. Desteklenen değerler Linux dağıtımına göre değişir. Dize X ise, mkfs. X Linux görüntü üzerinde mevcut olmalıdır. SLES 11 görüntüleri genellikle 'ext3' kullanmalıdır. FreeBSD görüntüleri burada 'ufs2' kullanmalısınız.
 
-**ResourceDisk. Bağlamanoktası:**  
+**ResourceDisk.MountPoint:**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-Bu, kaynak diskinin bağlı olduğu yolu belirtir. Kaynak disk *geçici* bir DISKTIR ve VM 'nin sağlaması tamamlandığında boşaltılır.
+Bu, kaynak diskinin monte edildiği yolu belirtir. Kaynak *diskgeçici* bir disktir ve VM deprovisioned olduğunda boşaltılabilir.
 
-**ResourceDisk. MountOptions**  
+**ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
 ```
-Mount-o komutuna geçirilecek disk bağlama seçeneklerini belirtir. Bu, EX değerlerinin virgülle ayrılmış listesidir. ' nodev, nosuıd '. Ayrıntılar için bağlama (8) bölümüne bakın.
+Mount -o komutuna geçirilecek disk montaj seçeneklerini belirtir. Bu, virgülle ayrılmış bir değerler listesi, ör. 'nodev, nosuid'. Ayrıntılar için montaj(8) bilgisine bakın.
 
-**ResourceDisk. EnableSwap:**  
+**ResourceDisk.EnableSwap:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa, kaynak diskte bir takas dosyası (/Swapfile) oluşturulur ve sistem takas alanına eklenir.
+Ayarlanırsa, kaynak diskinde bir takas dosyası (/swapfile) oluşturulur ve sistem takas alanına eklenir.
 
-**ResourceDisk. SwapSizeMB:**  
+**ResourceDisk.SwapSizeMB:**  
 ```
 Type: Integer  
 Default: 0
 ```
-Takas dosyasının megabayt cinsinden boyutu.
+Megabayt takas dosyasının boyutu.
 
-**Günlükler. verbose:**  
+**Logs.Verbose:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa, günlük ayrıntı düzeyi artırıldığı. Waagent günlüğü/var/log/waagent.log olarak kaydedilir ve günlükleri döndürmek için sistem logrotate işlevini kullanır.
+Ayarlanırsa, günlük ayrıntılılığı artırılır. Waagent /var/log/waagent.log'a günlük ler ve günlükleri döndürmek için sistem günlük döndürme işlevini kullanır.
 
-**OS.EnableRDMA**  
+**Os. ETKINLEŞTIRMERDMA**  
 ```
 Type: Boolean  
 Default: n
 ```
-Ayarlanırsa, aracı temel donanımda üretici yazılımının sürümüyle eşleşen bir RDMA çekirdek sürücüsü yüklemeye çalışır ve sonra yükler.
+Ayarlanırsa, aracı, dayanak donanımdaki firmware sürümüyle eşleşen bir RDMA çekirdeği sürücüsü yüklemeye ve yüklemeye çalışır.
 
-**Atayamadı. Rootdevicescsıtimeout:**  
+**Os. RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
 ```
-Bu ayar, işletim sistemi diskinde ve veri sürücülerinde SCSI zaman aşımını saniye cinsinden yapılandırır. Ayarlanmamışsa, sistem Varsayılanları kullanılır.
+Bu ayar, SCSI zaman öncesini işletim sistemi diski ve veri sürücülerinde saniyeler içinde yapılandırır. Ayaredilmezse, sistem varsayılanları kullanılır.
 
-**OS.OpensslPath:**  
+**Os. OpensslPath:**  
 ```
 Type: String  
 Default: None
 ```
-Bu ayar, şifreli işlemler için kullanılacak OpenSSL ikilisinin alternatif yolunu belirtmek için kullanılabilir.
+Bu ayar, şifreleme işlemleri için kullanılacak openssl ikilisi için alternatif bir yol belirtmek için kullanılabilir.
 
-**HttpProxy. Host, HttpProxy. Port**  
+**HttpProxy.Host, HttpProxy.Port**  
 ```
 Type: String  
 Default: None
 ```
-Ayarlanırsa, aracı internet 'e erişmek için bu proxy sunucusunu kullanır. 
+Ayarlanırsa, aracı internete erişmek için bu proxy sunucusunu kullanır. 
 
-**Otomatik güncelleştirme. etkin**
+**Otomatik Güncelleştirme.Etkin**
 ```
 Type: Boolean
 Default: y
 ```
-Hedef durum işleme için otomatik güncelleştirmeyi etkinleştirin veya devre dışı bırakın; Varsayılan değer etkindir.
+Hedef durumu işleme için otomatik güncelleştirmeyi etkinleştirme veya devre dışı kılabilir; varsayılan etkindir.
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu bulut görüntüleri
-Ubuntu bulut görüntüleri, aksi takdirde Azure Linux Aracısı tarafından yönetilebilecek birçok yapılandırma görevini gerçekleştirmek için [Cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) ' i kullanır. Aşağıdaki farklar geçerlidir:
+## <a name="ubuntu-cloud-images"></a>Ubuntu Bulut Görüntüleri
+Ubuntu Cloud Images, aksi takdirde Azure Linux Aracısı tarafından yönetilecek birçok yapılandırma görevini gerçekleştirmek için [bulut init'i](https://launchpad.net/ubuntu/+source/cloud-init) kullanır. Aşağıdaki farklar geçerlidir:
 
-* **Sağlama. Enabled** , sağlama görevlerini gerçekleştirmek için Cloud-Init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
-* Aşağıdaki yapılandırma parametrelerinin, kaynak diski yönetmek için Cloud-init kullanan Ubuntu bulut görüntüleri üzerinde hiçbir etkisi yoktur ve alanı takas edin:
+* **Provisioning.Enabled** varsayılan "n" ubuntu Bulut Görüntüleri olan bu sağlama görevleri gerçekleştirmek için bulut init kullanın.
+* Aşağıdaki yapılandırma parametrelerinin, kaynak diskini yönetmek ve alanı değiştirmek için bulut init kullanan Ubuntu Bulut Görüntüleri üzerinde hiçbir etkisi yoktur:
   
-  * **ResourceDisk. Format**
-  * **ResourceDisk. FileSystem**
-  * **ResourceDisk. Bağlamanoktası**
-  * **ResourceDisk. EnableSwap**
-  * **ResourceDisk. SwapSizeMB**
+  * **ResourceDisk.Format**
+  * **ResourceDisk.Filesystem**
+  * **ResourceDisk.MountPoint**
+  * **ResourceDisk.EnableSwap**
+  * **ResourceDisk.SwapSizeMB**
 
-* Daha fazla bilgi için, kaynak diski bağlama noktasını yapılandırmak ve sağlama sırasında Ubuntu bulut görüntülerinde alanı değiştirmek için aşağıdaki kaynaklara bakın:
+* Daha fazla bilgi için, kaynak diski montaj noktasını yapılandırmak ve sağlama sırasında Ubuntu Bulut Görüntüleri'nde alanı değiştirmek için aşağıdaki kaynaklara bakın:
   
-  * [Ubuntu wiki: takas bölümlerini yapılandırma](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Özel verileri bir Azure sanal makinesine ekleme](../windows/classic/inject-custom-data.md)
+  * [Ubuntu Wiki: Swap Bölümlerini Yapılandır](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Azure Sanal Makinesine Özel Veri Enjekte Etme](../windows/classic/inject-custom-data.md)
 

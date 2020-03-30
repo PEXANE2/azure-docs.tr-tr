@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell örnekleri-Azure Load Balancer
-description: Bu örneklerde, sanal makinelerde birden çok Web sitesine yük dengeleme ve Azure Load Balancer için VM 'lere trafik trafiği.
+title: Azure PowerShell Örnekleri - Azure Yük Dengeleyici
+description: Bu örneklerle, Bakiye trafiğini VM'lerde birden çok web'e yükleyin ve Azure Yük Dengeleyicisi ile HA için VM'lere trafik yükleyin.
 services: virtual-network
 documentationcenter: load-balancer
 author: asudbring
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
 ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048723"
 ---
-# <a name="azure-powershell-samples-for-load-balancer"></a>Load Balancer için Azure PowerShell örnekleri
+# <a name="azure-powershell-samples-for-load-balancer"></a>Yük Dengeleyicisi için Azure PowerShell Örnekleri
 
-Aşağıdaki tabloda Azure PowerShell kullanılarak oluşturulan betiklerin bağlantıları yer almaktadır.
+Aşağıdaki tablo, Azure PowerShell kullanılarak oluşturulmuş komut dosyalarına bağlantılar içerir.
 
 | | |
 |-|-|
-| [Yüksek kullanılabilirlik için Vm'lere Yük Dengeleme trafiği](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Birden çok yüksek oranda kullanılabilir sanal makineler ve yük dengeli küme yapılandırması oluşturur. |
-| [Birden fazla Web sitesi vm'lerde Yük Dengeleme](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Azure kullanılabilirlik kümesi, Azure Load Balancer erişilebilen katılmış birden fazla IP yapılandırması ile iki VM oluşturur. |
+| [Yüksek kullanılabilirlik için VM'lere yük dengesi trafiği](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Yüksek kullanılabilir ve yük dengeli yapılandırmabirkaç sanal makineler oluşturur. |
+| [VM'lerde birden fazla web sitesini yükleme dengesi](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Birden çok IP yapılandırmasına sahip, Azure Kullanılabilirlik Seti'ne katılan ve Azure Yük Dengeleyicisi aracılığıyla erişilebilen iki VM oluşturur. |
 | | |

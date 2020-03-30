@@ -1,7 +1,7 @@
 ---
-title: 'Python modeli oluşturma: modül başvurusu'
+title: 'Python Model in oluşturma: Modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Özel Modelleme veya veri işleme modülü oluşturmak için Azure Machine Learning Python modeli oluşturma modülünü nasıl kullanacağınızı öğrenin.
+description: Azure Machine Learning'de Özel bir modelleme veya veri işleme modülü oluşturmak için Python Modeli Oluştur modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,36 +10,36 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371826"
 ---
-# <a name="create-python-model-module"></a>Python model modülü oluşturma
+# <a name="create-python-model-module"></a>Python Model modül oluşturma
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Python betiğiyle eğitilen bir model oluşturmak için Python modeli oluşturma modülünü nasıl kullanacağınızı öğrenin. Modeli, Azure Machine Learning tasarımcı ortamındaki bir Python paketine dahil olan herhangi bir öğrenici üzerine temelleyebilirsiniz. 
+Python komut dosyasından eğitimsiz bir model oluşturmak için Python Model Oluştur modüllerini nasıl kullanacağınızı öğrenin. Modeli, Azure Machine Learning tasarımcı ortamında python paketinde bulunan tüm öğrencilere dayandırabilirsiniz. 
 
-Modeli oluşturduktan sonra, Azure Machine Learning diğer öğrenme gibi bir veri kümesi üzerinde modeli eğmek için [eğitme modeli](train-model.md) ' ni kullanabilirsiniz. Eğitilen model, tahmine dayalı hale getirmek için [puan modeline](score-model.md) geçirilebilir. Daha sonra eğitilen modeli kaydedebilir ve Puanlama iş akışını bir Web hizmeti olarak yayımlayabilirsiniz.
+Modeli oluşturduktan sonra, Azure Machine Learning'deki diğer öğrenciler gibi modeli bir veri kümesinde eğitmek için [Train Model'i](train-model.md) kullanabilirsiniz. Eğitimli model tahmin yapmak için [Puan Modeli](score-model.md) geçirilebilir. Daha sonra eğitimli modeli kaydedebilir ve puanlama iş akışını bir web hizmeti olarak yayımlayabilirsiniz.
 
 > [!WARNING]
-> Şu anda [modeli değerlendirmek](evaluate-model.md)Için bir Python modelinin puanlanmış sonuçlarının iletilmesi mümkün değildir. Bir modeli değerlendirmeniz gerekiyorsa, özel bir Python betiği yazabilir ve [Python betiği Yürüt](execute-python-script.md) modülünü kullanarak çalıştırabilirsiniz.  
+> Şu anda, Bir Python modelinin puanlı sonuçlarını [Model'i değerlendirmek](evaluate-model.md)için geçmek mümkün değildir. Bir modeli değerlendirmeniz gerekiyorsa, özel bir Python komut dosyası yazabilir ve Python Script modüllerini [çalıştırarak](execute-python-script.md) çalıştırabilirsiniz.  
 
 
-## <a name="configure-the-module"></a>Modülü yapılandırma
+## <a name="configure-the-module"></a>Modülü yapılandırın
 
-Bu modülün kullanımı, Python 'un ara veya uzman bilgisini gerektirir. Modül, Azure Machine Learning ' de zaten yüklü olan Python paketlerine dahil olan herhangi bir Learner 'ın kullanımını destekler. [Python betiğini yürütme](execute-python-script.md)içindeki önceden yüklenmiş Python paketi listesine bakın.
+Bu modülün kullanımı Python'un ara veya uzman bilgisi gerektirir. Modül, Azure Machine Learning'de zaten yüklü olan Python paketlerine dahil olan tüm öğrencilerin kullanımını destekler. [Python Komut Dosyası Yürüt'te](execute-python-script.md)önceden yüklenmiş Python paket listesine bakın.
   
 
-Bu makalede, basit bir işlem hattı ile **Python modeli oluşturma** 'nın nasıl kullanılacağı gösterilmektedir. Ardışık düzenin diyagramı aşağıda verilmiştir:
+Bu makalede, basit bir ardışık işlem ile **Python Model oluştur** nasıl kullanılacağını gösterir. Burada boru hattı nın bir diyagramı:
 
-![Python modeli oluşturma diyagramı](./media/module/create-python-model.png)
+![Python Modeli Oluşturma Diyagramı](./media/module/create-python-model.png)
 
-1. **Python modeli oluştur**' u seçin ve komut dosyasını düzenleyerek modelleme veya veri yönetimi işleminizi uygulayın. Modeli, Azure Machine Learning ortamındaki bir Python paketine dahil olan herhangi bir öğrenici üzerine temelleyebilirsiniz.
+1. **Python Modeli Oluştur'u**seçin ve modelleme veya veri yönetimi işleminizi uygulamak için komut dosyasını düzenlediniz. Modeli, Azure Machine Learning ortamında python paketinde bulunan tüm öğrencilere dayandırabilirsiniz.
 
-   İki sınıftaki Naive Bayes sınıflandırıcısıdır aşağıdaki örnek kod, popüler *sköğren* paketini kullanır:
+   İki sınıfna ait Naive Bayes sınıflandırıcısının aşağıdaki örnek kodu popüler *sklearn* paketini kullanır:
 
    ```Python
 
@@ -73,11 +73,11 @@ Bu makalede, basit bir işlem hattı ile **Python modeli oluşturma** 'nın nas�
 
    ```
 
-1. Model ve **puan modeli** **eğitimi** Için yeni oluşturduğunuz **Python modeli oluşturma** modülünü bağlayın.
+1. Model ve **Puan Modelini** **Eğitmek** için oluşturduğunuz **Python Model** Oluştur modülünü bağlayın.
 
-1. Modeli değerlendirmeniz gerekiyorsa, bir [Python betik modülünü yürütün](execute-python-script.md) ve Python betiğini düzenleyin.
+1. Modeli değerlendirmeniz gerekiyorsa, Bir [Execute Python Script](execute-python-script.md) modülü ekleyin ve Python komut dosyasını düzenlemeyi.
 
-   Aşağıdaki betik örnek değerlendirme kodudur:
+   Aşağıdaki komut dosyası örnek değerlendirme kodudur:
 
    ```Python
 
@@ -118,4 +118,4 @@ Bu makalede, basit bir işlem hattı ile **Python modeli oluşturma** 'nın nas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

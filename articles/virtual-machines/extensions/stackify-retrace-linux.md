@@ -1,6 +1,6 @@
 ---
-title: Yeniden Izleme Azure Linux aracı uzantısını stackbelirt
-description: Bir Linux sanal makinesine Stackbelirt yeniden Izleme Linux Aracısı dağıtın.
+title: Stackify Retrace Azure Linux Aracı uzantısı
+description: Stackify Retrace Linux aracısını bir Linux sanal makinesinde dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
@@ -14,54 +14,54 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253799"
 ---
-# <a name="stackify-retrace-linux-agent-extension"></a>Yeniden Izleme Linux Aracısı uzantısını stackbelirt
+# <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent Uzantısı
 
 ## <a name="overview"></a>Genel Bakış
 
-Stackbelirt, sorunları hızla bulmaya ve gidermeye yardımcı olmak üzere uygulamanız hakkındaki ayrıntıları izleyen ürünler sağlar. Geliştirici ekipleri için, yeniden Izleme tamamen tümleşik, çok ortamlı, uygulama performansı süper güçü. Her geliştirme ekibinin ihtiyacı olan çeşitli araçları birleştirir.
+Stackify, sorunları hızla bulmanıza ve düzeltmenize yardımcı olmak için uygulamanızla ilgili ayrıntıları izleyen ürünler sağlar. Geliştirici ekipleri için Retrace, tam entegre, çok ortamlı, uygulama performansı süper gücüdür. Her geliştirme ekibinin ihtiyaç duyduğu çeşitli araçları birleştirir.
 
-Yeniden izleme özelliği, tüm ortamlarda aşağıdaki tüm özellikleri tek bir platformda sunan tek araçtır.
+Retrace, tüm ortamlarda ki tüm özellikleri tek bir platformda sunan TEK araçtır.
 
 * Uygulama performans yönetimi (APM)
 * Uygulama ve sunucu günlüğü
 * Hata izleme ve izleme
 * Sunucu, uygulama ve özel ölçümler
 
-**Stackbelirt Linux Aracısı uzantısı hakkında**
+**Stackify Linux Agent Extension Hakkında**
 
-Bu uzantı, yeniden Izleme için Linux Aracısı için bir install yolu sağlar. 
+Bu uzantı, Linux Agent for Retrace için bir yükleme yolu sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi 
 
-Retrace Aracısı bu Linux dağıtımlarına karşı çalıştırılabilir
+Retrace aracısı bu Linux dağıtımlarına karşı çalıştırılabilir
 
 | Dağıtım | Sürüm |
 |---|---|
-| Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 ve 17,04 |
-| Debian | 7.9 + ve 8.2 +, 9 |
-| Red Hat | 6.7 +, 7.1 + |
-| CentOS | 6.3 +, 7.0 + |
+| Ubuntu | 16.04 LTS, 14.04 LTS, 16.10 ve 17.04 |
+| Debian | 7.9+ ve 8.2+, 9 |
+| Red Hat | 6.7+, 7.1+ |
+| CentOS | 6.3+, 7.0+ |
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Linux için Stacktarget aracı uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. 
+Linux için Stackify Agent uzantısı hedef sanal makine internete bağlı olmasını gerektirir. 
 
-Stackbir bağlantı kurulmasına izin vermek için ağ yapılandırmanızı ayarlamanız gerekebilir, bkz. https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Bağlantıların Stackify'ye bağlanmasına izin verecek şekilde https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewallağ yapılandırmanızı ayarlamanız gerekebilir, bkz. 
 
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
 ---
 
-Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını gösterir. Uzantı `environment` ve `activationKey`gerektirir.
+Aşağıdaki JSON Stackify Retrace Agent uzantısı için şema gösterir. Uzantısı gerektirir `environment` ve `activationKey`.
 
 ```json
     {
@@ -89,13 +89,13 @@ Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını göster
 
 ## <a name="template-deployment"></a>Şablon dağıtımı 
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Stackbelirt Linux Aracısı uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir.  
+Azure VM uzantıları Azure Kaynak Yöneticisi şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı olarak ayrıntılı olarak kullanılan JSON şeması, Azure Kaynak Yöneticisi şablonu dağıtımı sırasında Stackify Retrace Linux Agent uzantısını çalıştırmak için bir Azure Kaynak Yöneticisi şablonunda kullanılabilir.  
 
-Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. alt kaynaklar için ad ve tür ayarlama.
+Sanal makine uzantısı için JSON, sanal makine kaynağının içine yerleştirilebilir veya Kaynak Yöneticisi JSON şablonunun köküne veya üst seviyesine yerleştirilebilir. JSON'un yerleşimi kaynak adının ve türünün değerini etkiler. Daha fazla bilgi için bkz.
 
-Aşağıdaki örnek, Stackbir retrace Linux uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, sanal makinenin "resources": [] nesnesine yerleştirilir.
+Aşağıdaki örnekstackify Retrace Linux uzantısı sanal makine kaynağı içinde iç içe olduğunu varsayar. Uzantı kaynağını iç içe yerleştirirken, JSON sanal makinenin "kaynaklar"ına yerleştirilir: [] sanal makinenin nesnesi.
 
-Uzantı `environment` ve `activationKey`gerektirir.
+Uzantısı gerektirir `environment` ve `activationKey`.
 
 ```json
     {
@@ -121,7 +121,7 @@ Uzantı `environment` ve `activationKey`gerektirir.
     }      
 ```
 
-Uzantı JSON şablonu kökünde yerleştirilirken, kaynak adı üst sanal makineye bir başvuru içerir ve iç içe geçmiş yapılandırma türü yansıtır.
+UzantıJSON'u şablonun köküne yerleştirirken, kaynak adı üst sanal makineye bir başvuru içerir ve tür iç içe yapılan yapılandırmayı yansıtır.
 
 ```json
     {
@@ -150,9 +150,9 @@ Uzantı JSON şablonu kökünde yerleştirilirken, kaynak adı üst sanal makine
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-`Set-AzVMExtension` komutu, Stackbir retrace Linux Aracısı sanal makinesi uzantısını mevcut bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
+Komut, `Set-AzVMExtension` Stackify Retrace Linux Agent sanal makine uzantısını varolan bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, genel ve özel yapılandırmaların PowerShell karma tablosunda depolanmış olması gerekir.
 
-Uzantı `environment` ve `activationKey`gerektirir.
+Uzantısı gerektirir `environment` ve `activationKey`.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -169,33 +169,33 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
     -Location WestUS `
 ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtım 
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtımı 
 
-Azure CLı Aracı, Stackbir retrace Linux Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir.  
+Azure CLI aracı, Stackify Retrace Linux Agent sanal makine uzantısını varolan bir sanal makineye dağıtmak için kullanılabilir.  
 
-Uzantı `environment` ve `activationKey`gerektirir.
+Uzantısı gerektirir `environment` ve `activationKey`.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
 ```
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="error-codes"></a>Hata kodları
 
 | Hata kodu | Anlamı | Olası eylem |
 | :---: | --- | --- |
-| 10 | Yüklemesi hatası | wget gereklidir |
-| 20 | Yüklemesi hatası | Python gereklidir |
-| 30 | Yüklemesi hatası | sudo gereklidir |
-| 40 | Yüklemesi hatası | activationKey gereklidir |
-| 51 | Yüklemesi hatası | İşletim sistemi tarafından kapatma desteklenmiyor |
-| 60 | Yüklemesi hatası | ortam gereklidir |
-| 70 | Yüklemesi hatası | Bilinmiyor |
-| 80 | Etkinleştirme hatası | Hizmet kurulumu başarısız oldu |
-| 90 | Etkinleştirme hatası | Hizmet başlatılamadı |
-| 100 | Hatayı devre dışı bırak | Hizmet durdurulamadı |
-| 110 | Hatayı devre dışı bırak | Hizmet kaldırılamadı |
-| 120 | Kaldırma Hatası | Hizmet durdurulamadı |
+| 10 | Yükleme Hatası | wget gereklidir |
+| 20 | Yükleme Hatası | python gereklidir |
+| 30 | Yükleme Hatası | sudo gereklidir |
+| 40 | Yükleme Hatası | activationKey gereklidir |
+| 51 | Yükleme Hatası | Os dağıtım desteklenmiyor |
+| 60 | Yükleme Hatası | çevre gereklidir |
+| 70 | Yükleme Hatası | Bilinmiyor |
+| 80 | Hatayı Etkinleştir | Servis kurulumu başarısız oldu |
+| 90 | Hatayı Etkinleştir | Hizmet başlatma başarısız oldu |
+| 100 | Hatayı Devre Dışı | Hizmet Durdurma Başarısız Oldu |
+| 110 | Hatayı Devre Dışı | Hizmet Kaldırma Başarısız Oldu |
+| 120 | Kaldırma Hatası | Hizmet Durdurma Başarısız Oldu |
 
-Daha fazla yardıma ihtiyacınız varsa https://support.stackify.com' de Stackbelirt desteğiyle iletişim sağlayabilirsiniz.
+Daha fazla yardıma ihtiyacınız varsa Stackify https://support.stackify.comdesteğine '.

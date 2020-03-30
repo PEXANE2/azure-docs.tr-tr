@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory bir veri fabrikası kopyalama veya kopyalama
-description: Azure Data Factory ' de bir veri fabrikasını kopyalama veya kopyalama hakkında bilgi edinin
+title: Azure Veri Fabrikası'nda bir veri fabrikasını kopyalama veya klonlama
+description: Azure Veri Fabrikası'nda bir veri fabrikasını kopyalama veya klonlama hakkında bilgi edinin
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,40 +12,40 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678121"
 ---
-# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory bir veri fabrikası kopyalama veya kopyalama
+# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Veri Fabrikası'nda bir veri fabrikasını kopyalama veya klonlama
 
-Bu makalede, Azure Data Factory ' de bir veri fabrikasının nasıl kopyalanacağı veya kopyalanacağı açıklanır.
+Bu makalede, Azure Veri Fabrikası'ndaki bir veri fabrikasının nasıl kopyalanır veya klonlanır.
 
-## <a name="use-cases-for-cloning-a-data-factory"></a>Veri fabrikasını kopyalamak için kullanım örnekleri
+## <a name="use-cases-for-cloning-a-data-factory"></a>Veri fabrikasını klonlamak için servis taleplerini kullanma
 
-Veri fabrikasını kopyalamak veya klonlamak için yararlı bulabileceğiniz durumlardan bazıları şunlardır:
+Bir veri fabrikasını kopyalamayı veya klonlamayı yararlı bulabileceğiniz durumlardan bazıları şunlardır:
 
--   **Kaynakları yeniden adlandırma**. Azure, kaynakların yeniden adlandırılmasını desteklemez. Bir veri fabrikasını yeniden adlandırmak isterseniz, veri fabrikasını farklı bir adla kopyalayabilir ve ardından var olanı silebilirsiniz.
+-   **Kaynakları yeniden adlandırma.** Azure, kaynakları yeniden adlandırmayı desteklemez. Bir veri fabrikasını yeniden adlandırmak istiyorsanız, veri fabrikasını farklı bir adla klonlayabilir ve varolan ını silebilirsiniz.
 
--   Hata ayıklama özellikleri yeterli olmadığında **değişiklikleri hata ayıklama** . Bazen yaptığınız değişiklikleri test etmek için, değişikliklerinizi ana birine uygulamadan önce farklı bir fabrikada test etmek isteyebilirsiniz. Çoğu senaryoda hata ayıkla ' yı kullanabilirsiniz. Ancak tetikleyicide yapılan değişiklikler; örneğin, bir tetikleyici otomatik olarak çağrıldığında veya bir zaman penceresinde, iade etmeden kolayca çalışmayabilir. Bu durumlarda, fabrikası klonlamak ve yaptığınız değişiklikleri uygulamak çok sayıda fikir sunar. Azure Data Factory öncelikle çalışma sayısına göre ücretlendirdiği için ikinci fabrika hiçbir ek ücrete neden olmaz.
+-   Hata ayıklama özellikleri yeterli olmadığında hata **ayıklama değişiklikleri.** Bazen değişikliklerinizi test etmek için, değişikliklerinizi ana fabrikanıza uygulamadan önce farklı bir fabrikada test etmek isteyebilirsiniz. Çoğu senaryoda Hata Ayıklama'yı kullanabilirsiniz. Ancak tetikleyicilerde, tetikleyici otomatik olarak çağrıldığınızda veya bir zaman penceresinde değişikliklerinizin nasıl hareket edilebileceği gibi değişiklikler, teslim olmadan kolayca sınanamaz. Bu gibi durumlarda, fabrika klonlama ve orada değişiklikleri uygulayarak çok mantıklı. Azure Veri Fabrikası öncelikle çalıştırma sayısına göre ücretlendirme yaptığından, ikinci fabrika ek ücretlendirmeye yol açmaz.
 
-## <a name="how-to-clone-a-data-factory"></a>Veri fabrikasını kopyalama
+## <a name="how-to-clone-a-data-factory"></a>Bir veri fabrikasını klonlama
 
-1. Azure portal Data Factory Kullanıcı arabirimi, veri fabrikanızın tüm yükünü bir Kaynak Yöneticisi şablonuna dışa aktarmanıza olanak tanır ve fabrikanızı kopyaladığınızda değiştirmek istediğiniz değerleri değiştirmenize olanak tanıyan bir parametre dosyası ile birlikte.
+1. Azure portalındaki Veri Fabrikası UI,, fabrikanızı klonlarken değiştirmek istediğiniz değerleri değiştirmenize olanak tanıyan bir parametre dosyasıyla birlikte veri fabrikanızın tüm yükünü Bir Kaynak Yöneticisi şablonuna aktarmanızı sağlar.
 
-1. Bir önkoşul olarak, hedef veri fabrikanızı Azure portal oluşturmanız gerekir.
+1. Ön koşul olarak, Azure portalından hedef veri fabrikanızı oluşturmanız gerekir.
 
-1. Kaynak fabrikasında SelfHosted bir tümleştirme çalışma zamanı varsa, bu adı hedef fabrikasında aynı adla oluşturmanız gerekir. Şirket içinde barındırılan IRS 'yi farklı fabrikalar arasında paylaştırmak istiyorsanız [burada](source-control.md#best-practices-for-git-integration)yayınlanan kalıbı kullanabilirsiniz.
+1. Kaynak fabrikanızda SelfHosted IntegrationRuntime varsa, hedef fabrikada aynı adla oluşturmanız gerekir. SelfHosted IRs'leri farklı fabrikalar arasında paylaşmak istiyorsanız, [burada](source-control.md#best-practices-for-git-integration)yayınlanan deseni kullanabilirsiniz.
 
-1. GIT modundaysanız, portaldan yayımladığınızda, fabrikanızın Kaynak Yöneticisi şablonu, deponun adf_publish dalındaki GIT 'e kaydedilir.
+1. GIT modundaysanız, portaldan her yayımladığınızda, fabrikanın Kaynak Yöneticisi şablonu deponun adf_publish dalında GIT'e kaydedilir.
 
-1. Diğer senaryolar için Kaynak Yöneticisi şablonu, portalda **Kaynak Yöneticisi şablonu dışarı aktar** düğmesine tıklanarak indirilebilir.
+1. Diğer senaryolar için Kaynak Yöneticisi şablonu portaldaki **Dışa Aktarma Kaynak Yöneticisi şablon** düğmesine tıklayarak indirilebilir.
 
-1. Kaynak Yöneticisi şablonunu indirdikten sonra standart Kaynak Yöneticisi şablonu dağıtım yöntemleri aracılığıyla dağıtabilirsiniz.
+1. Kaynak Yöneticisi şablonu'nu indirdikten sonra, standart Kaynak Yöneticisi şablondağıtım yöntemleri yle dağıtabilirsiniz.
 
-1. Güvenlik nedenleriyle, oluşturulan Kaynak Yöneticisi şablonu bağlantılı hizmetlerin parolaları gibi gizli bilgiler içermez. Sonuç olarak, bu parolaları dağıtım parametreleri olarak sağlamanız gerekir. Parametre sağlanması istenmediğinde, Azure Key Vault bağlı hizmetlerin bağlantı dizelerini ve parolalarını edinmeniz gerekir.
+1. Güvenlik nedenleriyle, oluşturulan Kaynak Yöneticisi şablonu bağlantılı hizmetlerin parolaları gibi gizli bilgiler içermez. Sonuç olarak, bu parolaları dağıtım parametreleri olarak sağlamanız gerekir. Parametreleri sağlamak istenmiyorsa, bağlı hizmetlerin bağlantı dizelerini ve parolalarını Azure Key Vault'tan almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-portal.md)içindeki Azure Portal veri fabrikası oluşturma kılavuzunu gözden geçirin.
+[Azure Veri Fabrikası Web'si'ni kullanarak veri fabrikası oluşturma'daki](quickstart-create-data-factory-portal.md)Azure portalında bir veri fabrikası oluşturma kılavuzunu gözden geçirin.

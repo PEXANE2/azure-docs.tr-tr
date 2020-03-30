@@ -1,7 +1,7 @@
 ---
 title: Algoritma örnekleri
 titleSuffix: ML Studio (classic) - Azure
-description: Machine learning temel bilgileri anlaşılması kolay bir bakış algoritma örnekleri içerir. İndirilebilir bilgi grafiği çoğu machine learning soruları kapsar.
+description: Makine öğrenimi temellerine kolay anlaşılır bir genel bakış algoritma örnekleri içerir. İndirilebilir infografik çoğu makine öğrenimi sorularını kapsar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,34 +11,34 @@ ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204486"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>İndirilebilir Bilgi Grafiği: Algoritma örnekleri ile machine learning temel bilgileri
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Machine learning temel bilgileri yaygın machine learning soruları yanıtlamak için kullanılan popüler algoritmaları hakkında bilgi edinmek için bu bilgi grafiği anlaşılması kolay bakış indirin. Algoritma örnekleri hangi algoritmaları ve kullanıldıkları anlamak machine learning Acemi yardımcı olur.
+Sık karşılaşılan makine öğrenimi sorularını yanıtlamak için kullanılan popüler algoritmalar hakkında bilgi edinmek için makine öğrenimi temellerinin anlaşılması kolay bilgi grafiğine genel bakışı indirin. Algoritma örnekleri, makine öğreniminin yeni başlayanların hangi algoritmaların kullanılacağını ve ne için kullanıldığını anlamasına yardımcı olur.
 
-## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio popüler algoritmalar (klasik)
+## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio'da popüler algoritmalar (klasik)
 
-[Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) , tahmine dayalı analiz için büyük bir algoritma kitaplığıyla birlikte gelir. Bu Infographic, dört popüler algoritma ailesi (gerileme, anomali algılama, kümeleme ve sınıflandırma) tanımlar ve [Azure yapay zeka Galerisi](https://gallery.azure.ai/)çalışan örneklere bağlantılar sağlar. Galeri, örnek denemeleri ve bu algoritmalar pek çok gerçek dünya çözümleri nasıl uygulanabileceğini gösteren öğreticileri içerir.
+[Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) tahmine dayalı analitik için büyük bir algoritma kitaplığıyla birlikte gelir. Bu bilgi grafiği, dört popüler algoritma ailesi (regresyon, anomali algılama, kümeleme ve sınıflandırma) tanımlar ve [Azure AI Galerisi'ndeki](https://gallery.azure.ai/)çalışma örneklerine bağlantılar sağlar. Galeri, bu algoritmaların birçok gerçek dünya çözümünde nasıl uygulanabileceğini gösteren örnek denemeler ve öğreticiler içerir.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Algoritma örnekleri ile bilgi Grafiği'ni indirin
+## <a name="download-the-infographic-with-algorithm-examples"></a>Algoritma örnekleri ile infografik indirin
 
-**[İndirin: algoritma örneklerine yönelik bağlantılarla makine öğrenimi temelleri hakkında bilgi grafiği (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Indirin: Algoritma örneklerine bağlantılar içeren makine öğrenimi temellerinin infografik (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Bilgi grafiği: algoritma örnekleri ile temellerini öğrenme makine. Yaygın algoritmalar. Yeni başlayanlar için makine.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infographic: Algoritma örnekleri ile makine öğrenimi temelleri. Popüler algoritmalar. Yeni başlayanlar için makine öğrenimi.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
-## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Yeni başlayanlar ve İleri düzey kullanıcılar için algoritmalar ile daha fazla yardım
+## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Yeni başlayanlar ve gelişmiş kullanıcılar için algoritmalar ile daha fazla yardım
 
-* Farklı makine öğrenimi algoritmalarının, nasıl kullanılabilecekleri ve çözümünüz için doğru bir şekilde nasıl seçeceğiniz hakkında daha derin bir tartışma için bkz. [Microsoft Azure Machine Learning Studio algoritmaları seçme (klasik)](algorithm-choice.md).
-* Machine Learning Studio (klasik) ' de bulunan tüm makine öğrenimi algoritmalarının kategorilerine göre bir liste için, bkz. Machine Learning Studio (klasik) algoritması ve modül yardımı 'nda [modeli başlatma][initialize-model] .
-* Machine Learning Studio (klasik) içindeki algoritmaların ve modüllerin tam alfabetik bir listesi için, bkz. Machine Learning Studio (klasik) algoritması ve modül yardımı 'nda [a-Z Machine Learning Studio (klasik) modülleri listesi][a-z-list] .
-* Azure Yapay Zeka Galerisi ve topluluk tarafından üretilen birçok kaynağa genel bir bakış için, bkz. [Azure yapay zeka Galerisi kaynakları paylaşma ve bulma](gallery-how-to-use-contribute-publish.md).
+* Farklı makine öğrenimi algoritmaları, bunların nasıl kullanıldığı ve çözümünüz için doğru algoritmayı nasıl seçeceğiniz hakkında daha derin bir tartışma için [Microsoft Azure Machine Learning Studio (klasik) için algoritmaları nasıl seçeceğinize](algorithm-choice.md)bakın.
+* Machine Learning Studio'da (klasik) bulunan tüm makine öğrenimi algoritmalarının kategorisine göre bir liste için, Machine Learning Studio (klasik) Algoritma ve Modül Yardımı'ndaki [Initialize Model'e][initialize-model] bakın.
+* Machine Learning Studio'daki (klasik) algoritma ve modüllerin tam alfabetik listesi için Machine Learning Studio (klasik) Algoritma ve Modül Yardımı'ndaki [Machine Learning Studio (klasik) modüllerin A-Z listesine][a-z-list] bakın.
+* Azure AI Galerisi'ne ve burada kullanılabilen topluluk tarafından oluşturulan birçok kaynağa genel bakış için Azure [AI Galerisi'ndeki Kaynakları Paylaş'a](gallery-how-to-use-contribute-publish.md)bakın ve keşfedin.
 
 
 <!-- Module References -->

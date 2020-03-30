@@ -1,6 +1,6 @@
 ---
 title: Veri akışlarını eşleme
-description: Azure Data Factory veri akışlarını eşleştirmeye genel bakış
+description: Azure Veri Fabrikası'nda veri akışlarını eşleme genel bakış
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,145 +9,145 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243802"
 ---
 # <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
-Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışları, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeklendirilen Spark kümelerini kullanan Azure Data Factory işlem hatları içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri mevcut Data Factory zamanlama, denetim, akış ve izleme özellikleri aracılığıyla çalıştırılabilir.
+Veri akışlarını haritalama, Azure Veri Fabrikası'nda görsel olarak tasarlanmış veri dönüşümleridir. Veri akışları, veri mühendislerinin kod yazmadan grafiksel veri dönüştürme mantığı geliştirmelerine olanak sağlar. Ortaya çıkan veri akışları, ölçeklenmiş Spark kümelerini kullanan Azure Veri Fabrikası ardışık hatlarındaki etkinlikler olarak yürütülür. Veri akışı faaliyetleri, mevcut Veri Fabrikası zamanlama, kontrol, akış ve izleme yetenekleri aracılığıyla operasyonel hale getirilebilir.
 
-Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tam bir görsel deneyim sağlar. Veri akışlarınız, ölçeği genişletilmiş veri işleme için kendi yürütme kümenizde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
+Veri akışlarının eşlemesi, kodlama gerektirmeden tam görsel bir deneyim sağlar. Veri akışlarınız, ölçeklenmiş veri işleme için kendi yürütme kümenizde çalışır. Azure Veri Fabrikası, veri akışı işlerinizi tüm kod çevirisini, yol optimizasyonunu ve yürütülmesini işler.
 
 ## <a name="getting-started"></a>Başlarken
 
-Bir veri akışı oluşturmak için, **fabrika kaynakları**altındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
+Veri akışı oluşturmak **için, Fabrika Kaynakları**altında artı işaretini seçin ve ardından **Veri Akışı'nı**seçin. 
 
-![Yeni veri akışı](media/data-flow/newdataflow2.png "Yeni veri akışı")
+![Yeni veri akışı](media/data-flow/newdataflow2.png "yeni veri akışı")
 
-Bu sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvaline götürür. Kaynak dönüştürmeyi yapılandırmaya başlamak için **Kaynak Ekle** ' yi seçin. Daha fazla bilgi için bkz. [kaynak dönüştürme](data-flow-source.md).
+Bu, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvaline götürür. Kaynak dönüşümünüzü yapılandırmaya başlamak için **kaynak ekle'yi** seçin. Daha fazla bilgi için [Kaynak dönüşümüne](data-flow-source.md)bakın.
 
 ## <a name="data-flow-canvas"></a>Veri akışı tuvali
 
-Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
+Veri akışı tuvali üç bölüme ayrılır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Tuvalinin](media/data-flow/canvas1.png "Tuvalinin")
+![Tuval](media/data-flow/canvas1.png "Tuval")
 
 ### <a name="graph"></a>Graf
 
-Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
+Grafik dönüşüm akışını görüntüler. Bir veya daha fazla lavaboya akarken kaynak veri soyu gösterir. Yeni bir kaynak eklemek için **kaynak ekle'yi**seçin. Yeni bir dönüşüm eklemek için, varolan dönüşümün sağ alt ağındaki artı işaretini seçin.
 
-![Tuvalinin](media/data-flow/canvas2.png "Tuvalinin")
+![Tuval](media/data-flow/canvas2.png "Tuval")
 
-### <a name="azure-integration-runtime-data-flow-properties"></a>Azure tümleştirme çalışma zamanı veri akışı özellikleri
+### <a name="azure-integration-runtime-data-flow-properties"></a>Azure tümleştirme çalışma zamanı veri akış özellikleri
 
 ![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
 
-ADF 'de veri akışları ile çalışmaya başladığınızda, tarayıcı kullanıcı arabiriminin en üstündeki veri akışları için "hata ayıklama" anahtarını açmak isteyeceksiniz. Bu, etkileşimli hata ayıklama, veri önizlemeleri ve işlem hattı hata ayıklama yürütmeleri için kullanılacak bir Azure Databricks kümesi kullanacaktır. Kullanılan kümenin boyutunu özel bir [Azure Integration Runtime](concepts-integration-runtime.md)seçerek ayarlayabilirsiniz. Hata ayıklama oturumu, son veri önizlemeniz veya son hata ayıklama işlem hattı yürütmesinden sonra 60 dakika boyunca etkin kalır.
+ADF'deki veri akışlarıyla çalışmaya başladığınızda, tarayıcı arabirimi'nin üst kısmındaki veri akışları için "Hata Ayıklama" anahtarını açmak istersiniz. Bu, etkileşimli hata ayıklama, veri önizlemeleri ve veri hata ayıklama yürütmeleri için kullanılacak bir Azure Databricks kümesini döndürür. Özel bir [Azure Tümleştirme Çalışma Zamanı](concepts-integration-runtime.md)seçerek kullanılan kümenin boyutunu ayarlayabilirsiniz. Hata ayıklama oturumu, son veri önizlemenizden veya son hata ayıklama ardışık uygulamanızdan sonra 60 dakikaya kadar canlı kalır.
 
-Veri akışı etkinlikleriyle işlem hatlarınızı çalıştırdığınızda ADF, "Çalıştır" özelliğindeki [etkinlikle](control-flow-execute-data-flow-activity.md) ilişkili Azure Integration Runtime kullanır.
+Veri akışı etkinlikleri ile ardışık hale geldiğınızda, ADF "Çalıştır" özelliğindeki [etkinlikle](control-flow-execute-data-flow-activity.md) ilişkili Azure Tümleştirme Çalışma Zamanını kullanır.
 
-Varsayılan Azure Integration Runtime, verileri önizlemenize ve hata ayıklama işlem hatlarını en az maliyetle hızlı bir şekilde yürütebilmenizi sağlayan küçük 4 çekirdekli tek çalışan düğümü kümesidir. Büyük veri kümelerine yönelik işlemler gerçekleştiriyorsanız daha büyük bir Azure IR yapılandırma ayarlayın.
+Varsayılan Azure Tümleştirme Çalışma Süresi, verileri önizlemenize ve hata ayıklama ardışık hatlarını en düşük maliyetlerle hızlı bir şekilde yürütmenize olanak tanıyan küçük bir 4 çekirdekli tek çalışan düğüm kümesidir. Büyük veri kümelerine karşı işlemler gerçekleştirin' i daha büyük bir Azure IR yapılandırması ayarlayın.
 
-Azure IR veri akışı özelliklerinde bir TTL ayarlayarak, ADF 'yi bir küme kaynakları havuzunu (VM 'Ler) tutmaya söyleyebilirsiniz. Bu, sonraki etkinliklerde daha hızlı iş yürütmeye neden olur.
+Azure IR veri akışı özelliklerinde bir TTL ayarlayarak ADF'ye küme kaynakları (VM) havuzunu korumasını talimatı verebilirsiniz. Bu sonraki etkinliklerde daha hızlı iş yürütme neden olur.
 
 #### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure tümleştirme çalışma zamanı ve veri akışı stratejileri
 
 ##### <a name="execute-data-flows-in-parallel"></a>Veri akışlarını paralel olarak yürütme
 
-Bir işlem hattındaki veri akışlarını paralel olarak çalıştırırsanız, ADF her bir etkinliğe bağlı Azure Integration Runtime ayarlara bağlı olarak her etkinlik yürütmesi için ayrı Azure Databricks kümelerini alır. ADF işlem hatlarında paralel yürütmeler tasarlamak için, veri akışı etkinliklerinizi Kullanıcı arabiriminde öncelik kısıtlamaları olmadan ekleyin.
+Bir ardışık ardışık ardışık veri akışlarını paralel olarak yürütürseniz, ADF her etkinlik için bağlı olan Azure Tümleştirme Çalışma Süresi'ndeki ayarlara bağlı olarak her etkinlik yürütmesi için ayrı Azure Veri tuğlaları kümeleri oluşturur. ADF ardışık hatlarında paralel yürütmeler tasarlamak için, veri akışı etkinliklerinizi UI'de öncelik kısıtlaması olmadan ekleyin.
 
-Bu üç seçenekten Bu seçenek büyük olasılıkla en kısa sürede yürütülecektir. Ancak, her paralel veri akışı ayrı kümeler üzerinde aynı anda yürütülür, bu nedenle olayların sıralaması belirleyici değildir.
+Bu üç seçenekten, bu seçenek büyük olasılıkla en kısa sürede yürütülür. Ancak, her paralel veri akışı ayrı kümelerde aynı anda yürütülür, bu nedenle olayların sıralanması deterministik değildir.
 
-Veri akışı etkinliklerinizi işlem hatlarınız içinde paralel olarak yürütüyorsunuz, TTL 'nin kullanılması önerilir. Bunun nedeni, aynı Azure Integration Runtime kullanılarak aynı anda paralel yürütmelerin, Data Factory 'niz için birden çok ısınma havuzu örneği oluşmasına neden olur.
+Veri akışı etkinliklerinizi ardışık hatlar içinde paralel olarak yürütüyorsanız, TTL kullanmamanız önerilir. Bunun nedeni, aynı Azure Tümleştirme Çalışma Süresi'ni kullanarak aynı anda veri akışlarının paralel yürütülmesinin veri fabrikanız için birden çok sıcak havuz örneklerine neden olmasıdır.
 
 ##### <a name="overload-single-data-flow"></a>Tek veri akışını aşırı yükleme
 
-Tüm mantığınızı tek bir veri akışı içinde yerleştirirseniz, ADF 'nin hepsi tek bir Spark küme örneğindeki aynı iş yürütme bağlamında yürütülür.
+Tüm mantığınızı tek bir veri akışının içine koyarsanız, ADF'nin tümü tek bir Spark küme örneğinde aynı iş yürütme bağlamında yürütülür.
 
-İş kurallarınız ve iş mantığınızın bir arada olması nedeniyle bu seçeneğin izlenmesi ve sorun gidermesi daha zor olabilir. Bu seçenek ayrıca, daha fazla yeniden kullanılabilirlik sağlamaz.
+İş kurallarınız ve iş mantığınız karmakarışık olacağından, bu seçeneği nizlemesi ve giderilmesi daha zor olabilir. Bu seçenek aynı zamanda çok yeniden kullanılabilirlik sağlamaz.
 
-##### <a name="execute-data-flows-serially"></a>Veri akışlarını hizmet halinde yürütme
+##### <a name="execute-data-flows-serially"></a>Veri akışlarını seri olarak yürütme
 
-Veri akışı etkinliklerinizi işlem hattında seri olarak çalıştırırsanız ve Azure IR yapılandırmasında bir TTL belirlediyseniz, ADF daha hızlı yürütme süreleri elde eden işlem kaynaklarını (VM 'Ler) yeniden kullanacaktır. Her yürütme için yeni bir Spark bağlamı almaya devam edersiniz.
+Veri akışı etkinliklerinizi ardışık işlem de seri olarak yürütürseniz ve Azure IR yapılandırmasında bir TTL ayarladıysanız, ADF işlem kaynaklarını (VM' ler) yeniden kullanarak sonraki yürütme sürelerinin daha hızlı olacağını belirler. Yine de her yürütme için yeni bir Kıvılcım bağlamı alırsınız.
 
-Bu üç seçenekten, bu durum büyük olasılıkla uçtan uca yürütmek için en uzun zaman alır. Ancak, her bir veri akışı adımında mantıksal işlemlerin temiz bir şekilde ayrılmasını sağlar.
+Bu üç seçenekten, bu büyük olasılıkla uçtan uca yürütmek için en uzun zaman alacaktır. Ancak, her veri akışı adımında mantıksal işlemlerin temiz bir ayrımını sağlar.
 
-### <a name="configuration-panel"></a>Yapılandırma bölmesi
+### <a name="configuration-panel"></a>Yapılandırma paneli
 
-Yapılandırma panelinde seçili olan dönüştürmeye özgü ayarlar gösterilir. Hiçbir dönüşüm seçilmezse, veri akışını gösterir. Genel veri akışı yapılandırmasında, **genel** sekmesinin altındaki adı ve açıklamayı düzenleyebilir veya **Parametreler** sekmesi aracılığıyla parametreler ekleyebilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametrelerini eşleme](parameters-data-flow.md).
+Yapılandırma paneli, seçili dönüşüme özgü ayarları gösterir. Dönüşüm seçili değilse, veri akışını gösterir. Genel veri akışı yapılandırmasında, **Genel** sekmesi altında adı ve açıklamayı düzenleme yapabilir veya **Parametreler** sekmesi aracılığıyla parametreler ekleyebilirsiniz. Daha fazla bilgi için [bkz.](parameters-data-flow.md)
 
-Her dönüşümde en az dört Yapılandırma sekmesi vardır.
+Her dönüşümün en az dört yapılandırma sekmesi vardır.
 
-#### <a name="transformation-settings"></a>Dönüştürme ayarları
+#### <a name="transformation-settings"></a>Dönüşüm ayarları
 
-Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürmeye özgü ayarları içerir. Daha fazla bilgi için bkz. bu dönüşümün belge sayfası.
+Her dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüşüme özgü ayarları içerir. Daha fazla bilgi için dönüşümün dokümantasyon sayfasına bakın.
 
 ![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
 
 #### <a name="optimize"></a>İyileştirme
 
-**Optimizasyon** sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir.
+**Optimize sekmesi,** bölümleme düzenlerini yapılandırmak için ayarlar içerir.
 
-![İyileştir](media/data-flow/optimize1.png "İyileştirme")
+![Optimize](media/data-flow/optimize1.png "İyileştirme")
 
-Varsayılan ayar **geçerli bölümleme kullanır**, bu, Azure Data Factory Spark üzerinde çalışan veri akışları için yerel bölümlendirme şemasını kullanmasını söyler. Çoğu senaryoda, bu ayar önerilir.
+Varsayılan ayar, Azure Veri Fabrikası'na Spark'ta çalışan veri akışlarına özgü bölümleme düzenini kullanmasını sağlayan **geçerli bölümleme**kullanın. Çoğu senaryoda, bu ayarı öneririz.
 
-Bölümlemeyi ayarlamak isteyebileceğiniz örnekler vardır. Örneğin, dönüştürmelerinizi Gölü tek bir dosyaya çıkarmak istiyorsanız, bir havuz dönüşümünde **tek bölüm** ' ü seçin.
+Bölümlemayı ayarlamak isteyebileceğiniz durumlar vardır. Örneğin, dönüşümlerinizi göldeki tek bir dosyaya çıktırmak istiyorsanız, lavabo dönüşümünde **Tek bölüm'ü** seçin.
 
-Bölümleme düzenlerini denetlemek isteyebileceğiniz başka bir durum da performansı iyileştiriliyor. Bölümlemenin ayarlanması, verilerin işlem düğümleri genelinde dağıtılması üzerinde denetim sağlar ve genel veri akışı performansından hem olumlu hem de olumsuz etkileri olabilir. Daha fazla bilgi için bkz. [veri akışı performans Kılavuzu](concepts-data-flow-performance.md).
+Bölümleme düzenlerini denetlemek isteyebileceğiniz başka bir durum da performansı en iyi duruma getirmektir. Bölümlemenin ayarlanması, verilerinizin bilgi işlem düğümleri ve genel veri akışı performansınız üzerinde hem olumlu hem de olumsuz etkileri olabilecek veri yerelliği optimizasyonları arasında dağıtımı üzerinde denetim sağlar. Daha fazla bilgi için [Veri akışı performans kılavuzuna](concepts-data-flow-performance.md)bakın.
 
-Herhangi bir dönüşümdeki Bölümlendirmeyi değiştirmek için, **optimizasyon** sekmesini seçin ve **bölümlendirme** radyo düğmesini seçin. Daha sonra bölümlemeye yönelik bir dizi seçenek sunulur. Bölümlemenin en iyi yöntemi, veri birimleriniz, aday anahtarlarınız, null değerleri ve kardinalite temelinde farklılık gösterir. 
+Herhangi bir dönüşümde bölümlemeyi değiştirmek için **Optimize sekmesini** seçin ve **Bölümleme Radyoyu Ayarla** düğmesini seçin. Daha sonra bölümleme için bir dizi seçenek sunulur. En iyi bölümleme yöntemi, veri birimlerinize, aday anahtarlarınıza, null değerlerinize ve önemli ciddiyete bağlı olarak değişir. 
 
-En iyi uygulama, varsayılan bölümlendirme ile başlamalı ve farklı bölümlendirme seçeneklerini denemelerdir. İşlem hattı hata ayıklama çalıştırmalarını kullanarak test edebilir ve izleme görünümündeki her bir dönüşüm gruplandırmasında yürütme süresini ve bölüm kullanımını görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [veri akışlarını izleme](concepts-data-flow-monitoring.md).
+En iyi yöntem, varsayılan bölümleme ile başlamak ve sonra farklı bölümleme seçenekleri denemektir. Denetim hattı hata ayıklama çalıştırmalarını kullanarak sınayabilir ve izleme görünümünden her dönüşüm grubunda yürütme süresini ve bölüm kullanımını görüntüleyebilirsiniz. Daha fazla bilgi için [bkz.](concepts-data-flow-monitoring.md)
 
-Aşağıdaki bölümlendirme seçenekleri kullanılabilir.
+Aşağıdaki bölümleme seçenekleri kullanılabilir.
 
-##### <a name="round-robin"></a>Hepsini bir kez deneme 
+##### <a name="round-robin"></a>Yuvarlak robin 
 
-Hepsini bir kez deneme, verileri bölümler arasında eşit olarak dağıtan basit bir bölümdür. Katı ve akıllı bölümlendirme stratejisi uygulamak için iyi bir ana aday olmadığında hepsini bir kez deneme kullanın. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+Round robin, verileri bölümler arasında eşit olarak dağıtan basit bir bölümdür. Sağlam, akıllı bir bölümleme stratejisi uygulamak için iyi anahtar adayları yoksa round robin kullanın. Fiziksel bölüm sayısını ayarlayabilirsiniz.
 
 ##### <a name="hash"></a>Karma
 
-Azure Data Factory, benzer değerlere sahip satırlar aynı bölüme düşecek şekilde Tekdüzen bölümler oluşturmak için bir sütun karması oluşturacak. Karma seçeneğini kullandığınızda olası bölüm eğsınaması için test edin. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+Azure Veri Fabrikası, benzer değerlere sahip satırların aynı bölüme düşmesi gibi tek düze bölümler üretmek için bir sütun karması üretecektir. Karma seçeneğini kullandığınızda, olası bölüm eğriliği için sınama. Fiziksel bölüm sayısını ayarlayabilirsiniz.
 
-##### <a name="dynamic-range"></a>Dinamik Aralık
+##### <a name="dynamic-range"></a>Dinamik aralık
 
-Dinamik Aralık, sağladığınız sütunlara veya ifadelere göre Spark dinamik aralıklarını kullanacaktır. Fiziksel bölüm sayısını ayarlayabilirsiniz. 
+Dinamik aralık, sağladığınız sütunlara veya ifadelere göre Spark dinamik aralıklarını kullanır. Fiziksel bölüm sayısını ayarlayabilirsiniz. 
 
-##### <a name="fixed-range"></a>Sabit Aralık
+##### <a name="fixed-range"></a>Sabit aralık
 
-Bölümlenmiş veri sütunlarınızın içindeki değerler için sabit bir Aralık sağlayan bir ifade oluşturun. Bölüm eğriliğini önlemek için, bu seçeneği kullanmadan önce verilerinizin iyi şekilde anlaşılmasını sağlayabilirsiniz. İfade için girdiğiniz değerler, bölüm işlevinin bir parçası olarak kullanılır. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+Bölümlenmiş veri sütunlarınızdaki değerler için sabit aralık sağlayan bir ifade oluşturun. Bölüm eğriliğini önlemek için, bu seçeneği kullanmadan önce verilerinizi iyi anlamanız gerekir. İfade için girdiğiniz değerler bir bölüm işlevinin parçası olarak kullanılır. Fiziksel bölüm sayısını ayarlayabilirsiniz.
 
 ##### <a name="key"></a>Anahtar
 
-Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi bir strateji olabilir. Anahtar bölümleme, sütuninizdeki her benzersiz değer için bölümler oluşturacaktır. Bu sayı, verilerdeki benzersiz değerleri temel alacak olduğundan bölüm sayısını ayarlayamazsınız.
+Verilerinizin ciddiyetini iyi anlıyorsanız, anahtar bölümleme iyi bir strateji olabilir. Anahtar bölümleme sütununuzda her benzersiz değer için bölümler oluşturur. Sayı verilerdeki benzersiz değerleri temel alacağı için bölüm sayısını ayarlayamadığınız için.
 
-#### <a name="inspect"></a>Bilgiyi
+#### <a name="inspect"></a>Incelemek
 
-**İnceleme** sekmesi, dönüştürmakta olduğunuz veri akışının meta verilerine bir görünüm sağlar. Sütun sayılarını, sütun değiştirildiğini, eklenen sütunları, veri türlerini, sütun sıralamasını ve sütun başvurularını görebilirsiniz. **İnceleme** , meta verilerinizin salt okunurdur görünümüdür. **İnceleme** bölmesinde meta verileri görmek için hata ayıklama modunun etkin olması gerekmez.
+**Denetle** sekmesi, dönüştürdüğünüz veri akışının meta verilerine bir görünüm sağlar. Sütun sayımlarını, sütunları değiştirdiğini, sütunları eklediği, veri türlerini, sütun sıralamasını ve sütun başvurularını görebilirsiniz. **Denetle,** meta verilerinizin salt okunur görünümüdür. **Denetle** bölmesinde meta verileri görmek için hata ayıklama modunun etkinleştirilmiş olması gerekmez.
 
-![Bilgiyi](media/data-flow/inspect1.png "Bilgiyi")
+![Incelemek](media/data-flow/inspect1.png "Incelemek")
 
-Dönüşümlerinizi kullanarak verilerinizin şeklini değiştirirken, **İnceleme** bölmesinde meta veri değişiklikleri akışını görürsünüz. Kaynak dönüşümünüze tanımlı bir şema yoksa, veriler **İnceleme** bölmesinde görünmez. Şema DRFT senaryolarında meta verilerin bulunmaması yaygındır.
+Dönüşümler yoluyla verilerinizin şeklini değiştirerek, **Denetle** bölmesinde meta veri değişikliklerinin akışını görürsünüz. Kaynak dönüşümunuzda tanımlı bir şema yoksa, meta veriler **Inspect** bölmesinde görünmez. Meta veri eksikliği şema sürüklenme senaryolarında yaygındır.
 
-#### <a name="data-preview"></a>Veri önizleme
+#### <a name="data-preview"></a>Veri önizlemesi
 
-Hata ayıklama modu açık ise, **veri önizleme** sekmesi her dönüşümde verilerin etkileşimli bir anlık görüntüsünü sunar. Daha fazla bilgi için bkz. [hata ayıklama modunda veri önizlemesi](concepts-data-flow-debug-mode.md#data-preview).
+Hata ayıklama modu açıksa, **Veri Önizleme** sekmesi her dönüşümde verilerin etkileşimli bir anlık görüntüsünü sağlar. Daha fazla bilgi için [hata ayıklama modunda Veri önizlemebölümüne](concepts-data-flow-debug-mode.md#data-preview)bakın.
 
 ### <a name="top-bar"></a>Üst çubuk
 
-Üst çubuk, kaydetme ve doğrulama gibi tüm veri akışını etkileyen eylemler içerir. Grafiği **göster** ve **grafiği gizle** düğmelerini kullanarak grafik ve yapılandırma modları arasında da geçiş yapabilirsiniz.
+Üst çubuk, kaydetme ve doğrulama gibi tüm veri akışını etkileyen eylemler içerir. Grafiği **Göster** ve **Grafiği Gizle** düğmelerini kullanarak grafik ve yapılandırma modları arasında geçiş yapabilirsiniz.
 
 ![Grafiği gizle](media/data-flow/hideg.png "Grafiği gizle")
 
-Grafınızı gizlerseniz, **önceki** ve **sonraki** düğmelerini kullanarak dönüştürme düğümleriniz arasında daha da gezinebilirsiniz.
+Grafiğinizi gizlerseniz, **Önceki** ve **Sonraki** düğmeleri aracılığıyla dönüşüm düğümlerinize yanal olarak göz atabilirsiniz.
 
 ![Önceki ve sonraki düğmeler](media/data-flow/showhide.png "önceki ve sonraki düğmeler")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak dönüştürme](data-flow-source.md)oluşturmayı öğrenin.
-* Veri akışlarınızı [hata ayıklama modunda](concepts-data-flow-debug-mode.md)oluşturmayı öğrenin.
+* [Kaynak dönüşümü](data-flow-source.md)oluşturmayı öğrenin.
+* Veri akışınızı [hata ayıklama modunda](concepts-data-flow-debug-mode.md)nasıl oluşturabilirsiniz öğrenin.

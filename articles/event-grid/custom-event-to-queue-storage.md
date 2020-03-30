@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: depolama kuyruğuna özel olayları gönderme-Event Grid, Azure CLı'
-description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir depolama kuyruğu kullanılır.'
+title: 'Hızlı başlangıç: Depolama kuyruğuna özel olaylar gönderme - Olay Izgara, Azure CLI'
+description: "Hızlı başlangıç: Bir konuyu yayımlamak için Azure Olay Ağıt'ı ve Azure CLI'yi kullanın ve bu etkinliğe abone olun. Uç nokta için bir depolama kuyruğu kullanılır."
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721458"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure kuyruk depolama 'ya özel olayları yönlendirme
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLI ve Olay Izgarası ile özel olayları Azure Kuyruğu depolama alanına yönlendirin
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Kuyruk depolama, desteklenen olay işleyicilerinden biridir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Kuyruk depolamaya olayları gönderirsiniz.
 
@@ -24,12 +24,12 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Kuyruk depol
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure portal Cloud Shell kullanmak yerine yerel makinenizde Azure CLı veya Azure PowerShell kullanıyorsanız, aşağıdaki Azure CLı ve Azure PowerShell sürümlerine sahip olduğunuzdan emin olun. 
+Azure portalında Cloud Shell kullanmak yerine yerel makinenizde Azure CLI veya Azure PowerShell kullanıyorsanız, Azure CLI ve Azure PowerShell'in aşağıdaki sürümlerine sahip olduğunuzu sağlayın. 
 
-- Azure CLı sürüm 2.0.56 veya üstü. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli). 
-- Sürüm 1.1.0 veya üstünü Azure PowerShell. [Azure İndirmeleri-komut satırı araçlarından](https://azure.microsoft.com/downloads/)Windows makinenize Azure PowerShell en son sürümünü indirin. 
+- Azure CLI sürümü 2.0.56 veya üzeri. Azure CLI'nin en son sürümünü yükleme yle ilgili talimatlar [için](/cli/azure/install-azure-cli)bkz. 
+- Azure PowerShell sürüm 1.1.0 veya üzeri. Azure yüklemelerinden Windows makinenizde Azure PowerShell'in en son sürümünü [indirin - Komut satırı araçları.](https://azure.microsoft.com/downloads/) 
 
-Bu makale, Azure CLı kullanmaya yönelik komutlar sağlar. 
+Bu makalede, Azure CLI kullanmak için komutlar verir. 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -67,7 +67,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Özel konuya abone olma
 
-İzlemek istediğiniz olayları Event Grid söylemek için özel bir konuya abone olursunuz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone olur ve uç nokta için sıra depolama alanının kaynak KIMLIĞINI geçirir. Azure CLI ile uç nokta olarak Kuyruk depolama kimliğini geçirirsiniz. Uç nokta şu biçimdedir:
+Olay Grid'e hangi olayları izlemek istediğinizi söylemek için özel bir konuya abone olabilirsiniz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone dir ve bitiş noktası için Sıra depolama alanının kaynak kimliğini geçer. Azure CLI ile uç nokta olarak Kuyruk depolama kimliğini geçirirsiniz. Uç nokta şu biçimdedir:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -138,4 +138,4 @@ Artık konu oluşturma ve olay aboneliklerini öğrendiğinize göre, Event Grid
 - [Event Grid Hakkında](overview.md)
 - [Blob depolama olaylarını bir özel web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini izleme](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Veri ambarına büyük veri akışı yapma](event-grid-event-hubs-integration.md)
+- [Büyük verileri bir veri ambarına akışla aktarma](event-grid-event-hubs-integration.md)

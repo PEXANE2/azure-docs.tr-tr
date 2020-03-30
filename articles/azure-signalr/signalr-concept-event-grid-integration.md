@@ -1,6 +1,6 @@
 ---
-title: Azure SignalR hizmeti olaylarına tepki verme
-description: Azure SignalR hizmeti olaylarına abone olmak için Azure Event Grid kullanın. Diğer aşağı akış Hizmetleri bu olaylar tarafından tetiklenebilir.
+title: Azure SignalR Hizmeti etkinliklerine tepki verme
+description: Azure SinyalR Hizmeti etkinliklerine abone olmak için Azure Olay Ağıt'ı kullanın. Diğer downstream hizmetleri bu olaylar tarafından tetiklenebilir.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
@@ -9,35 +9,35 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158200"
 ---
-# <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR hizmeti olaylarına yeniden davranıma
+# <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Hizmeti olaylarına yanıt verme
 
-Azure SignalR hizmeti olayları, uygulamaların modern sunucusuz mimariler kullanılarak bağlanan veya bağlantısı kesilen istemci bağlantılarına tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz.  Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), hatta kendi özel http dinleyiciniz gibi abonelere [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir ve yalnızca kullandığınız kadar ödersiniz.
+Azure SignalR Service olayları, uygulamaların modern sunucusuz mimariler kullanarak bağlı veya bağlantısı kesilen istemci bağlantılarına tepki göstermesine olanak tanır. Bunu karmaşık kod veya pahalı ve verimsiz yoklama hizmetlerine gerek kalmadan yapar.  Bunun yerine, etkinlikler [Azure İşlevleri](https://azure.microsoft.com/services/functions/), [Azure Mantık Uygulamaları](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi özel http dinleyiciniz gibi abonelere Azure Olay [Izgarası](https://azure.microsoft.com/services/event-grid/) üzerinden itilir ve yalnızca kullandığınız kadar ını ödler.
 
-Azure SignalR hizmeti olayları, zengin yeniden deneme ilkeleri ve atılacak mektup teslimi aracılığıyla uygulamalarınıza güvenilir teslim hizmetleri sağlayan Event Grid hizmetine güvenilir bir şekilde gönderilir. Daha fazla bilgi edinmek için bkz. [ileti teslimi Event Grid ve yeniden deneyin](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Azure SignalR Hizmeti etkinlikleri, zengin yeniden deneme ilkeleri ve ölü harf teslimatı yoluyla uygulamalarınız için güvenilir teslimat hizmetleri sağlayan Event Grid hizmetine güvenilir bir şekilde gönderilir. Daha fazla bilgi için [Olay Izgara iletisi teslimi ve yeniden deneyin.](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)
 
-![Event Grid modeli](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Olay Izgara Modeli](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>Sunucusuz durum
-Azure SignalR hizmeti olayları yalnızca istemci bağlantıları sunucusuz durumundayken etkindir. Genel olarak, bir istemci bir hub sunucusuna yönlendirmezse sunucusuz duruma geçer. Klasik mod yalnızca, istemci bağlantılarının bağlantı aldığı Merkez bir hub sunucusu içermiyorsa çalışır. Ancak, bazı sorunlardan kaçınmak için sunucusuz mod önerilir. Hizmet modu hakkında daha fazla bilgi edinmek için bkz. [hizmet modunu seçme](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
+Azure SignalR Service olayları yalnızca istemci bağlantıları sunucusuz durumdaolduğunda etkindir. Genel olarak konuşursak, istemci hub sunucusuna yönlendirmezse, sunucusuz duruma geçer. Klasik mod yalnızca istemci bağlantılarının bağlandığı hub'ın hub sunucusu olmadığında çalışır. Ancak, sunucusuz modu bazı sorunları önlemek için önerilir. Hizmet modu hakkında daha fazla bilgi edinmek [için Hizmet Modu'nu nasıl seçeceğinizi](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)öğrenin.
 
-## <a name="available-azure-signalr-service-events"></a>Kullanılabilir Azure SignalR hizmeti olayları
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../event-grid/concepts.md#event-subscriptions) kullanır. Azure SignalR hizmeti olay abonelikleri iki tür olayı destekler:  
+## <a name="available-azure-signalr-service-events"></a>Kullanılabilir Azure SignalR Hizmeti etkinlikleri
+Olay [ızgarası,](../event-grid/concepts.md#event-subscriptions) olay iletilerini abonelere yönlendirmek için olay aboneliklerini kullanır. Azure SignalR Service etkinlik abonelikleri iki tür olayı destekler:  
 
-|Olay adı|Açıklama|
+|Olay Adı|Açıklama|
 |----------|-----------|
-|`Microsoft.SignalRService.ClientConnectionConnected`|İstemci bağlantısı bağlıyken tetiklenir.|
-|`Microsoft.SignalRService.ClientConnectionDisconnected`|Bir istemci bağlantısı kesildiğinde tetiklenir.|
+|`Microsoft.SignalRService.ClientConnectionConnected`|İstemci bağlantısı bağlandığında yükseltilir.|
+|`Microsoft.SignalRService.ClientConnectionDisconnected`|İstemci bağlantısı kesildiğinde yükseltilir.|
 
 ## <a name="event-schema"></a>Olay şeması
-Azure SignalR hizmeti olayları, verilerdeki değişikliklere yanıt vermek için ihtiyacınız olan tüm bilgileri içerir. EventType özelliği "Microsoft. SignalRService" ile başlıyorsa, bir Azure SignalR hizmeti olayını tanımlayabilirsiniz. Event Grid olay özelliklerinin kullanımı hakkında ek bilgiler [Event Grid olay şemasında](../event-grid/event-schema.md)belgelenmiştir.  
+Azure SignalR Hizmeti etkinlikleri, verilerinizdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. "Microsoft.SignalRService" ile başlayan eventType özelliğiyle bir Azure SignalR Hizmeti olayını tanımlayabilirsiniz. Olay Izgara olay özelliklerinin kullanımı hakkında ek bilgiler [Olay Grid olay şemasında](../event-grid/event-schema.md)belgelenmiştir.  
 
-İstemci bağlantısı bağlı olayına bir örnek aşağıda verilmiştir:
+İstemci bağlantısına bağlı bir olaya örnek aşağıda verilmiştir:
 ```json
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
@@ -56,12 +56,12 @@ Azure SignalR hizmeti olayları, verilerdeki değişikliklere yanıt vermek içi
 }]
 ```
 
-Daha fazla bilgi için bkz. [SignalR hizmeti olayları şeması](../event-grid/event-schema-azure-signalr.md).
+Daha fazla bilgi için [SignalR Service etkinlik şemasına](../event-grid/event-schema-azure-signalr.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Event Grid hakkında daha fazla bilgi edinin ve Azure SignalR hizmeti olaylarına bir deneme verin:
+Olay Ağı'sı hakkında daha fazla bilgi edinin ve Azure SignalR Hizmeti etkinliklerini deneyin:
 
 > [!div class="nextstepaction"]
-> [Azure SignalR Service
-> Ile ilgili bir örnek Event Grid tümleştirmesini deneyin](./signalr-howto-event-grid-integration.md) [Event Grid hakkında](../event-grid/overview.md)
+> [Try a sample Event Grid integration with Azure SignalR Service](./signalr-howto-event-grid-integration.md)
+> [Olay Izgarahakkında](../event-grid/overview.md) Azure SignalR Hizmeti ile örnek bir Olay Ağı tümleştirmesi deneyin

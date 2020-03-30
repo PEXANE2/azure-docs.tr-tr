@@ -1,30 +1,30 @@
 ---
-title: Dayanıklı İşlevler sürüm oluşturma-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda sürüm oluşturmayı nasıl uygulayacağınızı öğrenin.
+title: Dayanıklı İşlevlerde Sürüm - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısında sürüm uygulamasını öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232750"
 ---
-# <a name="versioning-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler sürüm oluşturma (Azure Işlevleri)
+# <a name="versioning-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde Sürüm (Azure İşlevleri)
 
-İşlevlerin bir uygulamanın kullanım ömrü boyunca ekleneceğini, kaldırılacağını ve değiştirilmesini sağlayacak bir işlem olabilir. [Dayanıklı işlevler](durable-functions-overview.md) , işlevleri daha önce mümkün olmayan yollarla birlikte zincirlemeye olanak tanır ve bu zincir, sürüm oluşturmayı nasıl işleyebileceğini etkiler.
+Bir uygulamanın ömrü boyunca işlevlerin eklenmesi, kaldırılması ve değiştirilmesi kaçınılmazdır. [Dayanıklı Fonksiyonlar,](durable-functions-overview.md) daha önce mümkün olmayan şekillerde zincirleme işlevleri bir araya sağlar ve bu zincirleme sürüm işleme nasıl etkiler.
 
-## <a name="how-to-handle-breaking-changes"></a>Son değişiklikleri işleme
+## <a name="how-to-handle-breaking-changes"></a>Kesme değişiklikleri nasıl işleyebilir?
 
-Dikkat edilecek değişikliklere yönelik birkaç örnek vardır. Bu makalede, en yaygın olarak karşılaşılan anlatılmaktadır. Tüm bunların arkasındaki ana tema, yeni ve var olan işlev düzenleyiclerinin işlev kodundaki değişikliklere göre etkilenmesidir.
+Dikkat edilmesi gereken kırılma değişikliklerinin birkaç örneği vardır. Bu makalede, en yaygın olanları tartışır. Hepsinin arkasındaki ana tema, hem yeni hem de varolan işlev orkestrasyonların işlev kodundaki değişikliklerden etkilenmesidir.
 
 ### <a name="changing-activity-or-entity-function-signatures"></a>Etkinlik veya varlık işlev imzalarını değiştirme
 
-İmza değişikliği, bir işlevin adında, girişte veya çıkışında bir değişikliğe başvurur. Bir etkinlik veya varlık işlevinde bu tür bir değişiklik yapılırsa, ona bağlı herhangi bir Orchestrator işlevini bozabilir. Orchestrator işlevini bu değişikliğe uyum sağlayacak şekilde güncelleştirirseniz, var olan uçuş örneklerini kesebilirsiniz.
+İmza değişikliği, bir işlevin adında, girişinde veya çıktısındaki bir değişikliği ifade eder. Bu tür bir değişiklik bir etkinlik veya varlık işlevine yapılırsa, buna bağlı olan herhangi bir orchestrator işlevini bozabilir. Bu değişikliği karşılamak için orkestratör işlevini güncellerseniz, varolan uçuş örneklerini kırabilirsiniz.
 
-Örnek olarak, aşağıdaki Orchestrator işlevine sahip olduğunuzu varsayalım.
+Örnek olarak, aşağıdaki orkestratör işlevine sahip olduğumuzu varsayalım.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -35,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Bu uyarlaması işlevi, **foo** 'ın sonuçlarını alır ve **çubuğa**geçirir. Daha geniş bir sonuç değerini desteklemek için, **foo** 'dan `bool` 'nin dönüş değerini `int` olarak değiştirmemiz gerektiğini varsayalım. Sonuç şöyle görünür:
+Bu basit fonksiyon **Foo** sonuçlarını alır ve **Bar**geçer. Daha geniş bir sonuç değerini desteklemek `bool` için `int` **Foo'nun** geri dönüş değerini değiştirmemiz gerektiğini varsayalım. Sonuç şu na benzer:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,17 +47,17 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Önceki C# örneklerde 2. x dayanıklı işlevler Target. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x'i hedefalır. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-Bu değişiklik Orchestrator işlevinin tüm yeni örnekleri için ince çalışır, ancak uçuş dışı örnekleri keser. Örneğin, bir Orchestration örneğinin `Foo`adlı bir işlevi çağırdığı, bir Boole değeri geri aldığı ve sonra kontrol noktalarının olduğu durumu göz önünde bulundurun. Bu noktada imza değişikliği dağıtılırsa, Checkpoint örneği, `context.CallActivityAsync<int>("Foo")`çağrısı devam ettiğinde ve yeniden yürütüldüğünde hemen başarısız olur. Bu hata, geçmiş tablosundaki sonuç `bool`, ancak yeni kod onu `int`olarak serisini silmeye çalıştığı için oluşur.
+Bu değişiklik, orkestratör işlevinin tüm yeni örnekleri için iyi çalışır, ancak uçuş içi örnekleri bozar. Örneğin, bir orkestrasyon örneği adlı `Foo`bir işlev çağırır durumda düşünün , bir boolean değeri geri alır ve sonra denetim noktaları. İmza değişikliği bu noktada dağıtılırsa, denetim işaretli örnek devam ettiğinde ve aramayı `context.CallActivityAsync<int>("Foo")`yeniden oynattığında hemen başarısız olur. Bu hata, geçmiş tablosundaki sonuç `bool` ancak yeni kod onu `int`deserialize etmeye çalıştığından olur.
 
-Bu örnek, bir imza değişikliğinin varolan örnekleri bozulabileceği birçok farklı yönden yalnızca biridir. Genel olarak, bir Orchestrator 'ın bir işlevi çağırdığı şeklini değiştirmesi gerekiyorsa, değişikliğin sorunlu olması olasıdır.
+Bu örnek, imza değişikliğinin varolan örnekleri kırabileceği birçok farklı yoldan sadece biridir. Genel olarak, bir orkestratörbir işlevi çağırır şekilde değiştirmek gerekiyorsa, o zaman değişiklik sorunlu olması muhtemeldir.
 
-### <a name="changing-orchestrator-logic"></a>Orchestrator mantığını değiştirme
+### <a name="changing-orchestrator-logic"></a>Orkestratör mantığını değiştirme
 
-Sürüm oluşturma sorunlarının diğer sınıfı, Orchestrator işlev kodunun, uçuş örnekleri için yeniden yürütme mantığını kullanmasını sağlayan bir şekilde değiştirilmesinin ardından gelir.
+Diğer sürüm sorunları sınıfı, orkestratör işlev kodunu, uçuş içi örneklerin yeniden oynatma mantığını karıştıracak şekilde değiştirmekten gelir.
 
-Aşağıdaki Orchestrator işlevini göz önünde bulundurun:
+Aşağıdaki orkestratör işlevini göz önünde bulundurun:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -68,7 +68,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Şimdi başka bir işlev çağrısı eklemek için bir masum değişikliği yapmak istediğinizi varsayalım.
+Şimdi başka bir işlev çağrısı eklemek için masum gibi görünen bir değişiklik yapmak istediğinizi varsayalım.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -85,42 +85,42 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Önceki C# örneklerde 2. x dayanıklı işlevler Target. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x'i hedefalır. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-Bu değişiklik, **foo** ve **Bar**arasında **SendNotification** öğesine yeni bir işlev çağrısı ekler. İmza değişikliği yok. Bu sorun, var olan bir örnek, **çubuğa**yapılan çağrıdan devam ettiğinde ortaya çıkar. Yeniden yürütme sırasında, **foo** öğesine yapılan özgün çağrı `true`döndürülürse, Orchestrator Replay, yürütme geçmişinde olmayan **SendNotification**' a çağrı yapılır. Sonuç olarak, dayanıklı görev çerçevesi bir `NonDeterministicOrchestrationException` hata vererek başarısız olur, çünkü **çubuğun**çağrısını görmesi beklendiğinde **SendNotification** çağrısıyla karşılaşıldı. `CreateTimer`, `WaitForExternalEvent`vb. dahil olmak üzere "dayanıklı" API 'Lerine yapılan çağrılar eklenirken aynı türde bir sorun oluşabilir.
+Bu **değişiklik, Foo** ve **Bar**arasında **Bildirim Gönder'e** yeni bir işlev çağrısı ekler. İmza değişikliği yok. Sorun, varolan bir örnek çağrıdan **Çubuk'a**devam ettiğinde ortaya çıkar. Tekrar sırasında, **Foo'ya** yapılan `true`orijinal arama geri döndüyse, orkestratör tekrarı, yürütme geçmişinde olmayan **SendNotification'a**çağrılacaktır. Sonuç olarak, Dayanıklı Görev Çerçevesi, `NonDeterministicOrchestrationException` **Çubuk'a**bir çağrı görmesi beklenirken **Bildirim Gönder'e** bir çağrıyla karşılaştığı için başarısız olur. "Dayanıklı" API'lere , `CreateTimer`vb. `WaitForExternalEvent`dahil olmak üzere herhangi bir çağrı eklerken aynı tür de sorun oluşabilir.
 
-## <a name="mitigation-strategies"></a>Risk azaltma stratejileri
+## <a name="mitigation-strategies"></a>Azaltma stratejileri
 
-Sürüm oluşturma güçlükleri ile ilgili bazı stratejiler aşağıda verilmiştir:
+Sürüm zorluklarıyla başa çıkmak için stratejilerden bazıları şunlardır:
 
-* Hiçbir şey yapma
-* Tüm uçuş örneklerini durdur
+* Hiçbir şey yapma.
+* Tüm uçuş örneklerini durdurun
 * Yan yana dağıtımlar
 
-### <a name="do-nothing"></a>Hiçbir şey yapma
+### <a name="do-nothing"></a>Hiçbir şey yapma.
 
-Önemli bir değişikliği işlemenin en kolay yolu, uçuş düzenleme örneklerinin başarısız olmasına imkan tanır. Yeni örnekler değiştirilen kodu başarıyla Çalıştır.
+Bir kırılma değişikliği işlemek için en kolay yolu, uçuş orkestrasyon örnekleri başarısız izin vermektir. Yeni örnekler değiştirilen kodu başarıyla çalıştırın.
 
-Bu tür bir başarısızlığın bir sorun olup olmadığı, uçuş örneklerinizin önem derecesine bağlıdır. Etkin geliştirme yapıyorsanız ve uçuş yerinde örneklerle ilgilenmezseniz, bu yeterince iyi olabilir. Ancak, tanılama işlem hattınızdaki özel durumlar ve hatalarla uğraşmanız gerekir. Bu şeyleri önlemek istiyorsanız, diğer sürüm oluşturma seçeneklerini göz önünde bulundurun.
+Bu tür bir hatanın bir sorun olup olmadığı, uçuş içi örneklerinizin önemine bağlıdır. Eğer aktif geliştirme ve uçuş örnekleri umurumda değil, bu yeterince iyi olabilir. Ancak, tanılama ardışık ardınızdaki özel durumlar ve hatalarla başa çıkmanız gerekir. Bu tür şeylerden kaçınmak istiyorsanız, diğer sürüm seçeneklerini göz önünde bulundurun.
 
-### <a name="stop-all-in-flight-instances"></a>Tüm uçuş örneklerini durdur
+### <a name="stop-all-in-flight-instances"></a>Tüm uçuş örneklerini durdurun
 
-Diğer bir seçenek de tüm uçuş örneklerini durdurmaktır. İç **Denetim kuyruğu** ve iş **öğesi kuyruğu** sıralarının içerikleri temizlenerek tüm örnekleri durdurmak yapılabilir. Örnekler her yerde kalır, ancak günlükleri hata iletileriyle kalabalımez. Bu yaklaşım, hızlı prototip geliştirmede idealdir.
+Başka bir seçenek tüm uçuş örnekleri durdurmaktır. Tüm örnekleri durdurma iç **denetim sırası** ve iş öğesi **sırası** kuyruklarının içeriğini temizleyerek yapılabilir. Örnekler sonsuza kadar oldukları yerde sıkışıp kalacak, ancak hata iletileri ile günlükleri yığılmayı olmaz. Bu yaklaşım hızlı prototip geliştirme de idealdir.
 
 > [!WARNING]
-> Bu kuyrukların ayrıntıları zaman içinde değişebilir, bu nedenle üretim iş yükleri için bu tekniğin dayanmayın.
+> Bu kuyrukların ayrıntıları zaman içinde değişebilir, bu nedenle üretim iş yükleri için bu tekniğe güvenmeyin.
 
 ### <a name="side-by-side-deployments"></a>Yan yana dağıtımlar
 
-Üst düzey değişikliklerin güvenli bir şekilde dağıtılmasını sağlamanın en son hata kanıtlama yöntemi, eski sürümleriniz ile yan yana dağıtılır. Bu, aşağıdaki tekniklerden herhangi biri kullanılarak yapılabilir:
+Kesme değişikliklerinin güvenli bir şekilde dağıtılmasını sağlamanın en başarısız olmasının en iyi yolu, bunları eski sürümlerinizle yan yana dağıtmaktır. Bu, aşağıdaki tekniklerden herhangi biri kullanılarak yapılabilir:
 
-* Tüm güncelleştirmeleri tamamen yeni işlevler olarak dağıtın ve var olan işlevleri olduğu gibi bırakın. Bu, yeni işlev sürümlerinin çağıranlarının aynı kurallara göre de güncelleştirilmeleri gerektiğinden, bu karmaşık olabilir.
-* Tüm güncelleştirmeleri, farklı bir depolama hesabıyla yeni bir işlev uygulaması olarak dağıtın.
-* İşlev uygulamasının yeni bir kopyasını aynı depolama hesabıyla, ancak güncelleştirilmiş bir `taskHub` adıyla dağıtın. Yan yana dağıtımlar önerilen tekniktir.
+* Varolan işlevleri olduğu gibi bırakarak, tüm güncelleştirmeleri tamamen yeni işlevler olarak dağıtın. Yeni işlev sürümlerini arayanların da aynı yönergeleri izleyerek güncelleştirilmesi gerektiğinden, bu zor olabilir.
+* Tüm güncelleştirmeleri farklı bir depolama hesabı yla yeni bir işlev uygulaması olarak dağıtın.
+* İşlev uygulamasının yeni bir kopyasını aynı depolama hesabına, ancak güncelleştirilmiş `taskHub` bir adla dağıtın. Yan yana dağıtımlar önerilen tekniktir.
 
-### <a name="how-to-change-task-hub-name"></a>Görev hub 'ı adını değiştirme
+### <a name="how-to-change-task-hub-name"></a>Görev merkezi adı nasıl değiştirilir?
 
-Görev hub 'ı *Host. JSON* dosyasında şu şekilde yapılandırılabilir:
+Görev hub'ı *ana bilgisayar.json* dosyasında aşağıdaki gibi yapılandırılabilir:
 
 #### <a name="functions-1x"></a>İşlevler 1.x
 
@@ -132,7 +132,7 @@ Görev hub 'ı *Host. JSON* dosyasında şu şekilde yapılandırılabilir:
 }
 ```
 
-#### <a name="functions-20"></a>İşlevler 2,0
+#### <a name="functions-20"></a>Fonksiyonlar 2.0
 
 ```json
 {
@@ -144,16 +144,16 @@ Görev hub 'ı *Host. JSON* dosyasında şu şekilde yapılandırılabilir:
 }
 ```
 
-Dayanıklı İşlevler v1. x için varsayılan değer `DurableFunctionsHub`. Dayanıklı İşlevler v 2.0 'dan başlayarak, varsayılan görev hub 'ı adı Azure 'daki işlev uygulama adı ile veya Azure dışında çalışıyorsa `TestHubName`.
+Dayanıklı Fonksiyonlar v1.x için `DurableFunctionsHub`varsayılan değer . Dayanıklı İşlevler v2.0'dan başlayarak, varsayılan görev hub adı Azure'daki işlev uygulaması adı ile veya Azure dışında `TestHubName` çalışıyorsa aynıdır.
 
-Tüm Azure depolama varlıkları `hubName` yapılandırma değerine göre adlandırılır. Görev merkezine yeni bir ad vererek uygulamanızın yeni sürümü için ayrı sıraların ve geçmiş tablosunun oluşturulmasını sağlarsınız. Ancak, işlev uygulaması, önceki görev hub 'ı adı altında oluşturulan düzenlemeler veya varlıklar için olayları işlemeyi durdurur.
+Tüm Azure Depolama varlıkları yapılandırma `hubName` değerine göre adlandırılır. Görev merkezine yeni bir ad vererek, uygulamanızın yeni sürümü için ayrı kuyruklar ve geçmiş tablosu oluşturulduğundan emin olabilirsiniz. Ancak işlev uygulaması, önceki görev merkezi adı altında oluşturulan orkestrasyonlar veya varlıklar için olayları işlemeyi durdurur.
 
-İşlev uygulamasının yeni sürümünü yeni bir [dağıtım yuvasına](../functions-deployment-slots.md)dağıtmanızı öneririz. Dağıtım yuvaları, işlev uygulamanızın etkin *Üretim* yuvası olarak yalnızca biri ile yan yana birden çok kopyasını çalıştırmanızı sağlar. Yeni düzenleme mantığını var olan altyapınızla kullanıma sunmaya hazırsanız, yeni sürümü üretim yuvasına değiştirme kadar basit olabilir.
+İşlev uygulamasının yeni sürümünü yeni bir [Dağıtım Yuvasına](../functions-deployment-slots.md)dağıtmanızı öneririz. Dağıtım yuvaları, işlev uygulamanızın birden çok kopyasını etkin *üretim* yuvası olarak yalnızca bir tanesiyle yan yana çalıştırmanızı sağlar. Yeni orkestrasyon mantığını mevcut altyapınıza maruz bırakmaya hazır olduğunuzda, yeni sürümü üretim yuvasına dönüştürmek kadar basit olabilir.
 
 > [!NOTE]
-> Bu strateji, Orchestrator işlevleri için HTTP ve Web kancası Tetikleyicileri kullandığınızda en iyi şekilde çalışır. Kuyruklar veya Event Hubs gibi HTTP olmayan Tetikleyiciler için tetikleyici tanımı, değiştirme işleminin bir parçası olarak güncelleştirilmiş [bir uygulama ayarından türetilmelidir](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) .
+> Bu strateji, orkestratör işlevleri için HTTP ve webhook tetikleyicileri kullandığınızda en iyi şekilde çalışır. Kuyruklar veya Olay Hub'ları gibi HTTP olmayan tetikleyiciler için, tetikleyici tanımı takas işleminin bir parçası olarak güncelleştirilen [bir uygulama ayarından türemelidir.](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Performans ve ölçek sorunlarını nasıl ele alabileceğinizi öğrenin](durable-functions-perf-and-scale.md)
+> [Performans ve ölçek sorunlarıyla nasıl başa çıkacağınızı öğrenin](durable-functions-perf-and-scale.md)

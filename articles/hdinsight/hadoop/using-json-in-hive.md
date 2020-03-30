@@ -1,6 +1,6 @@
 ---
-title: Apache Hive ile Azure HDInsight ile & işlem JSON 'ı çözümleme
-description: JSON belgelerini nasıl kullanacağınızı ve Azure HDInsight 'ta Apache Hive kullanarak nasıl analiz edeceğinizi öğrenin.
+title: Apache Hive ile & işlemini analiz edin - Azure HDInsight
+description: Azure HDInsight'ta Apache Hive'ı kullanarak JSON belgelerini nasıl kullanacağınızı ve bunları nasıl analiz edeceğinizi öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097993"
 ---
-# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive kullanarak JSON belgelerini işleme ve çözümleme
+# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Hive kullanarak JSON belgelerini işleme ve analiz
 
-Azure HDInsight 'ta Apache Hive kullanarak JavaScript Nesne Gösterimi (JSON) dosyalarını nasıl işleyeceğini ve analiz edeceğinizi öğrenin. Bu makale aşağıdaki JSON belgesini kullanır:
+Azure HDInsight'ta Apache Hive'ı kullanarak JavaScript Nesne Gösterimi (JSON) dosyalarını nasıl işleyip analiz edeceğinizi öğrenin. Bu makalede, aşağıdaki JSON belgekullanır:
 
 ```json
 {
@@ -55,13 +55,13 @@ Azure HDInsight 'ta Apache Hive kullanarak JavaScript Nesne Gösterimi (JSON) do
 }
 ```
 
-Dosya `wasb://processjson@hditutorialdata.blob.core.windows.net/`adresinde bulunabilir. HDInsight ile Azure Blob depolama 'yı kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop ile uyumlu Azure Blob depolamayı kullanma](../hdinsight-hadoop-use-blob-storage.md). Dosyayı kümenizin varsayılan kapsayıcısına kopyalayabilirsiniz.
+Dosya ' da `wasb://processjson@hditutorialdata.blob.core.windows.net/`bulunabilir. HDInsight ile Azure Blob depolamasını nasıl kullanacağınız hakkında daha fazla bilgi için, [HDInsight'ta Apache Hadoop ile HDFS uyumlu Azure Blob depolama sını kullanın'](../hdinsight-hadoop-use-blob-storage.md)a bakın. Dosyayı kümenizin varsayılan kapsayıcısına kopyalayabilirsiniz.
 
-Bu makalede Apache Hive konsolunu kullanırsınız. Hive konsolunun nasıl açılacağı hakkında yönergeler için bkz. [HDInsight 'ta Apache Hadoop Ile Apache ambarı Hive görünümünü kullanma](apache-hadoop-use-hive-ambari-view.md).
+Bu makalede, Apache Hive konsolu kullanın. Hive konsolu nasıl açılacağını anlatan talimatlar için, [HDInsight'ta Apache Hadoop ile Apache Ambari Hive View'ı kullanın.](apache-hadoop-use-hive-ambari-view.md)
 
-## <a name="flatten-json-documents"></a>JSON belgelerini Düzleştir
+## <a name="flatten-json-documents"></a>Flatten JSON belgeleri
 
-Sonraki bölümde listelenen yöntemler, JSON belgesinin tek bir satırdan meydana olmasını gerektirir. Bu nedenle, JSON belgesini bir dizeye düzleştirmeniz gerekir. JSON belgeniz zaten düzleştirildiğinde, bu adımı atlayabilir ve JSON verilerini analiz etmek için doğrudan bir sonraki bölüme gidebilirsiniz. JSON belgesini düzleştirmek için aşağıdaki betiği çalıştırın:
+Sonraki bölümde listelenen yöntemler, JSON belgesinin tek bir satırdan oluşmasını gerektirir. JSON belgesini bir dize düzleştirmek gerekir. JSON belgeniz zaten düzleştirilmişse, bu adımı atlayabilir ve doğrudan JSON verilerini çözümleme yle ilgili bir sonraki bölüme gidebilirsiniz. JSON belgesini düzleştirmek için aşağıdaki komut dosyasını çalıştırın:
 
 ```sql
 DROP TABLE IF EXISTS StudentsRaw;
@@ -82,32 +82,32 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Ham JSON dosyası `wasb://processjson@hditutorialdata.blob.core.windows.net/`konumunda bulunur. **Studentsraw** Hive tablosu düzleştirilmemiş ham JSON belgesine işaret eder.
+Ham JSON dosyası ' `wasb://processjson@hditutorialdata.blob.core.windows.net/`nda yer alır. **StudentsRaw** Hive tablosu, düzlenmemiş ham JSON belgesine işaret edilir.
 
-**Studentsoneline** Hive tablosu, verileri **/JSON/Students/** Path altındaki HDInsight varsayılan dosya sisteminde depolar.
+**StudentsOneLine** Hive tablosu verileri HDInsight varsayılan dosya sisteminde **/json/students/** yolu altında saklar.
 
-**Insert** Ifadesinde, **Studentoneline** tablosu düzleştirilmiş JSON verileriyle doldurulur.
+**INSERT** **deyimi, StudentOneLine** tablosunu düzleştirilmiş JSON verileriyle doldurur.
 
-**Select** deyimleri yalnızca bir satır döndürür.
+**SELECT** deyimi yalnızca bir satır döndürür.
 
-**Select** ifadesinin çıktısı aşağıda verilmiştir:
+**SELECT** deyiminin çıktısı aşağıdadır:
 
-![HDInsight JSON belgesini düzleştirme](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HDInsight JSON belgesini düzleştirmek](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
-## <a name="analyze-json-documents-in-hive"></a>Hive 'de JSON belgelerini çözümleme
+## <a name="analyze-json-documents-in-hive"></a>Hive'daki JSON belgelerini analiz edin
 
-Hive, JSON belgelerindeki sorguları çalıştırmak için üç farklı mekanizma sağlar veya kendi kendinize yazabilirsiniz:
+Hive, JSON belgelerinde sorguları çalıştırmak için üç farklı mekanizma sağlar veya kendi belgelerinizi yazabilirsiniz:
 
-* Get_json_object Kullanıcı tanımlı işlevini (UDF) kullanın.
-* Json_tuple UDF kullanın.
-* Özel seri hale getirici/deserializer (SerDe) kullanın.
-* Python veya diğer diller kullanarak kendi UDF 'nizi yazın. Hive ile kendi Python kodunuzu çalıştırma hakkında daha fazla bilgi için, bkz. [Apache Hive ve Apache Pig Ile Python UDF](./python-udf-hdinsight.md).
+* kullanıcı tanımlı get_json_object işlevini (UDF) kullanın.
+* UDFjson_tuple kullanın.
+* Özel Serializer/Deserializer (SerDe) kullanın.
+* Python veya diğer dilleri kullanarak kendi UDF yazın. Hive ile kendi Python kodunuzu nasıl çalıştıracağınız hakkında daha fazla bilgi [için, Apache Hive ve Apache Pig ile Python UDF'ye](./python-udf-hdinsight.md)bakın.
 
-### <a name="use-the-get_json_object-udf"></a>Get_json_object UDF kullanın
+### <a name="use-the-get_json_object-udf"></a>UDFget_json_object kullanın
 
-Hive, çalışma zamanı sırasında JSON sorgulaması gerçekleştirebilen [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) adlı YERLEŞIK bir UDF sağlar. Bu yöntem iki bağımsız değişken alır--düzleştirilmiş JSON belgesi ve ayrıştırılabilmesi gereken JSON alanı içeren tablo adı ve Yöntem adı. Bu UDF 'nin nasıl çalıştığını görmek için bir örneğe bakalım.
+Kovan, çalışma sırasında JSON sorgusu gerçekleştirebilen [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) adında yerleşik bir UDF sağlar. Bu yöntem, iki bağımsız değişken alır - tablo adı ve yöntem adı, düzleştirilmiş JSON belge ve ayrıştırılması gereken JSON alanı vardır. Bu UDF nasıl çalıştığını görmek için bir örnek bakalım.
 
-Aşağıdaki sorgu, her öğrenci için adı ve soyadı döndürür:
+Aşağıdaki sorgu, her öğrencinin adını ve soyadını döndürür:
 
 ```sql
 SELECT
@@ -116,20 +116,20 @@ SELECT
 FROM StudentsOneLine;
 ```
 
-Bu sorguyu konsol penceresinde çalıştırdığınızda çıkış şu şekildedir:
+Konsol penceresinde bu sorguyu çalıştırdığınızda çıktı:
 
-![JSON nesnesi UDF Apache Hive al](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive json nesne UDF olsun](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
-Get_json_object UDF 'nin sınırlamaları vardır:
+UDF'get_json_object sınırlamaları vardır:
 
-* Sorgudaki her alan sorgunun yeniden ayrıştırılmasını gerektirdiğinden performansı etkiler.
-* **GET\_JSON_OBJECT ()** bir dizinin dize gösterimini döndürür. Bu diziyi bir Hive dizisine dönüştürmek için, "[" ve "]" köşeli ayraçlarını değiştirmek için normal ifadeler kullanmanız ve sonra diziyi almak için bölme çağrısı yapmanız gerekir.
+* Sorgudaki her alan sorgunun telafisini gerektirdiğinden, performansı etkiler.
+* **GET\_JSON_OBJECT()** bir dizinin dize temsilini döndürür. Bu diziyi bir Kovan dizisine dönüştürmek için, "[" ve "]" kare köşeli ayraçlarını değiştirmek için normal ifadeler kullanmanız ve ardından diziyi almak için split'i de aramanız gerekir.
 
-Hive wiki, **json_tuple**kullanmanızı öneriyor.  
+Bu nedenle Hive wiki **json_tuple**kullanmanızı önerir.  
 
-### <a name="use-the-json_tuple-udf"></a>Json_tuple UDF kullanın
+### <a name="use-the-json_tuple-udf"></a>UDFjson_tuple kullanın
 
-Hive tarafından sunulan başka bir UDF, [get_ JSON _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object)öğesinden daha iyi sonuç veren [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)olarak adlandırılır. Bu yöntem bir anahtarlar kümesi ve bir JSON dizesi alır ve bir işlev kullanarak bir değer grubu döndürür. Aşağıdaki sorgu, JSON belgesinden öğrenci KIMLIĞINI ve sınıfı döndürür:
+Hive tarafından sağlanan başka bir UDF [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)denir , [hangi get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object)daha iyi gerçekleştirir . Bu yöntem, bir anahtar kümesi ve JSON dizesini alır ve tek bir işlev kullanarak bir değer tuple'ını döndürür. Aşağıdaki sorgu json belgesinden öğrenci kimliğini ve notu döndürür:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -138,24 +138,24 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
   AS StudentId, Grade;
 ```
 
-Hive konsolundaki bu betiğin çıkışı:
+Hive konsolunda bu komut dosyasının çıktısı:
 
-![Apache Hive JSON sorgu sonuçları](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive json sorgu sonuçları](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Json_tuple UDF, Hive içindeki [yan yana görünüm](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) sözdizimini kullanır. Bu, JSON\_kayıt düzeninin, özgün tablodaki her satıra udt işlevini uygulayarak bir sanal tablo oluşturmasına olanak sağlar. Karmaşık jler, **yan yana görünümün**yinelenen kullanımı nedeniyle çok zor hale gelir. Ayrıca, **JSON_TUPLE** iç Içe geçmiş jler 'i işleyemez.
+UDF json_tuple, [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) json\_tuple'ın orijinal tablonun her satırına UDT işlevini uygulayarak sanal bir tablo oluşturmasını sağlayan Hive'da yanal görünüm sözdizimini kullanır. Karmaşık JSON'lar **LATERAL VIEW'ın**tekrar tekrar kullanımı nedeniyle çok hantal hale gelir. Ayrıca, **JSON_TUPLE** iç içe JSONs idare edemez.
 
-### <a name="use-a-custom-serde"></a>Özel bir SerDe kullanma
+### <a name="use-a-custom-serde"></a>Özel bir SerDe kullanın
 
-SerDe, iç içe geçmiş JSON belgelerini ayrıştırmak için en iyi seçenektir. JSON şemasını tanımlamanıza olanak tanır ve ardından belgeyi ayrıştırmak için şemayı kullanabilirsiniz. Yönergeler için bkz. [Microsoft Azure HDInsight ile özel bır JSON SerDe kullanımı](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+SerDe iç içe JSON belgeleri ayrıştırma için en iyi seçimdir. JSON şemasını tanımlamanızı sağlar ve sonra belgeleri ayrışdırmak için şemayı kullanabilirsiniz. Talimatlar için, [Microsoft Azure HDInsight ile özel bir JSON SerDe'nin nasıl kullanılacağına](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)bakın.
 
 ## <a name="summary"></a>Özet
 
-Sonuç olarak, seçtiğiniz Hive içindeki JSON işlecinin türü senaryonuza bağlıdır. Basit bir JSON belgeniz varsa ve aranacak yalnızca bir alanınız varsa Hive UDF **get_json_object**kullanmayı seçebilirsiniz. Arama yapmak için birden fazla anahtarınız varsa, **json_tuple**kullanabilirsiniz. İç içe geçmiş bir belgeniz varsa **JSON SerDe**' nı kullanmanız gerekir.
+Sonuç olarak, Hive seçtiğiniz JSON operatör türü senaryonuza bağlıdır. Basit bir JSON belgeniz varsa ve bakmanız gereken tek bir alan varsa, Hive UDF **get_json_object**kullanmayı seçebilirsiniz. Eğer bakmak için birden fazla anahtar varsa, o zaman **json_tuple**kullanabilirsiniz. İç içe bir belgeniz varsa, **JSON SerDe'yi**kullanmalısınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlgili makaleler için bkz.:
+İlgili makaleler için bkz:
 
-* [Örnek Apache Log4J dosyasını çözümlemek için HDInsight 'ta Apache Hadoop Apache Hive ve HiveQL kullanın](../hdinsight-use-hive.md)
-* [HDInsight 'ta etkileşimli sorgu kullanarak Uçuş gecikmesi verilerini çözümleme](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [HDInsight 'ta Apache Hive kullanarak Twitter verilerini çözümleme](../hdinsight-analyze-twitter-data-linux.md)
+* [Örnek Apache log4j dosyasını analiz etmek için HDInsight'ta Apache Hadoop ile Apache Hive ve HiveQL kullanın](../hdinsight-use-hive.md)
+* [HDInsight'ta İnteraktif Sorgu'u kullanarak uçuş gecikme verilerini analiz edin](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [HDInsight'ta Apache Hive kullanarak Twitter verilerini analiz edin](../hdinsight-analyze-twitter-data-linux.md)

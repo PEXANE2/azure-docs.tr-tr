@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü kullanıcıları için akışı özelleştirme-Azure
-description: PowerShell cmdlet 'leri ile Windows sanal masaüstü kullanıcıları için akışı özelleştirme.
+title: Windows Sanal Masaüstü kullanıcıları için özet akışı özelleştirme - Azure
+description: PowerShell cmdlets ile Windows Sanal Masaüstü kullanıcıları için besleme özelleştirmek için nasıl.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,61 +9,61 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128089"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
 
-RemoteApp ve uzak masaüstü kaynaklarının kullanıcılarınız için tanınabilir bir şekilde görünmesi için akışı özelleştirebilirsiniz.
+Uzaktan Uygulama ve uzak masaüstü kaynaklarının kullanıcılarınız için tanınabilir bir şekilde görünmesi için akışı özelleştirebilirsiniz.
 
-İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+İlk olarak, PowerShell oturumunuzda kullanmak üzere [Windows Virtual Desktop PowerShell modülünü indirin ve içe aktarın.](/powershell/windows-virtual-desktop/overview/) Bundan sonra, hesabınızda oturum açabilmek için aşağıdaki cmdlet'i çalıştırın:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="customize-the-display-name-for-a-remoteapp"></a>RemoteApp için görünen adı özelleştirme
+## <a name="customize-the-display-name-for-a-remoteapp"></a>RemoteApp'ın ekran adını özelleştirme
 
-Kolay adı ayarlayarak, yayımlanan bir RemoteApp için görünen adı değiştirebilirsiniz. Varsayılan olarak, kolay ad RemoteApp programının adı ile aynıdır.
+Yayınlanan bir RemoteApp'ın ekran adını, dost adı ayarlayarak değiştirebilirsiniz. Varsayılan olarak, dostu ad RemoteApp programının adı ile aynıdır.
 
-Bir uygulama grubu için yayımlanmış RemoteApps listesini almak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Bir uygulama grubu için yayınlanan RemoteApps listesini almak için aşağıdaki PowerShell cmdlet'i çalıştırın:
 
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](media/get-rdsremoteapp.png)
+![PowerShell cmdlet Get-RDSRemoteApp'ın Ad ve FriendlyName ile ekran görüntüsü vurgulanmıştır.](media/get-rdsremoteapp.png)
 
-Bir RemoteApp 'e kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Bir RemoteApp'a dostça bir ad atamak için aşağıdaki PowerShell cmdlet'i çalıştırın:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](media/set-rdsremoteapp.png)
+![PowerShell cmdlet Set-RDSRemoteApp'ın Adıyla ve Yeni FriendlyName ile ekran görüntüsü vurgulanmıştır.](media/set-rdsremoteapp.png)
 
-## <a name="customize-the-display-name-for-a-remote-desktop"></a>Uzak Masaüstü için görünen adı özelleştirme
+## <a name="customize-the-display-name-for-a-remote-desktop"></a>Uzak Masaüstü için görüntü adını özelleştirme
 
-Bir kolay ad ayarlayarak yayımlanmış bir uzak masaüstü için görünen adı değiştirebilirsiniz. PowerShell aracılığıyla el ile bir konak havuzu ve Masaüstü uygulama grubu oluşturduysanız, varsayılan kolay ad "oturum Masaüstü" dir. GitHub Azure Resource Manager şablonu veya Azure Marketi teklifi aracılığıyla bir konak havuzu ve Masaüstü uygulama grubu oluşturduysanız, varsayılan kolay ad, ana bilgisayar havuzu adıyla aynıdır.
+Yayımlanmış bir uzak masaüstünün görüntü adını, kolay bir ad ayarlayarak değiştirebilirsiniz. PowerShell aracılığıyla bir ana bilgisayar havuzu ve masaüstü uygulama grubu el ile oluşturduysanız, varsayılan dostu ad "Oturum Masaüstü" olur. GitHub Azure Kaynak Yöneticisi şablonu veya Azure Marketi teklifi aracılığıyla bir ana bilgisayar havuzu ve masaüstü uygulama grubu oluşturduysanız, varsayılan ortak ad ana bilgisayar havuzu adı ile aynıdır.
 
-Uzak Masaüstü kaynağını almak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Uzak masaüstü kaynağını almak için aşağıdaki PowerShell cmdlet'i çalıştırın:
 
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](media/get-rdsremotedesktop.png)
+![PowerShell cmdlet Get-RDSRemoteApp'ın Ad ve FriendlyName ile ekran görüntüsü vurgulanmıştır.](media/get-rdsremotedesktop.png)
 
-Uzak Masaüstü kaynağına kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Uzak masaüstü kaynağına uygun bir ad atamak için aşağıdaki PowerShell cmdlet'i çalıştırın:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](media/set-rdsremotedesktop.png)
+![PowerShell cmdlet Set-RDSRemoteApp'ın Adıyla ve Yeni FriendlyName ile ekran görüntüsü vurgulanmıştır.](media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kullanıcıların akışını özelleştirdiğinize göre, test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Bunu yapmak için, Windows sanal masaüstü nasıl yapılır-TOS ' a bağlanma konusuna geçin:
+Artık kullanıcılar için özet akışını özelleştirdiğinize göre, bunu test etmek için bir Windows Sanal Masaüstü istemcisinde oturum açabilirsiniz. Bunu yapmak için, Windows Sanal Masaüstü Nasıl Yap'a Bağlan'a devam edin:
     
- * [Windows 10 veya Windows 7 ' den bağlan](connect-windows-7-and-10.md)
- * [Web tarayıcısından Bağlan](connect-web.md) 
+ * [Windows 10 veya Windows 7'den bağlanma](connect-windows-7-and-10.md)
+ * [Web tarayıcısından bağlanma](connect-web.md) 

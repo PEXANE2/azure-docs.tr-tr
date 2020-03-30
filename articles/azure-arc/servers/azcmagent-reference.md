@@ -1,6 +1,6 @@
 ---
-title: Azure bağlı makine Aracısı CLı arabirimi
-description: Azure bağlı makine Aracısı CLı için başvuru belgeleri
+title: Azure Bağlı Makine Aracısı CLI arabirimi
+description: Azure Bağlı Makine aracısı CLI için başvuru belgeleri
 author: bobbytreed
 manager: carmonm
 services: azure-arc
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513204"
 ---
-# <a name="azure-connected-machine-agent-cli-interface"></a>Azure bağlı makine Aracısı CLı arabirimi
+# <a name="azure-connected-machine-agent-cli-interface"></a>Azure Bağlı Makine Aracısı CLI arabirimi
 
-`Azcmagent` (Azure bağlı makine Aracısı) aracı, Azure 'a ait olmayan bir makine bağlantısını yapılandırmak ve sorunlarını gidermek için kullanılır.
+`Azcmagent` (Azure Bağlı Makine Aracısı) aracı, Azure'a azure olmayan bir makine bağlantısını yapılandırmak ve sorun gidermek için kullanılır.
 
-Aracı, Linux üzerinde `himdsd` adlı bir Daemon işlemidir ve Windows üzerinde `himds` adlı bir Windows hizmetidir.
+Aracının kendisi Linux'ta çağrılan `himdsd` bir daemon işlemidir ve Windows'da çağrılan `himds` bir Windows Hizmetidir.
 
-Normal kullanımda, bu makine ile Azure arasında bağlantı kurmak için `azcmagent connect` kullanılır ve bu bağlantıyı artık istemediğinize karar verirseniz `azcmagent disconnect`. Diğer komutlar sorun giderme veya diğer özel durumlar içindir.
+Normal kullanımda, `azcmagent connect` bu makine ile Azure arasında bir `azcmagent disconnect` bağlantı kurmak için kullanılır ve bu bağlantıyı artık istemediğinize karar verirseniz. Diğer komutlar sorun giderme veya diğer özel durumlar içindir.
 
 ## <a name="options"></a>Seçenekler
 
@@ -31,32 +31,32 @@ Normal kullanımda, bu makine ile Azure arasında bağlantı kurmak için `azcma
   -v, --verbose   Increase logging verbosity to show all logs
 ```
 
-## <a name="see-also"></a>AYRıCA BKZ.
+## <a name="see-also"></a>AYRıCA BAKıNıZ
 
-* [azcmagent Connect](#azcmagent-connect) -bu makineyi Azure 'a bağlar
-* [azcmagent Disconnect](#azcmagent-disconnect) -bu makinenin Azure bağlantısını keser
-* [azcmagent reconnect](#azcmagent-reconnect) -bu makineyi Azure 'a yeniden bağlar
-* [azcmagent Show](#azcmagent-show) -makine meta verilerini ve aracı durumunu alır. Bu öncelikle sorun giderme için yararlıdır.
-* [azcmagent sürümü](#azcmagent-version) -karma Yönetim Aracısı sürümünü görüntüle
+* [azcmagent connect](#azcmagent-connect) - Bu makineyi Azure'a bağlar
+* [azcmagent bağlantısı -](#azcmagent-disconnect) Bu makineyi Azure'dan keser
+* [azcmagent yeniden bağlanma](#azcmagent-reconnect) - Bu makineyi Azure'a yeniden bağlar
+* [azcmagent show](#azcmagent-show) - Makine meta veri ve Ajan durumunu alır. Bu, öncelikle sorun giderme için yararlıdır.
+* [azcmagent sürümü](#azcmagent-version) - Hybrid Management Agent sürümünü görüntüle
 
-## <a name="azcmagent-connect"></a>azcmagent Connect
+## <a name="azcmagent-connect"></a>azcmagent bağlamak
 
-Bu makineyi Azure 'a bağlar
+Bu makineyi Azure'a bağlar
 
-### <a name="synopsis"></a>Özeti
+### <a name="synopsis"></a>Özet
 
-Azure 'da bu makineyi temsil eden bir kaynak oluşturur.
+Azure'da bu makineyi temsil eden bir kaynak oluşturur.
 
-Bu, bu makineyi temsil eden Azure Resource Manager bir kaynak oluşturmak için belirtilen kimlik doğrulama seçeneklerini kullanır. Kaynak abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler konum parametresi tarafından belirtilen Azure bölgesinde depolanır.
-Varsayılan kaynak adı, geçersiz kılınmamışsa bu makinenin ana bilgisayar adıdır.
+Bu, bu makineyi temsil eden Azure Kaynak Yöneticisi'nde bir kaynak oluşturmak için sağlanan kimlik doğrulama seçeneklerini kullanır. Kaynak istenen abonelik ve kaynak grubundadır ve makineyle ilgili veriler konum parametresi tarafından belirtilen Azure bölgesinde depolanır.
+Varsayılan kaynak adı, geçersiz kılınmış değilse bu makinenin ana bilgisayar adıdır.
 
-Bu makinenin sistem tarafından atanan kimliğine karşılık gelen bir sertifika, daha sonra yerel olarak indirilir ve saklanır. Bu adım, **Azure bağlı makine meta veri** hizmetini tamamlar ve konuk yapılandırma Aracısı Azure bulutuyla eşitlemeye başlar.
+Bu makinenin Sistem Lekânlı Kimliğine karşılık gelen bir sertifika daha sonra indirilir ve yerel olarak depolanır. Bu adım tamamlandığında **Azure Bağlı Makine Meta Veri** Hizmeti ve Konuk Yapılandırma Aracısı Azure bulutuyla eşitlemeye başlar.
 
 Kimlik doğrulama seçenekleri:
 
-* Erişim belirteci `azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
-* Hizmet sorumlusu KIMLIĞI ve gizli `azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
-* Cihaz oturum açma (etkileşimli) `azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
+* Erişim Belirteci`azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
+* Hizmet Müdürü Kimliği ve gizli`azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
+* Aygıt oturum açma (Etkileşimli)`azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -80,25 +80,25 @@ azcmagent connect [flags]
       --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-disconnect"></a>azcmagent bağlantısı kesme
+## <a name="azcmagent-disconnect"></a>azcmagent bağlantısı
 
-Bu makinenin bağlantısını Azure ile keser
+Bu makineyi Azure'dan keser
 
-### <a name="synopsis"></a>Özeti
+### <a name="synopsis"></a>Özet
 
-Azure 'da bu sunucuyu temsil eden kaynağı siler.
+Azure'da bu sunucuyu temsil eden kaynağı siler.
 
-Bu komut, bu makineyi temsil eden Azure Resource Manager kaynağını kaldırmak için belirtilen kimlik doğrulama seçeneklerini kullanır. Bu noktadan sonra, **Azure bağlı makine Metadata Service** ve konuk yapılandırma aracısının bağlantısı kesilir. Bu komut, Hizmetleri durdurmaz veya kaldırmaz: bunu yapmak için paketi kaldırın.
+Bu komut, bu makineyi temsil eden Azure Kaynak Yöneticisi kaynağını kaldırmak için sağlanan kimlik doğrulama seçeneklerini kullanır. Bu noktadan sonra **Azure Bağlı Makine Meta veri Hizmeti** ve Konuk Yapılandırma Aracısı kesilir. Bu komut hizmetleri durdurmaz veya kaldırmaz: bunu yapmak için paketi kaldırın.
 
-Bu komut, "Azure bağlı makine ekleme" rolünden daha yüksek ayrıcalıklar gerektirir.
+Bu komut, "Azure Bağlı Makine Onboarding" rolünden daha yüksek ayrıcalıklar gerektirir.
 
-Bir makinenin bağlantısı kesildiğinde, Azure 'da yeni bir kaynak oluşturmak istiyorsanız `azcmagent reconnect` değil `azcmagent connect`kullanın.
+Bir makinenin bağlantısı kesildikten `azcmagent reconnect` sonra, Azure'da bunun için yeni bir kaynak oluşturmak istemiyorsanız kullanın. `azcmagent connect`
 
-Kimlik doğrulama seçenekleri:
+Kimlik Doğrulama Seçenekleri:
 
-* Erişim belirteci `azcmagent disconnect --access-token <>`
-* Hizmet sorumlusu KIMLIĞI ve gizli `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Etkileşimli cihaz oturum açma `azcmagent disconnect --tenant-id <>`
+* Erişim Belirteci`azcmagent disconnect --access-token <>`
+* Hizmet Müdürü Kimliği ve gizli`azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Etkileşimli Aygıt oturum açma`azcmagent disconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -119,27 +119,27 @@ azcmagent disconnect [flags]
   -t, --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-reconnect"></a>azcmagent yeniden bağlantısı
+## <a name="azcmagent-reconnect"></a>azcmagent yeniden bağlanma
 
-Bu makineyi Azure 'a yeniden bağlar
+Bu makineyi Azure'a yeniden bağlar
 
-### <a name="synopsis"></a>Özeti
+### <a name="synopsis"></a>Özet
 
-Makineyi Azure 'a geçersiz kimlik bilgileriyle yeniden bağlayın.
+Geçersiz kimlik bilgilerine sahip makineyi Azure'a yeniden bağlayın.
 
-Bir makinenin zaten Azure 'da bir kaynağı varsa ancak kimlik doğrulaması yapamadığında, bu komut kullanılarak yeniden bağlanabilir. Bu, bir makinenin sertifikasının süre sonu (en az 45 gün) için yeterince uzun süre kapatılmışsa mümkündür.
+Bir makinenin Azure'da zaten bir kaynağı varsa ancak bu makinenin kimliğini doğrulayamazsa, bu komut kullanılarak yeniden bağlanabilir. Bu, bir makinesertifikasının süresinin dolması için yeterince uzun süre kapalıysa (en az 45 gün) mümkündür.
 
-Bir makinenin `azcmagent disconnect`bağlantısı kesildiyse bunun yerine `azcmagent connect` kullanın.
+Bir makineyle `azcmagent disconnect`bağlantısı kesildiyse, bunun yerine kullanın. `azcmagent connect`
 
-Bu komut, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
+Bu komut, bu makineyi temsil eden Azure Kaynak Yöneticisi kaynağına karşılık gelen yeni kimlik bilgilerini almak için sağlanan kimlik doğrulama seçeneklerini kullanır.
 
-Bu komut, **Azure bağlı makine ekleme** rolünden daha yüksek ayrıcalıklar gerektirir.
+Bu komut, **Azure Bağlı Makine Onboarding** rolünden daha yüksek ayrıcalıklar gerektirir.
 
-Kimlik doğrulama seçenekleri
+Kimlik Doğrulama Seçenekleri
 
-* Erişim belirteci `azcmagent reconnect --access-token <>`
-* Hizmet sorumlusu KIMLIĞI ve gizli `azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Etkileşimli cihaz oturum açma `azcmagent reconnect --tenant-id <>`
+* Erişim Belirteci`azcmagent reconnect --access-token <>`
+* Hizmet Müdürü Kimliği ve gizli`azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Etkileşimli Aygıt oturum açma`azcmagent reconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -161,13 +161,13 @@ azcmagent reconnect [flags]
       --tenant-id string                  tenant id
 ```
 
-## <a name="azcmagent-show"></a>azcmagent Show
+## <a name="azcmagent-show"></a>azcmagent gösterisi
 
-Makine meta verilerini ve aracı durumunu alır. Bu öncelikle sorun giderme için yararlıdır.
+Makine meta verilerini ve Aracı durumunu alır. Bu, öncelikle sorun giderme için yararlıdır.
 
-### <a name="synopsis"></a>Özeti
+### <a name="synopsis"></a>Özet
 
-Makine meta verilerini ve aracı durumunu alır. Bu öncelikle sorun giderme için yararlıdır.
+Makine meta verilerini ve Aracı durumunu alır. Bu, öncelikle sorun giderme için yararlıdır.
 
 
 ### <a name="syntax"></a>Sözdizimi
@@ -182,13 +182,13 @@ azcmagent show [flags]
   -h, --help   help for show
 ```
 
-## <a name="azcmagent-version"></a>azcmagent sürümü
+## <a name="azcmagent-version"></a>azcmagent versiyonu
 
-Karma Yönetim Aracısı sürümünü görüntüle
+Hibrit Yönetim Aracısı sürümünü görüntüleme
 
-### <a name="synopsis"></a>Özeti
+### <a name="synopsis"></a>Özet
 
-Karma Yönetim Aracısı sürümünü görüntüle
+Hibrit Yönetim Aracısı sürümünü görüntüleme
 
 ### <a name="syntax"></a>Sözdizimi
 

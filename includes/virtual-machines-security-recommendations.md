@@ -9,57 +9,57 @@ ms.date: 11/13/2019
 ms.author: barclayn
 ms.custom: include file
 ms.openlocfilehash: d0ede337f2ae17f28cd02df7ed35919bd9955e7a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048558"
 ---
-Bu makale, Azure sanal makineler için güvenlik önerileri içerir. Paylaşılan sorumluluk için modelimizde açıklanan güvenlik yükümlülüklerinizi karşılamak üzere bu önerileri izleyin. Öneriler, Web uygulaması çözümleriniz için genel güvenliği iyileştirmenize de yardımcı olur. Hizmet sağlayıcı sorumluluklarını Microsoft 'un karşılama hakkında daha fazla bilgi için bkz. [bulut bilgi işlem Için paylaşılan sorumluluklar](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
+Bu makale, Azure Sanal Makineleri için güvenlik önerileri içerir. Ortak sorumluluk için modelimizde açıklanan güvenlik yükümlülüklerini yerine getirmeye yardımcı olmak için bu önerileri uygulayın. Öneriler, web uygulaması çözümleriniz için genel güvenliği artırmanıza da yardımcı olur. Microsoft'un hizmet sağlayıcı sorumluluklarını yerine getirmek için ne yaptığı hakkında daha fazla bilgi için bulut [bilgi işlem için Paylaşılan sorumluluklara](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)bakın.
 
-Bu makalenin bazı önerilerini Azure Güvenlik Merkezi tarafından otomatik olarak çözülebilir. Azure Güvenlik Merkezi, Azure 'daki kaynaklarınız için ilk savunma hattınızdır. Olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarının nasıl ele alınacağını önerir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde güvenlik önerileri](../articles/security-center/security-center-recommendations.md).
+Bu makalenin önerilerinden bazıları Azure Güvenlik Merkezi tarafından otomatik olarak ele alınabilir. Azure Güvenlik Merkezi, Azure'daki kaynaklarınız için ilk savunma hattıdır. Olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli aralıklarla analiz eder. Daha sonra güvenlik açıklarını nasıl gidereceklerini önerir. Daha fazla bilgi için [Azure Güvenlik Merkezi'ndeki Güvenlik önerilerine](../articles/security-center/security-center-recommendations.md)bakın.
 
-Azure Güvenlik Merkezi hakkında genel bilgi için bkz. [Azure Güvenlik Merkezi nedir?](../articles/security-center/security-center-intro.md).
+Azure Güvenlik Merkezi hakkında genel bilgi için azure [güvenlik merkezi nedir?](../articles/security-center/security-center-intro.md)
 
 ## <a name="general"></a>Genel
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Özel VM görüntüleri oluştururken, en son güncelleştirmeleri uygulayın. | Görüntü oluşturmadan önce, işletim sistemi ve görüntünüzün bir parçası olacak tüm uygulamalar için en son güncelleştirmeleri yükleyebilirsiniz.  | - |
-| VM 'lerinizi güncel tutun. | Azure 'daki Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda [güncelleştirme yönetimi](../articles/automation/automation-update-management.md) çözümünü kullanabilirsiniz. | [Evet](../articles/security-center/security-center-apply-system-updates.md) |
-| VM 'lerinizi yedekleyin. | [Azure Backup](../articles/backup/backup-overview.md) , uygulama verilerinizin korunmasına yardımcı olur ve en düşük işletim maliyetlerine sahiptir. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınızda hatalar oluşturabilir. Windows ve Linux çalıştıran sanal makinelerinizi korur Azure Backup. | - |
-| Daha büyük esnekliği ve kullanılabilirlik için birden fazla VM kullanın. | VM 'niz yüksek oranda kullanılabilir olması gereken uygulamalar çalıştırıyorsa, birden çok VM veya [kullanılabilirlik kümesi](../articles/virtual-machines/windows/manage-availability.md)kullanın. | - |
-| Bir iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisini benimseyin. | Azure Site Recovery, iş sürekliliğini desteklemek için tasarlanan farklı seçenekler arasından seçim yapmanıza olanak tanır. Farklı çoğaltma ve yük devretme senaryolarını destekler. Daha fazla bilgi için bkz. [Site Recovery](../articles/site-recovery/site-recovery-overview.md). | - |
+| Özel VM görüntüleri oluşturduğunuzda, en son güncelleştirmeleri uygulayın. | Resim oluşturmadan önce, işletim sistemi ve görüntünüzün bir parçası olacak tüm uygulamalar için en son güncelleştirmeleri yükleyin.  | - |
+| VM'lerinizi güncel tutun. | Azure'daki Windows ve Linux bilgisayarlarınız için işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu'ndaki [Güncelleştirme Yönetimi](../articles/automation/automation-update-management.md) çözümlerini kullanabilirsiniz. | [Evet](../articles/security-center/security-center-apply-system-updates.md) |
+| VM'lerinizi yedekle. | [Azure Yedekleme,](../articles/backup/backup-overview.md) uygulama verilerinizin korunmasına yardımcı olur ve en az işletme maliyetine sahiptir. Uygulama hataları verilerinizi bozabilir ve insan hataları uygulamalarınıza hata getirebilir. Azure Yedekleme, Windows ve Linux çalıştıran VM'lerinizi korur. | - |
+| Daha fazla esneklik ve kullanılabilirlik için birden fazla VM kullanın. | VM'niz çok kullanılabilir olması gereken uygulamaları çalıştırıyorsa, birden fazla VM veya [kullanılabilirlik kümesi](../articles/virtual-machines/windows/manage-availability.md)kullanın. | - |
+| İş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisini benimseyin. | Azure Site Kurtarma, iş sürekliliğini desteklemek için tasarlanmış farklı seçenekler arasından seçim yapmanızı sağlar. Farklı çoğaltma ve başarısız senaryoları destekler. Daha fazla bilgi için [Site Kurtarma Hakkında'ya](../articles/site-recovery/site-recovery-overview.md)bakın. | - |
 
 ## <a name="data-security"></a>Veri güvenliği
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| İşletim sistemi disklerini şifreleyin. | [Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md) , Windows ve Linux ıAAS VM disklerini şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içerikleri okunamaz. Disk şifrelemesi, depolanan verileri, aksi halde disk kopyalanırsa mümkün olmayan yetkisiz erişimlerden korur.| [Evet](../articles/security-center/security-center-apply-disk-encryption.md) |
-| Veri disklerini şifreleyin. | [Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md) , Windows ve Linux ıAAS VM disklerini şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içerikleri okunamaz. Disk şifrelemesi, depolanan verileri, aksi halde disk kopyalanırsa mümkün olmayan yetkisiz erişimlerden korur.| -  |
-| Yüklü yazılımı sınırlayın. | Çözümünüzü başarıyla uygulamak için, yüklü yazılımları gerekli olan ile sınırlayın. Bu kılavuz, çözümünüzün saldırı yüzeyini azaltmaya yardımcı olur. | - |
-| Virüsten koruma veya kötü amaçlı yazılımdan koruma kullanın. | Azure 'da, Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur. Microsoft kötü amaçlı yazılımdan koruma uygulamasını uygulama iş yüklerinize göre dağıtabilirsiniz. Temel güvenli ya da gelişmiş özel yapılandırma kullanın. Daha fazla bilgi için bkz. [Azure Cloud Services Için Microsoft kötü amaçlı yazılımdan koruma ve sanal makineler](../articles/security/azure-security-antimalware.md). | - |
-| Anahtarları ve gizli dizileri güvenli bir şekilde depolayın. | Güvenli ve merkezi olarak yönetilen bir seçeneğe sahip uygulama sahiplerinizi sağlayarak gizli dizi ve anahtarlarınızın yönetimini kolaylaştırın. Bu yönetim, yanlışlıkla bir uzlaşma veya sızıntı riskini azaltır. Azure Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 ' ye sertifikalı donanım güvenlik modüllerinde (HSM 'ler) güvenli bir şekilde saklayabilir. Anahtarlarınızı ve sırlarınızı depolamak için FIPS 140,2 düzey 3 ' ü kullanmanız gerekiyorsa [Azure ayrılmış HSM](../articles/dedicated-hsm/overview.md)'yi kullanabilirsiniz. | - |
+| İşletim sistemi disklerini şifreleyin. | [Azure Disk Şifreleme,](../articles/security/azure-security-disk-encryption-overview.md) Windows ve Linux IaaS VM disklerinizi şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içeriği okunamaz. Disk şifreleme, depolanan verileri, disk kopyalanırsa mümkün olabilecek yetkisiz erişime karşı korur.| [Evet](../articles/security-center/security-center-apply-disk-encryption.md) |
+| Veri disklerini şifreleyin. | [Azure Disk Şifreleme,](../articles/security/azure-security-disk-encryption-overview.md) Windows ve Linux IaaS VM disklerinizi şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içeriği okunamaz. Disk şifreleme, depolanan verileri, disk kopyalanırsa mümkün olabilecek yetkisiz erişime karşı korur.| -  |
+| Yüklü yazılımı sınırlayın. | Yüklü yazılımı, çözümünüzü başarıyla uygulamak için gereken yazılımla sınırlandırın. Bu kılavuz, çözümünüzün saldırı yüzeyini azaltmaya yardımcı olur. | - |
+| Virüsten koruma veya kötü amaçlı yazılımdan koruma kullanın. | Azure'da, Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarının kötü amaçlı yazılımdan koruma yazılımlarını kullanabilirsiniz. Bu yazılım, VM'lerinizi kötü amaçlı dosyalara, reklam yazılımlarından ve diğer tehditlerden korumaya yardımcı olur. Microsoft Antimalware'i uygulama iş yüklerinize göre dağıtabilirsiniz. Temel güvenli ve varsayılan veya gelişmiş özel yapılandırmayı kullanın. Daha fazla bilgi için Azure [Bulut Hizmetleri ve Sanal Makineler için Microsoft Kötü Amaçlı Yazılımdan Koruma](../articles/security/azure-security-antimalware.md)bilgisine bakın. | - |
+| Anahtarları ve sırları güvenli bir şekilde saklayın. | Uygulama sahiplerinize güvenli ve merkezi olarak yönetilen bir seçenek sunarak sırlarınızın ve anahtarlarınızın yönetimini basitleştirin. Bu yönetim, kazara bir uzlaşma veya sızıntı riskini azaltır. Azure Key Vault, anahtarlarınızı FIPS 140-2 Düzey 2 sertifikalı donanım güvenlik modüllerinde (HSM' ler) güvenli bir şekilde saklayabilir. Anahtarlarınızı ve sırlarınızı depolamak için FIPs 140.2 Level 3 kullanmanız gerekiyorsa, [Azure Özel HSM'yi](../articles/dedicated-hsm/overview.md)kullanabilirsiniz. | - |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi 
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| VM kimlik doğrulamasını merkezileştirme. | [Azure Active Directory kimlik doğrulaması](../articles/active-directory/develop/authentication-scenarios.md)kullanarak Windows ve Linux sanal makinelerinizin kimlik doğrulamasını merkezileştirebilirsiniz. | - |
+| VM kimlik doğrulamasını merkezileştirin. | [Azure Active Directory kimlik doğrulamasını](../articles/active-directory/develop/authentication-scenarios.md)kullanarak Windows ve Linux VM'lerinizin kimlik doğrulamasını merkezileştirebilirsiniz. | - |
 
 ## <a name="monitoring"></a>İzleme
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| VM 'lerinizi izleyin. | Azure VM 'lerinizin ve sanal makine ölçek kümelerinin durumunu izlemek için [VM'ler için Azure izleyici](../articles/azure-monitor/insights/vminsights-overview.md) kullanabilirsiniz. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. | - |
+| VM'lerinizi izleyin. | Azure Sanal M'lerinizin ve sanal makine ölçek kümelerinizin durumunu izlemek [için Sanal Makineler için Azure Monitörünü](../articles/azure-monitor/insights/vminsights-overview.md) kullanabilirsiniz. VM ile ilgili performans sorunları, kullanılabilirlik güvenlik ilkesini ihlal eden hizmet kesintisine neden olabilir. | - |
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Ağ Oluşturma
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Yönetim bağlantı noktalarına erişimi kısıtlayın. | Saldırganlar açık yönetim bağlantı noktaları için genel bulut IP aralıklarını tarar ve ortak parolalar ve bilinen düzeltme eki yüklenmemiş güvenlik açıkları gibi "kolay" saldırıları dener. [Tam zamanında (JIT) VM erişimi](../articles/security-center/security-center-just-in-time.md) 'Ni kullanarak Azure VM 'lerinize gelen trafiği kilitleyebilir, ancak gerektiğinde sanal makinelere kolay bağlantı sağlarken saldırılara maruz kalmayı azaltabilirsiniz. | - |
-| Ağ erişimini sınırlayın. | Ağ güvenlik grupları ağ erişimini kısıtlayıp açığa çıkarılan uç noktaların sayısını denetlemenizi sağlar. Daha fazla bilgi için bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](../articles/virtual-network/manage-network-security-group.md). | - |
+| Yönetim bağlantı noktalarına erişimi kısıtlayın. | Saldırganlar açık yönetim bağlantı noktaları için genel bulut IP aralıklarını tarar ve yaygın parolalar ve bilinen yamasız güvenlik açıkları gibi "kolay" saldırılar girişiminde bulunmayı dener. Azure VM'lerinize gelen trafiği kilitlemek için [tam zamanında (JIT) VM erişimi](../articles/security-center/security-center-just-in-time.md) kullanabilirsiniz, bu da gerektiğinde VM'lere kolay bağlantı sağlarken saldırılara maruz kalmayı azaltır. | - |
+| Ağ erişimini sınırlandırın. | Ağ güvenlik grupları, ağ erişimini kısıtlamanızı ve açıkta kalan uç noktaların sayısını denetlemenize olanak tanır. Daha fazla bilgi için bkz: [Ağ güvenlik grubu oluştur, değiştir veya sil.](../articles/virtual-network/manage-network-security-group.md) | - |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek güvenlik gereksinimleri hakkında bilgi edinmek için uygulama sağlayıcınıza danışın. Güvenli uygulamalar geliştirme hakkında daha fazla bilgi için bkz. [Güvenli Geliştirme belgeleri](../articles/security/fundamentals/abstract-develop-secure-apps.md).
+Ek güvenlik gereksinimleri hakkında bilgi edinmek için uygulama sağlayıcınıza danışın. Güvenli uygulamalar geliştirme hakkında daha fazla bilgi için [Güvenli geliştirme belgelerine](../articles/security/fundamentals/abstract-develop-secure-apps.md)bakın.

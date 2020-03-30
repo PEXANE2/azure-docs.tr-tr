@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault için Azure Event Grid olay şeması
-description: Azure Event Grid Azure Key Vault olaylar için belirtilen özellikleri ve şemayı açıklar
+title: Azure Anahtar Kasası için Azure Olay Izgara etkinliği şeması
+description: Azure Olay Ağıtı ile Azure Anahtar Kasası etkinlikleri için sağlanan özellikleri ve şema açıklanır
 services: event-grid
 author: msmbaldwin
 ms.service: event-grid
@@ -8,35 +8,35 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082862"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault için Azure Event Grid olay şeması (Önizleme)
+# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Anahtar Kasası için Azure Olay Izgara olay şeması (önizleme)
 
-Bu makalede, şu anda önizleme aşamasında olan [Azure Key Vault](../key-vault/index.yml)olaylar için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, şu anda önizlemede olan [Azure Anahtar Kasası'ndaki](../key-vault/index.yml)olaylar için özellikler ve şema sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Bir Azure Key Vault hesabı aşağıdaki olay türlerini üretir:
+Azure Anahtar Kasası hesabı aşağıdaki olay türlerini oluşturur:
 
-| Olay tam adı | Olay görünen adı | Açıklama |
+| Olay tam adı | Olay görüntü adı | Açıklama |
 | ---------- | ----------- |---|
-| Microsoft. Keykasası. Certificatenewversionoluşturuldu | Sertifika yeni sürümü oluşturuldu | Yeni bir sertifika veya yeni sertifika sürümü oluşturulduğunda tetiklenir. |
-| Microsoft. Keykasası. Certificatenearsüre sonu | Süresi dolmak üzere olan sertifika | Sertifikanın güncel sürümü sona ermek üzereyken tetiklenir. (Varsayılan değer, sona erme tarihinden itibaren 30 gündür.) |
-| Microsoft. Keykasası. Certificatedolmuştur | Sertifikanın Süresi Doldu | Sertifikanın süre dolduğunda tetiklenir. |
-| Microsoft. Keykasası. Keynewversionoluşturuldu | Anahtar yeni sürüm oluşturuldu | Yeni bir anahtar veya yeni anahtar sürümü oluşturulduğunda tetiklenir. |
-| Microsoft. Keykasası. Keyyaklaştığında süre sonu | Süresi dolmak üzere olan anahtar | Anahtarın geçerli sürümünün kullanım süreleri dolduğunda tetiklenir. (Varsayılan değer, sona erme tarihinden itibaren 30 gündür.) |
-| Microsoft. Keykasası. Keyerdim | Anahtarın geçerliliği zaman aşımına uğradı | Anahtarın süre dolduğunda tetiklenir. |
-| Microsoft. Keykasası. Secretnewversionoluşturuldu | Gizli yeni sürüm oluşturuldu | Yeni bir gizli dizi veya yeni bir gizli dizi sürümü oluşturulduğunda tetiklenir. |
-| Microsoft. Keykasası. Secretyaklaştığında süre sonu | Süre sonu yakın gizli | Bir parolanın geçerli sürümü sona ermek üzereyken tetiklenir. (Varsayılan değer, sona erme tarihinden itibaren 30 gündür.) |
-| Microsoft. Keykasası. SecretExpired | Gizli dizi zaman aşımına uğradı | Gizli dizi dolduğunda tetiklenir. |
+| Microsoft.KeyVault.CertificateNewVersionCreated | Sertifika Yeni Sürüm Oluşturuldu | Yeni bir sertifika veya yeni sertifika sürümü oluşturulduğunda tetiklenir. |
+| Microsoft.KeyVault.CertificateNearExpiry | Son Kullanma Tarihine Yakın Sertifika | Sertifikanın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.CertificateExpired | Sertifikanın Süresi Doldu | Sertifikanın süresi dolduğunda tetiklenir. |
+| Microsoft.keyvault.keynewversionCreated | Anahtar Yeni Sürüm Oluşturuldu | Yeni bir anahtar veya yeni anahtar sürümü oluşturulduğunda tetiklenir. |
+| Microsoft.KeyVault.KeyNearExpiry | Son Kullanma Tarihine Yakın Anahtar | Anahtarın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.KeyExpired | Anahtar Süresi Doldu | Bir anahtarın süresi dolduğunda tetiklenir. |
+| Microsoft.keyvault.secretnewversionCreated | Gizli Yeni Sürüm Oluşturuldu | Yeni bir gizli veya yeni gizli sürüm oluşturulduğunda tetiklenir. |
+| Microsoft.KeyVault.SecretNearExpiry | Sona Erme Tarihine Yakın Gizli | Bir sırrın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.SecretExpired | Gizli Süresi Doldu | Bir sırrın süresi dolduğunda tetiklenir. |
 
 ## <a name="event-examples"></a>Olay örnekleri
 
-Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşturulan**şemayı göstermektedir:
+Aşağıdaki örnek **Microsoft.KeyVault.SecretNewVersionCreated**için şema göstermek:
 
 ```JSON
 [
@@ -63,27 +63,27 @@ Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşt
 
 ## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki en üst düzey verilere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | ---------- | ----------- |---|
-| id | string | Bu olayı tetikleyen nesnenin KIMLIĞI |
-| vaultName | string | Bu olayı tetikleyen nesnenin Anahtar Kasası adı |
-| Nesne | string | Bu olayı tetikleyen nesnenin türü |
-| ObjectName | string | Bu olayı tetikleyen nesnenin adı |
+| id | string | Bu olayı tetikleyen nesnenin kimliği |
+| vaultName | string | Bu olayı tetikleyen nesnenin anahtar kasa adı |
+| Nesnetürü | string | Bu olayı tetikleyen nesnenin türü |
+| Nesneadı | string | Bu olayı tetikleyen nesnenin adı |
 | version | string | Bu olayı tetikleyen nesnenin sürümü |
-| NBF | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana saniye cinsinden olmayan Tarih |
-| Exp | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana geçen sona erme tarihi |
+| nbf | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z'den saniyeler önce olmayan tarih |
+| Exp | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z'den saniyeler içinde son kullanma tarihi |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. Event Grid nedir [?](overview.md).
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
-* Event Grid ile Key Vault tümleştirme hakkında daha fazla bilgi için bkz. [Azure Event Grid Ile izleme Key Vault (Önizleme)](../key-vault/event-grid-overview.md).
-* Event Grid Key Vault tümleştirme hakkında bir öğretici için bkz. [Azure Event Grid (Önizleme) ile Anahtar Kasası bildirimleri alma ve yanıtlama](../key-vault/event-grid-tutorial.md).
-* Key Vault ve Azure Otomasyonu hakkında ek rehberlik almak için, bkz.:
-    - [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
-    - [Azure Event Grid ile Key Vault izleme (Önizleme)](../key-vault/event-grid-overview.md)
-    - [Azure Event Grid ile Anahtar Kasası bildirimlerini alma ve yanıtlama (Önizleme)](../key-vault/event-grid-tutorial.md)
+* Azure Etkinlik Izgarasına giriş için olay [ızgarası nedir'e bakın?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Olay Grid ile Key Vault tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Olay Grid 'li Anahtar Kasasını İzleme (önizleme)](../key-vault/event-grid-overview.md)konusuna bakın.
+* Olay Grid ile Key Vault tümleştirmesi hakkında bir öğretici için, [Azure Olay Grid (önizleme) ile Anahtar Kasa bildirimlerini Al ve yanıtla'](../key-vault/event-grid-tutorial.md)ya bakın.
+* Key Vault ve Azure Otomasyonu için ek kılavuz lar almak için bkz:
+    - [Azure Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+    - [Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)](../key-vault/event-grid-overview.md)
+    - [Azure Olay Ağı (önizleme) ile önemli kasa bildirimlerini alma ve yanıtla](../key-vault/event-grid-tutorial.md)
     - [Azure Otomasyonu’na genel bakış](../automation/index.yml)

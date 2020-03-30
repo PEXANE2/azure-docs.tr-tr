@@ -1,7 +1,7 @@
 ---
-title: Kickstart denemeleri from örnekleri
+title: Örneklerden Kickstart deneyleri
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Yapay Zeka Galerisi ve Azure Machine Learning Studio (klasik) ile yeni denemeleri oluşturmak için örnek makine öğrenimi denemeleri nasıl kullanacağınızı öğrenin.
+description: Azure AI Galerisi ve Azure Machine Learning Studio (klasik) ile yeni denemeler oluşturmak için örnek makine öğrenimi denemelerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,21 +11,21 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
 ms.openlocfilehash: 1a913e714565ffb99237357e331ef5cf0189c40f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204230"
 ---
-# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi çalışma örneklerinden Azure Machine Learning Studio (klasik) denemeleri oluşturma
+# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure Yapay AI Galerisi'nde çalışan örneklerden Azure Machine Learning Studio (klasik) denemeleri oluşturun
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Sıfırdan makine öğrenimi denemeleri oluşturmayı öğrenmek yerine [Azure AI Gallery](https://gallery.azure.ai/)’deki örnek denemelerle nasıl çalışmaya başlayacağınızı öğrenin. Örnekleri kullanarak kendi makine öğrenimi çözümünüzü oluşturabilirsiniz.
 
-Galeri, Microsoft Azure Machine Learning Studio (klasik) ekibinin yanı sıra Machine Learning topluluğu tarafından paylaşılan örneklere sahip örnek denemeleri sahiptir. Ayrıca, denemeler hakkında soru sorabilir veya yorum yazabilirsiniz.
+Galeride Microsoft Azure Machine Learning Studio (klasik) ekibinin örnek deneylerini ve Machine Learning topluluğu tarafından paylaşılan örnekler bulunmaktadır. Ayrıca, denemeler hakkında soru sorabilir veya yorum yazabilirsiniz.
 
-Galeriyi nasıl kullanacağınızı görmek için [Yeni Başlayanlar için Veri Bilimi](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) serisinden [Veri bilimi yapmak için başka insanların çalışmalarını kopyalama](data-science-for-beginners-the-5-questions-data-science-answers.md) başlıklı 3 dakikalık videoyu izleyin.
+Galeriyi nasıl kullanacağınızı görmek için [Yeni Başlayanlar için Veri Bilimi](data-science-for-beginners-the-5-questions-data-science-answers.md) serisinden [Veri bilimi yapmak için başka insanların çalışmalarını kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) başlıklı 3 dakikalık videoyu izleyin.
 
 
 
@@ -51,12 +51,12 @@ Tüm denemelere gözatmak için:
     ![Örnek deneme](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Şablon olarak bir örnek kullanarak yeni deneme oluşturma
-Ayrıca, bir galeri örneğini şablon olarak kullanarak Machine Learning Studio (klasik) yeni bir deneme oluşturabilirsiniz.
+Ayrıca, Şablon olarak Galeri örneğini kullanarak Machine Learning Studio'da (klasik) yeni bir deneme oluşturabilirsiniz.
 
 1. Microsoft hesabı kimlik bilgilerinizle [Studio](https://studio.azureml.net)'da oturum açın ve ardından bir deneme oluşturmak için **Yeni** seçeneğine tıklayın.
 2. Örnek içeriğine gözatın ve birine tıklayın.
 
-Örnek deneme bir şablon olarak kullanılarak Machine Learning Studio (klasik) çalışma alanınızda yeni bir deneme oluşturulur.
+Örnek deneme şablon olarak kullanılarak Machine Learning Studio (klasik) çalışma alanınızda yeni bir deneme oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Çeşitli kaynaklardan veri alma](import-data.md)

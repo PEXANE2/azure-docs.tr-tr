@@ -1,43 +1,43 @@
 ---
-title: Azure Cosmos DB verileri modelleme
+title: Azure Cosmos DB'de verileri modelleme
 titleSuffix: Azure Cosmos DB
-description: NoSQL veritabanlarında veri modelleme hakkında bilgi edinin, ilişkisel bir veritabanında ve belge veritabanında modelleme verileri arasındaki farklılıklar.
+description: NoSQL veritabanlarındaki veri modelleme, ilişkisel veritabanındaki verileri modelleme ve belge veritabanı arasındaki farklar hakkında bilgi edinin.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72755008"
 ---
-# <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
+# <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB'de veri modelleme
 
-Azure Cosmos DB gibi şemaya ücretsiz veritabanları olsa da, yapılandırılmamış ve yarı yapılandırılmış verilerin depolanmasını ve sorgulanmasını kolaylaştırır; performans ve ölçeklenebilirlik ve en düşük düzeyde hizmetin en iyi şekilde yararlanmak için veri modelinize bir süre harcamanız gerekir YT.
+Azure Cosmos DB gibi şema içermeyen veritabanları, yapılandırılmamış ve yarı yapılandırılmış verileri depolamayı ve sorgulamayı süper kolay hale getirse de, performans ve ölçeklenebilirlik ve en düşük hizmet açısından hizmetten en iyi şekilde yararlanmak için veri modelinizi düşünmek için biraz zaman harcamanız gerekir Maliyet.
 
-Veriler nasıl depolanır? Uygulamanız verileri nasıl alıp sorgular? Uygulamanızın okuma ağır mi yoksa koyu mı olduğunu mı var?
+Veriler nasıl depolanacak? Uygulamanız verileri nasıl alıp sorgulayacak? Başvurunuz okuma-ağır mı, yoksa yazma-ağır mı?
 
-Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
+Bu makaleyi okuduktan sonra, aşağıdaki soruları cevaplamak mümkün olacak:
 
-* Veri modelleme nedir ve neden ilgilenmeliyim?
-* Azure Cosmos DB veri modellemesi, ilişkisel bir veritabanına göre farklı midir?
-* Nasıl yaparım? ilişkisel olmayan bir veritabanında Express veri ilişkileri mi?
-* Ne zaman veri ekleyebilirim ve verilere ne zaman bağlantı oluşturabilirim?
+* Veri modelleme nedir ve neden önemsemeliyim?
+* Azure Cosmos DB'deki verileri modellemenin ilişkisel bir veritabanından farkı nedir?
+* İlişkisel olmayan bir veritabanında veri ilişkilerini nasıl ifade edebilirim?
+* Verileri ne zaman katıştırıyorum ve verilere ne zaman bağlanacağım?
 
-## <a name="embedding-data"></a>Veri katıştırma
+## <a name="embedding-data"></a>Veri gömme
 
-Azure Cosmos DB ' de modelleme verileri başlattığınızda varlıklarınızı JSON belgeleri olarak temsil edilen **bağımsız öğeler** olarak işleme çalışın.
+Azure Cosmos DB'de verileri modellemeye başladığınızda, varlıklarınızı JSON belgeleri olarak temsil edilen **bağımsız öğeler** olarak ele almaya çalışın.
 
-Karşılaştırma için, bir ilişkisel veritabanındaki verileri modelliyoruz. Aşağıdaki örnek, bir kişinin ilişkisel veritabanında nasıl depolandığını gösterir.
+Karşılaştırma için, önce ilişkisel bir veritabanındaki verileri nasıl modelleyebileceğimizi görelim. Aşağıdaki örnek, bir kişinin ilişkisel bir veritabanında nasıl depolanabileceğini gösterir.
 
 ![İlişkisel veritabanı modeli](./media/sql-api-modeling-data/relational-data-model.png)
 
-İlişkisel veritabanlarıyla çalışırken, strateji tüm verilerinizi normalleştirilemiyor. Verilerinizin normalleştirilmesi, genellikle kişi gibi bir varlık almayı ve ayrı bileşenlere doğru bir şekilde bölünmesini içerir. Yukarıdaki örnekte, bir kişi birden fazla kişi ayrıntısı kaydına ve birden çok adres kaydına sahip olabilir. İletişim ayrıntıları, bir tür gibi ortak alanlar daha fazla ayıklanarak daha fazla ayrılabilir. Aynı adres için de geçerlidir, her bir kayıt *Ev* veya *iş*türünde olabilir.
+İlişkisel veritabanları ile çalışırken, strateji tüm verilerinizi normalleştirmektir. Verilerinizi normalleştirmek genellikle bir kişi gibi bir varlığı alıp ayrı bileşenlere bölmeyi içerir. Yukarıdaki örnekte, bir kişinin birden çok ilgili kişi ayrıntı kaydının yanı sıra birden çok adres kaydı olabilir. İletişim bilgileri, bir tür gibi ortak alanları daha da ayıklayarak daha da bölünebilir. Aynı adres için de geçerlidir, her kayıt tür *Ev* veya *İş*olabilir.
 
-Verileri normalleştirirken temel alan, her kayıtta gereksiz verileri depolamayı ve bunun yerine verilere **başvurmaktan kaçınmaktır** . Bu örnekte, kişinin tüm iletişim ayrıntılarını ve adreslerini içeren bir kişiyi okumak için, çalışma zamanında verilerinizi etkin bir şekilde oluşturmak (veya yeniden kullanmak) için BIRLEŞTIRMELERI kullanmanız gerekir.
+Verileri normalleştirmede yol gösterici öncül, her kayıtta **gereksiz verileri depolamaktan kaçınmak** ve daha çok verilere başvurmaktır. Bu örnekte, bir kişiyi tüm iletişim bilgileri ve adresleriyle birlikte okumak için, çalışma zamanında verilerinizi etkili bir şekilde oluşturmak (veya normalden arındırmak) için JOINS'i kullanmanız gerekir.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -45,9 +45,9 @@ Verileri normalleştirirken temel alan, her kayıtta gereksiz verileri depolamay
     JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
-Tek bir kişinin kişi ayrıntıları ve adresleriyle güncelleştirilmesi, birçok ayrı tabloda yazma işlemleri gerektirir.
+Tek bir kişinin iletişim bilgileri ve adresleriyle güncelleştirilmesi, birçok tabloda yazma işlemleri gerektirir.
 
-Şimdi de Azure Cosmos DB aynı verileri kendi kendine dahil edilen varlıkla modelliyoruz.
+Şimdi Azure Cosmos DB'de bağımsız bir varlıkla aynı verileri nasıl modelleyebileceğimize bir göz atalım.
 
     {
         "id": "1",
@@ -68,31 +68,31 @@ Tek bir kişinin kişi ayrıntıları ve adresleriyle güncelleştirilmesi, bir�
         ]
     }
 
-Yukarıdaki yaklaşımı kullanarak, kişi ayrıntıları ve adresleri gibi bu kişiyle **ilgili tüm bilgileri** *tek bir JSON* belgesine ekleyerek kişi kaydını **uzlaştırdık** .
-Ayrıca, bir sabit şemayla sınırlandırmadığımızda, farklı şekillerin iletişim ayrıntılarını almak gibi şeyleri oluşturma esnekliği sunuyoruz.
+Yukarıdaki yaklaşımı kullanarak, iletişim bilgileri ve adresleri gibi bu kişiyle ilgili tüm bilgileri tek bir *JSON* belgesine **yerleştirerek** kişi kaydını **normalden ayırdık.**
+Buna ek olarak, sabit bir şemaya bağlı olmadığımız için, tamamen farklı şekillerin iletişim bilgilerine sahip olmak gibi şeyleri yapma esnekliğine sahibiz.
 
-Veritabanından bir bütün kişi kaydının alınması, artık tek bir kapsayıcıya ve tek bir öğeye karşı tek bir **okuma işlemidir** . Bir kişi kaydını, kişi ayrıntıları ve adresleriyle güncelleştirmek aynı zamanda tek bir öğe için **tek bir yazma işlemidir** .
+Veritabanından tam bir kişi kaydı alma artık tek bir kapsayıcı ya karşı ve tek bir öğe için tek bir **okuma işlemidir.** Kişi bilgileri ve adresleriyle bir kişi kaydının güncelleştirilmesi, aynı zamanda tek bir öğeye karşı tek bir **yazma işlemidir.**
 
-Verilerin bir bütün olarak, genel işlemleri tamamlaması için daha az sorgu ve güncelleştirme vermesi gerekebilir.
+Verilerin normalinden arındırılarak, uygulamanızın ortak işlemleri tamamlamak için daha az sorgu ve güncelleştirme sorunu yayınlaması gerekebilir.
 
-### <a name="when-to-embed"></a>Ne zaman gömüleceği
+### <a name="when-to-embed"></a>Ne zaman gömüler
 
-Genel olarak, şu durumlarda ekli veri modellerini kullanın:
+Genel olarak, gömülü veri modellerini şu durumlarda kullanın:
 
-* Varlıklar arasında **Kapsanan** ilişkiler vardır.
+* Varlıklar arasında **içeren** ilişkiler vardır.
 * Varlıklar arasında **bire bir** ilişki vardır.
 * **Seyrek olarak değişen**gömülü veriler vardır.
-* **Bağlantılı olmadan**artmayacak gömülü veriler var.
-* **Birlikte sık sorgulanan**Ekli veriler vardır.
+* **Bağlı olmadan**büyümeyecek gömülü veriler vardır.
+* Sık sık birlikte **sorgulandık**gömülü veriler vardır.
 
 > [!NOTE]
-> Genellikle, yoğun veri modelleri daha iyi **okuma** performansı sağlar.
+> Genellikle normalden arındırılmış veri modelleri daha iyi **okuma** performansı sağlar.
 
-### <a name="when-not-to-embed"></a>Katıştırılamaz
+### <a name="when-not-to-embed"></a>Gömmemek için ne zaman
 
-Azure Cosmos DB 'daki Thumb kuralı her şeyi eşit hale getirme ve tüm verileri tek bir öğeye ekleme işlemi yaparken, bu durum kaçınılması gereken bazı durumlara yol açabilir.
+Azure Cosmos DB'deki başparmak kuralı her şeyin normalinden arındırmak ve tüm verileri tek bir öğeye yerleştirmek olsa da, bu kaçınılması gereken bazı durumlara yol açabilir.
 
-Bu JSON kod parçacığını alın.
+Şu JSON parçacığı al.
 
     {
         "id": "1",
@@ -110,11 +110,11 @@ Bu JSON kod parçacığını alın.
         ]
     }
 
-Bu, genel bir blog veya CMS, sistem modelliyoruz, gömülü açıklamalara sahip bir post varlığının nasıl görüneceğine benzeyebilir. Bu örnekteki sorun, Comments dizisinin **sınırsız**olması, yani tek bir gönderinin sahip olduğu açıklama sayısında (pratik) bir sınır olmadığı anlamına gelir. Öğenin boyutu sonsuz büyük büyüyerek bu sorun oluşabilir.
+Bu, tipik bir blog veya CMS, sistem modelleme olsaydı gömülü yorumlar ile bir yazı varlık nasıl görüneceğini olabilir. Bu örnekteki sorun, yorum dizisinin **sınırsız**olmasıdır, yani herhangi bir gönderinin sahip olabileceği yorum sayısı için (pratik) bir sınır yoktur. Öğenin boyutu sonsuz büyük büyüyebilir gibi bu bir sorun haline gelebilir.
 
-Öğenin boyutu, verilerin kablo üzerinden iletilmesi ve öğe okuma ve güncelleştirme özelliğinin ölçeğini büyürken, bu, ölçeğe karşı etkilenir.
+Öğenin boyutu büyüdükçe, verileri tel üzerinden iletme ve öğeyi okuma ve güncelleme yeteneği ölçekolarak etkilenecektir.
 
-Bu durumda, aşağıdaki veri modelini göz önünde bulundurmanız daha iyidir.
+Bu durumda, aşağıdaki veri modelini dikkate almak daha iyi olacaktır.
 
     Post item:
     {
@@ -147,11 +147,11 @@ Bu durumda, aşağıdaki veri modelini göz önünde bulundurmanız daha iyidir.
         ]
     }
 
-Bu modelde, sabit bir öznitelik kümesi olan bir dizi olan post kapsayıcısına gömülü en son üç açıklama bulunur. Diğer açıklamalar 100 açıklama toplu işleri halinde gruplandırılır ve ayrı öğeler olarak depolanır. Kurgusal uygulamamız kullanıcının aynı anda 100 açıklamalarını yüklemesine izin verdiğinden Batch 'in boyutu 100 olarak seçilmiştir.  
+Bu model, sabit bir öznitelik kümesine sahip bir dizi olan posta kapsayıcısında gömülü en son üç yoruma sahiptir. Diğer yorumlar 100 yorumdan oluşan gruplar halinde gruplandırılır ve ayrı öğeler olarak depolanır. Bizim hayali uygulama kullanıcı bir seferde 100 yorum yüklemek için izin verir, çünkü toplu iş boyutu 100 olarak seçildi.  
 
-Verilerin gömülmesi iyi bir fikir olmak üzere, gömülü verilerin genellikle öğeler arasında kullanıldığı ve sıklıkla değiştirileceği bir diğer durumdur.
+Verileri katıştırma iyi bir fikir olmadığı başka bir durum da, katıştırılmış verilerin öğeler arasında sık sık kullanıldığı ve sık sık değişeceğidir.
 
-Bu JSON kod parçacığını alın.
+Şu JSON parçacığı al.
 
     {
         "id": "1",
@@ -169,17 +169,17 @@ Bu JSON kod parçacığını alın.
         ]
     }
 
-Bu, bir kişinin hisse senedi portföyünü temsil eder. Hisse senedi bilgilerini her bir portföy belgesine eklemeyi seçtik. Hisse senedi yapan bir ticaret uygulaması gibi ilgili verilerin sıklıkla değiştiği bir ortamda, sık sık değişen verilerin gömülmesi, her bir stok her seferinde her bir portföy belgesini sürekli güncelleştirdiğiniz anlamına gelir.
+Bu bir kişinin hisse senedi portföyünü temsil edebilir. Hisse senedi bilgilerini her portföy belgesine yerleştirmeyi seçtik. İlgili verilerin hisse senedi alım satım uygulaması gibi sık sık değiştiği bir ortamda, sık sık değişen verileri yerleştirmek, her hisse senedi işlem gördüğünde her portföy belgesini sürekli olarak güncellediğiniz anlamına gelir.
 
-*Zaza* , tek bir günde yüzlerce kez, binlerce kullanıcının de portföyüne bir *zaza* sahip olabilir. Yukarıdaki gibi bir veri modeliyle, her gün her gün en iyi ölçeklendirmeyecek bir sisteme birçok kez binlerce portföy belgesini güncelleştirmemiz gerekir.
+Hisse senedi *zazaca* bir günde yüzlerce kez işlem görebilir ve binlerce kullanıcı portföyünde *zaza* olabilir. Yukarıdaki gibi bir veri modeli ile biz portföy belgeleri binlerce her gün birçok kez iyi ölçeklendirmez bir sisteme giden güncellemek zorunda kalacaktı.
 
 ## <a name="referencing-data"></a>Verilere başvurma
 
-Verilerin gömülmesi çok sayıda durum için çalışır, ancak verilerinizin normalleştirilmesi sırasında daha fazla soruna neden olur. Şimdi ne yapabiliriz?
+Verileri katıştırma birçok durumda iyi çalışır, ancak verilerinnormalden arındırma değerinden daha fazla soruna neden olacak senaryolar vardır. Peki şimdi ne yapacağız?
 
-İlişkisel veritabanları, varlıklar arasında ilişkiler oluşturabileceğiniz tek yer değildir. Belge veritabanında, bir belgede diğer belgelerdeki verilerle ilgili bilgiler alabilirsiniz. Azure Cosmos DB veya başka bir belge veritabanında ilişkisel bir veritabanına daha uygun olan sistemlerin oluşturulmasını önermiyoruz, ancak basit ilişkiler ince ve yararlı olabilir.
+İlişkisel veritabanları, varlıklar arasında ilişki oluşturabileceğiniz tek yer değildir. Belge veritabanında, bir belgede diğer belgelerdeki verilerle ilgili bilgilere sahip olabilirsiniz. Azure Cosmos DB'deki veya başka bir belge veritabanında ilişkisel bir veritabanına daha uygun sistemler oluşturmanızı önermiyoruz, ancak basit ilişkiler iyidir ve yararlı olabilir.
 
-Aşağıdaki JSON 'da, daha önce bir hisse senedi portföyünün örneğini kullanmayı seçtik, ancak bu süre bu kez portföyündeki stok öğesine katıştırıyoruz. Bu şekilde, hisse senedi öğesi gün boyunca sık değişiyorsa, tek stok belgesi, güncelleştirilmesi gereken tek belgedir.
+Aşağıdaki JSON'da daha önceki bir hisse senedi portföyü örneğini kullanmayı seçtik, ancak bu sefer onu yerleştirmek yerine portföydeki hisse senedi maddesine atıfta bulunuyoruz. Bu şekilde, stok maddesi gün boyunca sık sık değiştiğinde, güncellenmesi gereken tek belge tek stok belgesidir.
 
     Person document:
     {
@@ -214,32 +214,32 @@ Aşağıdaki JSON 'da, daha önce bir hisse senedi portföyünün örneğini kul
         "pe": 75.82
     }
 
-Bu yaklaşımın hemen bir yanındaki, uygulamanızın bir kişinin portföyünü görüntülerken tuttuğu her bir stok hakkındaki bilgileri göstermesi gerekir. Bu durumda, her hisse senedi belgesi için bilgileri yüklemek üzere veritabanına birden çok gidiş dönüş yapmanız gerekir. Burada, gün boyunca sıklıkla gerçekleşen yazma işlemlerinin verimliliğini artırmaya yönelik bir karar verdik, ancak bu belirli sistem performansı üzerinde daha az etkisi olan okuma işlemlerine zarar verdik.
+Ancak bu yaklaşımın hemen bir dezavantajı, başvurunuzun bir kişinin portföyünü görüntülerken tutulan her hisse senedi hakkında bilgi göstermesi gerekip gerekmemesidir; Bu durumda, her stok belgesi için bilgileri yüklemek için veritabanına birden çok yolculuk yapmanız gerekir. Burada, gün boyunca sık sık gerçekleşen, ancak bu sistemin performansı üzerinde potansiyel olarak daha az etkiye sahip okuma işlemleri üzerinde tehlikeye giren yazma işlemlerinin verimliliğini artırmaya karar verdik.
 
 > [!NOTE]
-> Normalleştirilmiş veri modelleri sunucuya **daha fazla gidiş dönüş gerektirebilir** .
+> Normalleştirilmiş veri modelleri sunucuya **daha fazla gidiş dönüş gerektirebilir.**
 
-### <a name="what-about-foreign-keys"></a>Yabancı anahtarlar ne olacak?
+### <a name="what-about-foreign-keys"></a>Peki ya yabancı anahtarlar?
 
-Şu anda kısıtlama, yabancı anahtar veya başka türlü bir kavram olmadığından, belgelerinizde bulunan belge içi ilişkilerin etkili bir şekilde "zayıf bağlantı" olması ve veritabanının kendisi tarafından doğrulanmayacak olması gerekir. Bir belgenin gerçekten mevcut olduğundan emin olmak istiyorsanız, bunu uygulamanızda yapmanız veya Azure Cosmos DB üzerinde sunucu tarafı Tetikleyicileri veya saklı yordamların kullanılması gerekir.
+Şu anda bir kısıtlama, yabancı anahtar veya başka bir kavram olmadığından, belgelerde bulunan tüm belgeler arası ilişkiler etkili bir şekilde "zayıf bağlantılardır" ve veritabanının kendisi tarafından doğrulanmaz. Bir belgenin atıfta bulunduğu verilerin gerçekten var olduğundan emin olmak istiyorsanız, bunu uygulamanızda veya Azure Cosmos DB'de sunucu tarafındaki tetikleyiciler veya depolanmış yordamlar aracılığıyla yapmanız gerekir.
 
-### <a name="when-to-reference"></a>Ne zaman başvurulacak
+### <a name="when-to-reference"></a>Ne zaman başvurulması gerektiğini
 
-Genel olarak, şu durumlarda normalleştirilmiş veri modellerini kullanın:
+Genel olarak, normalleştirilmiş veri modellerini şu durumlarda kullanın:
 
-* **Bire çok** ilişkilerini temsil etme.
-* **Çoka** çok ilişkileri temsil eden.
-* İlgili veri **değişiklikleri sıklıkla**yapılır.
-* Başvurulan verilerin **sınırsız**olması olabilir.
+* **Bir-çok** ilişkileri temsil ediyor.
+* **Çok-çok** ilişkileri temsil ediyor.
+* İlgili veriler **sık sık değişir.**
+* Başvurulan veriler **sınırsız**olabilir.
 
 > [!NOTE]
-> Genellikle normalleştirici daha iyi **yazma** performansı sağlar.
+> Genellikle normalleştirme daha iyi **yazma** performansı sağlar.
 
-### <a name="where-do-i-put-the-relationship"></a>İlişkiyi nereye yerleştiririm?
+### <a name="where-do-i-put-the-relationship"></a>İlişkiyi nereye koyacağım?
 
-İlişkinin büyümesi başvuruyu hangi belgenin depolayaceğini belirlemenize yardımcı olur.
+İlişkinin büyümesi, başvurunun hangi belgede depolanacağını belirlemeye yardımcı olur.
 
-Aşağıda, yayımcıları ve kitapları modelleyen JSON ' a bakacağız.
+Aşağıdaki JSON'a bakacak olursak yayıncıları ve kitapları modeller.
 
     Publisher document:
     {
@@ -257,9 +257,9 @@ Aşağıda, yayımcıları ve kitapları modelleyen JSON ' a bakacağız.
     ...
     {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
-Yayımcı başına kitap sayısı sınırlı büyüme ile küçükse, kitap başvurusunu yayımcı belgesi içinde depolamak yararlı olabilir. Ancak, yayımcı başına kitap sayısı sınırsız ise, bu veri modeli yukarıdaki örnek yayımcı belgesinde olduğu gibi değişebilir, büyüyen diziler oluşmasına neden olur.
+Yayımcı başına düşen kitap sayısı sınırlı büyümeyle birlikte küçükse, kitap referansını yayımcı belgesinin içinde depolamak yararlı olabilir. Ancak, yayımcı başına düşen kitap sayısı sınırsızsa, bu veri modeli yukarıdaki örnek yayımcı belgesinde olduğu gibi, çözülebilen, büyüyen dizilere yol açar.
 
-Bir bit içindeki şeyleri değiştirmek, yine de aynı verileri temsil eden bir modelin oluşmasına neden olur, ancak artık bu büyük kesilebilir koleksiyonları engeller.
+Bir şeyleri biraz etrafında değiştirmek, hala aynı verileri temsil eden ancak şimdi bu büyük mutable koleksiyonlardan kaçınan bir modelle sonuçlanır.
 
     Publisher document:
     {
@@ -276,15 +276,15 @@ Bir bit içindeki şeyleri değiştirmek, yine de aynı verileri temsil eden bir
     ...
     {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
-Yukarıdaki örnekte, yayımcı belgesinde, sınırlandırılmamış koleksiyonu bırakıldık. Bunun yerine, her kitap belgesinde yayımcıya yalnızca bir başvuruyoruz.
+Yukarıdaki örnekte, yayımcı belgesinde sınırsız koleksiyonu düşürdük. Bunun yerine sadece her kitap belgesinde yayıncıya bir referans var.
 
-### <a name="how-do-i-model-manymany-relationships"></a>Nasıl yaparım? modeli çok: çok ilişki?
+### <a name="how-do-i-model-manymany-relationships"></a>Çok: birçok ilişkiyi nasıl modellendirebilirim?
 
-İlişkisel bir veritabanında *birçok: birçok* ilişki genellikle kayıtları diğer tablolardan birlikte birleştiren JOIN tablolarıyla modellenir.
+İlişkisel bir veritabanında *çok: birçok* ilişki genellikle sadece birlikte diğer tablolardan kayıtları birleştirmek birleştirme tabloları ile modellenir.
 
-![Tabloları Birleştir](./media/sql-api-modeling-data/join-table.png)
+![Birleştirme tabloları](./media/sql-api-modeling-data/join-table.png)
 
-Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakine benzer bir veri modeli oluşturmak isteyebilirsiniz.
+Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakilere benzer bir veri modeli oluşturmak isteyebilirsiniz.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen" }
@@ -303,9 +303,9 @@ Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakine benzer bir veri m
     {"authorId": "a1", "bookId": "b2" }
     {"authorId": "a1", "bookId": "b3" }
 
-Bu işe çalışacaktır. Ancak, kendi kitaplarıyla bir yazar yüklemek veya yazarı ile bir kitabı yüklemek her zaman veritabanında en az iki ek sorgu gerektirir. Birleştirme belgesinde bir sorgu ve sonra da birleştirilen gerçek belgeyi getirmek için başka bir sorgu.
+Bu işe yarar. Ancak, bir yazarı kitaplarıyla yüklemek veya bir kitabı yazarıyla birlikte yüklemek, her zaman veritabanına karşı en az iki ek sorgu gerektirir. Birleştirme belgesine bir sorgu ve sonra birleşen gerçek belgeyi almak için başka bir sorgu.
 
-Bu birleştirme tablosu varsa, iki veri parçasına bir araya gelir ve neden tamamen düşürülemiyor?
+Eğer tüm bu birleştirme tablosu iki parça veriyi birbirine yapıştırıyorsa, o zaman neden tamamen düşürmedin?
 Aşağıdakileri göz önünde bulundurun.
 
     Author documents:
@@ -318,17 +318,17 @@ Aşağıdakileri göz önünde bulundurun.
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
     {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
-Şimdi bir yazardaysam, hangi kitaplarınızın yazıldığını hemen öğrendim ve bunun tersine, bir kitap belgesi yüklüyse yazarın kimliklerini öğreniyorum. Bu, bu aracı sorgusunu, uygulamanızın yapması gereken sunucu gidiş dönüş sayısını azaltarak JOIN tablosuna kaydeder.
+Şimdi, bir yazar olsaydı, ben hemen yazdıkları kitapları biliyorum, ve tersine ben bir kitap belgesi yüklü olsaydı ben yazarın (lar) kimliklerini bilmek istiyorum. Bu, ara sorguyu birleştirme tablosuna karşı, uygulamanızın yapmak zorunda olduğu sunucu tur larını azaltarak kaydeder.
 
 ## <a name="hybrid-data-models"></a>Karma veri modelleri
 
-Artık veri ekleme (veya normalleştirilmişi) ve başvuru (ya da normalleştiriyoruz), her birinin onların kenarları ve gördük.
+Şimdi katıştırma (veya denormalizing) ve referans (veya normalleştirme) veri baktım, her biri kendi artıları var ve her gördüğümüz gibi tavizler var.
 
-Her zaman ya da olmaması gerekmez, çok az bir şeyi karıştırmayın.
+Her zaman ya da olmak zorunda değildir, şeyler biraz karıştırmak için korkmayın.
 
-Uygulamanızın belirli kullanım desenlerine ve iş yüklerine bağlı olarak, gömülü ve başvurulan verilerin karıştırıldığı durumlar olabilir ve iyi bir performans düzeyini sürdürirken daha az sunucu gidiş dönüşleriyle daha basit uygulama mantığına yol açabilir.
+Uygulamanızın özel kullanım kalıplarına ve iş yüklerine bağlı olarak, gömülü ve başvurulan verilerin karıştırılmasının mantıklı olduğu ve iyi bir performans düzeyini korurken daha az sunucu turu gezileriyle daha basit uygulama mantığına yol açabileceği durumlar olabilir.
 
-Aşağıdaki JSON 'ı göz önünde bulundurun.
+Aşağıdaki JSON düşünün.
 
     Author documents:
     {
@@ -371,19 +371,19 @@ Aşağıdaki JSON 'ı göz önünde bulundurun.
         ]
     }
 
-Burada (çoğunlukla), diğer varlıklardaki verilerin en üst düzey belgeye katıştırıldığı, ancak diğer verilere başvurulduğu, gömülü modeli izliyoruz.
+Burada (çoğunlukla) diğer varlıklardan gelen verilerin üst düzey belgeye katıştırıldığı, ancak diğer verilere başvurulduğu gömülü modeli izledik.
 
-Kitap belgesine bakarsanız, yazarların dizisine baktığımızda birkaç ilginç alan görebiliriz. Bir yazar belgesine, Normalleştirilmemiş bir modelde standart uygulamaya geri başvurabileceğiniz alan olan bir `id` alanı vardır ancak `name` ve `thumbnailUrl`de vardır. "LINK" kullanarak ilgili yazar belgesinden gereken ek bilgileri almak için `id` ve uygulamayı sola yazdık, ancak uygulamamız her kitapta görüntülenen yazarın adını ve küçük resim resmini görüntülediğinden , yazardaki **bazı** verileri kaldırarak bir listedeki kitap başına sunucuya gidiş dönüş tasarrufu sağlayabilir.
+Kitap belgesine bakarsanız, yazar dizilimi ne zaman görebilirsiniz. Biz bir `id` yazar belge, normalleştirilmiş bir modelde standart uygulama başvurmak için kullandığınız alan dır, `name` `thumbnailUrl`ama sonra biz de var ve . "Bağlantı"yı `id` kullanarak ilgili yazar belgesinden gerekli olan ek bilgileri almak için uygulamadan ayrılabilirdik, ancak uygulamamız yazarın adını ve görüntülenen her kitapla birlikte bir küçük resim görüntülediği için, yazardan gelen **bazı** verileri normalleştirerek bir listedeki sunucu başına bir gidiş dönüş kaydedebiliriz.
 
-Yazarın adı değiştiyse ya da fotoğraflarını güncelleştirmek istiyorlarsa, yazarların adlarını sık değiştirmeme varsayımına bağlı olarak, bu, tüm kullanıcıların yayımladıkları her kitabı, ancak uygulamamız için bir yandan güncelleştirmemiz gerekir. Bu, kabul edilebilir bir tasarım karardır.  
+Tabii, eğer yazarın adı değişti yse ya da fotoğraflarını güncellemek istiyorlarsa, yayınladıkları her kitabı güncellememiz gerekir, ancak uygulamamız için, yazarların adlarını sık sık değiştirmedikleri varsayımına dayanarak, bu kabul edilebilir bir tasarım kararıdır.  
 
-Örnekte, bir okuma işleminde pahalı işleme kaydetmek için **önceden hesaplanmış toplamalar** değerleri vardır. Örnekte, yazar belgesine katıştırılmış verilerden bazıları çalışma zamanında hesaplanan verilerden oluşur. Her yeni kitap yayımlandığında, bir kitap belgesi oluşturulur **ve** countOfBooks alanı, belirli bir yazar için mevcut olan kitap belgelerinin sayısına göre hesaplanmış bir değere ayarlanır. Bu iyileştirme, okuma işlemlerini en iyi duruma getirmek için yazma işlemleri yapmak için uygun olan okuma ağır sistemlerde iyi hale getirilir.
+Örnekte, okundu işleminde pahalı işleme kaydetmek için **önceden hesaplanmış toplam** değerleri vardır. Örnekte, yazar belgesine katıştırılabilen verilerin bazıları çalışma zamanında hesaplanan verilerdir. Her yeni kitap yayımlanında, bir kitap belgesi oluşturulur **ve** countOfBooks alanı, belirli bir yazar için var olan kitap belgelerinin sayısına göre hesaplanan bir değere ayarlanır. Bu optimizasyon biz okuma optimize etmek için yazma hesaplamaları yapmak gelemez ağır sistemlerde okumak iyi olurdu.
 
-Azure Cosmos DB **çok belgeli işlemleri**desteklediğinden, önceden hesaplanmış alanları olan bir modele sahip olabilme olasılığı vardır. Birçok NoSQL deposu belgelerde işlem yapılamaz ve bu nedenle, bu sınırlama nedeniyle "her şeyi her zaman katıştır" gibi tasarım kararları verebilir. Azure Cosmos DB ile, bir ACID işlemi içinde kitaplar ekleyen ve yazarları güncelleştiren sunucu tarafı tetikleyicilerini veya saklı yordamları kullanabilirsiniz. Artık verilerinizin tutarlı kalmasını sağlamak için her şeyi tek bir belgeye katıştırmanız **gerekmez.**
+Azure Cosmos DB **çoklu belge işlemlerini**desteklediğinden, önceden hesaplanmış alanlara sahip bir modele sahip olma özelliği mümkün kılınır. Birçok NoSQL deposu belgeler arasında işlem yapamaz ve bu nedenle bu sınırlama nedeniyle "her şeyi her zaman katıştır" gibi tasarım kararlarını savunur. Azure Cosmos DB ile, bir ACID işlemi içinde kitap ekleyen ve yazarları güncelleştiren sunucu tarafındaki tetikleyicileri veya depolanmış yordamları kullanabilirsiniz. Artık verilerinizin **have** tutarlı olduğundan emin olmak için her şeyi tek bir belgeye gömmeniz gerekmez.
 
 ## <a name="distinguishing-between-different-document-types"></a>Farklı belge türleri arasında ayrım
 
-Bazı senaryolarda, aynı koleksiyonda farklı belge türlerini karıştırmak isteyebilirsiniz; Bu, genellikle birden çok, ilişkili belgenin aynı [bölümde](partitioning-overview.md)yer olmasını istediğiniz durumdur. Örneğin, hem kitap hem de kitap incelemelerini aynı koleksiyona yerleştirebilir ve `bookId`göre bölümleyebilirsiniz. Böyle bir durumda, genellikle bunları ayırt etmek için türlerini tanımlayan bir alan ile belgelerinize eklemek istersiniz.
+Bazı senaryolarda, farklı belge türlerini aynı koleksiyonda karıştırmak isteyebilirsiniz; bu genellikle aynı [bölümde](partitioning-overview.md)oturup birden çok, ilgili belgeler istediğinizde durumdur. Örneğin, hem kitap hem de kitap incelemelerini aynı koleksiyona koyabilir ve 'ye göre bölümleyebilirsin. `bookId` Böyle bir durumda, genellikle bunları ayırt etmek için kendi türünü tanımlayan bir alan ile belgelerinize eklemek istiyorum.
 
     Book documents:
     {
@@ -409,12 +409,12 @@ Bazı senaryolarda, aynı koleksiyonda farklı belge türlerini karıştırmak i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaledeki en büyük nokta, bir şemadan ücretsiz bir dünyada veri modellemesinin her zaman önemli olduğunu anlamaktır.
+Bu makaleden en büyük takeaways bir şema-free dünyada veri modelleme her zamanki gibi önemli olduğunu anlamak için vardır.
 
-Bir ekrandaki verilerin bir parçasını göstermenin tek bir yolu olmadığı gibi, verilerinizi modeletmenin tek bir yolu yoktur. Uygulamanızı ve verilerin nasıl oluşturulacağını, tüketilmesi ve işleyeceğini anlamanız gerekir. Ardından burada sunulan yönergelerin bazılarını uygulayarak uygulamanızın hemen ihtiyaçlarını karşılayan bir model oluşturma hakkında ayarlayabilirsiniz. Uygulamalarınızın değiştirilmesi gerektiğinde, şema içermeyen bir veritabanının esnekliğinden yararlanarak veri modelinizi kolayca değiştirip bu verileri de daha kolay bir şekilde geliştirebilirsiniz.
+Bir ekranda bir veri parçasını temsil etmenin tek bir yolu olmadığı gibi, verilerinizi modellemenin tek bir yolu da yoktur. Uygulamanızı ve verileri nasıl üreteceğini, tüketeceğini ve işleyeceklerini anlamanız gerekir. Daha sonra, burada sunulan bazı yönergeleri uygulayarak, uygulamanızın acil gereksinimlerini karşılayan bir model oluşturmaya ayarlayabilirsiniz. Uygulamalarınızın değişmesi gerektiğinde, bu değişimi benimsemek ve veri modelinizi kolayca geliştirmek için şema içermeyen bir veritabanının esnekliğinden yararlanabilirsiniz.
 
-Azure Cosmos DB hakkında daha fazla bilgi edinmek için hizmetin [Belgeler](https://azure.microsoft.com/documentation/services/cosmos-db/) sayfasına bakın.
+Azure Cosmos DB hakkında daha fazla bilgi edinmek için hizmetin [dokümantasyon](https://azure.microsoft.com/documentation/services/cosmos-db/) sayfasına bakın.
 
-Verilerinizin birden çok bölüme nasıl atıfta olduğunu anlamak için [Azure Cosmos DB bölümünde bölümlendirme verilerine](sql-api-partition-data.md)bakın.
+Verilerinizi birden çok bölüm arasında nasıl parçalayacağınızı anlamak için [Azure Cosmos DB'deki Verileri Bölümleme bölümüne](sql-api-partition-data.md)bakın.
 
-Gerçek dünyada bir örnek kullanarak Azure Cosmos DB verileri modellemeyi ve Bölümlendirmeyi öğrenmek için, [veri modelleme ve bölümleme-gerçek hayatta bir örnek](how-to-model-partition-example.md)bölümüne bakın.
+Azure Cosmos DB'deki verileri gerçek dünya örneğini kullanarak nasıl modelleyip bölümlendireceklerini öğrenmek için, [Gerçek Dünya Örneği olan Veri Modelleme ve Bölümleme](how-to-model-partition-example.md)bölümüne bakın.

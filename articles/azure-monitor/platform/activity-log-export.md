@@ -1,6 +1,6 @@
 ---
-title: Azure etkinlik günlüğünü dışarı aktarma
-description: Azure etkinlik günlüğü 'nü arşivleme için depolama alanına veya Azure 'un dışından dışarı aktarmak için Azure Event Hubs dışa aktarın.
+title: Azure Etkinlik Günlüğünü Dışa Aktarma
+description: Azure Etkinliği günlüğünü arşivleme için depolamaya veya Azure Dışında dışa aktarmak için Azure Etkinlik günlüğe aktarın.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,110 +8,110 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096293"
 ---
-# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
+# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure Etkinliği günlüğünü depolama veya Azure Etkinlik Hub'larına dışa aktarma
 
 > [!IMPORTANT]
-> Azure etkinlik günlüğü 'nü Azure depolama 'ya gönderme yöntemi ve Azure Event Hubs, [Tanılama ayarları](diagnostic-settings.md)olarak değiştirilmiştir. Bu makalede kullanım dışı bırakılmakta olan eski yöntem açıklanmaktadır. Bir karşılaştırma için bkz. [Azure etkinlik günlüğü koleksiyonuna güncelleştirme ve dışarı aktarma](diagnostic-settings-legacy.md) .
+> Azure Etkinliği günlüğünü Azure Depolama ve Azure Etkinlik Hub'larına gönderme yöntemi [tanı ayarlarına](diagnostic-settings.md)dönüştürülmüştür. Bu makalede, amortismana alınma sürecinde olan eski yöntem açıklanmaktadır. Karşılaştırma için [Azure Etkinliği günlük koleksiyonuna ve dışa aktarın'a](diagnostic-settings-legacy.md) güncelleştirmeye bakın.
 
 
-[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Etkinlik günlüğünü Azure portal görüntülemeye veya Azure Izleyici tarafından toplanan diğer verilerle çözümlenebileceği bir Log Analytics çalışma alanına kopyalamaya ek olarak, etkinlik günlüğü 'nü bir Azure depolama hesabına arşivlemek veya bir  Olay Hub 'ı.
+[Azure Etkinlik Günlüğü,](platform-logs-overview.md) Azure aboneliğinizde gerçekleşen abonelik düzeyindeki olaylara ilişkin öngörüler sağlar. Azure portalındaki Etkinlik günlüğünü görüntülemenin veya Azure Monitor tarafından toplanan diğer verilerle analiz edilebilen bir Log Analytics çalışma alanına kopyalamanın yanı sıra, Etkinlik günlüğünü bir Azure depolama hesabına arşivlemek veya bir Olay Merkezi.
 
-## <a name="archive-activity-log"></a>Etkinlik günlüğünü Arşivle
-Denetim, statik analiz veya yedekleme için günlük verilerinizi 90 günden daha uzun süre saklamak istiyorsanız (bekletme ilkesi üzerinde tam denetim ile), etkinlik günlüğünü bir depolama hesabına arşivleme yararlı olur. Yalnızca 90 gün boyunca olaylarınızı tutmanız gerekiyorsa veya daha az etkinlik günlüğü olayları, 90 gün boyunca Azure platformunda korunduğundan, bir depolama hesabına arşiv ayarlamanız gerekmez.
+## <a name="archive-activity-log"></a>Arşiv Faaliyet Günlüğü
+Denetim, statik çözümleme veya yedekleme için günlük verilerinizi 90 günden daha uzun süre (bekletme ilkesi üzerinde tam denetimle) tutmak istiyorsanız, Etkinlik Günlüğü'nün bir depolama hesabına arşivlemesi yararlıdır. Etkinlik Günlüğü etkinlikleri Azure platformunda 90 gün boyunca tutulduğundan, etkinliklerinizi yalnızca 90 gün veya daha kısa bir süre saklamanız gerekiyorsa, bir depolama hesabına arşiv ayarlamanız gerekmez.
 
-## <a name="stream-activity-log-to-event-hub"></a>Etkinlik günlüğünü Olay Hub 'ına akış
-[Azure Event Hubs](/azure/event-hubs/) , saniye başına milyonlarca olayı alabilen ve işleyesağlayan bir veri akışı platformu ve olay alma hizmetidir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Etkinlik günlüğü için akış özelliğini kullanmanın iki yolu şunlardır:
-* **Üçüncü taraf günlük ve telemetri sistemlerine akış**: zaman içinde Azure Event Hubs akışı, etkinlik oturumunuzu üçüncü taraf sıems ve Log Analytics çözümlerine yöneltmek için mekanizma olur.
-* **Özel telemetri ve günlüğe kaydetme platformu oluşturma**: zaten özel olarak oluşturulmuş bir telemetri platformudur veya bir tane oluşturmayı düşünüyorsanız, Event Hubs yüksek düzeyde ölçeklenebilir yayımla-abone ol, etkinlik günlüğünü esnek bir şekilde almanızı sağlar.
+## <a name="stream-activity-log-to-event-hub"></a>Etkinlik Günlüğü'ne Akış Etkinliği Günlüğü
+[Azure Etkinlik Hub'ları,](/azure/event-hubs/) saniyede milyonlarca olay alabilen ve işleyebilen bir veri akış platformu ve etkinlik hizmetidir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Etkinlik Günlüğü için akış yeteneğini kullanmanın iki yolu şunlardır:
+* **Üçüncü taraf günlük ve telemetri sistemlerine akış**: Zaman içinde Azure Etkinlik Hub'ları akışı, Etkinlik Oturumunuzu üçüncü taraf SIEM'lere ve günlük analizi çözümlerine aktaran mekanizma haline gelecektir.
+* **Özel bir telemetri ve günlük platformu oluşturun**: Zaten özel olarak oluşturulmuş bir telemetri platformunuz varsa veya bir platform oluşturmayı düşünüyorsanız, Event Hub'larının yüksek ölçeklenebilir yayımlama-abone yapısı, etkinlik günlüğünü esnek bir şekilde yutmanızı sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="storage-account"></a>Depolama hesabı
-Etkinlik günlüğliğinizi arşivlerken, yoksa [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir. İzleme verilerine erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Ayrıca günlükleri ve ölçümleri de bir depolama hesabına arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
+Etkinlik Günlüğününüzü arşivliyorsanız, zaten bir depolama hesabınız yoksa [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir. İzleme verilerine erişimi daha iyi denetlemek için içinde başka, izlemeyen veriler depolanan varolan bir depolama hesabı kullanmamalısınız. Günlükleri ve ölçümleri bir depolama hesabına da arşivliyorsanız, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı seçebilirsiniz.
 
-Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğu sürece, depolama hesabının, abonelik yaymasıyla aynı abonelikte olması gerekmez. 
+Depolama hesabı, ayarı yapılandıran kullanıcının her iki aboneye de uygun RBAC erişimine sahip olması sürece, abonelik yayan günlüklerle aynı abonelikte olması gerekmez. 
 
 > [!TIP]
-> Güvenli bir sanal ağın arkasındaki bir depolama hesabına erişim sağlamak için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
+> Güvenli bir sanal ağın arkasındaki depolama hesabına erişim sağlamak için [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırın.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
 
 ### <a name="event-hubs"></a>Event Hubs
-Etkinlik Günlüğliğinizi bir olay hub 'ına gönderiyorsanız, henüz yoksa [bir olay hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Daha önce bu Event Hubs ad alanına etkinlik günlüğü olayları akıdıysanız, bu olay hub 'ı yeniden kullanılacaktır.
+Etkinlik Günlüğününüzü bir etkinlik merkezine gönderiyorsanız, zaten bir etkinlik merkeziniz yoksa [bir etkinlik merkezi oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Etkinlik Günlüğü olaylarını daha önce bu Olay Hub'ları ad alanına akışla aktardıysanız, bu olay hub'ı yeniden kullanılır.
 
-Paylaşılan erişim ilkesi, akış mekanizmanın sahip olduğu izinleri tanımlar. Event Hubs akışının yönetilmesi, gönderilmesi ve dinlemesi izinlerinin olması gerekir. Event Hubs ad alanı için Yapılandır sekmesinin altındaki Azure portal Event Hubs ad alanı için paylaşılan erişim ilkeleri oluşturabilir veya değiştirebilirsiniz.
+Paylaşılan erişim ilkesi, akış mekanizmasının sahip olduğu izinleri tanımlar. Olay Hub'larına akış için Yönetim, Gönderme ve Dinleme izinleri gerektirir. Azure portalındaki Olay Hub'ları ad alanı için ortak erişim ilkeleri oluşturabilir veya değiştirebilirsiniz.
 
-Etkinlik günlüğü günlük profilini akışı içerecek şekilde güncelleştirmek için, bu Event Hubs yetkilendirme kuralında ListKey izninizin olması gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe ve her iki aboneliğe de aynı AAD kiracısına sahip olması koşuluyla, Event Hubs ad alanının, günlükleri yayan abonelikle aynı abonelikte olması gerekmez.
+Etkinlik Günlüğü günlüğü profilini akış içerecek şekilde güncelleştirmek için, bu Olay Hub'ları yetkilendirme kuralında ListKey iznine sahip olmalısınız. Etkinlik Hub'ları ad alanı, ayarı yapılandıran kullanıcının her iki aboneye de uygun RBAC erişimine sahip olması ve her iki aboneliğin de aynı AAD kiracısında olması kaydıyla, günlükleri yayan abonelikle aynı abonelikte olması gerekmez.
 
-[Bir günlük profili oluşturarak](#create-a-log-profile)etkinlik günlüğünü bir olay hub 'ına akış.
+Günlük Profili oluşturarak Etkinlik Günlüğü'nün Olay [Merkezi'ne](#create-a-log-profile)akışı.
 
 ## <a name="create-a-log-profile"></a>Günlük profili oluşturma
-Azure etkinlik Günlüğliğinizin bir **günlük profili**kullanarak nasıl verildiğini tanımlarsınız. Her Azure aboneliğinin yalnızca bir günlük profili olabilir. Bu ayarlar, portaldaki etkinlik günlüğü dikey penceresinde **dışarı aktarma** seçeneği aracılığıyla yapılandırılabilir. Ayrıca, [Azure izleyici REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell cmdlet 'LERI veya CLI kullanılarak programlı bir şekilde yapılandırılabilir.
+Azure Etkinlik günlüğünün günlük **profilini**kullanarak nasıl dışa aktarıldığını tanımlarsınız. Her Azure aboneliğinin yalnızca bir günlük profili olabilir. Bu ayarlar, portaldaki Etkinlik Günlüğü bıçağındaki **Dışa** Aktarma seçeneği ile yapılandırılabilir. Azure [Monitor REST API,](https://msdn.microsoft.com/library/azure/dn931927.aspx)PowerShell cmdlets veya CLI kullanılarak da programlı olarak yapılandırılabilirler.
 
 Günlük profili aşağıdakileri tanımlar.
 
-**Etkinlik günlüğünün gönderilmesi gereken yer.** Şu anda, kullanılabilir seçenekler depolama hesabı veya Event Hubs.
+**Etkinlik Günlüğü'nün gönderilmesi gereken yer.** Şu anda kullanılabilir seçenekler Depolama Hesabı veya Olay Hub'larıdır.
 
-**Hangi olay kategorilerinin gönderilmesi gerekir.** Günlük profillerindeki *kategorinin* anlamı ve etkinlik günlüğü olayları farklıdır. Günlük profilinde, *kategorisi* işlem türünü temsil eder (yazma, silme, eylem). Bir etkinlik günlüğü olayında, "* özellik *kategorisi*kaynağı veya olay türünü (örneğin, yönetim, Servicehealth ve uyarı) temsil eder.
+**Hangi olay kategorileri gönderilmelidir.** Log Profilleri ve Etkinlik Günlüğü etkinliklerinde *kategorinin* anlamı farklıdır. Günlük Profilinde *Kategori* işlem türünü (Yazma, Silme, Eylem) temsil eder. Bir Etkinlik Günlüğü etkinliğinde, "* özelliği" *kategorisi*olayın kaynağını veya türünü (örneğin, Yönetim, ServiceHealth ve Alert) temsil eder.
 
-**Hangi bölgeler (konumlar) içe aktarılmalıdır.** Etkinlik günlüğündeki çok sayıda olay genel olaylar olduğundan tüm konumları dahil etmelisiniz.
+**Hangi bölgeler (konumlar) dışa aktarılmalıdır.** Etkinlik Günlüğü'ndeki birçok olay genel olaylar olduğundan tüm konumları eklemeniz gerekir.
 
-**Etkinlik günlüğünün bir depolama hesabında tutulacağı süre.** Bekletme günü sayısının sıfır günlükler süresiz olarak tutulur anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir sayıda gün olabilir.
+**Etkinlik Günlüğü'nün bir Depolama Hesabında ne kadar süreyle saklanması gerektiği.** Sıfır gün saklama, günlüklerin sınırsız süreyle tutulacağı anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir gün sayısı olabilir.
 
-Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depolamak devre dışıysa, bekletme ilkelerinin hiçbir etkisi olmaz. Bekletme ilkeleri uygulanan günlük, olduğundan, bir günün (UTC), şu anda sonra saklama günü günlüklerinden sonunda İlkesi silindi. Örneğin, bir günlük bir bekletme ilkesi olsaydı, bugün günün başında dünden önceki gün kayıtları silinir. Gece yarısı UTC, ancak bu günlükleri depolama hesabınızdan silinecek 24 saate kadar sürebilir not silme işlemi başlar.
+Bekletme ilkeleri ayarlanır, ancak günlükleri bir depolama hesabında depolama devre dışı bırakılırsa, bekletme ilkeleri nin hiçbir etkisi yoktur. Bekletme ilkeleri günlük olarak uygulanır, bu nedenle günün sonunda (UTC), bekletme ilkesinin ötesindeki güne ait günlükler silinir. Örneğin, bir gün bekletme ilkeniz varsa, bugün günün başında önceki güne ait günlükler silinir. Silme işlemi gece yarısı UTC'de başlar, ancak günlüklerin depolama hesabınızdan silinmesinin 24 saat kadar sürebileceğini unutmayın.
 
 
 > [!IMPORTANT]
-> Microsoft. Insights kaynak sağlayıcısı kayıtlı değilse bir günlük profili oluştururken bir hata alabilirsiniz. Bu sağlayıcıyı kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md) .
+> Microsoft.Insights kaynak sağlayıcısı kayıtlı değilse, günlük profili oluştururken bir hata alabilirsiniz. Bu sağlayıcıyı kaydetmek için [Azure kaynak sağlayıcılarına ve türlerine](../../azure-resource-manager/management/resource-providers-and-types.md) bakın.
 
 
-### <a name="create-log-profile-using-the-azure-portal"></a>Azure portal kullanarak günlük profili oluşturma
+### <a name="create-log-profile-using-the-azure-portal"></a>Azure portalını kullanarak günlük profili oluşturma
 
-Azure portal **Olay Hub 'ına ver** seçeneğiyle bir günlük profili oluşturun veya düzenleyin.
+Azure portalında **Event Hub'a Dışa Aktar** seçeneğiyle bir günlük profili oluşturun veya düzenledi.
 
-1. Azure portal **Azure izleyici** menüsünde **etkinlik günlüğü**' nü seçin.
+1. Azure portalındaki **Azure Monitör** menüsünden **Etkinlik günlüğü'nü**seçin.
 3. **Tanılama ayarları**'na tıklayın.
 
    ![Tanılama ayarları](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. Eski deneyimin mor başlığına tıklayın.
+4. Eski deneyim için mor banner'ı tıklatın.
 
     ![Eski deneyim](media/diagnostic-settings-subscription/legacy-experience.png)
 
-3. Görüntülenen dikey pencerede şunları belirtin:
-   * Dışarı aktarılacak olaylara sahip bölgeler. Etkinlik günlüğü genel (bölgesel olmayan) bir günlük olduğundan ve çoğu olayın bunlarla ilişkili bir bölgesi olmadığından, anahtar olaylarını kaçırmadığınızdan emin olmak için tüm bölgeler ' ı seçmeniz gerekir.
+3. Görünen bıçakta aşağıdakileri belirtin:
+   * İhracat etkinlikleri ile bölgeler. Etkinlik Günlüğü genel (bölgesel olmayan) bir günlük olduğundan ve çoğu olayın bunlarla ilişkili bir bölgesi olmadığından, önemli olayları kaçırmadığınızdan emin olmak için tüm bölgeleri seçmeniz gerekir.
    * Depolama hesabına yazmak istiyorsanız:
-       * Olaylarını kaydetmek istediğiniz depolama hesabı.
-       * Bu olayları depolamada depolamak istediğiniz gün sayısı. 0 günlük bir ayar, günlükleri süresiz olarak korur.
-   * Olay Hub 'ına yazmak istiyorsanız:
-       * Bu olayları akışa almak için bir olay hub 'ının oluşturulmasını istediğiniz Service Bus ad alanı.
+       * Olayları kaydetmek istediğiniz Depolama Hesabı.
+       * Bu olayları depolama alanında tutmak istediğiniz gün sayısı. 0 gün ayarı günlükleri sonsuza kadar saklar.
+   * Olay hub'ına yazmak istiyorsanız:
+       * Bu olayları akışı için bir Olay Hub'ı oluşturulmasını istediğiniz Hizmet Veri Merkezi Ad Alanı.
 
-     ![Etkinlik günlüğünü dışarı aktar dikey penceresi](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
-
-
-4. Bu ayarları kaydetmek için **Kaydet** ' e tıklayın. Ayarlar aboneliğinize hemen uygulanır.
+     ![İhracat Faaliyet Günlüğü bıçak](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 
 
-### <a name="configure-log-profile-using-powershell"></a>PowerShell kullanarak günlük profilini yapılandırma
+4. Bu ayarları kaydetmek için **Kaydet'i** tıklatın. Ayarlar aboneliğinize hemen uygulanır.
+
+
+### <a name="configure-log-profile-using-powershell"></a>PowerShell'i kullanarak günlük profilini yapılandır
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı ve ardından yeni bir tane oluşturmanız gerekir.
+Günlük profili zaten varsa, önce varolan günlük profilini kaldırmanız ve ardından yeni bir profil oluşturmanız gerekir.
 
-1. Bir günlük profilinin mevcut olup olmadığını belirlemek için `Get-AzLogProfile` kullanın.  Bir günlük profili varsa, *Name* özelliğine göz önünde varın.
+1. Günlük `Get-AzLogProfile` profili olup olmadığını belirlemek için kullanın.  Günlük profili varsa, *ad* özelliğine dikkat edin.
 
-1. *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için `Remove-AzLogProfile` kullanın.
+1. Ad `Remove-AzLogProfile` özelliğinden değeri kullanarak günlük *name* profilini kaldırmak için kullanın.
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Yeni bir günlük profili oluşturmak için `Add-AzLogProfile` kullanın:
+3. Yeni `Add-AzLogProfile` bir günlük profili oluşturmak için kullanın:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
@@ -119,15 +119,15 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | Adı |Yes |Günlük profilinizin adı. |
-    | StorageAccountId |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
-    | serviceBusRuleId |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimdeki bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Konum |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
-    | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
+    | Adı |Evet |Günlük profilinizin adı. |
+    | Depolama Muhasebesi |Hayır |Etkinlik Günlüğü'nün kaydedilmesi gereken Depolama Hesabı'nın kaynak kimliği. |
+    | serviceBusRuleId |Hayır |Olay hub'larının oluşturulmasını istediğiniz Servis Veri Servisi Veri Merkezi ad alanı için Servis Veri Servisi Kural Kimliği. Bu biçimi ile bir `{service bus resource ID}/authorizationrules/{key name}`dize: . |
+    | Konum |Evet |Etkinlik Günlüğü etkinliklerini toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
+    | Bekletme Günleri |Evet |Olayların depolama hesabında 1 ile 365 arasında tutulması gereken gün sayısı. Sıfır değeri günlükleri süresiz olarak saklar. |
+    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _Yaz_, _Sil_ve _Eylem'dir._ |
 
 ### <a name="example-script"></a>Örnek betik
-Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
+Aşağıda, Etkinlik Günlüğü'nün hem depolama hesabına hem de olay hub'ına yazdığı bir günlük profili oluşturmak için örnek bir PowerShell komut dosyası vereyim.
 
    ```powershell
    # Settings needed for the new log profile
@@ -148,13 +148,13 @@ Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına
    ```
 
 
-### <a name="configure-log-profile-using-azure-cli"></a>Azure CLı kullanarak günlük profilini yapılandırma
+### <a name="configure-log-profile-using-azure-cli"></a>Azure CLI kullanarak günlük profilini yapılandırma
 
-Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız ve ardından yeni bir günlük profili oluşturmanız gerekir.
+Günlük profili zaten varsa, önce varolan günlük profilini kaldırmanız ve ardından yeni bir günlük profili oluşturmanız gerekir.
 
-1. Bir günlük profilinin mevcut olup olmadığını belirlemek için `az monitor log-profiles list` kullanın.
-2. *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için `az monitor log-profiles delete --name "<log profile name>` kullanın.
-3. Yeni bir günlük profili oluşturmak için `az monitor log-profiles create` kullanın:
+1. Günlük `az monitor log-profiles list` profili olup olmadığını belirlemek için kullanın.
+2. Ad `az monitor log-profiles delete --name "<log profile name>` özelliğinden değeri kullanarak günlük *name* profilini kaldırmak için kullanın.
+3. Yeni `az monitor log-profiles create` bir günlük profili oluşturmak için kullanın:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
@@ -162,16 +162,16 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | ad |Yes |Günlük profilinizin adı. |
-    | storage-account-id |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
-    | konumlar |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. `az account list-locations --query [].name`kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz. |
-    | gün |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
-    |enabled | Yes |TRUE veya False.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
-    | kategoriler |Yes |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
+    | ad |Evet |Günlük profilinizin adı. |
+    | depolama-hesap-id |Evet |Etkinlik Günlüklerinin kaydedilmesi gereken Depolama Hesabının kaynak kimliği. |
+    | Konum |Evet |Etkinlik Günlüğü etkinliklerini toplamak istediğiniz bölgelerin boşluktan ayrılmış listesi. Aboneliğiniz için tüm bölgelerin listesini kullanarak `az account list-locations --query [].name`görüntüleyebilirsiniz. |
+    | gün |Evet |Olayların korunması gereken gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak (sonsuza kadar) saklar.  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
+    |enabled | Evet |Doğru veya Yanlış.  Bekletme ilkesini etkinleştirmek veya devre dışı kalmak için kullanılır.  Doğruysa, gün parametresi 0'dan büyük bir değer olmalıdır.
+    | kategoriler |Evet |Toplanması gereken olay kategorilerinin boşluktan ayrılmış listesi. Olası değerler Yazma, Silme ve Eylem'dir. |
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../../azure-resource-manager/management/view-activity-logs.md)
-* [Azure Izleyici günlüklerine etkinlik günlüğü toplayın](activity-log-collect.md)
+* [Etkinlik Günlüğü hakkında daha fazla bilgi edinin](../../azure-resource-manager/management/view-activity-logs.md)
+* [Azure Monitör Günlüklerinde Etkinlik Günlüğü Topla](activity-log-collect.md)

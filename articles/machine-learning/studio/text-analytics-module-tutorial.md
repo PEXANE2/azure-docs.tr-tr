@@ -1,7 +1,7 @@
 ---
-title: Yaklaşım Analizi kullanım örneği
+title: Duyarlılık analizi kullanım örneği
 titleSuffix: ML Studio (classic) - Azure
-description: Metin analizi modellerini metin ön işleme, N-gram veya özellik karması için modüller kullanarak Azure Machine Learning Studio (klasik) oluşturma
+description: Metin ön işleme, N-gram veya özellik karmalama modüllerini kullanarak Azure Machine Learning Studio'da (klasik) metin analizi modelleri nasıl oluşturulur?
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,82 +11,82 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2018
 ms.openlocfilehash: 89fc5196977f53e040e1a6553b46ca57f39b18b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217891"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) ' de bir yaklaşım analiz modeli oluşturma
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'da bir duygu analizi modeli oluşturun (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (klasik) kullanarak metin analizi modellerini derleyip çalıştırabilirsiniz. Bu modeller, örneğin, belge sınıflandırma veya yaklaşım analizi sorunlarını çözmenize yardımcı olabilir.
+Metin analizi modelleri oluşturmak ve işlevsel hale getirmek için Azure Machine Learning Studio'yı (klasik) kullanabilirsiniz. Bu modeller, örneğin belge sınıflandırma veya duyarlılık analizi sorunlarını çözmenize yardımcı olabilir.
 
-Metin bir analiz denemesi genellikle gerekir:
+Bir metin analizi deneyinde, genellikle şunları yapardınız:
 
-1. Temiz ve metin veri kümesi için önceden işlenir
-2. Önceden işlenmiş metin sayısal özellik vektör ayıklayın
-3. Sınıflandırma veya regresyon modeli eğitme
-4. Puanlama ve modelini doğrulama
-5. Üretim için model dağıtma
+1. Temizleme ve işlem öncesi metin veri kümesi
+2. Önceden işlenmiş metinden sayısal özellik vektörlerini ayıklama
+3. Tren sınıflandırması veya regresyon modeli
+4. Skoru ve modeli doğrula
+5. Modeli üretime dağıtma
 
-Bu öğreticide, Amazon Book Incelemeleri veri kümesini kullanarak bir yaklaşım analiz modelinde gezinirken bu adımları öğrenirsiniz (Bu araştırma kağıdına "Biyograflar, Cıvalywood, Boom-kutular ve Blenders: John Blitize göre" yaklaşım sınıflandırması için etki alanı uyarlama " Dredze ve Fernando Pereira; işaretlerini işaretle Hesaplama Linguistics (ACL), 2007.) ilişkilendirmesi Bu veri kümesi, gözden geçirme puanlarını (1-2 veya 4-5) ve serbest biçimli bir metni içerir. Gözden geçirme puanı tahmin olmaktır: düşük (1 - 2) veya yüksek (4-5).
+Bu eğitimde, Biz Amazon Kitap İncelemeleri dataset kullanarak bir duygu analizi modeli ile yürürken bu adımları öğrenmek (John Blitzer tarafından bu araştırma kağıt "Biyografiler, Bollywood, Boom-kutuları ve Blenders: Domain Adaptasyon Sentiment Sınıflandırma" bakın, Mark Dredze ve Fernando Pereira; Hesaplamalı Dilbilim Derneği (ACL), 2007.) Bu veri kümesi gözden geçirme puanları (1-2 veya 4-5) ve serbest biçimli bir metinden oluşur. Amaç değerlendirme puanı tahmin etmektir: düşük (1-2) veya yüksek (4-5).
 
-Bu öğreticide Azure AI Gallery ele denemeleri bulabilirsiniz:
+Azure AI Galerisi'nde bu öğreticide yer alan denemeleri bulabilirsiniz:
 
-[Kitap Incelemelerini tahmin etme](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
+[Kitap İncelemelerini Tahmin Et](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Tahmin Rehberi Incelemeleri-tahmine dayalı deneme](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Kitap İncelemelerini Tahmin Et - Tahmindeney](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
-## <a name="step-1-clean-and-preprocess-text-dataset"></a>1\. adım: Temiz ve metin veri kümesi için önceden işlenir
-Biz, denemeyi iki sınıflı sınıflandırma sorunlu formüle etmek için kategorik düşük ve yüksek demet gözden geçirme puanları bölerek başlayın. [Düzenle meta verileri](https://msdn.microsoft.com/library/azure/dn905986.aspx) ve [Grup kategorik değerleri](https://msdn.microsoft.com/library/azure/dn906014.aspx) modüllerini kullanıyoruz.
+## <a name="step-1-clean-and-preprocess-text-dataset"></a>Adım 1: Metin veri kümesini temizleme ve işleme öncesi
+Deneye, inceleme puanlarını kategorik düşük ve yüksek kovalara bölerek sorunu iki sınıflı sınıflandırma olarak formüle ederek başlıyoruz. Meta verileri ve [Grup Kategorik Değerleri](https://msdn.microsoft.com/library/azure/dn906014.aspx) modüllerini [edit](https://msdn.microsoft.com/library/azure/dn905986.aspx) kullanıyoruz.
 
-![Etiket oluşturma](./media/text-analytics-module-tutorial/create-label.png)
+![Etiket Oluştur](./media/text-analytics-module-tutorial/create-label.png)
 
-Daha sonra, [önceden Işlem metin](https://msdn.microsoft.com/library/azure/mt762915.aspx) modülünü kullanarak metni temizliyoruz. Temizleme, en önemli özellikleri bulmak ve son modelin doğruluğunu artırmak Yardım kümesindeki gürültü azaltır. Biz stopword - "" veya "a" - gibi ortak kelimeler ve numaralarını, özel karakterler, yinelenen karakterler, e-posta adreslerini ve URL'leri kaldırın. Biz de küçük harf, sözcükleri lemmatize metne dönüştürün ve ardından tarafından belirtilen cümle sınırları algılamak "|||" önceden işlenmiş metin sembolü.
+Daha sonra, [Preprocess Text](https://msdn.microsoft.com/library/azure/mt762915.aspx) modüllerini kullanarak metni temizliyoruz. Temizleme, veri kümesindeki gürültüyü azaltır, en önemli özellikleri bulmanıza yardımcı olur ve son modelin doğruluğunu artırır. "the" veya "a" gibi yaygın sözcükleri ve sayıları, özel karakterleri, yinelenen karakterleri, e-posta adreslerini ve URL'leri kaldırırız. Ayrıca metni küçük harfe dönüştürür, sözcükleri lemmatize eder ve önceden işlenmiş metinde "|||" sembolüyle gösterilen cümle sınırlarını algılarız.
 
 ![Metni Ön İşleme](./media/text-analytics-module-tutorial/preprocess-text.png)
 
-Peki özel stopword listesini kullanmak istiyorsunuz? İsteğe bağlı bir giriş içine geçirebilirsiniz. Özel kullanabilirsiniz C# alt dizeler değiştirin ve konuşma parçası tarafından sözcükleri kaldırmak için normal ifade söz dizimi: isimleri, fiil veya sıfat.
+Özel bir stopwords listesi kullanmak isterseniz ne olur? İsteğe bağlı giriş olarak geçirebilirsiniz. Alt dizeleri değiştirmek ve sözcükleri konuşmanın bir bölümüolan adlar, fiiller veya sıfatlar olarak kaldırmak için özel C# sözdizimi normal ifadesini de kullanabilirsiniz.
 
-Ön işleme tamamlandıktan sonra biz verileri train bölme ve kümelerini test.
+Ön işleme tamamlandıktan sonra, verileri tren ve test kümelerine böleriz.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2\. adım: sayısal özellik vektör önceden işlenmiş metin ayıklayın.
-Metin verileri için bir model oluşturmak için genellikle sayısal özellik vektör serbest biçimli metin dönüştürmeniz gerekir. Bu örnekte, metin verilerini bu biçime dönüştürmek için [metin modülünden Ayıkla N-gram özelliklerini](https://msdn.microsoft.com/library/azure/mt762916.aspx) kullanırız. Bu modül, boşluk ayrılmış sözcüklerin bir sütun alır ve bir kelimelerin sözlük veya N-gram, veri kümesinde görünen sözcük hesaplar. Ardından, süreleri her sözcük veya N-gram, her kayıt görünür ve bu özellik vektörler oluşturur kaç sayıları sayar. Sunduğumuz özellik vektör tek sözcükler ve iki sonraki sözcük birleşimlerini içerir, böylece bu öğreticide, N-gram boyutu 2 olarak ayarladık.
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Adım 2: Önceden işlenmiş metinden sayısal özellik vektörlerini ayıklama
+Metin verileri için bir model oluşturmak için genellikle serbest biçimli metni sayısal özellik vektörlerine dönüştürmeniz gerekir. Bu örnekte, metin verilerini bu biçime dönüştürmek için [Metin modülünden Alıntı N-Gram Özelliklerini](https://msdn.microsoft.com/library/azure/mt762916.aspx) kullanırız. Bu modül, beyazuzaya ayrılmış sözcüklerden oluşan bir sütun alır ve veri kümenizde görünen sözcüklersözlüğüveya N gram sözcükleri hesaplar. Daha sonra, her sözcüğün veya N gramın her kayıtta kaç kez göründüğünü sayar ve bu sayımlardan özellik vektörleri oluşturur. Bu öğreticide, N-gram boyutunu 2 olarak ayarlıyoruz, böylece özellik vektörlerimiz tek kelime ve sonraki iki kelimenin birleşimlerini içerir.
 
-![N-gram ayıklayın](./media/text-analytics-module-tutorial/extract-ngrams.png)
+![N-gram özü](./media/text-analytics-module-tutorial/extract-ngrams.png)
 
-Biz TF uygulama * N-gram Ağırlıklandırma IDF (terimi sıklığı ters belge sıklık düzeyi) sayar. Bu yaklaşım, tek bir kayıtta sık görünür ancak veri kümesi genelinde nadir bir kelimelerin ağırlık ekler. Diğer Seçenekler ikili, TF, içerir ve ağırlığıyla grafik.
+N-gram sayımlarına TF*IDF (Dönem Frekansı Ters Belge Frekansı) ağırlıklarını uyguluyoruz. Bu yaklaşım, tek bir kayıtta sık sık görünen ancak tüm veri kümesinde nadir bulunan sözcüklerin ağırlığını ekler. Diğer seçenekler ikili, TF ve grafik tartımı içerir.
 
-Bu metin özellikler genellikle yüksek işlenemez sahiptir. Gövde 100.000 benzersiz sözcük N-gram kullandıysanız Örneğin, özellik alanınızı 100.000 boyutları veya daha fazla varsa,. N-Gram özellikleri ayıklama modülü, boyut düzeyi azaltma seçenekleri kümesi sunar. Kısa veya uzun veya çok seyrek veya önemli Tahmine dayalı değerine sahip olacak şekilde çok sık kelimeler çıkarılacak seçebilirsiniz. Bu öğreticide, 5'ten az kayıtları veya % 80'birden fazla kayıt görünen N-gram tutarız.
+Bu tür metin özellikleri genellikle yüksek boyutsallığa sahiptir. Örneğin, korpusunuzda 100.000 benzersiz sözcük varsa, özellik alanınız 100.000 boyuta veya N-gram kullanılırsa daha fazla boyuta sahip olur. Extract N-Gram Özellikler modülü, boyutsallığı azaltmak için bir dizi seçenek sunar. Önemli bir tahmin değerine sahip olmak için kısa veya uzun veya çok nadir veya çok sık olan sözcükleri hariç tutmayı seçebilirsiniz. Bu öğreticide, 5'ten az kayıtta veya kayıtların %80'inden fazlasında görünen N gramını hariç tutarız.
 
-Ayrıca, tahmin hedefi olan en bağıntılı olan özellikler seçmek için özellik seçimi kullanabilirsiniz. 1000 özellikleri seçmek için kikare özellik seçimi kullanın. Sözcüklerin veya N-gram sözlüğünü doğru Extract N-gram modülün çıkışına tıklayarak görüntüleyebilirsiniz.
+Ayrıca, yalnızca tahmin hedefinizle en ilişkili özellikleri seçmek için özellik seçimini kullanabilirsiniz. 1000 özellik seçmek için Chi-Squared özellik seçimini kullanıyoruz. Extract N-gram modülünün doğru çıktısını tıklatarak seçili sözcüklerin veya N-gram'ın sözcük dağarcığını görüntüleyebilirsiniz.
 
-Ayıklamak N-Gram özelliklerini kullanmak için alternatif bir yaklaşım, özellik karma modülünü kullanabilirsiniz. Bu [özellik](https://msdn.microsoft.com/library/azure/dn906018.aspx) karması, derleme özelliği seçimi ÖZELLIKLERINE veya TF * IDF ağırlıklı olmasına sahip değildir.
+Extract N-Gram Özelliklerini kullanmaya alternatif bir yaklaşım olarak Özellik Karma modülünü kullanabilirsiniz. [Özellik Karma'nın](https://msdn.microsoft.com/library/azure/dn906018.aspx) yap-in özellik seçimi yetenekleri veya TF*IDF tartım özelliklerine sahip olmamasına rağmen dikkat edin.
 
-## <a name="step-3-train-classification-or-regression-model"></a>3\. adım: sınıflandırma veya regresyon modelini eğitme
-Şimdi metin için sayısal özellik sütunu dönüştürülmüş. Sütunları Seç kümesinde dışında tutmak için kullanacağız veri kümesi önceki aşamalar dize sütunlarından yine de içerir.
+## <a name="step-3-train-classification-or-regression-model"></a>Adım 3: Tren sınıflandırmaveya regresyon modeli
+Şimdi metin sayısal özellik sütunlarına dönüştürüldü. Veri kümesi hala önceki aşamalardan gelen dize sütunları içerir, bu nedenle bunları dışlamak için Veri Kümesi'ndeki Sütunları Seç'i kullanırız.
 
-Hedefimizi tahmin etmek için [Iki sınıf lojistik regresyon](https://msdn.microsoft.com/library/azure/dn905994.aspx) kullanıyoruz: yüksek veya düşük gözden geçirme puanı. Bu noktada, metin analizi sorun, bir normal sınıflandırma sorunla dönüştürülmüş. Modeli geliştirmek için Azure Machine Learning Studio (klasik) ' de bulunan araçları kullanabilirsiniz. Örneğin, farklı sınıflandırıcılar verdikleri nasıl doğru sonuçları bulmayı denemek veya hiper parametre ayarı doğruluğunu artırmak için kullanın.
+Daha sonra hedefimizi tahmin etmek için [Iki Sınıf Lojistik Regresyon](https://msdn.microsoft.com/library/azure/dn905994.aspx) kullanıyoruz: yüksek veya düşük inceleme puanı. Bu noktada, metin analizi sorunu düzenli bir sınıflandırma sorununa dönüştürülmüştür. Modeli geliştirmek için Azure Machine Learning Studio'da (klasik) kullanılabilen araçları kullanabilirsiniz. Örneğin, ne kadar doğru sonuçlar verdiklerini öğrenmek için farklı sınıflandırıcılarla denemeler yapabilir veya doğruluğu artırmak için hiperparametre atomasını kullanabilirsiniz.
 
-![Eğitme ve puanı](./media/text-analytics-module-tutorial/scoring-text.png)
+![Tren ve Puan](./media/text-analytics-module-tutorial/scoring-text.png)
 
-## <a name="step-4-score-and-validate-the-model"></a>4\. adım: Puanlama ve modelini doğrulama
-Nasıl eğitilen model doğrulama? Biz, test veri kümesinde puan ve doğruluğunu değerlendirin. Ancak, model N-gram ve eğitim kümesinden ağırlıkları sözlüğünü öğrendiniz. Bu nedenle, bu sözlük ve bu ağırlıkları özellikleri sözlük yenisini oluşturmak yerine test verileri ayıklanırken kullanmamız gereken. Bu nedenle, biz ayıklamak N-Gram özellikleri modülünü deneme Puanlama dalına ekleyin, çıkış sözlük eğitim daldan bağlanmak ve sözlük modunu salt okunur olarak ayarlayın. Biz de 1 örnek ve en fazla %100 için en düşük ayarlayarak N-gram sıklıkla filtresini devre dışı bırakın ve özellik seçimi devre dışı açın.
+## <a name="step-4-score-and-validate-the-model"></a>Adım 4: Puan ve modeli doğrulamak
+Eğitimli modeli nasıl onaylarsınız? Test veri setine karşı puanve doğruluğunu değerlendiririz. Ancak, model n-gram kelime ve ağırlıkları eğitim dataset öğrendim. Bu nedenle, kelime dağarcığını yeniden oluşturmak yerine, test verilerinden özellikleri ayıklarken bu kelime dağarcığını ve bu ağırlıkları kullanmalıyız. Bu nedenle, denemenin puanlama dalına Extract N-Gram Özellikleri modülünü ekliyoruz, eğitim dalından çıktı sözcük dağarcığı bağlıyoruz ve kelime dağarcığı modunu salt okunur şekilde ayarlıyoruz. Ayrıca, en az 1 örneğini ve maksimumı %100'e ayarlayarak N-gram filtrelemeözelliğini frekansa göre devre dışı bırakıp, özellik seçimini kapatıyoruz.
 
-Sayısal özellik sütunu için test verilerini metin sütunu dönüştürüldükten sonra dize sütunlarındaki eğitim dal gibi önceki aşamada gelen kapsam dışında tutarız. Ardından Model Puanlama modülü tahminler elde etmeye ve doğruluğunu değerlendirilecek Model değerlendirme modülü kullanıyoruz.
+Test verilerindeki metin sütunu sayısal özellik sütunlarına dönüştürüldükten sonra, dize sütunlarını eğitim dalındaki gibi önceki aşamalardan hariç tutarız. Daha sonra tahmin yapmak ve doğruluğu değerlendirmek için Model modülünün değerlendirilmesi için Puan Modeli modüllerini kullanırız.
 
-## <a name="step-5-deploy-the-model-to-production"></a>5\. adım: model üretime dağıtın.
-Model üretim ortamına dağıtılması neredeyse hazır. Web hizmeti olarak dağıtıldığında, serbest biçimli metin dizesi girdi olarak alır ve "Yüksek" veya "Düşük" Tahmin döndürür Öğrenilen N-gram sözlük, özellikler ve bu özelliği bir tahminde bulunmak için eğitilen Lojistik regresyon modeli metne dönüştürmek için kullanır. 
+## <a name="step-5-deploy-the-model-to-production"></a>Adım 5: Modeli üretime dağıtma
+Model üretime gönderilmeye neredeyse hazır. Web hizmeti olarak dağıtıldığında, giriş olarak serbest biçimli metin dizealır ve bir tahmin "yüksek" veya "düşük" döndürün. Metni özelliklere dönüştürmek için öğrenilen N-gram kelime dağarcığını kullanır ve bu özelliklerden bir tahminde bulunmak için lojistik regresyon modelini eğitir. 
 
-Tahmine dayalı deneme ayarlama, biz ilk N-gram sözlüğü veri kümesi ve eğitilen Lojistik regresyon modelini denemeyi eğitim daldan kaydedin. Ardından, deneme, Tahmine dayalı denemeye için bir deneme grafiğini oluşturmak için "Farklı Kaydet" kullanarak kaydedin. Biz, deneme verileri bölme modülü ve eğitim dal kaldırın. Biz sonra önceden kaydedilmiş N-gram sözlük ve model N-Gram özellikleri ayıklayın ve Score Model modülleri, sırasıyla bağlanır. Biz de Evaluate Model modülü kaldırın.
+Tahmine dayalı deneyi ayarlamak için, önce N-gram kelime dağarcığını veri kümesi olarak ve eğitilmiş lojistik regresyon modelini deneyin eğitim dalından kaydediyoruz. Daha sonra, tahmine dayalı deney için bir deneme grafiği oluşturmak için "Farklı Kaydet" kullanarak denemeyi kaydederiz. Bölünmüş Veri modüllerini ve eğitim dalını deneyden kaldırıyoruz. Daha sonra daha önce kaydedilmiş N-gram kelime ve modelini sırasıyla N-Gram Özelliklerini ve Puan Model modüllerini ayıklamak için bağlıyız. Model Değerlendir modüllerini de kaldırıyoruz.
 
-Biz Sütunları Seç metin ön işleme modülü etiket sütunu kaldırmak için önce Dataset modülü yerleştirin ve puan modülünde "Veri kümesine puanı sütun ekleme" seçeneğin işaretini kaldırın. Bu şekilde, web hizmeti, tahmin etmek için çalışıyor etiketi ve mu yanıtta giriş özellikleri echo istemez.
+Etiket sütununu kaldırmak için Preprocess Text modülünden önce Dataset modülüne Select Columns'u ekleriz ve Puan Modülünde "Dataset'e Ek puan sütunu" seçeneğini kaldırırız. Bu şekilde, web hizmeti tahmin etmeye çalıştığı etiketi talep etmez ve yanıt olarak giriş özelliklerini yankılanmaz.
 
-![Tahmine dayalı denemeye](./media/text-analytics-module-tutorial/predictive-text.png)
+![Tahmine Dayalı Deney](./media/text-analytics-module-tutorial/predictive-text.png)
 
-Artık bir web hizmeti olarak yayımlanan ve istek-yanıt ya da toplu iş yürütme API'leri kullanarak adlı bir denemeyi sahibiz.
+Şimdi bir web hizmeti olarak yayınlanabilir ve istek yanıt veya toplu yürütme API'leri kullanılarak adlandırılan bir deneme var.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 [MSDN belgelerinden](https://msdn.microsoft.com/library/azure/dn905886.aspx)metin analizi modülleri hakkında bilgi edinin.

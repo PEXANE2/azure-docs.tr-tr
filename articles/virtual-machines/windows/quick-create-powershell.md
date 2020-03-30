@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure PowerShell bir Windows sanal makinesi oluşturma
+title: Quickstart - Azure PowerShell ile Windows VM oluşturma
 description: Bu hızlı başlangıçta Azure PowerShell’i kullanarak Windows sanal makinesi oluşturmayı öğrenirsiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,28 +16,28 @@ ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74073451"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure'da Windows sanal makinesi oluşturma
 
-Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. Ayrıca VM 'ye yönelik RDP ve IIS Web sunucusunu yükleyerek VM 'nin eylemde görünmesini sağlayabilirsiniz.
+Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. Ayrıca VM RDP ve Eylem VM göstermek için IIS web sunucusu yükleyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -45,9 +45,9 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturun. Her bir kaynak için ad sağlayın ve `New-AzVM` cmdlet 'i zaten yoksa oluşturur.
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM oluşturun. Kaynakların her biri için ad `New-AzVM` verin ve cmdlet zaten yoksa oluşturur.
 
-İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir Kullanıcı adı ve parola girin:
+İstendiğinde, VM için oturum açma kimlik bilgileri olarak kullanılacak bir kullanıcı adı ve parola sağlayın:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -65,7 +65,7 @@ New-AzVm `
 
 Dağıtım tamamlandıktan sonra RDP VM'ye bağlanır. VM'nizin çalışmasını görmek için, IIS web sunucusu yüklenir.
 
-VM 'nin genel IP adresini görmek için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet 'ini kullanın:
+VM'nin genel IP adresini görmek için [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet'i kullanın:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -77,9 +77,9 @@ Yerel bilgisayarınızdan bir uzak masaüstü oturumu oluşturmak için aşağı
 mstsc /v:publicIpAddress
 ```
 
-**Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost**\\*username* olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**’a tıklayın.
+**Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost**\\*kullanıcı adı*olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam'ı**tıklatın.
 
-Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıyı oluşturmak için **Evet** veya **Devam**’a tıklayın
+Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıyı oluşturmak için **Evet'i** veya **Devam'ı** tıklatın
 
 ## <a name="install-web-server"></a>Web sunucusunu yükleme
 
@@ -91,7 +91,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 İşiniz bittiğinde, RDP’nin sanal makine bağlantısını kapatın.
 
-## <a name="view-the-web-server-in-action"></a>Web sunucusunu iş başında görün
+## <a name="view-the-web-server-in-action"></a>Web sunucusunun çalıştığını görme
 
 Sanal makinenizde İnternet’ten IIS yüklenmiş ve 80 numaralı bağlantı noktası açık olduğunda, varsayılan IIS karşılama sayfasını görüntülemek için tercih ettiğiniz bir web tarayıcısını kullanın. VM’nizin önceki bir adımda edinilen genel IP adresini kullanın. Aşağıdaki örnekte varsayılan IIS web sitesi gösterilir:
 
@@ -99,7 +99,7 @@ Sanal makinenizde İnternet’ten IIS yüklenmiş ve 80 numaralı bağlantı nok
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz:
+Artık gerekmediğinde, kaynak grubunu, VM'yi ve ilgili tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet'ini kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

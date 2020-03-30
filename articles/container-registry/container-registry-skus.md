@@ -1,66 +1,66 @@
 ---
-title: Hizmet katmanları ve SKU 'Lar
-description: Azure Container Registry temel, standart ve Premium hizmet katmanlarında (SKU 'Lar) Özellikler ve sınırlar hakkında bilgi edinin.
+title: Hizmet katmanları ve SK'ler
+description: Azure Konteyner Kayıt Defteri'nin Temel, Standart ve Premium hizmet katmanlarındaki (SK'ler) özellikler ve sınırlar hakkında bilgi edinin.
 ms.topic: article
 ms.date: 11/05/2019
 ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456277"
 ---
-# <a name="azure-container-registry-skus"></a>Azure Container Registry SKU 'Ları
+# <a name="azure-container-registry-skus"></a>Azure Konteyner Kayıt Defteri SK'ları
 
-Azure Container Registry (ACR), SKU 'Lar olarak bilinen birden çok hizmet katmanında kullanılabilir. Bu SKU 'Lar, Azure 'daki özel Docker kayıt defterinizin kapasitesini ve kullanım düzenlerini hizalamak için öngörülebilir fiyatlandırma ve çeşitli seçenekler sağlar.
+Azure Kapsayıcı Kayıt Defteri (ACR), SUS olarak bilinen birden çok hizmet katmanında kullanılabilir. Bu SK'ler, Azure'daki özel Docker kayıt defterinizin kapasite ve kullanım alışkanlıklarına hizalamak için öngörülebilir fiyatlandırma ve çeşitli seçenekler sunar.
 
 | SKU | Açıklama |
 | --- | ----------- |
-| **Temel** | Azure Container Registry hakkında bilgi edinen geliştiriciler için düşük maliyetli bir giriş noktası. Temel kayıt defterleri standart ve Premium ile aynı programlı yeteneklere sahiptir (Azure Active Directory [kimlik doğrulaması tümleştirmesi](container-registry-authentication.md#individual-login-with-azure-ad), [görüntü silme][container-registry-delete]ve [Web kancaları][container-registry-webhook]gibi). Ancak, dahil edilen depolama ve görüntü üretimi en düşük kullanım senaryoları için uygundur. |
-| **Standart** | Standart kayıt defterleri, artırılmış dahil edilen depolama ve görüntü işleme özelliklerine sahip temel ile aynı özellikleri sunar. Standart kayıt defterleri, çoğu üretim senaryosu gereksinimlerini karşılayabilir. |
-| **Premium** | Premium kayıt defterleri, yüksek hacimli senaryoları etkinleştirerek en yüksek miktarda dahil edilen depolama ve eşzamanlı işlem sağlar. Daha yüksek görüntü işleme özelliklerine ek olarak Premium, birden çok bölgede tek bir kayıt defterini yönetmek için [coğrafi çoğaltma][container-registry-geo-replication] , resim etiketi imzalama, [güvenlik duvarları ve sanal ağlar (Önizleme)](container-registry-vnet.md) için [içerik güveni](container-registry-content-trust.md) gibi özellikler ekler. kayıt defterine erişimi kısıtlayın. |
+| **Temel** | Azure Container Registry hakkında bilgi edinen geliştiriciler için düşük maliyetli bir giriş noktası. Temel kayıt defterleri Standart ve Premium (Azure Active Directory [kimlik doğrulama tümleştirmesi,](container-registry-authentication.md#individual-login-with-azure-ad) [görüntü silme][container-registry-delete]ve [webhooks][container-registry-webhook]gibi) ile aynı programlı özelliklere sahiptir. Ancak, dahil edilen depolama ve görüntü verimi daha düşük kullanım senaryoları için en uygundur. |
+| **Standart** | Standart kayıt defterleri, artan depolama ve görüntü işleriyle Temel ile aynı yetenekleri sunar. Standart kayıt defterleri, çoğu üretim senaryosu gereksinimlerini karşılayabilir. |
+| **Premium** | Premium kayıt defterleri, yüksek hacimli senaryolar sağlayarak en yüksek miktarda dahil edilen depolama ve eşzamanlı işlemleri sağlar. Premium, daha yüksek görüntü elde edilmesine ek olarak, birden çok bölgede tek bir kayıt defterini yönetmek için [coğrafi çoğaltma,][container-registry-geo-replication] resim etiketi imzalama için [içerik güveni,](container-registry-content-trust.md) güvenlik duvarları ve kayıt defterine erişimi kısıtlamak için [sanal ağlar (önizleme)](container-registry-vnet.md) gibi özellikler ekler. |
 
-Temel, standart ve Premium SKU 'Ların hepsi aynı programlı özellikleri sağlar. Ayrıca, tamamen Azure tarafından yönetilen [görüntü depolamadan][container-registry-storage] de faydalanır. Daha yüksek düzeyde bir SKU seçilmesi daha fazla performans ve ölçek sağlar. Birden çok hizmet katmanı ile, temel ile çalışmaya başlayabilir ve kayıt defteri kullanımınız arttıkça standart ve Premium 'a dönüştürebilirsiniz.
+Temel, Standart ve Premium SK'lerin tümü aynı programlı özellikleri sağlar. Ayrıca tümü tamamen Azure tarafından yönetilen [görüntü depolamadan][container-registry-storage] da yararlanır. Daha üst düzey bir SKU seçmek daha fazla performans ve ölçek sağlar. Birden çok hizmet katmanıyla, Temel ile başlayıp kayıt defteri kullanımınız arttıkça Standart ve Premium'a dönüştürebilirsiniz.
 
 ## <a name="sku-features-and-limits"></a>SKU özellikleri ve sınırları
 
-Aşağıdaki tabloda temel, standart ve Premium hizmet katmanlarının özellikleri ve limitleri ayrıntılı olarak verilmiştir.
+Aşağıdaki tabloda Temel, Standart ve Premium hizmet katmanlarının özellikleri ve sınırları ayrıntılı olarak anlatılır.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>SKU 'Ları değiştirme
+## <a name="changing-skus"></a>SKS Değiştirme
 
-Azure CLı ile bir kayıt defteri SKU 'sunu veya Azure portal değiştirebilirsiniz. Geçiş yaptığınız SKU 'nun gerekli maksimum depolama kapasitesine sahip olduğu sürece SKU 'Lar arasında serbestçe geçiş yapabilirsiniz. 
+Bir kayıt defterinin SKU'sını Azure CLI ile veya Azure portalında değiştirebilirsiniz. Geçiş yaptığınız SKU gerekli maksimum depolama kapasitesine sahip olduğu sürece SKU'lar arasında serbestçe dolaşabilirsiniz. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı 'daki SKU 'Lar arasında geçiş yapmak için [az ACR Update][az-acr-update] komutunu kullanın. Örneğin, Premium 'a geçmek için:
+Azure CLI'deki SK'ler arasında ilerlemek için [az acr güncelleştirme][az-acr-update] komutunu kullanın. Örneğin, Premium'a geçmek için:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
 ```
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-Azure portal kapsayıcı kayıt defterine **genel bakış** ' da **Güncelleştir**' i seçin ve ardından SKU açılır listesinden yeni bir **SKU** seçin.
+Azure portalındaki konteyner kayıt **defterine Genel** Bakış'ta, **Güncelleştirme'yi**seçin ve ardından SKU açılır durumundan yeni bir **SKU** seçin.
 
-![Azure portal içinde kapsayıcı kayıt defteri SKU 'SU güncelleştirme][update-registry-sku]
+![Azure portalında konteyner kayıt defteri SKU'su güncelleştirme][update-registry-sku]
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Azure Container Registry SKU 'Larının her biri hakkında fiyatlandırma bilgileri için bkz. [Container Registry fiyatlandırması][container-registry-pricing].
+Azure Konteyner Kayıt Defteri SK'lerinin her biri hakkındaki fiyatlandırma bilgileri [için, Konteyner Kayıt Defteri fiyatlandırması][container-registry-pricing]bölümüne bakın.
 
-Veri aktarımlarına ilişkin fiyatlandırma hakkında ayrıntılı bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Veri aktarımları için fiyatlandırma hakkında ayrıntılı bilgi için Bant [Genişliği Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/bandwidth/)bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Azure Container Registry yol haritası**
+**Azure Konteyner Kayıt Yol Haritası**
 
-Hizmette yaklaşan özellikler hakkında bilgi edinmek için GitHub 'daki [ACR yol haritasını][acr-roadmap] ziyaret edin.
+Hizmette gelecek özellikler hakkında bilgi edinmek için GitHub'daki [ACR Yol Haritası'nı][acr-roadmap] ziyaret edin.
 
-**UserVoice Azure Container Registry**
+**Azure Konteyner Kayıt Defteri KullanıcısıSes**
 
-[ACR UserVoice][container-registry-uservoice]'ta yeni özellik önerilerini gönderir ve oylayın.
+[ACR UserVoice'ta][container-registry-uservoice]yeni özellik önerileri gönderin ve oyverin.
 
 <!-- IMAGES -->
 [update-registry-sku]: ./media/container-registry-skus/update-registry-sku.png

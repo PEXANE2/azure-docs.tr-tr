@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/20/2019
 ms.author: victorh
 ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359893"
 ---
-# <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLı kullanarak bir uygulama ağ geçidi ile Web trafiğini yönetme
+# <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 
-Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Bu örnekte, ölçek kümesi iki sanal makine örneği içerir. Ölçek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenir.
+Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Arka uç sunucuları için sanal makine ölçeği [kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) ni kullanan bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI'yi kullanabilirsiniz. Bu örnekte, ölçek kümesi iki sanal makine örneği içerir. Ölçek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -27,11 +27,11 @@ Bu makalede şunları öğreneceksiniz:
 
 İsterseniz, [Azure PowerShell](tutorial-manage-web-traffic-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu hızlı başlangıç Azure CLI sürümünü 2.0.4 veya daha yeni bir şekilde çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -71,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, daha önce oluşturduğunuz *Myagsubnet* ve *Mypublicıpaddress* öğesine atanır. 
+*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, daha önce oluşturduğunuz *myAGSubnet* ve *myPublicIPAddress'e* atanır. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -89,9 +89,9 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
+ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra aşağıdaki yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool* -bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
 - *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
 - *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
@@ -133,7 +133,7 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+Uygulama ağ geçidinin genel IP adresini almak için [az ağ public-ip show'u](/cli/azure/network/public-ip)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
 ```azurecli-interactive
 az network public-ip show \

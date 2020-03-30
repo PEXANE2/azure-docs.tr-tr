@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services 'de Linux için Uzak Masaüstü kullanma | Microsoft Docs
-description: Azure Lab Services 'deki bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'nü nasıl kullanacağınızı öğrenin.
+title: Azure Lab Hizmetlerinde Linux için uzak masaüstünü kullanın | Microsoft Dokümanlar
+description: Azure Lab Hizmetleri'ndeki bir laboratuvarda Linux sanal makineleri için uzak masaüstünü nasıl kullanacağınızı öğrenin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,38 +14,38 @@ ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73585094"
 ---
-# <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarında Linux sanal makineleri için Uzak Masaüstü 'nü kullanma
-Bu makalede, öğrencilerin RDP/SSH kullanarak laboratuvara bir Linux sanal makinesine (VM) nasıl bağlanabildiği gösterilmektedir. 
+# <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'nin sınıf laboratuvarında Linux sanal makineleri için uzak masaüstünü kullanın
+Bu makalede, öğrencilerin RDP/SSH kullanarak bir laboratuvardaki Linux sanal makinesine (VM) nasıl bağlanabilecekleri gösterilmektedir. 
 
-Öğrenciler, öğrencilerin ders Laboratuvarı 'nın VM 'sine bağlanabilmesi için Uzak Masaüstü bağlantısı özelliğini etkinleştirmeleri gerekir. Bir eğitmenin Uzak Masaüstü bağlantısı özelliğini nasıl etkinleştirebilirim hakkında yönergeler için bkz. [Linux sanal makineleri için uzak masaüstünü etkinleştirme](how-to-enable-remote-desktop-linux.md).
+Öğrencilerin sınıf laboratuvarının VM'sine bağlanabilmesi için bir eğitmenin uzak masaüstü bağlantı özelliğini etkinleştirmesi gerekir. Bir eğitmenin uzak masaüstü bağlantı özelliğini nasıl etkinleştirebileceğiyle ilgili talimatlar [için, Linux sanal makineleri için uzak masaüstünü etkinleştir](how-to-enable-remote-desktop-linux.md)mesuliyye bakın.
 
 > [!IMPORTANT] 
-> **Uzak Masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. Bir eğitmen, Linux makinesine ilk kez SSH kullanarak bağlanıp daha sonra RDP kullanarak Linux makinesine bağlanabilmeniz için RDP ve GUI paketleri yükleyebilir. 
+> Uzak **masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerinde **RDP** bağlantı noktasını açar. Bir eğitmen SSH'yi kullanarak Linux makinesine ilk kez bağlanabilir ve RDP ve GUI paketlerini yükleyebilir, böylece daha sonra RDP kullanarak Linux makinesine bağlanabilirsiniz. 
 
-## <a name="connect-to-the-student-vm"></a>Öğrenci VM 'sine bağlanma
-Öğrenciler, laboratuvar sahibi (öğretmen/Mesleme) ile birlikte Linux VM 'lerinde RDP 'yi makinede yüklü olan RDP ve GUI paketleri ile **yayımlar** . Adımlar aşağıdaki gibidir: 
+## <a name="connect-to-the-student-vm"></a>Öğrenci VM'sine bağlanın
+Laboratuvar sahibi (öğretmen/profesör) makineye yüklenen RDP ve GUI paketlerinin yüklü vm şablonlarını **yayımladıktan** sonra öğrenciler Linux VM'lerine rdp'lerini ekleyebilirler. Adımlar aşağıdaki gibidir: 
 
-1. Bir öğrenci, Labs portalında doğrudan (`https://labs.azure.com`) veya bir kayıt bağlantısı (`https://labs.azure.com/register/<registrationCode>`) kullanarak oturum açtığında, öğrencinin erişebileceği her laboratuvar için bir kutucuk görüntülenir. 
-2. Kutucukta, durdurulmuş durumdaysa sanal makineyi başlatmak için düğmeyi değiştirin. 
-3. **Bağlan**’ı seçin. SANAL makineye bağlanmak için iki seçenek görürsünüz: **SSH** ve **Uzak Masaüstü**.
+1. Bir öğrenci doğrudan Labs portalına`https://labs.azure.com`giriş yaptığında () veya`https://labs.azure.com/register/<registrationCode>`bir kayıt bağlantısı kullanarak ( ), öğrencinin erişediği her laboratuvar için bir döşeme görüntülenir. 
+2. Döşemede, durdurulmuş durumdaysa VM'yi başlatmak için düğmeyi titretin. 
+3. **Bağlan**’ı seçin. VM'ye bağlanmak için iki seçenek görürsünüz: **SSH** ve **Uzak Masaüstü.**
 
-    ![Öğrenci VM-bağlantı seçenekleri](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
+    ![Öğrenci VM - bağlantı seçenekleri](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 
 ## <a name="connect-using-ssh-or-rdp"></a>SSH veya RDP kullanarak bağlanma
-**SSH** seçeneğini belirlerseniz, **Sanal makinenize şu şekilde Bağlan** iletişim kutusunu görürsünüz:  
+**SSH** seçeneğini seçerseniz, sanal makine iletişim **kutunuza aşağıdaki Connect'i** görürsünüz:  
 
 ![SSH bağlantı dizesi](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
-Panoya kopyalamak için metin kutusunun yanındaki **Kopyala** düğmesini seçin. SSH bağlantı dizesini kaydedin. Sanal makineye bağlanmak için bir SSH terminalinde ( [Putty](https://www.putty.org/)gibi) Bu bağlantı dizesini kullanın.
+Metin kutusunun yanındaki **Kopyala** düğmesini seçerek panoya kopyalayın. SSH bağlantı dizesini kaydedin. Sanal makineye bağlanmak için bir SSH terminalindeki [(Macun](https://www.putty.org/)gibi) bu bağlantı dizesini kullanın.
 
-**RDP** seçeneğini belirlerseniz, MAKINENIZDE bir RDP dosyası indirilir. Bunu kaydederek makineye bağlanmak için açın. 
+**RDP** seçeneğini seçerseniz, makinenize bir RDP dosyası indirilir. Kaydedin ve makineye bağlanmak için açın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir sınıf laboratuvarında Linux VM 'Leri için Uzak Masaüstü bağlantısı özelliğini etkinleştirme hakkında bilgi edinmek için bkz. [Linux sanal makineleri için uzak masaüstünü etkinleştirme](how-to-enable-remote-desktop-linux.md). 
+Bir sınıf laboratuvarında Linux VM'ler için uzak masaüstü bağlantı özelliğini nasıl etkinleştireceğiz öğrenmek [için](how-to-enable-remote-desktop-linux.md)bkz. 
 

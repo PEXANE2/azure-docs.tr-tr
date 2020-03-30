@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics kullanarak avro verilerini sorgulama | Microsoft Docs
-description: Cihaz telemetrisini blob depolamaya yönlendirmek ve BLOB depolamaya yazılan avro biçim verilerini sorgulamak için ileti gövdesi özelliklerini kullanın.
+title: Azure Veri Gölü Analizi'ni kullanarak Avro verilerini sorgulayın | Microsoft Dokümanlar
+description: Aygıt telemetrisini Blob depolamasına yönlendirmek ve Blob depolamasına yazılan Avro formatındaki verileri sorgulamak için ileti gövdesi özelliklerini kullanın.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605611"
 ---
-# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics kullanarak avro verilerini sorgulama
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Veri Gölü Analizi'ni kullanarak Avro verilerini sorgula
 
-Bu makalede, Azure IoT Hub iletileri Azure hizmetlerine verimli bir şekilde yönlendirmek için avro verilerinin nasıl sorgulandığı açıklanır. [Ileti yönlendirme](iot-hub-devguide-messages-d2c.md) , ileti özelliklerine, ileti gövdesine, Device ikizi etiketlerine ve Device ikizi özelliklerine göre zengin sorgular kullanarak verileri filtrelemenizi sağlar. Ileti yönlendirmesinde sorgulama özellikleri hakkında daha fazla bilgi edinmek için [ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md)hakkında makalesine bakın.
+Bu makalede, iletileri Azure IoT Hub'ından Azure hizmetlerine verimli bir şekilde yönlendirmek için Avro verilerinin nasıl sorgulanır olduğu açıklanmaktadır. [İleti Yönlendirme,](iot-hub-devguide-messages-d2c.md) ileti özelliklerine, ileti gövdesine, aygıt ikiz etiketlerine ve aygıt ikiz özelliklerine göre zengin sorgular kullanarak verileri filtrelemenize olanak tanır. İleti Yönlendirme'deki sorgu lama yetenekleri hakkında daha fazla bilgi edinmek için [ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md)hakkındaki makaleye bakın.
 
-Bu zorluk, Azure IoT Hub iletileri Azure Blob depolamaya yönlendirdiğini, varsayılan olarak IoT Hub bir ileti gövdesi özelliğine ve bir ileti özelliğine sahip olan içeriği avro biçiminde yazar. Diğer tüm uç noktalar için avro biçimi kullanılmaz. Veri ve ileti koruma için avro biçimi harika olsa da, verileri sorgulamak için kullanılması zor bir yoldur. Karşılaştırma bölümünde JSON veya CSV biçimi verileri sorgulamak için çok daha kolaydır. IoT Hub artık JSON 'daki blob depolamaya veri yazılmasını ve AVRO de desteklemektedir.
+Sorun, Azure IoT Hub iletileri Azure Blob depolama alanına yolladığında, varsayılan olarak IoT Hub'ın içeriği hem ileti gövdesi özelliği hem de ileti özelliği ne de ileti özelliği ne var Avro biçiminde yazmasıdır. Avro biçimi diğer uç noktalar için kullanılmaz. Avro biçimi veri ve ileti nin korunması için harika olsa da, verileri sorgulamak için kullanmak zor dur. Buna karşılık, JSON veya CSV biçimi veri sorgulamak için çok daha kolaydır. IoT Hub artık JSON'un yanı sıra AVRO'daki Blob depolamasına veri yazmayı destekliyor.
 
-Daha fazla bilgi için bkz. [Azure Storage 'ı yönlendirme uç noktası olarak kullanma](iot-hub-devguide-messages-d2c.md#azure-storage).
+Daha fazla bilgi için, [yönlendirme bitiş noktası olarak Azure Depolama'yı kullanma](iot-hub-devguide-messages-d2c.md#azure-storage)konusuna bakın.
 
-İlişkisel olmayan büyük veri gereksinimlerini ve biçimlerini adresleyerek ve bu zorluğu aşmak için, verilerin dönüştürülmesi ve ölçeklendirilmesi için büyük veri desenlerinin birçoğunu kullanabilirsiniz. "Sorgu başına ödeme" desenlerinden biri, bu makalenin odaklanmasındaki Azure Data Lake Analytics. Sorguyu Hadoop veya diğer çözümlerde kolayca yürütebilseniz de, bu "sorgu başına ödeme" yaklaşımı için genellikle daha uygundur Data Lake Analytics.
+İlişkisel olmayan büyük veri gereksinimlerini ve biçimlerini ele almak ve bu zorluğun üstesinden gelmek için, verileri dönüştürme ve ölçeklendirme için büyük veri desenlerinin çoğunu kullanabilirsiniz. "Sorgu başına ödeme" desenlerinden biri, bu makalenin odak noktası olan Azure Veri Gölü Analizi'dir. Sorguyu Hadoop veya diğer çözümlerde kolayca yürütebiliyor olabilirsiniz, ancak Data Lake Analytics genellikle bu "sorgu başına ödeme" yaklaşımı için daha uygundur.
 
-U-SQL içindeki avro için bir "Extractor" vardır. Daha fazla bilgi için, bkz. [U-SQL avro örneği](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
+U-SQL'de Avro için bir "çıkarıcı" vardır. Daha fazla bilgi için [U-SQL Avro örneğine](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)bakın.
 
-## <a name="query-and-export-avro-data-to-a-csv-file"></a>Avro verilerini bir CSV dosyasına sorgulama ve dışarı aktarma
+## <a name="query-and-export-avro-data-to-a-csv-file"></a>Avro verilerini CSV dosyasına sorgulama ve dışa aktarma
 
-Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştirebileceğiniz halde, avro verilerini sorgular ve Azure Blob depolama alanındaki bir CSV dosyasına dışarı aktarabilirsiniz.
+Bu bölümde, Avro verilerini sorgular ve Azure Blob depolamasındaki bir CSV dosyasına dışa aktarırsınız, ancak verileri kolayca diğer depolara veya veri depolarına yerleştirebilirsiniz.
 
-1. İletileri seçmek için ileti gövdesinde bir özellik kullanarak Azure Blob depolama uç noktasına veri yönlendirmek üzere Azure IoT Hub ayarlayın.
+1. İletileri seçmek için ileti gövdesindeki bir özelliği kullanarak verileri Azure Blob depolama bitiş noktasına yönlendirecek şekilde Azure IoT Hub'ını ayarlayın.
 
    !["Özel uç noktalar" bölümü](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
 
-   ![Yönlendirme kuralları](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
+   ![Yönlendirme Kuralları](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
 
-   Ayarlar yolları ve özel uç noktalar hakkında daha fazla bilgi için bkz. [IoT Hub Için Ileti yönlendirme](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
+   Rotalar ve özel uç noktaları ayarla hakkında daha fazla bilgi [için, bir IoT hub'ı için İleti Yönlendirme'ye](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub)bakın.
 
-2. Cihazınızın, ürün belgelerinde başvurulduğu şekilde, özelliklerde veya ileti gövdesinde kodlama, içerik türü ve gerekli verilere sahip olduğundan emin olun. Burada gösterildiği gibi Device Explorer bu öznitelikleri görüntülediğinizde, doğru ayarlandıklarından emin olabilirsiniz.
+2. Cihazınızın ürün belgelerinde başvurulmuştÝkça kodlama, içerik türü ve gerekli verileri özelliklerde veya ileti gövdesinde olduğundan emin olun. Bu öznitelikleri Aygıt Gezgini'nde burada gösterildiği gibi görüntülediğinizde, bunların doğru ayarlandığından doğru şekilde ayarlanıncayabilirsiniz.
 
-   ![Olay Hub 'ı veri bölmesi](./media/iot-hub-query-avro-data/query-avro-data-2.png)
+   ![Olay Hub Veri bölmesi](./media/iot-hub-query-avro-data/query-avro-data-2.png)
 
-3. Bir Azure Data Lake Store örneği ve bir Data Lake Analytics örneği ayarlayın. Azure IoT Hub, bir Data Lake Store örneğine yönlendirmez, ancak bir Data Lake Analytics örneği için bir tane gerekir.
+3. Azure Veri Gölü Deposu örneğini ve Veri Gölü Analizi örneğini ayarlayın. Azure IoT Hub'ı Bir Veri Gölü Deposu örneğine yönlendirmez, ancak Veri Gölü Analizi örneği için bir tane gerektirir.
 
-   ![Data Lake Store ve Data Lake Analytics örnekleri](./media/iot-hub-query-avro-data/query-avro-data-3.png)
+   ![Veri Gölü Deposu ve Veri Gölü Analizi örnekleri](./media/iot-hub-query-avro-data/query-avro-data-3.png)
 
-4. Data Lake Analytics, Azure Blob depolamayı ek bir mağaza olarak yapılandırın. Azure IoT Hub verileri yönlendiren aynı BLOB depolama alanı.
+4. Data Lake Analytics'te, Azure Blob depolama alanını ek bir mağaza olarak, Azure IoT Hub'ın verileri aktardığı blob depolama alanı olarak yapılandırın.
 
    !["Veri kaynakları" bölmesi](./media/iot-hub-query-avro-data/query-avro-data-4.png)
 
-5. [U-SQL avro örneğinde](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)anlatıldığı gıbı dört dll dosyasına ihtiyacınız vardır. Bu dosyaları Data Lake Store örneğindeki bir konuma yükleyin.
+5. [U-SQL Avro örneğinde](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)de belirtildiği gibi, dört DLL dosyasıgerekir. Bu dosyaları Veri Gölü Deposu örneğinizdeki bir konuma yükleyin.
 
-   ![Karşıya yüklenen dört DLL dosyası](./media/iot-hub-query-avro-data/query-avro-data-5.png)
+   ![Yüklenen dört DLL dosyası](./media/iot-hub-query-avro-data/query-avro-data-5.png)
 
-6. Visual Studio 'da bir U-SQL projesi oluşturun.
+6. Visual Studio'da bir U-SQL projesi oluşturun.
 
-   ! U-SQL projesi oluşturma] (./Media/iot-hub-Query-avro-Data/Query-avro-Data-6.png)
+   ! U-SQL projesi oluşturma](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
-7. Aşağıdaki betiğin içeriğini yeni oluşturulan dosyaya yapıştırın. Vurgulanan üç bölümü değiştirin: Data Lake Analytics hesabınız, ilişkili DLL dosyası yolları ve depolama hesabınız için doğru yol.
+7. Aşağıdaki komut dosyasının içeriğini yeni oluşturulan dosyaya yapıştırın. Vurgulanan üç bölümü değiştirin: Veri Gölü Analizi hesabınız, ilişkili DLL dosya yolları ve depolama hesabınız için doğru yol.
 
    ![Değiştirilecek üç bölüm](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
 
-   Bir CSV dosyasına basit çıkış için gerçek U-SQL betiği:
+   Bir CSV dosyasına basit çıktı için gerçek U-SQL komut dosyası:
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -129,15 +129,15 @@ Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştire
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```
 
-    10 analiz birimi ile sınırlı olan ve 177 dosya işlenen aşağıdaki betiği çalıştırmak için beş dakika Data Lake Analytics sürdü. Sonuç, aşağıdaki görüntüde görüntülenen CSV dosyası çıktısında gösterilir:
+    Data Lake Analytics'in 10 analitik birimiyle sınırlı olan ve 177 dosyayı işleyen aşağıdaki komut dosyasını çalıştırmak beş dakika sürdü. Sonuç, aşağıdaki resimde görüntülenen CSV dosyası çıktısında gösterilir:
 
-    ![CSV dosyasına çıktının sonuçları](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
+    ![CSV dosyasına çıktı sonuçları](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
 
-    ![Çıkış CSV dosyasına dönüştürüldü](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
+    ![CSV dosyasına dönüştürülen çıktı](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
 
-    JSON 'u ayrıştırmaya devam etmek için 8. adıma geçin.
+    JSON ayrıştmak için, adım 8 devam edin.
 
-8. Birçok IoT iletisi JSON dosya biçimindedir. Aşağıdaki satırları ekleyerek iletiyi bir JSON dosyasına ayrıştırarak WHERE yan tümcesini eklemenizi ve yalnızca gerekli verileri almanızı sağlayabilirsiniz.
+8. IoT iletilerinin çoğu JSON dosya biçimindedir. Aşağıdaki satırları ekleyerek, iletiyi Bir JSON dosyasına ayrıştırarak WHERE yan tümcelerini ve yalnızca gerekli verileri çıkarmanızı sağlar.
 
     ```sql
        @jsonify =
@@ -163,16 +163,16 @@ Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştire
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    Çıktı, `SELECT` komutunda her öğe için bir sütun görüntüler.
+    `SELECT` Çıktı, komuttaki her öğe için bir sütun görüntüler.
 
     ![Her öğe için bir sütun gösteren çıktı](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure IoT Hub iletileri Azure hizmetlerine verimli bir şekilde yönlendirmek için avro verilerinin nasıl sorgulanalınacağını öğrendiniz.
+Bu eğitimde, iletileri Azure IoT Hub'ından Azure hizmetlerine verimli bir şekilde yönlendirmek için Avro verilerini nasıl sorgulayabileceğinizi öğrendiniz.
 
-IoT Hub kullanan uçtan uca çözümlerin tamamını örnekler için bkz. [Azure IoT Çözüm Hızlandırıcıları belgeleri](/azure/iot-accelerators).
+IoT Hub'ı kullanan eksiksiz uçtan uca çözümlere örnek olarak [Azure IoT Çözüm Hızlandırıcıbelgeleri'ne](/azure/iot-accelerators)bakın.
 
-IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
+IoT Hub ile çözüm geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub geliştirici kılavuzuna](iot-hub-devguide.md)bakın.
 
-IoT Hub ileti yönlendirme hakkında daha fazla bilgi için, bkz. [IoT Hub ile Ileti gönderme ve alma](iot-hub-devguide-messaging.md).
+IoT Hub'da ileti yönlendirme hakkında daha fazla bilgi edinmek için [IoT Hub ile ileti gönder ve al'](iot-hub-devguide-messaging.md)a bakın.

@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilir özel yönetici rolü izinleri-Azure AD | Microsoft Docs
-description: Kimlik yönetimi temsilcisi için özel yönetici rolü izinleri.
+title: Kullanılabilir özel yönetici rol izinleri - Azure AD | Microsoft Dokümanlar
+description: Kimlik yönetimini atamak için özel yönetici rol izinleri.
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,154 +14,154 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025157"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri
+# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory'de uygulama kaydı alt türleri ve izinleri
 
-Bu makale, Azure Active Directory (Azure AD) içindeki özel rol tanımları için şu anda kullanılabilir olan uygulama kayıt izinlerini içerir.
+Bu makale, Azure Etkin Dizini'ndeki (Azure AD) özel rol tanımları için şu anda kullanılabilen uygulama kaydı izinlerini içerir.
 
 ## <a name="permissions-for-managing-single-directory-applications"></a>Tek dizin uygulamalarını yönetme izinleri
 
-Özel rolünüzün izinlerini seçerken, yalnızca tek dizin uygulamalarını yönetmek için erişim izni verme seçeneğiniz vardır. Tek dizin uygulamaları yalnızca uygulamanın kaydedildiği Azure AD kuruluşundaki kullanıcılar tarafından kullanılabilir. Tek dizin uygulamaları **Desteklenen hesap türleri** "yalnızca bu kuruluş dizininde hesaplar" olarak ayarlanmış şekilde tanımlanır. Graph API, tek dizin uygulamalarında Signınaudience özelliği "AzureADMyOrg" olarak ayarlanmıştır.
+Özel rolünüz için izinleri seçerken, yalnızca tek dizin uygulamalarını yönetmek için erişim izni verme seçeneğiniz vardır. Tek dizin uygulamaları yalnızca uygulamanın kayıtlı olduğu Azure AD kuruluşundaki kullanıcılar tarafından kullanılabilir. Tek dizin uygulamaları, Desteklenen **hesap türlerinin** "Yalnızca bu kuruluş dizinindeki hesaplar" olarak ayarlandığı olarak tanımlanır. Grafik API'sinde, tek dizin li uygulamalarda signInAudience özelliği "AzureADMyOrg" olarak ayarlanır.
 
-Yalnızca tek dizin uygulamalarını yönetmek üzere erişim vermek için, aşağıdaki izinleri kullanın, **uygulamalar. Myorganwıth**alt türü. Örneğin, Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme.
+Yalnızca tek dizin uygulamalarını yönetmeye erişim sağlamak için, alt tür **uygulamaları.myOrganization**ile aşağıdaki izinleri kullanın. Örneğin, microsoft.directory/applications.myOrganization/basic/update.
 
-Genel terimler alt türünün, izninin ve özellik kümesinin ne anlama geldiğini öğrenmek için [özel rollere genel bakış ' a](roles-custom-overview.md) bakın. Aşağıdaki bilgiler uygulama kayıtlarına özgüdür.
+Genel [custom roles overview](roles-custom-overview.md) terimler alt türü, izin ve özellik kümesinin ne anlama geldiğini niçin açıklayabiliyor. Aşağıdaki bilgiler uygulama kayıtlarıiçin özeldir.
 
-### <a name="create-and-delete"></a>Oluştur ve Sil
+### <a name="create-and-delete"></a>Oluşturma ve silme
 
-Her biri farklı davranışa sahip olan uygulama kayıtları oluşturma özelliği için iki izin mevcuttur:
+Her biri farklı davranışta bulunan uygulama kayıtları oluşturma olanağı vermek için kullanılabilen iki izin vardır:
 
-#### <a name="microsoftdirectoryapplicationscreateasowner"></a>Microsoft. Directory/Applications/createAsOwner
+#### <a name="microsoftdirectoryapplicationscreateasowner"></a>microsoft.directory/applications/createAsOwner
 
-Bu iznin atanması, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmekte ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesne kotasına göre sayılır.
+Bu izin atanması, oluşturulan uygulama kaydının ilk sahibi olarak eklenen oluşturucuya neden olur ve oluşturulan uygulama kaydı, oluşturucunun oluşturulan 250 nesne kotasına dahil edilir.
 
-#### <a name="microsoftdirectoryapplicationscreate"></a>Microsoft. Directory/uygulamalar/oluşturma
+#### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
 
-Bu iznin atanması, oluşturan uygulama kaydının ilk sahibi olarak eklenmeyecektir ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılmaz. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
+Bu izin atanması, oluşturulan uygulama kaydının ilk sahibi olarak eklenmemesi ile sonuçlanır ve oluşturulan uygulama kaydı, oluşturucunun oluşturulan 250 nesne kotasına dahil edilmez. Dizin düzeyindekota vuruluncaya kadar devralan firmanın uygulama kayıtları oluşturmasını engelleyen hiçbir şey olmadığından, bu izni dikkatle kullanın. Her iki izin de atanmışsa, bu izin önceliklidir.
 
-Her iki izin atanırsa,/Create izni öncelikli olur. Bu,/createAsOwner izni oluşturucuyu ilk sahip olarak otomatik eklemez, ancak grafik API 'Leri veya PowerShell cmdlet 'leri kullanılırken uygulama kaydı oluşturma sırasında sahipler belirtilebilir.
+Her iki izin de atanırsa, /oluşturma izni önceliklidir. /createAsOwner izni otomatik olarak ilk sahibi olarak oluşturucu eklemese de, sahipleri Grafik API'leri veya PowerShell cmdlets kullanırken uygulama kaydının oluşturulması sırasında belirtilebilir.
 
-İzin oluştur **Yeni kayıt** komutuna erişim izni verir.
+İzinler **oluşturun, Yeni kayıt** komutuna erişim verir.
 
-[Bu izinler yeni kayıt portalı komutuna erişim izni verir](./media/roles-create-custom/new-custom-role.png)
+[Bu izinler Yeni Kayıt portalı komutuna erişim verir](./media/roles-create-custom/new-custom-role.png)
 
-Uygulama kayıtlarını silebilme olanağı vermek için iki izin mevcuttur:
+Uygulama kayıtlarını silme olanağı sağlamak için iki izin vardır:
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>Microsoft. Directory/uygulamalar/Sil
+#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
 
-Subtype 'dan bağımsız olarak uygulama kayıtlarını silme yeteneği verir; diğer bir deyişle, tek kiracılı ve çok kiracılı uygulamalar.
+Alt türe bakılmaksızın uygulama kayıtlarını silme olanağı verir; diğer bir şey, hem tek kiracılı hem de çok kiracılı uygulamalar.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>Microsoft. Directory/Applications. Myorganleştirme/silme
+#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>microsoft.directory/applications.myOrganization/delete
 
-Yalnızca kuruluşunuzdaki hesaplara veya tek kiracılı uygulamalardaki (Myorganın alt türü) erişilebilen uygulama kayıtlarını silme yeteneği verir.
+Yalnızca kuruluşunuzdaki veya tek kiracılı uygulamalardaki (myOrganization alt türü) yalnızca erişilebilen uygulamalarla sınırlı uygulama kayıtlarını silme olanağı sağlar.
 
-![Bu izinler, uygulama kaydını Sil komutuna erişim verir](./media/roles-custom-available-permissions/delete-app-registration.png)
+![Bu izinler, Delete uygulaması kayıt komutuna erişim verir](./media/roles-custom-available-permissions/delete-app-registration.png)
 
 > [!NOTE]
-> Oluşturma izinleri içeren bir rol atarken, rol atamasının dizin kapsamında yapılması gerekir. Kaynak kapsamında atanan bir oluşturma izni, uygulama kayıtları oluşturma olanağı sağlamaz.
+> Oluşturma izinleri içeren bir rol atarken, rol atamasının dizin kapsamında yapılması gerekir. Kaynak kapsamında atanan oluşturma izni, uygulama kayıtları oluşturma olanağı sağlamaz.
 
 ### <a name="read"></a>Okuma
 
-Kuruluştaki tüm üye kullanıcıları, varsayılan olarak uygulama kayıt bilgilerini okuyabilir. Ancak Konuk kullanıcılar ve uygulama hizmeti sorumluları olamaz. Bir Konuk Kullanıcı veya uygulamaya bir rol atamayı planlıyorsanız, uygun okuma izinlerini dahil etmeniz gerekir.
+Kuruluştaki tüm üye kullanıcılar varsayılan olarak uygulama kayıt bilgilerini okuyabilir. Ancak, konuk kullanıcılar ve uygulama hizmeti ilkeleri bunu yapamaz. Bir rol konuk kullanıcıya veya uygulamaya atamayı planlıyorsanız, uygun okuma izinlerini eklemeniz gerekir.
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>Microsoft. Directory/uygulamalar/allProperties/Read
+#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>microsoft.directory/applications/allProperties/read
 
-Kimlik bilgileri gibi herhangi bir durumda okunamayan özellikler dışında tek kiracılı ve çok kiracılı uygulamaların tüm özelliklerini okuma özelliği.
+Kimlik bilgileri gibi herhangi bir durumda okunamayan özellikleridışında tek kiracı ve çok kiracılı uygulamaların tüm özelliklerini okuma yeteneği.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>Microsoft. Directory/Applications. Myorganleştirme/allProperties/Read
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>microsoft.directory/applications.myOrganization/allProperties/read
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/allProperties/Read ile aynı izinleri verir.
+Microsoft.directory/applications/allProperties/read ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationsownersread"></a>Microsoft. Directory/uygulamalar/sahipler/okuma
+#### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft.directory/applications/owners/read
 
-Tek kiracılı ve çok kiracılı uygulamalardaki sahipler özelliğini okuma yeteneği verir. Uygulama kayıt sahipleri sayfasındaki tüm alanlara erişim izni verir:
+Tek kiracılı ve çok kiracılı uygulamalarda sahiplerinin mülklerini okuma olanağı verir. Başvuru kayıt sahipleri sayfasındaki tüm alanlara erişim izni verir:
 
-![Bu izinler, uygulama kayıt sahipleri sayfasına erişim verir](./media/roles-custom-available-permissions/app-registration-owners.png)
+![Bu izinler, uygulama kayıt sahipleri sayfasına erişim izni verir](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsstandardread"></a>Microsoft. Directory/uygulamalar/standart/okuma
+#### <a name="microsoftdirectoryapplicationsstandardread"></a>microsoft.directory/applications/standard/read
 
-Standart uygulama kaydı özelliklerini okuma erişimi verir. Bu, uygulama kayıt sayfalarında özellikler içerir.
+Okuma standart uygulama kayıt özelliklerine erişim sağlar. Bu, uygulama kayıt sayfalarındaki özellikleri içerir.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>Microsoft. Directory/Applications. Myorganleştirme/standart/okuma
+#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>microsoft.directory/applications.myOrganization/standard/read
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/standart/Read gibi aynı izinleri verir.
+Microsoft.directory/applications/standard/read ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
 ### <a name="update"></a>Güncelleştirme
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/uygulamalar/allProperties/Update
+#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
-Tek dizin ve çoklu Dizin uygulamalarında tüm özellikleri güncelleştirebilme.
+Tek dizin ve çok dizin uygulamalarındaki tüm özellikleri güncelleştirme yeteneği.
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/allProperties/Update
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/allProperties/Update ile aynı izinleri verir.
+Microsoft.directory/applications/allProperties/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/uygulamalar/hedef kitle/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
-Tek dizin ve çoklu Dizin uygulamalarında desteklenen hesap türü (Signınaudience) özelliğini güncelleştirme özelliği.
+Desteklenen hesap türünü (signInAudience) özelliğini tek dizin ve çok dizinli uygulamalarda güncelleştirme yeteneği.
 
-![Bu izin, kimlik doğrulama sayfasında uygulama kaydı desteklenen hesap türü özelliğine erişim verir](./media/roles-custom-available-permissions/supported-account-types.png)
+![Bu izin, kimlik doğrulama sayfasında uygulama kaydı destekli hesap türü özelliğine erişim verir](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/izleyici/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>microsoft.directory/applications.myOrganization/audience/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/uygulamalar/hedef kitle/güncelleştirme ile aynı izinleri verir.
+Microsoft.directory/applications/audience/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>Microsoft. Directory/uygulamalar/kimlik doğrulaması/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
-Tek kiracılı ve çok kiracılı uygulamalarda yanıt URL 'SI, oturum kapatma URL 'SI, örtük akış ve yayımcı etki alanı özelliklerini güncelleştirme özelliği. Desteklenen hesap türleri dışındaki uygulama kaydı kimlik doğrulama sayfasındaki tüm alanlara erişim verir:
+Tek kiracılı ve çok kiracılı uygulamalarda yanıt URL'sini, oturum açma URL'sini, örtülü akışı ve yayımcı etki alanı özelliklerini güncelleştirme yeteneği. Desteklenen hesap türleri dışında uygulama kaydı kimlik doğrulama sayfasındaki tüm alanlara erişim izni verir:
 
-![Uygulama kaydı kimlik doğrulamasına erişim izni verir ancak desteklenmez.](./media/roles-custom-available-permissions/supported-account-types.png)
+![Uygulama kaydı kimlik doğrulamasına erişim verir, ancak desteklenmeyen hesap türlerine](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/kimlik doğrulama/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft.directory/applications.myOrganization/authentication/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/uygulamalar/kimlik doğrulama/güncelleştirme ile aynı izinleri verir.
+Microsoft.directory/applications/authentication/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>Microsoft. Directory/uygulamalar/temel/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft.directory/applications/basic/update
 
-Tek kiracılı ve çok kiracılı uygulamalardaki adı, logoyu, ana hat URL 'sini, hizmet URL 'sini ve gizlilik bildirimi URL özelliklerini güncelleştirme özelliği. Uygulama kaydı markalama sayfasındaki tüm alanlara erişim izni verir:
+Tek kiracılı ve çok kiracılı uygulamalarda ad, logo, ana sayfa URL'si, hizmet koşulları URL'si ve gizlilik bildirimi URL özelliklerini güncelleştirme yeteneği. Başvuru kayıt markalama sayfasındaki tüm alanlara erişim izni verir:
 
-![Bu izin, uygulama kaydı markalama sayfasına erişim verir](./media/roles-custom-available-permissions/app-registration-branding.png)
+![Bu izin, uygulama kaydı markalandırma sayfasına erişim izni verir](./media/roles-custom-available-permissions/app-registration-branding.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>microsoft.directory/applications.myOrganization/basic/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/Basic/Update ile aynı izinleri verir.
+Microsoft.directory/applications/basic/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft. Directory/uygulamalar/kimlik bilgileri/güncelleştirme
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
-Tek kiracılı ve çok kiracılı uygulamalardaki sertifikaları ve istemci gizli dizilerini güncelleştirme özelliği. Uygulama kayıt sertifikaları & gizlilikler sayfasındaki tüm alanlara erişim verir:
+Tek kiracılı ve çok kiracılı uygulamalarda sertifikaları ve istemci sırlarını güncelleştirme yeteneği. Başvuru kayıt sertifikaları & sırlar sayfasındaki tüm alanlara erişim verir:
 
-![Bu izin, uygulama kayıt sertifikalarına & gizli dizi sayfasına erişim verir](./media/roles-custom-available-permissions/app-registration-secrets.png)
+![Bu izin, uygulama kayıt sertifikaları & sırlar sayfasına erişim izni verir](./media/roles-custom-available-permissions/app-registration-secrets.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/kimlik bilgileri/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>microsoft.directory/applications.myOrganization/credentials/update
 
-Yalnızca tek dizin uygulamaları için Microsoft. Directory/uygulamalar/kimlik bilgileri/güncelleştirme ile aynı izinleri verir.
+Microsoft.directory/applications/credentials/update ile aynı izinleri verir, ancak yalnızca tek dizin uygulamaları için.
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/uygulamalar/sahipler/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
-Tek kiracılı ve çok kiracılı üzerinde Owner özelliğini güncelleştirme özelliği. Uygulama kayıt sahipleri sayfasındaki tüm alanlara erişim izni verir:
+Tek kiracı ve çok kiracıüzerinde sahibi mülkiyet güncelleştirme yeteneği. Başvuru kayıt sahipleri sayfasındaki tüm alanlara erişim izni verir:
 
-![Bu izinler, uygulama kayıt sahipleri sayfasına erişim verir](./media/roles-custom-available-permissions/app-registration-owners.png)
+![Bu izinler, uygulama kayıt sahipleri sayfasına erişim izni verir](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/sahipler/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>microsoft.directory/applications.myOrganization/owners/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/Owners/Update ile aynı izinleri verir.
+Microsoft.directory/applications/owners/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>Microsoft. Directory/uygulamalar/izinler/güncelleştirme
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft.directory/applications/permissions/update
 
-Temsilci izinleri, uygulama izinleri, yetkilendirilmiş istemci uygulamaları, gerekli izinler ve tek kiracılı ve çok kiracılı uygulamalarda izin özellikleri verme özelliği. İzin verme olanağı sağlamaz. Uygulama kaydı API 'SI izinlerinde tüm alanlara erişim verir ve bir API sayfası sunar:
+Devredilen izinleri, uygulama izinlerini, yetkili istemci uygulamalarını, gerekli izinleri güncelleştirme ve tek kiracılı ve çok kiracılı uygulamalarda onay özellikleri verme becerisi. İzin verme olanağı vermez. Uygulama kaydı API izinleri üzerindeki tüm alanlara erişim sağlar ve bir API sayfasını açığa çıkarır:
 
-![Bu izinler, uygulama kaydı API 'SI izinleri sayfasına erişim verir](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
+![Bu izinler, uygulama kaydı API izinleri sayfasına erişim izni verir](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
 
-![Bu izinler, bir API sayfasını açığa çıkarmak için uygulama kaydına erişim verir](./media/roles-custom-available-permissions/app-registration-expose-api.png)
+![Bu izinler, uygulama kaydına erişim izni verir ApI sayfasını göster](./media/roles-custom-available-permissions/app-registration-expose-api.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>Microsoft. Directory/Applications. Myorganleştirme/izinler/güncelleştirme
+#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 
-Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/Permissions/Update ile aynı izinleri verir.
+Microsoft.directory/applications/permissions/update ile aynı izinleri verir, ancak yalnızca tek kiracılı uygulamalar için.
 
 ## <a name="required-license-plan"></a>Gerekli lisans planı
 
@@ -169,5 +169,5 @@ Yalnızca tek kiracılı uygulamalar için Microsoft. Directory/Applications/Per
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal, Azure AD PowerShell ve Graph API](roles-create-custom.md) kullanarak özel roller oluşturun
+- [Azure portalı, Azure AD PowerShell ve Grafik API'sini](roles-create-custom.md) kullanarak özel roller oluşturun
 - [Özel bir rol için atamaları görüntüleme](roles-view-assignments.md)

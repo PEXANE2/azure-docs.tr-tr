@@ -1,76 +1,76 @@
 ---
-title: Yeni bir Azure ilkesinin etkisini değerlendirin
-description: Azure ortamınıza yeni bir ilke tanımı oluştururken izlenecek işlemi anlayın.
+title: Yeni bir Azure ilkesinin etkisini değerlendirme
+description: Azure ortamınıza yeni bir ilke tanımı sunarken izlenmeniz gereken işlemi anlayın.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74463514"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Yeni bir Azure ilkesinin etkisini değerlendirin
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Yeni bir Azure ilkesinin etkisini değerlendirme
 
-Azure Ilkesi, Azure kaynaklarınızı iş standartlarına göre yönetmek ve uyumluluk gereksinimlerini karşılamak için güçlü bir araçtır. Kişiler, süreçler veya işlem hatları kaynakları oluştururken veya güncelleştirdiklerinde, Azure Ilkesi isteği inceler. İlke tanımı efekti [append](./effects.md#deny) veya [Deployifnotexists](./effects.md#deployifnotexists)olduğunda, ilke isteği değiştirir veya buna ekler. İlke tanımı efekti [Denetim](./effects.md#audit) veya [Auditınotexists](./effects.md#auditifnotexists)olduğunda, ilke bir etkinlik günlüğü girişinin oluşturulmasına neden olur. İlke tanımı etkin [olduğunda, ilke, isteğin](./effects.md#deny)oluşturulmasını veya değişiklik işlemini engeller.
+Azure İlkesi, Azure kaynaklarınızı iş standartlarına göre yönetmek ve uyumluluk gereksinimlerini karşılamak için güçlü bir araçtır. İnsanlar, işlemler veya ardışık işler kaynakları oluşturduğunda veya güncelleştirdiğinde, Azure İlkesi isteği gözden geçirir. İlke tanımı efekti [Append](./effects.md#deny) veya [DeployIfNotExists](./effects.md#deployifnotexists)olduğunda, İlke isteği değiştirir veya ekler. İlke tanımı efekti [Denetim](./effects.md#audit) veya [AuditIfNotExists](./effects.md#auditifnotexists)olduğunda, İlke bir Etkinlik günlüğü girişinin oluşturulmasına neden olur. Ve ilke tanımı etkisi [Reddet](./effects.md#deny)olduğunda, İlke isteği oluşturma veya değiştirme durur.
 
-Bu sonuçlar, ilkenin doğru şekilde tanımlandığını bildiğiniz durumlarda tam olarak istenen şekilde yapılır. Bununla birlikte, yeni bir ilkenin, çalışmayı değiştirmesine veya engellemeye izin vermeden önce beklendiği gibi çalıştığını doğrulamak önemlidir. Doğrulama yalnızca amaçlanan kaynakların uyumsuz olarak belirlendiğinden ve sonuçlarda yanlış bir şekilde ( _yanlış pozitif_olarak bilinirdi) emin olunması gerekir.
+Bu sonuçlar, ilkenin doğru tanımlandığını bildiğinizde tam olarak istenilen sonuçlardır. Ancak, yeni bir ilkenin çalışmasını değiştirmesine veya engellemesine izin vermeden önce beklendiği gibi doğrulanması önemlidir. Doğrulama, yalnızca amaçlanan kaynakların uyumsuz olarak belirlendiği ve uyumlu kaynakların sonuçlara yanlış olarak dahil edilmemesini _(yanlış pozitif_olarak bilinir) sağlamalıdır.
 
-Yeni bir ilke tanımını doğrulamak için önerilen yaklaşım aşağıdaki adımları takip eden bir yaklaşımdır:
+Yeni bir ilke tanımını doğrulamak için önerilen yaklaşım aşağıdaki adımları izleyerek yapılır:
 
-- İlkenize sıkı bir şekilde tanımlama
-- Mevcut kaynaklarınızı denetleyin
+- İlkenizi sıkı bir şekilde tanımlayın
+- Mevcut kaynaklarınızı denetle
 - Yeni veya güncelleştirilmiş kaynak isteklerini denetleme
-- İlkenizi kaynaklara dağıtma
+- İlkenizi kaynaklara dağıtın
 - Sürekli izleme
 
-## <a name="tightly-define-your-policy"></a>İlkenize sıkı bir şekilde tanımlama
+## <a name="tightly-define-your-policy"></a>İlkenizi sıkı bir şekilde tanımlayın
 
-İş ilkesinin bir ilke tanımı olarak nasıl uygulandığını ve diğer Azure hizmetleriyle Azure kaynakları arasındaki ilişkiyi anlamak önemlidir. Bu adım, [Gereksinimleri tanımlayarak](../tutorials/create-custom-policy-definition.md#identify-requirements) ve [kaynak özellikleri belirlenirken](../tutorials/create-custom-policy-definition.md#determine-resource-properties)gerçekleştirilir.
-Ancak, iş ilkenizin dar tanımıyla daha fazla bilgi almak da önemlidir. İlke durumlarınızın "tüm sanal makineler..." olması gerekir mi? HDInsight veya AKS gibi VM 'Leri kullanan diğer Azure hizmetleriyle ilgili ne olacak? Bir ilke tanımlarken, bu ilkenin diğer hizmetler tarafından kullanılan kaynakları nasıl etkilediğini dikkate almalısınız.
+İş ilkesinin bir ilke tanımı olarak nasıl uygulandığını ve Azure kaynaklarının diğer Azure hizmetleriyle ilişkisini anlamak önemlidir. Bu adım gereksinimleri [tanımlayarak](../tutorials/create-custom-policy-definition.md#identify-requirements) ve [kaynak özelliklerini belirleyerek](../tutorials/create-custom-policy-definition.md#determine-resource-properties)gerçekleştirilir.
+Ancak iş politikanızın dar tanımının ötesini de görmek önemlidir. Politikanız örneğin "Tüm Sanal Makineler in..."bir durum ifade ediyor mu? HDInsight veya AKS gibi VM'lerden yararlanan diğer Azure hizmetleri ne olacak? Bir ilke tanımlarken, bu ilkenin diğer hizmetler tarafından kullanılan kaynakları nasıl etkilediğini göz önünde bulundurmalıyız.
 
-Bu nedenle, ilke tanımlarınız sıkı bir şekilde tanımlanmalıdır ve kaynaklara ve mümkün olduğunca uyumluluk için değerlendirmeniz gereken özelliklere odaklanmalıdır.
+Bu nedenle, ilke tanımlarınız mümkün olduğunca sıkı bir şekilde tanımlanmalı ve uyumluluk için değerlendirmeniz gereken kaynaklara ve özelliklere odaklanmalıdır.
 
-## <a name="audit-existing-resources"></a>Mevcut kaynakları denetleme
+## <a name="audit-existing-resources"></a>Varolan kaynakları denetleme
 
-Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode)
-_devre dışı_ (donotenzorlamalı) kullanın. [](./effects.md)
+Yeni ilke tanımınızla yeni veya güncelleştirilmiş kaynakları yönetmeyi aramadan önce, test kaynak grubu gibi varolan kaynakların sınırlı bir alt kümesini nasıl değerlendirdığını görmek en iyisidir. Etkinverme veya etkinlik günlüğü girişleri oluşturulmasını önlemek [effect](./effects.md) için ilke atamanızda_Devre Dışı bırakılan_ [zorlama modunu](./assignment-structure.md#enforcement-mode)
+(DoNotEnforce) kullanın.
 
-Bu adım, iş akışını etkilemeden mevcut kaynaklardaki yeni ilkenin uyumluluk sonuçlarını değerlendirmek için bir şans sağlar. Uyumlu olmayan bir kaynağın uyumsuz (_yanlış pozitif_) olarak işaretlenip işaretlenmediğini ve uyumlu olmadığını düşündüğünüz tüm kaynakların doğru şekilde işaretlendiğinden emin olun.
-Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, tüm mevcut kaynaklarla değerlendirmeyi yavaş genişletin.
+Bu adım, iş akışını etkilemeden varolan kaynaklara ilişkin yeni ilkenin uyumluluk sonuçlarını değerlendirme şansı verir. Uyumlu kaynakların uyumlu olmayan _(yanlış pozitif)_ olarak işaretlenilip işaretlenilmediğini ve uyumlu olmamasını beklediğiniz tüm kaynakların doğru şekilde işaretlendiğini denetleyin.
+Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, değerlendirmeyi yavaş yavaş varolan tüm kaynaklara genişletin.
 
-Mevcut kaynakları bu şekilde değerlendirmek, yeni ilkenin tam uygulanmasıyla uyumlu olmayan kaynakları düzeltmeye yönelik bir fırsat de sağlar. Bu temizleme el ile veya ilke tanımı efekti _Deployifnotexists_ise bir [Düzeltme görevi](../how-to/remediate-resources.md) aracılığıyla yapılabilir.
+Varolan kaynakların bu şekilde değerlendirilmesi, yeni ilkeğin tam olarak uygulanmasından önce uyumlu olmayan kaynakları düzeltmek için de bir fırsat sağlar. İlke tanımı efekti _DeployIfNotExists_ise bu temizleme el ile veya bir [düzeltme görevi](../how-to/remediate-resources.md) aracılığıyla yapılabilir.
 
 ## <a name="audit-new-or-updated-resources"></a>Yeni veya güncelleştirilmiş kaynakları denetleme
 
-Yeni ilke tanımınızın, mevcut kaynaklar üzerinde doğru şekilde raporlanmasını doğrulandıktan sonra, kaynakların oluşturulma veya güncelleştirilme zamanı sırasında ilkenin etkisini göz atalım. İlke tanımı efekt parametrelemeyi destekliyorsa, [Denetim](./effects.md#audit)' i kullanın. Bu yapılandırma, yeni ilke tanımının mevcut iş veya istekleri etkilemeden uyumsuz bir kaynak için Azure etkinlik günlüğünde bir girişi tetikleyip tetiklenmediğini görmek için kaynakların oluşturulmasını ve güncelleştirilmesini izlemenizi sağlar.
+Yeni ilke tanımınızın varolan kaynaklar üzerinde doğru şekilde raporladığını doğruladıktan sonra, kaynaklar oluşturulduğunda veya güncelleştirildiğinde ipolitikasın etkisine bakma zamanı dır. İlke tanımı etki parametresini destekliyorsa, [Denetim'i](./effects.md#audit)kullanın. Bu yapılandırma, yeni ilke tanımının varolan çalışmaları veya istekleri etkilemeden uyumlu olmayan bir kaynak için Azure Etkinliği günlüğünde bir girişi tetikleyip tetiklediğini görmek için kaynakların oluşturulmasını ve güncellenmesini izlemenize olanak tanır.
 
-_Denetim_ efektinin beklendiğinde doğru tetiklendiğini görmek için, her iki güncelleştirme de ilke tanımınızda eşleşen yeni kaynaklar oluşturmanız önerilir. _Denetim_ efektini tetikleyen yeni ilke tanımından etkilenmemesi gereken kaynak istekleri için bir gevdekte olun.
-Bu etkilenen kaynaklar, bir _Hatalı pozitif_ sonuç örneğidir ve tam uygulamadan önce ilke tanımında düzeltilmelidir.
+_Denetim_ etkisinin beklendiği zaman doğru şekilde tetiklendiğini görmek için hem güncelleştirmeniz hem de ilke tanımınızla eşleşen yeni kaynaklar oluşturmanız önerilir. _Denetim_ efektini tetikleyen yeni ilke tanımından etkilenmemesi gereken kaynak isteklerini gözetleyin.
+Bu etkilenen kaynaklar yanlış _pozitif_ başka bir örnektir ve tam uygulamadan önce ilke tanımında sabit olmalıdır.
 
-Bu testin bu aşamasında ilke tanımı değiştirilirse, var olan kaynakların denetimi ile birlikte doğrulama işleminin başlaması önerilir. Yeni veya güncelleştirilmiş kaynaklardaki _Hatalı pozitif_ bir değer için ilke tanımında yapılan değişikliğin, var olan kaynakları üzerinde de etkisi olabilir.
+İlke tanımının sınamanın bu aşamasında değiştirilmesi durumunda, doğrulama işleminin varolan kaynakların denetlenmesiyle birlikte başlatılması önerilir. Yeni veya güncelleştirilmiş kaynaklar üzerinde _yanlış_ pozitif için ilke tanımında yapılan bir değişikliğin varolan kaynaklar üzerinde de etkisi olabilir.
 
-## <a name="deploy-your-policy-to-resources"></a>İlkenizi kaynaklara dağıtma
+## <a name="deploy-your-policy-to-resources"></a>İlkenizi kaynaklara dağıtın
 
-Yeni ilke tanımınızın doğrulanmasını hem var olan kaynaklarla hem de yeni veya güncelleştirilmiş kaynak istekleriyle tamamladıktan sonra, ilkeyi uygulama işlemine başlarsınız. Yeni ilke tanımı için, ilk olarak kaynak grubu gibi tüm kaynakların bir alt kümesine, ilke atamasını oluşturmanız önerilir. İlk dağıtımı doğruladıktan sonra, ilke kapsamını abonelikler ve yönetim grupları gibi daha geniş ve daha geniş düzeyler olarak genişletin. Bu genişleme, atama kaldırılarak ve yeni ilke tanımınızda kapsanacak kaynakların tam kapsamına atanana kadar hedef kapsamlardan yeni bir tane oluşturularak elde edilir.
+Yeni ilke tanımınızın doğrulanmasını hem varolan kaynaklarla hem de yeni veya güncelleştirilmiş kaynak istekleriyle tamamladıktan sonra, ilkeyi uygulama işlemine başlarsınız. Yeni ilke tanımı için ilke atamasının önce kaynak grubu gibi tüm kaynakların bir alt kümesine oluşturulması önerilir. İlk dağıtımı doğruladıktan sonra, ilkenin kapsamını abonelikler ve yönetim grupları gibi daha geniş ve daha geniş düzeylere genişletin. Bu genişletme, atamakaldırılarak ve yeni ilke tanımınız tarafından karşılanması amaçlanan kaynakların tam kapsamına atanana kadar hedef kapsamlarda yeni bir atama oluşturularak elde edilir.
 
-Dağıtım sırasında, yeni ilke tanımınızdan muaf tutulması gereken kaynaklar bulunursa, bunları aşağıdaki yollarla ele alır:
+Kullanıma alma sırasında, yeni ilke tanımınızdan muaf olması gereken kaynaklar bulunursa, bunları aşağıdaki yollardan biriyle ele alın:
 
-- İstenmeyen etkileri azaltmak için ilke tanımını daha açık olacak şekilde güncelleştirin
-- İlke atamasının kapsamını değiştirme (yeni bir atamayı kaldırarak ve oluşturarak)
-- Kaynak grubunu ilke atamasının dışlama listesine ekleyin
+- İstenmeyen etkiyi azaltmak için ilke tanımını daha açık olması için güncelleştirme
+- İlke atamasının kapsamını değiştirme (yeni bir atamayı kaldırıp oluşturarak)
+- İlke ataması için kaynak grubunu dışlama listesine ekleme
 
-Kapsamda herhangi bir değişiklik olmadığından emin olmak için kapsamdaki tüm değişiklikler (düzey veya Dışlamalar) tam olarak doğrulanıp, güvenlik ve uyumluluk kuruluşlarıyla birlikte verilmelidir.
+Kapsamdaki herhangi bir değişiklik (düzey veya hariç tutmalar) kapsama alanında boşluk olmadığından emin olmak için güvenlik ve uyumluluk kuruluşlarınızla tam olarak doğrulanmalı ve iletilmelidir.
 
-## <a name="monitor-your-policy-and-compliance"></a>İlkenizi ve uyumluluğunu izleyin
+## <a name="monitor-your-policy-and-compliance"></a>Politikanızı ve uyumluluğunuzu izleyin
 
-İlke tanımınızı uygulamak ve atamak son adım değildir. Kaynakların [Uyumluluk](../how-to/get-compliance-data.md) düzeyini yeni ilke tanımınıza sürekli olarak izleyin ve uyumlu olmayan cihazlar tanımlandığında Ilgili [Azure izleyici uyarılarını ve bildirimlerini](../../../azure-monitor/platform/alerts-overview.md) ayarlayın. İlke tanımının iş ilkesi ve uyumluluk ihtiyaçlarını karşıladığını doğrulamak için, ilke tanımını ve ilgili atamaları zamanlanan bir şekilde değerlendirmek de önerilir. Artık gerekmiyorsa ilkelerin kaldırılması gerekir. Ayrıca, temel alınan Azure kaynakları geliştikçe ve yeni özellikler ve yetenekler eklerken ilkelerin zaman zaman güncel olarak güncelleştirilmesi gerekir.
+İlke tanımınızı uygulamak ve atamak son adım değildir. Yeni ilke tanımınıza uygun kaynakların [uyumluluk](../how-to/get-compliance-data.md) düzeyini sürekli olarak izleyin ve uyumlu olmayan aygıtlar tanımlandığında uygun [Azure Monitor uyarıları ve bildirimleri](../../../azure-monitor/platform/alerts-overview.md) ayarlayın. Ayrıca, ilke tanımının iş ilkesi ve uyumluluk gereksinimlerini karşıladığını doğrulamak için ilke tanımının ve ilgili atamaların zamanlanmış olarak değerlendirilmesi önerilir. Artık gerekmese ilkeler kaldırılmalıdır. Temel Azure kaynakları geliştikçe ve yeni özellikler ve özellikler ekledikçe, ilkelerin de zaman zaman güncelleştirilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İlke tanımı yapısı](./definition-structure.md)hakkında bilgi edinin.
 - [İlke atama yapısı](./assignment-structure.md)hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
-- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.
+- [İlkeleri programlı bir şekilde nasıl oluşturlayacağımı](../how-to/programmatically-create.md)anlayın.
+- Uyumluluk verilerini nasıl [alacağınızı](../how-to/get-compliance-data.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteriz öğrenin.
+- [Azure yönetim gruplarıyla kaynaklarınızı düzenleyin](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu gözden geçirin.

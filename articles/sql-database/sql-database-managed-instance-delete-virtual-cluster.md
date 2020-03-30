@@ -1,6 +1,6 @@
 ---
-title: Yönetilen örneği sildikten sonra bir alt ağı silme
-description: Azure SQL veritabanı yönetilen örneğini sildikten sonra Azure sanal ağını silme hakkında bilgi edinin.
+title: Yönetilen bir örneği sildikten sonra bir alt ağı silme
+description: Azure SQL Veritabanı yönetilen örneğini sildikten sonra Azure sanal ağını nasıl silebilirsiniz öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.custom: seo-lt-2019
@@ -11,47 +11,47 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: 496d67a73207fd17182c31c5adad25c1fbe60c4f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820458"
 ---
-# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğini sildikten sonra bir alt ağı silme
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı yönetilen örneğini sildikten sonra bir alt ağı silme
 
-Bu makalede, içinde bulunan son Azure SQL veritabanı yönetilen örneğini sildikten sonra bir alt ağın el ile nasıl silineceği hakkında yönergeler verilmektedir.
+Bu makalede, içinde bulunan son Azure SQL Veritabanı yönetilen örneği sildikten sonra bir alt ağ el ile nasıl silinileceğine ilişkin yönergeler sağlanmaktadır.
 
-Yönetilen örnekler [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)dağıtılır. Her sanal küme bir alt ağla ilişkilendirilir. Aynı alt ağda yönetilen örnekleri daha hızlı bir şekilde oluşturmanıza olanak tanımak için sanal küme, son örnek silinmeden sonra 12 saat sonra tasarıma devam ediyor. Boş bir sanal kümenin tutulması ücretsizdir. Bu süre boyunca sanal kümeye ilişkilendirilmiş alt ağa silinemez.
+Yönetilen örnekler [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)dağıtılır. Her sanal küme bir alt ağile ilişkilidir. Sanal küme, aynı alt ağda daha hızlı yönetilen örnekler oluşturmanıza olanak sağlamak için son örnek silme işleminden sonra 12 saat boyunca tasarım gereği devam eder. Boş bir sanal küme tutmak için hiçbir ücret yoktur. Bu süre boyunca sanal kümeye ilişkilendirilmiş alt ağa silinemez.
 
-12 saat beklemek istemiyorsanız ve sanal kümeyi ve alt ağını daha erken silmeyi tercih ediyorsanız, bunu el ile yapabilirsiniz. Azure portal veya Sanal kümeler API 'sini kullanarak sanal kümeyi el ile silin.
+12 saat beklemek istemiyorsanız ve sanal kümeyi ve alt kümesini daha erken silmeyi tercih ederseniz, bunu el ile yapabilirsiniz. Azure portalını veya sanal kümeler API'sini kullanarak sanal kümeyi el ile silin.
 
 > [!IMPORTANT]
-> - Silme işleminin başarılı olabilmesi için sanal kümenin yönetilen örnek içermemesi gerekir. 
-> - Sanal bir kümeyi silme işlemi, yaklaşık 1,5 saat boyunca uzun süredir çalışan bir işlemdir (Bu işlem, sanal kümenin portalda hala görülebilmesi için bkz. sanal küme silme zamanı için [yönetilen örnek yönetimi işlemleri](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) ) işlem tamamlandı.
+> - Sanal küme, silmeişleminin başarılı olması için yönetilen örnekler içermemelidir. 
+> - Sanal kümenin silinmesi, sanal kümenin bu işlem tamamlanana kadar portalda görünmeye devam edeceği yaklaşık 1,5 saat süren uzun süren bir işlemdir (bkz. güncel sanal küme silme süresi için [Yönetilen örnek yönetim işlemleri).](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)
 
-## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Azure portal sanal kümeyi silme
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Azure portalından sanal küme silme
 
-Azure portal kullanarak bir sanal kümeyi silmek için sanal küme kaynaklarını arayın.
+Azure portalını kullanarak sanal kümeyi silmek için sanal küme kaynaklarını arayın.
 
-![Arama kutusuyla vurgulanan Azure portal ekran görüntüsü](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Arama kutusu vurgulanmış Azure portalının ekran görüntüsü](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Silmek istediğiniz sanal kümeyi bulduktan sonra bu kaynağı seçin ve **Sil**' i seçin. Sanal küme silmeyi onaylamanız istenir.
+Silmek istediğiniz sanal kümeyi bulmadıktan sonra bu kaynağı seçin ve **Sil'i**seçin. Sanal küme silme işlemini onaylamanız istenir.
 
-![Azure portal Sanal kümeler panosu, silme seçeneği vurgulanmış şekilde ekran görüntüsü](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Azure portalı Sanal kümeler panosunun ekran görüntüsü, Silme seçeneği vurgulanır](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Azure portal bildirimler, sanal kümeyi silme isteğinin başarıyla gönderildiğini belirten bir onay gösterecektir. Silme işleminin kendisi, sanal kümenin portalda hala görünebileceği yaklaşık 1,5 saat boyunca sona acaktır. İşlem tamamlandıktan sonra, sanal küme artık görünür olmayacaktır ve bununla ilişkili alt ağ yeniden kullanım için serbest bırakılır.
+Azure portalı bildirimleri, sanal kümeyi silme isteğinin başarıyla gönderildiğine dair bir onay gösterir. Silme işleminin kendisi, sanal kümenin portalda görünmeye devam edeceği yaklaşık 1,5 saat sürer. İşlem tamamlandıktan sonra, sanal küme artık görünmez ve onunla ilişkili alt ağ yeniden kullanılmak üzere serbest bırakılacaktır.
 
 > [!TIP]
-> Sanal kümede gösterilen yönetilen örnek yoksa ve sanal kümeyi silemiyorsa devam eden bir devam eden örnek dağıtımına sahip olduğunuzdan emin olun. Bu, başlatılan ve iptal edilen dağıtımları devam etmektedir. Bunun nedeni, bu işlemlerin hala silme işleminden sonra sanal küme kilitlemeyi kullanacaktır. Örnek dağıtılan kaynak grubunun dağıtımlar sekmesini gözden geçirme işlemi, sürmekte olan dağıtımları gösterir. Bu durumda, dağıtımın tamamlanmasını bekleyin, yönetilen örneği ve sonra sanal kümeyi silin.
+> Sanal kümede gösterilen yönetilen örnek yoksa ve sanal kümeyi silemiyorsanız, devam eden bir örnek dağıtımının devam etmediğinizden emin olun. Buna, hala devam etmekte olan başlatılan ve iptal edilen dağıtımlar dahildir. Bunun nedeni, bu işlemlerin silme işleminden kilitleyen sanal kümeyi kullanmaya devam edecektir. Örneğin dağıtılan kaynak grubunun Dağıtımlar sekmesini gözden geçirmek, devam eden dağıtımları gösterir. Bu durumda, dağıtımın tamamlanmasını bekleyin, yönetilen örneği ve ardından sanal kümeyi silin.
 
-## <a name="delete-virtual-cluster-by-using-the-api"></a>Sanal kümeyi API kullanarak silme
+## <a name="delete-virtual-cluster-by-using-the-api"></a>API'yi kullanarak sanal kümeyi silme
 
-Bir sanal kümeyi API aracılığıyla silmek için, [Sanal kümeler silme yönteminde](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)belirtilen URI parametrelerini kullanın.
+API üzerinden sanal kümeyi silmek [için, sanal kümesilme yönteminde](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)belirtilen URI parametrelerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel bakış için bkz. [yönetilen örnek nedir?](sql-database-managed-instance.md).
-- [Yönetilen örnekteki bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md)hakkında bilgi edinin.
-- [Yönetilen örnek için var olan bir sanal ağı değiştirme](sql-database-managed-instance-configure-vnet-subnet.md)hakkında bilgi edinin.
-- Bir sanal ağ oluşturmayı, yönetilen bir örnek oluşturmayı ve bir veritabanını bir veritabanı yedeklemesinden geri yüklemeyi gösteren bir öğretici için bkz. [Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-managed-instance-get-started.md).
-- DNS sorunları için bkz. [Özel BIR DNS yapılandırma](sql-database-managed-instance-custom-dns.md).
+- Genel bakış için [bkz.](sql-database-managed-instance.md)
+- Yönetilen [Örnek'te bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md)hakkında bilgi edinin.
+- [Yönetilen Örnek için varolan bir sanal ağı](sql-database-managed-instance-configure-vnet-subnet.md)nasıl değiştirbekleyeceğizi öğrenin.
+- Sanal ağ oluşturmayı, Yönetilen Örnek'i nasıl oluşturup veritabanı yedeklemesinden veritabanını geri yükleyin, [bkz.](sql-database-managed-instance-get-started.md)
+- DNS sorunları için [bkz.](sql-database-managed-instance-custom-dns.md)

@@ -9,115 +9,115 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128620"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
-- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- Sanal makine ölçek kümeleri şu anda özel ana bilgisayarlarda desteklenmez.
 
 ## <a name="benefits"></a>Avantajlar 
 
-Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
+Ana bilgisayarın tamamının rezerve edilebilenler aşağıdaki avantajları sağlar:
 
--   Fiziksel sunucu düzeyinde donanım yalıtımı. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır.
--   Azure platformu tarafından başlatılan bakım olayları üzerinde denetim. Bakım olaylarının çoğunluğu sanal makinelerinizde hiç etkilenmeyeceğinden, duraklamanın her saniyesi bir etkiye sahip olabileceği bazı hassas iş yükleri vardır. Adanmış konaklar sayesinde hizmetinize etkisini azaltmak için bir bakım penceresine geçebilirsiniz.
--   Azure hibrit avantajı ile, Windows ve SQL için kendi lisanslarınızı Azure 'a getirebilirsiniz. Hibrit avantajlarının kullanılması size ek avantajlar sağlar. Daha fazla bilgi için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
-
-## <a name="groups-hosts-and-vms"></a>Gruplar, konaklar ve VM 'Ler  
-
-![Adanmış konaklar için yeni kaynakların görünümü.](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
-
-**Konak grubu** , adanmış Konakları koleksiyonunu temsil eden bir kaynaktır. Bir bölge ve kullanılabilirlik bölgesinde bir konak grubu oluşturur ve bu gruba ana bilgisayar ekleyebilirsiniz.
-
-Bir **konak** , bir Azure veri merkezinde fiziksel sunucuyla eşlenmiş bir kaynaktır. Fiziksel sunucu, ana bilgisayar oluşturulduğunda ayrılır. Konak grubu içinde bir konak oluşturulur. Bir konakta hangi VM boyutlarının oluşturulabileceği bir SKU vardır. Her ana bilgisayar, aynı boyut serisinde oldukları sürece farklı boyutlarda birden çok VM barındırırlar.
-
-Azure 'da bir VM oluştururken, VM 'niz için hangi adanmış konağın kullanılacağını seçebilirsiniz. Konaklarınıza hangi VM 'Lerin yerleştirildiğini tam denetime sahip olursunuz.
+-   Fiziksel sunucu düzeyinde donanım yalıtımı. Ana bilgisayarlarınıza başka hiçbir VM yerleştirilmez. Özel ana bilgisayarlar aynı veri merkezlerinde dağıtılır ve aynı ağ ve altta yatan depolama altyapısını diğer, yalıtılmış olmayan ana bilgisayarlarla paylaşır.
+-   Azure platformu tarafından başlatılan bakım etkinlikleri üzerinde denetim. Bakım olaylarının çoğunun sanal makineleriniz üzerinde çok az veya hiç etkisi olmamasına neden olsa da, duraklamanın her saniyesinin bir etkisi olabileceği bazı hassas iş yükleri vardır. Özel ana bilgisayarlarla, hizmetinize olan etkisini azaltmak için bir bakım penceresini tercih edebilirsiniz.
+-   Azure karma avantajıyla, Windows ve SQL için kendi lisanslarınızı Azure'a getirebilirsiniz. Hibrit avantajları kullanmak size ek avantajlar sağlar. Daha fazla bilgi için Azure [Karma Avantajı'na](https://azure.microsoft.com/pricing/hybrid-benefit/)bakın.
 
 
-## <a name="high-availability-considerations"></a>Yüksek kullanılabilirlik konuları 
+## <a name="groups-hosts-and-vms"></a>Gruplar, ana bilgisayarlar ve VM'ler  
 
-Yüksek kullanılabilirlik için birden çok sanal makine dağıtmanız gerekir (en az 2). Azure ayrılmış Konakları sayesinde, hata yalıtımı sınırlarınızı şekillendirmek için altyapınızı sağlamak üzere çeşitli seçenekleriniz vardır.
+![Özel ana bilgisayarlar için yeni kaynakların görünümü.](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
-### <a name="use-availability-zones-for-fault-isolation"></a>Hata yalıtımı için Kullanılabilirlik Alanları kullanma
+**Ana bilgisayar grubu,** özel ana bilgisayarkoleksiyonunu temsil eden bir kaynaktır. Bir bölgede ve kullanılabilirlik bölgesinde bir ana bilgisayar grubu oluşturur ve ona ana bilgisayarlar eklersiniz.
 
-Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Tek bir kullanılabilirlik bölgesinde bir konak grubu oluşturulur. Oluşturulduktan sonra tüm konaklar bu bölgeye yerleştirilir. Bölgeler arasında yüksek kullanılabilirlik elde etmek için birden çok konak grubu oluşturmanız (her bölge için bir tane) ve konaklarınızı uygun şekilde yaymanız gerekir.
+**Ana bilgisayar,** Azure veri merkezindeki fiziksel bir sunucuya eşlenen bir kaynaktır. Ana bilgisayar oluşturulduğunda fiziksel sunucu ayrılır. Ana bilgisayar grubu içinde bir ana bilgisayar oluşturulur. Ana bilgisayarda hangi VM boyutlarının oluşturulabileceğini açıklayan bir SKU vardır. Her ana bilgisayar, aynı boyuttaki seriden oldukları sürece farklı boyutlarda birden fazla VM barındırabilir.
 
-Bir kullanılabilirlik bölgesine bir konak grubu atarsanız, bu konakta oluşturulan tüm VM 'Lerin aynı bölgede oluşturulması gerekir.
+Azure'da bir VM oluştururken, VM'iniz için hangi özel ana bilgisayarı kullanacağınızı seçebilirsiniz. Ev sahiplerinize hangi VM'lerin yerleştirildiği konusunda tam kontrole sahipsiniz.
 
-### <a name="use-fault-domains-for-fault-isolation"></a>Hata yalıtma için hata etki alanlarını kullanma
 
-Bir konak, belirli bir hata etki alanında oluşturulabilir. Bir ölçek kümesi veya kullanılabilirlik kümesindeki VM gibi, farklı hata etki alanlarında bulunan konaklar da veri merkezindeki farklı fiziksel raflara yerleştirilir. Bir konak grubu oluşturduğunuzda, hata etki alanı sayısını belirtmeniz gerekir. Konak grubu içinde konaklar oluştururken, her konak için hata etki alanı atarsınız. VM 'Ler herhangi bir hata etki alanı ataması gerektirmez.
+## <a name="high-availability-considerations"></a>Yüksek Kullanılabilirlik hususları 
 
-Hata etki alanları collocation ile aynı değildir. Aynı hata etki alanının iki ana bilgisayar için olması, birbirleriyle yakınlardır.
+Yüksek kullanılabilirlik için, birden çok VM dağıtmanız gerekir, birden çok ana bilgisayara yayılmış (en az 2). Azure Özel Ana Bilgisayar ları ile, hata yalıtım sınırlarınızı şekillendirmek için altyapınızı sağlamak için çeşitli seçenekleriniz vardır.
 
-Hata etki alanları konak grubunun kapsamına alınır. İki konak grubu arasında benzeşim önleme (farklı kullanılabilirlik bölgelerinde olmadıkları durumlar dışında) konusunda herhangi bir varsayım yapmayın.
+### <a name="use-availability-zones-for-fault-isolation"></a>Hata yalıtımı için Kullanılabilirlik Bölgelerini Kullanma
 
-Farklı hata etki alanlarına sahip konaklara dağıtılan VM 'Ler, hata yalıtımı korumasını artırmak için, birden çok depolama Damgalarında temel alınan yönetilen diskler hizmetlerine sahip olur.
+Kullanılabilirlik bölgeleri, Azure bölgesindeki benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Bir ana bilgisayar grubu tek bir kullanılabilirlik bölgesinde oluşturulur. Oluşturulduktan sonra, tüm ana bilgisayarlar bu bölgeye yerleştirilir. Bölgeler arasında yüksek kullanılabilirlik sağlamak için birden çok ana bilgisayar grubu (bölge başına bir tane) oluşturmanız ve ev sahiplerinizi buna göre yaymanız gerekir.
 
-### <a name="using-availability-zones-and-fault-domains"></a>Kullanılabilirlik Alanları ve hata etki alanlarını kullanma
+Bir kullanılabilirlik bölgesine bir ana bilgisayar grubu atarsanız, bu ana bilgisayarda oluşturulan tüm VM'lerin aynı bölgede oluşturulması gerekir.
 
-Daha da fazla hata yalıtımı elde etmek için her iki özelliği birlikte kullanabilirsiniz. Bu durumda, her konak grubu için ' de kullanılabilirlik alanı ve hata etki alanı sayısı ' nı belirtirsiniz, gruptaki konaklarınızın her birine bir hata etki alanı atayabilir ve VM 'lerinizin her birine bir kullanılabilirlik alanı atayabilirsiniz
+### <a name="use-fault-domains-for-fault-isolation"></a>Hata yalıtımı için Hata Etki Alanlarını Kullanma
 
-[Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) bulunan Kaynak Yöneticisi örnek şablonu, bir bölgedeki en yüksek dayanıklılık için Konakları yaymak üzere bölgeleri ve hata etki alanlarını kullanır.
+Ana bilgisayar belirli bir hata etki alanında oluşturulabilir. Bir ölçek kümesindeki VM veya kullanılabilirlik kümesinde olduğu gibi, farklı hata etki alanlarındaki ana bilgisayarlar da veri merkezindeki farklı fiziksel raflara yerleştirilir. Bir ana bilgisayar grubu oluşturduğunuzda, hata etki alanı sayısını belirtmeniz gerekir. Ana bilgisayar grubu içinde ana bilgisayar oluştururken, her ana bilgisayar için hata etki alanı atarsınız. VM'ler herhangi bir hata etki alanı ataması gerektirmez.
+
+Hata etki alanları, harmanlama ile aynı değildir. İki ana bilgisayar için aynı hata etki alanına sahip olmak, birbirlerine yakın oldukları anlamına gelmez.
+
+Hata etki alanları ana bilgisayar grubuna kapsamlıdır. İki ana bilgisayar grubu arasındaki yakınlık la ilgili herhangi bir varsayımda bulunmamalısınız (farklı kullanılabilirlik bölgelerinde olmadıkları sürece).
+
+Farklı hata etki alanları olan ana bilgisayarlara dağıtılan VM'ler, hata yalıtımı korumasını artırmak için altta yatan yönetilen disk hizmetleri birden çok depolama puluna sahip olacaktır.
+
+### <a name="using-availability-zones-and-fault-domains"></a>Kullanılabilirlik Bölgelerini ve Hata Etki Alanlarını Kullanma
+
+Daha fazla hata yalıtımı elde etmek için her iki özelliği de birlikte kullanabilirsiniz. Bu durumda, her ana bilgisayar grubu için kullanılabilirlik bölgesi ni ve hata etki alanı sayısını belirtecek, gruptaki her ana bilgisayarınız için bir hata etki alanı atayacak ve Her VM'lerinize bir kullanılabilirlik bölgesi atayacaksınız
+
+[Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) bulunan Kaynak Yöneticisi örnek şablonu, bir bölgede maksimum esneklik için ana bilgisayarları yaymak için bölgeleri ve fay etki alanlarını kullanır.
 
 ## <a name="maintenance-control"></a>Bakım denetimi
 
-Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güvenliği artırmak ve yeni özellikleri başlatmak için zaman zaman güncelleştirilebileceğini. Azure platformu, mümkün olduğunda platform bakımının etkilerini en aza indirmeye çalışır, ancak *bakım duyarlı* iş yükleri olan müşteriler VM 'nin dondurulmuş olması veya bakım için kesilmesi gereken birkaç saniye daha fazla zaman sayalamaz.
+Sanal makinelerinizi destekleyen altyapı bazen güvenilirliği, performansı, güvenliği artırmak ve yeni özellikleri başlatmak için güncellenebilir. Azure platformu mümkün olduğunda platform bakımının etkisini en aza indirmeye çalışır, ancak *bakıma duyarlı* iş yüklerine sahip müşteriler, VM'nin bakım için dondurulması veya kesilmesi gereken birkaç saniyeyi bile kaldıramaz.
 
-**Bakım denetimi** , müşterilere kendi adanmış konaklarında zamanlanan normal platform güncelleştirmelerini atlama seçeneği sağlar ve ardından bunu, 35 günlük bir pencere penceresinde tercih ettikleri zaman uygular.
+**Bakım Denetimi,** müşterilere özel ana bilgisayarlarında zamanlanan düzenli platform güncelleştirmelerini atlama ve ardından 35 günlük bir haddeleme penceresi içinde istedikleri anda uygulama seçeneği sunar.
 
 > [!NOTE]
->  Bakım denetimi şu anda genel önizlemededir. Daha fazla bilgi için bkz.  **[CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) veya [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)kullanarak bakım denetimiyle güncelleştirmeleri denetleme**.
+>  Bakım denetimi şu anda genel önizlemede. Daha fazla bilgi için ** [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) veya [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)kullanarak Bakım Denetimi ile Denetim güncelleştirmeleri'ne**bakın.
 
-## <a name="capacity-considerations"></a>Kapasite konuları
+## <a name="capacity-considerations"></a>Kapasiteye ilişkin önemli noktalar
 
-Adanmış bir ana bilgisayar sağlandıktan sonra Azure bu uygulamayı fiziksel sunucuya atar. Bu, sanal makinenizin sağlanması gerektiğinde kapasitenin kullanılabilirliğini garanti eder. Azure, ana bilgisayarınız için fiziksel bir sunucu seçmek üzere bölgedeki (veya bölgedeki) tüm kapasiteyi kullanır. Ayrıca, müşterilerin küme içindeki boş alan tükenmeden ayrılmış ana bilgisayar parmak izini büyümesi bekleneceği anlamına gelir.
+Özel bir ana bilgisayar sağlandıktan sonra, Azure bu bilgisayarı fiziksel sunucuya atar. Bu, VM'nizi sağlamanız gerektiğinde kapasitenin kullanılabilirliğini garanti eder. Azure, ana bilgisayarınız için fiziksel bir sunucu seçmek için bölgedeki (veya bölgedeki) tüm kapasiteyi kullanır. Bu aynı zamanda, müşterilerin kümede yer kalma endişesi olmadan özel ana bilgisayar ayak izlerini büyütmeyi bekleyebileceği anlamına gelir.
 
 ## <a name="quotas"></a>Kotalar
 
-Bölge başına adanmış konaklar için 3000 vCPU varsayılan kota sınırı vardır. Ancak dağıtabileceğiniz ana bilgisayar sayısı ayrıca konak için kullanılan VM boyutu ailesinin kotasıyla sınırlıdır. Örneğin, **Kullandıkça Öde** aboneliğine yalnızca, Doğu ABD bölgesinde Dsv3 boyut serisi için kullanılabilen 10 vCPU kotası olabilir. Bu durumda, adanmış bir konak dağıtabilmeniz için en az 64 vCPU 'ya bir kota artışı istemeniz gerekir. Gerekirse bir istek vermek için sağ üst köşedeki **artış iste** düğmesini seçin.
+Bölge başına ayrılmış ana bilgisayarlar için 3000 vCPUs varsayılan kota sınırı vardır. Ancak, dağıtabileceğiniz ana bilgisayar sayısı, ana bilgisayar için kullanılan VM boyutu ailesi için kullanılan kotayla da sınırlıdır. Örneğin, bir **Pay-as-you-go** aboneliği, Doğu ABD bölgesinde Dsv3 boyutu serisi için yalnızca 10 vCPUs kotası kullanılabilir olabilir. Bu durumda, özel bir ana bilgisayar dağıtmak için önce en az 64 vCPUs için bir kota artışı talep etmek gerekir. Gerekirse istekte bulunmak için sağ üst köşedeki **İstek artır** düğmesini seçin.
 
-![Portalda kullanım ve Kotalar sayfasının ekran görüntüsü](./media/virtual-machines-common-dedicated-hosts/quotas.png)
+![Portaldaki kullanım ve kotalar sayfasının ekran görüntüsü](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-Daha fazla bilgi için bkz. [sanal makine vCPU kotaları](/azure/virtual-machines/windows/quotas).
+Daha fazla bilgi için [Sanal makine vCPU kotalarına](/azure/virtual-machines/windows/quotas)bakın.
 
-Ücretsiz deneme ve MSDN aboneliklerinin Azure ayrılmış konakları için kotası yoktur.
+Ücretsiz deneme sürümü ve MSDN aboneliklerinin Azure Özel Ana Bilgisayarlar için kotası yoktur.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Kullanıcılar, kaç VM dağıtıldığını göz önüne alarak adanmış ana bilgisayar başına ücretlendirilir. Aylık deyiminizde, yeni bir faturalanabilir kaynak türü olan Konakları görürsünüz. Adanmış bir konaktaki VM 'Ler hala deyiminizde gösterilmeye devam eder, ancak 0 ' ın bir fiyatını taşır.
+Kullanıcılar, kaç VM dağıtıldıkolursa olsun, ilgili ana bilgisayar başına ücretlendirilir. Aylık ekstrenizde, faturalandırılabilir yeni bir kaynak türü göreceksiniz. Özel bir ana bilgisayardaki VM'ler ekstrenizde gösterilmeye devam edecektir, ancak 0 fiyat taşır.
 
-Konak fiyatı, VM ailesi, türü (donanım boyutu) ve bölge temel alınarak ayarlanır. Ana bilgisayar fiyatı, konakta desteklenen en büyük VM boyutuna bağlıdır.
+Ana bilgisayar fiyatı VM ailesine, türüne (donanım boyutuna) ve bölgeye göre ayarlanır. Ana bilgisayar fiyatı, ana bilgisayarda desteklenen en büyük VM boyutuna göredir.
 
-Yazılım lisanslama, depolama ve ağ kullanımı, konaktan ve VM 'lerden ayrı olarak faturalandırılır. Bu faturalanabilir öğelerde değişiklik yapılmaz.
+Yazılım lisanslama, depolama ve ağ kullanımı ana bilgisayar ve VM'lerden ayrı olarak faturalandırılır. Faturalandırılabilir maddelerde değişiklik yoktur.
 
-Daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
+Daha fazla bilgi için Azure [Özel Ana Bilgisayar fiyatlandırması'na](https://aka.ms/ADHPricing)bakın.
 
-Ayrıca, [ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)maliyetlerle tasarruf edebilirsiniz.
+[Ayrıca, Ayrılmış](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)Azure Özel Ana Bilgisayar Ları Örneği ile maliyetlerden de tasarruf edebilirsiniz.
  
-## <a name="sizes-and-hardware-generations"></a>Boyutlar ve donanım oluşturmaları
+## <a name="sizes-and-hardware-generations"></a>Boyutlar ve donanım nesilleri
 
-Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü temsil eder. Aynı boyut serisinde olduğu sürece, tek bir konak içinde farklı boyutlardaki birden fazla VM 'yi karıştırabilirsiniz. 
+Bir SKU bir ana bilgisayar için tanımlanır ve VM boyutu serisini ve türünü temsil eder. Aynı boyuttaki seride oldukları sürece, farklı boyutlardaki birden çok VM'yi tek bir ana bilgisayar içinde karıştırabilirsiniz. 
 
-*Tür* , donanım oluşturma ' dır. Aynı VM serisine ait farklı donanım türleri farklı CPU satıcılarından ve farklı CPU nesilleri ve çekirdek sayısına sahip olacaktır. 
+*Türü* donanım üretimidir. Aynı VM serisi için farklı donanım türleri farklı CPU satıcılarından olacaktır ve farklı CPU nesilleri ve çekirdek sayısı na sahip olacaktır. 
 
-Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
-
-
-## <a name="host-life-cycle"></a>Ana bilgisayar yaşam döngüsü
+Boyutlar ve donanım türleri bölgeye göre değişir. Daha fazla bilgi edinmek için ana bilgisayar [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
 
-Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
+## <a name="host-life-cycle"></a>Ev sahibi yaşam döngüsü
 
-| Sistem durumu   | Açıklama       |
+
+Azure, ev sahiplerinizin sistem durumu durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
+
+| Sistem Durumu   | Açıklama       |
 |----------|----------------|
-| Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
-| Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |
-| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. `autoReplaceOnFailure` etkinleştirilirse sanal makineleriniz, sağlıklı donanıma karşı *hizmet* olarak çalışır. Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
-| Konak serbest bırakıldı  | Tüm sanal makineler konaktan kaldırıldı. Bu ana bilgisayar için artık bu konak için ücret alınmaz çünkü donanım, döndürme dışında bırakıldı.   |
+| Ana Bilgisayar Kullanılabilir     | Ev sahibinizle ilgili bilinen bir sorun yok.   |
+| Host Soruşturma Altında  | Ev sahibiyle bazı sorunlarımız var. Bu, Azure'un tanımlanan sorunun kapsamını ve kök nedenini tanımlamaya çalışması için gereken bir geçiş durumudur. Ana bilgisayarda çalışan sanal makineler etkilenebilir. |
+| Ev Sahibi Bekleyen Deallocate   | Azure, ana bilgisayarını sağlıklı bir duruma geri döndüremez ve sanal makinelerinizi bu ana bilgisayardan yeniden dağıtmanızı isteyemez. Etkinleştirilirse, `autoReplaceOnFailure` sanal makineleriniz sağlıklı donanıma *iyileşir.* Aksi takdirde, sanal makineniz başarısız olmak üzere olan bir ana bilgisayarda çalışıyor olabilir.|
+| Ana bilgisayar tahsis edildi  | Tüm sanal makineler ana bilgisayardan kaldırıldı. Donanım döndürme dışında çıkarıldığından beri artık bu ana bilgisayar için ücretlendirilmiyordunuz.   |
 

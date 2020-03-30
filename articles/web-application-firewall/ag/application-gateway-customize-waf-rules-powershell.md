@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak kuralları özelleştirme
+title: PowerShell'i kullanarak kuralları özelleştirin
 titleSuffix: Azure Web Application Firewall
-description: Bu makalede, PowerShell ile Application Gateway Web uygulaması güvenlik duvarı kurallarını özelleştirme hakkında bilgi sağlanır.
+description: Bu makalede, PowerShell ile Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı kurallarının nasıl özelleştirilene ilişkin bilgiler verilmektedir.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,29 +9,29 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048519"
 ---
-# <a name="customize-web-application-firewall-rules-using-powershell"></a>PowerShell kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>PowerShell kullanarak Web Uygulaması Güvenlik Duvarı kurallarını özelleştirin
 
-Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamaları için koruma sağlar. Bu korumalar, Open Web Application Security Project (OWASP) çekirdek kural kümesi (CCR) tarafından sağlanır. Bazı kurallar yanlış pozitif sonuçlar oluşmasına neden olabilir ve gerçek trafiği engelleyebilir. Bu nedenle, Application Gateway kural gruplarını ve kuralları özelleştirme yeteneği sağlar. Belirli kural grupları ve kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı liste grupları ve kuralları listesi](application-gateway-crs-rulegroups-rules.md).
+Azure Uygulama Ağ Geçidi Web Uygulaması Güvenlik Duvarı (WAF), web uygulamaları için koruma sağlar. Bu korumalar Açık Web Uygulama Güvenlik Projesi (OWASP) Temel Kural Kümesi (CRS) tarafından sağlanır. Bazı kurallar yanlış pozitif neden olabilir ve gerçek trafiği engellemek. Bu nedenle, Uygulama Ağ Geçidi kural gruplarını ve kuralları özelleştirme olanağı sağlar. Belirli kural grupları ve kuralları hakkında daha fazla bilgi için Bkz. [Web Uygulaması Güvenlik Duvarı CRS Kural grupları ve kuralları listesi.](application-gateway-crs-rulegroups-rules.md)
 
-## <a name="view-rule-groups-and-rules"></a>Kural gruplarını ve kuralları görüntüle
+## <a name="view-rule-groups-and-rules"></a>Kural gruplarını ve kuralları görüntüleme
 
-Aşağıdaki kod örnekleri, bir WAF özellikli uygulama ağ geçidinde yapılandırılabilen kuralların ve kural gruplarının nasıl görüntüleneceğini gösterir.
+Aşağıdaki kod örnekleri, WAF özellikli bir uygulama ağ geçidinde yapılandırılabilen kuralları ve kural gruplarını nasıl görüntülenebildiğini gösterir.
 
-### <a name="view-rule-groups"></a>Kural gruplarını görüntüle
+### <a name="view-rule-groups"></a>Kural gruplarını görüntüleme
 
-Aşağıdaki örnek, kural gruplarının nasıl görüntüleneceğini göstermektedir:
+Aşağıdaki örnekte kural gruplarının nasıl görüntülenenegösterilmektedir:
 
 ```powershell
 Get-AzApplicationGatewayAvailableWafRuleSets
 ```
 
-Aşağıdaki çıktı, yukarıdaki örnekten kesilen bir yanıt örneğidir:
+Aşağıdaki çıktı, önceki örnekten kesilen bir yanıttır:
 
 ```
 OWASP (Ver. 3.0):
@@ -83,9 +83,9 @@ OWASP (Ver. 3.0):
             ...        ...
 ```
 
-## <a name="disable-rules"></a>Kuralları devre dışı bırak
+## <a name="disable-rules"></a>Kuralları devre dışı
 
-Aşağıdaki örnek, bir uygulama ağ geçidinde kuralları `911011` ve `911012` devre dışı bırakır:
+Aşağıdaki örnek kuralları `911011` devre dışı `911012` kılabilir ve bir uygulama ağ geçidinde:
 
 ```powershell
 $disabledrules=New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
@@ -95,20 +95,20 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="mandatory-rules"></a>Zorunlu kurallar
 
-Aşağıdaki liste, WAF 'nin önleme modundayken isteği engellemesini sağlayan koşullar içerir (algılama modunda özel durumlar olarak günlüğe kaydedilir). Bunlar yapılandırılamaz veya devre dışı bırakılamaz:
+Aşağıdaki liste, WAF'ın Önleme Modundayken isteği engellemesine neden olan koşulları içerir (Algılama Modunda özel durum olarak kaydedilirler). Bunlar yapılandırılamaz veya devre dışı tutulamaz:
 
-* Gövde incelemesi devre dışı bırakılmadığı takdirde istek gövdesi ayrıştırılamadı, istek engellenmiyor (XML, JSON, form verileri)
-* İstek gövdesi (dosya olmadan) veri uzunluğu yapılandırılan sınırdan daha büyük
-* İstek gövdesi (dosyalar dahil) sınırdan daha büyük
-* WAF altyapısında bir iç hata oluştu
+* Vücut denetimi kapalı olmadığı sürece istek gövdesinin ayrıştırılmaması, isteğin engellenmesine neden olur (XML, JSON, form verileri)
+* İstek gövdesi (dosya olmadan) veri uzunluğu yapılandırılan sınırdan daha büyüktür
+* İstek gövdesi (dosyalar dahil) sınırdan daha büyüktür
+* WAF motorunda bir iç hata oluştu
 
-X + x 'e özgü:
+CRS 3.x özel:
 
-* Gelen anomali puanı eşiği aştı
+* Gelen anomali puanı eşik aşıldı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Devre dışı kurallarınızı yapılandırdıktan sonra, WAF günlüklerinizi görüntülemeyi öğrenebilirsiniz. Daha fazla bilgi için bkz. [tanılama Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
+Devre dışı bırakılmış kurallarınızı yapılandırıldıktan sonra WAF günlüklerinizi nasıl görüntülediğinizi öğrenebilirsiniz. Daha fazla bilgi için [Uygulama Ağ Geçidi Tanılama'ya](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)bakın.
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

@@ -9,263 +9,263 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73034555"
 ---
-Bir sistem tasarlarken, bu sisteme yönelik olası tehditleri anlamak ve sistem tasarlandıkça ve uygun hale getirebileceği için uygun savunma savunmaları eklemek önemlidir. Bir saldırganın bir sistemin güvenliğinin nasıl tehlikeye alamadığını anlamak için, ürünü güvenlikle birlikte Başlat ' dan tasarlamak önemlidir.
+Bir sistem tasarlarken, bu sisteme yönelik olası tehditleri anlamak ve sistem tasarlanıp tasarlandığından uygun savunmayı buna göre eklemek önemlidir. Bir saldırganın bir sistemden nasıl ödün verebileceğini anlamak, en başından beri uygun azaltıcı etkenlerin yerinde olduğundan emin olmaya yardımcı olduğundan, ürünü en başından beri güvenlik göz önünde bulundurularak tasarlamak önemlidir.
 
-## <a name="security-starts-with-a-threat-model"></a>Güvenlik, tehdit modeliyle başlar
+## <a name="security-starts-with-a-threat-model"></a>Güvenlik bir tehdit modeliyle başlar
 
-Microsoft, ürünleri için uzun süredir kullanılan tehdit modellerine sahiptir ve şirketin tehdit modelleme sürecini herkese açık bir şekilde yaptı. Şirket deneyimi, modellemenin en çok hangi tehditlerle ilgili olarak bilindiğinin ötesinde beklenmedik avantajlar olduğunu gösterir. Örneğin, geliştirme ekibinin dışındaki diğer kişilerle açık bir tartışma için bir duyurmanın oluşturur ve bu da üründeki yeni fikirlere ve geliştirmelere neden olabilir.
+Microsoft, ürünleri için uzun zamandır tehdit modelleri kullanmıştır ve şirketin tehdit modelleme işlemini herkese açık hale getirmiştir. Şirket deneyimi modelleme en endişe verici tehditlerin hemen anlayış ötesinde beklenmedik yararları olduğunu göstermektedir. Örneğin, geliştirme ekibinin dışındaki diğer kişilerle açık bir tartışma için de bir yol oluşturur ve bu da üründe yeni fikirler ve iyileştirmelere yol açabilir.
 
-Tehdit modellemesinin amacı, bir saldırganın bir sistemin güvenliğini tehlikeye atabilir ve uygun azaltmaları doğru olduğundan emin olmanızı sağlar. Tehdit modellemesi, sistem dağıtıldıktan sonra değil, sistem tasarlandıktan sonra tasarım ekibini azaltıcı etkenleri göz önünde bulundurmaya zorlar. Bu olgu önemli ölçüde önemlidir, çünkü bu, alandaki bir cihaz için güvenlik savunması için uygun olmadığından, hataya açıktır ve müşterilerin risk altında kalmasını sağlar.
+Tehdit modellemesinin amacı, bir saldırganın bir sistemi nasıl tehlikeye atabileceğini anlamak ve ardından uygun azaltıcı etkenlerin nasıl yerinde olduğundan emin olmaktır. Tehdit modelleme, sistem bir sistem dağıtıldıktan sonra değil, sistem tasarlanırken, tasarım ekibini azaltıcı etkenleri düşünmeye zorlar. Bu durum kritik öneme sahip, çünkü güvenlik savunmasını niçin alanında bulunan sayısız cihaza güçlendirmesi olanaksız, hataya yatkın ve müşterileri risk altında bırakıyor.
 
-Birçok geliştirme ekibi, müşterilerin faydaladığı sistem için işlevsel gereksinimleri yakalayan harika bir iş görür. Bununla birlikte, başka birinin sistemi kötüye kullanmasından daha zor olmayan yollar belirlemek daha zordur. Tehdit modellemesi, geliştirme ekiplerinin bir saldırganın neler yapabileceğini ve neden olabileceğini anlamasına yardımcı olabilir. Tehdit modellemesi, sistemdeki güvenlik tasarımı kararları hakkında bir tartışma oluşturan, Ayrıca, tasarıma güvenlik açısından yapılan değişiklikler hakkında bir tartışma oluşturan yapısal bir işlemdir. Tehdit modeli yalnızca bir belge olsa da, bu belge, bilgi sürekliliği, öğrenilen derslerin saklanması ve yeni ekibin hızlı bir şekilde eklenmesine yardımcı olmak için ideal bir yolu da temsil eder. Son olarak, tehdit modellemesinin bir sonucu, müşterilerinize sağlamak istediğiniz güvenlik taahhütlerini göz önünde bulundurmanız gerekir. Bu taahhütler, tehdit modellemesi ile birlikte Nesnelerin İnterneti (IoT) çözümünüzün test edilmesine ve bunlara yönelik sınamalara sahip.
+Birçok geliştirme ekibi, müşterilerin yararına olan sistem için işlevsel gereksinimleri yakalamak için mükemmel bir iş yapmak. Ancak, birinin sistemi kötüye kullanabileceği açık olmayan yolları belirlemek daha zordur. Tehdit modelleme, geliştirme ekiplerinin saldırganın ne yapabileceğini ve neden yapabileceğini anlamalarını yardımcı olabilir. Tehdit modelleme, sistemdeki güvenlik tasarım kararlarının yanı sıra güvenliği etkileyen yol boyunca yapılan tasarım değişiklikleri hakkında bir tartışma yaratan yapılandırılmış bir işlemdir. Tehdit modeli basit bir belge olsa da, bu dokümantasyon aynı zamanda bilginin sürekliliğini, öğrenilen derslerin tutulmasını ve yeni ekibin hızla gemide olmasına yardımcı olmak için ideal bir yolu temsil eder. Son olarak, tehdit modellemesinin bir sonucu, müşterilerinize sağlamak istediğiniz güvenlik taahhütleri gibi güvenliğin diğer yönlerini göz önünde bulundurmanızı sağlamaktır. Bu taahhütler, tehdit modelleme ile birlikte Nesnelerin İnterneti (IoT) çözümünüzü bilgilendirir ve test eder.
 
-### <a name="when-to-do-threat-modeling"></a>Tehdit modellemesi ne zaman yapılır
+### <a name="when-to-do-threat-modeling"></a>Tehdit modellemesi ne zaman yapılacak?
 
-[Tehdit modellemesi](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) , tasarım aşamasına dahil ettiğinizde en büyük değeri sunar. Tasarlarken tehditleri ortadan kaldırmak için değişiklik yapma konusunda en büyük esnekliğe sahip olursunuz. Tehditleri tasarıma göre ortadan kaldırmak istenen bir sonucudur. Hafifletmeyi eklemekten, test etenden ve bunların güncel kalmasını sağlamaya ve üstelik bu tür bir eleme işleminin her zaman mümkün olmadığından çok daha kolay. Bir ürün daha fazla yetişkin haline geldiği için tehditleri ortadan kaldırmak daha zor hale gelir ve sonunda geliştirmede erken tehdit modelinden daha fazla iş ve çok daha zor bir denge gerektirir.
+[Tehdit modelleme,](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) tasarım aşamasına dahil ettiğinizde en büyük değeri sunar. Tasarlarken, tehditleri ortadan kaldırmak için değişiklik yapmak için en büyük esnekliğe sahip siniz. Tasarım la tehditleri ortadan kaldırmak istenen sonuçtur. Bu azaltıcı ekleme, test ve güncel ve dahası kalmasını sağlamak çok daha kolaydır, bu tür ortadan kaldırılması her zaman mümkün değildir. Bir ürün daha olgun hale geldikçe tehditleri ortadan kaldırmak zorlaşır ve sonuçta daha fazla iş ve geliştirme erken tehdit modelleme daha çok daha zor tradeoffs gerektirir.
 
-### <a name="what-to-consider-for-threat-modeling"></a>Tehdit modellemesi için göz önüne alınması gerekenler
+### <a name="what-to-consider-for-threat-modeling"></a>Tehdit modellemesi için dikkat etmek gerekenler
 
-Çözüme bir bütün olarak bakmanız ve ayrıca aşağıdaki alanlara odaklanmanız gerekir:
+Çözüme bir bütün olarak bakmalı ve aşağıdaki alanlara odaklanmalısınız:
 
 * Güvenlik ve gizlilik özellikleri
-* Arızaları güvenlikle ilgili olan özellikler
-* Bir güven sınırına dokunmaya yönelik özellikler
+* Hataları güvenlikle ilgili olan özellikler
+* Güven sınırına dokunan özellikler
 
-### <a name="who-performs-threat-modeling"></a>Tehdit modelleme yapan kim
+### <a name="who-performs-threat-modeling"></a>Tehdit modellemesi kim gerçekleştirir
 
-Tehdit modellemesi, diğer gibi bir işlemdir. Tehdit modeli belgesini çözümün diğer bileşenleri gibi değerlendirmek ve doğrulamak iyi bir fikirdir. Birçok geliştirme ekibi, müşterilerin faydaladığı sistem için işlevsel gereksinimleri yakalayan harika bir iş görür. Bununla birlikte, başka birinin sistemi kötüye kullanmasından daha zor olmayan yollar belirlemek daha zordur. Tehdit modellemesi, geliştirme ekiplerinin bir saldırganın neler yapabileceğini ve neden olabileceğini anlamasına yardımcı olabilir.
+Tehdit modellemesi de diğerleri gibi bir süreçtir. Tehdit modeli belgesini çözümün diğer herhangi bir bileşeni gibi ele almak ve doğrulamak iyi bir fikirdir. Birçok geliştirme ekibi, müşterilerin yararına olan sistem için işlevsel gereksinimleri yakalamak için mükemmel bir iş yapmak. Ancak, birinin sistemi kötüye kullanabileceği açık olmayan yolları belirlemek daha zordur. Tehdit modelleme, geliştirme ekiplerinin saldırganın ne yapabileceğini ve neden yapabileceğini anlamalarını yardımcı olabilir.
 
-### <a name="how-to-perform-threat-modeling"></a>Tehdit modellemesini gerçekleştirme
+### <a name="how-to-perform-threat-modeling"></a>Tehdit modellemesi nasıl gerçekleştirilir?
 
 Tehdit modelleme işlemi dört adımdan oluşur; adımlar şunlardır:
 
 * Uygulamayı modelleme
-* Tehditleri listeleme
+* Tehditleri Sayısalat
 * Tehditleri azaltma
-* Azaltmaları doğrulama
+* Azaltıcı etkenleri doğrula
 
 #### <a name="the-process-steps"></a>İşlem adımları
 
-Bir tehdit modeli oluştururken göz önünde bulundurmanız gereken üç Thumb kuralı:
+Bir tehdit modeli oluştururken akılda tutulması gereken başparmak üç kural:
 
 1. Başvuru mimarisinden bir diyagram oluşturun.
 
-2. İlk olarak başlangıç. Genel bir bakış edinin ve bir bütün olarak sistemi, derin bir şekilde anlayın. Bu yaklaşım, doğru yerlerde derinlemesine bir bakış sağlamanıza yardımcı olur.
+2. Önce genişlik başla. Derin dalışyapmadan önce genel bir bakış alın ve sistemi bir bütün olarak anlayın. Bu yaklaşım, doğru yerlere derinlemesine dalmak emin olur.
 
-3. İşlemi, işlem sürücüsüne izin vermez. Modelleme aşamasında bir sorun bulmanız ve incelemek istiyorsanız,! adresine gidin! Bu adımları takip etmeniz gerekmez.
+3. İşlemi yönlendirin, işlemin sizi yönlendirmesine izin vermeyin. Modelleme aşamasında bir sorun bulmak ve bunu keşfetmek istiyorsanız, bunun için gidin! Bu adımları kölece takip etmek zorunda hissetmiyorum.
 
 #### <a name="threats"></a>Tehditler
 
-Tehdit modelinin dört temel öğesi şunlardır:
+Bir tehdit modelinin dört temel unsuru şunlardır:
 
-* Web Hizmetleri, Win32 Hizmetleri ve * Nix Daemon 'ları gibi süreçler. Bazı karmaşık varlıklar (örneğin, alan ağ geçitleri ve algılayıcılar), bu alanlarda teknik ayrıntıya gitme mümkün olmadığında bir işlem olarak soyutlenebilir.
+* Web hizmetleri, Win32 hizmetleri ve *nix daemons gibi işlemler. Bazı karmaşık varlıklar (örneğin alan ağ geçitleri ve sensörler) bu alanlarda teknik bir detaylandırma nın mümkün olmadığı bir süreç olarak soyutlanabilir.
 
-* Veri depoları (bir yapılandırma dosyası veya veritabanı gibi her yerden veri depolanır)
+* Veri depoları (yapılandırma dosyası veya veritabanı gibi her yerde veri depolanır)
 
-* Veri akışı (verilerin uygulamadaki diğer öğeler arasında taşındığı)
+* Veri akışı (veri uygulamadaki diğer öğeler arasında hareket ettiği yer)
 
-* Dış varlıklar (sistemle etkileşime sahip ancak uygulama denetimi altında değil, örnek kullanıcıları ve uydu akışlarını içerir)
+* Dış Varlıklar (sistemle etkileşimedebilen, ancak uygulamanın kontrolü altında olmayan her şey, örnekler arasında kullanıcılar ve uydu akışları yer almaktadır)
 
-Mimari diyagramdaki tüm öğeler çeşitli tehditlere tabidir; Bu makalede, Ilerleme. [Tehdit modellemesini tekrar okuyun ve](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) ilerleme öğeleri hakkında daha fazla bilgi edinin.
+Mimari diyagramdaki tüm unsurlar çeşitli tehditlere tabidir; Bu makalestride mnemonic. Stride öğeleri hakkında daha fazla bilgi için [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) okuyun.
 
-Uygulama diyagramının farklı öğeleri belirli bir Ilerleme tehditlerine tabidir:
+Uygulama diyagramının farklı öğeleri belirli STRIDE tehditlerine tabidir:
 
-* Süreçler ilerme tabidir
-* Veri akışları TıD 'ye tabidir
-* Veri depoları, veri depoları günlük dosyaları olduğunda TıD 'ye ve bazen R 'ye tabidir.
-* Dış varlıklar SRD 'ye tabidir
+* Süreçler STRIDE'a tabidir
+* Veri akışları TID'ye tabidir
+* Veri depoları TID'ye ve bazen de veri depoları günlük dosyaları olduğunda R'ye tabidir.
+* Dış varlıklar SRD tabidir
 
-## <a name="security-in-iot"></a>IoT 'de güvenlik
+## <a name="security-in-iot"></a>IoT'de güvenlik
 
-Bağlı özel amaçlı cihazların önemli sayıda olası etkileşim yüzeyi alanı ve etkileşim deseni vardır; bunların hepsi, bu cihazlara dijital erişimi güvenli hale getirmek için bir çerçeve sağlamak üzere göz önünde bulundurulmalıdır. "Dijital erişim" terimi burada, erişim güvenliği 'nin fiziksel erişim denetimi aracılığıyla sağlandığı doğrudan cihaz etkileşimi aracılığıyla yürütülen işlemlerden ayırt edilebilmesi için kullanılır. Örneğin, cihazı kapıya kilidi olan bir odaya yerleştirme. Fiziksel erişim yazılım ve donanım kullanılarak reddedilemez, ancak önde gelen fiziksel erişimin sistem girişimi ' ne kadar oluşmasını engellemek için ölçüler alınabilir.
+Bağlı özel amaçlı aygıtlar, bu aygıtlara dijital erişimi sağlamak için bir çerçeve sağlamak için düşünülmelidir potansiyel etkileşim yüzey alanları ve etkileşim desenleri önemli sayıda var. "Dijital erişim" terimi burada, fiziksel erişim denetimi yoluyla erişim güvenliğinin sağlandığı doğrudan aygıt etkileşimi yoluyla gerçekleştirilen tüm işlemlerden ayırt etmek için kullanılır. Örneğin, cihazı kapıda kilit olan bir odaya yerleştirmek. Fiziksel erişim yazılım ve donanım kullanılarak reddedilemez olsa da, fiziksel erişimin sistem parazitine yol açtığını önlemek için önlemler alınabilir.
 
-Etkileşim modellerini araştırırken, "cihaz denetimi" ve "cihaz verileri" ni aynı ilgi düzeyine göre inceleyin. "Cihaz denetimi", davranışını durumuna ya da ortamının durumuna doğru şekilde değiştirme veya davranışlarını sağlayan herhangi bir kişi tarafından bir cihaza sunulan herhangi bir bilgi olarak sınıflandırılabilirler. "Cihaz verileri", bir cihazın durumu ve ortamının gözlemlenen durumu hakkında başka bir tarafa yaydığı herhangi bir bilgi olarak sınıflandırılabilirler.
+Etkileşim modellerini incelerken, aynı düzeyde dikkat çekerken "aygıt denetimi" ve "aygıt verilerine" bakın. "Aygıt denetimi", bir cihaza herhangi bir taraftarafından, kendi durumuna veya çevresinin durumuna yönelik davranışını değiştirmek veya etkilemek amacıyla sağlanan herhangi bir bilgi olarak sınıflandırılabilir. "Aygıt verileri", bir aygıtın durumu ve çevrenin gözlenen durumu hakkında başka bir tarafa yadığı herhangi bir bilgi olarak sınıflandırılabilir.
 
-En iyi güvenlik uygulamalarını iyileştirmek için, tehdit modelleme alıştırmanın bir parçası olarak tipik bir IoT mimarisinin birkaç bileşene/bölgeye bölünmesi önerilir. Bu bölgeler, bu bölümün tamamında tamamen açıklanmıştır ve şunları içerir:
+Güvenlik en iyi uygulamalarını optimize etmek için, tipik bir IoT mimarisinin tehdit modelleme alıştırmasının bir parçası olarak birkaç bileşene/bölgeye ayrılması önerilir. Bu bölgeler bu bölüm boyunca tam olarak açıklanmıştır ve şunları içerir:
 
-* Aygıtların
-* Alan ağ geçidi,
+* Aygıt
+* Alan Ağ Geçidi,
 * Bulut ağ geçitleri ve
-* servislere.
+* Hizmetleri.
 
-Bölgeler, bir çözümü segmentlere ayırmak için geniş bir yoldur; Her bölge genellikle kendi veri ve kimlik doğrulama ve yetkilendirme gereksinimlerine sahiptir. Bölgeler, daha yüksek güven bölgelerinde hasar yalıtma ve düşük güven bölgelerinin etkilerini kısıtlamak için de kullanılabilir.
+Bölgeler, bir çözümü segmente etmenin geniş bir yoludur; her bölgenin genellikle kendi veri ve kimlik doğrulama ve yetkilendirme gereksinimleri vardır. Bölgeler, hasarı izole etmek ve düşük güven bölgelerinin daha yüksek güven bölgeleri üzerindeki etkisini kısıtlamak için de kullanılabilir.
 
-Her bölge, aşağıdaki diyagramda noktalı kırmızı çizgi olarak belirtilen bir güven sınırı ile ayrılır. Bir kaynaktan diğerine veri/bilgi geçişini temsil eder. Bu geçiş sırasında veri/bilgiler, kimlik sahtekarlığı, Izinsiz, geri çevirme, bilgilerin açıklanması, hizmet reddi ve ayrıcalık yükselmesi (ilerme) ile ilgili olabilir.
+Her bölge, aşağıdaki diyagramda noktalı kırmızı çizgi olarak belirtildiği bir Güven Sınırı ile ayrılır. Veri/bilginin bir kaynaktan diğerine geçişini temsil eder. Bu geçiş sırasında, veri/bilgi Sızdırma, Tahrifat, Reddetme, Bilgi Açıklama, Hizmet Reddi ve Ayrıcalık Yükselmesine (STRIDE) tabi olabilir.
 
-![IoT güvenlik bölgeleri](media/iot-security-architecture/iot-security-architecture-fig1.png) 
+![IoT Güvenlik Bölgeleri](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-Her sınır içinde gösterilen bileşenler de tabi, bu da çözümün tam 360 tehdit modelleme görünümünü sağlar. Aşağıdaki bölümlerde, bileşenlerin her biri ve belirli güvenlik konuları ve yerinde yerleştirilmelidir.
+Her sınır içinde betimlenen bileşenler de STRIDE'a tabi tutularak çözümün tam 360 tehdit modelleme görünümüne olanak sağlar. Aşağıdaki bölümlerde bileşenlerin her biri ve uygulamaya konması gereken belirli güvenlik endişeleri ve çözümleri ayrıntılı.
 
-Aşağıdaki bölümlerde, genellikle bu bölgelerde bulunan standart bileşenler tartışıyordu.
+Aşağıdaki bölümlerde genellikle bu bölgelerde bulunan standart bileşenler tartışılır.
 
 ### <a name="the-device-zone"></a>Cihaz bölgesi
 
-Cihaz ortamı, fiziksel erişimin ve/veya "yerel ağ" ağa yönelik eşler arası dijital erişiminin uygun olduğu cihaz etrafındaki en yakın fiziksel alandır. "Yerel ağ", farklı olan, ancak büyük olasılıkla köprülenmiş ve genel Internet 'e ait olan bir ağ olduğu varsayılır ve cihazların eşler arası iletişimine izin veren herhangi bir kısa erimli kablosuz radyo teknolojisini içerir. Böyle bir yerel ağın yanılsamasını oluşturan herhangi bir ağ sanallaştırma *teknolojisi içermez ve* aynı zamanda, bir veya daha fazla ağ alanı arasında iletişim kurmasını gerektiren genel operatör ağlarını içermez uçtan uca iletişim ilişkisi.
+Cihaz ortamı, fiziksel erişimin ve/veya "yerel ağ" eşler arası dijital erişimin mümkün olduğu aygıtın çevresindeki hemen fiziksel alandır. "Yerel ağ"ın, kamu interneti ile farklı ve izole edilmiş ama potansiyel olarak köprülenmiş ve cihazların eşler arası iletişimine izin veren kısa menzilli kablosuz radyo teknolojisini içeren bir ağ olduğu varsayılır. Böyle bir yerel ağın yanılsamasını yaratan herhangi bir ağ sanallaştırma teknolojisi *içermez* ve eşler arası iletişim ilişkisi ne olursa olsun, herhangi iki aygıtın ortak ağ alanı üzerinden iletişim kurmasını gerektiren ortak operatör ağlarını da içermez.
 
 ### <a name="the-field-gateway-zone"></a>Alan ağ geçidi bölgesi
 
-Alan ağ geçidi, iletişim Etkinleştirici ve potansiyel olarak cihaz denetim sistemi ve cihaz veri işleme merkezi olarak davranan bir cihaz/gereç veya bazı genel amaçlı sunucu bilgisayar yazılımıdır. Alan ağ geçidi bölgesi, alan ağ geçidinin kendisini ve ona bağlı tüm cihazları içerir. Adından da anlaşılacağı gibi, alan ağ geçitleri adanmış veri işleme tesislerinin dışında davranır, genellikle konuma bağlıdır, büyük olasılıkla fiziksel olarak izinsiz erişim sağlar ve sınırlı işlemsel yedekliliğe sahiptir. Hepsi, bir alan ağ geçidinin, işlevinin ne olduğunu bilirken, bir BT 'nin bir şey ve çok daha fazla şey olduğunu varsayalım.
+Alan ağ geçidi, iletişim aracı ve potansiyel olarak bir aygıt kontrol sistemi ve aygıt veri işleme merkezi olarak hareket eden bir aygıt/cihaz veya bazı genel amaçlı sunucu bilgisayar yazılımıdır. Alan ağ geçidi bölgesi, alan ağ geçidinin kendisini ve ona bağlı tüm aygıtları içerir. Adından da anlaşılacağı gibi, alan ağ geçitleri özel veri işleme tesisleri dışında hareket, genellikle konum bağlı, potansiyel fiziksel müdahaleye tabidir ve sınırlı operasyonel fazlalık vardır. Tüm bir alan ağ geçidi genellikle bir şey bir şey bir dokunmatik ve sabotaj işlevini ne olduğunu bilerek olduğunu söylemek.
 
-Bir alan ağ geçidi, erişim ve bilgi akışını yönetirken etkin bir rolü olan bir boyutundaydı trafik yönlendiricisinden farklıdır, yani bu, bir uygulama ve ağ bağlantısı ya da oturum terminalidir. Bir NAT aygıtı veya güvenlik duvarı, açık bağlantı veya oturum terminalleri olmadığından, ancak bunlar üzerinden yapılan bir yol (veya blok) bağlantısı ya da oturumları olmadığından alan ağ geçitleri olarak nitelemez. Alan ağ geçidi iki ayrı yüzey alanına sahiptir. Bunlardan biri, kendisine bağlı olan ve bölgenin içini temsil eden cihazların yanı sıra tüm dış taraflar ve bölgenin kenarı olan bir yüzlük olur.
+Alan ağ geçidi, erişim ve bilgi akışını niçin yönetilmesinde etkin bir rolü olduğu için yalnızca trafik yönlendiricisinden farklıdır, yani uygulama nın ele aldığı varlık ve ağ bağlantısı veya oturum terminalidir. Buna karşılık, bir NAT aygıtı veya güvenlik duvarı, açık bağlantı veya oturum terminalleri değil, onlar aracılığıyla yapılan bir rota (veya blok) bağlantıları veya oturumları olduğundan alan ağ geçidi olarak nitelendirilir. Alan ağ geçidinin iki ayrı yüzey alanı vardır. Biri ona bağlı olan aygıtlara bakıyor ve bölgenin içini temsil ediyor, diğeri ise tüm dış taraflara bakıyor ve bölgenin kenarı.
 
 ### <a name="the-cloud-gateway-zone"></a>Bulut ağ geçidi bölgesi
 
-Bulut ağ geçidi, genellikle bu tür sistemlerin bir Federasyonu olan bulut tabanlı bir denetim ve veri analizi sistemine bağlı olarak, ortak ağ alanı genelinde birden çok farklı siteden cihazlar veya alan ağ geçitleri arasında uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi, tablet veya telefon gibi terminallerdeki özel amaçlı cihazlara erişimi hemen kolaylaştırabilir. Burada açıklanan bağlamda, "Cloud", ekli cihazlar veya alan ağ geçitleri ile aynı siteye bağlı olmayan ayrılmış bir veri işleme sistemine başvurmaktır. Ayrıca, bir bulut bölgesinde, işlemsel ölçüler hedeflenen fiziksel erişimi engeller ve "genel bulut" altyapısına açık değildir.  
+Bulut ağ geçidi, genellikle bulut tabanlı bir denetim ve veri analiz sistemi olan bu tür sistemlerin federasyonu olan bulut tabanlı denetim ve veri analiz sistemine yönelik olarak, genel ağ alanı ndaki birkaç farklı siteden aygıtlardan veya alan ağ geçitlerinden uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi tabletler veya telefonlar gibi terminallerden özel amaçlı aygıtlara erişimi hemen kolaylaştırabilir. Burada tartışılan bağlamda,"bulut", ekli aygıtlarla veya alan ağ geçitleri ile aynı siteye bağlı olmayan özel bir veri işleme sistemine başvurmak içindir. Ayrıca Bulut Bölgesi'nde, operasyonel önlemler hedeflenen fiziksel erişimi engeller ve mutlaka bir "genel bulut" altyapısına maruz kalmaktadır.  
 
-Bir bulut ağ geçidi, bulut ağ geçidini ve tüm bağlı cihazlarını veya alan ağ geçitlerini diğer ağ trafiğinden yalıtılmış olarak bir ağ sanallaştırma kaplamasına eşlenebilir. Bulut ağ geçidi, cihaz verileri için bir cihaz denetim sistemi veya işlem veya depolama olanağı değildir; bulut ağ geçidine sahip bu tesisler arabirimi. Bulut ağ geçidi bölgesi, tüm alan ağ geçitleri ve cihazlarıyla birlikte doğrudan veya dolaylı olarak bağlı olan bulut ağ geçidinin kendisini içerir. Bölgenin kenarı, tüm dış tarafların iletişim kurduğu ayrı bir yüzey alanıdır.
+Bulut ağ geçidi, bulut ağ geçidini ve bağlı tüm aygıtlarını veya alan ağ geçitlerini başka bir ağ trafiğinden yalıtmak için ağ sanallaştırma bindirmesine eşlenebilir. Bulut ağ geçidinin kendisi bir aygıt kontrol sistemi veya aygıt verileri için bir işleme veya depolama tesisi değildir; bu tesisler bulut ağ geçidi ile arayüz. Bulut ağ geçidi bölgesi, bulut ağ geçidinin kendisini, doğrudan veya dolaylı olarak bağlı tüm alan ağ geçitleri ve aygıtlarıyla birlikte içerir. Bölgenin kenarı, tüm dış tarafların iletişim kurduğu ayrı bir yüzey alanıdır.
 
-### <a name="the-services-zone"></a>Hizmetler bölgesi
+### <a name="the-services-zone"></a>Hizmet bölgesi
 
-Bir "hizmet", bu bağlam için, veri toplama ve analizler için bir alan ya da bulut ağ geçidi aracılığıyla cihazlarıyla arabirim içeren herhangi bir yazılım bileşeni ya da modülle, komut ve denetim için tanımlanır. Hizmetler, hizmet araçları. Bunlar, kimlik geçitleri ve diğer alt sistemler arasındaki kimlik bilgileri altında davranır, verileri depolar ve analiz eder, veri öngörülerine veya zamanlamalarına göre cihazlara komutlar olarak çalışabilen ve yetkili son kullanıcılara bilgi ve denetim özellikleri sunar.
+Bu bağlamda bir "hizmet", veri toplama ve analiz için bir alan veya bulut ağ geçidi nin yanı sıra komuta ve denetim için aygıtlarla iç içe geçmiş herhangi bir yazılım bileşeni veya modülü olarak tanımlanır. Hizmetler arabuluculuk. Ağ geçitlerine ve diğer alt sistemlere karşı kimlikleri altında hareket ederler, verileri depolar ve analiz ederler, veri öngörülerine veya zamanlamalarına dayalı olarak aygıtlara bağımsız olarak komut lar verirler ve bilgi ve kontrol yeteneklerini yetkili son kullanıcılara sunarlar.
 
-### <a name="information-devices-versus-special-purpose-devices"></a>Bilgi-cihazlar özel amaçlı cihazlara karşı
+### <a name="information-devices-versus-special-purpose-devices"></a>Özel amaçlı cihazlara karşı bilgi cihazları
 
-Bilgisayarlar, telefonlar ve tabletler öncelikle etkileşimli bilgi cihazlarıdır. Telefonlar ve tabletler, pil ömrünü en üst düzeye çıkarmak için açık olarak iyileştirilmiştir. Tercihen, bir kişiyle hemen etkileşim kurmayan ya da müzik yürütme veya sahibini belirli bir konuma göre sağlama gibi hizmetleri sağlamayan kısmen devre dışı bırakır. Bir sistem perspektifinden, bu bilgi teknolojisi cihazları genellikle kişiler 'e yönelik proxy olarak hareket eder. Bunlar "insanlar" ve "kişi sensörler" giriş toplamaktadır.
+CD'ler, telefonlar ve tabletler öncelikle etkileşimli bilgi aygıtlarıdır. Telefonlar ve tabletler pil ömrünü en üst düzeye çıkarma konusunda açıkça optimize edilmiştir. Tercihen, bir kişiyle hemen etkileşime girmediğinde veya müzik çalmak veya sahibini belirli bir konuma yönlendirmek gibi hizmetler sunmadıkları nda kısmen kapatırlar. Sistem açısından bakıldığında, bu bilgi teknolojisi cihazları esas olarak insanlara karşı vekil olarak hareket ediyorlar. Onlar "insan aktüatörler" eylemleri ve "insan sensörleri" giriş toplama düşündüren vardır.
 
-Basit Sıcaklık sensörlerinden, içindeki binlerce bileşeni olan karmaşık fabrika üretim satırlarına kadar özel amaçlı cihazlar farklıdır. Bu cihazlar, amaç açısından çok daha kapsamlıysa ve Kullanıcı arabirimi sağlamasa bile, büyük ölçüde fiziksel dünyadaki varlıklarla tümleştirilebilen veya bunlarla tümleştirilmiştir. Ortam durumları ölçerek, vanalar, denetim Servos, denetim servis, ses alarmları, anahtar ışıkları ve diğer birçok görevi işler. Bunlar, bir bilgi cihazının çok genel, çok pahalı, çok büyük veya çok Brittle olduğu konusunda çalışmaya yardımcı olurlar. Somut amaç, kendi teknik tasarımını ve üretim ve zamanlanan ömür işlemleri için kullanılabilir parasal bütçeyi hemen belirler. Bu iki anahtar faktörün birleşimi kullanılabilir operasyonel enerji bütçesini, fiziksel ayak izini ve bu nedenle kullanılabilir depolama, işlem ve güvenlik yeteneklerini kısıtlar.
+Basit sıcaklık sensörlerinden içinde binlerce bileşeniçeren karmaşık fabrika üretim hatlarına kadar özel amaçlı cihazlar farklıdır. Bu aygıtlar çok daha fazla amaca yöneliktir ve bazı kullanıcı arabirimi sağlasalar bile, büyük ölçüde fiziksel dünyadaki varlıklarla etkileşime girmek veya bunlara entegre olmak için kapsama sahiptirler. Çevresel koşulları ölçer ve rapor eder, vanaları döndürür, servoları kontrol eder, çalar, ışıkları değiştirir ve diğer birçok görevi yerine getirirler. Onlar için bir bilgi aygıtı ya çok genel, çok pahalı, çok büyük veya çok kırılgan olduğu iş yapmak için yardımcı olur. Somut amaç hemen kendi teknik tasarım yanı sıra üretim ve planlanan ömür boyu çalışma için mevcut parasal bütçe dikte. Bu iki önemli faktörün birleşimi mevcut operasyonel enerji bütçesini, fiziksel ayak izini ve dolayısıyla kullanılabilir depolama, hesaplama ve güvenlik yeteneklerini kısıtlar.
 
-Otomatik veya uzaktan denetlenebilir cihazlarla "yanlış" olursa, örneğin fiziksel hatalar veya Denetim mantığı kusurları izinsiz erişime ve düzenlemeye karşı bir şekilde yapılır. Üretim lotları yok edilebilir, binalar gevkülmüş veya aşağı yazılabilir, insanlar da Red veya hatta zar olabilir. Bu, çalınan kredi kartının sınırını aşan birisinden farklı bir hasar sınıfına ait. İşlemleri yapan cihazların güvenlik çubuğu ve ayrıca, sonuçta nesnelerin taşınmasına neden olan komutlarla sonuçlanan algılayıcı verileri, herhangi bir e-ticaret veya bankacılık senaryosundan daha yüksek olmalıdır.
+Otomatik veya uzaktan kontrol edilebilir aygıtlarla ilgili bir şey "yanlış giderse" örneğin, fiziksel hatalar veya kasıtlı yetkisiz izinsiz giriş ve manipülasyona yönelik kontrol mantığı hataları. Üretim kuraları yok edilebilir, binalar yağmalanabilir veya yakılabilir, ve insanlar yaralanabilir ya da ölebilir. Bu, çalınan kredi kartı limitini aşan birinden tamamen farklı bir hasar sınıfı. İşleri hareket ettiren aygıtların ve aynı zamanda nesnelerin taşınmasına neden olan komutlarla sonuçlanan sensör verileri için güvenlik çubuğu, herhangi bir e-ticaret veya bankacılık senaryosundan daha yüksek olmalıdır.
 
-### <a name="device-control-and-device-data-interactions"></a>Cihaz denetimi ve cihaz verileri etkileşimleri
+### <a name="device-control-and-device-data-interactions"></a>Cihaz kontrolü ve cihaz veri etkileşimleri
 
-Bağlı özel amaçlı cihazların önemli sayıda olası etkileşim yüzeyi alanı ve etkileşim deseni vardır; bunların hepsi, bu cihazlara dijital erişimi güvenli hale getirmek için bir çerçeve sağlamak üzere göz önünde bulundurulmalıdır. "Dijital erişim" terimi burada, erişim güvenliği 'nin fiziksel erişim denetimi aracılığıyla sağlandığı doğrudan cihaz etkileşimi aracılığıyla yürütülen işlemlerden ayırt edilebilmesi için kullanılır. Örneğin, cihazı kapıya kilidi olan bir odaya yerleştirme. Fiziksel erişim yazılım ve donanım kullanılarak reddedilemez, ancak önde gelen fiziksel erişimin sistem girişimi ' ne kadar oluşmasını engellemek için ölçüler alınabilir.
+Bağlı özel amaçlı aygıtlar, bu aygıtlara dijital erişimi sağlamak için bir çerçeve sağlamak için düşünülmelidir potansiyel etkileşim yüzey alanları ve etkileşim desenleri önemli sayıda var. "Dijital erişim" terimi burada, fiziksel erişim denetimi yoluyla erişim güvenliğinin sağlandığı doğrudan aygıt etkileşimi yoluyla gerçekleştirilen tüm işlemlerden ayırt etmek için kullanılır. Örneğin, cihazı kapıda kilit olan bir odaya yerleştirmek. Fiziksel erişim yazılım ve donanım kullanılarak reddedilemez olsa da, fiziksel erişimin sistem parazitine yol açtığını önlemek için önlemler alınabilir.
 
-Etkileşim modellerini keşfederken, tehdit modellemesi sırasında aynı dikkat düzeyiyle "cihaz denetimi" ve "cihaz verileri" bölümüne bakın. "Cihaz denetimi", davranışını durumuna ya da ortamının durumuna doğru şekilde değiştirme veya davranışlarını sağlayan herhangi bir kişi tarafından bir cihaza sunulan herhangi bir bilgi olarak sınıflandırılabilirler. "Cihaz verileri", bir cihazın durumu ve ortamının gözlemlenen durumu hakkında başka bir tarafa yaydığı herhangi bir bilgi olarak sınıflandırılabilirler.
+Etkileşim modellerini incelerken, tehdit modellemesi sırasında "aygıt denetimi" ve "aygıt verilerine" aynı düzeyde dikkat ile bakın. "Aygıt denetimi", bir cihaza herhangi bir taraftarafından, kendi durumuna veya çevresinin durumuna yönelik davranışını değiştirmek veya etkilemek amacıyla sağlanan herhangi bir bilgi olarak sınıflandırılabilir. "Aygıt verileri", bir aygıtın durumu ve çevrenin gözlenen durumu hakkında başka bir tarafa yadığı herhangi bir bilgi olarak sınıflandırılabilir.
 
-## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Azure IoT başvuru mimarisi için tehdit modellemesi gerçekleştiriliyor
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Azure IoT başvuru mimarisi için tehdit modellemesi gerçekleştirme
 
-Microsoft, daha önce özetlenen çerçeveyi Azure IoT için tehdit modellemesi yapmak üzere kullanır. Aşağıdaki bölümde IoT için tehdit modellemesini ve tanımlanan tehditleri nasıl ele alınacağını göstermek için Azure IoT başvuru mimarisinin somut örneği kullanılmaktadır. Bu örnek, odağın dört ana alanını tanımlar:
+Microsoft, Azure IoT için tehdit modellemesi yapmak için daha önce özetlenen çerçeveyi kullanır. Aşağıdaki bölümde, IoT için tehdit modellemesi hakkında nasıl düşüneceğiniz ve tanımlanan tehditlerin nasıl ele alınılabileceğini göstermek için Azure IoT Başvuru Mimarisi'nin somut örneğini kullanır. Bu örnekte dört ana odak alanı tanımnılatır:
 
-* Cihazlar ve veri kaynakları,
-* Veri aktarımı,
-* Cihaz ve olay Işleme ve
-* Sununuzda
+* Cihazlar ve Veri Kaynakları,
+* Veri Taşıma,
+* Cihaz ve Olay İşleme ve
+* Sunum
 
-![Azure IoT için tehdit modellemesi](media/iot-security-architecture/iot-security-architecture-fig2.png)
+![Azure IoT için Tehdit Modelleme](media/iot-security-architecture/iot-security-architecture-fig2.png)
 
-Aşağıdaki diyagramda, Microsoft 'un Microsoft Threat Modeling Tool tarafından kullanılan bir veri akışı diyagramı modeli kullanılarak Microsoft 'un IoT mimarisinin basitleştirilmiş bir görünümü sunulmaktadır:
+Aşağıdaki diyagram, Microsoft Tehdit Modelleme Aracı tarafından kullanılan bir Veri Akış Diyagramı modelini kullanarak Microsoft'un IoT Mimarisinin basitleştirilmiş bir görünümünü sağlar:
 
-![MS Threat Modeling Tool kullanarak Azure IoT için tehdit modellemesi](media/iot-security-architecture/iot-security-architecture-fig3.png)
+![MS Tehdit Modelleme Aracını kullanarak Azure IoT için Tehdit Modelleme](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-Mimarinin cihaz ve ağ geçidi yeteneklerini ayırdığından emin olmak önemlidir. Bu yaklaşım, kullanıcının daha güvenli ağ geçidi cihazlarından yararlanmasını sağlar: güvenli protokoller kullanarak bulut ağ geçidiyle iletişim kurabiliyor ve bu, genellikle yerel bir cihazın bir termostat gibi daha fazla işlem yükü gerektirir. kendi kendine sağlayın. Azure hizmetleri bölgesinde, bulut ağ geçidinin Azure IoT Hub hizmeti tarafından temsil edildiği varsayılır.
+Mimarinin aygıtı ve ağ geçidi özelliklerini birbirinden ayırdığını unutmayın. Bu yaklaşım, kullanıcının daha güvenli ağ geçidi aygıtlarından yararlanmasını sağlar: güvenli protokoller kullanarak bulut ağ geçidiyle iletişim kurabilme yeteneğine sahiptirler ve bu da genellikle termostat gibi yerel bir aygıtın kendi başına sağlar. Azure hizmetleri bölgesinde, Bulut Ağ Geçidi'nin Azure IoT Hub hizmeti tarafından temsil edildiğini varsayalım.
 
-### <a name="device-and-data-sourcesdata-transport"></a>Cihaz ve veri kaynakları/veri aktarımı
+### <a name="device-and-data-sourcesdata-transport"></a>Cihaz ve veri kaynakları/veri aktarım
 
-Bu bölümde, tehdit modellemesinin merceği aracılığıyla daha önce özetlenen mimari incelenmektedir ve bazı ilgili kaygıların nasıl ele alınacağını gösteren bir genel bakış sağlanır. Bu örnek, bir tehdit modelinin temel öğelerine odaklanır:
+Bu bölümde, tehdit modelleme merceğinden daha önce özetlenen mimari incelenmiştir ve bazı doğal kaygıların nasıl ele alınacak hakkında genel bir bakış sunar. Bu örnek, bir tehdit modelinin temel öğelerine odaklanır:
 
-* Süreçler (hem denetim hem de dış öğeleriniz altında)
-* İletişim (veri akışları olarak da bilinir)
-* Depolama (veri depoları olarak da bilinir)
+* Süreçler (hem sizin denetiminizde hem de harici öğeler)
+* İletişim (veri akışları olarak da adlandırılır)
+* Depolama (veri depoları olarak da adlandırılır)
 
 #### <a name="processes"></a>İşlemler
 
-Azure IoT mimarisinde özetlenen kategorilerin her birinde, bu örnek farklı aşamalar verileri/içindeki bir çok farklı tehdidi hafifletmeye çalışır: işlem, iletişim ve depolama. Aşağıda, "işlem" kategorisinin en yaygın olanlara genel bakış verilmiştir ve bu tehditlerin en iyi şekilde nasıl azaldıklara ilişkin bir genel bakış sunulmaktadır:
+Azure IoT mimarisinde özetlenen kategorilerin her birinde, bu örnek, veri/bilginin var olduğu farklı aşamalarda bir dizi farklı tehdidi azaltmaya çalışır: süreç, iletişim ve depolama. Aşağıda "süreç" kategorisi için en yaygın olanların genel bir bakış, bu tehditlerin en iyi nasıl azaltılabilir bir bakış aşağıdaki gibidir:
 
-**Sızdırma (ler)** : bir saldırgan, yazılım veya donanım düzeyinde bir cihazdan şifreleme anahtarı malzemesini ayıklayabilir ve ardından, ana malzemenin bulunduğu cihaz kimliği altında farklı bir fiziksel veya sanal cihazla sisteme erişebilir. alındı. İyi bir çizim, popüler Prankster araçları olan herhangi bir TV 'yi açmak için uzak denetimlerdir.
+**Sızdırma (S)**: Saldırgan, yazılım veya donanım düzeyinde bir aygıttan şifreleme anahtar materyali ayıklayabilir ve daha sonra anahtar malzemenin alındığı cihazın kimliği altında farklı bir fiziksel veya sanal aygıtla sisteme erişebilir. İyi bir illüstrasyon herhangi bir TV açabilirsiniz ve popüler şakacı araçları olan uzaktan kumandalar olduğunu.
 
-**Hizmet reddi (D)** : bir cihaz, radyo sıklıklarının veya üstün kabloların etkilenerek çalışmaya veya iletişim kurmasına karışarak işlenebilir. Örneğin elektrik veya ağ bağlantısı kesilen bir güvenlik kamerası veri iletemez.
+**Hizmet Reddi (D)**: Bir cihaz, radyo frekanslarına müdahale ederek veya telleri keserek çalışmadan veya iletişim kuramadan kullanılabilir. Örneğin, gücü veya ağ bağlantısı kasıtlı olarak devre dışı olan bir güvenlik kamerası verileri hiç bildiremez.
 
-**Değişiklik (T)** : bir saldırgan, cihaz üzerinde çalışan yazılımı kısmen veya tamamen değiştirebilir, bu durum, önemli malzemeler veya anahtar tutan şifreleme tesislerinde bulunan yazılımın orijinal kimliğini kullanmasına izin verebilir. malzemeler, ıllicıt programı tarafından kullanılabilir. Örneğin, bir saldırgan, iletişim yolundaki cihazdan gelen verileri kesme ve gizleme ve çalınan anahtar malzemesiyle kimliği doğrulanmış yanlış verilerle değiştirmek için ayıklanan anahtar malzemesini kullanabilir.
+**Tahrifat (T)**: Bir saldırgan, cihazda çalışan yazılımıkısmen veya tamamen değiştirebilir ve anahtar malzeme nin veya anahtar materyalleri tutan şifreleme tesislerinin yasadışı programa uygun olması durumunda değiştirilen yazılımın aygıtın orijinal kimliğinden yararlanabilmesine izin verebilir. Örneğin, bir saldırgan, iletişim yolundaki aygıttan gelen verileri engellemek ve bastırmak için çıkarılan anahtar malzemeden yararlanabilir ve bunu çalınan anahtar malzemeyle doğrulanmış yanlış verilerle değiştirebilir.
 
-**Bilgilerin açığa çıkması (ı)** : cihaz, yönetilen yazılım çalıştırıyorsa, bu tür bir yazılım, verileri yetkisiz taraflara sızdırabilir. Örneğin, bir saldırgan ayıklanan anahtar malzemesini, cihaz ile bir denetleyici veya alan ağ geçidi ya da bulut ağ geçidi ile ilgili bilgi almak için bir bağlantı ve ağ geçidi ya da bulut ağ geçidi arasındaki iletişim yoluna eklemek
+**Bilgi Açıklama (I)**: Cihaz manipüle edilmiş yazılım çalıştırıyorsa, bu tür manipüle edilmiş yazılımlar yetkisiz taraflara veri sızdırabilir. Örneğin, bir saldırgan, bilgi almak için aygıt la denetleyici veya alan ağ geçidi veya bulut ağ geçidi arasındaki iletişim yoluna kendini enjekte etmek için çıkarılan anahtar malzemeden yararlanabilir.
 
-**Ayrıcalık yükselmesi (E)** : belirli bir işlevi yapan bir cihaz, başka bir şey yapmak için zorlanabilir. Örneğin, yarı bir şekilde programlanan bir vana, her şey açmak için karmaşık olabilir.
+**Ayrıcalık Yüksekliği (E)**: Belirli bir işlevi yapan bir aygıt başka bir şey yapmaya zorlanabilir. Örneğin, yarım açmak için programlanmış bir vana tüm yol açmak için kandırdın olabilir.
 
-| **Bileşen** | **Tehdit** | **Mayı** | **Esini** | **Paylaşır** |
+| **Bileşen** | **Tehdit** | **Risk azaltma** | **Risk** | **Uygulama** |
 | --- | --- | --- | --- | --- |
-| Cihaz |S |Cihaza kimlik atama ve cihazın kimliğini doğrulama |Cihazı veya cihazın bir bölümünü başka bir cihazla değiştirme. Doğru cihazla konuştuolduğunuzu nasıl anlarsınız? |Aktarım Katmanı Güvenliği (TLS) veya IPSec kullanarak cihazın kimliğini doğrulama. Altyapı, tam asimetrik şifrelemeyi işleyemeyen cihazlarda önceden paylaşılan anahtar (PSK) kullanmayı desteklemelidir. Azure AD 'den yararlanın, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TR |Cihazdan anahtar ve diğer şifreleme malzemelerinin ayıklanmayı olanaksız hale getirerek cihaza WIT kanıtlama mekanizmaları uygulayın. |Risk, başka birinin cihazı (fiziksel girişim) üzerinde değişiklik getirme durumunda olur. Bu cihazın kurcalanmadığından nasıl emin olabilirsiniz. |En etkili risk azaltma, anahtarların okuyamayacağı özel on yonga devresi içinde depolanmasını sağlayan, ancak anahtarı kullanan ancak anahtarı hiçbir şekilde açıklayabilen şifreleme işlemleri için kullanılabilen bir Güvenilir Platform Modülü (TPM) özelliğidir. Cihazın bellek şifrelemesi. Cihaz için anahtar yönetimi. Kod imzalanıyor. |
-|| A |Cihaza erişim denetimi yapın. Yetkilendirme düzeni. |Cihaz, bir dış kaynaktan gelen komutlara bağlı olarak tek tek eylemlerin yapılmasına izin veriyorsa ve hatta güvenliği aşılmış algılayıcılar, aksi takdirde erişilemeyen işlemler gerçekleştirmeye izin verir. |Cihaz için yetkilendirme şemasına sahip olma |
-| Alan ağ geçidi |S |Alan ağ geçidinin bulut ağ geçidine (CERT tabanlı, PSK veya talep tabanlı gibi) doğrulanması. |Birisi alan ağ geçidine sızabilir, kendisini herhangi bir cihaz olarak sunabilir. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Genel olarak cihazlarındaki aynı anahtar depolama ve kanıtlama sorunları-en iyi durum TPM kullanır. IPSec için, kablosuz algılayıcı ağlarını (WSN) desteklemeye yönelik 6LowPAN uzantısı. |
-|| TR |Alan ağ geçidini izinsiz (TPM?) karşı koruyun |Alan ağ geçidine konuştuğu bir bulut ağ geçidi ile ilgili sızdırma saldırıları, bilgilerin açığa çıkmasına ve verilerin değiştirilmesine neden olabilir |Bellek şifreleme, TPM, kimlik doğrulama. |
-|| A |Alan ağ geçidi için erişim denetimi mekanizması | | |
+| Cihaz |S |Aygıta kimlik atama ve aygıtın kimliğini nital etme |Aygıtın veya aygıtın bir bölümünü başka bir aygıtla değiştirme. Doğru cihazla konuştuğunu nereden biliyorsun? |Aktarım Katmanı Güvenliği (TLS) veya IPSec kullanarak aygıtın kimliğinin doğrulanması. Altyapı, tam asimetrik şifrelemeyi işleyemeyen cihazlarda önceden paylaşılan anahtar (PSK) kullanılmasını desteklemelidir. Azure AD, [OAuth'dan](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) yararlanın |
+|| TRID |Örneğin, anahtarve diğer şifreleme materyallerinin cihazdan ayıklanması imkansız hale getirerek, aygıta kurcalanmayakarşı mekanizmalar uygulayın. |Risk, birinin cihazı kurcaladığı (fiziksel girişim) olmasıdır. O cihazın kurcalanmadığından nasıl eminsin? |En etkili azaltma, anahtarların okunamadığı, ancak yalnızca anahtarı kullanan ancak anahtarı asla ifşa edemeyen şifreleme işlemleri için kullanılabilen, özel çip devrelerinde anahtarların depolanmasına olanak tanıyan güvenilir bir platform modülü (TPM) yeteneğidir. Aygıtın bellek şifrelemesi. Aygıt için anahtar yönetimi. Kodu imzalıyor. |
+|| E |Cihazın erişim denetimine sahip. Yetkilendirme şeması. |Cihaz, dışarıdan gelen komutlara ve hatta tehlikeye alınan sensörlere dayalı olarak tek tek eylemlerin gerçekleştirilmesine izin veriyorsa, saldırının başka türlü erişilemeyen işlemleri gerçekleştirmesine olanak tanır. |Aygıt için yetkilendirme şemasına sahip olmak |
+| Alan Ağ Geçidi |S |Alan ağ geçidinin Cloud Ağ Geçidi'ne doğrulanması (cert tabanlı, PSK veya Talep tabanlı gibi.) |Birisi Field Gateway'i taklit edebilirse, o zaman kendisini herhangi bir aygıt olarak sunabilir. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Genel olarak cihazların aynı anahtar depolama ve attestation endişeleri - en iyi durumda TPM kullanmaktır. Kablosuz Sensör Ağlarını (WSN) desteklemek için IPSec için 6LowPAN uzantısı. |
+|| TRID |Alan Ağ Geçidini kurcalamaya karşı koruyun (TPM?) |Alan ağ geçidiyle konuştuğunu düşünerek bulut ağ geçidini kandıran sahte saldırılar bilgi ifşasına ve veri kurcalamasına neden olabilir |Bellek şifreleme, TPM' ler, kimlik doğrulama. |
+|| E |Alan Ağ Geçidi için erişim denetim mekanizması | | |
 
-Bu kategoride tehditler için bazı örnekler aşağıda verilmiştir:
+Bu kategorideki tehditlere örnek olarak aşağıda verilmiştir:
 
-**Sızdırma**: bir saldırgan, yazılım veya donanım düzeyinde bir cihazdan şifreleme anahtarı malzemesini ayıklayabilir ve sonra da anahtar malzemesinin bulunduğu cihaz kimliği altında farklı bir fiziksel veya sanal cihazla sisteme erişebilir alındığı yer.
+**Sızdırma**: Saldırgan, yazılım veya donanım düzeyinde bir cihazdan şifreleme anahtar materyali ayıklayabilir ve daha sonra anahtar malzemenin alındığı cihazın kimliği altında farklı bir fiziksel veya sanal aygıtla sisteme erişebilir.
 
-**Hizmet reddi**: bir cihaz radyo sıklıklarının veya üstün kabloların etkilenerek çalışmaya veya iletişime geçilerek oluşturulabilir. Örneğin elektrik veya ağ bağlantısı kesilen bir güvenlik kamerası veri iletemez.
+**Hizmet Reddi**: Cihaz, radyo frekanslarına müdahale ederek veya telleri keserek işleyemekten veya iletişim kuramadan kullanılabilir. Örneğin, gücü veya ağ bağlantısı kasıtlı olarak devre dışı olan bir güvenlik kamerası verileri hiç bildiremez.
 
-**Değişiklik**: bir saldırgan, cihaz üzerinde çalışan yazılımı kısmen veya bir şekilde değiştirebilir, bu durum, önemli malzemeler ya da anahtar tutan şifreleme tesislerinde bulunan yazılımın orijinal kimliğini kullanmasına izin verebilir. malzemeler, ıllicıt programı tarafından kullanılabilir.
+**Kurcalama**: Bir saldırgan, cihazda çalışan yazılımıkısmen veya tamamen değiştirebilir ve anahtar malzeme nin veya anahtar materyalleri tutan şifreleme tesislerinin yasadışı programa uygun olması durumunda değiştirilen yazılımın cihazın orijinal kimliğinden yararlanabilmesine izin verebilir.
 
-**Müdahale**: boş bir koridordaki 'ın görünür-bit resmini gösteren bir izleme Kamerası, böyle bir koridordaki fotoğrafına hedeflenmiş olabilir. Bir duman veya yangın algılayıcısı, birinin altında daha açık tutan bir kişi raporluyor. Her iki durumda da cihaz Teknik olarak sisteme tamamen güvenilir olabilir, ancak bu işlem, yönetilen bilgileri raporlar.
+**Kurcalama**: Boş bir koridorun görünür spektrumlu resmini gösteren bir güvenlik kamerası böyle bir koridorun fotoğrafına yönelik olabilir. Bir duman ya da yangın sensörü altında çakmak tutan birini bildiriyor olabilir. Her iki durumda da, aygıt teknik olarak sisteme karşı tamamen güvenilir olabilir, ancak manipüle edilen bilgileri bildirir.
 
-**Değişiklik**: bir saldırgan, iletişim yolundaki cihazdan gelen verileri kesme ve gizleme ve çalınan anahtar malzemesiyle kimlik doğrulayan yanlış verilerle değiştirmek için ayıklanan anahtar malzemesinden yararlanabilir.
+**Tahrifat**: Saldırgan, iletişim yolundaki aygıttan alınan verileri engellemek ve bastırmak için çıkarılan anahtar malzemeden yararlanabilir ve bunu çalınan anahtar malzemeyle doğrulanmış yanlış verilerle değiştirebilir.
 
-**Değişiklik**: bir saldırgan, cihaz üzerinde çalışan yazılımı kısmen veya tamamen değiştirebilir ve bu durum, anahtar malzemesi veya şifreleme tesisleri anahtar tutan şifreleme tesislerinde bulunan yazılımın orijinal kimliğini kullanmasına izin verebilir. malzemeler, ıllicıt programı tarafından kullanılabilir.
+**Tahrifat**: Bir saldırgan, cihazda çalışan yazılımıkısmen veya tamamen değiştirebilir ve anahtar malzeme nin veya anahtar materyalleri tutan şifreleme tesislerinin yasadışı programa uygun olması durumunda değiştirilen yazılımın cihazın orijinal kimliğinden yararlanabilmesine olanak verebilir.
 
-**Bilgilerin açığa çıkması**: cihaz, yönetilen yazılım çalıştırıyorsa, bu tür bir yazılım, verileri yetkisiz taraflara sızdırabilir.
+**Bilgi Açıklaması**: Cihaz manipüle edilmiş yazılım çalıştırıyorsa, bu tür manipüle edilmiş yazılımlar yetkisiz taraflara veri sızdırabilir.
 
-**Bilgilerin açığa çıkması**: bir saldırgan, bir bilgisayar ile bir denetleyici veya alan ağ geçidi ya da bulut ağ geçidi ile ilgili bilgi almak için bir iletişim yoluna kendisini eklemek üzere ayıklanan anahtar malzemesini kullanabilir.
+**Bilgi Açıklaması**: Saldırgan, bilgi almak için cihaz la bir denetleyici veya alan ağ geçidi veya bulut ağ geçidi arasındaki iletişim yoluna kendini enjekte etmek için çıkarılan anahtar malzemeden yararlanabilir.
 
-**Hizmet reddi**: cihaz kapatılabilir veya iletişim mümkün olmayan bir moda açılabilir (birçok endüstriyel makinede bilerek olur).
+**Hizmet Reddi**: Cihaz kapatılabilir veya iletişimin mümkün olmadığı bir moda dönüştürülebilir (birçok endüstriyel makinede kasıtlı olarak).
 
-**Değişiklik**: cihaz, denetim sistemine bilinmeyen bir durumda çalışacak şekilde yeniden yapılandırılabilir (bilinen ayarlama parametreleri dışında) ve bu nedenle yanlış yorumlanabilen verileri sağlar
+**Kurcalama**: Cihaz, kontrol sistemi bilinmeyen bir durumda (bilinen kalibrasyon parametreleri dışında) çalışacak şekilde yeniden yapılandırılabilir ve böylece yanlış yorumlanabilecek veriler sağlayabilir
 
-**Ayrıcalık yükselmesi**: belirli bir işlevi yapan bir cihaz, başka bir şey yapmak için zorlanabilir. Örneğin, yarı bir şekilde programlanan bir vana, her şey açmak için karmaşık olabilir.
+**Ayrıcalık Yüksekliği**: Belirli bir işlevi yapan bir aygıt başka bir şey yapmaya zorlanabilir. Örneğin, yarım açmak için programlanmış bir vana tüm yol açmak için kandırdın olabilir.
 
-**Hizmet reddi**: cihaz, iletişimin mümkün olmadığı bir duruma açılabilir.
+**Hizmet Reddi**: Cihaz, iletişimin mümkün olmadığı bir duruma dönüştürülebilir.
 
-**Değişiklik**: cihaz, denetim sistemine bilinmeyen bir durumda çalışacak şekilde yeniden yapılandırılabilir (bilinen ayarlama parametreleri dışında) ve bu nedenle yanlış yorumlanabilen verileri sağlar.
+**Kurcalama**: Cihaz, kontrol sistemi bilinmeyen bir durumda (bilinen kalibrasyon parametreleri dışında) çalışacak şekilde yeniden yapılandırılabilir ve böylece yanlış yorumlanabilecek veriler sağlayabilir.
 
-**Yanıltma/ret/Red**: güvenli değilse (tüketici uzak denetimlerinde nadiren olduğu gibi), bir saldırgan bir cihazın durumunu anonim olarak değiştirebilir. İyi bir çizim, popüler Prankster araçları olan herhangi bir TV 'yi açmak için uzak denetimlerdir.
+**Sızdırma/Tahrif/Reddetme**: Güvenli değilse (ki bu tüketici uzaktan kumandalarında nadiren geçerli dir), saldırgan aygıtın durumunu anonim olarak manipüle edebilir. İyi bir illüstrasyon herhangi bir TV açabilirsiniz ve popüler şakacı araçları olan uzaktan kumandalar olduğunu.
 
 #### <a name="communication"></a>İletişim
 
-Cihazlar, cihazlar ve alan ağ geçitleri ile cihaz ve bulut ağ geçidi arasındaki iletişim yolunun etrafındaki tehditler. Aşağıdaki tabloda, cihazda/VPN üzerinde açık yuvaların çevresinde bazı yönergeler bulunur:
+Aygıtlar, aygıtlar ve alan ağ geçitleri ile aygıt ve bulut ağ geçidi arasındaki iletişim yolu etrafındaki tehditler. Aşağıdaki tabloda aygıt/VPN'deki açık soketlerin etrafında bazı kılavuzlar vardır:
 
-| **Bileşen** | **Tehdit** | **Mayı** | **Esini** | **Paylaşır** |
+| **Bileşen** | **Tehdit** | **Risk azaltma** | **Risk** | **Uygulama** |
 | --- | --- | --- | --- | --- |
-| Cihaz IoT Hub |DEĞERI |TID Trafiği şifrelemek için TLS (PSK/RSA) |Cihaz ve ağ geçidi arasındaki iletişimi dinleyen ya da engelliyor |Protokol düzeyinde güvenlik. Özel protokollerle bunları nasıl koruyacağınızı belirlemeniz gerekir. Çoğu durumda, iletişim cihazdan IoT Hub gerçekleşir (cihazın bağlantıyı başlattığı). |
-| Cihazdan cihaza |DEĞERI |TID Trafiği şifrelemek için TLS (PSK/RSA). |Cihazlar arasında geçiş sırasında verileri okuma. Verilerle müdahale. Yeni bağlantılarla cihazı aşırı yükleme |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP). Özel protokollerle bunları nasıl koruyacağınızı belirlemeniz gerekir. DoS tehdidi için risk azaltma, bir bulut veya alan ağ geçidi aracılığıyla cihazları eşler ve yalnızca ağa yönelik istemci olarak davranır. Eşleme, ağ geçidi tarafından aracılı yapıldıktan sonra eşler arasında doğrudan bağlantıya neden olabilir |
-| Dış varlık cihazı |DEĞERI |Dış varlığın cihaza güçlü eşleştirme |Cihaza olan bağlantıyı dinleyen. Cihazla iletişimi engelliyor |Dış varlığı, NFC/Bluetooth LE cihaz ile güvenli bir şekilde eşleştiriliyor. Cihazın işletimsel panelini denetleme (fiziksel) |
-| Alan ağ geçidi bulutu ağ geçidi |DEĞERI |Trafiği şifrelemek için TLS (PSK/RSA). |Cihaz ve ağ geçidi arasındaki iletişimi dinleyen ya da engelliyor |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP). Özel protokollerle bunları nasıl koruyacağınızı belirlemeniz gerekir. |
-| Cihaz bulutu ağ geçidi |DEĞERI |Trafiği şifrelemek için TLS (PSK/RSA). |Cihaz ve ağ geçidi arasındaki iletişimi dinleyen ya da engelliyor |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP). Özel protokollerle bunları nasıl koruyacağınızı belirlemeniz gerekir. |
+| Cihaz IoT Hub |Tid |(D) TLS (PSK/RSA) trafiği şifrelemek için |Cihaz ve ağ geçidi arasındaki iletişimi dinleme veya müdahale etme |Protokol seviyesinde güvenlik. Özel protokollerle, onları nasıl koruyacağınızı bulmanız gerekir. Çoğu durumda, iletişim aygıttan IoT Hub'ına gerçekleşir (aygıt bağlantıyı başlatır). |
+| Cihazdan Cihaza |Tid |(D) TLS (PSK/RSA) trafiği şifrelemek için. |Aygıtlar arasında aktarım daki verileri okuma. Verilerle oynamak. Cihazın yeni bağlantılarla aşırı yüklenmesi |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP. Özel protokollerle, onları nasıl koruyacağınızı bulmanız gerekir. DoS tehdidinin azaltıcı etkisi, aygıtları bir bulut veya alan ağ geçidi üzerinden eşlemek ve yalnızca ağa karşı istemci olarak davranmalarını sağlamaktır. Bu bakış, ağ geçidi tarafından aracılık edildikten sonra eşler arasında doğrudan bir bağlantıya neden olabilir |
+| Harici Varlık Aygıtı |Tid |Dış varlığın aygıtla güçlü eşleşmesi |Cihaza olan bağlantıyı dinliyor. Aygıtla iletişimi engelleme |Dış varlığı nfc/Bluetooth LE aygıtıyla güvenli bir şekilde eşleştirme. Cihazın çalışma panelini kontrol etme (Fiziksel) |
+| Alan Ağ Geçidi Bulut Ağ Geçidi |Tid |TLS (PSK/RSA) trafiği şifrelemek için. |Cihaz ve ağ geçidi arasındaki iletişimi dinleme veya müdahale etme |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP). Özel protokollerle, onları nasıl koruyacağınızı bulmanız gerekir. |
+| Aygıt Bulut Ağ Geçidi |Tid |TLS (PSK/RSA) trafiği şifrelemek için. |Cihaz ve ağ geçidi arasındaki iletişimi dinleme veya müdahale etme |Protokol düzeyinde güvenlik (MQTT/AMQP/HTTP/CoAP). Özel protokollerle, onları nasıl koruyacağınızı bulmanız gerekir. |
 
-Bu kategoride tehditler için bazı örnekler aşağıda verilmiştir:
+Bu kategorideki tehditlere örnek olarak aşağıda verilmiştir:
 
-**Hizmet reddi**: kısıtlanmış cihazlar genellikle bir ağ üzerinde gelen bağlantıları veya istenmeyen veri birimlerini etkin bir şekilde dinlerken DOS tehdidi altındadır. Bu, bir saldırgan paralel olarak çok sayıda bağlantı açabildiğinde veya hizmet vermez yavaş veya cihaz, istenmeyen trafikle taşalabilir. Her iki durumda da cihaz, ağ üzerinde çalışamaz şekilde işlenebilir.
+**Hizmet Reddi**: Bir saldırgan paralel olarak birçok bağlantıyı açıp onlara hizmet vermemek veya yavaş yavaş hizmet vermemek veya cihaz istenmeyen trafikle dolup taşabildiği için, kısıtlanmış aygıtlar genellikle bir ağdaki gelen bağlantıları veya istenmeyen datagramları aktif olarak dinlediğinde DoS tehdidi altındadır. Her iki durumda da, aygıt ağda etkili bir şekilde çalışamaz hale getirilebilir.
 
-**Sızdırma, bilgilerin açıklanması**: kısıtlı cihazlar ve özel amaçlı cihazlar genellikle parola veya PIN koruması gibi bir veya ağa güvenen bir güvenlik özelliğine sahiptir ve bu durum, şu durumlarda bilgilere erişim izni verir bir cihaz aynı ağ üzerinde ve bu ağ genellikle yalnızca paylaşılan bir anahtarla korunur. Bu, cihaz veya ağ ile paylaşılan gizli dizi açıklandığında, cihazı denetlemek veya cihazdan alınan verileri gözlemlemek mümkündür.  
+**Sızdırma, Bilgi Açıklama**: Kısıtlı aygıtlar ve özel amaçlı aygıtlar genellikle parola veya PIN koruması gibi her şey için bir güvenlik olanaklarına sahiptir veya tamamen ağa güvenmeye güvenirler, bu da bir aygıt aynı ağdayken bilgilere erişim izni verdikleri anlamına gelir ve bu ağ genellikle yalnızca paylaşılan bir anahtar la korunur. Bu, aygıt veya ağa paylaşılan gizli açıklandığında, aygıtı denetlemek veya aygıttan yayılan verileri gözlemlemek mümkün olduğu anlamına gelir.  
 
-**Sızdırma**: bir saldırgan yayını ele geçirebilir veya kısmen geçersiz kılabilir ve kaynağı taklit edebilir (ortadaki Man)
+**Sızdırma**: Saldırgan yayını yakalayabilir veya kısmen geçersiz kılabilir ve kaynağı (ortadaki adam)
 
-**Değişiklik**: bir saldırgan yayını ele geçirebilir veya kısmen geçersiz kılabilir ve yanlış bilgi gönderebilir 
+**Tahrifat**: Saldırgan yayını yakalayabilir veya kısmen geçersiz kılabilir ve yanlış bilgi gönderebilir 
 
-**Bilgilerin açıklanması:** bir saldırgan bir yayını yayında bırakabilir ve yetkilendirme **hizmeti 'nin reddedilmesine** gerek kalmadan bilgi alabilir: bir saldırgan, yayın sinyalini düşürebilir ve bilgi dağıtımını reddedebilir
+**Bilgi Açıklaması:** Saldırgan bir yayını dinleyebilir ve yetkilendirme olmadan bilgi alabilir **Hizmet Reddi:** saldırgan yayın sinyalini bozabilir ve bilgi dağıtımını reddedebilir
 
 #### <a name="storage"></a>Depolama
 
-Her cihaz ve alan ağ geçidinin bir depolama biçimi vardır (verileri sıraya alma, işletim sistemi (OS) görüntü depolaması için geçici).
+Her aygıt ve alan ağ geçidinde bir tür depolama alanı vardır (verileri, işletim sistemini (OS) görüntü depolamayı sıraya dökmek için geçicidir).
 
-| **Bileşen** | **Tehdit** | **Mayı** | **Esini** | **Paylaşır** |
+| **Bileşen** | **Tehdit** | **Risk azaltma** | **Risk** | **Uygulama** |
 | --- | --- | --- | --- | --- |
-| Cihaz depolama |TR |Depolama şifrelemesi, günlükleri imzalama |Depolama alanından (PII verileri) veri okuma, telemetri verileriyle müdahale etme. Kuyruğa alınmış veya önbelleğe alınmış komut denetimi verileriyle müdahale. Önbelleğe alınmış veya yerel olarak kuyruğa alınan yapılandırma ya da bellenim güncelleştirme paketlerinin güvenliği, işletim sistemi ve/veya sistem bileşenlerine yol açabilir |Şifreleme, ileti kimlik doğrulama kodu (MAC) veya dijital imza. Mümkün olduğunda, kaynak erişim denetim listeleri (ACL 'Ler) veya izinler aracılığıyla güçlü erişim denetimi. |
-| Cihaz işletim sistemi görüntüsü |TR | |İşletim sistemi/IŞLETIM sistemi bileşenleri değiştirme |Salt okuma işletim sistemi bölümü, imzalanmış işletim sistemi görüntüsü, şifreleme |
-| Alan ağ geçidi depolaması (verileri sıraya alma) |TR |Depolama şifrelemesi, günlükleri imzalama |Depolama alanından (PII verileri) veri okuma, telemetri verileriyle müdahale etme, kuyruğa alınmış veya önbelleğe alınmış komut denetimi verileriyle değişiklik. Önbelleğe alınmış veya yerel olarak sıraya alınmış bir yapılandırma ya da bellenim güncelleştirme paketi (cihazlar veya alan ağ geçidi için hedeflenen), işletim sistemi ve/veya sistem bileşenlerine yol açabilir |BitLocker |
-| Alan ağ geçidi işletim sistemi görüntüsü |TR | |İşletim sistemi/IŞLETIM sistemi bileşenleri değiştirme |Salt okuma işletim sistemi bölümü, imzalanmış işletim sistemi görüntüsü, şifreleme |
+| Cihaz depolama |TRID |Depolama şifreleme, günlükleri imzalama |Depolama (PII verileri) verileri okuma, telemetri verileri ile kurcalama. Sıralı veya önbelleğe alınmış komut denetimi verileriyle oynama. Önbelleğe alınmış veya yerel olarak sıraya alınırken yapılandırma veya firmware güncelleştirme paketleriyle oynama, işletim sistemi ve/veya sistem bileşenlerinin tehlikeye atılmasına neden olabilir |Şifreleme, ileti kimlik doğrulama kodu (MAC) veya dijital imza. Mümkün olduğunda, kaynak erişim denetim listeleri (ALA'lar) veya izinler aracılığıyla güçlü erişim denetimi. |
+| Aygıt işletim sistemi görüntüsü |TRID | |Os ile kurcalama /Işletim Sistemi bileşenlerinin değiştirilmesi |Salt okunur işletim sistemi bölümü, imzalı işletim sistemi görüntüsü, Şifreleme |
+| Alan Ağ Geçidi depolama (verileri sıraya alma) |TRID |Depolama şifreleme, günlükleri imzalama |Depolama (PII verileri) verilerini okuma, telemetri verileriyle oynama, sıraya alınmış veya önbelleğe alınmış komut denetimi verilerini kurcalama. Önbelleğe alınmış veya yerel olarak sıraya alınırken yapılandırma veya firmware güncelleştirme paketleriyle (aygıtlara veya alan ağ geçidine yönelik) kurcalanma, işletim sistemi ve/veya sistem bileşenlerinin tehlikeye atılmasına neden olabilir |BitLocker |
+| Alan Ağ Geçidi İşletim görüntüsü |TRID | |Os ile kurcalama /Işletim Sistemi bileşenlerinin değiştirilmesi |Salt okunur işletim sistemi bölümü, imzalı işletim sistemi görüntüsü, Şifreleme |
 
-### <a name="device-and-event-processingcloud-gateway-zone"></a>Cihaz ve olay işleme/bulut ağ geçidi bölgesi
+### <a name="device-and-event-processingcloud-gateway-zone"></a>Aygıt ve olay işleme/bulut ağ geçidi bölgesi
 
-Bulut ağ geçidi, genellikle bu tür sistemlerin bir Federasyonu olan bulut tabanlı bir denetim ve veri analizi sistemine bağlı olarak, ortak ağ alanı genelinde birden çok farklı siteden cihazlar veya alan ağ geçitleri arasında uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi, tablet veya telefon gibi terminallerdeki özel amaçlı cihazlara erişimi hemen kolaylaştırabilir. Burada açıklanan bağlamda, "Cloud", bağlı cihazlar veya alan ağ geçitleri ile aynı siteye bağlı olmayan bir adanmış veri işleme sistemine başvurmaktır ve işlemsel ölçüler hedeflenen fiziksel erişimi engeller ancak " genel bulut "altyapısı. Bir bulut ağ geçidi, bulut ağ geçidini ve tüm bağlı cihazlarını veya alan ağ geçitlerini diğer ağ trafiğinden yalıtılmış olarak bir ağ sanallaştırma kaplamasına eşlenebilir. Bulut ağ geçidi, cihaz verileri için bir cihaz denetim sistemi veya işlem veya depolama olanağı değildir; bulut ağ geçidine sahip bu tesisler arabirimi. Bulut ağ geçidi bölgesi, tüm alan ağ geçitleri ve cihazlarıyla birlikte doğrudan veya dolaylı olarak bağlı olan bulut ağ geçidinin kendisini içerir.
+Bulut ağ geçidi, genellikle bulut tabanlı bir denetim ve veri analiz sistemi olan bu tür sistemlerin federasyonu olan bulut tabanlı denetim ve veri analiz sistemine yönelik olarak, genel ağ alanı ndaki birkaç farklı siteden aygıtlardan veya alan ağ geçitlerinden uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi tabletler veya telefonlar gibi terminallerden özel amaçlı aygıtlara erişimi hemen kolaylaştırabilir. Burada tartışılan bağlamda ,"bulut", ekli aygıtlarla veya alan ağ geçitleri ile aynı siteye bağlı olmayan ve operasyonel önlemlerin hedeflenen fiziksel erişimi engellediği, ancak "bir " anlamına gelmemesi gereken özel bir veri işleme sistemine atıfta bulunmak içindir. genel bulut" altyapısı. Bulut ağ geçidi, bulut ağ geçidini ve bağlı tüm aygıtlarını veya alan ağ geçitlerini başka bir ağ trafiğinden yalıtmak için ağ sanallaştırma bindirmesine eşlenebilir. Bulut ağ geçidinin kendisi bir aygıt kontrol sistemi veya aygıt verileri için bir işleme veya depolama tesisi değildir; bu tesisler bulut ağ geçidi ile arayüz. Bulut ağ geçidi bölgesi, bulut ağ geçidinin kendisini, doğrudan veya dolaylı olarak bağlı tüm alan ağ geçitleri ve aygıtlarıyla birlikte içerir.
 
-Bulut ağ geçidi, alan ağ geçidi ve cihazların bağlandığı açık uç noktalara sahip bir hizmet olarak çalışan, genellikle özel bir yerleşik yazılım parçasıdır. Bu nedenle, güvenlik göz önünde bulundurularak tasarlanmalıdır. Bu hizmeti tasarlamak ve oluşturmak için [SDL](https://www.microsoft.com/sdl) işlemini izleyin.
+Bulut ağ geçidi, çoğunlukla alan ağ geçidinin ve aygıtların bağlandığı açık uç noktaları olan bir hizmet olarak çalışan özel olarak oluşturulmuş yazılım parçasıdır. Bu nedenle güvenlik göz önünde bulundurularak tasarlanmalıdır. Bu hizmeti tasarlamak ve oluşturmak için [SDL](https://www.microsoft.com/sdl) işlemini izleyin.
 
-#### <a name="services-zone"></a>Hizmetler bölgesi
+#### <a name="services-zone"></a>Hizmet bölgesi
 
-Bir denetim sistemi (veya denetleyicisi) bir veya birden çok cihazı denetlemek ve/veya cihaz verilerini sunu ve/veya analiz etmek ve/veya çözümlemek için bir cihaz ya da bir alan ağ geçidi ya da bulut ağ geçidi olan bir yazılım çözümüdür ya da sonraki denetim amaçları. Denetim sistemleri, bu tartışma kapsamındaki tek varlıklardır ve kişilerle etkileşimi hemen kolaylaştırmaya yardımcı olabilir. Özel durumlar, bir kişinin cihazı kapatmasına veya diğer özellikleri değiştirmesine izin veren ve dijital olarak erişilebilen işlevsel eşdeğeri olmayan bir anahtar gibi cihazlarda bulunan ara fiziksel denetim yüzeyleridir.
+Kontrol sistemi (veya denetleyici), bir veya birden fazla cihazı kontrol etmek ve/veya sunum veya sonraki kontrol amaçları için cihaz verilerini toplamak ve/veya depolamak ve/veya analiz etmek amacıyla bir aygıtla veya bir alan ağ geçidiyle veya bulut ağ geçidiyle arayüz oluşturan bir yazılım çözümüdür. Kontrol sistemleri, bu tartışma kapsamındaki kişilerle etkileşimi hemen kolaylaştırabilecek tek varlıklardır. İstisnalar, bir kişinin cihazı kapatmasına veya diğer özellikleri değiştirmesine olanak tanıyan ve dijital olarak erişilebilen işlevsel bir eşdeğeri bulunmayan bir anahtar gibi aygıtlardaki ara fiziksel kontrol yüzeyleridir.
 
-Ara fiziksel denetim yüzeyleri, bir eşdeğer işlevin uzaktan başlatılabileceği ya da uzak girişle giriş çakışmalarının önlenebildiği gibi, fiziksel denetim yüzeyi işlevini kısıtlayan, Denetim yüzeyleri kavramsal olarak, cihazın paralel olarak bağlı olabileceği diğer herhangi bir uzaktan denetim sistemiyle aynı temel işlevsellikten yararlanan yerel bir denetim sistemine iliştirildi. Bulut bilgi işlem için en önemli tehditler, [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) sayfasında okunabilir.
+Ara fiziksel kontrol yüzeyleri, yönetim mantığının fiziksel kontrol yüzeyinin işlevini kısıtladığı, eşdeğer bir işlevin uzaktan başlatılabildiği veya uzaktan girişle giriş çakışmaları önlenebileceği - bu tür ara kontrol yüzeyleri, aygıtın paralel olarak bağlanabileceği diğer uzaktan kumanda sistemleriyle aynı temel işlevselliği sağlayan yerel bir denetim sistemine kavramsal olarak bağlanır. Bulut bilgi işlem için en büyük tehditler [Bulut Güvenliği Birliği (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) sayfasından okunabilir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
+* [SDL Tehdit Modelleme Aracı](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
 * [Microsoft Azure IoT başvuru mimarisi](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub modül kimliği & Module ikizi (portal ve .NET)
+title: Azure IoT Hub modülü kimlik & modülü ikiz (portal ve .NET)
 description: Portal ve .NET kullanarak modül kimliği oluşturmayı ve modülü güncelleştirmeyi öğrenin.
 author: robinsh
 manager: philmea
@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954613"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Portal ve .NET cihazını kullanarak IoT Hub modül kimliğini ve modül ikizini kullanmaya başlama
@@ -21,48 +21,48 @@ ms.locfileid: "73954613"
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modül kimlikleri ve modül ikizleri](iot-hub-devguide-module-twins.md), Azure IoT Hub cihaz kimliğine ve cihaz ikizine benzer, ancak daha hassas ayrıntı düzeyi sağlar. Azure IoT Hub cihaz kimliği ve cihaz ikizi, arka uç uygulamasının bir cihaz yapılandırmasına ve cihazın koşullarına ilişkin görünürlük sağlamasına olanak sağlarken bir modül kimliği ve modül ikizi, bir cihazın tek tek bileşenleri için bu özellikleri sağlar. İşletim sistemi tabanlı cihazlar veya bellenim cihazları gibi birden çok bileşeni olan uyumlu cihazlarda, modül kimlikleri ve modül TWINS, her bileşen için yalıtılmış yapılandırma ve koşullara izin verir.
+> [Modül kimlikleri ve modül ikizleri](iot-hub-devguide-module-twins.md), Azure IoT Hub cihaz kimliğine ve cihaz ikizine benzer, ancak daha hassas ayrıntı düzeyi sağlar. Azure IoT Hub aygıt kimliği ve aygıt ikizi, arka uç uygulamasının bir aygıtı yapılandırmasını ve aygıtın koşullarında görünürlük sağlamasını sağlarken, modül kimliği ve modül ikizi bu özellikleri bir aygıtın tek tek bileşenleri için sağlar. İşletim sistemi tabanlı aygıtlar veya firmware aygıtları gibi birden fazla bileşene sahip yetenekli cihazlarda, modül kimlikleri ve modül ikizleri her bileşen için yalıtılmış yapılandırma ve koşullarsağlar.
 >
 
 Bu öğreticide şunları öğreneceksiniz:
 
-* Portalda bir modül kimliği oluşturma.
+* Portalda bir modül kimliği nasıl oluşturulur.
 
-* Bir .NET cihaz SDK 'sını kullanarak ikizi modülünü cihazınızdan güncelleştirme.
+* Modülü aygıtınızdan ikiz olarak güncellemek için bir .NET cihazı SDK nasıl kullanılır?
 
 > [!NOTE]
-> Hem cihazlarda hem de çözüm arka ucunda çalıştırılacak uygulamalar oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
+> Her iki uygulamayı da cihazlarda çalıştırmak için kullanabileceğiniz Azure IoT SK'ları hakkında bilgi için Azure [IoT SDK'larına](iot-hub-devguide-sdks.md)bakın.
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Visual Studio.
 
-* Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
+* Etkin bir Azure hesabı. Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
 ## <a name="create-a-hub"></a>Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-hub"></a>Hub 'a yeni bir cihaz kaydetme
+## <a name="register-a-new-device-in-the-hub"></a>Hub'a yeni bir aygıt kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>Portalda bir modül kimliği oluşturma
 
-Tek bir cihaz kimliği içinde en fazla 20 modül kimliği oluşturabilirsiniz. Bir kimlik eklemek için aşağıdaki adımları izleyin:
+Tek bir cihaz kimliği içinde en fazla 20 modül kimliği oluşturabilirsiniz. Kimlik eklemek için aşağıdaki adımları izleyin:
 
-1. Önceki bölümde oluşturduğunuz cihaz için, ilk modül kimliğinizi oluşturmak için **modül kimliği Ekle** ' yi seçin.
+1. Önceki bölümde oluşturduğunuz aygıt için, ilk modül kimliğinizi oluşturmak için **Modül Kimliği Ekle'yi** seçin.
 
-1. *Myfirstmodule*adını girin. Modül kimliğinizi kaydedin.
+1. *MyFirstModule*adını girin. Modül kimliğinizi kaydedin.
 
-    ![Modül kimliği Ekle](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+    ![Modül kimliği ekleme](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
     Yeni modül kimliğiniz ekranın alt kısmında görünür. Modül kimlik ayrıntılarını görmek için seçin.
 
-    ![Modül kimliği ayrıntılarına bakın](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
+    ![Modül kimlik bilgilerini görme](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-**Bağlantı dizesini kaydet-birincil anahtar**. Bunu bir sonraki bölümde kullanarak modülünüzü cihazda ayarlarsınız.
+Connect **dizesini**kaydet - birincil anahtar . Modülünüzü cihaza ayarlamak için bir sonraki bölümde kullanırsınız.
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>.NET cihaz SDK’sını kullanarak modül ikizini güncelleştirme
 
@@ -70,39 +70,39 @@ IoT Hub’ınızda modül kimliğini başarıyla oluşturdunuz. Simülasyon ciha
 
 ### <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-Modülün ikizi bildirilen özelliklerini güncelleştiren bir uygulama oluşturmak için aşağıdaki adımları izleyin:
+Modül ikiz bildirilen özelliklerini güncelleyen bir uygulama oluşturmak için aşağıdaki adımları izleyin:
 
-1. Visual Studio 'da **Yeni proje oluştur**' u ve ardından **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. Visual Studio'da **yeni bir proje oluştur'u**seçin, ardından Konsol **Uygulaması'nı (.NET Framework)** seçin ve **İleri'yi**seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, **Proje adı**olarak *Updatemodületwinreportedproperties* yazın. Devam etmek için **Oluştur** ' u seçin.
+1. **Yeni projenizi yapılandırın,** **Proje adı**olarak *UpdateModuleTwinReportedProperties* girin. Devam etmek için **Oluştur'u** seçin.
 
-    ![Visual Studio projeniz olduğunuzu yapılandırma](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
+    ![Görsel bir stüdyo projesi olduğunuzu yapılandırın](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
-### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>En son Azure IoT Hub .NET cihaz SDK 'sını yükler
+### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>En son Azure IoT Hub .NET cihazı SDK'yı yükleyin
 
-Modül kimliği ve modül ikizi genel önizlemede. Yalnızca yayın öncesi cihaz SDK 'Ları IoT Hub kullanılabilir. Yüklemek için şu adımları izleyin:
+Modül kimliği ve modül ikizi genel önizlemede. Yalnızca IoT Hub ön sürüm aygıtı SDK'larda kullanılabilir. Yüklemek için aşağıdaki adımları izleyin:
 
-1. Visual Studio 'da, **NuGet paket yöneticisi** > **Araçlar** ' ı açın > **çözüm için NuGet paketlerini yönetin**.
+1. Visual Studio'da, Open **Tools** > **NuGet Package Manager** > **Çözüm için NuGet Paketlerini Yönetin.**
 
-1. **Araştır**' ı seçin ve ardından **sürümü dahil et**' i seçin. *Microsoft. Azure. Devices. Client*araması yapın. En son sürümü seçin ve yüklemeyi yapın.
+1. **Gözat'ı**seçin ve ardından **ön sürüm ekle'yi**seçin. *Microsoft.Azure.Devices.Client'ı*arayın. En son sürümü seçin ve yükleyin.
 
-    ![Azure IoT Hub .NET Service SDK önizlemesi 'ni yükler](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+    ![Azure IoT Hub .NET hizmeti SDK önizlemesini yükleme](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
     Şimdi tüm modül özelliklerine erişiminiz vardır.
 
-### <a name="get-your-module-connection-string"></a>Modülünüzün bağlantı dizesini alın
+### <a name="get-your-module-connection-string"></a>Modül bağlantı dizenizi alın
 
-Konsol uygulamanız için modül bağlantı dizesine ihtiyacınız vardır. Şu adımları uygulayın:
+Konsol uygulamanız için modül bağlantı dizesi gerekir. Şu adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
-1. IoT Hub 'ınıza gidin ve **IoT cihazları**' nı seçin. **Myfirstdevice** ' i açın ve **myfirstmodule** ' un başarıyla oluşturulduğunu görürsünüz.
+1. IoT hub'ınıza gidin ve **IoT Aygıtlarını**seçin. **MyFirstDevice'ı** açın ve **myFirstModule'in** başarıyla oluşturulduğunu görün.
 
-1. **Modül kimlikleri**altında **myfirstmodule** öğesini seçin. **Modül kimliği ayrıntıları**' nda **bağlantı dizesini (birincil anahtar)** kopyalayın.
+1. **Modül Kimlikleri**altında **myFirstModule'i** seçin. **Modül Kimlik Ayrıntıları'nda** **Bağlantı dizesini (birincil anahtar)** kopyalayın.
 
     ![Azure portalı modül ayrıntısı](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Updatemodületwinreportedproperties konsol uygulaması oluşturma
+### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Güncelleme ModülüOluşturmaTwinReportedProperties konsol uygulaması
 
 Uygulamanızı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -138,7 +138,7 @@ Uygulamanızı oluşturmak için aşağıdaki adımları izleyin:
       }
   ```
 
-4. Son olarak, **Main** yöntemini aşağıdaki kodla değiştirin:
+4. Son olarak, **Ana** yöntemi aşağıdaki kodla değiştirin:
 
   ```csharp
   static void Main(string[] args)
@@ -187,6 +187,6 @@ Bu kod örneği, AMQP protokolüyle raporlanan özellikleri güncelleştirme ve 
 
 IoT Hub’ı kullanmaya başlamak ve diğer IoT senaryolarını keşfetmek için bkz:
 
-* [.NET Backup ve .NET cihazını kullanarak IoT Hub modül kimliği ve modül ikizi ile çalışmaya başlama](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [.NET yedekleme ve .NET cihazını kullanarak IoT Hub modül kimliğini ve modül ikizini kullanmaya başlama](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
-* [IoT Edge kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge ile çalışmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Blob depolama 'da değişiklik akışını işleme (Önizleme) | Microsoft Docs
-description: .NET istemci uygulamasında değişiklik akışı günlüklerini işlemeyi öğrenin
+title: Azure Blob Depolama 'da işlem akışı akışı (Önizleme) | Microsoft Dokümanlar
+description: Bir .NET istemci uygulamasında besleme günlüklerini nasıl işleyeceğinizi öğrenin
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,36 +9,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74111862"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob depolama 'da değişiklik akışını işleme (Önizleme)
+# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob Depolama 'da akış değişikliği (Önizleme)
 
-Değişiklik akışı, bloblarda oluşan tüm değişikliklerin işlem günlükleri ve Depolama hesabınızdaki blob meta verileri sağlar. Bu makalede blob değişiklik akışı işlemci kitaplığını kullanarak değişiklik akışı kayıtlarının nasıl okunacağı gösterilmektedir.
+Değişiklik akışı, depolama hesabınızdaki blob'larda ve blob meta verilerinde meydana gelen tüm değişikliklerin işlem günlüklerini sağlar. Bu makalede, blob change feed işlemci kitaplığını kullanarak değişiklik akışı kayıtlarını nasıl okuyabileceğinizi gösterir.
 
-Değişiklik akışı hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolama (Önizleme) içinde akışı değiştirme](storage-blob-change-feed.md).
+Değişiklik akışı hakkında daha fazla bilgi edinmek için [Azure Blob Depolama 'da (Önizleme) akış değiştir'e](storage-blob-change-feed.md)bakın.
 
 > [!NOTE]
-> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md). Değişiklik akışı işlemci kitaplığı, şu anda ve bu kitaplık genel kullanıma sunulduğunda değişiklik gösterebilir.
+> Değişiklik akışı genel önizlemede dir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bilinen sorunlar ve sınırlamalarla birlikte bu özellik hakkında daha fazla bilgi edinmek için [Azure Blob Depolama'da özet akışı desteğini değiştir'e](storage-blob-change-feed.md)bakın. Akış işlemcikitaplığını değiştir, şimdi ile bu kitaplığın genel kullanıma sunulduğu zaman arasında değişebilir.
 
-## <a name="get-the-blob-change-feed-processor-library"></a>Blob değişiklik akışı işlemci kitaplığını al
+## <a name="get-the-blob-change-feed-processor-library"></a>Blob değiştirme besleme işlemcikitaplığını alın
 
-1. Visual Studio 'da, NuGet paket kaynaklarınıza `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` URL 'sini ekleyin. 
+1. Visual Studio'da URL'yi `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` NuGet paket kaynaklarınıza ekleyin. 
 
-   Nasıl yapılacağını öğrenmek için bkz. [paket kaynakları](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
+   Nasıl yapılacağını öğrenmek için [paket kaynaklarına](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)bakın.
 
-2. NuGet Paket Yöneticisi 'nde **Microsoft. Azure. Storage. changefeed** paketini bulun ve projenize yükler. 
+2. NuGet Paket Yöneticisi'nde **Microsoft.Azure.Storage.Changefeed** paketini bulun ve projenize yükleyin. 
 
-   Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+   Nasıl yapılacağını öğrenmek için [bkz.](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)
 
-## <a name="connect-to-the-storage-account"></a>Depolama hesabına Bağlan
+## <a name="connect-to-the-storage-account"></a>Depolama hesabına bağlanma
 
-[Cloudstorageaccount. Tryparo](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) yöntemini çağırarak bağlantı dizesini ayrıştırın. 
+[CloudStorageAccount.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) yöntemini arayarak bağlantı dizesini ayrıştın. 
 
-Ardından, [Cloudstorageaccount. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) metodunu çağırarak depolama hesabınızda blob depolamayı temsil eden bir nesne oluşturun.
+Ardından, [CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) yöntemini arayarak depolama hesabınızda Blob Depolama'yı temsil eden bir nesne oluşturun.
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
@@ -58,16 +58,16 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 }
 ```
 
-## <a name="initialize-the-change-feed"></a>Değişiklik akışını Başlat
+## <a name="initialize-the-change-feed"></a>Değişiklik akışını başlatma
 
-Aşağıdaki using deyimlerini, kod dosyanızın en üstüne ekleyin. 
+Kod dosyanızın üst bölümüne aşağıdaki ifadeleri kullanarak ekleyin. 
 
 ```csharp
 using Avro.Generic;
 using ChangeFeedClient;
 ```
 
-Ardından, **Getcontainerreference** yöntemini çağırarak **changefeed** sınıfının bir örneğini oluşturun. Değişiklik akışı kapsayıcısının adını geçirin.
+Ardından, **GetContainerReference** yöntemini arayarak **ChangeFeed** sınıfının bir örneğini oluşturun. Değişiklik besleme kapsayıcısı adına geçirin.
 
 ```csharp
 public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
@@ -85,11 +85,11 @@ public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
 ## <a name="reading-records"></a>Kayıtları okuma
 
 > [!NOTE]
-> Değişiklik akışı, depolama hesabınızda sabit ve salt okunurdur bir varlıktır. Herhangi bir sayıda uygulama değişiklik akışını eşzamanlı ve bağımsız olarak kendi kolaylığını okuyabilir ve işleyebilir. Bir uygulama bunları okurken değişiklik akışından kayıt kaldırılmaz. Her bir tüketen okuyucunun okuma veya yineleme durumu yalnızca uygulamanız tarafından bağımsızdır ve korunur.
+> Değişiklik akışı, depolama hesabınızda değişmez ve salt okunur bir varlıktır. Herhangi bir sayıda uygulama, değişiklik akışını aynı anda ve bağımsız olarak kendi kolaylıkları yla okuyabilir ve işleyebilir. Bir uygulama bunları okuduğunda kayıtlar değişiklik akışından kaldırılmaz. Her tüketen okuyucunun okuma veya yineleme durumu bağımsızdır ve yalnızca uygulamanız tarafından korunur.
 
-Kayıtları okumanın en kolay yolu, **Changefeedreader** sınıfının bir örneğini oluşturmaktır. 
+Kayıtları okumanın en basit yolu **ChangeFeedReader** sınıfının bir örneğini oluşturmaktır. 
 
-Bu örnek, değişiklik akışındaki tüm kayıtlar boyunca yinelenir ve sonra her bir kayıttaki birkaç değeri konsola yazdırır. 
+Bu örnek, değişiklik akışındaki tüm kayıtları yineler ve sonra her kayıttan birkaç değeri konsola yazdırır. 
  
 ```csharp
 public async Task ProcessRecords(ChangeFeed changeFeed)
@@ -116,15 +116,15 @@ public async Task ProcessRecords(ChangeFeed changeFeed)
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Kaydedilmiş bir konumdan kayıtları okumaya devam ediliyor
+## <a name="resuming-reading-records-from-a-saved-position"></a>Kaydedilen konumdan okuma kayıtlarını devam landırma
 
-Okuma konumunuzu değişiklik akışınıza kaydetmeyi ve daha sonra kayıtları daha sonra yineleme işlemini sürdürmeyi seçebilirsiniz. Değişiklik akışı yinelemesinin durumunu herhangi bir zamanda **Changefeedreader. serializet()** yöntemini kullanarak kaydedebilirsiniz. Durum bir **dizedir** ve uygulamanız bu durumu uygulamanızın tasarımına göre kaydedebilir (örneğin: bir veritabanına veya dosyaya).
+Değişiklik akışınızda okuma konumunuz kaydedin ve ileriki bir zamanda kayıtları yeniden kaydetmeyi seçebilirsiniz. **ChangeFeedReader.SerializeState()** yöntemini kullanarak istediğiniz zaman değişiklik akışının yineleme durumunu kaydedebilirsiniz. Durum bir **dizedir** ve uygulamanız bu durumu uygulamanızın tasarımına göre kaydedebilir (Örneğin: bir veritabanına veya dosyaya).
 
 ```csharp
     string currentReadState = processor.SerializeState();
 ```
 
-**CreateChangeFeedReaderFromPointerAsync** yöntemini kullanarak **changefeedreader** oluşturarak son durumdaki kayıtlar arasında yineleme yapmaya devam edebilirsiniz.
+**CreateChangeFeedReaderFromPointerAsync** yöntemini kullanarak **ChangeFeedReader'ı** oluşturarak son durumdan gelen kayıtları yineleyerek devam edebilirsiniz.
 
 ```csharp
 public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
@@ -152,9 +152,9 @@ public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string l
 
 ```
 
-## <a name="stream-processing-of-records"></a>Kayıtların akışını işleme
+## <a name="stream-processing-of-records"></a>Kayıtların akış işleme
 
-Değişiklik akışı kayıtlarını geldikçe işlemeyi tercih edebilirsiniz. Bkz. [Özellikler](storage-blob-change-feed.md#specifications).
+Akış kayıtlarını geldikleri gibi işlemeyi seçebilirsiniz. [Teknik Özelliklere](storage-blob-change-feed.md#specifications)Bakın.
 
 ```csharp
 public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
@@ -186,11 +186,11 @@ public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
 }
 ```
 
-## <a name="reading-records-within-a-time-range"></a>Bir zaman aralığı içinde kayıtları okuma
+## <a name="reading-records-within-a-time-range"></a>Zaman aralığında kayıtları okuma
 
-Değişiklik akışı, değişiklik olay zamanına göre saatlik kesimlerde düzenlenir. Bkz. [Özellikler](storage-blob-change-feed.md#specifications). Belirli bir zaman aralığı içinde kalan değişiklik akışı segmentlerinden kayıtları okuyabilirsiniz.
+Değişiklik akışı, değişiklik olay saatini temel alınarak saatlik bölümler halinde düzenlenir. [Teknik Özelliklere](storage-blob-change-feed.md#specifications)Bakın. Belirli bir zaman aralığına giren değişiklik akışı bölümlerinden kayıtları okuyabilirsiniz.
 
-Bu örnek, tüm segmentlerin başlangıç zamanlarını alır. Ardından, başlangıç zamanı son tüketilebilir segmentin veya istenen aralığın bitiş saatinin ötesinde, bu liste üzerinde dolaşır. 
+Bu örnek, tüm kesimlerin başlangıç saatlerini alır. Daha sonra, başlangıç saati son sarf segmentinin zamanının ötesinde veya istenilen aralığın bitiş zamanının ötesine geçene kadar bu listeyi yineler. 
 
 ### <a name="selecting-segments-for-a-time-range"></a>Bir zaman aralığı için segmentleri seçme
 
@@ -235,7 +235,7 @@ public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
 }
 ```
 
-### <a name="reading-records-in-a-segment"></a>Kesimdeki kayıtları okuma
+### <a name="reading-records-in-a-segment"></a>Bir segmentteki kayıtları okuma
 
 Tek tek segmentlerden veya segment aralıklarından kayıtları okuyabilirsiniz.
 
@@ -267,11 +267,11 @@ public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset 
 }
 ```
 
-## <a name="read-records-starting-from-a-time"></a>Bir saatten başlayarak kayıtları okuma
+## <a name="read-records-starting-from-a-time"></a>Bir andan itibaren kayıtları okuma
 
-Bir başlangıç segmentinden bitiş tarihine kadar değişiklik akışı kayıtlarını okuyabilirsiniz. Bir zaman aralığı içinde kayıtları okumaya benzer şekilde, segmentleri listeleyebilir ve yineleme başlatacak bir segment seçebilirsiniz.
+Değişiklik akışı kayıtlarını başlangıç segmentinden sonuna kadar okuyabilirsiniz. Bir zaman aralığında kayıtları okumaya benzer şekilde, segmentleri listeleyebilir ve yeniden yinelemek için bir segment seçebilirsiniz.
 
-Bu örnek, işlenecek ilk segmentin [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) sayısını alır.
+Bu örnek, işlemek için ilk segmentin [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) alır.
 
 ```csharp
 public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
@@ -304,7 +304,7 @@ public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
 }
 ```
 
-Bu örnek, başlangıç kesiminin [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) değerinden başlayarak değişiklik akışı kayıtlarını işler.
+Bu örnek, başlangıç segmentinin [DateTimeOffset'inden](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) başlayarak akış kayıtlarını değiştirir.
 
 ```csharp
 public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
@@ -367,8 +367,8 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 ```
 
 >[!TIP]
-> Bir segmenti bir veya daha fazla *Chunkfilepath*içinde değişiklik akışı günlüklerini içerebilir. Birden çok *Chunkfilepath* söz konusu olduğunda, sistemin yayımlama aktarım hızını yönetmek için kayıtları dahili olarak birden çok parçaya bölümlendirildi. Segmentin her bölümünün birbirini dışlayan Bloblar için değişiklikler içereceği ve sıralamayı ihlal etmeden bağımsız olarak işlenebildiği garanti edilir. Senaryonuz için en verimli olan kayıt düzeyindeki kayıtları yinelemek için **ChangeFeedSegmentShardReader** sınıfını kullanabilirsiniz.
+> Bir segmentbir veya daha fazla *chunkFilePath*değişiklik besleme günlükleri olabilir. Birden fazla *chunkFilePath* durumunda sistem, yayımlama iş kısmını yönetmek için kayıtları dahili olarak birden çok parçaya betkimiştir. Segmentin her bir bölümünün birbirini dışlayan lekeler için değişiklikler içereceği ve siparişi ihlal etmeden bağımsız olarak işlenebileceği garanti edilir. Senaryonuz için en verimli se, **changefeedSegmentShardReader** sınıfını kullanarak parça düzeyindeki kayıtları yineleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Değişiklik akışı günlükleri hakkında daha fazla bilgi edinin. Bkz. [Azure Blob depolamada akışı değiştirme (Önizleme)](storage-blob-change-feed.md)
+Özet akışı günlüklerini değiştirme hakkında daha fazla bilgi edinin. Bkz. [Azure Blob Depolama'da akış değiştir (Önizleme)](storage-blob-change-feed.md)
