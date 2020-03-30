@@ -1,147 +1,146 @@
 ---
-title: Özel SKU 'Lar ve planlar | Azure Marketi
-description: Teklif kullanılabilirliğini yönetmek için özel SKU 'Ları kullanma.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Özel SK'ler ve planlar | Azure Marketi
+description: Teklifin kullanılabilirliğini yönetmek için özel SNU'lar nasıl kullanılır?
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
-ms.author: pabutler
-ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818829"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280397"
 ---
-<a name="private-skus-and-plans"></a>Özel SKU 'Lar ve planlar
+<a name="private-skus-and-plans"></a>Özel SKS ve Planları
 ============
 
-Özel SKU 'Lar, SKU 'ların belirli müşterilerle kullanılabilirliğini kısıtlamanıza olanak sağlar. Bir SKU özel olarak işaretlendiğinde, [Azure Marketi](https://azuremarketplace.microsoft.com) ve [Azure Portal](https://portal.azure.com)dahil olmak üzere herhangi bir genel katalogda kullanılamaz. Azure portal, yalnızca SKU 'ya erişimi olan müşteriler tarafından görüntülenebilir. Ayrıca, bunlara özel tekliflere erişiminin olması istenir.
+Özel SNU'lar, SNU'ların kullanılabilirliğini belirli müşterilerle sınırlamanızı sağlar. Bir SKU özel olarak işaretlendiğinde, [Azure Marketi](https://azuremarketplace.microsoft.com) ve [Azure portalı](https://portal.azure.com)da dahil olmak üzere hiçbir genel katalogda kullanılamaz. Azure portalında, yalnızca SKU erişimi olan müşteriler bunu görebilir. Ayrıca, özel tekliflere erişimleri de istenenir.
 
 >[!NOTE]
->Genel SKU 'larınız ile herhangi bir çakışmayı önlemek için özel SKU 'Ların yeni benzersiz SKU/plan kimlikleri olmalıdır.
+>Özel SKU'ların, kamu SKU'larınızla herhangi bir çatışmayı önlemek için yeni benzersiz SKU/Plan Id'lerine sahip olması gerekir.
 
-Aşağıdaki senaryoları işlemek için özel SKU 'Ları kullanabilirsiniz:
+Aşağıdaki senaryoları işlemek için özel SNU'ları kullanabilirsiniz:
 
-1.  Yalnızca belirli müşteriler için herkese açık ve herkese açık bir şekilde kullanılabilir olmasını istediğiniz yazılımları yayımlayın.
-2.  Belirli müşteriler için özelleştirilmiş bir fiyata ortak yazılımın çeşitlemelerini yayımlayın.
-3.  Ortak yazılımın çeşitlemelerini özelleştirilmiş bir açıklama ve koşullarla yayımlayın (yeni teklif aracılığıyla).
+1.  Yalnızca belirli müşteriler tarafından herkese açık olmasını istediğiniz ve herkese açık olmayan yazılımları yayımlayın.
+2.  Belirli müşteriler için özelleştirilmiş bir fiyatla ortak yazılım varyasyonları yayımlayın.
+3.  Özelleştirilmiş bir açıklama ve terimle (yeni teklif yoluyla) ortak yazılımın varyasyonlarını yayımlayın.
 
-Yalnızca fiyatı değiştirmek istiyorsanız, aynı teklifte başka bir SKU 'dan diskleri yeniden kullanabilirsiniz. Özel SKU 'Lar ile, diskleri SKU 'Lar arasında yeniden göndermeniz gerekmez.
+Yalnızca fiyatı değiştirmek istiyorsanız, aynı teklifte başka bir SKU'daki diskleri yeniden kullanabilirsiniz. Özel SK'ler ile SK'ler arasında diskleri yeniden göndermeniz gerekmez.
 
-<a name="mark-a-sku-private"></a>SKU 'SU özel olarak işaretle
+<a name="mark-a-sku-private"></a>Mark bir SKU özel
 ---------------------
 
-Bir SKU 'YU özel olarak işaretlemek için, SKU 'nun özel olup olmadığını soran seçeneği değiştirin:
+Bir SKU'yu özel olarak işaretlemek için, SKU'nun özel olup olmadığını sorma seçeneğini belirleyin:
 
-![SKU 'YU özel olarak işaretleme](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
+![Özel olarak bir SKU işaretleyin](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-Başka bir SKU 'daki diskleri yeniden kullanabilir ve fiyatlandırmayı veya açıklamayı değiştirebilirsiniz. Diskleri yeniden kullanmak için "Bu SKU 'nun görüntüleri ortak bir SKU 'dan yeniden kullanma" isteminde yanıt olarak **Evet** ' i seçin.
+Diskleri başka bir SKU'da yeniden kullanabilir ve fiyatlandırmayı veya açıklamayı değiştirebilirsiniz. Diskleri yeniden kullanmak **için,"Bu** SKU görüntüleri genel bir SKU'dan yeniden kullanır mı" istemlerine yanıt olarak Evet'i seçin.
 
-SKU özel olarak işaretlenmişse ve teklifin yeniden kullanılabilen diskler içeren başka SKU 'Lar varsa, SKU 'nun diskleri başka bir SKU 'dan yeniden kullandığı belirtmeniz gerekir. Ayrıca, özel SKU için hedef kitleyi belirtmeniz gerekir.
+SKU özel olarak işaretlenmişse ve teklifte yeniden kullanılabilir disklere sahip başka SKU'lar varsa, SKU'nun diskleri başka bir SKU'dan yeniden kullandığını belirtmeniz gerekir. Ayrıca özel SKU için hedef kitleyi belirtmeniz gerekir.
 
 >[!NOTE]
->Yayımlandıktan sonra ortak bir SKU özel hale getirilebilir.
+>Yayımlandıktan sonra, halka açık bir SKU özel hale getirilemeyecek.
 
-<a name="select-an-image"></a>Görüntü seçin
+<a name="select-an-image"></a>Resim seçin
 ------------------
 
-Özel SKU için yeni diskler sağlayabilir veya başka bir SKU 'da zaten sağlanmış olan disklerin aynısını kullanabilirsiniz. Bu, yalnızca fiyatlandırmayı veya açıklamayı değiştirir. Diskleri yeniden kullanmak için, "Bu SKU görüntüsünü ortak bir SKU 'dan yeniden kullan" isteminde yanıt olarak **Evet** ' i seçin.
+Özel SKU için yeni diskler sağlayabilir veya başka bir SKU'da zaten sağlanan aynı diskleri yeniden kullanabilir, yalnızca fiyatlandırmayı veya açıklamayı değiştirebilirsiniz. Diskleri yeniden kullanmak **için,"Bu** SKU resmi ortak bir SKU'dan yeniden kullanır mı" istemlerine yanıt olarak Evet'i seçin.
 
-![Görüntü yeniden kullanımını belirtin](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![Görüntünün yeniden kullanımını göster](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-SKU 'nun görüntüleri yeniden yeniden sağladığını doğruladıktan sonra, görüntüler için kaynak veya *temel* SKU 'yu seçin:
+SKU'nun görüntüleri yeniden kullandığını doğruladıktan sonra, görüntüler için kaynak veya *temel* SKU'yu seçin:
 
-![Görüntü seçin](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Resim seçin](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
-Teklifi yayımladığınızda, seçilen SKU 'daki görüntüler özel ücretler/koşullarla özel SKU KIMLIĞI altında kullanılabilir hale getirilir. Özel SKU yalnızca hedeflenen hedef kitle tarafından görülebilir.
+Teklifi yayınladığınızda, seçilen SKU'dan görüntüler özel sku kimliği altında özel fiyatlar/terimlerle birlikte kullanıma sunulacaktır. Özel SKU sadece hedef kitle tarafından görülebilir.
 
-Görüntü güncelleştirmeleri için yalnızca temel SKU 'nun görüntüsünü güncelleştirmeniz gerekir. Arka planda, özel SKU 'nun görüntüsü de otomatik olarak güncelleştirilir. Benzer şekilde, arka plandaki SKU 'dan görüntüyü silerseniz görüntü de özel SKU 'dan da kaldırılır.
+Görüntü güncelleştirmeleri için yalnızca temel SKU'nun görüntüsünü güncelleştirmeniz gerekir. Perde arkasında, özel SKU için görüntü de otomatik olarak güncellenecektir. Benzer şekilde, görüntüyü altta yatan SKU'dan silerseniz, görüntü özel SKU'dan da kaldırılır.
 
-<a name="restricting-the-audience"></a>Hedef kitleyi kısıtlama
+<a name="restricting-the-audience"></a>İzleyiciyi kısıtlama
 ------------------------
 
-Özel teklifler, yalnızca hedeflenen kullanıcılar tarafından bulunabilir ve dağıtılabilir.
-Şu anda, abonelik kimliklerini kullanan kullanıcıları hedeflemeyi destekliyoruz.
+Özel teklifler yalnızca hedeflenen kullanıcılar tarafından bulunabilir ve dağıtılabilir.
+Şu anda abonelik kimlikleri kullanarak kullanıcıları hedeflemeyi destekliyoruz.
 
-Bu abonelikler, 10 ' a **kadar abonelik için**bir el ile giriş formu aracılığıyla ya da **20.000 aboneliğe kadar**izin veren bir CSV dosyası karşıya yüklenebilir.
+Bu **abonelikler, 10 abonelik için**manuel giriş formu aracılığıyla veya **20.000'e kadar abonelik**sağlayan bir CSV dosyası yükleyerek girilebilir.
 
-Kısıtlanmış hedef kitle için el ile giriş:
+Kısıtlı hedef kitle için Manuel Giriş:
 
-![İzleyiciyi el ile kısıtlama](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
+![Hedef kitleyi el ile sınırlandırın](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
 
-Kısıtlanmış hedef kitle için CSV yüklemesi:
+Kısıtlı hedef kitle için CSV Yükleme:
 
-![İzleyiciyi kısıtlamak için CSV kullanma](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
+![Hedef kitleyi kısıtlamak için CSV'yi kullanın](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
 
-Örnek CSV dosyası içeriği:
+Örnek CSV dosya içeriği:
 
             Type,Id,Description
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
-El ile girişten CSV karşıya yükleme görünümüne veya CSV 'den el ile girişe geçtiğinizde, SKU 'ya erişimi olan eski abonelik kimlikleri listesi korunmaz. Bir uyarı görüntülenir ve listenin yalnızca teklif kaydedilirken üzerine yazılır.
+Manuel girişten CSV yükleme görünümüne veya CSV'den manuel girişe geçtiğiniz zaman, SKU erişimi olan eski abonelik kimlikleri listesi tutulmaz. Bir uyarı görüntülenir ve liste yalnızca teklifi kaydedinden sonra üzerine yazılır.
 
-<a name="managing-private-audiences"></a>Özel izleyicileri yönetme
+<a name="managing-private-audiences"></a>Özel hedef kitlelerini yönetme
 -------------------------
 
-**Tüm teklifi yeniden yayımlamadan hedef kitleyi güncelleştirmek için, istediğiniz hedef kitle değişikliklerini (Kullanıcı arabirimi veya API kullanarak) yapmanız ve "özel Izleyicileri Eşitle" eylemini başlatmanız gerekir.**
+**Teklifi yeniden yayınlamadan hedef kitleyi güncelleştirmek için istediğiniz hedef kitle değişikliklerini yaparsınız (Kullanıcı UI veya API'yi kullanarak) ve ardından "Özel Hedef Kitlelerini Eşitle" eylemini başlatırsınız.**
 
-Hedef kitleniz 10 veya daha az abonelik ise, CPP Kullanıcı arabirimini kullanarak tamamen yönetebilirsiniz.
+Hedef kitleniz 10 veya daha az abonelikse, cpp ue'yi kullanarak bu aboneliği tamamen yönetebilirsiniz.
 
-Hedef kitleniz 10 ' dan fazla abonelikdeyse, CPP Kullanıcı arabirimine veya API kullanarak karşıya yükleyebileceğiniz bir CSV dosyası kullanarak bunu yönetebilirsiniz.
+Hedef kitleniz 10'dan fazla abonelikse, bunu CPP UI'ye yükleyebileceğiniz bir CSV dosyasını veya API'yi kullanarak yönetebilirsiniz.
 
-API kullanıyorsanız ve bir CSV dosyası sürdürmek istemiyorsanız, aşağıdaki yönergeler temelinde izleyiciyi doğrudan API kullanarak yönetebilirsiniz.
+API kullanıyorsanız ve bir CSV dosyasını korumak istemiyorsanız, aşağıdaki talimatlara göre doğrudan API kullanarak hedef kitleyi yönetebilirsiniz.
 
 > [!NOTE]
-> Özel teklifinizin bir kitlesini eklemek için Azure abonelik KIMLIĞI (planlar ve SKU 'Lar) veya kiracı KIMLIĞI (yalnızca planlar) kullanın.
+> Özel teklifinize bir hedef kitle eklemek için Azure abonelik kimliğini (Planlar ve SK'ler) veya Kiracı Kimliği'ni (yalnızca Planlar) kullanın.
 
 ###  <a name="managing-subscriptions-with-the-api"></a>API ile abonelikleri yönetme
 
-API 'yi kullanarak bir CSV 'yi karşıya yükleyebilir veya doğrudan kitlelerinizi yönetebilir (CSV kullanmadan). Genellikle teklifinizin alınması, `restrictedAudience` nesnesini güncelleştirmeniz ve ardından bu değişiklikleri, hedef kitle üyelerini eklemek veya kaldırmak için teklifinize geri göndermeniz yeterlidir.
+API'yi csv yüklemek veya hedef kitlenizi doğrudan yönetmek için (CSV kullanmadan) kullanabilirsiniz. Genel olarak, yalnızca teklifinizi almanız, `restrictedAudience` nesneyi güncellemeniz ve ardından hedef kitle üyelerini eklemek veya kaldırmak için bu değişiklikleri teklifinize geri göndermeniz yeterlidir.
 
-Hedef kitle listenizi programlı olarak güncelleştirme:
+Hedef kitle listenizi şu şekilde programa göre güncelleştirebilirsiniz:
 
-1. [Teklif verilerinizi alın](cloud-partner-portal-api-retrieve-specific-offer.md) :
+1. [Teklif verilerinizi alın:](cloud-partner-portal-api-retrieve-specific-offer.md)
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
     ```
 
-2. Bu JPath sorgusunu kullanarak teklifin her SKU 'sunda kısıtlı hedef kitle nesneleri bulun:
+2. Bu JPath sorgusunu kullanarak teklifin her SKU'sunda kısıtlı hedef kitle nesnelerini bulun:
 
     ```
     $.definition.plans[*].restrictedAudience
     ```
-3. Teklifiniz için kısıtlı hedef kitle nesnelerini güncelleştirin.
+3. Teklifiniz için kısıtlanmış hedef kitle nesnesini güncelleştirin.
 
-    **İlk olarak CSV dosyasından özel teklifiniz için abonelik listesini karşıya yüklediyseniz:**
+    **CSV dosyasından özel teklifiniz için abonelik listesini ilk olarak yüklediyseniz:**
 
-    *Kısıttedaudience* nesneniz şuna benzeyecektir.
+    *KısıtlıHedef* nesneniz (ler) bu şekilde görünecektir.
     ```
     "restrictedAudience": {
                   "uploadedCsvUri": "{SasUrl}"
     }
     ```
 
-    Her kısıtlanmış hedef kitle nesnesi için:
+    Her sınırlı hedef kitle nesnesi için:
 
-    a. `restrictedAudience.uploadedCsvUri`içeriğini indirin. İçerik yalnızca üst bilgileri olan bir CSV dosyasıdır. Örneğin:
+    a. İçeriği indirin. `restrictedAudience.uploadedCsvUri` İçerik sadece üstbilgi içeren bir CSV dosyasıdır. Örnek:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
         subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
 
-    b. İndirilen CSV dosyasına gereken abonelikleri gerekli şekilde ekleyin veya silin.
+    b. Gerektiğinde indirilen CSV dosyasına abonelik ekleme veya silme.
 
-    c. Güncelleştirilmiş CSV dosyasını [Azure Blob depolama](../../storage/blobs/storage-blobs-overview.md) veya [OneDrive](https://onedrive.live.com)gibi bir konuma yükleyin ve dosyanıza salt okunurdur bir bağlantı oluşturun. Bu, yeni bir *Sasurl*'niz olacaktır.
+    c. Güncelleştirilmiş CSV dosyasını [Azure Blob depolama](../../storage/blobs/storage-blobs-overview.md) veya [OneDrive](https://onedrive.live.com)gibi bir konuma yükleyin ve dosyanıza salt okunur bağlantı oluşturun. Bu yeni *SasUrl*olacak .
 
-    d. `restrictedAudience.uploadedCsvUri` anahtarını yeni *Sasurl*'ınızla güncelleştirin.
+    d. `restrictedAudience.uploadedCsvUri` Yeni *SasUrl*ile anahtarı güncelleyin.
 
-    **Bulut İş Ortağı Portalı özel teklifiniz için özgün Aboneliklerin listesini el ile girdiyseniz:**
+    **Cloud Partner Portal'dan özel teklifiniz için orijinal abonelik listesini el ile girdiyseniz:**
 
-    *Kısıttedaudience* nesneniz şuna benzer şekilde görünür:
+    *KısıtlıHedef* nesneniz (ler) şuna benzer:
 
     ```
     "restrictedAudience": {
@@ -157,25 +156,25 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
         ]}
     ```
 
-    a. Her kısıtlanmış hedef kitle nesnesi için, `restrictedAudience.manualEntries` listesinde girdileri gerektiği gibi ekleyin veya silin.
+    a. Her kısıtlı hedef kitle nesnesi `restrictedAudience.manualEntries` için, gerektiğinde listedeki girişleri ekleyin veya silin.
 
-4. Özel teklifinizin her SKU 'SU için tüm *Kısıttedaudıence* nesnelerinin güncelleştirilmesi bittiğinde [teklifi güncelleştirin](cloud-partner-portal-api-creating-offer.md):
+4. Özel teklifinizin her SKU'su için tüm *kısıtlı Hedef Kitle* nesnelerini güncellemeyi bitirdiğinde, teklifi [güncelleyin:](cloud-partner-portal-api-creating-offer.md)
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
     ```
-    Bu şekilde, güncelleştirilmiş hedef kitle listeniz artık etkindir.
+    Bununla birlikte, güncelleştirilmiş hedef kitle listeniz artık geçerli olur.
 
-<a name="previewing-private-offers"></a>Özel teklifleri Önizleme
+<a name="previewing-private-offers"></a>Özel tekliflerin önizlemesi
 -------------------------
 
-Önizleme/hazırlama adımı sırasında yalnızca teklif düzeyi önizleme abonelikleri SKU 'ya erişebilecek. Bu test aşamasında, teklifin hedef müşterileriniz için görüneceği şekilde önizlemesini yapabilirsiniz.
+Önizleme/evreleme adımı sırasında, SKU'ya yalnızca teklif düzeyi önizleme abonelikleri erişebilir. Bu test aşamasında, teklifi hedef müşterilerinize göründüğü gibi önizleyebilirsiniz.
 
-Hazırlanan tekliflere erişmek için teklif düzeyi önizleme abonelikleri:
+Aşamalı tekliflere erişmek için Teklif Düzeyi Önizleme Abonelikleri:
 
-![Abonelik kimliklerini Önizle](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
+![Abonelik Kimliklerini Önizleme](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
 
-Teklif canlı olduktan sonra, yalnızca kısıtlı izleyici abonelikleri (el ile girdi veya CSV aracılığıyla girilen), özel SKU 'YU görüntüleyebilir ve dağıtabilir. Doğrulama amacıyla özel SKU 'nun **kısıtlı kitlelerine her zaman kendi aboneliklerinizi dahil** etmenizi öneririz.
+Teklif canlı olarak dağıtıldıktan sonra, özel SKU'yu yalnızca kısıtlı hedef kitle abonelikleri (manuel giriş veya CSV ile girilebilir) görüntüleyebilir ve dağıtabilecektir. Doğrulama amacıyla özel SKU için **her zaman kendi aboneliklerinizi kısıtlı hedef kitleye eklemenizi** öneririz.
 
 >[!NOTE]
->Hata ayıklama amacıyla, Microsoft destek ve mühendislik ekiplerinin de bu özel tekliflere erişimi olur.
+>Hata ayıklama amacıyla, Microsoft destek ve mühendislik ekipleri de bu özel tekliflere erişebilir.

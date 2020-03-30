@@ -1,36 +1,35 @@
 ---
-title: Yaygın kimlik doğrulama hatalarıyla ilgili sorunları giderme | Azure Marketi
-description: Bulut İş Ortağı Portalı API 'Leri kullanılırken ortak kimlik doğrulama hatalarıyla ilgili yardım sağlar.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Sık karşılaşılan kimlik doğrulama hatalarını giderme | Azure Marketi
+description: Bulut İş Ortağı Api'lerini kullanırken yaygın kimlik doğrulama hatalarıyla ilgili yardım sağlar.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 0990e9aedf17f6d4ad01e4911e47efd60001f3d7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1da9bbd1ed4bc4abea0699e56d8adc397086d6e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827361"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280431"
 ---
-# <a name="troubleshooting-common-authentication-errors"></a>Yaygın kimlik doğrulama hatalarında sorun giderme
+# <a name="troubleshooting-common-authentication-errors"></a>Sık karşılaşılan kimlik doğrulama hatalarını giderme
 
-Bu makalede, Bulut İş Ortağı Portalı API 'Leri kullanılırken ortak kimlik doğrulama hatalarıyla ilgili yardım sağlanmaktadır.
+Bu makalede, Bulut İş Ortağı Portal API'leri kullanırken sık kullanılan kimlik doğrulama hataları ile ilgili yardım sağlar.
 
 ## <a name="unauthorized-error"></a>Yetkisiz hata
 
-Sürekli olarak `401 unauthorized` hata alırsanız, geçerli bir erişim belirteciniz olduğunu doğrulayın.  Daha önce yapmadıysanız, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümünde açıklandığı gibi temel bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturun. Daha sonra, erişimi doğrulamak için uygulamayı veya basit bir HTTP POST isteğini kullanın.  Aşağıdaki görüntüde gösterildiği gibi, erişim belirtecini almak için kiracı KIMLIĞI, uygulama KIMLIĞI, nesne KIMLIĞI ve gizli anahtarı dahil edersiniz:
+Sürekli olarak hata `401 unauthorized` alırsanız, geçerli bir erişim jetonuna sahip olduğunuzu doğrulayın.  Bunu daha önce yapmadıysanız, [kaynaklara erişebilen bir Azure Active Directory uygulaması ve hizmet ilkesi oluşturmak için Kullanım portalında](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)açıklandığı gibi temel bir Azure Etkin Dizin (Azure AD) uygulaması ve bir hizmet ilkesi oluşturun. Ardından, erişiminizi doğrulamak için uygulamayı veya basit bir HTTP POST isteğini kullanın.  Aşağıdaki resimde gösterildiği gibi erişim belirteci elde etmek için Kiracı Kimliği, Uygulama Kimliği, Nesne Kimliği ve gizli anahtarı içerecektir:
 
-![401 hatası sorunlarını giderme](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
+![401 hatasını giderme](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-## <a name="forbidden-error"></a>Yasak hata
+## <a name="forbidden-error"></a>Yasak hatası
 
-`403 forbidden` bir hata alırsanız, Bulut İş Ortağı Portalı yayımcı hesabınıza doğru hizmet sorumlusu eklendiğinden emin olun.
-Hizmet sorumlunuzu portala eklemek için [Önkoşullar](./cloud-partner-portal-api-prerequisites.md) sayfasındaki adımları izleyin.
+Bir `403 forbidden` hata alırsanız, Bulut İş Ortağı Portalı'ndaki yayıncı hesabınıza doğru hizmet sorumlusunun eklendiğini unutmayın.
+Hizmet müdürünüzü portala eklemek için [Önkoşullar](./cloud-partner-portal-api-prerequisites.md) sayfasındaki adımları izleyin.
 
-Doğru hizmet sorumlusu eklendiyse, diğer tüm bilgileri doğrulayın. Portalda girilen nesne KIMLIĞINE yakın bir uyarı ödeyin. Azure Active Directory uygulama kaydı sayfasında iki nesne kimliği vardır ve yerel nesne kimliğini kullanmanız gerekir. Uygulamanızın **uygulama kayıtları** sayfasına giderek ve **yerel dizinde yönetilen uygulama**altındaki uygulama adına tıklayarak doğru değeri bulabilirsiniz. Bu sizi, aşağıdaki şekilde gösterildiği gibi **Özellikler** sayfasında doğru nesne kimliğini bulabileceğiniz uygulamanın yerel özelliklerine götürür. Ayrıca, hizmet sorumlusunu eklerken ve API çağrısını yaptığınızda doğru Yayımcı KIMLIĞINI kullandığınızdan emin olun.
+Doğru hizmet sorumlusu eklendiyse, diğer tüm bilgileri doğrulayın. Portalda girilen Nesne Kimliği'ne dikkat edin. Azure Etkin Dizin uygulaması kayıt sayfasında iki Nesne Kimliği vardır ve yerel Nesne Kimliğini kullanmanız gerekir. Uygulamanızın **Uygulama kayıtları** sayfasına giderek ve **yerel dizinde Yönetilen uygulama**altında uygulama adını tıklayarak doğru değeri bulabilirsiniz. Bu, aşağıdaki şekilde gösterildiği gibi **Özellikler** sayfasında doğru Nesne Kimliğini bulabileceğiniz uygulamanın yerel özelliklerine götürür. Ayrıca, hizmet sorumlusunu eklerken doğru yayımcı kimliğini kullandığınızdan ve API çağrısı yaptığınızdan emin olun.
 
-![403 hatası sorunlarını giderme](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)
+![403 hatasını giderme](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)

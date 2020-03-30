@@ -1,20 +1,19 @@
 ---
-title: Bulut İş Ortağı Portalı hesapların yönetilmesine yönelik önkoşullar | Azure Marketi
-description: Kullanım dışı olan CPP makalesi, PC makalesine işaret eden; , Bulut İş Ortağı Portalı Azure Marketi hesaplarının yönetilmesine yönelik ön koşullar. "
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Bulut İş Ortağı Portalı'nda hesap yönetimi için ön koşullar | Azure Marketi
+description: Deprecated CPP makale, PC makaleye işaret; "Bulut İş Ortağı Portalı'ndaki Azure Marketi hesaplarını yönetmek için ön koşullar."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 1b6e7df904b6c564935a3f34ca2da12bed459c4f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: b01c6fbf1d35c786338308debc1281fa943a6bf3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279904"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı hesaplarını yönetmek için Önkoşullar
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı'nda hesap yönetimi için ön koşullar
 
-Bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Bu işlev Microsoft İş [Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için, [İş Merkezi'ndeki Ticari Pazar Hesabınızı nasıl yönetebilirsiniz'](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)e bakın.

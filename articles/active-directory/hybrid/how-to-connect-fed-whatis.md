@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect ve Federasyon | Microsoft Docs
-description: Bu sayfa, Azure AD Connect kullanan AD FS işlemleri ile ilgili tüm belgeler için merkezi konumdur.
+title: Azure AD Connect ve federasyon | Microsoft Dokümanlar
+description: Bu sayfa, Azure AD Connect'i kullanan AD FS işlemleriyle ilgili tüm belgelerin merkezi konumudur.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,42 +16,42 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350499"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331534"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect ve federasyon
-Azure Active Directory (Azure AD) Connect sağlar ile Federasyonu yapılandırma şirket içi Active Directory Federasyon Hizmetleri (AD FS) ve Azure AD. Federasyon oturum açma ile kullanıcılar parolalarını yeniden girmek zorunda kalmadan şirket ağ üzerindeyken, Azure AD tabanlı hizmetler ile şirket içi parolalarını--ve için oturum açabilir etkinleştirebilirsiniz. AD FS ile Federasyon seçeneğini kullanarak yeni bir AD FS yüklemesini dağıtabilir veya bir Windows Server 2012 R2 grubunda var olan bir yüklemesini belirtebilirsiniz.
+Azure Active Directory (Azure AD) Connect, federasyonları şirket içi Active Directory Federation Services (AD FS) ve Azure AD ile yapılandırmanıza olanak tanır. Federasyon oturum açma ile kullanıcıların şirket içi parolalarıyla azure AD tabanlı hizmetlerde oturum açmalarını ve şirket ağında parolalarını yeniden girmelerine gerek kalmadan oturum açmalarını sağlayabilirsiniz. AD FS ile federasyon seçeneğini kullanarak, yeni bir AD FS yüklemesi dağıtabilir veya Windows Server 2012 R2 çiftliğinde varolan bir yüklemeyi belirtebilirsiniz.
 
-Bu konu Azure AD Connect'i Federasyon ile ilgili işlevler hakkında bilgi için platformdur. Tüm ilgili konulara bağlantılar listeler. Azure AD Connect bağlantıları için bkz [şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md).
+Bu konu, Azure AD Connect için federasyonla ilgili işlevler hakkında bilgi edinme ye ev sahipliği yapmaktadır. İlgili tüm konulara bağlantılar listeler. Azure AD Connect'e bağlantılar için [bkz.](whatis-hybrid-identity.md)
 
-## <a name="azure-ad-connect-federation-topics"></a>Azure AD Connect: Federasyon konuları
-| Konu | Neleri kapsar ve okumak ne zaman |
+## <a name="azure-ad-connect-federation-topics"></a>Azure AD Connect: federasyon konuları
+| Konu başlığı | Neleri kapsıyor ve ne zaman okunacak |
 |:--- |:--- |
-| **Azure AD Connect kullanıcı oturumu açma seçenekleri** | |
-| [Kullanıcı oturum açma seçeneklerini anlama](plan-connect-user-signin.md) |Azure oturum açma kullanıcı deneyimini nasıl etkilediklerini ve çeşitli kullanıcı oturum açma seçenekleri hakkında bilgi edinin. |
-| **Azure AD Connect kullanarak AD FS'yi yükleyin** | |
-| [Önkoşullar](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Azure AD Connect aracılığıyla başarılı bir AD FS yükleme önkoşullarını bakın. |
-| [AD FS grubu Yapılandır](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Yeni bir AD FS grubu, Azure AD Connect kullanarak yükleyin. |
-| [Alternatif bir oturum açma Kimliğini kullanarak Azure AD ile federasyona](how-to-connect-fed-management.md#alternateid) | Alternatif oturum açma kimliği kullanarak Federasyonu yapılandırma  |
+| **Azure AD Connect kullanıcı oturum açma seçenekleri** | |
+| [Kullanıcı oturum açma seçeneklerini anlama](plan-connect-user-signin.md) |Çeşitli kullanıcı oturum açma seçenekleri ve bunların Azure oturum açma kullanıcı deneyimini nasıl etkilediği hakkında bilgi edinin. |
+| **Azure AD Connect'i kullanarak AD FS'yi yükleme** | |
+| [Ön koşullar](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Azure AD Connect üzerinden başarılı bir AD FS yüklemesi için ön koşullara bakın. |
+| [AD FS çiftliğini yapılandırma](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Azure AD Connect'i kullanarak yeni bir AD FS çiftliği yükleyin. |
+| [Alternatif giriş kimliği kullanarak Azure AD ile fetorat](how-to-connect-fed-management.md#alternateid) | Alternatif oturum açma kimliğini kullanarak federasyonu yapılandırma  |
 | **AD FS yapılandırmasını değiştirme** | |
-| [Güveni onarın](how-to-connect-fed-management.md#repairthetrust) |Onarım geçerli güven arasında AD FS ve Office 365/Azure şirket içi. |
-| [Yeni bir AD FS Sunucusu Ekle](how-to-connect-fed-management.md#addadfsserver) |İlk yüklemeden sonra ek AD FS sunucusu ile bir AD FS grubunu genişletin. |
-| [Yeni bir AD FS WAP sunucusu ekleme](how-to-connect-fed-management.md#addwapserver) |İlk yüklemeden sonra ek bir Web uygulaması Ara sunucusu (WAP) sunucusu ile bir AD FS grubunu genişletin. |
-| [Yeni bir Federasyon etki alanına ekleme](how-to-connect-fed-management.md#addfeddomain) |Azure AD ile federasyona eklenmesi için başka bir etki alanına ekleyin. |
-| [SSL sertifikasını güncelleştirme](how-to-connect-fed-ssl-update.md)| Bir AD FS grubu için SSL sertifikasını güncelleştirin. |
-| [Office 365 ve Azure AD için Federasyon sertifikalarını yenileme](how-to-connect-fed-o365-certs.md)|Azure AD ile O365 sertifikanızı yenileyin.|
-| **Başka bir Federasyon yapılandırma** | |
-| [Azure AD’nin birden çok örneğini tek bir AD FS örneği ile birleştirme](how-to-connect-fed-single-adfs-multitenant-federation.md) | Birden çok Azure AD'yi tek bir AD FS grubunu ile federasyona eklemek| 
-| [Bir özel şirket logosu/gösterim Ekle](how-to-connect-fed-management.md#customlogo) |Oturum açma deneyimi, AD FS oturum açma sayfasında gösterilen özel logo belirterek değiştirin. |
-| [Oturum açma bir açıklama ekleyin](how-to-connect-fed-management.md#addsignindescription) |AD FS oturum açma sayfasında oturum açma açıklamayı değiştirin. |
-| [AD FS talep kurallarını değiştirme](how-to-connect-fed-management.md#modclaims) |Değiştirin veya talep kuralları karşılık gelen AD FS için Azure AD Connect eşitleme yapılandırmasını ekleyin. |
+| [Güveni onarın](how-to-connect-fed-management.md#repairthetrust) |Şirket içi AD FS ve Office 365/Azure arasındaki geçerli güveni onarın. |
+| [Yeni bir AD FS sunucusu ekleme](how-to-connect-fed-management.md#addadfsserver) |İlk yüklemeden sonra ek bir AD FS sunucusuyla bir AD FS çiftliğini genişletin. |
+| [Yeni bir AD FS WAP sunucusu ekleme](how-to-connect-fed-management.md#addwapserver) |İlk yüklemeden sonra ek bir Web Application Proxy (WAP) sunucusuyla bir AD FS çiftliğini genişletin. |
+| [Yeni bir federe etki alanı ekleme](how-to-connect-fed-management.md#addfeddomain) |Azure AD ile federe olacak başka bir etki alanı ekleyin. |
+| [TLS/SSL sertifikasını güncelleştirin](how-to-connect-fed-ssl-update.md)| Bir AD FS çiftliği için TLS/SSL sertifikasını güncelleştirin. |
+| [Office 365 ve Azure AD için federasyon sertifikalarını yenileme](how-to-connect-fed-o365-certs.md)|Azure AD ile O365 sertifikanızı yenileyin.|
+| **Diğer federasyon yapılandırması** | |
+| [Azure AD’nin birden çok örneğini tek bir AD FS örneği ile birleştirme](how-to-connect-fed-single-adfs-multitenant-federation.md) | Tek AD FS çiftliğiile birden fazla Azure REKLAM'ı fesuye| 
+| [Özel şirket logosu/çizimi ekleme](how-to-connect-fed-management.md#customlogo) |AD FS oturum açma sayfasında gösterilen özel logoyu belirterek oturum açma deneyimini değiştirin. |
+| [Oturum açma açıklaması ekleme](how-to-connect-fed-management.md#addsignindescription) |AD FS oturum açma sayfasındaoturum açma açıklamasını değiştirin. |
+| [AD FS talep kurallarını değiştirme](how-to-connect-fed-management.md#modclaims) |AD FS'de Azure AD Connect eşitleme yapılandırmasına karşılık gelen talep kurallarını değiştirin veya ekleyin. |
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-* [Federasyon iki Azure AD'yi tek AD FS ile](how-to-connect-fed-single-adfs-multitenant-federation.md)
-* [Azure'da AD FS dağıtımı](how-to-connect-fed-azure-adfs.md)
-* [Azure Traffic Manager ile azure'da yüksek kullanılabilirlik çapraz coğrafi AD FS dağıtımı](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+* [Tek AD FS ile iki Azure REKLAM'ı fecile değerlendirme](how-to-connect-fed-single-adfs-multitenant-federation.md)
+* [Azure’da AD FS dağıtımı](how-to-connect-fed-azure-adfs.md)
+* [Azure Trafik Yöneticisi ile Azure'da yüksek kullanılabilirlik liyakat çapraz coğrafi AD FS dağıtımı](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

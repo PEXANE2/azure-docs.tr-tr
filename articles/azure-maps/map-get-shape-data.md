@@ -1,28 +1,28 @@
 ---
-title: Haritadaki şekillerden veri al | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritada çizilmiş şekil verilerini alma hakkında bilgi edinin.
-author: farah-alyasari
-ms.author: v-faalya
+title: Haritadaki şekillerden veri alma | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak haritaüzerinde şekil verilerinin nasıl çizilen alınabildiğini öğrenin.
+author: philmea
+ms.author: philmea
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 63d947b85e75e3809445c5bc65577aeaed38caa1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334404"
 ---
 # <a name="get-shape-data"></a>Şekil verilerini alma
 
-Bu makalede, haritada çizilen şekillerin verilerini nasıl alacağınız gösterilmektedir. [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)Içinde **Drawingmanager. GetSource ()** işlevini kullanıyoruz. Çizilmiş bir şeklin coğrafi JSON verilerini ayıklamak ve başka bir yerde kullanmak istediğinizde çeşitli senaryolar vardır.  
+Bu makalede, haritaüzerinde çizilen şekillerin verilerini nasıl elde edebilirsiniz. Çizim [yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)içinde **drawingManager.getSource()** işlevini kullanırız. Çizilmiş bir şeklin geojson verilerini ayıklamak ve başka bir yerde kullanmak istediğinizde çeşitli senaryolar vardır.  
 
 
-## <a name="get-data-from-drawn-shape"></a>Çizilen şekilden verileri al
+## <a name="get-data-from-drawn-shape"></a>Çizilen şekle veri alma
 
-Aşağıdaki işlev, çizilen şeklin kaynak verilerini alır ve ekrana verir. 
+Aşağıdaki işlev, çizilen şeklin kaynak verilerini alır ve ekrana çıkar. 
 
 ```Javascript
 function getDrawnShapes() {
@@ -32,17 +32,17 @@ function getDrawnShapes() {
 }
 ```
 
-Aşağıda, işlevleri test etmek üzere bir şekil ekleyebileceğiniz, çalışan tüm kod örneği verilmiştir:
+Aşağıda işlevselliği sınamak için bir şekil çizebileceğiniz tam çalışan kod örneği verilmiştir:
 
 <br/>
 
-<iframe height="686" title="Şekil verilerini alma" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>şekil verilerini alın</a> kalemine bakın.
+<iframe height="686" title="Şekil verilerini alma" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Kalem Verisi<a href='https://codepen.io/azuremaps'>@azuremaps</a>'ne göre Şekil <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Verilerini</a> Azure Haritaları 'na ( ) görün.
 </iframe>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çizim araçları modülünün ek özelliklerini kullanmayı öğrenin:
+Çizim araçları modülünün ek özelliklerini nasıl kullanacağınızı öğrenin:
 
 > [!div class="nextstepaction"]
 > [Çizim olaylarına tepki verme](drawing-tools-events.md)
@@ -56,7 +56,7 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Çizim yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
 > [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

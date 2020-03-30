@@ -1,169 +1,169 @@
 ---
-title: Yerelleştirme desteği | Microsoft Azure haritaları
-description: Bu makalede Microsoft Azure haritaların Hizmetleri için desteklenen diller hakkında bilgi edineceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Yerelleştirme desteği | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar'daki hizmetler için desteklenen diller hakkında bilgi edineceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334062"
 ---
-# <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
+# <a name="localization-support-in-azure-maps"></a>Azure Haritalar'da yerelleştirme desteği
 
-Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri destekler. Bu makalede, Azure haritalar uygulamanıza kılavuzluk etmenize yardımcı olacak desteklenen diller ve görünümler sağlanmaktadır.
+Azure Haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri destekler. Bu makale, Azure Haritalar uygulamanıza rehberlik etmek için desteklenen dilleri ve görünümleri sağlar.
 
 
-## <a name="azure-maps-supported-languages"></a>Azure haritalar desteklenen diller
+## <a name="azure-maps-supported-languages"></a>Azure Haritalar desteklenen diller
 
-Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
+Azure Haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tablo, her hizmet için desteklenen dil kodlarını sağlar.  
   
 
-| Kimlik         | Ad                   |  Haritalar | Arama | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
+| Kimlik         | Adı                   |  Haritalar | Search | Yönlendirme | Hava durumu | Trafik olayları | JS harita kontrolü |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
-| AF-ZA      | Afrikaner dili              |       |    ✓   |    ✓    |         |                   |                |
+| af-ZA      | Afrikaner              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| milyar TL-BD      | Bangla (Bangladeş)    |       |       |         |     ✓    |                   |                |
-| milyar TL-ın      | Bangla (Hindistan)         |       |       |         |     ✓    |                   |                |
-| BS-BA      | Boşnakça                 |       |       |         |     ✓    |                   |                |
-| AB-ES      | Bask dili                 |       |    ✓   |         |         |                   |                |
-| BG-BG      | Bulgarca              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
-| CA-ES      | Katalanca                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | ve   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Çince (Hong Kong ÖİB)  |  |   |    |    zh-HK   |                   |           |
+| bn-BD      | Bangladeş (Bangladeş)    |       |       |         |     ✓    |                   |                |
+| bn-IN      | Bangladeş (Hindistan)         |       |       |         |     ✓    |                   |                |
+| bs-BA      | Boşnakça                 |       |       |         |     ✓    |                   |                |
+| ab-ES      | Baskça                 |       |    ✓   |         |         |                   |                |
+| bg-BG      | Bulgarca              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
+| ca-ES      | Katalanca                |       |    ✓   |         |    ✓      |                   |                |
+| zh-HanS    | Çince (Basitleştirilmiş)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanT    | Çince (Hong Kong SAR)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Çince (Tayvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Hırvatça               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Çekçe                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| v-DK      | Danca                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| nl-      | Felemenkçe (Belçika)        |       |    ✓   |         |      ✓    |                   |                |
-| NL-NL      | Hollanda dili (Hollanda)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| tr-AU      | İngilizce (Avustralya)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| tr NZ      | İngilizce (Yeni Zelanda)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-GB      | İngilizce (Büyük Britanya) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| da-DK      | Danca                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-BE      | Felemenkçe (Belçika)        |       |    ✓   |         |      ✓    |                   |                |
+| nl-NL      | Felemenkçe (Hollanda)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-AU      | İngilizce (Avustralya)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-NZ      | İngilizce (Yeni Zelanda)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| tr-TR      | İngilizce (Büyük Britanya) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | tr-TR      | İngilizce (ABD)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| et-EE      | Estonca               |       |    ✓   |         |      ✓    |         ✓         |                |
-| fıfıph     | Filipin dili               |       |       |         |     ✓    |                   |                |
-| FI-FI      | Fince                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| et-EE      | Estonya Dili               |       |    ✓   |         |      ✓    |         ✓         |                |
+| fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
+| fi-FI      | Fince                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Fransızca                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Fransızca (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| GL-ES      | Galiçya dili               |       |    ✓   |         |         |                   |                |
+| gl-ES      | Galiçya Dili               |       |    ✓   |         |         |                   |                |
 | de-DE      | Almanca                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Yunanca                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| Gu-ın      | Gucerat dili                |       |       |         |     ✓    |                   |                |
-| He IL      | İbranice                 |       |    ✓   |         |     ✓    |         ✓         |                |
-| yüksek giriş      | Hintçe                  |       |        |         |     ✓    |                   |                |
+| gu-IN      | Gucerat dili                |       |       |         |     ✓    |                   |                |
+| he-IL      | İbranice                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| hi-IN      | Hintçe                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | Macarca              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| Şu-      | İzlanda dili              |       |       |         |     ✓    |                   |                |
-| ID      | Endonezya dili             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
-| İt-IT      | İtalyanca                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| is-IS      | İzlandaca              |       |       |         |     ✓    |                   |                |
+| id-ID      | Endonezce             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
+| it-IT      | İtalyanca                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japonca               |       |        |         |     ✓    |                   |                |
-| KN-ın      | Kannada dili                |       |       |         |     ✓    |                   |                |
+| kn-IN      | Kannada dili                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazakça                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Korece                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| es-419     | Latin Amerika Ispanyolca |       |    ✓   |         |         |                   |                |
+| es-419     | Latin Amerika İspanyolcası |       |    ✓   |         |         |                   |                |
 | lv-LV      | Letonca                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litvanca             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| MK-MK      | CA             |       |       |         |     ✓    |                   |                |
-| ms-MY      | Malay dili (Latin)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| Mr-ın      | Marathi                 |       |       |         |     ✓    |                   |                |
-| NB-yok      | Norveççe Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| NGT        | Yerel betiklerdeki tüm bölgeler için nötr on-resmi diller varsa |   ✓     |        |         |       |        |      ✓          |
-| NGT-Latn   | Nötr zemin.-Latin exonbiri. Varsa Latin betiği kullanılacaktır |   ✓     |        |         |         |                |        ✓         |
+| mk-MK      | Makedon             |       |       |         |     ✓    |                   |                |
+| ms-MY      | Malay (Latince)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
+| mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
+| nb-NO      | Norveççe Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| NGT        | Neutral Ground Truth - Varsa yerel komut dosyasındaki tüm bölgeler için resmi diller |   ✓     |        |         |       |        |      ✓          |
+| NGT-Latn   | Nötr Ground Truth - Latince exonyms. Varsa Latin alfabesi kullanılacaktır |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Lehçe                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portekizce (Brezilya)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portekizce (Portekiz)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| PA-ın      | Pencap dili                 |       |       |         |     ✓    |                   |                |
-| Ro-RO      | Rumence               |       |    ✓    |         |     ✓    |         ✓         |                |
+| pa-IN      | Pencap dili                 |       |       |         |     ✓    |                   |                |
+| ro-RO      | Rumence               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rusça                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| SR-Cyrl-RS | Sırpça (Kiril)     |       |   SR-RS  |         |    SR-RS     |                   |                |
-| sr-Latn-RS | Sırpça (Latin)        |       |       |         |     sr-Latn    |                   |                |
-| SK-SK      | Slovakça             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| SL-SL      | Slovence              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
+| sr-Cyrl-RS | Sırpça (Kiril)     |       |   sr-RS  |         |    sr-RS     |                   |                |
+| sr-Latn-RS | Sırpça (Latin)        |       |       |         |     sr-latn    |                   |                |
+| sk-SK      | Slovakça             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| sl-SL      | Slovence              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | İspanyolca                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | es-MX      | İspanyolca (Meksika)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | sv-SE      | İsveççe                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| Veri-ın      | Tamilce (Hindistan)                 |       |       |         |     ✓    |                   |                |
-| metin-giriş      | Telugu dili (Hindistan)                 |       |       |         |     ✓    |                   |                |
-| TH TH      | Tay Dili                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| ta-IN      | Tamil (Hindistan)                 |       |       |         |     ✓    |                   |                |
+| te-IN      | Telugu (Hindistan)                 |       |       |         |     ✓    |                   |                |
+| th-TH      | Tayca                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Türkçe                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| uk-UA      | Ukrayna dili               |       |    ✓   |         |     ✓    |                   |                |
-| -PK      | Urduca                 |       |       |         |     ✓    |                   |                |
+| uk-UA      | Ukraynaca               |       |    ✓   |         |     ✓    |                   |                |
+| sizin-PK      | Urduca                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Özbekçe                 |       |       |         |     ✓    |                   |                |
-| VI VN      | Vietnam dili             |       |    ✓   |         |      ✓    |                  |                |
+| vi-VN      | Vietnamca             |       |    ✓   |         |      ✓    |                  |                |
 
 
-## <a name="azure-maps-supported-views"></a>Azure haritalar desteklenen görünümler
+## <a name="azure-maps-supported-views"></a>Azure Haritalar desteklenen görünümler
 
 > [!Note]
-> Azure Maps, 1 Ağustos 2019 tarihinde aşağıdaki ülkelerde/bölgelerde yayımlanmıştır:
+> Azure Haritalar 1 Ağustos 2019 tarihinde aşağıdaki ülkelerde/bölgelerde yayımlandı:
 >  * Arjantin
 >  * Hindistan
 >  * Fas
 >  * Pakistan
 >
-> 1 Ağustos 2019 ' den sonra, **Görünüm** parametresi yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Azure Maps **Görünüm** parametresi ("Kullanıcı bölgesi parametresi" olarak da bilinir), haritada görüntülenen Kenarlıklar ve Etiketler dahil olmak üzere Azure haritalar Hizmetleri aracılığıyla hangi coğrafi bölge/bölge için doğru haritaları gösterecek olan ıkı harfli ıso-3166 ülke kodudur. 
+> 1 Ağustos 2019 tarihinden sonra **Görünüm** parametresi, yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Azure Haritalar **Görünümü** parametresi ("kullanıcı bölgesi parametresi" olarak da adlandırılır), haritada görüntülenen sınırlar ve etiketler de dahil olmak üzere, o ülke/bölge için hangi jeopolitik tartışmalı içerik kümesinin Azure Haritalar hizmetleri aracılığıyla döndürüleceğini belirten doğru haritaları gösteren iki adet ISO-3166 Ülke Kodu dur. 
 
-REST API 'Leri için gereken **Görünüm** parametresini ve hizmetlerinizin kullandığı SDK 'ları ayarladığınızdan emin olun.
+Hizmetinizin kullandığı REST API'leri ve SDK'ları için gereken **Görünüm** parametresini ayarladığınızdan emin olun.
 >  
 >
->  **REST API 'Leri:**
+>  **Dinlenme API'leri:**
 >  
->  Görünüm parametresini gereken şekilde ayarlamış olduğunuzdan emin olun. View parametresi, Azure haritalar Hizmetleri aracılığıyla hangi geopolitik tartışmalı içerik kümesini döndürüleceğini belirtir. 
+>  Görünüm parametresini gerektiği gibi ayarladığınızdan emin olun. Görünüm parametresi, hangi jeopolitik açıdan tartışmalı içerik kümesinin Azure Haritalar hizmetleri aracılığıyla döndürüldüğü belirtir. 
 >
->  Etkilenen Azure haritalar REST Hizmetleri:
+>  Etkilenen Azure Haritalar REST Hizmetleri:
 >    
->    * Harita kutucuğunu al
->    * Harita görüntüsünü al 
->    * Aramayı bulanık al
->    * Arama POı al
->    * Arama POı kategorisini al
->    * Yakında arama alın
->    * Arama adresini al
->    * Yapılandırılmış arama adresini al
->    * Arama adresini tersine al
->    * Arama adresini al çapraz cadde
->    * Geometri Içinde arama sonrası
->    * Arama sonrası adres Batch önizlemesi
->    * Arama sonrası adres geri Batch önizlemesi
->    * Rota üzerinde arama sonrası
->    * Arama sonrası benzer toplu Iş önizlemesi
+>    * Harita Döşemesi Al
+>    * Harita Resmi Al 
+>    * Arama Bulanık alın
+>    * Arama POI'sı alın
+>    * Arama POI Kategori alın
+>    * Yakındaki Arama'yı Alın
+>    * Arama Adresi Al
+>    * Arama Adresini Yapılı alın
+>    * Arama Adresini Ters Alma
+>    * Arama Adresi Ters Cross Street alın
+>    * Geometri İçi Arama Sonrası
+>    * Arama Adresi Toplu Önizleme Sonrası
+>    * Arama Adresi Gönder Ters Toplu Önizleme
+>    * Rota Boyunca Arama Gönder
+>    * Post Arama Bulanık Toplu Önizleme
 >
 >    
->  **SDK**
+>  **Sdk:**
 >
->  **Görünüm** parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
+>  **Görünüm** parametresini gerektiği gibi ayarladığınızdan ve Web SDK ve Android SDK'nın en son sürümüne sahip olduğunuzdan emin olun. Etkilenen SDK'lar:
 >
->    * Azure Haritalar Web SDK 'Sı
+>    * Azure Haritalar Web SDK
 >    * Azure Haritalar Android SDK
 
-Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure Maps aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
+Varsayılan olarak, görünüm parametresi, istekte tanımlanmamış olsanız bile **Birleşik**olarak ayarlanır. Kullanıcılarınızın konumunu belirleyin. Ardından, bu konum için **Görünüm** parametresini doğru şekilde ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek 'View=Auto' ayarlayabilirsiniz.  Azure Haritalar'daki **Görünüm** parametresi, Azure Haritalar üzerinden erişmeye yetkili olduğunuz haritaların, görüntülerin ve diğer verilerin ve üçüncü taraf içeriğinin kullanıma sunulduğu ülkenin haritasını çıkarma yla ilgili yasalar da dahil olmak üzere geçerli yasalara uygun olarak kullanılmalıdır.
 
 
-Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
+Aşağıdaki tablo desteklenen görünümler sağlar.
 
-| Görünüm         | Açıklama                            |  Haritalar | Arama | JS Harita Denetimi |
+| Görünüm         | Açıklama                            |  Haritalar | Search | JS Harita Kontrolü |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
-| AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
-| AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |
-| BH           | Bahreyn (Arapça görünümü)                 |   ✓   |        |     ✓          |
-| IN           | Hindistan (Hindistan görünümü)                    |   ✓   |   ✓     |     ✓          |
-| IQ           | Irak (Arapça görünümü)                    |   ✓   |        |     ✓          |
-| JO           | Ürdün (Arapça görünümü)                  |   ✓   |        |     ✓          |
-| KW           | Kuveyt (Arapça görünümü)                  |   ✓   |        |     ✓          |
-| LB           | Lübnan (Arapça görünümü)                 |   ✓   |        |     ✓          |
-| MA           | Fas (Fas görüntüleyebilir)                |   ✓   |   ✓     |     ✓          |
-| OM           | Umman (Arapça görünümü)                    |   ✓   |        |     ✓          |
-| PK           | Pakistan (Pasvahili tani görünümü)              |   ✓   |    ✓    |     ✓          |
-| PS           | Filistin Yönetimi (Arapça görünüm)    |   ✓   |        |     ✓          |
-| QA           | Katar (Arapça görünümü)                   |   ✓   |        |     ✓          |
-| SA           | Suudi Arabistan (Arapça görünümü)            |   ✓   |        |     ✓          |
-| SY           | Suriye (Arapça görünümü)                   |   ✓   |        |     ✓          |
-| Vet           | Yemen (Arapça görünümü)                   |   ✓   |        |     ✓          |
+| AE           | Birleşik Arap Emirlikleri (Arapça Görünüm)    |   ✓   |        |     ✓          |
+| AR           | Arjantin (Arjantin Görünümü)           |   ✓   |    ✓   |     ✓          |
+| BH           | Bahreyn (Arapça Görünüm)                 |   ✓   |        |     ✓          |
+| IN           | Hindistan (Hint Görünümü)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | Irak (Arapça Görünüm)                    |   ✓   |        |     ✓          |
+| JO           | Ürdün (Arapça Görünüm)                  |   ✓   |        |     ✓          |
+| KW           | Kuveyt (Arapça Görünüm)                  |   ✓   |        |     ✓          |
+| LB           | Lübnan (Arapça Görünüm)                 |   ✓   |        |     ✓          |
+| MA           | Fas (Fas Görünümü)                |   ✓   |   ✓     |     ✓          |
+| OM           | Umman (Arapça Görünüm)                    |   ✓   |        |     ✓          |
+| PK           | Pakistan (Pakistan View)              |   ✓   |    ✓    |     ✓          |
+| PS           | Filistin Yönetimi (Arapça Görünüm)    |   ✓   |        |     ✓          |
+| QA           | Katar (Arapça Görünüm)                   |   ✓   |        |     ✓          |
+| SA           | Suudi Arabistan (Arapça Görünüm)            |   ✓   |        |     ✓          |
+| SY           | Suriye (Arapça Görünüm)                   |   ✓   |        |     ✓          |
+| YE           | Yemen (Arapça Görünüm)                   |   ✓   |        |     ✓          |
 | Otomatik         | İsteğin IP adresine göre harita verilerini döndürün.|   ✓   |    ✓   |     ✓          |
-| Standart      | Birleşik görünüm (diğerleri)                  |   ✓   |   ✓     |     ✓          |
+| Birleşik      | Birleşik Görünüm (Diğerleri)                  |   ✓   |   ✓     |     ✓          |

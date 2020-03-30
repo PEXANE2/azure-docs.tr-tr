@@ -1,22 +1,21 @@
 ---
-title: Müşteri katılımı için Dynamics 365 teknik bilgi sekmesi | Azure Marketi
-description: Kullanım dışı olan CPP makalesi, bılgısayar makalesine bağlı; "AppSource Market 'te müşteri için Dynamics 365 için bir Dynamics için teknik bilgileri belirtme."
-services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: ChJenk
+title: Müşteri Katılımı Teknik Bilgi sekmesi için Dynamics 365 | Azure Marketi
+description: DEPRECATED CPP makale, PC makaleile bağlantılı; "AppSource Marketplace'te Müşteri Katılımı uygulaması için Dynamics 365'in teknik bilgileri nasıl belirtilir?" oldu.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 61a82d2bde5406fabb68badfc45c750364b46f77
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4b390dcac424ea5f56ca0e1817095ac301b64f1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279921"
 ---
-# <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Müşteri katılımı için Dynamics 365 teknik bilgi sekmesi
+# <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Müşteri Katılımı Teknik Bilgi sekmesi için Dynamics 365
 
-[Bulut iş ortağı portalı](https://cloudpartner.azure.com/) artık Dynamics 365 müşteri katılımı tekliflerinin oluşturulmasını ve yönetimini desteklememektedir. Bunun yerine, bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Yeni Dynamics 365 for Customer Engagement for the PowerApps teklifi &](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
+[Bulut İş Ortağı Portalı](https://cloudpartner.azure.com/) artık Dynamics 365 Müşteri Katılımı tekliflerinin oluşturulmasını ve yönetimini desteklemez. Bunun yerine, bu işlev Microsoft [İş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşındı. Daha fazla bilgi için, [PowerApps teklifi & Müşteri Katılımı için yeni bir Dynamics 365 oluştur'a](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)bakın.
 
-Müşteri için yeni bir Dynamics 365 teklif teklifi oluşturmadan önce, [Iş Ortağı Merkezi hesabı oluştur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ' u okuyup **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/directory) açmanız gerekir. Teklifinizi oluşturmak için [Yeni Dynamics 365 for Customer Engagement & PowerApps teklifini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) oluşturma bölümündeki yönergeleri izleyin.
+Müşteri Katılımı teklifi için yeni bir Dynamics 365 oluşturmadan önce, [Bir İş Ortağı Merkezi hesabı oluşturma'yı](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) okumalı ve ardından seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/directory) açmalısınız. Teklifinizi oluşturmak [için PowerApps'ın sunduğu & Müşteri Katılımı için yeni bir Dynamics 365 Oluştur'daki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) talimatları izleyin.

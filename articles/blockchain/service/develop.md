@@ -1,75 +1,69 @@
 ---
-title: Azure blok zinciri hizmeti geliştirmeye genel bakış
-description: Azure blok zinciri hizmeti 'nde çözüm geliştirmeye giriş.
-ms.date: 11/22/2019
+title: Azure Blockchain Hizmeti geliştirme genel bakış
+description: Azure Blockchain Hizmeti'nde çözüm geliştirmeye giriş.
+ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 3748a1ca473d817f536ba7c912d2485ffc14de2d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455884"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348372"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Azure blok zinciri hizmeti geliştirmeye genel bakış
+# <a name="azure-blockchain-service-development-overview"></a>Azure Blockchain Hizmeti geliştirme genel bakış
 
-Azure blok zinciri hizmeti sayesinde, varlık izleme, dijital belirteç, bağlılık ve geri alma, tedarik zinciri finansal ve provenance gibi kurumsal senaryoları etkinleştirmek için konsorsiyum blok zinciri ağları oluşturabilirsiniz. Aşağıdaki bölümlerde, kurumsal blok zinciri çözümlerini uygulamak için Azure blok zinciri hizmeti geliştirmesi tanıtılmaktadır.
+Azure Blockchain Hizmeti ile, varlık izleme, dijital belirteç, sadakat ve ödül, tedarik zinciri mali ve kaynak gibi kurumsal senaryoları etkinleştirmek için konsorsiyum blockchain ağları oluşturabilirsiniz. Aşağıdaki bölümler, kurumsal blockchain çözümlerini uygulamak için Azure Blockchain Hizmeti geliştirmesini tanıtMaktadır.
 
-## <a name="connecting-to-azure-blockchain-service"></a>Azure blok zinciri hizmetine bağlanılıyor
+## <a name="connecting-to-azure-blockchain-service"></a>Azure Blockchain Hizmetine Bağlanma
 
-Blok zinciri ağları için tam düğümler, hafif düğümler ve uzak istemciler dahil farklı türlerde istemciler vardır. Azure blok zinciri hizmeti düğümleri içeren bir blok zinciri ağı oluşturur. Blok zinciri geliştirme için Azure blok zinciri hizmeti ağ geçidinizin olarak farklı istemcileri kullanabilirsiniz. Azure blok zinciri hizmeti, temel kimlik doğrulaması veya erişim anahtarını bir geliştirme uç noktası olarak sunar. Aşağıda, Bağlan ' a kullanabileceğiniz popüler istemciler verilmiştir.
+Tam düğümler, ışık düğümleri ve uzak istemciler de dahil olmak üzere blockchain ağları için farklı istemci türleri vardır. Azure Blockchain Hizmeti düğümleri içeren bir blockchain ağı oluşturur. Blockchain geliştirme için Azure Blockchain Hizmeti'ne ağ geçidiniz olarak farklı istemciler kullanabilirsiniz. Azure Blockchain Hizmeti, geliştirme bitiş noktası olarak temel kimlik doğrulama veya erişim anahtarı sunar. Aşağıda connect'i kullanabileceğiniz popüler istemciler yer alıyor.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Azure blok zinciri geliştirme seti Visual Studio Code uzantısını kullanarak, konsorsiyum üyelerine bağlanabilirsiniz. Bir konsorsiyumun bağlantısı kurulduktan sonra, akıllı sözleşmeleri bir Azure blok zinciri hizmeti Consortium üyesine derleyebilir, oluşturabilir ve dağıtabilirsiniz.
+Azure Blockchain Geliştirme Kiti Görsel Stüdyo Kodu uzantısını kullanarak konsorsiyum üyelerine bağlanabilirsiniz. Bir konsorsiyuma bağlandıktan sonra, bir Azure Blockchain Service konsorsiyumu üyesine akıllı sözleşmeler derleyebilir, oluşturabilir ve dağıtabilirsiniz.
 
-Daha fazla bilgi için bkz. [hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md).
+Gelişmiş kurumsal blockchain çözümleri geliştirmek için, farklı blockchain ağlarına bağlanmak ve akıllı sözleşmeli yaşam döngülerini yönetmek için bir geliştirme çerçevesi gereklidir. Çoğu proje en az iki blockchain düğümü ile etkileşime girmektedir. Geliştiriciler geliştirme sırasında yerel bir blockchain kullanır. Uygulama test veya sürüm için hazır olduğunda, geliştirici bir blockchain ağına dağıtır. Örneğin, ana ortak Ethereum ağı veya Azure Blockchain Hizmeti. Visual Studio Code'daki Ethereum uzantısı için Azure Blockchain Geliştirme Kiti Truffle kullanır. Trüf mantarı, Ethereum blockchains'da merkezi olmayan uygulamaları yazmak, derlemek, dağıtmak ve test etmek için popüler bir blockchain geliştirme çerçevesidir. Ayrıca Truffle sorunsuz akıllı sözleşme geliştirme ve geleneksel web geliştirme entegre etmeye çalışır bir çerçeve olarak düşünebilirsiniz.
 
-### <a name="metamask"></a>MetaMask
+Daha fazla bilgi [için, Azure Blockchain Hizmeti konsorsiyum ağına bağlanmak için Quickstart: Visual Studio Code'u kullanın.](connect-vscode.md)
 
-MetaMask, tarayıcı tabanlı bir cüzdan (uzak istemci), RPC istemcisi ve temel sözleşme Gezgini. Diğer tarayıcı waldinden farklı olarak, MetaMask bir Web3 örneğini tarayıcı JavaScript bağlamına çıkartır ve bu, çeşitli Ethereum blok zincirlerine (*mainnet*, *Ropsten testnet*, *kovan testnet*, Yerel RPC düğümü) bağlanan bir RPC istemcisi olarak davranır vb.). Azure blok zinciri hizmetine bağlanmak ve yeniden karışımı kullanarak blok zinciri geliştirmeye başlamak için özel RPC 'yi kolayca ayarlayabilirsiniz.
+### <a name="metamask"></a>MetaMaske
 
-Daha fazla bilgi için bkz [. hızlı başlangıç: akıllı bir sözleşmeyi bağlamak ve dağıtmak Için MetaMask kullanma](connect-metamask.md)
+MetaMask tarayıcı tabanlı cüzdan (uzak istemci), RPC istemcisi ve temel sözleşme gezginidir. Diğer tarayıcı cüzdanlarının aksine, MetaMask tarayıcı JavaScript bağlamına bir web3 örneği enjekte eder ve çeşitli Ethereum blockchain'lerine *(mainnet,* *Ropsten testneti,* *Kovan testneti,* yerel RPC düğümü, vb.) bağlanan bir RPC istemcisi olarak hareket eder. Azure Blockchain Hizmeti'ne bağlanmak ve Remix'i kullanarak blockchain geliştirmeye başlamak için özel RPC'yi kolayca ayarlayabilirsiniz.
+
+Daha fazla bilgi için [Bkz. Quickstart: Akıllı bir sözleşmeyi bağlamak ve dağıtmak için MetaMask'i kullanın](connect-metamask.md)
 
 ### <a name="geth"></a>Geth
 
-Geth, go 'da uygulanan tam Ethereum düğümünü çalıştırmaya yönelik komut satırı arabirimidir. Tam düğüm çalıştırmanız gerekmez, ancak Azure blok zinciri hizmeti ile etkileşim kurmak için JavaScript API 'sini ortaya çıkaran bir JavaScript çalışma zamanı ortamı sağlayan etkileşimli konsolunu da başlatabilirsiniz.
+Geth, Go'da uygulanan tam bir Ethereum düğümunu çalıştırmak için komut satırı arabirimidir. Tam düğüm çalıştırmanız gerekmez, ancak Azure Blockchain Hizmeti ile etkileşimde kalmak için bir JavaScript API'sini ortaya çıkaran bir JavaScript çalışma zamanı ortamı sağlayan etkileşimli konsolunu başlatabilirsiniz.
 
-Daha fazla bilgi için bkz. [hızlı başlangıç: Azure blok zinciri hizmeti işlem düğümüne eklemek Için geth kullanma](connect-geth.md).
+Daha fazla bilgi [için, Bir Azure Blockchain Hizmeti hareket düğümüne eklemek için Geth kullanın: Hızlı Başlat'a](connect-geth.md)bakın.
 
-## <a name="development-framework-configuration"></a>Geliştirme çerçevesi yapılandırması
+## <a name="ethereum-quorum-private-transactions"></a>Ethereum Quorum özel işlemler
 
-Gelişmiş kurumsal blok zinciri çözümleri geliştirmek için bir geliştirme çerçevesi, farklı blok zinciri ağlarına bağlanmak ve akıllı sözleşme yaşam döngülerini yönetmek için gereklidir.
+Quorum işlem artı sözleşme gizlilik ve yeni konsensüs mekanizmaları ile Ethereum tabanlı dağıtılmış bir genel muhasebe protokolüdür. Go-Ethereum üzerinde önemli geliştirmeler şunlardır:
 
-Truffle, Ethereum blockzincirleri üzerinde merkezi olmayan uygulamalar yazmak, derlemek, dağıtmak ve test etmek için popüler bir blok zinciri geliştirme çerçevesidir. Ayrıca, Truffle ' yı akıllı sözleşme geliştirmeyi ve geleneksel web geliştirmeyi sorunsuz bir şekilde tümleştirme girişiminde bulunan bir çerçeve olarak düşünebilirsiniz.
+* **Gizlilik** - Quorum, kamu ve özel devlet ayrımı yoluyla özel işlemleri ve özel sözleşmeleri destekler ve ağ katılımcılarına özel verilerin yönlendirilmiş aktarımı için eşler arası şifreli mesaj alışverişini kullanır.
+* **Alternatif konsensüs mekanizmaları** - izin verilen bir ağ için iş kanıtı veya hisse kanıtı konsensüsü gerekmez. Quorum, RAFT ve IBFT gibi konsorsiyum zincirleri için tasarlanmış birden fazla konsensüs mekanizması sunmaktadır.Azure Blockchain Hizmeti IBFT konsensüs mekanizmasını kullanır.
+* **Eş izni** - düğüm ve eş izinleri akıllı sözleşmeleri kullanarak yalnızca bilinen tarafların ağa katılmasını sağlar.
+* **Yüksek Performans** - Quorum, public Geth'ten daha yüksek performans sunar.
 
-Çoğu proje, en az iki blok zinciri düğümüyle etkileşime geçin. Geliştiriciler geliştirme sırasında yerel bir blok zinciri kullanır. Uygulama test veya yayın için hazırsanız, geliştirici bir blok zinciri ağına dağıtır. Örneğin, ana genel Ethereum ağı veya Azure blok zinciri hizmeti. Truffle, her ağ için akıllı sözleşmeleri derlemek ve dağıtmak için kullanılabilir ve son uygulama dağıtımını basitleştirir. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure blok zinciri hizmeti ağına bağlanmak Için Truffle kullanma](connect-truffle.md).
+## <a name="block-explorers"></a>Blok kaşifleri
 
-## <a name="ethereum-quorum-private-transactions"></a>Ethereum çekirdeği özel işlemleri
+Blok kaşifleri, tek tek blok içeriğini, işlem adresi verilerini ve geçmişini görüntüleyen çevrimiçi blockchain tarayıcılarıdır. Temel blok bilgileri Azure Blockchain Hizmeti'nde Azure Monitor aracılığıyla kullanılabilir. Ancak, geliştirme sırasında daha fazla ayrıntı bilgisine ihtiyacınız varsa, blok kaşifleri yararlı olabilir.  Aşağıdaki blok kaşifleri Azure Blockchain Hizmeti ile çalışır:
 
-Çekirdek, işlem artı sözleşme gizliliği ve yeni konsensus mekanizmalarına sahip bir Ethereum tabanlı dağıtılmış bir genel muhasebe protokolüdür. Go-Ethereum üzerinde önemli geliştirmeler şunları içerir:
-
-* **Gizlilik** -çekirdek, genel ve özel durum ayrımı aracılığıyla özel işlemleri ve özel sözleşmeleri destekler ve özel verilerin ağ katılımcılarına yönlendirilme için eşler arası şifreli ileti değişimlerini kullanır.
-* **Alternatif konsensus mekanizmaları** -iş açısından kanıtlama veya Stake consened, izinleri bulunan bir ağ için gerekli değildir. Çekirdek, Raft ve iBFT gibi Consortium zincirleri için tasarlanan birden çok konsensus mekanizması sunar.  Azure blok zinciri hizmeti, iBFT konsensus mekanizmasını kullanır.
-* **Eş izinleri** -akıllı sözleşmeleri kullanarak düğüm ve eş izinleri yalnızca bilinen tarafların ağa katılabilmesini sağlar.
-* **Daha yüksek performans** -çekirdek, genel olarak daha yüksek performans sunar.
-
-## <a name="block-explorers"></a>Blok gezginleri
-
-Blok araştırıcılar, bireysel blok içeriği, işlem adresi verileri ve geçmişi görüntüleyen çevrimiçi blok zinciri tarayıcılardır. Temel engelleme bilgilerine Azure blok zinciri hizmeti 'nde Azure Izleyici aracılığıyla ulaşılabilir. Ancak, geliştirme sırasında daha fazla ayrıntı bilgisine ihtiyacınız varsa, blok gezginleri yararlı olabilir.  Aşağıdaki blok araştırması, Azure blok zinciri hizmeti ile çalışır:
-
-* Web3 Labs 'den [Epırus Azure blok zinciri hizmet Gezgini](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview)
+* Web3 Labs'dan [Epirus Azure Blockchain Servis Gezgini](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview)
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-Ayrıca, Blockzincirini Veri Yöneticisi ve Azure Cosmos DB kullanarak kendi blok Gezgininizi de oluşturabilirsiniz, bkz. [eğitim: blok zinciri veri Yöneticisi kullanarak Azure Cosmos DB veri gönderme](data-manager-cosmosdb.md).
+Blockchain Data Manager ve Azure Cosmos DB'yi kullanarak kendi blok gezgininizi de oluşturabilirsiniz, [bkz.](data-manager-cosmosdb.md)
 
 ## <a name="tps-measurement"></a>TPS ölçümü
 
-Blok zinciri daha fazla kurumsal senaryolarda kullanıldığından, performans sorunlarını önlemek ve sistem verimsizlikleri önlemek için saniye başına işlem (TPS) hızı önemlidir. Yüksek işlem ücretleri, merkezi olmayan bir blok zinciri dahilinde devam etmek zor olabilir. Doğru bir TPS ölçümü, sunucu iş parçacığı, işlem kuyruğu boyutu, ağ gecikmesi ve güvenlik gibi farklı faktörlerden etkilenebilir. Geliştirme sırasında TPS hızını ölçmenize gerek duyuyorsanız, popüler bir açık kaynak aracı, bir [chaincepdir](https://github.com/drandreaskrueger/chainhammer).
+Blockchain daha fazla kurumsal senaryoda kullanıldığından, darboğazları ve sistem verimsizliklerini önlemek için saniye başına işlemler (TPS) hızı önemlidir. Yüksek işlem oranlarını merkezi olmayan bir blockchain içinde korumak zor olabilir. Doğru bir TPS ölçümü sunucu iş parçacığı, işlem sırası boyutu, ağ gecikmesi ve güvenlik gibi farklı etkenler tarafından etkilenebilir. Geliştirme sırasında TPS hızını ölçmek gerekiyorsa, popüler bir açık kaynak aracı [ChainHammer](https://github.com/drandreaskrueger/chainhammer)olduğunu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure blok zinciri hizmetinde bir Konsorsiyumu eklemek için Azure blok zinciri geliştirme seti 'ni kullanarak bir hızlı başlangıç yapın.
+Azure Blockchain Hizmeti'ndeki bir konsorsiyuma bağlanmak üzere Ethereum için Azure Blockchain Geliştirme Kiti'ni kullanarak hızlı bir başlangıç yapmayı deneyin.
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri hizmetine bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
+> [Azure Blockchain Hizmetine bağlanmak için Visual Studio Kodunu kullanma](connect-vscode.md)

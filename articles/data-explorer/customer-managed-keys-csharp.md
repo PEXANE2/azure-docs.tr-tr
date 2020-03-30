@@ -1,50 +1,53 @@
 ---
-title: Müşteri tarafından yönetilen anahtarları kullanarak yapılandırmaC#
-description: Bu makalede, Azure Veri Gezgini 'de verileriniz üzerinde müşteri tarafından yönetilen anahtarlar şifrelemesini yapılandırma açıklanmaktadır.
+title: 'C kullanarak müşteri tarafından yönetilen anahtarları yapılandırma #'
+description: Bu makalede, Azure Veri Gezgini'nde verilerinizde müşteri tarafından yönetilen anahtar şifrelemesi nasıl yapılandırılabildiğini açıklanmaktadır.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a00b0876c4a188b932032129ed5a394e94198930
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297955"
 ---
-# <a name="configure-customer-managed-keys-using-c"></a>Müşteri tarafından yönetilen anahtarları kullanarak yapılandırmaC#
+# <a name="configure-customer-managed-keys-using-c"></a>C kullanarak müşteri tarafından yönetilen anahtarları yapılandırma #
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portal](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager şablonu](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
+
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma
 
-Bu bölümde, Azure Veri Gezgini C# istemcisini kullanarak müşteri tarafından yönetilen anahtarlar şifrelemesini yapılandırma hakkında yönergeler verilmektedir. 
+Bu bölümde, Azure Veri Gezgini C# istemcisini kullanarak müşteri tarafından yönetilen anahtarşifrelemeyi nasıl yapılandırabileceğiniz gösterilmektedir. 
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-* Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
+* Visual Studio 2019 yüklü değilseniz, ücretsiz Visual Studio **free** [2019 Community Edition'ı](https://www.visualstudio.com/downloads/)indirebilir ve kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-### <a name="install-c-nuget"></a>NuGet C# 'i yükler
+### <a name="install-c-nuget"></a>C# NuGet yükle
 
-* [Azure Veri Gezgini (kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükler.
+* Azure [Veri Gezgini (Kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükleyin.
 
-* Kimlik doğrulaması için [Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) yükler.
+* Kimlik doğrulaması için [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) yükleyin.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
-Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen [bir Azure AD uygulaması](/azure/active-directory/develop/howto-create-service-principal-portal) ve hizmet sorumlusu oluşturun. Abonelik kapsamına rol ataması ekleyebilir ve gerekli `Directory (tenant) ID`, `Application ID`ve `Client Secret`alabilirsiniz.
+Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet ilkesi [oluşturun.](/azure/active-directory/develop/howto-create-service-principal-portal) Abonelik kapsamında rol ataması ekleyebilir ve `Directory (tenant) ID` `Application ID`gerekli `Client Secret`, , ve .
 
-### <a name="configure-cluster"></a>Küme yapılandırma
+### <a name="configure-cluster"></a>Kümeyi yapılandırma
 
-Azure Veri Gezgini şifrelemesi, varsayılan olarak Microsoft tarafından yönetilen anahtarları kullanır. Azure Veri Gezgini kümenizi, müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırın ve kümeyle ilişkilendirilecek anahtarı belirtin.
+Varsayılan olarak, Azure Veri Gezgini şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Azure Veri Gezgini kümenizi müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırın ve kümeyle ilişkilendirecek anahtarı belirtin.
 
 1. Aşağıdaki kodu kullanarak kümenizi güncelleştirin:
 
@@ -74,23 +77,23 @@ Azure Veri Gezgini şifrelemesi, varsayılan olarak Microsoft tarafından yönet
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
 
-1. Kümenizin başarıyla güncelleştirilip güncelleştirilmediğini denetlemek için aşağıdaki komutu çalıştırın:
+1. Kümenizin başarıyla güncelleştirilip güncelleştirilemeip güncellenmedisini kontrol etmek için aşağıdaki komutu çalıştırın:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Sonuç `Succeeded` değerine sahip `ProvisioningState` içeriyorsa, kümeniz başarıyla güncelleştirildi.
+    Sonuç değeri `ProvisioningState` içeriyorsa, `Succeeded` kümeniz başarıyla güncelleştirildi.
 
 ## <a name="update-the-key-version"></a>Anahtar sürümünü güncelleştirme
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için kümeyi güncelleştirmeniz gerekir. İlk olarak, anahtarın en son sürümünü almak için `Get-AzKeyVaultKey` çağırın. Ardından kümenin Anahtar Kasası özelliklerini, [küme yapılandırma](#configure-cluster)bölümünde gösterildiği gibi anahtarın yeni sürümünü kullanacak şekilde güncelleştirin.
+Anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için kümeyi güncelleştirmeniz gerekir. İlk olarak, anahtarın en son sürümünü almak için arayın. `Get-AzKeyVaultKey` Daha [sonra, Yapılandırma kümesinde](#configure-cluster)gösterildiği gibi anahtarın yeni sürümünü kullanmak için kümenin anahtar kasa özelliklerini güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure 'da Azure Veri Gezgini kümelerini güvenli hale getirme](security.md)
-* [Azure Veri Gezgini kümeniz için Yönetilen kimlikler yapılandırma](managed-identities.md)
-* Rest 'de şifrelemeyi etkinleştirerek [Azure Veri Gezgini Azure Portal kümenizin güvenliğini sağlayın](manage-cluster-security.md) .
-* [Azure Resource Manager şablonunu kullanarak müşteri tarafından yönetilen anahtarları yapılandırma](customer-managed-keys-resource-manager.md)
+* [Azure'da Güvenli Azure Veri Gezgini kümeleri](security.md)
+* [Azure Veri Gezgini kümeniz için yönetilen kimlikleri yapılandırma](managed-identities.md)
+* Şifrelemeyi hazır layarak [Azure Veri Gezgini - Azure portalında kümenizi güvenli](manage-cluster-security.md) hale verin.
+* [Azure Kaynak Yöneticisi şablonunu kullanarak müşteri tarafından yönetilen anahtarları yapılandırın](customer-managed-keys-resource-manager.md)
 
 

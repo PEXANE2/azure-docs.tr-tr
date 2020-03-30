@@ -1,42 +1,46 @@
 ---
 title: Özel ilkelerde Azure MFA teknik profilleri
 titleSuffix: Azure AD B2C
-description: Azure AD B2C Azure Multi-Factor Authentication (MFA) Teknik profilleri için özel ilke başvurusu.
+description: Azure AD B2C'deki Azure Çok Faktörlü Kimlik Doğrulama (MFA) teknik profilleri için özel ilke başvurusu.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184290"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332813"
 ---
-# <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profili tanımlama
+# <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profilini tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C), Azure Multi-Factor Authentication (MFA) kullanarak telefon numarasını doğrulamaya yönelik destek sağlar. Bir telefon numarasına kod oluşturup göndermek için bu teknik profili kullanın ve ardından kodu doğrulayın.
+Azure Active Directory B2C (Azure AD B2C), Azure Çok Faktörlü Kimlik Doğrulaması (MFA) kullanarak bir telefon numarasını doğrulamak için destek sağlar. Bir telefon numarası oluşturmak ve bir kod göndermek ve ardından kodu doğrulamak için bu teknik profili kullanın. Azure MFA teknik profili de bir hata iletisi döndürebilir.  Doğrulama teknik profili, kullanıcı yolculuğu devam etmeden önce kullanıcı tarafından sağlanan verileri doğrular. Doğrulama teknik profili yle, bir hata iletisi kendi kendini öne süren bir sayfada görüntülenir.
 
-Azure MFA teknik profili de bir hata iletisi döndürebilir. Bir **doğrulama teknik profili**kullanarak Azure MFA ile tümleştirmeyi tasarlayabilirsiniz. Bir doğrulama teknik profili, Azure MFA hizmetini çağırır. Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan sayfada bir hata iletisi görüntülenir.
+Bu teknik profil:
+
+- Kullanıcıyla etkileşim kurmak için bir arayüz sağlamaz. Bunun yerine, kullanıcı arabirimi [kendi kendine ileri süren](self-asserted-technical-profile.md) bir teknik profilden veya doğrulama teknik [profili](validation-technical-profile.md)olarak bir [görüntü denetiminden](display-controls.md) çağrılır.
+- Bir telefon numarası oluşturmak ve göndermek için Azure MFA hizmetini kullanır ve ardından kodu doğrular.  
+- Kısa mesaj yoluyla bir telefon numarasını doğrular.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin **Name** özniteliğinin `Proprietary`olarak ayarlanması gerekir. **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
+**Protokol** öğesinin `Proprietary` **Ad** özniteliğinin . **Işleyici** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyicisi derlemesinin tam nitelikli adını içermelidir:
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
-Aşağıdaki örnekte bir Azure MFA teknik profili gösterilmektedir:
+Aşağıdaki örnekte Bir Azure MFA teknik profili gösterilmektedir:
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
@@ -45,107 +49,105 @@ Aşağıdaki örnekte bir Azure MFA teknik profili gösterilmektedir:
     ...
 ```
 
-## <a name="send-sms"></a>SMS gönder
+## <a name="send-sms"></a>SMS Gönder
 
-Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
+Bu teknik profilin ilk modu bir kod oluşturmak ve göndermektir. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
 
 ### <a name="input-claims"></a>Giriş talepleri
 
-**Inputclaim** öğesi, Azure MFA 'ya gönderilen taleplerin bir listesini içerir. Ayrıca, talep ettiğiniz adı MFA teknik profilinde tanımlanan adla eşleyebilirsiniz.
+**InputClaims** öğesi, Azure MFA'ya gönderilecek taleplerin listesini içerir. Ayrıca, MFA teknik profilinde tanımlanan ada talebinizin adını eşleyebilirsiniz.
 
-| Claimreferenceıd | Gerekli | Açıklama |
+| ClaimReferenceId | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| userPrincipalName | Yes | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
-| phoneNumber | Yes | SMS kodu göndermek için kullanılacak telefon numarası. |
-| Tadı | Hayır |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
-| locale | Hayır | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
+| userPrincipalName | Evet | Telefon numarasının sahibi kullanıcının tanımlayıcısı. |
+| Phonenumber | Evet | SMS kodu göndermek için telefon numarası. |
+| Şirketadı | Hayır |SMS'teki şirket adı. Sağlanmadıysa, uygulamanızın adı kullanılır. |
+| yerel ayar | Hayır | SMS'in yerel alanı. Sağlanmazsa, kullanıcının tarayıcı yerel alanı kullanılır. |
 
-**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
+**InputClaimsTransformations** öğesi, Azure MFA hizmetine göndermeden önce giriş taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **InputClaimsTransformation** öğeleri koleksiyonunu içerebilir.
 
-### <a name="output-claims"></a>Çıkış talepleri
+### <a name="output-claims"></a>Çıktı talepleri
 
-Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, `DefaultValue` özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz.
+Azure MFA protokolü sağlayıcısı herhangi bir **Çıktı Talebi**döndürmez, bu nedenle çıktı taleplerini belirtmeye gerek yoktur. Ancak, özniteliği ayarladığınız `DefaultValue` sürece Azure MFA kimlik sağlayıcısı tarafından döndürülen talepler ekleyebilirsiniz.
 
-**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
+**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
 
 ### <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | **Onewaysms**olmalıdır.  |
-| Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse özel hata iletisi |
-| Usermessageif, Dntsendsms | Hayır | Girilen telefon numarası SMS 'yi kabul etmezse özel hata iletisi |
-| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştığından özel hata iletisi |
+| İşlem | Evet | **OneWaySMS**olmalı.  |
 
-### <a name="return-an-error-message"></a>Bir hata iletisi döndürür
+#### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
-[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örnek:
+Aşağıdaki meta veriler, SMS hatası gönderdikten sonra görüntülenen hata iletilerini yapılandırmak için kullanılabilir. Meta [veriler, kendi kendine ileri süren](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilir.](localization-string-ids.md#azure-mfa-error-messages)
 
-```XML
-<Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
-```
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| UserMessageIfCouldntSendSms | Hayır | Sağlanan telefon numarası SMS kabul etmiyorsa kullanıcı hatası iletisi. |
+| UserMessageIfGeçersizFormat | Hayır | Sağlanan telefon numarası geçerli bir telefon numarası değilse kullanıcı hatası iletisi. |
+| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaşmışsa kullanıcı hatası iletisi. |
+| KullanıcıMesajıIfThrottled| Hayır | Bir istek azaltıldıysa kullanıcı hatası iletisi.|
 
-### <a name="example-send-an-sms"></a>Örnek: SMS gönder
+### <a name="example-send-an-sms"></a>Örnek: SMS gönderin
 
-Aşağıdaki örnekte, SMS aracılığıyla kod göndermek için kullanılan bir Azure MFA teknik profili gösterilmektedir.
+Aşağıdaki örnekte, SMS yoluyla kod göndermek için kullanılan bir Azure MFA teknik profili gösterilmektedir.
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
-    <DisplayName>Send Sms</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">OneWaySMS</Item>
-    </Metadata>
-    <InputClaimsTransformations>
-        <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
-        <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
-    </InputClaimsTransformations>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
-    </InputClaims>
+  <DisplayName>Send Sms</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">OneWaySMS</Item>
+  </Metadata>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
+    <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="verify-code"></a>Kodu doğrula
 
-Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
+Bu teknik profilin ikinci modu bir kodu doğrulamaktır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
 
 ### <a name="input-claims"></a>Giriş talepleri
 
-**Inputclaim** öğesi, Azure MFA 'ya gönderilen taleplerin bir listesini içerir. Ayrıca, talep ettiğiniz adı MFA teknik profilinde tanımlanan adla eşleyebilirsiniz.
+**InputClaims** öğesi, Azure MFA'ya gönderilecek taleplerin listesini içerir. Ayrıca, MFA teknik profilinde tanımlanan ada talebinizin adını eşleyebilirsiniz.
 
-| Claimreferenceıd | Gerekli | Açıklama |
+| ClaimReferenceId | Gerekli | Açıklama |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Yes | Daha önce kod göndermek için kullanılan telefon numarası. Telefon doğrulama oturumunun yerini bulmak için de kullanılır. |
-| Doğrulama kodu  | Yes | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu |
+| Phonenumber| Evet | Daha önce kod göndermek için kullanılan aynı telefon numarası. Ayrıca bir telefon doğrulama oturumu bulmak için kullanılır. |
+| doğrulama Kodu  | Evet | Doğrulanması için kullanıcı tarafından sağlanan doğrulama kodu |
 
-**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.
+**InputClaimsTransformations** öğesi, Azure MFA hizmetini aramadan önce giriş taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **InputClaimsTransformation** öğeleri koleksiyonunu içerebilir.
 
-### <a name="output-claims"></a>Çıkış talepleri
+### <a name="output-claims"></a>Çıktı talepleri
 
-Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, `DefaultValue` özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz.
+Azure MFA protokolü sağlayıcısı herhangi bir **Çıktı Talebi**döndürmez, bu nedenle çıktı taleplerini belirtmeye gerek yoktur. Ancak, özniteliği ayarladığınız `DefaultValue` sürece Azure MFA kimlik sağlayıcısı tarafından döndürülen talepler ekleyebilirsiniz.
 
-**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
+**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
 
-## <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | **Verify** olmalıdır |
-| Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse özel hata iletisi |
-| Usermessageifyanlışlıkla Gcodegirildi | Hayır | Doğrulama için girilen kod yanlış ise özel hata iletisi |
-| Usermessageifmaxallowedcoderetr'e ulaşıldı | Hayır | Kullanıcı çok fazla kez bir doğrulama kodu denediğinde özel hata iletisi |
-| Usermessageifkısıtlanıyor | Hayır | Kullanıcı kısıtlanmamışsa özel hata iletisi |
-| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştığından özel hata iletisi |
+| İşlem | Evet | **Doğrulama** olmalıdır |
 
-### <a name="return-an-error-message"></a>Bir hata iletisi döndürür
+#### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
-[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örnek:
+Kod doğrulama hatası üzerine görüntülenen hata iletilerini yapılandırmak için aşağıdaki meta veriler kullanılabilir. Meta [veriler, kendi kendine ileri süren](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilir.](localization-string-ids.md#azure-mfa-error-messages)
 
-```XML
-<Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>
-```
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| UserMessageIfMaxAllowedCodeRetryUlaşıl| Hayır | Kullanıcı bir doğrulama kodunu çok fazla denediyse kullanıcı hatası iletisi. |
+| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaşmışsa kullanıcı hatası iletisi. |
+| KullanıcıMesajıIfThrottled| Hayır | İstek daraltılırsa kullanıcı hatası iletisi.|
+| UserMessageIfWrongCodeEntered| Hayır| Doğrulama için girilen kod yanlışsa kullanıcı hatası iletisi.|
 
 ### <a name="example-verify-a-code"></a>Örnek: bir kodu doğrulama
 

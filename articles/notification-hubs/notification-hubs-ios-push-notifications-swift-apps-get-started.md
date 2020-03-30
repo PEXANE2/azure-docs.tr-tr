@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs kullanan Swift iOS uygulamalarına anında iletme bildirimleri gönderme | Microsoft Docs
-description: Azure Notification Hubs kullanan Swift iOS uygulamalarına nasıl bildirim göndereceğinizi öğrenin.
+title: Azure Bildirim Hub'larını kullanan Swift iOS uygulamalarına anında iletme bildirimleri gönderme | Microsoft Dokümanlar
+description: Azure Bildirim Hub'larını kullanan Swift iOS uygulamalarına nasıl bildirim tebliğ edileceğini öğrenin.
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
@@ -16,91 +16,93 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a721c519c7a836e20455c6f1887bcfa7b52951f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336631"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Öğretici: Notification Hubs kullanan Swift iOS uygulamalarına anında Iletme bildirimleri gönderin REST API
+# <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Öğretici: Bildirim Hub'ları REST API'yi kullanarak Swift iOS uygulamalarına anında iletme bildirimleri gönderme
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-Bu öğreticide, [REST API](/rest/api/notificationhubs/)kullanarak bir Swift tabanlı iOS uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs kullanırsınız. Ayrıca, [Apple Anında Iletilen bildirim hizmeti 'ni (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)kullanarak anında iletme bildirimleri alan boş bir iOS uygulaması oluşturursunuz.
+Bu öğreticide, [REST API'sini](/rest/api/notificationhubs/)kullanarak Bildirimleri Swift tabanlı bir iOS uygulamasına iletmek için Azure Bildirim Hub'larını kullanıyorsunuz. Ayrıca, [Apple Anında Bildirim hizmetini (APN)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)kullanarak anında iletme bildirimleri alan boş bir iOS uygulaması da oluşturursunuz.
 
-Bu öğreticide aşağıdaki adımları izleyebilirsiniz:
+Bu öğretici aşağıdaki adımları ile alır:
 
 > [!div class="checklist"]
-> * Sertifika imzalama istek dosyasını oluşturun.
-> * Uygulamanızı anında iletme bildirimleri için isteyin.
+> * Sertifika imzalama isteği dosyasını oluşturun.
+> * Anında iletme bildirimleri için uygulamanızı isteyin.
 > * Uygulama için bir sağlama profili oluşturun.
 > * Bildirim hub’ı oluşturma.
-> * Bildirim Hub 'ını APNs bilgileriyle yapılandırın.
-> * İOS uygulamanızı bir Bildirim Hub 'ına bağlayın.
+> * Bildirim merkezini APN bilgileriyle yapılandırın.
+> * iOS uygulamanızı bir bildirim merkezine bağlayın.
 > * Çözümü test edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu öğretici için tam kod [GitHub](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_rest)bulunabilir.
 
-Bu arada izlemek için şunlar gerekir:
+## <a name="prerequisites"></a>Ön koşullar
 
-- Hizmeti bilmiyorsanız [Azure Notification Hubs genel bakış](notification-hubs-push-notification-overview.md) bölümüne göz atın.
-- [Kayıtlar ve yükleme](notification-hubs-push-notification-registration-management.md)hakkında bilgi edinmek için.
-- Etkin bir [Apple geliştirici hesabı](https://developer.apple.com).
-- Anahtarınıza yüklenmiş geçerli bir geliştirici sertifikasıyla birlikte Xcode çalıştıran bir Mac.
-- Simülatör ile anında iletme bildirimlerini test etmek için, ile çalıştırabilir ve hata ayıklaması yapabilirsiniz.
-- Fiziksel iPhone cihazınız [Apple portalına](https://developer.apple.com) kaydedilir ve sertifikanız ile ilişkilendirilir.
-- Kaynakları oluşturabileceğiniz ve yönetebileceğiniz bir [Azure aboneliği](https://portal.azure.com) .
+Takip etmek için şunları yapmanız gerekir:
 
-İOS geliştirmeyle ilgili önceki bir deneyim olmasa bile, bu ilk ilkeler örneğini oluşturma adımlarını takip edebilmelisiniz. Bununla birlikte, aşağıdaki kavramlarla benzerlik özelliğinden faydalanabilirsiniz:
+- Hizmeti bilmiyorsanız [Azure Bildirim Hub'larına genel bakış](notification-hubs-push-notification-overview.md) ı gözden geçirmek için.
+- [Kayıtlar ve kurulum](notification-hubs-push-notification-registration-management.md)hakkında bilgi almak için.
+- Etkin bir [Apple Geliştirici Hesabı.](https://developer.apple.com)
+- Anahtar zincirinize yüklenen geçerli bir geliştirici sertifikasıyla birlikte Xcode çalıştıran bir Mac.
+- Anında iletme bildirimlerini simülatörle test edebildiğiniz fiziksel bir iPhone aygıtı yla çalıştırıp hata ayıklayabilirsiniz.
+- Apple [Portalı'na](https://developer.apple.com) kayıtlı ve sertifikanızla ilişkili fiziksel iPhone aygıtınız.
+- Kaynakları oluşturabileceğiniz ve yönetebileceğiniz bir [Azure aboneliği.](https://portal.azure.com)
+
+iOS geliştirme ile ilgili önceden deneyiminiz olmasa bile, bu ilk ilkeler örneğini oluşturmak için aşağıdaki adımları izleyebilmelisiniz. Ancak, aşağıdaki kavramlara aşinalıktan yararlanacaksınız:
 
 - Xcode ve Swift ile iOS uygulamaları oluşturma.
-- İOS için bir [Azure Notification Hub 'ı](notification-hubs-ios-apple-push-notification-apns-get-started.md) yapılandırma.
-- [Apple geliştirici portalı](https://developer.apple.com) ve [Azure Portal](https://portal.azure.com).
+- iOS için azure [bildirim hub'ı](notification-hubs-ios-apple-push-notification-apns-get-started.md) yapılandırma.
+- [Apple Geliştirici Portalı](https://developer.apple.com) ve Azure [portalı.](https://portal.azure.com)
 
 > [!NOTE]
-> Bildirim Hub 'ı yalnızca **korumalı alan** kimlik doğrulama modunu kullanacak şekilde yapılandırılacak. Bu kimlik doğrulama modunu üretim iş yükleri için kullanmamalısınız.
+> Bildirim hub'ı yalnızca **Sandbox** kimlik doğrulama modunu kullanacak şekilde yapılandırılır. Üretim iş yükleri için bu kimlik doğrulama modunu kullanmamalısınız.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-## <a name="connect-your-ios-app-to-a-notification-hub"></a>İOS uygulamanızı bir Bildirim Hub 'ına bağlama
+## <a name="connect-your-ios-app-to-a-notification-hub"></a>iOS uygulamanızı bir bildirim merkezine bağlama
 
-Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksınız.  
+Bu bölümde, bildirim merkezine bağlanacak iOS uygulamasını oluşturursunuz.  
 
-### <a name="create-an-ios-project"></a>İOS projesi oluşturma
+### <a name="create-an-ios-project"></a>iOS projesi oluşturma
 
 1. Xcode'da yeni bir iOS projesi oluşturun ve **Single View Application** (Tek Görünüm Uygulaması) şablonunu seçin.
 
 1. Yeni proje için seçenekleri ayarlarken:
 
-   1. Apple Developer Portal 'da **paket tanımlayıcısını** ayarladığınızda kullandığınız **ürün adını** (Pushdemo) ve **kuruluş tanımlayıcısını** (`com.<organization>`) belirtin.
+   1. **Apple** Geliştirici Portalı'nda Paket Tanımlayıcısını ayarlarken`com.<organization>`kullandığınız Ürün **Adı** (PushDemo) ve Organizasyon **Tanımlayıcısını** () belirtin.
 
-   1. **Uygulama kimliğinin** ayarlandığı **ekibi** seçin.
+   1. Uygulama **Team** **Kimliği'nin** ayarlandığını seçin.
 
-   1. **Dili** **Swift**olarak ayarlayın.
+   1. **Dili** **Swift'e**ayarlayın.
 
-   1. **İleri**’yi seçin.
+   1. **Sonraki'ni**seçin.
 
-1. **Supportingfiles**adlı yeni bir klasör oluşturun.
+1. **Destekleyen Dosyalar**adlı yeni bir klasör oluşturun.
 
-1. **Supportingfiles** klasöründe **devsettings. plist** adlı yeni bir p-List dosyası oluşturun. Bu klasörü **gitignore** dosyanıza eklediğinizden emin olun, böylece bir git deposu ile çalışırken uygulanmıyor. Bir üretim uygulamasında, büyük olasılıkla bu gizli dizileri otomatik derleme sürecinin bir parçası olarak ayarlayabilirsiniz. Bu tür ayarlar bu kılavuzda ele alınmıştır.
+1. **SupportingFiles** klasöründe **devsettings.plist** adlı yeni bir p-list dosyası oluşturun. Git repo ile çalışırken işlenmeyecek şekilde bu klasörü **gitignore** dosyanıza eklediğinizden emin olun. Bir üretim uygulamasında, bu sırları otomatik bir yapı işleminin parçası olarak koşullu olarak ayarlıyor olabilirsiniz. Bu tür ayarlar bu gözden geçirme alanında yer almıyor.
 
-1. **Devsettings. plist** öğesini, sağladığınız Bildirim Hub 'ından kendi değerlerinizi kullanarak aşağıdaki yapılandırma girdilerini içerecek şekilde güncelleştirin:
+1. **Devsettings.plist'i,** sizin sağladığınız bildirim merkezinden kendi değerlerinizi kullanarak aşağıdaki yapılandırma girişlerini içerecek şekilde güncelleştirin:
 
    | Anahtar                            | Tür                     | Değer                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Dize                   | \<hubKey >                  |
-   | notificationHubKeyName         | Dize                   | \<hubKeyName >              |
-   | notificationHubName            | Dize                   | \<hubName >                 |
-   | notificationHubNamespace       | Dize                   | \<hubNamespace >            |
+   | bildirimHubKey             | Dize                   | \<hubKey>                  |
+   | bildirimHubKeyName         | Dize                   | \<hubKeyName>              |
+   | bildirimHubName            | Dize                   | \<hubName>                 |
+   | bildirimHubNamespace       | Dize                   | \<hubNamespace>            |
 
-   Gerekli değerleri, Azure portal Notification Hub kaynağına giderek bulabilirsiniz. Özellikle, **Notificationhubname** ve **notificationhubnamespace** değerleri **genel bakış** sayfasındaki **temel** bileşenler özetinin sağ üst köşesinde bulunur.
+   Azure portalındaki bildirim merkezi kaynağına giderek gerekli değerleri bulabilirsiniz. Özellikle, **bildirimHubName** ve **notificationHubNamespace** değerleri **Genel Bakış** sayfasında **Temel ler** özetinin sağ üst köşesindedir.
 
-   ![Notification Hubs Essentials Özeti](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
+   ![Bildirim Hub'ları Essentials özeti](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Ayrıca, **erişim ilkelerine** gidip `DefaultFullSharedAccessSignature` gibi Ilgili **erişim Ilkesini**seçerek **Notificationhubkeyname** ve **notificationhubkey** değerlerini de bulabilirsiniz. Bundan sonra, **birincil bağlantı dizesinden** değeri `notificationHubKeyName` için `SharedAccessKeyName=` ve `notificationHubKey` için `SharedAccessKey=` olan değer ile önek olarak kopyalayın.
+   Ayrıca **Access İlkeleri'ne** göz gezdirerek ve ilgili **Erişim İlkesini**seçerek **bildirimHubKeyName** ve **notificationHubKey** değerlerini `DefaultFullSharedAccessSignature`bulabilirsiniz. Bundan sonra, **Birincil Bağlantı Dizesi'nden** `notificationHubKeyName` kopyala için önceden belirlenmiş değer ve '' `SharedAccessKey=` `notificationHubKey`için önceden belirlenmiş `SharedAccessKeyName=` değer.
 
    Bağlantı dizesi aşağıdaki biçimde olmalıdır:
 
@@ -108,24 +110,24 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Basit kalmasını sağlamak için `DefaultFullSharedAccessSignature` belirtin. bu nedenle, bildirim göndermek için belirteci kullanabilirsiniz. Uygulamada `DefaultListenSharedAccessSignature` yalnızca bildirim almak istediğiniz durumlar için daha iyi bir seçimdir.
+   Basit tutmak için, `DefaultFullSharedAccessSignature` bildirim göndermek için belirteci kullanabilirsiniz şekilde belirtin. Uygulamada, `DefaultListenSharedAccessSignature` yalnızca bildirim almak istediğiniz durumlar için daha iyi bir seçim olacaktır.
 
-1. **Proje Gezgini**altında **proje adını** seçin ve ardından **genel** sekmesini seçin.
+1. **Project Navigator** **altında, Proje Adı'nı** seçin ve ardından **Genel** sekmesini seçin.
 
-1. **Kimliği** bulun ve ardından **paket tanımlayıcı** değerini, ÖNCEKI bir adımdan **uygulama kimliği** için kullanılan değer olan `com.<organization>.PushDemo` ile eşleşecek şekilde ayarlayın.
+1. **Kimliği** bulun ve daha sonra Önceki adımdaki Uygulama `com.<organization>.PushDemo` **Kimliği** için kullanılan değer olan Paket **Tanımlayıcı** değerini eşleşebilecek şekilde ayarlayın.
 
-1. **İmzalamayı**bulun ve ardından **Apple geliştirici hesabınız**için uygun **ekibi** seçin. **Takım** değeri, sertifikalarınızı ve profillerinizi oluşturduğunuz ile eşleşmelidir.
+1. **İmzalama & Özelliklerini**bulun ve ardından **Apple Geliştirici Hesabınız**için uygun **Ekibi** seçin. **Takım** değeri, sertifikalarınızı ve profillerinizi oluşturduğunuz değerle eşleşmelidir.
 
-1. Xcode, **paket tanımlayıcısına**göre uygun **sağlama profili** değerini otomatik olarak göstermelidir. Yeni **sağlama profili** değerini görmüyorsanız, **Xcode** > **tercihleri** > **Hesap** > **Görünüm ayrıntılarını**seçerek **imzalama kimliği** için profilleri yenilemeyi deneyin. **Imza kimliği**' ni seçin ve sonra profilleri indirmek için sağ alt köşedeki **Yenile** düğmesini seçin.
+1. Xcode, **Paket Tanımlayıcısını**temel alarak uygun **Tedarik Profili** değerini otomatik olarak aşağı çekmelidir. Yeni **Sağlama Profili** değerini görmüyorsanız, **Xcode** > **Tercihleri** > **Hesabı'nı** seçerek **İmzalama Kimliği** profillerini yenilemeyi deneyin ve ardından profilleri indirmek için Manuel **Profilleri İndir** düğmesini seçin.
 
-1. **Yetenekler** sekmesini seçin ve **anında iletme bildirimlerinin** etkinleştirildiğinden emin olun.
+1. **İmzalama & Özellikleri** sekmesinde , + **Özellik** düğmesini tıklatın ve **Push Bildirimleri'nin** etkin olduğundan emin olmak için listeden **Bildirimlere Dokun'a** çift dokunun.
 
-1. **Unusernotificationcenterdelegate** protokolünü uygulamak Için **appdelegate. Swift** dosyanızı açın ve sınıfının en üstüne aşağıdaki kodu ekleyin:
+1. **UNUserNotificationCenterDelegate** protokolünü uygulamak için **AppDelegate.swift** dosyanızı açın ve sınıfın en üstüne aşağıdaki kodu ekleyin:
 
     ```swift
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+        
         ...
 
         var configValues: NSDictionary?
@@ -134,15 +136,14 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
         var notificationHubKeyName : String?
         var notificationHubKey : String?
         let tags = ["12345"]
-        let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
-
+        
         ...
     }
     ```
 
-    Bu üyeleri daha sonra kullanacaksınız. Özellikle, kaydın bir parçası olarak **Etiketler** ve **generictemplate** üyelerini kullanacaksınız. Etiketler hakkında daha fazla bilgi için bkz. kayıtlar ve [şablon kayıtları](notification-hubs-templates-cross-platform-push-messages.md) [için Etiketler](notification-hubs-tags-segment-push-message.md) .
+    Bu üyeleri daha sonra kullanacaksın. Özellikle, özel bir **şablon**kullanarak kaydın bir parçası olarak **etiketleri** üye kullanırsınız. Etiketler hakkında daha fazla bilgi için, kayıtlar ve [Şablon kayıtları](notification-hubs-templates-cross-platform-push-messages.md) [için Etiketler'e](notification-hubs-tags-segment-push-message.md) bakın.
 
-1. Aynı dosyada, **Didsonlandırhlaunchingwithoptions** işlevine aşağıdaki kodu ekleyin:
+1. Aynı dosyada, **didFinishLaunchingWithOptions** işlevine aşağıdaki kodu ekleyin:
 
     ```swift
     if let path = Bundle.main.path(forResource: "devsettings", ofType: "plist") {
@@ -171,11 +172,11 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
     return true
     ```
 
-    Bu kod, **devsettings. plist**öğesinden ayar değerlerini alır, **Appdelegate** sınıfını **unusernotificationcenter** temsilcisi olarak ayarlar, anında iletme bildirimleri için yetkilendirme ister ve ardından çağırır  **registerForRemoteNotifications**.
+    Bu **kod, devsettings.plist**ayar değerlerini alır, **UNUserNotificationCenter** temsilcisi olarak **AppDelegate** sınıfAyarlar, anında iletme bildirimleri için yetkilendirme talepleri ve sonra **registerForRemoteNotifications**çağırır.
 
-    Bu basit tutmak için, kod *yalnızca iOS 10 ve üstünü*destekler. İlgili API 'Leri ve normalde yaptığınız gibi yaklaşımları kullanarak, önceki işletim sistemi sürümleri için destek ekleyebilirsiniz.
+    Basit tutmak için, kod *iOS 10 ve daha sonra yalnızca*destekler. Normalde yaptığınız gibi, ilgili API'leri ve yaklaşımları koşullu olarak kullanarak önceki işletim sistemi sürümleri için destek ekleyebilirsiniz.
 
-1. Aynı dosyada aşağıdaki işlevleri ekleyin:
+1. Aynı dosyada, aşağıdaki işlevleri ekleyin:
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -186,13 +187,14 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
     func showAlert(withText text : String) {
         let alertController = UIAlertController(title: "PushDemo", message: text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     ```
 
-    Kod, Bildirim Hub 'ına kaydolmak için **ınstald ID** ve **pushchannel** değerlerini kullanır. Bu durumda, cihazı tanımlayacak ve sonra istenen **Pushchannel** değerini sağlamak üzere **devicetoken** 'ı biçimlendirirken benzersiz bir değer sağlamak için **UIDevice. Current. ıdentifierforvendor** kullanıyorsunuz. **Showalert** işlevi, Gösterim amacıyla bazı ileti metinlerini göstermek için yeterlidir.
+    Kod, bildirim merkezine kaydolmak için **installationId** ve **pushChannel** değerlerini kullanır. Bu durumda, cihazı tanımlamak için benzersiz bir değer sağlamak için **UIDevice.current.identifierForVendor** kullanıyorsanız ve sonra istenen **pushChannel** değerini sağlamak için **aygıtToken** biçimlendirme. **ShowAlert** işlevi yalnızca gösteri amacıyla bazı ileti metnini görüntülemek için vardır.
 
-1. **Appdelegate. Swift** dosyasında hala **Unusernotificationcenterdelegate**öğesine **Willvar** ve **didreceive** işlevlerini ekleyin. Bu işlevler, bir uygulamanın ön planda veya arka planda çalıştığı bildirildiklerinde bir uyarı görüntüler.
+1. Hala **AppDelegate.swift** dosyasında, **unUserNotificationCenterDelegate** **için willPresent** ve **didReceive** işlevleri ekleyin. Bu işlevler, bir uygulamanın sırasıyla ön planda veya arka planda çalıştığı bildirilirken bir uyarı görüntüler.
 
     ```swift
     @available(iOS 10.0, *)
@@ -210,17 +212,22 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
     }
     ```
 
-1. **Yüklemekimliği** ve **pushchannel** değerlerinin atandığını doğrulamak Için **Didregisterforremotenocertificate ationswithdevicetoken** işlevinin altına Print deyimlerini ekleyin.
+1. **InstallationId** ve **pushChannel'a** değer atandığını doğrulamak için **didRegisterForRemoteNotificationsWithDeviceToken** işlevinin altına yazdırma ekstreleri ekleyin.
 
-1. Projeye daha sonra ekleyeceğiniz temel bileşenler için **modeller**, **Hizmetler**ve **yardımcı programlar** klasörü oluşturun.
+    ```swift
+    print(installationId)
+    print(pushChannel)
+    ```
 
-1. Projenin fiziksel bir cihazda oluşturulup çalıştırmalarından emin olun. Anında iletme bildirimleri simülatörü kullanılarak test edilebilir.
+1. Daha sonra projeye ekleyeceğiniz temel bileşenler için **Modeller,** **Hizmetler**ve **Yardımcı Programlar** klasörleri oluşturun.
 
-### <a name="create-models"></a>Model oluşturma
+1. Projenin fiziksel bir aygıtta oluşturup çalışmadığını denetleyin. Anında iletme bildirimleri simülatörü kullanılarak test edilemez.
 
-Bu adımda, [Notification Hubs REST API](/rest/api/notificationhubs/) yüklerini temsil etmek ve gerekli paylaşılan erişim IMZASı (SAS) belirteç verilerini depolamak için bir modeller kümesi oluşturacaksınız.
+### <a name="create-models"></a>Modeller oluşturma
 
-1. **Modeller** klasörüne **pushtemplate. Swift** adlı yeni bir Swift dosyası ekleyin. Bu model, **Deviceınstallation** yükünün parçası olarak tek bir şablonun **gövdesini** temsil eden bir yapı sağlar.
+Bu adımda, [Bildirim Hub'ları REST API](/rest/api/notificationhubs/) yüklerini temsil eden ve gerekli paylaşılan erişim imzası (SAS) belirteç verilerini depolamak için bir dizi model oluşturursunuz.
+
+1. **Modeller** klasörüne **PushTemplate.swift** adlı yeni bir Swift dosyası ekleyin. Bu model, **DeviceInstallation** yükünün bir parçası olarak tek bir şablonun **GÖVDESIni** temsil eden bir yapı sağlar.
 
     ```swift
     import Foundation
@@ -234,7 +241,7 @@ Bu adımda, [Notification Hubs REST API](/rest/api/notificationhubs/) yüklerini
     }
     ```
 
-1. **Modeller** klasörüne **deviceınstallation. Swift** adlı yeni bir Swift dosyası ekleyin. Bu dosya, bir **cihaz yüklemesi**oluşturma veya güncelleştirme yükünü temsil eden bir struct tanımlar. Dosyasına aşağıdaki kodu ekleyin:
+1. **Models** klasörüne **DeviceInstallation.swift** adlı yeni bir Swift dosyası ekleyin. Bu dosya, **aygıt yüklemesi**oluşturmak veya güncelleştirmek için yükü temsil eden bir yapı tanımlar. Dosyaya aşağıdaki kodu ekleyin:
 
     ```swift
     import Foundation
@@ -255,7 +262,7 @@ Bu adımda, [Notification Hubs REST API](/rest/api/notificationhubs/) yüklerini
     }
     ```
 
-1. **Modeller** klasörüne **tokendata. Swift** adlı yeni bir Swift dosyası ekleyin. Bu model, bir SAS belirtecini süre sonu ile birlikte depolamak için kullanılacaktır.
+1. **Modeller** klasörüne **TokenData.swift** adında yeni bir Swift dosyası ekleyin. Bu model, son kullanma tarihiyle birlikte bir SAS belirteci depolamak için kullanılacaktır.
 
     ```swift
     import Foundation
@@ -274,32 +281,32 @@ Bu adımda, [Notification Hubs REST API](/rest/api/notificationhubs/) yüklerini
 
 ### <a name="generate-a-sas-token"></a>SAS belirteci oluşturma
 
-Notification Hubs Azure Service Bus aynı güvenlik altyapısını kullanın. REST API çağırmak için, isteğin **Yetkilendirme** üst bilgisinde KULLANıLABILECEK [bir SAS belirteci programlı olarak](/rest/api/eventhub/generate-sas-token) oluşturmanız gerekir.  
+Bildirim Hub'ları, Azure Hizmet Veri Servisi ile aynı güvenlik altyapısını kullanır. REST API'yi aramak için, isteğin **Yetkilendirme** üstbilgisinde kullanılabilecek [bir SAS belirteci programlamak için oluşturmanız](/rest/api/eventhub/generate-sas-token) gerekir.  
 
-Elde edilen belirteç aşağıdaki biçimde olacaktır:
+Ortaya çıkan belirteç aşağıdaki biçimde olacaktır:
 
 ```xml
 SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&sr=<UrlEncodedResourceUri>
 ```
 
-İşlemin kendisi aynı altı ana adımdan oluşur:  
+Sürecin kendisi aynı altı temel adımı içerir:  
 
-1. Süre sonu, [UNIX dönem saat](https://en.wikipedia.org/wiki/Unix_time) biçiminde hesaplanıyor, yani gece yarısından beri geçen saniye sayısı, 1 Ocak 1970.
-1. Erişmeye çalıştığınız kaynağı temsil eden **Resourceurl 'yi** biçimlendirmek, bu nedenle yüzde kodlamalı ve küçük harfle yazılmalıdır. **Resourceurl** 'nin `'https://<namespace>.servicebus.windows.net/<hubName>'` biçimi vardır.
-1. @No__t-1 olarak biçimlendirilen **Stringtosign**' ı hazırlama.
-1. **Stringtosign** değerinin HMAC-SHA256 karmasını kullanarak, **Imzaları** hesaplama ve Base64 kodlaması. Karma değeri, ilgili **Yetkilendirme kuralı**Için **bağlantı dizesinin** **anahtar** bölümüyle birlikte kullanılır.
-1. Base64 kodlu **imza** , yüzde kodlamalı şekilde biçimlendiriliyor.
-1. **Urlencodedsignature**, **expiryepoch**, **KeyName**ve **urlencodedresourceurl** değerlerini kullanarak belirteci beklenen biçimde oluşturma.
+1. [UNIX Epoch zaman](https://en.wikipedia.org/wiki/Unix_time) biçiminde son kullanma işlemini hesaplamak, yani 1 Ocak 1970'te gece yarısından bu yana geçen saniye sayısı Eşgüdümlü Evrensel Saat.
+1. Erişmeye çalıştığınız kaynağı temsil eden **Kaynak Url'sini** yüzde kodlanmış ve küçük olacak şekilde biçimlendirme. Kaynak Url'si `'https://<namespace>.servicebus.windows.net/<hubName>'`formu vardır. **ResourceUrl**
+1. **StringToSign**hazırlanması , olarak `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`biçimlendirilmiştir .
+1. **StringToSign** değerinin HMAC-SHA256 karmasını kullanarak **İmza'yı** hesaplama ve Base64 kodlama. Karma değer, ilgili **Yetkilendirme Kuralı**için **Bağlantı Dizesi'nin** **Anahtar** bölümüyle birlikte kullanılır.
+1. Base64 kodlanmış **İmza'yı** yüzde kodlanmış olacak şekilde biçimlendirme.
+1. **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**ve **UrlEncodedResourceUrl** değerlerini kullanarak beklenen biçimde belirteç oluşturma.
 
-Paylaşılan erişim imzasına daha kapsamlı bir genel bakış için [Azure Service Bus belgelerine](../service-bus-messaging/service-bus-sas.md) ve Azure Service Bus ve Notification Hubs nasıl kullandığını görün.
+Paylaşılan erişim imzasını ve Azure Hizmet Veri Ve Servis Veri Merkezi ve Bildirim Hub'larının bu imzayı nasıl kullandığına daha ayrıntılı bir genel bakış için [Azure Hizmet Veri Servisi belgelerine](../service-bus-messaging/service-bus-sas.md) bakın.
 
-Bu Swift örneği amaçları doğrultusunda, imzanın karmasından yararlanmak için Apple 'ın açık kaynaklı **Commonşifre** kitaplığını kullanacaksınız. C Kitaplığı olduğundan, bu, kutudaki Swift 'ta erişilebilir değildir. Bir köprü oluşturma üst bilgisi kullanarak kitaplığı kullanılabilir hale getirebilirsiniz.
+Bu Swift örneğinin amaçları için, imza karma yardımcı olmak için Apple'ın açık kaynak **CommonCrypto** kütüphane kullanmak için gidiyoruz. C kütüphanesi olduğu için Swift'e kutudan erişilemez. Köprü üstbilgisini kullanarak kitaplığı kullanılabilir hale getirebilirsiniz.
 
-Köprü oluşturma üst bilgisini eklemek ve yapılandırmak için:
+Köprü üstbilgisini eklemek ve yapılandırmak için:
 
-1. Xcode 'da **dosya** > **Yeni** > **Dosya** > **üstbilgi dosyası**' nı seçin. Üst bilgi dosyasını **Bridgingheader. h**olarak adlandırın.
+1. Xcode'da **Dosya** > **Yeni** > **Dosya** > **Üstbilgi Dosyası'nı**seçin. Üstbilgi dosyasını adlandırın **KöprüHeader.h**.
 
-1. **Commonhmac. h**dosyasını içeri aktarmak için dosyayı düzenleyin:
+1. **CommonHMAC.h'yi**almak için dosyayı edin:
 
     ```swift
     #import <CommonCrypto/CommonHMAC.h>
@@ -311,19 +318,19 @@ Köprü oluşturma üst bilgisini eklemek ve yapılandırmak için:
     #endif /* BridgingHeader_h */
     ```
 
-1. Hedef **Yapı ayarlarını** , köprü oluşturma başlığına başvuracak şekilde güncelleştirin:
+1. Köprü üstbilgisine başvurmak için Hedefin **Yapı Ayarlarını** güncelleştirin:
 
-   1. **Oluşturma ayarları** sekmesini açın ve **Swift derleyicisi** bölümüne gidin.
+   1. **PushDemo** projesine dokunun ve **Swift Derleyici** bölümüne gidin.
 
-   1. **Install hedefi-C uyumluluk üstbilgisi** seçeneğinin **Yes**olarak ayarlandığından emin olun.
+   1. **Install Objective-C Uyumluluk Üstbilgisi** seçeneğinin **Evet**olarak ayarlandığından emin olun.
 
-   1. @No__t-0 dosya yolunu, **hedef-C köprüleme üst bilgisi** seçeneğine girin. Bu, köprü oluşturma üst bilgisinin dosya yoludur.
+   1. Dosya yolunu `'<ProjectName>/BridgingHeader.h'` **Objective-C köprü üstbilgi** seçeneğine girin. Bu, köprüleme üstbilgimize giden dosya yoludur.
 
-   Bu seçenekleri bulamıyorsanız, **temel** veya **özelleştirilmiş**olmak yerine **Tüm** Görünüm ' ün seçili olduğundan emin olun.
+   Bu seçenekleri bulamıyorsanız, **Temel** veya Özelleştirilmiş yerine **Tüm** görünümün seçildiğinden emin **olun.**
 
-   Birçok üçüncü taraf açık kaynaklı sarmalayıcı kitaplığı vardır ve bu, çok sayıda **Commonşifre** kullanarak biraz daha kolay olabilir. Bununla birlikte, bu kitaplıkların tartışılması Bu makalenin kapsamı dışındadır.
+   **CommonCrypto** kullanarak biraz daha kolay hale getirebilir birçok üçüncü taraf açık kaynak sarma kitaplıkları mevcuttur. Ancak, bu tür kitaplıkların tartışılması bu makalenin kapsamı dışındadır.
 
-1. **Utilities** klasörü Içinde **tokenutility. Swift** adlı yeni bir Swift dosyası ekleyin ve aşağıdaki kodu ekleyin:
+1. **Yardımcı Programlar** klasörüne **TokenUtility.swift** adında yeni bir Swift dosyası ekleyin ve aşağıdaki kodu ekleyin:
 
    ```swift
    import Foundation
@@ -384,39 +391,53 @@ Köprü oluşturma üst bilgisini eklemek ve yapılandırmak için:
     }
    ```
 
-   Bu yardımcı program SAS belirtecini oluşturmaktan sorumlu mantığı kapsüller.
+   Bu yardımcı program, SAS belirteci oluşturmakiçin sorumlu mantığı kapsüller.
 
-   Daha önce açıklandığı gibi, **Getsastoken** işlevi belirteci hazırlamak için gereken üst düzey adımları düzenler. İşlev, Bu öğreticinin ilerleyen kısımlarında yükleme hizmeti tarafından çağrılır.
+   Daha önce belirtildiği gibi, **getSasToken** işlevi belirteci hazırlamak için gerekli üst düzey adımları yönetir. İşlev daha sonra bu öğreticide yükleme hizmeti tarafından çağrılacaktır.
 
-   Diğer iki işlev **Getsastoken** işlevi tarafından çağrılır: ilişkili URL dizesini kodlamak için Imza ve **Urlencodedstring** bilgi işlem için **sha256HMac** . **Urlencodedstring** işlevi, yerleşik **Addingyüztenkodlama** işlevini kullanarak gerekli çıktıyı elde etmek mümkün olmadığından gereklidir.
+   Diğer iki fonksiyon **getSasToken** işlevi tarafından çağrılır: ilgili URL dizesini kodlamak için imza ve **urlEncodedString** hesaplamak için **sha256HMac.** **urlEncodedString** işlevi yerleşik **addingPercentEncoding** işlevini kullanarak gerekli çıktıyı elde etmek mümkün olmadığından gereklidir.
 
-   [Azure Storage IOS SDK 'sı](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) , bu Işlemlere, amaç-C ' d e nasıl yaklaşıma yönelik harika bir örnektir. Azure Service Bus SAS belirteçleri hakkında daha fazla bilgi [Azure Service Bus belgelerinde](../service-bus-messaging/service-bus-sas.md)bulunabilir.
+   [Azure Depolama iOS SDK,](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) bu işlemlere Objective-C'de nasıl yaklaşılabildiğini mükemmel bir örnektir. Azure Hizmet Veri Yolunda's SAS belirteçleri hakkında daha fazla bilgiyi [Azure Hizmet Veri Yolundan belgelerde](../service-bus-messaging/service-bus-sas.md)bulabilirsiniz.
 
-### <a name="verify-the-sas-token"></a>SAS belirtecini doğrulama
+1. **AppDelegate.swift'** de, **TokenUtility.getSasToken'in** geçerli bir belirteç ürettiğini doğrulamak için *didRegisterForRemoteNotificationsWithDeviceToken* işlevine aşağıdaki kodu ekleyin
+    
+    ```swift
+    let baseAddress = "https://<notificaitonHubNamespace>.servicebus.windows.net/<notifiationHubName>"
 
-Yükleme hizmetini istemcisine uygulamadan önce, uygulamanızın tercih ettiğiniz HTTP yardımcı programını kullanarak SAS belirtecini doğru bir şekilde ürettikten emin olun. Bu öğreticinin amaçları doğrultusunda, tercih ettiğiniz aracımız **Postman**olacaktır.
+    let tokenData = TokenUtility.getSasToken(forResourceUrl: baseAddress,
+                                                withKeyName: self.notificationHubKeyName!,
+                                                andKey: self.notificationHubKey!)
+    
+    print(tokenData.token)
+    ```
 
-Uygulama tarafından oluşturulan **Yüklemekimliği** ve **belirteç** değerlerini göz önünde bırakmak için uygun şekilde yerleştirilmiş bir yazdırma ifadesini veya kesme noktasını kullanın.
+    **BaseAddress** dizesindeki yer tutucu değerlerini kendi
 
-**Yükleme** API 'sini çağırmak için aşağıdaki adımları izleyin:
+### <a name="verify-the-sas-token"></a>SAS belirteci doğrula
 
-1. **Postman**'da yeni bir sekme açın.
+Yükleme hizmetini istemcide uygulamadan önce, seçtiğiniz HTTP yardımcı programını kullanarak uygulamamızın SAS belirteci doğru şekilde oluşturduğundan kontrol edin. Bu öğretici amaçları için, bizim seçim aracı **Postman**olacaktır.
 
-1. **Get** için isteği ayarlayın ve şu adresi belirtin:
+Uygulama tarafından oluşturulan **installationId** ve **belirteç** değerlerini not edin.
+
+**Yüklemeleri** API aramak için aşağıdaki adımları izleyin:
+
+1. **Postacı'da**yeni bir sekme açın.
+
+1. **İstek** get için ayarlayın ve aşağıdaki adresi belirtin:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/installations/<installationId>?api-version=2015-01
     ```
 
-1. İstek üstbilgilerini şu şekilde yapılandırın:
+1. İstek üstbilgilerini aşağıdaki gibi yapılandırın:
 
    | Anahtar           | Değer            |
    | ------------- | ---------------- |
-   | İçerik türü  | uygulama/json |
-   | Yetkilendirme | \<sasToken >       |
-   | x-MS-sürümü  | 2015-01          |
+   | İçerik Türü  | uygulama/json |
+   | Yetkilendirme | \<sasToken>       |
+   | x-ms sürümü  | 2015-01          |
 
-1. **Kaydet** düğmesinin altındaki sağ üst köşede görüntülenen **kod** düğmesini seçin. İstek aşağıdaki örneğe benzer şekilde görünmelidir:
+1. **Kaydet** düğmesinin altında sağ üstte görünen **Kod** düğmesini seçin. İstek aşağıdaki örneğe benzer olmalıdır:
 
     ```html
     GET /<hubName>/installations/<installationId>?api-version=2015-01 HTTP/1.1
@@ -430,13 +451,13 @@ Uygulama tarafından oluşturulan **Yüklemekimliği** ve **belirteç** değerle
 
 1. **Gönder** düğmesini seçin.
 
-Bu noktada belirtilen **Yüklemekimliği** için bir kayıt yok. Doğrulamanın "401 Yetkisiz" yanıtı yerine "404 bulunamadı" yanıtı ile sonuçlanmalıdır. Bu sonuç SAS belirtecinin kabul edildiğini onaylamalıdır.
+Bu noktada belirtilen **installationId** için kayıt bulunmamaktadır. Doğrulama, "401 Yetkisiz" yanıtı yerine "404 Bulunamadı" yanıtıyla sonuçlanmalıdır. Bu sonuç, SAS belirteci kabul edildiğini doğrulamalıdır.
 
 ### <a name="implement-the-installation-service-class"></a>Yükleme hizmeti sınıfını uygulama
 
-Daha sonra, [yüklemeler REST API](/rest/api/notificationhubs/create-overwrite-installation)etrafında temel sarmalayıcı uygulayacaksınız.  
+Daha sonra [Kurulumları REST API](/rest/api/notificationhubs/create-overwrite-installation)etrafında temel sarıcı uygulayacağız.  
 
-**Hizmetler** klasörü altına **notificationregistrationservice. Swift** adlı yeni bir Swift dosyası ekleyin ve bu dosyaya aşağıdaki kodu ekleyin:
+**Hizmetler** klasörü altına **NotificationRegistrationService.swift** adlı yeni bir Swift dosyası ekleyin ve ardından bu dosyaya aşağıdaki kodu ekleyin:
 
 ```swift
 import Foundation
@@ -455,7 +476,8 @@ class NotificationRegistrationService {
     private let keyName : String
     private let key : String
     private var tokenData : TokenData? = nil
-
+    private var tokenExpiryDate : Date? = nil
+    
     init(withInstallationId installationId : String,
             andPushChannel pushChannel : String,
             andHubNamespace hubNamespace : String,
@@ -470,58 +492,67 @@ class NotificationRegistrationService {
         self.key = key
         self.defaultHeaders = ["Content-Type": "application/json", "x-ms-version": apiVersion]
     }
-
+    
     func register(
         withTags tags : [String]? = nil,
         andTemplates templates : Dictionary<String, PushTemplate>? = nil,
         completeWith completion: ((_ result: Bool) -> ())? = nil) {
-
+        
         var deviceInstallation = DeviceInstallation(withInstallationId: installationId, andPushChannel: pushChannel)
-
+        
         if let tags = tags {
             deviceInstallation.tags = tags
         }
-
+        
         if let templates = templates {
             deviceInstallation.templates = templates
         }
-
+        
         if let deviceInstallationJson = encodeToJson(deviceInstallation) {
             let sasToken = getSasToken()
             let requestUrl = String.init(format: tokenizedCreateOrUpdateInstallationRequest, installationId, apiVersion)
             let apiEndpoint = "\(getBaseAddress())\(requestUrl)"
-
+            
             var request = URLRequest(url: URL(string: apiEndpoint)!)
             request.httpMethod = "PUT"
-
+            
             for (key,value) in self.defaultHeaders {
                 request.addValue(value, forHTTPHeaderField: key)
             }
-
+            
             request.addValue(sasToken, forHTTPHeaderField: "Authorization")
             request.httpBody = Data(deviceInstallationJson.utf8)
-
+            
             (self.session.dataTask(with: request) { dat, res, err in
                 if let completion = completion {
-                        completion(err == nil && (res as! HTTPURLResponse).statusCode == 200)
+                        completion(err == nil && 
+                        (res as! HTTPURLResponse).statusCode == 200)
                 }
             }).resume()
         }
     }
-
+    
     private func getBaseAddress() -> String {
         return String.init(format: tokenizedBaseAddress, hubNamespace, hubName)
     }
-
+    
     private func getSasToken() -> String {
         if (tokenData == nil ||
-            Date(timeIntervalSince1970: Double((tokenData?.expiration)!)) < Date(timeIntervalSinceNow: -(5 * 60))) {
-            self.tokenData = TokenUtility.getSasToken(forResourceUrl: getBaseAddress(), withKeyName: self.keyName, andKey: self.key)
+            tokenExpiryDate == nil ||
+            Date() >= tokenExpiryDate!) {
+            
+            self.tokenData = TokenUtility.getSasToken(
+                forResourceUrl: getBaseAddress(),
+                withKeyName: self.keyName,
+                andKey: self.key)
+            
+            self.tokenExpiryDate = Date(timeIntervalSinceNow: -(5 * 60))
+                .addingTimeInterval(TimeInterval(tokenData!.expiration))
         }
 
         return (tokenData?.token)!
     }
-
+    
     private func encodeToJson<T : Encodable>(_ object: T) -> String? {
         do {
             let jsonData = try jsonEncoder.encode(object)
@@ -538,27 +569,28 @@ class NotificationRegistrationService {
 }
 ```
 
-Önkoşul ayrıntıları, başlatmanın bir parçası olarak sağlanır. Etiketler ve şablonlar, isteğe bağlı olarak, **cihaz yüklemesi** JSON yükünün bir parçasını oluşturmak için **register** işlevine geçirilir.  
+Gerekli ayrıntılar başlatmanın bir parçası olarak sağlanır. Etiketler ve şablonlar isteğe bağlı olarak Aygıt **Yükleme** JSON yükünün bir parçasını oluşturmak için **kayıt** işlevine aktarılır.  
 
-**Register** işlevi, isteği hazırlamak için diğer özel işlevleri çağırır. Yanıt alındıktan sonra, tamamlama çağrılır ve kaydın başarılı olup olmadığını gösterir.  
+**Kayıt** işlevi isteği hazırlamak için diğer özel işlevleri çağırır. Yanıt alındıktan sonra, tamamlanma çağrılır ve kaydın başarılı olup olmadığını gösterir.  
 
-İstek uç noktası **GetBaseAddress** işlevi tarafından oluşturulur. Yapım, başlatma sırasında sağlanmış olan Notification Hub parametreleri *ad alanını* ve *adını* kullanır.  
+İstek bitiş noktası **getBaseAddress** işlevi tarafından oluşturulur. Yapı, başlatma sırasında sağlanan bildirim merkezi *parametreleri ad alanını* ve *adını* kullanır.  
 
-**Getsastoken** işlevi, şu anda saklı belirtecin geçerli olup olmadığını denetler. Belirteç geçerli değilse, işlev, yeni bir belirteç oluşturmak için **Tokenutility** yöntemini çağırır ve sonra bir değer döndürmeden önce onu depolar.
+**getSasToken** işlevi, şu anda depolanan belirteç geçerli olup olmadığını denetler. Belirteç geçerli değilse, işlev **tokenUtility'i** yeni bir belirteç oluşturması için çağırır ve bir değer döndürmeden önce depolar.
 
-Son olarak, **Encodetojson** , istek gövdesinin bir parçası olarak kullanılmak üzere ilgili model nesnelerini JSON 'a dönüştürür.
+Son olarak, **encodeToJson** istek gövdesinin bir parçası olarak kullanılmak üzere json içine ilgili model nesneleri dönüştürür.
 
-### <a name="invoke-the-notification-hubs-rest-api"></a>Notification Hubs REST API çağır
+### <a name="invoke-the-notification-hubs-rest-api"></a>Bildirim Hub'larını çağırıN REST API
 
-Son adım, **Notificationhub**'umuza kaydolmak üzere **Appdelegate** 'i **notificationregistrationservice** kullanacak şekilde güncelleştiriyor.
+Son adım, **NotificationHub'ımıza**kaydolmak için **NotificationRegistrationService'i** kullanmak için **AppDelegate'i** güncellemektir.
 
-1. **Appdelegate. Swift** ' i açın ve **notificationregistrationservice**'e bir başvuru depolamak için bir sınıf düzeyi değişkeni ekleyin:
+1. **AppDelegate.swift'i** açın ve **NoficiationRegistrationService** ve genel **PushTemplate'e**bir başvuru depolamak için sınıf düzeyinde değişkenler ekleyin:
 
     ```swift
     var registrationService : NotificationRegistrationService?
+    let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
     ```
 
-1. Aynı dosyada, **Ddregisterforremotenocertificate Ationswithdevicetoken** Işlevini kullanarak **notificationregistrationservice** öğesini önkoşul parametreleriyle başlatın ve ardından **register** işlevini çağırın.
+1. Aynı dosyada, gerekli parametrelerle **NotificationRegistrationService'i** başlatmak için **didRegisterForRemoteNotificationsWithDeviceToken** işlevini güncelleyin ve ardından **kayıt** işlevini arayın.
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -585,17 +617,17 @@ Son adım, **Notificationhub**'umuza kaydolmak üzere **Appdelegate** 'i **notif
     }
     ```
 
-    Bu işlemi basit tutmak için, çıkış penceresini **kayıt** işleminin sonucuyla güncelleştirmek üzere birkaç Print deyimi kullanacaksınız.
+    Basit tutmak için, çıkış penceresini **kayıt** işleminin sonucuyla güncelleştirmek için birkaç yazdırma deyimi kullanırsınız.
 
-1. Şimdi uygulamayı bir fiziksel cihazda derleyin ve çalıştırın. Çıkış penceresinde "kayıtlı" görmeniz gerekir.
+1. Şimdi uygulamayı fiziksel bir cihazda oluşturun ve çalıştırın. Çıkış penceresinde "Kayıtlı" bakın.
 
-## <a name="test-the-solution"></a>Çözümü test etme
+## <a name="test-the-solution"></a>Çözümü test edin
 
-Uygulamamız bu aşamada **Notificationhub** 'a kaydedilir ve anında iletme bildirimleri alabilir. Xcode 'da, hata ayıklayıcıyı durdurun ve şu anda çalışıyorsa uygulamayı kapatın. Ardından, **Cihaz yükleme** ayrıntılarının beklenildiği ve uygulamamız tarafından artık anında iletme bildirimleri alabilmesine bakın.  
+Bu aşamadaki uygulamamız **NotificationHub'a** kayıtlıdır ve anında iletme bildirimleri alabilir. Xcode'da hata ayıklayıcıyı durdurun ve şu anda çalışıyorsa uygulamayı kapatın. Ardından, Aygıt **Yükleme** ayrıntılarının beklendiği gibi olup olmadığını ve uygulamamızın artık anında iletme bildirimleri alabilecek olduğundan kontrol edin.  
 
-### <a name="verify-the-device-installation"></a>Cihaz yüklemesini doğrulama
+### <a name="verify-the-device-installation"></a>Aygıt yüklemesini doğrulama
 
-Artık, [SAS belirtecini doğrulamak](#verify-the-sas-token)Için **Postman** kullanarak daha önce yaptığınız aynı isteği yapabilirsiniz. SAS belirtecinin süresinin dolmadığı varsayıldığında, yanıt artık, sizin belirttiğiniz şablonlar ve Etiketler gibi yükleme ayrıntılarını içermelidir.
+Artık [SAS belirteci doğrulamak](#verify-the-sas-token)için **Postacı** kullanarak daha önce yaptığı gibi aynı isteği yapabilirsiniz. SAS belirteci süresinin dolmadığını varsayarsak, yanıt artık şablonlar ve etiketler gibi sağladığınız yükleme ayrıntılarını içermelidir.
 
 ```json
 {
@@ -618,54 +650,56 @@ Artık, [SAS belirtecini doğrulamak](#verify-the-sas-token)Için **Postman** ku
 }
 ```
 
-### <a name="send-a-test-notification-azure-portal"></a>Test bildirimi (Azure portal) gönder
+Önceki **SAS belirteçlerinizin** süresi dolduysa, yeni bir **SAS belirteci** almak ve **Yetkilendirme** üstbilgisini bu yeni değerle güncelleştirmek için **TokenUtility** sınıfının **24** satırına bir **kesme noktası** ekleyebilirsiniz.
 
-Artık bildirimleri alabilmeniz için en hızlı yol, Azure portal Bildirim Hub 'ına gözatabiliyor.
+### <a name="send-a-test-notification-azure-portal"></a>Test bildirimi gönderme (Azure portalı)
 
-1. Azure portal, Bildirim Hub 'ınızdaki **genel bakış** sekmesine göz atın.
+Bildirimleri artık alabileceğinizi test etmenin en hızlı yolu, Azure portalındaki bildirim merkezine göz atmaktır:
 
-1. Portal penceresinin sol üst kısmındaki **temel** bileşenler özetinin üzerinde olan **Test gönder**' i seçin:
+1. Azure portalında, bildirim merkezinizdeki **Genel Bakış** sekmesine göz atın.
 
-    ![Notification Hubs Essentials Özet testi Gönder düğmesi](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
+1. Portal penceresinin sol üst kısmındaki **Temel Ler** özetinin üzerinde yer alan **Test Gönder'i**seçin:
 
-1. **Platformlar** listesinden **özel şablon** ' ı seçin.
+    ![Bildirim Hub'ları Temel Bilgiler Özet Test Gönder Düğmesi](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
 
-1. **Send to Tag ifadesi**için **12345** girin. Yüklemenizde bu etiketi daha önce belirtmiştiniz.
+1. **Platformlar** listesinden **Özel Şablon'u** seçin.
 
-1. İsteğe bağlı olarak JSON yükünde **iletiyi** düzenleyin:
+1. **Tag Expression'ya Gönder**için **12345'i** girin. Yüklememizde bu etiketi daha önce belirtmiştiniz.
 
-    ![Notification Hubs testi gönder](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
+1. İsteğe bağlı olarak JSON yükündeki **iletiyi** edin:
 
-1. **Gönder**’i seçin. Portalın, bildirimin cihaza başarıyla gönderilip gönderilmediğini belirtmesi gerekir:
+    ![Bildirim Hub'ları Test Gönder](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
 
-    ![Notification Hubs test gönderme sonuçları](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
+1. **Gönder**’i seçin. Portal, bildirimin aygıta başarıyla gönderilip gönderilmediğini belirtmelidir:
 
-    Uygulamanın ön planda çalışmadığı varsayıldığında, cihazınızdaki **bildirim merkezinde** bir bildirim de görmeniz gerekir. Bildirime dokunduğunuzda uygulamayı açmanız ve uyarının gösterilmesi gerekir.
+    ![Bildirim Hub'ları Test Gönderme Sonuçları](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
 
-    ![Bildirim alındı örneği](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
+    Uygulamanın ön planda çalışmadığını varsayarsak, cihazınızdaki **Bildirim Merkezi'nde** de bir bildirim görmeniz gerekir. Bildirime dokunmak uygulamayı açmalı ve uyarıyı göstermelidir.
 
-### <a name="send-a-test-notification-mail-carrier"></a>Test bildirimi gönderme (posta taşıyıcısı)
+    ![Bildirim Alınan Örnek](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
 
-Sınama için daha kolay bir yol olabilecek **Postman**kullanarak [REST API](/rest/api/notificationhubs/) aracılığıyla bildirim gönderebilirsiniz.
+### <a name="send-a-test-notification-mail-carrier"></a>Test bildirimi gönderme (Posta taşıyıcısı)
 
-1. **Postman**'da yeni bir sekme açın.
+Test etmek için daha uygun bir yol olabilir **Postman**kullanarak [REST API](/rest/api/notificationhubs/) üzerinden bildirimler gönderebilirsiniz.
 
-1. **Gönderi**isteği olarak ayarlayın ve şu adresi girin:
+1. **Postacı'da**yeni bir sekme açın.
+
+1. İsteği **POST'a**ayarlayın ve aşağıdaki adresi girin:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/messages/?api-version=2015-01
     ```
 
-1. İstek üstbilgilerini şu şekilde yapılandırın:
+1. İstek üstbilgilerini aşağıdaki gibi yapılandırın:
 
    | Anahtar                            | Değer                          |
    | ------------------------------ | ------------------------------ |
-   | İçerik türü                   | Uygulama/JSON; charset = UTF-8 |
-   | Yetkilendirme                  | \<sasToken >                     |
-   | ServiceBusNotification-biçim  | şablon                       |
+   | İçerik Türü                   | uygulama/json;charset=utf-8 |
+   | Yetkilendirme                  | \<sasToken>                     |
+   | ServiceBusBildirim-Format  | şablon                       |
    | Etiketler                           | "12345"                        |
 
-1. Aşağıdaki JSON yüküyle **Ham JSON (Application. JSON)** kullanmak Için istek **gövdesini** yapılandırın:
+1. İstek **GÖVDESIni** RAW **- JSON (application.json)** aşağıdaki JSON yüküyle kullanacak şekilde yapılandırın:
 
     ```json
     {
@@ -673,7 +707,7 @@ Sınama için daha kolay bir yol olabilecek **Postman**kullanarak [REST API](/re
     }
     ```
 
-1. Pencerenin sağ üst kısmındaki **Kaydet** düğmesi altında bulunan **kod** düğmesini seçin. İstek aşağıdaki örneğe benzer şekilde görünmelidir:
+1. Pencerenin sağ üst kısmındaki **Kaydet** düğmesinin altında yer alan **Kod** düğmesini seçin. İstek aşağıdaki örneğe benzer olmalıdır:
 
     ```html
     POST /<hubName>/messages/?api-version=2015-01 HTTP/1.1
@@ -692,21 +726,21 @@ Sınama için daha kolay bir yol olabilecek **Postman**kullanarak [REST API](/re
 
 1. **Gönder** düğmesini seçin.
 
-Başarılı bir durum kodu almalısınız ve istemci cihazında bildirimi alacaksınız.
+**201 Oluşturulan** başarı durum kodunu almalı ve istemci aygıtındaki bildirimi almalısınız...
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık [REST API](/rest/api/notificationhubs/) aracılığıyla bir Bildirim Hub 'ına bağlı temel bir iOS Swift uygulamasına sahipsiniz ve bildirim gönderebilir ve alabilir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Artık [REST API](/rest/api/notificationhubs/) üzerinden bir bildirim merkezine bağlı temel bir iOS Swift uygulamanız var ve bildirim gönderip alabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Notification Hubs genel bakış](notification-hubs-push-notification-overview.md)
-- [REST API 'Leri Notification Hubs](/rest/api/notificationhubs/)
-- [Arka uç işlemleri için SDK Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
-- [GitHub 'da SDK 'Yı Notification Hubs](https://github.com/Azure/azure-notificationhubs)
-- [Uygulama arka ucuna kaydol](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+- [Azure Bildirim Hub'larına genel bakış](notification-hubs-push-notification-overview.md)
+- [Bildirim Hub'ları REST API'leri](/rest/api/notificationhubs/)
+- [Arka uç işlemleri için Bildirim Hub'ları SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
+- [GitHub'da Bildirim Hub'ları SDK](https://github.com/Azure/azure-notificationhubs)
+- [Uygulama arka ucuyla kaydolun](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 - [Kayıt yönetimi](notification-hubs-push-notification-registration-management.md)
 - [Etiketlerle çalışma](notification-hubs-tags-segment-push-message.md) 
 - [Özel şablonlarla çalışma](notification-hubs-templates-cross-platform-push-messages.md)
-- [Paylaşılan erişim imzaları ile erişim denetimi Service Bus](../service-bus-messaging/service-bus-sas.md)
-- [Program aracılığıyla SAS belirteçleri oluşturma](/rest/api/eventhub/generate-sas-token)
-- [Apple güvenliği: ortak şifre](https://developer.apple.com/security/)
-- [UNIX dönem saati](https://en.wikipedia.org/wiki/Unix_time)
-- [HMAC](https://en.wikipedia.org/wiki/HMAC)
+- [Paylaşılan erişim imzaları ile Servis Veri Aracı erişim denetimi](../service-bus-messaging/service-bus-sas.md)
+- [Programlı olarak SAS belirteçleri oluşturmak](/rest/api/eventhub/generate-sas-token)
+- [Apple güvenlik: ortak kripto](https://developer.apple.com/security/)
+- [UNIX Dönemi zamanlı](https://en.wikipedia.org/wiki/Unix_time)
+- [Hmac](https://en.wikipedia.org/wiki/HMAC)

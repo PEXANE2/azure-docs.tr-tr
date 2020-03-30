@@ -1,74 +1,73 @@
 ---
-title: Go-to-market Hizmetleri-ticari Market avantajlarınız | Mavisi
-description: Go-to-market Services-yayımcıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: MaggiePucciEvans
+title: Go-To-Market Hizmetleri - ticari pazar avantajları | Azure
+description: Kullanıma Aç Hizmetleri - Yayıncıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.author: evansma
-ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.author: dsindona
+ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269945"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286243"
 ---
-# <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
+# <a name="your-commercial-marketplace-benefits"></a>Ticari pazar avantajlarınız
 
-Market 'te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Size satış, teknik ve pazarlama avantajları sunuyoruz; teklifinizin büyümesini hızlandırmanız gerekir.
+Pazar ağınızda yayınladınız, şimdi teklifinizin başarılı olmasını istiyorsunuz. Satış, teknik ve pazarlama gibi avantajları size sağlıyoruz ve teklifinizin büyümesini hızlandırmanız gerekiyor.
 
-Teklifinizle canlı olduğunuzda, Market Remaronları ekibi, uygun avantajlarınız üzerinde sizinle çalışmaya başlamak için kullanıma sunulacaktır. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
+Teklifinizle canlı yayına çıktığınızda, Marketplace Rewards ekibi uygun avantajlarınız üzerinde sizinle çalışmaya başlamak için size ulaşacaktır. Market Ödülleri avantajları, ticari pazar yeri etkileşiminize ve satışlarınıza bağlı olarak tahakkuk ettirir. Ne kadar çok çatışmaya girersen, o kadar çok geri dönersin.
 
-## <a name="marketplace-rewards"></a>Market 'teki ödüller
+## <a name="marketplace-rewards"></a>Pazar Ödülleri
 
-Market Retatminileri, ilk müşterilerinizi almanıza yardımcı olmak üzere tanıma etkinlikleriyle başlayan belirli bir büyüme aşamasında size destek sunacak şekilde tasarlanmıştır. Market 'te büyüdükçe, müşterileri dönüştürmenize ve anlaşmaları kapatmanıza yardımcı olmak için tasarlanan yeni avantajların kilidini açabilirsiniz. 
+Market Ödülleri, ilk müşterilerinizi elde etmenize yardımcı olacak farkındalık etkinliklerinden başlayarak, belirli büyüme aşamanızda sizi desteklemek üzere tasarlanmıştır. Pazarda büyüdükçe, müşterileri dönüştürmenize ve anlaşmaları kapatmanıza yardımcı olmak için tasarlanmış yeni avantajların kilidini açarsınız. 
 
-Program olumlu bir geri bildirim döngüsü oluşturur: her büyüme aşamasında avantajlar, sizi bir sonraki aşamada ilerlemek için tasarlanmıştır. böylece, Microsoft 'un alanı ile Microsoft 'un alanı ile Microsoft 'un kanalıyla ve platformunuz olarak ticari Market. 
+Program olumlu bir geri bildirim döngüsü oluşturur: büyümenin her aşamasındaki avantajlar, işinizi Microsoft müşterilerine, Microsoft'un alanında ve Microsoft'un kanalı aracılığıyla platformunuz olarak ticari pazar. 
 
-Avantajlarınız, teklifinizin [liste, deneme veya Transact](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)olduğundan farklılaştırılır.
+Avantajlarınız, teklifinizin [Liste, Deneme veya İşleme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)olup olmadığına bağlı olarak farklılaştırılır.
 
-Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir üyesi tarafından iletişim kurulacaksınız. 
+Teklifiniz geçerli olduğunda, uygunluğunuza bağlı olarak Ödüller ekibinin bir üyesi sizinle irtibata geçecektir. 
 
-Transact iş ortakları için, Market platformu aracılığıyla faturalanan satışlarınızı büyürken, katman başına daha fazla avantajdan yararlanın. 
+Transact iş ortakları için, faturalı satışlarınızı pazar platformu nda büyüttükçe, katman başına daha fazla avantajın kilidini açarsınız. 
 
-Stoıd 'ler içinde yayımlamak için en düşük gereksinim bir MPNID olduğundan, bu avantajlar MPN uzmanlığa veya iş ortağı türünden bağımsız olarak tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, işletmelerini bir platform olarak marketten büyütmek için güçde bulunur. 
+Vitrinlerde yayımlanmak için minimum gereksinim bir MPNID olduğundan, bu avantajlar MPN uzmanlık durumu veya iş ortağı türüne bakılmaksızın tüm iş ortakları tarafından kullanılabilir. Her iş ortağı bir platform olarak pazar yoluyla işlerini büyütmek için yetkilidir. 
 
-Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız. 
+Kullanabileceğiniz kaynakları anlamave kendi üzerinde [inceleyebileceğiniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)en iyi uygulamaları uygulamada destek alabilirsiniz. 
 
-Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüller program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
+Tüm program avantajlarının ayrıntılı [açıklamaları, Marketplace Rewards program güvertesinde](https://aka.ms/marketplacerewards)bulunabilir.
 
-Kullanmaya başlamak için adımlarınız kolaydır:
+Başlamak için adımlarınız kolaydır:
 
-1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
-2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyin ya da diğer adı girmek en iyi uygulamadır: info@company.com gibi diğer adlara gönderilen iletiler genellikle kaybediliyor.
+1. Microsoft AppSource veya Azure Marketplace'te bir teklif yayımlayın.
+2. Takım, pazar yeri teklifi başına "sahip" veya "birincil ilgili kişi"ye ulaşır. Bir bireyi veya düzenli olarak kontrol ettiğiniz bir takma ad girmek en iyi yöntemdir: genellikle kaybolmak gibi info@company.com diğer adlara gönderilen iletiler.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupportbir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun süredir yayındaysa ve bir ileti almadıysanız, lütfen bulut iş ortağı portalına veya İş Ortağı Merkezi'ne bakarak, söz konusu teklifin sahibinin kuruluşunuz içinde kontrol edin. Onlar iletişim ve sonraki adımlar olmalıdır. <br> <br> Sahibini belirleyemiyorsanız veya şirket sahibi şirketinizden ayrıldıysa, 'den https://aka.ms/marketplacepublishersupportdestek bileti çıkarabilirsiniz.
 
-Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
+Pazarda tekliflerinizi büyüttükçe, kullanabileceğiniz etkinliklerin kapsamı da genişler. Tüm girişler, kaynakların ve en iyi uygulamaların kendi kendine hizmet e-postasının bir parçası olarak temel düzeyde optimizasyon önerileri ve promosyon alır.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Liste, deneme ve danışmanlık avantajları
 
-Kavram, uygulama veya atölyenin deneme sürümünü veya danışmanlığını yayımlarsanız, üç ay boyunca bir katılım Yöneticisi atamış olursunuz ve bu, başarılı bir pazara karşı ücretsiz planda size rehberlik eder. Yeni bir teklif yayımladığınızda bu üç aylık katılımı tekrarlayabilirsiniz. böylece yeni tekliflerinizin her biri başarılı ile çalışmaya başlamanıza yardımcı olur.
+Bir deneme veya kavram, uygulama veya atölye danışmanlık kanıtı yayınlarsanız, başarılı bir go-to-market planı size rehberlik yardımcı olacak üç ay için bir nişan yöneticisi atanır. Yeni tekliflerinizin her birinin başarıyla başlamasına yardımcı olmak için, yeni bir teklif yayınladığınızda bu üç aylık katılımı tekrarlayabilirsiniz.
 
-Aşağıdaki tablo, liste ve deneme teklifleri için uygunluk gereksinimlerini özetler:
+Aşağıdaki tabloda liste ve deneme teklifleri için uygunluk gereksinimleri özetlenmiştir:
 
-![Go-to-market avantajları](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+![Markete Git avantajları](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
+Tüm bu avantajlar için ayrıntılı açıklamalar [Marketplace Rewards program güvertebulunabilir.](https://aka.ms/marketplacerewards)
 
-## <a name="marketplace-rewards-for-transact-partners"></a>Transact iş ortakları için Market depoları
+## <a name="marketplace-rewards-for-transact-partners"></a>İşleme ortakları için Pazar Ödülleri
 
-Azure Market veya Microsoft AppSource 'de transactable teklifinizle canlı olduğunuzda, faturalandırılan satış işlemlerinizi veya ticari Market aracılığıyla satılan bilgisayarları büyürken ek avantajlara erişebilirsiniz. 
+Azure Marketi veya Microsoft AppSource'da işlenebilir teklifinizle birlikte olduğunuzda, faturalı satış işlemlerinizi veya ticari pazarda satılan koltuklarınızı büyüttükçe ek avantajlara erişebilirsiniz. 
 
 >[!Note]
->Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
+>Satılan koltuklar eşiği yalnızca Microsoft 365 uygulamaları için geçerlidir (Microsoft Teams, Office, Outlook veya SharePoint ile tümleştirmeleri olan SaaS uygulamaları) ve avantajlarının 30 Haziran 2020'ye kadar tamamlanması gerekir.
 
-Bu avantajlar, pazarlama, satış ve teknik etkinliklerinizde size yardımcı olmak üzere tasarlanmıştır ve böylece daha fazla ziyaretçi elde etmenizi, daha fazla müşteri adayları almanızı ve daha fazla iş dönüştürmenizi sağlar.
+Bu avantajlar, pazarlama, satış ve teknik faaliyetlerde sizi desteklemek ve böylelikle daha fazla ziyaretçi almanıza, daha fazla müşteri adayı almanıza ve daha fazla iş dönüştürmenize yardımcı olmak üzere tasarlanmıştır.
 
-Canlı bir teklif sahibi olan tüm iş ortakları, Market teklifleriniz için en yüksek değerli etkinlikleri seçmek üzere adanmış bir katılım yöneticisiyle birlikte çalışmaya yöneliktir. Bu katılım, teklif başına her zaman yeşil bir şekilde yapılır, böylece etkinliklerinizi ve bu etkinliklerin zamanlamasını seçerek şirketinizin daha geniş pazarlama ve satış stratejilerinin zamanlamasına uyum sağlayabilirsiniz. 
+Canlı bir teklif sunan tüm iş ortakları, pazar yeri tekliflerinden oluşan portföyünüz için en yüksek değerli etkinlikleri seçmek için özel bir katılım yöneticisiyle birlikte çalışabilir. Bu katılım teklif başına dökmeyen bir katılımdır, yani şirketinizin daha geniş pazarlama ve satış stratejilerinin zamanlamasına uygun olarak faaliyetlerinizi ve bu etkinliklerin zamanlamasını seçebilirsiniz. 
 
 ![Pazarlama avantajları](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -76,43 +75,43 @@ Canlı bir teklif sahibi olan tüm iş ortakları, Market teklifleriniz için en
 
 ![Teknik avantajlar](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\* satılan eşik, yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
+\*Satılan koltuklar eşiği yalnızca Microsoft 365 uygulamaları için geçerlidir (Microsoft Teams, Office, Outlook veya SharePoint ile tümleştirmeleri olan SaaS uygulamaları) ve avantajlarının 30 Haziran 2020'ye kadar tamamlanması gerekir.
 
-Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
+Tüm bu avantajlar için ayrıntılı açıklamalar [Marketplace Rewards program güvertebulunabilir.](https://aka.ms/marketplacerewards)
 
-Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle iş uygulamaları iş ortakları, [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)aracılığıyla bunlara sunulan tamamlayıcı programlamaya sahiptir. Bu, iş uygulamaları iş ortaklarının ihtiyaçları için özelleştirilmiş teknik, pazarlama ve satış desteği içerir.
+Microsoft AppSource'a yayınlanan Dynamics teklifleri ile iş uygulamaları ortakları, ödül avantajlarına ek [olarak, ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)aracılığıyla kendilerine ek programlar sunmaktadır. Bu, iş uygulamaları ortaklarının gereksinimlerine göre özelleştirilmiş teknik, pazarlama ve satış desteğini içerir.
 
-## <a name="marketplace-rewards-requirements-and-restrictions"></a>Market yeniden gereksinimleri ve kısıtlamaları
+## <a name="marketplace-rewards-requirements-and-restrictions"></a>Pazar Ödülleri gereksinimleri ve kısıtlamaları
 
-### <a name="publisher-agreement"></a>Yayımcı Sözleşmesi
+### <a name="publisher-agreement"></a>Yayıncı Sözleşmesi
 
-Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamında ele alınmıştır ve ticari avantajlar program ekine göre işlenir.
+Bu sayfada açıklanan tüm faaliyetler [pazar yayıncısı sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamındadır ve Ticari Avantajlar Programı Eki uyarınca yürütmektedir.
 
-### <a name="cancellation-policy"></a>İptal İlkesi
+### <a name="cancellation-policy"></a>İptal politikası
 
-[Liste ve deneme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) yayımcıları, teklif yayını başına etkinlikleri kabul edebilir veya devre dışı bırakabilirsiniz. İş ortakları dilediğiniz zaman herhangi bir görevlendirmeyi devre dışı bırakabilir. 
+[Liste ve Deneme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) yayıncıları, teklif yayını başına etkinlikleri seçebilir veya bu etkinlikleri devre dışı layabilir. Ortaklar herhangi bir zamanda herhangi bir nişanı iptal edebilirler. 
 
-Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma hakkını saklı tutar: 
+Microsoft, Aşağıdakileri yapan yayıncılariçin Market Ödülleri avantajlarını iptal etme ve sonlandırma hakkını saklı tutar: 
 
-* Market listesini kullanarak geçersiz bir etkinliğe katılın.
-* , ticari Market 'ten de listelenmiştir. 
-* Telif hakkı veya ticari marka yasaları ihlal eden pazarlama veya diğer içerikleri göstermek için teklifini kullanın.
-* kendi iç işlemleri veya bitpara madenciliği için Azure Sponsorluk funlarını kullanarak, ancak bunlarla sınırlı olmamak üzere [Azure sponsorluk programının](https://azure.microsoft.com/offers/ms-azr-0036p/)ilkelerini ihlal edin. 
+* pazar yeri listelerini kullanarak yasadışı faaliyetlerde bulunun.
+* ticari pazardan listeden çıkar.. 
+* tekliflerini, telif hakkı veya ticari marka yasalarını ihlal eden pazarlama veya diğer içerikleri göstermek için kullanın.
+* Azure [sponsorluk fonunu](https://azure.microsoft.com/offers/ms-azr-0036p/)kendi dahili işlemleri veya bitcoin madenciliği için kullanmak da dahil ancak bunlarla sınırlı olmamak üzere Azure sponsorluk programının politikalarını ihlal edin. 
 
-### <a name="offer-availability"></a>Teklif kullanılabilirliği
+### <a name="offer-availability"></a>Teklif Kullanılabilirliği
 
-Bu teklif, Azure Marketi 'nde veya Microsoft AppSource canlı bir teklifiyle tüm iş ortakları için Ingilizce olarak yürütülür.
+Bu teklif, Azure Marketi veya Microsoft AppSource'da canlı bir teklif sunan tüm iş ortakları için İngilizce olarak yürütülür.
 
-Sahte olacak şekilde kanıtlanmış işlemler, [liste, deneme, danışmanlık](#list-trial-and-consulting-benefits) bölümünde, [Transact iş ortağı avantajları](#marketplace-rewards-for-transact-partners) bölümünde ve [ayrıntılı program destesi](https://aka.ms/marketplacepublisherrewards)bölümünde belirtildiği gibi bir yayımcının [faturalandırılan satış programı katmanına](https://aka.ms/marketplacepublisherrewards)doğru sayılmaz. Microsoft, sahtekarlık kaldırıldıktan sonra iş ortaklarını gerçek faturalandırılan satışlarına göre uygunluk katmanlarına ayırır. 
+Sahte olduğu kanıtlanan işlemler, [liste, deneme, danışmanlık bölümü,](#list-trial-and-consulting-benefits) [işlem ortağı faydaları](#marketplace-rewards-for-transact-partners) bölümü ve ayrıntılı program [destesinde](https://aka.ms/marketplacepublisherrewards)belirtildiği gibi, yayıncının [faturalı satış programı katmanına](https://aka.ms/marketplacepublisherrewards)dahil edilmez. Microsoft, dolandırıcılık kaldırıldıktan sonra iş ortaklarını gerçek faturalı satışlarına göre uygunluk katmanlarına tahsis edecektir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizi [bulut iş ortağı portalı](https://cloudpartner.azure.com)oluşturduysanız teklifinizi oluşturmak veya yapılandırmak için oturum açın.
+Teklifinizi [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com)oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
 
-Teklifinizi [Iş Ortağı Merkezi](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)'nde oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
+Teklifinizi [İş Ortağı Merkezi'nde](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
 
-[Size sunulan self servis kaynaklarını](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)gözden geçirin.
+[Kullanabileceğiniz self-servis kaynaklarını gözden geçirin.](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)
 
-[Microsoft AppSource ve Azure Marketi topluluk forumuna](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katın.
+[Microsoft AppSource ve Azure Marketi topluluk forumuna](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katılın.
 
 ---

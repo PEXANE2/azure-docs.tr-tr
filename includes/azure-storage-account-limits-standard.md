@@ -8,40 +8,40 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b5de45086b324006a3dafdef5c80689923650759
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
-ms.translationtype: HT
+ms.openlocfilehash: 6cd883289513091ff1a57a130b12e25e012c1160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79381645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334619"
 ---
-Aşağıdaki tabloda Azure genel amaçlı v1, v2, Blob depolama, blok blobu depolama ve Data Lake Storage 2. Nesil’in etkinleştirildiği depolama hesaplarına yönelik varsayılan sınırlar açıklanmaktadır. *Giriş* sınırı bir depolama hesabına gönderilen tüm verileri belirtir. *Çıkış* sınırı bir depolama hesabından alınan tüm verileri ifade eder.
+Aşağıdaki tabloda Azure genel amaçlı v1, v2, Blob depolama, blok blob depolama ve Veri Gölü Depolama Gen2 etkin depolama hesapları için varsayılan sınırları açıklanmaktadır. Giriş *ingress* sınırı, bir depolama hesabına gönderilen tüm verileri ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan tüm verileri ifade eder.
 
-| Kaynak | Varsayılan limit |
+| Kaynak | Sınır |
 | --- | --- |
-| Standart, premium ve Data Lake Storage 2. Nesil etkinleştirilmiş depolama hesapları da dahil olmak üzere her bölgedeki abonelik başına depolama hesabı sayısı.<sup>3</sup> | 250 |
-| En fazla depolama hesabı kapasitesi | 5 PiB <sup>1</sup>|
-| Depolama hesabı başına blob kapsayıcısı, blob, dosya paylaşımı, tablo, kuyruk, varlık veya ileti sayısı üst sınırı | Sınırsız |
-| Depolama hesabı başına<sup>1</sup>istek hızı üst sınırı | Saniyede 20.000 istek |
-| Depolama hesabı başına<sup>1</sup> giriş üst sınırı (ABD, Avrupa bölgeleri) | 25 Gb/sn |
-| Depolama hesabı başına<sup>1</sup> çıkış üst sınırı (ABD, Avrupa dışındaki bölgeler) | RA-GRS/GRS etkinleştirildiğinde 5 Gb/sn, LRS/ZRS2 için 10 Gb/sn <sup>2</sup> |
-| Genel amaçlı v2 ve Blob depolama hesapları için çıkış üst sınırı (tüm bölgeler) | 50 Gb/s |
-| Genel amaçlı v1 depolama hesapları için çıkış üst sınırı (ABD bölgeleri) | RA-GRS/GRS etkinleştirildiğinde 20 Gb/sn, LRS/ZRS2 için 30 Gb/sn <sup>2</sup> |
-| Genel amaçlı v1 depolama hesapları için çıkış üst sınırı (ABD dışındaki bölgeler) | RA-GRS/GRS etkinleştirildiğinde 10 Gb/sn, LRS/ZRS2 için 15 GB/sn<sup>2</sup> |
-| Depolama hesabı başına sanal ağ kuralı sayısı üst sınırı | 200 |
-| Depolama hesabı başına IP adresi kuralı üst sınırı | 200 |
+| Standart, premium ve Data Lake Storage Gen2 özellikli depolama hesapları da dahil olmak üzere abonelik başına bölge başına depolama hesabı sayısı. <sup>3.2.2</sup> | 250 |
+| Maksimum depolama hesabı kapasitesi | 5 PiB <sup>1</sup>|
+| Depolama hesabı başına maksimum sayıda blob kapsayıcısı, blob, dosya paylaşımları, tablolar, kuyruklar, varlıklar veya iletisayısı | Sınır yok |
+| Depolama hesabı başına maksimum istek oranı<sup>1</sup> | Saniyede 20.000 istek |
+| Depolama hesabı başına maksimum giriş<sup>1</sup> (ABD, Avrupa bölgeleri) | 25 Gbps |
+| Depolama hesabı başına maksimum giriş<sup>1</sup> (ABD ve Avrupa dışındaki bölgeler) | RA-GRS/GRS etkinse 5 Gbps, LRS/ZRS için 10 Gbps<sup>2</sup> |
+| Genel amaçlı v2 ve Blob depolama hesapları için maksimum çıkış (tüm bölgeler) | 50 Gbps |
+| Genel amaçlı v1 depolama hesapları (ABD bölgeleri) için maksimum çıkış | RA-GRS/GRS etkinse 20 Gbps, LRS/ZRS için 30 Gbps<sup>2</sup> |
+| Genel amaçlı v1 depolama hesapları (ABD dışı bölgeler) için maksimum çıkış | RA-GRS/GRS etkinse 10 Gbps, LRS/ZRS için 15 Gbps<sup>2</sup> |
+| Depolama hesabı başına maksimum sanal ağ kuralı sayısı | 200 |
+| Depolama hesabı başına maksimum IP adresi kuralı sayısı | 200 |
 
-<sup>1</sup> Azure Depolama standart hesapları, istek üzerine sunulan daha yüksek kapasite ve giriş sınırlarını destekler. Hesap sınırlarında artış istemek için [Azure Desteği](https://azure.microsoft.com/support/faq/)’ne ulaşın.
+<sup>1</sup> Azure Depolama standart hesapları, istek üzerine giriş için daha yüksek kapasite sınırlarını ve daha yüksek sınırları destekler. Hesap sınırlarının artırılmasını istemek için [Azure Desteği'ne](https://azure.microsoft.com/support/faq/)başvurun.
 
-<sup>2</sup> Depolama hesabınızda coğrafi olarak yedekli depolama (RA-GRS) veya coğrafi alanlar arası yedekli depolama (RA-GZRS) ile okuma erişim etkinleştirildiyse, ikincil bölgeye yönelik çıkış hedefleri de birincil bölgenin hedefleriyle aynı olur. [Azure depolama çoğaltması](https://docs.microsoft.com/azure/storage/common/storage-redundancy) seçenekleri şunları içerir:
+<sup>2</sup> Depolama hesabınız, coğrafi yedekli depolama (RA-GRS) veya coğrafi bölge yedekli depolama (RA-GZRS) ile okuma erişimi etkinleştirilmişse, ikincil konumun çıkış hedefleri birincil konumdakilerle aynıdır. [Azure Depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy) seçenekleri şunlardır:
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage 2. Nesil](../articles/storage/blobs/data-lake-storage-introduction.md), Azure Blob depolama temelinde oluşturulan, büyük veri analizi için ayrılmış özellikler kümesidir. Azure Depolama ve blob depolama sınırları Data Lake Storage 2. Nesil için geçerlidir.
+<sup>3</sup> [Azure Veri Gölü Depolama Gen2,](../articles/storage/blobs/data-lake-storage-introduction.md) Azure Blob depolamasına dayalı büyük veri analitiğine adanmış bir dizi özelliktir. Azure Depolama ve blob depolama sınırlamaları Data Lake Storage Gen2 için geçerlidir.
 
 > [!NOTE]
-> Microsoft, çoğu senaryo için genel amaçlı v2 depolama hesabı kullanmanızı önerir. Genel amaçlı v1 veya Azure Blobu depolama hesabını kapalı kalma süresi ve verileri kopyalama gereksinimi olmadan kolayca bir genel amaçlı v2 hesabına yükseltebilirsiniz. Daha fazla bilgi edinmek için bkz. [Genel amaçlı v2 depolama hesabına yükseltme](../articles/storage/common/storage-account-upgrade.md).
+> Microsoft, çoğu senaryo için genel amaçlı bir v2 depolama hesabı kullanmanızı önerir. Genel amaçlı bir v1 veya Azure Blob depolama hesabını, kesinti olmaksızın ve veri kopyalamaya gerek kalmadan genel amaçlı bir v2 hesabına kolayca yükseltebilirsiniz. Daha fazla bilgi için genel [amaçlı v2 depolama hesabına yükseltme](../articles/storage/common/storage-account-upgrade.md)konusuna bakın.
 
-Uygulamanızın ihtiyaçları tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa uygulamanızı birden fazla depolama hesabı kullanacak şekilde oluşturabilirsiniz. Ardından, veri nesnelerinizi bu depolama hesaplarında bölümleyebilirsiniz. Toplu fiyatlandırma hakkında bilgi edinmek için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+Uygulamanızın gereksinimleri tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşıyorsa, uygulamanızı birden çok depolama hesabı kullanmak üzere oluşturabilirsiniz. Daha sonra veri nesnelerinizi bu depolama hesapları arasında bölümlere aktarabilirsiniz. Toplu fiyatlandırma hakkında bilgi için Azure [Depolama fiyatlandırması'na](https://azure.microsoft.com/pricing/details/storage/)bakın.
 
-Tüm depolama hesapları oluşturulma zamanlarından bağımsız olarak düz bir ağ topolojisinde çalışır. Azure Depolama düz ağ mimarisi ve ölçeklenebilirlik hakkında daha fazla edinmek için bkz. [Microsoft Azure Depolama: Güçlü Tutarlılığa Sahip Olan Yüksek Oranda Kullanılabilir Bulut Depolama Hizmeti](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets). 
+Tüm depolama hesapları, ne zaman oluşturulduklarına bakılmaksızın düz bir ağ topolojisi üzerinde çalışır. Azure Depolama düz ağ mimarisi ve ölçeklenebilirlik hakkında daha fazla bilgi için [Bkz.](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets) 

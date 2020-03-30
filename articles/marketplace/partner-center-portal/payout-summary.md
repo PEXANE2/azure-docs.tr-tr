@@ -1,179 +1,178 @@
 ---
-title: Ticari Market ödeme Özeti | Azure Marketi
-description: Ödeme Özeti, teklifiniz ile kazanabileceğiniz paradan ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Ticari pazar ödeme özeti | Azure Marketi
+description: Ödeme özeti, teklifinizle kazandığınız parayla ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınızı ve ne kadar ödeme alacağınızı da bildirir.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269906"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288708"
 ---
-# <a name="payout-reporting"></a>Ödeme raporlaması
+# <a name="payout-reporting"></a>Ödeme raporlama
 
-[**Ödeme Özeti**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) , Microsoft ile kazandığınızı gösteren ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
+[**Ödeme özeti,**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) Microsoft ile kazandığınız parayla ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınızı ve ne kadar ödeme alacağınızı da bildirir.
 
-Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı ödemeler**hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesiyle ilgili daha fazla bilgi için [Microsoft Azure Market katılım ilkelerine](https://go.microsoft.com/fwlink/p/?LinkId=722436) ve [Microsoft Azure Market yayımcı anlaşmasına](https://go.microsoft.com/fwlink/p/?LinkID=699560)bakın.
+Azure Marketi'nde teklif satıyorsanız, **Ödeme özetinde**başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi ile ilgili daha fazla bilgi için [Microsoft Azure Marketi Katılım İlkeleri](https://go.microsoft.com/fwlink/p/?LinkId=722436) ve [Microsoft Azure Marketi Yayımcı Sözleşmesi'ne](https://go.microsoft.com/fwlink/p/?LinkID=699560)bakın.
 
 > [!NOTE]
-> Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için bu sayfaya bakın ve [Microsoft Azure Market yayımcı sözleşmesini](https://go.microsoft.com/fwlink/p/?LinkID=699560)gözden geçirin.
+> Ödeme için uygun olmak için, gelirleri 50 $ [ödeme eşiğine](payment-thresholds-methods-timeframes.md) ulaşması gerekir. Ödeme eşiği yle ilgili ayrıntılar için bu sayfaya bakın ve [Microsoft Azure Marketi Yayımcı Sözleşmesi'ni](https://go.microsoft.com/fwlink/p/?LinkID=699560)inceleyin.
 
-- [Ödeme raporuna erişim için roller ve izinler](#roles-and-permission-to-access-the-payout-report)
-- [Ödeme raporu: Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasındaki fark](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
-- [Müşteri türleri](#customer-types)
-- [Ödeme ve kullanım arasındaki ortak ilişki](#corelation-between-payout-and-usage)
-- [İşlem geçmişi indirmesi](#transaction-history-download-export)
-- [Faturalandırma soruları ve destek](#billing-questions-and-support)
+- [Ödemeler ve ödeme raporuna erişim izni](#roles-and-permission-to-access-the-payout-report)
+- [Ödeme raporu: Bulut İş Ortağı Portalı ile İş Ortağı Merkezi arasındaki fark](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
+- [Müşteri tipleri](#customer-types)
+- [Ödeme ve kullanım arasındaki birlikte ilişki](#corelation-between-payout-and-usage)
+- [İşlem geçmişi indir](#transaction-history-download-export)
+- [Faturalama soruları ve desteği](#billing-questions-and-support)
 
-## <a name="roles-and-permission-to-access-the-payout-report"></a>Ödeme raporuna erişim için roller ve izinler
+## <a name="roles-and-permission-to-access-the-payout-report"></a>Ödemeler ve ödeme raporuna erişim izni
 
-| Raporlar/sayfalar    | Hesap sahibi    | Manager  | Geliştirici | İş Katılımcısı |  Finans Katılımcısı | Pazarlamacısıdır |
+| Raporlar / Sayfalar    | Hesap sahibi    | Yönetici  | Geliştirici | İş katkıda bulunan |  Finans katılımcısı | Pazarlamacı |
 |------------------|------------------|----------|-----------|----|----|-----|
-| Alım raporu (neredeyse gerçek zaman verileri dahil) | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok | Görüntüleyebilir | Erişim yok |
-| Geri bildirim raporu/yanıtları | Geri bildirim görüntüleyebilir ve gönderebilir | Geri bildirim görüntüleyebilir ve gönderebilir | Geri bildirim görüntüleyebilir ve gönderebilir | Erişim yok | Erişim yok | Geri bildirim görüntüleyebilir ve gönderebilir |
-| Sistem durumu raporu (neredeyse gerçek zaman verileri dahil) | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok |
+| Satın alma raporu (Yakın Gerçek Zamanlı veriler dahil) | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok | Görüntüleyebilir | Erişim yok |
+| Geri bildirim raporu/yanıtları | Görüşebilir ve geri bildirim gönderebilir | Görüşebilir ve geri bildirim gönderebilir | Görüşebilir ve geri bildirim gönderebilir | Erişim yok | Erişim yok | Görüşebilir ve geri bildirim gönderebilir |
+| Sağlık raporu (neredeyse gerçek zamanlı veriler dahil) | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok |
 | Kullanım raporu | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok |
-| Ödeme hesabı | Güncelleştirebilir | Erişim yok | Erişim yok | Erişim yok | Güncelleştirebilir | Erişim yok |
-| Vergi profili | Güncelleştirebilir | Erişim yok | Erişim yok | Erişim yok | Güncelleştirebilir | Erişim yok |
+| Ödeme hesabı | Güncelleyebilir | Erişim yok | Erişim yok | Erişim yok | Güncelleyebilir | Erişim yok |
+| Vergi profili | Güncelleyebilir | Erişim yok | Erişim yok | Erişim yok | Güncelleyebilir | Erişim yok |
 | Ödeme özeti | Görüntüleyebilir | Erişim yok | Erişim yok | Erişim yok | Görüntüleyebilir | Erişim yok |
 
-## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Ödeme raporu: Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasındaki fark
+## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Ödeme raporu: Bulut İş Ortağı Portalı ile İş Ortağı Merkezi arasındaki fark
 
-| | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
+| | Bulut İş Ortağı Portalı | Ortak Merkezi |
 |---------|---------|---------|
-| Bağlantılar | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) ve [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| Gezinme | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
-| Kapsam | <ul> <li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olarak </li> <li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir. </li> </ul> | <ul> <li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li> <li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li> <li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.  </li> </ul>  |
-| İşlem ödeme için hazır değil | Faturalama devam ediyor | Sonraki tahmini ödeme: ödeme durumu işlenmemiş durumundadır.  |
-| Ödeme durumu |  | İşlenmemiş <br> Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. <br> <br> İlerideki <br> Ödeme siparişi tarafından oluşturulan, ödeme işlenmeden önce bekleyen dahili incelemeler. <br> <br> Gönderilip <br> Ödeme, bankanızla gönderilmiştir. |
+| Bağlantılar | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)Ve[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+| Gezinti | Insights Payout'ta sağlanan ödeme raporlaması | Ortak Merkezi'nde sağlanan ödeme raporlaması – Payout Icon |
+| Kapsam | <ul> <li>Satır öğesi başına işlem, devam eden, toplanan ve ödenen tahsilat için görünür </li> <li>Raporlama – devam eden tahsilat ve devam eden faturalandırma ve henüz ödenmeye uygun olmayan tahsilat durumu ve satır öğeleri de dahil olmak üzere satınalma siparişi oluşturulduktan sonra tüm satır öğelerini gösterir. </li> </ul> | <ul> <li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li> <li>Müşteriler önce Microsoft'a ödeme yaparsa, ardından ISV'ler ödeme raporunun başladığını görebilir.</li> <li>Ödeme raporu, devam eden tahsilat ve devam eden faturalandırmayı göstermez.  </li> </ul>  |
+| Ödeme için hazır olmayan işlem | Devam Eden Faturalandırma | Sonraki tahmini ödeme: Ödeme durumu işlenmemiş durumdadır.  |
+| Ödeme durumu |  | Işlenme -miş: <br> Kazanç ödeme için uygundur. Teşvik programı için program kılavuzunda tanımlandığı gibi bir soğutma dönemi için bu durumda kalır. <br> <br> Yaklaşan: <br> Ödeme işlenmeden önce ödeme emri tarafından oluşturulan bekleyen dahili incelemeler. <br> <br> Gönderilen: <br> Ödeme bankanıza gönderildi. |
 
-## <a name="customer-types"></a>Müşteri türleri
+## <a name="customer-types"></a>Müşteri tipleri
 
-### <a name="enterprise-agreement"></a>Kurumsal Anlaşma
+### <a name="enterprise-agreement"></a>Kurumsal anlaşma
 
-Yerinde Kurumsal Anlaşma olmayan müşteriler Market yazılım lisansları için aylık olarak faturalandırılır. Kurumsal Anlaşma olan müşteriler aylık olarak sunulan bir fatura aracılığıyla aylık olarak faturalandırılır.
+Kurumsal Sözleşmesi olan müşteriler, pazar yeri yazılım lisansları için aylık olarak faturalandırılır. Kurumsal Sözleşmesi olan müşteriler, üç ayda bir sunulan bir fatura yla aylık olarak faturalandırılır.
 
 ### <a name="credit-cards-and-monthly-invoice"></a>Kredi kartları ve aylık fatura
 
-Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu durumda, yazılım lisans ücretleri aylık olarak faturalandırılır.
+Müşteriler kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu durumda, yazılım lisans ücretleriniz aylık olarak faturalandırılır.
 
-### <a name="csp-and-direct-pay-users"></a>CSP ve doğrudan ödeme kullanıcıları
+### <a name="csp-and-direct-pay-users"></a>CSP ve Doğrudan Ödeme Kullanıcıları
 
-Örneğin, müşteri kredi kartı kullanarak satın alıyorsa.
+Örneğin, müşteri kredi kartı kullanarak alışveriş yapıyorsa.
 
-## <a name="corelation-between-payout-and-usage"></a>Ödeme ve kullanım arasındaki ortak ilişki
+## <a name="corelation-between-payout-and-usage"></a>Ödeme ve kullanım arasındaki birlikte ilişki
 
-|Açıklama    |    Tarih  | Siparişler/kullanım  | Ödeme |
+|Açıklama    |    Tarih  | Siparişler / Kullanım  | Ödeme |
 |----------|----------|-----------|-------------|
-|Sipariş dönemi   | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>Sipariş</li> <li>Ister</li> </ul> <br> **Kullanım** <br> <ul> <li>Ister </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> |  |
-|Dönem sonu (ay)   | 30 Ağu, 2019 | | |
-|Faturalama tarihi | 1 Eylül 2019 | | |
-|Müşteri ödeme tarihi | 1 Eylül 2019 | | |
-|Emanet dönemi (yalnızca kredi kartları, 30 gün) | 1 Eylül 2019-Eyl 30, 2019 | | **Bağıntı öznitelikleri siparişleri:** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** İşlenmemiş |
-|Toplama dönemi başlangıcı | 1 Eylül 2019 | | |
-|Toplama dönemi sonu (maksimum, 30 gün) | 30 Eylül 2019 | | |
-|Ödeme hesaplama tarihi (aylık 15 ' te) | 1 Eki, 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li>Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ilerideki |
-|Ödeme tarihi | 15 Ekim 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ödeme gönderildi |
+|Sipariş Dönemi   | 15 Ağustos 2019 - 30 Ağustos 2019 | **Korelasyon Öznitelikleri Siparişler** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Kullanım** <br> <ul> <li>CustomerId </li> <li>Müşteri Adı</li> <li>(Kullanım Başvurusu) Satın AlmaRecordId/LineItemid</li> <li> Tahmini Genişletilmiş Şarj <br> Tahmini Ödeme (PC) </li> </ul> |  |
+|Dönem Sonu (ay)   | 30 Ağustos 2019 | | |
+|Fatura Tarihi | 1 Eylül 2019 | | |
+|Müşteri Ödeme Tarihi | 1 Eylül 2019 | | |
+|Emanet Dönemi (sadece kredi kartları, 30 gün) | 1 Eylül 2019 - 30 Eylül 2019 | | **Korelasyon Öznitelikleri Siparişler:** <br> <ul><li>Varlık Kimliği</li> <li>Müşteri Kimliği</li> <li> Müşteri Adı</li> </ul> <br> **Kullanım** <br> <ul> <li>Varlık Kimliği</li> <li>CustomerId</li> <li>Müşteri Adı</li> <li>OrderId</li> <li>LineItemId</li> <li>işlemTutar</li> <li>Kazanç TutarıInLast Ödeme Para Birimi</li> </ul> <br> **Ödeme Durumu:** Işlenme -miş |
+|Tahsilat Dönemi Başlangıcı | 1 Eylül 2019 | | |
+|Tahsilat Dönemi Sonu (en fazla 30 gün) | 30 Eylül 2019 | | |
+|Ödeme Hesaplama Tarihi (ayın 15'inde aylık) | Eki 1, 2019 | | **Korelasyon Özellikleri** <br> <ul><li>Varlık Kimliği</li> <li>Müşteri Kimliği</li> <li>Müşteri Adı</li> </ul> <br> **Kullanım** <br> <ul> <li>Varlık Kimliği</li> <li>CustomerId</li> <li>Müşteri Adı</li> <li>OrderId</li> <li>LineItemId</li> <li>işlemTutar</li> <li>Kazanç TutarıInLast Ödeme Para Birimi</li> </ul> <br> **Ödeme Durumu:** Yaklaşan |
+|Ödeme Tarihi | Eki 15, 2019 | | **Korelasyon Özellikleri** <br> <ul><li>Varlık Kimliği</li> <li>Müşteri Kimliği</li> <li> Müşteri Adı</li> </ul> <br> **Kullanım** <br> <ul> <li>Varlık Kimliği</li> <li>CustomerId</li> <li>Müşteri Adı</li> <li>OrderId</li> <li>LineItemId</li> <li>işlemTutar</li> <li>Kazanç TutarıInLast Ödeme Para Birimi</li> </ul> <br> **Ödeme Durumu:** Gönderilen ödeme |
 
-### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Kurumsal Anlaşma (üç aylık/aylık müşteriler)
+### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Kurumsal sözleşme (üç aylık/aylık müşteriler)
 
 | Açıklama |    Tarih  | Kullanım | Ödeme |
 |----------|----------|---------|-----------|
-|Sipariş dönemi | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>Sipariş</li> <li>Ister</li> </ul> <br> **Kullanım raporu** <br> <ul> <li>Ister </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> | |
-|Dönem sonu (çeyrek) | 30 Eylül 2019 | | |
-|Faturalama tarihi | 15 Ekim 2019 | | |
-|Emanet dönemi (yalnızca kredi kartları, 30 gün) | yok | | |
-|Toplama dönemi başlangıcı | 15 Ekim 2019 | | |
-|Yalnızca kredi kartları, 30 gün | 1 Kasım 2019-kas 30, 2019 | | |
-|Toplama dönemi sonu (maksimum, 90 gün) | 15 Ocak 2020 | | |
-|Müşteri ödeme tarihi | 30 Aralık 2019 | | |
-|Ödeme hesaplaması | 15 Ocak 2020 | | |
-|Ödeme tarihi | 15 Şubat 2020 | | **Üç aylık tabanlı müşteriler için** <br> <br> **Sipariş raporu** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** gönderildi |
+|Sipariş Dönemi | 15 Ağustos 2019 - 30 Ağustos 2019 | **Korelasyon öznitelikleri siparişleri** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Kullanım raporu** <br> <ul> <li>CustomerId </li> <li>Müşteri Adı</li> <li>(Kullanım Başvurusu) Satın AlmaRecordId/LineItemid</li> <li> Tahmini Genişletilmiş Şarj <br> Tahmini Ödeme (PC) </li> </ul> | |
+|Dönem Bitişi (üç aylık dönem) | 30 Eylül 2019 | | |
+|Fatura Tarihi | Eki 15, 2019 | | |
+|Emanet Dönemi (sadece kredi kartları, 30 gün) | yok | | |
+|Tahsilat Dönemi Başlangıcı | Eki 15, 2019 | | |
+|Sadece kredi kartları, 30 gün | 1 Kasım 2019 - 30 Kasım 2019 | | |
+|Tahsilat Dönemi Sonu (maksimum, 90 gün) | Ocak 15, 2020 | | |
+|Müşteri Ödeme Tarihi | Aralık 30, 2019 | | |
+|Ödeme Hesaplama | Ocak 15, 2020 | | |
+|Ödeme Tarihi | Şub 15, 2020 | | **Üç aylık tabanlı müşteriler için** <br> <br> **Sipariş raporu** <br> <ul><li>Varlık Kimliği</li> <li>Müşteri Kimliği</li> <li> Müşteri Adı</li> </ul> <br> **Kullanım** <br> <ul> <li>Varlık Kimliği</li> <li>CustomerId</li> <li>Müşteri Adı</li> <li>OrderId</li> <li>LineItemId</li> <li>işlemTutar</li> <li>Kazanç TutarıInLast Ödeme Para Birimi</li> </ul> <br> **Ödeme Durumu:** gönderildi |
 
-## <a name="transaction-history-download-export"></a>İşlem geçmişi indirme dışarı aktarma
+## <a name="transaction-history-download-export"></a>İşlem geçmişi indirme dışa aktarma
 
-Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin bir indirisini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını sağlar.
+Bu seçenek, İşlem geçmişi sayfasında gördüğünüz her kazanç satır öğesinin karşıdan yüklenmesini, kazanç türünü, tarihi, ilişkili işlem tutarını, müşteriyi, ürünü ve Teşvikler programı için geçerli olan diğer işlem ayrıntılarını sağlar.
 
 | Sütun adı     | Açıklama    |
 |-------------|-------------------------------|
-| Eardokgıd                      | Her bir atma için benzersiz tanımlayıcı                                                                                                       |
-| participantId                  | İş ortağının birincil kimliği program altında                                                                            |
-| participantIdType              | Programları ve satıcı, mağaza programları ve Azure Marketi için genellikle program KIMLIĞI                                          |
-| participantName                | Kazanç ortağının adı                                                                                                              |
+| kazançId                      | Her kazanç için benzersiz tanımlayıcı                                                                                                       |
+| katılımcıKimliği                  | Program kapsamında kazanç elde eden ortağın birincil kimliği                                                                            |
+| katılımcıIdType              | Mağaza programları ve Azure Marketi için Teşvik programları ve Satıcı IF için çoğunlukla program kimliği                                          |
+| katılımcıAdı                | Kazanan ortağın adı                                                                                                              |
 | partnerCountryCode             | Kazanç ortağının konumu/ülkesi                                                                                                  |
-| Programadı                    | Program adını teşvik edin/depolayın                                                                                                             |
-| transactionId                  | İşlem için benzersiz tanımlayıcı                                                                                                    |
-| Işlem para birimi            | Orijinal müşteri işleminin gerçekleştiği para birimi (iş ortağı konum para birimi değil)                                     |
-| transactionDate                | İşlemin tarihi. Birçok işlemin tek bir işleme katkıda bulunduğu programlar için yararlıdır                                           |
-| transactionExchangeRate        | Karşılık gelen işlem USD tutarını göstermek için kullanılan döviz kuru                                                                 |
-| Işlem miktarı              | Orijinal işlem para biriminde, kazanıştan oluşan işleme göre işlem miktarı                                              |
-| transactionAmountUSD           | USD cinsinden işlem miktarı                                                                                                                |
-| düzeyi                          | Kazanç için iş kuralını gösterir                                                                                                  |
-| Eardokgrate                    | Bir kazanç oluşturmak için işlem tutarına uygulanan teşvik oranı                                                                      |
-| miktar                       | Programa göre farklılık gösterir. İşlem programlarının faturalandırılan miktarını gösterir                                                            |
-| quantityType                   | Miktarın türünü gösterir, örneğin: faturalandırılan miktar, MAU                                                                                     |
-| earningType                    | Ücret ödemesinin, indirimin, Coop, satış vb. olduğunu gösterir.                                                                                          |
-| earningAmount                  | Orijinal işlem para birimindeki miktarı atma                                                                                      |
-| earningAmountUSD               | USD cinsinden miktar atma                                                                                                                    |
-| earningDate                    | Kazanlama tarihi                                                                                                                      |
-| calculationDate                | Sistemin sistemde hesaplandığı Tarih                                                                                            |
-| earningExchangeRate            | Karşılık gelen USD tutarını göstermek için kullanılan döviz kuru                                                                                  |
-| exchangeRateDate               | EarningAmount USD 'yi hesaplamak için kullanılan döviz kuru tarihi                                                                                   |
-| paymentAmountWOTax             | Yalnızca "gönderilen" ödemeler için para birimi ödeyerek miktar (vergi olmadan)                                                                 |
-| paymentCurrency                | Ödeme profilinde iş ortağı tarafından seçilen para birimine öde. Yalnızca gönderilen ödemeler için gösteriliyor                                                   |
-| paymentExchangeRate            | ExchangeRateDate kullanarak ödeme para birimindeki paymentAmountWOTax hesaplamak için kullanılan döviz kuru                                            |
-| Paymentıd            | Ödeme için benzersiz tanımlayıcı. Bu sayı, banka ekstreninizde görülebilir                                            |
-| paymentStatus            | Ödeme durumu                                            |
-| paymentStatusDescription            | Ödeme durumunun kolay açıklaması                                            |
-| Ister                     | Her zaman boş kalır                                                                                                                     |
-| customerName                   | Her zaman boş kalır                                                                                                                     |
-| partNumber                     | Her zaman boş kalır                                                                                                                     |
-| productName                    | İşlemle bağlantılı ürün adı                                                                                                       |
+| programAdı                    | Teşvik/mağaza program adı                                                                                                             |
+| Transactionıd                  | Hareket için benzersiz tanımlayıcı                                                                                                    |
+| işlemPara Birimi            | Özgün müşteri hareketinin gerçekleştiği para birimi (ortak konum para birimi değildir)                                     |
+| işlemTarihi                | İşlemtarihi. Birçok işlemin bir kazanç için katkıda bulunduğu programlar için yararlıdır                                           |
+| işlemExchangeRate        | İlgili işlem USD tutarını göstermek için kullanılan döviz kuru                                                                 |
+| işlemTutar              | Kazancın oluşturulduğu temele bağlı olarak orijinal hareket para birimindeki hareket tutarı                                              |
+| işlemTutarUSD           | USD'deki işlem tutarı                                                                                                                |
+| Kolu                          | Kazanç için iş kuralını gösterir                                                                                                  |
+| kazançOranı                    | Kazanç elde etmek için işlem tutarına uygulanan teşvik oranı                                                                      |
+| miktar                       | Programa göre değişir. Hareket programları için faturalanan miktarı gösterir                                                            |
+| miktarTip                   | Miktar türünü gösterir, örneğin: Faturalı miktar, MAU                                                                                     |
+| kazançTürü                    | Ücret, indirim, kümes, satış vb. olup olmadığını gösterir.                                                                                          |
+| kazançTutar                  | Orijinal hareket para biriminde Kazanç Tutarı                                                                                      |
+| kazançTutarUSD               | USD Kazanç Tutarı                                                                                                                    |
+| kazançTarihi                    | Kazanç tarihi                                                                                                                      |
+| hesaplamaTarihi                | Kazancın sistemde hesaplandığı tarih                                                                                            |
+| kazançExchangeRate            | İlgili USD tutarını göstermek için kullanılan döviz kuru                                                                                  |
+| exchangeRateDate               | Kazanç Tutarı USD'yi hesaplamak için kullanılan döviz kuru tarihi                                                                                   |
+| ödemeAmountWOTax             | Yalnızca "Gönderilen" ödemeler için Ödeme Para Birimi'nde kazanç tutarı (vergi olmadan)                                                                 |
+| ödemePara Birimi                | Ödeme profilinde ortak tarafından seçilen para birimine ödeme. Yalnızca gönderilen ödemeler için gösterilir                                                   |
+| paymentExchangeRate            | ExchangeRateDate kullanarak ödeme para birimi cinsinden ödemeAmountWOTax hesaplamak için kullanılan döviz kuru                                            |
+| paymentId            | Ödeme için benzersiz tanımlayıcı. Bu numara banka ekstrenizde görünür                                            |
+| ödemeDurum            | Ödeme durumu                                            |
+| ödemeStatusDescription            | Ödeme durumunun dostça açıklaması                                            |
+| customerId                     | Her zaman boş olacak                                                                                                                     |
+| Müşteriadı                   | Her zaman boş olacak                                                                                                                     |
+| partNumber                     | Her zaman boş olacak                                                                                                                     |
+| Productname                    | İşleme bağlı ürün adı                                                                                                       |
 | productId                      | Benzersiz ürün tanımlayıcısı                                                                                                                |
-| Parentproductıd                | Benzersiz üst ürün tanımlayıcısı. Note: işlem için bir üst ürün yoksa, üst ürün KIMLIĞI = ürün KIMLIĞI. |
-| parentProductName              | Ana ürünün adı. Note: işlem için bir üst ürün yoksa, üst ürün adı = ürün adı.   |
-| productType                    | Ürün türü (uygulama, eklenti, oyun vb.)                                                                                        |
-| Faturanumarası                  | Fatura numarası (yalnızca EA için geçerlidir)                                                                                                  |
-| ResellerID                     | Satıcı tanımlayıcısı                                                                                                                      |
-| Reselleradı                   | Satıcı adı                                                                                                                            |
-| Işlem türü                | İşlem türü (satın alma, geri ödeme, ters çevirme, geri ödeme vb.)                                                               |
-| Localprovidersatıcı            | Yerel sağlayıcı/kayıt satıcı                                                                                                          |
-| Vergilenhavale edilmiş                    | Havale edilen vergi miktarı (satış, kullanım veya KDV/GST vergileri).                                                                                   |
-| Taxhavalemodeli                  | Vergi vergisinden sorumlu olan parti (satış, kullanım veya KDV/GST vergileri).                                                                    |
-| storeFee                       | Uygulamanın veya eklentinin mağazada kullanılabilir hale getirilmesi için Microsoft tarafından bir ücret karşılığında korunan miktar.                                            |
-| transactionPaymentMethod       | İşlem için kullanılan müşteri ödeme gereci (kart, mobil taşıyıcı faturalandırma, PayPal vb.)                                |
-| tpan                           | Üçüncü taraf ad ağını belirtir                                                                                                     |
+| parentProductId                | Benzersiz ana ürün tanımlayıcısı. Not: Hareket için bir ana ürün yoksa, Ana Ürün Kimliği = Ürün Kimliği. |
+| parentProductName              | Ana ürünün adı. Not: Hareket için bir ana ürün yoksa, Ana Ürün Adı = Ürün Adı.   |
+| productType                    | Ürün türü (Uygulama, Eklenti, Oyun, vb.)                                                                                        |
+| faturaNumarası                  | Fatura numarası (yalnızca EA için geçerlidir)                                                                                                  |
+| bayiId                     | Bayi tanımlayıcısı                                                                                                                      |
+| bayiAd                   | Satıcı adı                                                                                                                            |
+| Transactiontype                | İşlem türü (satın alma, geri ödeme, geri alma, ters ibraz, ters ibraz, vb.)                                                               |
+| localProviderSeller            | Yerel sağlayıcı/kayıt satıcısı                                                                                                          |
+| taxRemitted                    | Havale edilen vergi tutarı (satış, kullanım veya KDV/GST vergileri).                                                                                   |
+| taxRemitModel                  | Vergilerin (satış, kullanım veya KDV/GST vergileri) havale ile yükümlü olduğu taraf.                                                                    |
+| mağazaÜcreti                       | Microsoft tarafından uygulama veya eklentiyi Mağaza'da kullanılabilir hale getirmek için bir ücret olarak tutulan tutar.                                            |
+| işlemPaymentMethod       | İşlem için kullanılan müşteri ödeme aracı (Kart, Mobil Operatör Faturası, PayPal, vb.)                                |
+| tpan                           | Üçüncü taraf reklam ağını gösterir                                                                                                     |
 | customerCountry                | Müşteri ülkesi                                                                                                                         |
 | customerCity                   | Müşteri şehri                                                                                                                            |
 | customerState                  | Müşteri durumu                                                                                                                           |
-| Müşterzıp                    | Müşteri posta kodu                                                                                                                 |
-| Değerine                       |                                                                                                                                          |
-| Externalreferenceıd            | Program için benzersiz tanımlayıcı                                                                                                        |
-| Externalreferenceıdlabel       | Benzersiz tanımlayıcı etiketi                                                                                                                  |
-| transactionCountryCode       | İşlemin gerçekleştiği ülke kodu                                                                                                                  |
-| taxCountry       | Müşterinin ülkesinde satılan                                                                                                                  |
-| taxState       | Müşteri durumuna satıldı                                                                                                                  |
-| Vergilencity       | Müşteri şehrine satışı                                                                                                                  |
-| taxZipCode       | Müşteri posta kodu 'Na satılan                                                                                                                  |
-| LicensingProgramName       |                                                                                                                   |
-| Program kodu       | Program adıyla Eşlenecek dize                                                                                                                   |
-| Earningamountınlastpaymentcurrency       | Son ödeme para biriminde (önceki ödemeler ödeniyorsa, alan boş olur) miktarı kazanlama                                                                                                                   |
-| lastPaymentCurrency       | Son ödeme para birimi (önceki ödeme ödeniyorsa, alan boş olacaktır)                                                                                                                   |
-| AssetId       | Market hizmetiniz için müşteri siparişlerinin benzersiz tanımlayıcısı.  Bu işlem, işlenen satın alma satırı öğelerini temsil eder. Birden çok varlık olabilir.                                                                                                                   |
-| Sipariş       | müşterinin faturasıyla ilişkili                                                                                                                   |
-| Lineıtemıd       | müşterinin faturasında tek satırlık                                                                                                                   |
-| Müşteri ülkesi       | Müşterinin sunduğu ülke adı.  Bu, müşterinin Azure aboneliğindeki ülkeden farklı olabilir.                                                                                                                   |
-| Müşteri EMAA adresi       | Son müşteri tarafından sunulan e-posta adresi.  Bu, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir.                                                                                                                   |
-| SkuId       | Yayımlama sırasında tanımlanan SKU KIMLIĞI. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir.                                                                                                                   |
+| müşteriZip                    | Müşteri posta/posta kodu                                                                                                                 |
+| Kiracı Kimliği                       |                                                                                                                                          |
+| externalReferenceId            | Program için benzersiz tanımlayıcı                                                                                                        |
+| externalReferenceIdLabel       | Benzersiz tanımlayıcı etiketi                                                                                                                  |
+| işlemCountryCode       | İşlemin gerçekleştiği Ülke Kodu                                                                                                                  |
+| taxCountry       | Müşteri Ülkesine Satıldı                                                                                                                  |
+| taxState       | Müşteri Durumuna Satıldı                                                                                                                  |
+| taxŞehir       | Müşteri Şehrine Satıldı                                                                                                                  |
+| vergiZipCode       | Müşteri Zip'e Satıldı                                                                                                                  |
+| LisansLamaProgramName       |                                                                                                                   |
+| Program Kodu       | Program adı ile eşlenecek dize                                                                                                                   |
+| kazançAmountInLastPaymentCurrency       | Son ödeme para biriminde kazanç tutarı (ön ödeme ödenmemişse alan boş olacaktır)                                                                                                                   |
+| lastPaymentCurrency       | Son ödeme para birimi (ön ödeme ödenmemişse alan boş olacaktır)                                                                                                                   |
+| Varlık Kimliği       | Pazar yeri hizmetiniz için müşteri siparişleri için benzersiz tanımlayıcı.  İşlenen satınalma satırı öğelerini temsil eder. Birden fazla varlık olabilir.                                                                                                                   |
+| OrderId       | müşterinin faturasıyla ilgilidir                                                                                                                   |
+| LineItemId       | müşterinin faturasında tek tek satır                                                                                                                   |
+| Müşteri Ülkesi       | Müşteri tarafından sağlanan ülke adı.  Bu, bir müşterinin Azure Aboneliği'ndeki ülkeden farklı olabilir.                                                                                                                   |
+| Müşteri E-posta Adresi       | Son müşteri tarafından sağlanan e-posta adresi.  Bu, müşterinin Azure Aboneliği'ndeki e-posta adresinden farklı olabilir.                                                                                                                   |
+| SkuId       | Yayımlama sırasında tanımlandığı şekilde SKU Kimliği. Bir teklifin birçok SKU'su olabilir, ancak SKU yalnızca tek bir teklifle ilişkilendirilebilir.                                                                                                                   |
 
 >[!Note]
->Transact yayımlama seçeneğine yönelik tüm raporlama ve içgörüler, Iş Ortağı Merkezi 'nin Bulut İş Ortağı Portalı veya Analiz bölümünün Öngörüler bölümü aracılığıyla bulunabilir.
+>İşleme yayıncılık seçeneğine ilişkin tüm raporlama ve öngörülere, İş Ortağı Merkezi'nin Bulut İş Ortağı Portalı veya Analytics bölümünün Öngörüler bölümünden ulaşabilirsiniz.
 
-## <a name="billing-questions-and-support"></a>Faturalandırma soruları ve destek
+## <a name="billing-questions-and-support"></a>Faturalama soruları ve desteği
 
-Faturalandırma soruları hakkında yardım almak için lütfen [ticari Market yayımcı desteği](https://aka.ms/marketplacepublishersupport)'ne başvurun.
+Faturalandırma sorularında yardım almak için lütfen [ticari pazar yeri yayıncı desteğine](https://aka.ms/marketplacepublishersupport)başvurun.

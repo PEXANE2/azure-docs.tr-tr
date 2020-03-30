@@ -1,31 +1,29 @@
 ---
-title: Banka ve vergi bilgilerini ekleyin | Azure Marketi
-description: Geliştirme Merkezi hesabınıza banka ve vergi bilgilerini ekleyin.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Banka ve vergi bilgileri ekle | Azure Marketi
+description: Dev Center hesabınıza banka ve vergi bilgileri ekleyin.
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: blevens
-ms.openlocfilehash: e9ad4841d805b604d0f44a9e0dc08eed15aa9c1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 40a73e386ce618d7254ec7cb1f95dcde6f82d65a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286668"
 ---
-# <a name="add-bank-and-tax-information"></a>Banka ve vergi bilgilerini ekleyin  
+# <a name="add-bank-and-tax-information"></a>Banka ve vergi bilgilerini ekleme  
 
-Banka ve vergi bilgileri, Transact listeleme türü kullanılarak tüm ticari teklifler için gereklidir.  
+Banka ve vergi bilgileri, transact listeleme türünü kullanarak tüm ticari teklifler için gereklidir.  
 
-## <a name="partner-center"></a>İş Ortağı Merkezi
+## <a name="partner-center"></a>Ortak Merkezi
 
-Banka ve vergi bilgileri artık Iş Ortağı Merkezi 'nde yönetiliyor. Bu ayarları yapılandırma yönergeleri, [Iş Ortağı Merkezi hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)"ticari Market Genel Bakış" sayfasında bulunabilir.
+Banka ve vergi bilgileri artık Ortak Merkezi içinde yönetildi. Bu ayarları yapılandırmak için talimatlar İş [OrtağıNızı Yönet'in "Ticari](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)Pazara Genel Bakış" sayfasında bulunabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-*   [Azure Marketi ve AppSource yayımcı Kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.  
+*   Azure [Marketi ve AppSource Publisher Guide](./marketplace-publishers-guide.md) sayfasını ziyaret edin.  
  
 ---

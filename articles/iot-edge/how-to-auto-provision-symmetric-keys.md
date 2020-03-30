@@ -1,6 +1,6 @@
 ---
-title: Simetrik anahtar kanıtlama kullanarak cihaz Sağlama-Azure IoT Edge
-description: Cihaz sağlama hizmeti ile Azure IoT Edge için otomatik cihaz sağlamayı test etmek için simetrik anahtar kanıtlama kullanın
+title: Simetrik anahtar attestation kullanarak sağlama cihazı - Azure IoT Edge
+description: Azure IoT Edge için otomatik aygıt sağlamayı Aygıt Sağlama Hizmeti ile test etmek için simetrik anahtar attestation'ı kullanın
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,76 +9,76 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3adefbdf248deaec6170037521ab65890356d184
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535927"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama
+# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar attestation kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
-Azure IOT Edge cihazları otomatik-sağlanabilir kullanarak [cihaz sağlama hizmeti](../iot-dps/index.yml) edge etkin olmayan cihazlar'olduğu gibi. Otomatik sağlama işlemine bilmiyorsanız gözden [otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) devam etmeden önce.
+Azure IoT Edge aygıtları, kenar etkin olmayan aygıtlar gibi [Aygıt Sağlama Hizmeti](../iot-dps/index.yml) kullanılarak otomatik olarak kullanılabilir. Otomatik sağlama işlemine aşina değilseniz, devam etmeden önce [otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
 
-Bu makalede, aşağıdaki adımlarla bir IoT Edge cihazında simetrik anahtar kanıtlama kullanarak bir cihaz sağlama hizmeti bireysel kaydı oluşturma işlemi gösterilmektedir:
+Bu makalede, aşağıdaki adımları içeren bir IoT Edge aygıtında simetrik anahtar attestation kullanarak bir Aygıt Sağlama Hizmeti tek tek kayıt oluşturmak için nasıl gösterir:
 
-* Bir örnek, IOT Hub cihaz sağlama hizmeti (DPS) oluşturun.
-* Cihazı için bireysel bir kayıt oluşturun.
-* IoT Edge çalışma zamanını yükleyip IoT Hub bağlayın.
+* IoT Hub Aygıt Sağlama Hizmeti (DPS) örneğini oluşturun.
+* Aygıt için tek tek bir kayıt oluşturun.
+* IoT Edge çalışma süresini yükleyin ve IoT Hub'ına bağlanın.
 
-Simetrik anahtar kanıtlama, cihaz sağlama hizmeti örneğiyle bir cihazın kimliğini doğrulamaya yönelik basit bir yaklaşımdır. Bu kanıtlama yöntemi, cihaz sağlama için yeni olan veya katı güvenlik gereksinimleri olmayan geliştiriciler için bir "Hello World" deneyimini temsil eder. [TPM](../iot-dps/concepts-tpm-attestation.md) veya [X. 509.440 sertifikaları](../iot-dps/concepts-security.md#x509-certificates) kullanan cihaz kanıtlama daha güvenlidir ve daha sıkı güvenlik gereksinimleri için kullanılmalıdır.
+Simetrik anahtar attestation bir Aygıt Sağlama Hizmeti örneği ile bir aygıtın kimlik doğrulaması için basit bir yaklaşımdır. Bu attestation yöntemi, aygıt sağlamada yeni olan veya sıkı güvenlik gereksinimleri olmayan geliştiriciler için bir "Merhaba dünya" deneyimini temsil eder. [TPM](../iot-dps/concepts-tpm-attestation.md) veya [X.509 sertifikaları](../iot-dps/concepts-security.md#x509-certificates) kullanan aygıt attestation'ı daha güvenlidir ve daha sıkı güvenlik gereksinimleri için kullanılmalıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin bir IoT Hub
-* Fiziksel veya sanal cihaz
+* Etkin bir IoT Hub'ı
+* Fiziksel veya sanal bir aygıt
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IOT Hub cihazı sağlama hizmetini ayarlama
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IoT Hub Cihaz Sağlama Hizmetini Ayarlama
 
-Azure'da yeni bir IOT Hub cihazı sağlama hizmeti örneğini oluşturun ve IOT hub'ınıza bağlayın. ' Ndaki yönergeleri takip edebilirsiniz [IOT hub'ı DPS ' ayarlamak](../iot-dps/quick-setup-auto-provision.md).
+Azure'da IoT Hub Aygıt Sağlama Hizmeti'nin yeni bir örneğini oluşturun ve IoT hub'ınıza bağlayın. [IoT Hub DPS'yi](../iot-dps/quick-setup-auto-provision.md)kur'a'daki yönergeleri takip edebilirsiniz.
 
-Cihaz sağlama hizmeti çalışıyor sonra değerini kopyalayın **kimlik kapsamı** genel bakış sayfasında. IOT Edge çalışma zamanı yapılandırdığınızda bu değeri kullanın.
+Aygıt Sağlama Hizmeti çalıştırdıktan **sonra, kimlik kapsamının** değerini genel bakış sayfasından kopyalayın. IoT Edge çalışma süresini yapılandırırken bu değeri kullanırsınız.
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Cihaz için benzersiz bir kayıt KIMLIĞI seçin
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Aygıt için benzersiz bir kayıt kimliği seçin
 
-Her bir cihazı tanımlamak için benzersiz bir kayıt KIMLIĞI tanımlanmalıdır. MAC adresi, seri numarası veya cihazdan herhangi bir benzersiz bilgi kullanabilirsiniz.
+Her aygıtı tanımlamak için benzersiz bir kayıt kimliği tanımlanmalıdır. MAC adresini, seri numarasını veya aygıttaki benzersiz bilgileri kullanabilirsiniz.
 
-Bu örnekte, bir kayıt KIMLIĞI için aşağıdaki dizeyi oluşturan bir MAC adresi ve seri numarası birleşimini kullanıyoruz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
+Bu örnekte, bir kayıt kimliği için aşağıdaki dizeyi oluşturan bir `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`MAC adresi ve seri numarasının birleşimini kullanırız: .
 
-Cihazınız için benzersiz bir kayıt KIMLIĞI oluşturun. Geçerli karakterler küçük harfli alfasayısal ve tire ('-').
+Cihazınız için benzersiz bir kayıt kimliği oluşturun. Geçerli karakterler küçük alfasayısal ve tire ('-') vardır.
 
-## <a name="create-a-dps-enrollment"></a>DPS kayıt oluşturma
+## <a name="create-a-dps-enrollment"></a>DPS kaydı oluşturma
 
-DPS 'de tek bir kayıt oluşturmak için cihazınızın kayıt KIMLIĞINI kullanın.
+DPS'ye tek tek bir kayıt oluşturmak için cihazınızın kayıt kimliğini kullanın.
 
-DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz İkizi durumu**. Cihaz ikizinde bölge, ortam, konuma veya cihaz türü gibi çözümünüzdeki gereken herhangi bir ölçümü tarafından cihazları için etiketler ayarlayabilirsiniz. Bu etiketleri oluşturmak için kullanılan [otomatik dağıtımlar](how-to-deploy-monitor.md).
+DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bildirme fırsatınız vardır. Aygıt ikizinde, etiketleri aygıtları bölge, ortam, konum veya aygıt türü gibi çözümünüzde gereksinim duyduğunuz herhangi bir metrike göre gruplayabilir. Bu etiketler otomatik [dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır.
 
 > [!TIP]
-> Simetrik anahtar kanıtlama kullanılırken grup kayıtları da mümkündür ve bireysel kayıtlar ile aynı kararları içerir.
+> Grup kayıtları, simetrik anahtar attestation'ı kullanırken ve tek tek kayıtlarla aynı kararları içerirken de mümkündür.
 
-1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
+1. Azure [portalında,](https://portal.azure.com)IoT Hub Aygıt Sağlama Hizmeti örneğinize gidin.
 
-1. Altında **ayarları**seçin **kayıtları Yönet**.
+1. **Ayarlar** **altında, kayıtları yönet'i**seçin.
 
-1. Seçin **Ekle bireysel kayıt** ardından kayıt yapılandırmak için aşağıdaki adımları tamamlayın:  
+1. **Tek tek kayıt ekle'yi** seçin ve ardından kaydı yapılandırmak için aşağıdaki adımları tamamlayın:  
 
-   1. **Mekanizma**Için **simetrik anahtar**' ı seçin.
+   1. **Mekanizma**için **Simetrik Anahtar'ı**seçin.
 
-   1. **Anahtarları otomatik oluştur** onay kutusunu seçin.
+   1. Otomatik **oluşturma tuşları** onay kutusunu seçin.
 
-   1. Cihazınız için oluşturduğunuz **kayıt kimliğini** belirtin.
+   1. Cihazınız için oluşturduğunuz **Kayıt Kimliğini** sağlayın.
 
-   1. İsterseniz cihazınız için bir **IoT Hub CIHAZ kimliği** sağlayın. Cihaz kimliklerini modülü dağıtımı için tek bir cihaza hedeflemek için kullanabilirsiniz. Bir cihaz KIMLIĞI sağlamazsanız, kayıt KIMLIĞI kullanılır.
+   1. İsterseniz cihazınız için bir **IoT Hub Aygıt Kimliği** sağlayın. Modül dağıtımı için tek bir aygıtı hedeflemek için aygıt adlarını kullanabilirsiniz. Aygıt kimliği sağlamazsanız, kayıt kimliği kullanılır.
 
-   1. Kaydın IoT Edge bir cihaz için olduğunu bildirmek için **true** ' ı seçin. Bir grup kaydı için tüm cihazların IoT Edge cihaz olması veya hiçbirinin olmaması gerekir.
+   1. Kaydın bir IoT Edge aygıtı için olduğunu bildirmek için **True'yu** seçin. Grup kaydı için tüm aygıtların IoT Edge aygıtları olması gerekir veya bunların hiçbiri olamaz.
 
-   1. **Cihazları hub 'lara atamak** istediğiniz veya bu kayda özgü farklı bir değer seçebileceğiniz cihaz sağlama hizmeti 'nin ayırma ilkesinden varsayılan değeri kabul edin.
+   1. Aygıt Sağlama Hizmeti'nin tahsisat ilkesindeki varsayılan değeri **hub'lara nasıl atamak istediğinize** veya bu kayda özgü farklı bir değer seçme şeklinize ilişkin olarak kabul edin.
 
-   1. Bağlantılı seçin **IOT hub'ı** cihazınıza bağlanmak istiyorsanız. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
+   1. Cihazınızı bağlamak istediğiniz bağlantılı **IoT Hub'ını** seçin. Birden çok hub seçebilirsiniz ve aygıt seçili ayırma ilkesine göre bunlardan birine atanır.
 
-   1. Cihazların ilk kez sağlama istemesi durumunda **cihaz verilerinin yeniden hazırlanması için nasıl işleneceğini** seçin.
+   1. Aygıtlar ilk defa sağlama istediğinde **cihaz verilerinin yeniden sağlama da nasıl işleneceğini** seçin.
 
-   1. Etiketi değer eklemek **ilk cihaz İkizi durumu** istiyorsanız. Hedef cihaz gruplarına etiketleri modülü dağıtımı için kullanabilirsiniz. Örneğin:
+   1. İstersenize **İlk Aygıt İkiz Durumu'na** etiket değeri ekleyin. Modül dağıtımı için aygıt gruplarını hedeflemek için etiketleri kullanabilirsiniz. Örnek:
 
       ```json
       {
@@ -91,28 +91,28 @@ DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz
       }
       ```
 
-   1. **Enable girişinin** **Enable**olarak ayarlandığından emin olun.
+   1. **Etkinleştir** **girişietkinleştir'e**ayarlandığından emin olun.
 
-   1. **Kaydet**’i seçin.
+   1. **Kaydet'i**seçin.
 
-Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge çalışma zamanını yüklerken veya bir grup kaydıyla kullanmak üzere cihaz anahtarları oluşturmaya devam ediyorsanız, kaydınızın **birincil anahtar** değerini kopyalamayı unutmayın.
+Bu aygıt için bir kayıt bulunduğuna göre, IoT Edge çalışma süresi yükleme sırasında aygıtı otomatik olarak sağlayabilir. IoT Edge çalışma saatini yüklerken veya grup kaydıyla kullanılmak üzere aygıt anahtarları oluşturacaksanız, kaydınızın Birincil **Anahtar** değerini kopyaladiğinizden emin olun.
 
-## <a name="derive-a-device-key"></a>Bir cihaz anahtarı türet
+## <a name="derive-a-device-key"></a>Aygıt anahtarını türetin
 
 > [!NOTE]
-> Bu bölüm yalnızca bir grup kaydı kullanılıyorsa gereklidir.
+> Bu bölüm yalnızca bir grup kaydı kullanıyorsanız gereklidir.
 
-Her cihaz, sağlama sırasında kayıt ile simetrik anahtar kanıtlama gerçekleştirmek için kendi türetilmiş Cihaz anahtarını benzersiz kayıt KIMLIĞINIZLE kullanır. Cihaz anahtarını oluşturmak için, DPS kaydınızdan kopyaladığınız anahtarı kullanarak cihazın benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ' ı hesaplamanız ve sonucu base64 biçimine dönüştürmeniz gerekir.
+Her cihaz, sağlama sırasında kayıtla birlikte simetrik anahtar attestation gerçekleştirmek için türetilmiş aygıt anahtarını benzersiz kayıt kimliğinizle birlikte kullanır. Aygıt anahtarını oluşturmak için DPS kaydınızdan kopyaladığınız anahtarı kullanarak aygıtın benzersiz kayıt kimliğinin [HMAC-SHA256'sını](https://wikipedia.org/wiki/HMAC) hesaplayın ve sonucu Base64 biçimine dönüştürün.
 
-Kayıt kodunuzun birincil veya ikincil anahtarını cihaz kodunuza eklemeyin.
+Cihazınızın birincil veya ikincil anahtarını aygıt kodunuza eklemeyin.
 
 ### <a name="linux-workstations"></a>Linux iş istasyonları
 
-Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilen cihaz anahtarınızı oluşturmak için OpenSSL kullanabilirsiniz.
+Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türemiş aygıt anahtarınızı oluşturmak için openssl'yi kullanabilirsiniz.
 
-**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
+**KEY** değerini daha önce belirttiğiniz **Birincil Anahtar** la değiştirin.
 
-**REG_ID** değerini CIHAZıNıZıN kayıt kimliğiyle değiştirin.
+**REG_ID** değerini cihazınızın kayıt kimliğiyle değiştirin.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -128,11 +128,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ### <a name="windows-based-workstations"></a>Windows tabanlı iş istasyonları
 
-Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilmiş cihaz anahtarınızı oluşturmak için PowerShell kullanabilirsiniz.
+Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türemiş aygıt anahtarınızı oluşturmak için PowerShell'i kullanabilirsiniz.
 
-**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
+**KEY** değerini daha önce belirttiğiniz **Birincil Anahtar** la değiştirin.
 
-**REG_ID** değerini CIHAZıNıZıN kayıt kimliğiyle değiştirin.
+**REG_ID** değerini cihazınızın kayıt kimliğiyle değiştirin.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -149,70 +149,70 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
-## <a name="install-the-iot-edge-runtime"></a>IOT Edge çalışma zamanını yükleme
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma süresini yükleme
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarında çalıştırmak ve kod ucuna çalıştırabilmeniz için cihaza ek kapsayıcıları dağıtma olanak sağlar.
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalışır ve kenarda kod çalıştırabilmeniz için aygıta ek kapsayıcılar dağıtmanızı sağlar.
 
-Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
+Cihazınızı sağlarken aşağıdaki bilgilere ihtiyacınız olacak:
 
-* DPS **kimlik kapsamı** değeri
-* Oluşturduğunuz cihaz **kayıt kimliği**
-* DPS kaydından kopyaladığınız **birincil anahtar**
+* DPS **Id Kapsam** değeri
+* Oluşturduğunuz aygıt **Kayıt Kimliği**
+* DPS kaydından kopyaladığınız **Birincil Anahtar**
 
 > [!TIP]
-> Grup kayıtları için, DPS kayıt anahtarı yerine her bir cihazın [türetilmiş anahtarı](#derive-a-device-key) gerekir.
+> Grup kayıtları için, DPS kayıt anahtarı yerine her aygıtın [türetilmiş anahtarına](#derive-a-device-key) ihtiyacınız vardır.
 
 ### <a name="linux-device"></a>Linux cihazı
 
-Cihazınızın mimarisine yönelik yönergeleri izleyin. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun.
+Cihazınızın mimarisi yle ilgili yönergeleri izleyin. IoT Edge çalışma süresini manuel değil otomatik olarak yapılandırdığından emin olun.
 
-[Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
+[Azure IoT Edge çalışma süresini Linux'a yükleme](how-to-install-iot-edge-linux.md)
 
-Simetrik anahtar sağlama yapılandırma dosyasındaki bölümü şöyle görünür:
+Simetrik anahtar sağlama yapılandırma dosyasındaki bölüm aşağıdaki gibi görünür:
 
 ```yaml
 # DPS symmetric key provisioning configuration
 provisioning:
    source: "dps"
    global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "{scope_id}"
+   scope_id: "<SCOPE_ID>"
    attestation:
       method: "symmetric_key"
-      registration_id: "{registration_id}"
-      symmetric_key: "{symmetric_key}"
+      registration_id: "<REGISTRATION_ID>"
+      symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-`{scope_id}`, `{registration_id}`ve `{symmetric_key}` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
+Yer tutucu değerlerini `<SCOPE_ID>`, `<REGISTRATION_ID>`ve `<SYMMETRIC_KEY>` daha önce topladığınız verilerle değiştirin. **Sağlama:** satırın önceki beyaz boşluk olmadığından ve iç içe olan öğelerin iki boşluk tarafından girintisi olduğundan emin olun.
 
 ### <a name="windows-device"></a>Windows cihazı
 
-IoT Edge çalışma zamanını, türetilmiş bir cihaz anahtarı oluşturduğunuz cihaza yükleyebilirsiniz. IoT Edge çalışma zamanını otomatik, el ile değil, sağlama için yapılandıracaksınız.
+IoT Edge çalışma zamanını, türetilmiş bir aygıt anahtarı oluşturduğunuz aygıta yükleyin. IoT Edge çalışma süresini manuel değil otomatik olarak yapılandıracaksınız.
 
-Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT Edge, bkz. [Azure IoT Edge çalışma zamanını Windows 'A yükleme](how-to-install-iot-edge-windows.md).
+Kapsayıcıları yönetme ve IoT Edge'i güncelleştirme gibi görevler için ön koşullar ve yönergeler de dahil olmak üzere Windows'a IoT [Edge](how-to-install-iot-edge-windows.md)yükleme hakkında daha ayrıntılı bilgi için bkz.
 
-1. Yönetici modunda bir PowerShell penceresi açın. PowerShell (x86) değil IoT Edge yüklerken PowerShell 'in AMD64 oturumunu kullandığınızdan emin olun.
+1. Yönetici modunda bir PowerShell penceresi açın. IoT Edge'i yüklerken AMD64 PowerShell oturumunu kullandığınızdan emin olun, PowerShell'i (x86) değil.
 
-1. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve ardından Moby çalışma zamanını ve IoT Edge çalışma zamanını indirir. Komut varsayılan olarak Windows kapsayıcıları ' nı kullanmaktır.
+1. **Deploy-IoTEdge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve moby çalışma süresini ve IoT Edge çalışma süresini karşıdan yüklez. Komut, Windows kapsayıcılarını kullanmayı varsayılan olarak kullanır.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
+1. Bu noktada, IoT Core aygıtları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server aygıtları yeniden başlatmanızı isteyebilir. Öyleyse, cihazınızı şimdi yeniden başlatın. Cihazınız hazır olduğunda PowerShell'i yeniden yönetici olarak çalıştırın.
 
-1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Otomatik sağlamayı kullanmak için `-Dps` bayrağını kullanmadığınız takdirde, komut, Windows kapsayıcılarıyla el ile sağlamayı varsayılan olarak belirler.
+1. **Initialize-IoTEdge komutu,** Makinenizdeki IoT Edge çalışma süresini yapılandırır. Komut, otomatik sağlama kullanmak için `-Dps` bayrağı kullanmadığınız sürece Windows kapsayıcılarıyla el ile sağlama yı varsayılan olarak kullanır.
 
-   `{scope_id}`, `{registration_id}`ve `{symmetric_key}` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin.
+   Yer tutucu değerlerini `{scope_id}`, `{registration_id}`ve `{symmetric_key}` daha önce topladığınız verilerle değiştirin.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
-## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
+## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
 
-Çalışma zamanı başarıyla başlatıldı, IOT Hub'ına gidin ve IOT Edge modülleri, cihazınıza dağıtmaya başlayın. Aşağıdaki komutlar, çalışma zamanı yüklü ve başarıyla başlatıldı doğrulamak için Cihazınızda kullanın.
+Çalışma süresi başarıyla başladıysa, IoT Hub'ınıza gidip IoT Edge modüllerini cihazınıza dağıtmaya başlayabilirsiniz. Çalışma zamanının yüklü olduğunu ve başarılı bir şekilde başladığını doğrulamak için cihazınızdaki aşağıdaki komutları kullanın.
 
 ### <a name="linux-device"></a>Linux cihazı
 
@@ -222,13 +222,13 @@ IoT Edge hizmetinin durumunu kontrol edin.
 systemctl status iotedge
 ```
 
-Hizmet günlüklerini inceleyin.
+Servis günlüklerini inceleyin.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Çalışan modülleri listeleyin.
+Çalışan modülleri listele.
 
 ```cmd/sh
 iotedge list
@@ -242,20 +242,20 @@ IoT Edge hizmetinin durumunu kontrol edin.
 Get-Service iotedge
 ```
 
-Hizmet günlüklerini inceleyin.
+Servis günlüklerini inceleyin.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Çalışan modülleri listeleyin.
+Çalışan modülleri listele.
 
 ```powershell
 iotedge list
 ```
 
-Cihaz sağlama hizmeti 'nde oluşturduğunuz bireysel kaydın kullanıldığını doğrulayabilirsiniz. Azure portal cihaz sağlama hizmeti örneğinize gidin. Oluşturduğunuz bireysel kayıt için kayıt ayrıntılarını açın. Kayıt durumunun **atandığını** ve cihaz kimliğinin listelendiğini unutmayın.
+Aygıt Sağlama Hizmeti'nde oluşturduğunuz tek tek kaydın kullanıldığını doğrulayabilirsiniz. Azure portalındaki Aygıt Sağlama Hizmeti örneğinize gidin. Oluşturduğunuz tek tek kayıt için kayıt ayrıntılarını açın. Kaydın durumunun **atandığını** ve aygıt kimliğinin listelenmiş olduğuna dikkat edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz sağlama hizmeti kayıt işlemi, yeni cihaz sağlama gibi cihaz kimliği ve cihaz ikizi etiketleri aynı anda belirlemenizi sağlar. Bu değerleri ayrı ayrı cihazlar ya da otomatik cihaz Yönetimi'ni kullanarak cihaz grupları hedeflemek için kullanabilirsiniz. Bilgi edinmek için nasıl [dağıtma ve izleme IOT Edge modülleri, ölçeklendirme Azure portalını kullanarak](how-to-deploy-monitor.md) veya [Azure CLI kullanarak](how-to-deploy-monitor-cli.md).
+Aygıt Sağlama Hizmeti kayıt işlemi, aygıt kimliğini ve aygıt ikiz etiketlerini yeni aygıtı sağlarken aynı anda ayarlamanızı sağlar. Bu değerleri, otomatik aygıt yönetimini kullanarak tek tek aygıtları veya aygıt gruplarını hedeflemek için kullanabilirsiniz. Azure portalını kullanarak veya [Azure CLI'yi kullanarak](how-to-deploy-monitor-cli.md) [IoT Edge modüllerini ölçekte nasıl dağıtıp izleyeceğinizi](how-to-deploy-monitor.md) öğrenin.

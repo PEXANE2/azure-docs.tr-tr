@@ -1,194 +1,193 @@
 ---
-title: Müşteri katılımı için Dynamics 365 için lider yönetimi | Azure Marketi
-description: Müşteri katılımı için Dynamics 365 için lider yönetimini yapılandırın.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Müşteri Katılımı için Dynamics 365 için müşteri yönetimi | Azure Marketi
+description: Müşteri Katılımı için Dynamics 365 için müşteri yönetimi yapılandırın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: evansma
-ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288827"
 ---
-# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Müşteri katılımı için Dynamics 365 için lider yönetimini yapılandırma
+# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Müşteri Katılımı için Dynamics 365 için müşteri yönetimi yapılandırın
 
-Bu makalede, müşteri katılımı için Dynamics 365 'nin nasıl ayarlanacağı açıklanır (daha önce Dynamics CRM Online), satış fırsatlarını Market teklifinizi işleyecek şekilde işlemek için [buradaki](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) değişiklik hakkında daha fazla bilgi edinin. 
+Bu makalede, Müşteri Katılımı için Dynamics 365'in (önceden Dynamics CRM Online) nasıl ayarlanabileceği açıklanmaktadır, pazar teklifinizden satış müşteri adaylarını işlemek için [buradaki](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) değişiklik hakkında daha fazla bilgi edinin. 
 
 >[!Note]
->Bu yönergeler, Microsoft tarafından barındırılan, müşteri katılım ortamına yönelik bulut Dynamics 365 için özeldir. Dynamics şirket içi bir ortama doğrudan bağlanmak Şu anda desteklenmemektedir. müşteri adaylarını almak için bir [https uç noktası](./commercial-marketplace-lead-management-instructions-https.md) veya [Azure tablosu](./commercial-marketplace-lead-management-instructions-azure-table.md) yapılandırma gibi müşteri adaylarını almanızı sağlamak için başka seçenekler de vardır.
+>Bu yönergeler, Müşteri Etkileşimi ortamı için Microsoft barındırılan bulut Dynamics 365'e özeldir. Dinamikler ön hazırlık ortamına doğrudan bağlanmak şu anda desteklenmemektedir, müşteri adaylarını almak için [bir https bitiş noktası](./commercial-marketplace-lead-management-instructions-https.md) veya Azure [tablosu](./commercial-marketplace-lead-management-instructions-azure-table.md) yapılandırma gibi müşteri adaylarını almanız için başka seçenekler de vardır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları tamamlamak için aşağıdaki Kullanıcı izinleri gereklidir:
+Bu makaledeki adımları tamamlamak için aşağıdaki kullanıcı izinleri gereklidir:
 
-* Bir çözüm yükleyebilmek ve bu yönergeleri takip edebilmek için Dynamics 365 for Customer Engagement örneğinde yönetici olmanız gerekir.
-* Müşteri adayı hizmeti için Market tekliflerden müşteri adaylarını göndermek üzere kullanılan yeni bir hizmet hesabı oluşturmak için bir kiracı yöneticisi olmanız gerekir.
-* Office 365 Yönetici portalına erişiminizin olması gerekir.
-* Azure portal erişiminizin olması gerekir.
+* Bir çözüm yükleyebilmek ve bu yönergeleri izleyebilmek için Müşteri Katılımı örneğinde Dynamics 365'te yönetici olmanız gerekir.
+* Pazar tekliflerinden müşteri adayları göndermek için kullanılan müşteri adayı hizmeti için yeni bir hizmet hesabı oluşturmak için kiracı yönetici olmanız gerekir.
+* Office 365 yönetici portalına erişiminiz gerekir.
+* Azure portalına erişiminiz olması gerekir.
 
-## <a name="install-the-solution"></a>Çözümü yükler
+## <a name="install-the-solution"></a>Çözümü yükleyin
 
-1.  [Microsoft Market lider yazıcı çözümünü](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) indirin ve bilgisayarınıza yerel olarak kaydedin.
+1.  Microsoft [Marketplace Lead Writer çözümlerini](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) indirin ve yerel olarak bilgisayarınıza kaydedin.
 
-2.  Dynamics örneğinizin URL 'sine giderek (örneğin, `https://tenant.crm.dynamics.com`), müşteri katılımı için Dynamics 365 ' i açın.
+2.  Dynamics örneğinizin URL'sine gezinerek Müşteri Katılımı için Dynamics `https://tenant.crm.dynamics.com`365'i açın (örneğin).
 
-3.  Üst gezinti çubuğunda dişli simgesini ve **Gelişmiş ayarları** seçerek erişim ayarları.
+3.  Üstteki gezinme çubuğunda vites simgesini ve **Gelişmiş Ayarlar'ı** seçerek Ayarlar'a erişin.
  
-    ![Dynamics-Gelişmiş ayarlar](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+    ![Dinamikler - Gelişmiş Ayarlar](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
-4.  Ayarlar sayfasında, üst gezinti çubuğundan ayar menüsüne erişin ve **çözümler**' i seçin.
+4.  Ayarlar sayfasına girince, üstteki gezinme çubuğundan Ayarla menüsüne erişin ve **Çözümler'i**seçin.
 
     >[!Note]
-    >Sonraki ekran yakalamadaki seçenekleri görmüyorsanız, devam etmeniz gereken izinleriniz yoktur. Dynamics 365 for Customer Engagement örneği üzerindeki bir yöneticiye ulaşın.
+    >Bir sonraki ekran yakalamadaki seçenekleri görmüyorsanız, devam etmek için gereken izinlere sahip değilsiniz demektir. Müşteri Katılımı örneği için Dynamics 365'inizde bir yöneticiye ulaşın.
 
-    ![Dynamics 365-çözümler](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Dynamics 365 - Çözümler](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-5. Çözümler sayfasından bir kez **Içeri aktar** ' ı seçin ve adım 1 ' de Indirdiğiniz *Microsoft Market lider yazıcısı* çözümünü kaydettiğiniz yere gidin.
+5. Çözümler sayfasına **girince, Alma'yı** seçin ve adım 1'de indirdiğiniz *Microsoft Marketi Müşteri Adayı Yazar* çözümünü kaydettiğiniz yere gidin.
 
-    ![Müşteri katılımı için Dynamics 365-Içeri aktarma](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![Müşteri Katılımı için Dynamics 365 - İthalat](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
-6. Çözümü Içeri aktarma Sihirbazı 'nı izleyerek çözümü içeri aktarmayı doldurun.
+6. İçe Alma çözüm sihirbazını izleyerek çözümü alma işlemi tamamlayın.
 
 ## <a name="configure-user-permissions"></a>Kullanıcı izinlerini yapılandırma
 
-Müşteri için Dynamics 365 katılım örneğine müşteri adayları yazmak için, bir hizmet hesabını bizimle paylaşmanız ve hesap için izinleri yapılandırmanız gerekir.
+Müşteri Katılımı örneği için Dynamics 365'inize müşteri adayları yazmak için, bir hizmet hesabını bizimle paylaşmanız ve hesap için izinleri yapılandırmanız gerekir.
 
-Hizmet hesabı oluşturmak ve izinleri atamak için aşağıdaki adımları kullanın. **Azure Active Directory** veya **Office 365**' i kullanabilirsiniz.
+Hizmet hesabı oluşturmak ve izinleri atamak için aşağıdaki adımları kullanın. **Azure Etkin Dizin** veya **Office 365'i**kullanabilirsiniz.
 
 >[!Note]
->Seçtiğiniz kimlik doğrulama seçeneğine bağlı olarak, tercihinize göre ilgili yönergelere atlayabilirsiniz. Bkz. [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) veya [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>Seçtiğiniz kimlik doğrulama seçeneğine bağlı olarak, seçiminizi temel alarak ilgili yönergeleri atlayabilirsiniz. Bkz. [Azure Etkin Dizini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) veya [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Müşteri adaylarını almak için Kullanıcı adınızı/parolanızı güncelleştirme gereksiniminden hiç ihtiyaç duymamanız gerektiği için bu seçeneği öneririz. Azure Active Directory seçeneğini kullanmak için, uygulama KIMLIĞI, uygulama anahtarı ve Dizin KIMLIĞINI Active Directory uygulamanızdan sağlarsınız.
+Müşteri adayları almaya devam etmek için kullanıcı adınızı/parolanızı güncellemenize gerek kalmadan hiçbir zaman ek avantaj elde ettiğiniz için bu seçeneği öneririz. Azure Etkin Dizin seçeneğini kullanmak için Active Directory uygulamanızdan Uygulama Kimliği, Uygulama Anahtarı ve Dizin Kimliği'ni sağlarsınız.
 
-Müşteri katılımı için Dynamics 365 Azure Active Directory yapılandırmak için aşağıdaki adımları kullanın.
+Müşteri Etkileşimi için Azure Active Directory for Dynamics 365'i yapılandırmak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın ve ardından sol gezinmede Azure Active Directory hizmeti seçin.
+1. [Azure portalında](https://portal.azure.com/)oturum açın ve ardından sol gezintiden Azure Etkin Dizin hizmetini seçin.
 
-2. Sol gezinti Azure Active Directory **Özellikler** ' i seçin ve bu SAYFADAKI **dizin kimliği** değerini kopyalayın. Market teklifiniz için müşteri adaylarını almak üzere Yayımlama portalında sağlamanız gereken *DIZIN kimliği* değeri olduğundan, bu değeri kaydedin.
+2. Azure Etkin Dizini'nden **Özellikler'i** sol gezintiden seçin ve bu sayfadaki **Dizin Kimliği** değerini kopyalayın. Pazar yeri teklifiniz için müşteri adaylarını almak için yayımlama portalında sağlamanız gereken Dizin Kimliği değeri olduğundan, bu değeri *kaydedin.*
 
-    ![Azure Active Directory-Özellikler](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Azure Etkin Dizini - Özellikler](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
-3. Azure Active Directory sol gezinti **uygulama kayıtları** seçin ve ardından bu sayfadaki **Yeni kayıt** ' ı seçin.
-4. Uygulama adı için bir ad girin. Anlamlı bir uygulama adı girin.
-5. Desteklenen hesap türleri altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
-6. Yeniden yönlendirme URI 'SI altında **Web** ' i seçin ve bir URI sağlayın (örneğin `https://contosoapp1/auth`). 
+3. Azure Etkin Dizini'nden **Uygulama kayıtlarını** seçin ve ardından bu sayfada **Yeni kayıt'ı** seçin.
+4. Uygulama adı için bir ad girin. Anlamlı bir uygulama adı sağlayın.
+5. Desteklenen hesap türleri altında, **herhangi bir kuruluş dizininde Hesapları**seçin.
+6. Redirect URI altında, **Web'i** seçin `https://contosoapp1/auth`ve bir URI sağlayın (örneğin). 
 7. **Kaydol**’u seçin.
 
     ![Bir uygulamayı kaydetme](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
-8. Uygulamanız kayıtlı olduğuna göre, uygulamanın genel bakış sayfasına erişin ve **uygulama (istemci) kimliği** değerini bu sayfaya kopyalayın. Market teklifinizin müşteri adaylarını almak için Yayımlama portalında ve Dynamics 'te sağlamanız gereken *uygulama (istemci) kimliği* değeri olduğundan bu değeri kaydedin.
+8. Uygulamanız kayıtlı olduğuna göre, uygulamanın genel bakış sayfasına erişin ve o sayfadaki **Uygulama (istemci) kimlik** değerini kopyalayın. Pazar yeri teklifiniz için müşteri adayları almak için yayımlama portalında ve Dynamics'te sağlamanız gereken *Uygulama (istemci) kimlik* değeri olduğu için bu değeri kaydedin.
 
-    ![Uygulama (istemci) KIMLIĞI](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![Uygulama (istemci) kimliği](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
-9. Uygulamanın sol gezinmesinin **sertifika ve gizli** dizileri ' ni seçin ve bu sayfada **yeni istemci parolası** ' nı seçin. İstemci parolası için anlamlı bir açıklama girin ve süresi dolan **hiçbir zaman** seçeneğini belirleyin. İstemci parolasını oluşturmak için **Ekle** ' yi seçin.
+9. Uygulamanın sol navigasyonundan **Sertifikalar ve sırlar** seçin ve bu sayfada **Yeni istemci sırrını** seçin. İstemci sırrı için anlamlı bir açıklama girin ve Sona Erdirme ler altında **Asla** seçeneğini seçin. İstemci sırrını oluşturmak için **Ekle'yi** seçin.
 
-    ![Uygulama-sertifika ve gizlilikler](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![Uygulama - Belgelendirme ve Sırlar](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
-10. İstemci parolası başarıyla oluşturulduktan hemen sonra, **istemci gizli değerini kopyalayın**. Sayfadan ayrıldıktan sonra değeri alamazsınız. Market teklifinizin müşteri adaylarını almak için Yayımlama portalında sağlamanız gereken *istemci gizli* değeri olduğundan, bu değeri kaydedin. 
-11. Uygulamaların sol gezinti listesinden **API izinleri** ' ni seçin ve **izin Ekle**' yi seçin.
-12. Microsoft API 'Leri seçin ve ardından, API olarak **DYNAMICS CRM** ' yi seçin.
-13. *Uygulamanız için gereken izin türü*altında, **temsilci izinleri** seçildiğinden emin olun. *Kuruluş kullanıcıları olarak user_impersonation erişim Common Data Service*iznini denetleyin. **Izin Ekle**' yi seçin.
+10. İstemci sırrı başarıyla oluşturulur oluşturulmaz, **istemci gizli değerini kopyalayın.** Sayfadan uzaklaştıktan sonra değeri alamazsınız. Pazar teklifiniz için müşteri adayları almak için yayımlama portalında sağlamanız gereken *Müşteri gizli* değeri olduğu için bu değeri kaydedin. 
+11. Uygulamaların sol navigasyonundan **API izinlerini** seçin ve ardından **İzin ekle'yi**seçin.
+12. Microsoft API'lerini seçin ve ardından API olarak **Dynamics CRM'yi** seçin.
+13. *Uygulamanızın gerektirdiği izintürü*altında, Temsilci **li izinlerin seçildiğinden** emin olun. Kuruluş kullanıcıları **user_impersonation** *olarak Ortak Veri Hizmetine user_impersonation Erişim*İzni'ni denetleyin. **İzin Ekle'yi**seçin.
 
     ![İzin ekleme](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Azure portal 1-13 adımlarını tamamladıktan sonra, URL 'ye giderek (`https://tenant.crm.dynamics.com`gibi) Dynamics 365 for Customer Engagement örneğine gidin.
-15. Üst gezinti çubuğunda dişli simgesini ve **Gelişmiş ayarları** seçerek erişim ayarları.
-16. Ayarlar sayfasında, üst gezinti çubuğundan ayar menüsüne erişin ve **güvenlik**' i seçin.
-17. Güvenlik sayfasından bir kez **Kullanıcı**' yı seçin.  Kullanıcılar sayfasında, **uygulama kullanıcılarına**geçiş yapmak Için "etkin kullanıcılar" açılan listesini seçin.
-18. Yeni bir kullanıcı oluşturmak için **Yeni** ' yi seçin. 
+14. Azure portalında 1-13 adımlarını tamamladıktan sonra, URL'de gezinerek (örneğin) `https://tenant.crm.dynamics.com`Müşteri Katılımı için Dynamics 365'e gidin.
+15. Vites simgesini ve üst teki gezinme çubuğundaki **Gelişmiş Ayarlar'ı** seçerek Ayarlar'a erişin.
+16. Ayarlar sayfasına girince, üstteki gezinti çubuğundan Ayarla menüsüne erişin ve **Güvenlik'i**seçin.
+17. Güvenlik sayfasına **girdiğinde, Kullanıcılar'ı**seçin.  Kullanıcılar sayfasında, **Uygulama Kullanıcıları'na**geçmek için "Etkin Kullanıcılar" açılır sayfasını seçin.
+18. Yeni bir kullanıcı oluşturmak için **Yeni'yi** seçin. 
 
     ![Yeni kullanıcı oluşturma](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. **Yeni Kullanıcı**' da, Kullanıcı: uygulama kullanıcısının seçili olduğundan emin olun. Bu bağlantıyla birlikte kullanmak istediğiniz kullanıcı için bir Kullanıcı adı, tam ad ve e-posta adresi sağlayın. Ayrıca, adım 8 ' den Azure portal oluşturduğunuz uygulamanın **uygulama kimliğini** de yapıştırın. Kullanıcıyı eklemeyi tamamladıktan **sonra Kaydet ve Kapat ' ı** seçin.
+19. **Yeni**Kullanıcı'da, KULLANICI: UYGULAMA KULLANICIsI seçildiğinden emin olun. Bu bağlantıda kullanmak istediğiniz kullanıcı için bir kullanıcı adı, tam ad ve e-posta adresi sağlayın. Ayrıca, Azure portalında oluşturduğunuz uygulamanın **Uygulama Kimliği'ne** adım 8'den yapıştırın. Kullanıcıeklemeyi tamamlamak için **Kaydet ve Kapat'ı** seçin.
 
-    ![Yeni Kullanıcı](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![Yeni kullanıcı](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
-20. Bu Kullanıcı için bağlantıyı yapılandırmayı tamamlaymak üzere bu makaledeki "güvenlik ayarları" na gidin.
+20. Bu kullanıcının bağlantısını yapılandırmayı bitirmek için bu makaledeki "Güvenlik ayarları"na gidin.
 
 ### <a name="office-365"></a>Office 365
 
-Azure Active Directory kullanmak istemiyorsanız, *Microsoft 365 Yönetim merkezinde*yeni bir kullanıcı kaydedebilirsiniz. Müşteri adayı almaya devam etmek için Kullanıcı adınızı/parolanızı her 90 günde bir güncelleştirmeniz gerekir.
+Azure Active Directory'yi kullanmak istemiyorsanız, *Microsoft 365 yönetici merkezine*yeni bir kullanıcı kaydedebilirsiniz. Müşteri adayları almaya devam etmek için kullanıcı adınızı/parolanızı her 90 günde bir güncellemeniz gerekir.
 
-Müşteri katılımı için Dynamics 365 için Office 365 ' i yapılandırmak için aşağıdaki adımları kullanın.
+Müşteri Etkileşimi için Dynamics 365 için Office 365'i yapılandırmak için aşağıdaki adımları kullanın.
 
-1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)oturum açın.
+1. [Microsoft 365 yönetim merkezinde](https://admin.microsoft.com) oturum açın.
 
-2. **Kullanıcı Ekle**' yi seçin.
+2. **Kullanıcı ekle'yi**seçin.
 
-    ![Microsoft 365 Yönetim Merkezi-Kullanıcı ekleme](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365 yönetici merkezi - kullanıcı eklemek](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-4. Öncü yazıcı hizmeti için yeni bir kullanıcı oluşturun. Aşağıdaki ayarları yapılandırın:
+4. Baş yazar hizmeti için yeni bir kullanıcı oluşturun. Aşağıdaki ayarları yapılandırın:
 
-    * Kullanıcı adı girin
-    * Bir parola girin ve "ilk oturum açtıklarında bu kullanıcının parolasını değiştirmesini yap" seçeneğini kaldırın.
-    * Kullanıcı rolü olarak "Kullanıcı (yönetici erişimi yok)" seçeneğini belirleyin.
-    * Sonraki ekran yakalamada Gösterilen ürün lisansı olarak "Dynamics 365 müşteri katılımı planı" nı seçin. Seçtiğiniz lisans için ücretlendirilirsiniz. 
+    * Kullanıcı adı sağlama
+    * Parola sağlayın ve "Bu kullanıcının ilk oturum açınca parolasını değiştirmesini sağlayın" seçeneğini belirleyin.
+    * Kullanıcının rolü olarak "Kullanıcı (yönetici erişimi yok)" seçeneğini belirleyin.
+    * Bir sonraki ekran yakalamada gösterilen ürün lisansı olarak "Dynamics 365 Müşteri Katılımı planı"nı seçin. Seçtiğiniz lisans için ücretlendirilirsiniz. 
 
-Market teklifinizin müşteri adaylarını almak için Yayımlama portalında sağlamanız gereken *Kullanıcı adı ve parola* değerleri olduklarından bu değerleri kaydedin.
+Pazar yeri teklifiniz için müşteri adaylarını almak için yayımlama portalında sağlamanız gereken *Kullanıcı Adı ve Parola* değerleri olarak bu değerleri kaydedin.
 
-![Microsoft 365 Yönetim Merkezi-Yeni Kullanıcı](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Microsoft 365 yönetici merkezi - yeni kullanıcı](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>Güvenlik ayarları
 
-Son adım, oluşturduğunuz kullanıcıyı müşteri adaylarını yazmak üzere etkinleştirmektir.
+Son adım, oluşturduğunuz Kullanıcının müşteri adaylarını yazmasını sağlamaktır.
 
-1. Dynamics örneğinizin URL 'sine giderek (örneğin, `https://tenant.crm.dynamics.com`), müşteri katılımı için Dynamics 365 ' i açın.
-2. Üst gezinti çubuğunda dişli simgesini ve **Gelişmiş ayarları** seçerek erişim ayarları.
-3. Ayarlar sayfasında, üst gezinti çubuğundan ayar menüsüne erişin ve **güvenlik**' i seçin.
-4. Güvenlik sayfasında, **Kullanıcılar** ' ı seçin ve bu belgenin Kullanıcı izinlerini Yapılandır bölümünde oluşturduğunuz kullanıcıyı seçin ve ardından **rolleri Yönet**' i seçin. 
+1. Dynamics örneğinizin URL'sine gezinerek Müşteri Katılımı için Dynamics `https://tenant.crm.dynamics.com`365'i açın (örneğin).
+2. Üstteki gezinme çubuğunda vites simgesini ve **Gelişmiş Ayarlar'ı** seçerek Ayarlar'a erişin.
+3. Ayarlar sayfasına girince, üstteki gezinti çubuğundan Ayarla menüsüne erişin ve **Güvenlik'i**seçin.
+4. Güvenlik sayfasına **girince, Kullanıcılar'ı** seçin ve bu belgenin Kullanıcı İzinlerini Yapılandır bölümünde oluşturduğunuz kullanıcıyı seçin ve ardından **Rolleri Yönet'i**seçin. 
 
     ![Rolleri yönetme](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-5. "Microsoft Market lider yazıcısı" rol adını arayın ve kullanıcıyı rolü atamak için seçin.
+5. "Microsoft Marketplace Lead Writer" rol adını arayın ve kullanıcıya rolü atamak için seçin.
 
     ![Kullanıcı rollerini yönetme](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
     >[!Note]
-    >Bu rol, içeri aktardığınız çözüm tarafından oluşturulur ve yalnızca müşteri adaylarını yazmak ve uyumluluk sağlamak üzere çözüm sürümünü izlemek için izinlere sahiptir.
+    >Bu rol, içe aktardığınız çözüm tarafından oluşturulur ve yalnızca müşteri adaylarını yazma ve uyumluluğu sağlamak için çözüm sürümünü izleme izinleri vardır.
 
-6. Güvenlik sayfasına geri gidin ve **güvenlik rolleri**' ni seçin. "Microsoft Market lider yazıcısı" rolünü arayın ve seçin.
+6. Güvenlik sayfasına geri gidin ve **Güvenlik Rolleri'ni**seçin. "Microsoft Marketplace Lead Writer" rolünü arayın ve seçin.
 
     ![Güvenlik rolleri](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. Güvenlik rolünde bir kez, **temel kayıtlar** sekmesini seçin. "Kullanıcı VARLıĞı Kullanıcı arabirimi ayarları" varlığını arayın ve ilgili dairelerin her birine bir kez tıklayarak bu varlık için Kullanıcı için oluşturma, okuma ve yazma izinlerini (1/4 sarı daire) etkinleştirin.
+7. Güvenlik rolünde bir kez, **Çekirdek Kayıtlar** sekmesini seçin. "Kullanıcı Varlık Ara Ayarları" varlığını arayın ve ilgili dairelerin her birine bir kez tıklayarak kullanıcıiçin Oluşturma, Okuma ve Yazma izinlerini (1/4 sarı daire) etkinleştirin.
 
-    ![Microsoft Market öncü yazıcı-çekirdek kayıtlar](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Microsoft Marketplace Baş Yazar - Core Records](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. Şimdi **Özelleştirme** sekmesine gidin. "sistem işi" varlığını arayın ve ilgili dairelerin her birine dört kez tıklayarak bu varlık için kuruluşa (düz yeşil) izinleri okuma, yazma ve bu varlığa eklemesine izin veren.
+8. Şimdi **Özelleştirme** sekmesine gidin. "Sistem İşi" varlığını arayın ve ilgili çevrelerin her birine dört kez tıklayarak bu varlık için Kuruluşa Okuma, Yazma ve Ekizin izinlerini (düz yeşil) sağlar.
 
-    ![Microsoft Market öncü yazıcı-özelleştirme](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Microsoft Marketplace Baş Yazar - özelleştirme](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
-9. **Kaydet ve Kapat**.
+9. **Kaydet ve kapat.**
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>Müşteri katılımı Için teklifinizi Dynamics 365 ' e göndermek için teklifinizi yapılandırın
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>Müşteri Katılımı için Dynamics 365 müşteri adayları göndermek için teklifinizi yapılandırın
 
-Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin:
+Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırmaya hazır olduğunuzda aşağıdaki adımları izleyin:
 
-1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-2. Müşteri adayı Yönetimi bölümünde **Bağlan** ' ı seçin.
+1. **Teklifiniz** için Teklif kurulum sayfasına gidin.
+2. Müşteri Adayı Yönetimi bölümü altında **Bağlan'ı** seçin.
 
-    ![Müşteri adayı yönetimine Bağlan](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    ![Müşteri Adayı Yönetimine Bağlan](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
 
-3. Bağlantı ayrıntıları açılır penceresinde, müşteri adayı hedefi için **Dynamics 365** ' i seçin.
+3. Bağlantı ayrıntıları açılır penceresinde, Müşteri **Etkileşimi için Dinamikler 365'i**
 
-    ![Bağlantı ayrıntıları-müşteri adayı hedefi](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![Bağlantı ayrıntıları - varış noktası](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. `https://contoso.crm4.dynamics.com`gibi **Dynamics 365 örnek URL 'sini** sağlayın.
-5. **Kimlik doğrulaması**, Azure Active Directory veya Office 365 yöntemini seçin. 
-6. Azure Active Directory ' yi seçtiyseniz, **uygulama (istemci) kimliğini** (örnek: `23456052-aaaa-bbbb-8662-1234df56788f`), **dizin kimliğini** (örnek: `12345678-8af1-4asf-1234-12234d01db47`) ve **istemci gizliliğini** sağlayın (örnek: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
+4. Dynamics **365 Instance URL'sini** sağlayın. `https://contoso.crm4.dynamics.com`
+5. **Kimlik Doğrulama**yöntemini, Azure Etkin Dizini'ni veya Office 365'i seçin. 
+6. Azure Etkin Dizin'i seçtiyseniz, **Uygulama (istemci) kimliğini** (örnek: `23456052-aaaa-bbbb-8662-1234df56788f`), **Dizin Kimliği** (örnek: `12345678-8af1-4asf-1234-12234d01db47`) ve **İstemci sırrı** (örnek: ) `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`sağlayın.
 
-    ![Bağlantı ayrıntıları-Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![Bağlantı ayrıntıları - Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Office 365 ' i seçtiyseniz, **Kullanıcı adını** (örnek: `contoso@contoso.onmicrosoft.com`) ve parolayı (örnek: `P@ssw0rd`) belirtin.
+7. Office 365'i seçtiyseniz, **Kullanıcı** adını `contoso@contoso.onmicrosoft.com`(örnek: ) `P@ssw0rd`ve Parola 'yı (örnek: ).
 
-    ![Bağlantı ayrıntıları-Kullanıcı adı](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Bağlantı ayrıntıları - Kullanıcı adı](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
 >[!Note]
->Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.
+>Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.

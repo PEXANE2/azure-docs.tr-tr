@@ -1,69 +1,65 @@
 ---
-title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft Docs
-description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
+title: Kapsayıcılar için Azure Monitör'den Günlükler Nasıl Sorgulanır | Microsoft Dokümanlar
+description: Kapsayıcılar için Azure Monitor ölçümleri ve günlük verilerini toplar ve bu makalede kayıtlar açıklanır ve örnek sorgular içerir.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275366"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333470"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
+# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Monitor'dan günlükleri sorgulama
 
-Kapsayıcılar için Azure Izleyici, kapsayıcı konakları ve kapsayıcılarından performans ölçümleri, envanter verileri ve sistem durumu bilgilerini toplar ve Azure Izleyici 'de Log Analytics çalışma alanına iletir. Üç dakikada bir toplanan veriler. Bu veriler Azure Izleyici 'de [sorgu](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+Kapsayıcılar için Azure Monitor, kapsayıcı ana bilgisayarlarından ve kapsayıcılardan performans ölçümleri, envanter verileri ve sistem durumu bilgilerini toplar ve Azure Monitor'daki Günlük Analizi çalışma alanına iletin. Veriler her üç dakikada bir toplanır. Bu [veriler, Azure](../../azure-monitor/log-query/log-query-overview.md) Monitor'da sorgu için kullanılabilir. Bu verileri geçiş planlaması, kapasite çözümlemesi, bulma ve isteğe bağlı performans sorun giderme gibi senaryolara uygulayabilirsiniz.
 
-## <a name="container-records"></a>Kapsayıcı kayıt
+## <a name="container-records"></a>Konteyner kayıtları
 
-Kapsayıcılar ve günlük arama sonuçlarında görünmesini veri türleri için Azure İzleyici tarafından toplanan kayıtları örnekleri aşağıdaki tabloda görüntülenir:
+Kapsayıcılar için Azure Monitor tarafından toplanan kayıt örnekleri ve günlük arama sonuçlarında görünen veri türleri aşağıdaki tabloda görüntülenir:
 
-| Veri türü | Günlük araması'nda veri türü | Alanlar |
+| Veri türü | Günlük Arama'da veri türü | Alanlar |
 | --- | --- | --- |
-| Konaklar ve kapsayıcılar için performans | `Perf` | Bilgisayar, ObjectName, CounterName &#40;% işlemci zamanı, Disk okuma MB, MB, bellek kullanımı MB Disk Yazar ağ bayt alma, ağ gönderme bayt, işlemci kullanımı sn, ağ&#41;, Ort, TimeGenerated, sayaç yolu, Analytics'teki |
-| Kapsayıcı envanteri | `ContainerInventory` | TimeGenerated, bilgisayar, kapsayıcı adı, ContainerHostname, görüntü, ImageTag, ContainerState, ExitCode, EnvironmentVar, komut, oluşturulma zamanı, StartedTime, FinishedTime, Analytics'teki, Containerıd, ImageID |
-| Kapsayıcı günlüğü | `ContainerLog` | TimeGenerated, bilgisayar, görüntü kimliği, LogEntrySource LogEntry, Analytics'teki, Containerıd kapsayıcı adı |
-| Kapsayıcı düğümü envanteri | `ContainerNodeInventory`| TimeGenerated, bilgisayar, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, Analytics'teki|
-| Bir Kubernetes kümesinin pod envanterini | `KubePodInventory` | TimeGenerated, Computer, Clusterıd, ContainerCreationTimeStamp, Poduıd, Pod Creationtimestamp, ContainerRestartCount, PodRestartCount, Pod StartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus,  ContainerStatusReason, Containerıd, ContainerName, Name, Pod etiketi, Namespace, Pod durum, ClusterName, Podıp, dir |
-| Bir Kubernetes kümesinin düğümleri bölümünün envanteri | `KubeNodeInventory` | TimeGenerated, bilgisayar, ClusterName, Lclusterıd, LastTransitionTimeReady, etiketler, durum, KubeletVersion, KubeProxyVersion, CreationTimeStamp, Analytics'teki | 
-| Kubernetes olayları | `KubeEvents` | TimeGenerated, bilgisayar, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message, Analytics'teki | 
-| Kubernetes kümesindeki Hizmetleri | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, Analytics'teki | 
-| Kubernetes küme düğümleri parçası için performans ölçümleri | Perf &#124; nerede ObjectName "K8SNode" == | Bilgisayar, ObjectName, CounterName &#40;Cpuallocatablebytes, memoryAllocatableBytes, CpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuuslationanoçekirdekler, memoryWorkingsetBytes,&#41;restartTimeEpoch, CounterValue, TimeGenerated, CounterPath, dir | 
-| Kubernetes kümesine kapsayıcıları parçası için performans ölçümleri | Perf &#124; nerede ObjectName "K8SContainer" == | CounterName &#40; CpuRequestNanoCores, memoryRequestBytes, CpuLimitNanoCores, memoryWorkingSetBytes, RestartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
-| Özel ölçümler |`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
+| Ana bilgisayarlar ve kapsayıcılar için performans | `Perf` | Bilgisayar, ObjectName, CounterName %&#40; İşlemci Süresi, Disk OKUR MB, Disk Yazar MB, Bellek Kullanımı MB, Ağ Bayt ları Al, Ağ Gönder Bayt, İşlemci Kullanımı sn, Network&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
+| Konteyner envanteri | `ContainerInventory` | TimeGenerated, Bilgisayar, konteyner adı, ContainerHostname, Resim, ImageTag, ContainerState, ExitCode, EnvironmentVar, Komut, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Konteyner günlüğü | `ContainerLog` | TimeGenerated, Bilgisayar, resim kimliği, konteyner adı, LogEntrySource, LogEntry, SourceSystem, ContainerID |
+| Konteyner düğümü envanteri | `ContainerNodeInventory`| Zamanlı, Bilgisayar, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, Kaynak Sistemi|
+| Bir Kubernetes kümesindeki bakla ların envanteri | `KubePodInventory` | TimeGenerated, Bilgisayar, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus,  ContainerStatusReason, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
+| Bir Kubernetes kümesinin düğümlerinin envanteri | `KubeNodeInventory` | TimeGenerated, Bilgisayar, ClusterName, ClusterId, LastTransitionTimeReady, Etiketler, Durum, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+| Kubernetes Etkinlikleri | `KubeEvents` | Zaman, Bilgisayar, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Mesaj, Kaynak Sistemi | 
+| Kubernetes kümesindeki hizmetler | `KubeServices` | Zaman, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, Kaynak Sistemi | 
+| Kubernetes kümesinin düğümleri için performans ölçümleri | Perf &#124; where ObjectName == "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Kubernetes kümesinin bir parçası olan kapsayıcılar için performans ölçümleri | Perf &#124; where ObjectName == "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Özel Ölçümler |`InsightsMetrics` | Bilgisayar, Ad, Ad Alanı, Origin, SourceSystem, Etiketler<sup>1</sup>, TimeGenerated, Tür, Va, _ResourceId | 
 
-<sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. `InsightsMetrics` tablosunda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
+<sup>1</sup> *Etiketler* özelliği, ilgili metrik için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. `InsightsMetrics` Tabloda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında ek bilgi için [bkz.](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)
 
->[!NOTE]
->Prometheus desteği şu anda genel önizlemede bir özelliktir.
->
+## <a name="search-logs-to-analyze-data"></a>Verileri analiz etmek için günlükleri arama
 
-## <a name="search-logs-to-analyze-data"></a>Verileri çözümlemek için günlüklerinde arama yapma
+Azure Monitör Günlükleri eğilimleri aramanıza, darboğazları tanılamanıza, tahmin demenize veya geçerli küme yapılandırmasının en iyi şekilde çalışıp çalışmadığını belirlemenize yardımcı olabilecek verileri ilişkilendirmenize yardımcı olabilir. Önceden tanımlanmış günlük aramaları, bilgileri istediğiniz gibi döndürmek için hemen kullanmaya başlamanız veya özelleştirmeniz için sağlanır.
 
-Azure Izleyici günlükleri, geçerli küme yapılandırmasının en iyi şekilde performans yapıp gerçekleştirmediğini belirlemenize yardımcı olabilecek eğilimleri bulmanıza, performans sorunlarını tanılamanıza, tahmin etmenize veya aralarındaki verileri ilişkilendirmenize yardımcı olabilir. Önceden tanımlanmış günlük aramaları, hemen kullanmaya başlayın ya da istediğiniz gibi bilgileri döndürmek için özelleştirmek için sağlanır.
+**Analitik** açılan listede Görünüm listesinden önizleme bölmesinde **Görünüm Kubernetes olay günlüklerini** veya **görünüm kapsayıcı günlüklerini** seçerek çalışma alanındaki verilerin etkileşimli analizini gerçekleştirebilirsiniz. **Günlük Arama** sayfası, içinde olduğunuz Azure portalı sayfasının sağında görünür.
 
-**Analiz bölmesindeki Görünüm** açılır listesinden **Kubernetes olay günlüklerini görüntüle** veya **kapsayıcı günlüklerini görüntüle** seçeneğini belirleyerek çalışma alanındaki verilerin etkileşimli analizini yapabilirsiniz. **Günlük araması** sayfası, üzerinde olduğunuz Azure Portal sayfanın sağında görüntülenir.
+![Log Analytics’te verileri analiz etme](./media/container-insights-analyze/container-health-log-search-example.png)
 
-![Log Analytics’te verileri analiz etme](./media/container-insights-analyze/container-health-log-search-example.png)   
-
-Çalışma alanınıza iletilen kapsayıcı günlüğü çıkışları STDOUT ve STDERR ' dir. Azure İzleyici, Azure tarafından yönetilen Kubernetes (AKS) izleme için Kube-system büyük oluşturulan veri hacmi nedeniyle bugün toplanmaz. 
+Çalışma alanınıza iletilen kapsayıcı günlükleri çıktısı STDOUT ve STDERR'dir. Azure Monitor Azure tarafından yönetilen Kubernetes'i (AKS) izlediği için, oluşturulan verilerin büyük hacmi nedeniyle Kube sistemi bugün toplanmaz. 
 
 ### <a name="example-log-search-queries"></a>Örnek günlük arama sorguları
 
-Genellikle, bir örnek veya iki ile başlayıp ardından bunları gereksinimlerinize uyacak şekilde değiştirin sorguları oluşturmak kullanışlıdır. Daha gelişmiş sorgular oluşturmanıza yardımcı olmak için aşağıdaki örnek sorgularda ile denemeler yapabilirsiniz:
+Genellikle bir veya iki örnekle başlayan sorgular oluşturmak ve gereksinimlerinize uyacak şekilde değiştirmek genellikle yararlıdır. Daha gelişmiş sorgular oluşturmaya yardımcı olmak için aşağıdaki örnek sorguları deneyebilirsiniz:
 
 | Sorgu | Açıklama | 
 |-------|-------------|
-| ContainerInventory<br> &#124;Proje bilgisayar, ad, resim, ImageTag, ContainerState, oluşturulma zamanı, StartedTime, FinishedTime<br> &#124;Tablo oluşturma | Tüm bir kapsayıcının yaşam döngüsü bilgilerini Listele| 
-| KubeEvents_CL<br> &#124;Burada not(isempty(Namespace_s))<br> &#124;TimeGenerated desc göre sırala<br> &#124;Tablo oluşturma | Kubernetes olayları|
-| ContainerImageInventory<br> &#124;Summarize aggregatedvalue = count() ImageTag, görüntü tarafından çalıştırma | Görüntü envanteri | 
-| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Perf<br> &#124;Burada ObjectName "K8SContainer" ve CounterName == "cpuUsageNanoCores" == &#124; AvgCPUUsageNanoCores özetlemek avg(CounterValue) tarafından bin (TimeGenerated, 30 dakika), InstanceName = | Kapsayıcı CPU | 
-| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Perf<br> &#124;Burada ObjectName "K8SContainer" ve CounterName == "memoryRssBytes" == &#124; AvgUsedRssMemoryBytes özetlemek avg(CounterValue) tarafından bin (TimeGenerated, 30 dakika), InstanceName = | Kapsayıcı belleği |
-| Insightsölçümlerini<br> &#124;Burada Name = = "requests_count"<br> &#124;Değer = Any (Val) ile TimeGenerated = bin (TimeGenerated, 1m)<br> &#124;TimeGenerated ASC 'e göre sırala<br> &#124;Proje RequestsPerMinute = Val-önceki (Val), TimeGenerated <br> &#124;oluşturma bargrafiği  | Özel ölçümler ile dakika başına istek |
+| Konteyner Envanteri<br> &#124; proje Bilgisayar, Ad, Resim, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; oluşturma tablosu | Bir konteynerin tüm yaşam döngüsü bilgilerini listele| 
+| KubeEvents_CL<br> &#124; nerede değil(boş(Namespace_s))<br> TimeGenerated desc göre &#124; sıralama<br> &#124; oluşturma tablosu | Kubernetes etkinlikleri|
+| KonteynerImageInventory<br> &#124; AggregatedValue = count() tarafından Image, ImageTag, Running özetlemek | Görüntü envanteri | 
+| **Çizgi grafik görüntüleme seçeneğini seçin:**<br> Perf<br> &#124; nerede ObjectName == "K8SContainer" ve CounterName == "cpuUsageNanoCores" &#124; AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName özetlemek | Konteyner CPU | 
+| **Çizgi grafik görüntüleme seçeneğini seçin:**<br> Perf<br> objectname == "K8SContainer" ve CounterName == "memoryRssBytes" &#124; AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName özetlemek &#124; | Kapsayıcı bellek |
+| ÖngörülerÖlçümler<br> &#124; nerede Adı == "requests_count"<br> &#124; TimeGenerated=bin(TimeGenerated, 1m) tarafından Val=any(Val) özetlemek<br> TimeGenerated asc göre &#124; sıralama<br> &#124; proje RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | Özel Ölçümlerle Dakika Başına İstekler |
 
-## <a name="query-prometheus-metrics-data"></a>Sorgu Prometheus ölçüm verileri
+## <a name="query-prometheus-metrics-data"></a>Prometheus ölçümlerini sorgula veri
 
-Aşağıdaki örnek, düğüm başına disk başına saniye başına disk okuma gösteren bir Prometheus ölçüm sorgusudur.
+Aşağıdaki örnek, disk okumalarını her düğüm başına saniyede gösteren bir Prometheus ölçümleri sorgusudur.
 
 ```
 InsightsMetrics
@@ -84,7 +80,7 @@ InsightsMetrics
 
 ```
 
-Azure Izleyici tarafından ad alanına göre filtrelenmiş Prometheus ölçümlerini görüntülemek için "Prometheus" seçeneğini belirtin. İşte `default` Kubernetes ad alanından Prometheus ölçümlerini görüntülemek için örnek bir sorgu.
+Namespace tarafından filtreuygulanmış Azure Monitor tarafından kazınmış Prometheus ölçümlerini görüntülemek için "prometheus" belirtin. Burada `default` kubernetes ad alanından Prometheus ölçümleri görüntülemek için örnek bir sorgu.
 
 ```
 InsightsMetrics 
@@ -93,7 +89,7 @@ InsightsMetrics
 | summarize count() by Name
 ```
 
-Prometheus verileri, ad ile doğrudan sorgulanabilir.
+Prometheus verileri de doğrudan adıyla sorgulanabilir.
 
 ```
 InsightsMetrics 
@@ -101,18 +97,18 @@ InsightsMetrics
 | where Name contains "some_prometheus_metric"
 ```
 
-### <a name="query-config-or-scraping-errors"></a>Sorgu yapılandırması veya scraping hataları
+### <a name="query-config-or-scraping-errors"></a>Config veya kazıma hatalarını sorgula
 
-Herhangi bir yapılandırmayı veya bir hatayı araştırmak için aşağıdaki örnek sorgu `KubeMonAgentEvents` tablosundan bilgilendirici olaylar döndürür.
+Herhangi bir yapılandırma veya kazıma hatalarını araştırmak için, `KubeMonAgentEvents` aşağıdaki örnek sorgu tablodan bilgi olaylarını döndürür.
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-Çıktı aşağıdakine benzer sonuçları gösterir:
+Çıktı aşağıdakilere benzer sonuçlar gösterecektir:
 
-![Bilgi olaylarının aracıdan günlük sorgusu sonuçları](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
+![Aracıdan bilgilendirme olaylarının günlük sorgu sonuçları](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kapsayıcılar için Azure Izleyici, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için önerilen uyarılar oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarılarını oluşturma](container-insights-alerts.md) ' yı gözden geçirin. 
+Kapsayıcılar için Azure Monitörü önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya operasyonel süreç ve yordamlarınızı desteklemek için yüksek CPU ve bellek kullanımı için önerilen uyarıları nasıl oluşturup nasıl oluşturup nasıl oluşturup oluşturabilirsiniz öğrenmek [için kapsayıcılar için Azure Monitor ile performans uyarıları oluştur'u](container-insights-alerts.md) gözden geçirin. 

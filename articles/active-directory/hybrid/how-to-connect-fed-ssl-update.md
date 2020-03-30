@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect - güncelleştirme SSL sertifikası için bir AD FS grubu | Microsoft Docs
-description: Bu belge Azure AD Connect kullanarak bir AD FS grubunun SSL sertifikasını güncelleştirmek için adımları açıklanmaktadır.
+title: Azure AD Connect - BIR AD FS çiftliği için TLS/SSL sertifikasını güncelleştirin | Microsoft Dokümanlar
+description: Bu belge, Azure AD Connect'i kullanarak bir AD FS çiftliğinin TLS/SSL sertifikasını güncelleştirme adımlarını ayrıntılarıyla anlatır.
 services: active-directory
 manager: daveba
 editor: billmath
@@ -16,97 +16,97 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cc768162d98402fe52b52b2826a9dbf2840a581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331749"
 ---
-# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory Federasyon Hizmetleri (AD FS) grubu için SSL sertifikasını güncelleştirme
+# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktif Dizin Federasyon Hizmetleri (AD FS) çiftliği için TLS/SSL sertifikasını güncelleştirme
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, bir Active Directory Federasyon Hizmetleri (AD FS) grubu için SSL sertifikasını güncelleştirmek için Azure AD Connect'i nasıl kullanabileceğiniz açıklanır. Seçilen kullanıcı oturum açma yöntemi, AD FS olmasa bile SSL sertifikası için bir AD FS grubunu kolayca güncelleştirmek için Azure AD Connect aracını kullanabilirsiniz.
+Bu makalede, Etkin Dizin Federasyonu Hizmetleri (AD FS) çiftliğinin TLS/SSL sertifikasını güncelleştirmek için Azure AD Connect'i nasıl kullanabileceğiniz açıklanmaktadır. Seçilen kullanıcı oturum açma yöntemi AD FS olmasa bile AD FS çiftliğinin TLS/SSL sertifikasını kolayca güncellemek için Azure AD Connect aracını kullanabilirsiniz.
 
-Tüm Federasyon ve üç basit adımda Web uygulaması Ara sunucusu (WAP) sunucuları için AD FS grubunu SSL sertifikasını güncelleştirme bütün işlem gerçekleştirebilirsiniz:
+Tüm federasyon ve Web Application Proxy (WAP) sunucularında AD FS çiftliği için TLS/SSL sertifikasıgüncelleştirme işleminin tüm işlemini üç basit adımda gerçekleştirebilirsiniz:
 
 ![Üç adım](./media/how-to-connect-fed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->AD FS tarafından kullanılan sertifikalar hakkında daha fazla bilgi için bkz: [AD FS tarafından kullanılan sertifikaları anlama](https://technet.microsoft.com/library/cc730660.aspx).
+>AD FS tarafından kullanılan sertifikalar hakkında daha fazla bilgi edinmek için, [AD FS tarafından kullanılan sertifikaları anlama](https://technet.microsoft.com/library/cc730660.aspx)'ya bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **AD FS grubu**: AD FS grubunuzun Windows Server 2012 R2 tabanlı veya üstü olduğundan emin olun.
-* **Azure AD Connect**: Azure AD Connect sürümü 1.1.553.0 olduğundan emin olun veya yüksek. Görev kullanacağınız **güncelleştirme AD FS SSL sertifikası**.
+* **AD FS Farm**: AD FS çiftliğinizin Windows Server 2012 R2 tabanlı veya daha yeni olduğundan emin olun.
+* **Azure AD Connect**: Azure AD Connect sürümünün 1.1.553.0 veya daha yüksek olduğundan emin olun. Görevi Güncelleştirme AD **FS SSL sertifikasını**kullanırsınız.
 
-![SSL görevi güncelleştir](./media/how-to-connect-fed-ssl-update/updatessltask.png)
+![TLS görevini güncelleştir](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>1\. adım: AD FS grubu bilgileri sağlayın
+## <a name="step-1-provide-ad-fs-farm-information"></a>Adım 1: AD FS çiftlik bilgileri sağlayın
 
-Azure AD Connect tarafından otomatik olarak AD FS grubu hakkında bilgi edinmek çalışır:
-1. (Windows Server 2016 veya sonraki sürümleri) AD FS grubu bilgileri Sorgulanıyor.
-2. Önceki çalıştırmalardan bilgileri başvuran, hangi Azure AD Connect ile yerel olarak depolanır.
+Azure AD Connect, AD FS çiftliği hakkında otomatik olarak aşağıdaki ler tarafından bilgi edinmeye çalışır:
+1. AD FS'den (Windows Server 2016 veya sonraki) çiftlik bilgilerini sorgulama.
+2. Azure AD Connect ile yerel olarak depolanan önceki çalıştırmalardan elde edilen bilgilere başvuru.
 
-Ekleyerek veya kaldırarak AD FS grubunun geçerli yapılandırmayı yansıtacak şekilde sunucuları görüntülenen sunucularının listesini değiştirebilirsiniz. Sunucu bilgilerini sağlanan hemen sonra Azure AD Connect bağlantı ve geçerli SSL sertifikası durumunu görüntüler.
+AD FS çiftliğinin geçerli yapılandırmasını yansıtacak şekilde sunucuları ekleyerek veya kaldırarak görüntülenen sunucuların listesini değiştirebilirsiniz. Sunucu bilgileri sağlanır sağlanmaz Azure AD Connect bağlantı ve geçerli TLS/SSL sertifika durumunu görüntüler.
 
-![AD FS sunucu bilgisi](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
+![AD FS sunucu bilgileri](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
-Listede artık AD FS grubunun parçası olan bir sunucunuz varsa, tıklayın **Kaldır** sunucusu AD FS grubunuzdaki sunucuların listesini silmek için.
+Listede artık AD FS çiftliğinin bir parçası olmayan bir sunucu varsa, reklamı nızı AD FS çiftliğinizdeki sunucular listesinden silmek için **Kaldır'ı** tıklatın.
 
-![Çevrimdışı sunucu listesinde](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
+![Listede çevrimdışı sunucu](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
 
 >[!NOTE]
-> Bir sunucu için bir AD FS grubunu Azure AD CONNECT'te sunucuların listesinden kaldırmak, yerel bir işlemdir ve Azure AD Connect yerel olarak tutar AD FS grubu bilgileri güncelleştirir. Azure AD Connect değişimi yansıtmak için AD FS yapılandırmasını değiştirmez.    
+> Bir sunucuyu Azure AD Connect'teki bir AD FS çiftliğinin sunucu listesinden kaldırmak yerel bir işlemdir ve Azure AD Connect'in yerel olarak koruduğu AD FS çiftliğinin bilgilerini güncelleştirir. Azure AD Connect, AD FS'deki yapılandırmayı değişikliği yansıtacak şekilde değiştirmez.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>2\. adım: Yeni bir SSL sertifikası sağlayın
+## <a name="step-2-provide-a-new-tlsssl-certificate"></a>Adım 2: Yeni bir TLS/SSL sertifikası sağlayın
 
-Azure AD Connect, AD FS grubunun sunucuları hakkında bilgi onayladıktan sonra yeni SSL sertifikası için sorar. Yüklemeye devam etmek için bir parola korumalı PFX sertifikası sağlayın.
+AD FS çiftlik sunucuları hakkındaki bilgileri doğruladıktan sonra Azure AD Connect yeni TLS/SSL sertifikasını ister. Yüklemeye devam etmek için parola korumalı PFX sertifikası sağlayın.
 
-![SSL sertifikası](./media/how-to-connect-fed-ssl-update/certificate.png)
+![TLS/SSL sertifikası](./media/how-to-connect-fed-ssl-update/certificate.png)
 
-Sertifika verdikten sonra Azure AD Connect önkoşulları bir dizi gider. Sertifika için bir AD FS grubunu doğru olduğundan emin olmak için sertifika doğrulayın:
+Sertifikayı sağladıktan sonra Azure AD Connect bir dizi ön koşuldan geçer. SERTIFIKAnın AD FS çiftliği için doğru olduğundan emin olmak için sertifikayı doğrulayın:
 
--   Sertifikanın konu adı/alternatif konu adı ya da Federasyon Hizmeti adıyla aynı olduğundan veya joker sertifikadır.
--   Sertifika 30 günden fazla bir süre için geçerlidir.
--   Sertifikanın güven zincirinde geçerli değil.
--   Parola korumalı sertifikadır.
+-   Sertifikanın özne adı/alternatif özne adı, federasyon hizmet adı ile aynıdır veya joker karakter sertifikasıdır.
+-   Sertifika 30 günden fazla geçerlidir.
+-   Sertifika güven zinciri geçerlidir.
+-   Sertifika parola korumalıdır.
 
-## <a name="step-3-select-servers-for-the-update"></a>3\. adım: Güncelleştirme sunucularını seçin
+## <a name="step-3-select-servers-for-the-update"></a>Adım 3: Güncelleştirme için sunucuları seçin
 
-Sonraki adımda, güncelleştirilmiş SSL sertifikasına sahip olmasını gerektiren sunucuları seçin. Çevrimdışı olan sunucuları güncelleştirmesi seçilemez.
+Bir sonraki adımda, TLS/SSL sertifikasının güncellenmesi gereken sunucuları seçin. Çevrimdışı olan sunucular güncelleştirme için seçilenemiyor.
 
-![Güncelleştirme için sunucuları seçin](./media/how-to-connect-fed-ssl-update/selectservers.png)
+![Güncelleştirilecek sunucuları seçin](./media/how-to-connect-fed-ssl-update/selectservers.png)
 
-Yapılandırmayı tamamladıktan sonra Azure AD Connect güncelleştirme durumunu gösterir ve AD FS oturum açma kullanarak doğrulamak için bir seçenek sunan bir ileti görüntüler.
+Yapılandırmayı tamamladıktan sonra, Azure AD Connect güncelleştirmenin durumunu belirten iletiyi görüntüler ve AD FS oturum açma oturumlarını doğrulamak için bir seçenek sunar.
 
 ![Yapılandırma tamamlandı](./media/how-to-connect-fed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>SSS
 
-* **Hangi sertifikanın konu adı için yeni AD FS SSL sertifikası olmalı?**
+* **Yeni AD FS TLS/SSL sertifikası için sertifikanın özne adı ne olmalıdır?**
 
-    Azure AD Connect, sertifika konu adı/alternatif konu adı, Federasyon Hizmeti adı içerip içermediğini denetler. Örneğin, Federasyon Hizmeti adınız fs.contoso.com ise, konu adı/alternatif konu adı fs.contoso.com olması gerekir.  Joker karakterli sertifikalar de kabul edilir.
+    Azure AD Connect, sertifikanın özne adının/alternatif özadının federasyon hizmet adını içerip içermeyolmadığını denetler. Örneğin, federasyon hizmet adınız fs.contoso.com ise, konu adı/alternatif konu adı fs.contoso.com olmalıdır.  Joker karakter sertifikaları da kabul edilmektedir.
 
-* **Neden kimlik bilgileri için WAP sunucusu sayfasında yeniden soruluyor?**
+* **NEDEN WAP sunucu sayfasında tekrar kimlik bilgileri isteniyor?**
 
-    AD FS sunucularına bağlanmak için verdiğiniz kimlik bilgileri de WAP sunucularını yönetme ayrıcalığına sahip değilseniz, Azure AD Connect WAP sunucularında yönetici ayrıcalıklarına sahip kimlik bilgilerini ister.
+    AD FS sunucularına bağlanmak için sağladığınız kimlik bilgileri DE WAP sunucularını yönetme ayrıcalığına sahip değilse, Azure AD Connect WAP sunucularında yönetim ayrıcalığına sahip kimlik bilgilerini ister.
 
 * **Sunucu çevrimdışı olarak gösterilir. Ne yapmalıyım?**
 
-    Azure AD Connect, sunucu çevrimdışı ise, herhangi bir işlem gerçekleştirilemiyor. Sunucu AD FS grubunun parçasıysa, ardından sunucu bağlantısını denetleyin. Sorunu çözdükten sonra sihirbazda durumunu güncelleştirmek için Yenile simgesine basın. Sunucu parçası ise Grup daha önce ancak şimdi artık yok.'a tıklayın **Kaldır** , Azure AD Connect sunucuları listeden silmek için korur. Listeden Azure AD Connect sunucusu kaldırma, AD FS yapılandırmasını değiştirmez. AD FS'yi Windows Server 2016 veya sonraki sürümlerde, yapılandırma ayarlarında sunucu kalır kullanıyorsanız ve yeniden başlatıldığında gösterilecek görev çalıştırılır.
+    Azure AD Connect, sunucu çevrimdışıysa herhangi bir işlem gerçekleştiremez. Sunucu AD FS çiftliğinin bir parçasıysa, sunucuya bağlantıyı denetleyin. Sorunu çözdükten sonra, sihirbazdaki durumu güncelleştirmek için yenileme simgesine basın. Sunucu daha önce çiftliğin bir parçasıysa ancak artık yoksa, Azure AD Connect'in koruduğu sunucular listesinden silmek için **Kaldır'ı** tıklatın. Sunucuyu Azure AD Connect'teki listeden kaldırmak, AD FS yapılandırmasının kendisini değiştirmez. Windows Server 2016 veya sonraki yıllarda AD FS kullanıyorsanız, sunucu yapılandırma ayarlarında kalır ve görev bir sonraki çalıştırılışta yeniden gösterilir.
 
-* **Yeni SSL sertifikası ile bir alt kümesini grubu Sunucularım güncelleştirebilir miyim?**
+* **Çiftlik sunucularımın bir alt kümesini yeni TLS/SSL sertifikasıyla güncelleyebilir miyim?**
 
-    Evet. Her zaman görevin çalışacağı **SSL sertifika güncelleştirmesi** geri kalan sunucular yeniden güncelleştirilecek. Üzerinde **SSL için sunucu seçin sertifika güncelleştirme** sayfası üzerinde sunucularının listesini sıralayabilirsiniz **SSL sona erme tarihi** henüz güncelleştirilmemiş sunucuları kolayca erişmek için.
+    Evet. Kalan sunucuları güncelleştirmek için görev **Güncelleştirme SSL Sertifikası'nı** her zaman yeniden çalıştırabilirsiniz. **SSL sertifika güncelleştirmesi için Seç sunucularında,** henüz güncelleştirilmeyen sunuculara kolayca erişmek için **SSL Son Kullanma tarihindeki** sunucuların listesini sıralayabilirsiniz.
 
-* **Sunucunun önceki çalıştırmada kaldırdım, ancak bu yine de çevrimdışı ve listelenmiş olarak AD FS sunucuları sayfasında gösteriliyor. Neden kaldırdım daha sonra çevrimdışı sunucunun hala var mı?**
+* **Önceki çalıştırmada sunucukaldırıldı, ama yine de çevrimdışı olarak gösteriliyor ve AD FS Sunucular sayfasında listeleniyor. Ben kaldırdıktan sonra bile çevrimdışı sunucu neden hala orada?**
 
-    Listeden Azure AD Connect sunucusunun kaldırılması AD FS yapılandırmasında kaldırmaz. Azure AD Connect, AD FS (Windows Server 2016 veya üzeri) grupla ilgili tüm bilgilere yönelik başvuruyor. Sunucu AD FS yapılandırmasında hala mevcutsa listede listelenir.  
+    Sunucuyu Azure AD Connect'teki listeden kaldırmak, sunucuyu AD FS yapılandırmasında kaldırmaz. Azure AD Connect, çiftlik le ilgili herhangi bir bilgi için AD FS'ye (Windows Server 2016 veya üzeri) başvurur. Sunucu AD FS yapılandırmasında hala mevcutsa, listede geri listelenir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD Connect ve federasyon](how-to-connect-fed-whatis.md)
-- [Active Directory Federasyon Hizmetleri Yönetimi ve Azure AD Connect ile özelleştirme](how-to-connect-fed-management.md)
+- [Azure AD Connect ile Etkin Dizin Federasyonu Hizmetleri yönetimi ve özelleştirme](how-to-connect-fed-management.md)
 

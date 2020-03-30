@@ -1,116 +1,116 @@
 ---
-title: Özel kök CA ile otomatik olarak imzalanan sertifika oluşturma
+title: Özel bir kök CA ile kendi imzalı sertifika oluşturma
 titleSuffix: Azure Application Gateway
-description: Özel bir kök CA ile Azure Application Gateway otomatik olarak imzalanan sertifika oluşturmayı öğrenin
+description: Özel kök CA'ya sahip Azure Uygulama Ağ Geçidi kendi imzalı sertifikayı nasıl oluşturacağınızı öğrenin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0447e87fd8685188af8008995ba938092f2b87fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293606"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile Azure Uygulama Ağ Geçidi kendi imzalı sertifika oluşturun
 
-Application Gateway v2 SKU 'SU, arka uç sunucularına izin vermek için güvenilen kök sertifikaların kullanımını tanıtır. Bu, v1 SKU 'sunda gerekli olan kimlik doğrulama sertifikalarını kaldırır. *Kök sertifika* , Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sertifika sunucusundan kök sertifikayı biçimlendirin. Sunucu sertifikasını veren kök sertifika yetkilisini (CA) belirler ve sunucu sertifikası daha sonra SSL iletişimi için kullanılır.
+Application Gateway v2 SKU, arka uç sunucularına izin vermek için Güvenilir Kök Sertifikalarının kullanımını tanıtmaktadır. Bu, v1 SKU'da gerekli olan kimlik doğrulama sertifikalarını kaldırır. *Kök sertifika,* X.509 kodlu bir Base-64 sertifikasıdır.( CER) arka uç sertifika sunucusundan root sertifikası biçimlendirin. Sunucu sertifikasını veren kök sertifika yetkilisini (CA) tanımlar ve sunucu sertifikası daha sonra SSL iletişimi için kullanılır.
 
-Application Gateway, iyi bilinen bir CA tarafından imzalanmışsa (örneğin, GoDaddy veya DigiCert) Web sitenizin sertifikasına güvenir. Bu durumda kök sertifikayı açıkça karşıya yüklemeniz gerekmez. Daha fazla bilgi için bkz. [Application Gateway Ile SSL sonlandırmasına ve uçtan uca SSL 'ye genel bakış](ssl-overview.md). Ancak, bir geliştirme/test ortamınız varsa ve doğrulanmış CA imzalı bir sertifika satın almak istemiyorsanız, kendi özel CA 'nizi oluşturabilir ve bununla birlikte kendinden imzalı bir sertifika oluşturabilirsiniz. 
+Uygulama Ağ Geçidi, tanınmış bir CA (örneğin, GoDaddy veya DigiCert) tarafından imzalanmışsa, varsayılan olarak web sitenizin sertifikasına güvenir. Bu durumda kök sertifikayı açıkça yüklemeniz gerekmez. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile SSL sonlandırma ve bitiş sonu SSL Genel Bakış](ssl-overview.md)bakın. Ancak, bir geliştirme/test ortamınız varsa ve doğrulanmış ca imzalı bir sertifika satın almak istemiyorsanız, kendi özel CA'nızı oluşturabilir ve onunla kendi imzalı sertifikanızı oluşturabilirsiniz. 
 
 > [!NOTE]
-> Otomatik olarak imzalanan sertifikalara varsayılan olarak güvenilmez ve bunların bakımını yapmak zor olabilir. Ayrıca, süresi geçmiş karma ve şifre paketlerinin kullanımı güçlü olmayabilir. Daha iyi güvenlik için, iyi bilinen bir sertifika yetkilisi tarafından imzalanmış bir sertifika satın alın.
+> Kendi imzalı sertifikalar varsayılan olarak güvenilir değildir ve bunlar bakımı zor olabilir. Ayrıca, onlar güçlü olmayabilir eski karma ve şifre suit kullanabilirsiniz. Daha iyi güvenlik için, tanınmış bir sertifika yetkilisi tarafından imzalanmış bir sertifika satın alın.
 
-Bu makalede, öğreneceksiniz nasıl yapılır:
+Bu makalede, nasıl öğreneceksiniz:
 
-- Kendi özel sertifika yetkilinizi oluşturma
-- Özel sertifika YETKILINIZ tarafından imzalanan kendinden imzalı bir sertifika oluşturma
-- Arka uç sunucusunun kimliğini doğrulamak için bir Application Gateway otomatik olarak imzalanan kök sertifika yükleme
+- Kendi özel Sertifika Yetkilisioluşturun
+- Özel CA'nız tarafından imzalanmış kendi imzalı bir sertifika oluşturun
+- Arka uç sunucusunun kimliğini doğrulamak için uygulama ağ geçidine kendi imzalı kök sertifikası yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Windows veya Linux çalıştıran bir bilgisayarda [OpenSSL](https://www.openssl.org/)** 
 
-   Bu öğretici, sertifika yönetimi için kullanılabilen başka araçlar da olabilir, ancak bu öğretici OpenSSL kullanır. Ubuntu gibi birçok Linux dağıtımı ile paketlenmiş OpenSSL bulabilirsiniz.
-- **Bir Web sunucusu**
+   Sertifika yönetimi için başka araçlar olsa da, bu öğretici OpenSSL kullanır. OpenSSL'yi Ubuntu gibi birçok Linux dağıtımıyla birlikte bulabilirsiniz.
+- **Bir web sunucusu**
 
-   Örneğin, bu sertifikaları sınamak için Apache, IIS veya NGıNX.
+   Örneğin, sertifikaları sınamak için Apache, IIS veya NGINX.
 
-- **Application Gateway v2 SKU 'SU**
+- **Bir Uygulama Ağ Geçidi v2 SKU**
    
-  Mevcut bir uygulama ağ geçidiniz yoksa, bkz. [hızlı başlangıç: Azure Application Gateway Ile doğrudan web trafiği-Azure Portal](quick-create-portal.md).
+  Varolan bir uygulama ağ geçidiniz yoksa, [Bkz. Quickstart: Azure Application Gateway ile doğrudan web trafiği - Azure portalı.](quick-create-portal.md)
 
 ## <a name="create-a-root-ca-certificate"></a>Kök CA sertifikası oluşturma
 
-OpenSSL kullanarak kök CA sertifikanızı oluşturun.
+OpenSSL'yi kullanarak kök CA sertifikanızı oluşturun.
 
 ### <a name="create-the-root-key"></a>Kök anahtarı oluşturma
 
-1. OpenSSL 'nin yüklü olduğu bilgisayarınızda oturum açın ve aşağıdaki komutu çalıştırın. Bu, parola korumalı bir anahtar oluşturur.
+1. OpenSSL'nin yüklü olduğu bilgisayarınızda oturum açın ve aşağıdaki komutu çalıştırın. Bu, parola korumalı bir anahtar oluşturur.
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. İstemde, güçlü bir parola yazın. Örneğin, büyük harf, küçük harf, sayı ve simge kullanan en az dokuz karakter.
+1. İsteyişte, güçlü bir parola yazın. Örneğin, büyük harf, küçük harf, sayılar ve semboller kullanarak en az dokuz karakter.
 
-### <a name="create-a-root-certificate-and-self-sign-it"></a>Kök sertifika oluşturma ve kendi kendine imzalama
+### <a name="create-a-root-certificate-and-self-sign-it"></a>Kök Sertifikası oluşturma ve kendi kendine imzalama
 
-1. CSR ve sertifika oluşturmak için aşağıdaki komutları kullanın.
+1. CSR ve sertifikaoluşturmak için aşağıdaki komutları kullanın.
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
 
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
-   Önceki komutlar kök sertifikayı oluşturur. Bunu, sunucu sertifikanızı imzalamak için kullanacaksınız.
+   Önceki komutlar kök sertifikasını oluşturur. Bunu sunucu sertifikanızı imzalamak için kullanırsınız.
 
-1. İstendiğinde, kök anahtar için parolayı ve ülke, eyalet, kuruluş, OU ve tam etki alanı adı (Bu veren etki alanı) gibi özel CA için kuruluş bilgilerini yazın.
+1. İstendiğinde, kök anahtarın parolasını ve Ülke, Devlet, Org, OU ve tam nitelikli alan adı gibi özel CA'nın kuruluş bilgilerini yazın (bu verenin etki alanıdır).
 
-   ![kök sertifikası oluştur](media/self-signed-certificates/root-cert.png)
+   ![kök sertifikası oluşturma](media/self-signed-certificates/root-cert.png)
 
 ## <a name="create-a-server-certificate"></a>Sunucu sertifikası oluşturma
 
-Ardından, OpenSSL kullanarak bir sunucu sertifikası oluşturacaksınız.
+Ardından OpenSSL kullanarak bir sunucu sertifikası oluşturursunuz.
 
 ### <a name="create-the-certificates-key"></a>Sertifikanın anahtarını oluşturma
 
-Sunucu sertifikası için anahtar oluşturmak üzere aşağıdaki komutu kullanın.
+Sunucu sertifikası için anahtarı oluşturmak için aşağıdaki komutu kullanın.
 
    ```
    openssl ecparam -out fabrikam.key -name prime256v1 -genkey
    ```
 
-### <a name="create-the-csr-certificate-signing-request"></a>CSR (sertifika Imzalama Isteği) oluşturma
+### <a name="create-the-csr-certificate-signing-request"></a>CSR oluşturma (Sertifika İmzalama İsteği)
 
-CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu belirli istek için sertifikayı yayınlar.
+CSR, sertifika talep ederken CA'ya verilen ortak bir anahtardır. CA, bu özel istek için sertifikayı yayınlar.
 
 > [!NOTE]
-> Sunucu sertifikası için CN (ortak ad), verenin etki alanından farklı olmalıdır. Örneğin, bu durumda veren için CN `www.contoso.com` ve sunucu sertifikasının CN 'si `www.fabrikam.com`.
+> Sunucu sertifikasının CN'si (Ortak Ad) verenin etki alanından farklı olmalıdır. Örneğin, bu durumda, veren için CN `www.contoso.com` ve sunucu sertifikasıc's `www.fabrikam.com`CN olduğunu.
 
 
-1. CSR 'yi oluşturmak için aşağıdaki komutu kullanın:
+1. CSR oluşturmak için aşağıdaki komutu kullanın:
 
    ```
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. İstendiğinde, kök anahtarın parolasını ve özel CA için kuruluş bilgilerini yazın: ülke, eyalet, kuruluş, OU ve tam etki alanı adı. Bu, Web sitesinin etki alanıdır ve veren 'den farklı olmalıdır.
+1. İstendiğinde, kök anahtarın parolasını ve özel CA için kuruluş bilgilerini yazın: Ülke, Eyalet, Org, OU ve tam nitelikli alan adı. Bu web sitesinin etki alanı ve veren farklı olmalıdır.
 
    ![Sunucu sertifikası](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Sertifikayı CSR ve anahtar ile oluşturun ve CA 'nın kök anahtarıyla imzalayın
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Sertifikayı CSR ve anahtarla oluşturun ve CA'nın kök tuşuyla imzalayın
 
 1. Sertifikayı oluşturmak için aşağıdaki komutu kullanın:
 
    ```
    openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
-### <a name="verify-the-newly-created-certificate"></a>Yeni oluşturulan sertifikayı doğrulayın
+### <a name="verify-the-newly-created-certificate"></a>Yeni oluşturulan sertifikayı doğrulama
 
-1. CRT dosyasının çıkışını yazdırmak ve içeriğini doğrulamak için aşağıdaki komutu kullanın:
+1. CRT dosyasının çıktısını yazdırmak ve içeriğini doğrulamak için aşağıdaki komutu kullanın:
 
    ```
    openssl x509 -in fabrikam.crt -text -noout
@@ -118,26 +118,26 @@ CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu b
 
    ![Sertifika doğrulama](media/self-signed-certificates/verify-cert.png)
 
-1. Dizininizdeki dosyaları doğrulayın ve aşağıdaki dosyalara sahip olduğunuzdan emin olun:
+1. Dizininizdeki dosyaları doğrulayın ve aşağıdaki dosyalara sahip olduğundan emin olun:
 
-   - contoso. CRT
-   - contoso. Key
-   - fabrikam. CRT
-   - fabrikam. Key
+   - contoso.crt
+   - contoso.key
+   - fabrikam.crt
+   - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Web sunucunuzun SSL ayarlarındaki sertifikayı yapılandırın
+## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Sertifikayı web sunucunuzun SSL ayarlarında yapılandırma
 
-Web sunucunuzda, fabrikam. CRT ve fabrikam. Key dosyalarını kullanarak SSL 'yi yapılandırın. Web sunucunuz iki dosya alamaz, OpenSSL komutlarını kullanarak bunları tek bir. ped veya. pfx dosyası ile birleştirebilirsiniz.
+Web sunucunuzda, fabrikam.crt ve fabrikam.key dosyalarını kullanarak SSL'yi yapılandırın. Web sunucunuz iki dosya yıyıtamamıyorsa, OpenSSL komutlarını kullanarak bunları tek bir .pem veya .pfx dosyasıyla birleştirebilirsiniz.
 
 ### <a name="iis"></a>IIS
 
-Sertifikayı içeri aktarma ve IIS 'ye sunucu sertifikası olarak yükleme yönergeleri için bkz. [nasıl yapılır: Windows Server 'Da Içeri aktarılan sertifikaları bir Web sunucusuna yükleme 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
+Sertifika alma ve IIS'de sunucu sertifikası olarak yükleme ile ilgili talimatlar için [bkz.](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)
 
-SSL bağlama yönergeleri için bkz. [IIS 7 ' de SSL ayarlama](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+SSL bağlama yönergeleri için, [IIS 7'de SSL nasıl ayarlanır.](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
 
 ### <a name="apache"></a>Apache
 
-Aşağıdaki yapılandırma, Apache 'de [SSL için yapılandırılmış örnek bir sanal ana bilgisayar](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) örneğidir:
+Aşağıdaki yapılandırma, Apache'de [SSL için yapılandırılan](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) bir örnek sanal ana bilgisayardır:
 
 ```
 <VirtualHost www.fabrikam:443>
@@ -151,46 +151,46 @@ Aşağıdaki yapılandırma, Apache 'de [SSL için yapılandırılmış örnek b
 
 ### <a name="nginx"></a>NGINX
 
-Aşağıdaki yapılandırma, SSL yapılandırmasına sahip bir [NGINX sunucu bloğu](https://nginx.org/docs/http/configuring_https_servers.html) örneğidir:
+Aşağıdaki yapılandırma, SSL yapılandırması ile örnek bir [NGINX sunucu bloğudur:](https://nginx.org/docs/http/configuring_https_servers.html)
 
-![SSL ile NGıNX](media/self-signed-certificates/nginx-ssl.png)
+![SSL ile NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Yapılandırmayı doğrulamak için sunucuya erişin
 
-1. Kök sertifikayı makinenizin güvenilen kök deposuna ekleyin. Web sitesine eriştiğinizde, tüm Sertifika zincirinin tarayıcıda görüldüğünü doğrulayın.
+1. Root sertifikasını makinenizin güvenilir kök deposuna ekleyin. Web sitesine erişdiğinizde, tüm sertifika zincirinin tarayıcıda görüldüğünden emin olun.
 
    ![Güvenilen kök sertifikalar](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > DNS 'nin Web sunucusu adını (Bu örnekte, www.fabrikam.com) Web sunucunuzun IP adresine işaret etmek üzere yapılandırıldığı varsayılır. Aksi takdirde, adı çözümlemek için [Hosts dosyasını](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) düzenleyebilirsiniz.
-1. Web sitenize gidin ve site ve sertifika bilgilerini doğrulamak için tarayıcınızın adres kutusundaki kilit simgesine tıklayın.
+   > DNS'nin web sunucusu adını (bu örnekte, www.fabrikam.com) web sunucunuzun IP adresine yönlendirecek şekilde yapılandırıldığı varsayılır. Değilse, adı gidermek için [ana bilgisayar dosyasını](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) da yapabilirsiniz.
+1. Web sitenize göz atın ve site ve sertifika bilgilerini doğrulamak için tarayıcınızın adres kutusundaki kilit simgesini tıklatın.
 
-## <a name="verify-the-configuration-with-openssl"></a>OpenSSL ile yapılandırmayı doğrulama
+## <a name="verify-the-configuration-with-openssl"></a>OpenSSL ile yapılandırmayı doğrulayın
 
-Ya da, sertifikayı doğrulamak için OpenSSL 'yi de kullanabilirsiniz.
+Veya sertifikayı doğrulamak için OpenSSL'yi kullanabilirsiniz.
 
 ```
 openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 ```
 
-![OpenSSL sertifikası doğrulaması](media/self-signed-certificates/openssl-verify.png)
+![OpenSSL sertifika doğrulaması](media/self-signed-certificates/openssl-verify.png)
 
-## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Kök sertifikayı Application Gateway HTTP ayarlarına yükleyin
+## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Kök sertifikayı Uygulama Ağ Geçidi'nin HTTP Ayarlarına yükleyin
 
-Application Gateway sertifikayı karşıya yüklemek için. CRT sertifikasını. cer biçiminde bir temel-64 kodlanmış olarak dışarı aktarmanız gerekir. . CRT zaten Base-64 kodlu biçimde ortak anahtarı içerdiğinden, dosya uzantısını. CRT 'den. cer 'e yeniden adlandırmanız yeterlidir. 
+Sertifikayı Application Gateway'e yüklemek için .crt sertifikasını .cer formatında Base-64 kodlu bir sertifikaya dışa aktarmanız gerekir. .crt zaten base-64 kodlanmış biçiminde ortak anahtarı içerdiğinden, dosya uzantısını .crt'den .cer'e yeniden adlandırmamız. 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-Portaldan güvenilen kök sertifikayı karşıya yüklemek için **http ayarları** ' nı seçin ve **https** protokolünü seçin.
+Portaldan güvenilir kök sertifikasını yüklemek için **HTTP Ayarları'nı** seçin ve **HTTPS** protokolünü seçin.
 
 ![Portalı kullanarak sertifika ekleme](media/self-signed-certificates/portal-cert.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Ya da, kök sertifikayı karşıya yüklemek için Azure CLı veya Azure PowerShell kullanabilirsiniz. Aşağıdaki kod Azure PowerShell bir örnektir.
+Veya, kök sertifikayı yüklemek için Azure CLI veya Azure PowerShell'i kullanabilirsiniz. Aşağıdaki kod bir Azure PowerShell örneğidir.
 
 > [!NOTE]
-> Aşağıdaki örnek, uygulama ağ geçidine güvenilen bir kök sertifika ekler, yeni bir HTTP ayarı oluşturur ve arka uç havuzunun ve dinleyicinin zaten mevcut olduğunu varsayarak yeni bir kural ekler.
+> Aşağıdaki örnek uygulama ağ geçidine güvenilir bir kök sertifikası ekler, yeni bir HTTP ayarı oluşturur ve arka uç havuzunun ve dinleyicinin zaten var olduğunu varsayarak yeni bir kural ekler.
 
 ```azurepowershell
 ## Add the trusted root certificate to the Application Gateway
@@ -230,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that SSL handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -264,12 +264,12 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 ### <a name="verify-the-application-gateway-backend-health"></a>Uygulama ağ geçidi arka uç durumunu doğrulama
 
-1. Araştırmanın sağlıklı olup olmadığını denetlemek için uygulama ağ geçidinizin **arka uç sistem durumu** görünümüne tıklayın.
-1.  Durumun HTTPS araştırması için **sağlıklı** olduğunu görmeniz gerekir.
+1. Sondanın sağlıklı olup olmadığını kontrol etmek için uygulama ağ geçidinizin **Arka Uç Sağlık** görünümünü tıklatın.
+1.    HTTPS sondası için **Durum'un Sağlıklı** olduğunu görmelisiniz.
 
-    ![HTTPS araştırması](media/self-signed-certificates/https-probe.png)
+    ![HTTPS sondası](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Application Gateway 'de SSL\TLS hakkında daha fazla bilgi edinmek için bkz. [Application Gateway Ile SSL sonlandırmasına ve uçtan uca SSL 'ye genel bakış](ssl-overview.md).
+Uygulama Ağ Geçidi'ndeki SSL\TLS hakkında daha fazla bilgi edinmek için, [Uygulama Ağ Geçidi ile SSL sonlandırma genel bakışı ve sonuna kadar SSL'ye](ssl-overview.md)bakın.
 

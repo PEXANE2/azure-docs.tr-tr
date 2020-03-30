@@ -1,89 +1,87 @@
 ---
-title: Azure Farmtempts 'de kullanıcıları yönetme
-description: Bu makalede, Azure Farmtempts 'de kullanıcıların nasıl yönetileceği açıklanır.
+title: Azure FarmBeats'teki kullanıcıları yönetme
+description: Bu makalede, Azure FarmBeats'teki kullanıcıların nasıl yönetilenbir şekilde yönetilenleri açıklanmaktadır.
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502057"
 ---
 # <a name="manage-users"></a>Kullanıcıları yönetme
 
-Azure Farmtts, Azure Active Directory (Azure AD) örneğinin parçası olan kişilerin Kullanıcı yönetimini içerir. API 'Lere erişmek, oluşturulan haritaları görüntülemek ve grup algılayıcısı telemetrisine erişmek için Azure Farmtts örneğinize kullanıcı ekleyebilirsiniz.
+Azure FarmBeats, Azure Etkin Dizin (Azure AD) örneğinizin bir parçası olan kişiler için kullanıcı yönetimini içerir. API'lere erişmek, oluşturulan haritaları görüntülemek ve çiftlikten sensör telemetrisine erişmek için Azure FarmBeats örneğinize kullanıcı ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Farmtts yüklemesi gerekiyor. Daha fazla bilgi için bkz. [Azure Farmtts 'Yi yüklemeyin](install-azure-farmbeats.md).
-- Azure Farmtts örneğinden eklemek veya kaldırmak istediğiniz kullanıcıların e-posta kimlikleri.
+- Azure FarmBeats yüklemesi gereklidir. Daha fazla bilgi için Azure [FarmBeats yükle'ye](install-azure-farmbeats.md)bakın.
+- Azure FarmBeats örneğinize eklemek veya kaldırmak istediğiniz kullanıcıların e-posta iyelikleri.
 
-## <a name="manage-azure-farmbeats-users"></a>Azure Farmtempts kullanıcılarını yönetme
+## <a name="manage-azure-farmbeats-users"></a>Azure FarmBeats kullanıcılarını yönetin
 
-Azure Farm, kimlik doğrulaması, erişim denetimi ve roller için Azure AD kullanır. Azure AD kiracısındaki kullanıcıları Azure Farmtempts ' deki kullanıcılar olarak ekleyebilirsiniz.
+Azure FarmBeats, kimlik doğrulama, erişim denetimi ve roller için Azure AD'yi kullanır. Azure AD kiracısındaki kullanıcıları Azure FarmBeats'teki kullanıcılar olarak ekleyebilirsiniz.
 
 > [!NOTE]
-> Bir Kullanıcı Azure AD kiracı kullanıcısı değilse, kurulumu gerçekleştirmek için **Azure AD kullanıcıları Ekle** bölümündeki yönergeleri izleyin.
+> Bir kullanıcı Azure AD kiracısı değilse, kurulumu tamamlamak için **Azure AD kullanıcıları ekle** bölümündeki yönergeleri izleyin.
 
-> Azure AD kiracısında bir Azure Farmınts kullanıcısı olarak eklemeye çalıştığınız bir kullanıcı yoksa, "Azure AD kullanıcıları ekleme" bölümündeki yönergeleri izleyerek Kurulumu doldurun.
+Azure FarmBeats iki tür kullanıcı rollerini destekler:
 
-Azure Farmtts, iki tür Kullanıcı rolünü destekler:
+ - **Yönetici**: Azure FarmBeats Datahub API'lerine tam erişim. Bu roldeki kullanıcılar tüm Azure FarmBeats Datahub nesnelerini sorgulayabilir ve FarmBeats Hızlandırıcısı'ndaki tüm işlemleri gerçekleştirebilir.
+ - **Salt Oku**: FarmBeats Datahub API'lerine salt okunur erişim. Kullanıcılar Datahub API'lerini, Hızlandırıcı Panolarını ve haritaları görüntüleyebilir. Salt okunur erişimi olan kullanıcılar eşlem oluşturma, aygıtları ilişkilendirme veya çiftlik oluşturma gibi işlemleri gerçekleştiremez.
 
- - **Yönetici**: Azure Farmtts veri hub 'ı API 'lerine tam erişim. Bu roldeki kullanıcılar tüm Azure Farmtts veri hub nesnelerini sorgulayabilir ve tüm işlemleri Farmtts hızlandırıcılarından gerçekleştirebilir.
- - **Salt okunurdur**: Farmtts veri hub 'ı API 'lerine salt okuma erişimi. Kullanıcılar veri hub 'ı API 'Leri, Hızlandırıcı panoları ve haritaları görüntüleyebilir. Salt okuma erişimi olan kullanıcılar haritalar oluşturma, cihazları ilişkilendirme veya gruplar oluşturma gibi işlemler gerçekleştiremez.
+## <a name="add-users-to-azure-farmbeats"></a>Azure FarmBeats'e kullanıcı ekleme
 
-## <a name="add-users-to-azure-farmbeats"></a>Azure Farmtts 'ye Kullanıcı ekleme
+Azure FarmBeats'e kullanıcı eklemek için:
 
-Azure Farmtts 'ye Kullanıcı eklemek için:
+1. Hızlandırıcı'da oturum açın ve ardından **Ayarlar** simgesini seçin.
+2. **Erişim Denetimi'ni**seçin.
 
-1. Hızlandırıcıda oturum açın ve ardından **Ayarlar** simgesini seçin.
-2. **Access Control**seçin.
+    ![Çiftlikler Ayarları bölmesi](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
 
-    ![Gruplar ayarlar bölmesi](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
+3. Erişim izni vermek istediğiniz kullanıcının e-posta kimliğini girin.
+4. İstenilen rolü, **Yöneticiyi** veya **Salt Okunur'u**seçin.
+5. **Rol Ekle'yi**seçin.
 
-3. Erişim vermek istediğiniz kullanıcının e-posta KIMLIĞINI girin.
-4. İstenen rolü, **yönetici** veya **salt okunurdur**seçin.
-5. **Rol Ekle**' yi seçin.
+Eklenen kullanıcı artık Azure FarmBeats'e (hem Datahub hem de Hızlandırıcı) erişebilir.
 
-Eklenen Kullanıcı artık Azure Farmtts 'ye erişebilir (hem Datahub hem de Hızlandırıcı).
+## <a name="delete-users-from-azure-farmbeats"></a>Kullanıcıları Azure FarmBeats'ten silme
 
-## <a name="delete-users-from-azure-farmbeats"></a>Azure Farmtts 'den kullanıcıları silme
+Kullanıcıları Azure FarmBeats sisteminden kaldırmak için:
 
-Kullanıcıları Azure Farmtts sisteminden kaldırmak için:
-
-1. Hızlandırıcıda oturum açın ve ardından **Ayarlar** simgesini seçin.
-2. **Access Control**seçin.
+1. Hızlandırıcı'da oturum açın ve ardından **Ayarlar** simgesini seçin.
+2. **Erişim Denetimi'ni**seçin.
 3. **Sil**’i seçin.
 
    Kullanıcı sistemden silinir. Aşağıdaki onay iletisini alırsınız:
 
-   ![Azure Farmtts onay iletisi](./media/create-farms-in-azure-farmbeats/manage-users-2.png)
+   ![Azure FarmBeats onay mesajı](./media/create-farms-in-azure-farmbeats/manage-users-2.png)
 
 ## <a name="add-azure-ad-users"></a>Azure AD kullanıcıları ekleme
 
 > [!NOTE]
-> Azure Farm, kullanıcıların uygulamalara ve rollere atamadan önce Azure AD kiracısında mevcut olmaları gerekir. Bir Kullanıcı Azure AD kiracısında yoksa, bu bölümdeki yönergeleri izleyin. Azure AD kiracısında bir kullanıcı zaten varsa yönergeleri atlayın.
+> Azure FarmBeats kullanıcılarının, bunları uygulamalara ve rollere atamadan önce Azure AD kiracısında bulunması gerekir. Azure AD kiracısında bir kullanıcı yoksa, bu bölümdeki yönergeleri izleyin. Bir kullanıcı Azure AD kiracısında zaten varsa yönergeleri atlayın.
 
-Azure AD 'ye Kullanıcı eklemek için aşağıdakileri yapın:
+Kullanıcıları Azure AD'ye eklemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Sağ üst köşedeki hesabınızı seçin ve ardından Farmtts ile ilişkili Azure AD kiracıya geçin.
-3. **Azure Active Directory** > **kullanıcıları**' nı seçin.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Sağ üstte hesabınızı seçin ve ardından FarmBeats ile ilişkili Azure AD kiracısına geçin.
+3. **Azure Etkin Dizin** > **Kullanıcıları'nı**seçin.
 
-    Azure AD kullanıcıları listesi görüntülenir.
+    Azure AD kullanıcılarının listesi görüntülenir.
 
-4. Dizine bir kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış Kullanıcı eklemek için **Yeni Konuk Kullanıcı**' yı seçin.
+4. Dizine kullanıcı eklemek için **Yeni kullanıcıyı**seçin. Harici bir kullanıcı eklemek için **Yeni konuk kullanıcıyı**seçin.
 
     !["Tüm kullanıcılar" bölmesi](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
-5. Yeni kullanıcının adını seçin ve ardından bu kullanıcı için gerekli alanları doldurun.
-6. **Oluştur**’u seçin.
+5. Yeni kullanıcının adını seçin ve ardından bu kullanıcı için gerekli alanları tamamlayın.
+6. **Oluştur'u**seçin.
 
-Azure AD kullanıcılarını yönetme hakkında daha fazla bilgi için bkz. [Azure AD 'de Kullanıcı ekleme veya silme](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
+Azure AD kullanıcılarını yönetme hakkında bilgi için Azure [AD'deki kullanıcıları ekle veya silme 'ye](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcıları Azure Farmtts örneğinize başarıyla eklediniz. Şimdi [grupları oluşturma ve yönetme](manage-farms-in-azure-farmbeats.md#create-farms)hakkında bilgi edinin.
+Azure FarmBeats örneğinize başarıyla kullanıcı eklediniz. Şimdi, çiftlikleri [oluşturma yı ve yönetmeyi](manage-farms-in-azure-farmbeats.md#create-farms)öğrenin.

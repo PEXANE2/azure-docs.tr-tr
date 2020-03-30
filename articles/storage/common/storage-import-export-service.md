@@ -1,173 +1,166 @@
 ---
-title: Azure içeri/dışarı aktarma için ve Azure Depolama'dan veri aktarımı kullanarak | Microsoft Docs
-description: İçeri aktarma oluşturma ve dışarı aktarma işleri için ve Azure Depolama'dan veri aktarma için Azure portalında öğrenin.
+title: Azure Depolama'ya veri aktarmak için Azure İçe Aktarma/Dışa Aktarma'yı kullanma | Microsoft Dokümanlar
+description: Azure Depolama'ya veri aktarmak için Azure portalında nasıl içe aktarma ve dışa aktarma işleri oluşturabilirsiniz öğrenin.
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 03/15/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282452"
 ---
-# <a name="what-is-azure-importexport-service"></a>Azure içeri/dışarı aktarma hizmeti nedir?
+# <a name="what-is-azure-importexport-service"></a>Azure İçe Aktarma/Verme hizmeti nedir?
 
-Azure içeri/dışarı aktarma hizmeti, güvenli bir şekilde büyük miktarda veriyi Azure Blob Depolama ve Azure dosyaları için bir Azure veri merkezine bir sürücü sevkiyat tarafından içeri aktarmak için kullanılır. Bu hizmet, verileri Azure Blob depolama alanından disk sürücülerine aktarmak ve şirket içi sitelerinize teslim etme için de kullanılabilir. Bir veya daha fazla disk sürücüsü verileri Azure Blob Depolama veya Azure dosyaları içeri aktarılabilir. 
+Azure İçe Alma/Verme hizmeti, disk sürücülerini bir Azure veri merkezine göndererek azure blob depolamasına ve Azure Dosyalarına büyük miktarda veriyi güvenli bir şekilde almak için kullanılır. Bu hizmet, Azure Blob depolama dan disk sürücülerine veri aktarmak ve şirket içi sitelerinize aktarmak için de kullanılabilir. Bir veya daha fazla disk sürücüsünden gelen veriler Azure Blob depolama alanına veya Azure Dosyaları'na aktarılabilir.
 
-Kendi disk sürücüleri sağlayın ve Azure içeri/dışarı aktarma hizmeti ile veri aktarma. Microsoft tarafından sağlanan disk sürücüler de kullanabilirsiniz. 
+Azure İçe Alma/Dışa Aktarma hizmetiyle kendi disk sürücülerinizi verin ve veri aktarın. Microsoft tarafından sağlanan disk sürücülerini de kullanabilirsiniz.
 
-Microsoft tarafından sağlanan disk sürücüleri kullanarak veri aktarmak istiyorsanız, kullanabileceğiniz [Azure Data Box Disk](../../databox/data-box-disk-overview.md) verileri Azure'a aktarmak için. Microsoft, 40 TB toplam kapasiteye bölgesel bir taşıyıcı aracılığıyla veri merkeziniz için bir sipariş başına en fazla 5 şifrelenmiş katı hal disk sürücüleri (SSD'ler) gelir. Hızlı disk sürücülerini yapılandırır, bir USB 3.0 bağlantısı üzerinden disk sürücülerine veri kopyalama ve disk sürücüleri azure'a geri gönderin. Daha fazla bilgi için Git [Azure Data Box Disk genel bakış](../../databox/data-box-disk-overview.md).
+Microsoft tarafından sağlanan disk sürücülerini kullanarak veri aktarmak istiyorsanız, verileri Azure'a aktarmak için [Azure Veri Kutusu Diski'ni](../../databox/data-box-disk-overview.md) kullanabilirsiniz. Microsoft, sipariş başına 40 TB toplam kapasiteye sahip 5'e kadar şifreli katı hal disk sürücüsü (SSD) bölgesel bir taşıyıcı aracılığıyla veri merkezinize yönlendirir. Disk sürücülerini hızla yapılandırabilir, USB 3.0 bağlantısı üzerinden disk sürücülerine veri kopyalayabilir ve disk sürücülerini Azure'a geri döndürebilirsiniz. Daha fazla bilgi için [Azure Veri Kutusu Diski'ne genel bakış](../../databox/data-box-disk-overview.md)'a gidin.
 
-## <a name="azure-importexport-usecases"></a>Azure içeri/dışarı aktarma usecases
+## <a name="azure-importexport-use-cases"></a>Azure İçe Alma/Dışa Aktarma kullanım örnekleri
 
-Azure içeri/dışarı aktarma hizmeti veri yükleme veya ağ üzerinden indirme çok yavaş olduğunda veya ek ağ bant genişliği alma maliyetle kullanmayı düşünün. Bu hizmet aşağıdaki senaryolarda kullanın:
+Ağ üzerinden veri yüklerken veya indirirken Azure İçe Aktarma/Verme hizmetini kullanmayı düşünün veya ağ üzerinden veri indirme çok yavaşveya ek ağ bant genişliği almak maliyet engelleyicidir. Bu hizmeti aşağıdaki senaryolarda kullanın:
 
-* **Bulutta veri taşıma**: Büyük miktarlarda verinin hızla Azure'a taşıyın ve hesaplı.
-* **İçerik dağıtım**: Hızlı bir şekilde veri müşteri sitelerinize gönderin.
-* **Yedekleme**: Azure depolamada depolamak için şirket içi verilerinizin yedeklerini uygulayın.
-* **Veri Kurtarma**: Büyük Depolama'da depolanan veriler miktarda kurtarın ve şirket içi konumunuza teslim edilmesini.
+* **Buluta veri geçişi**: Büyük miktarda veriyi hızlı ve etkin bir şekilde Azure'a taşıyın.
+* **İçerik dağıtımı**: Müşteri sitelerine hızlı bir şekilde veri gönderin.
+* **Yedekleme**: Azure Depolama'da depolamak için şirket içi verilerinizin yedeklerini alın.
+* **Veri kurtarma**: Depolamada depolanan büyük miktarda veriyi kurtarın ve şirket içi konumunuza teslim edin.
 
-## <a name="importexport-components"></a>İçeri/dışarı aktarma bileşenleri
+## <a name="importexport-components"></a>İthalat/Dışa Aktarma bileşenleri
 
-İçeri/dışarı aktarma hizmeti, aşağıdaki bileşenleri kullanır:
+Alma/Dışa Aktarma hizmeti aşağıdaki bileşenleri kullanır:
 
-- **İçeri/dışarı aktarma hizmeti**: Azure portalında kullanılabilen bu hizmet, kullanıcı oluşturma ve veri alma (yükleme) izlemek ve (indirme) işleri dışarı aktar yardımcı olur.  
+* **Alma/Dışa Aktarma hizmeti**: Azure portalında bulunan bu hizmet, kullanıcının veri alma (yükleme) ve dışa aktarma (indirme) işlerini oluşturmasına ve izlemesine yardımcı olur.  
 
-- **WAImportExport aracı**: Bu aşağıdakileri yapan bir komut satırı aracıdır: 
-    - Disk sürücülerinizden gönderilir ve içeri aktarma için hazırlar.
-    - Sürücüye veri kopyalama işlemini kolaylaştırır.
-    - Bir sürücüde BitLocker ile verileri şifreler.
-    - İçeri aktarma oluşturma sırasında kullanılan sürücü günlük dosyalarını oluşturur.
-    - Dışarı aktarma işleri için gerekli sürücüler sayıda tanımlamanıza yardımcı olacak.
-    
-> [!NOTE]
-> İki sürümleri, sürüm 1 ve 2 WAImportExport aracı kullanılabilir. Kullanmanızı öneririz:
-> - Azure Blob Depolama içine 1 sürümü'içeri / dışarı aktarma için. 
-> - Azure dosyalarını içe veri aktarma için 2 sürümü.
->
-> WAImportExport aracın yalnızca 64 bit Windows işletim sistemi ile uyumludur. Desteklenen belirli işletim sistemi sürümleri için Git [Azure içeri/dışarı aktarma gereksinimleri](storage-import-export-requirements.md#supported-operating-systems).
-
-- **Disk sürücüleri**: Katı hal sürücüleri (SSD'ler) veya bir Azure veri merkezine sabit disk sürücülerinin (HDD'ler) sevk edebilir. İçeri aktarma işi oluşturma, disk, verilerini içeren sürücüler gönderin. Dışarı aktarma işi oluşturma, Azure veri merkezine boş sürücüleri gönderin. Belirli disk türleri için Git [desteklenen disk türleri](storage-import-export-requirements.md#supported-hardware).
-
-## <a name="how-does-importexport-work"></a>İçeri/dışarı aktarma nasıl çalışır?
-
-Azure içeri/dışarı aktarma hizmeti işleri oluşturarak Azure Blobları ve Azure dosyaları ile veri aktarımı sağlar. İşleri oluşturmak için Azure portal veya Azure Resource Manager REST API'si kullanın. Her bir iş, tek bir depolama hesabıyla ilişkilidir. 
-
-İşleri, içeri aktarma olabilir veya dışarı aktarma işleri. İçeri aktarma işi dışarı aktarma işi verileri Azure Bloblarından dışarı aktarılmasına izin verir ancak verileri Azure BLOB'ları veya Azure dosyaları almak sağlar. İçeri aktarma işi için verilerinizi içeren sürücüler gönderin. Dışarı aktarma işi oluşturduğunuzda, bir Azure veri merkezine boş sürücüleri gönderin. Her durumda, iş başına en fazla 10 sürücü gönderebilirsiniz.
-
-### <a name="inside-an-import-job"></a>İçinde içeri aktarma işi
-
-İçeri aktarma işi, yüksek düzeyde, aşağıdaki adımları içerir:
-
-1. Alınacak ihtiyacınız sürücü sayısı hedef blob konum verilerinizi Azure depolama için verileri belirler.
-2. Disk sürücülerine veri kopyalamak için WAImportExport Aracı'nı kullanın. Disk sürücüleri BitLocker ile şifreleyin.
-3. İçeri aktarma işi, hedef depolama hesabında Azure Portalı'nda oluşturun. Sürücü günlük dosyalarını karşıya yükleyin.
-4. Taşıyıcı hesap numarası ve dönüş adresi sürücüler size geri sevkiyat için sağlar.
-5. Disk sürücülerini işi oluşturma işlemi sırasında sağlanan sevkiyat adresine gönderin.
-6. Teslimat izleme numarası içeri aktarma işi ayrıntıları güncelleştirin ve içeri aktarma işi Gönder.
-7. Sürücüleri aldı ve Azure veri merkezinde işlenir.
-8. Sürücüleri içeri aktarma işinin sağlanan dönüş adresi taşıyıcı hesabınızı kullanarak aktarılır.
+* **WAImportExport aracı**: Bu aşağıdakileri yapan bir komut satırı aracıdır:
+  * Alma için sevk edilen disk sürücülerinizi hazırlar.
+  * Verilerinizin sürücüye kopyalanması na kolaylaştırır.
+  * Sürücüdeki verileri AES 128 bit BitLocker ile şifreler. BitLocker anahtarınızı korumak için harici bir anahtar koruyucusu kullanabilirsiniz.
+  * Alma oluşturma sırasında kullanılan sürücü günlüğü dosyalarını oluşturur.
+  * Dışa aktarma işleri için gereken sürücü sayısını belirlemeye yardımcı olur.
 
 > [!NOTE]
-> Yerel (içinde veri merkezi ülke/bölge) sevk irsaliyesi için lütfen bir yurt dışı taşıyıcı hesap paylaşın 
+> WAImportExport aracı, sürüm 1 ve 2 olmak üzere iki sürümde mevcuttur. Şunları kullanmanızı öneririz:
 >
-> (Dışında veri merkezi ülke/bölge) abroad sevk irsaliyesi için lütfen bir uluslararası taşıyıcı hesap paylaşın
+> * Azure Blob depolama alanına alma/dışa aktarma için sürüm 1.
+> * Azure dosyalarına veri almak için sürüm 2.
+>
+> WAImportExport aracı yalnızca 64 bit Windows işletim sistemiyle uyumludur. Desteklenen belirli işletim sistemi sürümleri için [Azure İçe Aktarma/Verme gereksinimlerine](storage-import-export-requirements.md#supported-operating-systems)gidin.
 
- ![Şekil 1:Import iş akışı](./media/storage-import-export-service/importjob.png)
+* **Disk Sürücüleri**: Katı hal sürücülerini (SSD'leri) veya Sabit disk sürücülerini (HDD'leri) Azure veri merkezine taşıyabilirsiniz. Bir alma işi oluştururken, verilerinizi içeren disk sürücüleri sevk emzebilirsiniz. Bir dışa aktarma işi oluştururken, boş sürücüleri Azure veri merkezine yönlendirirsiniz. Belirli disk türleri için [Desteklenen disk türlerine](storage-import-export-requirements.md#supported-hardware)gidin.
 
-Adım adım yönergeler veri alma, gidin:
+## <a name="how-does-importexport-work"></a>İçeri/Dışarı Aktarma nasıl çalışır?
 
-- [Azure Bloblarınızdan veri alma](storage-import-export-data-to-blobs.md)
-- [Azure dosyaları ile verileri içeri aktar](storage-import-export-data-to-files.md)
+Azure İçe Alma/Dışa Aktarma hizmeti, iş yaratarak Azure Blobs ve Azure Dosyalarına veri aktarımı sağlar. İş oluşturmak için Azure portalLarını veya Azure Kaynak Yöneticisi REST API'yi kullanın. Her iş tek bir depolama hesabıyla ilişkilidir.
 
+İşler içe aktarma veya dışa aktarma işleri olabilir. Bir alma işi verileri Azure Blobs veya Azure dosyalarına içe aktarmanıza olanak sağlarken, dışa aktarma işi verilerin Azure Blobs'tan dışa aktarılmasına izin verir. Bir alma işi için, verilerinizi içeren sürücüler imal emzebilirsiniz. Bir dışa aktarma işi oluşturduğunuzda, boş sürücüleri bir Azure veri merkezine yönlendirirsiniz. Her durumda, iş başına en fazla 10 disk sürücüsü sevk edebilirsiniz.
 
-### <a name="inside-an-export-job"></a>İçinde dışarı aktarma işi
+### <a name="inside-an-import-job"></a>Bir alma işinin içinde
+
+Yüksek düzeyde, bir alma işi aşağıdaki adımları içerir:
+
+1. Aktabiri verilecek verileri, ihtiyacınız olan sürücü sayısını, Azure depolamadaki verileriniz için hedef blob konumunu belirleyin.
+2. Disk sürücülerine verileri kopyalamak için WAImportExport aracını kullanın. Disk sürücülerini BitLocker ile şifreleyin.
+3. Azure portalında hedef depolama hesabınızda bir alma işi oluşturun. Sürücü günlüğü dosyalarını yükleyin.
+4. Sürücüleri size geri göndermeniz için iade adresini ve taşıyıcı hesap numarasını sağlayın.
+5. Disk sürücülerini iş oluşturma sırasında sağlanan sevkiyat adresine gönderin.
+6. Alma iş ayrıntılarındaki teslim izleme numarasını güncelleştirin ve alma işini gönderin.
+7. Sürücüler Azure veri merkezinde alınır ve işlenir.
+8. Sürücüler, taşıyıcı hesabınız kullanılarak alma işinde sağlanan iade adresine sevk edilir.
+
+> [!NOTE]
+> Yerel (veri merkezi ülke/bölge içinde) gönderiler için lütfen bir yurtiçi taşıyıcı hesabı paylaşın.
+>
+> Yurt dışı (veri merkezi ülke/bölge dışındaki) gönderiler için lütfen uluslararası bir taşıyıcı hesabı paylaşın.
+
+ ![Şekil 1:İthalat iş akışı](./media/storage-import-export-service/importjob.png)
+
+Veri alma yla ilgili adım adım talimatlar için şu bilgileri verin:
+
+* [Verileri Azure Blobs'a aktarma](storage-import-export-data-to-blobs.md)
+* [Verileri Azure Dosyalarına aktarma](storage-import-export-data-to-files.md)
+
+### <a name="inside-an-export-job"></a>Bir ihracat işinin içinde
 
 > [!IMPORTANT]
-> Hizmet, yalnızca Azure BLOB'ları dışarı aktarmayı destekler. Azure dosyaları dışarı aktarma desteklenmiyor.
+> Hizmet yalnızca Azure Blobs dışa aktarmayı destekler. Azure dosyalarının dışa aktarımı desteklenmez.
 
-Dışarı aktarma işi, yüksek düzeyde, aşağıdaki adımları içerir:
+Yüksek düzeyde, bir dışa aktarma işi aşağıdaki adımları içerir:
 
-1. Dışa aktarılacak veri belirlemek için size gereksinimi, kaynak BLOB veya kapsayıcı yollarını verilerinizin Blob Depolama alanında sürücüsü sayısı.
-3. Dışarı aktarma işi, Azure portalında kaynak depolama hesabınızdaki oluşturun.
-4. Kaynak BLOB veya kapsayıcı yolları verilerin dışarı belirtin.
-5. Taşıyıcı hesap numarası ve dönüş adresi sürücüler size geri sevkiyat için sağlar.
-6. Disk sürücülerini işi oluşturma işlemi sırasında sağlanan sevkiyat adresine gönderin.
-7. Teslimat izleme numarası dışarı aktarma işi ayrıntıları güncelleştirin ve dışarı aktarma işi gönderin.
-8. Sürücüleri aldı ve Azure veri merkezinde işlenir.
-9. Sürücüler BitLocker ile şifrelenir ve anahtarları, Azure portalı üzerinden kullanılabilir.  
-10. Sürücüleri içeri aktarma işinin sağlanan dönüş adresi taşıyıcı hesabınızı kullanarak aktarılır.
+1. Dışa aktarılacak verileri, ihtiyacınız olan sürücü sayısını, blob depolamada verilerinizin kaynak lekelerini veya kapsayıcı yollarını belirleyin.
+2. Azure portalındaki kaynak depolama hesabınızda bir dışa aktarma işi oluşturun.
+3. Dışa aktarılacak veriler için kaynak lekeleri veya kapsayıcı yolları belirtin.
+4. Sürücüleri size geri göndermeniz için iade adresini ve taşıyıcı hesap numarasını sağlayın.
+5. Disk sürücülerini iş oluşturma sırasında sağlanan sevkiyat adresine gönderin.
+6. Dışa aktarma iş ayrıntılarındaki teslimat izleme numarasını güncelleştirin ve dışa aktarma işini gönderin.
+7. Sürücüler Azure veri merkezinde alınır ve işlenir.
+8. Sürücüler BitLocker ile şifrelenir ve tuşlara Azure portalı üzerinden ulaşabilirsiniz.  
+9. Sürücüler, taşıyıcı hesabınız kullanılarak alma işinde sağlanan iade adresine sevk edilir.
 
 > [!NOTE]
-> Yerel (içinde veri merkezi ülke/bölge) sevk irsaliyesi için lütfen bir yurt dışı taşıyıcı hesap paylaşın 
+> Yerel (veri merkezi ülke/bölge içinde) gönderiler için lütfen bir yurtiçi taşıyıcı hesabı paylaşın.
 >
-> (Dışında veri merkezi ülke/bölge) abroad sevk irsaliyesi için lütfen bir uluslararası taşıyıcı hesap paylaşın
+> Yurt dışı (veri merkezi ülke/bölge dışındaki) gönderiler için lütfen uluslararası bir taşıyıcı hesabı paylaşın.
   
- ![Şekil 2:Export iş akışı](./media/storage-import-export-service/exportjob.png)
+ ![Şekil 2:Dışa aktarma iş akışı](./media/storage-import-export-service/exportjob.png)
 
-Verileri dışarı aktarma ile ilgili adım adım yönergeler için Git [Azure Bloblarından veri dışarı aktarma](storage-import-export-data-from-blobs.md).
+Veri dışa aktarma yla ilgili adım adım talimatlar için [Azure Blobs'tan veri dışa](storage-import-export-data-from-blobs.md)aktar'a gidin.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği 
+## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Azure içeri/dışarı aktarma hizmeti, için ve tüm Azure depolama hesaplarından veri kopyalamayı destekler. Disk sürücüleri listelenen konumlardan birine gönderebilirsiniz. Depolama hesabınızı burada belirtilmeyen bir Azure konumunda ise, işi oluşturduğunuzda bir alternatif sevkiyat konumu sağlanır.
+Azure İçe Alma/Dışa Aktarma hizmeti, tüm Azure depolama hesaplarına ve tüm Azure depolama hesaplarından veri kopyalamayı destekler. Disk sürücülerini listelenen konumlardan birine yönlendirebilirsiniz. Depolama hesabınız burada belirtilmeyen bir Azure konumundaysa, işi oluşturduğunuzda alternatif bir sevkiyat konumu sağlanır.
 
-### <a name="supported-shipping-locations"></a>Desteklenen sevkiyat konumları
-
+### <a name="supported-shipping-locations"></a>Desteklenen sevkiyat yerleri
 
 |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |
 |---------|---------|---------|---------|
 |Doğu ABD    | Kuzey Avrupa        | Orta Hindistan        |US Gov Iowa         |
-|Batı ABD     |Batı Avrupa         | Güney Hindistan        | US DoD Doğu        |
-|Doğu ABD 2    | Doğu Asya        |  Batı Hindistan        | US DoD Orta        |
-|Batı ABD 2     | Güneydoğu Asya        | Orta Kanada        | Çin Doğu         |
-|Orta ABD     | Avustralya Doğu        | Doğu Kanada        | Çin Kuzey        |
-|Orta Kuzey ABD     |  Avustralya Güneydoğu       | Güney Brezilya        | Birleşik Krallık Güney        |
-|Orta Güney ABD     | Japonya Batı        |Kore Orta         | Almanya Orta        |
-|Batı Orta ABD     |  Japonya Doğu       | ABD Devleti Virginia        | Almanya Kuzeydoğu        |
+|Batı ABD     |Batı Avrupa         | Güney Hindistan        | Doğu US DoD        |
+|Doğu ABD 2    | Doğu Asya        |  Batı Hindistan        | Orta US DoD        |
+|Batı ABD 2     | Güneydoğu Asya        | Orta Kanada        | Doğu Çin         |
+|Orta ABD     | Doğu Avustralya        | Doğu Kanada        | Kuzey Çin        |
+|Orta Kuzey ABD     |  Güneydoğu Avustralya       | Güney Brezilya        | Güney Birleşik Krallık        |
+|Orta Güney ABD     | Batı Japonya        |Güney Kore - Orta         | Orta Almanya        |
+|Orta Batı ABD     |  Doğu Japonya       | US Gov Virginia        | Kuzeydoğu Almanya        |
 
+## <a name="security-considerations"></a>Güvenlik konuları
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+Sürücüdeki veriler AES 128 bit BitLocker Sürücü Şifrelemesi kullanılarak şifrelenir. Bu şifreleme, verilerinizi aktarım sırasında korur.
 
-Veri sürücüsünde BitLocker Sürücü Şifrelemesi ile şifrelenir. Bu şifreleme, aktarım sırasında verilerinizi korur.
+Alma işleri için sürücüler iki şekilde şifrelenir.  
 
-İçeri aktarma işlerinde için sürücüleri iki yolla şifrelenir.  
+* Sürücü hazırlama sırasında WAImportExport aracını çalıştırırken *dataset.csv* dosyasını kullanırken seçeneği belirleyin.
 
+* Sürücüde BitLocker şifrelemesini el ile etkinleştirin. Sürücü hazırlama sırasında WAImportExport araç komut satırını çalıştırırken *driveset.csv'deki* şifreleme anahtarını belirtin. BitLocker şifreleme anahtarı harici bir anahtar koruyucusu (Microsoft yönetilen anahtar olarak da bilinir) veya müşteri yönetilen bir anahtar kullanılarak daha da korunabilir. Daha fazla bilgi [için, BitLocker anahtarınızı korumak için müşteri yönetilen anahtarının](storage-import-export-encryption-key-portal.md)nasıl kullanılacağına bakın.
 
-- Seçeneğini kullanırken belirtin *dataset.csv* sürücü hazırlanırken WAImportExport aracı çalıştırılırken dosya. 
-
-- El ile sürücüde BitLocker şifrelemesini sağlar. Şifreleme anahtarı belirtin *driveset.csv* sürücü hazırlanırken WAImportExport aracı komut satırı çalışırken.
-
-
-Verilerinizi bu sürücülere kopyalandıktan sonra dışarı aktarma işleri için hizmet, size geri göndermeden önce BitLocker'ı kullanarak sürücüyü şifreler. Şifreleme anahtarı için Azure portalı üzerinden sağlanır.
+Dışa aktarma işleri için, verileriniz sürücülere kopyalandıktan sonra, hizmet sürücüyü size geri göndermeden önce BitLocker kullanarak şifreler. Şifreleme anahtarı size Azure portalı üzerinden sağlanır. Anahtarı kullanarak WAImporExport aracı kullanılarak sürücünün kilidinin açılması gerekir.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
-
 ### <a name="pricing"></a>Fiyatlandırma
 
-**İşleme ücreti sürücü**
+**Sürücü taşıma ücreti**
 
-İçeri aktarma işleminizin bir parçası olarak işlenen her sürücü için sürücü işleme ücret ödemeniz gerekmez veya dışarı aktarma işi. İlgili ayrıntılara [Azure içeri/dışarı aktarma fiyatlandırma](https://azure.microsoft.com/pricing/details/storage-import-export/).
+İthalat veya ihracat işinizin bir parçası olarak işlenen her sürücü için bir sürücü taşıma ücreti vardır. [Azure İçe Alma/DışAk Fiyatlandırması](https://azure.microsoft.com/pricing/details/storage-import-export/)ile ilgili ayrıntılara bakın.
 
-**Sevkiyat maliyetleri**
+**Nakliye maliyetleri**
 
-Diskleri Azure'a gönderin, Sevkiyat taşıyıcısı için sevkiyat ücreti ödersiniz. Microsoft sürücüler size geri döndüğünde, sevkiyat ücreti, proje oluşturma sırasında sağladığınız taşıyıcı hesap için ücretlendirilir.
+Sürücüleri Azure'a sevk ettiğinizde, gönderi taşıyıcısına nakliye maliyetini ödentirsiniz. Microsoft sürücüleri size iade ettiğinde, sevkiyat maliyeti iş oluşturma sırasında sağladığınız operatör hesabına ücretlendirilir.
 
 **İşlem maliyetleri**
 
-[Standart depolama işlemi ücreti](https://azure.microsoft.com/pricing/details/storage/) verilerin dışarı aktarılmasını yanı sıra içeri aktarma sırasında uygulayın. Azure Depolama'dan veri dışarı aktarılırken standart çıkış ücretlerini yanı sıra depolama işlemi ücretleri de uygulanabilir. Kullanım maliyetleri, daha fazla bilgi için bkz. [veri aktarımı fiyatlandırması.](https://azure.microsoft.com/pricing/details/data-transfers/).
-
-
+[İthalat](https://azure.microsoft.com/pricing/details/storage/) ve veri ihracatı sırasında standart depolama işlem ücreti uygulanır. Azure Depolama'dan veri dışa aktarıldığında standart çıkış ücretleri ve depolama işlem ücretleri de uygulanabilir. Çıkış maliyetleri hakkında daha fazla bilgi için [Veri aktarım fiyatlandırması'na bakın.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçeri/dışarı aktarma hizmeti için kullanmayı öğrenin:
-* [Azure BLOB'ları için verileri içeri aktar](storage-import-export-data-to-blobs.md)
-* [Azure Bloblarından veri dışarı aktarma](storage-import-export-data-from-blobs.md)
-* [Azure dosyaları için verileri içeri aktar](storage-import-export-data-to-files.md)
+İçe Alma/Dışa Aktarma hizmetini aşağıdakiler için nasıl kullanacağınızı öğrenin:
 
+* [Verileri Azure Blobs'a aktarma](storage-import-export-data-to-blobs.md)
+* [Azure Blobs'tan veri dışa aktarma](storage-import-export-data-from-blobs.md)
+* [Verileri Azure Dosyalarına aktarma](storage-import-export-data-to-files.md)

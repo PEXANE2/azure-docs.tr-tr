@@ -1,29 +1,29 @@
 ---
-title: Trafik kapsamı | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları 'nda trafik kapsamı hakkında bilgi edineceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Trafik kapsama | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar'da trafik kapsamı hakkında bilgi edineceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333956"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
+# <a name="azure-maps-traffic-coverage"></a>Azure Haritalar trafik kapsamı
 
-Azure Maps, trafik **akışı** ve **olayları**biçiminde zengin trafik bilgileri sağlar. Bu veriler, haritalar üzerinde görselleştirilir veya gerçek zamanlı koşullarda etken olan daha akıllı yollar oluşturmak için kullanılabilir.
+Azure Haritalar, trafik **akışı** ve **olaylar**şeklinde zengin trafik bilgileri sağlar. Bu veriler haritalarda görselleştirilebilir veya gerçek sürüş koşullarını etkileyen daha akıllı rotalar oluşturmak için kullanılabilir.
 
-Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tabloda, her ülke veya bölgeden isteyebilmeniz gereken trafik bilgileri türü hakkında bilgi verilmektedir: 
+Ancak, Haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablo, her ülkeden veya bölgeden ne tür trafik bilgileri isteyebileceğiniz hakkında bilgi sağlar: 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Ülke/Bölge  |Olay Sayısı  |Akış  |
+|Ülke/Bölge  |Olaylar  |Akış  |
 |---------|:---------:|:---------:|
 |Arjantin      |✓         |✓         |
 |Brezilya     |✓         |✓         |
@@ -33,17 +33,17 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Meksika     |✓         |✓         |
 |Peru       |✓         |✓         | 
 |Amerika Birleşik Devletleri     |✓         |✓        |
-|\+ Porto Riko     |✓         |✓         |
+|+Porto Riko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-|Ülke/Bölge   |Olay Sayısı  |Akış  |
+|Ülke/Bölge   |Olaylar  |Akış  |
 |---------|:---------:|:---------:|
 |Avustralya     |✓         |✓        |
-|Barış   |✓         |✓        |
-|Hong Kong SAR     |✓         |✓         |
+|Brunei   |✓         |✓        |
+|Hong Kong ÖİB     |✓         |✓         |
 |Hindistan   |✓         |✓         |
 |Endonezya     |✓         |✓         |
 |Kazakistan    |✓         |✓         |
@@ -59,7 +59,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="europe"></a>Avrupa
 
-|Ülke/Bölge   |Olay Sayısı  |Akış  |
+|Ülke/Bölge   |Olaylar  |Akış  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Avusturya     |✓         |✓         |
@@ -72,7 +72,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Danimarka     |✓         |✓         |
 |Estonya     |         | ✓        |
 |Finlandiya     |✓         |✓         |
-|\+ Bir yaş Adaları      |✓         |✓         |
+|+Åland Adaları      |✓         |✓         |
 |Fransa     |✓         |✓         |
 |Monako     |✓         |✓         |
 |Almanya     |✓         |✓         |
@@ -93,7 +93,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Norveç     |✓         |✓         |
 |Polonya     |✓         |✓         |
 |Portekiz     |✓         |✓         |
-|\+ Azor Adaları ve Madeira     |✓         |✓         |
+|+Azores ve Madeira     |✓         |✓         |
 |Romanya     |✓         |✓         |
 |Rusya Federasyonu     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -101,23 +101,23 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Slovakya     |✓         |✓         |
 |Slovenya     |✓         |✓         |
 |İspanya     |✓         |✓         |
-|\+ Andora     |✓         |✓         |
-|\+ Baöğrenic Adaları     |✓         |✓         |
-|\+ Canary Adaları     |✓         |✓         |
+|+Andorra     |✓         |✓         |
+|+Balear Adaları     |✓         |✓         |
+|+Kanarya Adaları     |✓         |✓         |
 |İsveç     |✓         |✓         |
 |İsviçre     |✓         |✓        |
 |Türkiye     |✓         |✓         |
 |Ukrayna     |✓         |✓         |
 |Birleşik Krallık     |✓         |✓         |
-|\+ Gibraltar     |✓         |✓         |
-|\+ Guernsey & Jersey     |✓         |✓         |
-|\+ Man Adası     |✓         |✓         |
-|Vatikan şehri   |✓         |✓         |
+|+Cebelitarık     |✓         |✓         |
+|+Guernsey & Jersey     |✓         |✓         |
+|+Man Adası     |✓         |✓         |
+|Vatikan   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-|Ülke/Bölge |Olay Sayısı  |Akış  |
+|Ülke/Bölge |Olaylar  |Akış  |
 |---------|:---------:|:---------:|
 |Bahreyn     |✓         |✓         |
 |Mısır     |✓         |✓         |
@@ -135,4 +135,4 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Maps trafik verileri hakkında daha fazla bilgi için bkz. [trafik](https://docs.microsoft.com/rest/api/maps/traffic) başvuru sayfaları.
+Azure Haritalar trafik verileri hakkında daha fazla bilgi için [Trafik](https://docs.microsoft.com/rest/api/maps/traffic) başvuru sayfalarına bakın.

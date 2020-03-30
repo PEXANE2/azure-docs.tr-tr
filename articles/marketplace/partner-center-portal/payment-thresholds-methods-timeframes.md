@@ -1,46 +1,45 @@
 ---
-Description: Ödemelerin aktarılacağı tahmini süre, geçerli ödeme eşikleri ve Microsoft pazar yerleri, ülke/bölge ve ödeme hesap türüne bağlı olarak değişebilir.
-title: Ticari Market 'teki ödeme eşikleri, Yöntemler ve zaman kareleri | Azure Marketi
+Description: Ödemeleri aktarmak için tahmini süre, geçerli ödeme eşikleri ve ödeme alabileceğiniz Microsoft pazaryerleri ülkenize/bölgenize ve ödeme hesabı türüne bağlı olarak değişebilir.
+title: Ticari pazarda ödeme eşikleri, yöntemleri ve zaman dilimleri | Azure Marketi
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931873"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279734"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
 
-Ödemelerin aktarılacağı tahmini süre ve ödemeleri alacağınız Microsoft pazar yerleri, ülke/bölge ve ödeme hesap türüne bağlı olarak farklılık gösterebilir. Bu konu başlığı altında, her ülkede/bölgede desteklenen ödeme yöntemleri özetlenmektedir.
+Ödemeleri aktarmak için tahmini süre ve ödeme alabileceğiniz Microsoft pazaryerleri ülkenize/bölgenize ve ödeme hesabı türüne bağlı olarak değişebilir. Bu konu, her ülkede/bölgede desteklenen ödeme yöntemlerini özetler.
 
-Belirli bir ülke/bölge için, ACH/SEPA veya tel aktarımı kullanarak ödemlerimizi sunun. Ayrıca, bazı ülkeler/bölgeler, bir ödeme yöntemi olarak PayPal 'yi destekler.
+Herhangi bir ülke/bölge için, ödemelerimizi iletmek için ACH/SEPA veya banka havalesi kullanacağız. Ayrıca, bazı ülkeler/bölgeler ödeme yöntemi olarak PayPal'ı destekler.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Ödemelerin ödeme hesabına ulaşması için geçen gün sayısı
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Ödeme hesabına ulaşmak için ödemelerin gün sayısı
 
-Genellikle belirli bir ay bu ayın 15. gününe kadar olan tüm ödemeleri göndereceğiz, ancak ödemenin hesabınıza ulaşması ek bir zaman alır. Gün miktarı, aşağıda açıklandığı gibi, hesabınız için kullandığımız ödeme yöntemine göre farklılık gösterir.
+Genellikle belirli bir ay içinde ödenmesi gereken ödemeleri o ayın 15' inci gününe kadar göndeririz, ancak ödemenin hesabınıza ulaşması ek süre alır. Gün miktarı, aşağıda açıklandığı gibi, hesabınız için kullandığımız ödeme yöntemine bağlı olarak değişir.
 
 > [!NOTE]
-> Aşağıda gösterilen günler yaklaşık değerlerdir; verilen ödeme miktarı daha uzun veya daha kısa bir süre alabilir.
+> Aşağıda gösterilen günler yaklaşık; verilen herhangi bir ödeme daha uzun veya daha kısa bir süre alabilir.
 
-| Ödeme yöntemi     | Ödeme hesabına ulaşma gün sayısı     |
+| Ödeme yöntemi     | Ödeme hesabına ulaşmak için gün sayısı     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 iş günü                             |
 | ACH/SEPA           | 2-3 iş günü                          |
-| Tel aktarım      | 7-10 iş günü                         |
+| Havale      | 7-10 iş günü                         |
 
-Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri görmek için aşağıdaki tabloları inceleyin.
+Bu ödeme yöntemlerinin her pazar yeri için kullanıldığı ülkeleri/bölgeleri görmek için aşağıdaki tabloları inceleyin.
 
-## <a name="payment-methods-in-countriesregions"></a>Ülkelerde/bölgelerde ödeme yöntemleri
+## <a name="payment-methods-in-countriesregions"></a>Ülkeler/bölgelerde ödeme yöntemleri
 
 > [!NOTE]
-> Tüm bölgelerde ödeme eşikleri $50 ABD Doları.
+> Tüm bölgelerdeki ödeme eşikleri 50 USD'dir.
 
-| Ülke                          | Azure Marketi | Mağaza, reklam, karıştırıcı ve Minecrat | Office | PayPal ödemeleri |
+| Ülke                          | Azure Market | Mağaza, Reklam, Mikser ve Minecraft | Office | PayPal Ödemeleri |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afganistan                      | Evet               | Evet                                      | Hayır     | Hayır              |
 | Arnavutluk                          | Evet               | Evet                                      | Evet    | Evet             |
@@ -59,7 +58,7 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Belçika                          | Evet               | Evet                                      | Evet    | Evet             |
 | Benin                            | Evet               | Evet                                      | Evet    | Hayır              |
 | Bolivya                          | Evet               | Evet                                      | Evet    | Hayır              |
-| Bosna - Hersek           | Evet               | Evet                                      | Evet    | Evet             |
+| Bosna Hersek           | Evet               | Evet                                      | Evet    | Evet             |
 | Botsvana                         | Evet               | Evet                                      | Hayır     | Evet             |
 | Brezilya                           | Evet               | Evet                                      | Evet    | Evet             |
 | Bulgaristan                         | Evet               | Evet                                      | Evet    | Evet             |
@@ -101,7 +100,7 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Gine                           | Evet               | Evet                                      | Evet    | Hayır              |
 | Haiti                            | Evet               | Evet                                      | Evet    | Hayır              |
 | Honduras                         | Evet               | Evet                                      | Evet    | Evet             |
-| Hong Kong ÖİB                        | Evet               | Evet                                      | Evet    | Evet             |
+| Hong Kong                        | Evet               | Evet                                      | Evet    | Evet             |
 | Macaristan                          | Evet               | Evet                                      | Evet    | Evet             |
 | İzlanda                          | Evet               | Evet                                      | Evet    | Hayır              |
 | Hindistan                            | Evet               | Evet                                      | Evet    | Evet             |
@@ -115,17 +114,17 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Ürdün                           | Evet               | Evet                                      | Evet    | Evet             |
 | Kazakistan                       | Evet               | Evet                                      | Evet    | Evet             |
 | Kenya                            | Evet               | Evet                                      | Evet    | Evet             |
-| Kore dili (Güney)                    | Evet               | Evet                                      | Evet    | Hayır              |
+| Kore (Güney)                    | Evet               | Evet                                      | Evet    | Hayır              |
 | Kuveyt                           | Evet               | Evet                                      | Evet    | Evet             |
 | Kırgızistan                       | Hayır                | Hayır                                       | Evet    | Hayır              |
 | Laos                             | Evet               | Evet                                      | Evet    | Hayır              |
 | Letonya                           | Evet               | Evet                                      | Evet    | Hayır              |
 | Lübnan                          | Evet               | Evet                                      | Hayır     | Hayır              |
 | Liberya                          | Evet               | Evet                                      | Evet    | Hayır              |
-| Liechtenstein                    | Evet               | Evet                                      | Evet    | Evet             |
+| Lihtenştayn                    | Evet               | Evet                                      | Evet    | Evet             |
 | Litvanya                        | Evet               | Evet                                      | Evet    | Hayır              |
 | Lüksemburg                       | Evet               | Evet                                      | Evet    | Evet             |
-| Kuzey Makedonya                        | Hayır                | Evet                                      | Evet    | Hayır              |
+| Makedonya                        | Hayır                | Evet                                      | Evet    | Hayır              |
 | Madagaskar                       | Evet               | Evet                                      | Evet    | Hayır              |
 | Malavi                           | Evet               | Evet                                      | Evet    | Evet             |
 | Malezya                         | Evet               | Evet                                      | Evet    | Evet             |
@@ -139,7 +138,7 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Fas                          | Evet               | Evet                                      | Evet    | Hayır              |
 | Mozambik                       | Evet               | Evet                                      | Evet    | Evet             |
 | Nepal                            | Evet               | Evet                                      | Evet    | Hayır              |
-| Hollanda                 | Evet               | Evet                                      | Evet    | Evet             |
+| Hollanda, Hollanda                 | Evet               | Evet                                      | Evet    | Evet             |
 | Yeni Zelanda                      | Evet               | Evet                                      | Evet    | Evet             |
 | Nikaragua                        | Evet               | Evet                                      | Evet    | Evet             |
 | Nijer                            | Evet               | Evet                                      | Evet    | Hayır              |
@@ -157,7 +156,7 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Katar                            | Evet               | Evet                                      | Evet    | Evet             |
 | Romanya                          | Evet               | Evet                                      | Evet    | Hayır              |
 | Rusya                           | Evet               | Evet                                      | Hayır     | Evet             |
-| Ruanda                           | Evet               | Evet                                      | Evet    | Hayır              |
+| Rwanda                           | Evet               | Evet                                      | Evet    | Hayır              |
 | Saint Vincent ve Grenadinler | Hayır                | Evet                                      | Hayır     | Hayır              |
 | Suudi Arabistan                     | Evet               | Evet                                      | Evet    | Evet             |
 | Senegal                          | Evet               | Evet                                      | Evet    | Hayır              |
@@ -187,7 +186,7 @@ Bu ödeme yöntemlerinin her Market için kullanıldığı ülkeleri/bölgeleri 
 | Ukrayna                          | Evet               | Evet                                      | Hayır     | Hayır              |
 | Birleşik Arap Emirlikleri             | Evet               | Evet                                      | Evet    | Evet             |
 | Birleşik Krallık                   | Evet               | Evet                                      | Evet    | Evet             |
-| Birleşik Devletler                    | Evet               | Evet                                      | Evet    | Evet             |
+| Amerika Birleşik Devletleri                    | Evet               | Evet                                      | Evet    | Evet             |
 | Uruguay                          | Evet               | Evet                                      | Evet    | Evet             |
 | Özbekistan                       | Evet               | Evet                                      | Hayır     | Hayır              |
 | Venezuela                        | Evet               | Evet                                      | Evet    | Evet             |

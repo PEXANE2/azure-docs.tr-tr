@@ -1,23 +1,22 @@
 ---
 title: Azure VHD dağıtım şablonu | Azure Marketi
-description: Bir Kullanıcı sanal sabit diskinden yeni bir Azure sanal makinesi dağıtmak için gereken Azure Resource Manager şablonunu listeler.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Bir kullanıcı sanal sabit diskinden yeni bir Azure sanal makine dağıtmak için gereken Azure Kaynak Yöneticisi şablonu listelenir.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277880"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>Sanal sabit disk dağıtım şablonu 
 
-Aşağıdaki Azure Resource Manager şablonu, yerel sanal sabit diskten (VHD) oluşturulan yeni bir Azure sanal makinesi (VM) örneğini tanımlar.  Bu şablon, [bir Kullanıcı VHD 'Sinden Azure VM dağıtma](./cpp-deploy-vm-user-image.md)makalesinde kullanılır. 
+Aşağıdaki Azure Kaynak Yöneticisi şablonu, yerel sanal sabit diskten (VHD) oluşturulan yeni bir Azure sanal makine (VM) örneğini tanımlar.  Bu şablon, bir [kullanıcı VHD'den bir Azure VM dağıt'](./cpp-deploy-vm-user-image.md)ı makalesinde kullanılır. 
 
 ```json
 {

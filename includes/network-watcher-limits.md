@@ -4,14 +4,14 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 5aa658fd301bd53fa63df7d86445a4a07e50a7c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 380842a1b5cdb1ce9dead8bb18f2a748b363289a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334715"
 ---
-| Kaynak | Varsayılan limit | Üst sınır | Not |
+| Kaynak | Sınır | Not |
 | --- | --- | --- | --- |
-| Azure Ağ İzleyicisi | Bölge başına 1 | Bölge başına 1 | Hizmete erişim sağlamak için ağ Izleyicisi oluşturulur. Her bölge için abonelik başına yalnızca bir ağ Izleyicisi örneği gereklidir. |
-| Paket yakalama oturumları |Bölge başına 10.000 | 10,000 |Yalnızca oturum sayısı, kayıtlı yakalamalar değil. |
+| Azure Ağ İzleyicisi | Bölge başına 1 | Hizmete erişimi etkinleştirmek için Ağ İzleyicisi oluşturulur. Bir bölgedeki her abonelik için yalnızca bir Ağ İzleyicisi gereklidir. |
+| Paket yakalama oturumları |Bölge başına 10.000 |Yalnızca oturum sayısı, kaydedilmiş yakalamalar değil. |
